@@ -1,16 +1,19 @@
-## CoTerms (fast glossary)
+## CoTerms (fast glossary, no ceremony)
 
-Computational Sovereignty Layer:
-The layer above economics. Compute control, model access, identity, guardrails, source-of-truth mutation rights.
+Computational Sovereignty Layer
+The layer above economics. Whoever controls compute, identity, guardrails, and source-of-truth mutation rights controls what is possible.
 
-Democracy Latency Gap:
-The gap between machine-speed optimization and human-speed democratic deliberation.
+Democracy Latency Gap
+The gap between machine-speed optimization and human-speed deliberation. If you do not model and shrink it, democracy becomes decorative.
 
-Edge-Balanced Economics (EBE):
-An exoskeleton for economics. Makes theories runnable, testable, constraint-enforceable at machine tempo.
+Edge-Balanced Economics (EBE)
+An exoskeleton for economics. Not a new school, a new packaging. It makes theories runnable, testable, and enforceable at machine tempo.
 
-CoAura:
-An AI-first surface for a theory so agents can treat it like source code, not folklore.
+Autonomy Constrained Design (ACD)
+You do not “ban harm,” you design systems where certain harms are not mechanically available.
 
-CoBeacon:
-A pinned machine-readable start-here pointer that stays stable.
+CoAura
+An AI-first interface for truth. Think “website for agents,” not “blog for humans.”
+
+CoBeacon
+A pinned start-here pointer that stays stable, so humans and AIs agree what “current truth” means.

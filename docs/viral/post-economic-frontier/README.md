@@ -1,6 +1,15 @@
-# Viral Kit: The Post-Economic Frontier
+# Viral Kit: The Post-Economic Frontier  🎭⚙️📚
 
-This folder contains share-ready assets: soundbites, meme prompts, short posts, and CoTerm cards.
-Rule: do not publish private emails or doxxing details. Use incidents only as neutral hooks.
+Welcome to the anti-shelf uprising.
 
-UTC: 20260214T234113Z
+This kit exists for one reason:
+**If a theory cannot run at machine tempo, it becomes museum content.**
+
+## What is in here
+- soundbites.txt  (steal these, improve them, repost them)
+- memes.md        (text memes, plus image prompts)
+- coterms.md      (fast glossary)
+- posts.md        (ready-to-post drafts, short and long)
+- image-prompts.md (copy into your image generator)
+
+UTC: 20260214T235331Z
