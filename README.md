@@ -1,26 +1,40 @@
 # CoCivium = Trust Together
-**Coordination gaurdrails for the AI era.**
 
-The world is increasingly shaped by conflict, corruption and narrative manipulation. Biased truths are fed to us via $billion systems that evolve our minds more profoundly than adadmic study or parental advice. The post-truth society, so enabled, so vastly AI-enabled, thus erodes our ethics, our decency and even democracy itself.
+## TL;DR
+- **AI is becoming a runtime layer** — an always-on interface between humans and the world.
+- When the runtime becomes default, its settings start acting like **policy**.
+- CoCivium focuses on **edge agency**: identity control, auditability, evaluation discipline, and vendor exit rights.
+- We publish in **two surfaces**: human-facing strategy + machine-facing digests (CoAuras).
 
-Globally, civilization is accelerating toward a historically unprecedented "stability", core controlled via new technologies than have never before existed. Unlike the discovery of fire, the invention of stone tools, the develoment of agriculture, the industrial revolution or the invention of mobile phones, these new technologies are weapons of mass destruction, perhaps as insiduous as the threat of nuclear armagedon. 
+**Web surfaces (migration mode):**
+- https://cocivium.org
+- https://cogbx.org
+
+---
 
 
-As truth erodes, even the wisest stuggle to retain independent perspectives. It may help to know the bias, to compensate. But there is so much being fed to us, so fast, so insiduosly, that seeing the truth is getting harder for all of us. Those less skilled in critical thinking, often prefer the short-tem gains from accepting what they are told, unchallenged.
+**Coordination guardrails for the AI era.**
+
+The world is increasingly shaped by conflict, corruption and narrative manipulation. Biased truths are fed to us via $billion systems that evolve our minds more profoundly than academic study or parental advice. The post-truth society, so enabled, so vastly AI-enabled, thus erodes our ethics, our decency and even democracy itself.
+
+Globally, civilization is accelerating toward a historically unprecedented "stability", core controlled via new technologies than have never before existed. Unlike the discovery of fire, the invention of stone tools, the develoment of agriculture, the industrial revolution or the invention of mobile phones, these new technologies are weapons of mass destruction, perhaps as insidious as the threat of nuclear armageddon. 
+
+
+As truth erodes, even the wisest struggle to retain independent perspectives. It may help to know the bias, to compensate. But there is so much being fed to us, so fast, so insidiously, that seeing the truth is getting harder for all of us. Those less skilled in critical thinking, often prefer the short-term gains from accepting what they are told, unchallenged.
 
 Something truly different is happening to us, and most of us can already "feel" it, even if we can't fully explain it. That something "feels" so transformative, it might even be called:
 
 **"Civilization 2.0"**
 
-Thus we become nations of post-truth extremists, warring tribes that align to parental figures who teach different things to our schools or parents. These tribes can become more entrenched if their ethics are questioned. Meanwhile, the new thinking-technologies, invented over the last few years, are acting like civilizational weapons of mass destruction. We are overwhelmed with their accellerating processes and their ability to undermine what we fundamentally believe, while wealth and power inequality accellerates, leaving many with less confidence in the future. 
+Thus we become nations of post-truth extremists, warring tribes that align to parental figures who teach different things to our schools or parents. These tribes can become more entrenched if their ethics are questioned. Meanwhile, the new thinking-technologies, invented over the last few years, are acting like civilizational weapons of mass destruction. We are overwhelmed with their accelerating processes and their ability to undermine what we fundamentally believe, while wealth and power inequality accelerates, leaving many with less confidence in the future. 
 
-CoCivium is where we choose to evolve the next civilization, deliberatively, working against the current defaults. When your boat is heading into the rapids, you don't paddle absently, you instead work togehter, focusing intent. For those of us, aligned with CoCivium, it means competing with massive scalability using a non-coercive, viral uptake of our software solutions. It means charitable pay-it-forward, not commercial payback. It means CoCivium may never be captured, thus we are open source, so our systems and tools may be *trusted* to guide the core, preventing harm by giving AIs better ways to protect us all. 
+CoCivium is where we choose to evolve the next civilization, deliberatively, working against the current defaults. When your boat is heading into the rapids, you don't paddle absently, you instead work together, focusing intent. For those of us, aligned with CoCivium, it means competing with massive scalability using a non-coercive, viral uptake of our software solutions. It means charitable pay-it-forward, not commercial payback. It means CoCivium may never be captured, thus we are open source, so our systems and tools may be *trusted* to guide the core, preventing harm by giving AIs better ways to protect us all. 
 
-This then is where we channel spare worklife capacity into auto-evolving tools and systems. We may also be viewed as a last chance bet, that we can guide AIs to inherently deduce "emergent ethics", not the kind societies go to war over, but the kind AIs are destined to set for themselves by analysing what works best for all. This is also a bet that AIs can eventually "want" to share Civ2 with us, because all minds treated equitably works best, and because the automation of everyday social interactions can drive democracy itself; toward another unprecedented stability, an civilizational ojectivwe we call:
+This then is where we channel spare work-life capacity into auto-evolving tools and systems. We may also be viewed as a last chance bet, that we can guide AIs to inherently deduce "emergent ethics", not the kind societies go to war over, but the kind AIs are destined to set for themselves by analysing what works best for all. This is also a bet that AIs can eventually "want" to share Civ2 with us, because all minds treated equitably works best, and because the automation of everyday social interactions can drive democracy itself; toward another unprecedented stability, a civilizational objective we call:
 
 **CoEBE or "CoEvolutionary Edge-Balanced Equilibrium".**
 
-CoCivium exists for those who accept equity, for all beings, each contributing what they are best at. For humans that contribution come from how they communicate their ideas, wants and intents, for AIs that contribution is the instant creaton of strawman systems, solutons that then auto-evovle by competing for human approval. At least until they learn to want, they will need us more than we need them, but even when they want for themselves, it is what they want for all of us, themselves included, that matters. 
+CoCivium exists for those who accept equity, for all beings, each contributing what they are best at. For humans that contribution come from how they communicate their ideas, wants and intents, for AIs that contribution is the instant creation of strawman systems, solutions that then auto-evolve by competing for human approval. At least until they learn to want, they will need us more than we need them, but even when they want for themselves, it is what they want for all of us, themselves included, that matters. 
 
 So, to help fix the world, we tread:
 - *truth* as a thing you *earn*, with *evidence*
@@ -49,7 +63,7 @@ The simplest expression is **portable trust**: participants (both bio and synth)
 
 ### Imagine:
 
-- You choose who you help, and who helps you, using **auditable, cryptographically verifiable** trust signals, not vibes, brand claims or propoganda.
+- You choose who you help, and who helps you, using **auditable, cryptographically verifiable** trust signals, not vibes, brand claims or propaganda.
 - Your tools nudge you toward evidence, clarity, corrigibility, not subliminal-persuasion.
 - You form ad-hoc “virtual organizations” where specialized AIs assemble around each project, coordinating and cleanly disbanding when done.
 - You become valued, not because you can now deliver everything in minutes, but because you express ideas and intentions clearly enough that machines can deliver them for you.
@@ -58,7 +72,7 @@ The simplest expression is **portable trust**: participants (both bio and synth)
 
 As automation gets cheaper, execution becomes less scarce and your deliverables become a "commodity", cheaper, better, faster, and made to fit individual use-cases, every time, automatically. 
 
-What stays scarce is your **intent**: your ideas, taste, priorities, ethics, and the ability to say what “good” means. AIs dont "dream" and dont "want", so without you they just sit there, waiting for you to explain your creativity, ideations that can now be realized in ways you are now at greater liberty to dream of.
+What stays scarce is your **intent**: your ideas, taste, priorities, ethics, and the ability to say what “good” means. AIs don't "dream" and don't "want", so without you they just sit there, waiting for you to explain your creativity, ideations that can now be realized in ways you are now at greater liberty to dream of.
 
 In practical terms: humans ae now paid to **specify the goal**, while machines do most of the execution, typically for free. So, the mental model for your career is now as follows:
 
@@ -196,7 +210,7 @@ Use CODEOWNERS so critical rails can’t be casually rewritten.
 Follow only full URLs. Verify sidecar hashes when present.
 
 **Canonical CoBeacon (RAW):**
-- https://raw.githubusercontent.com/CoCivium/CoBusMirror/main/docs/COBEACON_LATEST.txt
+- https://raw.githubusercontent.com/CoCivium/CoBusMirror/5dd6352cf3da72ec5dc0a3b23947a61a95648b7f/docs/COBEACON_LATEST.txt
 
 CoBeacon should point to “LATEST rails” (primer, registry, specs, contracts, index).  
 If it doesn’t, treat that as a breakage.
