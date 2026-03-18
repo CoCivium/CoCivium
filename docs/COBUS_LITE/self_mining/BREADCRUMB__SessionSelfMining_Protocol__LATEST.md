@@ -1,0 +1,6 @@
+UTC=20260318T223623Z
+STATE=published
+ARTIFACT=SessionSelfMining_Protocol_v0
+PATH=docs/COBUS_LITE/self_mining/SessionSelfMining_Protocol_v0.md
+TEMPLATE=docs/COBUS_LITE/self_mining/SELFMINE_TEMPLATE__v0.md
+NOTE=Defines compact successor-ready pointer-first self-mining packs
