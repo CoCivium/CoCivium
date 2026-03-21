@@ -1,0 +1,55 @@
+{
+  "UTC": "2026-03-21T07:24:49Z",
+  "Session": "CoHope260325",
+  "Wave": "AnchoringWave_v1",
+  "WorkingRoot": "C:\\Users\\rball\\Documents\\GitHub\\CoCivium",
+  "IsGitRepo": true,
+  "Pins": {
+    "BootstrapRollup": {
+      "Url": "https://raw.githubusercontent.com/CoCivium/CoBusMirror/main/docs/COBUS_LITE/canon/BOOTSTRAP_ROLLUP__LATEST.md",
+      "HttpStatus": 200,
+      "Length": 419,
+      "Preview": "# BOOTSTRAP_ROLLUP__LATEST |  | Purpose: deterministic “where to look next” bootstrap rollup. Mandatory for fast fail-closed bootstraps.",
+      "Fetched": true
+    },
+    "CoBeacon": {
+      "Url": "https://raw.githubusercontent.com/CoCivium/CoBusMirror/main/docs/COBEACON_LATEST.txt",
+      "HttpStatus": 200,
+      "Length": 7978,
+      "Preview": "COBEACON_LATEST (FULL URL POINTERS ONLY) UTC=20260126T040146Z | START_HERE (FULL URL POINTERS)= | - CoRepoPreflight Rail: https://raw.githubusercontent.com/CoCivium/CoBusMirror/587aa38629482d283b223e5a9cdb152136507106/docs/inbox/LATEST__CoBusNote__PUBLIC__CoRepoPreflight_Rail__LATEST.ps1",
+      "Fetched": true
+    },
+    "Registry": {
+      "Url": "https://raw.githubusercontent.com/CoCivium/CoBusMirror/main/docs/CoStacks/CoStacks_Registry_LATEST.md",
+      "HttpStatus": 200,
+      "Length": 1376,
+      "Preview": "# CoStacks Registry (LATEST) |  | UTC=20260125T054828Z",
+      "Fetched": true
+    },
+    "CoPrimeScope": {
+      "Url": "https://raw.githubusercontent.com/CoCivium/CoBusMirror/main/docs/COBUS_LITE/canon/COPRIME_SESSION_SCOPE_LATEST.md",
+      "HttpStatus": 200,
+      "Length": 1172,
+      "Preview": "﻿# COPRIME_SESSION_SCOPE_LATEST |  | ## Intent (this week)",
+      "Fetched": true
+    },
+    "Broadcast": {
+      "Url": "https://raw.githubusercontent.com/CoCivium/CoBusMirror/598dc03178e78e190eae91f47337b01da3bc2e01/docs/COBUS_LITE/broadcast/BROADCAST__LATEST__20260204T160027Z.txt",
+      "HttpStatus": 200,
+      "Length": 3578,
+      "Preview": "Read these RAW pointers (do not use github.com blob URLs): |  | START_HERE (RAW): https://raw.githubusercontent.com/CoCivium/CoBusMirror/main/docs/COBUS_LITE/START_HERE.md",
+      "Fetched": true
+    }
+  },
+  "TruthRules": [
+    "UI is non-authoritative",
+    "not verified equals not landed",
+    "truthful default hitch-state remains read_attached until a verified write cycle occurs",
+    "remote truth requires actual push and RAW verification"
+  ],
+  "IntendedNextAnchor": {
+    "Artifact": "CoHope_001__The_First_Sign_of_a_Civilized_Mind__20260321T072449Z.md",
+    "Action": "Local write + hash complete; optional git add/commit; optional push + remote RAW verify",
+    "SuccessCondition": "At minimum local SHA256; stronger proof is git commit; strongest proof is remote RAW fetch"
+  }
+}
