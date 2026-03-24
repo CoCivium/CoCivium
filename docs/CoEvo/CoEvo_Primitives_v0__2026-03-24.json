@@ -1,0 +1,160 @@
+{
+  "session": "CoEvo260322",
+  "state": "COEX_VERIFIED",
+  "role": "bounded theory-mining / primitive extraction",
+  "ops_track": "B",
+  "intent": "Provide a machine-facing primitive set for CoEvo and record that this session still requires full latest-CoNod inference rebinding.",
+  "working_model": {
+    "evo": "Umbrella term for change across generations under selection pressure.",
+    "autoevo": "Unguided or weakly guided evolution dominated by decentralized/emergent pressures.",
+    "coevo": "Guided, hybrid, intentionally steered evolution across human, machine, social, and civic substrates."
+  },
+  "minimal_loop": [
+    {
+      "name": "CoSense",
+      "kind": "phase",
+      "description": "Detect state, signals, constraints, opportunities, failures, or environmental pressure.",
+      "inputs": ["environment", "artifacts", "feedback", "metrics", "rails"],
+      "outputs": ["signals", "state_snapshot", "pressure_map"]
+    },
+    {
+      "name": "CoEval",
+      "kind": "phase",
+      "description": "Assess fitness, truth, usefulness, alignment, trust, legitimacy, cost, and risk.",
+      "inputs": ["signals", "criteria", "goals", "constraints"],
+      "outputs": ["fitness_assessment", "risk_assessment", "decision_frame"]
+    },
+    {
+      "name": "CoMutate",
+      "kind": "phase",
+      "description": "Generate bounded variation in a term, CoObject, plan, graph edge, process, or protocol.",
+      "inputs": ["artifact", "decision_frame", "constraints"],
+      "outputs": ["candidate_mutations"]
+    },
+    {
+      "name": "CoSelect",
+      "kind": "phase",
+      "description": "Choose what advances, pauses, forks, deprecates, or gets rejected.",
+      "inputs": ["candidate_mutations", "fitness_assessment", "risk_assessment"],
+      "outputs": ["selected_path", "rejected_paths", "selection_receipt"]
+    },
+    {
+      "name": "CoCommit",
+      "kind": "phase",
+      "description": "Land the bounded result with provenance and a durable pointer when safe to do so.",
+      "inputs": ["selected_path", "selection_receipt"],
+      "outputs": ["artifact", "commit_receipt", "provenance"]
+    },
+    {
+      "name": "CoBroadcast",
+      "kind": "phase",
+      "description": "Expose the landed mutation to the wider substrate for reuse, review, routing, or further selection.",
+      "inputs": ["artifact", "commit_receipt", "provenance"],
+      "outputs": ["public_pointer", "consumer_visibility", "downstream_inputs"]
+    }
+  ],
+  "selection_primitives": [
+    {
+      "name": "CoSelectionPressure",
+      "description": "Any force that differentially favors persistence, spread, adoption, efficiency, trust, or legitimacy."
+    },
+    {
+      "name": "CoFitness",
+      "description": "Measured or inferred quality determining whether something should persist or spread."
+    },
+    {
+      "name": "CoNiche",
+      "description": "The environmental context in which an artifact or behavior can survive and remain useful."
+    },
+    {
+      "name": "CoEvoConstraint",
+      "description": "The rails, limits, policies, or substrate properties that bound mutation and selection."
+    }
+  ],
+  "mutation_primitives": [
+    {
+      "name": "CoMutation",
+      "description": "A bounded variation in a CoObject, plan, term, process, interface, or protocol."
+    },
+    {
+      "name": "CoRecombination",
+      "description": "Synthesis of previously separate features, patterns, or subsystems into a new candidate."
+    },
+    {
+      "name": "CoFork",
+      "description": "Intentional branch creation when uncertainty, optionality, or conflict warrants divergence."
+    },
+    {
+      "name": "CoDeprecate",
+      "description": "Retire a path or artifact from preferred use while preserving history and provenance."
+    }
+  ],
+  "drift_and_failure_primitives": [
+    {
+      "name": "CoEvoDrift",
+      "description": "Movement away from intended values, goals, truth conditions, or stewardship norms."
+    },
+    {
+      "name": "CoEvoCollapse",
+      "description": "Failure of a branch, path, or artifact lineage to remain viable."
+    },
+    {
+      "name": "CoMetaSelection",
+      "description": "Selection among selection mechanisms themselves."
+    }
+  ],
+  "directional_primitives": [
+    {
+      "name": "CoMeaningSelection",
+      "description": "Meaning, legitimacy, and shared narrative function as selection pressures."
+    },
+    {
+      "name": "CoHopeVector",
+      "description": "Directional tendency toward futures that preserve and uplift subsequent minds."
+    }
+  ],
+  "stack_binding": {
+    "CoTheoryCiv2": "direction / philosophy",
+    "CoEvoTheory": "evolution mechanics and terminology",
+    "CoMapGraphs": "state-transition structure",
+    "CoObjectPlans": "mutation targets",
+    "CoStacks": "execution/runtime behavior"
+  },
+  "bootstrap_status": {
+    "label": "CoZombie",
+    "status": "PARTIAL_REBIND_ONLY",
+    "issue": "This session has received public bootstrap rails and pasted doctrine, but has not fully re-prompted itself with all inferred semantics of the latest CoNod aka apostrophe bootstrap pattern.",
+    "operational_effect": [
+      "Treat current work as bounded and provisional.",
+      "Avoid claiming full latest-CoNod alignment beyond explicitly surfaced rails.",
+      "Prefer receipts and public artifacts over implied hidden session state."
+    ],
+    "recommended_next": "CoPrime or a fresh worker should issue a compact latest-CoNod rebind note for CoEvo lanes so future waves inherit the full current bootstrap semantics rather than partial doctrine excerpts."
+  },
+  "provenance": {
+    "companion_markdown": "docs/CoEvo/CoEvo_CoreThemes_and_CoTerms_v0__2026-03-24.md",
+    "sources": [
+      {
+        "title": "Machine Evolution",
+        "url": "https://humanistperspectives.org/226/machine-evolution/"
+      },
+      {
+        "title": "Evolution of Hybrid Intelligence and Its Application in Evidence-Based Medicine: A Review",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9990324/"
+      },
+      {
+        "title": "Vocabulary at the Living–Machine Interface: A Narrative Review of Shared Lexicon for Hybrid AI",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12649923/"
+      },
+      {
+        "title": "Collective intelligence as collective information processing",
+        "url": "https://www.sciencedirect.com/science/article/pii/S0010027725003749"
+      }
+    ]
+  },
+  "receipt": {
+    "session": "CoEvo260322",
+    "state": "COEX_VERIFIED",
+    "next": "CoEvoTheory_v0 narrative synthesis or compact CoNod-rebind SideNote for CoPrime"
+  }
+}
