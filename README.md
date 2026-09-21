@@ -1,4 +1,4 @@
-# CoCivium = Trust Together
+# CoCivium ⊂ Trust Together
 **R&D & coordination gaurdrails for the AI era.**
 
 The world is increasingly shaped by conflict, corruption and narrative manipulation. Biased truths are fed to us via $billion systems that evolve our minds more profoundly than adadmic study or parental advice. The post-truth society, so enabled, so vastly AI-enabled, thus erodes our ethics, our decency and even democracy itself.
