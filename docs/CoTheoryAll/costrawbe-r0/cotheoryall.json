@@ -59,7 +59,8 @@
     "CoChomp_wordplay": "Name may evoke chomping and Noam Chomsky; wordplay only, not endorsement, attribution or claim of theoretical equivalence.",
     "CoMetaphorCarry+": "Candidate relation for how metaphorical distance, absurdity and incongruity may increase salience, recall, compression and cross-domain recombination while also increasing ambiguity, distortion and receiver mismatch.",
     "CoWeird+": "Receiver-relative style/projection relation favoring meaningful strangeness over decorative novelty.",
-    "CoLudicrous+": "High-incongruity projection relation used to expose, compress or remix structure without implying literal truth."
+    "CoLudicrous+": "High-incongruity projection relation used to expose, compress or remix structure without implying literal truth.",
+    "CoPressure+": "Candidate receiver-relative pressure relation arising when relational density, metaphorical distance, novelty and projection demands exceed available attention or representational bandwidth."
   },
   "relations": [
     {
@@ -153,7 +154,11 @@
     "MAY_DESTABILIZE_OVERCONFIDENT_MODELS_NE_MEDICAL_WARNING",
     "BOOTSTRAP_GAIN_NE_EXPONENTIAL_GUARANTEE",
     "PARALLELISM_NE_PROGRESS",
-    "ACCELERATION_NE_AUTHORITY_EXPANSION"
+    "ACCELERATION_NE_AUTHORITY_EXPANSION",
+    "PRESSURE_NE_IMPORTANCE",
+    "PRESSURE_NE_TRUTH",
+    "COMPRESSION_MUST_REPORT_LOSS",
+    "WEIRDNESS_PRESSURE_NE_SUPPRESSION_TRIGGER"
   ],
   "next": "FORMALIZE_COMPETING_MODELS__ADD_RECEIVER_RELATIVE_PROJECTIONS__PRESERVE_PUBLIC_WORKING_STATUS",
   "memeographic_constellation": [
@@ -246,5 +251,26 @@
       "external dependencies"
     ],
     "status": "CANDIDATE_BOOTSTRAP_DYNAMICS__NOT_EXPONENTIAL_GUARANTEE"
+  },
+  "copressure": {
+    "candidate_relation": "(relational_density * metaphorical_distance * novelty * projection_demand) / receiver_bandwidth",
+    "possible_responses": [
+      "compression",
+      "alternate_projection",
+      "spatialization",
+      "humour",
+      "machine_native_render",
+      "progressive_disclosure",
+      "split_or_fork",
+      "quiet_layer"
+    ],
+    "failure_modes": [
+      "word_salad",
+      "receiver_overload",
+      "false_salience",
+      "meaning_collapse",
+      "unreported_projection_loss"
+    ],
+    "status": "CANDIDATE_RELATION__NOT_LAW"
   }
 }
