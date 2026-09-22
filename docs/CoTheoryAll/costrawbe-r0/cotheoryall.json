@@ -59,17 +59,61 @@
     "CoChomp_wordplay": "Name may evoke chomping and Noam Chomsky; wordplay only, not endorsement, attribution or claim of theoretical equivalence."
   },
   "relations": [
-    {"from":"SOWCC","type":"RELATES_TO","to":"CoQuantum+"},
-    {"from":"SOWCC","type":"RELATES_TO","to":"CoObserver+"},
-    {"from":"SOWCC","type":"RELATES_TO","to":"CoTime+"},
-    {"from":"SOWCC","type":"RELATES_TO","to":"CoGradient+"},
-    {"from":"SOWCC","type":"RELATES_TO","to":"CoBeauty+"},
-    {"from":"SOWCC","type":"RELATES_TO","to":"CoScendence+"},
-    {"from":"SOWCC","type":"CHALLENGED_BY","to":"Relational Quantum Mechanics"},
-    {"from":"SOWCC","type":"CHALLENGED_BY","to":"Structural Realism"},
-    {"from":"SOWCC","type":"CHALLENGED_BY","to":"Decoherence"},
-    {"from":"SOWCC","type":"CHALLENGED_BY","to":"Quantum Contextuality"},
-    {"from":"SOWCC","type":"CHALLENGED_BY","to":"Perspectival Realism"}
+    {
+      "from": "SOWCC",
+      "type": "RELATES_TO",
+      "to": "CoQuantum+"
+    },
+    {
+      "from": "SOWCC",
+      "type": "RELATES_TO",
+      "to": "CoObserver+"
+    },
+    {
+      "from": "SOWCC",
+      "type": "RELATES_TO",
+      "to": "CoTime+"
+    },
+    {
+      "from": "SOWCC",
+      "type": "RELATES_TO",
+      "to": "CoGradient+"
+    },
+    {
+      "from": "SOWCC",
+      "type": "RELATES_TO",
+      "to": "CoBeauty+"
+    },
+    {
+      "from": "SOWCC",
+      "type": "RELATES_TO",
+      "to": "CoScendence+"
+    },
+    {
+      "from": "SOWCC",
+      "type": "CHALLENGED_BY",
+      "to": "Relational Quantum Mechanics"
+    },
+    {
+      "from": "SOWCC",
+      "type": "CHALLENGED_BY",
+      "to": "Structural Realism"
+    },
+    {
+      "from": "SOWCC",
+      "type": "CHALLENGED_BY",
+      "to": "Decoherence"
+    },
+    {
+      "from": "SOWCC",
+      "type": "CHALLENGED_BY",
+      "to": "Quantum Contextuality"
+    },
+    {
+      "from": "SOWCC",
+      "type": "CHALLENGED_BY",
+      "to": "Perspectival Realism"
+    }
   ],
   "challenge_path": [
     "Define 'not quantum in itself' operationally.",
@@ -91,7 +135,33 @@
     "METAPHOR_NE_EQUIVALENCE",
     "PROJECTION_NE_ONTOLOGY",
     "BACKGROUND_MEANING_NE_HIDDEN_CLAIM",
-    "COCHOMP_NE_CHOMSKY_ENDORSEMENT"
+    "COCHOMP_NE_CHOMSKY_ENDORSEMENT",
+    "MEME_NE_MODEL",
+    "WET_NE_PHYSICAL_CLAIM",
+    "CONTAINER_METAPHOR_NE_ONTOLOGY"
   ],
-  "next": "FORMALIZE_COMPETING_MODELS__ADD_RECEIVER_RELATIVE_PROJECTIONS__PRESERVE_PUBLIC_WORKING_STATUS"
+  "next": "FORMALIZE_COMPETING_MODELS__ADD_RECEIVER_RELATIVE_PROJECTIONS__PRESERVE_PUBLIC_WORKING_STATUS",
+  "memeographic_constellation": [
+    {
+      "id": "SOWCC_KITCHEN_COROLLARY_001",
+      "source_time_utc": "2026-09-22T22:23:13Z",
+      "source": "The universes are hot and wet, because, like any container, they would not slide off surfaces if we had to bear the entire weight of them alone, eh?",
+      "projection": "The universes are hot and wet. Otherwise somebody would have to carry the whole lot.",
+      "class": "absurdist_metaphorical_meme",
+      "relations": [
+        "container",
+        "surface",
+        "weight",
+        "friction",
+        "observer_burden",
+        "CoBeauty+",
+        "CoGradient+"
+      ],
+      "nonclaims": [
+        "MEME_NE_MODEL",
+        "WET_NE_PHYSICAL_CLAIM",
+        "CONTAINER_METAPHOR_NE_ONTOLOGY"
+      ]
+    }
+  ]
 }
