@@ -146,7 +146,14 @@
     "WEIRD_NE_RANDOM",
     "LUDICROUS_NE_FALSE",
     "ABSURDITY_NE_EVIDENCE",
-    "MEMORABILITY_NE_ACCURACY"
+    "MEMORABILITY_NE_ACCURACY",
+    "SATIRICAL_CLASSIFICATION_NE_SECRECY",
+    "OFFICIAL_STAR_NE_INSTITUTIONAL_AUTHORITY",
+    "DO_NOT_DISTRIBUTE_STAR_NE_ACTUAL_RESTRICTION",
+    "MAY_DESTABILIZE_OVERCONFIDENT_MODELS_NE_MEDICAL_WARNING",
+    "BOOTSTRAP_GAIN_NE_EXPONENTIAL_GUARANTEE",
+    "PARALLELISM_NE_PROGRESS",
+    "ACCELERATION_NE_AUTHORITY_EXPANSION"
   ],
   "next": "FORMALIZE_COMPETING_MODELS__ADD_RECEIVER_RELATIVE_PROJECTIONS__PRESERVE_PUBLIC_WORKING_STATUS",
   "memeographic_constellation": [
@@ -206,5 +213,38 @@
     ],
     "email_posture": "SHORT_PERSONAL_POINTER_TO_LIVING_SURFACE__INVITE_ADVERSARIAL_CRITIQUE__NO_ENDORSEMENT_OR_AFFILIATION_IMPLICATION",
     "next": "EVOLVE_SURFACE__PROVE_DEPLOYMENT__RUN_ADVERSARIAL_READ__THEN_SOURCE_CHECK_RECIPIENT_FIT"
+  },
+  "satirical_classification": {
+    "display": "TOP SECRET* · OFFICIAL* · DO NOT DISTRIBUTE*",
+    "source_intent": "Playful anti-marketing: mock-confidential framing expected to increase curiosity and sharing.",
+    "public_truth": "PUBLIC_WORKING_COSTRAWBE_CANDIDATE",
+    "dangerous_to_mental_states_source_joke": "Marked in spirit as dangerous to thinkers who may be overconfident about how much any observer/model gets right.",
+    "safety_projection": "MAY_DESTABILIZE_OVERCONFIDENT_MODELS_NE_MEDICAL_WARNING",
+    "rails": [
+      "SATIRICAL_CLASSIFICATION_NE_SECRECY",
+      "OFFICIAL_STAR_NE_INSTITUTIONAL_AUTHORITY",
+      "DO_NOT_DISTRIBUTE_STAR_NE_ACTUAL_RESTRICTION"
+    ]
+  },
+  "autoevo_acceleration": {
+    "hypothesis": "Reusable verified relations, tests, adapters, projections and recovery paths can compound, reducing marginal cost of later useful work and producing locally superlinear or approximately exponential-looking progress.",
+    "measure": "VERIFIED_USEFUL_RELATIONAL_YIELD_PER_HUMAN_ATTENTION_AND_WALL_CLOCK",
+    "not_measure": [
+      "raw_artifact_count",
+      "raw_worker_count",
+      "raw_parallel_width"
+    ],
+    "limiting_factors": [
+      "verification",
+      "collision risk",
+      "receiver acceptance",
+      "compute",
+      "energy",
+      "ambiguity",
+      "authority",
+      "human attention",
+      "external dependencies"
+    ],
+    "status": "CANDIDATE_BOOTSTRAP_DYNAMICS__NOT_EXPONENTIAL_GUARANTEE"
   }
 }
