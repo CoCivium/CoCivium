@@ -56,7 +56,10 @@
   "candidate_terms": {
     "CoStrawBe+": "A deliberately provisional, public, challengeable working projection that may grow, fork or be superseded.",
     "CoChomp+": "Candidate ingestion relation: receive, parse, contextualize, transform, preserve provenance, expose losses and emit receiver-fit projections.",
-    "CoChomp_wordplay": "Name may evoke chomping and Noam Chomsky; wordplay only, not endorsement, attribution or claim of theoretical equivalence."
+    "CoChomp_wordplay": "Name may evoke chomping and Noam Chomsky; wordplay only, not endorsement, attribution or claim of theoretical equivalence.",
+    "CoMetaphorCarry+": "Candidate relation for how metaphorical distance, absurdity and incongruity may increase salience, recall, compression and cross-domain recombination while also increasing ambiguity, distortion and receiver mismatch.",
+    "CoWeird+": "Receiver-relative style/projection relation favoring meaningful strangeness over decorative novelty.",
+    "CoLudicrous+": "High-incongruity projection relation used to expose, compress or remix structure without implying literal truth."
   },
   "relations": [
     {
@@ -138,7 +141,12 @@
     "COCHOMP_NE_CHOMSKY_ENDORSEMENT",
     "MEME_NE_MODEL",
     "WET_NE_PHYSICAL_CLAIM",
-    "CONTAINER_METAPHOR_NE_ONTOLOGY"
+    "CONTAINER_METAPHOR_NE_ONTOLOGY",
+    "METAPHORICAL_DISTANCE_NE_TRUTH_DISTANCE",
+    "WEIRD_NE_RANDOM",
+    "LUDICROUS_NE_FALSE",
+    "ABSURDITY_NE_EVIDENCE",
+    "MEMORABILITY_NE_ACCURACY"
   ],
   "next": "FORMALIZE_COMPETING_MODELS__ADD_RECEIVER_RELATIVE_PROJECTIONS__PRESERVE_PUBLIC_WORKING_STATUS",
   "memeographic_constellation": [
@@ -163,5 +171,22 @@
         "CONTAINER_METAPHOR_NE_ONTOLOGY"
       ]
     }
-  ]
+  ],
+  "metaphor_carry": {
+    "hypothesis": "Greater metaphorical distance can sometimes increase semantic transport by increasing salience, memory, compression and generative recombination.",
+    "counterrelation": "Beyond a receiver-relative threshold, additional absurdity can increase ambiguity, distortion, confusion or noise.",
+    "suggested_dimensions": [
+      "metaphorical_distance",
+      "salience",
+      "memorability",
+      "compression",
+      "cross_domain_recombination",
+      "ambiguity",
+      "projection_loss",
+      "receiver_fit",
+      "humour",
+      "beauty"
+    ],
+    "status": "CANDIDATE_RELATION__NOT_LAW"
+  }
 }
