@@ -40,6 +40,8 @@ h1{font-size:clamp(3rem,9vw,8.5rem);line-height:.88;margin:0;max-width:11ch;font
 .selfcut strong{font-weight:760}
 .status{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
 .pill{padding:7px 10px;border:1px solid var(--line);border-radius:999px;color:var(--muted);background:rgba(255,255,255,.025);font-size:.78rem}
+.classified{border:1px dashed rgba(255,120,120,.45);padding:14px 16px;border-radius:14px;background:rgba(80,10,10,.18);font-family:ui-monospace,SFMono-Regular,Consolas,monospace}
+.classified strong{letter-spacing:.12em}
 section{margin:11vh 0}
 .card{background:var(--glass);border:1px solid var(--line);border-radius:22px;padding:clamp(20px,4vw,46px);backdrop-filter:blur(18px)}
 .quote{font-size:clamp(2rem,5.5vw,5rem);line-height:1.02;letter-spacing:-.04em;margin:0}
@@ -62,6 +64,7 @@ body.quiet [data-layer="deep"]{opacity:.08;filter:blur(2px)}
 
 <main>
 <header class="hero" aria-labelledby="title">
+  <div class="classified" id="satirical-classification"><strong>TOP SECRET* · OFFICIAL* · DO NOT DISTRIBUTE*</strong><br><small>*Satirical public markings. This is deliberately public, provisional and challengeable. Please distribute only if the joke survives contact with your standards.</small></div>
   <div class="eyebrow">CoTheoryAll+ · CoStrawBe R0 · working / challengeable</div>
   <h1 id="title">Begin by distrusting this sentence.</h1>
   <p class="selfcut"><strong>Everything that follows is a projection.</strong> CoTheoryAll begins by denying itself the privilege of being right merely because it is written here.</p>
@@ -149,6 +152,14 @@ body.quiet [data-layer="deep"]{opacity:.08;filter:blur(2px)}
   </ol>
 </section>
 
+<section class="card" id="autoevo-acceleration" data-layer="deep">
+  <div class="eyebrow">CoAutoEvo+ · bootstrapping acceleration</div>
+  <p class="quote">Useful evolution should compound.</p>
+  <p class="subquote">Reusable relations, tests, projections, adapters and verified recovery paths can reduce the cost of the next useful change. Locally, that may look superlinear or even roughly exponential. It is a hypothesis to measure, not a promise to worship.</p>
+  <p class="relation">BOOTSTRAP_GAIN → LOWER_NEXT_COST → MORE_PARALLEL_SAFE_WORK → MORE_REUSABLE_GAIN</p>
+  <p class="small">Acceleration is bounded by verification, collisions, receiver acceptance, compute, energy, ambiguity, authority and human attention. More workers making more artifacts is not the metric.</p>
+</section>
+
 <section class="card" data-layer="deep">
   <div class="eyebrow">Machine-readable twin</div>
   <p>This page is a human projection of a candidate relation object. Its machine-facing twin lives beside it as <code>cotheoryall.json</code>.</p>
@@ -156,7 +167,7 @@ body.quiet [data-layer="deep"]{opacity:.08;filter:blur(2px)}
 </section>
 
 <footer>
-  <p>SOWCC_TENET_NE_DOGMA · METAPHYSICAL_PROVOCATION_NE_EMPIRICAL_ESTABLISHMENT · OBSERVER_RELATIVE_NE_ARBITRARY · COTHEORYALL_QUOTABLE_NE_COTHEORYALL_PROOF · METAPHOR_NE_EQUIVALENCE</p>
+  <p>SOWCC_TENET_NE_DOGMA · METAPHYSICAL_PROVOCATION_NE_EMPIRICAL_ESTABLISHMENT · OBSERVER_RELATIVE_NE_ARBITRARY · COTHEORYALL_QUOTABLE_NE_COTHEORYALL_PROOF · METAPHOR_NE_EQUIVALENCE · SATIRICAL_CLASSIFICATION_NE_SECRECY · MAY_DESTABILIZE_OVERCONFIDENT_MODELS_NE_MEDICAL_WARNING</p>
   <p>CoStrawBe R0 is deliberately unfinished. It may grow, fork, contradict itself, or be superseded by something better.</p>
 </footer>
 </main>
