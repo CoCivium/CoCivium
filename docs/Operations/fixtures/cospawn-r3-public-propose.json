@@ -1,0 +1,40 @@
+{
+  "spawn_id": "cospawn:fixture-public-propose",
+  "purpose": "Produce a bounded public-safe candidate improvement to RickBar fleet projection",
+  "parent_identity": "Synthetic-RickBar-A",
+  "role": "PROJECTION_COMPILER",
+  "scope": "domains=RickBar+/CoDesktop+,CoUX+/CoSurface+; subject=RickBar fleet projection",
+  "input_bindings": [
+    "fixture:ux-a"
+  ],
+  "authority_ceiling": "ADVISORY_ONLY",
+  "confidentiality": "PUBLIC",
+  "effect_classes": [
+    "PROPOSE"
+  ],
+  "budget": {
+    "max_live_embodiments": 0,
+    "max_effectful_mutations": 0,
+    "logical_work_units": 1
+  },
+  "lease": {
+    "mode": "LOGICAL_ONLY",
+    "effect_lease": "NONE"
+  },
+  "idempotency_key": "fixture:public-propose",
+  "collision_domain": "coevo:fixture-rickbar-fleet",
+  "receiver": "CoAura/CoCivium UX lane",
+  "success_condition": "RECEIVER_DISPOSITION_AND_EVIDENCE_RECORDED",
+  "stop_condition": "AUTHORITY_CONFIDENTIALITY_OR_COLLISION_AMBIGUITY",
+  "checkpoint": null,
+  "recovery_pointer": "delta-ux-001",
+  "failure_domain": null,
+  "handoff_rule": "RETURN_CANDIDATE_JSON_ONLY",
+  "retirement_condition": "RECEIVER_DISPOSITION_RECORDED",
+  "provenance": [
+    "delta-ux-001"
+  ],
+  "currentness": "2026-09-23T11:18:00Z",
+  "uncertainty": null,
+  "materialization_state": "LOGICAL_ONLY"
+}
