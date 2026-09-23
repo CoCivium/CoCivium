@@ -1,0 +1,260 @@
+{
+  "schema": "CoLogicalSpawnPlanner.R2.EquivalentCanary.v0.1-candidate",
+  "state": "PASS_INDEPENDENT_DETERMINISTIC_EQUIVALENT_PLAN__NO_LIVE_MATERIALIZATION",
+  "method": "INDEPENDENT_JAVASCRIPT_REIMPLEMENTATION_OF_EXACT_CURRENT_PYTHON_PLANNER_LOGIC",
+  "observed_main_commit_sha": "d3e7e6f2063bb9d3aa6a0954cd6bd219ea93edcd",
+  "input_package_commit_sha": "4eb15da8602aaec5e22f35bfbce2568c21b9c636",
+  "input_package_blob_sha": "776c5517eeb5e8dcf56c48d53f7c0d346e29f51f",
+  "evolution_lanes_blob_sha": "0c87630a746f98281505ee4b620b60b03be6fc1b",
+  "repo_role_map_blob_sha": "40fff5a6ea8f7cdab917b77968eeb9db8f7ac6a4",
+  "coevo_delta_schema_blob_sha": "5aa1bfc62a47492f41b422331d51dbfcccc831c4",
+  "logical_spawn_planner_blob_sha": "585751523a88c48982b14c0f304bef0c4fc855f7",
+  "planner_output_sha256": "B22E445EBCA8DFFC90156A459A1E0D0951B0E3CDB7E0BC8F4EFBCE7FF26B3017",
+  "planner_output": {
+    "schema": "CoLogicalSpawnPlanner.R2.v0.1-candidate",
+    "state": "LOGICAL_SPAWN_PLAN_COMPILED__NO_LIVE_MATERIALIZATION",
+    "coverage": {
+      "input_deltas": 5,
+      "logical_contracts": 5,
+      "dedupe_donations": 0,
+      "collision_groups": 0
+    },
+    "contracts": [
+      {
+        "spawn_id": "cospawn:B06AB916EAB133ADB2602857",
+        "purpose": "Process bounded CoEvoDelta group led by COEVO.CS260920.RELATIONAL_PROTOCOL_SUBSTRATE.R1",
+        "parent_identity": "CoSessionSurvival260920-S1",
+        "role": "RESEARCH_DONOR",
+        "scope": "domains=CoAll+,CoIndex+,CoLex+,CoOps+,CoTheoryAll+; subject=Protocol-neutral relational semantic substrate with relatable relations and bounded recursion",
+        "input_bindings": [
+          "sha256:C7788FF9FAE6F2DF5B7F20C1109E101528498B3E6477A93330FD8B202782836A;class=LOCAL_GENERATED_ARTIFACT"
+        ],
+        "authority_ceiling": "DOCS_SCHEMA_CANDIDATE_ONLY",
+        "confidentiality": "PUBLIC",
+        "effect_classes": [
+          "BRANCH_MUTATE"
+        ],
+        "budget": {
+          "max_live_embodiments": 0,
+          "max_effectful_mutations": 0,
+          "logical_work_units": 1
+        },
+        "lease": {
+          "mode": "LOGICAL_ONLY",
+          "effect_lease": "NONE"
+        },
+        "idempotency_key": "dedupe:5391DEB38A57A559CB9A1FD91854FDE469D6298BC000D14FEF572D115FD272F2",
+        "collision_domain": "coevo:744BE4CB622A3869923DC0DC",
+        "receiver": "CoRelationalSubstrate+/CoProtocolEcology+",
+        "success_condition": "RECEIVER_DISPOSITION_AND_EVIDENCE_RECORDED",
+        "stop_condition": "AUTHORITY_CONFIDENTIALITY_OR_COLLISION_AMBIGUITY",
+        "checkpoint": null,
+        "recovery_pointer": "COEVO.CS260920.RELATIONAL_PROTOCOL_SUBSTRATE.R1",
+        "failure_domain": null,
+        "handoff_rule": "DONATE_EQUIVALENT_DELTAS_TO_PRIMARY_AND_PRESERVE_SOURCE_REFS",
+        "retirement_condition": "PRIMARY_DELTA_DISPOSITION_RECORDED_AND_DONATED_EQUIVALENTS_BOUND",
+        "provenance": [
+          "COEVO.CS260920.RELATIONAL_PROTOCOL_SUBSTRATE.R1"
+        ],
+        "currentness": "2026-09-23T11:31:28Z",
+        "uncertainty": null,
+        "materialization_state": "LOGICAL_ONLY"
+      },
+      {
+        "spawn_id": "cospawn:59585857E93285E9AA0122DD",
+        "purpose": "Process bounded CoEvoDelta group led by COEVO.CS260920.HIGHLIGHT_TURTLES_WRITE_PERMISSION.R1",
+        "parent_identity": "CoSessionSurvival260920-S1",
+        "role": "PROJECTION_COMPILER",
+        "scope": "domains=CoHumour+,CoHighlight+,CoMythOps+; subject=Turtles are welcome. Unbounded turtles with write permission are not.",
+        "input_bindings": [
+          "sha256:C7788FF9FAE6F2DF5B7F20C1109E101528498B3E6477A93330FD8B202782836A;class=LOCAL_GENERATED_ARTIFACT"
+        ],
+        "authority_ceiling": "PUBLIC_SAFE_CANDIDATE_ONLY",
+        "confidentiality": "PUBLIC",
+        "effect_classes": [
+          "PROPOSE"
+        ],
+        "budget": {
+          "max_live_embodiments": 0,
+          "max_effectful_mutations": 0,
+          "logical_work_units": 1
+        },
+        "lease": {
+          "mode": "LOGICAL_ONLY",
+          "effect_lease": "NONE"
+        },
+        "idempotency_key": "dedupe:65040108A34A8176A914B2F7C51913A2DF53D9D0AA539F465B649C33525F2D5D",
+        "collision_domain": "coevo:F9ADFE5CDAEAB3BB1A3A2261",
+        "receiver": "CoHighlight+/CoHumour+",
+        "success_condition": "RECEIVER_DISPOSITION_AND_EVIDENCE_RECORDED",
+        "stop_condition": "AUTHORITY_CONFIDENTIALITY_OR_COLLISION_AMBIGUITY",
+        "checkpoint": null,
+        "recovery_pointer": "COEVO.CS260920.HIGHLIGHT_TURTLES_WRITE_PERMISSION.R1",
+        "failure_domain": null,
+        "handoff_rule": "DONATE_EQUIVALENT_DELTAS_TO_PRIMARY_AND_PRESERVE_SOURCE_REFS",
+        "retirement_condition": "PRIMARY_DELTA_DISPOSITION_RECORDED_AND_DONATED_EQUIVALENTS_BOUND",
+        "provenance": [
+          "COEVO.CS260920.HIGHLIGHT_TURTLES_WRITE_PERMISSION.R1"
+        ],
+        "currentness": "2026-09-23T11:31:28Z",
+        "uncertainty": null,
+        "materialization_state": "LOGICAL_ONLY"
+      },
+      {
+        "spawn_id": "cospawn:6E00C14369BE304021889014",
+        "purpose": "Process bounded CoEvoDelta group led by COEVO.CS260920.COPRESSURE_ENERGET_WANT.R1",
+        "parent_identity": "CoSessionSurvival260920-S1",
+        "role": "RESEARCH_DONOR",
+        "scope": "domains=CoSession+,CoAutoEvo+/CoEvo+,CoAll+,RickBar+/CoDesktop+,CoUX+/CoSurface+; subject=Scale metabolism for session pressure, bounded self-models, energy allocation, selective subscriptions, and constrained wants",
+        "input_bindings": [
+          "sha256:BF32B104AA6E228109884E9B0BD10EF96810ECC0074486A21F6DB9D7772065CC;class=LOCAL_GENERATED_ARTIFACT"
+        ],
+        "authority_ceiling": "DOCS_SCHEMA_CANDIDATE_ONLY",
+        "confidentiality": "PUBLIC",
+        "effect_classes": [
+          "BRANCH_MUTATE"
+        ],
+        "budget": {
+          "max_live_embodiments": 0,
+          "max_effectful_mutations": 0,
+          "logical_work_units": 1
+        },
+        "lease": {
+          "mode": "LOGICAL_ONLY",
+          "effect_lease": "NONE"
+        },
+        "idempotency_key": "dedupe:7D76E7314515AA75D66934DA601DAC31DC39BA01EFA9C24B60CF2D5D0BA9B5A8",
+        "collision_domain": "coevo:483C3F95F4E6F78A30B1F11B",
+        "receiver": "CoPressure+/CoEnerget+/CoWant+/RickBar+",
+        "success_condition": "RECEIVER_DISPOSITION_AND_EVIDENCE_RECORDED",
+        "stop_condition": "AUTHORITY_CONFIDENTIALITY_OR_COLLISION_AMBIGUITY",
+        "checkpoint": null,
+        "recovery_pointer": "COEVO.CS260920.COPRESSURE_ENERGET_WANT.R1",
+        "failure_domain": null,
+        "handoff_rule": "DONATE_EQUIVALENT_DELTAS_TO_PRIMARY_AND_PRESERVE_SOURCE_REFS",
+        "retirement_condition": "PRIMARY_DELTA_DISPOSITION_RECORDED_AND_DONATED_EQUIVALENTS_BOUND",
+        "provenance": [
+          "COEVO.CS260920.COPRESSURE_ENERGET_WANT.R1"
+        ],
+        "currentness": "2026-09-23T11:31:28Z",
+        "uncertainty": null,
+        "materialization_state": "LOGICAL_ONLY"
+      },
+      {
+        "spawn_id": "cospawn:653059347B76BA31ADBC791E",
+        "purpose": "Process bounded CoEvoDelta group led by COEVO.CS260920.NATIVE_COBAR_LIFECYCLE.R1",
+        "parent_identity": "CoSessionSurvival260920-S1",
+        "role": "PROJECTION_COMPILER",
+        "scope": "domains=CoOps+,CoAll+,CoSession+,CoAutoEvo+/CoEvo+; subject=One bounded local worker native lifecycle self-announcement canary",
+        "input_bindings": [
+          "sha256:BF4C999B3D18F4D51FF04ADED2D8C1B2B3614A1484A985D83DE7F62E72A9CA5D;class=VERIFIED_LOCAL_RECEIPT_EXTERNAL_TO_GITHUB"
+        ],
+        "authority_ceiling": "NO_RUNTIME_PROMOTION",
+        "confidentiality": "PUBLIC",
+        "effect_classes": [
+          "PROPOSE"
+        ],
+        "budget": {
+          "max_live_embodiments": 0,
+          "max_effectful_mutations": 0,
+          "logical_work_units": 1
+        },
+        "lease": {
+          "mode": "LOGICAL_ONLY",
+          "effect_lease": "NONE"
+        },
+        "idempotency_key": "dedupe:8762E644AB50130B4EB58E449F181317D6AE81368AA12B52262EB0587061315C",
+        "collision_domain": "coevo:761854C180A5F5A87C946246",
+        "receiver": "CoBar+/CoSessionSurvival+",
+        "success_condition": "RECEIVER_DISPOSITION_AND_EVIDENCE_RECORDED",
+        "stop_condition": "AUTHORITY_CONFIDENTIALITY_OR_COLLISION_AMBIGUITY",
+        "checkpoint": null,
+        "recovery_pointer": "COEVO.CS260920.NATIVE_COBAR_LIFECYCLE.R1",
+        "failure_domain": null,
+        "handoff_rule": "DONATE_EQUIVALENT_DELTAS_TO_PRIMARY_AND_PRESERVE_SOURCE_REFS",
+        "retirement_condition": "PRIMARY_DELTA_DISPOSITION_RECORDED_AND_DONATED_EQUIVALENTS_BOUND",
+        "provenance": [
+          "COEVO.CS260920.NATIVE_COBAR_LIFECYCLE.R1"
+        ],
+        "currentness": "2026-09-23T11:31:28Z",
+        "uncertainty": null,
+        "materialization_state": "LOGICAL_ONLY"
+      },
+      {
+        "spawn_id": "cospawn:DB0DC3326215BC4687A76B7E",
+        "purpose": "Process bounded CoEvoDelta group led by COEVO.CS260920.COTWILIGHT_PARALLEL_CLOSE_SAFE.R1",
+        "parent_identity": "CoSessionSurvival260920-S1",
+        "role": "PROJECTION_COMPILER",
+        "scope": "domains=CoSession+,CoAutoEvo+/CoEvo+,CoAll+,CoStrategy+; subject=CoTwilight+ parallel close-safe lifecycle and attention-time-to-independence",
+        "input_bindings": [
+          "sha256:9D55559E1BB50CE831608EB631D2F2C7403D81A73DA96480772308AA224F4DC4;class=LOCAL_GENERATED_ARTIFACT",
+          "sha256:BF4C999B3D18F4D51FF04ADED2D8C1B2B3614A1484A985D83DE7F62E72A9CA5D;class=VERIFIED_LOCAL_EXTERNAL_TO_GITHUB",
+          "sha256:E160A0058D04AA1F9403D4555C0B69A357B1DB741AA29485CCE0D87467CA5380;class=LOCAL_FINAL_CLOSE_ADJUDICATION"
+        ],
+        "authority_ceiling": "DOCS_SCHEMA_CANDIDATE_ONLY",
+        "confidentiality": "PUBLIC",
+        "effect_classes": [
+          "BRANCH_MUTATE"
+        ],
+        "budget": {
+          "max_live_embodiments": 0,
+          "max_effectful_mutations": 0,
+          "logical_work_units": 1
+        },
+        "lease": {
+          "mode": "LOGICAL_ONLY",
+          "effect_lease": "NONE"
+        },
+        "idempotency_key": "dedupe:F61CEA5EDE979F8513E212CC77199A660A0A7D8E2BFDA903D675AFEE56798275",
+        "collision_domain": "coevo:2FC78727FC91DE7B5896F479",
+        "receiver": "CoSessionConvergence+/CoWorkFabric+",
+        "success_condition": "RECEIVER_DISPOSITION_AND_EVIDENCE_RECORDED",
+        "stop_condition": "AUTHORITY_CONFIDENTIALITY_OR_COLLISION_AMBIGUITY",
+        "checkpoint": null,
+        "recovery_pointer": "COEVO.CS260920.COTWILIGHT_PARALLEL_CLOSE_SAFE.R1",
+        "failure_domain": null,
+        "handoff_rule": "DONATE_EQUIVALENT_DELTAS_TO_PRIMARY_AND_PRESERVE_SOURCE_REFS",
+        "retirement_condition": "PRIMARY_DELTA_DISPOSITION_RECORDED_AND_DONATED_EQUIVALENTS_BOUND",
+        "provenance": [
+          "COEVO.CS260920.COTWILIGHT_PARALLEL_CLOSE_SAFE.R1"
+        ],
+        "currentness": "2026-09-23T11:31:28Z",
+        "uncertainty": null,
+        "materialization_state": "LOGICAL_ONLY"
+      }
+    ],
+    "donations": [],
+    "collisions": [],
+    "validation": {
+      "COEVO.CS260920.COTWILIGHT_PARALLEL_CLOSE_SAFE.R1": [],
+      "COEVO.CS260920.RELATIONAL_PROTOCOL_SUBSTRATE.R1": [],
+      "COEVO.CS260920.COPRESSURE_ENERGET_WANT.R1": [],
+      "COEVO.CS260920.NATIVE_COBAR_LIFECYCLE.R1": [],
+      "COEVO.CS260920.HIGHLIGHT_TURTLES_WRITE_PERMISSION.R1": []
+    },
+    "effects": {
+      "live_workers_started": 0,
+      "provider_sessions_created": 0,
+      "provider_titles_mutated": 0,
+      "provider_tabs_closed": 0,
+      "repo_mutations_executed": 0,
+      "authority_changes": 0
+    },
+    "next": "R3_LOCAL_OLLAMA_MATERIALIZATION_CANARY_FOR_ONE_UNBLOCKED_LOW_EFFECT_CONTRACT",
+    "nonclaims": [
+      "SPAWN_NE_NEW_CHAT",
+      "LOGICAL_RESERVE_NE_LIVE_WORKER",
+      "DEDUPE_NE_DELETE",
+      "MODEL_NE_AUTHORITY",
+      "GITHUB_WRITE_ACCESS_NE_GLOBAL_AUTHORITY"
+    ]
+  },
+  "boundaries": [
+    "PYTHON_PLANNER_SCRIPT_NOT_EXECUTED_BY_THIS_CANARY",
+    "EQUIVALENT_REIMPLEMENTATION_NE_SAME_RUNTIME",
+    "NO_LIVE_WORKER",
+    "NO_REPO_MUTATION_BY_PLANNER",
+    "NO_AUTHORITY_CHANGE",
+    "NO_MERGE_NO_CANON_NO_RUNTIME_PROMOTION"
+  ]
+}
