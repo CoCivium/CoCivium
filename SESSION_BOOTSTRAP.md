@@ -171,6 +171,7 @@ After choosing a role, load the closest [CoSessionSubscription+ profile](ai/sess
 
 `CURRENTNESS_FOR_ALL_NE_CONTENT_FOR_ALL`  
 `SUBSCRIPTION_NE_AUTHORITY`
+
 ## Session write-back / relational deltas
 
 Useful sessions should not only read currentness; when they have a bounded public-safe contribution and an authorized route, they should return it as a **CoEvoDelta+** contribution under the [CoAll GitHub Evolution Fabric R0](docs/Evolution/COALL_GITHUB_EVOLUTION_FABRIC_R0.md). The [CoSession Relational Delta Projection R0](docs/Operations/COSESSION_RELATIONAL_DELTA_CONTRACT_R0.md) provides a session/receiver-friendly projection, not a competing semantic standard. Use [v0.1](schemas/cosession-relational-delta-v0.1.schema.json) for lightweight fan-in/review and [v0.2](schemas/cosession-relational-delta-v0.2.schema.json) when the projection must compile deterministically into [CoEvoDelta v0.2 candidates](schemas/coevo-delta-v0.2.schema.json) through [CoSessionProjectionToCoEvo](scripts/CoSessionProjectionToCoEvo.py).
@@ -184,4 +185,12 @@ The default is one provenance-bound source delta followed by review/fan-in and t
 
 `UNDER_TYPED_INPUT_NE_SAFE_TO_INFER`  
 `COMPILATION_NE_FANOUT`
+
+## Receiver-relative fanout
+
+After CoEvoDelta+ compilation, use [CoEvoReceiverFanoutPlanner R0](docs/Operations/COEVO_RECEIVER_FANOUT_PLANNER_R0.md), its [machine schema](schemas/coevo-fanout-plan-v0.1.schema.json), and [reference planner](scripts/CoEvoReceiverFanoutPlanner.py) to propose repository receivers and HOT/WARM/DIGEST session-profile interest without mutating targets or pushing provider sessions.
+
+`PROFILE_NE_SESSION_INSTANCE`  
+`ROUTE_PLAN_NE_TARGET_MUTATION`  
+`DELIVERY_NE_PICKUP`
 
