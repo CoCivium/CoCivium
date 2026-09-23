@@ -150,14 +150,14 @@ def main() -> int:
             "digest_entries_exactly_replayed": 4,
         },
         "checks": {
-            "hot_warm_exact_passthrough": true,
-            "loss_report_present": true,
-            "semantic_summary_generated": false,
-            "source_packet_hash_bound": true,
-            "manifest_entry_hashes_verified": true,
-            "exact_digest_object_replay": true,
-            "source_deletion": false,
-            "ack_cursor_mutation": false,
+            "hot_warm_exact_passthrough": True,
+            "loss_report_present": True,
+            "semantic_summary_generated": False,
+            "source_packet_hash_bound": True,
+            "manifest_entry_hashes_verified": True,
+            "exact_digest_object_replay": True,
+            "source_deletion": False,
+            "ack_cursor_mutation": False,
         },
         "terminals": {
             "compactor": compact_terminal,
@@ -191,7 +191,7 @@ def main() -> int:
         "OMITTED_INLINE": 4,
         "ITEM_REDUCTION": 3,
         "REPLAYED": 4,
-        "ACK_CURSOR_MUTATION": false,
+        "ACK_CURSOR_MUTATION": False,
         "NEXT": result["next"],
     }, separators=(",", ":")))
     return 0
