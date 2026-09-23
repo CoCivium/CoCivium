@@ -304,21 +304,48 @@ No repository-level write implies global adoption.
 
 No session should mutate a domain merely because it can authenticate.
 
-## 13. Elected next implementation candidates
+## 13. Currentness checkpoint and remaining implementation candidates
 
-R1 proposes these bounded follow-ons, each separately reviewable:
+A review after this draft landed found that several items originally listed as future work had already landed on current `main`. R1 must consume those components rather than recreate them.
 
-- machine-readable evolution-domain registry;
-- CoEvoDelta JSON schema;
-- repository-role/currentness graph;
-- public highlight registry;
+### Already landed / available on current main
+
+- machine-readable evolution-domain registry: `ai/evolution-lanes.json`;
+- CoEvoDelta schema: `schemas/coevo-delta-v0.1.schema.json`;
+- repository-role/currentness map: `ai/repo-role-map.json`;
+- public highlight registry: `ai/highlight-assets.json`;
+- logical CoSpawn contract/schema and R2 planner lineage;
+- subsequent confidentiality-preserving CoSpawn routing and local-model materialization preparation.
+
+These are available components, not proof of global receiver pickup, integration, CoEx, canon, or runtime adoption.
+
+`LANDED_COMPONENT_NE_GLOBAL_ADOPTION`
+
+### Remaining bounded follow-ons
+
 - session subscription manifest;
 - cross-repo currentness pulse format;
 - CoTwilight GitHub late-delta contract;
-- CoPressure/CoEnerget/CoWant routing fields;
+- explicit CoPressure/CoEnerget/CoWant routing semantics/fields;
 - RickBar material-exception projection;
-- local/Ollama bounded queue consumer;
+- local/Ollama bounded queue consumer beyond currently landed preparation;
 - rejected-PR/failed-canary negative-knowledge intake.
+
+### Draft currentness gate
+
+This PR branch may lag current `main` while sibling sessions continue landing work. Before leaving draft:
+
+1. refresh current `main`;
+2. compare branch against current head;
+3. rebase or otherwise reconcile without last-writer-wins;
+4. recheck the remaining-next list;
+5. preserve any sibling work that supersedes or narrows this candidate.
+
+`DRAFT_PR_NE_CURRENT_HEAD`
+
+`REBASE_NE_SEMANTIC_ACCEPTANCE`
+
+`SIBLING_LANDING_NE_DUPLICATE_WORK_INVITATION`
 
 ## Rails
 
