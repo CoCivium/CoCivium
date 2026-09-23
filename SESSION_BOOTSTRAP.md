@@ -245,3 +245,13 @@ A distinct receiver still needs to return [CoReceiverReadproof R0](docs/Operatio
 `DESTINATION_READBACK_NE_RECEIVER_PICKUP`  
 `LANDED_NE_PICKED_UP`
 
+
+## CoEvo to CoPulse currentness bridge
+
+For forward session currentness, use [CoEvo -> Public CoPulse Projector R0](docs/Operations/COEVO_TO_PUBLIC_COPULSE_PROJECTOR_R0.md) to project PUBLIC-safe CoEvoDelta+ objects into CoPulse candidates, then use the existing [CoPulseSubscriptionRouter R0A](docs/Operations/COPULSE_SUBSCRIPTION_ROUTER_R0A.md) for HOT/WARM/DIGEST receiver filtering and cursor handling.
+
+The older direct session-subscription proposals in CoEvoReceiverFanoutPlanner R0 remain historical evidence; repository fanout remains active.
+
+`PROJECTION_NE_DELIVERY`  
+`CANDIDATE_DELIVERED_CURSOR_NE_ACK_CURSOR`  
+`COPULSE_ROUTER_SUPERSEDES_DIRECT_COEVO_SESSION_SUBSCRIPTION_DELIVERY`
