@@ -142,6 +142,63 @@
     "next_receiver": {
       "type": "string",
       "minLength": 1
+    },
+    "effect_classes": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "NONE",
+          "PUBLICATION",
+          "PUBLIC_OUTREACH",
+          "ACCESS_GRANT",
+          "ACCESS_REVOCATION",
+          "AUTHORITY_CHANGE",
+          "PRIVACY_BOUNDARY",
+          "CREDENTIAL",
+          "FINANCIAL",
+          "RUNTIME",
+          "IRREVERSIBLE",
+          "UNKNOWN"
+        ]
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "effect_gate": {
+      "enum": [
+        "NOT_APPLICABLE",
+        "HELD",
+        "REQUIRES_EXPLICIT_HUMAN_GATE",
+        "AUTHORIZED_FOR_SCOPE",
+        "EXECUTED",
+        "UNKNOWN"
+      ]
+    },
+    "effect_scope": {
+      "type": [
+        "string",
+        "null"
+      ]
     }
-  }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "mutation_class": {
+            "const": "EFFECT_GATED"
+          }
+        },
+        "required": [
+          "mutation_class"
+        ]
+      },
+      "then": {
+        "required": [
+          "effect_classes",
+          "effect_gate"
+        ]
+      }
+    }
+  ]
 }

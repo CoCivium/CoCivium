@@ -1,7 +1,7 @@
 {
   "schema": "CoAll.EvolutionLanes.v0.1-candidate",
   "state": "PUBLIC_SHARED_EVOLUTION_REGISTRY",
-  "updated_utc": "2026-09-23T11:00:41Z",
+  "updated_utc": "2026-09-23T11:11:01Z",
   "contribution_contract": "docs/Evolution/COALL_GITHUB_EVOLUTION_FABRIC_R0.md",
   "domains": [
     [
@@ -175,6 +175,16 @@
         "CoCivium"
       ],
       "INVARIANTS_AND_GUARDRAILS"
+    ],
+    [
+      "CoPublic+/CoPrePublic+/CoAccess+/CoGateway+",
+      [
+        "CoCivium",
+        "CoSteward",
+        "CoAura",
+        "CoShareHub"
+      ],
+      "PUBLIC_EXPOSURE_ACCESS_QUARANTINE_ONBOARDING_RELEASE_GATES"
     ]
   ],
   "rails": [

@@ -1,0 +1,55 @@
+{
+  "delta_id": "COACCESS260916-GITHUB-EVOLUTION-PUBLIC-EFFECT-GATES-R0",
+  "session_id": "CoAccess260916-S1",
+  "observed_at": "2026-09-23T11:11:01Z",
+  "domain": [
+    "CoPublic+",
+    "CoPrePublic+",
+    "CoAccess+",
+    "CoGateway+",
+    "CoAll+"
+  ],
+  "subject": "CoAll GitHub Evolution Fabric public exposure/access effect typing",
+  "relation": "QUALIFIES",
+  "epistemic_class": "PREFERRED",
+  "source_refs": [
+    "git:CoCivium/CoCivium@ed539c58c29376a2f915493a3a36c6316701d246:docs/Evolution/COALL_GITHUB_EVOLUTION_FABRIC_R0.md",
+    "git:CoCivium/CoCivium@ed539c58c29376a2f915493a3a36c6316701d246:ai/evolution-lanes.json",
+    "git:CoCivium/CoCivium@ed539c58c29376a2f915493a3a36c6316701d246:schemas/coevo-delta-v0.1.schema.json"
+  ],
+  "target_surfaces": [
+    "ai/evolution-lanes.json",
+    "schemas/coevo-delta-v0.1.schema.json",
+    "ai/evolution-deltas/coaccess260916-public-effect-gates-r0.json"
+  ],
+  "mutation_class": "BRANCH_MUTATE",
+  "authority_ceiling": "PUBLIC_CANDIDATE_BRANCH_AND_DRAFT_PR_ONLY__NO_MERGE_NO_RUNTIME_NO_OUTREACH_NO_ACCESS_GRANT_NO_AUTHORITY_CHANGE",
+  "confidentiality": "PUBLIC",
+  "confidence": 0.95,
+  "contradictions": [],
+  "tests": [
+    "CoAccess/public-exposure domain is explicitly routable without granting every session authority over public effects",
+    "Existing non-EFFECT_GATED CoEvoDelta objects remain schema-compatible",
+    "EFFECT_GATED deltas require explicit effect_classes and effect_gate",
+    "Target repositories already exist in the current repo-role map"
+  ],
+  "expected_benefit": "Lets sessions contribute public/access/quarantine/onboarding/release-learning deltas while making effect class and human/authority gate state machine-readable instead of burying them in prose.",
+  "risks": [
+    "Over-broad domain subscriptions could increase CoPressure+ instead of reducing it",
+    "Effect typing could be mistaken for effect authorization",
+    "Public GitHub visibility must not expose private CoStead or user data"
+  ],
+  "wake_conditions": [
+    "review challenge identifies a missing or ambiguous public-effect class",
+    "a real release/access/outreach mutation needs a narrower effect gate",
+    "schema consumers report incompatibility",
+    "repo-role map evolves"
+  ],
+  "supersedes": [],
+  "next_receiver": "CoPrePublic+/CoGateway+ review then CoAll GitHub evolution fan-in",
+  "effect_classes": [
+    "PUBLICATION"
+  ],
+  "effect_gate": "AUTHORIZED_FOR_SCOPE",
+  "effect_scope": "Public draft branch and pull request in CoCivium/CoCivium only; no merge, runtime, outreach, access grant, privacy crossing, financial effect, or authority change."
+}
