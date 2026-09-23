@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import json
 import math
+import re
 import sys
 from pathlib import Path
 from typing import Any
@@ -18,6 +19,7 @@ RICH_FIELDS = {
     "route","close_readiness","nonclaims"
 }
 EFFECT_FIELDS = {"effect_classes","effect_gate","effect_scope"}
+WRITEBACK_FIELDS = {"$schema","object","typed_operation","evidence_refs","public_safety","qualifiers","collision_domain","observed_base_ref","next_gate","receiver_readproof_gate","source_projection_id","source_projection_file_sha256","source_projection_record_index","source_operation_index","source_operation_sha256"}
 EXPECTED_EFFECT_CLASSES = {
     "NONE","PUBLICATION","PUBLIC_OUTREACH","ACCESS_GRANT","ACCESS_REVOCATION",
     "AUTHORITY_CHANGE","PRIVACY_BOUNDARY","CREDENTIAL","FINANCIAL","RUNTIME",
@@ -47,6 +49,8 @@ def type_ok(value: Any, spec: Any) -> bool:
             return True
         if name == "boolean" and isinstance(value, bool):
             return True
+        if name == "integer" and isinstance(value, int) and not isinstance(value, bool):
+            return True
         if name == "number" and isinstance(value, (int, float)) and not isinstance(value, bool) and math.isfinite(float(value)):
             return True
     return False
@@ -59,6 +63,8 @@ def check_value(value: Any, spec: dict[str, Any], path: str, errors: list[str]) 
         errors.append(f"ENUM:{path}")
     if isinstance(value, str) and len(value) < int(spec.get("minLength", 0)):
         errors.append(f"MIN_LENGTH:{path}")
+    if isinstance(value, str) and "pattern" in spec and re.fullmatch(spec["pattern"], value) is None:
+        errors.append(f"PATTERN:{path}")
     if isinstance(value, list):
         if len(value) < int(spec.get("minItems", 0)):
             errors.append(f"MIN_ITEMS:{path}")
@@ -142,7 +148,7 @@ def main() -> int:
             errors.append(f"V01_PROPERTY_CHANGED:{key}")
 
     props = union["properties"]
-    for key in EFFECT_FIELDS | {"materiality"} | RICH_FIELDS:
+    for key in EFFECT_FIELDS | {"materiality"} | RICH_FIELDS | WRITEBACK_FIELDS:
         if key not in props:
             errors.append(f"UNION_FIELD_MISSING:{key}")
 
@@ -207,14 +213,46 @@ def main() -> int:
     if validate_instance(union, good_rich):
         errors.append("RICH_POSITIVE_REJECT")
 
+
+    # PR23 write-back / projection-provenance extension remains additive.
+    writeback = fixture_base()
+    writeback.update({
+        "delta_id":"fixture.writeback",
+        "$schema":"https://github.com/CoCivium/CoCivium/schemas/coevo-delta-v0.2.schema.json",
+        "object":"fixture.object",
+        "typed_operation":"PROJECT",
+        "evidence_refs":["fixture:evidence"],
+        "public_safety":"PUBLIC_SAFE",
+        "qualifiers":{"fixture":"bounded"},
+        "collision_domain":"fixture.collision",
+        "observed_base_ref":"fixture:base",
+        "next_gate":"fixture.gate",
+        "receiver_readproof_gate":"fixture.readproof",
+        "source_projection_id":"fixture.projection",
+        "source_projection_file_sha256":"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "source_projection_record_index":0,
+        "source_operation_index":0,
+        "source_operation_sha256":"BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB"
+    })
+    if validate_instance(union, writeback):
+        errors.append("WRITEBACK_POSITIVE_REJECT")
+
     # A rich v0.2 object must be losslessly down-projectable for the v0.1 core.
-    extension_fields = EFFECT_FIELDS | {"materiality"} | RICH_FIELDS
+    extension_fields = EFFECT_FIELDS | {"materiality"} | RICH_FIELDS | WRITEBACK_FIELDS
     down = {k:v for k,v in good_rich.items() if k not in extension_fields}
     if validate_instance(v01, down):
         errors.append("V02_TO_V01_CORE_PROJECTION_REJECTED")
     for key in v01["required"]:
         if down.get(key) != good_rich.get(key):
             errors.append(f"CORE_PROJECTION_DRIFT:{key}")
+
+
+    writeback_down = {k:v for k,v in writeback.items() if k not in extension_fields}
+    if validate_instance(v01, writeback_down):
+        errors.append("WRITEBACK_TO_V01_CORE_PROJECTION_REJECTED")
+    for key in v01["required"]:
+        if writeback_down.get(key) != writeback.get(key):
+            errors.append(f"WRITEBACK_CORE_PROJECTION_DRIFT:{key}")
 
     # Intake election: one primary machine surface, docs only as projection/index.
     election = intake.get("election", {})
@@ -234,7 +272,7 @@ def main() -> int:
 
     print("PASS_COEVO_CONVERGENCE_R0")
     print(f"main_v01_deltas_accepted={accepted}")
-    print("schema_union=V01_CORE_UNCHANGED+PR32_EFFECTS+PR37_RICH_EXTENSIONS")
+    print("schema_union=V01_CORE_UNCHANGED+PR32_EFFECTS+PR37_RICH_EXTENSIONS+PR23_WRITEBACK_PROVENANCE")
     print("rich_extension_requires_materiality=true")
     print("effect_gated_requires_effect_fields=true")
     print("primary_intake=ai/evolution-deltas/<YYYY-MM-DD>/")
