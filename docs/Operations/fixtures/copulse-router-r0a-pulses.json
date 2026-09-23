@@ -1,0 +1,130 @@
+{
+  "pulses": [
+    {
+      "schema": "CoAllPulse.v0.1-candidate",
+      "pulse_id": "pulse.fixture.ux.001",
+      "cursor": 1,
+      "subject": "RickBar/FleetProjection",
+      "relation_type": "UX_CURRENTNESS",
+      "epistemic_class": "OBSERVED",
+      "source_identity": "CoCivium/CoCivium@main",
+      "provenance": [
+        "docs/UX/COFLEET_RICKBAR_R4.md"
+      ],
+      "event_time": null,
+      "observation_time": "2026-09-23T11:35:00Z",
+      "recorded_at": "2026-09-23T11:36:00Z",
+      "valid_from": "2026-09-23T11:35:00Z",
+      "valid_to": null,
+      "confidence": 1,
+      "assumptions": [],
+      "evidence_refs": [
+        "git:a5e0caa06b5b1316de528fbbc6e4c942a72dd10e"
+      ],
+      "authority_ceiling": "INFORMATIONAL_PUBLIC_CURRENTNESS",
+      "confidentiality": "PUBLIC",
+      "domains": [
+        "RickBar+/CoDesktop+",
+        "CoUX+/CoSurface+"
+      ],
+      "target_objects": [
+        "RickBar/FleetProjection"
+      ],
+      "topics": [
+        "rickbar",
+        "ux",
+        "fleet"
+      ],
+      "wake_conditions": [
+        "RICKBAR_RUNTIME_ADAPTER_AVAILABLE"
+      ],
+      "supersedes": [],
+      "expiry": null,
+      "calibration_disposition": null,
+      "content_hash": null,
+      "payload": {
+        "state": "R4_UX_CONTRACT_LANDED"
+      }
+    },
+    {
+      "schema": "CoAllPulse.v0.1-candidate",
+      "pulse_id": "pulse.fixture.theory.002",
+      "cursor": 2,
+      "subject": "CoTheoryAll/SOWCC",
+      "relation_type": "THEORY_CANDIDATE_CURRENTNESS",
+      "epistemic_class": "HYPOTHESIS",
+      "source_identity": "CoCivium/CoCivium@main",
+      "provenance": [
+        "candidate"
+      ],
+      "event_time": null,
+      "observation_time": "2026-09-23T11:35:01Z",
+      "recorded_at": "2026-09-23T11:36:01Z",
+      "valid_from": "2026-09-23T11:35:01Z",
+      "valid_to": null,
+      "confidence": 0.4,
+      "assumptions": [
+        "HYPOTHESIS_ONLY"
+      ],
+      "evidence_refs": [],
+      "authority_ceiling": "INFORMATIONAL_PUBLIC_CURRENTNESS",
+      "confidentiality": "PUBLIC",
+      "domains": [
+        "CoTheoryAll+"
+      ],
+      "target_objects": [
+        "CoTheoryAll/SOWCC"
+      ],
+      "topics": [
+        "theory"
+      ],
+      "wake_conditions": [],
+      "supersedes": [],
+      "expiry": null,
+      "calibration_disposition": null,
+      "content_hash": null,
+      "payload": {
+        "state": "CANDIDATE_ONLY"
+      }
+    },
+    {
+      "schema": "CoAllPulse.v0.1-candidate",
+      "pulse_id": "pulse.fixture.humour.003",
+      "cursor": 3,
+      "subject": "CoHumour/SoftwareWindows",
+      "relation_type": "HUMOUR_CANDIDATE",
+      "epistemic_class": "HUMOROUS",
+      "source_identity": "CoCivium/CoInsights",
+      "provenance": [
+        "fixture"
+      ],
+      "event_time": null,
+      "observation_time": "2026-09-23T11:35:02Z",
+      "recorded_at": "2026-09-23T11:36:02Z",
+      "valid_from": "2026-09-23T11:35:02Z",
+      "valid_to": null,
+      "confidence": null,
+      "assumptions": [],
+      "evidence_refs": [],
+      "authority_ceiling": "INFORMATIONAL_PUBLIC_CURRENTNESS",
+      "confidentiality": "PUBLIC",
+      "domains": [
+        "CoHumour+"
+      ],
+      "target_objects": [
+        "CoHumour/SoftwareWindows"
+      ],
+      "topics": [
+        "humour"
+      ],
+      "wake_conditions": [],
+      "supersedes": [],
+      "expiry": null,
+      "calibration_disposition": null,
+      "content_hash": null,
+      "payload": {
+        "text_class": "HUMOUR_FIXTURE"
+      }
+    }
+  ]
+}
