@@ -1,0 +1,54 @@
+{
+  "schema": "CoAllPulse.v0.1-candidate",
+  "pulse_id": "pulse.example.prelaunch.currentness.001",
+  "cursor": 1,
+  "subject": "CoCivium/PublicTransition",
+  "relation_type": "CURRENT_PUBLIC_POSTURE",
+  "epistemic_class": "OBSERVED",
+  "source_identity": "CoCivium/CoCivium@main",
+  "provenance": [
+    "PRELAUNCH.md",
+    "docs/Launch/COCIVIUM_PUBLIC_PRELAUNCH_R0.md"
+  ],
+  "event_time": null,
+  "observation_time": null,
+  "recorded_at": "2026-09-23T08:38:00Z",
+  "valid_from": "2026-09-23T08:31:29Z",
+  "valid_to": null,
+  "confidence": 1,
+  "assumptions": [],
+  "evidence_refs": [
+    "git:bac8027c687a797ba319e11a3bd57fe789c18749"
+  ],
+  "authority_ceiling": "INFORMATIONAL_PUBLIC_CURRENTNESS",
+  "confidentiality": "PUBLIC",
+  "topics": [
+    "public-transition",
+    "prelaunch",
+    "github",
+    "ai-discovery"
+  ],
+  "wake_conditions": [
+    "PUBLIC_POSTURE_CHANGES",
+    "RELEASE_GATE_CHANGES"
+  ],
+  "supersedes": [],
+  "expiry": null,
+  "calibration_disposition": null,
+  "content_hash": null,
+  "payload": {
+    "state": "PRE-LAUNCH_RND_PUBLIC_DEMO_TRANSITION",
+    "not": [
+      "OFFICIAL_BROAD_RELEASE",
+      "VALIDATED_SCIENTIFIC_THEORY",
+      "ACADEMIC_ENDORSEMENT"
+    ]
+  },
+  "domains": [
+    "CoHighlight+",
+    "CoAll+"
+  ],
+  "target_objects": [
+    "CoCivium/PublicTransition"
+  ]
+}

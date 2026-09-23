@@ -1,7 +1,7 @@
 {
   "schema": "CoSessionSubscriptionProfiles.v0.1-candidate",
   "state": "PUBLIC_BOOTSTRAP_ROUTING__NOT_GLOBAL_CONTENT_PUSH",
-  "updated_utc": "2026-09-23T11:35:51Z",
+  "updated_utc": "2026-09-23T11:56:29Z",
   "default_policy": {
     "hot_max_domains": 4,
     "warm_max_domains": 6,
@@ -190,7 +190,7 @@
       ],
       "digest": [
         "CoTheoryAll+",
-        "CoPublic"
+        "CoEducation+"
       ],
       "preferred_repos": [
         "CoInsights",
@@ -231,5 +231,8 @@
     "HOT_NE_IMPORTANT_FOR_EVERYONE",
     "SLEEP_NE_IGNORE_FOREVER",
     "FULL_REPO_INGEST_NE_BOOTSTRAP"
+  ],
+  "repair_notes": [
+    "R0A: replaced invalid CoHumour digest domain CoPublic with CoEducation+; CoPublic is a profile identity, not an evolution domain."
   ]
 }

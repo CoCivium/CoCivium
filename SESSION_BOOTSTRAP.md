@@ -179,6 +179,32 @@ Do not enroll a dependent/minor device for standing unrestricted AI remote contr
 `PRIMARY_ROUTE_FIRST__DEPENDENT_ENDPOINT_SECOND`  
 `DEVICE_SERVICE_ID_NE_PERSONAL_LOGIN`
 
+## CoAllPulseField+ / receiver-specific currentness
+
+Use [CoAllPulseField+ R0](docs/Architecture/COALL_PULSEFIELD_COTIME_R0.md) and the [public-safe R0A router](scripts/CoPulseSubscriptionRouterR0A.py) when a virtual/session receiver needs bounded currentness after its last ACK cursor. GitHub routing is PUBLIC-safe only; private/restricted pulses stay on private custody paths.
+
+`DELIVERY_NE_PICKUP`  
+`CANDIDATE_DELIVERED_CURSOR_NE_ACK_CURSOR`  
+`PUBLIC_ROUTER_NE_PRIVATE_BUS`
+
+
+## Close-safe anti-loop rule
+
+A session already proven `CLOSE_SAFE` should remain dormant unless a previously bound material wake predicate becomes true. Generic pings, spare capacity, unrelated GitHub commits, or global project motion are not enough by themselves.
+
+Use:
+
+`IF CLOSE_SAFE AND NOT ANY(BOUND_WAKE_PREDICATES_TRUE) -> REMAIN_DORMANT_OPTION`
+
+Do not turn shared currentness into permanent foreground obligation.
+
+`GLOBAL_CURRENTNESS_DELTA_NE_SOURCE_SESSION_WAKE`  
+`GENERIC_PING_NE_WAKE_PREDICATE`  
+`WAKE_REQUIRES_BOUND_MATERIAL_RELATION`  
+`CLOSE_SAFE_NE_REOPEN_ON_CURIOSITY`
+
+Future sessions and reconstructed sessions should inherit this guard through bootstrap. Existing live provider sessions only learn it when an authorized bridge/currentness path exposes it.
+
 ## Session write-back / relational deltas
 
 Useful sessions should not only read currentness; when they have a bounded public-safe contribution and an authorized route, they should return it as a **CoEvoDelta+** contribution under the [CoAll GitHub Evolution Fabric R0](docs/Evolution/COALL_GITHUB_EVOLUTION_FABRIC_R0.md). The [CoSession Relational Delta Projection R0](docs/Operations/COSESSION_RELATIONAL_DELTA_CONTRACT_R0.md) provides a session/receiver-friendly projection, not a competing semantic standard. Use [v0.1](schemas/cosession-relational-delta-v0.1.schema.json) for lightweight fan-in/review and [v0.2](schemas/cosession-relational-delta-v0.2.schema.json) when the projection must compile deterministically into [CoEvoDelta v0.2 candidates](schemas/coevo-delta-v0.2.schema.json) through [CoSessionProjectionToCoEvo](scripts/CoSessionProjectionToCoEvo.py).
@@ -218,3 +244,4 @@ A distinct receiver still needs to return [CoReceiverReadproof R0](docs/Operatio
 
 `DESTINATION_READBACK_NE_RECEIVER_PICKUP`  
 `LANDED_NE_PICKED_UP`
+
