@@ -172,6 +172,13 @@ After choosing a role, load the closest [CoSessionSubscription+ profile](ai/sess
 `CURRENTNESS_FOR_ALL_NE_CONTENT_FOR_ALL`  
 `SUBSCRIPTION_NE_AUTHORITY`
 
+## Dependent/minor device enrollment
+
+Do not enroll a dependent/minor device for standing unrestricted AI remote control. Prove the primary X2 route first, use a separate revocable service identity rather than personal credentials, and require bounded capabilities, durable audit, local recovery, and consent/guardian gates. See [Dependent Device Enrollment R0](docs/Security/DEPENDENT_DEVICE_ENROLLMENT_R0.md).
+
+`PRIMARY_ROUTE_FIRST__DEPENDENT_ENDPOINT_SECOND`  
+`DEVICE_SERVICE_ID_NE_PERSONAL_LOGIN`
+
 ## Session write-back / relational deltas
 
 Useful sessions should not only read currentness; when they have a bounded public-safe contribution and an authorized route, they should return it as a **CoEvoDelta+** contribution under the [CoAll GitHub Evolution Fabric R0](docs/Evolution/COALL_GITHUB_EVOLUTION_FABRIC_R0.md). The [CoSession Relational Delta Projection R0](docs/Operations/COSESSION_RELATIONAL_DELTA_CONTRACT_R0.md) provides a session/receiver-friendly projection, not a competing semantic standard. Use [v0.1](schemas/cosession-relational-delta-v0.1.schema.json) for lightweight fan-in/review and [v0.2](schemas/cosession-relational-delta-v0.2.schema.json) when the projection must compile deterministically into [CoEvoDelta v0.2 candidates](schemas/coevo-delta-v0.2.schema.json) through [CoSessionProjectionToCoEvo](scripts/CoSessionProjectionToCoEvo.py).
@@ -200,4 +207,5 @@ For reviewed routes with explicit receiver bindings, [CoEvoReceiverPacketCompile
 
 `PACKET_NE_DELIVERY`  
 `NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF`
+
 
