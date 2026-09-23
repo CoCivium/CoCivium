@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://github.com/CoCivium/CoCivium/schemas/coevo-delta-v0.2-union-candidate.schema.json",
   "title": "CoEvoDelta v0.2 union candidate",
-  "description": "Additive convergence candidate over v0.1 plus PR32 effect-gate semantics and PR37 pressure/route/subscription extensions. Candidate only; v0.1 remains the compatibility anchor.",
+  "description": "Additive convergence candidate over v0.1 plus PR32 effect-gate semantics, PR37 pressure/route/subscription extensions, and PR23 session-writeback/projection-provenance fields. Candidate only; v0.1 remains the compatibility anchor.",
   "type": "object",
   "additionalProperties": false,
   "required": [
@@ -456,6 +456,89 @@
       "items": {
         "type": "string"
       }
+    },
+    "$schema": {
+      "type": "string"
+    },
+    "object": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "typed_operation": {
+      "enum": [
+        "ADD",
+        "QUALIFY",
+        "CHALLENGE",
+        "LINK",
+        "INDEX",
+        "HIGHLIGHT",
+        "DEPRECATE",
+        "RESTRUCTURE",
+        "PROJECT"
+      ]
+    },
+    "evidence_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "public_safety": {
+      "enum": [
+        "PUBLIC_SAFE",
+        "PUBLIC_SAFE_WITH_REDACTION",
+        "PRIVATE_ONLY",
+        "UNKNOWN"
+      ]
+    },
+    "qualifiers": {
+      "type": "object"
+    },
+    "collision_domain": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "observed_base_ref": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "next_gate": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "receiver_readproof_gate": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "source_projection_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_projection_file_sha256": {
+      "type": "string",
+      "pattern": "^[0-9A-F]{64}$"
+    },
+    "source_projection_record_index": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "source_operation_index": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "source_operation_sha256": {
+      "type": "string",
+      "pattern": "^[0-9A-F]{64}$"
     }
   },
   "allOf": [
