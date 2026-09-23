@@ -146,3 +146,22 @@ Durable evidence:
 The real primary machine route remained `OFFLINE` at the post-canary connector check, so no real `PASS_LIVE_RECEIVER_BINDING` is claimed.
 
 `SYNTHETIC_ONLINE_FIXTURE_NE_REAL_LIVE_RECEIVER`
+
+## Service-identity relation
+
+The `service_identity` field is a relation to a scoped machine/service identity, not a free-floating authority string.
+
+Use the identity/materialization contract appropriate to the route. For GitHub-class seats, see:
+
+- `docs/Identity/COFRONT_GITHUB_SERVICE_PRINCIPAL_R1.md`;
+- `schemas/cofront-seat-materialization-v0.1.schema.json`;
+- `ai/front-seat-materialization-policy.json`.
+
+Current service-principal state on that public contract is design-only: no GitHub App, credential, installation, or permission grant is proven.
+
+For machine/device routes, preserve the separate-service-identity and capability-boundary rules from dependent-device enrollment rather than reusing a personal login.
+
+`SEAT_NE_IDENTITY`  
+`SERVICE_PRINCIPAL_NE_PERSONHOOD`  
+`SERVICE_IDENTITY_NE_PERSONAL_LOGIN`  
+`DELEGATION_NE_CREDENTIAL_CREATION_AUTHORITY`
