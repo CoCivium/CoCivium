@@ -204,3 +204,10 @@ Do not turn shared currentness into permanent foreground obligation.
 `CLOSE_SAFE_NE_REOPEN_ON_CURIOSITY`
 
 Future sessions and reconstructed sessions should inherit this guard through bootstrap. Existing live provider sessions only learn it when an authorized bridge/currentness path exposes it.
+
+## CoPulse receiver pickup R0B
+
+Use [the R0B two-receiver canary](scripts/CoPulseTwoReceiverCanaryR0B.py) after R0A packet compilation to prove receiver-relative exact-object pickup. A receiver readproof can support `PICKED_UP` for the exact packet but not `INTEGRATED`; proposed ACK cursors remain uncommitted until R0C.
+
+`PICKED_UP_NE_INTEGRATED`  
+`ACK_PROPOSAL_NE_ACK_COMMIT`
