@@ -1,75 +1,46 @@
 # CoSession Relational Fan-In R0
 
-**State:** PUBLIC_CANDIDATE__DETERMINISTIC_FANIN__NO_AUTOMATIC_FANOUT
+**State:** `PUBLIC_CANDIDATE__DETERMINISTIC_SESSION_PROJECTION_FANIN__NO_AUTOMATIC_FANOUT`
 
 ## Purpose
 
-CoSession Relational Fan-In R0 converts many bounded session deltas into one deterministic review surface before any README, schema, CoIndex, CoLex surface, architecture object, RickBar/UX surface, highlight set, or sibling repository is mutated.
+This compiler fans in the **session projection of CoEvoDelta+** before target surfaces are mutated.
 
-The reason is simple: discovery can scale faster than safe integration. Every useful session may contribute; no session needs the entire CoAll graph in working memory and no session receives blanket multi-repository mutation authority.
+It is not the canonical semantic evolution format. The canonical shared object remains CoEvoDelta+ under `docs/Evolution/COALL_GITHUB_EVOLUTION_FABRIC_R0.md`.
+
+`COSESSION_RELATIONAL_DELTA_IS_COEVO_PROJECTION_NE_PARALLEL_SEMANTIC_STANDARD`
 
 ## Reference implementation
 
-- scripts/CoSessionRelationalFanIn.py
-- input contract: schemas/cosession-relational-delta-v0.1.schema.json
-- fixture: docs/Operations/fixtures/cosession-relational-fanin-r0-input.json
-- expected fixture output: docs/Operations/fixtures/cosession-relational-fanin-r0-expected.json
+- `scripts/CoSessionRelationalFanIn.py`
+- session projection schema: `schemas/cosession-relational-delta-v0.1.schema.json`
+- canonical CoEvoDelta schema: `schemas/coevo-delta-v0.1.schema.json`
+- bounded fixture: `docs/Operations/fixtures/cosession-relational-fanin-r0-input.json`
 
 The implementation uses only the Python standard library.
 
-## Input
+## Current R0 boundary
 
-Repeat --input for one or more JSON files. A file may contain:
+R0 mechanically:
 
-- one delta object;
-- an array of delta objects; or
-- an object shaped as {"deltas": [...]}.
+- binds exact input SHA-256 identities;
+- accepts bounded session-projection records;
+- deduplicates exact normalized operations;
+- surfaces subject/relation collision candidates without declaring contradiction;
+- indexes target domains and candidate surfaces;
+- separates highlight candidates;
+- holds non-`PUBLIC_SAFE` records from public fanout;
+- performs zero automatic shared-target mutation, fanout, canon change, or receiver-pickup claim.
 
-Exact duplicate source bytes are parsed once. Coverage still records how many input files were presented.
+**R0 does not yet compile the projection into canonical CoEvoDelta+ records.** That is the next rung. Until then, this output is a review/compaction surface only.
 
-## Output
-
-The compiler emits:
-
-- source SHA-256 identities and byte counts;
-- accepted and rejected delta records;
-- unique normalized operations;
-- exact operation-duplicate groups;
-- subject/relation collision candidates;
-- target-domain and candidate-surface indices;
-- HIGHLIGHT candidates;
-- public-fanout holds;
-- eligible PUBLIC_SAFE review candidates;
-- zero-effect declarations for shared mutation/fanout/canon;
-- a canonical compiled SHA-256.
-
-Operation normalization covers:
-
-op | subject | relation | object | qualifiers | evidence_refs
-
-## Collision semantics
-
-If one subject/relation pair has multiple distinct objects, R0 emits:
-
-REVIEW_REQUIRED_NOT_PROVEN_CONTRADICTION
-
-Those variants may be compatible, observer-relative, time-relative, projection-relative, additive, or contradictory. R0 does not decide.
-
-COLLISION_CANDIDATE_NE_CONTRADICTION
-
-## Public-safety semantics
-
-Only PUBLIC_SAFE deltas appear in eligible_public_review_delta_ids.
-
-PUBLIC_SAFE_WITH_REDACTION, PRIVATE_ONLY, and UNKNOWN remain explicit fanout holds. R0 never publishes them.
-
-PUBLIC_SAFE_LABEL_NE_PUBLICATION_APPROVAL
+`FANIN_NE_COEVO_INTEGRATION`
 
 ## Bounded executable canary
 
-The fixture contains two session deltas spanning CoLex, Humour, UX, README and RickBar relations.
+The repaired fixture explicitly declares `projection_of: CoEvoDelta+`, an observed base ref, intended receiver, and exact-readproof gate.
 
-Observed local canary result:
+Observed local result:
 
 - accepted deltas: 2
 - unique operations: 3
@@ -77,34 +48,22 @@ Observed local canary result:
 - collision candidates: 1
 - highlight candidates: 1
 - public-fanout holds: 1
-- compiled canonical SHA-256: C089391EDC4B0B3D3B9A960B245D543910D75AA5E4ADA75B0B9BB27214BE38E6
+- compiled canonical SHA-256: `DDE7DC4CC29DFA6AE49F2123CEFC3EAAC0D04D07DAD76D3784B93AF64B0DF81B`
 
-The same fixture copied to a different filesystem path produced byte-identical compiled output.
-
-This proves bounded mechanical determinism for the fixture. It does not prove semantic equivalence, semantic near-duplicate detection, contradiction truth, receiver acceptance, or correct fanout decisions.
-
-## Example
-
-python3 scripts/CoSessionRelationalFanIn.py \
-  --input docs/Operations/fixtures/cosession-relational-fanin-r0-input.json \
-  --output /tmp/cosession-relational-fanin.json
-
-Compare the resulting JSON to the expected fixture output when exercising the reference canary.
+This proves bounded mechanical behavior for the fixture only.
 
 ## Next gate
 
-REVIEW_COLLISIONS_AND_HOLDS_THEN_ELECT_TARGETED_PROJECTIONS
+`COMPILE_REVIEWED_SESSION_PROJECTIONS_TO_COEVO_DELTA_THEN_ELECT_TARGETED_FANOUT`
 
-A later projector/router may turn reviewed fan-in results into targeted candidate mutations for CoTheoryAll+, CoLex, CoIndex, CoAll, CoOps+, CoMythOps+, CoPriMath, CoGibberTru, README/docs, RickBar, CoCivia, UX, humour/highlight assets, or sibling repositories.
-
-That later layer must preserve provenance, authority ceilings, collision domains, public/private boundaries, and reversibility.
+A later compiler should map each reviewed operation to one or more CoEvoDelta+ objects while preserving provenance, epistemic class, authority ceiling, current-base binding, public/private state, collision relations, intended receiver, and pickup/readproof requirements.
 
 ## Rails
 
-FANIN_NE_FANOUT  
-DUPLICATE_OPERATION_NE_DUPLICATE_INTENT  
-COLLISION_CANDIDATE_NE_CONTRADICTION  
-VALIDATION_NE_ACCEPTANCE  
-BRANCH_NE_INTEGRATED  
-MERGED_NE_CANON  
-ALL_SESSIONS_NE_ALL_STATE
+`FANIN_NE_FANOUT`  
+`FANIN_NE_COEVO_INTEGRATION`  
+`COLLISION_CANDIDATE_NE_CONTRADICTION`  
+`VALIDATION_NE_ACCEPTANCE`  
+`DELIVERY_NE_PICKUP`  
+`MERGED_NE_CANON`  
+`ALL_SESSIONS_NE_ALL_STATE`
