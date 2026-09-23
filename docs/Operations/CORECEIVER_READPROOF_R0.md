@@ -1,70 +1,81 @@
 # CoReceiverReadproof R0
 
-**State:** `PUBLIC_CANDIDATE__EXACT_RECEIVER_ACK_CONTRACT__NO_PICKUP_YET`
+**State:** `CROSS_TRANSPORT_INVARIANT__COPULSE_R0B_PICKUP_PROVEN__GITHUB_LANDED_CANARY_PICKUP_UNPROVEN`
 
 ## Purpose
 
-Define the minimum exact-object proof a **distinct elected receiver** must return before a landed CoEvo packet is eligible to advance from `LANDED` to `PICKED_UP`.
+Define the shared lifecycle invariant for advancing an exact delivered object from `LANDED` to `PICKED_UP`:
 
-Sender-side destination readback is insufficient.
+> an elected receiver, distinct from sender-side destination verification, must read the exact object and return receiver-bound proof.
 
 `DESTINATION_READBACK_NE_RECEIVER_PICKUP`
 
-## Required proof
+This document is an invariant/convergence layer. It is **not** a second executable CoPulse readproof protocol.
 
-A readproof binds:
+## Executable CoPulse specialization
 
-- receiver identity;
-- receiver context/instance;
-- packet ID and SHA-256;
-- delivery receipt identity;
-- destination repository/path;
-- landing commit and Git blob SHA;
-- receiver read method;
-- exact-object match;
-- exact-packet-only coverage;
-- receiver disposition.
+Current main provides:
 
-Machine contract:
+- `scripts/CoPulseReceiverReadproofR0B.py`
+- `scripts/CoPulseTwoReceiverCanaryR0B.py`
+- `docs/Operations/COPULSE_TWO_RECEIVER_R0B.md`
+- `docs/Operations/proofs/copulse-r0b-container-pass-20260923.json`
+
+R0B proves bounded `PICKED_UP` for two exact synthetic PUBLIC CoPulse packets using two distinct receiver processes, receiver identities, role profiles, packet hashes, selected pulse sets, and independent ACK starting states.
+
+It explicitly does **not** prove integration, X2 runtime, provider-session pickup, a live global bus, or two failure domains.
+
+For CoPulse/session-currentness traffic, **R0B is the executable specialization**.
+
+`CORECEIVER_READPROOF_NE_PARALLEL_COPULSE_PROTOCOL`
+
+## GitHub-landed packet profile
+
+The machine schema currently stored at:
 
 `schemas/coevo-receiver-readproof-v0.1.schema.json`
 
+is the **GitHub-landed CoEvo packet profile** of the shared invariant. It binds:
+
+- receiver identity and context;
+- exact packet ID and SHA-256;
+- the GitHub delivery receipt identity;
+- repository/path/landing commit/Git blob;
+- receiver read method;
+- exact-object match;
+- receiver disposition.
+
+That profile is appropriate for the bounded GitHub receiver-adapter canary because its delivery evidence includes a Git commit/blob destination.
+
+It should not be imposed on CoPulse R0B packets, whose executable readproof has its own receiver/process/cursor/selected-pulse evidence.
+
 ## Lifecycle rule
 
-A valid receiver-produced readproof may make:
+A receiver-produced exact-object readproof may support:
 
 `LANDED -> PICKED_UP`
 
-eligible.
+for the exact bounded object it names.
 
 It does not itself prove:
 
 - semantic acceptance;
-- baseline integration;
+- ACK commit;
+- working-baseline integration;
 - CoEx;
 - canon;
-- runtime effect;
-- scientific or factual correctness.
+- runtime adoption;
+- factual or scientific correctness.
 
 `PICKED_UP_NE_INTEGRATED`  
-`READ_NE_ACCEPTED`
+`READ_NE_ACCEPTED`  
+`ACK_PROPOSAL_NE_ACK_COMMIT`
 
-## Receiver disposition
+## Current bounded evidence
 
-The receiver may return:
+### GitHub adapter canary
 
-- `READ_ONLY_ACK`
-- `ACCEPTED_FOR_REVIEW`
-- `DEFERRED`
-- `REJECTED`
-
-All four can prove that the exact packet was read. Only the latter fields describe receiver disposition; none silently imply integration.
-
-A rejection is useful negative knowledge, not a transport failure.
-
-## Canary status
-
-GitHub adapter canary packet:
+Packet:
 
 `packet:50AC4F6AFA73BA9A8256C473`
 
@@ -72,20 +83,41 @@ Delivery receipt:
 
 `receipt:github-r0:50AC4F6AFA73BA9A8256C473`
 
-Current proven lifecycle state:
+Proven lifecycle:
 
 `LANDED`
 
-Current receiver pickup state:
+Receiver pickup:
 
 `UNPROVEN`
 
-No readproof is fabricated merely because the sender can read the destination back.
+Sender-side exact destination readback is deliberately not promoted to pickup.
+
+### CoPulse R0B canary
+
+Two receiver-produced readproofs on current main prove:
+
+`PICKED_UP`
+
+for the two exact synthetic role-specific packets only.
+
+Shared ACK mutation remains zero. The next currentness rung is explicit per-receiver ACK commit and backfill/replay.
+
+## Convergence rule
+
+Future transports may use different evidence fields, but the shared invariant remains:
+
+`RECEIVER_IDENTITY + EXACT_OBJECT_IDENTITY + RECEIVER_SIDE_READ + COVERAGE_BOUNDARY + DISPOSITION`
+
+Do not force every transport into Git commit fields, process IDs, or provider-tab concepts when those do not apply.
+
+`PROTOCOL_NE_ONTOLOGY`
 
 ## Rails
 
 `NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF`  
 `DESTINATION_READBACK_NE_RECEIVER_PICKUP`  
+`CORECEIVER_READPROOF_NE_PARALLEL_COPULSE_PROTOCOL`  
 `PICKED_UP_NE_INTEGRATED`  
 `READ_NE_ACCEPTED`  
-`REJECTED_NE_USELESS`
+`ACK_PROPOSAL_NE_ACK_COMMIT`
