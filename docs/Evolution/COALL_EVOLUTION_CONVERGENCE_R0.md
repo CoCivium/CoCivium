@@ -1,6 +1,6 @@
 # CoAll Evolution Convergence R0
 
-**State:** `PUBLIC_BRANCH_CANDIDATE__PR23_SCHEMA_UNION_PENDING_CI__NO_MAIN_MERGE_NO_RUNTIME_NO_CANON_NO_AUTHORITY`
+**State:** `PUBLIC_BRANCH_CANDIDATE__CURRENT_WITH_MAIN_AT_OBSERVATION__CI_PASS__NO_MAIN_MERGE_NO_RUNTIME_NO_CANON_NO_AUTHORITY`
 
 Observed `main`: `d3e7e6f2063bb9d3aa6a0954cd6bd219ea93edcd`
 
@@ -119,3 +119,30 @@ The workflow `Validate CoEvo Convergence R0` passed on head `aca9e2c8fcc19d712b9
 `BRANCH_BEHIND_NE_SEMANTIC_INVALIDATION`  
 `REFRESH_BEFORE_MERGE`  
 `CI_PASS_NE_CANON_OR_MERGE_AUTHORITY`
+
+
+## Currentness refresh through close-safe wake guard
+
+At 2026-09-23T12:02:13Z the convergence branch was merged forward through current main `5d570d3dbefcbcf73b3626f7ae6587c83573f8eb` and validated from that merged state.
+
+Current relation at that observation:
+
+- ahead of main: `18`
+- behind main: `0`
+- refresh commit: `e61f747fa3f43eae1b82503e60594ab81b2a9283`
+- GitHub Actions run: `35857997375`
+- result: `PASS_COEVO_CONVERGENCE_R0`
+
+The validated union now covers:
+
+`V0.1 CORE + PR32 EFFECTS + PR37 RICH EXTENSIONS + PR23 WRITEBACK/PROJECTION PROVENANCE`
+
+Main also landed the close-safe wake guard. For a source session already adjudicated close-safe, generic pings, unrelated GitHub currentness, spare capacity, curiosity, and work elsewhere are not by themselves wake predicates.
+
+`GENERIC_PING_NE_WAKE_PREDICATE`  
+`GLOBAL_CURRENTNESS_DELTA_NE_SOURCE_SESSION_WAKE`  
+`SPARE_CAPACITY_NE_FOREGROUND_PERMISSION`
+
+Therefore remaining donor fan-in should proceed only through a bound material relation or another active receiver. This source session need not keep reopening merely because the GitHub estate continues to move.
+
+`DORMANT_OPTION_NE_UNSUBSCRIBED_FROM_CURRENTNESS`
