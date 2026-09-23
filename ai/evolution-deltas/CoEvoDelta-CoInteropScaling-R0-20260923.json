@@ -1,0 +1,50 @@
+{
+  "delta_id": "CoEvoDelta-CoInteropScaling-R0-20260923",
+  "session_id": "CoFlatline260920-S1",
+  "observed_at": "2026-09-23T11:29:59Z",
+  "domain": [
+    "CoAll+",
+    "CoStrategy+",
+    "CoIndex+",
+    "CoLex+",
+    "AutoEvo / CoEvo",
+    "virtual-session/session-lifecycle ecology",
+    "architecture/substrate relations",
+    "UX / surface / projection relations"
+  ],
+  "subject": "CoInteropFabric+ and relational scaling",
+  "relation": "EXTENDS_WITH_BOUNDED_CANDIDATE_RELATIONS",
+  "epistemic_class": "PLANNED",
+  "source_refs": [
+    "CoCivium/CoCivium@71ae3b819520f16d15c52febb2d60ae59fbefa0a:docs/Evolution/COALL_GITHUB_EVOLUTION_FABRIC_R0.md",
+    "CoCivium/CoCivium@5744bd8025b57c4d7ece73921d4e64c42dd39594:SESSION_BOOTSTRAP.md"
+  ],
+  "target_surfaces": [
+    "docs/Evolution/COINTEROP_RELATIONAL_SCALING_R0.md"
+  ],
+  "mutation_class": "BRANCH_MUTATE",
+  "authority_ceiling": "PUBLIC_CANDIDATE_BRANCH_ONLY__NO_MERGE_NO_RUNTIME_NO_OUTREACH",
+  "confidentiality": "PUBLIC",
+  "confidence": 0.84,
+  "contradictions": [],
+  "tests": [
+    "search current public repo for overlapping CoInterop and scaling terms before merge",
+    "review against CoAll GitHub Evolution Fabric anti-thrash rules",
+    "preserve semantic-depth versus execution-depth distinction",
+    "verify no transport gains authority by availability"
+  ],
+  "expected_benefit": "Reduce protocol lock-in, context flood, duplicated session supervision, and backlog ambiguity while preserving typed relational evolution.",
+  "risks": [
+    "term proliferation",
+    "duplicate doctrine with existing lifecycle/currentness work",
+    "anthropomorphic reading of CoWant+ or self-awareness",
+    "semantic richness accidentally interpreted as traversal permission"
+  ],
+  "wake_conditions": [
+    "review identifies non-duplicative integration points",
+    "existing public fabric evolves overlapping semantics",
+    "runtime or MCP adapter work needs explicit transport-neutral contract"
+  ],
+  "supersedes": [],
+  "next_receiver": "CoAll GitHub Evolution Fabric reviewer / reconciliation session"
+}
