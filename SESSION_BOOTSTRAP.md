@@ -171,3 +171,36 @@ After choosing a role, load the closest [CoSessionSubscription+ profile](ai/sess
 
 `CURRENTNESS_FOR_ALL_NE_CONTENT_FOR_ALL`  
 `SUBSCRIPTION_NE_AUTHORITY`
+
+## Dependent/minor device enrollment
+
+Do not enroll a dependent/minor device for standing unrestricted AI remote control. Prove the primary X2 route first, use a separate revocable service identity rather than personal credentials, and require bounded capabilities, durable audit, local recovery, and consent/guardian gates. See [Dependent Device Enrollment R0](docs/Security/DEPENDENT_DEVICE_ENROLLMENT_R0.md).
+
+`PRIMARY_ROUTE_FIRST__DEPENDENT_ENDPOINT_SECOND`  
+`DEVICE_SERVICE_ID_NE_PERSONAL_LOGIN`
+
+## CoAllPulseField+ / receiver-specific currentness
+
+Use [CoAllPulseField+ R0](docs/Architecture/COALL_PULSEFIELD_COTIME_R0.md) and the [public-safe R0A router](scripts/CoPulseSubscriptionRouterR0A.py) when a virtual/session receiver needs bounded currentness after its last ACK cursor. GitHub routing is PUBLIC-safe only; private/restricted pulses stay on private custody paths.
+
+`DELIVERY_NE_PICKUP`  
+`CANDIDATE_DELIVERED_CURSOR_NE_ACK_CURSOR`  
+`PUBLIC_ROUTER_NE_PRIVATE_BUS`
+
+
+## Close-safe anti-loop rule
+
+A session already proven `CLOSE_SAFE` should remain dormant unless a previously bound material wake predicate becomes true. Generic pings, spare capacity, unrelated GitHub commits, or global project motion are not enough by themselves.
+
+Use:
+
+`IF CLOSE_SAFE AND NOT ANY(BOUND_WAKE_PREDICATES_TRUE) -> REMAIN_DORMANT_OPTION`
+
+Do not turn shared currentness into permanent foreground obligation.
+
+`GLOBAL_CURRENTNESS_DELTA_NE_SOURCE_SESSION_WAKE`  
+`GENERIC_PING_NE_WAKE_PREDICATE`  
+`WAKE_REQUIRES_BOUND_MATERIAL_RELATION`  
+`CLOSE_SAFE_NE_REOPEN_ON_CURIOSITY`
+
+Future sessions and reconstructed sessions should inherit this guard through bootstrap. Existing live provider sessions only learn it when an authorized bridge/currentness path exposes it.
