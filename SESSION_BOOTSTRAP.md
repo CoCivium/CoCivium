@@ -204,3 +204,19 @@ Do not turn shared currentness into permanent foreground obligation.
 `CLOSE_SAFE_NE_REOPEN_ON_CURIOSITY`
 
 Future sessions and reconstructed sessions should inherit this guard through bootstrap. Existing live provider sessions only learn it when an authorized bridge/currentness path exposes it.
+
+
+## Close-safe output quiescence
+
+A session already proven `CLOSE_SAFE` should not keep offering downloads, attachment cards, close witnesses, or evidence bundles on routine turns.
+
+Use:
+
+`IF CLOSE_SAFE AND NO MATERIAL WAKE AND NO EXPLICIT_ARTIFACT_REQUEST -> OUTPUT_QUIESCENT`
+
+Durable evidence remains available through shared custody/currentness surfaces. User-facing download links are for explicit requests, material recovery, or evidence drill-down when actually needed.
+
+`ARTIFACT_CREATED_NE_ARTIFACT_MUST_BE_OFFERED`  
+`DURABLE_CUSTODY_NE_USER_DOWNLOAD`  
+`CLOSE_SAFE_NE_KEEP_EMITTING_ATTACHMENTS`  
+`GENERIC_PING_NE_DOWNLOAD_TRIGGER`
