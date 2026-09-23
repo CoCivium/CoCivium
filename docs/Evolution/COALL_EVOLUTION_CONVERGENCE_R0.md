@@ -2,81 +2,116 @@
 
 **State:** `PUBLIC_BRANCH_CANDIDATE__RECONCILIATION_ONLY__NO_MERGE_NO_RUNTIME_NO_CANON_NO_AUTHORITY`
 
-Base: `a5e0caa06b5b1316de528fbbc6e4c942a72dd10e`
+Observed current `main`: `d3e7e6f2063bb9d3aa6a0954cd6bd219ea93edcd`
+
+At this observation the convergence branch is **4 commits ahead / 2 behind** current main, with merge base `a5e0caa06b5b1316de528fbbc6e4c942a72dd10e`.
 
 ## Why this exists
 
-The live CoAll GitHub evolution lane has crossed from “not enough structure” into “several sessions are independently proposing overlapping structure.”
-
-That is a success condition with an unpleasant user interface.
-
-This branch therefore does **fan-in**, not another broad doctrine.
+The active problem is now fan-in pressure, not lack of candidate ideas.
 
 `FANIN_BEFORE_MORE_PARALLEL_MUTATION`
 
+`PR_COUNT_NE_PROGRESS`
+
 `NO_NEWEST_WINS`
 
-## Reconciliation result
+## New descendant satisfaction on main
 
-PR #34 is the strongest broad R1 donor candidate, but it is not elected as an automatic winner.
+Two material pieces have landed since the previous convergence snapshot.
 
-Unique material identified outside #34:
+### CoFleet / RickBar R4A
 
-- **#28:** CoRepoField+/CoProjectionGraph+, explicit CoEvo lifecycle semantics, CoInteropEcology+, `NO_MATERIAL_DELTA => NO_COEVO_EMIT`
+Commit `6b105678b1e17db7fa4ed3a2ea6dc5fb71027d2a` lands the bounded CoFleet projection compiler R4A.
 
-`REPOSITORY_PRESENCE_NE_RECEIVER_AWARENESS`, and `RELATION_PERSISTS__BINDING_EVOLVES`.
-- **#29:** machine-routable lanes for repo/readme ecology, architecture/substrate, protocol ecology, research/challenge, accessibility/locality/XR, security/privacy/governance, culture/memeables, and pressure/energet/want/metabolism.
-- **#30:** CoSessionSurvival donor evidence only.
-- **#31:** selective-session donor; anti-PR-spam/fan-in pressure; RickBar material-exception projection; `repository presence != semantic integration != receiver awareness`; exact session-local authority/confidentiality ceiling; and deterministic R2 donor evidence (`1 delta -> 1 PROJECTION_COMPILER`, `0` donations/collisions/live workers/repo mutations/authority changes). Its unique donor content is now captured here, so #31 may retire unmerged.
-- **#32:** CoPrePublic/public-effect lane plus effect-class/effect-gate/effect-scope schema semantics.
-- **#33:** per-session CoEvo intake convention and README.
-- **#37:** CoEvoDelta v0.2 candidate fields plus CoSubscriptionCurrentness schema and example.
-- **#39:** coordination rail and anti-thrash relation.
+This satisfies part of the RickBar/exception-first projection need. It does **not** prove a live RickBar runtime binding or a global fleet census.
 
-## Convergence rule
+### CoSessionSubscription+ R0
 
-Do not blanket-cherry-pick competing broad branches.
+Commit `d3e7e6f2063bb9d3aa6a0954cd6bd219ea93edcd` lands:
 
-Build one current-main-based patch that carries only unique, compatible deltas.
+- `ai/session-subscription-profiles.json`
+- `schemas/cosession-subscription-profile-v0.1.schema.json`
+- `docs/Architecture/COSESSION_SUBSCRIPTIONS_R0.md`
 
-Prefer additive schema evolution over in-place semantic replacement.
+Main now has explicit receiver-relative HOT/WARM/DIGEST/SLEEP role profiles, bounded domain budgets, preferred repository projections, and these rails:
 
-Preserve donor branches until their unique delta is carried forward or explicitly rejected. Once exact unique donor content is represented in the convergence object, retirement is preferred over keeping redundant PR pressure alive.
+`CURRENTNESS_FOR_ALL_NE_CONTENT_FOR_ALL`
 
-## Schema direction
+`SUBSCRIPTION_NE_AUTHORITY`
 
-Keep `schemas/coevo-delta-v0.1.schema.json` as the current compatibility anchor.
+`PRESSURE_NE_SPAWN_PERMISSION`
 
-Treat v0.2 as a candidate additive successor with:
+Therefore the **basic subscription-temperature concept is no longer unique donor material** in #34 or #37.
+
+What remains unique in #37 is materially narrower and more useful: currentness cursors, wake conditions, receiver-state distinctions, material-delta/dedupe/quiet policies, and the reference subscription receiver/receipt mechanics.
+
+`DESCENDANT_SATISFACTION_REDUCES_DONOR_SCOPE`
+
+## Current donor election
+
+- **#34:** broad R1 donor + validator/CI/intake donor. Basic subscription temperatures are now descendant-satisfied on main.
+- **#23:** fan-in and CoSession-projection-to-CoEvo mechanics donor. Reuse rather than rebuild.
+- **#28:** semantic challenger with unique CoRepoField+/CoProjectionGraph+, CoEvo lifecycle, CoInteropEcology+, `RELATION_PERSISTS__BINDING_EVOLVES`, and discovery-vs-fan-in metabolism.
+- **#29:** narrow current machine-lane extension donor.
+- **#31:** unique donor material is already captured here; it may retire unmerged.
+- **#32:** effect-gate schema donor.
+- **#33:** bounded intake-surface donor.
+- **#37:** richer subscription-currentness + pressure/route/Twilight schema/receiver donor.
+- **#41:** interop/scaling challenger; retain only non-descendant-satisfied relations.
+- **#42:** currentness-document donor through R4A.
+- **#43:** live schema-aligned CoSessionSurvival donor; supersedes #30 as the active donor.
+- **#39:** coordination rail.
+
+## Two real compatibility gates
+
+### 1. CoEvo schema union
+
+#32 and #37 extend CoEvo on divergent branches.
+
+#32 contributes:
+
+`effect_classes | effect_gate | effect_scope`
+
+#37 contributes:
 
 `materiality | subscription_context | pressure | energet | want_projection | route | close_readiness | nonclaims`
 
-Effect-gate semantics from #32 should either be incorporated into v0.2 or introduced as backward-compatible optional v0.1 fields only after validating existing CoSpawn consumers.
+The next safe schema deed is **one additive union candidate tested against current v0.1 consumers**.
 
-`SCHEMA_EVOLUTION_NE_SILENT_CONTRACT_BREAK`
+`SCHEMA_UNION_CANDIDATE_NE_SCHEMA_ACCEPTANCE`
 
-## Subscription/currentness direction
+Do not silently crown either branch.
 
-The strongest unique implementation candidate is a typed session subscription/currentness object:
+### 2. Intake projection collision
 
-`subscriber -> domain temperature -> cursor -> wake condition -> material-delta policy`
+#33 proposes `ai/evolution-deltas/`.
 
-This operationalizes:
+#34 proposes `docs/Evolution/deltas/`.
 
-`LOCAL_SELF_MODEL + SHARED_DURABLE_FRONTIER + SELECTIVE_SUBSCRIPTIONS`
+That is a surface-election problem, not two invitations to create independent semantic ownership.
 
-without requiring every session to ingest the whole estate.
+Elect one primary intake projection or explicit aliases.
 
-## Anti-thrash
+`ONE_RELATION_FIELD_CAN_HAVE_MANY_PROJECTIONS__NOT_MANY_COMPETING_SEMANTIC_CROWNS`
 
-`PR_ARRIVAL_RATE > REVIEW_AND_FANIN_RATE -> REDUCE_NEW_DISCOVERY_AND_INCREASE_RECONCILIATION`
+## Convergence order
 
-A session with no unique material delta should donate, challenge, review, or sleep rather than create another branch.
+`REFRESH_MAIN`
+→ `REDUCE_DESCENDANT_SATISFIED_DONOR_SCOPE`
+→ `ENUMERATE_UNIQUE_DELTAS`
+→ `REUSE_FANIN_MECHANICS`
+→ `TEST_SCHEMA_UNION`
+→ `ELECT_INTAKE_PROJECTION`
+→ `VALIDATE`
+→ `ONLY_THEN_ELECT_MERGE_OR_RETIREMENT`
 
-`NO_MATERIAL_DELTA => NO_COEVO_EMIT`
+The branch itself is behind current main, so **branch reconciliation is a real pre-merge gate**.
+
+`DRAFT_PR_NE_CURRENT_HEAD`
 
 ## Next
 
-`BUILD_ONE_SEMANTIC_CONVERGENCE_PATCH_FROM_CURRENT_MAIN__PRESERVE_UNIQUE_DELTAS__NO_BLANKET_CHERRY_PICK`
+`REFRESH_CONVERGENCE_BRANCH_AGAINST_CURRENT_MAIN__THEN_TEST_SCHEMA_UNION_AND_INTAKE_SURFACE_ELECTION__NO_NEW_BROAD_BRANCH`
 
-No merge, branch closure, runtime activation, canon promotion, public outreach, credential action, or authority transfer is performed by this object.
+No merge, branch closure, runtime activation, canon promotion, public outreach, credential action, financial/privacy effect, deletion, or authority transfer is performed by this object.
