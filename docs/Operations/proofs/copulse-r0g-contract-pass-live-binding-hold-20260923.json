@@ -1,0 +1,63 @@
+{
+  "schema": "CoPulseCapacityProvenanceReceiverBinding.R0G.ExecutionEvidence.v0.1",
+  "state": "PASS_R0G_CONTRACT_MECHANICS__CAPACITY_PROVENANCE_EXACT_SOURCE_BYTES__LIVE_BINDING_GATE_BEHAVIOR__REAL_ROUTE_OFFLINE_HOLD",
+  "execution_surface": "OpenAI task container plus authorized machine-route status check",
+  "exact_branch_bindings": {
+    "CoPulseCapacityProvenanceR0G_git_blob": "a7cfd00fcc1865c823e528ae8a64312918127680",
+    "CoPulseReceiverBindingGateR0G_git_blob": "7117bfb8cf5371725f3e45584d06c03c1abbbb53",
+    "capacity_provenance_schema_git_blob": "82e86c4fcf4946caf3761229c997ef6f3e1b1647",
+    "live_receiver_binding_schema_git_blob": "7917da3bd90acfee5ecc888893d0c96bdfaaaa65"
+  },
+  "git_blob_readback": {
+    "capacity_provenance_verifier_match": true,
+    "receiver_binding_gate_match": true,
+    "capacity_provenance_schema_match": true,
+    "live_receiver_binding_schema_match": true
+  },
+  "contract_canary": {
+    "state": "PASS_R0G_CONTRACT_CANARY__EXACT_SOURCE_PROVENANCE__LIVE_BINDING_GATE_BEHAVIOR__NO_REAL_LIVE_RECEIVER_CLAIM",
+    "result_sha256": "E3D73E61919F44F0A7C51FFB0C6DA88E825901DCDE7340B244CFF1A328D658C7",
+    "capacity_provenance_cases": [
+      "PASS_MEASURED_CAPACITY_PROVENANCE_BOUND",
+      "PASS_DECLARED_CAPACITY_PROVENANCE_BOUND",
+      "PASS_SYNTHETIC_CAPACITY_PROVENANCE_BOUND"
+    ],
+    "negative_source_drift": "PASS_FAIL_CLOSED_SOURCE_OBJECT_HASH_MISMATCH",
+    "binding_gate_cases": [
+      "PASS_LIVE_RECEIVER_BINDING",
+      "HOLD_OFFLINE_RECEIVER",
+      "HOLD_STALE_RECEIVER_BINDING",
+      "HOLD_UNKNOWN_RECEIVER_ROUTE"
+    ],
+    "schema_validation": {
+      "capacity_provenance_objects": 3,
+      "live_receiver_binding_objects": 4,
+      "state": "PASS"
+    }
+  },
+  "real_route_observation": {
+    "receiver_class": "PRIMARY_MACHINE_ROUTE",
+    "connector_state": "OFFLINE",
+    "live_receiver_binding_state": "HOLD_OFFLINE_RECEIVER",
+    "credential_or_device_ids_published": false
+  },
+  "effects": {
+    "pressure_mutation": 0,
+    "source_object_mutation": 0,
+    "receiver_context_mutation": 0,
+    "provider_session_mutation": 0,
+    "ack_cursor_mutation": 0,
+    "authority_change": 0
+  },
+  "next": "WHEN_PRIMARY_MACHINE_ROUTE_ONLINE__BIND_REAL_VIRTUAL_SESSION_EMBODIMENT_SERVICE_IDENTITY_AND_ROUTE_OBSERVATION__THEN_RUN_R0G_LIVE_GATE",
+  "nonclaims": [
+    "SYNTHETIC_ONLINE_FIXTURE_NE_REAL_LIVE_RECEIVER",
+    "PROVENANCE_NE_MEASUREMENT_ACCURACY",
+    "PROVENANCE_NE_LIVE_RECEIVER_BINDING",
+    "ROUTE_ONLINE_NE_RECEIVER_PICKUP",
+    "LIVE_BINDING_NE_AUTHORITY",
+    "NO_REAL_LIVE_RECEIVER_PASS",
+    "NO_PROVIDER_SESSION_PICKUP_CLAIM",
+    "NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE"
+  ]
+}
