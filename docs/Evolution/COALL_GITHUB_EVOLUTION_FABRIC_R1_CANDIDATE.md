@@ -283,10 +283,6 @@ Its GitHub contribution duty is bounded:
 
 `SESSION_CAN_END__WORK_NE_END`
 
-`LIFECYCLE_EVENT_NE_MATERIAL_DELTA`
-
-`NO_MATERIAL_DELTA => NO_COEVO_EMIT`
-
 A lifecycle transition may justify harvest, checkpointing, or a wake-condition update without manufacturing a new project delta.
 
 `LIFECYCLE_EVENT_NE_MATERIAL_DELTA`
@@ -327,7 +323,9 @@ A review after this draft landed found that several items originally listed as f
 - logical CoSpawn contract/schema and R2 planner lineage;
 - confidentiality-preserving CoSpawn routing;
 - loopback-only public-safe local-model R3 adapter, with the actual X2/Ollama canary still unrun;
-- CoFleetProjection+ / RickBar R4 UX and data contract, with live RickBar ingestion/rendering still unproven.
+- CoFleetProjection+ / RickBar R4 UX and data contract;
+- deterministic CoFleetProjection compiler R4A, with native RickBar/CoDesktop receiver binding still unproven;
+- CoSessionSubscription+ R0 plus machine-readable HOT/WARM/DIGEST/SLEEP profiles, with receiver-specific delivery/control-plane binding still next.
 
 These are available components, not proof of global receiver pickup, integration, CoEx, canon, or runtime adoption.
 
@@ -335,11 +333,11 @@ These are available components, not proof of global receiver pickup, integration
 
 ### Remaining bounded follow-ons
 
-- session subscription manifest;
-- cross-repo currentness pulse format;
+- receiver-specific subscription delivery binding into virtual-session records / CoAllPulseField;
+- cross-repo currentness pulse / fan-in receipt format;
 - CoTwilight GitHub late-delta contract;
 - explicit CoPressure/CoEnerget/CoWant routing semantics/fields;
-- RickBar runtime ingestion/render binding for the landed CoFleet R4 contract;
+- native RickBar/CoDesktop receiver binding for the landed CoFleet R4/R4A projection;
 - one exact X2/Ollama R3 canary plus receiver readproof when the direct machine route returns, before broader local queue consumption;
 - rejected-PR/failed-canary negative-knowledge intake.
 
