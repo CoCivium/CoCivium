@@ -336,3 +336,15 @@ The bounded contract canary passes for provenance and binding-gate behavior, inc
 `PROVENANCE_NE_LIVE_RECEIVER_BINDING`  
 `SYNTHETIC_ONLINE_FIXTURE_NE_REAL_LIVE_RECEIVER`  
 `LIVE_BINDING_NE_AUTHORITY`
+
+## CoPulse currentness pipeline through R0E
+
+Use [the machine currentness index](ai/currentness/copulse-currentness-r0f.json) for the landed public-safe CoPulse lineage: R0A role/profile routing, R0B exact receiver pickup, R0C receiver-local ACK/backfill, R0D explicit-loss DIGEST compaction with exact replay, R0E receiver-capacity budget election, and R0F explicit pressure freshness/divergent receiver-local budgets over one shared pulse field.
+
+R0G now adds exact capacity-source provenance and a live-receiver binding gate. Its contract mechanics are proven on the draft branch; the real primary machine route remains held until a machine connector proves a fresh ONLINE receiver binding.
+
+`DELIVERY_NE_PICKUP`  
+`COMPACTION_NE_DELETION`  
+`COPRESSURE_VECTOR_NE_UNIVERSAL_SCORE`  
+`ZERO_CAPACITY_NE_SILENT_DROP`  
+`PROVENANCE_NE_LIVE_RECEIVER_BINDING`

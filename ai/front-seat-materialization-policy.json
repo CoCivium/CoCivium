@@ -1,0 +1,46 @@
+{
+  "schema": "CoFrontSeatMaterialization.Policy.R1.v0.1-candidate",
+  "state": "DESIGN_READY__NO_GITHUB_APP_CREATED__NO_CREDENTIAL_MATERIALIZED",
+  "front_id": "cocivia",
+  "preferred_seat_class": "GITHUB_APP",
+  "phase_order": [
+    "P0_DESIGN",
+    "P1_READ_ONLY_INSTALLATION",
+    "P2_BOUNDED_DRAFT_PR_CANARY",
+    "P3_DISTINCT_RECEIVER_VERIFICATION"
+  ],
+  "p1": {
+    "repository_scope": [
+      "CoCivium/CoCivium"
+    ],
+    "permissions": {
+      "metadata": "READ",
+      "contents": "READ"
+    },
+    "mutation_allowed": false
+  },
+  "p2": {
+    "enabled": false,
+    "activation_requires": [
+      "P1_IDENTITY_SCOPE_READBACK_PROVEN",
+      "EXPLICIT_ADMIN_AUTHORITY_GATE",
+      "ONE_BOUNDED_EFFECT_LEASE"
+    ],
+    "maximum_effect": "ONE_PUBLIC_SAFE_CANARY_BRANCH_PLUS_ONE_DRAFT_PR__NO_MERGE"
+  },
+  "credentials": {
+    "public_repo_secret_values": false,
+    "secret_manager_handle_only": true,
+    "short_lived_installation_token_preferred": true,
+    "independently_revocable": true
+  },
+  "next": "HUMAN_ADMIN_MATERIALIZATION_GATE_THEN_P1_READ_ONLY_CANARY",
+  "rails": [
+    "PRINCIPAL_NE_SHELL_NE_SEAT",
+    "SEAT_NE_IDENTITY",
+    "SERVICE_PRINCIPAL_NE_PERSONHOOD",
+    "SECRET_HANDLE_NE_SECRET_VALUE",
+    "DRAFT_PR_NE_MERGE_AUTHORITY",
+    "DELEGATION_NE_CREDENTIAL_CREATION_AUTHORITY"
+  ]
+}

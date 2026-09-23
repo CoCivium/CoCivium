@@ -1,0 +1,82 @@
+{
+  "schema": "CoPulseCurrentness.R0E.v0.1-candidate",
+  "state": "R0A_THROUGH_R0E_BOUNDED_PIPELINE_LANDED__NO_LIVE_GLOBAL_BUS",
+  "updated_utc": "2026-09-23T12:33:22Z",
+  "stages": [
+    {
+      "stage": "R0A",
+      "capability": "PUBLIC_SAFE_ROLE_PROFILE_CURSOR_ROUTING",
+      "state": "LANDED",
+      "notes": [
+        "delivery packet compilation only",
+        "ACK cursor unchanged until receiver proof"
+      ]
+    },
+    {
+      "stage": "R0B",
+      "capability": "TWO_DISTINCT_RECEIVER_EXACT_PACKET_PICKUP",
+      "state": "PASS_BOUNDED_CONTAINER_LOCAL_SYNTHETIC",
+      "proof": "docs/Operations/proofs/copulse-r0b-container-pass-20260923.json",
+      "nonclaims": [
+        "PICKED_UP_NE_INTEGRATED",
+        "TWO_PROCESSES_NE_TWO_FAILURE_DOMAINS"
+      ]
+    },
+    {
+      "stage": "R0C",
+      "capability": "PER_RECEIVER_ACK_CHAIN_AND_ROLE_SPECIFIC_BACKFILL",
+      "state": "PASS_BOUNDED_CONTAINER_LOCAL_SYNTHETIC",
+      "proof": "docs/Operations/proofs/copulse-r0c-container-pass-20260923.json",
+      "nonclaims": [
+        "ACK_COMMIT_NE_INTEGRATION",
+        "RECEIVER_LOCAL_ACK_NE_GLOBAL_ACK"
+      ]
+    },
+    {
+      "stage": "R0D",
+      "capability": "DIGEST_COMPACTION_WITH_EXPLICIT_LOSS_AND_EXACT_REPLAY",
+      "state": "PASS_BOUNDED_CONTAINER_LOCAL_SYNTHETIC",
+      "proof": "docs/Operations/proofs/copulse-r0d-container-pass-20260923.json",
+      "exact_forward_port_commit": "70e3ac72063f839337df2feaca9c21d6050d1a7e"
+    },
+    {
+      "stage": "R0E",
+      "capability": "RECEIVER_PRESSURE_CAPACITY_DERIVED_DIGEST_BUDGET",
+      "state": "PASS_BOUNDED_CONTAINER_LOCAL_SYNTHETIC",
+      "proof": "docs/Operations/proofs/copulse-r0e-container-pass-20260923.json",
+      "budget_sequence": [
+        4,
+        2,
+        1,
+        0
+      ],
+      "saturated_behavior": "HOLD_DIGEST_NOT_DROP",
+      "exact_forward_port_commit": "70e3ac72063f839337df2feaca9c21d6050d1a7e"
+    }
+  ],
+  "fanin": {
+    "selected_forward_lineage": "PR_57_CURRENT_MAIN_FANIN",
+    "independent_alternate_donor": "PR_56_CLOSED_UNMERGED",
+    "broader_source_donor": "PR_23_DRAFT",
+    "rule": "FANIN_BEFORE_MORE_PARALLEL_MUTATION"
+  },
+  "next": "R0F_STALENESS_AND_MULTI_RECEIVER_CAPACITY_ELECTION_CANARY",
+  "rails": [
+    "DELIVERY_NE_PICKUP",
+    "PICKED_UP_NE_INTEGRATED",
+    "ACK_COMMIT_NE_INTEGRATION",
+    "COMPACTION_NE_DELETION",
+    "EXPLICIT_LOSS_NE_ZERO_LOSS",
+    "COPRESSURE_VECTOR_NE_UNIVERSAL_SCORE",
+    "CAPACITY_NE_AUTHORITY",
+    "ZERO_CAPACITY_NE_SILENT_DROP",
+    "LOCAL_CANARY_NE_LIVE_GLOBAL_BUS"
+  ],
+  "nonclaims": [
+    "NO_PROVIDER_SESSION_CONTEXT_MUTATION_PROVEN",
+    "NO_X2_RUNTIME_PROOF",
+    "NO_PRIVATE_RESTRICTED_ROUTING_PROOF",
+    "NO_CROSS_FAILURE_DOMAIN_RECEIVER_PROOF",
+    "NO_INTEGRATION_OR_COEX_INFERENCE"
+  ]
+}

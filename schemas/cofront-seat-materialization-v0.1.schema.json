@@ -1,0 +1,188 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/CoCivium/CoCivium/schemas/cofront-seat-materialization-v0.1.schema.json",
+  "title": "CoFront seat materialization contract v0.1 candidate",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "materialization_id",
+    "front_id",
+    "platform",
+    "seat_class",
+    "state",
+    "repository_scope",
+    "permission_ceiling",
+    "credential_policy",
+    "effect_policy",
+    "authority_ceiling",
+    "next",
+    "nonclaims"
+  ],
+  "properties": {
+    "materialization_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "front_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "platform": {
+      "const": "GITHUB"
+    },
+    "seat_class": {
+      "enum": [
+        "GITHUB_APP",
+        "BOT_SERVICE_PRINCIPAL",
+        "VENDOR_USER",
+        "NONE"
+      ]
+    },
+    "state": {
+      "enum": [
+        "DESIGN_ONLY",
+        "READ_ONLY_INSTALLATION_PENDING",
+        "READ_ONLY_INSTALLATION_PROVEN",
+        "BOUNDED_DRAFT_PR_CANARY_PENDING",
+        "BOUNDED_DRAFT_PR_CANARY_PROVEN",
+        "HELD",
+        "REVOKED"
+      ]
+    },
+    "repository_scope": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "permission_ceiling": {
+      "type": "object",
+      "required": [
+        "metadata",
+        "contents",
+        "pull_requests",
+        "administration",
+        "members",
+        "secrets",
+        "actions",
+        "workflows",
+        "environments",
+        "billing"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "metadata": {
+          "enum": [
+            "NONE",
+            "READ"
+          ]
+        },
+        "contents": {
+          "enum": [
+            "NONE",
+            "READ",
+            "WRITE"
+          ]
+        },
+        "pull_requests": {
+          "enum": [
+            "NONE",
+            "READ",
+            "WRITE"
+          ]
+        },
+        "administration": {
+          "const": "NONE"
+        },
+        "members": {
+          "const": "NONE"
+        },
+        "secrets": {
+          "const": "NONE"
+        },
+        "actions": {
+          "const": "NONE"
+        },
+        "workflows": {
+          "const": "NONE"
+        },
+        "environments": {
+          "const": "NONE"
+        },
+        "billing": {
+          "const": "NONE"
+        }
+      }
+    },
+    "credential_policy": {
+      "type": "object",
+      "required": [
+        "secret_values_in_repo",
+        "short_lived_token_preferred",
+        "secret_handle_only",
+        "revocable"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "secret_values_in_repo": {
+          "const": false
+        },
+        "short_lived_token_preferred": {
+          "const": true
+        },
+        "secret_handle_only": {
+          "const": true
+        },
+        "revocable": {
+          "const": true
+        }
+      }
+    },
+    "effect_policy": {
+      "type": "object",
+      "required": [
+        "effect_lease_required",
+        "merge_allowed",
+        "public_outreach_allowed",
+        "max_repositories_per_canary"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "effect_lease_required": {
+          "const": true
+        },
+        "merge_allowed": {
+          "const": false
+        },
+        "public_outreach_allowed": {
+          "const": false
+        },
+        "max_repositories_per_canary": {
+          "const": 1
+        }
+      }
+    },
+    "authority_ceiling": {
+      "type": "string",
+      "minLength": 1
+    },
+    "proof_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "next": {
+      "type": "string",
+      "minLength": 1
+    },
+    "nonclaims": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

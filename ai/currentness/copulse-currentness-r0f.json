@@ -1,0 +1,79 @@
+{
+  "schema": "CoPulseCurrentness.R0F.v0.1-candidate",
+  "state": "R0A_THROUGH_R0F_BOUNDED_PIPELINE_LANDED__NO_LIVE_GLOBAL_BUS",
+  "updated_utc": "2026-09-23T12:33:22Z",
+  "lineage": [
+    {
+      "stage": "R0A",
+      "state": "LANDED",
+      "capability": "PUBLIC_SAFE_ROLE_PROFILE_CURSOR_ROUTING"
+    },
+    {
+      "stage": "R0B",
+      "state": "PASS_BOUNDED_CONTAINER_LOCAL_SYNTHETIC",
+      "capability": "TWO_RECEIVER_EXACT_PACKET_PICKUP",
+      "proof": "docs/Operations/proofs/copulse-r0b-container-pass-20260923.json"
+    },
+    {
+      "stage": "R0C",
+      "state": "PASS_BOUNDED_CONTAINER_LOCAL_SYNTHETIC",
+      "capability": "PER_RECEIVER_ACK_CHAIN_AND_ROLE_SPECIFIC_BACKFILL",
+      "proof": "docs/Operations/proofs/copulse-r0c-container-pass-20260923.json"
+    },
+    {
+      "stage": "R0D",
+      "state": "PASS_BOUNDED_CONTAINER_LOCAL_SYNTHETIC",
+      "capability": "DIGEST_EXPLICIT_LOSS_AND_EXACT_REPLAY",
+      "proof": "docs/Operations/proofs/copulse-r0d-container-pass-20260923.json"
+    },
+    {
+      "stage": "R0E",
+      "state": "PASS_BOUNDED_CONTAINER_LOCAL_SYNTHETIC",
+      "capability": "RECEIVER_CAPACITY_DERIVED_DIGEST_BUDGET",
+      "proof": "docs/Operations/proofs/copulse-r0e-container-pass-20260923.json"
+    },
+    {
+      "stage": "R0F",
+      "state": "PASS_BOUNDED_CONTAINER_LOCAL_SYNTHETIC",
+      "capability": "EXPLICIT_PRESSURE_FRESHNESS_AND_MULTI_RECEIVER_DIVERGENT_BUDGETS",
+      "proof": "docs/Operations/proofs/copulse-r0f-container-pass-20260923.json",
+      "main_fanin_commit": "74834a50bdcba4129a23ae9833904bbd1c0b7473"
+    }
+  ],
+  "r0f_observed": {
+    "shared_pulse_field": true,
+    "fresh_receiver_budgets": [
+      4,
+      1
+    ],
+    "independent_ack_cursors": [
+      2,
+      0
+    ],
+    "stale_receiver": "HELD_BEFORE_BUDGET_ELECTION",
+    "exact_replay_for_fresh_receivers": true,
+    "effects": {
+      "provider_session_mutation": 0,
+      "receiver_context_mutation": 0,
+      "ack_cursor_mutation": 0,
+      "authority_change": 0,
+      "source_deletion": 0
+    }
+  },
+  "next": "R0G_CAPACITY_SOURCE_PROVENANCE_AND_LIVE_RECEIVER_BINDING_CANARY",
+  "rails": [
+    "FRESHNESS_NE_TRUTH",
+    "FRESH_SAMPLE_NE_CAPACITY_ACCURACY_PROOF",
+    "STALE_SAMPLE_NE_ZERO_CAPACITY",
+    "DIVERGENT_BUDGETS_NE_INCONSISTENCY",
+    "INDEPENDENT_ACK_NE_GLOBAL_ACK",
+    "LOCAL_CANARY_NE_LIVE_GLOBAL_BUS"
+  ],
+  "nonclaims": [
+    "NO_LIVE_RECEIVER_INSTANCE_BINDING_PROVEN",
+    "NO_X2_RUNTIME_PROOF",
+    "NO_PROVIDER_SESSION_CONTEXT_MUTATION_PROVEN",
+    "NO_PRIVATE_RESTRICTED_ROUTING_PROOF",
+    "NO_INTEGRATION_OR_COEX_INFERENCE"
+  ]
+}
