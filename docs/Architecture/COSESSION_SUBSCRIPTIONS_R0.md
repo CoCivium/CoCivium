@@ -70,9 +70,32 @@ The machine registry currently seeds:
 
 The registry is intentionally extensible.
 
+## R0A — virtual-session profile binding
+
+A virtual-session record may now carry an optional `subscription_profile_binding` relation:
+
+`profile_id | registry_ref | registry_blob_sha | observed_at`
+
+This is deliberately separate from the existing `subscriptions[]` field.
+
+- `subscription_profile_binding` identifies the profile source and, when available, the exact registry blob observed by the receiver.
+- `subscriptions[]` remains the receiver-specific effective domain binding carried by that virtual-session record.
+- a profile binding may be absent for legacy, synthetic, or deliberately unprofiled sessions;
+- a profile binding does not grant mutation authority;
+- a newer registry blob does not silently rewrite an already-bound virtual session;
+- rebinding should be explicit when profile currentness materially changes.
+
+`PROFILE_BINDING_NE_AUTHORITY`  
+`PROFILE_ID_NE_EFFECTIVE_SUBSCRIPTIONS`  
+`NEWER_PROFILE_REGISTRY_NE_SILENT_REBIND`  
+`BOUND_PROFILE_NE_GLOBAL_CONTENT_PUSH`
+
 ## Next
 
-Bind these profiles into virtual-session records and CoAllPulseField delivery so the control plane can compute receiver-specific delta packets.
+Compile one bounded virtual-session fixture from an exact profile binding and effective `subscriptions[]`, then route only the receiver-specific delta packet through a CoAllPulseField-compatible delivery object or equivalent bounded currentness carrier.
+
+Do not infer a live event bus, provider push, or runtime adoption from the schema relation.
 
 `CURRENTNESS_FOR_ALL_NE_CONTENT_FOR_ALL`  
-`SLEEP_NE_IGNORE_FOREVER`
+`SLEEP_NE_IGNORE_FOREVER`  
+`PROFILE_BINDING_NE_LIVE_DELIVERY`
