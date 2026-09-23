@@ -141,3 +141,10 @@ Use [CoFront+ / CoCivia GitHub Identity R0](docs/Identity/COFRONT_COCIVIA_GITHUB
 
 `PRINCIPAL_NE_SHELL_NE_SEAT`  
 `FRONT_COUNT_NE_ACCOUNT_COUNT`
+
+## Shared evolution fabric
+
+Capable sessions should subscribe to relevant domains in [CoAll GitHub Evolution Fabric R0](docs/Evolution/COALL_GITHUB_EVOLUTION_FABRIC_R0.md) and emit bounded CoEvoDelta+ objects instead of carrying the whole project in chat context. GitHub write access does not grant global project authority.
+
+`ALL_SESSIONS_CAN_CONTRIBUTE_NE_ALL_SESSIONS_MUTATE_ALL_SURFACES`  
+`CURRENTNESS_FOR_ALL_NE_CONTENT_FOR_ALL`
