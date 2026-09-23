@@ -46,3 +46,12 @@ Run the deterministic fixture, then prove two distinct receiver processes can re
 `DELIVERY_NE_PICKUP`  
 `PUBLIC_ROUTER_NE_PRIVATE_BUS`  
 `SUBSCRIPTION_NE_AUTHORITY`
+
+
+## R0A1 epistemic-schema repair
+
+The first forward-port fixture correctly used `HYPOTHESIS` and `HUMOROUS`, but the inherited pulse schema still exposed the older narrower epistemic enum. R0A1 aligns CoPulse+ with the landed CoEvoDelta+ epistemic classes and makes public-router validation explicit.
+
+The public router also requires at least one evolution domain for every routable pulse and rejects unknown confidentiality labels before routing.
+
+`FIXTURE_VALIDITY_NE_SCHEMA_VALIDITY_UNLESS_CHECKED`
