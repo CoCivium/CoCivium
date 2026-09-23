@@ -4,7 +4,7 @@
 > **Public R&D / pre-launch transition:** CoCivium is moving from mostly private prototyping toward a public demo / pre-launch phase. Repositories, terms, interfaces, and machine-readable projections are being reorganized. Expect **StrawBe+** work-in-progress objects, explicit nonclaims, and superseded prototypes. **Public does not mean validated, finished, endorsed, or release-ready.** See [PRELAUNCH.md](PRELAUNCH.md).
 
 
-"If the Universes are NOT "Natively Quantum", and if all is "relational"..."
+"If the Universes are NOT "Natively Quantum", and if all is "relational" and if CoCivium is CME..."
 
 
 > **Session/bootstrap pointer:** sessions and machine clients needing current public project orientation should start with [SESSION_BOOTSTRAP.md](SESSION_BOOTSTRAP.md). GitHub is a shared public/currentness surface, not the sole custody root.
