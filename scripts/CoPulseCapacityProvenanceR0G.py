@@ -22,24 +22,34 @@ def load(path: Path) -> tuple[dict[str, Any], bytes]:
     return obj, raw
 
 
-def verify(pressure: dict[str, Any], pressure_raw: bytes, prov: dict[str, Any]) -> dict[str, Any]:
+def verify(
+    pressure: dict[str, Any],
+    pressure_raw: bytes,
+    prov: dict[str, Any],
+    source_object_raw: bytes,
+) -> dict[str, Any]:
     for key in ("sample_id","receiver_id","capacity_source"):
         if pressure.get(key) != prov.get(key):
             raise ValueError("FAIL_CLOSED__PROVENANCE_BINDING_MISMATCH=" + key)
-    actual = sha256_bytes(pressure_raw)
-    if actual != prov.get("pressure_input_sha256"):
+
+    pressure_sha = sha256_bytes(pressure_raw)
+    if pressure_sha != prov.get("pressure_input_sha256"):
         raise ValueError("FAIL_CLOSED__PRESSURE_HASH_MISMATCH")
-    source = prov.get("capacity_source")
+
+    source_sha = sha256_bytes(source_object_raw)
+    if source_sha != prov.get("source_object_sha256"):
+        raise ValueError("FAIL_CLOSED__SOURCE_OBJECT_HASH_MISMATCH")
+
+    if not prov.get("source_object_ref"):
+        raise ValueError("FAIL_CLOSED__SOURCE_OBJECT_REF_REQUIRED")
     evidence = prov.get("evidence_refs") or []
     if not evidence:
         raise ValueError("FAIL_CLOSED__EVIDENCE_REFS_REQUIRED")
+
+    source = prov.get("capacity_source")
     if source == "MEASURED":
-        if not prov.get("source_object_ref") or not prov.get("source_object_sha256"):
-            raise ValueError("FAIL_CLOSED__MEASURED_SOURCE_OBJECT_REQUIRED")
         state = "PASS_MEASURED_CAPACITY_PROVENANCE_BOUND"
     elif source == "DECLARED":
-        if not prov.get("source_object_ref"):
-            raise ValueError("FAIL_CLOSED__DECLARATION_REF_REQUIRED")
         state = "PASS_DECLARED_CAPACITY_PROVENANCE_BOUND"
     elif source == "SYNTHETIC_FIXTURE":
         state = "PASS_SYNTHETIC_CAPACITY_PROVENANCE_BOUND"
@@ -52,15 +62,16 @@ def verify(pressure: dict[str, Any], pressure_raw: bytes, prov: dict[str, Any]) 
         "sample_id": pressure["sample_id"],
         "receiver_id": pressure["receiver_id"],
         "capacity_source": source,
-        "pressure_input_sha256": actual,
+        "pressure_input_sha256": pressure_sha,
         "provenance_id": prov.get("provenance_id"),
         "source_identity": prov.get("source_identity"),
         "source_method": prov.get("source_method"),
         "source_object_ref": prov.get("source_object_ref"),
-        "source_object_sha256": prov.get("source_object_sha256"),
+        "source_object_sha256": source_sha,
         "evidence_refs": list(evidence),
         "effects": {
             "pressure_mutation": 0,
+            "source_object_mutation": 0,
             "receiver_context_mutation": 0,
             "ack_cursor_mutation": 0,
             "authority_change": 0
@@ -70,7 +81,8 @@ def verify(pressure: dict[str, Any], pressure_raw: bytes, prov: dict[str, Any]) 
             "PROVENANCE_NE_MEASUREMENT_ACCURACY",
             "PROVENANCE_NE_LIVE_RECEIVER_BINDING",
             "CAPACITY_SOURCE_NE_AUTHORITY",
-            "DECLARATION_NE_MEASUREMENT"
+            "DECLARATION_NE_MEASUREMENT",
+            "SOURCE_OBJECT_HASH_NE_SOURCE_TRUTH"
         ]
     }
     result["verification_sha256"] = sha256_bytes(canonical(result))
@@ -81,15 +93,17 @@ def main() -> int:
     ap=argparse.ArgumentParser()
     ap.add_argument("--pressure",required=True)
     ap.add_argument("--provenance",required=True)
+    ap.add_argument("--source-object",required=True)
     ap.add_argument("--output",required=True)
     a=ap.parse_args()
     out=Path(a.output).resolve()
     if out.exists():
         raise SystemExit("FAIL_CLOSED__NO_CLOBBER="+str(out))
     try:
-        pressure,raw=load(Path(a.pressure).resolve())
+        pressure,pressure_raw=load(Path(a.pressure).resolve())
         prov,_=load(Path(a.provenance).resolve())
-        result=verify(pressure,raw,prov)
+        source_object_raw=Path(a.source_object).resolve().read_bytes()
+        result=verify(pressure,pressure_raw,prov,source_object_raw)
     except (ValueError,json.JSONDecodeError) as exc:
         raise SystemExit(str(exc))
     out.parent.mkdir(parents=True,exist_ok=True)
@@ -100,6 +114,7 @@ def main() -> int:
         "OUTPUT":str(out),
         "OUTPUT_SHA256":sha256_bytes(encoded),
         "CAPACITY_SOURCE":result["capacity_source"],
+        "SOURCE_OBJECT_SHA256":result["source_object_sha256"],
         "ACK_CURSOR_MUTATION":0,
         "NEXT":result["next"]
     },separators=(",",":")))
