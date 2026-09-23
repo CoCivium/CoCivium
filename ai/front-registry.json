@@ -1,7 +1,7 @@
 {
   "schema": "CoFront.Registry.v0.1-candidate",
   "state": "PUBLIC_FRONT_REGISTRY__NOT_VENDOR_ACCOUNT_REGISTRY",
-  "updated_utc": "2026-09-23T10:38:32Z",
+  "updated_utc": "2026-09-23T12:49:08Z",
   "current_github_root": {
     "login": "CoCivium",
     "observed_account_type": "User",
@@ -30,7 +30,10 @@
       "github_seat": {
         "state": "NOT_SEPARATELY_MATERIALIZED",
         "preferred_future_class": "GITHUB_APP_OR_BOT_SERVICE_PRINCIPAL",
-        "independent_credentials_present": false
+        "independent_credentials_present": false,
+        "materialization_contract": "docs/Identity/fixtures/cocivia-github-app-r1.json",
+        "materialization_policy": "ai/front-seat-materialization-policy.json",
+        "materialization_state": "DESIGN_READY__HUMAN_ADMIN_GATE_BEFORE_P1"
       },
       "nonclaims": [
         "NOT_SENTIENCE_CLAIM",
