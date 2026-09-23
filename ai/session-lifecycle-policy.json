@@ -133,9 +133,12 @@
   "r0b_pulse_receiver_pickup": {
     "receiver_script": "scripts/CoPulseReceiverReadproofR0B.py",
     "canary_script": "scripts/CoPulseTwoReceiverCanaryR0B.py",
-    "execution_state": "NOT_RUN",
+    "execution_state": "PASS_BOUNDED_CONTAINER_LOCAL_SYNTHETIC__NOT_X2_NOT_GLOBAL_BUS",
+    "proof": "docs/Operations/proofs/copulse-r0b-container-pass-20260923.json",
     "intended_proof": "TWO_DISTINCT_RECEIVER_PROCESSES__SAME_PULSE_FIELD__ROLE_SPECIFIC_PACKETS__INDEPENDENT_ACK_STATE",
+    "bounded_pickup_proven_for_two_synthetic_receivers": true,
+    "integration_proven": false,
     "x2_runtime_required": false,
-    "local_execution_evidence_required_before_pickup_claim": true
+    "next": "R0C_EXPLICIT_PER_RECEIVER_ACK_COMMIT_AND_BACKFILL_REPLAY_CANARY"
   }
 }
