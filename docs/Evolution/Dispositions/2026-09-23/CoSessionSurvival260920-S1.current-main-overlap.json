@@ -1,0 +1,122 @@
+{
+  "schema": "CoSessionConvergence.ReceiverDisposition.v0.1-candidate",
+  "state": "PARTIAL_CROSS_SESSION_DONATION_RECORDED__NO_MERGE_NO_CANON_NO_RUNTIME_NO_AUTHORITY",
+  "session_id": "CoSessionSurvival260920-S1",
+  "observed_at": "2026-09-23T12:03:34Z",
+  "observed_main_commit_sha": "f4c1e9fd5692781db9f764de10b72d0cb1ccb73a",
+  "source_pr": 43,
+  "source_branch": "coevo-cosessionsurvival260920-schema-r1-20260923",
+  "source_package_commit_sha": "4eb15da8602aaec5e22f35bfbce2568c21b9c636",
+  "logical_spawn_equivalent_commit_sha": "69c56333ae6924de29603db14c573eda14ef5de8",
+  "shared_primitives": [
+    {
+      "path": "docs/Architecture/COSESSION_AUTOCYCLE_R0.md",
+      "blob_sha": "a230e4c95188ca634f3dd374c040ea727701e00d",
+      "observed_state": "SHADOW_CONTROL_PLANE__PUBLIC_POLICY__NO_PROVIDER_SESSION_MUTATION"
+    },
+    {
+      "path": "docs/Architecture/COVIRTUAL_SESSION_MORPHOLOGY_R0.md",
+      "blob_sha": "5dff7fff33f8637c3c333fdca360874db1e0bfe5",
+      "observed_state": "PUBLIC_CANDIDATE_ARCHITECTURE__NO_PROVIDER_SESSION_VIRTUALIZATION_CLAIM"
+    },
+    {
+      "path": "docs/Architecture/COSESSION_SUBSCRIPTIONS_R0.md",
+      "blob_sha": "a007fca5c94f74757e982f43466bce3b51a60ba6",
+      "observed_state": "PUBLIC_BOOTSTRAP_ROUTING__NO_GLOBAL_CONTENT_PUSH"
+    },
+    {
+      "path": "ai/session-subscription-profiles.json",
+      "blob_sha": "53c6fa0be899cda1ef21cff92ac75be2e2cdc819",
+      "observed_state": "PUBLIC_BOOTSTRAP_ROUTING__NOT_GLOBAL_CONTENT_PUSH"
+    }
+  ],
+  "dispositions": [
+    {
+      "delta_id": "COEVO.CS260920.COTWILIGHT_PARALLEL_CLOSE_SAFE.R1",
+      "disposition": "PARTIAL_DONATION_TO_SHARED_SESSION_AUTOCYCLE_AND_VIRTUAL_SESSION_PRIMITIVES",
+      "shared_overlap": [
+        "close-safe as lifecycle relation rather than total-work completion",
+        "donate/dedupe/sleep/twilight before materialization",
+        "logical session identity decoupled from provider tab/process",
+        "successor and wake-condition driven lifecycle",
+        "pressure-aware reduction of active embodiments",
+        "provider session is replaceable embodiment, not lifecycle authority"
+      ],
+      "unique_remainder": [
+        "explicit CoCloseSafeLatency+ metric",
+        "explicit CoSessionDependencyArea+ metric",
+        "explicit CoTwilightYield+ metric",
+        "T8/T9-style harvest and cross-session convergence framing",
+        "explicit PARALLELIZE_UNCERTAINTY__SERIALIZE_AUTHORITY formulation"
+      ],
+      "materialization_recommendation": "COOL_OVERLAPPING_SUBGRAPH__KEEP_UNIQUE_REMAINDER_LOGICAL_ONLY"
+    },
+    {
+      "delta_id": "COEVO.CS260920.COPRESSURE_ENERGET_WANT.R1",
+      "disposition": "PARTIAL_DONATION_TO_SHARED_SUBSCRIPTION_AUTOCYCLE_AND_VIRTUAL_SESSION_PRIMITIVES",
+      "shared_overlap": [
+        "bounded role-relative subscriptions",
+        "CURRENTNESS_FOR_ALL_NE_CONTENT_FOR_ALL",
+        "CoPressure+/CoEnerget+/CoWant+ present in lifecycle and virtual-session envelopes",
+        "pressure-aware fleet/materialization policy",
+        "few active embodiments for many logical sessions",
+        "wake/sleep/dormant temperature relations",
+        "full repository ingestion rejected as bootstrap default"
+      ],
+      "unique_remainder": [
+        "typed CoPressure+ vector decomposition",
+        "backlog/optionality reservoir ecology",
+        "constrained CoWant+ relation semantics beyond projection field presence",
+        "CoEnerget+ allocation dimensions",
+        "CoPressureReliefRadius+",
+        "CoAttentionMultiplicationAvoided+"
+      ],
+      "materialization_recommendation": "COOL_OVERLAPPING_SUBGRAPH__KEEP_UNIQUE_REMAINDER_LOGICAL_ONLY"
+    },
+    {
+      "delta_id": "COEVO.CS260920.RELATIONAL_PROTOCOL_SUBSTRATE.R1",
+      "disposition": "NO_STRONGER_SHARED_REALIZATION_EXACTLY_BOUND_IN_THIS_WAVE",
+      "materialization_recommendation": "RETAIN_LOGICAL_ONLY",
+      "absence_claim": "UNPROVEN",
+      "note": "bounded GitHub discovery did not exact-bind a stronger shared realization; search miss is not absence proof"
+    },
+    {
+      "delta_id": "COEVO.CS260920.NATIVE_COBAR_LIFECYCLE.R1",
+      "disposition": "LOCAL_RECEIPT_BOUND_OBSERVATION_REMAINS_UNINTEGRATED",
+      "materialization_recommendation": "RETAIN_LOGICAL_ONLY__AWAIT_R0H_OR_SHARED_RECEIVER_EVIDENCE",
+      "absence_claim": "UNPROVEN"
+    },
+    {
+      "delta_id": "COEVO.CS260920.HIGHLIGHT_TURTLES_WRITE_PERMISSION.R1",
+      "disposition": "TYPED_HUMOUR_CANDIDATE_REMAINS_UNPROJECTED",
+      "materialization_recommendation": "RETAIN_LOGICAL_ONLY__NO_PUBLIC_HIGHLIGHT_PROMOTION",
+      "absence_claim": "UNPROVEN"
+    }
+  ],
+  "source_session_lifecycle": {
+    "state": "TAB_CLOSE_SAFE_BOUNDED__REMAIN_DORMANT_OPTION",
+    "foreground_reopen": false,
+    "reason": "shared convergence can update donor disposition without reactivating source-session local frontier",
+    "bound_wake_predicate_triggered": "STRONGER_SHARED_PRIMITIVE_APPEARED_FOR_OVERLAPPING_SUBGRAPH"
+  },
+  "effects": {
+    "live_workers_started": 0,
+    "provider_sessions_created": 0,
+    "provider_tabs_closed": 0,
+    "runtime_promotions": 0,
+    "canon_promotions": 0,
+    "authority_changes": 0
+  },
+  "rails": [
+    "PARTIAL_REALIZATION_NE_FULL_DELTA_SATISFACTION",
+    "DONATE_OVERLAP_NE_DELETE_DELTA",
+    "SHARED_PRIMITIVE_NE_CANON",
+    "MAIN_NE_CANON",
+    "SEARCH_MISS_NE_OBJECT_ABSENCE",
+    "GLOBAL_CURRENTNESS_DELTA_NE_SOURCE_SESSION_WAKE",
+    "GENERIC_PING_NE_WAKE_PREDICATE",
+    "WAKE_REQUIRES_BOUND_MATERIAL_RELATION",
+    "DORMANT_OPTION_NE_UNSUBSCRIBED_FROM_CURRENTNESS",
+    "SCHEMA_CONFORMANCE_NE_INTEGRATION"
+  ]
+}
