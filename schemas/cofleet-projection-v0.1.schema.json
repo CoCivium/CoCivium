@@ -1,0 +1,256 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/CoCivium/CoCivium/schemas/cofleet-projection-v0.1.schema.json",
+  "title": "CoFleetProjection v0.1 candidate",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "projection_id",
+    "observed_at",
+    "observer",
+    "coverage",
+    "workspaces",
+    "virtual_sessions",
+    "materialized_workers",
+    "provider_sessions",
+    "model_runtimes",
+    "fronts",
+    "effect_leases",
+    "currentness",
+    "pressure",
+    "human_blockers",
+    "exceptions",
+    "evidence_refs",
+    "nonclaims"
+  ],
+  "properties": {
+    "projection_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "observed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "observer": {
+      "type": "string",
+      "minLength": 1
+    },
+    "coverage": {
+      "type": "object",
+      "required": [
+        "state",
+        "global_fleet_census"
+      ],
+      "properties": {
+        "state": {
+          "type": "string"
+        },
+        "global_fleet_census": {
+          "enum": [
+            "PROVEN",
+            "UNPROVEN",
+            "PARTIAL",
+            "UNKNOWN"
+          ]
+        },
+        "source_count": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        }
+      },
+      "additionalProperties": true
+    },
+    "workspaces": {
+      "$ref": "#/$defs/countBlock"
+    },
+    "virtual_sessions": {
+      "$ref": "#/$defs/temperatureBlock"
+    },
+    "materialized_workers": {
+      "$ref": "#/$defs/countBlock"
+    },
+    "provider_sessions": {
+      "$ref": "#/$defs/countBlock"
+    },
+    "model_runtimes": {
+      "$ref": "#/$defs/countBlock"
+    },
+    "fronts": {
+      "$ref": "#/$defs/countBlock"
+    },
+    "effect_leases": {
+      "$ref": "#/$defs/countBlock"
+    },
+    "currentness": {
+      "type": "object",
+      "required": [
+        "state"
+      ],
+      "properties": {
+        "state": {
+          "enum": [
+            "HEALTHY",
+            "AGING",
+            "STALE",
+            "DEGRADED",
+            "UNKNOWN"
+          ]
+        },
+        "age_seconds": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        }
+      },
+      "additionalProperties": true
+    },
+    "pressure": {
+      "type": "object",
+      "required": [
+        "headline",
+        "dimensions"
+      ],
+      "properties": {
+        "headline": {
+          "enum": [
+            "LOW",
+            "MODERATE",
+            "HIGH",
+            "DEGRADED",
+            "UNKNOWN"
+          ]
+        },
+        "dimensions": {
+          "type": "object"
+        }
+      },
+      "additionalProperties": false
+    },
+    "human_blockers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "blocker_id",
+          "reason",
+          "authority_needed"
+        ],
+        "properties": {
+          "blocker_id": {
+            "type": "string"
+          },
+          "reason": {
+            "type": "string"
+          },
+          "authority_needed": {
+            "type": "string"
+          },
+          "evidence_refs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "exceptions": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "evidence_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "nonclaims": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "$defs": {
+    "countBlock": {
+      "type": "object",
+      "required": [
+        "count",
+        "coverage"
+      ],
+      "properties": {
+        "count": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "coverage": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": true
+    },
+    "temperatureBlock": {
+      "type": "object",
+      "required": [
+        "count",
+        "coverage",
+        "temperatures"
+      ],
+      "properties": {
+        "count": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "coverage": {
+          "type": "string"
+        },
+        "temperatures": {
+          "type": "object",
+          "properties": {
+            "HOT": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "WARM": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "COOL": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "DORMANT": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "COMPOST": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "ARCHIVE": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": true
+    }
+  }
+}
