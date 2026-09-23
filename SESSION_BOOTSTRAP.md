@@ -289,3 +289,14 @@ The existing [CoEvo receiver-readproof schema](schemas/coevo-receiver-readproof-
 `PROTOCOL_NE_ONTOLOGY`  
 `PICKED_UP_NE_INTEGRATED`  
 `ACK_PROPOSAL_NE_ACK_COMMIT`
+
+## CoPulse DIGEST compaction R0D
+
+After receiver-local ACK/backfill R0C, [CoPulse DIGEST Compaction R0D](docs/Operations/COPULSE_DIGEST_COMPACTION_R0D.md) provides bounded CoPressure-aware DIGEST-only representation compaction with explicit omitted-count/loss reporting and exact replay from a hash-bound source packet.
+
+The first candidate canary preserves HOT/WARM entries exactly, compacts four DIGEST entries into one summary under budget 1, reports four omitted inline source entries / three representation items reduced, and exactly replays all four DIGEST source objects. It performs zero ACK, provider-session, authority, source-deletion, or receiver-context effects.
+
+`COMPACTION_NE_DELETION`  
+`SUMMARY_NE_SOURCE`  
+`EXPLICIT_LOSS_NE_ZERO_LOSS`  
+`REPLAY_NE_ACK`
