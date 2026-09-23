@@ -1,0 +1,26 @@
+name: Validate CoAll Evolution R1
+
+on:
+  pull_request:
+    paths:
+      - "docs/Evolution/**"
+      - "schemas/coevo-delta-v0.1.schema.json"
+      - "scripts/validate_coall_evolution_r1.py"
+      - ".github/workflows/validate-coall-evolution-r1.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Use Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Validate relational evolution fabric
+        run: python scripts/validate_coall_evolution_r1.py
