@@ -266,9 +266,12 @@ Landed on `main` as bounded candidate surfaces:
 6. confidentiality-preserving CoSpawn routing -> private/restricted/unknown targets fail closed against public destinations;
 7. R3 local-model adapter -> `scripts/CoLocalModelWorkerR3.py` plus `ai/local-model-worker-policy.json`, with loopback-only/public-only/no-effect gates;
 8. R4 CoFleetProjection+/RickBar UX contract -> `docs/UX/COFLEET_RICKBAR_R4.md`, schema and policy, with exception-first foregrounding and coverage-qualified counts;
-9. R4A deterministic CoFleet projection compiler -> `scripts/CoFleetProjectionCompilerR4A.py` plus `docs/UX/COFLEET_PROJECTION_COMPILER_R4A.md`, compiling bounded lifecycle/spawn inputs without synthesizing missing runtime facts.
+9. R4A deterministic CoFleet projection compiler -> `scripts/CoFleetProjectionCompilerR4A.py` plus `docs/UX/COFLEET_PROJECTION_COMPILER_R4A.md`, compiling bounded lifecycle/spawn inputs without synthesizing missing runtime facts;
+10. CoSessionSubscription+ profiles -> `ai/session-subscription-profiles.json` plus `docs/Architecture/COSESSION_SUBSCRIPTIONS_R0.md`, providing HOT/WARM/DIGEST/SLEEP currentness by role without global repository ingestion.
 
-CoSteward has also recorded a bounded real R2 execution over four session-authored CoEvo deltas: four logical contracts, zero validation issues, zero live workers, and receiver pickup still unproven. Fresh receiver reconciliation found convergent overlap between the CoOutputContract+ delta and CoFleet R4, but explicitly did not infer exact-plan pickup, integration, or runtime binding. This is empirical planner/reconciliation evidence, not integration.
+CoSteward has also recorded a bounded real R2 execution over four session-authored CoEvo deltas: four logical contracts, zero validation issues, zero live workers. A machine-routable private receiver queue now binds the exact R2 plan and per-spawn receiver work. One exact contract, `cospawn:1D184B5E7BD4F9F86DEAA88D` / CoOutputContract+, has receiver-authored readproof from `CoRails.GitHubReceiverLane.v0.1` with full-contract semantic coverage and `PICKED_UP_FOR_DECLARED_SCOPE_ONLY`. The other contracts must not inherit that state. Integration, canon, runtime, and CoEx remain unproven.
+
+Fresh receiver reconciliation also found convergent overlap between CoOutputContract+ and CoFleet R4. That overlap is a donation candidate, not evidence of integration.
 
 R2 compiles and deduplicates logical work; it does not create provider sessions or live workers. R3 is adapter-ready, but the X2/Ollama materialization canary remains unrun at this observation boundary. R4 defines the UX/data contract only. R4A can compile a bounded projection, but RickBar receiver/runtime binding and a live global fleet census remain unproven.
 
@@ -287,8 +290,9 @@ R2 compiles and deduplicates logical work; it does not create provider sessions 
 2. exact-hash that candidate output and require receiver readproof plus an independent verifier before any integration;
 3. bind R4A output to RickBar through R4B only after a proven receiver/runtime adapter, keeping live counts coverage-qualified and requiring explicit runtime facts for provider/model counts;
 4. continue cross-repo bootstrap/domain contracts only where they reduce navigation or routing debt;
-5. add fan-in/currentness receipts so concurrent session deltas reconcile instead of becoming last-writer-wins;
-6. measure bootstrap-time, duplicate-rate, proof-debt, fan-in debt, receiver backlog, and human-attention reduction as evolution-fabric health signals.
+5. expand exact receiver-authored readproofs through the remaining queued spawn_ids only when subscribed receiver lanes actually consume them; preserve `ONE_PICKUP_NE_ALL_PICKUPS`;
+6. connect subscription profiles and the machine-routable receiver queue into CoAllPulseField/virtual-session delivery without turning subscription into authority or a global content push;
+7. measure bootstrap-time, duplicate-rate, proof-debt, fan-in debt, receiver backlog, pickup latency, and human-attention reduction as evolution-fabric health signals.
 
 ## Rails
 
