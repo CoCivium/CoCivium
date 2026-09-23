@@ -297,6 +297,14 @@ Current main now also carries an explicit close-safe wake guard: global currentn
 
 `WAKE_REQUIRES_BOUND_MATERIAL_RELATION`
 
+Current main also carries close-safe output quiescence: absent a material wake or explicit artifact request, suppress new download offers, attachment cards, repeated close witnesses, routine receipt dumps, and unsolicited evidence bundles while keeping evidence available on demand.
+
+`CLOSE_SAFE_NE_KEEP_EMITTING_ATTACHMENTS`
+
+`EVIDENCE_AVAILABLE_NE_EVIDENCE_PUSHED`
+
+`OUTPUT_QUIESCENCE_NE_INFORMATION_LOSS`
+
 ## 12. Mutation defaults
 
 Before any write:
@@ -334,18 +342,35 @@ A review after this draft landed found that several items originally listed as f
 - CoFleetProjection+ / RickBar R4 UX and data contract;
 - deterministic CoFleetProjection compiler R4A, with native RickBar/CoDesktop receiver binding still unproven;
 - CoSessionSubscription+ R0 plus machine-readable HOT/WARM/DIGEST/SLEEP profiles;
-- CoAllPulseField+ R0 forward-port plus deterministic PUBLIC-safe subscription router R0A, compiling receiver-specific packets from profile + last ACK cursor without advancing ACK or claiming pickup;
-- close-safe wake-guard policy, with provider-UI/runtime enforcement still unproven.
+- CoAllPulseField+ R0 forward-port plus deterministic PUBLIC-safe subscription router R0A;
+- bounded R0B synthetic two-receiver execution proving receiver-relative `PICKED_UP` for two exact role-specific packets with distinct processes/profiles/packet hashes and no shared ACK mutation;
+- bounded R0C synthetic receiver-local ACK chaining and role-specific backfill replay, with readproof-before-ACK, distinct ACK chains, independent cursor advance, and no shared global ACK mutation;
+- close-safe wake-guard and output-quiescence policies, with provider-UI/runtime enforcement still unproven.
 
 These are available components, not proof of global receiver pickup, integration, CoEx, canon, or runtime adoption.
 
 `LANDED_COMPONENT_NE_GLOBAL_ADOPTION`
 
+The CoPulse R0B/R0C evidence is intentionally narrow:
+
+`PICKED_UP_NE_INTEGRATED`
+
+`ACK_COMMIT_NE_INTEGRATION`
+
+`TWO_RECEIVERS_NE_TWO_FAILURE_DOMAINS`
+
+`CONTAINER_CANARY_NE_X2_RUNTIME_PROOF`
+
+`LOCAL_CANARY_NE_LIVE_GLOBAL_BUS`
+
+`PUBLIC_PACKET_NE_PRIVATE_BUS`
+
 ### Remaining bounded follow-ons
 
-- exact receiver pickup/readproof for CoPulse subscription packets, including independent receiver cursors before any ACK advance;
+- advance from bounded synthetic R0B/R0C into CoPressure-aware DIGEST compaction with explicit loss reporting and exact replay checks;
 - private/restricted pulse routing on private custody paths plus later live provider/RickBar receiver bridges;
-- cross-repo currentness fan-in/ACK receipt conventions beyond the current PUBLIC-safe packet compiler;
+- cross-failure-domain and non-container receiver evidence before generalizing R0B/R0C beyond the exact synthetic canaries;
+- cross-repo currentness fan-in/ACK receipt conventions beyond the current receiver-local synthetic ACK chains;
 - CoTwilight GitHub late-delta contract;
 - explicit CoPressure/CoEnerget/CoWant routing semantics/fields;
 - native RickBar/CoDesktop receiver binding for the landed CoFleet R4/R4A projection;
