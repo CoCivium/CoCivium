@@ -112,7 +112,7 @@ R0D does not prove:
 
 `R0E_RECEIVER_PRESSURE_POLICY_AND_MULTI_DIGEST_BUDGET_REPLAY_CANARY`
 
-R0E should bind budget election to explicit receiver pressure/capacity rather than a caller-supplied integer, while keeping exact replay and loss accounting mandatory.
+That rung is now implemented by [CoPulse Receiver-Pressure DIGEST Budget Election R0E](COPULSE_RECEIVER_PRESSURE_BUDGET_R0E.md). R0E derives the DIGEST budget from bounded receiver capacity while reserving HOT/WARM occupancy and retaining exact R0D replay for every nonzero budget.
 
 ## Rails
 
