@@ -167,7 +167,7 @@ Bound observation: [CoEvoDelta currentness note](ai/evolution-deltas/2026-09-23/
 
 ## Session write-back / relational deltas
 
-Useful sessions should not only read currentness; when they have a bounded public-safe contribution and an authorized route, they should return it as a **CoEvoDelta+** contribution under the [CoAll GitHub Evolution Fabric R0](docs/Evolution/COALL_GITHUB_EVOLUTION_FABRIC_R0.md). The [CoSession Relational Delta Projection R0](docs/Operations/COSESSION_RELATIONAL_DELTA_CONTRACT_R0.md) and its [machine-readable projection schema](schemas/cosession-relational-delta-v0.1.schema.json) provide a session/receiver-friendly projection, not a competing semantic standard.
+Useful sessions should not only read currentness; when they have a bounded public-safe contribution and an authorized route, they should return it as a **CoEvoDelta+** contribution under the [CoAll GitHub Evolution Fabric R0](docs/Evolution/COALL_GITHUB_EVOLUTION_FABRIC_R0.md). The [CoSession Relational Delta Projection R0](docs/Operations/COSESSION_RELATIONAL_DELTA_CONTRACT_R0.md) provides a session/receiver-friendly projection, not a competing semantic standard. Use [v0.1](schemas/cosession-relational-delta-v0.1.schema.json) for lightweight fan-in/review and [v0.2](schemas/cosession-relational-delta-v0.2.schema.json) when the projection must compile deterministically into [CoEvoDelta v0.2 candidates](schemas/coevo-delta-v0.2.schema.json) through [CoSessionProjectionToCoEvo](scripts/CoSessionProjectionToCoEvo.py).
 
 The default is one provenance-bound source delta followed by review/fan-in and targeted projections, not independent edits across every writable surface.
 
@@ -175,3 +175,6 @@ The default is one provenance-bound source delta followed by review/fan-in and t
 `COSESSION_RELATIONAL_DELTA_IS_COEVO_PROJECTION_NE_PARALLEL_SEMANTIC_STANDARD`  
 `SOURCE_DELTA_NE_FANOUT_COMPLETE`
 
+
+`UNDER_TYPED_INPUT_NE_SAFE_TO_INFER`  
+`COMPILATION_NE_FANOUT`
