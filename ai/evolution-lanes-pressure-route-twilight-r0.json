@@ -1,0 +1,41 @@
+{
+  "schema": "CoAll.EvolutionLanes.v0.2-candidate",
+  "state": "BRANCH_CANDIDATE_EXTENSION",
+  "parent_main_commit": "ed539c58c29376a2f915493a3a36c6316701d246",
+  "extension": "docs/Evolution/COALL_PRESSURE_ROUTE_TWILIGHT_DELTA_R0.md",
+  "domains": [
+    {
+      "domain": "CoPressure+/CoEnerget+",
+      "target_surfaces": ["CoCivium", "CoInsights", "CoStacks", "CoSteward"],
+      "posture": "RELATIONAL_METABOLISM_AND_RESOURCE_FLOW",
+      "mutation_default": "PROPOSE_OR_BRANCH_MUTATE"
+    },
+    {
+      "domain": "CoTwilight+",
+      "target_surfaces": ["CoCivium", "CoSteward", "CoStacks"],
+      "posture": "SESSION_LIFECYCLE_EXTERNALIZATION_AND_CLOSE_READINESS",
+      "mutation_default": "PROPOSE_OR_BRANCH_MUTATE"
+    },
+    {
+      "domain": "CoRoute+/CoCapabilityMesh+/CoRouteMorph+",
+      "target_surfaces": ["CoCivium", "CoToolbelt", "CoStacks", "CoSteward"],
+      "posture": "CAPABILITY_ROUTING_WITHOUT_AUTHORITY_AMPLIFICATION",
+      "mutation_default": "PROPOSE_OR_BRANCH_MUTATE"
+    },
+    {
+      "domain": "CoWant+/CoSessionSelfAwareness+",
+      "target_surfaces": ["CoCivium", "CoInsights"],
+      "posture": "BOUNDED_OBJECTIVE_AND_OPERATIONAL_SELF_MODEL",
+      "mutation_default": "PROPOSE"
+    }
+  ],
+  "rails": [
+    "DOMAIN_NE_REPOSITORY",
+    "REPOSITORY_NE_ONTOLOGY",
+    "PARALLELIZE_UNCERTAINTY__SERIALIZE_AUTHORITY",
+    "ROUTE_OPTIMIZATION_NE_AUTHORITY_AMPLIFICATION",
+    "SELF_AWARENESS_NE_TASK_ACTIVATION",
+    "SESSION_WANT_NE_SENTIENT_DESIRE",
+    "NO_MATERIAL_DELTA__NO_NEW_WAVE"
+  ]
+}
