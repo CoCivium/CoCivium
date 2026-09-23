@@ -1,16 +1,15 @@
 {
-  "schema": "CoCivium.CoAllEvolutionConvergence.R0.v0.4",
-  "observed_at": "2026-09-23T11:57:22Z",
-  "observed_main_commit": "f4c1e9fd5692781db9f764de10b72d0cb1ccb73a",
-  "state": "PUBLIC_BRANCH_CANDIDATE__CONVERGENCE_CI_PASS__BEHIND_MAIN_BY_ONE_SEPARATE_SECURITY_COMMIT__NO_MAIN_MERGE_NO_RUNTIME_NO_CANON_NO_AUTHORITY",
+  "schema": "CoCivium.CoAllEvolutionConvergence.R0.v0.5",
+  "observed_at": "2026-09-23T12:02:13Z",
+  "observed_main_commit": "5d570d3dbefcbcf73b3626f7ae6587c83573f8eb",
+  "state": "PUBLIC_BRANCH_CANDIDATE__CURRENT_WITH_MAIN_AT_OBSERVATION__CI_PASS__NO_MAIN_MERGE_NO_RUNTIME_NO_CANON_NO_AUTHORITY",
   "branch_currentness": {
-    "relation_to_main": "DIVERGED",
-    "ahead_by": 15,
-    "behind_by": 1,
-    "merge_base": "d3e7e6f2063bb9d3aa6a0954cd6bd219ea93edcd",
-    "behind_commit": "f4c1e9fd5692781db9f764de10b72d0cb1ccb73a",
-    "behind_commit_relation": "SECURITY_DEPENDENT_DEVICE_ENROLLMENT__SEPARATE_DOMAIN__NO_AUTOMATIC_SEMANTIC_INVALIDATION_OF_CONVERGENCE",
-    "rail": "BRANCH_BEHIND_NE_SEMANTIC_INVALIDATION__REFRESH_BEFORE_MERGE"
+    "relation_to_main": "AHEAD",
+    "ahead_by": 18,
+    "behind_by": 0,
+    "merge_base": "5d570d3dbefcbcf73b3626f7ae6587c83573f8eb",
+    "refresh_commit": "e61f747fa3f43eae1b82503e60594ab81b2a9283",
+    "rail": "DRAFT_PR_NE_CURRENT_HEAD"
   },
   "landed_main_descendant_satisfaction": [
     {
@@ -36,6 +35,22 @@
         "material-delta policy",
         "receiver-state pickup/integration distinction",
         "content-addressed receiver receipts"
+      ]
+    },
+    {
+      "commit": "5d570d3dbefcbcf73b3626f7ae6587c83573f8eb",
+      "relation": "CLOSE_SAFE_WAKE_GUARD_LANDED",
+      "satisfies": [
+        "close-safe dormant option",
+        "bound wake predicates",
+        "generic ping is not a wake predicate",
+        "global currentness without bound dependency is not a source-session wake trigger",
+        "spare capacity is not foreground permission"
+      ],
+      "nonclaims": [
+        "provider tab auto-close unproven",
+        "runtime provider-session mutation absent",
+        "dormant option is not unsubscribed from currentness"
       ]
     }
   ],
@@ -80,11 +95,23 @@
   ],
   "ci": {
     "workflow": "Validate CoEvo Convergence R0",
-    "head_sha": "aca9e2c8fcc19d712b9de72c2b471659e35b908b",
-    "run_id": 35857459246,
+    "head_sha": "e61f747fa3f43eae1b82503e60594ab81b2a9283",
+    "run_id": 35857997375,
     "conclusion": "success",
-    "scope": "current convergence branch including schema union, intake policy, validator, and currentness reconciliation",
+    "result": "PASS_COEVO_CONVERGENCE_R0",
+    "scope": "current convergence branch including v0.1 core + PR32 effect semantics + PR37 rich context + PR23 writeback/projection provenance + intake election, merged forward through main 5d570d3",
     "permissions": "contents:read",
+    "outputs": [
+      "main_v01_deltas_accepted=1",
+      "schema_union=V01_CORE_UNCHANGED+PR32_EFFECTS+PR37_RICH_EXTENSIONS+PR23_WRITEBACK_PROVENANCE",
+      "rich_extension_requires_materiality=true",
+      "effect_gated_requires_effect_fields=true",
+      "primary_intake=ai/evolution-deltas/<YYYY-MM-DD>/",
+      "docs_evolution_deltas=DOCUMENTATION_INDEX_OR_EXAMPLE_PROJECTION",
+      "canon=UNPROVEN",
+      "runtime=UNPROVEN",
+      "authority=NONE"
+    ],
     "rail": "CI_PASS_NE_CANON_OR_MERGE_AUTHORITY"
   },
   "remaining_unique_donors": [
@@ -172,7 +199,7 @@
       "role": "session donor; supersedes PR30"
     }
   ],
-  "next": "REFRESH_OR_RECONCILE_ONE_MAIN_SECURITY_COMMIT_BEFORE_ANY_MERGE_DECISION__CONTINUE_CARRY_OR_EXPLICIT_REJECT_OF_REMAINING_UNIQUE_NONSHEMA_DELTAS",
+  "next": "REMAINING_UNIQUE_NONSCHEMA_DONORS_FANIN_BY_BOUND_WAKE_ONLY__NO_NEW_BROAD_BRANCH__MAIN_MERGE_REQUIRES_SEPARATE_EXPLICIT_GATE",
   "rails": [
     "FANIN_BEFORE_MORE_PARALLEL_MUTATION",
     "PR_COUNT_NE_PROGRESS",
@@ -185,7 +212,10 @@
     "REPOSITORY_PRESENCE_NE_RECEIVER_AWARENESS",
     "ALL_SESSIONS_CAN_CONTRIBUTE_NE_ALL_SESSIONS_MUTATE_ALL_SURFACES",
     "BRANCH_BEHIND_NE_SEMANTIC_INVALIDATION",
-    "CI_PASS_NE_CANON_OR_MERGE_AUTHORITY"
+    "CI_PASS_NE_CANON_OR_MERGE_AUTHORITY",
+    "GENERIC_PING_NE_WAKE_PREDICATE",
+    "GLOBAL_CURRENTNESS_DELTA_NE_SOURCE_SESSION_WAKE",
+    "SPARE_CAPACITY_NE_FOREGROUND_PERMISSION"
   ],
   "nonclaims": [
     "NOT_MAIN_MERGE",
