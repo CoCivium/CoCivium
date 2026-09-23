@@ -283,6 +283,16 @@ Its GitHub contribution duty is bounded:
 
 `SESSION_CAN_END__WORK_NE_END`
 
+`LIFECYCLE_EVENT_NE_MATERIAL_DELTA`
+
+`NO_MATERIAL_DELTA => NO_COEVO_EMIT`
+
+A lifecycle transition may justify harvest, checkpointing, or a wake-condition update without manufacturing a new project delta.
+
+`LIFECYCLE_EVENT_NE_MATERIAL_DELTA`
+
+`NO_MATERIAL_DELTA => NO_COEVO_EMIT`
+
 ## 12. Mutation defaults
 
 Before any write:
@@ -315,7 +325,9 @@ A review after this draft landed found that several items originally listed as f
 - repository-role/currentness map: `ai/repo-role-map.json`;
 - public highlight registry: `ai/highlight-assets.json`;
 - logical CoSpawn contract/schema and R2 planner lineage;
-- subsequent confidentiality-preserving CoSpawn routing and local-model materialization preparation.
+- confidentiality-preserving CoSpawn routing;
+- loopback-only public-safe local-model R3 adapter, with the actual X2/Ollama canary still unrun;
+- CoFleetProjection+ / RickBar R4 UX and data contract, with live RickBar ingestion/rendering still unproven.
 
 These are available components, not proof of global receiver pickup, integration, CoEx, canon, or runtime adoption.
 
@@ -327,8 +339,8 @@ These are available components, not proof of global receiver pickup, integration
 - cross-repo currentness pulse format;
 - CoTwilight GitHub late-delta contract;
 - explicit CoPressure/CoEnerget/CoWant routing semantics/fields;
-- RickBar material-exception projection;
-- local/Ollama bounded queue consumer beyond currently landed preparation;
+- RickBar runtime ingestion/render binding for the landed CoFleet R4 contract;
+- one exact X2/Ollama R3 canary plus receiver readproof when the direct machine route returns, before broader local queue consumption;
 - rejected-PR/failed-canary negative-knowledge intake.
 
 ### Draft currentness gate
