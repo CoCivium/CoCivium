@@ -1,147 +1,37 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://github.com/CoCivium/CoCivium/schemas/coevo-delta-v0.1.schema.json",
-  "title": "CoEvoDelta v0.1 candidate",
+  "$id": "https://github.com/CoCivium/CoCivium/blob/main/schemas/coevo-delta-v0.1.schema.json",
+  "title": "CoEvoDelta+ v0.1 candidate",
+  "description": "Machine-readable candidate contract for bounded CoAll GitHub evolution contributions. A valid delta is not approval, merge authority, canon, runtime activation, or effect permission.",
   "type": "object",
-  "additionalProperties": false,
-  "required": [
-    "delta_id",
-    "session_id",
-    "observed_at",
-    "domain",
-    "subject",
-    "relation",
-    "epistemic_class",
-    "source_refs",
-    "target_surfaces",
-    "mutation_class",
-    "authority_ceiling",
-    "confidentiality",
-    "next_receiver"
-  ],
+  "required": ["delta_id","session_id","observed_at","domain","subject","relation","epistemic_class","source_refs","target_surfaces","mutation_class","authority_ceiling","confidentiality","confidence","contradictions","tests","expected_benefit","risks","wake_conditions","supersedes","next_receiver"],
   "properties": {
-    "delta_id": {
-      "type": "string",
-      "minLength": 1
-    },
-    "session_id": {
-      "type": "string",
-      "minLength": 1
-    },
-    "observed_at": {
-      "type": "string",
-      "format": "date-time"
-    },
-    "domain": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      },
-      "minItems": 1
-    },
-    "subject": {
-      "type": "string",
-      "minLength": 1
-    },
-    "relation": {
-      "type": "string",
-      "minLength": 1
-    },
-    "epistemic_class": {
-      "enum": [
-        "OBSERVED",
-        "INFERRED",
-        "HYPOTHESIS",
-        "PREDICTED",
-        "PLANNED",
-        "PREFERRED",
-        "METAPHORICAL",
-        "MYTHIC",
-        "HUMOROUS",
-        "COUNTERFACTUAL",
-        "UNKNOWN"
-      ]
-    },
-    "source_refs": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      }
-    },
-    "target_surfaces": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      }
-    },
-    "mutation_class": {
-      "enum": [
-        "OBSERVE",
-        "PROPOSE",
-        "BRANCH_MUTATE",
-        "REVIEW_CHALLENGE",
-        "MERGE_LOW_EFFECT",
-        "EFFECT_GATED"
-      ]
-    },
-    "authority_ceiling": {
-      "type": "string"
-    },
-    "confidentiality": {
-      "enum": [
-        "PUBLIC",
-        "PRIVATE",
-        "RESTRICTED",
-        "UNKNOWN"
-      ]
-    },
-    "confidence": {
-      "type": [
-        "number",
-        "null"
-      ],
-      "minimum": 0,
-      "maximum": 1
-    },
-    "contradictions": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      }
-    },
-    "tests": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      }
-    },
-    "expected_benefit": {
-      "type": [
-        "string",
-        "null"
-      ]
-    },
-    "risks": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      }
-    },
-    "wake_conditions": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      }
-    },
-    "supersedes": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      }
-    },
-    "next_receiver": {
-      "type": "string",
-      "minLength": 1
-    }
-  }
+    "delta_id": {"type":"string","minLength":1},
+    "session_id": {"type":"string","minLength":1},
+    "observed_at": {"type":"string","format":"date-time"},
+    "domain": {"type":"string","minLength":1},
+    "subject": {"type":["string","object"]},
+    "relation": {"type":["string","object"]},
+    "epistemic_class": {"type":"string","minLength":1},
+    "source_refs": {"type":"array","items":{"type":["string","object"]}},
+    "target_surfaces": {"type":"array","items":{"type":["string","object"]}},
+    "mutation_class": {"type":"string","enum":["OBSERVE","PROPOSE","BRANCH_MUTATE","REVIEW_CHALLENGE","MERGE_LOW_EFFECT","EFFECT_GATED"]},
+    "authority_ceiling": {"type":["string","array","object"]},
+    "confidentiality": {"type":["string","object"]},
+    "confidence": {"oneOf":[{"type":"number","minimum":0,"maximum":1},{"type":"string"}]},
+    "contradictions": {"type":"array","items":{"type":["string","object"]}},
+    "tests": {"type":"array","items":{"type":["string","object"]}},
+    "expected_benefit": {"type":["string","number","array","object"]},
+    "risks": {"type":"array","items":{"type":["string","object"]}},
+    "wake_conditions": {"type":"array","items":{"type":["string","object"]}},
+    "supersedes": {"type":"array","items":{"type":["string","object"]}},
+    "next_receiver": {"type":["string","array","object","null"]},
+    "extensions": {"type":"object"}
+  },
+  "additionalProperties": false,
+  "x-cocivium-rails": [
+    "DELTA_NE_APPROVAL","DELTA_NE_CANON","DELTA_NE_RUNTIME","DELTA_NE_AUTHORITY",
+    "ROUTED_NE_PICKED_UP","PICKED_UP_NE_ADOPTED","NEWEST_NE_CURRENT",
+    "HUMOUR_NE_EVIDENCE","METAPHOR_NE_EQUIVALENCE","FORMALIZATION_NE_VALIDATION"
+  ]
 }
