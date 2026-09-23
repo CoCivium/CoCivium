@@ -1,0 +1,75 @@
+{
+  "schema": "CoLogicalSpawnPlanner.R2.v0.1-candidate",
+  "state": "LOGICAL_SPAWN_PLAN_COMPILED__NO_LIVE_MATERIALIZATION",
+  "coverage": {
+    "input_deltas": 1,
+    "logical_contracts": 1,
+    "dedupe_donations": 0,
+    "collision_groups": 0
+  },
+  "contracts": [
+    {
+      "spawn_id": "cospawn:1AC5C025C69F8372B28008AF",
+      "purpose": "Process bounded CoEvoDelta group led by CoMindshare260916-GitHubEvolution-20260923T112100Z",
+      "parent_identity": "CoMindshare260916",
+      "role": "PROJECTION_COMPILER",
+      "scope": "domains=CoSession+,CoAutoEvo+/CoEvo+,CoOps+,CoIndex+,CoUX+/CoSurface+,RickBar+/CoDesktop+; subject=Selective self-aware session contribution under cross-repository scale",
+      "input_bindings": [
+        "ai/evolution-lanes.json",
+        "docs/Evolution/COALL_GITHUB_EVOLUTION_FABRIC_R0.md",
+        "schemas/coevo-delta-v0.1.schema.json"
+      ],
+      "authority_ceiling": "PUBLIC_DOCS_AND_METADATA_CANDIDATE_ONLY__NO_RUNTIME_CANON_OR_CROSS_REPO_MERGE_AUTHORITY",
+      "confidentiality": "PUBLIC",
+      "effect_classes": [
+        "BRANCH_MUTATE"
+      ],
+      "budget": {
+        "max_live_embodiments": 0,
+        "max_effectful_mutations": 0,
+        "logical_work_units": 1
+      },
+      "lease": {
+        "mode": "LOGICAL_ONLY",
+        "effect_lease": "NONE"
+      },
+      "idempotency_key": "dedupe:85CEAED4D938733BF18AADEF737DAA0A442C649A17C222564EE7F0F3CC760CCE",
+      "collision_domain": "coevo:EBDAB637BD6BC06A3668EFA1",
+      "receiver": "CoAll GitHub Evolution Fabric fan-in / CoAutoEvo domain router",
+      "success_condition": "RECEIVER_DISPOSITION_AND_EVIDENCE_RECORDED",
+      "stop_condition": "AUTHORITY_CONFIDENTIALITY_OR_COLLISION_AMBIGUITY",
+      "checkpoint": null,
+      "recovery_pointer": "CoMindshare260916-GitHubEvolution-20260923T112100Z",
+      "failure_domain": null,
+      "handoff_rule": "DONATE_EQUIVALENT_DELTAS_TO_PRIMARY_AND_PRESERVE_SOURCE_REFS",
+      "retirement_condition": "PRIMARY_DELTA_DISPOSITION_RECORDED_AND_DONATED_EQUIVALENTS_BOUND",
+      "provenance": [
+        "CoMindshare260916-GitHubEvolution-20260923T112100Z"
+      ],
+      "currentness": "2026-09-23T11:21:00Z",
+      "uncertainty": null,
+      "materialization_state": "LOGICAL_ONLY"
+    }
+  ],
+  "donations": [],
+  "collisions": [],
+  "validation": {
+    "CoMindshare260916-GitHubEvolution-20260923T112100Z": []
+  },
+  "effects": {
+    "live_workers_started": 0,
+    "provider_sessions_created": 0,
+    "provider_titles_mutated": 0,
+    "provider_tabs_closed": 0,
+    "repo_mutations_executed": 0,
+    "authority_changes": 0
+  },
+  "next": "R3_LOCAL_OLLAMA_MATERIALIZATION_CANARY_FOR_ONE_UNBLOCKED_LOW_EFFECT_CONTRACT",
+  "nonclaims": [
+    "SPAWN_NE_NEW_CHAT",
+    "LOGICAL_RESERVE_NE_LIVE_WORKER",
+    "DEDUPE_NE_DELETE",
+    "MODEL_NE_AUTHORITY",
+    "GITHUB_WRITE_ACCESS_NE_GLOBAL_AUTHORITY"
+  ]
+}
