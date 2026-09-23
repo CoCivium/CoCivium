@@ -194,3 +194,10 @@ After CoEvoDelta+ compilation, use [CoEvoReceiverFanoutPlanner R0](docs/Operatio
 `ROUTE_PLAN_NE_TARGET_MUTATION`  
 `DELIVERY_NE_PICKUP`
 
+## Exact receiver packets
+
+For reviewed routes with explicit receiver bindings, [CoEvoReceiverPacketCompiler R0](docs/Operations/COEVO_RECEIVER_PACKET_COMPILER_R0.md) compiles hash-bound repository or session-currentness packet candidates using [the binding contract](schemas/coevo-receiver-bindings-v0.1.schema.json). Packets remain not-delivered until a proven receiver adapter produces a delivery receipt, and pickup remains unproven until exact packet readproof.
+
+`PACKET_NE_DELIVERY`  
+`NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF`
+
