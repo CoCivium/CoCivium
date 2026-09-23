@@ -1,6 +1,6 @@
 # CoAll Evolution Convergence R0
 
-**State:** `PUBLIC_BRANCH_CANDIDATE__CONVERGENCE_TESTED__NO_MAIN_MERGE_NO_RUNTIME_NO_CANON_NO_AUTHORITY`
+**State:** `PUBLIC_BRANCH_CANDIDATE__PR23_SCHEMA_UNION_PENDING_CI__NO_MAIN_MERGE_NO_RUNTIME_NO_CANON_NO_AUTHORITY`
 
 Observed `main`: `d3e7e6f2063bb9d3aa6a0954cd6bd219ea93edcd`
 
@@ -18,9 +18,11 @@ The branch is now refreshed against the observed mainline and two previously ope
 - PR #32 effect typing:
   `effect_classes | effect_gate | effect_scope`;
 - PR #37 richer extension:
-  `materiality | subscription_context | pressure | energet | want_projection | route | close_readiness | nonclaims`.
+  `materiality | subscription_context | pressure | energet | want_projection | route | close_readiness | nonclaims`;
+- PR #23 session-writeback / projection-provenance extension:
+  `$schema | object | typed_operation | evidence_refs | public_safety | qualifiers | collision_domain | observed_base_ref | next_gate | receiver_readproof_gate | source_projection_id | source_projection_file_sha256 | source_projection_record_index | source_operation_index | source_operation_sha256`.
 
-The candidate keeps v0.1 objects valid, requires effect typing for `EFFECT_GATED`, requires `materiality` when rich v0.2 context is present, and permits a rich object to down-project to its unchanged v0.1 core.
+The candidate keeps v0.1 objects valid, requires effect typing for `EFFECT_GATED`, requires `materiality` when rich PR #37 context is present, accepts PR #23 compiled write-back/provenance fields without changing the v0.1 required set, and permits extended objects to down-project to their unchanged v0.1 core.
 
 `SCHEMA_UNION_CANDIDATE_NE_SCHEMA_ACCEPTANCE`
 
@@ -38,7 +40,7 @@ because main already uses that surface and PR #33 extends it directly.
 
 ## CI evidence
 
-GitHub Actions run `35856946977` completed **successfully** with read-only contents permission.
+Prior GitHub Actions run `35856946977` completed **successfully** with read-only contents permission for the PR #32 + PR #37 union. The newly added PR #23 write-back/provenance extension requires a fresh CI run before the expanded union can claim PASS.
 
 Validator result:
 
@@ -47,7 +49,8 @@ Validator result:
 - current main v0.1 deltas accepted by the union: **1/1**
 - v0.1 core changed: **no**
 - PR #32 effect semantics carried: **yes**
-- PR #37 rich extension carried: **yes**
+- PR #37 rich extension carried in prior PASS: **yes**
+- PR #23 write-back/projection-provenance extension added: **yes; fresh CI pending**
 - missing effect fields for `EFFECT_GATED`: **rejected**
 - rich extension without materiality: **rejected**
 - rich extension with materiality: **accepted**
@@ -73,12 +76,12 @@ Therefore:
 
 ## Remaining unique donor work
 
-The remaining question is no longer schema plumbing.
+The PR #23 schema-name collision is now structurally reconciled in the union candidate, but the expanded union remains pending fresh CI. Non-schema donor fan-in remains after that gate.
 
 Still to carry or explicitly reject before any main-merge election:
 
 - #34: repo-role/currentness registry, highlight registry, broad relational R1 crosswalk, validator/CI donor ideas;
-- #23: fan-in/projection and receiver-fanout mechanics;
+- #23: write-back/projection schema fields now represented in the union candidate; fan-in/projection compiler, packet compiler, and receiver-fanout mechanics remain live donor material;
 - #28: CoRepoField+, CoProjectionGraph+, CoInteropEcology+, lifecycle and binding relations;
 - #29: machine-routable lane extensions not on main;
 - #37: richer currentness/receiver machinery;
