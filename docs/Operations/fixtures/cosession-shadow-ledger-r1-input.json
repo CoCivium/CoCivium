@@ -1,0 +1,44 @@
+{
+  "observations": [
+    {
+      "session_id": "SyntheticSession-A",
+      "observed_at": "2026-09-23T10:55:00Z",
+      "observer": "CoSessionShadowLedger.R1.fixture",
+      "role": "Research donor",
+      "work_state": "IN_PROGRESS",
+      "evidence_state": "BOUNDED_LOCAL_EVIDENCE",
+      "authority_ceiling": "ADVISORY_ONLY",
+      "currentness": "CURRENT",
+      "cotwilight": true,
+      "externalizing": true,
+      "tab_close_safe": false,
+      "successor_ready": false,
+      "prior_label": ".active {Research donor} [SyntheticSession-A]",
+      "wake_conditions": [
+        "MATERIAL_EVIDENCE_DELTA"
+      ],
+      "source_refs": [
+        "fixture:synthetic-a"
+      ]
+    },
+    {
+      "session_id": "SyntheticSession-B",
+      "observed_at": "2026-09-23T10:55:01Z",
+      "observer": "CoSessionShadowLedger.R1.fixture",
+      "role": "Historical donor",
+      "work_state": "DORMANT",
+      "evidence_state": "PICKED_UP_BOUNDED",
+      "authority_ceiling": "NONE",
+      "currentness": "CURRENT",
+      "tab_close_safe": true,
+      "successor_ready": true,
+      "prior_label": null,
+      "wake_conditions": [
+        "EXACT_WAKE_PREDICATE"
+      ],
+      "source_refs": [
+        "fixture:synthetic-b"
+      ]
+    }
+  ]
+}
