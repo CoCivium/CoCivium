@@ -15,7 +15,11 @@
       "authority_ceiling": "CANDIDATE_ONLY",
       "public_safety": "PUBLIC_SAFE",
       "nonclaims": ["NOT_CANON"],
-      "next_gate": "FANIN_REVIEW"
+      "next_gate": "FANIN_REVIEW",
+      "projection_of": "CoEvoDelta+",
+      "next_receiver": "CoEvoFanIn",
+      "observed_base_ref": "main@example-base",
+      "receiver_readproof_gate": "EXACT_DELTA_ID_OR_HASH"
     },
     {
       "delta_id": "fixture-b",
@@ -30,7 +34,11 @@
       "authority_ceiling": "CANDIDATE_ONLY",
       "public_safety": "PUBLIC_SAFE_WITH_REDACTION",
       "nonclaims": ["NOT_CANON"],
-      "next_gate": "REDACTION_THEN_REVIEW"
+      "next_gate": "REDACTION_THEN_REVIEW",
+      "projection_of": "CoEvoDelta+",
+      "next_receiver": "CoEvoFanIn",
+      "observed_base_ref": "main@example-base",
+      "receiver_readproof_gate": "EXACT_DELTA_ID_OR_HASH"
     }
   ]
 }
