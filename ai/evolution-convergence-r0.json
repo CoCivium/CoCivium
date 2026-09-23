@@ -1,14 +1,16 @@
 {
   "schema": "CoCivium.CoAllEvolutionConvergence.R0.v0.4",
-  "observed_at": "2026-09-23T11:53:01Z",
-  "observed_main_commit": "d3e7e6f2063bb9d3aa6a0954cd6bd219ea93edcd",
-  "state": "PUBLIC_BRANCH_CANDIDATE__PR23_SCHEMA_UNION_PENDING_CI__NO_MAIN_MERGE_NO_RUNTIME_NO_CANON_NO_AUTHORITY",
+  "observed_at": "2026-09-23T11:57:22Z",
+  "observed_main_commit": "f4c1e9fd5692781db9f764de10b72d0cb1ccb73a",
+  "state": "PUBLIC_BRANCH_CANDIDATE__CONVERGENCE_CI_PASS__BEHIND_MAIN_BY_ONE_SEPARATE_SECURITY_COMMIT__NO_MAIN_MERGE_NO_RUNTIME_NO_CANON_NO_AUTHORITY",
   "branch_currentness": {
-    "relation_to_main": "AHEAD",
-    "ahead_by": 10,
-    "behind_by": 0,
+    "relation_to_main": "DIVERGED",
+    "ahead_by": 15,
+    "behind_by": 1,
     "merge_base": "d3e7e6f2063bb9d3aa6a0954cd6bd219ea93edcd",
-    "rail": "DRAFT_PR_NE_CURRENT_HEAD"
+    "behind_commit": "f4c1e9fd5692781db9f764de10b72d0cb1ccb73a",
+    "behind_commit_relation": "SECURITY_DEPENDENT_DEVICE_ENROLLMENT__SEPARATE_DOMAIN__NO_AUTOMATIC_SEMANTIC_INVALIDATION_OF_CONVERGENCE",
+    "rail": "BRANCH_BEHIND_NE_SEMANTIC_INVALIDATION__REFRESH_BEFORE_MERGE"
   },
   "landed_main_descendant_satisfaction": [
     {
@@ -78,11 +80,12 @@
   ],
   "ci": {
     "workflow": "Validate CoEvo Convergence R0",
-    "prior_run_id": 35856946977,
-    "prior_conclusion": "success",
-    "prior_scope": "v0.1 core + PR32 effect semantics + PR37 rich extensions",
-    "current_pr23_extension": "PENDING_NEW_RUN",
-    "permissions": "contents:read"
+    "head_sha": "aca9e2c8fcc19d712b9de72c2b471659e35b908b",
+    "run_id": 35857459246,
+    "conclusion": "success",
+    "scope": "current convergence branch including schema union, intake policy, validator, and currentness reconciliation",
+    "permissions": "contents:read",
+    "rail": "CI_PASS_NE_CANON_OR_MERGE_AUTHORITY"
   },
   "remaining_unique_donors": [
     {
@@ -169,7 +172,7 @@
       "role": "session donor; supersedes PR30"
     }
   ],
-  "next": "CARRY_OR_EXPLICITLY_REJECT_REMAINING_UNIQUE_NONSCHEMA_DELTAS__VALIDATE__THEN_HUMAN_OR_EXPLICIT_AUTHORITY_GATE_FOR_MAIN_MERGE",
+  "next": "REFRESH_OR_RECONCILE_ONE_MAIN_SECURITY_COMMIT_BEFORE_ANY_MERGE_DECISION__CONTINUE_CARRY_OR_EXPLICIT_REJECT_OF_REMAINING_UNIQUE_NONSHEMA_DELTAS",
   "rails": [
     "FANIN_BEFORE_MORE_PARALLEL_MUTATION",
     "PR_COUNT_NE_PROGRESS",
@@ -180,7 +183,9 @@
     "MERGE_NE_CANON",
     "GITHUB_WRITE_ACCESS_NE_GLOBAL_AUTHORITY",
     "REPOSITORY_PRESENCE_NE_RECEIVER_AWARENESS",
-    "ALL_SESSIONS_CAN_CONTRIBUTE_NE_ALL_SESSIONS_MUTATE_ALL_SURFACES"
+    "ALL_SESSIONS_CAN_CONTRIBUTE_NE_ALL_SESSIONS_MUTATE_ALL_SURFACES",
+    "BRANCH_BEHIND_NE_SEMANTIC_INVALIDATION",
+    "CI_PASS_NE_CANON_OR_MERGE_AUTHORITY"
   ],
   "nonclaims": [
     "NOT_MAIN_MERGE",
