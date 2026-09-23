@@ -1,0 +1,25 @@
+{
+  "schema": "CoLocalModelWorker.Policy.v0.1-candidate",
+  "state": "ADAPTER_READY__NO_X2_OLLAMA_CANARY_YET",
+  "allowed_effect_classes": [
+    "OBSERVE",
+    "PROPOSE",
+    "REVIEW_CHALLENGE"
+  ],
+  "confidentiality": [
+    "PUBLIC"
+  ],
+  "endpoint_scope": "LOOPBACK_ONLY",
+  "model_install_or_pull": false,
+  "repo_mutation": false,
+  "provider_session_mutation": false,
+  "public_outreach": false,
+  "authority_change": false,
+  "next": "ONE_PUBLIC_SAFE_LOW_EFFECT_X2_OLLAMA_CANARY_AFTER_DIRECT_MACHINE_ROUTE_RETURNS",
+  "rails": [
+    "LOCAL_NE_TRUSTED",
+    "MODEL_NE_AUTHORITY",
+    "MODEL_OUTPUT_NE_EFFECT_PERMISSION",
+    "CANDIDATE_OUTPUT_NE_RECEIVER_PICKUP"
+  ]
+}

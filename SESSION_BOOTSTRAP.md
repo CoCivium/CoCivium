@@ -142,6 +142,28 @@ Use [CoFront+ / CoCivia GitHub Identity R0](docs/Identity/COFRONT_COCIVIA_GITHUB
 `PRINCIPAL_NE_SHELL_NE_SEAT`  
 `FRONT_COUNT_NE_ACCOUNT_COUNT`
 
+## Shared evolution fabric
+
+Capable sessions should subscribe to relevant domains in [CoAll GitHub Evolution Fabric R0](docs/Evolution/COALL_GITHUB_EVOLUTION_FABRIC_R0.md) and emit bounded CoEvoDelta+ objects instead of carrying the whole project in chat context. GitHub write access does not grant global project authority.
+
+`ALL_SESSIONS_CAN_CONTRIBUTE_NE_ALL_SESSIONS_MUTATE_ALL_SURFACES`  
+`CURRENTNESS_FOR_ALL_NE_CONTENT_FOR_ALL`
+
+## GitHub search/currentness boundary
+
+GitHub code search is a discovery aid, not a currentness oracle. Fresh objects may exist at the bound repository head before the search index exposes them.
+
+For currentness-sensitive existence checks, prefer:
+
+`BIND_CURRENT_HEAD -> READ_KNOWN_PATHS_OR_CONTENTS -> USE_SEARCH_FOR_DISCOVERY -> PRESERVE_INDEX_LAG_UNCERTAINTY`
+
+Do not mint a duplicate object merely because code search misses a freshly landed path that is present at the bound head.
+
+`SEARCH_MISS_NE_OBJECT_ABSENCE`  
+`GITHUB_SEARCH_INDEX_NE_REPO_CURRENTNESS`  
+`CURRENT_HEAD_CONTENTS_NE_SEMANTIC_ACCEPTANCE`
+
+Bound observation: [CoEvoDelta currentness note](ai/evolution-deltas/2026-09-23/cobootstrap260920-s1-github-search-currentness-r0.json).
 
 ## Session write-back / relational deltas
 
@@ -152,3 +174,4 @@ The default is one provenance-bound source delta followed by review/fan-in and t
 `ALL_SESSIONS_CAN_CONTRIBUTE_NE_ALL_SESSIONS_MUTATE_ALL_SURFACES`  
 `COSESSION_RELATIONAL_DELTA_IS_COEVO_PROJECTION_NE_PARALLEL_SEMANTIC_STANDARD`  
 `SOURCE_DELTA_NE_FANOUT_COMPLETE`
+

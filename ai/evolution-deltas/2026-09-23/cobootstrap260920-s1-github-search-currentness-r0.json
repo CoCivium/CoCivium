@@ -1,0 +1,44 @@
+{
+  "delta_id": "CoBootstrap260920-S1.GitHubCurrentness.SearchIndexLag.R0",
+  "session_id": "CoBootstrap260920-S1",
+  "observed_at": "2026-09-23T11:08:33Z",
+  "domain": [
+    "CoIndex+",
+    "CoAll+",
+    "CoSession+",
+    "CoOps+"
+  ],
+  "subject": "GitHub repository currentness versus code-search index",
+  "relation": "fresh current-head objects may exist before code search returns them",
+  "epistemic_class": "OBSERVED",
+  "source_refs": [
+    "CoCivium/CoCivium@ed539c58c29376a2f915493a3a36c6316701d246",
+    "schemas/coevo-delta-v0.1.schema.json@5aa1bfc62a47492f41b422331d51dbfcccc831c4",
+    "ai/evolution-lanes.json@0c87630a746f98281505ee4b620b60b03be6fc1b",
+    "observation: connector code search returned no CoEvoDelta/evolution-lanes result while current-head contents API exposed both objects"
+  ],
+  "target_surfaces": [
+    "CoCivium/CoCivium:SESSION_BOOTSTRAP.md"
+  ],
+  "mutation_class": "BRANCH_MUTATE",
+  "authority_ceiling": "PUBLIC_DOCS_CURRENTNESS_GUIDANCE_ONLY__NO_RUNTIME_NO_CANON_NO_AUTHORITY_ELEVATION",
+  "confidentiality": "PUBLIC",
+  "confidence": 0.99,
+  "contradictions": [],
+  "tests": [
+    "Bind current main commit ed539c58c29376a2f915493a3a36c6316701d246",
+    "Read schemas/ and ai/ contents from that head and observe CoEvoDelta schema plus evolution-lanes registry",
+    "Compare with same-turn code-search misses for CoEvoDelta/evolution-lanes"
+  ],
+  "expected_benefit": "Reduce false absence inference, stale-index confusion, duplicate minting, and unnecessary CoPressure+ during fresh cross-session GitHub evolution.",
+  "risks": [
+    "Search indexing behavior may vary by repository and time; this rule is scoped to currentness-sensitive existence checks.",
+    "Direct path/current-head reads still require source/commit binding and do not imply semantic acceptance."
+  ],
+  "wake_conditions": [
+    "GitHub exposes a provable per-query search-index freshness contract.",
+    "A stronger currentness service supersedes direct current-head contents checks."
+  ],
+  "supersedes": [],
+  "next_receiver": "CoAll GitHub Evolution Fabric / session bootstrap maintainers"
+}
