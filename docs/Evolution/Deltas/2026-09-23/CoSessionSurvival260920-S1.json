@@ -1,0 +1,222 @@
+{
+  "schema": "CoAll.CoEvoDeltaPackage.v0.1-candidate",
+  "state": "SCHEMA_ALIGNED_BRANCH_MUTATE_CANDIDATE__NO_MERGE_NO_CANON_NO_RUNTIME_NO_AUTHORITY",
+  "package_id": "CoEvoDeltaPack.CoSessionSurvival260920-S1.20260923.R1",
+  "session_id": "CoSessionSurvival260920-S1",
+  "observed_at": "2026-09-23T11:31:28Z",
+  "supersedes_candidate_pr": 30,
+  "source_currentness": {
+    "repository": "CoCivium/CoCivium",
+    "base_branch": "main",
+    "base_commit_sha": "95999aae1be77706404bca5d088e5dc37ea79f5e",
+    "evolution_contract_path": "docs/Evolution/COALL_GITHUB_EVOLUTION_FABRIC_R0.md",
+    "evolution_contract_blob_sha": "71ae3b819520f16d15c52febb2d60ae59fbefa0a",
+    "evolution_lanes_path": "ai/evolution-lanes.json",
+    "evolution_lanes_blob_sha": "0c87630a746f98281505ee4b620b60b03be6fc1b",
+    "delta_schema_path": "schemas/coevo-delta-v0.1.schema.json",
+    "delta_schema_blob_sha": "5aa1bfc62a47492f41b422331d51dbfcccc831c4",
+    "logical_spawn_planner_path": "scripts/CoLogicalSpawnPlanner.py",
+    "logical_spawn_planner_blob_sha": "585751523a88c48982b14c0f304bef0c4fc855f7",
+    "repo_role_map_path": "ai/repo-role-map.json",
+    "repo_role_map_blob_sha": "40fff5a6ea8f7cdab917b77968eeb9db8f7ac6a4"
+  },
+  "deltas": [
+    {
+      "delta_id": "COEVO.CS260920.COTWILIGHT_PARALLEL_CLOSE_SAFE.R1",
+      "session_id": "CoSessionSurvival260920-S1",
+      "observed_at": "2026-09-23T11:31:28Z",
+      "domain": ["CoSession+", "CoAutoEvo+/CoEvo+", "CoAll+", "CoStrategy+"],
+      "subject": "CoTwilight+ parallel close-safe lifecycle and attention-time-to-independence",
+      "relation": "EVOLVES_CONTROL_OBJECTIVE",
+      "epistemic_class": "PLANNED",
+      "source_refs": [
+        "sha256:9D55559E1BB50CE831608EB631D2F2C7403D81A73DA96480772308AA224F4DC4;class=LOCAL_GENERATED_ARTIFACT",
+        "sha256:E160A0058D04AA1F9403D4555C0B69A357B1DB741AA29485CCE0D87467CA5380;class=LOCAL_FINAL_CLOSE_ADJUDICATION",
+        "sha256:BF4C999B3D18F4D51FF04ADED2D8C1B2B3614A1484A985D83DE7F62E72A9CA5D;class=VERIFIED_LOCAL_EXTERNAL_TO_GITHUB"
+      ],
+      "target_surfaces": ["CoCivium", "CoStacks", "CoAura"],
+      "mutation_class": "BRANCH_MUTATE",
+      "authority_ceiling": "DOCS_SCHEMA_CANDIDATE_ONLY",
+      "confidentiality": "PUBLIC",
+      "confidence": 0.9,
+      "contradictions": [],
+      "tests": [
+        "fresh-successor pickup should not require original provider chat",
+        "settled work must not be blindly rerun",
+        "close-safe may precede total work completion",
+        "parallelize H0/read-only/research work while serializing consequence gates"
+      ],
+      "expected_benefit": "Lower CoCloseSafeLatency+, CoAttentionDebt+, and CoSessionDependencyArea+ while increasing CoTwilightYield+.",
+      "risks": [
+        "parallel fan-out can amplify duplicate work without convergence",
+        "close-safe can be overclaimed if the durable frontier or pending work is not externally recoverable"
+      ],
+      "wake_conditions": [
+        "shared scheduler gains measurable close-safe metrics",
+        "fresh-successor recovery contradicts current doctrine",
+        "cross-session convergence reports duplicate or conflicting ownership"
+      ],
+      "supersedes": ["COEVO.CS260920.COTWILIGHT_PARALLEL_CLOSE_SAFE.R0"],
+      "next_receiver": "CoSessionConvergence+/CoWorkFabric+"
+    },
+    {
+      "delta_id": "COEVO.CS260920.RELATIONAL_PROTOCOL_SUBSTRATE.R1",
+      "session_id": "CoSessionSurvival260920-S1",
+      "observed_at": "2026-09-23T11:31:28Z",
+      "domain": ["CoAll+", "CoIndex+", "CoLex+", "CoOps+", "CoTheoryAll+"],
+      "subject": "Protocol-neutral relational semantic substrate with relatable relations and bounded recursion",
+      "relation": "GENERALIZES_INTEROP_LAYER",
+      "epistemic_class": "HYPOTHESIS",
+      "source_refs": [
+        "sha256:C7788FF9FAE6F2DF5B7F20C1109E101528498B3E6477A93330FD8B202782836A;class=LOCAL_GENERATED_ARTIFACT"
+      ],
+      "target_surfaces": ["CoCivium", "GIBindex", "CoStacks", "CoToolbelt", "CoRails"],
+      "mutation_class": "BRANCH_MUTATE",
+      "authority_ceiling": "DOCS_SCHEMA_CANDIDATE_ONLY",
+      "confidentiality": "PUBLIC",
+      "confidence": 0.76,
+      "contradictions": [],
+      "tests": [
+        "project one bounded relational package through filesystem JSON and one MCP-like or local-mock adapter",
+        "round-trip both projections with explicit loss accounting",
+        "fresh receiver answers a bounded relation-about-relation query"
+      ],
+      "expected_benefit": "Permit protocol replacement without semantic rewrite while exposing projection loss, preserving provenance, and keeping authority outside transport.",
+      "risks": [
+        "recursive relation graphs can create traversal explosion",
+        "adapter conformance may be mistaken for semantic truth or authority"
+      ],
+      "wake_conditions": [
+        "MCP-like adapter round-trip canary becomes available",
+        "a new open protocol dominates an existing adapter on a measured dimension",
+        "projection-loss mismatch is observed"
+      ],
+      "supersedes": ["COEVO.CS260920.RELATIONAL_PROTOCOL_SUBSTRATE.R0"],
+      "next_receiver": "CoRelationalSubstrate+/CoProtocolEcology+"
+    },
+    {
+      "delta_id": "COEVO.CS260920.COPRESSURE_ENERGET_WANT.R1",
+      "session_id": "CoSessionSurvival260920-S1",
+      "observed_at": "2026-09-23T11:31:28Z",
+      "domain": ["CoSession+", "CoAutoEvo+/CoEvo+", "CoAll+", "RickBar+/CoDesktop+", "CoUX+/CoSurface+"],
+      "subject": "Scale metabolism for session pressure, bounded self-models, energy allocation, selective subscriptions, and constrained wants",
+      "relation": "ADDS_SCALE_CONTROL_FIELD",
+      "epistemic_class": "HYPOTHESIS",
+      "source_refs": [
+        "sha256:BF32B104AA6E228109884E9B0BD10EF96810ECC0074486A21F6DB9D7772065CC;class=LOCAL_GENERATED_ARTIFACT"
+      ],
+      "target_surfaces": ["CoCivium", "CoAura", "CoStacks"],
+      "mutation_class": "BRANCH_MUTATE",
+      "authority_ceiling": "DOCS_SCHEMA_CANDIDATE_ONLY",
+      "confidentiality": "PUBLIC",
+      "confidence": 0.79,
+      "contradictions": [],
+      "tests": [
+        "session bounded self-model remains small as global object count grows",
+        "selective subscriptions reduce foreground context pressure",
+        "backlog optionality remains separable from active burden",
+        "CoWant+ does not imply authority, permission, or sentience"
+      ],
+      "expected_benefit": "Reduce global-keeping-up pressure and human-attention multiplication while preserving optionality in typed backlog reservoirs.",
+      "risks": [
+        "self-observation can recursively create more work",
+        "pressure metrics can become administrative overhead if over-instrumented"
+      ],
+      "wake_conditions": [
+        "measured CoCoordinationPressure+ rises faster than useful fan-in",
+        "RickBar begins exposing low-value global state",
+        "backlog size is being mistaken for active burden"
+      ],
+      "supersedes": ["COEVO.CS260920.COPRESSURE_ENERGET_WANT.R0"],
+      "next_receiver": "CoPressure+/CoEnerget+/CoWant+/RickBar+"
+    },
+    {
+      "delta_id": "COEVO.CS260920.NATIVE_COBAR_LIFECYCLE.R1",
+      "session_id": "CoSessionSurvival260920-S1",
+      "observed_at": "2026-09-23T11:31:28Z",
+      "domain": ["CoOps+", "CoAll+", "CoSession+", "CoAutoEvo+/CoEvo+"],
+      "subject": "One bounded local worker native lifecycle self-announcement canary",
+      "relation": "OBSERVED_ONE_BOUNDED_NATIVE_LIFECYCLE_CANARY",
+      "epistemic_class": "OBSERVED",
+      "source_refs": [
+        "sha256:BF4C999B3D18F4D51FF04ADED2D8C1B2B3614A1484A985D83DE7F62E72A9CA5D;class=VERIFIED_LOCAL_RECEIPT_EXTERNAL_TO_GITHUB"
+      ],
+      "target_surfaces": ["CoCivium", "CoStacks", "CoToolbelt"],
+      "mutation_class": "PROPOSE",
+      "authority_ceiling": "NO_RUNTIME_PROMOTION",
+      "confidentiality": "PUBLIC",
+      "confidence": 0.99,
+      "contradictions": [],
+      "tests": [
+        "same worker PID self-emits START and STOP",
+        "STOP binds exact result hash",
+        "separate receiver validates event and result coherence",
+        "no external lifecycle adapter process"
+      ],
+      "expected_benefit": "Reduce lifecycle-adapter dependence and improve bounded worker observability, recovery, and future machine-owned continuation.",
+      "risks": [
+        "one native worker canary may be overgeneralized to all workers or global enforcement"
+      ],
+      "wake_conditions": [
+        "second distinct worker class proves the same native lifecycle schema",
+        "R0H terminal evidence appears",
+        "global CoBar enforcement is proposed"
+      ],
+      "supersedes": ["COEVO.CS260920.NATIVE_COBAR_LIFECYCLE.R0"],
+      "next_receiver": "CoBar+/CoSessionSurvival+"
+    },
+    {
+      "delta_id": "COEVO.CS260920.HIGHLIGHT_TURTLES_WRITE_PERMISSION.R1",
+      "session_id": "CoSessionSurvival260920-S1",
+      "observed_at": "2026-09-23T11:31:28Z",
+      "domain": ["CoHumour+", "CoHighlight+", "CoMythOps+"],
+      "subject": "Turtles are welcome. Unbounded turtles with write permission are not.",
+      "relation": "PROPOSES_TYPED_HUMOUR_HIGHLIGHT_FOR_BOUNDED_RELATIONAL_RECURSION",
+      "epistemic_class": "HUMOROUS",
+      "source_refs": [
+        "sha256:C7788FF9FAE6F2DF5B7F20C1109E101528498B3E6477A93330FD8B202782836A;class=LOCAL_GENERATED_ARTIFACT"
+      ],
+      "target_surfaces": ["CoCivium", "CoInsights"],
+      "mutation_class": "PROPOSE",
+      "authority_ceiling": "PUBLIC_SAFE_CANDIDATE_ONLY",
+      "confidentiality": "PUBLIC",
+      "confidence": 0.95,
+      "contradictions": [],
+      "tests": [
+        "preserve HUMOUR_NE_EVIDENCE typing",
+        "do not present the phrase as a runtime or security claim"
+      ],
+      "expected_benefit": "Provide a memorable, remixable public explanation of bounded recursive relational architecture.",
+      "risks": [
+        "memeable phrasing can be mistaken for architectural sufficiency"
+      ],
+      "wake_conditions": [
+        "public highlight registry gains typed humour assets"
+      ],
+      "supersedes": ["COEVO.CS260920.HIGHLIGHT_TURTLES_WRITE_PERMISSION.R0"],
+      "next_receiver": "CoHighlight+/CoHumour+"
+    }
+  ],
+  "package_rails": [
+    "ALL_SESSIONS_CAN_CONTRIBUTE_NE_ALL_SESSIONS_MUTATE_ALL_SURFACES",
+    "GITHUB_WRITE_ACCESS_NE_GLOBAL_AUTHORITY",
+    "CURRENTNESS_FOR_ALL_NE_CONTENT_FOR_ALL",
+    "DOMAIN_NE_REPOSITORY",
+    "README_NE_CANON",
+    "HIGHLIGHT_NE_CANON",
+    "HUMOUR_NE_EVIDENCE",
+    "METAPHOR_NE_EQUIVALENCE",
+    "NO_NEWEST_WINS",
+    "PARALLELIZE_UNCERTAINTY__SERIALIZE_AUTHORITY",
+    "SCHEMA_CONFORMANCE_NE_INTEGRATION"
+  ],
+  "nonclaims": [
+    "NO_MERGE",
+    "NO_CANON",
+    "NO_RUNTIME_PROMOTION",
+    "NO_GLOBAL_HEAD_ELECTION",
+    "NO_AUTHORITY_TRANSFER",
+    "NO_CLAIM_ALL_SESSIONS_ACKNOWLEDGE_THIS_PACKAGE",
+    "LOCAL_SHA_REFERENCES_NE_GITHUB_CUSTODY_OF_REFERENCED_BYTES"
+  ]
+}
