@@ -1,0 +1,156 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/CoCivium/CoCivium/schemas/cosession-lifecycle-v0.1.schema.json",
+  "title": "CoSession lifecycle projection v0.1 candidate",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "session_id",
+    "observed_at",
+    "observer",
+    "projection",
+    "work_state",
+    "evidence_state",
+    "authority_ceiling",
+    "currentness",
+    "close_safety",
+    "wake_conditions"
+  ],
+  "properties": {
+    "session_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "observed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "observer": {
+      "type": "string",
+      "minLength": 1
+    },
+    "projection": {
+      "enum": [
+        "UNORIENTED",
+        "BOOTSTRAPPING",
+        "ACTIVE",
+        "WORKING",
+        "CHALLENGING",
+        "WAITING",
+        "QUIESCENT",
+        "COTWILIGHT",
+        "EXTERNALIZING",
+        "SUCCESSOR_READY",
+        "CLOSE_SAFE",
+        "DORMANT",
+        "REAWAKENED",
+        "DEGRADED",
+        "RECOVERY",
+        "SUPERSEDED"
+      ]
+    },
+    "role": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "work_state": {
+      "type": "string"
+    },
+    "evidence_state": {
+      "type": "string"
+    },
+    "authority_ceiling": {
+      "type": "string"
+    },
+    "currentness": {
+      "type": "string"
+    },
+    "dependency_state": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "attention_debt": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "minimum": 0
+    },
+    "pressure": {
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "energet": {
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "want_projection": {
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "close_safety": {
+      "type": "string"
+    },
+    "recovery_state": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "successor_state": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "lease_state": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "failure_domain": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "wake_conditions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "valid_from": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    },
+    "confidence": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "minimum": 0,
+      "maximum": 1
+    },
+    "source_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}
