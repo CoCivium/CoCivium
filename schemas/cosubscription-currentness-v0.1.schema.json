@@ -1,0 +1,115 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/CoCivium/CoCivium/schemas/cosubscription-currentness-v0.1.schema.json",
+  "title": "CoSubscriptionCurrentness v0.1 candidate",
+  "description": "Bounded domain subscriptions and receiver-relative currentness cursors for sessions/workers. Reduces total-context ingestion; does not create authority.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "subscriber_id",
+    "observed_at",
+    "authority_ceiling",
+    "confidentiality",
+    "subscriptions",
+    "cursors",
+    "wake_conditions"
+  ],
+  "properties": {
+    "subscriber_id": { "type": "string", "minLength": 1 },
+    "observed_at": { "type": "string", "format": "date-time" },
+    "authority_ceiling": { "type": "string" },
+    "confidentiality": {
+      "enum": ["PUBLIC", "PRIVATE", "RESTRICTED", "UNKNOWN"]
+    },
+    "subscriptions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["domain", "temperature"],
+        "properties": {
+          "domain": { "type": "string", "minLength": 1 },
+          "temperature": {
+            "enum": ["HOT", "WARM", "DIGEST", "SLEEP"]
+          },
+          "purpose": { "type": ["string", "null"] },
+          "receiver_need": { "type": ["string", "null"] },
+          "target_surfaces": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "max_context_budget": {
+            "type": ["integer", "null"],
+            "minimum": 0
+          }
+        }
+      }
+    },
+    "cursors": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "surface",
+          "cursor_kind",
+          "cursor_value",
+          "observed_at"
+        ],
+        "properties": {
+          "surface": { "type": "string", "minLength": 1 },
+          "cursor_kind": {
+            "enum": [
+              "GIT_COMMIT",
+              "RECEIPT_SHA256",
+              "EVENT_SEQUENCE",
+              "TIMESTAMP",
+              "OBJECT_SHA256",
+              "OPAQUE"
+            ]
+          },
+          "cursor_value": { "type": "string", "minLength": 1 },
+          "observed_at": { "type": "string", "format": "date-time" },
+          "source_ref": { "type": ["string", "null"] },
+          "receiver_state": {
+            "enum": [
+              "DISCOVERED",
+              "READ",
+              "PICKED_UP",
+              "INTEGRATED",
+              "HELD",
+              "UNKNOWN"
+            ]
+          }
+        }
+      }
+    },
+    "material_delta_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "emit_on_material_change_only": { "type": "boolean" },
+        "dedupe_before_emit": { "type": "boolean" },
+        "quiet_when_no_material_delta": { "type": "boolean" }
+      }
+    },
+    "pressure_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "prefer_digest_over_full_ingest": { "type": "boolean" },
+        "externalize_before_context_overflow": { "type": "boolean" },
+        "human_attention_is_exception_path": { "type": "boolean" }
+      }
+    },
+    "wake_conditions": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "nonclaims": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  }
+}
