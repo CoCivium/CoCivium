@@ -1,0 +1,62 @@
+{
+  "schema": "CoVirtualSession.Policy.v0.1-candidate",
+  "state": "PUBLIC_CANDIDATE__SHADOW_AND_SCHEMA_ONLY",
+  "updated_utc": "2026-09-23T10:36:02Z",
+  "premise": "many virtual sessions, few materialized embodiments, fewer user-visible sessions",
+  "morphologies": [
+    "CONVERSATIONAL",
+    "TASK",
+    "FIELD",
+    "SWARM",
+    "CHORUS",
+    "ECHO",
+    "LATENT",
+    "AMBIENT",
+    "EVENT",
+    "PREDICTIVE",
+    "COUNTERFACTUAL",
+    "DREAM",
+    "WATCHER",
+    "MIGRATORY",
+    "FEDERATED",
+    "HOLOGRAPHIC",
+    "EPHEMERAL",
+    "RITUAL",
+    "ALIEN_OR_UNKNOWN"
+  ],
+  "persistence_modes": [
+    "MATERIAL_OBJECT",
+    "EVENT_SOURCED",
+    "RELATIONAL_GRAPH",
+    "GENERATIVE_RECIPE",
+    "DISTRIBUTED",
+    "ENVIRONMENTAL",
+    "LATENT_MODEL",
+    "RECONSTRUCTIVE",
+    "EPHEMERAL_EFFECT",
+    "UNKNOWN"
+  ],
+  "participant_classes": [
+    "HUMAN_PRINCIPAL",
+    "ORG_PRINCIPAL",
+    "SYNTH_PARTICIPANT",
+    "MODEL_INSTANCE",
+    "SERVICE_PRINCIPAL",
+    "COALL_SYSTEM_PARTICIPANT",
+    "DELEGATE",
+    "OBSERVER",
+    "RECEIVER",
+    "EXECUTOR",
+    "REPRESENTATIVE",
+    "UNKNOWN_PARTICIPANT_CLASS"
+  ],
+  "rails": [
+    "USER_ROLE_NE_PERSONHOOD_CLAIM",
+    "AI_USER_NE_SENTIENCE_CLAIM",
+    "SYSTEM_PRINCIPAL_NE_SOVEREIGN",
+    "SELF_USE_NE_SELF_AUTHORIZATION",
+    "COEXISTENCE_NE_CONSENSUS",
+    "VIRTUALIZATION_NE_MODEL_BACKEND_MUTATION"
+  ],
+  "next": "V1_VIRTUAL_SESSION_LEDGER_THEN_V2_DEMATERIALIZE_RECONSTRUCT_CANARY"
+}

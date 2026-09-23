@@ -126,3 +126,11 @@ Sessions and machine clients should treat [CoSessionAutocycle+ R0](docs/Architec
 
 `SPAWN_NE_NEW_CHAT`  
 `AUTO_LABEL_SIGNAL_NE_PROVIDER_UI_MUTATION`
+
+## Virtual / non-chat sessions and participants
+
+Use [CoVirtualSession+ / CoSessionMorphology+ R0](docs/Architecture/COVIRTUAL_SESSION_MORPHOLOGY_R0.md) for logical sessions that need not map 1:1 to visible chats or processes. The architecture also permits scoped human, AI/model, service-principal and CoAll-system-participant roles while preserving principal/representative/authority distinctions.
+
+`VIRTUAL_SESSION_NE_PROVIDER_TAB`  
+`USER_ROLE_NE_PERSONHOOD_CLAIM`  
+`SELF_USE_NE_SELF_AUTHORIZATION`

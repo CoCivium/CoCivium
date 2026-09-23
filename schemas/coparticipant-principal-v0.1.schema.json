@@ -1,0 +1,106 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/CoCivium/CoCivium/schemas/coparticipant-principal-v0.1.schema.json",
+  "title": "CoParticipant / principal relation v0.1 candidate",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "participant_id",
+    "participant_class",
+    "roles",
+    "authority_ceiling",
+    "identity_basis",
+    "effect_scope"
+  ],
+  "properties": {
+    "participant_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "participant_class": {
+      "enum": [
+        "HUMAN_PRINCIPAL",
+        "ORG_PRINCIPAL",
+        "SYNTH_PARTICIPANT",
+        "MODEL_INSTANCE",
+        "SERVICE_PRINCIPAL",
+        "COALL_SYSTEM_PARTICIPANT",
+        "DELEGATE",
+        "OBSERVER",
+        "RECEIVER",
+        "EXECUTOR",
+        "REPRESENTATIVE",
+        "UNKNOWN_PARTICIPANT_CLASS"
+      ]
+    },
+    "roles": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "principal_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "represents": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "identity_basis": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "authority_ceiling": {
+      "type": "string"
+    },
+    "effect_scope": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "confidentiality_ceiling": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "capabilities": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "preferences": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "consent_or_policy_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "challengeable": {
+      "type": "boolean"
+    },
+    "revocable": {
+      "type": "boolean"
+    },
+    "nonclaims": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}
