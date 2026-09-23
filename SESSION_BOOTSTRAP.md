@@ -220,3 +220,10 @@ Durable evidence remains available through shared custody/currentness surfaces. 
 `DURABLE_CUSTODY_NE_USER_DOWNLOAD`  
 `CLOSE_SAFE_NE_KEEP_EMITTING_ATTACHMENTS`  
 `GENERIC_PING_NE_DOWNLOAD_TRIGGER`
+
+## CoPulse receiver pickup R0B
+
+Use [the R0B two-receiver canary](scripts/CoPulseTwoReceiverCanaryR0B.py) after R0A packet compilation to prove receiver-relative exact-object pickup. A receiver readproof can support `PICKED_UP` for the exact packet but not `INTEGRATED`; proposed ACK cursors remain uncommitted until R0C.
+
+`PICKED_UP_NE_INTEGRATED`  
+`ACK_PROPOSAL_NE_ACK_COMMIT`
