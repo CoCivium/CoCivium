@@ -1,49 +1,121 @@
 {
-  "schema": "CoCivium.CoAllEvolutionConvergence.R0.v0.1",
-  "observed_at": "2026-09-23T11:37:40Z",
-  "base_commit": "a5e0caa06b5b1316de528fbbc6e4c942a72dd10e",
+  "schema": "CoCivium.CoAllEvolutionConvergence.R0.v0.2",
+  "observed_at": "2026-09-23T11:42:59Z",
+  "observed_main_commit": "d3e7e6f2063bb9d3aa6a0954cd6bd219ea93edcd",
+  "convergence_branch": "coevo/evolution-convergence-r0-20260923T1133Z",
+  "convergence_head_before_update": "9a87e60e0af90442335654d460bdbaaa408d920f",
+  "branch_currentness_at_observation": {
+    "status": "DIVERGED_FROM_MAIN",
+    "ahead_by": 4,
+    "behind_by": 2,
+    "merge_base": "a5e0caa06b5b1316de528fbbc6e4c942a72dd10e"
+  },
   "state": "PUBLIC_BRANCH_CANDIDATE__RECONCILIATION_ONLY__NO_MERGE_NO_RUNTIME_NO_CANON_NO_AUTHORITY",
-  "purpose": "Enumerate unique deltas across overlapping CoAll evolution PRs before constructing any semantic fan-in.",
+  "purpose": "Enumerate unique deltas, descendant satisfaction, collisions, and compatibility gates across overlapping CoAll evolution PRs before any semantic merge election.",
+  "main_descendant_satisfaction": {
+    "newly_landed_since_prior_convergence": [
+      {
+        "commit": "6b105678b1e17db7fa4ed3a2ea6dc5fb71027d2a",
+        "relation": "COFLEET_RICKBAR_R4A_PROJECTION_COMPILER_LANDED",
+        "satisfies": [
+          "bounded exception-first RickBar/CoFleet projection mechanics",
+          "coverage-qualified fleet projection compiler"
+        ],
+        "nonclaims": [
+          "R4A compilation != RickBar runtime binding",
+          "R4A compilation != global fleet census"
+        ]
+      },
+      {
+        "commit": "d3e7e6f2063bb9d3aa6a0954cd6bd219ea93edcd",
+        "relation": "COSESSION_SUBSCRIPTION_PROFILES_R0_LANDED",
+        "artifacts": [
+          "ai/session-subscription-profiles.json",
+          "schemas/cosession-subscription-profile-v0.1.schema.json",
+          "docs/Architecture/COSESSION_SUBSCRIPTIONS_R0.md"
+        ],
+        "satisfies": [
+          "HOT/WARM/DIGEST/SLEEP receiver-relative subscription concept",
+          "bounded per-role subscription defaults",
+          "preferred repository projections",
+          "CURRENTNESS_FOR_ALL_NE_CONTENT_FOR_ALL",
+          "SUBSCRIPTION_NE_AUTHORITY",
+          "PRESSURE_NE_SPAWN_PERMISSION"
+        ],
+        "does_not_satisfy": [
+          "receiver-relative currentness cursors",
+          "material-delta-only emission policy schema",
+          "wake-condition schema",
+          "receiver_state pickup/integration distinctions",
+          "content-addressed subscription receiver receipts"
+        ]
+      }
+    ]
+  },
   "anchors": {
     "main": [
       "docs/Evolution/COALL_GITHUB_EVOLUTION_FABRIC_R0.md",
       "ai/evolution-lanes.json",
       "schemas/coevo-delta-v0.1.schema.json",
-      "logical CoSpawn R2 lineage",
-      "confidentiality-preserving CoSpawn routing",
-      "CoFleet RickBar R4 contract"
+      "ai/session-subscription-profiles.json",
+      "schemas/cosession-subscription-profile-v0.1.schema.json",
+      "docs/Architecture/COSESSION_SUBSCRIPTIONS_R0.md",
+      "CoSpawn R2/R3 lineage",
+      "CoFleet RickBar R4/R4A lineage"
     ],
-    "coordination_pr": 39
+    "coordination_pr": 39,
+    "convergence_pr": 44
   },
   "candidates": [
     {
       "pr": 34,
-      "role": "PRIMARY_BROAD_R1_DONOR_CANDIDATE",
+      "role": "BROAD_R1_DONOR_PLUS_VALIDATION_INTAKE_DONOR",
       "carry": [
-        "receiver-relative HOT/WARM/DIGEST/SLEEP subscriptions",
         "R1 evolution-domain registry",
         "repo-role/currentness snapshot",
         "highlight registry",
-        "relational meanings / CoIndex / CoLex / CoTheoryAll / CoPriMath / CoGibberTru / UX / humour crosswalk",
-        "CoTwilight and execution-surface routing integration"
+        "relational CoLex/CoIndex/CoTheoryAll/CoPriMath/CoGibberTru/UX/humour crosswalk",
+        "CoTwilight and execution-surface routing integration",
+        "executable R1 validator",
+        "read-only GitHub Actions workflow",
+        "validation/nonclaim contract",
+        "bounded docs/Evolution/deltas intake exemplar"
+      ],
+      "descendant_satisfied": [
+        "HOT/WARM/DIGEST/SLEEP subscription concept is now represented on main by CoSessionSubscription+ R0"
       ],
       "caution": [
-        "branch lags moving main; must refresh before merge",
-        "broad donor is not authority winner"
+        "branch is behind moving main",
+        "broad donor is not authority winner",
+        "docs/Evolution/deltas collides as an intake projection with PR33 ai/evolution-deltas"
+      ]
+    },
+    {
+      "pr": 23,
+      "role": "FANIN_AND_PROJECTION_MECHANICS_DONOR",
+      "carry": [
+        "CoSession relational projection explicitly projected from CoEvoDelta+",
+        "deterministic fan-in compiler",
+        "dedupe and collision grouping",
+        "public-safety holds",
+        "projection-to-CoEvo compiler"
+      ],
+      "caution": [
+        "projection/compiler != fanout",
+        "compiled delta != receiver pickup or integration"
       ]
     },
     {
       "pr": 28,
-      "role": "CHALLENGER_AND_UNIQUE_RELATION_DONOR",
+      "role": "SEMANTIC_CHALLENGER_AND_UNIQUE_RELATION_DONOR",
       "carry": [
-        "CoRepoField+ / CoProjectionGraph+ framing",
+        "CoRepoField+ / CoProjectionGraph+",
         "explicit CoEvoDelta lifecycle distinction",
         "CoInteropEcology+ binding rule",
         "NO_MATERIAL_DELTA => NO_COEVO_EMIT",
-        "RELATION_PERSISTS__BINDING_EVOLVES"
-      ],
-      "duplicate_of": [
-        34
+        "RELATION_PERSISTS__BINDING_EVOLVES",
+        "BECOMING_MORE_NE_BECOMING_BIGGER",
+        "discovery-capacity / fan-in-compaction metabolism relation"
       ],
       "caution": [
         "do not merge broad narrative wholesale if descendant-satisfied"
@@ -51,7 +123,7 @@
     },
     {
       "pr": 29,
-      "role": "MACHINE_LANE_EXTENSION_DONOR",
+      "role": "CURRENT_MACHINE_LANE_EXTENSION_DONOR",
       "carry": [
         "repo/readme ecology lane",
         "architecture/substrate lane",
@@ -63,48 +135,33 @@
         "pressure/energet/want/metabolism lane"
       ],
       "caution": [
-        "reconcile directly against current ai/evolution-lanes.json"
-      ]
-    },
-    {
-      "pr": 30,
-      "role": "SESSION_DONOR_EVIDENCE",
-      "carry": [
-        "bounded CoSessionSurvival cross-domain delta package"
-      ],
-      "caution": [
-        "not global architecture authority"
+        "must be reconciled directly against current main ai/evolution-lanes.json"
       ]
     },
     {
       "pr": 31,
-      "role": "SESSION_LOCAL_SUBSCRIPTION_DONOR",
+      "role": "SESSION_LOCAL_DONOR__CONTENT_CAPTURED",
       "carry": [
-        "selective self-aware session contribution",
-        "anti-PR-spam / fan-in pressure relation",
-        "RickBar exception-first / material-exception projection expectation",
-        "repository presence != semantic integration != receiver awareness",
-        "session-local authority/confidentiality ceiling remains explicit",
-        "deterministic R2 donor evidence: 1 input delta -> 1 PROJECTION_COMPILER logical contract; 0 dedupe donations; 0 collision groups; 0 live workers; 0 repo mutations; 0 authority changes"
+        "receiver-awareness nonclaim",
+        "anti-PR-spam/fan-in pressure relation",
+        "RickBar material-exception projection expectation",
+        "explicit session-local authority/confidentiality ceiling",
+        "deterministic R2 donor evidence"
       ],
-      "caution": [
-        "session-local wording should remain donor/challenger unless generalized by fan-in",
-        "R2 logical plan is routing evidence, not receiver pickup or live materialization"
-      ],
-      "disposition_after_carry": "DONOR_CONTENT_CAPTURED_IN_CONVERGENCE__SOURCE_PR_MAY_RETIRE_UNMERGED"
+      "disposition": "UNIQUE_CONTENT_CAPTURED_IN_CONVERGENCE__MAY_RETIRE_UNMERGED"
     },
     {
       "pr": 32,
-      "role": "SCHEMA_EFFECT_GATE_DONOR",
+      "role": "EFFECT_GATE_SCHEMA_DONOR",
       "carry": [
-        "CoPrePublic / public-effect lane",
+        "CoPrePublic/public-effect lane",
         "effect_classes",
         "effect_gate",
         "effect_scope",
-        "schema rule requiring effect fields for EFFECT_GATED"
+        "conditional effect fields for EFFECT_GATED mutation"
       ],
       "caution": [
-        "must preserve backward compatibility with current main CoEvo schema",
+        "must preserve v0.1 compatibility",
         "must remain compatible with confidentiality-preserving CoSpawn routing"
       ]
     },
@@ -113,25 +170,77 @@
       "role": "INTAKE_SURFACE_DONOR",
       "carry": [
         "ai/evolution-deltas/README.md",
-        "bounded per-session CoEvo intake convention",
-        "CoCrystalMorph example delta as fixture/donor"
+        "append-only bounded per-session CoEvo intake convention",
+        "CoCrystalMorph example delta"
       ],
-      "caution": [
-        "example delta is evidence/fixture, not global doctrine"
+      "collision": [
+        "PR34 also introduces docs/Evolution/deltas; one primary intake projection or explicit alias is needed"
       ]
     },
     {
       "pr": 37,
-      "role": "PRESSURE_ROUTE_TWILIGHT_SCHEMA_DONOR",
+      "role": "SUBSCRIPTION_CURRENTNESS_PRESSURE_ROUTE_SCHEMA_DONOR",
       "carry": [
-        "CoEvoDelta v0.2 candidate fields: materiality, subscription_context, pressure, energet, want_projection, route, close_readiness, nonclaims",
-        "CoSubscriptionCurrentness v0.1 candidate schema",
-        "session-subscriptions example",
-        "pressure/route/twilight lane extension"
+        "CoEvoDelta v0.2 additive candidate fields: materiality, subscription_context, pressure, energet, want_projection, route, close_readiness, nonclaims",
+        "CoSubscriptionCurrentness v0.1 cursors and wake conditions",
+        "material-delta-only and dedupe/quiet policies",
+        "receiver-state distinctions",
+        "CoEvoSubscriptionReceiver dependency-free reducer",
+        "content-addressed packet/receipt semantics"
+      ],
+      "descendant_satisfied": [
+        "basic HOT/WARM/DIGEST/SLEEP role subscription profiles now exist on main"
+      ],
+      "still_unique": [
+        "cursor semantics",
+        "wake conditions",
+        "receiver_state",
+        "material-delta policies",
+        "subscription receiver reduction/receipt mechanics"
       ],
       "caution": [
-        "v0.2 should be additive and migration-safe, not a silent replacement of v0.1",
-        "numeric pressure/energet fields are receiver-relative projections, not universal scalars"
+        "v0.2 must be migration-safe",
+        "numeric pressure/energet values remain receiver-relative projections"
+      ]
+    },
+    {
+      "pr": 41,
+      "role": "INTEROP_AND_SCALING_CHALLENGER_DONOR",
+      "carry": [
+        "transport-neutral interoperability framing",
+        "relations-about-relations",
+        "relevance horizons",
+        "backlog metabolism",
+        "CoSelfScope+/CoWant+/CoTwilight attention-scaling relations"
+      ],
+      "caution": [
+        "preserve only relations not descendant-satisfied by PR28/34/37/main"
+      ]
+    },
+    {
+      "pr": 42,
+      "role": "CURRENTNESS_DOCUMENT_DONOR",
+      "carry": [
+        "fresh R0 evolution-fabric currentness documentation through CoFleet/RickBar R4A"
+      ],
+      "caution": [
+        "documentation currentness donor, not R1 semantic owner"
+      ]
+    },
+    {
+      "pr": 43,
+      "role": "CURRENT_SCHEMA_ALIGNED_COSESSIONSURVIVAL_DONOR",
+      "supersedes_pr": 30,
+      "carry": [
+        "schema-aligned CoSessionSurvival deltas",
+        "CoTwilight close-safe lifecycle",
+        "protocol-neutral relational substrate/CoTurtles+",
+        "pressure/energet/want scale metabolism",
+        "bounded CoBar observed canary",
+        "typed humour/highlight fixture"
+      ],
+      "caution": [
+        "session donor evidence, not global architecture authority"
       ]
     },
     {
@@ -146,19 +255,45 @@
       ]
     }
   ],
+  "compatibility_gates": [
+    {
+      "id": "SCHEMA_UNION",
+      "problem": "PR32 effect fields and PR37 CoEvoDelta v0.2 fields live on divergent schema candidates.",
+      "next": "Build/test one additive union candidate against current v0.1 consumers before electing v0.2.",
+      "rail": "SCHEMA_UNION_CANDIDATE_NE_SCHEMA_ACCEPTANCE"
+    },
+    {
+      "id": "INTAKE_SURFACE",
+      "problem": "PR33 ai/evolution-deltas and PR34 docs/Evolution/deltas both propose bounded intake projections.",
+      "next": "Elect one primary projection or explicit alias; avoid independent semantic ownership.",
+      "rail": "ONE_RELATION_FIELD_CAN_HAVE_MANY_PROJECTIONS__NOT_MANY_COMPETING_SEMANTIC_CROWNS"
+    },
+    {
+      "id": "SUBSCRIPTION_DESCENDANT_SATISFACTION",
+      "problem": "Main now contains basic CoSessionSubscription+ profiles while PR34/37 contain overlapping richer subscription material.",
+      "next": "Treat basic temperature profiles as landed; retain only richer cursor/wake/materiality/receiver semantics from donor PRs.",
+      "rail": "DESCENDANT_SATISFACTION_REDUCES_DONOR_SCOPE"
+    },
+    {
+      "id": "BRANCH_CURRENTNESS",
+      "problem": "Convergence branch is behind current main.",
+      "next": "Refresh/reconcile branch against main before any merge election.",
+      "rail": "DRAFT_PR_NE_CURRENT_HEAD"
+    }
+  ],
   "convergence_policy": {
     "preferred_order": [
       "refresh current main",
-      "enumerate unique deltas",
-      "preserve donors and contradictions",
-      "carry broad R1 material from PR34 selectively",
-      "carry unique relation semantics from PR28",
-      "carry lane extensions from PR29",
-      "carry effect-gate schema delta from PR32 after compatibility check",
-      "carry intake convention from PR33",
-      "carry subscription/currentness and pressure-route fields from PR37 as additive schema candidates",
-      "retain PR30 as session-donor evidence; PR31 may retire after this convergence object preserves its unique donor evidence",
-      "run tests and schema validation",
+      "apply descendant-satisfaction reductions",
+      "enumerate exact unique deltas",
+      "preserve contradictions and donor provenance",
+      "reuse PR23 fan-in/projection mechanics where compatible",
+      "test PR32 + PR37 additive schema union against current consumers",
+      "elect one intake projection or explicit aliases for PR33/PR34",
+      "carry unique semantic donors from PR28/41 only where not descendant-satisfied",
+      "carry narrow current-registry deltas from PR29 only after main comparison",
+      "retain PR43 as session donor evidence",
+      "run validation",
       "only then decide merge/close/supersession"
     ],
     "rails": [
@@ -167,12 +302,13 @@
       "GITHUB_WRITE_ACCESS_NE_GLOBAL_AUTHORITY",
       "ALL_SESSIONS_CAN_CONTRIBUTE_NE_ALL_SESSIONS_MUTATE_ALL_SURFACES",
       "CURRENTNESS_FOR_ALL_NE_CONTENT_FOR_ALL",
-      "LOCAL_IS_NOT_LANDED",
       "VALIDATION_IS_NOT_ACCEPTANCE",
       "NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF",
       "NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE",
-      "REPOSITORY_PRESENCE_NE_RECEIVER_AWARENESS"
+      "REPOSITORY_PRESENCE_NE_RECEIVER_AWARENESS",
+      "PR_COUNT_NE_PROGRESS",
+      "FANIN_BEFORE_MORE_PARALLEL_MUTATION"
     ]
   },
-  "next": "BUILD_ONE_SEMANTIC_CONVERGENCE_PATCH_FROM_CURRENT_MAIN__PRESERVE_UNIQUE_DELTAS__NO_BLANKET_CHERRY_PICK"
+  "next": "REFRESH_CONVERGENCE_BRANCH_AGAINST_CURRENT_MAIN__THEN_TEST_SCHEMA_UNION_AND_INTAKE_SURFACE_ELECTION__NO_NEW_BROAD_BRANCH"
 }
