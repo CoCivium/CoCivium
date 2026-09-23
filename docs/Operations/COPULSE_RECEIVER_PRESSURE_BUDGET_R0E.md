@@ -85,10 +85,10 @@ Observed bounded PASS:
 
 ## Boundary
 
-R0E does not yet prove:
+R0F now provides bounded proof for explicit pressure-sample staleness gating and receiver-relative divergent budget election over one shared synthetic pulse field. R0E/R0F still do not prove:
 
-- freshness/staleness expiry of a pressure sample;
-- multi-receiver pressure divergence on one live pulse field;
+- authenticity or accuracy of MEASURED/DECLARED capacity sources;
+- live receiver-instance binding;
 - X2 runtime;
 - provider-session mutation;
 - private/restricted routing;
@@ -96,7 +96,9 @@ R0E does not yet prove:
 
 ## Next
 
-`R0F_STALENESS_AND_MULTI_RECEIVER_CAPACITY_ELECTION_CANARY`
+Implemented next rung: [CoPulse Pressure Freshness + Multi-Receiver Capacity R0F](COPULSE_PRESSURE_FRESHNESS_R0F.md).
+
+Forward gate: `R0G_CAPACITY_SOURCE_PROVENANCE_AND_LIVE_RECEIVER_BINDING_CANARY`
 
 ## Rails
 
