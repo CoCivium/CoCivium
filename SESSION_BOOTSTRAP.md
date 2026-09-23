@@ -236,3 +236,16 @@ Use [the machine currentness index](ai/currentness/copulse-currentness-r0f.json)
 `COMPACTION_NE_DELETION`  
 `COPRESSURE_VECTOR_NE_UNIVERSAL_SCORE`  
 `ZERO_CAPACITY_NE_SILENT_DROP`
+
+
+## CoPulse capacity provenance R0G
+
+After R0F freshness gating, [CoPulse Capacity Provenance + Live Receiver Binding R0G](docs/Operations/COPULSE_CAPACITY_PROVENANCE_R0G.md) binds an exact capacity sample to the receiver embodiment that produced it. The first bounded canary uses two distinct local receiver processes, challenge/response liveness, exact pressure-sample hashes, and tamper rejection before R0F/R0E/R0D continuation.
+
+The proof is deliberately scoped to local process lifetimes. X2's authorized receiver route remained offline at the bound check, so no X2-live claim is made.
+
+`PROVENANCE_NE_ACCURACY`  
+`LIVENESS_NE_PERSISTENCE`  
+`PROCESS_PID_NE_IDENTITY`  
+`LOCAL_PROCESS_CANARY_NE_X2_LIVE_RECEIVER`  
+`VISIBLE_STATUS_NE_RECEIVER_ROUTE`
