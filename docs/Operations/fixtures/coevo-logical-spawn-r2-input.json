@@ -1,0 +1,100 @@
+{
+  "deltas": [
+    {
+      "delta_id": "delta-ux-001",
+      "session_id": "Synthetic-RickBar-A",
+      "observed_at": "2026-09-23T11:18:00Z",
+      "domain": [
+        "RickBar+/CoDesktop+",
+        "CoUX+/CoSurface+"
+      ],
+      "subject": "RickBar fleet projection",
+      "relation": "Show virtual-session temperature and only material exceptions",
+      "epistemic_class": "PLANNED",
+      "source_refs": [
+        "fixture:ux-a"
+      ],
+      "target_surfaces": [
+        "CoCivium",
+        "CoAura"
+      ],
+      "mutation_class": "PROPOSE",
+      "authority_ceiling": "ADVISORY_ONLY",
+      "confidentiality": "PUBLIC",
+      "confidence": 0.8,
+      "contradictions": [],
+      "tests": [
+        "receiver readability fixture"
+      ],
+      "expected_benefit": "Reduce visible session-management burden",
+      "risks": [
+        "overdense telemetry"
+      ],
+      "wake_conditions": [
+        "RICKBAR_FLEET_PROJECTION_CANARY"
+      ],
+      "supersedes": [],
+      "next_receiver": "CoAura/CoCivium UX lane"
+    },
+    {
+      "delta_id": "delta-ux-002",
+      "session_id": "Synthetic-RickBar-B",
+      "observed_at": "2026-09-23T11:18:01Z",
+      "domain": [
+        "CoUX+/CoSurface+",
+        "RickBar+/CoDesktop+"
+      ],
+      "subject": "RickBar fleet projection",
+      "relation": "Show virtual-session temperature and only material exceptions",
+      "epistemic_class": "PLANNED",
+      "source_refs": [
+        "fixture:ux-b"
+      ],
+      "target_surfaces": [
+        "CoAura",
+        "CoCivium"
+      ],
+      "mutation_class": "PROPOSE",
+      "authority_ceiling": "ADVISORY_ONLY",
+      "confidentiality": "PUBLIC",
+      "confidence": 0.75,
+      "contradictions": [],
+      "tests": [],
+      "expected_benefit": "Reduce visible session-management burden",
+      "risks": [],
+      "wake_conditions": [],
+      "supersedes": [],
+      "next_receiver": "CoAura/CoCivium UX lane"
+    },
+    {
+      "delta_id": "delta-theory-private-001",
+      "session_id": "Synthetic-Theory-A",
+      "observed_at": "2026-09-23T11:18:02Z",
+      "domain": [
+        "CoTheoryAll+"
+      ],
+      "subject": "Private hypothesis fragment",
+      "relation": "Route private hypothesis to private review before public projection",
+      "epistemic_class": "HYPOTHESIS",
+      "source_refs": [
+        "fixture:theory-private"
+      ],
+      "target_surfaces": [
+        "CoCivium"
+      ],
+      "mutation_class": "BRANCH_MUTATE",
+      "authority_ceiling": "PRIVATE_REVIEW_ONLY",
+      "confidentiality": "PRIVATE",
+      "confidence": 0.4,
+      "contradictions": [],
+      "tests": [],
+      "expected_benefit": null,
+      "risks": [
+        "privacy leak"
+      ],
+      "wake_conditions": [],
+      "supersedes": [],
+      "next_receiver": "CoInsights private theory lane"
+    }
+  ]
+}
