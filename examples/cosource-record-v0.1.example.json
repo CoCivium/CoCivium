@@ -1,0 +1,39 @@
+{
+  "schema": "CoSourceRecord.v0.1",
+  "source_id": "example:github:CoCivium/CoCivium",
+  "source_class": "GIT_REPOSITORY",
+  "locator": "https://github.com/CoCivium/CoCivium",
+  "custody_role": "PUBLIC_PROJECTION",
+  "authority_roles": [
+    "repository-currentness-at-observed-ref",
+    "public-code-and-doc-projection"
+  ],
+  "confidentiality": "PUBLIC",
+  "access": {
+    "route": "GitHub connector or git",
+    "readable": true,
+    "writable": null,
+    "effect_capable": null,
+    "auth_state": "receiver-relative"
+  },
+  "currentness": {
+    "method": "refresh repository head before mutation",
+    "state": "UNKNOWN",
+    "expires_at": null
+  },
+  "availability": "AVAILABLE",
+  "observed_at": "2026-09-23T23:15:00Z",
+  "valid_time": null,
+  "content_hash": null,
+  "version_ref": null,
+  "semantic_scope": "public CoCivium repository projection",
+  "receiver_scope": "public-safe",
+  "provenance_parents": [],
+  "fallback_sources": [],
+  "privacy_boundary": "Do not project private CoStead/LAN/source locators into public registry.",
+  "retention_state": "HOT",
+  "notes": [
+    "Example only. Access capability is receiver-relative and must be re-observed.",
+    "Repository projection is not global CoAll authority."
+  ]
+}
