@@ -137,9 +137,11 @@ R0 always declares zero:
 
 ## Next gate
 
-`BIND_TARGET_HEADS + BIND_RECEIVER_INSTANCES + REVIEW_HOLDS -> ELECT_BOUNDED_RECEIVER_PACKETS`
+`BIND_TARGET_HEADS + BIND_RECEIVER_INSTANCES + REVIEW_HOLDS -> COMPILE_BOUNDED_RECEIVER_PACKETS`
 
-The next rung should produce exact receiver packets for already-bound targets/instances. It should still separate delivery from pickup and require exact readproof before claiming receiver uptake.
+That rung is now implemented by [CoEvoReceiverPacketCompiler R0](COEVO_RECEIVER_PACKET_COMPILER_R0.md), with [receiver-binding schema](../../schemas/coevo-receiver-bindings-v0.1.schema.json), [packet-bundle schema](../../schemas/coevo-receiver-packets-v0.1.schema.json), and [reference compiler](../../scripts/CoEvoReceiverPacketCompiler.py).
+
+The next gate after packet compilation is a proven receiver adapter plus delivery receipt and exact packet readproof. Packet compilation itself still proves no delivery or uptake.
 
 ## Rails
 
