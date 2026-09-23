@@ -83,6 +83,26 @@ The authorized X2 Remote Desktop Commander route still reports X2 offline. There
 
 The screenshot-visible `online` indicator is evidence of a visible UI state only; it is not substituted for the machine-route liveness contract.
 
+## Executed bounded canary
+
+Exact landed R0G/R0F/R0E/R0D script Git blobs matched the bytes executed in an isolated container.
+
+Observed PASS:
+
+- two distinct live local receiver processes answered challenge/response while still alive;
+- both emitted exact hash-bound capacity samples plus source attestations;
+- live-binding schema validation: `2/2 PASS`;
+- capacity-attestation schema validation: `2/2 PASS`;
+- Receiver A: capacity 6, ACK 2, budget 4, exact replay 4;
+- Receiver B: capacity 3, ACK 0, budget 1, exact replay 4;
+- mutating Receiver A's capacity from 6 to 99 after attestation was rejected with `PRESSURE_SHA_MISMATCH`;
+- both worker processes exited after the canary, confirming the binding scope was process-lifetime only;
+- canary result SHA-256: `C4E2D798F5ED07A80219F488691C33CAD7516F92ADD317071A3AA980A126A5F3`.
+
+Durable proof:
+
+`docs/Operations/proofs/copulse-r0g-container-pass-20260923.json`
+
 ## Next
 
 `R0H_AUTHENTIC_CAPACITY_MEASUREMENT_OR_X2_LIVE_RECEIVER_BINDING`
