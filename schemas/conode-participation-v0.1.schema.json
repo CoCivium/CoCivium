@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/CoCivium/CoCivium/schemas/conode-participation-v0.1.schema.json",
+  "title": "CoNode participation manifest v0.1 candidate",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "node_id",
+    "lifecycle_state",
+    "participant_scope",
+    "privacy_domain",
+    "capabilities",
+    "allowed_transports",
+    "effect_ceiling",
+    "external_provider_policy",
+    "public_internet_exposure",
+    "receipt_route",
+    "human_projection"
+  ],
+  "properties": {
+    "schema": {"const": "CoNodeParticipation.v0.1"},
+    "node_id": {"type": "string", "minLength": 1, "maxLength": 128},
+    "lifecycle_state": {"enum": ["DISCOVERED","CANDIDATE","READY_LOCAL","PARTICIPATING","DEGRADED","DORMANT","RETIRED"]},
+    "participant_scope": {"type": "string", "minLength": 1},
+    "privacy_domain": {"enum": ["PRIVATE_PARTICIPANT","PRIVATE_COCIVIUM","SHARED_BOUNDED","PUBLIC_SAFE"]},
+    "capabilities": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
+    "allowed_transports": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
+    "effect_ceiling": {"enum": ["OBSERVE_ONLY","LOCAL_REVERSIBLE","BOUNDED_SHARED_WRITE","EFFECT_GATED"]},
+    "external_provider_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["provider_is_control_plane","unrestricted_remote_control","prefer_local_when_sufficient"],
+      "properties": {
+        "provider_is_control_plane": {"const": false},
+        "unrestricted_remote_control": {"const": false},
+        "prefer_local_when_sufficient": {"type": "boolean"}
+      }
+    },
+    "local_models": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
+    "public_internet_exposure": {"enum": ["NONE_BY_DEFAULT","BOUNDED_ELECTED"]},
+    "receipt_route": {"type": "string", "minLength": 1},
+    "human_projection": {"type": "string", "minLength": 1},
+    "notes": {"type": "array", "items": {"type": "string"}}
+  }
+}
