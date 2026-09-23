@@ -311,3 +311,14 @@ R0E reserves HOT/WARM occupancy first, keeps CoPressure as a vector rather than 
 `CAPACITY_NE_AUTHORITY`  
 `ZERO_CAPACITY_NE_SILENT_DROP`  
 `BUDGET_NE_PERMISSION_TO_DELETE`
+
+## CoPulse pressure freshness R0F
+
+After receiver-capacity budget election R0E, [CoPulse Pressure Freshness + Multi-Receiver Capacity R0F](docs/Operations/COPULSE_PRESSURE_FRESHNESS_R0F.md) requires an explicit observer/evaluation time before a pressure sample may influence DIGEST budget election.
+
+The bounded canary uses one shared pulse field. Two fresh receivers preserve independent ACK cursors and legitimately elect different DIGEST budgets (`4` and `1`) from their own capacity vectors, while a 900-second-old sample is held before R0E. Both fresh receivers exactly replay all selected DIGEST source objects through R0D.
+
+`FRESHNESS_NE_TRUTH`  
+`OBSERVER_TIME_NE_GLOBAL_TIME`  
+`DIVERGENT_BUDGETS_NE_INCONSISTENCY`  
+`INDEPENDENT_ACK_NE_GLOBAL_ACK`
