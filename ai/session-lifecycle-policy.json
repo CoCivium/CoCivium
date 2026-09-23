@@ -1,7 +1,7 @@
 {
   "schema": "CoSessionAutocycle.Policy.v0.1-candidate",
   "state": "SHADOW_CONTROL_PLANE__NO_PROVIDER_SESSION_MUTATION",
-  "updated_utc": "2026-09-23T10:30:23Z",
+  "updated_utc": "2026-09-23T11:08:00Z",
   "auto_allowed": [
     "LIFECYCLE_PROJECTION",
     "LABEL_SIGNAL",
@@ -12,7 +12,13 @@
     "WAKE_CONDITION_EMIT",
     "LOGICAL_SPAWN_CONTRACT",
     "READONLY_CHALLENGER_OR_VERIFIER_REQUEST",
-    "PUBLIC_SAFE_GITHUB_CURRENTNESS"
+    "PUBLIC_SAFE_GITHUB_CURRENTNESS",
+    "COEVO_DELTA_EMIT",
+    "DOMAIN_SUBSCRIPTION_REFRESH",
+    "COTWILIGHT_DELTA_HARVEST",
+    "NEGATIVE_KNOWLEDGE_EXPORT",
+    "HIGHLIGHT_CANDIDATE_SIGNAL",
+    "README_INDEX_IMPROVEMENT_PROPOSAL"
   ],
   "shadow_only": [
     "PROVIDER_SESSION_CREATE",
@@ -43,11 +49,96 @@
     ],
     "model_is_authority": false
   },
-  "next": "R1_SHADOW_SESSION_LEDGER_EXECUTABLE_AVAILABLE__NEXT_R2_LOGICAL_SPAWN_ECOLOGY",
+  "next": "R1_SHADOW_LEDGER_PLUS_COEVO_DELTA_HARVEST_POLICY__NEXT_R2_LOGICAL_SPAWN_ECOLOGY_AND_DELTA_ROUTER",
   "r1_shadow_ledger": {
     "script": "scripts/CoSessionShadowLedger.py",
     "docs": "docs/Operations/COSESSION_SHADOW_LEDGER_R1.md",
     "provider_mutation": false,
     "global_session_census_claimed": false
+  },
+  "evolution_policy": {
+    "contract": "docs/Evolution/COALL_GITHUB_EVOLUTION_FABRIC_R0.md",
+    "domain_registry": "ai/evolution-lanes.json",
+    "delta_schema": "schemas/coevo-delta-v0.1.schema.json",
+    "repo_role_map": "ai/repo-role-map.json",
+    "highlight_registry": "ai/highlight-assets.json",
+    "default_subscription_mode": "BOUNDED_ROLE_RELEVANT",
+    "default_mutation_class": "PROPOSE",
+    "emit_on": [
+      "MATERIAL_RELATION_DELTA",
+      "MATERIAL_CONTRADICTION_OR_NEGATIVE_KNOWLEDGE",
+      "CURRENTNESS_CHANGE",
+      "HIGHLIGHT_CANDIDATE_CHANGE",
+      "COTWILIGHT_ENTRY",
+      "SUCCESSOR_READY",
+      "CLOSE_SAFE"
+    ],
+    "cotwilight_harvest": [
+      "SEMANTIC_DELTA",
+      "UNRESOLVED_HYPOTHESIS",
+      "DISAGREEMENT_OR_CONTRADICTION",
+      "NEGATIVE_KNOWLEDGE",
+      "WAKE_CONDITION",
+      "OPTIONALITY",
+      "REPO_TOPOLOGY_SUGGESTION",
+      "README_OR_INDEX_SUGGESTION",
+      "UX_OR_SURFACE_RELATION",
+      "HUMOUR_OR_MEMEABLE_RELATION",
+      "HIGHLIGHT_CANDIDATE",
+      "SUCCESSOR_POINTER"
+    ],
+    "contribution_rule": "EMIT_BOUNDED_TYPED_DELTAS_TO_RELEVANT_DOMAINS__DO_NOT_CARRY_OR_MUTATE_ALL_STATE",
+    "branch_mutate_requirements": [
+      "REFRESH_TARGET_HEAD",
+      "SEARCH_EQUIVALENT_RELATION",
+      "BIND_SOURCE_REFS",
+      "CLASSIFY_CONFIDENTIALITY",
+      "IDENTIFY_COLLISION_DOMAIN",
+      "VERIFY_AUTHORITY_CEILING",
+      "PREFER_REVERSIBLE_BRANCH_OR_PR_FOR_CROSS_CUTTING_CHANGES"
+    ],
+    "merge_low_effect_requirements": [
+      "PUBLIC_SAFE_OR_CORRECTLY_CONFIDENTIAL",
+      "NO_UNRESOLVED_COLLISION",
+      "TEST_OR_REVIEW_EVIDENCE_WHERE_APPLICABLE",
+      "NO_AUTHORITY_EXPANSION",
+      "CURRENTNESS_PULSE_AFTER_ACCEPTANCE"
+    ],
+    "rails": [
+      "ALL_SESSIONS_CAN_CONTRIBUTE_NE_ALL_SESSIONS_MUTATE_ALL_SURFACES",
+      "CURRENTNESS_FOR_ALL_NE_CONTENT_FOR_ALL",
+      "GITHUB_WRITE_ACCESS_NE_GLOBAL_AUTHORITY",
+      "HUMOUR_NE_EVIDENCE",
+      "METAPHOR_NE_EQUIVALENCE",
+      "NO_NEWEST_WINS"
+    ]
+  },
+  "cotwilight_policy": {
+    "purpose": "ACTIVE_HIGH_YIELD_EXTERNALIZATION_AND_SUCCESSOR_PREPARATION__NOT_PASSIVE_DECAY",
+    "increase": [
+      "READ_ONLY_DISCOVERY",
+      "SEMANTIC_DELTA_HARVEST",
+      "CONTRADICTION_SEARCH",
+      "NEGATIVE_KNOWLEDGE_CAPTURE",
+      "DEDUPE_AND_COMPACTION",
+      "SUCCESSOR_PACKET_COMPILE",
+      "WAKE_CONDITION_EXPORT",
+      "COEVO_DELTA_EMIT"
+    ],
+    "decrease": [
+      "MONOLITHIC_UNEXTERNALIZED_WORK",
+      "NEW_HIGH_EFFECT_COMMITMENTS",
+      "AUTHORITY_EXPANSION",
+      "IRREVERSIBLE_RESTRUCTURE"
+    ],
+    "close_safe_projection_may_be_automatic": true,
+    "provider_tab_close_may_be_automatic": false,
+    "close_safe_requires": [
+      "UNIQUE_WORK_OBLIGATIONS_EXTERNALIZED_OR_TRANSFERRED",
+      "DURABLE_RECOVERY_POINTER",
+      "MATERIAL_NONCLAIMS_PRESERVED",
+      "SUCCESSOR_OR_WAKE_PATH_WHERE_NEEDED"
+    ],
+    "no_user_action_required_when": "ALL_REQUIRED_CLOSE_SAFE_EVIDENCE_IS_ALREADY_DURABLE_AND_NO_HUMAN_GATE_REMAINS"
   }
 }
