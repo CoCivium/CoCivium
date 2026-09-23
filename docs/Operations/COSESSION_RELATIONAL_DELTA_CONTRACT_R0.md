@@ -24,7 +24,7 @@ The session projection adds receiver-facing and fan-in mechanics that are useful
 - receiver exact-readproof gate;
 - progressive-disclosure UX guidance.
 
-These fields should compile into CoEvoDelta+ objects or feed a later CoEvoDelta schema revision. The current R0 fan-in compiler does not yet perform that semantic compilation; it only compacts and reviews the session projection. They must not silently create a second source of semantic truth.
+These fields compile into CoEvoDelta+ candidate objects through `scripts/CoSessionProjectionToCoEvo.py`. The older v0.1 session projection remains a compact fan-in/review shape; the compilable v0.2 projection requires explicit confidentiality plus per-operation epistemic and mutation classes so the compiler never invents those semantics. The compiled target is candidate `schemas/coevo-delta-v0.2.schema.json`, which preserves the v0.1 CoEvo core and adds receiver/currentness/projection provenance fields. None of these may silently create a second source of semantic truth.
 
 ## Projection mapping
 
@@ -35,6 +35,8 @@ These fields should compile into CoEvoDelta+ objects or feed a later CoEvoDelta 
 | `target_domains` | `domain` |
 | operation `subject` | `subject` |
 | operation `relation` | `relation` |
+| operation `epistemic_class` | `epistemic_class`; required, never inferred |
+| operation `mutation_class` | `mutation_class`; required, never inferred |
 | `source_refs` / operation evidence | `source_refs`, tests/evidence projection |
 | `candidate_surfaces` | `target_surfaces` |
 | `authority_ceiling` | `authority_ceiling` |
@@ -59,7 +61,7 @@ This projection may carry bounded work across CoTheoryAll+, CoLex+, CoIndex+, Co
 
 ## Default route
 
-`DISCOVER_RELEVANT_CURRENTNESS -> BIND_OBSERVED_BASE -> PRODUCE_SESSION_PROJECTION -> FANIN_PROJECTION -> COMPILE_TO_COEVO -> REVIEW -> TARGETED_FANOUT -> RECEIVER_READPROOF`
+`DISCOVER_RELEVANT_CURRENTNESS -> BIND_OBSERVED_BASE -> PRODUCE_V0_2_SESSION_PROJECTION -> COMPILE_TO_COEVO_V0_2 -> FANIN/REVIEW -> TARGETED_FANOUT -> RECEIVER_READPROOF`
 
 Do not ingest the whole repository by default.
 
@@ -110,3 +112,9 @@ Raw relation graphs, hashes, receipts, collision ledgers, and session deltas bel
 - NOT_AUTHORITY_TRANSFER
 - NOT_PERMISSION_FOR_UNBOUNDED_MULTI_REPO_REWRITES
 - NOT_PROOF_OF_RECEIVER_PICKUP
+
+## Executable compiler
+
+Use `schemas/cosession-relational-delta-v0.2.schema.json` with `scripts/CoSessionProjectionToCoEvo.py`. The compiler produces one CoEvoDelta+ v0.2 candidate per typed operation, preserves source projection and operation hashes, and performs zero target mutation or pickup claims. See `docs/Operations/COSESSION_TO_COEVO_COMPILER_R0.md`.
+
+`UNDER_TYPED_INPUT_NE_SAFE_TO_INFER`
