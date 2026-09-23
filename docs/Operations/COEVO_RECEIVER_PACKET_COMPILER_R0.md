@@ -111,7 +111,9 @@ These receipts prove only the bounded self-test behavior. They do not prove deli
 
 `PACKET_COMPILED -> PROVEN_RECEIVER_ADAPTER -> DELIVERY_RECEIPT -> EXACT_PACKET_READPROOF -> PICKUP_ELIGIBLE`
 
-The next rung is therefore not “write everywhere.” It is a narrow receiver adapter with a delivery receipt and exact packet readproof contract.
+The bounded GitHub landing rung is now implemented by [CoGitHubReceiverAdapter R0](COGITHUB_RECEIVER_ADAPTER_R0.md). Its first PUBLIC-safe synthetic canary reached `LANDED` with exact destination readback and durable receipt. Receiver pickup remains unproven.
+
+The exact pickup contract is [CoReceiverReadproof R0](CORECEIVER_READPROOF_R0.md) / [machine schema](../../schemas/coevo-receiver-readproof-v0.1.schema.json).
 
 ## Rails
 
