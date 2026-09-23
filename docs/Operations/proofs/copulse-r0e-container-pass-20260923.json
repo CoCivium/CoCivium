@@ -1,0 +1,113 @@
+{
+  "schema": "CoPulseReceiverPressureBudgetCanary.R0E.ExecutionEvidence.v0.1",
+  "state": "PASS_BOUNDED_CONTAINER_LOCAL_SYNTHETIC__PRESSURE_DERIVED_MULTI_BUDGET_EXACT_REPLAY__NOT_X2_NOT_GLOBAL_BUS",
+  "execution_surface": "OpenAI task container",
+  "exact_branch_bindings": {
+    "CoPulseReceiverPressureBudgetR0E_git_blob": "d68f10f2fc492cfd2e863b6b5d39a6640f478585",
+    "CoPulseReceiverPressureBudgetCanaryR0E_git_blob": "5040d66b8fbd97ef4948abc68ef66c0424d1a068",
+    "CoPulseDigestCompactorR0D_git_blob": "7b2e82d0bd5ea99438d8520f2a4d4aa126ee55a5",
+    "CoPulseDigestReplayR0D_git_blob": "38d2af9bad84b78376397ac3ea4281cf2597a698",
+    "receiver_pressure_schema_git_blob": "3fe006b2a20137056ac4b49993fca9d81758c212",
+    "digest_budget_election_schema_git_blob": "59e271d735bb27c4f79349966681b28d0b205b40"
+  },
+  "git_blob_readback": {
+    "budget_elector_match": true,
+    "canary_match": true,
+    "r0d_compactor_match": true,
+    "r0d_replay_match": true,
+    "receiver_pressure_schema_match": true,
+    "digest_budget_election_schema_match": true
+  },
+  "schema_validation": {
+    "engine": "python jsonschema",
+    "receiver_pressure_objects_validated": 4,
+    "digest_budget_election_objects_validated": 4,
+    "state": "PASS"
+  },
+  "result": {
+    "state": "PASS_R0E_RECEIVER_PRESSURE_DERIVED_BUDGET__MULTI_BUDGET_EXACT_REPLAY__SATURATION_HOLD",
+    "canary_result_sha256": "E6DB919CBE90940950AD5049086B02414A2DF5760F68A726E9EB679464DB8D08",
+    "source_packet_sha256": "0F0F642677D7B9AB52D1316FBDCDC717E38843A12CEE5CDEBFD497DBD6B19A96",
+    "cases": [
+      {
+        "tier": "LIGHT",
+        "max_currentness_items": 6,
+        "non_digest_occupancy": 2,
+        "free_digest_slots": 4,
+        "elected_budget": 4,
+        "election_sha256": "6632ADA7173ECA13781EABF6E9D08691ACD4EEEC94EB31BB2A80B478C783375A",
+        "compacted_sha256": "41EA83020A48E7EAF9B3BE3F50664773BA4F3ED308D3FB24DA47FE68A3BCF870",
+        "replay_sha256": "18324BBE5A66971D7FFF15F3D90A58569FF0022B34CA2388A7FF2AB14B473B8B",
+        "digest_source_count": 4,
+        "digest_summary_count": 4,
+        "representation_item_reduction": 0,
+        "exact_replayed_digest_count": 4
+      },
+      {
+        "tier": "MODERATE",
+        "max_currentness_items": 4,
+        "non_digest_occupancy": 2,
+        "free_digest_slots": 2,
+        "elected_budget": 2,
+        "election_sha256": "E549AEEB2A442082DB49B4465BBA257F0F357FED0643B6CD2808E9BBE3A18B10",
+        "compacted_sha256": "3AF533DC4916BDEAFA450D00526484F458CC69CFC4D11E5E96D3D8E21860CBC7",
+        "replay_sha256": "C026BE1BEF73F6F2D9F80FC8E9CE928E1D984FBCE09E1A042EE9A0FBFD386217",
+        "digest_source_count": 4,
+        "digest_summary_count": 2,
+        "representation_item_reduction": 2,
+        "exact_replayed_digest_count": 4
+      },
+      {
+        "tier": "HIGH",
+        "max_currentness_items": 3,
+        "non_digest_occupancy": 2,
+        "free_digest_slots": 1,
+        "elected_budget": 1,
+        "election_sha256": "AB0F8B5918ADA77BCD69885B1328113E94FDCB4CA95D14C737389A82B2FC611D",
+        "compacted_sha256": "B2ADD00439635B80C21F60984C9214B6B1E64FA3B80E07FC4C9D29ED3CA24B2C",
+        "replay_sha256": "C3029CE7C667D52F29EC639D285F37DE9DE18BE3692254F0B74537B75F940C7D",
+        "digest_source_count": 4,
+        "digest_summary_count": 1,
+        "representation_item_reduction": 3,
+        "exact_replayed_digest_count": 4
+      },
+      {
+        "tier": "SATURATED",
+        "max_currentness_items": 2,
+        "non_digest_occupancy": 2,
+        "free_digest_slots": 0,
+        "elected_budget": 0,
+        "election_sha256": "29DF0CC8A217FFFAFDD2B776BA49C21C237EBECECC45086F7605F97F9DC17ACB",
+        "compaction_state": "NOT_RUN_ZERO_CAPACITY",
+        "digest_source_count": 4,
+        "digest_held_not_dropped": true
+      }
+    ],
+    "checks": {
+      "budget_sequence": [4, 2, 1, 0],
+      "budget_monotonic_with_available_capacity": true,
+      "hot_warm_occupancy_reserved": true,
+      "r0d_exact_replay_for_all_nonzero_budgets": true,
+      "saturated_digest_held_not_dropped": true,
+      "source_deletion": false,
+      "ack_cursor_mutation": false
+    }
+  },
+  "effects": {
+    "provider_session_mutation": 0,
+    "receiver_context_mutation": 0,
+    "ack_cursor_mutation": 0,
+    "authority_change": 0,
+    "source_deletion": 0
+  },
+  "next": "R0F_STALENESS_AND_MULTI_RECEIVER_CAPACITY_ELECTION_CANARY",
+  "nonclaims": [
+    "COPRESSURE_VECTOR_NE_UNIVERSAL_SCORE",
+    "CAPACITY_NE_AUTHORITY",
+    "BUDGET_NE_PERMISSION_TO_DELETE",
+    "SATURATION_NE_SILENT_DROP",
+    "CONTAINER_CANARY_NE_X2_RUNTIME_PROOF",
+    "LOCAL_CANARY_NE_LIVE_GLOBAL_BUS",
+    "NO_PROVIDER_SESSION_PICKUP_CLAIM"
+  ]
+}

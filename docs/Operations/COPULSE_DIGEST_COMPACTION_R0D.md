@@ -1,0 +1,124 @@
+# CoPulse CoPressure DIGEST Compaction / Replay Canary R0D
+
+**State:** `CANDIDATE__DIGEST_ONLY_COMPACTION__EXPLICIT_LOSS__EXACT_REPLAY_REQUIRED`
+
+## Purpose
+
+Advance R0C receiver-local ACK/backfill into a bounded CoPressure-aware DIGEST representation.
+
+R0D compresses only entries already classified `DIGEST`. HOT and WARM entries pass through byte-semantic JSON objects unchanged.
+
+The first rung deliberately avoids semantic summarization. It compacts representation, not meaning.
+
+`SUMMARY_NE_SOURCE`
+
+## Pressure contract
+
+The caller supplies a positive `digest_budget`.
+
+The budget limits **DIGEST summary objects only**. It never grants permission to compress HOT/WARM entries.
+
+When DIGEST source count exceeds the budget, source entries are replaced in the compacted representation by deterministic digest summaries.
+
+Each summary preserves:
+
+- cursor range;
+- domains/topics;
+- epistemic-class set;
+- relation-type set;
+- source-identity set;
+- subject count;
+- exact source manifest of pulse IDs/cursors;
+- canonical SHA-256 of every omitted source entry.
+
+It does not pretend those aggregates reproduce the omitted source semantics.
+
+## Loss report
+
+Every compacted packet records:
+
+- input DIGEST count;
+- summary count;
+- source entries omitted as individual entries;
+- representation-item reduction;
+- fields preserved only as aggregates;
+- fields omitted from digest semantics;
+- exact source packet SHA-256;
+- replay requirement.
+
+`EXPLICIT_LOSS_NE_ZERO_LOSS`
+
+## Exact replay
+
+`scripts/CoPulseDigestReplayR0D.py` requires the exact hash-bound source packet.
+
+It verifies each source-manifest pulse ID, cursor and canonical entry SHA-256, then replays the exact decoded DIGEST source objects.
+
+Replay proves source-object recovery for the bounded packet. It is not integration or ACK.
+
+## Reference implementation
+
+- `scripts/CoPulseDigestCompactorR0D.py`
+- `scripts/CoPulseDigestReplayR0D.py`
+- `scripts/CoPulseDigestCompactionCanaryR0D.py`
+
+## Bounded canary
+
+Synthetic packet:
+
+- HOT: 1
+- WARM: 1
+- DIGEST: 4
+- DIGEST budget: 1
+
+Required result:
+
+- HOT/WARM exact passthrough: 2
+- DIGEST summaries: 1
+- DIGEST source entries omitted inline: 4
+- representation item reduction: 3
+- exact replayed DIGEST entries: 4
+- semantic summary generation: 0
+- source deletion: 0
+- ACK mutation: 0
+
+Execution evidence is recorded under:
+
+`docs/Operations/proofs/copulse-r0d-container-pass-20260923.json`
+
+Observed bounded execution:
+
+- canary result SHA-256: `DAADB53D78C43FC27CE38197632FC381A1E3F18E47BAE52DE8655F5D9CB2F32A`;
+- source packet SHA-256: `25A92A87EC2555B7BABEA5359D0475C0A6922EECE55E6572AA7B2D6C68420AFE`;
+- compacted output SHA-256: `C3972655F53D61021A2413EECA4655319ABB4D7EDAAB65BE139E9DC95188FE0B`;
+- replay output SHA-256: `9B9420B59401A1B52E09C266F2A6575B5A9A0A13AF4A1A54039847B3298AEFFE`;
+- exact landed Git blob bindings matched before execution;
+- one initial Python-boolean defect was caught by execution and repaired before the PASS evidence was recorded.
+
+## Boundary
+
+R0D does not prove:
+
+- provider-session context mutation;
+- live global currentness;
+- semantic-summary quality;
+- private/restricted compaction;
+- integration;
+- CoEx;
+- source deletion;
+- global ACK consensus.
+
+## Next
+
+`R0E_RECEIVER_PRESSURE_POLICY_AND_MULTI_DIGEST_BUDGET_REPLAY_CANARY`
+
+That rung is now implemented by [CoPulse Receiver-Pressure DIGEST Budget Election R0E](COPULSE_RECEIVER_PRESSURE_BUDGET_R0E.md). R0E derives the DIGEST budget from bounded receiver capacity while reserving HOT/WARM occupancy and retaining exact R0D replay for every nonzero budget.
+
+## Rails
+
+`COMPACTION_NE_DELETION`  
+`SUMMARY_NE_SOURCE`  
+`EXPLICIT_LOSS_NE_ZERO_LOSS`  
+`HOT_WARM_NE_DIGEST`  
+`REPLAY_NE_ACK`  
+`REPLAY_NE_INTEGRATION`
