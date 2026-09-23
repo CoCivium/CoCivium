@@ -71,6 +71,18 @@ Execution evidence is recorded under:
 
 `docs/Operations/proofs/copulse-r0e-container-pass-20260923.json`
 
+Observed bounded PASS:
+
+- exact branch script/schema Git blobs matched before execution;
+- input/output schemas validated for all four pressure cases;
+- elected budgets: `4 -> 2 -> 1 -> 0` as available capacity fell;
+- LIGHT budget 4 replayed all 4 DIGEST source objects exactly;
+- MODERATE budget 2 replayed all 4 exactly;
+- HIGH budget 1 replayed all 4 exactly;
+- SATURATED budget 0 held DIGEST and did not run compaction;
+- canary result SHA-256: `E6DB919CBE90940950AD5049086B02414A2DF5760F68A726E9EB679464DB8D08`;
+- ACK/provider-session/authority/source-delete/receiver-context effects: 0.
+
 ## Boundary
 
 R0E does not yet prove:
