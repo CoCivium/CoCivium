@@ -1,0 +1,171 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/CoCivium/CoCivium/schemas/covirtual-session-v0.1.schema.json",
+  "title": "CoVirtualSession v0.1 candidate",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "virtual_session_id",
+    "morphology",
+    "lifecycle_projection",
+    "authority_ceiling",
+    "confidentiality",
+    "persistence_modes",
+    "embodiment_policy",
+    "wake_conditions"
+  ],
+  "properties": {
+    "virtual_session_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "role": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "mission": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "morphology": {
+      "enum": [
+        "CONVERSATIONAL",
+        "TASK",
+        "FIELD",
+        "SWARM",
+        "CHORUS",
+        "ECHO",
+        "LATENT",
+        "AMBIENT",
+        "EVENT",
+        "PREDICTIVE",
+        "COUNTERFACTUAL",
+        "DREAM",
+        "WATCHER",
+        "MIGRATORY",
+        "FEDERATED",
+        "HOLOGRAPHIC",
+        "EPHEMERAL",
+        "RITUAL",
+        "ALIEN_OR_UNKNOWN"
+      ]
+    },
+    "lifecycle_projection": {
+      "type": "string"
+    },
+    "temperature": {
+      "enum": [
+        "HOT",
+        "WARM",
+        "COOL",
+        "DORMANT",
+        "COMPOST",
+        "ARCHIVE"
+      ]
+    },
+    "source_bindings": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "currentness_cursor": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 0
+    },
+    "authority_ceiling": {
+      "type": "string"
+    },
+    "confidentiality": {
+      "type": "string"
+    },
+    "subscriptions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "pressure": {
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "energet": {
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "want_projection": {
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "checkpoint": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "successor": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "wake_conditions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "retirement_condition": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "persistence_modes": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "MATERIAL_OBJECT",
+          "EVENT_SOURCED",
+          "RELATIONAL_GRAPH",
+          "GENERATIVE_RECIPE",
+          "DISTRIBUTED",
+          "ENVIRONMENTAL",
+          "LATENT_MODEL",
+          "RECONSTRUCTIVE",
+          "EPHEMERAL_EFFECT",
+          "UNKNOWN"
+        ]
+      },
+      "minItems": 1
+    },
+    "embodiment_policy": {
+      "type": "object"
+    },
+    "participant_bindings": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "provenance": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}
