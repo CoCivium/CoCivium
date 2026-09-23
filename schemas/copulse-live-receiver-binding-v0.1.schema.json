@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/CoCivium/CoCivium/schemas/copulse-live-receiver-binding-v0.1.schema.json",
+  "title": "CoPulse live receiver binding v0.1 candidate",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "binding_id","receiver_id","virtual_session_id","embodiment_id",
+    "service_identity","route_adapter","observed_route_state","observed_at",
+    "currentness_cursor","authority_ceiling","confidentiality","evidence_refs"
+  ],
+  "properties": {
+    "binding_id": {"type": "string", "minLength": 1},
+    "receiver_id": {"type": "string", "minLength": 1},
+    "virtual_session_id": {"type": "string", "minLength": 1},
+    "embodiment_id": {"type": "string", "minLength": 1},
+    "service_identity": {"type": "string", "minLength": 1},
+    "route_adapter": {"type": "string", "minLength": 1},
+    "observed_route_state": {"enum": ["ONLINE","OFFLINE","UNKNOWN"]},
+    "observed_at": {"type": "string", "format": "date-time"},
+    "currentness_cursor": {"type": "integer", "minimum": 0},
+    "authority_ceiling": {"type": "string", "minLength": 1},
+    "confidentiality": {"enum": ["PUBLIC","PRIVATE","RESTRICTED","UNKNOWN"]},
+    "evidence_refs": {"type": "array", "items": {"type": "string"}, "minItems": 1}
+  }
+}
