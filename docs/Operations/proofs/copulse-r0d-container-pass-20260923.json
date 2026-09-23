@@ -1,0 +1,93 @@
+{
+  "schema": "CoPulseDigestCanary.R0D.ExecutionEvidence.v0.1",
+  "state": "PASS_BOUNDED_CONTAINER_LOCAL_SYNTHETIC__EXPLICIT_LOSS_REPORT__EXACT_REPLAY__NOT_X2_NOT_GLOBAL_BUS",
+  "executed_utc": "2026-09-23T12:33:22Z",
+  "execution_surface": "OpenAI task container",
+  "exact_branch_git_blob_bindings": {
+    "CoPulseDigestCompactorR0D": "bb0c383f7013fde9dc36046610e1a2628c4696b1",
+    "CoPulseDigestReplayR0D": "39f23b7eece37e33e4f5be2640d8e62631cdf1c7",
+    "CoPulseDigestCanaryR0D": "c0d43879d2ce9595aa6e1d835d96e8efe5a3d154",
+    "source_fixture": "2bb7b26731faf8b731733e9bde11d23ad03a5916"
+  },
+  "exact_local_sha256_bindings": {
+    "CoPulseDigestCompactorR0D": "28936AC543D1A5BF9B58FFE5E8204F57B1DC82D0B8F12316C595EB6938F3440A",
+    "CoPulseDigestReplayR0D": "34A4322357D156C5C129EFD155ED7D0BB17F4350742DAC1BEAC59E3B53A0C7B8",
+    "CoPulseDigestCanaryR0D": "85A271A0F94481333E41EB4F54098C2B5306F2B13F1CB9928F4656E3A53AF9BD",
+    "source_fixture": "E4A940A67DD9D7BB2FCB05A0554E9756159377DBFA8C33B12945559100B166FC"
+  },
+  "result": {
+    "state": "PASS_R0D_COPRESSURE_AWARE_DIGEST_COMPACTION__EXPLICIT_LOSS_REPORT__EXACT_REPLAY__NO_SOURCE_OR_ACK_MUTATION",
+    "result_sha256": "8E361E436F2B2E5FA58530AC284F7F029F1B254F4D80D3EC3567B2CD06094A4B",
+    "source_packet_sha256": "E4A940A67DD9D7BB2FCB05A0554E9756159377DBFA8C33B12945559100B166FC",
+    "pressure_results": {
+      "LOW": {
+        "source_selected": 8,
+        "source_digest": 6,
+        "digest_groups": 0,
+        "visible_items": 8,
+        "visible_item_reduction": 0,
+        "exact_replay_proven": true
+      },
+      "MODERATE": {
+        "source_selected": 8,
+        "source_digest": 6,
+        "digest_groups": 2,
+        "visible_items": 4,
+        "visible_item_reduction": 4,
+        "exact_replay_proven": true
+      },
+      "HIGH": {
+        "source_selected": 8,
+        "source_digest": 6,
+        "digest_groups": 1,
+        "visible_items": 3,
+        "visible_item_reduction": 5,
+        "exact_replay_proven": true
+      },
+      "DEGRADED": {
+        "source_selected": 8,
+        "source_digest": 6,
+        "digest_groups": 1,
+        "visible_items": 3,
+        "visible_item_reduction": 5,
+        "exact_replay_proven": true
+      }
+    },
+    "output_hashes": {
+      "projection_low": "FE924D65BE05A16F71139E7F6885284C52B6F65B9A484687DD91550FC15CC90A",
+      "projection_moderate": "EF39F4B772EAC9E255CA193508A3C2E0456B8E779878E5179D01C78B3A54CAD3",
+      "replay_moderate": "3B355EEA2D9F3FF2469ECFC646E25F48576D033DE2BA1FC4362E5F282975ADFC",
+      "projection_high": "C355504C3F63356B3DD7DA631EDF51D2886C3F6EAC7D06414866CE453541CEA3",
+      "replay_high": "A85EDC0124892FA1B8430B4997C414E5E6505CF276DF651A12832FA1B98FB2AD",
+      "projection_degraded": "53D9AFF11DE6526783F022E6CCEEC74995487D768A4FCAF60251A4159B71F685",
+      "replay_degraded": "85D3C62C6C1D35B61711AE8E85FCDDB324DDD2A68AE56D88CBA95A74B7690156"
+    }
+  },
+  "lifecycle_evidence": {
+    "source_packet": "VERIFIED_LOCAL_FOR_CANARY",
+    "digest_projection": "VERIFIED_LOCAL_FOR_CANARY",
+    "replay_output": "VERIFIED_LOCAL_FOR_CANARY",
+    "receiver_pickup": "UNPROVEN_FOR_DIGEST_PROJECTION",
+    "integration": "UNPROVEN",
+    "coex": "UNPROVEN"
+  },
+  "effects": {
+    "source_packet_mutation": 0,
+    "ack_cursor_mutation": 0,
+    "provider_session_mutation": 0,
+    "authority_change": 0
+  },
+  "next": "R0E_DIGEST_RECEIVER_PICKUP_AND_ACK_CANARY_WITH_SOURCE_REPLAY_DRILLDOWN",
+  "nonclaims": [
+    "LOCAL_IS_NOT_LANDED",
+    "VALIDATION_IS_NOT_ACCEPTANCE",
+    "NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF",
+    "NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE",
+    "HASHING_IS_NOT_SEMANTIC_INGESTION",
+    "DISCOVERED_SET_IS_NOT_COMPLETE_HISTORY",
+    "COMPACTION_NE_DELETION",
+    "DIGEST_NE_SEMANTIC_EQUIVALENCE",
+    "REPLAYABILITY_NE_SOURCE_RETIREMENT_AUTHORITY",
+    "LOCAL_CANARY_NE_LIVE_GLOBAL_BUS"
+  ]
+}
