@@ -8,6 +8,13 @@ from pathlib import Path
 from typing import Any
 
 
+ALLOWED_EPISTEMIC_CLASSES = {
+    "OBSERVED","INFERRED","HYPOTHESIS","PREDICTED","PLANNED","PREFERRED",
+    "METAPHORICAL","MYTHIC","HUMOROUS","COUNTERFACTUAL","UNKNOWN"
+}
+ALLOWED_CONFIDENTIALITY = {"PUBLIC","PRIVATE","RESTRICTED","UNKNOWN"}
+
+
 def sha256_bytes(data: bytes) -> str:
     return hashlib.sha256(data).hexdigest().upper()
 
@@ -111,6 +118,31 @@ def main() -> int:
         missing = [x for x in required if x not in pulse]
         if missing:
             raise SystemExit("FAIL_CLOSED__PULSE_MISSING_FIELDS=" + ",".join(missing))
+
+        epistemic_class = str(pulse.get("epistemic_class"))
+        if epistemic_class not in ALLOWED_EPISTEMIC_CLASSES:
+            raise SystemExit(
+                "FAIL_CLOSED__UNKNOWN_EPISTEMIC_CLASS="
+                + epistemic_class
+                + "__PULSE="
+                + str(pulse.get("pulse_id"))
+            )
+
+        confidentiality = str(pulse.get("confidentiality"))
+        if confidentiality not in ALLOWED_CONFIDENTIALITY:
+            raise SystemExit(
+                "FAIL_CLOSED__UNKNOWN_CONFIDENTIALITY="
+                + confidentiality
+                + "__PULSE="
+                + str(pulse.get("pulse_id"))
+            )
+
+        domains = list(pulse.get("domains") or [])
+        if not domains:
+            raise SystemExit(
+                "FAIL_CLOSED__ROUTABLE_PULSE_HAS_NO_DOMAINS="
+                + str(pulse.get("pulse_id"))
+            )
 
         cursor = pulse["cursor"]
         if not isinstance(cursor, int) or cursor < 0:
