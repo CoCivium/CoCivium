@@ -171,3 +171,10 @@ After choosing a role, load the closest [CoSessionSubscription+ profile](ai/sess
 
 `CURRENTNESS_FOR_ALL_NE_CONTENT_FOR_ALL`  
 `SUBSCRIPTION_NE_AUTHORITY`
+
+## Dependent/minor device enrollment
+
+Do not enroll a dependent/minor device for standing unrestricted AI remote control. Prove the primary X2 route first, use a separate revocable service identity rather than personal credentials, and require bounded capabilities, durable audit, local recovery, and consent/guardian gates. See [Dependent Device Enrollment R0](docs/Security/DEPENDENT_DEVICE_ENROLLMENT_R0.md).
+
+`PRIMARY_ROUTE_FIRST__DEPENDENT_ENDPOINT_SECOND`  
+`DEVICE_SERVICE_ID_NE_PERSONAL_LOGIN`
