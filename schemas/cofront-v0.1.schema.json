@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/CoCivium/CoCivium/schemas/cofront-v0.1.schema.json",
+  "title": "CoFront identity v0.1 candidate",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "front_id",
+    "class",
+    "front_for",
+    "roles",
+    "authority_ceiling",
+    "seat_state",
+    "disclosure"
+  ],
+  "properties": {
+    "front_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "class": {
+      "type": "string",
+      "minLength": 1
+    },
+    "front_for": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "roles": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "principal_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "authority_ceiling": {
+      "type": "string",
+      "minLength": 1
+    },
+    "seat_state": {
+      "enum": [
+        "NONE",
+        "CURRENT_SHARED_SEAT",
+        "SEPARATE_SERVICE_PRINCIPAL",
+        "SEPARATE_VENDOR_USER",
+        "GITHUB_APP",
+        "UNKNOWN"
+      ]
+    },
+    "seat_ref": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "disclosure": {
+      "type": "string",
+      "minLength": 1
+    },
+    "revocable": {
+      "type": "boolean"
+    },
+    "nonclaims": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

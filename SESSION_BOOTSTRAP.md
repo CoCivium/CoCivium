@@ -134,3 +134,10 @@ Use [CoVirtualSession+ / CoSessionMorphology+ R0](docs/Architecture/COVIRTUAL_SE
 `VIRTUAL_SESSION_NE_PROVIDER_TAB`  
 `USER_ROLE_NE_PERSONHOOD_CLAIM`  
 `SELF_USE_NE_SELF_AUTHORIZATION`
+
+## Fronts / service identities
+
+Use [CoFront+ / CoCivia GitHub Identity R0](docs/Identity/COFRONT_COCIVIA_GITHUB_R0.md) and [the public front registry](ai/front-registry.json) when an AI, composite voice, service, or other participant needs a public identity projection. A front is not automatically a principal, and a vendor account is only a seat.
+
+`PRINCIPAL_NE_SHELL_NE_SEAT`  
+`FRONT_COUNT_NE_ACCOUNT_COUNT`
