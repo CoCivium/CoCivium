@@ -32,7 +32,7 @@ R0 mechanically:
 - holds non-`PUBLIC_SAFE` records from public fanout;
 - performs zero automatic shared-target mutation, fanout, canon change, or receiver-pickup claim.
 
-**R0 does not yet compile the projection into canonical CoEvoDelta+ records.** That is the next rung. Until then, this output is a review/compaction surface only.
+**R0 fan-in remains a review/compaction surface only.** The next rung is now implemented separately by `scripts/CoSessionProjectionToCoEvo.py`, which consumes the stricter v0.2 session projection and emits CoEvoDelta+ v0.2 candidates. Separation is deliberate: fan-in can compact lightweight v0.1 projections, while semantic compilation refuses to invent epistemic/confidentiality/mutation classes.
 
 `FANIN_NE_COEVO_INTEGRATION`
 
@@ -54,9 +54,9 @@ This proves bounded mechanical behavior for the fixture only.
 
 ## Next gate
 
-`COMPILE_REVIEWED_SESSION_PROJECTIONS_TO_COEVO_DELTA_THEN_ELECT_TARGETED_FANOUT`
+`UPGRADE_OR_EMIT_V0_2_PROJECTION -> COMPILE_TO_COEVO_V0_2 -> FANIN/REVIEW_COMPILED_COEVO -> ELECT_TARGETED_FANOUT`
 
-A later compiler should map each reviewed operation to one or more CoEvoDelta+ objects while preserving provenance, epistemic class, authority ceiling, current-base binding, public/private state, collision relations, intended receiver, and pickup/readproof requirements.
+The compiler is `scripts/CoSessionProjectionToCoEvo.py`. It preserves provenance, explicit epistemic class, authority ceiling, current-base binding, confidentiality/public-safety state, collision relation, intended receiver, and pickup/readproof requirements.
 
 ## Rails
 
