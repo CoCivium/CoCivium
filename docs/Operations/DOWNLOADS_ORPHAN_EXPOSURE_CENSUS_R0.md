@@ -6,7 +6,7 @@ This script is the bounded fallback while direct X2 machine routing is unavailab
 
 ## What it does
 
-- recursively inventories recent/project-like files in Downloads;
+- inventories **top-level** recent/project-like files in Downloads by default;
 - hashes files up to the configured bound;
 - groups exact duplicate content;
 - classifies broad content classes;
@@ -29,6 +29,7 @@ This script is the bounded fallback while direct X2 machine routing is unavailab
 
 - Downloads root: current user's `Downloads`
 - Since: `2026-09-22T00:00:00`
+- Scan mode: `TopLevel` by default; optional `Depth1` only after the top-level census is understood
 - Max candidates: 10,000
 - Per-file hash ceiling: 1 GiB
 - Output: `D:\CoCivium\CoFarm\CoDownloadsOrphanExposureCensus\<UTC stamp>`
@@ -45,3 +46,14 @@ R1 should compare exact hashes against CoFarm, CoStead, GitHub/public projection
 `STAGED_NE_ORPHANED`  
 `UNKNOWN_NE_PUBLIC`  
 `PS7_NE_DEFAULT_RUNTIME`
+
+
+## R0A bounded-scope repair
+
+The original R0 default recursed through the full Downloads subtree and correctly fail-closed when the candidate set reached 189,753 files, far above the 10,000-file ceiling.
+
+R0A changes the default to `TopLevel`. This is the intended first pass because the visible orphan-exposure problem is the top-level Downloads staging surface. Nested directories are not silently inferred safe; they are deferred for separately bounded follow-up.
+
+`FAIL_CLOSED_NE_FAILURE`  
+`BROAD_DISCOVERY_NE_BETTER_DISCOVERY`  
+`TOP_LEVEL_FIRST__THEN_ELECT_BOUNDED_DESCENTS`

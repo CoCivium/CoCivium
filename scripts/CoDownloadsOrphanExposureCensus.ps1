@@ -4,7 +4,9 @@ param(
     [string]$OutBase = 'D:\CoCivium\CoFarm\CoDownloadsOrphanExposureCensus',
     [datetime]$Since = [datetime]'2026-09-22T00:00:00',
     [int]$MaxFiles = 10000,
-    [long]$MaxHashBytes = 1073741824
+    [long]$MaxHashBytes = 1073741824,
+    [ValidateSet('TopLevel','Depth1')]
+    [string]$ScanMode = 'TopLevel'
 )
 
 Set-StrictMode -Version Latest
@@ -76,8 +78,15 @@ $run = Join-Path $OutBase $stamp
 if (Test-Path -LiteralPath $run) { throw "FAIL_CLOSED__RUN_EXISTS=$run" }
 New-Item -ItemType Directory -Path $run -Force:$false | Out-Null
 
+$sourceFiles =
+    if ($ScanMode -eq 'Depth1') {
+        Get-ChildItem -LiteralPath $DownloadsRoot -File -Recurse -Depth 1 -Force -ErrorAction SilentlyContinue
+    } else {
+        Get-ChildItem -LiteralPath $DownloadsRoot -File -Force -ErrorAction SilentlyContinue
+    }
+
 $all = @(
-    Get-ChildItem -LiteralPath $DownloadsRoot -File -Recurse -Force -ErrorAction SilentlyContinue |
+    $sourceFiles |
     Where-Object {
         $_.LastWriteTimeUtc -ge $Since.ToUniversalTime() -or
         $_.Name -match '(?i)^(co|rickbar|cocivium|coall|costead|cofarm|grail|strawbe|sowcc)'
@@ -162,7 +171,12 @@ $report = [ordered]@{
         max_files = $MaxFiles
         observed_candidates = $objects.Count
         hashed_files = $hashed
-        rule = 'RECENT_SINCE_BOUNDARY_OR_PROJECT_PREFIX__RECURSIVE'
+        scan_mode = $ScanMode
+        rule = if ($ScanMode -eq 'TopLevel') {
+            'TOP_LEVEL_ONLY__RECENT_SINCE_BOUNDARY_OR_PROJECT_PREFIX'
+        } else {
+            'DEPTH1_ONLY__RECENT_SINCE_BOUNDARY_OR_PROJECT_PREFIX'
+        }
     }
     objects = @($objects)
     hashes = [ordered]@{
@@ -261,6 +275,8 @@ $receipt = [ordered]@{
     RUN_ROOT = $run
     DOWNLOADS_ROOT = $DownloadsRoot
     SINCE_UTC = $Since.ToUniversalTime().ToString('o')
+    SCAN_MODE = $ScanMode
+    SCAN_MODE = $ScanMode
     FILES = $objects.Count
     HASHED = $hashed
     DUPLICATE_GROUPS = $duplicates.Count
