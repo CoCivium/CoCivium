@@ -86,6 +86,15 @@ Execution evidence is recorded under:
 
 `docs/Operations/proofs/copulse-r0d-container-pass-20260923.json`
 
+Observed bounded execution:
+
+- canary result SHA-256: `DAADB53D78C43FC27CE38197632FC381A1E3F18E47BAE52DE8655F5D9CB2F32A`;
+- source packet SHA-256: `25A92A87EC2555B7BABEA5359D0475C0A6922EECE55E6572AA7B2D6C68420AFE`;
+- compacted output SHA-256: `C3972655F53D61021A2413EECA4655319ABB4D7EDAAB65BE139E9DC95188FE0B`;
+- replay output SHA-256: `9B9420B59401A1B52E09C266F2A6575B5A9A0A13AF4A1A54039847B3298AEFFE`;
+- exact landed Git blob bindings matched before execution;
+- one initial Python-boolean defect was caught by execution and repaired before the PASS evidence was recorded.
+
 ## Boundary
 
 R0D does not prove:
