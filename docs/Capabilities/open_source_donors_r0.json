@@ -1,0 +1,185 @@
+{
+  "schema": "CoAll.OpenSourceDonorRegistry.v0.1-candidate",
+  "state": "REFERENCE_ONLY__LICENSE_CAPTURED__NO_SOURCE_CODE_INGESTED",
+  "created_utc": "2026-09-23T08:40:08Z",
+  "host_repo_license": "GPL-3.0",
+  "rules": [
+    "DONOR_CODE_NE_ARCHITECTURE",
+    "REFERENCE_NE_INGESTION",
+    "LICENSE_CAPTURE_NE_LICENSE_COMPLIANCE_PROVEN",
+    "NO_CODE_IMPORT_WITHOUT_EXACT_UPSTREAM_COMMIT_AND_NOTICE_PLAN",
+    "ADAPTER_BEFORE_FORK_WHEN_PRACTICAL",
+    "PROVENANCE_SURVIVES_TRANSFORMATION",
+    "UPSTREAM_UPDATE_NE_AUTOMATIC_ADOPTION"
+  ],
+  "donors": [
+    {
+      "id": "powertoys",
+      "upstream": "microsoft/PowerToys",
+      "default_branch": "main",
+      "license": "MIT",
+      "license_file": "LICENSE",
+      "license_blob_sha": "b2d78c9e34231fea76d5eaf8a6d80dbb737b2948",
+      "candidate_capabilities": [
+        "FancyZones layout concepts",
+        "multi-monitor geometry",
+        "window movement/snap patterns",
+        "PowerToys Run interaction patterns",
+        "desktop utility architecture"
+      ],
+      "proposed_relation": [
+        "CoDesktop+",
+        "RickBar+",
+        "CoBar+",
+        "CoModule+"
+      ],
+      "adoption": "PATTERN_AND_BOUNDED_COMPONENT_DONOR_CANDIDATE"
+    },
+    {
+      "id": "flow_launcher",
+      "upstream": "Flow-Launcher/Flow.Launcher",
+      "default_branch": "dev",
+      "license": "MIT",
+      "license_file": "LICENSE",
+      "license_blob_sha": "8be14c31de1241098defb09fa9b743f25e1689eb",
+      "candidate_capabilities": [
+        "command palette",
+        "plugin discovery",
+        "search ranking",
+        "launcher UX"
+      ],
+      "proposed_relation": [
+        "RickBar+",
+        "CoCommand+",
+        "CoModule+"
+      ],
+      "adoption": "PATTERN_AND_ADAPTER_DONOR_CANDIDATE"
+    },
+    {
+      "id": "glazewm",
+      "upstream": "glzr-io/glazewm",
+      "default_branch": "main",
+      "license": "GPL-3.0",
+      "license_file": "LICENSE.md",
+      "license_blob_sha": "f288702d2fa16d3cdf0035b15a9fcbc552cd88e7",
+      "candidate_capabilities": [
+        "tiling window manager architecture",
+        "workspace semantics",
+        "focus and movement control"
+      ],
+      "proposed_relation": [
+        "CoDesktop+",
+        "CoWorkspace+",
+        "CoZone+"
+      ],
+      "adoption": "ARCHITECTURAL_REFERENCE_FIRST__CODE_IMPORT_REQUIRES_EXACT_LINEAGE"
+    },
+    {
+      "id": "openssf_scorecard",
+      "upstream": "ossf/scorecard",
+      "default_branch": "main",
+      "license": "Apache-2.0",
+      "license_file": "LICENSE",
+      "license_blob_sha": "18f7f43fde86f7ef648559da1e3b2ba46c167f90",
+      "candidate_capabilities": [
+        "repository security posture checks",
+        "supply-chain hygiene signals"
+      ],
+      "proposed_relation": [
+        "CoGuard+",
+        "CoEvidence+",
+        "CoRepoHealth+"
+      ],
+      "adoption": "CI_ADAPTER_CANDIDATE_AFTER_PERMISSION_AND_FALSE_POSITIVE_REVIEW"
+    },
+    {
+      "id": "gitleaks",
+      "upstream": "gitleaks/gitleaks",
+      "default_branch": "master",
+      "license": "MIT",
+      "license_file": "LICENSE",
+      "license_blob_sha": "3c270b36c539ca8fbc4cc1017d3cbb7be1e44bbc",
+      "candidate_capabilities": [
+        "secret-pattern scanning",
+        "pre-publication leak detection"
+      ],
+      "proposed_relation": [
+        "CoGuard+",
+        "CoPrivacy+",
+        "CoIngress+"
+      ],
+      "adoption": "READONLY_SCAN_CANDIDATE__NO_AUTO_REMEDIATION"
+    },
+    {
+      "id": "trivy",
+      "upstream": "aquasecurity/trivy",
+      "default_branch": "main",
+      "license": "Apache-2.0",
+      "license_file": "LICENSE",
+      "license_blob_sha": "261eeb9e9f8b2b4b0d119366dda99c6fd7d35c64",
+      "candidate_capabilities": [
+        "dependency and container scanning",
+        "misconfiguration scanning",
+        "SBOM-related workflows"
+      ],
+      "proposed_relation": [
+        "CoGuard+",
+        "CoBuild+",
+        "CoEvidence+"
+      ],
+      "adoption": "READONLY_SCAN_CANDIDATE__NO_AUTO_REMEDIATION"
+    },
+    {
+      "id": "osv_scanner",
+      "upstream": "google/osv-scanner",
+      "default_branch": "main",
+      "license": "Apache-2.0",
+      "license_file": "LICENSE",
+      "license_blob_sha": "d645695673349e3947e8e5ae42332d0ac3164cd7",
+      "candidate_capabilities": [
+        "open-source vulnerability matching",
+        "lockfile and SBOM vulnerability checks"
+      ],
+      "proposed_relation": [
+        "CoGuard+",
+        "CoBuild+",
+        "CoEvidence+"
+      ],
+      "adoption": "READONLY_SCAN_CANDIDATE"
+    },
+    {
+      "id": "actionlint",
+      "upstream": "rhysd/actionlint",
+      "default_branch": "main",
+      "license": "MIT",
+      "license_file": "LICENSE.txt",
+      "license_blob_sha": "69292aedc9113498e83d72e48d38894f9a2a2eb6",
+      "candidate_capabilities": [
+        "GitHub Actions static validation",
+        "workflow syntax and expression checks"
+      ],
+      "proposed_relation": [
+        "CoCI+",
+        "CoRepoHealth+"
+      ],
+      "adoption": "READONLY_CI_LINT_CANDIDATE"
+    }
+  ],
+  "native_github_capabilities_to_qualify": [
+    "CODEOWNERS",
+    "pull request template",
+    "issue forms",
+    "Dependabot",
+    "GitHub Actions",
+    "code scanning",
+    "secret scanning",
+    "dependency review",
+    "releases",
+    "Pages",
+    "Discussions",
+    "branch rulesets",
+    "environments",
+    "artifact attestations"
+  ],
+  "next": "PIN_EXACT_UPSTREAM_COMMITS__QUALIFY_LICENSE_AND_PROVENANCE__SELECT_SMALL_READONLY_CANARIES"
+}
