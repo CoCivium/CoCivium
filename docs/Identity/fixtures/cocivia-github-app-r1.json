@@ -1,0 +1,44 @@
+{
+  "materialization_id": "cofront-seat:cocivia:github:r1",
+  "front_id": "cocivia",
+  "platform": "GITHUB",
+  "seat_class": "GITHUB_APP",
+  "state": "DESIGN_ONLY",
+  "repository_scope": [
+    "CoCivium/CoCivium"
+  ],
+  "permission_ceiling": {
+    "metadata": "READ",
+    "contents": "READ",
+    "pull_requests": "NONE",
+    "administration": "NONE",
+    "members": "NONE",
+    "secrets": "NONE",
+    "actions": "NONE",
+    "workflows": "NONE",
+    "environments": "NONE",
+    "billing": "NONE"
+  },
+  "credential_policy": {
+    "secret_values_in_repo": false,
+    "short_lived_token_preferred": true,
+    "secret_handle_only": true,
+    "revocable": true
+  },
+  "effect_policy": {
+    "effect_lease_required": true,
+    "merge_allowed": false,
+    "public_outreach_allowed": false,
+    "max_repositories_per_canary": 1
+  },
+  "authority_ceiling": "P1_READ_ONLY_IDENTITY_SCOPE_CURRENT_HEAD_READBACK_ONLY",
+  "proof_refs": [],
+  "next": "HUMAN_ADMIN_MATERIALIZATION_GATE_THEN_P1_READ_ONLY_CANARY",
+  "nonclaims": [
+    "NO_GITHUB_APP_CREATED",
+    "NO_INSTALLATION_CREATED",
+    "NO_CREDENTIAL_MATERIALIZED",
+    "NO_PERMISSION_GRANTED",
+    "NO_INDEPENDENT_EFFECT_ACTOR_YET"
+  ]
+}
