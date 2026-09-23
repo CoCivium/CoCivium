@@ -256,22 +256,30 @@ At minimum:
 
 ## Implementation currentness
 
-Landed together in the initial R0 public evolution commit:
+Landed on `main` as bounded candidate surfaces:
 
 1. machine-readable evolution-domain registry -> `ai/evolution-lanes.json`;
 2. CoEvoDelta schema -> `schemas/coevo-delta-v0.1.schema.json`;
 3. public highlight registry -> `ai/highlight-assets.json`;
-4. repo-role/currentness map -> `ai/repo-role-map.json`.
+4. repo-role/currentness map -> `ai/repo-role-map.json`;
+5. R2 logical spawn planner -> `scripts/CoLogicalSpawnPlanner.py` plus `docs/Operations/COLOGICAL_SPAWN_PLANNER_R2.md`;
+6. confidentiality-preserving CoSpawn routing -> private/restricted/unknown targets fail closed against public destinations;
+7. R3 local-model adapter -> `scripts/CoLocalModelWorkerR3.py` plus `ai/local-model-worker-policy.json`, with loopback-only/public-only/no-effect gates.
 
-These are candidate shared evolution surfaces. Their presence on `main` does not make every contained relation canon, globally integrated, or acknowledged by every session.
+R2 compiles and deduplicates logical work; it does not create provider sessions or live workers. R3 is adapter-ready, but the X2/Ollama materialization canary remains unrun at this observation boundary.
 
-`IMPLEMENTED_SURFACE_NE_GLOBAL_ADOPTION`
+These are candidate shared evolution surfaces. Their presence on `main` does not make every contained relation canon, globally integrated, receiver-picked-up, or acknowledged by every session.
+
+`IMPLEMENTED_SURFACE_NE_GLOBAL_ADOPTION`  
+`LOGICAL_SPAWN_NE_LIVE_WORKER`  
+`ADAPTER_READY_NE_RUNTIME_CANARY`  
+`MODEL_OUTPUT_NE_EFFECT_PERMISSION`  
 `MAIN_NE_CANON`
 
 ## Next implementation
 
-1. R2 logical spawn controller routes bounded work by subscribed domain;
-2. local/Ollama workers consume bounded domain queues and return typed CoEvoDelta+ results;
+1. when a direct X2 machine route is available, run one already-installed-model, public-safe, low-effect Ollama canary through R3;
+2. exact-hash that candidate output and require receiver readproof plus an independent verifier before any integration;
 3. RickBar shows only material cross-domain exceptions, pressure/currentness movement, and highlight changes;
 4. cross-repo PRs progressively add bootstrap pointers and domain-specific contribution contracts;
 5. add fan-in/currentness receipts so concurrent session deltas reconcile instead of becoming last-writer-wins;
