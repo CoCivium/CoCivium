@@ -22,10 +22,12 @@ PR #34 is the strongest broad R1 donor candidate, but it is not elected as an au
 
 Unique material identified outside #34:
 
-- **#28:** CoRepoField+/CoProjectionGraph+, explicit CoEvo lifecycle semantics, CoInteropEcology+, `NO_MATERIAL_DELTA => NO_COEVO_EMIT`, and `RELATION_PERSISTS__BINDING_EVOLVES`.
+- **#28:** CoRepoField+/CoProjectionGraph+, explicit CoEvo lifecycle semantics, CoInteropEcology+, `NO_MATERIAL_DELTA => NO_COEVO_EMIT`
+
+`REPOSITORY_PRESENCE_NE_RECEIVER_AWARENESS`, and `RELATION_PERSISTS__BINDING_EVOLVES`.
 - **#29:** machine-routable lanes for repo/readme ecology, architecture/substrate, protocol ecology, research/challenge, accessibility/locality/XR, security/privacy/governance, culture/memeables, and pressure/energet/want/metabolism.
 - **#30:** CoSessionSurvival donor evidence only.
-- **#31:** selective-session donor, anti-PR-spam/fan-in pressure, RickBar material-exception projection.
+- **#31:** selective-session donor; anti-PR-spam/fan-in pressure; RickBar material-exception projection; `repository presence != semantic integration != receiver awareness`; exact session-local authority/confidentiality ceiling; and deterministic R2 donor evidence (`1 delta -> 1 PROJECTION_COMPILER`, `0` donations/collisions/live workers/repo mutations/authority changes). Its unique donor content is now captured here, so #31 may retire unmerged.
 - **#32:** CoPrePublic/public-effect lane plus effect-class/effect-gate/effect-scope schema semantics.
 - **#33:** per-session CoEvo intake convention and README.
 - **#37:** CoEvoDelta v0.2 candidate fields plus CoSubscriptionCurrentness schema and example.
@@ -39,7 +41,7 @@ Build one current-main-based patch that carries only unique, compatible deltas.
 
 Prefer additive schema evolution over in-place semantic replacement.
 
-Preserve donor branches until their unique delta is carried forward or explicitly rejected.
+Preserve donor branches until their unique delta is carried forward or explicitly rejected. Once exact unique donor content is represented in the convergence object, retirement is preferred over keeping redundant PR pressure alive.
 
 ## Schema direction
 
