@@ -1,0 +1,35 @@
+{
+  "adapter_id": "CoGitHubReceiverAdapter.R0",
+  "destination_branch": "cocivia260923/session-relational-delta-r0",
+  "destination_path": "ai/receiver-inbox/github-r0/packet-50AC4F6AFA73BA9A8256C473.json",
+  "destination_readback": {
+    "commit_ref": "b0c95ad57c2191cd9e980733c42dc676be786395",
+    "coverage": "EXACT_PACKET_OBJECT_ONLY",
+    "exact_content_match": true,
+    "method": "GITHUB_EXACT_FILE_READBACK",
+    "path": "ai/receiver-inbox/github-r0/packet-50AC4F6AFA73BA9A8256C473.json"
+  },
+  "destination_repo": "CoCivium/CoCivium",
+  "git_blob_sha": "deeea8811c06ddce652b782fdaaad153ccf76f79",
+  "landing_commit": "b0c95ad57c2191cd9e980733c42dc676be786395",
+  "lifecycle_state": "LANDED",
+  "nonclaims": [
+    "DESTINATION_READBACK_NE_RECEIVER_PICKUP",
+    "LANDED_NE_PICKED_UP",
+    "LANDED_NE_INTEGRATED",
+    "BRANCH_NE_MAIN",
+    "MERGED_NE_CANON"
+  ],
+  "packet_file_sha256": "EB1C45B1DDAF48E06A760D07A4E37EFCDF74F467FB75A7A714B4F034C6C8E93C",
+  "packet_id": "packet:50AC4F6AFA73BA9A8256C473",
+  "packet_sha256": "50AC4F6AFA73BA9A8256C47316A788EF892F30F46E8B1BE3AB12EAB517241DA7",
+  "precondition_head": "538e258cb798d0b59589fde2dce92dde57ac919b",
+  "receipt_id": "receipt:github-r0:50AC4F6AFA73BA9A8256C473",
+  "receiver_pickup_state": "UNPROVEN",
+  "recovery": {
+    "landing_commit": "b0c95ad57c2191cd9e980733c42dc676be786395",
+    "rollback_policy": "REVERT_CANDIDATE_BRANCH_COMMIT_OR_DELETE_INBOX_OBJECT_WITH_EXPLICIT_REVIEW",
+    "source_branch": "cocivia260923/session-relational-delta-r0"
+  },
+  "state": "LANDED__DESTINATION_READBACK_PASS__PICKUP_UNPROVEN"
+}
