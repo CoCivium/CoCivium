@@ -254,16 +254,28 @@ At minimum:
 - provider sessions are replaceable embodiments.
 - public/main/merged still does not automatically mean canon, CoEx, or scientific validation.
 
+## Implementation currentness
+
+Landed together in the initial R0 public evolution commit:
+
+1. machine-readable evolution-domain registry -> `ai/evolution-lanes.json`;
+2. CoEvoDelta schema -> `schemas/coevo-delta-v0.1.schema.json`;
+3. public highlight registry -> `ai/highlight-assets.json`;
+4. repo-role/currentness map -> `ai/repo-role-map.json`.
+
+These are candidate shared evolution surfaces. Their presence on `main` does not make every contained relation canon, globally integrated, or acknowledged by every session.
+
+`IMPLEMENTED_SURFACE_NE_GLOBAL_ADOPTION`
+`MAIN_NE_CANON`
+
 ## Next implementation
 
-1. machine-readable evolution-domain registry;
-2. CoEvoDelta schema;
-3. public highlight registry;
-4. repo-role/currentness map;
-5. R2 logical spawn controller routes work by domain;
-6. local/Ollama workers consume bounded domain queues;
-7. RickBar shows only material cross-domain exceptions and highlight/currentness movement;
-8. cross-repo PRs progressively add bootstrap pointers and domain-specific contribution contracts.
+1. R2 logical spawn controller routes bounded work by subscribed domain;
+2. local/Ollama workers consume bounded domain queues and return typed CoEvoDelta+ results;
+3. RickBar shows only material cross-domain exceptions, pressure/currentness movement, and highlight changes;
+4. cross-repo PRs progressively add bootstrap pointers and domain-specific contribution contracts;
+5. add fan-in/currentness receipts so concurrent session deltas reconcile instead of becoming last-writer-wins;
+6. measure bootstrap-time, duplicate-rate, proof-debt, fan-in debt, and human-attention reduction as evolution-fabric health signals.
 
 ## Rails
 
