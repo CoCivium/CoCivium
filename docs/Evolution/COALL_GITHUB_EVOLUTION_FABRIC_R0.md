@@ -254,16 +254,40 @@ At minimum:
 - provider sessions are replaceable embodiments.
 - public/main/merged still does not automatically mean canon, CoEx, or scientific validation.
 
+## Implementation currentness
+
+Landed on `main` as bounded candidate surfaces:
+
+1. machine-readable evolution-domain registry -> `ai/evolution-lanes.json`;
+2. CoEvoDelta schema -> `schemas/coevo-delta-v0.1.schema.json`;
+3. public highlight registry -> `ai/highlight-assets.json`;
+4. repo-role/currentness map -> `ai/repo-role-map.json`;
+5. R2 logical spawn planner -> `scripts/CoLogicalSpawnPlanner.py` plus `docs/Operations/COLOGICAL_SPAWN_PLANNER_R2.md`;
+6. confidentiality-preserving CoSpawn routing -> private/restricted/unknown targets fail closed against public destinations;
+7. R3 local-model adapter -> `scripts/CoLocalModelWorkerR3.py` plus `ai/local-model-worker-policy.json`, with loopback-only/public-only/no-effect gates;
+8. R4 CoFleetProjection+/RickBar UX contract -> `docs/UX/COFLEET_RICKBAR_R4.md`, schema and policy, with exception-first foregrounding and coverage-qualified counts.
+
+CoSteward has also recorded a bounded real R2 execution over four session-authored CoEvo deltas: four logical contracts, zero validation issues, zero live workers, and receiver pickup still unproven. This is empirical planner evidence, not integration.
+
+R2 compiles and deduplicates logical work; it does not create provider sessions or live workers. R3 is adapter-ready, but the X2/Ollama materialization canary remains unrun at this observation boundary. R4 defines the UX/data contract only; RickBar runtime binding and a live global fleet census remain unproven.
+
+`IMPLEMENTED_SURFACE_NE_GLOBAL_ADOPTION`  
+`LOGICAL_SPAWN_NE_LIVE_WORKER`  
+`PLANNER_EXECUTION_NE_RECEIVER_PICKUP`  
+`ADAPTER_READY_NE_RUNTIME_CANARY`  
+`FLEET_PROJECTION_NE_FLEET_TOTALITY`  
+`RICKBAR_CONTRACT_NE_RUNTIME_BINDING`  
+`MODEL_OUTPUT_NE_EFFECT_PERMISSION`  
+`MAIN_NE_CANON`
+
 ## Next implementation
 
-1. machine-readable evolution-domain registry;
-2. CoEvoDelta schema;
-3. public highlight registry;
-4. repo-role/currentness map;
-5. R2 logical spawn controller routes work by domain;
-6. local/Ollama workers consume bounded domain queues;
-7. RickBar shows only material cross-domain exceptions and highlight/currentness movement;
-8. cross-repo PRs progressively add bootstrap pointers and domain-specific contribution contracts.
+1. when a direct X2 machine route is available, run one already-installed-model, public-safe, low-effect Ollama canary through R3;
+2. exact-hash that candidate output and require receiver readproof plus an independent verifier before any integration;
+3. bind R4 to a proven RickBar/local runtime adapter and keep live counts coverage-qualified;
+4. continue cross-repo bootstrap/domain contracts only where they reduce navigation or routing debt;
+5. add fan-in/currentness receipts so concurrent session deltas reconcile instead of becoming last-writer-wins;
+6. measure bootstrap-time, duplicate-rate, proof-debt, fan-in debt, receiver backlog, and human-attention reduction as evolution-fabric health signals.
 
 ## Rails
 
