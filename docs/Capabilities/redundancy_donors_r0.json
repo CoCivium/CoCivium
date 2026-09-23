@@ -1,0 +1,87 @@
+{
+  "schema": "CoNodeMesh.RedundancyDonors.v0.1-candidate",
+  "state": "LICENSE_CAPTURED__NO_SOURCE_INGESTION__NO_RUNTIME_INTEGRATION",
+  "created_utc": "2026-09-23T08:52:42Z",
+  "donors": [
+    {
+      "upstream": "restic/restic",
+      "default_branch": "master",
+      "license": "BSD-2-Clause",
+      "license_file": "LICENSE",
+      "license_blob_sha": "29b2ee55a92ff2c5516d7b916224c85fa7e9139a",
+      "candidate_use": [
+        "encrypted backup",
+        "restore canaries"
+      ],
+      "adoption": "ADAPTER_CANDIDATE"
+    },
+    {
+      "upstream": "rclone/rclone",
+      "default_branch": "master",
+      "license": "MIT",
+      "license_file": "COPYING",
+      "license_blob_sha": "8c27c67fd0a12a1e18db983f19450abed435e689",
+      "candidate_use": [
+        "multi-provider transport",
+        "remote replication"
+      ],
+      "adoption": "ADAPTER_CANDIDATE"
+    },
+    {
+      "upstream": "syncthing/syncthing",
+      "default_branch": "main",
+      "license": "MPL-2.0",
+      "license_file": "LICENSE",
+      "license_blob_sha": "d0a1fa1482eea82e19510e7920cbe3a03e41f691",
+      "candidate_use": [
+        "peer replication",
+        "offline/reconnect sync"
+      ],
+      "adoption": "ADAPTER_CANDIDATE"
+    },
+    {
+      "upstream": "nats-io/nats-server",
+      "default_branch": "main",
+      "license": "Apache-2.0",
+      "license_file": "LICENSE",
+      "license_blob_sha": "261eeb9e9f8b2b4b0d119366dda99c6fd7d35c64",
+      "candidate_use": [
+        "pub-sub",
+        "event transport",
+        "CoAllPulseField adapter"
+      ],
+      "adoption": "TRANSPORT_CANDIDATE"
+    },
+    {
+      "upstream": "juanfont/headscale",
+      "default_branch": "main",
+      "license": "BSD-3-Clause",
+      "license_file": "LICENSE",
+      "license_blob_sha": "dfa1a5cb2328f51b0d03aa642b7186d960416300",
+      "candidate_use": [
+        "self-hosted mesh control"
+      ],
+      "adoption": "NETWORK_ADAPTER_CANDIDATE"
+    },
+    {
+      "upstream": "duckdb/duckdb",
+      "default_branch": "v2.0-cyanoptera",
+      "license": "MIT",
+      "license_file": "LICENSE",
+      "license_blob_sha": "2719c9a23d2a37c1dfb7402e79f03bd615701e53",
+      "candidate_use": [
+        "local analytics",
+        "currentness indexes",
+        "offline query"
+      ],
+      "adoption": "LOCAL_INDEX_CANDIDATE"
+    }
+  ],
+  "rails": [
+    "REFERENCE_NE_INGESTION",
+    "LICENSE_CAPTURE_NE_LICENSE_COMPLIANCE_PROVEN",
+    "UPSTREAM_UPDATE_NE_AUTOMATIC_ADOPTION",
+    "TRANSPORT_NE_ONTOLOGY",
+    "ADAPTER_BEFORE_FORK_WHEN_PRACTICAL"
+  ]
+}
