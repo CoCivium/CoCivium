@@ -23,7 +23,7 @@ Verifier:
 
 `scripts/CoPulseCapacityProvenanceR0G.py`
 
-Every provenance object binds the exact pressure-input SHA-256 plus:
+Every provenance object binds the exact pressure-input SHA-256 **and an exact source object whose bytes are reread by the verifier**, plus:
 
 - sample ID;
 - receiver ID;
@@ -33,11 +33,13 @@ Every provenance object binds the exact pressure-input SHA-256 plus:
 - evidence refs;
 - authority ceiling and confidentiality.
 
-Source-specific floor:
+Source-object floor:
 
-- `MEASURED` requires a source-object reference and SHA-256;
-- `DECLARED` requires a declaration/source-object reference;
-- `SYNTHETIC_FIXTURE` may remain fixture-local but is never promoted to measurement evidence.
+- every source class requires `source_object_ref` + exact `source_object_sha256`;
+- the verifier rereads the supplied source object and fails closed on hash drift;
+- `MEASURED` identifies measurement evidence;
+- `DECLARED` identifies an exact declaration object and remains declaration, not measurement;
+- `SYNTHETIC_FIXTURE` binds an exact fixture object and is never promoted to measurement evidence.
 
 `PROVENANCE_NE_MEASUREMENT_ACCURACY`  
 `DECLARATION_NE_MEASUREMENT`
