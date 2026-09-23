@@ -230,7 +230,7 @@ Use [the R0B two-receiver canary](scripts/CoPulseTwoReceiverCanaryR0B.py) after 
 
 ## CoPulse currentness pipeline through R0E
 
-Use [the machine currentness index](ai/currentness/copulse-currentness-r0e.json) for the landed public-safe CoPulse lineage: R0A role/profile routing, R0B exact receiver pickup, R0C receiver-local ACK/backfill, R0D explicit-loss DIGEST compaction with exact replay, and R0E receiver-capacity budget election. The next bounded rung is R0F staleness plus multi-receiver capacity election.
+Use [the machine currentness index](ai/currentness/copulse-currentness-r0f.json) for the landed public-safe CoPulse lineage: R0A role/profile routing, R0B exact receiver pickup, R0C receiver-local ACK/backfill, R0D explicit-loss DIGEST compaction with exact replay, and R0E receiver-capacity budget election. R0F now proves explicit pressure freshness plus divergent receiver-local budgets over one shared pulse field. The next bounded rung is R0G capacity-source provenance plus live receiver binding.
 
 `DELIVERY_NE_PICKUP`  
 `COMPACTION_NE_DELETION`  
