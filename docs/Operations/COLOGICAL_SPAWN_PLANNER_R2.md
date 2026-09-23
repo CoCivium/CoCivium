@@ -42,3 +42,10 @@ This checks the important failure mode: useful automation must refuse a confiden
 `DEDUPE_NE_DELETE`  
 `CONFIDENTIALITY_COLLISION_NE_AUTO_ROUTE`  
 `MODEL_NE_AUTHORITY`
+
+
+## R2A confidentiality bind
+
+CoSpawn contracts preserve the source delta's confidentiality class explicitly. This is required before any later worker materialization so a private logical task cannot silently default to public.
+
+`CONFIDENTIALITY_MUST_SURVIVE_ROUTING`

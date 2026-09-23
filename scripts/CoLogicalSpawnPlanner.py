@@ -151,6 +151,7 @@ def compile_plan(deltas: list[dict[str, Any]], lanes_obj: dict[str, Any], repo_m
             "scope": f"domains={','.join(str(x) for x in list(primary.get('domain') or []))}; subject={primary.get('subject')}",
             "input_bindings": input_bindings,
             "authority_ceiling": str(primary.get("authority_ceiling")),
+            "confidentiality": str(primary.get("confidentiality", "UNKNOWN")),
             "effect_classes": [str(primary.get("mutation_class"))],
             "budget": {"max_live_embodiments": 0, "max_effectful_mutations": 0, "logical_work_units": 1},
             "lease": {"mode": "LOGICAL_ONLY", "effect_lease": "NONE"},
