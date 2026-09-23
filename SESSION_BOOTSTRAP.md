@@ -115,3 +115,7 @@ The intended mature path is CoAllPulseField+/CoNodeMesh+ currentness, not human 
 - CoStead: private durable fabric.
 - GitHub: public/currentness/bootstrap projection.
 - RickBar/CoDesktop: human edge and observer/control projection.
+
+## Downloads / staging fallback
+
+When direct X2 routing is unavailable, use the bounded read-only [Downloads Orphan-Exposure Census](scripts/CoDownloadsOrphanExposureCensus.ps1) rather than uploading the Downloads payload into provider chat or public GitHub. It writes append-only evidence to CoFarm and performs no source mutation or network upload.
