@@ -1,0 +1,75 @@
+{
+  "schema": "CoPulseAckBackfillCanary.R0C.ExecutionEvidence.v0.1",
+  "state": "PASS_BOUNDED_CONTAINER_LOCAL_SYNTHETIC_CANARY__ACK_CHAIN_AND_BACKFILL_PROVEN__NOT_X2_NOT_GLOBAL_BUS",
+  "executed_utc": "2026-09-23T12:20:03Z",
+  "execution_surface": "OpenAI task container",
+  "exact_branch_script_bindings": {
+    "CoPulseAckCommitR0C_git_blob": "eb780f28bd48aae86be3f02737f365f90cc59c9d",
+    "CoPulseAckBackfillCanaryR0C_git_blob": "25b53d23bbbcc175d39eca5024ccf8d8bbead531"
+  },
+  "prerequisite_exact_main_bindings": {
+    "CoPulseSubscriptionRouterR0A_git_blob": "ca14dbf9efc44d241280cd428c434a89406dcb2e",
+    "CoPulseReceiverReadproofR0B_git_blob": "47f111c32740c342bec504be43c9c8806850e86e"
+  },
+  "result": {
+    "state": "PASS_R0C_PER_RECEIVER_ACK_COMMIT__CHAINED_READPROOF__ROLE_SPECIFIC_BACKFILL_REPLAY__INDEPENDENT_CURSOR_ADVANCE",
+    "result_sha256": "0234C883C466D0CBA4B1441CA069C73B1DEA08232111F7A2907AAEE6E17BF0C0",
+    "round2_extended_pulse_field_sha256": "8A813E1245A2E11E81656BFA411F19F8FA81A38FDFDD74B8058D778907779B81",
+    "receivers": [
+      {
+        "receiver_id": "VirtualReceiver-CoUX-A",
+        "round1_ack_sha256": "3B5B225D982C7D932761B400DBA86EEB221E6C4542F6D03DD4E1EB0F3B26A009",
+        "round1_committed_cursor": 3,
+        "round2_readproof_sha256": "6F7C2DB0CB7C2AEA02A0BAFB674CAD9DAD11E82921DFC1EAF9A945ED3E9D3787",
+        "round2_selected_pulse_ids": [
+          "pulse.fixture.ux.004"
+        ],
+        "round2_ack_sha256": "C0E71B20939DBCB79F230FB54AC1B33A16F23722D622372A05F52F0ABFAEAEB3",
+        "final_committed_cursor": 4
+      },
+      {
+        "receiver_id": "VirtualReceiver-CoTheory-B",
+        "round1_ack_sha256": "B772C94C0E631F9825DAAA1EF9775BB86DFA7E694AC040664D1ABA860ABC685B",
+        "round1_committed_cursor": 3,
+        "round2_readproof_sha256": "32B563880D27AA45D5391287E68EB3B3D48052DC64CEEB313AAA69D49CABE785",
+        "round2_selected_pulse_ids": [
+          "pulse.fixture.theory.005"
+        ],
+        "round2_ack_sha256": "E7FFE5FC8B8F0DE3828C232231D8B047339239D3A639804B58422698CF86CF90",
+        "final_committed_cursor": 5
+      }
+    ],
+    "checks": {
+      "readproof_before_each_ack": true,
+      "prior_ack_hash_chain_bound": true,
+      "no_cursor_regression": true,
+      "receiver_ack_chains_distinct": true,
+      "same_extended_pulse_field": true,
+      "role_specific_backfill": true,
+      "final_cursors_diverge": true
+    }
+  },
+  "lifecycle_and_currentness": {
+    "packet_pickup": "PROVEN_FOR_BOUNDED_SYNTHETIC_RECEIVER_PACKETS",
+    "receiver_local_ack_commit": "PROVEN_FOR_FOUR_ACK_OBJECTS",
+    "backfill_replay": "PROVEN_FOR_TWO_SYNTHETIC_RECEIVERS",
+    "integration": "UNPROVEN",
+    "coex": "UNPROVEN"
+  },
+  "effects": {
+    "receiver_local_ack_files_written": 4,
+    "shared_global_ack_mutation": 0,
+    "provider_session_mutation": 0,
+    "authority_change": 0
+  },
+  "next": "R0D_COPRESSURE_DIGEST_COMPACTION_WITH_EXPLICIT_LOSS_REPORT_AND_REPLAY",
+  "nonclaims": [
+    "ACK_COMMIT_NE_INTEGRATION",
+    "ACK_COMMIT_NE_COEX",
+    "RECEIVER_LOCAL_ACK_NE_GLOBAL_ACK",
+    "TWO_RECEIVERS_NE_TWO_FAILURE_DOMAINS",
+    "CONTAINER_CANARY_NE_X2_RUNTIME_PROOF",
+    "LOCAL_CANARY_NE_LIVE_GLOBAL_BUS",
+    "NO_PROVIDER_SESSION_PICKUP_CLAIM"
+  ]
+}

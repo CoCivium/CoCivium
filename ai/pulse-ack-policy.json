@@ -1,0 +1,15 @@
+{
+  "schema": "CoPulseAck.Policy.R0C.v0.1-candidate",
+  "state": "PASS_BOUNDED_CONTAINER_LOCAL_SYNTHETIC__NOT_X2_NOT_GLOBAL_BUS",
+  "readproof_required": true,
+  "prior_ack_hash_chain_required_after_first_commit": true,
+  "cursor_regression_allowed": false,
+  "receiver_local_state": true,
+  "shared_global_ack": false,
+  "provider_context_mutation": false,
+  "next": "R0D_COPRESSURE_DIGEST_COMPACTION_WITH_EXPLICIT_LOSS_REPORT_AND_REPLAY",
+  "proof": "docs/Operations/proofs/copulse-r0c-container-pass-20260923.json",
+  "receiver_local_ack_commit_proven": true,
+  "role_specific_backfill_replay_proven": true,
+  "integration_proven": false
+}
