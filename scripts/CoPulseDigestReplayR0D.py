@@ -104,8 +104,8 @@ def main() -> int:
         "coverage": {
             "expected_digest_count": len(expected_digest),
             "replayed_digest_count": len(replayed),
-            "exact_object_equality": true,
-            "manifest_unique": true,
+            "exact_object_equality": True,
+            "manifest_unique": True,
         },
         "replayed_digest_pulses": replayed,
         "effects": {
@@ -133,7 +133,7 @@ def main() -> int:
         "OUTPUT_SHA256": sha256_bytes(encoded),
         "SOURCE_PACKET_SHA256": source_sha,
         "REPLAYED_DIGEST": len(replayed),
-        "EXACT_OBJECT_EQUALITY": true,
+        "EXACT_OBJECT_EQUALITY": True,
         "ACK_CURSOR_MUTATION": 0,
         "NEXT": result["next"],
     }, separators=(",", ":")))
