@@ -1,0 +1,183 @@
+{
+  "schema": "CoAll.RepoRoleMap.v0.1-candidate",
+  "state": "PUBLIC_ROLE_MAP__NOT_ONTOLOGY",
+  "updated_utc": "2026-09-23T11:00:41Z",
+  "repositories": [
+    {
+      "repo": "CoCivium/CoCivium",
+      "visibility": "public",
+      "roles": [
+        "PUBLIC_FRONT_DOOR",
+        "SESSION_BOOTSTRAP",
+        "CURRENTNESS",
+        "CROSS_DOMAIN_INTEGRATION",
+        "HIGHLIGHTS"
+      ]
+    },
+    {
+      "repo": "CoCivium/CoInsights",
+      "visibility": "private",
+      "roles": [
+        "INSIGHT_ATOMS",
+        "IDEATION",
+        "WHITEPAPER_FRAGMENTS"
+      ]
+    },
+    {
+      "repo": "CoCivium/GIBindex",
+      "visibility": "private",
+      "roles": [
+        "COLEX",
+        "ALIASES",
+        "DEPRECATIONS",
+        "INDEX"
+      ]
+    },
+    {
+      "repo": "CoCivium/MasterPlan",
+      "visibility": "private",
+      "roles": [
+        "STRATEGY",
+        "PLANS",
+        "DECISIONS"
+      ]
+    },
+    {
+      "repo": "CoCivium/CoFutures",
+      "visibility": "private",
+      "roles": [
+        "FUTURES",
+        "PROBABILISTIC_LEDGER"
+      ]
+    },
+    {
+      "repo": "CoCivium/CoSteward",
+      "visibility": "private",
+      "roles": [
+        "OPS",
+        "TRIAGE",
+        "RUNBOOKS"
+      ]
+    },
+    {
+      "repo": "CoCivium/CoToolbelt",
+      "visibility": "private",
+      "roles": [
+        "SHARED_SCRIPTS",
+        "UTILITIES"
+      ]
+    },
+    {
+      "repo": "CoCivium/CoStacks",
+      "visibility": "public",
+      "roles": [
+        "AUTOMATION",
+        "OPERATOR_EXPERIMENTS"
+      ]
+    },
+    {
+      "repo": "CoCivium/CoRails",
+      "visibility": "public",
+      "roles": [
+        "RAILS",
+        "INVARIANTS",
+        "GUARDRAILS"
+      ]
+    },
+    {
+      "repo": "CoCivium/CoAura",
+      "visibility": "public",
+      "roles": [
+        "UX",
+        "SURFACE",
+        "PROJECTION"
+      ]
+    },
+    {
+      "repo": "CoCivium/CoAcademy",
+      "visibility": "public",
+      "roles": [
+        "EDUCATION",
+        "PUBLIC_LEARNING"
+      ]
+    },
+    {
+      "repo": "CoCivium/CoSources",
+      "visibility": "public",
+      "roles": [
+        "SOURCES",
+        "PROVENANCE"
+      ]
+    },
+    {
+      "repo": "CoCivium/CoShareHub",
+      "visibility": "private",
+      "roles": [
+        "NAVIGATION",
+        "DISCOVERY"
+      ]
+    },
+    {
+      "repo": "CoCivium/CoBusMirror",
+      "visibility": "public",
+      "roles": [
+        "LEGACY_PUBLIC_MIRROR",
+        "POINTER_LINEAGE"
+      ]
+    },
+    {
+      "repo": "CoCivium/EntMent",
+      "visibility": "public",
+      "roles": [
+        "AI_FIRST_BEACON_EXEMPLAR"
+      ]
+    },
+    {
+      "repo": "CoCivium/TEMP",
+      "visibility": "public",
+      "roles": [
+        "PUBLIC_SAFE_TRANSIENT_INBOX"
+      ]
+    },
+    {
+      "repo": "CoCivium/CoTrustedWindow",
+      "visibility": "private",
+      "roles": [
+        "TRUSTED_HUMAN_WINDOW"
+      ]
+    },
+    {
+      "repo": "CoCivium/CoLegalVault",
+      "visibility": "private",
+      "roles": [
+        "LEGAL_VAULT"
+      ]
+    },
+    {
+      "repo": "CoCivium/CoCrownJewelVault",
+      "visibility": "private",
+      "roles": [
+        "RESTRICTED_VAULT"
+      ]
+    },
+    {
+      "repo": "CoCivium/.github",
+      "visibility": "private",
+      "roles": [
+        "ACCOUNT_REPO_META"
+      ]
+    },
+    {
+      "repo": "CoCivium/CoPolitic-site",
+      "visibility": "public",
+      "roles": [
+        "SEPARATE_POLITICAL_PUBLIC_SCAFFOLD"
+      ]
+    }
+  ],
+  "nonclaims": [
+    "REPOSITORY_NE_ONTOLOGY",
+    "ROLE_MAP_NE_CANON",
+    "VISIBILITY_NE_CONFIDENTIALITY_PROOF"
+  ]
+}
