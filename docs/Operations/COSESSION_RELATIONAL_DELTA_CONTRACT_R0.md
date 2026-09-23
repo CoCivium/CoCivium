@@ -24,7 +24,7 @@ The session projection adds receiver-facing and fan-in mechanics that are useful
 - receiver exact-readproof gate;
 - progressive-disclosure UX guidance.
 
-These fields should either compile into CoEvoDelta+ objects or feed a later CoEvoDelta schema revision. They must not silently create a second source of semantic truth.
+These fields should compile into CoEvoDelta+ objects or feed a later CoEvoDelta schema revision. The current R0 fan-in compiler does not yet perform that semantic compilation; it only compacts and reviews the session projection. They must not silently create a second source of semantic truth.
 
 ## Projection mapping
 
@@ -59,7 +59,7 @@ This projection may carry bounded work across CoTheoryAll+, CoLex+, CoIndex+, Co
 
 ## Default route
 
-`DISCOVER_RELEVANT_CURRENTNESS -> BIND_OBSERVED_BASE -> PRODUCE_SESSION_PROJECTION -> COMPILE/FANIN_TO_COEVO -> REVIEW -> TARGETED_FANOUT -> RECEIVER_READPROOF`
+`DISCOVER_RELEVANT_CURRENTNESS -> BIND_OBSERVED_BASE -> PRODUCE_SESSION_PROJECTION -> FANIN_PROJECTION -> COMPILE_TO_COEVO -> REVIEW -> TARGETED_FANOUT -> RECEIVER_READPROOF`
 
 Do not ingest the whole repository by default.
 
