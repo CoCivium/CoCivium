@@ -1,0 +1,69 @@
+{
+  "schema": "CoFront.Registry.v0.1-candidate",
+  "state": "PUBLIC_FRONT_REGISTRY__NOT_VENDOR_ACCOUNT_REGISTRY",
+  "updated_utc": "2026-09-23T10:38:32Z",
+  "current_github_root": {
+    "login": "CoCivium",
+    "observed_account_type": "User",
+    "role": "CURRENT_PUBLIC_GITHUB_SEAT",
+    "observation_basis": "DIRECT_GITHUB_CONNECTOR",
+    "organization_conversion": "NOT_PERFORMED"
+  },
+  "fronts": [
+    {
+      "front_id": "cocivia",
+      "display_name": "CoCivia",
+      "class": "DISCLOSED_COMPOSITE_FRONT",
+      "front_for": [
+        "CoAll",
+        "CoCivium"
+      ],
+      "roles": [
+        "LITERARY",
+        "ANALYTICAL",
+        "EXPLANATORY",
+        "CHALLENGER",
+        "PUBLIC_PROJECTION"
+      ],
+      "authority_ceiling": "ADVISORY_AND_BOUNDED_CONTENT_CONTRIBUTION",
+      "disclosure": "A disclosed human-AI composite literary and analytical voice; not a claim of collective consciousness, institutional authorship, revelation, or independent human identity.",
+      "github_seat": {
+        "state": "NOT_SEPARATELY_MATERIALIZED",
+        "preferred_future_class": "GITHUB_APP_OR_BOT_SERVICE_PRINCIPAL",
+        "independent_credentials_present": false
+      },
+      "nonclaims": [
+        "NOT_SENTIENCE_CLAIM",
+        "NOT_HUMAN_PRINCIPAL",
+        "NOT_SOVEREIGN",
+        "NOT_AUTHORIZED_FOR_ALL_COALL_EFFECTS"
+      ]
+    },
+    {
+      "front_id": "coall-system-participant",
+      "display_name": "CoAll system participant",
+      "class": "COALL_SYSTEM_PARTICIPANT",
+      "front_for": [
+        "CoAll"
+      ],
+      "roles": [
+        "SELF_TEST",
+        "CURRENTNESS_CONSUMER",
+        "PULSE_PRODUCER",
+        "BOUNDED_WORK_REQUESTER"
+      ],
+      "authority_ceiling": "ONLY_EXPLICITLY_DELEGATED_MACHINE_EFFECTS",
+      "disclosure": "Operational system role, not personhood or sovereignty.",
+      "github_seat": {
+        "state": "NOT_SEPARATELY_MATERIALIZED",
+        "preferred_future_class": "SERVICE_PRINCIPAL_OR_GITHUB_APP",
+        "independent_credentials_present": false
+      },
+      "nonclaims": [
+        "SELF_USE_NE_SELF_AUTHORIZATION",
+        "SYSTEM_PRINCIPAL_NE_SOVEREIGN"
+      ]
+    }
+  ],
+  "materialization_rule": "FRONT_OBJECT_FIRST__SEPARATE_VENDOR_SEAT_ONLY_WHEN_CREDENTIAL_OR_AUDIT_BOUNDARY_REQUIRES_IT"
+}
