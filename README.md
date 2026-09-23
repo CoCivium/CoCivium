@@ -3,6 +3,8 @@
 > [!IMPORTANT]
 > **Public R&D / pre-launch transition:** CoCivium is moving from mostly private prototyping toward a public demo / pre-launch phase. Repositories, terms, interfaces, and machine-readable projections are being reorganized. Expect **StrawBe+** work-in-progress objects, explicit nonclaims, and superseded prototypes. **Public does not mean validated, finished, endorsed, or release-ready.** See [PRELAUNCH.md](PRELAUNCH.md).
 
+
+> **Session/bootstrap pointer:** sessions and machine clients needing current public project orientation should start with [SESSION_BOOTSTRAP.md](SESSION_BOOTSTRAP.md). GitHub is a shared public/currentness surface, not the sole custody root.
 **R&D & coordination gaurdrails for the AI era.**
 
 The world is increasingly shaped by conflict, corruption and narrative manipulation. Biased truths are fed to us via $billion systems that evolve our minds more profoundly than adadmic study or parental advice. The post-truth society, so enabled, so vastly AI-enabled, thus erodes our ethics, our decency and even democracy itself.
