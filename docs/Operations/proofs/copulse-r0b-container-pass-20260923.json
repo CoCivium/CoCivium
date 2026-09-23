@@ -1,0 +1,90 @@
+{
+  "schema": "CoPulseTwoReceiverCanary.R0B.ExecutionEvidence.v0.1",
+  "state": "PASS_BOUNDED_CONTAINER_LOCAL_SYNTHETIC_CANARY__NOT_X2_NOT_GLOBAL_BUS",
+  "executed_utc": "2026-09-23T12:10:00Z",
+  "execution_surface": "OpenAI task container",
+  "exact_main_script_bindings": {
+    "CoPulseSubscriptionRouterR0A_git_blob": "ca14dbf9efc44d241280cd428c434a89406dcb2e",
+    "CoPulseReceiverReadproofR0B_git_blob": "47f111c32740c342bec504be43c9c8806850e86e",
+    "CoPulseTwoReceiverCanaryR0B_git_blob": "8fcc3679a9ac2e56c9c352fac5701ac65eb585c6"
+  },
+  "git_blob_readback": {
+    "router_match": true,
+    "receiver_match": true,
+    "canary_match": true
+  },
+  "synthetic_inputs": {
+    "pulse_field_sha256": "F2D7269B15404CB6065183067B2897E4FB86D491FAA0AD1928A490B23554D6D9",
+    "profile_scope": [
+      "CoUX",
+      "CoTheory"
+    ],
+    "input_class": "PUBLIC_SYNTHETIC_MINIMAL_EQUIVALENT_REGISTRY_FIXTURE"
+  },
+  "result": {
+    "state": "PASS_R0B_TWO_DISTINCT_RECEIVER_PROCESSES__SAME_PULSE_FIELD__ROLE_SPECIFIC_PACKETS__INDEPENDENT_ACK_STATE__NO_SHARED_ACK_MUTATION",
+    "canary_result_sha256": "884652BD5C393F371CC92177E8889A4E6DA6B7838EB41E881777A534643DD67C",
+    "receivers": [
+      {
+        "receiver_instance_id": "receiver-process-CoUX-A",
+        "receiver_process_id": 665,
+        "profile_id": "CoUX",
+        "prior_acked_cursor": 0,
+        "proposed_ack_cursor": 3,
+        "packet_sha256": "B1AEC00FE9C842BFF485A955FF07969F3D0F2885DD92F2F63F121BF7F120B55E",
+        "readproof_sha256": "9EE2DDFE105CE7DC4F0FBFCE7593B767A5C11AE576EFD89CEEFA0A56271F2EE1",
+        "selected_pulse_ids": [
+          "pulse.fixture.ux.001",
+          "pulse.fixture.humour.003"
+        ],
+        "lifecycle_state": "PICKED_UP"
+      },
+      {
+        "receiver_instance_id": "receiver-process-CoTheory-B",
+        "receiver_process_id": 685,
+        "profile_id": "CoTheory",
+        "prior_acked_cursor": 1,
+        "proposed_ack_cursor": 3,
+        "packet_sha256": "A5A2178735FD476F6FD7AAF8988CFAD102AE7384A2CCC73BC9BA8590F3024582",
+        "readproof_sha256": "F5CAC1A10A9384258D3A8798E97F8F3C1625851E6652F68B1612C6DAD547A330",
+        "selected_pulse_ids": [
+          "pulse.fixture.theory.002",
+          "pulse.fixture.humour.003"
+        ],
+        "lifecycle_state": "PICKED_UP"
+      }
+    ],
+    "independence_checks": {
+      "distinct_process_ids": true,
+      "distinct_receiver_ids": true,
+      "distinct_profile_ids": true,
+      "same_pulse_field_hash": true,
+      "distinct_packet_hashes": true,
+      "distinct_selected_pulse_sets": true,
+      "distinct_prior_ack_cursors": true,
+      "shared_ack_mutation": false
+    }
+  },
+  "lifecycle_evidence": {
+    "exact_packet_receiver_A": "PICKED_UP",
+    "exact_packet_receiver_B": "PICKED_UP",
+    "integration": "UNPROVEN",
+    "coex": "UNPROVEN"
+  },
+  "effects": {
+    "provider_session_mutation": 0,
+    "shared_ack_mutation": 0,
+    "authority_change": 0,
+    "public_outreach": 0
+  },
+  "next": "R0C_EXPLICIT_PER_RECEIVER_ACK_COMMIT_AND_BACKFILL_REPLAY_CANARY",
+  "nonclaims": [
+    "PICKED_UP_NE_INTEGRATED",
+    "TWO_PROCESSES_NE_TWO_FAILURE_DOMAINS",
+    "CONTAINER_CANARY_NE_X2_RUNTIME_PROOF",
+    "LOCAL_CANARY_NE_LIVE_GLOBAL_BUS",
+    "PUBLIC_PACKET_NE_PRIVATE_BUS",
+    "ACK_PROPOSAL_NE_ACK_COMMIT",
+    "NO_PROVIDER_SESSION_PICKUP_CLAIM"
+  ]
+}
