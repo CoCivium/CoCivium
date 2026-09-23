@@ -1,0 +1,86 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/CoCivium/CoCivium/schemas/colabel-signal-v0.1.schema.json",
+  "title": "CoLabelSignal+ v0.1 candidate",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "signal_id",
+    "session_id",
+    "observed_at",
+    "trigger_class",
+    "prior_label",
+    "candidate_label",
+    "evidence_refs",
+    "visible_ui_mutation_authorized"
+  ],
+  "properties": {
+    "signal_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "session_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "observed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "trigger_class": {
+      "type": "string",
+      "minLength": 1
+    },
+    "prior_label": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "candidate_label": {
+      "type": "string",
+      "minLength": 1
+    },
+    "evidence_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "confidence": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "minimum": 0,
+      "maximum": 1
+    },
+    "valid_from": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    },
+    "visible_ui_mutation_authorized": {
+      "type": "boolean"
+    },
+    "provider_effect_state": {
+      "enum": [
+        "NOT_REQUESTED",
+        "UNSUPPORTED",
+        "CANDIDATE",
+        "EXECUTED",
+        "VERIFIED",
+        "FAILED"
+      ]
+    },
+    "nonclaims": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}
