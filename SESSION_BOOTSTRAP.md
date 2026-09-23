@@ -145,9 +145,10 @@ Use [CoFront+ / CoCivia GitHub Identity R0](docs/Identity/COFRONT_COCIVIA_GITHUB
 
 ## Session write-back / relational deltas
 
-Useful sessions should not only read currentness; when they have a bounded public-safe contribution and an authorized route, they should return it through the [CoSession Relational Delta Contract R0](docs/Operations/COSESSION_RELATIONAL_DELTA_CONTRACT_R0.md) and its [machine-readable schema](schemas/cosession-relational-delta-v0.1.schema.json).
+Useful sessions should not only read currentness; when they have a bounded public-safe contribution and an authorized route, they should return it as a **CoEvoDelta+** contribution under the [CoAll GitHub Evolution Fabric R0](docs/Evolution/COALL_GITHUB_EVOLUTION_FABRIC_R0.md). The [CoSession Relational Delta Projection R0](docs/Operations/COSESSION_RELATIONAL_DELTA_CONTRACT_R0.md) and its [machine-readable projection schema](schemas/cosession-relational-delta-v0.1.schema.json) provide a session/receiver-friendly projection, not a competing semantic standard.
 
 The default is one provenance-bound source delta followed by review/fan-in and targeted projections, not independent edits across every writable surface.
 
-`EVERY_SESSION_CAN_CONTRIBUTE_NE_EVERY_SESSION_CAN_MUTATE_EVERY_SURFACE`  
+`ALL_SESSIONS_CAN_CONTRIBUTE_NE_ALL_SESSIONS_MUTATE_ALL_SURFACES`  
+`COSESSION_RELATIONAL_DELTA_IS_COEVO_PROJECTION_NE_PARALLEL_SEMANTIC_STANDARD`  
 `SOURCE_DELTA_NE_FANOUT_COMPLETE`
