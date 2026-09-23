@@ -1,0 +1,139 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/CoCivium/CoCivium/schemas/conode-capability-v0.1.schema.json",
+  "title": "CoNode capability/role envelope v0.1 candidate",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "node_id",
+    "roles",
+    "exposure",
+    "authority_ceiling",
+    "evidence_state"
+  ],
+  "properties": {
+    "node_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "display_name": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "roles": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "CUSTODY",
+          "MIRROR",
+          "EDGE",
+          "DISCOVERY",
+          "COLLAB",
+          "INGRESS",
+          "EXECUTION",
+          "OBSERVER",
+          "EDITORIAL",
+          "SOCIAL",
+          "REGISTRAR",
+          "IDENTITY_CREDENTIAL"
+        ]
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "exposure": {
+      "enum": [
+        "PRIVATE",
+        "PUBLIC",
+        "MIXED",
+        "UNKNOWN"
+      ]
+    },
+    "authority_ceiling": {
+      "type": "string",
+      "minLength": 1
+    },
+    "confidentiality_ceiling": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "failure_domains": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "capabilities": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "transports": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "source_relations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "last_observed_at": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    },
+    "currentness_basis": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "evidence_state": {
+      "enum": [
+        "USER_VISIBLE_POINTER",
+        "DIRECT_TOOL_OBSERVED",
+        "DURABLE_ARTIFACT_EVIDENCE",
+        "RECEIVER_PICKUP_PROVEN",
+        "INTEGRATED",
+        "UNKNOWN"
+      ]
+    },
+    "lifecycle_state": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "health": {
+      "enum": [
+        "HEALTHY",
+        "DEGRADED",
+        "OFFLINE",
+        "UNKNOWN"
+      ]
+    },
+    "replication_cursor": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 0
+    },
+    "nonclaims": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}
