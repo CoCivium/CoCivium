@@ -1,0 +1,36 @@
+{
+  "schema": "CoPulseDigest.Policy.R0D.v0.1-candidate",
+  "state": "PASS_BOUNDED_CONTAINER_LOCAL_SYNTHETIC__NOT_X2_NOT_GLOBAL_BUS",
+  "pressure_modes": {
+    "LOW": {
+      "compact_digest": false
+    },
+    "MODERATE": {
+      "compact_digest": true,
+      "chunk_size": 3
+    },
+    "HIGH": {
+      "compact_digest": true,
+      "chunk_size": "ALL_DIGEST_ENTRIES"
+    },
+    "DEGRADED": {
+      "compact_digest": true,
+      "chunk_size": "ALL_DIGEST_ENTRIES"
+    }
+  },
+  "hot_warm_compaction": false,
+  "semantic_summary_generated": false,
+  "exact_replay_manifest_required": true,
+  "explicit_loss_report_required": true,
+  "source_packet_mutation": false,
+  "ack_cursor_mutation": false,
+  "source_retirement_authorized": false,
+  "proof": "docs/Operations/proofs/copulse-r0d-container-pass-20260923.json",
+  "next": "R0E_DIGEST_RECEIVER_PICKUP_AND_ACK_CANARY_WITH_SOURCE_REPLAY_DRILLDOWN",
+  "rails": [
+    "COMPACTION_NE_DELETION",
+    "DIGEST_NE_SEMANTIC_EQUIVALENCE",
+    "REPLAYABILITY_NE_SOURCE_RETIREMENT_AUTHORITY",
+    "COMPACTION_NE_RECEIVER_PICKUP"
+  ]
+}
