@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/CoCivium/CoCivium/schemas/copulse-pressure-freshness-v0.1.schema.json",
+  "title": "CoPulse receiver pressure freshness result v0.1 candidate",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "state",
+    "receiver_id",
+    "sample_id",
+    "pressure_input_sha256",
+    "sampled_at",
+    "evaluated_at",
+    "age_seconds",
+    "max_age_seconds",
+    "max_future_skew_seconds",
+    "effects",
+    "next",
+    "nonclaims",
+    "freshness_sha256"
+  ],
+  "properties": {
+    "schema": {"const": "CoPulsePressureFreshness.R0F.v0.1-candidate"},
+    "state": {
+      "enum": [
+        "PASS_FRESH_PRESSURE_SAMPLE",
+        "HOLD_STALE_PRESSURE_SAMPLE",
+        "HOLD_FUTURE_PRESSURE_SAMPLE"
+      ]
+    },
+    "receiver_id": {"type": "string", "minLength": 1},
+    "sample_id": {"type": "string", "minLength": 1},
+    "pressure_input_sha256": {"type": "string", "pattern": "^[0-9A-F]{64}$"},
+    "sampled_at": {"type": "string", "format": "date-time"},
+    "evaluated_at": {"type": "string", "format": "date-time"},
+    "age_seconds": {"type": "integer"},
+    "max_age_seconds": {"type": "integer", "minimum": 0},
+    "max_future_skew_seconds": {"type": "integer", "minimum": 0},
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "capacity_mutation",
+        "receiver_context_mutation",
+        "ack_cursor_mutation",
+        "authority_change"
+      ],
+      "properties": {
+        "capacity_mutation": {"const": 0},
+        "receiver_context_mutation": {"const": 0},
+        "ack_cursor_mutation": {"const": 0},
+        "authority_change": {"const": 0}
+      }
+    },
+    "next": {"type": "string", "minLength": 1},
+    "nonclaims": {"type": "array", "items": {"type": "string"}},
+    "freshness_sha256": {"type": "string", "pattern": "^[0-9A-F]{64}$"}
+  }
+}
