@@ -9,6 +9,8 @@ This folder contains public, reviewable projections for how CoCivium evolves acr
 - [Evolution domains R1](./coall-evolution-domains-r1.json) — machine-readable domain/subscription/repo-election projection.
 - [Repository role/currentness R1](./coall-repo-role-currentness-r1.json) — observed GitHub repository-role snapshot; must be refreshed before mutation.
 - [Highlight registry R0](./coall-highlight-registry-r0.json) — seed public-safe highlight ecology; highlights are not canon.
+- [CoEvoDelta examples / receipts](./deltas/) — bounded session contribution envelopes with explicit source, authority, tests, risks, wake conditions, and next receiver.
+- [R1 validation contract](./COALL_GITHUB_EVOLUTION_R1_TEST_CONTRACT.md) — what CI checks and, equally importantly, what a CI pass does not prove.
 - [CoEvoDelta schema](../../schemas/coevo-delta-v0.1.schema.json) — machine-readable bounded delta envelope.
 
 ## Rails
