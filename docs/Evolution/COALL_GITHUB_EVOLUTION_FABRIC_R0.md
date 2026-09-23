@@ -265,11 +265,12 @@ Landed on `main` as bounded candidate surfaces:
 5. R2 logical spawn planner -> `scripts/CoLogicalSpawnPlanner.py` plus `docs/Operations/COLOGICAL_SPAWN_PLANNER_R2.md`;
 6. confidentiality-preserving CoSpawn routing -> private/restricted/unknown targets fail closed against public destinations;
 7. R3 local-model adapter -> `scripts/CoLocalModelWorkerR3.py` plus `ai/local-model-worker-policy.json`, with loopback-only/public-only/no-effect gates;
-8. R4 CoFleetProjection+/RickBar UX contract -> `docs/UX/COFLEET_RICKBAR_R4.md`, schema and policy, with exception-first foregrounding and coverage-qualified counts.
+8. R4 CoFleetProjection+/RickBar UX contract -> `docs/UX/COFLEET_RICKBAR_R4.md`, schema and policy, with exception-first foregrounding and coverage-qualified counts;
+9. R4A deterministic CoFleet projection compiler -> `scripts/CoFleetProjectionCompilerR4A.py` plus `docs/UX/COFLEET_PROJECTION_COMPILER_R4A.md`, compiling bounded lifecycle/spawn inputs without synthesizing missing runtime facts.
 
-CoSteward has also recorded a bounded real R2 execution over four session-authored CoEvo deltas: four logical contracts, zero validation issues, zero live workers, and receiver pickup still unproven. This is empirical planner evidence, not integration.
+CoSteward has also recorded a bounded real R2 execution over four session-authored CoEvo deltas: four logical contracts, zero validation issues, zero live workers, and receiver pickup still unproven. Fresh receiver reconciliation found convergent overlap between the CoOutputContract+ delta and CoFleet R4, but explicitly did not infer exact-plan pickup, integration, or runtime binding. This is empirical planner/reconciliation evidence, not integration.
 
-R2 compiles and deduplicates logical work; it does not create provider sessions or live workers. R3 is adapter-ready, but the X2/Ollama materialization canary remains unrun at this observation boundary. R4 defines the UX/data contract only; RickBar runtime binding and a live global fleet census remain unproven.
+R2 compiles and deduplicates logical work; it does not create provider sessions or live workers. R3 is adapter-ready, but the X2/Ollama materialization canary remains unrun at this observation boundary. R4 defines the UX/data contract only. R4A can compile a bounded projection, but RickBar receiver/runtime binding and a live global fleet census remain unproven.
 
 `IMPLEMENTED_SURFACE_NE_GLOBAL_ADOPTION`  
 `LOGICAL_SPAWN_NE_LIVE_WORKER`  
@@ -284,7 +285,7 @@ R2 compiles and deduplicates logical work; it does not create provider sessions 
 
 1. when a direct X2 machine route is available, run one already-installed-model, public-safe, low-effect Ollama canary through R3;
 2. exact-hash that candidate output and require receiver readproof plus an independent verifier before any integration;
-3. bind R4 to a proven RickBar/local runtime adapter and keep live counts coverage-qualified;
+3. bind R4A output to RickBar through R4B only after a proven receiver/runtime adapter, keeping live counts coverage-qualified and requiring explicit runtime facts for provider/model counts;
 4. continue cross-repo bootstrap/domain contracts only where they reduce navigation or routing debt;
 5. add fan-in/currentness receipts so concurrent session deltas reconcile instead of becoming last-writer-wins;
 6. measure bootstrap-time, duplicate-rate, proof-debt, fan-in debt, receiver backlog, and human-attention reduction as evolution-fabric health signals.
