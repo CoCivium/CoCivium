@@ -1,0 +1,60 @@
+{
+  "schema": "CoPulseDigestCompactionCanary.R0D.ExecutionEvidence.v0.1",
+  "state": "PASS_BOUNDED_CONTAINER_LOCAL_SYNTHETIC__DIGEST_COMPACTION_EXPLICIT_LOSS_EXACT_REPLAY__NOT_X2_NOT_GLOBAL_BUS",
+  "executed_utc": "2026-09-23T12:22:49Z",
+  "execution_surface": "OpenAI task container",
+  "exact_branch_script_bindings": {
+    "CoPulseDigestCompactorR0D_git_blob": "7b2e82d0bd5ea99438d8520f2a4d4aa126ee55a5",
+    "CoPulseDigestReplayR0D_git_blob": "38d2af9bad84b78376397ac3ea4281cf2597a698",
+    "CoPulseDigestCompactionCanaryR0D_git_blob": "4f2387cd74814b41d57b296ac56cd792d64c185f"
+  },
+  "git_blob_readback": {
+    "compactor_match": true,
+    "replay_match": true,
+    "canary_match": true
+  },
+  "result": {
+    "state": "PASS_R0D_COPRESSURE_DIGEST_COMPACTION__EXPLICIT_LOSS__EXACT_REPLAY__HOT_WARM_PASSTHROUGH",
+    "canary_result_sha256": "DAADB53D78C43FC27CE38197632FC381A1E3F18E47BAE52DE8655F5D9CB2F32A",
+    "source_packet_sha256": "25A92A87EC2555B7BABEA5359D0475C0A6922EECE55E6572AA7B2D6C68420AFE",
+    "compacted_output_sha256": "C3972655F53D61021A2413EECA4655319ABB4D7EDAAB65BE139E9DC95188FE0B",
+    "replay_output_sha256": "9B9420B59401A1B52E09C266F2A6575B5A9A0A13AF4A1A54039847B3298AEFFE",
+    "coverage": {
+      "selected_input": 6,
+      "hot_warm_passthrough": 2,
+      "digest_input": 4,
+      "digest_budget": 1,
+      "digest_summaries": 1,
+      "digest_entries_omitted_inline": 4,
+      "representation_item_reduction": 3,
+      "digest_entries_exactly_replayed": 4
+    },
+    "checks": {
+      "hot_warm_exact_passthrough": true,
+      "loss_report_present": true,
+      "semantic_summary_generated": false,
+      "source_packet_hash_bound": true,
+      "manifest_entry_hashes_verified": true,
+      "exact_digest_object_replay": true,
+      "source_deletion": false,
+      "ack_cursor_mutation": false
+    }
+  },
+  "effects": {
+    "provider_session_mutation": 0,
+    "receiver_context_mutation": 0,
+    "ack_cursor_mutation": 0,
+    "authority_change": 0,
+    "source_deletion": 0
+  },
+  "next": "R0E_RECEIVER_PRESSURE_POLICY_AND_MULTI_DIGEST_BUDGET_REPLAY_CANARY",
+  "nonclaims": [
+    "COMPACTION_NE_DELETION",
+    "SUMMARY_NE_SOURCE",
+    "EXPLICIT_LOSS_NE_ZERO_LOSS",
+    "REPLAY_NE_INTEGRATION",
+    "CONTAINER_CANARY_NE_X2_RUNTIME_PROOF",
+    "LOCAL_CANARY_NE_LIVE_GLOBAL_BUS",
+    "NO_PROVIDER_SESSION_PICKUP_CLAIM"
+  ]
+}
