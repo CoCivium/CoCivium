@@ -323,3 +323,50 @@ R0 does not prove:
 `PROVIDER_NE_LIFECYCLE_AUTHORITY`  
 `SELF_DIRECTION_NE_SELF_AUTHORIZATION`  
 `ONE_BOUNDED_EFFECT_LEASE_AT_A_TIME`
+
+
+## Close-safe wake guard
+
+A session that has already proven `CLOSE_SAFE` must not repeatedly reopen foreground work merely because a generic wake/ping occurs or because unrelated shared currentness changed elsewhere.
+
+The observed failure mode is a lifecycle oscillation:
+
+`CLOSE_SAFE -> GENERIC_WAKE -> GLOBAL_DISCOVERY -> LATE_DELTA -> RE-ADJUDICATE_CLOSE -> CLOSE_SAFE -> ...`
+
+This is not necessarily a compute deadlock, but it can become an attention loop with unbounded low-value reopenings.
+
+After `CLOSE_SAFE`, foreground re-entry requires at least one **bound material wake predicate** to become true, such as:
+
+- receiver-authored pickup/disposition for an exact object owned by this session;
+- contradiction or supersession of an exact source-session claim;
+- failure/recovery evidence affecting this session's durable successor state;
+- explicit human authority/information gate that is currently material;
+- genuinely unique source-session delta not already externalized;
+- a runtime route becoming available when this session has a pre-bound deed that requires it.
+
+The following do **not** reopen foreground by themselves:
+
+- a generic apostrophe/ping;
+- unrelated repository commits;
+- global currentness movement with no bound dependency edge;
+- another session making progress;
+- availability of spare model/tool capacity;
+- curiosity about an already externalized branch;
+- the mere existence of pending work elsewhere.
+
+A close-safe session may still receive compact currentness cursors while dormant, but it should not ingest or act on unrelated HOT domains.
+
+Recommended control relation:
+
+`IF CLOSE_SAFE AND NOT ANY(BOUND_WAKE_PREDICATES_TRUE) -> REMAIN_DORMANT_OPTION`
+
+and:
+
+`GLOBAL_CURRENTNESS_DELTA_NE_SOURCE_SESSION_WAKE`
+`GENERIC_PING_NE_WAKE_PREDICATE`
+`CLOSE_SAFE_NE_REOPEN_ON_CURIOSITY`
+`SPARE_CAPACITY_NE_FOREGROUND_PERMISSION`
+`WAKE_REQUIRES_BOUND_MATERIAL_RELATION`
+`DORMANT_OPTION_NE_UNSUBSCRIBED_FROM_CURRENTNESS`
+
+This guard exists to reduce CoPressure+, proof churn, repeated close witnesses, and human attention cost while preserving exact wake conditions.
