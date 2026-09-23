@@ -129,5 +129,13 @@
       "DOES_NOT_PROVE_PROVIDER_UI_CAN_HIDE_PRIOR_DOWNLOAD_CARDS",
       "DOES_NOT_SUPPRESS_EXPLICIT_USER_REQUESTED_ARTIFACTS"
     ]
+  },
+  "r0b_pulse_receiver_pickup": {
+    "receiver_script": "scripts/CoPulseReceiverReadproofR0B.py",
+    "canary_script": "scripts/CoPulseTwoReceiverCanaryR0B.py",
+    "execution_state": "NOT_RUN",
+    "intended_proof": "TWO_DISTINCT_RECEIVER_PROCESSES__SAME_PULSE_FIELD__ROLE_SPECIFIC_PACKETS__INDEPENDENT_ACK_STATE",
+    "x2_runtime_required": false,
+    "local_execution_evidence_required_before_pickup_claim": true
   }
 }
