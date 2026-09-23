@@ -3,7 +3,6 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
-import tempfile
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
@@ -374,7 +373,14 @@ def main() -> int:
 
     packet, receipt = build_outputs(subscriptions, deltas, prior, set(args.wake_domain))
 
-    # All parsing, validation, dedupe, collision checks, filtering, and cursor computation happen before first write.
+    # RUNGUARD: all parsing, validation, dedupe, collision checks, filtering, cursor computation,
+    # and output-path checks happen before the first write.
+    if args.out.resolve() == args.receipt.resolve():
+        raise ValueError("PACKET_AND_RECEIPT_PATH_COLLISION")
+    for target in (args.out, args.receipt):
+        if target.exists():
+            raise FileExistsError(f"NO_CLOBBER={target}")
+
     packet_sha = write_new(args.out, packet)
     if packet_sha != receipt["packet_sha256"]:
         raise RuntimeError("PACKET_SHA_INTERNAL_DRIFT")
