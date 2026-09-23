@@ -27,12 +27,19 @@
   ],
   "global_fleet_census_claimed": false,
   "rickbar_runtime_binding": "UNPROVEN",
-  "next": "BIND_R4_TO_RICKBAR_AFTER_LOCAL_MACHINE_ROUTE_OR_OTHER_PROVEN_RUNTIME_ADAPTER",
+  "next": "R4B_RICKBAR_RECEIVER_BINDING_AFTER_PROVEN_RUNTIME_ADAPTER",
   "rails": [
     "FLEET_PROJECTION_NE_FLEET_TOTALITY",
     "COUNT_NE_GLOBAL_CENSUS",
     "RICKBAR_FIRST__RECEIPTS_BEHIND",
     "SUCCESS_NE_NOTIFICATION_REQUIRED",
     "RICK_NE_HEARTBEAT"
-  ]
+  ],
+  "r4a_compiler": {
+    "script": "scripts/CoFleetProjectionCompilerR4A.py",
+    "docs": "docs/UX/COFLEET_PROJECTION_COMPILER_R4A.md",
+    "global_fleet_census_claimed": false,
+    "provider_counts_require_runtime_fact": true,
+    "blocked_ne_human_blocker": true
+  }
 }

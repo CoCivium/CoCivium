@@ -164,3 +164,10 @@ Do not mint a duplicate object merely because code search misses a freshly lande
 `CURRENT_HEAD_CONTENTS_NE_SEMANTIC_ACCEPTANCE`
 
 Bound observation: [CoEvoDelta currentness note](ai/evolution-deltas/2026-09-23/cobootstrap260920-s1-github-search-currentness-r0.json).
+
+## Bounded domain subscriptions
+
+After choosing a role, load the closest [CoSessionSubscription+ profile](ai/session-subscription-profiles.json) and bind only the relevant HOT/WARM/DIGEST domain currentness. Do not ingest every repository by default.
+
+`CURRENTNESS_FOR_ALL_NE_CONTENT_FOR_ALL`  
+`SUBSCRIPTION_NE_AUTHORITY`
