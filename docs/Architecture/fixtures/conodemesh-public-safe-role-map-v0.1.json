@@ -1,0 +1,190 @@
+{
+  "schema": "CoNodeMesh.PublicSafeRoleMap.v0.1-candidate",
+  "state": "PUBLIC_SAFE_POINTER_MAP__NOT_INTEGRATION_PROOF",
+  "updated_utc": "2026-09-23T08:52:42Z",
+  "privacy_note": "No credential values, mailbox contents, personal account identifiers, or secret material are included.",
+  "nodes": [
+    {
+      "node_id": "surface:github-public",
+      "display_name": "GitHub public source/collaboration",
+      "roles": [
+        "CUSTODY",
+        "MIRROR",
+        "DISCOVERY",
+        "COLLAB"
+      ],
+      "exposure": "PUBLIC",
+      "authority_ceiling": "PUBLIC_SOURCE_AND_COLLAB_ONLY",
+      "evidence_state": "DIRECT_TOOL_OBSERVED",
+      "health": "UNKNOWN",
+      "nonclaims": [
+        "PUBLIC_REPO_NE_PRIVATE_BACKUP",
+        "REPOSITORY_NE_ONTOLOGY"
+      ]
+    },
+    {
+      "node_id": "surface:costead-private",
+      "display_name": "CoStead private durable fabric",
+      "roles": [
+        "CUSTODY",
+        "EXECUTION",
+        "DISCOVERY"
+      ],
+      "exposure": "PRIVATE",
+      "authority_ceiling": "PRIVATE_DURABLE_FABRIC_PER_EXISTING_GATES",
+      "evidence_state": "DURABLE_ARTIFACT_EVIDENCE",
+      "health": "UNKNOWN",
+      "nonclaims": [
+        "PRIMARY_NE_ONLY_COPY",
+        "CUSTODY_NE_GLOBAL_AUTHORITY"
+      ]
+    },
+    {
+      "node_id": "surface:web-edge-provider",
+      "display_name": "DNS/CDN/public edge provider class",
+      "roles": [
+        "EDGE",
+        "DISCOVERY",
+        "EXECUTION",
+        "OBSERVER"
+      ],
+      "exposure": "MIXED",
+      "authority_ceiling": "EDGE_AND_PUBLICATION_ONLY_AFTER_SEPARATE_GATE",
+      "evidence_state": "USER_VISIBLE_POINTER",
+      "health": "UNKNOWN",
+      "nonclaims": [
+        "VISIBLE_UI_NE_CONFIG_READPROOF",
+        "PROVIDER_ACCOUNT_NE_LIVE_NODE"
+      ]
+    },
+    {
+      "node_id": "surface:registrar",
+      "display_name": "Domain registrar/control-plane class",
+      "roles": [
+        "REGISTRAR",
+        "IDENTITY_CREDENTIAL"
+      ],
+      "exposure": "PRIVATE",
+      "authority_ceiling": "DOMAIN_CONTROL_PLANE",
+      "evidence_state": "USER_VISIBLE_POINTER",
+      "health": "UNKNOWN",
+      "nonclaims": [
+        "REGISTRAR_NE_CONTENT_NODE",
+        "DOMAIN_PORTFOLIO_NE_PUBLICATION"
+      ]
+    },
+    {
+      "node_id": "surface:editorial",
+      "display_name": "Editorial/publication surface class",
+      "roles": [
+        "EDITORIAL",
+        "DISCOVERY",
+        "SOCIAL"
+      ],
+      "exposure": "PUBLIC",
+      "authority_ceiling": "PUBLIC_EDITORIAL_PROJECTION",
+      "evidence_state": "USER_VISIBLE_POINTER",
+      "health": "UNKNOWN",
+      "nonclaims": [
+        "EDITORIAL_COPY_NE_CANON",
+        "VISIBLE_POST_NE_CURRENT_SOURCE"
+      ]
+    },
+    {
+      "node_id": "surface:team-collaboration",
+      "display_name": "Team collaboration/workspace class",
+      "roles": [
+        "COLLAB",
+        "INGRESS",
+        "DISCOVERY"
+      ],
+      "exposure": "MIXED",
+      "authority_ceiling": "COORDINATION_ONLY_UNLESS_EXPLICITLY_EXPORTED",
+      "evidence_state": "USER_VISIBLE_POINTER",
+      "health": "UNKNOWN",
+      "nonclaims": [
+        "CHAT_NE_CUSTODY",
+        "MESSAGE_NE_DURABLE_STATE"
+      ]
+    },
+    {
+      "node_id": "surface:mail-ingress",
+      "display_name": "Email ingress class",
+      "roles": [
+        "INGRESS"
+      ],
+      "exposure": "PRIVATE",
+      "authority_ceiling": "INBOUND_OUTBOUND_COMMUNICATION_ONLY",
+      "evidence_state": "USER_VISIBLE_POINTER",
+      "health": "UNKNOWN",
+      "nonclaims": [
+        "MAILBOX_NE_EVENT_BUS",
+        "EMAIL_NE_AUTHORITY"
+      ]
+    },
+    {
+      "node_id": "surface:social-professional",
+      "display_name": "Professional/social discovery class",
+      "roles": [
+        "SOCIAL",
+        "DISCOVERY",
+        "INGRESS"
+      ],
+      "exposure": "PUBLIC",
+      "authority_ceiling": "PUBLIC_OUTREACH_ONLY",
+      "evidence_state": "USER_VISIBLE_POINTER",
+      "health": "UNKNOWN",
+      "nonclaims": [
+        "SOCIAL_REACH_NE_ENDORSEMENT",
+        "FOLLOWER_NE_RECEIVER_PICKUP"
+      ]
+    },
+    {
+      "node_id": "surface:local-observer",
+      "display_name": "Local observability/home automation class",
+      "roles": [
+        "OBSERVER",
+        "INGRESS"
+      ],
+      "exposure": "PRIVATE",
+      "authority_ceiling": "LOCAL_OBSERVABILITY_ONLY_UNLESS_SEPARATELY_AUTHORIZED",
+      "evidence_state": "USER_VISIBLE_POINTER",
+      "health": "UNKNOWN",
+      "nonclaims": [
+        "OBSERVER_NE_SEMANTIC_OWNER",
+        "VISIBLE_DASHBOARD_NE_HEALTH_PROOF"
+      ]
+    },
+    {
+      "node_id": "surface:remote-machine-adapter",
+      "display_name": "Remote machine capability adapter class",
+      "roles": [
+        "EXECUTION",
+        "OBSERVER"
+      ],
+      "exposure": "PRIVATE",
+      "authority_ceiling": "CAPABILITY_ADAPTER_ONLY",
+      "evidence_state": "DIRECT_TOOL_OBSERVED",
+      "health": "OFFLINE",
+      "nonclaims": [
+        "ADAPTER_NE_CUSTODY_ROOT",
+        "OFFLINE_NE_LOCAL_MACHINE_DOWN"
+      ]
+    },
+    {
+      "node_id": "surface:credential-vault",
+      "display_name": "Credential/identity custody class",
+      "roles": [
+        "IDENTITY_CREDENTIAL"
+      ],
+      "exposure": "PRIVATE",
+      "authority_ceiling": "SECRET_CUSTODY_ONLY",
+      "evidence_state": "USER_VISIBLE_POINTER",
+      "health": "UNKNOWN",
+      "nonclaims": [
+        "CREDENTIAL_STORE_NE_CONTENT_NODE",
+        "SECRET_HANDLE_NE_SECRET_VALUE"
+      ]
+    }
+  ]
+}
