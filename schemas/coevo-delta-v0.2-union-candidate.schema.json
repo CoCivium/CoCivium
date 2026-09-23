@@ -1,0 +1,539 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/CoCivium/CoCivium/schemas/coevo-delta-v0.2-union-candidate.schema.json",
+  "title": "CoEvoDelta v0.2 union candidate",
+  "description": "Additive convergence candidate over v0.1 plus PR32 effect-gate semantics and PR37 pressure/route/subscription extensions. Candidate only; v0.1 remains the compatibility anchor.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "delta_id",
+    "session_id",
+    "observed_at",
+    "domain",
+    "subject",
+    "relation",
+    "epistemic_class",
+    "source_refs",
+    "target_surfaces",
+    "mutation_class",
+    "authority_ceiling",
+    "confidentiality",
+    "next_receiver"
+  ],
+  "properties": {
+    "delta_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "session_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "observed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "domain": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "subject": {
+      "type": "string",
+      "minLength": 1
+    },
+    "relation": {
+      "type": "string",
+      "minLength": 1
+    },
+    "epistemic_class": {
+      "enum": [
+        "OBSERVED",
+        "INFERRED",
+        "HYPOTHESIS",
+        "PREDICTED",
+        "PLANNED",
+        "PREFERRED",
+        "METAPHORICAL",
+        "MYTHIC",
+        "HUMOROUS",
+        "COUNTERFACTUAL",
+        "UNKNOWN"
+      ]
+    },
+    "source_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "target_surfaces": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "mutation_class": {
+      "enum": [
+        "OBSERVE",
+        "PROPOSE",
+        "BRANCH_MUTATE",
+        "REVIEW_CHALLENGE",
+        "MERGE_LOW_EFFECT",
+        "EFFECT_GATED"
+      ]
+    },
+    "authority_ceiling": {
+      "type": "string"
+    },
+    "confidentiality": {
+      "enum": [
+        "PUBLIC",
+        "PRIVATE",
+        "RESTRICTED",
+        "UNKNOWN"
+      ]
+    },
+    "confidence": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "minimum": 0,
+      "maximum": 1
+    },
+    "contradictions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "tests": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "expected_benefit": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "risks": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "wake_conditions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "supersedes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "next_receiver": {
+      "type": "string",
+      "minLength": 1
+    },
+    "effect_classes": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "NONE",
+          "PUBLICATION",
+          "PUBLIC_OUTREACH",
+          "ACCESS_GRANT",
+          "ACCESS_REVOCATION",
+          "AUTHORITY_CHANGE",
+          "PRIVACY_BOUNDARY",
+          "CREDENTIAL",
+          "FINANCIAL",
+          "RUNTIME",
+          "IRREVERSIBLE",
+          "UNKNOWN"
+        ]
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "effect_gate": {
+      "enum": [
+        "NOT_APPLICABLE",
+        "HELD",
+        "REQUIRES_EXPLICIT_HUMAN_GATE",
+        "AUTHORIZED_FOR_SCOPE",
+        "EXECUTED",
+        "UNKNOWN"
+      ]
+    },
+    "effect_scope": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "materiality": {
+      "enum": [
+        "MATERIAL",
+        "NONMATERIAL",
+        "UNKNOWN"
+      ]
+    },
+    "subscription_context": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Pointer to a bounded subscription/currentness object if one governed this observation."
+    },
+    "pressure": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "description": "Receiver-relative CoPressure+ projection. No universal scalar is implied.",
+      "properties": {
+        "backlog_velocity": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "dependency_depth": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "attention_debt": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "context_surface": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "coordination_friction": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "externalization_latency": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "failure_risk": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 1
+        },
+        "qualitative": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": true
+    },
+    "energet": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "description": "CoEnerget+ resource-flow projection; more resource does not imply more authority.",
+      "properties": {
+        "compute": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "human_attention": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "wall_clock": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "bandwidth": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "storage": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "verification_capacity": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "recovery_capacity": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "qualitative": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": true
+    },
+    "want_projection": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "description": "Bounded CoWant+ objective/priority/wake vector; not a subjective-desire claim.",
+      "properties": {
+        "objective": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "priority": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "preferred_transition": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "enum": [
+            "EXECUTE",
+            "PARALLELIZE",
+            "CHALLENGE",
+            "HARVEST",
+            "DEDUPE",
+            "COMPACT",
+            "PARK",
+            "EXTERNALIZE",
+            "CLOSE",
+            "WAKE_LATER",
+            null
+          ]
+        }
+      },
+      "additionalProperties": true
+    },
+    "route": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "description": "CoRoute+ context. Route choice never grants authority.",
+      "properties": {
+        "required_capabilities": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "candidate_routes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "elected_route": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "route_reason": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "route_morph_allowed": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "authority_preserved": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": true
+    },
+    "close_readiness": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "lifecycle_projection": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "known_material_delta_externalized": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "foreground_session_required": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "tab_close_safe": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "global_work_complete": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": true
+    },
+    "nonclaims": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "mutation_class": {
+            "const": "EFFECT_GATED"
+          }
+        },
+        "required": [
+          "mutation_class"
+        ]
+      },
+      "then": {
+        "required": [
+          "effect_classes",
+          "effect_gate"
+        ]
+      }
+    },
+    {
+      "if": {
+        "anyOf": [
+          {
+            "required": [
+              "subscription_context"
+            ]
+          },
+          {
+            "required": [
+              "pressure"
+            ]
+          },
+          {
+            "required": [
+              "energet"
+            ]
+          },
+          {
+            "required": [
+              "want_projection"
+            ]
+          },
+          {
+            "required": [
+              "route"
+            ]
+          },
+          {
+            "required": [
+              "close_readiness"
+            ]
+          },
+          {
+            "required": [
+              "nonclaims"
+            ]
+          }
+        ]
+      },
+      "then": {
+        "required": [
+          "materiality"
+        ]
+      }
+    }
+  ],
+  "x-convergence": {
+    "compatibility_anchor": "schemas/coevo-delta-v0.1.schema.json",
+    "effect_donor": "PR32 blob 4ef6fbe1144b609d6ac5c70ce0369e2835198b48",
+    "pressure_route_donor": "PR37 blob 39d60c9a6e92a1ade302dbc0a952922befcf6e9f",
+    "rules": [
+      "V0_1_CORE_FIELDS_UNCHANGED",
+      "V0_1_REQUIRED_SET_UNCHANGED",
+      "RICH_V0_2_EXTENSION_REQUIRES_MATERIALITY",
+      "EFFECT_GATED_REQUIRES_EFFECT_CLASSES_AND_GATE",
+      "SCHEMA_UNION_CANDIDATE_NE_SCHEMA_ACCEPTANCE"
+    ]
+  }
+}
