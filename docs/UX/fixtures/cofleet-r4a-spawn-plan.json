@@ -1,0 +1,23 @@
+{
+  "schema": "CoLogicalSpawnPlanner.R2.v0.1-candidate",
+  "contracts": [
+    {
+      "spawn_id": "cospawn:1",
+      "scope": "CoUX",
+      "materialization_state": "LOGICAL_ONLY",
+      "lease": {
+        "effect_lease": "NONE"
+      },
+      "uncertainty": null
+    },
+    {
+      "spawn_id": "cospawn:2",
+      "scope": "Private theory -> public target",
+      "materialization_state": "BLOCKED",
+      "lease": {
+        "effect_lease": "NONE"
+      },
+      "uncertainty": "CONFIDENTIALITY_PUBLIC_TARGET_COLLISION"
+    }
+  ]
+}

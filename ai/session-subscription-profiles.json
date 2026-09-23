@@ -1,0 +1,235 @@
+{
+  "schema": "CoSessionSubscriptionProfiles.v0.1-candidate",
+  "state": "PUBLIC_BOOTSTRAP_ROUTING__NOT_GLOBAL_CONTENT_PUSH",
+  "updated_utc": "2026-09-23T11:35:51Z",
+  "default_policy": {
+    "hot_max_domains": 4,
+    "warm_max_domains": 6,
+    "digest_max_domains": 8,
+    "sleep_unrelated_by_default": true,
+    "full_repo_ingest_by_default": false,
+    "currentness_for_all_content_for_all": false
+  },
+  "profiles": [
+    {
+      "profile_id": "CoTheory",
+      "hot": [
+        "CoTheoryAll+",
+        "CoSource+/Provenance",
+        "CoInsight+"
+      ],
+      "warm": [
+        "CoPriMath+",
+        "CoLex+",
+        "CoIndex+"
+      ],
+      "digest": [
+        "CoHighlight+",
+        "CoHumour+",
+        "CoMythOps+"
+      ],
+      "preferred_repos": [
+        "CoCivium",
+        "CoInsights",
+        "CoSources",
+        "GIBindex"
+      ]
+    },
+    {
+      "profile_id": "CoLanguage",
+      "hot": [
+        "CoLex+",
+        "CoGibberTru+",
+        "CoIndex+"
+      ],
+      "warm": [
+        "CoTheoryAll+",
+        "CoPriMath+",
+        "CoSource+/Provenance"
+      ],
+      "digest": [
+        "CoUX+/CoSurface+",
+        "CoHighlight+"
+      ],
+      "preferred_repos": [
+        "GIBindex",
+        "CoCivium",
+        "CoShareHub",
+        "CoInsights"
+      ]
+    },
+    {
+      "profile_id": "CoUX",
+      "hot": [
+        "RickBar+/CoDesktop+",
+        "CoUX+/CoSurface+",
+        "CoSession+"
+      ],
+      "warm": [
+        "CoAutoEvo+/CoEvo+",
+        "CoIndex+",
+        "CoHighlight+"
+      ],
+      "digest": [
+        "CoHumour+",
+        "CoLex+"
+      ],
+      "preferred_repos": [
+        "CoCivium",
+        "CoAura",
+        "CoToolbelt",
+        "CoShareHub"
+      ]
+    },
+    {
+      "profile_id": "CoOps",
+      "hot": [
+        "CoOps+",
+        "CoRails+",
+        "CoAutoEvo+/CoEvo+"
+      ],
+      "warm": [
+        "CoSession+",
+        "CoNodeMesh+/GRAIL+",
+        "CoIndex+"
+      ],
+      "digest": [
+        "RickBar+/CoDesktop+",
+        "CoFuture+"
+      ],
+      "preferred_repos": [
+        "CoSteward",
+        "CoToolbelt",
+        "CoStacks",
+        "CoRails",
+        "CoCivium"
+      ]
+    },
+    {
+      "profile_id": "CoIndex",
+      "hot": [
+        "CoIndex+",
+        "CoLex+",
+        "CoSource+/Provenance"
+      ],
+      "warm": [
+        "CoInsight+",
+        "CoHighlight+",
+        "CoAll+"
+      ],
+      "digest": [
+        "CoTheoryAll+",
+        "CoUX+/CoSurface+"
+      ],
+      "preferred_repos": [
+        "GIBindex",
+        "CoShareHub",
+        "CoSources",
+        "CoCivium",
+        "CoInsights"
+      ]
+    },
+    {
+      "profile_id": "CoFuture",
+      "hot": [
+        "CoFuture+",
+        "CoStrategy+",
+        "CoTheoryAll+"
+      ],
+      "warm": [
+        "CoInsight+",
+        "CoNodeMesh+/GRAIL+",
+        "CoAutoEvo+/CoEvo+"
+      ],
+      "digest": [
+        "CoHighlight+",
+        "CoUX+/CoSurface+"
+      ],
+      "preferred_repos": [
+        "CoFutures",
+        "MasterPlan",
+        "CoInsights",
+        "CoCivium"
+      ]
+    },
+    {
+      "profile_id": "CoPublic",
+      "hot": [
+        "CoHighlight+",
+        "CoUX+/CoSurface+",
+        "CoEducation+"
+      ],
+      "warm": [
+        "CoIndex+",
+        "CoLex+",
+        "CoSource+/Provenance"
+      ],
+      "digest": [
+        "CoTheoryAll+",
+        "CoHumour+",
+        "CoMythOps+"
+      ],
+      "preferred_repos": [
+        "CoCivium",
+        "CoAura",
+        "CoAcademy",
+        "CoSources"
+      ]
+    },
+    {
+      "profile_id": "CoHumour",
+      "hot": [
+        "CoHumour+",
+        "CoMythOps+",
+        "CoInsight+"
+      ],
+      "warm": [
+        "CoLex+",
+        "CoHighlight+",
+        "CoUX+/CoSurface+"
+      ],
+      "digest": [
+        "CoTheoryAll+",
+        "CoPublic"
+      ],
+      "preferred_repos": [
+        "CoInsights",
+        "CoCivium",
+        "GIBindex",
+        "CoAura"
+      ]
+    },
+    {
+      "profile_id": "CoGeneralist",
+      "hot": [
+        "CoAll+",
+        "CoIndex+",
+        "CoAutoEvo+/CoEvo+"
+      ],
+      "warm": [
+        "CoStrategy+",
+        "CoInsight+",
+        "CoSession+"
+      ],
+      "digest": [
+        "CoTheoryAll+",
+        "CoUX+/CoSurface+",
+        "CoFuture+",
+        "CoHighlight+"
+      ],
+      "preferred_repos": [
+        "CoCivium",
+        "CoShareHub",
+        "CoInsights",
+        "MasterPlan"
+      ]
+    }
+  ],
+  "rails": [
+    "CURRENTNESS_FOR_ALL_NE_CONTENT_FOR_ALL",
+    "SUBSCRIPTION_NE_AUTHORITY",
+    "HOT_NE_IMPORTANT_FOR_EVERYONE",
+    "SLEEP_NE_IGNORE_FOREVER",
+    "FULL_REPO_INGEST_NE_BOOTSTRAP"
+  ]
+}

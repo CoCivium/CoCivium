@@ -1,0 +1,31 @@
+{
+  "schema": "CoSessionShadowLedger.R1.v0.1-candidate",
+  "coverage": {
+    "observation_count": 4,
+    "global_active_session_census": "UNPROVEN",
+    "source_ref": "fixture",
+    "source_sha256": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+  },
+  "sessions": [
+    {
+      "session_id": "A",
+      "projection": "WORKING",
+      "projection_basis": "WORK_STATE_ACTIVE"
+    },
+    {
+      "session_id": "B",
+      "projection": "COTWILIGHT",
+      "projection_basis": "COTWILIGHT_TRUE"
+    },
+    {
+      "session_id": "C",
+      "projection": "DORMANT",
+      "projection_basis": "WORK_STATE_DORMANT"
+    },
+    {
+      "session_id": "D",
+      "projection": "CLOSE_SAFE",
+      "projection_basis": "TAB_CLOSE_SAFE_TRUE"
+    }
+  ]
+}
