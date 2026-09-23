@@ -7,7 +7,8 @@
   "required": [
     "provenance_id","sample_id","receiver_id","capacity_source",
     "pressure_input_sha256","source_identity","source_method",
-    "evidence_refs","authority_ceiling","confidentiality"
+    "source_object_ref","source_object_sha256","evidence_refs",
+    "authority_ceiling","confidentiality"
   ],
   "properties": {
     "provenance_id": {"type": "string", "minLength": 1},
@@ -17,32 +18,11 @@
     "pressure_input_sha256": {"type": "string", "pattern": "^[0-9A-F]{64}$"},
     "source_identity": {"type": "string", "minLength": 1},
     "source_method": {"type": "string", "minLength": 1},
-    "source_object_ref": {"type": ["string","null"]},
-    "source_object_sha256": {"type": ["string","null"], "pattern": "^[0-9A-F]{64}$"},
+    "source_object_ref": {"type": "string", "minLength": 1},
+    "source_object_sha256": {"type": "string", "pattern": "^[0-9A-F]{64}$"},
     "evidence_refs": {"type": "array", "items": {"type": "string"}, "minItems": 1},
     "authority_ceiling": {"type": "string", "minLength": 1},
     "confidentiality": {"enum": ["PUBLIC","PRIVATE","RESTRICTED","UNKNOWN"]},
     "notes": {"type": "array", "items": {"type": "string"}}
-  },
-  "allOf": [
-    {
-      "if": {"properties": {"capacity_source": {"const": "MEASURED"}}},
-      "then": {
-        "required": ["source_object_ref","source_object_sha256"],
-        "properties": {
-          "source_object_ref": {"type": "string", "minLength": 1},
-          "source_object_sha256": {"type": "string", "pattern": "^[0-9A-F]{64}$"}
-        }
-      }
-    },
-    {
-      "if": {"properties": {"capacity_source": {"const": "DECLARED"}}},
-      "then": {
-        "required": ["source_object_ref"],
-        "properties": {
-          "source_object_ref": {"type": "string", "minLength": 1}
-        }
-      }
-    }
-  ]
+  }
 }
