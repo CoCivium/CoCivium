@@ -1,6 +1,6 @@
 # CoPulse Pressure Freshness + Multi-Receiver Capacity Canary R0F
 
-**State:** `CANDIDATE__EXPLICIT_STALENESS_GATE__DIVERGENT_RECEIVER_BUDGETS`
+**State:** `CANDIDATE__BOUNDED_PASS__EXPLICIT_STALENESS_GATE__DIVERGENT_RECEIVER_BUDGETS`
 
 ## Purpose
 
@@ -80,6 +80,17 @@ Both fresh receivers must run R0D exact replay for every selected DIGEST source 
 Execution evidence:
 
 `docs/Operations/proofs/copulse-r0f-container-pass-20260923.json`
+
+Observed bounded PASS:
+
+- exact landed R0F/R0E/R0D script blobs and freshness-schema blob matched before execution;
+- freshness schema validation: 3/3 objects PASS;
+- shared pulse-field SHA-256: `4066B95E3CF3A6A1C8CF766A59C5C554C646F6C7868F1885CDB11ABCFA8641EE`;
+- Receiver A: ACK 2, pressure age 20s, budget 4, LIGHT, exact replay of 4 DIGEST source objects;
+- Receiver B: ACK 0, pressure age 20s, budget 1, HIGH, exact replay of 4 DIGEST source objects;
+- Receiver C: pressure age 900s, `HOLD_STALE_PRESSURE_SAMPLE`, R0E never executed;
+- ACK/provider-session/authority/source-delete/receiver-context effects: 0;
+- canary result SHA-256: `FFEDA758EB8B709B2737B646AC69845844BF2F16A2FB807FBD5C9B1048430B42`.
 
 ## Boundary
 
