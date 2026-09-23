@@ -1,7 +1,7 @@
 {
   "schema": "CoSessionAutocycle.Policy.v0.1-candidate",
   "state": "SHADOW_CONTROL_PLANE__NO_PROVIDER_SESSION_MUTATION",
-  "updated_utc": "2026-09-23T11:58:41Z",
+  "updated_utc": "2026-09-23T12:04:46Z",
   "auto_allowed": [
     "LIFECYCLE_PROJECTION",
     "LABEL_SIGNAL",
@@ -99,5 +99,46 @@
       "WAKE_REQUIRES_BOUND_MATERIAL_RELATION",
       "DORMANT_OPTION_NE_UNSUBSCRIBED_FROM_CURRENTNESS"
     ]
+  },
+  "close_safe_output_quiescence": {
+    "state": "CANDIDATE_PUBLIC_POLICY__NO_PROVIDER_UI_RETROACTIVE_CLEANUP",
+    "rule": "IF_CLOSE_SAFE_AND_NO_MATERIAL_WAKE_AND_NO_EXPLICIT_ARTIFACT_REQUEST__OUTPUT_QUIESCENT",
+    "suppress_by_default": [
+      "NEW_DOWNLOAD_OFFER",
+      "NEW_ATTACHMENT_CARD",
+      "REPEATED_CLOSE_WITNESS",
+      "ROUTINE_RECEIPT_DUMP",
+      "UNREQUESTED_EVIDENCE_BUNDLE"
+    ],
+    "allow_when": [
+      "EXPLICIT_USER_ARTIFACT_REQUEST",
+      "MATERIAL_RECOVERY_REQUIRES_ARTIFACT",
+      "USER_REQUESTS_EVIDENCE_DRILLDOWN",
+      "UNIQUE_OUTPUT_IS_THE_TASK_DELIVERABLE"
+    ],
+    "rails": [
+      "ARTIFACT_CREATED_NE_ARTIFACT_MUST_BE_OFFERED",
+      "DURABLE_CUSTODY_NE_USER_DOWNLOAD",
+      "EVIDENCE_AVAILABLE_NE_EVIDENCE_PUSHED",
+      "CLOSE_SAFE_NE_KEEP_EMITTING_ATTACHMENTS",
+      "GENERIC_PING_NE_DOWNLOAD_TRIGGER",
+      "OUTPUT_QUIESCENCE_NE_INFORMATION_LOSS"
+    ],
+    "nonclaims": [
+      "DOES_NOT_REMOVE_HISTORICAL_PROVIDER_UI_ATTACHMENTS",
+      "DOES_NOT_PROVE_PROVIDER_UI_CAN_HIDE_PRIOR_DOWNLOAD_CARDS",
+      "DOES_NOT_SUPPRESS_EXPLICIT_USER_REQUESTED_ARTIFACTS"
+    ]
+  },
+  "r0b_pulse_receiver_pickup": {
+    "receiver_script": "scripts/CoPulseReceiverReadproofR0B.py",
+    "canary_script": "scripts/CoPulseTwoReceiverCanaryR0B.py",
+    "execution_state": "PASS_BOUNDED_CONTAINER_LOCAL_SYNTHETIC__NOT_X2_NOT_GLOBAL_BUS",
+    "proof": "docs/Operations/proofs/copulse-r0b-container-pass-20260923.json",
+    "intended_proof": "TWO_DISTINCT_RECEIVER_PROCESSES__SAME_PULSE_FIELD__ROLE_SPECIFIC_PACKETS__INDEPENDENT_ACK_STATE",
+    "bounded_pickup_proven_for_two_synthetic_receivers": true,
+    "integration_proven": false,
+    "x2_runtime_required": false,
+    "next": "R0C_EXPLICIT_PER_RECEIVER_ACK_COMMIT_AND_BACKFILL_REPLAY_CANARY"
   }
 }

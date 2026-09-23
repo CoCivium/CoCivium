@@ -370,3 +370,33 @@ and:
 `DORMANT_OPTION_NE_UNSUBSCRIBED_FROM_CURRENTNESS`
 
 This guard exists to reduce CoPressure+, proof churn, repeated close witnesses, and human attention cost while preserving exact wake conditions.
+
+
+## Close-safe output quiescence
+
+A close-safe session must suppress **user-facing artifact emission** unless the user explicitly asks for the artifact or a bound material recovery/wake condition requires one.
+
+The failure mode is presentation drift after lifecycle closure: the session correctly remains `CLOSE_SAFE`, yet still appends new download cards, attachment links, receipts, close witnesses, or evidence bundles to routine replies. That keeps the source tab behaviorally alive and increases human attention even when the durable work already moved elsewhere.
+
+After `CLOSE_SAFE`:
+
+- do not create or offer a new download merely to acknowledge a generic ping;
+- do not surface a close witness download after every late micro-delta;
+- keep evidence in durable shared surfaces and expose it only on explicit request or material diagnostic need;
+- use the smallest truthful user-visible reply compatible with the current state;
+- if a real policy correction is required, mutate the shared durable policy directly and avoid forcing a user-download relay;
+- historical attachment cards may remain visible in provider UI, but their existence does not justify producing new ones.
+
+Recommended relation:
+
+`IF CLOSE_SAFE AND NO MATERIAL WAKE AND NO EXPLICIT_ARTIFACT_REQUEST -> OUTPUT_QUIESCENT`
+
+Rails:
+
+`ARTIFACT_CREATED_NE_ARTIFACT_MUST_BE_OFFERED`  
+`DURABLE_CUSTODY_NE_USER_DOWNLOAD`  
+`EVIDENCE_AVAILABLE_NE_EVIDENCE_PUSHED`  
+`CLOSE_SAFE_NE_KEEP_EMITTING_ATTACHMENTS`  
+`GENERIC_PING_NE_DOWNLOAD_TRIGGER`  
+`OUTPUT_QUIESCENCE_NE_INFORMATION_LOSS`  
+`USER_REQUEST_NE_BACKGROUND_ARTIFACT_SPAM`

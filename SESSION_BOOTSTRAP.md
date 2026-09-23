@@ -205,6 +205,29 @@ Do not turn shared currentness into permanent foreground obligation.
 
 Future sessions and reconstructed sessions should inherit this guard through bootstrap. Existing live provider sessions only learn it when an authorized bridge/currentness path exposes it.
 
+
+## Close-safe output quiescence
+
+A session already proven `CLOSE_SAFE` should not keep offering downloads, attachment cards, close witnesses, or evidence bundles on routine turns.
+
+Use:
+
+`IF CLOSE_SAFE AND NO MATERIAL WAKE AND NO EXPLICIT_ARTIFACT_REQUEST -> OUTPUT_QUIESCENT`
+
+Durable evidence remains available through shared custody/currentness surfaces. User-facing download links are for explicit requests, material recovery, or evidence drill-down when actually needed.
+
+`ARTIFACT_CREATED_NE_ARTIFACT_MUST_BE_OFFERED`  
+`DURABLE_CUSTODY_NE_USER_DOWNLOAD`  
+`CLOSE_SAFE_NE_KEEP_EMITTING_ATTACHMENTS`  
+`GENERIC_PING_NE_DOWNLOAD_TRIGGER`
+
+## CoPulse receiver pickup R0B
+
+Use [the R0B two-receiver canary](scripts/CoPulseTwoReceiverCanaryR0B.py) after R0A packet compilation to prove receiver-relative exact-object pickup. A receiver readproof can support `PICKED_UP` for the exact packet but not `INTEGRATED`; proposed ACK cursors remain uncommitted until R0C.
+
+`PICKED_UP_NE_INTEGRATED`  
+`ACK_PROPOSAL_NE_ACK_COMMIT`
+
 ## Session write-back / relational deltas
 
 Useful sessions should not only read currentness; when they have a bounded public-safe contribution and an authorized route, they should return it as a **CoEvoDelta+** contribution under the [CoAll GitHub Evolution Fabric R0](docs/Evolution/COALL_GITHUB_EVOLUTION_FABRIC_R0.md). The [CoSession Relational Delta Projection R0](docs/Operations/COSESSION_RELATIONAL_DELTA_CONTRACT_R0.md) provides a session/receiver-friendly projection, not a competing semantic standard. Use [v0.1](schemas/cosession-relational-delta-v0.1.schema.json) for lightweight fan-in/review and [v0.2](schemas/cosession-relational-delta-v0.2.schema.json) when the projection must compile deterministically into [CoEvoDelta v0.2 candidates](schemas/coevo-delta-v0.2.schema.json) through [CoSessionProjectionToCoEvo](scripts/CoSessionProjectionToCoEvo.py).
@@ -255,3 +278,4 @@ The older direct session-subscription proposals in CoEvoReceiverFanoutPlanner R0
 `PROJECTION_NE_DELIVERY`  
 `CANDIDATE_DELIVERED_CURSOR_NE_ACK_CURSOR`  
 `COPULSE_ROUTER_SUPERSEDES_DIRECT_COEVO_SESSION_SUBSCRIPTION_DELIVERY`
+
