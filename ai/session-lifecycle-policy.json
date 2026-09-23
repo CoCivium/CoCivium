@@ -43,7 +43,7 @@
     ],
     "model_is_authority": false
   },
-  "next": "R2_LOGICAL_SPAWN_PLANNER_EXECUTABLE_AVAILABLE__NEXT_R3_LOCAL_OLLAMA_MATERIALIZATION_CANARY",
+  "next": "R3_LOCAL_MODEL_ADAPTER_READY__WAIT_FOR_X2_DIRECT_ROUTE_FOR_ONE_PUBLIC_SAFE_OLLAMA_CANARY",
   "r1_shadow_ledger": {
     "script": "scripts/CoSessionShadowLedger.py",
     "docs": "docs/Operations/COSESSION_SHADOW_LEDGER_R1.md",
@@ -57,5 +57,11 @@
     "provider_mutation": false,
     "repo_mutation": false,
     "confidentiality_fail_closed": true
+  },
+  "r3_local_model": {
+    "script": "scripts/CoLocalModelWorkerR3.py",
+    "policy": "ai/local-model-worker-policy.json",
+    "x2_ollama_canary": "NOT_RUN",
+    "live_effects": 0
   }
 }
