@@ -1,0 +1,21 @@
+{
+  "schema": "CoPulsePressureFreshnessPolicy.R0F.v0.1-candidate",
+  "state": "EXPLICIT_REFERENCE_TIME__FAIL_CLOSED_STALENESS",
+  "rules": {
+    "reference_time": "CALLER_MUST_BIND_EXPLICIT_EVALUATED_AT",
+    "fresh_if": "0-MAX_FUTURE_SKEW_SECONDS <= AGE_SECONDS <= MAX_AGE_SECONDS",
+    "stale_if": "AGE_SECONDS > MAX_AGE_SECONDS",
+    "future_if": "AGE_SECONDS < -MAX_FUTURE_SKEW_SECONDS",
+    "stale_action": "HOLD_BEFORE_BUDGET_ELECTION",
+    "future_action": "HOLD_BEFORE_BUDGET_ELECTION",
+    "wall_clock_implicit_now": false
+  },
+  "rails": [
+    "FRESHNESS_NE_TRUTH",
+    "FRESH_SAMPLE_NE_CAPACITY_ACCURACY_PROOF",
+    "STALE_SAMPLE_NE_ZERO_CAPACITY",
+    "PRESSURE_SAMPLE_NE_AUTHORITY",
+    "OBSERVER_TIME_NE_GLOBAL_TIME"
+  ],
+  "next": "R0G_CAPACITY_SOURCE_PROVENANCE_AND_LIVE_RECEIVER_BINDING_CANARY"
+}
