@@ -1,0 +1,68 @@
+{
+  "projection_id": "cofleet:synthetic-r4",
+  "observed_at": "2026-09-23T11:30:00Z",
+  "observer": "CoFleetProjection.R4.synthetic-fixture",
+  "coverage": {
+    "state": "SYNTHETIC_FIXTURE_ONLY",
+    "global_fleet_census": "UNPROVEN",
+    "source_count": 3
+  },
+  "workspaces": {
+    "count": 2,
+    "coverage": "SYNTHETIC_FIXTURE"
+  },
+  "virtual_sessions": {
+    "count": 12,
+    "coverage": "SYNTHETIC_FIXTURE",
+    "temperatures": {
+      "HOT": 2,
+      "WARM": 3,
+      "COOL": 2,
+      "DORMANT": 4,
+      "COMPOST": 1,
+      "ARCHIVE": 0
+    }
+  },
+  "materialized_workers": {
+    "count": 2,
+    "coverage": "SYNTHETIC_FIXTURE"
+  },
+  "provider_sessions": {
+    "count": 1,
+    "coverage": "SYNTHETIC_FIXTURE"
+  },
+  "model_runtimes": {
+    "count": 1,
+    "coverage": "SYNTHETIC_FIXTURE"
+  },
+  "fronts": {
+    "count": 2,
+    "coverage": "SYNTHETIC_FIXTURE"
+  },
+  "effect_leases": {
+    "count": 0,
+    "coverage": "SYNTHETIC_FIXTURE"
+  },
+  "currentness": {
+    "state": "HEALTHY",
+    "age_seconds": 12
+  },
+  "pressure": {
+    "headline": "MODERATE",
+    "dimensions": {
+      "attention_debt": "LOW",
+      "proof_debt": "MODERATE",
+      "materialization_load": "LOW"
+    }
+  },
+  "human_blockers": [],
+  "exceptions": [],
+  "evidence_refs": [
+    "fixture:synthetic-only"
+  ],
+  "nonclaims": [
+    "NOT_LIVE_FLEET",
+    "NOT_GLOBAL_CENSUS",
+    "NOT_RICKBAR_RUNTIME"
+  ]
+}
