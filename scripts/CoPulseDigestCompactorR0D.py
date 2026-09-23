@@ -106,7 +106,7 @@ def digest_summary(rows: list[dict[str, Any]], source_packet_sha256: str) -> dic
                 "source_packet_sha256",
                 "source_manifest",
             ],
-            "semantic_summary_generated": false,
+            "semantic_summary_generated": False,
         },
     }
 
@@ -155,12 +155,12 @@ def compact(packet: dict[str, Any], packet_raw: bytes, digest_budget: int) -> di
         "pressure": {
             "digest_budget": digest_budget,
             "budget_applies_to": "DIGEST_SUMMARY_COUNT_ONLY",
-            "hot_warm_compaction": false,
+            "hot_warm_compaction": False,
         },
         "loss_report": {
-            "loss_reporting": true,
-            "semantic_summary_generated": false,
-            "exact_source_replay_available": true,
+            "loss_reporting": True,
+            "semantic_summary_generated": False,
+            "exact_source_replay_available": True,
             "replay_scope": "DIGEST_SOURCE_ENTRIES_ONLY",
             "source_packet_sha256": source_packet_sha,
             "omitted_source_entry_count": len(digest_rows),
