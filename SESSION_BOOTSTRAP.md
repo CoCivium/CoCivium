@@ -300,3 +300,14 @@ The first candidate canary preserves HOT/WARM entries exactly, compacts four DIG
 `SUMMARY_NE_SOURCE`  
 `EXPLICIT_LOSS_NE_ZERO_LOSS`  
 `REPLAY_NE_ACK`
+
+## CoPulse receiver-pressure budget R0E
+
+After R0D exact-loss/replay compaction, [CoPulse Receiver-Pressure DIGEST Budget Election R0E](docs/Operations/COPULSE_RECEIVER_PRESSURE_BUDGET_R0E.md) derives a bounded DIGEST summary budget from receiver capacity instead of accepting an arbitrary caller number.
+
+R0E reserves HOT/WARM occupancy first, keeps CoPressure as a vector rather than a universal score, and maps the same four-DIGEST packet through budgets `4 -> 2 -> 1 -> 0` as capacity falls. Every nonzero budget reuses R0D exact replay; zero capacity holds DIGEST rather than silently dropping it.
+
+`COPRESSURE_VECTOR_NE_UNIVERSAL_SCORE`  
+`CAPACITY_NE_AUTHORITY`  
+`ZERO_CAPACITY_NE_SILENT_DROP`  
+`BUDGET_NE_PERMISSION_TO_DELETE`
