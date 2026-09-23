@@ -11,6 +11,7 @@
     "role",
     "scope",
     "authority_ceiling",
+    "confidentiality",
     "effect_classes",
     "budget",
     "lease",
@@ -149,6 +150,14 @@
         "COMPLETE",
         "RETIRED",
         "BLOCKED"
+      ]
+    },
+    "confidentiality": {
+      "enum": [
+        "PUBLIC",
+        "PRIVATE",
+        "RESTRICTED",
+        "UNKNOWN"
       ]
     }
   }
