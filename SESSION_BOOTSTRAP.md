@@ -227,3 +227,12 @@ Use [the R0B two-receiver canary](scripts/CoPulseTwoReceiverCanaryR0B.py) after 
 
 `PICKED_UP_NE_INTEGRATED`  
 `ACK_PROPOSAL_NE_ACK_COMMIT`
+
+## CoPulse currentness pipeline through R0E
+
+Use [the machine currentness index](ai/currentness/copulse-currentness-r0e.json) for the landed public-safe CoPulse lineage: R0A role/profile routing, R0B exact receiver pickup, R0C receiver-local ACK/backfill, R0D explicit-loss DIGEST compaction with exact replay, and R0E receiver-capacity budget election. The next bounded rung is R0F staleness plus multi-receiver capacity election.
+
+`DELIVERY_NE_PICKUP`  
+`COMPACTION_NE_DELETION`  
+`COPRESSURE_VECTOR_NE_UNIVERSAL_SCORE`  
+`ZERO_CAPACITY_NE_SILENT_DROP`
