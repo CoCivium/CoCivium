@@ -79,11 +79,17 @@ The output declares zero:
 - receiver-pickup claims;
 - canon changes.
 
+## Receiver-relative fanout now implemented
+
+The next planning rung now exists as [CoEvoReceiverFanoutPlanner R0](COEVO_RECEIVER_FANOUT_PLANNER_R0.md), with [reference implementation](../../scripts/CoEvoReceiverFanoutPlanner.py) and [machine output schema](../../schemas/coevo-fanout-plan-v0.1.schema.json).
+
+It proposes both repository receiver routes and HOT/WARM/DIGEST session-profile interest while performing zero target mutations or provider-session pushes.
+
 ## Next gate
 
-`FANIN_COMPILED_COEVO -> REVIEW_COLLISIONS_CURRENTNESS_AND_PUBLIC_SAFETY -> ELECT_RECEIVER_RELATIVE_FANOUT`
+`BIND_TARGET_HEADS + BIND_RECEIVER_INSTANCES + REVIEW_HOLDS -> ELECT_BOUNDED_RECEIVER_PACKETS`
 
-The next implementation should be a receiver-relative fanout planner that proposes target-specific projections without directly mutating those targets.
+The next implementation should compile exact receiver packets only for already-bound targets/instances, preserving delivery != pickup and exact readproof before any receiver-uptake claim.
 
 ## Rails
 
