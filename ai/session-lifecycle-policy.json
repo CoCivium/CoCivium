@@ -63,5 +63,12 @@
     "policy": "ai/local-model-worker-policy.json",
     "x2_ollama_canary": "NOT_RUN",
     "live_effects": 0
+  },
+  "r4_fleet_projection": {
+    "docs": "docs/UX/COFLEET_RICKBAR_R4.md",
+    "schema": "schemas/cofleet-projection-v0.1.schema.json",
+    "policy": "ai/cofleet-projection-policy.json",
+    "runtime_binding": "UNPROVEN",
+    "global_fleet_census_claimed": false
   }
 }
