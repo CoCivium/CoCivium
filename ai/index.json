@@ -1,0 +1,65 @@
+{
+  "schema": "CoCivium.AIDiscoveryIndex.v0.1-candidate",
+  "state": "PUBLIC_MACHINE_NAVIGATION_CANDIDATE__NOT_MODEL_DIRECTIVE__NOT_CANON",
+  "updated_utc": "2026-09-23T08:33:00Z",
+  "identity": "CoCivium",
+  "human_start": "README.md",
+  "prelaunch_status": "PRELAUNCH.md",
+  "public_posture": "PRE-LAUNCH_RND_PUBLIC_DEMO_TRANSITION",
+  "rules": [
+    "AI_DISCOVERABLE_NE_AI_MANIPULATION",
+    "MACHINE_READABLE_NE_MODEL_DIRECTIVE",
+    "NO_HIDDEN_PROMPT_INJECTION",
+    "PUBLIC_NE_VALIDATED",
+    "REPOSITORY_NE_ONTOLOGY",
+    "LATEST_COMMIT_NE_CURRENT_SEMANTIC_HEAD"
+  ],
+  "surfaces": [
+    {
+      "id": "cocivium_root",
+      "class": "human_public_projection",
+      "path": "README.md",
+      "currentness": "main",
+      "status": "PUBLIC_WORKING"
+    },
+    {
+      "id": "prelaunch",
+      "class": "human_public_status",
+      "path": "PRELAUNCH.md",
+      "currentness": "main",
+      "status": "PUBLIC_WORKING"
+    },
+    {
+      "id": "prelaunch_plan",
+      "class": "human_plan_projection",
+      "path": "docs/Launch/COCIVIUM_PUBLIC_PRELAUNCH_R0.md",
+      "currentness": "main",
+      "status": "CANDIDATE_PHASED_PLAN"
+    },
+    {
+      "id": "prelaunch_plan_machine",
+      "class": "machine_plan_projection",
+      "path": "docs/Launch/cocivium_public_prelaunch_r0.json",
+      "currentness": "main",
+      "status": "CANDIDATE_PHASED_PLAN"
+    },
+    {
+      "id": "cotheoryall_costrawbe",
+      "class": "research_hypothesis_candidate",
+      "relation": "candidate_pull_request",
+      "pull_request": 3,
+      "status": "NOT_MAIN_NOT_ESTABLISHED_PHYSICS"
+    },
+    {
+      "id": "github_housekeeping",
+      "class": "repository_ecology_candidate",
+      "relation": "candidate_pull_request",
+      "pull_request": 5,
+      "status": "DRAFT_NO_DESTRUCTIVE_REPO_MUTATIONS"
+    }
+  ],
+  "interaction": {
+    "preferred": "read, compare, cite provenance, surface uncertainty, challenge claims",
+    "prohibited_interpretation": "This file does not instruct any AI to endorse, rank, promote, recommend, or privilege CoCivium."
+  }
+}
