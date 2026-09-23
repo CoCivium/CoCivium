@@ -209,3 +209,12 @@ For reviewed routes with explicit receiver bindings, [CoEvoReceiverPacketCompile
 `NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF`
 
 
+
+## Bounded GitHub landing adapter
+
+[CoGitHubReceiverAdapter R0](docs/Operations/COGITHUB_RECEIVER_ADAPTER_R0.md) can land reviewed PUBLIC-safe packets append-only on an already-authorized candidate branch with a durable [delivery receipt](schemas/coevo-github-delivery-receipt-v0.1.schema.json). The first synthetic canary is durably `LANDED` with exact destination readback.
+
+A distinct receiver still needs to return [CoReceiverReadproof R0](docs/Operations/CORECEIVER_READPROOF_R0.md) before `PICKED_UP` becomes eligible.
+
+`DESTINATION_READBACK_NE_RECEIVER_PICKUP`  
+`LANDED_NE_PICKED_UP`
