@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/CoCivium/CoCivium/schemas/coevo-pickup-receipt-v0.1.schema.json",
+  "title": "CoEvo pickup receipt v0.1 candidate",
+  "description": "Receiver proof that a bounded CoEvo packet was actually consumed. Delivery alone is insufficient; this object still does not imply integration, canon, runtime activation, CoEx, or authority.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "receiver_id",
+    "observed_at",
+    "receiver_state",
+    "packet_sha256",
+    "cursor_before",
+    "cursor_after",
+    "selected_delta_ids",
+    "subscription_ref",
+    "authority_transfer"
+  ],
+  "properties": {
+    "schema": {
+      "const": "CoAll.CoEvoPickupReceipt.v0.1-candidate"
+    },
+    "receiver_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "observed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "receiver_state": {
+      "enum": ["PICKED_UP", "HELD", "REJECTED"]
+    },
+    "packet_sha256": {
+      "type": "string",
+      "pattern": "^[A-F0-9]{64}$"
+    },
+    "cursor_before": {
+      "type": ["string", "null"]
+    },
+    "cursor_after": {
+      "type": ["string", "null"]
+    },
+    "selected_delta_ids": {
+      "type": "array",
+      "items": {"type": "string"},
+      "uniqueItems": true
+    },
+    "subscription_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "subscription_sha256": {
+      "type": ["string", "null"],
+      "pattern": "^[A-F0-9]{64}$"
+    },
+    "source_refs": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "hold_reason": {
+      "type": ["string", "null"]
+    },
+    "integration_state": {
+      "enum": ["UNPROVEN", "HELD", "INTEGRATED"]
+    },
+    "coex_state": {
+      "enum": ["UNPROVEN", "HELD", "COEX"]
+    },
+    "authority_transfer": {
+      "const": "NONE"
+    },
+    "nonclaims": {
+      "type": "array",
+      "items": {"type": "string"}
+    }
+  }
+}
