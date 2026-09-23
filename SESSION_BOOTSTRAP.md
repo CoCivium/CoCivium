@@ -178,3 +178,11 @@ Do not enroll a dependent/minor device for standing unrestricted AI remote contr
 
 `PRIMARY_ROUTE_FIRST__DEPENDENT_ENDPOINT_SECOND`  
 `DEVICE_SERVICE_ID_NE_PERSONAL_LOGIN`
+
+## CoAllPulseField+ / receiver-specific currentness
+
+Use [CoAllPulseField+ R0](docs/Architecture/COALL_PULSEFIELD_COTIME_R0.md) and the [public-safe R0A router](scripts/CoPulseSubscriptionRouterR0A.py) when a virtual/session receiver needs bounded currentness after its last ACK cursor. GitHub routing is PUBLIC-safe only; private/restricted pulses stay on private custody paths.
+
+`DELIVERY_NE_PICKUP`  
+`CANDIDATE_DELIVERED_CURSOR_NE_ACK_CURSOR`  
+`PUBLIC_ROUTER_NE_PRIVATE_BUS`
