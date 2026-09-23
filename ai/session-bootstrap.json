@@ -1,13 +1,18 @@
 {
   "schema": "CoAll.SessionBootstrap.v0.1-candidate",
   "state": "PUBLIC_CURRENTNESS_BOOTSTRAP__NOT_GLOBAL_SESSION_PICKUP_PROOF",
-  "updated_utc": "2026-09-23T09:14:23Z",
+  "updated_utc": "2026-09-23T11:09:00Z",
   "bootstrap_repository": "CoCivium/CoCivium",
   "default_branch": "main",
   "read_order": [
     "README.md",
     "PRELAUNCH.md",
     "SESSION_BOOTSTRAP.md",
+    "docs/Evolution/COALL_GITHUB_EVOLUTION_FABRIC_R0.md",
+    "ai/evolution-lanes.json",
+    "ai/repo-role-map.json",
+    "ai/highlight-assets.json",
+    "ai/session-lifecycle-policy.json",
     "docs/Launch/COCIVIUM_PUBLIC_PRELAUNCH_R0.md"
   ],
   "rules": [
@@ -18,7 +23,13 @@
     "MODEL_MEMORY_NE_SOURCE_OF_TRUTH",
     "CHAT_MEMORY_NE_EVENT_BUS",
     "MODEL_NE_AUTHORITY",
-    "RICK_NE_EVENT_BUS"
+    "RICK_NE_EVENT_BUS",
+    "ALL_SESSIONS_CAN_CONTRIBUTE_NE_ALL_SESSIONS_MUTATE_ALL_SURFACES",
+    "CURRENTNESS_FOR_ALL_NE_CONTENT_FOR_ALL",
+    "DOMAIN_NE_REPOSITORY",
+    "REPOSITORY_NE_ONTOLOGY",
+    "HUMOUR_NE_EVIDENCE",
+    "NO_NEWEST_WINS"
   ],
   "routing": {
     "github": [
@@ -26,7 +37,10 @@
       "shared architecture",
       "machine twins",
       "reviewable candidates",
-      "public collaboration"
+      "public collaboration",
+      "bounded CoEvoDelta contributions",
+      "domain-scoped branch/PR mutation",
+      "highlight and repo-role currentness"
     ],
     "costead": [
       "private durable state",
@@ -43,5 +57,30 @@
       "bounded worker roles under capability/authority contracts"
     ]
   },
-  "existing_session_limitation": "NO_AUTOMATIC_PICKUP_WITHOUT_BRIDGE_OR_RECEIVER_PATH"
+  "existing_session_limitation": "NO_AUTOMATIC_PICKUP_WITHOUT_BRIDGE_OR_RECEIVER_PATH",
+  "evolution": {
+    "contract": "docs/Evolution/COALL_GITHUB_EVOLUTION_FABRIC_R0.md",
+    "domain_registry": "ai/evolution-lanes.json",
+    "delta_schema": "schemas/coevo-delta-v0.1.schema.json",
+    "repo_role_map": "ai/repo-role-map.json",
+    "highlight_registry": "ai/highlight-assets.json",
+    "default_behavior": [
+      "ORIENT",
+      "SUBSCRIBE_TO_RELEVANT_DOMAINS",
+      "OBSERVE",
+      "EMIT_BOUNDED_COEVO_DELTA_WHEN_MATERIAL",
+      "CHALLENGE_OR_VERIFY_WHERE_USEFUL",
+      "BRANCH_MUTATE_ONLY_WITHIN_AUTHORITY_AND_COLLISION_RAILS",
+      "PULSE_CURRENTNESS_AFTER_ACCEPTED_CHANGE"
+    ],
+    "all_sessions_rule": "ALL_CAPABLE_SESSIONS_MAY_CONTRIBUTE_BOUNDED_DELTAS__NO_SESSION_MUST_MUTATE_EVERY_DOMAIN"
+  },
+  "lifecycle": {
+    "policy": "ai/session-lifecycle-policy.json",
+    "twilight_projection": "COTWILIGHT",
+    "twilight_behavior": "HARVEST_AND_EXTERNALIZE_MORE__START_FEWER_HIGH_EFFECT_COMMITMENTS",
+    "auto_close_safe_projection": true,
+    "provider_tab_close_effect": "SHADOW_ONLY",
+    "human_relay_default": false
+  }
 }
