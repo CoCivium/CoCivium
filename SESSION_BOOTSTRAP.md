@@ -322,3 +322,17 @@ The bounded canary uses one shared pulse field. Two fresh receivers preserve ind
 `OBSERVER_TIME_NE_GLOBAL_TIME`  
 `DIVERGENT_BUDGETS_NE_INCONSISTENCY`  
 `INDEPENDENT_ACK_NE_GLOBAL_ACK`
+
+## CoPulse capacity provenance / live receiver R0G
+
+[CoPulse Capacity Provenance + Live Receiver Binding R0G](docs/Operations/COPULSE_CAPACITY_PROVENANCE_RECEIVER_BINDING_R0G.md) separates two evidence gates before receiver pressure may receive operational weight:
+
+1. exact capacity-source provenance, including reread of the bound source-object bytes;
+2. a fresh real receiver binding with virtual-session identity, embodiment identity, service identity, route adapter and observed ONLINE state.
+
+The bounded contract canary passes for provenance and binding-gate behavior, including fail-closed source-byte drift. The real primary machine route is currently held offline, so no real live-receiver PASS is claimed.
+
+`PROVENANCE_NE_MEASUREMENT_ACCURACY`  
+`PROVENANCE_NE_LIVE_RECEIVER_BINDING`  
+`SYNTHETIC_ONLINE_FIXTURE_NE_REAL_LIVE_RECEIVER`  
+`LIVE_BINDING_NE_AUTHORITY`
