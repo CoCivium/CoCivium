@@ -101,3 +101,21 @@ No merge, donor closure, runtime activation, canon promotion, CoEx, public outre
 `PR_COUNT_NE_PROGRESS`  
 `NO_NEWEST_WINS`  
 `GITHUB_WRITE_ACCESS_NE_GLOBAL_AUTHORITY`
+
+
+## Fresh currentness / CI
+
+At 2026-09-23T11:57:22Z the convergence head `aca9e2c8fcc19d712b9de72c2b471659e35b908b` is:
+
+- `15` commits ahead of current main;
+- `1` commit behind current main;
+- merge base `d3e7e6f2063bb9d3aa6a0954cd6bd219ea93edcd`;
+- the one behind commit is `f4c1e9fd5692781db9f764de10b72d0cb1ccb73a` (`Security: bound dependent device enrollment`), a separate security-domain change.
+
+This drift does not automatically invalidate the semantic convergence, but the branch must refresh/reconcile before any merge decision.
+
+The workflow `Validate CoEvo Convergence R0` passed on head `aca9e2c8fcc19d712b9de72c2b471659e35b908b` (run `35857459246`).
+
+`BRANCH_BEHIND_NE_SEMANTIC_INVALIDATION`  
+`REFRESH_BEFORE_MERGE`  
+`CI_PASS_NE_CANON_OR_MERGE_AUTHORITY`
