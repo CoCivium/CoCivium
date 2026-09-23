@@ -43,11 +43,19 @@
     ],
     "model_is_authority": false
   },
-  "next": "R1_SHADOW_SESSION_LEDGER_EXECUTABLE_AVAILABLE__NEXT_R2_LOGICAL_SPAWN_ECOLOGY",
+  "next": "R2_LOGICAL_SPAWN_PLANNER_EXECUTABLE_AVAILABLE__NEXT_R3_LOCAL_OLLAMA_MATERIALIZATION_CANARY",
   "r1_shadow_ledger": {
     "script": "scripts/CoSessionShadowLedger.py",
     "docs": "docs/Operations/COSESSION_SHADOW_LEDGER_R1.md",
     "provider_mutation": false,
     "global_session_census_claimed": false
+  },
+  "r2_logical_spawn": {
+    "script": "scripts/CoLogicalSpawnPlanner.py",
+    "docs": "docs/Operations/COLOGICAL_SPAWN_PLANNER_R2.md",
+    "live_materialization": false,
+    "provider_mutation": false,
+    "repo_mutation": false,
+    "confidentiality_fail_closed": true
   }
 }
