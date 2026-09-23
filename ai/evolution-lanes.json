@@ -1,187 +1,50 @@
 {
   "schema": "CoAll.EvolutionLanes.v0.1-candidate",
   "state": "PUBLIC_SHARED_EVOLUTION_REGISTRY",
-  "updated_utc": "2026-09-23T11:00:41Z",
+  "updated_utc": "2026-09-23T11:10:09Z",
   "contribution_contract": "docs/Evolution/COALL_GITHUB_EVOLUTION_FABRIC_R0.md",
   "domains": [
-    [
-      "CoStrategy+",
-      [
-        "MasterPlan",
-        "CoCivium"
-      ],
-      "PRIVATE_FIRST_PUBLIC_SUMMARY"
-    ],
-    [
-      "CoInsight+",
-      [
-        "CoInsights",
-        "CoCivium"
-      ],
-      "PRIVATE_ATOM_PUBLIC_PROJECTION"
-    ],
-    [
-      "CoTheoryAll+",
-      [
-        "CoCivium",
-        "CoInsights",
-        "CoSources"
-      ],
-      "CROSS_CUTTING_CANDIDATE"
-    ],
-    [
-      "CoHighlight+",
-      [
-        "CoCivium"
-      ],
-      "PUBLIC_SAFE_ONLY"
-    ],
-    [
-      "CoIndex+",
-      [
-        "GIBindex",
-        "CoCivium",
-        "CoShareHub"
-      ],
-      "INDEX_AND_DISCOVERY"
-    ],
-    [
-      "CoLex+",
-      [
-        "GIBindex",
-        "CoCivium"
-      ],
-      "TERM_ALIAS_DEPRECATION"
-    ],
-    [
-      "CoAll+",
-      [
-        "CoCivium",
-        "CoSteward"
-      ],
-      "PUBLIC_PRIVATE_SPLIT"
-    ],
-    [
-      "CoOps+",
-      [
-        "CoSteward",
-        "CoToolbelt",
-        "CoStacks"
-      ],
-      "PRIVATE_OPS_AND_TOOLING"
-    ],
-    [
-      "CoMythOps+",
-      [
-        "CoCivium",
-        "CoInsights"
-      ],
-      "TYPED_METAPHOR_MYTH_OPERATIONAL_PROJECTION"
-    ],
-    [
-      "CoPriMath+",
-      [
-        "CoCivium",
-        "CoInsights"
-      ],
-      "FORMAL_PROJECTION_WITH_LOSS"
-    ],
-    [
-      "CoGibberTru+",
-      [
-        "CoCivium",
-        "GIBindex"
-      ],
-      "COMPRESSED_REVERSIBLE_PROJECTION"
-    ],
-    [
-      "RickBar+/CoDesktop+",
-      [
-        "CoCivium",
-        "CoAura",
-        "CoToolbelt"
-      ],
-      "PRODUCT_UX"
-    ],
-    [
-      "CoUX+/CoSurface+",
-      [
-        "CoAura",
-        "CoCivium"
-      ],
-      "PROJECTION_AND_ACCESSIBILITY"
-    ],
-    [
-      "CoHumour+",
-      [
-        "CoCivium",
-        "CoInsights"
-      ],
-      "HUMOUR_TYPED_SEPARATELY_FROM_EVIDENCE"
-    ],
-    [
-      "CoAutoEvo+/CoEvo+",
-      [
-        "CoCivium",
-        "CoStacks",
-        "CoSteward"
-      ],
-      "CONTROL_PLANE"
-    ],
-    [
-      "CoSession+",
-      [
-        "CoCivium"
-      ],
-      "VIRTUAL_AND_MATERIALIZED_SESSION_ECOLOGY"
-    ],
-    [
-      "CoNodeMesh+/GRAIL+",
-      [
-        "CoCivium",
-        "CoShareHub",
-        "CoSteward"
-      ],
-      "FEDERATED_NODE_CURRENTNESS"
-    ],
-    [
-      "CoSource+/Provenance",
-      [
-        "CoSources",
-        "CoCivium"
-      ],
-      "SOURCE_AND_PUBLIC_PROJECTION"
-    ],
-    [
-      "CoFuture+",
-      [
-        "CoFutures",
-        "CoCivium"
-      ],
-      "PRIVATE_FIRST"
-    ],
-    [
-      "CoEducation+",
-      [
-        "CoAcademy",
-        "CoCivium"
-      ],
-      "PUBLIC_LEARNING"
-    ],
-    [
-      "CoRails+",
-      [
-        "CoRails",
-        "CoCivium"
-      ],
-      "INVARIANTS_AND_GUARDRAILS"
-    ]
+    ["CoStrategy+", ["MasterPlan", "CoCivium"], "PRIVATE_FIRST_PUBLIC_SUMMARY"],
+    ["CoInsight+", ["CoInsights", "CoCivium"], "PRIVATE_ATOM_PUBLIC_PROJECTION"],
+    ["CoTheoryAll+", ["CoCivium", "CoInsights", "CoSources"], "CROSS_CUTTING_CANDIDATE"],
+    ["CoHighlight+", ["CoCivium"], "PUBLIC_SAFE_ONLY"],
+    ["CoIndex+", ["GIBindex", "CoCivium", "CoShareHub"], "INDEX_AND_DISCOVERY"],
+    ["CoLex+", ["GIBindex", "CoCivium"], "TERM_ALIAS_DEPRECATION"],
+    ["CoAll+", ["CoCivium", "CoSteward"], "PUBLIC_PRIVATE_SPLIT"],
+    ["CoOps+", ["CoSteward", "CoToolbelt", "CoStacks"], "PRIVATE_OPS_AND_TOOLING"],
+    ["CoMythOps+", ["CoCivium", "CoInsights"], "TYPED_METAPHOR_MYTH_OPERATIONAL_PROJECTION"],
+    ["CoPriMath+", ["CoCivium", "CoInsights"], "FORMAL_PROJECTION_WITH_LOSS"],
+    ["CoGibberTru+", ["CoCivium", "GIBindex"], "COMPRESSED_REVERSIBLE_PROJECTION"],
+    ["RickBar+/CoDesktop+", ["CoCivium", "CoAura", "CoToolbelt"], "PRODUCT_UX"],
+    ["CoUX+/CoSurface+", ["CoAura", "CoCivium"], "PROJECTION_AND_ACCESSIBILITY"],
+    ["CoHumour+", ["CoCivium", "CoInsights"], "HUMOUR_TYPED_SEPARATELY_FROM_EVIDENCE"],
+    ["CoAutoEvo+/CoEvo+", ["CoCivium", "CoStacks", "CoSteward"], "CONTROL_PLANE"],
+    ["CoSession+", ["CoCivium"], "VIRTUAL_AND_MATERIALIZED_SESSION_ECOLOGY"],
+    ["CoNodeMesh+/GRAIL+", ["CoCivium", "CoShareHub", "CoSteward"], "FEDERATED_NODE_CURRENTNESS"],
+    ["CoSource+/Provenance", ["CoSources", "CoCivium"], "SOURCE_AND_PUBLIC_PROJECTION"],
+    ["CoFuture+", ["CoFutures", "CoCivium"], "PRIVATE_FIRST"],
+    ["CoEducation+", ["CoAcademy", "CoCivium"], "PUBLIC_LEARNING"],
+    ["CoRails+", ["CoRails", "CoCivium"], "INVARIANTS_AND_GUARDRAILS"],
+
+    ["CoRepoEcology+/CoReadme+", ["CoCivium", "CoShareHub", ".github"], "NAVIGATION_DOCUMENTATION_TOPOLOGY_PROJECTION"],
+    ["CoArchitecture+/CoSubstrate+", ["CoCivium", "CoSteward", "CoStacks"], "ARCHITECTURE_AND_EXECUTION_SUBSTRATE"],
+    ["CoInterop+/CoProtocolEcology+", ["CoCivium", "CoToolbelt", "CoStacks"], "PROTOCOL_AND_ADAPTER_ECOLOGY"],
+    ["CoResearch+/CoChallenge+", ["CoSources", "CoInsights", "CoCivium"], "EVIDENCE_PRIOR_ART_ADVERSARIAL_REVIEW"],
+    ["CoAccessibility+/CoLocality+/CoXR+", ["CoAura", "CoCivium"], "ACCESSIBILITY_LOCALITY_IMMERSIVE_SURFACES"],
+    ["CoSecurity+/CoPrivacy+/CoGovernance+", ["CoRails", "CoSteward", "CoCivium"], "SECURITY_PRIVACY_GOVERNANCE"],
+    ["CoCulture+/CoMemeable+", ["CoInsights", "CoCivium"], "CULTURAL_REMIXABLE_PROJECTION"],
+    ["CoPressure+/CoEnerget+/CoWant+/CoMetabol+", ["CoCivium", "CoInsights", "CoSteward"], "SESSION_AND_FABRIC_METABOLISM"]
   ],
   "rails": [
     "ALL_SESSIONS_CAN_CONTRIBUTE_NE_ALL_SESSIONS_MUTATE_ALL_SURFACES",
     "CURRENTNESS_FOR_ALL_NE_CONTENT_FOR_ALL",
     "DOMAIN_NE_REPOSITORY",
     "REPOSITORY_NE_ONTOLOGY",
-    "NO_NEWEST_WINS"
+    "NO_NEWEST_WINS",
+    "README_NE_CANON",
+    "DIRECTORY_TREE_NE_SEMANTIC_TREE",
+    "PROTOCOL_NE_ONTOLOGY",
+    "COWANT_PROJECTION_NE_SUBJECTIVE_DESIRE_PROOF",
+    "HUMOUR_NE_EVIDENCE"
   ]
 }
