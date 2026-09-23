@@ -1,0 +1,91 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/CoCivium/CoCivium/schemas/coall-donor-entry-v0.1.schema.json",
+  "title": "CoAll open-source donor entry v0.1 candidate",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "upstream",
+    "license",
+    "qualification",
+    "candidate_capabilities",
+    "adoption"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "upstream": {
+      "type": "string",
+      "minLength": 3
+    },
+    "upstream_commit": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "license": {
+      "type": "string",
+      "minLength": 1
+    },
+    "license_file": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "license_blob_sha": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "qualification": {
+      "enum": [
+        "DISCOVERED",
+        "LICENSE_CAPTURED",
+        "EXACT_COMMIT_BOUND",
+        "CANARY_QUALIFIED",
+        "ADAPTER_ACCEPTED",
+        "SOURCE_INGESTED",
+        "REJECTED"
+      ]
+    },
+    "candidate_capabilities": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "proposed_relation": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "adoption": {
+      "type": "string"
+    },
+    "notice_requirements": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "transformation_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "evidence_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}
