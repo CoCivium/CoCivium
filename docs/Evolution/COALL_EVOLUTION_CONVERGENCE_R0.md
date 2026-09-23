@@ -1,118 +1,100 @@
 # CoAll Evolution Convergence R0
 
-**State:** `PUBLIC_BRANCH_CANDIDATE__RECONCILIATION_ONLY__NO_MERGE_NO_RUNTIME_NO_CANON_NO_AUTHORITY`
+**State:** `PUBLIC_BRANCH_CANDIDATE__CONVERGENCE_TESTED__NO_MAIN_MERGE_NO_RUNTIME_NO_CANON_NO_AUTHORITY`
 
-Branch base: `a5e0caa06b5b1316de528fbbc6e4c942a72dd10e`  
-Latest main observed: `d3e7e6f2063bb9d3aa6a0954cd6bd219ea93edcd`
+Observed `main`: `d3e7e6f2063bb9d3aa6a0954cd6bd219ea93edcd`
 
-## Currentness update
+Current branch relation at validation: **10 ahead / 0 behind** main.
 
-Since this convergence branch was cut, `main` advanced with:
+## Convergence result
 
-- CoFleet RickBar R4A projection compiler;
-- CoSessionSubscription+ profiles and bootstrap routing.
+The branch is now refreshed against the observed mainline and two previously open compatibility questions have been turned into executable candidates rather than remaining architecture prose.
 
-Therefore this branch is now **behind main** and must not pretend its earlier gap list is current.
+### Schema union: PASS as a candidate
 
-`DRAFT_BRANCH_NE_CURRENT_HEAD`
+`schemas/coevo-delta-v0.2-union-candidate.schema.json` combines:
 
-`DESCENDANT_SATISFACTION_BEFORE_REPLAY`
+- the exact v0.1 core and required set from main;
+- PR #32 effect typing:
+  `effect_classes | effect_gate | effect_scope`;
+- PR #37 richer extension:
+  `materiality | subscription_context | pressure | energet | want_projection | route | close_readiness | nonclaims`.
 
-## What is now descendant-satisfied on main
+The candidate keeps v0.1 objects valid, requires effect typing for `EFFECT_GATED`, requires `materiality` when rich v0.2 context is present, and permits a rich object to down-project to its unchanged v0.1 core.
 
-The latest mainline subscription work materially satisfies much of the earlier receiver-relative subscription gap:
+`SCHEMA_UNION_CANDIDATE_NE_SCHEMA_ACCEPTANCE`
 
-- HOT / WARM / DIGEST / SLEEP profile routing;
-- role-relative currentness;
-- `SUBSCRIPTION_NE_AUTHORITY`;
-- `CURRENTNESS_FOR_ALL_NE_CONTENT_FOR_ALL`;
-- default no-full-repository ingest.
+### Intake surface election: PASS as a candidate
 
-The latest CoFleet R4A work also materially satisfies part of the earlier RickBar observer-projection gap:
+Primary machine intake is now elected as:
 
-- bounded fleet projection compiler exists;
-- exception-first projection exists;
-- blocked work is not silently promoted into a human blocker;
-- provider-session counts remain unknown without runtime evidence;
-- global fleet census remains unproven.
+`ai/evolution-deltas/<YYYY-MM-DD>/`
 
-These are **landed mainline components**, not proof of live RickBar receiver binding, global adoption, or runtime materialization.
+because main already uses that surface and PR #33 extends it directly.
 
-## Remaining genuinely useful deltas from open evolution PRs
+`docs/Evolution/deltas/` is retained only as a possible documentation/index/example projection. It should link or project to the primary object rather than create an independently owned object with the same `delta_id`.
 
-### PR #34
-Still the strongest broad R1 donor candidate for:
-- repository-role/currentness registry;
-- public highlight registry;
-- relational R1 narrative and cross-domain semantics;
-- CoLex / CoIndex / CoTheoryAll / CoPriMath / CoGibberTru / humour / UX crosswalk.
+`ONE_DELTA_ID_ONE_PRIMARY_MACHINE_OBJECT__MULTIPLE_READABLE_PROJECTIONS_ALLOWED`
 
-Do not treat it as an automatic winner.
+## CI evidence
 
-### PR #28
-Retain unique relation semantics:
-- `CoRepoField+` / `CoProjectionGraph+`;
-- explicit CoEvoDelta lifecycle distinction;
-- `CoInteropEcology+`;
-- `RELATION_PERSISTS__BINDING_EVOLVES`;
-- `NO_MATERIAL_DELTA => NO_COEVO_EMIT`.
+GitHub Actions run `35856946977` completed **successfully** with read-only contents permission.
 
-### PR #29
-Retain machine-routable lane extensions not yet represented on current main.
+Validator result:
 
-### PR #30
-Retain as session-donor evidence only.
+`PASS_COEVO_CONVERGENCE_R0`
 
-### PR #31
-Retain selective-session / anti-PR-spam donor evidence only where not descendant-satisfied by current main subscription profiles.
+- current main v0.1 deltas accepted by the union: **1/1**
+- v0.1 core changed: **no**
+- PR #32 effect semantics carried: **yes**
+- PR #37 rich extension carried: **yes**
+- missing effect fields for `EFFECT_GATED`: **rejected**
+- rich extension without materiality: **rejected**
+- rich extension with materiality: **accepted**
+- primary intake: `ai/evolution-deltas/<YYYY-MM-DD>/`
+- docs intake: documentation/index/example projection
+- canon: `UNPROVEN`
+- runtime: `UNPROVEN`
+- authority: `NONE`
 
-### PR #32
-Retain as the **effect-gate compatibility lane**:
-- `effect_classes`;
-- `effect_gate`;
-- `effect_scope`;
-- required effect typing for `EFFECT_GATED`.
+`CI_PASS_NE_CANON`
 
-This must be reconciled against the current CoEvo v0.1 schema and confidentiality-preserving CoSpawn routing.
+## Descendant satisfaction
 
-### PR #33
-Retain the per-session CoEvo intake README/convention if current main does not already provide an equivalent intake surface.
+Main already contains CoFleet/RickBar R4A and CoSessionSubscription+ R0.
 
-### PR #37
-Its session-subscription idea is now partly descendant-satisfied by current main.
+Therefore:
 
-Remaining candidate value:
-- CoEvoDelta v0.2 additive fields:
-  `materiality | subscription_context | pressure | energet | want_projection | route | close_readiness | nonclaims`;
-- any currentness-cursor semantics not already represented by CoSessionSubscription+ profiles.
+- basic HOT/WARM/DIGEST/SLEEP subscription temperatures are no longer unique to #34/#37;
+- #37 remains useful for cursor/wake/materiality/receiver-state/subscription-receiver mechanics;
+- broad donor branches should shrink as mainline descendants satisfy their relations.
 
-Do **not** replay duplicate subscription machinery merely because PR #37 is still open.
+`DESCENDANT_SATISFACTION_REDUCES_DONOR_SCOPE`
 
-### PR #39
-Coordination rail only. Preserve the anti-thrash relation.
+## Remaining unique donor work
 
-## Convergence policy
+The remaining question is no longer schema plumbing.
 
-1. Refresh current `main`.
-2. Mark newly descendant-satisfied work before carrying anything forward.
-3. Prefer one additive current-main-based convergence patch.
-4. Carry only unique semantics.
-5. Keep `schemas/coevo-delta-v0.1.schema.json` as compatibility anchor.
-6. Treat any v0.2 as additive/superseding-by-contract, not silent replacement.
-7. Validate CoSpawn consumers before changing effect/confidentiality semantics.
-8. Preserve donor branches until unique deltas are carried forward or explicitly rejected.
-9. Do not create another broad evolution PR merely because this one became stale.
+Still to carry or explicitly reject before any main-merge election:
 
-## Anti-thrash
+- #34: repo-role/currentness registry, highlight registry, broad relational R1 crosswalk, validator/CI donor ideas;
+- #23: fan-in/projection and receiver-fanout mechanics;
+- #28: CoRepoField+, CoProjectionGraph+, CoInteropEcology+, lifecycle and binding relations;
+- #29: machine-routable lane extensions not on main;
+- #37: richer currentness/receiver machinery;
+- #41: interop/meta-relational challenger material;
+- #42: currentness documentation donor;
+- #43: bounded schema-aligned CoSessionSurvival donor evidence.
 
-`PR_ARRIVAL_RATE > REVIEW_AND_FANIN_RATE -> REDUCE_NEW_DISCOVERY_AND_INCREASE_RECONCILIATION`
+#32 and #33 are now materially represented by the schema-union and intake-surface candidate respectively.
 
-`NO_MATERIAL_DELTA => NO_COEVO_EMIT`
+## Next
 
-`FANIN_BEFORE_MORE_PARALLEL_MUTATION`
+`CARRY_OR_EXPLICITLY_REJECT_REMAINING_UNIQUE_NONSCHEMA_DELTAS -> VALIDATE -> MAIN_MERGE_REQUIRES_SEPARATE_EXPLICIT_GATE`
 
-## Elected next deed
+No merge, donor closure, runtime activation, canon promotion, CoEx, public outreach, credential action, financial/privacy effect, deletion, or authority transfer is performed by this convergence result.
 
-`REBASE_OR_RECONSTRUCT_ON_CURRENT_MAIN__CARRY_EFFECT_GATE_AND_REMAINING_UNIQUE_SCHEMA_RELATIONS__VALIDATE_CONSUMERS__NO_BLANKET_CHERRY_PICK`
-
-No merge, branch closure, runtime activation, canon promotion, public outreach, credential action, or authority transfer is performed by this object.
+`FANIN_BEFORE_MORE_PARALLEL_MUTATION`  
+`PR_COUNT_NE_PROGRESS`  
+`NO_NEWEST_WINS`  
+`GITHUB_WRITE_ACCESS_NE_GLOBAL_AUTHORITY`

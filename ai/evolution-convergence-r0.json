@@ -1,146 +1,200 @@
 {
-  "schema": "CoCivium.CoAllEvolutionConvergence.R0.v0.2",
-  "observed_at": "2026-09-23T11:47:19Z",
-  "branch_base": "a5e0caa06b5b1316de528fbbc6e4c942a72dd10e",
-  "latest_main_observed": "d3e7e6f2063bb9d3aa6a0954cd6bd219ea93edcd",
-  "branch_currentness": "BEHIND_MAIN__RECONCILIATION_REQUIRED",
-  "state": "PUBLIC_BRANCH_CANDIDATE__RECONCILIATION_ONLY__NO_MERGE_NO_RUNTIME_NO_CANON_NO_AUTHORITY",
-  "descendant_satisfaction": [
+  "schema": "CoCivium.CoAllEvolutionConvergence.R0.v0.3",
+  "observed_at": "2026-09-23T11:51:21Z",
+  "observed_main_commit": "d3e7e6f2063bb9d3aa6a0954cd6bd219ea93edcd",
+  "state": "PUBLIC_BRANCH_CANDIDATE__CONVERGENCE_TESTED__NO_MAIN_MERGE_NO_RUNTIME_NO_CANON_NO_AUTHORITY",
+  "branch_currentness": {
+    "relation_to_main": "AHEAD",
+    "ahead_by": 10,
+    "behind_by": 0,
+    "merge_base": "d3e7e6f2063bb9d3aa6a0954cd6bd219ea93edcd",
+    "rail": "DRAFT_PR_NE_CURRENT_HEAD"
+  },
+  "landed_main_descendant_satisfaction": [
     {
-      "source": "main",
-      "commit": "d3e7e6f2063bb9d3aa6a0954cd6bd219ea93edcd",
-      "satisfies": [
-        "role-relative HOT/WARM/DIGEST/SLEEP subscription profiles",
-        "CURRENTNESS_FOR_ALL_NE_CONTENT_FOR_ALL",
-        "SUBSCRIPTION_NE_AUTHORITY",
-        "no full-repo ingest by default"
-      ],
+      "commit": "6b105678b1e17db7fa4ed3a2ea6dc5fb71027d2a",
+      "relation": "COFLEET_RICKBAR_R4A_PROJECTION_COMPILER_LANDED",
       "nonclaims": [
-        "not global session pickup",
-        "not authority",
-        "not runtime delivery bus"
+        "not live RickBar binding",
+        "not global fleet census"
       ]
     },
     {
-      "source": "main",
-      "commit": "6b105678b1e17db7fa4ed3a2ea6dc5fb71027d2a",
+      "commit": "d3e7e6f2063bb9d3aa6a0954cd6bd219ea93edcd",
+      "relation": "COSESSION_SUBSCRIPTION_R0_LANDED",
       "satisfies": [
-        "bounded CoFleet projection compiler",
-        "exception-first RickBar projection contract support",
-        "blocked work != human blocker",
-        "provider counts require runtime facts",
-        "global census remains unproven"
+        "HOT/WARM/DIGEST/SLEEP profiles",
+        "bounded role-relative domain subscriptions",
+        "preferred repo projections",
+        "SUBSCRIPTION_NE_AUTHORITY"
       ],
-      "nonclaims": [
-        "RickBar receiver binding unproven",
-        "runtime adapter unproven",
-        "global fleet census unproven"
+      "still_missing": [
+        "currentness cursors",
+        "wake-condition schema",
+        "material-delta policy",
+        "receiver-state pickup/integration distinction",
+        "content-addressed receiver receipts"
       ]
     }
   ],
-  "remaining_unique": [
+  "compatibility_gates": [
+    {
+      "id": "SCHEMA_UNION",
+      "status": "PASS_STATIC_CI_CANDIDATE",
+      "artifact": "schemas/coevo-delta-v0.2-union-candidate.schema.json",
+      "composition": [
+        "v0.1 core fields and required set unchanged",
+        "PR32 effect_classes/effect_gate/effect_scope preserved",
+        "EFFECT_GATED requires effect_classes + effect_gate",
+        "PR37 materiality/subscription_context/pressure/energet/want_projection/route/close_readiness/nonclaims preserved",
+        "rich extension requires materiality",
+        "rich object can down-project to v0.1 core"
+      ],
+      "source_blobs": {
+        "v0_1_main": "5aa1bfc62a47492f41b422331d51dbfcccc831c4",
+        "pr32_effect_donor": "4ef6fbe1144b609d6ac5c70ce0369e2835198b48",
+        "pr37_rich_donor": "39d60c9a6e92a1ade302dbc0a952922befcf6e9f"
+      },
+      "rail": "SCHEMA_UNION_CANDIDATE_NE_SCHEMA_ACCEPTANCE"
+    },
+    {
+      "id": "INTAKE_SURFACE",
+      "status": "PASS_ELECTED_CANDIDATE",
+      "artifact": "ai/evolution-intake-policy-r0.json",
+      "primary": "ai/evolution-deltas/<YYYY-MM-DD>/",
+      "secondary": "docs/Evolution/deltas/",
+      "secondary_role": "DOCUMENTATION_INDEX_OR_EXAMPLE_PROJECTION",
+      "identity_rule": "ONE_DELTA_ID_ONE_PRIMARY_MACHINE_OBJECT__MULTIPLE_READABLE_PROJECTIONS_ALLOWED",
+      "rail": "ONE_RELATION_FIELD_CAN_HAVE_MANY_PROJECTIONS__NOT_MANY_COMPETING_SEMANTIC_CROWNS"
+    },
+    {
+      "id": "BRANCH_CURRENTNESS",
+      "status": "PASS_AT_OBSERVATION",
+      "main": "d3e7e6f2063bb9d3aa6a0954cd6bd219ea93edcd",
+      "behind_by": 0
+    }
+  ],
+  "ci": {
+    "workflow": "Validate CoEvo Convergence R0",
+    "run_id": 35856946977,
+    "conclusion": "success",
+    "result": "PASS_COEVO_CONVERGENCE_R0",
+    "main_v01_deltas_accepted": 1,
+    "permissions": "contents:read",
+    "outputs": [
+      "V01_CORE_UNCHANGED+PR32_EFFECTS+PR37_RICH_EXTENSIONS",
+      "rich_extension_requires_materiality=true",
+      "effect_gated_requires_effect_fields=true",
+      "primary_intake=ai/evolution-deltas/<YYYY-MM-DD>/",
+      "docs_evolution_deltas=DOCUMENTATION_INDEX_OR_EXAMPLE_PROJECTION",
+      "canon=UNPROVEN",
+      "runtime=UNPROVEN",
+      "authority=NONE"
+    ]
+  },
+  "remaining_unique_donors": [
     {
       "pr": 34,
       "carry": [
         "repo-role/currentness registry",
         "highlight registry",
-        "broad R1 cross-domain relation narrative"
+        "broad relational R1 crosswalk",
+        "R1 validator/CI donor mechanics"
       ],
-      "role": "BROAD_DONOR"
+      "caution": "basic subscription temperatures descendant-satisfied; docs/Evolution/deltas not elected as primary machine intake"
+    },
+    {
+      "pr": 23,
+      "carry": [
+        "fan-in/projection compiler mechanics",
+        "receiver fanout planning"
+      ],
+      "caution": "compiler/fanout/delivery != pickup/integration"
     },
     {
       "pr": 28,
       "carry": [
         "CoRepoField+",
         "CoProjectionGraph+",
-        "explicit CoEvo lifecycle",
         "CoInteropEcology+",
+        "explicit CoEvo lifecycle",
         "RELATION_PERSISTS__BINDING_EVOLVES",
-        "NO_MATERIAL_DELTA => NO_COEVO_EMIT"
+        "BECOMING_MORE_NE_BECOMING_BIGGER"
       ],
-      "role": "RELATION_DONOR"
+      "role": "semantic challenger"
     },
     {
       "pr": 29,
       "carry": [
-        "machine-routable lane extensions not yet on main"
+        "machine-routable lane extensions not on main"
       ],
-      "role": "LANE_DONOR"
-    },
-    {
-      "pr": 30,
-      "carry": [
-        "bounded CoSessionSurvival delta"
-      ],
-      "role": "SESSION_DONOR_EVIDENCE"
-    },
-    {
-      "pr": 31,
-      "carry": [
-        "anti-PR-spam/fan-in donor residuals only"
-      ],
-      "role": "SESSION_DONOR_PARTLY_DESCENDANT_SATISFIED"
+      "role": "lane donor"
     },
     {
       "pr": 32,
       "carry": [
-        "effect_classes",
-        "effect_gate",
-        "effect_scope",
-        "EFFECT_GATED required effect typing"
+        "effect semantics"
       ],
-      "role": "SCHEMA_EFFECT_GATE_DONOR"
+      "status": "represented_in_union_candidate"
     },
     {
       "pr": 33,
       "carry": [
-        "per-session CoEvo intake convention if no main equivalent"
+        "intake README/convention",
+        "session fixture"
       ],
-      "role": "INTAKE_SURFACE_DONOR"
+      "status": "primary surface elected as ai/evolution-deltas"
     },
     {
       "pr": 37,
       "carry": [
-        "v0.2 materiality",
-        "subscription_context",
-        "pressure",
-        "energet",
-        "want_projection",
-        "route",
-        "close_readiness",
-        "nonclaims",
-        "currentness cursor semantics not on main"
+        "currentness cursor/wake/material-delta/receiver-state/subscription receiver mechanics"
       ],
-      "role": "SCHEMA_DONOR_PARTLY_DESCENDANT_SATISFIED"
+      "status": "basic subscription profiles descendant-satisfied; richer receiver semantics still unique"
     },
     {
-      "pr": 39,
+      "pr": 41,
       "carry": [
-        "anti-thrash coordination rail"
+        "transport-neutral interop",
+        "relations-about-relations",
+        "relevance horizons/backlog metabolism"
       ],
-      "role": "COORDINATION_ONLY"
+      "role": "challenger"
+    },
+    {
+      "pr": 42,
+      "carry": [
+        "currentness documentation through R4A"
+      ],
+      "role": "doc donor"
+    },
+    {
+      "pr": 43,
+      "carry": [
+        "schema-aligned CoSessionSurvival bounded deltas"
+      ],
+      "role": "session donor; supersedes PR30"
     }
   ],
-  "convergence_policy": [
-    "refresh main",
-    "mark descendant satisfaction before replay",
-    "carry unique semantics only",
-    "v0.1 remains compatibility anchor",
-    "v0.2 must be additive or explicitly superseding-by-contract",
-    "validate CoSpawn consumers before effect/confidentiality schema change",
-    "no blanket cherry-pick",
-    "no newest-wins",
-    "no new broad PR when no unique material delta"
-  ],
-  "next": "REBASE_OR_RECONSTRUCT_ON_CURRENT_MAIN__CARRY_EFFECT_GATE_AND_REMAINING_UNIQUE_SCHEMA_RELATIONS__VALIDATE_CONSUMERS__NO_BLANKET_CHERRY_PICK",
-  "nonclaims": [
-    "LOCAL_IS_NOT_LANDED",
-    "VALIDATION_IS_NOT_ACCEPTANCE",
-    "NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF",
-    "NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE",
-    "HASHING_IS_NOT_SEMANTIC_INGESTION",
-    "DISCOVERED_SET_IS_NOT_COMPLETE_HISTORY",
+  "next": "CARRY_OR_EXPLICITLY_REJECT_REMAINING_UNIQUE_NONSCHEMA_DELTAS__VALIDATE__THEN_HUMAN_OR_EXPLICIT_AUTHORITY_GATE_FOR_MAIN_MERGE",
+  "rails": [
+    "FANIN_BEFORE_MORE_PARALLEL_MUTATION",
+    "PR_COUNT_NE_PROGRESS",
+    "NO_NEWEST_WINS",
+    "DESCENDANT_SATISFACTION_BEFORE_REPLAY",
+    "SCHEMA_EVOLUTION_NE_SILENT_CONTRACT_BREAK",
+    "CI_PASS_NE_CANON",
     "MERGE_NE_CANON",
-    "GITHUB_WRITE_ACCESS_NE_GLOBAL_AUTHORITY"
+    "GITHUB_WRITE_ACCESS_NE_GLOBAL_AUTHORITY",
+    "REPOSITORY_PRESENCE_NE_RECEIVER_AWARENESS",
+    "ALL_SESSIONS_CAN_CONTRIBUTE_NE_ALL_SESSIONS_MUTATE_ALL_SURFACES"
+  ],
+  "nonclaims": [
+    "NOT_MAIN_MERGE",
+    "NOT_CANON",
+    "NOT_RUNTIME",
+    "NOT_COEX",
+    "NOT_GLOBAL_SESSION_PICKUP",
+    "NOT_AUTHORITY_TRANSFER"
   ]
 }
