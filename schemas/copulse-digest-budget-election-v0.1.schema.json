@@ -1,0 +1,85 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/CoCivium/CoCivium/schemas/copulse-digest-budget-election-v0.1.schema.json",
+  "title": "CoPulse DIGEST budget election v0.1 candidate",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "state",
+    "receiver_id",
+    "packet_id",
+    "source_packet_sha256",
+    "pressure_sample",
+    "pressure_vector",
+    "elected_digest_budget",
+    "compaction_required",
+    "effects",
+    "next",
+    "nonclaims",
+    "election_sha256"
+  ],
+  "properties": {
+    "schema": {"const": "CoPulseDigestBudgetElection.R0E.v0.1-candidate"},
+    "state": {
+      "enum": [
+        "PASS_DIGEST_BUDGET_ELECTED",
+        "IDLE_NO_DIGEST",
+        "HOLD_DIGEST_CAPACITY_EXHAUSTED"
+      ]
+    },
+    "receiver_id": {"type": "string"},
+    "packet_id": {"type": ["string", "null"]},
+    "source_packet_sha256": {"type": "string", "pattern": "^[0-9A-F]{64}$"},
+    "pressure_sample": {"type": "object"},
+    "pressure_vector": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "hot_count",
+        "warm_count",
+        "digest_count",
+        "non_digest_occupancy",
+        "max_currentness_items",
+        "free_digest_slots",
+        "max_digest_summaries",
+        "tier"
+      ],
+      "properties": {
+        "hot_count": {"type": "integer", "minimum": 0},
+        "warm_count": {"type": "integer", "minimum": 0},
+        "digest_count": {"type": "integer", "minimum": 0},
+        "non_digest_occupancy": {"type": "integer", "minimum": 0},
+        "max_currentness_items": {"type": "integer", "minimum": 0},
+        "free_digest_slots": {"type": "integer", "minimum": 0},
+        "max_digest_summaries": {"type": "integer", "minimum": 1},
+        "tier": {
+          "enum": ["NO_DIGEST", "SATURATED", "HIGH", "MODERATE", "LIGHT"]
+        }
+      }
+    },
+    "elected_digest_budget": {"type": "integer", "minimum": 0},
+    "compaction_required": {"type": "boolean"},
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_mutation",
+        "receiver_context_mutation",
+        "ack_cursor_mutation",
+        "provider_session_mutation",
+        "authority_change"
+      ],
+      "properties": {
+        "source_mutation": {"const": 0},
+        "receiver_context_mutation": {"const": 0},
+        "ack_cursor_mutation": {"const": 0},
+        "provider_session_mutation": {"const": 0},
+        "authority_change": {"const": 0}
+      }
+    },
+    "next": {"type": "string"},
+    "nonclaims": {"type": "array", "items": {"type": "string"}},
+    "election_sha256": {"type": "string", "pattern": "^[0-9A-F]{64}$"}
+  }
+}

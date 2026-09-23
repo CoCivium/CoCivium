@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/CoCivium/CoCivium/schemas/copulse-receiver-pressure-v0.1.schema.json",
+  "title": "CoPulse receiver pressure/capacity v0.1 candidate",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "sample_id",
+    "receiver_id",
+    "sampled_at",
+    "capacity_source",
+    "max_currentness_items",
+    "max_digest_summaries",
+    "authority_ceiling"
+  ],
+  "properties": {
+    "sample_id": {"type": "string", "minLength": 1},
+    "receiver_id": {"type": "string", "minLength": 1},
+    "sampled_at": {"type": "string", "format": "date-time"},
+    "capacity_source": {
+      "enum": ["MEASURED", "DECLARED", "SYNTHETIC_FIXTURE"]
+    },
+    "max_currentness_items": {"type": "integer", "minimum": 0},
+    "max_digest_summaries": {"type": "integer", "minimum": 1},
+    "authority_ceiling": {"type": "string", "minLength": 1},
+    "notes": {"type": "array", "items": {"type": "string"}}
+  }
+}
