@@ -1,0 +1,109 @@
+{
+  "schema": "CoCivium.CoHighlightRegistry.R0.v0.1",
+  "observed_at": "2026-09-23T11:13:26Z",
+  "state": "PUBLIC_BRANCH_CANDIDATE__HIGHLIGHTS_NE_CANON",
+  "scoring_dimensions": [
+    "public_usefulness",
+    "inspectability",
+    "evidence_currentness",
+    "distinctiveness",
+    "visual_demo_value",
+    "research_value",
+    "remixability_memeability",
+    "accessibility",
+    "challengeability",
+    "readiness"
+  ],
+  "items": [
+    {
+      "id": "highlight-cotheoryall",
+      "subject": "CoTheoryAll+ / CoStrawBe",
+      "current_projection": "evolving philosophical/research hypothesis surface",
+      "source_refs": [
+        "PRELAUNCH.md",
+        "docs/Launch/COCIVIUM_PUBLIC_PRELAUNCH_R0.md"
+      ],
+      "readiness": "WORKING_CANDIDATE",
+      "relations": [
+        "CHALLENGEABLE",
+        "HYPOTHESIS_TYPED",
+        "PUBLIC_EXPLANATION_DISTINCT_FROM_SCIENTIFIC_STATUS"
+      ]
+    },
+    {
+      "id": "highlight-rickbar",
+      "subject": "RickBar / CoDesktopMorph+",
+      "current_projection": "local-first human product surface under canary evolution",
+      "source_refs": [
+        "PRELAUNCH.md",
+        "docs/Architecture/COSESSION_AUTOCYCLE_R0.md",
+        "docs/Architecture/COVIRTUAL_SESSION_MORPHOLOGY_R0.md"
+      ],
+      "readiness": "WORKING_CANDIDATE",
+      "relations": [
+        "OBSERVER_FIRST",
+        "RECEIVER_RELATIVE",
+        "HIDE_LOW_VALUE_BACKEND_DETAIL"
+      ]
+    },
+    {
+      "id": "highlight-coprimath",
+      "subject": "CoPriMath+",
+      "current_projection": "relational formalization/projection substrate",
+      "source_refs": [
+        "docs/Launch/COCIVIUM_PUBLIC_PRELAUNCH_R0.md"
+      ],
+      "readiness": "RESEARCH_CANDIDATE",
+      "relations": [
+        "FORMALIZATION_NE_VALIDATION",
+        "TRANSLATION_LOSS_MUST_REMAIN_VISIBLE"
+      ]
+    },
+    {
+      "id": "highlight-cogibbertru",
+      "subject": "CoGibberTru+",
+      "current_projection": "compressed/alien symbolic relational projection family",
+      "source_refs": [
+        "plans/MasterPlan.md"
+      ],
+      "readiness": "WORKING_CANDIDATE",
+      "relations": [
+        "COMPRESSION_NE_TRUTH",
+        "PROJECTION_NE_SUBSTRATE"
+      ]
+    },
+    {
+      "id": "highlight-colex",
+      "subject": "CoLex+ / CoMeaning+",
+      "current_projection": "versioned meanings, anti-meanings, relations, drift and projection",
+      "source_refs": [
+        "docs/coterms/README.md",
+        "docs/coterms/coterms-public-r0.json"
+      ],
+      "readiness": "PUBLIC_EXPLAINER_EXISTS",
+      "relations": [
+        "MEANING_IS_RELATIONAL",
+        "PUBLIC_GLOSSARY_NE_FULL_COLEX"
+      ]
+    },
+    {
+      "id": "highlight-coall-evolution",
+      "subject": "CoAll GitHub Evolution Fabric",
+      "current_projection": "shared bounded evolution/currentness surface for capable sessions",
+      "source_refs": [
+        "docs/Evolution/COALL_GITHUB_EVOLUTION_FABRIC_R0.md",
+        "schemas/coevo-delta-v0.1.schema.json"
+      ],
+      "readiness": "PUBLIC_SHARED_CONTRACT_R0",
+      "relations": [
+        "ALL_SESSIONS_CAN_CONTRIBUTE_NE_ALL_SESSIONS_MUTATE_ALL_SURFACES"
+      ]
+    }
+  ],
+  "nonclaims": [
+    "NOT_RANKED_WINNERS",
+    "NOT_CANON",
+    "NOT_RELEASE_COMMITMENT",
+    "NOT_COMPLETE_ASSET_CATALOG"
+  ]
+}
