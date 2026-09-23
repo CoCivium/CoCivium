@@ -1,0 +1,172 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/CoCivium/CoCivium/schemas/coall-pulse-v0.1.schema.json",
+  "title": "CoAllPulse+ v0.1 candidate",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "pulse_id",
+    "cursor",
+    "subject",
+    "relation_type",
+    "epistemic_class",
+    "source_identity",
+    "recorded_at",
+    "valid_from",
+    "authority_ceiling",
+    "confidentiality",
+    "topics"
+  ],
+  "properties": {
+    "pulse_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "cursor": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "subject": {
+      "type": "string",
+      "minLength": 1
+    },
+    "relation_type": {
+      "type": "string",
+      "minLength": 1
+    },
+    "epistemic_class": {
+      "enum": [
+        "OBSERVED",
+        "PREDICTED",
+        "PLANNED",
+        "PREFERRED",
+        "COUNTERFACTUAL",
+        "UNKNOWN"
+      ]
+    },
+    "source_identity": {
+      "type": "string",
+      "minLength": 1
+    },
+    "provenance": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": "string"
+      }
+    },
+    "event_time": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    },
+    "observation_time": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    },
+    "recorded_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "valid_from": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "valid_to": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    },
+    "confidence": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "minimum": 0,
+      "maximum": 1
+    },
+    "assumptions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "evidence_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "authority_ceiling": {
+      "type": "string"
+    },
+    "confidentiality": {
+      "type": "string"
+    },
+    "topics": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "wake_conditions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "supersedes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "expiry": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    },
+    "calibration_disposition": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "HIT",
+        "PARTIAL",
+        "MISS",
+        "UNRESOLVED",
+        "CENSORED",
+        "INVALIDATED_BY_ASSUMPTION_CHANGE",
+        null
+      ]
+    },
+    "content_hash": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "payload": {
+      "type": [
+        "object",
+        "array",
+        "string",
+        "number",
+        "boolean",
+        "null"
+      ]
+    }
+  }
+}
