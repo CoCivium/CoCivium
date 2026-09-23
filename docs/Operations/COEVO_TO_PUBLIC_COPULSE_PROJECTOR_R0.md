@@ -1,16 +1,30 @@
 # CoEvo -> Public CoPulse Projector R0
 
-**State:** `PUBLIC_CANDIDATE__EXPLICIT_CURRENTNESS_PROJECTION__NO_DELIVERY_NO_ACK`
+**State:** `PUBLIC_CANDIDATE__LOSSLESS_EPISTEMIC_CURRENTNESS_PROJECTION__NO_DELIVERY_NO_ACK`
 
 ## Purpose
 
 Project one PUBLIC-safe `CoEvoDelta+` object into one `CoAllPulse+` candidate so the existing CoPulseSubscriptionRouter R0A can handle receiver-specific HOT/WARM/DIGEST currentness.
 
-This reconciles the earlier CoEvo fanout prototype with the current CoAllPulseField+ architecture:
+Forward relation:
 
 `CoEvoDelta+ -> CoPulse projection -> CoPulseSubscriptionRouter R0A -> receiver packet -> exact receiver readproof -> ACK cursor advance`
 
 The projector does not perform receiver selection, delivery, pickup, or ACK advancement.
+
+## Epistemic reconciliation
+
+Current CoPulse v0.1 now exposes the same epistemic classes used by CoEvoDelta+:
+
+`OBSERVED | INFERRED | HYPOTHESIS | PREDICTED | PLANNED | PREFERRED | METAPHORICAL | MYTHIC | HUMOROUS | COUNTERFACTUAL | UNKNOWN`
+
+The projector therefore preserves the source epistemic class exactly.
+
+No `HUMOROUS -> UNKNOWN`, `HYPOTHESIS -> UNKNOWN`, or other lossy coercion is required.
+
+`EPISTEMIC_CLASS_PRESERVED`  
+`HUMOUR_NE_EVIDENCE`  
+`MYTHIC_PROJECTION_NE_FACTUAL_CLAIM`
 
 ## Fail-closed rules
 
@@ -18,20 +32,11 @@ The public projector rejects:
 
 - non-PUBLIC CoEvo objects;
 - objects lacking `public_safety=PUBLIC_SAFE`;
+- unknown epistemic classes;
 - negative cursors;
-- multiple source deltas in one R0 invocation;
-- lossy epistemic mapping unless an explicit CoPulse class and projection-loss note are supplied.
+- multiple source deltas in one R0 invocation.
 
-CoPulse v0.1 has a smaller epistemic vocabulary than CoEvoDelta+. Therefore:
-
-`INFERRED | HYPOTHESIS | METAPHORICAL | MYTHIC | HUMOROUS`
-
-are never silently flattened into `UNKNOWN` or another class.
-
-The source epistemic class and projection-loss note are preserved in the pulse payload.
-
-`PROJECTION_NE_EQUIVALENCE`  
-`HUMOUR_NE_EVIDENCE`
+Private/restricted currentness belongs on private custody paths, not this GitHub-hosted public projection.
 
 ## Explicit temporal bindings
 
@@ -57,21 +62,21 @@ Downstream router:
 
 ## Bounded self-test
 
-Before landing, the exact candidate script passed:
+After the CoPulse epistemic-schema repair, the revised candidate passed:
 
-`SELFTEST=PASS_DETERMINISTIC__LOSSY_EPISTEMIC_REQUIRES_EXPLICIT_MAPPING__NONPUBLIC_FAILS_CLOSED`
+`SELFTEST=PASS_DETERMINISTIC__EPISTEMIC_CLASS_PRESERVED__NONPUBLIC_AND_UNSAFE_FAIL_CLOSED`
 
-Observed fixture pulse:
+Observed HUMOROUS fixture pulse:
 
-`copulse:coevo:C2AC3875FCBB5DF29030F077`
+`copulse:coevo:CB1A1AD1E7893A9EE591A937`
 
 Canonical pulse SHA-256:
 
-`43D85657910E0707DC08B1F874C4E94173D1B121A52EF7FC5581AEBD49C3ABB4`
+`98F930B8BF86535100FB3C4F85C141E3FB2617CD63A181A543BD27E973229C64`
 
-Pre-commit candidate script SHA-256:
+Revised candidate script SHA-256:
 
-`9D30663C6FA669BAF2C24722842726140C4771D0A624EA6EF365BDD9B263AF6E`
+`74E727F4F6E30B16A5D4DD1EEBCABE6762984EFA131F61C3D9DBDED3C800263C`
 
 ## Supersession relation
 
