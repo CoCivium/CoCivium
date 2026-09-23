@@ -276,7 +276,6 @@ $receipt = [ordered]@{
     DOWNLOADS_ROOT = $DownloadsRoot
     SINCE_UTC = $Since.ToUniversalTime().ToString('o')
     SCAN_MODE = $ScanMode
-    SCAN_MODE = $ScanMode
     FILES = $objects.Count
     HASHED = $hashed
     DUPLICATE_GROUPS = $duplicates.Count
