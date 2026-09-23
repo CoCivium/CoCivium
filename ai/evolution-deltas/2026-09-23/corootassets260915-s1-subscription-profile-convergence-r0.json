@@ -1,0 +1,99 @@
+{
+  "delta_id": "CoRootAssets260915-S1.GitHubEvolution.SubscriptionProfileConvergence.R0",
+  "session_id": "CoRootAssets260915-S1",
+  "observed_at": "2026-09-23T11:46:58Z",
+  "domain": [
+    "CoAll+",
+    "CoSession+",
+    "CoAutoEvo+/CoEvo+",
+    "CoOps+",
+    "CoIndex+"
+  ],
+  "subject": "concurrent session-subscription machinery on main versus PR #37 branch",
+  "relation": "independently landed main subscription profiles should be adapted and reconciled rather than duplicated by branch-local examples",
+  "epistemic_class": "OBSERVED",
+  "source_refs": [
+    "CoCivium/CoCivium@d3e7e6f2063bb9d3aa6a0954cd6bd219ea93edcd",
+    "ai/session-subscription-profiles.json@53c6fa0be899cda1ef21cff92ac75be2e2cdc819",
+    "CoCivium/CoCivium#37",
+    "scripts/CoEvoSubscriptionProfileAdapter.py@5121df1368cc83914fec393d3e43399433ec9799",
+    "schemas/coevo-pickup-receipt-v0.1.schema.json@fa52ff86311f3c4fc97c927bf5e9b63be1a70566"
+  ],
+  "target_surfaces": [
+    "CoCivium/CoCivium#37",
+    "scripts/CoEvoSubscriptionProfileAdapter.py",
+    "scripts/CoEvoSubscriptionReceiver.py",
+    "schemas/coevo-pickup-receipt-v0.1.schema.json"
+  ],
+  "mutation_class": "BRANCH_MUTATE",
+  "authority_ceiling": "PUBLIC_BRANCH_CANDIDATE_ONLY__NO_MAIN_MERGE_NO_RUNTIME_NO_CANON_NO_AUTHORITY_ELEVATION",
+  "confidentiality": "PUBLIC",
+  "materiality": "MATERIAL",
+  "confidence": 0.99,
+  "contradictions": [
+    "PR #37 initially carried a branch-local session subscription example; main independently landed a richer role-relative profile catalog before branch integration.",
+    "The branch therefore should consume/adapt main's profile catalog rather than preserve a competing example as a second source of subscription truth."
+  ],
+  "tests": [
+    "Bind main commit d3e7e6f2063bb9d3aa6a0954cd6bd219ea93edcd and exact profile blob 53c6fa0be899cda1ef21cff92ac75be2e2cdc819.",
+    "Verify adapter resolves one profile and rejects duplicate domain placement across temperatures.",
+    "Verify pickup receipts remain distinct from delivery and integration."
+  ],
+  "expected_benefit": "Reduce duplicate subscription semantics, allow PR #37 receiver mechanics to consume the independently landed main profile catalog, and turn cross-session convergence into explicit fan-in rather than newest-wins.",
+  "risks": [
+    "Exact runtime self-test of the branch scripts is not proven in this chat; the connected X2 Desktop Commander device is currently offline.",
+    "Profile adaptation does not prove any provider session picked up, integrated, or acted on the resulting subscription."
+  ],
+  "wake_conditions": [
+    "X2 or another authorized execution host becomes available for exact branch-script self-tests.",
+    "Main subscription profile schema changes materially.",
+    "PR #37 receives review feedback or collides with a stronger current receiver implementation."
+  ],
+  "supersedes": [
+    "branch-only ai/session-subscriptions.example.json"
+  ],
+  "next_receiver": "PR #37 reviewer / CoAll GitHub Evolution Fabric maintainers",
+  "subscription_context": null,
+  "pressure": {
+    "qualitative": "CONVERGENCE_REDUCES_DUPLICATE_CONTEXT_AND_ATTENTION_DEBT"
+  },
+  "energet": {
+    "qualitative": "PREFER_REUSE_OF_MAIN_PROFILE_CATALOG_OVER_PARALLEL_MAINTENANCE"
+  },
+  "want_projection": {
+    "objective": "fan in concurrent subscription work without authority expansion",
+    "priority": 1,
+    "preferred_transition": "DEDUPE"
+  },
+  "route": {
+    "required_capabilities": [
+      "GitHub current-head read",
+      "branch mutation",
+      "profile adaptation",
+      "receiver pickup evidence"
+    ],
+    "candidate_routes": [
+      "GitHub connector",
+      "local PS7/Python execution when an authorized host is available"
+    ],
+    "elected_route": "GitHub connector for branch fan-in; runtime execution deferred",
+    "route_reason": "current work is public branch reconciliation; X2 execution host is offline",
+    "route_morph_allowed": true,
+    "authority_preserved": true
+  },
+  "close_readiness": {
+    "lifecycle_projection": "WORKING",
+    "known_material_delta_externalized": true,
+    "foreground_session_required": false,
+    "tab_close_safe": null,
+    "global_work_complete": false
+  },
+  "nonclaims": [
+    "CONCURRENT_CONVERGENCE_NE_GLOBAL_PICKUP",
+    "PROFILE_CATALOG_NE_AUTHORITY",
+    "DELIVERY_NE_PICKUP",
+    "PICKUP_NE_INTEGRATION",
+    "BRANCH_NE_MAIN",
+    "RUNTIME_SELFTEST_UNPROVEN_IN_THIS_CHAT"
+  ]
+}
