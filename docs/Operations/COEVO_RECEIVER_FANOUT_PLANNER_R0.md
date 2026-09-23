@@ -154,3 +154,18 @@ The next gate after packet compilation is a proven receiver adapter plus deliver
 `DELIVERY_NE_PICKUP`  
 `COUNT_NE_GLOBAL_CENSUS`  
 `MERGED_NE_CANON`
+
+## Forward reconciliation with CoAllPulseField+
+
+Current main now provides [CoAllPulseField+ R0](../Architecture/COALL_PULSEFIELD_COTIME_R0.md) and [CoPulseSubscriptionRouter R0A](COPULSE_SUBSCRIPTION_ROUTER_R0A.md).
+
+Therefore the `subscription_proposals` emitted by this R0 planner are retained as historical canary/compatibility evidence only. They are no longer the preferred forward session-currentness transport.
+
+Forward route:
+
+`CoEvoDelta+ -> CoEvoToPublicCoPulseProjector R0 -> CoPulseSubscriptionRouter R0A -> receiver packet -> exact receiver readproof -> ACK cursor advance`
+
+The repository-route proposals in this planner remain useful for repository/surface fanout.
+
+`COPULSE_ROUTER_SUPERSEDES_DIRECT_COEVO_SESSION_SUBSCRIPTION_DELIVERY`  
+`HISTORICAL_CANARY_NE_ACTIVE_TRANSPORT`
