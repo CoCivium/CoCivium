@@ -1,0 +1,465 @@
+{
+  "schema": "CoCivium.CoAllEvolutionDomains.R1.v0.1",
+  "observed_at": "2026-09-23T11:13:26Z",
+  "state": "PUBLIC_BRANCH_CANDIDATE__NOT_CANON__NOT_RUNTIME",
+  "source_refs": [
+    "docs/Evolution/COALL_GITHUB_EVOLUTION_FABRIC_R0.md",
+    "schemas/coevo-delta-v0.1.schema.json",
+    "PRELAUNCH.md",
+    "docs/Launch/COCIVIUM_PUBLIC_PRELAUNCH_R0.md",
+    "docs/coterms/coterms-public-r0.json"
+  ],
+  "principles": [
+    "ALL_SESSIONS_CAN_CONTRIBUTE_NE_ALL_SESSIONS_MUTATE_ALL_SURFACES",
+    "CURRENTNESS_FOR_ALL_NE_CONTENT_FOR_ALL",
+    "DOMAIN_NE_REPOSITORY",
+    "REPOSITORY_NE_ONTOLOGY",
+    "RELATION_NE_AUTHORITY",
+    "README_NE_CANON",
+    "HIGHLIGHT_NE_CANON",
+    "HUMOUR_NE_EVIDENCE",
+    "MYTHIC_PROJECTION_NE_FACTUAL_CLAIM",
+    "PLAN_NE_PREDICTION",
+    "PREDICTION_NE_PRESENT_STATE",
+    "NO_NEWEST_WINS"
+  ],
+  "subscription_model": {
+    "rule": "Each session maintains receiver-relative HOT/WARM/DIGEST/SLEEP subscriptions rather than ingesting the whole project.",
+    "tiers": {
+      "HOT": "May actively research, propose, branch-mutate, challenge, and verify within authority ceiling.",
+      "WARM": "Track currentness and relation changes; contribute when materially relevant.",
+      "DIGEST": "Receive compact fan-in/currentness/highlight deltas only.",
+      "SLEEP": "Wake only on typed material triggers, contradictions, or explicit handoff."
+    },
+    "attention_relations": [
+      "CoRelevanceCone+",
+      "CoAttentionBudget+",
+      "CoAttentionDebt+",
+      "CoSessionDependencyArea+",
+      "CoCloseSafeLatency+"
+    ]
+  },
+  "domains": [
+    {
+      "id": "strategy",
+      "labels": [
+        "CoStrategy+",
+        "MasterPlan",
+        "CoPlan+"
+      ],
+      "relations": [
+        "DEPENDS_ON",
+        "ALTERNATIVE_TO",
+        "SUPERSEDES",
+        "WAKE_CONDITION",
+        "EXPECTED_BENEFIT",
+        "RISK"
+      ],
+      "candidate_homes": [
+        "CoCivium/MasterPlan",
+        "CoCivium/CoInsights",
+        "CoCivium/CoCivium"
+      ],
+      "default_mutation": "BRANCH_MUTATE"
+    },
+    {
+      "id": "insights",
+      "labels": [
+        "CoInsight+",
+        "CoTrove",
+        "ideation-fragment"
+      ],
+      "relations": [
+        "DERIVED_FROM",
+        "CHALLENGES",
+        "COMPLEMENTS",
+        "SEEDS",
+        "PROJECTS_TO"
+      ],
+      "candidate_homes": [
+        "CoCivium/CoInsights"
+      ],
+      "default_mutation": "BRANCH_MUTATE"
+    },
+    {
+      "id": "theory",
+      "labels": [
+        "CoTheoryAll+",
+        "CoStrawBe",
+        "hypothesis-ecology"
+      ],
+      "relations": [
+        "SUPPORTS",
+        "CONTRADICTS",
+        "QUALIFIES",
+        "FALSIFIES",
+        "PROJECTS_TO",
+        "TRANSLATION_LOSS"
+      ],
+      "candidate_homes": [
+        "CoCivium/CoInsights",
+        "CoCivium/CoCivium"
+      ],
+      "default_mutation": "REVIEW_CHALLENGE"
+    },
+    {
+      "id": "semantics",
+      "labels": [
+        "CoLex+",
+        "CoMeaning+",
+        "CoUse+",
+        "CoTerm",
+        "CoRelation"
+      ],
+      "relations": [
+        "ALIAS_OF",
+        "MEANS_FOR",
+        "USED_AS",
+        "DISAGREES_WITH",
+        "SUPERSEDES",
+        "DRIFTS_FROM",
+        "LOSSY_PROJECTION_OF"
+      ],
+      "candidate_homes": [
+        "CoCivium/GIBindex",
+        "CoCivium/CoCivium",
+        "CoCivium/CoInsights"
+      ],
+      "default_mutation": "BRANCH_MUTATE"
+    },
+    {
+      "id": "index",
+      "labels": [
+        "CoIndex+",
+        "CoAddressability+",
+        "CoPointer+"
+      ],
+      "relations": [
+        "POINTS_TO",
+        "RESOLVES_TO",
+        "INDEXES",
+        "DISCOVERED_BY",
+        "RECEIPT_FOR",
+        "CURRENTNESS_OF"
+      ],
+      "candidate_homes": [
+        "CoCivium/GIBindex",
+        "CoCivium/CoShareHub",
+        "CoCivium/CoCivium"
+      ],
+      "default_mutation": "BRANCH_MUTATE"
+    },
+    {
+      "id": "operations",
+      "labels": [
+        "CoOps+",
+        "CoWorkFabric+",
+        "CoDeed",
+        "CoOPrient+"
+      ],
+      "relations": [
+        "CAN_DO",
+        "MAY_DO",
+        "AUTHORIZED_TO",
+        "ACTS_ON",
+        "VERIFIES",
+        "ROLLS_BACK",
+        "WHO_ACTS_NEXT"
+      ],
+      "candidate_homes": [
+        "CoCivium/CoSteward",
+        "CoCivium/CoStacks",
+        "CoCivium/CoToolbelt",
+        "CoCivium/CoRails"
+      ],
+      "default_mutation": "BRANCH_MUTATE"
+    },
+    {
+      "id": "myth_metaphor_humour",
+      "labels": [
+        "CoMythOps+",
+        "CoMetaphor+",
+        "CoHumour+",
+        "CoMemeable+"
+      ],
+      "relations": [
+        "METAPHOR_FOR",
+        "MYTHIC_ATTRACTOR_FOR",
+        "JOKE_ABOUT",
+        "REMIXES",
+        "SATIRIZES",
+        "PROJECTION_OF"
+      ],
+      "candidate_homes": [
+        "CoCivium/CoInsights",
+        "CoCivium/CoCivium"
+      ],
+      "default_mutation": "PROPOSE",
+      "rails": [
+        "METAPHOR_NE_EQUIVALENCE",
+        "HUMOUR_NE_EVIDENCE",
+        "MYTHIC_PROJECTION_NE_FACTUAL_CLAIM"
+      ]
+    },
+    {
+      "id": "formal_substrate",
+      "labels": [
+        "CoPriMath+",
+        "CoGibberTru+",
+        "CoRelationalField+"
+      ],
+      "relations": [
+        "FORMALIZES",
+        "COMPRESSES",
+        "PROJECTS",
+        "LOSES_INFORMATION_FROM",
+        "TESTS",
+        "COUNTEREXAMPLE_TO"
+      ],
+      "candidate_homes": [
+        "CoCivium/CoInsights",
+        "CoCivium/CoCivium"
+      ],
+      "default_mutation": "REVIEW_CHALLENGE",
+      "rails": [
+        "FORMALIZATION_NE_VALIDATION",
+        "COMPRESSION_NE_TRUTH"
+      ]
+    },
+    {
+      "id": "ux_surface",
+      "labels": [
+        "RickBar+",
+        "CoDesktop+",
+        "CoSurface+",
+        "CoArtifactLink+",
+        "CoPickability+"
+      ],
+      "relations": [
+        "PROJECTS_TO",
+        "HIGHLIGHTS",
+        "HIDES_DETAIL_OF",
+        "ACTION_BINDS_TO",
+        "RECEIVER_RELATIVE_TO"
+      ],
+      "candidate_homes": [
+        "CoCivium/CoAura",
+        "CoCivium/CoCivium",
+        "CoCivium/CoInsights"
+      ],
+      "default_mutation": "BRANCH_MUTATE"
+    },
+    {
+      "id": "highlight_ecology",
+      "labels": [
+        "CoHighlight+",
+        "CoAsset+",
+        "CoExemplar+"
+      ],
+      "relations": [
+        "HIGHLIGHTS",
+        "DEMOTES",
+        "SUPERSEDES",
+        "READY_FOR",
+        "CHALLENGEABLE_BY",
+        "REUSABLE_BY"
+      ],
+      "candidate_homes": [
+        "CoCivium/CoCivium",
+        "CoCivium/CoInsights",
+        "CoCivium/CoShareHub"
+      ],
+      "default_mutation": "PROPOSE"
+    },
+    {
+      "id": "session_lifecycle",
+      "labels": [
+        "CoTwilight+",
+        "CoSessionSelfModel+",
+        "CoWorkSurvival+",
+        "CoFrontierReconstruction+"
+      ],
+      "relations": [
+        "HARVESTS",
+        "DONATES_TO",
+        "REHYDRATES",
+        "WAITS_FOR",
+        "CLOSE_READY_FOR",
+        "SUCCESSOR_OF"
+      ],
+      "candidate_homes": [
+        "CoCivium/CoSteward",
+        "CoCivium/CoCivium",
+        "CoCivium/CoInsights"
+      ],
+      "default_mutation": "BRANCH_MUTATE"
+    },
+    {
+      "id": "pressure_capacity",
+      "labels": [
+        "CoPressure+",
+        "CoEnerget+",
+        "CoSong+",
+        "CoBacklogEcology+"
+      ],
+      "relations": [
+        "PRESSURES",
+        "BOUNDS",
+        "OSCILLATES_WITH",
+        "QUEUES",
+        "BACKPRESSURES",
+        "SLEEPS",
+        "WAKES"
+      ],
+      "candidate_homes": [
+        "CoCivium/CoInsights",
+        "CoCivium/CoSteward",
+        "CoCivium/CoStacks"
+      ],
+      "default_mutation": "PROPOSE"
+    },
+    {
+      "id": "self_model_and_objective",
+      "labels": [
+        "CoSelfAwareness+",
+        "CoWant+",
+        "CoBecome+",
+        "CoRelevanceCone+"
+      ],
+      "relations": [
+        "AWARE_OF",
+        "WANTS_AS_OBJECTIVE",
+        "COULD_BECOME",
+        "SUBSCRIBES_TO",
+        "BOUNDED_BY",
+        "FALSIFIED_BY"
+      ],
+      "candidate_homes": [
+        "CoCivium/CoInsights",
+        "CoCivium/CoSteward"
+      ],
+      "default_mutation": "PROPOSE",
+      "rails": [
+        "SELF_AWARE_NE_SENTIENT",
+        "COWANT_NE_SENTIENCE_NE_CONSENT_NE_AUTHORITY"
+      ]
+    },
+    {
+      "id": "time_prediction",
+      "labels": [
+        "CoTime+",
+        "CoPredict+",
+        "CoPlan+"
+      ],
+      "relations": [
+        "VALID_AT",
+        "RECORDED_AT",
+        "PREDICTS",
+        "PLANS",
+        "EXPIRES_AT",
+        "WAKE_AT",
+        "COUNTERFACTUAL_TO"
+      ],
+      "candidate_homes": [
+        "CoCivium/CoFutures",
+        "CoCivium/CoInsights",
+        "CoCivium/MasterPlan"
+      ],
+      "default_mutation": "PROPOSE"
+    },
+    {
+      "id": "protocol_ecology",
+      "labels": [
+        "CoProtocolEcology+",
+        "CoMetaRelation+",
+        "MCP",
+        "A2A"
+      ],
+      "relations": [
+        "IMPLEMENTS",
+        "ADAPTS_TO",
+        "COMPLEMENTS",
+        "FORKS_FROM",
+        "MERGED_INTO",
+        "TRANSLATION_LOSS_BETWEEN"
+      ],
+      "candidate_homes": [
+        "CoCivium/CoInsights",
+        "CoCivium/CoToolbelt",
+        "CoCivium/CoCivium"
+      ],
+      "default_mutation": "PROPOSE"
+    },
+    {
+      "id": "execution_surface",
+      "labels": [
+        "CoExecutionSurface+",
+        "CoRouteElection+"
+      ],
+      "relations": [
+        "BEST_ROUTE_FOR",
+        "AVAILABLE_TO",
+        "AUTHORIZED_FOR",
+        "RECEIPT_CAPABLE_FOR",
+        "FALLBACK_TO"
+      ],
+      "candidate_homes": [
+        "CoCivium/CoSteward",
+        "CoCivium/CoToolbelt",
+        "CoCivium/CoCivium"
+      ],
+      "default_mutation": "PROPOSE"
+    },
+    {
+      "id": "public_release",
+      "labels": [
+        "CoPublic",
+        "CoGateway",
+        "CoExPublic"
+      ],
+      "relations": [
+        "PUBLIC_SAFE_PROJECTION_OF",
+        "REDACTS",
+        "RELEASES",
+        "WITHHOLDS",
+        "SUPERSEDES"
+      ],
+      "candidate_homes": [
+        "CoCivium/CoCivium",
+        "CoCivium/EntMent",
+        "CoCivium/CoAcademy"
+      ],
+      "default_mutation": "EFFECT_GATED"
+    },
+    {
+      "id": "rails_governance",
+      "labels": [
+        "CoRails+",
+        "CoAuthority+",
+        "CoConsent+"
+      ],
+      "relations": [
+        "BOUNDS",
+        "AUTHORIZES",
+        "REVOKES",
+        "APPEALS",
+        "REQUIRES",
+        "FORBIDS"
+      ],
+      "candidate_homes": [
+        "CoCivium/CoRails",
+        "CoCivium/CoSteward",
+        "CoCivium/CoCivium"
+      ],
+      "default_mutation": "REVIEW_CHALLENGE"
+    }
+  ],
+  "nonclaims": [
+    "NOT_CANON",
+    "NOT_GLOBAL_SESSION_ACK",
+    "NOT_AUTHORITY_TRANSFER",
+    "NOT_RUNTIME_ACTIVATION",
+    "NOT_REQUIREMENT_THAT_EVERY_SESSION_TOUCH_GITHUB",
+    "NOT_REQUIREMENT_THAT_EVERY_DOMAIN_HAVE_ONE_REPOSITORY"
+  ]
+}
