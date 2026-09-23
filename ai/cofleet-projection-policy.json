@@ -1,0 +1,38 @@
+{
+  "schema": "CoFleetProjection.Policy.v0.1-candidate",
+  "state": "UX_CONTRACT_READY__NO_LIVE_GLOBAL_FLEET_CENSUS",
+  "front_door_order": [
+    "CoHereNow",
+    "Meaning",
+    "NextSafeAction",
+    "EvidenceDrilldown"
+  ],
+  "foreground_only_when": [
+    "HUMAN_AUTHORITY_REQUIRED",
+    "CONFIDENTIALITY_COLLISION",
+    "EFFECT_LEASE_CONTENTION",
+    "CURRENTNESS_FAILURE",
+    "RECEIVER_PICKUP_FAILURE",
+    "DESTRUCTIVE_OR_IRREVERSIBLE_EDGE",
+    "MATERIAL_CONTRADICTION",
+    "BLOCKING_RUNTIME_DEGRADATION",
+    "RECOVERY_REQUIRED"
+  ],
+  "default_hidden": [
+    "RAW_PROVIDER_SESSION_IDS",
+    "RECEIPT_HASHES",
+    "ROUTINE_SUCCESS",
+    "RAW_WORKER_TELEMETRY",
+    "DORMANT_LOW_VALUE_CONTEXTS"
+  ],
+  "global_fleet_census_claimed": false,
+  "rickbar_runtime_binding": "UNPROVEN",
+  "next": "BIND_R4_TO_RICKBAR_AFTER_LOCAL_MACHINE_ROUTE_OR_OTHER_PROVEN_RUNTIME_ADAPTER",
+  "rails": [
+    "FLEET_PROJECTION_NE_FLEET_TOTALITY",
+    "COUNT_NE_GLOBAL_CENSUS",
+    "RICKBAR_FIRST__RECEIPTS_BEHIND",
+    "SUCCESS_NE_NOTIFICATION_REQUIRED",
+    "RICK_NE_HEARTBEAT"
+  ]
+}
