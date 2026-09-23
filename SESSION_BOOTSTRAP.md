@@ -279,3 +279,13 @@ The older direct session-subscription proposals in CoEvoReceiverFanoutPlanner R0
 `CANDIDATE_DELIVERED_CURSOR_NE_ACK_CURSOR`  
 `COPULSE_ROUTER_SUPERSEDES_DIRECT_COEVO_SESSION_SUBSCRIPTION_DELIVERY`
 
+
+## Receiver readproof convergence
+
+Use [CoReceiverReadproof R0](docs/Operations/CORECEIVER_READPROOF_R0.md) as the cross-transport lifecycle invariant, not as a competing CoPulse protocol. For PUBLIC CoPulse/session currentness, the executable specialization is [CoPulse Receiver Readproof R0B](docs/Operations/COPULSE_TWO_RECEIVER_R0B.md), which has bounded two-receiver `PICKED_UP` evidence on current main.
+
+The existing [CoEvo receiver-readproof schema](schemas/coevo-receiver-readproof-v0.1.schema.json) is the GitHub-landed packet profile and retains Git commit/blob delivery bindings.
+
+`PROTOCOL_NE_ONTOLOGY`  
+`PICKED_UP_NE_INTEGRATED`  
+`ACK_PROPOSAL_NE_ACK_COMMIT`
