@@ -289,6 +289,14 @@ A lifecycle transition may justify harvest, checkpointing, or a wake-condition u
 
 `NO_MATERIAL_DELTA => NO_COEVO_EMIT`
 
+Current main now also carries an explicit close-safe wake guard: global currentness, unrelated commits, other-session progress, spare capacity, curiosity, and pending work elsewhere are non-triggers unless a bound material relation to the source session becomes true.
+
+`GLOBAL_CURRENTNESS_DELTA_NE_SOURCE_SESSION_WAKE`
+
+`GENERIC_PING_NE_WAKE_PREDICATE`
+
+`WAKE_REQUIRES_BOUND_MATERIAL_RELATION`
+
 ## 12. Mutation defaults
 
 Before any write:
@@ -325,7 +333,9 @@ A review after this draft landed found that several items originally listed as f
 - loopback-only public-safe local-model R3 adapter, with the actual X2/Ollama canary still unrun;
 - CoFleetProjection+ / RickBar R4 UX and data contract;
 - deterministic CoFleetProjection compiler R4A, with native RickBar/CoDesktop receiver binding still unproven;
-- CoSessionSubscription+ R0 plus machine-readable HOT/WARM/DIGEST/SLEEP profiles, with receiver-specific delivery/control-plane binding still next.
+- CoSessionSubscription+ R0 plus machine-readable HOT/WARM/DIGEST/SLEEP profiles;
+- CoAllPulseField+ R0 forward-port plus deterministic PUBLIC-safe subscription router R0A, compiling receiver-specific packets from profile + last ACK cursor without advancing ACK or claiming pickup;
+- close-safe wake-guard policy, with provider-UI/runtime enforcement still unproven.
 
 These are available components, not proof of global receiver pickup, integration, CoEx, canon, or runtime adoption.
 
@@ -333,8 +343,9 @@ These are available components, not proof of global receiver pickup, integration
 
 ### Remaining bounded follow-ons
 
-- receiver-specific subscription delivery binding into virtual-session records / CoAllPulseField;
-- cross-repo currentness pulse / fan-in receipt format;
+- exact receiver pickup/readproof for CoPulse subscription packets, including independent receiver cursors before any ACK advance;
+- private/restricted pulse routing on private custody paths plus later live provider/RickBar receiver bridges;
+- cross-repo currentness fan-in/ACK receipt conventions beyond the current PUBLIC-safe packet compiler;
 - CoTwilight GitHub late-delta contract;
 - explicit CoPressure/CoEnerget/CoWant routing semantics/fields;
 - native RickBar/CoDesktop receiver binding for the landed CoFleet R4/R4A projection;
