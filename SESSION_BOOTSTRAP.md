@@ -119,3 +119,10 @@ The intended mature path is CoAllPulseField+/CoNodeMesh+ currentness, not human 
 ## Downloads / staging fallback
 
 When direct X2 routing is unavailable, use the bounded read-only [Downloads Orphan-Exposure Census](scripts/CoDownloadsOrphanExposureCensus.ps1) rather than uploading the Downloads payload into provider chat or public GitHub. It writes append-only evidence to CoFarm and performs no source mutation or network upload.
+
+## Session lifecycle / AutoEvo
+
+Sessions and machine clients should treat [CoSessionAutocycle+ R0](docs/Architecture/COSESSION_AUTOCYCLE_R0.md) and [the machine policy](ai/session-lifecycle-policy.json) as the current public-safe lifecycle/spawn policy. R0 is a shadow control plane: it may compute lifecycle projections, label signals, successor packets, dormant/wake decisions, and logical spawn contracts, but it does not imply provider-native session creation, title mutation, or closure.
+
+`SPAWN_NE_NEW_CHAT`  
+`AUTO_LABEL_SIGNAL_NE_PROVIDER_UI_MUTATION`
