@@ -54,6 +54,14 @@ Do **not** ingest the whole repository by default.
 
 Use role/topic/currentness filtering so GitHub reduces CoCarry+/CoPressure+ instead of becoming another context flood.
 
+
+## Encrypted/private staging
+
+Do not treat public encryption as a substitute for private custody. Unknown or private payloads route to encrypted private/offsite storage; GitHub receives only deliberately public-safe content or metadata-minimized public manifests. See [Encrypted Staging / Public Mirror Policy R0](docs/Architecture/ENCRYPTED_STAGING_PUBLIC_MIRROR_R0.md).
+
+`ENCRYPTED_NE_PUBLIC_SAFE`  
+`UNKNOWN_NE_PUBLIC`
+
 ## ChatGPT memory
 
 ChatGPT account-level memory is a convenience/cache, not CoAll operational custody or currentness.
