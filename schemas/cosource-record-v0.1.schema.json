@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/CoCivium/CoCivium/schemas/cosource-record-v0.1.schema.json",
+  "title": "CoSource record v0.1 candidate",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "source_id",
+    "source_class",
+    "custody_role",
+    "authority_roles",
+    "confidentiality",
+    "access",
+    "currentness",
+    "availability",
+    "observed_at",
+    "semantic_scope"
+  ],
+  "properties": {
+    "schema": {"const": "CoSourceRecord.v0.1"},
+    "source_id": {"type": "string", "minLength": 1, "maxLength": 256},
+    "source_class": {
+      "enum": [
+        "LOCAL_FILE","LOCAL_DIRECTORY","LOCAL_RUNTIME","LAN_NODE","DEVICE",
+        "GIT_REPOSITORY","GIT_OBJECT","PROVIDER_SESSION","PROJECT_SURFACE",
+        "WEBSITE","DOMAIN_DNS","MAILBOX_MESSAGE","SLACK_OBJECT","PUBLICATION",
+        "API","MCP_RESOURCE","DATABASE","MODEL_OUTPUT","HUMAN_REPORT",
+        "SCREENSHOT","ARTIFACT_PACKAGE","EXTERNAL_RESEARCH","OTHER"
+      ]
+    },
+    "locator": {"type": ["string","null"]},
+    "custody_role": {
+      "enum": ["NONE","WORKING","REPLICA","BACKUP","DURABLE_CUSTODY","PUBLIC_PROJECTION","UNKNOWN"]
+    },
+    "authority_roles": {
+      "type": "array",
+      "items": {"type": "string","minLength":1},
+      "uniqueItems": true
+    },
+    "confidentiality": {
+      "enum": ["PUBLIC","PUBLIC_SAFE","PRIVATE_COCIVIUM","PRIVATE_PARTICIPANT","RESTRICTED","UNKNOWN"]
+    },
+    "access": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["route","readable","writable","effect_capable"],
+      "properties": {
+        "route": {"type": "string","minLength":1},
+        "readable": {"type": ["boolean","null"]},
+        "writable": {"type": ["boolean","null"]},
+        "effect_capable": {"type": ["boolean","null"]},
+        "auth_state": {"type": "string"}
+      }
+    },
+    "currentness": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["method","state"],
+      "properties": {
+        "method": {"type": "string","minLength":1},
+        "state": {"enum":["CURRENT","STALE","UNKNOWN","UNAVAILABLE","NOT_APPLICABLE"]},
+        "expires_at": {"type": ["string","null"], "format":"date-time"}
+      }
+    },
+    "availability": {"enum":["AVAILABLE","UNAVAILABLE","UNKNOWN","DORMANT","RETIRED"]},
+    "observed_at": {"type": "string","format":"date-time"},
+    "valid_time": {"type": ["string","null"]},
+    "content_hash": {"type": ["string","null"]},
+    "version_ref": {"type": ["string","null"]},
+    "semantic_scope": {"type": "string","minLength":1},
+    "receiver_scope": {"type": ["string","null"]},
+    "provenance_parents": {
+      "type": "array",
+      "items": {"type":"string","minLength":1},
+      "uniqueItems": true
+    },
+    "fallback_sources": {
+      "type": "array",
+      "items": {"type":"string","minLength":1},
+      "uniqueItems": true
+    },
+    "privacy_boundary": {"type": ["string","null"]},
+    "retention_state": {"enum":["HOT","WARM","COOL","ARCHIVE","COMPOST","RETIRED","UNKNOWN"]},
+    "notes": {"type":"array","items":{"type":"string"}}
+  }
+}
