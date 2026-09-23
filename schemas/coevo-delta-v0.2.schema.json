@@ -1,0 +1,197 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/CoCivium/CoCivium/schemas/coevo-delta-v0.2.schema.json",
+  "title": "CoEvoDelta v0.2 candidate",
+  "description": "Additive evolution of CoEvoDelta v0.1 with pressure, energetics, bounded want, route, materiality, and close-readiness context. Candidate only; does not grant authority.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "delta_id",
+    "session_id",
+    "observed_at",
+    "domain",
+    "subject",
+    "relation",
+    "epistemic_class",
+    "source_refs",
+    "target_surfaces",
+    "mutation_class",
+    "authority_ceiling",
+    "confidentiality",
+    "materiality",
+    "next_receiver"
+  ],
+  "properties": {
+    "delta_id": { "type": "string", "minLength": 1 },
+    "session_id": { "type": "string", "minLength": 1 },
+    "observed_at": { "type": "string", "format": "date-time" },
+    "domain": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "subject": { "type": "string", "minLength": 1 },
+    "relation": { "type": "string", "minLength": 1 },
+    "epistemic_class": {
+      "enum": [
+        "OBSERVED",
+        "INFERRED",
+        "HYPOTHESIS",
+        "PREDICTED",
+        "PLANNED",
+        "PREFERRED",
+        "METAPHORICAL",
+        "MYTHIC",
+        "HUMOROUS",
+        "COUNTERFACTUAL",
+        "UNKNOWN"
+      ]
+    },
+    "source_refs": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "target_surfaces": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "mutation_class": {
+      "enum": [
+        "OBSERVE",
+        "PROPOSE",
+        "BRANCH_MUTATE",
+        "REVIEW_CHALLENGE",
+        "MERGE_LOW_EFFECT",
+        "EFFECT_GATED"
+      ]
+    },
+    "authority_ceiling": { "type": "string" },
+    "confidentiality": {
+      "enum": ["PUBLIC", "PRIVATE", "RESTRICTED", "UNKNOWN"]
+    },
+    "materiality": {
+      "enum": ["MATERIAL", "NONMATERIAL", "UNKNOWN"]
+    },
+    "confidence": {
+      "type": ["number", "null"],
+      "minimum": 0,
+      "maximum": 1
+    },
+    "contradictions": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "tests": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "expected_benefit": { "type": ["string", "null"] },
+    "risks": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "wake_conditions": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "supersedes": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "next_receiver": { "type": "string", "minLength": 1 },
+    "subscription_context": {
+      "type": ["string", "null"],
+      "description": "Pointer to a bounded subscription/currentness object if one governed this observation."
+    },
+    "pressure": {
+      "type": ["object", "null"],
+      "description": "Receiver-relative CoPressure+ projection. No universal scalar is implied.",
+      "properties": {
+        "backlog_velocity": { "type": ["number", "null"] },
+        "dependency_depth": { "type": ["number", "null"], "minimum": 0 },
+        "attention_debt": { "type": ["number", "null"], "minimum": 0 },
+        "context_surface": { "type": ["number", "null"], "minimum": 0 },
+        "coordination_friction": { "type": ["number", "null"], "minimum": 0 },
+        "externalization_latency": { "type": ["number", "null"], "minimum": 0 },
+        "failure_risk": { "type": ["number", "null"], "minimum": 0, "maximum": 1 },
+        "qualitative": { "type": ["string", "null"] }
+      },
+      "additionalProperties": true
+    },
+    "energet": {
+      "type": ["object", "null"],
+      "description": "CoEnerget+ resource-flow projection; more resource does not imply more authority.",
+      "properties": {
+        "compute": { "type": ["number", "null"], "minimum": 0 },
+        "human_attention": { "type": ["number", "null"], "minimum": 0 },
+        "wall_clock": { "type": ["number", "null"], "minimum": 0 },
+        "bandwidth": { "type": ["number", "null"], "minimum": 0 },
+        "storage": { "type": ["number", "null"], "minimum": 0 },
+        "verification_capacity": { "type": ["number", "null"], "minimum": 0 },
+        "recovery_capacity": { "type": ["number", "null"], "minimum": 0 },
+        "qualitative": { "type": ["string", "null"] }
+      },
+      "additionalProperties": true
+    },
+    "want_projection": {
+      "type": ["object", "null"],
+      "description": "Bounded CoWant+ objective/priority/wake vector; not a subjective-desire claim.",
+      "properties": {
+        "objective": { "type": ["string", "null"] },
+        "priority": { "type": ["number", "null"] },
+        "preferred_transition": {
+          "type": ["string", "null"],
+          "enum": [
+            "EXECUTE",
+            "PARALLELIZE",
+            "CHALLENGE",
+            "HARVEST",
+            "DEDUPE",
+            "COMPACT",
+            "PARK",
+            "EXTERNALIZE",
+            "CLOSE",
+            "WAKE_LATER",
+            null
+          ]
+        }
+      },
+      "additionalProperties": true
+    },
+    "route": {
+      "type": ["object", "null"],
+      "description": "CoRoute+ context. Route choice never grants authority.",
+      "properties": {
+        "required_capabilities": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "candidate_routes": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "elected_route": { "type": ["string", "null"] },
+        "route_reason": { "type": ["string", "null"] },
+        "route_morph_allowed": { "type": ["boolean", "null"] },
+        "authority_preserved": { "type": ["boolean", "null"] }
+      },
+      "additionalProperties": true
+    },
+    "close_readiness": {
+      "type": ["object", "null"],
+      "properties": {
+        "lifecycle_projection": { "type": ["string", "null"] },
+        "known_material_delta_externalized": { "type": ["boolean", "null"] },
+        "foreground_session_required": { "type": ["boolean", "null"] },
+        "tab_close_safe": { "type": ["boolean", "null"] },
+        "global_work_complete": { "type": ["boolean", "null"] }
+      },
+      "additionalProperties": true
+    },
+    "nonclaims": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  }
+}
