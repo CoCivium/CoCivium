@@ -85,3 +85,31 @@ Routine successful delivery belongs behind evidence drill-down. Foreground only 
 `BRANCH_NE_MAIN`  
 `LANDED_NE_INTEGRATED`  
 `MERGED_NE_CANON`
+
+## First bounded canary
+
+Synthetic PUBLIC-safe packet:
+
+`packet:50AC4F6AFA73BA9A8256C473`
+
+Exact packet path:
+
+`ai/receiver-inbox/github-r0/packet-50AC4F6AFA73BA9A8256C473.json`
+
+Proof:
+
+- exact precondition head: `538e258cb798d0b59589fde2dce92dde57ac919b`;
+- packet landing commit: `b0c95ad57c2191cd9e980733c42dc676be786395`;
+- landing commit parent exactly matched the precondition head;
+- Git blob SHA: `deeea8811c06ddce652b782fdaaad153ccf76f79`;
+- packet-core SHA-256: `50AC4F6AFA73BA9A8256C47316A788EF892F30F46E8B1BE3AB12EAB517241DA7`;
+- packet-file SHA-256: `EB1C45B1DDAF48E06A760D07A4E37EFCDF74F467FB75A7A714B4F034C6C8E93C`;
+- exact destination content readback at the landing commit: PASS;
+- durable receipt: `ai/receiver-receipts/github-r0/receipt-50AC4F6AFA73BA9A8256C473.json`;
+- receipt commit: `261f1b0f03eb8358d764efc73b96e46f9107721a`;
+- lifecycle state: `LANDED`;
+- receiver pickup: `UNPROVEN`.
+
+The next pickup contract is [CoReceiverReadproof R0](CORECEIVER_READPROOF_R0.md) with machine schema [coevo-receiver-readproof-v0.1](../../schemas/coevo-receiver-readproof-v0.1.schema.json).
+
+`LANDED_NE_PICKED_UP`
