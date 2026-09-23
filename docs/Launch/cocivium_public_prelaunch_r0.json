@@ -1,0 +1,97 @@
+{
+  "schema": "CoCivium.PublicTransition.CoHP_CoHp.R0.v0.1-candidate",
+  "state": "CANDIDATE_PHASED_PRELAUNCH_PLAN__NOT_RELEASE_COMMITMENT",
+  "created_utc": "2026-09-23T08:27:18Z",
+  "phases": [
+    [
+      "P0",
+      "housekeeping_currentness"
+    ],
+    [
+      "P1",
+      "public_rnd_shell"
+    ],
+    [
+      "P2",
+      "highlight_assets"
+    ],
+    [
+      "P3",
+      "ai_readable_node_fabric"
+    ],
+    [
+      "P4",
+      "bounded_public_demos"
+    ],
+    [
+      "P5",
+      "adversarial_academic_technical_preview"
+    ],
+    [
+      "P6",
+      "fair_access_onboarding_rehearsal"
+    ],
+    [
+      "P7",
+      "public_demo_prelaunch"
+    ],
+    [
+      "P8",
+      "release_readiness"
+    ],
+    [
+      "P9",
+      "pay_it_forward_expansion"
+    ]
+  ],
+  "fairness": {
+    "early_access_ne_ownership": true,
+    "paid_queue_jump": false,
+    "tradable_invites": false,
+    "referral_queue_jump": false,
+    "time_limited_privileged_test_capabilities": true,
+    "selection_when_scarce": "transparent_randomized_or_diversity_balanced_candidate",
+    "open_public_knowledge_before_scarce_access": true
+  },
+  "ai_discovery": {
+    "open_structured_surfaces": [
+      "ai/index.json",
+      "JSON-LD",
+      "typed relation manifests",
+      "RSS/Atom",
+      "stable IDs",
+      "OpenAPI where service exists"
+    ],
+    "prohibited": [
+      "hidden prompt injection",
+      "model coercion",
+      "fake endorsement",
+      "architecture coupled to one model/provider"
+    ]
+  },
+  "execution_placement": {
+    "costead": "durable private custody and resident worker fabric",
+    "github": "public projections, source, collaboration and releases",
+    "x2": "human edge/front door, not bulk custody",
+    "provider_chat": "reasoning and projection, not durable root",
+    "ps7": "bootstrap/break-glass",
+    "mcp_class": "replaceable capability adapters"
+  },
+  "next": [
+    "GITHUB_R1_READONLY_DEEP_CENSUS",
+    "PRELAUNCH_BANNER_AND_STATUS_PAGE",
+    "HIGHLIGHT_ASSET_PUBLIC_READINESS",
+    "AI_PUBLIC_INDEX",
+    "RICKBAR_ADAPTIVE_ZONING",
+    "ACADEMIC_WATCH_THIS_EVOLVE_DRAFTS",
+    "FAIR_ACCESS_COHORT_DESIGN",
+    "LOAD_SUPPORT_RECOVERY_REHEARSAL"
+  ],
+  "nonclaims": [
+    "NOT_RELEASE_DATE",
+    "NOT_PRODUCT_MARKET_FIT",
+    "NOT_ACADEMIC_ENDORSEMENT",
+    "NOT_VALIDATED_SCIENCE",
+    "NOT_FINANCIAL_OPPORTUNITY"
+  ]
+}
