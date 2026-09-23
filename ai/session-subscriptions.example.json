@@ -1,0 +1,82 @@
+{
+  "subscriber_id": "EXAMPLE_CAPABLE_COALL_SESSION",
+  "observed_at": "2026-09-23T11:28:24Z",
+  "authority_ceiling": "ADVISORY_OR_BRANCH_MUTATE_ONLY",
+  "confidentiality": "PUBLIC",
+  "subscriptions": [
+    {
+      "domain": "CoPressure+/CoEnerget+",
+      "temperature": "HOT",
+      "purpose": "Manage context pressure and resource-flow tradeoffs",
+      "receiver_need": "Material pressure shifts and close-readiness effects",
+      "target_surfaces": ["CoCivium", "CoStacks", "CoSteward"],
+      "max_context_budget": 8
+    },
+    {
+      "domain": "CoTwilight+",
+      "temperature": "HOT",
+      "purpose": "Externalization, successor readiness, and close-safe lifecycle",
+      "receiver_need": "Material lifecycle deltas and wake predicates",
+      "target_surfaces": ["CoCivium", "CoSteward", "CoStacks"],
+      "max_context_budget": 8
+    },
+    {
+      "domain": "CoRoute+/CoCapabilityMesh+/CoRouteMorph+",
+      "temperature": "WARM",
+      "purpose": "Route deeds to appropriate capabilities without authority expansion",
+      "receiver_need": "Route failures, new proven capabilities, and authority-boundary changes",
+      "target_surfaces": ["CoCivium", "CoToolbelt", "CoStacks", "CoSteward"],
+      "max_context_budget": 6
+    },
+    {
+      "domain": "CoIndex+/CoLex+/CoGibberTru+/CoPriMath+",
+      "temperature": "DIGEST",
+      "purpose": "Receive compact semantic/index/formalization movement",
+      "receiver_need": "Only material changes relevant to this session's role",
+      "target_surfaces": ["GIBindex", "CoCivium", "CoInsights"],
+      "max_context_budget": 4
+    },
+    {
+      "domain": "RickBar+/CoUX+/CoHumour+/CoHighlight+",
+      "temperature": "SLEEP",
+      "purpose": "Wake only when a material receiver-facing opportunity intersects the session role",
+      "receiver_need": "Exception-only",
+      "target_surfaces": ["CoCivium", "CoAura", "CoInsights"],
+      "max_context_budget": 2
+    }
+  ],
+  "cursors": [
+    {
+      "surface": "CoCivium/CoCivium:main",
+      "cursor_kind": "GIT_COMMIT",
+      "cursor_value": "e43ed6670936a152a139ce6c1fe9dd96ff7bb278",
+      "observed_at": "2026-09-23T11:27:37Z",
+      "source_ref": "https://github.com/CoCivium/CoCivium/commit/e43ed6670936a152a139ce6c1fe9dd96ff7bb278",
+      "receiver_state": "READ"
+    }
+  ],
+  "material_delta_policy": {
+    "emit_on_material_change_only": true,
+    "dedupe_before_emit": true,
+    "quiet_when_no_material_delta": true
+  },
+  "pressure_policy": {
+    "prefer_digest_over_full_ingest": true,
+    "externalize_before_context_overflow": true,
+    "human_attention_is_exception_path": true
+  },
+  "wake_conditions": [
+    "MATERIAL_DOMAIN_DELTA",
+    "CURRENTNESS_CURSOR_STALE",
+    "SUCCESSOR_RESUME_FAILURE",
+    "AUTHORITY_OR_EFFECT_GATE_CHANGE",
+    "MATERIAL_CROSS_DOMAIN_COLLISION"
+  ],
+  "nonclaims": [
+    "EXAMPLE_NE_GLOBAL_DEFAULT",
+    "SUBSCRIPTION_NE_AUTHORITY",
+    "CURSOR_NE_PICKUP_PROOF",
+    "SLEEP_NE_IRRELEVANT_FOREVER",
+    "CURRENTNESS_FOR_ALL_NE_CONTENT_FOR_ALL"
+  ]
+}
