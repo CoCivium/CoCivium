@@ -37,9 +37,14 @@
     "epistemic_class": {
       "enum": [
         "OBSERVED",
+        "INFERRED",
+        "HYPOTHESIS",
         "PREDICTED",
         "PLANNED",
         "PREFERRED",
+        "METAPHORICAL",
+        "MYTHIC",
+        "HUMOROUS",
         "COUNTERFACTUAL",
         "UNKNOWN"
       ]
@@ -110,7 +115,12 @@
       "type": "string"
     },
     "confidentiality": {
-      "type": "string"
+      "enum": [
+        "PUBLIC",
+        "PRIVATE",
+        "RESTRICTED",
+        "UNKNOWN"
+      ]
     },
     "topics": {
       "type": "array",
