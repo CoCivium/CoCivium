@@ -1,0 +1,47 @@
+{
+  "schema": "CoAll.SessionBootstrap.v0.1-candidate",
+  "state": "PUBLIC_CURRENTNESS_BOOTSTRAP__NOT_GLOBAL_SESSION_PICKUP_PROOF",
+  "updated_utc": "2026-09-23T09:14:23Z",
+  "bootstrap_repository": "CoCivium/CoCivium",
+  "default_branch": "main",
+  "read_order": [
+    "README.md",
+    "PRELAUNCH.md",
+    "SESSION_BOOTSTRAP.md",
+    "docs/Launch/COCIVIUM_PUBLIC_PRELAUNCH_R0.md"
+  ],
+  "rules": [
+    "GITHUB_NE_CUSTODY_ROOT",
+    "MAIN_NE_CANON",
+    "PUBLIC_NE_VALIDATED",
+    "ALL_SESSIONS_NE_ALL_STATE",
+    "MODEL_MEMORY_NE_SOURCE_OF_TRUTH",
+    "CHAT_MEMORY_NE_EVENT_BUS",
+    "MODEL_NE_AUTHORITY",
+    "RICK_NE_EVENT_BUS"
+  ],
+  "routing": {
+    "github": [
+      "public-safe currentness",
+      "shared architecture",
+      "machine twins",
+      "reviewable candidates",
+      "public collaboration"
+    ],
+    "costead": [
+      "private durable state",
+      "receipts",
+      "high-volume work",
+      "private node fabric"
+    ],
+    "provider_chat": [
+      "reasoning",
+      "projection",
+      "coordination"
+    ],
+    "local_ai": [
+      "bounded worker roles under capability/authority contracts"
+    ]
+  },
+  "existing_session_limitation": "NO_AUTOMATIC_PICKUP_WITHOUT_BRIDGE_OR_RECEIVER_PATH"
+}
