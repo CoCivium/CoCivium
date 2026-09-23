@@ -345,6 +345,9 @@ A review after this draft landed found that several items originally listed as f
 - CoAllPulseField+ R0 forward-port plus deterministic PUBLIC-safe subscription router R0A;
 - bounded R0B synthetic two-receiver execution proving receiver-relative `PICKED_UP` for two exact role-specific packets with distinct processes/profiles/packet hashes and no shared ACK mutation;
 - bounded R0C synthetic receiver-local ACK chaining and role-specific backfill replay, with readproof-before-ACK, distinct ACK chains, independent cursor advance, and no shared global ACK mutation;
+- bounded R0D DIGEST-only compaction with explicit loss reporting, HOT/WARM exact passthrough, exact source replay, no source deletion, and no ACK mutation;
+- bounded R0E receiver-capacity-derived DIGEST budget election across LIGHT/MODERATE/HIGH/SATURATED cases, with exact replay for nonzero budgets and hold-not-drop at zero capacity;
+- bounded R0F freshness/staleness gating plus divergent multi-receiver capacity election on one shared pulse field, preserving independent ACK state and holding stale pressure samples before budget election;
 - close-safe wake-guard and output-quiescence policies, with provider-UI/runtime enforcement still unproven.
 
 These are available components, not proof of global receiver pickup, integration, CoEx, canon, or runtime adoption.
@@ -365,11 +368,25 @@ The CoPulse R0B/R0C evidence is intentionally narrow:
 
 `PUBLIC_PACKET_NE_PRIVATE_BUS`
 
+The R0D-R0F pressure/compaction evidence is also bounded:
+
+`EXPLICIT_LOSS_NE_ZERO_LOSS`
+
+`COMPACTION_NE_DELETION`
+
+`FRESHNESS_NE_TRUTH`
+
+`FRESH_SAMPLE_NE_CAPACITY_ACCURACY_PROOF`
+
+`DIVERGENT_BUDGETS_NE_INCONSISTENCY`
+
+`INDEPENDENT_ACK_NE_GLOBAL_ACK`
+
 ### Remaining bounded follow-ons
 
-- advance from bounded synthetic R0B/R0C into CoPressure-aware DIGEST compaction with explicit loss reporting and exact replay checks;
+- bind receiver-capacity provenance to a live/real receiver source after the bounded R0F freshness and multi-receiver canary;
 - private/restricted pulse routing on private custody paths plus later live provider/RickBar receiver bridges;
-- cross-failure-domain and non-container receiver evidence before generalizing R0B/R0C beyond the exact synthetic canaries;
+- cross-failure-domain and non-container receiver evidence before generalizing the bounded R0B-R0F synthetic canaries;
 - cross-repo currentness fan-in/ACK receipt conventions beyond the current receiver-local synthetic ACK chains;
 - CoTwilight GitHub late-delta contract;
 - explicit CoPressure/CoEnerget/CoWant routing semantics/fields;
