@@ -1,0 +1,47 @@
+{
+  "schema": "CoSessionAutocycle.Policy.v0.1-candidate",
+  "state": "SHADOW_CONTROL_PLANE__NO_PROVIDER_SESSION_MUTATION",
+  "updated_utc": "2026-09-23T10:30:23Z",
+  "auto_allowed": [
+    "LIFECYCLE_PROJECTION",
+    "LABEL_SIGNAL",
+    "DURABLE_LEDGER_UPDATE",
+    "SUCCESSOR_PACKET_COMPILE",
+    "DEDUPE",
+    "DORMANT_MIGRATION",
+    "WAKE_CONDITION_EMIT",
+    "LOGICAL_SPAWN_CONTRACT",
+    "READONLY_CHALLENGER_OR_VERIFIER_REQUEST",
+    "PUBLIC_SAFE_GITHUB_CURRENTNESS"
+  ],
+  "shadow_only": [
+    "PROVIDER_SESSION_CREATE",
+    "PROVIDER_VISIBLE_TITLE_MUTATION",
+    "PROVIDER_TAB_CLOSE",
+    "AUTONOMOUS_PUBLIC_OUTREACH",
+    "IRREVERSIBLE_NODE_RESTRUCTURE",
+    "AUTHORITY_ELEVATION"
+  ],
+  "preferred_spawn_order": [
+    "DEDUPE",
+    "DONATE",
+    "SHADOW",
+    "CHALLENGE",
+    "LOGICAL_RESERVE",
+    "MATERIALIZE"
+  ],
+  "model_policy": {
+    "local_workers_preferred_for": [
+      "classification",
+      "dedupe",
+      "semantic_compaction",
+      "contradiction_search",
+      "label_projection",
+      "dormant_wake_classification",
+      "tests",
+      "readonly_verification"
+    ],
+    "model_is_authority": false
+  },
+  "next": "R1_SHADOW_SESSION_LEDGER_AND_LABEL_SIGNAL_COMPILER"
+}

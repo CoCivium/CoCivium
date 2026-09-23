@@ -1,0 +1,155 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/CoCivium/CoCivium/schemas/cospawn-contract-v0.1.schema.json",
+  "title": "CoSpawn contract v0.1 candidate",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "spawn_id",
+    "purpose",
+    "parent_identity",
+    "role",
+    "scope",
+    "authority_ceiling",
+    "effect_classes",
+    "budget",
+    "lease",
+    "idempotency_key",
+    "collision_domain",
+    "receiver",
+    "success_condition",
+    "stop_condition",
+    "recovery_pointer",
+    "retirement_condition",
+    "currentness"
+  ],
+  "properties": {
+    "spawn_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "purpose": {
+      "type": "string",
+      "minLength": 1
+    },
+    "parent_identity": {
+      "type": "string",
+      "minLength": 1
+    },
+    "role": {
+      "enum": [
+        "WORKER",
+        "CHALLENGER",
+        "VERIFIER",
+        "OBSERVER",
+        "SHADOW",
+        "SUCCESSOR",
+        "RECOVERY",
+        "TRANSLATOR",
+        "PROJECTION_COMPILER",
+        "RESEARCH_DONOR",
+        "FAILURE_DOMAIN_REPLICA",
+        "QUIESCENT_RESERVE"
+      ]
+    },
+    "scope": {
+      "type": "string",
+      "minLength": 1
+    },
+    "input_bindings": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "authority_ceiling": {
+      "type": "string",
+      "minLength": 1
+    },
+    "effect_classes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "budget": {
+      "type": "object"
+    },
+    "lease": {
+      "type": "object"
+    },
+    "idempotency_key": {
+      "type": "string",
+      "minLength": 1
+    },
+    "collision_domain": {
+      "type": "string",
+      "minLength": 1
+    },
+    "receiver": {
+      "type": "string",
+      "minLength": 1
+    },
+    "success_condition": {
+      "type": "string",
+      "minLength": 1
+    },
+    "stop_condition": {
+      "type": "string",
+      "minLength": 1
+    },
+    "checkpoint": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "recovery_pointer": {
+      "type": "string",
+      "minLength": 1
+    },
+    "failure_domain": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "handoff_rule": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "retirement_condition": {
+      "type": "string",
+      "minLength": 1
+    },
+    "provenance": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "currentness": {
+      "type": "string",
+      "minLength": 1
+    },
+    "uncertainty": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "materialization_state": {
+      "enum": [
+        "LOGICAL_ONLY",
+        "SHADOW",
+        "MATERIALIZED",
+        "QUIESCENT",
+        "COMPLETE",
+        "RETIRED",
+        "BLOCKED"
+      ]
+    }
+  }
+}
