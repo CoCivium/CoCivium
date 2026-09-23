@@ -1,0 +1,163 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/CoCivium/CoCivium/schemas/coevo-fanout-plan-v0.1.schema.json",
+  "title": "CoEvo receiver-relative fanout plan v0.1 candidate",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "planner","coverage","route_proposals","subscription_proposals","unrouted",
+    "rejected_input_deltas","currentness_flags","rickbar_projection","effects",
+    "next","nonclaims","plan_sha256","inputs"
+  ],
+  "properties": {
+    "planner": {"const": "CoEvoReceiverFanoutPlanner.R0"},
+    "coverage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "input_deltas","accepted_deltas","rejected_input_deltas","route_proposals",
+        "subscription_profiles","subscription_proposals","sleep_relations","unrouted_deltas",
+        "bound_receiver_heads","source_current_head_bound","global_fleet_census"
+      ],
+      "properties": {
+        "input_deltas":{"type":"integer","minimum":0},
+        "accepted_deltas":{"type":"integer","minimum":0},
+        "rejected_input_deltas":{"type":"integer","minimum":0},
+        "route_proposals":{"type":"integer","minimum":0},
+        "subscription_profiles":{"type":"integer","minimum":0},
+        "subscription_proposals":{"type":"integer","minimum":0},
+        "sleep_relations":{"type":"integer","minimum":0},
+        "unrouted_deltas":{"type":"integer","minimum":0},
+        "bound_receiver_heads":{"type":"integer","minimum":0},
+        "source_current_head_bound":{"type":"boolean"},
+        "global_fleet_census":{"const":"UNPROVEN"}
+      }
+    },
+    "route_proposals": {
+      "type":"array",
+      "items": {
+        "type":"object",
+        "additionalProperties": false,
+        "required": [
+          "route_id","delta_id","matched_domains","lane_policies","unmatched_domains_on_delta",
+          "receiver_repo","receiver_visibility","receiver_roles","candidate_surfaces","subject",
+          "relation","object","typed_operation","epistemic_class","mutation_class","authority_ceiling",
+          "confidentiality","public_safety","source_currentness","observed_base_ref","target_currentness",
+          "bound_target_head","proposed_action","route_state","holds","rickbar_attention_triggers",
+          "evidence_refs","receiver_readproof_gate","next_gate","effects","preferred_by_subscription_profiles"
+        ],
+        "properties": {
+          "route_id":{"type":"string","pattern":"^route:[0-9A-F]{20}$"},
+          "delta_id":{"type":"string"},
+          "matched_domains":{"type":"array","items":{"type":"string"}},
+          "lane_policies":{"type":"array","items":{"type":"string"}},
+          "unmatched_domains_on_delta":{"type":"array","items":{"type":"string"}},
+          "receiver_repo":{"type":"string"},
+          "receiver_visibility":{"type":"string"},
+          "receiver_roles":{"type":"array","items":{"type":"string"}},
+          "candidate_surfaces":{"type":"array","items":{"type":"string"}},
+          "subject":{},"relation":{},"object":{},"typed_operation":{},"epistemic_class":{},
+          "mutation_class":{},"authority_ceiling":{},"confidentiality":{},"public_safety":{},
+          "source_currentness":{"type":"string"},"observed_base_ref":{},"target_currentness":{"type":"string"},
+          "bound_target_head":{},"proposed_action":{"type":"string"},"route_state":{"type":"string"},
+          "holds":{"type":"array","items":{"type":"string"}},
+          "rickbar_attention_triggers":{"type":"array","items":{"type":"string"}},
+          "evidence_refs":{"type":"array","items":{"type":"string"}},
+          "receiver_readproof_gate":{},"next_gate":{},
+          "preferred_by_subscription_profiles":{"type":"array","items":{"type":"string"}},
+          "effects": {
+            "type":"object","additionalProperties":false,
+            "required":["target_mutation","branch_creation","publication","receiver_pickup_claim"],
+            "properties": {
+              "target_mutation":{"const":0},"branch_creation":{"const":0},
+              "publication":{"const":0},"receiver_pickup_claim":{"const":0}
+            }
+          }
+        }
+      }
+    },
+    "subscription_proposals": {
+      "type":"array",
+      "items": {
+        "type":"object","additionalProperties":false,
+        "required": [
+          "subscription_id","delta_id","profile_id","temperature","matched_domains","delivery_class",
+          "delivery_state","confidentiality","public_safety","required_instance_gates","preferred_repos",
+          "effects","nonclaims"
+        ],
+        "properties": {
+          "subscription_id":{"type":"string","pattern":"^sub:[0-9A-F]{20}$"},
+          "delta_id":{"type":"string"},"profile_id":{"type":"string"},
+          "temperature":{"enum":["HOT","WARM","DIGEST"]},
+          "matched_domains":{"type":"array","items":{"type":"string"}},
+          "delivery_class":{"enum":["CURRENT_DELTA_PACKET","DEPENDENCY_OR_RELEVANCE_PACKET","COMPACT_DIGEST_ONLY"]},
+          "delivery_state":{"const":"PROFILE_INTEREST_ONLY__INSTANCE_UNBOUND"},
+          "confidentiality":{"type":"string"},"public_safety":{"type":"string"},
+          "required_instance_gates":{"type":"array","items":{"type":"string"}},
+          "preferred_repos":{"type":"array","items":{"type":"string"}},
+          "effects": {
+            "type":"object","additionalProperties":false,
+            "required":["provider_session_push","session_mutation","authority_transfer","receiver_pickup_claim"],
+            "properties": {
+              "provider_session_push":{"const":0},"session_mutation":{"const":0},
+              "authority_transfer":{"const":0},"receiver_pickup_claim":{"const":0}
+            }
+          },
+          "nonclaims":{"type":"array","items":{"type":"string"}}
+        }
+      }
+    },
+    "unrouted":{"type":"array","items":{"type":"object"}},
+    "rejected_input_deltas":{"type":"array","items":{"type":"object"}},
+    "currentness_flags":{"type":"array","items":{"type":"object"}},
+    "rickbar_projection": {
+      "type":"object","additionalProperties":false,
+      "required":["state","coverage","foreground_route_ids","hidden_routine_route_ids","human_blockers","exceptions","background_debt","runtime_binding","front_door_order","nonclaims"],
+      "properties": {
+        "state":{"const":"EXCEPTION_FIRST_ROUTE_PLAN__NOT_RUNTIME_BOUND"},
+        "coverage":{"type":"object"},
+        "foreground_route_ids":{"type":"array","items":{"type":"string"}},
+        "hidden_routine_route_ids":{"type":"array","items":{"type":"string"}},
+        "human_blockers":{"type":"array","items":{"type":"object"}},
+        "exceptions":{"type":"array","items":{"type":"object"}},
+        "background_debt":{"type":"array","items":{"type":"object"}},
+        "runtime_binding":{"const":"UNPROVEN"},
+        "front_door_order":{"type":"array","items":{"type":"string"}},
+        "nonclaims":{"type":"array","items":{"type":"string"}}
+      }
+    },
+    "effects": {
+      "type":"object","additionalProperties":false,
+      "required":["target_mutations","profile_deliveries_executed","provider_session_pushes","branches_created","pull_requests_created","publications","receiver_pickup_claims","canon_changes"],
+      "properties": {
+        "target_mutations":{"const":0},"profile_deliveries_executed":{"const":0},
+        "provider_session_pushes":{"const":0},"branches_created":{"const":0},
+        "pull_requests_created":{"const":0},"publications":{"const":0},
+        "receiver_pickup_claims":{"const":0},"canon_changes":{"const":0}
+      }
+    },
+    "next":{"type":"string"},
+    "nonclaims":{"type":"array","items":{"type":"string"}},
+    "plan_sha256":{"type":"string","pattern":"^[0-9A-F]{64}$"},
+    "inputs": {
+      "type":"object","additionalProperties":false,
+      "required":["coevo","evolution_lanes","repo_role_map","subscription_profiles","receiver_heads"],
+      "properties": {
+        "coevo":{"$ref":"#/$defs/inputMeta"},
+        "evolution_lanes":{"$ref":"#/$defs/inputMeta"},
+        "repo_role_map":{"$ref":"#/$defs/inputMeta"},
+        "subscription_profiles":{"$ref":"#/$defs/inputMeta"},
+        "receiver_heads":{"anyOf":[{"type":"null"},{"$ref":"#/$defs/inputMeta"}]}
+      }
+    }
+  },
+  "$defs": {
+    "inputMeta": {
+      "type":"object","additionalProperties":false,"required":["sha256","bytes"],
+      "properties": {
+        "sha256":{"type":"string","pattern":"^[0-9A-F]{64}$"},
+        "bytes":{"type":"integer","minimum":0}
+      }
+    }
+  }
+}
