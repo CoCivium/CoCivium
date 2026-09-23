@@ -1,0 +1,229 @@
+{
+  "schema": "CoCivium.CoAllRepoRoleCurrentness.R1.v0.1",
+  "observed_at": "2026-09-23T11:13:26Z",
+  "state": "OBSERVED_GITHUB_REPOSITORY_MAP__MAY_STALE_AFTER_OBSERVATION",
+  "source": "GitHub connector list_repositories(owner=CoCivium)",
+  "repo_count": 21,
+  "repositories": [
+    {
+      "repo": "CoCivium/CoCivium",
+      "visibility": "public",
+      "default_branch": "main",
+      "role": [
+        "public_front_door",
+        "shared_currentness",
+        "bootstrap",
+        "integration",
+        "schemas",
+        "evolution_contract"
+      ]
+    },
+    {
+      "repo": "CoCivium/.github",
+      "visibility": "private",
+      "default_branch": "main",
+      "role": [
+        "account_meta",
+        "repository_meta"
+      ]
+    },
+    {
+      "repo": "CoCivium/CoShareHub",
+      "visibility": "private",
+      "default_branch": "main",
+      "role": [
+        "navigation",
+        "discovery",
+        "coindex_projection",
+        "receipts"
+      ]
+    },
+    {
+      "repo": "CoCivium/CoSteward",
+      "visibility": "private",
+      "default_branch": "main",
+      "role": [
+        "operations",
+        "runbooks",
+        "triage",
+        "private_stewardship"
+      ]
+    },
+    {
+      "repo": "CoCivium/CoPolitic-site",
+      "visibility": "public",
+      "default_branch": "main",
+      "role": [
+        "political_public_scaffold"
+      ],
+      "rails": [
+        "ORDINARY_EVOLUTION_NE_POLITICAL_CONTENT_AUTHORITY"
+      ]
+    },
+    {
+      "repo": "CoCivium/MasterPlan",
+      "visibility": "private",
+      "default_branch": "main",
+      "role": [
+        "strategy",
+        "planning",
+        "reviewable_roadmaps"
+      ]
+    },
+    {
+      "repo": "CoCivium/GIBindex",
+      "visibility": "private",
+      "default_branch": "main",
+      "role": [
+        "term_index",
+        "alias_lineage",
+        "deprecation",
+        "semantic_addressability"
+      ]
+    },
+    {
+      "repo": "CoCivium/CoBusMirror",
+      "visibility": "public",
+      "default_branch": "main",
+      "role": [
+        "legacy_public_mirror_lineage"
+      ],
+      "rails": [
+        "MIRROR_NE_CURRENTNESS_AUTHORITY"
+      ]
+    },
+    {
+      "repo": "CoCivium/EntMent",
+      "visibility": "public",
+      "default_branch": "main",
+      "role": [
+        "ai_first_public_beacon",
+        "public_exemplar"
+      ]
+    },
+    {
+      "repo": "CoCivium/CoFutures",
+      "visibility": "private",
+      "default_branch": "main",
+      "role": [
+        "futures",
+        "probabilistic_ledger",
+        "wake_conditions"
+      ]
+    },
+    {
+      "repo": "CoCivium/CoLegalVault",
+      "visibility": "private",
+      "default_branch": "main",
+      "role": [
+        "restricted_legal_vault"
+      ]
+    },
+    {
+      "repo": "CoCivium/CoCrownJewelVault",
+      "visibility": "private",
+      "default_branch": "main",
+      "role": [
+        "restricted_crown_jewel_vault"
+      ]
+    },
+    {
+      "repo": "CoCivium/CoToolbelt",
+      "visibility": "private",
+      "default_branch": "main",
+      "role": [
+        "reusable_tools",
+        "scripts",
+        "utilities"
+      ]
+    },
+    {
+      "repo": "CoCivium/CoTrustedWindow",
+      "visibility": "private",
+      "default_branch": "main",
+      "role": [
+        "trusted_human_window"
+      ]
+    },
+    {
+      "repo": "CoCivium/CoInsights",
+      "visibility": "private",
+      "default_branch": "main",
+      "role": [
+        "insight_atoms",
+        "theory_seeds",
+        "humour_metaphor_candidates",
+        "whitepaper_fragments"
+      ]
+    },
+    {
+      "repo": "CoCivium/CoStacks",
+      "visibility": "public",
+      "default_branch": "main",
+      "role": [
+        "automation",
+        "operator_experiments",
+        "schemas",
+        "templates"
+      ]
+    },
+    {
+      "repo": "CoCivium/CoRails",
+      "visibility": "public",
+      "default_branch": "main",
+      "role": [
+        "rails",
+        "invariants",
+        "guardrails"
+      ]
+    },
+    {
+      "repo": "CoCivium/CoSources",
+      "visibility": "public",
+      "default_branch": "we-cocarry_hold_landing_20260127T222705Z",
+      "role": [
+        "source_provenance_projection"
+      ],
+      "rails": [
+        "UNUSUAL_DEFAULT_BRANCH_REQUIRES_EXACT_REF_BIND_BEFORE_MUTATION"
+      ]
+    },
+    {
+      "repo": "CoCivium/TEMP",
+      "visibility": "public",
+      "default_branch": "main",
+      "role": [
+        "public_safe_transient_inbox"
+      ],
+      "rails": [
+        "TEMP_NE_AUTHORITY"
+      ]
+    },
+    {
+      "repo": "CoCivium/CoAcademy",
+      "visibility": "public",
+      "default_branch": "master",
+      "role": [
+        "education",
+        "public_learning"
+      ]
+    },
+    {
+      "repo": "CoCivium/CoAura",
+      "visibility": "public",
+      "default_branch": "master",
+      "role": [
+        "interface",
+        "projection_envelope",
+        "ux_surface"
+      ]
+    }
+  ],
+  "mutation_rule": "REFRESH_REPO_CURRENTNESS_AT_DEED_TIME__DO_NOT_ASSUME_THIS_SNAPSHOT_IS_LIVE_FOREVER",
+  "nonclaims": [
+    "NOT_ONTOLOGY",
+    "NOT_CANON",
+    "NOT_COMPLETE_LOCAL_REPO_INVENTORY",
+    "NOT_CURRENT_HEAD_ELECTION"
+  ]
+}
