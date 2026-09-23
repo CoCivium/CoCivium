@@ -89,7 +89,7 @@ No one gate implies the others.
 
 ## Current real-route boundary
 
-The currently authorized X2 machine route is not proven online by the machine connector at this wave's observation point.
+The currently authorized primary machine route is not proven online by the machine connector at this wave's observation point.
 
 Therefore:
 
@@ -116,3 +116,33 @@ Until then, R0G can prove contract mechanics and capacity-source provenance with
 `EMBODIMENT_NE_IDENTITY`  
 `SERVICE_IDENTITY_NE_PERSONAL_LOGIN`  
 `CAPABILITY_NE_AUTHORITY`
+
+## Bounded contract canary
+
+Exact landed verifier/schema blobs were reproduced before execution.
+
+Contract result:
+
+`PASS_R0G_CONTRACT_CANARY__EXACT_SOURCE_PROVENANCE__LIVE_BINDING_GATE_BEHAVIOR__NO_REAL_LIVE_RECEIVER_CLAIM`
+
+Observed:
+
+- MEASURED provenance: PASS;
+- DECLARED provenance: PASS;
+- SYNTHETIC_FIXTURE provenance: PASS;
+- source-object byte drift: fail-closed with `SOURCE_OBJECT_HASH_MISMATCH`;
+- synthetic ONLINE binding: PASS;
+- synthetic OFFLINE binding: HOLD;
+- synthetic STALE binding: HOLD;
+- synthetic UNKNOWN binding: HOLD;
+- provenance-schema validation: 3/3;
+- live-binding-schema validation: 4/4;
+- contract canary SHA-256: `E3D73E61919F44F0A7C51FFB0C6DA88E825901DCDE7340B244CFF1A328D658C7`.
+
+Durable evidence:
+
+`docs/Operations/proofs/copulse-r0g-contract-pass-live-binding-hold-20260923.json`
+
+The real primary machine route remained `OFFLINE` at the post-canary connector check, so no real `PASS_LIVE_RECEIVER_BINDING` is claimed.
+
+`SYNTHETIC_ONLINE_FIXTURE_NE_REAL_LIVE_RECEIVER`
