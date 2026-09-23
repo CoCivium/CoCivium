@@ -1,0 +1,11 @@
+{
+  "schema": "CoPulseAck.Policy.R0C.v0.1-candidate",
+  "state": "IMPLEMENTATION_READY__EXECUTION_NOT_YET_PROVEN",
+  "readproof_required": true,
+  "prior_ack_hash_chain_required_after_first_commit": true,
+  "cursor_regression_allowed": false,
+  "receiver_local_state": true,
+  "shared_global_ack": false,
+  "provider_context_mutation": false,
+  "next": "R0D_COPRESSURE_DIGEST_COMPACTION_WITH_EXPLICIT_LOSS_REPORT_AND_REPLAY"
+}
