@@ -1,0 +1,21 @@
+{
+  "schema": "CoDeviceEnrollment.Policy.v0.1-candidate",
+  "state": "DEPENDENT_ENDPOINT_POLICY_READY__NO_DEVICE_ENROLLED",
+  "participant_class": "DEPENDENT_OR_MINOR",
+  "enrollment_order": "PRIMARY_X2_PILOT_FIRST",
+  "personal_credentials_reuse": false,
+  "standing_unrestricted_remote_control": false,
+  "separate_service_identity": true,
+  "default_modes": [
+    "OBSERVE_DEVICE_HEALTH",
+    "RUN_BOUNDED_DIAGNOSTIC",
+    "APPLY_PREAPPROVED_MAINTENANCE",
+    "INTERACTIVE_SUPPORT_WITH_LOCAL_CONFIRMATION"
+  ],
+  "emergency_mode": "GUARDIAN_EMERGENCY_OVERRIDE",
+  "privacy_sensitive_requires_stronger_gate": true,
+  "local_disconnect_required": true,
+  "audit_receipts_required": true,
+  "finite_lease_required": true,
+  "next": "PROVE_PRIMARY_X2_REMOTE_CONTROL_PILOT_BEFORE_ANY_DEPENDENT_ENDPOINT_ENROLLMENT"
+}
