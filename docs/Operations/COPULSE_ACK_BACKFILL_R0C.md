@@ -1,6 +1,6 @@
 # CoPulse Per-Receiver ACK / Backfill Canary R0C
 
-**State:** `IMPLEMENTATION_CANDIDATE__EXECUTION_EVIDENCE_REQUIRED`
+**State:** `PASS_BOUNDED_CONTAINER_LOCAL_SYNTHETIC__ACK_CHAIN_AND_BACKFILL_PROVEN__NOT_X2_NOT_GLOBAL_BUS`
 
 R0C advances the R0B exact readproof boundary into an explicit **receiver-local ACK chain**.
 
@@ -42,3 +42,12 @@ It is not provider context mutation, global consensus, integration, or CoEx.
 ## Next
 
 R0D should add CoPressure-aware DIGEST compaction with explicit omitted-count/loss reporting and replay to exact source pulses.
+
+
+## Bounded execution evidence
+
+The exact R0C scripts matched their branch Git blob hashes before execution. The exact landed R0A router and R0B receiver scripts also matched main. The container-local synthetic canary then proved two independent receiver-local ACK chains across two routing rounds.
+
+Evidence: `docs/Operations/proofs/copulse-r0c-container-pass-20260923.json`.
+
+This proves the bounded ACK-chain/backfill behavior only. It does not prove provider context mutation, integration, X2 runtime, global ACK consensus, or a live global bus.
