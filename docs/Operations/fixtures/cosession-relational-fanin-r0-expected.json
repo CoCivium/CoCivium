@@ -1,0 +1,232 @@
+{
+  "accepted_deltas": [
+    {
+      "authority_ceiling": "CANDIDATE_ONLY",
+      "delta_id": "fixture-a",
+      "next_gate": "FANIN_REVIEW",
+      "public_safety": "PUBLIC_SAFE",
+      "record_index": 0,
+      "source_file_sha256": "4C1BFB4C9F42039382358D5DEC7C7DAEA24DBEEE5CC2EF122DB32A1F413A3820",
+      "source_session": "FixtureA"
+    },
+    {
+      "authority_ceiling": "CANDIDATE_ONLY",
+      "delta_id": "fixture-b",
+      "next_gate": "REDACTION_THEN_REVIEW",
+      "public_safety": "PUBLIC_SAFE_WITH_REDACTION",
+      "record_index": 1,
+      "source_file_sha256": "4C1BFB4C9F42039382358D5DEC7C7DAEA24DBEEE5CC2EF122DB32A1F413A3820",
+      "source_session": "FixtureB"
+    }
+  ],
+  "candidate_surface_index": {
+    "README.md": ["fixture-a", "fixture-b"],
+    "RickBar": ["fixture-b"]
+  },
+  "collision_candidates": [
+    {
+      "relation": "projects_to",
+      "state": "REVIEW_REQUIRED_NOT_PROVEN_CONTRADICTION",
+      "subject": "CoMemeable+",
+      "variants": [
+        {
+          "object": "RickBar",
+          "refs": [
+            {
+              "delta_id": "fixture-b",
+              "operation": {
+                "evidence_refs": [],
+                "object": "RickBar",
+                "op": "LINK",
+                "qualifiers": {},
+                "relation": "projects_to",
+                "subject": "CoMemeable+"
+              },
+              "operation_index": 1,
+              "operation_sha256": "7201136DC0E90837820434A73CAE028DF96F93A0B5D53C42BB71A723D567421F",
+              "source_session": "FixtureB"
+            }
+          ]
+        },
+        {
+          "object": "public-highlight",
+          "refs": [
+            {
+              "delta_id": "fixture-a",
+              "operation": {
+                "evidence_refs": ["fixture://e1"],
+                "object": "public-highlight",
+                "op": "LINK",
+                "qualifiers": {},
+                "relation": "projects_to",
+                "subject": "CoMemeable+"
+              },
+              "operation_index": 0,
+              "operation_sha256": "003B51BE43F661158C14A570D69B631DE4961F324C5319C94595A79EA79C752D",
+              "source_session": "FixtureA"
+            },
+            {
+              "delta_id": "fixture-b",
+              "operation": {
+                "evidence_refs": ["fixture://e1"],
+                "object": "public-highlight",
+                "op": "LINK",
+                "qualifiers": {},
+                "relation": "projects_to",
+                "subject": "CoMemeable+"
+              },
+              "operation_index": 0,
+              "operation_sha256": "003B51BE43F661158C14A570D69B631DE4961F324C5319C94595A79EA79C752D",
+              "source_session": "FixtureB"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "compiled_sha256": "C089391EDC4B0B3D3B9A960B245D543910D75AA5E4ADA75B0B9BB27214BE38E6",
+  "compiler": "CoSessionRelationalFanIn.R0",
+  "coverage": {
+    "accepted_deltas": 2,
+    "collision_candidates": 1,
+    "duplicate_operation_groups": 1,
+    "highlight_candidates": 1,
+    "input_files_seen": 1,
+    "public_fanout_holds": 1,
+    "rejected_records": 0,
+    "semantic_near_duplicate_review": "NOT_COMPUTED_R0",
+    "unique_operations": 3,
+    "unique_source_files": 1
+  },
+  "duplicate_operation_groups": [
+    {
+      "count": 2,
+      "operation_sha256": "003B51BE43F661158C14A570D69B631DE4961F324C5319C94595A79EA79C752D",
+      "refs": [
+        {
+          "delta_id": "fixture-a",
+          "operation": {
+            "evidence_refs": ["fixture://e1"],
+            "object": "public-highlight",
+            "op": "LINK",
+            "qualifiers": {},
+            "relation": "projects_to",
+            "subject": "CoMemeable+"
+          },
+          "operation_index": 0,
+          "operation_sha256": "003B51BE43F661158C14A570D69B631DE4961F324C5319C94595A79EA79C752D",
+          "source_session": "FixtureA"
+        },
+        {
+          "delta_id": "fixture-b",
+          "operation": {
+            "evidence_refs": ["fixture://e1"],
+            "object": "public-highlight",
+            "op": "LINK",
+            "qualifiers": {},
+            "relation": "projects_to",
+            "subject": "CoMemeable+"
+          },
+          "operation_index": 0,
+          "operation_sha256": "003B51BE43F661158C14A570D69B631DE4961F324C5319C94595A79EA79C752D",
+          "source_session": "FixtureB"
+        }
+      ]
+    }
+  ],
+  "effects": {
+    "automatic_fanout": 0,
+    "canon_changes": 0,
+    "shared_target_mutations": 0
+  },
+  "eligible_public_review_delta_ids": ["fixture-a"],
+  "highlight_candidates": [
+    {
+      "delta_id": "fixture-a",
+      "operation": {
+        "evidence_refs": [],
+        "object": "README",
+        "op": "HIGHLIGHT",
+        "qualifiers": {},
+        "relation": "candidate_for",
+        "subject": "CoMemeable+"
+      },
+      "operation_index": 1,
+      "operation_sha256": "1528F5D6C14A616DDA5E37FA4B38DC94D8E25E92B71C0039BFF83AB010F6F449",
+      "source_session": "FixtureA"
+    }
+  ],
+  "next": "REVIEW_COLLISIONS_AND_HOLDS_THEN_ELECT_TARGETED_PROJECTIONS",
+  "nonclaims": [
+    "FANIN_NE_FANOUT",
+    "DUPLICATE_OPERATION_NE_DUPLICATE_INTENT",
+    "COLLISION_CANDIDATE_NE_CONTRADICTION",
+    "VALIDATION_NE_ACCEPTANCE",
+    "BRANCH_NE_INTEGRATED",
+    "MERGED_NE_CANON",
+    "PUBLIC_SAFE_LABEL_NE_PUBLICATION_APPROVAL"
+  ],
+  "public_fanout_holds": [
+    {
+      "delta_id": "fixture-b",
+      "public_safety": "PUBLIC_SAFE_WITH_REDACTION",
+      "reason": "requires redaction/review or is not public-safe"
+    }
+  ],
+  "rejected_records": [],
+  "source_files": [
+    {
+      "bytes": 1403,
+      "sha256": "4C1BFB4C9F42039382358D5DEC7C7DAEA24DBEEE5CC2EF122DB32A1F413A3820"
+    }
+  ],
+  "target_domain_index": {
+    "CoLex": ["fixture-a", "fixture-b"],
+    "Humour": ["fixture-a"],
+    "UX": ["fixture-b"]
+  },
+  "unique_operations": [
+    {
+      "delta_id": "fixture-a",
+      "operation": {
+        "evidence_refs": ["fixture://e1"],
+        "object": "public-highlight",
+        "op": "LINK",
+        "qualifiers": {},
+        "relation": "projects_to",
+        "subject": "CoMemeable+"
+      },
+      "operation_index": 0,
+      "operation_sha256": "003B51BE43F661158C14A570D69B631DE4961F324C5319C94595A79EA79C752D",
+      "source_session": "FixtureA"
+    },
+    {
+      "delta_id": "fixture-a",
+      "operation": {
+        "evidence_refs": [],
+        "object": "README",
+        "op": "HIGHLIGHT",
+        "qualifiers": {},
+        "relation": "candidate_for",
+        "subject": "CoMemeable+"
+      },
+      "operation_index": 1,
+      "operation_sha256": "1528F5D6C14A616DDA5E37FA4B38DC94D8E25E92B71C0039BFF83AB010F6F449",
+      "source_session": "FixtureA"
+    },
+    {
+      "delta_id": "fixture-b",
+      "operation": {
+        "evidence_refs": [],
+        "object": "RickBar",
+        "op": "LINK",
+        "qualifiers": {},
+        "relation": "projects_to",
+        "subject": "CoMemeable+"
+      },
+      "operation_index": 1,
+      "operation_sha256": "7201136DC0E90837820434A73CAE028DF96F93A0B5D53C42BB71A723D567421F",
+      "source_session": "FixtureB"
+    }
+  ]
+}
