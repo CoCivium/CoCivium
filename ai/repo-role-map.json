@@ -1,7 +1,7 @@
 {
   "schema": "CoAll.RepoRoleMap.v0.1-candidate",
-  "state": "PUBLIC_ROLE_MAP__NOT_ONTOLOGY",
-  "updated_utc": "2026-09-23T11:00:41Z",
+  "state": "PUBLIC_RELATIONAL_ROLE_MAP__NOT_ONTOLOGY",
+  "updated_utc": "2026-09-24T17:33:27Z",
   "repositories": [
     {
       "repo": "CoCivium/CoCivium",
@@ -178,6 +178,19 @@
   "nonclaims": [
     "REPOSITORY_NE_ONTOLOGY",
     "ROLE_MAP_NE_CANON",
-    "VISIBILITY_NE_CONFIDENTIALITY_PROOF"
-  ]
+    "VISIBILITY_NE_CONFIDENTIALITY_PROOF",
+    "RELATION_PERSISTS__BINDING_EVOLVES",
+    "ONE_OBJECT_CAN_HAVE_MANY_REPO_PROJECTIONS",
+    "DIRECTORY_TREE_NE_SEMANTIC_TREE",
+    "README_NE_CANON",
+    "GITHUB_NE_COALL_TOTALITY"
+  ],
+  "relational_projection": {
+    "graph": "ai/repo-field-projection-graph-r0.json",
+    "landed_commit": "e659978b6f594a8062d4ede90affac8ad11cd8ca",
+    "node_count": 22,
+    "observed_repository_projection_relations": 21,
+    "binding_doctrine": "RELATION_PERSISTS__BINDING_EVOLVES",
+    "graph_role": "BOUNDED_GITHUB_PROJECTION_GRAPH__NOT_COALL_TOTALITY"
+  }
 }
