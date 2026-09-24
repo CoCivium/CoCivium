@@ -27,6 +27,7 @@ def main() -> int:
     ap.add_argument("--readproof", required=True)
     ap.add_argument("--lineage-binder", required=True)
     ap.add_argument("--review", required=True)
+    ap.add_argument("--qualification", required=True)
     ap.add_argument("--contribution-payload", required=True)
     ap.add_argument("--out-root", required=True)
     args = ap.parse_args()
@@ -35,7 +36,7 @@ def main() -> int:
         raise SystemExit(f"FAIL_CLOSED__NO_CLOBBER={root}")
     root.mkdir(parents=True, exist_ok=False)
     packet = root / "match-packet.json"
-    pterm = run_json([sys.executable, str(Path(args.packet_builder).resolve()), "--review", str(Path(args.review).resolve()), "--output", str(packet)])
+    pterm = run_json([sys.executable, str(Path(args.packet_builder).resolve()), "--review", str(Path(args.review).resolve()), "--qualification", str(Path(args.qualification).resolve()), "--output", str(packet)])
     packet_sha = sha256_path(packet)
     pobj = load(packet)
     proof = root / "receiver-readproof.json"
@@ -53,13 +54,14 @@ def main() -> int:
         raise SystemExit("FAIL_CLOSED__PAYLOAD_SEMANTIC_STATUS")
     contribution = root / "contribution-candidate.json"
     contribution_obj = {
-        "schema": "CoContributionCandidate.R0C.v0.2-candidate",
+        "schema": "CoContributionCandidate.R0C.v0.3-candidate",
         "state": "PROPOSED_CONTRIBUTION_CANDIDATE__NOT_ACCEPTED",
         "contribution_id": payload["contribution_id"],
         "receiver_id": pobj["receiver_id"],
         "packet_id": pobj["packet_id"],
         "relation_id": pobj["relation_id"],
         "payload_sha256": sha256_path(payload_path),
+        "qualification_sha256": pterm["QUALIFICATION_SHA256"],
         "proposal": payload["proposal"],
         "semantic_acceptance": "UNPROVEN",
         "integration": False,
@@ -76,15 +78,15 @@ def main() -> int:
     if len(set(pids)) != 3:
         raise SystemExit("FAIL_CLOSED__PROCESS_SEPARATION")
     result = {
-        "schema": "CoEncounterMatchPacketCanary.R0C.v0.2-candidate",
-        "state": "PASS_R0C_EXACT_MATCH_PACKET__RECEIVER_READPROOF_PICKUP__DURABLE_SEMANTIC_PAYLOAD_BINDING__PROPOSED_LINEAGE__NO_AUTO_ASSIGNMENT",
-        "coverage": {"match_packets": 1, "receiver_readproofs": 1, "bounded_pickups": 1, "proposed_contributions": 1, "lineage_objects": 1, "semantic_payload_fixtures": 1, "semantic_acceptances": 0, "integrations": 0},
-        "hashes": {"source_review_sha256": pterm["SOURCE_REVIEW_SHA256"], "stable_route_digest_sha256": pterm["STABLE_ROUTE_DIGEST_SHA256"], "packet_sha256": packet_sha, "readproof_sha256": sha256_path(proof), "contribution_payload_sha256": sha256_path(payload_path), "contribution_sha256": sha256_path(contribution), "lineage_sha256": sha256_path(lineage)},
+        "schema": "CoEncounterMatchPacketCanary.R0C.v0.3-candidate",
+        "state": "PASS_R0C_EXACT_MATCH_PACKET__RECEIVER_QUALIFICATION_GATE__RECEIVER_READPROOF_PICKUP__DURABLE_SEMANTIC_PAYLOAD_BINDING__PROPOSED_LINEAGE__NO_AUTO_ASSIGNMENT",
+        "coverage": {"match_packets": 1, "receiver_qualifications": 1, "receiver_readproofs": 1, "bounded_pickups": 1, "proposed_contributions": 1, "lineage_objects": 1, "semantic_payload_fixtures": 1, "semantic_acceptances": 0, "integrations": 0},
+        "hashes": {"source_review_sha256": pterm["SOURCE_REVIEW_SHA256"], "qualification_sha256": pterm["QUALIFICATION_SHA256"], "stable_route_digest_sha256": pterm["STABLE_ROUTE_DIGEST_SHA256"], "packet_sha256": packet_sha, "readproof_sha256": sha256_path(proof), "contribution_payload_sha256": sha256_path(payload_path), "contribution_sha256": sha256_path(contribution), "lineage_sha256": sha256_path(lineage)},
         "process_ids": pids,
-        "checks": {"separate_packet_receiver_lineage_processes": True, "exact_packet_sha_read": True, "receiver_identity_bound": True, "pickup_proven_for_exact_packet": True, "durable_semantic_payload_bound": True, "auto_assignment": False, "execution_authorized": False, "semantic_acceptance_inferred": False, "integration_inferred": False},
+        "checks": {"separate_packet_receiver_lineage_processes": True, "receiver_qualification_gate": True, "exact_packet_sha_read": True, "receiver_identity_bound": True, "pickup_proven_for_exact_packet": True, "durable_semantic_payload_bound": True, "auto_assignment": False, "execution_authorized": False, "semantic_acceptance_inferred": False, "integration_inferred": False},
         "effects": {"assignment": 0, "notification": 0, "authority_change": 0, "execution": 0, "provider_session_mutation": 0},
         "next": "R0D_SEMANTIC_CONTRIBUTION_DISPOSITION_OR_HETEROGENEOUS_RECEIVER_PACKET_CANARY__NO_AUTO_ASSIGNMENT",
-        "nonclaims": ["PICKED_UP_NE_INTEGRATED", "READPROOF_NE_SEMANTIC_ACCEPTANCE", "LINEAGE_NE_ACCEPTANCE", "TWO_OR_MORE_PROCESSES_NE_TWO_OR_MORE_FAILURE_DOMAINS", "LOCAL_CANARY_NE_RUNTIME_INTEGRATION", "NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE"],
+        "nonclaims": ["QUALIFICATION_NE_AUTHORITY_INCREASE", "PICKED_UP_NE_INTEGRATED", "READPROOF_NE_SEMANTIC_ACCEPTANCE", "LINEAGE_NE_ACCEPTANCE", "TWO_OR_MORE_PROCESSES_NE_TWO_OR_MORE_FAILURE_DOMAINS", "LOCAL_CANARY_NE_RUNTIME_INTEGRATION", "NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE"],
     }
     result_path = root / "r0c-result.json"
     result_path.write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
