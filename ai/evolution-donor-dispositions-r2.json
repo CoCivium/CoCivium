@@ -1,0 +1,135 @@
+{
+  "schema": "CoAll.EvolutionDonorDisposition.R2.v0.1-candidate",
+  "state": "CURRENT_MAIN_RELATIONAL_DONOR_INDEX__PARTIAL_HARVEST__NO_CANON_NO_RUNTIME_NO_AUTHORITY",
+  "observed_main_commit": "a2ad5e4460fc8d54431d7d113ffbaa1cbf9f1cbb",
+  "observed_at": "2026-09-24T20:22:34Z",
+  "purpose": "Reduce duplicate replay by relating historical/draft PR donors to stronger current-main descendants while preserving unique unresolved remainders.",
+  "dispositions": [
+    {
+      "donor_class": "SESSION_WRITEBACK_AND_FANOUT_MECHANICS",
+      "state": "DESCENDANT_SATISFIED",
+      "donor_pr": 23,
+      "evidence": [
+        "e46f0b1528241bb684db50c87b001ea2674bd7a4",
+        "scripts/CoSessionProjectionToCoEvo.py",
+        "scripts/CoSessionRelationalFanIn.py",
+        "scripts/CoEvoReceiverFanoutPlanner.py",
+        "scripts/CoEvoReceiverPacketCompiler.py",
+        "scripts/CoEvoToPublicCoPulseProjectorR0.py"
+      ],
+      "relation": "FORWARD_PORTED_AND_CURRENT_MAIN_REPLAY_PROVEN",
+      "action": "DO_NOT_REPLAY_WHOLE_DONOR"
+    },
+    {
+      "donor_class": "EFFECT_GATE_TYPING_DONOR",
+      "state": "DESCENDANT_SATISFIED",
+      "donor_pr": 32,
+      "evidence": [
+        "a88837c2426bb179779f2854f336968c71f731d4",
+        "schemas/coevo-delta-v0.2-union-candidate.schema.json"
+      ],
+      "relation": "PR32_EFFECT_CLASSES_EFFECT_GATE_EFFECT_SCOPE_CARRIED_BY_UNION_CANDIDATE",
+      "action": "CLOSED_DONOR_REMAINS_PROVENANCE"
+    },
+    {
+      "donor_class": "REPO_FIELD_PROJECTION_GRAPH_RELATIONS",
+      "state": "DESCENDANT_SATISFIED",
+      "evidence": [
+        "e659978b6f594a8062d4ede90affac8ad11cd8ca",
+        "ee0ef687625fb30e009e12a8640eaf887780cbd5",
+        "f81d05bd4feef4093b64667c4e3cf120d3df039f"
+      ],
+      "relation": "GITHUB_IS_RELATIONAL_PROJECTION_FIELD__REPOSITORY_NE_ONTOLOGY",
+      "action": "RELATION_PERSISTS__BINDING_EVOLVES"
+    },
+    {
+      "donor_class": "PRESSURE_ROUTE_TWILIGHT_RICH_RECEIVER_MECHANICS",
+      "state": "PARTIALLY_SATISFIED__UNIQUE_DONOR_ARTIFACTS_REMAIN",
+      "donor_pr": 37,
+      "satisfied_by": [
+        "4ae6ae10ace2c5b20395e9663aa058d526e6d9fa",
+        "c5aa342481f3b510f43dcaa6595b1f29ecf7f390",
+        "a2ad5e4460fc8d54431d7d113ffbaa1cbf9f1cbb",
+        "1ccf30282526a8f62d991a01d6edc51b383a49be"
+      ],
+      "unique_remainders": [
+        "schemas/coevo-pickup-receipt-v0.1.schema.json",
+        "schemas/cosubscription-currentness-v0.1.schema.json",
+        "scripts/CoEvoSubscriptionProfileAdapter.py",
+        "scripts/CoEvoSubscriptionReceiver.py"
+      ],
+      "relation": "SEMANTIC_LIFECYCLE_SUBSCRIPTION_AND_PRESSURE_RELATIONS_LANDED__GENERIC_ADAPTER_RECEIVER_ARTIFACTS_NOT_YET_FANIN_ADJUDICATED",
+      "action": "HARVEST_UNIQUE_REMAINDERS_SELECTIVELY__DO_NOT_MERGE_STALE_BRANCH_WHOLESALE"
+    },
+    {
+      "donor_class": "COSESSION_SURVIVAL_CROSS_DOMAIN_DELTAS",
+      "state": "PARTIAL_DONATION__UNIQUE_REMAINDERS_REMAIN",
+      "donor_pr": 43,
+      "shared_descendants": [
+        "4ae6ae10ace2c5b20395e9663aa058d526e6d9fa",
+        "a2ad5e4460fc8d54431d7d113ffbaa1cbf9f1cbb",
+        "c5aa342481f3b510f43dcaa6595b1f29ecf7f390"
+      ],
+      "unique_remainders": [
+        "RELATIONAL_PROTOCOL_SUBSTRATE",
+        "NATIVE_COBAR_LIFECYCLE_OBSERVATION",
+        "TYPED_TURTLES_WRITE_PERMISSION_HUMOUR_HIGHLIGHT",
+        "EXPLICIT_CLOSE_SAFE_LATENCY_AND_SESSION_DEPENDENCY_METRICS"
+      ],
+      "relation": "DONATE_OVERLAP_NE_DELETE_DELTA",
+      "action": "KEEP_OPEN_AS_BOUNDED_DONOR_UNTIL_UNIQUE_REMAINDERS_ARE_DISPOSITIONED"
+    },
+    {
+      "donor_class": "INTEROP_META_RELATIONAL_CHALLENGERS",
+      "state": "OPEN_DONOR",
+      "donor_pr": 41,
+      "action": "RECONCILE_AFTER_PR37_PR43_UNIQUE_REMAINDERS"
+    },
+    {
+      "donor_class": "CONODEMESH_GRAIL_FEDERATION",
+      "state": "OPEN_DONOR",
+      "donor_pr": 10,
+      "action": "COMPARE_WITH_PARTICIPANT_OWNED_CONODE_AND_REPO_FIELD_BEFORE_FANIN"
+    },
+    {
+      "donor_class": "AI_DISCOVERY_INDEX",
+      "state": "OPEN_DONOR",
+      "donor_pr": 7,
+      "action": "RECHECK_AGAINST_CURRENT_BOOTSTRAP_AND_MACHINE_DISCOVERY_SURFACES"
+    },
+    {
+      "donor_class": "ORG_HOUSEKEEPING_CENSUS",
+      "state": "OPEN_DONOR",
+      "donor_pr": 5,
+      "action": "RECHECK_AGAINST_RELATIONAL_REPO_FIELD_AND_CURRENT_21_REPO_ROLE_MAP"
+    },
+    {
+      "donor_class": "COTHEORYALL_PUBLIC_WORKING_PROJECTION",
+      "state": "OPEN_DONOR",
+      "donor_pr": 3,
+      "action": "KEEP_SEPARATE_FROM_SCIENTIFIC_VALIDATION_OR_CANON"
+    }
+  ],
+  "next": [
+    "ADJUDICATE_PR37_UNIQUE_GENERIC_SUBSCRIPTION_ADAPTER_RECEIVER_ARTIFACTS_AGAINST_CURRENT_COPULSE_PIPELINE",
+    "DISPOSITION_PR43_UNIQUE_REMAINDERS_INTO_ELECTED_MACHINE_DELTA_INTAKE",
+    "THEN_RECHECK_PR41_INTEROP_DONOR"
+  ],
+  "rails": [
+    "FANIN_BEFORE_MORE_PARALLEL_MUTATION",
+    "DESCENDANT_SATISFACTION_BEFORE_REPLAY",
+    "DONATE_OVERLAP_NE_DELETE_DELTA",
+    "REPOSITORY_NE_ONTOLOGY",
+    "RELATION_PERSISTS__BINDING_EVOLVES",
+    "NO_NEWEST_WINS",
+    "PR_COUNT_NE_PROGRESS"
+  ],
+  "nonclaims": [
+    "NOT_CANON",
+    "NOT_RUNTIME",
+    "NOT_COEX",
+    "NOT_GLOBAL_SESSION_PICKUP",
+    "NOT_AUTHORITY_TRANSFER",
+    "NOT_COMPLETE_DONOR_HARVEST"
+  ]
+}
