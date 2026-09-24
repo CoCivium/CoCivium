@@ -13,12 +13,27 @@ on:
       - 'schemas/cotime-advisory-evidence-v0.1.schema.json'
       - 'examples/advisory/**'
       - 'scripts/validate_cotime_advisory_evidence_r0.py'
+      - '.github/workflows/cotime-advisory-evidence-r0.yml'
 
 permissions:
   contents: read
 
 jobs:
-  bounded-matrix:
+  parse-contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Parse schema and all advisory fixtures
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m json.tool schemas/cotime-advisory-evidence-v0.1.schema.json >/dev/null
+          for f in examples/advisory/*.json; do
+            python -m json.tool "$f" >/dev/null
+          done
+
+  positive-matrix:
+    needs: parse-contract
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -26,44 +41,79 @@ jobs:
         fixture:
           - examples/advisory/public-observation-research.json
           - examples/advisory/public-prediction-private-discussion.json
+          - examples/advisory/stale-account-review-hold.json
+          - examples/advisory/observed-stale.json
+          - examples/advisory/unknown-current.json
+          - examples/advisory/scenario-current.json
+          - examples/advisory/inferred-current.json
+          - examples/advisory/counterfactual-current.json
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Parse fixture
-        run: python -m json.tool "${{ matrix.fixture }}" >/dev/null
       - name: Validate advisory evidence rails
-        run: python scripts/validate_cotime_advisory_evidence_r0.py "${{ matrix.fixture }}"
+        run: python scripts/validate_cotime_advisory_evidence_r0.py "\${{ matrix.fixture }}"
+
+  negative-matrix:
+    needs: parse-contract
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        fixture:
+          - [examples/advisory/negative-prediction-no-calibration.json, PREDICTION_NEEDS_CALIBRATION_DUE]
+          - [examples/advisory/negative-stale-client-effect.json, NONCURRENT_EFFECTFUL_ROUTE]
+          - [examples/advisory/negative-sensitive-effect.json, SENSITIVE_INFORMATION_EFFECTFUL_ROUTE]
+          - [examples/advisory/negative-unknown-regulatory-effect.json, UNKNOWN_REGULATORY_PROFILE_EFFECTFUL_ROUTE]
+          - [examples/advisory/negative-trade-execution.json, TRADE_EXECUTION_NOT_DENIED]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Prove negative fixture fails closed
+        shell: bash
+        run: |
+          set +e
+          out="$(python scripts/validate_cotime_advisory_evidence_r0.py "\${{ matrix.fixture[0] }}" 2>&1)"
+          rc=$?
+          set -e
+          printf '%s\n' "$out"
+          test "$rc" -ne 0
+          printf '%s' "$out" | grep -q "FAIL_CLOSED__\${{ matrix.fixture[1] }}"
 
   bounded-fanin:
-    needs: bounded-matrix
+    needs: [positive-matrix, negative-matrix]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Emit bounded receipt
+      - name: Emit bounded CI receipt
         shell: bash
         run: |
           python - <<'PY'
           import hashlib, json
           from pathlib import Path
-          paths=[
-            Path("schemas/cotime-advisory-evidence-v0.1.schema.json"),
-            Path("scripts/validate_cotime_advisory_evidence_r0.py"),
-            Path("examples/advisory/public-observation-research.json"),
-            Path("examples/advisory/public-prediction-private-discussion.json"),
+          paths = [
+              Path("schemas/cotime-advisory-evidence-v0.1.schema.json"),
+              Path("scripts/validate_cotime_advisory_evidence_r0.py"),
+              *sorted(Path("examples/advisory").glob("*.json")),
           ]
           rows=[]
           for p in paths:
-            b=p.read_bytes()
-            rows.append({"path":str(p),"sha256":hashlib.sha256(b).hexdigest(),"bytes":len(b)})
+              b=p.read_bytes()
+              rows.append({"path":str(p),"sha256":hashlib.sha256(b).hexdigest(),"bytes":len(b)})
           print(json.dumps({
-            "state":"PASS_BOUNDED_PARALLEL_COTIME_ADVISORY_CI",
-            "objects":rows,
-            "rails":[
-              "PREDICTION_NE_EVIDENCE",
-              "PARALLEL_RESEARCH_NE_PARALLEL_AUTHORITY",
-              "CI_PASS_NE_INVESTMENT_MERIT"
-            ]
+              "state":"PASS_BOUNDED_PARALLEL_COTIME_ADVISORY_CI",
+              "positive_fixture_count":8,
+              "negative_fixture_count":5,
+              "objects":rows,
+              "rails":[
+                  "PREDICTION_NE_EVIDENCE",
+                  "PARALLEL_RESEARCH_NE_PARALLEL_AUTHORITY",
+                  "CI_PASS_NE_LEGAL_COMPLIANCE",
+                  "CI_PASS_NE_SUITABILITY",
+                  "CI_PASS_NE_INVESTMENT_MERIT"
+              ]
           },indent=2,sort_keys=True))
           PY
