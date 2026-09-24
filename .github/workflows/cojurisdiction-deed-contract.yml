@@ -5,28 +5,102 @@ on:
     paths:
       - 'schemas/cojurisdiction-deed-v0.1.schema.json'
       - 'examples/cojurisdiction-deed-v0.1.example.json'
+      - 'examples/jurisdiction/**'
       - 'scripts/validate_cojurisdiction_deed_r0.py'
       - '.github/workflows/cojurisdiction-deed-contract.yml'
   push:
     paths:
       - 'schemas/cojurisdiction-deed-v0.1.schema.json'
       - 'examples/cojurisdiction-deed-v0.1.example.json'
+      - 'examples/jurisdiction/**'
       - 'scripts/validate_cojurisdiction_deed_r0.py'
+      - '.github/workflows/cojurisdiction-deed-contract.yml'
 
 permissions:
   contents: read
 
 jobs:
-  static-canary:
+  parse-contract:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
-      - name: Validate JSON parses
+      - name: Parse schema and all fixtures
+        shell: bash
         run: |
+          set -euo pipefail
           python -m json.tool schemas/cojurisdiction-deed-v0.1.schema.json >/dev/null
           python -m json.tool examples/cojurisdiction-deed-v0.1.example.json >/dev/null
-      - name: Run bounded semantic canary
-        run: python scripts/validate_cojurisdiction_deed_r0.py examples/cojurisdiction-deed-v0.1.example.json
+          for f in examples/jurisdiction/*.json; do
+            python -m json.tool "$f" >/dev/null
+          done
+
+  positive-matrix:
+    needs: parse-contract
+    strategy:
+      fail-fast: false
+      matrix:
+        fixture:
+          - examples/cojurisdiction-deed-v0.1.example.json
+          - examples/jurisdiction/ca-bounded.json
+          - examples/jurisdiction/ca-eu-review.json
+          - examples/jurisdiction/us-sec-conditional.json
+          - examples/jurisdiction/conflict-hold.json
+          - examples/jurisdiction/stale-currentness.json
+          - examples/jurisdiction/route-deny-evasion.json
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate bounded deed fixture
+        run: python scripts/validate_cojurisdiction_deed_r0.py "${{ matrix.fixture }}"
+
+  negative-accountability:
+    needs: parse-contract
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Prove diffuse execution cannot erase accountable proposal/authorization
+        shell: bash
+        run: |
+          set -euo pipefail
+          if python scripts/validate_cojurisdiction_deed_r0.py examples/jurisdiction/negative-diffuse-accountability.json >negative.log 2>&1; then
+            cat negative.log
+            echo "FAIL_OPEN__NEGATIVE_FIXTURE_WAS_ACCEPTED"
+            exit 1
+          fi
+          cat negative.log
+          grep -q 'FAIL_CLOSED__RESPONSIBILITY_GRAPH_TOO_THIN' negative.log
+
+  bounded-fanin:
+    needs: [positive-matrix, negative-accountability]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Emit bounded CI receipt
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import hashlib, json
+          from pathlib import Path
+          paths = [
+              Path("schemas/cojurisdiction-deed-v0.1.schema.json"),
+              Path("scripts/validate_cojurisdiction_deed_r0.py"),
+              *sorted(Path("examples/jurisdiction").glob("*.json")),
+          ]
+          rows=[]
+          for p in paths:
+              b=p.read_bytes()
+              rows.append({"path":str(p),"bytes":len(b),"sha256":hashlib.sha256(b).hexdigest()})
+          receipt={
+              "state":"PASS_BOUNDED_PARALLEL_CI_FANIN",
+              "fixture_count":len(list(Path("examples/jurisdiction").glob("*.json"))),
+              "rails":[
+                  "CI_PASS_NE_LEGAL_CONCLUSION",
+                  "MATRIX_PARALLELISM_NE_AUTHORITY",
+                  "DISTRIBUTION_NE_RESPONSIBILITY_ERASURE",
+                  "NODE_LOCATION_NE_SOLE_JURISDICTION"
+              ],
+              "objects":rows
+          }
+          print(json.dumps(receipt,indent=2,sort_keys=True))
+          PY
