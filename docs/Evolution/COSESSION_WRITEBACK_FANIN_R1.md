@@ -98,3 +98,21 @@ Because both the fan-in script blob (`690cba4...`) and fixture blob (`87ef8b9...
 The first replay run therefore failed only on the stale expected-hash assertion after the projection replay and all three downstream self-tests had passed. R1A is rerun with explicit Git-blob assertions plus the observed exact canonical fan-in hash.
 
 `DOCUMENTED_HASH_NE_EXECUTABLE_TRUTH_WHEN_EXACT_BOUND_BYTES_DISAGREE`
+
+
+## R1A replay PASS
+
+Fresh read-only GitHub Actions run `36034237671` passed on branch head `4e072bd438722b4f1cf5385b0663a3df697603dd`.
+
+The run:
+
+- asserted exact donor Git blobs for both replayed scripts and both restored fixtures;
+- reproduced the projection compiler hash `9A790C79...57BB2`;
+- reproduced the corrected exact fan-in hash `593E013A...E1C96`;
+- reproduced the fanout-planner zero-effect selftest;
+- reproduced the receiver-packet zero-delivery selftest;
+- reproduced the public-CoPulse projector fail-closed selftest.
+
+This proves bounded current-main fixture replay only.
+
+`FIXTURE_REPLAY_PASS_NE_RUNTIME_ADOPTION`
