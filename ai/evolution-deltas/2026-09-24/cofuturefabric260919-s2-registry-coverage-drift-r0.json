@@ -1,0 +1,53 @@
+{
+  "delta_id": "cofuturefabric260919-s2-registry-coverage-drift-r0",
+  "session_id": "CoFutureFabric260919-S2",
+  "observed_at": "2026-09-24T05:15:53Z",
+  "domain": [
+    "CoAutoEvo+/CoEvo+",
+    "CoIndex+",
+    "CoAll+"
+  ],
+  "subject": "CoAll evolution-domain registry currentness",
+  "relation": "DOMAIN_REGISTRY_CURRENTNESS_LAGS_LANDED_RELATION_FAMILIES__RECONCILE_DONORS_BEFORE_EXPANSION",
+  "epistemic_class": "OBSERVED",
+  "source_refs": [
+    "CoCivium/CoCivium@4ae6ae10ace2c5b20395e9663aa058d526e6d9fa",
+    "CoCivium/CoCivium:ai/evolution-lanes.json@0c87630a746f98281505ee4b620b60b03be6fc1b",
+    "CoCivium/CoCivium:ai/repo-role-map.json@40fff5a6ea8f7cdab917b77968eeb9db8f7ac6a4",
+    "CoCivium/CoCivium@a88837c2426bb179779f2854f336968c71f731d4"
+  ],
+  "target_surfaces": [
+    "ai/evolution-lanes.json",
+    "ai/repo-role-map.json",
+    "docs/Evolution/COALL_EVOLUTION_CONVERGENCE_R1.md"
+  ],
+  "mutation_class": "PROPOSE",
+  "authority_ceiling": "PUBLIC_SAFE_BRANCH_PROPOSAL_ONLY",
+  "confidentiality": "PUBLIC",
+  "confidence": 0.97,
+  "contradictions": [
+    "The registry may intentionally remain coarse; absence of a relation family from evolution-lanes.json does not prove it needs a new top-level lane.",
+    "Adding every newly landed relation family as a lane would recreate ontology-by-folder and subscription explosion."
+  ],
+  "tests": [
+    "Compare the exact evolution-lanes.json domain set against evolution-convergence-r1.json newly_landed_descendant_relations.",
+    "Reconcile open donor PRs 28, 34, 37 and 43 against current main before adding or renaming lanes.",
+    "For each candidate relation family, classify as EXISTING_LANE_SUBDOMAIN, ALIAS, CROSS_CUTTING_RELATION or NEW_LANE before registry mutation.",
+    "Require subscription-profile impact review so lane growth does not silently widen receiver context."
+  ],
+  "expected_benefit": "Keep the routing registry current enough to avoid blind spots while preventing top-level lane proliferation and duplicate ontology roots.",
+  "risks": [
+    "LANE_EXPLOSION",
+    "ONTOLOGY_BY_REGISTRY",
+    "SUBSCRIPTION_CONTEXT_BLOAT",
+    "DUPLICATE_DONOR_REPLAY",
+    "NEWEST_WINS_DRIFT"
+  ],
+  "wake_conditions": [
+    "A receiver classifies the landed descendant relations against the current lane set.",
+    "A current-main reconciliation finds a genuinely unrepresented routing domain.",
+    "A subscription or routing failure is traced to registry coverage rather than receiver logic."
+  ],
+  "supersedes": [],
+  "next_receiver": "CoEvoConvergence/CoIndex registry-fanin lane"
+}
