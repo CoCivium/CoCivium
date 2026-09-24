@@ -1,0 +1,156 @@
+{
+  "schema": "CoNod.CoAura.SyntheticCanary.R0.v0.1-candidate",
+  "state": "SYNTHETIC_FIXTURE_ONLY__NO_RUNTIME",
+  "source_refs": {
+    "cocivium_base": "7b08c68bae6ec76c33d70eabbd5afa1a2e41429b",
+    "coaura_master": "7326ad5812d4d3954fc7add29afc25831594fda6",
+    "conod_doc": "docs/Architecture/CONOD_DYNAMIC_WAVE_DELEGATION_R2.md",
+    "aura_doc": "docs/Architecture/COAVNIM_COGNITIVE_AURA_R0.md"
+  },
+  "participant": {
+    "id": "synthetic:human:r0",
+    "kind": "HUMAN_FIXTURE",
+    "coavnim": "synthetic:coavnim:human:r0"
+  },
+  "synth": {
+    "id": "synthetic:synth:r0",
+    "kind": "SYNTH_FIXTURE",
+    "coavnim": "synthetic:coavnim:synth:r0"
+  },
+  "collective": {
+    "id": "synthetic:collective:r0",
+    "kind": "COLLECTIVE_PROJECTION_FIXTURE"
+  },
+  "gesture": {
+    "raw": "'",
+    "interpreted": "BOUNDED_CONTINUATION",
+    "authority_expansion": false
+  },
+  "wave": {
+    "logical_lanes": 32,
+    "initial_physical_width": 6,
+    "lane_families": {
+      "challenge": 4,
+      "evidence": 8,
+      "provenance_currentness": 4,
+      "ux_accessibility": 4,
+      "theory_mythops": 4,
+      "compaction_fanin": 4,
+      "other_safe_discovery": 4
+    },
+    "sequence": [
+      {
+        "step": 0,
+        "state": "QUIET",
+        "physical_width": 0,
+        "fanin_pressure": "NONE"
+      },
+      {
+        "step": 1,
+        "state": "ACK_REWISE",
+        "physical_width": 0,
+        "fanin_pressure": "NONE"
+      },
+      {
+        "step": 2,
+        "state": "REBIND",
+        "physical_width": 0,
+        "fanin_pressure": "NONE"
+      },
+      {
+        "step": 3,
+        "state": "FANOUT_LOGICAL",
+        "physical_width": 0,
+        "fanin_pressure": "LOW"
+      },
+      {
+        "step": 4,
+        "state": "WORKING",
+        "physical_width": 6,
+        "fanin_pressure": "NORMAL"
+      },
+      {
+        "step": 5,
+        "state": "WORKING",
+        "physical_width": 6,
+        "fanin_pressure": "HIGH"
+      },
+      {
+        "step": 6,
+        "state": "COMPACTING",
+        "physical_width": 3,
+        "fanin_pressure": "HIGH"
+      },
+      {
+        "step": 7,
+        "state": "FANIN",
+        "physical_width": 5,
+        "fanin_pressure": "NORMAL"
+      },
+      {
+        "step": 8,
+        "state": "RECEIPT",
+        "physical_width": 1,
+        "fanin_pressure": "LOW"
+      },
+      {
+        "step": 9,
+        "state": "QUIET",
+        "physical_width": 0,
+        "fanin_pressure": "NONE"
+      }
+    ]
+  },
+  "cognitive_projection_allowed": [
+    "DECLARED_INTENT",
+    "SURFACED_REASONING_SUMMARY",
+    "HYPOTHESIS",
+    "OPTION",
+    "UNCERTAINTY",
+    "QUESTION",
+    "CHALLENGE",
+    "PLAN_STATE",
+    "TOOL_EVENT",
+    "WORK_LANE",
+    "EVIDENCE_SIGNAL",
+    "CURRENTNESS_SIGNAL",
+    "MODEL_SUMMARY",
+    "QUALIFIED_INFERRED_STATE",
+    "QUALIFIED_PREDICTED_NEXT",
+    "UNKNOWN"
+  ],
+  "forbidden_fields": [
+    "HIDDEN_CHAIN_OF_THOUGHT",
+    "PRIVATE_REASONING_TRACE"
+  ],
+  "accessibility": [
+    "REDUCED_MOTION",
+    "STATIC_TEXT",
+    "SCREEN_READER",
+    "NON_COLOR_ONLY",
+    "LOW_BANDWIDTH",
+    "MACHINE_TWIN"
+  ],
+  "acceptance": [
+    "LOGICAL_PARALLELITY_GT_PHYSICAL_WIDTH",
+    "WIDTH_CHANGE_NE_AUTHORITY_CHANGE",
+    "FANIN_VISIBLE",
+    "UNRESOLVED_CONFLICT_VISIBLE",
+    "QUIET_STATE_REACHED",
+    "VISUAL_STATE_HAS_MACHINE_TWIN",
+    "IMPORTANT_STATE_HAS_ACCESSIBLE_EQUIVALENT",
+    "NO_HIDDEN_CHAIN_OF_THOUGHT_FIELD",
+    "VISUAL_CUE_NE_AUTHORITY",
+    "OBSERVER_RELATIVE_RENDERING_SUPPORTED"
+  ],
+  "nonclaims": [
+    "NO_REAL_PARTICIPANT_DATA",
+    "NO_X2_EXECUTION",
+    "NO_MCP_PICKUP",
+    "NO_PS7_EXECUTION",
+    "NO_RUNTIME",
+    "NO_CANON",
+    "NO_PUBLIC_PRODUCT_RELEASE_APPROVAL",
+    "NO_AUTHORITY_TRANSFER"
+  ]
+}
