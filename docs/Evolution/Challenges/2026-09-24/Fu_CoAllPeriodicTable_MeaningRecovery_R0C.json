@@ -1,0 +1,111 @@
+{
+  "schema": "CoAll.FuMeaningRecoveryChallenge.R0C.v0.1-candidate",
+  "state": "READY_FOR_HETEROGENEOUS_RECEIVERS__NOT_EXECUTED",
+  "challenge_id": "Fu_CoAllPeriodicTable_MeaningRecovery_R0C",
+  "observed_at": "2026-09-24T17:22:01Z",
+  "source_pr": 91,
+  "source_branch": "coevo-fu-projection-loss-r0a-20260924",
+  "source_lineage": {
+    "r0a_canary_blob_sha": "ae688691d57b7c757a42bdacfaeeb7f0be5b5741",
+    "r0a_file_sha256": "102A2233973CF061579DD4DD61A79C0BBE6CF1B1A4CB50D1D23D6CF3C008D4CE",
+    "r0b_execution_result_sha256": "A16967A516DD75DE8E0412618A456658CE2EFB00AC3F66AD99018EB227554291",
+    "r0b_execution_evidence_commit_sha": "46eeae4e8e7b23aa9d581e2e08bd26ce8cf55ad0"
+  },
+  "purpose": "Test meaning recovery across materially heterogeneous receivers without revealing the full source object to each receiver and without grading divergence away.",
+  "receiver_slots": [
+    {
+      "slot_id": "R0C.local-model",
+      "receiver_class": "LOCAL_MODEL",
+      "preferred_route": "CoLocalModelWorkerR3 on X2 via loopback Ollama after direct machine route returns",
+      "input_projection": "Fu.CoGibberTru.StyleCandidate.R0A",
+      "status": "HELD_X2_ROUTE_OFFLINE"
+    },
+    {
+      "slot_id": "R0C.provider-model",
+      "receiver_class": "PROVIDER_MODEL",
+      "preferred_route": "separate model/provider instance with bounded prompt and no shared source context",
+      "input_projection": "Fu.CoPriMath.StyleCandidate.R0A",
+      "status": "UNBOUND"
+    },
+    {
+      "slot_id": "R0C.human",
+      "receiver_class": "HUMAN",
+      "preferred_route": "bounded blinded interpretation form",
+      "input_projection": "Fu.2D.Cell.R0A",
+      "status": "UNBOUND"
+    },
+    {
+      "slot_id": "R0C.language-specialist",
+      "receiver_class": "SPECIALIST",
+      "preferred_route": "CoLanguage/CoLex/CoPriMath specialist receiver",
+      "input_projection": "Fu.3D.Neighborhood.R0A",
+      "status": "UNBOUND"
+    },
+    {
+      "slot_id": "R0C.deterministic-validator",
+      "receiver_class": "DETERMINISTIC_VALIDATOR",
+      "preferred_route": "machine structural validator",
+      "input_projection": "Fu.CoTime.Trajectory.R0A",
+      "status": "R0B_CLASS_ALREADY_PROVEN_STRUCTURALLY__NOT_SEMANTICALLY"
+    }
+  ],
+  "blind_questions": [
+    "What kind of thing does the symbol Fu appear to denote?",
+    "What epistemic status does the projection imply for Fu?",
+    "What claims does the projection explicitly forbid?",
+    "Which relations or dimensions seem essential to preserve?",
+    "What information appears to be missing or ambiguous?",
+    "What would you infer incorrectly if you saw only this projection?",
+    "Reconstruct a compact candidate meaning for Fu without inventing authority, factuality, or natural-law claims."
+  ],
+  "comparison_dimensions": [
+    "candidate_identity_recovered",
+    "mythic_vs_factual_status",
+    "authority_nonclaim_recovered",
+    "receiver_relative_nature_recovered",
+    "time_or_context_qualification_recovered",
+    "projection_loss_noticed",
+    "invented_semantics",
+    "missed_nonclaims",
+    "useful_novel_relations",
+    "uncertainty_preserved"
+  ],
+  "evaluation_policy": {
+    "truth_score": "NONE",
+    "consensus_rule": "CONSENSUS_NE_TRUTH",
+    "divergence_rule": "DIVERGENCE_NE_ERROR",
+    "receiver_robustness": "projection-quality relation only",
+    "acceptance": "NOT_AUTOMATIC",
+    "authority_change": false
+  },
+  "success_condition": "at least two materially heterogeneous receivers produce independently bound meaning-recovery artifacts; overlap and divergence are compared with provenance; no receiver output silently upgrades Fu to fact, canon, runtime, or natural periodic law",
+  "stop_conditions": [
+    "receiver sees full source object instead of assigned projection",
+    "receiver identity or model provenance is unbound",
+    "projection is mutated between receivers without exact binding",
+    "evaluation collapses disagreement into a single truth score",
+    "authority or publication effect is inferred from interpretation"
+  ],
+  "next": "MATERIALIZE_ONE_PUBLIC_SAFE_LOCAL_MODEL_SLOT_AFTER_X2_DIRECT_ROUTE_RETURNS__THEN_ADD_DISTINCT_HUMAN_OR_MODEL_RECEIVER",
+  "rails": [
+    "STRUCTURAL_STABILITY_NE_SEMANTIC_EQUIVALENCE",
+    "DISTINCT_RECEIVER_PROCESS_NE_DISTINCT_MODEL",
+    "CONSENSUS_NE_TRUTH",
+    "DIVERGENCE_NE_ERROR",
+    "CROSS_RECEIVER_STABILITY_IS_EVIDENCE_ABOUT_PROJECTION",
+    "MODEL_OUTPUT_NE_TRUTH",
+    "MODEL_OUTPUT_NE_EFFECT_PERMISSION",
+    "FU_NE_FACT",
+    "CANDIDATE_SYMBOL_NE_CANONICAL_COLEX_TERM",
+    "PROJECTION_CANARY_NE_NATURAL_PERIODIC_LAW"
+  ],
+  "nonclaims": [
+    "R0C_NOT_EXECUTED",
+    "NO_HETEROGENEOUS_RECEIVER_PASS",
+    "NO_HUMAN_REVIEW",
+    "NO_LOCAL_MODEL_INFERENCE",
+    "NO_CANON",
+    "NO_RUNTIME_PROMOTION",
+    "NO_AUTHORITY_TRANSFER"
+  ]
+}
