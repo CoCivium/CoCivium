@@ -1,8 +1,8 @@
 {
   "schema": "CoSessionWriteback.Currentness.R1.v0.1-candidate",
-  "state": "FRESH_MAIN_FANIN_CANDIDATE__STATIC_CI_PASS__CURRENT_MAIN_FIXTURE_REPLAY_PENDING",
-  "updated_utc": "2026-09-24T05:18:04Z",
-  "base_main_commit": "e4a258956649639daf1bb83633b81cdcf18bd0c6",
+  "state": "CURRENT_MAIN_FIXTURE_REPLAY_CI_PENDING__NO_RUNTIME",
+  "updated_utc": "2026-09-24T17:19:22Z",
+  "base_main_commit": "a1378193586a6a5bbf17bfb69dbd7c1643ace3b4",
   "donor_pr": 23,
   "donor_branch": "cocivia260923/session-relational-delta-r0",
   "exact_forward_ported_blobs": {
@@ -36,14 +36,19 @@
   },
   "current_gate": {
     "static_ci": "PASS",
-    "current_main_fixture_replay": "NOT_RUN",
+    "current_main_fixture_replay": "CI_PENDING",
     "runtime_adoption": "NONE",
     "provider_session_push": "NONE",
     "authority_change": "NONE",
     "static_ci_run": 35959750310,
-    "static_ci_validated_head": "2fc33fdea4c595d281bd118a0c8025e651483d18"
+    "static_ci_validated_head": "2fc33fdea4c595d281bd118a0c8025e651483d18",
+    "fixture_replay_branch": "evidence/session-writeback-replay-r1a-20260924",
+    "fixture_blobs": {
+      "docs/Operations/fixtures/cosession-to-coevo-r0-input.json": "e33361e507e96659866464867cdc06292320c170",
+      "docs/Operations/fixtures/cosession-relational-fanin-r0-input.json": "87ef8b9cb288a780f35885f3a739d73b46be1584"
+    }
   },
-  "next": "CURRENT_HEAD_RECHECK__MERGE_IF_ZERO_BEHIND__THEN_CURRENT_MAIN_FIXTURE_REPLAY_BEFORE_RUNTIME_ADOPTION",
+  "next": "WAIT_FOR_READ_ONLY_R1A_FIXTURE_REPLAY_CI__IF_PASS_RECHECK_MAIN_HEAD__RECORD_PASS__MERGE_IF_ZERO_BEHIND",
   "rails": [
     "SESSION_PROJECTION_NE_PARALLEL_SEMANTIC_STANDARD",
     "COMPILATION_NE_ACCEPTANCE",
@@ -52,7 +57,8 @@
     "PICKED_UP_NE_INTEGRATED",
     "MERGED_NE_CANON",
     "PUBLIC_SAFE_LABEL_NE_PUBLICATION_APPROVAL",
-    "NO_NEWEST_WINS"
+    "NO_NEWEST_WINS",
+    "FIXTURE_REPLAY_PASS_NE_RUNTIME_ADOPTION"
   ],
   "nonclaims": [
     "NOT_RUNTIME",
@@ -60,7 +66,8 @@
     "NOT_RECEIVER_PICKUP_FOR_HISTORICAL_PACKET",
     "NOT_INTEGRATED",
     "NOT_COEX",
-    "NOT_CANON"
+    "NOT_CANON",
+    "CURRENT_MAIN_FIXTURE_REPLAY_NOT_YET_PROVEN"
   ],
   "repairs": [
     "DONOR_FANOUT_PLANNER_UNTERMINATED_NEWLINE_LITERAL_REPAIRED_AFTER_CI_FAILURE",
