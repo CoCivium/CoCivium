@@ -222,6 +222,47 @@ rises materially, the controller should bias toward:
 
 `EVERY_SESSION_MAY_BECOME_MORE__NO_SESSION_MUST_BECOME_EVERYTHING`
 
+### Systemic self-awareness guard
+
+Self-observation is useful only if it can change system behavior before coordination debt dominates useful work.
+
+The controller SHOULD watch relational flow, not just local component health. Candidate signals include:
+
+- discovery gain;
+- fan-in/compaction throughput;
+- currentness debt created and retired;
+- reconciliation debt created and retired;
+- duplicate work avoided;
+- wake rate versus sleep/retirement rate;
+- receiver-visible benefit;
+- human-attention debt;
+- internal work created by completed work.
+
+A material warning condition exists when, over a bounded window:
+
+`INTERNAL_WORK_CREATED_BY_PROGRESS > INTERNAL_WORK_RETIRED_BY_PROGRESS`
+
+or when:
+
+`DISCOVERY_CAPACITY / FANIN_AND_COMPACTION_CAPACITY`
+
+rises materially without corresponding receiver benefit.
+
+The first response SHOULD be contraction rather than more discovery:
+
+`DEDUPE -> FANIN -> COMPACT -> RETIRE -> QUIESCE -> RECHECK`
+
+Do not infer system health from local PASS counts alone.
+
+`SYSTEMIC_HEALTH_NE_SUM_OF_LOCAL_PASSES`
+`MORE_SELF_AWARENESS_NE_MORE_HEALTH`
+`OBSERVABILITY_NE_VALUE`
+`CURRENTNESS_CREATED_NE_CURRENTNESS_CONSUMED`
+`COORDINATION_COST_SHOULD_NOT_SCALE_WITH_TOTAL_KNOWN_RELATIONS`
+`PROGRESS_THAT_CREATES_MORE_DEBT_THAN_CAPABILITY_REQUIRES_REQUALIFICATION`
+
+A self-awareness mechanism that detects rising coordination debt but cannot reduce discovery, subscriptions, wake frequency, active embodiments, or receiver noise is monitoring, not control.
+
 ## UX projection
 
 RickBar / CoDesktop should eventually show a quiet fleet projection:
