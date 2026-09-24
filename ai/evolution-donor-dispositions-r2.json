@@ -1,7 +1,7 @@
 {
   "schema": "CoAll.EvolutionDonorDisposition.R2.v0.1-candidate",
-  "state": "CURRENT_MAIN_RELATIONAL_DONOR_INDEX__PARTIAL_HARVEST__NO_CANON_NO_RUNTIME_NO_AUTHORITY",
-  "observed_main_commit": "a2ad5e4460fc8d54431d7d113ffbaa1cbf9f1cbb",
+  "state": "CURRENT_MAIN_RELATIONAL_DONOR_INDEX__PR37_DESCENDANT_SATISFIED_FOR_CURRENT_SCOPE__UNIQUE_DONORS_REMAIN",
+  "observed_main_commit": "75f45477adaadabc9bad5b6455a9e448e7c839ac",
   "observed_at": "2026-09-24T20:22:34Z",
   "purpose": "Reduce duplicate replay by relating historical/draft PR donors to stronger current-main descendants while preserving unique unresolved remainders.",
   "dispositions": [
@@ -44,22 +44,63 @@
     },
     {
       "donor_class": "PRESSURE_ROUTE_TWILIGHT_RICH_RECEIVER_MECHANICS",
-      "state": "PARTIALLY_SATISFIED__UNIQUE_DONOR_ARTIFACTS_REMAIN",
+      "state": "DESCENDANT_SATISFIED_FOR_CURRENT_SCOPE__STALE_ARTIFACTS_NOT_FORWARD_PORTED",
       "donor_pr": 37,
       "satisfied_by": [
+        "a88837c2426bb179779f2854f336968c71f731d4",
         "4ae6ae10ace2c5b20395e9663aa058d526e6d9fa",
         "c5aa342481f3b510f43dcaa6595b1f29ecf7f390",
+        "1ccf30282526a8f62d991a01d6edc51b383a49be",
         "a2ad5e4460fc8d54431d7d113ffbaa1cbf9f1cbb",
-        "1ccf30282526a8f62d991a01d6edc51b383a49be"
+        "e4a258956649639daf1bb83633b81cdcf18bd0c6"
       ],
-      "unique_remainders": [
-        "schemas/coevo-pickup-receipt-v0.1.schema.json",
-        "schemas/cosubscription-currentness-v0.1.schema.json",
-        "scripts/CoEvoSubscriptionProfileAdapter.py",
-        "scripts/CoEvoSubscriptionReceiver.py"
-      ],
-      "relation": "SEMANTIC_LIFECYCLE_SUBSCRIPTION_AND_PRESSURE_RELATIONS_LANDED__GENERIC_ADAPTER_RECEIVER_ARTIFACTS_NOT_YET_FANIN_ADJUDICATED",
-      "action": "HARVEST_UNIQUE_REMAINDERS_SELECTIVELY__DO_NOT_MERGE_STALE_BRANCH_WHOLESALE"
+      "unique_remainders": [],
+      "relation": "PRESSURE_ROUTE_TWILIGHT_SEMANTICS_AND_REQUIRED_RECEIVER_CAPABILITIES_NOW_EXIST_ON_CURRENT_MAIN__DONOR_FILES_ARE_SUPERSEDED_OR_CONTRACT_MISMATCHED_FOR_CURRENT_SCOPE",
+      "action": "CLOSE_PR37_UNMERGED__RETAIN_BRANCH_AS_PROVENANCE_AND_NEGATIVE_KNOWLEDGE",
+      "artifact_adjudication": [
+        {
+          "path": "schemas/coevo-delta-v0.2.schema.json",
+          "disposition": "SUPERSEDED_FOR_SCOPE",
+          "by": "schemas/coevo-delta-v0.2-union-candidate.schema.json",
+          "reason": "Current union candidate carries PR37 materiality/subscription/pressure/route/close-readiness fields while preserving the v0.1 compatibility anchor."
+        },
+        {
+          "path": "schemas/coevo-pickup-receipt-v0.1.schema.json",
+          "disposition": "SUPERSEDED_FOR_SCOPE",
+          "by": [
+            "scripts/CoPulseReceiverReadproofR0B.py",
+            "scripts/CoPulseAckCommitR0C.py",
+            "schemas/coevidence-receipt-v0.1.schema.json"
+          ],
+          "reason": "Current pipeline requires exact packet hash/identity receiver readproof and chained receiver-local ACK evidence; the donor generic pickup schema is weaker and adds no required current capability."
+        },
+        {
+          "path": "scripts/CoEvoSubscriptionReceiver.py",
+          "disposition": "SUPERSEDED_FOR_SCOPE",
+          "by": [
+            "scripts/CoPulseSubscriptionRouterR0A.py",
+            "scripts/CoPulseReceiverReadproofR0B.py",
+            "scripts/CoPulseAckCommitR0C.py",
+            "ai/currentness/copulse-currentness-r0g.json"
+          ],
+          "reason": "Donor receiver uses a timestamp cursor and producer-created receipt; current CoPulse lineage has stronger receiver-relative exact pickup, ACK chaining, replay, pressure/freshness and capacity provenance."
+        },
+        {
+          "path": "schemas/cosubscription-currentness-v0.1.schema.json",
+          "disposition": "DONOR_CONCEPT_ABSORBED__EXACT_ARTIFACT_NOT_FORWARD_PORTED",
+          "by": [
+            "ai/session-subscription-profiles.json",
+            "docs/Architecture/COSUBSCRIPTION_ECOLOGY_R0.md",
+            "ai/currentness/copulse-currentness-r0g.json"
+          ],
+          "reason": "Current subscription ecology generalizes session-only currentness and binds role-relative subscriptions to receiver cursors without requiring this stale schema."
+        },
+        {
+          "path": "scripts/CoEvoSubscriptionProfileAdapter.py",
+          "disposition": "NOT_FORWARD_PORTED__DONOR_CONTRACT_MISMATCH",
+          "reason": "Exact donor adapter emits profile_id and profile_catalog_ref while the paired donor schema sets additionalProperties=false and does not define those fields; current router can consume session subscription profiles directly."
+        }
+      ]
     },
     {
       "donor_class": "COSESSION_SURVIVAL_CROSS_DOMAIN_DELTAS",
@@ -111,9 +152,9 @@
     }
   ],
   "next": [
-    "ADJUDICATE_PR37_UNIQUE_GENERIC_SUBSCRIPTION_ADAPTER_RECEIVER_ARTIFACTS_AGAINST_CURRENT_COPULSE_PIPELINE",
     "DISPOSITION_PR43_UNIQUE_REMAINDERS_INTO_ELECTED_MACHINE_DELTA_INTAKE",
-    "THEN_RECHECK_PR41_INTEROP_DONOR"
+    "THEN_RECHECK_PR41_INTEROP_DONOR",
+    "THEN_COMPARE_PR10_GRAIL_AGAINST_CURRENT_CONODE_AND_REPO_FIELD"
   ],
   "rails": [
     "FANIN_BEFORE_MORE_PARALLEL_MUTATION",
