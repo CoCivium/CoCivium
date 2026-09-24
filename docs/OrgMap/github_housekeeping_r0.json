@@ -1,0 +1,247 @@
+{
+  "schema": "CoCivium.GitHubHousekeeping.R0.v0.1-candidate",
+  "created_utc": "2026-09-22T23:04:09Z",
+  "state": "CANDIDATE_ORG_TOPOLOGY__READONLY_CENSUS_PLUS_REVERSIBLE_DOCS_ONLY",
+  "authority": "USER_DELEGATED_HOUSEKEEPING_PLANNING__NO_RENAME_DELETE_VISIBILITY_OR_DEFAULT_BRANCH_MUTATION",
+  "source": "live GitHub account census + bounded README sampling",
+  "rails": [
+    "REPOSITORY_NE_ONTOLOGY",
+    "GITHUB_NE_CUSTODY_ROOT",
+    "DIRECTORY_TREE_NE_SEMANTIC_TREE",
+    "RENAME_NE_MIGRATION",
+    "ARCHIVE_NE_DELETE",
+    "PUBLIC_NE_CANON",
+    "LATEST_COMMIT_NE_CURRENT_SEMANTIC_HEAD",
+    "NO_RENAME_DELETE_VISIBILITY_OR_DEFAULT_BRANCH_CHANGE_IN_R0"
+  ],
+  "census_summary": {
+    "repositories_observed": 21,
+    "public": 9,
+    "private": 12,
+    "archived": 0,
+    "default_branch_anomalies": [
+      "CoAura -> master",
+      "CoAcademy -> master",
+      "CoSources -> we-cocarry_hold_landing_20260127T222705Z"
+    ],
+    "readme_anomalies": [
+      "CoRails -> README.md not found at default main in bounded sample",
+      "CoAcademy -> README.md not found at default master in bounded sample",
+      "CoSources -> README.md not found at reported default branch in bounded sample"
+    ],
+    "immediate_attention": [
+      "TEMP is public and explicitly ephemeral-by-policy",
+      "CoPolitic-site is public placeholder scaffold",
+      "CoSources has a hold-style default branch",
+      "Several repos make overlapping 'canonical' claims that should become typed roles rather than competing crowns",
+      "No repositories are archived, so historical/parked status is not visible at repository level"
+    ]
+  },
+  "target_families": [
+    {
+      "family": "PUBLIC_FRONT_DOORS",
+      "repos": [
+        "CoCivium",
+        "EntMent",
+        "CoAura",
+        "CoAcademy",
+        "CoPolitic-site"
+      ],
+      "rule": "Human/public projections. Must state status, currentness, source-of-truth relation and machine-readable twin where applicable."
+    },
+    {
+      "family": "INDEX_KNOWLEDGE_AND_SOURCES",
+      "repos": [
+        "GIBindex",
+        "CoInsights",
+        "CoSources",
+        "MasterPlan"
+      ],
+      "rule": "Separate term/index/content/source/plan roles. No repo may imply universal canon merely by naming itself canonical."
+    },
+    {
+      "family": "COORDINATION_AND_AUTOMATION",
+      "repos": [
+        "CoBusMirror",
+        "CoStacks",
+        "CoRails",
+        "CoToolbelt"
+      ],
+      "rule": "Protocols, automation, rails and utilities. Report effect ceilings and source-of-truth pointers."
+    },
+    {
+      "family": "PRIVATE_STEWARDSHIP_AND_NAVIGATION",
+      "repos": [
+        "CoSteward",
+        "CoShareHub",
+        "CoTrustedWindow",
+        ".github"
+      ],
+      "rule": "Private ops, navigation and trusted projections. Clarify what is operational, navigational, or merely inherited."
+    },
+    {
+      "family": "VAULTS",
+      "repos": [
+        "CoCrownJewelVault",
+        "CoLegalVault"
+      ],
+      "rule": "Keep special-purpose custody boundaries explicit; no migration into general repos without separate authority."
+    },
+    {
+      "family": "RESEARCH_AND_FUTURES",
+      "repos": [
+        "CoFutures"
+      ],
+      "rule": "Probabilistic/research objects stay epistemically typed and separate from public assertions."
+    },
+    {
+      "family": "TRANSIENT",
+      "repos": [
+        "TEMP"
+      ],
+      "rule": "Transient ingress only. Add expiry/retirement discipline; never become accidental durable source-of-truth."
+    }
+  ],
+  "repo_actions": [
+    {
+      "repo": "CoCivium",
+      "visibility": "public",
+      "default_branch": "main",
+      "action": "KEEP_FRONT_DOOR__ADD_ORG_MAP_AND_CURRENT_POINTERS"
+    },
+    {
+      "repo": ".github",
+      "visibility": "private",
+      "default_branch": "main",
+      "action": "CLARIFY_ROLE__SPECIAL_GITHUB_META_REPO_CURRENTLY_PRIVATE"
+    },
+    {
+      "repo": "CoFutures",
+      "visibility": "private",
+      "default_branch": "main",
+      "action": "KEEP__RELATE_TO_RESEARCH_FAMILY"
+    },
+    {
+      "repo": "CoAura",
+      "visibility": "public",
+      "default_branch": "master",
+      "action": "KEEP__NORMALIZE_DEFAULT_BRANCH_CANDIDATE_AFTER_PROOF"
+    },
+    {
+      "repo": "EntMent",
+      "visibility": "public",
+      "default_branch": "main",
+      "action": "KEEP_EXEMPLAR__VERIFY_CURRENTNESS_BEFORE_MIGRATION"
+    },
+    {
+      "repo": "CoInsights",
+      "visibility": "private",
+      "default_branch": "main",
+      "action": "KEEP_CONTENT_ATOMS__CHALLENGE_CANONICAL_WORDING"
+    },
+    {
+      "repo": "CoBusMirror",
+      "visibility": "public",
+      "default_branch": "main",
+      "action": "KEEP_MIRROR__BIND_INTERNAL_SOURCE_RELATION_AND_FRESHNESS"
+    },
+    {
+      "repo": "CoShareHub",
+      "visibility": "private",
+      "default_branch": "main",
+      "action": "KEEP_NAVIGATION__DEDUPE_WITH_OTHER_START_HERE_SURFACES"
+    },
+    {
+      "repo": "TEMP",
+      "visibility": "public",
+      "default_branch": "main",
+      "action": "KEEP_ONLY_IF_EXPIRY_AUTOMATED__OTHERWISE_ARCHIVE_CANDIDATE"
+    },
+    {
+      "repo": "CoRails",
+      "visibility": "public",
+      "default_branch": "main",
+      "action": "REVIEW__README_CURRENTNESS_MISSING"
+    },
+    {
+      "repo": "CoPolitic-site",
+      "visibility": "public",
+      "default_branch": "main",
+      "action": "REVIEW_PUBLIC_PLACEHOLDER__NO_AUTOMATIC_MIGRATION"
+    },
+    {
+      "repo": "CoSources",
+      "visibility": "public",
+      "default_branch": "we-cocarry_hold_landing_20260127T222705Z",
+      "action": "HIGH_PRIORITY_REVIEW__DEFAULT_BRANCH_IS_HOLD_STYLE"
+    },
+    {
+      "repo": "CoTrustedWindow",
+      "visibility": "private",
+      "default_branch": "main",
+      "action": "KEEP_TRUSTED_PROJECTION__NO_CROWN_JEWELS"
+    },
+    {
+      "repo": "CoToolbelt",
+      "visibility": "private",
+      "default_branch": "main",
+      "action": "KEEP_SHARED_UTILITIES__PROVENANCE_EACH_DONOR"
+    },
+    {
+      "repo": "GIBindex",
+      "visibility": "private",
+      "default_branch": "main",
+      "action": "KEEP_INDEX_ROLE__RENAME_NOT_REQUIRED__RELATE_TO_COLEX_COOBJECT"
+    },
+    {
+      "repo": "MasterPlan",
+      "visibility": "private",
+      "default_branch": "main",
+      "action": "REVIEW_CANONICAL_CLAIM__PLAN_IS_PROJECTION_NOT_CROWN"
+    },
+    {
+      "repo": "CoCrownJewelVault",
+      "visibility": "private",
+      "default_branch": "main",
+      "action": "KEEP_STRICT_VAULT_BOUNDARY"
+    },
+    {
+      "repo": "CoAcademy",
+      "visibility": "public",
+      "default_branch": "master",
+      "action": "REVIEW__README_MISSING_AND_DEFAULT_BRANCH_NORMALIZATION_CANDIDATE"
+    },
+    {
+      "repo": "CoLegalVault",
+      "visibility": "private",
+      "default_branch": "main",
+      "action": "KEEP_STRICT_LEGAL_BOUNDARY"
+    },
+    {
+      "repo": "CoSteward",
+      "visibility": "private",
+      "default_branch": "main",
+      "action": "KEEP_PRIVATE_OPS__SEPARATE_FROM_PUBLIC_FRONT_DOOR"
+    },
+    {
+      "repo": "CoStacks",
+      "visibility": "public",
+      "default_branch": "main",
+      "action": "KEEP_SHADOW_AUTOMATION__VERIFY_EFFECT_CEILING_BEFORE_EXPANSION"
+    }
+  ],
+  "migration_gate": {
+    "before_bulk_migration": [
+      "each destination repo has typed role and owner/effect ceiling",
+      "source object has identity, provenance, content hash and lifecycle state",
+      "destination collision domain checked",
+      "duplicates related rather than silently copied",
+      "public/private exposure explicitly qualified",
+      "default branch currentness proven",
+      "receiver/readproof contract defined for durable migration",
+      "retirement/supersession pointer exists for displaced objects"
+    ],
+    "bulk_rule": "MIGRATION_RATE_MUST_NOT_EXCEED_RECONCILIATION_AND_RECEIVER_CAPACITY"
+  },
+  "next": "R1_READONLY_DEEP_CENSUS__BRANCHES_READMES_WORKFLOWS_RELEASES_POINTERS__THEN_PROPOSE_TYPED_TOPOLOGY_DIFF"
+}
