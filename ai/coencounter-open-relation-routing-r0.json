@@ -1,0 +1,87 @@
+{
+  "schema": "CoEncounterOpenRelationRouting.R0.v0.1",
+  "state": "PUBLIC_BRANCH_CANDIDATE__REVIEW_ONLY__NO_ASSIGNMENT_NO_DELIVERY_NO_NOTIFICATION_NO_AUTHORITY",
+  "observed_main": "b94f177c9349df7fc8d94327275cabe675e9c2ec",
+  "source_fixture": "docs/Operations/fixtures/coencounter-yield-r0a-multireceiver.json",
+  "source_proof": "docs/Operations/proofs/coencounter-yield-r0a-container-pass-20260924.json",
+  "subscription_profiles": "ai/session-subscription-profiles.json",
+  "independence_policy": {
+    "semantic_review_input": "RAW_R0A_FIXTURE_PLUS_EXACT_SOURCE_HASH_ONLY",
+    "prior_result_assertions_used": false,
+    "routing_phase_after_semantic_review": true,
+    "ignored_for_route_election": [
+      "attribution_relations",
+      "benefit_observations",
+      "contribution_delta_refs"
+    ],
+    "rationale": "Reduce cue/credit/consensus feedback when independently reviewing encounter evidence before routing open relations."
+  },
+  "capability_routes": [
+    {
+      "capability_hint": "translation/accessibility",
+      "domain_hint": "CoUX+/CoSurface+",
+      "candidate_profiles": [
+        "CoUX",
+        "CoLanguage",
+        "CoPublic"
+      ]
+    }
+  ],
+  "route_policy": {
+    "require_profile_exists": true,
+    "require_domain_subscription": true,
+    "allowed_subscription_tiers": [
+      "hot",
+      "warm",
+      "digest"
+    ],
+    "consent_required_means_hold": true,
+    "route_state": "ROUTE_CANDIDATE__NOT_ASSIGNED_NOT_DELIVERED",
+    "unmatched_state": "HELD_NO_BOUNDED_RECEIVER_MATCH"
+  },
+  "external_donors": [
+    {
+      "id": "W3C_PROV_O",
+      "source": "https://www.w3.org/TR/prov-o/",
+      "useful_overlap": [
+        "agent/activity/entity separation",
+        "derivation",
+        "association",
+        "attribution",
+        "delegation",
+        "qualified influence"
+      ],
+      "translation_loss": "CoContributionLineage has project-specific epistemic, authority, receiver and benefit-uncertainty relations that PROV-O does not by itself supply.",
+      "rail": "PROV_ALIGNMENT_NE_PROV_ONTOLOGY_ADOPTION"
+    },
+    {
+      "id": "STIGMERGY",
+      "source": "https://doi.org/10.1162/106454699568700",
+      "useful_overlap": [
+        "indirect coordination through persistent environmental traces",
+        "one participant can leave cues that alter later participant action without continuous co-presence"
+      ],
+      "contradiction": "CoAll cannot inherit biological stigmergy's implicit cue-following. Consent, authority, provenance, confidentiality and epistemic class must remain explicit.",
+      "hidden_assumption": "Visible prior cues can bias later reviewers, so independent semantic review should precede exposure to routing/credit cues when practical.",
+      "rails": [
+        "ENVIRONMENTAL_CUE_NE_TASK_ASSIGNMENT",
+        "STIGMERGIC_CUE_NE_AUTHORITY",
+        "VISIBLE_PRIOR_CUE_CAN_BIAS_INDEPENDENT_REVIEW"
+      ]
+    }
+  ],
+  "rails": [
+    "ENCOUNTER_REVIEW_NE_TRUTH",
+    "ROUTE_CANDIDATE_NE_ASSIGNMENT",
+    "ROUTE_CANDIDATE_NE_DELIVERY",
+    "SUBSCRIPTION_NE_AUTHORITY",
+    "MATCH_NE_ASSIGNMENT_AUTHORITY",
+    "RELATION_CAN_WAKE_NE_PARTICIPANT_MUST_BE_NOTIFIED",
+    "SENSING_SCALE_NE_AUTHORITY_SCALE",
+    "ATTRIBUTION_NE_OWNERSHIP",
+    "BENEFIT_OBSERVED_NE_BENEFIT_CAUSED",
+    "PROV_ALIGNMENT_NE_PROV_ONTOLOGY_ADOPTION",
+    "ENVIRONMENTAL_CUE_NE_TASK_ASSIGNMENT",
+    "VISIBLE_PRIOR_CUE_CAN_BIAS_INDEPENDENT_REVIEW"
+  ]
+}
