@@ -1,0 +1,44 @@
+{
+  "deltas": [
+    {
+      "delta_id": "fixture-a",
+      "source_session": "FixtureA",
+      "created_at": "2026-09-23T11:20:00Z",
+      "source_refs": ["fixture://a"],
+      "target_domains": ["CoLex", "Humour"],
+      "operations": [
+        {"op": "LINK", "subject": "CoMemeable+", "relation": "projects_to", "object": "public-highlight", "evidence_refs": ["fixture://e1"]},
+        {"op": "HIGHLIGHT", "subject": "CoMemeable+", "relation": "candidate_for", "object": "README"}
+      ],
+      "evidence_refs": ["fixture://e1"],
+      "candidate_surfaces": ["README.md"],
+      "authority_ceiling": "CANDIDATE_ONLY",
+      "public_safety": "PUBLIC_SAFE",
+      "nonclaims": ["NOT_CANON"],
+      "next_gate": "FANIN_REVIEW",
+      "projection_of": "CoEvoDelta+",
+      "next_receiver": "CoEvoFanIn",
+      "observed_base_ref": "main@example-base",
+      "receiver_readproof_gate": "EXACT_DELTA_ID_OR_HASH"
+    },
+    {
+      "delta_id": "fixture-b",
+      "source_session": "FixtureB",
+      "created_at": "2026-09-23T11:21:00Z",
+      "target_domains": ["CoLex", "UX"],
+      "operations": [
+        {"op": "LINK", "subject": "CoMemeable+", "relation": "projects_to", "object": "public-highlight", "evidence_refs": ["fixture://e1"]},
+        {"op": "LINK", "subject": "CoMemeable+", "relation": "projects_to", "object": "RickBar"}
+      ],
+      "candidate_surfaces": ["README.md", "RickBar"],
+      "authority_ceiling": "CANDIDATE_ONLY",
+      "public_safety": "PUBLIC_SAFE_WITH_REDACTION",
+      "nonclaims": ["NOT_CANON"],
+      "next_gate": "REDACTION_THEN_REVIEW",
+      "projection_of": "CoEvoDelta+",
+      "next_receiver": "CoEvoFanIn",
+      "observed_base_ref": "main@example-base",
+      "receiver_readproof_gate": "EXACT_DELTA_ID_OR_HASH"
+    }
+  ]
+}
