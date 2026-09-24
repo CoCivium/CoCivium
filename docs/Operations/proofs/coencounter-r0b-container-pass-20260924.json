@@ -1,0 +1,78 @@
+{
+  "schema": "CoEncounterIndependentReviewCanary.R0B.ExecutionEvidence.v0.1",
+  "state": "PASS_BOUNDED_CONTAINER_LOCAL_SYNTHETIC__INDEPENDENT_REVIEW_AND_OPEN_RELATION_ROUTING__NOT_RUNTIME_INTEGRATION",
+  "executed_utc": "2026-09-24T14:47:37Z",
+  "execution_surface": "OpenAI task container",
+  "exact_git_blob_bindings": {
+    "reviewer_script": "3f3bbc1f7b0a2cec009e6d6f16f8dc6318d84745",
+    "canary_script": "e4813b4a3d3735b1e6edcc0f97fa1eeaab2a1bad",
+    "receiver_fixture": "a29a2979a85e5f4c121109f9616e789f05285704",
+    "r0a_encounter_fixture_main": "41979591241ec277e6f51a72b93340a7f61c332e"
+  },
+  "exact_local_sha256": {
+    "reviewer_script": "FFDE5167C36CD453EA4E172E7870FB972A2C89B7D1E72788A92AFD241B12A634",
+    "canary_script": "EEB0C71C9108797C62A3B80673C6DE7909E309DBFC3622D6D71907C315C7BBF6",
+    "receiver_fixture": "EE737098B37F558B302F57D07FAAB3E3B985E7DE87BE60DA58E75669B043FC13",
+    "r0a_encounter_fixture": "32538131A7DFA8BE1BE6ADAE8282035EC7C339BE9091CD19BD1DD9025CBA46E7",
+    "review_1": "F5D230635D1D5BB8D55FFAB6119F55CC56262B44B6509FFDE90EEFC08DE10B36",
+    "review_2": "59014DC14BFEFBDF86FBB2E2C4712B5366C4B61B57C7A1B915D494F113183F3F",
+    "review_3": "C2C9A6111A80203B84A7534D5E2AC2C01D685910F975D1392BE7E66866147ED3",
+    "result": "E740F0D8F174A8662131947FE0D74320F820F940EFAE0E169C1E774773C74B16"
+  },
+  "result": {
+    "state": "PASS_R0B_THREE_DISTINCT_RECEIVER_PROCESSES__INDEPENDENT_REVIEW__OPEN_RELATION_MATCH_CANDIDATE_ONLY__COST_AND_STALENESS_HELD__NO_AUTHORITY_INFLATION",
+    "receiver_process_ids": [
+      697,
+      707,
+      717
+    ],
+    "same_encounter_fixture_sha256": "32538131A7DFA8BE1BE6ADAE8282035EC7C339BE9091CD19BD1DD9025CBA46E7",
+    "open_relations": 1,
+    "route_results": [
+      {
+        "receiver_id": "receiver:ux-translator-current-low",
+        "route_state": "MATCH_CANDIDATE",
+        "held_reasons": []
+      },
+      {
+        "receiver_id": "receiver:education-translator-current-high",
+        "route_state": "HELD",
+        "held_reasons": [
+          "cost_ok"
+        ]
+      },
+      {
+        "receiver_id": "receiver:language-translator-stale-low",
+        "route_state": "HELD",
+        "held_reasons": [
+          "currentness_ok"
+        ]
+      }
+    ],
+    "semantic_acceptance_inferred": false,
+    "assignment_executed": false,
+    "notification_executed": false,
+    "authority_change": false
+  },
+  "lifecycle_evidence": {
+    "r0a_encounter_fixture": "VERIFIED_LOCAL_FOR_CANARY",
+    "independent_review_artifacts": "VERIFIED_LOCAL_FOR_CANARY",
+    "open_relation_match_candidate": "VERIFIED_LOCAL_FOR_CANARY",
+    "receiver_pickup_of_match_packet": "UNPROVEN",
+    "integration": "UNPROVEN",
+    "coex": "UNPROVEN"
+  },
+  "next": "R0C_EXACT_MATCH_PACKET_PICKUP__CONTRIBUTION_LINEAGE_BINDING__NO_AUTO_ASSIGNMENT",
+  "nonclaims": [
+    "LOCAL_IS_NOT_LANDED",
+    "VALIDATION_IS_NOT_ACCEPTANCE",
+    "NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF",
+    "NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE",
+    "HASHING_IS_NOT_SEMANTIC_INGESTION",
+    "DISCOVERED_SET_IS_NOT_COMPLETE_HISTORY",
+    "INDEPENDENT_REVIEW_NE_TRUTH",
+    "MATCH_NE_ASSIGNMENT_AUTHORITY",
+    "TWO_OR_MORE_PROCESSES_NE_TWO_OR_MORE_FAILURE_DOMAINS",
+    "LOCAL_CANARY_NE_RUNTIME_INTEGRATION"
+  ]
+}
