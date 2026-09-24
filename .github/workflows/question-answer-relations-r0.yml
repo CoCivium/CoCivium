@@ -1,0 +1,72 @@
+name: Question Answer Relations R0
+
+on:
+  pull_request:
+    paths:
+      - 'docs/Architecture/COQA_QUESTION_COMMONS_R0.md'
+      - 'schemas/coqa-object-v0.1.schema.json'
+      - 'scripts/validate_question_answer_schema_r0.py'
+      - '.github/workflows/question-answer-relations-r0.yml'
+  push:
+    paths:
+      - 'docs/Architecture/COQA_QUESTION_COMMONS_R0.md'
+      - 'schemas/coqa-object-v0.1.schema.json'
+      - 'scripts/validate_question_answer_schema_r0.py'
+
+permissions:
+  contents: read
+
+jobs:
+  schema-contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python -m json.tool schemas/coqa-object-v0.1.schema.json >/dev/null
+      - run: python scripts/validate_question_answer_schema_r0.py
+
+  doctrine-rails:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - shell: bash
+        run: |
+          set -euo pipefail
+          f=docs/Architecture/COQA_QUESTION_COMMONS_R0.md
+          grep -q 'ANSWER_NE_FINAL_TRUTH' "$f"
+          grep -q 'ENGAGEMENT_NE_COBENEFIT' "$f"
+          grep -q 'MYSTERY_NE_PERMISSION_TO_INVENT_FACTS' "$f"
+          grep -q 'PARALLEL_ANSWERS_NE_MAJORITY_TRUTH' "$f"
+
+  predecessor-hold:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - shell: bash
+        run: |
+          set -euo pipefail
+          f=docs/Architecture/COQA_QUESTION_COMMONS_R0.md
+          grep -q 'COCORE_CANDIDATE_NE_RECOVERED_COCORE_MEANING' "$f"
+
+  currentness-benefit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - shell: bash
+        run: |
+          set -euo pipefail
+          f=docs/Architecture/COQA_QUESTION_COMMONS_R0.md
+          grep -q 'OLD_ANSWER_NE_FALSE_BY_DEFAULT' "$f"
+          grep -q 'LATEST_ANSWER_NE_ONLY_USEFUL_ANSWER' "$f"
+          grep -q 'TIME_SPENT_NE_VALUE' "$f"
+
+  bounded-fanin:
+    needs: [schema-contract, doctrine-rails, predecessor-hold, currentness-benefit]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - shell: bash
+        run: |
+          set -euo pipefail
+          echo 'PASS_BOUNDED_PARALLEL_QUESTION_ANSWER_R0'
+          echo 'CI_PASS_NE_ANSWER_TRUTH'
+          echo 'NO_RUNTIME_OR_CANON_INFERENCE'
