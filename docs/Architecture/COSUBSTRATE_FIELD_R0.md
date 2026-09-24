@@ -228,6 +228,25 @@ Migration between memory modes SHOULD preserve declared invariants, provenance, 
 - CoSoftware+
 - CoQuantum+
 
+
+## Public framing / repository description candidate
+
+The current repository tagline is materially narrower than the present architecture. A public description should not imply that CoCivium is primarily an online-group governance, XR-avatar, monetization, karma-badge, or ethics-scoreboard project.
+
+Candidate short description:
+
+> **Open-source relational R&D for CoAll / Civ2+: evolving human+AI coordination, memory, software, hardware, provenance, privacy, and adaptive interfaces across local, networked, public, and future substrates.**
+
+Shorter candidate:
+
+> **Open-source relational infrastructure for human+AI coordination, adaptive software, memory, provenance, privacy, and evolving local/networked substrates.**
+
+The older XR/avatar/karma/micro-monetization material remains historically relevant as one application/projection family, not the project-defining scope.
+
+`PUBLIC_TAGLINE_NE_PROJECT_ONTOLOGY`
+`APPLICATION_EXAMPLE_NE_FOUNDATIONAL_SCOPE`
+`HISTORICAL_DESCRIPTION_NE_CURRENT_DESCRIPTION`
+
 ## Maturity rail
 
 Any substrate concept SHOULD be separately classifiable as:
