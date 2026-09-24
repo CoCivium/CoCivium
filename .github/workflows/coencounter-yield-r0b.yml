@@ -29,7 +29,6 @@ jobs:
       - name: Install JSON Schema validator
         run: python -m pip install --disable-pip-version-check jsonschema==4.23.0
       - name: Validate exact R0A encounters against CoEncounterYield schema
-        shell: python
         run: |
           python - <<'PY'
           import json
