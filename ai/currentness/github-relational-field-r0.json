@@ -1,0 +1,44 @@
+{
+  "schema": "CoAll.GitHubRelationalField.Currentness.v0.1-candidate",
+  "state": "RELATIONAL_GITHUB_PROJECTION_GRAPH_LANDED__NOT_ONTOLOGY_NOT_TOTALITY",
+  "observed_at": "2026-09-24T17:34:41Z",
+  "main_commit": "e659978b6f594a8062d4ede90affac8ad11cd8ca",
+  "graph": "ai/repo-field-projection-graph-r0.json",
+  "role_map": "ai/repo-role-map.json",
+  "bounded_observation": {
+    "nodes": 22,
+    "repositories": 21,
+    "repository_to_coall_projection_relations": 21,
+    "referential_validation": "PASS_STATIC_GRAPH_REFERENTIAL_CHECK"
+  },
+  "doctrine": [
+    "RELATION_PERSISTS__BINDING_EVOLVES",
+    "REPOSITORY_NE_ONTOLOGY",
+    "ONE_OBJECT_CAN_HAVE_MANY_REPO_PROJECTIONS",
+    "DIRECTORY_TREE_NE_SEMANTIC_TREE",
+    "README_NE_CANON",
+    "BRANCH_NE_ACCEPTANCE",
+    "PR_NE_CANON",
+    "MERGED_NE_CANON",
+    "GITHUB_NE_COALL_TOTALITY",
+    "GITHUB_WRITE_ACCESS_NE_GLOBAL_AUTHORITY",
+    "FANIN_BEFORE_MORE_PARALLEL_MUTATION"
+  ],
+  "satisfied_donor_class": "REPO_FIELD_PROJECTION_GRAPH_RELATIONS",
+  "future_proof_target": "PRESERVE_ONE_STABLE_RELATION_IDENTITY_ACROSS_CHANGED_REPOSITORY_OR_PATH_BINDING_WITH_EXACT_PROVENANCE_AND_EXPLICIT_PROJECTION_LOSS",
+  "next_receivers": [
+    "CoSessionConvergence+",
+    "CoEvoReceiverFanout+",
+    "CoIndex+/CoLex+",
+    "CoSourceGraph+",
+    "RickBar+/CoDesktop+"
+  ],
+  "nonclaims": [
+    "NOT_COMPLETE_ORGANIZATION_GRAPH",
+    "NOT_CANON",
+    "NOT_RUNTIME",
+    "NOT_AUTHORITY_TRANSFER",
+    "NOT_DURABLE_TOTAL_CUSTODY",
+    "NOT_ALL_BINDINGS_SEMANTICALLY_EQUIVALENT"
+  ]
+}

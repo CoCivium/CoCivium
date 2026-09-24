@@ -273,3 +273,17 @@ Use [CoBoogie / CoRegroup Relational Return R1](docs/Architecture/COBOOGIE_REGRO
 `COBOOGIE_NE_BLIND_RESCAN`  
 `COREGROUP_NE_NEWEST_WINS`  
 `TIME_ELAPSED_NE_BOOGIE_REQUIRED`
+
+
+## GitHub remains relational
+
+Treat GitHub as a **living relational projection/collaboration field**, not as CoAll itself. Use [the repo-field projection graph](ai/repo-field-projection-graph-r0.json), [the relational repo-role map](ai/repo-role-map.json), and [the currentness index](ai/currentness/github-relational-field-r0.json) when routing objects across repositories, paths, branches, PRs, README/index surfaces, or future bindings.
+
+A semantic relation may persist while its repository/path/renderer/receiver binding changes, but binding changes require provenance, currentness, and projection-loss evidence.
+
+`RELATION_PERSISTS__BINDING_EVOLVES`  
+`REPOSITORY_NE_ONTOLOGY`  
+`ONE_OBJECT_CAN_HAVE_MANY_REPO_PROJECTIONS`  
+`DIRECTORY_TREE_NE_SEMANTIC_TREE`  
+`README_NE_CANON`  
+`GITHUB_NE_COALL_TOTALITY`
