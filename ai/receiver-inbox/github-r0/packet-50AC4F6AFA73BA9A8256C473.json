@@ -1,0 +1,85 @@
+{
+  "coevo_delta": {
+    "$schema": "https://github.com/CoCivium/CoCivium/schemas/coevo-delta-v0.2.schema.json",
+    "authority_ceiling": "CANDIDATE_BRANCH_ONLY",
+    "collision_domain": "CoGitHubReceiverAdapterCanary",
+    "confidence": 1.0,
+    "confidentiality": "PUBLIC",
+    "contradictions": [],
+    "delta_id": "cocivia260923.github-adapter.canary.delta.001",
+    "domain": [
+      "CoAutoEvo+/CoEvo+"
+    ],
+    "epistemic_class": "OBSERVED",
+    "evidence_refs": [],
+    "expected_benefit": "prove bounded GitHub landing without claiming pickup",
+    "mutation_class": "BRANCH_MUTATE",
+    "next_gate": "DESTINATION_READBACK_THEN_RECEIVER_PICKUP",
+    "next_receiver": "github-content-surface:CoCivium/CoCivium:candidate-branch",
+    "nonclaims": [
+      "NOT_CANON",
+      "NOT_MAIN",
+      "NOT_RECEIVER_PICKUP",
+      "NOT_INTEGRATED"
+    ],
+    "object": "CoCivium/CoCivium candidate branch inbox",
+    "observed_at": "2026-09-23T11:58:00Z",
+    "observed_base_ref": "538e258cb798d0b59589fde2dce92dde57ac919b",
+    "public_safety": "PUBLIC_SAFE",
+    "qualifiers": {
+      "synthetic_canary": true,
+      "target_effect": "candidate_branch_inbox_only"
+    },
+    "receiver_readproof_gate": "EXACT_PACKET_GIT_BLOB_OR_SHA256",
+    "relation": "tests_bounded_delivery_to",
+    "risks": [
+      "delivery may be mistaken for receiver pickup"
+    ],
+    "session_id": "CoCivia260923",
+    "source_refs": [
+      "pr:23",
+      "branch:cocivia260923/session-relational-delta-r0"
+    ],
+    "subject": "CoGitHubReceiverAdapterCanary+",
+    "supersedes": [],
+    "target_surfaces": [
+      "ai/receiver-inbox/github-r0/"
+    ],
+    "tests": [
+      "exact destination file readback"
+    ],
+    "typed_operation": "ADD",
+    "wake_conditions": []
+  },
+  "delivery_state": "PACKET_COMPILED__NOT_DELIVERED",
+  "delta_id": "cocivia260923.github-adapter.canary.001",
+  "downstream_gates": [],
+  "effects": {
+    "branch_creation": 0,
+    "publication": 0,
+    "pull_request_creation": 0,
+    "receiver_pickup_claim": 0,
+    "target_mutation": 0
+  },
+  "evidence_refs": [
+    "pr:23",
+    "main:f4c1e9fd5692781db9f764de10b72d0cb1ccb73a"
+  ],
+  "expected_target_head": "538e258cb798d0b59589fde2dce92dde57ac919b",
+  "next_gate": "DESTINATION_READBACK_THEN_RECEIVER_PICKUP",
+  "nonclaims": [
+    "PACKET_NE_DELIVERY",
+    "DELIVERY_NE_PICKUP",
+    "NOT_MAIN",
+    "NOT_CANON"
+  ],
+  "packet_class": "REPOSITORY_CANDIDATE",
+  "packet_id": "packet:50AC4F6AFA73BA9A8256C473",
+  "packet_sha256": "50AC4F6AFA73BA9A8256C47316A788EF892F30F46E8B1BE3AB12EAB517241DA7",
+  "proposed_action": "LAND_CANDIDATE_DELTA_OR_BRANCH",
+  "receiver_id": "github:CoCivium/CoCivium:candidate-branch",
+  "receiver_readproof_gate": "EXACT_PACKET_GIT_BLOB_OR_SHA256",
+  "receiver_repo": "CoCivium/CoCivium",
+  "route_id": "route:github-canary-001",
+  "route_state": "CANDIDATE_ROUTE_CURRENTNESS_BOUND"
+}
