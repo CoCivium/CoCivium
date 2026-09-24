@@ -265,3 +265,11 @@ Use [CoParticipationEcology+ R0](docs/Architecture/COPARTICIPATION_ECOLOGY_R0.md
 `ENCOUNTER_CAN_PRODUCE_VALUE_WITHOUT_MUTATION`  
 `MATCH_NE_ASSIGNMENT_AUTHORITY`  
 `ROUTE_CANDIDATE_NE_PICKUP`
+
+## CoBoogie+ / CoRegroup+ reconciliation
+
+Use [CoBoogie / CoRegroup Relational Return R1](docs/Architecture/COBOOGIE_REGROUP_RELATIONAL_RETURN_R1.md) and [the machine policy](ai/coboogie-regroup-policy.json) when material drift, stale currentness, contradictory evidence, receiver failure, return/reawakening, or failure-domain change justifies a bounded regroup. Do not trigger merely because time passed.
+
+`COBOOGIE_NE_BLIND_RESCAN`  
+`COREGROUP_NE_NEWEST_WINS`  
+`TIME_ELAPSED_NE_BOOGIE_REQUIRED`
