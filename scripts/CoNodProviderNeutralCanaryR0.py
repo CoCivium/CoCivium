@@ -52,6 +52,12 @@ require("PR_NE_CANON" in github_surface["rails"], "GITHUB_PR_CANON_RAIL_MISSING"
 require("CI_PASS_NE_RUNTIME" in github_surface["rails"], "GITHUB_CI_RUNTIME_RAIL_MISSING")
 require(github_surface["conod_relation"]["role"] == "ONE_ADMISSIBLE_RECEIVER_OR_MATERIALIZATION_SURFACE", "GITHUB_CONOD_ROLE")
 require("REPOSITORY" in github_surface["temporal_currentness"]["bind"] and "COMMIT_SHA" in github_surface["temporal_currentness"]["bind"], "GITHUB_CURRENTNESS_BIND_MISSING")
+require(github_surface["projection_compilation"]["principle"] == "RELATION_OR_OBJECT_PRECEDES_ANY_ONE_GITHUB_PROJECTION", "GITHUB_RELATION_FIRST_PRINCIPLE")
+require(github_surface["projection_compilation"]["reverse_navigation"].startswith("GITHUB_PROJECTION_SHOULD_POINT_BACK"), "GITHUB_REVERSE_NAVIGATION_MISSING")
+require("RELATION_PERSISTS__BINDING_EVOLVES" in github_surface["projection_compilation"]["rails"], "GITHUB_REBIND_RAIL_MISSING")
+require("PROJECTION_NE_SOURCE" in github_surface["projection_compilation"]["rails"], "GITHUB_PROJECTION_SOURCE_RAIL_MISSING")
+require("REPO_BOUNDARY_NE_SEMANTIC_BOUNDARY" in github_surface["cross_repo_relation_graph"]["rails"], "GITHUB_CROSS_REPO_BOUNDARY_RAIL_MISSING")
+
 
 print(json.dumps({
     "STATE":"PASS_BOUNDED_STATIC_CONOD_PROVIDER_NEUTRAL_CANARY",
