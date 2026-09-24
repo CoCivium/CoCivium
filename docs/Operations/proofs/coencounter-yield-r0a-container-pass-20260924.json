@@ -1,0 +1,40 @@
+{
+  "schema": "CoEncounterYieldCanary.R0A.ExecutionEvidence.v0.1",
+  "state": "PASS_BOUNDED_CONTAINER_LOCAL_SYNTHETIC__NOT_RUNTIME_INTEGRATION",
+  "executed_utc": "2026-09-24T14:30:02Z",
+  "execution_surface": "OpenAI task container",
+  "local_sha256": {
+    "canary": "103643180A11591CC1F7D70FE55361276438E5F7E523619AE3EEB3C1197934B2",
+    "fixture": "32538131A7DFA8BE1BE6ADAE8282035EC7C339BE9091CD19BD1DD9025CBA46E7",
+    "proof": "4D7ED94CA317BC72A11B9260A4ABCFFB553A21FA39135C5134C3835DCAF625B5"
+  },
+  "local_git_blob_sha": {
+    "canary": "7e63b810f25425385c65231349e49009f552e023",
+    "fixture": "41979591241ec277e6f51a72b93340a7f61c332e",
+    "proof": "2f00407dc215d97ed5a59f78c55c2ae1a38a6618"
+  },
+  "result_state": "PASS_R0A_MULTI_RECEIVER_ENCOUNTER_YIELD__NONMUTATING_VALUE__BOUNDED_CONTRIBUTION__EVIDENCED_NULL__NO_AUTHORITY_INFLATION",
+  "checks": {
+    "encounters": 3,
+    "nonmutating_interpretability_evidence": true,
+    "bounded_contribution_candidate": true,
+    "evidenced_null_preserved": true,
+    "benefit_counterfactual_discipline": true,
+    "typed_attribution": true,
+    "authority_not_increased_by_participation": true,
+    "no_notification_route_without_authorization": true
+  },
+  "effects": {
+    "repo_mutations": 0,
+    "participant_notifications": 0,
+    "authority_changes": 0,
+    "provider_session_mutations": 0
+  },
+  "next": "R0B_INDEPENDENT_RECEIVER_REVIEW_OF_ENCOUNTER_YIELD_AND_OPEN_RELATION_ROUTING",
+  "nonclaims": [
+    "LOCAL_CANARY_NE_RUNTIME_INTEGRATION",
+    "VALIDATION_IS_NOT_ACCEPTANCE",
+    "NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF",
+    "ENCOUNTER_YIELD_NE_TRUTH"
+  ]
+}

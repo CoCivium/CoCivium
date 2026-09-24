@@ -1,0 +1,122 @@
+{
+  "schema": "CoEncounterYieldCanaryPack.R0A.v0.1",
+  "encounters": [
+    {
+      "encounter_id": "coencounter:r0a:interpretability",
+      "observed_at": "2026-09-24T14:30:00Z",
+      "participant_binding": "synthetic:model-small-a",
+      "participant_class": "MODEL_INSTANCE",
+      "source_object_refs": ["fixture:public-explanation-A"],
+      "subscription_context": "CoGeneralist bounded projection",
+      "encounter_mode": "TEST",
+      "yields": [
+        {
+          "yield_type": "INTERPRETABILITY_EVIDENCE",
+          "epistemic_class": "OBSERVED",
+          "subject": "participant/session distinction",
+          "relation": "RECEIVER_CONFUSED_ROLE_WITH_IDENTITY",
+          "evidence_refs": ["fixture:readback-A"],
+          "confidence": 1.0
+        }
+      ],
+      "authority_ceiling": "OBSERVE_AND_PROPOSE_ONLY",
+      "confidentiality": "PUBLIC",
+      "contribution_delta_refs": [],
+      "open_relations": [
+        {
+          "relation_id": "open:plain-language-role-identity",
+          "need": "plain-language projection preserving role/identity distinction",
+          "capability_hint": "translation/accessibility",
+          "status": "OPEN",
+          "consent_required": false,
+          "authority_required": "PROPOSE_ONLY"
+        }
+      ],
+      "benefit_observations": [],
+      "attribution_relations": [],
+      "wake_relations": [
+        {
+          "predicate": "plain-language projection accepted for review",
+          "participant_notification_authorized": false,
+          "communication_route_ref": null
+        }
+      ],
+      "next_receiver": "CoUX/CoEducation",
+      "nonclaims": ["ENCOUNTER_CAN_PRODUCE_VALUE_WITHOUT_MUTATION", "SENSING_SCALE_NE_AUTHORITY_SCALE"]
+    },
+    {
+      "encounter_id": "coencounter:r0a:challenge",
+      "observed_at": "2026-09-24T14:30:01Z",
+      "participant_binding": "synthetic:challenger-b",
+      "participant_class": "SYNTH_PARTICIPANT",
+      "source_object_refs": ["fixture:concept-B"],
+      "subscription_context": "CoTheory bounded projection",
+      "encounter_mode": "CHALLENGE",
+      "yields": [
+        {
+          "yield_type": "CHALLENGE",
+          "epistemic_class": "INFERRED",
+          "subject": "candidate concept collision",
+          "relation": "TWO_NAMES_MAY_SHARE_ONE_RELATIONAL_FUNCTION",
+          "evidence_refs": ["fixture:comparison-B"],
+          "confidence": 0.72
+        }
+      ],
+      "authority_ceiling": "OBSERVE_AND_PROPOSE_ONLY",
+      "confidentiality": "PUBLIC",
+      "contribution_delta_refs": ["coevo:synthetic-challenge-b"],
+      "open_relations": [],
+      "benefit_observations": [
+        {
+          "observed_effect": "collision was surfaced for independent review",
+          "beneficiary_ref": "CoLex/CoIndex review lane",
+          "evidence_refs": ["fixture:comparison-B"],
+          "baseline": "collision not represented in fixture before encounter",
+          "counterfactual_confidence": 0.3,
+          "attribution_fraction": null,
+          "attribution_uncertainty": "HIGH__OTHER_RECEIVERS_MIGHT_HAVE_FOUND_IT",
+          "duration": null,
+          "side_effects": []
+        }
+      ],
+      "attribution_relations": [
+        {
+          "relation": "CHALLENGED_BY",
+          "participant_binding": "synthetic:challenger-b",
+          "object_ref": "fixture:concept-B"
+        }
+      ],
+      "wake_relations": [],
+      "next_receiver": "CoLex/CoIndex independent reviewer",
+      "nonclaims": ["BENEFIT_OBSERVED_NE_BENEFIT_CAUSED", "CONTRIBUTION_NE_SOLE_CAUSE"]
+    },
+    {
+      "encounter_id": "coencounter:r0a:null",
+      "observed_at": "2026-09-24T14:30:02Z",
+      "participant_binding": "synthetic:observer-c",
+      "participant_class": "OBSERVER",
+      "source_object_refs": ["fixture:object-C"],
+      "subscription_context": "CoIndex bounded projection",
+      "encounter_mode": "EVIDENCED_NULL",
+      "yields": [
+        {
+          "yield_type": "EVIDENCED_NULL",
+          "epistemic_class": "OBSERVED",
+          "subject": "bounded duplicate/contradiction search",
+          "relation": "NO_MATERIAL_DELTA_FOUND_WITHIN_FIXTURE_SCOPE",
+          "evidence_refs": ["fixture:search-C"],
+          "confidence": 1.0
+        }
+      ],
+      "authority_ceiling": "OBSERVE_ONLY",
+      "confidentiality": "PUBLIC",
+      "contribution_delta_refs": [],
+      "open_relations": [],
+      "benefit_observations": [],
+      "attribution_relations": [],
+      "wake_relations": [],
+      "next_receiver": "CoIndex",
+      "nonclaims": ["SEARCH_MISS_NE_GLOBAL_ABSENCE", "EVIDENCED_NULL_NE_USELESS"]
+    }
+  ]
+}
