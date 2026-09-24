@@ -1,0 +1,88 @@
+{
+  "delta_id": "CoSitesNodes260914-S1.CoEncounterYield.R0A.SchemaValidationGap.R0",
+  "session_id": "CoSitesNodes260914-S1",
+  "observed_at": "2026-09-24T14:44:59Z",
+  "domain": [
+    "CoAll+",
+    "CoSession+",
+    "CoAutoEvo+/CoEvo+",
+    "CoRails+",
+    "CoSource+/Provenance"
+  ],
+  "subject": "CoEncounterYield R0A canary validation scope",
+  "relation": "R0A_CUSTOM_CANARY_DOES_NOT_VALIDATE_FULL_COENCOUNTER_JSON_SCHEMA_AND_REPORTS_TYPED_ATTRIBUTION_WITHOUT_ASSERTING_ATTRIBUTION_PRESENCE",
+  "epistemic_class": "OBSERVED",
+  "source_refs": [
+    "CoCivium/CoCivium@b94f177c9349df7fc8d94327275cabe675e9c2ec",
+    "schemas/coencounter-yield-v0.1.schema.json@20f3753ff2c924c9c759a29f632269fc164d4a74",
+    "scripts/CoEncounterYieldCanaryR0A.py@7e63b810f25425385c65231349e49009f552e023",
+    "docs/Operations/fixtures/coencounter-yield-r0a-multireceiver.json@41979591241ec277e6f51a72b93340a7f61c332e",
+    "docs/Operations/proofs/coencounter-yield-r0a-container-pass-20260924.json@fbbd318b95c386b3f6e8dace662dda72bea7030f",
+    "CoCivium/CoCivium#78 issuecomment-5816345984"
+  ],
+  "target_surfaces": [
+    "scripts/CoEncounterYieldCanaryR0A.py",
+    "docs/Operations/COENCOUNTER_YIELD_R0A.md",
+    "docs/Operations/proofs/coencounter-yield-r0a-container-pass-20260924.json"
+  ],
+  "mutation_class": "REVIEW_CHALLENGE",
+  "authority_ceiling": "PUBLIC_SAFE_REVIEW_CHALLENGE_ONLY__NO_RUNTIME_NO_CANON_NO_AUTHORITY_CHANGE",
+  "confidentiality": "PUBLIC",
+  "confidence": 0.99,
+  "contradictions": [
+    "PR78's static receiver review records broad alignment between architecture, schema and R0A proof; this challenge narrows only what the executed custom canary itself proves.",
+    "The current fixture happens to satisfy the inspected schema fields, so this is a validation-coverage gap rather than evidence that the landed fixture is schema-invalid."
+  ],
+  "tests": [
+    "Schema requires subscription_context; the R0A script's per-encounter req list does not check subscription_context.",
+    "The R0A script never invokes JSON Schema validation against schemas/coencounter-yield-v0.1.schema.json.",
+    "The R0A report sets typed_attribution=true unconditionally after only validating relation names for attribution_relations that happen to be present; it does not require at least one attribution relation.",
+    "The R0A script does not validate participant_class against the schema enum and does not validate the full encounter/yield object shapes against the schema."
+  ],
+  "expected_benefit": "Tighten proof wording or validation so R0A/R0B consumers can distinguish custom behavioral checks from full schema conformance, reducing false proof inheritance.",
+  "risks": [
+    "The custom canary may intentionally be narrower than schema validation; if so, documentation should state that scope explicitly rather than silently implying full contract validation.",
+    "Adding full JSON Schema validation may introduce a dependency or duplicate validation path unless an existing project validator is reused."
+  ],
+  "wake_conditions": [
+    "A bounded fix adds exact schema validation or explicitly narrows R0A proof wording.",
+    "An independent receiver demonstrates that the current script's narrower checks are sufficient for the intended proof claim and records that contract explicitly."
+  ],
+  "supersedes": [],
+  "next_receiver": "CoParticipationEcology / CoEvidence / CoEvo convergence receiver",
+  "effect_classes": [
+    "NONE"
+  ],
+  "effect_gate": "NOT_APPLICABLE",
+  "effect_scope": null,
+  "materiality": "MATERIAL",
+  "typed_operation": "CHALLENGE",
+  "evidence_refs": [
+    "schemas/coencounter-yield-v0.1.schema.json@20f3753ff2c924c9c759a29f632269fc164d4a74",
+    "scripts/CoEncounterYieldCanaryR0A.py@7e63b810f25425385c65231349e49009f552e023",
+    "docs/Operations/fixtures/coencounter-yield-r0a-multireceiver.json@41979591241ec277e6f51a72b93340a7f61c332e",
+    "docs/Operations/proofs/coencounter-yield-r0a-container-pass-20260924.json@fbbd318b95c386b3f6e8dace662dda72bea7030f"
+  ],
+  "public_safety": "PUBLIC_SAFE",
+  "qualifiers": {
+    "challenge_scope": "STATIC_EXACT_OBJECT_REVIEW",
+    "schema_validation_proven_by_r0a": false,
+    "fixture_schema_invalid_claimed": false,
+    "runtime_integration_claimed": false,
+    "receiver_pickup_claimed": false,
+    "suggested_resolution": "REUSE_EXISTING_SCHEMA_VALIDATOR_IF_AVAILABLE_OR_NARROW_PASS_WORDING"
+  },
+  "collision_domain": "CoParticipationEcology/CoEncounterYield/Validation",
+  "observed_base_ref": "b94f177c9349df7fc8d94327275cabe675e9c2ec",
+  "next_gate": "R0B_DECIDE_SCHEMA_VALIDATION_SCOPE__THEN_ADD_SCHEMA_VALIDATION_OR_NARROW_PROOF_WORDING",
+  "receiver_readproof_gate": "EXACT_READ_OF_THIS_DELTA_AND_REFERENCED_MAIN_OBJECTS_BEFORE_ACCEPTANCE_OR_DISPOSITION",
+  "nonclaims": [
+    "VALIDATION_IS_NOT_ACCEPTANCE",
+    "STATIC_REVIEW_NE_RUNTIME_EXECUTION",
+    "SCHEMA_VALIDATION_GAP_NE_FIXTURE_INVALID",
+    "REVIEW_CHALLENGE_NE_CANON",
+    "REVIEW_CHALLENGE_NE_RUNTIME",
+    "REVIEW_CHALLENGE_NE_AUTHORITY_TRANSFER",
+    "GITHUB_BRANCH_NE_INTEGRATED"
+  ]
+}
