@@ -1,0 +1,154 @@
+{
+  "schema": "CoGitHub.RelationalSurface.R0.v0.1-candidate",
+  "state": "CANDIDATE_MACHINE_TWIN__NO_CANON_RUNTIME_OR_AUTHORITY_EFFECT",
+  "source_contracts": [
+    "docs/Evolution/COALL_GITHUB_EVOLUTION_FABRIC_R0.md",
+    "docs/Architecture/COBOOGIE_REGROUP_RELATIONAL_RETURN_R1.md",
+    "SESSION_BOOTSTRAP.md"
+  ],
+  "surface_role": [
+    "PUBLIC_SAFE_CURRENTNESS",
+    "EVOLUTION_PROJECTION",
+    "COLLABORATION",
+    "REVIEWABLE_LINEAGE",
+    "MACHINE_READABLE_PUBLIC_PROJECTION"
+  ],
+  "not_roles": [
+    "SOLE_CUSTODY_ROOT",
+    "COALL_TOTALITY",
+    "ONTOLOGY",
+    "CANON_BY_LOCATION",
+    "GLOBAL_AUTHORITY",
+    "PRIVATE_STATE_TOTALITY",
+    "RUNTIME_CONTROL_PLANE"
+  ],
+  "object_relations": {
+    "repository": [
+      "PROJECTS_DOMAIN",
+      "HAS_ROLE",
+      "HAS_VISIBILITY",
+      "HAS_CURRENT_HEAD",
+      "MAY_PROJECT_OBJECTS"
+    ],
+    "branch": [
+      "CANDIDATE_LINEAGE",
+      "DIVERGES_FROM",
+      "MAY_SUPERSEDE_FOR_SCOPE",
+      "NEEDS_CURRENTNESS_RECHECK"
+    ],
+    "commit": [
+      "EXACT_CHANGESET",
+      "PARENT_OF_OR_CHILD_OF",
+      "OBSERVED_AT_REF",
+      "NE_CANON"
+    ],
+    "pull_request": [
+      "PROPOSES_BOUNDED_MUTATION",
+      "RELATES_HEAD_TO_BASE",
+      "CARRIES_REVIEW_CHALLENGE",
+      "NE_ACCEPTANCE"
+    ],
+    "issue_or_discussion": [
+      "QUESTION_OR_CHALLENGE_OR_COORDINATION",
+      "NE_EVIDENCE_BY_EXISTENCE"
+    ],
+    "workflow_or_check": [
+      "VALIDATES_BOUNDED_CONTRACT",
+      "EMITS_EVIDENCE",
+      "NE_ACCEPTANCE",
+      "NE_RUNTIME"
+    ],
+    "release": [
+      "PUBLIC_DISTRIBUTION_PROJECTION",
+      "NE_CANON"
+    ],
+    "readme_or_tree": [
+      "UX_INDEX_PROJECTION",
+      "NE_SEMANTIC_TRUTH"
+    ]
+  },
+  "temporal_currentness": {
+    "bind": [
+      "REPOSITORY",
+      "REF",
+      "COMMIT_SHA",
+      "OBSERVED_AT"
+    ],
+    "rails": [
+      "SEARCH_MISS_NE_OBJECT_ABSENCE",
+      "GITHUB_SEARCH_INDEX_NE_REPO_CURRENTNESS",
+      "AVAILABLE_AT_SHA_NE_CURRENT_FOREVER",
+      "HISTORY_NE_CURRENTNESS"
+    ]
+  },
+  "cross_surface_relations": [
+    "ONE_OBJECT_CAN_HAVE_MANY_REPO_PROJECTIONS",
+    "DOMAIN_NE_REPOSITORY",
+    "REPOSITORY_NE_ONTOLOGY",
+    "DIRECTORY_TREE_NE_SEMANTIC_TREE",
+    "GITHUB_WRITE_ACCESS_NE_GLOBAL_AUTHORITY",
+    "GITHUB_NE_CUSTODY_ROOT",
+    "MAIN_NE_CANON"
+  ],
+  "conod_relation": {
+    "role": "ONE_ADMISSIBLE_RECEIVER_OR_MATERIALIZATION_SURFACE",
+    "preconditions": [
+      "PUBLIC_SAFE_OR_APPROPRIATELY_SCOPED",
+      "CURRENT_HEAD_BOUND",
+      "EQUIVALENT_RELATION_SEARCHED",
+      "COLLISION_DOMAIN_IDENTIFIED",
+      "AUTHORITY_CEILING_CHECKED",
+      "REVERSIBLE_BRANCH_OR_PR_PREFERRED_FOR_CROSS_CUTTING_CHANGE"
+    ],
+    "nonclaims": [
+      "CONOD_NE_GITHUB_COMMIT",
+      "GITHUB_ROUTE_NE_ONLY_ROUTE",
+      "PR_CREATED_NE_WORK_ACCEPTED"
+    ]
+  },
+  "coboogie_regroup_relation": {
+    "triggers": [
+      "HEAD_MOVED",
+      "BRANCH_DIVERGED",
+      "DUPLICATE_OR_EQUIVALENT_RELATION_FOUND",
+      "RECEIVER_PICKUP_CHANGED",
+      "REPO_ROLE_OR_TOPOLOGY_CHANGED"
+    ],
+    "output": "RELATIONAL_DELTA_AND_FINITE_DISPOSITION__NOT_HISTORY_REWRITE"
+  },
+  "coalive_relation": [
+    "HEAD_CURRENTNESS",
+    "PR_REVIEW_STATE",
+    "CI_EVIDENCE",
+    "CROSS_REPO_PROJECTION_MOVEMENT",
+    "HIGHLIGHT_CURRENTNESS"
+  ],
+  "mythops_projection": {
+    "allowed": [
+      "CONSTELLATION",
+      "LIVING_MAP",
+      "RIVER_OF_LINEAGE",
+      "BRANCHING_GARDEN"
+    ],
+    "rail": "MYTHIC_GITHUB_MAP_NE_COALL_WORLD"
+  },
+  "rails": [
+    "GITHUB_NE_COALL_TOTALITY",
+    "GITHUB_NE_CUSTODY_ROOT",
+    "REPOSITORY_NE_ONTOLOGY",
+    "BRANCH_NE_ACCEPTANCE",
+    "PR_NE_CANON",
+    "CI_PASS_NE_RUNTIME",
+    "CI_PASS_NE_CANON",
+    "MERGE_NE_COEX",
+    "PUBLIC_NE_VALIDATED",
+    "DELIVERY_NE_PICKUP"
+  ],
+  "nonclaims": [
+    "NO_PRIVATE_CUSTODY_TOTALITY",
+    "NO_GLOBAL_SESSION_PICKUP",
+    "NO_CANON",
+    "NO_RUNTIME",
+    "NO_AUTHORITY_TRANSFER"
+  ]
+}
