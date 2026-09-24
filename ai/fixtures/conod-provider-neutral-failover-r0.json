@@ -65,7 +65,11 @@
     "PROVIDER_OUTAGE_NE_WORK_DEATH",
     "MODEL_COUNT_NE_INDEPENDENCE",
     "LOCAL_NE_TRUSTED",
-    "RICK_NE_PROVIDER_LOAD_BALANCER"
+    "RICK_NE_PROVIDER_LOAD_BALANCER",
+    "PUSHBACK_SIGNAL_NE_HOSTILITY",
+    "UNKNOWN_EXTERNALITY_NE_ZERO_EXTERNALITY",
+    "DO_NOT_OFFLOAD_PRESSURE_BY_SILENTLY_OVERLOADING_ANOTHER_SURFACE",
+    "CODOPPLER_RELATION_NE_PHYSICAL_DOPPLER_MECHANISM"
   ],
   "nonclaims": [
     "NO_RUNTIME_FAILOVER",
@@ -74,5 +78,39 @@
     "NO_PS7_EXECUTION",
     "NO_CANON",
     "NO_AUTHORITY_TRANSFER"
-  ]
+  ],
+  "synthetic_externality_pacing": {
+    "state": "SYNTHETIC_RELATIONAL_PACING_ONLY",
+    "planned_external_requests": 16,
+    "observed_receiver": {
+      "max_safe_concurrency": 4,
+      "sustainable_rate_per_interval": 8,
+      "observed_arrival_rate_per_interval": 16,
+      "queue_depth": 6,
+      "backpressure_signal": "EXPLICIT_SYNTHETIC",
+      "sampled_at": "2026-09-24T17:36:00Z"
+    },
+    "codoppler_candidate": {
+      "baseline_relation": "OBSERVED_ARRIVAL_RATE / SUSTAINABLE_RECEIVER_RATE",
+      "apparent_rate_ratio": 2,
+      "interpretation": "RECEIVER_RELATIVE_PRESSURE_SHIFT__NOT_PHYSICAL_DOPPLER"
+    },
+    "disposition": {
+      "materialize_now": 4,
+      "stagger": 4,
+      "reroute_to_local_or_other_admissible_surface": 4,
+      "compact_or_dedupe": 2,
+      "hold_for_cooldown": 2
+    },
+    "authority_expansion": false,
+    "human_load_balancing_actions": 0,
+    "expected_checks": [
+      "MATERIALIZE_NOW_LTE_MAX_SAFE_CONCURRENCY",
+      "ALL_PLANNED_REQUESTS_DISPOSITIONED",
+      "BACKPRESSURE_REDUCES_IMMEDIATE_EXTERNAL_LOAD",
+      "NO_SILENT_PRESSURE_TRANSFER",
+      "NO_AUTHORITY_EXPANSION",
+      "NO_HUMAN_LOAD_BALANCING"
+    ]
+  }
 }
