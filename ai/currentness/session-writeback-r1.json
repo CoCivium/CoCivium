@@ -1,0 +1,63 @@
+{
+  "schema": "CoSessionWriteback.Currentness.R1.v0.1-candidate",
+  "state": "FRESH_MAIN_FANIN_CANDIDATE__DONOR_IMPLEMENTATION_FORWARD_PORTED__STATIC_CI_PENDING",
+  "updated_utc": "2026-09-24T05:18:04Z",
+  "base_main_commit": "e4a258956649639daf1bb83633b81cdcf18bd0c6",
+  "donor_pr": 23,
+  "donor_branch": "cocivia260923/session-relational-delta-r0",
+  "exact_forward_ported_blobs": {
+    "scripts/CoSessionProjectionToCoEvo.py": "168388c22a33ada63d36629bd443d2b4d3390cae",
+    "scripts/CoSessionRelationalFanIn.py": "690cba4811eb8f4cf8cb6f4b1d4b52d8b6776002",
+    "scripts/CoEvoReceiverFanoutPlanner.py": "02d30d6ff4576cdab98268d6d7edf1935481db4e",
+    "scripts/CoEvoReceiverPacketCompiler.py": "208e3db1ea6b25df68568bb2e3f770d3b8fe0b7a",
+    "scripts/CoEvoToPublicCoPulseProjectorR0.py": "af154f9a647bab28f06e2fb9f656751fae2daf32",
+    "schemas/cosession-relational-delta-v0.2.schema.json": "59221ae0044e2624b708222f9bbcdf5610981566",
+    "schemas/coevo-fanout-plan-v0.1.schema.json": "1cb27ef160953df702f49dbc66da9ec5a0163cd3",
+    "schemas/coevo-receiver-packets-v0.1.schema.json": "e6fefd6a715d1b6c673fe9494e1169a87470f889"
+  },
+  "pipeline": [
+    "COSESSION_RELATIONAL_PROJECTION",
+    "COEVO_DELTA_COMPILE",
+    "RELATIONAL_FANIN",
+    "RECEIVER_RELATIVE_FANOUT_PLAN",
+    "RECEIVER_PACKET_COMPILE",
+    "REPOSITORY_ROUTE_OR_PUBLIC_COPULSE_PROJECTION",
+    "DELIVERY_RECEIPT",
+    "EXACT_RECEIVER_READPROOF",
+    "PICKUP_ELIGIBILITY"
+  ],
+  "historical_canary": {
+    "packet_id": "packet:50AC4F6AFA73BA9A8256C473",
+    "packet_git_blob": "deeea8811c06ddce652b782fdaaad153ccf76f79",
+    "receipt_git_blob": "06cd4dac599029cb4d8d6f3f0e750eda3e855081",
+    "lifecycle_state": "LANDED",
+    "receiver_pickup": "UNPROVEN",
+    "source": "PR_23_DONOR_HISTORY"
+  },
+  "current_gate": {
+    "static_ci": "PENDING",
+    "current_main_fixture_replay": "NOT_RUN",
+    "runtime_adoption": "NONE",
+    "provider_session_push": "NONE",
+    "authority_change": "NONE"
+  },
+  "next": "STATIC_CI__THEN_CURRENT_MAIN_FIXTURE_REPLAY__THEN_CLOSE_PR23_IF_UNIQUE_RELATIONS_SATISFIED",
+  "rails": [
+    "SESSION_PROJECTION_NE_PARALLEL_SEMANTIC_STANDARD",
+    "COMPILATION_NE_ACCEPTANCE",
+    "PROJECTION_NE_DELIVERY",
+    "DELIVERY_NE_PICKUP",
+    "PICKED_UP_NE_INTEGRATED",
+    "MERGED_NE_CANON",
+    "PUBLIC_SAFE_LABEL_NE_PUBLICATION_APPROVAL",
+    "NO_NEWEST_WINS"
+  ],
+  "nonclaims": [
+    "NOT_RUNTIME",
+    "NOT_PROVIDER_SESSION_PUSH",
+    "NOT_RECEIVER_PICKUP_FOR_HISTORICAL_PACKET",
+    "NOT_INTEGRATED",
+    "NOT_COEX",
+    "NOT_CANON"
+  ]
+}
