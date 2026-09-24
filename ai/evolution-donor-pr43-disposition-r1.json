@@ -1,0 +1,84 @@
+{
+  "schema": "CoAll.EvolutionDonorDisposition.PR43.R1.v0.1-candidate",
+  "state": "DONATION_CANDIDATE__FRESH_CI_REQUIRED_BEFORE_PR43_CLOSE",
+  "observed_main_commit": "2532649002e8e95059b0059c283fc34c141fa65d",
+  "observed_at": "2026-09-24T21:10:17Z",
+  "donor_pr": 43,
+  "donor_class": "COSESSION_SURVIVAL_CROSS_DOMAIN_DELTAS",
+  "source_package": {
+    "path": "docs/Evolution/Deltas/2026-09-23/CoSessionSurvival260920-S1.json",
+    "donor_branch": "coevo-cosessionsurvival260920-schema-r1-20260923",
+    "blob_sha": "776c5517eeb5e8dcf56c48d53f7c0d346e29f51f"
+  },
+  "adjudication": [
+    {
+      "remainder": "RELATIONAL_PROTOCOL_SUBSTRATE",
+      "disposition": "DESCENDANT_SATISFIED_FOR_CURRENT_SCOPE",
+      "by": [
+        "ai/evolution-deltas/2026-09-24/coevo-interop-transport-neutral-r1.json",
+        "ai/evolution-deltas/2026-09-24/coevo-meta-relational-depth-r1.json"
+      ],
+      "reason": "Current machine intake already preserves protocol-neutral replaceability, capability/authority separation, projection loss, relation-about-relation semantics, directionality and bounded traversal. Whole PR43 replay would create a competing semantic root."
+    },
+    {
+      "remainder": "NATIVE_COBAR_LIFECYCLE_OBSERVATION",
+      "disposition": "DONATED_AS_TYPED_MACHINE_DELTA",
+      "to": "ai/evolution-deltas/2026-09-24/coevo-pr43-native-cobar-lifecycle-observation-r1.json",
+      "reason": "Preserves the one bounded observed native lifecycle canary and exact external receipt hash without claiming GitHub custody, current runtime, or global worker standard."
+    },
+    {
+      "remainder": "TYPED_TURTLES_WRITE_PERMISSION_HUMOUR_HIGHLIGHT",
+      "disposition": "DONATED_AS_TYPED_ALIAS_RELATION",
+      "to": "ai/evolution-deltas/2026-09-24/coevo-pr43-turtles-write-permission-humour-r1.json",
+      "related_existing": "ai/evolution-deltas/2026-09-24/coevo-turtles-bounded-traversal-humour-r1.json",
+      "reason": "Preserves the distinct wording while relating it to the already-landed bounded-traversal humour object instead of minting another semantic crown."
+    },
+    {
+      "remainder": "EXPLICIT_CLOSE_SAFE_LATENCY_AND_SESSION_DEPENDENCY_METRICS",
+      "disposition": "DONATED_AS_TYPED_MACHINE_DELTA",
+      "to": "ai/evolution-deltas/2026-09-24/coevo-pr43-close-safe-metrics-r1.json",
+      "reason": "Preserves CoCloseSafeLatency+, CoSessionDependencyArea+, CoTwilightYield+ and uncertainty/authority serialization as explicit candidate metrics while current lifecycle doctrine already carries the broader behavior."
+    },
+    {
+      "remainder": "COPRESSURE_ENERGET_WANT_UNIQUE_SUBGRAPH",
+      "disposition": "DESCENDANT_SATISFIED_FOR_CURRENT_SCOPE",
+      "by": [
+        "ai/evolution-deltas/2026-09-24/coevo-relevance-backlog-selfscope-r1.json",
+        "ai/evolution-deltas/2026-09-24/coevo-attention-energet-song-r1.json",
+        "Autocycle systemic self-awareness feedback guard on current main"
+      ],
+      "reason": "Current main now carries bounded relevance horizons, backlog metabolism, self-scope, attention/resource-flow relations and a feedback guard that can contract discovery/subscriptions/wake frequency/active embodiments under coordination debt."
+    }
+  ],
+  "donation_objects": [
+    "ai/evolution-deltas/2026-09-24/coevo-pr43-close-safe-metrics-r1.json",
+    "ai/evolution-deltas/2026-09-24/coevo-pr43-native-cobar-lifecycle-observation-r1.json",
+    "ai/evolution-deltas/2026-09-24/coevo-pr43-turtles-write-permission-humour-r1.json"
+  ],
+  "validation": "PENDING_GITHUB_ACTIONS_VALIDATE_COEVO_CONVERGENCE_R0",
+  "action_after_pass": "UPDATE_CENTRAL_DONOR_INDEX__CLOSE_PR43_UNMERGED__RETAIN_BRANCH_AS_PROVENANCE",
+  "next_after_pass": [
+    "COMPARE_PR10_GRAIL_AGAINST_CURRENT_CONODE_AND_REPO_FIELD",
+    "RECHECK_PR7_AI_DISCOVERY_AGAINST_CURRENT_BOOTSTRAP",
+    "RECHECK_PR5_HOUSEKEEPING_AGAINST_CURRENT_RELATIONAL_REPO_FIELD"
+  ],
+  "rails": [
+    "DONATE_OVERLAP_NE_DELETE_DELTA",
+    "DESCENDANT_SATISFACTION_BEFORE_REPLAY",
+    "FANIN_BEFORE_MORE_PARALLEL_MUTATION",
+    "REPOSITORY_NE_ONTOLOGY",
+    "RELATION_PERSISTS__BINDING_EVOLVES",
+    "HUMOUR_NE_EVIDENCE",
+    "LOCAL_RECEIPT_HASH_NE_GITHUB_CUSTODY_OF_RECEIPT_BYTES",
+    "NO_NEWEST_WINS"
+  ],
+  "nonclaims": [
+    "NOT_CANON",
+    "NOT_RUNTIME",
+    "NOT_COEX",
+    "NOT_RECEIVER_PICKUP",
+    "NOT_PUBLIC_HIGHLIGHT_PROMOTION",
+    "NOT_AUTHORITY_TRANSFER",
+    "PR43_NOT_CLOSE_SAFE_UNTIL_DONATION_VALIDATION_PASSES"
+  ]
+}

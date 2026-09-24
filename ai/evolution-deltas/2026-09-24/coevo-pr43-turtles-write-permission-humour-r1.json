@@ -1,0 +1,69 @@
+{
+  "delta_id": "COEVO.CS260920.HUMOUR.TURTLES_WRITE_PERMISSION_ALIAS.R1",
+  "session_id": "CoSessionSurvival260920-S1",
+  "observed_at": "2026-09-24T21:10:17Z",
+  "domain": [
+    "CoHumour+",
+    "CoHighlight+",
+    "CoMythOps+"
+  ],
+  "subject": "Turtles are welcome. Unbounded turtles with write permission are not.",
+  "relation": "PRESERVES_PR43_TYPED_HUMOUR_AS_ALIAS_OF_BOUNDED_META_RELATIONAL_TRAVERSAL",
+  "epistemic_class": "HUMOROUS",
+  "source_refs": [
+    "github:CoCivium/CoCivium#PR43:docs/Evolution/Deltas/2026-09-23/CoSessionSurvival260920-S1.json@blob:776c5517eeb5e8dcf56c48d53f7c0d346e29f51f",
+    "github:CoCivium/CoCivium:ai/evolution-deltas/2026-09-24/coevo-turtles-bounded-traversal-humour-r1.json@blob:77502c7ae69cadc20380c9a2070b77a22f3b6fc4"
+  ],
+  "target_surfaces": [
+    "CoCivium",
+    "CoInsights"
+  ],
+  "mutation_class": "PROPOSE",
+  "authority_ceiling": "PUBLIC_SAFE_CANDIDATE_ONLY",
+  "confidentiality": "PUBLIC",
+  "confidence": 0.95,
+  "contradictions": [],
+  "tests": [
+    "Preserve HUMOUR_NE_EVIDENCE typing",
+    "Relate rather than collapse the phrase into the existing 'Turtles exist != chase all turtles' projection",
+    "Do not present the phrase as a runtime/security proof or public-release obligation"
+  ],
+  "expected_benefit": "Preserve a distinct memorable formulation of bounded recursive relational architecture while avoiding a second semantic root.",
+  "risks": [
+    "Memeable phrasing can be mistaken for architectural sufficiency",
+    "Near-duplicate humour can become needless index clutter without alias relations"
+  ],
+  "wake_conditions": [
+    "A public-safe bounded-recursion highlight surface is elected",
+    "CoLex/CoIndex gains a humour-alias relation class"
+  ],
+  "supersedes": [],
+  "next_receiver": "CoHighlight+/CoHumour+/CoIndex+",
+  "effect_classes": [
+    "NONE"
+  ],
+  "effect_gate": "NOT_APPLICABLE",
+  "effect_scope": null,
+  "materiality": "MATERIAL",
+  "nonclaims": [
+    "HUMOUR_NE_EVIDENCE",
+    "ALIAS_NE_SEMANTIC_IDENTITY",
+    "MEMEABLE_NE_PUBLICATION_AUTHORITY",
+    "TURTLES_NE_RUNTIME_SECURITY_MODEL"
+  ],
+  "object": "COEVO.HUMOUR.TURTLES_BOUNDED_TRAVERSAL.R1",
+  "typed_operation": "LINK",
+  "evidence_refs": [
+    "git-pr:43",
+    "ai/evolution-deltas/2026-09-24/coevo-turtles-bounded-traversal-humour-r1.json"
+  ],
+  "public_safety": "PUBLIC_SAFE",
+  "qualifiers": {
+    "unique_pr43_wording": true,
+    "existing_related_delta": "COEVO.HUMOUR.TURTLES_BOUNDED_TRAVERSAL.R1",
+    "projection_role": "ALTERNATE_TYPED_HUMOUR_ALIAS"
+  },
+  "collision_domain": "coevo:humour-turtles-bounded-traversal",
+  "observed_base_ref": "main@2532649002e8e95059b0059c283fc34c141fa65d",
+  "next_gate": "HIGHLIGHT_REVIEW_ONLY__NO_AUTOMATIC_PUBLIC_PROMOTION"
+}
