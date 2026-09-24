@@ -67,9 +67,15 @@ jobs:
           objs = {p: json.loads(Path(p).read_text(encoding="utf-8")) for p in json_paths}
 
           receipt = objs["ai/receiver-receipts/github-r0/receipt-50AC4F6AFA73BA9A8256C473.json"]
-          encoded = json.dumps(receipt, sort_keys=True)
-          forbidden = ["PICKED_UP", "INTEGRATED", "COEX"]
-          if any(x in encoded for x in forbidden):
-              raise SystemExit("FAIL_HISTORICAL_DELIVERY_RECEIPT_OVERCLAIMS_LIFECYCLE")
+          if receipt.get("lifecycle_state") != "LANDED":
+              raise SystemExit("FAIL_HISTORICAL_RECEIPT_LIFECYCLE_NOT_LANDED")
+          if receipt.get("receiver_pickup_state") != "UNPROVEN":
+              raise SystemExit("FAIL_HISTORICAL_RECEIPT_OVERCLAIMS_RECEIVER_PICKUP")
+          if receipt.get("state") != "LANDED__DESTINATION_READBACK_PASS__PICKUP_UNPROVEN":
+              raise SystemExit("FAIL_HISTORICAL_RECEIPT_STATE_UNEXPECTED")
+          nonclaims = set(receipt.get("nonclaims") or [])
+          required_nonclaims = {"DESTINATION_READBACK_NE_RECEIVER_PICKUP","LANDED_NE_PICKED_UP","LANDED_NE_INTEGRATED"}
+          if not required_nonclaims.issubset(nonclaims):
+              raise SystemExit("FAIL_HISTORICAL_RECEIPT_MISSING_LIFECYCLE_NONCLAIMS")
 
           print("PASS_SESSION_WRITEBACK_R1_STATIC_CONTRACT")
