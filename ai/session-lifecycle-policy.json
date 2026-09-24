@@ -1,7 +1,7 @@
 {
   "schema": "CoSessionAutocycle.Policy.v0.1-candidate",
   "state": "SHADOW_CONTROL_PLANE__NO_PROVIDER_SESSION_MUTATION",
-  "updated_utc": "2026-09-23T12:04:46Z",
+  "updated_utc": "2026-09-24T05:11:41Z",
   "auto_allowed": [
     "LIFECYCLE_PROJECTION",
     "LABEL_SIGNAL",
@@ -12,7 +12,16 @@
     "WAKE_CONDITION_EMIT",
     "LOGICAL_SPAWN_CONTRACT",
     "READONLY_CHALLENGER_OR_VERIFIER_REQUEST",
-    "PUBLIC_SAFE_GITHUB_CURRENTNESS"
+    "PUBLIC_SAFE_GITHUB_CURRENTNESS",
+    "COEVO_DELTA_EMIT",
+    "DOMAIN_SUBSCRIPTION_REFRESH",
+    "COTWILIGHT_DELTA_HARVEST",
+    "NEGATIVE_KNOWLEDGE_EXPORT",
+    "HIGHLIGHT_CANDIDATE_SIGNAL",
+    "README_INDEX_IMPROVEMENT_PROPOSAL",
+    "CURRENTNESS_PACKET_COMPILE",
+    "RECEIVER_RELATIVE_DIGEST_ELECTION",
+    "SHADOW_CLOSE_SAFE_PROJECTION"
   ],
   "shadow_only": [
     "PROVIDER_SESSION_CREATE",
@@ -43,7 +52,7 @@
     ],
     "model_is_authority": false
   },
-  "next": "R3_LOCAL_MODEL_ADAPTER_READY__WAIT_FOR_X2_DIRECT_ROUTE_FOR_ONE_PUBLIC_SAFE_OLLAMA_CANARY",
+  "next": "R3_LOCAL_MODEL_RUNTIME_GATE_OR_VIRTUAL_AUTOCYCLE_RECEIVER_BINDING__X2_DIRECT_ROUTE_STILL_REQUIRED_FOR_MACHINE_CANARY",
   "r1_shadow_ledger": {
     "script": "scripts/CoSessionShadowLedger.py",
     "docs": "docs/Operations/COSESSION_SHADOW_LEDGER_R1.md",
@@ -140,5 +149,122 @@
     "integration_proven": false,
     "x2_runtime_required": false,
     "next": "R0C_EXPLICIT_PER_RECEIVER_ACK_COMMIT_AND_BACKFILL_REPLAY_CANARY"
+  },
+  "evolution_policy": {
+    "convergence": "docs/Evolution/COALL_EVOLUTION_CONVERGENCE_R1.md",
+    "machine_currentness": "ai/evolution-convergence-r1.json",
+    "intake_policy": "ai/evolution-intake-policy-r0.json",
+    "domain_registry": "ai/evolution-lanes.json",
+    "delta_schema_anchor": "schemas/coevo-delta-v0.1.schema.json",
+    "delta_union_candidate": "schemas/coevo-delta-v0.2-union-candidate.schema.json",
+    "repo_role_map": "ai/repo-role-map.json",
+    "highlight_registry": "ai/highlight-assets.json",
+    "default_subscription_mode": "BOUNDED_ROLE_RELEVANT",
+    "default_mutation_class": "PROPOSE",
+    "emit_on": [
+      "MATERIAL_RELATION_DELTA",
+      "MATERIAL_CONTRADICTION_OR_NEGATIVE_KNOWLEDGE",
+      "CURRENTNESS_CHANGE",
+      "HIGHLIGHT_CANDIDATE_CHANGE",
+      "COTWILIGHT_ENTRY",
+      "SUCCESSOR_READY",
+      "CLOSE_SAFE"
+    ],
+    "cotwilight_harvest": [
+      "SEMANTIC_DELTA",
+      "UNRESOLVED_HYPOTHESIS",
+      "DISAGREEMENT_OR_CONTRADICTION",
+      "NEGATIVE_KNOWLEDGE",
+      "WAKE_CONDITION",
+      "OPTIONALITY",
+      "REPO_TOPOLOGY_SUGGESTION",
+      "README_OR_INDEX_SUGGESTION",
+      "UX_OR_SURFACE_RELATION",
+      "HUMOUR_OR_MEMEABLE_RELATION",
+      "HIGHLIGHT_CANDIDATE",
+      "SUCCESSOR_POINTER"
+    ],
+    "contribution_rule": "EMIT_BOUNDED_TYPED_DELTAS_TO_RELEVANT_DOMAINS__DO_NOT_CARRY_OR_MUTATE_ALL_STATE",
+    "branch_mutate_requirements": [
+      "REFRESH_TARGET_HEAD",
+      "SEARCH_EQUIVALENT_RELATION",
+      "BIND_SOURCE_REFS",
+      "CLASSIFY_CONFIDENTIALITY",
+      "IDENTIFY_COLLISION_DOMAIN",
+      "VERIFY_AUTHORITY_CEILING",
+      "PREFER_REVERSIBLE_BRANCH_OR_PR_FOR_CROSS_CUTTING_CHANGES",
+      "FANIN_BEFORE_MORE_PARALLEL_MUTATION"
+    ],
+    "rails": [
+      "ALL_SESSIONS_CAN_CONTRIBUTE_NE_ALL_SESSIONS_MUTATE_ALL_SURFACES",
+      "CURRENTNESS_FOR_ALL_NE_CONTENT_FOR_ALL",
+      "GITHUB_WRITE_ACCESS_NE_GLOBAL_AUTHORITY",
+      "HUMOUR_NE_EVIDENCE",
+      "METAPHOR_NE_EQUIVALENCE",
+      "NO_NEWEST_WINS",
+      "DESCENDANT_SATISFACTION_BEFORE_REPLAY"
+    ]
+  },
+  "virtual_autocycle_policy": {
+    "default_projection": "VIRTUAL_FIRST",
+    "provider_session_materialization": "ONLY_FOR_FOREGROUND_INTERACTION_OR_REQUIRED_PROVIDER_CAPABILITY",
+    "logical_spawn_requires": [
+      "BOUNDED_PURPOSE",
+      "ROLE_OR_SUBSCRIPTION_PROFILE",
+      "AUTHORITY_CEILING",
+      "CONFIDENTIALITY",
+      "COLLISION_DOMAIN",
+      "STOP_OR_RETIREMENT_CONDITION"
+    ],
+    "cycle": [
+      "LOAD_RECEIVER_RELATIVE_CURRENTNESS",
+      "RUN_ONE_BOUNDED_WORK_UNIT",
+      "EMIT_MATERIAL_DELTA_OR_NEGATIVE_KNOWLEDGE",
+      "DEDUPE_AND_FANIN",
+      "UPDATE_WAKE_AND_RETIREMENT_STATE",
+      "SLEEP_IF_NO_MATERIAL_FOLLOWON"
+    ],
+    "materialization_pressure_rule": "PREFER_FEWER_LIVE_EMBODIMENTS__MORE_LOGICAL_WORK__MATERIALIZE_ONLY_WHEN_CAPABILITY_OR_LATENCY_REQUIRES",
+    "no_loop_rule": "NO_MATERIAL_DELTA_AND_NO_BOUND_WAKE_PREDICATE__SLEEP",
+    "provider_visible_title_mutation": false,
+    "provider_tab_creation": false,
+    "provider_tab_close": false,
+    "routine_human_heartbeat_required": false,
+    "rails": [
+      "SPAWN_NE_NEW_CHAT",
+      "VIRTUAL_SESSION_NE_PROVIDER_TAB",
+      "LOGICAL_RESERVE_NE_LIVE_WORKER",
+      "CAPACITY_EXISTS_NE_SPAWN_EVERYTHING",
+      "RICK_NE_HEARTBEAT",
+      "MODEL_NE_AUTHORITY"
+    ]
+  },
+  "cotwilight_policy": {
+    "purpose": "ACTIVE_HIGH_YIELD_EXTERNALIZATION_AND_SUCCESSOR_PREPARATION__NOT_PASSIVE_DECAY",
+    "increase": [
+      "READ_ONLY_DISCOVERY",
+      "SEMANTIC_DELTA_HARVEST",
+      "CONTRADICTION_SEARCH",
+      "NEGATIVE_KNOWLEDGE_CAPTURE",
+      "DEDUPE_AND_COMPACTION",
+      "SUCCESSOR_PACKET_COMPILE",
+      "WAKE_CONDITION_EXPORT",
+      "COEVO_DELTA_EMIT"
+    ],
+    "decrease": [
+      "MONOLITHIC_UNEXTERNALIZED_WORK",
+      "NEW_HIGH_EFFECT_COMMITMENTS",
+      "AUTHORITY_EXPANSION",
+      "IRREVERSIBLE_RESTRUCTURE"
+    ],
+    "close_safe_projection_may_be_automatic": true,
+    "provider_tab_close_may_be_automatic": false,
+    "close_safe_requires": [
+      "UNIQUE_WORK_OBLIGATIONS_EXTERNALIZED_OR_TRANSFERRED",
+      "DURABLE_RECOVERY_POINTER",
+      "MATERIAL_NONCLAIMS_PRESERVED",
+      "SUCCESSOR_OR_WAKE_PATH_WHERE_NEEDED"
+    ],
+    "no_user_action_required_when": "ALL_REQUIRED_CLOSE_SAFE_EVIDENCE_IS_ALREADY_DURABLE_AND_NO_HUMAN_GATE_REMAINS"
   }
 }

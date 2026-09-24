@@ -1,14 +1,23 @@
 {
   "schema": "CoAll.SessionBootstrap.v0.1-candidate",
   "state": "PUBLIC_CURRENTNESS_BOOTSTRAP__NOT_GLOBAL_SESSION_PICKUP_PROOF",
-  "updated_utc": "2026-09-23T09:14:23Z",
+  "updated_utc": "2026-09-24T05:11:41Z",
   "bootstrap_repository": "CoCivium/CoCivium",
   "default_branch": "main",
   "read_order": [
     "README.md",
     "PRELAUNCH.md",
     "SESSION_BOOTSTRAP.md",
-    "docs/Launch/COCIVIUM_PUBLIC_PRELAUNCH_R0.md"
+    "docs/Launch/COCIVIUM_PUBLIC_PRELAUNCH_R0.md",
+    "docs/Evolution/COALL_EVOLUTION_CONVERGENCE_R1.md",
+    "ai/evolution-convergence-r1.json",
+    "ai/evolution-intake-policy-r0.json",
+    "ai/evolution-lanes.json",
+    "ai/repo-role-map.json",
+    "ai/highlight-assets.json",
+    "ai/session-lifecycle-policy.json",
+    "ai/session-subscription-profiles.json",
+    "ai/currentness/copulse-currentness-r0g.json"
   ],
   "rules": [
     "GITHUB_NE_CUSTODY_ROOT",
@@ -18,7 +27,16 @@
     "MODEL_MEMORY_NE_SOURCE_OF_TRUTH",
     "CHAT_MEMORY_NE_EVENT_BUS",
     "MODEL_NE_AUTHORITY",
-    "RICK_NE_EVENT_BUS"
+    "RICK_NE_EVENT_BUS",
+    "ALL_SESSIONS_CAN_CONTRIBUTE_NE_ALL_SESSIONS_MUTATE_ALL_SURFACES",
+    "CURRENTNESS_FOR_ALL_NE_CONTENT_FOR_ALL",
+    "DOMAIN_NE_REPOSITORY",
+    "REPOSITORY_NE_ONTOLOGY",
+    "HUMOUR_NE_EVIDENCE",
+    "NO_NEWEST_WINS",
+    "FANIN_BEFORE_MORE_PARALLEL_MUTATION",
+    "DESCENDANT_SATISFACTION_BEFORE_REPLAY",
+    "VIRTUAL_SESSION_NE_PROVIDER_TAB"
   ],
   "routing": {
     "github": [
@@ -26,7 +44,11 @@
       "shared architecture",
       "machine twins",
       "reviewable candidates",
-      "public collaboration"
+      "public collaboration",
+      "bounded CoEvoDelta contributions",
+      "domain-scoped branch/PR mutation",
+      "highlight and repo-role currentness",
+      "receiver-relative currentness packets"
     ],
     "costead": [
       "private durable state",
@@ -43,5 +65,39 @@
       "bounded worker roles under capability/authority contracts"
     ]
   },
-  "existing_session_limitation": "NO_AUTOMATIC_PICKUP_WITHOUT_BRIDGE_OR_RECEIVER_PATH"
+  "existing_session_limitation": "NO_AUTOMATIC_PICKUP_WITHOUT_BRIDGE_OR_RECEIVER_PATH",
+  "evolution": {
+    "convergence": "docs/Evolution/COALL_EVOLUTION_CONVERGENCE_R1.md",
+    "machine_currentness": "ai/evolution-convergence-r1.json",
+    "intake_policy": "ai/evolution-intake-policy-r0.json",
+    "primary_machine_intake": "ai/evolution-deltas/<YYYY-MM-DD>/",
+    "compatibility_anchor": "schemas/coevo-delta-v0.1.schema.json",
+    "union_candidate": "schemas/coevo-delta-v0.2-union-candidate.schema.json",
+    "domain_registry": "ai/evolution-lanes.json",
+    "repo_role_map": "ai/repo-role-map.json",
+    "highlight_registry": "ai/highlight-assets.json",
+    "subscription_profiles": "ai/session-subscription-profiles.json",
+    "pulse_currentness": "ai/currentness/copulse-currentness-r0g.json",
+    "default_behavior": [
+      "ORIENT",
+      "LOAD_ROLE_RELATIVE_CURRENTNESS",
+      "OBSERVE",
+      "EMIT_BOUNDED_COEVO_DELTA_WHEN_MATERIAL",
+      "DEDUPE_AND_FANIN_BEFORE_NEW_BROAD_MUTATION",
+      "CHALLENGE_OR_VERIFY_WHERE_USEFUL",
+      "BRANCH_MUTATE_ONLY_WITHIN_AUTHORITY_AND_COLLISION_RAILS",
+      "SLEEP_WHEN_NO_MATERIAL_DELTA_OR_WAKE_PREDICATE"
+    ],
+    "all_sessions_rule": "ALL_CAPABLE_SESSIONS_MAY_CONTRIBUTE_BOUNDED_DELTAS__NO_SESSION_MUST_MUTATE_EVERY_DOMAIN"
+  },
+  "lifecycle": {
+    "policy": "ai/session-lifecycle-policy.json",
+    "default_embodiment": "VIRTUAL_FIRST",
+    "provider_session_role": "FOREGROUND_INTERACTION_OR_SPECIAL_CAPABILITY_ONLY",
+    "twilight_projection": "COTWILIGHT",
+    "twilight_behavior": "HARVEST_AND_EXTERNALIZE_MORE__START_FEWER_HIGH_EFFECT_COMMITMENTS",
+    "auto_close_safe_projection": true,
+    "provider_tab_close_effect": "SHADOW_ONLY",
+    "human_relay_default": false
+  }
 }
