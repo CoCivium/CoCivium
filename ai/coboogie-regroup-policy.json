@@ -1,0 +1,98 @@
+{
+  "schema": "CoBoogieRegroup.Policy.R1.v0.1-candidate",
+  "state": "LANDED_CANDIDATE_POLICY__NO_MACHINE_RUNTIME_BINDING",
+  "updated_utc": "2026-09-24T16:33:49Z",
+  "source_lineage": {
+    "donor_pr": 85,
+    "donor_blob_sha": "b464c853e55e307da873874de6111f912c0b648e",
+    "current_main_election_head": "9f9eed47b6016242f36c430df86e3599344623f8"
+  },
+  "coboogie": {
+    "purpose": "BOUNDED_FRESHNESS_DRIFT_AND_SURFACE_AUDIT",
+    "triggers": [
+      "SUBSTANTIVE_HUMAN_RETURN_AFTER_ABSENCE",
+      "DEVICE_OR_EXECUTION_SURFACE_RETURN",
+      "RECEIVER_CURRENTNESS_STALE",
+      "CONTRADICTORY_EVIDENCE",
+      "MEANINGFUL_NEW_DONOR_MATERIAL",
+      "FAILED_OR_MISSING_RECEIVER_PICKUP",
+      "LIFECYCLE_TRANSITION",
+      "SUSPECTED_DUPLICATE_OR_STALE_CONTROL_SURFACE",
+      "FAILURE_DOMAIN_CHANGE",
+      "LARGE_SEMANTIC_DELTA_BEFORE_MUTATION"
+    ],
+    "nontrigger": "TIME_ELAPSED_ALONE",
+    "output": "DELTA_FIELD"
+  },
+  "coregroup": {
+    "purpose": "FINITE_RECONCILIATION_AND_SMALLEST_SAFE_CONTINUATION",
+    "dispositions": [
+      "KEEP_CURRENT",
+      "SUPERSEDE_FOR_SCOPE",
+      "RETAIN_HISTORICAL_WITNESS",
+      "MERGE_RELATION_ONLY",
+      "BRANCH_FOR_CHALLENGE",
+      "HOLD_MISSING_EVIDENCE",
+      "WAKE_RECEIVER",
+      "ROUTE_TO_LOCAL_EXECUTION",
+      "ROUTE_TO_GITHUB_PROJECTION",
+      "PARK_DORMANT",
+      "CLOSE_SAFE_BOUNDED"
+    ],
+    "stop_after_bounded_disposition": true
+  },
+  "route_election": {
+    "substrate_neutral": true,
+    "preferred_dimensions": [
+      "CAPABILITY",
+      "AUTHORITY",
+      "PRIVACY",
+      "LIVENESS",
+      "EVIDENCE_QUALITY",
+      "REVERSIBILITY",
+      "HUMAN_ATTENTION_COST",
+      "FAILURE_DOMAIN"
+    ],
+    "machine_route": "PREFERRED_WHEN_PROVEN_REACHABLE",
+    "ps7": "BREAK_GLASS_OR_FALLBACK",
+    "github": "RELATIONAL_PROJECTION_AND_COLLABORATION_SURFACE"
+  },
+  "current_machine_boundary": {
+    "x2_direct_route": "OFFLINE_AT_FORWARD_PORT",
+    "local_machine_state": "UNPROVEN",
+    "next_machine_deed": "BOUNDED_READ_ONLY_COBOOGIE_AFTER_PROVEN_X2_ROUTE"
+  },
+  "automation_direction": [
+    "OBSERVE",
+    "DETECT_MATERIAL_DRIFT",
+    "COMPILE_DELTA_FIELD",
+    "RECONCILE",
+    "ELECT_BOUNDED_DEED",
+    "EXECUTE_ON_ADMISSIBLE_SURFACE",
+    "RECEIVE_EXACT_PROOF",
+    "UPDATE_CURRENTNESS",
+    "QUIET"
+  ],
+  "rails": [
+    "COBOOGIE_NE_BLIND_RESCAN",
+    "COREGROUP_NE_NEWEST_WINS",
+    "REGROUP_NE_REWRITE_HISTORY",
+    "TIME_ELAPSED_NE_BOOGIE_REQUIRED",
+    "SYNC_NE_DISCOVERY",
+    "DELIVERY_NE_PICKUP",
+    "POINTER_NE_ACK",
+    "MCP_NE_COALL",
+    "PS7_NE_DEFAULT_IF_MACHINE_ROUTE_HEALTHY",
+    "PR_NE_CANON",
+    "SAME_RELATIONAL_GRAMMAR_NE_SAME_MECHANISM",
+    "RICK_NE_HEARTBEAT"
+  ],
+  "nonclaims": [
+    "NO_CURRENT_X2_FILESYSTEM_PROOF",
+    "NO_COFARM_COSTEAD_RECOVERY_PROOF",
+    "NO_RUNTIME_INTEGRATION",
+    "NO_RECEIVER_PICKUP",
+    "NO_CANON",
+    "NO_PUBLIC_PRODUCT_RELEASE"
+  ]
+}
