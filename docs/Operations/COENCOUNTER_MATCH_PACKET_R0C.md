@@ -76,6 +76,29 @@ Repair evidence: `docs/Operations/proofs/coencounter-r0c1-stable-packet-payload-
 `DURABLE_PAYLOAD_NE_SEMANTIC_ACCEPTANCE`  
 `SYNTHETIC_REVIEW_FIXTURE_NE_FULL_R0B_REPLAY`
 
+## R0C2 receiver qualification gate
+
+A further bounded challenge showed that nominal capability/currentness routing is not enough to justify packetization by itself. R0C2 therefore requires a separate receiver-relative qualification object before a packet may be created.
+
+The qualification must bind the same receiver/relation/encounter and explicitly pass:
+
+- visibility eligibility;
+- confidentiality fit;
+- exact-object access;
+- contextual effectivity;
+- receiver disposition `ACCEPT_AFFORDANCE_CANDIDATE`.
+
+A positive public-safe fixture preserves exact packet pickup and stable replay. A negative hold fixture fails closed before packet creation when those receiver-relative gates are false.
+
+Evidence: `docs/Operations/proofs/coencounter-r0c2-receiver-qualification-gate-pass-20260924.json`.
+
+`OBJECT_OFFER_NE_RECEIVER_AFFORDANCE`  
+`RECEIVER_EFFECTIVITY_NE_NOMINAL_CAPABILITY`  
+`CAPABILITY_MATCH_NE_EXACT_OBJECT_ACCESS`  
+`AUTHORITY_MATCH_NE_CONFIDENTIALITY_FIT`  
+`AFFORDANCE_CANDIDATE_NE_ELECTED_DEED`  
+`QUALIFICATION_NE_AUTHORITY_INCREASE`
+
 ## Next
 
 `R0D_SEMANTIC_CONTRIBUTION_DISPOSITION_OR_HETEROGENEOUS_RECEIVER_PACKET_CANARY__NO_AUTO_ASSIGNMENT`
