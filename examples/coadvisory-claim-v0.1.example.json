@@ -1,0 +1,35 @@
+{
+  "schema":"CoAdvisory.Claim.v0.1-candidate",
+  "claim_id":"fixture:platform-opacity-scenario",
+  "class":"SCENARIO",
+  "statement":"If compatible implementation and migration capabilities continue improving, opacity alone may become a weaker software moat in some markets.",
+  "source_refs":[
+    "https://github.com/CoCivium/CoCivium/blob/main/docs/Architecture/COSOURCE_GRAPH_R0.md",
+    "https://github.com/CoCivium/CoCivium/blob/main/docs/Capabilities/OPEN_SOURCE_DONOR_ECOLOGY_R0.md"
+  ],
+  "assumptions":[
+    "lawful observation and independent derivation remain available where required",
+    "compatibility testing improves materially"
+  ],
+  "counterarguments":[
+    "patents, contracts, data, network effects and service quality may remain durable moats",
+    "technical reconstruction may remain underdetermined"
+  ],
+  "uncertainty":"Moderate; this is a conditional scenario, not a forecast of a specific company.",
+  "falsifiers":[
+    "repeated evidence shows no meaningful improvement in compatibility/migration performance across selected test classes",
+    "non-opacity factors dominate durable advantage in the measured markets"
+  ],
+  "time_horizon":"multi-year; review quarterly",
+  "affected_domains":["software","platforms","professional_services"],
+  "financial_scope":"GENERAL_BUSINESS_IMPLICATION",
+  "materiality_flag":"UNKNOWN",
+  "publication_scope":"PRIVATE_ADVISORY",
+  "account_action":"EXPLICIT_HUMAN_REVIEW_REQUIRED",
+  "nonclaims":[
+    "SCENARIO_NE_FORECAST_CERTAINTY",
+    "NOT_INVESTMENT_ADVICE",
+    "NOT_ACCOUNT_SPECIFIC_ACTION",
+    "SEC_CLASSIFICATION_NE_LEGAL_CONCLUSION"
+  ]
+}
