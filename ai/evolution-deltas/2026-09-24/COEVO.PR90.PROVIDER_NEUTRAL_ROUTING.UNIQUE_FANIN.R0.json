@@ -1,0 +1,91 @@
+{
+  "session_id": "CoSessionSurvival260920-S1",
+  "observed_at": "2026-09-24T21:09:36Z",
+  "mutation_class": "PROPOSE",
+  "authority_ceiling": "CANDIDATE_ONLY__NO_CANON_NO_RUNTIME_NO_AUTHORITY",
+  "confidentiality": "PUBLIC",
+  "effect_classes": [
+    "NONE"
+  ],
+  "effect_gate": "NOT_APPLICABLE",
+  "materiality": "MATERIAL",
+  "public_safety": "PUBLIC_SAFE",
+  "observed_base_ref": "main@2532649002e8e95059b0059c283fc34c141fa65d",
+  "receiver_readproof_gate": "EXACT",
+  "$schema": "https://github.com/CoCivium/CoCivium/schemas/coevo-delta-v0.2-union-candidate.schema.json",
+  "delta_id": "COEVO.PR90.PROVIDER_NEUTRAL_ROUTING.UNIQUE_FANIN.R0",
+  "domain": [
+    "CoOps+",
+    "CoSession+",
+    "CoNodeMesh+/GRAIL+",
+    "CoAutoEvo+/CoEvo+"
+  ],
+  "subject": "Failure-domain-aware route election for logical work lanes, preserving lane identity and provenance across provider/local/CI/MCP/PS7/future-node materializations",
+  "relation": "EXTENDS_ROUTE_ELECTION_WITH_FAILURE_DOMAIN_DIVERSITY_AND_LANE_PERSISTENCE",
+  "epistemic_class": "PLANNED",
+  "source_refs": [
+    "github:CoCivium/CoCivium#90@af67855208f61abc2eeab304b674e2bb28d9743c",
+    "github:CoCivium/CoCivium:docs/Architecture/CONOD_PROVIDER_NEUTRAL_ROUTING_R0.md@32393906e059c1a1b4424f16b6517c38c14134b2",
+    "github:CoCivium/CoCivium:ai/fixtures/conod-provider-neutral-failover-r0.json@d78011746ac07610b0443fc0581619b55de9611a",
+    "github:CoCivium/CoCivium@2532649002e8e95059b0059c283fc34c141fa65d"
+  ],
+  "target_surfaces": [
+    "CoCivium",
+    "CoSteward"
+  ],
+  "confidence": 0.86,
+  "contradictions": [
+    "Most provider-neutral principles already exist on current main; only the explicit failure-domain diversity, logical-lane persistence, and no-human-load-balancing remainder should survive fan-in."
+  ],
+  "tests": [
+    "remove one synthetic route and preserve completed provenance",
+    "reroute only unfinished lanes whose capability/privacy/authority requirements remain admissible",
+    "HOLD lanes requiring unavailable unique capability",
+    "prove route changes do not replay completed work",
+    "prove model/provider count is not treated as independence by default"
+  ],
+  "expected_benefit": "Make logical work survive provider/runtime changes while minimizing human routing work and preserving exact provenance and authority ceilings.",
+  "risks": [
+    "route diversity can be mistaken for evidence independence",
+    "automatic failover can silently violate privacy or capability constraints",
+    "fallback proliferation can increase coordination debt"
+  ],
+  "wake_conditions": [
+    "machine-owned route becomes available for a bounded route-failure canary",
+    "a current-main routing primitive exact-satisfies this remainder",
+    "a privacy or authority collision is discovered across candidate routes"
+  ],
+  "supersedes": [],
+  "next_receiver": "CoOps+/CoNodeMesh+ route-election receiver",
+  "collision_domain": "provider-neutral-route-election",
+  "typed_operation": "QUALIFY",
+  "route": {
+    "required_capabilities": [
+      "CAPABILITY_FIT",
+      "PROVENANCE",
+      "FAILURE_DOMAIN_AWARENESS"
+    ],
+    "candidate_routes": [
+      "DETERMINISTIC_LOCAL",
+      "LOCAL_MODEL",
+      "GITHUB_CI",
+      "PROVIDER_MODEL",
+      "MCP_ADAPTER",
+      "PS7_BREAK_GLASS",
+      "FUTURE_CONODE"
+    ],
+    "elected_route": null,
+    "route_reason": "candidate doctrine only; runtime route election requires live currentness",
+    "route_morph_allowed": true,
+    "authority_preserved": true
+  },
+  "nonclaims": [
+    "LOGICAL_WORK_NE_PROVIDER_SESSION",
+    "PROVIDER_SESSION_NE_CONTROL_PLANE",
+    "MODEL_COUNT_NE_INDEPENDENCE",
+    "ROUTE_CHANGE_NE_REPLAY_ALL",
+    "RICK_NE_PROVIDER_LOAD_BALANCER",
+    "LOCAL_NE_TRUSTED",
+    "NO_RUNTIME_NO_CANON_NO_AUTHORITY"
+  ]
+}

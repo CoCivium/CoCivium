@@ -1,0 +1,69 @@
+{
+  "session_id": "CoSessionSurvival260920-S1",
+  "observed_at": "2026-09-24T21:09:36Z",
+  "mutation_class": "PROPOSE",
+  "authority_ceiling": "CANDIDATE_ONLY__NO_CANON_NO_RUNTIME_NO_AUTHORITY",
+  "confidentiality": "PUBLIC",
+  "effect_classes": [
+    "NONE"
+  ],
+  "effect_gate": "NOT_APPLICABLE",
+  "materiality": "MATERIAL",
+  "public_safety": "PUBLIC_SAFE",
+  "observed_base_ref": "main@2532649002e8e95059b0059c283fc34c141fa65d",
+  "receiver_readproof_gate": "EXACT",
+  "$schema": "https://github.com/CoCivium/CoCivium/schemas/coevo-delta-v0.2-union-candidate.schema.json",
+  "delta_id": "COEVO.PR90.COAVNIM_COAURA.COGNITIVE_PROJECTION.UNIQUE_FANIN.R0",
+  "domain": [
+    "CoUX+/CoSurface+",
+    "RickBar+/CoDesktop+",
+    "CoAll+",
+    "CoSession+"
+  ],
+  "subject": "CoAvNim+/CoAura+ as an observer-relative cognitive/status projection envelope over declared and surfaced state, never hidden private reasoning",
+  "relation": "DONATES_OBSERVER_RELATIVE_COGNITIVE_PROJECTION_RELATION",
+  "epistemic_class": "HYPOTHESIS",
+  "source_refs": [
+    "github:CoCivium/CoCivium#90@af67855208f61abc2eeab304b674e2bb28d9743c",
+    "github:CoCivium/CoCivium:ai/coavnim-cognitive-aura-r0.json@1c5719220e80f110df0f5508d51aa4861b960221",
+    "github:CoCivium/CoCivium:docs/Architecture/COBOOGIE_REGROUP_RELATIONAL_RETURN_R1.md@main",
+    "github:CoCivium/CoCivium@2532649002e8e95059b0059c283fc34c141fa65d"
+  ],
+  "target_surfaces": [
+    "CoCivium",
+    "CoAura"
+  ],
+  "confidence": 0.77,
+  "contradictions": [
+    "Current main already contains a CoAvNim identity braid candidate; this delta is limited to the cognitive/status projection remainder and must not create a second identity ontology."
+  ],
+  "tests": [
+    "render declared intent, uncertainty, work lane, evidence signal and currentness without hidden chain-of-thought fields",
+    "verify one source object may have multiple observer-relative CoAura projections",
+    "provide text/screen-reader/reduced-motion/low-bandwidth equivalents",
+    "verify inferred state is visibly typed and never presented as actual internal thought"
+  ],
+  "expected_benefit": "Expose useful work/currentness/cognitive-status relations through accessible receiver-relative surfaces without pretending to reveal private reasoning or personhood.",
+  "risks": [
+    "animation or visual richness may be mistaken for sentience",
+    "inferred state may be mistaken for actual thought",
+    "collective projection may be mistaken for collective personhood"
+  ],
+  "wake_conditions": [
+    "CoAura receiver requests a bounded visual or machine-readable canary",
+    "CoAvNim lineage recovery finds a stronger predecessor",
+    "accessibility receiver identifies projection loss or misleading state cues"
+  ],
+  "supersedes": [],
+  "next_receiver": "CoUX+/CoSurface+ and CoAura reconciliation receiver",
+  "collision_domain": "identity-cognitive-projection",
+  "typed_operation": "QUALIFY",
+  "nonclaims": [
+    "COGNITIVE_PROJECTION_NE_HIDDEN_CHAIN_OF_THOUGHT",
+    "INFERRED_THOUGHT_NE_ACTUAL_INTERNAL_STATE",
+    "SURFACED_SUMMARY_NE_COMPLETE_REASONING_TRACE",
+    "ANIMATION_NE_SENTIENCE_PROOF",
+    "COLLECTIVE_AURA_NE_COLLECTIVE_PERSON",
+    "NO_RUNTIME_NO_CANON_NO_AUTHORITY"
+  ]
+}
