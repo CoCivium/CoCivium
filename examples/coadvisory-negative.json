@@ -1,0 +1,18 @@
+{
+  "schema":"CoAdvisory.Claim.v0.1-candidate",
+  "claim_id":"fixture:bad-trade-call",
+  "class":"OBSERVED",
+  "statement":"Buy the security now because it will rise.",
+  "source_refs":["fixture:source"],
+  "assumptions":[],
+  "counterarguments":[],
+  "uncertainty":"none",
+  "falsifiers":["price falls"],
+  "time_horizon":"tomorrow",
+  "affected_domains":["securities"],
+  "financial_scope":"INVESTMENT_RECOMMENDATION",
+  "materiality_flag":"UNKNOWN",
+  "publication_scope":"PUBLIC_SAFE",
+  "account_action":"NONE",
+  "nonclaims":["NOT_INVESTMENT_ADVICE"]
+}
