@@ -244,6 +244,122 @@ It then synthetically removes the provider route and checks that:
 - fan-in remains deterministic;
 - human action remains zero unless a true gate is encountered.
 
+
+## CoExternality+ pacing / CoDoppler+ candidate
+
+CoOomph+ should optimize useful verified work **subject to the carrying capacity and externalities of every affected surface**, not merely the local worker that wants more throughput.
+
+Externalities may include:
+
+- receiver/platform/provider load and backpressure;
+- queue/fan-in/proof debt;
+- rate/burst pressure;
+- latency and retry amplification;
+- compute/energy and monetary cost;
+- human attention;
+- public/social impact;
+- policy/contract friction;
+- pressure displaced onto another provider or internal subsystem;
+- **self-externalities**, including recursion debt, context pressure and recovery debt.
+
+`SELF_EXTERNALITY_COUNTS`
+
+### CoDoppler+
+
+No current GitHub predecessor was found for `CoDoppler+` or `CoDopler+` in the bounded search, so this remains a candidate relation.
+
+Preferred spelling: **CoDoppler+**.  
+`CoDopler+` may remain an alias for historical/user spelling.
+
+Candidate meaning:
+
+> **CoDoppler+ = receiver-relative apparent change in rate, density or pressure caused by a changing relation between source emission and receiver capacity/route conditions.**
+
+Example:
+
+```text
+source work rate rises
++ receiver capacity falls
++ retries/latency increase
+= receiver observes a much denser/faster pressure field
+```
+
+The controller may then reduce materialized width, stagger, compact, dedupe, reroute, cool down, HOLD or stop.
+
+This is a relational analogy, not a claim that provider traffic follows the physical Doppler effect.
+
+`CODOPPLER_RELATION_NE_PHYSICAL_DOPPLER_MECHANISM`
+
+### Feedback classes
+
+External feedback should be typed:
+
+- `EXPLICIT_BACKPRESSURE` — rate/concurrency/retry/capacity signal actually exposed by a surface;
+- `OBSERVED_DEGRADATION` — measured latency/error/queue degradation;
+- `INFERRED_PRESSURE` — bounded inference, visibly qualified;
+- `UNKNOWN_EXTERNALITY` — possible cost/load not currently observable;
+- `ABSENCE_OR_NONRESPONSE` — lack of signal, not proof of unlimited capacity.
+
+`UNKNOWN_EXTERNALITY_NE_ZERO_EXTERNALITY`  
+`ABSENCE_OF_PUSHBACK_NE_UNLIMITED_CAPACITY`
+
+### Influence / agentic relation
+
+A capable agent may influence an external system simply by sending work, opening sessions, invoking APIs, triggering CI, publishing, notifying, retrying or consuming scarce shared resources.
+
+That influence should be budgeted as an effect relation even when no semantic mutation occurs.
+
+`INFLUENCE_NE_CONTROL`  
+`AGENTIC_CAPABILITY_NE_PERMISSION_TO_PRESSURE_EXTERNAL_SYSTEMS`
+
+A platform limit, refusal, slowdown or backpressure signal should be treated as evidence about the current relation, not anthropomorphized as hostility.
+
+`PUSHBACK_SIGNAL_NE_HOSTILITY`  
+`RATE_LIMIT_NE_MORAL_JUDGMENT`
+
+### CoTime+ / CoSong+ / CoMeteo+ braid
+
+- **CoTime+** binds sample time, cooldown, retry windows, trend and recovery.
+- **CoSong+** can render healthy cadence, burstiness, quiet and recovery rhythm.
+- **CoMeteo+** can render aggregate externality "weather" such as pressure fronts or congestion.
+- **CoSignal+** carries explicit or observed feedback.
+- **CoPressure+** represents mismatch between incoming/active load and integration/receiver capacity.
+- **CoEnerget+** represents available capacity/resources.
+- **CoOomph+** decides how much effort to materialize.
+- **CoDoppler+** describes the receiver-relative apparent rate/pressure shift.
+
+`SAME_RELATIONAL_GRAMMAR_NE_SAME_MECHANISM`
+
+### Pacing rule
+
+Candidate control relation:
+
+```text
+IF external/backpressure evidence rises
+OR observed arrival rate materially exceeds sustainable receiver rate
+OR proof/fan-in debt outruns compaction
+THEN reduce immediate physical width
+     + stagger/jitter where allowed
+     + dedupe/compact
+     + reroute only to genuinely admissible spare capacity
+     + cool down / HOLD when needed
+ELSE cautiously widen while preserving headroom
+```
+
+Do not "solve" pressure on one provider by silently dumping it onto another.
+
+`DO_NOT_OFFLOAD_PRESSURE_BY_SILENTLY_OVERLOADING_ANOTHER_SURFACE`
+
+Use hysteresis/cooldown to avoid oscillating between acceleration and braking.
+
+`PACING_CONTROLLER_NE_FLAP`  
+`PACING_NE_PERMANENT_THROTTLE`
+
+The existing launch rail remains relevant:
+
+`MIGRATION_RATE_MUST_NOT_EXCEED_RECONCILIATION_AND_RECEIVER_CAPACITY`
+
+
 ## Rails
 
 `LOGICAL_WORK_NE_PROVIDER_SESSION`  
