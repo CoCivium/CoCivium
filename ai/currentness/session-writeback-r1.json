@@ -1,8 +1,8 @@
 {
   "schema": "CoSessionWriteback.Currentness.R1.v0.1-candidate",
-  "state": "FRESH_MAIN_FANIN_CANDIDATE__STATIC_CI_PASS__CURRENT_MAIN_FIXTURE_REPLAY_PENDING",
-  "updated_utc": "2026-09-24T05:18:04Z",
-  "base_main_commit": "e4a258956649639daf1bb83633b81cdcf18bd0c6",
+  "state": "CURRENT_MAIN_FIXTURE_REPLAY_PASS__NO_RUNTIME",
+  "updated_utc": "2026-09-24T17:24:30Z",
+  "base_main_commit": "a1378193586a6a5bbf17bfb69dbd7c1643ace3b4",
   "donor_pr": 23,
   "donor_branch": "cocivia260923/session-relational-delta-r0",
   "exact_forward_ported_blobs": {
@@ -36,14 +36,30 @@
   },
   "current_gate": {
     "static_ci": "PASS",
-    "current_main_fixture_replay": "NOT_RUN",
+    "current_main_fixture_replay": "PASS",
     "runtime_adoption": "NONE",
     "provider_session_push": "NONE",
     "authority_change": "NONE",
     "static_ci_run": 35959750310,
-    "static_ci_validated_head": "2fc33fdea4c595d281bd118a0c8025e651483d18"
+    "static_ci_validated_head": "2fc33fdea4c595d281bd118a0c8025e651483d18",
+    "fixture_replay_branch": "evidence/session-writeback-replay-r1a-20260924",
+    "fixture_blobs": {
+      "docs/Operations/fixtures/cosession-to-coevo-r0-input.json": "e33361e507e96659866464867cdc06292320c170",
+      "docs/Operations/fixtures/cosession-relational-fanin-r0-input.json": "87ef8b9cb288a780f35885f3a739d73b46be1584"
+    },
+    "replay_run_1": 36033931618,
+    "replay_run_1_result": "FAIL_EXPECTED_HASH_ASSERTION_ONLY_AFTER_ALL_FIVE_EXECUTABLE_REPLAYS_PASSED",
+    "exact_replay_observed": {
+      "session_projection_compiled_sha256": "9A790C7915791B7DB4B979C149AC02B9EA4A6CBA331E0AFEF2928609B5E57BB2",
+      "relational_fanin_compiled_sha256": "593E013AE0ECF8AEDAEADF4D2AF1F73C0FDE6ACEFB2FDC07CD8FA5FE617E1C96",
+      "fanout_selftest": "PASS_ROUTES_9__SUBSCRIPTIONS_7__FOREGROUND_3__HUMAN_BLOCKERS_0__ZERO_EFFECTS",
+      "packet_selftest": "PASS_REPO_PACKETS_2__SESSION_PACKETS_2__HOLDS_1__ZERO_DELIVERY_EFFECTS",
+      "public_copulse_selftest": "PASS_DETERMINISTIC__EPISTEMIC_CLASS_PRESERVED__NONPUBLIC_AND_UNSAFE_FAIL_CLOSED"
+    },
+    "fixture_replay_pass_run": 36034237671,
+    "fixture_replay_validated_head": "4e072bd438722b4f1cf5385b0663a3df697603dd"
   },
-  "next": "CURRENT_HEAD_RECHECK__MERGE_IF_ZERO_BEHIND__THEN_CURRENT_MAIN_FIXTURE_REPLAY_BEFORE_RUNTIME_ADOPTION",
+  "next": "RECHECK_MAIN_HEAD__IF_ZERO_BEHIND_MERGE_R1A__THEN_KEEP_RUNTIME_ADOPTION_SEPARATELY_GATED",
   "rails": [
     "SESSION_PROJECTION_NE_PARALLEL_SEMANTIC_STANDARD",
     "COMPILATION_NE_ACCEPTANCE",
@@ -52,7 +68,8 @@
     "PICKED_UP_NE_INTEGRATED",
     "MERGED_NE_CANON",
     "PUBLIC_SAFE_LABEL_NE_PUBLICATION_APPROVAL",
-    "NO_NEWEST_WINS"
+    "NO_NEWEST_WINS",
+    "FIXTURE_REPLAY_PASS_NE_RUNTIME_ADOPTION"
   ],
   "nonclaims": [
     "NOT_RUNTIME",
@@ -60,10 +77,12 @@
     "NOT_RECEIVER_PICKUP_FOR_HISTORICAL_PACKET",
     "NOT_INTEGRATED",
     "NOT_COEX",
-    "NOT_CANON"
+    "NOT_CANON",
+    "FIXTURE_REPLAY_PASS_NE_RUNTIME_ADOPTION"
   ],
   "repairs": [
     "DONOR_FANOUT_PLANNER_UNTERMINATED_NEWLINE_LITERAL_REPAIRED_AFTER_CI_FAILURE",
-    "CI_LIFECYCLE_ASSERTION_REPAIRED_TO_VALIDATE_POSITIVE_FIELDS_WITHOUT_TREATING_NONCLAIMS_AS_POSITIVE_CLAIMS"
+    "CI_LIFECYCLE_ASSERTION_REPAIRED_TO_VALIDATE_POSITIVE_FIELDS_WITHOUT_TREATING_NONCLAIMS_AS_POSITIVE_CLAIMS",
+    "DONOR_DOC_FANIN_HASH_DDE7..._PROVEN_STALE_AGAINST_EXACT_SCRIPT_AND_FIXTURE_BLOBS__CURRENT_EXACT_REPLAY_HASH_593E013A..."
   ]
 }

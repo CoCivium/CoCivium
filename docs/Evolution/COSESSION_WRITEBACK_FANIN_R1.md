@@ -81,3 +81,38 @@ This negative knowledge is part of the fan-in evidence. A donor branch being his
 
 `DONOR_HISTORY_NE_CURRENT_EXECUTABILITY`  
 `NONCLAIM_TEXT_NE_POSITIVE_CLAIM`
+
+
+## Current-main replay correction
+
+Read-only R1A replay run `36033931618` restored the exact donor script and fixture Git blobs before execution.
+
+The projection compiler reproduced its documented canonical hash exactly. The relational fan-in reproduced all documented counts, but emitted canonical hash:
+
+`593E013AE0ECF8AEDAEADF4D2AF1F73C0FDE6ACEFB2FDC07CD8FA5FE617E1C96`
+
+rather than the older prose value `DDE7DC4C...B0DF81B`.
+
+Because both the fan-in script blob (`690cba4...`) and fixture blob (`87ef8b9...`) are exact donor identities, the old prose hash is treated as stale historical evidence, not as authority over the executable bytes.
+
+The first replay run therefore failed only on the stale expected-hash assertion after the projection replay and all three downstream self-tests had passed. R1A is rerun with explicit Git-blob assertions plus the observed exact canonical fan-in hash.
+
+`DOCUMENTED_HASH_NE_EXECUTABLE_TRUTH_WHEN_EXACT_BOUND_BYTES_DISAGREE`
+
+
+## R1A replay PASS
+
+Fresh read-only GitHub Actions run `36034237671` passed on branch head `4e072bd438722b4f1cf5385b0663a3df697603dd`.
+
+The run:
+
+- asserted exact donor Git blobs for both replayed scripts and both restored fixtures;
+- reproduced the projection compiler hash `9A790C79...57BB2`;
+- reproduced the corrected exact fan-in hash `593E013A...E1C96`;
+- reproduced the fanout-planner zero-effect selftest;
+- reproduced the receiver-packet zero-delivery selftest;
+- reproduced the public-CoPulse projector fail-closed selftest.
+
+This proves bounded current-main fixture replay only.
+
+`FIXTURE_REPLAY_PASS_NE_RUNTIME_ADOPTION`

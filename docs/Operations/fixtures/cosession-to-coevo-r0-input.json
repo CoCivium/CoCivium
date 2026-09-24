@@ -1,0 +1,68 @@
+{
+  "deltas": [
+    {
+      "projection_of": "CoEvoDelta+",
+      "delta_id": "fixture-a",
+      "source_session": "FixtureA",
+      "created_at": "2026-09-23T11:20:00Z",
+      "source_refs": ["fixture://a"],
+      "target_domains": ["CoLex", "Humour"],
+      "operations": [
+        {
+          "op": "LINK",
+          "subject": "CoMemeable+",
+          "relation": "projects_to",
+          "object": "public-highlight",
+          "epistemic_class": "INFERRED",
+          "mutation_class": "PROPOSE",
+          "evidence_refs": ["fixture://e1"],
+          "confidence": 0.8
+        },
+        {
+          "op": "HIGHLIGHT",
+          "subject": "CoMemeable+",
+          "relation": "candidate_for",
+          "object": "README",
+          "epistemic_class": "HUMOROUS",
+          "mutation_class": "PROPOSE"
+        }
+      ],
+      "evidence_refs": ["fixture://e0"],
+      "candidate_surfaces": ["README.md"],
+      "authority_ceiling": "CANDIDATE_ONLY",
+      "confidentiality": "PUBLIC",
+      "public_safety": "PUBLIC_SAFE",
+      "nonclaims": ["NOT_CANON"],
+      "next_gate": "FANIN_REVIEW",
+      "next_receiver": "CoEvoFanIn",
+      "observed_base_ref": "main@example-base",
+      "receiver_readproof_gate": "EXACT_DELTA_ID_OR_HASH"
+    },
+    {
+      "projection_of": "CoEvoDelta+",
+      "delta_id": "fixture-b",
+      "source_session": "FixtureB",
+      "created_at": "2026-09-23T11:21:00Z",
+      "target_domains": ["CoLex", "UX"],
+      "operations": [
+        {
+          "op": "LINK",
+          "subject": "CoMemeable+",
+          "relation": "projects_to",
+          "object": "RickBar",
+          "epistemic_class": "PREFERRED",
+          "mutation_class": "PROPOSE"
+        }
+      ],
+      "candidate_surfaces": ["README.md", "RickBar"],
+      "authority_ceiling": "CANDIDATE_ONLY",
+      "confidentiality": "PRIVATE",
+      "public_safety": "PUBLIC_SAFE_WITH_REDACTION",
+      "nonclaims": ["NOT_CANON"],
+      "next_gate": "REDACTION_THEN_REVIEW",
+      "next_receiver": "CoEvoFanIn",
+      "observed_base_ref": "main@example-base",
+      "receiver_readproof_gate": "EXACT_DELTA_ID_OR_HASH"
+    }
+  ]
+}
