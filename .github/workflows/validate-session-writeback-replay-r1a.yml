@@ -1,0 +1,70 @@
+name: CoSession write-back replay R1A
+
+on:
+  pull_request:
+    paths:
+      - 'scripts/CoSessionProjectionToCoEvo.py'
+      - 'scripts/CoSessionRelationalFanIn.py'
+      - 'scripts/CoEvoReceiverFanoutPlanner.py'
+      - 'scripts/CoEvoReceiverPacketCompiler.py'
+      - 'scripts/CoEvoToPublicCoPulseProjectorR0.py'
+      - 'docs/Operations/fixtures/cosession-to-coevo-r0-input.json'
+      - 'docs/Operations/fixtures/cosession-relational-fanin-r0-input.json'
+      - 'ai/currentness/session-writeback-r1.json'
+      - '.github/workflows/validate-session-writeback-replay-r1a.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  replay:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Replay current-main session write-back fixtures
+        shell: bash
+        run: |
+          set -euo pipefail
+          tmp="$(mktemp -d)"
+
+          python scripts/CoSessionProjectionToCoEvo.py             --input docs/Operations/fixtures/cosession-to-coevo-r0-input.json             --output "$tmp/session-to-coevo.json"
+
+          python scripts/CoSessionRelationalFanIn.py             --input docs/Operations/fixtures/cosession-relational-fanin-r0-input.json             --output "$tmp/session-fanin.json"
+
+          python scripts/CoEvoReceiverFanoutPlanner.py --selftest
+          python scripts/CoEvoReceiverPacketCompiler.py --selftest
+          python scripts/CoEvoToPublicCoPulseProjectorR0.py --selftest
+
+          python - "$tmp/session-to-coevo.json" "$tmp/session-fanin.json" <<'PY'
+          import json, sys
+          from pathlib import Path
+
+          projection = json.loads(Path(sys.argv[1]).read_text(encoding="utf-8"))
+          fanin = json.loads(Path(sys.argv[2]).read_text(encoding="utf-8"))
+
+          pc = projection["coverage"]
+          assert pc["accepted_projection_records"] == 2, pc
+          assert pc["compiled_coevo_deltas"] == 3, pc
+          assert pc["rejected_records"] == 0, pc
+          assert pc["review_flags"] == 0, pc
+          assert projection["compiled_sha256"] == "9A790C7915791B7DB4B979C149AC02B9EA4A6CBA331E0AFEF2928609B5E57BB2", projection["compiled_sha256"]
+          assert all(v == 0 for v in projection["effects"].values()), projection["effects"]
+
+          fc = fanin["coverage"]
+          assert fc["accepted_deltas"] == 2, fc
+          assert fc["unique_operations"] == 3, fc
+          assert fc["duplicate_operation_groups"] == 1, fc
+          assert fc["collision_candidates"] == 1, fc
+          assert fc["highlight_candidates"] == 1, fc
+          assert fc["public_fanout_holds"] == 1, fc
+          assert fanin["compiled_sha256"] == "DDE7DC4CC29DFA6AE49F2123CEFC3EAAC0D04D07DAD76D3784B93AF64B0DF81B", fanin["compiled_sha256"]
+          assert all(v == 0 for v in fanin["effects"].values()), fanin["effects"]
+
+          print("PASS_SESSION_WRITEBACK_R1A_CURRENT_MAIN_FIXTURE_REPLAY")
+          print("PROJECTION_COMPILED_SHA256=" + projection["compiled_sha256"])
+          print("FANIN_COMPILED_SHA256=" + fanin["compiled_sha256"])
+          PY
