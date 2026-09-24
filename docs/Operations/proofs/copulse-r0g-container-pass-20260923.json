@@ -1,0 +1,91 @@
+{
+  "schema": "CoPulseCapacityProvenanceLiveReceiverCanary.R0G.ExecutionEvidence.v0.1",
+  "state": "PASS_BOUNDED_CONTAINER_LOCAL_SYNTHETIC__LIVE_RECEIVER_BINDING__CAPACITY_SOURCE_PROVENANCE__TAMPER_REJECTED__EXACT_REPLAY",
+  "execution_surface": "OpenAI task container",
+  "base_main_commit": "db2890b94939fa1d86b7cbf5d37c37438efcc9c8",
+  "executed_branch_head": "3159446d22cf27c15e1c07afc673a048ba804ec2",
+  "exact_branch_bindings": {
+    "CoPulseLiveReceiverProbeR0G_git_blob": "d3ea693ce3192e6f999022e9b41c4d13622d10a1",
+    "CoPulseCapacityProvenanceGateR0G_git_blob": "ba933ca4c91952bb57c729eab83197b20a89bd69",
+    "CoPulseCapacityProvenanceCanaryR0G_git_blob": "5701fdcf0a0ba430cf8f96b9dac1c011c49ac624",
+    "CoPulseReceiverPressureFreshnessR0F_git_blob": "25dabfbabe4af845d93114893fff14d393af806b",
+    "CoPulseReceiverPressureBudgetR0E_git_blob": "d68f10f2fc492cfd2e863b6b5d39a6640f478585",
+    "CoPulseDigestCompactorR0D_git_blob": "7b2e82d0bd5ea99438d8520f2a4d4aa126ee55a5",
+    "CoPulseDigestReplayR0D_git_blob": "38d2af9bad84b78376397ac3ea4281cf2597a698",
+    "live_receiver_binding_schema_git_blob": "28a8d756b582c59219f28a12a9cc98bbd2aff03f",
+    "capacity_source_attestation_schema_git_blob": "922b9d78af440469ab6b164d624d83c709b7f5d4"
+  },
+  "git_blob_readback": {
+    "all_scripts_exact": true,
+    "all_new_schemas_exact": true
+  },
+  "schema_validation": {
+    "engine": "python jsonschema",
+    "live_receiver_binding_objects_validated": 2,
+    "capacity_source_attestation_objects_validated": 2,
+    "state": "PASS"
+  },
+  "result": {
+    "state": "PASS_R0G_LIVE_RECEIVER_PROCESS_BINDING__CAPACITY_SOURCE_PROVENANCE__TAMPER_REJECTED__EXACT_REPLAY",
+    "canary_result_sha256": "C4E2D798F5ED07A80219F488691C33CAD7516F92ADD317071A3AA980A126A5F3",
+    "shared_pulse_field_sha256": "F3BF959618E859A3968BBB0CAA5EFCAC5355A5C08F4E4EACA6A3974C1314F269",
+    "receivers": [
+      {
+        "receiver_id": "VirtualReceiver-R0G-A",
+        "binding_id": "receiver-binding:1588A0ABE553A05FF66A0D47",
+        "ephemeral_process_pid": 2344,
+        "worker_alive_during_provenance_gate": true,
+        "worker_exited_after_canary": true,
+        "capacity_source": "SYNTHETIC_FIXTURE",
+        "capacity": 6,
+        "pressure_sample_sha256": "CBB6A8A12D20325A4A8A6476132A64863A1E463F8081FD4077CF68E31AEA4470",
+        "provenance_gate_sha256": "FEC2BA9D0506834D759767E37E57DE5AD796F625CFAFDD21539FF65A955BF79B",
+        "last_acked_cursor": 2,
+        "elected_digest_budget": 4,
+        "exact_replayed_digest_count": 4
+      },
+      {
+        "receiver_id": "VirtualReceiver-R0G-B",
+        "binding_id": "receiver-binding:769569015B22F0C7F7016A4A",
+        "ephemeral_process_pid": 2404,
+        "worker_alive_during_provenance_gate": true,
+        "worker_exited_after_canary": true,
+        "capacity_source": "SYNTHETIC_FIXTURE",
+        "capacity": 3,
+        "pressure_sample_sha256": "7DBC00C71E030CD954DB8E8541D224BD2252EC04A54F1FC5F662421CA07DD8DD",
+        "provenance_gate_sha256": "5C9A16826282D7DE3083F16AE20B965C1F03948FF2B20126CE9ECA88D7699931",
+        "last_acked_cursor": 0,
+        "elected_digest_budget": 1,
+        "exact_replayed_digest_count": 4
+      }
+    ],
+    "checks": {
+      "distinct_live_processes": true,
+      "live_during_provenance_gate": true,
+      "process_lifetime_scope_enforced": true,
+      "capacity_sample_hash_bound": true,
+      "tampered_capacity_rejected": true,
+      "divergent_budgets": [4, 1],
+      "independent_ack": [2, 0],
+      "exact_replay": true,
+      "x2_live_receiver_proven": false
+    }
+  },
+  "effects": {
+    "provider_session_mutation": 0,
+    "x2_mutation": 0,
+    "ack_cursor_mutation": 0,
+    "authority_change": 0,
+    "source_deletion": 0
+  },
+  "next": "R0H_AUTHENTIC_CAPACITY_MEASUREMENT_OR_X2_LIVE_RECEIVER_BINDING",
+  "nonclaims": [
+    "LOCAL_PROCESS_CANARY_NE_X2_LIVE_RECEIVER",
+    "PROVENANCE_NE_ACCURACY",
+    "LIVENESS_NE_PERSISTENCE",
+    "PROCESS_PID_NE_IDENTITY",
+    "LOCAL_CANARY_NE_CROSS_FAILURE_DOMAIN",
+    "VALIDATION_IS_NOT_ACCEPTANCE",
+    "NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE"
+  ]
+}

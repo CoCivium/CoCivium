@@ -1,0 +1,40 @@
+{
+  "schema": "CoPulseCurrentness.R0G.v0.1-candidate",
+  "state": "R0A_THROUGH_R0F_ON_MAIN__R0G_BOUNDED_CANDIDATE_PROOF_LANDED_ON_FORWARD_BRANCH__NO_X2_LIVE_RECEIVER",
+  "updated_utc": "2026-09-23T12:55:00Z",
+  "base_main_commit": "db2890b94939fa1d86b7cbf5d37c37438efcc9c8",
+  "forward_branch": "cocivia260923/copulse-r0g-provenance-binding",
+  "r0g": {
+    "capability": "LIVE_LOCAL_RECEIVER_PROCESS_BINDING_PLUS_EXACT_CAPACITY_SOURCE_PROVENANCE",
+    "state": "PASS_BOUNDED_CONTAINER_LOCAL_SYNTHETIC",
+    "proof": "docs/Operations/proofs/copulse-r0g-container-pass-20260923.json",
+    "receiver_count": 2,
+    "capacity_source": "SYNTHETIC_FIXTURE",
+    "live_scope": "PROCESS_LIFETIME_ONLY",
+    "tamper_rejection": "PASS_PRESSURE_SHA_MISMATCH",
+    "fresh_receiver_budgets": [4, 1],
+    "independent_ack_cursors": [2, 0],
+    "exact_replay": true
+  },
+  "route_observation": {
+    "x2_receiver_route": "OFFLINE_AT_BOUND_CHECK",
+    "screenshot_online_indicator": "VISIBLE_UI_POINTER_ONLY",
+    "rule": "VISIBLE_STATUS_NE_RECEIVER_ROUTE"
+  },
+  "next": "R0H_AUTHENTIC_CAPACITY_MEASUREMENT_OR_X2_LIVE_RECEIVER_BINDING",
+  "rails": [
+    "PROVENANCE_NE_ACCURACY",
+    "LIVENESS_NE_PERSISTENCE",
+    "PROCESS_PID_NE_IDENTITY",
+    "CAPACITY_SOURCE_NE_AUTHORITY",
+    "LOCAL_PROCESS_CANARY_NE_X2_LIVE_RECEIVER",
+    "VISIBLE_STATUS_NE_RECEIVER_ROUTE"
+  ],
+  "nonclaims": [
+    "NO_X2_LIVE_RECEIVER_PROOF",
+    "NO_AUTHENTIC_MEASURED_CAPACITY_PROOF",
+    "NO_PROVIDER_SESSION_CONTEXT_MUTATION_PROVEN",
+    "NO_CROSS_FAILURE_DOMAIN_RECEIVER_PROOF",
+    "NO_INTEGRATION_OR_COEX_INFERENCE"
+  ]
+}

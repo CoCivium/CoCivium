@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/CoCivium/CoCivium/schemas/copulse-capacity-source-attestation-v0.1.schema.json",
+  "title": "CoPulse capacity source attestation v0.1 candidate",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema","state","attestation_id","receiver_id","receiver_binding_id",
+    "producer_instance_id","pressure_sample_sha256","capacity_source",
+    "source_class","observation_method","observed_at","authority_ceiling","nonclaims"
+  ],
+  "properties": {
+    "schema":{"const":"CoPulseCapacitySourceAttestation.R0G.v0.1-candidate"},
+    "state":{"const":"PROVEN_SOURCE_BINDING__ACCURACY_UNPROVEN"},
+    "attestation_id":{"type":"string","minLength":1},
+    "receiver_id":{"type":"string","minLength":1},
+    "receiver_binding_id":{"type":"string","minLength":1},
+    "producer_instance_id":{"type":"string","minLength":1},
+    "pressure_sample_sha256":{"type":"string","pattern":"^[0-9A-F]{64}$"},
+    "capacity_source":{"enum":["MEASURED","DECLARED","SYNTHETIC_FIXTURE"]},
+    "source_class":{"enum":["RECEIVER_SELF_REPORT_SYNTHETIC_CANARY","RECEIVER_SELF_REPORT_DECLARED","ADAPTER_MEASURED","OTHER"]},
+    "observation_method":{"const":"LIVE_PROCESS_CHALLENGE_RESPONSE"},
+    "observed_at":{"type":"string","format":"date-time"},
+    "authority_ceiling":{"type":"string","minLength":1},
+    "nonclaims":{"type":"array","items":{"type":"string"}}
+  }
+}
