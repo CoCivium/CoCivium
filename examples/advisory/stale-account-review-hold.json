@@ -1,0 +1,37 @@
+{
+  "schema": "CoTimeAdvisoryEvidence.v0.1-candidate",
+  "object_id": "fixture:stale-account",
+  "epistemic_class": "INFERRED",
+  "information_class": "PUBLIC_INFORMATION",
+  "currentness": "STALE",
+  "source_refs": [
+    "fixture:public-source"
+  ],
+  "source_time": "2026-01-01T00:00:00Z",
+  "observed_at": "2026-09-24T20:30:00Z",
+  "recorded_at": "2026-09-24T20:31:00Z",
+  "valid_from": "2026-01-01T00:00:00Z",
+  "valid_to": "2026-06-01T00:00:00Z",
+  "decision_time": null,
+  "horizon_end": null,
+  "calibration_due": null,
+  "confidence": 0.7,
+  "supersedes": [],
+  "action_class": "PORTFOLIO_REVIEW_TRIGGER",
+  "scope_class": "SPECIFIC_CLIENT_OR_ACCOUNT",
+  "regulatory_profile": "UNKNOWN",
+  "professional_review_required": true,
+  "route": {
+    "state": "HOLD_CURRENTNESS",
+    "reason": "Synthetic stale-source fixture."
+  },
+  "authority_ceiling": "ADVISORY_ONLY",
+  "assumptions": [],
+  "counterarguments": [],
+  "calibration_disposition": "NOT_DUE",
+  "nonclaims": [
+    "PREDICTION_NE_EVIDENCE",
+    "ANALYSIS_NE_TRADE_AUTHORITY",
+    "CI_PASS_NE_INVESTMENT_MERIT"
+  ]
+}
