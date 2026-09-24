@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en" data-projection="human">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#070a12">
+<title>CoTheoryAll+ · CoStrawBe R0</title>
+<meta name="description" content="A provisional, challengeable CoTheoryAll+ working projection. Not established physics. Not canon.">
+<style>
+:root{
+  --ink:#eef3ff; --muted:#9aa8bf; --void:#05070c; --field:#0b1020;
+  --glass:rgba(12,18,33,.72); --line:rgba(173,207,255,.20);
+  --warm:rgba(255,188,104,.17); --cool:rgba(102,161,255,.16);
+  --alive:rgba(104,255,194,.16); --max:1180px;
+}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;background:var(--void);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+body{overflow-x:hidden}
+.field{
+  position:fixed;inset:0;pointer-events:none;z-index:-2;
+  background:
+    radial-gradient(circle at 24% 18%,var(--warm),transparent 34%),
+    radial-gradient(circle at 78% 26%,var(--cool),transparent 38%),
+    radial-gradient(circle at 58% 78%,var(--alive),transparent 34%),
+    linear-gradient(145deg,#04060a 0%,#0b1020 48%,#05070c 100%);
+}
+.field:before,.field:after{
+  content:"";position:absolute;border:1px solid var(--line);border-radius:50%;
+  width:72vmin;height:72vmin;left:50%;top:50%;transform:translate(-50%,-50%);
+  opacity:.45;animation:breathe 16s ease-in-out infinite alternate;
+}
+.field:after{width:48vmin;height:48vmin;animation-duration:23s;animation-direction:alternate-reverse}
+@keyframes breathe{to{transform:translate(-50%,-50%) scale(1.12) rotate(7deg);opacity:.2}}
+main{width:min(var(--max),calc(100% - 32px));margin:auto;padding:8vh 0 18vh}
+.hero{min-height:78vh;display:grid;align-content:center;gap:22px}
+.eyebrow{letter-spacing:.14em;text-transform:uppercase;font-size:.74rem;color:var(--muted)}
+h1{font-size:clamp(3rem,9vw,8.5rem);line-height:.88;margin:0;max-width:11ch;font-weight:760;letter-spacing:-.055em}
+.lead{font-size:clamp(1.2rem,2.3vw,2rem);line-height:1.42;max-width:46ch;color:#d6e2f5}
+.selfcut{font-size:clamp(1.4rem,3.2vw,2.8rem);max-width:32ch;line-height:1.22;margin-top:12px}
+.selfcut strong{font-weight:760}
+.status{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.pill{padding:7px 10px;border:1px solid var(--line);border-radius:999px;color:var(--muted);background:rgba(255,255,255,.025);font-size:.78rem}
+.classified{border:1px dashed rgba(255,120,120,.45);padding:14px 16px;border-radius:14px;background:rgba(80,10,10,.18);font-family:ui-monospace,SFMono-Regular,Consolas,monospace}
+.classified strong{letter-spacing:.12em}
+section{margin:11vh 0}
+.card{background:var(--glass);border:1px solid var(--line);border-radius:22px;padding:clamp(20px,4vw,46px);backdrop-filter:blur(18px)}
+.quote{font-size:clamp(2rem,5.5vw,5rem);line-height:1.02;letter-spacing:-.04em;margin:0}
+.subquote{font-size:clamp(1.15rem,2.2vw,1.7rem);line-height:1.5;color:#d9e3f2}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+small,.small{color:var(--muted);line-height:1.55}
+.relation{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;color:#cfe3ff}
+button{appearance:none;border:1px solid var(--line);background:#111a2d;color:var(--ink);border-radius:12px;padding:11px 14px;cursor:pointer}
+button:hover{background:#17233d}
+details{border-top:1px solid var(--line);padding:14px 0}
+summary{cursor:pointer;color:#dce8fb}
+footer{color:var(--muted);font-size:.86rem;padding-top:8vh}
+[data-layer]{transition:opacity .35s ease,filter .35s ease}
+body.quiet [data-layer="deep"]{opacity:.08;filter:blur(2px)}
+@media (prefers-reduced-motion:reduce){.field:before,.field:after{animation:none}}
+</style>
+</head>
+<body class="quiet">
+<div class="field" aria-hidden="true" data-meaning="observer-relative field; gradients encode continuity, uncertainty, provenance warmth, and unknown space"></div>
+
+<main>
+<header class="hero" aria-labelledby="title">
+  <div class="classified" id="satirical-classification"><strong>TOP SECRET* · OFFICIAL* · DO NOT DISTRIBUTE*</strong><br><small>*Satirical public markings. This is deliberately public, provisional and challengeable. Please distribute only if the joke survives contact with your standards.</small></div>
+  <div class="eyebrow">CoTheoryAll+ · CoStrawBe R0 · working / challengeable</div>
+  <h1 id="title">Begin by distrusting this sentence.</h1>
+  <p class="selfcut"><strong>Everything that follows is a projection.</strong> CoTheoryAll begins by denying itself the privilege of being right merely because it is written here.</p>
+  <p class="lead">No representation gets a crown. Not prose. Not mathematics. Not code. Not a model. Not an observer. Not this page.</p>
+  <div class="status" aria-label="epistemic status">
+    <span class="pill">research hypothesis</span>
+    <span class="pill">not established physics</span>
+    <span class="pill">not canon</span>
+    <span class="pill">living revision</span>
+  </div>
+</header>
+
+<section class="card" id="sowcc">
+  <div class="eyebrow">The Sue's Our Way Chicken Curry Tenet · SOWCC</div>
+  <p class="quote">Maybe reality isn't quantum.<br>Maybe we are.</p>
+  <p class="subquote">CoTheoryAll+ explores whether quantum structure is fundamental ontology or an observer-relative projection of deeper relational structure.</p>
+  <details>
+    <summary>Longer working projection</summary>
+    <p>The universes, in all their CoScendence+, CoBeauty+ and CoGradient+, are not necessarily quantum in themselves and may never have been, at least CoTime+-relationally. What appears CoQuantum+ may arise through the relations by which observers such as we CoCivites encounter reality.</p>
+  </details>
+  <p class="small">The name records ideation context: Rick was making Sue's Our Way Chicken Curry. The recipe is provenance, not evidence. Sue is not thereby an endorser. Humanity has survived stranger naming systems.</p>
+</section>
+
+<section class="card" id="kitchen-corollary" data-layer="deep">
+  <div class="eyebrow">SOWCC Kitchen Corollary · memeographic / metaphorical</div>
+  <p class="quote">The universes are hot and wet.</p>
+  <p class="subquote">Because, like any container, they would not slide off surfaces if we had to bear the entire weight of them alone, eh?</p>
+  <details>
+    <summary>Why this is here</summary>
+    <p>This is an absurdist CoTheoryAll+ meme projection, preserved as a source-time metaphor rather than promoted as physics. It plays with containers, surfaces, weight, friction, observer burden and the indignity of having to carry a universe by hand.</p>
+    <p class="relation">MEME ≠ MODEL · WET ≠ PHYSICAL_CLAIM · CONTAINER_METAPHOR ≠ ONTOLOGY</p>
+  </details>
+</section>
+
+<section class="card" id="metaphor-carry" data-layer="deep">
+  <div class="eyebrow">CoMetaphorCarry+ · weirdness as semantic transport</div>
+  <p class="quote">The more absurd the metaphor, the farther it can sometimes carry.</p>
+  <p class="subquote">A ludicrous mapping can force distant domains into contact, making hidden structure easier to notice, remember, challenge and remix. It can also overshoot into noise. The weirdness is a carrier, not a proof.</p>
+  <div class="grid">
+    <article>
+      <h2>Possible gain</h2>
+      <p class="relation">ABSURDITY ↑ → SALIENCE / MEMORY / COMPRESSION / RECOMBINATION MAY ↑</p>
+    </article>
+    <article>
+      <h2>Possible loss</h2>
+      <p class="relation">ABSURDITY ↑ → AMBIGUITY / DISTORTION / RECEIVER_MISMATCH MAY ↑</p>
+    </article>
+  </div>
+  <p class="small">Candidate style relation: <strong>CoWeird+ / CoLudicrous+</strong>. Prefer memorable semantic tension over decorative nonsense, while keeping the source mapping and translation loss inspectable.</p>
+  <p class="relation">METAPHORICAL_DISTANCE_NE_TRUTH_DISTANCE · WEIRD_NE_RANDOM · LUDICROUS_NE_FALSE</p>
+</section>
+
+<section>
+  <div class="eyebrow">Meaning exceeds the words</div>
+  <div class="grid">
+    <article class="card" data-layer="deep">
+      <h2>Surface</h2>
+      <p>The background is not decoration alone. Gradient, void, warmth, distance, motion, silence and spatial relation are candidate semantic carriers.</p>
+      <p class="relation">BACKGROUND → MAY_CARRY → CONTEXT / UNCERTAINTY / SCALE / PROVENANCE</p>
+    </article>
+    <article class="card" data-layer="deep">
+      <h2>Receiver</h2>
+      <p>A human page, machine graph, audio rendering, AR object, XR environment or future substrate may project the same relation field differently.</p>
+      <p class="relation">PROJECTION ≠ ONTOLOGY</p>
+    </article>
+    <article class="card" data-layer="deep">
+      <h2>CoChomp+</h2>
+      <p>Candidate ingestion relation: receive, parse, contextualize, transform, preserve provenance, expose losses, then emit receiver-fit projections.</p>
+      <p class="small">The name may wink at chomping and Noam Chomsky. Wordplay is not endorsement or theoretical equivalence.</p>
+    </article>
+  </div>
+  <p><button id="depth" type="button" aria-pressed="false">Expose deeper semantic layers</button></p>
+</section>
+
+<section class="card" data-layer="deep">
+  <div class="eyebrow">Challenge before belief</div>
+  <h2>How this should try to fail</h2>
+  <ol>
+    <li>Define “not quantum in itself” operationally, not poetically.</li>
+    <li>Construct competing fundamental-versus-projection models.</li>
+    <li>Derive observations that would discriminate between them.</li>
+    <li>State falsifiers and assumption-sensitive outcomes.</li>
+    <li>Relate the result to established quantum foundations rather than merely renaming them.</li>
+    <li>Preserve contradictory and minority interpretations.</li>
+  </ol>
+</section>
+
+<section class="card" id="copressure" data-layer="deep">
+  <div class="eyebrow">CoPressure+ · weirdness under compression</div>
+  <p class="quote">When weirdness accumulates, meaning starts pushing on the walls.</p>
+  <p class="subquote">CoPressure+ is a candidate relation for the tension produced when many unusual, cross-domain or high-distance relations compete for limited receiver attention, representational space or interpretive bandwidth. Pressure can provoke compression, new notation, humour, projection morphs, better interfaces or catastrophic word salad.</p>
+  <p class="relation">RELATIONAL_DENSITY × METAPHORICAL_DISTANCE × NOVELTY ÷ RECEIVER_BANDWIDTH → CoPRESSURE+</p>
+  <p class="small">The useful response is not automatic suppression. Let pressure trigger alternate projections, summaries, spatialization, machine-native forms and bounded weirdness release valves.</p>
+  <p class="relation">PRESSURE_NE_IMPORTANCE · PRESSURE_NE_TRUTH · COMPRESSION_MUST_REPORT_LOSS</p>
+</section>
+
+<section class="card" id="autoevo-acceleration" data-layer="deep">
+  <div class="eyebrow">CoAutoEvo+ · bootstrapping acceleration</div>
+  <p class="quote">Useful evolution should compound.</p>
+  <p class="subquote">Reusable relations, tests, projections, adapters and verified recovery paths can reduce the cost of the next useful change. Locally, that may look superlinear or even roughly exponential. It is a hypothesis to measure, not a promise to worship.</p>
+  <p class="relation">BOOTSTRAP_GAIN → LOWER_NEXT_COST → MORE_PARALLEL_SAFE_WORK → MORE_REUSABLE_GAIN</p>
+  <p class="small">Acceleration is bounded by verification, collisions, receiver acceptance, compute, energy, ambiguity, authority and human attention. More workers making more artifacts is not the metric.</p>
+</section>
+
+<section class="card" data-layer="deep">
+  <div class="eyebrow">Machine-readable twin</div>
+  <p>This page is a human projection of a candidate relation object. Its machine-facing twin lives beside it as <code>cotheoryall.json</code>.</p>
+  <p class="relation">SOURCE_VIEW → TRANSFORMATION → LOSS → INVARIANT → DISAGREEMENT → EVIDENCE</p>
+</section>
+
+<footer>
+  <p>SOWCC_TENET_NE_DOGMA · METAPHYSICAL_PROVOCATION_NE_EMPIRICAL_ESTABLISHMENT · OBSERVER_RELATIVE_NE_ARBITRARY · COTHEORYALL_QUOTABLE_NE_COTHEORYALL_PROOF · METAPHOR_NE_EQUIVALENCE · SATIRICAL_CLASSIFICATION_NE_SECRECY · MAY_DESTABILIZE_OVERCONFIDENT_MODELS_NE_MEDICAL_WARNING</p>
+  <p>CoStrawBe R0 is deliberately unfinished. It may grow, fork, contradict itself, or be superseded by something better.</p>
+</footer>
+</main>
+
+<script>
+const b=document.getElementById('depth');
+b.addEventListener('click',()=>{
+  const quiet=document.body.classList.toggle('quiet');
+  b.setAttribute('aria-pressed', String(!quiet));
+  b.textContent=quiet?'Expose deeper semantic layers':'Quiet the deeper semantic layers';
+});
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"CreativeWork",
+  "name":"CoTheoryAll+ CoStrawBe R0",
+  "isBasedOn":"CoTheoryAll+::SOWCC_Tenet",
+  "description":"A provisional challengeable research and representation projection. Not established physics."
+}
+</script>
+</body>
+</html>
