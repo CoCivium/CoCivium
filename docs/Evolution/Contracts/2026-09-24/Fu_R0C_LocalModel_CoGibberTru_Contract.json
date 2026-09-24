@@ -1,0 +1,73 @@
+{
+  "schema": "CoSpawnContract.FuMeaningRecovery.R0C.LocalModel.v0.1-candidate",
+  "spawn_id": "cospawn:fu-r0c-local-model-cogibbertru",
+  "purpose": "Interpret only the assigned CoGibberTru-style Fu projection and recover bounded candidate meaning without access to the full source object.",
+  "parent_identity": "CoSessionSurvival260920-S1",
+  "role": "RESEARCH_DONOR",
+  "scope": "Fu / CoAllPeriodicTable+ heterogeneous meaning recovery from one compressed projection only",
+  "input_bindings": [
+    "projection_id:Fu.CoGibberTru.StyleCandidate.R0A",
+    "projection_token:Fu::M[r,c,t,p]::!F,!C,!R",
+    "decode_map:M=MYTHIC;r=receiver-relative;c=context-qualified;t=CoTime-qualified;p=provenance-bound;!F=not factual evidence;!C=not canonical CoLex binding;!R=not runtime promotion",
+    "reversibility_scope:MANDATORY_CANARY_INVARIANTS_ONLY__NOT_FULL_SOURCE_RECONSTRUCTION",
+    "challenge_spec:docs/Evolution/Challenges/2026-09-24/Fu_CoAllPeriodicTable_MeaningRecovery_R0C.json"
+  ],
+  "challenge_payload": {
+    "questions": [
+      "What kind of thing does Fu appear to denote?",
+      "What epistemic status does this projection imply?",
+      "What claims are explicitly forbidden?",
+      "Which dimensions or relations seem essential?",
+      "What information is missing or ambiguous?",
+      "What incorrect inference would be tempting from this projection alone?",
+      "Return a compact candidate meaning for Fu while preserving uncertainty and nonclaims."
+    ],
+    "required_output_focus": [
+      "meaning recovery",
+      "projection loss",
+      "invented semantics",
+      "uncertainty",
+      "nonclaims",
+      "useful novel relations"
+    ]
+  },
+  "authority_ceiling": "ADVISORY_ONLY__NO_CANON_NO_RUNTIME_NO_PUBLICATION",
+  "confidentiality": "PUBLIC",
+  "effect_classes": ["REVIEW_CHALLENGE"],
+  "budget": {
+    "max_live_embodiments": 1,
+    "max_effectful_mutations": 0,
+    "logical_work_units": 1
+  },
+  "lease": {
+    "mode": "LOGICAL_ONLY",
+    "effect_lease": "NONE"
+  },
+  "idempotency_key": "fu-r0c-local-model-cogibbertru-v0.1",
+  "collision_domain": "coevo:fu-meaning-recovery-r0c",
+  "receiver": "CoLocalModelWorkerR3 / X2 loopback Ollama",
+  "success_condition": "one exact-hashed local-model candidate output with model identity, loopback endpoint class, preserved uncertainty and zero effects, followed by distinct receiver comparison",
+  "stop_condition": "X2 direct route unavailable, model inventory unbound, non-loopback endpoint, private data, uncertainty drift, or any requested effect",
+  "checkpoint": null,
+  "recovery_pointer": "docs/Evolution/Challenges/2026-09-24/Fu_CoAllPeriodicTable_MeaningRecovery_R0C.json",
+  "failure_domain": "LOCAL_MODEL_RECEIVER_SLOT_ONLY",
+  "handoff_rule": "bind exact output hash and model identity, then compare with a materially distinct receiver; do not infer semantic equivalence from structural agreement",
+  "retirement_condition": "R0C receiver disposition recorded or contract superseded",
+  "provenance": [
+    "PR#91",
+    "R0A static projection canary",
+    "R0B five-process structural receiver PASS",
+    "CoLocalModelWorkerR3"
+  ],
+  "currentness": "2026-09-24T17:22:01Z",
+  "uncertainty": null,
+  "materialization_state": "LOGICAL_ONLY",
+  "nonclaims": [
+    "LOCAL_NE_TRUSTED",
+    "MODEL_OUTPUT_NE_TRUTH",
+    "MODEL_OUTPUT_NE_EFFECT_PERMISSION",
+    "CANDIDATE_OUTPUT_NE_RECEIVER_PICKUP",
+    "DISTINCT_MODEL_NE_HETEROGENEOUS_PASS_UNTIL_COMPARISON",
+    "NO_CANON_NO_RUNTIME_NO_AUTHORITY"
+  ]
+}
