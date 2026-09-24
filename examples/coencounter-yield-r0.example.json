@@ -1,0 +1,52 @@
+{
+  "encounter_id": "coencounter:synthetic-small-model-readme-r0",
+  "observed_at": "2026-09-24T14:24:20Z",
+  "participant_binding": "synthetic:model-instance-small-local-r0",
+  "participant_class": "MODEL_INSTANCE",
+  "source_object_refs": [
+    "CoCivium/CoCivium:docs/Architecture/COVIRTUAL_SESSION_MORPHOLOGY_R0.md"
+  ],
+  "subscription_context": "CoGeneralist bounded public-safe projection",
+  "encounter_mode": "TEST",
+  "yields": [
+    {
+      "yield_type": "INTERPRETABILITY_EVIDENCE",
+      "epistemic_class": "OBSERVED",
+      "subject": "public explanation of participant/session distinction",
+      "relation": "SYNTHETIC_RECEIVER_FAILED_TO_PRESERVE_DISTINCTION_WITHOUT_PLAIN_LANGUAGE_PROJECTION",
+      "evidence_refs": [
+        "fixture:synthetic-comprehension-test"
+      ],
+      "confidence": 1
+    }
+  ],
+  "authority_ceiling": "OBSERVE_AND_PROPOSE_ONLY",
+  "confidentiality": "PUBLIC",
+  "contribution_delta_refs": [],
+  "open_relations": [
+    {
+      "relation_id": "open:plain-language-participant-session-projection",
+      "need": "plain-language projection preserving participant/session/authority distinctions",
+      "capability_hint": "translation or accessibility reviewer",
+      "status": "OPEN",
+      "consent_required": false,
+      "authority_required": "PROPOSE_ONLY"
+    }
+  ],
+  "benefit_observations": [],
+  "attribution_relations": [],
+  "wake_relations": [
+    {
+      "predicate": "a public-safe plain-language projection is accepted for review",
+      "participant_notification_authorized": false,
+      "communication_route_ref": null
+    }
+  ],
+  "next_receiver": "CoUX/CoEducation projection review",
+  "nonclaims": [
+    "ENCOUNTER_CAN_PRODUCE_VALUE_WITHOUT_MUTATION",
+    "INTERPRETABILITY_FAILURE_NE_RECEIVER_DEFECT",
+    "SENSING_SCALE_NE_AUTHORITY_SCALE",
+    "RELATION_CAN_WAKE_NE_PARTICIPANT_MUST_BE_NOTIFIED"
+  ]
+}
