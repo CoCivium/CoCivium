@@ -1,0 +1,76 @@
+{
+  "schema": "CoLex.SymbolCollisionReview.v0.1-candidate",
+  "state": "BOUNDED_NO_COLLISION_FOUND__NOT_ABSENCE_PROOF",
+  "subject": "Fu",
+  "candidate_relation": "candidate symbolic CoMythOps+ relational element for CoAllPeriodicTable+",
+  "source_pr": 83,
+  "observed_at": "2026-09-24T16:32:21Z",
+  "observed_sources": {
+    "CoCivium_main_sha": "79ae1b88abd6cf5f5388d2bd95c58ab00ff9bb38",
+    "GIBindex_main_sha": "b05b607c7bfd940934b3d1a127e8ff4a574e2f6b",
+    "GIBindex_catalog_blob_sha": "3eb9a0b68d3fdbfbfce4002396546ff59ae8bee8",
+    "GIBindex_stub_index_blob_sha": "1049693d3cc24c0f0458824386e0a1d1615bcbb5",
+    "GIBindex_deepsweep_blob_sha": "86b9aaf1491a086ba885d04d4ef7db00a29c67c0",
+    "GIBindex_deprecated_aliases_blob_sha": "5366944794f1de34a9b35cc740d58e1b951da77e"
+  },
+  "checks": [
+    {
+      "scope": "GIBindex current canonical catalog snapshot",
+      "result": "NO_EXACT_FU_OR_COALLPERIODICTABLE_MATCH"
+    },
+    {
+      "scope": "GIBindex current stub index snapshot",
+      "result": "NO_EXACT_FU_OR_COALLPERIODICTABLE_MATCH"
+    },
+    {
+      "scope": "GIBindex current deepsweep term extract",
+      "result": "NO_EXACT_FU_OR_COALLPERIODICTABLE_MATCH"
+    },
+    {
+      "scope": "GIBindex deprecated alias registry",
+      "result": "NO_EXACT_FU_OR_COALLPERIODICTABLE_MATCH"
+    },
+    {
+      "scope": "GitHub code search in GIBindex",
+      "result": "NO_EXACT_FU_MATCH"
+    },
+    {
+      "scope": "GitHub code search in CoInsights",
+      "result": "NO_EXACT_FU_OR_COALLPERIODICTABLE_MATCH"
+    }
+  ],
+  "disposition": {
+    "Fu": "MAY_ADVANCE_AS_NONCANONICAL_CANDIDATE_SYMBOL",
+    "CoAllPeriodicTable+": "MAY_ADVANCE_TO_BOUNDED_PROJECTION_CANARY",
+    "canonical_binding": "HELD",
+    "public_highlight_promotion": "HELD",
+    "runtime": "NONE"
+  },
+  "next_canary": {
+    "name": "Fu_CoAllPeriodicTable_ProjectionLoss_R0A",
+    "purpose": "compare one underlying relational object projected as 2D table cell, 3D neighborhood object, and CoTime+ trajectory while preserving identity, mythic typing, provenance, receiver scope, and declared loss",
+    "minimum_receivers": [
+      "human-readable projection",
+      "machine-readable JSON projection",
+      "CoPriMath+-style symbolic projection",
+      "CoGibberTru+-style compressed projection"
+    ],
+    "required_invariants": [
+      "FU_NE_FACT",
+      "SYMBOL_NE_SUBSTANCE",
+      "ELEMENT_NE_INDIVISIBLE",
+      "POSITION_NE_IDENTITY",
+      "MYTHIC_PROJECTION_NE_FACTUAL_CLAIM",
+      "PROJECTION_NE_SOURCE",
+      "RECURSION_AVAILABLE_NE_RECURSION_REQUIRED"
+    ],
+    "success_condition": "all projections bind one stable candidate identity and expose explicit projection loss without silently changing epistemic class or authority"
+  },
+  "nonclaims": [
+    "SEARCH_MISS_NE_OBJECT_ABSENCE",
+    "BOUNDED_NO_COLLISION_FOUND_NE_GLOBAL_SYMBOL_UNIQUENESS",
+    "CANDIDATE_SYMBOL_NE_CANONICAL_COLEX_TERM",
+    "PROJECTION_CANARY_NE_NATURAL_PERIODIC_LAW",
+    "NO_MERGE_NO_CANON_NO_RUNTIME_NO_AUTHORITY"
+  ]
+}
