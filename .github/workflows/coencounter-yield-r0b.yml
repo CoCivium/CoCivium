@@ -1,0 +1,54 @@
+name: Validate CoEncounterYield R0B
+
+on:
+  pull_request:
+    paths:
+      - "ai/coencounter-open-relation-routing-r0.json"
+      - "ai/evolution-deltas/2026-09-24/coparticipation-ecology-r0b-independent-review-routing.json"
+      - "docs/Operations/COENCOUNTER_YIELD_R0B.md"
+      - "docs/Operations/fixtures/coencounter-yield-r0a-multireceiver.json"
+      - "docs/Operations/proofs/coencounter-yield-r0a-container-pass-20260924.json"
+      - "scripts/CoEncounterYieldIndependentReviewR0B.py"
+      - ".github/workflows/coencounter-yield-r0b.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  independent-review:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Use Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run independent deterministic review
+        run: |
+          rm -f /tmp/coencounter-yield-r0b-result.json
+          python scripts/CoEncounterYieldIndependentReviewR0B.py \
+            --fixture docs/Operations/fixtures/coencounter-yield-r0a-multireceiver.json \
+            --source-proof docs/Operations/proofs/coencounter-yield-r0a-container-pass-20260924.json \
+            --profiles ai/session-subscription-profiles.json \
+            --policy ai/coencounter-open-relation-routing-r0.json \
+            --output /tmp/coencounter-yield-r0b-result.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('/tmp/coencounter-yield-r0b-result.json')
+          d=json.loads(p.read_text())
+          assert d['state'].startswith('PASS_R0B_')
+          assert d['effects']['assignments'] == 0
+          assert d['effects']['deliveries'] == 0
+          assert d['effects']['participant_notifications'] == 0
+          assert len(d['routing']['route_candidates']) == 1
+          print(json.dumps({
+            'STATE':d['state'],
+            'ROUTE_CANDIDATES':len(d['routing']['route_candidates']),
+            'CANDIDATE_RECEIVERS':d['routing']['route_candidates'][0]['candidate_receivers'],
+            'NEGATIVE_TESTS':d['negative_tests'],
+            'NEXT':d['next']
+          }, separators=(',',':')))
+          PY
