@@ -30,6 +30,10 @@ jobs:
         run: |
           set -euo pipefail
           tmp="$(mktemp -d)"
+          test "$(git hash-object scripts/CoSessionProjectionToCoEvo.py)" = "168388c22a33ada63d36629bd443d2b4d3390cae"
+          test "$(git hash-object scripts/CoSessionRelationalFanIn.py)" = "690cba4811eb8f4cf8cb6f4b1d4b52d8b6776002"
+          test "$(git hash-object docs/Operations/fixtures/cosession-to-coevo-r0-input.json)" = "e33361e507e96659866464867cdc06292320c170"
+          test "$(git hash-object docs/Operations/fixtures/cosession-relational-fanin-r0-input.json)" = "87ef8b9cb288a780f35885f3a739d73b46be1584"
 
           python scripts/CoSessionProjectionToCoEvo.py             --input docs/Operations/fixtures/cosession-to-coevo-r0-input.json             --output "$tmp/session-to-coevo.json"
 
@@ -61,7 +65,7 @@ jobs:
           assert fc["collision_candidates"] == 1, fc
           assert fc["highlight_candidates"] == 1, fc
           assert fc["public_fanout_holds"] == 1, fc
-          assert fanin["compiled_sha256"] == "DDE7DC4CC29DFA6AE49F2123CEFC3EAAC0D04D07DAD76D3784B93AF64B0DF81B", fanin["compiled_sha256"]
+          assert fanin["compiled_sha256"] == "593E013AE0ECF8AEDAEADF4D2AF1F73C0FDE6ACEFB2FDC07CD8FA5FE617E1C96", fanin["compiled_sha256"]
           assert all(v == 0 for v in fanin["effects"].values()), fanin["effects"]
 
           print("PASS_SESSION_WRITEBACK_R1A_CURRENT_MAIN_FIXTURE_REPLAY")
