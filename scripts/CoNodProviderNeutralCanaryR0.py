@@ -45,6 +45,17 @@ require(sum(int(v) for v in sf["reroute"].values()) == int(sf["pending"]), "FAIL
 require(sf["authority_expansion"] is False, "FAILOVER_AUTHORITY_EXPANSION")
 require(int(sf["human_action_required"]) == 0, "FAILOVER_HUMAN_LOAD_BALANCING")
 require("LOGICAL_LANE_IDENTITY_SURVIVES_ROUTE_FAILURE" in failover["expected_checks"], "FAILOVER_IDENTITY_CHECK_MISSING")
+ep = failover["synthetic_externality_pacing"]
+disp = ep["disposition"]
+require(int(disp["materialize_now"]) <= int(ep["observed_receiver"]["max_safe_concurrency"]), "EXTERNALITY_IMMEDIATE_LOAD_EXCEEDS_BOUND")
+require(sum(int(v) for v in disp.values()) == int(ep["planned_external_requests"]), "EXTERNALITY_DISPOSITION_ACCOUNTING")
+require(float(ep["codoppler_candidate"]["apparent_rate_ratio"]) >= 1.0, "CODOPPLER_SYNTHETIC_RATIO")
+require(ep["authority_expansion"] is False, "EXTERNALITY_AUTHORITY_EXPANSION")
+require(int(ep["human_load_balancing_actions"]) == 0, "EXTERNALITY_HUMAN_LOAD_BALANCING")
+require("CODOPPLER_RELATION_NE_PHYSICAL_DOPPLER_MECHANISM" in conod["rails"], "CODOPPLER_RAIL_MISSING")
+require("UNKNOWN_EXTERNALITY_NE_ZERO_EXTERNALITY" in conod["rails"], "EXTERNALITY_UNKNOWN_RAIL_MISSING")
+require("PACING_CONTROLLER_NE_FLAP" in conod["rails"], "EXTERNALITY_HYSTERESIS_RAIL_MISSING")
+
 require("GITHUB_NE_COALL_TOTALITY" in github_surface["rails"], "GITHUB_TOTALITY_RAIL_MISSING")
 require("GITHUB_NE_CUSTODY_ROOT" in github_surface["rails"], "GITHUB_CUSTODY_RAIL_MISSING")
 require("REPOSITORY_NE_ONTOLOGY" in github_surface["rails"], "GITHUB_ONTOLOGY_RAIL_MISSING")
@@ -69,5 +80,6 @@ print(json.dumps({
     "HUMAN_LOAD_BALANCING_ACTIONS":0,
     "HIDDEN_CHAIN_OF_THOUGHT_FIELDS_ALLOWED":0,
     "GITHUB_RELATIONAL_SURFACE_INVARIANTS":"PASS",
+    "EXTERNALITY_PACING_INVARIANTS":"PASS",
     "NEXT":"INDEPENDENT_RUNTIME_OR_X2_LOCAL_CANARY_WHEN_ROUTE_AVAILABLE"
 }, separators=(",",":")))
