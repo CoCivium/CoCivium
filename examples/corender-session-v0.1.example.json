@@ -1,0 +1,18 @@
+{
+  "schema":"CoRenderSession.v0.1-candidate",
+  "render_session_id":"fixture:living-render-r0",
+  "asset_id":"fixture:asset-one",
+  "read_mode":"LIVE_VISIBLE_DELTA",
+  "source_cursor":12,
+  "rendered_cursor":12,
+  "currentness_state":"CURRENT_FOR_BOUND_SCOPE",
+  "prior_projection_ref":"fixture:projection-a",
+  "recovery_ref":"fixture:reconstruct-a",
+  "prediction_refs":["fixture:prediction-1"],
+  "observation_refs":["fixture:observation-1"],
+  "nonclaims":[
+    "BETTER_THAN_REALTIME_NE_FASTER_THAN_REALTIME",
+    "CONTINUOUS_SURFACE_NE_CONTINUOUS_MODEL",
+    "PROVIDER_INTERRUPTION_NE_WORK_INTERRUPTION"
+  ]
+}
