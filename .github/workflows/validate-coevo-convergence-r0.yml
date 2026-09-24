@@ -1,0 +1,30 @@
+name: Validate CoEvo Convergence R0
+
+on:
+  pull_request:
+    paths:
+      - "ai/evolution-convergence-r0.json"
+      - "ai/evolution-intake-policy-r0.json"
+      - "ai/evolution-deltas/**"
+      - "docs/Evolution/COALL_EVOLUTION_CONVERGENCE_R0.md"
+      - "schemas/coevo-delta-v0.1.schema.json"
+      - "schemas/coevo-delta-v0.2-union-candidate.schema.json"
+      - "scripts/validate_coevo_convergence_r0.py"
+      - ".github/workflows/validate-coevo-convergence-r0.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Use Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Validate convergence schema union and intake election
+        run: python scripts/validate_coevo_convergence_r0.py
