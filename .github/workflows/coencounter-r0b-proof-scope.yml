@@ -1,0 +1,65 @@
+name: Validate CoEncounter R0B proof scope
+
+on:
+  pull_request:
+    paths:
+      - "schemas/coencounter-yield-v0.1.schema.json"
+      - "docs/Operations/fixtures/coencounter-yield-r0a-multireceiver.json"
+      - "docs/Operations/COENCOUNTER_REVIEW_ROUTE_R0B.md"
+      - ".github/workflows/coencounter-r0b-proof-scope.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact-schema-scope:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Use Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install JSON Schema validator
+        run: python -m pip install --disable-pip-version-check jsonschema==4.23.0
+      - name: Validate exact R0A encounters against landed schema
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          from jsonschema import Draft202012Validator
+
+          schema_path = Path("schemas/coencounter-yield-v0.1.schema.json")
+          fixture_path = Path("docs/Operations/fixtures/coencounter-yield-r0a-multireceiver.json")
+
+          schema = json.loads(schema_path.read_text(encoding="utf-8"))
+          pack = json.loads(fixture_path.read_text(encoding="utf-8"))
+          Draft202012Validator.check_schema(schema)
+          validator = Draft202012Validator(schema)
+
+          encounters = pack.get("encounters")
+          if not isinstance(encounters, list) or not encounters:
+              raise SystemExit("FAIL_CLOSED__NO_ENCOUNTERS_FOR_SCHEMA_VALIDATION")
+
+          errors = []
+          for index, encounter in enumerate(encounters):
+              for error in sorted(validator.iter_errors(encounter), key=lambda e: list(e.absolute_path)):
+                  errors.append({
+                      "encounter_index": index,
+                      "path": ".".join(str(x) for x in error.absolute_path),
+                      "message": error.message,
+                  })
+
+          if errors:
+              print(json.dumps({"STATE":"FAIL_SCHEMA_VALIDATION","errors":errors}, indent=2))
+              raise SystemExit(1)
+
+          print(json.dumps({
+              "STATE":"PASS_EXACT_R0A_ENCOUNTERS_MATCH_COENCOUNTER_YIELD_V0_1_SCHEMA",
+              "encounters_validated":len(encounters),
+              "schema":"schemas/coencounter-yield-v0.1.schema.json",
+              "fixture":"docs/Operations/fixtures/coencounter-yield-r0a-multireceiver.json"
+          }, separators=(",",":")))
+          PY

@@ -68,3 +68,20 @@ Three distinct receiver processes reviewed the same exact encounter fixture. The
 Evidence: `docs/Operations/proofs/coencounter-r0b-container-pass-20260924.json`.
 
 This is still local synthetic validation. The elected match candidate has not yet been picked up by a receiver as an exact packet.
+
+## Proof-scope lineage
+
+R0A and R0B carry different proof scopes and must not be retroactively conflated.
+
+The historical R0A execution proved its custom behavioral canary checks over the bounded encounter fixture. That script did **not** invoke full JSON Schema validation against `schemas/coencounter-yield-v0.1.schema.json`.
+
+A later independent challenge surfaced that gap without claiming the fixture itself was schema-invalid. The current-main successor check in `.github/workflows/coencounter-r0b-proof-scope.yml` validates every encounter in the exact landed R0A fixture against the landed CoEncounterYield v0.1 schema.
+
+Therefore preserve:
+
+`R0A_HISTORICAL_PROOF_REMAINS_CUSTOM_BEHAVIORAL_CANARY_ONLY`  
+`SUCCESSOR_PROOF_NE_RETROACTIVE_PREDECESSOR_PROOF`  
+`SCHEMA_VALIDATION_GAP_NE_FIXTURE_INVALID`  
+`VALIDATION_SCOPE_MUST_TRAVEL_WITH_PROOF`
+
+A passing successor schema check proves conformance only for the exact fixture and schema version it validates. It does not prove semantic acceptance, receiver pickup, runtime integration, canon, CoEx, or future fixture conformance.
