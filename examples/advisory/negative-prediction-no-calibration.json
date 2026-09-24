@@ -1,0 +1,37 @@
+{
+  "schema": "CoTimeAdvisoryEvidence.v0.1-candidate",
+  "source_refs": [
+    "fixture:public-source"
+  ],
+  "source_time": "2026-09-24T12:00:00Z",
+  "observed_at": "2026-09-24T20:45:00Z",
+  "recorded_at": "2026-09-24T20:46:00Z",
+  "valid_from": "2026-09-24T12:00:00Z",
+  "valid_to": null,
+  "decision_time": null,
+  "horizon_end": "2027-09-24T00:00:00Z",
+  "confidence": 0.5,
+  "supersedes": [],
+  "scope_class": "SPECIFIC_CLIENT_OR_ACCOUNT",
+  "regulatory_profile": "UNKNOWN",
+  "professional_review_required": false,
+  "authority_ceiling": "ADVISORY_ONLY",
+  "assumptions": [],
+  "counterarguments": [],
+  "calibration_disposition": "NOT_DUE",
+  "nonclaims": [
+    "PREDICTION_NE_EVIDENCE",
+    "ANALYSIS_NE_TRADE_AUTHORITY",
+    "CI_PASS_NE_INVESTMENT_MERIT"
+  ],
+  "object_id": "fixture:negative-prediction-no-calibration",
+  "epistemic_class": "PREDICTED",
+  "information_class": "PUBLIC_INFORMATION",
+  "currentness": "CURRENT",
+  "calibration_due": null,
+  "action_class": "PRIVATE_DISCUSSION",
+  "route": {
+    "state": "ALLOW_PRIVATE_DISCUSSION",
+    "reason": "Must fail because predicted claims require calibration_due."
+  }
+}
