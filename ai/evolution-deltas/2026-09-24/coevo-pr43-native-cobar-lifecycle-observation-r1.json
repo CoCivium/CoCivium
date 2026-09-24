@@ -1,0 +1,73 @@
+{
+  "delta_id": "COEVO.CS260920.NATIVE_COBAR_LIFECYCLE_OBSERVATION.R1",
+  "session_id": "CoSessionSurvival260920-S1",
+  "observed_at": "2026-09-24T21:10:17Z",
+  "domain": [
+    "CoOps+",
+    "CoAll+",
+    "CoSession+",
+    "CoAutoEvo+/CoEvo+"
+  ],
+  "subject": "One bounded local worker native lifecycle self-announcement canary",
+  "relation": "DONATES_UNIQUE_PR43_NATIVE_COBAR_LIFECYCLE_OBSERVATION",
+  "epistemic_class": "OBSERVED",
+  "source_refs": [
+    "github:CoCivium/CoCivium#PR43:docs/Evolution/Deltas/2026-09-23/CoSessionSurvival260920-S1.json@blob:776c5517eeb5e8dcf56c48d53f7c0d346e29f51f",
+    "sha256:BF4C999B3D18F4D51FF04ADED2D8C1B2B3614A1484A985D83DE7F62E72A9CA5D;class=VERIFIED_LOCAL_RECEIPT_EXTERNAL_TO_GITHUB"
+  ],
+  "target_surfaces": [
+    "CoCivium",
+    "CoStacks",
+    "CoToolbelt"
+  ],
+  "mutation_class": "PROPOSE",
+  "authority_ceiling": "PUBLIC_OBSERVATION_ONLY__NO_RUNTIME_PROMOTION",
+  "confidentiality": "PUBLIC",
+  "confidence": 0.99,
+  "contradictions": [],
+  "tests": [
+    "Same worker PID self-emits START and STOP",
+    "STOP binds exact result hash",
+    "Separate receiver validates lifecycle event/result coherence",
+    "No external lifecycle adapter process is required for this exact bounded canary"
+  ],
+  "expected_benefit": "Preserve the observed native lifecycle-canary relation for future worker observability/recovery design without replaying the stale donor branch.",
+  "risks": [
+    "One native worker canary may be overgeneralized to all worker classes",
+    "A local receipt hash may be mistaken for GitHub custody or current runtime evidence"
+  ],
+  "wake_conditions": [
+    "A second distinct worker class proves the same native lifecycle contract",
+    "A current runtime proposes CoBar lifecycle enforcement",
+    "Exact underlying receipt bytes become available to a current receiver"
+  ],
+  "supersedes": [],
+  "next_receiver": "CoBar+/CoSessionSurvival+/CoEvidence+",
+  "effect_classes": [
+    "NONE"
+  ],
+  "effect_gate": "NOT_APPLICABLE",
+  "effect_scope": null,
+  "materiality": "MATERIAL",
+  "nonclaims": [
+    "LOCAL_RECEIPT_HASH_NE_GITHUB_CUSTODY_OF_RECEIPT_BYTES",
+    "ONE_NATIVE_CANARY_NE_GLOBAL_WORKER_STANDARD",
+    "OBSERVED_NE_CURRENT_RUNTIME",
+    "PRODUCER_LIFECYCLE_EVENT_NE_RECEIVER_PICKUP"
+  ],
+  "object": "CoBar+/NativeWorkerLifecycleCanary",
+  "typed_operation": "INDEX",
+  "evidence_refs": [
+    "git-pr:43",
+    "sha256:BF4C999B3D18F4D51FF04ADED2D8C1B2B3614A1484A985D83DE7F62E72A9CA5D"
+  ],
+  "public_safety": "PUBLIC_SAFE",
+  "qualifiers": {
+    "unique_pr43_remainder": true,
+    "source_bytes_on_github": false,
+    "lifecycle_state_of_source_receipt": "VERIFIED_LOCAL_EXTERNAL_TO_GITHUB"
+  },
+  "collision_domain": "coevo:native-cobar-lifecycle-observation",
+  "observed_base_ref": "main@2532649002e8e95059b0059c283fc34c141fa65d",
+  "next_gate": "SECOND_DISTINCT_WORKER_OR_EXACT_RECEIPT_RECEIVER_PROOF"
+}
