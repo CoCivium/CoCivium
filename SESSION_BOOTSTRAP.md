@@ -249,3 +249,11 @@ The proof is deliberately scoped to local process lifetimes. X2's authorized rec
 `PROCESS_PID_NE_IDENTITY`  
 `LOCAL_PROCESS_CANARY_NE_X2_LIVE_RECEIVER`  
 `VISIBLE_STATUS_NE_RECEIVER_ROUTE`
+
+## CoEvo convergence / intake
+
+Use [CoAll Evolution Convergence R1](docs/Evolution/COALL_EVOLUTION_CONVERGENCE_R1.md) and [its machine currentness object](ai/evolution-convergence-r1.json) before replaying broad historical CoEvo donor branches. Primary machine delta intake is `ai/evolution-deltas/<YYYY-MM-DD>/`; docs projections do not become competing semantic roots.
+
+`FANIN_BEFORE_MORE_PARALLEL_MUTATION`  
+`DESCENDANT_SATISFACTION_BEFORE_REPLAY`  
+`NO_NEWEST_WINS`
