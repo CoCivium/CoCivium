@@ -83,6 +83,40 @@ No one projection is the whole asset.
 `TECHNICAL_NE_ONLY_VALID_PROJECTION`
 `MACHINE_TWIN_NE_HUMAN_EXPERIENCE`
 
+
+## Generation collapse / semantic compaction
+
+Historical estates may contain very large numbers of generated pulses, receipts, snapshots, timestamped runs, or derivative renderings for a much smaller number of semantic lineages. Raw artifact count MUST NOT become concept weight.
+
+A bounded compactor SHOULD distinguish at least:
+
+- repeated generation of substantially equivalent state;
+- meaningful semantic transition;
+- evidence/provenance-only delta;
+- projection-only delta;
+- operational/runtime delta;
+- predecessor/successor transition;
+- unresolved divergence;
+- candidate current descendant.
+
+Candidate compaction key inputs MAY include stable identity hints, normalized path family, semantic/content hash where available, predecessor/successor metadata, timestamps, source lineage, schema/version, and receiver-relevant semantic delta.
+
+The compactor SHOULD preserve representative ancestors, meaningful transitions, contradictions/divergences, current candidates, and reconstruction pointers while allowing repetitive generation detail to remain cold/latent.
+
+`GENERATION_COUNT_NE_CONCEPT_IMPORTANCE`
+`ARTIFACT_COUNT_NE_SEMANTIC_DELTA_COUNT`
+`COMPACTION_NE_DELETION`
+`EQUIVALENT_GENERATION_NE_DUPLICATE_PROVENANCE`
+`LATEST_TIMESTAMP_NE_ELECTED_SUCCESSOR`
+`SEMANTIC_COMPACTION_REQUIRES_RECONSTRUCTION_PATH`
+
+### CoPulse relationship
+
+A high-volume pulse stream is evidence of temporal activity, not a requirement that every pulse become a first-class highlight or receiver update. CoAllPulseField+/successor currentness can compact many low-level events into a smaller receiver-relevant frontier while retaining durable lineage/replay where warranted.
+
+`PULSE_NE_HIGHLIGHT`
+`PULSE_VOLUME_NE_RECEIVER_ATTENTION_DEMAND`
+
 ## CoMetaphorical+ relation
 
 Metaphor is a typed transformation, not decoration.
