@@ -1,0 +1,72 @@
+{
+  "delta_id": "COEVO.CS260920.CLOSE_SAFE_ATTENTION_METRICS.R1",
+  "session_id": "CoSessionSurvival260920-S1",
+  "observed_at": "2026-09-24T21:10:17Z",
+  "domain": [
+    "CoSession+",
+    "CoAutoEvo+/CoEvo+",
+    "CoStrategy+",
+    "CoUX+/CoSurface+"
+  ],
+  "subject": "Explicit close-safe latency, session-dependency area, CoTwilight yield and uncertainty/authority serialization metrics",
+  "relation": "DONATES_UNIQUE_PR43_CLOSE_SAFE_METRIC_RELATIONS",
+  "epistemic_class": "PLANNED",
+  "source_refs": [
+    "github:CoCivium/CoCivium#PR43:docs/Evolution/Deltas/2026-09-23/CoSessionSurvival260920-S1.json@blob:776c5517eeb5e8dcf56c48d53f7c0d346e29f51f",
+    "github:CoCivium/CoCivium#PR43:docs/Evolution/Dispositions/2026-09-23/CoSessionSurvival260920-S1.current-main-overlap.json@blob:50e5c9ff09d6907d57b30cf29ec64ea53f846206"
+  ],
+  "target_surfaces": [
+    "CoCivium",
+    "CoStacks",
+    "CoAura"
+  ],
+  "mutation_class": "PROPOSE",
+  "authority_ceiling": "PUBLIC_CANDIDATE_DELTA_ONLY__NO_RUNTIME_NO_AUTHORITY",
+  "confidentiality": "PUBLIC",
+  "confidence": 0.9,
+  "contradictions": [],
+  "tests": [
+    "Measure CoCloseSafeLatency+ without equating low latency with correct closure",
+    "Measure CoSessionDependencyArea+ as foreground/provider dependence over CoTime rather than raw session count",
+    "Measure CoTwilightYield+ as reusable verified delta/negative-knowledge/successor value produced during CoTwilight+",
+    "Keep PARALLELIZE_UNCERTAINTY__SERIALIZE_AUTHORITY as a control relation rather than a blanket concurrency command"
+  ],
+  "expected_benefit": "Make attention-time-to-independence and CoTwilight productivity inspectable without turning one metric into a universal score.",
+  "risks": [
+    "Metrics can become targets and distort lifecycle decisions",
+    "Close-safe optimization can reward premature externalization if evidence quality is ignored"
+  ],
+  "wake_conditions": [
+    "RickBar or CoFleet needs explicit close-safe/session-dependency projections",
+    "Measured provider-session dependency remains high after virtual-first routing",
+    "A lifecycle controller begins optimizing session closure without proof-quality dimensions"
+  ],
+  "supersedes": [],
+  "next_receiver": "CoSessionConvergence+/CoFleetProjection+/CoPressure+",
+  "effect_classes": [
+    "NONE"
+  ],
+  "effect_gate": "NOT_APPLICABLE",
+  "effect_scope": null,
+  "materiality": "MATERIAL",
+  "nonclaims": [
+    "LOW_CLOSE_SAFE_LATENCY_NE_CORRECT_CLOSE",
+    "SESSION_DEPENDENCY_METRIC_NE_SESSION_VALUE",
+    "COTWILIGHT_YIELD_NE_PERMISSION_TO_START_HIGH_EFFECT_WORK",
+    "PARALLELIZE_UNCERTAINTY_NE_PARALLELIZE_AUTHORITY"
+  ],
+  "object": "CoTwilight+/CoSessionLifecycleMetrics+",
+  "typed_operation": "QUALIFY",
+  "evidence_refs": [
+    "git-pr:43",
+    "git-main-base:2532649002e8e95059b0059c283fc34c141fa65d"
+  ],
+  "public_safety": "PUBLIC_SAFE",
+  "qualifiers": {
+    "unique_pr43_remainder": true,
+    "current_main_overlap": "LIFECYCLE_DOCTRINE_PRESENT__EXPLICIT_METRIC_NAMES_NOT_FOUND_IN_CURRENT_MAIN_SEARCH"
+  },
+  "collision_domain": "coevo:session-lifecycle-close-safe-metrics",
+  "observed_base_ref": "main@2532649002e8e95059b0059c283fc34c141fa65d",
+  "next_gate": "RECEIVER_DISPOSITION__NO_RUNTIME_PROMOTION"
+}
