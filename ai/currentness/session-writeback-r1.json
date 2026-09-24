@@ -1,7 +1,7 @@
 {
   "schema": "CoSessionWriteback.Currentness.R1.v0.1-candidate",
   "state": "CURRENT_MAIN_FIXTURE_REPLAY_CI_PENDING__NO_RUNTIME",
-  "updated_utc": "2026-09-24T17:19:22Z",
+  "updated_utc": "2026-09-24T17:23:23Z",
   "base_main_commit": "a1378193586a6a5bbf17bfb69dbd7c1643ace3b4",
   "donor_pr": 23,
   "donor_branch": "cocivia260923/session-relational-delta-r0",
@@ -36,7 +36,7 @@
   },
   "current_gate": {
     "static_ci": "PASS",
-    "current_main_fixture_replay": "CI_PENDING",
+    "current_main_fixture_replay": "CI_REPAIR_PENDING_AFTER_EXACT_BLOB_REPLAY_EXPOSED_STALE_DOCUMENTED_FANIN_HASH",
     "runtime_adoption": "NONE",
     "provider_session_push": "NONE",
     "authority_change": "NONE",
@@ -46,9 +46,18 @@
     "fixture_blobs": {
       "docs/Operations/fixtures/cosession-to-coevo-r0-input.json": "e33361e507e96659866464867cdc06292320c170",
       "docs/Operations/fixtures/cosession-relational-fanin-r0-input.json": "87ef8b9cb288a780f35885f3a739d73b46be1584"
+    },
+    "replay_run_1": 36033931618,
+    "replay_run_1_result": "FAIL_EXPECTED_HASH_ASSERTION_ONLY_AFTER_ALL_FIVE_EXECUTABLE_REPLAYS_PASSED",
+    "exact_replay_observed": {
+      "session_projection_compiled_sha256": "9A790C7915791B7DB4B979C149AC02B9EA4A6CBA331E0AFEF2928609B5E57BB2",
+      "relational_fanin_compiled_sha256": "593E013AE0ECF8AEDAEADF4D2AF1F73C0FDE6ACEFB2FDC07CD8FA5FE617E1C96",
+      "fanout_selftest": "PASS_ROUTES_9__SUBSCRIPTIONS_7__FOREGROUND_3__HUMAN_BLOCKERS_0__ZERO_EFFECTS",
+      "packet_selftest": "PASS_REPO_PACKETS_2__SESSION_PACKETS_2__HOLDS_1__ZERO_DELIVERY_EFFECTS",
+      "public_copulse_selftest": "PASS_DETERMINISTIC__EPISTEMIC_CLASS_PRESERVED__NONPUBLIC_AND_UNSAFE_FAIL_CLOSED"
     }
   },
-  "next": "WAIT_FOR_READ_ONLY_R1A_FIXTURE_REPLAY_CI__IF_PASS_RECHECK_MAIN_HEAD__RECORD_PASS__MERGE_IF_ZERO_BEHIND",
+  "next": "RERUN_READ_ONLY_R1A_CI_WITH_EXACT_BLOB_ASSERTIONS_AND_OBSERVED_FANIN_HASH__IF_PASS_RECHECK_MAIN_HEAD",
   "rails": [
     "SESSION_PROJECTION_NE_PARALLEL_SEMANTIC_STANDARD",
     "COMPILATION_NE_ACCEPTANCE",
@@ -71,6 +80,7 @@
   ],
   "repairs": [
     "DONOR_FANOUT_PLANNER_UNTERMINATED_NEWLINE_LITERAL_REPAIRED_AFTER_CI_FAILURE",
-    "CI_LIFECYCLE_ASSERTION_REPAIRED_TO_VALIDATE_POSITIVE_FIELDS_WITHOUT_TREATING_NONCLAIMS_AS_POSITIVE_CLAIMS"
+    "CI_LIFECYCLE_ASSERTION_REPAIRED_TO_VALIDATE_POSITIVE_FIELDS_WITHOUT_TREATING_NONCLAIMS_AS_POSITIVE_CLAIMS",
+    "DONOR_DOC_FANIN_HASH_DDE7..._PROVEN_STALE_AGAINST_EXACT_SCRIPT_AND_FIXTURE_BLOBS__CURRENT_EXACT_REPLAY_HASH_593E013A..."
   ]
 }
