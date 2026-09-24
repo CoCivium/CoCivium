@@ -1,6 +1,6 @@
 # CoSession Write-Back Fan-In R1
 
-**State:** `FRESH_MAIN_FANIN_CANDIDATE__STATIC_CI_PENDING__NO_RUNTIME`
+**State:** `FRESH_MAIN_FANIN_CANDIDATE__STATIC_CI_PASS__CURRENT_MAIN_FIXTURE_REPLAY_PENDING__NO_RUNTIME`
 
 R1 forward-ports the unique session-to-CoEvo/receiver machinery from draft PR #23 onto current main after the CoEvo convergence, virtual-first lifecycle, CoPulse R0G, evidence, subscription, and highlight descendants have already landed.
 
@@ -69,3 +69,15 @@ No material delta and no bound wake predicate still routes to sleep.
 `PUBLIC_SAFE_LABEL_NE_PUBLICATION_APPROVAL`  
 `STATIC_CI_NE_RUNTIME_CANARY`  
 `NO_NEWEST_WINS`
+
+
+## Static CI result
+
+Fresh PR CI passed on workflow run `35959750310` for branch head `2fc33fdea4c595d281bd118a0c8025e651483d18`.
+
+The CI first exposed a real donor defect: `CoEvoReceiverFanoutPlanner.py` contained an unterminated newline literal. That narrow defect was repaired. A second CI attempt correctly revealed that searching serialized receipt text for the token `PICKED_UP` falsely treated explicit nonclaims such as `LANDED_NE_PICKED_UP` as positive lifecycle claims; the guard was repaired to validate the positive lifecycle fields and required nonclaims separately.
+
+This negative knowledge is part of the fan-in evidence. A donor branch being historically useful does not make every byte executable on a newer mainline.
+
+`DONOR_HISTORY_NE_CURRENT_EXECUTABILITY`  
+`NONCLAIM_TEXT_NE_POSITIVE_CLAIM`
