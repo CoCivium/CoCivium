@@ -81,3 +81,20 @@ This negative knowledge is part of the fan-in evidence. A donor branch being his
 
 `DONOR_HISTORY_NE_CURRENT_EXECUTABILITY`  
 `NONCLAIM_TEXT_NE_POSITIVE_CLAIM`
+
+
+## Current-main replay correction
+
+Read-only R1A replay run `36033931618` restored the exact donor script and fixture Git blobs before execution.
+
+The projection compiler reproduced its documented canonical hash exactly. The relational fan-in reproduced all documented counts, but emitted canonical hash:
+
+`593E013AE0ECF8AEDAEADF4D2AF1F73C0FDE6ACEFB2FDC07CD8FA5FE617E1C96`
+
+rather than the older prose value `DDE7DC4C...B0DF81B`.
+
+Because both the fan-in script blob (`690cba4...`) and fixture blob (`87ef8b9...`) are exact donor identities, the old prose hash is treated as stale historical evidence, not as authority over the executable bytes.
+
+The first replay run therefore failed only on the stale expected-hash assertion after the projection replay and all three downstream self-tests had passed. R1A is rerun with explicit Git-blob assertions plus the observed exact canonical fan-in hash.
+
+`DOCUMENTED_HASH_NE_EXECUTABLE_TRUTH_WHEN_EXACT_BOUND_BYTES_DISAGREE`
