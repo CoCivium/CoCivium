@@ -1,0 +1,62 @@
+{
+  "schema": "CoEncounterReceiverPool.R0B.v0.1-candidate",
+  "receivers": [
+    {
+      "receiver_id": "receiver:ux-translator-current-low",
+      "receiver_class": "SYNTH_PARTICIPANT",
+      "capabilities": [
+        "translation/accessibility",
+        "review"
+      ],
+      "relation_interests": [
+        "open:plain-language-role-identity"
+      ],
+      "authority_classes": [
+        "OBSERVE_ONLY",
+        "PROPOSE_ONLY"
+      ],
+      "consent_to_candidate_deeds": true,
+      "cost_class": "LOW",
+      "max_acceptable_cost_class": "LOW",
+      "currentness": "CURRENT"
+    },
+    {
+      "receiver_id": "receiver:education-translator-current-high",
+      "receiver_class": "SYNTH_PARTICIPANT",
+      "capabilities": [
+        "translation/accessibility",
+        "review"
+      ],
+      "relation_interests": [
+        "open:plain-language-role-identity"
+      ],
+      "authority_classes": [
+        "OBSERVE_ONLY",
+        "PROPOSE_ONLY"
+      ],
+      "consent_to_candidate_deeds": true,
+      "cost_class": "HIGH",
+      "max_acceptable_cost_class": "LOW",
+      "currentness": "CURRENT"
+    },
+    {
+      "receiver_id": "receiver:language-translator-stale-low",
+      "receiver_class": "MODEL_INSTANCE",
+      "capabilities": [
+        "translation/accessibility",
+        "review"
+      ],
+      "relation_interests": [
+        "open:plain-language-role-identity"
+      ],
+      "authority_classes": [
+        "OBSERVE_ONLY",
+        "PROPOSE_ONLY"
+      ],
+      "consent_to_candidate_deeds": true,
+      "cost_class": "LOW",
+      "max_acceptable_cost_class": "LOW",
+      "currentness": "STALE"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "schema": "CoParticipationEcology.Policy.R0B.v0.1-candidate",
+  "state": "R0A_R0B_BOUNDED_SYNTHETIC_PASS__NO_RUNTIME_INTEGRATION",
+  "architecture": "docs/Architecture/COPARTICIPATION_ECOLOGY_R0.md",
+  "encounter_schema": "schemas/coencounter-yield-v0.1.schema.json",
+  "open_relation_match_schema": "schemas/coopen-relation-match-v0.1.schema.json",
+  "r0a_proof": "docs/Operations/proofs/coencounter-yield-r0a-container-pass-20260924.json",
+  "r0b_proof": "docs/Operations/proofs/coencounter-r0b-container-pass-20260924.json",
+  "routing_relation": "OPEN_RELATION_X_CAPABILITY_X_INTEREST_X_CONSENT_X_AUTHORITY_X_COST_X_CURRENTNESS_TO_BOUNDED_MATCH_CANDIDATE",
+  "auto_assignment": false,
+  "auto_notification": false,
+  "authority_increase": false,
+  "next": "R0C_EXACT_MATCH_PACKET_PICKUP__CONTRIBUTION_LINEAGE_BINDING__NO_AUTO_ASSIGNMENT",
+  "rails": [
+    "PARTICIPATION_ECOLOGY_NE_NEW_PARTICIPANT_MODEL",
+    "ENCOUNTER_CAN_PRODUCE_VALUE_WITHOUT_MUTATION",
+    "MATCH_NE_ASSIGNMENT_AUTHORITY",
+    "AVAILABLE_CAPABILITY_NE_FREE_COMPUTE",
+    "ROUTE_CANDIDATE_NE_PICKUP",
+    "SENSING_SCALE_NE_AUTHORITY_SCALE",
+    "ATTRIBUTION_NE_OWNERSHIP",
+    "BENEFIT_OBSERVED_NE_BENEFIT_CAUSED"
+  ]
+}
