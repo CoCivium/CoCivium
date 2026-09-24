@@ -1,0 +1,18 @@
+{
+  "schema": "CoReceiverAffordanceDisposition.R0C.v0.1-candidate",
+  "receiver_id": "receiver:nominally-capable-private-gap",
+  "relation_id": "open:private-translation-gap",
+  "encounter_id": "encounter:adversarial-private-effectivity-gap",
+  "visibility_eligible": false,
+  "confidentiality_fit": false,
+  "exact_object_access_ok": false,
+  "contextual_effectivity_ok": false,
+  "receiver_disposition": "HOLD_EFFECTIVITY_UNPROVEN",
+  "evidence_refs": [],
+  "authority_change": false,
+  "nonclaims": [
+    "HOLD_NE_REJECT",
+    "CAPABILITY_NE_EFFECTIVITY_IN_THIS_CONTEXT",
+    "AUTHORITY_MATCH_NE_CONFIDENTIALITY_FIT"
+  ]
+}
