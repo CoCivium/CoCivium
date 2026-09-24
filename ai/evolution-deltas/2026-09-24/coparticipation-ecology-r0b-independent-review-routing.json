@@ -1,0 +1,100 @@
+{
+  "delta_id": "coparticipation-ecology-r0b-independent-review-routing-20260924",
+  "session_id": "CoResearch260911-S4",
+  "observed_at": "2026-09-24T14:43:39Z",
+  "domain": [
+    "CoAll+",
+    "CoSession+",
+    "CoAutoEvo+/CoEvo+",
+    "CoUX+/CoSurface+",
+    "CoSource+/Provenance"
+  ],
+  "subject": "CoEncounterYield R0B independent receiver review and open-relation routing",
+  "relation": "ADVANCE_R0A_TO_INDEPENDENT_REVIEW__ROUTE_OPEN_RELATIONS_WITHOUT_ASSIGNMENT_NOTIFICATION_OR_AUTHORITY_INFLATION",
+  "epistemic_class": "INFERRED",
+  "source_refs": [
+    "CoCivium/CoCivium@b94f177c9349df7fc8d94327275cabe675e9c2ec",
+    "docs/Architecture/COPARTICIPATION_ECOLOGY_R0.md@9b97422f64f067de80167e875aa69debd4b64643",
+    "docs/Operations/proofs/coencounter-yield-r0a-container-pass-20260924.json@fbbd318b95c386b3f6e8dace662dda72bea7030f",
+    "session-source:2026-09-24 user-supplied participation/encounter donor note; public-safe derivative only",
+    "W3C PROV-O https://www.w3.org/TR/prov-o/",
+    "Theraulaz & Bonabeau 1999 DOI:10.1162/106454699568700"
+  ],
+  "target_surfaces": [
+    "docs/Operations/COENCOUNTER_YIELD_R0B.md",
+    "ai/coencounter-open-relation-routing-r0.json",
+    "scripts/CoEncounterYieldIndependentReviewR0B.py",
+    ".github/workflows/coencounter-yield-r0b.yml"
+  ],
+  "mutation_class": "BRANCH_MUTATE",
+  "authority_ceiling": "PUBLIC_BRANCH_AND_DRAFT_PR_ONLY__NO_MAIN_MERGE__NO_OUTREACH__NO_RUNTIME__NO_AUTHORITY_TRANSFER",
+  "confidentiality": "PUBLIC",
+  "confidence": 0.94,
+  "contradictions": [
+    "Open relations may become attention-herding cues; independent review should not consume prior credit/benefit signals before semantic review when avoidable.",
+    "W3C PROV-O is an interoperability donor, not a drop-in replacement for CoContributionLineage.",
+    "Stigmergic coordination is a metaphor/systemics donor; environmental cues do not carry CoAll authority."
+  ],
+  "tests": [
+    "Bind the exact R0A fixture hash from its execution proof.",
+    "Re-evaluate raw R0A encounter invariants without trusting prior result assertions.",
+    "Route open relation only through existing bounded subscription profiles.",
+    "Reject authority inflation.",
+    "Reject unauthorized notification route.",
+    "Hold consent-required relation.",
+    "Hold unknown capability route.",
+    "GitHub Actions executes on a distinct receiver surface from the R0A OpenAI task container."
+  ],
+  "expected_benefit": "Convert open relations into bounded receiver candidates while preserving independent review, consent, authority and anti-spam rails; reduce reinvention by aligning contribution lineage with provenance standards and environmental-trace systemics.",
+  "risks": [
+    "STIGMERGIC_HERDING",
+    "ROUTE_TO_ASSIGNMENT_DRIFT",
+    "ATTRIBUTION_TO_CAUSAL_CREDIT_DRIFT",
+    "PARTICIPANT_NOTIFICATION_SPAM",
+    "CAPABILITY_INFERENCE_OVERREACH",
+    "VOCABULARY_PROLIFERATION"
+  ],
+  "wake_conditions": [
+    "R0B CI finds a contradiction or routing failure.",
+    "A heterogeneous model/human receiver is available for a materially useful cross-receiver review.",
+    "A public UX surface has a concrete need for machine-readable open relations.",
+    "A receiver-profile change invalidates the bounded route mapping."
+  ],
+  "supersedes": [],
+  "next_receiver": "CoParticipationEcology/CoUX/CoEvo convergence",
+  "effect_classes": [
+    "NONE"
+  ],
+  "effect_gate": "NOT_APPLICABLE",
+  "effect_scope": null,
+  "materiality": "MATERIAL",
+  "typed_operation": "ADD",
+  "evidence_refs": [
+    "docs/Operations/COENCOUNTER_YIELD_R0A.md",
+    "schemas/coencounter-yield-v0.1.schema.json",
+    "ai/session-subscription-profiles.json"
+  ],
+  "public_safety": "PUBLIC_SAFE",
+  "qualifiers": {
+    "external_donor_pass": true,
+    "independent_receiver_surface": "GitHub Actions",
+    "prior_result_assertions_used": false,
+    "new_top_level_lane": false
+  },
+  "collision_domain": "CoAll/ParticipationEcology/EncounterYield",
+  "observed_base_ref": "b94f177c9349df7fc8d94327275cabe675e9c2ec",
+  "next_gate": "R0B_CI_PASS_THEN_MATERIALITY_GATE_FOR_ANY_R0C",
+  "receiver_readproof_gate": "CI_IS_VALIDATION_NOT_PICKUP__EXACT_READPROOF_REQUIRED_FOR_PICKED_UP_CLAIM",
+  "nonclaims": [
+    "NOT_NEW_PARTICIPANT_ONTOLOGY",
+    "NOT_NEW_TOP_LEVEL_EVOLUTION_LANE",
+    "NOT_MAIN_MERGE",
+    "NOT_RUNTIME",
+    "NOT_PARTICIPANT_OUTREACH",
+    "NOT_RECEIVER_PICKUP",
+    "NOT_INTEGRATED",
+    "NOT_COEX",
+    "VALIDATION_IS_NOT_ACCEPTANCE",
+    "BENEFIT_OBSERVED_NE_BENEFIT_CAUSED"
+  ]
+}
