@@ -1,0 +1,46 @@
+{
+  "schema": "CoEncounterYieldCanary.R0A.v0.1",
+  "state": "PASS_R0A_MULTI_RECEIVER_ENCOUNTER_YIELD__NONMUTATING_VALUE__BOUNDED_CONTRIBUTION__EVIDENCED_NULL__NO_AUTHORITY_INFLATION",
+  "fixture_sha256": "32538131A7DFA8BE1BE6ADAE8282035EC7C339BE9091CD19BD1DD9025CBA46E7",
+  "coverage": {
+    "encounters": 3,
+    "participant_classes": [
+      "MODEL_INSTANCE",
+      "OBSERVER",
+      "SYNTH_PARTICIPANT"
+    ],
+    "modes": [
+      "CHALLENGE",
+      "EVIDENCED_NULL",
+      "TEST"
+    ],
+    "contribution_candidates": 1,
+    "benefit_observations": 1,
+    "evidenced_null_encounters": 1,
+    "unauthorized_notification_relations_held": 1
+  },
+  "checks": {
+    "nonmutating_interpretability_evidence": true,
+    "bounded_contribution_candidate": true,
+    "evidenced_null_preserved": true,
+    "benefit_counterfactual_discipline": true,
+    "typed_attribution": true,
+    "authority_not_increased_by_participation": true,
+    "no_notification_route_without_authorization": true
+  },
+  "effects": {
+    "repo_mutations": 0,
+    "participant_notifications": 0,
+    "authority_changes": 0,
+    "provider_session_mutations": 0
+  },
+  "next": "R0B_INDEPENDENT_RECEIVER_REVIEW_OF_ENCOUNTER_YIELD_AND_OPEN_RELATION_ROUTING",
+  "nonclaims": [
+    "VALIDATION_IS_NOT_ACCEPTANCE",
+    "ENCOUNTER_YIELD_NE_TRUTH",
+    "BENEFIT_OBSERVED_NE_BENEFIT_CAUSED",
+    "SENSING_SCALE_NE_AUTHORITY_SCALE",
+    "LOCAL_CANARY_NE_RUNTIME_INTEGRATION",
+    "NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF"
+  ]
+}
