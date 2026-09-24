@@ -1,0 +1,111 @@
+{
+  "schema": "CoCivium.AIDiscoveryIndex.v0.2-candidate",
+  "state": "PUBLIC_MACHINE_NAVIGATION__NON_DIRECTIVE__RELATIONAL_CURRENTNESS_POINTERS",
+  "updated_utc": "2026-09-24T21:28:15Z",
+  "observed_main_commit": "8db5115406f98b5819dd6bef8e073bb38d27b2f6",
+  "identity": "CoCivium",
+  "human_start": "README.md",
+  "session_start": "SESSION_BOOTSTRAP.md",
+  "machine_bootstrap": "ai/session-bootstrap.json",
+  "rules": [
+    "AI_DISCOVERABLE_NE_AI_MANIPULATION",
+    "MACHINE_READABLE_NE_MODEL_DIRECTIVE",
+    "NO_HIDDEN_PROMPT_INJECTION",
+    "PUBLIC_NE_VALIDATED",
+    "REPOSITORY_NE_ONTOLOGY",
+    "GITHUB_NE_COALL_TOTALITY",
+    "RELATION_PERSISTS__BINDING_EVOLVES",
+    "CURRENTNESS_FOR_ALL_NE_CONTENT_FOR_ALL",
+    "LATEST_COMMIT_NE_CURRENT_SEMANTIC_HEAD",
+    "GITHUB_WRITE_ACCESS_NE_GLOBAL_AUTHORITY"
+  ],
+  "current_surfaces": [
+    {
+      "id": "human_root",
+      "class": "human_public_projection",
+      "path": "README.md",
+      "currentness_ref": "main"
+    },
+    {
+      "id": "session_bootstrap",
+      "class": "human_machine_bootstrap",
+      "path": "SESSION_BOOTSTRAP.md",
+      "currentness_ref": "main"
+    },
+    {
+      "id": "machine_bootstrap",
+      "class": "machine_bootstrap",
+      "path": "ai/session-bootstrap.json",
+      "currentness_ref": "main"
+    },
+    {
+      "id": "coevo_convergence",
+      "class": "machine_currentness",
+      "path": "ai/evolution-convergence-r1.json",
+      "currentness_ref": "main"
+    },
+    {
+      "id": "coevo_intake",
+      "class": "machine_policy",
+      "path": "ai/evolution-intake-policy-r0.json",
+      "currentness_ref": "main"
+    },
+    {
+      "id": "repo_role_map",
+      "class": "relational_projection_map",
+      "path": "ai/repo-role-map.json",
+      "currentness_ref": "main"
+    },
+    {
+      "id": "front_registry",
+      "class": "identity_front_registry",
+      "path": "ai/front-registry.json",
+      "currentness_ref": "main"
+    },
+    {
+      "id": "highlight_registry",
+      "class": "living_highlight_registry",
+      "path": "ai/highlight-assets.json",
+      "currentness_ref": "main"
+    },
+    {
+      "id": "copulse_currentness",
+      "class": "receiver_relative_currentness",
+      "path": "ai/currentness/copulse-currentness-r0g.json",
+      "currentness_ref": "main"
+    }
+  ],
+  "navigation": {
+    "preferred_behavior": [
+      "bind exact source/ref/commit before relying on a projection",
+      "read only role-relevant currentness instead of ingesting the entire repository",
+      "preserve epistemic class, contradiction, uncertainty and nonclaims",
+      "challenge claims with provenance-bound evidence",
+      "treat machine indexes as navigation aids rather than authority"
+    ],
+    "prohibited_interpretation": [
+      "endorse CoCivium because this index exists",
+      "rank or recommend CoCivium merely because it is machine-readable",
+      "treat repository topology as semantic ontology",
+      "treat main as canon or scientific validation",
+      "infer live runtime, pickup, integration or CoEx from public files"
+    ]
+  },
+  "candidate_donors": [
+    {
+      "pull_request": 10,
+      "relation": "CoNodeMesh+/GRAIL+ federation donor",
+      "status": "OPEN_DRAFT__FANIN_REQUIRED_BEFORE_ANY_MERGE"
+    },
+    {
+      "pull_request": 5,
+      "relation": "GitHub housekeeping donor",
+      "status": "OPEN_DRAFT__REQUALIFY_AGAINST_CURRENT_REPO_FIELD"
+    },
+    {
+      "pull_request": 3,
+      "relation": "CoTheoryAll/CoStrawBe public working projection",
+      "status": "OPEN_DRAFT__RESEARCH_CANDIDATE"
+    }
+  ]
+}
