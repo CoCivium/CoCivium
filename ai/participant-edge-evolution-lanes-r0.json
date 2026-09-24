@@ -1,0 +1,245 @@
+{
+  "schema": "CoAll.ParticipantEdgeEvolutionLanes.R0.v0.1-candidate",
+  "created_utc": "2026-09-24T22:50:00Z",
+  "authority_ceiling": "CANDIDATE_BRANCH_ONLY",
+  "physical_materialization": "ADAPTIVE_NOT_IMPLIED",
+  "lanes": [
+    {
+      "lane_id": "rickbar-native",
+      "label": "RickBar native edge shell",
+      "receiver": "CoEyes/RickBar",
+      "effect_class": "LOCAL_REVERSIBLE",
+      "benefit_hypothesis": "prove one real visible control to receiver edge",
+      "evidence_gate": "EXACT_RECEIPT_OR_BOUNDED_OBSERVATION",
+      "pressure_budget": {
+        "max_active_physical_workers": 2,
+        "max_unexternalized_deeds": 1
+      },
+      "collision_domain": "participant-edge:rickbar-native",
+      "priority_class": "HOT",
+      "nonclaims": [
+        "LOGICAL_LANE_NE_WORKER",
+        "CI_PASS_NE_RUNTIME",
+        "BENEFIT_HYPOTHESIS_NE_BENEFIT_PROVEN"
+      ]
+    },
+    {
+      "lane_id": "nickbar-projection",
+      "label": "NickBar participant-relative projection",
+      "receiver": "NB/DeskNB",
+      "effect_class": "OBSERVE_ONLY",
+      "benefit_hypothesis": "prove independent participant-relative rendering without authority inheritance",
+      "evidence_gate": "EXACT_RECEIPT_OR_BOUNDED_OBSERVATION",
+      "pressure_budget": {
+        "max_active_physical_workers": 2,
+        "max_unexternalized_deeds": 1
+      },
+      "collision_domain": "participant-edge:nickbar-projection",
+      "priority_class": "HOT",
+      "nonclaims": [
+        "LOGICAL_LANE_NE_WORKER",
+        "CI_PASS_NE_RUNTIME",
+        "BENEFIT_HYPOTHESIS_NE_BENEFIT_PROVEN"
+      ]
+    },
+    {
+      "lane_id": "coeyes",
+      "label": "CoEyes bounded feedback",
+      "receiver": "CoEyesLocal",
+      "effect_class": "OBSERVE_ONLY",
+      "benefit_hypothesis": "reduce invisible failure and human relay",
+      "evidence_gate": "EXACT_RECEIPT_OR_BOUNDED_OBSERVATION",
+      "pressure_budget": {
+        "max_active_physical_workers": 2,
+        "max_unexternalized_deeds": 1
+      },
+      "collision_domain": "participant-edge:coeyes",
+      "priority_class": "HOT",
+      "nonclaims": [
+        "LOGICAL_LANE_NE_WORKER",
+        "CI_PASS_NE_RUNTIME",
+        "BENEFIT_HYPOTHESIS_NE_BENEFIT_PROVEN"
+      ]
+    },
+    {
+      "lane_id": "cotime",
+      "label": "CoTime currentness",
+      "receiver": "CoAllPulseField",
+      "effect_class": "OBSERVE_ONLY",
+      "benefit_hypothesis": "reduce stale-state and prediction/observation collapse",
+      "evidence_gate": "EXACT_RECEIPT_OR_BOUNDED_OBSERVATION",
+      "pressure_budget": {
+        "max_active_physical_workers": 2,
+        "max_unexternalized_deeds": 1
+      },
+      "collision_domain": "participant-edge:cotime",
+      "priority_class": "HOT",
+      "nonclaims": [
+        "LOGICAL_LANE_NE_WORKER",
+        "CI_PASS_NE_RUNTIME",
+        "BENEFIT_HYPOTHESIS_NE_BENEFIT_PROVEN"
+      ]
+    },
+    {
+      "lane_id": "cobenefit",
+      "label": "CoBenefit qualification",
+      "receiver": "CoParticipationEcology",
+      "effect_class": "OBSERVE_ONLY",
+      "benefit_hypothesis": "measure receiver-relative useful outcomes with uncertainty",
+      "evidence_gate": "EXACT_RECEIPT_OR_BOUNDED_OBSERVATION",
+      "pressure_budget": {
+        "max_active_physical_workers": 2,
+        "max_unexternalized_deeds": 1
+      },
+      "collision_domain": "participant-edge:cobenefit",
+      "priority_class": "WARM",
+      "nonclaims": [
+        "LOGICAL_LANE_NE_WORKER",
+        "CI_PASS_NE_RUNTIME",
+        "BENEFIT_HYPOTHESIS_NE_BENEFIT_PROVEN"
+      ]
+    },
+    {
+      "lane_id": "cooomph",
+      "label": "CoOomph pacing",
+      "receiver": "CoPressure/CoOomph",
+      "effect_class": "CANDIDATE_ONLY",
+      "benefit_hypothesis": "increase verified yield without outrunning receiver capacity",
+      "evidence_gate": "EXACT_RECEIPT_OR_BOUNDED_OBSERVATION",
+      "pressure_budget": {
+        "max_active_physical_workers": 2,
+        "max_unexternalized_deeds": 1
+      },
+      "collision_domain": "participant-edge:cooomph",
+      "priority_class": "WARM",
+      "nonclaims": [
+        "LOGICAL_LANE_NE_WORKER",
+        "CI_PASS_NE_RUNTIME",
+        "BENEFIT_HYPOTHESIS_NE_BENEFIT_PROVEN"
+      ]
+    },
+    {
+      "lane_id": "route-health",
+      "label": "machine/provider route health",
+      "receiver": "CoMachineRoute",
+      "effect_class": "OBSERVE_ONLY",
+      "benefit_hypothesis": "reduce route ambiguity and provider-tab dependency",
+      "evidence_gate": "EXACT_RECEIPT_OR_BOUNDED_OBSERVATION",
+      "pressure_budget": {
+        "max_active_physical_workers": 2,
+        "max_unexternalized_deeds": 1
+      },
+      "collision_domain": "participant-edge:route-health",
+      "priority_class": "WARM",
+      "nonclaims": [
+        "LOGICAL_LANE_NE_WORKER",
+        "CI_PASS_NE_RUNTIME",
+        "BENEFIT_HYPOTHESIS_NE_BENEFIT_PROVEN"
+      ]
+    },
+    {
+      "lane_id": "update-rollback",
+      "label": "update/rollback/degraded mode",
+      "receiver": "RickBar runtime",
+      "effect_class": "LOCAL_REVERSIBLE",
+      "benefit_hypothesis": "reduce recovery cost and provider dependency",
+      "evidence_gate": "EXACT_RECEIPT_OR_BOUNDED_OBSERVATION",
+      "pressure_budget": {
+        "max_active_physical_workers": 2,
+        "max_unexternalized_deeds": 1
+      },
+      "collision_domain": "participant-edge:update-rollback",
+      "priority_class": "WARM",
+      "nonclaims": [
+        "LOGICAL_LANE_NE_WORKER",
+        "CI_PASS_NE_RUNTIME",
+        "BENEFIT_HYPOTHESIS_NE_BENEFIT_PROVEN"
+      ]
+    },
+    {
+      "lane_id": "privacy-authority",
+      "label": "privacy and authority gates",
+      "receiver": "CoAuthority/CoPrivacy",
+      "effect_class": "OBSERVE_ONLY",
+      "benefit_hypothesis": "prevent capability from silently becoming authority",
+      "evidence_gate": "EXACT_RECEIPT_OR_BOUNDED_OBSERVATION",
+      "pressure_budget": {
+        "max_active_physical_workers": 2,
+        "max_unexternalized_deeds": 1
+      },
+      "collision_domain": "participant-edge:privacy-authority",
+      "priority_class": "WARM",
+      "nonclaims": [
+        "LOGICAL_LANE_NE_WORKER",
+        "CI_PASS_NE_RUNTIME",
+        "BENEFIT_HYPOTHESIS_NE_BENEFIT_PROVEN"
+      ]
+    },
+    {
+      "lane_id": "accessibility",
+      "label": "accessibility/reduced-motion equivalents",
+      "receiver": "RickBar/NickBar UX",
+      "effect_class": "CANDIDATE_ONLY",
+      "benefit_hypothesis": "preserve function across participant needs",
+      "evidence_gate": "EXACT_RECEIPT_OR_BOUNDED_OBSERVATION",
+      "pressure_budget": {
+        "max_active_physical_workers": 2,
+        "max_unexternalized_deeds": 1
+      },
+      "collision_domain": "participant-edge:accessibility",
+      "priority_class": "WARM",
+      "nonclaims": [
+        "LOGICAL_LANE_NE_WORKER",
+        "CI_PASS_NE_RUNTIME",
+        "BENEFIT_HYPOTHESIS_NE_BENEFIT_PROVEN"
+      ]
+    },
+    {
+      "lane_id": "evidence-currentness",
+      "label": "receipt/currentness quality",
+      "receiver": "CoEvidence/CoSourceGraph",
+      "effect_class": "OBSERVE_ONLY",
+      "benefit_hypothesis": "reduce proof debt and stale assertions",
+      "evidence_gate": "EXACT_RECEIPT_OR_BOUNDED_OBSERVATION",
+      "pressure_budget": {
+        "max_active_physical_workers": 2,
+        "max_unexternalized_deeds": 1
+      },
+      "collision_domain": "participant-edge:evidence-currentness",
+      "priority_class": "WARM",
+      "nonclaims": [
+        "LOGICAL_LANE_NE_WORKER",
+        "CI_PASS_NE_RUNTIME",
+        "BENEFIT_HYPOTHESIS_NE_BENEFIT_PROVEN"
+      ]
+    },
+    {
+      "lane_id": "successor-close",
+      "label": "successor readiness and tab close",
+      "receiver": "CoFleetProjection",
+      "effect_class": "OBSERVE_ONLY",
+      "benefit_hypothesis": "reduce provider-session dependency area",
+      "evidence_gate": "EXACT_RECEIPT_OR_BOUNDED_OBSERVATION",
+      "pressure_budget": {
+        "max_active_physical_workers": 2,
+        "max_unexternalized_deeds": 1
+      },
+      "collision_domain": "participant-edge:successor-close",
+      "priority_class": "WARM",
+      "nonclaims": [
+        "LOGICAL_LANE_NE_WORKER",
+        "CI_PASS_NE_RUNTIME",
+        "BENEFIT_HYPOTHESIS_NE_BENEFIT_PROVEN"
+      ]
+    }
+  ],
+  "fanin": {
+    "rule": "SERIALIZE_SHARED_EFFECTS__ALLOW_INDEPENDENT_OBSERVE_OR_PROPOSE_LANES",
+    "success_condition": "ALL_LANES_VALIDATE_AND_COLLISION_DOMAINS_UNIQUE",
+    "rails": [
+      "MASSIVE_PARALLELITY_NE_MASSIVE_SIMULTANEOUS_MATERIALIZATION",
+      "COOOMPH_NE_MAX_COMPUTE",
+      "BENEFIT_NE_AUTHORITY"
+    ]
+  }
+}

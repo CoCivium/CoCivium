@@ -1,0 +1,49 @@
+name: Participant edge evolution R0
+
+on:
+  pull_request:
+    paths:
+      - 'ai/participant-edge-evolution-lanes-r0.json'
+      - 'scripts/validate_participant_edge_evolution_r0.py'
+      - 'scripts/CoParticipantEdge_X2_R0B.ps1'
+      - '.github/workflows/participant-edge-evolution-r0.yml'
+  push:
+    paths:
+      - 'ai/participant-edge-evolution-lanes-r0.json'
+      - 'scripts/validate_participant_edge_evolution_r0.py'
+      - 'scripts/CoParticipantEdge_X2_R0B.ps1'
+
+permissions:
+  contents: read
+
+jobs:
+  lane-matrix:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        lane: [rickbar-native,nickbar-projection,coeyes,cotime,cobenefit,cooomph,route-health,update-rollback,privacy-authority,accessibility,evidence-currentness,successor-close]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate registry
+        run: python scripts/validate_participant_edge_evolution_r0.py
+      - name: Prove lane exists
+        env:
+          LANE: ${{ matrix.lane }}
+        run: |
+          python - <<'PY'
+          import json, os
+          d=json.load(open("ai/participant-edge-evolution-lanes-r0.json",encoding="utf-8"))
+          lane=os.environ["LANE"]
+          rows=[x for x in d["lanes"] if x["lane_id"]==lane]
+          assert len(rows)==1, lane
+          print("PASS_LOGICAL_LANE", lane, rows[0]["receiver"], rows[0]["effect_class"])
+          PY
+
+  bounded-fanin:
+    needs: lane-matrix
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Serial fan-in validation
+        run: python scripts/validate_participant_edge_evolution_r0.py
