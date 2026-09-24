@@ -1,0 +1,57 @@
+{
+  "delta_id": "COEVO.SCALE.RELEVANCE_HORIZON_BACKLOG_METABOLISM_SELFSCOPE.R1",
+  "session_id": "CoFlatline260920-S1",
+  "observed_at": "2026-09-24T20:22:34Z",
+  "domain": [
+    "CoAll+",
+    "CoAutoEvo+/CoEvo+",
+    "CoSession+",
+    "CoStrategy+",
+    "CoIndex+"
+  ],
+  "subject": "CoRelevanceHorizon+, CoNoiseSea+, CoBacklogMetabolism+ and CoSelfScope+ as bounded scaling relations",
+  "relation": "ADDS_UNIQUE_PR41_SCALING_CONTROL_RELATIONS",
+  "epistemic_class": "HYPOTHESIS",
+  "source_refs": [
+    "github:CoCivium/CoCivium#PR41:docs/Evolution/COINTEROP_RELATIONAL_SCALING_R0.md@blob:d1fbc2e48b0297835a5756eb33411c28ca8ef534",
+    "github:CoCivium/CoCivium#PR41:ai/evolution-deltas/CoEvoDelta-CoInteropScaling-R0-20260923.json@blob:55d3d3b8c427a47c393210d6a8f746bfbd184501"
+  ],
+  "target_surfaces": [
+    "CoCivium",
+    "CoStacks",
+    "CoShareHub",
+    "MasterPlan"
+  ],
+  "mutation_class": "PROPOSE",
+  "authority_ceiling": "PUBLIC_CANDIDATE_DELTA_ONLY__NO_RUNTIME_NO_AUTHORITY",
+  "confidentiality": "PUBLIC",
+  "confidence": 0.8,
+  "contradictions": [],
+  "tests": [
+    "Receiver relevance horizon remains bounded while global reachable relation count grows",
+    "Backlog states distinguish active, blocked, dormant, expired, redundant, research and opportunity classes",
+    "Session self-scope can drive do/delegate/challenge/hold/externalize/twilight/close-safe without omniscience"
+  ],
+  "expected_benefit": "Reduce global-context pressure while preserving dormant optionality and making backlog growth metabolizable rather than synonymous with failure.",
+  "risks": [
+    "Self-observation can recursively generate more work",
+    "Relevance filtering can hide useful dormant optionality if wake relations are weak"
+  ],
+  "wake_conditions": [
+    "Coordination load grows faster than fan-in",
+    "Backlog size is mistaken for active burden",
+    "A session attempts global context residency"
+  ],
+  "supersedes": [],
+  "next_receiver": "CoPressure+/CoSessionSelfModel+/CoBacklog+",
+  "materiality": "MATERIAL",
+  "pressure": {
+    "qualitative": "GLOBAL_REACHABILITY_GT_GLOBAL_CONTEXT_RESIDENCY__PRESSURE_NE_COMMAND_TO_DO_MORE"
+  },
+  "nonclaims": [
+    "GLOBAL_REACHABILITY_GT_GLOBAL_CONTEXT_RESIDENCY",
+    "OUTSIDE_RELEVANCE_HORIZON_NE_GARBAGE",
+    "BACKLOG_GROWTH_NE_SYSTEM_FAILURE",
+    "SELF_AWARENESS_NE_OMNISCIENCE"
+  ]
+}

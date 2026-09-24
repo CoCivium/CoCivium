@@ -1,0 +1,53 @@
+{
+  "delta_id": "COEVO.INTEROP.TRANSPORT_NEUTRAL_CAPABILITY_AUTHORITY.R1",
+  "session_id": "CoFlatline260920-S1",
+  "observed_at": "2026-09-24T20:22:34Z",
+  "domain": [
+    "CoAll+",
+    "CoOps+",
+    "CoRails+",
+    "CoNodeMesh+/GRAIL+"
+  ],
+  "subject": "CoInteropFabric+ protocol-neutral capability, authority, intent, receiver and evidence routing",
+  "relation": "FORWARD_PORTS_UNIQUE_PR41_INTEROP_RELATIONS",
+  "epistemic_class": "PLANNED",
+  "source_refs": [
+    "github:CoCivium/CoCivium#PR41:docs/Evolution/COINTEROP_RELATIONAL_SCALING_R0.md@blob:d1fbc2e48b0297835a5756eb33411c28ca8ef534",
+    "github:CoCivium/CoCivium#PR41:ai/evolution-deltas/CoEvoDelta-CoInteropScaling-R0-20260923.json@blob:55d3d3b8c427a47c393210d6a8f746bfbd184501"
+  ],
+  "target_surfaces": [
+    "CoCivium",
+    "CoToolbelt",
+    "CoRails",
+    "CoSteward"
+  ],
+  "mutation_class": "PROPOSE",
+  "authority_ceiling": "PUBLIC_CANDIDATE_DELTA_ONLY__NO_RUNTIME_NO_AUTHORITY",
+  "confidentiality": "PUBLIC",
+  "confidence": 0.84,
+  "contradictions": [],
+  "tests": [
+    "Evaluate one bounded work object through two replaceable transport projections without changing semantic identity",
+    "Verify transport availability never elevates authority",
+    "Report projection loss and receiver evidence separately from tool-schema conformance"
+  ],
+  "expected_benefit": "Reduce protocol lock-in while keeping intent, capability, authority, receiver and evidence as separate relations.",
+  "risks": [
+    "Transport adapters may be mistaken for ontology or authority",
+    "Term proliferation may duplicate existing route doctrine"
+  ],
+  "wake_conditions": [
+    "A new transport or protocol materially changes route quality",
+    "A current adapter creates semantic or authority ambiguity"
+  ],
+  "supersedes": [],
+  "next_receiver": "CoInteropFabric+/CoProtocolEcology+",
+  "materiality": "MATERIAL",
+  "nonclaims": [
+    "MCP_NE_COALL",
+    "PROTOCOL_NE_CAPABILITY",
+    "CAPABILITY_NE_AUTHORITY",
+    "TRANSPORT_NE_INTENT",
+    "TOOL_SCHEMA_NE_WORLD_SCHEMA"
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "delta_id": "COEVO.META_RELATION.BOUNDED_TRAVERSAL_DIRECTIONALITY.R1",
+  "session_id": "CoFlatline260920-S1",
+  "observed_at": "2026-09-24T20:22:34Z",
+  "domain": [
+    "CoAll+",
+    "CoIndex+",
+    "CoLex+",
+    "CoRails+"
+  ],
+  "subject": "Relations-about-relations with typed provenance/currentness/confidence/authority/disagreement/projection-loss and bounded traversal",
+  "relation": "ADDS_META_RELATIONAL_DEPTH_WITHOUT_RECURSIVE_EXECUTION",
+  "epistemic_class": "HYPOTHESIS",
+  "source_refs": [
+    "github:CoCivium/CoCivium#PR41:docs/Evolution/COINTEROP_RELATIONAL_SCALING_R0.md@blob:d1fbc2e48b0297835a5756eb33411c28ca8ef534",
+    "github:CoCivium/CoCivium#PR41:ai/evolution-deltas/CoEvoDelta-CoInteropScaling-R0-20260923.json@blob:55d3d3b8c427a47c393210d6a8f746bfbd184501"
+  ],
+  "target_surfaces": [
+    "CoCivium",
+    "GIBindex",
+    "CoRails"
+  ],
+  "mutation_class": "PROPOSE",
+  "authority_ceiling": "PUBLIC_CANDIDATE_DELTA_ONLY__NO_RUNTIME_NO_AUTHORITY",
+  "confidentiality": "PUBLIC",
+  "confidence": 0.8,
+  "contradictions": [],
+  "tests": [
+    "Represent relation metadata without requiring recursive execution",
+    "Keep structural, inverse/navigation, authority, evidence, causal-hypothesis and observer/display direction distinct",
+    "Bound execution traversal independently from semantic/meta-relational depth"
+  ],
+  "expected_benefit": "Permit richer relation semantics without traversal explosion or accidental authority propagation.",
+  "risks": [
+    "Meta-relational graphs can create traversal explosion",
+    "Inverse projections can be mistaken for semantic equivalence"
+  ],
+  "wake_conditions": [
+    "A receiver needs a relation-about-relation query",
+    "Projection-loss or directionality ambiguity appears"
+  ],
+  "supersedes": [],
+  "next_receiver": "CoRelationalSubstrate+/CoIndex+",
+  "materiality": "MATERIAL",
+  "nonclaims": [
+    "RELATION_EXISTS_NE_TRAVERSAL_REQUIRED",
+    "META_RELATION_EXISTS_NE_RECURSIVE_EXECUTION",
+    "SEMANTIC_DEPTH_CAN_EXCEED_EXECUTION_DEPTH",
+    "INVERSE_PROJECTION_NE_SEMANTIC_IDENTITY"
+  ]
+}
