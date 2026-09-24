@@ -1,7 +1,7 @@
 {
   "schema": "CoSessionAutocycle.Policy.v0.1-candidate",
   "state": "SHADOW_CONTROL_PLANE__NO_PROVIDER_SESSION_MUTATION",
-  "updated_utc": "2026-09-24T05:11:41Z",
+  "updated_utc": "2026-09-24T05:18:04Z",
   "auto_allowed": [
     "LIFECYCLE_PROJECTION",
     "LABEL_SIGNAL",
@@ -266,5 +266,31 @@
       "SUCCESSOR_OR_WAKE_PATH_WHERE_NEEDED"
     ],
     "no_user_action_required_when": "ALL_REQUIRED_CLOSE_SAFE_EVIDENCE_IS_ALREADY_DURABLE_AND_NO_HUMAN_GATE_REMAINS"
+  },
+  "session_writeback": {
+    "state": "FORWARD_PORTED_DONOR_IMPLEMENTATION__FRESH_MAIN_STATIC_CI_PENDING",
+    "currentness": "ai/currentness/session-writeback-r1.json",
+    "session_projection_schema": "schemas/cosession-relational-delta-v0.2.schema.json",
+    "compiler": "scripts/CoSessionProjectionToCoEvo.py",
+    "fanin": "scripts/CoSessionRelationalFanIn.py",
+    "receiver_fanout": "scripts/CoEvoReceiverFanoutPlanner.py",
+    "packet_compiler": "scripts/CoEvoReceiverPacketCompiler.py",
+    "public_pulse_projector": "scripts/CoEvoToPublicCoPulseProjectorR0.py",
+    "historical_github_canary": {
+      "packet": "ai/receiver-inbox/github-r0/packet-50AC4F6AFA73BA9A8256C473.json",
+      "receipt": "ai/receiver-receipts/github-r0/receipt-50AC4F6AFA73BA9A8256C473.json",
+      "lifecycle": "LANDED",
+      "receiver_pickup": "UNPROVEN"
+    },
+    "provider_session_push": false,
+    "automatic_repo_mutation": false,
+    "next": "STATIC_CI_THEN_BOUNDED_CURRENT_MAIN_FIXTURE_REPLAY_BEFORE_ANY_RUNTIME_ADOPTION",
+    "rails": [
+      "SESSION_PROJECTION_NE_PARALLEL_SEMANTIC_STANDARD",
+      "PROJECTION_NE_DELIVERY",
+      "DELIVERY_NE_PICKUP",
+      "PICKED_UP_NE_INTEGRATED",
+      "PUBLIC_SAFE_LABEL_NE_PUBLICATION_APPROVAL"
+    ]
   }
 }
