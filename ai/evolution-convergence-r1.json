@@ -1,0 +1,105 @@
+{
+  "schema": "CoCivium.CoAllEvolutionConvergence.R1.v0.1-candidate",
+  "state": "CURRENT_MAIN_FANIN_CANDIDATE__UNION_SCHEMA_AND_INTAKE_ELECTION_FORWARD_PORTED__CI_PENDING_ON_THIS_HEAD",
+  "observed_main_commit": "9d688da292c9c6c392661809131c5b64f47b5680",
+  "observed_main_head_commit_time": "2026-09-24T04:53:16Z",
+  "forward_branch": "coevo/convergence-mainline-r1-20260924",
+  "donor_pr": 44,
+  "forward_port_exact_blobs": {
+    "workflow": "85367b274085df493d6b30241e10b03e14abd543",
+    "intake_policy": "5cb6d9697306ba128cb84b70078a4a93fe6a0b20",
+    "union_schema": "a6218e1e94857002e854b0190cdbc5b6972a2dd5",
+    "validator": "ec7814e5a2ae057105b96d453e235373ad1409ca"
+  },
+  "convergence": {
+    "compatibility_anchor": "schemas/coevo-delta-v0.1.schema.json",
+    "compatibility_anchor_blob": "5aa1bfc62a47492f41b422331d51dbfcccc831c4",
+    "union_candidate": "schemas/coevo-delta-v0.2-union-candidate.schema.json",
+    "union_carries": [
+      "PR32_EFFECT_CLASSES_EFFECT_GATE_EFFECT_SCOPE",
+      "PR37_MATERIALITY_SUBSCRIPTION_PRESSURE_ENERGET_WANT_ROUTE_CLOSE_READINESS",
+      "PR23_WRITEBACK_PROJECTION_PROVENANCE_FIELDS"
+    ],
+    "primary_machine_intake": "ai/evolution-deltas/<YYYY-MM-DD>/",
+    "documentation_projection": "docs/Evolution/deltas/",
+    "docs_projection_role": "DOCUMENTATION_INDEX_OR_EXAMPLE_PROJECTION"
+  },
+  "newly_landed_descendant_relations": [
+    {
+      "pr": 63,
+      "commit": "1ccf30282526a8f62d991a01d6edc51b383a49be",
+      "relation": "COPULSE_R0G_LOCAL_RECEIVER_BINDING_AND_CAPACITY_SOURCE_PROVENANCE"
+    },
+    {
+      "pr": 70,
+      "commit": "614b17548fbd8a90b57cdd594324a174c84eda7b",
+      "relation": "COEVIDENCE_RECEIPT_GUARD_R0"
+    },
+    {
+      "pr": 69,
+      "commit": "1f91e9b4b995823f07a68180b55d33baad15fceb",
+      "relation": "COLINEAGE_COMPACTOR_R0"
+    },
+    {
+      "pr": 68,
+      "commit": "c5aa342481f3b510f43dcaa6595b1f29ecf7f390",
+      "relation": "COSUBSCRIPTION_ECOLOGY_R0"
+    },
+    {
+      "pr": 67,
+      "commit": "8c64e084dbd03d6a7b84f243fe0d4fbc733a0097",
+      "relation": "COLIVING_HIGHLIGHT_R0"
+    },
+    {
+      "pr": 65,
+      "commit": "1700165c437a1b1d0d38f162eedf195342b55357",
+      "relation": "COSOURCE_GRAPH_R0"
+    },
+    {
+      "pr": 64,
+      "commit": "2ce01c5317263449cf3ac5f8a560f3852f282f96",
+      "relation": "CONODE_PARTICIPATION_R0"
+    },
+    {
+      "pr": 66,
+      "commit": "9d688da292c9c6c392661809131c5b64f47b5680",
+      "relation": "COSUBSTRATE_FIELD_AND_COLIVING_HIGHLIGHT_ASSET_CONTRACT"
+    }
+  ],
+  "remaining_open_donor_classes": [
+    "SESSION_WRITEBACK_AND_FANOUT_MECHANICS",
+    "EFFECT_GATE_TYPING_DONOR",
+    "PRESSURE_ROUTE_TWILIGHT_RICH_RECEIVER_MECHANICS",
+    "INTEROP_META_RELATIONAL_CHALLENGERS",
+    "REPO_FIELD_PROJECTION_GRAPH_RELATIONS",
+    "OLDER_CURRENTNESS_DOCUMENTATION_DONORS",
+    "COTHEORYALL_PUBLIC_WORKING_PROJECTION",
+    "CONODEMESH_GRAIL_FEDERATION",
+    "AI_DISCOVERY_INDEX",
+    "ORG_HOUSEKEEPING_CENSUS"
+  ],
+  "current_gate": {
+    "ci": "PENDING_FOR_FRESH_FORWARD_BRANCH",
+    "merge": "HELD_UNTIL_CI_AND_CURRENTNESS_RECHECK",
+    "runtime": "NONE",
+    "authority_change": "NONE"
+  },
+  "next": "RUN_READ_ONLY_CONVERGENCE_CI__IF_PASS_AND_BRANCH_CURRENT_THEN_MERGE_LOW_EFFECT_FANIN__THEN_RECLASSIFY_OLD_DONOR_PRS",
+  "rails": [
+    "FANIN_BEFORE_MORE_PARALLEL_MUTATION",
+    "DESCENDANT_SATISFACTION_BEFORE_REPLAY",
+    "SCHEMA_EVOLUTION_NE_SILENT_CONTRACT_BREAK",
+    "CI_PASS_NE_CANON_OR_MERGE_AUTHORITY",
+    "NO_NEWEST_WINS",
+    "GITHUB_WRITE_ACCESS_NE_GLOBAL_AUTHORITY",
+    "ONE_DELTA_ID_ONE_PRIMARY_MACHINE_OBJECT__MULTIPLE_READABLE_PROJECTIONS_ALLOWED"
+  ],
+  "nonclaims": [
+    "NOT_CANON",
+    "NOT_RUNTIME",
+    "NOT_COEX",
+    "NOT_GLOBAL_SESSION_PICKUP",
+    "NOT_AUTHORITY_TRANSFER",
+    "NOT_COMPLETE_DONOR_HARVEST"
+  ]
+}
