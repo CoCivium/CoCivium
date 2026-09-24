@@ -1,0 +1,43 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://github.com/CoCivium/CoCivium/schemas/cotime-advisory-evidence-v0.1.schema.json",
+  "title":"CoTime advisory evidence v0.1 candidate",
+  "type":"object",
+  "additionalProperties":false,
+  "required":["schema","object_id","epistemic_class","information_class","currentness","source_refs","observed_at","action_class","scope_class","regulatory_profile","route","authority_ceiling","nonclaims"],
+  "properties":{
+    "schema":{"const":"CoTimeAdvisoryEvidence.v0.1-candidate"},
+    "object_id":{"type":"string","minLength":1},
+    "epistemic_class":{"enum":["OBSERVED","INFERRED","PREDICTED","SCENARIO","COUNTERFACTUAL","UNKNOWN"]},
+    "information_class":{"enum":["PUBLIC_INFORMATION","PRIVATE_INFORMATION__MATERIALITY_NOT_ESTABLISHED","POTENTIALLY_MATERIAL_NONPUBLIC_INFORMATION","UNKNOWN_INFORMATION_CLASS"]},
+    "currentness":{"enum":["CURRENT","STALE","SUPERSEDED","UNKNOWN"]},
+    "source_refs":{"type":"array","items":{"type":"string","minLength":1},"uniqueItems":true},
+    "source_time":{"type":["string","null"]},
+    "observed_at":{"type":"string","format":"date-time"},
+    "recorded_at":{"type":["string","null"]},
+    "valid_from":{"type":["string","null"]},
+    "valid_to":{"type":["string","null"]},
+    "decision_time":{"type":["string","null"]},
+    "horizon_end":{"type":["string","null"]},
+    "calibration_due":{"type":["string","null"]},
+    "confidence":{"type":["number","null"],"minimum":0,"maximum":1},
+    "supersedes":{"type":"array","items":{"type":"string","minLength":1},"uniqueItems":true},
+    "action_class":{"enum":["RESEARCH_ONLY","PRIVATE_DISCUSSION","CLIENT_DISCUSSION","PORTFOLIO_REVIEW_TRIGGER","SECURITIES_TRANSACTION_RECOMMENDATION","TRADE_EXECUTION"]},
+    "scope_class":{"enum":["GENERIC_RESEARCH","PRIVATE_RECIPIENT","SPECIFIC_CLIENT_OR_ACCOUNT"]},
+    "regulatory_profile":{"enum":["NOT_APPLICABLE_FOR_FIXTURE","UNKNOWN","SEC_REGISTERED_ADVISER","BROKER_DEALER_OR_ASSOCIATED_PERSON","CANADIAN_REGISTRANT","OTHER_REGULATED_PROFESSIONAL"]},
+    "professional_review_required":{"type":"boolean"},
+    "route":{
+      "type":"object","additionalProperties":false,
+      "required":["state","reason"],
+      "properties":{
+        "state":{"enum":["ALLOW_RESEARCH","ALLOW_PRIVATE_DISCUSSION","HOLD_CURRENTNESS","HOLD_INFORMATION_CLASS","HOLD_REGULATORY_PROFILE","HOLD_PROFESSIONAL_REVIEW","DENY_R0_TRADE_EXECUTION"]},
+        "reason":{"type":"string","minLength":1}
+      }
+    },
+    "authority_ceiling":{"const":"ADVISORY_ONLY"},
+    "assumptions":{"type":"array","items":{"type":"string"}},
+    "counterarguments":{"type":"array","items":{"type":"string"}},
+    "calibration_disposition":{"enum":["NOT_DUE","HIT","PARTIAL","MISS","UNRESOLVED","CENSORED","INVALIDATED_BY_ASSUMPTION_CHANGE"]},
+    "nonclaims":{"type":"array","minItems":1,"items":{"type":"string","minLength":1},"uniqueItems":true}
+  }
+}
