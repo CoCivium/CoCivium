@@ -1,0 +1,115 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/CoCivium/CoCivium/schemas/coevo-receiver-readproof-v0.1.schema.json",
+  "title": "CoEvo GitHub-landed receiver readproof profile v0.1 candidate",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "readproof_id",
+    "receiver_id",
+    "receiver_context",
+    "packet_id",
+    "packet_sha256",
+    "delivery_receipt_id",
+    "observed_destination",
+    "read_method",
+    "exact_object_match",
+    "coverage",
+    "receiver_disposition",
+    "pickup_state",
+    "nonclaims"
+  ],
+  "properties": {
+    "readproof_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "receiver_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "receiver_context": {
+      "type": "string",
+      "minLength": 1
+    },
+    "packet_id": {
+      "type": "string",
+      "pattern": "^packet:[0-9A-F]{24}$"
+    },
+    "packet_sha256": {
+      "type": "string",
+      "pattern": "^[0-9A-F]{64}$"
+    },
+    "delivery_receipt_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "observed_destination": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "repo",
+        "path",
+        "landing_commit",
+        "git_blob_sha"
+      ],
+      "properties": {
+        "repo": {
+          "type": "string",
+          "minLength": 1
+        },
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "landing_commit": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{40}$"
+        },
+        "git_blob_sha": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{40}$"
+        }
+      }
+    },
+    "read_method": {
+      "type": "string",
+      "minLength": 1
+    },
+    "exact_object_match": {
+      "const": true
+    },
+    "coverage": {
+      "const": "EXACT_PACKET_OBJECT_ONLY"
+    },
+    "receiver_disposition": {
+      "enum": [
+        "READ_ONLY_ACK",
+        "ACCEPTED_FOR_REVIEW",
+        "DEFERRED",
+        "REJECTED"
+      ]
+    },
+    "pickup_state": {
+      "const": "PICKED_UP_ELIGIBLE"
+    },
+    "acceptance_state": {
+      "enum": [
+        "NOT_EVALUATED",
+        "ACCEPTED_FOR_REVIEW",
+        "DEFERRED",
+        "REJECTED"
+      ]
+    },
+    "integration_state": {
+      "const": "UNPROVEN"
+    },
+    "nonclaims": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "description": "GitHub-landed CoEvo packet specialization of the shared CoReceiverReadproof invariant. Not the CoPulse R0B executable readproof format."
+}

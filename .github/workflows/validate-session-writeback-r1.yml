@@ -1,0 +1,81 @@
+name: CoSession write-back contract R1
+
+on:
+  pull_request:
+    paths:
+      - 'scripts/CoSessionProjectionToCoEvo.py'
+      - 'scripts/CoSessionRelationalFanIn.py'
+      - 'scripts/CoEvoReceiverFanoutPlanner.py'
+      - 'scripts/CoEvoReceiverPacketCompiler.py'
+      - 'scripts/CoEvoToPublicCoPulseProjectorR0.py'
+      - 'schemas/cosession-relational-delta-v0.1.schema.json'
+      - 'schemas/cosession-relational-delta-v0.2.schema.json'
+      - 'schemas/coevo-fanout-plan-v0.1.schema.json'
+      - 'schemas/coevo-github-delivery-receipt-v0.1.schema.json'
+      - 'schemas/coevo-receiver-bindings-v0.1.schema.json'
+      - 'schemas/coevo-receiver-packets-v0.1.schema.json'
+      - 'schemas/coevo-receiver-readproof-v0.1.schema.json'
+      - 'ai/receiver-inbox/github-r0/**'
+      - 'ai/receiver-receipts/github-r0/**'
+      - '.github/workflows/validate-session-writeback-r1.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/CoSessionProjectionToCoEvo.py'
+      - 'scripts/CoEvoReceiverFanoutPlanner.py'
+      - 'scripts/CoEvoReceiverPacketCompiler.py'
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Compile bounded scripts and parse contracts
+        shell: python
+        run: |
+          import json
+          import py_compile
+          from pathlib import Path
+
+          scripts = [
+              "scripts/CoSessionProjectionToCoEvo.py",
+              "scripts/CoSessionRelationalFanIn.py",
+              "scripts/CoEvoReceiverFanoutPlanner.py",
+              "scripts/CoEvoReceiverPacketCompiler.py",
+              "scripts/CoEvoToPublicCoPulseProjectorR0.py",
+          ]
+          for path in scripts:
+              py_compile.compile(path, doraise=True)
+
+          json_paths = [
+              "schemas/cosession-relational-delta-v0.1.schema.json",
+              "schemas/cosession-relational-delta-v0.2.schema.json",
+              "schemas/coevo-fanout-plan-v0.1.schema.json",
+              "schemas/coevo-github-delivery-receipt-v0.1.schema.json",
+              "schemas/coevo-receiver-bindings-v0.1.schema.json",
+              "schemas/coevo-receiver-packets-v0.1.schema.json",
+              "schemas/coevo-receiver-readproof-v0.1.schema.json",
+              "ai/receiver-inbox/github-r0/packet-50AC4F6AFA73BA9A8256C473.json",
+              "ai/receiver-receipts/github-r0/receipt-50AC4F6AFA73BA9A8256C473.json",
+          ]
+          objs = {p: json.loads(Path(p).read_text(encoding="utf-8")) for p in json_paths}
+
+          receipt = objs["ai/receiver-receipts/github-r0/receipt-50AC4F6AFA73BA9A8256C473.json"]
+          if receipt.get("lifecycle_state") != "LANDED":
+              raise SystemExit("FAIL_HISTORICAL_RECEIPT_LIFECYCLE_NOT_LANDED")
+          if receipt.get("receiver_pickup_state") != "UNPROVEN":
+              raise SystemExit("FAIL_HISTORICAL_RECEIPT_OVERCLAIMS_RECEIVER_PICKUP")
+          if receipt.get("state") != "LANDED__DESTINATION_READBACK_PASS__PICKUP_UNPROVEN":
+              raise SystemExit("FAIL_HISTORICAL_RECEIPT_STATE_UNEXPECTED")
+          nonclaims = set(receipt.get("nonclaims") or [])
+          required_nonclaims = {"DESTINATION_READBACK_NE_RECEIVER_PICKUP","LANDED_NE_PICKED_UP","LANDED_NE_INTEGRATED"}
+          if not required_nonclaims.issubset(nonclaims):
+              raise SystemExit("FAIL_HISTORICAL_RECEIPT_MISSING_LIFECYCLE_NONCLAIMS")
+
+          print("PASS_SESSION_WRITEBACK_R1_STATIC_CONTRACT")

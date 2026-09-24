@@ -1,7 +1,7 @@
 {
   "schema": "CoAll.SessionBootstrap.v0.1-candidate",
   "state": "PUBLIC_CURRENTNESS_BOOTSTRAP__NOT_GLOBAL_SESSION_PICKUP_PROOF",
-  "updated_utc": "2026-09-24T05:11:41Z",
+  "updated_utc": "2026-09-24T05:18:04Z",
   "bootstrap_repository": "CoCivium/CoCivium",
   "default_branch": "main",
   "read_order": [
@@ -83,12 +83,24 @@
       "LOAD_ROLE_RELATIVE_CURRENTNESS",
       "OBSERVE",
       "EMIT_BOUNDED_COEVO_DELTA_WHEN_MATERIAL",
+      "COMPILE_SESSION_RELATIONAL_PROJECTION_TO_COEVO_WHEN_MATERIAL",
       "DEDUPE_AND_FANIN_BEFORE_NEW_BROAD_MUTATION",
       "CHALLENGE_OR_VERIFY_WHERE_USEFUL",
       "BRANCH_MUTATE_ONLY_WITHIN_AUTHORITY_AND_COLLISION_RAILS",
       "SLEEP_WHEN_NO_MATERIAL_DELTA_OR_WAKE_PREDICATE"
     ],
-    "all_sessions_rule": "ALL_CAPABLE_SESSIONS_MAY_CONTRIBUTE_BOUNDED_DELTAS__NO_SESSION_MUST_MUTATE_EVERY_DOMAIN"
+    "all_sessions_rule": "ALL_CAPABLE_SESSIONS_MAY_CONTRIBUTE_BOUNDED_DELTAS__NO_SESSION_MUST_MUTATE_EVERY_DOMAIN",
+    "session_writeback": {
+      "currentness": "ai/currentness/session-writeback-r1.json",
+      "docs": "docs/Evolution/COSESSION_WRITEBACK_FANIN_R1.md",
+      "session_projection_schema": "schemas/cosession-relational-delta-v0.2.schema.json",
+      "session_to_coevo": "scripts/CoSessionProjectionToCoEvo.py",
+      "relational_fanin": "scripts/CoSessionRelationalFanIn.py",
+      "receiver_fanout": "scripts/CoEvoReceiverFanoutPlanner.py",
+      "receiver_packet_compiler": "scripts/CoEvoReceiverPacketCompiler.py",
+      "public_copulse_projection": "scripts/CoEvoToPublicCoPulseProjectorR0.py",
+      "rule": "PROJECTION_NE_DELIVERY__DELIVERY_NE_PICKUP__PICKUP_NE_INTEGRATION"
+    }
   },
   "lifecycle": {
     "policy": "ai/session-lifecycle-policy.json",
