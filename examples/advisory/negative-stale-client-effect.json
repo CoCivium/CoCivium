@@ -1,0 +1,36 @@
+{
+  "schema": "CoTimeAdvisoryEvidence.v0.1-candidate",
+  "source_refs": [
+    "fixture:public-source"
+  ],
+  "source_time": "2026-09-24T12:00:00Z",
+  "observed_at": "2026-09-24T20:45:00Z",
+  "recorded_at": "2026-09-24T20:46:00Z",
+  "valid_from": "2026-09-24T12:00:00Z",
+  "valid_to": null,
+  "decision_time": null,
+  "horizon_end": "2027-09-24T00:00:00Z",
+  "confidence": 0.5,
+  "supersedes": [],
+  "scope_class": "SPECIFIC_CLIENT_OR_ACCOUNT",
+  "regulatory_profile": "UNKNOWN",
+  "professional_review_required": true,
+  "authority_ceiling": "ADVISORY_ONLY",
+  "assumptions": [],
+  "counterarguments": [],
+  "calibration_disposition": "NOT_DUE",
+  "nonclaims": [
+    "PREDICTION_NE_EVIDENCE",
+    "ANALYSIS_NE_TRADE_AUTHORITY",
+    "CI_PASS_NE_INVESTMENT_MERIT"
+  ],
+  "object_id": "fixture:negative-stale-client-effect",
+  "epistemic_class": "INFERRED",
+  "information_class": "PUBLIC_INFORMATION",
+  "currentness": "STALE",
+  "action_class": "PORTFOLIO_REVIEW_TRIGGER",
+  "route": {
+    "state": "ALLOW_PRIVATE_DISCUSSION",
+    "reason": "Must fail because stale client/account effect needs a hold."
+  }
+}
