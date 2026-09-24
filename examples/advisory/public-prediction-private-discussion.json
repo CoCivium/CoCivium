@@ -1,0 +1,41 @@
+{
+  "schema": "CoTimeAdvisoryEvidence.v0.1-candidate",
+  "object_id": "fixture:public-prediction",
+  "epistemic_class": "PREDICTED",
+  "information_class": "PUBLIC_INFORMATION",
+  "currentness": "CURRENT",
+  "source_refs": [
+    "fixture:public-source"
+  ],
+  "source_time": "2026-09-24T12:00:00Z",
+  "observed_at": "2026-09-24T20:30:00Z",
+  "recorded_at": "2026-09-24T20:31:00Z",
+  "valid_from": "2026-09-24T12:00:00Z",
+  "valid_to": null,
+  "decision_time": null,
+  "horizon_end": "2027-09-24T00:00:00Z",
+  "calibration_due": "2027-09-24T00:00:00Z",
+  "confidence": 0.45,
+  "supersedes": [],
+  "action_class": "PRIVATE_DISCUSSION",
+  "scope_class": "PRIVATE_RECIPIENT",
+  "regulatory_profile": "UNKNOWN",
+  "professional_review_required": false,
+  "route": {
+    "state": "ALLOW_PRIVATE_DISCUSSION",
+    "reason": "Synthetic forecast fixture; no external effect."
+  },
+  "authority_ceiling": "ADVISORY_ONLY",
+  "assumptions": [
+    "Synthetic assumption"
+  ],
+  "counterarguments": [
+    "Synthetic counterargument"
+  ],
+  "calibration_disposition": "NOT_DUE",
+  "nonclaims": [
+    "PREDICTION_NE_EVIDENCE",
+    "ANALYSIS_NE_TRADE_AUTHORITY",
+    "CI_PASS_NE_INVESTMENT_MERIT"
+  ]
+}
