@@ -1,7 +1,7 @@
 {
   "schema": "CoSessionWriteback.Currentness.R1.v0.1-candidate",
-  "state": "CURRENT_MAIN_FIXTURE_REPLAY_CI_PENDING__NO_RUNTIME",
-  "updated_utc": "2026-09-24T17:23:23Z",
+  "state": "CURRENT_MAIN_FIXTURE_REPLAY_PASS__NO_RUNTIME",
+  "updated_utc": "2026-09-24T17:24:30Z",
   "base_main_commit": "a1378193586a6a5bbf17bfb69dbd7c1643ace3b4",
   "donor_pr": 23,
   "donor_branch": "cocivia260923/session-relational-delta-r0",
@@ -36,7 +36,7 @@
   },
   "current_gate": {
     "static_ci": "PASS",
-    "current_main_fixture_replay": "CI_REPAIR_PENDING_AFTER_EXACT_BLOB_REPLAY_EXPOSED_STALE_DOCUMENTED_FANIN_HASH",
+    "current_main_fixture_replay": "PASS",
     "runtime_adoption": "NONE",
     "provider_session_push": "NONE",
     "authority_change": "NONE",
@@ -55,9 +55,11 @@
       "fanout_selftest": "PASS_ROUTES_9__SUBSCRIPTIONS_7__FOREGROUND_3__HUMAN_BLOCKERS_0__ZERO_EFFECTS",
       "packet_selftest": "PASS_REPO_PACKETS_2__SESSION_PACKETS_2__HOLDS_1__ZERO_DELIVERY_EFFECTS",
       "public_copulse_selftest": "PASS_DETERMINISTIC__EPISTEMIC_CLASS_PRESERVED__NONPUBLIC_AND_UNSAFE_FAIL_CLOSED"
-    }
+    },
+    "fixture_replay_pass_run": 36034237671,
+    "fixture_replay_validated_head": "4e072bd438722b4f1cf5385b0663a3df697603dd"
   },
-  "next": "RERUN_READ_ONLY_R1A_CI_WITH_EXACT_BLOB_ASSERTIONS_AND_OBSERVED_FANIN_HASH__IF_PASS_RECHECK_MAIN_HEAD",
+  "next": "RECHECK_MAIN_HEAD__IF_ZERO_BEHIND_MERGE_R1A__THEN_KEEP_RUNTIME_ADOPTION_SEPARATELY_GATED",
   "rails": [
     "SESSION_PROJECTION_NE_PARALLEL_SEMANTIC_STANDARD",
     "COMPILATION_NE_ACCEPTANCE",
@@ -76,7 +78,7 @@
     "NOT_INTEGRATED",
     "NOT_COEX",
     "NOT_CANON",
-    "CURRENT_MAIN_FIXTURE_REPLAY_NOT_YET_PROVEN"
+    "FIXTURE_REPLAY_PASS_NE_RUNTIME_ADOPTION"
   ],
   "repairs": [
     "DONOR_FANOUT_PLANNER_UNTERMINATED_NEWLINE_LITERAL_REPAIRED_AFTER_CI_FAILURE",
