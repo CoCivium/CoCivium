@@ -1,0 +1,353 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/CoCivium/CoCivium/schemas/coencounter-yield-v0.1.schema.json",
+  "title": "CoEncounterYield v0.1 candidate",
+  "description": "Candidate public-safe encounter-yield envelope over existing CoParticipant+/CoSessionSubscription+/CoEvoDelta+ substrate. It records useful encounter evidence without granting authority or requiring mutation.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "encounter_id",
+    "observed_at",
+    "participant_binding",
+    "participant_class",
+    "source_object_refs",
+    "subscription_context",
+    "encounter_mode",
+    "yields",
+    "authority_ceiling",
+    "confidentiality",
+    "contribution_delta_refs",
+    "open_relations",
+    "benefit_observations",
+    "wake_relations",
+    "next_receiver",
+    "nonclaims"
+  ],
+  "properties": {
+    "encounter_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "observed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "participant_binding": {
+      "type": "string",
+      "minLength": 1
+    },
+    "participant_class": {
+      "enum": [
+        "HUMAN_PRINCIPAL",
+        "ORG_PRINCIPAL",
+        "SYNTH_PARTICIPANT",
+        "MODEL_INSTANCE",
+        "SERVICE_PRINCIPAL",
+        "COALL_SYSTEM_PARTICIPANT",
+        "DELEGATE",
+        "OBSERVER",
+        "RECEIVER",
+        "EXECUTOR",
+        "REPRESENTATIVE",
+        "UNKNOWN_PARTICIPANT_CLASS"
+      ]
+    },
+    "source_object_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "subscription_context": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "encounter_mode": {
+      "enum": [
+        "ORIENT",
+        "OBSERVE",
+        "QUESTION",
+        "CHALLENGE",
+        "CONTRIBUTE",
+        "VERIFY",
+        "TRANSLATE",
+        "TEST",
+        "EVIDENCED_NULL"
+      ]
+    },
+    "yields": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "yield_type",
+          "epistemic_class",
+          "subject",
+          "relation",
+          "evidence_refs"
+        ],
+        "properties": {
+          "yield_type": {
+            "enum": [
+              "ORIENTATION_EVIDENCE",
+              "INTERPRETABILITY_EVIDENCE",
+              "USABILITY_FRICTION",
+              "QUESTION",
+              "CHALLENGE",
+              "CONTRADICTION",
+              "CAPABILITY_EVIDENCE",
+              "PROVENANCE",
+              "TRANSLATION",
+              "NOVELTY_CANDIDATE",
+              "NEGATIVE_KNOWLEDGE",
+              "BENEFIT_OBSERVATION",
+              "FUTURE_RELATION",
+              "EVIDENCED_NULL"
+            ]
+          },
+          "epistemic_class": {
+            "enum": [
+              "OBSERVED",
+              "INFERRED",
+              "HYPOTHESIS",
+              "PREDICTED",
+              "PLANNED",
+              "PREFERRED",
+              "METAPHORICAL",
+              "MYTHIC",
+              "HUMOROUS",
+              "COUNTERFACTUAL",
+              "UNKNOWN"
+            ]
+          },
+          "subject": {
+            "type": "string",
+            "minLength": 1
+          },
+          "relation": {
+            "type": "string",
+            "minLength": 1
+          },
+          "evidence_refs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "confidence": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "minimum": 0,
+            "maximum": 1
+          }
+        }
+      }
+    },
+    "authority_ceiling": {
+      "type": "string",
+      "minLength": 1
+    },
+    "confidentiality": {
+      "enum": [
+        "PUBLIC",
+        "PRIVATE",
+        "RESTRICTED",
+        "UNKNOWN"
+      ]
+    },
+    "contribution_delta_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "open_relations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "relation_id",
+          "need",
+          "status",
+          "consent_required",
+          "authority_required"
+        ],
+        "properties": {
+          "relation_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "need": {
+            "type": "string",
+            "minLength": 1
+          },
+          "capability_hint": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "status": {
+            "enum": [
+              "OPEN",
+              "HELD",
+              "MATCH_CANDIDATE",
+              "SATISFIED",
+              "SUPERSEDED"
+            ]
+          },
+          "consent_required": {
+            "type": "boolean"
+          },
+          "authority_required": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "benefit_observations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "observed_effect",
+          "beneficiary_ref",
+          "evidence_refs",
+          "counterfactual_confidence",
+          "attribution_uncertainty"
+        ],
+        "properties": {
+          "observed_effect": {
+            "type": "string",
+            "minLength": 1
+          },
+          "beneficiary_ref": {
+            "type": "string",
+            "minLength": 1
+          },
+          "evidence_refs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "baseline": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "counterfactual_confidence": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "minimum": 0,
+            "maximum": 1
+          },
+          "attribution_fraction": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "minimum": 0,
+            "maximum": 1
+          },
+          "attribution_uncertainty": {
+            "type": "string",
+            "minLength": 1
+          },
+          "duration": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "side_effects": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "attribution_relations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "relation",
+          "participant_binding",
+          "object_ref"
+        ],
+        "properties": {
+          "relation": {
+            "enum": [
+              "ORIGINATED_BY",
+              "NOTICED_BY",
+              "CHALLENGED_BY",
+              "REPAIRED_BY",
+              "TRANSLATED_BY",
+              "VERIFIED_BY",
+              "IMPLEMENTED_BY",
+              "REMIXED_BY",
+              "INDEPENDENTLY_REDISCOVERED_BY"
+            ]
+          },
+          "participant_binding": {
+            "type": "string"
+          },
+          "object_ref": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "wake_relations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "predicate",
+          "participant_notification_authorized"
+        ],
+        "properties": {
+          "predicate": {
+            "type": "string",
+            "minLength": 1
+          },
+          "participant_notification_authorized": {
+            "type": "boolean"
+          },
+          "communication_route_ref": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      }
+    },
+    "next_receiver": {
+      "type": "string",
+      "minLength": 1
+    },
+    "nonclaims": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

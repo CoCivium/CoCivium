@@ -1,0 +1,90 @@
+{
+  "delta_id": "coparticipation-ecology-r0-20260924",
+  "session_id": "CoAutoEvoSeed260922-S1",
+  "observed_at": "2026-09-24T14:24:20Z",
+  "domain": [
+    "CoAll+",
+    "CoSession+",
+    "CoAutoEvo+/CoEvo+",
+    "CoUX+/CoSurface+",
+    "CoEducation+"
+  ],
+  "subject": "CoParticipationEcology+ as cross-cutting relation layer over existing participant/session/evolution substrate",
+  "relation": "CLASSIFY_AS_CROSS_CUTTING_RELATION__ADD_COENCOUNTERYIELD_CANDIDATE_WITHOUT_NEW_PARTICIPANT_MODEL_OR_TOP_LEVEL_LANE",
+  "epistemic_class": "INFERRED",
+  "source_refs": [
+    "CoCivium/CoCivium@f29e935cc93092f9b6a87e5607073be5f0818025",
+    "CoCivium/CoCivium:docs/Architecture/COVIRTUAL_SESSION_MORPHOLOGY_R0.md@5dff7fff33f8637c3c333fdca360874db1e0bfe5",
+    "session-source:2026-09-24 user-supplied relational donor note; public-safe derivative only"
+  ],
+  "target_surfaces": [
+    "docs/Architecture/COPARTICIPATION_ECOLOGY_R0.md",
+    "schemas/coencounter-yield-v0.1.schema.json",
+    "examples/coencounter-yield-r0.example.json"
+  ],
+  "mutation_class": "MERGE_LOW_EFFECT",
+  "authority_ceiling": "PUBLIC_SAFE_ARCHITECTURE_SCHEMA_AND_FIXTURE_ONLY",
+  "confidentiality": "PUBLIC",
+  "confidence": 0.88,
+  "contradictions": [
+    "The candidate may remain a relation family under existing CoAll+/CoSession+/CoEvo lanes rather than ever becoming a standalone subsystem.",
+    "Encounter yield and contribution lineage may partially overlap existing evidence, provenance, highlight, source and subscription relations.",
+    "Benefit observations are not causal attribution without a supported baseline/counterfactual."
+  ],
+  "tests": [
+    "Synthetic encounter can produce useful non-mutating interpretability evidence.",
+    "EVIDENCED_NULL is representable without fabricating novelty.",
+    "Wake relation can remain dormant without participant notification authority.",
+    "Additional participant/sensing coverage does not increase mutation authority.",
+    "Typed attribution remains distinct from ownership and causal credit.",
+    "Before any evolution-lane registry change, classify this family against the current registry-drift delta and review subscription impact."
+  ],
+  "expected_benefit": "Turn voluntary encounters into bounded reusable evidence and open relations while preserving provider-neutral participant/session architecture and avoiding engagement-system duplication.",
+  "risks": [
+    "VOCABULARY_PROLIFERATION",
+    "ENGAGEMENT_GAMIFICATION_DRIFT",
+    "UNSUPPORTED_CAUSAL_CREDIT",
+    "PARTICIPANT_NOTIFICATION_SPAM",
+    "SENSING_TO_AUTHORITY_LEAK",
+    "TOP_LEVEL_LANE_EXPLOSION"
+  ],
+  "wake_conditions": [
+    "A synthetic multi-receiver CoEncounterYield fixture is executed and independently reviewed.",
+    "A current-main collision search finds overlap requiring schema reduction.",
+    "A public UX surface needs machine-readable open relations/affordances."
+  ],
+  "supersedes": [],
+  "next_receiver": "CoEvoConvergence/CoParticipant/CoUX fan-in",
+  "effect_classes": [
+    "NONE"
+  ],
+  "effect_gate": "NOT_APPLICABLE",
+  "effect_scope": null,
+  "materiality": "MATERIAL",
+  "typed_operation": "ADD",
+  "evidence_refs": [
+    "docs/Architecture/COVIRTUAL_SESSION_MORPHOLOGY_R0.md",
+    "ai/evolution-deltas/2026-09-24/cofuturefabric260919-s2-registry-coverage-drift-r0.json"
+  ],
+  "public_safety": "PUBLIC_SAFE",
+  "qualifiers": {
+    "registry_classification": "CROSS_CUTTING_RELATION",
+    "new_top_level_lane": false,
+    "participant_model_reused": "CoParticipant+",
+    "vocabulary_policy": "CONTRACT_BEFORE_MORE_NAMES"
+  },
+  "collision_domain": "CoAll/ParticipationEcology",
+  "observed_base_ref": "f29e935cc93092f9b6a87e5607073be5f0818025",
+  "next_gate": "SYNTHETIC_MULTI_RECEIVER_ENCOUNTER_FIXTURE_AND_COLLISION_REVIEW",
+  "receiver_readproof_gate": "NOT_REQUIRED_FOR_GITHUB_MAIN_MERGE__REQUIRED_BEFORE_PICKED_UP_CLAIM",
+  "nonclaims": [
+    "NOT_NEW_PARTICIPANT_ONTOLOGY",
+    "NOT_NEW_TOP_LEVEL_EVOLUTION_LANE",
+    "NOT_RUNTIME",
+    "NOT_RECEIVER_PICKUP",
+    "NOT_INTEGRATED",
+    "NOT_COEX",
+    "BENEFIT_OBSERVED_NE_BENEFIT_CAUSED",
+    "SENSING_SCALE_NE_AUTHORITY_SCALE"
+  ]
+}
