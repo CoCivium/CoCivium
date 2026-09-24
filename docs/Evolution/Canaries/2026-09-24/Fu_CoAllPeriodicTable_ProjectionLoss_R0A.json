@@ -1,0 +1,265 @@
+{
+  "schema": "CoAll.FuProjectionLossCanary.R0A.v0.1-candidate",
+  "state": "CANDIDATE_STATIC_PROJECTION_CANARY__NO_CANON_NO_RUNTIME_NO_AUTHORITY",
+  "canary_id": "Fu_CoAllPeriodicTable_ProjectionLoss_R0A",
+  "session_origin": "CoSessionSurvival260920-S1",
+  "observed_at": "2026-09-24T16:56:52Z",
+  "source_currentness": {
+    "CoCivium_main_commit_sha": "7b08c68bae6ec76c33d70eabbd5afa1a2e41429b",
+    "fu_delta_blob_sha": "1f4759c4857c0fa2b95a1928a04fbf022937e600",
+    "periodic_table_delta_blob_sha": "b32c38a2587a0d7eb96a6d181a38c5c70726902d",
+    "collision_review_blob_sha": "019a3d971135f7ffbdf5fc049d8c309c6d69995c"
+  },
+  "source_object": {
+    "candidate_identity": "coall-element:Fu:R0",
+    "symbol": "Fu",
+    "epistemic_class": "MYTHIC",
+    "semantic_status": "NONCANONICAL_CANDIDATE_SYMBOL",
+    "candidate_family": "CoMythOps+",
+    "authority_ceiling": "SYMBOLIC_CANDIDATE_ONLY__NO_LEX_CANON_OR_HIGHLIGHT_PROMOTION",
+    "receiver_relative": true,
+    "position_is_identity": false,
+    "atomicity": "PROJECTION_RELATIVE_USEFULNESS__NOT_METAPHYSICAL_INDIVISIBILITY",
+    "relations": [
+      {
+        "relation": "CANDIDATE_MEMBER_OF",
+        "target": "CoMythOps+",
+        "epistemic_class": "MYTHIC"
+      },
+      {
+        "relation": "HAS_CANDIDATE_PROJECTION",
+        "target": "CoPriMath+",
+        "epistemic_class": "PLANNED"
+      },
+      {
+        "relation": "HAS_CANDIDATE_PROJECTION",
+        "target": "CoGibberTru+",
+        "epistemic_class": "PLANNED"
+      },
+      {
+        "relation": "HAS_TIME_RELATIVE_PROJECTION",
+        "target": "CoTime+",
+        "epistemic_class": "PLANNED"
+      }
+    ],
+    "provenance": [
+      "ai/evolution-deltas/2026-09-24/COEVO.CS260920.FU.COMYTHOPS_RELATIONAL_ELEMENT.R0.json",
+      "ai/evolution-deltas/2026-09-24/COEVO.CS260920.COALL_PERIODIC_TABLE.RELATIONAL_ELEMENT_MODEL.R0.json",
+      "docs/Evolution/Reviews/2026-09-24/CoSessionSurvival260920-S1_Fu_symbol_collision_review_R1.json"
+    ]
+  },
+  "required_invariants": [
+    "FU_NE_FACT",
+    "SYMBOL_NE_SUBSTANCE",
+    "ELEMENT_NE_INDIVISIBLE",
+    "POSITION_NE_IDENTITY",
+    "MYTHIC_PROJECTION_NE_FACTUAL_CLAIM",
+    "PROJECTION_NE_SOURCE",
+    "RECURSION_AVAILABLE_NE_RECURSION_REQUIRED",
+    "CANDIDATE_SYMBOL_NE_CANONICAL_COLEX_TERM"
+  ],
+  "projections": [
+    {
+      "projection_id": "Fu.2D.Cell.R0A",
+      "projection_family": "HUMAN_READABLE_2D",
+      "candidate_identity": "coall-element:Fu:R0",
+      "symbol": "Fu",
+      "epistemic_class": "MYTHIC",
+      "authority_ceiling": "SYMBOLIC_CANDIDATE_ONLY__NO_LEX_CANON_OR_HIGHLIGHT_PROMOTION",
+      "receiver_scope": "human-readable periodic-table-like overview",
+      "rendering": {
+        "cell": {
+          "symbol": "Fu",
+          "family": "CoMythOps+",
+          "status": "candidate",
+          "atomicity": "projection-relative"
+        }
+      },
+      "preserves": [
+        "candidate identity",
+        "symbol",
+        "MYTHIC typing",
+        "family relation",
+        "candidate status",
+        "atomicity nonclaim"
+      ],
+      "projection_loss": [
+        "full provenance omitted from cell face",
+        "recursive relation neighborhood omitted",
+        "CoTime+ trajectory omitted",
+        "receiver/context dimensions collapsed"
+      ]
+    },
+    {
+      "projection_id": "Fu.3D.Neighborhood.R0A",
+      "projection_family": "HUMAN_OR_MACHINE_3D_NEIGHBORHOOD",
+      "candidate_identity": "coall-element:Fu:R0",
+      "symbol": "Fu",
+      "epistemic_class": "MYTHIC",
+      "authority_ceiling": "SYMBOLIC_CANDIDATE_ONLY__NO_LEX_CANON_OR_HIGHLIGHT_PROMOTION",
+      "receiver_scope": "3D relational-neighborhood viewer",
+      "rendering": {
+        "origin": "Fu",
+        "axes": [
+          "projection-family",
+          "receiver/context",
+          "relation-neighborhood"
+        ],
+        "neighbors": [
+          ["CoMythOps+", "CANDIDATE_MEMBER_OF"],
+          ["CoPriMath+", "HAS_CANDIDATE_PROJECTION"],
+          ["CoGibberTru+", "HAS_CANDIDATE_PROJECTION"],
+          ["CoTime+", "HAS_TIME_RELATIVE_PROJECTION"]
+        ]
+      },
+      "preserves": [
+        "candidate identity",
+        "MYTHIC typing",
+        "typed neighborhood relations",
+        "receiver-relative positioning",
+        "position is not identity"
+      ],
+      "projection_loss": [
+        "exact time evolution collapsed to one neighborhood snapshot",
+        "full prose semantics omitted",
+        "source-document detail compressed"
+      ]
+    },
+    {
+      "projection_id": "Fu.CoTime.Trajectory.R0A",
+      "projection_family": "COTIME_TRAJECTORY",
+      "candidate_identity": "coall-element:Fu:R0",
+      "symbol": "Fu",
+      "epistemic_class": "MYTHIC",
+      "authority_ceiling": "SYMBOLIC_CANDIDATE_ONLY__NO_LEX_CANON_OR_HIGHLIGHT_PROMOTION",
+      "receiver_scope": "temporal/currentness viewer",
+      "rendering": {
+        "trajectory": [
+          {
+            "time": "2026-09-24T14:39:04Z",
+            "state": "PROPOSED_MYTHIC_CANDIDATE",
+            "ref": "COEVO.CS260920.FU.COMYTHOPS_RELATIONAL_ELEMENT.R0"
+          },
+          {
+            "time": "2026-09-24T16:32:21Z",
+            "state": "BOUNDED_NO_COLLISION_FOUND__NOT_ABSENCE_PROOF",
+            "ref": "CoSessionSurvival260920-S1_Fu_symbol_collision_review_R1"
+          },
+          {
+            "time": "2026-09-24T16:39:59Z",
+            "state": "LANDED_AS_TYPED_CANDIDATE_DELTA_ON_MAIN",
+            "ref": "7b08c68bae6ec76c33d70eabbd5afa1a2e41429b"
+          }
+        ]
+      },
+      "preserves": [
+        "candidate identity through time",
+        "MYTHIC typing",
+        "noncanonical status",
+        "provenance transitions",
+        "no runtime or authority promotion"
+      ],
+      "projection_loss": [
+        "3D relation geometry omitted",
+        "most relation-neighborhood detail omitted",
+        "receiver-specific visual coordinates omitted"
+      ]
+    },
+    {
+      "projection_id": "Fu.CoPriMath.StyleCandidate.R0A",
+      "projection_family": "COPRIMATH_STYLE_CANDIDATE",
+      "candidate_identity": "coall-element:Fu:R0",
+      "symbol": "Fu",
+      "epistemic_class": "MYTHIC",
+      "authority_ceiling": "SYMBOLIC_CANDIDATE_ONLY__NO_LEX_CANON_OR_HIGHLIGHT_PROMOTION",
+      "receiver_scope": "symbolic/formal projection experiment",
+      "rendering": {
+        "expression": "Fu_M(r,c,t,p) -> {MythOps, PriMath, GibberTru, CoTime}",
+        "legend": {
+          "M": "MYTHIC epistemic class",
+          "r": "receiver-relative",
+          "c": "context-qualified",
+          "t": "CoTime-qualified",
+          "p": "provenance-bound"
+        },
+        "syntax_status": "CANDIDATE_STYLE_ONLY__NOT_ESTABLISHED_COPRIMATH_GRAMMAR"
+      },
+      "preserves": [
+        "candidate identity by explicit binding",
+        "MYTHIC typing",
+        "receiver/context/time/provenance dimensions",
+        "target projection families"
+      ],
+      "projection_loss": [
+        "natural-language nuance omitted",
+        "typed relation details compressed",
+        "authority nonclaims depend on surrounding canary envelope",
+        "not reversible to every source sentence"
+      ]
+    },
+    {
+      "projection_id": "Fu.CoGibberTru.StyleCandidate.R0A",
+      "projection_family": "COGIBBERTRU_STYLE_CANDIDATE",
+      "candidate_identity": "coall-element:Fu:R0",
+      "symbol": "Fu",
+      "epistemic_class": "MYTHIC",
+      "authority_ceiling": "SYMBOLIC_CANDIDATE_ONLY__NO_LEX_CANON_OR_HIGHLIGHT_PROMOTION",
+      "receiver_scope": "compressed reversible-within-canary projection experiment",
+      "rendering": {
+        "token": "Fu::M[r,c,t,p]::!F,!C,!R",
+        "decode_map": {
+          "Fu": "candidate identity coall-element:Fu:R0",
+          "M": "MYTHIC",
+          "r": "receiver-relative",
+          "c": "context-qualified",
+          "t": "CoTime-qualified",
+          "p": "provenance-bound",
+          "!F": "not factual evidence",
+          "!C": "not canonical CoLex binding",
+          "!R": "not runtime promotion"
+        },
+        "reversibility_scope": "MANDATORY_CANARY_INVARIANTS_ONLY__NOT_FULL_SOURCE_RECONSTRUCTION"
+      },
+      "preserves": [
+        "candidate identity",
+        "MYTHIC typing",
+        "receiver/context/time/provenance qualification",
+        "fact/canon/runtime nonclaims"
+      ],
+      "projection_loss": [
+        "relation neighborhood omitted",
+        "source history omitted",
+        "human-readable explanatory nuance omitted",
+        "full authority-ceiling string compressed"
+      ]
+    }
+  ],
+  "meta_relation_probe": {
+    "subject_relation": ["Fu", "HAS_CANDIDATE_PROJECTION", "CoPriMath+"],
+    "relation_about_relation": {
+      "relation": "HAS_DECLARED_PROJECTION_LOSS",
+      "target": "natural-language nuance and full relation detail"
+    },
+    "recursion_depth_materialized": 1,
+    "max_recursion_depth_for_canary": 1,
+    "rail": "META_RELATION_NE_UNBOUNDED_TRAVERSAL"
+  },
+  "static_validation_contract": {
+    "projection_count_expected": 5,
+    "all_projections_must_bind_same_candidate_identity": true,
+    "all_projections_must_preserve_epistemic_class": "MYTHIC",
+    "all_projections_must_preserve_authority_ceiling": true,
+    "all_projections_must_declare_projection_loss": true,
+    "compressed_projection_must_decode_mandatory_nonclaims": true,
+    "position_must_not_be_used_as_identity": true
+  },
+  "success_condition": "all five projections bind one stable candidate identity, preserve MYTHIC typing and authority ceiling, expose explicit loss, and do not imply factuality, canon, runtime, or natural periodic law",
+  "nonclaims": [
+    "STATIC_CANARY_NE_RUNTIME",
+    "STYLE_CANDIDATE_NE_ESTABLISHED_COPRIMATH_OR_COGIBBERTRU_GRAMMAR",
+    "PROJECTION_CANARY_NE_NATURAL_PERIODIC_LAW",
+    "LANDED_CANDIDATE_NE_CANON",
+    "NO_PUBLIC_HIGHLIGHT_PROMOTION",
+    "NO_AUTHORITY_TRANSFER"
+  ]
+}
