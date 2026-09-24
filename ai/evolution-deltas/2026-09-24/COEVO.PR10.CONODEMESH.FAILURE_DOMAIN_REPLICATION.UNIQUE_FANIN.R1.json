@@ -1,0 +1,70 @@
+{
+  "session_id": "CoAutoEvoSeed260922-S1",
+  "observed_at": "2026-09-24T21:31:12Z",
+  "mutation_class": "PROPOSE",
+  "authority_ceiling": "CANDIDATE_ONLY__NO_CANON_NO_RUNTIME_NO_AUTHORITY",
+  "confidentiality": "PUBLIC",
+  "effect_classes": [
+    "NONE"
+  ],
+  "effect_gate": "NOT_APPLICABLE",
+  "materiality": "MATERIAL",
+  "public_safety": "PUBLIC_SAFE",
+  "observed_base_ref": "main@ff4e143b79723bd1924625367fb1fd2438cb59ad",
+  "receiver_readproof_gate": "EXACT",
+  "$schema": "https://github.com/CoCivium/CoCivium/schemas/coevo-delta-v0.2-union-candidate.schema.json",
+  "delta_id": "COEVO.PR10.CONODEMESH.FAILURE_DOMAIN_REPLICATION.UNIQUE_FANIN.R1",
+  "domain": [
+    "CoNodeMesh+/GRAIL+",
+    "CoOps+",
+    "CoAll+"
+  ],
+  "subject": "Federated CoNodeMesh replication across explicit independent failure domains with typed node roles and no newest-wins collapse",
+  "relation": "EXTENDS_PARTICIPANT_CONODE_WITH_FEDERATED_FAILURE_DOMAIN_AND_REPLICATION_ENVELOPE",
+  "epistemic_class": "PLANNED",
+  "source_refs": [
+    "github:CoCivium/CoCivium#10@3165691b634d7d82e3baa391998b6e441e1ca415",
+    "github:CoCivium/CoCivium:docs/Architecture/CONODEMESH_GRAIL_R0.md@3cd5de702b5467eba29d1f5b3e1cf50fbf380826",
+    "github:CoCivium/CoCivium@ff4e143b79723bd1924625367fb1fd2438cb59ad",
+    "github:CoCivium/CoCivium:docs/Architecture/CONODE_PARTICIPATION_R0.md@aaa420620826d46acbb45a9698504b3247fa197a"
+  ],
+  "target_surfaces": [
+    "CoCivium",
+    "CoSteward"
+  ],
+  "confidence": 0.91,
+  "contradictions": [
+    "Current main already defines participant-owned CoNode identity/privacy/materialization; this delta preserves only federation, independent failure-domain, replica-role, divergence and replication-envelope relations."
+  ],
+  "tests": [
+    "classify two copies in one provider/account as one provider failure domain",
+    "preserve divergent node states rather than newest-wins overwrite",
+    "prove replica role does not imply semantic authority",
+    "bind replication cursor and projection-loss metadata to a bounded object"
+  ],
+  "expected_benefit": "Extend CoNode participation into resilient multi-node custody/currentness without making copies, mirrors or reachable services authoritative.",
+  "risks": [
+    "copy count may be mistaken for failure-domain diversity",
+    "replication may silently overwrite divergent relation state",
+    "node role proliferation may increase coordination debt"
+  ],
+  "wake_conditions": [
+    "independent private replica route becomes available",
+    "GRAIL lineage is recovered and can be reconciled exactly",
+    "a second receiver/failure-domain canary is ready"
+  ],
+  "supersedes": [],
+  "next_receiver": "CoNodeMesh+/CoOps+ federation receiver",
+  "collision_domain": "conodemesh-failure-domain-replication",
+  "typed_operation": "QUALIFY",
+  "next_gate": "BOUNDED_INDEPENDENT_REPLICA_AND_RESTORE_CANARY",
+  "nonclaims": [
+    "NODE_NE_REPOSITORY",
+    "REPLICA_NE_AUTHORITY",
+    "MIRROR_NE_CANON",
+    "COPY_COUNT_NE_FAILURE_DOMAIN_COUNT",
+    "NO_NEWEST_WINS",
+    "PUBLIC_MIRROR_NE_PRIVATE_BACKUP",
+    "NO_RUNTIME_NO_CANON_NO_AUTHORITY"
+  ]
+}
