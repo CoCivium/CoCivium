@@ -1,7 +1,7 @@
 {
   "schema": "CoAll.EvolutionDonorDisposition.R2.v0.1-candidate",
-  "state": "CURRENT_MAIN_RELATIONAL_DONOR_INDEX__PR37_DESCENDANT_SATISFIED_FOR_CURRENT_SCOPE__UNIQUE_DONORS_REMAIN",
-  "observed_main_commit": "75f45477adaadabc9bad5b6455a9e448e7c839ac",
+  "state": "CURRENT_MAIN_RELATIONAL_DONOR_INDEX__PR41_UNIQUE_RELATIONS_DONATED__UNIQUE_DONORS_REMAIN",
+  "observed_main_commit": "65c908a106a9e44502b84578cfa24884f0295824",
   "observed_at": "2026-09-24T20:22:34Z",
   "purpose": "Reduce duplicate replay by relating historical/draft PR donors to stronger current-main descendants while preserving unique unresolved remainders.",
   "dispositions": [
@@ -122,9 +122,19 @@
     },
     {
       "donor_class": "INTEROP_META_RELATIONAL_CHALLENGERS",
-      "state": "OPEN_DONOR",
+      "state": "DONATED_TO_ELECTED_MACHINE_INTAKE__SAFE_TO_CLOSE_UNMERGED",
       "donor_pr": 41,
-      "action": "RECONCILE_AFTER_PR37_PR43_UNIQUE_REMAINDERS"
+      "action": "CLOSE_PR41_UNMERGED__DO_NOT_REPLAY_WHOLE_BRANCH",
+      "donation_commit": "65c908a106a9e44502b84578cfa24884f0295824",
+      "donation_objects": [
+        "ai/evolution-deltas/2026-09-24/coevo-interop-transport-neutral-r1.json",
+        "ai/evolution-deltas/2026-09-24/coevo-meta-relational-depth-r1.json",
+        "ai/evolution-deltas/2026-09-24/coevo-relevance-backlog-selfscope-r1.json",
+        "ai/evolution-deltas/2026-09-24/coevo-attention-energet-song-r1.json",
+        "ai/evolution-deltas/2026-09-24/coevo-turtles-bounded-traversal-humour-r1.json"
+      ],
+      "validation": "GITHUB_ACTIONS_VALIDATE_COEVO_CONVERGENCE_R0_RUN_36055426949__SUCCESS",
+      "relation": "UNIQUE_PR41_RELATIONS_FORWARD_PORTED_AS_TYPED_MACHINE_DELTAS__DONOR_BRANCH_REMAINS_PROVENANCE"
     },
     {
       "donor_class": "CONODEMESH_GRAIL_FEDERATION",
@@ -153,8 +163,8 @@
   ],
   "next": [
     "DISPOSITION_PR43_UNIQUE_REMAINDERS_INTO_ELECTED_MACHINE_DELTA_INTAKE",
-    "THEN_RECHECK_PR41_INTEROP_DONOR",
-    "THEN_COMPARE_PR10_GRAIL_AGAINST_CURRENT_CONODE_AND_REPO_FIELD"
+    "COMPARE_PR10_GRAIL_AGAINST_CURRENT_CONODE_AND_REPO_FIELD",
+    "RECHECK_PR7_AI_DISCOVERY_AND_PR5_HOUSEKEEPING_AGAINST_CURRENT_BOOTSTRAP"
   ],
   "rails": [
     "FANIN_BEFORE_MORE_PARALLEL_MUTATION",
