@@ -1,0 +1,52 @@
+{
+  "delta_id": "COEVO.SCALE.ATTENTION_ENERGET_SONG_METRICS.R1",
+  "session_id": "CoFlatline260920-S1",
+  "observed_at": "2026-09-24T20:22:34Z",
+  "domain": [
+    "CoAutoEvo+/CoEvo+",
+    "CoSession+",
+    "RickBar+/CoDesktop+",
+    "CoUX+/CoSurface+",
+    "CoMythOps+"
+  ],
+  "subject": "RickAttentionDisplacement+, CoClosureVelocity+, CoParallelYield+, CoEnerget+ flows and CoSong+ projection",
+  "relation": "PRESERVES_UNIQUE_PR41_ATTENTION_AND_FLOW_PROJECTIONS",
+  "epistemic_class": "HYPOTHESIS",
+  "source_refs": [
+    "github:CoCivium/CoCivium#PR41:docs/Evolution/COINTEROP_RELATIONAL_SCALING_R0.md@blob:d1fbc2e48b0297835a5756eb33411c28ca8ef534",
+    "github:CoCivium/CoCivium#PR41:ai/evolution-deltas/CoEvoDelta-CoInteropScaling-R0-20260923.json@blob:55d3d3b8c427a47c393210d6a8f746bfbd184501"
+  ],
+  "target_surfaces": [
+    "CoCivium",
+    "CoAura",
+    "CoStacks"
+  ],
+  "mutation_class": "PROPOSE",
+  "authority_ceiling": "PUBLIC_CANDIDATE_DELTA_ONLY__NO_RUNTIME_NO_AUTHORITY",
+  "confidentiality": "PUBLIC",
+  "confidence": 0.75,
+  "contradictions": [],
+  "tests": [
+    "Keep attention/capability metrics multidimensional rather than one vanity score",
+    "Verify capability growth can reduce context burden per session",
+    "Keep CoSong poetic/interpretive projections separate from engineering evidence"
+  ],
+  "expected_benefit": "Make attention displacement, closure velocity, parallel yield and resource-flow patterns inspectable without treating any one metric as truth.",
+  "risks": [
+    "Metrics can become targets and distort work",
+    "Poetic flow projections can be mistaken for mechanism"
+  ],
+  "wake_conditions": [
+    "RickBar needs a compact attention/capacity projection",
+    "CoPressure relief requires measured attention displacement"
+  ],
+  "supersedes": [],
+  "next_receiver": "CoEnerget+/CoSong+/RickBar+",
+  "materiality": "MATERIAL",
+  "nonclaims": [
+    "SESSION_VALUE_NE_SESSION_LONGEVITY",
+    "CAPABILITY_GROWTH_SHOULD_REDUCE_CONTEXT_BURDEN_PER_SESSION",
+    "POETIC_PROJECTION_NE_ENGINEERING_EVIDENCE",
+    "METAPHOR_NE_EQUIVALENCE"
+  ]
+}
