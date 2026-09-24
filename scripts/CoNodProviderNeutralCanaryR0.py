@@ -17,6 +17,7 @@ conod = load("ai/conod-dynamic-wave-r2.json")
 aura = load("ai/coavnim-cognitive-aura-r0.json")
 ui = load("ai/fixtures/conod-coaura-synthetic-r0.json")
 failover = load("ai/fixtures/conod-provider-neutral-failover-r0.json")
+github_surface = load("ai/github-relational-surface-r0.json")
 
 require(conod["semantics"]["authority_expansion"] is False, "CONOD_AUTHORITY_EXPANSION")
 require(conod["semantics"]["physical_width"] == "ADAPTIVE", "CONOD_PHYSICAL_WIDTH_NOT_ADAPTIVE")
@@ -44,6 +45,13 @@ require(sum(int(v) for v in sf["reroute"].values()) == int(sf["pending"]), "FAIL
 require(sf["authority_expansion"] is False, "FAILOVER_AUTHORITY_EXPANSION")
 require(int(sf["human_action_required"]) == 0, "FAILOVER_HUMAN_LOAD_BALANCING")
 require("LOGICAL_LANE_IDENTITY_SURVIVES_ROUTE_FAILURE" in failover["expected_checks"], "FAILOVER_IDENTITY_CHECK_MISSING")
+require("GITHUB_NE_COALL_TOTALITY" in github_surface["rails"], "GITHUB_TOTALITY_RAIL_MISSING")
+require("GITHUB_NE_CUSTODY_ROOT" in github_surface["rails"], "GITHUB_CUSTODY_RAIL_MISSING")
+require("REPOSITORY_NE_ONTOLOGY" in github_surface["rails"], "GITHUB_ONTOLOGY_RAIL_MISSING")
+require("PR_NE_CANON" in github_surface["rails"], "GITHUB_PR_CANON_RAIL_MISSING")
+require("CI_PASS_NE_RUNTIME" in github_surface["rails"], "GITHUB_CI_RUNTIME_RAIL_MISSING")
+require(github_surface["conod_relation"]["role"] == "ONE_ADMISSIBLE_RECEIVER_OR_MATERIALIZATION_SURFACE", "GITHUB_CONOD_ROLE")
+require("REPOSITORY" in github_surface["temporal_currentness"]["bind"] and "COMMIT_SHA" in github_surface["temporal_currentness"]["bind"], "GITHUB_CURRENTNESS_BIND_MISSING")
 
 print(json.dumps({
     "STATE":"PASS_BOUNDED_STATIC_CONOD_PROVIDER_NEUTRAL_CANARY",
@@ -54,5 +62,6 @@ print(json.dumps({
     "AUTHORITY_EXPANSIONS":0,
     "HUMAN_LOAD_BALANCING_ACTIONS":0,
     "HIDDEN_CHAIN_OF_THOUGHT_FIELDS_ALLOWED":0,
+    "GITHUB_RELATIONAL_SURFACE_INVARIANTS":"PASS",
     "NEXT":"INDEPENDENT_RUNTIME_OR_X2_LOCAL_CANARY_WHEN_ROUTE_AVAILABLE"
 }, separators=(",",":")))
