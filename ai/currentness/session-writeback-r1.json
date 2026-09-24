@@ -1,6 +1,6 @@
 {
   "schema": "CoSessionWriteback.Currentness.R1.v0.1-candidate",
-  "state": "FRESH_MAIN_FANIN_CANDIDATE__DONOR_IMPLEMENTATION_FORWARD_PORTED__STATIC_CI_PENDING",
+  "state": "FRESH_MAIN_FANIN_CANDIDATE__STATIC_CI_PASS__CURRENT_MAIN_FIXTURE_REPLAY_PENDING",
   "updated_utc": "2026-09-24T05:18:04Z",
   "base_main_commit": "e4a258956649639daf1bb83633b81cdcf18bd0c6",
   "donor_pr": 23,
@@ -35,13 +35,15 @@
     "source": "PR_23_DONOR_HISTORY"
   },
   "current_gate": {
-    "static_ci": "PENDING",
+    "static_ci": "PASS",
     "current_main_fixture_replay": "NOT_RUN",
     "runtime_adoption": "NONE",
     "provider_session_push": "NONE",
-    "authority_change": "NONE"
+    "authority_change": "NONE",
+    "static_ci_run": 35959750310,
+    "static_ci_validated_head": "2fc33fdea4c595d281bd118a0c8025e651483d18"
   },
-  "next": "STATIC_CI__THEN_CURRENT_MAIN_FIXTURE_REPLAY__THEN_CLOSE_PR23_IF_UNIQUE_RELATIONS_SATISFIED",
+  "next": "CURRENT_HEAD_RECHECK__MERGE_IF_ZERO_BEHIND__THEN_CURRENT_MAIN_FIXTURE_REPLAY_BEFORE_RUNTIME_ADOPTION",
   "rails": [
     "SESSION_PROJECTION_NE_PARALLEL_SEMANTIC_STANDARD",
     "COMPILATION_NE_ACCEPTANCE",
@@ -59,5 +61,9 @@
     "NOT_INTEGRATED",
     "NOT_COEX",
     "NOT_CANON"
+  ],
+  "repairs": [
+    "DONOR_FANOUT_PLANNER_UNTERMINATED_NEWLINE_LITERAL_REPAIRED_AFTER_CI_FAILURE",
+    "CI_LIFECYCLE_ASSERTION_REPAIRED_TO_VALIDATE_POSITIVE_FIELDS_WITHOUT_TREATING_NONCLAIMS_AS_POSITIVE_CLAIMS"
   ]
 }
