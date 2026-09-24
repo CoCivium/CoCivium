@@ -1,0 +1,61 @@
+{
+  "schema": "CoAll.FuProjectionReceiverCanary.R0B.ExecutionEvidence.v0.1",
+  "state": "PASS_BOUNDED_GITHUB_ACTIONS_FIVE_PROCESS_STRUCTURAL_RECEIVER_CHALLENGE__SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+  "observed_at": "2026-09-24T17:05:30Z",
+  "source_pr": 91,
+  "source_branch": "coevo-fu-projection-loss-r0a-20260924",
+  "head_commit_sha": "3e4943e3ca894e785676b811819de83274996530",
+  "workflow": {
+    "run_id": 36031855287,
+    "job_id": 107742285431,
+    "name": "Validate Fu projection receiver R0B",
+    "conclusion": "success",
+    "run_started_at": "2026-09-24T17:05:20Z",
+    "completed_at": "2026-09-24T17:05:30Z",
+    "workflow_blob_sha": "397513ef59300aecce292be89057f5816b1398a5"
+  },
+  "inputs": {
+    "r0a_canary_blob_sha": "ae688691d57b7c757a42bdacfaeeb7f0be5b5741",
+    "r0b_script_blob_sha": "f966e5bc75f769834cc22630b5ed29e24b98cd9d",
+    "r0a_canary_sha256": "102A2233973CF061579DD4DD61A79C0BBE6CF1B1A4CB50D1D23D6CF3C008D4CE"
+  },
+  "result": {
+    "state": "PASS_R0B_FIVE_DISTINCT_RECEIVER_PROCESSES__CORE_INVARIANTS_STABLE__DECLARED_DIVERGENCE_PRESERVED__TAMPER_REJECTED__SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+    "output_sha256": "A16967A516DD75DE8E0412618A456658CE2EFB00AC3F66AD99018EB227554291",
+    "receiver_processes": 5,
+    "distinct_process_ids": 5,
+    "receiver_pids": [2276, 2277, 2278, 2279, 2280],
+    "tamper_cases": 2,
+    "semantic_equivalence": "NOT_PROVEN",
+    "independent_model_understanding": "NOT_TESTED"
+  },
+  "checks": {
+    "same_candidate_identity_across_receiver_processes": true,
+    "same_symbol_across_receiver_processes": true,
+    "mythic_epistemic_class_preserved": true,
+    "authority_ceiling_preserved": true,
+    "projection_loss_declared_per_projection": true,
+    "declared_projection_divergence_preserved": true,
+    "epistemic_tamper_rejected": true,
+    "identity_tamper_rejected": true,
+    "workflow_verified_bounded_state": true
+  },
+  "effects": {
+    "repo_mutations_by_canary": 0,
+    "runtime_promotions": 0,
+    "canon_promotions": 0,
+    "authority_changes": 0,
+    "participant_notifications": 0
+  },
+  "next": "R0C_HETEROGENEOUS_MODEL_OR_HUMAN_RECEIVER_MEANING_RECOVERY_CHALLENGE",
+  "nonclaims": [
+    "STRUCTURAL_STABILITY_NE_SEMANTIC_EQUIVALENCE",
+    "DISTINCT_RECEIVER_PROCESS_NE_DISTINCT_MODEL",
+    "DISTINCT_PROCESS_NE_DISTINCT_FAILURE_DOMAIN",
+    "TAMPER_REJECTION_NE_TRUTH",
+    "GITHUB_ACTIONS_PASS_NE_RUNTIME_PRODUCT_INTEGRATION",
+    "PROJECTION_CANARY_NE_NATURAL_PERIODIC_LAW",
+    "LANDED_CANDIDATE_NE_CANON",
+    "NO_RUNTIME_OR_AUTHORITY_PROMOTION"
+  ]
+}
