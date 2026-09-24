@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CoRenderSession v0.1 candidate",
+  "type": "object",
+  "required": ["schema","render_session_id","asset_id","read_mode","source_cursor","rendered_cursor","currentness_state","nonclaims"],
+  "properties": {
+    "schema": {"const":"CoRenderSession.v0.1-candidate"},
+    "render_session_id": {"type":"string"},
+    "asset_id": {"type":"string"},
+    "read_mode": {"enum":["SNAPSHOT_PINNED","LIVE_VISIBLE_DELTA","RECEIVER_REFRESH"]},
+    "source_cursor": {"type":"integer","minimum":0},
+    "rendered_cursor": {"type":"integer","minimum":0},
+    "currentness_state": {"type":"string"},
+    "prior_projection_ref": {"type":["string","null"]},
+    "recovery_ref": {"type":["string","null"]},
+    "prediction_refs": {"type":"array","items":{"type":"string"}},
+    "observation_refs": {"type":"array","items":{"type":"string"}},
+    "nonclaims": {"type":"array","items":{"type":"string"}}
+  }
+}
