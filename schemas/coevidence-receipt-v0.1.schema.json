@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cocivium.org/schemas/coevidence-receipt-v0.1.schema.json",
+  "title": "CoEvidenceReceipt v0.1 candidate",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["receipt_schema","run_id","producer","operation","output_locator","write_completed","exists_verified","observed_at","state","errors","nonclaims"],
+  "properties": {
+    "receipt_schema": {"const":"CoEvidenceReceipt.v0.1-candidate"},
+    "run_id": {"type":"string","minLength":1},
+    "producer": {"type":"string","minLength":1},
+    "session": {"type":["string","null"]},
+    "operation": {"type":"string","minLength":1},
+    "output_locator": {"type":"string","minLength":1},
+    "output_kind": {"type":["string","null"]},
+    "write_completed": {"type":"boolean"},
+    "exists_verified": {"type":"boolean"},
+    "hash_algorithm": {"type":["string","null"]},
+    "hash": {"type":["string","null"]},
+    "bytes": {"type":["integer","null"],"minimum":0},
+    "parse_verified": {"enum":[true,false,"NOT_APPLICABLE"]},
+    "schema_verified": {"enum":[true,false,"NOT_APPLICABLE"]},
+    "readback_verified": {"enum":[true,false,"NOT_APPLICABLE"]},
+    "observed_at": {"type":"string","format":"date-time"},
+    "source_inputs": {"type":"array","items":{"type":"string"}},
+    "authority_ceiling": {"type":["string","null"]},
+    "mutations": {"type":"array","items":{"type":"string"}},
+    "errors": {"type":"array","items":{"type":"string"}},
+    "state": {"enum":["PASS","HOLD","FAIL"]},
+    "nonclaims": {"type":"array","items":{"type":"string"}}
+  },
+  "allOf": [
+    {
+      "if": {"properties":{"state":{"const":"PASS"}},"required":["state"]},
+      "then": {
+        "properties": {
+          "write_completed":{"const":true},
+          "exists_verified":{"const":true},
+          "hash_algorithm":{"type":"string","minLength":1},
+          "hash":{"type":"string","minLength":1},
+          "bytes":{"type":"integer","minimum":0},
+          "errors":{"maxItems":0}
+        },
+        "required":["hash_algorithm","hash","bytes"]
+      }
+    },
+    {
+      "if":{"properties":{"exists_verified":{"const":false}},"required":["exists_verified"]},
+      "then":{"properties":{"state":{"enum":["HOLD","FAIL"]},"hash":{"type":"null"},"bytes":{"type":"null"}}}
+    }
+  ]
+}

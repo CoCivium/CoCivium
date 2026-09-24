@@ -1,0 +1,65 @@
+name: CoEvidence receipt contract
+
+on:
+  pull_request:
+    paths:
+      - 'schemas/coevidence-receipt-v0.1.schema.json'
+      - 'examples/coevidence-receipt-r0f-hold.example.json'
+      - 'docs/Architecture/COEVIDENCE_RECEIPT_GUARD_R0.md'
+      - '.github/workflows/coevidence-receipt-contract.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'schemas/coevidence-receipt-v0.1.schema.json'
+      - 'examples/coevidence-receipt-r0f-hold.example.json'
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install validator
+        run: python -m pip install --disable-pip-version-check jsonschema==4.23.0
+      - name: Validate schema, HOLD example, and stale-value rejection
+        shell: python
+        run: |
+          import copy
+          import json
+          from pathlib import Path
+          from jsonschema import Draft202012Validator
+
+          schema = json.loads(Path("schemas/coevidence-receipt-v0.1.schema.json").read_text(encoding="utf-8"))
+          hold = json.loads(Path("examples/coevidence-receipt-r0f-hold.example.json").read_text(encoding="utf-8"))
+          Draft202012Validator.check_schema(schema)
+          validator = Draft202012Validator(schema)
+
+          def errors(obj):
+              return sorted(validator.iter_errors(obj), key=lambda e: list(e.path))
+
+          actual = errors(hold)
+          if actual:
+              for error in actual:
+                  print(f"HOLD {list(error.path)}: {error.message}")
+              raise SystemExit(1)
+
+          stale_pass = copy.deepcopy(hold)
+          stale_pass["state"] = "PASS"
+          stale_pass["hash_algorithm"] = "SHA256"
+          stale_pass["hash"] = "D8B5FA78647FB816BE2D3F0CD31EC61474438CF4AB1D20136C84B9333D057838"
+          stale_pass["bytes"] = 2953442
+          if not errors(stale_pass):
+              raise SystemExit("FAIL_SCHEMA_ACCEPTED_STALE_PASS_WITH_MISSING_OUTPUT")
+
+          missing_with_stale = copy.deepcopy(hold)
+          missing_with_stale["hash"] = "D8B5FA78647FB816BE2D3F0CD31EC61474438CF4AB1D20136C84B9333D057838"
+          missing_with_stale["bytes"] = 2953442
+          if not errors(missing_with_stale):
+              raise SystemExit("FAIL_SCHEMA_ACCEPTED_STALE_FIELDS_WHEN_OUTPUT_MISSING")
+
+          print("PASS_COEVIDENCE_RECEIPT_CONTRACT_V0_1")
