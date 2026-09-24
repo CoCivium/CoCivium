@@ -1,8 +1,8 @@
 {
   "schema": "CoAll.EvolutionDonorDisposition.R2.v0.1-candidate",
-  "state": "CURRENT_MAIN_RELATIONAL_DONOR_INDEX__PR41_UNIQUE_RELATIONS_DONATED__UNIQUE_DONORS_REMAIN",
-  "observed_main_commit": "65c908a106a9e44502b84578cfa24884f0295824",
-  "observed_at": "2026-09-24T20:22:34Z",
+  "state": "CURRENT_MAIN_RELATIONAL_DONOR_INDEX__PR43_AND_PR41_UNIQUE_RELATIONS_DONATED__UNIQUE_DONORS_REMAIN",
+  "observed_main_commit": "dc5c08778b6e727896913b8ae7d1bd19dc3bfca4",
+  "observed_at": "2026-09-24T21:14:12Z",
   "purpose": "Reduce duplicate replay by relating historical/draft PR donors to stronger current-main descendants while preserving unique unresolved remainders.",
   "dispositions": [
     {
@@ -104,21 +104,59 @@
     },
     {
       "donor_class": "COSESSION_SURVIVAL_CROSS_DOMAIN_DELTAS",
-      "state": "PARTIAL_DONATION__UNIQUE_REMAINDERS_REMAIN",
+      "state": "DONATED_TO_ELECTED_MACHINE_INTAKE__SAFE_TO_CLOSE_UNMERGED",
       "donor_pr": 43,
       "shared_descendants": [
         "4ae6ae10ace2c5b20395e9663aa058d526e6d9fa",
         "a2ad5e4460fc8d54431d7d113ffbaa1cbf9f1cbb",
         "c5aa342481f3b510f43dcaa6595b1f29ecf7f390"
       ],
-      "unique_remainders": [
-        "RELATIONAL_PROTOCOL_SUBSTRATE",
-        "NATIVE_COBAR_LIFECYCLE_OBSERVATION",
-        "TYPED_TURTLES_WRITE_PERMISSION_HUMOUR_HIGHLIGHT",
-        "EXPLICIT_CLOSE_SAFE_LATENCY_AND_SESSION_DEPENDENCY_METRICS"
+      "unique_remainders": [],
+      "relation": "PR43_PROTOCOL_AND_PRESSURE_OVERLAP_SATISFIED_BY_CURRENT_DESCENDANTS__EXPLICIT_METRICS_NATIVE_COBAR_OBSERVATION_AND_TURTLES_ALIAS_DONATED",
+      "action": "CLOSE_PR43_UNMERGED__RETAIN_BRANCH_AS_PROVENANCE",
+      "donation_commit": "dc5c08778b6e727896913b8ae7d1bd19dc3bfca4",
+      "donation_pr": 107,
+      "validation": "GITHUB_ACTIONS_VALIDATE_COEVO_CONVERGENCE_R0_RUN_36060103297__SUCCESS",
+      "donation_objects": [
+        "ai/evolution-deltas/2026-09-24/coevo-pr43-close-safe-metrics-r1.json",
+        "ai/evolution-deltas/2026-09-24/coevo-pr43-native-cobar-lifecycle-observation-r1.json",
+        "ai/evolution-deltas/2026-09-24/coevo-pr43-turtles-write-permission-humour-r1.json",
+        "ai/evolution-donor-pr43-disposition-r1.json"
       ],
-      "relation": "DONATE_OVERLAP_NE_DELETE_DELTA",
-      "action": "KEEP_OPEN_AS_BOUNDED_DONOR_UNTIL_UNIQUE_REMAINDERS_ARE_DISPOSITIONED"
+      "remainder_adjudication": [
+        {
+          "remainder": "RELATIONAL_PROTOCOL_SUBSTRATE",
+          "disposition": "DESCENDANT_SATISFIED_FOR_CURRENT_SCOPE",
+          "by": [
+            "ai/evolution-deltas/2026-09-24/coevo-interop-transport-neutral-r1.json",
+            "ai/evolution-deltas/2026-09-24/coevo-meta-relational-depth-r1.json"
+          ]
+        },
+        {
+          "remainder": "COPRESSURE_ENERGET_WANT_UNIQUE_SUBGRAPH",
+          "disposition": "DESCENDANT_SATISFIED_FOR_CURRENT_SCOPE",
+          "by": [
+            "ai/evolution-deltas/2026-09-24/coevo-relevance-backlog-selfscope-r1.json",
+            "ai/evolution-deltas/2026-09-24/coevo-attention-energet-song-r1.json",
+            "systemic self-awareness feedback guard on current main"
+          ]
+        },
+        {
+          "remainder": "EXPLICIT_CLOSE_SAFE_LATENCY_AND_SESSION_DEPENDENCY_METRICS",
+          "disposition": "DONATED",
+          "by": "ai/evolution-deltas/2026-09-24/coevo-pr43-close-safe-metrics-r1.json"
+        },
+        {
+          "remainder": "NATIVE_COBAR_LIFECYCLE_OBSERVATION",
+          "disposition": "DONATED",
+          "by": "ai/evolution-deltas/2026-09-24/coevo-pr43-native-cobar-lifecycle-observation-r1.json"
+        },
+        {
+          "remainder": "TYPED_TURTLES_WRITE_PERMISSION_HUMOUR_HIGHLIGHT",
+          "disposition": "DONATED_AS_ALIAS_RELATION",
+          "by": "ai/evolution-deltas/2026-09-24/coevo-pr43-turtles-write-permission-humour-r1.json"
+        }
+      ]
     },
     {
       "donor_class": "INTEROP_META_RELATIONAL_CHALLENGERS",
@@ -162,9 +200,10 @@
     }
   ],
   "next": [
-    "DISPOSITION_PR43_UNIQUE_REMAINDERS_INTO_ELECTED_MACHINE_DELTA_INTAKE",
     "COMPARE_PR10_GRAIL_AGAINST_CURRENT_CONODE_AND_REPO_FIELD",
-    "RECHECK_PR7_AI_DISCOVERY_AND_PR5_HOUSEKEEPING_AGAINST_CURRENT_BOOTSTRAP"
+    "RECHECK_PR7_AI_DISCOVERY_AGAINST_CURRENT_BOOTSTRAP_AND_MACHINE_DISCOVERY_SURFACES",
+    "RECHECK_PR5_HOUSEKEEPING_AGAINST_CURRENT_RELATIONAL_REPO_FIELD",
+    "KEEP_PR3_COTHEORYALL_PUBLIC_WORKING_PROJECTION_SEPARATE_FROM_SCIENTIFIC_VALIDATION_OR_CANON"
   ],
   "rails": [
     "FANIN_BEFORE_MORE_PARALLEL_MUTATION",
