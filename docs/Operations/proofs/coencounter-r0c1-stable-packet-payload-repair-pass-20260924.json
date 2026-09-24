@@ -1,0 +1,71 @@
+{
+  "schema": "CoEncounterMatchPacketRepairCanary.R0C1.ExecutionEvidence.v0.1",
+  "state": "PASS_BOUNDED_LOCAL_REPAIR_CANARY__STABLE_PACKET_IDENTITY__DURABLE_SEMANTIC_PAYLOAD__EXACT_PICKUP_PRESERVED",
+  "execution_surface": "OpenAI task container",
+  "branch": "participation/coencounter-r0c-match-pickup-lineage-20260924",
+  "exact_branch_git_blobs": {
+    "packet_builder": "feeef232bcb51e2816035747fc3042c795454a88",
+    "readproof": "ad38e77fb1a5e5f177a87a74c74469cb1e64df54",
+    "lineage_binder": "b7c394b5231259f7bb0b22c55773b0d979bea8f0",
+    "canary": "0b19dd615a71d8c9a5e12e4dbf4d6deae0d14a8d",
+    "semantic_payload": "ea3668f97eb767a2cab1061d8f9aa7fe22a62d44"
+  },
+  "exact_local_sha256": {
+    "packet_builder": "7668A30B0E3FA5A0157D53A874C28F40865492A19953FFE1D4C8D3C06A3571DA",
+    "readproof": "CF0A161435CAF0E48877BE7C36E89F942E27319BC70EB52A4030B75B43A4FC8A",
+    "lineage_binder": "12F8E8CB70D51749151EB04230A87AC512A88DC9FC6C1BAC218CECDDDC824762",
+    "canary": "09EF14C72BF7F1DF4A14E9DAF3854186393E46F55E419091404103C83610FE4B",
+    "semantic_payload": "0713D75E3940BBBD9AD1891B35A178FE7CC4281BA99D95A9C7DAC308F765C9E9"
+  },
+  "equivalent_review_replay_inputs": {
+    "review_a_sha256": "23EFBB3D212645BE4361C665375A120209918C91BB014A40CA9EF0FDD1C4E52E",
+    "review_b_sha256": "C517FF11143D5FF6B98E7943ED9111AEF060C902EADC59B8DC5B7FE44A55ED99",
+    "difference_intentionally_limited_to": "receiver.process_id",
+    "landed": false
+  },
+  "stable_outputs": {
+    "packet_sha256_both_replays": "959F9A23C803AE0DEEDE22655DABB9747D70C22677BCF32D962AB10E5BE8C50C",
+    "contribution_candidate_sha256_both_replays": "DCF57066D870B41F036F2D7130D80B16B37FB4FE04A19EA9D6C03FDB674D9A8A",
+    "stable_route_digest_sha256": "505FAB3541ED9F6735F7FB0113D15DE4975B3F51508E273C37AF8598DC083DC6",
+    "packet_id": "coencounter-packet:r0c:505FAB3541ED9F6735F7FB01"
+  },
+  "run_a": {
+    "result_sha256": "5B8A95B1C53331082C346905FA3C260667BE069B5B0C405B68CCF95ABB90EF1C",
+    "receiver_readproof_sha256": "B79B46DF3E2ED672680648B03A5ED043673705ADEF9084FE3DA575CF2B7B1BBE",
+    "lineage_sha256": "659563620DC91CE26449807A16A528CCE166FD7E7F0841145B696EC14144D097",
+    "process_ids": [1106, 1116, 1126],
+    "bounded_pickups": 1
+  },
+  "run_b": {
+    "result_sha256": "370CDAD7C10AACD19B7EDD12068220FCF13087C5F0D9BD81DBC253F0168BC179",
+    "receiver_readproof_sha256": "74234FD55997152F8E4608F792212A8D3C2B0A4FC70F6EE4351D7C4ED6BE19E3",
+    "lineage_sha256": "4ADE68102E8D3CEC3D638BC143F817688181EA63BDC6071AB6D40083C99503A3",
+    "process_ids": [1164, 1174, 1184],
+    "bounded_pickups": 1
+  },
+  "checks": {
+    "git_blob_matches_executed_packet_builder": true,
+    "git_blob_matches_executed_readproof": true,
+    "git_blob_matches_executed_lineage_binder": true,
+    "git_blob_matches_executed_canary": true,
+    "git_blob_matches_executed_semantic_payload": true,
+    "packet_bytes_stable_across_equivalent_review_process_ids": true,
+    "contribution_bytes_stable_across_equivalent_review_process_ids": true,
+    "semantic_payload_is_durable_branch_object": true,
+    "exact_packet_pickup_preserved": true,
+    "auto_assignment": false,
+    "semantic_acceptance_inferred": false,
+    "integration_inferred": false
+  },
+  "coverage_boundary": "This repair canary uses two bounded synthetic R0B-shaped review fixtures that differ only in process id. It proves stable packet/contribution identity under that replay variation and exact pickup behavior for the updated R0C branch bytes. It does not replace a full current-main R0B-to-R0C replay or a heterogeneous semantic receiver.",
+  "next": "R0D_SEMANTIC_CONTRIBUTION_DISPOSITION_OR_HETEROGENEOUS_RECEIVER_PACKET_CANARY__NO_AUTO_ASSIGNMENT",
+  "nonclaims": [
+    "SYNTHETIC_REVIEW_FIXTURE_NE_FULL_R0B_REPLAY",
+    "PICKED_UP_NE_INTEGRATED",
+    "READPROOF_NE_SEMANTIC_ACCEPTANCE",
+    "LINEAGE_NE_ACCEPTANCE",
+    "TWO_OR_MORE_PROCESSES_NE_TWO_OR_MORE_FAILURE_DOMAINS",
+    "LOCAL_CANARY_NE_RUNTIME_INTEGRATION",
+    "NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE"
+  ]
+}

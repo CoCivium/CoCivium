@@ -1,0 +1,79 @@
+{
+  "schema": "CoEncounterReceiverQualificationGate.R0C2.ExecutionEvidence.v0.1",
+  "state": "PASS_BOUNDED_LOCAL_R0C2__POSITIVE_QUALIFIED_PICKUP__NEGATIVE_FAIL_CLOSED__STABLE_REPLAY",
+  "execution_surface": "OpenAI task container",
+  "branch": "participation/coencounter-r0c-match-pickup-lineage-20260924",
+  "exact_branch_git_blobs": {
+    "packet_builder": "46c782c59addca5d60404db14a6d66eac2068dcd",
+    "readproof": "ad38e77fb1a5e5f177a87a74c74469cb1e64df54",
+    "lineage_binder": "b7c394b5231259f7bb0b22c55773b0d979bea8f0",
+    "canary": "589feb65bdc7f80fe9fd81467dcec712adb44a06",
+    "semantic_payload": "ea3668f97eb767a2cab1061d8f9aa7fe22a62d44",
+    "positive_qualification": "4a31a22983a17f3dbda5b99b5f7aff5cdb6964eb",
+    "hold_qualification": "cf9402bbac4e8e986da88ecd85a1ea695e5278d2"
+  },
+  "exact_local_sha256": {
+    "packet_builder": "BDEC5E8554783CB340A5A67964AE2C96F97380391D6C9666FD9D4ADC7E5EEEF5",
+    "readproof": "CF0A161435CAF0E48877BE7C36E89F942E27319BC70EB52A4030B75B43A4FC8A",
+    "lineage_binder": "12F8E8CB70D51749151EB04230A87AC512A88DC9FC6C1BAC218CECDDDC824762",
+    "canary": "E7F14EBB25200FA3C103660112D1EA5A44565139F22E9FEEB9A163598F3AE846",
+    "semantic_payload": "0713D75E3940BBBD9AD1891B35A178FE7CC4281BA99D95A9C7DAC308F765C9E9",
+    "positive_qualification": "43F90EFDE5C2B482A77BA9A3FDED6CF48A296E2A7871CEEEFC59B421F47591A4",
+    "hold_qualification": "E713F1EE930C4316C91FE3353C0266D6553FB0B27A40008B1C51ED4E2B1E07D0"
+  },
+  "positive_replay_a": {
+    "review_sha256": "23EFBB3D212645BE4361C665375A120209918C91BB014A40CA9EF0FDD1C4E52E",
+    "result_sha256": "0730E94A7B96245EC1C348465369DA4CBF1EA7DD38639D8162CFBDC5BA5A2CD8",
+    "packet_sha256": "8276497C788DB9109A105B82815F6FA5192D4242BB3548985272B858B7610E7E",
+    "receiver_readproof_sha256": "DEDAC5BD02A165CDEF806EB736FB74A9740520D2F193769A6F74E0B51F7E47A3",
+    "contribution_candidate_sha256": "37A81A02C59774922E4957C3EC243DE6A5744054EFE8924C2D82F9BD3BE62B34",
+    "lineage_sha256": "485F67A058E1C917869443E279ADB49621D9435BBD72C9A2A2F1CC50F8D7CC14",
+    "process_ids": [1260, 1270, 1280],
+    "bounded_pickups": 1
+  },
+  "positive_replay_b": {
+    "review_sha256": "C517FF11143D5FF6B98E7943ED9111AEF060C902EADC59B8DC5B7FE44A55ED99",
+    "result_sha256": "921B6A396F21C002ADBBB702CED8B3E91F47F43BAF89EEBDB198730F55276F30",
+    "packet_sha256": "8276497C788DB9109A105B82815F6FA5192D4242BB3548985272B858B7610E7E",
+    "receiver_readproof_sha256": "D039D01D82B8357E0EF1300E6C9AC395309A6189E691FF32EF6BEDAFF7C0E8A4",
+    "contribution_candidate_sha256": "37A81A02C59774922E4957C3EC243DE6A5744054EFE8924C2D82F9BD3BE62B34",
+    "lineage_sha256": "C842B92BA7969212AC3293F50FD357D49B080D6505590ADB194534065893AD16",
+    "process_ids": [1301, 1311, 1321],
+    "bounded_pickups": 1
+  },
+  "negative_gate": {
+    "state": "PASS_FAIL_CLOSED",
+    "exit_code": 1,
+    "packet_created": false,
+    "held_dimensions": [
+      "visibility_eligible",
+      "confidentiality_fit",
+      "exact_object_access_ok",
+      "contextual_effectivity_ok",
+      "receiver_disposition"
+    ]
+  },
+  "checks": {
+    "git_blobs_match_executed_bytes": true,
+    "qualified_public_candidate_pickup_passes": true,
+    "packet_bytes_stable_across_equivalent_review_process_ids": true,
+    "contribution_bytes_stable_across_equivalent_review_process_ids": true,
+    "unqualified_candidate_fails_closed_before_packet_creation": true,
+    "semantic_payload_durable": true,
+    "auto_assignment": false,
+    "semantic_acceptance_inferred": false,
+    "integration_inferred": false
+  },
+  "coverage_boundary": "This is a bounded synthetic qualification-gate canary. It proves the PR89 packetizer requires positive visibility/confidentiality/access/effectivity/disposition qualification and preserves exact packet pickup for the positive fixture. It does not prove real private-data access, heterogeneous semantic acceptance, runtime integration, or a distinct failure domain.",
+  "next": "R0D_SEMANTIC_CONTRIBUTION_DISPOSITION_OR_HETEROGENEOUS_RECEIVER_PACKET_CANARY__NO_AUTO_ASSIGNMENT",
+  "nonclaims": [
+    "QUALIFICATION_NE_AUTHORITY_INCREASE",
+    "AFFORDANCE_CANDIDATE_NE_ELECTED_DEED",
+    "PICKED_UP_NE_INTEGRATED",
+    "READPROOF_NE_SEMANTIC_ACCEPTANCE",
+    "LINEAGE_NE_ACCEPTANCE",
+    "TWO_OR_MORE_PROCESSES_NE_TWO_OR_MORE_FAILURE_DOMAINS",
+    "LOCAL_CANARY_NE_RUNTIME_INTEGRATION",
+    "NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE"
+  ]
+}

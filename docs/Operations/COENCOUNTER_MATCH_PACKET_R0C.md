@@ -1,0 +1,117 @@
+# CoEncounter exact match-packet pickup + contribution lineage R0C
+
+**State:** `PASS_BOUNDED_CONTAINER_LOCAL_SYNTHETIC__EXACT_PACKET_PICKUP__PROPOSED_LINEAGE__NO_AUTO_ASSIGNMENT`
+
+R0C advances the landed R0B Open Relation routing proof by taking exactly one `MATCH_CANDIDATE`, compiling an exact receiver packet, requiring the elected receiver to read the exact packet bytes before `PICKED_UP`, and binding a subsequent proposed contribution into an appendable lineage object without pretending it has been accepted or integrated.
+
+## Lifecycle
+
+`MATCH_CANDIDATE -> EXACT_PACKET -> RECEIVER_READPROOF -> PICKED_UP_BOUNDED -> CONTRIBUTION_PROPOSED -> LINEAGE_BOUND`
+
+The packet is not picked up merely because it exists. The receiver process must bind its own identity to the exact packet SHA-256 and full-object read.
+
+`DELIVERY_NE_PICKUP`
+
+`NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF`
+
+The bounded canary proves pickup for one synthetic receiver packet only. It does not prove semantic acceptance, integration, a distinct failure domain, live runtime adoption, or public effect.
+
+## Contribution lineage
+
+After pickup, the canary creates one proposed contribution candidate and binds:
+
+- match packet;
+- receiver readproof;
+- proposed contribution;
+- the Open Relation it responds to.
+
+It deliberately leaves `acceptance_relation = null` and `integration_relation = null`.
+
+`LINEAGE_NE_ACCEPTANCE`
+
+`PROPOSED_NE_ACCEPTED`
+
+`ATTRIBUTION_NE_OWNERSHIP`
+
+If a later receiver accepts a contribution, acceptance should be appended as a new evidenced relation rather than rewriting the earlier provenance chain.
+
+## Bounded execution evidence
+
+Before execution, the R0A encounter fixture, R0B receiver fixture, and R0B reviewer were rebound to their exact current-main Git blob identities:
+
+- encounter fixture blob `41979591241ec277e6f51a72b93340a7f61c332e`;
+- receiver fixture blob `a29a2979a85e5f4c121109f9616e789f05285704`;
+- R0B reviewer blob `3f3bbc1f7b0a2cec009e6d6f16f8dc6318d84745`.
+
+Those source blobs remained unchanged on current public main after `7b08c68bae6ec76c33d70eabbd5afa1a2e41429b`.
+
+The exact candidate branch scripts were then read back and executed. The canary produced:
+
+- exact match packet SHA-256 `99A60F2B48D1DE524C570FF333B60D72BBE622B213EF33C8D858216179539A2B`;
+- separate compiler / receiver / lineage process IDs `885 / 895 / 905`;
+- one receiver-produced exact packet readproof;
+- one bounded `PICKED_UP` transition for that packet;
+- one proposed contribution lineage object;
+- zero assignment, notification, authority, execution, provider-session, semantic-acceptance or integration effects.
+
+Evidence: `docs/Operations/proofs/coencounter-r0c-container-pass-20260924.json`.
+
+## R0C1 review repair
+
+A follow-on review found two proof-quality gaps in the first R0C draft without invalidating its bounded pickup canary:
+
+1. packet identity depended on the full R0B review SHA, even though that review contains a process id;
+2. the proposed contribution referred to a semantic fixture that was not durably landed.
+
+R0C1 repairs both:
+
+- packet identity now derives from stable receiver/relation/encounter/source/gate/deed inputs rather than process-bearing review bytes;
+- the semantic contribution payload is durably landed at `docs/Operations/fixtures/coencounter-r0c-contribution-payload.json`;
+- two equivalent R0B-shaped reviews differing only in process id produced byte-identical packets and byte-identical contribution candidates;
+- exact packet readproof pickup and proposed lineage still pass with zero semantic-acceptance or integration inference.
+
+Repair evidence: `docs/Operations/proofs/coencounter-r0c1-stable-packet-payload-repair-pass-20260924.json`.
+
+`PACKET_IDENTITY_NE_PROCESS_ID`  
+`DURABLE_PAYLOAD_NE_SEMANTIC_ACCEPTANCE`  
+`SYNTHETIC_REVIEW_FIXTURE_NE_FULL_R0B_REPLAY`
+
+## R0C2 receiver qualification gate
+
+A further bounded challenge showed that nominal capability/currentness routing is not enough to justify packetization by itself. R0C2 therefore requires a separate receiver-relative qualification object before a packet may be created.
+
+The qualification must bind the same receiver/relation/encounter and explicitly pass:
+
+- visibility eligibility;
+- confidentiality fit;
+- exact-object access;
+- contextual effectivity;
+- receiver disposition `ACCEPT_AFFORDANCE_CANDIDATE`.
+
+A positive public-safe fixture preserves exact packet pickup and stable replay. A negative hold fixture fails closed before packet creation when those receiver-relative gates are false.
+
+Evidence: `docs/Operations/proofs/coencounter-r0c2-receiver-qualification-gate-pass-20260924.json`.
+
+`OBJECT_OFFER_NE_RECEIVER_AFFORDANCE`  
+`RECEIVER_EFFECTIVITY_NE_NOMINAL_CAPABILITY`  
+`CAPABILITY_MATCH_NE_EXACT_OBJECT_ACCESS`  
+`AUTHORITY_MATCH_NE_CONFIDENTIALITY_FIT`  
+`AFFORDANCE_CANDIDATE_NE_ELECTED_DEED`  
+`QUALIFICATION_NE_AUTHORITY_INCREASE`
+
+## Next
+
+`R0D_SEMANTIC_CONTRIBUTION_DISPOSITION_OR_HETEROGENEOUS_RECEIVER_PACKET_CANARY__NO_AUTO_ASSIGNMENT`
+
+The next rung should either obtain a separately evidenced semantic disposition on the proposed contribution or run the exact packet through a genuinely heterogeneous receiver. It should not treat process multiplicity as failure-domain or model-family independence.
+
+## Rails
+
+`PICKED_UP_NE_INTEGRATED`  
+`READPROOF_NE_SEMANTIC_ACCEPTANCE`  
+`LINEAGE_NE_ACCEPTANCE`  
+`MATCH_NE_ASSIGNMENT_AUTHORITY`  
+`PACKET_NE_EXECUTION_AUTHORITY`  
+`TWO_OR_MORE_PROCESSES_NE_TWO_OR_MORE_FAILURE_DOMAINS`  
+`LOCAL_CANARY_NE_RUNTIME_INTEGRATION`  
+`NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE`

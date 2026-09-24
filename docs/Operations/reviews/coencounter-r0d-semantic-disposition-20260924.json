@@ -1,0 +1,63 @@
+{
+  "schema": "CoContributionSemanticDisposition.R0D.v0.1-candidate",
+  "state": "PASS_BOUNDED_SEMANTIC_REVIEW__QUALIFIED_ACCEPTANCE_FOR_REVIEW__NOT_INTEGRATED",
+  "receiver": {
+    "receiver_id": "receiver:cooomph260919-s3:semantic-review-r0d",
+    "receiver_class": "CURRENT_PROVIDER_SESSION_SEMANTIC_REVIEWER",
+    "authority_ceiling": "REVIEW_ONLY",
+    "heterogeneous_model_evidence": "UNPROVEN"
+  },
+  "exact_source": {
+    "repository": "CoCivium/CoCivium",
+    "branch": "participation/coencounter-r0c-match-pickup-lineage-20260924",
+    "path": "docs/Operations/fixtures/coencounter-r0c-contribution-payload.json",
+    "git_blob": "ea3668f97eb767a2cab1061d8f9aa7fe22a62d44",
+    "contribution_id": "contribution:r0c:plain-language-role-identity",
+    "relation_id": "open:plain-language-role-identity",
+    "full_object_read": true
+  },
+  "disposition": {
+    "semantic_state": "ACCEPT_WITH_QUALIFICATION_FOR_BOUNDED_REVIEW",
+    "accepted_meaning": [
+      "The candidate preserves the distinction between role and identity.",
+      "It correctly allows a role to change without implying that identity changed.",
+      "It correctly allows one identity to participate through different roles in different contexts."
+    ],
+    "qualification_challenges": [
+      {
+        "issue": "PLAIN_LANGUAGE_JARGON_LEAK",
+        "finding": "The phrase 'persistent principal' introduces technical identity/security jargon into a payload whose purpose is plain-language explanation.",
+        "disposition": "PREFER_A_SIMPLER_PUBLIC_PROJECTION_WHILE_PRESERVING_THE_ROLE_IDENTITY_DISTINCTION"
+      },
+      {
+        "issue": "PARTICIPANT_PRINCIPAL_CONFLATION_RISK",
+        "finding": "A principal may be an account, service identity, device identity, or other authorization subject and need not always be identical to a participant.",
+        "disposition": "DO_NOT_USE_PARTICIPANT_AND_PRINCIPAL_AS_UNQUALIFIED_SYNONYMS"
+      }
+    ],
+    "candidate_projection_delta": "A role says what a participant is doing in a particular context. Identity says which participant is involved. The same participant can have different roles, and changing roles does not by itself change identity."
+  },
+  "lifecycle": {
+    "source_payload": "PICKED_UP_BOUNDED_BY_THIS_SEMANTIC_REVIEWER",
+    "semantic_disposition": "PROVEN_FOR_THIS_RECEIVER",
+    "semantic_integration": "UNPROVEN",
+    "canon": false,
+    "runtime_effect": false,
+    "coex": "UNPROVEN"
+  },
+  "effects": {
+    "assignment": 0,
+    "notification": 0,
+    "authority_change": 0,
+    "integration": 0,
+    "runtime_mutation": 0
+  },
+  "next": "FAN_IN_QUALIFICATION_OR_HETEROGENEOUS_RECEIVER_COMPARISON__DO_NOT_REWRITE_SOURCE_LINEAGE",
+  "nonclaims": [
+    "SEMANTIC_DISPOSITION_NE_INTEGRATION",
+    "QUALIFIED_ACCEPTANCE_NE_CANON",
+    "DISTINCT_LOGICAL_REVIEW_NE_HETEROGENEOUS_MODEL",
+    "PICKED_UP_NE_INTEGRATED",
+    "NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "schema": "CoContributionPayload.R0C.v0.1-candidate",
+  "contribution_id": "contribution:r0c:plain-language-role-identity",
+  "relation_id": "open:plain-language-role-identity",
+  "proposal": {
+    "kind": "PLAIN_LANGUAGE_PROJECTION_CANDIDATE",
+    "content": "A role describes what a participant is doing in a particular context. Identity identifies which participant or persistent principal is involved. A role can change without requiring identity to change, and the same identity can hold different roles in different contexts."
+  },
+  "semantic_status": "CANDIDATE_NOT_ACCEPTED",
+  "authority_change": false,
+  "nonclaims": [
+    "PAYLOAD_NE_ACCEPTANCE",
+    "PROJECTION_NE_CANON",
+    "PROPOSED_NE_INTEGRATED"
+  ]
+}
