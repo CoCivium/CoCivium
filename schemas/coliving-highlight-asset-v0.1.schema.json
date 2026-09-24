@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/CoCivium/CoCivium/schemas/coliving-highlight-asset-v0.1.schema.json",
+  "title": "CoLivingHighlightAsset v0.1 candidate",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema","asset_id","receiver_scope","purpose","source_bindings",
+    "projection_ref","observed_at","currentness","readiness","privacy_class"
+  ],
+  "properties": {
+    "schema": {"const":"CoLivingHighlightAsset.v0.1"},
+    "asset_id": {"type":"string","minLength":1},
+    "receiver_scope": {"type":"string","minLength":1},
+    "purpose": {"type":"string","minLength":1},
+    "salience_reason": {"type":"string"},
+    "source_bindings": {"type":"array","items":{"type":"string","minLength":1},"uniqueItems":true},
+    "projection_ref": {"type":"string","minLength":1},
+    "observed_at": {"type":"string","format":"date-time"},
+    "valid_time": {"type":["string","null"]},
+    "currentness": {
+      "type":"object",
+      "additionalProperties":false,
+      "required":["state"],
+      "properties":{
+        "state":{"enum":["CURRENT","STALE","SUPERSEDED","UNKNOWN"]},
+        "successor_ref":{"type":["string","null"]},
+        "change_feed_ref":{"type":["string","null"]}
+      }
+    },
+    "readiness": {"type":"string","minLength":1},
+    "uncertainty": {"type":"array","items":{"type":"string"}},
+    "privacy_class": {"enum":["PUBLIC","PUBLIC_SAFE","PRIVATE_COCIVIUM","PRIVATE_PARTICIPANT","RESTRICTED"]},
+    "challenge_ref": {"type":["string","null"]},
+    "projection_loss": {"type":"array","items":{"type":"string"}},
+    "read_mode": {"enum":["SNAPSHOT_PINNED","LIVE_VISIBLE_DELTA","RECEIVER_REFRESH"]},
+    "notes": {"type":"array","items":{"type":"string"}}
+  }
+}
