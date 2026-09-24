@@ -268,7 +268,7 @@
     "no_user_action_required_when": "ALL_REQUIRED_CLOSE_SAFE_EVIDENCE_IS_ALREADY_DURABLE_AND_NO_HUMAN_GATE_REMAINS"
   },
   "session_writeback": {
-    "state": "FORWARD_PORTED_DONOR_IMPLEMENTATION__FRESH_MAIN_STATIC_CI_PENDING",
+    "state": "FORWARD_PORTED_DONOR_IMPLEMENTATION__STATIC_CI_PASS__FIXTURE_REPLAY_PENDING",
     "currentness": "ai/currentness/session-writeback-r1.json",
     "session_projection_schema": "schemas/cosession-relational-delta-v0.2.schema.json",
     "compiler": "scripts/CoSessionProjectionToCoEvo.py",
@@ -284,13 +284,18 @@
     },
     "provider_session_push": false,
     "automatic_repo_mutation": false,
-    "next": "STATIC_CI_THEN_BOUNDED_CURRENT_MAIN_FIXTURE_REPLAY_BEFORE_ANY_RUNTIME_ADOPTION",
+    "next": "MERGE_AFTER_CURRENT_HEAD_RECHECK__THEN_BOUNDED_CURRENT_MAIN_FIXTURE_REPLAY_BEFORE_RUNTIME_ADOPTION",
     "rails": [
       "SESSION_PROJECTION_NE_PARALLEL_SEMANTIC_STANDARD",
       "PROJECTION_NE_DELIVERY",
       "DELIVERY_NE_PICKUP",
       "PICKED_UP_NE_INTEGRATED",
       "PUBLIC_SAFE_LABEL_NE_PUBLICATION_APPROVAL"
-    ]
+    ],
+    "static_ci": {
+      "state": "PASS",
+      "workflow_run": 35959750310,
+      "validated_head": "2fc33fdea4c595d281bd118a0c8025e651483d18"
+    }
   }
 }
