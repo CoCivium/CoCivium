@@ -1,0 +1,78 @@
+{
+  "schema": "CoNod.ProviderNeutralFailover.R0.v0.1-candidate",
+  "state": "SYNTHETIC_ONLY__NO_RUNTIME",
+  "logical_wave": {
+    "total_lanes": 64,
+    "initial_routes": {
+      "deterministic_local": 16,
+      "local_open_model": 16,
+      "provider_model": 16,
+      "github_ci": 8,
+      "held_no_admissible_route": 8
+    }
+  },
+  "route_dimensions": [
+    "CAPABILITY_FIT",
+    "EVIDENCE_QUALITY",
+    "PRIVACY",
+    "AUTHORITY_EFFECT_CLASS",
+    "REVERSIBILITY",
+    "LATENCY",
+    "COST",
+    "COENERGET",
+    "FAILURE_DOMAIN",
+    "CURRENTNESS",
+    "MODEL_AVAILABILITY",
+    "CONTEXT_SIZE",
+    "EXPECTED_QUALITY",
+    "DETERMINISM_NEED",
+    "FANIN_COMPATIBILITY",
+    "RECEIPT_PROVENANCE",
+    "HUMAN_ATTENTION_COST"
+  ],
+  "synthetic_provider_failure": {
+    "route_removed": "provider_model",
+    "provider_lanes": 16,
+    "already_completed": 4,
+    "pending": 12,
+    "reroute": {
+      "deterministic_local": 2,
+      "local_open_model": 6,
+      "github_ci": 2,
+      "hold_unique_provider_capability": 2
+    },
+    "authority_expansion": false,
+    "human_action_required": 0
+  },
+  "expected_checks": [
+    "LOGICAL_LANE_IDENTITY_SURVIVES_ROUTE_FAILURE",
+    "COMPLETED_OUTPUT_REMAINS_PROVENANCE",
+    "UNFINISHED_ADMISSIBLE_LANES_REROUTE",
+    "UNAVAILABLE_UNIQUE_CAPABILITY_HOLDS",
+    "NO_AUTHORITY_EXPANSION_ON_FAILOVER",
+    "DETERMINISTIC_FANIN_PRESERVED",
+    "NO_HUMAN_LOAD_BALANCING_REQUIRED"
+  ],
+  "current_real_boundary": {
+    "x2_direct_route": "OFFLINE_FROM_CURRENT_RECEIVER",
+    "x2_ollama_canary": "NOT_RUN",
+    "local_model_inventory": "NOT_REOBSERVED_IN_THIS_WAVE"
+  },
+  "rails": [
+    "LOGICAL_WORK_NE_PROVIDER_SESSION",
+    "PROVIDER_SESSION_NE_CONTROL_PLANE",
+    "CHATGPT_USEFUL_NE_CHATGPT_REQUIRED_FOR_CONTINUITY",
+    "PROVIDER_OUTAGE_NE_WORK_DEATH",
+    "MODEL_COUNT_NE_INDEPENDENCE",
+    "LOCAL_NE_TRUSTED",
+    "RICK_NE_PROVIDER_LOAD_BALANCER"
+  ],
+  "nonclaims": [
+    "NO_RUNTIME_FAILOVER",
+    "NO_X2_EXECUTION",
+    "NO_OLLAMA_CANARY",
+    "NO_PS7_EXECUTION",
+    "NO_CANON",
+    "NO_AUTHORITY_TRANSFER"
+  ]
+}
