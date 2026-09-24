@@ -1,0 +1,33 @@
+{
+  "schema": "CoEncounterMatchPacketCanary.R0C.ExecutionEvidence.v0.1",
+  "state": "PASS_BOUNDED_CONTAINER_LOCAL_SYNTHETIC__EXACT_MATCH_PACKET_PICKUP__PROPOSED_LINEAGE__NO_AUTO_ASSIGNMENT",
+  "observed_main": "7b08c68bae6ec76c33d70eabbd5afa1a2e41429b",
+  "source_blobs": {
+    "encounter": "41979591241ec277e6f51a72b93340a7f61c332e",
+    "receivers": "a29a2979a85e5f4c121109f9616e789f05285704",
+    "reviewer": "3f3bbc1f7b0a2cec009e6d6f16f8dc6318d84745"
+  },
+  "candidate_blobs": {
+    "packet_builder": "32ad0d592a720244561aacbddd0e637f8fdd5595",
+    "readproof": "ad38e77fb1a5e5f177a87a74c74469cb1e64df54",
+    "lineage_binder": "b7c394b5231259f7bb0b22c55773b0d979bea8f0",
+    "canary": "d5a3430b663d0685131a2665be9da46706bd6949"
+  },
+  "result_sha256": "C53EB9AD9C2F210F8E2D38573BA7875A69D5162C760228B70F2BC0F62004A85C",
+  "packet_sha256": "99A60F2B48D1DE524C570FF333B60D72BBE622B213EF33C8D858216179539A2B",
+  "receiver_readproof_sha256": "E44350C831248D460ED54B6CCBA5F765239FE26D918FB62D4F31ECE17BD112BB",
+  "lineage_sha256": "F7CDD79060AA61BA31ED85D51787EA40984FBA0714F91634836B16DC1ACBF57B",
+  "process_ids": [885, 895, 905],
+  "bounded_pickups": 1,
+  "semantic_acceptances": 0,
+  "integrations": 0,
+  "assignment_executed": false,
+  "execution_authorized": false,
+  "next": "R0D_SEMANTIC_CONTRIBUTION_DISPOSITION_OR_HETEROGENEOUS_RECEIVER_PACKET_CANARY__NO_AUTO_ASSIGNMENT",
+  "nonclaims": [
+    "PICKED_UP_NE_INTEGRATED",
+    "READPROOF_NE_SEMANTIC_ACCEPTANCE",
+    "LINEAGE_NE_ACCEPTANCE",
+    "LOCAL_CANARY_NE_RUNTIME_INTEGRATION"
+  ]
+}
