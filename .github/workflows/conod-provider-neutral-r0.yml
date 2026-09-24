@@ -7,6 +7,7 @@ on:
       - "ai/coavnim-cognitive-aura-r0.json"
       - "ai/fixtures/conod-coaura-synthetic-r0.json"
       - "ai/fixtures/conod-provider-neutral-failover-r0.json"
+      - "ai/github-relational-surface-r0.json"
       - "scripts/CoNodProviderNeutralCanaryR0.py"
       - ".github/workflows/conod-provider-neutral-r0.yml"
   workflow_dispatch:
