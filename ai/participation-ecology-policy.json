@@ -1,6 +1,6 @@
 {
-  "schema": "CoParticipationEcology.Policy.R0C.v0.1-candidate",
-  "state": "R0A_R0C_BOUNDED_SYNTHETIC_PASS__EXACT_PACKET_PICKUP_PROVEN__NO_RUNTIME_INTEGRATION",
+  "schema": "CoParticipationEcology.Policy.R0C1.v0.1-candidate",
+  "state": "R0A_R0C1_BOUNDED_SYNTHETIC_PASS__STABLE_PACKET_IDENTITY__DURABLE_SEMANTIC_PAYLOAD__NO_RUNTIME_INTEGRATION",
   "architecture": "docs/Architecture/COPARTICIPATION_ECOLOGY_R0.md",
   "encounter_schema": "schemas/coencounter-yield-v0.1.schema.json",
   "open_relation_match_schema": "schemas/coopen-relation-match-v0.1.schema.json",
@@ -26,6 +26,11 @@
     "READPROOF_NE_SEMANTIC_ACCEPTANCE",
     "LINEAGE_NE_ACCEPTANCE",
     "ATTRIBUTION_NE_OWNERSHIP",
-    "BENEFIT_OBSERVED_NE_BENEFIT_CAUSED"
-  ]
+    "BENEFIT_OBSERVED_NE_BENEFIT_CAUSED",
+    "PACKET_IDENTITY_NE_PROCESS_ID",
+    "DURABLE_PAYLOAD_NE_SEMANTIC_ACCEPTANCE"
+  ],
+  "r0c1_repair_proof": "docs/Operations/proofs/coencounter-r0c1-stable-packet-payload-repair-pass-20260924.json",
+  "semantic_payload_fixture": "docs/Operations/fixtures/coencounter-r0c-contribution-payload.json",
+  "packet_identity": "STABLE_ROUTE_RECEIVER_SOURCE_GATE_DEED_DIGEST__EXCLUDES_PROCESS_ID"
 }
