@@ -1,0 +1,30 @@
+{
+  "schema": "CoNodeParticipation.v0.1",
+  "node_id": "ExampleNode",
+  "lifecycle_state": "CANDIDATE",
+  "participant_scope": "participant-owned bounded node",
+  "privacy_domain": "PRIVATE_PARTICIPANT",
+  "capabilities": [
+    "local-filesystem-read-bounded",
+    "local-runtime-discovery",
+    "lan-bounded-communication"
+  ],
+  "allowed_transports": [
+    "local-ipc",
+    "lan-bounded"
+  ],
+  "effect_ceiling": "OBSERVE_ONLY",
+  "external_provider_policy": {
+    "provider_is_control_plane": false,
+    "unrestricted_remote_control": false,
+    "prefer_local_when_sufficient": true
+  },
+  "local_models": [],
+  "public_internet_exposure": "NONE_BY_DEFAULT",
+  "receipt_route": "local durable receipt surface",
+  "human_projection": "RickBar candidate",
+  "notes": [
+    "Example only; does not authorize a real machine or participant.",
+    "No credentials or private user content belong in this manifest."
+  ]
+}

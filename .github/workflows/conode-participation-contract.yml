@@ -1,0 +1,47 @@
+name: CoNode participation contract
+
+on:
+  pull_request:
+    paths:
+      - 'schemas/conode-participation-v0.1.schema.json'
+      - 'examples/conode-participation-v0.1.example.json'
+      - 'docs/Architecture/CONODE_PARTICIPATION_R0.md'
+      - '.github/workflows/conode-participation-contract.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'schemas/conode-participation-v0.1.schema.json'
+      - 'examples/conode-participation-v0.1.example.json'
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install validator
+        run: python -m pip install --disable-pip-version-check jsonschema==4.23.0
+      - name: Validate example manifest
+        shell: python
+        run: |
+          import json
+          from pathlib import Path
+          from jsonschema import Draft202012Validator
+
+          schema_path = Path("schemas/conode-participation-v0.1.schema.json")
+          example_path = Path("examples/conode-participation-v0.1.example.json")
+          schema = json.loads(schema_path.read_text(encoding="utf-8"))
+          example = json.loads(example_path.read_text(encoding="utf-8"))
+          Draft202012Validator.check_schema(schema)
+          errors = sorted(Draft202012Validator(schema).iter_errors(example), key=lambda e: list(e.path))
+          if errors:
+              for error in errors:
+                  print(f"{list(error.path)}: {error.message}")
+              raise SystemExit(1)
+          print("PASS_CONODE_PARTICIPATION_CONTRACT_V0_1")
