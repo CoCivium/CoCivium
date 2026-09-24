@@ -1,0 +1,32 @@
+name: CoJurisdictionWeave R0 contract
+
+on:
+  pull_request:
+    paths:
+      - 'schemas/cojurisdiction-deed-v0.1.schema.json'
+      - 'examples/cojurisdiction-deed-v0.1.example.json'
+      - 'scripts/validate_cojurisdiction_deed_r0.py'
+      - '.github/workflows/cojurisdiction-deed-contract.yml'
+  push:
+    paths:
+      - 'schemas/cojurisdiction-deed-v0.1.schema.json'
+      - 'examples/cojurisdiction-deed-v0.1.example.json'
+      - 'scripts/validate_cojurisdiction_deed_r0.py'
+
+permissions:
+  contents: read
+
+jobs:
+  static-canary:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate JSON parses
+        run: |
+          python -m json.tool schemas/cojurisdiction-deed-v0.1.schema.json >/dev/null
+          python -m json.tool examples/cojurisdiction-deed-v0.1.example.json >/dev/null
+      - name: Run bounded semantic canary
+        run: python scripts/validate_cojurisdiction_deed_r0.py examples/cojurisdiction-deed-v0.1.example.json
