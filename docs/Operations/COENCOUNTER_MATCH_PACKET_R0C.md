@@ -56,6 +56,26 @@ The exact candidate branch scripts were then read back and executed. The canary 
 
 Evidence: `docs/Operations/proofs/coencounter-r0c-container-pass-20260924.json`.
 
+## R0C1 review repair
+
+A follow-on review found two proof-quality gaps in the first R0C draft without invalidating its bounded pickup canary:
+
+1. packet identity depended on the full R0B review SHA, even though that review contains a process id;
+2. the proposed contribution referred to a semantic fixture that was not durably landed.
+
+R0C1 repairs both:
+
+- packet identity now derives from stable receiver/relation/encounter/source/gate/deed inputs rather than process-bearing review bytes;
+- the semantic contribution payload is durably landed at `docs/Operations/fixtures/coencounter-r0c-contribution-payload.json`;
+- two equivalent R0B-shaped reviews differing only in process id produced byte-identical packets and byte-identical contribution candidates;
+- exact packet readproof pickup and proposed lineage still pass with zero semantic-acceptance or integration inference.
+
+Repair evidence: `docs/Operations/proofs/coencounter-r0c1-stable-packet-payload-repair-pass-20260924.json`.
+
+`PACKET_IDENTITY_NE_PROCESS_ID`  
+`DURABLE_PAYLOAD_NE_SEMANTIC_ACCEPTANCE`  
+`SYNTHETIC_REVIEW_FIXTURE_NE_FULL_R0B_REPLAY`
+
 ## Next
 
 `R0D_SEMANTIC_CONTRIBUTION_DISPOSITION_OR_HETEROGENEOUS_RECEIVER_PACKET_CANARY__NO_AUTO_ASSIGNMENT`
