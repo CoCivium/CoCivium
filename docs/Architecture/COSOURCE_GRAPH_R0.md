@@ -141,6 +141,34 @@ Failure to observe a source is not proof of absence.
 
 A failed lookup SHOULD preserve search scope, method and observed time so negative knowledge can later be revised.
 
+
+## Discovery evidence and coverage
+
+Discovery output is itself evidence and MUST carry enough method metadata to prevent a truncated or biased result from masquerading as an inventory.
+
+A discovery observation SHOULD preserve, where applicable:
+
+- searched roots/scopes;
+- search method and query terms;
+- include/exclude rules;
+- sampling strategy;
+- per-class/per-term and global caps;
+- truncation/saturation state;
+- observed time;
+- dedupe method;
+- errors/inaccessible scopes;
+- result counts before and after caps when available;
+- whether the result supports presence, bounded non-observation, or neither.
+
+A global result cap applied after ordering can silently erase later classes or terms. Prefer one inventory pass followed by receiver-relevant, per-class/per-term bounded projections where practical.
+
+`SEARCH_RESULT_NE_INVENTORY`
+`GLOBAL_CAP_AFTER_SORT_NE_BALANCED_SAMPLE`
+`TRUNCATED_RESULT_NE_NEGATIVE_EVIDENCE`
+`HIT_COUNT_NE_RELATION_COUNT`
+`DISCOVERY_METHOD_IS_PROVENANCE`
+`COVERAGE_IS_A_RELATION__NOT_A_BOOLEAN`
+
 ## External standards alignment
 
 CoSourceGraph should interoperate where useful with established provenance/packaging/lineage standards rather than inventing every primitive from scratch.
@@ -185,5 +213,11 @@ CI validates structural shape only.
 `AUTHORIZATION_IS_RELATIONAL__NOT_BOOLEAN`  
 `SOURCE_AUTHORITY_IS_CLAIM_RELATIVE`  
 `NONOBSERVATION_NE_NONEXISTENCE`  
+`SEARCH_RESULT_NE_INVENTORY`  
+`GLOBAL_CAP_AFTER_SORT_NE_BALANCED_SAMPLE`  
+`TRUNCATED_RESULT_NE_NEGATIVE_EVIDENCE`  
+`HIT_COUNT_NE_RELATION_COUNT`  
+`DISCOVERY_METHOD_IS_PROVENANCE`  
+`COVERAGE_IS_A_RELATION__NOT_A_BOOLEAN`  
 `SCHEMA_PASS_NE_SOURCE_TRUTH`  
 `CI_PASS_NE_SOURCE_CURRENT`
