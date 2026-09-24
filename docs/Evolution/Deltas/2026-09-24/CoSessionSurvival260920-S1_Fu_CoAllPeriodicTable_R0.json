@@ -1,0 +1,127 @@
+{
+  "schema": "CoAll.CoEvoDeltaPackage.v0.1-candidate",
+  "state": "BOUNDED_FU_PERIODIC_TABLE_CANDIDATE__NO_MERGE_NO_CANON_NO_RUNTIME_NO_AUTHORITY",
+  "package_id": "CoEvoDeltaPack.CoSessionSurvival260920-S1.FuPeriodicTable.20260924.R0",
+  "session_id": "CoSessionSurvival260920-S1",
+  "observed_at": "2026-09-24T14:39:04Z",
+  "source_currentness": {
+    "repository": "CoCivium/CoCivium",
+    "base_branch": "main",
+    "base_commit_sha": "b94f177c9349df7fc8d94327275cabe675e9c2ec",
+    "evolution_contract_blob_sha": "71ae3b819520f16d15c52febb2d60ae59fbefa0a",
+    "evolution_lanes_blob_sha": "0c87630a746f98281505ee4b620b60b03be6fc1b",
+    "delta_schema_blob_sha": "5aa1bfc62a47492f41b422331d51dbfcccc831c4",
+    "substrate_field_blob_sha": "5fec3249945ad3d14511621bc52da5587c3526b8",
+    "living_highlight_asset_blob_sha": "40785f77b4085b5830a45bb4c965360347f7cdaf"
+  },
+  "deltas": [
+    {
+      "delta_id": "COEVO.CS260920.COALL_PERIODIC_TABLE.RELATIONAL_ELEMENT_MODEL.R0",
+      "session_id": "CoSessionSurvival260920-S1",
+      "observed_at": "2026-09-24T14:39:04Z",
+      "domain": ["CoAll+", "CoMythOps+", "CoPriMath+", "CoGibberTru+", "CoLex+", "CoHighlight+"],
+      "subject": "CoAllPeriodicTable+ as a receiver-relative multidimensional relational projection rather than a literal table of indivisible substances",
+      "relation": "PROPOSES_RELATIONAL_PERIODIC_TABLE_MODEL",
+      "epistemic_class": "HYPOTHESIS",
+      "source_refs": [
+        "session:CoSessionSurvival260920-S1@2026-09-24T14:39:04Z;public-safe-concept-summary",
+        "github:CoCivium/CoCivium/docs/Architecture/COSUBSTRATE_FIELD_R0.md@5fec3249945ad3d14511621bc52da5587c3526b8",
+        "github:CoCivium/CoCivium/docs/Architecture/COLIVING_HIGHLIGHT_ASSETS_R0.md@40785f77b4085b5830a45bb4c965360347f7cdaf",
+        "github:CoCivium/CoCivium/docs/Evolution/COALL_GITHUB_EVOLUTION_FABRIC_R0.md@71ae3b819520f16d15c52febb2d60ae59fbefa0a"
+      ],
+      "target_surfaces": ["CoCivium", "CoInsights", "GIBindex"],
+      "mutation_class": "BRANCH_MUTATE",
+      "authority_ceiling": "CANDIDATE_DOC_SCHEMA_ONLY__NO_CANON_RUNTIME_OR_PUBLIC_PROMOTION",
+      "confidentiality": "PUBLIC",
+      "confidence": 0.76,
+      "contradictions": [],
+      "tests": [
+        "treat element atomicity as projection-relative usefulness, not metaphysical indivisibility",
+        "represent a 2D table as one projection of higher-dimensional relation space including receiver, context, valid time, provenance, and bounded recursion depth",
+        "permit 3D plus CoTime+ trajectories without making position equal identity",
+        "project one candidate element through CoPriMath+ and CoGibberTru+ with explicit projection-loss accounting",
+        "permit relations-about-elements and relations-about-relations while bounding traversal and materialization",
+        "challenge whether periodicity or neighborhood structure yields useful predictive or navigational value rather than decorative analogy"
+      ],
+      "expected_benefit": "Provide a compact navigable projection for reusable relational primitives while preserving receiver-relative meaning, CoTime+, provenance, projection loss, and bounded meta-relations.",
+      "risks": [
+        "periodic-table imagery can falsely imply scientific validation, fixed ontology, or natural periodic law",
+        "atomic language can be mistaken for literal indivisibility",
+        "high-dimensional relation space can become decorative complexity without measurable navigation or reasoning benefit",
+        "recursive relations can create traversal explosion if every possible meta-relation is materialized"
+      ],
+      "wake_conditions": [
+        "a stronger existing periodic or element-like relational model is exact-bound",
+        "a bounded visual or machine-readable projection canary is proposed",
+        "CoPriMath+ or CoGibberTru+ receiver requires an explicit multidimensional element projection",
+        "collision or ambiguity is found with an existing CoLex+ symbol family"
+      ],
+      "supersedes": [],
+      "next_receiver": "CoMythOps+/CoPriMath+/CoGibberTru+/CoLex+ reconciliation lane"
+    },
+    {
+      "delta_id": "COEVO.CS260920.FU.COMYTHOPS_RELATIONAL_ELEMENT.R0",
+      "session_id": "CoSessionSurvival260920-S1",
+      "observed_at": "2026-09-24T14:39:04Z",
+      "domain": ["CoMythOps+", "CoPriMath+", "CoGibberTru+", "CoLex+", "CoHighlight+"],
+      "subject": "Fu as a candidate symbolic CoMythOps+ relational element within CoAllPeriodicTable+",
+      "relation": "PROPOSES_SYMBOLIC_RELATIONAL_ELEMENT_BINDING",
+      "epistemic_class": "MYTHIC",
+      "source_refs": [
+        "session:CoSessionSurvival260920-S1@2026-09-24T14:39:04Z;public-safe-user-proposed-Fu-symbol",
+        "github:CoCivium/CoCivium/docs/Architecture/COSUBSTRATE_FIELD_R0.md@5fec3249945ad3d14511621bc52da5587c3526b8"
+      ],
+      "target_surfaces": ["CoCivium", "CoInsights", "GIBindex"],
+      "mutation_class": "PROPOSE",
+      "authority_ceiling": "SYMBOLIC_CANDIDATE_ONLY__NO_LEX_CANON_OR_HIGHLIGHT_PROMOTION",
+      "confidentiality": "PUBLIC",
+      "confidence": 0.83,
+      "contradictions": [],
+      "tests": [
+        "search CoLex+/GIBindex lineage for symbol collision before any canonical binding",
+        "retain MYTHIC typing across human, machine, CoPriMath+, and CoGibberTru+ projections",
+        "demonstrate at least one useful typed bond or neighborhood relation involving Fu without treating the relation as factual evidence",
+        "test receiver-relative renderings in 2D, 3D, and CoTime+ trajectory views",
+        "bound recursive use so Fu may participate in meta-relations without requiring unbounded turtles"
+      ],
+      "expected_benefit": "Create a memorable compact handle for a mythic, metaphorical, symbolic, and meaning-bearing relational projection while keeping its epistemic and authority boundaries explicit.",
+      "risks": [
+        "Fu may collide with an existing symbol, acronym, term, or culturally loaded meaning",
+        "symbolic compactness may be mistaken for scientific status or semantic completeness",
+        "mythic potency can be confused with operational mechanism or factual claim"
+      ],
+      "wake_conditions": [
+        "GIBindex/CoLex collision review completes",
+        "a receiver canary demonstrates lower projection cost or better recall using Fu",
+        "a CoAllPeriodicTable+ schema or visual prototype is available for bounded placement",
+        "a contradiction shows Fu should be renamed, split, or remain only an alias"
+      ],
+      "supersedes": [],
+      "next_receiver": "CoLex+/CoMythOps+ symbolic collision and projection review"
+    }
+  ],
+  "package_rails": [
+    "FU_NE_FACT",
+    "SYMBOL_NE_SUBSTANCE",
+    "ELEMENT_NE_INDIVISIBLE",
+    "POSITION_NE_IDENTITY",
+    "MYTHIC_PROJECTION_NE_FACTUAL_CLAIM",
+    "METAPHOR_NE_EQUIVALENCE",
+    "FORMALIZATION_NE_VALIDATION",
+    "PROJECTION_NE_SOURCE",
+    "RECURSION_AVAILABLE_NE_RECURSION_REQUIRED",
+    "META_RELATION_NE_UNBOUNDED_TRAVERSAL",
+    "COOPS_AND_COMYTHOPS_CAN_INTEROPERATE_WITHOUT_COLLAPSE",
+    "HIGHLIGHT_NE_CANON",
+    "SEARCH_MISS_NE_OBJECT_ABSENCE"
+  ],
+  "nonclaims": [
+    "NO_CLAIM_OF_NATURAL_PERIODIC_LAW",
+    "NO_CLAIM_FU_IS_CANONICAL_SYMBOL",
+    "NO_CLAIM_COALL_PERIODIC_TABLE_EXISTS_AS_RUNTIME_OR_PRODUCT",
+    "NO_MERGE",
+    "NO_CANON",
+    "NO_RUNTIME_PROMOTION",
+    "NO_AUTHORITY_TRANSFER"
+  ]
+}
