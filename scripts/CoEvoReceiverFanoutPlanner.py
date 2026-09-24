@@ -173,7 +173,6 @@ def main():
   heads,hm=load(a.receiver_heads)
   if not isinstance(heads,dict):raise SystemExit("receiver-heads must be JSON object")
  out=plan(coevo,lanes,repos,subscriptions,a.source_current_head,heads); out["inputs"]={"coevo":cm,"evolution_lanes":lm,"repo_role_map":rm,"subscription_profiles":sm,"receiver_heads":hm}; out["plan_sha256"]=sha(canon({k:v for k,v in out.items() if k!="plan_sha256"}).encode())
- path=Path(a.output); path.parent.mkdir(parents=True,exist_ok=True); path.write_text(json.dumps(out,indent=2,sort_keys=True,ensure_ascii=False)+"
-",encoding="utf-8")
+ path=Path(a.output); path.parent.mkdir(parents=True,exist_ok=True); path.write_text(json.dumps(out,indent=2,sort_keys=True,ensure_ascii=False)+"\\n",encoding="utf-8")
  c=out["coverage"]; print("STATE=PASS_COEVO_RECEIVER_FANOUT_PLAN_R0"); print(f"OUTPUT={path}"); print(f"PLAN_SHA256={out['plan_sha256']}"); print(f"INPUT_DELTAS={c['input_deltas']}"); print(f"ACCEPTED_DELTAS={c['accepted_deltas']}"); print(f"REJECTED_INPUT_DELTAS={c['rejected_input_deltas']}"); print(f"ROUTE_PROPOSALS={c['route_proposals']}"); print(f"SUBSCRIPTION_PROPOSALS={c['subscription_proposals']}"); print(f"UNROUTED_DELTAS={c['unrouted_deltas']}"); print(f"RICKBAR_FOREGROUND={len(out['rickbar_projection']['foreground_route_ids'])}"); print("HUMAN_BLOCKERS=0")
 if __name__=="__main__":main()
