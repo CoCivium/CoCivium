@@ -1,0 +1,59 @@
+name: Darren CoTime advisory contract
+
+on:
+  pull_request:
+    paths:
+      - 'docs/Research/COTIME_DARREN_FINSERV_STRATEGY_R0.md'
+      - '.github/workflows/darren-cotime-advisory-contract.yml'
+  push:
+    paths:
+      - 'docs/Research/COTIME_DARREN_FINSERV_STRATEGY_R0.md'
+      - '.github/workflows/darren-cotime-advisory-contract.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  evidence-boundary:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check advisory epistemic labels and disclaimers
+        shell: bash
+        run: |
+          set -euo pipefail
+          f="docs/Research/COTIME_DARREN_FINSERV_STRATEGY_R0.md"
+          grep -q 'OBSERVED -> SOURCED -> INFERRED -> SCENARIO -> ACTIONABLE_PREPARATION' "$f"
+          grep -q 'PREDICTION_NE_FACT' "$f"
+          grep -q 'CURRENT_RULE_NE_WITHDRAWN_PROPOSAL' "$f"
+          grep -q 'CLIENT_PORTABILITY_NE_VENDOR_CAPTURE' "$f"
+          grep -q 'client recommendation' "$f"
+          grep -q 'investment advice' "$f"
+          grep -q 'legal advice' "$f"
+          echo "PASS_DARREN_EVIDENCE_BOUNDARY_STATIC_CANARY"
+
+  source-citations:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check SEC source references
+        shell: bash
+        run: |
+          set -euo pipefail
+          f="docs/Research/COTIME_DARREN_FINSERV_STRATEGY_R0.md"
+          grep -q 'https://www.sec.gov/rules-regulations/2025/06/s7-12-23' "$f"
+          grep -q 'https://www.sec.gov/rules-regulations/rulemaking-activity' "$f"
+          grep -q 'https://www.sec.gov/resources-small-businesses/small-business-compliance-guides/investment-adviser-marketing' "$f"
+          echo "PASS_SEC_SOURCE_REFERENCE_CANARY"
+
+  forbidden-shorthand:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Reject obvious overclaim shorthand
+        shell: bash
+        run: |
+          set -euo pipefail
+          f="docs/Research/COTIME_DARREN_FINSERV_STRATEGY_R0.md"
+          ! grep -qiE 'guaranteed returns|will crash the stock market|SEC[- ]safe|certain to happen|risk[- ]free' "$f"
+          echo "PASS_NO_OBVIOUS_OVERCLAIM_CANARY"
