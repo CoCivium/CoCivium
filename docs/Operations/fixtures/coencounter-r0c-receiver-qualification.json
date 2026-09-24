@@ -1,0 +1,21 @@
+{
+  "schema": "CoReceiverAffordanceDisposition.R0C.v0.1-candidate",
+  "receiver_id": "receiver:ux-translator-current-low",
+  "relation_id": "open:plain-language-role-identity",
+  "encounter_id": "coencounter:r0a:interpretability",
+  "visibility_eligible": true,
+  "confidentiality_fit": true,
+  "exact_object_access_ok": true,
+  "contextual_effectivity_ok": true,
+  "receiver_disposition": "ACCEPT_AFFORDANCE_CANDIDATE",
+  "evidence_refs": [
+    "fixture:public-explanation-A",
+    "fixture:receiver-effectivity-r0c"
+  ],
+  "authority_change": false,
+  "nonclaims": [
+    "AFFORDANCE_CANDIDATE_NE_ELECTED_DEED",
+    "QUALIFICATION_NE_AUTHORITY_INCREASE",
+    "MATCH_NE_ASSIGNMENT_AUTHORITY"
+  ]
+}
