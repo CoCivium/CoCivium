@@ -257,3 +257,11 @@ Use [CoAll Evolution Convergence R1](docs/Evolution/COALL_EVOLUTION_CONVERGENCE_
 `FANIN_BEFORE_MORE_PARALLEL_MUTATION`  
 `DESCENDANT_SATISFACTION_BEFORE_REPLAY`  
 `NO_NEWEST_WINS`
+
+## Participation ecology / encounter yield
+
+Use [CoParticipationEcology+ R0](docs/Architecture/COPARTICIPATION_ECOLOGY_R0.md) and [its machine policy](ai/participation-ecology-policy.json) for bounded voluntary encounter evidence, independent receiver review, and Open Relation match candidates. A useful encounter need not mutate anything; a match candidate is not an assignment and does not imply pickup.
+
+`ENCOUNTER_CAN_PRODUCE_VALUE_WITHOUT_MUTATION`  
+`MATCH_NE_ASSIGNMENT_AUTHORITY`  
+`ROUTE_CANDIDATE_NE_PICKUP`
