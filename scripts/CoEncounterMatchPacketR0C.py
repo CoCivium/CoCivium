@@ -20,12 +20,14 @@ def load(path: Path) -> tuple[dict[str, Any], bytes]:
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--review", required=True)
+    ap.add_argument("--qualification", required=True)
     ap.add_argument("--output", required=True)
     args = ap.parse_args()
     out = Path(args.output).resolve()
     if out.exists():
         raise SystemExit(f"FAIL_CLOSED__NO_CLOBBER={out}")
     review, review_raw = load(Path(args.review).resolve())
+    qualification, qualification_raw = load(Path(args.qualification).resolve())
     routes = list(review.get("open_relation_routes") or [])
     matches = [r for r in routes if r.get("route_state") == "MATCH_CANDIDATE"]
     if len(matches) != 1:
@@ -36,7 +38,26 @@ def main() -> int:
     deed = route.get("candidate_deed")
     if not isinstance(deed, dict) or deed.get("execution_authorized") is not False:
         raise SystemExit("FAIL_CLOSED__DEED_NOT_NONEXECUTING")
+    bindings = {
+        "receiver_id": route.get("receiver_id"),
+        "relation_id": route.get("relation_id"),
+        "encounter_id": route.get("encounter_id"),
+    }
+    if any(qualification.get(k) != v for k, v in bindings.items()):
+        raise SystemExit("FAIL_CLOSED__QUALIFICATION_BINDING_MISMATCH")
+    required_true = [
+        "visibility_eligible",
+        "confidentiality_fit",
+        "exact_object_access_ok",
+        "contextual_effectivity_ok",
+    ]
+    failed = [k for k in required_true if qualification.get(k) is not True]
+    if qualification.get("receiver_disposition") != "ACCEPT_AFFORDANCE_CANDIDATE":
+        failed.append("receiver_disposition")
+    if failed:
+        raise SystemExit("FAIL_CLOSED__RECEIVER_QUALIFICATION=" + ",".join(failed))
     src = review.get("source_bindings") or {}
+    qualification_sha = sha256_bytes(qualification_raw)
     stable_basis = {
         "receiver_id": route.get("receiver_id"),
         "relation_id": route.get("relation_id"),
@@ -45,11 +66,12 @@ def main() -> int:
         "receiver_fixture_sha256": src.get("receiver_fixture_sha256"),
         "route_gates": route.get("gates"),
         "candidate_deed": deed,
+        "receiver_qualification_sha256": qualification_sha,
     }
     route_digest = sha256_bytes(canonical(stable_basis))
     packet_id = "coencounter-packet:r0c:" + route_digest[:24]
     artifact = {
-        "schema": "CoEncounterMatchPacket.R0C.v0.2-candidate",
+        "schema": "CoEncounterMatchPacket.R0C.v0.3-candidate",
         "state": "EXACT_MATCH_PACKET_COMPILED__DELIVERED_CANDIDATE__PICKUP_UNPROVEN",
         "packet_id": packet_id,
         "receiver_id": route["receiver_id"],
@@ -59,6 +81,14 @@ def main() -> int:
         "source_bindings": {
             "encounter_fixture_sha256": src.get("encounter_fixture_sha256"),
             "receiver_fixture_sha256": src.get("receiver_fixture_sha256"),
+            "receiver_qualification_sha256": qualification_sha,
+        },
+        "receiver_qualification": {
+            "visibility_eligible": True,
+            "confidentiality_fit": True,
+            "exact_object_access_ok": True,
+            "contextual_effectivity_ok": True,
+            "receiver_disposition": qualification["receiver_disposition"],
         },
         "route_gates": route.get("gates"),
         "candidate_deed": deed,
@@ -74,6 +104,8 @@ def main() -> int:
             "DELIVERY_NE_PICKUP",
             "MATCH_NE_ASSIGNMENT_AUTHORITY",
             "PACKET_NE_EXECUTION_AUTHORITY",
+            "QUALIFICATION_NE_AUTHORITY_INCREASE",
+            "AFFORDANCE_CANDIDATE_NE_ELECTED_DEED",
             "NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF",
             "NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE",
         ],
@@ -88,6 +120,7 @@ def main() -> int:
         "PACKET_ID": packet_id,
         "STABLE_ROUTE_DIGEST_SHA256": route_digest,
         "SOURCE_REVIEW_SHA256": sha256_bytes(review_raw),
+        "QUALIFICATION_SHA256": qualification_sha,
         "PROCESS_ID": os.getpid(),
         "NEXT": artifact["next"],
     }, separators=(",", ":")))
