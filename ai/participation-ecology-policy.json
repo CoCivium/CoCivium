@@ -1,6 +1,6 @@
 {
-  "schema": "CoParticipationEcology.Policy.R0C1.v0.1-candidate",
-  "state": "R0A_R0C1_BOUNDED_SYNTHETIC_PASS__STABLE_PACKET_IDENTITY__DURABLE_SEMANTIC_PAYLOAD__NO_RUNTIME_INTEGRATION",
+  "schema": "CoParticipationEcology.Policy.R0C2.v0.1-candidate",
+  "state": "R0A_R0C2_BOUNDED_SYNTHETIC_PASS__STABLE_PACKET_IDENTITY__DURABLE_SEMANTIC_PAYLOAD__RECEIVER_QUALIFICATION_GATE__NO_RUNTIME_INTEGRATION",
   "architecture": "docs/Architecture/COPARTICIPATION_ECOLOGY_R0.md",
   "encounter_schema": "schemas/coencounter-yield-v0.1.schema.json",
   "open_relation_match_schema": "schemas/coopen-relation-match-v0.1.schema.json",
@@ -28,9 +28,25 @@
     "ATTRIBUTION_NE_OWNERSHIP",
     "BENEFIT_OBSERVED_NE_BENEFIT_CAUSED",
     "PACKET_IDENTITY_NE_PROCESS_ID",
-    "DURABLE_PAYLOAD_NE_SEMANTIC_ACCEPTANCE"
+    "DURABLE_PAYLOAD_NE_SEMANTIC_ACCEPTANCE",
+    "OBJECT_OFFER_NE_RECEIVER_AFFORDANCE",
+    "RECEIVER_EFFECTIVITY_NE_NOMINAL_CAPABILITY",
+    "CAPABILITY_MATCH_NE_EXACT_OBJECT_ACCESS",
+    "AUTHORITY_MATCH_NE_CONFIDENTIALITY_FIT",
+    "QUALIFICATION_NE_AUTHORITY_INCREASE",
+    "AFFORDANCE_CANDIDATE_NE_ELECTED_DEED"
   ],
   "r0c1_repair_proof": "docs/Operations/proofs/coencounter-r0c1-stable-packet-payload-repair-pass-20260924.json",
   "semantic_payload_fixture": "docs/Operations/fixtures/coencounter-r0c-contribution-payload.json",
-  "packet_identity": "STABLE_ROUTE_RECEIVER_SOURCE_GATE_DEED_DIGEST__EXCLUDES_PROCESS_ID"
+  "packet_identity": "STABLE_ROUTE_RECEIVER_SOURCE_GATE_DEED_DIGEST__EXCLUDES_PROCESS_ID",
+  "r0c2_qualification_proof": "docs/Operations/proofs/coencounter-r0c2-receiver-qualification-gate-pass-20260924.json",
+  "receiver_qualification_fixture": "docs/Operations/fixtures/coencounter-r0c-receiver-qualification.json",
+  "receiver_qualification_hold_fixture": "docs/Operations/fixtures/coencounter-r0c-receiver-qualification-hold.json",
+  "packetization_requires": [
+    "visibility_eligible",
+    "confidentiality_fit",
+    "exact_object_access_ok",
+    "contextual_effectivity_ok",
+    "receiver_disposition=ACCEPT_AFFORDANCE_CANDIDATE"
+  ]
 }
