@@ -1,0 +1,31 @@
+name: CoRenderSession R0 contract
+
+on:
+  pull_request:
+    paths:
+      - 'docs/Architecture/COLIVING_RENDER_COTIME_BEYOND_REALTIME_R0.md'
+      - 'schemas/corender-session-v0.1.schema.json'
+      - 'examples/corender-session-v0.1.example.json'
+      - '.github/workflows/corender-session-contract.yml'
+  push:
+    paths:
+      - 'schemas/corender-session-v0.1.schema.json'
+      - 'examples/corender-session-v0.1.example.json'
+
+permissions:
+  contents: read
+
+jobs:
+  static-canary:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Parse candidate JSON
+        run: |
+          python -m json.tool schemas/corender-session-v0.1.schema.json >/dev/null
+          python -m json.tool examples/corender-session-v0.1.example.json >/dev/null
+      - name: Preserve temporal rails
+        run: |
+          grep -q 'BETTER_THAN_REALTIME_NE_FASTER_THAN_REALTIME' examples/corender-session-v0.1.example.json
+          grep -q 'CONTINUOUS_SURFACE_NE_CONTINUOUS_MODEL' examples/corender-session-v0.1.example.json
+          grep -q 'PROVIDER_INTERRUPTION_NE_WORK_INTERRUPTION' examples/corender-session-v0.1.example.json
