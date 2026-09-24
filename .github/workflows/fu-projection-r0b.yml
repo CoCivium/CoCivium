@@ -1,0 +1,57 @@
+name: Validate Fu projection receiver R0B
+
+on:
+  pull_request:
+    paths:
+      - "docs/Evolution/Canaries/2026-09-24/Fu_CoAllPeriodicTable_ProjectionLoss_R0A.json"
+      - "scripts/FuProjectionReceiverCanaryR0B.py"
+      - ".github/workflows/fu-projection-r0b.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  projection-receiver-r0b:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Use Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Execute five-process projection receiver canary
+        run: |
+          python scripts/FuProjectionReceiverCanaryR0B.py \
+            --canary docs/Evolution/Canaries/2026-09-24/Fu_CoAllPeriodicTable_ProjectionLoss_R0A.json \
+            --out-root /tmp/fu-projection-r0b
+
+      - name: Verify bounded result state
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          p = Path("/tmp/fu-projection-r0b/r0b-result.json")
+          x = json.loads(p.read_text(encoding="utf-8"))
+          expected = "PASS_R0B_FIVE_DISTINCT_RECEIVER_PROCESSES__CORE_INVARIANTS_STABLE__DECLARED_DIVERGENCE_PRESERVED__TAMPER_REJECTED__SEMANTIC_EQUIVALENCE_NOT_PROVEN"
+          if x.get("state") != expected:
+              raise SystemExit("FAIL_CLOSED__UNEXPECTED_R0B_STATE")
+          if x.get("checks", {}).get("semantic_equivalence") != "NOT_PROVEN":
+              raise SystemExit("FAIL_CLOSED__SEMANTIC_EQUIVALENCE_OVERCLAIM")
+          if x.get("checks", {}).get("independent_model_understanding") != "NOT_TESTED":
+              raise SystemExit("FAIL_CLOSED__INDEPENDENT_MODEL_OVERCLAIM")
+          if any(v != 0 for v in x.get("effects", {}).values()):
+              raise SystemExit("FAIL_CLOSED__UNEXPECTED_CANARY_EFFECT")
+          print(json.dumps({
+              "STATE": expected,
+              "RECEIVER_PROCESSES": x["coverage"]["receiver_processes"],
+              "DISTINCT_PROCESS_IDS": x["coverage"]["distinct_process_ids"],
+              "TAMPER_CASES": x["coverage"]["tamper_cases"],
+              "SEMANTIC_EQUIVALENCE": x["checks"]["semantic_equivalence"],
+              "INDEPENDENT_MODEL_UNDERSTANDING": x["checks"]["independent_model_understanding"],
+          }, separators=(",", ":")))
+          PY
