@@ -42,9 +42,41 @@ A bootstrap helper MAY inventory OS/runtime facts, existing CoCivium/CoAll/RickB
 
 It MUST NOT by default expose new Internet-facing services, weaken host security, install remote-control software, change firewall/RDP/WinRM policy, transmit private user files, or grant external AI unrestricted machine control.
 
+## Participant relation precedes materialization
+
+A machine being technically reachable is insufficient to elect its role.
+
+Before persistent materialization, CoAll SHOULD represent the participant relation appropriate to that node: stewardship/ownership scope, consent, privacy domain, authority ceiling, intended benefit, capability exposure, revocation/exit path, and receiver-appropriate projection.
+
+Participant context may affect projection and authority without rewriting participant identity.
+
+`PARTICIPANT_CONTEXT_SHAPES_PROJECTION_AND_AUTHORITY`
+`PARTICIPANT_OWNED_NODE_NE_CENTRAL_MACHINE`
+`RELATABLE_NE_INGESTED`
+`DISCOVERABLE_NE_IN_SCOPE`
+`ON_NODE_NE_OWNED_BY_COALL`
+`PARTICIPATION_NE_SURVEILLANCE`
+
+## Network relations
+
+A node is not identical to any one network interface. Multiple interfaces may have different locality, trust, exposure, currentness, and transport relations.
+
+`NODE_NE_NETWORK_INTERFACE`
+`LAN_VISIBLE_NE_CONTENT_IN_SCOPE`
+
+## Materialization discipline
+
+Prefer:
+
+```text
+DISCOVER -> RELATE -> ELECT -> MINIMALLY_MATERIALIZE
+```
+
+Do not clone a central-machine stack onto every participant node by default. Capabilities SHOULD be materialized because they serve the participant/node mission under the elected privacy and authority boundaries.
+
 ## RickBar projection
 
-RickBar is the preferred participant-facing projection. Different nodes may render different views based on participant, authority, relevance, locality, and privacy.
+RickBar is the preferred participant-facing projection. Different nodes may render different views based on participant, authority, relevance, locality, privacy, and appropriate complexity.
 
 `RICKBAR_VIEW_NE_GLOBAL_STATE_DUMP`
 
@@ -74,6 +106,8 @@ Node participation does not imply whole-machine ingestion.
 `NODE_MEMBER_NE_ALL_CONTENT_IN_SCOPE`
 `LAN_VISIBLE_NE_CONTENT_IN_SCOPE`
 
+Personal/private material MAY coexist on a participating machine or related storage without becoming CoAll content. Discovery mechanisms SHOULD minimize collection and preserve scoped non-observation rather than expanding scope merely because access is technically possible.
+
 ## CI contract
 
 Candidate machine-readable objects:
@@ -98,6 +132,13 @@ Transitions require evidence appropriate to the effect. A reachable machine is n
 `PARTICIPATION_NE_MACHINE_SURRENDER`  
 `REMOTE_ADMINISTRATION_NE_NODE_PARTICIPATION`  
 `COALL_SHARED_NE_ALL_DATA_SHARED`  
+`PARTICIPANT_CONTEXT_SHAPES_PROJECTION_AND_AUTHORITY`  
+`PARTICIPANT_OWNED_NODE_NE_CENTRAL_MACHINE`  
+`RELATABLE_NE_INGESTED`  
+`DISCOVERABLE_NE_IN_SCOPE`  
+`ON_NODE_NE_OWNED_BY_COALL`  
+`PARTICIPATION_NE_SURVEILLANCE`  
+`NODE_NE_NETWORK_INTERFACE`  
 `MODEL_NE_AUTHORITY`  
 `PROVIDER_NE_CONTROL_PLANE`  
 `ADAPTER_NE_CONTROL_PLANE`  
