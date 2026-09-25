@@ -287,3 +287,23 @@ A semantic relation may persist while its repository/path/renderer/receiver bind
 `DIRECTORY_TREE_NE_SEMANTIC_TREE`  
 `README_NE_CANON`  
 `GITHUB_NE_COALL_TOTALITY`
+
+
+## Rendered projection boundary
+
+Provider-visible titles, labels, badges and status indicators are observer-facing projections, not lifecycle truth.
+
+Use the evidence chain:
+
+`semantic relation -> label intent -> mutation attempt -> provider acknowledgement -> stored state -> rendered projection -> observer readback`
+
+Claim only the strongest rung actually evidenced.
+
+`LABEL_INTENT_NE_PROVIDER_MUTATION`  
+`PROVIDER_MUTATION_NE_RENDERED_PROJECTION`  
+`RENDERED_PROJECTION_NE_SEMANTIC_STATE`  
+`OBSERVER_READBACK_REQUIRED_FOR_VISIBLE_EFFECT_CLAIM`  
+`PROJECTION_FAILURE_NE_RELATION_FAILURE`  
+`LABEL_NE_EXISTENCE`
+
+A stale or ignored provider render does not by itself invalidate a separately proven close-safe relation or justify reopening the source session.
