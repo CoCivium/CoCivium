@@ -1,0 +1,28 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://github.com/CoCivium/CoCivium/schemas/coresearch-evidence-v0.1.schema.json",
+  "title":"CoAll Research Evidence Record v0.1 candidate",
+  "type":"object",
+  "additionalProperties":false,
+  "required":["schema","record_id","observed_at","epistemic_class","claim","source_refs","tests","confidence","authority_ceiling","confidentiality","nonclaims"],
+  "properties":{
+    "schema":{"const":"CoAll.ResearchEvidence.v0.1-candidate"},
+    "record_id":{"type":"string","minLength":1,"maxLength":200},
+    "observed_at":{"type":"string","format":"date-time"},
+    "valid_time":{"type":"string"},
+    "domain":{"type":"array","items":{"type":"string","minLength":1},"uniqueItems":true},
+    "epistemic_class":{"enum":["OBSERVED","INFERRED","HYPOTHESIS","PREDICTED","PLANNED","PREFERRED","METAPHORICAL","MYTHIC","HUMOROUS","COUNTERFACTUAL","UNKNOWN"]},
+    "claim":{"type":"string","minLength":1},
+    "source_refs":{"type":"array","items":{"type":"string","minLength":1},"uniqueItems":true},
+    "tests":{"type":"array","items":{"type":"object","additionalProperties":false,"required":["test_id","state"],"properties":{"test_id":{"type":"string","minLength":1},"state":{"enum":["PASS","FAIL","HOLD","NOT_RUN"]},"result":{"type":"string"}}}},
+    "confidence":{"type":"number","minimum":0,"maximum":1},
+    "authority_ceiling":{"enum":["NONE","CANDIDATE_BRANCH_ONLY","ADVISORY","HUMAN_GATE","EFFECT_GATED"]},
+    "confidentiality":{"enum":["PUBLIC","PRIVATE","RESTRICTED","UNKNOWN"]},
+    "legal_context":{"type":"object","additionalProperties":false,"properties":{"jurisdictions":{"type":"array","items":{"type":"string"}},"review_required":{"type":"boolean"},"review_status":{"enum":["NOT_APPLICABLE","NOT_REVIEWED","REVIEWED","HOLD"]}}},
+    "forecast_horizon":{"type":"string"},
+    "falsifiers":{"type":"array","items":{"type":"string"}},
+    "counterarguments":{"type":"array","items":{"type":"string"}},
+    "next_gate":{"type":"string"},
+    "nonclaims":{"type":"array","minItems":1,"items":{"type":"string","minLength":1},"uniqueItems":true}
+  }
+}
