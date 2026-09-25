@@ -1,0 +1,29 @@
+{
+  "schema":"CoAll.ResearchEvidence.v0.1-candidate",
+  "record_id":"fixture:time-relational-business-model-hypothesis",
+  "observed_at":"2026-09-25T13:40:00Z",
+  "valid_time":"2026-09-25",
+  "domain":["CoTime+","CoPlatformHelper+","CoLawSmoosh+"],
+  "epistemic_class":"HYPOTHESIS",
+  "claim":"Richer separation of source-time, observation-time, currentness, prediction and supersession may change how professional-services businesses manage client records, forecasts and continuity.",
+  "source_refs":["github:CoCivium/CoCivium:docs/coterms/README.md","github:CoCivium/CoCivium:docs/Architecture/COALL_PULSEFIELD_COTIME_R0.md"],
+  "tests":[
+    {"test_id":"coTime-definition-bind","state":"PASS","result":"Current GitHub source explicitly distinguishes source-time, observation-time, currentness, prediction and supersession."},
+    {"test_id":"business-model-causality","state":"NOT_RUN","result":"Requires research and field evidence."}
+  ],
+  "confidence":0.5,
+  "authority_ceiling":"CANDIDATE_BRANCH_ONLY",
+  "confidentiality":"PUBLIC",
+  "legal_context":{"jurisdictions":[],"review_required":false,"review_status":"NOT_APPLICABLE"},
+  "forecast_horizon":"6-60 months",
+  "falsifiers":["No measurable workflow or economic advantage emerges from time-relative provenance/currentness.","Business models remain unchanged in representative test domains."],
+  "counterarguments":["Better temporal provenance may increase complexity without sufficient user benefit.","Regulation, contracts and installed-base friction may dominate product design."],
+  "next_gate":"Research at least three concrete workflows and measure before/after continuity or decision quality.",
+  "nonclaims":[
+    "HYPOTHESIS_NE_FACT",
+    "PREDICTION_NE_FUTURE_FACT",
+    "CI_PASS_NE_REAL_WORLD_PROOF",
+    "LEGAL_MODEL_NE_LAW",
+    "BUSINESS_MODEL_IMPLICATION_NE_INVESTMENT_RECOMMENDATION"
+  ]
+}

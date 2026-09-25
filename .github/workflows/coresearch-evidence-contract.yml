@@ -1,0 +1,52 @@
+name: CoAll research evidence contract
+
+on:
+  pull_request:
+    paths:
+      - 'schemas/coresearch-evidence-v0.1.schema.json'
+      - 'examples/coresearch-evidence-v0.1.example.json'
+      - 'scripts/validate_coresearch_evidence_r0.py'
+      - '.github/workflows/coresearch-evidence-contract.yml'
+  push:
+    paths:
+      - 'schemas/coresearch-evidence-v0.1.schema.json'
+      - 'examples/coresearch-evidence-v0.1.example.json'
+      - 'scripts/validate_coresearch_evidence_r0.py'
+      - '.github/workflows/coresearch-evidence-contract.yml'
+permissions:
+  contents: read
+jobs:
+  evidence-matrix:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        check: [json-parse, semantic-canary]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run selected check
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ "${{ matrix.check }}" = "json-parse" ]; then
+            python -m json.tool schemas/coresearch-evidence-v0.1.schema.json >/dev/null
+            python -m json.tool examples/coresearch-evidence-v0.1.example.json >/dev/null
+          else
+            python scripts/validate_coresearch_evidence_r0.py examples/coresearch-evidence-v0.1.example.json
+          fi
+  source-currentness:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check evidence source and observation fields
+        run: |
+          python - <<'PY'
+          import json
+          d=json.load(open("examples/coresearch-evidence-v0.1.example.json",encoding="utf-8"))
+          assert d["source_refs"], "FAIL_CLOSED__NO_SOURCE_REFS"
+          assert d["observed_at"], "FAIL_CLOSED__NO_OBSERVED_AT"
+          print("PASS_EXPLICIT_SOURCE_AND_OBSERVATION_TIME")
+          PY
