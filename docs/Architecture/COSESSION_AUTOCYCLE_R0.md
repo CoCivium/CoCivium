@@ -441,3 +441,42 @@ Rails:
 `GENERIC_PING_NE_DOWNLOAD_TRIGGER`  
 `OUTPUT_QUIESCENCE_NE_INFORMATION_LOSS`  
 `USER_REQUEST_NE_BACKGROUND_ARTIFACT_SPAM`
+
+
+## Projection acknowledgement / rendered-state boundary
+
+A provider-visible label/title is a projection, not the lifecycle relation itself.
+
+Observed bounded failure mode: a human applied the elected close-safe label, while the provider-rendered title did not visibly adopt that label. The observation proves a visible projection mismatch; it does **not** prove whether the provider rejected, stored, delayed, normalized, cached, truncated, or later re-projected the mutation.
+
+Model the path explicitly:
+
+`desired semantic relation -> label intent -> mutation attempt -> provider acknowledgement -> stored provider state -> rendered projection -> observer readback`
+
+Do not collapse these stages.
+
+For any user-visible effect, claims should bind the strongest evidenced rung only:
+
+- intent/request proves only intent/request;
+- API/tool success may prove an acknowledged mutation contract when exact response evidence exists;
+- stored state requires an exact state readback where available;
+- visible effect requires observer/readback evidence of the rendered surface;
+- semantic/lifecycle truth remains separately evidenced and must not be inferred from display success or failure.
+
+The same rule generalizes beyond titles to badges, counts, status lights, dashboards, notifications, navigation, aliases and other projections.
+
+Candidate relations:
+
+`LABEL_INTENT_NE_PROVIDER_MUTATION`  
+`PROVIDER_MUTATION_NE_RENDERED_PROJECTION`  
+`STORED_STATE_NE_VISIBLE_STATE`  
+`RENDERED_PROJECTION_NE_SEMANTIC_STATE`  
+`VISIBLE_STALENESS_NE_SEMANTIC_STALENESS`  
+`OBSERVER_READBACK_REQUIRED_FOR_VISIBLE_EFFECT_CLAIM`  
+`PROJECTION_FAILURE_NE_RELATION_FAILURE`  
+`LABEL_NE_EXISTENCE`  
+`RELATION_PERSISTS__PROJECTION_CAN_DRIFT`
+
+A failed or stale render therefore becomes useful evidence about the projection chain and UX acceptance, not authority to rewrite the underlying relation merely to make the screen agree.
+
+For close-safe sessions, provider-title mismatch alone does not reopen material work. Record the projection defect, preserve the semantic close relation, and close the embodiment if close safety is otherwise proven.
