@@ -307,3 +307,15 @@ Claim only the strongest rung actually evidenced.
 `LABEL_NE_EXISTENCE`
 
 A stale or ignored provider render does not by itself invalidate a separately proven close-safe relation or justify reopening the source session.
+
+
+## CoResearchEvidence+
+
+For material research claims, hypotheses, inference chains, tests, falsifiers, or adversarial replication, use the machine contract at `schemas/coresearch-evidence-v0.1.schema.json` with `scripts/validate_coresearch_evidence_r0.py`.
+
+The contract keeps source evidence, inference, hypothesis, test, falsifier and confidence relations typed rather than allowing a plausible story to quietly become “the result.”
+
+`EVIDENCE_NE_INFERENCE`  
+`INFERENCE_NE_HYPOTHESIS`  
+`HYPOTHESIS_NE_ESTABLISHED_FACT`  
+`CI_PASS_NE_RESEARCH_TRUTH`

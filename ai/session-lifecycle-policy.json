@@ -21,7 +21,8 @@
     "README_INDEX_IMPROVEMENT_PROPOSAL",
     "CURRENTNESS_PACKET_COMPILE",
     "RECEIVER_RELATIVE_DIGEST_ELECTION",
-    "SHADOW_CLOSE_SAFE_PROJECTION"
+    "SHADOW_CLOSE_SAFE_PROJECTION",
+    "RESEARCH_EVIDENCE_CONTRACT_VALIDATE"
   ],
   "shadow_only": [
     "PROVIDER_SESSION_CREATE",
@@ -376,6 +377,22 @@
       "CACHE_CAUSE_UNPROVEN",
       "RENDERER_PRECEDENCE_CAUSE_UNPROVEN",
       "SEMANTIC_CLOSE_RELATION_NOT_REVOKED_BY_RENDER_MISMATCH"
+    ]
+  },
+  "research_evidence_policy": {
+    "state": "PUBLIC_MACHINE_CONTRACT_LANDED__NO_RESEARCH_TRUTH_AUTOMATION",
+    "schema": "schemas/coresearch-evidence-v0.1.schema.json",
+    "validator": "scripts/validate_coresearch_evidence_r0.py",
+    "workflow": ".github/workflows/coresearch-evidence-contract.yml",
+    "auto_validate": true,
+    "auto_promote_to_truth": false,
+    "model_judgment_is_authority": false,
+    "rails": [
+      "EVIDENCE_NE_INFERENCE",
+      "INFERENCE_NE_HYPOTHESIS",
+      "HYPOTHESIS_NE_ESTABLISHED_FACT",
+      "CI_PASS_NE_RESEARCH_TRUTH",
+      "MODEL_NE_AUTHORITY"
     ]
   }
 }
