@@ -1,7 +1,7 @@
 {
   "schema": "CoAll.SessionBootstrap.v0.1-candidate",
   "state": "PUBLIC_CURRENTNESS_BOOTSTRAP__NOT_GLOBAL_SESSION_PICKUP_PROOF",
-  "updated_utc": "2026-09-24T05:18:04Z",
+  "updated_utc": "2026-09-25T22:45:00Z",
   "bootstrap_repository": "CoCivium/CoCivium",
   "default_branch": "main",
   "read_order": [
@@ -17,7 +17,9 @@
     "ai/highlight-assets.json",
     "ai/session-lifecycle-policy.json",
     "ai/session-subscription-profiles.json",
-    "ai/currentness/copulse-currentness-r0g.json"
+    "ai/currentness/copulse-currentness-r0g.json",
+    "schemas/coresearch-evidence-v0.1.schema.json",
+    "examples/coresearch-evidence-v0.1.example.json"
   ],
   "rules": [
     "GITHUB_NE_CUSTODY_ROOT",
@@ -111,5 +113,24 @@
     "auto_close_safe_projection": true,
     "provider_tab_close_effect": "SHADOW_ONLY",
     "human_relay_default": false
+  },
+  "research_evidence": {
+    "schema": "schemas/coresearch-evidence-v0.1.schema.json",
+    "example": "examples/coresearch-evidence-v0.1.example.json",
+    "validator": "scripts/validate_coresearch_evidence_r0.py",
+    "workflow": ".github/workflows/coresearch-evidence-contract.yml",
+    "use_when": [
+      "MATERIAL_RESEARCH_CLAIM",
+      "HYPOTHESIS_WITH_TEST_OR_FALSIFIER",
+      "INFERENCE_CHAIN_WITH_SOURCE_BINDING",
+      "ADVERSARIAL_CHALLENGE_OR_REPLICATION"
+    ],
+    "rules": [
+      "EVIDENCE_NE_INFERENCE",
+      "INFERENCE_NE_HYPOTHESIS",
+      "HYPOTHESIS_NE_ESTABLISHED_FACT",
+      "TEST_NE_CONFIRMATION",
+      "FALSIFIER_NE_FAILURE_PREDICTION"
+    ]
   }
 }
