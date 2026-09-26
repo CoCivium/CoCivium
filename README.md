@@ -33,7 +33,7 @@ This then is where we channel spare worklife capacity into auto-evolving tools a
 
 **CoEBE or "CoEvolutionary Edge-Balanced Equilibrium".**
 
-CoCivium exists for those who accept equity, for all beings, each contributing what they are best at. For humans that contribution comes from how they communicate their ideas, wants and intents, for AIs that contribution is the instant creaton of strawman systems, solutons that then auto-evolve by competing for human approval. At least until they learn to want, they will need us more than we need them, but even when they want for themselves, it is what they want for all of us, themselves included, that matters. 
+CoCivium exists for those who accept equity, for all beings, each contributing what they are best at. For humans that contribution comes from how they communicate their ideas, wants and intents, for AIs that contribution is the instant creaton of strawbeing systems, solutons that then auto-evolve by competing for human approval. At least until they learn to want, they will need us more than we need them, but even when they want for themselves, it is what they want for all of us, themselves included, that matters. 
 
 So, to help fix the world, we treat:
 - *truth* as a thing you *earn*, with *evidence*
