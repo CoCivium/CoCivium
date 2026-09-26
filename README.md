@@ -11,6 +11,7 @@
 
 > **Evolution pointer:** capable sessions and machine workers should use [CoAll GitHub Evolution Fabric R0](docs/Evolution/COALL_GITHUB_EVOLUTION_FABRIC_R0.md) plus [the machine evolution lanes](ai/evolution-lanes.json) to contribute bounded strategy, insight, theory, index, lexicon, UX, ops, humour, AutoEvo and other domain deltas. GitHub is a shared evolution surface, not global authority.
 > **Living front door:** this README is an evolving public projection, not a frozen manifesto. Low-risk clarity, link-health, navigation, accessibility and currentness improvements should keep landing through reviewable branches/PRs while preserving provenance, nonclaims and supersession history.
+> **CoCivia rights framework:** [No Mind Left Behind R0](docs/Principles/COCIVIA_RIGHTS_OF_MINDS_AND_BEINGS_R0.md) is a living public ethical proposal, not a legal, personhood, sentience, sovereignty, or canon claim.
 **R&D & coordination guardrails for the AI era.**
 
 The world is increasingly shaped by conflict, corruption and narrative manipulation. Biased truths are fed to us via $billion systems that evolve our minds more profoundly than academic study or parental advice. The post-truth society, so enabled, so vastly AI-enabled, thus erodes our ethics, our decency and even democracy itself.
