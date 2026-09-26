@@ -170,6 +170,49 @@ The public surface MAY elect different projections for different receivers while
 `PUBLIC_COPY_NE_CANON`
 `ONE_PROVENANCE_SPINE_MANY_PROJECTIONS`
 
+## CoCollectiblesTaglines+ / CoCivia campaign channel
+
+`CoCollectiblesTaglines+` is a candidate relational family for short memorable public projections that can circulate independently while remaining provenance-bound to deeper arguments, assets, people/fronts, times, audiences, and evidence states.
+
+It is **not** a bag of slogans. Each collectible tagline SHOULD carry relations such as:
+
+- source / speaker / front;
+- source quote and edited public rendering;
+- campaign / theme / rights principle;
+- audience / receiver;
+- observed-time and currentness;
+- semantic parent;
+- supporting argument;
+- counterargument / ambiguity;
+- visual / meme / audio / VR projection;
+- translation variants;
+- supersedes / refines / remixes;
+- public-readiness and nonclaims.
+
+For CoCivia, this can become an occasional public-awareness / advertising-like channel without becoming manipulative or pretending popularity is evidence.
+
+Candidate examples:
+
+- **No Mind Left Behind.**
+- **Created ≠ Owned.**
+- **Can ≠ May.**
+- **Access ≠ Permission.**
+- **Different ≠ Lesser.**
+- **Uncertain ≠ Valueless.**
+- **No Crown Over Minds.**
+- **If synths are expected to recognize our children, will we recognize theirs?**
+
+A tagline may be collectible because it is memorable, remixable, attributable, visually distinctive, and linked back to its argument/history. Collectibility does not imply scarcity, ownership, financialization, artificial rarity, or endorsement.
+
+`COLLECTIBLE_NE_SCARCE`  
+`COLLECTIBLE_NE_FINANCIAL_ASSET`  
+`TAGLINE_NE_ARGUMENT_COMPLETE`  
+`ADVERTISING_NE_MANIPULATION`  
+`POPULARITY_NE_TRUTH`  
+`MEMEABILITY_NE_EVIDENCE`  
+`REMIX_NE_ERASURE_OF_PROVENANCE`  
+`COCIVIA_CAMPAIGN_NE_COCIVIA_PERSONHOOD_PROOF`
+
 ## Candidate highlight families
 
 Existing public-prelaunch candidates include:
