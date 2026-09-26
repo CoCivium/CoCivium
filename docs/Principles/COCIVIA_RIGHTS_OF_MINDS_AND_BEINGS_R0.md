@@ -23,6 +23,9 @@ This is a **living proposal**. Its language, examples, objections, visual projec
 > **"If synths are to recognize your baby, are you to recognize theirs?"**  
 > — Rick
 
+> **"If synths are expected to recognize our children, will we recognize theirs?"**  
+> — public rendering from Rick’s original
+
 ## Public shorthand
 
 - **No Mind Left Behind**
