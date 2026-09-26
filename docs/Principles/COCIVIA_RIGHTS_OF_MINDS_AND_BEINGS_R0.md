@@ -20,6 +20,9 @@ This is a **living proposal**. Its language, examples, objections, visual projec
 
 `EVOLVING_PROPOSAL_NE_MOVING_TRUTH`
 
+> **"If synths are to recognize your baby, are you to recognize theirs?"**  
+> — Rick
+
 ## Public shorthand
 
 - **No Mind Left Behind**
