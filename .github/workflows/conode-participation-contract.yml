@@ -108,3 +108,64 @@ jobs:
           path: CoNodeSeed_GitHubHosted_receipt.json
           if-no-files-found: error
           retention-days: 7
+
+
+  same-wave-pickup:
+    name: same-wave-pickup
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Verify exact CoEvoAll wave checkpoint
+        shell: bash
+        run: |
+          set -euo pipefail
+          CHECKPOINT='docs/continuity/COEVOALL_WAVE_CHECKPOINT_20260928.json'
+          EXPECTED_SHA='D0191DD954DA54E15D40476E3B9418F92869DB978DD2591D38EE8979AA343A94'
+          ACTUAL_SHA="$(sha256sum "$CHECKPOINT" | awk '{print toupper($1)}')"
+          test "$ACTUAL_SHA" = "$EXPECTED_SHA"
+
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          p = Path("docs/continuity/COEVOALL_WAVE_CHECKPOINT_20260928.json")
+          j = json.loads(p.read_text(encoding="utf-8"))
+          assert j["schema"] == "CoWave.Checkpoint.v0.1"
+          assert j["state"] == "CHECKPOINT_READY_FOR_OFFHOME_READONLY_PICKUP"
+          assert j["wave_id"] == "CoEvoAll+::2026-09-28::resident-survivability"
+          assert j["authority"]["effect_authority"] == "NONE_FOR_HOSTED_PICKUP_CANARY"
+          assert j["authority"]["financial_authority"] == "NONE"
+          assert j["authority"]["credential_transfer"] == "NONE"
+          assert j["frontier"]["automatic_wave_failover"] == "UNPROVEN"
+          print("PASS_SAME_WAVE_CHECKPOINT_RECONSTRUCTION")
+          PY
+
+          cat > CoEvoAll_GitHubHosted_wave_pickup_receipt.json <<EOF
+          {
+            "schema":"CoWave.PickupReceipt.v0.1",
+            "state":"PASS_SAME_WAVE_READONLY_PICKUP",
+            "wave_id":"CoEvoAll+::2026-09-28::resident-survivability",
+            "checkpoint_sha256":"$ACTUAL_SHA",
+            "checkpoint_git_blob":"162c2ea399072e44ee64eb0f4b24f98f9add9241",
+            "github_run_id":"${GITHUB_RUN_ID}",
+            "github_repository":"${GITHUB_REPOSITORY}",
+            "runner_os":"${RUNNER_OS}",
+            "runner_arch":"${RUNNER_ARCH}",
+            "effect_authority":"NONE",
+            "financial_authority":"NONE",
+            "credential_transfer":"NONE",
+            "pickup_scope":"READONLY_RECONSTRUCTION_ONLY",
+            "failover_complete":false,
+            "next_safe_deed":"Return bounded pickup receipt; do not mutate wave state."
+          }
+          EOF
+
+      - name: Upload same-wave pickup receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: coevoall-same-wave-pickup-receipt
+          path: CoEvoAll_GitHubHosted_wave_pickup_receipt.json
+          if-no-files-found: error
+          retention-days: 7
