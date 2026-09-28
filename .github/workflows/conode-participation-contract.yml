@@ -45,3 +45,66 @@ jobs:
                   print(f"{list(error.path)}: {error.message}")
               raise SystemExit(1)
           print("PASS_CONODE_PARTICIPATION_CONTRACT_V0_1")
+
+  hosted-node-seed:
+    name: hosted-node-seed
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Verify exact public CoBusMirror donor
+        shell: bash
+        run: |
+          set -euo pipefail
+          REPO='https://github.com/CoCivium/CoBusMirror.git'
+          COMMIT='4ef0a35dec7a6f646eaeea6f30ad1a2522f33bd8'
+          TARGET='docs/registry/CoStacksRegistry__LATEST.json'
+          EXPECTED_BLOB='1fb572bd5d204c4dc537dcb75d7b3dd07e43436f'
+          EXPECTED_SHA='c93f97a90bb3c8c9f40983e6924b44932b80854b9a23f914dc0e7a34d65e8144'
+          EXPECTED_BYTES='2614'
+
+          TMP="$(mktemp -d)"
+          trap 'rm -rf "$TMP"' EXIT
+          git -C "$TMP" init -q
+          git -C "$TMP" remote add origin "$REPO"
+          git -C "$TMP" fetch -q --depth=1 origin "$COMMIT"
+
+          ACTUAL_COMMIT="$(git -C "$TMP" rev-parse FETCH_HEAD)"
+          ACTUAL_BLOB="$(git -C "$TMP" rev-parse "FETCH_HEAD:$TARGET")"
+          git -C "$TMP" show "FETCH_HEAD:$TARGET" > "$TMP/donor.bin"
+          ACTUAL_SHA="$(sha256sum "$TMP/donor.bin" | awk '{print $1}')"
+          ACTUAL_BYTES="$(wc -c < "$TMP/donor.bin" | tr -d ' ')"
+
+          test "$ACTUAL_COMMIT" = "$COMMIT"
+          test "$ACTUAL_BLOB" = "$EXPECTED_BLOB"
+          test "$ACTUAL_SHA" = "$EXPECTED_SHA"
+          test "$ACTUAL_BYTES" = "$EXPECTED_BYTES"
+
+          cat > CoNodeSeed_GitHubHosted_receipt.json <<EOF
+          {
+            "schema":"CoNodeSeed.NodeReceipt.v0.1",
+            "state":"PASS_READONLY_NODE_SEED",
+            "node_id_candidate":"github-hosted:${RUNNER_OS}:${RUNNER_ARCH}",
+            "hostname":"github-hosted-ephemeral-runner",
+            "os":"${RUNNER_OS}",
+            "architecture":"${RUNNER_ARCH}",
+            "observed_utc":"$(date -u +'%Y-%m-%dT%H:%M:%SZ')",
+            "github_run_id":"${GITHUB_RUN_ID}",
+            "github_repository":"${GITHUB_REPOSITORY}",
+            "donor_commit":"$ACTUAL_COMMIT",
+            "donor_blob":"$ACTUAL_BLOB",
+            "donor_sha256":"$ACTUAL_SHA",
+            "donor_bytes":$ACTUAL_BYTES,
+            "effect_authority":"NONE",
+            "credential_requirement":"NONE_FOR_PUBLIC_DONOR",
+            "execution_state":"READ_VERIFIED_ONLY",
+            "participation_relation":"EVIDENCE_DONOR_FOR_CONODE_PARTICIPATION__NOT_NODE_AUTHORIZATION"
+          }
+          EOF
+
+      - name: Upload bounded receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: conodeseed-hosted-receipt
+          path: CoNodeSeed_GitHubHosted_receipt.json
+          if-no-files-found: error
+          retention-days: 7
