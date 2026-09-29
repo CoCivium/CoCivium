@@ -45,6 +45,19 @@ https://github.com/CoCivium/CoCivium/pull/125
 
 Purpose: inspectable draft-PR evidence of a GitHub-hosted CoNode seed and exact same-wave read-only pickup. This PR remains open, draft and unmerged.
 
+## Public-root claim boundary
+
+The repository root README contains broader thesis, advocacy, poetic and speculative framing than this technical packet establishes.
+
+Please treat those broader statements as hypotheses, interpretations or positions to challenge, **not** as conclusions proven by the CoNode, continuity, CI or receipt evidence linked here.
+
+Claim-alignment review:
+https://github.com/CoCivium/CoCivium/blob/coevoall/conode-hosted-seed-20260928/docs/Launch/README_PRELAUNCH_CLAIM_REVIEW_20260929.md
+
+`EVIDENCE_BOUND_CLAIM_NE_BROADER_THESIS`
+
+`TECHNICAL_PASS_NE_CIVILIZATIONAL_CLAIM_VALIDATION`
+
 ## What we would like reviewers to do
 
 Please identify the **single most important** thing that appears:
