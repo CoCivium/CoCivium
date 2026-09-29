@@ -7,6 +7,10 @@ on:
       - 'examples/conode-participation-v0.1.example.json'
       - 'docs/Architecture/CONODE_PARTICIPATION_R0.md'
       - '.github/workflows/conode-participation-contract.yml'
+      - 'docs/Launch/RING0_TECHNICAL_SEND_GATE_20260929.json'
+      - 'docs/Launch/RING0_TECHNICAL_EMAIL_DRAFT_20260929.md'
+      - 'docs/Launch/RING0_TECHNICAL_LINK_READPROOF_20260929.md'
+      - 'docs/Architecture/COETHIC_PRELAUNCH_EFFECT_GATE_R0.md'
   push:
     branches:
       - main
@@ -169,3 +173,51 @@ jobs:
           path: CoEvoAll_GitHubHosted_wave_pickup_receipt.json
           if-no-files-found: error
           retention-days: 7
+
+
+  technical-ring0-send-preflight:
+    name: technical-ring0-send-preflight
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Enforce fail-closed technical Ring-0 send gate
+        shell: python
+        run: |
+          import json
+          from pathlib import Path
+
+          p = Path("docs/Launch/RING0_TECHNICAL_SEND_GATE_20260929.json")
+          g = json.loads(p.read_text(encoding="utf-8"))
+
+          assert g["schema"] == "CoLaunch.Ring0TechnicalSendGate.v0.1"
+          assert g["scope"] == "TECHNICAL_ADVERSARIAL_RING0_ONLY"
+          assert g["send_authority"] == "NONE"
+
+          b = g["send_time_bindings"]
+          anti = g["anti_abuse"]
+
+          required = all([
+              b["recipient_batch_bound"],
+              b["from_identity_bound"],
+              b["final_body_bound"],
+              g["email_draft"]["body_readproven"],
+              g["links"]["readproven"],
+              g["coethic"]["public_outreach_delta_current"],
+              not anti["hidden_tracking"],
+              not anti["bulk_spam_mechanism"],
+          ])
+
+          assert g["effect_eligible"] is required
+
+          if not required:
+              assert g["state"].startswith("HOLD_")
+              assert g["effect_eligible"] is False
+
+          if g["effect_eligible"]:
+              raise AssertionError(
+                  "This draft branch has no send authority. Eligibility must not be converted into send."
+              )
+
+          print("PASS_RING0_TECHNICAL_SEND_GATE_FAILS_CLOSED")
