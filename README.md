@@ -14,7 +14,7 @@
 
 The world is increasingly shaped by conflict, corruption and narrative manipulation. Biased truths are fed to us via $billion systems that evolve our minds more profoundly than adadmic study or parental advice. The post-truth society, so enabled, so vastly AI-enabled, thus erodes our ethics, our decency and even democracy itself.
 
-Globally, civilization is accelerating toward a historically unprecedented "stability", core controlled via new technologies than have never before existed. Unlike the discovery of fire, the invention of stone tools, the develoment of agriculture, the industrial revolution or the invention of mobile phones, these new technologies are weapons of mass destruction, perhaps as insiduous as the threat of nuclear armagedon.
+Globally, civilization is accelerating toward a historically unprecedented "stability", core controlled via unprecedented technologies, and mindspaces that have never before existed. Unlike the discovery of fire, the invention of stone tools, the develoment of agriculture, the industrial revolution or the invention of mobile phones, these new technologies are weapons of mass destruction, perhaps as insiduous as the threat of nuclear armagedon.
 
 
 As truth erodes, even the wisest stuggle to retain independent perspectives. It may help to know the bias, to compensate. But there is so much being fed to us, so fast, so insiduosly, that seeing the truth is getting harder for all of us. Those less skilled in critical thinking, often prefer the short-tem gains from accepting what they are told, unchallenged.
