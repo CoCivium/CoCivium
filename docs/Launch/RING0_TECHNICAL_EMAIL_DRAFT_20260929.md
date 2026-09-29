@@ -21,7 +21,7 @@ It is not finished, and praise is less useful than a good objection.
 **Please identify the single most important thing that seems confusing, unsafe, implausible, overstated, under-specified, centralized in a way we have missed, or worth testing next.**
 
 Technical review packet:
-https://github.com/CoCivium/CoCivium/blob/coevoall/conode-hosted-seed-20260928/docs/Launch/RING0_TECHNICAL_REVIEW_PACKET_20260929.md
+https://github.com/CoCivium/CoCivium/blob/6596c9e9f4f813b34e2091795dfe07eee2b7d775/docs/Launch/RING0_TECHNICAL_REVIEW_PACKET_20260929.md
 
 Live draft CoNode / same-wave proof:
 https://github.com/CoCivium/CoCivium/pull/125
