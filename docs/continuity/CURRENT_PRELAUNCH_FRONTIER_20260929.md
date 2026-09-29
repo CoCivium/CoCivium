@@ -18,7 +18,7 @@ Automatic failover is still unproven.
 ## Public / launch state
 
 ### Technical Ring-0
-**READY FOR EXACT RECIPIENT/FROM-ID BINDING**
+**READY FOR EXACT RECIPIENT/FROM-ID BINDING__PUBLIC_ROOT_CLAIM_BOUNDARY_DISCLOSED**
 
 Packet:
 - `docs/Launch/RING0_TECHNICAL_REVIEW_PACKET_20260929.md`
@@ -29,6 +29,9 @@ Email draft:
 Evidence:
 - PR #125 remains draft/unmerged.
 - Main evidence anchors are commit-pinned to `304e60bca104f9d4291f00adf6ed571f4b4a5417`.
+- Ring-0 packet now includes an explicit public-root README claim boundary.
+- The email draft pins the reviewed packet to commit `6596c9e9f4f813b34e2091795dfe07eee2b7d775`.
+- Current main README is newer, at `774b7ed3196207356b2613061b05592aebae9503`; broader thesis/advocacy statements remain challengeable and are not validated by the technical packet.
 
 ### General-human Ring-0
 **HELD**
