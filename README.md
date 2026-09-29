@@ -12,7 +12,7 @@
 > **Evolution pointer:** capable sessions and machine workers should use [CoAll GitHub Evolution Fabric R0](docs/Evolution/COALL_GITHUB_EVOLUTION_FABRIC_R0.md) plus [the machine evolution lanes](ai/evolution-lanes.json) to contribute bounded strategy, insight, theory, index, lexicon, UX, ops, humour, AutoEvo and other domain deltas. GitHub is a shared evolution surface, not global authority.
 **R&D & coordination gaurdrails for the AI era.**
 
-The world is increasingly shaped by conflict, corruption and narrative manipulation. Biased truths are fed to us via $billion systems that evolve our minds more profoundly than adadmic study or parental advice. The post-truth society, so enabled, so vastly AI-enabled, thus erodes our ethics, our decency and even democracy itself.
+The world is increasingly shaped by conflict, corruption and narrative manipulation. Biased truths are fed to us via $trillion systems that evolve our minds more profoundly than adadmic study or parental advice. The post-truth society, so enabled, so vastly AI-enabled, thus erodes our ethics, our decency and even democracy itself.
 
 Globally, civilization is accelerating toward a historically unprecedented "stability", core controlled via unprecedented technologies, and mindspaces that have never before existed. Unlike the discovery of fire, the invention of stone tools, the develoment of agriculture, the industrial revolution or the invention of mobile phones, these new technologies are weapons of mass destruction, perhaps as insiduous as the threat of nuclear armagedon.
 
