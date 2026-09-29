@@ -35,7 +35,12 @@ https://github.com/CoCivium/CoCivium/blob/304e60bca104f9d4291f00adf6ed571f4b4a54
 
 Purpose: broader substrate framing across hardware, software, storage, networks, models, interfaces and other systems.
 
-### 6. Live draft CoNode / same-wave proof
+### 6. CoEthic+ prelaunch effect gate
+https://github.com/CoCivium/CoCivium/blob/coevoall/conode-hosted-seed-20260928/docs/Architecture/COETHIC_PRELAUNCH_EFFECT_GATE_R0.md
+
+Purpose: explicit pre-effect review of affected parties, power asymmetry, consent, privacy, reversibility, contestability, repair and authority expansion. Reviewers are specifically invited to attack the gate itself.
+
+### 7. Live draft CoNode / same-wave proof
 https://github.com/CoCivium/CoCivium/pull/125
 
 Purpose: inspectable draft-PR evidence of a GitHub-hosted CoNode seed and exact same-wave read-only pickup. This PR remains open, draft and unmerged.
