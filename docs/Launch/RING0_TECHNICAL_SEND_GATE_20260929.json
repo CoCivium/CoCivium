@@ -1,45 +1,51 @@
 {
-  "schema":"CoLaunch.Ring0TechnicalSendGate.v0.1",
-  "state":"HOLD_SEND_GATE_UNBOUND",
-  "scope":"TECHNICAL_ADVERSARIAL_RING0_ONLY",
-  "packet":{
-    "path":"docs/Launch/RING0_TECHNICAL_REVIEW_PACKET_20260929.md",
-    "git_blob":"149dc9c55bf5e3aa13497c49d80ffd86dc41a6dc",
-    "reviewed_packet_commit":"6596c9e9f4f813b34e2091795dfe07eee2b7d775"
+  "schema": "CoLaunch.Ring0TechnicalSendGate.v0.1",
+  "state": "HOLD_SEND_GATE_RECIPIENT_AND_FROM_IDENTITY_UNBOUND",
+  "scope": "TECHNICAL_ADVERSARIAL_RING0_ONLY",
+  "packet": {
+    "path": "docs/Launch/RING0_TECHNICAL_REVIEW_PACKET_20260929.md",
+    "git_blob": "149dc9c55bf5e3aa13497c49d80ffd86dc41a6dc",
+    "reviewed_packet_commit": "6596c9e9f4f813b34e2091795dfe07eee2b7d775"
   },
-  "email_draft":{
-    "path":"docs/Launch/RING0_TECHNICAL_EMAIL_DRAFT_20260929.md",
-    "git_blob":"577a979ab9c3c7e6dad128c4c1c21fe39abafb99",
-    "body_readproven":true
+  "email_draft": {
+    "path": "docs/Launch/RING0_TECHNICAL_EMAIL_DRAFT_20260929.md",
+    "git_blob": "577a979ab9c3c7e6dad128c4c1c21fe39abafb99",
+    "body_readproven": true,
+    "final_body_git_blob": "577a979ab9c3c7e6dad128c4c1c21fe39abafb99",
+    "final_body_bound": true
   },
-  "links":{
-    "readproof_path":"docs/Launch/RING0_TECHNICAL_LINK_READPROOF_20260929.md",
-    "git_blob":"b4659c9f958325e3e40b9cef7dffd21c82bf90e9",
-    "readproven":true
+  "links": {
+    "readproof_path": "docs/Launch/RING0_TECHNICAL_LINK_READPROOF_20260929.md",
+    "git_blob": "b4659c9f958325e3e40b9cef7dffd21c82bf90e9",
+    "readproven": true,
+    "current_pr_head_at_rebind": "7c8bed66cb69632451f6cc61dca10754628797a6",
+    "current_pr_head_run_id": 36626462208
   },
-  "coethic":{
-    "gate_path":"docs/Architecture/COETHIC_PRELAUNCH_EFFECT_GATE_R0.md",
-    "git_blob":"8499a6ebac1877ff5eb9dc459d4bf05de5dab7b5",
-    "public_outreach_delta_current":true
+  "coethic": {
+    "gate_path": "docs/Architecture/COETHIC_PRELAUNCH_EFFECT_GATE_R0.md",
+    "git_blob": "8499a6ebac1877ff5eb9dc459d4bf05de5dab7b5",
+    "public_outreach_delta_current": true
   },
-  "send_time_bindings":{
-    "recipient_batch_bound":false,
-    "from_identity_bound":false,
-    "final_body_bound":false
+  "send_time_bindings": {
+    "recipient_batch_bound": false,
+    "from_identity_bound": false,
+    "final_body_bound": true
   },
-  "anti_abuse":{
-    "hidden_tracking":false,
-    "bulk_spam_mechanism":false
+  "anti_abuse": {
+    "hidden_tracking": false,
+    "bulk_spam_mechanism": false
   },
-  "effect_eligible":false,
-  "send_authority":"NONE",
-  "decision_rule":"effect_eligible iff recipient_batch_bound AND from_identity_bound AND final_body_bound AND body_readproven AND links.readproven AND coethic.public_outreach_delta_current AND NOT hidden_tracking AND NOT bulk_spam_mechanism",
-  "rails":[
+  "effect_eligible": false,
+  "send_authority": "NONE",
+  "decision_rule": "effect_eligible iff recipient_batch_bound AND from_identity_bound AND final_body_bound AND body_readproven AND links.readproven AND coethic.public_outreach_delta_current AND NOT hidden_tracking AND NOT bulk_spam_mechanism",
+  "rails": [
     "PREPARED_NE_SENT",
     "LINK_READPROOF_NE_SEND_AUTHORITY",
     "RECIPIENT_NE_CONSENT",
     "COETHIC_REVIEW_NE_SEND_AUTHORITY",
     "MISSING_BIND_NE_IMPLICIT_PERMISSION",
-    "DRAFT_PR_NE_DEFAULT_BRANCH"
-  ]
+    "DRAFT_PR_NE_DEFAULT_BRANCH",
+    "FINAL_BODY_BOUND_NE_SEND_AUTHORITY"
+  ],
+  "last_rebound_utc": "2026-09-29T22:42:28Z"
 }
