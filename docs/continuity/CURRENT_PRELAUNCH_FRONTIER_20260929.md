@@ -63,6 +63,8 @@ Current principle:
 
 Current status:
 - bounded prelaunch CoEthic shadow exists;
+- public-safe draft review object now exists at `docs/Architecture/COETHIC_PRELAUNCH_EFFECT_GATE_R0.md`;
+- technical reviewers are explicitly invited to attack the CoEthic gate itself;
 - public-send decision remains hold until exact send-time binding;
 - universal runtime enforcement across every CoAll capability remains unproven.
 
