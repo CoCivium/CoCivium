@@ -21,6 +21,10 @@ on:
       - "tools/emit_co_substrate_cross_runtime_node_r0.js"
       - "tools/validate_co_substrate_cross_runtime_attestations_r0.py"
       - "tools/validate_co_substrate_receiver_proof_convergence_r0.py"
+      - "tools/generate_co_substrate_model_runtime_canary_r0.py"
+      - "tools/emit_co_substrate_model_runtime_onnx_r0.py"
+      - "tools/emit_co_substrate_model_runtime_openvino_r0.py"
+      - "tools/validate_co_substrate_model_runtime_attestations_r0.py"
       - ".github/workflows/co-substrate-independence-r0.yml"
   workflow_dispatch:
 
@@ -168,3 +172,95 @@ jobs:
           path: cross-runtime-attestations
       - name: Validate proof-lane convergence
         run: python tools/validate_co_substrate_receiver_proof_convergence_r0.py cross-host-attestations cross-runtime-attestations
+
+  model_runtime_prepare:
+    env:
+      CO_PR_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+      CO_PR_BASE_SHA: ${{ github.event.pull_request.base.sha }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install ONNX model builder
+        run: python -m pip install --disable-pip-version-check onnx numpy
+      - name: Generate deterministic model-runtime canary
+        run: python tools/generate_co_substrate_model_runtime_canary_r0.py
+      - name: Upload model-runtime canary
+        uses: actions/upload-artifact@v4
+        with:
+          name: model-runtime-canary
+          path: |
+            model-runtime-canary.onnx
+            model-runtime-canary-manifest.json
+
+  model_runtime_onnx:
+    needs: model_runtime_prepare
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install ONNX Runtime
+        run: python -m pip install --disable-pip-version-check onnxruntime numpy
+      - name: Download model-runtime canary
+        uses: actions/download-artifact@v4
+        with:
+          name: model-runtime-canary
+          path: .
+      - name: Emit ONNX Runtime attestation
+        run: python tools/emit_co_substrate_model_runtime_onnx_r0.py --out model-runtime-onnx.json
+      - name: Upload ONNX Runtime attestation
+        uses: actions/upload-artifact@v4
+        with:
+          name: model-runtime-onnx
+          path: model-runtime-onnx.json
+
+  model_runtime_openvino:
+    needs: model_runtime_prepare
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install OpenVINO
+        run: python -m pip install --disable-pip-version-check openvino numpy
+      - name: Download model-runtime canary
+        uses: actions/download-artifact@v4
+        with:
+          name: model-runtime-canary
+          path: .
+      - name: Emit OpenVINO attestation
+        run: python tools/emit_co_substrate_model_runtime_openvino_r0.py --out model-runtime-openvino.json
+      - name: Upload OpenVINO attestation
+        uses: actions/upload-artifact@v4
+        with:
+          name: model-runtime-openvino
+          path: model-runtime-openvino.json
+
+  model_runtime_fanin:
+    needs: [model_runtime_onnx, model_runtime_openvino]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Download model-runtime attestations
+        uses: actions/download-artifact@v4
+        with:
+          pattern: model-runtime-*
+          path: model-runtime-attestations
+      - name: Validate distinct inference-engine continuity
+        run: python tools/validate_co_substrate_model_runtime_attestations_r0.py model-runtime-attestations
