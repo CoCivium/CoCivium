@@ -1,5 +1,5 @@
 {
-  "schema": "CoRelKernel.R0.fixtures.v0_2",
+  "schema": "CoRelKernel.R0.fixtures.v0_3",
   "state": "CANDIDATE__NOT_CANON",
   "relations": [
     {
@@ -8,7 +8,9 @@
       "predicate": "CAUSES",
       "object": "B",
       "causal_status": "causal",
-      "provenance": ["fixture:direct-cause"],
+      "provenance": [
+        "fixture:direct-cause"
+      ],
       "confidence": 0.9,
       "boundary": "internal"
     },
@@ -18,17 +20,25 @@
       "predicate": "REPRESENTS",
       "object": "C",
       "causal_status": "non_causal",
-      "provenance": ["fixture:representation"],
+      "provenance": [
+        "fixture:representation"
+      ],
       "confidence": 0.95,
       "boundary": "internal"
     },
     {
       "rel_id": "rel-003",
-      "subject": {"rel_ref":"rel-001"},
+      "subject": {
+        "rel_ref": "rel-001"
+      },
       "predicate": "WEAKENED_BY",
-      "object": {"rel_ref":"rel-004"},
+      "object": {
+        "rel_ref": "rel-004"
+      },
       "causal_status": "non_causal",
-      "provenance": ["fixture:meta-relation"],
+      "provenance": [
+        "fixture:meta-relation"
+      ],
       "confidence": 0.7,
       "boundary": "internal"
     },
@@ -36,9 +46,13 @@
       "rel_id": "rel-004",
       "subject": "counterevidence",
       "predicate": "CONTRADICTS",
-      "object": {"rel_ref":"rel-001"},
+      "object": {
+        "rel_ref": "rel-001"
+      },
       "causal_status": "non_causal",
-      "provenance": ["fixture:counterevidence"],
+      "provenance": [
+        "fixture:counterevidence"
+      ],
       "confidence": 0.8,
       "boundary": "internal"
     },
@@ -48,7 +62,9 @@
       "predicate": "EXPECTED_BUT_MISSING",
       "object": "A-C-direct-relation",
       "causal_status": "unknown",
-      "provenance": ["fixture:null-relation"],
+      "provenance": [
+        "fixture:null-relation"
+      ],
       "boundary": "internal"
     },
     {
@@ -57,7 +73,9 @@
       "predicate": "INTEROPERATES_WITH",
       "object": "CoAll-projection",
       "causal_status": "non_causal",
-      "provenance": ["fixture:boundary-crossing"],
+      "provenance": [
+        "fixture:boundary-crossing"
+      ],
       "boundary": "boundary"
     },
     {
@@ -66,10 +84,14 @@
       "predicate": "POSSIBLY_CAUSES",
       "object": "B",
       "causal_status": "possibly_causal",
-      "provenance": ["fixture:revision-a"],
+      "provenance": [
+        "fixture:revision-a"
+      ],
       "supersedes_rel_id": "rel-001",
       "change_reason": "counterevidence reduced causal confidence",
-      "evidence_delta": ["fixture:counterevidence"],
+      "evidence_delta": [
+        "fixture:counterevidence"
+      ],
       "changed_by": "fixture-a",
       "changed_at": "2026-09-30T00:00:00Z",
       "conflict_set_id": "conflict-rel-001-r1",
@@ -82,14 +104,37 @@
       "predicate": "CAUSES",
       "object": "B",
       "causal_status": "causal",
-      "provenance": ["fixture:revision-b"],
+      "provenance": [
+        "fixture:revision-b"
+      ],
       "supersedes_rel_id": "rel-001",
       "change_reason": "replication evidence retained stronger causal interpretation",
-      "evidence_delta": ["fixture:replication-evidence"],
+      "evidence_delta": [
+        "fixture:replication-evidence"
+      ],
       "changed_by": "fixture-b",
       "changed_at": "2026-09-30T00:00:02Z",
       "conflict_set_id": "conflict-rel-001-r1",
       "conflict_status": "unresolved",
+      "boundary": "internal"
+    },
+    {
+      "rel_id": "rel-001-resolution",
+      "subject": "conflict-rel-001-r1",
+      "predicate": "RESOLVES_CONFLICT",
+      "object": {
+        "rel_ref": "rel-001-v2"
+      },
+      "causal_status": "non_causal",
+      "provenance": [
+        "fixture:adjudication"
+      ],
+      "evidence": [
+        "fixture:counterevidence",
+        "fixture:replication-evidence"
+      ],
+      "resolves_conflict_set_id": "conflict-rel-001-r1",
+      "resolution_note": "Fixture resolution chooses the lower-confidence causal interpretation pending further evidence.",
       "boundary": "internal"
     }
   ]
