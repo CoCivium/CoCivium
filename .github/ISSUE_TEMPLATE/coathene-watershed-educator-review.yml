@@ -1,0 +1,183 @@
+name: "CoAthene Watershed Explorer educator review"
+description: "Adversarial review of Watershed Explorer R0B. Criticism is more useful than endorsement."
+title: "[Educator review] Watershed Explorer R0B - "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for reviewing **Watershed Explorer R0B**.
+
+        We are asking for faults, not endorsement. A useful review may recommend major redesign or retirement.
+
+        Please do not include student personal information, confidential school information, or anything you are not entitled to publish.
+
+        Module path:
+        `docs/Business/CoAthene_RoamLab_R0/modules/WatershedExplorer_R0/`
+
+  - type: dropdown
+    id: reviewer_role
+    attributes:
+      label: Reviewer role
+      description: Choose the closest fit. Credentials are context, not authority.
+      options:
+        - Teacher / educator
+        - Educational assistant / support professional
+        - Administrator / curriculum lead
+        - Education researcher
+        - Accessibility / inclusion reviewer
+        - Parent / caregiver
+        - Student / learner
+        - Subject-matter professional
+        - Other
+    validations:
+      required: true
+
+  - type: input
+    id: experience
+    attributes:
+      label: Relevant experience
+      description: Optional grade, subject, years, accessibility, research, or other context.
+      placeholder: "Example: Ontario Grade 8 science teacher, 6 years"
+    validations:
+      required: false
+
+  - type: input
+    id: jurisdiction
+    attributes:
+      label: Jurisdiction
+      description: Optional. Useful because curriculum and school operations vary.
+      placeholder: "Example: Ontario, Canada"
+    validations:
+      required: false
+
+  - type: textarea
+    id: conflicts
+    attributes:
+      label: Connection or conflict disclosure
+      description: Note any CoCivium contribution, financial interest, vendor relation, or other material connection. "None known" is fine.
+      placeholder: "None known"
+    validations:
+      required: true
+
+  - type: textarea
+    id: learning_objective
+    attributes:
+      label: 1. Learning objective
+      description: What do learners actually learn? Is it worth the time? What cheaper activity could do the same thing?
+    validations:
+      required: true
+
+  - type: textarea
+    id: scientific_validity
+    attributes:
+      label: 2. Scientific validity
+      description: Where can the model create misconceptions or causal overclaims? What important variable or distinction is missing?
+    validations:
+      required: true
+
+  - type: textarea
+    id: inquiry_quality
+    attributes:
+      label: 3. Inquiry quality
+      description: Is the prediction meaningful? Does evidence have a chance to change the conclusion? Is uncertainty taken seriously?
+    validations:
+      required: true
+
+  - type: textarea
+    id: curriculum_fit
+    attributes:
+      label: 4. Curriculum fit
+      description: Which current curriculum relations are genuine, weak, overstated, or absent?
+    validations:
+      required: false
+
+  - type: textarea
+    id: classroom_realism
+    attributes:
+      label: 5. Classroom realism
+      description: What will take longer, confuse learners, break first, or fail at normal class sizes?
+    validations:
+      required: true
+
+  - type: textarea
+    id: accessibility
+    attributes:
+      label: 6. Accessibility and inclusion
+      description: Does the non-headset path preserve the same learning objective? Which learner needs remain poorly served?
+    validations:
+      required: true
+
+  - type: textarea
+    id: assessment
+    attributes:
+      label: 7. Assessment
+      description: Does the rubric measure the intended learning? What should never be used for grading?
+    validations:
+      required: false
+
+  - type: textarea
+    id: privacy_technology
+    attributes:
+      label: 8. Privacy and technology
+      description: Is any learner data unnecessary? Is the technology justified? What platform/device telemetry remains?
+    validations:
+      required: false
+
+  - type: textarea
+    id: safety
+    attributes:
+      label: 9. Safety
+      description: What physical, sensory, emotional, field, or operational risk is under-specified?
+    validations:
+      required: true
+
+  - type: textarea
+    id: material_defects
+    attributes:
+      label: 10. Material defects
+      description: List the defects that most affect whether this should be piloted. Include location, why it matters, suggested fix, severity, and confidence where possible.
+      placeholder: |
+        DEFECT:
+        WHERE:
+        WHY_IT_MATTERS:
+        EVIDENCE_OR_EXAMPLE:
+        SUGGESTED_FIX:
+        SEVERITY: LOW | MEDIUM | HIGH | STOP_PILOT
+        CONFIDENCE: LOW | MEDIUM | HIGH
+    validations:
+      required: true
+
+  - type: dropdown
+    id: final_disposition
+    attributes:
+      label: 11. Final disposition
+      description: This is your review conclusion, not a project decision.
+      options:
+        - PILOT_CANDIDATE_AFTER_MINOR_FIXES
+        - PILOT_CANDIDATE_AFTER_MAJOR_FIXES
+        - REVIEW_AGAIN_BEFORE_PILOT
+        - RETIRE_OR_REDESIGN_MODULE
+        - INSUFFICIENT_CONTEXT_TO_JUDGE
+    validations:
+      required: true
+
+  - type: dropdown
+    id: confidence
+    attributes:
+      label: Confidence in your overall review
+      options:
+        - LOW
+        - MEDIUM
+        - HIGH
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: acknowledgements
+    attributes:
+      label: Review boundaries
+      options:
+        - label: I understand this review may become part of a public critique/correction history.
+          required: true
+        - label: I have not included student personal information or confidential school information.
+          required: true
