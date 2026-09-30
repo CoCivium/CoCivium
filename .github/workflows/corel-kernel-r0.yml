@@ -6,6 +6,7 @@ on:
       - "docs/Relations/CO_REL_KERNEL_R0.md"
       - "schemas/relations/co_rel_kernel_r0.schema.json"
       - "fixtures/relations/co_rel_kernel_r0.fixtures.json"
+      - "fixtures/relations/co_rel_kernel_r0.adversarial.json"
       - "tools/validate_corel_kernel_r0.py"
       - ".github/workflows/corel-kernel-r0.yml"
   workflow_dispatch:
