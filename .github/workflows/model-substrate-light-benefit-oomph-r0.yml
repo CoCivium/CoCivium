@@ -1,0 +1,34 @@
+name: Model substrate-light benefit Oomph R0
+
+on:
+  pull_request:
+    paths:
+      - "docs/Architecture/COMODEL_SUBSTRATE_LIGHT_BENEFIT_OOMPH_R0.md"
+      - "fixtures/substrate/model_substrate_light_benefit_oomph_r0.json"
+      - "tools/validate_model_substrate_light_benefit_oomph_r0.py"
+      - ".github/workflows/model-substrate-light-benefit-oomph-r0.yml"
+      - "docs/Operations/COPARTICIPANT_EDGE_EVOLUTION_R0.md"
+      - "ai/evolution-deltas/2026-09-24/COEVO.PR90.CONOD_DYNAMIC_WAVE.UNIQUE_FANIN.R0.json"
+      - "fixtures/substrate/model_substrate_light_multi_embodiment_r0.json"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out exact candidate head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 1
+
+      - name: Use Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validate measured-benefit physical parallelism election
+        run: python tools/validate_model_substrate_light_benefit_oomph_r0.py
