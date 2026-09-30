@@ -195,6 +195,12 @@ Each runtime attestation MUST also bind the exact checked-out Git commit and exa
 
 `ATTESTATION_NE_SOURCE_BINDING_UNLESS_EXACT_REF`
 
+For pull-request CI, the checked-out commit may be GitHub's synthetic merge commit rather than the PR branch head. Attestations therefore distinguish the exact tested checkout SHA from the PR head SHA and PR base SHA. A green merge-ref test MUST NOT be reported as though the tested checkout SHA were the branch head.
+
+`PR_HEAD_SHA_NE_TESTED_CHECKOUT_SHA`
+
+`GREEN_MERGE_REF_NE_HEAD_BYTES_IDENTICAL`
+
 ## Continuity claim boundaries
 
 An accepted migration supports only the continuity claims actually proved for scope.
