@@ -568,3 +568,42 @@ Findings and corrections:
 `QUANTUM_CORRELATION_NE_NONCAUSALITY_PROOF`  
 `ADVERSARIAL_FIXTURE_PASS_NE_INDEPENDENT_REVIEW`  
 `NEGATIVE_CASE_SET_NE_COMPLETE_BUG_SEARCH`
+
+
+## Currentness sync + cycle-scope clarification R0C
+
+Current main advanced after the earlier collision review by one unrelated commit:
+
+`d675e7b248f223d1077cf94bc8ed42d26a469b8e`
+
+That commit adds only `docs/Business/CoAthene_RoamLab_R0/**` and does not overlap PR127 relation-field surfaces. The candidate branch may therefore merge that main parent without changing the prior semantic collision findings.
+
+R0C also clarifies an ambiguity exposed by adversarial review:
+
+- the **ordinary relation field** may still contain cycles among stable relata and ordinary predicates;
+- the current R0 **relation-as-relatum dependency graph** is intentionally acyclic so `meta_depth` remains finite and mechanically checkable;
+- this is a bounded R0 representation rule, not a claim that higher-order semantic cycles are impossible;
+- if higher-order cycles become necessary, prefer an explicit bundle / stable identity / strongly-connected-component extension rather than silently interpreting recursive references as infinite nesting.
+
+Examples:
+
+```text
+A CONNECTED_TO B
+B CONNECTED_TO A
+```
+
+is an ordinary field cycle and remains representable.
+
+By contrast:
+
+```text
+R1 REFERENCES R2
+R2 REFERENCES R1
+```
+
+is a relation-as-relatum dependency cycle and is held by the current R0 validator.
+
+`FIELD_CYCLE_NE_META_REFERENCE_CYCLE`  
+`R0_META_DAG_NE_UNIVERSAL_RELATION_DAG`  
+`ACYCLIC_R0_NE_ACYCLIC_REALITY_CLAIM`  
+`CURRENTNESS_SYNC_NE_SEMANTIC_REVIEW_RESET`
