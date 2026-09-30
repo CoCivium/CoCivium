@@ -82,3 +82,29 @@ When an authorized machine route exists:
 `NO_MODEL_PULL_OR_INSTALL`  
 `LOCAL_NE_TRUSTED`  
 `VALIDATION_IS_NOT_ACCEPTANCE`
+
+
+## Cross-OS exact-byte finding R0A
+
+The first fan-in run failed even though all three receiver executions passed individually.
+
+Observed failure:
+
+`FAIL_CROSS_RECEIVER_DIVERGENCE:contract_sha256`
+
+Root cause:
+
+The test harness used `Path.write_text(...)` for the temporary contract. On Windows, text-mode newline translation produced CRLF bytes while Linux/macOS emitted LF bytes. The semantic JSON object was equivalent, but the exact contract bytes differed.
+
+Disposition:
+
+- keep the exact hash requirement;
+- normalize the durable test contract by writing explicit UTF-8 bytes with LF;
+- do not weaken exact-object identity to accommodate platform text translation.
+
+This is useful substrate evidence: serialization conventions can leak execution-host differences even when higher-level semantics agree.
+
+`SEMANTIC_EQUIVALENCE_NE_BYTE_IDENTITY`  
+`TEXT_MODE_NE_CANONICAL_SERIALIZATION`  
+`HOST_NEWLINE_POLICY_NE_MODEL_IDENTITY`  
+`FANIN_FAILURE_CAN_REVEAL_SUBSTRATE_LEAK`

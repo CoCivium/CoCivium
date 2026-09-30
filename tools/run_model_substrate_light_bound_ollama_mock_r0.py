@@ -40,7 +40,7 @@ def main():
         tdir = Path(td)
         ready = tdir / "ready.txt"
         contract = tdir / "contract.json"
-        contract.write_text(json.dumps(fx["contract"], indent=2, sort_keys=True) + "\n", encoding="utf-8")
+        contract.write_bytes((json.dumps(fx["contract"], indent=2, sort_keys=True) + "\n").encode("utf-8"))
         proc = subprocess.Popen([
             sys.executable,
             str(SERVER),
