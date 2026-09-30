@@ -8,6 +8,16 @@ CoSubstrate Independence R0 separates the identity and continuity of a model, ag
 
 The candidate claim is not that computation becomes immaterial. It is that durable semantic identity should survive replacement of the current host whenever the required state, provenance, constraints, reconstruction rules, and authority boundaries can be preserved.
 
+## Existing substrate donor / scope correction
+
+This candidate is a focused continuity/migration profile over the existing `CoSubstrateField+ / CoHardware+ / CoSoftware+ R0` architecture in `docs/Architecture/COSUBSTRATE_FIELD_R0.md`.
+
+It does **not** introduce a second generic substrate ontology. The existing field owns substrate taxonomy, translation relations, loss/invariant vocabulary, capability/constraint dimensions, privacy/effect ceilings, and replacement/fallback relations. This profile owns only portability classification and scoped migration acceptance/rejection checks.
+
+`COSUBSTRATE_INDEPENDENCE_PROFILE_NE_NEW_SUBSTRATE_ONTOLOGY`
+
+See `docs/Architecture/CO_SUBSTRATE_INDEPENDENCE_FIELD_CROSSWALK_R0.md`.
+
 ## Core distinction
 
 A durable CoAll object SHOULD be representable independently of the machine currently executing it.
