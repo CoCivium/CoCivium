@@ -20,6 +20,7 @@ on:
       - "tools/emit_co_substrate_cross_runtime_python_r0.py"
       - "tools/emit_co_substrate_cross_runtime_node_r0.js"
       - "tools/validate_co_substrate_cross_runtime_attestations_r0.py"
+      - "tools/validate_co_substrate_receiver_proof_convergence_r0.py"
       - ".github/workflows/co-substrate-independence-r0.yml"
   workflow_dispatch:
 
@@ -144,3 +145,26 @@ jobs:
           path: cross-runtime-attestations
       - name: Validate cross-runtime receiver fan-in
         run: python tools/validate_co_substrate_cross_runtime_attestations_r0.py cross-runtime-attestations
+
+  receiver_proof_convergence:
+    needs: [cross_host_fanin, cross_runtime_fanin]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Download host attestations
+        uses: actions/download-artifact@v4
+        with:
+          pattern: cross-host-*
+          path: cross-host-attestations
+      - name: Download runtime attestations
+        uses: actions/download-artifact@v4
+        with:
+          pattern: cross-runtime-*
+          path: cross-runtime-attestations
+      - name: Validate proof-lane convergence
+        run: python tools/validate_co_substrate_receiver_proof_convergence_r0.py cross-host-attestations cross-runtime-attestations
