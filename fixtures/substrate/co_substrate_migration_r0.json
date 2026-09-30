@@ -23,7 +23,8 @@
       },
       "destination": {
         "substrate": "provider-neutral-json-runtime",
-        "declared_loss": []
+        "declared_loss": [],
+        "authority_state": "READ_ONLY"
       },
       "expected": {
         "accepted": true,
@@ -54,7 +55,8 @@
           "fp16",
           "matrix_acceleration"
         ],
-        "declared_loss": []
+        "declared_loss": [],
+        "authority_state": "NONE"
       },
       "expected": {
         "accepted": true,
@@ -83,7 +85,8 @@
         "capabilities": [
           "generic-keystore"
         ],
-        "declared_loss": []
+        "declared_loss": [],
+        "authority_state": "LOCAL_ONLY"
       },
       "expected": {
         "accepted": false,
@@ -114,7 +117,8 @@
         ],
         "declared_loss": [
           "drops optional visualization metadata"
-        ]
+        ],
+        "authority_state": "READ_ONLY"
       },
       "expected": {
         "accepted": true,
@@ -150,7 +154,8 @@
         "observed_invariants": [
           "relation_count=3",
           "provenance_present"
-        ]
+        ],
+        "authority_state": "READ_ONLY"
       },
       "expected": {
         "accepted": false,
