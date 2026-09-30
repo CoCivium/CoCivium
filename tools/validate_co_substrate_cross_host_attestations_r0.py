@@ -21,6 +21,10 @@ def main():
         fail("semantic version mismatch across receivers")
     if len({v["authority_state"] for v in vals})!=1:
         fail("authority mismatch across receivers")
+    if len({v["source_git_sha"] for v in vals})!=1:
+        fail("source git SHA mismatch across receivers")
+    if len({v["source_fixture_blob_sha"] for v in vals})!=1:
+        fail("source fixture blob mismatch across receivers")
     if any(v.get("accepted_for_scope") is not True for v in vals):
         fail("receiver rejected continuity scope")
     if len({v["receiver"]["os"] for v in vals})!=2:
@@ -33,7 +37,8 @@ def main():
         required={
             "CROSS_OS_CI_NE_MODEL_RUNTIME_MIGRATION",
             "SAME_SEMANTIC_DIGEST_NE_IDENTICAL_INSTANCE",
-            "CI_RECEIVER_PROOF_NE_PRODUCTION_RUNTIME"
+            "CI_RECEIVER_PROOF_NE_PRODUCTION_RUNTIME",
+            "ATTESTATION_NE_SOURCE_BINDING_UNLESS_EXACT_REF"
         }
         if not required.issubset(claims):
             fail("required nonclaims missing")
@@ -43,10 +48,13 @@ def main():
         "semantic_sha256":vals[0]["semantic_sha256"],
         "receivers":[v["receiver"]["os"] for v in vals],
         "scope":vals[0]["scope"],
+        "source_git_sha":vals[0]["source_git_sha"],
+        "source_fixture_blob_sha":vals[0]["source_fixture_blob_sha"],
         "nonclaims":[
             "CROSS_OS_CI_NE_MODEL_RUNTIME_MIGRATION",
             "SAME_SEMANTIC_DIGEST_NE_IDENTICAL_INSTANCE",
-            "CI_RECEIVER_PROOF_NE_PRODUCTION_RUNTIME"
+            "CI_RECEIVER_PROOF_NE_PRODUCTION_RUNTIME",
+            "ATTESTATION_NE_SOURCE_BINDING_UNLESS_EXACT_REF"
         ]
     },separators=(",",":"),sort_keys=True))
 
