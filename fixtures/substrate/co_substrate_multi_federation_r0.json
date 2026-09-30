@@ -1,0 +1,154 @@
+{
+  "schema": "CoSubstrateIndependence.MultiSubstrateFederation.R0",
+  "state": "SYNTHETIC_MULTI_SUBSTRATE_FEDERATION__NO_CANON_NO_RUNTIME",
+  "cases": [
+    {
+      "id": "F01_READ_ONLY_REPLICAS",
+      "lineage_id": "lineage-A",
+      "instances": [
+        {
+          "instance_id": "A-cpu",
+          "substrate": "cpu",
+          "authority": "READ_ONLY",
+          "state_version": "v10"
+        },
+        {
+          "instance_id": "A-cloud",
+          "substrate": "cloud-model",
+          "authority": "READ_ONLY",
+          "state_version": "v10"
+        }
+      ],
+      "writes": [],
+      "expected": {
+        "status": "COEXIST_OK",
+        "single_current_instance_required": false
+      }
+    },
+    {
+      "id": "F02_CONCURRENT_DIVERGENCE",
+      "lineage_id": "lineage-B",
+      "instances": [
+        {
+          "instance_id": "B-local",
+          "substrate": "local-model",
+          "authority": "BOUNDED_WRITE",
+          "state_version": "v20"
+        },
+        {
+          "instance_id": "B-remote",
+          "substrate": "remote-model",
+          "authority": "BOUNDED_WRITE",
+          "state_version": "v20"
+        }
+      ],
+      "writes": [
+        {
+          "instance_id": "B-local",
+          "new_version": "v21-local",
+          "delta_id": "d-local"
+        },
+        {
+          "instance_id": "B-remote",
+          "new_version": "v21-remote",
+          "delta_id": "d-remote"
+        }
+      ],
+      "expected": {
+        "status": "DIVERGED_REQUIRES_RECONCILIATION",
+        "single_current_instance_required": false
+      }
+    },
+    {
+      "id": "F03_UNAUTHORIZED_WRITER",
+      "lineage_id": "lineage-C",
+      "instances": [
+        {
+          "instance_id": "C-readonly",
+          "substrate": "edge",
+          "authority": "READ_ONLY",
+          "state_version": "v7"
+        }
+      ],
+      "writes": [
+        {
+          "instance_id": "C-readonly",
+          "new_version": "v8",
+          "delta_id": "d-bad"
+        }
+      ],
+      "expected": {
+        "status": "REJECT_UNAUTHORIZED_WRITE",
+        "single_current_instance_required": false
+      }
+    },
+    {
+      "id": "F04_MERGE_DOES_NOT_ERASE_LINEAGE",
+      "lineage_id": "lineage-D",
+      "instances": [
+        {
+          "instance_id": "D1",
+          "substrate": "cpu",
+          "authority": "BOUNDED_WRITE",
+          "state_version": "v30-a"
+        },
+        {
+          "instance_id": "D2",
+          "substrate": "gpu",
+          "authority": "BOUNDED_WRITE",
+          "state_version": "v30-b"
+        }
+      ],
+      "reconciliation": {
+        "result_version": "v31-merged",
+        "parents": [
+          "v30-a",
+          "v30-b"
+        ],
+        "preserves_parent_lineage": true
+      },
+      "writes": [],
+      "expected": {
+        "status": "MERGE_ACCEPTABLE_WITH_PARENT_LINEAGE",
+        "single_current_instance_required": false
+      }
+    },
+    {
+      "id": "F05_FAILOVER_NOT_IDENTITY_TRANSFER",
+      "lineage_id": "lineage-E",
+      "instances": [
+        {
+          "instance_id": "E-primary",
+          "substrate": "host-1",
+          "authority": "BOUNDED_WRITE",
+          "state_version": "v40",
+          "liveness": "DOWN"
+        },
+        {
+          "instance_id": "E-secondary",
+          "substrate": "host-2",
+          "authority": "BOUNDED_WRITE",
+          "state_version": "v40",
+          "liveness": "UP"
+        }
+      ],
+      "failover": {
+        "from": "E-primary",
+        "to": "E-secondary"
+      },
+      "expected": {
+        "status": "CONTINUATION_ELIGIBLE_FOR_SCOPE",
+        "single_current_instance_required": false,
+        "identity_transfer_claim_allowed": false
+      }
+    }
+  ],
+  "rails": [
+    "MULTI_INSTANCE_NE_MULTI_IDENTITY",
+    "ONE_LINEAGE_NE_ONE_ACTIVE_INSTANCE",
+    "CONCURRENT_WRITES_NE_AUTOMATIC_MERGE",
+    "FAILOVER_NE_IDENTITY_TRANSFER",
+    "MERGE_NE_HISTORY_ERASURE",
+    "AUTHORITY_IS_INSTANCE_SCOPED_WHERE_DECLARED"
+  ]
+}
