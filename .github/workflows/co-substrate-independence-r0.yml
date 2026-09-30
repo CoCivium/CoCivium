@@ -4,6 +4,7 @@ on:
   pull_request:
     paths:
       - "docs/Architecture/CO_SUBSTRATE_INDEPENDENCE_R0.md"
+      - "docs/Architecture/CO_SUBSTRATE_INDEPENDENCE_FIELD_CROSSWALK_R0.md"
       - "fixtures/substrate/co_substrate_migration_r0.json"
       - "fixtures/substrate/co_substrate_migration_r0.adversarial.json"
       - "tools/validate_co_substrate_migration_r0.py"
