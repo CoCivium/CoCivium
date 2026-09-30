@@ -1,0 +1,78 @@
+{
+  "schema": "CoRelKernel.R0.fixtures.v0_1",
+  "state": "CANDIDATE__NOT_CANON",
+  "relations": [
+    {
+      "rel_id": "rel-001",
+      "subject": "A",
+      "predicate": "CAUSES",
+      "object": "B",
+      "causal_status": "causal",
+      "provenance": ["fixture:direct-cause"],
+      "confidence": 0.9,
+      "boundary": "internal"
+    },
+    {
+      "rel_id": "rel-002",
+      "subject": "B",
+      "predicate": "REPRESENTS",
+      "object": "C",
+      "causal_status": "non_causal",
+      "provenance": ["fixture:representation"],
+      "confidence": 0.95,
+      "boundary": "internal"
+    },
+    {
+      "rel_id": "rel-003",
+      "subject": {"rel_ref":"rel-001"},
+      "predicate": "WEAKENED_BY",
+      "object": {"rel_ref":"rel-004"},
+      "causal_status": "non_causal",
+      "provenance": ["fixture:meta-relation"],
+      "confidence": 0.7,
+      "boundary": "internal"
+    },
+    {
+      "rel_id": "rel-004",
+      "subject": "counterevidence",
+      "predicate": "CONTRADICTS",
+      "object": {"rel_ref":"rel-001"},
+      "causal_status": "non_causal",
+      "provenance": ["fixture:counterevidence"],
+      "confidence": 0.8,
+      "boundary": "internal"
+    },
+    {
+      "rel_id": "rel-005",
+      "subject": "expected-link-A-C",
+      "predicate": "EXPECTED_BUT_MISSING",
+      "object": "A-C-direct-relation",
+      "causal_status": "unknown",
+      "provenance": ["fixture:null-relation"],
+      "boundary": "internal"
+    },
+    {
+      "rel_id": "rel-006",
+      "subject": "external-system-X",
+      "predicate": "INTEROPERATES_WITH",
+      "object": "CoAll-projection",
+      "causal_status": "non_causal",
+      "provenance": ["fixture:boundary-crossing"],
+      "boundary": "boundary"
+    },
+    {
+      "rel_id": "rel-001-v2",
+      "subject": "A",
+      "predicate": "POSSIBLY_CAUSES",
+      "object": "B",
+      "causal_status": "possibly_causal",
+      "provenance": ["fixture:revision"],
+      "supersedes_rel_id": "rel-001",
+      "change_reason": "counterevidence reduced causal confidence",
+      "evidence_delta": ["fixture:counterevidence"],
+      "changed_by": "fixture",
+      "changed_at": "2026-09-30T00:00:00Z",
+      "boundary": "internal"
+    }
+  ]
+}
