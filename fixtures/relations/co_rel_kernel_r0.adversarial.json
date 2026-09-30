@@ -1,0 +1,57 @@
+{
+  "schema": "CoRelKernel.R0.adversarial.v0_1",
+  "state": "CANDIDATE__NEGATIVE_TESTS",
+  "cases": [
+    {
+      "id": "missing_provenance",
+      "expected_error": "missing required fields",
+      "relations": [
+        {"rel_id":"bad-001","subject":"A","predicate":"RELATES_TO","object":"B","causal_status":"non_causal"}
+      ]
+    },
+    {
+      "id": "invalid_confidence",
+      "expected_error": "confidence must be in [0, 1]",
+      "relations": [
+        {"rel_id":"bad-002","subject":"A","predicate":"RELATES_TO","object":"B","causal_status":"non_causal","provenance":["fixture"],"confidence":1.5}
+      ]
+    },
+    {
+      "id": "dangling_rel_ref",
+      "expected_error": "references unknown relation",
+      "relations": [
+        {"rel_id":"bad-003","subject":{"rel_ref":"missing-rel"},"predicate":"WEAKENS","object":"B","causal_status":"non_causal","provenance":["fixture"]}
+      ]
+    },
+    {
+      "id": "broken_supersession",
+      "expected_error": "supersedes unknown relation",
+      "relations": [
+        {"rel_id":"bad-004","subject":"A","predicate":"RELATES_TO","object":"B","causal_status":"unknown","provenance":["fixture"],"supersedes_rel_id":"missing-prior","change_reason":"test","changed_by":"fixture","changed_at":"2026-09-30T00:00:00Z"}
+      ]
+    },
+    {
+      "id": "revision_without_lineage",
+      "expected_error": "revision missing lineage field",
+      "relations": [
+        {"rel_id":"prior-005","subject":"A","predicate":"RELATES_TO","object":"B","causal_status":"unknown","provenance":["fixture"]},
+        {"rel_id":"bad-005","subject":"A","predicate":"RELATES_TO","object":"B","causal_status":"unknown","provenance":["fixture"],"supersedes_rel_id":"prior-005"}
+      ]
+    },
+    {
+      "id": "null_relation_wrong_causal_status",
+      "expected_error": "typed absence relation should use causal_status='unknown'",
+      "relations": [
+        {"rel_id":"bad-006","subject":"A","predicate":"EXPECTED_BUT_MISSING","object":"B","causal_status":"non_causal","provenance":["fixture"]}
+      ]
+    },
+    {
+      "id": "duplicate_rel_id",
+      "expected_error": "rel_id values must be unique",
+      "relations": [
+        {"rel_id":"dup","subject":"A","predicate":"RELATES_TO","object":"B","causal_status":"unknown","provenance":["fixture"]},
+        {"rel_id":"dup","subject":"C","predicate":"RELATES_TO","object":"D","causal_status":"unknown","provenance":["fixture"]}
+      ]
+    }
+  ]
+}
