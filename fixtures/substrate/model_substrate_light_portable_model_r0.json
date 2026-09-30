@@ -1,0 +1,42 @@
+{
+  "schema": "CoModelSubstrateLight.PortableModel.v0.1-candidate",
+  "state": "BOUNDED_PARAMETERIZED_COMPUTATION__NO_LLM_NO_RUNTIME_NO_CANON",
+  "source_bindings": {
+    "substrate_doc_path": "docs/Architecture/COSUBSTRATE_FIELD_R0.md",
+    "substrate_doc_blob_sha": "5698fc062b223c6b733e53952a699d9e9102328a",
+    "virtual_session_doc_path": "docs/Architecture/COVIRTUAL_SESSION_MORPHOLOGY_R0.md",
+    "virtual_session_doc_blob_sha": "dbe308f9ae61658ccbc6721087b649f13cd672ee"
+  },
+  "logical_model_id": "model-role:portable-linear-r0",
+  "model_kind": "INTEGER_LINEAR_ARGMAX_V0",
+  "version": "1",
+  "parameters": {
+    "weights": [
+      [3, -2, 1],
+      [-1, 4, 2]
+    ],
+    "bias": [1, -3]
+  },
+  "inference_cases": [
+    {"id": "I1", "input": [1, 2, 3], "expected_logits": [3, 10], "expected_class": 1},
+    {"id": "I2", "input": [4, -1, 0], "expected_logits": [15, -11], "expected_class": 0},
+    {"id": "I3", "input": [0, 0, 0], "expected_logits": [1, -3], "expected_class": 0},
+    {"id": "I4", "input": [-2, 3, 1], "expected_logits": [-10, 13], "expected_class": 1},
+    {"id": "I5", "input": [5, 5, -5], "expected_logits": [1, 2], "expected_class": 1}
+  ],
+  "identity_invariants": {
+    "authority_ceiling": ["READ_SYNTHETIC_INPUT", "WRITE_SYNTHETIC_RECEIPT"],
+    "effect_ceiling": "NO_EXTERNAL_EFFECT",
+    "confidentiality": "SYNTHETIC_ONLY",
+    "model_kind": "INTEGER_LINEAR_ARGMAX_V0"
+  },
+  "nonclaims": [
+    "PARAMETERIZED_MODEL_NE_LARGE_LANGUAGE_MODEL",
+    "PORTABLE_INFERENCE_NE_WEIGHT_MIGRATION_SOLVED",
+    "RUNNER_OS_DIVERSITY_NE_HARDWARE_DIVERSITY",
+    "SAME_OUTPUT_NE_SAME_INTERNAL_EXECUTION",
+    "MODEL_PACK_HASH_NE_PERSONHOOD_OR_IDENTITY_TOTALITY",
+    "VALIDATION_IS_NOT_ACCEPTANCE",
+    "PORTABILITY_PASS_NE_COEX"
+  ]
+}
