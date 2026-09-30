@@ -3,6 +3,7 @@ import argparse
 import hashlib
 import json
 import platform
+import subprocess
 from pathlib import Path
 
 OBJ=Path("fixtures/substrate/co_substrate_cross_host_object_r0.json")
@@ -43,6 +44,8 @@ def main():
         "semantic_version":data["semantic_version"],
         "semantic_sha256":canonical_sha(data),
         "authority_state":data["authority_state"],
+        "source_git_sha":subprocess.check_output(["git","rev-parse","HEAD"],text=True).strip(),
+        "source_fixture_blob_sha":subprocess.check_output(["git","hash-object",str(OBJ)],text=True).strip(),
         "required_invariants":sorted(required),
         "observed_invariants":sorted(observed),
         "receiver":{
@@ -55,7 +58,8 @@ def main():
         "nonclaims":[
             "CROSS_OS_CI_NE_MODEL_RUNTIME_MIGRATION",
             "SAME_SEMANTIC_DIGEST_NE_IDENTICAL_INSTANCE",
-            "CI_RECEIVER_PROOF_NE_PRODUCTION_RUNTIME"
+            "CI_RECEIVER_PROOF_NE_PRODUCTION_RUNTIME",
+            "ATTESTATION_NE_SOURCE_BINDING_UNLESS_EXACT_REF"
         ]
     }
     Path(args.out).write_text(json.dumps(attestation,indent=2,sort_keys=True)+"\n",encoding="utf-8")
