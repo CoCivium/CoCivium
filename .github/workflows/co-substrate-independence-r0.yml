@@ -10,10 +10,13 @@ on:
       - "fixtures/substrate/co_substrate_field_projection_r0.json"
       - "fixtures/substrate/co_substrate_continuity_claims_r0.json"
       - "fixtures/substrate/co_substrate_multi_federation_r0.json"
+      - "fixtures/substrate/co_substrate_cross_host_object_r0.json"
       - "tools/validate_co_substrate_migration_r0.py"
       - "tools/validate_co_substrate_field_projection_r0.py"
       - "tools/validate_co_substrate_continuity_claims_r0.py"
       - "tools/validate_co_substrate_multi_federation_r0.py"
+      - "tools/emit_co_substrate_cross_host_attestation_r0.py"
+      - "tools/validate_co_substrate_cross_host_attestations_r0.py"
       - ".github/workflows/co-substrate-independence-r0.yml"
   workflow_dispatch:
 
@@ -38,3 +41,42 @@ jobs:
         run: python tools/validate_co_substrate_continuity_claims_r0.py
       - name: Validate multi-substrate federation semantics
         run: python tools/validate_co_substrate_multi_federation_r0.py
+
+  cross_host_receiver:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Emit receiver attestation
+        shell: bash
+        run: python tools/emit_co_substrate_cross_host_attestation_r0.py --out cross-host-attestation.json
+      - name: Upload receiver attestation
+        uses: actions/upload-artifact@v4
+        with:
+          name: cross-host-${{ runner.os }}
+          path: cross-host-attestation.json
+
+  cross_host_fanin:
+    needs: cross_host_receiver
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Download receiver attestations
+        uses: actions/download-artifact@v4
+        with:
+          pattern: cross-host-*
+          path: cross-host-attestations
+      - name: Validate cross-host receiver fan-in
+        run: python tools/validate_co_substrate_cross_host_attestations_r0.py cross-host-attestations
