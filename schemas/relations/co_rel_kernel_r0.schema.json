@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cocivium.org/schemas/relations/co_rel_kernel_r0.schema.json",
+  "title": "CoRelKernel R0 relation",
+  "type": "object",
+  "required": ["rel_id","subject","predicate","object","causal_status","provenance"],
+  "properties": {
+    "rel_id": {"type":"string","minLength":1},
+    "subject": {"$ref":"#/$defs/endpoint"},
+    "predicate": {"type":"string","minLength":1},
+    "object": {"$ref":"#/$defs/endpoint"},
+    "scope": {"type":["string","null"]},
+    "observer": {"type":["string","null"]},
+    "time": {"type":["object","null"],"additionalProperties":true},
+    "evidence": {"type":["array","null"],"items":{"type":"string"}},
+    "confidence": {"type":["number","null"],"minimum":0,"maximum":1},
+    "causal_status": {"enum":["causal","non_causal","possibly_causal","mixed","unknown"]},
+    "provenance": {"type":"array","minItems":1,"items":{"type":"string","minLength":1}},
+    "boundary": {"enum":["internal","external","boundary","unknown_domain"]},
+    "supersedes_rel_id": {"type":["string","null"]},
+    "change_reason": {"type":["string","null"]},
+    "evidence_delta": {"type":["array","null"],"items":{"type":"string"}},
+    "changed_by": {"type":["string","null"]},
+    "changed_at": {"type":["string","null"],"format":"date-time"}
+  },
+  "additionalProperties": true,
+  "$defs": {
+    "endpoint": {
+      "oneOf": [
+        {"type":"string","minLength":1},
+        {
+          "type":"object",
+          "required":["rel_ref"],
+          "properties":{"rel_ref":{"type":"string","minLength":1}},
+          "additionalProperties":false
+        }
+      ]
+    }
+  }
+}
