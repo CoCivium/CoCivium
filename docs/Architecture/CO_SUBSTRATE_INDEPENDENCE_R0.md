@@ -213,6 +213,18 @@ A final convergence fan-in therefore checks all four independent receiver attest
 
 `PROOF_CONVERGENCE_NE_PHYSICAL_FAILURE_DOMAIN_INDEPENDENCE`
 
+## Distinct inference-engine canary
+
+A bounded CI canary MAY test the same deterministic model artifact through two genuinely different inference engines. R0 uses ONNX Runtime and OpenVINO against one exact ONNX model artifact and requires matching model digest, semantic-fixture digest, input, numeric output, authority state, PR context, and declared scope.
+
+This is stronger than parser/runtime diversity because different inference engines execute the same model graph. It is still deliberately weaker than an LLM/runtime handoff, X2 local-model continuity, live agent continuation, or physical failure-domain independence.
+
+`INFERENCE_ENGINE_DIVERSITY_NE_LLM_RUNTIME_DIVERSITY`
+
+`CI_MODEL_CANARY_NE_X2_LOCAL_MODEL_HANDOFF`
+
+`NUMERIC_OUTPUT_MATCH_NE_AGENT_IDENTITY`
+
 ## Continuity claim boundaries
 
 An accepted migration supports only the continuity claims actually proved for scope.
@@ -287,7 +299,7 @@ R0 does not:
 
 Candidate CI now includes synthetic migration/federation semantics, Linux/Windows receiver reconstruction, Python/Node independent runtime reconstruction, exact source binding, and cross-lane fan-in.
 
-The next useful proof is no longer another CI parser or operating-system variant. It is a bounded handoff across either:
+The next useful proof is no longer another parser or operating-system variant. After the distinct inference-engine canary, it is a bounded handoff across either:
 
 1. two genuinely distinct model runtimes, or
 2. two independently controlled physical hosts/failure domains,
