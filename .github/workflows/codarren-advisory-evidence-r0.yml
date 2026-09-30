@@ -1,0 +1,75 @@
+name: CoDarren Advisory Evidence Lab R0
+
+on:
+  pull_request:
+    paths:
+      - 'docs/Research/CODARREN_COTIME_BUSINESS_ADVISORY_EVIDENCE_LAB_R0.md'
+      - 'examples/darren-advisory/**'
+      - 'scripts/validate_darren_advisory_claim_r0.py'
+      - '.github/workflows/codarren-advisory-evidence-r0.yml'
+  push:
+    paths:
+      - 'docs/Research/CODARREN_COTIME_BUSINESS_ADVISORY_EVIDENCE_LAB_R0.md'
+      - 'examples/darren-advisory/**'
+      - 'scripts/validate_darren_advisory_claim_r0.py'
+      - '.github/workflows/codarren-advisory-evidence-r0.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  positive-matrix:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        fixture:
+          - examples/darren-advisory/observed-public.json
+          - examples/darren-advisory/inferred-public.json
+          - examples/darren-advisory/hypothesis.json
+          - examples/darren-advisory/scenario.json
+          - examples/darren-advisory/client-private.json
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m json.tool "${{ matrix.fixture }}" >/dev/null
+      - run: python scripts/validate_darren_advisory_claim_r0.py "${{ matrix.fixture }}"
+
+  negative-matrix:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        fixture:
+          - examples/darren-advisory/invalid-hypothesis-as-observed.json
+          - examples/darren-advisory/invalid-private-public.json
+          - examples/darren-advisory/invalid-order-without-gate.json
+          - examples/darren-advisory/invalid-reflexive-forecast.json
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Expect fail-closed
+        shell: bash
+        run: |
+          set +e
+          python scripts/validate_darren_advisory_claim_r0.py "${{ matrix.fixture }}" >out.log 2>&1
+          rc=$?
+          set -e
+          cat out.log
+          test "$rc" -ne 0
+
+  fanin:
+    needs: [positive-matrix, negative-matrix]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Bounded receipt
+        run: |
+          echo "PASS_BOUNDED_ADVISORY_CI_FANIN"
+          echo "ANALYSIS_PARALLELISM_NE_EFFECT_PARALLELISM"
+          echo "AI_TEXT_NE_COMPLIANCE_PROOF"
+          echo "ONE_SIGNAL_NE_PIVOT_PROOF"
