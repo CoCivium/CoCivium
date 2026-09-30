@@ -1,0 +1,65 @@
+{
+  "schema": "CoModelSubstrateLight.RealPressureObservationManifest.v0.1-candidate",
+  "state": "COMPLEMENTARY_COUNTERFACTUAL_RECEIPT_LANDED__PRESSURE_OBSERVATION_PICKUP_PENDING",
+  "object": {
+    "Identity": "receipt:complementary-search-counterfactual-fanin-r0",
+    "Provenance": {
+      "workflow_run_id": 36746050561,
+      "workflow_name": "Model substrate-light complementary search counterfactual R0",
+      "source_head_sha": "b48e2e27fe901a15130c31e675258a7e4c730f20",
+      "artifact_id": 11112796491,
+      "artifact_name": "model-substrate-light-complementary-search-counterfactual-fanin-r0",
+      "artifact_archive_digest": "sha256:e2b505cdaa6c03a015a138c5f4efc6f43733dd2002710352e126438ab90c0293",
+      "source_file_name": "complementary-search-counterfactual-fanin-r0.json"
+    },
+    "ContentHash": "sha256:2d3dde96b4fb864dbdcc1da8be08f050aca5ed9911bff1c24717d30e11b937c0",
+    "LifecycleState": "LANDED",
+    "Authority": "CANDIDATE_ONLY__ADVISORY_ONLY__NO_RUNTIME_NO_CANON_NO_AUTHORITY_CHANGE",
+    "Owner": "CoCivium/CoCivium#135",
+    "Receiver": "github-actions:PR135_REAL_PRESSURE_OBSERVATION_COMPILER_R0",
+    "Dependencies": [
+      "workflow-run:36746050561",
+      "artifact:11112796491",
+      "fixture:fixtures/substrate/model_substrate_light_benefit_oomph_r0.json"
+    ],
+    "CollisionDomain": "substrate-light-real-pressure-observation-r0",
+    "DuplicateOf": null,
+    "Supersedes": null,
+    "VisibleSurface": "PR135:evidence/substrate/pressure-observations-r0/complementary-search-counterfactual-fanin-r0.json",
+    "ProofGate": "PICKED_UP requires exact source artifact readback plus live workflow/job metadata readback",
+    "NextDeed": "Measure raw receiver scheduling/proof/cost observables and refuse policy-budget translation until units are calibrated",
+    "RetirementCondition": "Superseded by a calibrated pressure-metric contract or broader real substrate run"
+  },
+  "policy_binding": {
+    "benefit_fixture_path": "fixtures/substrate/model_substrate_light_benefit_oomph_r0.json",
+    "benefit_fixture_blob_sha": "d6fefd2ca5453705726423edb60b4c6ff1eb085e"
+  },
+  "job_bindings": {
+    "single": "single",
+    "parallel": ["parallel (P0)", "parallel (P1)", "parallel (P2)"],
+    "fanin": "fanin"
+  },
+  "coverage_boundary": [
+    "ONE_GITHUB_HOSTED_COMPLEMENTARY_SEARCH_WORKFLOW_RUN",
+    "LIVE_RUN_AND_JOB_TIMING_METADATA",
+    "EXACT_FANIN_RECEIPT_READBACK",
+    "RAW_PRESSURE_OBSERVABLES_ONLY",
+    "NO_POLICY_SCALE_CALIBRATION",
+    "NO_ENERGY_MEASUREMENT",
+    "NO_HUMAN_ATTENTION_MEASUREMENT",
+    "NO_RUNTIME_WIDTH_AUTHORITY"
+  ],
+  "nonclaims": [
+    "REQUESTED_WIDTH_NE_OBSERVED_CONCURRENCY",
+    "JOB_WALL_SECONDS_NE_COMPUTE_ENERGY",
+    "QUEUE_WAIT_NE_GLOBAL_RECEIVER_PRESSURE",
+    "ZERO_OBSERVED_COLLISION_NE_ZERO_COLLISION_RISK",
+    "MISSING_READPROOFS_0_NE_ZERO_PROOF_DEBT_ON_ALL_SURFACES",
+    "UNMEASURED_HUMAN_ATTENTION_NE_ZERO_HUMAN_ATTENTION_COST",
+    "RAW_OBSERVABLE_NE_POLICY_BUDGET_UNIT",
+    "PRESSURE_OBSERVATION_NE_RUNTIME_WIDEN_PERMISSION",
+    "PICKED_UP_BY_PRESSURE_COMPILER_NE_INTEGRATED",
+    "VALIDATION_IS_NOT_ACCEPTANCE",
+    "NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE"
+  ]
+}
