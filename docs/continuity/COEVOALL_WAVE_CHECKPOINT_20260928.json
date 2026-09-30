@@ -1,0 +1,39 @@
+{
+  "schema":"CoWave.Checkpoint.v0.1",
+  "state":"CHECKPOINT_READY_FOR_OFFHOME_READONLY_PICKUP",
+  "wave_id":"CoEvoAll+::2026-09-28::resident-survivability",
+  "objective":"Reduce Rick keyboard/home-power dependence while preserving bounded authority, exact receipts, replaceable sessions/workers/routes, and same-wave continuity.",
+  "frontier":{
+    "x2":"READ_VERIFIED + BASELINE_CAPABILITY_VERIFIED + ARTIFACT_HANDOFF_VERIFIED",
+    "github_hosted":"READ_VERIFIED + BOUNDED_CAPABILITY_VERIFIED + OFF_HOME_EXECUTION_VERIFIED",
+    "costead":"DISTINCT_NETWORK_CUSTODY_ENDPOINT + EXECUTION_UNPROVEN + POWER_DOMAIN_UNPROVEN",
+    "automatic_wave_failover":"UNPROVEN"
+  },
+  "bindings":{
+    "continuity_v02_receipt_sha256":"0B67B49588D34EE1950798CC6D4C23CE90253258FBF11401FCBA17E2AC5053A5",
+    "empirical_route_degradation_receipt_sha256":"4DCCF5FE235CFB6E1CEDDCA0D4BCB74217AF7A67B34FFDBD6AE58741F72DF7CB",
+    "x2_node_ladder_v02_sha256":"7A482B051BC07C493F1CC315CEB679A93C71637E2EE5BC285C850ADBB221F240",
+    "github_hosted_node_receipt_sha256":"1F8FF1D0B274E34E37EA11E0D9B661482DCE5084C958781ACA96C46D3CB5AF39",
+    "github_hosted_node_ladder_sha256":"157D56F532A21D57EDD100222B927076392E98CF1118BE8607A2B451776D0E49"
+  },
+  "authority":{
+    "effect_authority":"NONE_FOR_HOSTED_PICKUP_CANARY",
+    "financial_authority":"NONE",
+    "credential_transfer":"NONE"
+  },
+  "next_safe_deed":"Hosted runner validates exact checkpoint bytes, reconstructs wave identity/frontier, and returns a bounded pickup receipt artifact.",
+  "stop_conditions":[
+    "CHECKPOINT_HASH_MISMATCH",
+    "WAVE_ID_MISMATCH",
+    "OBJECTIVE_MISMATCH",
+    "AUTHORITY_NOT_NONE",
+    "UNEXPECTED_WRITE_REQUIREMENT"
+  ],
+  "rails":[
+    "WAVE_NE_SESSION",
+    "CHECKPOINT_NE_AUTHORITY",
+    "PICKUP_NE_FAILOVER_COMPLETE",
+    "READONLY_PICKUP_NE_EFFECT_AUTHORITY",
+    "GITHUB_HOSTED_EPHEMERAL_NE_DURABLE_CONTROL_PLANE"
+  ]
+}
