@@ -1,0 +1,27 @@
+name: CoRelKernel R0 contract
+
+on:
+  pull_request:
+    paths:
+      - "docs/Relations/CO_REL_KERNEL_R0.md"
+      - "schemas/relations/co_rel_kernel_r0.schema.json"
+      - "fixtures/relations/co_rel_kernel_r0.fixtures.json"
+      - "tools/validate_corel_kernel_r0.py"
+      - ".github/workflows/corel-kernel-r0.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Validate CoRelKernel R0
+        run: python tools/validate_corel_kernel_r0.py
