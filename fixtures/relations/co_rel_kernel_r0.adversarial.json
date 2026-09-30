@@ -1,5 +1,5 @@
 {
-  "schema": "CoRelKernel.R0.adversarial.v0_4",
+  "schema": "CoRelKernel.R0.adversarial.v0_5",
   "state": "CANDIDATE__NEGATIVE_TESTS",
   "cases": [
     {
@@ -372,6 +372,162 @@
           ],
           "resolves_conflict_set_id": "set-r",
           "resolution_note": "invalid target"
+        }
+      ]
+    },
+    {
+      "id": "contradiction_without_basis",
+      "expected_error": "CONTRADICTS requires contradiction_basis",
+      "relations": [
+        {
+          "rel_id": "c-a",
+          "subject": "X",
+          "predicate": "STATE_IS",
+          "object": "OPEN",
+          "observer": "a",
+          "causal_status": "non_causal",
+          "provenance": [
+            "fixture"
+          ]
+        },
+        {
+          "rel_id": "c-b",
+          "subject": "X",
+          "predicate": "STATE_IS",
+          "object": "CLOSED",
+          "observer": "b",
+          "causal_status": "non_causal",
+          "provenance": [
+            "fixture"
+          ]
+        },
+        {
+          "rel_id": "c-x",
+          "subject": {
+            "rel_ref": "c-a"
+          },
+          "predicate": "CONTRADICTS",
+          "object": {
+            "rel_ref": "c-b"
+          },
+          "causal_status": "non_causal",
+          "provenance": [
+            "fixture"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "reversed_time_interval",
+      "expected_error": "time.valid_from must be <= time.valid_to",
+      "relations": [
+        {
+          "rel_id": "t-bad",
+          "subject": "X",
+          "predicate": "STATE_IS",
+          "object": "OPEN",
+          "time": {
+            "valid_from": "2026-09-30T02:00:00Z",
+            "valid_to": "2026-09-30T01:00:00Z"
+          },
+          "causal_status": "non_causal",
+          "provenance": [
+            "fixture"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "temporal_contradiction_without_overlap",
+      "expected_error": "temporal_overlap contradiction requires overlapping validity intervals",
+      "relations": [
+        {
+          "rel_id": "t-a",
+          "subject": "X",
+          "predicate": "STATE_IS",
+          "object": "OPEN",
+          "observer": "a",
+          "time": {
+            "valid_from": "2026-09-30T00:00:00Z",
+            "valid_to": "2026-09-30T01:00:00Z"
+          },
+          "causal_status": "non_causal",
+          "provenance": [
+            "fixture"
+          ]
+        },
+        {
+          "rel_id": "t-b",
+          "subject": "X",
+          "predicate": "STATE_IS",
+          "object": "CLOSED",
+          "observer": "b",
+          "time": {
+            "valid_from": "2026-09-30T02:00:00Z",
+            "valid_to": "2026-09-30T03:00:00Z"
+          },
+          "causal_status": "non_causal",
+          "provenance": [
+            "fixture"
+          ]
+        },
+        {
+          "rel_id": "t-x",
+          "subject": {
+            "rel_ref": "t-a"
+          },
+          "predicate": "CONTRADICTS",
+          "object": {
+            "rel_ref": "t-b"
+          },
+          "contradiction_basis": "temporal_overlap",
+          "causal_status": "non_causal",
+          "provenance": [
+            "fixture"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "observer_relative_same_observer",
+      "expected_error": "observer_relative contradiction requires distinct observers",
+      "relations": [
+        {
+          "rel_id": "o-a",
+          "subject": "X",
+          "predicate": "STATE_IS",
+          "object": "OPEN",
+          "observer": "same",
+          "causal_status": "non_causal",
+          "provenance": [
+            "fixture"
+          ]
+        },
+        {
+          "rel_id": "o-b",
+          "subject": "X",
+          "predicate": "STATE_IS",
+          "object": "CLOSED",
+          "observer": "same",
+          "causal_status": "non_causal",
+          "provenance": [
+            "fixture"
+          ]
+        },
+        {
+          "rel_id": "o-x",
+          "subject": {
+            "rel_ref": "o-a"
+          },
+          "predicate": "CONTRADICTS",
+          "object": {
+            "rel_ref": "o-b"
+          },
+          "contradiction_basis": "observer_relative",
+          "causal_status": "non_causal",
+          "provenance": [
+            "fixture"
+          ]
         }
       ]
     }
