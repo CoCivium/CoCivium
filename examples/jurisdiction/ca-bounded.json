@@ -1,0 +1,92 @@
+{
+  "schema": "CoJurisdictionWeave.DeedApplicability.v0.1-candidate",
+  "deed_id": "fixture:ca-bounded",
+  "observed_at": "2026-09-24T20:20:00Z",
+  "deed_class": "SYNTHETIC_JURISDICTION_ROUTE_FIXTURE",
+  "principals": [
+    "fixture:principal"
+  ],
+  "participants": [
+    "fixture:human",
+    "fixture:ai-adviser"
+  ],
+  "nodes": [
+    "fixture:node"
+  ],
+  "affected_parties": [
+    "fixture:participant"
+  ],
+  "data_classes": [
+    "PUBLIC_OR_SYNTHETIC_DATA"
+  ],
+  "source_locations": [
+    "FIXTURE"
+  ],
+  "processing_locations": [
+    "FIXTURE"
+  ],
+  "destinations": [
+    "FIXTURE"
+  ],
+  "target_markets": [
+    "FIXTURE"
+  ],
+  "contracts": [],
+  "licenses": [
+    "fixture:license"
+  ],
+  "effect_locations": [
+    "FIXTURE"
+  ],
+  "candidate_regimes": [
+    {
+      "regime_id": "ca",
+      "source_ref": "fixture:source:ca",
+      "valid_time": "2026-09-24",
+      "applicability_state": "APPLIES_PROVISIONALLY",
+      "confidence": 0.9,
+      "notes": [
+        "Synthetic fixture only."
+      ]
+    }
+  ],
+  "route_disposition": {
+    "state": "ALLOW_BOUNDED",
+    "reason": "Synthetic CI fixture. No legal conclusion.",
+    "human_review_required": false,
+    "conditions": [
+      "bounded synthetic effect only"
+    ],
+    "prohibited_routes": [
+      "route-selected-solely-to-avoid-known-obligation"
+    ]
+  },
+  "authority_ceiling": "CANDIDATE_ONLY",
+  "responsibility_graph": [
+    {
+      "subject": "fixture:ca-bounded",
+      "relation": "PROPOSED_BY",
+      "object": "fixture:ai-adviser"
+    },
+    {
+      "subject": "fixture:ca-bounded",
+      "relation": "AUTHORIZED_BY",
+      "object": "fixture:human"
+    },
+    {
+      "subject": "fixture:ca-bounded",
+      "relation": "AFFECTS",
+      "object": "fixture:participant"
+    }
+  ],
+  "evidence_refs": [
+    "fixture:source:ca"
+  ],
+  "unresolved_conflicts": [],
+  "next_gate": "NONE_SYNTHETIC_ONLY",
+  "nonclaims": [
+    "SYNTHETIC_FIXTURE_NE_LEGAL_ADVICE",
+    "NODE_LOCATION_NE_SOLE_JURISDICTION",
+    "DISTRIBUTION_NE_RESPONSIBILITY_ERASURE"
+  ]
+}

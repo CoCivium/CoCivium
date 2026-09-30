@@ -1,0 +1,56 @@
+{
+  "schema": "CoLawResearch.EvidenceRegistry.v0.1-candidate",
+  "observed_at": "2026-09-25T13:40:00Z",
+  "domain": ["CoLawSmoosh+", "SEC", "AI", "investment_management"],
+  "sources": [
+    {
+      "source_id": "sec:2024-36",
+      "evidence_class": "ENFORCEMENT_ACTION",
+      "title": "SEC Charges Two Investment Advisers with Making False and Misleading Statements About Their Use of Artificial Intelligence",
+      "official_url": "https://www.sec.gov/newsroom/press-releases/2024-36",
+      "published_at": "2024-03-18",
+      "interpretation_state": "SOURCE_FACT"
+    },
+    {
+      "source_id": "sec:s7-12-23-withdrawal",
+      "evidence_class": "FINAL_RULE_WITHDRAWAL",
+      "title": "Conflicts of Interest Associated with the Use of Predictive Data Analytics by Broker-Dealers and Investment Advisers",
+      "official_url": "https://www.sec.gov/rules-regulations/2025/06/s7-12-23",
+      "published_at": "2025-06-12",
+      "interpretation_state": "SOURCE_FACT",
+      "currentness_note": "Withdrawn proposal; not an operative final rule."
+    },
+    {
+      "source_id": "sec:daly-2026-02-03",
+      "evidence_class": "OFFICIAL_STAFF_REMARK",
+      "title": "Artificial Intelligence and the Future of Investment Management",
+      "official_url": "https://www.sec.gov/newsroom/speeches-statements/daly-020326-artificial-intelligence-future-investment-management",
+      "published_at": "2026-02-03",
+      "interpretation_state": "SOURCE_FACT",
+      "currentness_note": "Staff remarks; page states they do not necessarily reflect Commission views."
+    },
+    {
+      "source_id": "sec:rulemaking-index-2026",
+      "evidence_class": "CURRENTNESS_INDEX",
+      "title": "Rulemaking Activity",
+      "official_url": "https://www.sec.gov/rules-regulations/rulemaking-activity",
+      "published_at": "CURRENT",
+      "interpretation_state": "SOURCE_FACT",
+      "currentness_note": "Index only; underlying instruments require separate review."
+    }
+  ],
+  "rails": [
+    "HISTORICAL_PROPOSAL_NE_OPERATIVE_RULE",
+    "STAFF_REMARK_NE_COMMISSION_RULE",
+    "ENFORCEMENT_CASE_NE_UNIVERSAL_REQUIREMENT",
+    "COALL_INFERENCE_NE_SOURCE_FACT",
+    "SCENARIO_NE_PREDICTION",
+    "CI_PASS_NE_LEGAL_CONCLUSION"
+  ],
+  "nonclaims": [
+    "NOT_LEGAL_ADVICE",
+    "NOT_INVESTMENT_ADVICE",
+    "NOT_A_SECURITIES_RECOMMENDATION",
+    "NOT_A_CURRENT_RULE_SUMMARY_WITHOUT_CURRENT_SOURCE_REVIEW"
+  ]
+}

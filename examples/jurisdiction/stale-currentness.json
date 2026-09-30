@@ -1,0 +1,93 @@
+{
+  "schema": "CoJurisdictionWeave.DeedApplicability.v0.1-candidate",
+  "deed_id": "fixture:stale-currentness",
+  "observed_at": "2026-09-24T20:20:00Z",
+  "deed_class": "SYNTHETIC_JURISDICTION_ROUTE_FIXTURE",
+  "principals": [
+    "fixture:principal"
+  ],
+  "participants": [
+    "fixture:human",
+    "fixture:ai-adviser"
+  ],
+  "nodes": [
+    "fixture:node"
+  ],
+  "affected_parties": [
+    "fixture:participant"
+  ],
+  "data_classes": [
+    "PUBLIC_OR_SYNTHETIC_DATA"
+  ],
+  "source_locations": [
+    "FIXTURE"
+  ],
+  "processing_locations": [
+    "FIXTURE"
+  ],
+  "destinations": [
+    "FIXTURE"
+  ],
+  "target_markets": [
+    "FIXTURE"
+  ],
+  "contracts": [],
+  "licenses": [
+    "fixture:license"
+  ],
+  "effect_locations": [
+    "FIXTURE"
+  ],
+  "candidate_regimes": [
+    {
+      "regime_id": "stale-regime",
+      "source_ref": "fixture:source:stale-regime",
+      "valid_time": "2026-09-24",
+      "applicability_state": "MAY_APPLY",
+      "confidence": 0.3,
+      "notes": [
+        "Synthetic fixture only."
+      ]
+    }
+  ],
+  "route_disposition": {
+    "state": "HOLD_MISSING_CURRENTNESS",
+    "reason": "Synthetic CI fixture. No legal conclusion.",
+    "human_review_required": true,
+    "conditions": [
+      "bind authoritative current sources before real effect"
+    ],
+    "prohibited_routes": [
+      "route-selected-solely-to-avoid-known-obligation"
+    ]
+  },
+  "authority_ceiling": "HUMAN_OR_PROFESSIONAL_GATE_REQUIRED",
+  "responsibility_graph": [
+    {
+      "subject": "fixture:stale-currentness",
+      "relation": "PROPOSED_BY",
+      "object": "fixture:ai-adviser"
+    },
+    {
+      "subject": "fixture:stale-currentness",
+      "relation": "AUTHORIZED_BY",
+      "object": "fixture:human"
+    },
+    {
+      "subject": "fixture:stale-currentness",
+      "relation": "AFFECTS",
+      "object": "fixture:participant"
+    }
+  ],
+  "evidence_refs": [
+    "fixture:source:stale-regime"
+  ],
+  "unresolved_conflicts": [],
+  "next_gate": "AUTHORIZED_HUMAN_OR_PROFESSIONAL_REVIEW",
+  "nonclaims": [
+    "SYNTHETIC_FIXTURE_NE_LEGAL_ADVICE",
+    "NODE_LOCATION_NE_SOLE_JURISDICTION",
+    "DISTRIBUTION_NE_RESPONSIBILITY_ERASURE",
+    "STALE_SOURCE_NE_CURRENT_RULE"
+  ]
+}

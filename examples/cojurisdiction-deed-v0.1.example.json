@@ -1,0 +1,57 @@
+{
+  "schema":"CoJurisdictionWeave.DeedApplicability.v0.1-candidate",
+  "deed_id":"fixture:cross-border-public-doc-projection",
+  "observed_at":"2026-09-24T20:15:00Z",
+  "deed_class":"PUBLIC_DOCUMENTATION_PROJECTION_FIXTURE",
+  "principals":["fixture:publisher"],
+  "participants":["fixture:human-editor","fixture:ai-adviser"],
+  "nodes":["fixture:node-canada","fixture:node-eu"],
+  "affected_parties":["fixture:public-reader"],
+  "data_classes":["PUBLIC_DOCUMENTATION"],
+  "source_locations":["CA"],
+  "processing_locations":["CA","EU"],
+  "destinations":["PUBLIC_WEB"],
+  "target_markets":["CA","EU"],
+  "contracts":[],
+  "licenses":["fixture:permissive"],
+  "effect_locations":["CA","EU"],
+  "candidate_regimes":[
+    {
+      "regime_id":"fixture:regime-ca",
+      "source_ref":"fixture:official-source-ca",
+      "valid_time":"2026-09-24",
+      "applicability_state":"MAY_APPLY",
+      "confidence":0.6,
+      "notes":["Synthetic fixture only; not a legal conclusion."]
+    },
+    {
+      "regime_id":"fixture:regime-eu",
+      "source_ref":"fixture:official-source-eu",
+      "valid_time":"2026-09-24",
+      "applicability_state":"MAY_APPLY",
+      "confidence":0.6,
+      "notes":["Synthetic fixture only; not a legal conclusion."]
+    }
+  ],
+  "route_disposition":{
+    "state":"HOLD_REVIEW",
+    "reason":"Cross-border synthetic fixture deliberately retains applicability uncertainty.",
+    "human_review_required":true,
+    "conditions":["bind current authoritative sources before any real effect"],
+    "prohibited_routes":["route-selected-solely-to-avoid-known-obligation"]
+  },
+  "authority_ceiling":"HUMAN_OR_PROFESSIONAL_GATE_REQUIRED",
+  "responsibility_graph":[
+    {"subject":"fixture:public-doc","relation":"PROPOSED_BY","object":"fixture:ai-adviser"},
+    {"subject":"fixture:public-doc","relation":"AUTHORIZED_BY","object":"fixture:human-editor"},
+    {"subject":"fixture:public-doc","relation":"AFFECTS","object":"fixture:public-reader"}
+  ],
+  "evidence_refs":["fixture:official-source-ca","fixture:official-source-eu"],
+  "unresolved_conflicts":["fixture:applicability-needs-human-review"],
+  "next_gate":"PROFESSIONAL_OR_AUTHORIZED_HUMAN_REVIEW",
+  "nonclaims":[
+    "SYNTHETIC_FIXTURE_NE_LEGAL_ADVICE",
+    "NODE_LOCATION_NE_SOLE_JURISDICTION",
+    "DISTRIBUTION_NE_RESPONSIBILITY_ERASURE"
+  ]
+}

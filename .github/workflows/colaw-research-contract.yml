@@ -1,0 +1,47 @@
+name: CoLawResearch R0 contract
+
+on:
+  pull_request:
+    paths:
+      - 'examples/research/**'
+      - 'scripts/validate_colaw_research_registry_r0.py'
+      - '.github/workflows/colaw-research-contract.yml'
+  push:
+    paths:
+      - 'examples/research/**'
+      - 'scripts/validate_colaw_research_registry_r0.py'
+      - '.github/workflows/colaw-research-contract.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  source-fixtures:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        fixture:
+          - examples/research/sec-ai-regulatory-evidence-r0.json
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Parse research fixture
+        run: python -m json.tool "${{ matrix.fixture }}" >/dev/null
+      - name: Validate evidence classification
+        run: python scripts/validate_colaw_research_registry_r0.py "${{ matrix.fixture }}"
+
+  anti-collapse:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check epistemic rails
+        shell: bash
+        run: |
+          set -euo pipefail
+          grep -q 'HISTORICAL_PROPOSAL_NE_OPERATIVE_RULE' examples/research/sec-ai-regulatory-evidence-r0.json
+          grep -q 'STAFF_REMARK_NE_COMMISSION_RULE' examples/research/sec-ai-regulatory-evidence-r0.json
+          grep -q 'ENFORCEMENT_CASE_NE_UNIVERSAL_REQUIREMENT' examples/research/sec-ai-regulatory-evidence-r0.json
+          grep -q 'CI_PASS_NE_LEGAL_CONCLUSION' examples/research/sec-ai-regulatory-evidence-r0.json
