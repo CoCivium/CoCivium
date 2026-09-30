@@ -1,5 +1,5 @@
 {
-  "schema": "CoRelKernel.R0.fixtures.v0_1",
+  "schema": "CoRelKernel.R0.fixtures.v0_2",
   "state": "CANDIDATE__NOT_CANON",
   "relations": [
     {
@@ -66,12 +66,30 @@
       "predicate": "POSSIBLY_CAUSES",
       "object": "B",
       "causal_status": "possibly_causal",
-      "provenance": ["fixture:revision"],
+      "provenance": ["fixture:revision-a"],
       "supersedes_rel_id": "rel-001",
       "change_reason": "counterevidence reduced causal confidence",
       "evidence_delta": ["fixture:counterevidence"],
-      "changed_by": "fixture",
+      "changed_by": "fixture-a",
       "changed_at": "2026-09-30T00:00:00Z",
+      "conflict_set_id": "conflict-rel-001-r1",
+      "conflict_status": "unresolved",
+      "boundary": "internal"
+    },
+    {
+      "rel_id": "rel-001-v3",
+      "subject": "A",
+      "predicate": "CAUSES",
+      "object": "B",
+      "causal_status": "causal",
+      "provenance": ["fixture:revision-b"],
+      "supersedes_rel_id": "rel-001",
+      "change_reason": "replication evidence retained stronger causal interpretation",
+      "evidence_delta": ["fixture:replication-evidence"],
+      "changed_by": "fixture-b",
+      "changed_at": "2026-09-30T00:00:02Z",
+      "conflict_set_id": "conflict-rel-001-r1",
+      "conflict_status": "unresolved",
       "boundary": "internal"
     }
   ]
