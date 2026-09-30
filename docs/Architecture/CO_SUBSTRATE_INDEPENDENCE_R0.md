@@ -187,6 +187,10 @@ It still does **not** prove model-runtime migration, live agent continuity, prod
 
 `SAME_SEMANTIC_DIGEST_NE_IDENTICAL_INSTANCE`
 
+Each runtime attestation MUST also bind the exact checked-out Git commit and exact fixture blob SHA. Matching semantics without matching source provenance is insufficient for this proof.
+
+`ATTESTATION_NE_SOURCE_BINDING_UNLESS_EXACT_REF`
+
 ## Continuity claim boundaries
 
 An accepted migration supports only the continuity claims actually proved for scope.
