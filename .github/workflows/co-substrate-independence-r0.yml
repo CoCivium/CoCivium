@@ -83,3 +83,55 @@ jobs:
           path: cross-host-attestations
       - name: Validate cross-host receiver fan-in
         run: python tools/validate_co_substrate_cross_host_attestations_r0.py cross-host-attestations
+
+  cross_runtime_python:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Emit Python runtime attestation
+        run: python tools/emit_co_substrate_cross_runtime_python_r0.py --out cross-runtime-python.json
+      - name: Upload Python runtime attestation
+        uses: actions/upload-artifact@v4
+        with:
+          name: cross-runtime-python
+          path: cross-runtime-python.json
+
+  cross_runtime_node:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Emit Node runtime attestation
+        run: node tools/emit_co_substrate_cross_runtime_node_r0.js --out cross-runtime-node.json
+      - name: Upload Node runtime attestation
+        uses: actions/upload-artifact@v4
+        with:
+          name: cross-runtime-node
+          path: cross-runtime-node.json
+
+  cross_runtime_fanin:
+    needs: [cross_runtime_python, cross_runtime_node]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Download runtime attestations
+        uses: actions/download-artifact@v4
+        with:
+          pattern: cross-runtime-*
+          path: cross-runtime-attestations
+      - name: Validate cross-runtime receiver fan-in
+        run: python tools/validate_co_substrate_cross_runtime_attestations_r0.py cross-runtime-attestations
