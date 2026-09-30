@@ -24,7 +24,11 @@
       "destination": {
         "substrate": "provider-neutral-json-runtime",
         "declared_loss": [],
-        "authority_state": "READ_ONLY"
+        "authority_state": "READ_ONLY",
+        "capabilities": [
+          "JSON",
+          "UTF-8"
+        ]
       },
       "expected": {
         "accepted": true,
