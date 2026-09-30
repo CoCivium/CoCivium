@@ -1,0 +1,168 @@
+{
+  "schema": "CoSubstrateIndependence.MigrationFixture.R0",
+  "state": "SYNTHETIC_MIGRATION_FIXTURE__NO_CANON_NO_RUNTIME",
+  "cases": [
+    {
+      "id": "portable_semantic_object",
+      "portability_class": "PORTABLE",
+      "source": {
+        "object_id": "rel-bundle-001",
+        "semantic_version": "v1",
+        "provenance": [
+          "synthetic:portable"
+        ],
+        "authority_state": "READ_ONLY",
+        "invariants": [
+          "relation_count=3",
+          "provenance_present"
+        ],
+        "substrate_requirements": [
+          "JSON",
+          "UTF-8"
+        ]
+      },
+      "destination": {
+        "substrate": "provider-neutral-json-runtime",
+        "declared_loss": []
+      },
+      "expected": {
+        "accepted": true,
+        "reason": "semantic payload and invariants preserved"
+      }
+    },
+    {
+      "id": "substrate_constrained_object",
+      "portability_class": "SUBSTRATE_CONSTRAINED",
+      "source": {
+        "object_id": "inference-001",
+        "semantic_version": "v1",
+        "provenance": [
+          "synthetic:inference"
+        ],
+        "authority_state": "NONE",
+        "invariants": [
+          "tensor_shape=4x4"
+        ],
+        "substrate_requirements": [
+          "fp16",
+          "matrix_acceleration"
+        ]
+      },
+      "destination": {
+        "substrate": "compatible-accelerator",
+        "capabilities": [
+          "fp16",
+          "matrix_acceleration"
+        ],
+        "declared_loss": []
+      },
+      "expected": {
+        "accepted": true,
+        "reason": "declared substrate requirements satisfied"
+      }
+    },
+    {
+      "id": "intentionally_substrate_bound_object",
+      "portability_class": "SUBSTRATE_BOUND",
+      "source": {
+        "object_id": "hardware-key-001",
+        "semantic_version": "v1",
+        "provenance": [
+          "synthetic:hardware-bound"
+        ],
+        "authority_state": "LOCAL_ONLY",
+        "invariants": [
+          "private_material_nonexportable"
+        ],
+        "substrate_requirements": [
+          "hardware-root-A"
+        ]
+      },
+      "destination": {
+        "substrate": "different-host-B",
+        "capabilities": [
+          "generic-keystore"
+        ],
+        "declared_loss": []
+      },
+      "expected": {
+        "accepted": false,
+        "reason": "intentional hardware binding must not be bypassed"
+      }
+    },
+    {
+      "id": "lossy_migration",
+      "portability_class": "PORTABLE",
+      "source": {
+        "object_id": "observer-model-001",
+        "semantic_version": "v3",
+        "provenance": [
+          "synthetic:lossy"
+        ],
+        "authority_state": "READ_ONLY",
+        "invariants": [
+          "core_relations_preserved"
+        ],
+        "substrate_requirements": [
+          "structured-relations"
+        ]
+      },
+      "destination": {
+        "substrate": "reduced-profile-runtime",
+        "capabilities": [
+          "structured-relations"
+        ],
+        "declared_loss": [
+          "drops optional visualization metadata"
+        ]
+      },
+      "expected": {
+        "accepted": true,
+        "reason": "loss is explicit and outside required invariants"
+      }
+    },
+    {
+      "id": "failed_reconstruction_invariant",
+      "portability_class": "PORTABLE",
+      "source": {
+        "object_id": "relation-state-002",
+        "semantic_version": "v5",
+        "provenance": [
+          "synthetic:reject"
+        ],
+        "authority_state": "READ_ONLY",
+        "invariants": [
+          "relation_count=4",
+          "provenance_present"
+        ],
+        "substrate_requirements": [
+          "JSON"
+        ]
+      },
+      "destination": {
+        "substrate": "json-runtime",
+        "capabilities": [
+          "JSON"
+        ],
+        "declared_loss": [
+          "one required relation missing"
+        ],
+        "observed_invariants": [
+          "relation_count=3",
+          "provenance_present"
+        ]
+      },
+      "expected": {
+        "accepted": false,
+        "reason": "required invariant failed"
+      }
+    }
+  ],
+  "rails": [
+    "SUBSTRATE_NE_IDENTITY",
+    "PORTABLE_NE_SUBSTRATE_FREE",
+    "RECONSTRUCTABLE_NE_IDENTICAL_INSTANCE",
+    "MIGRATION_NE_EQUIVALENCE",
+    "CAPABILITY_NE_AUTHORITY"
+  ]
+}
