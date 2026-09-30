@@ -1,6 +1,6 @@
 # CoRelationField+ / CoCausalNonCausalBraid+ R0
 
-**State:** `PUBLIC_CANDIDATE_ARCHITECTURE__DRAFT_PR_ONLY__NO_CANON_NO_RUNTIME_NO_AUTHORITY_CHANGE`
+**State:** `PUBLIC_CANDIDATE_ARCHITECTURE__READY_FOR_REVIEW__NO_CANON_NO_RUNTIME_NO_AUTHORITY_CHANGE`
 
 ## Lead
 
@@ -527,3 +527,24 @@ Everything else should reuse or point into the existing carrier that already own
 `COEVO_DELTA_NE_RELATION_FIELD`  
 `SUBSTRATE_RELATION_NE_GENERIC_RELATION_ONLY`  
 `CONTRACTION_BEFORE_PROMOTION`
+
+
+## Review correction R0A
+
+Promotion review caught three candidate-quality defects before main mutation:
+
+1. lifecycle wording still described the PR as draft after the reversible ready-for-review transition;
+2. the synthetic evidence token `evidence:E1` was typed as `MISSING_EVIDENCE` while simultaneously supporting a causal relation;
+3. the adapter schema accidentally encoded the six-carrier fixture as a universal maximum.
+
+R0A corrects those without widening authority:
+
+- `evidence:E1` is a generic synthetic `OBJECT`, not a missing-evidence assertion;
+- the adapter **schema** accepts one-or-more carrier bindings with open carrier/role identifiers;
+- the adapter **fixture validator** still requires the exact six current carrier families, preserving the bounded canary;
+- relation validators now require every relation relatum kind to match the top-level declared relatum kind.
+
+`FIXTURE_COVERAGE_NE_SCHEMA_UNIVERSE`  
+`ADAPTER_SCHEMA_NE_FIXED_CARRIER_SET`  
+`RELATUM_KIND_MUST_MATCH_DECLARATION`  
+`REVIEW_FINDING_NE_MAIN_MUTATION`

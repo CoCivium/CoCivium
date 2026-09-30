@@ -34,7 +34,7 @@ jobs:
       - name: Validate pointer-only adapter contract
         run: |
           python - <<'PY'
-          import hashlib, json
+          import copy, hashlib, json
           from pathlib import Path
           from jsonschema import Draft202012Validator
 
@@ -54,6 +54,16 @@ jobs:
 
           if git_blob_sha(pack["field_schema_path"]) != pack["field_schema_blob_sha"]:
               raise SystemExit("FAIL_FIELD_SCHEMA_BLOB_MISMATCH")
+
+          # The schema must remain extensible beyond this exact six-carrier fixture.
+          future_pack = copy.deepcopy(pack)
+          future_pack["bindings"] = [copy.deepcopy(pack["bindings"][0])]
+          future_pack["bindings"][0]["binding_id"] = "B-future-carrier"
+          future_pack["bindings"][0]["source_carrier"] = "FUTURE_CARRIER"
+          future_pack["bindings"][0]["binding_role"] = "FUTURE_REF"
+          future_errors = list(Draft202012Validator(schema).iter_errors(future_pack))
+          if future_errors:
+              raise SystemExit("FAIL_ADAPTER_SCHEMA_FIXED_TO_CURRENT_FIXTURE")
 
           expected_roles = {
               "COOPEN_RELATION":"MATCH_GATE_REF",

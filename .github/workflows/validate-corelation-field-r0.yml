@@ -57,6 +57,7 @@ jobs:
               raise SystemExit("FAIL_DUPLICATE_RELATION_ID")
           relation_by_id = {r["relation_id"]: r for r in relations}
           relation_id_set = set(relation_ids)
+          declared_kinds = {r["ref"]: r["kind"] for r in fixture["relata"]}
 
           max_depth = fixture["max_relation_depth"]
           if any(r["meta_depth"] > max_depth for r in relations):
@@ -64,6 +65,10 @@ jobs:
 
           for relation in relations:
               for relatum in relation["relata"]:
+                  if relatum["ref"] not in declared_kinds:
+                      raise SystemExit(f"FAIL_UNDECLARED_RELATUM:{relation['relation_id']}:{relatum['ref']}")
+                  if declared_kinds[relatum["ref"]] != relatum["kind"]:
+                      raise SystemExit(f"FAIL_RELATUM_KIND_MISMATCH:{relation['relation_id']}:{relatum['ref']}")
                   if relatum["kind"] == "RELATION":
                       ref = relatum["ref"].removeprefix("relation:")
                       if ref not in relation_id_set:

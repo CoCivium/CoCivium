@@ -13,7 +13,7 @@
     "field_schema_path":{"const":"schemas/corelation-field-v0.1.schema.json"},
     "field_schema_blob_sha":{"type":"string","pattern":"^[0-9a-f]{40}$"},
     "bindings":{
-      "type":"array","minItems":6,"maxItems":6,
+      "type":"array","minItems":1,
       "items":{
         "type":"object","additionalProperties":false,
         "required":[
@@ -25,13 +25,13 @@
         ],
         "properties":{
           "binding_id":{"type":"string","minLength":1},
-          "source_carrier":{"enum":["COOPEN_RELATION","COENCOUNTER","CORESEARCH_EVIDENCE","COTIME","COEVO_DELTA","COSUBSTRATE_FIELD"]},
+          "source_carrier":{"type":"string","pattern":"^[A-Z][A-Z0-9_+.-]*$"},
           "source_path":{"type":"string","minLength":1},
           "source_blob_sha":{"type":"string","pattern":"^[0-9a-f]{40}$"},
           "source_instance_ref":{"type":"string","minLength":1},
           "relation_field_id":{"type":"string","minLength":1},
           "relation_ids":{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"string","minLength":1}},
-          "binding_role":{"enum":["MATCH_GATE_REF","ENCOUNTER_YIELD_REF","EVIDENCE_REF","TIME_CURRENTNESS_REF","EVOLUTION_TRANSPORT_REF","SUBSTRATE_SPECIALIZATION_REF"]},
+          "binding_role":{"type":"string","pattern":"^[A-Z][A-Z0-9_+.-]*$"},
           "direction":{"enum":["SOURCE_TO_FIELD_POINTER","FIELD_TO_SOURCE_POINTER","BIDIRECTIONAL_REFERENCE"]},
           "source_semantics_owner":{"const":"SOURCE_CARRIER"},
           "relation_typing_owner":{"const":"CORELATION_FIELD"},
