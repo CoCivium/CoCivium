@@ -129,6 +129,35 @@ durable semantic object
 
 A provider tab, process, device, or model instance is therefore an execution carrier, not the durable identity root.
 
+## Continuity claim boundaries
+
+An accepted migration supports only the continuity claims actually proved for scope.
+
+Candidate claim classes:
+
+- representational continuity;
+- functional continuity, when separately validated;
+- lineage continuity, when provenance is exact;
+- authority continuity, when authority is unchanged.
+
+It MUST NOT automatically imply:
+
+- identical runtime instance;
+- personal-identity continuity;
+- subjective-experience continuity;
+- consciousness continuity;
+- numerical equivalence across different substrates.
+
+`CONTINUITY_NE_IDENTITY`
+
+`FUNCTIONAL_CONTINUITY_NE_SUBJECTIVE_CONTINUITY`
+
+`LINEAGE_CONTINUITY_NE_IDENTICAL_INSTANCE`
+
+`MIGRATION_ACCEPTED_NE_CONSCIOUSNESS_CONTINUITY`
+
+`AUTHORITY_CONTINUITY_REQUIRES_AUTHORITY_PRESERVATION`
+
 ## Rails
 
 `SUBSTRATE_NE_IDENTITY`
