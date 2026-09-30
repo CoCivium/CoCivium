@@ -24,3 +24,5 @@ jobs:
         run: python docs/Business/CoAthene_RoamLab_R0/modules/WatershedExplorer_R0/tools/validate_module.py
       - name: Run Watershed Explorer synthetic dry run
         run: python docs/Business/CoAthene_RoamLab_R0/modules/WatershedExplorer_R0/tools/run_dry_run.py
+      - name: Validate educator review contract
+        run: python docs/Business/CoAthene_RoamLab_R0/modules/WatershedExplorer_R0/tools/validate_educator_review_contract.py
