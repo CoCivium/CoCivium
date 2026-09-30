@@ -173,6 +173,10 @@ This can prove a bounded cross-host representational continuity claim. It does *
 
 `CI_RECEIVER_PROOF_NE_PRODUCTION_RUNTIME`
 
+Cross-OS attestations MUST bind the same exact checked-out Git commit and fixture blob SHA. A Linux/Windows agreement over semantically equal but differently sourced objects is not sufficient for this proof.
+
+`ATTESTATION_NE_SOURCE_BINDING_UNLESS_EXACT_REF`
+
 ## Cross-language runtime proof
 
 A second bounded receiver proof uses two different implementation runtimes, Python and Node.js, on independent CI jobs. Both parse the same semantic object, independently recompute the canonical semantic digest, verify authority and invariants, emit attestations, and converge through a fan-in check.
