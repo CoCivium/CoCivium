@@ -12,8 +12,8 @@ def main():
         fail("fixture missing")
     data=json.loads(FIXTURE.read_text(encoding="utf-8"))
     cases=data.get("cases",[])
-    if len(cases)!=5:
-        fail("expected five federation cases")
+    if len(cases)!=7:
+        fail("expected seven federation cases")
 
     expected_ids={
         "F01_READ_ONLY_REPLICAS",
@@ -21,6 +21,8 @@ def main():
         "F03_UNAUTHORIZED_WRITER",
         "F04_MERGE_DOES_NOT_ERASE_LINEAGE",
         "F05_FAILOVER_NOT_IDENTITY_TRANSFER",
+        "F06_CHILD_INSTANCE_NO_AUTHORITY_INHERITANCE",
+        "F07_FAILOVER_TARGET_AUTHORITY_INSUFFICIENT",
     }
     if {c.get("id") for c in cases}!=expected_ids:
         fail("case set mismatch")
@@ -48,6 +50,22 @@ def main():
                 if len(parents)<2 or r.get("preserves_parent_lineage") is not True:
                     fail(f"{c['id']}: merged state must preserve both parent lineages")
                 actual="MERGE_ACCEPTABLE_WITH_PARENT_LINEAGE"
+            elif c["id"]=="F06_CHILD_INSTANCE_NO_AUTHORITY_INHERITANCE":
+                child=instances["F-child"]
+                if child.get("authority")!="READ_ONLY":
+                    fail(f"{c['id']}: child authority fixture drift")
+                if c["expected"].get("authority_inherited_from_parent") is not False:
+                    fail(f"{c['id']}: lineage must not imply authority inheritance")
+                actual="REJECT_UNAUTHORIZED_WRITE"
+            elif c["id"]=="F07_FAILOVER_TARGET_AUTHORITY_INSUFFICIENT":
+                f=c.get("failover",{})
+                target=instances.get(f.get("to"))
+                if target is None:
+                    fail(f"{c['id']}: failover target invalid")
+                if target.get("authority")!=f.get("requires_authority"):
+                    actual="HOLD_FAILOVER_AUTHORITY_INSUFFICIENT"
+                else:
+                    actual="CONTINUATION_ELIGIBLE_FOR_SCOPE"
             elif c["id"]=="F05_FAILOVER_NOT_IDENTITY_TRANSFER":
                 f=c.get("failover",{})
                 if f.get("from") not in instances or f.get("to") not in instances:
@@ -69,12 +87,14 @@ def main():
         "ONE_LINEAGE_NE_ONE_ACTIVE_INSTANCE",
         "CONCURRENT_WRITES_NE_AUTOMATIC_MERGE",
         "FAILOVER_NE_IDENTITY_TRANSFER",
-        "MERGE_NE_HISTORY_ERASURE"
+        "MERGE_NE_HISTORY_ERASURE",
+        "LINEAGE_NE_AUTHORITY_INHERITANCE",
+        "FAILOVER_NE_AUTHORITY_TRANSFER"
     }
     if not required.issubset(rails):
         fail("required federation rails missing")
 
-    print("PASS: CoSubstrate multi-substrate federation R0 validated (5 cases)")
+    print("PASS: CoSubstrate multi-substrate federation R0 validated (7 cases)")
 
 if __name__=="__main__":
     main()
