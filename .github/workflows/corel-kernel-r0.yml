@@ -11,9 +11,11 @@ on:
       - "fixtures/relations/co_rel_kernel_r0.adversarial.json"
       - "fixtures/relations/co_rel_kernel_field_collision_r0.json"
       - "fixtures/relations/co_rel_kernel_field_adjudication_r0.json"
+      - "fixtures/relations/co_rel_kernel_field_translation_canary_r0.json"
       - "tools/validate_corel_kernel_r0.py"
       - "tools/validate_corel_kernel_field_collision_r0.py"
       - "tools/validate_corel_kernel_field_adjudication_r0.py"
+      - "tools/validate_corel_kernel_field_translation_canary_r0.py"
       - ".github/workflows/corel-kernel-r0.yml"
   workflow_dispatch:
 
@@ -52,3 +54,6 @@ jobs:
 
       - name: Validate collision ownership adjudication R0
         run: python tools/validate_corel_kernel_field_adjudication_r0.py
+
+      - name: Validate translation policy canary R0
+        run: python tools/validate_corel_kernel_field_translation_canary_r0.py
