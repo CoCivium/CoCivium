@@ -15,7 +15,7 @@ def main():
 
     if {v["receiver"]["runtime"] for v in vals}!={"python","node"}:
         fail("expected python and node receivers")
-    for key in ("semantic_sha256","object_id","semantic_version","authority_state","scope","source_git_sha","source_fixture_blob_sha"):
+    for key in ("semantic_sha256","object_id","semantic_version","authority_state","scope","source_git_sha","tested_checkout_sha","pr_head_sha","pr_base_sha","source_fixture_blob_sha"):
         if len({json.dumps(v[key],sort_keys=True) for v in vals})!=1:
             fail(f"{key} mismatch across runtimes")
     if any(v.get("accepted_for_scope") is not True for v in vals):
@@ -37,6 +37,9 @@ def main():
         "runtimes":sorted(v["receiver"]["runtime"] for v in vals),
         "scope":vals[0]["scope"],
         "source_git_sha":vals[0]["source_git_sha"],
+        "tested_checkout_sha":vals[0]["tested_checkout_sha"],
+        "pr_head_sha":vals[0]["pr_head_sha"],
+        "pr_base_sha":vals[0]["pr_base_sha"],
         "source_fixture_blob_sha":vals[0]["source_fixture_blob_sha"],
         "nonclaims":sorted(required)
     },separators=(",",":"),sort_keys=True))
