@@ -1,5 +1,5 @@
 {
-  "schema": "CoRelKernel.R0.fixtures.v0_3",
+  "schema": "CoRelKernel.R0.fixtures.v0_4",
   "state": "CANDIDATE__NOT_CANON",
   "relations": [
     {
@@ -54,7 +54,8 @@
         "fixture:counterevidence"
       ],
       "confidence": 0.8,
-      "boundary": "internal"
+      "boundary": "internal",
+      "contradiction_basis": "evidence_conflict"
     },
     {
       "rel_id": "rel-005",
@@ -135,6 +136,60 @@
       ],
       "resolves_conflict_set_id": "conflict-rel-001-r1",
       "resolution_note": "Fixture resolution chooses the lower-confidence causal interpretation pending further evidence.",
+      "boundary": "internal"
+    },
+    {
+      "rel_id": "rel-observer-a",
+      "subject": "system-X",
+      "predicate": "STATE_IS",
+      "object": "OPEN",
+      "observer": "observer-a",
+      "time": {
+        "valid_from": "2026-09-30T00:00:00Z",
+        "valid_to": "2026-09-30T02:00:00Z",
+        "observed_at": "2026-09-30T00:30:00Z"
+      },
+      "causal_status": "non_causal",
+      "provenance": [
+        "fixture:observer-a"
+      ],
+      "boundary": "internal"
+    },
+    {
+      "rel_id": "rel-observer-b",
+      "subject": "system-X",
+      "predicate": "STATE_IS",
+      "object": "CLOSED",
+      "observer": "observer-b",
+      "time": {
+        "valid_from": "2026-09-30T01:00:00Z",
+        "valid_to": "2026-09-30T03:00:00Z",
+        "observed_at": "2026-09-30T01:15:00Z"
+      },
+      "causal_status": "non_causal",
+      "provenance": [
+        "fixture:observer-b"
+      ],
+      "boundary": "internal"
+    },
+    {
+      "rel_id": "rel-observer-disagreement",
+      "subject": {
+        "rel_ref": "rel-observer-a"
+      },
+      "predicate": "CONTRADICTS",
+      "object": {
+        "rel_ref": "rel-observer-b"
+      },
+      "observer": "observer-c",
+      "time": {
+        "observed_at": "2026-09-30T01:20:00Z"
+      },
+      "contradiction_basis": "temporal_overlap",
+      "causal_status": "non_causal",
+      "provenance": [
+        "fixture:observer-relative-temporal-overlap"
+      ],
       "boundary": "internal"
     }
   ]
