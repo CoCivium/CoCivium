@@ -46,6 +46,8 @@ const attestation = {
   semantic_version: data.semantic_version,
   semantic_sha256: digest,
   authority_state: data.authority_state,
+  source_git_sha: require("child_process").execFileSync("git", ["rev-parse", "HEAD"], {encoding:"utf8"}).trim(),
+  source_fixture_blob_sha: require("child_process").execFileSync("git", ["hash-object", path], {encoding:"utf8"}).trim(),
   required_invariants: Array.from(required).sort(),
   observed_invariants: Array.from(observed).sort(),
   receiver: {
@@ -58,7 +60,8 @@ const attestation = {
   nonclaims: [
     "CROSS_LANGUAGE_RUNTIME_NE_MODEL_RUNTIME_MIGRATION",
     "SAME_SEMANTIC_DIGEST_NE_IDENTICAL_INSTANCE",
-    "CI_RECEIVER_PROOF_NE_PRODUCTION_RUNTIME"
+    "CI_RECEIVER_PROOF_NE_PRODUCTION_RUNTIME",
+    "ATTESTATION_NE_SOURCE_BINDING_UNLESS_EXACT_REF"
   ]
 };
 
