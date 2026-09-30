@@ -1,0 +1,122 @@
+{
+  "schema": "CoRelKernelField.TranslationCanary.v0.1-candidate",
+  "state": "SYNTHETIC_TRANSLATION_CANARY__NO_CANON_NO_RUNTIME_NO_MERGE_AUTHORITY",
+  "source_adjudication": {
+    "path": "fixtures/relations/co_rel_kernel_field_adjudication_r0.json",
+    "expected_decisions": [
+      "D01_CAUSAL_STATUS_LAYERING",
+      "D02_ABSENCE_DUAL_LAYERING"
+    ]
+  },
+  "cases": [
+    {
+      "id": "T01_CAUSAL_DEFAULTS_TO_CANDIDATE",
+      "source": {
+        "causal_status": "causal",
+        "provenance": [
+          "synthetic:T01"
+        ]
+      },
+      "expected": {
+        "field_status": "CAUSAL_CANDIDATE",
+        "upgrade_blocked": true
+      },
+      "nonclaims": [
+        "CAUSAL_NE_CAUSAL_SUPPORTED_BY_TRANSLATION"
+      ]
+    },
+    {
+      "id": "T02_UNKNOWN_STAYS_UNKNOWN",
+      "source": {
+        "causal_status": "unknown",
+        "provenance": [
+          "synthetic:T02"
+        ]
+      },
+      "expected": {
+        "field_status": "UNKNOWN_CAUSAL_STATUS",
+        "not_applicable_blocked": true
+      },
+      "nonclaims": [
+        "UNKNOWN_NE_CAUSALITY_NOT_APPLICABLE"
+      ]
+    },
+    {
+      "id": "T03_MIXED_FAILS_CLOSED",
+      "source": {
+        "causal_status": "mixed",
+        "provenance": [
+          "synthetic:T03"
+        ]
+      },
+      "expected": {
+        "field_status": null,
+        "requires_explicit_strategy": true
+      },
+      "nonclaims": [
+        "MIXED_NE_FORCED_SINGLE_FIELD_VALUE"
+      ]
+    },
+    {
+      "id": "T04_ABSENCE_NO_REIFICATION_WHEN_NOT_NEEDED",
+      "source": {
+        "predicate": "EXPECTED_BUT_MISSING",
+        "subject": "expected-link",
+        "object": "direct-link",
+        "provenance": [
+          "synthetic:T04"
+        ]
+      },
+      "destination_need": {
+        "absence_participant": false
+      },
+      "expected": {
+        "create_absence_relatum": false
+      },
+      "nonclaims": [
+        "ABSENCE_PREDICATE_NE_ABSENCE_RELATUM",
+        "DUAL_REPRESENTATION_NE_DUPLICATE_TRUTH"
+      ]
+    },
+    {
+      "id": "T05_ABSENCE_REIFY_ONLY_WHEN_NEEDED",
+      "source": {
+        "predicate": "EXPECTED_BUT_MISSING",
+        "subject": "permission",
+        "object": "action-X",
+        "observer": "observer-A",
+        "time": {
+          "observed_at": "2026-09-30T00:00:00Z"
+        },
+        "provenance": [
+          "synthetic:T05"
+        ]
+      },
+      "destination_need": {
+        "absence_participant": true
+      },
+      "expected": {
+        "create_absence_relatum": true,
+        "relatum_kind": "ABSENCE",
+        "require_exact_source_provenance": true,
+        "require_scope_preservation": true,
+        "required_nonclaims": [
+          "ABSENCE_NE_NONEXISTENCE",
+          "PROJECTION_RELATUM_NE_SOURCE_ENTITY"
+        ]
+      },
+      "nonclaims": [
+        "ABSENCE_RELATUM_NE_INDEPENDENT_ENTITY_CLAIM"
+      ]
+    }
+  ],
+  "rails": [
+    "TRANSLATION_RULE_NE_TRUTH",
+    "MAPPING_NE_EQUIVALENCE",
+    "CAUSAL_NE_CAUSAL_SUPPORTED_BY_TRANSLATION",
+    "UNKNOWN_NE_CAUSALITY_NOT_APPLICABLE",
+    "MIXED_NE_FORCED_SINGLE_FIELD_VALUE",
+    "ABSENCE_PREDICATE_NE_ABSENCE_RELATUM",
+    "ABSENCE_RELATUM_NE_INDEPENDENT_ENTITY_CLAIM"
+  ]
+}
