@@ -1,5 +1,5 @@
 {
-  "schema": "CoRelKernel.R0.adversarial.v0_1",
+  "schema": "CoRelKernel.R0.adversarial.v0_2",
   "state": "CANDIDATE__NEGATIVE_TESTS",
   "cases": [
     {
@@ -51,6 +51,21 @@
       "relations": [
         {"rel_id":"dup","subject":"A","predicate":"RELATES_TO","object":"B","causal_status":"unknown","provenance":["fixture"]},
         {"rel_id":"dup","subject":"C","predicate":"RELATES_TO","object":"D","causal_status":"unknown","provenance":["fixture"]}
+      ]
+    },
+    {
+      "id": "self_supersession",
+      "expected_error": "supersession cycle",
+      "relations": [
+        {"rel_id":"bad-self","subject":"A","predicate":"RELATES_TO","object":"B","causal_status":"unknown","provenance":["fixture"],"supersedes_rel_id":"bad-self","change_reason":"impossible self-lineage","changed_by":"fixture","changed_at":"2026-09-30T00:00:00Z"}
+      ]
+    },
+    {
+      "id": "two_node_supersession_cycle",
+      "expected_error": "supersession cycle",
+      "relations": [
+        {"rel_id":"cycle-a","subject":"A","predicate":"RELATES_TO","object":"B","causal_status":"unknown","provenance":["fixture"],"supersedes_rel_id":"cycle-b","change_reason":"cycle","changed_by":"fixture","changed_at":"2026-09-30T00:00:00Z"},
+        {"rel_id":"cycle-b","subject":"A","predicate":"RELATES_TO","object":"B","causal_status":"unknown","provenance":["fixture"],"supersedes_rel_id":"cycle-a","change_reason":"cycle","changed_by":"fixture","changed_at":"2026-09-30T00:00:01Z"}
       ]
     }
   ]
