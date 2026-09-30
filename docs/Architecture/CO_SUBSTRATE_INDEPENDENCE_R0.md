@@ -129,6 +129,30 @@ durable semantic object
 
 A provider tab, process, device, or model instance is therefore an execution carrier, not the durable identity root.
 
+## Multi-substrate federation
+
+Substrate independence eventually permits more than migration. Multiple compatible instances may coexist across different substrates under one proven lineage.
+
+R0 does not require one globally privileged "current instance."
+
+Instead, a federation may contain read-only replicas, bounded writers, failover instances, or diverged branches that require reconciliation.
+
+Concurrent writable instances MUST NOT silently collapse through newest-wins or host-priority rules.
+
+A failover may continue work for scope without implying that personal identity, consciousness, or a metaphysical self moved between machines.
+
+`MULTI_INSTANCE_NE_MULTI_IDENTITY`
+
+`ONE_LINEAGE_NE_ONE_ACTIVE_INSTANCE`
+
+`CONCURRENT_WRITES_NE_AUTOMATIC_MERGE`
+
+`FAILOVER_NE_IDENTITY_TRANSFER`
+
+`MERGE_NE_HISTORY_ERASURE`
+
+`AUTHORITY_IS_INSTANCE_SCOPED_WHERE_DECLARED`
+
 ## Continuity claim boundaries
 
 An accepted migration supports only the continuity claims actually proved for scope.
