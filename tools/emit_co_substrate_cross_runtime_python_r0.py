@@ -2,6 +2,7 @@
 import argparse
 import hashlib
 import json
+import os
 import platform
 import subprocess
 from pathlib import Path
@@ -44,6 +45,9 @@ def main():
         "semantic_sha256":canonical_sha(data),
         "authority_state":data["authority_state"],
         "source_git_sha":subprocess.check_output(["git","rev-parse","HEAD"],text=True).strip(),
+        "tested_checkout_sha":subprocess.check_output(["git","rev-parse","HEAD"],text=True).strip(),
+        "pr_head_sha":os.environ.get("CO_PR_HEAD_SHA",""),
+        "pr_base_sha":os.environ.get("CO_PR_BASE_SHA",""),
         "source_fixture_blob_sha":subprocess.check_output(["git","hash-object",str(OBJ)],text=True).strip(),
         "required_invariants":sorted(required),
         "observed_invariants":sorted(observed),
