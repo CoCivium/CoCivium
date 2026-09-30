@@ -19,10 +19,11 @@ Minimum:
 - one shallow tray or equivalent digital model;
 - absorbent material such as sponge/felt/soil substitute;
 - impermeable material such as foil/plastic;
-- small cup or spray bottle;
+- marked measuring cup, syringe, bottle, or another simple way to use the same nominal water volume;
+- timer or stopwatch;
 - two collection points/cups;
 - learner sheets;
-- projected or printed local source extracts.
+- **dated printed/PDF/local source extracts available without internet access**.
 
 Optional:
 
@@ -49,10 +50,11 @@ For physical water models:
    - more absorbent/permeable;
    - more hard/impermeable.
 2. Make sure both drain toward a visible collection point.
-3. Test the same amount of water on both.
-4. Place learner materials.
-5. Open local source pages or print excerpts.
-6. If using immersive content, verify a non-headset path works first.
+3. Choose a nominal water volume and pour interval and write them down.
+4. Test the same nominal volume/rate on both surfaces. Record any obvious procedural difference.
+5. Place learner materials.
+6. Prepare dated local source extracts so the source challenge works if the internet is unavailable.
+7. If using immersive content, verify the non-headset path works first.
 
 ## Phase 1 — Hook, about 8 minutes
 
@@ -111,7 +113,9 @@ PREDICTION_AFTER_OUTCOME_NE_PREDICTION
 
 ## Phase 4 — Test and observe, about 15 minutes
 
-Use the same approximate amount/rate of water for each surface.
+Use the same **nominal measured volume** and approximately the same pour interval for each surface. Use a timer where practical.
+
+The goal is simple repeatability, not laboratory-grade hydrology. If the procedure differs between trials, record that difference instead of pretending it did not happen.
 
 Learners record:
 
@@ -122,16 +126,20 @@ Learners record:
 - infiltration/absorption;
 - unexpected effects.
 
-Ask learners to label every note either:
+Ask learners to label every note as one of:
 
-- OBSERVATION
-- INFERENCE
+- **MODEL_OBSERVATION** — directly noticed in the tray/digital simulation;
+- **WORLD_OBSERVATION** — directly measured or seen in the real environment, if a separately qualified field activity exists;
+- **SOURCE_STATEMENT** — reported by a cited external source;
+- **INFERENCE** — a conclusion drawn from one or more observations/statements.
 
 Example:
 
-"Water reached cup B first" = observation.
+"Water reached cup B first in our tray" = MODEL_OBSERVATION.
 
-"The hard surface causes more flooding in Oakville" = inference that exceeds this model.
+"The hard surface causes more flooding in Oakville" = INFERENCE that exceeds this model.
+
+**MODEL_OBSERVATION_NE_WORLD_OBSERVATION**
 
 ## Phase 5 — Source challenge, about 10 minutes
 
@@ -187,6 +195,23 @@ Candidate measurements:
 
 The best answer is not predetermined. It should be linked to the team's uncertainty.
 
+
+## 45-minute minimum path
+
+If the session loses time, preserve the evidence loop and remove optional enrichment first.
+
+Minimum sequence:
+
+1. Hook / relation sketch — 5 min
+2. Prediction — 7 min
+3. Controlled model test — 10 min
+4. Observation classification — 6 min
+5. Source challenge — 7 min
+6. Revised explanation + uncertainty — 7 min
+7. Next measurement — 3 min
+
+Drop VR/MR, extended discussion, repeated trials and optional visualization **before** dropping the precommitted prediction, source challenge, revision or uncertainty.
+
 ## Optional immersive extension
 
 If VR/MR is available, visualize:
@@ -205,6 +230,10 @@ The immersive scene must label:
 - missing processes.
 
 Do not present a photorealistic simulation as measured reality.
+
+If a learner reports dizziness, nausea, disorientation, pain, panic or other discomfort, stop immersive participation immediately and continue through the non-headset path without penalty.
+
+**SAFETY_STOP_OVERRIDES_LESSON_COMPLETION**
 
 ## Optional destination/field extension
 
@@ -236,3 +265,9 @@ PASS if learners can distinguish:
 - what remains unknown.
 
 FAIL if the lesson ends with only "impermeable surfaces are bad" or another slogan without causal/evidence reasoning.
+
+Also FAIL if:
+- a tray result is reported as a real Oakville measurement;
+- internet loss prevents the source challenge;
+- a learner who cannot use VR receives an inferior learning task;
+- safety/comfort is subordinated to completing the immersive experience.

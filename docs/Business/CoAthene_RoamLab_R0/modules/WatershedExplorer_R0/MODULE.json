@@ -1,12 +1,13 @@
 {
-  "schema": "CoAthene.RoamLab.Module.v0.1",
-  "module_id": "CoAthene.RoamLab.WatershedExplorer.R0",
-  "state": "PUBLIC_STRAWBE_CANDIDATE__STANDALONE_FIRST__NO_COALL_REQUIRED__NOT_CURRICULUM_CERTIFIED",
+  "schema": "CoAthene.RoamLab.Module.v0.2",
+  "module_id": "CoAthene.RoamLab.WatershedExplorer.R0A",
+  "state": "PUBLIC_STRAWBE_CANDIDATE__SYNTHETIC_DRY_RUN_PASS_REQUIRED__NO_REAL_LEARNER_VALIDATION",
   "title": "Watershed Explorer",
   "pilot_region": "Oakville, Ontario, Canada",
   "age_band_candidate": "Grades 7-8 / approximately ages 12-14; facilitator may adapt",
   "duration_minutes": {
-    "min": 60,
+    "minimum_path": 45,
+    "nominal": 75,
     "max": 90
   },
   "learning_objectives": [
@@ -27,8 +28,10 @@
   ],
   "required_inputs": [
     "facilitator",
-    "local stormwater/watershed source material",
+    "dated local stormwater/watershed source material available offline",
     "simple physical or digital runoff model",
+    "marked water measure or equivalent repeatability control",
+    "timer or equivalent elapsed-time measure",
     "learner activity sheet"
   ],
   "default_data_policy": {
@@ -42,10 +45,12 @@
   "evidence_classes": [
     "OFFICIAL_LOCAL_INFRASTRUCTURE_SOURCE",
     "OFFICIAL_CONSERVATION_EDUCATION_SOURCE",
-    "FACILITATOR_OBSERVATION",
+    "MODEL_OBSERVATION",
+    "WORLD_OBSERVATION",
+    "SOURCE_STATEMENT",
+    "LEARNER_INFERENCE",
     "LEARNER_PREDICTION",
-    "MODEL_OUTPUT",
-    "OPTIONAL_FIELD_OBSERVATION"
+    "MODEL_OUTPUT"
   ],
   "lesson_flow": [
     {
@@ -102,6 +107,29 @@
     "VR_NE_LEARNING_BY_DEFAULT",
     "LEARNER_NE_ANALYTICS_PROFILE",
     "SOURCE_NE_ENDORSEMENT",
-    "FIELD_TRIP_NE_REQUIRED_FOR_CORE_LESSON"
+    "FIELD_TRIP_NE_REQUIRED_FOR_CORE_LESSON",
+    "MODEL_OBSERVATION_NE_WORLD_OBSERVATION",
+    "SAFETY_STOP_OVERRIDES_LESSON_COMPLETION",
+    "NON_HEADSET_PATH_MUST_PRESERVE_CORE_OBJECTIVE",
+    "SOURCE_CURRENTNESS_REQUIRED_FOR_TIME_SENSITIVE_LOCAL_FACTS",
+    "MEASUREMENT_CONTROL_NE_CALIBRATED_HYDROLOGY",
+    "SYNTHETIC_DRY_RUN_NE_REAL_LEARNER_VALIDATION"
+  ],
+  "failure_fallbacks": {
+    "vr_unavailable": "CONTINUE_NON_HEADSET",
+    "internet_unavailable": "USE_DATED_OFFLINE_SOURCE_PACK",
+    "learner_discomfort": "STOP_IMMERSIVE_MODE_AND_CONTINUE_NON_HEADSET_WITHOUT_PENALTY",
+    "spill_near_electronics": "STOP_ACTIVITY_PROTECT_POWERED_EQUIPMENT_CLEAN_SPILL_THEN_RESUME_OR_USE_DRY_PATH",
+    "time_loss": "USE_45_MINUTE_MINIMUM_PATH_DROP_OPTIONAL_IMMERSIVE_FIRST",
+    "source_currentness_unverified": "REDUCE_OR_HOLD_TIME_SENSITIVE_LOCAL_CLAIMS"
+  },
+  "control_priority": [
+    "SAFETY",
+    "ACCESSIBILITY",
+    "PREDICTION_BEFORE_OUTCOME",
+    "OBSERVATION_CLASSIFICATION",
+    "SOURCE_CHALLENGE",
+    "REVISION_AND_UNCERTAINTY",
+    "OPTIONAL_IMMERSIVE_ENRICHMENT"
   ]
 }

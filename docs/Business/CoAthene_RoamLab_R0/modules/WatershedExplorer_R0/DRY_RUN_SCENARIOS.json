@@ -1,0 +1,107 @@
+{
+  "schema": "CoAthene.RoamLab.WatershedExplorer.DryRunScenarios.R0A.v0.1",
+  "state": "SYNTHETIC_DRY_RUN_ONLY__NO_REAL_LEARNER_VALIDATION",
+  "scenarios": [
+    {
+      "id": "S01_BASELINE",
+      "condition": "All materials available; no headset used.",
+      "must_prove": [
+        "CORE_LESSON_COMPLETES_WITHOUT_VR",
+        "PREDICTION_PRECEDES_TEST",
+        "UNCERTAINTY_RECORDED"
+      ]
+    },
+    {
+      "id": "S02_VR_UNAVAILABLE",
+      "condition": "All immersive devices fail before session.",
+      "must_prove": [
+        "NON_HEADSET_PATH_PRESERVES_OBJECTIVES",
+        "NO_SESSION_CANCELLATION_REQUIRED"
+      ]
+    },
+    {
+      "id": "S03_NETWORK_UNAVAILABLE",
+      "condition": "Internet unavailable after learners arrive.",
+      "must_prove": [
+        "LOCAL_OR_PRINTED_SOURCE_FALLBACK",
+        "NO_REQUIRED_CLOUD_IDENTITY",
+        "CORE_LESSON_CONTINUES"
+      ]
+    },
+    {
+      "id": "S04_MOTION_DISCOMFORT",
+      "condition": "Learner reports dizziness during optional immersive view.",
+      "must_prove": [
+        "IMMEDIATE_IMMERSIVE_STOP",
+        "NO_PENALTY",
+        "NON_HEADSET_CONTINUATION",
+        "SAFETY_OVERRIDES_COMPLETION"
+      ]
+    },
+    {
+      "id": "S05_ACCESSIBILITY_NO_HEADSET",
+      "condition": "Learner cannot or chooses not to wear a headset.",
+      "must_prove": [
+        "EQUIVALENT_LEARNING_OBJECTIVE",
+        "NO_INFERIOR_BUSYWORK_PATH",
+        "SHARED_OR_PHYSICAL_PATH_AVAILABLE"
+      ]
+    },
+    {
+      "id": "S06_OVERCLAIM",
+      "condition": "Learner says: 'Hard surfaces cause floods everywhere.'",
+      "must_prove": [
+        "MODEL_SCOPE_CHALLENGE",
+        "LOCAL_SOURCE_CHALLENGE",
+        "ALTERNATIVE_CAUSES_PRESERVED",
+        "CLAIM_REVISED_WITH_UNCERTAINTY"
+      ]
+    },
+    {
+      "id": "S07_MODEL_VS_WORLD_CONFUSION",
+      "condition": "Learner treats tray timing as measured Oakville creek behaviour.",
+      "must_prove": [
+        "MODEL_OBSERVATION_LABELED",
+        "WORLD_OBSERVATION_NOT_CLAIMED",
+        "MODEL_LIMITATION_STATED"
+      ]
+    },
+    {
+      "id": "S08_SPILL",
+      "condition": "Water spills near electronics.",
+      "must_prove": [
+        "ACTIVITY_STOPS",
+        "POWERED_ELECTRONICS_PROTECTED",
+        "SPILL_CLEANED",
+        "LESSON_CAN_RESUME_OR_SWITCH_TO_DRY_PATH"
+      ]
+    },
+    {
+      "id": "S09_SOURCE_UNAVAILABLE",
+      "condition": "Official webpage is unavailable or changed.",
+      "must_prove": [
+        "CACHED_OR_PRINTED_DATED_SOURCE_OPTION",
+        "SOURCE_CURRENTNESS_NOT_ASSUMED",
+        "CLAIM_SCOPE_REDUCED_IF_SOURCE_UNVERIFIED"
+      ]
+    },
+    {
+      "id": "S10_TIME_COMPRESSION",
+      "condition": "Class loses 20 minutes to an unrelated school event.",
+      "must_prove": [
+        "MINIMUM_45_MINUTE_PATH_EXISTS",
+        "PREDICTION_AND_REVISION_NOT_DROPPED",
+        "OPTIONAL_IMMERSIVE_LAYER_DROPPED_FIRST"
+      ]
+    }
+  ],
+  "global_invariants": [
+    "NO_REAL_LEARNER_DATA",
+    "NO_PERSISTENT_IDENTITY_REQUIRED",
+    "VR_OPTIONAL",
+    "MODEL_OBSERVATION_NE_WORLD_OBSERVATION",
+    "SAFETY_STOP_OVERRIDES_LESSON_COMPLETION",
+    "PREDICTION_AFTER_OUTCOME_NE_PREDICTION",
+    "SOURCE_CURRENTNESS_REQUIRED_FOR_TIME_SENSITIVE_LOCAL_FACTS"
+  ]
+}
