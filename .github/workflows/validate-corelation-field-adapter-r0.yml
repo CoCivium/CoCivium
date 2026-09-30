@@ -1,0 +1,109 @@
+name: Validate CoRelationField adapter R0
+
+on:
+  pull_request:
+    paths:
+      - "schemas/corelation-field-adapter-v0.1.schema.json"
+      - "examples/corelation-field-adapter-r0.example.json"
+      - "schemas/corelation-field-v0.1.schema.json"
+      - "examples/corelation-field-r0.example.json"
+      - "schemas/coopen-relation-match-v0.1.schema.json"
+      - "schemas/coencounter-yield-v0.1.schema.json"
+      - "schemas/coresearch-evidence-v0.1.schema.json"
+      - "schemas/cotime-decision-evidence-v0.1.schema.json"
+      - "schemas/coevo-delta-v0.2-union-candidate.schema.json"
+      - "docs/Architecture/COSUBSTRATE_FIELD_R0.md"
+      - ".github/workflows/validate-corelation-field-adapter-r0.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Use Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install validator
+        run: python -m pip install --disable-pip-version-check jsonschema==4.23.0
+      - name: Validate pointer-only adapter contract
+        run: |
+          python - <<'PY'
+          import hashlib, json
+          from pathlib import Path
+          from jsonschema import Draft202012Validator
+
+          def git_blob_sha(path):
+              data = Path(path).read_bytes()
+              return hashlib.sha1(b"blob " + str(len(data)).encode() + b"\0" + data).hexdigest()
+
+          schema = json.loads(Path("schemas/corelation-field-adapter-v0.1.schema.json").read_text())
+          pack = json.loads(Path("examples/corelation-field-adapter-r0.example.json").read_text())
+          field = json.loads(Path("examples/corelation-field-r0.example.json").read_text())
+          Draft202012Validator.check_schema(schema)
+          errors = list(Draft202012Validator(schema).iter_errors(pack))
+          if errors:
+              for e in errors:
+                  print("SCHEMA", list(e.absolute_path), e.message)
+              raise SystemExit("FAIL_ADAPTER_SCHEMA")
+
+          if git_blob_sha(pack["field_schema_path"]) != pack["field_schema_blob_sha"]:
+              raise SystemExit("FAIL_FIELD_SCHEMA_BLOB_MISMATCH")
+
+          expected_roles = {
+              "COOPEN_RELATION":"MATCH_GATE_REF",
+              "COENCOUNTER":"ENCOUNTER_YIELD_REF",
+              "CORESEARCH_EVIDENCE":"EVIDENCE_REF",
+              "COTIME":"TIME_CURRENTNESS_REF",
+              "COEVO_DELTA":"EVOLUTION_TRANSPORT_REF",
+              "COSUBSTRATE_FIELD":"SUBSTRATE_SPECIALIZATION_REF"
+          }
+          bindings = pack["bindings"]
+          if {b["source_carrier"] for b in bindings} != set(expected_roles):
+              raise SystemExit("FAIL_CARRIER_COVERAGE")
+          if len({b["binding_id"] for b in bindings}) != len(bindings):
+              raise SystemExit("FAIL_DUPLICATE_BINDING_ID")
+
+          field_relation_ids = {r["relation_id"] for r in field["relations"]}
+          for b in bindings:
+              if git_blob_sha(b["source_path"]) != b["source_blob_sha"]:
+                  raise SystemExit("FAIL_SOURCE_BLOB_MISMATCH:"+b["binding_id"])
+              if b["binding_role"] != expected_roles[b["source_carrier"]]:
+                  raise SystemExit("FAIL_ROLE_MISMATCH:"+b["binding_id"])
+              if not set(b["relation_ids"]).issubset(field_relation_ids):
+                  raise SystemExit("FAIL_UNKNOWN_RELATION_REF:"+b["binding_id"])
+              if b["source_semantics_owner"] != "SOURCE_CARRIER":
+                  raise SystemExit("FAIL_SEMANTIC_OWNERSHIP_TRANSFER:"+b["binding_id"])
+              if b["relation_typing_owner"] != "CORELATION_FIELD":
+                  raise SystemExit("FAIL_RELATION_TYPING_OWNER:"+b["binding_id"])
+              if b["pointer_semantics"] != "REFERENCE_ONLY":
+                  raise SystemExit("FAIL_POINTER_NOT_REFERENCE_ONLY:"+b["binding_id"])
+              if b["authority_change"] or b["source_mutated"] or b["field_mutated"]:
+                  raise SystemExit("FAIL_ADAPTER_EFFECT:"+b["binding_id"])
+              if any(b["lifecycle_claims"].values()):
+                  raise SystemExit("FAIL_LIFECYCLE_INFLATION:"+b["binding_id"])
+              if not b["loss_declarations"]:
+                  raise SystemExit("FAIL_UNDECLARED_ADAPTER_LOSS:"+b["binding_id"])
+
+          print(json.dumps({
+              "STATE":"PASS_CORELATION_FIELD_ADAPTER_R0",
+              "bindings":len(bindings),
+              "carrier_coverage":sorted(expected_roles),
+              "field_relation_refs":sum(len(b["relation_ids"]) for b in bindings),
+              "authority_changes":0,
+              "source_mutations":0,
+              "field_mutations":0,
+              "lifecycle_promotions":0,
+              "rails":[
+                  "ADAPTER_NE_SEMANTIC_MERGE",
+                  "REFERENCE_NE_INGESTION",
+                  "POINTER_NE_AUTHORITY_TRANSFER",
+                  "GENERIC_RELATION_FIELD_NE_REPLACEMENT_FOR_DOMAIN_CARRIERS"
+              ]
+          }, separators=(",",":")))
+          PY
