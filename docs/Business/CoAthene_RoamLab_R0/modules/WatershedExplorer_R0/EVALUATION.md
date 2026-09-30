@@ -8,11 +8,11 @@ Collect only what is necessary and preferably without persistent identity.
 
 A facilitator may score a team's before/after response using a 0-2 rubric:
 
-### Observation vs inference
+### Evidence-type distinction
 
-- 0: regularly conflates them.
-- 1: distinguishes some examples.
-- 2: consistently distinguishes them in the final explanation.
+- 0: conflates model observations, world observations, source statements and inference.
+- 1: distinguishes some types but still overgeneralizes.
+- 2: consistently distinguishes model observation, world observation, source statement and inference in the final explanation.
 
 ### Causal explanation
 
@@ -85,6 +85,8 @@ A future R1 should require evidence that the module:
 - retains a meaningful non-headset path;
 - is operationally feasible inside school/session time;
 - can recover from device/network failure;
+- can run from a dated offline source pack when internet access disappears;
+- preserves the same core objective for non-headset learners;
 - produces a correction backlog from observed failures.
 
 ## Negative knowledge
@@ -101,3 +103,11 @@ Publish material failures such as:
 - source staleness.
 
 FAILURE_EVIDENCE_NE_MARKETING_DAMAGE
+
+## R0A synthetic dry-run gate
+
+Before a real pilot, the package must also pass the machine-readable failure scenarios in `DRY_RUN_SCENARIOS.json`.
+
+This validates declared fallback coverage only. It does not simulate human learning accurately and does not replace educator review.
+
+**SYNTHETIC_DRY_RUN_NE_REAL_LEARNER_VALIDATION**
