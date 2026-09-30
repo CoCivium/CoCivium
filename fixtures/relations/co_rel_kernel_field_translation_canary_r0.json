@@ -1,115 +1,136 @@
 {
-  "schema": "CoRelKernelField.TranslationCanary.v0.1-candidate",
+  "schema": "CoRelKernelField.TranslationCanary.v0.2-candidate",
   "state": "SYNTHETIC_TRANSLATION_CANARY__NO_CANON_NO_RUNTIME_NO_MERGE_AUTHORITY",
-  "source_adjudication": {
-    "path": "fixtures/relations/co_rel_kernel_field_adjudication_r0.json",
+  "source_bindings": {
+    "adjudication_path": "fixtures/relations/co_rel_kernel_field_adjudication_r0.json",
+    "adjudication_blob_sha": "2534c2b65b049554c06e3f179c7d710ad6bf1bb8",
     "expected_decisions": [
       "D01_CAUSAL_STATUS_LAYERING",
       "D02_ABSENCE_DUAL_LAYERING"
-    ]
+    ],
+    "kernel_schema_path": "schemas/relations/co_rel_kernel_r0.schema.json",
+    "kernel_schema_blob_sha": "b356162234accb90b52b033a31ee429812dee20d",
+    "field_ref": "review/corelation-field-pr127-95db0610",
+    "field_head": "95db06101b16954a90468c5ef4f1b4e78a3195a5",
+    "field_schema_path": "schemas/corelation-field-v0.1.schema.json",
+    "field_schema_blob_sha": "72dd31580aec86fb06236f6f88dd77b5b9e900e3"
   },
   "cases": [
     {
       "id": "T01_CAUSAL_DEFAULTS_TO_CANDIDATE",
-      "source": {
-        "causal_status": "causal",
-        "provenance": [
-          "synthetic:T01"
-        ]
-      },
+      "kind": "causal",
+      "source": {"causal_status": "causal", "provenance": ["synthetic:T01"]},
       "expected": {
+        "state": "MAPPED_WITH_DECLARED_LIMITS",
         "field_status": "CAUSAL_CANDIDATE",
-        "upgrade_blocked": true
-      },
-      "nonclaims": [
-        "CAUSAL_NE_CAUSAL_SUPPORTED_BY_TRANSLATION"
-      ]
+        "required_nonclaim": "CAUSAL_NE_CAUSAL_SUPPORTED_BY_TRANSLATION"
+      }
     },
     {
-      "id": "T02_UNKNOWN_STAYS_UNKNOWN",
-      "source": {
-        "causal_status": "unknown",
-        "provenance": [
-          "synthetic:T02"
-        ]
-      },
+      "id": "T02_POSSIBLY_CAUSAL_MAPS_TO_CANDIDATE",
+      "kind": "causal",
+      "source": {"causal_status": "possibly_causal", "provenance": ["synthetic:T02"]},
       "expected": {
+        "state": "MAPPED_WITH_DECLARED_LIMITS",
+        "field_status": "CAUSAL_CANDIDATE",
+        "required_nonclaim": "MAPPING_NE_EQUIVALENCE"
+      }
+    },
+    {
+      "id": "T03_NONCAUSAL_PRESERVED_WITH_RAIL",
+      "kind": "causal",
+      "source": {"causal_status": "non_causal", "provenance": ["synthetic:T03"]},
+      "expected": {
+        "state": "MAPPED_WITH_DECLARED_LIMITS",
+        "field_status": "NONCAUSAL",
+        "required_nonclaim": "NONCAUSAL_NE_ACAUSAL_INFLUENCE"
+      }
+    },
+    {
+      "id": "T04_UNKNOWN_STAYS_UNKNOWN",
+      "kind": "causal",
+      "source": {"causal_status": "unknown", "provenance": ["synthetic:T04"]},
+      "expected": {
+        "state": "MAPPED_WITH_DECLARED_LIMITS",
         "field_status": "UNKNOWN_CAUSAL_STATUS",
-        "not_applicable_blocked": true
-      },
-      "nonclaims": [
-        "UNKNOWN_NE_CAUSALITY_NOT_APPLICABLE"
-      ]
+        "required_nonclaim": "UNKNOWN_NE_CAUSALITY_NOT_APPLICABLE"
+      }
     },
     {
-      "id": "T03_MIXED_FAILS_CLOSED",
-      "source": {
-        "causal_status": "mixed",
-        "provenance": [
-          "synthetic:T03"
-        ]
-      },
+      "id": "T05_MIXED_FAILS_CLOSED",
+      "kind": "causal",
+      "source": {"causal_status": "mixed", "provenance": ["synthetic:T05"]},
       "expected": {
+        "state": "HOLD_COMPOSITE_REQUIRED",
         "field_status": null,
-        "requires_explicit_strategy": true
-      },
-      "nonclaims": [
-        "MIXED_NE_FORCED_SINGLE_FIELD_VALUE"
-      ]
+        "required_nonclaim": "MIXED_NE_FORCED_SINGLE_FIELD_VALUE"
+      }
     },
     {
-      "id": "T04_ABSENCE_NO_REIFICATION_WHEN_NOT_NEEDED",
+      "id": "T06_ABSENCE_NO_REIFICATION_WHEN_NOT_NEEDED",
+      "kind": "absence",
       "source": {
+        "rel_id": "absence-source-1",
         "predicate": "EXPECTED_BUT_MISSING",
         "subject": "expected-link",
         "object": "direct-link",
-        "provenance": [
-          "synthetic:T04"
-        ]
+        "provenance": ["synthetic:T06"]
       },
-      "destination_need": {
-        "absence_participant": false
-      },
+      "destination_need": {"absence_participant": false},
       "expected": {
+        "state": "PRESERVE_KERNEL_ABSENCE_PREDICATE_ONLY",
         "create_absence_relatum": false
-      },
-      "nonclaims": [
-        "ABSENCE_PREDICATE_NE_ABSENCE_RELATUM",
-        "DUAL_REPRESENTATION_NE_DUPLICATE_TRUTH"
-      ]
+      }
     },
     {
-      "id": "T05_ABSENCE_REIFY_ONLY_WHEN_NEEDED",
+      "id": "T07_ABSENCE_REIFY_ONLY_WHEN_NEEDED",
+      "kind": "absence",
       "source": {
+        "rel_id": "absence-source-2",
         "predicate": "EXPECTED_BUT_MISSING",
         "subject": "permission",
         "object": "action-X",
         "observer": "observer-A",
-        "time": {
-          "observed_at": "2026-09-30T00:00:00Z"
-        },
-        "provenance": [
-          "synthetic:T05"
-        ]
+        "time": {"observed_at": "2026-09-30T00:00:00Z"},
+        "provenance": ["synthetic:T07"]
       },
-      "destination_need": {
-        "absence_participant": true
-      },
+      "destination_need": {"absence_participant": true},
       "expected": {
+        "state": "PROJECT_ABSENCE_PARTICIPANT",
         "create_absence_relatum": true,
         "relatum_kind": "ABSENCE",
-        "require_exact_source_provenance": true,
-        "require_scope_preservation": true,
         "required_nonclaims": [
           "ABSENCE_NE_NONEXISTENCE",
+          "ABSENCE_RELATUM_NE_INDEPENDENT_ENTITY_CLAIM",
           "PROJECTION_RELATUM_NE_SOURCE_ENTITY"
         ]
+      }
+    },
+    {
+      "id": "T08_ORDINARY_RELATION_MUST_NOT_SPAWN_ABSENCE",
+      "kind": "absence",
+      "source": {
+        "rel_id": "ordinary-source-1",
+        "predicate": "RELATES_TO",
+        "subject": "A",
+        "object": "B",
+        "provenance": ["synthetic:T08"]
       },
-      "nonclaims": [
-        "ABSENCE_RELATUM_NE_INDEPENDENT_ENTITY_CLAIM"
-      ]
+      "destination_need": {"absence_participant": true},
+      "expected": {
+        "state": "NOT_AN_ABSENCE_PREDICATE",
+        "create_absence_relatum": false
+      }
     }
   ],
+  "expected_summary": {
+    "case_count": 8,
+    "automatic_causal_supported_promotions": 0,
+    "automatic_causality_not_applicable_promotions": 0,
+    "mixed_forced_single_values": 0,
+    "absence_participants_created": 1,
+    "ordinary_relations_misreified_as_absence": 0
+  },
   "rails": [
     "TRANSLATION_RULE_NE_TRUTH",
     "MAPPING_NE_EQUIVALENCE",
@@ -117,6 +138,7 @@
     "UNKNOWN_NE_CAUSALITY_NOT_APPLICABLE",
     "MIXED_NE_FORCED_SINGLE_FIELD_VALUE",
     "ABSENCE_PREDICATE_NE_ABSENCE_RELATUM",
-    "ABSENCE_RELATUM_NE_INDEPENDENT_ENTITY_CLAIM"
+    "ABSENCE_RELATUM_NE_INDEPENDENT_ENTITY_CLAIM",
+    "ORDINARY_RELATION_NE_ABSENCE"
   ]
 }

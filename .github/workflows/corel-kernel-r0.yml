@@ -55,5 +55,8 @@ jobs:
       - name: Validate collision ownership adjudication R0
         run: python tools/validate_corel_kernel_field_adjudication_r0.py
 
-      - name: Validate translation policy canary R0
-        run: python tools/validate_corel_kernel_field_translation_canary_r0.py
+      - name: Validate exact-bound translation policy canary R0
+        shell: bash
+        run: |
+          set -euo pipefail
+          python tools/validate_corel_kernel_field_translation_canary_r0.py --field-ref FETCH_HEAD
