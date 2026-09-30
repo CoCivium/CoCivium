@@ -124,3 +124,19 @@ The next bounded frontier is replacing synthetic wave observations with **real r
 `BENEFIT_NE_AUTHORITY`  
 `CLOSED_LOOP_CANARY_NE_RUNTIME_SCHEDULER`  
 `VALIDATION_IS_NOT_ACCEPTANCE`
+
+
+## Custody boundary
+
+The synthetic `wave_receipt_sha256` values are test inputs for the control law. They are not receiver-produced readproof and therefore do not establish `PICKED_UP`.
+
+A future real loop must preserve the normal lifecycle:
+
+`LANDED -> PICKED_UP -> INTEGRATED -> COEX`
+
+with exact receiver identity, exact-object readproof, coverage boundary and explicit acceptance at the appropriate transitions.
+
+`SYNTHETIC_WAVE_RECEIPT_NE_RECEIVER_PRODUCED_READPROOF`  
+`NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF`  
+`VALIDATION_IS_NOT_ACCEPTANCE`  
+`NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE`
