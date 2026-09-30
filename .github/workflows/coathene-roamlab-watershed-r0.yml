@@ -20,5 +20,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Validate Watershed Explorer R0
+      - name: Validate Watershed Explorer package
         run: python docs/Business/CoAthene_RoamLab_R0/modules/WatershedExplorer_R0/tools/validate_module.py
+      - name: Run Watershed Explorer synthetic dry run
+        run: python docs/Business/CoAthene_RoamLab_R0/modules/WatershedExplorer_R0/tools/run_dry_run.py
