@@ -1,0 +1,62 @@
+{
+  "schema": "CoAthene.RoamLab.EducatorReview.v0.1",
+  "module_id": "CoAthene.RoamLab.WatershedExplorer.R0A",
+  "review_state": "HUMAN_REVIEW_REQUIRED",
+  "reviewer_context": {
+    "role": "OPTIONAL_STRING",
+    "grade_subject_experience": "OPTIONAL_STRING",
+    "jurisdiction": "OPTIONAL_STRING",
+    "accessibility_experience": "OPTIONAL_STRING",
+    "conflict_or_contribution_disclosure": "OPTIONAL_STRING"
+  },
+  "required_sections": [
+    "learning_objective",
+    "scientific_validity",
+    "inquiry_quality",
+    "curriculum_fit",
+    "classroom_realism",
+    "accessibility_inclusion",
+    "assessment",
+    "privacy_technology",
+    "safety",
+    "final_disposition"
+  ],
+  "dispositions": [
+    "PILOT_CANDIDATE_AFTER_MINOR_FIXES",
+    "PILOT_CANDIDATE_AFTER_MAJOR_FIXES",
+    "REVIEW_AGAIN_BEFORE_PILOT",
+    "RETIRE_OR_REDESIGN_MODULE",
+    "INSUFFICIENT_CONTEXT_TO_JUDGE"
+  ],
+  "defect_severity": [
+    "LOW",
+    "MEDIUM",
+    "HIGH",
+    "STOP_PILOT"
+  ],
+  "critique_disposition": [
+    "ACCEPT",
+    "ACCEPT_WITH_MODIFICATION",
+    "DEFER_WITH_REASON",
+    "DISAGREE_WITH_EVIDENCE",
+    "NEEDS_TEST",
+    "DUPLICATE",
+    "OUT_OF_SCOPE_FOR_THIS_MODULE"
+  ],
+  "advancement_gate": {
+    "educator_reviewed_requires": [
+      "AT_LEAST_ONE_IDENTIFIABLE_INDEPENDENT_HUMAN_REVIEW_ARTIFACT",
+      "MATERIAL_DEFECTS_EXTRACTED",
+      "RESPONSE_OR_DISPOSITION_RECORDED"
+    ],
+    "packet_alone_sufficient": false
+  },
+  "rails": [
+    "REVIEW_PACKET_NE_REVIEW",
+    "REVIEW_NE_APPROVAL",
+    "CRITIQUE_NE_ENDORSEMENT",
+    "CURRICULUM_ALIGNMENT_NE_CURRICULUM_CERTIFICATION",
+    "CREDENTIAL_NE_MONOPOLY_ON_VALID_CRITIQUE",
+    "NO_SILENT_DELETION_OF_MATERIAL_CRITIQUE"
+  ]
+}

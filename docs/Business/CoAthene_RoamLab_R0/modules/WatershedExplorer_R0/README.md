@@ -141,3 +141,16 @@ See:
 - `LEARNER_ACTIVITY.md`
 - `EVALUATION.md`
 - `SOURCES.md`
+
+
+## R0B human-review frontier
+
+The module now includes:
+
+- `CURRICULUM_ALIGNMENT_R0B.md` — candidate mapping to current Ontario Grade 8 Science and Technology;
+- `EDUCATOR_REVIEW_PACKET_R0B.md` — adversarial human-review prompts;
+- `EDUCATOR_REVIEW_SCHEMA.json` — machine-readable review/disposition contract.
+
+The existence of these files does **not** make the module educator-reviewed.
+
+`REVIEW_PACKET_NE_REVIEW`
