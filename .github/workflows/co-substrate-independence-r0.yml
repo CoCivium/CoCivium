@@ -7,7 +7,9 @@ on:
       - "docs/Architecture/CO_SUBSTRATE_INDEPENDENCE_FIELD_CROSSWALK_R0.md"
       - "fixtures/substrate/co_substrate_migration_r0.json"
       - "fixtures/substrate/co_substrate_migration_r0.adversarial.json"
+      - "fixtures/substrate/co_substrate_field_projection_r0.json"
       - "tools/validate_co_substrate_migration_r0.py"
+      - "tools/validate_co_substrate_field_projection_r0.py"
       - ".github/workflows/co-substrate-independence-r0.yml"
   workflow_dispatch:
 
@@ -26,3 +28,5 @@ jobs:
           python-version: "3.12"
       - name: Validate CoSubstrate migration fixture
         run: python tools/validate_co_substrate_migration_r0.py
+      - name: Validate CoSubstrateField projection binding
+        run: python tools/validate_co_substrate_field_projection_r0.py
