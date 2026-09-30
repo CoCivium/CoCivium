@@ -1,0 +1,194 @@
+{
+  "schema": "CoRelKernelField.CollisionMatrix.v0.1-candidate",
+  "state": "SYNTHETIC_CROSS_CANDIDATE_COLLISION__NO_CANON_NO_RUNTIME_NO_MERGE_AUTHORITY",
+  "sources": {
+    "corel_kernel": {
+      "pull_request": 128,
+      "candidate_head_at_fixture_authoring": "223b70b5bb9d7ff237496cdbb189dfb3083a5c69",
+      "schema_path": "schemas/relations/co_rel_kernel_r0.schema.json",
+      "schema_blob_sha": "b356162234accb90b52b033a31ee429812dee20d",
+      "fixture_path": "fixtures/relations/co_rel_kernel_r0.fixtures.json",
+      "fixture_blob_sha": "be9bfd9c282f08559094406e7da105fbb1d497b9"
+    },
+    "corelation_field": {
+      "pull_request": 127,
+      "frozen_head": "95db06101b16954a90468c5ef4f1b4e78a3195a5",
+      "frozen_ref": "review/corelation-field-pr127-95db0610",
+      "schema_path": "schemas/corelation-field-v0.1.schema.json",
+      "schema_blob_sha": "72dd31580aec86fb06236f6f88dd77b5b9e900e3",
+      "fixture_path": "examples/corelation-field-r0.example.json",
+      "fixture_blob_sha": "b9d4aa2307bd9418b916a317fc05eacdb669d5c0"
+    }
+  },
+  "mapping_classes": [
+    "OVERLAP_LOSSY",
+    "VOCABULARY_COLLISION",
+    "NON_EQUIVALENT_ENCODING",
+    "KERNEL_ONLY_R0",
+    "FIELD_ONLY_R0"
+  ],
+  "ownership_candidates": [
+    "KERNEL",
+    "FIELD",
+    "LAYERED",
+    "UNRESOLVED"
+  ],
+  "cases": [
+    {
+      "case_id": "C01_DIRECT_CAUSAL_RELATION",
+      "semantic_intent": "Represent A causing B with explicit causal qualification and provenance.",
+      "kernel_refs": ["rel-001"],
+      "field_refs": ["R1"],
+      "mapping_class": "OVERLAP_LOSSY",
+      "ownership_candidate": "LAYERED",
+      "kernel_strengths": ["minimal subject/predicate/object atom", "provenance", "confidence"],
+      "field_strengths": ["relation_family", "mechanism", "counterfactual_basis", "epistemic_class"],
+      "losses": [
+        "Kernel-to-field cannot infer mechanism or counterfactual basis from rel-001.",
+        "Field-to-kernel drops relation_family and richer causal-evidence distinctions unless carried as extension data."
+      ],
+      "nonclaims": ["OVERLAP_NE_EQUIVALENCE"]
+    },
+    {
+      "case_id": "C02_CAUSAL_STATUS_VOCABULARY",
+      "semantic_intent": "Represent uncertainty about whether a relation is causal.",
+      "kernel_refs": ["rel-001-v2"],
+      "field_refs": ["R2", "R9"],
+      "mapping_class": "VOCABULARY_COLLISION",
+      "ownership_candidate": "UNRESOLVED",
+      "kernel_strengths": ["possibly_causal", "unknown", "mixed"],
+      "field_strengths": ["CAUSAL_CANDIDATE", "COMMON_CAUSE_CANDIDATE", "UNKNOWN_CAUSAL_STATUS", "CAUSALITY_NOT_APPLICABLE"],
+      "losses": [
+        "Kernel unknown does not distinguish unknown causal status from causality-not-applicable.",
+        "Kernel mixed has no single lossless CoRelationField causal_status value.",
+        "Field COMMON_CAUSE_CANDIDATE has no single lossless CoRelKernel causal_status value."
+      ],
+      "nonclaims": ["MAPPING_NE_EQUIVALENCE", "UNKNOWN_NE_CAUSALITY_NOT_APPLICABLE"]
+    },
+    {
+      "case_id": "C03_NEGATIVE_SPACE_ABSENCE",
+      "semantic_intent": "Represent a materially relevant absence without asserting universal nonexistence.",
+      "kernel_refs": ["rel-005"],
+      "field_refs": ["R4"],
+      "mapping_class": "NON_EQUIVALENT_ENCODING",
+      "ownership_candidate": "UNRESOLVED",
+      "kernel_strengths": ["absence encoded as predicate EXPECTED_BUT_MISSING"],
+      "field_strengths": ["ABSENCE relatum kind", "authority/constraint relation family", "explicit ABSENCE_NE_NONEXISTENCE rail"],
+      "losses": [
+        "Predicate-only absence and typed-relatum absence are not isomorphic.",
+        "The two fixtures describe different absence scenarios and therefore prove encoding collision, not semantic equivalence."
+      ],
+      "nonclaims": ["ABSENCE_PREDICATE_NE_ABSENCE_RELATUM", "ABSENCE_NE_NONEXISTENCE"]
+    },
+    {
+      "case_id": "C04_RELATION_AS_RELATUM",
+      "semantic_intent": "Allow a relation to participate as an endpoint/relatum of another relation.",
+      "kernel_refs": ["rel-003", "rel-004"],
+      "field_refs": ["R6", "R7", "R8"],
+      "mapping_class": "OVERLAP_LOSSY",
+      "ownership_candidate": "LAYERED",
+      "kernel_strengths": ["simple rel_ref endpoint representation"],
+      "field_strengths": ["typed RELATION relata", "computed meta_depth", "bounded meta-reference DAG"],
+      "losses": [
+        "Kernel rel_ref does not carry field meta_depth or typed-relatum metadata.",
+        "Field representation is n-ary while kernel atom is subject/object oriented."
+      ],
+      "nonclaims": ["RELATION_AS_RELATUM_NE_SAME_REPRESENTATION"]
+    },
+    {
+      "case_id": "C05_OBSERVER_TIME_QUALIFIED_CONTRADICTION",
+      "semantic_intent": "Represent contradictory observations with observer and overlapping validity qualification.",
+      "kernel_refs": ["rel-observer-a", "rel-observer-b", "rel-observer-disagreement"],
+      "field_refs": [],
+      "mapping_class": "KERNEL_ONLY_R0",
+      "ownership_candidate": "KERNEL",
+      "kernel_strengths": ["observer identity", "valid_from/valid_to", "qualified contradiction basis"],
+      "field_strengths": [],
+      "losses": ["PR127 R0 has observer/time fields but no equivalent qualified contradiction contract or fixture."],
+      "nonclaims": ["FIELD_ABSENCE_NE_FIELD_INCAPABILITY_FOREVER"]
+    },
+    {
+      "case_id": "C06_SIBLING_REVISION_CONFLICT",
+      "semantic_intent": "Preserve concurrent sibling revisions without newest-wins collapse.",
+      "kernel_refs": ["rel-001", "rel-001-v2", "rel-001-v3"],
+      "field_refs": [],
+      "mapping_class": "KERNEL_ONLY_R0",
+      "ownership_candidate": "KERNEL",
+      "kernel_strengths": ["supersedes lineage", "conflict_set_id", "conflict_status", "changed_by/changed_at"],
+      "field_strengths": [],
+      "losses": ["PR127 R0 field fixture has transform provenance but no equivalent revision/supersession conflict model."],
+      "nonclaims": ["LATEST_TIMESTAMP_NE_TRUTH", "NEWEST_NE_WINNER"]
+    },
+    {
+      "case_id": "C07_CONFLICT_RESOLUTION_RELATION",
+      "semantic_intent": "Represent a conflict resolution as a new relation without deleting conflict history.",
+      "kernel_refs": ["rel-001-resolution", "rel-001-v2", "rel-001-v3"],
+      "field_refs": [],
+      "mapping_class": "KERNEL_ONLY_R0",
+      "ownership_candidate": "KERNEL",
+      "kernel_strengths": ["RESOLVES_CONFLICT relation", "target conflict set", "resolution note", "history preserved"],
+      "field_strengths": [],
+      "losses": ["PR127 R0 has no equivalent conflict-set resolution primitive."],
+      "nonclaims": ["RESOLUTION_NE_TRUTH_BY_AUTHORITY", "RESOLUTION_NE_HISTORY_ERASURE"]
+    },
+    {
+      "case_id": "C08_PROJECTION_LOSS_ACCOUNTING",
+      "semantic_intent": "Project a richer relation field while recording selected, omitted, and lost semantics.",
+      "kernel_refs": [],
+      "field_refs": ["P1", "P2", "P3", "P4", "P5"],
+      "mapping_class": "FIELD_ONLY_R0",
+      "ownership_candidate": "FIELD",
+      "kernel_strengths": [],
+      "field_strengths": ["selected_relation_ids", "omitted_relation_ids", "loss_declarations", "source_mutated=false"],
+      "losses": ["PR128 R0 has no projection envelope with exact selected+omitted accounting."],
+      "nonclaims": ["PROJECTION_NE_SOURCE"]
+    },
+    {
+      "case_id": "C09_TRANSFORM_LINEAGE_AND_LOSS",
+      "semantic_intent": "Transform relation bundles while preserving source/output identity, provenance, and declared loss.",
+      "kernel_refs": [],
+      "field_refs": ["T1"],
+      "mapping_class": "FIELD_ONLY_R0",
+      "ownership_candidate": "FIELD",
+      "kernel_strengths": [],
+      "field_strengths": ["source_relation_ids", "output_relation_ids", "loss_declarations", "provenance_refs", "source_mutated=false"],
+      "losses": ["PR128 R0 revision lineage is not equivalent to a transformation envelope."],
+      "nonclaims": ["REVISION_NE_TRANSFORMATION", "TRANSFORMATION_NE_IMPROVEMENT"]
+    },
+    {
+      "case_id": "C10_BOUNDARY_REPRESENTATION",
+      "semantic_intent": "Represent relation/model boundaries without claiming that model boundaries are reality boundaries.",
+      "kernel_refs": ["rel-006"],
+      "field_refs": ["R5"],
+      "mapping_class": "NON_EQUIVALENT_ENCODING",
+      "ownership_candidate": "LAYERED",
+      "kernel_strengths": ["boundary flag on a relation"],
+      "field_strengths": ["BOUNDARY and UNKNOWN relata", "observer/projection relation family", "OUTSIDE_MODEL_NE_OUTSIDE_REALITY rail"],
+      "losses": [
+        "Kernel boundary is relation metadata while field boundary is also first-class relatum structure.",
+        "The fixtures describe different boundary scenarios and are not direct semantic equivalents."
+      ],
+      "nonclaims": ["BOUNDARY_FLAG_NE_BOUNDARY_RELATUM", "OUTSIDE_MODEL_NE_OUTSIDE_REALITY"]
+    }
+  ],
+  "summary_expectations": {
+    "case_count": 10,
+    "lossless_case_count": 0,
+    "kernel_only_case_count": 3,
+    "field_only_case_count": 2,
+    "unresolved_case_count": 2,
+    "candidate_layering": {
+      "kernel": "minimal relation atom plus observer/time/revision/conflict/resolution semantics",
+      "field": "field-level typing plus negative-space/profile/projection/transform/adapter semantics"
+    }
+  },
+  "nonclaims": [
+    "COLLISION_FIXTURE_NE_CANON",
+    "COLLISION_FIXTURE_NE_AUTOMATIC_MERGE",
+    "MAPPING_NE_EQUIVALENCE",
+    "LOSSY_MAPPING_NE_DEFECT_BY_ITSELF",
+    "KERNEL_ONLY_R0_NE_FIELD_CAN_NEVER_SUPPORT",
+    "FIELD_ONLY_R0_NE_KERNEL_CAN_NEVER_SUPPORT",
+    "GREEN_CI_NE_COLLISION_RESOLUTION"
+  ]
+}

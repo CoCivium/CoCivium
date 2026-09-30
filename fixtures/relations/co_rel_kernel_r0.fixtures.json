@@ -1,0 +1,196 @@
+{
+  "schema": "CoRelKernel.R0.fixtures.v0_4",
+  "state": "CANDIDATE__NOT_CANON",
+  "relations": [
+    {
+      "rel_id": "rel-001",
+      "subject": "A",
+      "predicate": "CAUSES",
+      "object": "B",
+      "causal_status": "causal",
+      "provenance": [
+        "fixture:direct-cause"
+      ],
+      "confidence": 0.9,
+      "boundary": "internal"
+    },
+    {
+      "rel_id": "rel-002",
+      "subject": "B",
+      "predicate": "REPRESENTS",
+      "object": "C",
+      "causal_status": "non_causal",
+      "provenance": [
+        "fixture:representation"
+      ],
+      "confidence": 0.95,
+      "boundary": "internal"
+    },
+    {
+      "rel_id": "rel-003",
+      "subject": {
+        "rel_ref": "rel-001"
+      },
+      "predicate": "WEAKENED_BY",
+      "object": {
+        "rel_ref": "rel-004"
+      },
+      "causal_status": "non_causal",
+      "provenance": [
+        "fixture:meta-relation"
+      ],
+      "confidence": 0.7,
+      "boundary": "internal"
+    },
+    {
+      "rel_id": "rel-004",
+      "subject": "counterevidence",
+      "predicate": "CONTRADICTS",
+      "object": {
+        "rel_ref": "rel-001"
+      },
+      "causal_status": "non_causal",
+      "provenance": [
+        "fixture:counterevidence"
+      ],
+      "confidence": 0.8,
+      "boundary": "internal",
+      "contradiction_basis": "evidence_conflict"
+    },
+    {
+      "rel_id": "rel-005",
+      "subject": "expected-link-A-C",
+      "predicate": "EXPECTED_BUT_MISSING",
+      "object": "A-C-direct-relation",
+      "causal_status": "unknown",
+      "provenance": [
+        "fixture:null-relation"
+      ],
+      "boundary": "internal"
+    },
+    {
+      "rel_id": "rel-006",
+      "subject": "external-system-X",
+      "predicate": "INTEROPERATES_WITH",
+      "object": "CoAll-projection",
+      "causal_status": "non_causal",
+      "provenance": [
+        "fixture:boundary-crossing"
+      ],
+      "boundary": "boundary"
+    },
+    {
+      "rel_id": "rel-001-v2",
+      "subject": "A",
+      "predicate": "POSSIBLY_CAUSES",
+      "object": "B",
+      "causal_status": "possibly_causal",
+      "provenance": [
+        "fixture:revision-a"
+      ],
+      "supersedes_rel_id": "rel-001",
+      "change_reason": "counterevidence reduced causal confidence",
+      "evidence_delta": [
+        "fixture:counterevidence"
+      ],
+      "changed_by": "fixture-a",
+      "changed_at": "2026-09-30T00:00:00Z",
+      "conflict_set_id": "conflict-rel-001-r1",
+      "conflict_status": "unresolved",
+      "boundary": "internal"
+    },
+    {
+      "rel_id": "rel-001-v3",
+      "subject": "A",
+      "predicate": "CAUSES",
+      "object": "B",
+      "causal_status": "causal",
+      "provenance": [
+        "fixture:revision-b"
+      ],
+      "supersedes_rel_id": "rel-001",
+      "change_reason": "replication evidence retained stronger causal interpretation",
+      "evidence_delta": [
+        "fixture:replication-evidence"
+      ],
+      "changed_by": "fixture-b",
+      "changed_at": "2026-09-30T00:00:02Z",
+      "conflict_set_id": "conflict-rel-001-r1",
+      "conflict_status": "unresolved",
+      "boundary": "internal"
+    },
+    {
+      "rel_id": "rel-001-resolution",
+      "subject": "conflict-rel-001-r1",
+      "predicate": "RESOLVES_CONFLICT",
+      "object": {
+        "rel_ref": "rel-001-v2"
+      },
+      "causal_status": "non_causal",
+      "provenance": [
+        "fixture:adjudication"
+      ],
+      "evidence": [
+        "fixture:counterevidence",
+        "fixture:replication-evidence"
+      ],
+      "resolves_conflict_set_id": "conflict-rel-001-r1",
+      "resolution_note": "Fixture resolution chooses the lower-confidence causal interpretation pending further evidence.",
+      "boundary": "internal"
+    },
+    {
+      "rel_id": "rel-observer-a",
+      "subject": "system-X",
+      "predicate": "STATE_IS",
+      "object": "OPEN",
+      "observer": "observer-a",
+      "time": {
+        "valid_from": "2026-09-30T00:00:00Z",
+        "valid_to": "2026-09-30T02:00:00Z",
+        "observed_at": "2026-09-30T00:30:00Z"
+      },
+      "causal_status": "non_causal",
+      "provenance": [
+        "fixture:observer-a"
+      ],
+      "boundary": "internal"
+    },
+    {
+      "rel_id": "rel-observer-b",
+      "subject": "system-X",
+      "predicate": "STATE_IS",
+      "object": "CLOSED",
+      "observer": "observer-b",
+      "time": {
+        "valid_from": "2026-09-30T01:00:00Z",
+        "valid_to": "2026-09-30T03:00:00Z",
+        "observed_at": "2026-09-30T01:15:00Z"
+      },
+      "causal_status": "non_causal",
+      "provenance": [
+        "fixture:observer-b"
+      ],
+      "boundary": "internal"
+    },
+    {
+      "rel_id": "rel-observer-disagreement",
+      "subject": {
+        "rel_ref": "rel-observer-a"
+      },
+      "predicate": "CONTRADICTS",
+      "object": {
+        "rel_ref": "rel-observer-b"
+      },
+      "observer": "observer-c",
+      "time": {
+        "observed_at": "2026-09-30T01:20:00Z"
+      },
+      "contradiction_basis": "temporal_overlap",
+      "causal_status": "non_causal",
+      "provenance": [
+        "fixture:observer-relative-temporal-overlap"
+      ],
+      "boundary": "internal"
+    }
+  ]
+}
