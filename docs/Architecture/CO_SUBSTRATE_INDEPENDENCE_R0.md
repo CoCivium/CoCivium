@@ -159,6 +159,20 @@ A failover may continue work for scope without implying that personal identity, 
 
 A derived or failover instance does not inherit effect authority merely because it shares lineage or state. Authority must be separately present and sufficient on the acting instance.
 
+## Cross-OS receiver proof
+
+The first receiver-side proof MAY use distinct CI operating-system hosts as a bounded intermediate step before any model-runtime migration claim.
+
+The same exact semantic object is reconstructed independently on Linux and Windows runners. Each receiver emits an attestation containing the semantic digest, authority state, required/observed invariants, receiver identity, accepted continuity scope, and explicit nonclaims. A fan-in job accepts only matching semantic digests, object identity/version, authority state, and two distinct OS receiver families.
+
+This can prove a bounded cross-host representational continuity claim. It does **not** prove migration between model runtimes, production hosts, consciousness, personal identity, or provider-independent CoAll runtime continuity.
+
+`CROSS_OS_CI_NE_MODEL_RUNTIME_MIGRATION`
+
+`SAME_SEMANTIC_DIGEST_NE_IDENTICAL_INSTANCE`
+
+`CI_RECEIVER_PROOF_NE_PRODUCTION_RUNTIME`
+
 ## Continuity claim boundaries
 
 An accepted migration supports only the continuity claims actually proved for scope.
