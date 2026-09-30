@@ -1,0 +1,56 @@
+{
+  "schema": "CoModelSubstrateLight.RealMetabolismObservationManifest.v0.1-candidate",
+  "state": "CONTROLLED_COUNTERFACTUAL_RECEIPT_LANDED__METABOLISM_PICKUP_PENDING",
+  "object": {
+    "Identity": "receipt:controlled-counterfactual-fanin-r0",
+    "Provenance": {
+      "workflow_run_id": 36737453263,
+      "workflow_name": "Model substrate-light controlled counterfactual R0",
+      "source_head_sha": "f3d82e46dd520cf4af73a5e18fbaf8e9f69e535b",
+      "artifact_id": 11107178630,
+      "artifact_name": "model-substrate-light-controlled-counterfactual-fanin-r0",
+      "artifact_archive_digest": "sha256:69c281dd47c9af61b8765f1c5972777d3a2a59acf33f8a75e642056b8450cde9",
+      "source_file_name": "controlled-counterfactual-fanin-r0.json"
+    },
+    "ContentHash": "sha256:ad8723a8d4217a0f361cdb611bf528af498a7d94507c9d18f0d0cbbcc058b52a",
+    "LifecycleState": "LANDED",
+    "Authority": "CANDIDATE_ONLY__ADVISORY_ONLY__NO_RUNTIME_NO_CANON_NO_AUTHORITY_CHANGE",
+    "Owner": "CoCivium/CoCivium#135",
+    "Receiver": "github-actions:PR135_REAL_METABOLISM_OBSERVATION_COMPILER_R0",
+    "Dependencies": [
+      "workflow-run:36737453263",
+      "artifact:11107178630",
+      "fixture:fixtures/substrate/model_substrate_light_metabolism_loop_r0.json",
+      "fixture:fixtures/substrate/model_substrate_light_benefit_oomph_r0.json"
+    ],
+    "CollisionDomain": "substrate-light-real-metabolism-observation-r0",
+    "DuplicateOf": null,
+    "Supersedes": null,
+    "VisibleSurface": "PR135:evidence/substrate/metabolism-observations-r0/controlled-counterfactual-fanin-r0.json",
+    "ProofGate": "PICKED_UP requires live artifact metadata match plus exact source bytes equal landed bytes",
+    "NextDeed": "Compile one advisory no-widen metabolism observation from the exact controlled counterfactual result",
+    "RetirementCondition": "Superseded by a broader controlled counterfactual with task classes that can produce complementary parallel benefit"
+  },
+  "policy_bindings": {
+    "metabolism_fixture_path": "fixtures/substrate/model_substrate_light_metabolism_loop_r0.json",
+    "metabolism_fixture_blob_sha": "052a712d3e8805b3ebcdca8bbc228c5d11ebb43d",
+    "benefit_fixture_path": "fixtures/substrate/model_substrate_light_benefit_oomph_r0.json",
+    "benefit_fixture_blob_sha": "d6fefd2ca5453705726423edb60b4c6ff1eb085e"
+  },
+  "coverage_boundary": [
+    "ONE_EXACT_CONTROLLED_COUNTERFACTUAL_FANIN_RECEIPT",
+    "DETERMINISTIC_PORTABLE_MODEL_TASK_ONLY",
+    "NO_REAL_MODEL",
+    "NO_RUNTIME_WIDTH_MUTATION",
+    "NO_REAL_WORLD_BENEFIT_GENERALIZATION"
+  ],
+  "nonclaims": [
+    "CONTROLLED_CI_COUNTERFACTUAL_NE_REAL_WORLD_BENEFIT",
+    "NO_GAIN_IN_THIS_TASK_NE_NO_GAIN_FOR_OTHER_TASKS",
+    "PICKED_UP_BY_METABOLISM_COMPILER_NE_INTEGRATED",
+    "ADVISORY_ACTION_NE_RUNTIME_MUTATION",
+    "BENEFIT_NE_AUTHORITY",
+    "VALIDATION_IS_NOT_ACCEPTANCE",
+    "NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE"
+  ]
+}

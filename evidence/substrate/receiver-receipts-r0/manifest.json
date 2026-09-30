@@ -1,0 +1,110 @@
+{
+  "schema": "CoModelSubstrateLight.RealReceiverReceiptBridge.v0.1-candidate",
+  "state": "REAL_RECEIVER_RECEIPT_COPIES_LANDED_ON_PR135_CANDIDATE_BRANCH__ADVISORY_RECEIVER_PICKUP_PENDING",
+  "authority": "CANDIDATE_ONLY__NO_RUNTIME_NO_CANON_NO_AUTHORITY_CHANGE",
+  "receiver": {
+    "identity": "github-actions:PR135_REAL_RECEIPT_ADVISORY_COMPILER_R0",
+    "purpose": "Read exact prior receiver-produced fan-in receipts and compile an advisory width observation without inventing missing counterfactual benefit evidence."
+  },
+  "objects": [
+    {
+      "Identity": "receipt:portability-fanin-r0",
+      "Provenance": {
+        "workflow_run_id": 36728338535,
+        "workflow_name": "Model substrate-light portability R0",
+        "source_head_sha": "298fd46c6d78cfecc90fc768d77c09908b36f707",
+        "artifact_id": 11104082749,
+        "artifact_name": "model-substrate-light-portability-fanin-r0",
+        "artifact_archive_digest": "sha256:a4860fc0c4be1ba04f8f22557260f06fa188a1df3c03ee8d53d72ee2b99e75ab",
+        "source_file_name": "model-substrate-light-portability-fanin-r0.json"
+      },
+      "ContentHash": "sha256:6012726955b10ae2c29e3a6b9b0a768c00b68566d7843131823e7b946b746c00",
+      "LifecycleState": "LANDED",
+      "Authority": "CANDIDATE_ONLY__NO_RUNTIME_NO_CANON_NO_AUTHORITY_CHANGE",
+      "Owner": "CoCivium/CoCivium#135",
+      "Receiver": "github-actions:PR135_REAL_RECEIPT_ADVISORY_COMPILER_R0",
+      "Dependencies": ["workflow-run:36728338535", "artifact:11104082749"],
+      "CollisionDomain": "substrate-light-real-receiver-receipt-bridge-r0",
+      "DuplicateOf": null,
+      "Supersedes": null,
+      "VisibleSurface": "PR135:evidence/substrate/receiver-receipts-r0/portability-fanin-r0.json",
+      "ProofGate": "PICKED_UP requires exact historical artifact metadata match plus byte-for-byte source artifact readback",
+      "NextDeed": "Compile advisory observation without inferring a parallelism winner absent a controlled same-task baseline",
+      "RetirementCondition": "Superseded by a later exact receipt set with controlled same-task single-vs-parallel comparison"
+    },
+    {
+      "Identity": "receipt:local-worker-adapter-fanin-r0",
+      "Provenance": {
+        "workflow_run_id": 36728338983,
+        "workflow_name": "Model substrate-light local worker adapter R0",
+        "source_head_sha": "298fd46c6d78cfecc90fc768d77c09908b36f707",
+        "artifact_id": 11104072822,
+        "artifact_name": "model-substrate-light-local-worker-fanin-r0",
+        "artifact_archive_digest": "sha256:ee167bc35a0ba4bbd2bae1968404534b800092ff8567c0ff5b69d73ca71a8a45",
+        "source_file_name": "local-worker-adapter-fanin-r0.json"
+      },
+      "ContentHash": "sha256:0f8cd9709771a4c7ec252a311c695fd4861e8d72b1f101d6d5d314808757842f",
+      "LifecycleState": "LANDED",
+      "Authority": "CANDIDATE_ONLY__NO_RUNTIME_NO_CANON_NO_AUTHORITY_CHANGE",
+      "Owner": "CoCivium/CoCivium#135",
+      "Receiver": "github-actions:PR135_REAL_RECEIPT_ADVISORY_COMPILER_R0",
+      "Dependencies": ["workflow-run:36728338983", "artifact:11104072822"],
+      "CollisionDomain": "substrate-light-real-receiver-receipt-bridge-r0",
+      "DuplicateOf": null,
+      "Supersedes": null,
+      "VisibleSurface": "PR135:evidence/substrate/receiver-receipts-r0/local-worker-adapter-fanin-r0.json",
+      "ProofGate": "PICKED_UP requires exact historical artifact metadata match plus byte-for-byte source artifact readback",
+      "NextDeed": "Compile advisory observation without inferring model quality or runtime acceptance",
+      "RetirementCondition": "Superseded by a later exact receipt set from a real local model run"
+    },
+    {
+      "Identity": "receipt:bound-ollama-fanin-r0",
+      "Provenance": {
+        "workflow_run_id": 36728338496,
+        "workflow_name": "Model substrate-light bound Ollama R0",
+        "source_head_sha": "298fd46c6d78cfecc90fc768d77c09908b36f707",
+        "artifact_id": 11103143847,
+        "artifact_name": "model-substrate-light-bound-ollama-fanin-r0",
+        "artifact_archive_digest": "sha256:3415b020f9de1dd7bd076cc78f3b39782594874e495eea02690e22c96c26e75a",
+        "source_file_name": "bound-ollama-fanin-r0.json"
+      },
+      "ContentHash": "sha256:670f1b0df26af49e8f18c6763b88a3c2703962c2d92e103ebdc30e9f567f0e2c",
+      "LifecycleState": "LANDED",
+      "Authority": "CANDIDATE_ONLY__NO_RUNTIME_NO_CANON_NO_AUTHORITY_CHANGE",
+      "Owner": "CoCivium/CoCivium#135",
+      "Receiver": "github-actions:PR135_REAL_RECEIPT_ADVISORY_COMPILER_R0",
+      "Dependencies": ["workflow-run:36728338496", "artifact:11103143847"],
+      "CollisionDomain": "substrate-light-real-receiver-receipt-bridge-r0",
+      "DuplicateOf": null,
+      "Supersedes": null,
+      "VisibleSurface": "PR135:evidence/substrate/receiver-receipts-r0/bound-ollama-fanin-r0.json",
+      "ProofGate": "PICKED_UP requires exact historical artifact metadata match plus byte-for-byte source artifact readback",
+      "NextDeed": "Compile advisory observation while preserving NO_REAL_MODEL_INFERENCE boundary",
+      "RetirementCondition": "Superseded by a later exact receipt from a real installed-model canary"
+    }
+  ],
+  "advisory_policy": {
+    "same_task_controlled_single_width_baseline_present": false,
+    "same_task_parallel_receipt_present": false,
+    "measured_receiver_pressure_present": false,
+    "measured_real_world_benefit_present": false,
+    "required_decision": "HOLD_NO_CONTROLLED_COUNTERFACTUAL_BASELINE"
+  },
+  "coverage_boundary": [
+    "THREE_EXACT_HISTORICAL_GITHUB_ACTIONS_FANIN_ARTIFACTS",
+    "SOURCE_HEAD_298FD46C_ONLY",
+    "PUBLIC_SYNTHETIC_OR_PROTOCOL_RECEIPTS_ONLY",
+    "NO_REAL_OLLAMA_INFERENCE_RECEIPT",
+    "NO_CONTROLLED_SINGLE_VS_PARALLEL_COUNTERFACTUAL",
+    "NO_RUNTIME_WIDTH_AUTHORITY"
+  ],
+  "nonclaims": [
+    "RECEIVER_RECEIPT_NE_REAL_WORLD_BENEFIT",
+    "ARTIFACT_COUNT_NE_PROGRESS",
+    "RECEIVER_COUNT_NE_PARALLELISM_BENEFIT",
+    "REAL_RECEIPT_INGESTION_NE_RUNTIME_INTEGRATION",
+    "PICKED_UP_BY_ADVISORY_COMPILER_NE_INTEGRATED",
+    "VALIDATION_IS_NOT_ACCEPTANCE",
+    "NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE"
+  ]
+}

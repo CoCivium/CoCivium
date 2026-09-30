@@ -1,0 +1,79 @@
+name: Model substrate-light local worker adapter R0
+
+on:
+  pull_request:
+    paths:
+      - "scripts/CoLocalModelWorkerR3.py"
+      - "docs/Operations/COLOCAL_MODEL_WORKER_R3.md"
+      - "docs/Architecture/COMODEL_SUBSTRATE_LIGHT_LOCAL_WORKER_R0.md"
+      - "fixtures/substrate/model_substrate_light_local_worker_adapter_r0.json"
+      - "tools/mock_ollama_loopback_r0.py"
+      - "tools/run_model_substrate_light_local_worker_adapter_r0.py"
+      - "tools/fanin_model_substrate_light_local_worker_adapter_r0.py"
+      - ".github/workflows/model-substrate-light-local-worker-r0.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  receiver:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-14]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Check out exact candidate head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 1
+
+      - name: Use Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Exercise existing local worker through deterministic loopback receiver
+        run: python tools/run_model_substrate_light_local_worker_adapter_r0.py --output-root artifacts/local-worker-r0
+
+      - name: Upload receiver evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: local-worker-${{ runner.os }}-${{ runner.arch }}
+          path: artifacts/local-worker-r0
+          if-no-files-found: error
+          retention-days: 30
+
+  fanin:
+    needs: receiver
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out exact candidate head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 1
+
+      - name: Use Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Download receiver evidence
+        uses: actions/download-artifact@v4
+        with:
+          pattern: local-worker-*
+          path: receiver-artifacts
+
+      - name: Fan in adapter convergence
+        run: python tools/fanin_model_substrate_light_local_worker_adapter_r0.py --input-root receiver-artifacts --output artifacts/local-worker-adapter-fanin-r0.json
+
+      - name: Upload fan-in receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: model-substrate-light-local-worker-fanin-r0
+          path: artifacts/local-worker-adapter-fanin-r0.json
+          if-no-files-found: error
+          retention-days: 30

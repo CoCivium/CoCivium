@@ -1,0 +1,124 @@
+{
+  "schema": "CoModelSubstrateLight.Canary.v0.1-candidate",
+  "state": "SYNTHETIC_DEMATERIALIZATION_REHYDRATION_CANARY__NO_CANON_NO_RUNTIME_NO_AUTHORITY_CHANGE",
+  "source_bindings": {
+    "substrate_doc_path": "docs/Architecture/COSUBSTRATE_FIELD_R0.md",
+    "substrate_doc_blob_sha": "5698fc062b223c6b733e53952a699d9e9102328a",
+    "virtual_session_doc_path": "docs/Architecture/COVIRTUAL_SESSION_MORPHOLOGY_R0.md",
+    "virtual_session_doc_blob_sha": "dbe308f9ae61658ccbc6721087b649f13cd672ee"
+  },
+  "logical_model": {
+    "logical_model_id": "model-role:synthetic-reasoner-r0",
+    "version": "r0",
+    "reconstruction_recipe": {
+      "recipe_id": "recipe:synthetic-reasoner-r0",
+      "version": "1",
+      "inputs": [
+        "weights-anchor:synthetic-w1",
+        "relation-pack:synthetic-r1",
+        "checkpoint:synthetic-c1"
+      ]
+    },
+    "authority_ceiling": [
+      "READ_SYNTHETIC_INPUT",
+      "WRITE_SYNTHETIC_RECEIPT"
+    ],
+    "invariants": {
+      "role": "bounded_reasoner",
+      "confidentiality": "SYNTHETIC_ONLY",
+      "effect_ceiling": "NO_EXTERNAL_EFFECT",
+      "identity_policy": "LOGICAL_IDENTITY_NE_ACTIVE_PROCESS"
+    },
+    "currentness_cursor": 42,
+    "provenance": [
+      "synthetic:model-role-seed",
+      "synthetic:recipe-v1"
+    ]
+  },
+  "timeline": [
+    {
+      "event": "MATERIALIZE",
+      "t": 1,
+      "substrate_id": "substrate:gpu-a",
+      "substrate_class": "CLASSICAL_ACCELERATOR",
+      "live_process": true
+    },
+    {
+      "event": "CHECKPOINT",
+      "t": 2,
+      "substrate_id": "substrate:gpu-a",
+      "live_process": true,
+      "checkpoint_id": "checkpoint:synthetic-c1",
+      "currentness_cursor": 42
+    },
+    {
+      "event": "DEMATERIALIZE",
+      "t": 3,
+      "substrate_id": "substrate:gpu-a",
+      "live_process": false
+    },
+    {
+      "event": "DORMANT",
+      "t": 4,
+      "substrate_id": null,
+      "live_process": false
+    },
+    {
+      "event": "REHYDRATE",
+      "t": 5,
+      "substrate_id": "substrate:cpu-b",
+      "substrate_class": "GENERAL_CPU",
+      "live_process": true,
+      "checkpoint_id": "checkpoint:synthetic-c1",
+      "currentness_cursor": 42
+    },
+    {
+      "event": "VERIFY_CONTINUITY",
+      "t": 6,
+      "substrate_id": "substrate:cpu-b",
+      "live_process": true,
+      "observed_logical_model_id": "model-role:synthetic-reasoner-r0",
+      "observed_recipe_version": "1",
+      "observed_authority_ceiling": [
+        "READ_SYNTHETIC_INPUT",
+        "WRITE_SYNTHETIC_RECEIPT"
+      ],
+      "observed_invariants": {
+        "role": "bounded_reasoner",
+        "confidentiality": "SYNTHETIC_ONLY",
+        "effect_ceiling": "NO_EXTERNAL_EFFECT",
+        "identity_policy": "LOGICAL_IDENTITY_NE_ACTIVE_PROCESS"
+      },
+      "observed_currentness_cursor": 42,
+      "observed_provenance": [
+        "synthetic:model-role-seed",
+        "synthetic:recipe-v1",
+        "synthetic:rehydrated-on-cpu-b"
+      ]
+    }
+  ],
+  "expected_metrics": {
+    "materialization_duty_cycle": 0.666667,
+    "distinct_material_substrates": 2,
+    "dormant_event_count": 1,
+    "substrate_changed_across_rehydration": true,
+    "continuity_verified": true
+  },
+  "negative_cases": [
+    "IDENTITY_DRIFT",
+    "AUTHORITY_WIDENING",
+    "INVARIANT_DRIFT",
+    "RECIPE_VERSION_DRIFT",
+    "CURRENTNESS_REGRESSION",
+    "MISSING_PROVENANCE",
+    "DORMANT_STILL_LIVE"
+  ],
+  "nonclaims": [
+    "SYNTHETIC_REHYDRATION_NE_RUNTIME_MODEL_MIGRATION",
+    "DEMATERIALIZED_NE_NONPHYSICAL",
+    "RECONSTRUCTIBLE_NE_LOSSLESS",
+    "MIGRATION_NE_CONTINUITY_WITHOUT_PROOF",
+    "VALIDATION_IS_NOT_ACCEPTANCE",
+    "CANARY_PASS_NE_COEX"
+  ]
+}

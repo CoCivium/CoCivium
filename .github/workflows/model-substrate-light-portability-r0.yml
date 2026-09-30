@@ -1,0 +1,84 @@
+name: Model substrate-light portability R0
+
+on:
+  pull_request:
+    paths:
+      - "docs/Architecture/COSUBSTRATE_FIELD_R0.md"
+      - "docs/Architecture/COVIRTUAL_SESSION_MORPHOLOGY_R0.md"
+      - "docs/Architecture/COMODEL_SUBSTRATE_LIGHT_PORTABILITY_R0.md"
+      - "fixtures/substrate/model_substrate_light_portable_model_r0.json"
+      - "tools/run_model_substrate_light_portable_r0.py"
+      - "tools/fanin_model_substrate_light_portability_r0.py"
+      - ".github/workflows/model-substrate-light-portability-r0.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  reconstruct:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-14]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Check out exact candidate head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 1
+
+      - name: Use Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Reconstruct and run bounded parameterized model
+        shell: bash
+        run: |
+          set -euo pipefail
+          python tools/run_model_substrate_light_portable_r0.py --output artifacts/portable-model-receipt.json
+
+      - name: Upload receiver receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: portable-model-${{ runner.os }}-${{ runner.arch }}
+          path: artifacts/portable-model-receipt.json
+          if-no-files-found: error
+          retention-days: 30
+
+  fanin:
+    needs: reconstruct
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out exact candidate head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 1
+
+      - name: Use Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Download receiver receipts
+        uses: actions/download-artifact@v4
+        with:
+          pattern: portable-model-*
+          path: receiver-artifacts
+
+      - name: Fan in exact semantic convergence
+        shell: bash
+        run: |
+          set -euo pipefail
+          python tools/fanin_model_substrate_light_portability_r0.py --input-root receiver-artifacts --output artifacts/model-substrate-light-portability-fanin-r0.json
+
+      - name: Upload fan-in receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: model-substrate-light-portability-fanin-r0
+          path: artifacts/model-substrate-light-portability-fanin-r0.json
+          if-no-files-found: error
+          retention-days: 30

@@ -1,0 +1,103 @@
+name: Model substrate-light controlled counterfactual R0
+
+on:
+  pull_request:
+    paths:
+      - "docs/Architecture/COMODEL_SUBSTRATE_LIGHT_CONTROLLED_COUNTERFACTUAL_R0.md"
+      - "fixtures/substrate/model_substrate_light_controlled_counterfactual_r0.json"
+      - "tools/run_model_substrate_light_counterfactual_receiver_r0.py"
+      - "tools/fanin_model_substrate_light_controlled_counterfactual_r0.py"
+      - ".github/workflows/model-substrate-light-controlled-counterfactual-r0.yml"
+      - "fixtures/substrate/model_substrate_light_portable_model_r0.json"
+      - "tools/run_model_substrate_light_portable_r0.py"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  single:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out exact candidate head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 1
+
+      - name: Use Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Execute exact work object at physical width 1
+        run: python tools/run_model_substrate_light_counterfactual_receiver_r0.py --mode SINGLE --replica-id S0 --output artifacts/counterfactual-receiver.json
+
+      - name: Upload single receiver receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: counterfactual-single-S0
+          path: artifacts/counterfactual-receiver.json
+          if-no-files-found: error
+          retention-days: 30
+
+  parallel:
+    strategy:
+      fail-fast: false
+      matrix:
+        replica: [P0, P1, P2]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out exact candidate head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 1
+
+      - name: Use Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Execute exact work object at physical width 3
+        run: python tools/run_model_substrate_light_counterfactual_receiver_r0.py --mode PARALLEL --replica-id ${{ matrix.replica }} --output artifacts/counterfactual-receiver.json
+
+      - name: Upload parallel receiver receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: counterfactual-parallel-${{ matrix.replica }}
+          path: artifacts/counterfactual-receiver.json
+          if-no-files-found: error
+          retention-days: 30
+
+  fanin:
+    needs: [single, parallel]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out exact candidate head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 1
+
+      - name: Use Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Download exact receiver receipts
+        uses: actions/download-artifact@v4
+        with:
+          pattern: counterfactual-*
+          path: receiver-artifacts
+
+      - name: Compile controlled counterfactual readproof and advisory
+        run: python tools/fanin_model_substrate_light_controlled_counterfactual_r0.py --input-root receiver-artifacts --output artifacts/controlled-counterfactual-fanin-r0.json
+
+      - name: Upload controlled counterfactual receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: model-substrate-light-controlled-counterfactual-fanin-r0
+          path: artifacts/controlled-counterfactual-fanin-r0.json
+          if-no-files-found: error
+          retention-days: 30

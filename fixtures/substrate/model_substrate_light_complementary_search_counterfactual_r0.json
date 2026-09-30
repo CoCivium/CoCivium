@@ -1,0 +1,82 @@
+{
+  "schema": "CoModelSubstrateLight.ComplementarySearchCounterfactual.v0.1-candidate",
+  "state": "CONTROLLED_COMPLEMENTARY_SEARCH_SINGLE_VS_PARALLEL_CI_CANARY__NO_RUNTIME_NO_CANON_NO_AUTHORITY_CHANGE",
+  "logical_work_id": "work:bounded-partitioned-search-r0",
+  "task": "Find all records divisible by 7 in a three-shard bounded dataset during one receiver lease.",
+  "search_rule": {
+    "predicate": "value_mod_7_equals_0",
+    "max_records_per_receiver_lease": 4,
+    "max_shards_per_receiver_lease": 1,
+    "wave_ends_after_one_receiver_lease_per_embodiment": true
+  },
+  "dataset": {
+    "shards": [
+      {"shard_id": "A", "values": [1, 7, 3, 5]},
+      {"shard_id": "B", "values": [2, 4, 14, 8]},
+      {"shard_id": "C", "values": [9, 11, 13, 21]}
+    ],
+    "expected_targets": [7, 14, 21]
+  },
+  "single_mode": {
+    "physical_width": 1,
+    "receiver_count": 1,
+    "assignments": {
+      "S0": "A"
+    }
+  },
+  "parallel_mode": {
+    "physical_width": 3,
+    "receiver_count": 3,
+    "assignments": {
+      "P0": "A",
+      "P1": "B",
+      "P2": "C"
+    }
+  },
+  "scoring": {
+    "qualified_benefit_unit": "ONE_UNIQUE_CORRECT_TARGET_DISCOVERED",
+    "verified_deed": "ONE_COMPLETED_LOGICAL_SEARCH_WAVE",
+    "execution_cost_unit": "ONE_RECEIVER_LEASE",
+    "duplicate_target_discoveries_count_once": true,
+    "expected_single_unique_targets": [7],
+    "expected_parallel_unique_targets": [7, 14, 21],
+    "expected_single_benefit_units": 1,
+    "expected_parallel_benefit_units": 3,
+    "expected_single_verified_deeds": 1,
+    "expected_parallel_verified_deeds": 1,
+    "expected_single_execution_cost_units": 1,
+    "expected_parallel_execution_cost_units": 3
+  },
+  "expected": {
+    "single_benefit_yield_numerator": 1,
+    "single_benefit_yield_denominator": 1,
+    "parallel_benefit_yield_numerator": 3,
+    "parallel_benefit_yield_denominator": 1,
+    "parallel_strict_verified_benefit_gain": true,
+    "parallel_execution_cost_multiplier": 3,
+    "parallel_efficiency_gain_claimed": false,
+    "advisory_decision": "POSITIVE_VERIFIED_COVERAGE_GAIN__PRESSURE_BUDGET_EVIDENCE_REQUIRED_BEFORE_WIDENING",
+    "physical_width_change_authorized": false
+  },
+  "coverage_boundary": [
+    "SAME_EXACT_LOGICAL_SEARCH_OBJECT",
+    "FIXED_ONE_SHARD_PER_RECEIVER_LEASE",
+    "ONE_SINGLE_RECEIVER_VS_THREE_PARALLEL_RECEIVERS",
+    "OBJECTIVE_INTEGER_PREDICATE_SCORING",
+    "POSITIVE_COVERAGE_GAIN_ONLY",
+    "NO_EFFICIENCY_GAIN_CLAIM",
+    "NO_REAL_MODEL",
+    "NO_RUNTIME_WIDTH_AUTHORITY"
+  ],
+  "nonclaims": [
+    "PARALLEL_COVERAGE_GAIN_NE_PARALLEL_EFFICIENCY_GAIN",
+    "BENEFIT_PER_LOGICAL_WAVE_NE_BENEFIT_PER_COMPUTE",
+    "CONTROLLED_CI_COUNTERFACTUAL_NE_REAL_WORLD_BENEFIT",
+    "POSITIVE_GAIN_IN_THIS_TASK_NE_POSITIVE_GAIN_FOR_OTHER_TASKS",
+    "BENEFIT_OBSERVED_NE_BENEFIT_CAUSED_BEYOND_THIS_FIXTURE",
+    "BENEFIT_NE_AUTHORITY",
+    "PRESSURE_METRICS_ABSENT_NE_PRESSURE_BUDGET_PASS",
+    "COUNTERFACTUAL_PASS_NE_RUNTIME_SCHEDULER",
+    "VALIDATION_IS_NOT_ACCEPTANCE"
+  ]
+}

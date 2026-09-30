@@ -1,0 +1,46 @@
+{
+  "schema": "CoModelSubstrateLight.OllamaInventoryMock.v0.1-candidate",
+  "state": "DETERMINISTIC_LOCAL_INVENTORY_PROTOCOL_FIXTURE",
+  "models": [
+    {
+      "name": "alpha:latest",
+      "model": "alpha:latest",
+      "modified_at": "2026-09-30T00:00:00Z",
+      "size": 123456789,
+      "digest": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "alpha",
+        "families": ["alpha"],
+        "parameter_size": "1B",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "name": "beta:small",
+      "model": "beta:small",
+      "modified_at": "2026-09-30T00:00:01Z",
+      "size": 234567890,
+      "digest": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "beta",
+        "families": ["beta"],
+        "parameter_size": "2B",
+        "quantization_level": "Q8_0"
+      }
+    }
+  ],
+  "expected": {
+    "model_count": 2,
+    "model_selection_state": "UNBOUND_REQUIRES_EXACT_NAME_AND_DIGEST_SELECTION",
+    "effect_executions": 0
+  },
+  "nonclaims": [
+    "MOCK_INVENTORY_NE_X2_INVENTORY",
+    "MOCK_MODEL_NE_REAL_MODEL",
+    "INVENTORY_PROTOCOL_PASS_NE_REAL_OLLAMA_RUNTIME"
+  ]
+}

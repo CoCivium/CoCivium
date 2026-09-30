@@ -1,0 +1,78 @@
+name: Model substrate-light bound Ollama R0
+
+on:
+  pull_request:
+    paths:
+      - "docs/Architecture/COMODEL_SUBSTRATE_LIGHT_BOUND_OLLAMA_R0.md"
+      - "fixtures/substrate/model_substrate_light_bound_ollama_mock_r0.json"
+      - "tools/run_bound_local_ollama_canary_r0.py"
+      - "tools/mock_bound_ollama_runtime_r0.py"
+      - "tools/run_model_substrate_light_bound_ollama_mock_r0.py"
+      - "tools/fanin_model_substrate_light_bound_ollama_r0.py"
+      - ".github/workflows/model-substrate-light-bound-ollama-r0.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  receiver:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-14]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Check out exact candidate head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 1
+
+      - name: Use Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Exercise exact name plus digest bound worker path
+        run: python tools/run_model_substrate_light_bound_ollama_mock_r0.py --output-root artifacts/bound-ollama-r0
+
+      - name: Upload bounded receiver evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: bound-ollama-${{ runner.os }}-${{ runner.arch }}
+          path: artifacts/bound-ollama-r0
+          if-no-files-found: error
+          retention-days: 30
+
+  fanin:
+    needs: receiver
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out exact candidate head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 1
+
+      - name: Use Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Download bounded receiver evidence
+        uses: actions/download-artifact@v4
+        with:
+          pattern: bound-ollama-*
+          path: receiver-artifacts
+
+      - name: Fan in exact bound-model convergence
+        run: python tools/fanin_model_substrate_light_bound_ollama_r0.py --input-root receiver-artifacts --output artifacts/bound-ollama-fanin-r0.json
+
+      - name: Upload fan-in receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: model-substrate-light-bound-ollama-fanin-r0
+          path: artifacts/bound-ollama-fanin-r0.json
+          if-no-files-found: error
+          retention-days: 30
