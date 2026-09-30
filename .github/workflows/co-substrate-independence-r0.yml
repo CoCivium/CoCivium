@@ -46,6 +46,9 @@ jobs:
         run: python tools/validate_co_substrate_multi_federation_r0.py
 
   cross_host_receiver:
+    env:
+      CO_PR_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+      CO_PR_BASE_SHA: ${{ github.event.pull_request.base.sha }}
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest]
@@ -85,6 +88,9 @@ jobs:
         run: python tools/validate_co_substrate_cross_host_attestations_r0.py cross-host-attestations
 
   cross_runtime_python:
+    env:
+      CO_PR_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+      CO_PR_BASE_SHA: ${{ github.event.pull_request.base.sha }}
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
@@ -102,6 +108,9 @@ jobs:
           path: cross-runtime-python.json
 
   cross_runtime_node:
+    env:
+      CO_PR_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+      CO_PR_BASE_SHA: ${{ github.event.pull_request.base.sha }}
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
