@@ -4,7 +4,7 @@
 
 ## Purpose
 
-CoRelKernel R0 is a minimal relational substrate for representing causal, non-causal, meta, null/absence, boundary-crossing, observer-relative, and time-qualified relations without erasing provenance or uncertainty.
+CoRelKernel R0 is a minimal relational substrate for representing causal, non-causal, meta, null/absence, boundary-crossing, observer-relative, time-qualified, and conflicting concurrent relation revisions without erasing provenance or uncertainty.
 
 The kernel is deliberately small. New vocabulary should be composed from typed relations and metadata before inventing new primitives.
 
@@ -63,7 +63,33 @@ A transformed relation SHOULD include:
 - `changed_by`
 - `changed_at`
 
+Supersession lineage MUST be acyclic.
+
 `EVOLVING_RELATION_NE_HISTORY_ERASURE`
+`SUPERSESSION_CYCLE_IS_INVALID`
+
+## Concurrent revision conflicts
+
+Multiple valid revisions MAY supersede the same prior relation. R0 preserves these as explicit sibling branches rather than silently selecting a winner.
+
+When two or more revisions supersede the same relation, every sibling MUST include:
+- `conflict_set_id`
+- `conflict_status`
+
+All siblings MUST share the same `conflict_set_id`.
+
+Allowed baseline conflict states:
+- `unresolved`
+- `resolved`
+- `superseded`
+- `not_applicable`
+
+An optional `resolution_note` MAY explain later adjudication.
+
+`CONCURRENT_REVISION_NE_AUTOMATIC_WINNER`
+`CONFLICT_NE_INVALIDITY`
+`LATEST_TIMESTAMP_NE_TRUTH`
+`MERGE_NE_ERASE_DISAGREEMENT`
 
 ## Boundary qualification
 
@@ -88,6 +114,8 @@ A useful relational substrate should support:
 - what is unknown?
 - what would break if this relation disappeared?
 - what relation-of-relation claims modify this relation?
+- what sibling revisions disagree?
+- is a conflict unresolved, resolved, or superseded?
 
 ## R0 invariants
 
@@ -98,6 +126,7 @@ A useful relational substrate should support:
 `RELATION_ON_RELATION_MUST_REFERENCE_EXISTING_REL_IDS`
 `TRANSFORMATION_MUST_PRESERVE_LINEAGE`
 `RELATION_MODEL_MUST_SUPPORT_REVISION_WITHOUT_HISTORY_ERASURE`
+`SIBLING_REVISIONS_MUST_EXPOSE_CONFLICT`
 `EVERYTHING_MAY_RELATE_NE_EVERY_RELATION_IS_USEFUL`
 
 ## Anti-explosion rail
@@ -114,8 +143,9 @@ R0 does not:
 - claim CoAll contains all reality;
 - define a complete ontology;
 - define a universal graph engine;
+- automatically resolve competing sibling revisions;
 - grant authority merely because a relation is represented.
 
 ## Next
 
-Validate the schema and fixtures, then add deterministic checks for lineage, causal-status explicitness, null-relation typing, and relation-on-relation referential integrity before any runtime promotion.
+Exercise conflict resolution transitions, observer-relative disagreements, and time-qualified contradictions before any runtime promotion.
