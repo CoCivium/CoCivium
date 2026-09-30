@@ -21,6 +21,21 @@ class ContractError(ValueError):
 def rel_ref(endpoint):
     return endpoint.get("rel_ref") if isinstance(endpoint, dict) else None
 
+def reject_supersession_cycles(relations):
+    parent = {
+        r["rel_id"]: r.get("supersedes_rel_id")
+        for r in relations
+        if r.get("supersedes_rel_id")
+    }
+    for start in parent:
+        seen = set()
+        cur = start
+        while cur in parent:
+            if cur in seen:
+                raise ContractError(f"{start}: supersession cycle detected")
+            seen.add(cur)
+            cur = parent[cur]
+
 def validate_relations(relations, require_coverage=False):
     if not isinstance(relations, list) or not relations:
         raise ContractError("relations must be a non-empty list")
@@ -77,6 +92,8 @@ def validate_relations(relations, require_coverage=False):
             for field in ("change_reason", "changed_by", "changed_at"):
                 if not r.get(field):
                     raise ContractError(f"{rid}: revision missing lineage field {field}")
+
+    reject_supersession_cycles(relations)
 
     if require_coverage:
         if not saw_null:
