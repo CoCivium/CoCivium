@@ -15,7 +15,7 @@ def main():
 
     if {v["receiver"]["runtime"] for v in vals}!={"python","node"}:
         fail("expected python and node receivers")
-    for key in ("semantic_sha256","object_id","semantic_version","authority_state","scope"):
+    for key in ("semantic_sha256","object_id","semantic_version","authority_state","scope","source_git_sha","source_fixture_blob_sha"):
         if len({json.dumps(v[key],sort_keys=True) for v in vals})!=1:
             fail(f"{key} mismatch across runtimes")
     if any(v.get("accepted_for_scope") is not True for v in vals):
@@ -24,7 +24,8 @@ def main():
     required={
         "CROSS_LANGUAGE_RUNTIME_NE_MODEL_RUNTIME_MIGRATION",
         "SAME_SEMANTIC_DIGEST_NE_IDENTICAL_INSTANCE",
-        "CI_RECEIVER_PROOF_NE_PRODUCTION_RUNTIME"
+        "CI_RECEIVER_PROOF_NE_PRODUCTION_RUNTIME",
+        "ATTESTATION_NE_SOURCE_BINDING_UNLESS_EXACT_REF"
     }
     for v in vals:
         if not required.issubset(set(v.get("nonclaims",[]))):
@@ -35,6 +36,8 @@ def main():
         "semantic_sha256":vals[0]["semantic_sha256"],
         "runtimes":sorted(v["receiver"]["runtime"] for v in vals),
         "scope":vals[0]["scope"],
+        "source_git_sha":vals[0]["source_git_sha"],
+        "source_fixture_blob_sha":vals[0]["source_fixture_blob_sha"],
         "nonclaims":sorted(required)
     },separators=(",",":"),sort_keys=True))
 
