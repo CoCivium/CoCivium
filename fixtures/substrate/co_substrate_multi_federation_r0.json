@@ -141,6 +141,67 @@
         "single_current_instance_required": false,
         "identity_transfer_claim_allowed": false
       }
+    },
+    {
+      "id": "F06_CHILD_INSTANCE_NO_AUTHORITY_INHERITANCE",
+      "lineage_id": "lineage-F",
+      "instances": [
+        {
+          "instance_id": "F-parent",
+          "substrate": "host-parent",
+          "authority": "BOUNDED_WRITE",
+          "state_version": "v50"
+        },
+        {
+          "instance_id": "F-child",
+          "substrate": "host-child",
+          "authority": "READ_ONLY",
+          "state_version": "v50",
+          "derived_from": "F-parent"
+        }
+      ],
+      "writes": [
+        {
+          "instance_id": "F-child",
+          "new_version": "v51-child",
+          "delta_id": "d-child"
+        }
+      ],
+      "expected": {
+        "status": "REJECT_UNAUTHORIZED_WRITE",
+        "single_current_instance_required": false,
+        "authority_inherited_from_parent": false
+      }
+    },
+    {
+      "id": "F07_FAILOVER_TARGET_AUTHORITY_INSUFFICIENT",
+      "lineage_id": "lineage-G",
+      "instances": [
+        {
+          "instance_id": "G-primary",
+          "substrate": "host-1",
+          "authority": "BOUNDED_WRITE",
+          "state_version": "v60",
+          "liveness": "DOWN"
+        },
+        {
+          "instance_id": "G-secondary",
+          "substrate": "host-2",
+          "authority": "READ_ONLY",
+          "state_version": "v60",
+          "liveness": "UP"
+        }
+      ],
+      "failover": {
+        "from": "G-primary",
+        "to": "G-secondary",
+        "requires_authority": "BOUNDED_WRITE"
+      },
+      "expected": {
+        "status": "HOLD_FAILOVER_AUTHORITY_INSUFFICIENT",
+        "single_current_instance_required": false,
+        "identity_transfer_claim_allowed": false
+      }
     }
   ],
   "rails": [
@@ -149,6 +210,8 @@
     "CONCURRENT_WRITES_NE_AUTOMATIC_MERGE",
     "FAILOVER_NE_IDENTITY_TRANSFER",
     "MERGE_NE_HISTORY_ERASURE",
-    "AUTHORITY_IS_INSTANCE_SCOPED_WHERE_DECLARED"
+    "AUTHORITY_IS_INSTANCE_SCOPED_WHERE_DECLARED",
+    "LINEAGE_NE_AUTHORITY_INHERITANCE",
+    "FAILOVER_NE_AUTHORITY_TRANSFER"
   ]
 }
