@@ -168,7 +168,7 @@
       "relation_id":"R9",
       "predicate":"QUANTUM_CORRELATED_WITH",
       "relation_family":"QUANTUM_EVIDENCE_BOUNDED",
-      "causal_status":"NONCAUSAL",
+      "causal_status":"UNKNOWN_CAUSAL_STATUS",
       "relata":[{"ref":"object:A","kind":"OBJECT"},{"ref":"object:B","kind":"OBJECT"}],
       "epistemic_class":"HYPOTHESIS",
       "evidence_refs":["synthetic:quantum-correlation-placeholder"],

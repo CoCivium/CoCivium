@@ -548,3 +548,23 @@ R0A corrects those without widening authority:
 `ADAPTER_SCHEMA_NE_FIXED_CARRIER_SET`  
 `RELATUM_KIND_MUST_MATCH_DECLARATION`  
 `REVIEW_FINDING_NE_MAIN_MUTATION`
+
+
+## Adversarial review R0B
+
+A second review pass focuses on claims that ordinary happy-path validation can miss.
+
+Findings and corrections:
+
+1. **Declared recursion depth was not yet graph-derived.** A cyclic relation-of-relations graph could have carried small hand-written `meta_depth` values and passed. R0B computes actual depth from relation dependencies, rejects cycles, and requires declared depth to equal computed depth.
+2. **Unmutated transform identity was ambiguous.** A transform with `source_mutated=false` could emit one of its own source relation IDs. R0B rejects source/output identity overlap.
+3. **Quantum correlation was overclassified.** The synthetic `QUANTUM_CORRELATED_WITH` fixture used `NONCAUSAL`, which is stronger than the bounded fixture establishes. It now uses `UNKNOWN_CAUSAL_STATUS`; non-signalling remains the explicit rail.
+4. Validation logic is moved into a reusable script so positive validation and adversarial negative cases exercise the same invariant implementation.
+5. A dedicated adversarial workflow mutates the valid fixture into cycles, false depth, transform aliasing, kind mismatch, projection holes, causal-family/status conflict, and duplicate relatum identity; every mutant must fail closed.
+
+`DECLARED_DEPTH_NE_PROVEN_DEPTH`  
+`RELATIONAL_RECURSION_REQUIRES_ACYCLIC_DEPTH_PROOF`  
+`SOURCE_ID_NE_OUTPUT_ID_WHEN_SOURCE_UNMUTATED`  
+`QUANTUM_CORRELATION_NE_NONCAUSALITY_PROOF`  
+`ADVERSARIAL_FIXTURE_PASS_NE_INDEPENDENT_REVIEW`  
+`NEGATIVE_CASE_SET_NE_COMPLETE_BUG_SEARCH`
