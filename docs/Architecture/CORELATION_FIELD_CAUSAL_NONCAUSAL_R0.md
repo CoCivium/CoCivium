@@ -488,3 +488,42 @@ R0 does not claim:
 - runtime integration;
 - canon;
 - CoEx.
+
+
+## Current-main collision / contraction review
+
+Observed base for this review:
+
+`CoCivium/CoCivium@774b7ed3196207356b2613061b05592aebae9503`
+
+The R0 relation field is **not** elected to replace existing domain carriers. The unique remainder is intentionally narrower: causal-status typing, relation-as-relatum recursion, negative-space/boundary relata, explicit projection loss accounting, and bounded transform provenance.
+
+| Existing carrier | Exact current-main blob | Existing responsibility | R0 disposition |
+| --- | --- | --- | --- |
+| `schemas/coopen-relation-match-v0.1.schema.json` | `650162fe3725580071772118916cf27251dcb409` | capability/interest/consent/authority/cost/currentness matching and held route state | **REFERENCE / DO_NOT_SUBSUME.** A relation-field object may be the thing being matched; assignment, notification and authority gates remain CoOpenRelation concerns. |
+| `schemas/coencounter-yield-v0.1.schema.json` | `20f3753ff2c924c9c759a29f632269fc164d4a74` | encounter-produced evidence, challenges, open relations, attribution, benefit observations and wake relations | **ADAPTER / DO_NOT_SUBSUME.** Encounter yields may produce or reference relation-field candidates; participant/notification/benefit envelopes remain CoEncounter concerns. |
+| `schemas/coresearch-evidence-v0.1.schema.json` | `67e06eebdc85a618c20c5c8074eb371bdcfef2a9` | research claims, source references, tests, falsifiers, counterarguments and evidence authority | **EVIDENCE POINTER.** Relation-field `evidence_refs` should prefer bound evidence records rather than growing a second test/falsifier system. |
+| `schemas/cotime-decision-evidence-v0.1.schema.json` | `210874bebf267a9d057f7658fd6082ff573d0da2` | currentness, validity windows, decision class and advisory route gating | **TIME/CURRENTNESS POINTER.** Relation-field `time_scope` is descriptive only; CoTime retains currentness and decision semantics. |
+| `schemas/coevo-delta-v0.2-union-candidate.schema.json` | `a6218e1e94857002e854b0190cdbc5b6972a2dd5` | change proposal, mutation class, effect gating, route, pressure/currentness and next-receiver transport | **TRANSPORT / DO_NOT_SUBSUME.** CoRelationField candidates move through CoEvoDelta rather than becoming a rival evolution envelope. |
+| `docs/Architecture/COSUBSTRATE_FIELD_R0.md` | `5fec3249945ad3d14511621bc52da5587c3526b8` | substrate/translation/capability/privacy/authority relations and translation loss | **SPECIALIZED PROJECTION.** Generic relation typing may carry substrate links; CoSubstrateField retains domain-specific substrate semantics. |
+
+### Unique remainder after collision review
+
+The current R0 candidate therefore earns continued existence only for these bounded deltas:
+
+1. `causal_status` is orthogonal to `relation_family`, preventing every statistical, temporal, logical, semantic or quantum relation from being silently inflated into physical causation;
+2. relations can themselves be relata, allowing evidence/provenance/disagreement/time relations **about relations** under an explicit recursion bound;
+3. absence, non-event, boundary, unknown and counterfactual relata can be represented without reifying them into universal existence/nonexistence claims;
+4. every projection records selected **and omitted** relation IDs plus declared loss, so a chain/narrative/formal/UI view does not masquerade as the source field;
+5. transformation operators preserve source relation IDs, output IDs, provenance and declared loss while leaving source relations unmutated by default.
+
+Everything else should reuse or point into the existing carrier that already owns the semantics.
+
+`GENERIC_RELATION_FIELD_NE_REPLACEMENT_FOR_DOMAIN_CARRIERS`  
+`EVIDENCE_REF_NE_DUPLICATE_EVIDENCE_SYSTEM`  
+`TIME_SCOPE_NE_CURRENTNESS_AUTHORITY`  
+`RELATION_MATCH_NE_ASSIGNMENT_AUTHORITY`  
+`ENCOUNTER_YIELD_NE_RELATION_ONTOLOGY`  
+`COEVO_DELTA_NE_RELATION_FIELD`  
+`SUBSTRATE_RELATION_NE_GENERIC_RELATION_ONLY`  
+`CONTRACTION_BEFORE_PROMOTION`
