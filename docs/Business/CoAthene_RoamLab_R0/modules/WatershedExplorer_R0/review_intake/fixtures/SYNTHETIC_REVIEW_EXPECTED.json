@@ -1,0 +1,16 @@
+{
+  "schema": "CoAthene.ReviewDerivedDefect.v0.1-fixture",
+  "reviewer_disposition": "PILOT_CANDIDATE_AFTER_MINOR_FIXES",
+  "reviewer_confidence": "HIGH",
+  "defect": {
+    "summary": "Overgeneralized flood causality",
+    "where": "Facilitator causal discussion",
+    "severity": "MEDIUM",
+    "confidence": "HIGH",
+    "suggested_fix": "Require the facilitator to ask for at least two omitted variables before any flood claim."
+  },
+  "rails": [
+    "RAW_REVIEW_NE_DERIVED_DEFECT",
+    "REVIEWER_CLAIM_NE_PROJECT_FACT"
+  ]
+}
