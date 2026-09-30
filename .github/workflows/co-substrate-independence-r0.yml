@@ -1,0 +1,26 @@
+name: CoSubstrate Independence R0
+
+on:
+  pull_request:
+    paths:
+      - "docs/Architecture/CO_SUBSTRATE_INDEPENDENCE_R0.md"
+      - "fixtures/substrate/co_substrate_migration_r0.json"
+      - "tools/validate_co_substrate_migration_r0.py"
+      - ".github/workflows/co-substrate-independence-r0.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Validate CoSubstrate migration fixture
+        run: python tools/validate_co_substrate_migration_r0.py
