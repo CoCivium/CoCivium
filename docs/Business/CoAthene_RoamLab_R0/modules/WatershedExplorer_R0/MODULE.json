@@ -1,0 +1,107 @@
+{
+  "schema": "CoAthene.RoamLab.Module.v0.1",
+  "module_id": "CoAthene.RoamLab.WatershedExplorer.R0",
+  "state": "PUBLIC_STRAWBE_CANDIDATE__STANDALONE_FIRST__NO_COALL_REQUIRED__NOT_CURRICULUM_CERTIFIED",
+  "title": "Watershed Explorer",
+  "pilot_region": "Oakville, Ontario, Canada",
+  "age_band_candidate": "Grades 7-8 / approximately ages 12-14; facilitator may adapt",
+  "duration_minutes": {
+    "min": 60,
+    "max": 90
+  },
+  "learning_objectives": [
+    "Explain a plausible path from precipitation to runoff, drainage infrastructure, creek and/or Lake Ontario.",
+    "Predict how changing surface permeability can affect runoff.",
+    "Distinguish a model output from direct observation.",
+    "Use source evidence to revise a causal explanation.",
+    "Name at least one uncertainty and one useful next measurement."
+  ],
+  "required_modes": [
+    "NON_HEADSET"
+  ],
+  "optional_modes": [
+    "SHARED_DISPLAY",
+    "TABLET",
+    "VR_MR",
+    "FIELD_EXTENSION"
+  ],
+  "required_inputs": [
+    "facilitator",
+    "local stormwater/watershed source material",
+    "simple physical or digital runoff model",
+    "learner activity sheet"
+  ],
+  "default_data_policy": {
+    "learner_account": false,
+    "persistent_identity": false,
+    "audio_recording": false,
+    "video_recording": false,
+    "biometric_retention": false,
+    "behavioural_advertising": false
+  },
+  "evidence_classes": [
+    "OFFICIAL_LOCAL_INFRASTRUCTURE_SOURCE",
+    "OFFICIAL_CONSERVATION_EDUCATION_SOURCE",
+    "FACILITATOR_OBSERVATION",
+    "LEARNER_PREDICTION",
+    "MODEL_OUTPUT",
+    "OPTIONAL_FIELD_OBSERVATION"
+  ],
+  "lesson_flow": [
+    {
+      "phase": "HOOK",
+      "minutes": 8
+    },
+    {
+      "phase": "BUILD_MODEL",
+      "minutes": 15
+    },
+    {
+      "phase": "PREDICT",
+      "minutes": 10
+    },
+    {
+      "phase": "TEST_AND_OBSERVE",
+      "minutes": 15
+    },
+    {
+      "phase": "SOURCE_CHALLENGE",
+      "minutes": 10
+    },
+    {
+      "phase": "REVISE_EXPLANATION",
+      "minutes": 10
+    },
+    {
+      "phase": "NEXT_MEASUREMENT",
+      "minutes": 7
+    }
+  ],
+  "accessibility_requirements": [
+    "NON_HEADSET_EQUIVALENT",
+    "SEATED_PATH",
+    "LARGE_TEXT_OR_PROJECTED_TEXT",
+    "CAPTIONS_IF_AUDIOVISUAL",
+    "NO_CRITICAL_INFORMATION_ONLY_IN_COLOR",
+    "MOTION_REDUCED_MODE_IF_IMMERSIVE"
+  ],
+  "optional_coall_relations": [
+    "MODULE_RELATES_TO_SOURCE",
+    "PREDICTION_RELATES_TO_OUTCOME",
+    "OBSERVATION_RELATES_TO_PLACE",
+    "CLAIM_RELATES_TO_EVIDENCE",
+    "MODEL_RELATES_TO_LIMITATION",
+    "LEARNER_OUTPUT_RELATES_TO_REVISION"
+  ],
+  "rails": [
+    "MODEL_NE_WORLD",
+    "SIMULATION_NE_EVIDENCE",
+    "OBSERVATION_NE_INFERENCE",
+    "CORRELATION_NE_CAUSATION",
+    "LOCAL_EXAMPLE_NE_UNIVERSAL_RULE",
+    "VR_NE_LEARNING_BY_DEFAULT",
+    "LEARNER_NE_ANALYTICS_PROFILE",
+    "SOURCE_NE_ENDORSEMENT",
+    "FIELD_TRIP_NE_REQUIRED_FOR_CORE_LESSON"
+  ]
+}

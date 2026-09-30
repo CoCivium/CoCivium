@@ -73,6 +73,30 @@ These are candidate relations, not endorsements or partnerships.
 - Immersive Story Studio
 - Space / Earth / Climate
 
+
+## First runnable module
+
+### Watershed Explorer R0
+
+Path: `modules/WatershedExplorer_R0/`
+
+The first runnable exemplar is a standalone-first watershed/stormwater inquiry lesson with:
+
+- machine-readable module manifest;
+- facilitator guide;
+- learner activity;
+- evaluation contract;
+- current local source register;
+- non-headset accessibility path;
+- privacy defaults;
+- bounded CI validation.
+
+It can run without VR and without CoAll.
+
+**MODEL_NE_WORLD**  
+**VR_NE_LEARNING_BY_DEFAULT**  
+**LEARNER_NE_ANALYTICS_PROFILE**
+
 ## 90-day proof
 
 **Days 1-30:** customer interviews, one lesson, portable equipment, safety/accessibility review, demo.  
