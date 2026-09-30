@@ -2,6 +2,7 @@
 import json
 import sys
 from collections import defaultdict
+from datetime import datetime
 from pathlib import Path
 
 SCHEMA_PATH = Path("schemas/relations/co_rel_kernel_r0.schema.json")
@@ -11,6 +12,7 @@ ADVERSARIAL_PATH = Path("fixtures/relations/co_rel_kernel_r0.adversarial.json")
 ALLOWED_CAUSAL = {"causal", "non_causal", "possibly_causal", "mixed", "unknown"}
 ALLOWED_BOUNDARY = {"internal", "external", "boundary", "unknown_domain"}
 ALLOWED_CONFLICT = {"unresolved", "resolved", "superseded", "not_applicable"}
+ALLOWED_CONTRADICTION = {"observer_relative", "temporal_overlap", "scope_relative", "evidence_conflict", "logical_conflict"}
 NULL_PREDICATES = {
     "EXPECTED_BUT_MISSING", "IMPOSSIBLE", "FORBIDDEN", "UNKNOWN_RELATION",
     "NOT_YET_OBSERVED", "ONCE_EXISTED", "COUNTERFACTUALLY_PRESENT",
@@ -22,6 +24,41 @@ class ContractError(ValueError):
 
 def rel_ref(endpoint):
     return endpoint.get("rel_ref") if isinstance(endpoint, dict) else None
+
+def parse_time(value, rid, field):
+    if value is None:
+        return None
+    if not isinstance(value, str) or not value:
+        raise ContractError(f"{rid}: time.{field} must be a non-empty date-time string")
+    try:
+        return datetime.fromisoformat(value.replace("Z", "+00:00"))
+    except ValueError as exc:
+        raise ContractError(f"{rid}: invalid time.{field} date-time") from exc
+
+def validate_time(r):
+    t = r.get("time")
+    if t is None:
+        return
+    if not isinstance(t, dict):
+        raise ContractError(f"{r['rel_id']}: time must be an object or null")
+    start = parse_time(t.get("valid_from"), r["rel_id"], "valid_from")
+    end = parse_time(t.get("valid_to"), r["rel_id"], "valid_to")
+    parse_time(t.get("observed_at"), r["rel_id"], "observed_at")
+    if start is not None and end is not None and start > end:
+        raise ContractError(f"{r['rel_id']}: time.valid_from must be <= time.valid_to")
+
+def validity_interval(r):
+    t = r.get("time") or {}
+    start = parse_time(t.get("valid_from"), r["rel_id"], "valid_from")
+    end = parse_time(t.get("valid_to"), r["rel_id"], "valid_to")
+    return start, end
+
+def intervals_overlap(a, b):
+    a0, a1 = validity_interval(a)
+    b0, b1 = validity_interval(b)
+    if None in (a0, a1, b0, b1):
+        return False
+    return max(a0, b0) <= min(a1, b1)
 
 def reject_supersession_cycles(relations):
     parent = {r["rel_id"]: r.get("supersedes_rel_id") for r in relations if r.get("supersedes_rel_id")}
@@ -73,6 +110,33 @@ def validate_resolutions(relations):
         if not r.get("resolution_note"):
             raise ContractError(f"{r['rel_id']}: conflict resolution requires resolution_note")
 
+def validate_contradictions(relations):
+    by_id = {r["rel_id"]: r for r in relations}
+    for r in relations:
+        if r.get("predicate") != "CONTRADICTS":
+            continue
+        basis = r.get("contradiction_basis")
+        if not basis:
+            raise ContractError(f"{r['rel_id']}: CONTRADICTS requires contradiction_basis")
+        if basis not in ALLOWED_CONTRADICTION:
+            raise ContractError(f"{r['rel_id']}: invalid contradiction_basis {basis!r}")
+
+        left_id = rel_ref(r.get("subject"))
+        right_id = rel_ref(r.get("object"))
+
+        if basis in {"observer_relative", "temporal_overlap"}:
+            if not left_id or not right_id:
+                raise ContractError(f"{r['rel_id']}: {basis} contradiction requires two relation references")
+            left = by_id[left_id]
+            right = by_id[right_id]
+
+            if basis == "observer_relative":
+                if not left.get("observer") or not right.get("observer") or left["observer"] == right["observer"]:
+                    raise ContractError(f"{r['rel_id']}: observer_relative contradiction requires distinct observers")
+
+            if basis == "temporal_overlap" and not intervals_overlap(left, right):
+                raise ContractError(f"{r['rel_id']}: temporal_overlap contradiction requires overlapping validity intervals")
+
 def validate_relations(relations, require_coverage=False):
     if not isinstance(relations, list) or not relations:
         raise ContractError("relations must be a non-empty list")
@@ -82,7 +146,7 @@ def validate_relations(relations, require_coverage=False):
     if len(set(ids)) != len(ids):
         raise ContractError("rel_id values must be unique")
     idset = set(ids)
-    saw_null = saw_meta = saw_revision = saw_boundary = saw_conflict = saw_resolution = False
+    saw_null = saw_meta = saw_revision = saw_boundary = saw_conflict = saw_resolution = saw_qualified_contradiction = False
 
     for r in relations:
         rid = r["rel_id"]
@@ -98,6 +162,7 @@ def validate_relations(relations, require_coverage=False):
             c = r["confidence"]
             if not isinstance(c, (int, float)) or isinstance(c, bool) or not (0 <= c <= 1):
                 raise ContractError(f"{rid}: confidence must be in [0, 1]")
+        validate_time(r)
         boundary = r.get("boundary")
         if boundary is not None:
             if boundary not in ALLOWED_BOUNDARY:
@@ -109,6 +174,8 @@ def validate_relations(relations, require_coverage=False):
                 saw_meta = True
                 if ref not in idset:
                     raise ContractError(f"{rid}: {endpoint_name} references unknown relation {ref!r}")
+        if r["predicate"] == "CONTRADICTS" and r.get("contradiction_basis"):
+            saw_qualified_contradiction = True
         if r["predicate"] in NULL_PREDICATES:
             saw_null = True
             if r["causal_status"] != "unknown":
@@ -133,6 +200,7 @@ def validate_relations(relations, require_coverage=False):
     reject_supersession_cycles(relations)
     validate_sibling_conflicts(relations)
     validate_resolutions(relations)
+    validate_contradictions(relations)
 
     if require_coverage:
         if not saw_null:
@@ -147,6 +215,8 @@ def validate_relations(relations, require_coverage=False):
             raise ContractError("fixtures do not exercise explicit concurrent revision conflict")
         if not saw_resolution:
             raise ContractError("fixtures do not exercise explicit conflict resolution")
+        if not saw_qualified_contradiction:
+            raise ContractError("fixtures do not exercise qualified contradiction semantics")
 
 def main():
     for path in (SCHEMA_PATH, FIXTURE_PATH, ADVERSARIAL_PATH):
