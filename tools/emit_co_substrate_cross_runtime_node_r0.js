@@ -2,6 +2,7 @@
 const fs = require("fs");
 const crypto = require("crypto");
 const os = require("os");
+const childProcess = require("child_process");
 
 const args = process.argv.slice(2);
 const outIndex = args.indexOf("--out");
@@ -46,7 +47,10 @@ const attestation = {
   semantic_version: data.semantic_version,
   semantic_sha256: digest,
   authority_state: data.authority_state,
-  source_git_sha: require("child_process").execFileSync("git", ["rev-parse", "HEAD"], {encoding:"utf8"}).trim(),
+  source_git_sha: childProcess.execFileSync("git", ["rev-parse", "HEAD"], {encoding:"utf8"}).trim(),
+  tested_checkout_sha: childProcess.execFileSync("git", ["rev-parse", "HEAD"], {encoding:"utf8"}).trim(),
+  pr_head_sha: process.env.CO_PR_HEAD_SHA || "",
+  pr_base_sha: process.env.CO_PR_BASE_SHA || "",
   source_fixture_blob_sha: require("child_process").execFileSync("git", ["hash-object", path], {encoding:"utf8"}).trim(),
   required_invariants: Array.from(required).sort(),
   observed_invariants: Array.from(observed).sort(),
