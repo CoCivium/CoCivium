@@ -1,89 +1,378 @@
 {
-  "schema": "CoRelKernel.R0.adversarial.v0_3",
+  "schema": "CoRelKernel.R0.adversarial.v0_4",
   "state": "CANDIDATE__NEGATIVE_TESTS",
   "cases": [
     {
       "id": "missing_provenance",
       "expected_error": "missing required fields",
       "relations": [
-        {"rel_id":"bad-001","subject":"A","predicate":"RELATES_TO","object":"B","causal_status":"non_causal"}
+        {
+          "rel_id": "bad-001",
+          "subject": "A",
+          "predicate": "RELATES_TO",
+          "object": "B",
+          "causal_status": "non_causal"
+        }
       ]
     },
     {
       "id": "invalid_confidence",
       "expected_error": "confidence must be in [0, 1]",
       "relations": [
-        {"rel_id":"bad-002","subject":"A","predicate":"RELATES_TO","object":"B","causal_status":"non_causal","provenance":["fixture"],"confidence":1.5}
+        {
+          "rel_id": "bad-002",
+          "subject": "A",
+          "predicate": "RELATES_TO",
+          "object": "B",
+          "causal_status": "non_causal",
+          "provenance": [
+            "fixture"
+          ],
+          "confidence": 1.5
+        }
       ]
     },
     {
       "id": "dangling_rel_ref",
       "expected_error": "references unknown relation",
       "relations": [
-        {"rel_id":"bad-003","subject":{"rel_ref":"missing-rel"},"predicate":"WEAKENS","object":"B","causal_status":"non_causal","provenance":["fixture"]}
+        {
+          "rel_id": "bad-003",
+          "subject": {
+            "rel_ref": "missing-rel"
+          },
+          "predicate": "WEAKENS",
+          "object": "B",
+          "causal_status": "non_causal",
+          "provenance": [
+            "fixture"
+          ]
+        }
       ]
     },
     {
       "id": "broken_supersession",
       "expected_error": "supersedes unknown relation",
       "relations": [
-        {"rel_id":"bad-004","subject":"A","predicate":"RELATES_TO","object":"B","causal_status":"unknown","provenance":["fixture"],"supersedes_rel_id":"missing-prior","change_reason":"test","changed_by":"fixture","changed_at":"2026-09-30T00:00:00Z"}
+        {
+          "rel_id": "bad-004",
+          "subject": "A",
+          "predicate": "RELATES_TO",
+          "object": "B",
+          "causal_status": "unknown",
+          "provenance": [
+            "fixture"
+          ],
+          "supersedes_rel_id": "missing-prior",
+          "change_reason": "test",
+          "changed_by": "fixture",
+          "changed_at": "2026-09-30T00:00:00Z"
+        }
       ]
     },
     {
       "id": "revision_without_lineage",
       "expected_error": "revision missing lineage field",
       "relations": [
-        {"rel_id":"prior-005","subject":"A","predicate":"RELATES_TO","object":"B","causal_status":"unknown","provenance":["fixture"]},
-        {"rel_id":"bad-005","subject":"A","predicate":"RELATES_TO","object":"B","causal_status":"unknown","provenance":["fixture"],"supersedes_rel_id":"prior-005"}
+        {
+          "rel_id": "prior-005",
+          "subject": "A",
+          "predicate": "RELATES_TO",
+          "object": "B",
+          "causal_status": "unknown",
+          "provenance": [
+            "fixture"
+          ]
+        },
+        {
+          "rel_id": "bad-005",
+          "subject": "A",
+          "predicate": "RELATES_TO",
+          "object": "B",
+          "causal_status": "unknown",
+          "provenance": [
+            "fixture"
+          ],
+          "supersedes_rel_id": "prior-005"
+        }
       ]
     },
     {
       "id": "null_relation_wrong_causal_status",
       "expected_error": "typed absence relation should use causal_status='unknown'",
       "relations": [
-        {"rel_id":"bad-006","subject":"A","predicate":"EXPECTED_BUT_MISSING","object":"B","causal_status":"non_causal","provenance":["fixture"]}
+        {
+          "rel_id": "bad-006",
+          "subject": "A",
+          "predicate": "EXPECTED_BUT_MISSING",
+          "object": "B",
+          "causal_status": "non_causal",
+          "provenance": [
+            "fixture"
+          ]
+        }
       ]
     },
     {
       "id": "duplicate_rel_id",
       "expected_error": "rel_id values must be unique",
       "relations": [
-        {"rel_id":"dup","subject":"A","predicate":"RELATES_TO","object":"B","causal_status":"unknown","provenance":["fixture"]},
-        {"rel_id":"dup","subject":"C","predicate":"RELATES_TO","object":"D","causal_status":"unknown","provenance":["fixture"]}
+        {
+          "rel_id": "dup",
+          "subject": "A",
+          "predicate": "RELATES_TO",
+          "object": "B",
+          "causal_status": "unknown",
+          "provenance": [
+            "fixture"
+          ]
+        },
+        {
+          "rel_id": "dup",
+          "subject": "C",
+          "predicate": "RELATES_TO",
+          "object": "D",
+          "causal_status": "unknown",
+          "provenance": [
+            "fixture"
+          ]
+        }
       ]
     },
     {
       "id": "self_supersession",
       "expected_error": "supersession cycle",
       "relations": [
-        {"rel_id":"bad-self","subject":"A","predicate":"RELATES_TO","object":"B","causal_status":"unknown","provenance":["fixture"],"supersedes_rel_id":"bad-self","change_reason":"impossible self-lineage","changed_by":"fixture","changed_at":"2026-09-30T00:00:00Z"}
+        {
+          "rel_id": "bad-self",
+          "subject": "A",
+          "predicate": "RELATES_TO",
+          "object": "B",
+          "causal_status": "unknown",
+          "provenance": [
+            "fixture"
+          ],
+          "supersedes_rel_id": "bad-self",
+          "change_reason": "impossible self-lineage",
+          "changed_by": "fixture",
+          "changed_at": "2026-09-30T00:00:00Z"
+        }
       ]
     },
     {
       "id": "two_node_supersession_cycle",
       "expected_error": "supersession cycle",
       "relations": [
-        {"rel_id":"cycle-a","subject":"A","predicate":"RELATES_TO","object":"B","causal_status":"unknown","provenance":["fixture"],"supersedes_rel_id":"cycle-b","change_reason":"cycle","changed_by":"fixture","changed_at":"2026-09-30T00:00:00Z"},
-        {"rel_id":"cycle-b","subject":"A","predicate":"RELATES_TO","object":"B","causal_status":"unknown","provenance":["fixture"],"supersedes_rel_id":"cycle-a","change_reason":"cycle","changed_by":"fixture","changed_at":"2026-09-30T00:00:01Z"}
+        {
+          "rel_id": "cycle-a",
+          "subject": "A",
+          "predicate": "RELATES_TO",
+          "object": "B",
+          "causal_status": "unknown",
+          "provenance": [
+            "fixture"
+          ],
+          "supersedes_rel_id": "cycle-b",
+          "change_reason": "cycle",
+          "changed_by": "fixture",
+          "changed_at": "2026-09-30T00:00:00Z"
+        },
+        {
+          "rel_id": "cycle-b",
+          "subject": "A",
+          "predicate": "RELATES_TO",
+          "object": "B",
+          "causal_status": "unknown",
+          "provenance": [
+            "fixture"
+          ],
+          "supersedes_rel_id": "cycle-a",
+          "change_reason": "cycle",
+          "changed_by": "fixture",
+          "changed_at": "2026-09-30T00:00:01Z"
+        }
       ]
     },
     {
       "id": "unmarked_sibling_revisions",
       "expected_error": "concurrent sibling revisions require conflict metadata",
       "relations": [
-        {"rel_id":"base-c1","subject":"A","predicate":"RELATES_TO","object":"B","causal_status":"unknown","provenance":["fixture"]},
-        {"rel_id":"sib-c1-a","subject":"A","predicate":"CAUSES","object":"B","causal_status":"causal","provenance":["fixture"],"supersedes_rel_id":"base-c1","change_reason":"branch-a","changed_by":"a","changed_at":"2026-09-30T00:00:00Z"},
-        {"rel_id":"sib-c1-b","subject":"A","predicate":"POSSIBLY_CAUSES","object":"B","causal_status":"possibly_causal","provenance":["fixture"],"supersedes_rel_id":"base-c1","change_reason":"branch-b","changed_by":"b","changed_at":"2026-09-30T00:00:01Z"}
+        {
+          "rel_id": "base-c1",
+          "subject": "A",
+          "predicate": "RELATES_TO",
+          "object": "B",
+          "causal_status": "unknown",
+          "provenance": [
+            "fixture"
+          ]
+        },
+        {
+          "rel_id": "sib-c1-a",
+          "subject": "A",
+          "predicate": "CAUSES",
+          "object": "B",
+          "causal_status": "causal",
+          "provenance": [
+            "fixture"
+          ],
+          "supersedes_rel_id": "base-c1",
+          "change_reason": "branch-a",
+          "changed_by": "a",
+          "changed_at": "2026-09-30T00:00:00Z"
+        },
+        {
+          "rel_id": "sib-c1-b",
+          "subject": "A",
+          "predicate": "POSSIBLY_CAUSES",
+          "object": "B",
+          "causal_status": "possibly_causal",
+          "provenance": [
+            "fixture"
+          ],
+          "supersedes_rel_id": "base-c1",
+          "change_reason": "branch-b",
+          "changed_by": "b",
+          "changed_at": "2026-09-30T00:00:01Z"
+        }
       ]
     },
     {
       "id": "mismatched_conflict_sets",
       "expected_error": "sibling revisions must share one conflict_set_id",
       "relations": [
-        {"rel_id":"base-c2","subject":"A","predicate":"RELATES_TO","object":"B","causal_status":"unknown","provenance":["fixture"]},
-        {"rel_id":"sib-c2-a","subject":"A","predicate":"CAUSES","object":"B","causal_status":"causal","provenance":["fixture"],"supersedes_rel_id":"base-c2","change_reason":"branch-a","changed_by":"a","changed_at":"2026-09-30T00:00:00Z","conflict_set_id":"set-a","conflict_status":"unresolved"},
-        {"rel_id":"sib-c2-b","subject":"A","predicate":"POSSIBLY_CAUSES","object":"B","causal_status":"possibly_causal","provenance":["fixture"],"supersedes_rel_id":"base-c2","change_reason":"branch-b","changed_by":"b","changed_at":"2026-09-30T00:00:01Z","conflict_set_id":"set-b","conflict_status":"unresolved"}
+        {
+          "rel_id": "base-c2",
+          "subject": "A",
+          "predicate": "RELATES_TO",
+          "object": "B",
+          "causal_status": "unknown",
+          "provenance": [
+            "fixture"
+          ]
+        },
+        {
+          "rel_id": "sib-c2-a",
+          "subject": "A",
+          "predicate": "CAUSES",
+          "object": "B",
+          "causal_status": "causal",
+          "provenance": [
+            "fixture"
+          ],
+          "supersedes_rel_id": "base-c2",
+          "change_reason": "branch-a",
+          "changed_by": "a",
+          "changed_at": "2026-09-30T00:00:00Z",
+          "conflict_set_id": "set-a",
+          "conflict_status": "unresolved"
+        },
+        {
+          "rel_id": "sib-c2-b",
+          "subject": "A",
+          "predicate": "POSSIBLY_CAUSES",
+          "object": "B",
+          "causal_status": "possibly_causal",
+          "provenance": [
+            "fixture"
+          ],
+          "supersedes_rel_id": "base-c2",
+          "change_reason": "branch-b",
+          "changed_by": "b",
+          "changed_at": "2026-09-30T00:00:01Z",
+          "conflict_set_id": "set-b",
+          "conflict_status": "unresolved"
+        }
+      ]
+    },
+    {
+      "id": "resolution_unknown_conflict_set",
+      "expected_error": "resolves unknown conflict_set_id",
+      "relations": [
+        {
+          "rel_id": "resolution-bad",
+          "subject": "missing-set",
+          "predicate": "RESOLVES_CONFLICT",
+          "object": "B",
+          "causal_status": "non_causal",
+          "provenance": [
+            "fixture"
+          ],
+          "resolves_conflict_set_id": "missing-set",
+          "resolution_note": "invalid"
+        }
+      ]
+    },
+    {
+      "id": "resolution_target_not_member",
+      "expected_error": "resolution target must belong to conflict set",
+      "relations": [
+        {
+          "rel_id": "base-r",
+          "subject": "A",
+          "predicate": "RELATES_TO",
+          "object": "B",
+          "causal_status": "unknown",
+          "provenance": [
+            "fixture"
+          ]
+        },
+        {
+          "rel_id": "sib-r-a",
+          "subject": "A",
+          "predicate": "CAUSES",
+          "object": "B",
+          "causal_status": "causal",
+          "provenance": [
+            "fixture"
+          ],
+          "supersedes_rel_id": "base-r",
+          "change_reason": "a",
+          "changed_by": "a",
+          "changed_at": "2026-09-30T00:00:00Z",
+          "conflict_set_id": "set-r",
+          "conflict_status": "unresolved"
+        },
+        {
+          "rel_id": "sib-r-b",
+          "subject": "A",
+          "predicate": "POSSIBLY_CAUSES",
+          "object": "B",
+          "causal_status": "possibly_causal",
+          "provenance": [
+            "fixture"
+          ],
+          "supersedes_rel_id": "base-r",
+          "change_reason": "b",
+          "changed_by": "b",
+          "changed_at": "2026-09-30T00:00:01Z",
+          "conflict_set_id": "set-r",
+          "conflict_status": "unresolved"
+        },
+        {
+          "rel_id": "outside",
+          "subject": "X",
+          "predicate": "RELATES_TO",
+          "object": "Y",
+          "causal_status": "unknown",
+          "provenance": [
+            "fixture"
+          ]
+        },
+        {
+          "rel_id": "bad-resolution",
+          "subject": "set-r",
+          "predicate": "RESOLVES_CONFLICT",
+          "object": {
+            "rel_ref": "outside"
+          },
+          "causal_status": "non_causal",
+          "provenance": [
+            "fixture"
+          ],
+          "resolves_conflict_set_id": "set-r",
+          "resolution_note": "invalid target"
+        }
       ]
     }
   ]
