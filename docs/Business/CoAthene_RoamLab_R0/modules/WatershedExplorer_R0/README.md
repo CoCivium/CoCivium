@@ -154,3 +154,19 @@ The module now includes:
 The existence of these files does **not** make the module educator-reviewed.
 
 `REVIEW_PACKET_NE_REVIEW`
+
+
+## R0C review intake / defect compiler
+
+The public repository now includes:
+
+- a structured educator-review GitHub issue form;
+- a raw-review / derived-defect separation contract;
+- a deterministic compiler fixture that converts structured review text into a **candidate** defect object;
+- CI proving the compiler preserves reviewer disposition separately from project disposition.
+
+No actual educator review is created by this machinery.
+
+`STRUCTURED_REVIEW_NE_TRUTH`  
+`RAW_REVIEW_NE_DERIVED_DEFECT`  
+`REVIEW_FORM_NE_REVIEW`
