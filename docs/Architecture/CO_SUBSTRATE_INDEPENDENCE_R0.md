@@ -96,6 +96,10 @@ A future CoAll scheduler MAY select among compatible substrates using bounded cr
 
 Selection of a substrate does not transfer semantic or governance authority to that substrate.
 
+A migration MUST preserve the source authority state unless a separate, explicitly authorized authority transition is represented and validated outside the migration itself.
+
+`MIGRATION_NE_AUTHORITY_ESCALATION`
+
 `CAPABILITY_NE_AUTHORITY`
 
 ## Continuity
@@ -138,6 +142,10 @@ A provider tab, process, device, or model instance is therefore an execution car
 `CAPABILITY_NE_AUTHORITY`
 
 `MIGRATION_NE_EQUIVALENCE`
+
+`MIGRATION_NE_AUTHORITY_ESCALATION`
+
+`UNKNOWN_PORTABILITY_NE_ASSUMED_PORTABILITY`
 
 `SUBSTRATE_ELECTION_NE_TRUTH_ELECTION`
 
