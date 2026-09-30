@@ -26,3 +26,5 @@ jobs:
         run: python docs/Business/CoAthene_RoamLab_R0/modules/WatershedExplorer_R0/tools/run_dry_run.py
       - name: Validate educator review contract
         run: python docs/Business/CoAthene_RoamLab_R0/modules/WatershedExplorer_R0/tools/validate_educator_review_contract.py
+      - name: Test review-to-defect compiler
+        run: python docs/Business/CoAthene_RoamLab_R0/modules/WatershedExplorer_R0/review_intake/tools/test_review_compiler.py
