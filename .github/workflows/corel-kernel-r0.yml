@@ -5,12 +5,15 @@ on:
     paths:
       - "docs/Relations/CO_REL_KERNEL_R0.md"
       - "docs/Relations/CO_REL_KERNEL_FIELD_CONVERGENCE_R0.md"
+      - "docs/Relations/CO_REL_KERNEL_FIELD_ADJUDICATION_R0.md"
       - "schemas/relations/co_rel_kernel_r0.schema.json"
       - "fixtures/relations/co_rel_kernel_r0.fixtures.json"
       - "fixtures/relations/co_rel_kernel_r0.adversarial.json"
       - "fixtures/relations/co_rel_kernel_field_collision_r0.json"
+      - "fixtures/relations/co_rel_kernel_field_adjudication_r0.json"
       - "tools/validate_corel_kernel_r0.py"
       - "tools/validate_corel_kernel_field_collision_r0.py"
+      - "tools/validate_corel_kernel_field_adjudication_r0.py"
       - ".github/workflows/corel-kernel-r0.yml"
   workflow_dispatch:
 
@@ -46,3 +49,6 @@ jobs:
         run: |
           set -euo pipefail
           python tools/validate_corel_kernel_field_collision_r0.py --field-ref FETCH_HEAD
+
+      - name: Validate collision ownership adjudication R0
+        run: python tools/validate_corel_kernel_field_adjudication_r0.py
