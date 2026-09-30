@@ -23,6 +23,12 @@ def main():
         fail("authority mismatch across receivers")
     if len({v["source_git_sha"] for v in vals})!=1:
         fail("source git SHA mismatch across receivers")
+    if len({v["tested_checkout_sha"] for v in vals})!=1:
+        fail("tested checkout SHA mismatch across receivers")
+    if len({v["pr_head_sha"] for v in vals})!=1 or not vals[0]["pr_head_sha"]:
+        fail("PR head SHA missing or mismatched")
+    if len({v["pr_base_sha"] for v in vals})!=1 or not vals[0]["pr_base_sha"]:
+        fail("PR base SHA missing or mismatched")
     if len({v["source_fixture_blob_sha"] for v in vals})!=1:
         fail("source fixture blob mismatch across receivers")
     if any(v.get("accepted_for_scope") is not True for v in vals):
@@ -49,6 +55,9 @@ def main():
         "receivers":[v["receiver"]["os"] for v in vals],
         "scope":vals[0]["scope"],
         "source_git_sha":vals[0]["source_git_sha"],
+        "tested_checkout_sha":vals[0]["tested_checkout_sha"],
+        "pr_head_sha":vals[0]["pr_head_sha"],
+        "pr_base_sha":vals[0]["pr_base_sha"],
         "source_fixture_blob_sha":vals[0]["source_fixture_blob_sha"],
         "nonclaims":[
             "CROSS_OS_CI_NE_MODEL_RUNTIME_MIGRATION",
