@@ -9,9 +9,10 @@ def fail(msg):
 def main():
     root=Path(sys.argv[1] if len(sys.argv)>1 else "model-runtime-attestations")
     files=sorted(root.rglob("*.json"))
-    if len(files)!=2:
-        fail(f"expected 2 attestations, got {len(files)}")
-    vals=[json.loads(p.read_text(encoding="utf-8")) for p in files]
+    parsed=[json.loads(p.read_text(encoding="utf-8")) for p in files]
+    vals=[v for v in parsed if v.get("schema")=="CoSubstrateIndependence.ModelRuntimeAttestation.R0"]
+    if len(vals)!=2:
+        fail(f"expected 2 model-runtime attestations, got {len(vals)} from {len(files)} json artifacts")
     if {v["engine"] for v in vals}!={"onnxruntime","openvino"}:
         fail("expected onnxruntime and openvino engines")
     for key in ("model_sha256","fixture_semantic_sha256","input","output","authority_state","pr_head_sha","pr_base_sha","scope"):
