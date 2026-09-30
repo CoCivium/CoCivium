@@ -17,6 +17,9 @@ on:
       - "tools/validate_co_substrate_multi_federation_r0.py"
       - "tools/emit_co_substrate_cross_host_attestation_r0.py"
       - "tools/validate_co_substrate_cross_host_attestations_r0.py"
+      - "tools/emit_co_substrate_cross_runtime_python_r0.py"
+      - "tools/emit_co_substrate_cross_runtime_node_r0.js"
+      - "tools/validate_co_substrate_cross_runtime_attestations_r0.py"
       - ".github/workflows/co-substrate-independence-r0.yml"
   workflow_dispatch:
 
