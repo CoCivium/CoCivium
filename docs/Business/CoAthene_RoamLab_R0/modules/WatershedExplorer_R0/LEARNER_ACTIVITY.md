@@ -42,16 +42,23 @@ Confidence before test:
 
 LOW / MEDIUM / HIGH
 
-## 4. Observations
+## 4. What kind of evidence is this?
 
-Label each item O for observation or I for inference.
+Use:
 
-| O or I | What we noticed |
+- MO = model observation
+- WO = world observation
+- S = source statement
+- I = inference
+
+| Type | What we noticed / learned |
 | --- | --- |
 | | |
 | | |
 | | |
 | | |
+
+A model observation is still a real observation, but it is an observation **of the model**, not automatically of the real watershed.
 
 ## 5. Source challenge
 
@@ -115,12 +122,12 @@ ________________________________________
 
 Mark each statement:
 
-M = model output  
-O = real observation  
+MO = model observation/output  
+WO = world observation  
 S = source statement  
 I = inference
 
-1. Water reached the outlet in 12 seconds. ___
+1. Water reached the outlet in our tray in 12 seconds. ___
 2. Oakville has stormwater-management infrastructure. ___
 3. This neighbourhood will flood in the next storm. ___
 4. The virtual creek rose after simulated rainfall. ___
