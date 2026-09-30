@@ -1,0 +1,184 @@
+{
+  "schema": "CoRelKernel.CoRelationField.CollisionFixture.R0",
+  "state": "CANDIDATE_COLLISION_TEST__NO_CANON_NO_RUNTIME",
+  "source_bindings": {
+    "corel_kernel_pr": 128,
+    "corel_kernel_head": "223b70b5bb9d7ff237496cdbb189dfb3083a5c69",
+    "corelation_field_pr": 127,
+    "corelation_field_review_ref": "review/corelation-field-pr127-95db0610",
+    "corelation_field_head": "95db06101b16954a90468c5ef4f1b4e78a3195a5"
+  },
+  "cases": [
+    {
+      "id": "direct_causal",
+      "kernel": {
+        "predicate": "CAUSES",
+        "causal_status": "causal"
+      },
+      "field": {
+        "predicate": "CAUSES",
+        "relation_family": "CAUSAL",
+        "causal_status": "CAUSAL_SUPPORTED"
+      },
+      "mapping": "lossy",
+      "reason": "CoRelationField distinguishes supported versus candidate causality and requires mechanism for CAUSAL_SUPPORTED."
+    },
+    {
+      "id": "possible_or_unknown_causal",
+      "kernel": {
+        "causal_status": "possibly_causal"
+      },
+      "field": {
+        "causal_status": "CAUSAL_CANDIDATE"
+      },
+      "mapping": "lossless_bounded",
+      "reason": "Closest bounded status mapping."
+    },
+    {
+      "id": "typed_absence",
+      "kernel": {
+        "predicate": "EXPECTED_BUT_MISSING"
+      },
+      "field": {
+        "relatum_kind": "ABSENCE"
+      },
+      "mapping": "collision_requires_policy",
+      "reason": "Predicate encoding and typed-relatum encoding are not equivalent representations."
+    },
+    {
+      "id": "relation_about_relation",
+      "kernel": {
+        "endpoint_form": {
+          "rel_ref": "R1"
+        }
+      },
+      "field": {
+        "relatum_kind": "RELATION",
+        "meta_depth": "computed"
+      },
+      "mapping": "lossy",
+      "reason": "Field carries explicit relatum typing and mechanically proven recursion depth."
+    },
+    {
+      "id": "observer_disagreement",
+      "kernel": {
+        "observer": "observer-a",
+        "contradiction_basis": "observer_relative"
+      },
+      "field": {
+        "observer_or_receiver": "observer-a"
+      },
+      "mapping": "lossy",
+      "reason": "Kernel has explicit contradiction basis; field has observer/context dimensions but no identical contradiction primitive."
+    },
+    {
+      "id": "time_qualified_contradiction",
+      "kernel": {
+        "time": [
+          "valid_from",
+          "valid_to",
+          "observed_at"
+        ],
+        "contradiction_basis": "temporal_overlap"
+      },
+      "field": {
+        "time_scope": "string"
+      },
+      "mapping": "lossy",
+      "reason": "Kernel has structured interval semantics; field has open textual time scope."
+    },
+    {
+      "id": "sibling_revisions",
+      "kernel": {
+        "supersedes_rel_id": "prior",
+        "conflict_set_id": "set",
+        "conflict_status": "unresolved"
+      },
+      "field": {
+        "available": false
+      },
+      "mapping": "unmappable_without_extension",
+      "reason": "Revision/conflict semantics are a unique kernel contribution in the frozen field candidate."
+    },
+    {
+      "id": "conflict_resolution",
+      "kernel": {
+        "predicate": "RESOLVES_CONFLICT",
+        "resolves_conflict_set_id": "set"
+      },
+      "field": {
+        "available": false
+      },
+      "mapping": "unmappable_without_extension",
+      "reason": "Explicit conflict resolution relation is absent from frozen field schema."
+    },
+    {
+      "id": "projection_loss",
+      "kernel": {
+        "available": false
+      },
+      "field": {
+        "projection": [
+          "selected_relation_ids",
+          "omitted_relation_ids",
+          "loss_declarations",
+          "source_mutated"
+        ]
+      },
+      "mapping": "unmappable_without_extension",
+      "reason": "Projection loss accounting is a unique field contribution."
+    },
+    {
+      "id": "transform_lineage",
+      "kernel": {
+        "available": false
+      },
+      "field": {
+        "transform": [
+          "source_relation_ids",
+          "output_relation_ids",
+          "loss_declarations",
+          "provenance_refs",
+          "source_mutated"
+        ]
+      },
+      "mapping": "unmappable_without_extension",
+      "reason": "Transform lineage/loss is a unique field contribution."
+    }
+  ],
+  "candidate_layering": {
+    "kernel_owns": [
+      "relation_atom",
+      "provenance_minimum",
+      "observer_time_qualification",
+      "contradiction_basis",
+      "revision_lineage",
+      "conflict_sets",
+      "conflict_resolution"
+    ],
+    "field_owns": [
+      "relation_family",
+      "typed_relata",
+      "meta_depth",
+      "projection_loss",
+      "transform_lineage",
+      "domain_adapters",
+      "receiver_portability_patterns"
+    ]
+  },
+  "summary_expectation": {
+    "case_count": 10,
+    "requires_lossless_or_bounded": 1,
+    "requires_lossy": 4,
+    "requires_collision_policy": 1,
+    "requires_unmappable_without_extension": 4
+  },
+  "rails": [
+    "MAPPING_NE_EQUIVALENCE",
+    "PARALLEL_SCHEMA_NE_DESIRED_ENDSTATE",
+    "KERNEL_NE_FIELD",
+    "FIELD_NE_KERNEL",
+    "COLLISION_FIXTURE_NE_CANON",
+    "GREEN_CI_NE_COLLISION_RESOLUTION"
+  ]
+}
