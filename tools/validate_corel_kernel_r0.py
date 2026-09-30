@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import json
 import sys
+from collections import defaultdict
 from pathlib import Path
 
 SCHEMA_PATH = Path("schemas/relations/co_rel_kernel_r0.schema.json")
@@ -9,6 +10,7 @@ ADVERSARIAL_PATH = Path("fixtures/relations/co_rel_kernel_r0.adversarial.json")
 
 ALLOWED_CAUSAL = {"causal", "non_causal", "possibly_causal", "mixed", "unknown"}
 ALLOWED_BOUNDARY = {"internal", "external", "boundary", "unknown_domain"}
+ALLOWED_CONFLICT = {"unresolved", "resolved", "superseded", "not_applicable"}
 NULL_PREDICATES = {
     "EXPECTED_BUT_MISSING", "IMPOSSIBLE", "FORBIDDEN", "UNKNOWN_RELATION",
     "NOT_YET_OBSERVED", "ONCE_EXISTED", "COUNTERFACTUALLY_PRESENT",
@@ -36,6 +38,25 @@ def reject_supersession_cycles(relations):
             seen.add(cur)
             cur = parent[cur]
 
+def validate_sibling_conflicts(relations):
+    siblings = defaultdict(list)
+    for r in relations:
+        prior = r.get("supersedes_rel_id")
+        if prior:
+            siblings[prior].append(r)
+
+    for prior, children in siblings.items():
+        if len(children) < 2:
+            continue
+        if any(not r.get("conflict_set_id") or not r.get("conflict_status") for r in children):
+            raise ContractError(f"{prior}: concurrent sibling revisions require conflict metadata")
+        set_ids = {r["conflict_set_id"] for r in children}
+        if len(set_ids) != 1:
+            raise ContractError(f"{prior}: sibling revisions must share one conflict_set_id")
+        for r in children:
+            if r["conflict_status"] not in ALLOWED_CONFLICT:
+                raise ContractError(f"{r['rel_id']}: invalid conflict_status {r['conflict_status']!r}")
+
 def validate_relations(relations, require_coverage=False):
     if not isinstance(relations, list) or not relations:
         raise ContractError("relations must be a non-empty list")
@@ -47,7 +68,7 @@ def validate_relations(relations, require_coverage=False):
         raise ContractError("rel_id values must be unique")
     idset = set(ids)
 
-    saw_null = saw_meta = saw_revision = saw_boundary = False
+    saw_null = saw_meta = saw_revision = saw_boundary = saw_conflict = False
 
     for r in relations:
         rid = r["rel_id"]
@@ -93,7 +114,15 @@ def validate_relations(relations, require_coverage=False):
                 if not r.get(field):
                     raise ContractError(f"{rid}: revision missing lineage field {field}")
 
+        if r.get("conflict_set_id") or r.get("conflict_status"):
+            saw_conflict = True
+            if not r.get("conflict_set_id") or not r.get("conflict_status"):
+                raise ContractError(f"{rid}: conflict metadata must include conflict_set_id and conflict_status")
+            if r["conflict_status"] not in ALLOWED_CONFLICT:
+                raise ContractError(f"{rid}: invalid conflict_status {r['conflict_status']!r}")
+
     reject_supersession_cycles(relations)
+    validate_sibling_conflicts(relations)
 
     if require_coverage:
         if not saw_null:
@@ -104,6 +133,8 @@ def validate_relations(relations, require_coverage=False):
             raise ContractError("fixtures do not exercise lineage-preserving revision")
         if not saw_boundary:
             raise ContractError("fixtures do not exercise a boundary-crossing relation")
+        if not saw_conflict:
+            raise ContractError("fixtures do not exercise explicit concurrent revision conflict")
 
 def main():
     for path in (SCHEMA_PATH, FIXTURE_PATH, ADVERSARIAL_PATH):
