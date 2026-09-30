@@ -43,6 +43,29 @@
         "object",
         "null"
       ],
+      "properties": {
+        "valid_from": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "valid_to": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "observed_at": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        }
+      },
       "additionalProperties": true
     },
     "evidence": {
@@ -148,6 +171,15 @@
         "null"
       ],
       "minLength": 1
+    },
+    "contradiction_basis": {
+      "enum": [
+        "observer_relative",
+        "temporal_overlap",
+        "scope_relative",
+        "evidence_conflict",
+        "logical_conflict"
+      ]
     }
   },
   "additionalProperties": true,
