@@ -201,6 +201,18 @@ For pull-request CI, the checked-out commit may be GitHub's synthetic merge comm
 
 `GREEN_MERGE_REF_NE_HEAD_BYTES_IDENTICAL`
 
+## Receiver-proof convergence
+
+Cross-OS and cross-language proof lanes SHOULD converge on the same semantic object, exact source fixture, PR head/base context, tested checkout, authority state, and accepted scope.
+
+A final convergence fan-in therefore checks all four independent receiver attestations together rather than treating two green lanes as unrelated evidence.
+
+`PROOF_LANE_GREEN_NE_CROSS_LANE_CONVERGENCE`
+
+`PROOF_CONVERGENCE_NE_MODEL_RUNTIME_MIGRATION`
+
+`PROOF_CONVERGENCE_NE_PHYSICAL_FAILURE_DOMAIN_INDEPENDENCE`
+
 ## Continuity claim boundaries
 
 An accepted migration supports only the continuity claims actually proved for scope.
@@ -273,22 +285,22 @@ R0 does not:
 
 ## Next proof
 
-The initial migration fixture, adversarial migration checks, CoSubstrateField projection binding, continuity-claim guard, and synthetic multi-substrate federation canary now exist at candidate/CI scope.
+Candidate CI now includes synthetic migration/federation semantics, Linux/Windows receiver reconstruction, Python/Node independent runtime reconstruction, exact source binding, and cross-lane fan-in.
 
-The next useful proof is **not** another taxonomy expansion. It is a bounded executable handoff between two genuinely different runtimes or hosts where:
+The next useful proof is no longer another CI parser or operating-system variant. It is a bounded handoff across either:
 
-1. the same exact semantic object is reconstructed;
-2. substrate requirements are checked rather than assumed;
-3. authority remains equal or narrower;
-4. declared invariants are verified independently at the receiver;
-5. any divergence is retained as lineage rather than overwritten;
-6. the result is accepted only for a declared continuity scope.
+1. two genuinely distinct model runtimes, or
+2. two independently controlled physical hosts/failure domains,
 
-Until such a receiver-side proof exists:
+with receiver-generated evidence for exact semantic source, authority, invariants, declared loss, and continuity scope.
 
-`SYNTHETIC_FEDERATION_PASS_NE_RUNTIME_FEDERATION`
+Until that occurs:
 
-`CI_PASS_NE_CROSS_HOST_CONTINUITY_PROOF`
+`CI_RECEIVER_DIVERSITY_NE_MODEL_RUNTIME_DIVERSITY`
+
+`CI_RUNNER_DIVERSITY_NE_PHYSICAL_FAILURE_DOMAIN_PROOF`
+
+`GREEN_CI_NE_RUNTIME_ADOPTION`
 
 The useful eventual proof remains:
 
