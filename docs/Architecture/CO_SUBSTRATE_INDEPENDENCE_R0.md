@@ -173,6 +173,20 @@ This can prove a bounded cross-host representational continuity claim. It does *
 
 `CI_RECEIVER_PROOF_NE_PRODUCTION_RUNTIME`
 
+## Cross-language runtime proof
+
+A second bounded receiver proof uses two different implementation runtimes, Python and Node.js, on independent CI jobs. Both parse the same semantic object, independently recompute the canonical semantic digest, verify authority and invariants, emit attestations, and converge through a fan-in check.
+
+This reduces dependence on one language/runtime implementation and tests semantic portability across implementation substrates.
+
+It still does **not** prove model-runtime migration, live agent continuity, production failover, consciousness, or personal identity.
+
+`CROSS_LANGUAGE_RUNTIME_NE_MODEL_RUNTIME_MIGRATION`
+
+`IMPLEMENTATION_RUNTIME_NE_SEMANTIC_IDENTITY`
+
+`SAME_SEMANTIC_DIGEST_NE_IDENTICAL_INSTANCE`
+
 ## Continuity claim boundaries
 
 An accepted migration supports only the continuity claims actually proved for scope.
