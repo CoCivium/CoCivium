@@ -153,6 +153,12 @@ A failover may continue work for scope without implying that personal identity, 
 
 `AUTHORITY_IS_INSTANCE_SCOPED_WHERE_DECLARED`
 
+`LINEAGE_NE_AUTHORITY_INHERITANCE`
+
+`FAILOVER_NE_AUTHORITY_TRANSFER`
+
+A derived or failover instance does not inherit effect authority merely because it shares lineage or state. Authority must be separately present and sufficient on the acting instance.
+
 ## Continuity claim boundaries
 
 An accepted migration supports only the continuity claims actually proved for scope.
@@ -225,16 +231,23 @@ R0 does not:
 
 ## Next proof
 
-Before runtime adoption, construct a bounded migration fixture with at least:
+The initial migration fixture, adversarial migration checks, CoSubstrateField projection binding, continuity-claim guard, and synthetic multi-substrate federation canary now exist at candidate/CI scope.
 
-1. one portable semantic object;
-2. one substrate-constrained object;
-3. one intentionally substrate-bound object;
-4. one migration with declared semantic loss;
-5. one reconstruction that fails invariant checks and is therefore rejected.
+The next useful proof is **not** another taxonomy expansion. It is a bounded executable handoff between two genuinely different runtimes or hosts where:
 
-The useful proof is not "it ran somewhere else."
+1. the same exact semantic object is reconstructed;
+2. substrate requirements are checked rather than assumed;
+3. authority remains equal or narrower;
+4. declared invariants are verified independently at the receiver;
+5. any divergence is retained as lineage rather than overwritten;
+6. the result is accepted only for a declared continuity scope.
 
-The useful proof is:
+Until such a receiver-side proof exists:
+
+`SYNTHETIC_FEDERATION_PASS_NE_RUNTIME_FEDERATION`
+
+`CI_PASS_NE_CROSS_HOST_CONTINUITY_PROOF`
+
+The useful eventual proof remains:
 
 `SEMANTIC_CONTINUITY_ACCEPTED_FOR_DECLARED_SCOPE_WITH_EXPLICIT_LOSS_AND_AUTHORITY_PRESERVED`.
