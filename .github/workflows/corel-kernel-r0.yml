@@ -21,13 +21,28 @@ jobs:
   validate:
     runs-on: ubuntu-latest
     steps:
-      - name: Check out repository
+      - name: Check out PR128 candidate
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+
       - name: Validate CoRelKernel R0
         run: python tools/validate_corel_kernel_r0.py
-      - name: Validate CoRelKernel x CoRelationField collision R0
-        run: python tools/validate_corel_kernel_field_collision_r0.py
+
+      - name: Fetch exact frozen PR127 review snapshot
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch --no-tags --depth=1 origin review/corelation-field-pr127-95db0610
+          test "$(git rev-parse FETCH_HEAD)" = "95db06101b16954a90468c5ef4f1b4e78a3195a5"
+
+      - name: Validate exact CoRelKernel x CoRelationField collision R0
+        shell: bash
+        run: |
+          set -euo pipefail
+          python tools/validate_corel_kernel_field_collision_r0.py --field-ref FETCH_HEAD
