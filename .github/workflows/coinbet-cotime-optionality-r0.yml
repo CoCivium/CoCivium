@@ -4,8 +4,11 @@ on:
   pull_request:
     paths:
       - "docs/Architecture/COINBET_COTIME_OPTIONALITY_R0.md"
+      - "docs/Architecture/COTIME_PREDICTIVE_CALIBRATION_CANARY_R0.md"
       - "fixtures/cotime/coinbet_cotime_optionality_r0.json"
+      - "fixtures/cotime/cotime_predictive_calibration_r0.json"
       - "tools/validate_coinbet_cotime_optionality_r0.py"
+      - "tools/validate_cotime_predictive_calibration_r0.py"
       - ".github/workflows/coinbet-cotime-optionality-r0.yml"
   workflow_dispatch:
 
@@ -21,3 +24,4 @@ jobs:
         with:
           python-version: "3.12"
       - run: python tools/validate_coinbet_cotime_optionality_r0.py
+      - run: python tools/validate_cotime_predictive_calibration_r0.py
