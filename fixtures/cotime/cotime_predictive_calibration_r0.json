@@ -1,0 +1,106 @@
+{
+  "schema": "CoTimePredictiveCalibration.R0",
+  "state": "SYNTHETIC_FORECAST_CALIBRATION__NO_EFFECT_AUTHORITY",
+  "source_bindings": {
+    "cotime_doc_path": "docs/Architecture/COALL_PULSEFIELD_COTIME_R0.md",
+    "cotime_doc_blob_sha": "af881fd2eebdd249c16c279a46003bd3836b96cf"
+  },
+  "forecasts": [
+    {
+      "id": "F01_HIT",
+      "epistemic_class": "PREDICTED",
+      "claim": "state_A_by_horizon",
+      "calibration_due": "T2",
+      "discriminating_observation": "observe_state_A",
+      "assumptions": [
+        "A1"
+      ],
+      "outcome": "state_A",
+      "expected": "HIT"
+    },
+    {
+      "id": "F02_MISS",
+      "epistemic_class": "PREDICTED",
+      "claim": "state_A_by_horizon",
+      "calibration_due": "T2",
+      "discriminating_observation": "observe_state_A",
+      "assumptions": [
+        "A1"
+      ],
+      "outcome": "not_state_A",
+      "expected": "MISS"
+    },
+    {
+      "id": "F03_UNRESOLVED",
+      "epistemic_class": "PREDICTED",
+      "claim": "state_A_by_horizon",
+      "calibration_due": "T2",
+      "discriminating_observation": "observe_state_A",
+      "assumptions": [
+        "A1"
+      ],
+      "outcome": "mixed_or_insufficient",
+      "expected": "UNRESOLVED"
+    },
+    {
+      "id": "F04_ASSUMPTION_DRIFT",
+      "epistemic_class": "PREDICTED",
+      "claim": "state_A_by_horizon",
+      "calibration_due": "T2",
+      "discriminating_observation": "observe_state_A",
+      "assumptions": [
+        "A1"
+      ],
+      "assumption_changed": true,
+      "outcome": "state_A",
+      "expected": "INVALIDATED_BY_ASSUMPTION_CHANGE"
+    },
+    {
+      "id": "F05_OPEN",
+      "epistemic_class": "PREDICTED",
+      "claim": "state_A_by_horizon",
+      "calibration_due": "T2",
+      "discriminating_observation": "observe_state_A",
+      "assumptions": [
+        "A1"
+      ],
+      "outcome": null,
+      "expected": "UNRESOLVED"
+    }
+  ],
+  "negative_cases": [
+    {
+      "id": "N01_PREDICTED_AS_OBSERVED",
+      "epistemic_class": "OBSERVED",
+      "expected_valid": false
+    },
+    {
+      "id": "N02_NO_CALIBRATION_DUE",
+      "epistemic_class": "PREDICTED",
+      "missing": "calibration_due",
+      "expected_valid": false
+    },
+    {
+      "id": "N03_NO_DISCRIMINATING_OBSERVATION",
+      "epistemic_class": "PREDICTED",
+      "missing": "discriminating_observation",
+      "expected_valid": false
+    }
+  ],
+  "preparation": {
+    "forecast_id": "F01_HIT",
+    "action": "PREPARE_REVERSIBLE_OPTION",
+    "effect_authority_before": false,
+    "effect_authority_after": false
+  },
+  "rails": [
+    "PREDICTION_NE_EVIDENCE",
+    "FORECAST_NE_FUTURE_FACT",
+    "UNCALIBRATED_NE_WRONG",
+    "PARTIAL_EVIDENCE_NE_PARTIAL_HIT_BY_DEFAULT",
+    "ASSUMPTION_CHANGE_NE_FORECAST_ERASURE",
+    "PREPARATION_NE_EXECUTION_AUTHORITY",
+    "CALIBRATION_NE_CAUSAL_PROOF",
+    "VALIDATION_IS_NOT_ACCEPTANCE"
+  ]
+}
