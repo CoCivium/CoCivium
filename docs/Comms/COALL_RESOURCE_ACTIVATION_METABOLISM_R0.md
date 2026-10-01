@@ -14,7 +14,7 @@ It is:
 large eligible resource field
 -> mostly dormant
 -> concrete task demand
--> smallest sufficient hot frontier
+-> bounded sufficient hot frontier
 -> lease/effect gates
 -> bounded execution
 -> receipt
@@ -46,7 +46,7 @@ All nine begin as:
 
 `DORMANT_ELIGIBLE`
 
-Seven bounded demand scenarios then elect only the smallest sufficient resource subset.
+Seven bounded demand scenarios then elect a sufficient bounded resource subset under this canary's deliberately narrow deterministic objective.
 
 Examples:
 
@@ -112,7 +112,7 @@ This is how a very large opt-in ecology can become richer without becoming a per
 
 ## Selection objective
 
-Within a single requirement cell, R0 chooses a bounded subset in this order:
+Within a single requirement cell, this synthetic R0 canary chooses a bounded subset in this deterministic order:
 
 1. meet required capacity;
 2. minimize capacity overshoot;
@@ -120,7 +120,7 @@ Within a single requirement cell, R0 chooses a bounded subset in this order:
 4. minimize synthetic cost units;
 5. stable ID tie-break.
 
-This is not claimed to be globally optimal scheduling. It is a deterministic canary proving that the active frontier can stay much smaller than the eligible field.
+This is not claimed to be globally optimal scheduling, nor is minimum width the governing CoAll optimization. It is a deterministic canary proving that the active frontier can stay materially smaller than the eligible field. Production election should be fit-for-purpose across evidence, reliability, blast radius, reversibility, locality, privacy, failure-domain diversity, latency, energy, cost, receiver needs and authority rather than mechanically minimizing resource count.
 
 Future election may include latency, energy, locality, reliability, receiver pressure, fairness, recent-use rotation, thermal state, carbon intensity, price, and participant preferences.
 
@@ -164,4 +164,6 @@ That lets CoAll gain resilience and capability from participation without treati
 `SELECTION_NE_EXECUTION`  
 `RESOURCE_CONTRIBUTION_NE_GOVERNANCE_AUTHORITY`  
 `PULSE_WAKE_CONDITION_NE_COMMAND`  
-`VALIDATION_IS_NOT_ACCEPTANCE`
+`VALIDATION_IS_NOT_ACCEPTANCE`  
+`CANARY_OBJECTIVE_NE_GOVERNING_SCHEDULER_POLICY`  
+`MIN_ACTIVE_WIDTH_NE_GLOBAL_OPTIMUM`
