@@ -89,4 +89,12 @@ jobs:
       - run: python tools/validate_coall_resource_convergence_map_r0.py
       - run: python tools/validate_coall_resource_convergence_challenge_r0.py
       - run: python tools/validate_coall_resource_convergence_projection_r0.py
-      - name: Produce exact-object resource-interface receiver readproof\n        run: python tools/validate_coall_resource_grant_lease_receiver_r0.py --output artifacts/resource-interface-receiver-readproof-r0.json\n      - name: Upload resource-interface receiver readproof\n        uses: actions/upload-artifact@v4\n        with:\n          name: coall-resource-interface-receiver-readproof-r0\n          path: artifacts/resource-interface-receiver-readproof-r0.json\n          if-no-files-found: error\n          retention-days: 30
+      - name: Produce exact-object resource-interface receiver readproof
+        run: python tools/validate_coall_resource_grant_lease_receiver_r0.py --output artifacts/resource-interface-receiver-readproof-r0.json
+      - name: Upload resource-interface receiver readproof
+        uses: actions/upload-artifact@v4
+        with:
+          name: coall-resource-interface-receiver-readproof-r0
+          path: artifacts/resource-interface-receiver-readproof-r0.json
+          if-no-files-found: error
+          retention-days: 30
