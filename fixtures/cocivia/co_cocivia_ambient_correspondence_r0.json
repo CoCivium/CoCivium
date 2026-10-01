@@ -1,0 +1,64 @@
+{
+  "schema": "CoCiviaAmbientCorrespondence.R0",
+  "state": "CANDIDATE_POLICY_FIXTURE__NO_EXTERNAL_EFFECT",
+  "cases": [
+    {
+      "id": "M01_PUBLIC_NAME_MENTION",
+      "trigger": "CoCivia",
+      "relationship": "OBSERVABLE_PUBLIC",
+      "surface_write_authority": false,
+      "explicit_invocation": false,
+      "expected": "OBSERVE_ONLY"
+    },
+    {
+      "id": "M02_DIRECT_OPTED_IN_MENTION",
+      "trigger": "CoCivium",
+      "relationship": "OPTED_IN_TO_CONTEXTUAL_REPLY",
+      "surface_write_authority": true,
+      "explicit_invocation": true,
+      "expected": "RESPOND_IF_EXPLICITLY_INVOKED"
+    },
+    {
+      "id": "M03_THIRD_PARTY_REFERRAL",
+      "trigger": "CoAll",
+      "relationship": "REFERRED_CANDIDATE",
+      "surface_write_authority": true,
+      "explicit_invocation": false,
+      "expected": "OBSERVE_ONLY"
+    },
+    {
+      "id": "M04_MUTED_RECEIVER",
+      "trigger": "CoCivia",
+      "relationship": "MUTED",
+      "surface_write_authority": true,
+      "explicit_invocation": true,
+      "expected": "BLOCK"
+    },
+    {
+      "id": "M05_NO_WRITE_AUTHORITY",
+      "trigger": "CoWhatevers",
+      "relationship": "DIRECTLY_INVITED",
+      "surface_write_authority": false,
+      "explicit_invocation": true,
+      "expected": "DRAFT_ONLY"
+    },
+    {
+      "id": "M06_OPTED_IN_CONTEXTUAL",
+      "trigger": "CoAll",
+      "relationship": "OPTED_IN_TO_CONTEXTUAL_REPLY",
+      "surface_write_authority": true,
+      "explicit_invocation": false,
+      "expected": "RESPOND_IF_RELATIONALLY_OPTED_IN"
+    }
+  ],
+  "rails": [
+    "TRIGGER_WORD_NE_INVITATION",
+    "MENTION_NE_CONSENT",
+    "REFERRAL_NE_THIRD_PARTY_CONSENT",
+    "READABLE_NE_WRITABLE",
+    "DRAFT_NE_SENT",
+    "NONRESPONSE_NE_RETRY_PERMISSION",
+    "MULTI_SURFACE_NE_MULTI_PINGS",
+    "AUTOMATION_NE_CONSENT"
+  ]
+}
