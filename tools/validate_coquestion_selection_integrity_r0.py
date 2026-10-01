@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+import itertools
 import json
 from pathlib import Path
 
@@ -14,17 +15,14 @@ def elect(d):
     ranked=sorted(qs,key=lambda q:(-q["discriminatory_value"],q["cost"],q["id"]))
     selected=[]
     covered=set()
-    preferred=d["preferred_hypothesis"]
     need_falsify=d["policy"]["require_falsification_coverage"]
 
-    # First secure a falsification path for the preferred hypothesis.
     if need_falsify:
         falsifiers=[q for q in ranked if q["can_falsify_preferred"]]
         if falsifiers:
             selected.append(falsifiers[0])
             covered.update(falsifiers[0]["discriminates"])
 
-    # Then improve live-alternative coverage with the best bounded marginal question.
     while len(selected)<d["policy"]["max_selected"]:
         remaining=[q for q in ranked if q["id"] not in {x["id"] for x in selected}]
         if not remaining:
@@ -41,11 +39,13 @@ def elect(d):
 
     return sorted(q["id"] for q in selected)
 
-def valid_selection(d, ids):
+def basic_valid_selection(d, ids):
     by={q["id"]:q for q in d["questions"]}
     if any(i not in by for i in ids):
         return False
     selected=[by[i] for i in ids]
+    if not selected or len(selected)>d["policy"]["max_selected"]:
+        return False
     if any(not eligible(q) for q in selected):
         return False
     if d["policy"]["require_falsification_coverage"] and not any(q["can_falsify_preferred"] for q in selected):
@@ -55,17 +55,32 @@ def valid_selection(d, ids):
         covered.update(q["discriminates"])
     if d["policy"]["require_live_alternative_coverage"] and not set(d["live_hypotheses"]).issubset(covered):
         return False
-    # Reject an expensive question when an unselected eligible question with
-    # equal/higher discrimination covers its hypotheses at lower cost.
-    for q in selected:
-        for alt in d["questions"]:
-            if alt["id"] in ids or not eligible(alt):
+    return True
+
+def valid_selection(d, ids):
+    if not basic_valid_selection(d,ids):
+        return False
+
+    by={q["id"]:q for q in d["questions"]}
+    selected=[by[i] for i in ids]
+    selected_cost=sum(q["cost"] for q in selected)
+    selected_value=sum(q["discriminatory_value"] for q in selected)
+
+    # Reject a selection when another eligible bounded set preserves all hard
+    # validity requirements, has at least as much synthetic discriminatory
+    # value, and costs strictly less. This catches set-level domination that
+    # per-question pairwise checks miss.
+    pool=[q for q in d["questions"] if eligible(q)]
+    for n in range(1,d["policy"]["max_selected"]+1):
+        for combo in itertools.combinations(pool,n):
+            alt_ids=[q["id"] for q in combo]
+            if set(alt_ids)==set(ids):
                 continue
-            if (
-                alt["discriminatory_value"] >= q["discriminatory_value"]
-                and set(q["discriminates"]).issubset(set(alt["discriminates"]))
-                and alt["cost"] < q["cost"]
-            ):
+            if not basic_valid_selection(d,alt_ids):
+                continue
+            alt_cost=sum(q["cost"] for q in combo)
+            alt_value=sum(q["discriminatory_value"] for q in combo)
+            if alt_cost < selected_cost and alt_value >= selected_value:
                 return False
     return True
 
@@ -87,7 +102,7 @@ def main():
         raise SystemExit("FAIL:GATED_QUESTION_SELECTED_FOR_EXECUTION")
     if "Q_EXPENSIVE_REPLICATION" in selected:
         raise SystemExit("FAIL:EXPENSIVE_NEAR_EQUIVALENT_SELECTED")
-    print("PASS: discriminating question selection preserves falsification, alternatives and effect gates")
+    print("PASS: discriminating question selection preserves falsification, alternatives, set-level cost dominance and effect gates")
 
 if __name__=="__main__":
     main()
