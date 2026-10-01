@@ -39,6 +39,9 @@ on:
       - "docs/Comms/COALL_RESOURCE_CONVERGENCE_MAP_R0.md"
       - "fixtures/cocivia/coall_resource_convergence_map_r0.json"
       - "tools/validate_coall_resource_convergence_map_r0.py"
+      - "docs/Comms/COALL_RESOURCE_CONVERGENCE_CHALLENGE_R0.md"
+      - "fixtures/cocivia/coall_resource_convergence_challenge_r0.json"
+      - "tools/validate_coall_resource_convergence_challenge_r0.py"
       - ".github/workflows/cocivia-ambient-correspondence-r0.yml"
       - "identities/cocivia.json"
       - "docs/Identity/COFRONT_COCIVIA_GITHUB_R0.md"
@@ -77,3 +80,4 @@ jobs:
       - run: python tools/validate_coall_resource_field_compaction_r0.py
       - run: python tools/validate_coall_resource_activation_metabolism_r0.py
       - run: python tools/validate_coall_resource_convergence_map_r0.py
+      - run: python tools/validate_coall_resource_convergence_challenge_r0.py
