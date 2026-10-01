@@ -116,6 +116,33 @@ def main():
     if len(d["question_compiler"]) != 8:
         fail("FAIL_QUESTION_COMPILER_COUNT")
 
+    donor = d.get("specialization_donor", {})
+    if donor.get("source_pattern") != "PARTIAL_LATERALIZATION_WITH_CROSS_COMMUNICATION":
+        fail("FAIL_SPECIALIZATION_DONOR")
+    required_abstraction = {
+        "SPECIALIZED_SUBSYSTEMS",
+        "DENSE_CROSS_COMMUNICATION",
+        "PARTIAL_ASYMMETRY",
+        "SHARED_SYSTEM_FUNCTION"
+    }
+    if not required_abstraction.issubset(set(donor.get("abstraction", []))):
+        fail("FAIL_SPECIALIZATION_ABSTRACTION")
+    forbidden = set(donor.get("forbidden_inferences", []))
+    if not {
+        "SUBSYSTEM_SEPARATION",
+        "SUBSYSTEM_IDENTITY_FROM_FUNCTION",
+        "SOVEREIGN_AUTHORITY_FROM_SPECIALIZATION",
+        "PHYSICAL_EQUIVALENCE_FROM_METAPHOR"
+    }.issubset(forbidden):
+        fail("FAIL_SPECIALIZATION_FORBIDDEN_INFERENCE")
+    for ex in donor.get("cross_domain_examples", []):
+        if ex.get("specialization") is not True:
+            fail("FAIL_SPECIALIZATION_EXAMPLE")
+        if any(ex.get(k) is True for k in (
+            "separation","sovereign_authority","identity_transfer","truth_monopoly","principal_identity"
+        )):
+            fail("FAIL_SPECIALIZATION_COLLAPSE")
+
     required_rails = {
         "COAURAREL_NE_PHYSICAL_AURA_CLAIM",
         "FELT_ASYMMETRY_NE_HEMISPHERE_STATE_PROOF",
@@ -123,7 +150,11 @@ def main():
         "METAPHOR_NE_MECHANISM",
         "UNKNOWN_MECHANISM_NE_NONMATERIAL_MECHANISM",
         "PREDICTION_NE_EVIDENCE",
-        "RELATION_PROJECTION_NE_EFFECT_AUTHORITY"
+        "RELATION_PROJECTION_NE_EFFECT_AUTHORITY",
+        "SPECIALIZATION_NE_SEPARATION",
+        "LATERALIZED_FUNCTION_NE_LATERALIZED_IDENTITY",
+        "RELATIONAL_ISOMORPHISM_NE_CAUSAL_EQUIVALENCE",
+        "METAPHORICAL_ISOMORPHISM_NE_PHYSICAL_EQUIVALENCE"
     }
     if not required_rails.issubset(set(d["rails"])):
         fail("FAIL_REQUIRED_RAILS")
