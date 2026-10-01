@@ -321,3 +321,107 @@ No public auto-engagement is authorized by this R0.
 `CANARY_REPLY_NE_GENERAL_REPLY_AUTHORITY`
 
 `TEST_THREAD_NE_PUBLIC_SOCIAL_LICENSE`
+
+
+## R0A seat / effect hardening
+
+The first policy canary proved mention/relationship routing, but the executable fixture did not yet enforce the full effect chain already required by the design text.
+
+R0A binds the canary directly to the current CoCivia identity and service-principal records.
+
+Current exact policy state remains:
+
+- CoCivia front class: disclosed composite front;
+- current seat state: NONE;
+- public outreach authority: false;
+- external monitoring activation: false;
+- GitHub App design: read-only identity scope, public outreach false.
+
+Therefore an otherwise valid direct invocation still resolves to DRAFT_ONLY_NO_MATERIALIZED_SEAT in current real state.
+
+A bounded reply becomes synthetically eligible only when all of these gates pass together:
+
+- enrolled/authorized surface;
+- conversational invocation;
+- surface write authority;
+- disclosure ready;
+- materialized seat;
+- bounded effect lease;
+- rate capacity;
+- no mute/block/stop signal;
+- confidentiality compatibility.
+
+This yields the stronger chain:
+
+FRONT -> SEAT -> SURFACE -> THREAD -> INVITATION -> EFFECT LEASE -> REPLY -> RECEIPT
+
+and makes the following rails executable:
+
+IDENTITY_NE_SEAT
+SEAT_NE_REPLY_AUTHORITY
+MENTION_NE_CONSENT
+REFERRAL_NE_REPLY_CONSENT
+PUBLIC_VISIBILITY_NE_REPLY_PERMISSION
+STOP_SIGNAL_GT_ENGAGEMENT_GOAL
+
+## Trigger precision
+
+R0A distinguishes:
+
+- direct invocation: strongest candidate for bounded reply;
+- exact CoCivia mention: observe/draft unless clearly invited;
+- CoCivium mention: project-relevance signal, not reply permission;
+- CoAll: context required because lexical collisions are more plausible;
+- referral/link: relationship evidence, not reply consent;
+- Co-prefix family such as CoWhatever/CoWhatevers: low-confidence discovery only.
+
+CO_PREFIX_NE_COCIVIA_REFERENCE
+
+## Ambient presence without ambient harassment
+
+The target is a correspondence membrane, not universal brand interception.
+
+A useful future CoCivia presence should feel like:
+
+- present when directly called;
+- aware of opted-in adjacent conversations;
+- able to draft useful responses when merely mentioned;
+- silent when a mention is incidental;
+- absent from private surfaces not explicitly connected;
+- immediately quiet after mute/block/stop;
+- cross-surface deduplicated;
+- disclosed as CoCivia rather than disguised as an ordinary human participant.
+
+Candidate rate rule:
+
+MAX_ONE_AUTONOMOUS_REPLY_PER_THREAD_WITHOUT_NEW_DIRECT_INVOCATION
+
+A fresh direct invocation may create one new opportunity.
+
+## Public-footprint observation
+
+Fresh public-web discovery on 2026-09-30/2026-10-01 found the project-specific footprint sparse: CoCivium appears in third-party indexing and RickPublic/Substack material, while exact CoCivia discovery is thin and mixed with unrelated lexical collisions.
+
+That explains the user's observation. CoCivia has an identity contract, but very little deployed conversational surface area.
+
+PUBLIC_IDENTITY_NE_AMBIENT_PRESENCE
+
+## Activation ladder
+
+The next safe real sequence remains:
+
+1. read-only public mention discovery;
+2. relation classification + dedupe;
+3. visible mention inbox;
+4. draft-only response candidates;
+5. one explicitly opted-in surface with a scoped seat;
+6. direct-invocation-only reply canary;
+7. exact outbound effect receipt;
+8. receiver feedback / mute / stop proof;
+9. widen only if receiver benefit and platform compliance are demonstrated.
+
+R0A does not activate any of these external effects.
+
+DESIGN_NE_MONITORING_ACTIVE
+DRAFT_NE_PUBLICATION
+VALIDATION_IS_NOT_ACCEPTANCE

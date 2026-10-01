@@ -10,16 +10,28 @@ on:
       - "tools/validate_cocivia_ambient_correspondence_r0.py"
       - "tools/validate_coall_optin_resource_field_r0.py"
       - ".github/workflows/cocivia-ambient-correspondence-r0.yml"
+      - "identities/cocivia.json"
+      - "docs/Identity/COFRONT_COCIVIA_GITHUB_R0.md"
+      - "docs/Identity/COFRONT_GITHUB_SERVICE_PRINCIPAL_R1.md"
+      - "docs/Identity/fixtures/cocivia-github-app-r1.json"
   workflow_dispatch:
 
 permissions:
   contents: read
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
 jobs:
   validate:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Check out exact candidate head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 1
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
