@@ -11,6 +11,7 @@ on:
       - "docs/Architecture/COAURA_COTIME_TEMPORAL_BRAID_R0.md"
       - "docs/Architecture/COTIME_CALIBRATION_SET_INTEGRITY_R0.md"
       - "docs/Architecture/COQUESTION_SELECTION_INTEGRITY_R0.md"
+      - "docs/Architecture/COTIME_CONDITION_DRIFT_WEAR_R0.md"
       - "docs/Architecture/COINBET_FRONTIER_OPERATOR_R0D.md"
       - "fixtures/cotime/coinbet_cotime_optionality_r0.json"
       - "fixtures/cotime/cotime_predictive_calibration_r0.json"
@@ -20,6 +21,7 @@ on:
       - "fixtures/cotime/coaura_cotime_temporal_braid_r0.json"
       - "fixtures/cotime/cotime_calibration_set_integrity_r0.json"
       - "fixtures/cotime/coquestion_selection_integrity_r0.json"
+      - "fixtures/cotime/cotime_condition_drift_wear_r0.json"
       - "fixtures/cotime/coinbet_frontier_operator_r0d.json"
       - "tools/validate_coinbet_cotime_optionality_r0.py"
       - "tools/validate_cotime_predictive_calibration_r0.py"
@@ -29,6 +31,7 @@ on:
       - "tools/validate_coaura_cotime_temporal_braid_r0.py"
       - "tools/validate_cotime_calibration_set_integrity_r0.py"
       - "tools/validate_coquestion_selection_integrity_r0.py"
+      - "tools/validate_cotime_condition_drift_wear_r0.py"
       - "tools/validate_coinbet_frontier_operator_r0d.py"
       - ".github/workflows/coinbet-cotime-optionality-r0.yml"
   workflow_dispatch:
@@ -60,4 +63,5 @@ jobs:
       - run: python tools/validate_coaura_cotime_temporal_braid_r0.py
       - run: python tools/validate_cotime_calibration_set_integrity_r0.py
       - run: python tools/validate_coquestion_selection_integrity_r0.py
+      - run: python tools/validate_cotime_condition_drift_wear_r0.py
       - run: python tools/validate_coinbet_frontier_operator_r0d.py
