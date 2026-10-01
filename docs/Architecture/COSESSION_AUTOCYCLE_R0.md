@@ -480,3 +480,43 @@ Candidate relations:
 A failed or stale render therefore becomes useful evidence about the projection chain and UX acceptance, not authority to rewrite the underlying relation merely to make the screen agree.
 
 For close-safe sessions, provider-title mismatch alone does not reopen material work. Record the projection defect, preserve the semantic close relation, and close the embodiment if close safety is otherwise proven.
+
+
+## Provider saturation guard
+
+A provider session that reaches a hard conversation-length ceiling or a provider account that reaches an active-task ceiling should contract rather than spawn around the limit.
+
+Candidate signals:
+
+- `CONVERSATION_MAX_LENGTH_REACHED`
+- `ACTIVE_TASK_LIMIT_REACHED`
+- provider quota/rate pressure
+- repeated provider-native failure alerts
+
+The default response order is:
+
+`STOP_NEW_PROVIDER_TASK_CREATION -> EXTERNALIZE_UNIQUE_DELTA -> COMPILE_SUCCESSOR_POINTER -> DEDUPE_ACTIVE_PROVIDER_TASKS -> PREFER_EXISTING_AUTOMATION_OR_MACHINE_OWNED_ROUTE -> COTWILIGHT/CLOSE_SAFE_WHERE_EARNED -> RECHECK_BOUND_WAKE_PREDICATES`
+
+When both max-length and task-slot pressure are present, the controller SHOULD treat the source provider embodiment as saturated and avoid creating another provider task or sibling session merely to keep activity visible.
+
+`SESSION_NE_WORK_IDENTITY`
+
+`PROVIDER_TAB_NE_CONTROL_PLANE`
+
+`TASK_SLOT_NE_WORKER_IDENTITY`
+
+`ACTIVE_TASK_LIMIT_NE_NEED_MORE_TASKS`
+
+`MAX_LENGTH_NE_WORK_LOST`
+
+`SATURATION_NE_SPAWN_PERMISSION`
+
+`SUCCESSION_NE_DUPLICATE_SESSION_SWARM`
+
+`PROVIDER_PRESSURE_REQUIRES_CONTRACTION_BEFORE_EXPANSION`
+
+A successor may continue from durable state, but successor existence and successor pickup remain separate claims.
+
+`SUCCESSOR_POINTER_NE_SUCCESSOR_PICKUP`
+
+This guard does not itself close tabs, cancel tasks, or infer provider-internal causes.
