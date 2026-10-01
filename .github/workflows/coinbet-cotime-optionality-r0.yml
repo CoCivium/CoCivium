@@ -8,18 +8,21 @@ on:
       - "docs/Architecture/COTIME_FORECAST_PRECOMMITMENT_R0.md"
       - "docs/Architecture/COTIME_PROBABILISTIC_SKILL_R0B.md"
       - "docs/Architecture/COAURA_RECEIVER_RELATIVE_R0.md"
+      - "docs/Architecture/COAURA_COTIME_TEMPORAL_BRAID_R0.md"
       - "docs/Architecture/COTIME_CALIBRATION_SET_INTEGRITY_R0.md"
       - "fixtures/cotime/coinbet_cotime_optionality_r0.json"
       - "fixtures/cotime/cotime_predictive_calibration_r0.json"
       - "fixtures/cotime/cotime_forecast_precommitment_r0.json"
       - "fixtures/cotime/cotime_probabilistic_skill_r0b.json"
       - "fixtures/cotime/coaura_receiver_relative_r0.json"
+      - "fixtures/cotime/coaura_cotime_temporal_braid_r0.json"
       - "fixtures/cotime/cotime_calibration_set_integrity_r0.json"
       - "tools/validate_coinbet_cotime_optionality_r0.py"
       - "tools/validate_cotime_predictive_calibration_r0.py"
       - "tools/validate_cotime_forecast_precommitment_r0.py"
       - "tools/validate_cotime_probabilistic_skill_r0b.py"
       - "tools/validate_coaura_receiver_relative_r0.py"
+      - "tools/validate_coaura_cotime_temporal_braid_r0.py"
       - "tools/validate_cotime_calibration_set_integrity_r0.py"
       - ".github/workflows/coinbet-cotime-optionality-r0.yml"
   workflow_dispatch:
@@ -48,4 +51,5 @@ jobs:
       - run: python tools/validate_cotime_forecast_precommitment_r0.py
       - run: python tools/validate_cotime_probabilistic_skill_r0b.py
       - run: python tools/validate_coaura_receiver_relative_r0.py
+      - run: python tools/validate_coaura_cotime_temporal_braid_r0.py
       - run: python tools/validate_cotime_calibration_set_integrity_r0.py
