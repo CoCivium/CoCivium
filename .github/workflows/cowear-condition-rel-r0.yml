@@ -1,0 +1,33 @@
+name: CoWear ConditionRel R0
+
+on:
+  pull_request:
+    paths:
+      - "docs/Architecture/COWEAR_CONDITION_REL_R0.md"
+      - "fixtures/condition/cowear_condition_rel_r0.json"
+      - "tools/validate_cowear_condition_rel_r0.py"
+      - ".github/workflows/cowear-condition-rel-r0.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out exact candidate head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 1
+      - name: Use Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Validate CoWear / CoConditionRel candidate
+        run: python tools/validate_cowear_condition_rel_r0.py
