@@ -2,7 +2,7 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://cocivium.example/schemas/co-resource-grant-r0.schema.json",
   "title": "CoResourceGrant R0",
-  "description": "Candidate participant-owned resource grant interface. Grant semantics do not schedule or execute work.",
+  "description": "Candidate participant-owned resource grant interface. Grant semantics do not schedule or execute work. ACTIVE grants require explicit acceptance evidence.",
   "type": "object",
   "additionalProperties": false,
   "required": [
@@ -14,6 +14,7 @@
     "privacy_scope",
     "state",
     "capacity",
+    "consent_evidence",
     "revocation",
     "provenance",
     "current"
@@ -94,6 +95,23 @@
     },
     "current": {
       "type": "boolean"
+    },
+    "consent_evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "explicit_accept",
+        "evidence_ref"
+      ],
+      "properties": {
+        "explicit_accept": {
+          "type": "boolean"
+        },
+        "evidence_ref": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
     }
   }
 }
