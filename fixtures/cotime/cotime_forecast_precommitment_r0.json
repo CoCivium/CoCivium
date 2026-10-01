@@ -1,0 +1,114 @@
+{
+  "schema": "CoTimeForecastPrecommitment.R0",
+  "state": "SYNTHETIC_PRECOMMITMENT_HINDSIGHT_GUARD__NO_EFFECT_AUTHORITY",
+  "source_bindings": {
+    "calibration_fixture_path": "fixtures/cotime/cotime_predictive_calibration_r0.json"
+  },
+  "forecasts": [
+    {
+      "id": "P01_VALID",
+      "version": 1,
+      "claim": "state_A_by_T2",
+      "registered_at": 10,
+      "outcome_observed_at": 20,
+      "horizon_end": 20,
+      "confidence": 0.7,
+      "discriminating_observation": "observe_state_A",
+      "outcome": "state_A",
+      "expected_valid": true,
+      "expected_disposition": "HIT"
+    },
+    {
+      "id": "P02_POSTDICTION",
+      "version": 1,
+      "claim": "state_A_by_T2",
+      "registered_at": 21,
+      "outcome_observed_at": 20,
+      "horizon_end": 20,
+      "confidence": 0.7,
+      "discriminating_observation": "observe_state_A",
+      "outcome": "state_A",
+      "expected_valid": false,
+      "expected_reason": "POSTDICTION"
+    },
+    {
+      "id": "P03_CLAIM_EDIT_AFTER_OUTCOME",
+      "version": 1,
+      "claim": "state_A_by_T2",
+      "registered_at": 10,
+      "outcome_observed_at": 20,
+      "horizon_end": 20,
+      "confidence": 0.7,
+      "discriminating_observation": "observe_state_A",
+      "outcome": "not_state_A",
+      "edited_claim_after_outcome": "not_state_A_by_T2",
+      "expected_valid": false,
+      "expected_reason": "FORECAST_MUTATED_AFTER_OUTCOME"
+    },
+    {
+      "id": "P04_CONFIDENCE_EDIT_AFTER_OUTCOME",
+      "version": 1,
+      "claim": "state_A_by_T2",
+      "registered_at": 10,
+      "outcome_observed_at": 20,
+      "horizon_end": 20,
+      "confidence": 0.7,
+      "edited_confidence_after_outcome": 0.1,
+      "discriminating_observation": "observe_state_A",
+      "outcome": "not_state_A",
+      "expected_valid": false,
+      "expected_reason": "CONFIDENCE_MUTATED_AFTER_OUTCOME"
+    },
+    {
+      "id": "P05_MISS_RETAINED",
+      "version": 1,
+      "claim": "state_A_by_T2",
+      "registered_at": 10,
+      "outcome_observed_at": 20,
+      "horizon_end": 20,
+      "confidence": 0.8,
+      "discriminating_observation": "observe_state_A",
+      "outcome": "not_state_A",
+      "expected_valid": true,
+      "expected_disposition": "MISS"
+    },
+    {
+      "id": "P06_UNRESOLVED_RETAINED",
+      "version": 1,
+      "claim": "state_A_by_T2",
+      "registered_at": 10,
+      "outcome_observed_at": 20,
+      "horizon_end": 20,
+      "confidence": 0.5,
+      "discriminating_observation": "observe_state_A",
+      "outcome": "mixed_or_insufficient",
+      "expected_valid": true,
+      "expected_disposition": "UNRESOLVED"
+    }
+  ],
+  "supersession": {
+    "prior": {
+      "id": "P07",
+      "version": 1,
+      "claim": "state_A_by_T2"
+    },
+    "successor": {
+      "id": "P07-R2",
+      "version": 2,
+      "claim": "state_A_by_T3",
+      "supersedes": "P07"
+    },
+    "expected_history_preserved": true
+  },
+  "rails": [
+    "POSTDICTION_NE_PREDICTION",
+    "OUTCOME_KNOWN_BEFORE_REGISTRATION_NE_VALID_FORECAST",
+    "FORECAST_EDIT_AFTER_OUTCOME_NE_CALIBRATION",
+    "FORECAST_RECORD_NE_OUTCOME_RECORD",
+    "SUPERSEDED_FORECAST_NE_ERASED_FORECAST",
+    "MEMORABLE_HIT_NE_CALIBRATED_SKILL",
+    "CONFIDENCE_AFTER_OUTCOME_NE_PRECOMMITTED_CONFIDENCE",
+    "PREDICTION_NE_EVIDENCE",
+    "VALIDATION_IS_NOT_ACCEPTANCE"
+  ]
+}

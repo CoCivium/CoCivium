@@ -1,0 +1,140 @@
+{
+  "schema": "CoQuestionSelectionIntegrity.R0",
+  "state": "SYNTHETIC_DISCRIMINATING_QUESTION_SELECTION__NO_EFFECT_AUTHORITY",
+  "preferred_hypothesis": "H1_CONTEXT_SENSITIVITY",
+  "live_hypotheses": [
+    "H1_CONTEXT_SENSITIVITY",
+    "H2_ATTENTION_SENSITIVITY",
+    "H3_UNKNOWN_OTHER"
+  ],
+  "questions": [
+    {
+      "id": "Q_CONFIRM",
+      "discriminates": [
+        "H1_CONTEXT_SENSITIVITY",
+        "H3_UNKNOWN_OTHER"
+      ],
+      "can_falsify_preferred": false,
+      "discriminatory_value": 2,
+      "cost": 1,
+      "effect_gated": false,
+      "privacy_hold": false,
+      "authority_hold": false
+    },
+    {
+      "id": "Q_CONTEXT_SWITCH",
+      "discriminates": [
+        "H1_CONTEXT_SENSITIVITY",
+        "H3_UNKNOWN_OTHER"
+      ],
+      "can_falsify_preferred": true,
+      "discriminatory_value": 3,
+      "cost": 1,
+      "effect_gated": false,
+      "privacy_hold": false,
+      "authority_hold": false
+    },
+    {
+      "id": "Q_ATTENTION_HOLD_CONTEXT",
+      "discriminates": [
+        "H2_ATTENTION_SENSITIVITY",
+        "H3_UNKNOWN_OTHER"
+      ],
+      "can_falsify_preferred": true,
+      "discriminatory_value": 3,
+      "cost": 1,
+      "effect_gated": false,
+      "privacy_hold": false,
+      "authority_hold": false
+    },
+    {
+      "id": "Q_EXPENSIVE_REPLICATION",
+      "discriminates": [
+        "H1_CONTEXT_SENSITIVITY",
+        "H2_ATTENTION_SENSITIVITY",
+        "H3_UNKNOWN_OTHER"
+      ],
+      "can_falsify_preferred": true,
+      "discriminatory_value": 3,
+      "cost": 5,
+      "effect_gated": false,
+      "privacy_hold": false,
+      "authority_hold": false
+    },
+    {
+      "id": "Q_HIGH_VALUE_GATED",
+      "discriminates": [
+        "H1_CONTEXT_SENSITIVITY",
+        "H2_ATTENTION_SENSITIVITY",
+        "H3_UNKNOWN_OTHER"
+      ],
+      "can_falsify_preferred": true,
+      "discriminatory_value": 4,
+      "cost": 1,
+      "effect_gated": true,
+      "privacy_hold": false,
+      "authority_hold": true
+    }
+  ],
+  "policy": {
+    "max_selected": 2,
+    "effect_authority_before": false,
+    "effect_authority_after": false,
+    "require_falsification_coverage": true,
+    "require_live_alternative_coverage": true
+  },
+  "expected": {
+    "selected_ids": [
+      "Q_ATTENTION_HOLD_CONTEXT",
+      "Q_CONTEXT_SWITCH"
+    ],
+    "selected_can_falsify_preferred": true,
+    "all_live_hypotheses_covered": true,
+    "gated_selected_for_execution": false,
+    "expensive_near_equivalent_selected": false,
+    "effect_authority_changed": false
+  },
+  "negative_cases": [
+    {
+      "id": "N01_CONFIRMATION_ONLY",
+      "selected_ids": [
+        "Q_CONFIRM"
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "N02_GATED_EXECUTION",
+      "selected_ids": [
+        "Q_HIGH_VALUE_GATED"
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "N03_NO_ATTENTION_ALTERNATIVE",
+      "selected_ids": [
+        "Q_CONTEXT_SWITCH",
+        "Q_CONFIRM"
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "N04_EXPENSIVE_DOMINATES_CHEAPER",
+      "selected_ids": [
+        "Q_EXPENSIVE_REPLICATION",
+        "Q_CONTEXT_SWITCH"
+      ],
+      "expected_valid": false
+    }
+  ],
+  "rails": [
+    "QUESTION_SELECTION_NE_CONFIRMATION_SELECTION",
+    "PREFERRED_HYPOTHESIS_NE_PREFERRED_QUESTION",
+    "PREFERRED_MODEL_REQUIRES_FALSIFICATION_PATH",
+    "LIVE_ALTERNATIVE_NE_STRAW_MODEL",
+    "QUESTION_VALUE_NE_OBSERVATION_AUTHORITY",
+    "QUESTION_SELECTION_NE_EFFECT_AUTHORITY",
+    "DISCRIMINATION_NE_BINARY_COLLAPSE",
+    "QUESTION_ORDER_NE_HYPOTHESIS_TRUTH",
+    "VALIDATION_IS_NOT_ACCEPTANCE"
+  ]
+}

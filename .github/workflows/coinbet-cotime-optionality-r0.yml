@@ -1,0 +1,67 @@
+name: CoInBet CoTime Optionality R0
+
+on:
+  pull_request:
+    paths:
+      - "docs/Architecture/COINBET_COTIME_OPTIONALITY_R0.md"
+      - "docs/Architecture/COTIME_PREDICTIVE_CALIBRATION_CANARY_R0.md"
+      - "docs/Architecture/COTIME_FORECAST_PRECOMMITMENT_R0.md"
+      - "docs/Architecture/COTIME_PROBABILISTIC_SKILL_R0B.md"
+      - "docs/Architecture/COAURA_RECEIVER_RELATIVE_R0.md"
+      - "docs/Architecture/COAURA_COTIME_TEMPORAL_BRAID_R0.md"
+      - "docs/Architecture/COTIME_CALIBRATION_SET_INTEGRITY_R0.md"
+      - "docs/Architecture/COQUESTION_SELECTION_INTEGRITY_R0.md"
+      - "docs/Architecture/COTIME_CONDITION_DRIFT_WEAR_R0.md"
+      - "docs/Architecture/COINBET_FRONTIER_OPERATOR_R0D.md"
+      - "fixtures/cotime/coinbet_cotime_optionality_r0.json"
+      - "fixtures/cotime/cotime_predictive_calibration_r0.json"
+      - "fixtures/cotime/cotime_forecast_precommitment_r0.json"
+      - "fixtures/cotime/cotime_probabilistic_skill_r0b.json"
+      - "fixtures/cotime/coaura_receiver_relative_r0.json"
+      - "fixtures/cotime/coaura_cotime_temporal_braid_r0.json"
+      - "fixtures/cotime/cotime_calibration_set_integrity_r0.json"
+      - "fixtures/cotime/coquestion_selection_integrity_r0.json"
+      - "fixtures/cotime/cotime_condition_drift_wear_r0.json"
+      - "fixtures/cotime/coinbet_frontier_operator_r0d.json"
+      - "tools/validate_coinbet_cotime_optionality_r0.py"
+      - "tools/validate_cotime_predictive_calibration_r0.py"
+      - "tools/validate_cotime_forecast_precommitment_r0.py"
+      - "tools/validate_cotime_probabilistic_skill_r0b.py"
+      - "tools/validate_coaura_receiver_relative_r0.py"
+      - "tools/validate_coaura_cotime_temporal_braid_r0.py"
+      - "tools/validate_cotime_calibration_set_integrity_r0.py"
+      - "tools/validate_coquestion_selection_integrity_r0.py"
+      - "tools/validate_cotime_condition_drift_wear_r0.py"
+      - "tools/validate_coinbet_frontier_operator_r0d.py"
+      - ".github/workflows/coinbet-cotime-optionality-r0.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out exact candidate head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python tools/validate_coinbet_cotime_optionality_r0.py
+      - run: python tools/validate_cotime_predictive_calibration_r0.py
+      - run: python tools/validate_cotime_forecast_precommitment_r0.py
+      - run: python tools/validate_cotime_probabilistic_skill_r0b.py
+      - run: python tools/validate_coaura_receiver_relative_r0.py
+      - run: python tools/validate_coaura_cotime_temporal_braid_r0.py
+      - run: python tools/validate_cotime_calibration_set_integrity_r0.py
+      - run: python tools/validate_coquestion_selection_integrity_r0.py
+      - run: python tools/validate_cotime_condition_drift_wear_r0.py
+      - run: python tools/validate_coinbet_frontier_operator_r0d.py
