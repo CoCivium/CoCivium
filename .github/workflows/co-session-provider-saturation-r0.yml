@@ -1,0 +1,24 @@
+name: CoSession Provider Saturation R0
+
+on:
+  pull_request:
+    paths:
+      - "ai/session-lifecycle-policy.json"
+      - "docs/Architecture/COSESSION_AUTOCYCLE_R0.md"
+      - "fixtures/session/co_session_provider_saturation_r0.json"
+      - "tools/validate_co_session_provider_saturation_r0.py"
+      - ".github/workflows/co-session-provider-saturation-r0.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python tools/validate_co_session_provider_saturation_r0.py
