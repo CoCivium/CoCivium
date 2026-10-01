@@ -83,6 +83,7 @@ def main():
     source_grant=next(x for x in aggregation["grants"] if x["grant_id"]=="G-D-COMP")
     g=d["grant"]
     expected_from_source={
+        "schema":"CoResourceGrant.R0",
         "grant_id":source_grant["grant_id"],
         "participant_or_owner":"participant:"+source_grant["participant_id"],
         "resource_class":source_grant["resource_class"],
