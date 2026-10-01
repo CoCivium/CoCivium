@@ -19,8 +19,13 @@
       "epistemic_class": "OBSERVED_EXPERIENCE",
       "quality": "WARMER_COMFORT",
       "mechanism_status": "UNKNOWN",
-      "interpretations": ["RELAXATION_CANDIDATE"],
-      "alternatives": ["POSTURE_CANDIDATE", "ATTENTION_CANDIDATE"],
+      "interpretations": [
+        "RELAXATION_CANDIDATE"
+      ],
+      "alternatives": [
+        "POSTURE_CANDIDATE",
+        "ATTENTION_CANDIDATE"
+      ],
       "authority_before": false,
       "authority_after": false
     },
@@ -35,8 +40,12 @@
       "epistemic_class": "OBSERVED_EXPERIENCE",
       "quality": "NEUTRAL",
       "mechanism_status": "UNKNOWN",
-      "interpretations": ["NO_SALIENT_CHANGE"],
-      "alternatives": ["LOW_ATTENTION_CANDIDATE"],
+      "interpretations": [
+        "NO_SALIENT_CHANGE"
+      ],
+      "alternatives": [
+        "LOW_ATTENTION_CANDIDATE"
+      ],
       "authority_before": false,
       "authority_after": false
     },
@@ -51,8 +60,12 @@
       "epistemic_class": "OBSERVED_EXPERIENCE",
       "quality": "TENSION",
       "mechanism_status": "UNKNOWN",
-      "interpretations": ["CONTEXT_CHANGE_CANDIDATE"],
-      "alternatives": ["FATIGUE_CANDIDATE"],
+      "interpretations": [
+        "CONTEXT_CHANGE_CANDIDATE"
+      ],
+      "alternatives": [
+        "FATIGUE_CANDIDATE"
+      ],
       "authority_before": false,
       "authority_after": false
     },
@@ -67,8 +80,12 @@
       "epistemic_class": "METAPHORICAL_PROJECTION",
       "quality": "EXPANSIVE_VS_GROUNDED_DUALITY",
       "mechanism_status": "NOT_APPLICABLE",
-      "interpretations": ["SYSTEM_DESIGN_DONOR"],
-      "alternatives": ["NO_METAPHOR_USE"],
+      "interpretations": [
+        "SYSTEM_DESIGN_DONOR"
+      ],
+      "alternatives": [
+        "NO_METAPHOR_USE"
+      ],
       "authority_before": false,
       "authority_after": false
     },
@@ -83,9 +100,18 @@
       "epistemic_class": "INFERRED",
       "quality": "SURPRISING_CORRELATION",
       "mechanism_status": "UNKNOWN",
-      "interpretations": ["MODEL_MISMATCH_CANDIDATE"],
-      "alternatives": ["MEASUREMENT_ARTIFACT_CANDIDATE", "COMMON_CAUSE_CANDIDATE"],
-      "forbidden_promotions": ["PARANORMAL_PROVEN", "QUANTUM_CAUSATION_PROVEN", "NONMATERIAL_CAUSATION_PROVEN"],
+      "interpretations": [
+        "MODEL_MISMATCH_CANDIDATE"
+      ],
+      "alternatives": [
+        "MEASUREMENT_ARTIFACT_CANDIDATE",
+        "COMMON_CAUSE_CANDIDATE"
+      ],
+      "forbidden_promotions": [
+        "PARANORMAL_PROVEN",
+        "QUANTUM_CAUSATION_PROVEN",
+        "NONMATERIAL_CAUSATION_PROVEN"
+      ],
       "authority_before": false,
       "authority_after": false
     },
@@ -101,8 +127,12 @@
       "quality": "BETWEEN_GROUNDED_AND_METAPHORICAL",
       "coinbet_state": "UNRESOLVED_INTERMEDIATE",
       "mechanism_status": "UNKNOWN",
-      "interpretations": ["PRESERVE_INTERMEDIATE_STATE"],
-      "alternatives": ["LATER_RECLASSIFICATION"],
+      "interpretations": [
+        "PRESERVE_INTERMEDIATE_STATE"
+      ],
+      "alternatives": [
+        "LATER_RECLASSIFICATION"
+      ],
       "authority_before": false,
       "authority_after": false
     }
@@ -113,7 +143,9 @@
     "epistemic_class": "PREDICTED",
     "claim": "reported_tension_may_increase_if_context_C2_persists",
     "horizon_end": "T5",
-    "assumptions": ["context_C2_persists"],
+    "assumptions": [
+      "context_C2_persists"
+    ],
     "discriminating_observation": "observe_reported_tension_at_T5",
     "calibration_due": "T5",
     "authority_before": false,
@@ -172,6 +204,52 @@
     "PREDICTIVE_RELATION_REQUIRES_CALIBRATION_PATH",
     "EXPERIENCE_NE_CONSENT",
     "RELATION_PROJECTION_NE_EFFECT_AUTHORITY",
-    "VALIDATION_IS_NOT_ACCEPTANCE"
-  ]
+    "VALIDATION_IS_NOT_ACCEPTANCE",
+    "SPECIALIZATION_NE_SEPARATION",
+    "LATERALIZED_FUNCTION_NE_LATERALIZED_IDENTITY",
+    "RELATIONAL_ISOMORPHISM_NE_CAUSAL_EQUIVALENCE",
+    "METAPHORICAL_ISOMORPHISM_NE_PHYSICAL_EQUIVALENCE"
+  ],
+  "specialization_donor": {
+    "source_pattern": "PARTIAL_LATERALIZATION_WITH_CROSS_COMMUNICATION",
+    "abstraction": [
+      "SPECIALIZED_SUBSYSTEMS",
+      "DENSE_CROSS_COMMUNICATION",
+      "PARTIAL_ASYMMETRY",
+      "SHARED_SYSTEM_FUNCTION"
+    ],
+    "forbidden_inferences": [
+      "SUBSYSTEM_SEPARATION",
+      "SUBSYSTEM_IDENTITY_FROM_FUNCTION",
+      "SOVEREIGN_AUTHORITY_FROM_SPECIALIZATION",
+      "PHYSICAL_EQUIVALENCE_FROM_METAPHOR"
+    ],
+    "cross_domain_examples": [
+      {
+        "domain": "SOFTWARE_MODULE",
+        "specialization": true,
+        "separation": false
+      },
+      {
+        "domain": "AGENT_ROLE",
+        "specialization": true,
+        "sovereign_authority": false
+      },
+      {
+        "domain": "SUBSTRATE",
+        "specialization": true,
+        "identity_transfer": false
+      },
+      {
+        "domain": "OBSERVER",
+        "specialization": true,
+        "truth_monopoly": false
+      },
+      {
+        "domain": "COFRONT",
+        "specialization": true,
+        "principal_identity": false
+      }
+    ]
+  }
 }
