@@ -1,0 +1,71 @@
+{
+  "schema": "CoSessionProviderSaturation.R0",
+  "state": "CANDIDATE_POLICY_FIXTURE__NO_PROVIDER_MUTATION",
+  "cases": [
+    {
+      "id": "S01_MAX_LENGTH_ONLY",
+      "signals": [
+        "CONVERSATION_MAX_LENGTH_REACHED"
+      ],
+      "expected": {
+        "spawn_new_provider_task": false,
+        "successor_required": true,
+        "contract": true
+      }
+    },
+    {
+      "id": "S02_TASK_LIMIT_ONLY",
+      "signals": [
+        "ACTIVE_TASK_LIMIT_REACHED"
+      ],
+      "expected": {
+        "spawn_new_provider_task": false,
+        "successor_required": false,
+        "contract": true
+      }
+    },
+    {
+      "id": "S03_BOTH_LIMITS",
+      "signals": [
+        "CONVERSATION_MAX_LENGTH_REACHED",
+        "ACTIVE_TASK_LIMIT_REACHED"
+      ],
+      "expected": {
+        "spawn_new_provider_task": false,
+        "successor_required": true,
+        "contract": true
+      }
+    },
+    {
+      "id": "S04_NO_PRESSURE",
+      "signals": [],
+      "expected": {
+        "spawn_new_provider_task": true,
+        "successor_required": false,
+        "contract": false
+      }
+    },
+    {
+      "id": "S05_QUOTA_PRESSURE",
+      "signals": [
+        "PROVIDER_RATE_OR_QUOTA_PRESSURE"
+      ],
+      "expected": {
+        "spawn_new_provider_task": false,
+        "successor_required": false,
+        "contract": true
+      }
+    }
+  ],
+  "rails": [
+    "SESSION_NE_WORK_IDENTITY",
+    "PROVIDER_TAB_NE_CONTROL_PLANE",
+    "TASK_SLOT_NE_WORKER_IDENTITY",
+    "ACTIVE_TASK_LIMIT_NE_NEED_MORE_TASKS",
+    "MAX_LENGTH_NE_WORK_LOST",
+    "SATURATION_NE_SPAWN_PERMISSION",
+    "SUCCESSION_NE_DUPLICATE_SESSION_SWARM",
+    "PROVIDER_PRESSURE_REQUIRES_CONTRACTION_BEFORE_EXPANSION",
+    "SUCCESSOR_POINTER_NE_SUCCESSOR_PICKUP"
+  ]
+}
