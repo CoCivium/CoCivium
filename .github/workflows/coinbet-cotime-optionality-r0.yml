@@ -6,26 +6,38 @@ on:
       - "docs/Architecture/COINBET_COTIME_OPTIONALITY_R0.md"
       - "docs/Architecture/COTIME_PREDICTIVE_CALIBRATION_CANARY_R0.md"
       - "docs/Architecture/COTIME_FORECAST_PRECOMMITMENT_R0.md"
+      - "docs/Architecture/COAURA_RECEIVER_RELATIVE_R0.md"
       - "fixtures/cotime/coinbet_cotime_optionality_r0.json"
       - "fixtures/cotime/cotime_predictive_calibration_r0.json"
       - "fixtures/cotime/cotime_forecast_precommitment_r0.json"
+      - "fixtures/cotime/coaura_receiver_relative_r0.json"
       - "tools/validate_coinbet_cotime_optionality_r0.py"
       - "tools/validate_cotime_predictive_calibration_r0.py"
       - "tools/validate_cotime_forecast_precommitment_r0.py"
+      - "tools/validate_coaura_receiver_relative_r0.py"
       - ".github/workflows/coinbet-cotime-optionality-r0.yml"
   workflow_dispatch:
 
 permissions:
   contents: read
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
 jobs:
   validate:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Check out exact candidate head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 1
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
       - run: python tools/validate_coinbet_cotime_optionality_r0.py
       - run: python tools/validate_cotime_predictive_calibration_r0.py
       - run: python tools/validate_cotime_forecast_precommitment_r0.py
+      - run: python tools/validate_coaura_receiver_relative_r0.py

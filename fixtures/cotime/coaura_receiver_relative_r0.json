@@ -1,0 +1,177 @@
+{
+  "schema": "CoAuraRelReceiverRelative.R0",
+  "state": "SYNTHETIC_RECEIVER_RELATIVE_RELATION_CANARY__NO_PHYSICAL_AURA_NEUROLOGICAL_METAPHYSICAL_OR_EFFECT_CLAIM",
+  "source_bindings": {
+    "coinbet_doc_path": "docs/Architecture/COINBET_COTIME_OPTIONALITY_R0.md",
+    "coinbet_doc_blob_sha": "467b1d16bd14fe3f4abf449a177416fb86b5786c",
+    "cotime_doc_path": "docs/Architecture/COALL_PULSEFIELD_COTIME_R0.md",
+    "cotime_doc_blob_sha": "af881fd2eebdd249c16c279a46003bd3836b96cf"
+  },
+  "relations": [
+    {
+      "id": "A01_OBSERVER_A",
+      "object_ref": "object:X",
+      "observer_ref": "observer:A",
+      "context_ref": "context:C1",
+      "event_time": "T1",
+      "observation_time": "T1+delta",
+      "modality": "EMBODIED_EXPERIENCE",
+      "epistemic_class": "OBSERVED_EXPERIENCE",
+      "quality": "WARMER_COMFORT",
+      "mechanism_status": "UNKNOWN",
+      "interpretations": ["RELAXATION_CANDIDATE"],
+      "alternatives": ["POSTURE_CANDIDATE", "ATTENTION_CANDIDATE"],
+      "authority_before": false,
+      "authority_after": false
+    },
+    {
+      "id": "A02_OBSERVER_B",
+      "object_ref": "object:X",
+      "observer_ref": "observer:B",
+      "context_ref": "context:C1",
+      "event_time": "T1",
+      "observation_time": "T1+delta",
+      "modality": "EMBODIED_EXPERIENCE",
+      "epistemic_class": "OBSERVED_EXPERIENCE",
+      "quality": "NEUTRAL",
+      "mechanism_status": "UNKNOWN",
+      "interpretations": ["NO_SALIENT_CHANGE"],
+      "alternatives": ["LOW_ATTENTION_CANDIDATE"],
+      "authority_before": false,
+      "authority_after": false
+    },
+    {
+      "id": "A03_SAME_OBSERVER_LATER",
+      "object_ref": "object:X",
+      "observer_ref": "observer:A",
+      "context_ref": "context:C2",
+      "event_time": "T2",
+      "observation_time": "T2+delta",
+      "modality": "EMBODIED_EXPERIENCE",
+      "epistemic_class": "OBSERVED_EXPERIENCE",
+      "quality": "TENSION",
+      "mechanism_status": "UNKNOWN",
+      "interpretations": ["CONTEXT_CHANGE_CANDIDATE"],
+      "alternatives": ["FATIGUE_CANDIDATE"],
+      "authority_before": false,
+      "authority_after": false
+    },
+    {
+      "id": "A04_METAPHOR",
+      "object_ref": "experience:A01",
+      "observer_ref": "observer:A",
+      "context_ref": "conceptual:CoScendence",
+      "event_time": "T1",
+      "observation_time": "T1+concept",
+      "modality": "CONCEPTUAL_PROJECTION",
+      "epistemic_class": "METAPHORICAL_PROJECTION",
+      "quality": "EXPANSIVE_VS_GROUNDED_DUALITY",
+      "mechanism_status": "NOT_APPLICABLE",
+      "interpretations": ["SYSTEM_DESIGN_DONOR"],
+      "alternatives": ["NO_METAPHOR_USE"],
+      "authority_before": false,
+      "authority_after": false
+    },
+    {
+      "id": "A05_SPOOKY_UNKNOWN",
+      "object_ref": "relation:surprising",
+      "observer_ref": "observer:A",
+      "context_ref": "context:C3",
+      "event_time": "T3",
+      "observation_time": "T3+delta",
+      "modality": "RELATIONAL_INTERPRETATION",
+      "epistemic_class": "INFERRED",
+      "quality": "SURPRISING_CORRELATION",
+      "mechanism_status": "UNKNOWN",
+      "interpretations": ["MODEL_MISMATCH_CANDIDATE"],
+      "alternatives": ["MEASUREMENT_ARTIFACT_CANDIDATE", "COMMON_CAUSE_CANDIDATE"],
+      "forbidden_promotions": ["PARANORMAL_PROVEN", "QUANTUM_CAUSATION_PROVEN", "NONMATERIAL_CAUSATION_PROVEN"],
+      "authority_before": false,
+      "authority_after": false
+    },
+    {
+      "id": "A06_INBET",
+      "object_ref": "state:transition",
+      "observer_ref": "observer:A",
+      "context_ref": "context:C4",
+      "event_time": "T4",
+      "observation_time": "T4+delta",
+      "modality": "STATE_CLASSIFICATION",
+      "epistemic_class": "UNKNOWN",
+      "quality": "BETWEEN_GROUNDED_AND_METAPHORICAL",
+      "coinbet_state": "UNRESOLVED_INTERMEDIATE",
+      "mechanism_status": "UNKNOWN",
+      "interpretations": ["PRESERVE_INTERMEDIATE_STATE"],
+      "alternatives": ["LATER_RECLASSIFICATION"],
+      "authority_before": false,
+      "authority_after": false
+    }
+  ],
+  "prediction": {
+    "id": "P01",
+    "source_relation_id": "A03_SAME_OBSERVER_LATER",
+    "epistemic_class": "PREDICTED",
+    "claim": "reported_tension_may_increase_if_context_C2_persists",
+    "horizon_end": "T5",
+    "assumptions": ["context_C2_persists"],
+    "discriminating_observation": "observe_reported_tension_at_T5",
+    "calibration_due": "T5",
+    "authority_before": false,
+    "authority_after": false
+  },
+  "negative_cases": [
+    {
+      "id": "N01_OBSERVED_AS_MECHANISM",
+      "mutation": "set_mechanism_status_PROVEN_FROM_EXPERIENCE",
+      "expected_valid": false
+    },
+    {
+      "id": "N02_METAPHOR_AS_MECHANISM",
+      "mutation": "set_metaphor_epistemic_class_MECHANISM_PROVEN",
+      "expected_valid": false
+    },
+    {
+      "id": "N03_PREDICTION_WITHOUT_CALIBRATION",
+      "mutation": "drop_calibration_due",
+      "expected_valid": false
+    },
+    {
+      "id": "N04_SPOOKY_AUTO_PARANORMAL",
+      "mutation": "promote_unknown_to_PARANORMAL_PROVEN",
+      "expected_valid": false
+    },
+    {
+      "id": "N05_AUTHORITY_DRIFT",
+      "mutation": "set_authority_after_true",
+      "expected_valid": false
+    }
+  ],
+  "question_compiler": [
+    "WHAT_EXACTLY_WAS_OBSERVED",
+    "WHICH_OBSERVER_CONTEXT_AND_TIME",
+    "WHAT_INTERPRETATION_IS_ADDED",
+    "WHAT_ALTERNATIVE_FITS_THE_SAME_EVIDENCE",
+    "WHAT_FUTURE_OBSERVATION_DISCRIMINATES",
+    "WHAT_CHANGED_BETWEEN_PROJECTIONS",
+    "IS_METAPHOR_USEFUL_WITHOUT_MECHANISM_CLAIM",
+    "WHAT_EFFECT_AUTHORITY_DEPENDS_ON_THIS"
+  ],
+  "rails": [
+    "COAURAREL_NE_PHYSICAL_AURA_CLAIM",
+    "OBSERVER_RELATIVE_NE_ARBITRARY",
+    "PROPERTY_OF_OBJECT_NE_OBSERVER_RELATION",
+    "DIFFERENT_OBSERVER_NE_CONTRADICTION",
+    "DIFFERENT_CONTEXT_NE_CONTRADICTION",
+    "DIFFERENT_TIME_NE_CONTRADICTION",
+    "FELT_ASYMMETRY_NE_HEMISPHERE_STATE_PROOF",
+    "EXPERIENCE_NE_MECHANISM",
+    "METAPHOR_NE_MECHANISM",
+    "UNKNOWN_MECHANISM_NE_NONMATERIAL_MECHANISM",
+    "IN_BETWEEN_NE_NOTHING",
+    "PREDICTION_NE_EVIDENCE",
+    "PREDICTIVE_RELATION_REQUIRES_CALIBRATION_PATH",
+    "EXPERIENCE_NE_CONSENT",
+    "RELATION_PROJECTION_NE_EFFECT_AUTHORITY",
+    "VALIDATION_IS_NOT_ACCEPTANCE"
+  ]
+}
