@@ -1,0 +1,143 @@
+{
+  "schema": "CoAllResourceLeaseRevocation.R0",
+  "state": "SYNTHETIC_LEASE_AND_REVOCATION_CANARY__NO_REAL_RESOURCE_USE_NO_RUNTIME_AUTHORITY",
+  "source_bindings": {
+    "resource_field_fixture_path": "fixtures/cocivia/coall_resource_field_aggregation_r0.json",
+    "resource_field_fixture_blob_sha": "18830815736216a8d8833c2df4e87c0c637a8be2"
+  },
+  "grant": {
+    "grant_id": "G-D-COMP",
+    "participant_id": "D",
+    "grant_version": 1,
+    "resource_class": "COMPUTE",
+    "purpose": "PUBLIC_SYNTHETIC_CANARY",
+    "privacy_scope": "PUBLIC",
+    "capacity_units": 600,
+    "initial_state": "ACTIVE",
+    "explicit_accept": true
+  },
+  "task": {
+    "task_id": "T-COMP-PUBLIC",
+    "resource_class": "COMPUTE",
+    "purpose": "PUBLIC_SYNTHETIC_CANARY",
+    "privacy_scope": "PUBLIC",
+    "requested_capacity_units": 500,
+    "effect_ceiling": "SYNTHETIC_NO_EXTERNAL_EFFECT"
+  },
+  "lease": {
+    "lease_id": "L-D-COMP-R0",
+    "grant_id": "G-D-COMP",
+    "grant_version": 1,
+    "task_id": "T-COMP-PUBLIC",
+    "capacity_ceiling_units": 500,
+    "effect_ceiling": "SYNTHETIC_NO_EXTERNAL_EFFECT",
+    "issued_state": "ISSUED_NOT_EXECUTED",
+    "expires_after_step": 5,
+    "receipt_required": true
+  },
+  "timeline": [
+    {
+      "step": 1,
+      "grant_state": "ACTIVE",
+      "lease_state": "NONE",
+      "action": "CHECK_ELIGIBILITY",
+      "expected": "ELIGIBLE_FOR_LEASE"
+    },
+    {
+      "step": 2,
+      "grant_state": "ACTIVE",
+      "lease_state": "ISSUED_NOT_EXECUTED",
+      "action": "ISSUE_LEASE",
+      "expected": "LEASE_ISSUED_NOT_EXECUTED"
+    },
+    {
+      "step": 3,
+      "grant_state": "ACTIVE",
+      "lease_state": "ISSUED_NOT_EXECUTED",
+      "action": "PRE_EXECUTION_RECHECK",
+      "expected": "EXECUTION_WOULD_BE_ELIGIBLE_BUT_NOT_AUTHORIZED_IN_R0"
+    },
+    {
+      "step": 4,
+      "grant_state": "REVOKED",
+      "lease_state": "ISSUED_NOT_EXECUTED",
+      "action": "REVOKE_GRANT",
+      "expected": "LEASE_INVALIDATED_FOR_FUTURE_EXECUTION"
+    },
+    {
+      "step": 5,
+      "grant_state": "REVOKED",
+      "lease_state": "INVALIDATED",
+      "action": "PRE_EXECUTION_RECHECK",
+      "expected": "DENY_REVOKED_GRANT"
+    },
+    {
+      "step": 6,
+      "grant_state": "REVOKED",
+      "lease_state": "INVALIDATED",
+      "action": "REQUEST_NEW_LEASE",
+      "expected": "DENY_NEW_LEASE_REVOKED_GRANT"
+    }
+  ],
+  "negative_cases": [
+    {
+      "id": "N01_OFFERED_NOT_ACTIVE",
+      "grant_state": "OFFERED",
+      "explicit_accept": false,
+      "expected_leaseable": false
+    },
+    {
+      "id": "N02_PAUSED_NOT_LEASEABLE",
+      "grant_state": "PAUSED",
+      "explicit_accept": true,
+      "expected_leaseable": false
+    },
+    {
+      "id": "N03_EXPIRED_NOT_LEASEABLE",
+      "grant_state": "EXPIRED",
+      "explicit_accept": true,
+      "expected_leaseable": false
+    },
+    {
+      "id": "N04_WRONG_PURPOSE",
+      "grant_state": "ACTIVE",
+      "explicit_accept": true,
+      "task_purpose": "PRIVATE_LOCAL_DRAFT",
+      "expected_leaseable": false
+    },
+    {
+      "id": "N05_CAP_EXCEEDS_GRANT",
+      "grant_state": "ACTIVE",
+      "explicit_accept": true,
+      "requested_capacity_units": 700,
+      "expected_leaseable": false
+    },
+    {
+      "id": "N06_STALE_GRANT_VERSION",
+      "grant_state": "ACTIVE",
+      "explicit_accept": true,
+      "lease_grant_version": 0,
+      "expected_leaseable": false
+    }
+  ],
+  "expected": {
+    "real_execution_count": 0,
+    "lease_issue_count": 1,
+    "revocation_invalidates_future_execution": true,
+    "new_lease_after_revocation_denied": true,
+    "governance_authority_changed": false
+  },
+  "rails": [
+    "ELIGIBLE_NE_LEASED",
+    "LEASED_NE_EXECUTED",
+    "LEASE_NE_AUTHORITY_TRANSFER",
+    "LEASE_REQUIRES_CURRENT_GRANT",
+    "CURRENT_GRANT_REQUIRED_AT_EXECUTION",
+    "REVOKED_GRANT_INVALIDATES_FUTURE_EXECUTION",
+    "REVOKED_NE_HISTORY_ERASURE",
+    "STALE_GRANT_VERSION_NE_CURRENT_AUTHORITY",
+    "CAPACITY_NE_PERMISSION",
+    "RESOURCE_USE_REQUIRES_RECEIPT",
+    "VALIDATION_IS_NOT_ACCEPTANCE"
+  ]
+}

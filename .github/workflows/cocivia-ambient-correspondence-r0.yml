@@ -7,14 +7,17 @@ on:
       - "docs/Comms/COALL_OPTIN_RESOURCE_FIELD_R0.md"
       - "docs/Comms/COALL_RESOURCE_FIELD_AGGREGATION_R0.md"
       - "docs/Comms/COALL_RESOURCE_RELIABILITY_R0.md"
+      - "docs/Comms/COALL_RESOURCE_LEASE_REVOCATION_R0.md"
       - "fixtures/cocivia/co_cocivia_ambient_correspondence_r0.json"
       - "fixtures/cocivia/coall_optin_resource_field_r0.json"
       - "fixtures/cocivia/coall_resource_field_aggregation_r0.json"
       - "fixtures/cocivia/coall_resource_reliability_r0.json"
+      - "fixtures/cocivia/coall_resource_lease_revocation_r0.json"
       - "tools/validate_cocivia_ambient_correspondence_r0.py"
       - "tools/validate_coall_optin_resource_field_r0.py"
       - "tools/validate_coall_resource_field_aggregation_r0.py"
       - "tools/validate_coall_resource_reliability_r0.py"
+      - "tools/validate_coall_resource_lease_revocation_r0.py"
       - ".github/workflows/cocivia-ambient-correspondence-r0.yml"
       - "identities/cocivia.json"
       - "docs/Identity/COFRONT_COCIVIA_GITHUB_R0.md"
@@ -45,3 +48,4 @@ jobs:
       - run: python tools/validate_coall_optin_resource_field_r0.py
       - run: python tools/validate_coall_resource_field_aggregation_r0.py
       - run: python tools/validate_coall_resource_reliability_r0.py
+      - run: python tools/validate_coall_resource_lease_revocation_r0.py
