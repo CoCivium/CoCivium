@@ -1,0 +1,141 @@
+{
+  "schema": "CoTimeProbabilisticSkill.R0B-candidate",
+  "state": "SYNTHETIC_PROPER_SCORING_AND_BASELINE_COMPARISON__NO_REAL_PREDICTIVE_SKILL_NO_EFFECT_AUTHORITY",
+  "source_bindings": {
+    "calibration_fixture_path": "fixtures/cotime/cotime_predictive_calibration_r0.json",
+    "calibration_fixture_blob_sha": "bd9e07dad486597324917763d009155e46dc8f66",
+    "precommitment_fixture_path": "fixtures/cotime/cotime_forecast_precommitment_r0.json",
+    "precommitment_fixture_blob_sha": "1d9df0d397250a61038a7587aac33d85e5751edb"
+  },
+  "selection_rule": "SCORE_ALL_RESOLVED_VALID_PRECOMMITTED_FORECASTS_IN_REGISTERED_SET",
+  "probability_scale": {
+    "unit": "basis_points",
+    "min": 0,
+    "max": 10000
+  },
+  "models": {
+    "candidate": "COTIME_CANDIDATE_R0B",
+    "baseline": "CONSTANT_50_PERCENT",
+    "overconfident_challenger": "INVERTED_OVERCONFIDENT_CHALLENGER"
+  },
+  "forecasts": [
+    {
+      "id": "S01",
+      "registered_at": 10,
+      "outcome_observed_at": 20,
+      "status": "RESOLVED_VALID",
+      "outcome": 1,
+      "candidate_probability_bp": 8000,
+      "baseline_probability_bp": 5000,
+      "challenger_probability_bp": 1000
+    },
+    {
+      "id": "S02",
+      "registered_at": 11,
+      "outcome_observed_at": 21,
+      "status": "RESOLVED_VALID",
+      "outcome": 1,
+      "candidate_probability_bp": 7000,
+      "baseline_probability_bp": 5000,
+      "challenger_probability_bp": 1000
+    },
+    {
+      "id": "S03",
+      "registered_at": 12,
+      "outcome_observed_at": 22,
+      "status": "RESOLVED_VALID",
+      "outcome": 1,
+      "candidate_probability_bp": 6000,
+      "baseline_probability_bp": 5000,
+      "challenger_probability_bp": 2000
+    },
+    {
+      "id": "S04",
+      "registered_at": 13,
+      "outcome_observed_at": 23,
+      "status": "RESOLVED_VALID",
+      "outcome": 0,
+      "candidate_probability_bp": 4000,
+      "baseline_probability_bp": 5000,
+      "challenger_probability_bp": 8000
+    },
+    {
+      "id": "S05",
+      "registered_at": 14,
+      "outcome_observed_at": 24,
+      "status": "RESOLVED_VALID",
+      "outcome": 0,
+      "candidate_probability_bp": 3000,
+      "baseline_probability_bp": 5000,
+      "challenger_probability_bp": 9000
+    },
+    {
+      "id": "S06",
+      "registered_at": 15,
+      "outcome_observed_at": 25,
+      "status": "RESOLVED_VALID",
+      "outcome": 0,
+      "candidate_probability_bp": 2000,
+      "baseline_probability_bp": 5000,
+      "challenger_probability_bp": 9000
+    },
+    {
+      "id": "S07_UNRESOLVED",
+      "registered_at": 16,
+      "outcome_observed_at": null,
+      "status": "UNRESOLVED",
+      "outcome": null,
+      "candidate_probability_bp": 6500,
+      "baseline_probability_bp": 5000,
+      "challenger_probability_bp": 9500
+    },
+    {
+      "id": "S08_ASSUMPTION_INVALIDATED",
+      "registered_at": 17,
+      "outcome_observed_at": 27,
+      "status": "INVALIDATED_BY_ASSUMPTION_CHANGE",
+      "outcome": 1,
+      "candidate_probability_bp": 9000,
+      "baseline_probability_bp": 5000,
+      "challenger_probability_bp": 1000
+    }
+  ],
+  "expected": {
+    "registered_count": 8,
+    "scored_count": 6,
+    "retained_unscored_count": 2,
+    "candidate_brier": {"numerator": 29, "denominator": 300},
+    "baseline_brier": {"numerator": 1, "denominator": 4},
+    "challenger_brier": {"numerator": 113, "denominator": 150},
+    "candidate_brier_skill_vs_baseline": {"numerator": 46, "denominator": 75},
+    "candidate_positive_mean_probability_bp": 7000,
+    "candidate_negative_mean_probability_bp": 3000,
+    "candidate_discriminates_in_fixture": true,
+    "candidate_beats_baseline_in_fixture": true,
+    "challenger_worse_than_baseline_in_fixture": true
+  },
+  "better_questions": [
+    "What explicit baseline must this forecast beat?",
+    "Was the forecast registered before the outcome was knowable?",
+    "What selection rule keeps misses, unresolved cases and invalidations visible?",
+    "Which proper scoring rule is used and why?",
+    "Does the model discriminate outcomes as well as calibrate probability?",
+    "What assumptions changed between registration and outcome?",
+    "What decision threshold, if any, depends on the forecast?",
+    "Would the apparent skill survive an external holdout set?"
+  ],
+  "nonclaims": [
+    "LOWER_BRIER_SCORE_NE_CAUSAL_MODEL",
+    "SYNTHETIC_SKILL_NE_REAL_PREDICTIVE_SKILL",
+    "BETTER_THAN_BASELINE_IN_FIXTURE_NE_GENERALIZATION",
+    "PROPER_SCORE_NE_TRUTH",
+    "HIGH_PROBABILITY_NE_HIGH_SKILL",
+    "CONFIDENCE_NE_CALIBRATION",
+    "DISCRIMINATION_NE_CALIBRATION",
+    "UNRESOLVED_NE_DELETE",
+    "INVALIDATED_NE_MISS",
+    "FORECAST_SCORE_NE_EFFECT_AUTHORITY",
+    "FORECAST_SCORE_NE_FINANCIAL_ADVICE",
+    "VALIDATION_IS_NOT_ACCEPTANCE"
+  ]
+}
