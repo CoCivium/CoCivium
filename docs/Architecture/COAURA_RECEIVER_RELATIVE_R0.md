@@ -103,6 +103,39 @@ A felt asymmetry can therefore remain real as an observed experience while any n
 `HYPOTHESIS_NE_OBSERVATION`
 `UNKNOWN_MECHANISM_NE_NONMATERIAL_MECHANISM`
 
+## Specialization without separation
+
+The left/right-brain example is useful as a **relational donor** only at the abstract level:
+
+```text
+specialized subsystems
++ dense cross-communication
++ partial asymmetry
++ shared whole-system function
+```
+
+The transferable pattern is not "one side equals one mode of being."
+
+`SPECIALIZATION_NE_SEPARATION`
+`LATERALIZED_FUNCTION_NE_LATERALIZED_IDENTITY`
+`TASK_SPECIALIZATION_NE_SINGLE_SUBSYSTEM_CAUSATION`
+`PARTIAL_ASYMMETRY_NE_DUAL_SYSTEM_ONTOLOGY`
+
+This donor can safely project into software modules, model ensembles, CoFronts, resource lanes, observer roles, and substrate specializations only when the mechanism claim remains local to the target domain.
+
+`RELATIONAL_ISOMORPHISM_NE_CAUSAL_EQUIVALENCE`
+`METAPHORICAL_ISOMORPHISM_NE_PHYSICAL_EQUIVALENCE`
+
+Examples:
+
+- module specialization does not imply system independence;
+- agent specialization does not imply sovereign authority;
+- substrate specialization does not imply identity;
+- observer specialization does not imply truth monopoly;
+- CoFront specialization does not imply principal identity.
+
+This preserves the useful architecture pattern while blocking neurology-by-metaphor.
+
 ## CoInBet+ relation
 
 `CoInBet+` can qualify CoAuraRel when a projection sits between named states or when classification itself remains unsettled.
@@ -194,7 +227,8 @@ The fixture proves:
 5. a surprising relation may remain UNKNOWN_MECHANISM without paranormal/quantum promotion;
 6. a predictive projection requires a calibration path;
 7. a CoInBet state may remain unresolved without binary collapse;
-8. effect authority remains unchanged across every relation projection.
+8. effect authority remains unchanged across every relation projection;
+9. specialization may be preserved without inferring subsystem separation, identity, sovereignty, or physical equivalence.
 
 ## Current boundary
 
@@ -219,4 +253,8 @@ R0 makes no claim about literal auras, hemisphere state, neurological diagnosis,
 `PREDICTIVE_RELATION_REQUIRES_CALIBRATION_PATH`  
 `EXPERIENCE_NE_CONSENT`  
 `RELATION_PROJECTION_NE_EFFECT_AUTHORITY`  
+`SPECIALIZATION_NE_SEPARATION`  
+`LATERALIZED_FUNCTION_NE_LATERALIZED_IDENTITY`  
+`RELATIONAL_ISOMORPHISM_NE_CAUSAL_EQUIVALENCE`  
+`METAPHORICAL_ISOMORPHISM_NE_PHYSICAL_EQUIVALENCE`  
 `VALIDATION_IS_NOT_ACCEPTANCE`
