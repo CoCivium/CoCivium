@@ -10,6 +10,7 @@ on:
       - "docs/Comms/COALL_RESOURCE_LEASE_REVOCATION_R0.md"
       - "docs/Comms/COALL_INFLIGHT_REVOCATION_R0.md"
       - "docs/Comms/COALL_DISTRIBUTED_LEASE_CONTENTION_R0.md"
+      - "docs/Comms/COALL_RESOURCE_COMPOSITION_R0.md"
       - "fixtures/cocivia/co_cocivia_ambient_correspondence_r0.json"
       - "fixtures/cocivia/coall_optin_resource_field_r0.json"
       - "fixtures/cocivia/coall_resource_field_aggregation_r0.json"
@@ -17,6 +18,7 @@ on:
       - "fixtures/cocivia/coall_resource_lease_revocation_r0.json"
       - "fixtures/cocivia/coall_inflight_revocation_r0.json"
       - "fixtures/cocivia/coall_distributed_lease_contention_r0.json"
+      - "fixtures/cocivia/coall_resource_composition_r0.json"
       - "tools/validate_cocivia_ambient_correspondence_r0.py"
       - "tools/validate_coall_optin_resource_field_r0.py"
       - "tools/validate_coall_resource_field_aggregation_r0.py"
@@ -24,6 +26,7 @@ on:
       - "tools/validate_coall_resource_lease_revocation_r0.py"
       - "tools/validate_coall_inflight_revocation_r0.py"
       - "tools/validate_coall_distributed_lease_contention_r0.py"
+      - "tools/validate_coall_resource_composition_r0.py"
       - ".github/workflows/cocivia-ambient-correspondence-r0.yml"
       - "identities/cocivia.json"
       - "docs/Identity/COFRONT_COCIVIA_GITHUB_R0.md"
@@ -57,3 +60,4 @@ jobs:
       - run: python tools/validate_coall_resource_lease_revocation_r0.py
       - run: python tools/validate_coall_inflight_revocation_r0.py
       - run: python tools/validate_coall_distributed_lease_contention_r0.py
+      - run: python tools/validate_coall_resource_composition_r0.py
