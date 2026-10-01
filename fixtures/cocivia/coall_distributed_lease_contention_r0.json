@@ -71,6 +71,58 @@
     "scheduler_b_self_elects": false,
     "expected": "HOLD_NO_DUAL_AUTHORITY"
   },
+  "expiry_takeover": {
+    "resource": "gpu-exclusive-expiry-1",
+    "initial_fence": 10,
+    "events": [
+      {
+        "id": "E01_OLD_ACQUIRE",
+        "op": "ACQUIRE",
+        "request": "req-old",
+        "scheduler": "A",
+        "now": 100,
+        "ttl": 5,
+        "expected": "LEASE_GRANTED",
+        "expected_fence": 11
+      },
+      {
+        "id": "E02_BEFORE_EXPIRY_CONTEND",
+        "op": "ACQUIRE",
+        "request": "req-new",
+        "scheduler": "B",
+        "now": 104,
+        "ttl": 5,
+        "expected": "CONTENDED_NO_SECOND_LEASE",
+        "expected_fence": null
+      },
+      {
+        "id": "E03_AFTER_EXPIRY_TAKEOVER",
+        "op": "ACQUIRE",
+        "request": "req-new",
+        "scheduler": "B",
+        "now": 106,
+        "ttl": 5,
+        "expected": "LEASE_GRANTED_AFTER_EXPIRY",
+        "expected_fence": 12
+      },
+      {
+        "id": "E04_STALE_PREDECESSOR_EFFECT",
+        "op": "PRESENT_EFFECT",
+        "request": "req-old",
+        "presented_fence": 11,
+        "now": 106,
+        "expected": "REJECT_STALE_FENCE"
+      },
+      {
+        "id": "E05_CURRENT_SUCCESSOR_EFFECT",
+        "op": "PRESENT_EFFECT",
+        "request": "req-new",
+        "presented_fence": 12,
+        "now": 106,
+        "expected": "ACCEPT_CURRENT_FENCE"
+      }
+    ]
+  },
   "rails": [
     "ELIGIBILITY_NE_RESERVATION",
     "LEASE_ID_NE_CURRENT_FENCE",
@@ -79,6 +131,9 @@
     "SUM_ACTIVE_RESERVATIONS_LTE_GRANT_CAPACITY",
     "IDEMPOTENT_REPLAY_NE_SECOND_ALLOCATION",
     "NETWORK_PARTITION_NE_DUAL_LEASE_AUTHORITY",
-    "RECONNECTION_NE_LEASE_REVIVAL"
+    "RECONNECTION_NE_LEASE_REVIVAL",
+    "EXPIRED_LEASE_NE_RESERVATION_AUTHORITY",
+    "EXPIRY_RELEASES_FUTURE_CAPACITY",
+    "TAKEOVER_REQUIRES_NEWER_FENCE"
   ]
 }
