@@ -4,8 +4,11 @@ on:
   pull_request:
     paths:
       - "docs/Comms/COCIVIA_AMBIENT_CORRESPONDENCE_R0.md"
+      - "docs/Comms/COALL_OPTIN_RESOURCE_FIELD_R0.md"
       - "fixtures/cocivia/co_cocivia_ambient_correspondence_r0.json"
+      - "fixtures/cocivia/coall_optin_resource_field_r0.json"
       - "tools/validate_cocivia_ambient_correspondence_r0.py"
+      - "tools/validate_coall_optin_resource_field_r0.py"
       - ".github/workflows/cocivia-ambient-correspondence-r0.yml"
   workflow_dispatch:
 
@@ -21,3 +24,4 @@ jobs:
         with:
           python-version: "3.12"
       - run: python tools/validate_cocivia_ambient_correspondence_r0.py
+      - run: python tools/validate_coall_optin_resource_field_r0.py
