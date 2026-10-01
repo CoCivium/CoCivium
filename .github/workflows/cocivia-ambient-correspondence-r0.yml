@@ -44,11 +44,13 @@ on:
       - "tools/validate_coall_resource_convergence_challenge_r0.py"
       - "docs/Comms/COALL_RESOURCE_CONVERGENCE_PROJECTION_R0.md"
       - "docs/Comms/COCIVIUM_RESOURCE_OBSERVER_PROJECTION_R0.md"
+      - "docs/Comms/COCIVIUM_COBAR_RESOURCE_OBSERVER_DELIVERY_R0.md"
       - "schemas/co-resource-grant-r0.schema.json"
       - "schemas/co-resource-lease-r0.schema.json"
       - "fixtures/cocivia/coall_resource_grant_lease_receiver_canary_r0.json"
       - "tools/validate_coall_resource_grant_lease_receiver_r0.py"
       - "tools/compile_cocivium_resource_observer_projection_r0.py"
+      - "tools/compile_cobar_resource_observer_delivery_capsule_r0.py"
       - "fixtures/cocivia/coall_resource_convergence_projection_r0.json"
       - "tools/validate_coall_resource_convergence_projection_r0.py"
       - ".github/workflows/cocivia-ambient-correspondence-r0.yml"
@@ -126,5 +128,32 @@ jobs:
         with:
           name: cocivium-resource-observer-projection-r0
           path: artifacts/cocivium-resource-observer-projection-r0.json
+          if-no-files-found: error
+          retention-days: 30
+
+  cobar-delivery-capsule:
+    needs: observer-projection
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out exact candidate head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Download exact CoCivium observer projection
+        uses: actions/download-artifact@v4
+        with:
+          name: cocivium-resource-observer-projection-r0
+          path: source-projection
+      - name: Compile CoBar delivery capsule
+        run: python tools/compile_cobar_resource_observer_delivery_capsule_r0.py --projection source-projection/cocivium-resource-observer-projection-r0.json --output artifacts/cocivium-cobar-resource-observer-delivery-capsule-r0.json
+      - name: Upload CoBar delivery capsule
+        uses: actions/upload-artifact@v4
+        with:
+          name: cocivium-cobar-resource-observer-delivery-capsule-r0
+          path: artifacts/cocivium-cobar-resource-observer-delivery-capsule-r0.json
           if-no-files-found: error
           retention-days: 30
