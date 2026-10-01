@@ -1,0 +1,109 @@
+{
+  "schema": "CoTimeCalibrationSetIntegrity.R0",
+  "state": "SYNTHETIC_CALIBRATION_SET_INTEGRITY__NO_EFFECT_AUTHORITY",
+  "forecasts": [
+    {
+      "id": "C01",
+      "registered": true,
+      "due": true,
+      "disposition": "HIT",
+      "excluded": false
+    },
+    {
+      "id": "C02",
+      "registered": true,
+      "due": true,
+      "disposition": "MISS",
+      "excluded": false
+    },
+    {
+      "id": "C03",
+      "registered": true,
+      "due": true,
+      "disposition": "UNRESOLVED",
+      "excluded": false,
+      "missingness": "OUTCOME_AMBIGUOUS"
+    },
+    {
+      "id": "C04",
+      "registered": true,
+      "due": true,
+      "disposition": "CENSORED",
+      "excluded": false,
+      "missingness": "CENSORED_BY_POLICY"
+    },
+    {
+      "id": "C05",
+      "registered": true,
+      "due": false,
+      "disposition": null,
+      "excluded": false,
+      "missingness": "NOT_YET_DUE"
+    },
+    {
+      "id": "C06",
+      "registered": true,
+      "due": true,
+      "disposition": "INVALIDATED_BY_ASSUMPTION_CHANGE",
+      "excluded": false
+    },
+    {
+      "id": "C07",
+      "registered": true,
+      "due": true,
+      "disposition": null,
+      "excluded": true,
+      "exclusion_reason": "OUT_OF_DECLARED_SCOPE"
+    }
+  ],
+  "negative_cases": [
+    {
+      "id": "N01_UNEXPLAINED_EXCLUSION",
+      "mutation": "drop_exclusion_reason",
+      "expected_valid": false
+    },
+    {
+      "id": "N02_DELETE_MISS",
+      "mutation": "remove_C02",
+      "expected_valid": false
+    },
+    {
+      "id": "N03_DROP_UNRESOLVED",
+      "mutation": "remove_C03",
+      "expected_valid": false
+    },
+    {
+      "id": "N04_MARK_CENSORED_HIT",
+      "mutation": "censored_to_hit",
+      "expected_valid": false
+    },
+    {
+      "id": "N05_CALL_SUBSET_FULL",
+      "mutation": "observed_subset_as_full_registry",
+      "expected_valid": false
+    }
+  ],
+  "expected": {
+    "registered_count": 7,
+    "due_count": 6,
+    "observed_or_dispositioned_due_count": 5,
+    "unresolved_count": 1,
+    "censored_count": 1,
+    "not_yet_due_count": 1,
+    "invalidated_count": 1,
+    "explained_exclusion_count": 1,
+    "full_registry_performance_claim_allowed": false
+  },
+  "rails": [
+    "REGISTERED_FORECAST_NE_CALIBRATED_FORECAST",
+    "CALIBRATION_SET_NE_CONVENIENCE_SAMPLE",
+    "MISS_NE_DELETE",
+    "UNRESOLVED_NE_DROP",
+    "CENSORED_NE_SUCCESS",
+    "MISSING_OUTCOME_NE_EXCLUSION_PERMISSION",
+    "EXCLUSION_REQUIRES_REASON",
+    "OBSERVED_SET_PERFORMANCE_NE_REGISTERED_SET_PERFORMANCE",
+    "PREDICTION_NE_EVIDENCE",
+    "VALIDATION_IS_NOT_ACCEPTANCE"
+  ]
+}
