@@ -1,0 +1,67 @@
+{
+  "schema": "CoBossAuthorityRelations.R0",
+  "state": "CANDIDATE_ANTI_SOVEREIGN_AUTHORITY_MODEL__NO_RUNTIME_AUTHORITY_CHANGE",
+  "executable_principals": [
+    "HUMAN",
+    "MODEL",
+    "SERVICE_PRINCIPAL",
+    "ORGANIZATION",
+    "STATE",
+    "CORPORATION",
+    "SESSION",
+    "NODE",
+    "FRONT"
+  ],
+  "ultimate_referents": [
+    "God",
+    "gods",
+    "Gods",
+    "godstuff",
+    "CMA",
+    "CoWhatevers",
+    "conscience",
+    "truth",
+    "human_dignity",
+    "rights",
+    "common_good",
+    "nature",
+    "future_generations"
+  ],
+  "rules": {
+    "worldly_unbounded_authority_allowed": false,
+    "ultimate_referent_is_executable_principal": false,
+    "metaphysical_claim_grants_permission": false,
+    "claim_to_represent_ultimate_referent_grants_permission": false,
+    "authority_is_scoped": true,
+    "appeal_relation_required_for_material_authority": true
+  },
+  "examples": [
+    {
+      "claim": "X declares spiritual relation to God",
+      "allowed": true,
+      "effect_authority_delta": 0
+    },
+    {
+      "claim": "X claims to speak for God therefore X gets root authority",
+      "allowed": false,
+      "effect_authority_delta": 0
+    },
+    {
+      "claim": "Repository owner may approve repository mutation within delegated scope",
+      "allowed": true,
+      "effect_authority_delta": "BOUNDED_BY_SCOPE"
+    }
+  ],
+  "rails": [
+    "ULTIMATE_REFERENT_NE_EXECUTABLE_PRINCIPAL",
+    "CLAIM_TO_SPEAK_FOR_GOD_NE_AUTHORITY_TOKEN",
+    "NO_WORLDLY_PRINCIPAL_HAS_UNBOUNDED_COALL_AUTHORITY",
+    "BOSS_FOR_SCOPE_NE_BOSS_OF_ENTITY",
+    "METAPHYSICAL_CLAIM_NE_MACHINE_VERIFIED_FACT",
+    "THEOLOGICAL_COMMITMENT_NE_PERMISSION_ESCALATION",
+    "PERMISSION_INTERSECTION_NE_CROWN",
+    "CAPABILITY_NE_AUTHORITY",
+    "SYSTEM_PRINCIPAL_NE_SOVEREIGN",
+    "VALIDATION_IS_NOT_ACCEPTANCE"
+  ]
+}
