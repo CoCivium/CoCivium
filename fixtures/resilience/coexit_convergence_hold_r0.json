@@ -1,0 +1,102 @@
+{
+  "schema": "CoExitConvergence.Hold.v0.1-candidate",
+  "state": "PROVIDER_EXIT_CONVERGENCE_CONTRACTION__NO_DESTRUCTIVE_EFFECTS",
+  "source_branch": {
+    "repository": "CoCivium/CoCivium",
+    "pr_number": 141,
+    "source_parent_head_sha": "e049f08bdb65e3dcff6a63e740934eca95f3cb6d"
+  },
+  "local_source_bindings": [
+    {
+      "path": "docs/Architecture/COACCOUNT_RETIREMENT_GATE_R0.md",
+      "git_blob_sha": "f381807e54bdc63dc6ce0025f3fb08c3fdf52d0d"
+    },
+    {
+      "path": "docs/Architecture/COEXIT_GATE_PLANNER_R0.md",
+      "git_blob_sha": "518d5123fc28221c44396f85934b0dc47a93b813"
+    },
+    {
+      "path": "fixtures/resilience/coaccount_retirement_gate_r0.json",
+      "git_blob_sha": "0c0cadb00c50c0b510fb5a42ffb7092db86dae3d"
+    },
+    {
+      "path": "fixtures/resilience/coexit_gate_planner_r0.json",
+      "git_blob_sha": "7cf597cca2706e612fd49d94b89a62a02b4b6917"
+    }
+  ],
+  "donor_prs": [
+    {
+      "pr_number": 136,
+      "role": "SUBSTRATE_INDEPENDENCE_AND_SESSION_RETIREMENT",
+      "expected_head_sha": "4153c8487222054ba460a3c8b4a0731b087e4209",
+      "expected_draft": true,
+      "expected_merged": false,
+      "required_success_run_id": 36950536349,
+      "required_doc": {
+        "path": "docs/Architecture/COPROVIDER_EXIT_SESSION_RETIREMENT_R0.md",
+        "git_blob_sha": "3ceac049bb422ab1b977f454a188932e8de13b7a"
+      }
+    },
+    {
+      "pr_number": 138,
+      "role": "PROVIDER_SATURATION_CONTRACTION",
+      "expected_head_sha": "d4792c00b8daf3fa3ea3a0b769768465b334f5ab",
+      "expected_draft": true,
+      "expected_merged": false,
+      "required_success_run_id": 36795126676,
+      "required_doc": {
+        "path": "docs/Architecture/COSESSION_AUTOCYCLE_R0.md",
+        "git_blob_sha": "aabc4c2fedac4a4335d96f6760e07e84ba84f971"
+      },
+      "required_fixture": {
+        "path": "fixtures/session/co_session_provider_saturation_r0.json",
+        "git_blob_sha": "96d27f7739443e1855e560fed078b7d0cab5b078"
+      }
+    }
+  ],
+  "convergence": {
+    "account_retirement_state": "HOLD_NOT_EXIT_READY",
+    "current_account_close_safe": false,
+    "current_account_delete_authority": false,
+    "global_provider_tab_close_safe": false,
+    "new_long_lived_provider_work_identity_default": false,
+    "new_provider_session_spawn_default_under_pressure": false,
+    "new_github_only_exit_doctrine_default": false,
+    "provider_surface_role": "OPTIONAL_LEASED_REASONING_AND_INTERPRETATION_SURFACE_WHILE_USEFUL",
+    "local_surface_role": "OPTIONAL_PRIVACY_AND_EXECUTION_EMBODIMENT_NOT_CUSTODY_ROOT",
+    "github_surface_role": "PUBLIC_CANDIDATE_AND_VERIFICATION_SURFACE_NOT_PRIVATE_CUSTODY_ROOT",
+    "elected_next": "HOLD_FOR_INDEPENDENT_ROUTE_OR_ACCOUNT_CENSUS",
+    "wake_conditions": [
+      "LIVE_NON_PROVIDER_ROUTE_AVAILABLE",
+      "ACCOUNT_OR_SESSION_CENSUS_ROUTE_AVAILABLE",
+      "INDEPENDENT_PRIVATE_CUSTODY_ROUTE_AVAILABLE",
+      "SECOND_PUBLIC_BOOTSTRAP_OR_EXPORT_ROUTE_AVAILABLE",
+      "CREDENTIAL_OR_BILLING_MAP_EVIDENCE_AVAILABLE"
+    ]
+  },
+  "bounded_close_rule": {
+    "individual_provider_session_may_retire_only_if": [
+      "UNIQUE_SCOPE_STATE_EXTERNALIZED",
+      "ELECTED_DURABLE_DESTINATION_PROVEN",
+      "EXACT_RECEIVER_READPROOF_PROVEN",
+      "RECONSTRUCTION_FOR_SCOPE_PROVEN",
+      "UNFINISHED_EFFECT_OBLIGATIONS_ABSENT_OR_TRANSFERRED",
+      "ALTERNATIVE_EXECUTION_ROUTE_ADMISSIBLE"
+    ],
+    "session_retirement_ne_account_deletion": true
+  },
+  "nonclaims": [
+    "CONVERGENCE_NE_ACCOUNT_DRAIN_COMPLETE",
+    "CONVERGENCE_NE_ACCOUNT_CLOSE_SAFE",
+    "CONVERGENCE_NE_ACCOUNT_DELETE_AUTHORITY",
+    "HOLD_NE_PROJECT_STALLED",
+    "GITHUB_ONLY_NE_FAILURE_DOMAIN_INDEPENDENCE",
+    "OPEN_PR_NE_INTEGRATED",
+    "WORKFLOW_PASS_NE_CANON",
+    "SESSION_RETIREMENT_NE_ACCOUNT_DELETION",
+    "PROVIDER_OPTIONALITY_NE_PROVIDER_ABSENCE",
+    "LOCAL_OPTIONALITY_NE_LOCAL_IRRELEVANCE",
+    "VALIDATION_IS_NOT_ACCEPTANCE",
+    "NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE"
+  ]
+}
