@@ -6,10 +6,13 @@ on:
       - "docs/Architecture/COPROVIDER_EXIT_RESILIENCE_R0.md"
       - "docs/Architecture/COEXIT_RIGHTS_DATA_ERASURE_R0.md"
       - "docs/Architecture/COMUTUAL_AID_GAME_R0.md"
+      - "docs/Architecture/COMUTUAL_AID_OFFLINE_PARTICIPATION_R0.md"
       - "fixtures/resilience/coprovexit_mutualaid_r0.json"
       - "fixtures/resilience/coexit_rights_data_erasure_r0.json"
+      - "fixtures/resilience/comutual_aid_offline_participation_r0.json"
       - "tools/validate_coprovexit_mutualaid_r0.py"
       - "tools/validate_coexit_rights_data_erasure_r0.py"
+      - "tools/validate_comutual_aid_offline_participation_r0.py"
       - ".github/workflows/coprovexit-resilience-mutualaid-r0.yml"
   workflow_dispatch:
 
@@ -37,6 +40,9 @@ jobs:
 
       - name: Validate provider-exit resilience and mutual-aid policy
         run: python tools/validate_coprovexit_mutualaid_r0.py
+
+      - name: Validate offline/device-less mutual-aid participation
+        run: python tools/validate_comutual_aid_offline_participation_r0.py
 
       - name: Validate exit-rights / erasure boundary
         run: python tools/validate_coexit_rights_data_erasure_r0.py
