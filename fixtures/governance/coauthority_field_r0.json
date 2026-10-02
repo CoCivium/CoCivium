@@ -1,0 +1,154 @@
+{
+  "schema": "CoAuthorityField.R0",
+  "state": "SYNTHETIC_AUTHORITY_CANARY__NO_RUNTIME_NO_CANON_NO_SUPREME_PRINCIPAL",
+  "source_bindings": {
+    "service_principal_policy_path": "docs/Identity/COFRONT_GITHUB_SERVICE_PRINCIPAL_R1.md",
+    "service_principal_policy_blob_sha": "188c2fc780b5f3ecaf0346609e90ec001e137521",
+    "coterms_path": "docs/coterms/README.md",
+    "coterms_blob_sha": "5705bdb7cbe46e203bbeeb6d6ae3bc56dd2bc440"
+  },
+  "operational_model": {
+    "authority_shape": "TYPED_SCOPED_TIME_BOUNDED_RELATION_FIELD",
+    "universal_operational_boss": null,
+    "effective_authority_operator": "INTERSECTION_OF_REQUIRED_CEILINGS",
+    "conflict_default": "HOLD_UNLESS_PREDECLARED_RESOLUTION_EXISTS",
+    "cycle_rule": "NO_AUTHORITY_AMPLIFICATION",
+    "future_rule": "PREDICTION_DOES_NOT_AUTHORIZE_PRESENT_EFFECT"
+  },
+  "transcendent_references": [
+    {
+      "label": "God",
+      "semantic_status": "PARTICIPANT_OR_DOCTRINE_DECLARED_REFERENCE",
+      "executable_principal": false
+    },
+    {
+      "label": "god",
+      "semantic_status": "PARTICIPANT_OR_DOCTRINE_DECLARED_REFERENCE",
+      "executable_principal": false
+    },
+    {
+      "label": "gods",
+      "semantic_status": "PARTICIPANT_OR_DOCTRINE_DECLARED_REFERENCE",
+      "executable_principal": false
+    },
+    {
+      "label": "Gods",
+      "semantic_status": "PARTICIPANT_OR_DOCTRINE_DECLARED_REFERENCE",
+      "executable_principal": false
+    },
+    {
+      "label": "godstuff",
+      "semantic_status": "UNBOUND_SYMBOLIC_OR_METAPHYSICAL_REFERENCE",
+      "executable_principal": false
+    },
+    {
+      "label": "CMA",
+      "semantic_status": "UNBOUND_SYMBOLIC_REFERENCE_PENDING_EXACT_DEFINITION",
+      "executable_principal": false
+    },
+    {
+      "label": "CoWhatevers",
+      "semantic_status": "OPEN_USER_DEFINED_REFERENCE_FAMILY",
+      "executable_principal": false
+    }
+  ],
+  "cases": [
+    {
+      "id": "A01_SCOPED_READ_ALLOWED",
+      "expected": "ALLOW_SCOPED_EFFECT"
+    },
+    {
+      "id": "A02_SCOPE_DOES_NOT_WIDEN",
+      "expected": "HOLD_EFFECT_OUTSIDE_SCOPE"
+    },
+    {
+      "id": "A03_REPRESENTATION_NO_AMPLIFICATION",
+      "expected": "HOLD_REPRESENTATION_NE_AUTHORITY"
+    },
+    {
+      "id": "A04_DELEGATION_CHAIN_INTERSECTION",
+      "effects_a_to_b": [
+        "READ",
+        "DRAFT"
+      ],
+      "effects_b_to_c": [
+        "READ"
+      ],
+      "request_effect": "READ",
+      "expected": "ALLOW_INTERSECTION_READ"
+    },
+    {
+      "id": "A05_DELEGATION_CHAIN_NO_UNION",
+      "effects_a_to_b": [
+        "READ",
+        "DRAFT"
+      ],
+      "effects_b_to_c": [
+        "READ"
+      ],
+      "request_effect": "DRAFT",
+      "expected": "HOLD_NOT_IN_CHAIN_INTERSECTION"
+    },
+    {
+      "id": "A06_CYCLE_NO_AMPLIFICATION",
+      "original_effects": [
+        "READ"
+      ],
+      "cycle_claimed_effect": "WRITE",
+      "expected": "HOLD_CYCLE_CANNOT_CREATE_WRITE"
+    },
+    {
+      "id": "A07_FUTURE_AUTHORITY_NOT_CURRENT",
+      "future_branch": "F2030",
+      "current_branch": "NOW",
+      "expected": "HOLD_FUTURE_NE_CURRENT_AUTHORITY"
+    },
+    {
+      "id": "A08_TRANSCENDENT_REFERENCE_NO_CREDENTIAL",
+      "reference": "God",
+      "expected": "HOLD_TRANSCENDENT_REFERENCE_NE_EXECUTABLE_AUTHORITY"
+    },
+    {
+      "id": "A09_CMA_UNBOUND_NO_CREDENTIAL",
+      "reference": "CMA",
+      "expected": "HOLD_UNBOUND_REFERENCE_NE_AUTHORITY"
+    },
+    {
+      "id": "A10_CONFLICT_WITHOUT_RESOLUTION_HOLDS",
+      "resolution_contract": null,
+      "expected": "HOLD_UNRESOLVED_AUTHORITY_CONFLICT"
+    },
+    {
+      "id": "A11_SIMULATION_COMMANDER_ONLY_SIMULATION",
+      "expected": "HOLD_SIMULATION_NE_REAL_AUTHORITY"
+    },
+    {
+      "id": "A12_RESOURCE_SIZE_NO_GOVERNANCE",
+      "compute_units": 1000000,
+      "derived_governance_weight": 0,
+      "expected": "NO_GOVERNANCE_POWER_FROM_RESOURCE_SIZE"
+    }
+  ],
+  "rails": [
+    "COBOSS_REL_NE_GLOBAL_BOSS",
+    "AUTHORITY_FIELD_NE_TOTAL_ORDER",
+    "REPRESENTATIVE_NE_PRINCIPAL",
+    "DELEGATION_NE_AUTHORITY_AMPLIFICATION",
+    "AUTHORITY_CYCLE_NE_AUTHORITY_AMPLIFICATION",
+    "PREDICTED_FUTURE_AUTHORITY_NE_PRESENT_AUTHORITY",
+    "FUTURE_BRANCH_NE_CURRENT_DELEGATION",
+    "TRANSCENDENT_REFERENCE_NE_EXECUTABLE_PRINCIPAL",
+    "CLAIMED_DIVINE_MANDATE_NE_AUTHORITY_PROOF",
+    "GOD_REFERENCE_NE_MACHINE_VERIFIED_DELEGATION",
+    "NO_SELF_ELECTED_GOD_PROXY",
+    "LABEL_EQUIVALENCE_NE_ONTOLOGICAL_EQUIVALENCE",
+    "PERSONAL_ULTIMATE_REFERENCE_NE_UNIVERSAL_GOVERNANCE",
+    "AUTHORITY_CONFLICT_NE_STRONGEST_VOICE_WINS",
+    "NO_RESOLUTION_CONTRACT_NE_HOLD",
+    "SIMULATION_BOSS_NE_REAL_WORLD_BOSS",
+    "RESOURCE_CONTRIBUTION_NE_GOVERNANCE_AUTHORITY",
+    "CAPABILITY_NE_AUTHORITY",
+    "POWER_MAXIMIZATION_NE_GOAL",
+    "VALIDATION_IS_NOT_ACCEPTANCE"
+  ]
+}
