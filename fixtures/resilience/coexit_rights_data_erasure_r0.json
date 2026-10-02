@@ -1,0 +1,68 @@
+{
+  "schema": "CoExitRightsDataErasure.R0",
+  "state": "CANDIDATE_EXIT_POLICY__NO_DESTRUCTIVE_EFFECTS",
+  "services": [
+    {
+      "id": "S1",
+      "unique_state": false,
+      "independent_reconstruction": true,
+      "billing_mapped": true,
+      "ownership_migrated": true,
+      "exit_ready": true
+    },
+    {
+      "id": "S2",
+      "unique_state": true,
+      "independent_reconstruction": false,
+      "billing_mapped": true,
+      "ownership_migrated": false,
+      "exit_ready": false
+    },
+    {
+      "id": "S3",
+      "unique_state": false,
+      "independent_reconstruction": true,
+      "billing_mapped": false,
+      "ownership_migrated": true,
+      "exit_ready": false
+    }
+  ],
+  "destructive_effects": {
+    "cancel_billing": false,
+    "revoke_credentials": false,
+    "delete_provider_data": false,
+    "delete_account": false
+  },
+  "claims": [
+    {
+      "input": "CANCELLED",
+      "forbidden_claim": "DATA_DELETED"
+    },
+    {
+      "input": "DATA_DELETE_REQUESTED",
+      "forbidden_claim": "DATA_DELETED"
+    },
+    {
+      "input": "ACCOUNT_DELETED",
+      "forbidden_claim": "ALL_COPIES_ERASED"
+    },
+    {
+      "input": "EXPORT_COMPLETE",
+      "forbidden_claim": "PROVIDER_RETENTION_ZERO"
+    }
+  ],
+  "rails": [
+    "DEPENDENCY_SHOULD_BE_REVOCABLE",
+    "ACCOUNT_NE_IDENTITY",
+    "SUBSCRIPTION_NE_CONTINUITY",
+    "CANCELLED_NE_DATA_DELETED",
+    "DATA_DELETE_REQUESTED_NE_DATA_DELETED",
+    "ACCOUNT_DELETED_NE_ALL_COPIES_ERASED",
+    "EXPORT_COMPLETE_NE_PROVIDER_RETENTION_ZERO",
+    "MINIMIZATION_BEFORE_ERASURE",
+    "VENDOR_EXIT_NE_SINGLE_LOCAL_ROOT",
+    "AUTOMATION_NE_HIDDEN_DEPENDENCY",
+    "RETIRED_NE_ERASURE_PROVEN",
+    "NO_RECEIPT_NE_NO_CLAIM"
+  ]
+}
