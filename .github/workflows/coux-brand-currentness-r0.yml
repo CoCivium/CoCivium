@@ -1,0 +1,27 @@
+name: CoUX Brand Currentness R0
+
+on:
+  pull_request:
+    paths:
+      - "docs/UX/COUX_CURRENTNESS_R0.md"
+      - "docs/Identity/COSIGNET_FAMILY_BRAND_RELATIONS_R0.md"
+      - "fixtures/ux/coux_brand_relations_r0.json"
+      - "tools/validate_coux_brand_relations_r0.py"
+      - ".github/workflows/coux-brand-currentness-r0.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python tools/validate_coux_brand_relations_r0.py
