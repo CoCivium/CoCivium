@@ -25,6 +25,9 @@ on:
       - "tools/emit_co_substrate_model_runtime_onnx_r0.py"
       - "tools/emit_co_substrate_model_runtime_openvino_r0.py"
       - "tools/validate_co_substrate_model_runtime_attestations_r0.py"
+      - "docs/Architecture/COPROVIDER_EXIT_SESSION_RETIREMENT_R0.md"
+      - "fixtures/substrate/co_provider_exit_session_retirement_r0.json"
+      - "tools/validate_co_provider_exit_session_retirement_r0.py"
       - ".github/workflows/co-substrate-independence-r0.yml"
   workflow_dispatch:
 
@@ -53,6 +56,8 @@ jobs:
         run: python tools/validate_co_substrate_continuity_claims_r0.py
       - name: Validate multi-substrate federation semantics
         run: python tools/validate_co_substrate_multi_federation_r0.py
+      - name: Validate provider-exit / session-retirement gate
+        run: python tools/validate_co_provider_exit_session_retirement_r0.py
 
   cross_host_receiver:
     env:
