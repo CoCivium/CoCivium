@@ -1,0 +1,40 @@
+{
+  "schema": "CoUXCurrentnessClassifier.R0",
+  "observed_at_utc": "2026-10-02T16:07:24Z",
+  "freshness_budget_hours": 24,
+  "sources": [
+    {
+      "id": "rickbar_status",
+      "age_hours": 4417.44,
+      "expected_state": "STALE"
+    },
+    {
+      "id": "cobar_control_view",
+      "age_hours": 4264.51,
+      "expected_state": "STALE"
+    },
+    {
+      "id": "heartbeat_ticker",
+      "age_hours": 4282.1,
+      "expected_state": "STALE"
+    },
+    {
+      "id": "compact_config",
+      "age_hours": 4364.04,
+      "expected_state": "STALE"
+    },
+    {
+      "id": "synthetic_recent",
+      "age_hours": 1.5,
+      "expected_state": "CURRENT"
+    }
+  ],
+  "automatic_refresh_proven": false,
+  "visible_render_updated_proven": false,
+  "observer_readback_proven": false,
+  "rails": [
+    "VISIBLE_STALENESS_NE_SEMANTIC_STALENESS",
+    "ONE_SHOT_COMPILE_NE_AUTOMATIC_REFRESH",
+    "PROJECTION_ARTIFACT_NE_VISIBLE_PICKUP"
+  ]
+}

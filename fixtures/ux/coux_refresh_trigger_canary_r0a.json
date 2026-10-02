@@ -1,0 +1,25 @@
+{
+  "schema": "CoUXRefreshTriggerCanary.R0A",
+  "state": "PASS_LOCAL_ONE_SHOT_SOURCE_CHANGE_TO_PROJECTION_READBACK__VISIBLE_UI_READBACK_UNPROVEN",
+  "observed_on": "X2",
+  "source_revision_before": 1,
+  "source_revision_after": 2,
+  "trigger": "BOUNDED_FILE_CHANGE_POLL",
+  "projection_sha256": "C00011E870A076DBDB32EA5A1B395F71935728D4AB3E6F483C575730DD3606DE",
+  "receipt_sha256": "023F0955034F09E6019517140FDF1EE4039E09B0187F4746797C326984EB58E7",
+  "elapsed_ms": 4868,
+  "source_change_observed": true,
+  "projection_rebuilt": true,
+  "local_file_readback": true,
+  "visible_ui_readback": false,
+  "persistent_watcher_installed": false,
+  "runtime_adoption": false,
+  "rails": [
+    "ONE_SHOT_TRIGGER_NE_DAEMON",
+    "PROJECTION_REBUILD_NE_VISIBLE_RENDER",
+    "LOCAL_FILE_READBACK_NE_HUMAN_VISIBLE_READBACK",
+    "CANARY_NE_RUNTIME_ADOPTION",
+    "COBAR_NE_CONTINUITY_ROOT",
+    "VALIDATION_IS_NOT_ACCEPTANCE"
+  ]
+}
