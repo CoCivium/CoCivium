@@ -1,0 +1,215 @@
+{
+  "schema": "CoAllResourceFieldAggregation.R0",
+  "state": "SYNTHETIC_RESOURCE_FIELD_AGGREGATION__NO_REAL_RESOURCE_USE_NO_RUNTIME_AUTHORITY",
+  "purpose": "Prove that additional explicit active grants can enlarge task-eligible CoAll resource capacity without converting visibility, referral, contribution size, or resource ownership into authority.",
+  "recommended_default_bundle": {
+    "bundle_id": "recommended-low-risk-r0",
+    "preview_required": true,
+    "one_click_accept_allowed_after_preview": true,
+    "grants_remain_individually_inspectable": true,
+    "grants_remain_individually_revocable": true,
+    "includes": [
+      "ATTENTION_PUBLIC_REVIEW",
+      "DISCOVERY_PUBLIC_MENTION_FORWARDING",
+      "CONTENT_EXPLICIT_PUBLIC_SUBMISSION"
+    ],
+    "excludes": [
+      "BACKGROUND_COMPUTE",
+      "PRIVATE_MESSAGES",
+      "CREDENTIALS",
+      "SENSORS",
+      "FINANCIAL_EFFECTS",
+      "AUTONOMOUS_EXTERNAL_POSTING"
+    ]
+  },
+  "grants": [
+    {
+      "grant_id": "G-A-ATTN",
+      "participant_id": "A",
+      "state": "ACTIVE",
+      "explicit_accept": true,
+      "resource_class": "ATTENTION",
+      "purposes": ["PUBLIC_SYNTHETIC_REVIEW"],
+      "capacity_units": 2,
+      "failure_domain": "human:A",
+      "privacy_scope": "PUBLIC",
+      "governance_weight": 0
+    },
+    {
+      "grant_id": "G-A-DISC",
+      "participant_id": "A",
+      "state": "ACTIVE",
+      "explicit_accept": true,
+      "resource_class": "DISCOVERY",
+      "purposes": ["PUBLIC_MENTION_FORWARDING"],
+      "capacity_units": 20,
+      "failure_domain": "account:A",
+      "privacy_scope": "PUBLIC",
+      "governance_weight": 0
+    },
+    {
+      "grant_id": "G-B-COMP",
+      "participant_id": "B",
+      "state": "ACTIVE",
+      "explicit_accept": true,
+      "resource_class": "COMPUTE",
+      "purposes": ["PUBLIC_SYNTHETIC_CANARY"],
+      "capacity_units": 300,
+      "failure_domain": "device:B1",
+      "privacy_scope": "PUBLIC",
+      "governance_weight": 0
+    },
+    {
+      "grant_id": "G-C-STOR",
+      "participant_id": "C",
+      "state": "ACTIVE",
+      "explicit_accept": true,
+      "resource_class": "STORAGE",
+      "purposes": ["PUBLIC_ARTIFACT_MIRROR"],
+      "capacity_units": 100,
+      "failure_domain": "host:C1",
+      "privacy_scope": "PUBLIC",
+      "governance_weight": 0
+    },
+    {
+      "grant_id": "G-D-COMP",
+      "participant_id": "D",
+      "state": "ACTIVE",
+      "explicit_accept": true,
+      "resource_class": "COMPUTE",
+      "purposes": ["PUBLIC_SYNTHETIC_CANARY"],
+      "capacity_units": 600,
+      "failure_domain": "device:D1",
+      "privacy_scope": "PUBLIC",
+      "governance_weight": 0
+    },
+    {
+      "grant_id": "G-D-ATTN",
+      "participant_id": "D",
+      "state": "ACTIVE",
+      "explicit_accept": true,
+      "resource_class": "ATTENTION",
+      "purposes": ["PUBLIC_SYNTHETIC_REVIEW"],
+      "capacity_units": 1,
+      "failure_domain": "human:D",
+      "privacy_scope": "PUBLIC",
+      "governance_weight": 0
+    },
+    {
+      "grant_id": "G-E-COMP-REVOKED",
+      "participant_id": "E",
+      "state": "REVOKED",
+      "explicit_accept": true,
+      "resource_class": "COMPUTE",
+      "purposes": ["PUBLIC_SYNTHETIC_CANARY"],
+      "capacity_units": 1000,
+      "failure_domain": "device:E1",
+      "privacy_scope": "PUBLIC",
+      "governance_weight": 0
+    },
+    {
+      "grant_id": "G-F-STOR-REFERRAL",
+      "participant_id": "F",
+      "state": "OFFERED",
+      "explicit_accept": false,
+      "source": "REFERRAL",
+      "resource_class": "STORAGE",
+      "purposes": ["PUBLIC_ARTIFACT_MIRROR"],
+      "capacity_units": 500,
+      "failure_domain": "host:F1",
+      "privacy_scope": "PUBLIC",
+      "governance_weight": 0
+    },
+    {
+      "grant_id": "G-G-COMP-VISIBLE",
+      "participant_id": "G",
+      "state": "OFFERED",
+      "explicit_accept": false,
+      "source": "RECOMMENDED_DEFAULT_PREVIEW",
+      "resource_class": "COMPUTE",
+      "purposes": ["PUBLIC_SYNTHETIC_CANARY"],
+      "capacity_units": 2000,
+      "failure_domain": "device:G1",
+      "privacy_scope": "PUBLIC",
+      "governance_weight": 0
+    },
+    {
+      "grant_id": "G-H-LOCALMODEL-PRIVATE",
+      "participant_id": "H",
+      "state": "ACTIVE",
+      "explicit_accept": true,
+      "resource_class": "LOCAL_MODEL",
+      "purposes": ["PRIVATE_LOCAL_DRAFT"],
+      "capacity_units": 50,
+      "failure_domain": "device:H1",
+      "privacy_scope": "PRIVATE_LOCAL_ONLY",
+      "governance_weight": 0
+    }
+  ],
+  "snapshots": {
+    "baseline_participants": ["A", "B", "C"],
+    "expanded_participants": ["A", "B", "C", "D"]
+  },
+  "task_requests": [
+    {
+      "task_id": "T-COMP-PUBLIC",
+      "resource_class": "COMPUTE",
+      "purpose": "PUBLIC_SYNTHETIC_CANARY",
+      "privacy_scope": "PUBLIC",
+      "max_capacity_to_select": 700,
+      "prefer_distinct_failure_domains": true,
+      "expected_baseline_eligible_capacity": 300,
+      "expected_expanded_eligible_capacity": 900,
+      "expected_expanded_eligible_grants": ["G-B-COMP", "G-D-COMP"],
+      "expected_selected_grants": ["G-D-COMP"],
+      "expected_selected_capacity": 600,
+      "execution_authorized": false
+    },
+    {
+      "task_id": "T-STORAGE-PUBLIC",
+      "resource_class": "STORAGE",
+      "purpose": "PUBLIC_ARTIFACT_MIRROR",
+      "privacy_scope": "PUBLIC",
+      "max_capacity_to_select": 100,
+      "expected_expanded_eligible_capacity": 100,
+      "expected_expanded_eligible_grants": ["G-C-STOR"],
+      "execution_authorized": false
+    },
+    {
+      "task_id": "T-LOCAL-PRIVATE",
+      "resource_class": "LOCAL_MODEL",
+      "purpose": "PRIVATE_LOCAL_DRAFT",
+      "privacy_scope": "PRIVATE_LOCAL_ONLY",
+      "max_capacity_to_select": 50,
+      "expected_all_eligible_capacity": 50,
+      "expected_all_eligible_grants": ["G-H-LOCALMODEL-PRIVATE"],
+      "execution_authorized": false
+    }
+  ],
+  "expected": {
+    "active_explicit_grant_count_all": 7,
+    "offered_or_revoked_excluded_count": 3,
+    "expanded_compute_capacity_greater_than_baseline": true,
+    "governance_weight_total": 0,
+    "real_resource_execution_count": 0
+  },
+  "rails": [
+    "DEFAULT_VISIBLE_NE_DEFAULT_GRANTED",
+    "ONE_CLICK_OPT_IN_NE_OPAQUE_BUNDLE",
+    "OPT_IN_NE_PERPETUAL_CONSENT",
+    "CAPACITY_NE_PERMISSION",
+    "RESOURCE_AVAILABLE_NE_RESOURCE_ELIGIBLE",
+    "RESOURCE_ELIGIBLE_NE_SELECTED",
+    "SELECTED_NE_EXECUTED",
+    "SELECTED_NE_AUTHORITY_TRANSFER",
+    "RESOURCE_CONTRIBUTION_NE_GOVERNANCE_AUTHORITY",
+    "COMPUTE_CONTRIBUTION_NE_VOTING_POWER",
+    "REFERRAL_NE_RESOURCE_GRANT",
+    "REVOKED_NE_FUTURE_USE_ALLOWED",
+    "MORE_RESOURCES_NE_MORE_PROGRESS",
+    "MORE_PARTICIPANTS_NE_MORE_TRUTH",
+    "RESOURCE_GROWTH_REQUIRES_COORDINATION_GROWTH",
+    "MENTION_NE_RESOURCE_WAKE",
+    "VALIDATION_IS_NOT_ACCEPTANCE"
+  ]
+}

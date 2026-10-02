@@ -1,0 +1,81 @@
+{
+  "schema": "CoAllInFlightRevocation.R0",
+  "state": "SYNTHETIC_INFLIGHT_REVOCATION__NO_REAL_EXECUTION",
+  "cases": [
+    {
+      "id": "I01_NOT_STARTED",
+      "started": false,
+      "interrupt_class": "NOT_STARTED",
+      "revoked": true,
+      "abort_contract": false,
+      "prior_receipt": false,
+      "partial": false,
+      "publication_authority": false,
+      "expected": "BLOCK_START"
+    },
+    {
+      "id": "I02_CHECKPOINTABLE",
+      "started": true,
+      "interrupt_class": "CHECKPOINTABLE",
+      "revoked": true,
+      "abort_contract": false,
+      "prior_receipt": false,
+      "partial": true,
+      "publication_authority": false,
+      "expected": "STOP_AT_NEXT_SAFE_CHECKPOINT"
+    },
+    {
+      "id": "I03_ATOMIC_SAFE_COMPLETE",
+      "started": true,
+      "interrupt_class": "ATOMIC_SAFE_COMPLETE",
+      "revoked": true,
+      "abort_contract": false,
+      "prior_receipt": false,
+      "partial": false,
+      "publication_authority": false,
+      "expected": "COMPLETE_CURRENT_ATOMIC_UNIT_THEN_STOP"
+    },
+    {
+      "id": "I04_HIGH_EFFECT_NO_ABORT",
+      "started": true,
+      "interrupt_class": "EXTERNAL_HIGH_EFFECT",
+      "revoked": true,
+      "abort_contract": false,
+      "prior_receipt": false,
+      "partial": false,
+      "publication_authority": false,
+      "expected": "HOLD_FAIL_CLOSED"
+    },
+    {
+      "id": "I05_HIGH_EFFECT_WITH_ABORT",
+      "started": true,
+      "interrupt_class": "EXTERNAL_HIGH_EFFECT",
+      "revoked": true,
+      "abort_contract": true,
+      "prior_receipt": false,
+      "partial": true,
+      "publication_authority": false,
+      "expected": "EXECUTE_PROVEN_ABORT_THEN_STOP"
+    },
+    {
+      "id": "I06_HISTORY_PRESERVED",
+      "started": true,
+      "interrupt_class": "CHECKPOINTABLE",
+      "revoked": true,
+      "abort_contract": false,
+      "prior_receipt": true,
+      "partial": true,
+      "publication_authority": false,
+      "expected": "STOP_AT_NEXT_SAFE_CHECKPOINT_PRESERVE_PRIOR_RECEIPT"
+    }
+  ],
+  "rails": [
+    "REVOCATION_RECEIVED_NE_INSTANT_PHYSICAL_STOP",
+    "IN_FLIGHT_NE_PERMISSION_TO_EXPAND_SCOPE",
+    "SAFE_COMPLETION_NE_NEW_WORK",
+    "HIGH_EFFECT_REVOCATION_REQUIRES_PROVEN_ABORT_OR_ROLLBACK",
+    "PARTIAL_NE_COMPLETE",
+    "PARTIAL_OUTPUT_NE_PUBLICATION_AUTHORITY",
+    "REVOCATION_NE_HISTORY_ERASURE"
+  ]
+}
