@@ -5,7 +5,9 @@ on:
     paths:
       - "docs/Architecture/COWEAR_CONDITION_REL_R0.md"
       - "fixtures/condition/cowear_condition_rel_r0.json"
+      - "fixtures/condition/cowear_relir_projection_r0.json"
       - "tools/validate_cowear_condition_rel_r0.py"
+      - "tools/validate_cowear_relir_projection_r0.py"
       - ".github/workflows/cowear-condition-rel-r0.yml"
   workflow_dispatch:
 
@@ -31,3 +33,5 @@ jobs:
           python-version: "3.12"
       - name: Validate CoWear / CoConditionRel candidate
         run: python tools/validate_cowear_condition_rel_r0.py
+      - name: Validate CoWear semantic compaction projection
+        run: python tools/validate_cowear_relir_projection_r0.py

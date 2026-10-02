@@ -165,3 +165,55 @@ It is an architectural donor only.
 `METAPHOR_NE_MECHANISM`  
 `CONDITION_MODEL_NE_REALITY_TOTALITY`  
 `VALIDATION_IS_NOT_ACCEPTANCE`
+
+
+## R0A semantic compaction into CoRelIR
+
+The cross-domain terms in this candidate should not automatically become new ontology primitives merely because they are memorable.
+
+R0A projects them onto a compact candidate semantic nucleus:
+
+`ENTITY | RELATION | EVENT | STATE | TIME | OBSERVER | CONTEXT | EVIDENCE | PROVENANCE | AUTHORITY | UNCERTAINTY | POSSIBILITY | TRANSFORMATION | PROJECTION`
+
+Classification:
+
+- `CoWear+` -> relation family over time/context/evidence/uncertainty;
+- `CoConditionRel+` -> condition relation envelope, not a new object kind;
+- `CoMaintenance+` -> event/transformation pattern;
+- `CoRetirement+` -> scoped state-transition policy pattern;
+- `CoConditionForecast+` -> projection/possibility pattern with uncertainty;
+- `CoSemanticPatina+` -> optional metaphor/alias over accumulated semantic history.
+
+None is elected as a new primitive in R0A.
+
+This is deliberate ontology pressure relief:
+
+```text
+new useful phrase
+   !=
+new primitive
+
+prefer:
+  existing primitive roots
+  + typed relation
+  + qualifier
+  + operator/pattern
+  + projection
+  + provenance
+```
+
+The seven existing CoWear scenarios are all projected through this nucleus. The projection preserves their distinctions while blocking several category errors:
+
+`FORECAST_NE_STATE`
+
+`POSSIBILITY_NE_FACT`
+
+`TRANSFORMATION_NE_IMPROVEMENT`
+
+`CONDITION_TRAJECTORY_NE_OBJECT_IDENTITY`
+
+`COTERM_NE_PRIMITIVE_BY_DEFAULT`
+
+`COMPACTION_NE_INFORMATION_ERASURE`
+
+This is a candidate compaction projection only. It does not establish CoRelIR as canon, runtime schema, or universal ontology.
