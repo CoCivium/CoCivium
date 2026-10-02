@@ -5,10 +5,13 @@ on:
     paths:
       - "docs/UX/COUX_CURRENTNESS_R0.md"
       - "docs/Identity/COSIGNET_FAMILY_BRAND_RELATIONS_R0.md"
+      - "docs/UX/COUX_REFRESH_TRIGGER_CANARY_R0A.md"
       - "fixtures/ux/coux_brand_relations_r0.json"
       - "fixtures/ux/coux_currentness_classifier_r0.json"
+      - "fixtures/ux/coux_refresh_trigger_canary_r0a.json"
       - "tools/validate_coux_brand_relations_r0.py"
       - "tools/validate_coux_currentness_classifier_r0.py"
+      - "tools/validate_coux_refresh_trigger_canary_r0a.py"
       - ".github/workflows/coux-brand-currentness-r0.yml"
   workflow_dispatch:
 
@@ -28,3 +31,4 @@ jobs:
           python-version: "3.12"
       - run: python tools/validate_coux_brand_relations_r0.py
       - run: python tools/validate_coux_currentness_classifier_r0.py
+      - run: python tools/validate_coux_refresh_trigger_canary_r0a.py
