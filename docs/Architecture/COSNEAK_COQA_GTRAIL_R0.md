@@ -184,3 +184,137 @@ without making any one layer the control plane.
 `ALWAYS_TRACE_EVERYTHING_NE_USEFULNESS`  
 `RELATION_DENSITY_NE_QUALITY`  
 `VALIDATION_IS_NOT_ACCEPTANCE`
+
+
+## R0B adaptive trace depth and better-question compiler
+
+The stronger answer to "are CoQ&A+ relations looped and GTRAIL+ed always?" is **no**.
+
+Two distinctions matter:
+
+```text
+semantic recurrence != mandatory graph cycle
+durable provenance != maximum-depth trace everywhere
+```
+
+A useful CoQ&A object may close for a receiver and scope, then wake later when evidence changes. That is a temporal/relational recurrence without requiring an endlessly cyclic graph.
+
+Candidate recurrence forms include:
+
+- optional next question;
+- challenge;
+- reframe;
+- successor answer;
+- wake-on-evidence;
+- receiver-relative reopen;
+- contradiction;
+- authority hold;
+- explicit closure for scope.
+
+`QA_LOOP_NE_INFINITE_LOOP`
+
+`SEMANTIC_LOOP_NE_GRAPH_CYCLE_REQUIRED`
+
+### Adaptive GTRAIL depth
+
+R0B proposes five candidate trace depths:
+
+```text
+NONE      ephemeral, non-durable, low-value interaction
+LIGHT     durable identity + provenance + currentness + closure/successor
+STANDARD  LIGHT + evidence + challenge/next-question + receiver scope
+DEEP      STANDARD + branching + reopen/currentness changes + competing answers
+FORENSIC  DEEP + exact hashes + authority/effect chain + custody/readproof timeline
+```
+
+Durable Q&A should normally have at least LIGHT traceability.
+
+But everything should not be FORENSIC merely because the machinery can generate metadata until the heat death of the universe.
+
+`GTRAIL_DEPTH_NE_TRUTH_SCORE`
+
+`TRAIL_OVERHEAD_NE_FREE`
+
+`EVERYTHING_FORENSIC_NE_SAFER`
+
+### CoSneak becomes a question generator
+
+A CoSneak signal should usually generate a **diagnostic question** before it becomes a blocker claim.
+
+The local R0A census already supplies a concrete example:
+
+- 216 files carried `LATEST` in their names;
+- all 216 were older than 30 days in the bounded scan;
+- that supports a currentness/visibility candidate;
+- it does **not** prove those files are the causal source of lag.
+
+So better questions include:
+
+1. Which visible projection is the current receiver actually consuming?
+2. Is `LATEST` receiver-verified currentness or merely a filename convention?
+3. Is an object landed but never picked up by its elected receiver?
+4. What changed materially before a supposedly closed question reopened?
+5. Is trail depth reducing uncertainty, or only adding proof/attention load?
+6. Are unlike metrics being compared as if they shared a calibrated unit?
+7. Is a dependency "required", or merely familiar because earlier architecture happened to use it?
+8. Is a provider/local/device bottleneck a real dependency, or a stale routing assumption?
+9. Is a successful worker producing receiver-useful benefit, or merely green CI?
+10. Which relation can be retired if no receiver has used it within its declared currentness horizon?
+11. What negative evidence would make us stop pursuing this branch?
+12. What information is absent because the system cannot observe it, rather than because the thing does not exist?
+13. What work is being repeated because identity/successor relations failed?
+14. Which current object has no proven recovery route after provider/device loss?
+15. Which automated loop has no explicit termination, sleep, wake, or retirement condition?
+16. Where are we confusing more relation density with more understanding?
+17. Which questions should remain open rather than receiving a forced answer?
+18. Which questions are really several questions bundled by language?
+19. Which answers are receiver-relative rather than globally contradictory?
+20. Which "spooky" or metaphorical relation has a useful operational projection, and which should remain explicitly metaphorical until evidence exists?
+
+This is a better self-questioning posture than asking the system to create more answers indiscriminately.
+
+`QUESTION_VOLUME_NE_INSIGHT`
+
+`BETTER_QUESTION_NE_MORE_COMPLEX_QUESTION`
+
+### CoSneak classes worth looking for next
+
+Beyond obvious stalls, candidate low-visibility friction includes:
+
+- stale success signals;
+- stale authority;
+- zombie subscriptions/listeners;
+- provider/session concentration;
+- local power/dependency concentration;
+- silent fallback to weaker capability;
+- semantic duplication under different names;
+- relation explosion;
+- trail inflation;
+- false freshness from labels/cache/UI;
+- pickup without integration;
+- integration without currentness;
+- automation that survives its reason for existence;
+- retries without new evidence;
+- queue fairness starvation;
+- irreversible defaults hidden behind "convenience";
+- metrics whose units do not match;
+- benefit counted multiple times through duplicate receipts;
+- privacy/consent scope drift;
+- receiver-relative disagreement flattened into one global truth;
+- dormant resources treated as live capacity;
+- optional dependency accidentally promoted into architectural necessity.
+
+Each remains a candidate relation until measured.
+
+`COSNEAK_SIGNAL_NE_BLOCK`
+
+`FRICTION_SIGNAL_NE_CAUSAL_PROOF`
+
+### R0B machine canary
+
+R0B binds to the existing CoQ&A document/schema, CoSneak R0 fixture, and fresh bounded local census.
+
+It validates five Q&A examples spanning NONE -> FORENSIC trail depth and six diagnostic CoSneak signals.
+
+No runtime mutation, repair, blocking action, canon promotion, or causal claim follows.
+
