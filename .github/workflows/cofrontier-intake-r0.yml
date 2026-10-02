@@ -4,8 +4,11 @@ on:
   pull_request:
     paths:
       - "docs/Architecture/COFRONTIER_INTAKE_R0.md"
+      - "docs/Architecture/COFRONTIER_QWEN3_0_6B_PROVENANCE_R0.md"
       - "fixtures/evolution/cofrontier_intake_r0.json"
+      - "fixtures/evolution/cofrontier_qwen3_0_6b_provenance_r0.json"
       - "tools/validate_cofrontier_intake_r0.py"
+      - "tools/validate_cofrontier_qwen3_0_6b_provenance_r0.py"
       - ".github/workflows/cofrontier-intake-r0.yml"
   workflow_dispatch:
 
@@ -31,10 +34,12 @@ jobs:
           python-version: "3.12"
       - name: Validate frontier intake
         run: python tools/validate_cofrontier_intake_r0.py --output artifacts/cofrontier-intake-readproof-r0.json
-      - name: Upload readproof
+      - name: Validate real pinned candidate provenance
+        run: python tools/validate_cofrontier_qwen3_0_6b_provenance_r0.py --output artifacts/cofrontier-qwen3-0.6b-provenance-readproof-r0.json
+      - name: Upload readproofs
         uses: actions/upload-artifact@v4
         with:
           name: cofrontier-intake-readproof-r0
-          path: artifacts/cofrontier-intake-readproof-r0.json
+          path: artifacts
           if-no-files-found: error
           retention-days: 30
