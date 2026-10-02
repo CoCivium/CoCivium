@@ -7,12 +7,15 @@ on:
       - "docs/Architecture/COMUTUAL_AID_GAME_R0.md"
       - "docs/Architecture/COEXIT_RIGHTS_DATA_ERASURE_R0.md"
       - "docs/Architecture/CODEPENDENCY_CENSUS_TRIPLE_LOSS_R0.md"
+      - "docs/Architecture/CORECOVERY_KERNEL_R0.md"
       - "fixtures/resilience/coprovexit_mutualaid_r0.json"
       - "fixtures/resilience/coexit_rights_data_erasure_r0.json"
       - "fixtures/resilience/codependency_census_triple_loss_r0.json"
+      - "fixtures/resilience/corecovery_kernel_r0.json"
       - "tools/validate_coprovexit_mutualaid_r0.py"
       - "tools/validate_coexit_rights_data_erasure_r0.py"
       - "tools/validate_codependency_census_triple_loss_r0.py"
+      - "tools/validate_corecovery_kernel_r0.py"
       - ".github/workflows/coprovexit-resilience-r0.yml"
   workflow_dispatch:
 
@@ -30,3 +33,4 @@ jobs:
       - run: python tools/validate_coprovexit_mutualaid_r0.py
       - run: python tools/validate_coexit_rights_data_erasure_r0.py
       - run: python tools/validate_codependency_census_triple_loss_r0.py
+      - run: python tools/validate_corecovery_kernel_r0.py
