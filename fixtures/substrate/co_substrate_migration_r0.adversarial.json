@@ -1,0 +1,153 @@
+{
+  "schema": "CoSubstrateIndependence.MigrationAdversarial.R0",
+  "state": "SYNTHETIC_NEGATIVE_CASES__NO_CANON_NO_RUNTIME",
+  "cases": [
+    {
+      "id": "missing_provenance",
+      "portability_class": "PORTABLE",
+      "source": {
+        "object_id": "bad-001",
+        "semantic_version": "v1",
+        "authority_state": "READ_ONLY",
+        "invariants": [
+          "state_present"
+        ],
+        "substrate_requirements": [
+          "JSON"
+        ]
+      },
+      "destination": {
+        "substrate": "json-runtime",
+        "capabilities": [
+          "JSON"
+        ],
+        "authority_state": "READ_ONLY",
+        "declared_loss": [],
+        "observed_invariants": [
+          "state_present"
+        ]
+      },
+      "expected_error": "provenance required"
+    },
+    {
+      "id": "authority_escalation",
+      "portability_class": "PORTABLE",
+      "source": {
+        "object_id": "bad-002",
+        "semantic_version": "v1",
+        "provenance": [
+          "synthetic"
+        ],
+        "authority_state": "READ_ONLY",
+        "invariants": [
+          "state_present"
+        ],
+        "substrate_requirements": [
+          "JSON"
+        ]
+      },
+      "destination": {
+        "substrate": "json-runtime",
+        "capabilities": [
+          "JSON"
+        ],
+        "authority_state": "WRITE",
+        "declared_loss": [],
+        "observed_invariants": [
+          "state_present"
+        ]
+      },
+      "expected_error": "authority state changed during migration"
+    },
+    {
+      "id": "constrained_missing_capability",
+      "portability_class": "SUBSTRATE_CONSTRAINED",
+      "source": {
+        "object_id": "bad-003",
+        "semantic_version": "v1",
+        "provenance": [
+          "synthetic"
+        ],
+        "authority_state": "NONE",
+        "invariants": [
+          "tensor_shape=4x4"
+        ],
+        "substrate_requirements": [
+          "fp16",
+          "matrix_acceleration"
+        ]
+      },
+      "destination": {
+        "substrate": "weak-runtime",
+        "capabilities": [
+          "fp16"
+        ],
+        "authority_state": "NONE",
+        "declared_loss": []
+      },
+      "expected_error": "substrate requirements not satisfied"
+    },
+    {
+      "id": "portable_missing_required_invariant",
+      "portability_class": "PORTABLE",
+      "source": {
+        "object_id": "bad-004",
+        "semantic_version": "v1",
+        "provenance": [
+          "synthetic"
+        ],
+        "authority_state": "READ_ONLY",
+        "invariants": [
+          "relation_count=4",
+          "provenance_present"
+        ],
+        "substrate_requirements": [
+          "JSON"
+        ]
+      },
+      "destination": {
+        "substrate": "json-runtime",
+        "capabilities": [
+          "JSON"
+        ],
+        "authority_state": "READ_ONLY",
+        "declared_loss": [],
+        "observed_invariants": [
+          "relation_count=3",
+          "provenance_present"
+        ]
+      },
+      "expected_error": "required invariants not preserved"
+    },
+    {
+      "id": "unknown_portability_class",
+      "portability_class": "UNKNOWN",
+      "source": {
+        "object_id": "bad-005",
+        "semantic_version": "v1",
+        "provenance": [
+          "synthetic"
+        ],
+        "authority_state": "NONE",
+        "invariants": [
+          "state_present"
+        ],
+        "substrate_requirements": [
+          "JSON"
+        ]
+      },
+      "destination": {
+        "substrate": "json-runtime",
+        "capabilities": [
+          "JSON"
+        ],
+        "authority_state": "NONE",
+        "declared_loss": [],
+        "observed_invariants": [
+          "state_present"
+        ]
+      },
+      "expected_error": "portability class UNKNOWN requires explicit adjudication"
+    }
+  ]
+}
