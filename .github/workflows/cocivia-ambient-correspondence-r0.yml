@@ -4,6 +4,7 @@ on:
   pull_request:
     paths:
       - "docs/Comms/COCIVIA_AMBIENT_CORRESPONDENCE_R0.md"
+      - "docs/Comms/COCIVIA_PUBLIC_ONBOARDING_PLACEHOLDER_R0.md"
       - "docs/Comms/COALL_OPTIN_RESOURCE_FIELD_R0.md"
       - "docs/Comms/COALL_RESOURCE_FIELD_AGGREGATION_R0.md"
       - "docs/Comms/COALL_RESOURCE_RELIABILITY_R0.md"
@@ -15,6 +16,7 @@ on:
       - "docs/Comms/COALL_RESOURCE_FIELD_COMPACTION_R0.md"
       - "docs/Comms/COALL_RESOURCE_ACTIVATION_METABOLISM_R0.md"
       - "fixtures/cocivia/co_cocivia_ambient_correspondence_r0.json"
+      - "fixtures/cocivia/cocivia_public_onboarding_placeholder_r0.json"
       - "fixtures/cocivia/coall_optin_resource_field_r0.json"
       - "fixtures/cocivia/coall_resource_field_aggregation_r0.json"
       - "fixtures/cocivia/coall_resource_reliability_r0.json"
@@ -26,6 +28,7 @@ on:
       - "fixtures/cocivia/coall_resource_field_compaction_r0.json"
       - "fixtures/cocivia/coall_resource_activation_metabolism_r0.json"
       - "tools/validate_cocivia_ambient_correspondence_r0.py"
+      - "tools/validate_cocivia_public_onboarding_placeholder_r0.py"
       - "tools/validate_coall_optin_resource_field_r0.py"
       - "tools/validate_coall_resource_field_aggregation_r0.py"
       - "tools/validate_coall_resource_reliability_r0.py"
@@ -80,6 +83,7 @@ jobs:
         with:
           python-version: "3.12"
       - run: python tools/validate_cocivia_ambient_correspondence_r0.py
+      - run: python tools/validate_cocivia_public_onboarding_placeholder_r0.py
       - run: python tools/validate_coall_optin_resource_field_r0.py
       - run: python tools/validate_coall_resource_field_aggregation_r0.py
       - run: python tools/validate_coall_resource_reliability_r0.py
