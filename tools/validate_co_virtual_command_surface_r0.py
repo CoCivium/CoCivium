@@ -104,7 +104,7 @@ def main():
         "break_glass_cli_available": defaults["break_glass_cli_available"],
         "break_glass_default": defaults["break_glass_default"],
         "user_relay_required": defaults["user_relay_required"],
-        "runtime_effect": false,
+        "runtime_effect": False,
         "fixture_semantic_sha256": canonical_sha(d),
         "observed": observed
     }
