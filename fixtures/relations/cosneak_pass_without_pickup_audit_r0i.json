@@ -1,0 +1,71 @@
+{
+  "schema": "CoSneakPassWithoutPickupAudit.R0I",
+  "state": "PASS_BOUNDED_PASS_CLAIM_PICKUP_AUDIT__SAMPLED_SCOPE_ONLY",
+  "sample_size": 5,
+  "objects": [
+    {
+      "id": "coencounter_r0c2",
+      "path": "docs/Operations/proofs/coencounter-r0c2-receiver-qualification-gate-pass-20260924.json",
+      "producer_pass": true,
+      "pickup_state": "PICKUP_PROVEN_BOUNDED_SYNTHETIC",
+      "exact_readproof_bound": true,
+      "semantic_acceptance_proven": false,
+      "integration_proven": false
+    },
+    {
+      "id": "copulse_r0c",
+      "path": "docs/Operations/proofs/copulse-r0c-container-pass-20260923.json",
+      "producer_pass": true,
+      "pickup_state": "PICKUP_PROVEN_BOUNDED_SYNTHETIC",
+      "exact_readproof_bound": true,
+      "semantic_acceptance_proven": false,
+      "integration_proven": false
+    },
+    {
+      "id": "copulse_r0f",
+      "path": "docs/Operations/proofs/copulse-r0f-container-pass-20260923.json",
+      "producer_pass": true,
+      "pickup_state": "PASS_WITH_PICKUP_UNPROVEN_FOR_THIS_RESULT",
+      "exact_readproof_bound": false,
+      "semantic_acceptance_proven": false,
+      "integration_proven": false
+    },
+    {
+      "id": "coencounter_r0b",
+      "path": "docs/Operations/proofs/coencounter-r0b-container-pass-20260924.json",
+      "producer_pass": true,
+      "pickup_state": "PASS_WITH_PICKUP_UNPROVEN",
+      "exact_readproof_bound": false,
+      "semantic_acceptance_proven": false,
+      "integration_proven": false
+    },
+    {
+      "id": "coencounter_yield_r0a",
+      "path": "docs/Operations/proofs/coencounter-yield-r0a-container-pass-20260924.json",
+      "producer_pass": true,
+      "pickup_state": "PASS_WITH_PICKUP_UNPROVEN",
+      "exact_readproof_bound": false,
+      "semantic_acceptance_proven": false,
+      "integration_proven": false
+    }
+  ],
+  "totals": {
+    "pickup_proven": 2,
+    "pass_with_pickup_unproven": 3,
+    "semantic_acceptance_proven": 0,
+    "integration_proven": 0
+  },
+  "sampled_scope_closed": true,
+  "global_census_complete": false,
+  "runtime_effect": false,
+  "public_effect": false,
+  "rails": [
+    "PASS_NE_PICKUP",
+    "PRODUCER_SUCCESS_NE_RECEIVER_SUCCESS",
+    "DELIVERY_NE_PICKUP",
+    "PICKUP_NE_SEMANTIC_ACCEPTANCE",
+    "READPROOF_NE_INTEGRATION",
+    "SAMPLED_SCOPE_CLOSED_NE_GLOBAL_CENSUS_COMPLETE",
+    "VALIDATION_IS_NOT_ACCEPTANCE"
+  ]
+}
