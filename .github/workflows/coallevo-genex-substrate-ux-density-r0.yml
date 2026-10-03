@@ -1,0 +1,15 @@
+name: CoAllEvo GenEx Substrate UX Density R0
+on:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python tools/validate_coallevo_genex_substrate_ux_density_r0.py
