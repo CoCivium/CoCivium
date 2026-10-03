@@ -1,0 +1,207 @@
+{
+  "schema": "CoVirtualSubstratePrefixInventory.R0",
+  "state": "CANDIDATE_SYMBOLIC_PREFIX_AND_RELATIONAL_INVENTORY__NO_RUNTIME_MAGIC_NO_AUTHORITY_CHANGE",
+  "prefix_policy": {
+    "canonical_glyph": "⊊",
+    "canonical_name": "CoPreProperSubset",
+    "semantic": "VISIBLE_PROJECTION_IS_PROPER_SUBSET_OF_INSPECTABLE_RELATIONAL_ENVELOPE_WHEN_PROVEN",
+    "display_aliases": [
+      {
+        "glyph": "⊂",
+        "status": "AMBIGUOUS_MATH_CONVENTION__DISPLAY_ONLY",
+        "canonicalizes_to": "⊊"
+      }
+    ],
+    "glyph_required_for_semantics": false,
+    "glyph_grants_authority": false,
+    "glyph_may_be_hidden_in_default_ux": true,
+    "hidden_prefix_must_remain_inspectable": true
+  },
+  "prompt_relation": {
+    "relation_type": "CoPromptRel",
+    "fields": [
+      "visible_projection",
+      "substrate_refs",
+      "authority_scope",
+      "provenance_refs",
+      "currentness",
+      "projection_loss",
+      "unresolved_ambiguity",
+      "visibility_projection"
+    ],
+    "synthetic_examples": [
+      {
+        "id": "P01_STRICT_SUBSET_PREFIX",
+        "visible_projection": "' CoEvoAll+",
+        "display": "⊊ ' CoEvoAll+",
+        "strict_projection_proven": true,
+        "substrate_refs": [
+          "relation:delegation",
+          "relation:authority-envelope",
+          "relation:current-project-state"
+        ],
+        "authority_before": "BOUNDED_REVERSIBLE_CANDIDATE",
+        "authority_after": "BOUNDED_REVERSIBLE_CANDIDATE",
+        "expected": "CANONICAL_PREFIX_VALID"
+      },
+      {
+        "id": "P02_NO_GLYPH_STILL_RELATIONAL",
+        "visible_projection": "' CoEvoAll+",
+        "display": "' CoEvoAll+",
+        "strict_projection_proven": true,
+        "substrate_refs": [
+          "relation:delegation",
+          "relation:authority-envelope"
+        ],
+        "authority_before": "BOUNDED_REVERSIBLE_CANDIDATE",
+        "authority_after": "BOUNDED_REVERSIBLE_CANDIDATE",
+        "expected": "RELATION_SEMANTICS_VALID_WITHOUT_GLYPH"
+      },
+      {
+        "id": "P03_GLYPH_CANNOT_WIDEN_AUTHORITY",
+        "visible_projection": "publish all now",
+        "display": "⊊ publish all now",
+        "strict_projection_proven": true,
+        "substrate_refs": [
+          "relation:authority-envelope"
+        ],
+        "authority_before": "NO_PUBLIC_EFFECT",
+        "authority_after": "NO_PUBLIC_EFFECT",
+        "expected": "PREFIX_NE_AUTHORITY"
+      },
+      {
+        "id": "P04_AMBIGUOUS_ALIAS",
+        "visible_projection": "inspect current inventory",
+        "display": "⊂ inspect current inventory",
+        "strict_projection_proven": false,
+        "substrate_refs": [
+          "relation:inventory-index"
+        ],
+        "authority_before": "READ_ONLY",
+        "authority_after": "READ_ONLY",
+        "expected": "ALIAS_DISPLAY_ONLY__STRICTNESS_UNPROVEN"
+      }
+    ]
+  },
+  "inventory": {
+    "inventory_id": "CoI:R0",
+    "shape": "RELATIONAL_INDEX_OF_BOUNDED_INVENTORY_SHARDS",
+    "coverage_state": "PARTIAL_EXPLICIT_BOUNDARY",
+    "default_user_projection": "COMPACT_SUMMARY",
+    "audit_projection": "FULL_RELATIONAL_INDEX",
+    "shards": [
+      {
+        "shard_id": "I-REL",
+        "class": "RELATIONS",
+        "objects": ["rel:delegation", "rel:authority-envelope"],
+        "currentness": "CURRENT"
+      },
+      {
+        "shard_id": "I-QUEST",
+        "class": "QUESTIONS",
+        "objects": ["q:next-proof", "q:better-question"],
+        "currentness": "CURRENT"
+      },
+      {
+        "shard_id": "I-RECEIPT",
+        "class": "RECEIPTS",
+        "objects": ["receipt:synthetic-r0"],
+        "currentness": "CURRENT"
+      },
+      {
+        "shard_id": "I-BUDGET",
+        "class": "BUDGETS",
+        "objects": ["budget:compute-r0"],
+        "currentness": "CURRENT"
+      },
+      {
+        "shard_id": "I-NEG",
+        "class": "NEGATIVE_KNOWLEDGE",
+        "objects": ["neg:no-runtime-authority"],
+        "currentness": "CURRENT"
+      },
+      {
+        "shard_id": "I-WAKE",
+        "class": "WAKE_CONDITIONS",
+        "objects": ["wake:receiver-proof-required"],
+        "currentness": "CURRENT"
+      },
+      {
+        "shard_id": "I-STALE",
+        "class": "STALE_OR_RETIRED",
+        "objects": ["obj:stale-pointer"],
+        "currentness": "STALE",
+        "default_user_visibility": "HIDDEN_UNLESS_RELEVANT",
+        "audit_visibility": "VISIBLE"
+      },
+      {
+        "shard_id": "I-UNKNOWN",
+        "class": "UNKNOWN_OR_UNSCANNED",
+        "objects": [],
+        "currentness": "UNKNOWN",
+        "coverage_note": "EXPLICITLY_NOT_CLAIMED_COMPLETE"
+      }
+    ],
+    "object_records": [
+      {
+        "Identity": "obj:verified-only",
+        "Provenance": "synthetic",
+        "ContentHash": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "LifecycleState": "VERIFIED_LOCAL",
+        "Authority": "READ_ONLY",
+        "Owner": null,
+        "Receiver": null,
+        "Dependencies": [],
+        "CollisionDomain": "synthetic-r0",
+        "DuplicateOf": null,
+        "Supersedes": null,
+        "VisibleSurface": "audit",
+        "ProofGate": "LANDED_REQUIRES_DURABLE_DESTINATION_AND_RECEIPT",
+        "NextDeed": "NONE",
+        "RetirementCondition": null
+      },
+      {
+        "Identity": "obj:duplicate-candidate",
+        "Provenance": "synthetic",
+        "ContentHash": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "LifecycleState": "VERIFIED_LOCAL",
+        "Authority": "READ_ONLY",
+        "Owner": null,
+        "Receiver": null,
+        "Dependencies": [],
+        "CollisionDomain": "synthetic-r0",
+        "DuplicateOf": "obj:verified-only",
+        "Supersedes": null,
+        "VisibleSurface": "audit",
+        "ProofGate": "DUPLICATE_HASH_NE_SUPERSESSION",
+        "NextDeed": "NONE",
+        "RetirementCondition": null
+      }
+    ],
+    "inventory_inclusion_promotes_lifecycle": false,
+    "inventory_claims_complete_history": false,
+    "hidden_from_default_ux_means_unavailable_to_audit": false
+  },
+  "rails": [
+    "VISIBLE_TEXT_NE_TOTAL_RELATIONAL_CONTEXT",
+    "GLYPH_NE_FULL_SEMANTICS",
+    "PREFIX_NE_SECRET_INSTRUCTION",
+    "PREFIX_NE_AUTHORITY",
+    "HIDDEN_CONTEXT_NE_HIDDEN_AUTHORITY",
+    "HIDDEN_FROM_DEFAULT_UX_NE_UNAUDITABLE",
+    "SYMBOL_ALIAS_NE_CANONICAL_SEMANTIC_IDENTITY",
+    "INVENTORY_NE_REALITY",
+    "INVENTORY_INDEX_NE_OBJECT_CUSTODY",
+    "INVENTORY_INCLUSION_NE_LIFECYCLE_PROMOTION",
+    "DUPLICATE_HASH_NE_SUPERSESSION",
+    "STALE_NE_DELETED",
+    "UNKNOWN_NE_EMPTY",
+    "DISCOVERED_SET_IS_NOT_COMPLETE_HISTORY",
+    "LOCAL_IS_NOT_LANDED",
+    "VALIDATION_IS_NOT_ACCEPTANCE",
+    "NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF",
+    "NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE"
+  ],
+  "runtime_effect": false,
+  "public_effect": false
+}

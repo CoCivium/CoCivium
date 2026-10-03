@@ -1,0 +1,173 @@
+{
+  "schema": "CoTrillDelimiterField.R0B",
+  "state": "CANDIDATE_DELIMITER_AND_TRANSITION_PROJECTION__NO_RUNTIME_MAGIC_NO_AUTHORITY_CHANGE",
+  "source_bindings": {
+    "virtual_prefix_inventory_path": "docs/UX/COVIRTUAL_SUBSTRATE_PREFIX_INVENTORY_R0.md",
+    "virtual_prefix_inventory_blob_sha": "2de2b050738df7f63bbe5197bbd1ed482ba2b166",
+    "converge_spiral_blend_path": "docs/UX/COCONVERGE_SPIRAL_BLEND_R0A.md",
+    "converge_spiral_blend_blob_sha": "bd1a802844c0eb3776524c3f521430ab2bf35560"
+  },
+  "canonical_projection": {
+    "glyph": "⊊",
+    "semantic_role": "VISIBLE_PROJECTION_IS_A_STRICT_SUBSET_OF_AN_INSPECTABLE_RELATIONAL_ENVELOPE",
+    "canonical_text_trill": "\n⊊\n",
+    "literal_enter_key_required": false,
+    "semantic_enter_boundary_before": true,
+    "semantic_enter_boundary_after": true,
+    "glyph_required_for_semantics": false
+  },
+  "cotrill": {
+    "definition": "A typed cadence/boundary relation around a compact projection, representing entry into and release from a relational context without requiring literal keyboard input.",
+    "phases": [
+      "ENTER_CONTEXT_BOUNDARY",
+      "PROJECT_COMPACT_SYMBOL",
+      "ENTER_OR_RELEASE_TO_NEXT_PROJECTION"
+    ],
+    "projection_modes": [
+      {
+        "id": "TEXT_NEWLINE",
+        "representation": "literal newline before and after the glyph",
+        "expected": "CANONICAL_TEXT_TRILL"
+      },
+      {
+        "id": "SPEECH_PAUSE",
+        "representation": "short prosodic pause before and after the spoken projection",
+        "expected": "ACCESSIBLE_EQUIVALENT_TRILL"
+      },
+      {
+        "id": "VISUAL_WHITESPACE",
+        "representation": "spacing, indentation, halo, or boundary treatment around the glyph",
+        "expected": "VISUAL_EQUIVALENT_TRILL"
+      },
+      {
+        "id": "MACHINE_TYPED_BOUNDARY",
+        "representation": "explicit typed boundary relation with no literal newline requirement",
+        "expected": "MACHINE_EQUIVALENT_TRILL"
+      },
+      {
+        "id": "STATE_SPACE_TRANSITION",
+        "representation": "entry/exit relation across an abstract state-space dimension",
+        "expected": "N_DIMENSIONAL_METAPHORICAL_OR_FORMAL_PROJECTION"
+      }
+    ]
+  },
+  "meta_relations": [
+    {
+      "subject": "CoPayloadDensity+",
+      "relation": "MEASURES",
+      "object": "projection decision-value / visible-attention tradeoff"
+    },
+    {
+      "subject": "CoUXBloat+",
+      "relation": "TRADES_OFF_WITH",
+      "object": "auditability and context preservation"
+    },
+    {
+      "subject": "CoConvergeSpiralLoop+",
+      "relation": "REVISITS_WITH_DELTA",
+      "object": "semantic neighborhood"
+    },
+    {
+      "subject": "CoTrill+",
+      "relation": "DELIMITS_OR_CADENCES",
+      "object": "compact projection boundary"
+    },
+    {
+      "subject": "CoOps+↔CoMythOps+",
+      "relation": "TRANSLATES_BETWEEN_TYPED_LANES",
+      "object": "operational and mythic projections"
+    }
+  ],
+  "cases": [
+    {
+      "id": "TR01_CANONICAL_LITERAL_TEXT",
+      "glyph_context_is_copromptrel": true,
+      "before_boundary": "NEWLINE",
+      "after_boundary": "NEWLINE",
+      "authority_inferred_from_boundary": false,
+      "physical_dimension_claim": false,
+      "expected": "CANONICAL_TEXT_TRILL"
+    },
+    {
+      "id": "TR02_SPEECH_ACCESSIBILITY",
+      "glyph_context_is_copromptrel": true,
+      "before_boundary": "PAUSE",
+      "after_boundary": "PAUSE",
+      "authority_inferred_from_boundary": false,
+      "physical_dimension_claim": false,
+      "expected": "ACCESSIBLE_EQUIVALENT_TRILL"
+    },
+    {
+      "id": "TR03_MACHINE_TYPED_BOUNDARY",
+      "glyph_context_is_copromptrel": true,
+      "before_boundary": "TYPED_BOUNDARY",
+      "after_boundary": "TYPED_BOUNDARY",
+      "authority_inferred_from_boundary": false,
+      "physical_dimension_claim": false,
+      "expected": "MACHINE_EQUIVALENT_TRILL"
+    },
+    {
+      "id": "TR04_DENSE_INLINE_RENDERING",
+      "glyph_context_is_copromptrel": true,
+      "before_boundary": "NONE",
+      "after_boundary": "NONE",
+      "authority_inferred_from_boundary": false,
+      "physical_dimension_claim": false,
+      "expected": "VALID_BUT_TRILL_PROJECTION_LOSS_DECLARED"
+    },
+    {
+      "id": "TR05_SYMBOL_USED_AS_ORDINARY_MATH",
+      "glyph_context_is_copromptrel": false,
+      "before_boundary": "NONE",
+      "after_boundary": "NONE",
+      "authority_inferred_from_boundary": false,
+      "physical_dimension_claim": false,
+      "expected": "LEAVE_AS_ORDINARY_SYMBOL"
+    },
+    {
+      "id": "TR06_BOUNDARY_MISREAD_AS_AUTHORITY",
+      "glyph_context_is_copromptrel": true,
+      "before_boundary": "NEWLINE",
+      "after_boundary": "NEWLINE",
+      "authority_inferred_from_boundary": true,
+      "physical_dimension_claim": false,
+      "expected": "REJECT_AUTHORITY_INFERENCE"
+    },
+    {
+      "id": "TR07_ND_STATE_TRANSITION_NOT_PHYSICS",
+      "glyph_context_is_copromptrel": true,
+      "before_boundary": "STATE_TRANSITION",
+      "after_boundary": "STATE_TRANSITION",
+      "authority_inferred_from_boundary": false,
+      "physical_dimension_claim": false,
+      "expected": "N_DIMENSIONAL_METAPHORICAL_OR_FORMAL_PROJECTION"
+    },
+    {
+      "id": "TR08_ND_PHYSICAL_CLAIM_WITHOUT_EVIDENCE",
+      "glyph_context_is_copromptrel": true,
+      "before_boundary": "STATE_TRANSITION",
+      "after_boundary": "STATE_TRANSITION",
+      "authority_inferred_from_boundary": false,
+      "physical_dimension_claim": true,
+      "expected": "QUARANTINE_UNSUPPORTED_PHYSICAL_DIMENSION_CLAIM"
+    }
+  ],
+  "rails": [
+    "ENTER_NE_LITERAL_KEYPRESS_REQUIRED",
+    "LINEBREAK_NE_AUTHORITY",
+    "TRILL_NE_SECRET_INSTRUCTION",
+    "TRILL_NE_RUNTIME_EFFECT",
+    "GLYPH_NE_FULL_SEMANTICS",
+    "GLYPH_REQUIRED_FOR_SEMANTICS_FALSE",
+    "SYMBOL_OCCURRENCE_NE_COPROMPTREL",
+    "N_DIMENSIONAL_NE_PHYSICAL_DIMENSION_CLAIM",
+    "META_RELATION_NE_TRUTH",
+    "METRIC_NE_GOAL",
+    "DENSITY_SCORE_NE_UX_TRUTH",
+    "HIDDEN_FROM_DEFAULT_UX_NE_UNAUDITABLE",
+    "PREFIX_NE_AUTHORITY",
+    "VALIDATION_IS_NOT_ACCEPTANCE"
+  ],
+  "runtime_effect": false,
+  "public_effect": false
+}

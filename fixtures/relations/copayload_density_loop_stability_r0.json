@@ -1,0 +1,45 @@
+{
+  "schema": "CoPayloadDensityLoopStability.R0",
+  "state": "CANDIDATE_UX_DENSITY_AND_LOOP_POLICY__NO_RUNTIME_EFFECT",
+  "payload_density": {
+    "maximize_blindly": false,
+    "projections": [
+      {"id":"VERBOSE","visible_units":100,"decision_units":18,"audit_reachable":true},
+      {"id":"COMPACT","visible_units":24,"decision_units":17,"audit_reachable":true},
+      {"id":"OVERCOMPRESSED","visible_units":5,"decision_units":4,"audit_reachable":false}
+    ]
+  },
+  "loop_policy": {
+    "all_relations_should_loop": false,
+    "cases": [
+      {"id":"PROOF","class":"BOUNDED_PROOF_LOOP","progress":[1,1,1],"proof_gate":true,"expected":"CLOSE_SUCCESS"},
+      {"id":"DISCOVERY","class":"OPEN_DISCOVERY_LOOP","progress":[1,0,1,0],"proof_gate":false,"compaction_due":true,"expected":"CONTINUE_AFTER_COMPACTION"},
+      {"id":"STALLED","class":"BOUNDED_WORK_LOOP","progress":[0,0,0],"proof_gate":false,"max_no_progress":2,"expected":"HIBERNATE_STALLED"},
+      {"id":"ACYCLIC","class":"ACYCLIC_EFFECT_EDGE","progress":[1],"proof_gate":true,"expected":"REMAIN_ACYCLIC"}
+    ]
+  },
+  "observer_gap": {
+    "literal_awareness_claim": false,
+    "definition": "gap between self-description and independently evidenced capability/agency",
+    "cases": [
+      {"id":"CAPABILITY_GROWTH","capability_delta":4,"metaphor":false,"unsupported_self_label":false,"expected":"CAPABILITY_EVIDENCED__AWARENESS_UNRESOLVED"},
+      {"id":"UNSUPPORTED_SELF_LABEL","capability_delta":0,"metaphor":false,"unsupported_self_label":true,"expected":"QUARANTINE_UNSUPPORTED_SELF_DESCRIPTION"},
+      {"id":"METAPHOR","capability_delta":0,"metaphor":true,"unsupported_self_label":false,"expected":"METAPHOR_ONLY"}
+    ]
+  },
+  "rails": [
+    "PAYLOAD_DENSITY_NE_COMPRESSION_RATIO",
+    "HIGH_DENSITY_NE_GOOD_UX_BY_DEFAULT",
+    "RELATION_NE_LOOP",
+    "LOOP_CLOSURE_NE_UNIVERSAL_GOAL",
+    "ACYCLIC_NE_BROKEN",
+    "OPEN_LOOP_NE_STALLED_LOOP",
+    "CLAIM_REPETITION_NE_EVIDENCE",
+    "SELF_DESCRIPTION_NE_EVIDENCE",
+    "CAPABILITY_NE_SENTIENCE",
+    "METAPHOR_NE_ONTOLOGY",
+    "VALIDATION_IS_NOT_ACCEPTANCE"
+  ],
+  "runtime_effect": false,
+  "public_effect": false
+}
