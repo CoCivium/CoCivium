@@ -1,0 +1,28 @@
+name: CoBounded Discovery Virtual CLI Budget R0
+
+on:
+  pull_request:
+    paths:
+      - "docs/Theory/COBOUNDED_DISCOVERY_COGENEXIS_R0.md"
+      - "docs/UX/COVIRTUAL_CLI_RELATIONS_R0.md"
+      - "docs/Architecture/COBUDGET_COSTONK_RELATIONS_R0.md"
+      - "fixtures/relations/cobounded_discovery_virtual_cli_budget_r0.json"
+      - "tools/validate_cobounded_discovery_virtual_cli_budget_r0.py"
+      - ".github/workflows/cobounded-discovery-virtual-cli-budget-r0.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python tools/validate_cobounded_discovery_virtual_cli_budget_r0.py
