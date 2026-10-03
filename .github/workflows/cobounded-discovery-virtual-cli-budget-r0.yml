@@ -11,11 +11,18 @@ on:
       - "fixtures/relations/covirtual_substrate_prefix_inventory_r0.json"
       - "tools/validate_covirtual_substrate_prefix_inventory_r0.py"
       - "tools/validate_cobounded_discovery_virtual_cli_budget_r0.py"
+      - "docs/UX/COPAYLOAD_DENSITY_LOOP_STABILITY_R0.md"
+      - "fixtures/relations/copayload_density_loop_stability_r0.json"
+      - "tools/validate_copayload_density_loop_stability_r0.py"
       - ".github/workflows/cobounded-discovery-virtual-cli-budget-r0.yml"
   workflow_dispatch:
 
 permissions:
   contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 
 jobs:
   validate:
@@ -30,3 +37,4 @@ jobs:
           python-version: "3.12"
       - run: python tools/validate_cobounded_discovery_virtual_cli_budget_r0.py
       - run: python tools/validate_covirtual_substrate_prefix_inventory_r0.py
+      - run: python tools/validate_copayload_density_loop_stability_r0.py
