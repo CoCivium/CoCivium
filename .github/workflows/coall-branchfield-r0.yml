@@ -1,0 +1,26 @@
+name: CoAll BranchField R0
+
+on:
+  pull_request:
+    paths:
+      - "docs/Architecture/COALL_BRANCHFIELD_R0.md"
+      - "fixtures/architecture/coall_branchfield_r0.json"
+      - "tools/validate_coall_branchfield_r0.py"
+      - ".github/workflows/coall-branchfield-r0.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python tools/validate_coall_branchfield_r0.py
