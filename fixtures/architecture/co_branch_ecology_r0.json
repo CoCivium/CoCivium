@@ -1,9 +1,9 @@
 {
-  "schema": "CoBranchEcology.R0",
+  "schema": "CoBranchEcology.R0B",
   "state": "CANDIDATE_OPEN_PR_TOPOLOGY_SNAPSHOT__NO_MERGE_NO_CLOSE_NO_CANON_NO_RUNTIME_AUTHORITY",
   "repository": "CoCivium/CoCivium",
   "observed_main_sha": "98b2679dd885c74d0292cc0b6c20aa80fb0f9e65",
-  "open_pr_count": 25,
+  "open_pr_count": 26,
   "open_prs": [
     {
       "number": 100,
@@ -298,9 +298,21 @@
       "title": "CoAll BranchField R0: bounded discovery, invisible substrate, payload density, budgets and spiral convergence",
       "draft": true,
       "head_ref": "candidate/coall-branchfield-r0-20261003",
-      "head_sha": "a20ef5aef8b2ccc7ae2c037cab4833705fb7bd4b",
+      "head_sha": "8fc176f9f4dec7d5471097544452302ccf86a7bd",
       "base_ref": "main",
-      "updated_at": "2026-10-03T16:32:45Z",
+      "updated_at": "2026-10-03T16:55:32Z",
+      "lifecycle_state": "LANDED_PUBLIC_CANDIDATE_BRANCH",
+      "integration_state": "UNPROVEN",
+      "canon_state": "UNPROVEN"
+    },
+    {
+      "number": 151,
+      "title": "CoAll bounded discovery + projection ecology R0",
+      "draft": true,
+      "head_ref": "candidate/coall-bounded-discovery-projection-r0-20261003",
+      "head_sha": "14749870cdeec138679852e8c339c16ab95524b4",
+      "base_ref": "main",
+      "updated_at": "2026-10-03T16:54:13Z",
       "lifecycle_state": "LANDED_PUBLIC_CANDIDATE_BRANCH",
       "integration_state": "UNPROVEN",
       "canon_state": "UNPROVEN"
@@ -314,10 +326,11 @@
         147,
         148,
         149,
-        150
+        150,
+        151
       ],
-      "basis": "recent titles plus PR149/150 reviewed content",
-      "interpretation": "high-overlap frontier; route new deltas here before creating another sibling branch"
+      "basis": "titles plus PR149/150/151 reviewed content",
+      "interpretation": "high-overlap frontier; PR151 is a donor/fan-in candidate to PR150, not an automatic supersession"
     },
     {
       "id": "AUTHORITY_GOVERNANCE",
@@ -520,6 +533,19 @@
       "to_pr": 116,
       "relation": "CANDIDATE_SCOPE_OVERLAP",
       "effect": "NO_SUPERSESSION_INFERENCE"
+    },
+    {
+      "from_pr": 151,
+      "to_pr": 150,
+      "relation": "CANDIDATE_FANIN_TO",
+      "effect": "NO_MERGE_NO_CLOSE_NO_SUPERSESSION_INFERENCE",
+      "donor_deltas": [
+        "POTENTIAL_RELATION_NE_INSTANTIATED_RELATION",
+        "COOMNI_NE_EVERY_RELATION_AT_ONCE",
+        "MOVE_OFF_X2_NE_MOVE_TO_ONE_NEW_ROOT",
+        "CANDIDATE_RECEIVER_NE_OUTREACH_AUTHORITY",
+        "COUNTDOWN_NE_RELEASE_AUTHORITY"
+      ]
     }
   ],
   "policy": {
@@ -543,11 +569,12 @@
   "coverage_boundary": [
     "OPEN_PULL_REQUESTS_RETURNED_BY_GITHUB_FOR_COCIVIUM_COCIVIUM_AT_THIS_SNAPSHOT",
     "TITLES_AND_BRANCH_METADATA_REVIEWED_FOR_CLUSTERING",
-    "PR149_AND_PR150_CONTENT_SEMANTICALLY_REVIEWED",
     "OTHER_PR_CONTENT_NOT_FULLY_REVIEWED_IN_THIS_DEED",
     "CLOSED_PRS_NOT_INCLUDED",
     "COSTEWARD_AND_OTHER_REPOSITORIES_NOT_INCLUDED",
-    "BRANCHES_WITHOUT_OPEN_PRS_NOT_INCLUDED"
+    "BRANCHES_WITHOUT_OPEN_PRS_NOT_INCLUDED",
+    "PR149_PR150_AND_PR151_CONTENT_SEMANTICALLY_REVIEWED",
+    "SNAPSHOT_CAPTURED_FROM_GITHUB_OPEN_PR_QUERY_BEFORE_R0B_HOST_MUTATION"
   ],
   "nonclaims": [
     "OPEN_PR_NE_ACTIVE_WORK",
@@ -564,6 +591,18 @@
     "INVENTORY_NE_COMPLETE_HISTORY",
     "VALIDATION_IS_NOT_ACCEPTANCE",
     "NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE",
-    "DISCOVERED_SET_IS_NOT_COMPLETE_HISTORY"
-  ]
+    "DISCOVERED_SET_IS_NOT_COMPLETE_HISTORY",
+    "SNAPSHOT_NE_LIVE_VIEW",
+    "HOST_HEAD_IN_SNAPSHOT_NE_POST_COMMIT_HEAD",
+    "CANDIDATE_FANIN_TO_NE_MERGED",
+    "DONOR_DELTA_NE_ACCEPTED_DELTA"
+  ],
+  "snapshot_semantics": {
+    "snapshot_source_branch_head": "8fc176f9f4dec7d5471097544452302ccf86a7bd",
+    "host_pr": 150,
+    "host_head_in_snapshot_interpretation": "OBSERVED_PRE_SNAPSHOT_MUTATION",
+    "host_head_expected_to_change_when_snapshot_is_committed": true,
+    "snapshot_remains_historical_evidence_after_host_head_changes": true,
+    "live_currentness_requires_fresh_query": true
+  }
 }

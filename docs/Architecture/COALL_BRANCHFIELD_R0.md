@@ -496,3 +496,40 @@ It is not a new sovereign subsystem.
 
 `CROSS_CUTTING_RELATION_NE_NEW_CROWN`
 
+
+
+## 14. R0B branch-currentness / PR151 fan-in relation
+
+The branch field itself exposed a useful CoSneak+: a snapshot stored PR150's head SHA inside PR150. Any commit that refreshes that snapshot necessarily changes PR150's head, so treating the embedded host SHA as a live-currentness claim makes the artifact self-invalidating.
+
+R0B therefore types the snapshot explicitly as historical evidence observed **before** the snapshot-mutating commit:
+
+`HOST_HEAD_IN_SNAPSHOT_NE_POST_COMMIT_HEAD`
+
+`SNAPSHOT_NE_LIVE_VIEW`
+
+Live currentness still requires a fresh GitHub query.
+
+A fresh pre-mutation query observes **26** open PRs and adds PR151 to the frontier-discovery/convergence cluster.
+
+PR151 is semantically reviewed as a donor candidate to PR150 rather than another crown:
+
+`PR151 --CANDIDATE_FANIN_TO--> PR150`
+
+Candidate donor deltas retained from PR151 include:
+
+- potential relation vs instantiated relation;
+- `CoOmni+` not meaning every relation at once;
+- moving off X2 without moving to one new root;
+- candidate receiver not implying outreach authority;
+- countdown not implying release authority.
+
+The relation does **not** merge, close, supersede or canonize either PR.
+
+`CANDIDATE_FANIN_TO_NE_MERGED`
+
+`DONOR_DELTA_NE_ACCEPTED_DELTA`
+
+This is the first practical use of the BranchField's own rule:
+
+`FANIN_BEFORE_MORE_PARALLEL_MUTATION`
