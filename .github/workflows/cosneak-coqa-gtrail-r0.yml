@@ -9,6 +9,7 @@ on:
       - "docs/Architecture/COSNEAK_HUMAN_DEPENDENCY_CENSUS_R0E.md"
       - "docs/Architecture/COQUESTION_SPACE_COMPILER_R0G.md"
       - "docs/Architecture/COSNEAK_PASS_WITHOUT_PICKUP_AUDIT_R0I.md"
+      - "docs/Architecture/COSNEAK_PICKUP_GAP_DISPOSITION_R0K.md"
       - "docs/Architecture/COSNEAK_PASS_PICKUP_SOURCE_BOUND_R0J.md"
       - "docs/Architecture/COQUESTION_RESERVOIR_R0H.md"
       - "docs/Architecture/COSNEAK_COQA_METABOLISM_R0D.md"
@@ -19,6 +20,7 @@ on:
       - "fixtures/relations/cosneak_human_dependency_census_r0e.json"
       - "fixtures/relations/coquestion_space_compiler_r0g.json"
       - "fixtures/relations/cosneak_pass_without_pickup_audit_r0i.json"
+      - "fixtures/relations/cosneak_pickup_gap_disposition_r0k.json"
       - "fixtures/relations/cosneak_pass_pickup_source_bound_r0j.json"
       - "fixtures/relations/coquestion_reservoir_r0h.json"
       - "fixtures/relations/cosneak_coqa_gtrail_r0b.json"
@@ -30,6 +32,7 @@ on:
       - "tools/validate_cosneak_human_dependency_census_r0e.py"
       - "tools/compile_coquestion_space_r0g.py"
       - "tools/validate_cosneak_pass_without_pickup_audit_r0i.py"
+      - "tools/validate_cosneak_pickup_gap_disposition_r0k.py"
       - "tools/validate_cosneak_pass_pickup_source_bound_r0j.py"
       - "tools/validate_coquestion_reservoir_r0h.py"
       - "tools/validate_cosneak_coqa_gtrail_r0b.py"
@@ -62,6 +65,7 @@ jobs:
       - run: python tools/validate_cosneak_human_dependency_census_r0e.py
       - run: python tools/compile_coquestion_space_r0g.py
       - run: python tools/validate_cosneak_pass_without_pickup_audit_r0i.py
+      - run: python tools/validate_cosneak_pickup_gap_disposition_r0k.py
       - run: python tools/validate_cosneak_pass_pickup_source_bound_r0j.py
       - run: python tools/validate_coquestion_reservoir_r0h.py
       - run: python tools/validate_cosneak_coqa_gtrail_r0b.py
