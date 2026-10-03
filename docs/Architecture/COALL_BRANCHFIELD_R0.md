@@ -352,3 +352,147 @@ PR150 is still only a candidate host.
 `BRANCHFIELD_HOST_NE_CANON`
 
 No merge, close, deletion, canonization or runtime mutation is authorized by this inventory.
+
+
+## 13. CoCheap+ / CoSummon+ / commoditized capability relations
+
+Automation can make a previously scarce capability cheap to invoke.
+
+Candidate relation:
+
+```text
+EXPENSIVE_OR_SPECIALIST_CAPABILITY
+-> REUSABLE_RECIPE / MODEL / TOOL / RELATION PACK
+-> ELIGIBLE SUBSTRATE
+-> ON-DEMAND MATERIALIZATION
+-> BOUNDED EFFECT
+-> RECEIPT
+-> OPTIONAL DEMATERIALIZATION
+```
+
+Useful names:
+
+- `CoCheap+`: low current marginal cost on one or more measured dimensions;
+- `CoSummon+`: capability can be materialized on demand rather than kept continuously alive;
+- `CoCheapTrick+`: playful label for a bounded reusable maneuver whose invocation is cheap after the expensive invention/proof work already exists.
+
+"Cheap" MUST remain a vector, not a scalar.
+
+Candidate cost dimensions:
+
+`cash | compute | energy | latency | bandwidth | human_attention | privacy | proof_debt | collision_risk | externality | failure_domain_dependence`
+
+A route can be cheap in money and expensive in privacy, or cheap in latency and expensive in energy.
+
+`CHEAP_ON_DIMENSION_NE_CHEAP_OVERALL`
+
+### Scarcity migration
+
+As routine execution becomes commoditized, scarcity tends to migrate toward:
+
+- good problem formulation;
+- discriminating questions;
+- reliable provenance;
+- trustworthy verification;
+- current data;
+- unique physical-world access;
+- human relationships and permission;
+- attention;
+- legal/effect authority;
+- failure-domain diversity;
+- taste and judgment;
+- recovery evidence.
+
+So:
+
+`ABUNDANT_EXECUTION_NE_ABUNDANT_VERIFICATION`
+
+`COMMODITIZED_GENERATION_NE_COMMODITIZED_JUDGMENT`
+
+### Summonable substrate
+
+A capability need not own one permanent process or machine.
+
+```text
+logical capability identity
+-> reconstruction/materialization recipe
+-> route election
+-> temporary embodiment
+-> bounded work
+-> receipt
+-> release substrate
+```
+
+This extends the substrate-light model:
+
+`SUMMONABLE_NE_ALWAYS_RUNNING`
+
+`DEMATERIALIZED_NE_GONE`
+
+`CHEAP_TO_INVOKE_NE_CHEAP_TO_CREATE`
+
+`MARGINAL_COST_NE_TOTAL_COST`
+
+### CoAll route election
+
+When two routes provide equivalent proven semantics, CoAll MAY prefer the lower-cost route, but only after authority, privacy, currentness, failure-domain, provenance and receiver requirements pass.
+
+`LOWER_COST_NE_AUTOMATIC_WINNER`
+
+`CHEAP_NE_AUTHORIZED`
+
+`COMMODITIZED_NE_TRUSTED`
+
+`AUTOMATABLE_NE_SAFE_TO_AUTOMATE`
+
+A cheap route with poor provenance or one fragile provider dependency can be worse than a more expensive independent route.
+
+### Open-source / distributed relation
+
+Cheap summonability can favor open-source and distributed embodiments because they reduce switching friction and let the same logical capability materialize across more routes.
+
+But:
+
+`OPEN_SOURCE_NE_FREE`
+
+`OPEN_SOURCE_NE_INDEPENDENT_FAILURE_DOMAIN`
+
+`REMOTE_NE_MORE_RESILIENT`
+
+`LOCAL_NE_MORE_RESILIENT`
+
+X2, local models, public CI, remote open-model hosts and future peer CoNodes should compete as replaceable embodiments under evidence rather than becoming new crowns.
+
+### Outreach relation
+
+Automation can also commoditize the mechanics of outreach:
+
+`research -> tailor -> translate -> format -> draft -> route -> follow-up candidate`
+
+But correspondence itself does not become permissionless.
+
+`CHEAP_TO_DRAFT_NE_PERMISSION_TO_SEND`
+
+`MASS_PERSONALIZATION_NE_RELATIONSHIP`
+
+`AUTOMATED_OUTREACH_NE_CONSENT`
+
+The useful public-good direction is to make genuinely useful inventions, analyses, tools and designs easy to discover, reuse and pay forward, then let recipients elect engagement.
+
+### Branch relation
+
+This branch belongs inside the existing BranchField because it cuts across:
+
+- CoBudget+;
+- CoPayloadDensity+;
+- CoExOS+;
+- CoSubstrate+;
+- CoProviderExit+;
+- CoResourceField+;
+- CoOutreach+;
+- CoAutoEvo+.
+
+It is not a new sovereign subsystem.
+
+`CROSS_CUTTING_RELATION_NE_NEW_CROWN`
+
