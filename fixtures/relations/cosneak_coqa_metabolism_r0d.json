@@ -1,0 +1,35 @@
+{
+  "schema": "CoSneakCoQA.QuestionMetabolism.R0D",
+  "state": "CANDIDATE_QA_METABOLISM_AND_ANTI_THRASH_POLICY__NO_RUNTIME_AUTHORITY_CHANGE",
+  "source_bindings": {
+    "coqa_doc_path": "docs/Architecture/COQA_QUESTION_COMMONS_R0.md",
+    "coqa_doc_blob_sha": "b0dc1f12faebf6397c055fb31adf6b6d10fd0c66",
+    "coqa_schema_path": "schemas/coqa-object-v0.1.schema.json",
+    "coqa_schema_blob_sha": "1e5ba9b5465b5dc29fd21e144e371c7dea8cb5b3",
+    "adaptive_trace_path": "fixtures/relations/cosneak_coqa_gtrail_r0b.json",
+    "adaptive_trace_blob_sha": "2a215849038346ad01164ceadba7721b0f46810a",
+    "question_frontier_path": "fixtures/relations/coquestion_frontier_r0c.json",
+    "question_frontier_blob_sha": "57d289c7e46cc53151844348404b9e4a6c64c2ec"
+  },
+  "question_states": ["OPEN","PARTIALLY_RESOLVED","PROVISIONALLY_RESOLVED","CONTESTED","STALE","CLOSED_FOR_SCOPE","PARKED","HOLD_AUTHORITY","REOPEN_ON_EVIDENCE"],
+  "actions": ["CONTINUE","PARK","CLOSE_FOR_SCOPE","REOPEN","HOLD_AUTHORITY","SPLIT_BEFORE_ANSWER","COMPACT_AND_PARK"],
+  "policy": {
+    "reopen_requires_material_delta_or_explicit_receiver_request": true,
+    "history_erasure_allowed": false,
+    "parked_object_deleted": false,
+    "closed_for_scope_is_global_finality": false
+  },
+  "cases": [
+    {"id":"Q01_OPEN_NEW_EVIDENCE","state":"OPEN","durable":true,"risk":"MEDIUM","new_evidence_count":2,"material_uncertainty_reduction":true,"active_challenge":false,"explicit_receiver_request":false,"receiver_scope_satisfied":false,"authority_conflict":false,"question_bundles_independent_decisions":false,"retry_without_delta_count":0,"trail_cost_exceeds_diagnostic_value":false,"expected_action":"CONTINUE","expected_trail":"STANDARD","expected_sneak_signal":null},
+    {"id":"Q02_OPEN_RETRY_NO_DELTA","state":"OPEN","durable":true,"risk":"LOW","new_evidence_count":0,"material_uncertainty_reduction":false,"active_challenge":false,"explicit_receiver_request":false,"receiver_scope_satisfied":false,"authority_conflict":false,"question_bundles_independent_decisions":false,"retry_without_delta_count":2,"trail_cost_exceeds_diagnostic_value":false,"expected_action":"PARK","expected_trail":"LIGHT","expected_sneak_signal":"QA_RETRY_WITHOUT_NEW_EVIDENCE"},
+    {"id":"Q03_PROVISIONAL_SCOPE_SATISFIED","state":"PROVISIONALLY_RESOLVED","durable":true,"risk":"LOW","new_evidence_count":0,"material_uncertainty_reduction":false,"active_challenge":false,"explicit_receiver_request":false,"receiver_scope_satisfied":true,"authority_conflict":false,"question_bundles_independent_decisions":false,"retry_without_delta_count":0,"trail_cost_exceeds_diagnostic_value":false,"expected_action":"CLOSE_FOR_SCOPE","expected_trail":"LIGHT","expected_sneak_signal":null},
+    {"id":"Q04_CLOSED_MATERIAL_DELTA","state":"CLOSED_FOR_SCOPE","durable":true,"risk":"MEDIUM","new_evidence_count":1,"material_uncertainty_reduction":false,"active_challenge":true,"explicit_receiver_request":false,"receiver_scope_satisfied":true,"authority_conflict":false,"question_bundles_independent_decisions":false,"retry_without_delta_count":0,"trail_cost_exceeds_diagnostic_value":false,"expected_action":"REOPEN","expected_trail":"DEEP","expected_sneak_signal":null},
+    {"id":"Q05_CLOSED_EXPLICIT_RECEIVER_REQUEST","state":"CLOSED_FOR_SCOPE","durable":true,"risk":"LOW","new_evidence_count":0,"material_uncertainty_reduction":false,"active_challenge":false,"explicit_receiver_request":true,"receiver_scope_satisfied":true,"authority_conflict":false,"question_bundles_independent_decisions":false,"retry_without_delta_count":0,"trail_cost_exceeds_diagnostic_value":false,"expected_action":"REOPEN","expected_trail":"STANDARD","expected_sneak_signal":null},
+    {"id":"Q06_AUTHORITY_CONFLICT","state":"CONTESTED","durable":true,"risk":"HIGH","new_evidence_count":1,"material_uncertainty_reduction":false,"active_challenge":true,"explicit_receiver_request":false,"receiver_scope_satisfied":false,"authority_conflict":true,"question_bundles_independent_decisions":false,"retry_without_delta_count":0,"trail_cost_exceeds_diagnostic_value":false,"expected_action":"HOLD_AUTHORITY","expected_trail":"FORENSIC","expected_sneak_signal":"AUTHORITY_AMBIGUITY"},
+    {"id":"Q07_STALE_WITH_NEW_EVIDENCE","state":"STALE","durable":true,"risk":"MEDIUM","new_evidence_count":1,"material_uncertainty_reduction":true,"active_challenge":false,"explicit_receiver_request":false,"receiver_scope_satisfied":false,"authority_conflict":false,"question_bundles_independent_decisions":false,"retry_without_delta_count":0,"trail_cost_exceeds_diagnostic_value":false,"expected_action":"REOPEN","expected_trail":"DEEP","expected_sneak_signal":"STALE_CURRENTNESS"},
+    {"id":"Q08_TRAIL_INFLATION","state":"OPEN","durable":true,"risk":"LOW","new_evidence_count":0,"material_uncertainty_reduction":false,"active_challenge":false,"explicit_receiver_request":false,"receiver_scope_satisfied":false,"authority_conflict":false,"question_bundles_independent_decisions":false,"retry_without_delta_count":1,"trail_cost_exceeds_diagnostic_value":true,"expected_action":"COMPACT_AND_PARK","expected_trail":"LIGHT","expected_sneak_signal":"TRAIL_INFLATION"},
+    {"id":"Q09_BUNDLED_QUESTION","state":"OPEN","durable":true,"risk":"MEDIUM","new_evidence_count":0,"material_uncertainty_reduction":false,"active_challenge":false,"explicit_receiver_request":true,"receiver_scope_satisfied":false,"authority_conflict":false,"question_bundles_independent_decisions":true,"retry_without_delta_count":0,"trail_cost_exceeds_diagnostic_value":false,"expected_action":"SPLIT_BEFORE_ANSWER","expected_trail":"STANDARD","expected_sneak_signal":"BUNDLED_QUESTION_SCOPE"}
+  ],
+  "expected": {"case_count":9,"continue_count":1,"park_or_compact_count":2,"close_for_scope_count":1,"reopen_count":3,"hold_authority_count":1,"split_count":1,"sneak_signal_count":5,"history_erasure_count":0},
+  "rails": ["OPEN_NE_ACTIVE_COMPUTE","QUESTION_NE_PERMANENT_WAKE","PARKED_NE_DELETED","CLOSED_FOR_SCOPE_NE_CLOSED_FOREVER","REOPEN_REQUIRES_DELTA_OR_RECEIVER_REQUEST","NO_NEW_EVIDENCE_NE_RETRY_PERMISSION","TRAIL_COST_NE_FREE","TRAIL_CONTRACTION_NE_HISTORY_ERASURE","QUESTION_COUNT_NE_PROGRESS","UNCERTAINTY_REDUCTION_NE_TRUTH","AUTHORITY_CONFLICT_NE_ANSWER_BY_FORCE","SPLIT_QUESTION_NE_SPLIT_REALITY","VALIDATION_IS_NOT_ACCEPTANCE"]
+}

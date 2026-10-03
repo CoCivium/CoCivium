@@ -1,0 +1,63 @@
+{
+  "schema": "CoSneakPassPickupSourceBound.R0J",
+  "state": "CANDIDATE_SOURCE_BOUND_PASS_PICKUP_AUDIT__NO_RUNTIME_EFFECT",
+  "source_audit": [
+    {
+      "id": "coencounter_r0c2",
+      "path": "docs/Operations/proofs/coencounter-r0c2-receiver-qualification-gate-pass-20260924.json",
+      "blob_sha": "27fb6069af6a25ecc1a9f9a4e8834847cd1484d4",
+      "rule": "COENCOUNTER_R0C2_POSITIVE_REPLAY_READPROOFS",
+      "expected_pickup_state": "PICKUP_PROVEN_BOUNDED_SYNTHETIC"
+    },
+    {
+      "id": "copulse_r0c",
+      "path": "docs/Operations/proofs/copulse-r0c-container-pass-20260923.json",
+      "blob_sha": "76ffdee48e4ca4e16f8acc7d74bd9adcd0ab52c0",
+      "rule": "COPULSE_R0C_PACKET_PICKUP_AND_RECEIVER_READPROOFS",
+      "expected_pickup_state": "PICKUP_PROVEN_BOUNDED_SYNTHETIC"
+    },
+    {
+      "id": "copulse_r0f",
+      "path": "docs/Operations/proofs/copulse-r0f-container-pass-20260923.json",
+      "blob_sha": "b3231311d51134d1d35644bae01fd0dc21aaa84b",
+      "rule": "COPULSE_R0F_EXPLICIT_NO_PICKUP_INFERENCE",
+      "expected_pickup_state": "PASS_WITH_PICKUP_UNPROVEN_FOR_THIS_RESULT"
+    },
+    {
+      "id": "coencounter_r0b",
+      "path": "docs/Operations/proofs/coencounter-r0b-container-pass-20260924.json",
+      "blob_sha": "fdb32898e971fedb5d4e9f55739e54027fcad1c5",
+      "rule": "COENCOUNTER_R0B_LIFECYCLE_PICKUP_UNPROVEN",
+      "expected_pickup_state": "PASS_WITH_PICKUP_UNPROVEN"
+    },
+    {
+      "id": "coencounter_yield_r0a",
+      "path": "docs/Operations/proofs/coencounter-yield-r0a-container-pass-20260924.json",
+      "blob_sha": "fbbd318b95c386b3f6e8dace662dda72bea7030f",
+      "rule": "COENCOUNTER_YIELD_R0A_NO_READPROOF_NONCLAIM",
+      "expected_pickup_state": "PASS_WITH_PICKUP_UNPROVEN"
+    }
+  ],
+  "expected": {
+    "sample_size": 5,
+    "pickup_proven": 2,
+    "pickup_unproven": 3,
+    "semantic_acceptance_proven": 0,
+    "integration_proven": 0,
+    "sampled_scope_closed": true,
+    "global_census_complete": false,
+    "runtime_effect": false,
+    "public_effect": false
+  },
+  "rails": [
+    "FIXTURE_ASSERTION_NE_SOURCE_EVIDENCE",
+    "PASS_NE_PICKUP",
+    "PRODUCER_SUCCESS_NE_RECEIVER_SUCCESS",
+    "DELIVERY_NE_PICKUP",
+    "PICKUP_NE_SEMANTIC_ACCEPTANCE",
+    "READPROOF_NE_INTEGRATION",
+    "SAMPLED_SCOPE_CLOSED_NE_GLOBAL_CENSUS_COMPLETE",
+    "NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF",
+    "VALIDATION_IS_NOT_ACCEPTANCE"
+  ]
+}

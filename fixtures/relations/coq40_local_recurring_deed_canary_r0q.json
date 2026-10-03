@@ -1,0 +1,52 @@
+{
+  "schema": "CoQ40LocalRecurringDeedCanary.R0Q",
+  "state": "PARTIAL_PASS_LOCAL_MODEL_EXECUTION_AND_STRICT_JSON__SEMANTIC_ACCEPTANCE_HELD",
+  "machine": "X2",
+  "model": "qwen3:4b",
+  "endpoint_class": "LOOPBACK_ONLY",
+  "task_sha256": "66B273858E4AF05B551B77CFBCE9664DF239C1B4160FCB617242535EFC71082A",
+  "attempts": [
+    {
+      "attempt": 1,
+      "num_ctx": 2048,
+      "num_predict": 96,
+      "local_model_execution": true,
+      "strict_output_contract": false,
+      "result": "JSON_DECODE_FAIL_TRUNCATED_OR_MALFORMED"
+    },
+    {
+      "attempt": 2,
+      "num_ctx": 2048,
+      "num_predict": 192,
+      "local_model_execution": true,
+      "strict_output_contract": true,
+      "elapsed_ms": 2918,
+      "output_sha256": "B6BEC90BB5D063AADE9CD756C96AF02053E4F05AA7E35BA61C727C38FCE5ADDF",
+      "output": {
+        "action": "PARK",
+        "reason": "Artifact LATEST is 90 days old with no current binding",
+        "next_probe": "2024-05-15",
+        "nonclaim": "STALE_FILE_NE_STALE_SEMANTIC_STATE"
+      }
+    }
+  ],
+  "semantic_acceptance": {
+    "accepted": false,
+    "reason": "next_probe is an unexplained date, not an evidence-producing probe",
+    "next_required_gate": "INDEPENDENT_SEMANTIC_VERIFIER_OR_RECEIVER_DISPOSITION"
+  },
+  "persistent_worker_installed": false,
+  "chatgpt_independence_proven": false,
+  "cross_failure_domain_independence_proven": false,
+  "runtime_effects_beyond_bounded_canary": 0,
+  "public_effect": false,
+  "rails": [
+    "MODEL_RESPONSE_NE_CONTRACT_PASS",
+    "STRICT_OUTPUT_PASS_NE_SEMANTIC_ACCEPTANCE",
+    "FAILED_OUTPUT_CONTRACT_NE_FAILED_MODEL",
+    "LOCAL_EXECUTION_NE_PROVIDER_INDEPENDENCE_PROOF",
+    "CHATGPT_ORCHESTRATED_LOCAL_CANARY_NE_CHATGPT_NOT_REQUIRED",
+    "COMPILED_DEED_NE_ACCEPTED_WORKER",
+    "ONE_RETRY_NE_RETRY_LOOP"
+  ]
+}
