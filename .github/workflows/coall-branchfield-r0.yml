@@ -5,9 +5,15 @@ on:
     paths:
       - "docs/Architecture/COALL_BRANCHFIELD_R0.md"
       - "fixtures/architecture/coall_branchfield_r0.json"
+      - "fixtures/architecture/co_branch_ecology_r0.json"
       - "tools/validate_coall_branchfield_r0.py"
+      - "tools/validate_co_branch_ecology_r0.py"
       - ".github/workflows/coall-branchfield-r0.yml"
   workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 
 permissions:
   contents: read
@@ -24,3 +30,4 @@ jobs:
         with:
           python-version: "3.12"
       - run: python tools/validate_coall_branchfield_r0.py
+      - run: python tools/validate_co_branch_ecology_r0.py

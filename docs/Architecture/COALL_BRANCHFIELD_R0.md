@@ -265,3 +265,90 @@ No branch here changes runtime, canon, public branding, financial assets, wallet
 `TRACKED_ASSET_NE_TRADE_AUTHORITY`
 `LOOP_NE_SENTIENCE`
 `VALIDATION_IS_NOT_ACCEPTANCE`
+
+
+## 12. CoBranchEcology+ / actual Git branch field
+
+The word branch now applies in two layers:
+
+1. conceptual branches inside CoAll / CoTheoryAll;
+2. actual Git candidate branches carrying bounded artifacts and tests.
+
+The second layer is itself becoming large enough to require a relation field.
+
+A fresh bounded snapshot currently sees **25 open PRs** in CoCivium/CoCivium.
+
+That does not mean 25 independent active projects exist.
+
+`OPEN_PR_NE_ACTIVE_WORK`
+
+It means there are 25 public candidate branch surfaces whose currentness, overlap, donor value and closeability need explicit relations.
+
+### Current branch families
+
+- frontier discovery/convergence: 146, 147, 148, 149, 150;
+- authority/governance: 100, 144, 145;
+- UX/public/correspondence: 124, 126, 137, 143;
+- substrate/provider/session: 125, 135, 136, 138, 141, 142;
+- relational core: 127, 128;
+- time/condition/optionality: 139, 140;
+- advisory evidence: 116, 117, 118.
+
+These are navigation clusters, not equivalence classes.
+
+`CLUSTER_NE_DUPLICATE`
+
+`OVERLAP_NE_SUPERSESSION`
+
+### Default branch preflight
+
+Before creating another candidate sibling:
+
+```text
+refresh open branch field
+-> search scope + paths + relations + collision domain
+-> reuse compatible host when safe
+-> otherwise justify isolation
+```
+
+New branches remain useful for independent canaries, adversarial alternatives, distinct authority envelopes, incompatible collision domains, or experiments that should not disturb a frozen review head.
+
+But ordinary ideation should no longer produce one Git branch per thought.
+
+`RELATE_BEFORE_BRANCH`
+
+`FANIN_BEFORE_MORE_PARALLEL_MUTATION`
+
+### Review-sensitive branch
+
+PR127 is the only non-draft open PR in this snapshot.
+
+That does not mean approved.
+
+`NON_DRAFT_NE_APPROVED`
+
+It does mean unrelated mutations should avoid that review head unless a fresh review/currentness decision explicitly elects them.
+
+### Branch relations
+
+Candidate branch relations include:
+
+`OVERLAPS_WITH | DONATES_TO | CHALLENGES | DEPENDS_ON | CANDIDATE_FANIN_TO | DESCENDANT_SATISFIED_BY | FROZEN_FOR_REVIEW | HISTORICAL_EVIDENCE | CLOSEABLE_AFTER_PROOF`
+
+Closing a branch later need not erase its lineage, receipts, negative knowledge or wake conditions.
+
+`BRANCH_CLOSE_NE_HISTORY_ERASURE`
+
+### Why PR150 hosts this R0
+
+PR150 already exists specifically as the CoAll BranchField candidate.
+
+So this branch-ecology delta is attached here rather than spawning a new PR merely to explain that we have too many branches. Even software deserves occasional protection from satire becoming implementation.
+
+`BRANCH_REUSE_PREFERRED`
+
+PR150 is still only a candidate host.
+
+`BRANCHFIELD_HOST_NE_CANON`
+
+No merge, close, deletion, canonization or runtime mutation is authorized by this inventory.
