@@ -1,0 +1,25 @@
+name: CoGenEx Bounded Discovery R0
+
+on:
+  pull_request:
+    paths:
+      - "docs/Theory/COGENEX_BOUNDED_DISCOVERY_R0.md"
+      - "fixtures/theory/cogenex_bounded_discovery_r0.json"
+      - "tools/validate_cogenex_bounded_discovery_r0.py"
+      - ".github/workflows/cogenex-bounded-discovery-r0.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python tools/validate_cogenex_bounded_discovery_r0.py
