@@ -18,6 +18,7 @@ on:
       - "docs/Architecture/COINQUIRY_COMPILER_R0F.md"
       - "docs/Architecture/COINQUIRY_RECOMPILE_R0L.md"
       - "docs/Architecture/COINQUIRY_RECOMPILE_R0N.md"
+      - "docs/Architecture/COINQUIRY_RECOMPILE_R0P.md"
       - "fixtures/relations/cosneak_coqa_gtrail_r0.json"
       - "fixtures/relations/cosneak_local_census_r0a.json"
       - "fixtures/relations/coquestion_frontier_r0c.json"
@@ -34,6 +35,7 @@ on:
       - "fixtures/relations/coinquiry_compiler_r0f.json"
       - "fixtures/relations/coinquiry_recompile_r0l.json"
       - "fixtures/relations/coinquiry_recompile_r0n.json"
+      - "fixtures/relations/coinquiry_recompile_r0p.json"
       - "tools/validate_cosneak_coqa_gtrail_r0.py"
       - "tools/validate_cosneak_local_census_r0a.py"
       - "tools/validate_coquestion_frontier_r0c.py"
@@ -50,6 +52,7 @@ on:
       - "tools/validate_coinquiry_compiler_r0f.py"
       - "tools/validate_coinquiry_recompile_r0l.py"
       - "tools/validate_coinquiry_recompile_r0n.py"
+      - "tools/validate_coinquiry_recompile_r0p.py"
       - ".github/workflows/cosneak-coqa-gtrail-r0.yml"
   workflow_dispatch:
 
@@ -87,3 +90,4 @@ jobs:
       - run: python tools/validate_coinquiry_compiler_r0f.py
       - run: python tools/validate_coinquiry_recompile_r0l.py
       - run: python tools/validate_coinquiry_recompile_r0n.py
+      - run: python tools/validate_coinquiry_recompile_r0p.py
