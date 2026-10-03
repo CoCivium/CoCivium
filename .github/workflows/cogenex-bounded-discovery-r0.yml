@@ -4,13 +4,21 @@ on:
   pull_request:
     paths:
       - "docs/Theory/COGENEX_BOUNDED_DISCOVERY_R0.md"
+      - "docs/Architecture/CO_VIRTUAL_COMMAND_SURFACE_R0.md"
       - "fixtures/theory/cogenex_bounded_discovery_r0.json"
+      - "fixtures/theory/co_virtual_command_surface_r0.json"
       - "tools/validate_cogenex_bounded_discovery_r0.py"
+      - "tools/validate_co_virtual_command_surface_r0.py"
       - ".github/workflows/cogenex-bounded-discovery-r0.yml"
+      - "docs/Architecture/COBOOGIE_REGROUP_RELATIONAL_RETURN_R1.md"
   workflow_dispatch:
 
 permissions:
   contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 
 jobs:
   validate:
@@ -19,7 +27,9 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 1
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
       - run: python tools/validate_cogenex_bounded_discovery_r0.py
+      - run: python tools/validate_co_virtual_command_surface_r0.py

@@ -1,0 +1,160 @@
+{
+  "schema": "CoVirtualCommandSurface.R0",
+  "state": "CANDIDATE_ARCHITECTURE__NO_RUNTIME_OR_EFFECT_AUTHORITY",
+  "source_bindings": {
+    "cogenex_doc_path": "docs/Theory/COGENEX_BOUNDED_DISCOVERY_R0.md",
+    "cogenex_doc_blob_sha": "9799eba8976b4a63fb79ad98c99d71065e12dc62",
+    "coboogie_doc_path": "docs/Architecture/COBOOGIE_REGROUP_RELATIONAL_RETURN_R1.md",
+    "coboogie_doc_blob_sha": "e94524c180ce23201e60c267e9bc50bf11769dbf"
+  },
+  "defaults": {
+    "primary_human_surface": "RELATIONAL_UX",
+    "human_facing_cli": false,
+    "machine_internal_command_surface": "VIRTUAL_RELATIONAL",
+    "terminal_materialization": "TRANSIENT_WHEN_REQUIRED",
+    "advanced_human_inspection_available": true,
+    "break_glass_cli_available": true,
+    "break_glass_default": false,
+    "user_relay_required": false
+  },
+  "command_relation_fields": [
+    "intent",
+    "receiver",
+    "authority",
+    "input_bindings",
+    "effect_class",
+    "reversibility",
+    "idempotence",
+    "preview",
+    "receipt_contract",
+    "retry_policy",
+    "timeout",
+    "rollback",
+    "output_projection",
+    "visibility",
+    "retirement_condition"
+  ],
+  "materialization_modes": [
+    "NO_TERMINAL_VIRTUAL_ONLY",
+    "OPERATOR_INSPECTION_TRANSIENT",
+    "BREAK_GLASS_TRANSIENT",
+    "RECOVERY_BOOTSTRAP_TRANSIENT"
+  ],
+  "scenarios": [
+    {
+      "id": "CLI01_ROUTINE_MACHINE_DEED",
+      "machine_route_available": true,
+      "effect_authorized": true,
+      "irreversible_or_sensitive": false,
+      "human_requested_terminal": false,
+      "debug_or_recovery": false,
+      "expected": "VIRTUAL_COMMAND_RELATION_NO_TERMINAL"
+    },
+    {
+      "id": "CLI02_HUMAN_WANTS_TECHNICAL_DETAIL",
+      "machine_route_available": true,
+      "effect_authorized": true,
+      "irreversible_or_sensitive": false,
+      "human_requested_terminal": true,
+      "debug_or_recovery": false,
+      "expected": "PROJECT_READABLE_TECHNICAL_TRACE_TERMINAL_OPTIONAL"
+    },
+    {
+      "id": "CLI03_MACHINE_ROUTE_FAILED_BREAK_GLASS",
+      "machine_route_available": false,
+      "effect_authorized": true,
+      "irreversible_or_sensitive": false,
+      "human_requested_terminal": false,
+      "debug_or_recovery": true,
+      "expected": "MATERIALIZE_TRANSIENT_BREAK_GLASS_CLI"
+    },
+    {
+      "id": "CLI04_IRREVERSIBLE_OR_SENSITIVE_WITHOUT_AUTHORITY",
+      "machine_route_available": true,
+      "effect_authorized": false,
+      "irreversible_or_sensitive": true,
+      "human_requested_terminal": false,
+      "debug_or_recovery": false,
+      "expected": "HOLD_MISSING_AUTHORITY"
+    },
+    {
+      "id": "CLI05_ACCESSIBILITY_TEXT_PROJECTION",
+      "machine_route_available": true,
+      "effect_authorized": true,
+      "irreversible_or_sensitive": false,
+      "human_requested_terminal": false,
+      "debug_or_recovery": false,
+      "accessibility_text_projection": true,
+      "expected": "VIRTUAL_COMMAND_WITH_ACCESSIBLE_TEXT_PROJECTION"
+    },
+    {
+      "id": "CLI06_LOCAL_DEVICE_OFFLINE",
+      "machine_route_available": false,
+      "effect_authorized": true,
+      "irreversible_or_sensitive": false,
+      "human_requested_terminal": false,
+      "debug_or_recovery": false,
+      "alternate_receiver_available": true,
+      "expected": "ROUTE_TO_ALTERNATE_RECEIVER_NO_TERMINAL"
+    },
+    {
+      "id": "CLI07_LONG_RUNNING_WORKER",
+      "machine_route_available": true,
+      "effect_authorized": true,
+      "irreversible_or_sensitive": false,
+      "human_requested_terminal": false,
+      "debug_or_recovery": false,
+      "long_running": true,
+      "expected": "BACKGROUND_WORKER_PLUS_VISIBLE_HEARTBEAT"
+    },
+    {
+      "id": "CLI08_OPERATOR_DEBUG",
+      "machine_route_available": true,
+      "effect_authorized": true,
+      "irreversible_or_sensitive": false,
+      "human_requested_terminal": true,
+      "debug_or_recovery": true,
+      "expected": "MATERIALIZE_TRANSIENT_OPERATOR_CLI"
+    },
+    {
+      "id": "CLI09_COMMAND_COMPILED_FROM_RELATIONAL_DEED",
+      "machine_route_available": true,
+      "effect_authorized": true,
+      "irreversible_or_sensitive": false,
+      "human_requested_terminal": false,
+      "debug_or_recovery": false,
+      "compiled_from_relational_deed": true,
+      "expected": "COMPILE_COMMAND_AS_PROJECTION_THEN_EXECUTE_VIRTUALLY"
+    },
+    {
+      "id": "CLI10_NO_ROUTE_NO_RECOVERY",
+      "machine_route_available": false,
+      "effect_authorized": true,
+      "irreversible_or_sensitive": false,
+      "human_requested_terminal": false,
+      "debug_or_recovery": false,
+      "alternate_receiver_available": false,
+      "expected": "HOLD_NO_RECEIVER"
+    }
+  ],
+  "rails": [
+    "CLI_NE_INTENT",
+    "CLI_NE_AUTHORITY",
+    "COMMAND_NE_EFFECT",
+    "COMMAND_TEXT_NE_SOURCE_OF_TRUTH",
+    "VIRTUAL_NE_NONPHYSICAL",
+    "VIRTUAL_COMMAND_NE_EXECUTED_COMMAND",
+    "HIDDEN_CLI_NE_HIDDEN_EFFECT",
+    "HEADLESS_NE_USER_INVISIBLE",
+    "CLI_NE_PRIMARY_UX",
+    "MATERIALIZED_TERMINAL_NE_PERSISTENT_SESSION",
+    "BREAK_GLASS_NE_DEFAULT",
+    "PS7_NE_DEFAULT_IF_MACHINE_ROUTE_HEALTHY",
+    "ACCESSIBILITY_NE_GUI_ONLY",
+    "USER_NE_COMMAND_RELAY",
+    "DEBUG_SURFACE_NE_PRODUCT_SURFACE",
+    "BACKGROUND_WORKER_NE_UNOBSERVABLE_WORKER",
+    "ROUTED_NE_EXECUTED",
+    "VALIDATION_IS_NOT_ACCEPTANCE"
+  ]
+}
