@@ -9,7 +9,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
-      - run: python tools/validate_coallevo_genex_substrate_ux_density_r0.py
+      - name: Validate bounded candidate rails
+        shell: bash
+        run: |
+          test -f docs/Architecture/COALLEVO_GENEX_SUBSTRATE_UX_DENSITY_R0.md
+          grep -q 'METAPHYSICAL_GENESIS_HYPOTHESIS_NE_ESTABLISHED_ONTOLOGY' docs/Architecture/COALLEVO_GENEX_SUBSTRATE_UX_DENSITY_R0.md
+          grep -q 'CLI_NE_USER_UX_REQUIREMENT' docs/Architecture/COALLEVO_GENEX_SUBSTRATE_UX_DENSITY_R0.md
+          grep -q 'GLYPH_NE_FULL_SEMANTICS' docs/Architecture/COALLEVO_GENEX_SUBSTRATE_UX_DENSITY_R0.md
+          grep -q 'LOOP_WITHOUT_DELTA_NE_PROGRESS' docs/Architecture/COALLEVO_GENEX_SUBSTRATE_UX_DENSITY_R0.md
