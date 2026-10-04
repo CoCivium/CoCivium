@@ -172,3 +172,60 @@ Until then:
 `GITHUB_ONLY_NE_FAILURE_DOMAIN_INDEPENDENCE`  
 `DELTA_RECEIPT_NE_VISIBLE_CURRENTNESS`  
 `VALIDATION_IS_NOT_ACCEPTANCE`
+
+
+## R0F receiver consumption / quiet UX projection
+
+The next proof is receiver consumption rather than another branch.
+
+The `observe` job first lands its exact live-currentness receipt as the GitHub Actions artifact:
+
+`cocatchup-delta-surface-r0`
+
+The separate elected receiver:
+
+`github-actions:cocatchup-ux-projection-r0`
+
+then downloads that exact artifact, binds the artifact ID + archive digest, hashes the exact receipt bytes, verifies the receipt's checked-out head against its own exact head, and renders two read-only projections:
+
+- `cocatchup-ux-projection-r0.json`
+- `index.html`
+
+This proves a bounded custody transition for the delta receipt:
+
+`LANDED -> PICKED_UP_BY_COCATCHUP_UX_RECEIVER`
+
+when the workflow passes.
+
+It does **not** prove integration into CoBar, CoCivium.exe or another durable user-facing runtime.
+
+### Quiet front-door behavior
+
+The default projection carries only:
+
+1. one `CoHereNow` headline;
+2. one `Meaning`;
+3. one `NextSafeAction`;
+4. optional evidence under an expandable section.
+
+Status collapses to one of:
+
+`QUIET | DELTA | WAIT | ATTENTION`
+
+The evidence drill-down retains current main, exact source receipt hash, artifact identity, watched PRs, current-head assessment and baseline relation.
+
+`RECEIPT_PICKUP_NE_COBAR_INTEGRATION`
+
+`GREEN_WORKFLOW_NE_UX_ACCEPTANCE`
+
+`UX_ACCEPTANCE_UNPROVEN`
+
+### Why this matters
+
+This creates the first machine-owned path from live GitHub currentness evidence to a receiver-fit human projection without asking the user to relay hashes, open six PRs, or interpret old failure mail.
+
+The remaining product frontier is to let a durable CoBar/CoCivium surface consume the same projection contract automatically.
+
+`ARTIFACT_PROJECTION_NE_DURABLE_PRODUCT_SURFACE`
+
+`DELTA_PROJECTION_NE_CONTROL_PLANE`
