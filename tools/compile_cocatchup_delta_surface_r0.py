@@ -84,6 +84,7 @@ def main():
     rows = []
     material_delta_count = int(main_delta)
     hold_count = 0
+    wait_count = 0
 
     for watch in d["watched_prs"]:
         n = watch["pr_number"]
@@ -109,16 +110,46 @@ def main():
         draft = bool(pr.get("draft"))
 
         wf = workflow_summary(repo, head, token)
-        current_head_hold = (
-            d["decision_policy"]["current_head_without_any_successful_workflow_is_hold_signal"]
-            and wf["run_count"] > 0
-            and not wf["has_any_success"]
-        )
+
+        is_host = n == d["host_pr"]
+        if is_host:
+            # A workflow cannot truthfully use its own in-flight status as evidence
+            # of its eventual conclusion. Its external GitHub run conclusion is the
+            # proof surface after this receipt is emitted.
+            current_head_hold = False
+            current_head_wait = False
+            current_head_assessment = "HOST_SELF_PROOF_DEFERRED_TO_EXTERNAL_RUN_CONCLUSION"
+        else:
+            no_runs = wf["run_count"] == 0
+            pending_only = (
+                wf["pending_count"] > 0
+                and not wf["has_any_success"]
+                and wf["failure_count"] == 0
+            )
+            failed_after_settle = (
+                wf["failure_count"] > 0
+                and not wf["has_any_success"]
+                and wf["pending_count"] == 0
+            )
+            current_head_wait = pending_only
+            current_head_hold = no_runs or failed_after_settle
+            if no_runs:
+                current_head_assessment = "HOLD_NO_CURRENT_HEAD_PROOF"
+            elif failed_after_settle:
+                current_head_assessment = "HOLD_CURRENT_HEAD_FAILURE_WITHOUT_SUCCESS"
+            elif pending_only:
+                current_head_assessment = "WAIT_CURRENT_HEAD_PROOF_IN_FLIGHT"
+            elif wf["has_any_success"]:
+                current_head_assessment = "CURRENT_HEAD_HAS_SUCCESS"
+            else:
+                current_head_assessment = "CURRENT_HEAD_MIXED_OR_UNKNOWN"
 
         if head_delta or merged or closed:
             material_delta_count += 1
         if current_head_hold:
             hold_count += 1
+        if current_head_wait:
+            wait_count += 1
 
         rows.append({
             "pr_number": n,
@@ -134,6 +165,8 @@ def main():
             "updated_at": pr.get("updated_at"),
             "current_head_workflows": wf,
             "current_head_hold": current_head_hold,
+            "current_head_wait": current_head_wait,
+            "current_head_assessment": current_head_assessment,
             "special_disposition": watch["special_disposition"],
         })
 
@@ -143,6 +176,9 @@ def main():
     elif material_delta_count:
         next_action = "RELATE_MATERIAL_DELTAS_BEFORE_NEW_BRANCH_OR_MUTATION"
         state = "PASS_COCATCHUP_DELTA_SURFACE_R0__DELTA_PRESENT"
+    elif wait_count:
+        next_action = "WAIT_FOR_NON_HOST_CURRENT_HEAD_PROOF_TO_SETTLE"
+        state = "PASS_COCATCHUP_DELTA_SURFACE_R0__WAIT_SIGNAL_PRESENT"
     else:
         next_action = "NONE__WATCHED_FRONTIER_MATCHES_BOUND_BASELINE"
         state = "PASS_COCATCHUP_DELTA_SURFACE_R0__NO_MATERIAL_DELTA"
@@ -160,10 +196,11 @@ def main():
         "watched_pr_count": len(rows),
         "material_delta_count": material_delta_count,
         "current_head_hold_count": hold_count,
+        "current_head_wait_count": wait_count,
         "next_safe_action": next_action,
         "rows": rows,
         "ux_summary": {
-            "CoHereNow": f"{len(rows)} watched candidate surfaces queried live; material deltas={material_delta_count}; holds={hold_count}",
+            "CoHereNow": f"{len(rows)} watched candidate surfaces queried live; material deltas={material_delta_count}; holds={hold_count}; waits={wait_count}",
             "Meaning": "Live GitHub currentness is separated from bound baseline pointers and historical failures.",
             "NextSafeAction": next_action,
             "UXState": "UX_ACCEPTANCE_UNPROVEN",
@@ -184,6 +221,7 @@ def main():
         "watched_pr_count": len(rows),
         "material_delta_count": material_delta_count,
         "current_head_hold_count": hold_count,
+        "current_head_wait_count": wait_count,
         "next_safe_action": next_action,
         "fixture_semantic_sha256": receipt["fixture_semantic_sha256"],
     }, separators=(",", ":")))

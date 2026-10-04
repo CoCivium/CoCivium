@@ -50,7 +50,10 @@
   "decision_policy": {
     "head_change_is_delta_not_failure": true,
     "closed_or_merged_is_material_delta": true,
-    "current_head_without_any_successful_workflow_is_hold_signal": true,
+    "pending_only_current_head_is_wait_not_hold": true,
+    "current_head_completed_failure_without_success_is_hold_signal": true,
+    "current_head_with_no_runs_is_unproven_hold_signal": true,
+    "host_self_workflow_is_assessed_outside_its_own_receipt": true,
     "historical_failed_workflow_is_not_current_head_failure": true,
     "provider_exit_hold_does_not_wake_without_named_wake_condition": true,
     "observer_must_not_merge_close_or_mutate_watched_prs": true
@@ -62,6 +65,7 @@
       "watched_pr_count",
       "material_delta_count",
       "current_head_hold_count",
+      "current_head_wait_count",
       "next_safe_action"
     ],
     "drill_down": [

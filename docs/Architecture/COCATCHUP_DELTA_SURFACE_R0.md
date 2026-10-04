@@ -64,7 +64,15 @@ Historical failed runs on obsolete heads do not make the current head red.
 
 `FAILED_OLD_HEAD_NE_FAILED_CURRENT_HEAD`
 
-A current head with workflow runs but no successful current-head run becomes a HOLD signal. The observer itself still emits a receipt instead of failing merely because a donor requires attention.
+A completed current head with failures and no successful current-head run becomes a HOLD signal. A pending-only donor head is WAIT, not HOLD. A watched head with no current-head workflow proof is explicitly unproven.
+
+The host PR is different: this observer cannot use its own in-flight workflow status as evidence of its eventual conclusion. Host self-proof is therefore deferred to the external GitHub workflow conclusion after the receipt is emitted.
+
+This correction came directly from the first R0 run, which initially classified its own two in-flight host workflows as a HOLD. That was a CoSneak currentness bug, not a real frontier failure.
+
+`PENDING_NE_FAILED`
+
+`SELF_OBSERVATION_NE_POST_COMPLETION_PROOF`
 
 That keeps observation separate from mutation.
 
@@ -124,6 +132,7 @@ The default projection should show only:
 - watched PR count;
 - material delta count;
 - current-head HOLD count;
+- non-host WAIT count;
 - one next safe action.
 
 Hashes, workflow lists, baselines and branch relations remain drill-down evidence.
