@@ -706,3 +706,55 @@ The project should increasingly compile thousands of conceptual branches into fe
 `FEWER_SURFACES_NE_FEWER_IDEAS`
 
 `ONE_HOST_NE_ONE_TRUTH`
+
+
+## 18. R0D exact PR151 donor pickup
+
+The BranchField's highest-value unresolved deed is now to turn an abstract fan-in relation into exact custody evidence without merging or closing either branch.
+
+PR151 is the clean first donor because PR150 already records:
+
+`PR151 --CANDIDATE_FANIN_TO--> PR150`
+
+and identifies five retained deltas.
+
+R0D lands an exact donor manifest on PR150 and elects a bounded read-only receiver:
+
+`github-actions:PR150_PR151_DONOR_PICKUP_R0D`
+
+The receiver must, at run time:
+
+1. verify PR151's live current head still equals the manifested exact head;
+2. check out that exact donor head independently;
+3. read all four PR151 changed objects;
+4. verify each Git blob SHA;
+5. compute an independent SHA-256 readproof for each object;
+6. verify the five selected donor deltas still exist in the exact donor objects;
+7. verify selected negative knowledge remains present;
+8. verify `wake_on_delta = true`;
+9. verify donor fixture runtime/public effects remain false;
+10. emit a receiver-produced readproof artifact.
+
+A PASS may prove only:
+
+`PR151_EXACT_OBJECT_SET -> PICKED_UP_BY_PR150_DONOR_RECEIVER`
+
+It does not prove semantic integration, acceptance, merge authority, branch closure, canon or CoEx.
+
+This deliberately advances one custody rung instead of declaring the branch "fanned in" because a relation row exists. Relations are useful. Receipts are less poetic and therefore harder to fool.
+
+The next retirement gate remains:
+
+`PRESERVE_LINEAGE + NEGATIVE_KNOWLEDGE + WAKE_CONDITIONS + PROVE_NO_UNRESOLVED_UNIQUE_PROOF_LANE`
+
+before any close decision.
+
+Rails:
+
+`FANIN_RELATION_NE_CONTENT_TRANSFER`  
+`DONOR_MANIFEST_NE_RECEIVER_PICKUP`  
+`PICKUP_NE_INTEGRATION`  
+`PICKUP_NE_BRANCH_RETIREMENT`  
+`RETIREMENT_CANDIDATE_NE_RETIREMENT_AUTHORITY`  
+`BRANCH_CLOSE_NE_HISTORY_ERASURE`  
+`VALIDATION_IS_NOT_ACCEPTANCE`

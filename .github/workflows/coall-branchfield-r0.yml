@@ -8,9 +8,11 @@ on:
       - "fixtures/architecture/coall_branchfield_r0.json"
       - "fixtures/architecture/co_branch_ecology_r0.json"
       - "fixtures/architecture/co_branch_convergence_disposition_r0c.json"
+      - "fixtures/architecture/co_branch_donor_pickup_pr151_r0d.json"
       - "tools/validate_coall_branchfield_r0.py"
       - "tools/validate_co_branch_ecology_r0.py"
       - "tools/validate_co_branch_convergence_disposition_r0c.py"
+      - "tools/validate_co_branch_donor_pickup_pr151_r0d.py"
       - ".github/workflows/coall-branchfield-r0.yml"
   workflow_dispatch:
 
@@ -20,6 +22,7 @@ concurrency:
 
 permissions:
   contents: read
+  pull-requests: read
 
 jobs:
   validate:
@@ -29,9 +32,32 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
           fetch-depth: 1
+
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+
       - run: python tools/validate_coall_branchfield_r0.py
       - run: python tools/validate_co_branch_ecology_r0.py
       - run: python tools/validate_co_branch_convergence_disposition_r0c.py
+
+      - name: Check out exact PR151 donor head
+        uses: actions/checkout@v4
+        with:
+          repository: CoCivium/CoCivium
+          ref: 14749870cdeec138679852e8c339c16ab95524b4
+          path: donor-pr151
+          fetch-depth: 1
+
+      - name: Prove exact PR151 donor pickup by PR150 receiver
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python tools/validate_co_branch_donor_pickup_pr151_r0d.py --donor-root donor-pr151 --output artifacts/pr151-donor-pickup-r0d.json
+
+      - name: Upload donor readproof
+        uses: actions/upload-artifact@v4
+        with:
+          name: pr150-pr151-donor-pickup-r0d
+          path: artifacts/pr151-donor-pickup-r0d.json
+          if-no-files-found: error
+          retention-days: 30
