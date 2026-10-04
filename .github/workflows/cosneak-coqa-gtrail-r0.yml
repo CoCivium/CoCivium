@@ -13,6 +13,7 @@ on:
       - "docs/Architecture/COSNEAK_HUMAN_RELAY_LIVE_USE_TRACE_R0M.md"
       - "docs/Architecture/COSNEAK_FAILURE_DOMAIN_DIVERSITY_AUDIT_R0O.md"
       - "docs/Architecture/COQ40_LOCAL_RECURRING_DEED_CANARY_R0Q.md"
+      - "docs/Architecture/COGENEXIS_BOUNDED_DISCOVERY_PAYLOAD_ECOLOGY_R0U.md"
       - "docs/Architecture/COQ40_CHANGED_CONTRACT_LOCAL_CANARY_R0T.md"
       - "docs/Architecture/COQ40_SEMANTIC_ACCEPTANCE_GATE_R0R.md"
       - "docs/Architecture/COQ40_CHANGED_CONTRACT_CANARY_R0S.md"
@@ -34,6 +35,7 @@ on:
       - "fixtures/relations/cosneak_human_relay_live_use_trace_r0m.json"
       - "fixtures/relations/cosneak_failure_domain_diversity_audit_r0o.json"
       - "fixtures/relations/coq40_local_recurring_deed_canary_r0q.json"
+      - "fixtures/relations/cogenexis_bounded_discovery_payload_ecology_r0u.json"
       - "fixtures/relations/coq40_changed_contract_local_canary_r0t.json"
       - "fixtures/relations/coq40_semantic_acceptance_gate_r0r.json"
       - "fixtures/relations/coq40_changed_contract_canary_r0s.json"
@@ -56,6 +58,7 @@ on:
       - "tools/validate_cosneak_human_relay_live_use_trace_r0m.py"
       - "tools/validate_cosneak_failure_domain_diversity_audit_r0o.py"
       - "tools/validate_coq40_local_recurring_deed_canary_r0q.py"
+      - "tools/validate_cogenexis_bounded_discovery_payload_ecology_r0u.py"
       - "tools/validate_coq40_changed_contract_local_canary_r0t.py"
       - "tools/validate_coq40_semantic_acceptance_gate_r0r.py"
       - "tools/validate_coq40_changed_contract_canary_r0s.py"
@@ -99,6 +102,7 @@ jobs:
       - run: python tools/validate_cosneak_human_relay_live_use_trace_r0m.py
       - run: python tools/validate_cosneak_failure_domain_diversity_audit_r0o.py
       - run: python tools/validate_coq40_local_recurring_deed_canary_r0q.py
+      - run: python tools/validate_cogenexis_bounded_discovery_payload_ecology_r0u.py
       - run: python tools/validate_coq40_changed_contract_local_canary_r0t.py
       - run: python tools/validate_coq40_semantic_acceptance_gate_r0r.py
       - run: python tools/validate_coq40_changed_contract_canary_r0s.py
