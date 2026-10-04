@@ -1,0 +1,43 @@
+name: CoCatchUp Delta Surface R0
+
+on:
+  pull_request:
+    paths:
+      - "docs/Architecture/COCATCHUP_DELTA_SURFACE_R0.md"
+      - "fixtures/architecture/cocatchup_delta_surface_r0.json"
+      - "tools/compile_cocatchup_delta_surface_r0.py"
+      - ".github/workflows/cocatchup-delta-surface-r0.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+  pull-requests: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  observe:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out exact candidate head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile live currentness delta surface
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python tools/compile_cocatchup_delta_surface_r0.py --output artifacts/cocatchup-delta-surface-r0.json
+      - name: Upload delta surface receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: cocatchup-delta-surface-r0
+          path: artifacts/cocatchup-delta-surface-r0.json
+          if-no-files-found: error
+          retention-days: 30
