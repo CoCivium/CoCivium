@@ -1,0 +1,36 @@
+name: CoField Mesh Bridge R0G
+
+on:
+  pull_request:
+    paths:
+      - "docs/Architecture/COFIELD_MESH_BRIDGE_R0G.md"
+      - "fixtures/architecture/cofield_mesh_bridge_r0g.json"
+      - "tools/validate_cofield_mesh_bridge_r0g.py"
+      - ".github/workflows/cofield-mesh-bridge-r0g.yml"
+      - "docs/Architecture/COALL_BRANCHFIELD_R0.md"
+      - "docs/Architecture/COCATCHUP_DELTA_SURFACE_R0.md"
+      - "tools/project_cocatchup_ux_r0.py"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out exact candidate head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 1
+      - name: Use Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Validate orthogonal bridge-state field
+        run: python tools/validate_cofield_mesh_bridge_r0g.py
