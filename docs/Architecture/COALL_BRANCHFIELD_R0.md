@@ -533,3 +533,176 @@ The relation does **not** merge, close, supersede or canonize either PR.
 This is the first practical use of the BranchField's own rule:
 
 `FANIN_BEFORE_MORE_PARALLEL_MUTATION`
+
+
+## 15. CoEverything+ / typed universal projection without semantic soup
+
+`CoEverything+` is useful as a playful human projection for the ambition to keep relating whatever proves relevant.
+
+It should not become a schema with one giant type named EVERYTHING.
+
+A better relation is:
+
+```text
+UNKNOWN_OR_POTENTIAL_OBJECT
+-> DISCOVER
+-> TYPE_IF_EARNED
+-> RELATE
+-> PROJECT_FOR_RECEIVER
+-> COMPACT
+-> RETAIN_UNKNOWN_WHERE_NEEDED
+```
+
+So `CoEverything+` is a **projection over an open relation field**, not a claim that CoAll contains, knows, controls, or correctly models everything.
+
+`COEVERYTHING_NE_EVERYTHING_KNOWN`
+
+`COEVERYTHING_NE_EVERYTHING_INGESTED`
+
+`COEVERYTHING_NE_EVERYTHING_CONNECTED`
+
+`COEVERYTHING_NE_UNIVERSAL_AUTHORITY`
+
+`COEVERYTHING_NE_COALL_COMPLETE`
+
+### The useful paradox
+
+The architecture can aim toward very broad relational coverage while deliberately preserving:
+
+- unknown objects;
+- unknown relation types;
+- uncertain causal status;
+- unrepresented regions;
+- conflicting observer models;
+- inaccessible/private regions;
+- future discoveries;
+- things outside the current ontology.
+
+The open edge is a feature.
+
+`UNKNOWN_NE_SCHEMA_FAILURE`
+
+`UNREPRESENTED_NE_UNRELATED`
+
+`OUTSIDE_MODEL_NE_OUTSIDE_REALITY`
+
+### CoEtc+ as a first-class continuation pointer
+
+The user's recurring `etc` can be modeled more rigorously than "and miscellaneous other stuff."
+
+Candidate `CoEtc+` relation:
+
+```text
+VISIBLE_PROJECTION
+-> OPEN_CONTINUATION_POINTER
+-> bounded discovery/query policy
+-> additional relations only when useful
+```
+
+This lets a compact UX acknowledge that more exists without dumping it all into the foreground.
+
+`ETC_NE_WILDCARD_AUTHORITY`
+
+`ETC_NE_EVIDENCE_OF_UNSEEN_CONTENT`
+
+`ETC_NE_REQUIREMENT_TO_EXPAND_NOW`
+
+`ETC_NE_INFINITE_WORK_ORDER`
+
+### Payload density as a relation field
+
+Payload density, UX bloat, proof density, ambiguity, novelty and receiver comprehension should be treated as relations among:
+
+`payload | receiver | task | time | evidence | projection | attention_budget`
+
+The same payload can be dense and useful for one receiver, opaque for another, and redundant for a third.
+
+So:
+
+`PAYLOAD_DENSITY_NE_INTRINSIC_PROPERTY`
+
+`BLOAT_NE_BYTE_COUNT`
+
+`COMPRESSION_NE_UNIVERSAL_IMPROVEMENT`
+
+`RECEIVER_FIT_GT_MAXIMUM_COMPRESSION`
+
+Candidate projection objective:
+
+```text
+maximize useful receiver value
+subject to:
+  truthfulness
+  provenance
+  authority clarity
+  uncertainty visibility
+  recoverability
+  attention budget
+```
+
+### CoConvergeSpiralLoop+ gets a novelty gate
+
+A healthy spiral should not revisit a state merely because it can.
+
+Before another turn:
+
+```text
+new evidence?
+new receiver?
+changed authority?
+changed currentness?
+new contradiction?
+new capability?
+materially better compression?
+unresolved high-value uncertainty?
+```
+
+If none apply, compact/park/retire rather than recurse.
+
+`NO_MEANINGFUL_DELTA -> NO_FORCED_SPIRAL_TURN`
+
+This is a direct anti-loop rule.
+
+### CoOps+ / CoMythOps+ / CoEverything+
+
+These can form a typed braid:
+
+```text
+CoOps+      = executable/evidentiary projection
+CoMythOps+  = symbolic/cultural/metaphorical projection
+CoEverything+ = open relational projection across both and more
+```
+
+Relations may cross layers, but type is preserved.
+
+A metaphor can inspire an operation. An operation can acquire cultural meaning. Neither transformation silently changes epistemic class.
+
+`METAPHOR_CAN_SEED_HYPOTHESIS`
+
+`HYPOTHESIS_CAN_SEED_TEST`
+
+`TEST_RESULT_CAN_UPDATE_MODEL`
+
+`MODEL_UPDATE_NE_RETROACTIVE_METAPHOR_AS_FACT`
+
+### Branch pressure itself is now evidence
+
+The current open-PR field has reached the point where new conceptual insight should preferentially land as a relation/delta on an existing compatible host rather than another Git branch.
+
+That is exactly what this section does.
+
+`IDEA_NE_GIT_BRANCH`
+
+`CONCEPTUAL_BRANCH_NE_PROVIDER_BRANCH`
+
+`RELATE_BEFORE_BRANCH`
+
+`FANIN_BEFORE_MORE_PARALLEL_MUTATION`
+
+The project should increasingly compile thousands of conceptual branches into fewer durable execution/proof surfaces while preserving lineage and disagreement.
+
+`COMPACTION_NE_ERASURE`
+
+`FEWER_SURFACES_NE_FEWER_IDEAS`
+
+`ONE_HOST_NE_ONE_TRUTH`
