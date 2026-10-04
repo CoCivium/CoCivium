@@ -9,10 +9,13 @@ on:
       - "fixtures/architecture/co_branch_ecology_r0.json"
       - "fixtures/architecture/co_branch_convergence_disposition_r0c.json"
       - "fixtures/architecture/co_branch_donor_pickup_pr151_r0d.json"
+      - "fixtures/architecture/co_branch_donor_pickup_pr152_pr153_r0i.json"
       - "tools/validate_coall_branchfield_r0.py"
       - "tools/validate_co_branch_ecology_r0.py"
       - "tools/validate_co_branch_convergence_disposition_r0c.py"
       - "tools/validate_co_branch_donor_pickup_pr151_r0d.py"
+      - "tools/validate_co_branch_donor_pickup_pr152_pr153_r0i.py"
+      - "docs/Architecture/COBRANCH_DONOR_PICKUP_PR152_PR153_R0I.md"
       - ".github/workflows/coall-branchfield-r0.yml"
   workflow_dispatch:
 
@@ -59,5 +62,34 @@ jobs:
         with:
           name: pr150-pr151-donor-pickup-r0d
           path: artifacts/pr151-donor-pickup-r0d.json
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Check out exact PR152 donor head
+        uses: actions/checkout@v4
+        with:
+          repository: CoCivium/CoCivium
+          ref: 937cfc1126b22a8e6487fa34bec9c55733bb65dc
+          path: donor-pr152
+          fetch-depth: 1
+
+      - name: Check out exact PR153 donor head
+        uses: actions/checkout@v4
+        with:
+          repository: CoCivium/CoCivium
+          ref: 4fc4d08723a703fd8bfa8fe0046ebdbc5f32c7c4
+          path: donor-pr153
+          fetch-depth: 1
+
+      - name: Prove exact PR152 + PR153 donor pickup by PR150 receiver
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python tools/validate_co_branch_donor_pickup_pr152_pr153_r0i.py --donor-pr152-root donor-pr152 --donor-pr153-root donor-pr153 --output artifacts/pr152-pr153-donor-pickup-r0i.json
+
+      - name: Upload dual donor readproof
+        uses: actions/upload-artifact@v4
+        with:
+          name: pr150-pr152-pr153-donor-pickup-r0i
+          path: artifacts/pr152-pr153-donor-pickup-r0i.json
           if-no-files-found: error
           retention-days: 30
