@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import argparse
 import hashlib
+import html as html_lib
 import json
 import re
 import subprocess
