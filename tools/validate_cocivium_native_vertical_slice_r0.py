@@ -86,10 +86,13 @@ def main():
     if "CoHereNow" not in text or "Meaning" not in text or "NextSafeAction" not in text:
         fail("UX_SUMMARY_CONTRACT")
 
+    def rendered_contains(value):
+        return value in text or html_lib.escape(value, quote=True) in text
+
     journey = doc["journey"]
     for section in ["synthetic_user_input", "reply", "cohere_now", "meaning", "next_safe_action"]:
         for lang in ["en-CA", "fr-CA"]:
-            if journey[section][lang] not in text:
+            if not rendered_contains(journey[section][lang]):
                 fail("MISSING_TRANSLATION:" + section + ":" + lang)
 
     for item in doc["evidence"]:
@@ -98,7 +101,7 @@ def main():
 
     for step in doc["learning_path"]:
         for lang in ["en-CA", "fr-CA"]:
-            if step["title"][lang] not in text or step["detail"][lang] not in text:
+            if not rendered_contains(step["title"][lang]) or not rendered_contains(step["detail"][lang]):
                 fail("LEARNING_PATH:" + str(step["step"]) + ":" + lang)
 
     lowered = text.lower()
