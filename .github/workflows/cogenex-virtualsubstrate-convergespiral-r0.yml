@@ -1,0 +1,26 @@
+name: CoGenEx Virtual Substrate Converge Spiral R0
+
+on:
+  pull_request:
+    paths:
+      - "docs/Architecture/COGENEX_VIRTUAL_SUBSTRATE_CONVERGE_SPIRAL_R0.md"
+      - "fixtures/relations/cogenex_virtualsubstrate_convergespiral_r0.json"
+      - "tools/validate_cogenex_virtualsubstrate_convergespiral_r0.py"
+      - ".github/workflows/cogenex-virtualsubstrate-convergespiral-r0.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python tools/validate_cogenex_virtualsubstrate_convergespiral_r0.py
