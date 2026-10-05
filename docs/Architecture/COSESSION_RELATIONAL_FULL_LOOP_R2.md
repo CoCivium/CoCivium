@@ -18,20 +18,22 @@ Not every object becomes a session. A durable virtual/session envelope is warran
 
 ## Full relational loop
 
-The mature loop is:
+The mature loop is best understood as a **CoBoogie+ envelope**:
 
-`Observe -> CoBoogie? -> CoRegroup -> CoSync/CoResync? -> CoAckRewise? -> Elect bounded deed -> Materialize if needed -> Execute -> Receipt -> Deliver -> Pickup -> Integrate/qualify -> Update currentness -> Quiesce/Sleep -> Wake predicate -> Observe`
+`Observe -> detect material drift? -> CoRegroup if needed -> CoSync/CoResync? -> CoAckRewise? -> Elect bounded deed -> Materialize if needed -> Execute -> Receipt -> Deliver -> Pickup -> Integrate/qualify -> Update currentness -> Quiesce/Sleep -> Wake predicate -> Observe`
 
-The question mark matters.
+The question marks matter.
 
-- **CoBoogie+** runs only when material drift/currentness/failure/change is detected.
-- **CoRegroup+** performs finite reconciliation over the relevant delta field.
+- **CoBoogie+** is the outer event-driven freshness/recovery/execution cycle. It is not a blind rescan and need not run merely because time passed.
+- Its initial observation/delta-audit phase characterizes material change, stale currentness, receiver/failure-domain change, contradiction, or return/reawakening.
+- **CoRegroup+** is the finite reconciliation/disposition phase within that broader CoBoogie cycle, and may also be invoked independently when a bounded delta field already exists.
 - **CoSync+** aligns verified state across relevant receivers; **CoResync** repairs detected drift/loss.
 - **CoAckRewise+** is a scoped human interpretation/acknowledgement/revision relation only when a genuine human information, consent, authority, public, privacy, irreversible or financial edge requires it. It is not a heartbeat.
 - Execution remains bounded by current authority, capability, confidentiality, collision, lease and reversibility constraints.
 - Receipts and receiver readproof remain distinct from integration.
 
 `RICK_NE_HEARTBEAT`  
+`COREGROUP_SUBSET_OF_COBOOGIE_FOR_FULL_CYCLE`  
 `SYNC_NE_DISCOVERY`  
 `ACK_NE_HEARTBEAT`  
 `ACK_NE_AUTHORITY_UNLESS_EXPLICITLY_SCOPED`  
