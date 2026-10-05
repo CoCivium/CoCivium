@@ -1,0 +1,83 @@
+{
+  "schema": "CoVirtualLivenessStallMesh.R0",
+  "state": "CANDIDATE_VIRTUAL_LIVENESS_AND_RECOVERY_QUORUM__NO_RUNTIME_ADOPTION",
+  "states": [
+    "VISIBLE",
+    "RESPONSIVE",
+    "PROGRESSING",
+    "SLOW",
+    "STALLED",
+    "DORMANT",
+    "RECOVERING",
+    "SUPERSEDED",
+    "STOPPED",
+    "UNKNOWN"
+  ],
+  "cases": [
+    {
+      "id": "visible_no_progress",
+      "visible": true,
+      "responsive": true,
+      "heartbeat": true,
+      "progress": false,
+      "recoverable": true,
+      "expected": "STALLED"
+    },
+    {
+      "id": "hidden_checkpoint_recoverable",
+      "visible": false,
+      "responsive": false,
+      "heartbeat": false,
+      "progress": false,
+      "recoverable": true,
+      "expected": "DORMANT"
+    },
+    {
+      "id": "progress_receipt",
+      "visible": false,
+      "responsive": false,
+      "heartbeat": true,
+      "progress": true,
+      "recoverable": true,
+      "expected": "PROGRESSING"
+    },
+    {
+      "id": "stopped_with_successor",
+      "visible": false,
+      "responsive": false,
+      "heartbeat": false,
+      "progress": false,
+      "recoverable": true,
+      "successor": true,
+      "expected": "SUPERSEDED"
+    },
+    {
+      "id": "no_evidence",
+      "visible": false,
+      "responsive": false,
+      "heartbeat": false,
+      "progress": false,
+      "recoverable": false,
+      "expected": "UNKNOWN"
+    }
+  ],
+  "recovery": {
+    "many_watchers_allowed": true,
+    "simultaneous_actuators_per_lease": 1,
+    "retry_storm_allowed": false,
+    "backoff_required": true,
+    "checkpoint_preferred": true
+  },
+  "delivery_states": [
+    "READY",
+    "SENT",
+    "DELIVERED",
+    "PICKED_UP",
+    "UNDERSTOOD",
+    "RESPONDED",
+    "INTEGRATED"
+  ],
+  "runtime_adoption": false,
+  "provider_session_mutation": false,
+  "public_effect": false
+}
