@@ -4,8 +4,11 @@ on:
   pull_request:
     paths:
       - "docs/UX/COUSER_WORKPLANE_R0.md"
+      - "docs/UX/COUSER_TAB_RETIREMENT_R0.md"
       - "fixtures/ux/co_user_workplane_r0.json"
+      - "fixtures/ux/co_user_tab_retirement_r0.json"
       - "tools/validate_co_user_workplane_r0.py"
+      - "tools/validate_co_user_tab_retirement_r0.py"
       - ".github/workflows/co-user-workplane-r0.yml"
       - "docs/Architecture/COVIRTUAL_SESSION_MORPHOLOGY_R0.md"
       - "docs/UX/COFLEET_RICKBAR_R4.md"
@@ -33,3 +36,4 @@ jobs:
         with:
           python-version: "3.12"
       - run: python tools/validate_co_user_workplane_r0.py
+      - run: python tools/validate_co_user_tab_retirement_r0.py
