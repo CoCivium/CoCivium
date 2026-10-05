@@ -28,7 +28,7 @@ def decide(v):
     if not v["same_objective"]:
         return "ELECT_NEW_LOGICAL_SESSION_OR_WAVE"
     if v["material_drift"]:
-        return "COBOOGIE_THEN_COREGROUP"
+        return "COBOOGIE_DELTA_AUDIT_THEN_COREGROUP"
     if v["financial_effect"] or v["human_gate"]:
         return "COACKREWISE_REQUIRED"
     if v["sync_required"] and not v["delivery_proven"]:
