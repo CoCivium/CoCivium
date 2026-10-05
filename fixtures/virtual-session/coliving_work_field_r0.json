@@ -1,0 +1,113 @@
+{
+  "schema": "CoLivingWorkField.R0",
+  "state": "SYNTHETIC_LIVING_WORK_FIELD_PLUS_UX_PROJECTION__NO_RUNTIME_CONTROL",
+  "source_bindings": {
+    "liveness_doc_path": "docs/Architecture/COVIRTUAL_LIVENESS_TRUTH_R0.md",
+    "liveness_doc_blob_sha": "df982170def4e36ce9a033add2a2be556e153a7e",
+    "liveness_fixture_path": "fixtures/virtual-session/covirtual_liveness_truth_r0.json",
+    "liveness_fixture_blob_sha": "786c99a7a26f8df4f38ace5473100cf655fde129"
+  },
+  "work_objects": [
+    {
+      "id": "W1",
+      "kind": "TASK",
+      "priority": 90,
+      "virtual_session_state": "WAKEABLE",
+      "dependencies": [
+        "W3"
+      ],
+      "retired": false
+    },
+    {
+      "id": "W2",
+      "kind": "DORMANT_OPTION",
+      "priority": 20,
+      "virtual_session_state": "DORMANT",
+      "dependencies": [],
+      "retired": false
+    },
+    {
+      "id": "W3",
+      "kind": "PROOF_DEED",
+      "priority": 100,
+      "virtual_session_state": "MATERIALIZED",
+      "dependencies": [],
+      "retired": false
+    },
+    {
+      "id": "W4",
+      "kind": "ANTI_TASK",
+      "priority": 95,
+      "virtual_session_state": "WAKEABLE",
+      "dependencies": [],
+      "retired": false
+    },
+    {
+      "id": "W5",
+      "kind": "SUPPRESSOR",
+      "priority": 98,
+      "virtual_session_state": "WAKEABLE",
+      "dependencies": [],
+      "retired": false
+    },
+    {
+      "id": "W6",
+      "kind": "TASK",
+      "priority": 99,
+      "virtual_session_state": "RETIRED",
+      "dependencies": [],
+      "retired": true
+    }
+  ],
+  "ux_cases": [
+    {
+      "id": "U1",
+      "virtual_state": "WAKEABLE",
+      "projection_age_seconds": 900,
+      "projection_ttl_seconds": 60,
+      "tray_claim": "DEAD",
+      "expected": {
+        "projection_state": "STALE_PROJECTION",
+        "display_session_state": "WAKEABLE",
+        "session_alive": true
+      }
+    },
+    {
+      "id": "U2",
+      "virtual_state": "BLOCKED",
+      "projection_age_seconds": 10,
+      "projection_ttl_seconds": 60,
+      "tray_claim": "LIVE",
+      "expected": {
+        "projection_state": "FRESH_PROJECTION",
+        "display_session_state": "BLOCKED",
+        "session_alive": false
+      }
+    },
+    {
+      "id": "U3",
+      "virtual_state": "DORMANT",
+      "projection_age_seconds": 20,
+      "projection_ttl_seconds": 60,
+      "tray_claim": "QUIET",
+      "expected": {
+        "projection_state": "FRESH_PROJECTION",
+        "display_session_state": "DORMANT",
+        "session_alive": true
+      }
+    }
+  ],
+  "rails": [
+    "TOP100_NE_WORK_SUBSTRATE",
+    "LIST_NE_RELATIONAL_FIELD",
+    "TASK_NE_ONLY_WORK_OBJECT",
+    "ANTI_TASK_NE_ABSENCE",
+    "DORMANT_OPTION_NE_DEAD_WORK",
+    "STALE_TRAY_NE_DEAD_SESSION",
+    "FRESH_TRAY_NE_LIVE_SESSION",
+    "PROJECTION_NE_SOURCE_OF_TRUTH",
+    "UI_NE_CONTROL_PLANE",
+    "UX_ACCEPTANCE_UNPROVEN",
+    "VALIDATION_IS_NOT_ACCEPTANCE"
+  ]
+}

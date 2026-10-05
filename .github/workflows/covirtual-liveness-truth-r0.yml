@@ -4,8 +4,11 @@ on:
   pull_request:
     paths:
       - "docs/Architecture/COVIRTUAL_LIVENESS_TRUTH_R0.md"
+      - "docs/Architecture/COLIVING_WORK_FIELD_R0.md"
       - "fixtures/virtual-session/covirtual_liveness_truth_r0.json"
+      - "fixtures/virtual-session/coliving_work_field_r0.json"
       - "tools/validate_covirtual_liveness_truth_r0.py"
+      - "tools/validate_coliving_work_field_r0.py"
       - ".github/workflows/covirtual-liveness-truth-r0.yml"
       - "docs/Architecture/COVIRTUAL_SESSION_MORPHOLOGY_R0.md"
       - "ai/virtual-session-policy.json"
@@ -31,3 +34,4 @@ jobs:
         with:
           python-version: "3.12"
       - run: python tools/validate_covirtual_liveness_truth_r0.py
+      - run: python tools/validate_coliving_work_field_r0.py
