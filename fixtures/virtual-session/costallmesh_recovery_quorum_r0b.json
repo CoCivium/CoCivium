@@ -1,0 +1,68 @@
+{
+  "schema": "CoStallMeshRecoveryQuorum.R0B",
+  "state": "CANDIDATE_EVIDENCE_DRIVEN_STALL_RECOVERY__NO_RUNTIME_ACTUATION",
+  "cases": [
+    {
+      "id": "heartbeat_without_progress",
+      "heartbeat": true,
+      "progress": false,
+      "recoverable": true,
+      "retry_count": 0,
+      "expected": "STALLED"
+    },
+    {
+      "id": "progress_receipt",
+      "heartbeat": true,
+      "progress": true,
+      "recoverable": true,
+      "retry_count": 0,
+      "expected": "ACTIVE"
+    },
+    {
+      "id": "silent_recoverable",
+      "heartbeat": false,
+      "progress": false,
+      "recoverable": true,
+      "retry_count": 0,
+      "expected": "DORMANT"
+    },
+    {
+      "id": "repeated_failures",
+      "heartbeat": false,
+      "progress": false,
+      "recoverable": true,
+      "retry_count": 3,
+      "expected": "QUARANTINED"
+    },
+    {
+      "id": "successor",
+      "heartbeat": false,
+      "progress": false,
+      "recoverable": true,
+      "retry_count": 1,
+      "successor": true,
+      "expected": "SUPERSEDED"
+    }
+  ],
+  "recovery": {
+    "passive_watchers_max": "UNBOUNDED_BY_THIS_FIXTURE",
+    "simultaneous_actuators_per_scope": 1,
+    "nudge_per_lease": 1,
+    "backoff_required": true,
+    "circuit_breaker_after_repeated_failure": true,
+    "restart_counts_as_recovery_success": false
+  },
+  "delivery_ladder": [
+    "READY",
+    "SENT",
+    "DELIVERED",
+    "PICKED_UP",
+    "UNDERSTOOD",
+    "RESPONDED",
+    "INTEGRATED"
+  ],
+  "runtime_actuation": false,
+  "provider_ui_mutation": false,
+  "persistent_watcher_installed": false,
+  "public_effect": false
+}
