@@ -10,8 +10,11 @@ on:
       - "tools/validate_covirtual_liveness_truth_r0.py"
       - "tools/validate_coliving_work_field_r0.py"
       - "docs/Architecture/COOBSERVER_SURFACE_CURRENTNESS_R0.md"
+      - "docs/Architecture/COSTALLMESH_RECOVERY_QUORUM_R0B.md"
       - "fixtures/virtual-session/coobserver_surface_currentness_r0.json"
+      - "fixtures/virtual-session/costallmesh_recovery_quorum_r0b.json"
       - "tools/validate_coobserver_surface_currentness_r0.py"
+      - "tools/validate_costallmesh_recovery_quorum_r0b.py"
       - ".github/workflows/covirtual-liveness-truth-r0.yml"
       - "docs/Architecture/COVIRTUAL_SESSION_MORPHOLOGY_R0.md"
       - "ai/virtual-session-policy.json"
@@ -39,3 +42,4 @@ jobs:
       - run: python tools/validate_covirtual_liveness_truth_r0.py
       - run: python tools/validate_coliving_work_field_r0.py
       - run: python tools/validate_coobserver_surface_currentness_r0.py
+      - run: python tools/validate_costallmesh_recovery_quorum_r0b.py
