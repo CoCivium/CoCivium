@@ -5,14 +5,21 @@ on:
     paths:
       - "docs/UX/COUSER_WORKPLANE_R0.md"
       - "docs/UX/COUSER_TAB_RETIREMENT_R0.md"
+      - "docs/UX/COSESSION_REGROUP_FULL_LOOP_R0.md"
       - "fixtures/ux/co_user_workplane_r0.json"
       - "fixtures/ux/co_user_tab_retirement_r0.json"
+      - "fixtures/ux/co_session_regroup_loop_r0.json"
       - "tools/validate_co_user_workplane_r0.py"
       - "tools/validate_co_user_tab_retirement_r0.py"
+      - "tools/validate_co_session_regroup_loop_r0.py"
       - ".github/workflows/co-user-workplane-r0.yml"
       - "docs/Architecture/COVIRTUAL_SESSION_MORPHOLOGY_R0.md"
+      - "docs/Architecture/COBOOGIE_REGROUP_RELATIONAL_RETURN_R1.md"
       - "docs/UX/COFLEET_RICKBAR_R4.md"
       - "ai/session-lifecycle-policy.json"
+      - "ai/coboogie-regroup-policy.json"
+      - "ai/virtual-session-policy.json"
+      - "ai/evolution-deltas/2026-09-24/coevo-turtles-bounded-traversal-humour-r1.json"
       - "SESSION_BOOTSTRAP.md"
   workflow_dispatch:
 
@@ -37,3 +44,4 @@ jobs:
           python-version: "3.12"
       - run: python tools/validate_co_user_workplane_r0.py
       - run: python tools/validate_co_user_tab_retirement_r0.py
+      - run: python tools/validate_co_session_regroup_loop_r0.py
