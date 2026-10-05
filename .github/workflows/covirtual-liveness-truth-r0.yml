@@ -1,0 +1,33 @@
+name: CoVirtual liveness truth R0
+
+on:
+  pull_request:
+    paths:
+      - "docs/Architecture/COVIRTUAL_LIVENESS_TRUTH_R0.md"
+      - "fixtures/virtual-session/covirtual_liveness_truth_r0.json"
+      - "tools/validate_covirtual_liveness_truth_r0.py"
+      - ".github/workflows/covirtual-liveness-truth-r0.yml"
+      - "docs/Architecture/COVIRTUAL_SESSION_MORPHOLOGY_R0.md"
+      - "ai/virtual-session-policy.json"
+      - "docs/Operations/COPULSE_CAPACITY_PROVENANCE_R0G.md"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python tools/validate_covirtual_liveness_truth_r0.py

@@ -1,0 +1,113 @@
+{
+  "schema": "CoVirtualSession.LivenessTruth.v0.1-candidate",
+  "state": "SYNTHETIC_LIVENESS_TRUTH_CANARY__NO_RUNTIME_NO_PROVIDER_CONTROL",
+  "source_bindings": {
+    "morphology_doc_path": "docs/Architecture/COVIRTUAL_SESSION_MORPHOLOGY_R0.md",
+    "morphology_doc_blob_sha": "5dff7fff33f8637c3c333fdca360874db1e0bfe5",
+    "virtual_policy_path": "ai/virtual-session-policy.json",
+    "virtual_policy_blob_sha": "4e66ddd67879815f31bddeb8e3fe11e426768e31",
+    "copulse_doc_path": "docs/Operations/COPULSE_CAPACITY_PROVENANCE_R0G.md",
+    "copulse_doc_blob_sha": "65185cc7718be0240b263ca4913f6b6befe6ce92"
+  },
+  "truth_model": {
+    "virtual_session_truth_states": [
+      "RECOVERABLE",
+      "WAKEABLE",
+      "MATERIALIZED",
+      "BLOCKED",
+      "DORMANT",
+      "RETIRED"
+    ],
+    "embodiment_states": [
+      "LIVE",
+      "STALE",
+      "UNREACHABLE",
+      "ABSENT",
+      "UNKNOWN"
+    ],
+    "rule": "VIRTUAL_SESSION_LIVENESS_IS_DERIVED_FROM_RECOVERABILITY_PLUS_WAKEABILITY_PLUS_CURRENTNESS_NOT_FROM_ANY_ONE_EMBODIMENT"
+  },
+  "scenarios": [
+    {
+      "id": "L01_TAB_DEAD_BUT_CHECKPOINT_RECOVERABLE",
+      "checkpoint_present": true,
+      "wake_conditions_present": true,
+      "currentness_cursor_present": true,
+      "embodiments": [
+        {"id": "chatgpt-tab-1", "state": "UNREACHABLE"}
+      ],
+      "expected_virtual_state": "WAKEABLE",
+      "expected_alive": true
+    },
+    {
+      "id": "L02_NO_LIVE_EMBODIMENT_DORMANT_BY_DESIGN",
+      "checkpoint_present": true,
+      "wake_conditions_present": true,
+      "currentness_cursor_present": true,
+      "embodiments": [],
+      "expected_virtual_state": "DORMANT",
+      "expected_alive": true
+    },
+    {
+      "id": "L03_LIVE_PROCESS_WITHOUT_RECOVERY_CONTRACT",
+      "checkpoint_present": false,
+      "wake_conditions_present": false,
+      "currentness_cursor_present": false,
+      "embodiments": [
+        {"id": "local-process-9", "state": "LIVE"}
+      ],
+      "expected_virtual_state": "MATERIALIZED",
+      "expected_alive": true,
+      "expected_recoverable": false
+    },
+    {
+      "id": "L04_ALL_EMBODIMENTS_STALE_BUT_DURABLE_FRONTIER",
+      "checkpoint_present": true,
+      "wake_conditions_present": true,
+      "currentness_cursor_present": true,
+      "embodiments": [
+        {"id": "provider-session-a", "state": "STALE"},
+        {"id": "provider-session-b", "state": "ABSENT"}
+      ],
+      "expected_virtual_state": "WAKEABLE",
+      "expected_alive": true
+    },
+    {
+      "id": "L05_NO_CHECKPOINT_NO_WAKE_NO_LIVE_EMBODIMENT",
+      "checkpoint_present": false,
+      "wake_conditions_present": false,
+      "currentness_cursor_present": false,
+      "embodiments": [
+        {"id": "tab-old", "state": "UNREACHABLE"}
+      ],
+      "expected_virtual_state": "BLOCKED",
+      "expected_alive": false
+    },
+    {
+      "id": "L06_EXPLICIT_RETIREMENT_OVERRIDES_RECOVERABILITY",
+      "checkpoint_present": true,
+      "wake_conditions_present": true,
+      "currentness_cursor_present": true,
+      "retired": true,
+      "embodiments": [],
+      "expected_virtual_state": "RETIRED",
+      "expected_alive": false
+    }
+  ],
+  "rails": [
+    "VIRTUAL_SESSION_NE_PROVIDER_TAB",
+    "SESSION_IDENTITY_NE_LIVE_PROCESS",
+    "EMBODIMENT_NE_IDENTITY",
+    "DEMATERIALIZED_NE_DEAD",
+    "QUIET_NE_DEAD",
+    "LIVE_EMBODIMENT_NE_RECOVERABLE_SESSION",
+    "UNREACHABLE_EMBODIMENT_NE_DEAD_SESSION",
+    "VISIBLE_STATUS_NE_RECEIVER_ROUTE",
+    "LIVENESS_NE_PERSISTENCE",
+    "LIVENESS_NE_AUTHORITY",
+    "WAKEABLE_NE_MATERIALIZED",
+    "RECOVERABLE_NE_INTEGRATED",
+    "VALIDATION_IS_NOT_ACCEPTANCE",
+    "NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE"
+  ]
+}
