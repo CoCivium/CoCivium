@@ -1,0 +1,26 @@
+name: CoRender Surface Gate R0
+
+on:
+  pull_request:
+    paths:
+      - "docs/Architecture/CORENDER_SURFACE_GATE_R0.md"
+      - "fixtures/ux/corender_surface_gate_r0.json"
+      - "tools/validate_corender_surface_gate_r0.py"
+      - ".github/workflows/corender-surface-gate-r0.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python tools/validate_corender_surface_gate_r0.py
