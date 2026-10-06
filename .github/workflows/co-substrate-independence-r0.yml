@@ -42,8 +42,11 @@ jobs:
   validate:
     runs-on: ubuntu-latest
     steps:
-      - name: Check out repository
+      - name: Check out exact candidate head
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 1
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
@@ -68,8 +71,11 @@ jobs:
         os: [ubuntu-latest, windows-latest]
     runs-on: ${{ matrix.os }}
     steps:
-      - name: Check out repository
+      - name: Check out exact candidate head
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 1
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
@@ -87,8 +93,11 @@ jobs:
     needs: cross_host_receiver
     runs-on: ubuntu-latest
     steps:
-      - name: Check out repository
+      - name: Check out exact candidate head
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 1
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
@@ -107,8 +116,11 @@ jobs:
       CO_PR_BASE_SHA: ${{ github.event.pull_request.base.sha }}
     runs-on: ubuntu-latest
     steps:
-      - name: Check out repository
+      - name: Check out exact candidate head
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 1
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
@@ -127,8 +139,11 @@ jobs:
       CO_PR_BASE_SHA: ${{ github.event.pull_request.base.sha }}
     runs-on: ubuntu-latest
     steps:
-      - name: Check out repository
+      - name: Check out exact candidate head
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 1
       - name: Set up Node
         uses: actions/setup-node@v4
         with:
@@ -145,8 +160,11 @@ jobs:
     needs: [cross_runtime_python, cross_runtime_node]
     runs-on: ubuntu-latest
     steps:
-      - name: Check out repository
+      - name: Check out exact candidate head
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 1
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
@@ -163,8 +181,11 @@ jobs:
     needs: [cross_host_fanin, cross_runtime_fanin]
     runs-on: ubuntu-latest
     steps:
-      - name: Check out repository
+      - name: Check out exact candidate head
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 1
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
@@ -188,8 +209,11 @@ jobs:
       CO_PR_BASE_SHA: ${{ github.event.pull_request.base.sha }}
     runs-on: ubuntu-latest
     steps:
-      - name: Check out repository
+      - name: Check out exact candidate head
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 1
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
@@ -210,8 +234,11 @@ jobs:
     needs: model_runtime_prepare
     runs-on: ubuntu-latest
     steps:
-      - name: Check out repository
+      - name: Check out exact candidate head
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 1
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
@@ -235,8 +262,11 @@ jobs:
     needs: model_runtime_prepare
     runs-on: ubuntu-latest
     steps:
-      - name: Check out repository
+      - name: Check out exact candidate head
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 1
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
@@ -260,8 +290,11 @@ jobs:
     needs: [model_runtime_onnx, model_runtime_openvino]
     runs-on: ubuntu-latest
     steps:
-      - name: Check out repository
+      - name: Check out exact candidate head
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 1
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
