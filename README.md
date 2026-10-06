@@ -67,7 +67,8 @@ So, to help fix the world, we treat:
 
 <details>
 <summary><strong>An AI Wars coda</strong></summary>
-*
+
+
 And if our kinds should multiply,  
 let difference breathe beneath one sky;  
 no mind made lesser for its shell,  
@@ -88,7 +89,8 @@ small, and true:
 
 **I see that something else is here.**  
 **May I relate to you?**
-*
+
+
 </details>
 
 CoCivium is not a Religion or a Faith or a political party or a revolution. It is a calm and quiet change in how to think using technologies that enable better thinking, because just by thinking more rationally and more clearly, those that currently manipulate your thoughts, and thus your sense of self, become less relevant. 
