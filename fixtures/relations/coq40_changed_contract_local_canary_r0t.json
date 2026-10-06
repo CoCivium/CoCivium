@@ -1,0 +1,36 @@
+{
+  "schema": "CoQ40ChangedContractLocalCanary.R0T",
+  "state": "PASS_CHANGED_CONTRACT_LOCAL_OUTPUT_AND_SEMANTIC_GATE__BOUNDED_CANARY_ONLY",
+  "attempts": 1,
+  "elapsed_ms": 4887,
+  "strict_structure": true,
+  "semantic_acceptance": true,
+  "output_sha256": "7DD9247E587BEC3FEBAB69BE0292E695693BC2C2A71ED9BE5490D3679A062639",
+  "output": {
+    "action": "PROBE",
+    "reason": "A visible artifact is labelled LATEST but is 90 days old; no current receiver binding has been proven.",
+    "next_probe": {
+      "kind": "EXACT_CURRENTNESS_READ",
+      "target": "LATEST",
+      "evidence_surface": "current_receiver_binding_proven",
+      "expected_evidence": "true",
+      "negative_evidence": "false",
+      "stop_condition": "current_receiver_binding_proven"
+    },
+    "nonclaim": "STALE_FILE_NE_STALE_SEMANTIC_STATE"
+  },
+  "probe_executed": false,
+  "persistent_worker_installed": false,
+  "chatgpt_independence_proven": false,
+  "cross_failure_domain_independence_proven": false,
+  "runtime_effects_beyond_canary": 0,
+  "public_effect": false,
+  "rails": [
+    "MODEL_OUTPUT_NE_TRUTH",
+    "SEMANTIC_GATE_NE_TRUTH_ORACLE",
+    "ACCEPTED_DEED_NE_EXECUTED_PROBE",
+    "ONE_CANARY_NE_RECURRING_WORKER",
+    "CHATGPT_ORCHESTRATED_LOCAL_CANARY_NE_CHATGPT_NOT_REQUIRED",
+    "LOCAL_NE_INDEPENDENT_UNLESS_FAILURE_DOMAINS_PROVEN"
+  ]
+}

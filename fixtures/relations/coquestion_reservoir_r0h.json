@@ -1,0 +1,108 @@
+{
+  "schema": "CoQuestionReservoir.R0H",
+  "state": "CANDIDATE_FRONTIER_SEEDED_LAZY_QUESTION_RESERVOIR__NO_RUNTIME_EFFECT",
+  "source_bindings": {
+    "question_frontier_path": "fixtures/relations/coquestion_frontier_r0c.json",
+    "question_frontier_blob_sha": "57d289c7e46cc53151844348404b9e4a6c64c2ec",
+    "question_space_path": "fixtures/relations/coquestion_space_compiler_r0g.json",
+    "question_space_blob_sha": "9fdb63a52f92dd42d8bc9d70f8c77a438d66cd7d",
+    "inquiry_compiler_path": "fixtures/relations/coinquiry_compiler_r0f.json",
+    "inquiry_compiler_blob_sha": "81560132c5676a68beaf529093ab1180887d89cd"
+  },
+  "axes": {
+    "transform_operators": [
+      "INVERT_PREMISE",
+      "COUNTERFACTUAL_REMOVE",
+      "ASSUMPTION_EXPOSE",
+      "NEGATIVE_EVIDENCE",
+      "MISSING_RELATION",
+      "FAILURE_DOMAIN_SHIFT",
+      "AUTHORITY_CHALLENGE",
+      "SUCCESSOR_RECONSTRUCTION",
+      "RETIREMENT_PROOF",
+      "SURPRISE_OUTCOME"
+    ],
+    "receiver_contexts": [
+      "HUMAN_OBSERVER",
+      "CUSTODY_AUDITOR",
+      "LOCAL_OPEN_WORKER",
+      "EXTERNAL_PROVIDER_RECEIVER",
+      "PUBLIC_OR_COMMUNITY_RECEIVER"
+    ],
+    "time_horizons": [
+      "NOW",
+      "NEXT_BOUNDED_WAVE",
+      "RECOVERY_AFTER_FAILURE",
+      "LONG_HORIZON"
+    ]
+  },
+  "reservoir_contract": {
+    "base_semantic_core_count": 50,
+    "transform_operator_count": 10,
+    "receiver_context_count": 5,
+    "time_horizon_count": 4,
+    "expected_projection_count": 10000,
+    "projection_mode": "LAZY_INDEX_AND_LINEAGE",
+    "durable_full_projection_materialization_default": false,
+    "default_per_wave_materialization_budget": 64,
+    "shard_count": 100,
+    "expected_projection_count_per_shard": 100
+  },
+  "wake_triggers": [
+    "NEW_EVIDENCE",
+    "ANSWER_STALE",
+    "CONTRADICTION_APPEARS",
+    "AUTHORITY_RELATION_CHANGES",
+    "RECEIVER_NEED_CHANGES",
+    "CURRENTNESS_POINTER_CHANGES",
+    "FAILURE_OR_RECOVERY_EVENT",
+    "OUTCOME_DIFFERS_FROM_PREDICTION",
+    "DEPENDENCY_BECOMES_UNAVAILABLE",
+    "QUESTION_RETIREMENT_COULD_CHANGE"
+  ],
+  "materialization_gates": [
+    "TRIGGER_PRESENT",
+    "RECEIVER_OR_DECISION_CONTEXT_NAMED",
+    "NOT_ALREADY_RESOLVED_FOR_SCOPE",
+    "NOT_DUPLICATE_OF_ACTIVE_PROJECTION",
+    "WITHIN_WAVE_BUDGET"
+  ],
+  "execution_handoff": [
+    "MATERIALIZE_QUESTION_PROJECTION",
+    "DEDUPE_BY_DOWNSTREAM_DECISION",
+    "APPLY_R0F_HARD_ELIGIBILITY_GATES",
+    "PARETO_COMPARE_IF_ELIGIBLE",
+    "ELECT_BOUNDED_PROOF_OR_HOLD",
+    "RECEIPT",
+    "RETIRE_REOPEN_OR_BRANCH"
+  ],
+  "expected": {
+    "base_semantic_core_count": 50,
+    "transformed_core_count": 500,
+    "projection_count": 10000,
+    "unique_projection_id_count": 10000,
+    "shard_count": 100,
+    "min_shard_size": 100,
+    "max_shard_size": 100,
+    "durable_full_projection_object_count": 0,
+    "runtime_effect": false,
+    "public_effect": false
+  },
+  "rails": [
+    "QUESTION_COUNT_NE_PROGRESS",
+    "QUESTION_PROJECTION_NE_NEW_SEMANTIC_CORE",
+    "GENERATED_QUESTION_NE_WORTH_ASKING",
+    "MORE_QUESTIONS_NE_MORE_TRUTH",
+    "LAZY_RESERVOIR_NE_ACTIVE_COMPUTE",
+    "ENDLESS_EVOLUTION_NE_ENDLESS_BACKGROUND_WORK",
+    "WAKE_TRIGGER_NE_EXECUTION_AUTHORITY",
+    "QUESTION_NE_DEED",
+    "QUESTION_PRIORITY_NE_TRUTH_PRIORITY",
+    "RECEIVER_CONTEXT_NE_GLOBAL_ANSWER",
+    "TIME_HORIZON_NE_TIMELESS_TRUTH",
+    "PERTURBATION_NE_IMPROVEMENT",
+    "MATERIALIZATION_BUDGET_NE_QUESTION_SUPPRESSION",
+    "SHARD_NE_SEMANTIC_BOUNDARY",
+    "VALIDATION_IS_NOT_ACCEPTANCE"
+  ]
+}

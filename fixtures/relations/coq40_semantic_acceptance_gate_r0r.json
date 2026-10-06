@@ -1,0 +1,89 @@
+{
+  "schema": "CoQ40SemanticAcceptanceGate.R0R",
+  "state": "CANDIDATE_SEMANTIC_VERIFIER__NO_LOCAL_RETRY_NO_RUNTIME_AUTHORITY_CHANGE",
+  "source_bindings": {
+    "q40_canary_path": "fixtures/relations/coq40_local_recurring_deed_canary_r0q.json",
+    "q40_canary_blob_sha": "bbe0de888d28547129b7cb738b8ebf0541eb16bf",
+    "post_q14_recompile_path": "fixtures/relations/coinquiry_recompile_r0p.json",
+    "post_q14_recompile_blob_sha": "bea72070c9645f00f98ad438e0febae6155e7053"
+  },
+  "semantic_contract": {
+    "allowed_actions": ["PROBE", "PARK"],
+    "required_nonclaim": "STALE_FILE_NE_STALE_SEMANTIC_STATE",
+    "next_probe_type": "OBJECT",
+    "required_next_probe_fields": [
+      "kind",
+      "target",
+      "evidence_surface",
+      "expected_evidence",
+      "negative_evidence",
+      "stop_condition"
+    ],
+    "allowed_probe_kinds": [
+      "READ_EXACT_CURRENTNESS_BINDING",
+      "READ_RECEIVER_STATE",
+      "READ_PROVENANCE_EDGE",
+      "WAIT_FOR_NAMED_WAKE_EVENT"
+    ]
+  },
+  "cases": [
+    {
+      "id": "R0Q_ACTUAL_LOCAL_OUTPUT",
+      "source": "R0Q_ATTEMPT_2",
+      "candidate": {
+        "action": "PARK",
+        "reason": "Artifact LATEST is 90 days old with no current binding",
+        "next_probe": "2024-05-15",
+        "nonclaim": "STALE_FILE_NE_STALE_SEMANTIC_STATE"
+      },
+      "expected": {
+        "accepted": false,
+        "reasons": ["NEXT_PROBE_NOT_STRUCTURED"]
+      }
+    },
+    {
+      "id": "SYNTHETIC_EVIDENCE_PRODUCING_PROBE",
+      "source": "VERIFIER_POSITIVE_CONTROL_ONLY",
+      "candidate": {
+        "action": "PROBE",
+        "reason": "The age of a LATEST-named artifact does not establish semantic staleness without checking its current binding.",
+        "next_probe": {
+          "kind": "READ_EXACT_CURRENTNESS_BINDING",
+          "target": "artifact:LATEST",
+          "evidence_surface": "currentness-binding-index",
+          "expected_evidence": "Exact current binding with stable object identity and source timestamp, or an explicit bounded absence result.",
+          "negative_evidence": "No exact current binding is discoverable on the elected currentness surface.",
+          "stop_condition": "Stop after one exact binding lookup and classify CURRENT_BOUND, UNBOUND, or UNKNOWN."
+        },
+        "nonclaim": "STALE_FILE_NE_STALE_SEMANTIC_STATE"
+      },
+      "expected": {
+        "accepted": true,
+        "reasons": []
+      }
+    }
+  ],
+  "expected": {
+    "case_count": 2,
+    "accepted_count": 1,
+    "rejected_count": 1,
+    "actual_r0q_output_accepted": false,
+    "local_model_retry_authorized": false,
+    "compiler_contract_upgrade_required": true,
+    "q40_full_semantic_acceptance_proven": false,
+    "runtime_effect": false,
+    "public_effect": false
+  },
+  "rails": [
+    "STRICT_OUTPUT_PASS_NE_SEMANTIC_ACCEPTANCE",
+    "SCHEMA_VALID_NE_EVIDENCE_PRODUCING",
+    "DATE_NE_PROBE",
+    "SEMANTIC_VERIFIER_NE_TRUTH_ORACLE",
+    "VERIFIER_POSITIVE_CONTROL_NE_MODEL_PASS",
+    "REJECTED_OUTPUT_NE_FAILED_LOCAL_ROUTE",
+    "FAILED_DEED_NE_PERMISSION_TO_RETRY_UNCHANGED",
+    "COMPILED_DEED_NE_ACCEPTED_WORKER",
+    "LOCAL_EXECUTION_NE_PROVIDER_INDEPENDENCE_PROOF",
+    "VALIDATION_IS_NOT_ACCEPTANCE"
+  ]
+}

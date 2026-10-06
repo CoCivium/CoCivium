@@ -1,0 +1,69 @@
+{
+  "schema": "CoInquiryRecompile.R0P",
+  "state": "CANDIDATE_POST_Q14_FRONTIER_RECOMPILE__NO_RUNTIME_AUTHORITY_CHANGE",
+  "source_bindings": {
+    "inquiry_compiler_path": "fixtures/relations/coinquiry_compiler_r0f.json",
+    "inquiry_compiler_blob_sha": "81560132c5676a68beaf529093ab1180887d89cd",
+    "post_q10_recompile_path": "fixtures/relations/coinquiry_recompile_r0n.json",
+    "post_q10_recompile_blob_sha": "33499f89f9cbb50dddc0eb896fb31257bccc6468",
+    "q14_audit_path": "fixtures/relations/cosneak_failure_domain_diversity_audit_r0o.json",
+    "q14_audit_blob_sha": "0cbbd257b42fab2df52ff6c3db4573b1ba2d110a"
+  },
+  "resolved_questions": [
+    {
+      "id": "Q07_PASS_WITHOUT_PICKUP",
+      "resolution": "CLOSED_FOR_SAMPLED_SCOPE",
+      "global_scope_complete": false
+    },
+    {
+      "id": "Q10_HUMAN_RELAY_DEPENDENCY",
+      "resolution": "CLOSED_FOR_SAMPLED_SCOPE",
+      "global_scope_complete": false
+    },
+    {
+      "id": "Q14_FALSE_FAILURE_DOMAIN_DIVERSITY",
+      "resolution": "CLOSED_FOR_SAMPLED_SCOPE__MULTIPLICITY_PROVEN_BUT_CROSS_FAILURE_DOMAIN_INDEPENDENCE_UNPROVEN",
+      "sampled_proof_families": 4,
+      "cross_failure_domain_independence_proven": 0,
+      "global_scope_complete": false
+    }
+  ],
+  "recompile_policy": {
+    "remove_resolved_from_active_frontier": true,
+    "preserve_question_history": true,
+    "reuse_original_hard_gates": true,
+    "reuse_original_pareto_dimensions": true,
+    "tie_break": [
+      "LOWEST_PROOF_COST",
+      "HIGHEST_FALSE_COMPLETION_DETECTION",
+      "STABLE_ID"
+    ]
+  },
+  "expected": {
+    "eligible_ids": [
+      "Q40_COMPILE_RECURRING_DEED_LOCAL"
+    ],
+    "pareto_frontier_ids": [
+      "Q40_COMPILE_RECURRING_DEED_LOCAL"
+    ],
+    "elected_next_proof_id": "Q40_COMPILE_RECURRING_DEED_LOCAL",
+    "elected_receiver": "provider-exit-planner",
+    "elected_probe": "Select one recurring advisory deed with an exact input/output contract and test it on an already-proven local/open route.",
+    "negative_evidence": "No sampled recurring deed fits the proven local route within resource and quality bounds.",
+    "retirement_condition": "Close for sampled scope after one deed is compiled and independently verified, or all sampled deeds fail explicit fit gates.",
+    "runtime_effect": false,
+    "public_effect": false
+  },
+  "rails": [
+    "QUESTION_RESOLUTION_NE_HISTORY_ERASURE",
+    "SAMPLED_SCOPE_CLOSED_NE_GLOBAL_CENSUS_COMPLETE",
+    "FRONTIER_RECOMPILE_NE_TRUTH_REORDERING",
+    "QUESTION_PRIORITY_NE_TRUTH_PRIORITY",
+    "PARETO_FRONTIER_NE_GLOBAL_OPTIMUM",
+    "ELECTED_NEXT_PROOF_NE_RUNTIME_AUTHORITY",
+    "LOCAL_NE_INDEPENDENT_UNLESS_FAILURE_DOMAINS_PROVEN",
+    "LOCAL_ROUTE_NE_PROVIDER_EXIT_COMPLETE",
+    "COMPILED_DEED_NE_ACCEPTED_WORKER",
+    "VALIDATION_IS_NOT_ACCEPTANCE"
+  ]
+}
