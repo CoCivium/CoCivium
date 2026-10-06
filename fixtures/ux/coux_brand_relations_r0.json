@@ -1,0 +1,30 @@
+{
+  "schema": "CoUXBrandRelations.R0",
+  "ux": {
+    "visible_state_observed_stale": true,
+    "semantic_state_inferred_stale": false,
+    "automatic_refresh_proven": false,
+    "manual_refresh_required_as_control_plane": false
+  },
+  "brand": {
+    "exact_same_logo_required_everywhere": false,
+    "unrelated_logos_required": false,
+    "candidate_default": "SHARED_VISUAL_GRAMMAR_PLUS_CORE_SIGNET_PLUS_TYPED_DERIVATIVES",
+    "family_members": [
+      "CoAll+",
+      "CoCivium+",
+      "Co+",
+      "CoCivia"
+    ],
+    "shared_authority_inferred": false,
+    "public_rebrand_authorized": false
+  },
+  "rails": [
+    "VISIBLE_STALENESS_NE_SEMANTIC_STALENESS",
+    "USER_MANUAL_REFRESH_NE_CONTROL_PLANE",
+    "SHARED_FAMILY_MARK_NE_SAME_ENTITY",
+    "COMMON_LOGO_NE_COMMON_AUTHORITY",
+    "NO_PUBLIC_REBRAND_WITHOUT_SEPARATE_AUTHORITY",
+    "VALIDATION_IS_NOT_ACCEPTANCE"
+  ]
+}
