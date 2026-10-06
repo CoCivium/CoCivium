@@ -1,0 +1,91 @@
+{
+  "schema": "CoCatchUp.DeltaSurface.v0.1-candidate",
+  "state": "LIVE_GITHUB_CURRENTNESS_OBSERVER__NO_MERGE_NO_CLOSE_NO_RUNTIME_AUTHORITY",
+  "host_pr": 150,
+  "baseline_main_head_sha": "98b2679dd885c74d0292cc0b6c20aa80fb0f9e65",
+  "watched_prs": [
+    {
+      "pr_number": 137,
+      "role": "COCIVIA_CORRESPONDENCE_AND_RESOURCE_FIELD",
+      "baseline_head_sha": "406a7507ffc95b6481412b77d300bc1557c90365",
+      "expected_draft": true,
+      "special_disposition": "ACTIVE_CANDIDATE"
+    },
+    {
+      "pr_number": 141,
+      "role": "PROVIDER_EXIT_AND_RECOVERY",
+      "baseline_head_sha": "cbaa967d0ed16c24b1bf0693cb46f102ea00a35a",
+      "expected_draft": true,
+      "special_disposition": "PRODUCTIVE_HOLD_UNTIL_INDEPENDENT_ROUTE_OR_ACCOUNT_CENSUS"
+    },
+    {
+      "pr_number": 143,
+      "role": "UX_CURRENTNESS_AND_SIGNET",
+      "baseline_head_sha": "d05a3d3ff428b71b9fe4358b44430573b95ea4ce",
+      "expected_draft": true,
+      "special_disposition": "ACTIVE_CANDIDATE"
+    },
+    {
+      "pr_number": 146,
+      "role": "COSNEAK_COQA_GTRAIL",
+      "baseline_head_sha": "2101ea68f424770b37aeff84be2cb4af69d7d991",
+      "expected_draft": true,
+      "special_disposition": "ACTIVE_PROOF_DONOR"
+    },
+    {
+      "pr_number": 150,
+      "role": "COALL_BRANCHFIELD_HOST",
+      "baseline_head_sha": "647469cce12723b2ad1698dbfdad91c5a239e2d4",
+      "expected_draft": true,
+      "special_disposition": "HOST_HEAD_BASELINE_IS_PRE_OBSERVER_COMMIT_POINTER"
+    },
+    {
+      "pr_number": 152,
+      "role": "DISCOVERY_COMPRESSION_GENEXIS",
+      "baseline_head_sha": "937cfc1126b22a8e6487fa34bec9c55733bb65dc",
+      "expected_draft": true,
+      "special_disposition": "ACTIVE_DISCOVERY_DONOR"
+    }
+  ],
+  "decision_policy": {
+    "head_change_is_delta_not_failure": true,
+    "closed_or_merged_is_material_delta": true,
+    "pending_only_current_head_is_wait_not_hold": true,
+    "current_head_completed_failure_without_success_is_hold_signal": true,
+    "current_head_with_no_runs_is_unproven_hold_signal": true,
+    "host_self_workflow_is_assessed_outside_its_own_receipt": true,
+    "historical_failed_workflow_is_not_current_head_failure": true,
+    "provider_exit_hold_does_not_wake_without_named_wake_condition": true,
+    "observer_must_not_merge_close_or_mutate_watched_prs": true
+  },
+  "ux_contract": {
+    "headline": "one current frontier summary",
+    "show_by_default": [
+      "current_main_head",
+      "watched_pr_count",
+      "material_delta_count",
+      "current_head_hold_count",
+      "current_head_wait_count",
+      "next_safe_action"
+    ],
+    "drill_down": [
+      "per_pr_head",
+      "draft_merged_state",
+      "current_head_workflow_summary",
+      "baseline_relation",
+      "special_disposition"
+    ]
+  },
+  "nonclaims": [
+    "BASELINE_SNAPSHOT_NE_LIVE_TRUTH",
+    "HEAD_CHANGE_NE_REGRESSION",
+    "GREEN_WORKFLOW_NE_INTEGRATED",
+    "OPEN_PR_NE_ACTIVE_WORK",
+    "CURRENTNESS_OBSERVER_NE_CONTROL_PLANE",
+    "CURRENTNESS_OBSERVER_NE_PROVIDER_EXIT_GATE_CLOSURE",
+    "GITHUB_CURRENTNESS_NE_FULL_COALL_CURRENTNESS",
+    "GITHUB_ONLY_NE_FAILURE_DOMAIN_INDEPENDENCE",
+    "VALIDATION_IS_NOT_ACCEPTANCE",
+    "NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE"
+  ]
+}
