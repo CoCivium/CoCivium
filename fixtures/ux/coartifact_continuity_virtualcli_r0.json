@@ -1,0 +1,58 @@
+{
+  "schema": "CoArtifactContinuityVirtualCLI.R0",
+  "state": "CANDIDATE_SURFACE_SUBSTRATE_CONTRACT__NO_RUNTIME_OR_PUBLIC_EFFECT",
+  "artifact_continuity": {
+    "downloadable_is_durable_custody": false,
+    "session_attachment_is_durable_custody": false,
+    "session_termination_retires_artifact": false,
+    "human_transport_default": false,
+    "preferred_lifecycle": [
+      "CREATE",
+      "HASH",
+      "LAND_DURABLY",
+      "RECEIVER_READBACK",
+      "OPTIONAL_DOWNLOAD_PROJECTION"
+    ]
+  },
+  "virtual_cli": {
+    "cli_is_user_workflow_default": false,
+    "virtualization_removes_cli": false,
+    "hidden_means_unauditable": false,
+    "break_glass_cli_allowed": true
+  },
+  "substrate_mark": {
+    "candidate_symbol": "⊂",
+    "redefines_math_symbol": false,
+    "literal_keypress": false,
+    "compression_erases_provenance": false
+  },
+  "surface_density": {
+    "states": [
+      "GLANCE",
+      "COMPACT",
+      "WORKING",
+      "DEEP",
+      "FORENSIC"
+    ],
+    "more_visible_state_implies_more_currentness": false
+  },
+  "converge_spiral": {
+    "permanent_active_loop_required": false,
+    "material_delta_required_for_reopen": true
+  },
+  "mythops_bridge": {
+    "speculative_candidate_implies_operational_truth": false,
+    "speculation_grants_execution_authority": false
+  },
+  "inventory": {
+    "completeness_requires_scope": true,
+    "listed_implies_current": false,
+    "unlisted_implies_nonexistent": false
+  },
+  "parallelism": {
+    "more_parallel_implies_more_progress": false,
+    "serialize_conflicting_authority_or_mutation": true
+  },
+  "runtime_effect": false,
+  "public_effect": false
+}
