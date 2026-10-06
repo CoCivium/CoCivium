@@ -1,0 +1,48 @@
+name: CoBounded Discovery Virtual CLI Budget R0
+
+on:
+  pull_request:
+    paths:
+      - "docs/Theory/COBOUNDED_DISCOVERY_COGENEXIS_R0.md"
+      - "docs/UX/COVIRTUAL_CLI_RELATIONS_R0.md"
+      - "docs/Architecture/COBUDGET_COSTONK_RELATIONS_R0.md"
+      - "fixtures/relations/cobounded_discovery_virtual_cli_budget_r0.json"
+      - "docs/UX/COVIRTUAL_SUBSTRATE_PREFIX_INVENTORY_R0.md"
+      - "fixtures/relations/covirtual_substrate_prefix_inventory_r0.json"
+      - "tools/validate_covirtual_substrate_prefix_inventory_r0.py"
+      - "tools/validate_cobounded_discovery_virtual_cli_budget_r0.py"
+      - "docs/UX/COPAYLOAD_DENSITY_LOOP_STABILITY_R0.md"
+      - "fixtures/relations/copayload_density_loop_stability_r0.json"
+      - "tools/validate_copayload_density_loop_stability_r0.py"
+      - "docs/UX/COCONVERGE_SPIRAL_BLEND_R0A.md"
+      - "fixtures/relations/coconverge_spiral_blend_r0a.json"
+      - "tools/validate_coconverge_spiral_blend_r0a.py"
+      - "docs/UX/COTRILL_DELIMITER_FIELD_R0B.md"
+      - "fixtures/relations/cotrill_delimiter_field_r0b.json"
+      - "tools/validate_cotrill_delimiter_field_r0b.py"
+      - ".github/workflows/cobounded-discovery-virtual-cli-budget-r0.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python tools/validate_cobounded_discovery_virtual_cli_budget_r0.py
+      - run: python tools/validate_covirtual_substrate_prefix_inventory_r0.py
+      - run: python tools/validate_copayload_density_loop_stability_r0.py
+      - run: python tools/validate_coconverge_spiral_blend_r0a.py
+      - run: python tools/validate_cotrill_delimiter_field_r0b.py
