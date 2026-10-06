@@ -1,0 +1,107 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cocivium.org/schemas/public-mascot-comprehension-response-r0.json",
+  "title": "Public Mascot Ecology R0 Blind Comprehension Response",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "response_id",
+    "test_version",
+    "shown_order",
+    "mappings",
+    "confidence",
+    "most_memorable",
+    "most_confusing",
+    "misread_flags"
+  ],
+  "properties": {
+    "response_id": {
+      "type": "string",
+      "description": "Opaque response identifier. Do not encode participant identity."
+    },
+    "test_version": {
+      "const": "public-mascot-ecology-r0"
+    },
+    "shown_order": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "uniqueItems": true,
+      "items": {
+        "enum": ["dragon", "kitten", "turtle", "cloud"]
+      }
+    },
+    "mappings": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["dragon", "kitten", "turtle", "cloud"],
+      "properties": {
+        "dragon": { "$ref": "#/$defs/roles" },
+        "kitten": { "$ref": "#/$defs/roles" },
+        "turtle": { "$ref": "#/$defs/roles" },
+        "cloud": { "$ref": "#/$defs/roles" }
+      }
+    },
+    "confidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["dragon", "kitten", "turtle", "cloud"],
+      "properties": {
+        "dragon": { "$ref": "#/$defs/confidence" },
+        "kitten": { "$ref": "#/$defs/confidence" },
+        "turtle": { "$ref": "#/$defs/confidence" },
+        "cloud": { "$ref": "#/$defs/confidence" }
+      }
+    },
+    "most_memorable": {
+      "enum": ["dragon", "kitten", "turtle", "cloud", "none"]
+    },
+    "most_confusing": {
+      "enum": ["dragon", "kitten", "turtle", "cloud", "none"]
+    },
+    "free_text": {
+      "type": "string",
+      "maxLength": 2000
+    },
+    "misread_flags": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "MASCOT_AS_AUTHORITY",
+          "NATIONALITY_STEREOTYPE",
+          "LITERAL_AI_IDENTITY",
+          "SCIENTIFIC_FACT_CLAIM",
+          "KITTEN_MERELY_DECORATIVE",
+          "NONE"
+        ]
+      }
+    },
+    "consent_to_aggregate": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether this anonymous response may be included in aggregate public results."
+    }
+  },
+  "$defs": {
+    "roles": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "SCALE_INFRASTRUCTURE_DISRUPTION",
+          "CARE_REPAIR_RELATIONAL_NUANCE",
+          "CONTINUITY_BRANCHING_PERSISTENCE",
+          "POSSIBILITY_AMBIGUITY_HYPOTHESIS",
+          "OTHER_UNCLEAR"
+        ]
+      }
+    },
+    "confidence": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 5
+    }
+  }
+}
