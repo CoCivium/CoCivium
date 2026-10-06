@@ -1,0 +1,23 @@
+name: CoGodList Discovery Field R0
+on:
+  pull_request:
+    paths:
+      - "docs/Theory/COGODLIST_GENEX_DISCOVERY_FIELD_R0.md"
+      - "fixtures/theory/cogodlist_discovery_field_r0.json"
+      - "tools/validate_cogodlist_discovery_field_r0.py"
+      - ".github/workflows/cogodlist-discovery-field-r0.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python tools/validate_cogodlist_discovery_field_r0.py
