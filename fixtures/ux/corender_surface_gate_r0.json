@@ -1,0 +1,51 @@
+{
+  "schema": "CoRenderFabric.SurfaceGate.R0",
+  "state": "CANDIDATE_SURFACE_DECOUPLING_AND_PRE_RENDER_QUALIFICATION__NO_RUNTIME_DEPLOYMENT",
+  "surface_pipeline": [
+    "SOURCE_BIND",
+    "PROJECTION_COMPILE",
+    "STATIC_VALIDATE",
+    "CI_VERIFY",
+    "BUILD",
+    "STAGED_DEPLOY",
+    "RECEIVER_PICKUP",
+    "RENDER_SMOKE",
+    "OBSERVER_READBACK",
+    "PROMOTE_CURRENT"
+  ],
+  "ownership": {
+    "session_is_surface": false,
+    "agent_is_surface": false,
+    "model_is_surface": false,
+    "cli_is_primary_user_ux": false,
+    "durable_projection_identity_required": true
+  },
+  "promotion": {
+    "ci_alone_sufficient": false,
+    "render_evidence_required": true,
+    "observer_readback_required_for_visible_claim": true,
+    "rollback_pointer_required": true
+  },
+  "cli": {
+    "hidden_by_default": true,
+    "inspectable_on_diagnostic_or_recovery": true,
+    "ordinary_user_transport_required": false
+  },
+  "ux": {
+    "progressive_disclosure": true,
+    "maximal_compression_required": false,
+    "payload_density_receiver_relative": true
+  },
+  "inventory": {
+    "user_surface_by_default": false,
+    "currentness_required": true,
+    "lazy_sharded_projection_allowed": true
+  },
+  "convergence": {
+    "infinite_active_loop_required": false,
+    "park_or_retire_condition_required": true,
+    "reopen_on_material_delta_allowed": true
+  },
+  "runtime_effect": false,
+  "public_deployment": false
+}
