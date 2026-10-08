@@ -7,6 +7,10 @@ on:
       - 'examples/conode-participation-v0.1.example.json'
       - 'docs/Architecture/CONODE_PARTICIPATION_R0.md'
       - '.github/workflows/conode-participation-contract.yml'
+      - 'docs/Launch/RING0_TECHNICAL_SEND_GATE_20260929.json'
+      - 'docs/Launch/RING0_TECHNICAL_EMAIL_DRAFT_20260929.md'
+      - 'docs/Launch/RING0_TECHNICAL_LINK_READPROOF_20260929.md'
+      - 'docs/Architecture/COETHIC_PRELAUNCH_EFFECT_GATE_R0.md'
   push:
     branches:
       - main
@@ -45,3 +49,175 @@ jobs:
                   print(f"{list(error.path)}: {error.message}")
               raise SystemExit(1)
           print("PASS_CONODE_PARTICIPATION_CONTRACT_V0_1")
+
+  hosted-node-seed:
+    name: hosted-node-seed
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Verify exact public CoBusMirror donor
+        shell: bash
+        run: |
+          set -euo pipefail
+          REPO='https://github.com/CoCivium/CoBusMirror.git'
+          COMMIT='4ef0a35dec7a6f646eaeea6f30ad1a2522f33bd8'
+          TARGET='docs/registry/CoStacksRegistry__LATEST.json'
+          EXPECTED_BLOB='1fb572bd5d204c4dc537dcb75d7b3dd07e43436f'
+          EXPECTED_SHA='c93f97a90bb3c8c9f40983e6924b44932b80854b9a23f914dc0e7a34d65e8144'
+          EXPECTED_BYTES='2614'
+
+          TMP="$(mktemp -d)"
+          trap 'rm -rf "$TMP"' EXIT
+          git -C "$TMP" init -q
+          git -C "$TMP" remote add origin "$REPO"
+          git -C "$TMP" fetch -q --depth=1 origin "$COMMIT"
+
+          ACTUAL_COMMIT="$(git -C "$TMP" rev-parse FETCH_HEAD)"
+          ACTUAL_BLOB="$(git -C "$TMP" rev-parse "FETCH_HEAD:$TARGET")"
+          git -C "$TMP" show "FETCH_HEAD:$TARGET" > "$TMP/donor.bin"
+          ACTUAL_SHA="$(sha256sum "$TMP/donor.bin" | awk '{print $1}')"
+          ACTUAL_BYTES="$(wc -c < "$TMP/donor.bin" | tr -d ' ')"
+
+          test "$ACTUAL_COMMIT" = "$COMMIT"
+          test "$ACTUAL_BLOB" = "$EXPECTED_BLOB"
+          test "$ACTUAL_SHA" = "$EXPECTED_SHA"
+          test "$ACTUAL_BYTES" = "$EXPECTED_BYTES"
+
+          cat > CoNodeSeed_GitHubHosted_receipt.json <<EOF
+          {
+            "schema":"CoNodeSeed.NodeReceipt.v0.1",
+            "state":"PASS_READONLY_NODE_SEED",
+            "node_id_candidate":"github-hosted:${RUNNER_OS}:${RUNNER_ARCH}",
+            "hostname":"github-hosted-ephemeral-runner",
+            "os":"${RUNNER_OS}",
+            "architecture":"${RUNNER_ARCH}",
+            "observed_utc":"$(date -u +'%Y-%m-%dT%H:%M:%SZ')",
+            "github_run_id":"${GITHUB_RUN_ID}",
+            "github_repository":"${GITHUB_REPOSITORY}",
+            "donor_commit":"$ACTUAL_COMMIT",
+            "donor_blob":"$ACTUAL_BLOB",
+            "donor_sha256":"$ACTUAL_SHA",
+            "donor_bytes":$ACTUAL_BYTES,
+            "effect_authority":"NONE",
+            "credential_requirement":"NONE_FOR_PUBLIC_DONOR",
+            "execution_state":"READ_VERIFIED_ONLY",
+            "participation_relation":"EVIDENCE_DONOR_FOR_CONODE_PARTICIPATION__NOT_NODE_AUTHORIZATION"
+          }
+          EOF
+
+      - name: Upload bounded receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: conodeseed-hosted-receipt
+          path: CoNodeSeed_GitHubHosted_receipt.json
+          if-no-files-found: error
+          retention-days: 7
+
+
+  same-wave-pickup:
+    name: same-wave-pickup
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Verify exact CoEvoAll wave checkpoint
+        shell: bash
+        run: |
+          set -euo pipefail
+          CHECKPOINT='docs/continuity/COEVOALL_WAVE_CHECKPOINT_20260928.json'
+          EXPECTED_SHA='D0191DD954DA54E15D40476E3B9418F92869DB978DD2591D38EE8979AA343A94'
+          ACTUAL_SHA="$(sha256sum "$CHECKPOINT" | awk '{print toupper($1)}')"
+          test "$ACTUAL_SHA" = "$EXPECTED_SHA"
+
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          p = Path("docs/continuity/COEVOALL_WAVE_CHECKPOINT_20260928.json")
+          j = json.loads(p.read_text(encoding="utf-8"))
+          assert j["schema"] == "CoWave.Checkpoint.v0.1"
+          assert j["state"] == "CHECKPOINT_READY_FOR_OFFHOME_READONLY_PICKUP"
+          assert j["wave_id"] == "CoEvoAll+::2026-09-28::resident-survivability"
+          assert j["authority"]["effect_authority"] == "NONE_FOR_HOSTED_PICKUP_CANARY"
+          assert j["authority"]["financial_authority"] == "NONE"
+          assert j["authority"]["credential_transfer"] == "NONE"
+          assert j["frontier"]["automatic_wave_failover"] == "UNPROVEN"
+          print("PASS_SAME_WAVE_CHECKPOINT_RECONSTRUCTION")
+          PY
+
+          cat > CoEvoAll_GitHubHosted_wave_pickup_receipt.json <<EOF
+          {
+            "schema":"CoWave.PickupReceipt.v0.1",
+            "state":"PASS_SAME_WAVE_READONLY_PICKUP",
+            "wave_id":"CoEvoAll+::2026-09-28::resident-survivability",
+            "checkpoint_sha256":"$ACTUAL_SHA",
+            "checkpoint_git_blob":"162c2ea399072e44ee64eb0f4b24f98f9add9241",
+            "github_run_id":"${GITHUB_RUN_ID}",
+            "github_repository":"${GITHUB_REPOSITORY}",
+            "runner_os":"${RUNNER_OS}",
+            "runner_arch":"${RUNNER_ARCH}",
+            "effect_authority":"NONE",
+            "financial_authority":"NONE",
+            "credential_transfer":"NONE",
+            "pickup_scope":"READONLY_RECONSTRUCTION_ONLY",
+            "failover_complete":false,
+            "next_safe_deed":"Return bounded pickup receipt; do not mutate wave state."
+          }
+          EOF
+
+      - name: Upload same-wave pickup receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: coevoall-same-wave-pickup-receipt
+          path: CoEvoAll_GitHubHosted_wave_pickup_receipt.json
+          if-no-files-found: error
+          retention-days: 7
+
+
+  technical-ring0-send-preflight:
+    name: technical-ring0-send-preflight
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Enforce fail-closed technical Ring-0 send gate
+        shell: python
+        run: |
+          import json
+          from pathlib import Path
+
+          p = Path("docs/Launch/RING0_TECHNICAL_SEND_GATE_20260929.json")
+          g = json.loads(p.read_text(encoding="utf-8"))
+
+          assert g["schema"] == "CoLaunch.Ring0TechnicalSendGate.v0.1"
+          assert g["scope"] == "TECHNICAL_ADVERSARIAL_RING0_ONLY"
+          assert g["send_authority"] == "NONE"
+
+          b = g["send_time_bindings"]
+          anti = g["anti_abuse"]
+
+          required = all([
+              b["recipient_batch_bound"],
+              b["from_identity_bound"],
+              b["final_body_bound"],
+              g["email_draft"]["body_readproven"],
+              g["links"]["readproven"],
+              g["coethic"]["public_outreach_delta_current"],
+              not anti["hidden_tracking"],
+              not anti["bulk_spam_mechanism"],
+          ])
+
+          assert g["effect_eligible"] is required
+
+          if not required:
+              assert g["state"].startswith("HOLD_")
+              assert g["effect_eligible"] is False
+
+          if g["effect_eligible"]:
+              raise AssertionError(
+                  "This draft branch has no send authority. Eligibility must not be converted into send."
+              )
+
+          print("PASS_RING0_TECHNICAL_SEND_GATE_FAILS_CLOSED")
