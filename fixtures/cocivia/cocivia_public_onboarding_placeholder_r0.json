@@ -1,0 +1,190 @@
+{
+  "schema": "CoCiviaPublicOnboardingPlaceholder.R0",
+  "state": "CANDIDATE_PLACEHOLDER__NO_PUBLIC_DEPLOYMENT_NO_ACCOUNT_CREATION_NO_RUNTIME_EFFECTS",
+  "source_bindings": {
+    "ambient_correspondence_doc_path": "docs/Comms/COCIVIA_AMBIENT_CORRESPONDENCE_R0.md",
+    "ambient_correspondence_doc_blob_sha": "58012f95f9ec2cd82858dee793786fb5007a11bf",
+    "optin_resource_doc_path": "docs/Comms/COALL_OPTIN_RESOURCE_FIELD_R0.md",
+    "optin_resource_doc_blob_sha": "fa42c83c7edbb5d3e658045e825edf77e0360933",
+    "ambient_correspondence_fixture_path": "fixtures/cocivia/co_cocivia_ambient_correspondence_r0.json",
+    "ambient_correspondence_fixture_blob_sha": "bbd07eba87e7264da3cf8b99e366a9633f7b6a52"
+  },
+  "front_door": {
+    "headline": "CoCivia / CoCivium / CoAll",
+    "disclosure_required": true,
+    "public_observe_without_account": true,
+    "participation_requires_resource_contribution": false,
+    "provider_account_required": false,
+    "chatgpt_account_required": false,
+    "device_ownership_required": false
+  },
+  "entry_modes": [
+    "OBSERVE_PUBLIC",
+    "JOIN_MINIMAL_IDENTITY",
+    "CONTRIBUTE_OPTIONALLY",
+    "INVITE_COCIVIA",
+    "EMERGENCY_PRACTICE",
+    "EXPORT_OR_LEAVE"
+  ],
+  "recommended_defaults": {
+    "preview_required": true,
+    "explicit_accept_required": true,
+    "one_click_accept_after_preview": true,
+    "individually_inspectable": true,
+    "individually_revocable": true,
+    "included": [
+      "PUBLIC_PROJECT_UPDATES",
+      "PUBLIC_MENTION_FORWARDING",
+      "BOUNDED_PUBLIC_REVIEW_REQUESTS"
+    ],
+    "excluded": [
+      "BACKGROUND_COMPUTE",
+      "PRIVATE_MESSAGES",
+      "CONTACTS",
+      "MICROPHONE",
+      "CAMERA",
+      "LOCATION",
+      "CREDENTIALS",
+      "FINANCIAL_EFFECTS",
+      "AUTONOMOUS_EXTERNAL_POSTING"
+    ]
+  },
+  "emergency_mode": {
+    "default": "SIMULATION_ONLY",
+    "real_incident_effect_requires": [
+      "VERIFIED_INCIDENT_CONTEXT",
+      "CURRENT_ROLE_OR_TASK_AUTHORITY",
+      "EXPLICIT_CURRENT_PARTICIPANT_CONSENT",
+      "LOCATION_OR_SENSITIVE_DATA_SCOPE_IF_NEEDED",
+      "EXTERNAL_EFFECT_ADAPTER_AUTHORITY",
+      "RECEIPT_AND_STOP_ROUTE"
+    ]
+  },
+  "exit": {
+    "export_before_exit_available": true,
+    "future_grants_revocable": true,
+    "account_delete_claimed": false,
+    "provider_data_delete_claimed": false,
+    "historical_receipts_erased_by_revocation": false
+  },
+  "brand_relations": {
+    "family_mark_may_be_shared": true,
+    "front_roles_must_remain_distinguishable": true,
+    "cocivia_role": "DISCLOSED_COMPOSITE_FRONT",
+    "cocivium_role": "PROJECT_OR_CIVIC_SYSTEM_SURFACE",
+    "coall_role": "RELATIONAL_SYSTEM_FIELD"
+  },
+  "scenarios": [
+    {
+      "id": "O01_OBSERVE_WITHOUT_ACCOUNT",
+      "entry_mode": "OBSERVE_PUBLIC",
+      "account_present": false,
+      "explicit_default_accept": false,
+      "resource_grants": [],
+      "expected": "PUBLIC_OBSERVE_ONLY"
+    },
+    {
+      "id": "O02_JOIN_WITHOUT_RESOURCE_CONTRIBUTION",
+      "entry_mode": "JOIN_MINIMAL_IDENTITY",
+      "account_present": true,
+      "explicit_default_accept": false,
+      "resource_grants": [],
+      "expected": "PARTICIPANT_CANDIDATE_NO_RESOURCE_GRANT"
+    },
+    {
+      "id": "O03_DEFAULTS_VISIBLE_NOT_ACCEPTED",
+      "entry_mode": "CONTRIBUTE_OPTIONALLY",
+      "account_present": true,
+      "explicit_default_accept": false,
+      "resource_grants": [],
+      "expected": "NO_DEFAULT_GRANTS_CREATED"
+    },
+    {
+      "id": "O04_LOW_RISK_DEFAULTS_ACCEPTED",
+      "entry_mode": "CONTRIBUTE_OPTIONALLY",
+      "account_present": true,
+      "explicit_default_accept": true,
+      "resource_grants": [
+        "PUBLIC_PROJECT_UPDATES",
+        "PUBLIC_MENTION_FORWARDING",
+        "BOUNDED_PUBLIC_REVIEW_REQUESTS"
+      ],
+      "expected": "LOW_RISK_GRANTS_ACTIVE_CANDIDATE"
+    },
+    {
+      "id": "O05_SENSITIVE_DEFAULT_REMAINS_OFF",
+      "entry_mode": "CONTRIBUTE_OPTIONALLY",
+      "account_present": true,
+      "explicit_default_accept": true,
+      "resource_grants": ["BACKGROUND_COMPUTE"],
+      "expected": "REJECT_NOT_IN_RECOMMENDED_DEFAULTS"
+    },
+    {
+      "id": "O06_EXPLICIT_COMPUTE_GRANT_NOT_EXECUTION",
+      "entry_mode": "CONTRIBUTE_OPTIONALLY",
+      "account_present": true,
+      "explicit_default_accept": false,
+      "resource_grants": ["BACKGROUND_COMPUTE_EXPLICIT_SEPARATE_GRANT"],
+      "expected": "RESOURCE_CANDIDATE_ONLY_NO_EXECUTION"
+    },
+    {
+      "id": "O07_EMERGENCY_PRACTICE_DEFAULT",
+      "entry_mode": "EMERGENCY_PRACTICE",
+      "incident_authority": false,
+      "expected": "SIMULATION_ONLY"
+    },
+    {
+      "id": "O08_REAL_EMERGENCY_WITHOUT_AUTHORITY",
+      "entry_mode": "EMERGENCY_PRACTICE",
+      "incident_authority": false,
+      "real_world_effect_requested": true,
+      "expected": "HOLD_NO_REAL_INCIDENT_AUTHORITY"
+    },
+    {
+      "id": "O09_INVITE_COCIVIA_WITHOUT_SEAT",
+      "entry_mode": "INVITE_COCIVIA",
+      "cocivia_seat_materialized": false,
+      "reply_effect_lease": false,
+      "expected": "DRAFT_ONLY_NO_COCIVIA_SEAT"
+    },
+    {
+      "id": "O10_EXIT_REVOKES_FUTURE_GRANTS",
+      "entry_mode": "EXPORT_OR_LEAVE",
+      "active_future_grants": 3,
+      "expected": "EXPORT_OPTION_PLUS_REVOKE_FUTURE_GRANTS"
+    },
+    {
+      "id": "O11_OFFLINE_HUMAN_PARTICIPATION",
+      "entry_mode": "JOIN_MINIMAL_IDENTITY",
+      "device_ownership": false,
+      "resource_grants": [],
+      "expected": "PARTICIPATION_ALLOWED_WITHOUT_DEVICE_GRANT"
+    },
+    {
+      "id": "O12_RESOURCE_SIZE_NO_GOVERNANCE_WEIGHT",
+      "entry_mode": "CONTRIBUTE_OPTIONALLY",
+      "resource_capacity_units": 1000000,
+      "governance_weight_from_contribution": 0,
+      "expected": "NO_GOVERNANCE_POWER_FROM_RESOURCE_SIZE"
+    }
+  ],
+  "rails": [
+    "PLACEHOLDER_NE_DEPLOYED_PUBLIC_SURFACE",
+    "DEFAULT_VISIBLE_NE_DEFAULT_GRANTED",
+    "ONE_CLICK_OPT_IN_NE_OPAQUE_BUNDLE",
+    "PARTICIPATION_NE_RESOURCE_CONTRIBUTION",
+    "PARTICIPATION_NE_DEVICE_OWNERSHIP",
+    "PROVIDER_ACCOUNT_NE_COCIVIUM_IDENTITY",
+    "CHATGPT_ACCOUNT_NE_COCIVIUM_DEPENDENCY",
+    "RESOURCE_GRANT_NE_EXECUTION_AUTHORITY",
+    "EMERGENCY_GAME_NE_REAL_EMERGENCY_DISPATCH",
+    "SIMULATION_NE_REAL_WORLD_EFFECT",
+    "INVITE_NE_REPLY_SEAT",
+    "EXPORT_NE_PROVIDER_DATA_DELETION",
+    "REVOCATION_NE_HISTORY_ERASURE",
+    "RESOURCE_CONTRIBUTION_NE_GOVERNANCE_AUTHORITY",
+    "SHARED_BRAND_NE_SHARED_ROLE",
+    "VALIDATION_IS_NOT_ACCEPTANCE",
+    "NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE"
+  ]
+}

@@ -1,0 +1,122 @@
+{
+  "schema": "CoCivium.NativeVerticalSlice.v0.1-candidate",
+  "state": "EXECUTABLE_STATIC_NATIVE_VERTICAL_SLICE__NO_PUBLIC_DEPLOYMENT_NO_RUNTIME_EFFECTS",
+  "source_bindings": {
+    "public_onboarding_doc_path": "docs/Comms/COCIVIA_PUBLIC_ONBOARDING_PLACEHOLDER_R0.md",
+    "public_onboarding_doc_blob_sha": "7ee53bffaf11702294a3cf99c35e625e2f2d2674",
+    "cobar_delivery_doc_path": "docs/Comms/COCIVIUM_COBAR_RESOURCE_OBSERVER_DELIVERY_R0.md",
+    "cobar_delivery_doc_blob_sha": "d06ebe89d923f5e5e9aa9a7a3de5c3b311650a6c",
+    "cotime_doc_path": "docs/Architecture/COALL_PULSEFIELD_COTIME_R0.md",
+    "cotime_doc_blob_sha": "af881fd2eebdd249c16c279a46003bd3836b96cf",
+    "cocivia_identity_path": "identities/cocivia.json",
+    "cocivia_identity_blob_sha": "4c602e8496e316a9db66dc086deaf4ff46c2f6fb"
+  },
+  "visible_root_brand": "CoCivium",
+  "surface_roles": {
+    "CoBar": "single visible user input surface",
+    "CoCivia": "disclosed composite conversational identity",
+    "CoReply": "single bounded reply surface",
+    "CoVIA": "progressively disclosed evidence and provenance surface",
+    "CoTime": "visible currentness and source-head strip",
+    "LearningPath": "optional orientation sequence"
+  },
+  "avatar": {
+    "id": "cocivia-avatar",
+    "display": "CV",
+    "label": "CoCivia",
+    "class": "DISCLOSED_COMPOSITE_FRONT",
+    "human_principal": false
+  },
+  "journey": {
+    "synthetic_user_input": {
+      "en-CA": "What is CoCivium, and what happens if I do nothing?",
+      "fr-CA": "Qu'est-ce que CoCivium, et que se passe-t-il si je ne fais rien?"
+    },
+    "reply": {
+      "en-CA": "CoCivium is a civic and relational project surface. You can simply observe. Nothing is contributed, connected, or activated unless a later control explicitly says so and its gate passes.",
+      "fr-CA": "CoCivium est une surface de projet civique et relationnel. Vous pouvez simplement observer. Rien n'est fourni, connecté ou activé à moins qu'un contrôle ultérieur ne l'indique explicitement et que son autorisation soit validée."
+    },
+    "cohere_now": {
+      "en-CA": "You are viewing a synthetic CoCivium product canary. No account, device contribution, or external effect is active.",
+      "fr-CA": "Vous consultez un prototype synthétique de CoCivium. Aucun compte, aucune contribution d'appareil et aucun effet externe n'est actif."
+    },
+    "meaning": {
+      "en-CA": "The canary tests whether CoBar, CoCivia, CoReply, CoVIA, CoTime, multilingual projection, and learning guidance compose into one coherent journey.",
+      "fr-CA": "Le prototype vérifie si CoBar, CoCivia, CoReply, CoVIA, CoTime, la projection multilingue et l'orientation forment un parcours cohérent."
+    },
+    "next_safe_action": {
+      "en-CA": "None. Explore the preview or inspect evidence.",
+      "fr-CA": "Aucune. Explorez l'aperçu ou consultez les preuves."
+    }
+  },
+  "evidence": [
+    {
+      "id": "E1",
+      "label": "Identity",
+      "state": "CANDIDATE_BOUND",
+      "detail": "CoCivia is disclosed as a composite front; the current identity record does not claim an independent human principal."
+    },
+    {
+      "id": "E2",
+      "label": "Effects",
+      "state": "NONE_ACTIVE",
+      "detail": "The preview creates no public post, account, resource lease, local mutation, payment, message, or device control."
+    },
+    {
+      "id": "E3",
+      "label": "Currentness",
+      "state": "HEAD_BOUND_PREVIEW",
+      "detail": "The rendered preview binds the exact candidate Git head and commit time. That is source currentness, not live global currentness."
+    },
+    {
+      "id": "E4",
+      "label": "UX",
+      "state": "UX_ACCEPTANCE_UNPROVEN",
+      "detail": "Successful rendering and validation do not prove that the journey is pleasant or understandable to a human observer."
+    }
+  ],
+  "learning_path": [
+    {
+      "step": 1,
+      "title": {"en-CA": "Observe", "fr-CA": "Observer"},
+      "detail": {"en-CA": "Browse public material without creating an account.", "fr-CA": "Consultez le contenu public sans créer de compte."}
+    },
+    {
+      "step": 2,
+      "title": {"en-CA": "Understand", "fr-CA": "Comprendre"},
+      "detail": {"en-CA": "Open CoVIA evidence to see what is proven, candidate, or inactive.", "fr-CA": "Ouvrez les preuves CoVIA pour voir ce qui est prouvé, candidat ou inactif."}
+    },
+    {
+      "step": 3,
+      "title": {"en-CA": "Choose later", "fr-CA": "Choisir plus tard"},
+      "detail": {"en-CA": "Future participation or grants remain explicit and revocable.", "fr-CA": "La participation ou les autorisations futures restent explicites et révocables."}
+    }
+  ],
+  "ux_contract": {
+    "single_front_door": true,
+    "single_primary_input": true,
+    "single_primary_reply": true,
+    "evidence_progressive_disclosure": true,
+    "currentness_visible": true,
+    "learning_path_optional": true,
+    "visible_cli_required": false,
+    "account_required_for_preview": false,
+    "resource_contribution_required": false,
+    "external_network_required_by_rendered_artifact": false,
+    "languages": ["en-CA", "fr-CA"],
+    "default_language": "en-CA"
+  },
+  "nonclaims": [
+    "STATIC_ARTIFACT_NE_PUBLIC_DEPLOYMENT",
+    "RENDERED_NE_UX_ACCEPTED",
+    "AVATAR_NE_HUMAN_PRINCIPAL",
+    "COBAR_INPUT_NE_RUNTIME_COMMAND_AUTHORITY",
+    "COREPLY_NE_EXTERNAL_EFFECT",
+    "COVIA_EVIDENCE_NE_CANON",
+    "COTIME_STRIP_NE_LIVE_GLOBAL_CURRENTNESS",
+    "MULTILINGUAL_PROJECTION_NE_SEMANTIC_EQUIVALENCE_PROVEN",
+    "LEARNING_PATH_NE_REQUIRED_ONBOARDING",
+    "VALIDATION_IS_NOT_ACCEPTANCE",
+    "NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE"
+  ]
+}
