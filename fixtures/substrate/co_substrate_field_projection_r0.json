@@ -1,0 +1,98 @@
+{
+  "schema": "CoSubstrateIndependence.FieldProjection.R0",
+  "state": "SYNTHETIC_FIELD_PROJECTION_BINDING__NO_CANON_NO_RUNTIME",
+  "source_field": {
+    "path": "docs/Architecture/COSUBSTRATE_FIELD_R0.md",
+    "git_blob_sha": "5fec3249945ad3d14511621bc52da5587c3526b8",
+    "relation_names": [
+      "translates_to",
+      "reconstructs_from",
+      "loses_information_to",
+      "preserves_invariant_across",
+      "incompatible_with",
+      "requires_adapter",
+      "bounded_by"
+    ]
+  },
+  "profile_cases": [
+    {
+      "id": "F01_PORTABLE_CONTINUATION",
+      "migration_fixture_case": "portable_semantic_object",
+      "field_relations": [
+        {
+          "relation": "reconstructs_from",
+          "subject": "destination-instance",
+          "object": "rel-bundle-001"
+        },
+        {
+          "relation": "preserves_invariant_across",
+          "subject": "relation_count=3",
+          "object": "provider-neutral-json-runtime"
+        }
+      ],
+      "expected_profile_disposition": "ACCEPT_FOR_DECLARED_SCOPE"
+    },
+    {
+      "id": "F02_LOSS_DECLARED_CONTINUATION",
+      "migration_fixture_case": "lossy_migration",
+      "field_relations": [
+        {
+          "relation": "reconstructs_from",
+          "subject": "destination-instance",
+          "object": "observer-model-001"
+        },
+        {
+          "relation": "loses_information_to",
+          "subject": "optional visualization metadata",
+          "object": "reduced-profile-runtime"
+        },
+        {
+          "relation": "preserves_invariant_across",
+          "subject": "core_relations_preserved",
+          "object": "reduced-profile-runtime"
+        }
+      ],
+      "expected_profile_disposition": "ACCEPT_WITH_DECLARED_LOSS"
+    },
+    {
+      "id": "F03_SUBSTRATE_BOUND_REJECTION",
+      "migration_fixture_case": "intentionally_substrate_bound_object",
+      "field_relations": [
+        {
+          "relation": "incompatible_with",
+          "subject": "hardware-key-001",
+          "object": "different-host-B"
+        },
+        {
+          "relation": "bounded_by",
+          "subject": "hardware-key-001",
+          "object": "hardware-root-A"
+        }
+      ],
+      "expected_profile_disposition": "REJECT"
+    },
+    {
+      "id": "F04_CONSTRAINED_REQUIRES_CAPABILITY",
+      "migration_fixture_case": "substrate_constrained_object",
+      "field_relations": [
+        {
+          "relation": "requires_adapter",
+          "subject": "inference-001",
+          "object": "compatible-accelerator"
+        },
+        {
+          "relation": "preserves_invariant_across",
+          "subject": "tensor_shape=4x4",
+          "object": "compatible-accelerator"
+        }
+      ],
+      "expected_profile_disposition": "ACCEPT_IF_REQUIREMENTS_SATISFIED"
+    }
+  ],
+  "nonclaims": [
+    "FIELD_PROJECTION_NE_NEW_SUBSTRATE_ONTOLOGY",
+    "PROFILE_NE_ONTOLOGY",
+    "MIGRATION_ACCEPTED_NE_IDENTICAL_INSTANCE",
+    "GREEN_FIXTURE_NE_RUNTIME_ADOPTION"
+  ]
+}
