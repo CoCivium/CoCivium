@@ -1,0 +1,70 @@
+{
+  "delta_id": "CoWaitlessExecution-20261014-R0",
+  "session_id": "CoEvo-WaitlessExecution-20261014",
+  "observed_at": "2026-10-14T22:45:25Z",
+  "domain": [
+    "CoAutoEvo+/CoEvo+",
+    "CoSession+",
+    "CoRails+"
+  ],
+  "subject": "CoWaitlessExecution+ / CoVirtualArmada+",
+  "relation": "SPLITS_EFFECT_GATING_FROM_WORK_BLOCKING_AND_EXPOSES_RECEIVER_PULL_SEMANTICS",
+  "epistemic_class": "PLANNED",
+  "source_refs": [
+    "docs/Architecture/COWAITLESS_EXECUTION_R0.md",
+    "scripts/CoLogicalSpawnPlanner.py",
+    "ai/session-lifecycle-policy.json",
+    "SESSION_BOOTSTRAP.md"
+  ],
+  "target_surfaces": [
+    "CoCivium"
+  ],
+  "mutation_class": "PROPOSE",
+  "authority_ceiling": "CANDIDATE_PUBLIC_BRANCH_ONLY__NO_RUNTIME_EFFECT_AUTHORITY",
+  "confidentiality": "PUBLIC",
+  "confidence": 0.94,
+  "contradictions": [
+    "Legacy CoBusMirror CoBeacon is pointer lineage and must not be treated as current effect authority.",
+    "X2 remote receiver is offline at the bounded 2026-10-14 observation, so live local pickup is unproven."
+  ],
+  "tests": [
+    "CoLogicalSpawnPlannerWaitlessCanaryR2B.py must prove EFFECT_GATED -> VERIFIER + SHADOW + effect_lease NONE.",
+    "Confidentiality collision must remain BLOCKED."
+  ],
+  "expected_benefit": "Useful verification and independent lanes continue while only genuinely gated effects remain held.",
+  "risks": [
+    "Shadow work could be mistaken for effect authorization unless zero-effect lease and nonclaims remain explicit.",
+    "Large logical armadas can create coordination debt unless dedupe/fan-in and actuator election remain bounded."
+  ],
+  "wake_conditions": [
+    "Receiver-relative CoPulse currentness exposes this exact delta to a subscribed receiver.",
+    "X2 or another authorized runtime receiver becomes reachable for a bounded adapter canary.",
+    "A material contradiction to the effect/work split is observed."
+  ],
+  "supersedes": [],
+  "next_receiver": "CoSessionAutocycle+/CoPulse subscribed receivers; exact pickup remains unproven until receiver readproof",
+  "effect_classes": [
+    "NONE"
+  ],
+  "effect_gate": "NOT_APPLICABLE",
+  "effect_scope": null,
+  "materiality": "MATERIAL",
+  "public_safety": "PUBLIC_SAFE",
+  "qualifiers": {
+    "waitless_invariants": [
+      "NO_SAFE_WORK_WAITS_FOR_AN_UNRELATED_GATE",
+      "EFFECT_GATED_NE_WORK_BLOCKED",
+      "BLOCKED_EDGE_NE_BLOCKED_GRAPH",
+      "ROLLBACK_CAPABLE_NE_AUTHORIZED",
+      "BEACON_NE_AUTHORITY",
+      "VIRTUAL_ARMADA_NE_AUTHORITY_MULTIPLICATION"
+    ],
+    "bounded_runtime_observation": {
+      "x2_remote_route": "OFFLINE",
+      "live_receiver_pickup": "UNPROVEN",
+      "runtime_adoption": "UNPROVEN"
+    }
+  },
+  "next_gate": "CI_PASS_THEN_REVIEW_OR_MERGE_UNDER_REPOSITORY_POLICY",
+  "receiver_readproof_gate": "EXACT"
+}
