@@ -95,6 +95,7 @@ def compile_projection(
             degraded += 1
 
     blocked = [c for c in contracts if c.get("materialization_state") == "BLOCKED"]
+    shadow = [c for c in contracts if c.get("materialization_state") == "SHADOW"]
     logical_only = [c for c in contracts if c.get("materialization_state") == "LOGICAL_ONLY"]
     active_effect_leases = [
         c for c in contracts
@@ -149,6 +150,7 @@ def compile_projection(
         "bounded_session_count":len(sessions),
         "logical_contract_count":len(contracts),
         "logical_only_contracts":len(logical_only),
+        "shadow_contracts":len(shadow),
         "blocked_contracts":len(blocked),
         "degraded_or_recovery_sessions":degraded,
         "human_blockers":len(human_blockers),
@@ -160,7 +162,7 @@ def compile_projection(
         headline = "DEGRADED"
     elif blocked or human_blockers:
         headline = "HIGH"
-    elif len(logical_only) > 0:
+    elif len(logical_only) > 0 or len(shadow) > 0:
         headline = "MODERATE"
     else:
         headline = "LOW"
@@ -210,6 +212,8 @@ def compile_projection(
             "COUNT_NE_GLOBAL_CENSUS",
             "LOGICAL_CONTRACT_NE_LIVE_WORKER",
             "EXCEPTION_NE_HUMAN_BLOCKER",
+            "SHADOW_CONTRACT_NE_HUMAN_BLOCKER",
+            "SHADOW_CONTRACT_NE_LIVE_WORKER",
             "NO_PROVIDER_SESSION_DISCOVERY_WITHOUT_RUNTIME_FACT",
             "NO_RICKBAR_RUNTIME_BINDING_INFERRED",
         ],
@@ -229,6 +233,7 @@ def selftest() -> int:
         "contracts":[
             {"spawn_id":"1","materialization_state":"LOGICAL_ONLY","lease":{"effect_lease":"NONE"}},
             {"spawn_id":"2","materialization_state":"BLOCKED","lease":{"effect_lease":"NONE"},"uncertainty":"CONFIDENTIALITY_PUBLIC_TARGET_COLLISION"},
+            {"spawn_id":"3","materialization_state":"SHADOW","lease":{"effect_lease":"NONE"}},
         ]
     }
     p = compile_projection(ledger,spawn,None,None,"2026-09-23T11:36:00Z")
@@ -238,9 +243,10 @@ def selftest() -> int:
     assert p["virtual_sessions"]["temperatures"]["ARCHIVE"] == 1
     assert p["pressure"]["headline"] == "HIGH"
     assert p["human_blockers"] == []
+    assert p["pressure"]["dimensions"]["shadow_contracts"] == 1
     assert p["provider_sessions"]["count"] is None
     assert p["coverage"]["global_fleet_census"] == "UNPROVEN"
-    print("SELFTEST=PASS_BOUNDED_COUNTS__BLOCKED_NE_HUMAN_BLOCKER__NO_GLOBAL_CENSUS__NO_PROVIDER_INFERENCE")
+    print("SELFTEST=PASS_BOUNDED_COUNTS__SHADOW_VISIBLE__BLOCKED_NE_HUMAN_BLOCKER__NO_GLOBAL_CENSUS__NO_PROVIDER_INFERENCE")
     return 0
 
 

@@ -33,13 +33,18 @@
     "COUNT_NE_GLOBAL_CENSUS",
     "RICKBAR_FIRST__RECEIPTS_BEHIND",
     "SUCCESS_NE_NOTIFICATION_REQUIRED",
-    "RICK_NE_HEARTBEAT"
+    "RICK_NE_HEARTBEAT",
+    "SHADOW_CONTRACT_NE_HUMAN_BLOCKER",
+    "SHADOW_CONTRACT_NE_LIVE_WORKER",
+    "EFFECT_GATED_NE_GLOBAL_BLOCKER"
   ],
   "r4a_compiler": {
     "script": "scripts/CoFleetProjectionCompilerR4A.py",
     "docs": "docs/UX/COFLEET_PROJECTION_COMPILER_R4A.md",
     "global_fleet_census_claimed": false,
     "provider_counts_require_runtime_fact": true,
-    "blocked_ne_human_blocker": true
+    "blocked_ne_human_blocker": true,
+    "shadow_contracts_projected": true,
+    "shadow_contracts_are_human_blockers": false
   }
 }

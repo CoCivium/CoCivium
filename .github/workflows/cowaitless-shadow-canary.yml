@@ -1,0 +1,33 @@
+name: CoWaitless Shadow Canary
+
+on:
+  pull_request:
+    paths:
+      - "scripts/CoLogicalSpawnPlanner.py"
+      - "scripts/CoLogicalSpawnPlannerWaitlessCanaryR2B.py"
+      - "scripts/CoFleetProjectionCompilerR4A.py"
+      - "ai/cofleet-projection-policy.json"
+      - "ai/session-lifecycle-policy.json"
+      - "docs/Architecture/COWAITLESS_EXECUTION_R0.md"
+      - "docs/Operations/COLOGICAL_SPAWN_PLANNER_R2.md"
+      - "SESSION_BOOTSTRAP.md"
+      - "ai/evolution-deltas/2026-10-14/coevo-waitless-execution-virtual-armada-r0.json"
+  push:
+    paths:
+      - "scripts/CoLogicalSpawnPlanner.py"
+      - "scripts/CoLogicalSpawnPlannerWaitlessCanaryR2B.py"
+
+jobs:
+  waitless-shadow:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile Python
+        run: python -m py_compile scripts/CoLogicalSpawnPlanner.py scripts/CoLogicalSpawnPlannerWaitlessCanaryR2B.py scripts/CoFleetProjectionCompilerR4A.py
+      - name: Prove held effect does not block shadow verification
+        run: python scripts/CoLogicalSpawnPlannerWaitlessCanaryR2B.py
+      - name: Prove shadow work is visible but not a human blocker
+        run: python scripts/CoFleetProjectionCompilerR4A.py --selftest

@@ -136,7 +136,14 @@ def compile_plan(deltas: list[dict[str, Any]], lanes_obj: dict[str, Any], repo_m
         }
         collision_domain = "coevo:" + stable_hash(collision_basis)[:24]
         role = choose_role(primary)
-        blocked = bool(all_issues) or str(primary.get("mutation_class")) == "EFFECT_GATED"
+        mutation_class = str(primary.get("mutation_class", ""))
+        blocked = bool(all_issues)
+        materialization_state = (
+            "BLOCKED" if blocked
+            else "SHADOW" if mutation_class == "EFFECT_GATED"
+            else "LOGICAL_ONLY"
+        )
+        lease_mode = "SHADOW" if materialization_state == "SHADOW" else "LOGICAL_ONLY"
 
         input_bindings = []
         for item in group:
@@ -154,7 +161,7 @@ def compile_plan(deltas: list[dict[str, Any]], lanes_obj: dict[str, Any], repo_m
             "confidentiality": str(primary.get("confidentiality", "UNKNOWN")),
             "effect_classes": [str(primary.get("mutation_class"))],
             "budget": {"max_live_embodiments": 0, "max_effectful_mutations": 0, "logical_work_units": 1},
-            "lease": {"mode": "LOGICAL_ONLY", "effect_lease": "NONE"},
+            "lease": {"mode": lease_mode, "effect_lease": "NONE"},
             "idempotency_key": "dedupe:" + dedupe_key,
             "collision_domain": collision_domain,
             "receiver": str(primary.get("next_receiver")),
@@ -168,7 +175,7 @@ def compile_plan(deltas: list[dict[str, Any]], lanes_obj: dict[str, Any], repo_m
             "provenance": [str(x.get("delta_id")) for x in group],
             "currentness": str(primary.get("observed_at")),
             "uncertainty": ";".join(all_issues) if all_issues else None,
-            "materialization_state": "BLOCKED" if blocked else "LOGICAL_ONLY",
+            "materialization_state": materialization_state,
         }
         contracts.append(contract)
 
@@ -199,6 +206,8 @@ def compile_plan(deltas: list[dict[str, Any]], lanes_obj: dict[str, Any], repo_m
             "logical_contracts": len(contracts),
             "dedupe_donations": len(donations),
             "collision_groups": len(collisions),
+            "shadow_contracts": sum(1 for c in contracts if c.get("materialization_state") == "SHADOW"),
+            "blocked_contracts": sum(1 for c in contracts if c.get("materialization_state") == "BLOCKED"),
         },
         "contracts": contracts,
         "donations": donations,
@@ -212,13 +221,16 @@ def compile_plan(deltas: list[dict[str, Any]], lanes_obj: dict[str, Any], repo_m
             "repo_mutations_executed": 0,
             "authority_changes": 0,
         },
-        "next": "R3_LOCAL_OLLAMA_MATERIALIZATION_CANARY_FOR_ONE_UNBLOCKED_LOW_EFFECT_CONTRACT",
+        "next": "R2B_SHADOW_VERIFIER_CANARY_THEN_R3_ONLY_FOR_AUTHORIZED_LOGICAL_ONLY_CONTRACT",
         "nonclaims": [
             "SPAWN_NE_NEW_CHAT",
             "LOGICAL_RESERVE_NE_LIVE_WORKER",
             "DEDUPE_NE_DELETE",
             "MODEL_NE_AUTHORITY",
             "GITHUB_WRITE_ACCESS_NE_GLOBAL_AUTHORITY",
+            "EFFECT_GATED_NE_WORK_BLOCKED",
+            "SHADOW_WORK_NE_EFFECT_AUTHORITY",
+            "VIRTUAL_ARMADA_NE_AUTHORITY_MULTIPLICATION",
         ],
     }
 

@@ -49,3 +49,41 @@ This checks the important failure mode: useful automation must refuse a confiden
 CoSpawn contracts preserve the source delta's confidentiality class explicitly. This is required before any later worker materialization so a private logical task cannot silently default to public.
 
 `CONFIDENTIALITY_MUST_SURVIVE_ROUTING`
+
+
+## R2B waitless effect/work split
+
+An effect gate is not automatically a work gate.
+
+When a valid delta uses `mutation_class = EFFECT_GATED`, R2B elects a `VERIFIER`
+contract with `materialization_state = SHADOW` and `effect_lease = NONE`.
+The effect remains held, while bounded read-only verification, simulation,
+dependency preparation, contradiction search, and evidence work may continue.
+
+Validation failures remain `BLOCKED`. In particular, confidentiality collisions,
+unknown domains, and malformed required fields do not become shadow work merely
+because useful work might exist nearby.
+
+`EFFECT_GATED_NE_WORK_BLOCKED`  
+`SHADOW_WORK_NE_EFFECT_AUTHORITY`  
+`BLOCKED_EDGE_NE_BLOCKED_GRAPH`  
+`ROLLBACK_CAPABLE_NE_AUTHORIZED`
+
+### Virtual armada relation
+
+Many logical contracts may exist concurrently without materializing many workers.
+Prefer many bounded logical/shadow work units, aggressive dedupe/fan-in, and very
+few elected actuators per collision domain.
+
+`VIRTUAL_ARMADA_NE_PROVIDER_TAB_ARMADA`  
+`VIRTUAL_ARMADA_NE_AUTHORITY_MULTIPLICATION`  
+`MANY_WATCHERS_ONE_ELECTED_ACTUATOR`
+
+### Beacon / pulse boundary
+
+A beacon, bootstrap pointer, or CoPulse currentness object may expose this policy
+to a qualified receiver. It does not itself grant effect authority or prove pickup.
+
+`BEACON_NE_AUTHORITY`  
+`DELIVERY_NE_PICKUP`  
+`PICKUP_NE_INTEGRATION`
