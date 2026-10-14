@@ -1,7 +1,7 @@
 {
   "schema": "CoSessionAutocycle.Policy.v0.1-candidate",
   "state": "SHADOW_CONTROL_PLANE__NO_PROVIDER_SESSION_MUTATION",
-  "updated_utc": "2026-09-25T22:10:57Z",
+  "updated_utc": "2026-10-14T22:45:25Z",
   "auto_allowed": [
     "LIFECYCLE_PROJECTION",
     "LABEL_SIGNAL",
@@ -393,6 +393,45 @@
       "HYPOTHESIS_NE_ESTABLISHED_FACT",
       "CI_PASS_NE_RESEARCH_TRUTH",
       "MODEL_NE_AUTHORITY"
+    ]
+  },
+  "waitless_execution_policy": {
+    "state": "CANDIDATE_PUBLIC_POLICY__SHADOW_WORK_CONTINUES_AROUND_HELD_EFFECTS",
+    "rule": "NO_SAFE_WORK_WAITS_FOR_AN_UNRELATED_GATE",
+    "effect_work_split": {
+      "effect_gated_valid_delta": "VERIFIER_SHADOW__EFFECT_LEASE_NONE",
+      "independent_validation_failure": "BLOCKED",
+      "authority_rule": "ROLLBACK_CAPABLE_NE_AUTHORIZED"
+    },
+    "virtual_armada": {
+      "default": "LOGICAL_FIRST",
+      "work_units": "MANY_BOUNDED_DEDUPED_SHADOW_OR_LOGICAL_CONTRACTS",
+      "materialized_actuators": "FEW_ELECTED_BY_CAPABILITY_AUTHORITY_COLLISION_AND_LATENCY",
+      "authority_rule": "CLONE_OR_VIRTUAL_COUNT_NE_AUTHORITY_MULTIPLICATION"
+    },
+    "beacon_pull": {
+      "role": "DISCOVERY_CURRENTNESS_AND_WAKE_POINTER",
+      "authority": "NONE_BY_BEACON_ALONE",
+      "modern_path": "COALL_PULSEFIELD_RECEIVER_RELATIVE_CURRENTNESS",
+      "legacy_cobeacon": "POINTER_LINEAGE__NOT_RECEIVER_PICKUP_PROOF",
+      "receiver_rule": "BOUND_MATERIAL_RELATION_REQUIRED_FOR_WAKE"
+    },
+    "rails": [
+      "EFFECT_GATED_NE_WORK_BLOCKED",
+      "BLOCKED_EDGE_NE_BLOCKED_GRAPH",
+      "HUMAN_GATE_NE_GLOBAL_WAIT",
+      "SHADOW_WORK_NE_EFFECT_AUTHORITY",
+      "BEACON_NE_AUTHORITY",
+      "DELIVERY_NE_PICKUP",
+      "VIRTUAL_ARMADA_NE_PROVIDER_TAB_ARMADA",
+      "VIRTUAL_ARMADA_NE_AUTHORITY_MULTIPLICATION",
+      "MANY_WATCHERS_ONE_ELECTED_ACTUATOR"
+    ],
+    "nonclaims": [
+      "NOT_LIVE_FLEET_ADOPTION",
+      "NOT_X2_RUNTIME_BINDING",
+      "NOT_AUTHORITY_ELEVATION",
+      "NOT_PROVIDER_SESSION_CREATION"
     ]
   }
 }
