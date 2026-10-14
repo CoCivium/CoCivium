@@ -1,7 +1,7 @@
 {
   "schema": "CoAll.SessionBootstrap.v0.1-candidate",
   "state": "PUBLIC_CURRENTNESS_BOOTSTRAP__NOT_GLOBAL_SESSION_PICKUP_PROOF",
-  "updated_utc": "2026-09-25T22:45:00Z",
+  "updated_utc": "2026-10-14T22:50:21Z",
   "bootstrap_repository": "CoCivium/CoCivium",
   "default_branch": "main",
   "read_order": [
@@ -19,7 +19,9 @@
     "ai/session-subscription-profiles.json",
     "ai/currentness/copulse-currentness-r0g.json",
     "schemas/coresearch-evidence-v0.1.schema.json",
-    "examples/coresearch-evidence-v0.1.example.json"
+    "examples/coresearch-evidence-v0.1.example.json",
+    "docs/Architecture/COWAITLESS_EXECUTION_R0.md",
+    "ai/evolution-deltas/2026-10-14/coevo-waitless-execution-virtual-armada-r0.json"
   ],
   "rules": [
     "GITHUB_NE_CUSTODY_ROOT",
@@ -38,7 +40,13 @@
     "NO_NEWEST_WINS",
     "FANIN_BEFORE_MORE_PARALLEL_MUTATION",
     "DESCENDANT_SATISFACTION_BEFORE_REPLAY",
-    "VIRTUAL_SESSION_NE_PROVIDER_TAB"
+    "VIRTUAL_SESSION_NE_PROVIDER_TAB",
+    "NO_SAFE_WORK_WAITS_FOR_AN_UNRELATED_GATE",
+    "EFFECT_GATED_NE_WORK_BLOCKED",
+    "BLOCKED_EDGE_NE_BLOCKED_GRAPH",
+    "ROLLBACK_CAPABLE_NE_AUTHORIZED",
+    "BEACON_NE_AUTHORITY",
+    "VIRTUAL_ARMADA_NE_AUTHORITY_MULTIPLICATION"
   ],
   "routing": {
     "github": [
@@ -112,7 +120,17 @@
     "twilight_behavior": "HARVEST_AND_EXTERNALIZE_MORE__START_FEWER_HIGH_EFFECT_COMMITMENTS",
     "auto_close_safe_projection": true,
     "provider_tab_close_effect": "SHADOW_ONLY",
-    "human_relay_default": false
+    "human_relay_default": false,
+    "waitless_execution": {
+      "policy": "docs/Architecture/COWAITLESS_EXECUTION_R0.md",
+      "machine_delta": "ai/evolution-deltas/2026-10-14/coevo-waitless-execution-virtual-armada-r0.json",
+      "valid_effect_gated_work_state": "SHADOW_VERIFIER__EFFECT_LEASE_NONE",
+      "actual_work_blockers": "VALIDATION_CONFIDENTIALITY_AUTHORITY_COLLISION_OR_CURRENTNESS_FAILURE",
+      "virtual_armada": "MANY_LOGICAL_OR_SHADOW_WORK_UNITS__FEW_ELECTED_ACTUATORS",
+      "beacon_pull_rule": "DISCOVERY_AND_CURRENTNESS_ONLY__NO_AUTHORITY_BY_BEACON",
+      "receiver_proof_rule": "DELIVERY_NE_PICKUP__PICKUP_REQUIRES_EXACT_RECEIVER_READPROOF",
+      "runtime_adoption": "UNPROVEN"
+    }
   },
   "research_evidence": {
     "schema": "schemas/coresearch-evidence-v0.1.schema.json",
