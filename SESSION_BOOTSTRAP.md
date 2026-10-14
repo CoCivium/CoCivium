@@ -319,3 +319,23 @@ The contract keeps source evidence, inference, hypothesis, test, falsifier and c
 `INFERENCE_NE_HYPOTHESIS`  
 `HYPOTHESIS_NE_ESTABLISHED_FACT`  
 `CI_PASS_NE_RESEARCH_TRUTH`
+
+
+## Waitless execution / virtual armada
+
+Use [CoWaitlessExecution+ R0](docs/Architecture/COWAITLESS_EXECUTION_R0.md) with
+the lifecycle policy and CoLogicalSpawnPlanner when an effect or dependency is
+gated.
+
+A valid held effect may still support bounded `SHADOW` verification work.
+Independent eligible lanes continue; only the gated edge stays held.
+
+Beacons and CoPulse packets are discovery/currentness/wake inputs. They do not
+grant authority merely by being seen, and delivery still requires receiver
+readproof before pickup is claimed.
+
+`NO_SAFE_WORK_WAITS_FOR_AN_UNRELATED_GATE`  
+`EFFECT_GATED_NE_WORK_BLOCKED`  
+`BLOCKED_EDGE_NE_BLOCKED_GRAPH`  
+`BEACON_NE_AUTHORITY`  
+`VIRTUAL_ARMADA_NE_AUTHORITY_MULTIPLICATION`
