@@ -65,3 +65,15 @@ R4B is receiver binding into the native RickBar/CoDesktop host once a proven run
 `COUNT_NE_GLOBAL_CENSUS`  
 `LOGICAL_CONTRACT_NE_LIVE_WORKER`  
 `RICK_NE_HEARTBEAT`
+
+
+## R4A1 waitless shadow visibility
+
+CoFleetProjection now counts `SHADOW` logical contracts separately from
+`LOGICAL_ONLY` and `BLOCKED` contracts. A shadow verifier is useful bounded
+work with no effect lease; it is not inferred to be a live worker or a human
+blocker.
+
+`SHADOW_CONTRACT_NE_HUMAN_BLOCKER`  
+`SHADOW_CONTRACT_NE_LIVE_WORKER`  
+`EFFECT_GATED_NE_GLOBAL_BLOCKER`
