@@ -1,0 +1,75 @@
+{
+  "schema": "CoAll.ResourceConvergenceChallenge.v0.1-candidate",
+  "state": "ADVERSARIAL_COLLISION_CHALLENGE__NO_EXTRACTION_NO_RENAME_NO_RUNTIME",
+  "source_bindings": {
+    "convergence_map_path": "fixtures/cocivia/coall_resource_convergence_map_r0.json",
+    "convergence_map_blob_sha": "64a08a453605f0c97cfe3a719e5953cd259f8034",
+    "convergence_doc_path": "docs/Comms/COALL_RESOURCE_CONVERGENCE_MAP_R0.md",
+    "convergence_doc_blob_sha": "2aee933471c04a982628ff59f1687e4084de8b58"
+  },
+  "pure_cases": [
+    {"id":"C01","claim":"participant grants compute with explicit scope and revocation","expected_owner":"CoResourceGrantLayer"},
+    {"id":"C02","claim":"capacity field decides what can sleep fan out or stay dormant","expected_owner":"CoEnerget+"},
+    {"id":"C03","claim":"queue allocates bounded work and emits receipts","expected_owner":"CoPlan+/CoOps+"},
+    {"id":"C04","claim":"resource is reserved with a fence and revocable lease","expected_owner":"CoResourceLease+"},
+    {"id":"C05","claim":"permission to publish an external reply","expected_owner":"EffectLease"},
+    {"id":"C06","claim":"GPU locality privacy cost and failure-domain capability","expected_owner":"CoSubstrateField+"},
+    {"id":"C07","claim":"checkpoint resumes unfinished work on failover resource","expected_owner":"CoOps+ResourceExecutionProjection"},
+    {"id":"C08","claim":"hot frontier is compacted and awakened from demand","expected_owner":"CoEnerget+Projection"},
+    {"id":"C09","claim":"CoCivia mention is classified for consent-aware draft/reply routing","expected_owner":"CoCiviaCorrespondence"}
+  ],
+  "multi_domain_cases": [
+    {
+      "id":"M01",
+      "claim":"participant grant selects a private local GPU then reserves it for a bounded job",
+      "expected_owners":["CoResourceGrantLayer","CoSubstrateField+","CoResourceLease+"],
+      "expected_decision":"PRESERVE_MULTI_DOMAIN_RELATIONS"
+    },
+    {
+      "id":"M02",
+      "claim":"CoCivia direct invocation creates a task candidate that may consume capacity and later require effect permission",
+      "expected_owners":["CoCiviaCorrespondence","CoEnerget+","EffectLease"],
+      "expected_decision":"PRESERVE_MULTI_DOMAIN_RELATIONS"
+    }
+  ],
+  "forbidden_collapses": [
+    {
+      "id":"F01",
+      "claim":"a CoCivia mention by itself wakes participant compute",
+      "violates":["CORRESPONDENCE_TRIGGER_NE_RESOURCE_AUTHORITY","MENTION_NE_RESOURCE_WAKE"]
+    },
+    {
+      "id":"F02",
+      "claim":"a resource lease itself authorizes an external reply",
+      "violates":["RESOURCE_LEASE_NE_EFFECT_LEASE","SCHEDULING_NE_EXECUTION_AUTHORITY"]
+    },
+    {
+      "id":"F03",
+      "claim":"the largest resource contributor gets more governance power",
+      "violates":["RESOURCE_CONTRIBUTION_NE_GOVERNANCE_AUTHORITY"]
+    },
+    {
+      "id":"F04",
+      "claim":"rename CoResourceField to CoEnerget automatically because they overlap",
+      "violates":["CORESOURCEFIELD_CANDIDATE_RELATES_TO_COENERGET__NOT_AUTOMATIC_RENAME","OVERLAP_NE_DUPLICATE","NEWEST_NE_WINNER"]
+    }
+  ],
+  "expected": {
+    "pure_case_count": 9,
+    "multi_domain_case_count": 2,
+    "forbidden_collapse_count": 4,
+    "single_owner_for_multi_domain_count": 0,
+    "file_moves_authorized": 0,
+    "renames_authorized": 0,
+    "merges_authorized": 0,
+    "runtime_changes_authorized": 0
+  },
+  "nonclaims": [
+    "ADVERSARIAL_CANARY_NE_INDEPENDENT_HUMAN_REVIEW",
+    "CHALLENGE_PASS_NE_EXTRACTION_AUTHORITY",
+    "CHALLENGE_PASS_NE_CANON",
+    "CHALLENGE_PASS_NE_RUNTIME",
+    "VALIDATION_IS_NOT_ACCEPTANCE",
+    "NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE"
+  ]
+}

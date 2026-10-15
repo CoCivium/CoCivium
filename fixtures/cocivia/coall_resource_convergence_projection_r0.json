@@ -1,0 +1,192 @@
+{
+  "schema": "CoAll.ResourceConvergenceProjection.v0.1-candidate",
+  "state": "SEMANTIC_EXTRACTION_ADAPTER_CANDIDATE__NO_MOVE_NO_RENAME_NO_CANON_NO_RUNTIME",
+  "purpose": "Contract PR137 resource/correspondence semantics onto existing CoAll owners without flattening consent, capability, reservation, scheduling, or effect authority.",
+  "source_bindings": {
+    "convergence_map_path": "fixtures/cocivia/coall_resource_convergence_map_r0.json",
+    "convergence_map_blob_sha": "64a08a453605f0c97cfe3a719e5953cd259f8034",
+    "convergence_challenge_path": "fixtures/cocivia/coall_resource_convergence_challenge_r0.json",
+    "convergence_challenge_blob_sha": "d0727f4545076af6606f30dd64f222cd1312224b",
+    "correspondence_path": "docs/Comms/COCIVIA_AMBIENT_CORRESPONDENCE_R0.md",
+    "correspondence_blob_sha": "58012f95f9ec2cd82858dee793786fb5007a11bf",
+    "grant_path": "docs/Comms/COALL_OPTIN_RESOURCE_FIELD_R0.md",
+    "grant_blob_sha": "fa42c83c7edbb5d3e658045e825edf77e0360933",
+    "lease_path": "docs/Comms/COALL_RESOURCE_LEASE_REVOCATION_R0.md",
+    "lease_blob_sha": "e8196351fb5ac01c3ff73061737da3340c16600c",
+    "activation_path": "docs/Comms/COALL_RESOURCE_ACTIVATION_METABOLISM_R0.md",
+    "activation_blob_sha": "ac990859992cb5abeb12ae66e3b1dbf1f5fdd08b",
+    "compaction_path": "docs/Comms/COALL_RESOURCE_FIELD_COMPACTION_R0.md",
+    "compaction_blob_sha": "4ad6fd9be7704e00683d07fa4172dd5c6b8409be",
+    "composition_path": "docs/Comms/COALL_RESOURCE_COMPOSITION_R0.md",
+    "composition_blob_sha": "13b883985d0ae8d9f487e8eca2ff929c03df10cd",
+    "failover_path": "docs/Comms/COALL_RESOURCE_FAILOVER_RESUME_R0.md",
+    "failover_blob_sha": "6615a2e1c2f13ac7c4839811d4aaa5ac675fa450",
+    "pulsefield_path": "docs/Architecture/COALL_PULSEFIELD_COTIME_R0.md",
+    "pulsefield_blob_sha": "af881fd2eebdd249c16c279a46003bd3836b96cf",
+    "prelaunch_path": "docs/Launch/COCIVIUM_PUBLIC_PRELAUNCH_R0.md",
+    "prelaunch_blob_sha": "261f120b648835c50e9a1e1ecb728e8cdc2825f6",
+    "substrate_path": "docs/Architecture/COSUBSTRATE_FIELD_R0.md",
+    "substrate_blob_sha": "5fec3249945ad3d14511621bc52da5587c3526b8"
+  },
+  "projections": [
+    {
+      "projection_id": "P-CORRESPONDENCE",
+      "semantic_domain": "CORRESPONDENCE_TRIGGER_RELATIONSHIP_CONSENT",
+      "source_paths": ["docs/Comms/COCIVIA_AMBIENT_CORRESPONDENCE_R0.md"],
+      "target_owner": "CoCiviaCorrespondence",
+      "relation": "KEEP_AS_COCIVIA_SPECIFIC_LAYER",
+      "mutation_action": "NONE"
+    },
+    {
+      "projection_id": "P-GRANT",
+      "semantic_domain": "PARTICIPANT_RESOURCE_GRANT_SCOPE_OWNER_REVOCATION",
+      "source_paths": ["docs/Comms/COALL_OPTIN_RESOURCE_FIELD_R0.md"],
+      "target_owner": "CoResourceGrantLayer",
+      "relation": "FEEDS_CoEnerget+",
+      "mutation_action": "INTERFACE_EXTRACTION_CANDIDATE_ONLY",
+      "required_fields": [
+        "grant_id",
+        "participant_or_owner",
+        "resource_class",
+        "scope_or_purpose",
+        "privacy_or_confidentiality_scope",
+        "state",
+        "capacity_or_cap",
+        "revocation",
+        "provenance"
+      ]
+    },
+    {
+      "projection_id": "P-CAPACITY",
+      "semantic_domain": "HOT_FRONTIER_COMPACTION_AND_DEMAND_CONDITIONED_WAKE",
+      "source_paths": [
+        "docs/Comms/COALL_RESOURCE_FIELD_COMPACTION_R0.md",
+        "docs/Comms/COALL_RESOURCE_ACTIVATION_METABOLISM_R0.md"
+      ],
+      "target_owner": "CoEnerget+Projection",
+      "relation": "SPECIALIZES_CoEnerget+",
+      "mutation_action": "PROJECTION_CANDIDATE_ONLY"
+    },
+    {
+      "projection_id": "P-LEASE",
+      "semantic_domain": "RESOURCE_RESERVATION_FENCING_REVOCATION_AND_HANDOFF",
+      "source_paths": ["docs/Comms/COALL_RESOURCE_LEASE_REVOCATION_R0.md"],
+      "target_owner": "CoResourceLease+",
+      "relation": "OPERATES_UNDER_CoOps+",
+      "mutation_action": "INTERFACE_EXTRACTION_CANDIDATE_ONLY",
+      "required_fields": [
+        "lease_id",
+        "resource_id",
+        "work_or_holder_id",
+        "fence_or_epoch",
+        "lease_state",
+        "expiry_or_revalidation_condition",
+        "revocation_state",
+        "provenance"
+      ]
+    },
+    {
+      "projection_id": "P-EXECUTION",
+      "semantic_domain": "FAILOVER_CHECKPOINT_RESUME",
+      "source_paths": [
+        "docs/Comms/COALL_RESOURCE_COMPOSITION_R0.md",
+        "docs/Comms/COALL_RESOURCE_FAILOVER_RESUME_R0.md"
+      ],
+      "target_owner": "CoOps+ResourceExecutionProjection",
+      "relation": "SPECIALIZES_CoOps+",
+      "mutation_action": "PROJECTION_CANDIDATE_ONLY"
+    },
+    {
+      "projection_id": "P-SUBSTRATE",
+      "semantic_domain": "SUBSTRATE_CAPABILITY_LOCALITY_PRIVACY_COST_FAILURE_TRANSLATION",
+      "source_paths": ["docs/Architecture/COSUBSTRATE_FIELD_R0.md"],
+      "target_owner": "CoSubstrateField+",
+      "relation": "REFERENCE_EXISTING_OWNER",
+      "mutation_action": "NONE"
+    },
+    {
+      "projection_id": "P-EFFECT",
+      "semantic_domain": "EFFECT_PERMISSION_FOR_ACTION_CLASS",
+      "source_paths": ["docs/Launch/COCIVIUM_PUBLIC_PRELAUNCH_R0.md"],
+      "target_owner": "EffectLease",
+      "relation": "REFERENCE_EXISTING_OWNER",
+      "mutation_action": "NONE"
+    },
+    {
+      "projection_id": "P-OPS",
+      "semantic_domain": "EXECUTABLE_ROADMAP_QUEUE_RESOURCE_ALLOCATION_GATES_RECEIPTS",
+      "source_paths": ["docs/Architecture/COALL_PULSEFIELD_COTIME_R0.md"],
+      "target_owner": "CoPlan+/CoOps+",
+      "relation": "REFERENCE_EXISTING_OWNER",
+      "mutation_action": "NONE"
+    }
+  ],
+  "mixed_relation_reconstructions": [
+    {
+      "case_id": "R-M01",
+      "input": "participant grant selects a private local GPU then reserves it for a bounded job",
+      "ordered_relation_chain": [
+        "CoResourceGrantLayer",
+        "CoSubstrateField+",
+        "CoResourceLease+",
+        "CoPlan+/CoOps+"
+      ],
+      "forbidden_shortcuts": [
+        "SUBSTRATE_CAPABILITY_IMPLIES_GRANT",
+        "RESOURCE_LEASE_IMPLIES_EFFECT_AUTHORITY"
+      ]
+    },
+    {
+      "case_id": "R-M02",
+      "input": "CoCivia direct invocation creates a task candidate that may consume capacity and later require effect permission",
+      "ordered_relation_chain": [
+        "CoCiviaCorrespondence",
+        "CoEnerget+",
+        "CoPlan+/CoOps+",
+        "EffectLease"
+      ],
+      "forbidden_shortcuts": [
+        "MENTION_IMPLIES_RESOURCE_WAKE",
+        "SCHEDULING_IMPLIES_EFFECT_AUTHORITY"
+      ]
+    }
+  ],
+  "future_extraction_contract": {
+    "source_docs_remain_provenance_donors": true,
+    "new_interface_must_reference_source_blob": true,
+    "new_projection_must_preserve_nonclaims": true,
+    "file_move_requires_separate_authority": true,
+    "rename_requires_separate_authority": true,
+    "main_merge_requires_separate_authority": true
+  },
+  "expected": {
+    "projection_count": 8,
+    "candidate_interface_count": 2,
+    "candidate_projection_count": 2,
+    "existing_owner_reference_count": 3,
+    "cocivia_specific_keep_count": 1,
+    "mixed_relation_reconstruction_count": 2,
+    "file_moves_authorized": 0,
+    "renames_authorized": 0,
+    "merges_authorized": 0,
+    "runtime_changes_authorized": 0
+  },
+  "rails": [
+    "RESOURCE_GRANT_NE_CAPACITY_FIELD",
+    "CAPACITY_FIELD_NE_SCHEDULER",
+    "SCHEDULING_NE_EXECUTION_AUTHORITY",
+    "RESOURCE_LEASE_NE_EFFECT_LEASE",
+    "SUBSTRATE_CAPABILITY_NE_RESOURCE_GRANT",
+    "CORRESPONDENCE_TRIGGER_NE_RESOURCE_AUTHORITY",
+    "MENTION_NE_RESOURCE_WAKE",
+    "RESOURCE_CONTRIBUTION_NE_GOVERNANCE_AUTHORITY",
+    "CORESOURCEFIELD_CANDIDATE_RELATES_TO_COENERGET__NOT_AUTOMATIC_RENAME",
+    "OVERLAP_NE_DUPLICATE",
+    "PROJECTION_NE_SCHEMA_MERGE",
+    "EXTRACTION_CONTRACT_NE_EXTRACTION",
+    "SOURCE_DONOR_NE_DEPRECATED",
+    "NEWEST_NE_WINNER",
+    "VALIDATION_IS_NOT_ACCEPTANCE",
+    "NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE"
+  ]
+}
