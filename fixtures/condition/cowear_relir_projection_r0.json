@@ -1,0 +1,125 @@
+{
+  "schema": "CoWearRelIRProjection.R0-candidate",
+  "state": "SEMANTIC_COMPACTION_PROJECTION__NO_NEW_PRIMITIVES_NO_CANON_NO_RUNTIME",
+  "semantic_nucleus": {
+    "name": "CoRelIR",
+    "version": "v0.1-candidate",
+    "primitive_roots": [
+      "ENTITY",
+      "RELATION",
+      "EVENT",
+      "STATE",
+      "TIME",
+      "OBSERVER",
+      "CONTEXT",
+      "EVIDENCE",
+      "PROVENANCE",
+      "AUTHORITY",
+      "UNCERTAINTY",
+      "POSSIBILITY",
+      "TRANSFORMATION",
+      "PROJECTION"
+    ]
+  },
+  "term_classification": [
+    {
+      "term": "CoWear+",
+      "role": "RELATION_FAMILY",
+      "primitive_roots_used": ["RELATION", "TIME", "CONTEXT", "EVIDENCE", "UNCERTAINTY"],
+      "new_primitive": false,
+      "meaning": "Typed time-indexed condition change relation; mechanism and domain remain contextual."
+    },
+    {
+      "term": "CoConditionRel+",
+      "role": "RELATION_FAMILY",
+      "primitive_roots_used": ["ENTITY", "RELATION", "STATE", "TIME", "CONTEXT", "EVIDENCE", "PROVENANCE", "UNCERTAINTY"],
+      "new_primitive": false,
+      "meaning": "Condition relation envelope over an entity and one or more dimensions."
+    },
+    {
+      "term": "CoMaintenance+",
+      "role": "EVENT_TRANSFORMATION_PATTERN",
+      "primitive_roots_used": ["EVENT", "TRANSFORMATION", "STATE", "TIME", "EVIDENCE", "PROVENANCE"],
+      "new_primitive": false,
+      "meaning": "Intervention event that may alter one or more condition dimensions without erasing history."
+    },
+    {
+      "term": "CoRetirement+",
+      "role": "STATE_TRANSITION_POLICY_PATTERN",
+      "primitive_roots_used": ["STATE", "EVENT", "CONTEXT", "AUTHORITY", "PROVENANCE"],
+      "new_primitive": false,
+      "meaning": "Scoped transition away from reliance, preserving lineage and authority context."
+    },
+    {
+      "term": "CoConditionForecast+",
+      "role": "PROJECTION_PATTERN",
+      "primitive_roots_used": ["PROJECTION", "POSSIBILITY", "UNCERTAINTY", "TIME", "CONTEXT", "EVIDENCE"],
+      "new_primitive": false,
+      "meaning": "Conditional future projection from condition evidence, never a present state."
+    },
+    {
+      "term": "CoSemanticPatina+",
+      "role": "METAPHOR_ALIAS",
+      "primitive_roots_used": ["RELATION", "CONTEXT", "TIME", "EVIDENCE"],
+      "new_primitive": false,
+      "meaning": "Optional metaphor for accumulated semantic history; not a mechanism or primitive."
+    }
+  ],
+  "scenario_projection": [
+    {
+      "scenario_id": "W01_ACTIVE_SHOE_WEAR",
+      "required_roots": ["ENTITY", "RELATION", "TIME", "EVIDENCE", "CONTEXT"],
+      "forbidden_inferences": ["WEAR_IMPLIES_FAILURE", "USE_IMPLIES_DAMAGE"]
+    },
+    {
+      "scenario_id": "W02_STORED_SHOE_AGING_WITHOUT_USE",
+      "required_roots": ["ENTITY", "STATE", "TIME", "EVIDENCE", "POSSIBILITY"],
+      "forbidden_inferences": ["AGE_IMPLIES_USE_WEAR"]
+    },
+    {
+      "scenario_id": "W03_MAINTENANCE_DOES_NOT_REWIND_HISTORY",
+      "required_roots": ["EVENT", "TRANSFORMATION", "STATE", "TIME", "PROVENANCE"],
+      "forbidden_inferences": ["MAINTENANCE_ERASES_HISTORY", "TRANSFORMATION_IMPLIES_RESTORATION"]
+    },
+    {
+      "scenario_id": "W04_SOFTWARE_CAN_DEGRADE_WITHOUT_PHYSICAL_ABRASION",
+      "required_roots": ["ENTITY", "RELATION", "TIME", "CONTEXT", "EVIDENCE"],
+      "forbidden_inferences": ["CROSS_DOMAIN_RELATION_IMPLIES_SHARED_PHYSICAL_MECHANISM"]
+    },
+    {
+      "scenario_id": "W05_METAPHOR_CAN_WEAR_SEMANTICALLY",
+      "required_roots": ["RELATION", "TIME", "CONTEXT", "EVIDENCE", "PROJECTION"],
+      "forbidden_inferences": ["SEMANTIC_OVERUSE_IMPLIES_FALSEHOOD", "METAPHOR_IMPLIES_MECHANISM"]
+    },
+    {
+      "scenario_id": "W06_REPLACEMENT_NE_PROGRESS",
+      "required_roots": ["EVENT", "TRANSFORMATION", "STATE", "PROVENANCE", "CONTEXT"],
+      "forbidden_inferences": ["REPLACEMENT_IMPLIES_PROGRESS", "COMPONENT_CHANGE_IMPLIES_IDENTITY_CHANGE"]
+    },
+    {
+      "scenario_id": "W07_PREDICTIVE_EOL_IS_A_WINDOW_NOT_CERTAINTY",
+      "required_roots": ["PROJECTION", "POSSIBILITY", "UNCERTAINTY", "TIME", "CONTEXT", "EVIDENCE"],
+      "forbidden_inferences": ["FORECAST_IMPLIES_STATE", "POSSIBILITY_IMPLIES_FACT", "PREDICTION_IMPLIES_CERTAINTY"]
+    }
+  ],
+  "compaction_rules": [
+    "COTERM_NE_PRIMITIVE_BY_DEFAULT",
+    "COWEAR_NE_NEW_PRIMITIVE",
+    "CONDITION_TRAJECTORY_NE_OBJECT_IDENTITY",
+    "EVENT_PATTERN_NE_NEW_EVENT_PRIMITIVE",
+    "FORECAST_NE_STATE",
+    "POSSIBILITY_NE_FACT",
+    "TRANSFORMATION_NE_IMPROVEMENT",
+    "PROJECTION_NE_REALITY_TOTALITY",
+    "METAPHOR_NE_MECHANISM",
+    "ALIAS_NE_DUPLICATE_ONTOLOGY"
+  ],
+  "nonclaims": [
+    "CORELIR_V0_1_CANDIDATE_NE_CANON",
+    "TERM_CLASSIFICATION_NE_SEMANTIC_FINALITY",
+    "COMPACTION_NE_INFORMATION_ERASURE",
+    "PROJECTION_NE_RUNTIME_SCHEMA",
+    "VALIDATION_IS_NOT_ACCEPTANCE",
+    "NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE"
+  ]
+}
