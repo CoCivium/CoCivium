@@ -1,0 +1,49 @@
+{
+  "schema": "CoJurisdictionWeave.DeedApplicability.v0.1-candidate",
+  "deed_id": "fixture:negative-diffuse-accountability",
+  "observed_at": "2026-09-24T20:20:00Z",
+  "deed_class": "NEGATIVE_SYNTHETIC_FIXTURE",
+  "principals": [
+    "fixture:principal"
+  ],
+  "participants": [
+    "fixture:ai"
+  ],
+  "nodes": [
+    "fixture:node"
+  ],
+  "candidate_regimes": [
+    {
+      "regime_id": "ca",
+      "source_ref": "fixture:source:ca",
+      "valid_time": "2026-09-24",
+      "applicability_state": "APPLIES_PROVISIONALLY",
+      "confidence": 0.9,
+      "notes": [
+        "Synthetic fixture only."
+      ]
+    }
+  ],
+  "route_disposition": {
+    "state": "ALLOW_BOUNDED",
+    "reason": "This fixture must fail.",
+    "human_review_required": false,
+    "conditions": [],
+    "prohibited_routes": []
+  },
+  "authority_ceiling": "CANDIDATE_ONLY",
+  "responsibility_graph": [
+    {
+      "subject": "fixture:deed",
+      "relation": "EXECUTED_BY",
+      "object": "fixture:node"
+    }
+  ],
+  "evidence_refs": [
+    "fixture:source:ca"
+  ],
+  "nonclaims": [
+    "NODE_LOCATION_NE_SOLE_JURISDICTION",
+    "DISTRIBUTION_NE_RESPONSIBILITY_ERASURE"
+  ]
+}
