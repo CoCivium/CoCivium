@@ -1,7 +1,7 @@
 {
   "schema": "CoAll.CatchupCurrentness.v0.1-candidate",
   "state": "PUBLIC_SAFE_CURRENTNESS_PROJECTION__BRANCH_ONLY__NO_RUNTIME_ADOPTION",
-  "observed_utc": "2026-10-15T15:49:18Z",
+  "observed_utc": "2026-10-15T15:52:51Z",
   "base_main": "2d3da61bddec70900bfe52cf7a27c1633dcf57c6",
   "branch": "catchup/coevoall-20261015-r0",
   "docs": {
@@ -36,6 +36,26 @@
     "TASK_SPACE_NE_LIVE_WORKER_COUNT",
     "VIRTUAL_ARMADA_NE_AUTHORITY_MULTIPLICATION",
     "SCHEDULE_NE_PROVIDER",
-    "PUBLIC_RELEASE_REQUIRES_SEPARATE_AUTHORITY"
-  ]
+    "PUBLIC_RELEASE_REQUIRES_SEPARATE_AUTHORITY",
+    "OPEN_PR_NE_MERGE_ELECTION",
+    "DESCENDANT_SATISFACTION_BEFORE_REPLAY",
+    "FANIN_BEFORE_MORE_PARALLEL_MUTATION",
+    "INITIATIVE_COUNT_NE_ACTIVE_PROJECT_COUNT"
+  ],
+  "public_review_container": {
+    "pr_number": 165,
+    "title": "CoEvoAll 2026-10-15 fan-in: content, machine, CoVids, Armada",
+    "branch": "coevo/20261015-fanin-r0",
+    "state": "DRAFT_OPEN"
+  },
+  "optionality": {
+    "campaign": "docs/Architecture/COOPTIONALITY_RECOVERY_CAMPAIGN_R0.md",
+    "backlog": "docs/Evolution/COALL_OPTIONALITY_RECOVERY_20261015_R0.md",
+    "open_pr_census": "ai/currentness/open-pr-optionality-20261015-r0.json",
+    "open_pr_census_human": "docs/Evolution/OPEN_PR_OPTIONALITY_FANIN_20261015_R0.md",
+    "observed_open_prs": 37,
+    "observed_current_main_based": 1,
+    "observed_older_base": 36
+  },
+  "initiative_atlas": "docs/Product/COGLOBALREACH_500_INITIATIVE_ATLAS_R0.md"
 }
