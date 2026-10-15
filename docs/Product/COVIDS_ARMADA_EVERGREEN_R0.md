@@ -140,3 +140,19 @@ Competition is cooperative and evidence-oriented, not winner-take-all.
 9. preserve challenge/correction lineage
 10. only then consider a separately authorized public effect
 
+
+
+## Specialized descendants / evidence
+
+This product-level overview is intentionally not the sole semantic root.
+
+- [CoVid+ Recursive Media / AI-Readable Publication R0](../Media/COVID_RECURSIVE_MEDIA_R0.md)
+  carries the deeper publication architecture, competing media forms,
+  publication-to-research loop and public proof ladder.
+- [CoVid+ Render Lineage — 2026-10-15 R0](../Media/COVID_RENDER_LINEAGE_20261015_R0.md)
+  records the bounded current render evidence and its source-byte verification
+  limits.
+
+`OVERVIEW_NE_TOTALITY`  
+`ARCHITECTURE_NE_RENDER_EVIDENCE`  
+`TRANSCRIPT_OBSERVATION_NE_SOURCE_BYTE_PROOF`
