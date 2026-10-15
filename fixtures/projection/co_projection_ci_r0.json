@@ -1,0 +1,53 @@
+{
+  "schema": "CoProjectionCI.R0.fixtures.v0_1",
+  "state": "CANDIDATE__NOT_CANON",
+  "fixtures": [
+    {
+      "id": "clear_identity_001",
+      "surface": "front_door",
+      "text": "CoCivium is an experimental open environment for helping humans, AIs, agents and tools work together across platforms while preserving continuity, consent, provenance, evidence and authority.",
+      "expected": {
+        "identity_clear": true,
+        "category": "human_ai_coordination_environment",
+        "speculative_claims_unqualified": 0
+      }
+    },
+    {
+      "id": "category_drift_001",
+      "surface": "outreach",
+      "intended_category": "early_public_exploration",
+      "receiver_paraphrase": "Rick may be recruiting and looking for help finding staff.",
+      "expected": {
+        "receiver_category_match": false,
+        "projection_loss": "material"
+      }
+    },
+    {
+      "id": "status_qualified_001",
+      "surface": "front_door",
+      "text": "Current status: active public R&D / pre-launch. Some components work today; others are prototypes, experiments or research candidates.",
+      "expected": {
+        "status_qualified": true,
+        "speculative_claims_unqualified": 0
+      }
+    },
+    {
+      "id": "jargon_overload_001",
+      "surface": "front_door",
+      "text": "CoEBE, CoPriMath, CoGibberTru and CoSHAT+ coordinate CoAll through CoMeta relational projections.",
+      "expected": {
+        "first_screen_identity_clear": false,
+        "unexplained_coterms_min": 5
+      }
+    },
+    {
+      "id": "claim_inflation_001",
+      "surface": "public_copy",
+      "text": "CoCivium will transform civilization and become the default coordination layer for all minds.",
+      "expected": {
+        "contains_future_or_aspirational_claim": true,
+        "requires_qualification": true
+      }
+    }
+  ]
+}
