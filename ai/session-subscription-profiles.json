@@ -1,7 +1,7 @@
 {
   "schema": "CoSessionSubscriptionProfiles.v0.1-candidate",
   "state": "PUBLIC_BOOTSTRAP_ROUTING__NOT_GLOBAL_CONTENT_PUSH",
-  "updated_utc": "2026-09-23T11:56:29Z",
+  "updated_utc": "2026-10-15T15:52:51Z",
   "default_policy": {
     "hot_max_domains": 4,
     "warm_max_domains": 6,
@@ -162,7 +162,8 @@
       "warm": [
         "CoIndex+",
         "CoLex+",
-        "CoSource+/Provenance"
+        "CoSource+/Provenance",
+        "CoMedia+/CoVid+"
       ],
       "digest": [
         "CoTheoryAll+",
@@ -215,13 +216,38 @@
         "CoTheoryAll+",
         "CoUX+/CoSurface+",
         "CoFuture+",
-        "CoHighlight+"
+        "CoHighlight+",
+        "CoMedia+/CoVid+"
       ],
       "preferred_repos": [
         "CoCivium",
         "CoShareHub",
         "CoInsights",
         "MasterPlan"
+      ]
+    },
+    {
+      "profile_id": "CoMedia",
+      "hot": [
+        "CoMedia+/CoVid+",
+        "CoSource+/Provenance",
+        "CoUX+/CoSurface+"
+      ],
+      "warm": [
+        "CoHighlight+",
+        "CoHumour+",
+        "CoAutoEvo+/CoEvo+"
+      ],
+      "digest": [
+        "CoIndex+",
+        "CoLex+",
+        "CoRails+"
+      ],
+      "preferred_repos": [
+        "CoCivium",
+        "CoAura",
+        "CoSources",
+        "CoShareHub"
       ]
     }
   ],
