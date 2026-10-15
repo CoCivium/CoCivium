@@ -1,0 +1,163 @@
+{
+  "schema": "CoObserverSurfaceCurrentness.R0",
+  "state": "SYNTHETIC_MULTI_SURFACE_CURRENTNESS_CANARY__NO_X2_RUNTIME_CONTROL",
+  "truth_states": ["RECOVERABLE","WAKEABLE","MATERIALIZED","BLOCKED","DORMANT","RETIRED"],
+  "surface_claims": ["LIVE","QUIET","DEAD","UNKNOWN","ABSENT"],
+  "sessions": [
+    {
+      "id": "S1",
+      "logical_context_id": "CoEvoAll",
+      "virtual_state": "WAKEABLE",
+      "last_progress_age_seconds": 420,
+      "last_proof_age_seconds": 45,
+      "recovery_recipe_present": true,
+      "successor_present": true,
+      "surfaces": [
+        {
+          "id": "tray",
+          "kind": "LOCAL_TRAY",
+          "claim": "DEAD",
+          "render_age_seconds": 900,
+          "ttl_seconds": 60
+        },
+        {
+          "id": "chat-sidebar",
+          "kind": "PROVIDER_SIDEBAR",
+          "claim": "LIVE",
+          "render_age_seconds": 12,
+          "ttl_seconds": 60
+        }
+      ],
+      "expected": {
+        "display_virtual_state": "WAKEABLE",
+        "alive": true,
+        "surface_states": {
+          "tray": "STALE_PROJECTION",
+          "chat-sidebar": "FRESH_PROJECTION"
+        },
+        "projection_disagreement": true,
+        "preferred_action": "CONTINUE_FROM_VIRTUAL_CONTEXT_NOT_FROM_TAB_STATUS"
+      }
+    },
+    {
+      "id": "S2",
+      "logical_context_id": "CoOldProviderLane",
+      "virtual_state": "BLOCKED",
+      "last_progress_age_seconds": 30,
+      "last_proof_age_seconds": 7200,
+      "recovery_recipe_present": false,
+      "successor_present": false,
+      "surfaces": [
+        {
+          "id": "chat-tab",
+          "kind": "PROVIDER_TAB",
+          "claim": "LIVE",
+          "render_age_seconds": 10,
+          "ttl_seconds": 60
+        }
+      ],
+      "expected": {
+        "display_virtual_state": "BLOCKED",
+        "alive": false,
+        "surface_states": {
+          "chat-tab": "FRESH_PROJECTION"
+        },
+        "projection_disagreement": true,
+        "preferred_action": "RECOVERY_OR_SUCCESSOR_DEED_REQUIRED"
+      }
+    },
+    {
+      "id": "S3",
+      "logical_context_id": "CoDormantResearch",
+      "virtual_state": "DORMANT",
+      "last_progress_age_seconds": 86400,
+      "last_proof_age_seconds": 3600,
+      "recovery_recipe_present": true,
+      "successor_present": false,
+      "surfaces": [
+        {
+          "id": "local-service",
+          "kind": "LOCAL_SERVICE",
+          "claim": "ABSENT",
+          "render_age_seconds": 30,
+          "ttl_seconds": 60
+        },
+        {
+          "id": "living-atlas",
+          "kind": "WEB_PROJECTION",
+          "claim": "QUIET",
+          "render_age_seconds": 20,
+          "ttl_seconds": 60
+        }
+      ],
+      "expected": {
+        "display_virtual_state": "DORMANT",
+        "alive": true,
+        "surface_states": {
+          "local-service": "FRESH_PROJECTION",
+          "living-atlas": "FRESH_PROJECTION"
+        },
+        "projection_disagreement": false,
+        "preferred_action": "NO_WAKE_UNLESS_TRIGGERED"
+      }
+    },
+    {
+      "id": "S4",
+      "logical_context_id": "CoRetiredTabCluster",
+      "virtual_state": "RETIRED",
+      "last_progress_age_seconds": 200,
+      "last_proof_age_seconds": 200,
+      "recovery_recipe_present": true,
+      "successor_present": true,
+      "surfaces": [
+        {
+          "id": "sidebar-old-1",
+          "kind": "PROVIDER_SIDEBAR",
+          "claim": "LIVE",
+          "render_age_seconds": 15,
+          "ttl_seconds": 60
+        },
+        {
+          "id": "sidebar-old-2",
+          "kind": "PROVIDER_SIDEBAR",
+          "claim": "LIVE",
+          "render_age_seconds": 15,
+          "ttl_seconds": 60
+        }
+      ],
+      "expected": {
+        "display_virtual_state": "RETIRED",
+        "alive": false,
+        "surface_states": {
+          "sidebar-old-1": "FRESH_PROJECTION",
+          "sidebar-old-2": "FRESH_PROJECTION"
+        },
+        "projection_disagreement": true,
+        "preferred_action": "HIDE_FROM_DEFAULT_UX_KEEP_FORENSIC_HISTORY"
+      }
+    }
+  ],
+  "cluster_policy": {
+    "group_by": "logical_context_id",
+    "default_render": "ONE_LOGICAL_CONTEXT_ROW_WITH_SURFACE_COUNT",
+    "drill_down": "SHOW_EMBODIMENTS_AND_SURFACE_CURRENTNESS_ON_DEMAND",
+    "do_not_count_tabs_as_independent_work": true
+  },
+  "rails": [
+    "NO_VISIBLE_SURFACE_IS_THE_UNDERLYING_STATE",
+    "VISIBLE_CHAT_NE_RUNNING",
+    "NOT_VISIBLE_ALIVE_NE_DEAD",
+    "STALE_TRAY_NE_DEAD_SESSION",
+    "FRESH_TRAY_NE_LIVE_SESSION",
+    "SURFACE_CURRENTNESS_NE_SESSION_CURRENTNESS",
+    "SURFACE_ABSENCE_NE_SESSION_ABSENCE",
+    "HEARTBEAT_NE_PROGRESS",
+    "LAST_PROGRESS_NE_LAST_PROOF",
+    "TAB_COUNT_NE_WORK_COUNT",
+    "CLUSTER_NE_MERGE",
+    "UI_NE_CONTROL_PLANE",
+    "UX_ACCEPTANCE_UNPROVEN",
+    "VALIDATION_IS_NOT_ACCEPTANCE",
+    "NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE"
+  ]
+}
