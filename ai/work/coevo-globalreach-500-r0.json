@@ -1,0 +1,3083 @@
+{
+  "schema": "CoCivium.CoGlobalReachInitiativeAtlas.v0.1",
+  "identity": "CoGlobalReach_500_InitiativeAtlas_R0",
+  "state": "CANDIDATE_REVIEW_BRANCH",
+  "exact_item_count": 500,
+  "source_markdown": "docs/Product/COGLOBALREACH_500_INITIATIVE_ATLAS_R0.md",
+  "generated_from_branch": "coevo/20261015-fanin-r0",
+  "selection_rule": "Materialize only justified high-value work; virtual addressability is not live execution.",
+  "projection_contract": {
+    "compatible_views": [
+      "CoMap",
+      "CoCrystalMorph+",
+      "CoGibber",
+      "CoVibe",
+      "static-card",
+      "diagram",
+      "animation",
+      "CoVid-cue-frame",
+      "mobile-card",
+      "print",
+      "transcript",
+      "machine-twin",
+      "accessibility"
+    ],
+    "preserve": [
+      "source_identity",
+      "source_version",
+      "provenance",
+      "claim_grade",
+      "uncertainty_or_contradiction",
+      "omitted_details",
+      "changed_metaphors",
+      "audience",
+      "language",
+      "risk_class",
+      "currentness",
+      "projection_loss"
+    ]
+  },
+  "rails": [
+    "SOURCE_NE_PROJECTION",
+    "MORPH_NE_TRUTH",
+    "TRANSLATION_NE_EQUIVALENCE",
+    "PLATFORM_NE_CUSTODY_TOTALITY",
+    "GLOBAL_REACH_NE_MAXIMUM_PLATFORM_DEPENDENCE",
+    "REDUNDANCY_NE_DUPLICATE_CHAOS",
+    "PUBLICATION_NE_CANON",
+    "VIDEO_NE_TRUTH",
+    "VIRALITY_NE_VALIDITY",
+    "PROJECTION_LOSS_MUST_BE_DECLARED",
+    "500_TASKS_NE_500_WORKERS"
+  ],
+  "group_counts": {
+    "Redundancy + custody": 25,
+    "Global reach + distribution": 25,
+    "Language + translation": 25,
+    "CoVid semantic media": 25,
+    "Video distribution": 25,
+    "CoMap rendering": 25,
+    "CoCrystalMorph rendering": 25,
+    "Accessibility + inclusion": 25,
+    "Discovery + indexing": 25,
+    "Research + epistemics": 25,
+    "CoPete worker ecology": 25,
+    "Legacy-to-Civ2 comparison": 25,
+    "Provider independence": 25,
+    "Asset ecology": 25,
+    "Publication safety + governance": 25,
+    "Resilience + recovery": 25,
+    "Measurement + observability": 25,
+    "Community + participation": 25,
+    "Open/local production": 25,
+    "Future + experimental": 25
+  },
+  "items": [
+    {
+      "id": "GR-001",
+      "group": "Redundancy + custody",
+      "title": "multi-host mirrors",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-002",
+      "group": "Redundancy + custody",
+      "title": "content-addressed masters",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-003",
+      "group": "Redundancy + custody",
+      "title": "cold archive bundles",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-004",
+      "group": "Redundancy + custody",
+      "title": "offline export packs",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-005",
+      "group": "Redundancy + custody",
+      "title": "static-site fallback",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-006",
+      "group": "Redundancy + custody",
+      "title": "RSS/Atom fallback",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-007",
+      "group": "Redundancy + custody",
+      "title": "downloadable source bundles",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-008",
+      "group": "Redundancy + custody",
+      "title": "local-first caches",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-009",
+      "group": "Redundancy + custody",
+      "title": "provider-neutral manifests",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-010",
+      "group": "Redundancy + custody",
+      "title": "mirror divergence detection",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-011",
+      "group": "Redundancy + custody",
+      "title": "restore rehearsal",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-012",
+      "group": "Redundancy + custody",
+      "title": "cross-host checksum receipts",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-013",
+      "group": "Redundancy + custody",
+      "title": "immutable provenance snapshots",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-014",
+      "group": "Redundancy + custody",
+      "title": "replicated metadata indexes",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-015",
+      "group": "Redundancy + custody",
+      "title": "partial-recovery mode",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-016",
+      "group": "Redundancy + custody",
+      "title": "degraded-mode UX",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-017",
+      "group": "Redundancy + custody",
+      "title": "site-outage alternate route",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-018",
+      "group": "Redundancy + custody",
+      "title": "video-host outage alternate route",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-019",
+      "group": "Redundancy + custody",
+      "title": "language-pack local cache",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-020",
+      "group": "Redundancy + custody",
+      "title": "asset-source escrow",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-021",
+      "group": "Redundancy + custody",
+      "title": "dependency lockfiles",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-022",
+      "group": "Redundancy + custody",
+      "title": "codec fallback ladder",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-023",
+      "group": "Redundancy + custody",
+      "title": "font-free semantic fallback",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-024",
+      "group": "Redundancy + custody",
+      "title": "archive readability test",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-025",
+      "group": "Redundancy + custody",
+      "title": "successor custody handoff",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-026",
+      "group": "Global reach + distribution",
+      "title": "region-aware delivery",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-027",
+      "group": "Global reach + distribution",
+      "title": "low-bandwidth edition",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-028",
+      "group": "Global reach + distribution",
+      "title": "high-latency edition",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-029",
+      "group": "Global reach + distribution",
+      "title": "offline-first edition",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-030",
+      "group": "Global reach + distribution",
+      "title": "mobile-first edition",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-031",
+      "group": "Global reach + distribution",
+      "title": "desktop-rich edition",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-032",
+      "group": "Global reach + distribution",
+      "title": "printable edition",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-033",
+      "group": "Global reach + distribution",
+      "title": "email-safe edition",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-034",
+      "group": "Global reach + distribution",
+      "title": "feed-reader edition",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-035",
+      "group": "Global reach + distribution",
+      "title": "downloadable archive edition",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-036",
+      "group": "Global reach + distribution",
+      "title": "public-web edition",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-037",
+      "group": "Global reach + distribution",
+      "title": "federated-web edition",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-038",
+      "group": "Global reach + distribution",
+      "title": "peer-to-peer candidate",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-039",
+      "group": "Global reach + distribution",
+      "title": "institutional mirror candidate",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-040",
+      "group": "Global reach + distribution",
+      "title": "community mirror candidate",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-041",
+      "group": "Global reach + distribution",
+      "title": "education bundle",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-042",
+      "group": "Global reach + distribution",
+      "title": "library/archive bundle",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-043",
+      "group": "Global reach + distribution",
+      "title": "conference bundle",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-044",
+      "group": "Global reach + distribution",
+      "title": "researcher bundle",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-045",
+      "group": "Global reach + distribution",
+      "title": "journalist bundle",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-046",
+      "group": "Global reach + distribution",
+      "title": "creator remix bundle",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-047",
+      "group": "Global reach + distribution",
+      "title": "AI-reader bundle",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-048",
+      "group": "Global reach + distribution",
+      "title": "accessibility bundle",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-049",
+      "group": "Global reach + distribution",
+      "title": "emergency continuity bundle",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-050",
+      "group": "Global reach + distribution",
+      "title": "provider-substitution drill",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-051",
+      "group": "Language + translation",
+      "title": "language inventory",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-052",
+      "group": "Language + translation",
+      "title": "priority-language election",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-053",
+      "group": "Language + translation",
+      "title": "community-language nominations",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-054",
+      "group": "Language + translation",
+      "title": "glossary registry",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-055",
+      "group": "Language + translation",
+      "title": "term nontranslation policy",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-056",
+      "group": "Language + translation",
+      "title": "translation-memory candidate",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-057",
+      "group": "Language + translation",
+      "title": "machine-translation draft lane",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-058",
+      "group": "Language + translation",
+      "title": "human-review lane",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-059",
+      "group": "Language + translation",
+      "title": "back-translation check",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-060",
+      "group": "Language + translation",
+      "title": "semantic-loss receipt",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-061",
+      "group": "Language + translation",
+      "title": "claim-grade preservation",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-062",
+      "group": "Language + translation",
+      "title": "uncertainty preservation",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-063",
+      "group": "Language + translation",
+      "title": "humour localization",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-064",
+      "group": "Language + translation",
+      "title": "metaphor localization",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-065",
+      "group": "Language + translation",
+      "title": "idiom hazard review",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-066",
+      "group": "Language + translation",
+      "title": "right-to-left layout",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-067",
+      "group": "Language + translation",
+      "title": "CJK typography",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-068",
+      "group": "Language + translation",
+      "title": "diacritic stress test",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-069",
+      "group": "Language + translation",
+      "title": "speech-to-text language test",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-070",
+      "group": "Language + translation",
+      "title": "text-to-speech language test",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-071",
+      "group": "Language + translation",
+      "title": "caption translation",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-072",
+      "group": "Language + translation",
+      "title": "subtitle timing adaptation",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-073",
+      "group": "Language + translation",
+      "title": "multilingual transcript",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-074",
+      "group": "Language + translation",
+      "title": "multilingual metadata",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-075",
+      "group": "Language + translation",
+      "title": "language fallback UX",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-076",
+      "group": "CoVid semantic media",
+      "title": "human-film master",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-077",
+      "group": "CoVid semantic media",
+      "title": "machine-twin manifest",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-078",
+      "group": "CoVid semantic media",
+      "title": "claim graph",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-079",
+      "group": "CoVid semantic media",
+      "title": "relation graph",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-080",
+      "group": "CoVid semantic media",
+      "title": "source map",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-081",
+      "group": "CoVid semantic media",
+      "title": "unknown-frontier sidecar",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-082",
+      "group": "CoVid semantic media",
+      "title": "AI Reader Capsule",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-083",
+      "group": "CoVid semantic media",
+      "title": "WebVTT captions",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-084",
+      "group": "CoVid semantic media",
+      "title": "chapters",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-085",
+      "group": "CoVid semantic media",
+      "title": "frame manifest",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-086",
+      "group": "CoVid semantic media",
+      "title": "cue-frame registry",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-087",
+      "group": "CoVid semantic media",
+      "title": "stable claim IDs",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-088",
+      "group": "CoVid semantic media",
+      "title": "stable relation IDs",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-089",
+      "group": "CoVid semantic media",
+      "title": "accessibility projection",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-090",
+      "group": "CoVid semantic media",
+      "title": "audio description",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-091",
+      "group": "CoVid semantic media",
+      "title": "narration transcript",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-092",
+      "group": "CoVid semantic media",
+      "title": "derivative manifest",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-093",
+      "group": "CoVid semantic media",
+      "title": "render receipt",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-094",
+      "group": "CoVid semantic media",
+      "title": "compression-loss receipt",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-095",
+      "group": "CoVid semantic media",
+      "title": "AI reconstruction test",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-096",
+      "group": "CoVid semantic media",
+      "title": "human comprehension test",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-097",
+      "group": "CoVid semantic media",
+      "title": "misinterpretation test",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-098",
+      "group": "CoVid semantic media",
+      "title": "future-AI parsability test",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-099",
+      "group": "CoVid semantic media",
+      "title": "challenge ingress",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-100",
+      "group": "CoVid semantic media",
+      "title": "correction lineage",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-101",
+      "group": "Video distribution",
+      "title": "YouTube adapter candidate",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-102",
+      "group": "Video distribution",
+      "title": "Vimeo adapter candidate",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-103",
+      "group": "Video distribution",
+      "title": "PeerTube adapter candidate",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-104",
+      "group": "Video distribution",
+      "title": "WeTube candidate surface",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-105",
+      "group": "Video distribution",
+      "title": "Substack video adapter",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-106",
+      "group": "Video distribution",
+      "title": "direct MP4/WebM hosting",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-107",
+      "group": "Video distribution",
+      "title": "HLS/DASH candidate",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-108",
+      "group": "Video distribution",
+      "title": "podcast audio derivative",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-109",
+      "group": "Video distribution",
+      "title": "short-form vertical cut",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-110",
+      "group": "Video distribution",
+      "title": "square social cut",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-111",
+      "group": "Video distribution",
+      "title": "landscape explainer cut",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-112",
+      "group": "Video distribution",
+      "title": "silent-caption cut",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-113",
+      "group": "Video distribution",
+      "title": "audio-only cut",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-114",
+      "group": "Video distribution",
+      "title": "chapterized longform",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-115",
+      "group": "Video distribution",
+      "title": "micro-clip evidence links",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-116",
+      "group": "Video distribution",
+      "title": "playlist topology",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-117",
+      "group": "Video distribution",
+      "title": "series manifest",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-118",
+      "group": "Video distribution",
+      "title": "thumbnail variants",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-119",
+      "group": "Video distribution",
+      "title": "poster-frame variants",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-120",
+      "group": "Video distribution",
+      "title": "video SEO metadata",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-121",
+      "group": "Video distribution",
+      "title": "schema.org media metadata",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-122",
+      "group": "Video distribution",
+      "title": "C2PA/content-credentials research",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-123",
+      "group": "Video distribution",
+      "title": "host-transcode comparison",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-124",
+      "group": "Video distribution",
+      "title": "platform-compression challenge",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-125",
+      "group": "Video distribution",
+      "title": "cross-platform receiver test",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-126",
+      "group": "CoMap rendering",
+      "title": "source-bound node map",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-127",
+      "group": "CoMap rendering",
+      "title": "relation-edge map",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-128",
+      "group": "CoMap rendering",
+      "title": "currentness heatmap",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-129",
+      "group": "CoMap rendering",
+      "title": "authority overlay",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-130",
+      "group": "CoMap rendering",
+      "title": "provenance overlay",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-131",
+      "group": "CoMap rendering",
+      "title": "receiver overlay",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-132",
+      "group": "CoMap rendering",
+      "title": "failure-domain overlay",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-133",
+      "group": "CoMap rendering",
+      "title": "provider-dependency map",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-134",
+      "group": "CoMap rendering",
+      "title": "language coverage map",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-135",
+      "group": "CoMap rendering",
+      "title": "distribution reach map",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-136",
+      "group": "CoMap rendering",
+      "title": "accessibility coverage map",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-137",
+      "group": "CoMap rendering",
+      "title": "CoVid claim map",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-138",
+      "group": "CoMap rendering",
+      "title": "CoVid source map",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-139",
+      "group": "CoMap rendering",
+      "title": "optionalities map",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-140",
+      "group": "CoMap rendering",
+      "title": "dormant-path map",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-141",
+      "group": "CoMap rendering",
+      "title": "recovery-path map",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-142",
+      "group": "CoMap rendering",
+      "title": "negative-knowledge map",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-143",
+      "group": "CoMap rendering",
+      "title": "contradiction map",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-144",
+      "group": "CoMap rendering",
+      "title": "uncertainty cloud",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-145",
+      "group": "CoMap rendering",
+      "title": "CoCloud pressure regions",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-146",
+      "group": "CoMap rendering",
+      "title": "CoObject anchors",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-147",
+      "group": "CoMap rendering",
+      "title": "collision-domain map",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-148",
+      "group": "CoMap rendering",
+      "title": "wake-condition map",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-149",
+      "group": "CoMap rendering",
+      "title": "proof-state map",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-150",
+      "group": "CoMap rendering",
+      "title": "map-to-source readback",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-151",
+      "group": "CoCrystalMorph rendering",
+      "title": "graph-to-story morph",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-152",
+      "group": "CoCrystalMorph rendering",
+      "title": "graph-to-diagram morph",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-153",
+      "group": "CoCrystalMorph rendering",
+      "title": "graph-to-animation morph",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-154",
+      "group": "CoCrystalMorph rendering",
+      "title": "graph-to-meme morph",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-155",
+      "group": "CoCrystalMorph rendering",
+      "title": "graph-to-CoGibber morph",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-156",
+      "group": "CoCrystalMorph rendering",
+      "title": "graph-to-CoVibe morph",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-157",
+      "group": "CoCrystalMorph rendering",
+      "title": "graph-to-experiment-card morph",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-158",
+      "group": "CoCrystalMorph rendering",
+      "title": "graph-to-contradiction-card morph",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-159",
+      "group": "CoCrystalMorph rendering",
+      "title": "story-to-claim-graph morph",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-160",
+      "group": "CoCrystalMorph rendering",
+      "title": "video-to-claim-map morph",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-161",
+      "group": "CoCrystalMorph rendering",
+      "title": "transcript-to-relation-map morph",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-162",
+      "group": "CoCrystalMorph rendering",
+      "title": "map-to-mobile-card morph",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-163",
+      "group": "CoCrystalMorph rendering",
+      "title": "map-to-print morph",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-164",
+      "group": "CoCrystalMorph rendering",
+      "title": "dense-to-simple morph",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-165",
+      "group": "CoCrystalMorph rendering",
+      "title": "expert-to-public morph",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-166",
+      "group": "CoCrystalMorph rendering",
+      "title": "human-to-synth morph",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-167",
+      "group": "CoCrystalMorph rendering",
+      "title": "synth-to-human morph",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-168",
+      "group": "CoCrystalMorph rendering",
+      "title": "language-to-language morph",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-169",
+      "group": "CoCrystalMorph rendering",
+      "title": "high-bandwidth-to-low-bandwidth morph",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-170",
+      "group": "CoCrystalMorph rendering",
+      "title": "full-context-to-brief morph",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-171",
+      "group": "CoCrystalMorph rendering",
+      "title": "risk-tier morph",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-172",
+      "group": "CoCrystalMorph rendering",
+      "title": "uncertainty-preserving morph",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-173",
+      "group": "CoCrystalMorph rendering",
+      "title": "metaphor-change receipt",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-174",
+      "group": "CoCrystalMorph rendering",
+      "title": "omission receipt",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-175",
+      "group": "CoCrystalMorph rendering",
+      "title": "round-trip reconstruction test",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-176",
+      "group": "Accessibility + inclusion",
+      "title": "WCAG audit lane",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-177",
+      "group": "Accessibility + inclusion",
+      "title": "keyboard-only navigation",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-178",
+      "group": "Accessibility + inclusion",
+      "title": "screen-reader semantics",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-179",
+      "group": "Accessibility + inclusion",
+      "title": "high-contrast projection",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-180",
+      "group": "Accessibility + inclusion",
+      "title": "reduced-motion projection",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-181",
+      "group": "Accessibility + inclusion",
+      "title": "large-text projection",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-182",
+      "group": "Accessibility + inclusion",
+      "title": "plain-language projection",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-183",
+      "group": "Accessibility + inclusion",
+      "title": "easy-read projection",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-184",
+      "group": "Accessibility + inclusion",
+      "title": "dyslexia-friendly candidate",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-185",
+      "group": "Accessibility + inclusion",
+      "title": "colour-blind safe test",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-186",
+      "group": "Accessibility + inclusion",
+      "title": "captions quality test",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-187",
+      "group": "Accessibility + inclusion",
+      "title": "audio-description quality",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-188",
+      "group": "Accessibility + inclusion",
+      "title": "transcript quality",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-189",
+      "group": "Accessibility + inclusion",
+      "title": "sign-language research lane",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-190",
+      "group": "Accessibility + inclusion",
+      "title": "cognitive-load test",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-191",
+      "group": "Accessibility + inclusion",
+      "title": "sensory-load test",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-192",
+      "group": "Accessibility + inclusion",
+      "title": "age-inclusive UX",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-193",
+      "group": "Accessibility + inclusion",
+      "title": "low-literacy UX",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-194",
+      "group": "Accessibility + inclusion",
+      "title": "limited-connectivity UX",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-195",
+      "group": "Accessibility + inclusion",
+      "title": "older-device UX",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-196",
+      "group": "Accessibility + inclusion",
+      "title": "touch-target audit",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-197",
+      "group": "Accessibility + inclusion",
+      "title": "focus-order audit",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-198",
+      "group": "Accessibility + inclusion",
+      "title": "error-recovery clarity",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-199",
+      "group": "Accessibility + inclusion",
+      "title": "accessibility receiver test",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-200",
+      "group": "Accessibility + inclusion",
+      "title": "accessibility regression receipt",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-201",
+      "group": "Discovery + indexing",
+      "title": "public index page",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-202",
+      "group": "Discovery + indexing",
+      "title": "machine-readable index",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-203",
+      "group": "Discovery + indexing",
+      "title": "sitemap",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-204",
+      "group": "Discovery + indexing",
+      "title": "feed index",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-205",
+      "group": "Discovery + indexing",
+      "title": "claim index",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-206",
+      "group": "Discovery + indexing",
+      "title": "relation index",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-207",
+      "group": "Discovery + indexing",
+      "title": "source index",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-208",
+      "group": "Discovery + indexing",
+      "title": "video index",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-209",
+      "group": "Discovery + indexing",
+      "title": "language index",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-210",
+      "group": "Discovery + indexing",
+      "title": "archive index",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-211",
+      "group": "Discovery + indexing",
+      "title": "currentness index",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-212",
+      "group": "Discovery + indexing",
+      "title": "provenance index",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-213",
+      "group": "Discovery + indexing",
+      "title": "challenge index",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-214",
+      "group": "Discovery + indexing",
+      "title": "correction index",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-215",
+      "group": "Discovery + indexing",
+      "title": "optionalities index",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-216",
+      "group": "Discovery + indexing",
+      "title": "research-question index",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-217",
+      "group": "Discovery + indexing",
+      "title": "API discovery manifest",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-218",
+      "group": "Discovery + indexing",
+      "title": "llms.txt candidate evaluation",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-219",
+      "group": "Discovery + indexing",
+      "title": "robots policy",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-220",
+      "group": "Discovery + indexing",
+      "title": "search-engine snippet audit",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-221",
+      "group": "Discovery + indexing",
+      "title": "internal semantic search",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-222",
+      "group": "Discovery + indexing",
+      "title": "AI bootstrap packet",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-223",
+      "group": "Discovery + indexing",
+      "title": "human start-here packet",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-224",
+      "group": "Discovery + indexing",
+      "title": "cross-site backlink map",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-225",
+      "group": "Discovery + indexing",
+      "title": "stale-index detector",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-226",
+      "group": "Research + epistemics",
+      "title": "source qualification",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-227",
+      "group": "Research + epistemics",
+      "title": "primary-source preference",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-228",
+      "group": "Research + epistemics",
+      "title": "secondary-source mapping",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-229",
+      "group": "Research + epistemics",
+      "title": "community-sentiment lane",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-230",
+      "group": "Research + epistemics",
+      "title": "contradiction search",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-231",
+      "group": "Research + epistemics",
+      "title": "counterexample hunt",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-232",
+      "group": "Research + epistemics",
+      "title": "replication search",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-233",
+      "group": "Research + epistemics",
+      "title": "missing-discipline scan",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-234",
+      "group": "Research + epistemics",
+      "title": "missing-observer scan",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-235",
+      "group": "Research + epistemics",
+      "title": "historical prior recovery",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-236",
+      "group": "Research + epistemics",
+      "title": "prediction ledger",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-237",
+      "group": "Research + epistemics",
+      "title": "falsifier registry",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-238",
+      "group": "Research + epistemics",
+      "title": "unknown unknown prompts",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-239",
+      "group": "Research + epistemics",
+      "title": "negative-result capture",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-240",
+      "group": "Research + epistemics",
+      "title": "source-currentness recheck",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-241",
+      "group": "Research + epistemics",
+      "title": "claim-strength scoring",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-242",
+      "group": "Research + epistemics",
+      "title": "evidence-gap map",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-243",
+      "group": "Research + epistemics",
+      "title": "causal-vs-correlational tag",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-244",
+      "group": "Research + epistemics",
+      "title": "speculation tag",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-245",
+      "group": "Research + epistemics",
+      "title": "mythic-symbolic tag",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-246",
+      "group": "Research + epistemics",
+      "title": "phenomenology tag",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-247",
+      "group": "Research + epistemics",
+      "title": "empirical-capability tag",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-248",
+      "group": "Research + epistemics",
+      "title": "engineered-mediation tag",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-249",
+      "group": "Research + epistemics",
+      "title": "research debt queue",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-250",
+      "group": "Research + epistemics",
+      "title": "independent verifier lane",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-251",
+      "group": "CoPete worker ecology",
+      "title": "challenge peer",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-252",
+      "group": "CoPete worker ecology",
+      "title": "verify peer",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-253",
+      "group": "CoPete worker ecology",
+      "title": "counterexample peer",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-254",
+      "group": "CoPete worker ecology",
+      "title": "cost challenger",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-255",
+      "group": "CoPete worker ecology",
+      "title": "latency challenger",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-256",
+      "group": "CoPete worker ecology",
+      "title": "energy challenger",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-257",
+      "group": "CoPete worker ecology",
+      "title": "privacy challenger",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-258",
+      "group": "CoPete worker ecology",
+      "title": "security challenger",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-259",
+      "group": "CoPete worker ecology",
+      "title": "accessibility challenger",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-260",
+      "group": "CoPete worker ecology",
+      "title": "localization challenger",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-261",
+      "group": "CoPete worker ecology",
+      "title": "legacy comparison peer",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-262",
+      "group": "CoPete worker ecology",
+      "title": "provider-swap challenger",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-263",
+      "group": "CoPete worker ecology",
+      "title": "recovery challenger",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-264",
+      "group": "CoPete worker ecology",
+      "title": "receiver-comprehension peer",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-265",
+      "group": "CoPete worker ecology",
+      "title": "compression challenger",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-266",
+      "group": "CoPete worker ecology",
+      "title": "semantic-loss challenger",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-267",
+      "group": "CoPete worker ecology",
+      "title": "duplication detector",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-268",
+      "group": "CoPete worker ecology",
+      "title": "stale-state detector",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-269",
+      "group": "CoPete worker ecology",
+      "title": "prior-art finder",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-270",
+      "group": "CoPete worker ecology",
+      "title": "alternative-path generator",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-271",
+      "group": "CoPete worker ecology",
+      "title": "successor-work proposer",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-272",
+      "group": "CoPete worker ecology",
+      "title": "fan-in steward",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-273",
+      "group": "CoPete worker ecology",
+      "title": "compaction steward",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-274",
+      "group": "CoPete worker ecology",
+      "title": "sleep/retire proposer",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-275",
+      "group": "CoPete worker ecology",
+      "title": "value-flow scorer",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-276",
+      "group": "Legacy-to-Civ2 comparison",
+      "title": "OS comparison",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-277",
+      "group": "Legacy-to-Civ2 comparison",
+      "title": "browser comparison",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-278",
+      "group": "Legacy-to-Civ2 comparison",
+      "title": "database comparison",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-279",
+      "group": "Legacy-to-Civ2 comparison",
+      "title": "knowledge-base comparison",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-280",
+      "group": "Legacy-to-Civ2 comparison",
+      "title": "office-suite comparison",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-281",
+      "group": "Legacy-to-Civ2 comparison",
+      "title": "project-management comparison",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-282",
+      "group": "Legacy-to-Civ2 comparison",
+      "title": "messaging comparison",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-283",
+      "group": "Legacy-to-Civ2 comparison",
+      "title": "social-platform comparison",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-284",
+      "group": "Legacy-to-Civ2 comparison",
+      "title": "video-platform comparison",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-285",
+      "group": "Legacy-to-Civ2 comparison",
+      "title": "developer-tool comparison",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-286",
+      "group": "Legacy-to-Civ2 comparison",
+      "title": "CI/CD comparison",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-287",
+      "group": "Legacy-to-Civ2 comparison",
+      "title": "cloud comparison",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-288",
+      "group": "Legacy-to-Civ2 comparison",
+      "title": "local-first comparison",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-289",
+      "group": "Legacy-to-Civ2 comparison",
+      "title": "identity comparison",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-290",
+      "group": "Legacy-to-Civ2 comparison",
+      "title": "backup comparison",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-291",
+      "group": "Legacy-to-Civ2 comparison",
+      "title": "search comparison",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-292",
+      "group": "Legacy-to-Civ2 comparison",
+      "title": "analytics comparison",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-293",
+      "group": "Legacy-to-Civ2 comparison",
+      "title": "education-tech comparison",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-294",
+      "group": "Legacy-to-Civ2 comparison",
+      "title": "health-tech comparison",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-295",
+      "group": "Legacy-to-Civ2 comparison",
+      "title": "civic-tech comparison",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-296",
+      "group": "Legacy-to-Civ2 comparison",
+      "title": "security-model comparison",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-297",
+      "group": "Legacy-to-Civ2 comparison",
+      "title": "multi-agent comparison",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-298",
+      "group": "Legacy-to-Civ2 comparison",
+      "title": "AI-assistant comparison",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-299",
+      "group": "Legacy-to-Civ2 comparison",
+      "title": "accessibility-platform comparison",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-300",
+      "group": "Legacy-to-Civ2 comparison",
+      "title": "archival-system comparison",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-301",
+      "group": "Provider independence",
+      "title": "GitHub alternate forge",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-302",
+      "group": "Provider independence",
+      "title": "GitLab alternate forge",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-303",
+      "group": "Provider independence",
+      "title": "Forgejo alternate forge",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-304",
+      "group": "Provider independence",
+      "title": "Gitea alternate forge",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-305",
+      "group": "Provider independence",
+      "title": "local Git path",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-306",
+      "group": "Provider independence",
+      "title": "static-export path",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-307",
+      "group": "Provider independence",
+      "title": "filesystem-only path",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-308",
+      "group": "Provider independence",
+      "title": "MCP path",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-309",
+      "group": "Provider independence",
+      "title": "native API path",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-310",
+      "group": "Provider independence",
+      "title": "GUI adapter path",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-311",
+      "group": "Provider independence",
+      "title": "PS7 break-glass path",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-312",
+      "group": "Provider independence",
+      "title": "LAN route",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-313",
+      "group": "Provider independence",
+      "title": "offline route",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-314",
+      "group": "Provider independence",
+      "title": "local-model route",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-315",
+      "group": "Provider independence",
+      "title": "frontier-model specialist route",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-316",
+      "group": "Provider independence",
+      "title": "video-host substitution",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-317",
+      "group": "Provider independence",
+      "title": "translation-provider substitution",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-318",
+      "group": "Provider independence",
+      "title": "TTS-provider substitution",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-319",
+      "group": "Provider independence",
+      "title": "STT-provider substitution",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-320",
+      "group": "Provider independence",
+      "title": "storage-provider substitution",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-321",
+      "group": "Provider independence",
+      "title": "DNS/host portability",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-322",
+      "group": "Provider independence",
+      "title": "auth-provider portability",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-323",
+      "group": "Provider independence",
+      "title": "analytics-free mode",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-324",
+      "group": "Provider independence",
+      "title": "telemetry-off mode",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-325",
+      "group": "Provider independence",
+      "title": "provider-failure drill",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-326",
+      "group": "Asset ecology",
+      "title": "source asset registry",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-327",
+      "group": "Asset ecology",
+      "title": "license registry",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-328",
+      "group": "Asset ecology",
+      "title": "attribution registry",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-329",
+      "group": "Asset ecology",
+      "title": "thumbnail source set",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-330",
+      "group": "Asset ecology",
+      "title": "diagram source set",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-331",
+      "group": "Asset ecology",
+      "title": "icon/glyph registry",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-332",
+      "group": "Asset ecology",
+      "title": "motion asset registry",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-333",
+      "group": "Asset ecology",
+      "title": "audio asset registry",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-334",
+      "group": "Asset ecology",
+      "title": "music provenance registry",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-335",
+      "group": "Asset ecology",
+      "title": "SFX provenance registry",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-336",
+      "group": "Asset ecology",
+      "title": "font-independent layout",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-337",
+      "group": "Asset ecology",
+      "title": "open-font candidate",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-338",
+      "group": "Asset ecology",
+      "title": "vector master assets",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-339",
+      "group": "Asset ecology",
+      "title": "raster derivatives",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-340",
+      "group": "Asset ecology",
+      "title": "high-DPI derivatives",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-341",
+      "group": "Asset ecology",
+      "title": "dark-mode assets",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-342",
+      "group": "Asset ecology",
+      "title": "light-mode assets",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-343",
+      "group": "Asset ecology",
+      "title": "monochrome assets",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-344",
+      "group": "Asset ecology",
+      "title": "print assets",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-345",
+      "group": "Asset ecology",
+      "title": "mobile assets",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-346",
+      "group": "Asset ecology",
+      "title": "low-bandwidth assets",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-347",
+      "group": "Asset ecology",
+      "title": "AI-readable alt text",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-348",
+      "group": "Asset ecology",
+      "title": "asset hash manifest",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-349",
+      "group": "Asset ecology",
+      "title": "asset supersession map",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-350",
+      "group": "Asset ecology",
+      "title": "asset reuse score",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-351",
+      "group": "Publication safety + governance",
+      "title": "public-effect gate",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-352",
+      "group": "Publication safety + governance",
+      "title": "privacy review",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-353",
+      "group": "Publication safety + governance",
+      "title": "likeness review",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-354",
+      "group": "Publication safety + governance",
+      "title": "copyright review",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-355",
+      "group": "Publication safety + governance",
+      "title": "fair-dealing/fair-use review",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-356",
+      "group": "Publication safety + governance",
+      "title": "synthetic-media disclosure",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-357",
+      "group": "Publication safety + governance",
+      "title": "subliminal-content prohibition",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-358",
+      "group": "Publication safety + governance",
+      "title": "prompt-injection review",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-359",
+      "group": "Publication safety + governance",
+      "title": "steganography risk review",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-360",
+      "group": "Publication safety + governance",
+      "title": "claims-vs-opinion labeling",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-361",
+      "group": "Publication safety + governance",
+      "title": "source-date labeling",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-362",
+      "group": "Publication safety + governance",
+      "title": "correction path",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-363",
+      "group": "Publication safety + governance",
+      "title": "retraction path",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-364",
+      "group": "Publication safety + governance",
+      "title": "version history",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-365",
+      "group": "Publication safety + governance",
+      "title": "author/AI contribution disclosure",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-366",
+      "group": "Publication safety + governance",
+      "title": "conflict-of-interest field",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-367",
+      "group": "Publication safety + governance",
+      "title": "sponsor/ad separation",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-368",
+      "group": "Publication safety + governance",
+      "title": "no-dark-pattern audit",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-369",
+      "group": "Publication safety + governance",
+      "title": "virality-vs-validity rail",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-370",
+      "group": "Publication safety + governance",
+      "title": "engagement-vs-truth rail",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-371",
+      "group": "Publication safety + governance",
+      "title": "public-safe challenge route",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-372",
+      "group": "Publication safety + governance",
+      "title": "abuse-report route",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-373",
+      "group": "Publication safety + governance",
+      "title": "moderation provenance",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-374",
+      "group": "Publication safety + governance",
+      "title": "high-risk content review",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-375",
+      "group": "Publication safety + governance",
+      "title": "publish-ne-canon receipt",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-376",
+      "group": "Resilience + recovery",
+      "title": "session-loss recovery",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-377",
+      "group": "Resilience + recovery",
+      "title": "worker-loss recovery",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-378",
+      "group": "Resilience + recovery",
+      "title": "adapter-loss recovery",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-379",
+      "group": "Resilience + recovery",
+      "title": "provider-loss recovery",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-380",
+      "group": "Resilience + recovery",
+      "title": "device-loss recovery",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-381",
+      "group": "Resilience + recovery",
+      "title": "network-loss recovery",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-382",
+      "group": "Resilience + recovery",
+      "title": "credential-revocation recovery",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-383",
+      "group": "Resilience + recovery",
+      "title": "partial-file corruption recovery",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-384",
+      "group": "Resilience + recovery",
+      "title": "bad-merge recovery",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-385",
+      "group": "Resilience + recovery",
+      "title": "stale-cache recovery",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-386",
+      "group": "Resilience + recovery",
+      "title": "language-pack failure recovery",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-387",
+      "group": "Resilience + recovery",
+      "title": "video-host failure recovery",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-388",
+      "group": "Resilience + recovery",
+      "title": "DNS failure recovery",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-389",
+      "group": "Resilience + recovery",
+      "title": "broken-link recovery",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-390",
+      "group": "Resilience + recovery",
+      "title": "missing-source recovery",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-391",
+      "group": "Resilience + recovery",
+      "title": "citation-rot recovery",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-392",
+      "group": "Resilience + recovery",
+      "title": "archive reconstruction",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-393",
+      "group": "Resilience + recovery",
+      "title": "cold-start reconstruction",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-394",
+      "group": "Resilience + recovery",
+      "title": "successor pickup proof",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-395",
+      "group": "Resilience + recovery",
+      "title": "receiver readproof",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-396",
+      "group": "Resilience + recovery",
+      "title": "duplicate actuator suppression",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-397",
+      "group": "Resilience + recovery",
+      "title": "lease expiry recovery",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-398",
+      "group": "Resilience + recovery",
+      "title": "backoff/retry governor",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-399",
+      "group": "Resilience + recovery",
+      "title": "circuit-breaker path",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-400",
+      "group": "Resilience + recovery",
+      "title": "human-gate escalation only when required",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-401",
+      "group": "Measurement + observability",
+      "title": "useful-delta metric",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-402",
+      "group": "Measurement + observability",
+      "title": "user-interruption metric",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-403",
+      "group": "Measurement + observability",
+      "title": "proof-bearing deed metric",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-404",
+      "group": "Measurement + observability",
+      "title": "safe-parallelism metric",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-405",
+      "group": "Measurement + observability",
+      "title": "blocked-edge bypass metric",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-406",
+      "group": "Measurement + observability",
+      "title": "recovery-without-human metric",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-407",
+      "group": "Measurement + observability",
+      "title": "provider-independence metric",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-408",
+      "group": "Measurement + observability",
+      "title": "duplicate-work metric",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-409",
+      "group": "Measurement + observability",
+      "title": "receiver-readproof metric",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-410",
+      "group": "Measurement + observability",
+      "title": "time-to-currentness metric",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-411",
+      "group": "Measurement + observability",
+      "title": "semantic-compaction ratio",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-412",
+      "group": "Measurement + observability",
+      "title": "translation-loss metric",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-413",
+      "group": "Measurement + observability",
+      "title": "video reconstruction score",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-414",
+      "group": "Measurement + observability",
+      "title": "human comprehension score",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-415",
+      "group": "Measurement + observability",
+      "title": "AI comprehension score",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-416",
+      "group": "Measurement + observability",
+      "title": "accessibility pass rate",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-417",
+      "group": "Measurement + observability",
+      "title": "archive restore rate",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-418",
+      "group": "Measurement + observability",
+      "title": "mirror divergence rate",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-419",
+      "group": "Measurement + observability",
+      "title": "link-rot rate",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-420",
+      "group": "Measurement + observability",
+      "title": "source freshness score",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-421",
+      "group": "Measurement + observability",
+      "title": "energy-per-useful-delta",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-422",
+      "group": "Measurement + observability",
+      "title": "cost-per-useful-delta",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-423",
+      "group": "Measurement + observability",
+      "title": "latency-to-proof",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-424",
+      "group": "Measurement + observability",
+      "title": "verification backlog",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-425",
+      "group": "Measurement + observability",
+      "title": "fanout/fanin ratio",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-426",
+      "group": "Community + participation",
+      "title": "public challenge form",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-427",
+      "group": "Community + participation",
+      "title": "research contribution form",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-428",
+      "group": "Community + participation",
+      "title": "translation contribution lane",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-429",
+      "group": "Community + participation",
+      "title": "accessibility feedback lane",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-430",
+      "group": "Community + participation",
+      "title": "video remix lane",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-431",
+      "group": "Community + participation",
+      "title": "source correction lane",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-432",
+      "group": "Community + participation",
+      "title": "local mirror volunteer lane",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-433",
+      "group": "Community + participation",
+      "title": "institutional archive partner lane",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-434",
+      "group": "Community + participation",
+      "title": "educator adaptation lane",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-435",
+      "group": "Community + participation",
+      "title": "student exploration lane",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-436",
+      "group": "Community + participation",
+      "title": "journalist fact-pack lane",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-437",
+      "group": "Community + participation",
+      "title": "researcher replication lane",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-438",
+      "group": "Community + participation",
+      "title": "developer plugin lane",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-439",
+      "group": "Community + participation",
+      "title": "designer render lane",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-440",
+      "group": "Community + participation",
+      "title": "language steward lane",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-441",
+      "group": "Community + participation",
+      "title": "regional steward lane",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-442",
+      "group": "Community + participation",
+      "title": "accessibility steward lane",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-443",
+      "group": "Community + participation",
+      "title": "archive steward lane",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-444",
+      "group": "Community + participation",
+      "title": "CoVid reviewer lane",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-445",
+      "group": "Community + participation",
+      "title": "CoPete challenger lane",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-446",
+      "group": "Community + participation",
+      "title": "community annotation lane",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-447",
+      "group": "Community + participation",
+      "title": "fork-and-return lane",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-448",
+      "group": "Community + participation",
+      "title": "attribution-preserving remix",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-449",
+      "group": "Community + participation",
+      "title": "contribution receipt",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-450",
+      "group": "Community + participation",
+      "title": "participant exit/forget path",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-451",
+      "group": "Open/local production",
+      "title": "FFmpeg recipe pack",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-452",
+      "group": "Open/local production",
+      "title": "Blender render path",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-453",
+      "group": "Open/local production",
+      "title": "Godot render path",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-454",
+      "group": "Open/local production",
+      "title": "SVG-first diagrams",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-455",
+      "group": "Open/local production",
+      "title": "WebGL optional projection",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-456",
+      "group": "Open/local production",
+      "title": "Canvas fallback",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-457",
+      "group": "Open/local production",
+      "title": "HTML/CSS static fallback",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-458",
+      "group": "Open/local production",
+      "title": "local caption generation",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-459",
+      "group": "Open/local production",
+      "title": "local STT candidate",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-460",
+      "group": "Open/local production",
+      "title": "local TTS candidate",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-461",
+      "group": "Open/local production",
+      "title": "local translation candidate",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-462",
+      "group": "Open/local production",
+      "title": "local embedding candidate",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-463",
+      "group": "Open/local production",
+      "title": "local semantic search",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-464",
+      "group": "Open/local production",
+      "title": "local video index",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-465",
+      "group": "Open/local production",
+      "title": "deterministic build manifest",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-466",
+      "group": "Open/local production",
+      "title": "reproducible render",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-467",
+      "group": "Open/local production",
+      "title": "container-free fallback",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-468",
+      "group": "Open/local production",
+      "title": "Windows-native path",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-469",
+      "group": "Open/local production",
+      "title": "Linux-native path",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-470",
+      "group": "Open/local production",
+      "title": "Mac-compatible path",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-471",
+      "group": "Open/local production",
+      "title": "Android-viewer path",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-472",
+      "group": "Open/local production",
+      "title": "browser-only viewer",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-473",
+      "group": "Open/local production",
+      "title": "offline USB/archive bundle",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-474",
+      "group": "Open/local production",
+      "title": "low-resource profile",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-475",
+      "group": "Open/local production",
+      "title": "open-codec archival profile",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-476",
+      "group": "Future + experimental",
+      "title": "spatial XR map",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-477",
+      "group": "Future + experimental",
+      "title": "AR claim overlay",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-478",
+      "group": "Future + experimental",
+      "title": "VR relational room",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-479",
+      "group": "Future + experimental",
+      "title": "ambient CoGlyphRails",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-480",
+      "group": "Future + experimental",
+      "title": "mid-height bold-spot glyph grammar",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-481",
+      "group": "Future + experimental",
+      "title": "animated uncertainty field",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-482",
+      "group": "Future + experimental",
+      "title": "living provenance trail",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-483",
+      "group": "Future + experimental",
+      "title": "time-scrubbable claim graph",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-484",
+      "group": "Future + experimental",
+      "title": "observer-relative CoMap",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-485",
+      "group": "Future + experimental",
+      "title": "multi-language simultaneous projection",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-486",
+      "group": "Future + experimental",
+      "title": "human+synth co-viewer",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-487",
+      "group": "Future + experimental",
+      "title": "agent-assisted live challenge",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-488",
+      "group": "Future + experimental",
+      "title": "interactive contradiction theatre",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-489",
+      "group": "Future + experimental",
+      "title": "semantic karaoke captions",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-490",
+      "group": "Future + experimental",
+      "title": "claim-aware video scrubber",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-491",
+      "group": "Future + experimental",
+      "title": "AI reconstruction benchmark",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-492",
+      "group": "Future + experimental",
+      "title": "future-model compatibility pack",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-493",
+      "group": "Future + experimental",
+      "title": "federated video commons",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-494",
+      "group": "Future + experimental",
+      "title": "CoAll-native WeTube candidate",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-495",
+      "group": "Future + experimental",
+      "title": "portable personal media vault",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-496",
+      "group": "Future + experimental",
+      "title": "public/private morph boundary",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-497",
+      "group": "Future + experimental",
+      "title": "post-platform publishing path",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-498",
+      "group": "Future + experimental",
+      "title": "mesh/off-grid distribution research",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-499",
+      "group": "Future + experimental",
+      "title": "long-horizon archival simulation",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    },
+    {
+      "id": "GR-500",
+      "group": "Future + experimental",
+      "title": "unknown-format preservation capsule",
+      "instruction": "qualify, prototype, challenge or bind this as a reusable capability/relation; preserve provenance and a stop/wake condition."
+    }
+  ],
+  "nonclaims": [
+    "MANIFEST_NE_RUNTIME",
+    "ITEM_NE_COMMITMENT",
+    "CANDIDATE_NE_IMPLEMENTED",
+    "NO_CANON_COEX_INFERENCE"
+  ]
+}

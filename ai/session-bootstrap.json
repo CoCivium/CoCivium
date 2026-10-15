@@ -1,7 +1,7 @@
 {
   "schema": "CoAll.SessionBootstrap.v0.1-candidate",
   "state": "PUBLIC_CURRENTNESS_BOOTSTRAP__NOT_GLOBAL_SESSION_PICKUP_PROOF",
-  "updated_utc": "2026-10-14T22:50:21Z",
+  "updated_utc": "2026-10-15T15:52:51Z",
   "bootstrap_repository": "CoCivium/CoCivium",
   "default_branch": "main",
   "read_order": [
@@ -21,7 +21,12 @@
     "schemas/coresearch-evidence-v0.1.schema.json",
     "examples/coresearch-evidence-v0.1.example.json",
     "docs/Architecture/COWAITLESS_EXECUTION_R0.md",
-    "ai/evolution-deltas/2026-10-14/coevo-waitless-execution-virtual-armada-r0.json"
+    "ai/evolution-deltas/2026-10-14/coevo-waitless-execution-virtual-armada-r0.json",
+    "ai/currentness/coall-catchup-20261015-r0.json",
+    "docs/Evolution/COALL_CATCHUP_20261015_R0.md",
+    "docs/Media/COVID_RECURSIVE_MEDIA_R0.md",
+    "docs/Architecture/COTRIPIE_DYNAMIC_CADENCE_R0.md",
+    "docs/Architecture/COARMADA_EVERGREEN_FRONTIER_R0.md"
   ],
   "rules": [
     "GITHUB_NE_CUSTODY_ROOT",
@@ -46,7 +51,12 @@
     "BLOCKED_EDGE_NE_BLOCKED_GRAPH",
     "ROLLBACK_CAPABLE_NE_AUTHORIZED",
     "BEACON_NE_AUTHORITY",
-    "VIRTUAL_ARMADA_NE_AUTHORITY_MULTIPLICATION"
+    "VIRTUAL_ARMADA_NE_AUTHORITY_MULTIPLICATION",
+    "EVENT_DRIVEN_PRIMARY__HOURLY_RECONCILIATION_FALLBACK",
+    "SCHEDULE_NE_PROVIDER",
+    "TASK_SPACE_NE_LIVE_WORKER_COUNT",
+    "VIDEO_NE_TRUTH",
+    "MEDIA_PLATFORM_NE_MEDIA_IDENTITY"
   ],
   "routing": {
     "github": [
@@ -110,7 +120,9 @@
       "receiver_packet_compiler": "scripts/CoEvoReceiverPacketCompiler.py",
       "public_copulse_projection": "scripts/CoEvoToPublicCoPulseProjectorR0.py",
       "rule": "PROJECTION_NE_DELIVERY__DELIVERY_NE_PICKUP__PICKUP_NE_INTEGRATION"
-    }
+    },
+    "catchup_currentness": "ai/currentness/coall-catchup-20261015-r0.json",
+    "media_domain": "CoMedia+/CoVid+"
   },
   "lifecycle": {
     "policy": "ai/session-lifecycle-policy.json",
@@ -130,6 +142,17 @@
       "beacon_pull_rule": "DISCOVERY_AND_CURRENTNESS_ONLY__NO_AUTHORITY_BY_BEACON",
       "receiver_proof_rule": "DELIVERY_NE_PICKUP__PICKUP_REQUIRES_EXACT_RECEIVER_READPROOF",
       "runtime_adoption": "UNPROVEN"
+    },
+    "dynamic_cadence": {
+      "policy": "docs/Architecture/COTRIPIE_DYNAMIC_CADENCE_R0.md",
+      "rule": "EVENT_DRIVEN_PRIMARY__HOURLY_RECONCILIATION_FALLBACK",
+      "independent_scheduler": "UNPROVEN",
+      "independent_restore": "UNPROVEN"
+    },
+    "evergreen_frontier": {
+      "policy": "docs/Architecture/COARMADA_EVERGREEN_FRONTIER_R0.md",
+      "semantics": "LOGICAL_FIRST__BOUNDED_MATERIALIZATION",
+      "literal_armada_claim": false
     }
   },
   "research_evidence": {
@@ -150,5 +173,11 @@
       "TEST_NE_CONFIRMATION",
       "FALSIFIER_NE_FAILURE_PREDICTION"
     ]
+  },
+  "media": {
+    "policy": "docs/Media/COVID_RECURSIVE_MEDIA_R0.md",
+    "render_lineage": "docs/Media/COVID_RENDER_LINEAGE_20261015_R0.md",
+    "subscription_profile": "CoMedia",
+    "public_release_gate": "SEPARATE_AUTHORITY_REQUIRED"
   }
 }

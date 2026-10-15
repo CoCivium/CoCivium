@@ -1,7 +1,8 @@
 # CoPlatformHelper+ / RepoZipper+ / CoModule Ecology R0
 
 **Date:** 2026-09-24  
-**State:** `CANDIDATE__BRANCH_ONLY__NO_MERGE_CANON_RUNTIME_PUBLIC_OR_AUTHORITY_EFFECT`
+**State:** `MERGED_TO_MAIN__DESIGN_LINEAGE_PROVEN__RUNTIME_CANON_COEX_UNPROVEN`  
+**Merge evidence:** PR #98 merged 2026-09-24; merge commit `e65ac2c7e29816ffa48e5c5db3ccb5724dad1d0e`. This corrects the stale pre-merge state label; merge does not imply runtime adoption, canon, CoEx, or provider-independent execution.
 
 ## Lead
 
