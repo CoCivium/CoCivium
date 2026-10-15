@@ -1,7 +1,7 @@
 {
   "schema": "CoAll.EvolutionLanes.v0.1-candidate",
   "state": "PUBLIC_SHARED_EVOLUTION_REGISTRY",
-  "updated_utc": "2026-09-23T11:00:41Z",
+  "updated_utc": "2026-10-15T15:52:51Z",
   "contribution_contract": "docs/Evolution/COALL_GITHUB_EVOLUTION_FABRIC_R0.md",
   "domains": [
     [
@@ -175,6 +175,15 @@
         "CoCivium"
       ],
       "INVARIANTS_AND_GUARDRAILS"
+    ],
+    [
+      "CoMedia+/CoVid+",
+      [
+        "CoCivium",
+        "CoAura",
+        "CoSources"
+      ],
+      "PUBLIC_SAFE_MEDIA_RESEARCH_PROJECTION"
     ]
   ],
   "rails": [
@@ -182,6 +191,10 @@
     "CURRENTNESS_FOR_ALL_NE_CONTENT_FOR_ALL",
     "DOMAIN_NE_REPOSITORY",
     "REPOSITORY_NE_ONTOLOGY",
-    "NO_NEWEST_WINS"
-  ]
+    "NO_NEWEST_WINS",
+    "VIDEO_NE_TRUTH",
+    "MEDIA_PLATFORM_NE_MEDIA_IDENTITY",
+    "TASK_SPACE_NE_LIVE_WORKER_COUNT"
+  ],
+  "catchup_currentness": "ai/currentness/coall-catchup-20261015-r0.json"
 }
