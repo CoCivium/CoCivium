@@ -1,0 +1,26 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://github.com/CoCivium/CoCivium/schemas/coadvisory-claim-v0.1.schema.json",
+  "title":"CoAdvisory claim v0.1 candidate",
+  "type":"object",
+  "additionalProperties":false,
+  "required":["schema","claim_id","class","statement","source_refs","assumptions","counterarguments","uncertainty","falsifiers","time_horizon","financial_scope","account_action","nonclaims"],
+  "properties":{
+    "schema":{"const":"CoAdvisory.Claim.v0.1-candidate"},
+    "claim_id":{"type":"string","minLength":1},
+    "class":{"enum":["OBSERVED","INFERRED","HYPOTHESIS","SCENARIO"]},
+    "statement":{"type":"string","minLength":1},
+    "source_refs":{"type":"array","items":{"type":"string","minLength":1}},
+    "assumptions":{"type":"array","items":{"type":"string"}},
+    "counterarguments":{"type":"array","items":{"type":"string"}},
+    "uncertainty":{"type":"string","minLength":1},
+    "falsifiers":{"type":"array","minItems":1,"items":{"type":"string","minLength":1}},
+    "time_horizon":{"type":"string","minLength":1},
+    "affected_domains":{"type":"array","items":{"type":"string"}},
+    "financial_scope":{"enum":["NONE","GENERAL_MACRO_SCENARIO","GENERAL_BUSINESS_IMPLICATION","ISSUER_SPECIFIC_ANALYSIS","SECURITIES_SPECIFIC","INVESTMENT_RECOMMENDATION","UNKNOWN_FINANCIAL_SCOPE"]},
+    "materiality_flag":{"enum":["NOT_ASSESSED","LOW","POTENTIALLY_MATERIAL","UNKNOWN"]},
+    "publication_scope":{"enum":["PRIVATE_ADVISORY","INTERNAL","PUBLIC_SAFE","HOLD_REVIEW"]},
+    "account_action":{"enum":["NONE","DISCUSSION_ONLY","EXPLICIT_HUMAN_REVIEW_REQUIRED"]},
+    "nonclaims":{"type":"array","minItems":1,"items":{"type":"string","minLength":1}}
+  }
+}

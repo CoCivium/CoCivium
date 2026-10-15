@@ -1,0 +1,87 @@
+name: CoAdvisory claim contract
+
+on:
+  pull_request:
+    paths:
+      - 'schemas/coadvisory-claim-v0.1.schema.json'
+      - 'examples/coadvisory-claim-v0.1.example.json'
+      - 'examples/coadvisory-negative.json'
+      - 'scripts/validate_coadvisory_claim_r0.py'
+      - '.github/workflows/coadvisory-claim-contract.yml'
+  push:
+    paths:
+      - 'schemas/coadvisory-claim-v0.1.schema.json'
+      - 'examples/coadvisory-claim-v0.1.example.json'
+      - 'examples/coadvisory-negative.json'
+      - 'scripts/validate_coadvisory_claim_r0.py'
+
+permissions:
+  contents: read
+
+jobs:
+  positive-matrix:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        fixture:
+          - examples/coadvisory-claim-v0.1.example.json
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m json.tool schemas/coadvisory-claim-v0.1.schema.json >/dev/null
+      - run: python -m json.tool "${{ matrix.fixture }}" >/dev/null
+      - run: python scripts/validate_coadvisory_claim_r0.py "${{ matrix.fixture }}"
+
+  negative-financial:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Prove unsafe financial classification fails closed
+        shell: bash
+        run: |
+          set -euo pipefail
+          if python scripts/validate_coadvisory_claim_r0.py examples/coadvisory-negative.json >negative.log 2>&1; then
+            cat negative.log
+            echo "FAIL_OPEN__UNSAFE_FINANCIAL_FIXTURE_ACCEPTED"
+            exit 1
+          fi
+          cat negative.log
+          grep -q 'FAIL_CLOSED__FINANCIAL_SCOPE_REQUIRES_HUMAN_REVIEW' negative.log
+
+  fanin:
+    needs: [positive-matrix, negative-financial]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Emit bounded CI receipt
+        run: |
+          python - <<'PY'
+          import hashlib, json
+          from pathlib import Path
+          paths=[
+            Path("schemas/coadvisory-claim-v0.1.schema.json"),
+            Path("scripts/validate_coadvisory_claim_r0.py"),
+            Path("examples/coadvisory-claim-v0.1.example.json"),
+            Path("examples/coadvisory-negative.json"),
+          ]
+          rows=[]
+          for p in paths:
+            b=p.read_bytes()
+            rows.append({"path":str(p),"bytes":len(b),"sha256":hashlib.sha256(b).hexdigest()})
+          print(json.dumps({
+            "state":"PASS_BOUNDED_COADVISORY_CI_FANIN",
+            "parallel_lanes":2,
+            "objects":rows,
+            "rails":[
+              "PARALLEL_ANALYSIS_NE_PARALLEL_AUTHORITY",
+              "EVIDENCE_NE_INFERENCE",
+              "SCENARIO_NE_FORECAST_CERTAINTY"
+            ]
+          },indent=2,sort_keys=True))
+          PY
