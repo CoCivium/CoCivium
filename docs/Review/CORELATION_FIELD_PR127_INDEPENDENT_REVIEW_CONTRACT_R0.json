@@ -1,0 +1,75 @@
+{
+  "schema": "CoRelationField.IndependentSemanticReviewContract.v0.1-candidate",
+  "state": "READY_FOR_DISTINCT_REVIEW__NO_NOTIFICATION_SENT__NO_MERGE_AUTHORITY",
+  "review_target": {
+    "repository": "CoCivium/CoCivium",
+    "pull_request": 127,
+    "branch": "coevoall/causal-noncausal-relation-field-20260930",
+    "exact_head_binding_required": true,
+    "head_drift_requires_recheck": true
+  },
+  "independence": {
+    "reasoning_actor_must_be_distinct_from_authoring_validation_loop": true,
+    "reviewer_type_required": true,
+    "reviewer_identity_or_provenance_required": true,
+    "prior_authoring_involvement_must_be_disclosed": true,
+    "transport_account_alone_does_not_prove_independence": true,
+    "ci_or_pr_summary_only_is_insufficient": true
+  },
+  "required_semantic_surfaces": [
+    "docs/Architecture/CORELATION_FIELD_CAUSAL_NONCAUSAL_R0.md",
+    "schemas/corelation-field-v0.1.schema.json",
+    "examples/corelation-field-r0.example.json",
+    "schemas/corelation-field-adapter-v0.1.schema.json",
+    "examples/corelation-field-adapter-r0.example.json",
+    "scripts/validate_corelation_field_r0.py",
+    "ai/evolution-deltas/2026-09-30/coevoall-causal-noncausal-relation-field-r0.json"
+  ],
+  "mandatory_challenge_topics": [
+    "CAUSAL_STATUS_VS_RELATION_FAMILY",
+    "RELATION_AS_RELATUM_REIFICATION_RISK",
+    "ORDINARY_FIELD_CYCLES_VS_ACYCLIC_META_REFERENCE_R0",
+    "NEGATIVE_SPACE_REIFICATION",
+    "QUANTUM_CAUSAL_STATUS_AND_OVERCLAIM_RISK",
+    "PROJECTION_LOSS_SUFFICIENCY",
+    "TRANSFORM_IDENTITY_AND_PROVENANCE",
+    "DOMAIN_CARRIER_SEMANTIC_OWNERSHIP",
+    "VOCABULARY_EXTENSIBILITY",
+    "DOC_ENVELOPE_VS_SCHEMA_OMISSIONS",
+    "RDF_PROV_SHACL_INTEROP_BOUNDARY",
+    "STRONGEST_UNTESTED_COUNTEREXAMPLE"
+  ],
+  "receipt_minimum": {
+    "reviewed_head_sha": "REQUIRED",
+    "reviewer_identity": "REQUIRED",
+    "reviewer_type": [
+      "HUMAN",
+      "MODEL",
+      "HYBRID",
+      "OTHER"
+    ],
+    "reviewer_origin": "REQUIRED_WHEN_DISCLOSEABLE",
+    "prior_authoring_involvement": [
+      "true",
+      "false",
+      "unknown"
+    ],
+    "files_inspected": "REQUIRED",
+    "findings": "REQUIRED",
+    "mandatory_questions_answered": "REQUIRED",
+    "disposition": [
+      "APPROVE_SEMANTICS_FOR_MERGE_CONSIDERATION",
+      "REQUEST_CHANGES",
+      "COMMENT_ONLY"
+    ],
+    "merge_authority": false
+  },
+  "nonclaims": [
+    "REVIEW_PACKET_NE_NOTIFICATION",
+    "REVIEW_PACKET_NE_REVIEW",
+    "CI_NE_SEMANTIC_REVIEW",
+    "INDEPENDENT_REVIEW_NE_TRUTH",
+    "APPROVAL_NE_MERGE_AUTHORITY",
+    "READY_FOR_REVIEW_NE_MERGE_AUTHORITY"
+  ]
+}

@@ -1,0 +1,214 @@
+name: CoRelationField receiver integration R0
+
+on:
+  pull_request:
+    paths:
+      - "examples/corelation-field-receiver-integration-contract-r0.json"
+      - "examples/corelation-field-adapter-r0.example.json"
+      - "examples/corelation-field-r0.example.json"
+      - ".github/workflows/corelation-field-receiver-integration-r0.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  integrate-bounded-receiver:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout exact candidate head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+
+      - name: Use Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Accept exact adapter into bounded working baseline
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p artifacts
+          python - <<'PY'
+          import hashlib, json, os, subprocess
+          from pathlib import Path
+
+          contract_path = Path("examples/corelation-field-receiver-integration-contract-r0.json")
+          contract = json.loads(contract_path.read_text(encoding="utf-8"))
+          adapter_path = Path(contract["adapter_pack"]["path"])
+          field_path = Path(contract["relation_field"]["path"])
+          adapter = json.loads(adapter_path.read_text(encoding="utf-8"))
+          field = json.loads(field_path.read_text(encoding="utf-8"))
+          head_sha = subprocess.check_output(["git","rev-parse","HEAD"], text=True).strip()
+
+          def sha256_path(path):
+              return hashlib.sha256(Path(path).read_bytes()).hexdigest().upper()
+
+          def git_blob_sha(path):
+              data = Path(path).read_bytes()
+              return hashlib.sha1(b"blob " + str(len(data)).encode() + b"\0" + data).hexdigest()
+
+          if sha256_path(adapter_path) != contract["adapter_pack"]["sha256"]:
+              raise SystemExit("FAIL_INTEGRATION_ADAPTER_SHA256")
+          if git_blob_sha(adapter_path) != contract["adapter_pack"]["git_blob_sha"]:
+              raise SystemExit("FAIL_INTEGRATION_ADAPTER_BLOB")
+          if git_blob_sha(field_path) != contract["relation_field"]["git_blob_sha"]:
+              raise SystemExit("FAIL_INTEGRATION_FIELD_BLOB")
+
+          field_ids = {r["relation_id"] for r in field["relations"]}
+          by_carrier = {}
+          by_relation = {}
+          by_binding = {}
+
+          for binding in adapter["bindings"]:
+              if binding["source_semantics_owner"] != "SOURCE_CARRIER":
+                  raise SystemExit("FAIL_SOURCE_SEMANTICS_OWNER")
+              if binding["relation_typing_owner"] != "CORELATION_FIELD":
+                  raise SystemExit("FAIL_RELATION_TYPING_OWNER")
+              if binding["pointer_semantics"] != "REFERENCE_ONLY":
+                  raise SystemExit("FAIL_POINTER_SEMANTICS")
+              if binding["authority_change"] or binding["source_mutated"] or binding["field_mutated"]:
+                  raise SystemExit("FAIL_EFFECT_OR_MUTATION")
+              if any(binding["lifecycle_claims"].values()):
+                  raise SystemExit("FAIL_PREEXISTING_LIFECYCLE_INFLATION")
+              if not set(binding["relation_ids"]).issubset(field_ids):
+                  raise SystemExit("FAIL_UNKNOWN_RELATION")
+
+              by_binding[binding["binding_id"]] = {
+                  "source_carrier": binding["source_carrier"],
+                  "source_path": binding["source_path"],
+                  "source_blob_sha": binding["source_blob_sha"],
+                  "relation_ids": sorted(binding["relation_ids"]),
+                  "binding_role": binding["binding_role"],
+              }
+              by_carrier.setdefault(binding["source_carrier"], []).append(binding["binding_id"])
+              for relation_id in binding["relation_ids"]:
+                  by_relation.setdefault(relation_id, []).append(binding["binding_id"])
+
+          baseline = {
+              "schema":"CoRelationField.ReceiverBaseline.v0.1",
+              "state":"ACCEPTED_BOUNDED_WORKING_BASELINE",
+              "receiver_identity":f"github-hosted:{os.environ.get('RUNNER_OS','UNKNOWN')}:{os.environ.get('RUNNER_ARCH','UNKNOWN')}",
+              "source_head_sha":head_sha,
+              "adapter_pack_sha256":sha256_path(adapter_path),
+              "semantic_ownership":contract["semantic_ownership"],
+              "by_binding":dict(sorted(by_binding.items())),
+              "by_carrier":{k:sorted(v) for k,v in sorted(by_carrier.items())},
+              "by_relation":{k:sorted(v) for k,v in sorted(by_relation.items())},
+              "accepted_operations":contract["accepted_operations"],
+              "authority":contract["authority"],
+              "mutation_policy":contract["mutation_policy"],
+          }
+
+          # Required receiver queries prove the derived baseline is usable, not merely parseable.
+          query_results = []
+          for q in contract["required_queries"]:
+              op = q["operation"]
+              value = q["input"]
+              if op == "INDEX_BINDINGS_BY_SOURCE_CARRIER":
+                  ids = baseline["by_carrier"].get(value, [])
+                  rels = sorted({rid for bid in ids for rid in baseline["by_binding"][bid]["relation_ids"]})
+                  if rels != sorted(q["expected_relation_ids"]):
+                      raise SystemExit("FAIL_QUERY:"+q["query_id"])
+                  result = {"binding_ids":ids,"relation_ids":rels}
+              elif op == "INDEX_BINDINGS_BY_RELATION_ID":
+                  ids = baseline["by_relation"].get(value, [])
+                  if ids != sorted(q["expected_binding_ids"]):
+                      raise SystemExit("FAIL_QUERY:"+q["query_id"])
+                  result = {"binding_ids":ids}
+              elif op == "RESOLVE_BINDING_BY_ID":
+                  binding = baseline["by_binding"].get(value)
+                  if not binding:
+                      raise SystemExit("FAIL_QUERY:"+q["query_id"])
+                  if binding["source_carrier"] != q["expected_source_carrier"]:
+                      raise SystemExit("FAIL_QUERY:"+q["query_id"])
+                  if binding["relation_ids"] != sorted(q["expected_relation_ids"]):
+                      raise SystemExit("FAIL_QUERY:"+q["query_id"])
+                  result = binding
+              else:
+                  raise SystemExit("FAIL_UNKNOWN_OPERATION:"+op)
+              query_results.append({"query_id":q["query_id"],"operation":op,"input":value,"result":result})
+
+          baseline_bytes = (json.dumps(baseline, indent=2, sort_keys=True) + "\n").encode()
+          baseline_sha = hashlib.sha256(baseline_bytes).hexdigest().upper()
+          Path("artifacts/corelation-field-receiver-baseline-r0.json").write_bytes(baseline_bytes)
+
+          receipt = {
+              "schema":"CoRelationField.ReceiverIntegrationReceipt.v0.1",
+              "state":"PASS_BOUNDED_RECEIVER_INTEGRATION",
+              "receiver_identity":baseline["receiver_identity"],
+              "repository":os.environ.get("GITHUB_REPOSITORY"),
+              "workflow_run_id":os.environ.get("GITHUB_RUN_ID"),
+              "workflow_run_attempt":os.environ.get("GITHUB_RUN_ATTEMPT"),
+              "checked_out_head_sha":head_sha,
+              "input_adapter_pack":{
+                  "path":str(adapter_path),
+                  "sha256":sha256_path(adapter_path),
+                  "git_blob_sha":git_blob_sha(adapter_path),
+              },
+              "working_baseline":{
+                  "artifact_path":"corelation-field-receiver-baseline-r0.json",
+                  "sha256":baseline_sha,
+                  "binding_count":len(by_binding),
+                  "carrier_count":len(by_carrier),
+                  "indexed_relation_count":len(by_relation),
+                  "query_count":len(query_results),
+              },
+              "query_results":query_results,
+              "semantic_ownership_preserved":True,
+              "authority_change":False,
+              "source_mutation":False,
+              "field_mutation":False,
+              "adapter_mutation":False,
+              "integration_scope":"GITHUB_HOSTED_EPHEMERAL_SYNTHETIC_RECEIVER_ONLY",
+              "lifecycle":{
+                  "adapter_pack":"INTEGRATED_BOUNDED_RECEIVER",
+                  "global_integration":"UNPROVEN",
+                  "canon":"UNPROVEN",
+                  "runtime":"UNPROVEN",
+                  "coex":"UNPROVEN"
+              },
+              "coverage_boundary":[
+                  "EXACT_ADAPTER_BYTES",
+                  "DECLARED_POINTER_RELATIONS",
+                  "DERIVED_IN_MEMORY_INDEXES",
+                  "THREE_REQUIRED_QUERY_PATHS",
+                  "NO_EXTERNAL_SOURCE_TRUTH_VALIDATION",
+                  "NO_PRODUCTION_RUNTIME"
+              ],
+              "nonclaims":contract["nonclaims"]
+          }
+          receipt_bytes = (json.dumps(receipt, indent=2, sort_keys=True) + "\n").encode()
+          receipt_sha = hashlib.sha256(receipt_bytes).hexdigest().upper()
+          Path("artifacts/corelation-field-receiver-integration-receipt-r0.json").write_bytes(receipt_bytes)
+          Path("artifacts/corelation-field-receiver-integration-receipt-r0.sha256").write_text(
+              receipt_sha + "  corelation-field-receiver-integration-receipt-r0.json\n",
+              encoding="utf-8"
+          )
+
+          print(json.dumps({
+              "STATE":receipt["state"],
+              "receiver_identity":receipt["receiver_identity"],
+              "checked_out_head_sha":head_sha,
+              "adapter_pack_sha256":receipt["input_adapter_pack"]["sha256"],
+              "baseline_sha256":baseline_sha,
+              "receipt_sha256":receipt_sha,
+              "bindings":len(by_binding),
+              "carriers":len(by_carrier),
+              "indexed_relations":len(by_relation),
+              "queries":len(query_results)
+          }, separators=(",",":")))
+          PY
+
+      - name: Upload bounded integration evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: corelation-field-receiver-integration-r0
+          path: |
+            artifacts/corelation-field-receiver-baseline-r0.json
+            artifacts/corelation-field-receiver-integration-receipt-r0.json
+            artifacts/corelation-field-receiver-integration-receipt-r0.sha256
+          if-no-files-found: error
+          retention-days: 30

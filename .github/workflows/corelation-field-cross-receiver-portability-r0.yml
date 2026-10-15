@@ -1,0 +1,274 @@
+name: CoRelationField cross receiver portability R0
+
+on:
+  pull_request:
+    paths:
+      - "examples/corelation-field-adapter-r0.example.json"
+      - "examples/corelation-field-r0.example.json"
+      - ".github/workflows/corelation-field-cross-receiver-portability-r0.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  receiver:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - runner: windows-latest
+            receiver_label: windows
+          - runner: macos-latest
+            receiver_label: macos
+    runs-on: ${{ matrix.runner }}
+    steps:
+      - name: Checkout exact candidate head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+
+      - name: Use Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Derive portable semantic baseline
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p artifacts
+          python - <<'PY'
+          import hashlib, json, os, subprocess
+          from pathlib import Path
+
+          ADAPTER_PATH = "examples/corelation-field-adapter-r0.example.json"
+          FIELD_PATH = "examples/corelation-field-r0.example.json"
+          EXPECTED_ADAPTER_SHA256 = "38D464ECBDE2AD33FCD316FA93B0BC1F605AA63EECCE9DA9A08D1837A26BD0AC"
+
+          def git_bytes(path):
+              return subprocess.check_output(["git", "show", f"HEAD:{path}"])
+
+          def sha256_bytes(data):
+              return hashlib.sha256(data).hexdigest().upper()
+
+          def git_blob_sha_bytes(data):
+              return hashlib.sha1(b"blob " + str(len(data)).encode() + b"\0" + data).hexdigest()
+
+          adapter_bytes = git_bytes(ADAPTER_PATH)
+          field_bytes = git_bytes(FIELD_PATH)
+          adapter_sha = sha256_bytes(adapter_bytes)
+          if adapter_sha != EXPECTED_ADAPTER_SHA256:
+              raise SystemExit("FAIL_PORTABILITY_ADAPTER_SHA256")
+
+          adapter = json.loads(adapter_bytes.decode("utf-8"))
+          field = json.loads(field_bytes.decode("utf-8"))
+          field_ids = {r["relation_id"] for r in field["relations"]}
+
+          by_binding = {}
+          by_carrier = {}
+          by_relation = {}
+
+          for binding in adapter["bindings"]:
+              source_bytes = git_bytes(binding["source_path"])
+              source_blob = git_blob_sha_bytes(source_bytes)
+              if source_blob != binding["source_blob_sha"]:
+                  raise SystemExit("FAIL_PORTABILITY_SOURCE_BLOB:" + binding["binding_id"])
+              if binding["source_semantics_owner"] != "SOURCE_CARRIER":
+                  raise SystemExit("FAIL_PORTABILITY_SOURCE_OWNER:" + binding["binding_id"])
+              if binding["relation_typing_owner"] != "CORELATION_FIELD":
+                  raise SystemExit("FAIL_PORTABILITY_RELATION_OWNER:" + binding["binding_id"])
+              if binding["pointer_semantics"] != "REFERENCE_ONLY":
+                  raise SystemExit("FAIL_PORTABILITY_POINTER_SEMANTICS:" + binding["binding_id"])
+              if binding["authority_change"] or binding["source_mutated"] or binding["field_mutated"]:
+                  raise SystemExit("FAIL_PORTABILITY_EFFECT:" + binding["binding_id"])
+              if any(binding["lifecycle_claims"].values()):
+                  raise SystemExit("FAIL_PORTABILITY_LIFECYCLE_INFLATION:" + binding["binding_id"])
+              if not set(binding["relation_ids"]).issubset(field_ids):
+                  raise SystemExit("FAIL_PORTABILITY_UNKNOWN_RELATION:" + binding["binding_id"])
+
+              by_binding[binding["binding_id"]] = {
+                  "source_carrier": binding["source_carrier"],
+                  "source_path": binding["source_path"],
+                  "source_blob_sha": source_blob,
+                  "relation_ids": sorted(binding["relation_ids"]),
+                  "binding_role": binding["binding_role"],
+                  "direction": binding["direction"],
+              }
+              by_carrier.setdefault(binding["source_carrier"], []).append(binding["binding_id"])
+              for relation_id in binding["relation_ids"]:
+                  by_relation.setdefault(relation_id, []).append(binding["binding_id"])
+
+          semantic_baseline = {
+              "schema": "CoRelationField.PortableSemanticBaseline.v0.1",
+              "adapter_pack_sha256": adapter_sha,
+              "semantic_ownership": adapter["bindings"][0] and {
+                  "source_domain_semantics": "SOURCE_CARRIER",
+                  "generic_relation_typing": "CORELATION_FIELD",
+                  "adapter_role": "REFERENCE_ONLY",
+              },
+              "by_binding": dict(sorted(by_binding.items())),
+              "by_carrier": {k: sorted(v) for k, v in sorted(by_carrier.items())},
+              "by_relation": {k: sorted(v) for k, v in sorted(by_relation.items())},
+              "authority_change": False,
+              "source_mutation": False,
+              "field_mutation": False,
+              "adapter_mutation": False,
+          }
+          canonical = json.dumps(semantic_baseline, sort_keys=True, separators=(",", ":")).encode("utf-8")
+          semantic_digest = sha256_bytes(canonical)
+
+          receipt = {
+              "schema": "CoRelationField.CrossReceiverPortabilityReceipt.v0.1",
+              "state": "PASS_DISTINCT_RECEIVER_SEMANTIC_DERIVATION",
+              "receiver_label": os.environ["RECEIVER_LABEL"],
+              "receiver_identity": f"github-hosted:{os.environ.get('RUNNER_OS','UNKNOWN')}:{os.environ.get('RUNNER_ARCH','UNKNOWN')}",
+              "repository": os.environ.get("GITHUB_REPOSITORY"),
+              "workflow_run_id": os.environ.get("GITHUB_RUN_ID"),
+              "workflow_run_attempt": os.environ.get("GITHUB_RUN_ATTEMPT"),
+              "checked_out_head_sha": subprocess.check_output(["git","rev-parse","HEAD"], text=True).strip(),
+              "adapter_pack_sha256": adapter_sha,
+              "semantic_baseline_sha256": semantic_digest,
+              "binding_count": len(by_binding),
+              "carrier_count": len(by_carrier),
+              "indexed_relation_count": len(by_relation),
+              "source_semantics_owner": "SOURCE_CARRIER",
+              "relation_typing_owner": "CORELATION_FIELD",
+              "authority_change": False,
+              "source_mutation": False,
+              "field_mutation": False,
+              "adapter_mutation": False,
+              "integration_scope": "DISTINCT_EPHEMERAL_RECEIVER_PORTABILITY_ONLY",
+              "nonclaims": [
+                  "PORTABILITY_NE_GLOBAL_INTEGRATION",
+                  "PORTABILITY_NE_PRODUCTION_RUNTIME",
+                  "EPHEMERAL_RECEIVER_NE_DURABLE_CONTROL_PLANE",
+                  "QUERYABLE_NE_TRUE",
+                  "POINTER_NE_AUTHORITY_TRANSFER"
+              ]
+          }
+
+          Path("artifacts/semantic-baseline-r0.json").write_text(
+              json.dumps(semantic_baseline, indent=2, sort_keys=True) + "\n",
+              encoding="utf-8"
+          )
+          Path("artifacts/receiver-portability-receipt-r0.json").write_text(
+              json.dumps(receipt, indent=2, sort_keys=True) + "\n",
+              encoding="utf-8"
+          )
+          print(json.dumps({
+              "STATE": receipt["state"],
+              "receiver_label": receipt["receiver_label"],
+              "receiver_identity": receipt["receiver_identity"],
+              "semantic_baseline_sha256": semantic_digest,
+              "adapter_pack_sha256": adapter_sha
+          }, separators=(",", ":")))
+          PY
+        env:
+          RECEIVER_LABEL: ${{ matrix.receiver_label }}
+
+      - name: Upload receiver portability receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: corelation-field-portability-${{ matrix.receiver_label }}
+          path: |
+            artifacts/semantic-baseline-r0.json
+            artifacts/receiver-portability-receipt-r0.json
+          if-no-files-found: error
+          retention-days: 30
+
+  fanin:
+    needs: receiver
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download distinct receiver receipts
+        uses: actions/download-artifact@v4
+        with:
+          pattern: corelation-field-portability-*
+          path: artifacts
+
+      - name: Require cross receiver semantic convergence
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import hashlib, json
+          from pathlib import Path
+
+          receipts = []
+          for path in sorted(Path("artifacts").glob("**/receiver-portability-receipt-r0.json")):
+              receipts.append(json.loads(path.read_text(encoding="utf-8")))
+
+          if len(receipts) != 2:
+              raise SystemExit(f"FAIL_PORTABILITY_RECEIPT_COUNT:{len(receipts)}")
+
+          labels = {r["receiver_label"] for r in receipts}
+          if labels != {"windows", "macos"}:
+              raise SystemExit("FAIL_PORTABILITY_RECEIVER_SET")
+
+          adapter_hashes = {r["adapter_pack_sha256"] for r in receipts}
+          semantic_hashes = {r["semantic_baseline_sha256"] for r in receipts}
+          head_shas = {r["checked_out_head_sha"] for r in receipts}
+
+          if len(adapter_hashes) != 1:
+              raise SystemExit("FAIL_PORTABILITY_ADAPTER_DIVERGENCE")
+          if len(semantic_hashes) != 1:
+              raise SystemExit("FAIL_PORTABILITY_SEMANTIC_DIVERGENCE")
+          if len(head_shas) != 1:
+              raise SystemExit("FAIL_PORTABILITY_HEAD_DIVERGENCE")
+          if any(r["authority_change"] or r["source_mutation"] or r["field_mutation"] or r["adapter_mutation"] for r in receipts):
+              raise SystemExit("FAIL_PORTABILITY_EFFECT_INFLATION")
+
+          receipt = {
+              "schema": "CoRelationField.CrossReceiverConvergenceReceipt.v0.1",
+              "state": "PASS_DISTINCT_RECEIVER_SEMANTIC_CONVERGENCE",
+              "receivers": sorted({
+                  r["receiver_label"]: r["receiver_identity"] for r in receipts
+              }.items()),
+              "checked_out_head_sha": next(iter(head_shas)),
+              "adapter_pack_sha256": next(iter(adapter_hashes)),
+              "semantic_baseline_sha256": next(iter(semantic_hashes)),
+              "receiver_count": 2,
+              "authority_change": False,
+              "source_mutation": False,
+              "field_mutation": False,
+              "adapter_mutation": False,
+              "coverage_boundary": [
+                  "WINDOWS_AND_MACOS_GITHUB_HOSTED_RECEIVERS",
+                  "EXACT_SAME_ADAPTER_BYTES",
+                  "EXACT_SAME_DERIVED_SEMANTIC_BASELINE",
+                  "NO_PRODUCTION_RUNTIME",
+                  "NO_DURABLE_CONTROL_PLANE"
+              ],
+              "nonclaims": [
+                  "DISTINCT_RECEIVER_CONVERGENCE_NE_GLOBAL_INTEGRATION",
+                  "PORTABILITY_NE_CANON",
+                  "PORTABILITY_NE_COEX",
+                  "EPHEMERAL_RECEIVERS_NE_DURABLE_CONTROL_PLANE"
+              ]
+          }
+          out = Path("cross-receiver-convergence-receipt-r0.json")
+          body = (json.dumps(receipt, indent=2, sort_keys=True) + "\n").encode("utf-8")
+          out.write_bytes(body)
+          digest = hashlib.sha256(body).hexdigest().upper()
+          Path("cross-receiver-convergence-receipt-r0.sha256").write_text(
+              digest + "  " + out.name + "\n",
+              encoding="utf-8"
+          )
+          print(json.dumps({
+              "STATE": receipt["state"],
+              "receiver_count": 2,
+              "semantic_baseline_sha256": receipt["semantic_baseline_sha256"],
+              "receipt_sha256": digest
+          }, separators=(",", ":")))
+          PY
+
+      - name: Upload cross receiver convergence receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: corelation-field-portability-fanin-r0
+          path: |
+            cross-receiver-convergence-receipt-r0.json
+            cross-receiver-convergence-receipt-r0.sha256
+          if-no-files-found: error
+          retention-days: 30
