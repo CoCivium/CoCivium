@@ -1,0 +1,234 @@
+{
+  "schema": "CoAuraCoTimeTemporalBraid.R0-candidate",
+  "state": "SYNTHETIC_TEMPORAL_EVIDENCE_BRAID__NO_NEUROLOGICAL_METAPHYSICAL_MEDICAL_FINANCIAL_OR_EFFECT_AUTHORITY",
+  "source_bindings": {
+    "coaura_fixture_path": "fixtures/cotime/coaura_receiver_relative_r0.json",
+    "coaura_fixture_blob_sha": "a327c28b42577f3f561e29aaf6ec38e9a93f8fba",
+    "precommitment_fixture_path": "fixtures/cotime/cotime_forecast_precommitment_r0.json",
+    "precommitment_fixture_blob_sha": "1d9df0d397250a61038a7587aac33d85e5751edb",
+    "probabilistic_skill_fixture_path": "fixtures/cotime/cotime_probabilistic_skill_r0b.json",
+    "probabilistic_skill_fixture_blob_sha": "5e47db9a5f53c56799313e53595583529d52bb0d"
+  },
+  "phenomenon": {
+    "phenomenon_id": "synthetic:receiver-relative-asymmetry-r0",
+    "description": "A synthetic observer reports a changing asymmetric comfort/salience relation across contexts.",
+    "personal_medical_record": false,
+    "literal_aura_claim": false,
+    "hemisphere_state_claim": false,
+    "mechanism_status": "UNKNOWN"
+  },
+  "observations": [
+    {
+      "id": "O1",
+      "observer_ref": "observer:synthetic-A",
+      "context_ref": "context:C1",
+      "event_time": 10,
+      "epistemic_class": "OBSERVED_EXPERIENCE",
+      "quality": "ASYMMETRIC_COMFORT_SALIENCE",
+      "mechanism_status": "UNKNOWN"
+    },
+    {
+      "id": "O2",
+      "observer_ref": "observer:synthetic-A",
+      "context_ref": "context:C2",
+      "event_time": 20,
+      "epistemic_class": "OBSERVED_EXPERIENCE",
+      "quality": "REDUCED_ASYMMETRY",
+      "mechanism_status": "UNKNOWN"
+    },
+    {
+      "id": "O3",
+      "observer_ref": "observer:synthetic-A",
+      "context_ref": "context:C1",
+      "event_time": 30,
+      "epistemic_class": "OBSERVED_EXPERIENCE",
+      "quality": "ASYMMETRY_RETURNED",
+      "mechanism_status": "UNKNOWN"
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "H1_CONTEXT_SENSITIVITY",
+      "epistemic_class": "MECHANISM_HYPOTHESIS",
+      "claim": "reported relation varies with context",
+      "mechanism_status": "CANDIDATE"
+    },
+    {
+      "id": "H2_ATTENTION_SENSITIVITY",
+      "epistemic_class": "MECHANISM_HYPOTHESIS",
+      "claim": "reported relation varies with attention or salience",
+      "mechanism_status": "CANDIDATE"
+    },
+    {
+      "id": "H3_UNKNOWN_OTHER",
+      "epistemic_class": "UNKNOWN",
+      "claim": "another unrepresented variable may explain the pattern",
+      "mechanism_status": "UNKNOWN"
+    }
+  ],
+  "forecast_lineage": [
+    {
+      "id": "F1",
+      "source_hypothesis_id": "H1_CONTEXT_SENSITIVITY",
+      "registered_at": 15,
+      "outcome_observed_at": 20,
+      "claim": "if context changes from C1 to C2, reported asymmetry will reduce",
+      "candidate_probability_bp": 7000,
+      "baseline_probability_bp": 5000,
+      "outcome": 1,
+      "discriminating_observation": "O2",
+      "disposition": "HIT"
+    },
+    {
+      "id": "F2",
+      "source_hypothesis_id": "H1_CONTEXT_SENSITIVITY",
+      "registered_at": 25,
+      "outcome_observed_at": 30,
+      "claim": "if context returns to C1, reported asymmetry will return",
+      "candidate_probability_bp": 6500,
+      "baseline_probability_bp": 5000,
+      "outcome": 1,
+      "discriminating_observation": "O3",
+      "disposition": "HIT"
+    },
+    {
+      "id": "F3_UNRESOLVED",
+      "source_hypothesis_id": "H2_ATTENTION_SENSITIVITY",
+      "registered_at": 31,
+      "outcome_observed_at": null,
+      "claim": "changing attention while holding context fixed will alter reported asymmetry",
+      "candidate_probability_bp": 5500,
+      "baseline_probability_bp": 5000,
+      "outcome": null,
+      "discriminating_observation": "future:hold_context_change_attention",
+      "disposition": "UNRESOLVED"
+    }
+  ],
+  "relation_braid": [
+    {
+      "from": "O1",
+      "relation": "GENERATES_CANDIDATE_HYPOTHESIS",
+      "to": "H1_CONTEXT_SENSITIVITY"
+    },
+    {
+      "from": "O1",
+      "relation": "ALSO_COMPATIBLE_WITH",
+      "to": "H2_ATTENTION_SENSITIVITY"
+    },
+    {
+      "from": "O1",
+      "relation": "ALSO_COMPATIBLE_WITH",
+      "to": "H3_UNKNOWN_OTHER"
+    },
+    {
+      "from": "F1",
+      "relation": "CALIBRATED_BY",
+      "to": "O2"
+    },
+    {
+      "from": "F2",
+      "relation": "CALIBRATED_BY",
+      "to": "O3"
+    },
+    {
+      "from": "O2",
+      "relation": "SUPPORTS_CANDIDATE",
+      "to": "H1_CONTEXT_SENSITIVITY"
+    },
+    {
+      "from": "O3",
+      "relation": "SUPPORTS_CANDIDATE",
+      "to": "H1_CONTEXT_SENSITIVITY"
+    },
+    {
+      "from": "H1_CONTEXT_SENSITIVITY",
+      "relation": "DOES_NOT_ELIMINATE",
+      "to": "H2_ATTENTION_SENSITIVITY"
+    },
+    {
+      "from": "H1_CONTEXT_SENSITIVITY",
+      "relation": "DOES_NOT_ELIMINATE",
+      "to": "H3_UNKNOWN_OTHER"
+    }
+  ],
+  "coinbet_state": {
+    "id": "IB1",
+    "state": "BETWEEN_SUPPORTED_CONTEXT_SENSITIVITY_AND_UNKNOWN_CAUSAL_MECHANISM",
+    "resolved": false,
+    "binary_collapse_allowed": false
+  },
+  "metaphorical_donor": {
+    "id": "M1",
+    "source": "PARTIAL_ASYMMETRY_WITH_CROSS_COMMUNICATION",
+    "target_domains": [
+      "SOFTWARE_SPECIALIZATION",
+      "OBSERVER_SPECIALIZATION",
+      "MODEL_ENSEMBLES",
+      "RESOURCE_LANES"
+    ],
+    "mechanism_transfer_allowed": false,
+    "physical_equivalence_claimed": false
+  },
+  "question_compiler": {
+    "candidate_questions": [
+      {
+        "id": "Q1",
+        "question": "Does the relation change when context changes while observer and object remain fixed?",
+        "discriminates": ["H1_CONTEXT_SENSITIVITY", "H3_UNKNOWN_OTHER"],
+        "information_priority": 3
+      },
+      {
+        "id": "Q2",
+        "question": "Does the relation change when attention changes while context remains fixed?",
+        "discriminates": ["H2_ATTENTION_SENSITIVITY", "H3_UNKNOWN_OTHER"],
+        "information_priority": 3
+      },
+      {
+        "id": "Q3",
+        "question": "Can a second observer reproduce the same pattern under matched context?",
+        "discriminates": ["OBSERVER_SPECIFIC", "CONTEXT_GENERAL"],
+        "information_priority": 2
+      },
+      {
+        "id": "Q4",
+        "question": "Is the specialization metaphor useful even if every biological mechanism claim remains unresolved?",
+        "discriminates": ["METAPHOR_USEFUL", "METAPHOR_NOT_USEFUL"],
+        "information_priority": 1
+      }
+    ],
+    "expected_next_question_ids": ["Q1", "Q2"],
+    "selection_rule": "MAX_INFORMATION_PRIORITY_WITHOUT_EFFECT_AUTHORITY"
+  },
+  "expected": {
+    "observation_count": 3,
+    "forecast_count": 3,
+    "resolved_forecast_count": 2,
+    "hit_count": 2,
+    "unresolved_forecast_count": 1,
+    "mechanism_proven_count": 0,
+    "paranormal_promotions": 0,
+    "neurological_promotions": 0,
+    "medical_diagnosis_promotions": 0,
+    "effect_authority_changes": 0,
+    "real_predictive_skill_claimed": false,
+    "next_question_ids": ["Q1", "Q2"]
+  },
+  "rails": [
+    "OBSERVATION_TRAJECTORY_NE_DIAGNOSIS",
+    "FELT_ASYMMETRY_NE_HEMISPHERE_STATE_PROOF",
+    "REPEATED_PATTERN_NE_CAUSAL_MECHANISM",
+    "PREDICTIVE_HIT_NE_MECHANISM_PROOF",
+    "TWO_HITS_NE_CALIBRATED_GENERAL_SKILL",
+    "SURPRISING_RELATION_NE_PARANORMAL_CAUSATION",
+    "UNKNOWN_MECHANISM_NE_NONMATERIAL_MECHANISM",
+    "METAPHORICAL_DONOR_NE_BIOLOGICAL_MODEL",
+    "SPECIALIZATION_NE_SEPARATION",
+    "COINBET_STATE_NE_CAUSAL_CONCLUSION",
+    "RELATION_OF_RELATIONS_NE_TRUTH",
+    "FORECAST_NE_FUTURE_FACT",
+    "PREDICTION_NE_EVIDENCE",
+    "QUESTION_SELECTION_NE_EFFECT_AUTHORITY",
+    "FINANCIAL_OPTIONALITY_NE_TRADING_AUTHORITY",
+    "VALIDATION_IS_NOT_ACCEPTANCE"
+  ]
+}
