@@ -339,3 +339,33 @@ readproof before pickup is claimed.
 `BLOCKED_EDGE_NE_BLOCKED_GRAPH`  
 `BEACON_NE_AUTHORITY`  
 `VIRTUAL_ARMADA_NE_AUTHORITY_MULTIPLICATION`
+
+
+## 2026-10-15 catch-up / CoVid / dynamic cadence
+
+Use [the 2026-10-15 catch-up index](docs/Evolution/COALL_CATCHUP_20261015_R0.md)
+and [its machine currentness twin](ai/currentness/coall-catchup-20261015-r0.json)
+when a role needs the latest public-safe architecture deltas from the October 15
+catch-up branch.
+
+Relevant bounded domains include:
+
+- [CoVid+ Recursive Media R0](docs/Media/COVID_RECURSIVE_MEDIA_R0.md);
+- [bounded render-lineage evidence](docs/Media/COVID_RENDER_LINEAGE_20261015_R0.md);
+- [CoTriPie+ / Dynamic Cadence R0](docs/Architecture/COTRIPIE_DYNAMIC_CADENCE_R0.md);
+- [CoVirtualArmada+ Evergreen Frontier R0](docs/Architecture/COARMADA_EVERGREEN_FRONTIER_R0.md);
+- [Optionality Recovery / Missed-Leverage Backlog](docs/Evolution/COALL_OPTIONALITY_RECOVERY_20261015_R0.md).
+
+The current cadence direction is event-driven where supported, with hourly
+reconciliation as a fallback/safety sweep. Provider tasks remain adapters, not
+the sole scheduler or custody root.
+
+The CoVid render evidence for 2026-10-15 is transcript-observed only: source
+media bytes were not independently read/hashed by this public/session receiver.
+
+`EVENT_DRIVEN_PRIMARY__HOURLY_RECONCILIATION_FALLBACK`  
+`SCHEDULE_NE_PROVIDER`  
+`TASK_SPACE_NE_LIVE_WORKER_COUNT`  
+`VIDEO_NE_TRUTH`  
+`TRANSCRIPT_NE_SOURCE_BYTE_PROOF`  
+`PUBLIC_RELEASE_REQUIRES_SEPARATE_AUTHORITY`
