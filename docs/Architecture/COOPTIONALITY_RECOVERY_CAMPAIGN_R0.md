@@ -153,3 +153,15 @@ This campaign is succeeding when:
 ## Nonclaims
 
 This file is not a complete historical census and does not prove that every old session/file has been recovered, that X2 local state is current, or that any recovered candidate is adopted/runtime/canon/CoEx.
+
+
+## Concrete 2026-10-15 recovery surface
+
+The campaign method above is paired with the bounded
+[96-item Optionality Recovery / Missed-Leverage Backlog](../Evolution/COALL_OPTIONALITY_RECOVERY_20261015_R0.md).
+
+The list is an election surface, not an instruction to activate all 96 items.
+
+`CAMPAIGN_NE_BACKLOG`  
+`BACKLOG_NE_TASK_QUEUE`  
+`OPTIONALITY_NE_ACTIVE_PRIORITY`
