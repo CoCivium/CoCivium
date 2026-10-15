@@ -1,0 +1,20 @@
+name: CoAll Bounded Discovery Projection R0
+on:
+  pull_request:
+    paths:
+      - "docs/Architecture/COALL_BOUNDED_DISCOVERY_PROJECTION_R0.md"
+      - "fixtures/relations/coall_bounded_discovery_projection_r0.json"
+      - "tools/validate_coall_bounded_discovery_projection_r0.py"
+      - ".github/workflows/coall-bounded-discovery-projection-r0.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python tools/validate_coall_bounded_discovery_projection_r0.py
