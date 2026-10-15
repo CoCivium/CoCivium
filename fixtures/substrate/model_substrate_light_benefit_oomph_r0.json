@@ -1,0 +1,179 @@
+{
+  "schema": "CoModelSubstrateLight.BenefitOomphParallelism.v0.1-candidate",
+  "state": "SYNTHETIC_MEASURED_BENEFIT_PARALLELISM_CANARY__NO_RUNTIME_NO_CANON_NO_AUTHORITY_CHANGE",
+  "source_bindings": {
+    "participant_edge_doc_path": "docs/Operations/COPARTICIPANT_EDGE_EVOLUTION_R0.md",
+    "participant_edge_doc_blob_sha": "96e763458c993c15e694fbd05286aab603f61297",
+    "dynamic_wave_delta_path": "ai/evolution-deltas/2026-09-24/COEVO.PR90.CONOD_DYNAMIC_WAVE.UNIQUE_FANIN.R0.json",
+    "dynamic_wave_delta_blob_sha": "b49aceb8ec3ca451ac11764e14a6af741a051055",
+    "multi_embodiment_fixture_path": "fixtures/substrate/model_substrate_light_multi_embodiment_r0.json",
+    "multi_embodiment_fixture_blob_sha": "b91b1bf944a6a86cc7d9ca07de35abdd46b3f114"
+  },
+  "policy": {
+    "logical_branch_count": 3,
+    "single_physical_width": 1,
+    "parallel_physical_width": 3,
+    "min_counterfactual_confidence_bp": 7000,
+    "hard_budgets": {
+      "receiver_pressure_max": 70,
+      "proof_debt_max": 5,
+      "collision_risk_max": 4,
+      "human_attention_cost_max": 4,
+      "compute_cost_max": 100
+    },
+    "widen_rule": "PARALLEL_QUALIFIED_BENEFIT_PER_VERIFIED_DEED_MUST_STRICTLY_EXCEED_SINGLE_AND_ALL_HARD_BUDGETS_MUST_PASS",
+    "uncertainty_rule": "LOW_COUNTERFACTUAL_CONFIDENCE_HOLDS_WIDENING",
+    "no_gain_rule": "NO_STRICT_VERIFIED_YIELD_GAIN_SERIALIZES_PHYSICAL_WIDTH_WITHOUT_COLLAPSING_LOGICAL_LANES"
+  },
+  "scenarios": [
+    {
+      "id": "B01_WIDEN_WHEN_VERIFIED_YIELD_IMPROVES_WITHIN_BUDGET",
+      "single": {
+        "qualified_benefit_units": 30,
+        "verified_deeds": 3
+      },
+      "parallel": {
+        "qualified_benefit_units": 72,
+        "verified_deeds": 6,
+        "counterfactual_confidence_bp": 9000,
+        "receiver_pressure": 55,
+        "proof_debt": 4,
+        "collision_risk": 3,
+        "human_attention_cost": 2,
+        "compute_cost": 80
+      },
+      "expected": {
+        "decision": "WIDEN_PHYSICAL_TO_3",
+        "physical_width": 3,
+        "logical_branch_count": 3,
+        "reasons": ["VERIFIED_BENEFIT_YIELD_GAIN", "ALL_HARD_BUDGETS_PASS"]
+      }
+    },
+    {
+      "id": "B02_PRESSURE_BLOCKS_WIDENING_DESPITE_YIELD_GAIN",
+      "single": {
+        "qualified_benefit_units": 30,
+        "verified_deeds": 3
+      },
+      "parallel": {
+        "qualified_benefit_units": 84,
+        "verified_deeds": 6,
+        "counterfactual_confidence_bp": 9000,
+        "receiver_pressure": 85,
+        "proof_debt": 4,
+        "collision_risk": 3,
+        "human_attention_cost": 2,
+        "compute_cost": 80
+      },
+      "expected": {
+        "decision": "SERIALIZE_LOGICAL_3_ON_PHYSICAL_1",
+        "physical_width": 1,
+        "logical_branch_count": 3,
+        "reasons": ["RECEIVER_PRESSURE_BUDGET_EXCEEDED"]
+      }
+    },
+    {
+      "id": "B03_NO_YIELD_GAIN_KEEPS_PHYSICAL_WIDTH_ONE",
+      "single": {
+        "qualified_benefit_units": 30,
+        "verified_deeds": 3
+      },
+      "parallel": {
+        "qualified_benefit_units": 54,
+        "verified_deeds": 6,
+        "counterfactual_confidence_bp": 9000,
+        "receiver_pressure": 40,
+        "proof_debt": 3,
+        "collision_risk": 2,
+        "human_attention_cost": 2,
+        "compute_cost": 70
+      },
+      "expected": {
+        "decision": "SERIALIZE_LOGICAL_3_ON_PHYSICAL_1",
+        "physical_width": 1,
+        "logical_branch_count": 3,
+        "reasons": ["NO_STRICT_VERIFIED_BENEFIT_YIELD_GAIN"]
+      }
+    },
+    {
+      "id": "B04_LOW_COUNTERFACTUAL_CONFIDENCE_HOLDS_WIDENING",
+      "single": {
+        "qualified_benefit_units": 30,
+        "verified_deeds": 3
+      },
+      "parallel": {
+        "qualified_benefit_units": 90,
+        "verified_deeds": 6,
+        "counterfactual_confidence_bp": 6000,
+        "receiver_pressure": 40,
+        "proof_debt": 3,
+        "collision_risk": 2,
+        "human_attention_cost": 2,
+        "compute_cost": 70
+      },
+      "expected": {
+        "decision": "HOLD_MEASURE_MORE_ON_PHYSICAL_1",
+        "physical_width": 1,
+        "logical_branch_count": 3,
+        "reasons": ["COUNTERFACTUAL_CONFIDENCE_BELOW_FLOOR"]
+      }
+    },
+    {
+      "id": "B05_PROOF_AND_COLLISION_DEBT_BLOCK_WIDENING",
+      "single": {
+        "qualified_benefit_units": 30,
+        "verified_deeds": 3
+      },
+      "parallel": {
+        "qualified_benefit_units": 78,
+        "verified_deeds": 6,
+        "counterfactual_confidence_bp": 9000,
+        "receiver_pressure": 50,
+        "proof_debt": 7,
+        "collision_risk": 6,
+        "human_attention_cost": 2,
+        "compute_cost": 80
+      },
+      "expected": {
+        "decision": "SERIALIZE_LOGICAL_3_ON_PHYSICAL_1",
+        "physical_width": 1,
+        "logical_branch_count": 3,
+        "reasons": ["PROOF_DEBT_BUDGET_EXCEEDED", "COLLISION_RISK_BUDGET_EXCEEDED"]
+      }
+    },
+    {
+      "id": "B06_ATTENTION_AND_COMPUTE_COST_BLOCK_WIDENING",
+      "single": {
+        "qualified_benefit_units": 30,
+        "verified_deeds": 3
+      },
+      "parallel": {
+        "qualified_benefit_units": 96,
+        "verified_deeds": 6,
+        "counterfactual_confidence_bp": 9000,
+        "receiver_pressure": 50,
+        "proof_debt": 4,
+        "collision_risk": 3,
+        "human_attention_cost": 6,
+        "compute_cost": 130
+      },
+      "expected": {
+        "decision": "SERIALIZE_LOGICAL_3_ON_PHYSICAL_1",
+        "physical_width": 1,
+        "logical_branch_count": 3,
+        "reasons": ["HUMAN_ATTENTION_BUDGET_EXCEEDED", "COMPUTE_COST_BUDGET_EXCEEDED"]
+      }
+    }
+  ],
+  "nonclaims": [
+    "SYNTHETIC_BENEFIT_UNITS_NE_REAL_WORLD_UTILITY",
+    "BENEFIT_OBSERVED_NE_BENEFIT_CAUSED",
+    "BENEFIT_NE_AUTHORITY",
+    "COOOMPH_NE_MAX_COMPUTE",
+    "MASSIVE_PARALLELITY_NE_MASSIVE_SIMULTANEOUS_MATERIALIZATION",
+    "SOURCE_EMISSION_RATE_NE_RECEIVER_CAPACITY",
+    "LOGICAL_LANE_NE_WORKER",
+    "ACCELERATION_NE_PROGRESS",
+    "VALIDATION_IS_NOT_ACCEPTANCE"
+  ]
+}

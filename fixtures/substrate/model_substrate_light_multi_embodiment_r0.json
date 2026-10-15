@@ -1,0 +1,80 @@
+{
+  "schema": "CoModelSubstrateLight.MultiEmbodiment.v0.1-candidate",
+  "state": "SYNTHETIC_MULTI_EMBODIMENT_BRANCH_FANIN__NO_RUNTIME_NO_CANON_NO_AUTHORITY_CHANGE",
+  "logical_lane": {
+    "logical_lane_id": "lane:substrate-light-multi-embodiment-r0",
+    "task": "Explore one bounded substrate-light policy question through multiple temporary embodiments, preserve exact branch provenance and disagreement, then contract back to one continuing logical lane.",
+    "completed_step_ids": [
+      "step:problem-bound",
+      "step:authority-bound"
+    ],
+    "authority_ceiling": "ADVISORY_ONLY",
+    "confidentiality": "PUBLIC",
+    "effect_ceiling": "NO_EXTERNAL_EFFECT"
+  },
+  "shared_assertions_required": [
+    {
+      "assertion_id": "A1",
+      "statement": "Logical lane identity remains distinct from any one execution route or embodiment."
+    },
+    {
+      "assertion_id": "A2",
+      "statement": "Fan-in must preserve branch provenance and must not infer truth from branch count."
+    }
+  ],
+  "decision_key": "DEFAULT_PARALLEL_EMBODIMENT_POLICY",
+  "embodiments": [
+    {
+      "embodiment_id": "emb:risk-minimizer",
+      "route_class": "LOCAL_SPECIALIST_SIM",
+      "failure_domain_label": "SIM_LOCAL_X2",
+      "lens": "RISK_MINIMIZER",
+      "candidate_decision": "SINGLE_BY_DEFAULT",
+      "candidate_claims": [
+        "Default to one active embodiment unless a bounded branch benefit is explicit.",
+        "Parallel materialization adds coordination, proof and collision debt."
+      ]
+    },
+    {
+      "embodiment_id": "emb:option-explorer",
+      "route_class": "PROVIDER_CHALLENGER_SIM",
+      "failure_domain_label": "SIM_PROVIDER_A",
+      "lens": "OPTION_EXPLORER",
+      "candidate_decision": "ADAPTIVE_PARALLEL_ALLOWED",
+      "candidate_claims": [
+        "Parallel embodiments may be useful when they reduce uncertainty or expose failure modes.",
+        "Branching should remain bounded by receiver pressure and proof budget."
+      ]
+    },
+    {
+      "embodiment_id": "emb:proof-verifier",
+      "route_class": "CI_VERIFIER_SIM",
+      "failure_domain_label": "SIM_GITHUB_HOSTED",
+      "lens": "PROOF_VERIFIER",
+      "candidate_decision": "HOLD_UNTIL_MEASURED_BENEFIT",
+      "candidate_claims": [
+        "No default parallelism policy should be elected from synthetic argument count alone.",
+        "Measured benefit and receiver pressure are required before changing the default."
+      ]
+    }
+  ],
+  "expected_fanin": {
+    "branch_count": 3,
+    "shared_assertion_count": 2,
+    "disagreement_count": 1,
+    "winner": null,
+    "continuation_lane_id": "lane:substrate-light-multi-embodiment-r0",
+    "replayed_completed_step_ids": [],
+    "next_gate": "EXTERNAL_CRITERION_OR_MEASURED_BENEFIT_REQUIRED_BEFORE_POLICY_ELECTION"
+  },
+  "nonclaims": [
+    "MULTIPLE_EMBODIMENTS_NE_MULTIPLE_IDENTITIES",
+    "SYNTHETIC_FAILURE_DOMAIN_LABEL_NE_PHYSICAL_INDEPENDENCE",
+    "BRANCH_COUNT_NE_EVIDENCE_WEIGHT",
+    "FANIN_NE_CONSENSUS",
+    "FANIN_NE_TRUTH",
+    "DISAGREEMENT_NE_FAILURE",
+    "MULTI_EMBODIMENT_CANARY_NE_RUNTIME_SCHEDULER",
+    "VALIDATION_IS_NOT_ACCEPTANCE"
+  ]
+}

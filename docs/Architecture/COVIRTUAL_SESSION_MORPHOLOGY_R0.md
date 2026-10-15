@@ -375,3 +375,34 @@ This document does not prove:
 `SELF_USE_NE_SELF_AUTHORIZATION`  
 `COEXISTENCE_NE_CONSENSUS`  
 `VIRTUALIZATION_NE_MODEL_BACKEND_MUTATION`
+
+
+## Model/session dematerialization trajectory
+
+The same morphology applies above the session layer to models and model-backed participants.
+
+A logical model role may remain addressable while having **no continuously live inference process**. It can wake into an elected embodiment, perform bounded work, checkpoint its materially necessary deltas, and dematerialize again.
+
+This suggests a mature operating shape:
+
+```text
+many logical model roles
+-> fewer live model embodiments
+-> fewer dedicated hardware reservations
+-> temporary materialization around actual demand
+```
+
+The physical substrate still exists whenever computation occurs. What disappears is the assumption that identity and continuity require one persistent material embodiment.
+
+A future CoAll may therefore route the same logical role through different model families or substrate classes while preserving explicit:
+
+`identity | version | capability | authority | evidence | provenance | privacy | invariants | currentness | reconstruction recipe`
+
+This is stronger than provider failover and weaker than metaphysical substrate independence.
+
+`LOGICAL_MODEL_ROLE_NE_LIVE_MODEL_PROCESS`  
+`MODEL_MIGRATION_NE_IDENTITY_CONTINUITY_BY_DEFAULT`  
+`DEMATERIALIZATION_NE_STATE_ERASURE`  
+`REHYDRATION_NE_EXACT_RECONSTRUCTION_UNLESS_PROVEN`  
+`FEWER_LIVE_EMBODIMENTS_NE_LESS_CAPABILITY`  
+`ABSTRACT_IDENTITY_NE_NONPHYSICAL_EXISTENCE`

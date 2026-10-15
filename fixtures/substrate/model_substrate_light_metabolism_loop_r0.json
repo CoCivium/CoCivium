@@ -1,0 +1,306 @@
+{
+  "schema": "CoModelSubstrateLight.MetabolismLoop.v0.1-candidate",
+  "state": "SYNTHETIC_RECEIPT_BACKED_CLOSED_LOOP_METABOLISM__NO_RUNTIME_NO_CANON_NO_AUTHORITY_CHANGE",
+  "source_bindings": {
+    "benefit_oomph_fixture_path": "fixtures/substrate/model_substrate_light_benefit_oomph_r0.json",
+    "benefit_oomph_fixture_blob_sha": "d6fefd2ca5453705726423edb60b4c6ff1eb085e"
+  },
+  "policy": {
+    "logical_branch_count": 3,
+    "single_physical_width": 1,
+    "parallel_physical_width": 3,
+    "counterfactual_confidence_floor_bp": 7000,
+    "widen_min_gain_bp": 11000,
+    "widen_consecutive_required": 2,
+    "contract_no_gain_consecutive_required": 2,
+    "transition_cooldown_cycles": 1,
+    "hard_budgets": {
+      "receiver_pressure_max": 70,
+      "proof_debt_max": 5,
+      "collision_risk_max": 4,
+      "human_attention_cost_max": 4,
+      "compute_cost_max": 100
+    },
+    "rules": [
+      "HARD_BUDGET_BREACH_CONTRACTS_IMMEDIATELY",
+      "WIDEN_REQUIRES_CONSECUTIVE_STRONG_GAIN",
+      "NO_GAIN_CONTRACT_REQUIRES_CONSECUTIVE_OBSERVATIONS",
+      "TRANSITION_COOLDOWN_BLOCKS_NONSAFETY_REVERSAL",
+      "LOGICAL_BRANCH_COUNT_NE_PHYSICAL_WIDTH"
+    ]
+  },
+  "initial_state": {
+    "physical_width": 1,
+    "logical_branch_count": 3,
+    "widen_streak": 0,
+    "contract_streak": 0,
+    "cooldown_remaining": 0
+  },
+  "waves": [
+    {
+      "wave_id": "W01",
+      "wave_receipt_sha256": "1111111111111111111111111111111111111111111111111111111111111111",
+      "single": {"qualified_benefit_units": 30, "verified_deeds": 3},
+      "observed": {
+        "qualified_benefit_units": 72,
+        "verified_deeds": 6,
+        "counterfactual_confidence_bp": 9000,
+        "receiver_pressure": 45,
+        "proof_debt": 3,
+        "collision_risk": 2,
+        "human_attention_cost": 2,
+        "compute_cost": 80
+      },
+      "expected": {
+        "physical_width_after": 1,
+        "widen_streak_after": 1,
+        "contract_streak_after": 0,
+        "cooldown_remaining_after": 0,
+        "action": "HOLD_WIDEN_STREAK_1_OF_2"
+      }
+    },
+    {
+      "wave_id": "W02",
+      "wave_receipt_sha256": "2222222222222222222222222222222222222222222222222222222222222222",
+      "single": {"qualified_benefit_units": 30, "verified_deeds": 3},
+      "observed": {
+        "qualified_benefit_units": 72,
+        "verified_deeds": 6,
+        "counterfactual_confidence_bp": 9000,
+        "receiver_pressure": 48,
+        "proof_debt": 3,
+        "collision_risk": 2,
+        "human_attention_cost": 2,
+        "compute_cost": 82
+      },
+      "expected": {
+        "physical_width_after": 3,
+        "widen_streak_after": 0,
+        "contract_streak_after": 0,
+        "cooldown_remaining_after": 1,
+        "action": "WIDEN_TO_3"
+      }
+    },
+    {
+      "wave_id": "W03",
+      "wave_receipt_sha256": "3333333333333333333333333333333333333333333333333333333333333333",
+      "single": {"qualified_benefit_units": 30, "verified_deeds": 3},
+      "observed": {
+        "qualified_benefit_units": 63,
+        "verified_deeds": 6,
+        "counterfactual_confidence_bp": 9000,
+        "receiver_pressure": 50,
+        "proof_debt": 3,
+        "collision_risk": 2,
+        "human_attention_cost": 2,
+        "compute_cost": 82
+      },
+      "expected": {
+        "physical_width_after": 3,
+        "widen_streak_after": 0,
+        "contract_streak_after": 0,
+        "cooldown_remaining_after": 0,
+        "action": "HOLD_TRANSITION_COOLDOWN"
+      }
+    },
+    {
+      "wave_id": "W04",
+      "wave_receipt_sha256": "4444444444444444444444444444444444444444444444444444444444444444",
+      "single": {"qualified_benefit_units": 30, "verified_deeds": 3},
+      "observed": {
+        "qualified_benefit_units": 57,
+        "verified_deeds": 6,
+        "counterfactual_confidence_bp": 9000,
+        "receiver_pressure": 52,
+        "proof_debt": 3,
+        "collision_risk": 2,
+        "human_attention_cost": 2,
+        "compute_cost": 80
+      },
+      "expected": {
+        "physical_width_after": 3,
+        "widen_streak_after": 0,
+        "contract_streak_after": 1,
+        "cooldown_remaining_after": 0,
+        "action": "HOLD_CONTRACT_STREAK_1_OF_2"
+      }
+    },
+    {
+      "wave_id": "W05",
+      "wave_receipt_sha256": "5555555555555555555555555555555555555555555555555555555555555555",
+      "single": {"qualified_benefit_units": 30, "verified_deeds": 3},
+      "observed": {
+        "qualified_benefit_units": 54,
+        "verified_deeds": 6,
+        "counterfactual_confidence_bp": 9000,
+        "receiver_pressure": 50,
+        "proof_debt": 3,
+        "collision_risk": 2,
+        "human_attention_cost": 2,
+        "compute_cost": 78
+      },
+      "expected": {
+        "physical_width_after": 1,
+        "widen_streak_after": 0,
+        "contract_streak_after": 0,
+        "cooldown_remaining_after": 1,
+        "action": "CONTRACT_TO_1_NO_GAIN_STREAK"
+      }
+    },
+    {
+      "wave_id": "W06",
+      "wave_receipt_sha256": "6666666666666666666666666666666666666666666666666666666666666666",
+      "single": {"qualified_benefit_units": 30, "verified_deeds": 3},
+      "observed": {
+        "qualified_benefit_units": 78,
+        "verified_deeds": 6,
+        "counterfactual_confidence_bp": 9000,
+        "receiver_pressure": 45,
+        "proof_debt": 3,
+        "collision_risk": 2,
+        "human_attention_cost": 2,
+        "compute_cost": 82
+      },
+      "expected": {
+        "physical_width_after": 1,
+        "widen_streak_after": 0,
+        "contract_streak_after": 0,
+        "cooldown_remaining_after": 0,
+        "action": "HOLD_TRANSITION_COOLDOWN"
+      }
+    },
+    {
+      "wave_id": "W07",
+      "wave_receipt_sha256": "7777777777777777777777777777777777777777777777777777777777777777",
+      "single": {"qualified_benefit_units": 30, "verified_deeds": 3},
+      "observed": {
+        "qualified_benefit_units": 78,
+        "verified_deeds": 6,
+        "counterfactual_confidence_bp": 9000,
+        "receiver_pressure": 45,
+        "proof_debt": 3,
+        "collision_risk": 2,
+        "human_attention_cost": 2,
+        "compute_cost": 82
+      },
+      "expected": {
+        "physical_width_after": 1,
+        "widen_streak_after": 1,
+        "contract_streak_after": 0,
+        "cooldown_remaining_after": 0,
+        "action": "HOLD_WIDEN_STREAK_1_OF_2"
+      }
+    },
+    {
+      "wave_id": "W08",
+      "wave_receipt_sha256": "8888888888888888888888888888888888888888888888888888888888888888",
+      "single": {"qualified_benefit_units": 30, "verified_deeds": 3},
+      "observed": {
+        "qualified_benefit_units": 78,
+        "verified_deeds": 6,
+        "counterfactual_confidence_bp": 9000,
+        "receiver_pressure": 44,
+        "proof_debt": 3,
+        "collision_risk": 2,
+        "human_attention_cost": 2,
+        "compute_cost": 80
+      },
+      "expected": {
+        "physical_width_after": 3,
+        "widen_streak_after": 0,
+        "contract_streak_after": 0,
+        "cooldown_remaining_after": 1,
+        "action": "WIDEN_TO_3"
+      }
+    },
+    {
+      "wave_id": "W09",
+      "wave_receipt_sha256": "9999999999999999999999999999999999999999999999999999999999999999",
+      "single": {"qualified_benefit_units": 30, "verified_deeds": 3},
+      "observed": {
+        "qualified_benefit_units": 84,
+        "verified_deeds": 6,
+        "counterfactual_confidence_bp": 9000,
+        "receiver_pressure": 85,
+        "proof_debt": 3,
+        "collision_risk": 2,
+        "human_attention_cost": 2,
+        "compute_cost": 82
+      },
+      "expected": {
+        "physical_width_after": 1,
+        "widen_streak_after": 0,
+        "contract_streak_after": 0,
+        "cooldown_remaining_after": 1,
+        "action": "CONTRACT_TO_1_HARD_BUDGET"
+      }
+    },
+    {
+      "wave_id": "W10",
+      "wave_receipt_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "single": {"qualified_benefit_units": 30, "verified_deeds": 3},
+      "observed": {
+        "qualified_benefit_units": 90,
+        "verified_deeds": 6,
+        "counterfactual_confidence_bp": 9000,
+        "receiver_pressure": 45,
+        "proof_debt": 3,
+        "collision_risk": 2,
+        "human_attention_cost": 2,
+        "compute_cost": 82
+      },
+      "expected": {
+        "physical_width_after": 1,
+        "widen_streak_after": 0,
+        "contract_streak_after": 0,
+        "cooldown_remaining_after": 0,
+        "action": "HOLD_TRANSITION_COOLDOWN"
+      }
+    },
+    {
+      "wave_id": "W11",
+      "wave_receipt_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "single": {"qualified_benefit_units": 30, "verified_deeds": 3},
+      "observed": {
+        "qualified_benefit_units": 90,
+        "verified_deeds": 6,
+        "counterfactual_confidence_bp": 6000,
+        "receiver_pressure": 45,
+        "proof_debt": 3,
+        "collision_risk": 2,
+        "human_attention_cost": 2,
+        "compute_cost": 82
+      },
+      "expected": {
+        "physical_width_after": 1,
+        "widen_streak_after": 0,
+        "contract_streak_after": 0,
+        "cooldown_remaining_after": 0,
+        "action": "HOLD_LOW_COUNTERFACTUAL_CONFIDENCE"
+      }
+    }
+  ],
+  "expected_summary": {
+    "wave_count": 11,
+    "widen_transition_count": 2,
+    "contract_transition_count": 2,
+    "hard_budget_contract_count": 1,
+    "cooldown_hold_count": 3,
+    "low_confidence_hold_count": 1,
+    "final_physical_width": 1,
+    "logical_branch_count_preserved": 3,
+    "receipt_count": 11,
+    "unique_receipt_count": 11
+  },
+  "nonclaims": [
+    "SYNTHETIC_WAVE_RECEIPT_NE_REAL_RECEIVER_RECEIPT",
+    "HYSTERESIS_NE_OPTIMAL_CONTROL",
+    "SYNTHETIC_BENEFIT_UNITS_NE_REAL_WORLD_UTILITY",
+    "BENEFIT_OBSERVED_NE_BENEFIT_CAUSED",
+    "BENEFIT_NE_AUTHORITY",
+    "COOOMPH_NE_MAX_COMPUTE",
+    "LOGICAL_PARALLELITY_NE_PHYSICAL_WIDTH",
+    "CLOSED_LOOP_CANARY_NE_RUNTIME_SCHEDULER",
+    "VALIDATION_IS_NOT_ACCEPTANCE"
+  ]
+}

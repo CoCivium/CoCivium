@@ -1,0 +1,45 @@
+name: Model substrate-light R0
+
+on:
+  pull_request:
+    paths:
+      - "docs/Architecture/COSUBSTRATE_FIELD_R0.md"
+      - "docs/Architecture/COVIRTUAL_SESSION_MORPHOLOGY_R0.md"
+      - "docs/Architecture/COMODEL_SUBSTRATE_LIGHT_CANARY_R0.md"
+      - "fixtures/substrate/model_substrate_light_r0.json"
+      - "tools/validate_model_substrate_light_r0.py"
+      - ".github/workflows/model-substrate-light-r0.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out exact candidate head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 1
+
+      - name: Use Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validate dematerialization and rehydration canary
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p artifacts
+          python tools/validate_model_substrate_light_r0.py | tee artifacts/model-substrate-light-r0.json
+
+      - name: Upload canary receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: model-substrate-light-r0
+          path: artifacts/model-substrate-light-r0.json
+          if-no-files-found: error
+          retention-days: 30
