@@ -1,0 +1,114 @@
+{
+  "schema": "CoQ40TriggerNeutralInboxLeaseReceipt.R0W",
+  "state": "CANDIDATE_TRIGGER_NEUTRAL_LOCAL_WORK_PROTOCOL__NO_PERSISTENT_TRIGGER_INSTALLED",
+  "protocol": {
+    "task_required_fields": [
+      "task_id",
+      "task_sha256",
+      "deed_class",
+      "authority_ceiling",
+      "effect_class",
+      "confidentiality",
+      "receiver_id",
+      "created_at",
+      "expires_at",
+      "idempotency_key",
+      "input_refs",
+      "stop_condition"
+    ],
+    "lease_required_fields": [
+      "lease_id",
+      "task_id",
+      "task_sha256",
+      "consumer_id",
+      "claimed_at",
+      "expires_at",
+      "authority_ceiling",
+      "idempotency_key"
+    ],
+    "receipt_required_fields": [
+      "receipt_id",
+      "task_id",
+      "task_sha256",
+      "lease_id",
+      "consumer_id",
+      "output_sha256",
+      "completed_at",
+      "disposition",
+      "effect_counts",
+      "nonclaims"
+    ],
+    "persistent_trigger_installed": false,
+    "trigger_class_elected": null
+  },
+  "cases": [
+    {
+      "id": "clean_claim",
+      "current_lease": false,
+      "prior_receipt": false,
+      "task_hash_matches": true,
+      "lease_expired": null,
+      "expected": "CLAIM_ONE_LEASE"
+    },
+    {
+      "id": "concurrent_claim_collision",
+      "current_lease": true,
+      "prior_receipt": false,
+      "task_hash_matches": true,
+      "lease_expired": false,
+      "expected": "HOLD_EXISTING_LEASE"
+    },
+    {
+      "id": "stale_lease_takeover",
+      "current_lease": true,
+      "prior_receipt": false,
+      "task_hash_matches": true,
+      "lease_expired": true,
+      "authority_revalidated": true,
+      "expected": "TAKEOVER_ALLOWED_BOUNDED"
+    },
+    {
+      "id": "already_receipted_duplicate_wake",
+      "current_lease": false,
+      "prior_receipt": true,
+      "task_hash_matches": true,
+      "lease_expired": null,
+      "expected": "NO_EXECUTION_ALREADY_RECEIPTED"
+    },
+    {
+      "id": "identity_collision",
+      "current_lease": false,
+      "prior_receipt": false,
+      "task_hash_matches": false,
+      "lease_expired": null,
+      "expected": "FAIL_CLOSED_IDENTITY_COLLISION"
+    }
+  ],
+  "rules": {
+    "many_watchers_one_elected_actuator": true,
+    "lease_grants_authority": false,
+    "inbox_presence_grants_execution_permission": false,
+    "duplicate_trigger_grants_duplicate_effect": false,
+    "receipt_implies_semantic_acceptance": false,
+    "hash_is_signature": false,
+    "persistent_worker_proven": false,
+    "independent_trigger_proven": false
+  },
+  "runtime_effect": false,
+  "public_effect": false,
+  "authority_effect": false,
+  "rails": [
+    "TRIGGER_MECHANISM_NE_DEED_SEMANTICS",
+    "TRIGGER_NE_AUTHORITY",
+    "INBOX_PRESENCE_NE_EXECUTION_PERMISSION",
+    "LEASE_NE_AUTHORITY",
+    "LEASE_HELD_NE_DEED_COMPLETED",
+    "STALE_LEASE_NE_FAILED_DEED",
+    "DUPLICATE_TRIGGER_NE_DUPLICATE_EFFECT",
+    "NEW_TRIGGER_NE_NEW_WORK",
+    "WATCHER_NE_ACTUATOR",
+    "HASHED_RECEIPT_NE_SIGNATURE",
+    "RECEIPT_NE_SEMANTIC_ACCEPTANCE",
+    "ONE_SHOT_PROTOCOL_PROOF_NE_PERSISTENT_WORKER"
+  ]
+}

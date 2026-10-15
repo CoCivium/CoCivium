@@ -1,0 +1,49 @@
+{
+  "schema": "CoSneakPickupGapDisposition.R0K",
+  "state": "PASS_BOUNDED_PICKUP_GAP_DISPOSITION__DIRECT_PICKUP_NOT_RETROACTIVELY_INVENTED",
+  "gaps": [
+    {
+      "id": "coencounter_r0b",
+      "direct_pickup_original": false,
+      "successor_bound": true,
+      "successor_relation": "R0C_EXACT_MATCH_PACKET_PICKUP",
+      "successor_pickup_proven": true,
+      "disposition": "SUCCESSOR_CLOSED_NEXT_PICKUP_RUNG__ORIGINAL_DIRECT_PICKUP_NONCLAIM_REMAINS_HISTORICAL",
+      "current_blocker": false
+    },
+    {
+      "id": "coencounter_yield_r0a",
+      "direct_pickup_original": false,
+      "successor_bound": true,
+      "successor_relation": "R0B_REVIEW_THEN_R0C_DERIVED_MATCH_PACKET_PICKUP",
+      "successor_pickup_proven": true,
+      "disposition": "SUCCESSOR_LINEAGE_CONSUMED_R0A__DIRECT_PICKUP_STILL_UNPROVEN",
+      "current_blocker": false
+    },
+    {
+      "id": "copulse_r0f",
+      "direct_pickup_original": false,
+      "successor_bound": true,
+      "successor_relation": "R0G_CAPACITY_SOURCE_PROVENANCE_AND_LIVE_RECEIVER_BINDING",
+      "successor_pickup_proven": false,
+      "disposition": "SUCCESSOR_ADVANCED_DIFFERENT_DIMENSION__DIRECT_PICKUP_REMAINS_UNPROVEN",
+      "current_blocker": false,
+      "wake_condition": "ELECTED_RECEIVER_REQUIRES_R0F_RESULT"
+    }
+  ],
+  "original_artifacts_rewritten": false,
+  "direct_pickup_retroactively_inferred": false,
+  "lifecycle_compression_candidate": "COLLAPSED_LIFECYCLE_STATE_HIDES_UNPROVEN_EDGE",
+  "runtime_effect": false,
+  "public_effect": false,
+  "rails": [
+    "SUCCESSOR_ADVANCEMENT_NE_RETROACTIVE_PICKUP",
+    "SUCCESSOR_CONSUMPTION_NE_DIRECT_PICKUP",
+    "PASS_NE_PICKUP",
+    "PICKUP_NE_SEMANTIC_ACCEPTANCE",
+    "SEMANTIC_ACCEPTANCE_NE_INTEGRATION",
+    "HISTORICAL_NONCLAIM_NE_CURRENT_BLOCKER",
+    "NO_RECEIVER_NE_REASON_TO_FABRICATE_PICKUP",
+    "COLLAPSED_LIFECYCLE_STATE_HIDES_UNPROVEN_EDGE"
+  ]
+}

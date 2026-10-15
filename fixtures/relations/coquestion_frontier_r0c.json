@@ -1,0 +1,96 @@
+{
+  "schema": "CoQuestionFrontier.R0C",
+  "state": "CANDIDATE_HIGH_LEVERAGE_QUESTION_FRONTIER__NO_RUNTIME_EFFECT",
+  "categories": {
+    "continuity": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "cosneak": [
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+    ],
+    "authority": [
+      16,
+      17,
+      18,
+      19,
+      20,
+      21
+    ],
+    "coqa_gtrail": [
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30
+    ],
+    "ux_currentness": [
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37
+    ],
+    "evolution": [
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44
+    ],
+    "human_public": [
+      45,
+      46,
+      47,
+      48,
+      49,
+      50
+    ]
+  },
+  "question_count": 50,
+  "election_dimensions": [
+    "HIDDEN_BLOCKER_DISCOVERY",
+    "DUPLICATION_RETIREMENT",
+    "AUTHORITY_GATE_DELTA",
+    "HUMAN_ATTENTION_REDUCTION",
+    "DEPENDENCY_REDUCTION",
+    "RECOVERY_VALUE",
+    "UX_DECISION_VALUE",
+    "FALSE_COMPLETION_DISCOVERY",
+    "HYPOTHESIS_DISCRIMINATION",
+    "BOUNDED_PROOF_PATH",
+    "NAMED_RECEIVER"
+  ],
+  "default_loop": [
+    "NOTICE",
+    "GENERATE",
+    "DEDUPE",
+    "SCORE_FOR_DECISION_DELTA",
+    "BIND_RECEIVER",
+    "PROVE_OR_HOLD",
+    "ANSWER_OR_BRANCH",
+    "RECHECK"
+  ],
+  "runtime_effect": false,
+  "public_effect": false
+}

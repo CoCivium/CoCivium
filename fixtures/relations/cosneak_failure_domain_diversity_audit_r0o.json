@@ -1,0 +1,71 @@
+{
+  "schema": "CoSneakFailureDomainDiversityAudit.R0O",
+  "state": "PASS_BOUNDED_Q14_FAILURE_DOMAIN_DIVERSITY_AUDIT__MULTIPLICITY_NE_INDEPENDENCE",
+  "samples": [
+    {
+      "id": "copulse_r0b",
+      "receiver_or_process_count": 2,
+      "execution_surface": "OPENAI_TASK_CONTAINER",
+      "cross_failure_domain_proven": false,
+      "classification": "PROCESS_DIVERSITY_PROVEN__FAILURE_DOMAIN_DIVERSITY_UNPROVEN"
+    },
+    {
+      "id": "coencounter_r0b",
+      "receiver_or_process_count": 3,
+      "execution_surface": "OPENAI_TASK_CONTAINER",
+      "cross_failure_domain_proven": false,
+      "classification": "REVIEW_PROCESS_DIVERSITY_PROVEN__FAILURE_DOMAIN_DIVERSITY_UNPROVEN"
+    },
+    {
+      "id": "copulse_r0g",
+      "receiver_or_process_count": 2,
+      "execution_surface": "OPENAI_TASK_CONTAINER",
+      "cross_failure_domain_proven": false,
+      "classification": "LIVE_PROCESS_DIVERSITY_PROVEN__CROSS_FAILURE_DOMAIN_DIVERSITY_UNPROVEN"
+    },
+    {
+      "id": "coencounter_r0c_architecture",
+      "receiver_or_process_count": 3,
+      "execution_surface": "OPENAI_TASK_CONTAINER",
+      "cross_failure_domain_proven": false,
+      "classification": "LIFECYCLE_PROCESS_SEPARATION_PROVEN__FAILURE_DOMAIN_INDEPENDENCE_NOT_INFERRED"
+    }
+  ],
+  "totals": {
+    "sampled_proof_families": 4,
+    "multi_identity_families": 4,
+    "cross_failure_domain_independence_proven": 0,
+    "provider_independence_proven": 0,
+    "distinct_credential_roots_proven": 0,
+    "distinct_physical_hosts_proven": 0,
+    "distinct_sites_proven": 0,
+    "distinct_execution_substrates_proven": 0
+  },
+  "required_future_dimensions": [
+    "provider_id",
+    "credential_root_id",
+    "host_id",
+    "site_id",
+    "power_domain_id",
+    "network_domain_id",
+    "storage_domain_id",
+    "execution_substrate_id",
+    "model_family",
+    "operator_authority_root"
+  ],
+  "sampled_scope_closed": true,
+  "global_resilience_proven": false,
+  "runtime_effect": false,
+  "public_effect": false,
+  "rails": [
+    "MULTIPLICITY_CAN_MASQUERADE_AS_RESILIENCE",
+    "RECEIVER_COUNT_NE_FAILURE_DOMAIN_COUNT",
+    "PROCESS_COUNT_NE_HOST_COUNT",
+    "HOST_COUNT_NE_SITE_COUNT",
+    "PROVIDER_COUNT_NE_CREDENTIAL_ROOT_COUNT",
+    "MODEL_COUNT_NE_EXECUTION_SUBSTRATE_COUNT",
+    "COPY_COUNT_NE_INDEPENDENT_CUSTODY_COUNT",
+    "UNKNOWN_NE_DISTINCT",
+    "SAMPLED_SCOPE_CLOSED_NE_GLOBAL_RESILIENCE_PROVEN"
+  ]
+}
