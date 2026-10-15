@@ -1,0 +1,50 @@
+{
+  "schema": "CoRecoveryKernel.CleanRoomR0",
+  "state": "CANDIDATE_SELF_CONTAINED_RECOVERY_PACKET__NO_SECOND_FAILURE_DOMAIN_CUSTODY_CLAIM",
+  "source_bindings": [
+    {"path":"docs/Architecture/COPROVIDER_EXIT_RESILIENCE_R0.md","git_blob_sha":"ae4c6f7d9aed11ef2e19f27f004092ddfdf6c3d5"},
+    {"path":"docs/Architecture/COEXIT_RIGHTS_DATA_ERASURE_R0.md","git_blob_sha":"36d4994d81c1106618a21a43888fd17179bb3e52"},
+    {"path":"docs/Architecture/CODEPENDENCY_CENSUS_TRIPLE_LOSS_R0.md","git_blob_sha":"73508ee3ce6377bf40e0e85916420a65b51bf0da"},
+    {"path":"docs/Architecture/CORECOVERY_KERNEL_R0.md","git_blob_sha":"6caf3cd0065c0dadb0d9ebc43a5dc7b565071977"},
+    {"path":"fixtures/resilience/coprovexit_mutualaid_r0.json","git_blob_sha":"87353bf82d8f07dd460912bc1968806111401c6f"},
+    {"path":"fixtures/resilience/coexit_rights_data_erasure_r0.json","git_blob_sha":"70a4fc7630a125e4c2a52691a6664344d717127b"},
+    {"path":"fixtures/resilience/codependency_census_triple_loss_r0.json","git_blob_sha":"a0f766317d96ece8644d7826b9b5c8ee4c876301"},
+    {"path":"fixtures/resilience/corecovery_kernel_r0.json","git_blob_sha":"cacfd11c829e2100d1551ef23f9788bd2b7386cc"}
+  ],
+  "required_priority_gaps": [
+    "INDEPENDENT_PUBLIC_BOOTSTRAP_MIRROR",
+    "PROVEN_PRIVATE_OFFSITE_CUSTODY",
+    "PROVIDER_INDEPENDENT_REASONING_ROUTE",
+    "HUMAN_READABLE_OFFLINE_RECOVERY_PACKET",
+    "SECOND_SOURCE_PROVENANCE_HOST_OR_EXPORT"
+  ],
+  "expected_receiver_os_classes": ["Linux","Windows","macOS"],
+  "authority": {
+    "provider_account_delete": false,
+    "provider_tab_close": false,
+    "billing_mutation": false,
+    "credential_revocation": false,
+    "provider_data_delete": false,
+    "public_effects": false,
+    "security_sensitive_effects": false
+  },
+  "current_nonclaims": {
+    "current_chatgpt_account_close_safe": false,
+    "current_global_chat_drain_complete": false,
+    "current_private_offsite_custody_proven": false,
+    "current_primary_git_host_independence_proven": false,
+    "current_provider_independent_reasoning_proven": false
+  },
+  "rails": [
+    "RECOVERY_KERNEL_NE_FULL_PROJECT_COPY",
+    "SELF_CONTAINED_ORIENTATION_NE_FULL_STATE_REPLICATION",
+    "CLEAN_ROOM_READER_NE_FAILURE_DOMAIN_INDEPENDENCE",
+    "GITHUB_RUNNER_OS_DIVERSITY_NE_GITHUB_INDEPENDENCE",
+    "WORKFLOW_ARTIFACT_NE_DURABLE_OFFSITE_CUSTODY",
+    "RECONSTRUCTED_FRONTIER_NE_CURRENT_GLOBAL_FRONTIER",
+    "CHAT_HISTORY_NE_CUSTODY_ROOT",
+    "ACCOUNT_CLOSE_REQUIRES_COVERAGE_PROOF",
+    "VALIDATION_IS_NOT_ACCEPTANCE",
+    "NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE"
+  ]
+}
