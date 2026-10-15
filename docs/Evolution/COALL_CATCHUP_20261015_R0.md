@@ -13,6 +13,18 @@ recovered prior work onto one reviewable public branch.
 - [CoVirtualArmada+ Evergreen Frontier R0](../Architecture/COARMADA_EVERGREEN_FRONTIER_R0.md)
 - [CoAll Optionality Recovery / Missed-Leverage Backlog R0](COALL_OPTIONALITY_RECOVERY_20261015_R0.md)
 
+## Current fan-in / recovered optionality surfaces
+
+- [Open PR Optionality / Fan-In Census](OPEN_PR_OPTIONALITY_FANIN_20261015_R0.md)
+  binds the currently open PR field without treating open as current or merge-elected.
+- [500-Initiative Atlas](../Product/COGLOBALREACH_500_INITIATIVE_ATLAS_R0.md)
+  is a broad initiative-generation surface; it does not imply 500 active projects.
+- [CoVids+ / Armada Evergreen overview](../Product/COVIDS_ARMADA_EVERGREEN_R0.md)
+  is the product-level overview, with deeper media/evidence descendants under
+  `docs/Media/`.
+- [CoOptionality Recovery Campaign](../Architecture/COOPTIONALITY_RECOVERY_CAMPAIGN_R0.md)
+  defines the recovery method paired with the concrete 96-item backlog.
+
 ## Existing current foundations reused rather than duplicated
 
 - [CoWaitlessExecution+ R0](../Architecture/COWAITLESS_EXECUTION_R0.md)
@@ -63,6 +75,16 @@ also remain unproven.
 4. one non-provider shadow cadence;
 5. one independent restore drill;
 6. prune/bootstrap the public indexes after the branch proves coherent.
+
+## Public review container
+
+Draft PR #165, `CoEvoAll 2026-10-15 fan-in: content, machine, CoVids, Armada`,
+is the current review container for this catch-up wave. Parallel donor branches
+should fan unique deltas into that PR rather than opening duplicate public
+catch-up threads.
+
+`FANIN_BEFORE_MORE_PARALLEL_MUTATION`  
+`DONOR_BRANCH_NE_SECOND_CURRENT_ROOT`
 
 ## Rails
 
