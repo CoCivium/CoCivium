@@ -1,0 +1,54 @@
+{
+  "schema": "CoCivium.Currentness.CoEvoAll20261015.v0.1",
+  "observed_main": "2d3da61bddec70900bfe52cf7a27c1633dcf57c6",
+  "branch": "coevo/20261015-fanin-r0",
+  "state": "CANDIDATE_REVIEW_BRANCH",
+  "durable_library_sources": [
+    {
+      "id": "libfile_a4bc56c004e08191a4578abc8448d897",
+      "name": "CoContentCapability_Grammar_R0_2026-10-15.json"
+    },
+    {
+      "id": "libfile_be0c49c2cbb081918fc67b634b8fca0f",
+      "name": "CoContentCapability_LineageReconcile_R1_2026-10-15.json"
+    },
+    {
+      "id": "libfile_5204bd96c4c081918e3b82dd350cc36c",
+      "name": "CoMachineCapability_AdapterContract_R0_2026-10-15.json"
+    },
+    {
+      "id": "libfile_288b2734484c8191835ce856bf1229df",
+      "name": "CoMachineCapability_ConformanceHarness_R0_2026-10-15.json"
+    },
+    {
+      "id": "libfile_77ed2f4216e88191b6b4795d19417019",
+      "name": "CoLegacyToCiv2_EvergreenCampaign_R0_2026-10-15.json"
+    },
+    {
+      "id": "libfile_78f595c10468819189fc8845cfd8a858",
+      "name": "CoVids_ArmadaEvergreen_R0_2026-10-15.json"
+    }
+  ],
+  "repo_updates": [
+    "correct stale CoPlatformHelper merged-state label",
+    "add 2026-10-15 architecture fan-in",
+    "add CoVids/Armada evergreen roadmap"
+  ],
+  "key_rails": [
+    "CAPABILITY_PERSISTS__SOURCE_BINDING_EVOLVES",
+    "GENERIC_CAPABILITY_FIRST__PROVIDER_BINDING_SECOND",
+    "WORKERS_KEEP_VALUE_FLOWING_NE_WORKERS_KEEP_WORKERS_BUSY",
+    "TRILLION_ADDRESSABLE_TASKS_NE_TRILLION_RUNNING_AGENTS",
+    "COMPARISON_NE_SUPERIORITY",
+    "COMPACTION_BEFORE_PROLIFERATION",
+    "NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF"
+  ],
+  "runtime_nonclaims": [
+    "REVIEW_BRANCH_NE_MAIN",
+    "MERGE_NE_RUNTIME_ADOPTION",
+    "CONTROL_OBJECT_NE_LIVE_ARMADA",
+    "X2_RUNTIME_UNPROVEN",
+    "PS7_CONFORMANCE_UNPROVEN",
+    "NO_CANON_COEX_INFERENCE"
+  ]
+}
