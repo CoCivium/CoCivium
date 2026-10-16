@@ -1,0 +1,126 @@
+{
+  "schema": "cocivium.outreach-projection-rules.r0",
+  "state": "CANDIDATE__DRAFT_PR__NO_CANON_RUNTIME_OR_RECEIVER_ACK_CLAIM",
+  "source": "docs/Outreach/RECEIVER_PROJECTIONS_R0.md",
+  "lineage_sources": [
+    "README.md",
+    "PRELAUNCH.md",
+    "SESSION_BOOTSTRAP.md",
+    "docs/Evolution/COALL_GITHUB_EVOLUTION_FABRIC_R0.md",
+    "docs/Architecture/COLIVING_HIGHLIGHT_R0.md",
+    "docs/Outreach/AGENTICS_ONRAMP_R0.md",
+    "ai/outreach-relation-map-r0.json"
+  ],
+  "invariant_fields": [
+    "project_status",
+    "evidence_strength",
+    "nonclaims",
+    "provenance",
+    "authority",
+    "contact_read_ack_adoption_distinctions",
+    "licensing_facts",
+    "currentness"
+  ],
+  "variable_fields": [
+    "opening_hook",
+    "terminology_density",
+    "examples",
+    "emphasized_relations",
+    "call_to_action",
+    "length",
+    "technical_depth",
+    "citation_density"
+  ],
+  "receiver_projections": {
+    "agentics_multi_agent": {
+      "emphasize": [
+        "coordination",
+        "bounded_autonomy",
+        "handoff_currentness",
+        "machine_readable_provenance",
+        "relation_of_relations",
+        "dedupe_successor_semantics"
+      ]
+    },
+    "ai_safety_governance": {
+      "emphasize": [
+        "explicit_authority",
+        "challengeability",
+        "nonclaims",
+        "provenance",
+        "observable_state_transitions",
+        "state_distinctions"
+      ]
+    },
+    "local_first": {
+      "emphasize": [
+        "provider_independence",
+        "local_custody",
+        "recoverable_state",
+        "session_disposability",
+        "portable_relational_objects",
+        "graceful_degradation"
+      ]
+    },
+    "knowledge_graph_semweb": {
+      "emphasize": [
+        "typed_relations",
+        "relation_of_relations",
+        "temporal_currentness",
+        "provenance",
+        "supersession",
+        "observer_relative_rendering"
+      ]
+    },
+    "hci_human_ai": {
+      "emphasize": [
+        "observer_first_surfaces",
+        "progressive_disclosure",
+        "explainable_currentness",
+        "human_machine_twins",
+        "low_friction_participation",
+        "explicit_uncertainty"
+      ]
+    },
+    "civic_tech": {
+      "emphasize": [
+        "consent",
+        "distributed_participation",
+        "challenge_paths",
+        "transparent_authority",
+        "non_coercive_coordination",
+        "public_inspectability"
+      ]
+    },
+    "provenance_repro": {
+      "emphasize": [
+        "source_lineage",
+        "evidence_receipts",
+        "currentness",
+        "transformations",
+        "machine_twins",
+        "reconstruction_paths"
+      ]
+    },
+    "resilience_continuity": {
+      "emphasize": [
+        "failure_domain_independence",
+        "durable_checkpoints",
+        "successor_state",
+        "recoverability",
+        "currentness_evidence",
+        "non_duplicate_redundancy"
+      ]
+    }
+  },
+  "rails": [
+    "ONE_LINEAGE_MANY_PROJECTIONS",
+    "AUDIENCE_FIT_NE_CLAIM_DRIFT",
+    "TAILORING_REQUIRES_SOURCE_BINDING",
+    "PROJECTION_DELTA_NE_SOURCE_DELTA",
+    "RECEIVER_SPECIFIC_NE_RECEIVER_PROFILED",
+    "CURRENTNESS_MUST_REMAIN_VISIBLE",
+    "SCORE_NE_TRUTH",
+    "FIT_NE_PERMISSION"
+  ]
+}
