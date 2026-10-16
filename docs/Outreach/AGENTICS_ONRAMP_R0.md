@@ -182,6 +182,15 @@ This onramp is intended to remain adaptable across at least:
 
 These are candidate relation classes, not blanket invitations to every member of every community.
 
+## Machine-readable twin
+
+The current candidate machine companion is [`ai/outreach-relation-map-r0.json`](../../ai/outreach-relation-map-r0.json).
+
+It carries receiver classes, relation types, contact/response states, dedupe/currentness fields and lineage rules so outreach can evolve without collapsing `SENT`, `READ`, `ACKNOWLEDGED` and `CONTRIBUTING` into one imaginary success state.
+
+`HUMAN_PROJECTION_NE_MACHINE_TWIN`  
+`TWIN_REQUIRES_SHARED_LINEAGE`
+
 ## Evolution
 
 This onramp should evolve with the project.
