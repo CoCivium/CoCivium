@@ -1,0 +1,95 @@
+{
+  "profile_id": "coall.alwaysprofile.coautoevo-full-loop.r0",
+  "subject_ref": "CoAll/CoAutoEvoFullLoop",
+  "version": "R0",
+  "observed_at": "2026-10-17T01:19:44Z",
+  "inherits_from": [
+    "CoEvoModes",
+    "CoWaitlessExecution",
+    "CoOomph",
+    "CoPrompt"
+  ],
+  "dimensions": {
+    "observe": {"state": "ON", "condition": "while an authorized observer path exists", "owner_or_actuator": "current-elected-observer", "evidence_ref": "issue:170"},
+    "challenge": {"state": "ON", "condition": "while challenge adds information, error reduction, decision value, recovery value, or useful optionality", "owner_or_actuator": "current-elected-challenger", "evidence_ref": "issue:170"},
+    "research": {"state": "ON", "condition": "bounded by evidence budget, duplication, source quality, and resource pressure", "owner_or_actuator": "current-elected-research-lane", "evidence_ref": "issue:170"},
+    "evolve": {"state": "ON", "condition": "candidate evolution only; promotion remains separately gated", "owner_or_actuator": "current-elected-autoevo-lane", "evidence_ref": "issue:170"},
+    "prepare": {"state": "ON", "condition": "private/reversible preparation where capability exists", "owner_or_actuator": "current-elected-preparation-lane", "evidence_ref": "issue:170"},
+    "verify": {"state": "ON", "condition": "prefer independent readback when available", "owner_or_actuator": "current-elected-verifier", "evidence_ref": "issue:170"},
+    "route": {"state": "CONDITIONAL", "condition": "route only to capability-, authority-, currentness-, and pressure-qualified receivers", "owner_or_actuator": "current-elected-router", "evidence_ref": "issue:170"},
+    "recover": {"state": "ON", "condition": "arm recovery without destructive intervention; actuate only inside existing authority", "owner_or_actuator": "current-elected-recovery-lane", "evidence_ref": "issue:170"},
+    "outreach_eligible": {"state": "ON", "condition": "research, prepare, maintain relation state, and act only where exact channel/receiver scope and authority are proven", "owner_or_actuator": "current-elected-outreach-lane", "evidence_ref": "issue:168"},
+    "execute_internal": {"state": "CONDITIONAL", "condition": "private, reversible, read-only, append-only, or explicitly rollback-bounded work within proven capability and authority", "owner_or_actuator": "one-elected-actuator-per-collision-domain", "evidence_ref": "issue:170"},
+    "execute_external": {"state": "EFFECT_GATED", "condition": "requires exact effect authority, receiver/channel binding, and effect verification", "owner_or_actuator": "scoped-authorized-actuator", "evidence_ref": "issue:170"},
+    "publish": {"state": "EFFECT_GATED", "condition": "requires explicit publication authority and receiver-visible provenance/currentness", "owner_or_actuator": "scoped-publication-actuator", "evidence_ref": "issue:170"},
+    "spend": {"state": "EFFECT_GATED", "condition": "requires exact financial authority and bounded transaction scope", "owner_or_actuator": "scoped-financial-actuator", "evidence_ref": "issue:170"},
+    "disclose_private": {"state": "EFFECT_GATED", "condition": "requires exact privacy scope, recipient, purpose, and minimum-necessary disclosure", "owner_or_actuator": "scoped-privacy-authorized-actuator", "evidence_ref": "issue:170"}
+  },
+  "cooomph": {
+    "mode": "ALWAYS_EVALUATING",
+    "pressure_inputs": [
+      "EXPECTED_VERIFIED_BENEFIT",
+      "UNCERTAINTY_REDUCTION",
+      "RECEIVER_CAPACITY",
+      "CURRENTNESS_DEBT",
+      "COLLISION_RISK",
+      "PRIVACY_AUTHORITY",
+      "PROOF_DEBT",
+      "HUMAN_ATTENTION_COST",
+      "COMPUTE_ENERGY_COST",
+      "EXTERNALIZATION_LATENCY",
+      "SUCCESSOR_READINESS",
+      "RESOURCE_PRESSURE"
+    ]
+  },
+  "recursion": {
+    "enabled": true,
+    "base_case_required": true,
+    "terminates_on": [
+      "DIRECT_EVIDENCE",
+      "DURABLE_EXACT_ARTIFACT_OR_RECEIPT",
+      "EXPLICIT_AUTHORITY",
+      "EXTERNAL_OBSERVATION",
+      "FALSIFIABLE_TEST",
+      "UNKNOWN"
+    ]
+  },
+  "base_rails": [
+    "META_RELATION_NE_INFINITE_REGRESS",
+    "POLICY_AS_OBJECT_NE_POLICY_SELF_AUTHORIZATION",
+    "AUTOEVO_CAN_CHALLENGE_NE_AUTOEVO_CAN_REMOVE_ROOT_RAILS",
+    "RECURSION_REQUIRES_BASE_CASE",
+    "ALWAYS_ELIGIBLE_NE_RUNNING",
+    "RUNNING_NE_PROGRESS",
+    "PROGRESS_NE_SUCCESS",
+    "AUTOEVO_NE_AUTOADOPTION",
+    "COOOMPH_NE_MAX_COMPUTE",
+    "INHERITED_PROFILE_NE_INHERITED_AUTHORITY",
+    "SIGNAL_TO_FUTURE_NE_FUTURE_ACK",
+    "BLOCKED_EDGE_NE_BLOCKED_GRAPH",
+    "NO_SAFE_WORK_WAITS_FOR_AN_UNRELATED_GATE"
+  ],
+  "authority_ceiling": "SAFE_PRIVATE_REVERSIBLE_READONLY_APPENDONLY_OR_EXPLICITLY_ROLLBACK_BOUNDED__EXTERNAL_EFFECTS_SEPARATELY_GATED",
+  "evidence_refs": [
+    "issue:170",
+    "docs/CoEvo/CoEvo_Modes_v0__2026-03-24.md",
+    "docs/Operations/COPARTICIPANT_EDGE_EVOLUTION_R0.md",
+    "ai/evolution-deltas/2026-10-14/coevo-waitless-execution-virtual-armada-r0.json"
+  ],
+  "next_wake": {
+    "kind": "SCHEDULE",
+    "condition": "existing CoAutoEvo Full Loop carrier or a proven successor performs the next eligible bounded run; pointer existence alone is not pickup"
+  },
+  "nonclaims": [
+    "ALWAYS_ELIGIBLE_NE_RUNNING",
+    "RUNNING_NE_PROGRESS",
+    "PROGRESS_NE_SUCCESS",
+    "AUTOEVO_NE_AUTOADOPTION",
+    "COOOMPH_NE_MAX_COMPUTE",
+    "INHERITED_PROFILE_NE_INHERITED_AUTHORITY",
+    "SIGNAL_TO_FUTURE_NE_FUTURE_ACK",
+    "PROFILE_INSTANCE_NE_RUNTIME_ADOPTION",
+    "SCHEMA_VALID_NE_AUTHORITY",
+    "POINTER_NE_ACK"
+  ]
+}
