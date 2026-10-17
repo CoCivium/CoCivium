@@ -1,0 +1,151 @@
+{
+  "fixture_id": "coall.virtual-sense.safe-ten.r0",
+  "issue_ref": "github:CoCivium/CoCivium#174",
+  "observed_at": "2026-10-17T04:32:15Z",
+  "senses": [
+    {
+      "sense_id":"sense.currentness.r0",
+      "subject_ref":"CoAll/currentness-field",
+      "observer_ref":"CoAll/observer",
+      "sense_kind":"CURRENTNESS",
+      "epistemic_class":"DERIVED",
+      "time":{"source_time":null,"observed_at":"2026-10-17T04:32:15Z","inference_time":"2026-10-17T04:32:15Z","valid_from":null,"valid_to":null,"forecast_horizon_end":null,"calibration_due":null,"supersedes":null},
+      "inputs":[{"ref":"CoPulse/currentness","relation":"DERIVES_FROM","failure_domain":null,"provenance_ref":"docs/Architecture/COALL_PULSEFIELD_COTIME_R0.md"}],
+      "output":{"summary":"Estimate whether an object is current enough for its purpose.","state":"CANDIDATE","metric":null,"unit":null,"baseline":null,"delta":null,"trend":"UNKNOWN","options":["REFRESH","HOLD","USE_WITH_STALENESS_LABEL"]},
+      "uncertainty":{"confidence":0.7,"unknowns":["runtime receiver coverage"]},
+      "authority_ceiling":"RESEARCH_ONLY",
+      "nonclaims":["CURRENTNESS_NE_RECENCY_ALONE","SENSED_NE_TRUE"]
+    },
+    {
+      "sense_id":"sense.drift.r0",
+      "subject_ref":"CoAll/relation-alignment",
+      "observer_ref":"CoAll/observer",
+      "sense_kind":"DRIFT",
+      "epistemic_class":"DERIVED",
+      "time":{"source_time":null,"observed_at":"2026-10-17T04:32:15Z","inference_time":"2026-10-17T04:32:15Z","valid_from":null,"valid_to":null,"forecast_horizon_end":null,"calibration_due":null,"supersedes":null},
+      "inputs":[{"ref":"baseline-vs-current","relation":"COMPARES","failure_domain":null,"provenance_ref":"docs/Architecture/COTIME_DECISION_EVIDENCE_R0.md"}],
+      "output":{"summary":"Detect directional separation from an evidence-bound baseline.","state":"CANDIDATE","metric":null,"unit":null,"baseline":null,"delta":null,"trend":"UNKNOWN","options":["INVESTIGATE","REBASE","ACCEPT_DRIFT"]},
+      "uncertainty":{"confidence":0.65,"unknowns":["domain-specific drift metric"]},
+      "authority_ceiling":"RESEARCH_ONLY",
+      "nonclaims":["DRIFT_NE_FAILURE","DELTA_NE_CAUSE"]
+    },
+    {
+      "sense_id":"sense.contradiction.r0",
+      "subject_ref":"CoAll/evidence-graph",
+      "observer_ref":"CoAll/observer",
+      "sense_kind":"CONTRADICTION",
+      "epistemic_class":"DERIVED",
+      "time":{"source_time":null,"observed_at":"2026-10-17T04:32:15Z","inference_time":"2026-10-17T04:32:15Z","valid_from":null,"valid_to":null,"forecast_horizon_end":null,"calibration_due":null,"supersedes":null},
+      "inputs":[{"ref":"claims-and-evidence","relation":"CROSS_CHECKS","failure_domain":null,"provenance_ref":"issue:174"}],
+      "output":{"summary":"Surface mutually incompatible claims while preserving both lineages.","state":"CANDIDATE","metric":null,"unit":null,"baseline":null,"delta":null,"trend":"UNKNOWN","options":["SEEK_DISCRIMINATING_EVIDENCE","NARROW_SCOPE","MARK_UNRESOLVED"]},
+      "uncertainty":{"confidence":0.75,"unknowns":["semantic equivalence quality"]},
+      "authority_ceiling":"RESEARCH_ONLY",
+      "nonclaims":["CONTRADICTION_NE_ONE_SIDE_FALSE","CONSENSUS_NE_TRUTH"]
+    },
+    {
+      "sense_id":"sense.pressure.r0",
+      "subject_ref":"CoAll/work-fabric",
+      "observer_ref":"CoAll/observer",
+      "sense_kind":"PRESSURE",
+      "epistemic_class":"DERIVED",
+      "time":{"source_time":null,"observed_at":"2026-10-17T04:32:15Z","inference_time":"2026-10-17T04:32:15Z","valid_from":null,"valid_to":null,"forecast_horizon_end":null,"calibration_due":null,"supersedes":null},
+      "inputs":[{"ref":"receiver-capacity-and-proof-debt","relation":"COMPARES_LOAD_TO_CAPACITY","failure_domain":null,"provenance_ref":"docs/Operations/COPARTICIPANT_EDGE_EVOLUTION_R0.md"}],
+      "output":{"summary":"Estimate mismatch between active/discovered work and integration capacity.","state":"CANDIDATE","metric":null,"unit":null,"baseline":null,"delta":null,"trend":"UNKNOWN","options":["COMPACT","SLEEP","REROUTE","FAN_OUT","SERIALIZE"]},
+      "uncertainty":{"confidence":0.8,"unknowns":["live resource telemetry"]},
+      "authority_ceiling":"RESEARCH_ONLY",
+      "nonclaims":["PRESSURE_NE_FAILURE","COOOMPH_NE_MAX_COMPUTE"]
+    },
+    {
+      "sense_id":"sense.optionality.r0",
+      "subject_ref":"CoAll/option-set",
+      "observer_ref":"CoAll/observer",
+      "sense_kind":"OPTIONALITY",
+      "epistemic_class":"INFERRED",
+      "time":{"source_time":null,"observed_at":"2026-10-17T04:32:15Z","inference_time":"2026-10-17T04:32:15Z","valid_from":null,"valid_to":null,"forecast_horizon_end":null,"calibration_due":null,"supersedes":null},
+      "inputs":[{"ref":"eligible-routes","relation":"ENUMERATES_ALTERNATIVES","failure_domain":null,"provenance_ref":"issue:174"}],
+      "output":{"summary":"Estimate useful reversible alternative routes remaining.","state":"CANDIDATE","metric":null,"unit":null,"baseline":null,"delta":null,"trend":"UNKNOWN","options":["PRESERVE","EXPAND","EXERCISE","RETIRE"]},
+      "uncertainty":{"confidence":0.6,"unknowns":["route viability until tested"]},
+      "authority_ceiling":"RESEARCH_ONLY",
+      "nonclaims":["OPTION_EXISTS_NE_OPTION_WORKS","MORE_OPTIONS_NE_BETTER_DECISION"]
+    },
+    {
+      "sense_id":"sense.recovery.r0",
+      "subject_ref":"CoAll/recovery-field",
+      "observer_ref":"CoAll/observer",
+      "sense_kind":"RECOVERY",
+      "epistemic_class":"DERIVED",
+      "time":{"source_time":null,"observed_at":"2026-10-17T04:32:15Z","inference_time":"2026-10-17T04:32:15Z","valid_from":null,"valid_to":null,"forecast_horizon_end":null,"calibration_due":null,"supersedes":null},
+      "inputs":[{"ref":"restore-and-successor-evidence","relation":"QUALIFIES_RECOVERABILITY","failure_domain":null,"provenance_ref":"issue:174"}],
+      "output":{"summary":"Estimate whether work can be reconstructed after a carrier or resource loss.","state":"CANDIDATE","metric":null,"unit":null,"baseline":null,"delta":null,"trend":"UNKNOWN","options":["RUN_SHADOW_DRILL","STRENGTHEN_CHECKPOINT","HOLD"]},
+      "uncertainty":{"confidence":0.7,"unknowns":["independent restore proof"]},
+      "authority_ceiling":"RESEARCH_ONLY",
+      "nonclaims":["BACKUP_NE_RECOVERY_PROOF","RECOVERABLE_NE_RUNNING"]
+    },
+    {
+      "sense_id":"sense.provenance.r0",
+      "subject_ref":"CoAll/evidence-lineage",
+      "observer_ref":"CoAll/observer",
+      "sense_kind":"PROVENANCE",
+      "epistemic_class":"DERIVED",
+      "time":{"source_time":null,"observed_at":"2026-10-17T04:32:15Z","inference_time":"2026-10-17T04:32:15Z","valid_from":null,"valid_to":null,"forecast_horizon_end":null,"calibration_due":null,"supersedes":null},
+      "inputs":[{"ref":"source-evidence-chain","relation":"TRACES","failure_domain":null,"provenance_ref":"issue:174"}],
+      "output":{"summary":"Estimate how completely a claim or artifact can be traced to sources and transformations.","state":"CANDIDATE","metric":null,"unit":null,"baseline":null,"delta":null,"trend":"UNKNOWN","options":["BIND_SOURCE","MARK_GAP","CHALLENGE_LINEAGE"]},
+      "uncertainty":{"confidence":0.8,"unknowns":["unobserved upstream transformations"]},
+      "authority_ceiling":"RESEARCH_ONLY",
+      "nonclaims":["PROVENANCE_NE_TRUTH","SOURCE_NE_AUTHORITY"]
+    },
+    {
+      "sense_id":"sense.calibration.r0",
+      "subject_ref":"CoAll/forecast-field",
+      "observer_ref":"CoAll/observer",
+      "sense_kind":"CALIBRATION",
+      "epistemic_class":"MEASURED",
+      "time":{"source_time":null,"observed_at":"2026-10-17T04:32:15Z","inference_time":"2026-10-17T04:32:15Z","valid_from":null,"valid_to":null,"forecast_horizon_end":null,"calibration_due":null,"supersedes":null},
+      "inputs":[{"ref":"forecast-vs-outcome","relation":"SCORES","failure_domain":null,"provenance_ref":"docs/Architecture/COTIME_DECISION_EVIDENCE_R0.md"}],
+      "output":{"summary":"Compare prior forecasts with observed outcomes.","state":"CANDIDATE","metric":null,"unit":null,"baseline":null,"delta":null,"trend":"UNKNOWN","options":["RECALIBRATE","RETAIN","NARROW_MODEL"]},
+      "uncertainty":{"confidence":0.85,"unknowns":["sufficient scored forecast sample"]},
+      "authority_ceiling":"RESEARCH_ONLY",
+      "nonclaims":["ONE_HIT_NE_CALIBRATED","CONFIDENCE_NE_CALIBRATION"]
+    },
+    {
+      "sense_id":"sense.resource-saturation.r0",
+      "subject_ref":"CoAll/resource-ecology",
+      "observer_ref":"CoAll/observer",
+      "sense_kind":"RESOURCE_SATURATION",
+      "epistemic_class":"DERIVED",
+      "time":{"source_time":null,"observed_at":"2026-10-17T04:32:15Z","inference_time":"2026-10-17T04:32:15Z","valid_from":null,"valid_to":null,"forecast_horizon_end":null,"calibration_due":null,"supersedes":null},
+      "inputs":[{"ref":"quota-latency-concurrency-capacity","relation":"QUALIFIES_SATURATION","failure_domain":null,"provenance_ref":"issue:168"}],
+      "output":{"summary":"Estimate whether a resource route is approaching useful capacity limits.","state":"CANDIDATE","metric":null,"unit":null,"baseline":null,"delta":null,"trend":"UNKNOWN","options":["BACKOFF","REROUTE","COMPACT","SLEEP"]},
+      "uncertainty":{"confidence":0.7,"unknowns":["provider-specific hidden limits"]},
+      "authority_ceiling":"RESEARCH_ONLY",
+      "nonclaims":["SATURATION_NE_OUTAGE","MULTIPROVIDER_NE_INDEPENDENCE"]
+    },
+    {
+      "sense_id":"sense.receiver-readiness.r0",
+      "subject_ref":"CoAll/receiver-field",
+      "observer_ref":"CoAll/observer",
+      "sense_kind":"RECEIVER_READINESS",
+      "epistemic_class":"DERIVED",
+      "time":{"source_time":null,"observed_at":"2026-10-17T04:32:15Z","inference_time":"2026-10-17T04:32:15Z","valid_from":null,"valid_to":null,"forecast_horizon_end":null,"calibration_due":null,"supersedes":null},
+      "inputs":[{"ref":"receiver-capability-currentness-authority","relation":"QUALIFIES_RECEIVER","failure_domain":null,"provenance_ref":"issue:174"}],
+      "output":{"summary":"Estimate whether a receiver is technically and semantically ready for a bounded object.","state":"CANDIDATE","metric":null,"unit":null,"baseline":null,"delta":null,"trend":"UNKNOWN","options":["ROUTE","WAIT_WITH_WAKE","PREPARE_ADAPTER"]},
+      "uncertainty":{"confidence":0.75,"unknowns":["receiver pickup until exact readproof"]},
+      "authority_ceiling":"RESEARCH_ONLY",
+      "nonclaims":["DELIVERY_NE_PICKUP","READINESS_NE_AUTHORITY","POINTER_NE_ACK"]
+    }
+  ],
+  "matrix": {
+    "domains": 50,
+    "lenses": 10,
+    "possible_cells": 500,
+    "materialization_rule": "SPARSE__ONLY_IF_USEFUL_AND_EVIDENCE_SUPPORTED",
+    "rails": ["CONCEPT_COUNT_NE_CAPABILITY","MEASURABLE_NE_IMPORTANT","LOCAL_EXPONENTIAL_NE_GLOBAL_EXPONENTIAL"]
+  },
+  "nonclaims": [
+    "FIXTURE_NE_RUNTIME",
+    "VIRTUAL_SENSE_NE_BIOLOGICAL_SENSE",
+    "SENSE_MODEL_NE_SENTIENCE",
+    "NO_SENSOR_ACTIVATION",
+    "NO_PREDICTIVE_ACCURACY_CLAIM"
+  ]
+}

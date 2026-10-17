@@ -1,0 +1,30 @@
+{
+  "receipt_id": "coall.virtual-sense.calibration-canary.validation.r0",
+  "issue_ref": "github:CoCivium/CoCivium#174",
+  "pr_ref": "github:CoCivium/CoCivium#175",
+  "branch": "coevo/virtual-sense-r0",
+  "schema_path": "ai/schemas/co-virtual-sense-r0.schema.json",
+  "canary_path": "ai/fixtures/co-virtual-sense-calibration-canary-r0.json",
+  "validator": {
+    "engine": "python-jsonschema",
+    "version": "4.26.0",
+    "draft": "2020-12",
+    "format_checker": true
+  },
+  "result": "PASS",
+  "validation_errors": [],
+  "validated_at": "2026-10-17T04:35:26Z",
+  "proof_scope": [
+    "synthetic_forecast_outcome_calibration_object_conforms_to_schema",
+    "cooptimax_fields_conform_to_schema",
+    "date_time_formats_checked"
+  ],
+  "nonclaims": [
+    "SYNTHETIC_HIT_NE_PREDICTIVE_SKILL",
+    "SCHEMA_PASS_NE_EMPIRICAL_VALIDATION",
+    "CANARY_NE_RUNTIME",
+    "CANARY_NE_CANON",
+    "CANARY_NE_SENSOR_ACTIVATION"
+  ],
+  "next_safe_proof": "replace the synthetic calibration pair with one pre-registered real low-stakes forecast and later score the observed outcome"
+}

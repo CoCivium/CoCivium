@@ -1,0 +1,68 @@
+{
+  "sense_id": "sense.calibration.synthetic-canary.r0",
+  "subject_ref": "CoAll/synthetic-forecast-calibration-canary",
+  "observer_ref": "CoAll/test-observer",
+  "sense_kind": "CALIBRATION",
+  "epistemic_class": "MEASURED",
+  "time": {
+    "source_time": "2026-10-17T04:35:26Z",
+    "observed_at": "2026-10-17T04:35:26Z",
+    "inference_time": "2026-10-17T04:35:26Z",
+    "valid_from": "2026-10-17T04:35:26Z",
+    "valid_to": null,
+    "forecast_horizon_end": "2026-10-17T04:35:27Z",
+    "calibration_due": "2026-10-17T04:35:27Z",
+    "supersedes": null
+  },
+  "inputs": [
+    {
+      "ref": "synthetic:forecast:boolean-pass",
+      "relation": "COMPARES_FORECAST_TO_SYNTHETIC_OUTCOME",
+      "failure_domain": "STRUCTURAL_CANARY_ONLY",
+      "provenance_ref": "github:CoCivium/CoCivium#174"
+    }
+  ],
+  "output": {
+    "summary": "Structural canary proving that a forecast-outcome-calibration relation can be represented and scored without claiming real predictive skill.",
+    "state": "STRUCTURAL_CANARY_PASS",
+    "metric": 1.0,
+    "unit": "binary_match",
+    "baseline": 0.5,
+    "delta": 0.5,
+    "trend": "STABLE",
+    "options": [
+      "REPLACE_WITH_REAL_PRE_REGISTERED_FORECAST",
+      "KEEP_AS_SCHEMA_CANARY"
+    ]
+  },
+  "uncertainty": {
+    "confidence": 1.0,
+    "unknowns": [
+      "real-world predictive usefulness remains untested"
+    ]
+  },
+  "cooptimax": {
+    "current": 0.0,
+    "baseline_expected": 0.0,
+    "plausible_better": 1.0,
+    "stretch": 1.0,
+    "possible_bound": 1.0,
+    "objective_dimensions": [
+      "structural_representability",
+      "calibration_linkage"
+    ]
+  },
+  "calibration": {
+    "forecast_ref": "synthetic:forecast:boolean-pass",
+    "disposition": "HIT",
+    "outcome_ref": "synthetic:outcome:boolean-pass"
+  },
+  "authority_ceiling": "TEST_ONLY__NO_EXTERNAL_EFFECT",
+  "nonclaims": [
+    "SYNTHETIC_HIT_NE_PREDICTIVE_SKILL",
+    "STRUCTURAL_CANARY_NE_EMPIRICAL_CALIBRATION",
+    "CANARY_NE_RUNTIME",
+    "CANARY_NE_SENSOR_ACTIVATION",
+    "CANARY_NE_CANON"
+  ]
+}

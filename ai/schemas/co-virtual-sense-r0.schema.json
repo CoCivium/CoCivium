@@ -1,0 +1,99 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cocivium.org/schemas/co-virtual-sense-r0.schema.json",
+  "title": "CoVirtualSense+ R0",
+  "description": "Candidate schema for observer-relative virtual sensing, CoTime anticipation, calibration and option generation. Presence does not imply runtime adoption, authority, or sensing activation.",
+  "type": "object",
+  "required": ["sense_id","subject_ref","observer_ref","sense_kind","epistemic_class","time","inputs","output","uncertainty","authority_ceiling","nonclaims"],
+  "properties": {
+    "sense_id": {"type":"string","minLength":1},
+    "subject_ref": {"type":"string","minLength":1},
+    "observer_ref": {"type":"string","minLength":1},
+    "sense_kind": {
+      "type":"string",
+      "enum":["CURRENTNESS","DRIFT","CONTRADICTION","PRESSURE","OPTIONALITY","RECOVERY","PROVENANCE","CALIBRATION","RESOURCE_SATURATION","RECEIVER_READINESS","ANOMALY","TRAJECTORY","CUSTOM"]
+    },
+    "epistemic_class": {
+      "type":"string",
+      "enum":["OBSERVED","MEASURED","DERIVED","INFERRED","PREDICTED","SCENARIO","COUNTERFACTUAL","PHENOMENOLOGICAL","MYTHIC","UNKNOWN"]
+    },
+    "time": {
+      "type":"object",
+      "required":["observed_at"],
+      "properties":{
+        "source_time":{"type":["string","null"],"format":"date-time"},
+        "observed_at":{"type":"string","format":"date-time"},
+        "inference_time":{"type":["string","null"],"format":"date-time"},
+        "valid_from":{"type":["string","null"],"format":"date-time"},
+        "valid_to":{"type":["string","null"],"format":"date-time"},
+        "forecast_horizon_end":{"type":["string","null"],"format":"date-time"},
+        "calibration_due":{"type":["string","null"],"format":"date-time"},
+        "supersedes":{"type":["string","null"]}
+      },
+      "additionalProperties":false
+    },
+    "inputs": {
+      "type":"array",
+      "minItems":1,
+      "items":{
+        "type":"object",
+        "required":["ref","relation"],
+        "properties":{
+          "ref":{"type":"string","minLength":1},
+          "relation":{"type":"string","minLength":1},
+          "failure_domain":{"type":["string","null"]},
+          "provenance_ref":{"type":["string","null"]}
+        },
+        "additionalProperties":false
+      }
+    },
+    "output": {
+      "type":"object",
+      "required":["summary","state"],
+      "properties":{
+        "summary":{"type":"string","minLength":1},
+        "state":{"type":"string","minLength":1},
+        "metric":{"type":["number","null"]},
+        "unit":{"type":["string","null"]},
+        "baseline":{"type":["number","null"]},
+        "delta":{"type":["number","null"]},
+        "trend":{"type":["string","null"],"enum":["RISING","FALLING","STABLE","OSCILLATING","REGIME_SHIFT","UNKNOWN",null]},
+        "options":{"type":"array","items":{"type":"string"},"uniqueItems":true,"default":[]}
+      },
+      "additionalProperties":false
+    },
+    "uncertainty": {
+      "type":"object",
+      "required":["confidence","unknowns"],
+      "properties":{
+        "confidence":{"type":"number","minimum":0,"maximum":1},
+        "unknowns":{"type":"array","items":{"type":"string"}}
+      },
+      "additionalProperties":false
+    },
+    "cooptimax": {
+      "type":"object",
+      "properties":{
+        "current":{"type":["number","null"]},
+        "baseline_expected":{"type":["number","null"]},
+        "plausible_better":{"type":["number","null"]},
+        "stretch":{"type":["number","null"]},
+        "possible_bound":{"type":["number","null"]},
+        "objective_dimensions":{"type":"array","items":{"type":"string"},"uniqueItems":true}
+      },
+      "additionalProperties":false
+    },
+    "calibration": {
+      "type":"object",
+      "properties":{
+        "forecast_ref":{"type":["string","null"]},
+        "disposition":{"type":["string","null"],"enum":["HIT","PARTIAL","MISS","UNRESOLVED","CENSORED","INVALIDATED_BY_ASSUMPTION_CHANGE",null]},
+        "outcome_ref":{"type":["string","null"]}
+      },
+      "additionalProperties":false
+    },
+    "authority_ceiling":{"type":"string","minLength":1},
+    "nonclaims":{"type":"array","minItems":1,"items":{"type":"string"},"uniqueItems":true}
+  },
+  "additionalProperties":false
+}
