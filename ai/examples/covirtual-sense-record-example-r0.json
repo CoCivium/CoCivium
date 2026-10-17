@@ -1,0 +1,49 @@
+{
+  "sense_id": "example:ops-latency-drift:r0",
+  "receiver": "CoOps",
+  "subject": "example service response latency",
+  "source_refs": [
+    "example:synthetic-fixture"
+  ],
+  "source_class": "SYNTHETIC_EXAMPLE",
+  "capture_method": "SYNTHETIC_SAMPLE",
+  "transform_method": "COMPARE_TO_BASELINE",
+  "observed_at": "2026-10-17T04:33:00Z",
+  "valid_time": null,
+  "currentness": "EXAMPLE_ONLY",
+  "measured_values": {
+    "latency_ms": 125
+  },
+  "inferred_values": {
+    "drift_direction": "UP"
+  },
+  "forecast_values": {
+    "next_window": "UNKNOWN"
+  },
+  "uncertainty": {
+    "class": "EXAMPLE_ONLY"
+  },
+  "confidence": "NOT_APPLICABLE",
+  "calibration": {
+    "state": "NOT_APPLICABLE"
+  },
+  "drift": {
+    "state": "CANDIDATE"
+  },
+  "comparator": "example baseline",
+  "baseline": {
+    "latency_ms": 100
+  },
+  "target": {
+    "latency_ms": "<=100"
+  },
+  "optionality": "inspect route before effect",
+  "actionability": "OBSERVE_ONLY",
+  "authority_ceiling": "OBSERVE_PROPOSE_CHALLENGE_VERIFY",
+  "privacy_class": "PUBLIC_SAFE_SYNTHETIC",
+  "successor": null,
+  "provenance": [
+    "docs/Architecture/COVIRTUAL_SENSE_COTIME_FORECAST_R0.md"
+  ],
+  "epistemic_class": "MEASURED"
+}
