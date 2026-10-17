@@ -1,0 +1,34 @@
+{
+  "cycle_id": "example:coprompt-cycle:r0:001",
+  "observed_at": "2026-10-17T01:22:00Z",
+  "source_refs": [
+    "docs/Architecture/COPROMPT_ALWAYS_ECOLOGY_R0.md",
+    "ai/coprompt-always-ecology-r0.json"
+  ],
+  "selected_prompt_families": [
+    "CoObservePrompt",
+    "CoPriorPrompt",
+    "CoChallengePrompt",
+    "CoOomphPrompt",
+    "CoTurtlePrompt"
+  ],
+  "candidate_deltas": [],
+  "dedupe_state": "NO_DUPLICATE_DELTA_EMITTED_IN_EXAMPLE",
+  "challenge_state": "BOUNDED_CHALLENGE_PERFORMED",
+  "verification_state": "EXAMPLE_ONLY__NO_RUNTIME_VERIFICATION_CLAIM",
+  "cooomph_decision": "UNCHANGED",
+  "route_state": "NO_EXTERNAL_ROUTE",
+  "receipt_state": "EXAMPLE_FIXTURE_ONLY",
+  "terminal_posture": "DORMANT",
+  "authority_ceiling": "OBSERVE_PROPOSE_CHALLENGE_VERIFY__NO_EXTERNAL_EFFECT",
+  "wake_conditions": [
+    "MATERIAL_NEW_EVIDENCE",
+    "BOUND_RECEIVER_REQUEST",
+    "CURRENTNESS_DEGRADES"
+  ],
+  "nonclaims": [
+    "FIXTURE_NE_LIVE_CYCLE",
+    "SCHEMA_VALID_NE_RUNTIME",
+    "PROMPT_SELECTED_NE_PROMPT_EXECUTED"
+  ]
+}
