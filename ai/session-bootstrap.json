@@ -7,6 +7,8 @@
   "read_order": [
     "README.md",
     "PRELAUNCH.md",
+    "ai/onramp/cocivia-first-use-r0.json",
+    "docs/Onramp/COCIVIA_FIRST_USE_R0.md",
     "SESSION_BOOTSTRAP.md",
     "docs/Launch/COCIVIUM_PUBLIC_PRELAUNCH_R0.md",
     "docs/Evolution/COALL_EVOLUTION_CONVERGENCE_R1.md",
@@ -150,5 +152,11 @@
       "TEST_NE_CONFIRMATION",
       "FALSIFIER_NE_FAILURE_PREDICTION"
     ]
+  },
+  "onramp": {
+    "human_first_use": "docs/Onramp/COCIVIA_FIRST_USE_R0.md",
+    "machine_twin": "ai/onramp/cocivia-first-use-r0.json",
+    "rule": "START_WITH_ONE_REAL_THING__RETURN_ONE_CONCRETE_USEFUL_RESULT_BEFORE_DEEP_ARCHITECTURE",
+    "installer_state": "NO_VERIFIED_PUBLIC_COCIVIUM_INSTALLER_LINKED"
   }
 }
