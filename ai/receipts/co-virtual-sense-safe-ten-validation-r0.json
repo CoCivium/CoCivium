@@ -1,0 +1,33 @@
+{
+  "receipt_id": "coall.virtual-sense.safe-ten.validation.r0",
+  "issue_ref": "github:CoCivium/CoCivium#174",
+  "pr_ref": "github:CoCivium/CoCivium#175",
+  "branch": "coevo/virtual-sense-r0",
+  "schema_path": "ai/schemas/co-virtual-sense-r0.schema.json",
+  "fixture_path": "ai/fixtures/co-virtual-sense-safe-ten-r0.json",
+  "schema_blob_sha": "ade99f60eaeeef885b0c342698b3bcf403a0654d",
+  "fixture_blob_sha": "e7862afbd0ba7d76013a52f5ad5c566fe2519a8b",
+  "validator": {
+    "engine": "python-jsonschema",
+    "version": "4.26.0",
+    "draft": "2020-12",
+    "format_checker": true
+  },
+  "validated_objects": 10,
+  "result": "PASS",
+  "validation_errors": [],
+  "validated_at": "2026-10-17T04:35:26Z",
+  "proof_scope": [
+    "schema_is_valid_draft_2020_12",
+    "all_ten_sense_objects_conform_to_schema",
+    "date_time_formats_checked"
+  ],
+  "nonclaims": [
+    "SCHEMA_PASS_NE_RUNTIME",
+    "SCHEMA_PASS_NE_CANON",
+    "SCHEMA_PASS_NE_PREDICTIVE_ACCURACY",
+    "STRUCTURAL_VALIDATION_NE_EMPIRICAL_VALIDATION",
+    "FIXTURE_NE_SENSOR_ACTIVATION",
+    "FIXTURE_NE_SENTIENCE"
+  ]
+}
