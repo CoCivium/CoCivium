@@ -1,0 +1,82 @@
+name: CoAlways prior migration R0
+
+on:
+  pull_request:
+    paths:
+      - 'docs/Architecture/COPROMPT_ALWAYS_ECOLOGY_R0.md'
+      - 'docs/Architecture/COALWAYS_PRIOR_MIGRATION_R0.md'
+      - 'ai/coprompt-always-ecology-r0.json'
+      - 'ai/coalways-prior-migration-r0.json'
+      - 'ai/examples/coalways-prior-migration-example-r0.json'
+      - 'schemas/coalways-prior-migration-v0.1.schema.json'
+      - 'scripts/validate_coalways_prior_migration_r0.py'
+      - '.github/workflows/coalways-prior-migration-r0.yml'
+  push:
+    paths:
+      - 'docs/Architecture/COPROMPT_ALWAYS_ECOLOGY_R0.md'
+      - 'docs/Architecture/COALWAYS_PRIOR_MIGRATION_R0.md'
+      - 'ai/coprompt-always-ecology-r0.json'
+      - 'ai/coalways-prior-migration-r0.json'
+      - 'ai/examples/coalways-prior-migration-example-r0.json'
+      - 'schemas/coalways-prior-migration-v0.1.schema.json'
+      - 'scripts/validate_coalways_prior_migration_r0.py'
+
+permissions:
+  contents: read
+
+jobs:
+  bounded-contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate migration example shape
+        run: python scripts/validate_coalways_prior_migration_r0.py ai/examples/coalways-prior-migration-example-r0.json
+
+      - name: Validate machine twins and schema are parseable
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          paths = [
+              "ai/coprompt-always-ecology-r0.json",
+              "ai/coalways-prior-migration-r0.json",
+              "ai/examples/coalways-prior-migration-example-r0.json",
+              "schemas/coalways-prior-migration-v0.1.schema.json",
+          ]
+          for p in paths:
+              json.loads(Path(p).read_text(encoding="utf-8"))
+              print("PASS_JSON", p)
+          PY
+
+      - name: Verify lineage bindings exist
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          twin = json.loads(Path("ai/coalways-prior-migration-r0.json").read_text(encoding="utf-8"))
+          refs = [
+              twin["source"],
+              twin["schema_ref"],
+              "docs/Architecture/COPROMPT_ALWAYS_ECOLOGY_R0.md",
+              "ai/coprompt-always-ecology-r0.json",
+          ]
+          missing = [p for p in refs if not Path(p).exists()]
+          if missing:
+              raise SystemExit("FAIL_CLOSED__MISSING_LINEAGE_BINDING__" + ",".join(missing))
+          print("PASS_LINEAGE_BINDINGS", len(refs))
+          PY
+
+      - name: Assert no always-executing default
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          docs = json.loads(Path("ai/coprompt-always-ecology-r0.json").read_text(encoding="utf-8"))
+          prior = json.loads(Path("ai/coalways-prior-migration-r0.json").read_text(encoding="utf-8"))
+          if docs["defaults"]["executing"] == "ALWAYS":
+              raise SystemExit("FAIL_CLOSED__COPROMPT_ALWAYS_EXECUTION")
+          if prior["default_modes"]["executing"] == "ALWAYS":
+              raise SystemExit("FAIL_CLOSED__PRIOR_ALWAYS_EXECUTION")
+          print("PASS_ALWAYS_ELIGIBLE_NE_ALWAYS_RUNNING")
+          PY

@@ -1,0 +1,161 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cocivium.org/schemas/coalways-prior-migration-v0.1.schema.json",
+  "title": "CoAlways Prior Migration R0",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "object_id",
+    "source_refs",
+    "lineage_state",
+    "currentness",
+    "always_modes",
+    "wake_conditions",
+    "authority_ceiling",
+    "successor_refs",
+    "embodiment_disposition",
+    "uncertainty",
+    "evidence_refs",
+    "receiver_state"
+  ],
+  "properties": {
+    "object_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "lineage_state": {
+      "type": "string",
+      "minLength": 1
+    },
+    "currentness": {
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "object",
+          "required": [
+            "observed_at",
+            "state"
+          ],
+          "properties": {
+            "observed_at": {
+              "type": "string",
+              "minLength": 1
+            },
+            "state": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "additionalProperties": true
+        }
+      ]
+    },
+    "always_modes": {
+      "type": "object",
+      "required": [
+        "persist",
+        "discoverable",
+        "reconsiderable",
+        "challengeable",
+        "autoevo_eligible",
+        "wakeable",
+        "cooomph_governed_when_active",
+        "executing",
+        "external_effect"
+      ],
+      "properties": {
+        "persist": {
+          "type": "string"
+        },
+        "discoverable": {
+          "type": "string"
+        },
+        "reconsiderable": {
+          "type": "string"
+        },
+        "challengeable": {
+          "type": "string"
+        },
+        "autoevo_eligible": {
+          "type": "string"
+        },
+        "wakeable": {
+          "type": "string"
+        },
+        "cooomph_governed_when_active": {
+          "type": "string"
+        },
+        "executing": {
+          "type": "string"
+        },
+        "external_effect": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": true
+    },
+    "wake_conditions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "authority_ceiling": {
+      "type": "string",
+      "minLength": 1
+    },
+    "successor_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "embodiment_disposition": {
+      "type": "string",
+      "enum": [
+        "ACTIVE",
+        "DORMANT",
+        "CLOSE_SAFE",
+        "SUPERSEDED",
+        "COMPOST",
+        "RECOVERY_ONLY",
+        "UNKNOWN"
+      ]
+    },
+    "uncertainty": {
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        {
+          "type": "object"
+        }
+      ]
+    },
+    "evidence_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "receiver_state": {
+      "type": "string",
+      "minLength": 1
+    }
+  }
+}

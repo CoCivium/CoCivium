@@ -1,0 +1,79 @@
+{
+  "schema": "CoAll.CoAlwaysPriorMigration.R0.v0.1-candidate",
+  "state": "CANDIDATE__DRAFT_PR__NO_CANON_RUNTIME_OR_AUTHORITY_CHANGE",
+  "source": "docs/Architecture/COALWAYS_PRIOR_MIGRATION_R0.md",
+  "purpose": "Machine-readable intake companion for converting prior artifacts, sessions, and relations into always-mode posture without reopening source embodiments.",
+  "required_output_fields": [
+    "object_id",
+    "source_refs",
+    "lineage_state",
+    "currentness",
+    "always_modes",
+    "wake_conditions",
+    "authority_ceiling",
+    "successor_refs",
+    "embodiment_disposition",
+    "uncertainty",
+    "evidence_refs",
+    "receiver_state"
+  ],
+  "value_classes": [
+    "STILL_RELEVANT",
+    "DORMANT_POTENTIALLY_USEFUL",
+    "SUPERSEDED_PROVENANCE_RELEVANT",
+    "DUPLICATE_OR_COMPOST",
+    "UNKNOWN"
+  ],
+  "embodiment_dispositions": [
+    "ACTIVE",
+    "DORMANT",
+    "CLOSE_SAFE",
+    "SUPERSEDED",
+    "COMPOST",
+    "RECOVERY_ONLY",
+    "UNKNOWN"
+  ],
+  "default_modes": {
+    "persist": "ALWAYS",
+    "discoverable": "ALWAYS",
+    "reconsiderable": "ALWAYS",
+    "challengeable": "ALWAYS",
+    "autoevo_eligible": "ALWAYS",
+    "wakeable": "YES_UNLESS_EXPLICITLY_NOT",
+    "cooomph_governed_when_active": "YES",
+    "executing": "NO_BY_DEFAULT",
+    "external_effect": "TRIGGERED_OR_AUTHORIZED"
+  },
+  "wake_predicate_classes": [
+    "SOURCE_OR_EVIDENCE_CHANGE",
+    "RECEIVER_REQUEST",
+    "CONTRADICTION",
+    "CAPABILITY_AVAILABLE",
+    "DEPENDENCY_SATISFIED",
+    "CURRENTNESS_THRESHOLD",
+    "SUCCESSOR_GAP",
+    "SCHEDULED_BOUNDED_REVIEW"
+  ],
+  "authority_classes": [
+    "OBSERVE",
+    "PROPOSE",
+    "CHALLENGE",
+    "VERIFY",
+    "BRANCH_MUTATE",
+    "LOCAL_REVERSIBLE",
+    "EFFECT_GATED"
+  ],
+  "rails": [
+    "PRIOR_NE_PROCESS",
+    "OUTLIVE_EMBODIMENT_NE_RUN_FOREVER",
+    "MIGRATION_NE_REOPEN_SESSION",
+    "DORMANT_NE_DEAD",
+    "CLOSE_SAFE_NE_FORGOTTEN",
+    "SUPERSEDED_NE_DELETED",
+    "WAKE_NE_EXECUTE",
+    "AUTOEVO_ELIGIBLE_NE_AUTO_MUTATE",
+    "PERSIST_NE_HOT",
+    "PROMPTED_MIGRATION_NE_MIGRATED"
+  ],
+  "schema_ref": "schemas/coalways-prior-migration-v0.1.schema.json"
+}
