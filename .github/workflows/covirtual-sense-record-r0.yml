@@ -1,0 +1,77 @@
+name: CoVirtualSense record R0
+
+on:
+  pull_request:
+    paths:
+      - 'docs/Architecture/COVIRTUAL_SENSE_COTIME_FORECAST_R0.md'
+      - 'ai/covirtual-sense-cotime-forecast-r0.json'
+      - 'ai/examples/covirtual-sense-record-example-r0.json'
+      - 'schemas/covirtual-sense-record-v0.1.schema.json'
+      - 'scripts/validate_covirtual_sense_record_r0.py'
+      - '.github/workflows/covirtual-sense-record-r0.yml'
+  push:
+    paths:
+      - 'ai/covirtual-sense-cotime-forecast-r0.json'
+      - 'ai/examples/covirtual-sense-record-example-r0.json'
+      - 'schemas/covirtual-sense-record-v0.1.schema.json'
+      - 'scripts/validate_covirtual_sense_record_r0.py'
+
+permissions:
+  contents: read
+
+jobs:
+  bounded-contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Parse schema, twin and fixture
+        run: |
+          python -m json.tool schemas/covirtual-sense-record-v0.1.schema.json >/dev/null
+          python -m json.tool ai/covirtual-sense-cotime-forecast-r0.json >/dev/null
+          python -m json.tool ai/examples/covirtual-sense-record-example-r0.json >/dev/null
+
+      - name: Validate bounded virtual-sense fixture
+        run: python scripts/validate_covirtual_sense_record_r0.py ai/examples/covirtual-sense-record-example-r0.json
+
+      - name: Verify 20 x 25 exploration matrix contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          d=json.loads(Path("ai/covirtual-sense-cotime-forecast-r0.json").read_text(encoding="utf-8"))
+          domains=d["sense_domains"]
+          operators=d["operators"]
+          assert len(domains)==20, len(domains)
+          assert len(operators)==25, len(operators)
+          assert len(set(domains))==20
+          assert len(set(operators))==25
+          assert d["exploratory_cell_count"]==500
+          assert len(domains)*len(operators)==500
+          print("PASS_500_BOUNDED_VIRTUAL_SENSE_CELLS")
+          PY
+
+      - name: Verify epistemic separation rails
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          d=json.loads(Path("ai/covirtual-sense-cotime-forecast-r0.json").read_text(encoding="utf-8"))
+          rails=set(d["rails"])
+          required={
+            "SENSE_NE_TRUTH",
+            "SIGNAL_NE_CAUSE",
+            "MODEL_NE_WORLD",
+            "UNKNOWN_NE_SUPERNATURAL",
+            "SPIRITUAL_INTERPRETATION_NE_EMPIRICAL_PROOF",
+            "ANOMALY_NE_ETI",
+            "SCALE_NE_EXPONENTIAL",
+          }
+          missing=sorted(required-rails)
+          if missing:
+              raise SystemExit("FAIL_CLOSED__MISSING_EPISTEMIC_RAILS__"+",".join(missing))
+          print("PASS_EPISTEMIC_SEPARATION_RAILS", len(required))
+          PY
