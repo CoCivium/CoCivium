@@ -319,3 +319,14 @@ For every important sense relation, consider:
 `COOPTIMAX_NE_SINGLE_SCALAR`
 `SCALE_NE_EXPONENTIAL`
 `AUTOEVO_NE_UNBOUNDED_SELF_MODIFICATION`
+
+
+## Machine validation
+
+Candidate record schema: `schemas/covirtual-sense-record-v0.1.schema.json`.
+
+Synthetic example fixture: `ai/examples/covirtual-sense-record-example-r0.json`.
+
+`SCHEMA_VALID_NE_TRUE_OBSERVATION`  
+`SYNTHETIC_FIXTURE_NE_LIVE_SENSOR`  
+`VALID_RECORD_NE_AUTHORIZED_ACTION`
