@@ -1,0 +1,216 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cocivium.org/schemas/coall-always-profile-r0.schema.json",
+  "title": "CoAll AlwaysProfile+ R0",
+  "description": "Candidate machine-readable disposition vector for persistent CoAll relational behavior. Proposal only: schema presence does not imply runtime adoption, authority, or execution.",
+  "type": "object",
+  "required": [
+    "profile_id",
+    "subject_ref",
+    "version",
+    "observed_at",
+    "dimensions",
+    "base_rails",
+    "authority_ceiling",
+    "next_wake"
+  ],
+  "properties": {
+    "profile_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "subject_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "version": {
+      "type": "string",
+      "const": "R0"
+    },
+    "observed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "inherits_from": {
+      "type": "array",
+      "items": {"type": "string"},
+      "uniqueItems": true,
+      "default": []
+    },
+    "dimensions": {
+      "type": "object",
+      "required": [
+        "observe",
+        "challenge",
+        "research",
+        "evolve",
+        "prepare",
+        "verify",
+        "route",
+        "recover",
+        "outreach_eligible",
+        "execute_internal",
+        "execute_external",
+        "publish",
+        "spend",
+        "disclose_private"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "observe": {"$ref": "#/$defs/disposition"},
+        "challenge": {"$ref": "#/$defs/disposition"},
+        "research": {"$ref": "#/$defs/disposition"},
+        "evolve": {"$ref": "#/$defs/disposition"},
+        "prepare": {"$ref": "#/$defs/disposition"},
+        "verify": {"$ref": "#/$defs/disposition"},
+        "route": {"$ref": "#/$defs/disposition"},
+        "recover": {"$ref": "#/$defs/disposition"},
+        "outreach_eligible": {"$ref": "#/$defs/disposition"},
+        "execute_internal": {"$ref": "#/$defs/disposition"},
+        "execute_external": {"$ref": "#/$defs/disposition"},
+        "publish": {"$ref": "#/$defs/disposition"},
+        "spend": {"$ref": "#/$defs/disposition"},
+        "disclose_private": {"$ref": "#/$defs/disposition"}
+      }
+    },
+    "cooomph": {
+      "type": "object",
+      "required": ["mode", "pressure_inputs"],
+      "properties": {
+        "mode": {
+          "type": "string",
+          "enum": [
+            "ALWAYS_EVALUATING",
+            "LOW",
+            "NORMAL",
+            "HIGH",
+            "COMPACT",
+            "SLEEP",
+            "HOLD"
+          ]
+        },
+        "pressure_inputs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "EXPECTED_VERIFIED_BENEFIT",
+              "UNCERTAINTY_REDUCTION",
+              "RECEIVER_CAPACITY",
+              "CURRENTNESS_DEBT",
+              "COLLISION_RISK",
+              "PRIVACY_AUTHORITY",
+              "PROOF_DEBT",
+              "HUMAN_ATTENTION_COST",
+              "COMPUTE_ENERGY_COST",
+              "EXTERNALIZATION_LATENCY",
+              "SUCCESSOR_READINESS",
+              "RESOURCE_PRESSURE"
+            ]
+          },
+          "uniqueItems": true
+        }
+      },
+      "additionalProperties": false
+    },
+    "recursion": {
+      "type": "object",
+      "required": ["enabled", "base_case_required"],
+      "properties": {
+        "enabled": {"type": "boolean"},
+        "base_case_required": {"const": true},
+        "terminates_on": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "DIRECT_EVIDENCE",
+              "DURABLE_EXACT_ARTIFACT_OR_RECEIPT",
+              "EXPLICIT_AUTHORITY",
+              "EXTERNAL_OBSERVATION",
+              "FALSIFIABLE_TEST",
+              "UNKNOWN"
+            ]
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        }
+      },
+      "additionalProperties": false
+    },
+    "base_rails": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"type": "string"},
+      "uniqueItems": true
+    },
+    "authority_ceiling": {
+      "type": "string",
+      "minLength": 1
+    },
+    "evidence_refs": {
+      "type": "array",
+      "items": {"type": "string"},
+      "uniqueItems": true,
+      "default": []
+    },
+    "next_wake": {
+      "type": "object",
+      "required": ["kind", "condition"],
+      "properties": {
+        "kind": {
+          "type": "string",
+          "enum": ["EVENT", "SCHEDULE", "SOURCE_CHANGE", "RECEIVER_PICKUP", "MANUAL_GATE", "NONE"]
+        },
+        "condition": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "nonclaims": {
+      "type": "array",
+      "items": {"type": "string"},
+      "uniqueItems": true,
+      "default": [
+        "ALWAYS_ELIGIBLE_NE_RUNNING",
+        "RUNNING_NE_PROGRESS",
+        "PROGRESS_NE_SUCCESS",
+        "AUTOEVO_NE_AUTOADOPTION",
+        "COOOMPH_NE_MAX_COMPUTE",
+        "INHERITED_PROFILE_NE_INHERITED_AUTHORITY",
+        "SIGNAL_TO_FUTURE_NE_FUTURE_ACK"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "disposition": {
+      "type": "object",
+      "required": ["state"],
+      "properties": {
+        "state": {
+          "type": "string",
+          "enum": [
+            "ON",
+            "OFF",
+            "CONDITIONAL",
+            "EFFECT_GATED",
+            "SLEEPING",
+            "UNKNOWN"
+          ]
+        },
+        "condition": {
+          "type": ["string", "null"]
+        },
+        "owner_or_actuator": {
+          "type": ["string", "null"]
+        },
+        "evidence_ref": {
+          "type": ["string", "null"]
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}
