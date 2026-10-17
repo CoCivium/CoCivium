@@ -122,3 +122,11 @@ The candidate machine companion is `ai/coalways-prior-migration-r0.json`.
 
 `HUMAN_PROJECTION_NE_MACHINE_TWIN`  
 `TWIN_REQUIRES_SHARED_LINEAGE`
+
+
+## Validation schema
+
+Candidate validation schema: `schemas/coalways-prior-migration-v0.1.schema.json`.
+
+`SCHEMA_VALID_NE_EVIDENCE_QUALIFIED`  
+`SCHEMA_VALID_NE_MIGRATED`
