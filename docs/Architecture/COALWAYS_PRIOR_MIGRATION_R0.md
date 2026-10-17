@@ -114,3 +114,11 @@ This checklist is the bounded prior-estate intake companion to:
 The prompt ecology may propose migration candidates, but a claimed migrated state still requires evidence appropriate to the target surface.
 
 `PROMPTED_MIGRATION_NE_MIGRATED`
+
+
+## Machine-readable twin
+
+The candidate machine companion is `ai/coalways-prior-migration-r0.json`.
+
+`HUMAN_PROJECTION_NE_MACHINE_TWIN`  
+`TWIN_REQUIRES_SHARED_LINEAGE`
