@@ -195,3 +195,14 @@ This candidate composes, rather than replaces:
 - `docs/Architecture/COEVIDENCE_RECEIPT_GUARD_R0.md`
 - `docs/Evolution/COALL_GITHUB_EVOLUTION_FABRIC_R0.md`
 - `ai/participant-edge-evolution-lanes-r0.json`
+
+
+## Cycle contract
+
+Candidate cycle validation schema: `schemas/coprompt-cycle-v0.1.schema.json`.
+
+Example bounded cycle fixture: `ai/examples/coprompt-cycle-example-r0.json`.
+
+`SCHEMA_VALID_NE_LIVE_CYCLE`  
+`FIXTURE_NE_EXECUTION`  
+`PROMPT_SELECTED_NE_PROMPT_EXECUTED`
