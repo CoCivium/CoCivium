@@ -1,0 +1,31 @@
+{
+  "receipt_id": "coall.alwaysprofile.validation.r0",
+  "subject_profile": "ai/profiles/coall-always-profile-coautoevo-full-loop-r0.json",
+  "schema": "ai/schemas/coall-always-profile-r0.schema.json",
+  "branch": "coevo/alwaysprofile-r0",
+  "schema_blob_sha": "bc79657d05c3615b5dffaa88c285cc23754e53d0",
+  "profile_blob_sha": "66e2261d5c2654102772ae1d884da4116d37ddfb",
+  "validator": {
+    "engine": "python-jsonschema",
+    "version": "4.26.0",
+    "draft": "2020-12",
+    "format_checker": true
+  },
+  "result": "PASS",
+  "validation_errors": [],
+  "validated_at": "2026-10-17T01:20:46Z",
+  "proof_scope": [
+    "schema_is_valid_draft_2020_12",
+    "representative_profile_conforms_to_schema",
+    "date_time_format_checked"
+  ],
+  "nonclaims": [
+    "SCHEMA_PASS_NE_RUNTIME_ADOPTION",
+    "SCHEMA_PASS_NE_CANON",
+    "SCHEMA_PASS_NE_AUTHORITY",
+    "SCHEMA_PASS_NE_BOOTSTRAP_PICKUP",
+    "VALIDATION_NE_BEHAVIORAL_CORRECTNESS",
+    "PROFILE_INSTANCE_NE_SCHEDULER_INTEGRATION"
+  ],
+  "next_safe_proof": "review whether a branch-local bootstrap/currentness pointer can reference this validated profile without claiming adoption; keep merge and runtime binding separately reviewable"
+}
