@@ -7,6 +7,8 @@
 *"If the Universes are NOT "Natively Quantum", and if all is "relational" and if CoCivium is CoCME+Rels, etc..."*
 
 
+> **First-use pointer:** if you just want to try CoCivia without learning the machinery first, start with [CoCivia First Use R0](docs/Onramp/COCIVIA_FIRST_USE_R0.md). Bring one real thing you want to make better. No installer is required for this first encounter.
+
 > **Session/bootstrap pointer:** sessions and machine clients needing current public project orientation should start with [SESSION_BOOTSTRAP.md](SESSION_BOOTSTRAP.md). GitHub is a shared public/currentness surface, not the sole custody root.
 
 > **Evolution pointer:** capable sessions and machine workers should use [CoAll GitHub Evolution Fabric R0](docs/Evolution/COALL_GITHUB_EVOLUTION_FABRIC_R0.md) plus [the machine evolution lanes](ai/evolution-lanes.json) to contribute bounded strategy, insight, theory, index, lexicon, UX, ops, humour, AutoEvo and other domain deltas. GitHub is a shared evolution surface, not global authority.
