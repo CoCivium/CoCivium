@@ -1,0 +1,120 @@
+{
+  "schema": "CoAll.AlwaysConversion.v0.1-candidate",
+  "status": "DRAFT_SHADOW_ONLY",
+  "as_of_utc": "2026-10-17T01:16:49Z",
+  "intent": "Convert persistent purpose into evidence-driven wakeable work, not endless running processes.",
+  "source_pointers": [
+    "ai/evolution-lanes.json",
+    "ai/session-bootstrap.json",
+    "docs/Architecture/COWAITLESS_EXECUTION_R0.md"
+  ],
+  "existing_bootstrap_runtime_adoption": "UNPROVEN",
+  "mode_types": [
+    "READY",
+    "PERIODIC_OBSERVE",
+    "EVENT_WAKE",
+    "RESEARCH",
+    "RELATIONAL_RECONCILE",
+    "AUTOEVO_SHADOW",
+    "OOMPH_SELECT_SHADOW",
+    "VERIFY",
+    "RECOVER_SHADOW",
+    "AUTHORIZED_DISPATCH",
+    "QUIET"
+  ],
+  "proposal_lanes": [
+    {
+      "id": "auto-evo-shadow",
+      "domain": "CoAutoEvo+/CoEvo+",
+      "mode": "AUTOEVO_SHADOW",
+      "source": "ai/evolution-lanes.json",
+      "wake": "new_material_evidence_or_unresolved_contradiction",
+      "output": "candidate_delta_with_sources",
+      "effect_permission": "NONE",
+      "proof": "content_hash_and_independent_challenge"
+    },
+    {
+      "id": "oomph-selector-shadow",
+      "domain": "CoOomph+",
+      "mode": "OOMPH_SELECT_SHADOW",
+      "wake": "eligible_work_or_resource_state_change",
+      "output": "ranked_bounded_work_proposal_with_budget",
+      "effect_permission": "NONE",
+      "proof": "rank_reasons_and_outcome_calibration"
+    },
+    {
+      "id": "receipt-verifier-shadow",
+      "domain": "CoRails+/CoSource+",
+      "mode": "VERIFY",
+      "wake": "new_candidate_receipt",
+      "output": "pass_fail_unknown_readback",
+      "effect_permission": "READ_ONLY",
+      "proof": "independent_exact_artifact_readback"
+    },
+    {
+      "id": "relational-reconciler",
+      "domain": "CoRel+/CoVIA+",
+      "mode": "RELATIONAL_RECONCILE",
+      "wake": "new_public_authorized_relationship_evidence",
+      "output": "typed_relation_delta_no_outbound_contact",
+      "effect_permission": "NONE",
+      "proof": "provenance_and_consent_scope"
+    },
+    {
+      "id": "covid-preflight",
+      "domain": "CoVid+/WeTube+",
+      "mode": "RESEARCH",
+      "wake": "new_render_candidate_or_public_festival_rules",
+      "output": "private_readiness_gap_list",
+      "effect_permission": "NONE",
+      "proof": "playback_rights_eligibility_source"
+    },
+    {
+      "id": "session-recovery-shadow",
+      "domain": "CoSession+",
+      "mode": "RECOVER_SHADOW",
+      "wake": "expired_lease_plus_missing_progress",
+      "output": "recovery_recommendation_not_restart",
+      "effect_permission": "NONE",
+      "proof": "checkpoint_exists_and_single_actuator_election"
+    }
+  ],
+  "gates": [
+    "NO_NEW_AUTHORITY_FROM_CLONES",
+    "ROLLBACK_NE_AUTHORIZATION",
+    "NO_SILENT_EXTERNAL_EFFECT",
+    "GITHUB_NE_PRIVATE_CUSTODY",
+    "NO_SAFE_WORK_WAITS_FOR_UNRELATED_GATE",
+    "RENDERED_NE_LIVE",
+    "HEARTBEAT_NE_PROGRESS",
+    "RICK_NE_EVENT_BUS",
+    "PUBLIC_NE_VALIDATED",
+    "DRAFT_NE_SCHEDULER"
+  ],
+  "proof_cycle": {
+    "name": "three_lane_canary",
+    "stages": [
+      "read_public_registry",
+      "select_one_material_candidate",
+      "independent_challenge",
+      "write_bounded_candidate_receipt",
+      "verify_exact_readback",
+      "report_actual_receiver_and_runtime_state"
+    ],
+    "success": "One real independently verified improvement with durable readback after originator is unavailable",
+    "current_state": "NOT_EXECUTED"
+  },
+  "resource_control": {
+    "default_effect_leases": 0,
+    "concurrent_external_actuators": 0,
+    "backoff": "required",
+    "stop_when": "no_material_delta_or_negative_expected_value"
+  },
+  "release_conditions": [
+    "runtime_receiver_identified",
+    "authority_scope_verified",
+    "checkpoint_storage_verified",
+    "canary_passes",
+    "explicit_effect_gate_for_any_external_mutation"
+  ]
+}
