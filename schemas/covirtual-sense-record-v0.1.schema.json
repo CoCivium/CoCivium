@@ -1,0 +1,197 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cocivium.org/schemas/covirtual-sense-record-v0.1.schema.json",
+  "title": "CoVirtualSense Record R0",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "sense_id",
+    "receiver",
+    "subject",
+    "source_refs",
+    "source_class",
+    "capture_method",
+    "observed_at",
+    "currentness",
+    "uncertainty",
+    "authority_ceiling",
+    "privacy_class",
+    "provenance",
+    "epistemic_class"
+  ],
+  "properties": {
+    "sense_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "receiver": {
+      "type": "string",
+      "minLength": 1
+    },
+    "subject": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "source_class": {
+      "type": "string",
+      "minLength": 1
+    },
+    "capture_method": {
+      "type": "string",
+      "minLength": 1
+    },
+    "transform_method": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "observed_at": {
+      "type": "string",
+      "minLength": 1
+    },
+    "valid_time": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "currentness": {
+      "type": "string",
+      "minLength": 1
+    },
+    "measured_values": {
+      "type": "object"
+    },
+    "inferred_values": {
+      "type": "object"
+    },
+    "forecast_values": {
+      "type": "object"
+    },
+    "uncertainty": {
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "number"
+        },
+        {
+          "type": "object"
+        },
+        {
+          "type": "array"
+        }
+      ]
+    },
+    "confidence": {
+      "oneOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "calibration": {
+      "type": [
+        "object",
+        "string",
+        "null"
+      ]
+    },
+    "drift": {
+      "type": [
+        "object",
+        "string",
+        "null"
+      ]
+    },
+    "comparator": {
+      "type": [
+        "object",
+        "string",
+        "null"
+      ]
+    },
+    "baseline": {
+      "type": [
+        "object",
+        "string",
+        "null"
+      ]
+    },
+    "target": {
+      "type": [
+        "object",
+        "string",
+        "null"
+      ]
+    },
+    "optionality": {
+      "type": [
+        "object",
+        "string",
+        "null"
+      ]
+    },
+    "actionability": {
+      "type": [
+        "object",
+        "string",
+        "null"
+      ]
+    },
+    "authority_ceiling": {
+      "type": "string",
+      "minLength": 1
+    },
+    "privacy_class": {
+      "type": "string",
+      "minLength": 1
+    },
+    "successor": {
+      "type": [
+        "string",
+        "array",
+        "null"
+      ]
+    },
+    "provenance": {
+      "type": [
+        "object",
+        "array",
+        "string"
+      ]
+    },
+    "epistemic_class": {
+      "type": "string",
+      "enum": [
+        "OBSERVED",
+        "MEASURED",
+        "DERIVED",
+        "INFERRED",
+        "ESTIMATED",
+        "PREDICTED",
+        "COUNTERFACTUAL",
+        "SIMULATED",
+        "INTERPRETED",
+        "MYTHIC_OR_SYMBOLIC",
+        "SPIRITUAL_OR_THEOLOGICAL_INTERPRETATION",
+        "UNKNOWN_OR_UNCLASSIFIED"
+      ]
+    }
+  }
+}
