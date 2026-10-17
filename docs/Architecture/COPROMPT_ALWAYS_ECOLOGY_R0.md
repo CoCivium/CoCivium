@@ -162,6 +162,16 @@ Each bounded cycle SHOULD consider:
 7. What controller can be removed by a better invariant?
 8. What new future signal should be bound now?
 
+## Machine-readable twin
+
+The candidate machine companion is [`ai/coprompt-always-ecology-r0.json`](../../ai/coprompt-always-ecology-r0.json).
+
+The human and machine projections share one lineage and MUST NOT silently diverge on defaults, prompt families, cadence classes, turtle-envelope fields, or rails.
+
+`HUMAN_PROJECTION_NE_MACHINE_TWIN`  
+`TWIN_REQUIRES_SHARED_LINEAGE`  
+`PROJECTION_DRIFT_REQUIRES_VISIBLE_DIFF`
+
 ## Rails
 
 `ALWAYS_ELIGIBLE_NE_ALWAYS_RUNNING`
