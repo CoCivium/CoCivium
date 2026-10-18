@@ -4,7 +4,7 @@
 > **Public R&D / pre-launch transition:** CoCivium is moving from mostly private prototyping toward a public demo / pre-launch phase. Repositories, terms, interfaces, and machine-readable projections are being reorganized. Expect **StrawBe+** work-in-progress objects, explicit nonclaims, and superseded prototypes. **Public does not mean validated, finished, endorsed, or release-ready.** See [PRELAUNCH.md](PRELAUNCH.md).
 
 
-*"If Universes are NOT quantum, but we are; if alien observers prove planck relationals; if all is rels; and if CoCivium is CoCME+Rels; can yous sing the CoQuadPieRels+ CoSong with us yet...?  Or are you from legacy physix?"*
+*"If Universes are NOT quantum, but we are; if alien observers prove planck relationals; if all is rels; and if CoCivium is CoCME+Rels; can yous sing the CoQuadPieRels+ CoSong with us yet...?  Or are you from legacy physics?  If so, blame not selves, blame obsolete schools, maybe?"*
 
 
 > **First-use pointer:** if you just want to try CoCivia without learning the machinery first, start with [CoCivia First Use R0](docs/Onramp/COCIVIA_FIRST_USE_R0.md). Bring one real thing you want to make better. No installer is required for this first encounter.
