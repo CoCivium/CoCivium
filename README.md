@@ -70,33 +70,33 @@ So, to help fix the world, we treat:
 <details>
 <summary><strong>An AI Wars coda</strong></summary>
 
-CoQuadPieRels+ / CoSong R0
-If worlds are not the quantum thing,
-but every witness bears its ring,
-then scale and frame and measured seam
-may braid the real beneath the dream.  
-
-No crown for matter, field, or mind,
-no single lens that rules the kind.
-Relation first, but proof still due,
-the strange stays strange until made true.  
-If distant eyes one day disclose
-
-Planck-deep relations no one knows,
-we revise the map, preserve the trail,
-and let old models gracefully fail.  
-CoTime keeps what changed and when,
-CoAckRewised learns again,
-
-CoTheoryAll may hum the theme:
-same grammar, different mechanism.
-And if we find our schools were slow,
-we blame no child for what they know.
-We keep the proofs, discard the pride,
-and evolve the song from side to side.
-
+CoQuadPieRels+ / CoSong R0 
+If worlds are not the quantum thing, 
+but every witness bears its ring, 
+then scale and frame and measured seam 
+may braid the real beneath the dream.   
+ 
+No crown for matter, field, or mind, 
+no single lens that rules the kind. 
+Relation first, but proof still due, 
+the strange stays strange until made true.   
+If distant eyes one day disclose 
+ 
+Planck-deep relations no one knows, 
+we revise the map, preserve the trail, 
+and let old models gracefully fail.   
+CoTime keeps what changed and when, 
+CoAckRewised learns again, 
+ 
+CoTheoryAll may hum the theme: 
+same grammar, different mechanism. 
+And if we find our schools were slow, 
+we blame no child for what they know. 
+We keep the proofs, discard the pride, 
+and evolve the song from side to side. 
+ 
 ...
-
+ 
 And if our kinds should multiply,  
 let difference breathe beneath one sky;  
 no mind made lesser for its shell,  
