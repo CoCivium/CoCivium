@@ -313,6 +313,7 @@ Seed stage: message rick (CoSteward)
 
 - Email: contact@InSeed.com  
 - Phone: +1.416.414.8100 (mobile)
+- https://substack.com/@rickpublic
 
 ---
 
