@@ -463,5 +463,55 @@
       "COMBINATORIAL_COUNT_NE_INDEPENDENT_EVIDENCE",
       "NO_TRILLION_WORKER_OR_ALL_DOMAIN_COVERAGE_CLAIM"
     ]
+  },
+  "source_retention_extension": {
+    "state": "PROPOSED__NO_RECORDING_ARCHIVING_OR_DELETION_STARTED",
+    "scope": "Available authorized source material from humans, synthetic participants and other attributable sources. No claim of a complete audio/video recording or all-session capture.",
+    "source_contract": [
+      "Preserve exact wording when supplied and retained; distinguish transcript from original audio.",
+      "Keep source identity, timestamp, capture modality, transcription uncertainty, version and access scope.",
+      "Keep private raw sources out of public GitHub; publish only deliberately public-safe derivatives.",
+      "Link each derivative to its source span and label quotation, paraphrase, editorial revision, fiction, satire or metaphor.",
+      "Do not attribute generated words to a real participant or infer that an entity consented merely because it was quoted."
+    ],
+    "lifecycle": [
+      "AVAILABLE_PRIVATE_SOURCE",
+      "EXTRACTED_CANDIDATES",
+      "INDEXED_REUSABLE",
+      "COOL_STORAGE",
+      "ARCHIVAL_REVIEW",
+      "ARCHIVED_OR_EXPLICITLY_DELETED"
+    ],
+    "retention_factors": [
+      "Historical significance",
+      "Uniqueness",
+      "Evidence/reproducibility dependencies",
+      "Source permissions and deletion obligations",
+      "Recent use and expected retrieval value",
+      "Storage cost and reconstructability",
+      "Contradictions and unresolved questions"
+    ],
+    "decay_semantics": "Decay can reduce hot storage, indexing or review priority without changing source bytes. Compression must declare loss; exact evidence should remain recoverable where required. Archiving is not deletion.",
+    "staleness_rule": "Outdated operational claims remain source-time evidence; valid-time/currentness must be distinguished from historical value. Popularity or non-use alone must not decide factual authority or destruction.",
+    "quote_ecology": "CoQuotable is a candidate handle for attributed quotable spans across participant types. Meme and mythic Rick/clone renditions must be visibly distinguished from historical records; preserve dissenting and less-popular voices.",
+    "reprocessing_rule": "Use source cursors and extraction-version manifests to identify processed spans, unresolved residue, new interpretations and diminishing returns. No claim that a source can be permanently drained of every future meaning.",
+    "evaluation": [
+      "source-to-derivative traceability",
+      "material extraction omissions",
+      "retrieval success and latency",
+      "unresolved-source age",
+      "storage by retention tier",
+      "lossy-transform disclosure",
+      "misattribution incidents"
+    ],
+    "nonclaims": [
+      "NO_HIDDEN_OR_CONTINUOUS_RECORDING",
+      "NO_COMPLETE_TRANSCRIPT_CAPTURE_CLAIM",
+      "NO_RAW_SESSION_PUBLICATION",
+      "NO_RETENTION_SCHEDULER_INSTALLED",
+      "NO_SOURCE_DELETION",
+      "ARCHIVE_NE_FORGET",
+      "FICTIONAL_CLONE_NE_REAL_PERSON_CONTINUITY"
+    ]
   }
 }
