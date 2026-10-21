@@ -18,7 +18,11 @@
     "https://github.com/CoCivium/CoCivium/blob/882adc7bf247252f179c6d2726003abcb4f9e473/docs/coterms/candidates/continuity-repair-r0.json",
     "https://github.com/CoCivium/CoCivium/blob/495f41823dd9a89e714f43db73b5880d2373ca14/docs/Architecture/COALL_PULSEFIELD_COTIME_R0.md",
     "https://github.com/CoCivium/CoCivium/blob/495f41823dd9a89e714f43db73b5880d2373ca14/docs/Architecture/COTIME_DECISION_EVIDENCE_R0.md",
-    "https://github.com/CoCivium/CoCivium/pull/186"
+    "https://github.com/CoCivium/CoCivium/pull/186",
+    "https://docs.ipfs.tech/concepts/how-ipfs-works/",
+    "https://docs.ipfs.tech/concepts/persistence/",
+    "https://tahoe-lafs.readthedocs.io/en/stable/specifications/file-encoding.html",
+    "https://www.scholarpedia.org/article/Bekenstein_bound"
   ],
   "target_surfaces": [
     "CoCivium/CoCivium@candidate/continuity-repair-mutation-r0-20261021:/ai/evolution-deltas/2026-10-21/conversation-coverage-recovery-r0.json"
@@ -38,7 +42,12 @@
     "GAP-07 NOT_PERFORMED: No new unattended continuation worker, repair exercise, forecast scheduler or receiver subscription was started by this PR. Publishing a delta does not prove fan-out, pickup or integration.",
     "GAP-08 UNRESOLVED_USER_OUTCOME: Reliable primary-device physical input remains unresolved in the supplied discussion. Research and vocabulary output must not be counted as fixing that user-facing fault.",
     "GAP-09 REMAINING_LEXICON_WORK: Thirty candidate definitions are a first bounded set, not a census, evidence of novelty, or proof that the discussion needs exactly thirty terms. Historical CoLex/GIBindex alias and relation reconciliation remains open.",
-    "USER CLARIFICATION: Each substantive discussion should include a what-else frontier, primarily extrapolating consequential omissions rather than generating arbitrary adjacent topics. Treat extrapolations as hypotheses until supported."
+    "USER CLARIFICATION: Each substantive discussion should include a what-else frontier, primarily extrapolating consequential omissions rather than generating arbitrary adjacent topics. Treat extrapolations as hypotheses until supported.",
+    "USER EXTENSION: Treat devices and CoStead as replaceable participants in a wider decentralized CoAll continuity fabric, with overlapping replicas, stable addressing through movement, licensing/stewardship portability, and recovery after losses at bit, process, module, node, site and larger scales.",
+    "PHYSICS HYPOTHESIS: The claim that every gap or arbitrary speck contains all present and future universal information is retained as an unverified conjecture, not a storage/reconstruction guarantee. Fractal/holographic descriptions do not establish lossless arbitrary-subset recovery.",
+    "RECOVERY LIMIT: Exact reconstruction requires enough surviving encoded information or an adequate source/recipe, interpreter, dependencies and keys. If all distinguishing information is lost, a plausible regeneration cannot be called exact restoration. A relation, hash or locator alone does not contain arbitrary lost payload.",
+    "TOPOLOGY BOUNDARY: Multiple devices in one home are correlated against fire, power and network loss. Cloud accounts sharing credentials or billing can also share failure modes. Device registration is not replication, failover or a tested backup.",
+    "RIGHTS BOUNDARY: Decentralized stewardship and portable licensing do not eliminate permission, privacy or deletion obligations; public repositories cannot serve as automatic replicas of private custody."
   ],
   "tests": [
     "PROPOSED CAPTURE CONTRACT: For each material intent or claim keep source span or private source pointer, stable item ID, interpretation, epistemic status, saved object/version, related existing construct, disposition, intended receiver, receipt state, next action and wake condition. Unknowns remain explicit.",
@@ -50,7 +59,11 @@
     "PROPOSED RECOVERY: A missed capture or failed receiver becomes an explicit eligible work item with retry budget and material wake condition; unrelated authorized work can continue. No live retry or recurring audit is claimed by this object.",
     "PROPOSED OMISSION-DRIVEN EXTRAPOLATION: At a meaningful discussion checkpoint, check missing prerequisites, failure modes, affected participants, contradictory evidence, recovery paths and downstream consequences. Rank candidate questions by likely impact, time sensitivity, uncertainty reduction and actionability; record the reasoning and confidence without pretending these are measured probabilities.",
     "PROPOSED BOUNDED FRONTIER: Keep the top few material questions with source relation, inferred missing dependency, likely consequence, next discriminating observation, owner/receiver if elected, and wake condition. Park lower-value candidates with provenance. Avoid an infinite recursive discussion that displaces the original task.",
-    "CURRENT FRONTIER CANDIDATES: (1) Which real worker owns overnight continuation and who detects its absence? (2) What exact evidence proves a successor completed a job after the originating session ended? (3) What dependency permits reliable primary-device input recovery? (4) What private custody/public GitHub binding survives host loss without leaking private state? These are questions, not completed work."
+    "CURRENT FRONTIER CANDIDATES: (1) Which real worker owns overnight continuation and who detects its absence? (2) What exact evidence proves a successor completed a job after the originating session ended? (3) What dependency permits reliable primary-device input recovery? (4) What private custody/public GitHub binding survives host loss without leaking private state? These are questions, not completed work.",
+    "PROPOSED MULTISCALE LOSS MATRIX: In isolated fixtures exercise bit corruption, missing relation, duplicate/lost message, worker loss, module loss, host loss, unavailable credentials, site loss and provider loss. Declare recoverable set, surviving information threshold, RPO/RTO, dependencies, keys and exact-versus-approximate reconstruction.",
+    "PROPOSED ADDRESSING: Bind stable semantic IDs to version/content hashes and signed or authenticated location manifests. Verify both content identity and actual availability; content addressing alone does not guarantee persistence.",
+    "PROPOSED INDEPENDENT CUSTODY: Elect authorized local, offsite and provider-independent destinations after privacy, cost, rights and receiver qualification. Prove a cold restore with the original host inaccessible; do not delete production data to simulate it.",
+    "PROPOSED TOTAL-LOSS BOUNDARY: Document what cannot be recovered after loss of every adequate copy, coded share, key or source recipe. A restart of the same programme from a generic model is not recovery of its exact historical state."
   ],
   "expected_benefit": "Make omissions and unperformed transitions visible and recoverable; reuse existing temporal/currentness contracts and reduce source-to-summary loss.",
   "risks": [
