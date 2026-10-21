@@ -1,0 +1,312 @@
+{
+  "schema": "CoCivium.CoTerms.ContinuityRepairCandidate.v0.1",
+  "status": "CANDIDATE_DEFINITIONS__NOT_CANON__HISTORICAL_ALIAS_RECONCILIATION_INCOMPLETE",
+  "date": "2026-10-21",
+  "term_count": 30,
+  "source_delta": "https://github.com/CoCivium/CoCivium/blob/42c6749a0a44ca23e68e3145a13963304bf2bc5b/ai/evolution-deltas/2026-10-21/continuity-repair-mutation-r0.json",
+  "existing_glossary": "https://github.com/CoCivium/CoCivium/blob/candidate/continuity-repair-mutation-r0-20261021/docs/coterms/README.md",
+  "policy": "Candidate terms distinguish useful relations; count is not a target. Compare historical CoLex/GIBindex aliases before adoption; merge synonyms non-destructively. Existing related terms are reused, not claimed as new inventions. No exhaustive corpus coverage claimed.",
+  "custody_mapping_proposal": "Map every elected public repository object to a private custody identity where permitted. Keep private-only objects private. Declare exact mirrors versus redacted/derived projections, source/destination versions, hashes and receiver readproof. No CoStead copy or synchronization performed by this contribution.",
+  "terms": [
+    {
+      "candidate_id": "continuity-repair-r0-01",
+      "term": "CoContinuityEnvelope+",
+      "meaning": "Recoverable purpose, evidence, authority, checkpoint, wake conditions and successor bindings for a work context.",
+      "related": [
+        "CoVirtualSession+"
+      ],
+      "does_not_establish": "Envelope existence does not prove execution.",
+      "status": "PROPOSED_DEFINITION__POSSIBLE_EXISTING_ALIAS"
+    },
+    {
+      "candidate_id": "continuity-repair-r0-02",
+      "term": "CoRepairCycle+",
+      "meaning": "Detect, diagnose, restore and verify a bounded failure.",
+      "related": [
+        "CoDeed"
+      ],
+      "does_not_establish": "Retrying alone is not repair.",
+      "status": "PROPOSED_DEFINITION__POSSIBLE_EXISTING_ALIAS"
+    },
+    {
+      "candidate_id": "continuity-repair-r0-03",
+      "term": "CoRepairExercise+",
+      "meaning": "Controlled disposable experiment that tests a repair path.",
+      "related": [
+        "CoRepairCycle+"
+      ],
+      "does_not_establish": "No permission to disrupt production.",
+      "status": "PROPOSED_DEFINITION__POSSIBLE_EXISTING_ALIAS"
+    },
+    {
+      "candidate_id": "continuity-repair-r0-04",
+      "term": "CoRelationalMaintenance+",
+      "meaning": "Check and repair typed dependency and handoff links.",
+      "related": [
+        "CoRelation"
+      ],
+      "does_not_establish": "Does not imply all relations need constant mutation.",
+      "status": "PROPOSED_DEFINITION__POSSIBLE_EXISTING_ALIAS"
+    },
+    {
+      "candidate_id": "continuity-repair-r0-05",
+      "term": "CoWakeBinding+",
+      "meaning": "Bind a material event predicate to an eligible worker or logical session.",
+      "related": [
+        "CoAllPulseField+"
+      ],
+      "does_not_establish": "A generic ping does not create authority.",
+      "status": "PROPOSED_DEFINITION__POSSIBLE_EXISTING_ALIAS"
+    },
+    {
+      "candidate_id": "continuity-repair-r0-06",
+      "term": "CoSuccessorProof+",
+      "meaning": "Exact evidence that a successor received the intended checkpoint or work object.",
+      "related": [
+        "CoReceipt"
+      ],
+      "does_not_establish": "Receipt is not semantic acceptance or completion.",
+      "status": "PROPOSED_DEFINITION__POSSIBLE_EXISTING_ALIAS"
+    },
+    {
+      "candidate_id": "continuity-repair-r0-07",
+      "term": "CoLeaseFence+",
+      "meaning": "Reject effects from an expired or superseded worker lease.",
+      "related": [
+        "CoWorkFabric"
+      ],
+      "does_not_establish": "A PID alone is not worker identity.",
+      "status": "PROPOSED_DEFINITION__POSSIBLE_EXISTING_ALIAS"
+    },
+    {
+      "candidate_id": "continuity-repair-r0-08",
+      "term": "CoDecayProfile+",
+      "meaning": "Explicit reduction of priority, active references or allocated resources over time or evidence change.",
+      "related": [
+        "CoTime+"
+      ],
+      "does_not_establish": "Decay must not silently delete required evidence.",
+      "status": "PROPOSED_DEFINITION__POSSIBLE_EXISTING_ALIAS"
+    },
+    {
+      "candidate_id": "continuity-repair-r0-09",
+      "term": "CoRevivalPath+",
+      "meaning": "Retained recipe and conditions for reconstructing an eligible faded component.",
+      "related": [
+        "CoVirtualSession+"
+      ],
+      "does_not_establish": "Revival must respect cancellation and current permission.",
+      "status": "PROPOSED_DEFINITION__POSSIBLE_EXISTING_ALIAS"
+    },
+    {
+      "candidate_id": "continuity-repair-r0-10",
+      "term": "CoDereferenceTrail+",
+      "meaning": "Provenance of removed or redirected active references.",
+      "related": [
+        "CoLineage"
+      ],
+      "does_not_establish": "Dereferencing does not guarantee byte deletion or recoverability.",
+      "status": "PROPOSED_DEFINITION__POSSIBLE_EXISTING_ALIAS"
+    },
+    {
+      "candidate_id": "continuity-repair-r0-11",
+      "term": "CoQuiescentCustody+",
+      "meaning": "Preserve an object and its wake conditions with no active worker required.",
+      "related": [
+        "CoStead"
+      ],
+      "does_not_establish": "Quiet state is not proof of forgetting or death.",
+      "status": "PROPOSED_DEFINITION__POSSIBLE_EXISTING_ALIAS"
+    },
+    {
+      "candidate_id": "continuity-repair-r0-12",
+      "term": "CoPerturbationEnvelope+",
+      "meaning": "Target, fault model, duration, seed, budget, control and abort criteria for a disturbance experiment.",
+      "related": [
+        "CoRepairExercise+"
+      ],
+      "does_not_establish": "A name does not authorize arbitrary mutation.",
+      "status": "PROPOSED_DEFINITION__POSSIBLE_EXISTING_ALIAS"
+    },
+    {
+      "candidate_id": "continuity-repair-r0-13",
+      "term": "CoSacrificialFixture+",
+      "meaning": "Disposable isolated object or worker used to test failure and recovery.",
+      "related": [
+        "CoPerturbationEnvelope+"
+      ],
+      "does_not_establish": "Must not contain irreplaceable source evidence.",
+      "status": "PROPOSED_DEFINITION__POSSIBLE_EXISTING_ALIAS"
+    },
+    {
+      "candidate_id": "continuity-repair-r0-14",
+      "term": "CoMutationGranularity+",
+      "meaning": "Declared experimental unit, such as a graph edge, message, schema field or isolated data bit.",
+      "related": [
+        "CoPerturbationEnvelope+"
+      ],
+      "does_not_establish": "Software bit granularity does not establish Planck-scale operation.",
+      "status": "PROPOSED_DEFINITION__POSSIBLE_EXISTING_ALIAS"
+    },
+    {
+      "candidate_id": "continuity-repair-r0-15",
+      "term": "CoMutationLineage+",
+      "meaning": "Versioned parent, operation, parameters, result and evidence for a candidate mutation.",
+      "related": [
+        "CoLineage"
+      ],
+      "does_not_establish": "Mutation count is not benefit.",
+      "status": "PROPOSED_DEFINITION__POSSIBLE_EXISTING_ALIAS"
+    },
+    {
+      "candidate_id": "continuity-repair-r0-16",
+      "term": "CoInvariantAnchor+",
+      "meaning": "Protected reference used to judge experimental or repaired state.",
+      "related": [
+        "CoReceipt"
+      ],
+      "does_not_establish": "Anchors may be versioned; provenance must survive.",
+      "status": "PROPOSED_DEFINITION__POSSIBLE_EXISTING_ALIAS"
+    },
+    {
+      "candidate_id": "continuity-repair-r0-17",
+      "term": "CoRecoveryYield+",
+      "meaning": "Measured useful recovery outcomes relative to cost and harmful side effects.",
+      "related": [
+        "CoRepairCycle+"
+      ],
+      "does_not_establish": "Not a universal scalar for all values.",
+      "status": "PROPOSED_DEFINITION__POSSIBLE_EXISTING_ALIAS"
+    },
+    {
+      "candidate_id": "continuity-repair-r0-18",
+      "term": "CoCheckReuse+",
+      "meaning": "Reuse verified bindings and failure classifications to reduce the cost of later checks.",
+      "related": [
+        "CoIndex"
+      ],
+      "does_not_establish": "Reuse must account for freshness and changed dependencies.",
+      "status": "PROPOSED_DEFINITION__POSSIBLE_EXISTING_ALIAS"
+    },
+    {
+      "candidate_id": "continuity-repair-r0-19",
+      "term": "CoCoverageDebt+",
+      "meaning": "Explicit uninspected components, unknown relations and untested failure paths.",
+      "related": [
+        "ExState"
+      ],
+      "does_not_establish": "A large inventory is not semantic coverage.",
+      "status": "PROPOSED_DEFINITION__POSSIBLE_EXISTING_ALIAS"
+    },
+    {
+      "candidate_id": "continuity-repair-r0-20",
+      "term": "CoDriftBudget+",
+      "meaning": "Context-specific acceptable divergence before review or recovery is triggered.",
+      "related": [
+        "CoTime+"
+      ],
+      "does_not_establish": "No automatic permission to tolerate harm.",
+      "status": "PROPOSED_DEFINITION__POSSIBLE_EXISTING_ALIAS"
+    },
+    {
+      "candidate_id": "continuity-repair-r0-21",
+      "term": "CoEvidenceFreshness+",
+      "meaning": "Validity interval and expiry conditions of a particular observation.",
+      "related": [
+        "CoTime+"
+      ],
+      "does_not_establish": "Recent provenance does not prove accuracy.",
+      "status": "PROPOSED_DEFINITION__POSSIBLE_EXISTING_ALIAS"
+    },
+    {
+      "candidate_id": "continuity-repair-r0-22",
+      "term": "CoResourceHorizon+",
+      "meaning": "Resources potentially discoverable or obtainable beyond the currently verified pool.",
+      "related": [
+        "CoAll+"
+      ],
+      "does_not_establish": "Potential availability is not an execution entitlement.",
+      "status": "PROPOSED_DEFINITION__POSSIBLE_EXISTING_ALIAS"
+    },
+    {
+      "candidate_id": "continuity-repair-r0-23",
+      "term": "CoResourceEnvelope+",
+      "meaning": "Verified compute, memory, storage, access, time and cost limits for a job.",
+      "related": [
+        "CoWorkFabric"
+      ],
+      "does_not_establish": "An extensible horizon does not prove unbounded current resources.",
+      "status": "PROPOSED_DEFINITION__POSSIBLE_EXISTING_ALIAS"
+    },
+    {
+      "candidate_id": "continuity-repair-r0-24",
+      "term": "CoLogicalMultiplicity+",
+      "meaning": "Many addressable work contexts sharing fewer active embodiments.",
+      "related": [
+        "CoVirtualSession+"
+      ],
+      "does_not_establish": "Logical count is not concurrent process count.",
+      "status": "PROPOSED_DEFINITION__POSSIBLE_EXISTING_ALIAS"
+    },
+    {
+      "candidate_id": "continuity-repair-r0-25",
+      "term": "CoCustodyBinding+",
+      "meaning": "Exact relation among object identity, private custody, repository, ref, path, content identity and observation time.",
+      "related": [
+        "CoStead"
+      ],
+      "does_not_establish": "A mapping is not proof of a copy, synchronization or receiver pickup.",
+      "status": "PROPOSED_DEFINITION__POSSIBLE_EXISTING_ALIAS"
+    },
+    {
+      "candidate_id": "continuity-repair-r0-26",
+      "term": "CoProjectionLoss+",
+      "meaning": "Declared redaction, omission or transformation between source and destination projections.",
+      "related": [
+        "CoGateway"
+      ],
+      "does_not_establish": "Different projections need not be byte-identical.",
+      "status": "PROPOSED_DEFINITION__POSSIBLE_EXISTING_ALIAS"
+    },
+    {
+      "candidate_id": "continuity-repair-r0-27",
+      "term": "CoMirrorReadproof+",
+      "meaning": "Independent readback comparing the intended source and destination versions.",
+      "related": [
+        "CoReceipt"
+      ],
+      "does_not_establish": "One successful read does not establish continuous synchronization.",
+      "status": "PROPOSED_DEFINITION__POSSIBLE_EXISTING_ALIAS"
+    },
+    {
+      "candidate_id": "continuity-repair-r0-28",
+      "term": "CoPhysicsHypothesis+",
+      "meaning": "A physical claim requiring scale, units, mechanism, observable, counterexample and evidence.",
+      "related": [
+        "CoTheoryAll+"
+      ],
+      "does_not_establish": "Planck, quantum or energy wording is not validation.",
+      "status": "PROPOSED_DEFINITION__POSSIBLE_EXISTING_ALIAS"
+    },
+    {
+      "candidate_id": "continuity-repair-r0-29",
+      "term": "CoMythOpsProjection+",
+      "meaning": "An explicitly metaphorical or mythic interpretation linked to operational or research objects.",
+      "related": [
+        "CoMythOps+"
+      ],
+      "does_not_establish": "Metaphorical value does not establish a nonphysical execution substrate.",
+      "status": "PROPOSED_DEFINITION__POSSIBLE_EXISTING_ALIAS"
+    },
+    {
+      "candidate_id": "continuity-repair-r0-30",
+      "term": "CoTermAdmission+",
+      "meaning": "A proposed semantic distinction with definition, relations, provenance, exclusions and a demonstrated naming need.",
+      "related": [
+        "CoLex"
+      ],
+      "does_not_establish": "A coined label is not canon or a newly implemented capability.",
+      "status": "PROPOSED_DEFINITION__POSSIBLE_EXISTING_ALIAS"
+    }
+  ]
+}
