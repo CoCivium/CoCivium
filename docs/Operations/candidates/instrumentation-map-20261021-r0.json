@@ -405,5 +405,63 @@
     "UNKNOWN_NE_HEALTHY",
     "SIMULATED_DATA_MUST_BE_LABELED",
     "NO_PRIVATE_TELEMETRY_PUBLICATION"
-  ]
+  ],
+  "cross_domain_extension": {
+    "state": "PROPOSED_RELATIONAL_GRAMMAR__NO_GLOBAL_EXECUTION",
+    "domains": [
+      "CoMap/architecture",
+      "GRAIL/federation",
+      "sessions/clones/agentics",
+      "hypotheses/review panels",
+      "software/CoSoftware",
+      "mutation/drift/lineage",
+      "CoAura/CoOrb interfaces",
+      "resource/energy budgets",
+      "multidimensional/fractal/holographic models",
+      "material/physical claims",
+      "non-material/metaphysical hypotheses",
+      "MythOps/mythological interpretations"
+    ],
+    "typing_rule": "Every relation retains its domain, source, evidence class, scale, units if meaningful, assumptions, permitted transformations, projection loss, uncertainty and authority scope. CoTerms whose historic bindings remain unresolved retain that uncertainty.",
+    "relation_types": [
+      "depends_on",
+      "observes",
+      "measures",
+      "models",
+      "analogous_to",
+      "hypothesizes",
+      "predicts",
+      "contradicts",
+      "derived_from",
+      "projects_to",
+      "tests",
+      "receives",
+      "acknowledges",
+      "supersedes"
+    ],
+    "golden_thread_proposal": "An inspectable provenance-and-dependency path from source question through interpretation, metric, experiment, outcome and revision; metaphorical label, not evidence of an unknown causal force.",
+    "candidate_space": "Generate addressable combinations lazily; no assertion that every combination is defined, meaningful, independent, instrumentable or simultaneously executed.",
+    "activation_rules": [
+      "Check semantic applicability and dimensions",
+      "Deduplicate equivalent candidates",
+      "Compare expected information or user benefit with cost",
+      "Elect qualified authorized workers and independent review where useful",
+      "Record omitted dimensions and failed/inconclusive outcomes",
+      "Preserve dissent and avoid correlated model outputs being counted as independent confirmations"
+    ],
+    "evaluation": "Compare cross-domain routing against a narrower baseline: fewer missed dependencies, less duplicate work, better forecast calibration, faster recovery, useful completed outcomes and resource cost. More connections alone do not prove coherence or synergy.",
+    "user_terms_retained": [
+      "quad-pi",
+      "multi-pi",
+      "omni-pi",
+      "CoThirial/CoTherial spoken variants",
+      "CoOrb capitalization clarification unresolved"
+    ],
+    "nonclaims": [
+      "MYTHIC_ANALOGY_NE_PHYSICAL_MECHANISM",
+      "CONNECTIVITY_NE_CAUSALITY",
+      "COMBINATORIAL_COUNT_NE_INDEPENDENT_EVIDENCE",
+      "NO_TRILLION_WORKER_OR_ALL_DOMAIN_COVERAGE_CLAIM"
+    ]
+  }
 }
