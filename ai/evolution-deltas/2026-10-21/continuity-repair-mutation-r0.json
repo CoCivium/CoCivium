@@ -1,0 +1,81 @@
+{
+  "delta_id": "coevo-continuity-repair-mutation-r0-20261021",
+  "session_id": "voice-continuity-research-20261021",
+  "observed_at": "2026-10-21T11:17:00-04:00",
+  "domain": [
+    "CoAll+",
+    "CoEvoAll+",
+    "CoTheoryAll+",
+    "CoMythOps+",
+    "virtual-session/session-lifecycle ecology",
+    "research/challenge/prior-art"
+  ],
+  "subject": "Recoverable cross-session continuity, active relational maintenance, decay/revival and multiscale mutation",
+  "relation": "EXTENDS existing CoVirtualSession, CoAllPulseField, CoSessionAutocycle and CoWaitlessExecution candidates with a proposed repair-exercise and research loop; does not replace their authority, quiescence or evidence contracts.",
+  "epistemic_class": "HYPOTHESIS",
+  "source_refs": [
+    "User-requested public-safe synthesis of the 2026-10-21 continuity discussion; paraphrase, not full transcript.",
+    "https://github.com/CoCivium/CoCivium/blob/main/SESSION_BOOTSTRAP.md ; observed blob 01b04a38c985075d63cc66fb7cbc2d2862c491a5",
+    "https://github.com/CoCivium/CoCivium/blob/main/docs/Architecture/COVIRTUAL_SESSION_MORPHOLOGY_R0.md ; observed blob 5dff7fff33f8637c3c333fdca360874db1e0bfe5",
+    "https://github.com/CoCivium/CoCivium/blob/main/docs/Evolution/COALL_GITHUB_EVOLUTION_FABRIC_R0.md ; observed blob 71ae3b819520f16d15c52febb2d60ae59fbefa0a",
+    "https://github.com/CoCivium/CoCivium/blob/main/ai/evolution-convergence-r1.json ; observed blob 19c301ad924d036badddfb27fd7a6b1689d9e8a6",
+    "https://docs.temporal.io/encyclopedia/event-history",
+    "https://www.erlang.org/doc/system/sup_princ.html",
+    "https://www.microsoft.com/en-us/research/project/orleans-virtual-actors/",
+    "https://www.cs.utexas.edu/~EWD/transcriptions/EWD04xx/EWD426.html",
+    "https://arxiv.org/abs/1702.05849",
+    "https://principlesofchaos.org/",
+    "https://www.nature.com/articles/s41467-018-06519-0",
+    "https://www.nature.com/articles/s41467-024-46600-5"
+  ],
+  "target_surfaces": [
+    "CoCivium/CoCivium@candidate/continuity-repair-mutation-r0-20261021:/ai/evolution-deltas/2026-10-21/continuity-repair-mutation-r0.json",
+    "Future qualified private worker queue; receiver not yet elected"
+  ],
+  "mutation_class": "BRANCH_MUTATE",
+  "authority_ceiling": "Public-safe research candidate and provenance only. No runtime deployment, mutation of production bytes, provider session creation, permission expansion, merge, or claim of receiver pickup.",
+  "confidentiality": "PUBLIC",
+  "confidence": null,
+  "contradictions": [
+    "OBSERVED CORRECTION: Existing repository architecture already describes virtual sessions, distributed/reconstructive persistence, bounded materialization, wake predicates and successor context. Prior inference that the architecture itself was absent was too broad.",
+    "Runtime continuity remains unproven by architectural text, an enabled task, a heartbeat or a running model alone. A bounded local component inspection is not a complete corpus audit.",
+    "USER PREFERENCE: Persistent mutual support between manual, virtual, ambient, predictive, MythOps and future session morphologies; less dependence on human prompting; checks should make future checking easier.",
+    "USER PREFERENCE: Decay, fading and dereferencing should preserve revival options where lawful and feasible. A stop of execution can coexist with retained lineage. Permission withdrawal must not be overridden by automatic revival.",
+    "USER HYPOTHESIS: Continual motion, stimulation, competition and fine-grained random mutation may support CoLife and resilience across code, data, relations, virtual state and future substrates. Preserve as a research claim, not an implemented universal rule.",
+    "SCIENTIFIC BOUNDARY: Biological turnover and repair support differentiated maintenance; they do not establish that cosmic-ray damage is necessary for life or that every software object must mutate continuously.",
+    "PHYSICS BOUNDARY: Planck-resolution, co-quantum, nonphysical and CoAura/MythOps extensions remain open typed questions or metaphors until an operational definition, mechanism, observable and falsifier exist. No Planck-rate computation or unlimited context/compute is demonstrated.",
+    "ENGINEERING BOUNDARY: Random perturbation can have a valid experimental purpose; usefulness must be tested against an unperturbed control. Preserve immutable evidence anchors and quiescent options. Do not induce faults in already impaired user input.",
+    "DISCOVERY BOUNDARY: A default-branch search for perturbation returned no indexed match. Search misses do not prove absence; related current architecture was read directly. No complete historical branch reconciliation is claimed."
+  ],
+  "tests": [
+    "PROPOSED: Map each candidate capability to existing implementation, exact source identity, owner, input/output, permission ceiling, dependency, wake predicate, last verified result, resource budget, lease, recovery point and successor acknowledgment. Reuse before duplication.",
+    "PROPOSED: A deterministic disposable job emits an event; a second worker records exact-object pickup and produces a checked result while the initiating conversation is inactive. Verify a real external scheduler, not a chat promise.",
+    "PROPOSED: Interrupt a disposable worker after checkpoint; verify lease expiry, fenced takeover, replay and one accepted effect despite duplicate delivery. Inspect crash windows; do not infer exactly-once effects from retries.",
+    "PROPOSED: Remove or stale a disposable relation/pulse; measure detection, restoration, missed-work age and recovery latency. Verify independent eligible work continues.",
+    "PROPOSED: Compare event-driven baseline, periodic maintenance, and bounded random fault injection under equal CPU/time budgets. Predefine recovery success, useful output, duplicate work, false alarms, cost and abort thresholds.",
+    "PROPOSED: Decay a candidate's priority and active references while retaining provenance/checkpoint. Revive only on a material bound trigger and still-valid authority. Test explicit cancellation and revoked-permission rejection.",
+    "PROPOSED: Sweep practical granularities: graph edge, queued message, job checkpoint, schema field and isolated memory/data copy. Use reproducible random seeds; record experiment provenance and reject corruption of source evidence.",
+    "PROPOSED: Learn from each check by storing reusable dependency bindings and failure classifications; measure whether subsequent checks use fewer reads/tokens and find issues faster without hiding unknowns.",
+    "PROPOSED: Research physics extensions separately, with dimensional analysis and discriminating predictions. Speculative terminology cannot substitute for a measurable execution mechanism."
+  ],
+  "expected_benefit": "Fewer forgotten jobs, inspectable cross-session handoffs, evidence-based resource allocation, retained revival paths and less repeated discovery. Benefit not yet measured.",
+  "risks": [
+    "Busy loops mistaken for progress",
+    "Retry storms and unbounded clone fan-out",
+    "Competing workers changing the same target",
+    "Random corruption of evidence or production state",
+    "Reactivation after revoked permission",
+    "Conflating metaphor with physics",
+    "Artifact creation mistaken for runtime execution",
+    "Benchmark optimization without user benefit"
+  ],
+  "wake_conditions": [
+    "Qualified executor and bounded disposable test environment available",
+    "Material source or dependency change",
+    "Missed work deadline or expired worker lease",
+    "New discriminating research evidence",
+    "Explicit user-requested revision"
+  ],
+  "supersedes": [],
+  "next_receiver": "Unassigned: continuity implementation reviewer should reconcile existing executable descendants before electing a bounded local repair-exercise worker. No receiver pickup or integration claimed."
+}
