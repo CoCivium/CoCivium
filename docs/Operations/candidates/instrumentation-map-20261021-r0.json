@@ -1,0 +1,409 @@
+{
+  "schema": "CoCivium.InstrumentationMap.R0-candidate",
+  "state": "PROPOSED_METRIC_COVERAGE__NOT_COLLECTOR_DEPLOYMENT",
+  "created_at": "2026-10-21T16:00:07.964Z",
+  "purpose": "Broaden operational self-observation and evaluation across relational dependencies while keeping human-facing presentation clear, attractive, accessible and proportional to usefulness.",
+  "source_refs": [
+    "https://github.com/CoCivium/CoCivium/blob/495f41823dd9a89e714f43db73b5880d2373ca14/ai/participant-edge-evolution-lanes-r0.json",
+    "https://github.com/CoCivium/CoCivium/blob/495f41823dd9a89e714f43db73b5880d2373ca14/ai/evolution-deltas/2026-09-24/coevo-pr43-close-safe-metrics-r1.json",
+    "https://github.com/CoCivium/CoCivium/blob/eb474826411c8379be1ba2561b4a9efc9be09a53/scripts/CoSessionEvidenceAuditR0.py"
+  ],
+  "metrics": [
+    {
+      "metric_id": "input_response_latency",
+      "group": "device_health",
+      "state": "PROPOSED",
+      "value": null,
+      "unit": null,
+      "collector": null,
+      "baseline": null,
+      "target": null,
+      "definition_gate": "Bind unit, denominator, measurement method, sampling/aggregation, evidence source and decision served before collection."
+    },
+    {
+      "metric_id": "application_hang_duration",
+      "group": "device_health",
+      "state": "PROPOSED",
+      "value": null,
+      "unit": null,
+      "collector": null,
+      "baseline": null,
+      "target": null,
+      "definition_gate": "Bind unit, denominator, measurement method, sampling/aggregation, evidence source and decision served before collection."
+    },
+    {
+      "metric_id": "process_memory_bytes",
+      "group": "device_health",
+      "state": "PROPOSED",
+      "value": null,
+      "unit": null,
+      "collector": null,
+      "baseline": null,
+      "target": null,
+      "definition_gate": "Bind unit, denominator, measurement method, sampling/aggregation, evidence source and decision served before collection."
+    },
+    {
+      "metric_id": "connection_availability",
+      "group": "device_health",
+      "state": "PROPOSED",
+      "value": null,
+      "unit": null,
+      "collector": null,
+      "baseline": null,
+      "target": null,
+      "definition_gate": "Bind unit, denominator, measurement method, sampling/aggregation, evidence source and decision served before collection."
+    },
+    {
+      "metric_id": "authentication_interruption_count",
+      "group": "device_health",
+      "state": "PROPOSED",
+      "value": null,
+      "unit": null,
+      "collector": null,
+      "baseline": null,
+      "target": null,
+      "definition_gate": "Bind unit, denominator, measurement method, sampling/aggregation, evidence source and decision served before collection."
+    },
+    {
+      "metric_id": "queue_wait_duration",
+      "group": "work_flow",
+      "state": "PROPOSED",
+      "value": null,
+      "unit": null,
+      "collector": null,
+      "baseline": null,
+      "target": null,
+      "definition_gate": "Bind unit, denominator, measurement method, sampling/aggregation, evidence source and decision served before collection."
+    },
+    {
+      "metric_id": "completed_useful_jobs",
+      "group": "work_flow",
+      "state": "PROPOSED",
+      "value": null,
+      "unit": null,
+      "collector": null,
+      "baseline": null,
+      "target": null,
+      "definition_gate": "Bind unit, denominator, measurement method, sampling/aggregation, evidence source and decision served before collection."
+    },
+    {
+      "metric_id": "duplicate_work_count",
+      "group": "work_flow",
+      "state": "PROPOSED",
+      "value": null,
+      "unit": null,
+      "collector": null,
+      "baseline": null,
+      "target": null,
+      "definition_gate": "Bind unit, denominator, measurement method, sampling/aggregation, evidence source and decision served before collection."
+    },
+    {
+      "metric_id": "unacknowledged_handoff_age",
+      "group": "work_flow",
+      "state": "PROPOSED",
+      "value": null,
+      "unit": null,
+      "collector": null,
+      "baseline": null,
+      "target": null,
+      "definition_gate": "Bind unit, denominator, measurement method, sampling/aggregation, evidence source and decision served before collection."
+    },
+    {
+      "metric_id": "parked_item_age",
+      "group": "work_flow",
+      "state": "PROPOSED",
+      "value": null,
+      "unit": null,
+      "collector": null,
+      "baseline": null,
+      "target": null,
+      "definition_gate": "Bind unit, denominator, measurement method, sampling/aggregation, evidence source and decision served before collection."
+    },
+    {
+      "metric_id": "checkpoint_age",
+      "group": "continuity",
+      "state": "PROPOSED",
+      "value": null,
+      "unit": null,
+      "collector": null,
+      "baseline": null,
+      "target": null,
+      "definition_gate": "Bind unit, denominator, measurement method, sampling/aggregation, evidence source and decision served before collection."
+    },
+    {
+      "metric_id": "restart_recovery_duration",
+      "group": "continuity",
+      "state": "PROPOSED",
+      "value": null,
+      "unit": null,
+      "collector": null,
+      "baseline": null,
+      "target": null,
+      "definition_gate": "Bind unit, denominator, measurement method, sampling/aggregation, evidence source and decision served before collection."
+    },
+    {
+      "metric_id": "restore_test_success",
+      "group": "continuity",
+      "state": "PROPOSED",
+      "value": null,
+      "unit": null,
+      "collector": null,
+      "baseline": null,
+      "target": null,
+      "definition_gate": "Bind unit, denominator, measurement method, sampling/aggregation, evidence source and decision served before collection."
+    },
+    {
+      "metric_id": "unowned_obligation_count",
+      "group": "continuity",
+      "state": "PROPOSED",
+      "value": null,
+      "unit": null,
+      "collector": null,
+      "baseline": null,
+      "target": null,
+      "definition_gate": "Bind unit, denominator, measurement method, sampling/aggregation, evidence source and decision served before collection."
+    },
+    {
+      "metric_id": "missed_wake_count",
+      "group": "continuity",
+      "state": "PROPOSED",
+      "value": null,
+      "unit": null,
+      "collector": null,
+      "baseline": null,
+      "target": null,
+      "definition_gate": "Bind unit, denominator, measurement method, sampling/aggregation, evidence source and decision served before collection."
+    },
+    {
+      "metric_id": "claim_evidence_disagreement",
+      "group": "evidence_quality",
+      "state": "PROPOSED",
+      "value": null,
+      "unit": null,
+      "collector": null,
+      "baseline": null,
+      "target": null,
+      "definition_gate": "Bind unit, denominator, measurement method, sampling/aggregation, evidence source and decision served before collection."
+    },
+    {
+      "metric_id": "stale_source_count",
+      "group": "evidence_quality",
+      "state": "PROPOSED",
+      "value": null,
+      "unit": null,
+      "collector": null,
+      "baseline": null,
+      "target": null,
+      "definition_gate": "Bind unit, denominator, measurement method, sampling/aggregation, evidence source and decision served before collection."
+    },
+    {
+      "metric_id": "unknown_check_count",
+      "group": "evidence_quality",
+      "state": "PROPOSED",
+      "value": null,
+      "unit": null,
+      "collector": null,
+      "baseline": null,
+      "target": null,
+      "definition_gate": "Bind unit, denominator, measurement method, sampling/aggregation, evidence source and decision served before collection."
+    },
+    {
+      "metric_id": "forecast_calibration",
+      "group": "evidence_quality",
+      "state": "PROPOSED",
+      "value": null,
+      "unit": null,
+      "collector": null,
+      "baseline": null,
+      "target": null,
+      "definition_gate": "Bind unit, denominator, measurement method, sampling/aggregation, evidence source and decision served before collection."
+    },
+    {
+      "metric_id": "unresolved_contradiction_age",
+      "group": "evidence_quality",
+      "state": "PROPOSED",
+      "value": null,
+      "unit": null,
+      "collector": null,
+      "baseline": null,
+      "target": null,
+      "definition_gate": "Bind unit, denominator, measurement method, sampling/aggregation, evidence source and decision served before collection."
+    },
+    {
+      "metric_id": "cpu_time_per_useful_result",
+      "group": "resources",
+      "state": "PROPOSED",
+      "value": null,
+      "unit": null,
+      "collector": null,
+      "baseline": null,
+      "target": null,
+      "definition_gate": "Bind unit, denominator, measurement method, sampling/aggregation, evidence source and decision served before collection."
+    },
+    {
+      "metric_id": "memory_per_worker",
+      "group": "resources",
+      "state": "PROPOSED",
+      "value": null,
+      "unit": null,
+      "collector": null,
+      "baseline": null,
+      "target": null,
+      "definition_gate": "Bind unit, denominator, measurement method, sampling/aggregation, evidence source and decision served before collection."
+    },
+    {
+      "metric_id": "cost_per_verified_result",
+      "group": "resources",
+      "state": "PROPOSED",
+      "value": null,
+      "unit": null,
+      "collector": null,
+      "baseline": null,
+      "target": null,
+      "definition_gate": "Bind unit, denominator, measurement method, sampling/aggregation, evidence source and decision served before collection."
+    },
+    {
+      "metric_id": "receiver_capacity_pressure",
+      "group": "resources",
+      "state": "PROPOSED",
+      "value": null,
+      "unit": null,
+      "collector": null,
+      "baseline": null,
+      "target": null,
+      "definition_gate": "Bind unit, denominator, measurement method, sampling/aggregation, evidence source and decision served before collection."
+    },
+    {
+      "metric_id": "parallelism_marginal_yield",
+      "group": "resources",
+      "state": "PROPOSED",
+      "value": null,
+      "unit": null,
+      "collector": null,
+      "baseline": null,
+      "target": null,
+      "definition_gate": "Bind unit, denominator, measurement method, sampling/aggregation, evidence source and decision served before collection."
+    },
+    {
+      "metric_id": "task_completion_success",
+      "group": "human_experience",
+      "state": "PROPOSED",
+      "value": null,
+      "unit": null,
+      "collector": null,
+      "baseline": null,
+      "target": null,
+      "definition_gate": "Bind unit, denominator, measurement method, sampling/aggregation, evidence source and decision served before collection."
+    },
+    {
+      "metric_id": "interaction_latency",
+      "group": "human_experience",
+      "state": "PROPOSED",
+      "value": null,
+      "unit": null,
+      "collector": null,
+      "baseline": null,
+      "target": null,
+      "definition_gate": "Bind unit, denominator, measurement method, sampling/aggregation, evidence source and decision served before collection."
+    },
+    {
+      "metric_id": "interruption_count",
+      "group": "human_experience",
+      "state": "PROPOSED",
+      "value": null,
+      "unit": null,
+      "collector": null,
+      "baseline": null,
+      "target": null,
+      "definition_gate": "Bind unit, denominator, measurement method, sampling/aggregation, evidence source and decision served before collection."
+    },
+    {
+      "metric_id": "accessibility_task_success",
+      "group": "human_experience",
+      "state": "PROPOSED",
+      "value": null,
+      "unit": null,
+      "collector": null,
+      "baseline": null,
+      "target": null,
+      "definition_gate": "Bind unit, denominator, measurement method, sampling/aggregation, evidence source and decision served before collection."
+    },
+    {
+      "metric_id": "user_reported_usefulness",
+      "group": "human_experience",
+      "state": "PROPOSED",
+      "value": null,
+      "unit": null,
+      "collector": null,
+      "baseline": null,
+      "target": null,
+      "definition_gate": "Bind unit, denominator, measurement method, sampling/aggregation, evidence source and decision served before collection."
+    }
+  ],
+  "coverage_dimensions": [
+    "subject_identity",
+    "relation_identity",
+    "source_identity",
+    "observed_at",
+    "event_time",
+    "valid_until",
+    "unit",
+    "denominator",
+    "baseline",
+    "target",
+    "uncertainty",
+    "missingness",
+    "permissions",
+    "sampling_budget",
+    "receiver",
+    "decision_rule",
+    "intervention",
+    "outcome",
+    "rollback_condition"
+  ],
+  "feedback_contract": [
+    "Observe with provenance",
+    "Compare against a relevant baseline or expectation",
+    "Identify affected dependency and likely bottleneck",
+    "Elect an authorized intervention",
+    "Check outcome and side effects",
+    "Retain failed and inconclusive outcomes",
+    "Revise the intervention or metric when evidence warrants"
+  ],
+  "presentation_contract": {
+    "CoSpeedo": "Lead with the user's goal, current capability, material degradation, freshness and next action. Drill down to relational evidence. No universal health score.",
+    "CoOomph": "Use measured useful yield and receiver capacity to pace work; do not equate worker count or animation speed with benefit.",
+    "visual_design": "Quiet hierarchy, readable contrast, stable layout, meaningful color plus text, optional motion, reduced-motion and screen-reader equivalents. No decorative telemetry presented as real.",
+    "named_bindings": {
+      "CoMac": "USER_SPOKEN_TERM__PRIOR_MEANING_UNRESOLVED",
+      "CoM": "USER_SPOKEN_TERM__PRIOR_MEANING_UNRESOLVED",
+      "CoUmphy": "USER_VARIANT__COMPARE_WITH_EXISTING_COOOMPH_BEFORE_ALIASING"
+    }
+  },
+  "observations": [
+    {
+      "subject": "X2 Terminal intervention",
+      "before": "Windows reported an unresponsive Terminal process and hung windows.",
+      "intervention": "User-authorized Stop-Process request issued.",
+      "after": "User reported improved responsiveness; later clarified external PERIX keyboard still routed to X1.",
+      "verification": "Follow-up remote command timed out; do not claim independently verified restart or complete input recovery.",
+      "causal_status": "TEMPORAL_ASSOCIATION__NO_CONTROLLED_CAUSAL_PROOF"
+    },
+    {
+      "subject": "Session evidence audit canary",
+      "observed_at": "2026-10-21T15:36:18.125601+00:00",
+      "result": "12 fixture cases passed on X2; live snapshot had 1 reported-current evidence category and 5 unknown categories.",
+      "scope": "Supplied evidence coverage only; no proof capabilities are absent. One-shot execution, no recurring audit."
+    }
+  ],
+  "nonclaims": [
+    "NO_NEW_COLLECTORS_STARTED",
+    "NO_RECURRING_MONITOR_INSTALLED",
+    "NO_HALO_OR_COSPEEDO_DEPLOYMENT",
+    "OPERATIONAL_SELF_OBSERVATION_NE_SENTIENCE_PROOF",
+    "METRIC_COUNT_NE_COVERAGE_OR_USEFULNESS",
+    "UNKNOWN_NE_HEALTHY",
+    "SIMULATED_DATA_MUST_BE_LABELED",
+    "NO_PRIVATE_TELEMETRY_PUBLICATION"
+  ]
+}
