@@ -1,0 +1,63 @@
+{
+  "schema": "CoAll.ResearchEvidence.v0.1-candidate",
+  "record_id": "fixture:research-recovery-unresolved",
+  "observed_at": "2026-09-25T13:40:00Z",
+  "domain": [
+    "research-recovery"
+  ],
+  "epistemic_class": "HYPOTHESIS",
+  "claim": "Synthetic recovery fixture records an unresolved lookup; it does not establish absence or a live agent outcome.",
+  "source_refs": [
+    "fixture:checkpoint"
+  ],
+  "tests": [
+    {
+      "test_id": "receiver-adoption",
+      "state": "NOT_RUN",
+      "result": "Synthetic contract example only."
+    }
+  ],
+  "confidence": 0,
+  "authority_ceiling": "CANDIDATE_BRANCH_ONLY",
+  "confidentiality": "PUBLIC",
+  "next_gate": "Bind a real authorized receiver and independently inspect its readback.",
+  "nonclaims": [
+    "HYPOTHESIS_NE_FACT",
+    "SYNTHETIC_FIXTURE_NE_RUNTIME_ADOPTION",
+    "DECLARED_CONSISTENCY_NE_SOURCE_TRUTH"
+  ],
+  "research_recovery": {
+    "sources_read": [
+      {
+        "ref": "fixture:checkpoint",
+        "version": "fixture-v1",
+        "observed_at": "2026-10-22T00:00:00Z"
+      }
+    ],
+    "finding": "UNRESOLVED",
+    "basis": "SEARCH_ONLY",
+    "scope": "Synthetic named-topic lookup; not a global inventory",
+    "resource_options": [
+      {
+        "id": "REUSE_EXISTING",
+        "inspection": "INSPECTED",
+        "disposition": "SELECTED",
+        "reason": "Reuse the read checkpoint before creating another index.",
+        "cost_or_unknown": "Synthetic fixture; real cost UNKNOWN"
+      }
+    ],
+    "continuation": {
+      "state": "WRITEBACK_UNAVAILABLE",
+      "reason": "Fixture does not contact a real receiver.",
+      "next_deed": "Read the authoritative named source when accessible.",
+      "wake_condition": "Authorized source route becomes reachable."
+    }
+  },
+  "extraordinary_gate": {
+    "disposition": "CANDIDATE",
+    "domain": "synthetic continuity fixture",
+    "missing_verification": [
+      "Independent receiver adoption and measured drift reduction."
+    ]
+  }
+}
