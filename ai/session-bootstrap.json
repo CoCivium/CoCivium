@@ -173,7 +173,9 @@
       "exact_sources_and_versions_read",
       "alternatives_or_contradictions",
       "unresolved_access_and_currentness",
-      "next_bounded_deed"
+      "next_bounded_deed",
+      "resource_options_inspected_and_selected_with_reasons",
+      "durable_result_and_successor_checkpoint_pointer"
     ],
     "fallback": [
       "READ_KNOWN_PATHS_AT_BOUND_HEAD",
@@ -221,6 +223,36 @@
         "RECEIPTS"
       ],
       "missing_verification": "RETAIN_CANDIDATE_AND_NAME_MISSING_CHECK"
+    },
+    "resource_selection": {
+      "criteria": [
+        "ACCESS",
+        "CAPABILITY",
+        "SOURCE_COVERAGE",
+        "PRIVACY",
+        "LATENCY",
+        "COST_OR_UNKNOWN",
+        "FAILURE_DOMAIN_INDEPENDENCE",
+        "EXPECTED_INFORMATION_VALUE"
+      ],
+      "include": "REUSE_OR_NO_NEW_WORKER_OPTION",
+      "coverage": "RELEVANT_BOUNDED_OPTIONS__NO_GLOBAL_RESOURCE_CENSUS_CLAIM",
+      "separate": "INSPECTED_VS_LISTED_VS_UNAVAILABLE",
+      "revisit": "NEW_EVIDENCE_CHANGED_CONSTRAINT_OR_BOUND_MATERIAL_WAKE"
+    },
+    "retention": {
+      "route": "evolution.session_writeback",
+      "retain": [
+        "SOURCE_IDENTITIES_AND_DATES",
+        "FINDINGS_AND_COUNTEREVIDENCE",
+        "CHOSEN_AND_DEFERRED_OPTIONS_WITH_REASONS",
+        "COMPLETED_WORK",
+        "UNRESOLVED_QUESTIONS",
+        "NEXT_DEED",
+        "MATERIAL_WAKE_OR_RECHECK_CONDITION"
+      ],
+      "successor": "EXACT_RESULT_POINTER_AND_LAST_READ_VERSION",
+      "failure": "REPORT_WRITEBACK_OR_PICKUP_UNAVAILABLE__DO_NOT_CLAIM_SHARED_RETENTION"
     }
   }
 }
