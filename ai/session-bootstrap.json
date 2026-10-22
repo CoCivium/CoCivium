@@ -158,5 +158,69 @@
     "machine_twin": "ai/onramp/cocivia-first-use-r0.json",
     "rule": "START_WITH_ONE_REAL_THING__RETURN_ONE_CONCRETE_USEFUL_RESULT_BEFORE_DEEP_ARCHITECTURE",
     "installer_state": "NO_VERIFIED_PUBLIC_COCIVIUM_INSTALLER_LINKED"
+  },
+  "research_recovery": {
+    "state": "PROTOCOL_CANDIDATE__RECEIVER_ADOPTION_UNPROVEN",
+    "docs": "SESSION_BOOTSTRAP.md#research-recovery-before-absence-claims-or-rebuilds",
+    "trigger": [
+      "MATERIAL_ABSENCE_CLAIM",
+      "REPLAY_OR_REPLACEMENT_OF_PRIOR_WORK",
+      "CONTRADICTORY_CURRENTNESS",
+      "FAILED_SOURCE_DISCOVERY"
+    ],
+    "readback": [
+      "decision",
+      "exact_sources_and_versions_read",
+      "alternatives_or_contradictions",
+      "unresolved_access_and_currentness",
+      "next_bounded_deed"
+    ],
+    "fallback": [
+      "READ_KNOWN_PATHS_AT_BOUND_HEAD",
+      "FOLLOW_SUPPORTED_ALIASES_LINEAGE_AND_SUCCESSORS",
+      "SEARCH_FOR_DISCOVERY_THEN_READ_SOURCE",
+      "CHECK_LATER_RECEIPTS_BEFORE_REPLAY"
+    ],
+    "runtime_distinctions": [
+      "OBSERVER_ROUTE",
+      "PROCESS_IDENTITY",
+      "HEARTBEAT_FRESHNESS",
+      "TASK_PROGRESS",
+      "RECEIVER_PICKUP"
+    ],
+    "stop_rule": "DECISION_SUPPORTED_AND_MATERIAL_CONTRADICTIONS_EXPOSED_OR_REMAINING_AUTHORIZED_SOURCES_INACCESSIBLE_OR_MARGINAL_SEARCH_UNLIKELY_TO_CHANGE_DECISION",
+    "absence_rule": "ONLY_SCOPED_TO_AUTHORITATIVE_BOUNDED_INVENTORY_COVERAGE_AND_TIME",
+    "reuse": [
+      "research_evidence",
+      "evolution.session_writeback",
+      "ai/session-subscription-profiles.json"
+    ],
+    "adoption_proof": "INDEPENDENT_RECEIVER_READS_BOUND_CHECKPOINT_AND_RESUMES_BOUNDED_TASK_WITHOUT_HUMAN_RELAY_OR_DUPLICATE_EXECUTION",
+    "nonclaims": [
+      "NO_GLOBAL_ABSENCE_FROM_SEARCH_MISS",
+      "NO_AGENT_STOP_FROM_OBSERVER_FAILURE",
+      "NO_AUTOMATIC_SESSION_PICKUP",
+      "NO_NEW_WORKER_OR_REGISTRY"
+    ],
+    "extraordinary_claim_gate": {
+      "sources": [
+        "PRIMARY_OBSERVATIONS",
+        "INDEPENDENT_CORROBORATION",
+        "PRIOR_ART_REVIEW"
+      ],
+      "counterevidence": [
+        "ADVERSARIAL_REVIEW",
+        "REPLICATION",
+        "PROSPECTIVE_FALSIFIERS"
+      ],
+      "closure": "DO_NOT_PROMOTE_WITHOUT_DOMAIN_SPECIFIC_VERIFICATION",
+      "preserve": [
+        "SOURCE_IDENTITY",
+        "DATES",
+        "UNCERTAINTY",
+        "RECEIPTS"
+      ],
+      "missing_verification": "RETAIN_CANDIDATE_AND_NAME_MISSING_CHECK"
+    }
   }
 }
