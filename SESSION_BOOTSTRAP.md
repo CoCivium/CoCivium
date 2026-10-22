@@ -320,6 +320,58 @@ The contract keeps source evidence, inference, hypothesis, test, falsifier and c
 `HYPOTHESIS_NE_ESTABLISHED_FACT`  
 `CI_PASS_NE_RESEARCH_TRUTH`
 
+### Research coverage, resource choice, and handoff
+
+For a material decision, first seek the relevant prior evidence and decision
+record. If they are unavailable, record that gap and proceed with bounded research
+that does not depend on the missing evidence. Bind the question, claim, decision criteria, source
+identity, authorship and exact versions. Distinguish publication or event dates
+from retrieval and observation dates. Research depth should follow the consequences of
+error and the unresolved uncertainty; a fixed source count or a larger context
+window does not establish sufficient coverage.
+
+Keep a bounded decision note in the existing task's durable custody, linked to
+the research evidence record IDs. Preserve:
+
+- the resources and alternatives considered, including relevant sources,
+  tools, models, data, domain reviewers and feasible fallback substrates, with
+  versions where available;
+- the selected resources and reasons: authorization, capability, source quality,
+  independence, currentness, confidentiality, observed availability, cost and
+  latency; mark unavailable or untested options explicitly;
+- searches, source scope, dates, exclusions, access failures and negative results;
+  a scoped search miss does not establish that an object or result does not exist;
+- primary observations, supporting and adverse evidence, prior-art comparison,
+  uncertainty, tests and prospective falsifiers;
+- the current decision, unresolved alternatives, next verification gate,
+  responsible receiver and material wake conditions.
+
+State acceptance criteria and prospective falsifiers before the next test;
+record actual outcomes and each reviewer's identity, scope and independence.
+
+Use the existing evidence schema for its declared fields (`source_refs`, `tests`,
+`counterarguments`, `falsifiers`, `next_gate`). Link the decision note rather than
+silently adding undeclared fields to that schema. Public projections must exclude
+private research content and access details.
+
+Before handoff or closure, checkpoint these records. A successor must read the
+relevant exact versions, check currentness, and acknowledge the bounded pickup.
+It should reuse valid research, reopen stale or challenged conclusions, and carry
+unresolved questions forward. A pointer, summary, repeated model agreement, or
+successful upload alone does not establish that this happened.
+
+### CoResearchGate+ Extraordinary
+
+Sources: primary observations, independent corroboration and prior-art review.
+Counterevidence: adversarial review, replication and prospective falsifiers.
+Closure: do not promote the claim without domain-specific verification. Preserve
+source identity, dates, uncertainty and receipts. Record absent checks as `NOT_RUN`
+or `HOLD`; same-container agent review is not external independent replication.
+
+These are bootstrap and handoff requirements. Their presence here does not prove
+runtime enforcement, existing-session adoption, complete resource discovery, or
+live receiver continuity. Those require separately observed execution and pickup.
+
 
 ## Waitless execution / virtual armada
 

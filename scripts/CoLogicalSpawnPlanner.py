@@ -53,6 +53,37 @@ def normalize_text(value: Any) -> str:
     return " ".join(str(value or "").strip().lower().split())
 
 
+def claim_slot_basis(delta: dict[str, Any]) -> dict[str, Any]:
+    """A coarse review slot, never evidence that two deltas are equivalent."""
+    return {
+        "domain": sorted(str(x) for x in list(delta.get("domain") or [])),
+        "subject": normalize_text(delta.get("subject")),
+        "relation": normalize_text(delta.get("relation")),
+        "targets": sorted(str(x) for x in list(delta.get("target_surfaces") or [])),
+        "confidentiality": str(delta.get("confidentiality", "UNKNOWN")),
+    }
+
+
+def claim_body_basis(delta: dict[str, Any]) -> dict[str, Any]:
+    """Compare claim bodies without discarding nested fields or extensions.
+
+    These root-level annotations may vary between independent observations.
+    They still participate in exact dedupe, so their inputs remain separate.
+    Source references are not resolved here; this is not a currentness check.
+    """
+    annotations = {
+        "delta_id", "session_id", "observed_at", "source_refs", "confidence",
+        "tests", "risks", "wake_conditions",
+    }
+    body = {key: value for key, value in delta.items() if key not in annotations}
+    for key in ("domain", "target_surfaces"):
+        if isinstance(body.get(key), list):
+            body[key] = sorted(body[key], key=lambda item: json.dumps(
+                item, sort_keys=True, separators=(",", ":"), ensure_ascii=False
+            ))
+    return body
+
+
 def choose_role(delta: dict[str, Any]) -> str:
     mutation = str(delta.get("mutation_class", ""))
     epistemic = str(delta.get("epistemic_class", ""))
@@ -96,29 +127,48 @@ def compile_plan(deltas: list[dict[str, Any]], lanes_obj: dict[str, Any], repo_m
     groups: dict[str, list[dict[str, Any]]] = {}
     collision_groups: dict[str, list[str]] = {}
     validation: dict[str, list[str]] = {}
+    payloads_by_id: dict[str, set[str]] = {}
+    claim_variants: dict[str, set[str]] = {}
+    claim_members: dict[str, set[str]] = {}
 
     for delta in deltas:
         did = str(delta.get("delta_id", ""))
         issues = validate_delta(delta, lanes, vis)
-        validation[did] = issues
+        validation.setdefault(did, []).extend(issues)
+        payloads_by_id.setdefault(did, set()).add(stable_hash(delta))
 
-        dedupe_basis = {
-            "domain": sorted(str(x) for x in list(delta.get("domain") or [])),
-            "subject": normalize_text(delta.get("subject")),
-            "relation": normalize_text(delta.get("relation")),
-            "targets": sorted(str(x) for x in list(delta.get("target_surfaces") or [])),
-            "confidentiality": str(delta.get("confidentiality", "UNKNOWN")),
-        }
+        # Only an exact JSON body, except its record identifier, is eligible
+        # for equivalence donation. Unknown extensions are part of identity.
+        dedupe_basis = {key: value for key, value in delta.items() if key != "delta_id"}
         dedupe_key = stable_hash(dedupe_basis)
         groups.setdefault(dedupe_key, []).append(delta)
 
+        slot_basis = claim_slot_basis(delta)
+        slot_key = stable_hash(slot_basis)
+        claim_variants.setdefault(slot_key, set()).add(stable_hash(claim_body_basis(delta)))
+        claim_members.setdefault(slot_key, set()).add(did)
+
         collision_basis = {
-            "domain": dedupe_basis["domain"],
-            "subject": dedupe_basis["subject"],
-            "targets": dedupe_basis["targets"],
+            "domain": slot_basis["domain"],
+            "subject": slot_basis["subject"],
+            "targets": slot_basis["targets"],
         }
         collision_key = stable_hash(collision_basis)[:24]
         collision_groups.setdefault(collision_key, []).append(did)
+
+    for did, payloads in payloads_by_id.items():
+        if len(payloads) > 1:
+            validation[did].append("DELTA_ID_REUSED_WITH_DIFFERENT_PAYLOAD:" + did)
+
+    for slot_key, variants in claim_variants.items():
+        if len(variants) > 1:
+            # Different bodies may represent successive observations or valid
+            # alternatives. No chronology or authority rule here selects one.
+            issue = "AMBIGUOUS_CLAIM_BODY_REQUIRES_RECONCILIATION:" + slot_key[:24]
+            for did in claim_members[slot_key]:
+                validation[did].append(issue)
+
+    validation = {did: sorted(set(issues)) for did, issues in sorted(validation.items())}
 
     contracts: list[dict[str, Any]] = []
     donations: list[dict[str, Any]] = []
@@ -126,7 +176,8 @@ def compile_plan(deltas: list[dict[str, Any]], lanes_obj: dict[str, Any], repo_m
     for dedupe_key in sorted(groups):
         group = sorted(groups[dedupe_key], key=lambda x: (str(x.get("observed_at", "")), str(x.get("delta_id", ""))))
         primary = group[0]
-        primary_id = str(primary["delta_id"])
+        primary_id = str(primary.get("delta_id", ""))
+        group_ids = sorted({str(item.get("delta_id", "")) for item in group})
         all_issues = sorted({issue for item in group for issue in validation[str(item.get("delta_id", ""))]})
 
         collision_basis = {
@@ -172,16 +223,22 @@ def compile_plan(deltas: list[dict[str, Any]], lanes_obj: dict[str, Any], repo_m
             "failure_domain": None,
             "handoff_rule": "DONATE_EQUIVALENT_DELTAS_TO_PRIMARY_AND_PRESERVE_SOURCE_REFS",
             "retirement_condition": "PRIMARY_DELTA_DISPOSITION_RECORDED_AND_DONATED_EQUIVALENTS_BOUND",
-            "provenance": [str(x.get("delta_id")) for x in group],
+            "provenance": group_ids,
             "currentness": str(primary.get("observed_at")),
             "uncertainty": ";".join(all_issues) if all_issues else None,
             "materialization_state": materialization_state,
         }
         contracts.append(contract)
 
-        for duplicate in group[1:]:
+        # A reused identifier or other validation failure must not create an
+        # apparently usable equivalence handoff, even from a blocked contract.
+        if blocked:
+            continue
+        for duplicate_id in group_ids:
+            if duplicate_id == primary_id:
+                continue
             donations.append({
-                "donor_delta_id": str(duplicate.get("delta_id")),
+                "donor_delta_id": duplicate_id,
                 "receiver_delta_id": primary_id,
                 "relation": "EQUIVALENT_DEDUPE_DONATION",
                 "dedupe_key": dedupe_key,
