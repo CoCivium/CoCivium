@@ -1,0 +1,37 @@
+name: CoRole Space Preview
+
+permissions:
+  contents: read
+
+on:
+  pull_request:
+    paths:
+      - "scripts/CoRoleSpacePreviewR0.py"
+      - "tests/test_role_space_preview.py"
+      - "docs/Architecture/COROLE_SPACE_PREVIEW_R0.md"
+      - "schemas/cospawn-contract-v0.1.schema.json"
+      - "schemas/coevo-delta-v0.1.schema.json"
+      - "ai/virtual-session-policy.json"
+      - "ai/evolution-lanes.json"
+      - ".github/workflows/corole-space-preview.yml"
+  push:
+    paths:
+      - "scripts/CoRoleSpacePreviewR0.py"
+      - "tests/test_role_space_preview.py"
+      - "docs/Architecture/COROLE_SPACE_PREVIEW_R0.md"
+      - "schemas/cospawn-contract-v0.1.schema.json"
+      - "schemas/coevo-delta-v0.1.schema.json"
+      - "ai/virtual-session-policy.json"
+      - "ai/evolution-lanes.json"
+      - ".github/workflows/corole-space-preview.yml"
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Check bounded configuration counting and sampling
+        run: python -B -m unittest discover -s tests -p test_role_space_preview.py -v
