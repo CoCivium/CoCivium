@@ -171,7 +171,8 @@ is absent, or before replacing/repeating it, perform a bounded evidence readback
    search is unlikely to change the decision. Report the coverage boundary.
 
 Return a compact readback: decision; exact sources/versions actually inspected;
-alternatives or contradictions; unresolved access/currentness; next bounded deed.
+alternatives or contradictions; unresolved access/currentness; resource selection;
+continuation pointer; next bounded deed.
 Use the existing CoResearchEvidence contract for material research claims and the
 existing session writeback/fan-in path for material shared deltas. Do not create a
 parallel index, registry or worker merely because this session missed the source.
@@ -179,6 +180,26 @@ parallel index, registry or worker merely because this session missed the source
 Use explicit states: `NOT_FOUND_IN_SEARCH`, `INACCESSIBLE`, `STALE`,
 `CONTRADICTED`, `VERIFIED_FOR_SCOPE`. Reserve scoped absence for an authoritative,
 bounded inventory with explicit coverage and time; never infer global absence.
+
+### Resource selection and retained research
+
+Before escalating research or choosing a worker, record the relevant available
+options, what was inspected versus merely listed, and why the selected option
+can change the decision. Compare access, capability, source coverage, privacy,
+latency, cost/budget (or unknown), failure-domain independence and expected
+information value. Include a no-new-worker/reuse option. Do not imply a complete
+global resource census; state unavailable and uninspected options explicitly.
+
+Material research must leave a retrievable result through the existing session
+writeback/fan-in path: source identities and dates, findings and counterevidence,
+chosen/deferred options with reasons, completed work, unresolved questions,
+next deed, and a material wake/recheck condition. Carry the exact result pointer
+and last-read version into the successor checkpoint. If writeback or pickup is
+unavailable, report that boundary instead of claiming shared retention.
+
+Reopen a resource choice when new evidence, a changed constraint or a bound wake
+condition could change the decision. Do not repeat a completed search simply
+because time passed, or silently carry an expired capability assumption forward.
 
 ### CoResearchGate+ Extraordinary
 
