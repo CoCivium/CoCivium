@@ -6,7 +6,7 @@ R2 consumes bounded CoEvoDelta+ objects plus the shared evolution-lane and repos
 
 It performs:
 
-- domain validation;
+- required-core type, enum, timestamp and domain validation;
 - public/private target collision checks;
 - exact payload dedupe, including source, authority, and extension fields;
 - donation of equivalent deltas into one logical primary;
@@ -73,10 +73,10 @@ bounded logical plans from their pinned inputs; do not infer permission to repea
 previous effects from a changed identifier. Live materialization and adoption
 remain separate verification steps.
 
-Run the identity regressions with:
+Run the identity and input-boundary regressions with:
 
 ```sh
-python -m unittest discover -s tests -p test_logical_spawn_identity.py -v
+python -m unittest discover -s tests -p 'test_logical_spawn_*.py' -v
 python scripts/CoLogicalSpawnPlannerWaitlessCanaryR2B.py
 ```
 
@@ -109,10 +109,47 @@ Validation failures remain `BLOCKED`. In particular, confidentiality collisions,
 unknown domains, and missing required fields detected by `validate_delta` do not become shadow work merely
 because useful work might exist nearby.
 
-`validate_delta` is not a full input schema validator. It does not enforce all
-field types, nonempty collections, or whitespace-only values. This identity
-repair does not establish that every `LOGICAL_ONLY` input is structurally valid;
-a receiver must still validate its inputs before any authorized materialization.
+### Required-core input boundary
+
+`validate_delta` checks the required core shared by the v0.1 compatibility anchor
+and the v0.2 union candidate. Scalar fields must be actual nonblank strings.
+The three required arrays must contain strings; `domain` must contain at least
+one known domain. Empty `source_refs` and `target_surfaces` remain permitted by
+the anchor schema. Their string items may be empty: presence of a string binding
+does not establish usable evidence or a reachable target. The canonical
+epistemic, mutation and confidentiality enums are checked without case folding.
+Authority remains a free string, never an authority grant.
+
+The nonblank scalar rule is an operational planner guard, stricter than schema
+`minLength: 1` (and the schema's unconstrained authority string). The timestamp
+check accepts a bounded RFC 3339 form: full calendar date, `T`/`t`, hours/minutes/
+seconds, optional decimal fraction, and `Z`/`z` or a numeric `+/-HH:MM` zone.
+Calendar-invalid dates, absent zones, year 0000 and leap seconds are held for
+review. Exact original timestamp text stays in payload hashes. A valid timestamp
+does not establish freshness, chronology, or truth.
+
+Malformed records produce `BLOCKED` diagnostics without coercing a scalar into
+an array or interrupting unrelated valid work. Invalid IDs receive deterministic
+`INVALID_DELTA_ID:<raw-payload-hash>` references, prefixed with underscores if
+needed to avoid a caller-supplied ID. They are isolated from normal equivalence
+dedupe, so `false` and `0` cannot alias the valid strings `"False"` and `"0"`.
+These references identify a diagnostic record; they do not repair its identity.
+All raw fields, including malformed values and unknown extensions, remain in
+the identity basis. Existing valid input identities and output plans are unchanged.
+
+Blocked contract projections use only string items from actual arrays and
+explicit `INVALID_<FIELD>` placeholders for invalid required scalar displays;
+invalid timestamps use `INVALID_OBSERVED_AT`, invalid confidentiality projects
+as `UNKNOWN`, and invalid mutation classes project as an empty effect list.
+The original input is never rewritten. Placeholders do not identify verified
+parents, authority or receivers. Budgets and effect leases remain zero/none,
+and blocked groups cannot emit equivalence donations.
+
+This is an extension-preserving **core planner profile**, not complete validation
+against either schema. Optional fields, union-only conditional requirements,
+source-head resolution, source truth, receiver pickup and effect authorization
+remain separate checks. A receiver must validate its applicable full profile
+before any authorized materialization.
 
 `EFFECT_GATED_NE_WORK_BLOCKED`  
 `SHADOW_WORK_NE_EFFECT_AUTHORITY`  
