@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CoAll RD1 — CoDot / CoMap / CoOrb</title>
+<style>
+:root { font-family: Inter, system-ui, sans-serif; color-scheme: dark; }
+body { margin: 0; background: #08131a; color: #e8f2f7; min-height: 100vh; }
+main { max-width: 1100px; margin: 0 auto; padding: 32px; }
+.dot { width: 14px; height: 14px; border-radius: 50%; background: #67d8ff; box-shadow: 0 0 18px #67d8ff66; display: inline-block; }
+header { display:flex; gap:14px; align-items:center; }
+.panel { background:#0d2029; border:1px solid #2b4c58; border-radius:18px; padding:18px; margin-top:18px; }
+button { background:#173541; color:#e8f2f7; border:1px solid #456674; border-radius:10px; padding:10px 14px; cursor:pointer; }
+button:hover { background:#214956; }
+.grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:14px; }
+.badge { display:inline-block; padding:4px 8px; border-radius:999px; border:1px solid #456674; margin:3px 3px 0 0; font-size:.82rem; }
+.small { opacity:.75; font-size:.9rem; }
+#map { height:320px; position:relative; overflow:hidden; background:radial-gradient(circle at center,#143542,#071117 65%); border-radius:14px; }
+.node { position:absolute; width:84px; height:84px; display:flex; align-items:center; justify-content:center; text-align:center; border:1px solid #7cb6c7; border-radius:50%; background:#0d2b35; font-size:.78rem; }
+.n1 { left:45%; top:42%; } .n2 { left:15%; top:18%; } .n3 { right:12%; top:18%; } .n4 { left:17%; bottom:14%; } .n5 { right:13%; bottom:14%; }
+line { stroke:#6cabbc; stroke-width:1.5; opacity:.65; }
+#cameraStatus { margin-top:10px; }
+</style>
+</head>
+<body>
+<main>
+<header><span class="dot" aria-hidden="true"></span><div><strong>CoAll RD1</strong><div class="small">CoDot / CoMap / CoOrb experimental surface</div></div></header>
+
+<section class="panel">
+  <strong>00_me</strong>
+  <div class="grid" style="margin-top:10px">
+    <div><span class="badge">CURRENT</span><div>CoDot online</div></div>
+    <div><span class="badge">SIMULATED</span><div>7 logical lanes</div></div>
+    <div><span class="badge">EVIDENCE</span><div>demo data only</div></div>
+    <div><span class="badge">RECOVERY</span><div>seed available</div></div>
+  </div>
+</section>
+
+<section class="panel">
+  <strong>CoMap+</strong>
+  <div id="map" aria-label="Synthetic CoMap">
+    <svg width="100%" height="100%" viewBox="0 0 1000 320" preserveAspectRatio="none">
+      <line x1="500" y1="160" x2="210" y2="85"></line>
+      <line x1="500" y1="160" x2="790" y2="85"></line>
+      <line x1="500" y1="160" x2="220" y2="260"></line>
+      <line x1="500" y1="160" x2="780" y2="260"></line>
+    </svg>
+    <div class="node n1">CoDot<br>current</div>
+    <div class="node n2">WORK<br>simulated</div>
+    <div class="node n3">RESOURCE<br>available</div>
+    <div class="node n4">EVIDENCE<br>derived</div>
+    <div class="node n5">RECOVERY<br>ready</div>
+  </div>
+</section>
+
+<section class="panel">
+  <strong>CoTele+</strong>
+  <input id="time" type="range" min="0" max="100" value="50" style="width:100%;margin-top:14px">
+  <div id="timeLabel" class="small">NOW</div>
+</section>
+
+<section class="panel">
+  <strong>Optional CoEyes / CoAudio experiment</strong>
+  <p class="small">This RD1 surface does not access your camera or microphone automatically. An explicit opt-in is required for any future multimodal experiment.</p>
+  <button id="optIn">Enable demo permission state</button>
+  <div id="cameraStatus"><span class="badge">UNAVAILABLE</span> Camera/audio stream not connected</div>
+</section>
+
+<section class="panel small">
+  <strong>Epistemic note:</strong> Demo nodes and lanes are synthetic. SIMULATED is not OBSERVED. A device being present or connected does not establish stream access or control.
+</section>
+</main>
+<script>
+const slider=document.getElementById('time');
+const label=document.getElementById('timeLabel');
+slider.addEventListener('input',()=>{
+  const v=+slider.value;
+  label.textContent=v<25?'PRIOR':v<45?'NOW-ADJACENT':v<65?'NOW':v<85?'FORECAST':'COUNTERFACTUAL';
+});
+document.getElementById('optIn').addEventListener('click',()=>{
+  document.getElementById('cameraStatus').innerHTML='<span class="badge">OPT-IN READY</span> No camera/audio stream is opened by this static demo.';
+});
+</script>
+</body>
+</html>
