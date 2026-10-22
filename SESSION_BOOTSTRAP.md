@@ -201,6 +201,29 @@ Reopen a resource choice when new evidence, a changed constraint or a bound wake
 condition could change the decision. Do not repeat a completed search simply
 because time passed, or silently carry an expired capability assumption forward.
 
+### Executable readback check
+
+Receivers that require this gate can run the existing validator with
+`--require-recovery`; add `--require-extraordinary-gate` for extraordinary
+claims. The record uses the optional `research_recovery` and
+`extraordinary_gate` fields in the existing research-evidence schema.
+
+```sh
+python scripts/validate_coresearch_evidence_r0.py --require-recovery --require-extraordinary-gate examples/coresearch-recovery.example.json
+python scripts/test_coresearch_recovery.py
+```
+
+Strict mode rejects missing readbacks, search/observer-only absence claims,
+unbound inventory versions, uninspected resource selections, missing retention
+pointers, and incomplete declared extraordinary promotion checks. Legacy
+records remain accepted without the strict flags. The synthetic example
+deliberately remains unresolved and has no real receiver writeback.
+
+The validator checks declared consistency. It does not retrieve or authenticate
+sources, judge independence or prior-art adequacy, verify scientific results,
+or enforce invocation by every agent. A complete self-reported record can
+still be false; domain review and receiver adoption remain separate proofs.
+
 ### CoResearchGate+ Extraordinary
 
 For an extraordinary claim, bind primary observations, independent
