@@ -6,12 +6,16 @@ on:
       - 'schemas/coresearch-evidence-v0.1.schema.json'
       - 'examples/coresearch-evidence-v0.1.example.json'
       - 'scripts/validate_coresearch_evidence_r0.py'
+      - 'scripts/test_coresearch_recovery.py'
+      - 'examples/coresearch-recovery.example.json'
       - '.github/workflows/coresearch-evidence-contract.yml'
   push:
     paths:
       - 'schemas/coresearch-evidence-v0.1.schema.json'
       - 'examples/coresearch-evidence-v0.1.example.json'
       - 'scripts/validate_coresearch_evidence_r0.py'
+      - 'scripts/test_coresearch_recovery.py'
+      - 'examples/coresearch-recovery.example.json'
       - '.github/workflows/coresearch-evidence-contract.yml'
 permissions:
   contents: read
@@ -34,8 +38,12 @@ jobs:
           if [ "${{ matrix.check }}" = "json-parse" ]; then
             python -m json.tool schemas/coresearch-evidence-v0.1.schema.json >/dev/null
             python -m json.tool examples/coresearch-evidence-v0.1.example.json >/dev/null
+            python -m json.tool examples/coresearch-recovery.example.json >/dev/null
           else
             python scripts/validate_coresearch_evidence_r0.py examples/coresearch-evidence-v0.1.example.json
+            python scripts/validate_coresearch_evidence_r0.py --require-recovery --require-extraordinary-gate examples/coresearch-recovery.example.json
+            python scripts/test_coresearch_recovery.py
+            python -O scripts/test_coresearch_recovery.py
           fi
   source-currentness:
     runs-on: ubuntu-latest
@@ -50,3 +58,4 @@ jobs:
           assert d["observed_at"], "FAIL_CLOSED__NO_OBSERVED_AT"
           print("PASS_EXPLICIT_SOURCE_AND_OBSERVATION_TIME")
           PY
+
