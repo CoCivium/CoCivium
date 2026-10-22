@@ -158,5 +158,112 @@
     "machine_twin": "ai/onramp/cocivia-first-use-r0.json",
     "rule": "START_WITH_ONE_REAL_THING__RETURN_ONE_CONCRETE_USEFUL_RESULT_BEFORE_DEEP_ARCHITECTURE",
     "installer_state": "NO_VERIFIED_PUBLIC_COCIVIUM_INSTALLER_LINKED"
+  },
+  "research_recovery": {
+    "state": "PROTOCOL_CANDIDATE__RECEIVER_ADOPTION_UNPROVEN",
+    "docs": "SESSION_BOOTSTRAP.md#research-recovery-before-absence-claims-or-rebuilds",
+    "trigger": [
+      "MATERIAL_ABSENCE_CLAIM",
+      "REPLAY_OR_REPLACEMENT_OF_PRIOR_WORK",
+      "CONTRADICTORY_CURRENTNESS",
+      "FAILED_SOURCE_DISCOVERY"
+    ],
+    "readback": [
+      "decision",
+      "exact_sources_and_versions_read",
+      "alternatives_or_contradictions",
+      "unresolved_access_and_currentness",
+      "next_bounded_deed",
+      "resource_options_inspected_and_selected_with_reasons",
+      "durable_result_and_successor_checkpoint_pointer"
+    ],
+    "fallback": [
+      "READ_KNOWN_PATHS_AT_BOUND_HEAD",
+      "FOLLOW_SUPPORTED_ALIASES_LINEAGE_AND_SUCCESSORS",
+      "SEARCH_FOR_DISCOVERY_THEN_READ_SOURCE",
+      "CHECK_LATER_RECEIPTS_BEFORE_REPLAY"
+    ],
+    "runtime_distinctions": [
+      "OBSERVER_ROUTE",
+      "PROCESS_IDENTITY",
+      "HEARTBEAT_FRESHNESS",
+      "TASK_PROGRESS",
+      "RECEIVER_PICKUP"
+    ],
+    "stop_rule": "DECISION_SUPPORTED_AND_MATERIAL_CONTRADICTIONS_EXPOSED_OR_REMAINING_AUTHORIZED_SOURCES_INACCESSIBLE_OR_MARGINAL_SEARCH_UNLIKELY_TO_CHANGE_DECISION",
+    "absence_rule": "ONLY_SCOPED_TO_AUTHORITATIVE_BOUNDED_INVENTORY_COVERAGE_AND_TIME",
+    "reuse": [
+      "research_evidence",
+      "evolution.session_writeback",
+      "ai/session-subscription-profiles.json"
+    ],
+    "adoption_proof": "INDEPENDENT_RECEIVER_READS_BOUND_CHECKPOINT_AND_RESUMES_BOUNDED_TASK_WITHOUT_HUMAN_RELAY_OR_DUPLICATE_EXECUTION",
+    "nonclaims": [
+      "NO_GLOBAL_ABSENCE_FROM_SEARCH_MISS",
+      "NO_AGENT_STOP_FROM_OBSERVER_FAILURE",
+      "NO_AUTOMATIC_SESSION_PICKUP",
+      "NO_NEW_WORKER_OR_REGISTRY"
+    ],
+    "extraordinary_claim_gate": {
+      "sources": [
+        "PRIMARY_OBSERVATIONS",
+        "INDEPENDENT_CORROBORATION",
+        "PRIOR_ART_REVIEW"
+      ],
+      "counterevidence": [
+        "ADVERSARIAL_REVIEW",
+        "REPLICATION",
+        "PROSPECTIVE_FALSIFIERS"
+      ],
+      "closure": "DO_NOT_PROMOTE_WITHOUT_DOMAIN_SPECIFIC_VERIFICATION",
+      "preserve": [
+        "SOURCE_IDENTITY",
+        "DATES",
+        "UNCERTAINTY",
+        "RECEIPTS"
+      ],
+      "missing_verification": "RETAIN_CANDIDATE_AND_NAME_MISSING_CHECK"
+    },
+    "resource_selection": {
+      "criteria": [
+        "ACCESS",
+        "CAPABILITY",
+        "SOURCE_COVERAGE",
+        "PRIVACY",
+        "LATENCY",
+        "COST_OR_UNKNOWN",
+        "FAILURE_DOMAIN_INDEPENDENCE",
+        "EXPECTED_INFORMATION_VALUE"
+      ],
+      "include": "REUSE_OR_NO_NEW_WORKER_OPTION",
+      "coverage": "RELEVANT_BOUNDED_OPTIONS__NO_GLOBAL_RESOURCE_CENSUS_CLAIM",
+      "separate": "INSPECTED_VS_LISTED_VS_UNAVAILABLE",
+      "revisit": "NEW_EVIDENCE_CHANGED_CONSTRAINT_OR_BOUND_MATERIAL_WAKE"
+    },
+    "retention": {
+      "route": "evolution.session_writeback",
+      "retain": [
+        "SOURCE_IDENTITIES_AND_DATES",
+        "FINDINGS_AND_COUNTEREVIDENCE",
+        "CHOSEN_AND_DEFERRED_OPTIONS_WITH_REASONS",
+        "COMPLETED_WORK",
+        "UNRESOLVED_QUESTIONS",
+        "NEXT_DEED",
+        "MATERIAL_WAKE_OR_RECHECK_CONDITION"
+      ],
+      "successor": "EXACT_RESULT_POINTER_AND_LAST_READ_VERSION",
+      "failure": "REPORT_WRITEBACK_OR_PICKUP_UNAVAILABLE__DO_NOT_CLAIM_SHARED_RETENTION"
+    },
+    "validator": {
+      "path": "scripts/validate_coresearch_evidence_r0.py",
+      "strict_flags": [
+        "--require-recovery",
+        "--require-extraordinary-gate"
+      ],
+      "fixture": "examples/coresearch-recovery.example.json",
+      "tests": "scripts/test_coresearch_recovery.py",
+      "scope": "DECLARED_RECORD_CONSISTENCY_ONLY",
+      "runtime_invocation": "RECEIVER_OPT_IN_REQUIRED__GLOBAL_ADOPTION_UNPROVEN"
+    }
   }
 }
