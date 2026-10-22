@@ -1,0 +1,286 @@
+{
+  "effect_boundary": {
+    "external_replication": "NOT_PERFORMED",
+    "live_session_sync": "NOT_TESTED",
+    "live_workers_started": 0,
+    "receiver_adoption": "UNOBSERVED",
+    "source_files_changed": false
+  },
+  "environment": {
+    "machine": "x86_64",
+    "platform": "Linux",
+    "python": "3.12.14",
+    "timing_clock": "perf_counter_ns"
+  },
+  "fixture_metadata_status": "TEST_ONLY",
+  "format": "CoEvidenceBundleCanaryReportR0",
+  "implementation_sha256": "eca223ea9a0b688719283bc44aed7aa3c24b170b1f518843a2540ecd6b1f79e1",
+  "layouts": {
+    "indexed_cas": {
+      "build": {
+        "max_ns": 2851585,
+        "median_ns": 2654688,
+        "min_ns": 2465625,
+        "repetitions": 3
+      },
+      "deterministic_tar_gz_bytes": 20387,
+      "file_count": 11,
+      "full_validation": {
+        "max_ns": 5353792,
+        "median_ns": 4378268,
+        "min_ns": 3542360,
+        "repetitions": 3
+      },
+      "indexed_queries_equal_reference": true,
+      "inventory_sha256": "cb90d521117442e4065c83dec494d695d4769646af3cccb9b20dcbc1f4fec917",
+      "metadata_bytes": 16535,
+      "payload_bytes": 45290,
+      "query_result_sha256": "81967aa3bfb9f92e913375ca1a9cb69dca66341813e5391692ea86497b1b6db9",
+      "role_bindings_reconstructed": 31,
+      "total_file_bytes": 64496,
+      "view_bytes": 2671
+    },
+    "per_role_copies": {
+      "build": {
+        "max_ns": 6075459,
+        "median_ns": 5937581,
+        "min_ns": 5769618,
+        "repetitions": 3
+      },
+      "deterministic_tar_gz_bytes": 53942,
+      "file_count": 34,
+      "full_validation": {
+        "max_ns": 8803499,
+        "median_ns": 5623758,
+        "min_ns": 5515011,
+        "repetitions": 3
+      },
+      "indexed_queries_equal_reference": null,
+      "inventory_sha256": "fdc9e4c216226a0a8505c3654b2d111f863e8ee8460a1478c8ce8042b517babe",
+      "metadata_bytes": 15902,
+      "payload_bytes": 202165,
+      "query_result_sha256": "81967aa3bfb9f92e913375ca1a9cb69dca66341813e5391692ea86497b1b6db9",
+      "role_bindings_reconstructed": 31,
+      "total_file_bytes": 218067,
+      "view_bytes": 0
+    },
+    "shared_cas": {
+      "build": {
+        "max_ns": 2115458,
+        "median_ns": 2023630,
+        "min_ns": 2016881,
+        "repetitions": 3
+      },
+      "deterministic_tar_gz_bytes": 19884,
+      "file_count": 10,
+      "full_validation": {
+        "max_ns": 3638832,
+        "median_ns": 3351856,
+        "min_ns": 3349180,
+        "repetitions": 3
+      },
+      "indexed_queries_equal_reference": null,
+      "inventory_sha256": "24f8ba94baf84f5d2059309744b2a350b1f6bec72180566476d17dcd720c8909",
+      "metadata_bytes": 16424,
+      "payload_bytes": 45290,
+      "query_result_sha256": "81967aa3bfb9f92e913375ca1a9cb69dca66341813e5391692ea86497b1b6db9",
+      "role_bindings_reconstructed": 31,
+      "total_file_bytes": 61714,
+      "view_bytes": 0
+    },
+    "shared_paths": {
+      "build": {
+        "max_ns": 4014167,
+        "median_ns": 3262820,
+        "min_ns": 2930833,
+        "repetitions": 3
+      },
+      "deterministic_tar_gz_bytes": 19879,
+      "file_count": 10,
+      "full_validation": {
+        "max_ns": 4660410,
+        "median_ns": 4280685,
+        "min_ns": 3747993,
+        "repetitions": 3
+      },
+      "indexed_queries_equal_reference": null,
+      "inventory_sha256": "4977e2641785e78a91744ffaffaba06bbb8a6d6a6c7b8e243b1580471cc0692e",
+      "metadata_bytes": 13184,
+      "payload_bytes": 45290,
+      "query_result_sha256": "81967aa3bfb9f92e913375ca1a9cb69dca66341813e5391692ea86497b1b6db9",
+      "role_bindings_reconstructed": 31,
+      "total_file_bytes": 58474,
+      "view_bytes": 0
+    }
+  },
+  "measurement_scope": {
+    "archive": "sorted USTAR members, zero mtimes, gzip level 9 mtime 0, whole-stream compression",
+    "build": "serialization, view construction where applicable, writes, inventory reads; inputs already loaded",
+    "live_remote_staleness_measured": false,
+    "query": "warm validated in-memory data plus result JSON encoding; excludes load, hashing and validation",
+    "refresh": "one full build and verification per mode; no deletion of original layout",
+    "storage": "logical contents of every file, including inventory and views; not allocated disk",
+    "validation": "full disk read/hash, metadata checks, reconstruction and reference query comparison"
+  },
+  "negative_probes": [
+    {
+      "held": true,
+      "probe": "tampered_payload"
+    },
+    {
+      "held": true,
+      "probe": "missing_payload"
+    },
+    {
+      "held": true,
+      "probe": "tampered_view"
+    },
+    {
+      "held": true,
+      "probe": "stale_source_version"
+    },
+    {
+      "held": true,
+      "probe": "stale_cutoff"
+    }
+  ],
+  "observed_at": "2026-10-22T20:51:12Z",
+  "query_as_of": "2026-10-22T00:00:00Z",
+  "query_results": {
+    "claim_sources": {
+      "fixture_expired": [
+        "receipt_guard"
+      ],
+      "fixture_future": [
+        "source_graph"
+      ],
+      "fixture_historical": [
+        "role_preview"
+      ],
+      "fixture_index_candidate": [
+        "lineage_compactor",
+        "receipt_guard",
+        "role_preview",
+        "session_morphology",
+        "source_graph",
+        "source_schema",
+        "spawn_schema"
+      ],
+      "fixture_projection": [
+        "lineage_compactor",
+        "receipt_guard",
+        "role_preview",
+        "session_morphology",
+        "source_graph",
+        "source_schema",
+        "spawn_schema"
+      ],
+      "fixture_shared_candidate": [
+        "lineage_compactor",
+        "receipt_guard",
+        "role_preview",
+        "session_morphology",
+        "source_graph",
+        "source_schema",
+        "spawn_schema"
+      ]
+    },
+    "receiver_candidates": {
+      "archive": [],
+      "review_panel": [
+        "fixture_index_candidate",
+        "fixture_projection",
+        "fixture_shared_candidate"
+      ]
+    },
+    "unresolved_contradictions": [
+      {
+        "ambiguity": "Synthetic unresolved tradeoff, not a detected document contradiction.",
+        "basis": "TEST_ONLY",
+        "from": "fixture_shared_candidate",
+        "id": "contradiction_1",
+        "resolution": "UNRESOLVED",
+        "to": "fixture_index_candidate",
+        "type": "contradicts"
+      },
+      {
+        "ambiguity": "Reverse edge deliberately retained; no symmetry inference.",
+        "basis": "TEST_ONLY",
+        "from": "fixture_index_candidate",
+        "id": "contradiction_2",
+        "resolution": "UNRESOLVED",
+        "to": "fixture_shared_candidate",
+        "type": "contradicts"
+      }
+    ]
+  },
+  "query_timing": {
+    "direct_scan_and_result_encoding": {
+      "max_ns": 121077,
+      "median_ns": 65398,
+      "min_ns": 61219,
+      "repetitions": 31
+    },
+    "validated_view_result_encoding": {
+      "max_ns": 13432,
+      "median_ns": 7853,
+      "min_ns": 7569,
+      "repetitions": 31
+    }
+  },
+  "refresh": {
+    "incremental_refresh_implemented": false,
+    "layouts": {
+      "indexed_cas": {
+        "build_and_verify_ns": 6152973,
+        "deterministic_tar_gz_bytes": 20636,
+        "file_count": 11,
+        "inventory_sha256": "d52685bcb184db5c624d2c9f4329c3573266d00d4564a1bd1b6764893947f48a",
+        "metadata_bytes": 17194,
+        "payload_bytes": 45291,
+        "total_file_bytes": 65156,
+        "view_bytes": 2671
+      },
+      "per_role_copies": {
+        "build_and_verify_ns": 11930976,
+        "deterministic_tar_gz_bytes": 54149,
+        "file_count": 34,
+        "inventory_sha256": "48f0373435cef4ce595bbb1d8f816f2eba06132b46a572caa9738a467fd9039d",
+        "metadata_bytes": 16561,
+        "payload_bytes": 202171,
+        "total_file_bytes": 218732,
+        "view_bytes": 0
+      },
+      "shared_cas": {
+        "build_and_verify_ns": 6402481,
+        "deterministic_tar_gz_bytes": 20132,
+        "file_count": 10,
+        "inventory_sha256": "659294764df2d3e441518a882e877eea28cbb0fdcdc9b82bd5b3f159173ad2c1",
+        "metadata_bytes": 17083,
+        "payload_bytes": 45291,
+        "total_file_bytes": 62374,
+        "view_bytes": 0
+      },
+      "shared_paths": {
+        "build_and_verify_ns": 6181688,
+        "deterministic_tar_gz_bytes": 20081,
+        "file_count": 10,
+        "inventory_sha256": "a2012c4ba76565445a399e7cb4f1651123d9c561703ea3eebb03be586ae9c6f0",
+        "metadata_bytes": 13843,
+        "payload_bytes": 45291,
+        "total_file_bytes": 59134,
+        "view_bytes": 0
+      }
+    },
+    "method": "FULL_REBUILD_OF_SYNTHETIC_ONE_BYTE_DERIVATIVE",
+    "original_layouts_retained_and_reverified": true,
+    "source_payload_delta_bytes": 1
+  },
+  "role_binding_count": 31,
+  "source_commit": "778d6fad4ca42c4a1aee58b3cc94126bd87cf007",
+  "source_count": 7,
+  "source_observation_at": "2026-10-22T20:44:17Z",
+  "spec_sha256": "87eac115f919eae4758841e23f93cf8a94f45669838d555a87daf63f69b9ec83",
+  "status": "BOUNDED_CANARY_PASSED",
+  "unique_payload_bytes": 45290
+}

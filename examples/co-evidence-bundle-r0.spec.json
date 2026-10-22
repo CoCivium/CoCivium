@@ -1,0 +1,341 @@
+{
+  "repository": "CoCivium/CoCivium",
+  "commit": "778d6fad4ca42c4a1aee58b3cc94126bd87cf007",
+  "tree": "bc776b7c966288fdb2b93b462d144cd56a452ad3",
+  "observed_at": "2026-10-22T20:44:17Z",
+  "sources": [
+    {
+      "path": "docs/Architecture/COROLE_SPACE_PREVIEW_R0.md",
+      "git_blob_sha1": "22959b58ae09b1ff47fad1c4f39944fd141c3ad5",
+      "encoding": "utf-8",
+      "locator": "https://github.com/CoCivium/CoCivium/blob/778d6fad4ca42c4a1aee58b3cc94126bd87cf007/docs/Architecture/COROLE_SPACE_PREVIEW_R0.md",
+      "sha256": "4eb0d66fb02ccde612dae199b9ef0ed4a3ece8613fc065b4487023a0592f4975",
+      "bytes": 9427,
+      "observed_at": "2026-10-22T20:44:17Z",
+      "classification": "PUBLIC_REPOSITORY_ARTIFACT",
+      "byte_verification": "RETURNED_UTF8_BYTES_MATCH_REPORTED_GIT_BLOB_AND_PINNED_TREE",
+      "id": "role_preview",
+      "confidentiality": "PUBLIC",
+      "custody_scope": "CoCivium/CoCivium-public",
+      "version": "778d6fad4ca42c4a1aee58b3cc94126bd87cf007"
+    },
+    {
+      "path": "docs/Architecture/COSOURCE_GRAPH_R0.md",
+      "git_blob_sha1": "301c8951e566de9f9ec0bde16a6b991bd177bd47",
+      "encoding": "utf-8",
+      "locator": "https://github.com/CoCivium/CoCivium/blob/778d6fad4ca42c4a1aee58b3cc94126bd87cf007/docs/Architecture/COSOURCE_GRAPH_R0.md",
+      "sha256": "3ad2c139c43cb5da4c4274966b8e1d1bb42e96ef6570f892d3e64c84cb6529e1",
+      "bytes": 6234,
+      "observed_at": "2026-10-22T20:44:17Z",
+      "classification": "PUBLIC_REPOSITORY_ARTIFACT",
+      "byte_verification": "RETURNED_UTF8_BYTES_MATCH_REPORTED_GIT_BLOB_AND_PINNED_TREE",
+      "id": "source_graph",
+      "confidentiality": "PUBLIC",
+      "custody_scope": "CoCivium/CoCivium-public",
+      "version": "778d6fad4ca42c4a1aee58b3cc94126bd87cf007"
+    },
+    {
+      "path": "docs/Architecture/COLINEAGE_COMPACTOR_R0.md",
+      "git_blob_sha1": "c64c1b54b124a09dc171b9136f59e4ef830522b0",
+      "encoding": "utf-8",
+      "locator": "https://github.com/CoCivium/CoCivium/blob/778d6fad4ca42c4a1aee58b3cc94126bd87cf007/docs/Architecture/COLINEAGE_COMPACTOR_R0.md",
+      "sha256": "2db341284a3b7853fa6f6ae7cec5a972bc5523b8a8ede0f987e33937a903422b",
+      "bytes": 5903,
+      "observed_at": "2026-10-22T20:44:17Z",
+      "classification": "PUBLIC_REPOSITORY_ARTIFACT",
+      "byte_verification": "RETURNED_UTF8_BYTES_MATCH_REPORTED_GIT_BLOB_AND_PINNED_TREE",
+      "id": "lineage_compactor",
+      "confidentiality": "PUBLIC",
+      "custody_scope": "CoCivium/CoCivium-public",
+      "version": "778d6fad4ca42c4a1aee58b3cc94126bd87cf007"
+    },
+    {
+      "path": "docs/Architecture/COEVIDENCE_RECEIPT_GUARD_R0.md",
+      "git_blob_sha1": "f79b22449ffe8c3f4b9c1361cc22ad7a47545b50",
+      "encoding": "utf-8",
+      "locator": "https://github.com/CoCivium/CoCivium/blob/778d6fad4ca42c4a1aee58b3cc94126bd87cf007/docs/Architecture/COEVIDENCE_RECEIPT_GUARD_R0.md",
+      "sha256": "745d73ab80facbb0532559dd0bf3928f5f8d4da5135bb6257a73a7612b1ee7dd",
+      "bytes": 4580,
+      "observed_at": "2026-10-22T20:44:17Z",
+      "classification": "PUBLIC_REPOSITORY_ARTIFACT",
+      "byte_verification": "RETURNED_UTF8_BYTES_MATCH_REPORTED_GIT_BLOB_AND_PINNED_TREE",
+      "id": "receipt_guard",
+      "confidentiality": "PUBLIC",
+      "custody_scope": "CoCivium/CoCivium-public",
+      "version": "778d6fad4ca42c4a1aee58b3cc94126bd87cf007"
+    },
+    {
+      "path": "docs/Architecture/COVIRTUAL_SESSION_MORPHOLOGY_R0.md",
+      "git_blob_sha1": "5dff7fff33f8637c3c333fdca360874db1e0bfe5",
+      "encoding": "utf-8",
+      "locator": "https://github.com/CoCivium/CoCivium/blob/778d6fad4ca42c4a1aee58b3cc94126bd87cf007/docs/Architecture/COVIRTUAL_SESSION_MORPHOLOGY_R0.md",
+      "sha256": "dfab57c6f27197a334198e6fde398754bc37ebefbbf880a495620a0fd382de48",
+      "bytes": 12963,
+      "observed_at": "2026-10-22T20:44:17Z",
+      "classification": "PUBLIC_REPOSITORY_ARTIFACT",
+      "byte_verification": "RETURNED_UTF8_BYTES_MATCH_REPORTED_GIT_BLOB_AND_PINNED_TREE",
+      "id": "session_morphology",
+      "confidentiality": "PUBLIC",
+      "custody_scope": "CoCivium/CoCivium-public",
+      "version": "778d6fad4ca42c4a1aee58b3cc94126bd87cf007"
+    },
+    {
+      "path": "schemas/cosource-record-v0.1.schema.json",
+      "git_blob_sha1": "c7ae7d1e8644c71f1529536d6a0cab17c0fe30c5",
+      "encoding": "utf-8",
+      "locator": "https://github.com/CoCivium/CoCivium/blob/778d6fad4ca42c4a1aee58b3cc94126bd87cf007/schemas/cosource-record-v0.1.schema.json",
+      "sha256": "577cffff4b42988c81ec840d5576a20518b88b9ee313244595f765ff723929bb",
+      "bytes": 3149,
+      "observed_at": "2026-10-22T20:44:17Z",
+      "classification": "PUBLIC_REPOSITORY_ARTIFACT",
+      "byte_verification": "RETURNED_UTF8_BYTES_MATCH_REPORTED_GIT_BLOB_AND_PINNED_TREE",
+      "id": "source_schema",
+      "confidentiality": "PUBLIC",
+      "custody_scope": "CoCivium/CoCivium-public",
+      "version": "778d6fad4ca42c4a1aee58b3cc94126bd87cf007"
+    },
+    {
+      "path": "schemas/cospawn-contract-v0.1.schema.json",
+      "git_blob_sha1": "df256b170c9f2503dd1188fb3a6767fef1dbed36",
+      "encoding": "utf-8",
+      "locator": "https://github.com/CoCivium/CoCivium/blob/778d6fad4ca42c4a1aee58b3cc94126bd87cf007/schemas/cospawn-contract-v0.1.schema.json",
+      "sha256": "28062b9c86edfb633c6c3eea3b1b71dea0307ff42692a93a5d05c7ffb90dad0b",
+      "bytes": 3034,
+      "observed_at": "2026-10-22T20:44:17Z",
+      "classification": "PUBLIC_REPOSITORY_ARTIFACT",
+      "byte_verification": "RETURNED_UTF8_BYTES_MATCH_REPORTED_GIT_BLOB_AND_PINNED_TREE",
+      "id": "spawn_schema",
+      "confidentiality": "PUBLIC",
+      "custody_scope": "CoCivium/CoCivium-public",
+      "version": "778d6fad4ca42c4a1aee58b3cc94126bd87cf007"
+    }
+  ],
+  "manifest_version": "CoEvidenceBundlePublicSourceManifestR0",
+  "scope": "Seven explicit public paths at one pinned commit; no private corpus or current-main truth assertion.",
+  "retrieval_caveat": "Git blob equality verifies UTF-8 re-encoded retrieval bytes against the pinned Git tree; hash equality does not establish claim truth, receiver adoption, or future availability.",
+  "repository_visibility_observed": {
+    "private": false,
+    "visibility": "public",
+    "method": "GitHub repository REST metadata fetched in this audit",
+    "observed_at": "2026-10-22T20:45:15Z"
+  },
+  "authority_scope": "OBSERVED_PINNED_REPOSITORY_BYTES_ONLY",
+  "format": "CoEvidenceBundleCanarySpecR0",
+  "fixture_metadata_status": "TEST_ONLY",
+  "fixture_description": "Seven advisory-seat source bindings and synthetic query claims/relations. They are not executed reviews, independent observations, or detected contradictions in these documents.",
+  "roles": [
+    {
+      "id": "proposal",
+      "operational_role": "WORKER",
+      "source_ids": [
+        "role_preview",
+        "source_graph",
+        "lineage_compactor",
+        "receipt_guard",
+        "session_morphology",
+        "source_schema",
+        "spawn_schema"
+      ]
+    },
+    {
+      "id": "formal",
+      "operational_role": "VERIFIER",
+      "source_ids": [
+        "role_preview",
+        "lineage_compactor",
+        "receipt_guard",
+        "spawn_schema"
+      ]
+    },
+    {
+      "id": "empirical",
+      "operational_role": "OBSERVER",
+      "source_ids": [
+        "role_preview",
+        "source_graph",
+        "receipt_guard"
+      ]
+    },
+    {
+      "id": "challenge",
+      "operational_role": "CHALLENGER",
+      "source_ids": [
+        "role_preview",
+        "source_graph",
+        "lineage_compactor",
+        "receipt_guard"
+      ]
+    },
+    {
+      "id": "perspective",
+      "operational_role": "TRANSLATOR",
+      "source_ids": [
+        "role_preview",
+        "session_morphology"
+      ]
+    },
+    {
+      "id": "provenance",
+      "operational_role": "VERIFIER",
+      "source_ids": [
+        "source_graph",
+        "source_schema",
+        "receipt_guard",
+        "lineage_compactor"
+      ]
+    },
+    {
+      "id": "synthesis",
+      "operational_role": "PROJECTION_COMPILER",
+      "source_ids": [
+        "role_preview",
+        "source_graph",
+        "lineage_compactor",
+        "receipt_guard",
+        "session_morphology",
+        "source_schema",
+        "spawn_schema"
+      ]
+    }
+  ],
+  "claims": [
+    {
+      "id": "fixture_shared_candidate",
+      "epistemic_class": "HYPOTHESIS",
+      "status": "CANDIDATE",
+      "source_ids": [
+        "source_graph",
+        "lineage_compactor"
+      ],
+      "valid_from": "2026-10-21T00:00:00Z",
+      "expires_at": null,
+      "receivers": [
+        "review_panel"
+      ]
+    },
+    {
+      "id": "fixture_index_candidate",
+      "epistemic_class": "HYPOTHESIS",
+      "status": "CANDIDATE",
+      "source_ids": [
+        "role_preview",
+        "receipt_guard"
+      ],
+      "valid_from": "2026-10-21T00:00:00Z",
+      "expires_at": null,
+      "receivers": [
+        "review_panel"
+      ]
+    },
+    {
+      "id": "fixture_projection",
+      "epistemic_class": "HYPOTHESIS",
+      "status": "CANDIDATE",
+      "source_ids": [
+        "session_morphology",
+        "spawn_schema",
+        "source_schema"
+      ],
+      "valid_from": "2026-10-21T00:00:00Z",
+      "expires_at": null,
+      "receivers": [
+        "review_panel"
+      ]
+    },
+    {
+      "id": "fixture_expired",
+      "epistemic_class": "HYPOTHESIS",
+      "status": "CANDIDATE",
+      "source_ids": [
+        "receipt_guard"
+      ],
+      "valid_from": "2026-10-21T00:00:00Z",
+      "expires_at": "2026-10-22T00:00:00Z",
+      "receivers": [
+        "review_panel"
+      ]
+    },
+    {
+      "id": "fixture_future",
+      "epistemic_class": "HYPOTHESIS",
+      "status": "CANDIDATE",
+      "source_ids": [
+        "source_graph"
+      ],
+      "valid_from": "2026-10-23T00:00:00Z",
+      "expires_at": null,
+      "receivers": [
+        "review_panel"
+      ]
+    },
+    {
+      "id": "fixture_historical",
+      "epistemic_class": "HYPOTHESIS",
+      "status": "HISTORICAL",
+      "source_ids": [
+        "role_preview"
+      ],
+      "valid_from": "2026-10-21T00:00:00Z",
+      "expires_at": null,
+      "receivers": [
+        "archive"
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "id": "derived_1",
+      "type": "derived_from",
+      "from": "fixture_index_candidate",
+      "to": "fixture_shared_candidate",
+      "resolution": "NOT_APPLICABLE",
+      "basis": "TEST_ONLY",
+      "ambiguity": ""
+    },
+    {
+      "id": "projection_1",
+      "type": "projection_of",
+      "from": "fixture_projection",
+      "to": "fixture_index_candidate",
+      "resolution": "NOT_APPLICABLE",
+      "basis": "TEST_ONLY",
+      "ambiguity": ""
+    },
+    {
+      "id": "cycle_1",
+      "type": "derived_from",
+      "from": "fixture_shared_candidate",
+      "to": "fixture_projection",
+      "resolution": "NOT_APPLICABLE",
+      "basis": "TEST_ONLY",
+      "ambiguity": ""
+    },
+    {
+      "id": "contradiction_1",
+      "type": "contradicts",
+      "from": "fixture_shared_candidate",
+      "to": "fixture_index_candidate",
+      "resolution": "UNRESOLVED",
+      "basis": "TEST_ONLY",
+      "ambiguity": "Synthetic unresolved tradeoff, not a detected document contradiction."
+    },
+    {
+      "id": "contradiction_2",
+      "type": "contradicts",
+      "from": "fixture_index_candidate",
+      "to": "fixture_shared_candidate",
+      "resolution": "UNRESOLVED",
+      "basis": "TEST_ONLY",
+      "ambiguity": "Reverse edge deliberately retained; no symmetry inference."
+    },
+    {
+      "id": "resolved_1",
+      "type": "contradicts",
+      "from": "fixture_historical",
+      "to": "fixture_projection",
+      "resolution": "RESOLVED",
+      "basis": "TEST_ONLY",
+      "ambiguity": "Synthetic resolved edge remains in source metadata."
+    }
+  ]
+}

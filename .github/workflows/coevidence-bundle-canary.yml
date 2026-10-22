@@ -1,0 +1,46 @@
+name: CoEvidence Bundle Canary
+
+permissions:
+  contents: read
+
+on:
+  pull_request:
+    paths:
+      - "scripts/CoEvidenceBundleCanaryR0.py"
+      - "tests/test_evidence_bundle_canary.py"
+      - "examples/co-evidence-bundle-r0.spec.json"
+      - "docs/Architecture/COEVIDENCE_BUNDLE_CANARY_R0.md"
+      - "docs/Operations/fixtures/coevidence-bundle-r0-20261022.json"
+      - ".github/workflows/coevidence-bundle-canary.yml"
+  push:
+    paths:
+      - "scripts/CoEvidenceBundleCanaryR0.py"
+      - "tests/test_evidence_bundle_canary.py"
+      - "examples/co-evidence-bundle-r0.spec.json"
+      - "docs/Architecture/COEVIDENCE_BUNDLE_CANARY_R0.md"
+      - "docs/Operations/fixtures/coevidence-bundle-r0-20261022.json"
+      - ".github/workflows/coevidence-bundle-canary.yml"
+
+jobs:
+  evidence-bundle:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Check byte reconstruction and failure boundaries
+        run: python -B -m unittest discover -s tests -p test_evidence_bundle_canary.py -v
+      - name: Read the pinned public corpus
+        uses: actions/checkout@v4
+        with:
+          ref: 778d6fad4ca42c4a1aee58b3cc94126bd87cf007
+          path: pinned-corpus
+          persist-credentials: false
+      - name: Re-run the bounded public corpus experiment
+        run: >-
+          python -B scripts/CoEvidenceBundleCanaryR0.py
+          --spec examples/co-evidence-bundle-r0.spec.json
+          --source-root pinned-corpus
+          > "$RUNNER_TEMP/coevidence-bundle-current-run.json"
