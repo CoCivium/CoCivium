@@ -149,6 +149,57 @@ Capable sessions should subscribe to relevant domains in [CoAll GitHub Evolution
 `ALL_SESSIONS_CAN_CONTRIBUTE_NE_ALL_SESSIONS_MUTATE_ALL_SURFACES`  
 `CURRENTNESS_FOR_ALL_NE_CONTENT_FOR_ALL`
 
+
+## Research recovery before absence claims or rebuilds
+
+Before a material claim that prior work, an agent, a result, or an implementation
+is absent, or before replacing/repeating it, perform a bounded evidence readback:
+
+1. Name the decision and the evidence that would change it.
+2. Bind the current repository head and load the relevant subscription/currentness
+   paths from `ai/session-bootstrap.json`. Treat memory as a pointer cache.
+3. Read known exact source paths before broad search. Follow aliases, lineage and
+   supported successor links when discovery misses. Search snippets are discovery,
+   not a substitute for reading the relevant source.
+4. For runtime questions, separate this observer route, the named process,
+   heartbeat freshness, task progress and receiver pickup. An unavailable route
+   does not establish that an agent stopped.
+5. Check later receipts and descendant satisfaction before replay or replacement.
+   Preserve dated observations rather than letting the newest label erase history.
+6. Stop when evidence supports the named decision and material contradictions are
+   exposed, or when remaining authorized sources are inaccessible or additional
+   search is unlikely to change the decision. Report the coverage boundary.
+
+Return a compact readback: decision; exact sources/versions actually inspected;
+alternatives or contradictions; unresolved access/currentness; next bounded deed.
+Use the existing CoResearchEvidence contract for material research claims and the
+existing session writeback/fan-in path for material shared deltas. Do not create a
+parallel index, registry or worker merely because this session missed the source.
+
+Use explicit states: `NOT_FOUND_IN_SEARCH`, `INACCESSIBLE`, `STALE`,
+`CONTRADICTED`, `VERIFIED_FOR_SCOPE`. Reserve scoped absence for an authoritative,
+bounded inventory with explicit coverage and time; never infer global absence.
+
+### CoResearchGate+ Extraordinary
+
+For an extraordinary claim, bind primary observations, independent
+corroboration and a prior-art review. Seek counterevidence through adversarial
+review, replication and prospective falsifiers. Do not promote the claim without
+domain-specific verification. Preserve source identity, dates, uncertainty and
+receipts. When a required check is missing, retain the claim as a candidate and
+state the missing verification; search volume, agreement and schema validity
+cannot substitute for domain evidence.
+
+Acceptance requires a separate receiving session/carrier to read the same bound
+checkpoint, identify completed/blocked work, and resume a bounded task without
+human context relay or duplicate execution. A documentation or CI pass is not
+that adoption proof.
+
+`RESEARCH_READBACK_BEFORE_ABSENCE_OR_REBUILD`  
+`OBSERVER_UNAVAILABLE_NE_AGENT_STOPPED`  
+`SEARCH_MISS_NE_OBJECT_ABSENCE`  
+`DOCUMENTED_PROTOCOL_NE_SESSION_ADOPTION`
+
 ## GitHub search/currentness boundary
 
 GitHub code search is a discovery aid, not a currentness oracle. Fresh objects may exist at the bound repository head before the search index exposes them.
