@@ -253,6 +253,17 @@
       ],
       "successor": "EXACT_RESULT_POINTER_AND_LAST_READ_VERSION",
       "failure": "REPORT_WRITEBACK_OR_PICKUP_UNAVAILABLE__DO_NOT_CLAIM_SHARED_RETENTION"
+    },
+    "validator": {
+      "path": "scripts/validate_coresearch_evidence_r0.py",
+      "strict_flags": [
+        "--require-recovery",
+        "--require-extraordinary-gate"
+      ],
+      "fixture": "examples/coresearch-recovery.example.json",
+      "tests": "scripts/test_coresearch_recovery.py",
+      "scope": "DECLARED_RECORD_CONSISTENCY_ONLY",
+      "runtime_invocation": "RECEIVER_OPT_IN_REQUIRED__GLOBAL_ADOPTION_UNPROVEN"
     }
   }
 }
