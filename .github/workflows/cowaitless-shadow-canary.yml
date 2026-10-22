@@ -4,6 +4,11 @@ on:
   pull_request:
     paths:
       - "scripts/CoLogicalSpawnPlanner.py"
+      - "tests/test_logical_spawn_identity.py"
+      - "docs/Operations/fixtures/coevo-logical-spawn-r2-input.json"
+      - "ai/evolution-lanes.json"
+      - "ai/repo-role-map.json"
+      - ".github/workflows/cowaitless-shadow-canary.yml"
       - "scripts/CoLogicalSpawnPlannerWaitlessCanaryR2B.py"
       - "scripts/CoFleetProjectionCompilerR4A.py"
       - "ai/cofleet-projection-policy.json"
@@ -15,6 +20,11 @@ on:
   push:
     paths:
       - "scripts/CoLogicalSpawnPlanner.py"
+      - "tests/test_logical_spawn_identity.py"
+      - "docs/Operations/fixtures/coevo-logical-spawn-r2-input.json"
+      - "ai/evolution-lanes.json"
+      - "ai/repo-role-map.json"
+      - ".github/workflows/cowaitless-shadow-canary.yml"
       - "scripts/CoLogicalSpawnPlannerWaitlessCanaryR2B.py"
 
 jobs:
@@ -29,5 +39,7 @@ jobs:
         run: python -m py_compile scripts/CoLogicalSpawnPlanner.py scripts/CoLogicalSpawnPlannerWaitlessCanaryR2B.py scripts/CoFleetProjectionCompilerR4A.py
       - name: Prove held effect does not block shadow verification
         run: python scripts/CoLogicalSpawnPlannerWaitlessCanaryR2B.py
+      - name: Preserve claim identity and hold ambiguous inputs
+        run: python -m unittest discover -s tests -p test_logical_spawn_identity.py -v
       - name: Prove shadow work is visible but not a human blocker
         run: python scripts/CoFleetProjectionCompilerR4A.py --selftest
