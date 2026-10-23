@@ -14,6 +14,9 @@
 - Copies carry `resource_id`, `epistemic`, `lifecycle`, `effect_authority: NONE`, optional public URL, and `next_proof`.
 - Offline browser interface with no fetch, analytics, login, model API calls, autonomous input action, or background monitoring. Clipboard access occurs only on an explicit click; a manual-copy fallback is shown if clipboard permission is unavailable.
 - The centred moustache is a visual identifier, not a claim of measured resource efficiency.
+- The **safe capsule** button also supports an explicit browser middle-click (`auxclick`, button 1). A thumb button works only when the user's mouse or OS already maps it to middle-click. The handler belongs to the visible copy control, not the entire page, and requests no mouse remapping, remote publication or clipboard read.
+- Keyboard Enter/Space and ordinary click remain available. If the browser blocks clipboard writing, the text is shown for manual copy. Browser behavior and a physical thumb button on a user's Mac/X2 still require separate device testing.
+
 
 ## Validate
 
