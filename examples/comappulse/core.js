@@ -43,10 +43,10 @@
     }
     return {nodes:graph.nodes.length,edges:graph.edges.length,receivers:graph.receivers.length};
   }
-  const completions=['CoAckRAW+','CoMap+','CoOrbWare+','CoQuanta+','CoSubscriptionEcology+','CoVirtualSession+','CoTime+','CoPrivacy+','CoStretch+','CoReWis+'];
+  const completions=['CoAckRAW+','CoMap+','CoOrbWare+','CoQuanta+','CoSubscriptionEcology+','CoVirtualSession+','CoTime+','CoPrivacy+','CoStretch+','CoReWis+','CoOmniIO+','CoBetween+','CoNotSpace+','CoDvl+','CoET+','CoSpirit+','CoG_d+'];
   function predict(input,cursor,enabled){
     if(!enabled||typeof input!=='string'||!Number.isInteger(cursor)||cursor<0||cursor>input.length)return null;
-    const left=input.slice(0,cursor), match=left.match(/(?:^|[^A-Za-z0-9+])([A-Za-z][A-Za-z0-9+]{1,})$/);
+    const left=input.slice(0,cursor), match=left.match(/(?:^|[^A-Za-z0-9+])([A-Za-z][A-Za-z0-9+_]{1,})$/);
     if(!match)return null;
     const part=match[1];
     const target=completions.find(x=>x.toLowerCase().startsWith(part.toLowerCase())&&x.length>part.length);
@@ -55,6 +55,8 @@
   function accept(input,cursor,proposal){
     ok(proposal!==null&&proposal!==undefined&&typeof proposal.suffix==='string'&&proposal.cursor===cursor,'NO_VALID_PREDICTION');
     ok(typeof input==='string'&&cursor>=0&&cursor<=input.length,'BAD_CURSOR');
+    const current=predict(input,cursor,true);
+    ok(current&&current.suffix===proposal.suffix&&current.term===proposal.term,'STALE_OR_MISMATCHED_PREDICTION');
     return input.slice(0,cursor)+proposal.suffix+input.slice(cursor);
   }
   function routePlan(graph){
