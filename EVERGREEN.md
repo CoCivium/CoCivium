@@ -6,6 +6,10 @@
 
 CoCivium / CoAll is public R&D. This page is a living front door to the most useful proof-backed work we currently have. Nothing here is a claim of completeness, universal adoption, independent validation, or finished product status.
 
+![EVO ALL BETTERS + centred moustache: publish, test, learn, improve](assets/evoall/evo_all_betters_moustache_20261023.svg)
+
+**EVO ALL BETTERS +** is an evidence-first working banner, not a claim of complete integration, deployment, or adoption. [Machine-readable benchmark history](ai/benchmark-evo.jsonl) retains PASS, FAIL, and HELD records with their proof boundaries.
+
 ## CoHereNow
 
 ### PASS · CoAndrewFirst+ R0
