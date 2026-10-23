@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; connect-src 'none'; img-src 'self' data:; base-uri 'none'; form-action 'none'">
+<title>CoPreCursor+ | CoMap+ shadow input R0</title>
+<style>
+:root{color-scheme:dark;font-family:system-ui,"Segoe UI",Arial,sans-serif;background:#071522;color:#eaf5fa}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 50% 0%,#17334a,#071522 75%);min-height:100vh}
+main{max-width:1120px;margin:auto;padding:clamp(15px,3vw,32px)}h1{font-size:clamp(27px,4vw,46px);line-height:1.12;margin:7px 0 12px}
+p{line-height:1.55;color:#c7dbe3;margin:9px 0 12px}.hero{border:1px solid #4b6876;background:#112c3b;border-radius:18px;display:grid;grid-template-columns:1fr auto;gap:22px;align-items:center;padding:25px}
+.overline{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#f0c87b;font-weight:800}.moustache{width:146px;max-width:25vw}
+.tagrow,.controls,.viewnav{display:flex;gap:9px;flex-wrap:wrap;align-items:center}.tag{font-size:12px;color:#c9dfea;border:1px solid #507080;border-radius:50px;padding:7px 10px}
+.grid{display:grid;grid-template-columns:minmax(285px,1fr) minmax(330px,1.12fr);gap:16px;margin-top:18px}
+.panel{border:1px solid #385665;border-radius:16px;background:#0d2332;padding:19px;min-width:0}
+.panel h2{font-size:18px;margin:0 0 10px}label{display:block;font-size:14px;font-weight:700}
+textarea{display:block;width:100%;min-height:118px;resize:vertical;margin:9px 0 12px;background:#061523;color:#f2f9fd;border:1px solid #668796;border-radius:10px;padding:13px;font:15px/1.55 ui-monospace,Consolas,monospace}
+button{background:#20495d;border:1px solid #82a8b7;color:#f6ffff;font:inherit;font-weight:700;padding:10px 13px;border-radius:9px;cursor:pointer}button:hover{background:#2a6072}button:focus-visible,textarea:focus-visible,a:focus-visible{outline:3px solid #fbd18b;outline-offset:2px}button:disabled{opacity:.48;cursor:not-allowed}
+.secondary{background:#142936}.small{font-size:12px;color:#a8c1cd}.candidate{background:#182f3f;border:1px solid #6a8791;padding:12px;border-radius:12px;min-height:106px;margin-top:14px}
+.candidate strong{display:block;font-size:13px;color:#f9d899;text-transform:uppercase;letter-spacing:.07em}.candidate code{display:block;white-space:pre-wrap;overflow-wrap:anywhere;margin-top:10px;font-size:14px;color:#f0f7fc}
+.viewnav{margin-bottom:9px}.viewnav button[aria-pressed=true]{background:#e4bd75;color:#142330;border-color:#f7d49c}
+.diagram{border:1px solid #365667;border-radius:13px;background:#091925;overflow:hidden;min-height:300px}.diagram svg{display:block;width:100%;height:auto}
+.diagram text{font:13px system-ui,"Segoe UI",sans-serif;fill:#dbe8ef}.diagram .type{font-size:10px;fill:#a8c0ca}.diagram .node{fill:#1a3c4d;stroke:#77a5b2;stroke-width:2}.diagram .held{fill:#382d35;stroke:#d4a875}.diagram .hyp{fill:#322d43;stroke:#b1a0df}
+.diagram .solid{stroke:#a7d7df;stroke-width:2.8;fill:none}.diagram .dashed{stroke:#e1c18b;stroke-width:2;stroke-dasharray:7 7;fill:none}
+.graphlabel{font-size:12px;color:#d8c299;padding:7px 12px;border-top:1px solid #365667}
+.list{display:grid;gap:9px;margin:10px 0 0;padding:0;list-style:none}.list li{border:1px solid #355464;background:#112a38;padding:11px;border-radius:11px;color:#cae0e7;font-size:13px}
+pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#061624;color:#cee7ea;border:1px solid #3a6171;border-radius:10px;padding:12px;font-size:12px;max-height:250px;overflow:auto}
+.notice{border-left:3px solid #d6b16d;padding:9px 12px;background:#30291e;color:#f9e1b4;font-size:13px}.foot{margin-top:23px;color:#a1bdc9;font-size:12px;line-height:1.65;border-top:1px solid #3e5e69;padding-top:16px}
+a{color:#a0e8e7}
+body[data-view="glance"] .diagram .detail-node,body[data-view="ambient"] .diagram .detail-node{opacity:.26}
+body[data-view="ambient"] .controls,body[data-view="ambient"] #trail{opacity:.75}
+@media(max-width:760px){.hero{grid-template-columns:1fr}.moustache{width:108px}.grid{grid-template-columns:1fr}.panel{padding:14px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+</style>
+</head>
+<body data-view="glance">
+<main>
+<header class="hero">
+<div><div class="overline">EVO ALL BETTERS + / Offline public-safe canary</div>
+<h1>CoPreCursor+ <span style="color:#f1d394">→</span> CoMap+</h1>
+<p>See a likely continuation <strong>past your cursor</strong> before you decide whether to use it. The relationship map shows raw input, prediction, consent and receiver boundaries.</p></div>
+<svg class="moustache" viewBox="0 0 300 140" role="img" aria-label="Centre gold moustache, EVO ALL BETTERS plus"><path fill="#f0c37c" d="M150 52C111 18 81 30 61 69 47 94 25 82 11 60 6 100 36 131 75 120c35-10 60-38 75-56 15 18 40 46 75 56 39 11 69-20 64-60-14 22-36 34-50 9-20-39-50-51-89-17Z"/></svg>
+</header>
+<div class="tagrow" style="margin-top:14px"><span class="tag">SHADOW ONLY</span><span class="tag">NO NETWORK</span><span class="tag">NO GLOBAL INPUT</span><span class="tag">NO OS CHANGES</span><span class="tag">NO AUTO-SEND</span></div>
+<div class="grid">
+<section class="panel" aria-labelledby="input-title">
+<h2 id="input-title">CoAckRAW+ | Private demonstration editor</h2>
+<p class="small">Only text typed into this field is considered. Only this page keeps your draft and up to eight pre-acceptance snapshots in memory until reset or close. No network, disk, or external delivery is used. The initial text is fictitious.</p>
+<label for="draft">Your local draft</label>
+<textarea id="draft" spellcheck="false">Test one CoMap relation, then </textarea>
+<div class="controls"><button id="preview" type="button">Preview next</button><button id="accept" type="button" disabled>Accept in this field</button><button id="reject" type="button" class="secondary" disabled>Reject</button><button id="undo" type="button" class="secondary" disabled>Undo last acceptance</button><button id="reset" type="button" class="secondary">Reset example</button></div>
+<div class="candidate" aria-live="polite"><strong id="prediction-state">No current prediction</strong><code id="prediction">Type or position the caret to see one hypothetical continuation.</code></div>
+<p class="notice">Prediction never types, posts, sends, executes, or expands permission by itself. Accept changes only this demo editor after your click.</p>
+</section>
+<section class="panel" aria-labelledby="map-title">
+<h2 id="map-title">One object · typed relationships · temporal trails</h2>
+<div class="viewnav" aria-label="Projection mode"><button type="button" data-mode="glance" aria-pressed="true">Glance</button><button type="button" data-mode="relations" aria-pressed="false">Relations</button><button type="button" data-mode="time" aria-pressed="false">Time</button><button type="button" data-mode="ambient" aria-pressed="false">Ambient</button></div>
+<div class="diagram">
+<svg viewBox="0 0 680 366" role="img" aria-labelledby="graph-title graph-desc">
+<title id="graph-title">CoMap+ local intent and predicted continuation</title>
+<desc id="graph-desc">Source RAW leads to a proposal; proposal is conditional and held from the receiver unless deliberately accepted. Provenance and currentness remain separate.</desc>
+<defs><marker id="a" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="#a7d7df"/></marker><marker id="b" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="#e1c18b"/></marker></defs>
+<path class="solid" d="M135 100 L235 100" marker-end="url(#a)"/><path class="dashed" d="M380 100 L500 100" marker-end="url(#b)"/>
+<path class="solid" d="M306 136 L306 226" marker-end="url(#a)"/>
+<path class="dashed" d="M375 258 L500 258" marker-end="url(#b)"/>
+<g><rect class="node" x="22" y="64" rx="11" width="120" height="72"/><text x="39" y="94">ACK RAW</text><text class="type" x="39" y="115">local source</text></g>
+<g><rect class="node" x="230" y="64" rx="11" width="150" height="72"/><text x="246" y="94">Prediction</text><text class="type" x="246" y="115" id="g-predict">SHADOW / not typed</text></g>
+<g><rect class="held" x="500" y="64" rx="11" width="145" height="72"/><text x="516" y="94">Receiver</text><text class="type" x="516" y="115">HELD / no route</text></g>
+<g class="detail-node"><rect class="node" x="230" y="226" rx="11" width="150" height="72"/><text x="246" y="256">CoQuanta</text><text class="type" x="246" y="277">typed proof packet</text></g>
+<g class="detail-node"><rect class="hyp" x="500" y="226" rx="11" width="145" height="72"/><text x="516" y="256">CoMould+</text><text class="type" x="516" y="277">hypothesis only</text></g>
+<text class="type" x="150" y="88">interprets</text><text class="type" x="399" y="88">not authorized</text><text class="type" x="319" y="191">provenance</text><text class="type" x="386" y="248">explores</text>
+</svg>
+<div class="graphlabel" id="map-state" role="status">Glance: one local input, no receiver effect.</div>
+</div>
+<ul class="list" id="trail" aria-live="polite"><li>t0 · Public fixture loaded. No user input persisted.</li><li>t1 · Shadow continuation available on the editor input only.</li><li>t2 · Receiver remains unbound, regardless of preview or acceptance.</li></ul>
+</section>
+</div>
+<section class="panel" style="margin-top:16px">
+<h2>CoAckRAW+ / CoReWis+ receipt</h2>
+<div class="controls"><button type="button" id="receipt">Prepare local receipt (no draft content)</button><button type="button" class="secondary" id="hide-receipt">Hide</button></div>
+<pre id="receipt-output" hidden aria-live="polite"></pre>
+<p class="small">A generated receipt records only bounded counts, state and schema. It deliberately excludes your raw text, cursor content, private source paths and identities.</p>
+</section>
+<footer class="foot">One source graph, many optional projections. Surface is not authority. CoQuanta is a typed relation packet, not physical quantum evidence. CoMould+, G_d and strange-clay metaphors are speculative idea generators until tested. No data is sent to CoVIA, .nodes, sites, providers or any account by this offline file. <a href="https://github.com/CoCivium/CoCivium/blob/main/docs/Architecture/CORELATIONAL_UX_PREDICTIVE_INPUT_R0.md">Architecture and boundaries</a> · FOSS Forever · CoGoAll · privacy by design.</footer>
+</main>
+<script>
+// PURE_BEGIN
+function propose(raw, caret){
+ const pos=Math.max(0,Math.min(raw.length,Number.isInteger(caret)?caret:raw.length));
+ const past=raw.slice(0,pos).toLowerCase();
+ const rules=[
+  {re:/\b(g_d|mould|strange|clay|spirit)\b/,text:"frame the idea as a hypothesis and design one falsifiable challenge"},
+  {re:/\b(broadcast|github|gmail|receiver|covia|publish)\b/,text:"qualify the receiver, deduplicate and require exact readproof"},
+  {re:/\b(session|virtual|provider|account)\b/,text:"preserve a recoverable session capsule and test the fallback"},
+  {re:/\b(claude|llama|ollama|model|pi)\b/,text:"compare authorized model adapters with a local deterministic baseline"},
+  {re:/\b(evidence|proof|receipt|hash)\b/,text:"verify a source hash and record PASS, FAIL or HELD"},
+  {re:/\b(map|comap|orb|coorb|quanta|coquanta|relation)\b/,text:"display the source, typed relation and unresolved receiver boundary"}
+ ];
+ const match=rules.find(r=>r.re.test(past));
+ return {schema:"CoPreCursor.ShadowProposal.v0.1",caret:pos,candidate:match?match.text:"attach provenance, uncertainty and one safe next proof",state:"SHADOW_ONLY",effect_authority:"NONE",scope:"THIS_FIELD_ONLY"};
+}
+function insertLocally(raw, caret, candidate) {
+ const pos=Math.max(0,Math.min(raw.length,caret));
+ return raw.slice(0,pos)+candidate+raw.slice(pos);
+}
+function makeReceipt(stats){
+ return {schema:"CoPreCursor.LocalReceipt.v0.1",effects:0,remote_receivers:0,raw_included:false,input_scope:"USER_CONTROLLED_DEMO_EDITOR",source_count:stats.sources,previews:stats.previews,accepted:stats.accepted,rejected:stats.rejected,undone:stats.undone,authority:"NONE",claim_boundary:"PREDICTED_NE_TYPED; PREDICTED_NE_AUTHORIZED; LOCAL_RECEIPT_NE_PROVIDER_ACK"};
+}
+// PURE_END
+const field=document.getElementById("draft"),stateLabel=document.getElementById("prediction-state"),previewText=document.getElementById("prediction");
+const accept=document.getElementById("accept"),reject=document.getElementById("reject"),trail=document.getElementById("trail"),mapState=document.getElementById("map-state");
+let current=null,events=[],rawSnapshots=[],stats={sources:1,previews:0,accepted:0,rejected:0,undone:0};
+const event=(line)=>{events.push(line);while(events.length>4)events.shift();trail.replaceChildren(...events.map(x=>{const li=document.createElement("li");li.textContent=x;return li}))};
+function preview(){
+ const editorCaret=document.activeElement===field?field.selectionStart:field.value.length;current=propose(field.value,editorCaret);stats.previews++;
+ stateLabel.textContent="SHADOW PROPOSAL · not typed";
+ previewText.textContent=current.candidate;
+ accept.disabled=false;reject.disabled=false;
+ document.getElementById("g-predict").textContent="SHADOW / not typed";
+ event("t"+(stats.previews+stats.accepted+stats.rejected)+" · Hypothesis prepared at cursor, not sent.");
+}
+function clearCandidate(){current=null;accept.disabled=true;reject.disabled=true;stateLabel.textContent="No current prediction";previewText.textContent="Type or position the caret to see one hypothetical continuation.";}
+document.getElementById("preview").addEventListener("click",preview);
+field.addEventListener("input",preview);
+field.addEventListener("click",()=>{if(current)preview()});
+accept.addEventListener("click",()=>{if(!current)return;const raw=field.value;const p=current;rawSnapshots.push({raw,caret:p.caret});if(rawSnapshots.length>8)rawSnapshots.shift();document.getElementById("undo").disabled=false;field.value=insertLocally(raw,p.caret,p.candidate);field.focus();field.setSelectionRange(p.caret+p.candidate.length,p.caret+p.candidate.length);stats.accepted++;document.getElementById("g-predict").textContent="ACCEPTED / local only";event("t"+(stats.previews+stats.accepted+stats.rejected)+" · Candidate accepted in local editor. RAW snapshot kept in bounded page memory until reset or close.");clearCandidate();mapState.textContent="Local editor changed after explicit acceptance. Receiver still HELD.";});
+document.getElementById("undo").addEventListener("click",()=>{const prev=rawSnapshots.pop();if(!prev)return;field.value=prev.raw;field.focus();field.setSelectionRange(prev.caret,prev.caret);stats.undone++;document.getElementById("undo").disabled=rawSnapshots.length===0;clearCandidate();event("t"+(stats.previews+stats.accepted+stats.rejected+stats.undone)+" · Exact prior RAW text restored locally.");});
+reject.addEventListener("click",()=>{if(!current)return;stats.rejected++;event("t"+(stats.previews+stats.accepted+stats.rejected)+" · Candidate rejected, draft untouched.");clearCandidate();});
+document.getElementById("reset").addEventListener("click",()=>{field.value="Test one CoMap relation, then ";stats={sources:1,previews:0,accepted:0,rejected:0,undone:0};rawSnapshots=[];document.getElementById("undo").disabled=true;events=[];clearCandidate();document.getElementById("g-predict").textContent="SHADOW / not typed";mapState.textContent="Glance: one local input, no receiver effect.";event("t0 · Fixture reset, no external effects.");});
+document.querySelectorAll("[data-mode]").forEach(button=>button.addEventListener("click",()=>{const mode=button.dataset.mode;document.body.dataset.view=mode;document.querySelectorAll("[data-mode]").forEach(b=>b.setAttribute("aria-pressed",String(b===button)));mapState.textContent=({"glance":"Glance: minimal status, no effect.","relations":"Relations: typed sources, hypotheses and holds.","time":"Time: source, proposal, accept/reject trail.","ambient":"Ambient: quiet privacy-safe projection only."})[mode];}));
+document.getElementById("receipt").addEventListener("click",()=>{const out=document.getElementById("receipt-output");out.hidden=false;out.textContent=JSON.stringify(makeReceipt(stats),null,2);});
+document.getElementById("hide-receipt").addEventListener("click",()=>{document.getElementById("receipt-output").hidden=true;});
+</script>
+</body></html>
