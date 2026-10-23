@@ -1,0 +1,69 @@
+{
+  "format": "CoGoAllEvergreenReceiverManifestR2",
+  "observed_at": "2026-10-23T03:00:58Z",
+  "broadcast_tag": "EVO_ALL_BETTERS_PLUS",
+  "visual_signal": {
+    "label": "middle moust thumb",
+    "semantics": "BROADCAST_TAG_AND_VISUAL_SIGNAL_ONLY__NOT_A_RECEIVER",
+    "published_asset": "assets/evoall/evo_all_betters_moustache_20261023.svg",
+    "evidence_ref": "https://github.com/CoCivium/CoCivium/blob/main/assets/evoall/evo_all_betters_moustache_20261023.svg"
+  },
+  "publication": {
+    "evergreen": "EVERGREEN.md",
+    "benchmark_log": "ai/benchmark-evo.jsonl",
+    "status": "PUBLIC_GITHUB_PROJECTION"
+  },
+  "gmail": {
+    "new_route": {
+      "label": "Sheridan / Elix-Dan-Darren applied-AI collaboration",
+      "status": "PASS_SEND_RECEIPT",
+      "sent_message_id": "1a166b4c97778016"
+    },
+    "recent_duplicate_suppression": [
+      {
+        "label": "Andrew / CoAndrew+",
+        "status": "SKIPPED_RECENT_DUPLICATE",
+        "prior_message_id": "1a166aa410b78b06"
+      },
+      {
+        "label": "Darren and Bryan / governance-proof",
+        "status": "SKIPPED_RECENT_DUPLICATE",
+        "prior_message_id": "1a166aac70ea9491"
+      },
+      {
+        "label": "CoVIA Tom-Dianne-Darren",
+        "status": "SKIPPED_RECENT_DUPLICATE",
+        "prior_message_id": "1a166aadd21a7b12"
+      }
+    ],
+    "policy": "SEND_ONLY_TO_VERIFIED_MATERIALLY_RELEVANT_EXISTING_THREADS"
+  },
+  "requested_but_unverified_receivers": {
+    ".nodes": "HELD_NO_RECEIVER",
+    "nodes": "HELD_NO_RECEIVER",
+    ".sites": "HELD_NO_RECEIVER",
+    "sites": "HELD_NO_RECEIVER",
+    "dedicated_covia_transport": "HELD_NO_DEDICATED_RECEIVER"
+  },
+  "preserved_candidate_gates": [
+    "MEDIA_SIZE_GT_300KB",
+    "THUMB_OK",
+    "FFPROBE_PARSE",
+    "BLACKDETECT_0",
+    "GITHUB_HTTP_200_LT_2S",
+    "GMAIL_PRIMARY_LT_60S",
+    "ID_LOGGED",
+    "PI_COMPAT_LT_2S",
+    "CLAUDE_CREDENTIAL_PRESENCE_LT_1S",
+    "LLAMA_OLLAMA_PACKET_PARSE_LT_3S"
+  ],
+  "nonclaims": [
+    "VISUAL_TAG_NE_RECEIVER",
+    "SENT_NE_READ",
+    "SENT_NE_ACCEPTED",
+    "REQUESTED_CHANNEL_NE_EXISTING_RECEIVER",
+    "POINTER_NE_ACK",
+    "NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF",
+    "GITHUB_PUBLICATION_NE_UNIVERSAL_DISTRIBUTION"
+  ]
+}
