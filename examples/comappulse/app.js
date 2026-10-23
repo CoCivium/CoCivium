@@ -5,6 +5,9 @@
   const data=JSON.parse($('graph-data').textContent);
   const core=window.CoMapCore;
   const stats=core.validateGraph(data);
+  const omniData=JSON.parse($('omni-data').textContent);
+  const omni=window.CoOmniCore, omniStats=omni.validateOverlay(omniData,data);
+  const omniItems=omni.candidates(omniData,data);
   const map=new Map(data.nodes.map(n=>[n.id,n]));
   let mode='map', selected='comap', inspected=0, prediction=null, foundIds=null;
   const statusClass=state=>state==='HELD'?'held':state==='PROPOSED'||state==='CANDIDATE'||state==='DESIGN_ONLY'?'proposed':'documented';
@@ -63,6 +66,30 @@
   $('reset-input').addEventListener('click',()=>{cmd.value='';cmd.focus();foundIds=null;renderGraph();updateHint();});
   $('inspect-input').addEventListener('click',()=>{const words=cmd.value.toLowerCase().match(/[a-z0-9]+/g)||[];foundIds=new Set(data.nodes.filter(n=>words.some(w=>(n.title+' '+n.type+' '+n.id+' '+n.detail).toLowerCase().includes(w))).map(n=>n.id));
     $('mode-note').textContent=`Local query highlighted ${foundIds.size} of ${data.nodes.length} bounded entries; no remote discovery.`;renderGraph();});
+  function renderOmni(view){
+    const gating=new Set(['MISSING_PREREQUISITE','INTENTIONAL_BOUNDARY','REJECTED_INFERENCE']);
+    const frontier=new Set(['UNKNOWN_UNSURVEYED','HYPOTHESIS_ONLY']);
+    for(const name of ['all','gates','hypotheses'])$('omni-'+name).setAttribute('aria-pressed',String(name===view));
+    const chosen=omniItems.filter(i=>view==='all'||(view==='gates'&&gating.has(i.status))||(view==='hypotheses'&&frontier.has(i.status)));
+    const list=$('omni-list');list.replaceChildren();
+    for(const item of chosen){
+      const card=document.createElement('details');card.className='omni-card';card.dataset.kind=item.status;
+      const summary=document.createElement('summary');
+      const dest=item.to?map.get(item.to).title:item.frontier_label;
+      summary.textContent=map.get(item.from).title+'  /  '+dest;
+      card.append(summary);
+      const kind=document.createElement('span');kind.className='omni-label';kind.textContent=item.status+' · '+item.roles.join(' / ');card.append(kind);
+      const explanation=document.createElement('p');explanation.textContent=item.reason;card.append(explanation);
+      const proof=document.createElement('p');proof.textContent='Next discriminator: '+item.next_test;proof.className='next';card.append(proof);
+      if(item.source_ref&&omni.safeUrl(item.source_ref)){
+        const a=document.createElement('a');a.textContent='Public design reference';a.href=item.source_ref;a.target='_blank';a.rel='noopener noreferrer';card.append(a);
+      }
+      const rail=document.createElement('p');rail.textContent='ACTION: '+item.action+' · AUTHORITY: '+item.authority+' · RECEIVER ACK: '+item.receiver_ack;card.append(rail);
+      list.append(card);
+    }
+    $('omni-summary').textContent=`${chosen.length} of ${omniStats.total} bounded candidate relations shown. Zero observed remote effects. None are rendered as established map edges.`;
+  }
+  for(const name of ['all','gates','hypotheses'])$('omni-'+name).addEventListener('click',()=>renderOmni(name));
   $('json-info').textContent=`${stats.nodes} nodes | ${stats.edges} edges | ${stats.receivers} proposed or held receiver paths | snapshot ${data.snapshot} | no live source polling. All URLs are explicit public-source pointers.`;
-  renderRoutes();select('comap');setMode('map');updateHint();
+  renderRoutes();select('comap');setMode('map');updateHint();renderOmni('all');
 })();
