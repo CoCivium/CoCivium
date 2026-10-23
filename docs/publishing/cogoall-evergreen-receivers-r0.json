@@ -1,0 +1,56 @@
+{
+  "format": "CoGoAllEvergreenReceiverManifestR0",
+  "observed_at": "2026-10-23T02:36:06Z",
+  "publication_artifact": "EVERGREEN.md",
+  "requested_channels": {
+    "github": {
+      "status": "TARGET_VERIFIED",
+      "route": "CoCivium/CoCivium public repository",
+      "receipt_requirement": "merged commit plus post-merge CI"
+    },
+    "gmail": {
+      "status": "TARGETS_VERIFIED_FROM_EXISTING_THREADS",
+      "routes": [
+        {
+          "label": "Andrew / CoAndrew+",
+          "status": "VERIFIED_EXISTING_THREAD"
+        },
+        {
+          "label": "Darren and Bryan / governance-proof update",
+          "status": "VERIFIED_EXISTING_THREAD"
+        },
+        {
+          "label": "CoVIA Tom-Dianne-Darren / privacy-accessibility update",
+          "status": "VERIFIED_EXISTING_THREAD"
+        }
+      ],
+      "privacy": "recipient addresses intentionally omitted from public manifest"
+    },
+    "covia": {
+      "status": "ROUTE_VIA_EXISTING_GMAIL_THREAD",
+      "dedicated_transport": "UNOBSERVED"
+    },
+    "rels": {
+      "status": "BOUNDED_TO_VERIFIED_GITHUB_AND_GMAIL_ROUTES"
+    },
+    ".nodes": {
+      "status": "HELD_NO_RECEIVER"
+    },
+    "nodes": {
+      "status": "HELD_NO_RECEIVER"
+    },
+    ".sites": {
+      "status": "HELD_NO_RECEIVER"
+    },
+    "sites": {
+      "status": "HELD_NO_RECEIVER"
+    }
+  },
+  "nonclaims": [
+    "REQUESTED_CHANNEL_NE_EXISTING_RECEIVER",
+    "POINTER_NE_ACK",
+    "NO_DELIVERY_WITHOUT_RECEIPT",
+    "NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF",
+    "GITHUB_PUBLICATION_NE_UNIVERSAL_DISTRIBUTION"
+  ]
+}
