@@ -1,0 +1,13 @@
+{
+  "schema": "CoAll.VisualQA.Exception.v0.1",
+  "status": "BLOCKED_ENVIRONMENT_NOT_PASS",
+  "scope": "CoOrbWare_offline.html local visual/browser smoke",
+  "attempts": [
+    {"engine": "system Chromium headless CLI", "outcome": "TIMED_OUT", "limit_seconds": 30, "observation": "No screenshot produced; process terminated after timeout"},
+    {"engine": "Playwright bundled Chromium", "outcome": "MISSING_BINARY", "observation": "Required chromium_headless_shell executable absent; no page loaded"}
+  ],
+  "alternatives_verified": ["8/8 Node synthetic DOM checks", "static source/CSP/private-output review"],
+  "not_proven": ["screen reader", "touch", "desktop wallpaper", "real browser visual acceptance", "independent human reader"],
+  "next_gate": "Run on a supported real browser and inspect 1140px and 390px screenshots with privacy/bystander focus",
+  "external_effects": 0
+}
