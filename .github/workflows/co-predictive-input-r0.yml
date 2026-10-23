@@ -1,0 +1,43 @@
+name: CoPredictiveInput R0
+
+permissions:
+  contents: read
+
+on:
+  pull_request:
+    paths:
+      - "examples/copredictiveinput/**"
+      - "ai/co-predictive-input-r0.json"
+      - ".github/workflows/co-predictive-input-r0.yml"
+  push:
+    paths:
+      - "examples/copredictiveinput/**"
+      - "ai/co-predictive-input-r0.json"
+      - ".github/workflows/co-predictive-input-r0.yml"
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Run zero-effect browser smoke
+        run: node examples/copredictiveinput/tests/smoke-v2.cjs
+      - name: Validate machine boundary
+        run: |
+          node - <<'NODE'
+          const fs=require("node:fs");
+          const x=JSON.parse(fs.readFileSync("ai/co-predictive-input-r0.json","utf8"));
+          if(x.state!=="PUBLIC_CANDIDATE__LOCAL_ONLY__NO_RUNTIME_ADOPTION") throw new Error("state");
+          if(x.predictive_boundary.external_network!==false) throw new Error("network");
+          if(x.predictive_boundary.provider_calls!==false) throw new Error("provider");
+          if(x.predictive_boundary.automatic_send!==false) throw new Error("send");
+          if(x.predictive_boundary.automatic_execute!==false) throw new Error("execute");
+          if(x.predictive_boundary.persistent_browser_storage!==false) throw new Error("storage");
+          if(!x.rails.includes("PREDICTED_NE_AUTHORIZED")) throw new Error("rail");
+          if(!x.rails.includes("VIRTUALIZATION_NE_ACCOUNT_SAFE_TO_DELETE")) throw new Error("account rail");
+          console.log("PASS_COPREDICTIVEINPUT_R0_BOUNDARY");
+          NODE

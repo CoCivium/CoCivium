@@ -1,0 +1,407 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; img-src data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<title>CoPredictiveInput+ Shadow Canary R0</title>
+<style>
+:root{
+  color-scheme:dark;
+  --bg:#0b1116;--panel:#111a22;--panel2:#17232d;--text:#eef5f8;--muted:#9fb0bb;
+  --line:#4b6574;--accent:#8fd4ff;--good:#9ae6b4;--warn:#ffd27a;--bad:#ff9a9a;
+}
+*{box-sizing:border-box}
+body{margin:0;font:15px/1.45 system-ui,-apple-system,Segoe UI,sans-serif;background:var(--bg);color:var(--text)}
+main{max-width:1180px;margin:auto;padding:24px}
+h1{font-size:clamp(24px,4vw,42px);margin:.2em 0}
+h2{font-size:18px;margin:0 0 12px}
+p{max-width:78ch}
+a{color:var(--accent)}
+.grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(320px,.9fr);gap:18px}
+@media(max-width:880px){.grid{grid-template-columns:1fr}}
+.card{background:var(--panel);border:1px solid #263744;border-radius:16px;padding:18px}
+.badges{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 18px}
+.badge{font-size:12px;border:1px solid #38505f;border-radius:999px;padding:5px 9px;color:var(--muted)}
+.badge.good{color:var(--good)}
+label{display:block;margin:12px 0 6px;color:var(--muted);font-weight:650}
+textarea,input{width:100%;border:1px solid #38505f;background:#081016;color:var(--text);border-radius:10px;padding:12px;font:inherit}
+textarea{min-height:126px;resize:vertical}
+button{border:1px solid #456171;background:#182833;color:var(--text);border-radius:10px;padding:10px 14px;font-weight:700;cursor:pointer}
+button:hover{background:#203542}
+button.primary{border-color:#5f91aa}
+button.danger{border-color:#845050}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+.cursorFuture{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;background:#081016;border:1px solid #38505f;border-radius:10px;padding:12px;min-height:54px;white-space:pre-wrap;overflow-wrap:anywhere}
+.cursorFuture .ghost{color:var(--accent);opacity:.88}
+.cursorFuture .cursor{animation:blink 1s step-end infinite}
+@keyframes blink{50%{opacity:0}}
+.small{font-size:12px;color:var(--muted)}
+.statrow{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:14px}
+@media(max-width:600px){.statrow{grid-template-columns:repeat(2,1fr)}}
+.stat{background:#0d161d;border:1px solid #263744;border-radius:10px;padding:10px}
+.stat b{display:block;font-size:20px}
+pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#081016;border:1px solid #263744;border-radius:10px;padding:12px;max-height:260px;overflow:auto}
+details{margin-top:12px}
+summary{cursor:pointer;color:var(--accent)}
+.mapWrap{overflow:auto;background:#081016;border:1px solid #263744;border-radius:14px;padding:10px}
+svg{width:100%;min-width:620px;height:320px;display:block}
+.edge{stroke:var(--line);stroke-width:2}
+.edge.dashed{stroke-dasharray:7 5}
+.node circle{fill:#13212b;stroke:#5c7888;stroke-width:2}
+.node.active circle{stroke:var(--accent);stroke-width:3}
+.node.done circle{stroke:var(--good)}
+.node text{fill:var(--text);font-size:12px;text-anchor:middle}
+.edgeLabel{fill:var(--muted);font-size:10px;text-anchor:middle}
+.legend{display:flex;gap:12px;flex-wrap:wrap;color:var(--muted);font-size:12px;margin-top:8px}
+.receipts{display:grid;gap:8px}
+.receipt{border:1px solid #2c3f4a;background:#0c151c;border-radius:10px;padding:10px}
+.receipt strong{display:flex;justify-content:space-between;gap:8px}
+.warning{border-left:3px solid var(--warn);padding-left:12px}
+footer{margin-top:20px;color:var(--muted);font-size:12px}
+</style>
+</head>
+<body>
+<main>
+  <div class="small">CoRelationalUX+ / CoPredictiveInput+ / CoMap+ / CoOrb+ · R0 bounded browser canary</div>
+  <h1>Predict ahead. Act only after an explicit gate.</h1>
+  <p>This page keeps the exact raw input, prepares a deterministic local continuation beyond the cursor, records accept/reject receipts, and renders the lineage as a compact relational trail. It performs no network or provider calls.</p>
+
+  <div class="badges">
+    <span class="badge good">LOCAL ONLY</span>
+    <span class="badge good">NETWORK CALLS: 0</span>
+    <span class="badge good">PROVIDER CALLS: 0</span>
+    <span class="badge">NO AUTO SEND</span>
+    <span class="badge">NO AUTO EXECUTE</span>
+    <span class="badge">IN-MEMORY UNTIL EXPLICIT EXPORT</span>
+  </div>
+
+  <div class="grid">
+    <section class="card">
+      <h2>1 · CoAckRAW / shadow continuation</h2>
+      <label for="raw">Exact raw input</label>
+      <textarea id="raw" spellcheck="false" autocomplete="off">publish best proof-backed artifact</textarea>
+
+      <label>Cursor future</label>
+      <div class="cursorFuture" aria-live="polite"><span id="rawFuture"></span><span class="cursor">│</span><span id="ghost" class="ghost"></span></div>
+      <div id="candidateMeta" class="small"></div>
+
+      <label for="typingBaseline">Optional measured typing baseline (ms/keystroke)</label>
+      <input id="typingBaseline" type="number" min="1" step="1" placeholder="Leave blank: latency_saved remains unknown">
+
+      <div class="actions">
+        <button id="accept" class="primary">Accept candidate locally</button>
+        <button id="reject">Reject candidate</button>
+        <button id="snapshot">ACK raw only</button>
+        <button id="clear" class="danger">Clear local receipts</button>
+      </div>
+
+      <div class="statrow">
+        <div class="stat"><span class="small">Decisions</span><b id="decisionCount">0</b></div>
+        <div class="stat"><span class="small">Accepted</span><b id="acceptedCount">0</b></div>
+        <div class="stat"><span class="small">Keystrokes avoided</span><b id="keystrokes">0</b></div>
+        <div class="stat"><span class="small">Outward effects</span><b id="effects">0</b></div>
+      </div>
+
+      <details>
+        <summary>Inspect exact RAW boundary</summary>
+        <pre id="rawMirror"></pre>
+      </details>
+      <details>
+        <summary>Inspect latest CoQuanta packet</summary>
+        <pre id="packet"></pre>
+      </details>
+      <details>
+        <summary>Export local receipt ledger</summary>
+        <p class="small warning">Export includes the exact raw text you entered. Nothing is exported until you click.</p>
+        <button id="download">Download JSON receipt ledger</button>
+      </details>
+    </section>
+
+    <section class="card">
+      <h2>2 · CoMap / CoOrb lineage</h2>
+      <div class="mapWrap">
+        <svg viewBox="0 0 720 320" role="img" aria-labelledby="mapTitle mapDesc">
+          <title id="mapTitle">Predictive input relational lineage</title>
+          <desc id="mapDesc">RAW input progresses to ACK RAW, local shadow prediction, proposal, explicit decision, and receipt. The only effect shown is local state.</desc>
+
+          <line class="edge" x1="85" y1="120" x2="185" y2="120"/>
+          <line class="edge" x1="245" y1="120" x2="345" y2="120"/>
+          <line class="edge dashed" x1="405" y1="120" x2="505" y2="120"/>
+          <line class="edge" x1="565" y1="120" x2="655" y2="120"/>
+
+          <text class="edgeLabel" x="135" y="106">ACK exact</text>
+          <text class="edgeLabel" x="295" y="106">predict</text>
+          <text class="edgeLabel" x="455" y="106">explicit gate</text>
+          <text class="edgeLabel" x="610" y="106">receipt</text>
+
+          <g id="nRaw" class="node active"><circle cx="55" cy="120" r="30"/><text x="55" y="125">RAW</text></g>
+          <g id="nAck" class="node"><circle cx="215" cy="120" r="30"/><text x="215" y="116">ACK</text><text x="215" y="132">RAW</text></g>
+          <g id="nShadow" class="node"><circle cx="375" cy="120" r="30"/><text x="375" y="116">SHADOW</text><text x="375" y="132">PREDICT</text></g>
+          <g id="nDecision" class="node"><circle cx="535" cy="120" r="30"/><text x="535" y="116">DECIDE</text><text x="535" y="132">GATE</text></g>
+          <g id="nReceipt" class="node"><circle cx="685" cy="120" r="30"/><text x="685" y="125">RECEIPT</text></g>
+
+          <line class="edge dashed" x1="535" y1="150" x2="535" y2="238"/>
+          <g id="nEffect" class="node"><circle cx="535" cy="268" r="30"/><text x="535" y="264">EFFECT</text><text x="535" y="280">LOCAL</text></g>
+          <text class="edgeLabel" x="580" y="205">authority: NONE outward</text>
+
+          <text id="mapStatus" x="24" y="32" fill="#9fb0bb" font-size="12">currentness: local shadow ready</text>
+          <text id="mapDecision" x="24" y="300" fill="#9fb0bb" font-size="12">decision: none yet</text>
+        </svg>
+      </div>
+      <div class="legend">
+        <span>solid trail = observed local transition</span>
+        <span>dashed trail = candidate/gated relation</span>
+        <span>orb = receiver-relative projection, not source ownership</span>
+      </div>
+
+      <details open>
+        <summary>Receipts</summary>
+        <div id="receipts" class="receipts"><div class="small">No decision receipts yet.</div></div>
+      </details>
+    </section>
+  </div>
+
+  <section class="card" style="margin-top:18px">
+    <h2>Boundaries</h2>
+    <p><code>PREDICTED_NE_TYPED</code> · <code>PREDICTED_NE_AUTHORIZED</code> · <code>PRECOMPUTED_NE_EXECUTED</code> · <code>REWRITE_NE_REPLACEMENT_OF_RAW</code> · <code>PROJECTION_NE_SOURCE</code></p>
+    <p><strong>Latency note:</strong> counterfactual “time saved” is not asserted by default. The receipt records measured decision latency and keystrokes avoided. An estimated latency saving is calculated only if you supply a measured typing baseline.</p>
+  </section>
+
+  <footer>Dependency-free reference canary. No fetch, XMLHttpRequest, WebSocket, service worker, analytics, model API, provider account, background monitor, or autonomous outward effect.</footer>
+</main>
+
+<script>
+"use strict";
+
+const continuationRules = [
+  {match:["publish"], candidates:[" best proof-backed artifact available"," with PASS/FAIL/HELD evidence"," then preserve the receipt"]},
+  {match:["virtual session"], candidates:[" -> few materialized embodiments -> one coherent UX"," with provider tabs treated as temporary embodiments"," and reconstruct from checkpoint + currentness"]},
+  {match:["evidence"], candidates:[" before assertion"," with provenance and currentness attached"," then challenge the weakest claim"]},
+  {match:["comap"], candidates:[" trails + currentness + provenance"," with receiver-relative progressive disclosure"," and explicit unknown/in-between relations"]},
+  {match:["privacy"], candidates:[" by design"," with bystander-safe ambient projection"," and smallest-authorized receiver views"]},
+  {match:["broadcast"], candidates:[" to verified receivers only"," with dedup and explicit non-receiver holds"," after a durable artifact exists"]},
+  {match:["and"], candidates:[" what else is missing?"," what failed, stayed unknown, or needs a receipt?"," what is the smallest reversible next deed?"]}
+];
+
+const raw = document.getElementById("raw");
+const rawFuture = document.getElementById("rawFuture");
+const ghost = document.getElementById("ghost");
+const rawMirror = document.getElementById("rawMirror");
+const packetEl = document.getElementById("packet");
+const receiptsEl = document.getElementById("receipts");
+const candidateMeta = document.getElementById("candidateMeta");
+const typingBaseline = document.getElementById("typingBaseline");
+const mapStatus = document.getElementById("mapStatus");
+const mapDecision = document.getElementById("mapDecision");
+
+const state = {
+  seq:0,
+  candidateIndex:0,
+  candidate:"",
+  candidateShownAt:performance.now(),
+  receipts:[],
+  outwardEffects:0
+};
+
+function fingerprint(text){
+  let h=2166136261;
+  for(let i=0;i<text.length;i++){
+    h ^= text.charCodeAt(i);
+    h = Math.imul(h,16777619);
+  }
+  return ("00000000"+(h>>>0).toString(16)).slice(-8);
+}
+
+function chooseCandidates(text){
+  const lower=text.toLowerCase();
+  for(const rule of continuationRules){
+    if(rule.match.some(m=>lower.includes(m))) return rule.candidates;
+  }
+  return [" -> inspect evidence, compare options, record receipt"," -> preserve RAW, propose locally, require an effect gate"," -> find the smallest reversible next test"];
+}
+
+function prediction(text){
+  const options=chooseCandidates(text);
+  return options[state.candidateIndex % options.length];
+}
+
+function setNode(stage){
+  for(const id of ["nRaw","nAck","nShadow","nDecision","nReceipt","nEffect"]){
+    document.getElementById(id).classList.remove("active");
+  }
+  const map={RAW:"nRaw",ACK_RAW:"nAck",SHADOW:"nShadow",DECISION:"nDecision",RECEIPT:"nReceipt",EFFECT_LOCAL:"nEffect"};
+  const el=document.getElementById(map[stage]||"nRaw");
+  el.classList.add("active");
+}
+
+function updateShadow(){
+  const text=raw.value;
+  state.candidate=prediction(text);
+  state.candidateShownAt=performance.now();
+  rawFuture.textContent=text;
+  ghost.textContent=state.candidate;
+  rawMirror.textContent=text;
+  candidateMeta.textContent="candidate fingerprint "+fingerprint(state.candidate)+" · local deterministic rule · effect authority NONE";
+  setNode("SHADOW");
+  mapStatus.textContent="currentness: "+new Date().toISOString()+" · shadow candidate ready";
+}
+
+function makePacket(kind, decision=null, rawBefore=raw.value, rawAfter=raw.value){
+  const now=new Date();
+  const baseline=Number(typingBaseline.value);
+  const decisionLatencyMs=Math.max(0,Math.round(performance.now()-state.candidateShownAt));
+  const avoided=decision==="ACCEPT" ? state.candidate.length : 0;
+  const estimated=(decision==="ACCEPT" && Number.isFinite(baseline) && baseline>0)
+    ? Math.max(0,Math.round(avoided*baseline-decisionLatencyMs))
+    : null;
+  return {
+    schema:"CoQuanta.PredictiveInput.R0",
+    quanta_id:"cqpi-"+now.getTime()+"-"+(++state.seq),
+    observed_at:now.toISOString(),
+    stage:kind,
+    raw_exact:rawBefore,
+    raw_fingerprint_fnv1a32:fingerprint(rawBefore),
+    candidate:state.candidate,
+    candidate_fingerprint_fnv1a32:fingerprint(state.candidate),
+    decision,
+    raw_after:rawAfter,
+    metrics:{
+      decision_latency_ms:decision ? decisionLatencyMs : null,
+      keystrokes_avoided:avoided,
+      typing_baseline_ms_per_keystroke:(Number.isFinite(baseline)&&baseline>0)?baseline:null,
+      estimated_latency_saved_ms:estimated
+    },
+    authority:{
+      effect_authority:"NONE_OUTWARD",
+      explicit_user_gate:decision!==null
+    },
+    effects:{
+      local_dom_mutation:decision==="ACCEPT" ? 1 : 0,
+      network_calls:0,
+      provider_calls:0,
+      external_mutations:0,
+      messages_sent:0,
+      accounts_changed:0
+    },
+    relations:[
+      "RAW_INPUT->ACK_RAW",
+      "ACK_RAW->SHADOW_PREDICT",
+      "SHADOW_PREDICT->PROPOSE",
+      decision ? "PROPOSE->EXPLICIT_DECISION" : "PROPOSE->NO_DECISION"
+    ],
+    rails:[
+      "PREDICTED_NE_TYPED",
+      "PREDICTED_NE_AUTHORIZED",
+      "PRECOMPUTED_NE_EXECUTED",
+      "REWRITE_NE_REPLACEMENT_OF_RAW",
+      "PROJECTION_NE_SOURCE"
+    ]
+  };
+}
+
+function renderStats(){
+  const decisions=state.receipts.filter(r=>r.decision).length;
+  const accepted=state.receipts.filter(r=>r.decision==="ACCEPT").length;
+  const avoided=state.receipts.reduce((n,r)=>n+(r.metrics.keystrokes_avoided||0),0);
+  document.getElementById("decisionCount").textContent=decisions;
+  document.getElementById("acceptedCount").textContent=accepted;
+  document.getElementById("keystrokes").textContent=avoided;
+  document.getElementById("effects").textContent=state.outwardEffects;
+}
+
+function renderReceipts(){
+  if(!state.receipts.length){
+    receiptsEl.innerHTML='<div class="small">No decision receipts yet.</div>';
+    return;
+  }
+  receiptsEl.innerHTML="";
+  for(const r of state.receipts.slice().reverse().slice(0,8)){
+    const div=document.createElement("div");
+    div.className="receipt";
+    const strong=document.createElement("strong");
+    const left=document.createElement("span");
+    left.textContent=r.decision||r.stage;
+    const right=document.createElement("span");
+    right.className="small";
+    right.textContent=r.observed_at.slice(11,19)+"Z";
+    strong.append(left,right);
+    const meta=document.createElement("div");
+    meta.className="small";
+    meta.textContent="raw "+r.raw_fingerprint_fnv1a32+" · candidate "+r.candidate_fingerprint_fnv1a32+" · outward effects 0";
+    div.append(strong,meta);
+    receiptsEl.appendChild(div);
+  }
+}
+
+function record(packet){
+  state.receipts.push(packet);
+  packetEl.textContent=JSON.stringify(packet,null,2);
+  renderStats();
+  renderReceipts();
+  setNode("RECEIPT");
+  mapStatus.textContent="currentness: "+packet.observed_at+" · receipt "+packet.quanta_id;
+}
+
+function decide(kind){
+  const before=raw.value;
+  setNode("DECISION");
+  let after=before;
+  if(kind==="ACCEPT"){
+    after=before+state.candidate;
+    raw.value=after;
+    mapDecision.textContent="decision: ACCEPT · local input updated · outward effects 0";
+  }else{
+    state.candidateIndex++;
+    mapDecision.textContent="decision: REJECT · candidate rotated · outward effects 0";
+  }
+  const packet=makePacket("RECEIPT",kind,before,after);
+  record(packet);
+  setNode("EFFECT_LOCAL");
+  updateShadow();
+}
+
+raw.addEventListener("input",()=>{
+  state.candidateIndex=0;
+  updateShadow();
+});
+document.getElementById("accept").addEventListener("click",()=>decide("ACCEPT"));
+document.getElementById("reject").addEventListener("click",()=>decide("REJECT"));
+document.getElementById("snapshot").addEventListener("click",()=>{
+  const p=makePacket("ACK_RAW");
+  record(p);
+  mapDecision.textContent="decision: RAW acknowledged only · no candidate accepted";
+});
+document.getElementById("clear").addEventListener("click",()=>{
+  state.receipts=[];
+  state.outwardEffects=0;
+  packetEl.textContent="";
+  mapDecision.textContent="decision: none yet";
+  renderStats();
+  renderReceipts();
+  updateShadow();
+});
+document.getElementById("download").addEventListener("click",()=>{
+  const payload={
+    schema:"CoPredictiveInput.LocalReceiptLedger.R0",
+    exported_at:new Date().toISOString(),
+    state:"EXPLICIT_LOCAL_EXPORT",
+    receipts:state.receipts,
+    nonclaims:["EXPORT_NE_RECEIVER_PICKUP","LOCAL_FILE_NE_DURABLE_CUSTODY","ESTIMATED_LATENCY_NE_MEASURED_COUNTERFACTUAL"]
+  };
+  const blob=new Blob([JSON.stringify(payload,null,2)+"\n"],{type:"application/json"});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement("a");
+  a.href=url;
+  a.download="copredictiveinput-r0-receipts.json";
+  a.click();
+  URL.revokeObjectURL(url);
+});
+
+window.CoPredictiveInputR0={fingerprint,chooseCandidates,prediction,makePacket,state};
+updateShadow();
+renderStats();
+renderReceipts();
+</script>
+</body>
+</html>
