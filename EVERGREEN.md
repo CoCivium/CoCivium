@@ -32,13 +32,13 @@ The new [CoPreCursor+ / CoMap+ browser canary](examples/coprecursor/index.html) 
 
 - [Five-minute first-use guide and boundaries](examples/coprecursor/README.md)
 - [Reproducible standard-library smoke test](examples/coprecursor/smoke.cjs)
-- **29/29 PASS** on X2 from the exact checked-in public source; **12/12 PASS** in a separate bounded headless Edge/browser canary.
+- **30/30 PASS** on X2 from the updated checked-in public source; **13/13 PASS** in a separately recorded bounded headless Edge/browser canary. Ambient now hides draft, detailed trail and receipt panels, retaining a generic map rather than exposing private editor text.
 - Failed precursors retained separately: **27/28** before the `CoMap` pattern correction and **11/12** before fixing the unfocused textarea caret.
 - The suggestions are deterministic local example rules, **not** LLM inference or authorization to type, transmit, send, capture arbitrary keystrokes, or alter an OS desktop.
 
 **CoMould+ / G_d / strange clay** are exploration metaphors: unconventional inputs may generate candidate, falsifiable hypotheses, not scientific or metaphysical conclusions.
 
-This public projection is discoverable through GitHub, and a [private receiver/hold matrix](https://github.com/CoCivium/CoShareHub/blob/main/broadcasts/evoall/20261023/CoPreCursor_R0_receiver_matrix.json) was staged for authorized readers. The private link may not be available to everyone. **CoVIA, Gmail, `.nodes`, `nodes`, `.sites`, `sites`, CoStead, CoMx and native CoOrbWare receivers are not claimed as reached or integrated.** Recent outreach is deduplicated.
+This public projection is discoverable through GitHub, and a [private receiver/hold matrix](https://github.com/CoCivium/CoShareHub/blob/main/broadcasts/evoall/20261023/CoPreCursor_R1_AmbientPrivacy_receiver_matrix.json) was staged for authorized readers. The private link may not be available to everyone. **CoVIA, Gmail, `.nodes`, `nodes`, `.sites`, `sites`, CoStead, CoMx and native CoOrbWare receivers are not claimed as reached or integrated.** Recent outreach is deduplicated.
 
 Next acceptance gate: one consenting observer completing a first-use task, followed by a source-bound two-surface parity/readproof test. Do not retire provider accounts until exports, dependencies and replacement capabilities have independent proof and a human-gated decision.
 
