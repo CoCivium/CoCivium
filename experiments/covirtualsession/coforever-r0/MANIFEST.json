@@ -1,0 +1,86 @@
+{
+  "base_name": "CoForever_CoOrbWare_R0_20261023",
+  "effects": 0,
+  "files": [
+    {
+      "bytes": 6525,
+      "path": "README.md",
+      "sha256": "89e15d87afd1bd0d241ace587cc67ebc56b0b03241d7685550699fa6078c34dd"
+    },
+    {
+      "bytes": 10310,
+      "path": "coproc.py",
+      "sha256": "20ecb4d60f0b91687ab78b30741fec8630c153b2ae90095173c54e06bdf0b70a"
+    },
+    {
+      "bytes": 7876,
+      "path": "test_coproc.py",
+      "sha256": "acd6b48998fcb05dfb8389b084cce49d03be2242e4530a1a668b07f3b815b248"
+    },
+    {
+      "bytes": 14704,
+      "path": "make_demo.py",
+      "sha256": "719ab24e01978ac8256a54882fe076ef52245cdcfa5b65eeb5bd40f6da0e5a2a"
+    },
+    {
+      "bytes": 2760,
+      "path": "test_ui.cjs",
+      "sha256": "b05f66f09c9c8fef4bb543044a5bdfa071380cc3cbc33a16a6ffc1e5c411de36"
+    },
+    {
+      "bytes": 2793,
+      "path": "test_browser.py",
+      "sha256": "fc1009c54924add1628ceeb8786a6ddb9912587fa5d87200232604aa7afd3f20"
+    },
+    {
+      "bytes": 2075,
+      "path": "verify_release.py",
+      "sha256": "24f0adb73f37d5c7848ba80f0e0c1cc7b4d3dba6618a30aca92cb56883d88511"
+    },
+    {
+      "bytes": 3973,
+      "path": "demo_state.json",
+      "sha256": "ae8dadc7ec6e3797db94ae39ba4fef7555af5d7d7408581cae1c251635d32db5"
+    },
+    {
+      "bytes": 6077,
+      "path": "benchmark_evo.jsonl",
+      "sha256": "7530206364a9812b33cd1a2c224f7e0268768bb660894952ba4016180108fede"
+    },
+    {
+      "bytes": 12329,
+      "path": "CoOrbWare_offline.html",
+      "sha256": "02806cc3fa4382707eab4ceac8907bfe3aedc347f3cf4059197ca6d47250b433"
+    },
+    {
+      "bytes": 1010,
+      "path": "RECEIPT.json",
+      "sha256": "d9b6be59091d84b15725863df3b21f86e70417a3a5c738a499d624b3db0d6688"
+    },
+    {
+      "bytes": 882,
+      "path": "browser_blocked.json",
+      "sha256": "80e806e45fdcba8cfca4cc9d0bd159f25d72ff79b64cc9f6c20c9cc92acc51d7"
+    },
+    {
+      "bytes": 3627,
+      "path": "tests_final.log",
+      "sha256": "0ec8f6005ea9a6e04dfbece469523fa825d5989aeb31b44a025ccf82ba057c1b"
+    },
+    {
+      "bytes": 353,
+      "path": "ui_tests.json",
+      "sha256": "a01d27dd66f28e470209f6a3c279d2e3f1ebded5db968ad2e8ac3d93fb7cf126"
+    }
+  ],
+  "independent_browser_ux": "BLOCKED",
+  "integration": "UNPROVEN",
+  "lineage": [
+    "CoCivium/CoCivium docs/Architecture/COVIRTUAL_SESSION_MORPHOLOGY_R0.md",
+    "CoCivium/CoCivium docs/Architecture/CORELATIONAL_UX_PREDICTIVE_INPUT_R0.md",
+    "CoCivium/CoSteward docs/session_backchannel/evolution/CoAlwaysInheritance_TurtleStop_20261017_R0.json"
+  ],
+  "readproof": "UNPROVEN",
+  "schema": "CoAll.CoForever.Manifest.v1",
+  "semantic_coverage": "BOUNDED_SOURCE_REVIEW"
+}
