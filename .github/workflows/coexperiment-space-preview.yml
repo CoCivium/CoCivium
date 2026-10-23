@@ -1,0 +1,47 @@
+name: CoExperiment Space Preview
+
+permissions:
+  contents: read
+
+on:
+  pull_request:
+    paths:
+      - "scripts/CoExperimentSpacePreviewR0.py"
+      - "tests/test_coexperiment_space_preview.py"
+      - "docs/Architecture/COEXPERIMENT_SPACE_TURTLES_R0.md"
+      - ".github/workflows/coexperiment-space-preview.yml"
+  push:
+    paths:
+      - "scripts/CoExperimentSpacePreviewR0.py"
+      - "tests/test_coexperiment_space_preview.py"
+      - "docs/Architecture/COEXPERIMENT_SPACE_TURTLES_R0.md"
+      - ".github/workflows/coexperiment-space-preview.yml"
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run experiment-space regressions
+        run: python -B -m unittest tests.test_coexperiment_space_preview -v
+      - name: Reproduce raw descriptor count
+        run: |
+          python -B scripts/CoExperimentSpacePreviewR0.py --limit 12 --seed ci > /tmp/space.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p = json.loads(Path("/tmp/space.json").read_text())
+          assert p["raw_candidate_descriptor_count"] == 422730484678656000
+          assert p["sample_count"] == 12
+          assert p["executed_experiment_count"] == 0
+          assert p["effects"]["workers_started"] == 0
+          assert p["effects"]["experiments_executed"] == 0
+          assert p["turtle_policy"]["maximum_runtime_depth"] == 2
+          assert p["turtle_policy"]["children_may_replenish_budget"] is False
+          assert p["turtle_policy"]["children_may_raise_authority"] is False
+          print("CoExperimentSpace preview passed")
+          PY
