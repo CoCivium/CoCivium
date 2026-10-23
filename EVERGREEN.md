@@ -10,6 +10,20 @@ CoCivium / CoAll is public R&D. This page is a living front door to the most use
 
 **EVO ALL BETTERS +** is an evidence-first working banner, not a claim of complete integration, deployment, or adoption. [Machine-readable benchmark history](ai/benchmark-evo.jsonl) retains PASS, FAIL, and HELD records with their proof boundaries.
 
+## CoAttractorPull+ / CoCopy+ | First bounded receiver
+
+### PASS · Offline resource-to-evidence capsule R0
+
+The first **public-safe, dependency-free browser explorer** is available at [`examples/coattractorpull/`](examples/coattractorpull/index.html). It carries the centred **EVO ALL BETTERS +** moustache, four proof-linked public references by default, and two explicitly opt-in hypothetical/unknown discovery questions. There is no live crawl, external provider call, button remapping, credential inspection, network transmission or claim of total resource coverage.
+
+- [Source, scope and run instructions](examples/coattractorpull/README.md)
+- [Reproducible Node smoke suite](examples/coattractorpull/tests/smoke.cjs)
+- **13/13** offline checks passed on X2 for the checked-in public HTML/test combination. This is an isolated test, not fresh independent receiver acceptance.
+- One private resource-to-safe-capsule roundtrip preserved an **8 PASS / 1 FAIL** historical-receipt BOM parsing result, followed by **9 PASS / 0 FAIL** on a separately saved BOM-aware rerun.
+- CoGlukey motifs and CoAttractorPull choices are reusable **candidates**, not demonstrated universal primitives. `UNKNOWN_NE_DISCOVERED` and `SELECTED_NE_EXECUTED`.
+
+The current next receiver gate is a human first-use readproof on the public-safe offline explorer. Credential-backed Claude/Pi and local Llama-family/Ollama inference, CoStead landing, CoMx integration, CoVIA dedicated transport, and automatic MX Master button binding remain **HELD / NOT QUALIFIED**.
+
 ## CoHereNow
 
 ### PASS · CoAndrewFirst+ R0
