@@ -25,7 +25,7 @@ jobs:
         with:
           node-version: "20"
       - name: Run zero-effect browser smoke
-        run: node examples/copredictiveinput/tests/smoke.cjs
+        run: node examples/copredictiveinput/tests/smoke-v2.cjs
       - name: Validate machine boundary
         run: |
           node - <<'NODE'
