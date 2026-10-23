@@ -1,0 +1,87 @@
+{
+  "schema": "CoResourceAttractor.R1.v0.1-candidate",
+  "state": "BOUNDED_PUBLIC_FIXTURE_BENCHMARK_PASS__NO_RUNTIME_ADOPTION",
+  "observed_at": "2026-10-23T17:31:58Z",
+  "parent": "ai/co-resource-attractor-r0.json",
+  "architecture": "docs/Architecture/CORESOURCE_ATTRACTOR_R0.md",
+  "implementation": "scripts/CoResourceAttractorBenchmarkR1.py",
+  "fixture": "benchmarks/resource-attractor/r1-fixture.json",
+  "tests": "tests/test_resource_attractor_r1.py",
+  "ci_receipt": "https://github.com/CoCivium/CoCivium/actions/runs/39995812019",
+  "bounded_observation": {
+    "resource_descriptors": 16,
+    "needs": 5,
+    "declared_relevant_slots": 7,
+    "descriptor_hits": 7,
+    "keyword_only_hits": 5,
+    "descriptor_beats_keyword_only": true,
+    "descriptor_not_worse_than_seeded_random": true,
+    "fallback_probes_passed": 2,
+    "fallback_probes_total": 2,
+    "speculative_resources_selected_in_standard_needs": 0
+  },
+  "gates": [
+    "QUALIFIED_LIFECYCLE",
+    "RESOURCE_CLASS_ALLOWED",
+    "AVAILABILITY_ALLOWED",
+    "AUTHORITY_ALLOWED",
+    "PRIVACY_CEILING",
+    "MIN_EVIDENCE",
+    "CURRENTNESS_BOUND",
+    "REQUIRED_CAPABILITY"
+  ],
+  "score_components": [
+    "PREFERRED_CAPABILITY_FIT",
+    "PREFERRED_INTERFACE_FIT",
+    "EVIDENCE_STRENGTH",
+    "PROVENANCE",
+    "REVERSIBILITY",
+    "OPTIONALITY_EXIT",
+    "CURRENTNESS",
+    "COST_BAND",
+    "COORDINATION_DEBT"
+  ],
+  "resource_lane_findings": {
+    "null_resource": "retrievable when the need explicitly allows absence as useful evidence",
+    "anti_resource": "retrievable when the need explicitly requests negative/safety evidence",
+    "counterfactual": "representable but not selected by ordinary needs in this fixture",
+    "CoSpirit_hypothesis": "represented as speculative and not promoted through ordinary resource selection"
+  },
+  "effects": {
+    "workers_started": 0,
+    "provider_sessions_created": 0,
+    "external_mutations": 0,
+    "authority_granted": 0,
+    "network_calls": 0
+  },
+  "next_elected_deeds": [
+    "INDEPENDENTLY_LABEL_A_SMALL_REAL_PUBLIC_CORPUS_AND_REPEAT_PRECISION_RECALL",
+    "COTHUMB_LOCAL_RESOURCE_CAPTURE_CANARY__VISIBLE_REVERSIBLE_NO_OUTWARD_SEND",
+    "LEARN_SELECTOR_WEIGHTS_ONLY_OFFLINE_AFTER_ENOUGH_RECEIPTED_OUTCOMES__NEVER_LEARN_AUTHORITY_GATES_AWAY"
+  ],
+  "rails": [
+    "FINDABLE_NE_QUALIFIED",
+    "QUALIFIED_NE_SELECTED",
+    "SELECTED_NE_USED",
+    "OPTIONAL_NE_ACTIVE",
+    "POINTER_NE_ACK",
+    "DESCRIPTOR_SCORE_NE_TRUTH",
+    "SYNTHETIC_FIXTURE_NE_REAL_WORLD_RECALL",
+    "MANUAL_GOLD_LABELS_NE_INDEPENDENT_GROUND_TRUTH",
+    "SPECULATIVE_NE_PHYSICAL",
+    "NULL_RESOURCE_NE_AVAILABLE_TOOL",
+    "ANTI_RESOURCE_NE_POSITIVE_CAPABILITY",
+    "LEARNED_WEIGHT_NE_AUTHORITY",
+    "LOGICAL_SCALE_NE_LIVE_SCALE"
+  ],
+  "nonclaims": [
+    "NOT_REAL_WORLD_RESOURCE_DISCOVERY",
+    "NOT_COMPLETE_RESOURCE_UNIVERSE",
+    "NOT_INDEPENDENT_GROUND_TRUTH",
+    "NOT_CMA_OR_OTHER_ADAPTIVE_OPTIMIZER",
+    "NOT_GD_FORMALISM",
+    "NOT_MOUSE_OR_THUMB_RUNTIME_BINDING",
+    "NOT_RECEIVER_PICKUP",
+    "NOT_CANON"
+  ]
+}
