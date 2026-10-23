@@ -1,0 +1,74 @@
+{
+  "files": {
+    "HEAD_R3.sha256": {
+      "bytes": 65,
+      "sha256": "09050fbb41ba6de248e0423a059a684c541ab4c87ff25f8b35208b920f2f8edd"
+    },
+    "LICENSE": {
+      "bytes": 35149,
+      "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
+    },
+    "R3_REPORT.json": {
+      "bytes": 1133,
+      "sha256": "7e4e196b57b361a64ab37915fd0288ca25c58bff491d444c2a83f40c629c90bf"
+    },
+    "README.md": {
+      "bytes": 6318,
+      "sha256": "69f78186aedba8de5cda816712a68b325eacb056b25920c7e9145e6f317869dd"
+    },
+    "benchmark_evo_R3.jsonl": {
+      "bytes": 18449,
+      "sha256": "d8e9eee83c4dde215e6c3454912f2e393b95ac0711346bfb62c7103a659f92f8"
+    },
+    "build_evidence_R3.py": {
+      "bytes": 9930,
+      "sha256": "b7175189224c6b262ad515bd73bd20c82e090d4fced545149aebcdc9b294ad88"
+    },
+    "checkpoint_R3_seed0.json": {
+      "bytes": 438,
+      "sha256": "71c045518cc19754e22f78b40300d1b0880c8a7990cc677d705cc162e4f50005"
+    },
+    "checkpoint_R3_successor.json": {
+      "bytes": 500,
+      "sha256": "1f9a7e7e411427aa01828b95667cb9268c9f8b425548d25fab5f781bd6752402"
+    },
+    "parent_R2/HEAD.sha256": {
+      "bytes": 65,
+      "sha256": "fe7d253b3d19180413dfc8364a32942c77a398ecaac8bd8c97a5a15d3dfc9e39"
+    },
+    "parent_R2/benchmark_evo.jsonl": {
+      "bytes": 12491,
+      "sha256": "022b9aaafd09275749f4fb4a5827053dd0a72e3fa7f2928a24fc516b5a4d85af"
+    },
+    "space_manifest.json": {
+      "bytes": 3417,
+      "sha256": "41bdf00efe874b4565c1787e178657013a552953730bafe09edb4b677b36a706"
+    },
+    "test_results.txt": {
+      "bytes": 2991,
+      "sha256": "9629e239008361ddb6588173952076488de5f52bf15eb946f66e39eb65d43d88"
+    },
+    "test_turtle_checkpoint.py": {
+      "bytes": 8513,
+      "sha256": "43ea68b0d89beac71fa1ddd4bb43b437d2c179cce007da4b8336f178f6fe0ff2"
+    },
+    "turtle_checkpoint.py": {
+      "bytes": 11431,
+      "sha256": "7401b12f8c852f7cabdad11e85b8dc9fe83b34291c404bdbc70e9b40ab2e4448"
+    },
+    "verify_checkpoint.mjs": {
+      "bytes": 3398,
+      "sha256": "33dd2266ba1ed6fc28fecb97ace656930e3dfa606184a1a7e28d37b2622b4c80"
+    },
+    "verify_evo_ledger.mjs": {
+      "bytes": 1921,
+      "sha256": "f03a8052fc2e3ba10697924063ea336e7c010ae6e030c99cdaaa63a0b7a92890"
+    },
+    "verify_evo_ledger.py": {
+      "bytes": 2423,
+      "sha256": "cb3a28a832d6c08d270a34e3ab15d5762c2941c9d2dcdb580a08ad45a161aedb"
+    }
+  },
+  "root": "CoStretch_Checkpoint_R3",
+  "schema": "CoPortableFileManifest/1"
+}
