@@ -23,3 +23,5 @@ jobs:
         run: node --test --test-reporter=spec experiments/comap-cursor-r0/core.test.mjs
       - name: CoNull GdRes typed absence and residual regression
         run: node --test --test-reporter=tap experiments/comap-cursor-r0/gap-residual-r1/conull-gdres-r1.test.mjs
+      - name: CoNull GdRes R1A corrected privacy and independent-source regression
+        run: node --test --test-reporter=tap experiments/comap-cursor-r0/gap-residual-r1a/conull-gdres-r1.test.mjs
