@@ -1,0 +1,42 @@
+name: CoStretch R3 Replay Checkpoint
+
+permissions:
+  contents: read
+
+on:
+  pull_request:
+    paths:
+      - "experiments/costretch-r1/checkpoint_r3/**"
+      - ".github/workflows/costretch-r3-replay-checkpoint.yml"
+  push:
+    paths:
+      - "experiments/costretch-r1/checkpoint_r3/**"
+      - ".github/workflows/costretch-r3-replay-checkpoint.yml"
+
+jobs:
+  verify-r3:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Python regressions
+        working-directory: experiments/costretch-r1/checkpoint_r3
+        run: python -B -m unittest -v test_turtle_checkpoint.py
+      - name: Cross-runtime checkpoint verification
+        working-directory: experiments/costretch-r1/checkpoint_r3
+        run: |
+          python -B turtle_checkpoint.py verify --space space_manifest.json --checkpoint checkpoint_R3_seed0.json
+          python -B turtle_checkpoint.py verify --space space_manifest.json --checkpoint checkpoint_R3_successor.json
+          node verify_checkpoint.mjs space_manifest.json checkpoint_R3_seed0.json
+          node verify_checkpoint.mjs space_manifest.json checkpoint_R3_successor.json
+      - name: Cross-runtime ledger verification
+        working-directory: experiments/costretch-r1/checkpoint_r3
+        run: |
+          python -B verify_evo_ledger.py benchmark_evo_R3.jsonl HEAD_R3.sha256
+          node verify_evo_ledger.mjs benchmark_evo_R3.jsonl HEAD_R3.sha256
