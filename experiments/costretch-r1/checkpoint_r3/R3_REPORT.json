@@ -1,0 +1,32 @@
+{
+  "added_events": 12,
+  "baseline_failure": "SAME_COUNT_SEMANTIC_DRIFT",
+  "corrective_behavior": "SPEC_NAMESPACE_CHANGED_FAIL_CLOSED",
+  "measurements": {
+    "bounded_16_descriptions_median_ms": 0.07154,
+    "checkpoint_verify_median_ms": 0.00707,
+    "decode_random_index_median_ms": 0.00535,
+    "manifest_hash_median_ms": 0.01076
+  },
+  "negative_cross_runtime_cases": 4,
+  "new_head": "dde45891356f5ec1bec6fc99dc6e85f6271382b9a5bb6f7693b169eeb29fee54",
+  "new_python_tests": 25,
+  "nonclaims": [
+    "No hardware Mac test",
+    "No provider/model integration",
+    "No million live sessions",
+    "No signed provenance or independently witnessed user adoption",
+    "No real-world gain calibration"
+  ],
+  "r2_source_head": "6560202a3b8d359f2a664bb8e851c1c41d3a234d8a42eaf1e6619bf69f469915",
+  "r2_source_sha256": "022b9aaafd09275749f4fb4a5827053dd0a72e3fa7f2928a24fc516b5a4d85af",
+  "schema": "CoStretchCheckpointEvidence/3",
+  "spec_sha256": "41bdf00efe874b4565c1787e178657013a552953730bafe09edb4b677b36a706",
+  "status_counts": {
+    "FAIL": 6,
+    "HOLD": 4,
+    "NOT_RUN": 14,
+    "PASS": 16
+  },
+  "total_events": 40
+}

@@ -1,0 +1,30 @@
+test_advance_bounded_and_lineaged (test_turtle_checkpoint.CheckpointTests.test_advance_bounded_and_lineaged) ... ok
+test_boolean_false_is_not_accepted_as_execution_counter (test_turtle_checkpoint.CheckpointTests.test_boolean_false_is_not_accepted_as_execution_counter) ... ok
+test_bounded_peek (test_turtle_checkpoint.CheckpointTests.test_bounded_peek) ... ok
+test_capacity_exact_unchanged (test_turtle_checkpoint.CheckpointTests.test_capacity_exact_unchanged) ... ok
+test_checkpoint_verifies (test_turtle_checkpoint.CheckpointTests.test_checkpoint_verifies) ... ok
+test_cli_roundtrip (test_turtle_checkpoint.CheckpointTests.test_cli_roundtrip) ... ok
+test_corrupt_cursor_detected (test_turtle_checkpoint.CheckpointTests.test_corrupt_cursor_detected) ... ok
+test_corrupt_effect_policy_detected (test_turtle_checkpoint.CheckpointTests.test_corrupt_effect_policy_detected) ... ok
+test_disallowed_effect_has_hold (test_turtle_checkpoint.CheckpointTests.test_disallowed_effect_has_hold) ... ok
+test_duplicate_json_key_rejected (test_turtle_checkpoint.CheckpointTests.test_duplicate_json_key_rejected) ... ok
+test_exhausted_space_does_not_emit_zombie_checkpoint (test_turtle_checkpoint.CheckpointTests.test_exhausted_space_does_not_emit_zombie_checkpoint) ... ok
+test_extra_checkpoint_field_rejected (test_turtle_checkpoint.CheckpointTests.test_extra_checkpoint_field_rejected) ... ok
+test_forged_execution_status_detected (test_turtle_checkpoint.CheckpointTests.test_forged_execution_status_detected) ... ok
+test_label_replace_same_size_rejected (test_turtle_checkpoint.CheckpointTests.test_label_replace_same_size_rejected) ... ok
+test_manifest_content_identity (test_turtle_checkpoint.CheckpointTests.test_manifest_content_identity) ... ok
+test_manifest_whitespace_change_conservatively_rejected (test_turtle_checkpoint.CheckpointTests.test_manifest_whitespace_change_conservatively_rejected) ... ok
+test_no_clobber_checkpoint (test_turtle_checkpoint.CheckpointTests.test_no_clobber_checkpoint) ... ok
+test_no_exec_count_always_zero (test_turtle_checkpoint.CheckpointTests.test_no_exec_count_always_zero) ... ok
+test_nonpublic_has_hold (test_turtle_checkpoint.CheckpointTests.test_nonpublic_has_hold) ... ok
+test_out_of_range_and_bool (test_turtle_checkpoint.CheckpointTests.test_out_of_range_and_bool) ... ok
+test_provider_substrate_has_hold (test_turtle_checkpoint.CheckpointTests.test_provider_substrate_has_hold) ... ok
+test_r1_bare_index_drift_reproduced (test_turtle_checkpoint.CheckpointTests.test_r1_bare_index_drift_reproduced) ... ok
+test_r3_guards_same_cardinality_drift (test_turtle_checkpoint.CheckpointTests.test_r3_guards_same_cardinality_drift) ... ok
+test_rank_roundtrip_mixed_sample (test_turtle_checkpoint.CheckpointTests.test_rank_roundtrip_mixed_sample) ... ok
+test_unknown_authority_has_hold (test_turtle_checkpoint.CheckpointTests.test_unknown_authority_has_hold) ... ok
+
+----------------------------------------------------------------------
+Ran 25 tests in 3.551s
+
+OK
