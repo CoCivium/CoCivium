@@ -1,0 +1,60 @@
+{
+  "schema": "CoCivium.CoOmniIO.PublicReviewSourceVerification.v0.1",
+  "observed_at": "2026-10-23T21:27:16.851Z",
+  "release_status": "PUBLIC_REVIEW_EVIDENCE_NOT_RUNTIME",
+  "source": {
+    "repository": "CoCivium/CoCivium",
+    "ref": "experiment/comap-trails-ghost-cursor-r0-20261023",
+    "path": "experiments/comap-cursor-r0/gap-residual-r1a/",
+    "review_issue": "https://github.com/CoCivium/CoCivium/issues/214",
+    "pull_request": "https://github.com/CoCivium/CoCivium/pull/215"
+  },
+  "files": [
+    {
+      "name": "conull-gdres-r1.mjs",
+      "bytes": 8671,
+      "sha256": "073301354194e04fe2248ed0dfe356284758c75795ca89ccfb9d9b1e56494fbd",
+      "git_blob": "f865f1f926cd8a2eeed8ecb4e579d8587142b3e2",
+      "exact_match": true
+    },
+    {
+      "name": "conull-gdres-r1.test.mjs",
+      "bytes": 9400,
+      "sha256": "8203387ada50f3ed7aab9d16c19ad6b94e89eb2287289dd69ae0dd68ce7489ed",
+      "git_blob": "cb7bd67baa3b8622445697827ea4983dd0d312d2",
+      "exact_match": true
+    }
+  ],
+  "test": {
+    "assertions": 41,
+    "passed": 41,
+    "failed": 0,
+    "exit_code": 0,
+    "runner": "X2 Node test offline, same-host independent fetch",
+    "github_workflow": "https://github.com/CoCivium/CoCivium/actions/runs/40011981186",
+    "workflow_node_regression_status": "completed_success"
+  },
+  "lifecycle": "VERIFIED_LOCAL_AND_PUBLIC_PROJECTION_ONLY",
+  "effect_authority": "NONE",
+  "external_delivery_states": {
+    "github_repo": "PUBLISH_AND_READBACK_PENDING",
+    "gmail": "HELD_DUPLICATE_REDUCTION",
+    "covia": "HELD_NO_VERIFIED_TRANSPORT_ACK",
+    "nodes_sites": "HELD_UNBOUND_RECEIVERS",
+    "costead": "HELD_NO_DURABLE_LANDING"
+  },
+  "nonclaims": [
+    "GITHUB_BRANCH_NE_MERGED_MAIN",
+    "SOURCE_TESTS_NE_RUNTIME",
+    "LOCAL_VERIFICATION_NE_COSTEAD_LANDING",
+    "NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF",
+    "VALIDATION_IS_NOT_ACCEPTANCE",
+    "DISCOVERED_SET_IS_NOT_COMPLETE_HISTORY",
+    "NOT_HUMAN_UX_ACCEPTANCE",
+    "NULL_NE_ZERO",
+    "PREDICTION_NE_AUTHORITY",
+    "PUBLIC_GITHUB_NE_INDEPENDENT_RECEIVER_ACCEPTANCE",
+    "EXACT_BYTE_IDENTITY_NE_SEMANTIC_TRUTH",
+    "SOURCE_RETEST_NE_PHYSICAL_COTHUMB_BINDING"
+  ]
+}
