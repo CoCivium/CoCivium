@@ -68,3 +68,25 @@ Publication is not readiness. A file is not adoption. A GitHub commit is not rec
 
 ## Evergreen loop
 OBSERVE -> ACK RAW -> INTERPRET -> PREDICT -> PREVIEW -> DESCRIBE -> DISCOVER -> ATTRACT -> ELECT -> EXECUTE -> VERIFY -> LOG -> COMPARE -> IMPROVE -> PUBLISH -> SLEEP / WAKE ON MATERIAL CHANGE
+
+
+## CoScale+ / CoFold+ / CoUnfold+ / CoEndlessProcess+
+
+Scale is fluid rather than privileged. The same relational state may render as quanta, object, task, cluster, system, ecosystem or open-ended possibility space.
+
+Reduction is not automatically permanent:
+- CoFold+ compresses or hides detail while retaining lineage where possible.
+- CoUnfold+ restores or reveals retained detail.
+- Every reduction should declare REVERSIBLE / PARTIALLY_REVERSIBLE / IRREVERSIBLE / UNKNOWN.
+- Lossy reduction records what was discarded, why, authority, and whether recovery exists elsewhere.
+- CoScaleDebt+ records compression whose reconstruction evidence is incomplete.
+
+Processes may be intentionally ongoing without implying infinite execution. CoEndlessProcess+ means open-ended improvement through finite bounded waves, each with finite inputs, budget, output, receipt and wake condition.
+
+CoMultiProcess+ allows build / verify / challenge / document / benchmark / recover / render / observe lanes to run concurrently against one durable relational state. Processes themselves are graph objects with dependencies, challenges, wake conditions and stop rules.
+
+CoDynamicLOD+ and CoSemanticZoom+ let CoOrbWare+ change level of detail with attention, task, privacy, uncertainty and resource budget. Quiet surfaces may hide enormous underlying complexity without destroying it.
+
+CoExpansionWake+ may unfold a folded region when contradiction, changed evidence, failure, uncertainty or explicit focus makes detail useful again. CoBackgroundFold+ may fold low-attention regions after preserving state.
+
+The default invariant is: conceptual spaces may remain open-ended; actual executions stay bounded.
