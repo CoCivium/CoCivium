@@ -1,0 +1,42 @@
+{
+  "files": {
+    "README.md": {
+      "sha256": "469fd6af047013105d58926bdd7ed12a7edbaafebff684650553756fb3353efd",
+      "size_bytes": 2451
+    },
+    "costretch_r1.py": {
+      "sha256": "8aab99738464db36f9aede58a97d619af9e46eaac88c9d7f83a27e81d07776b7",
+      "size_bytes": 9477
+    },
+    "docs/COSTRETCH_COTURTLE_PUBLIC_BENCHMARK_20261023.md": {
+      "sha256": "54054e3222489020a68d23e89f5f9aaaab8b132d002d51da1bb2b4d5a698f256",
+      "size_bytes": 6971
+    },
+    "output/benchmark_evo.jsonl": {
+      "sha256": "70b33e47f2d3ab5e012aff55a08d112d341ee4c2f5b7b7a87389d01b272e6ea3",
+      "size_bytes": 5155
+    },
+    "relation_graph.json": {
+      "sha256": "6e109dca23ce4a0a8ff08729f8aa34dbf1c7adbf4cde43b494bbb7f9af87393d",
+      "size_bytes": 2411
+    },
+    "tests/test_costretch.py": {
+      "sha256": "818c2159336d5fb9f256b13fecb57f6f81903f28c3f3bebfbc7a5f8c5cce32d0",
+      "size_bytes": 1450
+    }
+  },
+  "generated_utc": "2026-10-23T02:30:54.780145+00:00",
+  "nonclaims": [
+    "NOT_TRILLION_WORKERS",
+    "NOT_SUSTAINED_CAPACITY",
+    "NOT_ENERGY_PROOF",
+    "NOT_RECEIVER_ACK",
+    "NOT_RUNTIME_CANON",
+    "NOT_PUBLIC_MERGE_YET"
+  ],
+  "provenance": {
+    "precursor": "CoStretch R0 local receipt on X2 observed via connected remote file read; not recopied into public package"
+  },
+  "schema": "CoAll.CoStretch.PublicReleaseManifest.v0.1",
+  "scope": "OFFLINE_BOUNDED_LOCAL_RELEASE_CANDIDATE"
+}
