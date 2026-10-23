@@ -34,5 +34,25 @@
     "AMBIENT_NE_PUBLIC",
     "COQUANTA_NE_SENTIENCE_PROOF"
   ],
-  "next_test": "local-only predictive input shadow canary with zero outward effects and CoMap lineage projection"
+  "next_test": "one consenting first-use observer, source-bound CoMap two-surface parity, and exact receiver handoff; no provider account retirement without proof",
+  "offline_shadow_canary": {
+    "public_path": "examples/coprecursor/index.html",
+    "public_source_sha256": "f85d77e632f29f3943a042c895b58e0bda466a56d99e3c5b9b1ddbe4861cb359",
+    "proof_class": "X2_LOCAL_STANDALONE_AND_HEADLESS_BROWSER",
+    "results": {
+      "source_smoke_passed": 29,
+      "source_smoke_total": 29,
+      "headless_browser_passed": 12,
+      "headless_browser_total": 12
+    },
+    "corrected_failures": [
+      "CoMap term selection was unrecognized in first source version",
+      "Default caret zero when editor unfocused in first browser version"
+    ],
+    "effect_authority": "NONE",
+    "runtime": "NOT_INTEGRATED",
+    "is_model_inference": false,
+    "external_receivers": "HELD_WITHOUT_ROUTE",
+    "remote_effects": 0
+  }
 }
