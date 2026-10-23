@@ -2,6 +2,8 @@
 
 **EVO ALL BETTERS+** | CoEvoAll+ / CoStretch+ / CoTurtle+ / CoOrbWare+
 
+![Centered EVO ALL BETTERS+ public research moustache](../../../assets/evoall/evo_all_betters_moustache_20261023.svg)
+
 **State:** PASS_LOCAL_SYNTHETIC_ELASTIC_REDUCTION on X2, October 23, 2026. This is a bounded process-and-policy canary, not a live autonomous resource manager, native CoOrbWare renderer, public product or indefinite background runtime.
 
 ## Does reduced always mean reduced?
@@ -77,4 +79,4 @@ CoAndrew+, Claude, Pi, Llama/Ollama and historical replay are candidate future a
 
 Nonclaims: NO_LIVE_COORBWARE | NO_PROVIDER_SESSIONS | NO_ALWAYS_ON_DAEMON | NO_REAL_PRESSURE_MONITOR | NO_RECEIVER_PICKUP | NO_CO_STEAD_LANDING | NO_COEX | NO_CANON | NO_HUMAN_ACCEPTANCE | NO_ACCOUNT_EXIT.
 
-FOSS Forever | CoGoAll | Working Together Respectfully | privacy-by-design | opt-in participation | display optional, wear optional.
+FOSS Forever | CoGoAll | Working Together Respectfully | privacy-by-design | opt-in participation | visible activity disclosure required when active, wearable participation optional.
