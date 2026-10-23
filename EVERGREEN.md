@@ -91,7 +91,12 @@ Rails:
 - `NEWER_MODEL_NE_BETTER_RESULT`
 - `PROVIDER_DIVERSITY_NE_EVIDENCE_INDEPENDENCE`
 
-Historical replay remains **candidate / not yet landed as a qualified runtime**.
+A deterministic, version-bound historical replay checkpoint is now **landed and CI-qualified** via PR #206. It binds exact manifest bytes and fails closed on namespace drift.
+
+This proves logical replay/checkpoint continuity only. Actual Claude/Pi/Llama/Ollama or other model replay remains **HELD until a separately authorized, source-bound execution has its own receipt**.
+
+- PR: https://github.com/CoCivium/CoCivium/pull/206
+- post-merge CI: https://github.com/CoCivium/CoCivium/actions/runs/39992411133
 
 ## Provider-neutral first
 
