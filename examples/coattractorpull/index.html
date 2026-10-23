@@ -46,7 +46,12 @@ function render(){display.replaceChildren();const matches=filteredRecords(query.
 function addFact(list,label,value){list.append(el('dt','',label),el('dd','',safeText(value)));}
 function selectRecord(r){selected=r;detail.replaceChildren();detail.classList.add('active');detail.append(el('div','eyebrow',r.family+' / '+r.epistemic),el('h2','',r.title));
 const dl=el('dl','facts');addFact(dl,'Identity',r.id);addFact(dl,'Evidence',r.proof);addFact(dl,'Lifecycle',r.lifecycle);addFact(dl,'Permitted effect',r.authority);addFact(dl,'Next proof',r.next_probe);addFact(dl,'Source path',r.scope==='PUBLIC_REFERENCE'?r.locator:'PRIVATE / omitted from copy');detail.append(dl);
-const row=el('div','controls-small');const copy=el('button','primary','Copy safe CoCopy+ capsule');copy.type='button';copy.addEventListener('click',()=>copySelected());row.append(copy);
+const row=el('div','controls-small');const copy=el('button','primary','Copy safe CoCopy+ capsule');copy.type='button';
+copy.title='Click or press Enter/Space. Middle-click also copies; thumb buttons work only when your device maps them to middle-click.';
+copy.addEventListener('click',()=>copySelected());
+copy.addEventListener('mousedown',(event)=>{if(event.button===1)event.preventDefault();});
+copy.addEventListener('auxclick',(event)=>{if(event.button===1){event.preventDefault();copySelected();}});
+row.append(copy);
 if(r.scope==='PUBLIC_REFERENCE'&&r.locator.startsWith('https://')){const link=el('a','primary','Open public source');link.href=r.locator;link.target='_blank';link.rel='noopener noreferrer';row.append(link);}detail.append(row);
 const status=el('p','note','Nothing has been executed or sent. Copy is local, only after your explicit click. Private paths are redacted.');status.id='copyStatus';status.setAttribute('role','status');detail.append(status);
 const ta=el('textarea','','');ta.id='copyFallback';ta.rows=9;ta.readOnly=true;ta.setAttribute('aria-label','Select and copy resource capsule manually');detail.append(ta);
