@@ -33,6 +33,7 @@ check("no receiver call on accept",()=>{let s=html.slice(html.indexOf('accept.ad
 check("receipt excludes raw content",()=>{const o=helpers.makeReceipt({sources:1,previews:3,accepted:1,rejected:1,undone:1});assert.equal(o.raw_included,false);assert(!JSON.stringify(o).includes("my secret draft"));assert.equal(o.effects,0);assert.equal(o.remote_receivers,0)});
 check("four projection modes",()=>["glance","relations","time","ambient"].forEach(v=>assert(html.includes('data-mode="'+v+'"'))));
 check("reduced motion fallback",()=>assert(html.includes("@media(prefers-reduced-motion:reduce)")));
+check("ambient suppresses private draft and receipt views",()=>{assert(html.includes('body[data-view="ambient"] #editor-panel,body[data-view="ambient"] #receipt-panel,body[data-view="ambient"] #trail{display:none!important}'));assert(html.includes('id="editor-panel"'));assert(html.includes('id="receipt-panel"'))});
 check("held receiver explicit",()=>assert(html.includes("HELD / no route")));
 check("public claim-boundary source",()=>assert(html.includes("CORELATIONAL_UX_PREDICTIVE_INPUT_R0.md")));
 const passed=cases.filter(x=>x.result==="PASS").length,failed=cases.length-passed;
