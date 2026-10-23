@@ -83,5 +83,19 @@ jobs:
               assert status.startswith("HELD_")
           assert "ID_LOGGED" in r2["preserved_candidate_gates"]
           assert "VISUAL_TAG_NE_RECEIVER" in r2["nonclaims"]
+
+          r3 = json.loads(
+              Path("docs/publishing/cogoall-evergreen-receivers-r3.json").read_text()
+          )
+          assert r3["broadcast_tag"] == "EVO_ALL_BETTERS_PLUS"
+          assert r3["publication"]["github"]["status"] == "PASS_PUBLIC_PROJECTION"
+          assert r3["x2_local"]["status"] == "PASS_SELF_TEST__HELD_PHYSICAL_BUTTON"
+          assert r3["x2_local"]["physical_middle_or_thumb_event"] == "HELD_NOT_OBSERVED"
+          assert r3["human_channels"]["gmail"] == "HELD_ATTENTION_DEDUP"
+          assert r3["human_channels"]["covia"] == "HELD_ATTENTION_DEDUP"
+          for status in r3["requested_but_unverified_receivers"].values():
+              assert status.startswith("HELD_")
+          assert "ADDRESSABLE_NE_BROADCAST" in r3["rails"]
+          assert "GESTURE_NE_AUTHORITY" in r3["rails"]
           print("Evergreen receiver boundaries passed")
           PY
