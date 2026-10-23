@@ -28,7 +28,8 @@ pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#061624;color:#cee7ea
 .notice{border-left:3px solid #d6b16d;padding:9px 12px;background:#30291e;color:#f9e1b4;font-size:13px}.foot{margin-top:23px;color:#a1bdc9;font-size:12px;line-height:1.65;border-top:1px solid #3e5e69;padding-top:16px}
 a{color:#a0e8e7}
 body[data-view="glance"] .diagram .detail-node,body[data-view="ambient"] .diagram .detail-node{opacity:.26}
-body[data-view="ambient"] .controls,body[data-view="ambient"] #trail{opacity:.75}
+body[data-view="ambient"] #editor-panel,body[data-view="ambient"] #receipt-panel,body[data-view="ambient"] #trail{display:none!important}
+body[data-view="ambient"] .grid{grid-template-columns:1fr}
 @media(max-width:760px){.hero{grid-template-columns:1fr}.moustache{width:108px}.grid{grid-template-columns:1fr}.panel{padding:14px}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
 </style>
@@ -43,7 +44,7 @@ body[data-view="ambient"] .controls,body[data-view="ambient"] #trail{opacity:.75
 </header>
 <div class="tagrow" style="margin-top:14px"><span class="tag">SHADOW ONLY</span><span class="tag">NO NETWORK</span><span class="tag">NO GLOBAL INPUT</span><span class="tag">NO OS CHANGES</span><span class="tag">NO AUTO-SEND</span></div>
 <div class="grid">
-<section class="panel" aria-labelledby="input-title">
+<section class="panel" id="editor-panel" aria-labelledby="input-title">
 <h2 id="input-title">CoAckRAW+ | Private demonstration editor</h2>
 <p class="small">Only text typed into this field is considered. Only this page keeps your draft and up to eight pre-acceptance snapshots in memory until reset or close. No network, disk, or external delivery is used. The initial text is fictitious.</p>
 <label for="draft">Your local draft</label>
@@ -75,7 +76,7 @@ body[data-view="ambient"] .controls,body[data-view="ambient"] #trail{opacity:.75
 <ul class="list" id="trail" aria-live="polite"><li>t0 · Public fixture loaded. No user input persisted.</li><li>t1 · Shadow continuation available on the editor input only.</li><li>t2 · Receiver remains unbound, regardless of preview or acceptance.</li></ul>
 </section>
 </div>
-<section class="panel" style="margin-top:16px">
+<section class="panel" id="receipt-panel" style="margin-top:16px">
 <h2>CoAckRAW+ / CoReWis+ receipt</h2>
 <div class="controls"><button type="button" id="receipt">Prepare local receipt (no draft content)</button><button type="button" class="secondary" id="hide-receipt">Hide</button></div>
 <pre id="receipt-output" hidden aria-live="polite"></pre>
