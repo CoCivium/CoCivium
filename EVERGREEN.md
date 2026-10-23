@@ -58,6 +58,14 @@ The existing [CoMap acceptance issue #214](https://github.com/CoCivium/CoCivium/
 
 **One next gate:** have an independent, consenting first-time receiver compare one evidence-backed CoMap relation (including an unknown/private/absent distinction) with a plain list, proving comprehension, privacy, exact source readback, no unintended effects, and receiver state separately. Until then, **Gmail / CoVIA / `.nodes` / sites / CoStead receiver delivery and provider-account retirement remain unproven or held.**
 
+## CoScaleContinuum+ / CoOrbWare+ | Open horizon, bounded embodiment
+
+The [R0 bounded virtual-lease donor](docs/Evolution/COSCALE_CONTINUUM_COORBWARE_R0_20261023.md) shows a **1-trillion-addressable logical possibility space** with only **two simulated lease slots and zero real workers**. It is an offline candidate and has **38/38 local Node tests PASS** after correcting four recorded fixture errors (initial 34/38). [`ai/benchmark-evo.jsonl`](ai/benchmark-evo.jsonl) records FAIL, PASS, and receiver HELD separately. The exact code package is attached to the originating chat, **not committed to GitHub**, so this repository does not yet provide source-code reproduction.
+
+**Reduction need not be permanent:** a summary/view is reversible if exact sources remain recoverable; a dormant work identity can wake again under renewed authority and budget. Actual lost/deleted sources and lossy transformations cannot be re-created just because a hash or pretty view remains. CoOrbWare Orb/Map/Text/Ambient projections should share provenance and authority while showing only the amount of detail safe for each audience.
+
+**Next acceptance:** commit/review the exact source in a qualified repository branch, independently re-run CI, compare one consenting user task against a plain list and no-new-worker baseline, and obtain separate source-bound receiver readproof. No native CoOrbWare runtime, CoStead landing, paid-account retirement, infinite compute or unattended background work is implied.
+
 ## CoHereNow
 
 ### PASS · CoAndrewFirst+ R0
