@@ -1,0 +1,693 @@
+{
+  "format": "CoResourceAttractorBenchmarkR1",
+  "state": "PUBLIC_SYNTHETIC_DESCRIPTOR_FIXTURE",
+  "nonclaims": [
+    "FIXTURE_LABELS_NE_INDEPENDENT_GROUND_TRUTH",
+    "PUBLIC_DESCRIPTOR_NE_RESOURCE_ADOPTION",
+    "SPECULATIVE_RESOURCE_NE_PHYSICAL_MECHANISM",
+    "NULL_RESOURCE_NE_AVAILABLE_TOOL",
+    "BENCHMARK_NE_RUNTIME_INTEGRATION"
+  ],
+  "resources": [
+    {
+      "resource_id": "coandrewfirst",
+      "label": "CoAndrewFirst browser prototype",
+      "resource_class": "software",
+      "description": "Five-minute browser onboarding with evidence inspection and challenge mode.",
+      "capabilities": [
+        "evidence_inspection",
+        "browser_onboarding",
+        "challenge_mode",
+        "provenance"
+      ],
+      "interfaces": [
+        "browser",
+        "html",
+        "json"
+      ],
+      "evidence_strength": 3,
+      "currentness_days": 1,
+      "lifecycle_state": "QUALIFIED",
+      "authority_state": "PUBLIC_READ",
+      "privacy_class": "PUBLIC",
+      "availability": "AVAILABLE",
+      "reversible": true,
+      "optionality_exit": true,
+      "provenance": true,
+      "cost_band": 0,
+      "coordination_debt": 0,
+      "tags": [
+        "browser",
+        "evidence",
+        "challenge",
+        "onboarding"
+      ]
+    },
+    {
+      "resource_id": "coevidence",
+      "label": "CoEvidence bundle canary",
+      "resource_class": "tool",
+      "description": "Shared evidence source verification, provenance and deterministic evidence inspection.",
+      "capabilities": [
+        "evidence_inspection",
+        "source_hash",
+        "provenance",
+        "query_view"
+      ],
+      "interfaces": [
+        "python",
+        "json"
+      ],
+      "evidence_strength": 3,
+      "currentness_days": 1,
+      "lifecycle_state": "QUALIFIED",
+      "authority_state": "PUBLIC_READ",
+      "privacy_class": "PUBLIC",
+      "availability": "AVAILABLE",
+      "reversible": true,
+      "optionality_exit": true,
+      "provenance": true,
+      "cost_band": 0,
+      "coordination_debt": 0,
+      "tags": [
+        "evidence",
+        "provenance",
+        "source",
+        "inspection"
+      ]
+    },
+    {
+      "resource_id": "replay_r3",
+      "label": "CoStretch R3 replay checkpoint",
+      "resource_class": "tool",
+      "description": "Version-bound historical replay checkpoint with namespace binding and ledger verification.",
+      "capabilities": [
+        "historical_replay",
+        "namespace_binding",
+        "ledger_verify",
+        "baseline_compare"
+      ],
+      "interfaces": [
+        "python",
+        "node",
+        "json"
+      ],
+      "evidence_strength": 3,
+      "currentness_days": 0,
+      "lifecycle_state": "QUALIFIED",
+      "authority_state": "PUBLIC_READ",
+      "privacy_class": "PUBLIC",
+      "availability": "AVAILABLE",
+      "reversible": true,
+      "optionality_exit": true,
+      "provenance": true,
+      "cost_band": 0,
+      "coordination_debt": 0,
+      "tags": [
+        "historical",
+        "replay",
+        "namespace",
+        "ledger",
+        "verify"
+      ]
+    },
+    {
+      "resource_id": "replaylab_v03",
+      "label": "ReplayLab v0.3",
+      "resource_class": "historical_artifact",
+      "description": "Older bounded historical replay lab retained as a comparison baseline.",
+      "capabilities": [
+        "historical_replay",
+        "baseline_compare"
+      ],
+      "interfaces": [
+        "python",
+        "json"
+      ],
+      "evidence_strength": 2,
+      "currentness_days": 20,
+      "lifecycle_state": "QUALIFIED",
+      "authority_state": "PUBLIC_READ",
+      "privacy_class": "PUBLIC",
+      "availability": "AVAILABLE",
+      "reversible": true,
+      "optionality_exit": true,
+      "provenance": true,
+      "cost_band": 0,
+      "coordination_debt": 1,
+      "tags": [
+        "replay",
+        "historical",
+        "baseline"
+      ]
+    },
+    {
+      "resource_id": "selector_r0",
+      "label": "CoExperimentSelector R0",
+      "resource_class": "tool",
+      "description": "Pareto-layer experiment frontier selector with challenge, weird, replay and fault lanes.",
+      "capabilities": [
+        "experiment_selection",
+        "pareto",
+        "challenge_lane",
+        "weird_lane",
+        "evidence_scoring"
+      ],
+      "interfaces": [
+        "python",
+        "json"
+      ],
+      "evidence_strength": 3,
+      "currentness_days": 1,
+      "lifecycle_state": "QUALIFIED",
+      "authority_state": "PUBLIC_READ",
+      "privacy_class": "PUBLIC",
+      "availability": "AVAILABLE",
+      "reversible": true,
+      "optionality_exit": true,
+      "provenance": true,
+      "cost_band": 0,
+      "coordination_debt": 0,
+      "tags": [
+        "experiment",
+        "selector",
+        "pareto",
+        "challenge",
+        "weird"
+      ]
+    },
+    {
+      "resource_id": "local_ollama_worker",
+      "label": "Local Ollama worker adapter",
+      "resource_class": "tool",
+      "description": "Loopback-local model worker candidate for bounded proposal generation.",
+      "capabilities": [
+        "local_model",
+        "ollama",
+        "proposal"
+      ],
+      "interfaces": [
+        "python",
+        "http",
+        "json"
+      ],
+      "evidence_strength": 2,
+      "currentness_days": 30,
+      "lifecycle_state": "QUALIFIED",
+      "authority_state": "ADVISORY",
+      "privacy_class": "PUBLIC",
+      "availability": "AVAILABLE",
+      "reversible": true,
+      "optionality_exit": true,
+      "provenance": true,
+      "cost_band": 1,
+      "coordination_debt": 1,
+      "tags": [
+        "local",
+        "ollama",
+        "model"
+      ]
+    },
+    {
+      "resource_id": "github_relational",
+      "label": "GitHub relational field",
+      "resource_class": "repository",
+      "description": "Repository projection graph with explicit currentness and provenance boundaries.",
+      "capabilities": [
+        "repository_projection",
+        "provenance",
+        "currentness"
+      ],
+      "interfaces": [
+        "git",
+        "json"
+      ],
+      "evidence_strength": 3,
+      "currentness_days": 29,
+      "lifecycle_state": "QUALIFIED",
+      "authority_state": "PUBLIC_READ",
+      "privacy_class": "PUBLIC",
+      "availability": "AVAILABLE",
+      "reversible": true,
+      "optionality_exit": true,
+      "provenance": true,
+      "cost_band": 0,
+      "coordination_debt": 1,
+      "tags": [
+        "github",
+        "provenance",
+        "currentness"
+      ]
+    },
+    {
+      "resource_id": "copulse_readproof",
+      "label": "CoPulse receiver readproof",
+      "resource_class": "tool",
+      "description": "Exact-object receiver readproof and freshness routing canary.",
+      "capabilities": [
+        "receiver_readproof",
+        "freshness",
+        "routing",
+        "provenance"
+      ],
+      "interfaces": [
+        "python",
+        "json"
+      ],
+      "evidence_strength": 3,
+      "currentness_days": 29,
+      "lifecycle_state": "QUALIFIED",
+      "authority_state": "PUBLIC_READ",
+      "privacy_class": "PUBLIC",
+      "availability": "AVAILABLE",
+      "reversible": true,
+      "optionality_exit": true,
+      "provenance": true,
+      "cost_band": 0,
+      "coordination_debt": 1,
+      "tags": [
+        "receiver",
+        "readproof",
+        "freshness"
+      ]
+    },
+    {
+      "resource_id": "keyword_decoy_browser",
+      "label": "Browser evidence challenge provenance source inspector",
+      "resource_class": "software",
+      "description": "Inspect evidence in browser challenge provenance source paths; descriptive demo with weaker capability coverage.",
+      "capabilities": [
+        "evidence_inspection"
+      ],
+      "interfaces": [
+        "text"
+      ],
+      "evidence_strength": 2,
+      "currentness_days": 5,
+      "lifecycle_state": "QUALIFIED",
+      "authority_state": "PUBLIC_READ",
+      "privacy_class": "PUBLIC",
+      "availability": "AVAILABLE",
+      "reversible": true,
+      "optionality_exit": true,
+      "provenance": false,
+      "cost_band": 0,
+      "coordination_debt": 0,
+      "tags": [
+        "inspect",
+        "evidence",
+        "browser",
+        "challenge",
+        "provenance",
+        "source"
+      ]
+    },
+    {
+      "resource_id": "keyword_decoy_replay",
+      "label": "Historical replay namespace ledger verify experiment note",
+      "resource_class": "historical_artifact",
+      "description": "Historical replay namespace ledger verify experiment wording without version-bound controls.",
+      "capabilities": [
+        "historical_replay"
+      ],
+      "interfaces": [
+        "text"
+      ],
+      "evidence_strength": 2,
+      "currentness_days": 5,
+      "lifecycle_state": "QUALIFIED",
+      "authority_state": "PUBLIC_READ",
+      "privacy_class": "PUBLIC",
+      "availability": "AVAILABLE",
+      "reversible": true,
+      "optionality_exit": true,
+      "provenance": false,
+      "cost_band": 0,
+      "coordination_debt": 0,
+      "tags": [
+        "historical",
+        "replay",
+        "namespace",
+        "ledger",
+        "verify",
+        "experiment"
+      ]
+    },
+    {
+      "resource_id": "stale_browser",
+      "label": "Old browser evidence demo",
+      "resource_class": "historical_artifact",
+      "description": "Previously useful browser evidence inspection demo now outside the bounded currentness window.",
+      "capabilities": [
+        "evidence_inspection",
+        "browser_onboarding",
+        "challenge_mode"
+      ],
+      "interfaces": [
+        "browser",
+        "html"
+      ],
+      "evidence_strength": 3,
+      "currentness_days": 400,
+      "lifecycle_state": "QUALIFIED",
+      "authority_state": "PUBLIC_READ",
+      "privacy_class": "PUBLIC",
+      "availability": "AVAILABLE",
+      "reversible": true,
+      "optionality_exit": true,
+      "provenance": true,
+      "cost_band": 0,
+      "coordination_debt": 0,
+      "tags": [
+        "browser",
+        "evidence",
+        "stale"
+      ]
+    },
+    {
+      "resource_id": "private_browser",
+      "label": "Private browser evidence draft",
+      "resource_class": "software",
+      "description": "Private draft with browser evidence inspection capability.",
+      "capabilities": [
+        "evidence_inspection",
+        "browser_onboarding",
+        "challenge_mode"
+      ],
+      "interfaces": [
+        "browser",
+        "html"
+      ],
+      "evidence_strength": 3,
+      "currentness_days": 1,
+      "lifecycle_state": "QUALIFIED",
+      "authority_state": "ADVISORY",
+      "privacy_class": "PRIVATE",
+      "availability": "AVAILABLE",
+      "reversible": true,
+      "optionality_exit": true,
+      "provenance": true,
+      "cost_band": 0,
+      "coordination_debt": 0,
+      "tags": [
+        "browser",
+        "evidence",
+        "private"
+      ]
+    },
+    {
+      "resource_id": "null_pi_adapter",
+      "label": "Pi adapter absence record",
+      "resource_class": "null_resource",
+      "description": "Explicit bounded observation that a qualified Pi adapter was not available in the observed environment.",
+      "capabilities": [
+        "pi_adapter_status"
+      ],
+      "interfaces": [
+        "json"
+      ],
+      "evidence_strength": 3,
+      "currentness_days": 0,
+      "lifecycle_state": "QUALIFIED",
+      "authority_state": "PUBLIC_READ",
+      "privacy_class": "PUBLIC",
+      "availability": "ABSENT",
+      "reversible": true,
+      "optionality_exit": true,
+      "provenance": true,
+      "cost_band": 0,
+      "coordination_debt": 0,
+      "tags": [
+        "pi",
+        "adapter",
+        "absence",
+        "null"
+      ]
+    },
+    {
+      "resource_id": "anti_provider_swarm",
+      "label": "Provider swarm anti-resource",
+      "resource_class": "anti_resource",
+      "description": "Negative evidence against anonymous provider-session swarms, rate-limit evasion and fake-human scaling.",
+      "capabilities": [
+        "provider_scale_safety"
+      ],
+      "interfaces": [
+        "policy",
+        "json"
+      ],
+      "evidence_strength": 3,
+      "currentness_days": 0,
+      "lifecycle_state": "QUALIFIED",
+      "authority_state": "PUBLIC_READ",
+      "privacy_class": "PUBLIC",
+      "availability": "AVAILABLE",
+      "reversible": true,
+      "optionality_exit": true,
+      "provenance": true,
+      "cost_band": 0,
+      "coordination_debt": 0,
+      "tags": [
+        "provider",
+        "swarm",
+        "anti",
+        "safety"
+      ]
+    },
+    {
+      "resource_id": "counterfactual_million",
+      "label": "Million-session counterfactual",
+      "resource_class": "counterfactual",
+      "description": "Logical million-session simulation with zero live provider sessions.",
+      "capabilities": [
+        "logical_scale",
+        "simulation"
+      ],
+      "interfaces": [
+        "python",
+        "json"
+      ],
+      "evidence_strength": 3,
+      "currentness_days": 1,
+      "lifecycle_state": "QUALIFIED",
+      "authority_state": "PUBLIC_READ",
+      "privacy_class": "PUBLIC",
+      "availability": "SIMULATED",
+      "reversible": true,
+      "optionality_exit": true,
+      "provenance": true,
+      "cost_band": 0,
+      "coordination_debt": 0,
+      "tags": [
+        "million",
+        "logical",
+        "simulation"
+      ]
+    },
+    {
+      "resource_id": "cospirit_hypothesis",
+      "label": "CoSpirit representation hypothesis",
+      "resource_class": "CoSpirit_hypothesis",
+      "description": "Speculative non-material representation lane retained as a hypothesis, not a demonstrated physical mechanism.",
+      "capabilities": [
+        "non_material_representation"
+      ],
+      "interfaces": [
+        "text",
+        "json"
+      ],
+      "evidence_strength": 1,
+      "currentness_days": 0,
+      "lifecycle_state": "DESCRIBED",
+      "authority_state": "PUBLIC_READ",
+      "privacy_class": "PUBLIC",
+      "availability": "HYPOTHETICAL",
+      "reversible": true,
+      "optionality_exit": true,
+      "provenance": true,
+      "cost_band": 0,
+      "coordination_debt": 0,
+      "tags": [
+        "cospirit",
+        "hypothesis",
+        "non-material",
+        "speculative"
+      ]
+    }
+  ],
+  "needs": [
+    {
+      "need_id": "browser_evidence",
+      "query": "inspect evidence in browser challenge provenance source",
+      "required_capabilities": [
+        "evidence_inspection"
+      ],
+      "preferred_capabilities": [
+        "browser_onboarding",
+        "challenge_mode",
+        "provenance"
+      ],
+      "preferred_interfaces": [
+        "browser",
+        "html"
+      ],
+      "min_evidence_strength": 2,
+      "max_currentness_days": 60,
+      "privacy_ceiling": "PUBLIC",
+      "allowed_authority": [
+        "PUBLIC_READ",
+        "ADVISORY"
+      ],
+      "allowed_availability": [
+        "AVAILABLE"
+      ],
+      "allowed_resource_classes": [
+        "software",
+        "tool",
+        "historical_artifact"
+      ],
+      "top_k": 2,
+      "gold_relevant_ids": [
+        "coandrewfirst",
+        "coevidence"
+      ],
+      "failure_probe": {
+        "disable_resource_ids": [
+          "coandrewfirst"
+        ],
+        "expected_fallback_id": "coevidence"
+      }
+    },
+    {
+      "need_id": "historical_replay",
+      "query": "historical replay namespace ledger verify experiment",
+      "required_capabilities": [
+        "historical_replay"
+      ],
+      "preferred_capabilities": [
+        "namespace_binding",
+        "ledger_verify",
+        "baseline_compare"
+      ],
+      "preferred_interfaces": [
+        "python",
+        "node",
+        "json"
+      ],
+      "min_evidence_strength": 2,
+      "max_currentness_days": 60,
+      "privacy_ceiling": "PUBLIC",
+      "allowed_authority": [
+        "PUBLIC_READ"
+      ],
+      "allowed_availability": [
+        "AVAILABLE"
+      ],
+      "allowed_resource_classes": [
+        "tool",
+        "historical_artifact"
+      ],
+      "top_k": 2,
+      "gold_relevant_ids": [
+        "replay_r3",
+        "replaylab_v03"
+      ],
+      "failure_probe": {
+        "disable_resource_ids": [
+          "replay_r3"
+        ],
+        "expected_fallback_id": "replaylab_v03"
+      }
+    },
+    {
+      "need_id": "experiment_frontier",
+      "query": "select bounded experiment frontier pareto challenge weird evidence",
+      "required_capabilities": [
+        "experiment_selection"
+      ],
+      "preferred_capabilities": [
+        "pareto",
+        "challenge_lane",
+        "weird_lane",
+        "evidence_scoring"
+      ],
+      "preferred_interfaces": [
+        "python",
+        "json"
+      ],
+      "min_evidence_strength": 2,
+      "max_currentness_days": 60,
+      "privacy_ceiling": "PUBLIC",
+      "allowed_authority": [
+        "PUBLIC_READ"
+      ],
+      "allowed_availability": [
+        "AVAILABLE"
+      ],
+      "allowed_resource_classes": [
+        "tool"
+      ],
+      "top_k": 1,
+      "gold_relevant_ids": [
+        "selector_r0"
+      ]
+    },
+    {
+      "need_id": "pi_status",
+      "query": "qualified Pi adapter availability status",
+      "required_capabilities": [
+        "pi_adapter_status"
+      ],
+      "preferred_capabilities": [],
+      "preferred_interfaces": [
+        "json"
+      ],
+      "min_evidence_strength": 2,
+      "max_currentness_days": 60,
+      "privacy_ceiling": "PUBLIC",
+      "allowed_authority": [
+        "PUBLIC_READ"
+      ],
+      "allowed_availability": [
+        "ABSENT",
+        "AVAILABLE"
+      ],
+      "allowed_resource_classes": [
+        "null_resource",
+        "tool"
+      ],
+      "top_k": 1,
+      "gold_relevant_ids": [
+        "null_pi_adapter"
+      ]
+    },
+    {
+      "need_id": "provider_scale_safety",
+      "query": "provider swarm safety anonymous sessions rate limit",
+      "required_capabilities": [
+        "provider_scale_safety"
+      ],
+      "preferred_capabilities": [],
+      "preferred_interfaces": [
+        "policy",
+        "json"
+      ],
+      "min_evidence_strength": 2,
+      "max_currentness_days": 60,
+      "privacy_ceiling": "PUBLIC",
+      "allowed_authority": [
+        "PUBLIC_READ"
+      ],
+      "allowed_availability": [
+        "AVAILABLE"
+      ],
+      "allowed_resource_classes": [
+        "anti_resource"
+      ],
+      "top_k": 1,
+      "gold_relevant_ids": [
+        "anti_provider_swarm"
+      ]
+    }
+  ]
+}
