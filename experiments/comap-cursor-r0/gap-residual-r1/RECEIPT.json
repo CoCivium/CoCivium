@@ -1,0 +1,30 @@
+{
+  "actual_workers_spawned": 0,
+  "created_utc": "2026-10-23T19:23:05.182058+00:00",
+  "external_messages_sent": 0,
+  "files_sha256": {
+    "README.md": "25e8889a1df4a2cc78697e11adb16b1bbdc7059d1f2b6ebb19a2cb04ebaa30d5",
+    "benchmark_evo_r1.jsonl": "fb1c8fb21f7cb3770a56e8453be369928fae9288f553e7965ee256c03e153080",
+    "build_ledger.py": "94cf17a8aeb84885e03683e32bc793d13fdc8da396b9087105cd52f74ca9cabf",
+    "conull-gdres-r1.mjs": "a8bf1e45ed246b242614529fa1a35f320dd52f8744da9c034c1425b54f4db647",
+    "conull-gdres-r1.test.mjs": "45ae05d1b2128faf26c6bc3daaba982b2b09a70787f6a6331f7699418426299f",
+    "test_results.tap": "2c733f81f31113848262ea5bd10181ec534405da55100e68e13f98ffe6f04293"
+  },
+  "jsonl_sha256": "fb1c8fb21f7cb3770a56e8453be369928fae9288f553e7965ee256c03e153080",
+  "not_run_gates": 15,
+  "provider_calls": 0,
+  "public_release": false,
+  "receiver_readproof": null,
+  "schema": "CoNull.GdRes.R1.LocalReceipt.v1",
+  "semantic_review": "R1 self-authored code and test contracts reviewed; no historical global corpus review",
+  "source_lineage": [
+    "CoCivium/CoCivium PR #215",
+    "CoCivium/CoCivium issue #214",
+    "CoCivium/CoCivium PR #216 (merged)",
+    "CoCivium/CoCivium PR #218 (draft)"
+  ],
+  "state": "VERIFIED_LOCAL_NOT_LANDED_NOT_PICKED_UP",
+  "tests_failed": 0,
+  "tests_passed": 37,
+  "ux_acceptance": "UX_NOT_EVALUATED"
+}
