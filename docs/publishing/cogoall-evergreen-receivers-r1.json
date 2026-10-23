@@ -1,0 +1,46 @@
+{
+  "format": "CoGoAllEvergreenReceiverManifestR1",
+  "observed_at": "2026-10-23T02:52:00Z",
+  "broadcast_tag": "EVO_ALL_BETTERS_PLUS",
+  "publication": {
+    "artifact": "EVERGREEN.md",
+    "github": {
+      "status": "PASS",
+      "merge_commit": "443b74b6d5915c47e00eab3123d764b19efb33c4",
+      "post_merge_ci": "https://github.com/CoCivium/CoCivium/actions/runs/39890660097"
+    }
+  },
+  "gmail": {
+    "status": "PASS_SEND_RECEIPTS",
+    "routes": [
+      {
+        "label": "Andrew / CoAndrew+",
+        "sent_message_id": "1a166aa410b78b06"
+      },
+      {
+        "label": "Darren and Bryan / governance-proof",
+        "sent_message_id": "1a166aac70ea9491"
+      },
+      {
+        "label": "CoVIA Tom-Dianne-Darren / privacy-accessibility",
+        "sent_message_id": "1a166aadd21a7b12"
+      }
+    ],
+    "privacy": "recipient addresses omitted from public manifest",
+    "nonclaim": "SENT_NE_READ_OR_ACCEPTED"
+  },
+  "held_receivers": {
+    ".nodes": "HELD_NO_RECEIVER",
+    "nodes": "HELD_NO_RECEIVER",
+    ".sites": "HELD_NO_RECEIVER",
+    "sites": "HELD_NO_RECEIVER",
+    "dedicated_covia_transport": "HELD_NO_DEDICATED_RECEIVER"
+  },
+  "nonclaims": [
+    "REQUESTED_CHANNEL_NE_EXISTING_RECEIVER",
+    "POINTER_NE_ACK",
+    "SENT_NE_READ",
+    "NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF",
+    "GITHUB_PUBLICATION_NE_UNIVERSAL_DISTRIBUTION"
+  ]
+}

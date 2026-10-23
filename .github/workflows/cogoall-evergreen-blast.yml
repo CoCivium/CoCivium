@@ -8,14 +8,14 @@ on:
     paths:
       - "EVERGREEN.md"
       - "ai/benchmark-evo.jsonl"
-      - "docs/publishing/cogoall-evergreen-receivers-r0.json"
+      - "docs/publishing/cogoall-evergreen-receivers-*.json"
       - "scripts/CoBenchmarkEvoCheckR0.py"
       - ".github/workflows/cogoall-evergreen-blast.yml"
   push:
     paths:
       - "EVERGREEN.md"
       - "ai/benchmark-evo.jsonl"
-      - "docs/publishing/cogoall-evergreen-receivers-r0.json"
+      - "docs/publishing/cogoall-evergreen-receivers-*.json"
       - "scripts/CoBenchmarkEvoCheckR0.py"
       - ".github/workflows/cogoall-evergreen-blast.yml"
 
@@ -44,19 +44,29 @@ jobs:
               "LOGICAL_SESSION_COUNT_NE_ACTIVE_PROCESS_COUNT",
               "SELECTED_NE_EXECUTED",
               "HIGH_UTILIZATION_NE_HIGH_VALUE",
-              "HELD_NO_RECEIVER",
+              "PROPOSED_THRESHOLD_NE_MEASURED_RESULT",
               "Pointer is not ACK. Receipt beats assertion.",
           ]
           for text in required:
               assert text in evergreen, text
 
-          manifest = json.loads(
+          r0 = json.loads(
               Path("docs/publishing/cogoall-evergreen-receivers-r0.json").read_text()
           )
-          requested = manifest["requested_channels"]
+          requested = r0["requested_channels"]
           for key in (".nodes", "nodes", ".sites", "sites"):
               assert requested[key]["status"] == "HELD_NO_RECEIVER"
-          assert requested["github"]["status"] == "TARGET_VERIFIED"
-          assert requested["gmail"]["status"] == "TARGETS_VERIFIED_FROM_EXISTING_THREADS"
+
+          r1 = json.loads(
+              Path("docs/publishing/cogoall-evergreen-receivers-r1.json").read_text()
+          )
+          assert r1["broadcast_tag"] == "EVO_ALL_BETTERS_PLUS"
+          assert r1["publication"]["github"]["status"] == "PASS"
+          assert r1["gmail"]["status"] == "PASS_SEND_RECEIPTS"
+          assert len(r1["gmail"]["routes"]) == 3
+          for route in r1["gmail"]["routes"]:
+              assert route["sent_message_id"]
+          for status in r1["held_receivers"].values():
+              assert status.startswith("HELD_")
           print("Evergreen receiver boundaries passed")
           PY
