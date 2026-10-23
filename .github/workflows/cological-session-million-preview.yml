@@ -1,0 +1,45 @@
+name: CoLogical Session Million Preview
+
+permissions:
+  contents: read
+
+on:
+  pull_request:
+    paths:
+      - "scripts/CoLogicalSessionMillionPreviewR0.py"
+      - "tests/test_logical_session_million_preview.py"
+      - "docs/Architecture/COLOGICAL_SESSION_MILLION_PREVIEW_R0.md"
+      - ".github/workflows/cological-session-million-preview.yml"
+  push:
+    paths:
+      - "scripts/CoLogicalSessionMillionPreviewR0.py"
+      - "tests/test_logical_session_million_preview.py"
+      - "docs/Architecture/COLOGICAL_SESSION_MILLION_PREVIEW_R0.md"
+      - ".github/workflows/cological-session-million-preview.yml"
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run bounded preview regressions
+        run: python -B -m unittest tests.test_logical_session_million_preview -v
+      - name: Prove million-count preview stays bounded
+        run: |
+          python -B scripts/CoLogicalSessionMillionPreviewR0.py             --logical-count 1000000             --sample-limit 12             --materialization-ceiling 64             --seed ci-million > /tmp/million.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          result = json.loads(Path("/tmp/million.json").read_text())
+          assert result["logical_session_count"] == 1_000_000
+          assert result["enumerated_session_records"] == 12
+          assert result["selected_for_materialization"] == []
+          assert result["effects"]["workers_started"] == 0
+          assert result["effects"]["provider_sessions_created"] == 0
+          assert result["effects"]["accounts_created"] == 0
+          print("logical million preview bounded")
+          PY
