@@ -1,0 +1,121 @@
+{
+  "dry_process_probe": {
+    "completed": 4,
+    "duration_ms": 1760.985,
+    "external_effects": 0,
+    "launched": 4,
+    "peak_parent_observed_processes": 2,
+    "provider_calls": 0,
+    "remaining_children": 0,
+    "scope": "SAME_HOST_FINITE_SUBPROCESSES_ONLY"
+  },
+  "external_effects": 0,
+  "lifecycle": [
+    "DORMANT",
+    "WAKE_ELIGIBLE",
+    "LEASED_SIMULATED",
+    "COMPLETE_SIMULATED",
+    "SLEEP"
+  ],
+  "logical_space": "1208925819614629174706176",
+  "max_active": 2,
+  "note": "Four real, short-lived local Python child processes completed; no model, network, remote service, or receiver pickup.",
+  "public_orb": {
+    "comment": "This is a deterministic local dry-run. No live desktop service.",
+    "currentness": "BOUNDED_SNAPSHOT",
+    "effect_authority": "NONE",
+    "execution": "NO_LIVE_WORKERS_FROM_ORB",
+    "hidden_counts": null,
+    "logical_options": "1208925819614629174706176",
+    "observed_working_set": 9,
+    "receiver_ack": "UNPROVEN",
+    "schema": "CoOrbWare.CandidateProjection.R0",
+    "spec_sha256": "6a9a4134900255c9c5021577a759a5b0382857a54275b6da648918d01a6e177a",
+    "tiles": [
+      {
+        "evidence": "SYNTHETIC_ONLY",
+        "id": "vs-00000000000000000000",
+        "priority": 0,
+        "receiver_ack": "UNPROVEN",
+        "source_sha256": "a9a3fefa32a1126b40547199afcec5f41ef0fa7a4ac4599a248bc8db22fbb3a5",
+        "state": "WAITING"
+      },
+      {
+        "evidence": "SYNTHETIC_ONLY",
+        "id": "vs-00000000000000000001",
+        "priority": 1,
+        "receiver_ack": "UNPROVEN",
+        "source_sha256": "d60d02b0d57c68919e07273dc679bbd8e6747181d66b657f789b8e0ee6be9367",
+        "state": "WAITING"
+      },
+      {
+        "evidence": "SYNTHETIC_ONLY",
+        "id": "vs-00000000000000000002",
+        "priority": 2,
+        "receiver_ack": "UNPROVEN",
+        "source_sha256": "b3a313a4f77e1ed15e35e3484b142bb6c3c80e6634681999c82a810c0a7424eb",
+        "state": "WAITING"
+      },
+      {
+        "evidence": "SYNTHETIC_ONLY",
+        "id": "vs-00000000000000000003",
+        "priority": 3,
+        "receiver_ack": "UNPROVEN",
+        "source_sha256": "643ba126e4a4e1c8b7e11208d1c6f7ce1e56386b57dd1e463db9e035dc8dec5b",
+        "state": "COMPLETE_SIMULATED"
+      },
+      {
+        "evidence": "SYNTHETIC_ONLY",
+        "id": "vs-00000000000000000004",
+        "priority": 4,
+        "receiver_ack": "UNPROVEN",
+        "source_sha256": "d40e5889616f52daf634149806f3aae88280ab47e3cb643aa78bf248c24652c0",
+        "state": "COMPLETE_SIMULATED"
+      },
+      {
+        "evidence": "SYNTHETIC_ONLY",
+        "id": "vs-00000000000000000005",
+        "priority": 0,
+        "receiver_ack": "UNPROVEN",
+        "source_sha256": "50bd1732af0100df7b5d9c2fc9d45adf615a1dc463eb7574cae6005eb8739a3f",
+        "state": "WAITING"
+      },
+      {
+        "evidence": "SYNTHETIC_ONLY",
+        "id": "vs-00000000000000000006",
+        "priority": 1,
+        "receiver_ack": "UNPROVEN",
+        "source_sha256": "4a9df2e11537db81db7045c1406974defda3c515deb712ee4e43937559492688",
+        "state": "WAITING"
+      },
+      {
+        "evidence": "SYNTHETIC_ONLY",
+        "id": "vs-00000000000000000007",
+        "priority": 2,
+        "receiver_ack": "UNPROVEN",
+        "source_sha256": "4c1becd3e6829bb7dc1c6dfd7d0872d5119edd1bdddeb8d0df4d07938731e685",
+        "state": "WAITING"
+      },
+      {
+        "evidence": "SYNTHETIC_ONLY",
+        "id": "vs-0000000000000000000b",
+        "priority": 1,
+        "receiver_ack": "UNPROVEN",
+        "source_sha256": "8633c4e606f60c3773a1c9a04d41493ec4975162884502d9d8ceb06d80363648",
+        "state": "HELD"
+      }
+    ]
+  },
+  "receiver_ack": "UNPROVEN",
+  "scales": [
+    "COHERE_NOW",
+    "LOCAL_DEVICE",
+    "LAN",
+    "FEDERATED_OPTION",
+    "LOGICAL_POSSIBILITIES"
+  ],
+  "schema": "CoAll.CoForever.CandidateDemo.v0.1",
+  "scope": "ONE_BOUNDED_SYNTHETIC_WAVE",
+  "spec_sha256": "6a9a4134900255c9c5021577a759a5b0382857a54275b6da648918d01a6e177a",
+  "touched": 12
+}
