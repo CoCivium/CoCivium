@@ -37,13 +37,13 @@
   "next_test": "one consenting first-use observer, source-bound CoMap two-surface parity, and exact receiver handoff; no provider account retirement without proof",
   "offline_shadow_canary": {
     "public_path": "examples/coprecursor/index.html",
-    "public_source_sha256": "f85d77e632f29f3943a042c895b58e0bda466a56d99e3c5b9b1ddbe4861cb359",
+    "public_source_sha256": "0d24d5f9b97c80f1c33e7830fc5b36a721754640980568a53c119df8baad1afb",
     "proof_class": "X2_LOCAL_STANDALONE_AND_HEADLESS_BROWSER",
     "results": {
-      "source_smoke_passed": 29,
-      "source_smoke_total": 29,
-      "headless_browser_passed": 12,
-      "headless_browser_total": 12
+      "source_smoke_passed": 30,
+      "source_smoke_total": 30,
+      "headless_browser_passed": 13,
+      "headless_browser_total": 13
     },
     "corrected_failures": [
       "CoMap term selection was unrecognized in first source version",
@@ -53,6 +53,17 @@
     "runtime": "NOT_INTEGRATED",
     "is_model_inference": false,
     "external_receivers": "HELD_WITHOUT_ROUTE",
-    "remote_effects": 0
+    "remote_effects": 0,
+    "prior_source_sha256": "f85d77e632f29f3943a042c895b58e0bda466a56d99e3c5b9b1ddbe4861cb359",
+    "ambient_privacy": {
+      "state": "PASS_BOUNDED_BROWSER",
+      "behaviour": "Hide demo editor, receipt and trail in ambient projection; do not install OS wallpaper",
+      "limitations": [
+        "NOT_LOCK_SCREEN_TESTED",
+        "NOT_BYSTANDER_ACCEPTED",
+        "NOT_NATIVE_RUNTIME"
+      ]
+    },
+    "updated_version": "R0J_AmbientPrivacyRepair_then_R0L_PublicReadback"
   }
 }
