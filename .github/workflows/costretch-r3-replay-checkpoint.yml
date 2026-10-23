@@ -1,0 +1,103 @@
+name: CoStretch R3 Replay Checkpoint
+
+permissions:
+  contents: read
+
+on:
+  pull_request:
+    paths:
+      - "experiments/costretch-r1/checkpoint_r3/**"
+      - ".github/workflows/costretch-r3-replay-checkpoint.yml"
+  push:
+    paths:
+      - "experiments/costretch-r1/checkpoint_r3/**"
+      - ".github/workflows/costretch-r3-replay-checkpoint.yml"
+
+jobs:
+  checkpoint-r3:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Verify frozen package manifest
+        working-directory: experiments/costretch-r1/checkpoint_r3
+        run: |
+          python - <<'PY'
+          import hashlib, json
+          from pathlib import Path
+
+          manifest = json.loads(Path("PACKAGE_MANIFEST.json").read_text(encoding="utf-8"))
+          assert manifest["schema"] == "CoPortableFileManifest/1"
+          for rel, expected in manifest["files"].items():
+              p = Path(rel)
+              raw = p.read_bytes()
+              assert len(raw) == expected["bytes"], (rel, len(raw), expected["bytes"])
+              actual = hashlib.sha256(raw).hexdigest()
+              assert actual == expected["sha256"], (rel, actual, expected["sha256"])
+          print(f'PASS package files={len(manifest["files"])}')
+          PY
+
+      - name: Run Python regressions
+        working-directory: experiments/costretch-r1/checkpoint_r3
+        run: python -B -m unittest -v test_turtle_checkpoint.py
+
+      - name: Verify checkpoint in Python and Node
+        working-directory: experiments/costretch-r1/checkpoint_r3
+        run: |
+          python -B turtle_checkpoint.py verify --space space_manifest.json --checkpoint checkpoint_R3_seed0.json
+          python -B turtle_checkpoint.py verify --space space_manifest.json --checkpoint checkpoint_R3_successor.json
+          node verify_checkpoint.mjs space_manifest.json checkpoint_R3_seed0.json
+          node verify_checkpoint.mjs space_manifest.json checkpoint_R3_successor.json
+
+      - name: Verify frozen evidence ledger in Python and Node
+        working-directory: experiments/costretch-r1/checkpoint_r3
+        run: |
+          python -B verify_evo_ledger.py benchmark_evo_R3.jsonl HEAD_R3.sha256
+          node verify_evo_ledger.mjs benchmark_evo_R3.jsonl HEAD_R3.sha256
+
+      - name: Regenerate fresh evidence and compare invariant outcomes
+        working-directory: experiments/costretch-r1/checkpoint_r3
+        run: |
+          mkdir independent_reproduction
+          python -B build_evidence_R3.py --out-dir independent_reproduction
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          frozen = json.loads(Path("R3_REPORT.json").read_text())
+          fresh = json.loads(Path("independent_reproduction/R3_REPORT.json").read_text())
+
+          for key in (
+              "schema",
+              "spec_sha256",
+              "r2_source_sha256",
+              "r2_source_head",
+              "total_events",
+              "added_events",
+              "status_counts",
+              "new_python_tests",
+              "negative_cross_runtime_cases",
+              "baseline_failure",
+              "corrective_behavior",
+          ):
+              assert fresh[key] == frozen[key], (key, fresh[key], frozen[key])
+
+          assert fresh["new_python_tests"] == 25
+          assert fresh["negative_cross_runtime_cases"] == 4
+          assert fresh["status_counts"] == {
+              "PASS": 16,
+              "FAIL": 6,
+              "HOLD": 4,
+              "NOT_RUN": 14,
+          }
+          assert fresh["baseline_failure"] == "SAME_COUNT_SEMANTIC_DRIFT"
+          assert fresh["corrective_behavior"] == "SPEC_NAMESPACE_CHANGED_FAIL_CLOSED"
+          print("PASS invariant evidence regeneration")
+          PY
