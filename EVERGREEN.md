@@ -52,6 +52,8 @@ Next acceptance gate: one consenting observer completing a first-use task, follo
 - **CoDvl+ / G_dRes+:** Build, Challenge, Repair; unusual ideas, source discrepancies and counterexamples are candidate experiments, not authority, sentience, ET/spiritual proof, or a new physical field.
 - **Centre moustache / CoThumb+:** [draft PR #218](https://github.com/CoCivium/CoCivium/pull/218) proposes a keyboard-accessible **review-only** preview. Hardware middle/thumb gesture detection, OS remapping and native CoOrbWare pickup are **HELD**, not installed.
 
+[X2 exact-source R1A public receipt](ai/receipts/2026-10-23_coomniio_conull_r1a_x2_retest.json) preserves the two exact Git blob identities, local test exit code, and explicit nonclaims. This publicly readable receipt is not an independent CoStead/CoVIA receiver ACK.
+
 The existing [CoMap acceptance issue #214](https://github.com/CoCivium/CoCivium/issues/214) remains the coordination root. [`ai/benchmark-evo.jsonl`](ai/benchmark-evo.jsonl) records previous FAIL corrections and current PASS/HELD proofs. Logical million-session descriptions never imply a million active workers, users, provider tabs or accounts.
 
 **One next gate:** have an independent, consenting first-time receiver compare one evidence-backed CoMap relation (including an unknown/private/absent distinction) with a plain list, proving comprehension, privacy, exact source readback, no unintended effects, and receiver state separately. Until then, **Gmail / CoVIA / `.nodes` / sites / CoStead receiver delivery and provider-account retirement remain unproven or held.**
