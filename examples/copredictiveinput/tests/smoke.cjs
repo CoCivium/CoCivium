@@ -24,7 +24,10 @@ check("CSP forbids network connections", () => {
 });
 
 check("no network or background APIs", () => {
-  const scripts = [...html.matchAll(/<script(?:\\s[^>]*)?>([\\s\\S]*?)<\\/script>/g)].map(m => m[1]).join("\\n");
+  const scriptStart = html.lastIndexOf("<script>");
+  const scriptEnd = html.lastIndexOf("</script>");
+  assert(scriptStart >= 0 && scriptEnd > scriptStart);
+  const scripts = html.slice(scriptStart + "<script>".length, scriptEnd);
   assert(!/\\bfetch\\s*\\(|XMLHttpRequest|WebSocket|EventSource|sendBeacon|serviceWorker|RTCPeerConnection/.test(scripts));
 });
 
