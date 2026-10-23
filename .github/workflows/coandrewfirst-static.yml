@@ -1,0 +1,53 @@
+name: CoAndrewFirst Static Canary
+
+permissions:
+  contents: read
+
+on:
+  pull_request:
+    paths:
+      - "examples/coandrewfirst/**"
+      - "tests/test_coandrewfirst_static.py"
+      - ".github/workflows/coandrewfirst-static.yml"
+  push:
+    paths:
+      - "examples/coandrewfirst/**"
+      - "tests/test_coandrewfirst_static.py"
+      - ".github/workflows/coandrewfirst-static.yml"
+
+jobs:
+  static-canary:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Check static prototype boundaries
+        run: python -B -m unittest tests.test_coandrewfirst_static -v
+      - name: Serve and read prototype inputs
+        shell: bash
+        run: |
+          python -m http.server 8000 --bind 127.0.0.1 > /tmp/coandrewfirst-http.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid"' EXIT
+          for attempt in 1 2 3 4 5; do
+            if curl --fail --silent http://127.0.0.1:8000/examples/coandrewfirst/ > /tmp/coandrewfirst.html; then
+              break
+            fi
+            sleep 1
+          done
+          curl --fail --silent http://127.0.0.1:8000/examples/co-evidence-bundle-r0.spec.json > /tmp/spec.json
+          curl --fail --silent http://127.0.0.1:8000/docs/Operations/fixtures/coevidence-bundle-r0-20261022.json > /tmp/report.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          spec = json.loads(Path("/tmp/spec.json").read_text())
+          report = json.loads(Path("/tmp/report.json").read_text())
+          assert spec["format"] == "CoEvidenceBundleCanarySpecR0"
+          assert report["format"] == "CoEvidenceBundleCanaryReportR0"
+          assert report["effect_boundary"]["live_session_sync"] == "NOT_TESTED"
+          assert report["effect_boundary"]["receiver_adoption"] == "UNOBSERVED"
+          print("CoAndrewFirst static input readback passed")
+          PY
