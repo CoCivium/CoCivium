@@ -1,0 +1,49 @@
+{
+  "format": "CoGoAllEvergreenReceiverManifestR3",
+  "observed_at": "2026-10-23T20:08:25Z",
+  "broadcast_tag": "EVO_ALL_BETTERS_PLUS",
+  "publication": {
+    "github": {
+      "status": "PASS_PUBLIC_PROJECTION",
+      "predictive_input_pr": 216,
+      "merge_commit": "398c1a93a124d03ee1ff9f1cac52d0d4fb3273ed",
+      "post_merge_ci": "https://github.com/CoCivium/CoCivium/actions/runs/40006244490"
+    },
+    "benchmark_log": "ai/benchmark-evo.jsonl"
+  },
+  "x2_local": {
+    "status": "PASS_SELF_TEST__HELD_PHYSICAL_BUTTON",
+    "script": "D:\\CoCivium\\CoFarm\\CoThumbR0\\CoThumbR0.ps1",
+    "receipt": "D:\\CoCivium\\CoFarm\\CoThumbR0\\cothumb_receipts.jsonl#cothumb-1792786905478",
+    "effects": {
+      "network_calls": 0,
+      "provider_calls": 0,
+      "messages_sent": 0,
+      "external_mutations": 0,
+      "account_changes": 0,
+      "purchases": 0
+    },
+    "physical_middle_or_thumb_event": "HELD_NOT_OBSERVED"
+  },
+  "human_channels": {
+    "gmail": "HELD_ATTENTION_DEDUP",
+    "covia": "HELD_ATTENTION_DEDUP",
+    "rationale": "No new human action is required; recent Andrew feedback indicates overload risk, so this wave publishes proof rather than sending another broad update."
+  },
+  "requested_but_unverified_receivers": {
+    ".nodes": "HELD_NO_RECEIVER",
+    "nodes": "HELD_NO_RECEIVER",
+    ".sites": "HELD_NO_RECEIVER",
+    "sites": "HELD_NO_RECEIVER",
+    "dedicated_covia_transport": "HELD_NO_DEDICATED_RECEIVER"
+  },
+  "rails": [
+    "ADDRESSABLE_NE_BROADCAST",
+    "PREDICTED_NE_AUTHORIZED",
+    "GESTURE_NE_AUTHORITY",
+    "COPY_NE_SEND",
+    "LOCAL_IS_NOT_LANDED",
+    "POINTER_NE_ACK",
+    "NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF"
+  ]
+}
