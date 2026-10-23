@@ -1,0 +1,40 @@
+{
+  "format": "CoResourceFrontier.R0",
+  "state": "CANDIDATE_ARCHITECTURE",
+  "loop": [
+    "DISCOVER",
+    "QUALIFY",
+    "PRICE",
+    "SCORE",
+    "ALLOCATE",
+    "EXECUTE",
+    "MEASURE",
+    "RECEIPT",
+    "REEVO"
+  ],
+  "scale_policy": "FINITE_LADDER_WITH_STOP_ON_MARGINAL_VALUE_COLLAPSE",
+  "candidate_space": "UNBOUNDED_OR_EXTENSIBLE",
+  "execution": "FINITE_BOUNDED_WAVES",
+  "reduction_policy": "TYPED_AND_LINEAGE_PRESERVING",
+  "orbware_projection": [
+    "GLANCE",
+    "CONSTELLATION",
+    "OBJECT",
+    "RELATION",
+    "EVIDENCE",
+    "RAW_SOURCE"
+  ],
+  "test_gates": [
+    "MEDIA_GT_300KB",
+    "THUMB_OK",
+    "FFPROBE_PASS",
+    "BLACKDETECT_0",
+    "GITHUB_200_LT_2S",
+    "GMAIL_PRIMARY_LT_60S",
+    "ID_LOGGED",
+    "PI_LT_2S",
+    "CLAUDE_CRED_PRESENCE_LT_1S",
+    "OLLAMA_PACKET_PARSE_LT_3S"
+  ],
+  "next_test": "deterministic allocator canary comparing multiple bounded selection policies"
+}
