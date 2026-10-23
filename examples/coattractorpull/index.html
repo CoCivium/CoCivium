@@ -38,6 +38,7 @@ function filteredRecords(q, includeFrontier){
  const tokens=q.toLowerCase().split(/\s+/).filter(Boolean);
  return records.filter(r=>(includeFrontier||!isFrontier(r)) && tokens.every(t=>[r.title,r.family,r.kind,r.epistemic,...r.tags].join(' ').toLowerCase().includes(t))).sort((a,b)=>a.title.localeCompare(b.title));
 }
+function isMiddleCopyGesture(event){return !!event && event.button===1;}
 function el(name,className,content){const x=document.createElement(name);if(className)x.className=className;if(content!==undefined)x.textContent=content;return x;}
 function render(){display.replaceChildren();const matches=filteredRecords(query.value,frontier.checked);document.getElementById('count').textContent=matches.length+' shown of '+records.length+' bounded examples';
  for(const r of matches){const card=el('article','card');card.append(el('div','eyebrow',r.family+' / '+r.lifecycle),el('h2','',r.title),el('p','desc',r.proof||r.next_probe));
@@ -49,8 +50,8 @@ const dl=el('dl','facts');addFact(dl,'Identity',r.id);addFact(dl,'Evidence',r.pr
 const row=el('div','controls-small');const copy=el('button','primary','Copy safe CoCopy+ capsule');copy.type='button';
 copy.title='Click or press Enter/Space. Middle-click also copies; thumb buttons work only when your device maps them to middle-click.';
 copy.addEventListener('click',()=>copySelected());
-copy.addEventListener('mousedown',(event)=>{if(event.button===1)event.preventDefault();});
-copy.addEventListener('auxclick',(event)=>{if(event.button===1){event.preventDefault();copySelected();}});
+copy.addEventListener('mousedown',(event)=>{if(isMiddleCopyGesture(event))event.preventDefault();});
+copy.addEventListener('auxclick',(event)=>{if(isMiddleCopyGesture(event)){event.preventDefault();copySelected();}});
 row.append(copy);
 if(r.scope==='PUBLIC_REFERENCE'&&r.locator.startsWith('https://')){const link=el('a','primary','Open public source');link.href=r.locator;link.target='_blank';link.rel='noopener noreferrer';row.append(link);}detail.append(row);
 const status=el('p','note','Nothing has been executed or sent. Copy is local, only after your explicit click. Private paths are redacted.');status.id='copyStatus';status.setAttribute('role','status');detail.append(status);
