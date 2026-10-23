@@ -1,0 +1,32 @@
+name: CoForever R0 finite-process and CoOrbWare offline canary
+on:
+  pull_request:
+    paths:
+      - "experiments/covirtualsession/coforever-r0/**"
+      - ".github/workflows/coforever-r0.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  finite-offline-canary:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Bound 42 local synthetic and finite-process regression cases
+        working-directory: experiments/covirtualsession/coforever-r0
+        run: python3 -m unittest -q test_coproc.py
+      - name: Validate eight static CoOrbWare UI projection interactions
+        working-directory: experiments/covirtualsession/coforever-r0
+        run: node test_ui.cjs
+      - name: Verify pinned sources, exact output bytes, and NOT_RUN gates
+        working-directory: experiments/covirtualsession/coforever-r0
+        run: python3 verify_release.py
