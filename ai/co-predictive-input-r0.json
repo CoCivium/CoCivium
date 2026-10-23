@@ -1,0 +1,102 @@
+{
+  "schema": "CoPredictiveInput.ShadowCanary.R0",
+  "state": "PUBLIC_CANDIDATE__LOCAL_ONLY__NO_RUNTIME_ADOPTION",
+  "observed_at": "2026-10-23T18:39:43Z",
+  "architecture": "docs/Architecture/CORELATIONAL_UX_PREDICTIVE_INPUT_R0.md",
+  "surface": "examples/copredictiveinput/index.html",
+  "smoke_test": "examples/copredictiveinput/tests/smoke.cjs",
+  "pipeline": [
+    "RAW_INPUT",
+    "ACK_RAW",
+    "SHADOW_PREDICT",
+    "PROPOSE",
+    "EXPLICIT_DECISION",
+    "LOCAL_RECEIPT"
+  ],
+  "coquanta": {
+    "schema": "CoQuanta.PredictiveInput.R0",
+    "required_facets": [
+      "identity",
+      "observed_at",
+      "raw_exact",
+      "candidate",
+      "decision",
+      "metrics",
+      "authority",
+      "effects",
+      "relations",
+      "rails"
+    ]
+  },
+  "comap_projection": {
+    "source_of_truth": "LOCAL_IN_MEMORY_EVENT_STATE",
+    "projection": "RAW->ACK_RAW->SHADOW_PREDICT->DECISION->RECEIPT",
+    "ambient_future": "SAME_PACKET__LOW_ATTENTION_RECEIVER_RELATIVE_PROJECTION",
+    "nonclaim": "PROJECTION_NE_SOURCE"
+  },
+  "predictive_boundary": {
+    "candidate_generation": "DETERMINISTIC_LOCAL_RULES_ONLY",
+    "external_network": false,
+    "provider_calls": false,
+    "automatic_send": false,
+    "automatic_execute": false,
+    "automatic_account_changes": false,
+    "persistent_browser_storage": false,
+    "explicit_local_export": true
+  },
+  "latency": {
+    "measured": [
+      "decision_latency_ms",
+      "keystrokes_avoided"
+    ],
+    "unknown_by_default": [
+      "counterfactual_latency_saved_ms"
+    ],
+    "optional_estimate": "ONLY_WITH_USER_SUPPLIED_MEASURED_TYPING_BASELINE",
+    "rail": "ESTIMATED_LATENCY_NE_MEASURED_COUNTERFACTUAL"
+  },
+  "virtual_session_relation": {
+    "premise": "many virtual sessions -> few materialized workers -> one coherent relational UX",
+    "provider_session_role": "TEMPORARY_EMBODIMENT_ONLY",
+    "account_retirement_gate": "EXPORT_CUSTODY_PLUS_DEPENDENCY_TEST_PLUS_SUBSTITUTION_BENCHMARK_PLUS_HUMAN_GATE"
+  },
+  "future_device_gate": {
+    "candidate": "COTHUMB_LOCAL_CAPSULE_CANARY",
+    "rule": "MIDDLE_OR_THUMB_GESTURE_MAY_CREATE_VISIBLE_LOCAL_CAPSULE_ONLY",
+    "forbidden_without_separate_authority": [
+      "SEND",
+      "EXECUTE",
+      "PURCHASE",
+      "ACCOUNT_CHANGE",
+      "CREDENTIAL_USE",
+      "PUBLICATION"
+    ]
+  },
+  "rails": [
+    "PREDICTED_NE_TYPED",
+    "PREDICTED_NE_AUTHORIZED",
+    "PRECOMPUTED_NE_EXECUTED",
+    "REWRITE_NE_REPLACEMENT_OF_RAW",
+    "VIRTUAL_SESSION_NE_PROVIDER_TAB",
+    "PROVIDER_NE_SESSION_IDENTITY_ROOT",
+    "VIRTUALIZATION_NE_ACCOUNT_SAFE_TO_DELETE",
+    "ADDRESSABLE_NE_BROADCAST",
+    "PROJECTION_NE_SOURCE",
+    "AMBIENT_NE_PUBLIC",
+    "COQUANTA_NE_SENTIENCE_PROOF",
+    "LOCAL_IS_NOT_LANDED",
+    "VALIDATION_IS_NOT_ACCEPTANCE",
+    "NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF",
+    "NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE",
+    "HASHING_IS_NOT_SEMANTIC_INGESTION",
+    "DISCOVERED_SET_IS_NOT_COMPLETE_HISTORY"
+  ],
+  "next_deeds": [
+    "REAL_USER_ACCEPT_REJECT_CALIBRATION",
+    "ACCESSIBILITY_AND_MOBILE_CANARY",
+    "COTHUMB_VISIBLE_LOCAL_CAPSULE_CANARY",
+    "VIRTUAL_SESSION_DEMATERIALIZE_RECONSTRUCT_CANARY",
+    "AMBIENT_COMAP_PROJECTION_PRIVACY_CANARY",
+    "PROVIDER_SUBSTITUTION_BENCHMARK_BEFORE_ACCOUNT_RETIREMENT"
+  ]
+}
