@@ -1,0 +1,37 @@
+{
+  "format": "CoScaleReductionEcology.R0",
+  "state": "CANDIDATE_ARCHITECTURE",
+  "finite_infinity": {
+    "possibility": "UNBOUNDED_OR_EXTENSIBLE",
+    "execution": "FINITE_BOUNDED_WAVES",
+    "lifecycle": [
+      "ACTIVE",
+      "DORMANT",
+      "WAKEABLE",
+      "SUPERSEDED",
+      "ARCHIVED"
+    ]
+  },
+  "reduction_classes": [
+    "LOSSLESS",
+    "REVERSIBLE",
+    "LOSSY",
+    "RECEIVER_SPECIFIC",
+    "TEMPORARY",
+    "MATERIALIZED_CACHE",
+    "LEARNED_ABSTRACTION",
+    "CANONICAL_CANDIDATE",
+    "SUPERSEDED",
+    "COMPOSTABLE"
+  ],
+  "default_rule": "PRESERVE_MEANINGFUL_LINEAGE_NE_PRESERVE_EVERY_RENDER_FOREVER",
+  "orbware_depth": [
+    "GLANCE",
+    "CONSTELLATION",
+    "OBJECT",
+    "RELATION",
+    "EVIDENCE",
+    "RAW_SOURCE"
+  ],
+  "next_test": "public relation-graph reduction canary with reversible drill-down and explicit lossy audit"
+}
