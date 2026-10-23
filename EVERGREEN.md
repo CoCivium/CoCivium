@@ -66,6 +66,12 @@ The [R0 bounded virtual-lease donor](docs/Evolution/COSCALE_CONTINUUM_COORBWARE_
 
 **Next acceptance:** commit/review the exact source in a qualified repository branch, independently re-run CI, compare one consenting user task against a plain list and no-new-worker baseline, and obtain separate source-bound receiver readproof. No native CoOrbWare runtime, CoStead landing, paid-account retirement, infinite compute or unattended background work is implied.
 
+### PASS · CoStretch+ R5 finite elastic reopening (distinct from R0 donor)
+
+The [source-bound R5 reproduction package](experiments/costretch-r1/horizon_r5/README.md) tested **2 → 1 → 1 → 2** eligible short-lived Windows worker ceilings, then **zero active workers**, across two checkpointed invocations. **32/32 bounded checks PASS** on 12 synthetic task invocations across 8 distinct sampled IDs. The local Python worker source exactly matched GitHub raw bytes by SHA-256. [Machine-readable R5 event](experiments/costretch-r1/horizon_r5/benchmark_evo_R5.jsonl), [CoMap data projection](experiments/costretch-r1/horizon_r5/projections/CoMap_R5.json), and [CoOrbWare data projection](experiments/costretch-r1/horizon_r5/projections/CoOrbWare_R5.json) are readable on main.
+
+Pressure values were **synthetic**, not actual X2 telemetry; this is a reversible process-policy canary, not the 38/38 R0 donor, a live CoOrbWare renderer, a model swarm, a trillion-worker execution claim, or verified human/CoStead/CoVIA receiver adoption. Explicit permanent retirement and revoked authority do **not** automatically reverse merely because pressure drops. Publication and local PASS do not satisfy the independent first-use/receiver gate.
+
 ## CoHereNow
 
 ### PASS · CoAndrewFirst+ R0
