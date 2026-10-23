@@ -1,0 +1,38 @@
+{
+  "format": "CoRelationalUX.R0",
+  "state": "CANDIDATE_ARCHITECTURE",
+  "pipeline": [
+    "RAW_INPUT",
+    "ACK_RAW",
+    "PARSE",
+    "RELATE",
+    "PREDICT",
+    "PROPOSE",
+    "ACCEPT_OR_REJECT",
+    "EFFECT",
+    "RECEIPT"
+  ],
+  "surfaces": [
+    "CoMap",
+    "CoOrb",
+    "CoOrbWare",
+    "RickBar",
+    "CoDesktop",
+    "wallpaper",
+    "ambient_panel",
+    "screensaver"
+  ],
+  "predictive_default": "SHADOW_ONLY",
+  "provider_policy": "OPTIONAL_REPLACEABLE_EMBODIMENT",
+  "account_retirement": "HUMAN_GATED_AFTER_EXPORT_AND_DEPENDENCY_TESTS",
+  "rails": [
+    "PREDICTED_NE_TYPED",
+    "PREDICTED_NE_AUTHORIZED",
+    "PRECOMPUTED_NE_EXECUTED",
+    "VIRTUAL_SESSION_NE_PROVIDER_TAB",
+    "ADDRESSABLE_NE_BROADCAST",
+    "AMBIENT_NE_PUBLIC",
+    "COQUANTA_NE_SENTIENCE_PROOF"
+  ],
+  "next_test": "local-only predictive input shadow canary with zero outward effects and CoMap lineage projection"
+}
