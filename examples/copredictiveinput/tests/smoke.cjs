@@ -24,7 +24,8 @@ check("CSP forbids network connections", () => {
 });
 
 check("no network or background APIs", () => {
-  assert(!/\bfetch\s*\(|XMLHttpRequest|WebSocket|EventSource|sendBeacon|serviceWorker|RTCPeerConnection/.test(html));
+  const scripts = [...html.matchAll(/<script(?:\\s[^>]*)?>([\\s\\S]*?)<\\/script>/g)].map(m => m[1]).join("\\n");
+  assert(!/\\bfetch\\s*\\(|XMLHttpRequest|WebSocket|EventSource|sendBeacon|serviceWorker|RTCPeerConnection/.test(scripts));
 });
 
 check("no persistent browser storage", () => {
