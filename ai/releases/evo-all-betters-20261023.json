@@ -1,0 +1,65 @@
+{
+  "schema": "CoAll.PublicEvoBeacon.R0",
+  "name": "EVO ALL BETTERS +",
+  "date_utc": "2026-10-23",
+  "status": "PUBLIC_GITHUB_MAIN_COMMIT__NOT_RUNTIME_CANON",
+  "release_commit": "4d24289d1a7b2156575cc39f18465a6a7aabbdc2",
+  "public_note": "https://github.com/CoCivium/CoCivium/blob/main/docs/Evolution/EVO_ALL_BETTERS_EVERGREEN_PULSE_20261023.md",
+  "public_benchmark": "https://github.com/CoCivium/CoCivium/blob/main/docs/Evolution/COSTRETCH_COTURTLE_PUBLIC_BENCHMARK_20261023.md",
+  "test_code": "https://github.com/CoCivium/CoCivium/blob/main/benchmarks/costretch_r1/costretch_r1.py",
+  "test_receipts": "https://github.com/CoCivium/CoCivium/blob/main/benchmarks/costretch_r1/output/benchmark_evo.jsonl",
+  "evidence": {
+    "published_r1": {
+      "functional_pass": 8,
+      "claim_gates_rejected": 3,
+      "max_threads": 4,
+      "unit_tests_pass": 6
+    },
+    "independent_container_reconstruction": {
+      "functional_pass": 8,
+      "functional_fail": 0,
+      "unproven_claims_rejected": 4,
+      "max_threads": 4,
+      "source_sha256": "e3c90fb1fdfa8774e0ff2d632a68fd3cd2640dbb15b7baf79a3902a51e6a217f",
+      "receipt_sha256": "b7ee75e021b0a9a2cbea1316310113b1fd9c72ff039ea65bdd734eee080d6127",
+      "boundary": "OFFLINE_CONTAINER_NOT_X2_NOT_EXTERNAL_RECEIVER"
+    }
+  },
+  "candidate_axes": [
+    "CoStretch",
+    "CoTurtle",
+    "CoPatterna",
+    "CoLev",
+    "CoConcurrent",
+    "CoTripie",
+    "CoQuadpie",
+    "CoDot",
+    "CoAura",
+    "CoReachAll"
+  ],
+  "next_work": [
+    "representative_queue_latency",
+    "actual_process_death_recovery",
+    "provider_neutral_same_work",
+    "permitted_audiovisual_accessibility",
+    "metered_energy"
+  ],
+  "principles": [
+    "FOSS_FIRST",
+    "PRIVACY_BY_DESIGN",
+    "OPTIONAL_PARTICIPATION",
+    "DISPLAY_WHEN_SUPPORTED_WEAR_OPTIONAL",
+    "PAY_FORWARD_AND_SIDEWAYS",
+    "RESPECTFUL_COLLABORATION"
+  ],
+  "nonclaims": [
+    "NO_TRILLION_PHYSICAL_WORKERS",
+    "NO_SUSTAINED_CAPACITY_PROOF",
+    "NO_ENERGY_SAVINGS_PROOF",
+    "NO_GLOBAL_RECEIVER_PICKUP",
+    "NO_PUBLIC_OUTREACH_BEYOND_EXPLICIT_RECEIPTS",
+    "NO_ETI_OR_NONMATERIAL_FACT_CLAIM",
+    "NO_RUNTIME_CANON"
+  ],
+  "receiver_policy": "PULL_FROM_PUBLIC_BOOTSTRAP__ACK_REQUIRED_FOR_PICKUP"
+}
