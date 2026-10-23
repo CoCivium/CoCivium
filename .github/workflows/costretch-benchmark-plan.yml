@@ -1,0 +1,54 @@
+name: CoStretch Benchmark Plan
+
+permissions:
+  contents: read
+
+on:
+  pull_request:
+    paths:
+      - "scripts/CoStretchBenchmarkPlanR0.py"
+      - "docs/Architecture/COSTRETCH_BENCHMARK_PLAN_R0.md"
+      - ".github/workflows/costretch-benchmark-plan.yml"
+  push:
+    paths:
+      - "scripts/CoStretchBenchmarkPlanR0.py"
+      - "docs/Architecture/COSTRETCH_BENCHMARK_PLAN_R0.md"
+      - ".github/workflows/costretch-benchmark-plan.yml"
+
+jobs:
+  plan-canary:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile bounded benchmark plan
+        run: |
+          python -B scripts/CoStretchBenchmarkPlanR0.py             --logical-start 1000             --logical-stop 1000000             --concurrency-start 1             --concurrency-stop 64             --steps 7             --repetitions 3 > /tmp/costretch.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p = json.loads(Path("/tmp/costretch.json").read_text())
+          assert p["state"] == "BENCHMARK_PLAN_ONLY__NO_WORKLOAD_EXECUTION"
+          assert p["execution_performed"] is False
+          assert p["active_workers_started"] == 0
+          assert p["provider_sessions_created"] == 0
+          assert p["steps"][0]["logical_items"] == 1000
+          assert p["steps"][-1]["logical_items"] == 1000000
+          assert p["steps"][-1]["concurrency_ceiling"] == 64
+          assert "correctness" in p["benchmark_dimensions"]
+          assert "p99_latency" in p["benchmark_dimensions"]
+          assert "receiver_value" in p["benchmark_dimensions"]
+          assert "CORRECTNESS_REGRESSION" in p["stop_predicates"]
+          assert p["champion_policy"]["newest_wins"] is False
+          assert p["activation_policy"]["step_n_plus_one_requires_step_n_pass"] is True
+          print("CoStretch plan canary passed")
+          PY
+      - name: Reject invalid concurrency bound
+        run: |
+          if python -B scripts/CoStretchBenchmarkPlanR0.py --concurrency-stop 5000 > /tmp/invalid.json 2>/tmp/invalid.err; then
+            echo "invalid bound unexpectedly accepted"
+            exit 1
+          fi
