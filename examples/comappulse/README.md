@@ -67,3 +67,14 @@ Bring **one** opted-in, independent receiver and a nonsecret example. Have it fe
 **Nonclaims:** `DISCOVERED_NE_USABLE` · `VIRTUAL_NE_RUNNING` · `POINTER_NE_ACK` · `LOCAL_INSPECTION_NE_REMOTE_PICKUP` · `FORECAST_NE_FACT` · `PROJECTED_NE_INSTALLED` · `NO_ALL_TO_ALL_BROADCAST` · `NOT_ON_ANDREW_MAC`.
 
 Inherits the repository GPL-3.0 license. FOSS, privacy-by-design, inclusive opt-in, no crowns, no coercion, no corruption.
+
+
+## R1 experimental overlay (CoOmniIO / CoNotSpace)
+
+The R1 extension adds `omni_overlay.json` with exactly nine **candidate/missing/hypothetical** relations, `omni_core.js` as a pure fail-closed gate, and an accessible browser inspection area that never draws them as established map edges. Input completions remain opt-in and now reject stale suggestions. None of the new relations asserts a model call, an external receiver, a new physical theory, or a verified CoSpirit/CoET/G_d interface.
+
+Run `node tests/test_omni.cjs` for R1 candidate-boundary tests, `node tests/test_core.cjs` to ensure R0 compatibility, and `python3 build.py` to regenerate `index.html` and `CoMapPulse_ONEFILE_R1.html`. Existing `CoMapPulse_ONEFILE_R0.html` remains an unmodified historical artifact.
+
+The base graph is **exact-byte-bound** to SHA-256 `4eddc49ef5902673fa22af5ef969b60a74bbd3153bd5b493638c00230d963f27`; Node tests compare that digest with the original graph bytes. A browser snapshot date check is not itself cryptographic verification. R1 cannot issue remote acknowledgments, send email or communicate with provider agents.
+
+`CANDIDATE_NE_CONNECTION` · `BOUNDARY_NE_BUG` · `HYPOTHESIS_NE_OBSERVATION` · `PREDICTION_NE_ACCEPTANCE` · `POINTER_NE_ACK`
