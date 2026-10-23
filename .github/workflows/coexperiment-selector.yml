@@ -1,0 +1,30 @@
+name: CoExperiment Selector
+
+permissions:
+  contents: read
+
+on:
+  pull_request:
+    paths:
+      - "scripts/CoExperimentSelectorR0.py"
+      - "tests/test_coexperiment_selector.py"
+      - "docs/Architecture/COEXPERIMENT_SELECTOR_R0.md"
+      - ".github/workflows/coexperiment-selector.yml"
+  push:
+    paths:
+      - "scripts/CoExperimentSelectorR0.py"
+      - "tests/test_coexperiment_selector.py"
+      - "docs/Architecture/COEXPERIMENT_SELECTOR_R0.md"
+      - ".github/workflows/coexperiment-selector.yml"
+
+jobs:
+  selector:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run selector regressions
+        run: python -B -m unittest tests.test_coexperiment_selector -v
