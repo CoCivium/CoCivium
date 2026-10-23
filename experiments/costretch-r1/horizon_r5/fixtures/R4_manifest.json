@@ -1,0 +1,85 @@
+{
+  "active_worker_ceiling": 2,
+  "authority": "READ_ONLY",
+  "population_claim": "1000000000000",
+  "receiver": "NONE",
+  "sample_count": 8,
+  "sampling_method": "SHA256 seeded deterministic indices; NOT full enumeration",
+  "schema": "CoStretch.LogicalHorizon.R4",
+  "seed": "CoStretch-R4-20261023",
+  "spend_limit": "zero monetary spend, two short-lived local CPU processes",
+  "work": [
+    {
+      "authority": "READ_ONLY",
+      "candidate_id": "2eb42eb2393f362bf09c",
+      "lane": "PROVENANCE",
+      "logical_index": 52961634188,
+      "ordinal": 0,
+      "private_data": false,
+      "work_cost": 1
+    },
+    {
+      "authority": "READ_ONLY",
+      "candidate_id": "e262bf4f7e28ba9d80b5",
+      "lane": "PROVENANCE",
+      "logical_index": 298063775542,
+      "ordinal": 1,
+      "private_data": false,
+      "work_cost": 1
+    },
+    {
+      "authority": "READ_ONLY",
+      "candidate_id": "3073075df38f87fd9188",
+      "lane": "RECOVERY",
+      "logical_index": 582491965254,
+      "ordinal": 0,
+      "private_data": false,
+      "work_cost": 1
+    },
+    {
+      "authority": "READ_ONLY",
+      "candidate_id": "e9fcc348a2c003ebac6b",
+      "lane": "RECOVERY",
+      "logical_index": 929428934236,
+      "ordinal": 1,
+      "private_data": false,
+      "work_cost": 1
+    },
+    {
+      "authority": "READ_ONLY",
+      "candidate_id": "6c1046dbb14fdf68be65",
+      "lane": "CORRECTNESS",
+      "logical_index": 183417286724,
+      "ordinal": 0,
+      "private_data": false,
+      "work_cost": 1
+    },
+    {
+      "authority": "READ_ONLY",
+      "candidate_id": "75d3a842f2c68c562ae6",
+      "lane": "CORRECTNESS",
+      "logical_index": 52995577007,
+      "ordinal": 1,
+      "private_data": false,
+      "work_cost": 1
+    },
+    {
+      "authority": "READ_ONLY",
+      "candidate_id": "1c69d63fa2f34142cb6d",
+      "lane": "RECEIVER_VALUE",
+      "logical_index": 711279476278,
+      "ordinal": 0,
+      "private_data": false,
+      "work_cost": 1
+    },
+    {
+      "authority": "READ_ONLY",
+      "candidate_id": "ea268045fb41356b0de1",
+      "lane": "RECEIVER_VALUE",
+      "logical_index": 892555666333,
+      "ordinal": 1,
+      "private_data": false,
+      "work_cost": 1
+    }
+  ]
+}
