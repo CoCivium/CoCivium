@@ -1,0 +1,56 @@
+name: CoResourceAttractor R1
+
+permissions:
+  contents: read
+
+on:
+  pull_request:
+    paths:
+      - "benchmarks/resource-attractor/**"
+      - "scripts/CoResourceAttractorBenchmarkR1.py"
+      - "tests/test_resource_attractor_r1.py"
+      - "ai/co-resource-attractor-r1.json"
+      - ".github/workflows/co-resource-attractor-r1.yml"
+  push:
+    paths:
+      - "benchmarks/resource-attractor/**"
+      - "scripts/CoResourceAttractorBenchmarkR1.py"
+      - "tests/test_resource_attractor_r1.py"
+      - "ai/co-resource-attractor-r1.json"
+      - ".github/workflows/co-resource-attractor-r1.yml"
+
+jobs:
+  benchmark:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run R1 regression tests
+        run: python -B -m unittest -v tests.test_resource_attractor_r1
+
+      - name: Run deterministic benchmark
+        run: |
+          python -B scripts/CoResourceAttractorBenchmarkR1.py \
+            --fixture benchmarks/resource-attractor/r1-fixture.json \
+            > /tmp/coresource-attractor-r1-report.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          r = json.loads(Path("/tmp/coresource-attractor-r1-report.json").read_text())
+          assert r["state"] == "BOUNDED_PUBLIC_FIXTURE__ZERO_EXECUTION"
+          assert r["resource_count"] == 16
+          assert r["need_count"] == 5
+          assert r["summary"]["descriptor"]["hits"] == 7
+          assert r["summary"]["keyword"]["hits"] == 5
+          assert r["descriptor_beats_keyword_hits"] is True
+          assert r["descriptor_not_worse_than_random_hits"] is True
+          assert r["all_failure_probes_pass"] is True
+          assert r["speculative_selected_in_standard_needs"] == []
+          assert all(v == 0 for v in r["effects"].values())
+          print("PASS_CORESOURCE_ATTRACTOR_R1")
+          PY
