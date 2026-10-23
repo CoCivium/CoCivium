@@ -1,0 +1,87 @@
+name: CoGoAll Evergreen Blast
+
+permissions:
+  contents: read
+
+on:
+  pull_request:
+    paths:
+      - "EVERGREEN.md"
+      - "ai/benchmark-evo.jsonl"
+      - "docs/publishing/cogoall-evergreen-receivers-*.json"
+      - "scripts/CoBenchmarkEvoCheckR0.py"
+      - ".github/workflows/cogoall-evergreen-blast.yml"
+  push:
+    paths:
+      - "EVERGREEN.md"
+      - "ai/benchmark-evo.jsonl"
+      - "docs/publishing/cogoall-evergreen-receivers-*.json"
+      - "scripts/CoBenchmarkEvoCheckR0.py"
+      - ".github/workflows/cogoall-evergreen-blast.yml"
+
+jobs:
+  evergreen:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Validate benchmark evolution log
+        run: python -B scripts/CoBenchmarkEvoCheckR0.py ai/benchmark-evo.jsonl
+      - name: Validate evergreen and receiver boundaries
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          evergreen = Path("EVERGREEN.md").read_text(encoding="utf-8")
+          required = [
+              "Publish the best we have, never ready.",
+              "FOSS Forever.",
+              "Privacy by design.",
+              "LOGICAL_SESSION_COUNT_NE_ACTIVE_PROCESS_COUNT",
+              "SELECTED_NE_EXECUTED",
+              "HIGH_UTILIZATION_NE_HIGH_VALUE",
+              "PROPOSED_THRESHOLD_NE_MEASURED_RESULT",
+              "Pointer is not ACK. Receipt beats assertion.",
+          ]
+          for text in required:
+              assert text in evergreen, text
+
+          r0 = json.loads(
+              Path("docs/publishing/cogoall-evergreen-receivers-r0.json").read_text()
+          )
+          requested = r0["requested_channels"]
+          for key in (".nodes", "nodes", ".sites", "sites"):
+              assert requested[key]["status"] == "HELD_NO_RECEIVER"
+
+          r1 = json.loads(
+              Path("docs/publishing/cogoall-evergreen-receivers-r1.json").read_text()
+          )
+          assert r1["broadcast_tag"] == "EVO_ALL_BETTERS_PLUS"
+          assert r1["publication"]["github"]["status"] == "PASS"
+          assert r1["gmail"]["status"] == "PASS_SEND_RECEIPTS"
+          assert len(r1["gmail"]["routes"]) == 3
+          for route in r1["gmail"]["routes"]:
+              assert route["sent_message_id"]
+          for status in r1["held_receivers"].values():
+              assert status.startswith("HELD_")
+
+          r2 = json.loads(
+              Path("docs/publishing/cogoall-evergreen-receivers-r2.json").read_text()
+          )
+          assert r2["broadcast_tag"] == "EVO_ALL_BETTERS_PLUS"
+          assert r2["visual_signal"]["semantics"] == "BROADCAST_TAG_AND_VISUAL_SIGNAL_ONLY__NOT_A_RECEIVER"
+          assert r2["gmail"]["new_route"]["status"] == "PASS_SEND_RECEIPT"
+          assert r2["gmail"]["new_route"]["sent_message_id"] == "1a166b4c97778016"
+          assert len(r2["gmail"]["recent_duplicate_suppression"]) == 3
+          for route in r2["gmail"]["recent_duplicate_suppression"]:
+              assert route["status"] == "SKIPPED_RECENT_DUPLICATE"
+          for status in r2["requested_but_unverified_receivers"].values():
+              assert status.startswith("HELD_")
+          assert "ID_LOGGED" in r2["preserved_candidate_gates"]
+          assert "VISUAL_TAG_NE_RECEIVER" in r2["nonclaims"]
+          print("Evergreen receiver boundaries passed")
+          PY

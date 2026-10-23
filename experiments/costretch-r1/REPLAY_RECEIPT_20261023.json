@@ -1,0 +1,74 @@
+{
+  "schema": "CoStretchReplayReceipt/1",
+  "observed_at": "2026-10-23T17:00:18Z",
+  "source": {
+    "repository": "CoCivium/CoCivium",
+    "pull_request": 202,
+    "branch": "research/costretch-index-r1-20261023",
+    "source_head_replayed": "665cc78ea9c0b253bad461eaf7a7a5161a0c378a",
+    "branch_head_before_forward_merge": "e0629b0bf0522b456c36eec0ca3f69b2f13c97a8",
+    "main_observed_before_forward_merge": "159d7ed61bed76e67c29b40c60c0bc5fe4c301af",
+    "github_actions_run": "https://github.com/CoCivium/CoCivium/actions/runs/39991635889",
+    "github_actions_conclusion": "success"
+  },
+  "environment": {
+    "os": "Linux 6.18.55 x86_64",
+    "python": "3.12.14",
+    "node": "24.19.0",
+    "named_device": "Codex workspace host; not X2, Mac, Pi, or receiver device"
+  },
+  "results": {
+    "github_blob_identity": {
+      "status": "PASS",
+      "matched": 18,
+      "total": 18
+    },
+    "python_unit_tests": {
+      "status": "PASS",
+      "passed": 25,
+      "failed": 0
+    },
+    "python_checkpoint_verifier": {
+      "status": "PASS_NAMESPACE_AND_CHECKPOINT",
+      "capacity": "50164531200000",
+      "cursor": 0,
+      "executions_verified": 0,
+      "spec_sha256": "41bdf00efe874b4565c1787e178657013a552953730bafe09edb4b677b36a706"
+    },
+    "node_checkpoint_verifier": {
+      "status": "PASS_CHECKPOINT_NAMESPACE",
+      "capacity": "50164531200000",
+      "cursor": 0,
+      "executions_verified": 0,
+      "spec_sha256": "41bdf00efe874b4565c1787e178657013a552953730bafe09edb4b677b36a706"
+    },
+    "python_evo_ledger_verifier": {
+      "status": "PASS",
+      "events": 40,
+      "head_sha256": "dde45891356f5ec1bec6fc99dc6e85f6271382b9a5bb6f7693b169eeb29fee54"
+    },
+    "node_evo_ledger_verifier": {
+      "status": "PASS",
+      "events": 40,
+      "head_sha256": "dde45891356f5ec1bec6fc99dc6e85f6271382b9a5bb6f7693b169eeb29fee54"
+    }
+  },
+  "effects": {
+    "logical_capacity": "50164531200000",
+    "actual_experiments_run": 0,
+    "provider_requests": 0,
+    "model_calls": 0,
+    "accounts_created": 0,
+    "messages_sent_by_replay": 0,
+    "persistent_workers_started": 0
+  },
+  "status": "PASS_BOUNDED_REPLAY",
+  "nonclaims": [
+    "INDEXABLE_NE_EXECUTED",
+    "LOCAL_REPLAY_NE_INDEPENDENT_RECEIVER_REPRODUCTION",
+    "BRANCH_PUBLICATION_NE_MAIN_MERGE",
+    "POINTER_NE_ACK",
+    "VALIDATION_NE_ACCEPTANCE",
+    "NO_RUNTIME_CANON_COEX_OR_PROVIDER_PERFORMANCE_INFERENCE"
+  ]
+}

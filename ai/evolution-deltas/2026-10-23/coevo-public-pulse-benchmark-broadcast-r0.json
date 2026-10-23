@@ -1,0 +1,51 @@
+{
+  "delta_id": "CoAllPublicPulse-20261023-R0",
+  "session_id": "CoAll-Release-Broadcast-20261023",
+  "observed_at": "2026-10-23T02:40:25Z",
+  "domain": [
+    "CoEvoAll+",
+    "CoStretch+",
+    "CoAndrewFirst+",
+    "CoReach+",
+    "CoCurrentness+"
+  ],
+  "subject": "Merged benchmark evidence, public first-use prototype, public pull-pulse",
+  "relation": "PUBLISHES_VERIFIABLE_PUBLIC_ENTRY_POINTS_WITH_PRESERVED_FAILURES_AND_SCOPED_RECEIVER_INTENT",
+  "epistemic_class": "OBSERVED",
+  "source_refs": [
+    "CoCivium/CoCivium PR#193 (merged)",
+    "CoCivium/CoCivium PR#199 (merged), merge 943056fd56c9cf77b2821ed6795426f5186671ba",
+    "GitHub Actions 39890388584 (conclusion: success)",
+    "docs/Updates/COALL_PUBLIC_PULSE_20261023_R0.md at commit 0c235c53b637640419c9055b2aff2cee6ee8125d",
+    "benchmarks/costretch/benchmark_evo.jsonl (SYNTHETIC_FIXTURE, 2 PASS/1 FAIL/1 HOLD)"
+  ],
+  "target_surfaces": [
+    "CoCivium/CoCivium public GitHub repository: ai/evolution-deltas/2026-10-23/ and docs/Updates/"
+  ],
+  "mutation_class": "MERGE_LOW_EFFECT",
+  "authority_ceiling": "PUBLIC_SAFE_GITHUB_DOCS_AND_EVIDENCE_ONLY__NO_RUNTIME_OR_MASS_OUTREACH_AUTHORITY",
+  "confidentiality": "PUBLIC",
+  "confidence": 0.99,
+  "contradictions": [
+    "User wants broad evergreen dissemination; public source discovery does not establish independent node/site/provider pickup.",
+    "Example synthetic verdicts do not establish real provider performance or a live multi-model worker fabric."
+  ],
+  "tests": [
+    "CI run 39890388584: completed success for CoStretch benchmark validator/test suite",
+    "Verify exact main-branch readback of PR#199 fixture and this public pulse",
+    "Next: one permitted independently controlled receiver reads exact object and acknowledges with source identity"
+  ],
+  "expected_benefit": "FOSS-oriented inspectable onramp and machine-readable benchmark contract without hiding negative outcomes or shifting human burden to manual broadcasting.",
+  "risks": [
+    "Misreading synthetic PASS as scientific validation",
+    "Treating GitHub availability as multi-site propagation or runtime adoption",
+    "Publishing personal/private materials through an unconstrained blast"
+  ],
+  "wake_conditions": [
+    "A new real-model comparison is independently measured and provenance-pinned",
+    "A subscribed receiver emits an exact-object readproof",
+    "A published link becomes stale or a factual correction is material"
+  ],
+  "supersedes": [],
+  "next_receiver": "CoPulse/CoVIA/CoDot, CoNodeMesh/.nodes, public sites/.sites, and domain-specific agents may subscribe and pull; no delivery or pickup is claimed."
+}

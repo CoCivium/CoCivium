@@ -1,0 +1,56 @@
+{
+  "schema": "CoAll.PublicReleaseBeacon.v0.1",
+  "release_id": "costretch-coturtle-r1-20261023",
+  "subject": "CoStretch+ / CoTurtle+ reproducible benchmark R1",
+  "release_state": "PUBLIC_GITHUB_MAIN_FILE_VERIFIED",
+  "release_utc": "2026-10-23",
+  "source_repository": "CoCivium/CoCivium",
+  "source_merge_commit": "6792a14b6c42a221499be40eb0b4a9bbac910594",
+  "public_entry": "https://github.com/CoCivium/CoCivium/tree/main/benchmarks/costretch_r1",
+  "doc": "https://github.com/CoCivium/CoCivium/blob/main/docs/Evolution/COSTRETCH_COTURTLE_PUBLIC_BENCHMARK_20261023.md",
+  "benchmark_log": "https://github.com/CoCivium/CoCivium/blob/main/benchmarks/costretch_r1/output/benchmark_evo.jsonl",
+  "licensed_repository": "GPL-3.0",
+  "evidence_class": "ISOLATED_OFFLINE_WORKBENCH",
+  "result_summary": {
+    "unit_tests_passed": 6,
+    "benchmark_pass_records": 8,
+    "claim_gate_fail_records": 3,
+    "logical_addresses": "1000000000000",
+    "sampled_addresses": 1030,
+    "max_actual_worker_threads": 4
+  },
+  "safe_to_mirror": "PUBLIC_SAFE_SUMMARY_AND_LINKS_ONLY",
+  "recipient_classes": [
+    "public_agents",
+    "opt_in_collaborators",
+    "CoVIA_candidate_client",
+    "nodes",
+    "dot_nodes",
+    "sites",
+    "dot_sites"
+  ],
+  "delivery_state": {
+    "github_public": "VERIFIED_ON_MAIN",
+    "other_receivers": "DISCOVERABLE_NOT_ACKNOWLEDGED"
+  },
+  "privacy": {
+    "private_precursor_embedded": false,
+    "credentials_embedded": false,
+    "third_party_data_embedded": false,
+    "recipient_tracking": false
+  },
+  "rails": [
+    "LOGICAL_NE_PHYSICAL",
+    "PUBLISHED_NE_PICKED_UP",
+    "NO_AUTH_WITHOUT_CONSENT",
+    "SIX_UNIT_TESTS_NE_PRODUCTION_PROOF",
+    "ENERGY_NOT_MEASURED"
+  ],
+  "next_tests": [
+    "representative workload R2",
+    "real process-restart R3",
+    "independent local-model cold receiver R4",
+    "energy and latency R5"
+  ],
+  "audience_note": "Free to inspect, test, challenge, adapt and build upon subject to the repository license. No forced subscription, wearables, or presumed endorsement."
+}

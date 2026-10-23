@@ -1,0 +1,66 @@
+{
+  "nodes": [
+    {
+      "authority": "PRIVATE_READ_SCOPE",
+      "collision_domain": "PRIVATE_LOCAL_PRECURSOR",
+      "dependencies": [],
+      "elected_writer": null,
+      "id": "r0_private_precursor",
+      "next_deed": "Keep source private; seek independent calibrated rerun",
+      "object": "CoStretch R0 local microprobe (private source)",
+      "proof_state": "SOURCE_REPORTED_CONNECTOR_READ_NOT_RELEASE_PACKAGE",
+      "receiver": null
+    },
+    {
+      "authority": "PUBLIC_SAFE_LOW_EFFECT_CANDIDATE",
+      "collision_domain": "benchmarks/costretch_r1/costretch_r1.py",
+      "dependencies": [
+        "r0_private_precursor"
+      ],
+      "elected_writer": "scoped_git_branch",
+      "id": "r1_source",
+      "next_deed": "Readback exact file after publishing",
+      "object": "costretch_r1.py",
+      "proof_state": "VERIFIED_LOCAL",
+      "receiver": "PUBLIC_GITHUB_CANDIDATE",
+      "sha256": "8aab99738464db36f9aede58a97d619af9e46eaac88c9d7f83a27e81d07776b7"
+    },
+    {
+      "authority": "PUBLIC_SAFE_LOW_EFFECT_CANDIDATE",
+      "collision_domain": "benchmarks/costretch_r1/output/benchmark_evo.jsonl",
+      "dependencies": [
+        "r1_source"
+      ],
+      "elected_writer": "scoped_git_branch",
+      "id": "r1_benchmark",
+      "next_deed": "Cross-check JSONL claims and exact readback",
+      "object": "output/benchmark_evo.jsonl",
+      "proof_state": "VERIFIED_LOCAL",
+      "receiver": "PUBLIC_GITHUB_CANDIDATE",
+      "sha256": "70b33e47f2d3ab5e012aff55a08d112d341ee4c2f5b7b7a87389d01b272e6ea3"
+    },
+    {
+      "authority": "PUBLIC_SAFE_LOW_EFFECT_CANDIDATE",
+      "collision_domain": "docs/Evolution/COSTRETCH_COTURTLE_PUBLIC_BENCHMARK_20261023.md",
+      "dependencies": [
+        "r1_source",
+        "r1_benchmark"
+      ],
+      "elected_writer": "scoped_git_branch",
+      "id": "public_note",
+      "next_deed": "Publish only after privacy/provenance check",
+      "object": "COSTRETCH_COTURTLE_PUBLIC_BENCHMARK_20261023.md",
+      "proof_state": "VERIFIED_LOCAL",
+      "receiver": "PUBLIC_GITHUB_CANDIDATE",
+      "sha256": "54054e3222489020a68d23e89f5f9aaaab8b132d002d51da1bb2b4d5a698f256"
+    }
+  ],
+  "nonclaims": [
+    "LOCAL_IS_NOT_LANDED",
+    "NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF",
+    "MODEL_NE_RUNTIME",
+    "TRILLION_LOGICAL_NE_TRILLION_PHYSICAL"
+  ],
+  "schema_version": "0.1",
+  "title": "CoStretch/CoTurtle R1 bounded evidence relations"
+}
