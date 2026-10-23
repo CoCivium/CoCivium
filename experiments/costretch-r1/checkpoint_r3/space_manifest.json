@@ -1,0 +1,204 @@
+{
+  "schema": "CoEvoSpace/1",
+  "description": "Synthetic cross-product of logical candidates. Only samples evaluated offline.",
+  "dimensions": [
+    {
+      "name": "role",
+      "options": [
+        "investigator",
+        "replicator",
+        "adversary",
+        "prior-art",
+        "translator",
+        "custodian",
+        "missing-role",
+        "auditor"
+      ]
+    },
+    {
+      "name": "substrate",
+      "options": [
+        "python",
+        "node",
+        "ollama-local",
+        "claude-hosted",
+        "pi-tool"
+      ]
+    },
+    {
+      "name": "effect",
+      "options": [
+        "OBSERVE",
+        "PROPOSE",
+        "REVIEW_CHALLENGE",
+        "EXTERNAL_ACTION"
+      ]
+    },
+    {
+      "name": "authority",
+      "options": [
+        "READONLY",
+        "ADVISORY",
+        "WRITE",
+        "UNKNOWN"
+      ]
+    },
+    {
+      "name": "confidentiality",
+      "options": [
+        "PUBLIC",
+        "PRIVATE",
+        "RESTRICTED"
+      ]
+    },
+    {
+      "name": "model_family",
+      "options": [
+        "none",
+        "claude",
+        "qwen",
+        "llama",
+        "mistral",
+        "other"
+      ]
+    },
+    {
+      "name": "source_family",
+      "options": [
+        "academic",
+        "instrument",
+        "repo",
+        "news",
+        "community",
+        "synthetic"
+      ]
+    },
+    {
+      "name": "task_type",
+      "options": [
+        "fact-check",
+        "code",
+        "math",
+        "physics",
+        "replay",
+        "security",
+        "UX",
+        "governance"
+      ]
+    },
+    {
+      "name": "verification",
+      "options": [
+        "python",
+        "node",
+        "cross-runtime",
+        "human",
+        "hold"
+      ]
+    },
+    {
+      "name": "resource_policy",
+      "options": [
+        "quality",
+        "cost",
+        "privacy",
+        "energy",
+        "latency",
+        "balanced"
+      ]
+    },
+    {
+      "name": "experiment",
+      "options": [
+        "ablation",
+        "replication",
+        "challenge",
+        "negative-control",
+        "counterexample",
+        "resumption"
+      ]
+    },
+    {
+      "name": "storage",
+      "options": [
+        "jsonl",
+        "sqlite",
+        "blob",
+        "dag",
+        "bundle",
+        "memory"
+      ]
+    },
+    {
+      "name": "view",
+      "options": [
+        "CLI",
+        "terminal",
+        "browser",
+        "mobile",
+        "voice"
+      ]
+    },
+    {
+      "name": "fault",
+      "options": [
+        "none",
+        "stale",
+        "dropout",
+        "tamper",
+        "conflict"
+      ]
+    },
+    {
+      "name": "time_window",
+      "options": [
+        "minutes",
+        "hours",
+        "days",
+        "months"
+      ]
+    },
+    {
+      "name": "context",
+      "options": [
+        "builder",
+        "student",
+        "scientist",
+        "steward"
+      ]
+    },
+    {
+      "name": "observer_frame",
+      "options": [
+        "field",
+        "orbital",
+        "laboratory",
+        "simulation",
+        "archival",
+        "third-party",
+        "cross-cultural"
+      ]
+    },
+    {
+      "name": "coding_scheme",
+      "options": [
+        "json",
+        "cbor",
+        "rdf",
+        "graph",
+        "text",
+        "binary"
+      ]
+    },
+    {
+      "name": "counterfactual",
+      "options": [
+        "cost",
+        "no-llm",
+        "older-model",
+        "human",
+        "alternate-pipeline"
+      ]
+    }
+  ]
+}
