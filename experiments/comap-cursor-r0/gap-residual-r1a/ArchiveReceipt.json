@@ -1,0 +1,30 @@
+{
+  "archive_bytes": 17878,
+  "archive_name": "CoNull_GdRes_R1A_20261023.zip",
+  "archive_sha256": "1b8865311dc6bb7787907f6c7442b18a51f8245077073e1fbbcf59f7a2395c7c",
+  "benchmark_rows": 56,
+  "external_effects": 0,
+  "files_sha256": {
+    "README.md": "994f63c243b23712daec1e0ab7dd46af7213a22f7e236c51bbc6d1f58c1d8beb",
+    "RECEIPT.json": "1d6e12beb1a6fadd46993818a23cc82f3f75e6db90c5e4c1c0624e570b659e30",
+    "benchmark_evo_r1.jsonl": "c094da61c8c34e2d4a7d0b849f582d5376adcb11634bc0bbeffa0436bc2d6204",
+    "build_ledger.py": "bddff1e8ad806ec04a0d75684556eca40ec2a24bd3de6b72841997da244c0e40",
+    "conull-gdres-r1.mjs": "891ce9ab2fa573b0ddbba84da0d0c2a0e0f33afee8d30d50776f107c0d852560",
+    "conull-gdres-r1.test.mjs": "68c9f5642fc052b2c8d5acc63d2995c4066a39587f545030d1fe0630efa3f585",
+    "test_results.tap": "639be9fc6b93521a2c12774b5629ca98e9eeac2819834149ce56d938da74c9ee"
+  },
+  "lifecycle": "VERIFIED_LOCAL",
+  "nonclaims": [
+    "LOCAL_IS_NOT_LANDED",
+    "VALIDATION_IS_NOT_ACCEPTANCE",
+    "NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF",
+    "NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE",
+    "HASHING_IS_NOT_SEMANTIC_INGESTION",
+    "DISCOVERED_SET_IS_NOT_COMPLETE_HISTORY"
+  ],
+  "not_run_gates": 15,
+  "receiver_pickup": false,
+  "schema": "CoNull.GdRes.ArchiveReceipt.v1A",
+  "tests_failed": 0,
+  "tests_passed": 41
+}
