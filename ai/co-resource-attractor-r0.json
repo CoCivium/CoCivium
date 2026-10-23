@@ -1,0 +1,54 @@
+{
+  "format": "CoResourceAttractor.R0",
+  "state": "CANDIDATE_ARCHITECTURE",
+  "flow": [
+    "UNKNOWN",
+    "DISCOVERED",
+    "DESCRIBED",
+    "QUALIFIED",
+    "COMPOSABLE",
+    "OPTIONAL",
+    "SELECTED",
+    "USED",
+    "RECEIPTED",
+    "REEVO"
+  ],
+  "resource_classes": {
+    "demonstrated": [
+      "software",
+      "file",
+      "repository",
+      "device",
+      "model",
+      "tool",
+      "test",
+      "data",
+      "service",
+      "historical_artifact",
+      "render"
+    ],
+    "experimental": [
+      "synthetic_environment",
+      "alternative_representation",
+      "counterfactual",
+      "anti_resource",
+      "null_resource",
+      "hypothetical_substrate"
+    ],
+    "speculative": [
+      "non_material_representation",
+      "CoSpirit_hypothesis"
+    ]
+  },
+  "rails": [
+    "FINDABLE_NE_QUALIFIED",
+    "RELATED_NE_CAUSAL",
+    "MODEL_SUGGESTION_NE_EVIDENCE",
+    "POINTER_NE_ACK",
+    "OPTIONAL_NE_ACTIVE",
+    "SPECULATIVE_NE_PHYSICAL",
+    "LOGICAL_SCALE_NE_LIVE_SCALE",
+    "NEWER_NE_BETTER"
+  ],
+  "next_test": "deterministic descriptor scorer vs random and keyword-only baselines on a bounded public corpus"
+}
