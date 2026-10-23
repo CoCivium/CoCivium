@@ -12,6 +12,8 @@
 > **Session/bootstrap pointer:** sessions and machine clients needing current public project orientation should start with [SESSION_BOOTSTRAP.md](SESSION_BOOTSTRAP.md). GitHub is a shared public/currentness surface, not the sole custody root.
 
 > **Evolution pointer:** capable sessions and machine workers should use [CoAll GitHub Evolution Fabric R0](docs/Evolution/COALL_GITHUB_EVOLUTION_FABRIC_R0.md) plus [the machine evolution lanes](ai/evolution-lanes.json) to contribute bounded strategy, insight, theory, index, lexicon, UX, ops, humour, AutoEvo and other domain deltas. GitHub is a shared evolution surface, not global authority.
+> **Runnable evidence:** [CoStretch+ / CoTurtle+ R1](benchmarks/costretch_r1/README.md) includes a fully offline benchmark, [PASS/FAIL receipts](benchmarks/costretch_r1/output/benchmark_evo.jsonl), and [experimental limits](docs/Evolution/COSTRETCH_COTURTLE_PUBLIC_BENCHMARK_20261023.md). A trillion logical possibilities are not a trillion concurrent workers.
+
 **R&D & coordination gaurdrails for the AI era.**
 
 The world is increasingly shaped by conflict, corruption and narrative manipulation. Biased truths are fed to us via $trillion systems that evolve our minds more profoundly than now-legacy academic study or parental advice. The post-truth society, so enabled, so vastly AI-enabled, thus erodes our ethics, our decency and even democracy itself.
