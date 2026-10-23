@@ -42,6 +42,20 @@ This public projection is discoverable through GitHub, and a [private receiver/h
 
 Next acceptance gate: one consenting observer completing a first-use task, followed by a source-bound two-surface parity/readproof test. Do not retire provider accounts until exports, dependencies and replacement capabilities have independent proof and a human-gated decision.
 
+## CoOmniIO+ / CoNotSpace+ | Exact evidence for missing relations
+
+**PASS: 41/41 offline source tests** of the existing [CoNull+/G_dRes+ R1A candidate](https://github.com/CoCivium/CoCivium/blob/experiment/comap-trails-ghost-cursor-r0-20261023/experiments/comap-cursor-r0/gap-residual-r1a/README.md) were rerun on X2 after independently fetching both exact GitHub source blobs. [Actions workflow #40011981186](https://github.com/CoCivium/CoCivium/actions/runs/40011981186) also reports its `node-regression` job successful. The candidate is part of **draft [PR #215](https://github.com/CoCivium/CoCivium/pull/215)**, not a deployed or merged native runtime.
+
+- **CoNotSpace+:** missing, unknown, observed-absent, deliberately disconnected, private and predicted relations are not interchangeable. Observed absence needs explicitly scoped, dated evidence; partial graph coverage cannot prove universal absence.
+- **CoGlukey+:** describe each capability using interface, evidence, environment, authority, freshness, reversible alternatives and useful constraints; keys help retrieval only if measured.
+- **CoOmniIO+ / CoQuanta+:** the same bounded relation may be a source for one participant and an output or constraint for another. Typed evidence travels to CoMap / CoOrb / text views without conferring execution rights.
+- **CoDvl+ / G_dRes+:** Build, Challenge, Repair; unusual ideas, source discrepancies and counterexamples are candidate experiments, not authority, sentience, ET/spiritual proof, or a new physical field.
+- **Centre moustache / CoThumb+:** [draft PR #218](https://github.com/CoCivium/CoCivium/pull/218) proposes a keyboard-accessible **review-only** preview. Hardware middle/thumb gesture detection, OS remapping and native CoOrbWare pickup are **HELD**, not installed.
+
+The existing [CoMap acceptance issue #214](https://github.com/CoCivium/CoCivium/issues/214) remains the coordination root. [`ai/benchmark-evo.jsonl`](ai/benchmark-evo.jsonl) records previous FAIL corrections and current PASS/HELD proofs. Logical million-session descriptions never imply a million active workers, users, provider tabs or accounts.
+
+**One next gate:** have an independent, consenting first-time receiver compare one evidence-backed CoMap relation (including an unknown/private/absent distinction) with a plain list, proving comprehension, privacy, exact source readback, no unintended effects, and receiver state separately. Until then, **Gmail / CoVIA / `.nodes` / sites / CoStead receiver delivery and provider-account retirement remain unproven or held.**
+
 ## CoHereNow
 
 ### PASS · CoAndrewFirst+ R0
