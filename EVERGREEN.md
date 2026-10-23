@@ -159,6 +159,22 @@ Machine-readable evolution receipts live in:
 
 `ai/benchmark-evo.jsonl`
 
+## Candidate test gates · R1
+
+These are proposed acceptance gates, not current PASS claims unless a receipt says otherwise:
+
+- media render: file size >300 KB, thumbnail present/inspectable, `ffprobe` parses, `blackdetect` reports no disallowed black segment;
+- GitHub availability: HTTP 200 in <2 s from a named timed probe;
+- Gmail receiver: arrival in recipient Primary in <60 s, only where recipient-side observation is actually available;
+- identity: execution/send ID logged without exposing secrets;
+- Pi adapter: compatibility probe <2 s;
+- Claude adapter: credential-presence probe <1 s, logging only presence/latency and never secret material;
+- local Llama/Ollama: packet/response parse <3 s.
+
+Current state: message IDs are logged for the three Evergreen Gmail sends. The other gates above are `HELD` in `ai/benchmark-evo.jsonl` until exact targets and timed probes exist.
+
+`PROPOSED_THRESHOLD_NE_MEASURED_RESULT`
+
 ## Current next high bars
 
 - bind CoExperimentSpace+ samples to evidence-backed selector annotations;
