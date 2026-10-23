@@ -176,3 +176,13 @@ GitHub is a public projection and currentness surface. It is not universal custo
 At this snapshot no repository-backed receiver was found for `.nodes`, `nodes`, `.sites`, `sites`, or a dedicated CoVIA transport. Those destinations must remain `HELD_NO_RECEIVER` until a real receiver route exists.
 
 **Pointer is not ACK. Receipt beats assertion.**
+
+## CoAndrew+ readiness snapshot, 2026-10-23
+
+**Public main readback:** this document and its receiver manifest were read back on the public `main` branch after merged PR [#200](https://github.com/CoCivium/CoCivium/pull/200). The earlier HELD premerge benchmark row is retained as historical truth; a newer append-only row records the later PASS for GitHub main readback. Neither row proves delivery to Gmail, CoVIA, .nodes/nodes/.sites/sites, an independent site deployment or Andrew.
+
+**Developer-first threshold candidates (all HOLD pending exact observations):** named thumbnail >300 KB and separately visually acceptable; `ffprobe` stream inspection plus `ffmpeg` `blackdetect` reporting zero black intervals; GitHub HTTP 200 under 2 s; authorized Gmail Primary metadata-only query under 60 s; verified identity and SHA-256 in a receiver-produced receipt; Pi compatible first-use handshake/task under 2 s; Claude credential-availability probe under 1 s without revealing secrets; Ollama/Llama local packet parse under 3 s. These are user-requested goals, not measured performance. Latency alone does not prove correct results.
+
+A private source-bound **offline candidate checker** passed 12 of 12 local structural tests while producing nine explicit HOLDs on an observation-free fixture. Its noncanonical preflight report must be mapped to the existing [CoStretch BenchmarkEvo R0 validator](benchmarks/costretch/README.md) before any production or public PASS event. No model/provider call, live session, recipient outreach or anonymous account was created by that check.
+
+**Next human-value gate:** one consenting developer on their chosen Mac/Pi/Claude/local stack tries the same bounded first-use task, corrects at least one wrong claim, and returns a source-bound readproof and usefulness assessment. Keep deterministic and FOSS options usable without any hosted provider. Historical replays preserve original bytes and do not replay external effects.
