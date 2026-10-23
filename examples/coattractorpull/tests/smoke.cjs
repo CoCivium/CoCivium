@@ -23,7 +23,7 @@ const tests=[
 ["no private paths or unpublished media identifiers",()=>assert(!/F30B633008F2|MX Master 4|[A-Z]:\\/.test(html))],
 ["no network fetch or active input hooks",()=>assert(!/\bfetch\s*\(|XMLHttpRequest|WebSocket|addEventListener\(['\"]keydown/.test(html))],
 ["centred moustache present",()=>assert(html.includes('aria-label="Gold centre moustache"') && html.includes(".hero{grid-template-columns:1fr;text-align:center}"))],
-["safe capsule survives JSON roundtrip",()=>{const capsule=f.safeCapsule(resources[0]);assert.deepEqual(JSON.parse(JSON.stringify(capsule)).resource_id,resources[0].id);}]
+["safe capsule survives JSON roundtrip",()=>{const capsule=f.safeCapsule(resources[0]);assert.deepEqual(JSON.parse(JSON.stringify(capsule)).resource_id,resources[0].id);}],
 ["explicit middle gesture only",()=>{assert.equal(f.isMiddleCopyGesture({button:1}),true);assert.equal(f.isMiddleCopyGesture({button:0}),false);assert.equal(f.isMiddleCopyGesture({button:2}),false);assert.equal(f.isMiddleCopyGesture(null),false);}],
 ["middle-click only on safe copy control",()=>{assert(html.includes("copy.addEventListener('auxclick'"));assert(html.includes("copy.addEventListener('mousedown'"));assert(!html.includes("document.addEventListener('auxclick'"));}],
 ];
