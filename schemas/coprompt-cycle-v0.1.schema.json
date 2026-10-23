@@ -1,0 +1,129 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cocivium.org/schemas/coprompt-cycle-v0.1.schema.json",
+  "title": "CoPrompt Ecology Cycle R0",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "cycle_id",
+    "observed_at",
+    "source_refs",
+    "selected_prompt_families",
+    "candidate_deltas",
+    "dedupe_state",
+    "challenge_state",
+    "verification_state",
+    "cooomph_decision",
+    "route_state",
+    "receipt_state",
+    "terminal_posture",
+    "authority_ceiling",
+    "wake_conditions"
+  ],
+  "properties": {
+    "cycle_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "observed_at": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "selected_prompt_families": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "CoObservePrompt",
+          "CoPriorPrompt",
+          "CoRelPrompt",
+          "CoEvoPrompt",
+          "CoAutoEvoPrompt",
+          "CoOomphPrompt",
+          "CoChallengePrompt",
+          "CoTurtlePrompt",
+          "CoWakePrompt",
+          "CoSuccessorPrompt",
+          "CoReceiverPrompt",
+          "CoMetaPrompt"
+        ]
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "candidate_deltas": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "dedupe_state": {
+      "type": "string",
+      "minLength": 1
+    },
+    "challenge_state": {
+      "type": "string",
+      "minLength": 1
+    },
+    "verification_state": {
+      "type": "string",
+      "minLength": 1
+    },
+    "cooomph_decision": {
+      "type": "string",
+      "enum": [
+        "ACCELERATE",
+        "COMPACT",
+        "SLEEP",
+        "FAN_OUT",
+        "SERIALIZE",
+        "HOLD",
+        "STOP",
+        "UNCHANGED"
+      ]
+    },
+    "route_state": {
+      "type": "string",
+      "minLength": 1
+    },
+    "receipt_state": {
+      "type": "string",
+      "minLength": 1
+    },
+    "terminal_posture": {
+      "type": "string",
+      "enum": [
+        "ACTIVE",
+        "WATCHING",
+        "DORMANT",
+        "WAKE_ONLY",
+        "SUPERSEDED",
+        "HOLD",
+        "UNKNOWN"
+      ]
+    },
+    "authority_ceiling": {
+      "type": "string",
+      "minLength": 1
+    },
+    "wake_conditions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "nonclaims": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

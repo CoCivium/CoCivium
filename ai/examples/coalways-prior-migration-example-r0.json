@@ -1,0 +1,42 @@
+{
+  "object_id": "example:prior-session:covids260916-s2",
+  "source_refs": [
+    "CoCivium/CoSteward:docs/session_backchannel/active_session_reconcile/CoVids260916-S2_close_readiness_20260925T2228Z.json"
+  ],
+  "lineage_state": "DURABLE_DESCENDANTS_EXIST__SOURCE_EMBODIMENT_NOT_REQUIRED",
+  "currentness": {
+    "observed_at": "2026-09-25T22:28:27.609Z",
+    "state": "HISTORICAL_EXAMPLE__REQUIRES_FRESH_REBIND_BEFORE_CURRENT_CLAIM"
+  },
+  "always_modes": {
+    "persist": "ALWAYS",
+    "discoverable": "ALWAYS",
+    "reconsiderable": "ALWAYS",
+    "challengeable": "ALWAYS",
+    "autoevo_eligible": "ALWAYS",
+    "wakeable": "YES_UNLESS_EXPLICITLY_NOT",
+    "cooomph_governed_when_active": "YES",
+    "executing": "NO_BY_DEFAULT",
+    "external_effect": "TRIGGERED_OR_AUTHORIZED"
+  },
+  "wake_conditions": [
+    "EXACT_RECEIVER_RESPONSE_TO_PRIOR_REVIEW",
+    "MATERIAL_CONTRADICTION_TO_CLOSE_READINESS",
+    "NEW_UNIQUE_COVIDS_DELTA",
+    "SUCCESSOR_REQUEST_REQUIRING_SOURCE_SPECIFIC_CLARIFICATION"
+  ],
+  "authority_ceiling": "OBSERVE_PROPOSE_CHALLENGE_VERIFY__EFFECT_GATED",
+  "successor_refs": [
+    "CoProviderIndependence260924-V1",
+    "CoCivium/CoCivium shared public/currentness relational field"
+  ],
+  "embodiment_disposition": "CLOSE_SAFE",
+  "uncertainty": [
+    "FRESH_MACHINE_REBIND_STATUS_NOT_ESTABLISHED_BY_THIS_FIXTURE",
+    "CURRENT_RECEIVER_PICKUP_NOT_CLAIMED"
+  ],
+  "evidence_refs": [
+    "historical close-readiness artifact only"
+  ],
+  "receiver_state": "UNPROVEN_CURRENT_PICKUP"
+}
