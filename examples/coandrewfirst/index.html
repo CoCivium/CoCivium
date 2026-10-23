@@ -1,0 +1,442 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>CoAndrewFirst+ R0</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #0b0f14;
+      --panel: #111823;
+      --panel2: #182230;
+      --ink: #eef4fb;
+      --muted: #9fb0c4;
+      --line: #29384b;
+      --good: #8fe3b2;
+      --warn: #ffd479;
+      --bad: #ff9f9f;
+      --accent: #9bc2ff;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; font: 16px/1.5 system-ui, -apple-system, Segoe UI, sans-serif;
+      background: linear-gradient(180deg, #081018 0, var(--bg) 18rem); color: var(--ink);
+    }
+    main { width: min(980px, calc(100% - 32px)); margin: 0 auto; padding: 28px 0 64px; }
+    h1, h2, h3 { line-height: 1.15; }
+    h1 { font-size: clamp(2rem, 6vw, 4.2rem); margin: 0 0 8px; letter-spacing: -0.04em; }
+    h2 { margin-top: 0; }
+    p { max-width: 72ch; }
+    a { color: var(--accent); }
+    button, select, textarea {
+      font: inherit; border-radius: 10px; border: 1px solid var(--line);
+      background: #0d141e; color: var(--ink);
+    }
+    button { cursor: pointer; padding: 10px 14px; }
+    button:hover, button:focus-visible { border-color: var(--accent); outline: none; }
+    button.primary { background: #dceaff; color: #09111b; border-color: #dceaff; font-weight: 700; }
+    button:disabled { opacity: .45; cursor: not-allowed; }
+    select, textarea { width: 100%; padding: 10px; }
+    textarea { min-height: 88px; resize: vertical; }
+    .eyebrow { color: var(--accent); font-size: .84rem; text-transform: uppercase; letter-spacing: .14em; font-weight: 800; }
+    .lede { font-size: 1.16rem; color: #cad7e6; max-width: 65ch; }
+    .card {
+      background: color-mix(in srgb, var(--panel) 94%, transparent);
+      border: 1px solid var(--line); border-radius: 18px; padding: 20px; margin: 16px 0;
+      box-shadow: 0 20px 45px rgba(0,0,0,.18);
+    }
+    .grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 14px; }
+    .col6 { grid-column: span 6; }
+    .col4 { grid-column: span 4; }
+    @media (max-width: 760px) { .col6, .col4 { grid-column: 1 / -1; } }
+    .steps { display: flex; flex-wrap: wrap; gap: 8px; margin: 18px 0 24px; }
+    .step {
+      border: 1px solid var(--line); border-radius: 999px; padding: 7px 11px;
+      color: var(--muted); background: #0d141e;
+    }
+    .step.active { color: #06111a; background: var(--accent); border-color: var(--accent); font-weight: 800; }
+    .step.done { color: var(--good); border-color: #35684a; }
+    .badge {
+      display: inline-flex; align-items: center; gap: 6px; border: 1px solid var(--line);
+      border-radius: 999px; padding: 4px 9px; font-size: .84rem; margin: 3px 4px 3px 0;
+    }
+    .good { color: var(--good); border-color: #35684a; }
+    .warn { color: var(--warn); border-color: #6d5723; }
+    .bad { color: var(--bad); border-color: #713535; }
+    .metric { font-size: 1.8rem; font-weight: 800; letter-spacing: -.03em; }
+    .muted { color: var(--muted); }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; word-break: break-all; }
+    .source-list { display: grid; gap: 8px; }
+    .source-row {
+      border: 1px solid var(--line); border-radius: 12px; padding: 12px;
+      display: grid; grid-template-columns: 1fr auto; gap: 8px; align-items: start;
+      background: #0c131c;
+    }
+    .source-row button { padding: 6px 9px; }
+    .challenge-buttons { display: flex; flex-wrap: wrap; gap: 8px; }
+    .answer {
+      margin-top: 12px; border-left: 3px solid var(--accent); padding: 10px 14px;
+      background: #0b141f; border-radius: 0 10px 10px 0;
+    }
+    .boundary { border-left: 4px solid var(--warn); }
+    .live { border-left-color: var(--good); }
+    .sim { border-left-color: var(--warn); }
+    .receipt { white-space: pre-wrap; background: #071018; padding: 12px; border-radius: 10px; overflow: auto; }
+    .hidden { display: none !important; }
+    .footer { color: var(--muted); margin-top: 28px; font-size: .92rem; }
+    .row { display:flex; flex-wrap:wrap; gap:10px; align-items:center; }
+    .spacer { flex:1; }
+  </style>
+</head>
+<body>
+<main>
+  <div class="eyebrow">CoAndrewFirst+ R0</div>
+  <h1>See it. Inspect it. Challenge it.</h1>
+  <p class="lede">A five-minute, zero-account browser canary built on the merged CoEvidence evidence bundle. It shows what is verified, what is simulated, and what is not connected. No model provider is required.</p>
+
+  <div id="loadState" class="card boundary">
+    <strong>Loading local evidence bundle...</strong>
+    <div class="muted">This page reads two repository JSON artifacts. It makes no model or external API calls.</div>
+  </div>
+
+  <div class="steps" aria-label="Five-minute onboarding steps">
+    <span class="step active" data-step="1">1 · Result</span>
+    <span class="step" data-step="2">2 · Evidence</span>
+    <span class="step" data-step="3">3 · Challenge</span>
+    <span class="step" data-step="4">4 · Boundaries</span>
+    <span class="step" data-step="5">5 · Receipt</span>
+  </div>
+
+  <section id="step1" class="card">
+    <div class="eyebrow">Minute 1 · Result</div>
+    <h2>One useful result, without the vocabulary tax</h2>
+    <p>The canary asks whether multiple review roles can share the same exact evidence without duplicating every source for every role.</p>
+    <div class="grid">
+      <div class="col4 card">
+        <div class="muted">Pinned sources</div>
+        <div id="sourceCount" class="metric">–</div>
+      </div>
+      <div class="col4 card">
+        <div class="muted">Role-source bindings</div>
+        <div id="bindingCount" class="metric">–</div>
+      </div>
+      <div class="col4 card">
+        <div class="muted">Measured baseline</div>
+        <div id="bestLayout" class="metric" style="font-size:1.25rem">–</div>
+      </div>
+    </div>
+    <p id="resultSentence" class="answer">Waiting for evidence.</p>
+    <div class="row"><button class="primary" data-next="2">Inspect the evidence</button></div>
+  </section>
+
+  <section id="step2" class="card hidden">
+    <div class="eyebrow">Minute 2 · Evidence</div>
+    <h2>Inspect the exact inputs</h2>
+    <p class="muted">Source identity remains separate from byte identity. A matching hash does not establish truth, authority, adoption, or future availability.</p>
+    <div id="sources" class="source-list"></div>
+    <div id="sourceDetail" class="answer hidden"></div>
+    <div class="row" style="margin-top:14px">
+      <button data-next="1">Back</button>
+      <span class="spacer"></span>
+      <button class="primary" data-next="3">Challenge the result</button>
+    </div>
+  </section>
+
+  <section id="step3" class="card hidden">
+    <div class="eyebrow">Minute 3 · Challenge</div>
+    <h2>Try to break the story</h2>
+    <p>Challenge mode is deterministic in R0. It answers only questions supported by the merged canary report. It does not call an LLM.</p>
+    <div class="challenge-buttons">
+      <button data-challenge="live">Is this live?</button>
+      <button data-challenge="storage">Does content addressing save storage?</button>
+      <button data-challenge="trust">Can I trust the sources?</button>
+    </div>
+    <div id="challengeAnswer" class="answer">Choose a challenge.</div>
+    <label for="customChallenge"><strong>Your own challenge</strong></label>
+    <textarea id="customChallenge" placeholder="Example: What evidence would overturn this conclusion?"></textarea>
+    <div class="muted">Custom text is stored only in your local browser receipt. R0 does not send it anywhere or generate an answer.</div>
+    <div class="row" style="margin-top:14px">
+      <button data-next="2">Back</button>
+      <span class="spacer"></span>
+      <button class="primary" data-next="4">Check the boundaries</button>
+    </div>
+  </section>
+
+  <section id="step4" class="card hidden">
+    <div class="eyebrow">Minute 4 · Boundaries</div>
+    <h2>Simulation and live state are not allowed to blur</h2>
+    <div class="grid">
+      <div class="col6 card sim">
+        <h3>Simulated / fixture</h3>
+        <div class="badge warn">TEST_ONLY role bindings</div>
+        <div class="badge warn">TEST_ONLY claims / relations</div>
+        <div class="badge warn">Synthetic refresh</div>
+        <p>These exercise storage, reconstruction, query logic, and failure handling. They are not observations of a live review panel.</p>
+      </div>
+      <div class="col6 card live">
+        <h3>Observed / verified in the canary</h3>
+        <div class="badge good">Pinned public bytes</div>
+        <div class="badge good">Exact reconstruction checks</div>
+        <div class="badge good">Negative probes held</div>
+        <p>These are bounded observations from the merged canary and its CI. They do not prove receiver adoption or live synchronization.</p>
+      </div>
+    </div>
+
+    <h3>Model/provider lane</h3>
+    <select id="provider">
+      <option value="deterministic">Deterministic browser mode · RUNNABLE</option>
+      <option value="claude">Claude adapter · NOT CONNECTED IN R0</option>
+      <option value="open_source">Open-source / local adapter · NOT CONNECTED IN R0</option>
+      <option value="openai_compatible">OpenAI-compatible endpoint · NOT CONNECTED IN R0</option>
+      <option value="historical_replay">Historical model replay · NOT CONNECTED IN R0</option>
+    </select>
+    <div id="providerStatus" class="answer">R0 runs with deterministic browser logic only. Selecting another lane changes the receipt, not execution.</div>
+
+    <div class="card boundary">
+      <strong>Explicit nonclaims</strong>
+      <div id="nonclaims" class="muted">Loading boundaries.</div>
+    </div>
+
+    <div class="row">
+      <button data-next="3">Back</button>
+      <span class="spacer"></span>
+      <button class="primary" data-next="5">Create a local read receipt</button>
+    </div>
+  </section>
+
+  <section id="step5" class="card hidden">
+    <div class="eyebrow">Minute 5 · Receipt</div>
+    <h2>Leave with something inspectable</h2>
+    <p>This receipt proves only what this browser instance says it loaded and inspected. It is <strong>not</strong> a GitHub landing receipt, independent replication, receiver pickup proof, or proof that any model ran.</p>
+    <div class="row">
+      <button id="makeReceipt" class="primary">Generate receipt</button>
+      <button id="copyReceipt" disabled>Copy</button>
+      <button id="downloadReceipt" disabled>Save JSON</button>
+    </div>
+    <pre id="receipt" class="receipt">No receipt yet.</pre>
+    <div class="row">
+      <button data-next="4">Back</button>
+      <span class="spacer"></span>
+      <button data-next="1">Start over</button>
+    </div>
+  </section>
+
+  <div class="footer">
+    <strong>CoAndrewFirst+ R0</strong> · Static browser prototype · No cookies, account, telemetry, backend, model API, or external write action implemented.
+  </div>
+</main>
+
+<script>
+(() => {
+  "use strict";
+
+  const SPEC_URL = "../co-evidence-bundle-r0.spec.json";
+  const REPORT_URL = "../../docs/Operations/fixtures/coevidence-bundle-r0-20261022.json";
+  const state = { spec: null, report: null, specText: "", reportText: "", challenge: null, step: 1 };
+
+  const $ = (id) => document.getElementById(id);
+  const enc = new TextEncoder();
+
+  async function sha256(text) {
+    if (!window.crypto || !window.crypto.subtle) return "UNAVAILABLE_IN_BROWSER";
+    const bytes = await crypto.subtle.digest("SHA-256", enc.encode(text));
+    return Array.from(new Uint8Array(bytes)).map(b => b.toString(16).padStart(2, "0")).join("");
+  }
+
+  function setStep(step) {
+    state.step = Number(step);
+    for (let i = 1; i <= 5; i++) {
+      $("step" + i).classList.toggle("hidden", i !== state.step);
+      const chip = document.querySelector('.step[data-step="' + i + '"]');
+      chip.classList.toggle("active", i === state.step);
+      chip.classList.toggle("done", i < state.step);
+    }
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  function safeText(value) {
+    return String(value ?? "").replace(/[&<>"']/g, c => ({
+      "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;"
+    })[c]);
+  }
+
+  function renderSources() {
+    const root = $("sources");
+    root.innerHTML = "";
+    state.spec.sources.forEach(source => {
+      const row = document.createElement("div");
+      row.className = "source-row";
+      row.innerHTML =
+        '<div><strong>' + safeText(source.id) + '</strong>' +
+        '<div class="muted">' + safeText(source.path) + '</div>' +
+        '<div><span class="badge good">' + safeText(source.confidentiality) + '</span>' +
+        '<span class="badge">' + safeText(source.bytes) + ' bytes</span></div></div>' +
+        '<button type="button">Inspect</button>';
+      row.querySelector("button").addEventListener("click", () => showSource(source));
+      root.appendChild(row);
+    });
+  }
+
+  function showSource(source) {
+    const box = $("sourceDetail");
+    box.classList.remove("hidden");
+    box.innerHTML =
+      '<strong>' + safeText(source.id) + '</strong>' +
+      '<div><span class="muted">Version:</span> <span class="mono">' + safeText(source.version) + '</span></div>' +
+      '<div><span class="muted">SHA-256:</span> <span class="mono">' + safeText(source.sha256) + '</span></div>' +
+      '<div><span class="muted">Observed:</span> ' + safeText(source.observed_at) + '</div>' +
+      '<div><span class="muted">Custody scope:</span> ' + safeText(source.custody_scope) + '</div>' +
+      '<div><a href="' + safeText(source.locator) + '" target="_blank" rel="noreferrer">Open pinned source</a></div>';
+  }
+
+  function challenge(kind) {
+    state.challenge = kind;
+    const layouts = state.report.layouts;
+    const answers = {
+      live:
+        '<strong>No.</strong> The merged report explicitly says <span class="mono">live_session_sync: NOT_TESTED</span> and ' +
+        '<span class="mono">receiver_adoption: UNOBSERVED</span>. This page is a static consumer of pinned evidence.',
+      storage:
+        '<strong>Not on this corpus.</strong> Ordinary shared paths used ' + layouts.shared_paths.total_file_bytes.toLocaleString() +
+        ' total file-content bytes. Indexed content-addressed storage used ' + layouts.indexed_cas.total_file_bytes.toLocaleString() +
+        ', so the indexed layout added overhead here. Content addressing may still be useful for provenance or retrieval requirements.',
+      trust:
+        '<strong>Trust is bounded.</strong> The canary checks exact pinned bytes, hashes, source identity, reconstruction, and several failure cases. ' +
+        'Hashes do not establish semantic truth, authority, independent corroboration, receiver pickup, or future availability.'
+    };
+    $("challengeAnswer").innerHTML = answers[kind];
+  }
+
+  function renderBoundary() {
+    const effect = state.report.effect_boundary || {};
+    const items = [
+      "Live session sync: " + (effect.live_session_sync || "UNKNOWN"),
+      "Receiver adoption: " + (effect.receiver_adoption || "UNKNOWN"),
+      "External replication: " + (effect.external_replication || "UNKNOWN"),
+      "Live workers started: " + String(effect.live_workers_started ?? "UNKNOWN"),
+      "Source files changed by canary: " + String(effect.source_files_changed ?? "UNKNOWN")
+    ];
+    $("nonclaims").innerHTML = items.map(item => '<div>• ' + safeText(item) + '</div>').join("");
+  }
+
+  function updateProviderStatus() {
+    const value = $("provider").value;
+    const messages = {
+      deterministic: "R0 executes deterministic browser logic only. No model is called.",
+      claude: "Claude is a future adapter target. No Anthropic endpoint, credential, request, or response exists in R0.",
+      open_source: "Open-source/local models are a future adapter target. No Ollama, llama.cpp, vLLM, or other local runtime is called in R0.",
+      openai_compatible: "An OpenAI-compatible adapter is a future target. R0 has no network model call.",
+      historical_replay: "Historical replay is a future experiment lane. R0 does not re-run old prompts or claim equivalence across model generations."
+    };
+    $("providerStatus").textContent = messages[value];
+  }
+
+  async function generateReceipt() {
+    const receipt = {
+      format: "CoAndrewFirstBrowserReceiptR0",
+      prototype_mode: "STATIC_DETERMINISTIC_BROWSER",
+      generated_at_browser_utc: new Date().toISOString(),
+      loaded: {
+        spec_url: SPEC_URL,
+        report_url: REPORT_URL,
+        spec_sha256_browser: await sha256(state.specText),
+        report_sha256_browser: await sha256(state.reportText),
+        report_status: state.report.status,
+        report_observed_at: state.report.observed_at,
+        pinned_source_commit: state.report.source_commit,
+        source_count: state.report.source_count,
+        role_binding_count: state.report.role_binding_count
+      },
+      interaction: {
+        reached_step: state.step,
+        preset_challenge: state.challenge,
+        custom_challenge: $("customChallenge").value.trim() || null,
+        selected_provider_lane: $("provider").value
+      },
+      boundaries: {
+        model_call_performed: false,
+        external_write_performed: false,
+        live_session_sync_tested_here: false,
+        receiver_adoption_proved_here: false,
+        independent_replication_performed_here: false,
+        receipt_scope: "LOCAL_BROWSER_READ_AND_INTERACTION_ONLY"
+      }
+    };
+    $("receipt").textContent = JSON.stringify(receipt, null, 2);
+    $("copyReceipt").disabled = false;
+    $("downloadReceipt").disabled = false;
+    $("receipt").dataset.json = JSON.stringify(receipt, null, 2);
+  }
+
+  async function load() {
+    try {
+      const [specResponse, reportResponse] = await Promise.all([fetch(SPEC_URL), fetch(REPORT_URL)]);
+      if (!specResponse.ok || !reportResponse.ok) throw new Error("Evidence files could not be read.");
+      state.specText = await specResponse.text();
+      state.reportText = await reportResponse.text();
+      state.spec = JSON.parse(state.specText);
+      state.report = JSON.parse(state.reportText);
+
+      if (state.spec.format !== "CoEvidenceBundleCanarySpecR0") throw new Error("Unexpected evidence spec format.");
+      if (state.report.format !== "CoEvidenceBundleCanaryReportR0") throw new Error("Unexpected evidence report format.");
+
+      $("sourceCount").textContent = state.report.source_count;
+      $("bindingCount").textContent = state.report.role_binding_count;
+
+      const layouts = Object.entries(state.report.layouts);
+      layouts.sort((a, b) => a[1].total_file_bytes - b[1].total_file_bytes);
+      $("bestLayout").textContent = layouts[0][0].replaceAll("_", " ");
+
+      const shared = state.report.layouts.shared_paths.total_file_bytes;
+      const copies = state.report.layouts.per_role_copies.total_file_bytes;
+      const saved = ((1 - shared / copies) * 100).toFixed(1);
+      $("resultSentence").innerHTML =
+        '<strong>Measured result:</strong> ordinary shared paths used ' + shared.toLocaleString() +
+        ' bytes versus ' + copies.toLocaleString() + ' for the declared per-role-copy scenario, a ' +
+        saved + '% reduction in this bounded corpus.';
+
+      renderSources();
+      renderBoundary();
+      $("loadState").classList.remove("boundary");
+      $("loadState").classList.add("live");
+      $("loadState").innerHTML =
+        '<strong>Evidence loaded.</strong><div class="muted">Merged canary status: ' +
+        safeText(state.report.status) + '. Browser prototype remains a separate static consumer.</div>';
+    } catch (error) {
+      $("loadState").classList.add("bad");
+      $("loadState").innerHTML =
+        '<strong>HELD:</strong> ' + safeText(error.message) +
+        '<div class="muted">Run from the repository root with an HTTP server, for example: <span class="mono">python -m http.server 8000</span>, then open <span class="mono">/examples/coandrewfirst/</span>.</div>';
+      document.querySelectorAll("button.primary").forEach(button => button.disabled = true);
+    }
+  }
+
+  document.querySelectorAll("[data-next]").forEach(button =>
+    button.addEventListener("click", () => setStep(button.dataset.next))
+  );
+  document.querySelectorAll("[data-challenge]").forEach(button =>
+    button.addEventListener("click", () => challenge(button.dataset.challenge))
+  );
+  $("provider").addEventListener("change", updateProviderStatus);
+  $("makeReceipt").addEventListener("click", generateReceipt);
+  $("copyReceipt").addEventListener("click", async () => {
+    await navigator.clipboard.writeText($("receipt").dataset.json || $("receipt").textContent);
+    $("copyReceipt").textContent = "Copied";
+  });
+  $("downloadReceipt").addEventListener("click", () => {
+    const blob = new Blob([$("receipt").dataset.json || $("receipt").textContent], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "coandrewfirst-browser-receipt-r0.json";
+    a.click();
+    URL.revokeObjectURL(url);
+  });
+
+  updateProviderStatus();
+  load();
+})();
+</script>
+</body>
+</html>
