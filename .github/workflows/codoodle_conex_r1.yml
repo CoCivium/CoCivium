@@ -1,0 +1,69 @@
+name: CoDoodle CoNex R1 finite proof
+
+on:
+  push:
+    paths:
+      - 'examples/codoodle_conex_r1/**'
+      - '.github/workflows/codoodle_conex_r1.yml'
+  pull_request:
+    paths:
+      - 'examples/codoodle_conex_r1/**'
+      - '.github/workflows/codoodle_conex_r1.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: codoodle-conex-r1-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  local-only-shadow:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify exact source donor Git blobs, no network
+        run: python3 examples/codoodle_conex_r1/verify_donors.py --repo-root .
+      - name: Re-run deterministic negative and budget tests
+        run: python3 -m unittest discover -s examples/codoodle_conex_r1 -p 'test_*.py' -v
+      - name: One bounded candidate wave and machine receipt
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 examples/codoodle_conex_r1/CoDoodleNexR1.py \
+            --limit 16 --bench-rounds 1200 \
+            --seed 'CoNex-R1-CI' \
+            --output "$RUNNER_TEMP/conex_receipts"
+      - name: Fail closed if any runtime gate fails or exceeds scope
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PYCODE'
+          import json,os,pathlib
+          root=pathlib.Path(os.environ['RUNNER_TEMP'])/'conex_receipts'
+          runs=list(root.glob('run_*'))
+          assert len(runs)==1, 'one and only one bounded candidate wave'
+          p=runs[0];receipt=json.loads((p/'90_receipt.json').read_text())
+          candidates=json.loads((p/'20_frontier.json').read_text())
+          rows=[json.loads(x) for x in (p/'benchmark_evo.jsonl').read_text().splitlines()]
+          assert receipt['status']=='PASS_SHADOW_LOCAL' and receipt['passes']==receipt['total']
+          assert receipt['actual_workers']==0 and receipt['no_external_effects']
+          assert not receipt['receiver_ack'] and not receipt['CoStead_landed']
+          assert candidates['selected_count'] <= 32 and candidates['considered_sample_count'] <= 128
+          assert len(rows)==3 and rows[0]['status']=='PASS_SHADOW_LOCAL'
+          assert all(r['status']=='HELD' for r in rows[1:])
+          print('PASS_CO_NEX_FINITE_BOUNDARY',receipt['passes'],len(rows),'events')
+          PYCODE
+      - name: Preserve evidence, no repository auto-modification
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: codoodle-conex-r1-${{ github.run_id }}
+          path: ${{ runner.temp }}/conex_receipts/
+          if-no-files-found: warn
+          retention-days: 7
