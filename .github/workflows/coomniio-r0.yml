@@ -1,0 +1,51 @@
+name: CoOmniIO R0 candidate checks
+
+on:
+  pull_request:
+    paths:
+      - "examples/coomniio/**"
+      - ".github/workflows/coomniio-r0.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  queue-source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Check Node source syntax
+        run: node --check examples/coomniio/CoOmniCycleR0.mjs
+      - name: Run bounded synthetic queue tests
+        run: node --test --test-reporter=tap examples/coomniio/CoOmniCycleR0.test.mjs
+      - name: Static PowerShell safety checks (not Windows execution)
+        run: python3 examples/coomniio/audit_static.py
+
+  powershell-parser:
+    runs-on: windows-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - name: Parse candidate Windows scripts without executing them
+        shell: pwsh
+        run: |
+          $files = @(
+            'examples/coomniio/CoOrbIOHotkeyR0.ps1'
+            'examples/coomniio/CoCopyRichPaletteR0.ps1'
+            'examples/coomniio/Setup-CoOrbIO_R0.ps1'
+          )
+          foreach ($file in $files) {
+            $tokens = $null
+            $errors = $null
+            $null = [System.Management.Automation.Language.Parser]::ParseFile((Resolve-Path $file).Path,[ref]$tokens,[ref]$errors)
+            if ($errors.Count -gt 0) {
+              $errors | Format-List | Out-String | Write-Output
+              throw "PowerShell parse failure: $file"
+            }
+          }
+          Write-Output "PASS_POWERSHELL_AST_PARSE_ONLY"
