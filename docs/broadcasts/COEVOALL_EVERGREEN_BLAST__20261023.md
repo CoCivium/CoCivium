@@ -205,3 +205,18 @@ CoT+ / temporal projection should compare source-time, observed-time, valid-time
 A useful default loop is: DOODLE -> PARSE -> TYPE -> EXPAND -> INVERT -> RANDOMLY_PERTURB_WITH_SEED -> DEDUPE -> SCORE -> ELECT -> SIMULATE/RENDER/TEST -> FAN-IN -> VERIFY -> UPDATE_PRIORS -> COMPACT -> SLEEP/WAKE. Every branch requires stop conditions and a bounded materialization budget. Prefer microsecond-scale candidate generation only where it reduces human wall-clock time to a useful discriminating test; throughput itself is not a success metric.
 
 All-diagram evolution remains source-bound and event-driven. Any important CoAll object may project through text, glyphs, diagrams, CoMap, CoOrb, rich media, accessible twins, observer-relative lenses, timelines, code/spec views or experimental renders. The underlying source identity, provenance, epistemic type, authority, privacy, currentness and projection-loss contract remain visible. RENDER_NE_SOURCE, VIVID_NE_TRUE, DAILY_CAPABLE_NE_DAILY_CHURN.
+
+
+## 2026-10-24 | CoUnknownFinder+ / CoCandidateClassifier+ / ET and G_d discovery lanes
+
+Do not optimize for finding ET, G_d, supernatural agency or any other preferred explanation. Prefer a provider-neutral CoUnknownFinder+ that scans qualified public/private-authorized sources for residuals, anomalies, structured unknowns, contradictions, unexplained convergence, novel relations, missing categories and failed predictions. Candidate discovery precedes ontology assignment.
+
+Default path: SOURCE -> OBSERVATION -> RESIDUAL -> ANOMALY_CANDIDATE -> STRUCTURE_CANDIDATE -> AGENCY_CANDIDATE? -> TECHNOLOGY_CANDIDATE? -> INDEPENDENT_ORIGIN_CANDIDATE? -> ET_CANDIDATE? / OTHER. Preserve instrument/analysis artifact, known natural, unknown natural, human technology, selection/base-rate effect and other alternatives throughout.
+
+ET-oriented feeds may draw from authoritative SETI/astrobiology/astronomy sources, peer-reviewed/preprint technosignature literature, observatory releases, biosignature work, interstellar-object campaigns, optical/radio/infrared/planetary/lunar/atmospheric and multimodal search programs. A candidate source is not a verified technosignature. ANOMALY_NE_ET, TECHNOLOGY_CANDIDATE_NE_ET, ET_CANDIDATE_NE_CONTACT, CONTACT_NE_FIRST_FULL_CONTACT.
+
+G_d/spiritual/nonmaterial discovery should not be implemented as a detector of a presumed external entity. Use a typed CoMeaningFinder+/CoInterpretationFinder+ lane that can collect symbolic, phenomenological, spiritual, cultural, experiential and metaphysical interpretations, plus prospective discriminators where testable. Keep empirical, subjective, symbolic and metaphysical evidence classes separate. G_D_FRAME_NE_EXTERNAL_ENTITY, SPIRITUAL_INTERPRETATION_NE_CAUSAL_PROOF, EXPERIENCE_NE_MECHANISM, UNKNOWN_NE_SUPERNATURAL.
+
+Both ET and G_d lanes may share CoDoodleEngine+/CoNex+ candidate-generation, inversion, observer swapping, time projection, counterfactuals, adversarial review, alternative-explanation generation and negative-knowledge retention. They must not share claim-promotion thresholds merely because the same relation grammar is reusable.
+
+Useful finder families include: anomaly finder; contradiction finder; missing-relation finder; prior-art finder; independent-replication finder; counterexample finder; null-result finder; weak-signal finder; cross-modal convergence finder; observer-disagreement finder; stale-currentness finder; provenance-break finder; resource-opportunity finder; accessibility-friction finder; failure-domain finder; human-time-delay finder; unknown-unknown candidate miner; and serendipity finder. Prefer evidence-producing finders over label-producing finders.
