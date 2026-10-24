@@ -1,5 +1,18 @@
 # CoCivium ⊂ Trust Together
 
+## Try CoCivium in five minutes
+
+**The simple idea:** Explore how people and AI tools can work together with clearer evidence, explicit permission, and decisions you can check or undo. You do **not** need to learn our vocabulary first.
+
+- **Try an offline interaction:** [CoPreCursor+ five-minute demo](examples/coprecursor/README.md). Download the example HTML, open it locally, and test **Preview next**, **Accept**, **Reject**, and **Undo** with made-up text. This is a deterministic browser demonstration, not a hosted AI assistant or a live model.
+- **Explore relationships:** [CoOrbWare First Look source](https://github.com/CoCivium/CoAcademy/blob/master/docs/coorb/index.html) presents an experimental visual interface with evidence and unknowns. Repository visibility does not establish that the hosted page or native desktop runtime works.
+- **Bring one actual problem:** [CoCivia First Use R0](docs/Onramp/COCIVIA_FIRST_USE_R0.md) explains a simple one-task intake. It is a **first-use design contract**, not a verified connected service.
+- **Challenge the work:** [Open a technical issue](https://github.com/CoCivium/CoCivium/issues/new) with one claim, its exact source, a counterexample or uncertainty, and a reproducible test. Do not submit private communications, passwords, wallet keys, or other secrets.
+
+**Current status:** Public R&D / pre-launch. The primary website and hosting paths require separate reachability and privacy qualification. Use these versioned GitHub sources for review until that work is complete. A published file is not independent public adoption.
+
+---
+
 > [!IMPORTANT]
 > **Public R&D / pre-launch transition:** CoCivium is moving from mostly private prototyping toward a public demo / pre-launch phase. Repositories, terms, interfaces, and machine-readable projections are being reorganized. Expect **StrawBe+** work-in-progress objects, explicit nonclaims, and superseded prototypes. **Public does not mean validated, finished, endorsed, or release-ready.** See [PRELAUNCH.md](PRELAUNCH.md).
 
