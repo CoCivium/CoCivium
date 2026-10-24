@@ -6,12 +6,17 @@ credential reads, provider calls, background services, or file deletion.
 #>
 param(
     [ValidateSet('UI','Worker','SelfTest')][string]$Mode = 'UI',
-    [string]$RequestFile = ''
+    [string]$RequestFile = '',
+    [string]$CoFarmRoot = ''
 )
 Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
 
-$root = if (Test-Path -LiteralPath 'D:\CoCivium\CoFarm' -PathType Container) {
+$root = if ($CoFarmRoot -and (Test-Path -LiteralPath $CoFarmRoot -PathType Container)) {
+    Join-Path $CoFarmRoot 'CoThumbR1'
+} elseif ($CoFarmRoot) {
+    throw 'HOLD: requested CoFarm test root does not exist.'
+} elseif (Test-Path -LiteralPath 'D:\CoCivium\CoFarm' -PathType Container) {
     'D:\CoCivium\CoFarm\CoThumbR1'
 } elseif (Test-Path -LiteralPath 'C:\CoCivium\CoFarm' -PathType Container) {
     'C:\CoCivium\CoFarm\CoThumbR1'
@@ -311,7 +316,7 @@ $submit.Add_Click({
     Save-NewJson $requestPath $request
     $script:lastRun=$run
     $folderButton.Enabled=$true
-    $script:activeJob=Start-Job -ScriptBlock { param($file,$r) & $file -Mode Worker -RequestFile $r } -ArgumentList $script:scriptFile,$requestPath
+    $script:activeJob=Start-Job -ScriptBlock { param($file,$r,$cf) & $file -Mode Worker -RequestFile $r -CoFarmRoot $cf } -ArgumentList $script:scriptFile,$requestPath,(Split-Path $root -Parent)
     $status.Text="Processing selected files locally in a bounded worker. Work ID: $(Split-Path $run -Leaf)"
 })
 $folderButton.Add_Click({
