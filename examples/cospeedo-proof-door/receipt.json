@@ -1,0 +1,131 @@
+{
+  "schema": "CoSpeedo.PublicProofDoor.LocalSmoke.R0",
+  "date": "2026-10-24",
+  "status": "PASS",
+  "passed": 26,
+  "failed": 0,
+  "checks": [
+    {
+      "test": "machine brief schema qualified",
+      "status": "PASS"
+    },
+    {
+      "test": "exact embedded brief equals machine twin",
+      "status": "PASS"
+    },
+    {
+      "test": "static HTML valid JS parse",
+      "status": "PASS"
+    },
+    {
+      "test": "single offline CSP closes network",
+      "status": "PASS"
+    },
+    {
+      "test": "no external active network mechanism",
+      "status": "PASS"
+    },
+    {
+      "test": "no persistent storage or background timers",
+      "status": "PASS"
+    },
+    {
+      "test": "no system exec or injected input",
+      "status": "PASS"
+    },
+    {
+      "test": "center gold moustache has accessible role and label",
+      "status": "PASS"
+    },
+    {
+      "test": "reader-readable headline and one explicit next deed",
+      "status": "PASS"
+    },
+    {
+      "test": "keyboard accessible button controls",
+      "status": "PASS"
+    },
+    {
+      "test": "reduced motion and mobile single column",
+      "status": "PASS"
+    },
+    {
+      "test": "only two explicit interactions and no auto send",
+      "status": "PASS"
+    },
+    {
+      "test": "public source list uses pinned snapshot identities",
+      "status": "PASS"
+    },
+    {
+      "test": "current X2 receiver stays HELD",
+      "status": "PASS"
+    },
+    {
+      "test": "recipient side Gmail test not laundered",
+      "status": "PASS"
+    },
+    {
+      "test": "thumb gesture is not OS remapping",
+      "status": "PASS"
+    },
+    {
+      "test": "all receiver statuses explicitly false",
+      "status": "PASS"
+    },
+    {
+      "test": "no background workers or messages",
+      "status": "PASS"
+    },
+    {
+      "test": "no private snapshot, email or credentials bundled",
+      "status": "PASS"
+    },
+    {
+      "test": "public capsule is non-authorizing",
+      "status": "PASS"
+    },
+    {
+      "test": "false remote ACK rejected",
+      "status": "PASS"
+    },
+    {
+      "test": "private path injection rejected",
+      "status": "PASS"
+    },
+    {
+      "test": "duplicated source pointer rejected",
+      "status": "PASS"
+    },
+    {
+      "test": "unsanctioned outbound effects rejected",
+      "status": "PASS"
+    },
+    {
+      "test": "reader-surface and model work IDs aligned",
+      "status": "PASS"
+    },
+    {
+      "test": "no false pass for media human visual acceptance",
+      "status": "PASS"
+    }
+  ],
+  "sha256": {
+    "brief": "d7e44e63ab3508f8cb2a50c3c5e012c023c75b37ab57fedb4dbb324125d25c7b",
+    "html": "c478dbb1e5d6bc23b892bd8fd73e141489567e2dfe29a4153688806853c76fea",
+    "test": "6bbc880c92c66eda9e9c76b7378dd447e5de06e15209d61bbf3dfb1e64f11f31",
+    "validator": "4387aadc52a73d1504010c5c67f9c516e6aa938129bb79348d70fb9cabd35261"
+  },
+  "local_environment": "CONTAINER_BOUNDED_SMOKE",
+  "x2_receiver_ack": false,
+  "public_release": false,
+  "nonclaims": [
+    "LOCAL_IS_NOT_LANDED",
+    "VALIDATION_IS_NOT_ACCEPTANCE",
+    "NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF",
+    "NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE",
+    "HASHING_IS_NOT_SEMANTIC_INGESTION",
+    "DISCOVERED_SET_IS_NOT_COMPLETE_HISTORY",
+    "TEST_NE_HUMAN_ACCEPTANCE"
+  ]
+}
