@@ -1,0 +1,38 @@
+"use strict";
+const fs=require("node:fs"),path=require("node:path"),assert=require("node:assert/strict"),crypto=require("node:crypto"),vm=require("node:vm");
+const {qualify}=require("./validate.cjs");
+const p=__dirname,b=JSON.parse(fs.readFileSync(path.join(p,"brief.json"),"utf8")),h=fs.readFileSync(path.join(p,"index.html"),"utf8"),checks=[];
+function test(name,action){try{action();checks.push({test:name,status:"PASS"})}catch(e){checks.push({test:name,status:"FAIL",error:e.message})}}
+const sh=x=>crypto.createHash("sha256").update(fs.readFileSync(path.join(p,x))).digest("hex");
+test("machine brief schema qualified",()=>assert.ok(qualify(b)));
+test("exact embedded brief equals machine twin",()=>{
+ const embedded=h.match(/<script id="brief-data" type="application\/json">([\s\S]*?)<\/script>/);
+ assert.ok(embedded);assert.deepEqual(JSON.parse(embedded[1]),b);
+});
+test("static HTML valid JS parse",()=>{const m=h.match(/<script>\n([\s\S]*?)<\/script>/);assert.ok(m);new vm.Script(m[1])});
+test("single offline CSP closes network",()=>assert.ok(h.includes("connect-src 'none'")));
+test("no external active network mechanism",()=>assert.ok(!/\bfetch\s*\(|XMLHttpRequest|WebSocket|sendBeacon|EventSource|import\s*\(/.test(h)));
+test("no persistent storage or background timers",()=>assert.ok(!/localStorage|sessionStorage|indexedDB|setInterval\s*\(|setTimeout\s*\(/.test(h)));
+test("no system exec or injected input",()=>assert.ok(!/WScript|ActiveXObject|child_process|powershell|regedit|schtasks|keybd_event/i.test(h)));
+test("center gold moustache has accessible role and label",()=>assert.match(h,/<svg class="moustache"[^>]*role="img" aria-label=/));
+test("reader-readable headline and one explicit next deed",()=>{assert.ok(h.includes('id="headline"'));assert.ok(h.includes('id="next"'))});
+test("keyboard accessible button controls",()=>{assert.match(h,/<button type="button" id="copy"/);assert.match(h,/<button type="button" id="details" aria-expanded="false"/) });
+test("reduced motion and mobile single column",()=>{assert.ok(h.includes("prefers-reduced-motion:reduce"));assert.ok(h.includes(".grid{grid-template-columns:1fr}"))});
+test("only two explicit interactions and no auto send",()=>{const m=h.match(/\.addEventListener\("click"/g)||[];assert.equal(m.length,2)});
+test("public source list uses pinned snapshot identities",()=>{assert.equal(b.source_refs.length,6);b.source_refs.forEach(s=>assert.match(s.blob_sha1_at_observation,/^[a-f0-9]{40}$/))});
+test("current X2 receiver stays HELD",()=>assert.ok(b.gates.some(g=>g.name.includes("Current X2")&&g.status==="HELD")));
+test("recipient side Gmail test not laundered",()=>assert.ok(b.gates.some(g=>g.name.includes("Primary")&&g.status==="HELD")));
+test("thumb gesture is not OS remapping",()=>assert.ok(b.gates.some(g=>g.name.includes("middle/thumb")&&g.status==="HELD")));
+test("all receiver statuses explicitly false",()=>assert.deepEqual(Object.values(b.receiver_state),[false,false,false,false,false]));
+test("no background workers or messages",()=>assert.deepEqual([b.scaling.actual_workers,b.scaling.background_processes,b.scaling.external_messages_sent],[0,0,0]));
+test("no private snapshot, email or credentials bundled",()=>assert.ok(qualify(b)));
+test("public capsule is non-authorizing",()=>{let source=b.source_refs[0];let c={schema:"CoQuanta.PublicProofPointer.R0",identity:b.identity,source_path:source.path,source_blob_sha1:source.blob_sha1_at_observation,evidence_state:"PUBLIC_GITHUB_READBACK",currentness:b.observed_date_utc,receiver_ack:false,authority:"NONE",external_effects:0,next_proof:b.next_safe_action};assert.equal(c.external_effects,0);assert.equal(c.receiver_ack,false);assert.equal(c.authority,"NONE")});
+test("false remote ACK rejected",()=>{const tampered=structuredClone(b);tampered.receiver_state.ack=true;assert.throws(()=>qualify(tampered))});
+test("private path injection rejected",()=>{const tampered=structuredClone(b);tampered.source_refs[1].path="D:\\secret\\file";assert.throws(()=>qualify(tampered))});
+test("duplicated source pointer rejected",()=>{const tampered=structuredClone(b);tampered.source_refs[1].path=tampered.source_refs[0].path;assert.throws(()=>qualify(tampered))});
+test("unsanctioned outbound effects rejected",()=>{const tampered=structuredClone(b);tampered.scaling.external_messages_sent=1;assert.throws(()=>qualify(tampered))});
+test("reader-surface and model work IDs aligned",()=>assert.ok(h.includes(b.identity)));
+test("no false pass for media human visual acceptance",()=>assert.ok(b.gates.some(g=>g.name.includes("Media human")&&g.status==="HELD")));
+const passed=checks.filter(x=>x.status==="PASS").length,failed=checks.length-passed;
+const summary={schema:"CoSpeedo.PublicProofDoor.LocalSmoke.R0",date:"2026-10-24",status:failed?"FAIL":"PASS",passed,failed,checks,sha256:{brief:sh("brief.json"),html:sh("index.html"),test:sh("smoke.cjs"),validator:sh("validate.cjs")},local_environment:"CONTAINER_BOUNDED_SMOKE",x2_receiver_ack:false,public_release:false,nonclaims:["LOCAL_IS_NOT_LANDED","VALIDATION_IS_NOT_ACCEPTANCE","NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF","NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE","HASHING_IS_NOT_SEMANTIC_INGESTION","DISCOVERED_SET_IS_NOT_COMPLETE_HISTORY","TEST_NE_HUMAN_ACCEPTANCE"]};
+console.log(JSON.stringify(summary,null,2));if(failed)process.exitCode=2;
