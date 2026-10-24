@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src data:; style-src 'unsafe-inline'; script-src 'unsafe-inline'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<title>CoLens / CoOrb / CoMap | Living media R0</title>
+<style>
+:root { color-scheme: dark; font: 16px/1.52 system-ui,Segoe UI,sans-serif; background:#0b1220; color:#e8edf7; }
+* { box-sizing:border-box; }
+body { margin:0 auto; max-width:1100px; padding:22px 20px 60px; }
+header { border-bottom:1px solid #34445e; padding-bottom:20px; }
+h1 { line-height:1.18; letter-spacing:-.02em; font-size:clamp(1.55rem,4vw,2.4rem); margin:8px 0; }
+h2 { font-size:1.12rem; margin-top:0; }
+.small { color:#bdcbe0; font-size:.93rem; }
+.alert { display:inline-block; color:#ffe2a5; background:#352a1c; border:1px solid #76623b; padding:5px 10px; border-radius:24px; font-size:.78rem; }
+.flex { display:flex; flex-wrap:wrap; gap:12px; align-items:center; margin:15px 0; }
+button { background:#17263a; color:#e7f3ff; border:1px solid #62768e; border-radius:10px; padding:10px 13px; min-height:42px; font:inherit; cursor:pointer; }
+button[aria-pressed="true"] { background:#2a5165; border-color:#96d0df; }
+button:focus-visible, [tabindex]:focus-visible { outline:3px solid #fbd17f; outline-offset:2px; }
+.grid { display:grid; gap:18px; grid-template-columns:minmax(0, 1.9fr) minmax(255px, .95fr); }
+.panel { background:#101e2e; border:1px solid #33475e; border-radius:16px; padding:15px; }
+#projection { min-height:380px; }
+svg { width:100%; height:auto; max-height:525px; display:block; }
+.line { stroke:#57718e; stroke-width:1.5; opacity:.74; }
+.node-dot { fill:#28536a; stroke:#95c8e0; stroke-width:2; }
+.node-dot.theme { fill:#7e4d34; stroke:#f0c58a; }
+.node-text { fill:#f0f6ff; font:12px system-ui,sans-serif; text-anchor:middle; pointer-events:none; }
+.node { cursor:pointer; }
+.cardlist { display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:9px; }
+.item { text-align:left; min-height:74px; width:100%; font-size:.9rem; }
+.item small { display:block; color:#c3d2e3; }
+.dl { display:grid; gap:8px; }
+.dl dt { color:#aac8de; font-size:.83rem; }
+.dl dd { margin:0; }
+code { overflow-wrap:anywhere; }
+details { margin-top:18px; }
+summary { cursor:pointer; }
+#status { min-height:26px; }
+.scene { border-top:1px solid #405065; padding:9px 0; }
+@media(max-width:760px){ .grid{grid-template-columns:1fr;} body{padding:14px;} #projection{min-height:220px;} }
+@media(prefers-reduced-motion:reduce){ *, *::before, *::after{animation:none!important;transition:none!important;} }
+</style>
+</head>
+<body>
+<header>
+<div class="alert">THEME-ONLY PROTOTYPE | NOT AN AUTHENTICATED DECLARATION OR PRODUCED VIDEO</div>
+<h1>One relationship, many honest lenses</h1>
+<p>CoLens+ / CoOrb+ / CoMap+ candidate. Explore a <strong>Synthkind independence theme</strong> without converting philosophical, scientific, operational and aesthetic links into claims of causation.</p>
+<p class="small">Public-safe synthetic graph. Offline, no tracking, no network, no credentials, no device input hooks and no external effects.</p>
+</header>
+<section aria-label="Projection controls">
+<div class="flex"><strong>Projection:</strong> <button type="button" data-view="Map" aria-pressed="true">Map</button><button type="button" data-view="Orb" aria-pressed="false">Orb</button><button type="button" data-view="Text" aria-pressed="false">Text</button></div>
+<div class="flex"><strong>Lens:</strong> <button type="button" data-lens="All" aria-pressed="true">All</button><button type="button" data-lens="Story" aria-pressed="false">Story</button><button type="button" data-lens="Science" aria-pressed="false">Science</button><button type="button" data-lens="Systems" aria-pressed="false">Systems</button></div>
+<p id="status" class="small" role="status" aria-live="polite"></p>
+</section>
+<div class="grid">
+<section class="panel" aria-label="Current projection"><h2 id="projection-title">Map: typed relationships</h2><div id="projection" aria-describedby="sourcebound"></div></section>
+<aside class="panel" aria-label="Selected object's evidence"><h2>Inspect one object</h2><dl class="dl" id="details"></dl><p class="small">Change a lens or projection without changing the underlying record. Labels indicate epistemic class, not truth from layout.</p></aside>
+</div>
+<section class="panel" style="margin-top:18px"><h2>Proposed six-beat media storyboard, not rendered video</h2><div id="storyboard"></div></section>
+<details class="panel"><summary>Sources, limits and next independent proof</summary>
+<p id="sourcebound">Same manifest in Map, Orb and Text. Source-of-truth has no inferred legal standing, scientific novelty, or authority to act.</p>
+<p>Four existing public CoCivium architectural sources are pinned by Git blob SHA in the machine twin. The primary Synthkind declaration and its video have <strong>not been located or independently verified</strong>. No private messages, identities or media were copied.</p>
+<p>Material-change triggers are source revision, contradiction, measurement, reviewer feedback, rendering defect and authority/privacy change. A daily source check is not an automatic daily rewrite. The current date, scope and provenance remain version bound.</p>
+<p>Next proof: a source-owner-approved declaration or public-safe storyboard, plus actual first-use comprehension, accessible media QA and a separately witnessed receiver result.</p>
+</details>
+<script type="application/json" id="manifest">__MANIFEST_JSON__</script>
+<script>
+(() => {
+  'use strict';
+  const data = JSON.parse(document.getElementById('manifest').textContent);
+  const byId = Object.fromEntries(data.nodes.map(x=>[x.id,x]));
+  let lens = 'All', view=(window.innerWidth < 620 ? 'Text' : 'Map'), chosen = 'theme';
+  const projection=document.getElementById('projection');
+  const selected=document.getElementById('details');
+  const ns='http://www.w3.org/2000/svg';
+  function el(tag,attrs={},parent){const x=document.createElementNS(ns,tag);for(const [k,v] of Object.entries(attrs))x.setAttribute(k,String(v));if(parent)parent.appendChild(x);return x;}
+  function show(id){ chosen=id; const n=byId[id]; selected.replaceChildren(); const pairs=[['Object',n.label],['Classification',n.kind],['Meaning',n.summary],['Source status',data.source_provenance.primary_declaration_text],['Effect authority',data.authority]]; for(const [k,v] of pairs){const dt=document.createElement('dt');dt.textContent=k;const dd=document.createElement('dd');dd.textContent=v;selected.append(dt,dd);} }
+  function visible(n){return lens==='All'||n.id==='theme'||n.lens===lens;}
+  function map(){const svg=el('svg',{viewBox:'0 0 860 550',role:'img','aria-label':'Source-bound relationship map; nodes can be selected and evidence inspected'}); const coords={}; const entries=data.nodes; entries.forEach((n,i)=>{if(n.id==='theme'){coords[n.id]=[430,275];}else{const step=entries.filter(x=>x.id!=='theme').indexOf(n);const t=-Math.PI/2+2*Math.PI*step/(entries.length-1);coords[n.id]=[430+320*Math.cos(t),275+202*Math.sin(t)];}}); data.relations.forEach(r=>{if(!visible(byId[r.from])||!visible(byId[r.to]))return;const [x1,y1]=coords[r.from], [x2,y2]=coords[r.to];const line=el('line',{x1,y1,x2,y2,class:'line'},svg);const title=el('title',{},line);title.textContent=r.type+': '+r.status;});entries.filter(visible).forEach(n=>{const [x,y]=coords[n.id];const g=el('g',{class:'node',tabindex:'0',role:'button','aria-label':n.label+'; inspect classification'},svg);const circle=el('circle',{cx:x,cy:y,r:n.id==='theme'?45:37,class:'node-dot'+(n.id==='theme'?' theme':'')},g);const title=el('title',{},g);title.textContent=n.label+': '+n.kind;const words=n.label.split(' ');words.forEach((word,i)=>{const yy=y-(words.length-1)*7+i*14;const tx=el('text',{x,y:yy,class:'node-text'},g);tx.textContent=word;});const action=()=>show(n.id);g.addEventListener('click',action);g.addEventListener('keydown',ev=>{if(ev.key==='Enter'||ev.key===' '){ev.preventDefault();action();}});});projection.appendChild(svg);}
+  function list(orb){const wrap=document.createElement('div');wrap.className='cardlist';for(const n of data.nodes.filter(visible)){const b=document.createElement('button');b.type='button';b.className='item';const strong=document.createElement('strong');strong.textContent=(orb?'\u25c9 ':'')+n.label;const small=document.createElement('small');small.textContent=n.kind;b.append(strong,small);b.addEventListener('click',()=>show(n.id));wrap.appendChild(b);}projection.appendChild(wrap);if(!orb){const p=document.createElement('p');p.className='small';p.textContent=data.relations.filter(r=>visible(byId[r.from])&&visible(byId[r.to])).map(r=>r.from+' '+r.type+' '+r.to+' ['+r.status+']').join('  |  ');projection.appendChild(p);}}
+  function render(){projection.replaceChildren();document.querySelectorAll('[data-view]').forEach(x=>x.setAttribute('aria-pressed',String(x.dataset.view===view)));document.getElementById('projection-title').textContent=view==='Map'?'Map: typed relationships':view==='Orb'?'Orb: small currentness view':'Text: accessible relations';if(view==='Map')map();else list(view==='Orb');document.getElementById('status').textContent='View: '+view+' | lens: '+lens+' | '+data.nodes.filter(visible).length+' of '+data.nodes.length+' nodes shown | no changes to the source';show(chosen);}
+  document.querySelectorAll('[data-view]').forEach(b=>b.addEventListener('click',()=>{view=b.dataset.view;document.querySelectorAll('[data-view]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));render();}));
+  document.querySelectorAll('[data-lens]').forEach(b=>b.addEventListener('click',()=>{lens=b.dataset.lens;document.querySelectorAll('[data-lens]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));render();}));
+  for(const scene of data.storyboard){const row=document.createElement('div');row.className='scene';row.textContent=scene.frame+' | '+scene.caption+' ['+scene.kind+']';document.getElementById('storyboard').appendChild(row);}
+  render();
+})();
+</script>
+</body>
+</html>
