@@ -1,0 +1,95 @@
+{
+  "schema": "CoCivium.CoThumbRichCapsuleLocalProof.R1",
+  "date": "2026-10-24T16:29:36.144104+00:00",
+  "state": "PASS_LOCAL_SELF_TEST__HELD_PHYSICAL_AND_PROVIDER",
+  "unit_test_result": {
+    "total": 18,
+    "passed": 18,
+    "failed": 0,
+    "exit_code": 0,
+    "elapsed_ms": 1017.89
+  },
+  "media_fixture": {
+    "video_bytes": 1208468,
+    "video_sha256": "52d41a57c1be6e6a9e9145ef8380076a3ff5020ef323c9a8bea571f298b75463",
+    "thumb_bytes": 54177,
+    "thumb_sha256": "cf537fe5cd6411dff168de629b6f2251f34848e474647881aef168783279478e",
+    "thumb_size": [
+      640,
+      360
+    ],
+    "ffprobe_duration": 4.0,
+    "ffprobe_codecs": [
+      [
+        "video",
+        "h264"
+      ],
+      [
+        "audio",
+        "aac"
+      ]
+    ],
+    "blackdetect_unexpected_intervals": 0,
+    "blackdetect_parameters": "d=0.2 pix_th=0.10 pic_th=0.98",
+    "source": "synthetic ffmpeg testsrc2 + sine, no personal media, not a general media QA claim"
+  },
+  "demo_capture": {
+    "bytes": 1262645,
+    "capsule_id": "cothumb-20261024T162838Z-7ec7afeae73a",
+    "capsule_path": "qa/demo-capsules/cothumb-20261024T162838Z-7ec7afeae73a",
+    "objects": 2,
+    "receiver": "NONE",
+    "sha256": "77cdc3c4de8c7df9a4cef5ce15cf80b6fad8f9af86b43181abd8a6a1e956288e",
+    "status": "LOCAL_CREATED"
+  },
+  "demo_verify": {
+    "at": "2026-10-24T16:28:39.822406+00:00",
+    "capsule_id": "cothumb-20261024T162838Z-7ec7afeae73a",
+    "checks": [
+      {
+        "findings": [],
+        "status": "PASS",
+        "worker": "schema_and_privacy"
+      },
+      {
+        "findings": [],
+        "status": "PASS",
+        "worker": "content_hashes"
+      },
+      {
+        "findings": [],
+        "status": "PASS",
+        "worker": "authority_and_receiver"
+      }
+    ],
+    "evidence_scope": "This host, these bytes; no network/provider/device test",
+    "external_effects": 0,
+    "independent_provider_reproductions": 0,
+    "logical_checks": 3,
+    "max_worker_threads": 3,
+    "receiver_readproof": "NONE",
+    "schema": "CoMx.LocalRichCapsuleReceipt.R1-CANDIDATE",
+    "state": "PASS_LOCAL_CHECKS"
+  },
+  "runtime": {
+    "python": "3.13.5",
+    "system": "Linux",
+    "processor": "x86_64"
+  },
+  "source_hashes": {
+    "cothumb.py": "d943b718ba29715797288fc19a021efbeff16d7ca177d4eb0801ebfa474b0228",
+    "CoThumb-KeyboardFallback.ahk": "3e46912d798a9f0531391e0dc1ecde6650c9ce6e4b6d83d411f2df16065ddc0f",
+    "CoInputEvent-R1.schema.json": "914b102ef4a9b289bb8bd0efdf872a42ba3dac8f6a680f6ccb17381d9c228bfa",
+    "device-adapters.json": "f9e055f1df97b94fbe5b3987172059ed803945ba8aa8701fbeb93f47c39fad89",
+    "tests/test_cothumb.py": "39b55ef9db6aa9f52b5414e6f0ff8f6e9d2273d66ef09c77cf52a8d65d3370eb"
+  },
+  "limitations": [
+    "No X2 device reachability",
+    "No AutoHotkey/Logitech executed",
+    "No native Windows PowerShell script inspected",
+    "No real external model/provider calls",
+    "No human accessibility/first-use acceptance",
+    "No off-provider CoStead custody",
+    "No broadcast or receiver ACK"
+  ]
+}
