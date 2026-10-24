@@ -1,0 +1,37 @@
+{
+  "schema": "CoNex.LocalSyntheticBenchmark.R0",
+  "scope": "ISOLATED_CONTAINER_NOT_X2_NOT_PROVIDER_NOT_RUNTIME_SERVICE",
+  "environment": {
+    "python": "3.13.5",
+    "os": "Linux",
+    "arch": "x86_64"
+  },
+  "base_fixture_bytes": 923,
+  "parent_candidates": 8,
+  "sample_seed_u64": 20261024,
+  "sample_fanout": 3,
+  "sample_max_total": 16,
+  "sample_emitted": 16,
+  "source_sha256": "87109afb124bed9aabc65bd58d62db2ea941fab187e37da6c2ec8e6e5a223de3",
+  "results": {
+    "default_fanout2_max12": {
+      "iterations": 1000,
+      "median_us": 86.105,
+      "p95_us": 155.505,
+      "p99_us": 253.742
+    },
+    "fanout3_max24": {
+      "iterations": 1000,
+      "median_us": 168.655,
+      "p95_us": 322.246,
+      "p99_us": 453.574
+    }
+  },
+  "nonclaims": [
+    "MICROSECOND_BRANCH_SELECTION_NE_MICROSECOND_REASONING",
+    "SOURCE_CATALOG_NE_DATA_INGESTION",
+    "SELECTOR_DESCRIPTOR_NE_EXECUTED_EXPERIMENT",
+    "NO_AUTONOMOUS_KEYBOARD_OR_ACCOUNT_CONTROL",
+    "LOCAL_TIMING_NE_X2_TIMING"
+  ]
+}
