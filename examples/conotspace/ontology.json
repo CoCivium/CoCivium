@@ -1,0 +1,177 @@
+{
+  "schema": "CoNotSpace.OpenWorldDemo.R0",
+  "source_id": "CoNotSpace.20261024.PublicSynthetic.v0",
+  "authority": "NONE",
+  "privacy": "PUBLIC_SYNTHETIC",
+  "logical_horizon": "OPEN_ENDED",
+  "materialized_workers": 0,
+  "statuses": [
+    "UNKNOWN",
+    "UNOBSERVED",
+    "OBSERVED_ABSENT",
+    "EXPECTED_MISSING",
+    "NOT_YET",
+    "HYPOTHETICAL",
+    "CONTRADICTED",
+    "INAPPLICABLE",
+    "FORBIDDEN",
+    "WITHHELD",
+    "RETIRED",
+    "IRRECOVERABLE",
+    "LOGICALLY_IMPOSSIBLE"
+  ],
+  "examples": [
+    {
+      "id": "receiver",
+      "state": "UNKNOWN",
+      "short": "Receiver acknowledgment",
+      "claim": "No receiver ACK is shown in this record.",
+      "allowed": "Receipt state is unknown in the inspected record.",
+      "blocked": "Therefore nobody received it, nobody read it, or nobody will.",
+      "evidence": "One selected publication record; no receiver-origin readproof bound.",
+      "true_evidence": false,
+      "false_evidence": false
+    },
+    {
+      "id": "not_seen",
+      "state": "UNOBSERVED",
+      "short": "Search did not observe",
+      "claim": "A bounded search did not show this page.",
+      "allowed": "The chosen query did not return it at this observation time.",
+      "blocked": "Therefore the page does not exist anywhere or is being suppressed.",
+      "evidence": "Search terms and coverage would need an independent dated record.",
+      "true_evidence": false,
+      "false_evidence": false
+    },
+    {
+      "id": "absent",
+      "state": "OBSERVED_ABSENT",
+      "short": "Empty test queue",
+      "claim": "No task was present in a fully enumerated test queue.",
+      "allowed": "No task was present within the sampled queue scope at the specified observation.",
+      "blocked": "Therefore no tasks exist globally, before or after the sample.",
+      "evidence": "Synthetic queue Q-demo, explicit finite coverage=complete, one dated inspection, method=list-all.",
+      "scope": "Q-demo finite queue",
+      "observed_at": "2026-10-24T00:00:00Z",
+      "method": "list-all",
+      "coverage_complete": true,
+      "source_ref": "synthetic:test-queue:001",
+      "true_evidence": false,
+      "false_evidence": true
+    },
+    {
+      "id": "missing",
+      "state": "EXPECTED_MISSING",
+      "short": "Expected file missing",
+      "claim": "An expected manifest was not found.",
+      "allowed": "The expected path was missing from the verified bounded inventory.",
+      "blocked": "Therefore the manifest was never created or was intentionally hidden.",
+      "evidence": "Synthetic expected-file manifest and observed local path scan.",
+      "true_evidence": false,
+      "false_evidence": false
+    },
+    {
+      "id": "notyet",
+      "state": "NOT_YET",
+      "short": "Not yet running",
+      "claim": "Native CoOrbWare runtime has not been established.",
+      "allowed": "This is a candidate not qualified as an installed native runtime.",
+      "blocked": "Therefore it cannot exist later, or a JSON projection is a running OS.",
+      "evidence": "Source-linked public prototype plus explicit runtime-held field.",
+      "true_evidence": false,
+      "false_evidence": false
+    },
+    {
+      "id": "hypothesis",
+      "state": "HYPOTHETICAL",
+      "short": "A future substrate",
+      "claim": "A proposed future substrate might render more dimensions.",
+      "allowed": "An idea is available for testable evaluation.",
+      "blocked": "Therefore the substrate exists or has exotic physical properties.",
+      "evidence": "Explicitly hypothetical example; no device, physics measurement or provider acceptance.",
+      "true_evidence": false,
+      "false_evidence": false
+    },
+    {
+      "id": "contradiction",
+      "state": "CONTRADICTED",
+      "short": "Conflicting witnesses",
+      "claim": "Two explicitly supplied witnesses disagree about one claim.",
+      "allowed": "The evidence contains both support and opposition; preserve the conflict.",
+      "blocked": "Choose either side as settled, or infer any unrelated conclusion.",
+      "evidence": "Synthetic witness A supports, synthetic witness B opposes the same scoped claim.",
+      "true_evidence": true,
+      "false_evidence": true
+    },
+    {
+      "id": "inapplicable",
+      "state": "INAPPLICABLE",
+      "short": "Wrong category",
+      "claim": "What is the colour of a virtual session ID?",
+      "allowed": "Colour is not a defined property of an identifier under this model.",
+      "blocked": "Its colour is hidden, absent, or forbidden.",
+      "evidence": "Schema defines IDs as opaque strings; appearance belongs to a renderer.",
+      "true_evidence": false,
+      "false_evidence": false
+    },
+    {
+      "id": "forbidden",
+      "state": "FORBIDDEN",
+      "short": "Not authorized",
+      "claim": "A candidate worker does not have permission to send emails.",
+      "allowed": "The authority envelope excludes outbound sending.",
+      "blocked": "Email delivery is physically impossible or everyone rejected the message.",
+      "evidence": "Synthetic read-only authority envelope; no send adapter granted.",
+      "true_evidence": false,
+      "false_evidence": false
+    },
+    {
+      "id": "withheld",
+      "state": "WITHHELD",
+      "short": "Private evidence",
+      "claim": "An object is not shown on this public surface.",
+      "allowed": "The public view withholds information under a privacy rule.",
+      "blocked": "No object exists, or the private contents can be inferred from a placeholder.",
+      "evidence": "Privacy class is restricted; original content deliberately absent from this demo.",
+      "true_evidence": false,
+      "false_evidence": false
+    },
+    {
+      "id": "retired",
+      "state": "RETIRED",
+      "short": "Retired worker",
+      "claim": "A retired task identity has no automatic wake authority.",
+      "allowed": "A historical task may be preserved while effect permission remains ended.",
+      "blocked": "Lower pressure automatically reauthorizes it.",
+      "evidence": "Synthetic retirement declaration and no reactivation grant.",
+      "true_evidence": false,
+      "false_evidence": false
+    },
+    {
+      "id": "irrecoverable",
+      "state": "IRRECOVERABLE",
+      "short": "Unrecoverable source",
+      "claim": "An exact source is not recoverable from the documented backups.",
+      "allowed": "The stated recovery method cannot restore it within the tested boundary.",
+      "blocked": "It is metaphysically impossible for any other copy to exist.",
+      "evidence": "Synthetic lost-file scenario with explicitly bounded backup coverage.",
+      "true_evidence": false,
+      "false_evidence": false
+    },
+    {
+      "id": "impossible",
+      "state": "LOGICALLY_IMPOSSIBLE",
+      "short": "Contradiction under axioms",
+      "claim": "A single integer is both even and odd under standard parity definitions.",
+      "allowed": "This conjunction is inconsistent under the declared integer/parity axioms.",
+      "blocked": "Every speculative physical or metaphysical possibility is disproven.",
+      "evidence": "Declared definitions of integer, even, odd and elementary derivation, not an empirical universal.",
+      "assumptions": [
+        "standard integer parity"
+      ],
+      "derivation_ref": "synthetic:parity-derivation",
+      "true_evidence": false,
+      "false_evidence": true
+    }
+  ]
+}
