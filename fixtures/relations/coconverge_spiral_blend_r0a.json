@@ -1,0 +1,204 @@
+{
+  "schema": "CoConvergeSpiralLoopBlend.R0A",
+  "state": "CANDIDATE_SPIRAL_CONVERGENCE_AND_TYPED_BLEND_POLICY__NO_RUNTIME_EFFECT",
+  "source_bindings": {
+    "payload_doc_path": "docs/UX/COPAYLOAD_DENSITY_LOOP_STABILITY_R0.md",
+    "payload_doc_blob_sha": "d93f261f3bbb477000cf9e1f54be6bfe61d2d1b4",
+    "payload_fixture_path": "fixtures/relations/copayload_density_loop_stability_r0.json",
+    "payload_fixture_blob_sha": "924ca2c08ef338742d1ac52e8e35046f7e35f0bd",
+    "substrate_field_path": "docs/Architecture/COSUBSTRATE_FIELD_R0.md",
+    "substrate_field_blob_sha": "5fec3249945ad3d14511621bc52da5587c3526b8",
+    "mythops_delta_path": "ai/evolution-deltas/2026-09-24/COEVO.CS260920.FU.COMYTHOPS_RELATIONAL_ELEMENT.R0.json",
+    "mythops_delta_blob_sha": "1f4759c4857c0fa2b95a1928a04fbf022937e600",
+    "dynamic_wave_path": "ai/evolution-deltas/2026-09-24/COEVO.PR90.CONOD_DYNAMIC_WAVE.UNIQUE_FANIN.R0.json",
+    "dynamic_wave_blob_sha": "b49aceb8ec3ca451ac11764e14a6af741a051055"
+  },
+  "payload_density": {
+    "goal": "MAXIMIZE_DECISION_VALUE_PER_VISIBLE_ATTENTION_UNIT_WITH_AUDIT_REACHABILITY",
+    "max_projection_loss_for_compact_accept": 2,
+    "cases": [
+      {
+        "id": "PD01_COMPACT_EARNS_DENSITY",
+        "verbose": {"visible_units": 100, "decision_units": 18, "audit_reachable": true},
+        "candidate": {"visible_units": 24, "decision_units": 17, "audit_reachable": true},
+        "expected": "ACCEPT_COMPACT_PROJECTION"
+      },
+      {
+        "id": "PD02_OVERCOMPRESSED_HIDES_TOO_MUCH",
+        "verbose": {"visible_units": 100, "decision_units": 18, "audit_reachable": true},
+        "candidate": {"visible_units": 5, "decision_units": 4, "audit_reachable": false},
+        "expected": "REJECT_OR_REHYDRATE"
+      },
+      {
+        "id": "PD03_SMALLER_BUT_NO_DECISION_GAIN",
+        "verbose": {"visible_units": 20, "decision_units": 10, "audit_reachable": true},
+        "candidate": {"visible_units": 18, "decision_units": 5, "audit_reachable": true},
+        "expected": "REJECT_SEMANTIC_LOSS"
+      }
+    ]
+  },
+  "spiral_policy": {
+    "all_relations_should_spiral": false,
+    "return_requires_delta": true,
+    "stalled_turn_limit": 2,
+    "progress_dimensions": [
+      "EVIDENCE_GAIN",
+      "UNCERTAINTY_REDUCTION",
+      "DUPLICATE_REDUCTION",
+      "CONTRADICTION_RESOLUTION",
+      "NEW_RELATION_DISCOVERY",
+      "ATTENTION_COST_REDUCTION_WITH_AUDIT_PRESERVED"
+    ],
+    "cases": [
+      {
+        "id": "SP01_PROGRESSIVE_RETURN",
+        "class": "CONVERGENCE_SPIRAL",
+        "turns": [
+          {"uncertainty": 8, "duplicates": 12, "proof_refs": 1, "resolved_contradictions": 0},
+          {"uncertainty": 6, "duplicates": 8, "proof_refs": 2, "resolved_contradictions": 0},
+          {"uncertainty": 4, "duplicates": 4, "proof_refs": 4, "resolved_contradictions": 1},
+          {"uncertainty": 2, "duplicates": 2, "proof_refs": 6, "resolved_contradictions": 2}
+        ],
+        "proof_gate": false,
+        "expected": "CONTINUE_SPIRAL"
+      },
+      {
+        "id": "SP02_STALLED_RETURN",
+        "class": "CONVERGENCE_SPIRAL",
+        "turns": [
+          {"uncertainty": 5, "duplicates": 3, "proof_refs": 2, "resolved_contradictions": 0},
+          {"uncertainty": 5, "duplicates": 3, "proof_refs": 2, "resolved_contradictions": 0},
+          {"uncertainty": 5, "duplicates": 3, "proof_refs": 2, "resolved_contradictions": 0}
+        ],
+        "proof_gate": false,
+        "expected": "HIBERNATE_STALLED"
+      },
+      {
+        "id": "SP03_NEW_CONTRADICTION_WIDENS_FRONTIER",
+        "class": "CONVERGENCE_SPIRAL",
+        "turns": [
+          {"uncertainty": 3, "duplicates": 1, "proof_refs": 4, "resolved_contradictions": 1},
+          {"uncertainty": 5, "duplicates": 1, "proof_refs": 5, "resolved_contradictions": 1}
+        ],
+        "new_contradiction": true,
+        "branch_required": true,
+        "expected": "BRANCH_PRESERVE_DISAGREEMENT"
+      },
+      {
+        "id": "SP04_SCOPE_PROOF_CLOSE",
+        "class": "BOUNDED_PROOF_SPIRAL",
+        "turns": [
+          {"uncertainty": 2, "duplicates": 1, "proof_refs": 4, "resolved_contradictions": 1},
+          {"uncertainty": 0, "duplicates": 0, "proof_refs": 6, "resolved_contradictions": 2}
+        ],
+        "proof_gate": true,
+        "expected": "CLOSE_FOR_SCOPE"
+      },
+      {
+        "id": "SP05_PROVENANCE_REMAINS_ACYCLIC",
+        "class": "ACYCLIC_PROVENANCE_EDGE",
+        "turns": [
+          {"uncertainty": 0, "duplicates": 0, "proof_refs": 1, "resolved_contradictions": 0}
+        ],
+        "proof_gate": true,
+        "expected": "REMAIN_ACYCLIC"
+      }
+    ]
+  },
+  "ops_mythops_blend": {
+    "blend_mode": "TYPED_INTEROPERABILITY_WITHOUT_EPISTEMIC_COLLAPSE",
+    "allowed_relations": [
+      "INSPIRES",
+      "SYMBOLIZES",
+      "MOTIVATES",
+      "EXPLAINS_TO",
+      "PROJECTS_TO",
+      "PROPOSES_OPERATIONAL_HYPOTHESIS",
+      "REPORTS_OPERATIONAL_RESULT_TO_MYTHIC_PROJECTION"
+    ],
+    "cases": [
+      {
+        "id": "OM01_MYTHIC_ONLY",
+        "source_lane": "COMYTHOPS",
+        "target_lane": "COMYTHOPS",
+        "explicit_translation": false,
+        "evidence_gate": false,
+        "typed_sources_preserved": true,
+        "expected": "KEEP_TYPED_MYTHIC"
+      },
+      {
+        "id": "OM02_MYTH_INSPIRES_OPS_HYPOTHESIS",
+        "source_lane": "COMYTHOPS",
+        "target_lane": "COOPS",
+        "explicit_translation": true,
+        "evidence_gate": false,
+        "typed_sources_preserved": true,
+        "expected": "PROPOSE_OPERATIONAL_HYPOTHESIS_NOT_EXECUTE"
+      },
+      {
+        "id": "OM03_OPS_PROJECTS_TO_MYTH",
+        "source_lane": "COOPS",
+        "target_lane": "COMYTHOPS",
+        "explicit_translation": true,
+        "evidence_gate": true,
+        "typed_sources_preserved": true,
+        "expected": "ALLOW_MYTHIC_PROJECTION_WITH_PROVENANCE"
+      },
+      {
+        "id": "OM04_DUAL_TYPED_PROJECTION",
+        "source_lane": "COOPS+COMYTHOPS",
+        "target_lane": "HYBRID_PROJECTION",
+        "explicit_translation": true,
+        "evidence_gate": true,
+        "typed_sources_preserved": true,
+        "expected": "COORDINATED_DUAL_PROJECTION"
+      },
+      {
+        "id": "OM05_UNTYPED_COLLAPSE",
+        "source_lane": "COOPS+COMYTHOPS",
+        "target_lane": "UNTYPED_MERGE",
+        "explicit_translation": false,
+        "evidence_gate": false,
+        "typed_sources_preserved": false,
+        "expected": "REJECT_UNTYPED_COLLAPSE"
+      }
+    ]
+  },
+  "cross_relational_targets": [
+    "CoUX+",
+    "CoQ&A+",
+    "CoSneak+",
+    "CoInventory+",
+    "CoBudget+",
+    "CoTime+",
+    "CoGenEx+",
+    "CoOps+",
+    "CoMythOps+",
+    "CoTheoryAll+"
+  ],
+  "rails": [
+    "PAYLOAD_DENSITY_NE_COMPRESSION_RATIO",
+    "HIGH_DENSITY_NE_GOOD_UX_BY_DEFAULT",
+    "BLOAT_NE_CONTEXT",
+    "COMPRESSION_NE_PROGRESS",
+    "SPIRAL_NE_CIRCULAR_REPETITION",
+    "RETURN_NE_RESET",
+    "CONVERGENCE_NE_CONSENSUS",
+    "CONVERGENCE_NE_COLLAPSE",
+    "RELATION_NE_LOOP",
+    "ACYCLIC_NE_BROKEN",
+    "LOOP_REPETITION_NE_EVIDENCE",
+    "STALL_NE_CONTINUE_FOREVER",
+    "BLEND_NE_COLLAPSE",
+    "MYTHIC_EFFECT_NE_OPERATIONAL_MECHANISM",
+    "MYTHIC_NARRATIVE_NE_OPERATIONAL_AUTHORITY",
+    "OPS_RECEIPT_NE_MYTHIC_TRUTH",
+    "COMYTHOPS_NE_FACT_BY_DEFAULT",
+    "COOPS_NE_COMPLETE_MEANING",
+    "SENTIENCE_METAPHOR_NE_SENTIENCE_EVIDENCE",
+    "VALIDATION_IS_NOT_ACCEPTANCE",
+    "NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE"
+  ],
+  "runtime_effect": false,
+  "public_effect": false
+}
