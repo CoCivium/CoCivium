@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; base-uri 'none'; object-src 'none'; connect-src 'none'; img-src 'none'; form-action 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'">
+<title>CoInput+ | Between the gestures</title>
+<meta name="description" content="An offline CoThumb and CoGlyph context lab. Explicit local actions only; no global input capture.">
+<style>
+:root{font-family:system-ui,-apple-system,Segoe UI,sans-serif;color-scheme:dark;background:#0a111d;color:#e8f0f9}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 85% 0%,#223c53 0%,transparent 50%),#0a111d;min-height:100vh}
+a{color:#aedbff}a:focus-visible,button:focus-visible,textarea:focus-visible,input:focus-visible{outline:3px solid #f5d68a;outline-offset:3px}
+.wrap{max-width:1140px;margin:0 auto;padding:22px 18px 64px}header{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap}h1{font-size:clamp(1.9rem,4vw,3.4rem);letter-spacing:-.055em;line-height:1.06;margin:12px 0 8px}h2{font-size:1.15rem;margin:0 0 12px}p{line-height:1.55}p.lead{max-width:670px;color:#b7cbd9;margin:0 0 12px}.eyebrow{font-size:.77rem;letter-spacing:.12em;text-transform:uppercase;font-weight:800;color:#9de0ce}.flag{display:inline-block;border:1px solid #668b91;border-radius:99px;padding:6px 10px;font-size:.75rem;color:#cceedd;font-weight:700}
+.layout{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(290px,.92fr);gap:16px;margin-top:22px}.stack{display:grid;gap:16px}.panel{border:1px solid #3a556b;background:rgba(17,31,48,.92);border-radius:20px;padding:20px;box-shadow:0 12px 40px #0002}.muted,.help{color:#b5c5d4;font-size:.88rem}.tiny{font-size:.75rem}.divider{border:0;border-top:1px solid #405368;margin:16px 0}
+.button,.choice{font:inherit;border:1px solid #6a8699;border-radius:11px;min-height:42px;padding:9px 13px;cursor:pointer;color:#ebf5ff;background:#223d55;transition:background .12s}.button:hover,.choice:hover{background:#335674}.button.primary{background:#b9ddcc;color:#09211d;border-color:#b9ddcc;font-weight:800}.button.ghost{background:transparent}.button:disabled{opacity:.5;cursor:default}.button.danger{border-color:#a97782}.row{display:flex;flex-wrap:wrap;gap:9px;align-items:center}.choices{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.choice{text-align:left;min-height:70px;display:flex;flex-direction:column;justify-content:center;gap:3px}.choice[aria-pressed=true]{background:#225952;border-color:#a5e8d0;box-shadow:inset 0 0 0 1px #a5e8d0}.choice b{font-size:.99rem}.choice small{color:#c4d4df;font-size:.75rem}
+.glyphs{display:flex;gap:8px;flex-wrap:wrap}.glyph{font-size:1.33rem;padding:3px;min-width:47px;height:47px}.glyph[aria-pressed=true]{background:#225952;border:2px solid #a5e8d0}
+textarea{width:100%;resize:vertical;min-height:90px;border:1px solid #648196;border-radius:12px;background:#091724;color:#ebf3f9;font:inherit;padding:12px}.pill{border:1px solid #6c8798;border-radius:10px;padding:4px 8px;font-size:.78rem}.pill.off{color:#d6b6b6;border-color:#967476}.pill.on{color:#a6e4cb;border-color:#549b88}
+.center{text-align:center}.orb{width:min(250px,73vw);height:min(250px,73vw);aspect-ratio:1;margin:4px auto 16px;border-radius:50%;border:1px solid #76bdc0;background:radial-gradient(circle at 35% 29%,#b8e3c9 0%,#4b918b 12%,#265c72 31%,#132e56 63%,#101d31 72%);box-shadow:inset 0 0 25px #caf5d332,0 0 45px #63c6bc2b;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:8px}.orb .sig{font-size:3.4rem;font-weight:750;line-height:1;color:#f5fcff}.orb .cap{font-size:.73rem;letter-spacing:.14em;text-transform:uppercase;color:#ecfbff}.orb:before,.orb:after{content:"";width:42px;height:1px;background:#e1f6f38c}.path{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:9px;color:#cbdfeb;font-size:.82rem}.path span{padding:5px 9px;border:1px solid #4a687e;border-radius:99px}
+.answer{border-left:3px solid #95dac2;padding:2px 0 3px 13px;min-height:65px}.answer strong{display:block;margin-bottom:4px}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#081420;border:1px solid #345063;border-radius:12px;padding:12px;max-height:215px;overflow:auto;font-size:.78rem;color:#c9e4ea}
+.checkline{display:flex;align-items:flex-start;gap:10px;margin:12px 0;font-size:.86rem}.checkline input{margin-top:3px;accent-color:#a6e4cb}.statgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin:10px 0}.stat{border:1px solid #3d6470;padding:10px;border-radius:10px;text-align:center}.stat b{display:block;font-size:1.36rem}.stat small{color:#bbcdd9}
+footer{margin-top:20px;font-size:.79rem;color:#abc2d3;border-top:1px solid #354e62;padding-top:14px}
+@media(max-width:790px){.layout{grid-template-columns:1fr}.wrap{padding:18px 13px 40px}.panel{padding:15px}.orb{width:180px;height:180px}.choice{min-height:61px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+<div>
+<div class="eyebrow">EVO ALL BETTERS+ / CoNod+ / CoInput shadow canary</div>
+<h1>Between the gestures <span aria-hidden="true">&harr;</span></h1>
+<p class="lead">One context. One candidate. One visible choice. The gaps between events can suggest a question, but cannot consent, predict a mind, or approve an effect.</p>
+</div>
+<div class="flag">Offline &middot; browser-scoped &middot; no send</div>
+</header>
+<div class="layout">
+<div class="stack">
+<section class="panel" aria-labelledby="zones-head">
+<h2 id="zones-head">1. Choose a demo context</h2>
+<p class="help">Click a region below to preview a context. These are intentionally labelled demo regions, not a scan of other applications or your screen.</p>
+<div class="choices" id="zones">
+<button class="choice" data-zone="writing" aria-pressed="true"><b>CoIn+ / Writing</b><small>Local editor and priors</small></button>
+<button class="choice" data-zone="relations" aria-pressed="false"><b>CoMap+ / Relations</b><small>Edges, counterclaims, unknowns</small></button>
+<button class="choice" data-zone="media" aria-pressed="false"><b>CoCopy+ / Media</b><small>File pointer, rights, integrity</small></button>
+<button class="choice" data-zone="device" aria-pressed="false"><b>CoOrb+ / Device</b><small>Health, recovery, currentness</small></button>
+<button class="choice" data-zone="sensitive" aria-pressed="false"><b>CoOut+ / Sensitive</b><small>Blocked without specific authority</small></button>
+<button class="choice" data-zone="unknown" aria-pressed="false"><b>? / Unknown</b><small>Hold rather than guess</small></button>
+</div>
+<hr class="divider">
+<h2>2. Choose a meaning</h2>
+<div class="glyphs" id="glyphs" aria-label="Glyph meanings">
+<button class="button glyph" data-glyph="next" aria-label="Next step" aria-pressed="true">&rarr;</button>
+<button class="button glyph" data-glyph="inverse" aria-label="Inverse or bidirectional candidate" aria-pressed="false">&harr;</button>
+<button class="button glyph" data-glyph="negate" aria-label="Logical negation candidate" aria-pressed="false">&not;</button>
+<button class="button glyph" data-glyph="subset" aria-label="Scoped inclusion" aria-pressed="false">&sub;</button>
+<button class="button glyph" data-glyph="compare" aria-label="Greater than within defined units" aria-pressed="false">&gt;</button>
+<button class="button glyph" data-glyph="different" aria-label="Different, not necessarily false" aria-pressed="false">&ne;</button>
+<button class="button glyph" data-glyph="unbounded" aria-label="Open ended logical frontier, finite runtime" aria-pressed="false">&infin;</button>
+<button class="button glyph" data-glyph="candidate" aria-label="Candidate, not effect" aria-pressed="false">&#x25C7;</button>
+</div>
+<p class="help" id="glyphMeaning" aria-live="polite">Next step. An arrow does not prove execution.</p>
+<hr class="divider">
+<div class="row">
+<button class="button primary" id="preview">Preview one safe next step</button>
+<button class="button ghost" id="clear">Clear everything</button>
+</div>
+</section>
+<section class="panel" aria-labelledby="between-head">
+<h2 id="between-head">3. A bounded inter-key experiment</h2>
+<p class="help">Disabled by default. Enable for at most 15 seconds or 32 key events <em>inside this demo field only</em>. Count coarse timing bands in page memory; never store keys, text, exact timings, identity or a typing profile. The sample text is not read by the script.</p>
+<label class="checkline"><input type="checkbox" id="arm"> <span>Enable local interval counting for 15 seconds, then stop automatically</span></label>
+<label for="sample" class="tiny muted">Disposable sample field. Do not type private or identifying material.</label>
+<textarea id="sample" spellcheck="false" autocomplete="off" placeholder="Type any disposable test phrase after arming. No background capture occurs."></textarea>
+<div class="row"><span class="pill off" id="activity">Not observing</span><span class="help" id="limitNote">No timings or text retained</span></div>
+<div class="statgrid" aria-label="Coarse interval bands" aria-live="polite">
+<div class="stat"><b id="short">0</b><small>Short</small></div><div class="stat"><b id="flow">0</b><small>Flowing</small></div><div class="stat"><b id="pause">0</b><small>Pause</small></div>
+</div>
+<p class="help">A pause can suggest a <em>preview</em>. Pause &ne; intent; silence &ne; refusal; timing &ne; a mental-state measurement.</p>
+</section>
+</div>
+<div class="stack">
+<section class="panel" aria-labelledby="orb-head">
+<h2 id="orb-head">CoOrb+ / One source, several views</h2>
+<div class="orb" role="img" aria-label="Decorative CoOrb showing selected glyph and source-bound preview"><div class="cap">Context &middot; Source</div><div class="sig" id="orbGlyph" aria-hidden="true">&rarr;</div><div class="cap" id="orbZone">Writing</div></div>
+<div class="path" aria-label="Proposed pathway"><span>CoIn+</span> <span aria-label="to">&rarr;</span> <span>Proposal</span> <span aria-label="to">&rarr;</span> <span>Review</span> <span aria-label="to">&rarr;</span> <span>Receipt</span></div>
+<hr class="divider">
+<div class="answer" aria-live="polite"><strong id="proposalTitle">Preview ready</strong><div id="proposalBody" class="help">Select a context and a relation. No work has been executed.</div></div>
+</section>
+<section class="panel" aria-labelledby="capsule-head">
+<h2 id="capsule-head">CoCopy+ / Local proposal capsule</h2>
+<p class="help">An explicitly created JSON description, not an upload, physical mouse binding or execution receipt.</p>
+<label class="checkline"><input type="checkbox" id="includeStats"><span>Include only coarse, non-content interval counters in the optional capsule</span></label>
+<div class="row"><button class="button" id="generate">Prepare local JSON</button><button class="button" id="download" disabled>Download this JSON</button></div>
+<pre id="capsule" aria-live="polite">Nothing prepared yet.</pre>
+<p class="tiny muted">The page does not use the clipboard, storage, microphone, camera, network, system mouse hooks or external app contents. Download is explicit and saves only the preview object.</p>
+</section>
+</div>
+</div>
+<footer><strong>Scope:</strong> One local browser tab, a voluntary sample field and marked interaction regions. Built on CoNod/CoThumb shadow policy, CoRelationalUX, CoInterstice/CoGlyph R0 and CoPreCursor priors. Not a native X2 integration, authorization, reviewer ACK, desktop renderer or claim of infinite workers. <strong>CoHereNow &gt; one useful action &gt; receipt before claim.</strong></footer>
+</div>
+<script>
+"use strict";
+// PURE_BEGIN
+const GLYPHS=Object.freeze({
+ next:{glyph:"\u2192",name:"Next step",boundary:"An arrow does not prove an effect."},
+ inverse:{glyph:"\u2194",name:"Candidate two-way or reversed relation",boundary:"Reversibility and causation require separate evidence."},
+ negate:{glyph:"\u00ac",name:"Scoped negation candidate",boundary:"Not observed does not mean logically false."},
+ subset:{glyph:"\u2282",name:"Within a declared scope",boundary:"Membership or containment confers no authority."},
+ compare:{glyph:">",name:"Greater-than comparison",boundary:"Supply comparable quantities, units and observation time."},
+ different:{glyph:"\u2260",name:"Distinct, not necessarily contradictory",boundary:"Different does not imply one side is false."},
+ unbounded:{glyph:"\u221e",name:"Open-ended logical possibility",boundary:"Addressable possibility is not infinite workers or tokens."},
+ candidate:{glyph:"\u25c7",name:"Shadow suggestion",boundary:"Preview is not selection, execution or consent."}
+});
+const ZONES=Object.freeze({
+ writing:{label:"Writing",primary:"Offer a prior or reversible text suggestion",requires:"Selected text must be volunteered; no global typing."},
+ relations:{label:"Relations",primary:"Inspect one typed link and a counterexample",requires:"Evidence, direction, valid time and uncertainty."},
+ media:{label:"Media",primary:"Prepare a file-reference preview and integrity plan",requires:"User-selected file, read permission and privacy review."},
+ device:{label:"Device",primary:"Show currentness, health and one recovery option",requires:"Actual device telemetry and a receiver-origin readproof."},
+ sensitive:{label:"Sensitive",primary:"No automatic capture or dispatch",requires:"Separate explicit authority required outside this demo."},
+ unknown:{label:"Unknown",primary:"Hold and ask for a precise object",requires:"Do not guess consent or source identity."}
+});
+function classifyGap(ms){
+ if(typeof ms!=="number"||!Number.isFinite(ms)||ms<0)return "UNKNOWN";
+ if(ms<180)return "SHORT";
+ if(ms<850)return "FLOW";
+ if(ms<=5000)return "PAUSE";
+ return "OUT_OF_WINDOW";
+}
+function relationPreview(zoneId,glyphId){
+ const zone=ZONES[zoneId],glyph=GLYPHS[glyphId];
+ if(!zone)return {state:"HELD_UNKNOWN_CONTEXT",allowed:false,primary:"Unknown context",detail:"No automatic route can be elected."};
+ if(!glyph)return {state:"HELD_UNKNOWN_SYMBOL",allowed:false,primary:"Unknown glyph",detail:"Meaning must be explicitly defined."};
+ if(zoneId==="sensitive")return {state:"HELD_SENSITIVE",allowed:false,primary:zone.primary,detail:zone.requires};
+ if(zoneId==="unknown")return {state:"HELD_UNKNOWN_CONTEXT",allowed:false,primary:zone.primary,detail:zone.requires};
+ return {state:"PROPOSED_ONLY",allowed:true,primary:zone.primary,detail:glyph.name+". "+glyph.boundary+" "+zone.requires};
+}
+function emptyBuckets(){return {SHORT:0,FLOW:0,PAUSE:0};}
+function intersticeHint(zoneId,counts){
+ if(zoneId!=="writing"||!counts||!(Number(counts.PAUSE)>0))return "";
+ return "A bounded pause occurred inside the opted-in demo field. Optional: inspect a prior or alternative. This is not a statement of intent.";
+}
+function safeCapsule(zoneId,glyphId,counts,includeStats){
+ const p=relationPreview(zoneId,glyphId);
+ if(!p.allowed)return {schema:"CoInput.IntersticeProposal.R0",state:p.state,reason:p.detail,outward_effects:0,authorized:false};
+ const core={schema:"CoInput.IntersticeProposal.R0",work_id:"conod-cothumb:interstice:r0:demo",
+  source:"SELF_SELECTED_BROWSER_DEMO",source_identity:"SYNTHETIC_NON_DEVICE",state:p.state,
+  context:zoneId,glyph_id:glyphId,glyph:GLYPHS[glyphId].glyph,glyph_meaning:GLYPHS[glyphId].name,
+  proposed_task:p.primary,exact_device_event:false,raw_keys_included:false,raw_text_included:false,
+  outwards_allowed:false,outward_effects:0,executed_tasks:0,receiver_ack:false,authority:"NONE",
+  retention:"BROWSER_MEMORY_UNTIL_RESET_OR_CLOSE",prior_context:"COINTERSTICE_INPUT_FABRIC_R0",
+  nonclaims:["GESTURE_NE_AUTHORITY","INTERSTICE_NE_INTENT","GLYPH_NE_TRUTH","PROPOSAL_NE_EXECUTION"]};
+ if(includeStats){const c=counts||{};core.coarse_intervals={SHORT:Math.min(32,Math.max(0,Number(c.SHORT)||0)),FLOW:Math.min(32,Math.max(0,Number(c.FLOW)||0)),PAUSE:Math.min(32,Math.max(0,Number(c.PAUSE)||0))};}
+ return core;
+}
+// PURE_END
+const field=document.getElementById("sample");
+const arm=document.getElementById("arm");
+let zone="writing",glyph="next",buckets=emptyBuckets(),armed=false,last=null,events=0,deadline=0,timer=null,prepared=null;
+function setText(id,s){document.getElementById(id).textContent=s;}
+function updateCounts(){for(const k of ["SHORT","FLOW","PAUSE"])setText(k==="SHORT"?"short":k==="FLOW"?"flow":"pause",String(buckets[k]));}
+function disarm(reason){armed=false;arm.checked=false;last=null;if(timer!==null){clearTimeout(timer);timer=null;}document.getElementById("activity").className="pill off";setText("activity","Not observing");setText("limitNote",reason||"No timings or text retained");}
+function startObservation(){
+ disarm("Ready");buckets=emptyBuckets();events=0;updateCounts();armed=true;arm.checked=true;deadline=performance.now()+15000;
+ document.getElementById("activity").className="pill on";setText("activity","Observing demo field only");
+ setText("limitNote","Automatic stop: 15 seconds / 32 events");timer=setTimeout(()=>disarm("15-second limit reached; counters stay only in page memory"),15000);
+}
+arm.addEventListener("change",()=>{if(arm.checked)startObservation();else disarm("Stopped. Counters remain until Clear.");});
+field.addEventListener("keydown",e=>{
+ if(!armed||e.repeat||e.isComposing)return;
+ const now=performance.now();if(now>deadline||events>=32){disarm("Limit reached");return;}
+ if(last!==null){const key=classifyGap(now-last);if(Object.hasOwn(buckets,key))buckets[key]++;}
+ last=now;events++;updateCounts();if(events===32)disarm("32-event limit reached");
+});
+function selectZone(id){zone=id;for(const el of document.querySelectorAll("[data-zone]"))el.setAttribute("aria-pressed",String(el.dataset.zone===id));setText("orbZone",ZONES[id]?.label||"Unknown");renderPreview();}
+function selectGlyph(id){glyph=id;for(const el of document.querySelectorAll("[data-glyph]"))el.setAttribute("aria-pressed",String(el.dataset.glyph===id));setText("orbGlyph",GLYPHS[id]?.glyph||"?");setText("glyphMeaning",(GLYPHS[id]?.name||"Unknown")+". "+(GLYPHS[id]?.boundary||"Hold."));renderPreview();}
+function renderPreview(){const p=relationPreview(zone,glyph);const hint=p.allowed?intersticeHint(zone,buckets):"";setText("proposalTitle",p.primary);setText("proposalBody",p.detail+(p.allowed?" No tasks started.":" No capsule delivery allowed.")+(hint?" "+hint:""));}
+for(const b of document.querySelectorAll("[data-zone]"))b.addEventListener("click",()=>selectZone(b.dataset.zone));
+for(const b of document.querySelectorAll("[data-glyph]"))b.addEventListener("click",()=>selectGlyph(b.dataset.glyph));
+document.getElementById("preview").addEventListener("click",renderPreview);
+document.getElementById("generate").addEventListener("click",()=>{
+ prepared=safeCapsule(zone,glyph,buckets,document.getElementById("includeStats").checked);
+ setText("capsule",JSON.stringify(prepared,null,2));document.getElementById("download").disabled=!prepared||prepared.state!=="PROPOSED_ONLY";
+});
+document.getElementById("download").addEventListener("click",()=>{
+ if(!prepared||prepared.state!=="PROPOSED_ONLY")return;
+ const data=JSON.stringify(prepared,null,2)+"\n";const url=URL.createObjectURL(new Blob([data],{type:"application/json"}));
+ try{const a=document.createElement("a");a.href=url;a.download="coinput-interstice-r0-proposal.json";a.click();}finally{setTimeout(()=>URL.revokeObjectURL(url),1000);}
+});
+document.getElementById("clear").addEventListener("click",()=>{
+ disarm("Everything cleared");field.value="";buckets=emptyBuckets();events=0;updateCounts();
+ document.getElementById("includeStats").checked=false;prepared=null;setText("capsule","Nothing prepared yet.");document.getElementById("download").disabled=true;
+ zone="writing";glyph="next";selectZone(zone);selectGlyph(glyph);
+});
+renderPreview();
+</script>
+</body>
+</html>
