@@ -1,0 +1,361 @@
+{
+  "schema": "CoCivium.CoReviewSpine.ProofAware.R0",
+  "observed_date": "2026-10-24",
+  "state": "PUBLIC_ADVISORY_CONTRACT_NOT_INSTALLED_RELEASE_GATE",
+  "intent": "Reuse existing CoTurtle, prior-art, QA, safety, UX and receiver contracts at the appropriate stage/risk without creating a council for every idea",
+  "relation_to_existing": "PROJECTION_OF_EXISTING_REVIEW_CONTRACTS_NOT_REPLACEMENT_FOR_FIREWORKS_GATE",
+  "prior_sources": [
+    {
+      "path": "docs/Architecture/COEXPERIMENT_SPACE_TURTLES_R0.md",
+      "role": "prior bounded recursion and promotion ladder"
+    },
+    {
+      "path": "docs/Architecture/COEXPERIMENT_SELECTOR_R0.md",
+      "role": "CHALLENGE EXPLORATION WEIRD REPLAY FAULT reserved candidate lanes"
+    },
+    {
+      "path": "docs/CoTheoryAll/costrawbe-r0/ACADEMIC_OUTREACH_GATE.md",
+      "role": "prior art visible, falsification and public send boundary"
+    },
+    {
+      "path": "docs/Launch/COFIREWORKS_READINESS_R0_20261024.json",
+      "role": "existing launch status and explicit unproved gates"
+    },
+    {
+      "path": "ai/resilience/cospiff-fireworks-r1.json",
+      "role": "source-bound 14-gate survivability scorecard"
+    },
+    {
+      "path": "docs/Evolution/COALL_GITHUB_EVOLUTION_FABRIC_R0.md",
+      "role": "existing OBSERVE, PROPOSE, REVIEW_CHALLENGE and effect-gated actions"
+    }
+  ],
+  "stages": [
+    {
+      "id": "INTAKE",
+      "purpose": "Name one receiver need and intended benefit",
+      "lanes": [
+        "SOURCE",
+        "USER_VALUE"
+      ],
+      "gate": "SOURCE_AND_AUTHORITY_BOUND",
+      "proof": "Identity, owner, privacy, original source, epistemic class, desired effect, first useful task"
+    },
+    {
+      "id": "PRIOR_ART",
+      "purpose": "Avoid reinvention and unsupported novelty",
+      "lanes": [
+        "SOURCE",
+        "PRIOR_ART",
+        "IP_RIGHTS"
+      ],
+      "gate": "SEARCH_SCOPE_AND_LICENSE",
+      "proof": "Earlier CoCivium artifact comparison, relevant external priors, date, search limits, third-party rights and novelty downgrade"
+    },
+    {
+      "id": "DESIGN",
+      "purpose": "Define a bounded alternative, threat model and fallback",
+      "lanes": [
+        "ARCHITECTURE",
+        "SECURITY",
+        "ACCESSIBILITY",
+        "COUNTEREXAMPLE"
+      ],
+      "gate": "REVERSIBLE_SCOPE_AND_RISK",
+      "proof": "Inputs/outputs, permission ceiling, failure domains, external effects, alternatives and falsifier"
+    },
+    {
+      "id": "BUILD",
+      "purpose": "Preserve reproducible construction and licences",
+      "lanes": [
+        "SECURITY",
+        "SUPPLY_CHAIN"
+      ],
+      "gate": "PINNED_SOURCE_AND_MANIFEST",
+      "proof": "Exact source and dependencies, author, licence, build recipe and no-clobber target"
+    },
+    {
+      "id": "VERIFY",
+      "purpose": "Prove only what real tests measured",
+      "lanes": [
+        "QA",
+        "COUNTEREXAMPLE"
+      ],
+      "gate": "POSITIVE_AND_NEGATIVE_TESTS",
+      "proof": "Bounded deterministic tests, one failure test, baseline, observed result, nonclaims and rollback"
+    },
+    {
+      "id": "TURTLE",
+      "purpose": "Challenge reviewer and artifact under shared limits",
+      "lanes": [
+        "COUNTEREXAMPLE",
+        "SOURCE"
+      ],
+      "gate": "DISSENT_AND_TERMINATION",
+      "proof": "Counterargument, challenge provenance, depth/rounds/budget, retained dissent and next falsifier"
+    },
+    {
+      "id": "SHADOW",
+      "purpose": "Exercise one no-effect candidate against a baseline",
+      "lanes": [
+        "QA",
+        "SECURITY",
+        "OPERATIONS"
+      ],
+      "gate": "NO_EFFECT_CANARY_AND_RESOURCE_BOUNDS",
+      "proof": "No hidden effects, cost, latency, correct output, explicit stop and recovery"
+    },
+    {
+      "id": "INDEPENDENT_ACCEPTANCE",
+      "purpose": "Test usefulness and independent receiver custody",
+      "lanes": [
+        "USER_VALUE",
+        "ACCESSIBILITY",
+        "OPERATIONS"
+      ],
+      "gate": "INDEPENDENT_REAL_RECEIVER_PROOF",
+      "proof": "Consenting outsider task success plus independent exact-object receiver readproof where receiver/custody is claimed"
+    },
+    {
+      "id": "PUBLISH",
+      "purpose": "Release a true version with accessible correction",
+      "lanes": [
+        "SOURCE",
+        "IP_RIGHTS",
+        "SECURITY",
+        "ACCESSIBILITY",
+        "PUBLIC_COMMUNICATION"
+      ],
+      "gate": "RIGHTS_AND_HOST_READBACK",
+      "proof": "Owner authorizes, rights checked, public security, current version/URL, channel compliance, correction and rollback"
+    },
+    {
+      "id": "OPERATE",
+      "purpose": "Observe bounded usefulness and failure safely",
+      "lanes": [
+        "OPERATIONS",
+        "SECURITY",
+        "USER_VALUE"
+      ],
+      "gate": "CURRENTNESS_AND_INCIDENT",
+      "proof": "Real heartbeat/lease, logs with privacy, feedback/corrections, measured cost, incident/takedown controls"
+    },
+    {
+      "id": "RETIRE",
+      "purpose": "Preserve lineage or prove requested deletion",
+      "lanes": [
+        "OPERATIONS",
+        "IP_RIGHTS",
+        "SECURITY"
+      ],
+      "gate": "RECOVERY_OR_DELETION_SCOPE",
+      "proof": "Export or exact archive, receiver restore, licence retention, secret/PII deletion boundary, revocation and successor"
+    }
+  ],
+  "lanes": [
+    {
+      "id": "SOURCE",
+      "purpose": "Provenance, historical CoCivium priors, falsifiable scope and cited evidence",
+      "decision_not": "self-invented novelty"
+    },
+    {
+      "id": "PRIOR_ART",
+      "purpose": "Earlier CoCivium and external literature, designs, standards and dated searches",
+      "decision_not": "unexamined patentability"
+    },
+    {
+      "id": "IP_RIGHTS",
+      "purpose": "Licence, third-party assets, trademark, disclosure and qualified patent counsel where required",
+      "decision_not": "automatic filing authorization"
+    },
+    {
+      "id": "ARCHITECTURE",
+      "purpose": "Threat model, alternatives, dependencies, collision domains and portable work identities",
+      "decision_not": "installed runtime"
+    },
+    {
+      "id": "QA",
+      "purpose": "Unit, integration, negative, fuzz/fault, regressions and measured acceptance bounds",
+      "decision_not": "release merely from a pass count"
+    },
+    {
+      "id": "COUNTEREXAMPLE",
+      "purpose": "CoTurtle challenger, counterfactual, CoDvl and dissent preserved",
+      "decision_not": "AI consensus equals independent corroboration"
+    },
+    {
+      "id": "SECURITY",
+      "purpose": "Secrets/PII, safety, access boundaries, supply-chain, incident and withdrawal",
+      "decision_not": "self-certified security"
+    },
+    {
+      "id": "SUPPLY_CHAIN",
+      "purpose": "Pinned input/licence/manifests, provenance and reproducible build receipts",
+      "decision_not": "SLSA level without applicable attestation"
+    },
+    {
+      "id": "ACCESSIBILITY",
+      "purpose": "Keyboard, screenreader, mobile, reduced motion and graceful fallback",
+      "decision_not": "visual screenshot equals UX acceptance"
+    },
+    {
+      "id": "OPERATIONS",
+      "purpose": "Leases, heartbeat, duplicate-execution isolation, restore, rollback and failure-domain test",
+      "decision_not": "multi-URL equals multi-provider"
+    },
+    {
+      "id": "USER_VALUE",
+      "purpose": "One clear useful task, consenting independent evaluation, correction burden and opt-out",
+      "decision_not": "clicks or stars equal adoption"
+    },
+    {
+      "id": "PUBLIC_COMMUNICATION",
+      "purpose": "Truthful scope, attribution, privacy, channel consent and explicit no-endorsement",
+      "decision_not": "broadcast equals pickup"
+    }
+  ],
+  "minimum_on_every_artifact": [
+    "artifact_id",
+    "source_ref",
+    "source_version_or_hash_if_bytes_exist",
+    "epistemic_class",
+    "owner_or_null",
+    "authority_ceiling",
+    "confidentiality",
+    "current_state",
+    "next_proof",
+    "nonclaims",
+    "review_coverage_and_not_applicable_reasons"
+  ],
+  "risk": {
+    "LOW_PUBLIC_DOC": {
+      "baseline": "Provenance, basic tests or cited facts, typo/accessibility pass, optional challenge",
+      "independent_panel": "NOT_MANDATORY_UNLESS_EFFECTFUL_OR_PUBLIC_CLAIM_HIGH_IMPACT"
+    },
+    "SOFTWARE_EFFECTFUL": {
+      "baseline": "Risk and threat scope, deterministic/fault tests, rollback, isolated micro-canary, activity receipt",
+      "independent_panel": "REQUIRED_BEFORE_PUBLIC_OR_EXTERNAL_EFFECT"
+    },
+    "PRIVACY_OR_SECURITY": {
+      "baseline": "Independent security/privacy review, data-minimization, revocation and incident plan",
+      "independent_panel": "QUALIFIED_REVIEW_REQUIRED"
+    },
+    "PUBLIC_OR_BULK_COMMUNICATION": {
+      "baseline": "Source/currentness, authorized route, deliverability, consent/rights and actual receiver distinction",
+      "independent_panel": "AUTHORIZED_PUBLISHER_REQUIRED"
+    },
+    "SCIENTIFIC_OR_HIGH_IMPACT_CLAIM": {
+      "baseline": "Prior-art search, counterexamples, competing explanations, reproducibility and explicit uncertainty",
+      "independent_panel": "DOMAIN_QUALIFIED_REVIEW_BEFORE_VALIDATION_CLAIM"
+    },
+    "FINANCIAL_OR_LEGAL": {
+      "baseline": "Information class, owner scope, professional/jurisdictional gate, reversible analysis separate from action",
+      "independent_panel": "HUMAN_PROFESSIONAL_AND_SPECIFIC_EXECUTION_AUTHORITY_REQUIRED"
+    },
+    "HUMAN_SAFETY": {
+      "baseline": "Professional/affected-person safety review, off-switch, physical risk and incident plan",
+      "independent_panel": "QUALIFIED_INDEPENDENT_HUMAN_REQUIRED"
+    }
+  },
+  "reviewer_independence": {
+    "SELF_CHECK": "Can satisfy preliminary mechanical gate only",
+    "MULTI_AGENT_SAME_SOURCE": "Advisory challenge; does not constitute independent human review or independent evidence",
+    "INDEPENDENT_AI_SUBSTRATE": "May diversify tests but shared data/assumptions still require independence audit",
+    "INDEPENDENT_PERSON": "Can provide independent task/review evidence when identity, consent, source and scope established",
+    "QUALIFIED_PROFESSIONAL": "Needed for gated domain advice/filings or effectful regulated actions",
+    "RECEIVER": "Only elected receiver-produced exact readback counts as pickup proof"
+  },
+  "co_turtle": {
+    "runtime_max_depth": 2,
+    "runtime_max_rounds": 2,
+    "child_aggregate_budget": "INHERIT_PARENT_NO_REPLENISHMENT",
+    "authority": "NO_ESCALATION",
+    "halt": [
+      "VERIFIED_MATERIAL_IMPROVEMENT_NOT_EXPECTED",
+      "PARENT_BUDGET_EXHAUSTED",
+      "REVIEW_ROUNDS_EXHAUSTED",
+      "APPROVED_OR_REJECTED"
+    ],
+    "dissent": "PRESERVE_NONMAJORITY_HYPOTHESES"
+  },
+  "gate_logic": {
+    "missing_required_evidence": "HELD_NOT_EVIDENCED",
+    "not_applicable": "REASON_REQUIRED_NOT_BLANKET_SKIP",
+    "two_ai_outputs": "TWO_OPINIONS_NOT_TWO_INDEPENDENT_EXPERIMENTS",
+    "panel_conclusion": "ADVISORY_UNLESS_EFFECT_AUTHORITY_EXPLICIT",
+    "release_candidate": "CONTRACT_PASS_NE_RUNTIME_EFFECT_OR_PUBLIC_RELEASE",
+    "high_risk": "NO_AUTOMATIC_FINANCIAL_LEGAL_SECURITY_PRIVACY_BULK_OR_HUMAN_SAFETY_EFFECT",
+    "independent": "SOURCE_READBACK_NE_RECEIVER_READPROOF",
+    "lifecycle": "DISCOVERED_LOCAL>VERIFIED_LOCAL>LANDED>PICKED_UP>INTEGRATED>COEX_PROVE_EACH"
+  },
+  "live_coverage": {
+    "global_end_to_end_reviewer_wiring": "NOT_VERIFIED",
+    "all_projects_each_stage_review_receipts": "NOT_AUDITED",
+    "reviewer_panel_instances": "NOT_INSTANTIATED_BY_THIS_DOC",
+    "specific_prior_docs_and_test_harnesses": "PUBLIC_SOURCE_AVAILABLE",
+    "current_fireworks_milestone": "HELD_PENDING_EXTERNAL_VALUE_AND_RECOVERY",
+    "x2_current_executable_access": "NOT_CONFIRMED",
+    "other_paid_or_local_ai_adapters": "NOT_CERTIFIED_BY_THIS_DOC",
+    "middle_moustache_thumb_gesture": "ART_ONLY_NO_OS_MAPPING"
+  },
+  "technical_threshold_watchlist": [
+    {
+      "id": "media",
+      "requirement": "size>300KB thumbnail decodes ffprobe blackdetect 0",
+      "status": "HISTORICAL_PRIOR_WAVE_NOT_RETESTED"
+    },
+    {
+      "id": "github",
+      "requirement": "HTTP 200 and single-request elapsed<2s",
+      "status": "HISTORICAL_PRIOR_WAVE_NOT_SLA"
+    },
+    {
+      "id": "gmail",
+      "requirement": "Primary inbox arrival<60s with recipient-side ID",
+      "status": "HELD_NO_RECIPIENT_SIDE_PROOF"
+    },
+    {
+      "id": "pi",
+      "requirement": "Pi compatibility test<2s",
+      "status": "HELD_ADAPTER_ENDPOINT_UNBOUND"
+    },
+    {
+      "id": "claude",
+      "requirement": "Claude credential presence<1s never log secret",
+      "status": "HELD_PROCESS_ENV_ABSENCE_NOT_ACCOUNT_ABSENCE"
+    },
+    {
+      "id": "llama",
+      "requirement": "local Llama Ollama packet parse<3s",
+      "status": "HISTORICAL_OLLAMA_TAGS_ONLY_NOT_INFERENCE"
+    }
+  ],
+  "external_donors": [
+    {
+      "source": "https://airc.nist.gov/AI_RMF_Knowledge_Base/AI_RMF/Core",
+      "pattern": "Risk governance spans lifecycle; Govern/Map/Measure/Manage"
+    },
+    {
+      "source": "https://scorecard.dev/",
+      "pattern": "Independent security controls including branch protection, code review, token permissions"
+    },
+    {
+      "source": "https://slsa.dev/spec/v1.0/provenance",
+      "pattern": "Pin inputs, artifact and builder provenance; do not self-award conformance"
+    }
+  ],
+  "next_proof": "A real opted-in one-task receiver and one non-GitHub cold restore, reviewed with the same source-bound stage receipt and negative counterexample",
+  "nonclaims": [
+    "STATIC_POLICY_NE_GLOBAL_ADOPTION",
+    "AI_PANEL_NE_INDEPENDENT_REVIEW",
+    "TEST_PASS_NE_HUMAN_ACCEPTANCE",
+    "PRIOR_ART_SEARCH_NE_PATENTABILITY",
+    "FIREWORKS_NE_LAUNCH",
+    "NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF",
+    "LOCAL_IS_NOT_LANDED",
+    "VALIDATION_IS_NOT_ACCEPTANCE",
+    "NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE",
+    "HASHING_IS_NOT_SEMANTIC_INGESTION",
+    "DISCOVERED_SET_IS_NOT_COMPLETE_HISTORY"
+  ]
+}
