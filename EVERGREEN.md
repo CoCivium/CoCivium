@@ -1,5 +1,7 @@
 # CoGoAll Evergreen Blast R0
 
+**Survival before spectacle:** [CoSpiff+ survivability and fireworks gates](docs/Strategy/COSPIFF_FIREWORKS_SURVIVABILITY_R1.md) and its [14-gate machine scorecard](ai/resilience/cospiff-fireworks-r1.json) record what has actually passed and what is still missing. Public R&D is evidenced; independent adoption, off-provider recovery and public fireworks are HELD. No mass broadcasts or live worker expansion are implied.
+
 **First use before the firehose:** [Start here in 60 seconds](START_HERE.md), then optionally explore [specialist first-use routes](ai/onramp/specialist-entrypoints-r0.json) backed by six exact source references. These are audience choices, **not** six deployed brands, accounts, DNS domains or receiver acknowledgments.
 
 **Public working status · 2026-10-23**
