@@ -1,0 +1,42 @@
+name: CoRole concern lens R0
+
+on:
+  pull_request:
+    paths:
+      - 'ai/corole-concern-lens-r0.json'
+      - 'scripts/CoRoleConcernPanelR0.py'
+      - 'tests/test_role_concern_lens.py'
+      - 'docs/Architecture/COROLE_CONCERN_LENS_R0.md'
+      - '.github/workflows/corole-concern-lens-r0.yml'
+      - 'schemas/cospawn-contract-v0.1.schema.json'
+
+permissions:
+  contents: read
+
+jobs:
+  validate-role-concern:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate policy JSON
+        run: python3 -m json.tool ai/corole-concern-lens-r0.json > /dev/null
+      - name: Exercise ten concern and non-execution tests
+        run: python3 -B -m unittest discover -s tests -p test_role_concern_lens.py -v
+      - name: Repeat under optimized Python
+        run: python3 -O -B -m unittest discover -s tests -p test_role_concern_lens.py -v
+      - name: Confirm no role assignment or model materialization in generated plan
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 scripts/CoRoleConcernPanelR0.py --question 'Do roles have worries?' > "$RUNNER_TEMP/corole-panel.json"
+          python3 - "$RUNNER_TEMP/corole-panel.json" <<'PY'
+          import json,sys
+          from pathlib import Path
+          plan=json.loads(Path(sys.argv[1]).read_text())
+          assert len(plan["seats"])==7
+          assert plan["effects"]=={"actors_assigned":0,"workers_started":0,"permissions_granted":0,"messages_sent":0}
+          assert all(s["subjective_worry"]=="NOT_INFERRED" for s in plan["seats"])
+          assert plan["unassigned_passive_role_example"]["concern_kind_refs"]==[]
+          print("PASS_UNASSIGNED_CONCERN_PANEL_NO_SUBJECTIVE_INFERENCE")
+          PY

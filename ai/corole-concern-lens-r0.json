@@ -1,0 +1,131 @@
+{
+  "schema": "CoRole.ConcernLens.R0.v0.1-candidate",
+  "state": "ADVISORY_GENERATOR_ONLY__NO_ACTORS_ASSIGNED_NO_WORKERS_STARTED",
+  "sources": [
+    "docs/Architecture/COROLE_SPACE_PREVIEW_R0.md",
+    "schemas/cospawn-contract-v0.1.schema.json",
+    "docs/Architecture/COPARTICIPATION_ECOLOGY_R0.md"
+  ],
+  "distinction": "ROLE_CONCERN_NE_SUBJECTIVE_WORRY",
+  "kinds": {
+    "RISK": "Possible adverse consequence to inspect; not a felt emotion.",
+    "UNCERTAINTY": "Missing or ambiguous information to keep visible.",
+    "DISSENT": "A grounded reason to dispute or qualify a proposal.",
+    "DUTY_OF_CARE": "An authorized obligation to protect affected parties or property.",
+    "HYPOTHESIS": "A candidate interpretation requiring tests or limitations.",
+    "NARRATIVE_WORRY": "Story or cultural perspective; not empirical evidence of experience.",
+    "SUBJECTIVE_WORRY": "Only a voluntarily reported human experience, with separate consent/provenance.",
+    "NONE": "Explicitly no concern assigned for this task."
+  },
+  "role_overrides": {
+    "QUIESCENT_RESERVE": []
+  },
+  "default_subjective_worry": "NOT_INFERRED",
+  "perspectives": [
+    "FORMAL",
+    "EMPIRICAL",
+    "ETHICAL",
+    "EXPERIENTIAL",
+    "SPIRITUAL_OR_CULTURAL",
+    "SPECULATIVE_NONPHYSICAL",
+    "ACCESSIBILITY"
+  ],
+  "perspective_rails": [
+    "LENS_NE_FACT",
+    "METAPHOR_NE_CAUSAL_MECHANISM",
+    "ROLE_NE_PERSONHOOD",
+    "NO_AI_SUBJECTIVE_WORRY_INFERENCE",
+    "HUMAN_REPORT_NE_UNIVERSAL_TRUTH"
+  ],
+  "panel": [
+    {
+      "seat": "proposal",
+      "role": "WORKER",
+      "concerns": [
+        "RISK",
+        "UNCERTAINTY"
+      ]
+    },
+    {
+      "seat": "formal_check",
+      "role": "VERIFIER",
+      "concerns": [
+        "UNCERTAINTY",
+        "DISSENT"
+      ]
+    },
+    {
+      "seat": "empirical_check",
+      "role": "OBSERVER",
+      "concerns": [
+        "UNCERTAINTY",
+        "RISK"
+      ]
+    },
+    {
+      "seat": "challenge",
+      "role": "CHALLENGER",
+      "concerns": [
+        "DISSENT",
+        "HYPOTHESIS"
+      ]
+    },
+    {
+      "seat": "perspective",
+      "role": "TRANSLATOR",
+      "concerns": [
+        "DUTY_OF_CARE",
+        "NARRATIVE_WORRY"
+      ]
+    },
+    {
+      "seat": "provenance",
+      "role": "VERIFIER",
+      "concerns": [
+        "RISK",
+        "UNCERTAINTY"
+      ]
+    },
+    {
+      "seat": "synthesis",
+      "role": "PROJECTION_COMPILER",
+      "concerns": [
+        "DISSENT",
+        "DUTY_OF_CARE"
+      ]
+    }
+  ],
+  "bounds": {
+    "max_seats": 7,
+    "max_review_rounds": 2,
+    "max_nesting_depth": 2,
+    "max_active_workers": 0,
+    "max_effects": 0
+  },
+  "relation_store_design": {
+    "role_definitions": "Versioned source references shared across seats; no per-seat role-definition copies.",
+    "concern_vocabulary": "Kinds stored once and referenced by ID.",
+    "panel_instance": "Only seat/role references, concern-kind references, pinned question and source bytes.",
+    "immutable_sources": "Keep original locator, content identity, provenance and confidentiality.",
+    "derived_views": "Rebuildable, explicitly stale until source version and refresh verified.",
+    "measurements_required": [
+      "stored_bytes_including_indexes",
+      "query_latency",
+      "refresh_cost",
+      "reconstruction_equality",
+      "evidence_traceability"
+    ]
+  },
+  "nonclaims": [
+    "RAW_CONFIGURATIONS_NE_MEANINGFUL_ROLES",
+    "NO_ROLE_MUST_HAVE_WORRIES",
+    "CONCERN_NE_EMOTION",
+    "ROLE_NE_REAL_ACTOR",
+    "PERSPECTIVE_NE_EMPIRICAL_EVIDENCE",
+    "SEVEN_SEATS_NE_SEVEN_INDEPENDENT_REVIEWERS",
+    "PANEL_PLAN_NE_EXECUTED_REVIEW",
+    "ROLE_REFERENCE_NE_PERMISSION",
+    "NO_STORAGE_BENCHMARK_OR_IMPROVEMENT_PROVEN",
+    "NOT_LIVE_CLUSTER"
+  ]
+}
