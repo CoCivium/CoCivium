@@ -27,3 +27,10 @@ jobs:
       - name: Parse and compile interop without opening GUI or clipboard
         shell: pwsh
         run: pwsh -NoLogo -NoProfile -STA -File experiments/comousepalette-r0/tests/test_pwsh.ps1
+      - name: Parse X2 paste block without executing it
+        shell: pwsh
+        run: |
+          $tokens=$null; $errors=$null
+          $file = (Resolve-Path experiments/comousepalette-r0/PASTE_ON_X2.ps1).Path
+          [void][System.Management.Automation.Language.Parser]::ParseFile($file,[ref]$tokens,[ref]$errors)
+          if ($errors.Count -ne 0) { throw ($errors | Out-String) }
