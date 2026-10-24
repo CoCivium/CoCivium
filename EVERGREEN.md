@@ -40,6 +40,27 @@ Candidate **CoSpiff+** means receiver-visible polish that improves legibility, c
 
 **Next test:** compare the existing 60-second default route with at least two specialist routes for one consenting first-time receiver. Measure time-to-first-useful-action, explanation accuracy, backtracking, source inspection, confusion points and willingness to continue. Preserve the losing variant and write the result to `ai/benchmark-evo.jsonl`.
 
+## CoEvoAll+ R1 | Largest paths + bounded AutoCycle
+
+### PASS · Public architecture contract; runtime AutoCycle HELD
+
+The [largest-path / AutoCycle R1 contract](docs/Architecture/COEVOALL_LARGEST_PATHS_AUTOCYCLE_R1_20261024.md) extends CoPayload+ across seven transport classes: inline, chunked, file-backed, content-addressed, archive/corpus, streaming/windowed, and federated/distributed.
+
+The rule is **use the smallest adequate representation**. Large payloads should not become giant clipboard blobs, whole corpora should not be materialized when a verified slice suffices, and logical population growth must not inflate active worker counts.
+
+AutoCycle+ is explicitly event-driven and bounded:
+
+`DORMANT -> WAKE_TRIGGER -> QUALIFY -> LEASE -> RUN -> TEST -> RECEIPT -> CHECKPOINT -> RELEASE -> SLEEP`
+
+AutoEvo+ may discover, compare, test, retain FAILs and propose promotion, but it may not silently expand authority, privacy scope, spending, publication, credentials or recursion depth.
+
+The architecture source and historical-gate preservation are **PASS**. A fresh X2 physical gesture + >300KB rich-media P2 handoff + checkpoint-to-zero-workers runtime receipt remains **HELD**.
+
+`AUTO_NE_UNBOUNDED`  
+`WAKE_NE_ALWAYS_RUNNING`  
+`LARGEST_PATH_NE_MAXIMUM_MATERIALIZATION`  
+`MILLION_SESSIONS_NE_MILLION_PROVIDER_TABS`
+
 ## CoThumb+ / CoPayload+ | High-bandwidth contextual handoff
 
 ### PASS · Public architecture contract; physical rich-media path HELD
