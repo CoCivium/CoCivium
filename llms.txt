@@ -11,6 +11,12 @@
 
 ## Public interactive research surfaces
 
+- CoPhoenix cold-start recovery R0: distinguishes a Wayback historical witness from a verified local app capsule and from actual independent public hosting. A user-private ZIP with three offline browser experiments passed 26/26 scoped cold-start/fault-injection checks; off-GitHub persistent custody and a public failover are NOT proven.
+- Public recovery guide: https://cocivium.github.io/CoAcademy/phoenix/ (fresh host readproof pending).
+- Source and limitations: https://github.com/CoCivium/CoAcademy/blob/master/docs/phoenix/README.md
+- Machine recoverability contract: https://raw.githubusercontent.com/CoCivium/CoAcademy/master/docs/phoenix/discovery.json
+- Scoped local recovery test: https://github.com/CoCivium/CoAcademy/blob/master/docs/phoenix/test_receipt_r0.json
+- Wayback archiving and GitHub-hosted source/Pages/Raw are not independent proof of current live production or an external recovery receiver.
 - CoObserverMap R0: public, source-labeled classes of potential observers, dependencies, AI crawlers, archived copies, collaborators and generic abusive behavior; not actual user surveillance, visitor IDs, a blacklist or an incident report.
 - Human map and CoPhoenix boundary: https://cocivium.github.io/CoAcademy/relay/observer-map/ (independent outside-browser readback NOT verified).
 - Machine registry of 15 classes: https://raw.githubusercontent.com/CoCivium/CoAcademy/master/docs/relay/observer-map/registry.json

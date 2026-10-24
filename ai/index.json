@@ -244,6 +244,22 @@
       "test": "https://github.com/CoCivium/CoAcademy/blob/master/docs/relay/observer-map/test_receipt_r0.json",
       "truth": "15_CLASS_CANDIDATES__28_OF_28_ISOLATED_CHECKS__NO_ACTIVE_SURVEILLANCE_OR_CONFIRMED_THREAT_ACTOR",
       "nonclaim": "POSSIBLE_READER_NE_ACTUAL_VISITOR__ARCHIVE_NE_LIVE_SERVICE__CRITIC_NE_HOSTILE_ACTOR__SOURCE_NE_HOST_READBACK"
+    },
+    {
+      "id": "CoPhoenix.OfflineColdStart.R0",
+      "family": [
+        "CoPhoenix+",
+        "CoRelay+",
+        "CoStead candidate",
+        "CoGateway candidate"
+      ],
+      "class": "PUBLIC_RECOVERY_EDUCATION_WITH_USER_PRIVATE_LOCAL_OFFLINE_TEST",
+      "url_candidate": "https://cocivium.github.io/CoAcademy/phoenix/",
+      "source": "https://github.com/CoCivium/CoAcademy/blob/master/docs/phoenix/index.html",
+      "machine": "https://raw.githubusercontent.com/CoCivium/CoAcademy/master/docs/phoenix/discovery.json",
+      "test": "https://github.com/CoCivium/CoAcademy/blob/master/docs/phoenix/test_receipt_r0.json",
+      "evidence": "26_OF_26_LOCAL_COLD_START_TESTS__NOT_INDEPENDENT_OFFSITE_BACKUP",
+      "hard_hold": "NO_REMOTE_REPLICA_NO_ACTIVE_COGATEWAY_NO_DNS_CUTOVER_NO_X2_ACCESS"
     }
   ]
 }
