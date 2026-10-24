@@ -237,3 +237,20 @@ Broadcast rails remain: ⊂EvoAll+ a+++ | CoAll nod | +R betters all | 00_me | C
 Historical redo follows REUSE / REVERIFY / REPLAY / REINTERPRET / REFACTOR / REPLACE / ARCHIVE_ONLY. Million-session language remains virtual address-space/search semantics, not live workers. Prefer local/open/provider-diverse resources such as local Llama/Ollama plus optional external models only when capability, identity, authority, latency, privacy and receiver state are known.
 
 Canonical test targets may be carried as declared acceptance goals but never pre-greened: media size >300KB and thumbnail OK; ffprobe/blackdetect=0; GitHub HTTP 200 <2s; Gmail Primary <60s only where recipient-side evidence exists; identity logged; Pi compatibility <2s; Claude credential signal <1s only where safely observable; Llama/Ollama packet parse <3s. Each run records PASS/FAIL/NOT_RUN/UNPROVEN with exact source, observer and time. TARGET_NE_RESULT; SCREENSHOT_NE_RUNTIME; SENT_NE_PRIMARY; CREDENTIAL_SIGNAL_NE_ACCOUNT_AUTHORITY.
+
+
+## 2026-10-24 | CoAnchor+ / glyph-reference stability / dedupe S13
+
+The repeated CoDoodle block is materially deduped against prior S9-S12 bindings. Do not replay unchanged input-fabric, doodle-engine, unknown-finder or glyph-rail work merely because the same source text recurs. DUPLICATE_INPUT_NE_DUPLICATE_WORK.
+
+New delta: glyph-rich relational interaction needs stable anchors. CoAnchor+ is a candidate reference layer binding a glyph/action/projection to exact meaning under scope: anchor_id, source_object, relation/operator, observer/context, direction, inverse/complement, authority ceiling, privacy, currentness, provenance, text equivalent, accessibility label, render hints, receiver, valid-time, supersedes and recovery pointer. A glyph without an anchor is presentation only.
+
+CoGibberTruPriMathRels+ / CoGiberTruPriMathRels+ are retained as user labels/aliases for the broader candidate glyph/relation rail; exact canonical expansion is intentionally not inferred. Prefer aliasing to the shared CoGlyphRail+/CoAnchor+ primitives unless a later distinction proves decision-relevant. NAME_VARIANT_NE_NEW_PRIMITIVE.
+
+Anchor classes may include: object anchor, relation anchor, evidence anchor, authority anchor, observer anchor, time anchor, source/provenance anchor, privacy anchor, resource anchor, receiver anchor, inverse/complement anchor, null/absence anchor, future/scenario anchor, render/projection anchor, and recovery/wake anchor. A stable anchor permits multiple renderings without changing underlying semantics.
+
+Interaction contract: INPUT -> CoRelClutch+ -> GLYPH -> RESOLVE_ANCHOR -> LOAD_MINIMUM_CONTEXT -> GENERATE_CANDIDATES -> SHOW_TEXT/Glyph/CoOrb/CoMap_PREVIEW -> VERIFY_AUTHORITY -> COMMIT_OR_CANCEL -> RECEIPT -> UPDATE_PRIORS. If anchor resolution is ambiguous, prefer preview/HOLD rather than hidden effect.
+
+WHY/HOW/WHERE/WHEN/WHAT/WHO/WHEREFORE can be represented as query facets over the same anchored object rather than separate silos: WHAT=identity/state; WHO=actors/observers/receivers; WHERE=location/substrate/context; WHEN=time/currentness; WHY=purpose/causal hypothesis; HOW=mechanism/process; WHEREFORE=goal/value/implication. Q&A&@+ remains a compact surface over these facets.
+
+Future device/substrate takeover should reuse the same anchored grammar across mouse, keyboard, touch, pen, controller, gaze, voice, VR, CoOrb, CoBar, CoMap and accessible text. PORTABLE_GRAMMAR_NE_IDENTICAL_GESTURE; DEVICE_CAPABILITY_NE_USER_CONSENT; AVAILABLE_INPUT_NE_AUTHORITY.
