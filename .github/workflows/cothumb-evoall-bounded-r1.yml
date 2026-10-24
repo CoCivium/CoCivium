@@ -1,0 +1,62 @@
+name: CoThumb+ CoPayload+ bounded AutoEvo R1
+
+on:
+  push:
+    paths:
+      - 'examples/conodcothumb/**'
+      - 'benchmarks/costretch_r1/**'
+      - '.github/workflows/cothumb-evoall-bounded-r1.yml'
+  pull_request:
+    paths:
+      - 'examples/conodcothumb/**'
+      - 'benchmarks/costretch_r1/**'
+      - '.github/workflows/cothumb-evoall-bounded-r1.yml'
+  schedule:
+    - cron: '17 8 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: cothumb-payload-evo-r1-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  bounded-fail-closed-regressions:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Bounded full policy, local payload and CoStretch regression
+        shell: bash
+        run: |
+          set -euo pipefail
+          args=()
+          if [ "${{ github.event_name }}" = 'schedule' ] || [ "${{ github.event_name }}" = 'workflow_dispatch' ]; then
+            args+=(--include-large)
+          fi
+          node examples/conodcothumb/CoEvoCycleR0.mjs --root . --output "$RUNNER_TEMP/benchmark_evo.jsonl" "${args[@]}"
+      - name: Reject failed or held required claims
+        shell: bash
+        run: |
+          python3 - <<'PYCODE'
+          import json,os,pathlib
+          path=pathlib.Path(os.environ['RUNNER_TEMP'])/'benchmark_evo.jsonl'
+          rows=[json.loads(s) for s in path.read_text().splitlines() if s.strip()]
+          assert len(rows)>=7, 'incomplete wave ledger'
+          assert all(x.get('status')=='PASS' for x in rows), 'FAIL/HELD must not promote'
+          assert all(x.get('nonclaims') for x in rows), 'missing nonclaims'
+          print('PASS_COTHUMB_R1_BOUNDED_CYCLE:',len(rows),'events, no implicit runtime promotion')
+          PYCODE
+      - name: Preserve bounded CI evidence for review
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cothumb-payload-evo-r1-${{ github.run_id }}
+          path: ${{ runner.temp }}/benchmark_evo.jsonl
+          if-no-files-found: warn
+          retention-days: 7
