@@ -1,0 +1,19 @@
+{
+  "schema": "CoOrb.ProviderTaskRoutes.R0",
+  "status": "DESIGN_ONLY__NO_AUTHENTICATED_PROVIDERS",
+  "intent": "Shared, portable task envelope with each provider in its own explicit authorization boundary",
+  "rules": [
+    "No shared session cookies or account impersonation",
+    "Task manifest may be shared after privacy and rights classification",
+    "No automatic login, clipboard reading, password collection, or multiaccount spawning",
+    "A remote desktop connection does not authorize unrelated websites",
+    "Allow individual model disagreement and independent receipts",
+    "Never claim provider parity, unlimited tokens, or infinite materialized sessions"
+  ],
+  "providers": [
+    {"id":"LOCAL_DETERMINISTIC","label":"Offline Python tools", "credential_state":"NOT_INSPECTED", "autorun":false,"adapter_state":"CANDIDATE_NO_EFFECT"},
+    {"id":"OLLAMA","label":"Local Ollama with open-weight model", "credential_state":"NOT_INSPECTED", "autorun":false,"adapter_state":"NOT_CONNECTED"},
+    {"id":"CLAUDE","label":"Anthropic Claude in a user-authorized account", "credential_state":"NOT_INSPECTED", "autorun":false,"adapter_state":"NOT_CONNECTED"},
+    {"id":"PI","label":"Pi coding agent, distinct from Claude session", "credential_state":"NOT_INSPECTED", "autorun":false,"adapter_state":"NOT_CONNECTED"}
+  ]
+}
