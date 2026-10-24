@@ -44,3 +44,20 @@ Source contracts:
 The Perixx keyboard working on X2 is human-observed today, not proof of CoInput adoption; Desktop Commander has been reporting the remote device offline. No cross-device recovery, sent email, public awareness, active million-session fabric or CoEx claimed.
 
 `INTERSTICE_NE_INTENT | PAUSE_NE_AUTHORITY | INVERSIONS_NE_CAUSAL_PROOF | GLYPH_NE_TRUTH | SOURCE_NE_RUNTIME | LINUX_TEST_NE_X2_HARDWARE_ACK | POINTER_NE_RECEIVER_ACK | PREDICTED_NE_EXECUTED`
+
+## CoPriMath GlyphRail R1 | 1,760 lazy descriptions, eight visible choices
+
+**Dependency-free pure Node 22 source**: [CoPriMathGlyphRailR1.mjs](CoPriMathGlyphRailR1.mjs) plus [tests](CoPriMathGlyphRailR1.test.mjs). This is an optional **structural rendering donor** for [CoMiddle R0](https://github.com/CoCivium/CoCivium/blob/main/docs/Architecture/COMIDDLE_COPRIMATH_GLYPHRAIL_R0_20261024.md), not a competing input controller or a system-wide device binding.
+
+- Twenty exact semantic glyph IDs with accessible labels, plain ASCII fallbacks and spoken descriptions.
+- Eleven *declared* object/surface contexts, each selecting exactly eight visible symbols. Eight possible question/challenge/replay operators give `20 * 11 * 8 = 1,760` **syntactic logical addresses**. The code decodes any single logical address without materializing a fleet.
+- **Preview-only**: an explicitly selected known context, public/local classification, synthetic or explicit-UI gesture, and deliberate preview request are required. Raw keys, text, clipboard, arbitrary device fields, unknown/sensitive screens, unchecked native mouse events and external effect requests all fail closed. It never reads screen, current application, pointer, camera, microphone, passwords, local files or a network service.
+- Typed inverse/negation candidates distinguish a plausible reverse hypothesis from actual logical inverse truth. Unobserved is not absent; alleged absence needs scope and evidence. G_d and ET symbolic/story lanes retain clear nonmeasurement labels.
+- Source IDs here are **declared pointers, not authenticated evidence**. `PASS_DECLARED_SHADOW_PREVIEW_ONLY` means the pure object was constructed, not that the real user saw the correct surface or that any action was accepted.
+- Zero network requests, OS hooks, workers, device changes, clipboard inspection, persistence or external sends. The recipient ACK is `null` by design.
+
+Run `node --test experiments/cointerstice-r0/CoPriMathGlyphRailR1.test.mjs`. The existing CoOmniIO CI also runs its source syntax check and tests. **CI PASS qualifies synthetic logic only**; X2 middle/thumb activation, accessible first-use, CoBar overlay and CoMap/CoOrb real projection are HELD until independently observed.
+
+**Next differential gate**: use the same synthetic source ID in this R1 glyph selector and the existing CoNod local browser rail; compare readable meaning, inverse/negative-state treatment, exact number of shown options and correct accessibility. Keep only unique behavior from R1 after review. Never install overlapping mouse hooks.
+
+`ADDRESSABILITY_NE_EXECUTION | GLYPH_NE_PERMISSION | STORY_NE_PHYSICS | PREVIEW_NE_ACK | COLOUR_NE_ONLY_MEANING`.
