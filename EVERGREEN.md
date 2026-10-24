@@ -10,6 +10,8 @@
 
 CoCivium / CoAll is public R&D. This page is a living front door to the most useful proof-backed work we currently have. Nothing here is a claim of completeness, universal adoption, independent validation, or finished product status.
 
+**Fireworks and resilience gate:** [CoFireworks+ readiness R0](docs/Launch/COFIREWORKS_READINESS_R0_20261024.json) distinguishes source/demo spark from first-use, accessible public reach, independent stewardship, and off-GitHub recovery. Source evidence exists; public fireworks and failure-domain resilience are **HELD**, not inferred from commit or worker counts.
+
 ![EVO ALL BETTERS + centred moustache: publish, test, learn, improve](assets/evoall/evo_all_betters_moustache_20261023.svg)
 
 **EVO ALL BETTERS +** is an evidence-first working banner, not a claim of complete integration, deployment, or adoption. [Machine-readable benchmark history](ai/benchmark-evo.jsonl) retains PASS, FAIL, and HELD records with their proof boundaries.
