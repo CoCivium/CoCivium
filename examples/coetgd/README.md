@@ -32,7 +32,7 @@ Optional, **only when an authorized operator explicitly elects external reads**:
 python3 examples/coetgd/source_probe.py --probe
 ```
 
-This invokes one HTTPS GET per exact pinned public URL, up to four URLs, reads at most 4096 response bytes each, timeout 5 seconds per source, follows **zero redirects**, saves no response bodies, sends no cookies, uses no credentials, and emits JSON results. Any 3xx, 4xx, 5xx, inaccessible or empty result is **HELD**, not a declaration that aliens are absent, NASA/SETI are down or a metaphysical hypothesis is false.
+This invokes one HTTPS GET per exact pinned public URL, up to four URLs, reads at most 4096 response bytes each, 5-second socket timeout per operation (not a total wall-clock deadline), follows **zero redirects**, saves no response bodies, sends no cookies, uses no credentials, and emits JSON results. Any 3xx, 4xx, 5xx, inaccessible or empty result is **HELD**, not a declaration that aliens are absent, NASA/SETI are down or a metaphysical hypothesis is false.
 
 A successful `PASS_BOUNDED_HTTP_READ` qualifies only *a small public HTTP read*. It never qualifies a scientific detection, full data ingestion, stable latency, publication rights or receiver acceptance.
 
