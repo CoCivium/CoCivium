@@ -38,6 +38,20 @@ Candidate **CoSpiff+** means receiver-visible polish that improves legibility, c
 
 **Next test:** compare the existing 60-second default route with at least two specialist routes for one consenting first-time receiver. Measure time-to-first-useful-action, explanation accuracy, backtracking, source inspection, confusion points and willingness to continue. Preserve the losing variant and write the result to `ai/benchmark-evo.jsonl`.
 
+## CoThumb+ / CoPayload+ | High-bandwidth contextual handoff
+
+### PASS · Public architecture contract; physical rich-media path HELD
+
+The new [CoThumb+ / CoPayload+ R0 contract](docs/Architecture/COTHUMB_COPAYLOAD_R0_20261024.md) evolves the middle/thumb idea from a narrow text-copy gesture into a typed handoff surface for text, files, images, video, audio, URLs, code, datasets and relation bundles.
+
+The key rule is **parallel interpretation, bounded consequence**: object identification, hashing, metadata, prior lookup, CoOrg/CoMap classification, privacy/authority checks and receiver candidates may fan out cheaply, but send/publish/execute/overwrite remain explicit separately receipted effects.
+
+Large or proof-critical media should normally use file-backed/content-addressed transfer with a manifest and preview, not raw clipboard blobs. The physical X2 gesture and one real rich-media end-to-end receipt remain **HELD**.
+
+`RICH_MEDIA_NE_CLIPBOARD_BLOB`  
+`PARALLEL_PREPARATION_NE_PARALLEL_EFFECTS`  
+`PREPARED_ATTACHMENT_NE_SENT`
+
 ## CoAttractorPull+ / CoCopy+ | First bounded receiver
 
 ### PASS · Offline resource-to-evidence capsule R0
