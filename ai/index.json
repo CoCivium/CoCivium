@@ -107,5 +107,35 @@
       "relation": "CoTheoryAll/CoStrawBe public working projection",
       "status": "OPEN_DRAFT__RESEARCH_CANDIDATE"
     }
+  ],
+  "external_public_experiments": [
+    {
+      "id": "CoOrbWare.FirstLook.R0",
+      "family": [
+        "CoOrb+",
+        "CoMap+",
+        "CoNull+",
+        "CoSeeker+"
+      ],
+      "class": "public_interactive_source",
+      "url_candidate": "https://cocivium.github.io/CoAcademy/coorb/",
+      "source": "https://github.com/CoCivium/CoAcademy/blob/master/docs/coorb/index.html",
+      "discovery": "https://raw.githubusercontent.com/CoCivium/CoAcademy/master/docs/coorb/discovery.json",
+      "nonclaim": "URL_CANDIDATE_NE_INDEPENDENT_HTTP_READBACK"
+    },
+    {
+      "id": "CoCivicLens.R1",
+      "family": [
+        "CoOrb+",
+        "CoMap+",
+        "CoNull+",
+        "CoLearn+"
+      ],
+      "class": "nonpartisan_civic_learning",
+      "url_candidate": "https://cocivium.github.io/CoAcademy/civiclens/",
+      "source": "https://github.com/CoCivium/CoAcademy/blob/master/docs/civiclens/index.html",
+      "discovery": "https://raw.githubusercontent.com/CoCivium/CoAcademy/master/docs/civiclens/discovery.json",
+      "nonclaim": "RENDER_NE_MEASURED_LEARNING"
+    }
   ]
 }
