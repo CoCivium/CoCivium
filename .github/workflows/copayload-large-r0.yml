@@ -1,0 +1,31 @@
+name: CoPayload large-path R0 bounded canary
+on:
+  pull_request:
+    paths:
+      - 'experiments/copayload-large-r0/**'
+      - '.github/workflows/copayload-large-r0.yml'
+permissions:
+  contents: read
+jobs:
+  offline:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - name: Python regression suite
+        run: python3 -B -m unittest discover -s experiments/copayload-large-r0 -p 'test_copayload_large_r0.py' -v
+      - name: Run bounded three-cycle descriptor canary
+        run: |
+          python3 experiments/copayload-large-r0/copayload_large_r0.py --cycles 3 --output "$RUNNER_TEMP/evo.jsonl" --summary "$RUNNER_TEMP/summary.json" --sample-file experiments/copayload-large-r0/copayload_large_r0.py
+          python3 - "$RUNNER_TEMP/evo.jsonl" "$RUNNER_TEMP/summary.json" <<'PY'
+          import json,sys
+          from pathlib import Path
+          rows=[json.loads(s) for s in Path(sys.argv[1]).read_text().splitlines()]
+          summary=json.loads(Path(sys.argv[2]).read_text())
+          assert len(rows)==3
+          assert all(e['status']=='PASS' and e['external_effects']==0 for e in rows)
+          assert all(len(e['results'])==8 for e in rows)
+          assert summary['real_file_readproof']['read_proof']=='LOCAL_STREAM_HASH_ONLY'
+          assert summary['real_file_readproof']['staged_bytes']==0
+          print('PASS_24_SYNTHETIC_CASE_CHECKS_AND_ONE_REAL_SMALL_FILE_READ')
+          PY
