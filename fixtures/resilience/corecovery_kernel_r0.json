@@ -1,0 +1,119 @@
+{
+  "schema": "CoRecoveryKernel.R0",
+  "state": "SYNTHETIC_MINIMAL_RECOVERY_KERNEL__NO_LIVE_REPLICA_CLAIM",
+  "identity": {
+    "system": "CoCivium/CoAll",
+    "kernel_version": "R0",
+    "source_lineage": "synthetic:test"
+  },
+  "authority": {
+    "destructive_effects": false,
+    "public_effects": false,
+    "financial_effects": false,
+    "security_sensitive_effects": false
+  },
+  "current_frontier": {
+    "heads": [
+      "synthetic:frontier:A"
+    ],
+    "blockers": [
+      "synthetic:blocker:B"
+    ],
+    "wake_conditions": [
+      "synthetic:wake:C"
+    ],
+    "unknowns": [
+      "live_global_current_head"
+    ]
+  },
+  "provenance": {
+    "source_ids": [
+      "synthetic:source:1"
+    ],
+    "source_hashes": [
+      "SHA256:synthetic"
+    ],
+    "previous_kernel": null
+  },
+  "custody_pointers": {
+    "public_safe": [
+      "public:pointer:bootstrap"
+    ],
+    "private_opaque": [
+      "private:pointer:opaque"
+    ],
+    "live_offsite_custody_proven": false
+  },
+  "reconstruction_recipe": {
+    "public": [
+      "locate public bootstrap",
+      "verify source hash"
+    ],
+    "private": [
+      "use separately authorized private pointer",
+      "verify receipt"
+    ],
+    "execution": [
+      "bind capability route",
+      "verify authority ceiling"
+    ],
+    "stop_conditions": [
+      "source hash mismatch",
+      "private pointer unresolved",
+      "authority ambiguous"
+    ]
+  },
+  "exception_register": [
+    "provider_independent_reasoning_unproven",
+    "offsite_private_custody_unproven",
+    "second_public_host_unproven"
+  ],
+  "human_fallback": {
+    "system_summary": "Recover CoAll orientation, authority and bounded frontier without assuming provider chat, local site or primary git host.",
+    "first_safe_step": "Verify kernel identity and source hashes before attempting any mutation.",
+    "do_not_guess": [
+      "credentials",
+      "current authority",
+      "private payload location",
+      "global current head"
+    ]
+  },
+  "domain_cases": [
+    {
+      "id": "D1",
+      "copies": [
+        "X2",
+        "LOCAL_NAS",
+        "LOCAL_PRINT"
+      ],
+      "independent_domains": 1,
+      "expected_valid": false
+    },
+    {
+      "id": "D2",
+      "copies": [
+        "LOCAL_PRIVATE",
+        "OFFSITE_PRIVATE",
+        "OFFLINE_HUMAN"
+      ],
+      "independent_domains": 3,
+      "expected_valid": true
+    }
+  ],
+  "live_independent_reader_proof": false,
+  "live_second_domain_readproof": false,
+  "live_third_domain_readproof": false,
+  "provider_account_not_required_proven": false,
+  "primary_local_site_not_required_proven": false,
+  "primary_git_host_not_required_proven": false,
+  "rails": [
+    "RECOVERY_KERNEL_NE_FULL_PROJECT_COPY",
+    "BOOTSTRAP_SUFFICIENCY_NE_FULL_STATE_REPLICATION",
+    "UNKNOWN_NE_FILL_WITH_GUESS",
+    "THREE_COPIES_NE_THREE_FAILURE_DOMAINS",
+    "RECOVERY_PACKET_NE_SECRET_DUMP",
+    "STRUCTURAL_PASS_NE_RECOVERY_PROOF",
+    "HUMAN_RECOVERY_NE_ONTOLOGY_EXAM",
+    "VALIDATION_IS_NOT_ACCEPTANCE"
+  ]
+}
