@@ -1,0 +1,41 @@
+name: CoStageReview R0 bounded structural checks
+
+on:
+  push:
+    paths:
+      - '.github/workflows/costage-review-r0.yml'
+      - 'ai/review/stage-review-policy-r0.json'
+      - 'ai/resilience/cospiff-fireworks-r1.json'
+      - 'scripts/CoStageReviewGateR0.py'
+      - 'tests/test_stage_review_gate_r0.py'
+      - 'docs/Architecture/COROLE_SPACE_PREVIEW_R0.md'
+      - 'docs/Architecture/COEXPERIMENT_SPACE_TURTLES_R0.md'
+      - 'docs/Strategy/COSPIFF_FIREWORKS_SURVIVABILITY_R1.md'
+  pull_request:
+    paths:
+      - '.github/workflows/costage-review-r0.yml'
+      - 'ai/review/stage-review-policy-r0.json'
+      - 'ai/resilience/cospiff-fireworks-r1.json'
+      - 'scripts/CoStageReviewGateR0.py'
+      - 'tests/test_stage_review_gate_r0.py'
+      - 'docs/Architecture/COROLE_SPACE_PREVIEW_R0.md'
+      - 'docs/Architecture/COEXPERIMENT_SPACE_TURTLES_R0.md'
+      - 'docs/Strategy/COSPIFF_FIREWORKS_SURVIVABILITY_R1.md'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  bounded-review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Read pinned repository revision
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+      - name: Run 40 bounded synthetic policy regressions
+        run: python3 -m unittest discover -s tests -p 'test_stage_review_gate_r0.py' -v
+      - name: Verify exact source bindings and gate coverage (not approval)
+        run: python3 scripts/CoStageReviewGateR0.py --repo-root .
