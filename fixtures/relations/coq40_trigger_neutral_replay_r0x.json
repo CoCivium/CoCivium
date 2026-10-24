@@ -1,0 +1,70 @@
+{
+  "schema": "CoQ40TriggerNeutralReplay.R0X",
+  "state": "PASS_BOUNDED_SYNTHETIC_LEASE_RECEIPT_REPLAY__NO_PERSISTENT_TRIGGER",
+  "task": {
+    "task_id": "r0x.synthetic.currentness.read",
+    "task_sha256": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+    "idempotency_key": "idem:r0x:currentness:001",
+    "authority_valid": true,
+    "effect_allowed": true,
+    "confidentiality_valid": true
+  },
+  "cases": [
+    {
+      "id": "clean_claim",
+      "active_lease": false,
+      "lease_expired": false,
+      "receipt_exists": false,
+      "task_hash_matches": true,
+      "revalidation": true,
+      "expected": "LEASE_CLAIMED",
+      "executions": 1
+    },
+    {
+      "id": "concurrent_claim",
+      "active_lease": true,
+      "lease_expired": false,
+      "receipt_exists": false,
+      "task_hash_matches": true,
+      "revalidation": true,
+      "expected": "HOLD_ACTIVE_LEASE",
+      "executions": 0
+    },
+    {
+      "id": "stale_takeover",
+      "active_lease": true,
+      "lease_expired": true,
+      "receipt_exists": false,
+      "task_hash_matches": true,
+      "revalidation": true,
+      "expected": "LEASE_TAKEOVER_ELECTED",
+      "executions": 1
+    },
+    {
+      "id": "already_receipted",
+      "active_lease": false,
+      "lease_expired": false,
+      "receipt_exists": true,
+      "task_hash_matches": true,
+      "revalidation": true,
+      "expected": "ALREADY_RECEIPTED_NO_EXECUTION",
+      "executions": 0
+    },
+    {
+      "id": "identity_collision",
+      "active_lease": false,
+      "lease_expired": false,
+      "receipt_exists": false,
+      "task_hash_matches": false,
+      "revalidation": true,
+      "expected": "FAIL_CLOSED_IDENTITY_COLLISION",
+      "executions": 0
+    }
+  ],
+  "persistent_trigger_installed": false,
+  "live_trigger_proven": false,
+  "task_signature_proven": false,
+  "receiver_semantic_acceptance_proven": false,
+  "runtime_effect": false,
+  "public_effect": false
+}

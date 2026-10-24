@@ -1,0 +1,33 @@
+{
+  "schema": "CoQuestionSpaceCompiler.R0G",
+  "state": "CANDIDATE_10000X_QUESTION_SPACE_COMPILER__NO_UNBOUNDED_ACTIVE_COMPUTE",
+  "axes": {
+    "subjects": 100,
+    "operators": 10,
+    "receiver_classes": 10
+  },
+  "expected_raw_candidates": 10000,
+  "active_frontier_limit": 25,
+  "gtrail_default_for_unselected": "LIGHT",
+  "forensic_default": false,
+  "runtime_effect": false,
+  "public_effect": false,
+  "rules": {
+    "deterministic_ids": true,
+    "decision_signature_required": true,
+    "bounded_probe_required_for_election": true,
+    "unresolved_authority_conflict_blocks_election": true,
+    "dedupe_before_election": true,
+    "metabolism_state_required": true,
+    "active_frontier_bounded": true
+  },
+  "rails": [
+    "QUESTION_SPACE_CAN_GROW_UNBOUNDED__ACTIVE_FRONTIER_MUST_BE_BOUNDED",
+    "ENDLESS_POTENTIAL_NE_ENDLESS_COMPUTE",
+    "MORE_GENERATED_QUESTIONS_NE_MORE_PROGRESS",
+    "10000_CANDIDATES_NE_10000_TASKS",
+    "QUESTION_GENERATION_RATE_MUST_NOT_EXCEED_PROOF_AND_RECEIVER_CAPACITY",
+    "UNSELECTED_QUESTION_NE_FULL_GTRAIL_REQUIRED",
+    "VALIDATION_IS_NOT_ACCEPTANCE"
+  ]
+}

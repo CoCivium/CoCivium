@@ -1,0 +1,37 @@
+{
+  "schema": "CoQ40ReceiverDisposition.R0Y",
+  "state": "PASS_BOUNDED_RECEIVER_DISPOSITION_OF_MACHINE_RECEIPT__SEMANTIC_CLAIM_NOT_PROMOTED",
+  "source": {
+    "task_id": "r0v.currentness-read.cobar-control-view",
+    "task_sha256": "A1FEF1389B6ABC2FAF43C2A75204292B33CA1ECFA0DCB0CBB1F6D6C87CD41929",
+    "target_sha256": "E72555AFC67CA5B4FD54D0A9327C428F460C04B88A7047441648EFD21556A42A",
+    "receipt_sha256": "240B7F90C07AB737018F33D0375805FC70E2451E885DA1E2C06D0A5E136AF5A2",
+    "effect_class": "OBSERVE",
+    "authority_ceiling": "READ_ONLY_LOCAL",
+    "machine_disposition": "PARK_AS_STALE_VISIBLE_PROJECTION"
+  },
+  "effect_counts": {
+    "target_writes": 0,
+    "repo_mutations": 0,
+    "public_effects": 0,
+    "authority_changes": 0
+  },
+  "persistent_worker_installed": false,
+  "receiver_disposition": "ACCEPT_RECEIPT_AS_BOUNDED_EXECUTION_EVIDENCE",
+  "semantic_disposition": "HOLD_UNDERLYING_STALENESS_CLASSIFICATION_AS_RECEIVER_RELATIVE",
+  "receipt_accepted": true,
+  "semantic_claim_promoted": false,
+  "signed_task_authenticity_proven": false,
+  "signed_receipt_authenticity_proven": false,
+  "chatgpt_independent_trigger_proven": false,
+  "provider_exit_complete": false,
+  "rails": [
+    "RECEIPT_ACCEPTED_NE_ALL_RECEIPT_CONTENT_ACCEPTED_AS_TRUTH",
+    "RECEIPT_NE_SEMANTIC_ACCEPTANCE",
+    "HASHED_RECEIPT_NE_SIGNED_RECEIPT",
+    "TASK_HASH_NE_SIGNATURE",
+    "STALE_PROJECTION_NE_STALE_SEMANTIC_STATE",
+    "RECEIVER_DISPOSITION_NE_GLOBAL_TRUTH",
+    "LOCAL_MACHINE_DEED_CHAIN_NE_PROVIDER_EXIT_COMPLETE"
+  ]
+}

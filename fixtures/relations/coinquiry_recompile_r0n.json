@@ -1,0 +1,63 @@
+{
+  "schema": "CoInquiryRecompile.R0N",
+  "state": "CANDIDATE_POST_Q10_FRONTIER_RECOMPILE__NO_RUNTIME_AUTHORITY_CHANGE",
+  "source_bindings": {
+    "inquiry_compiler_path": "fixtures/relations/coinquiry_compiler_r0f.json",
+    "inquiry_compiler_blob_sha": "81560132c5676a68beaf529093ab1180887d89cd",
+    "post_q07_recompile_path": "fixtures/relations/coinquiry_recompile_r0l.json",
+    "post_q07_recompile_blob_sha": "1a5a75b81fc82da83f93eca79c2ed7fc59525dd0",
+    "q10_live_use_trace_path": "fixtures/relations/cosneak_human_relay_live_use_trace_r0m.json",
+    "q10_live_use_trace_blob_sha": "a0d61b161cc29822c4aaf8488990c665b62810a9"
+  },
+  "resolved_questions": [
+    {
+      "id": "Q07_PASS_WITHOUT_PICKUP",
+      "resolution": "CLOSED_FOR_SAMPLED_SCOPE",
+      "global_scope_complete": false
+    },
+    {
+      "id": "Q10_HUMAN_RELAY_DEPENDENCY",
+      "resolution": "CLOSED_FOR_SAMPLED_SCOPE__FOUR_STRONG_HISTORICAL_MANUALITY_SURFACES_NOT_PROVEN_LIVE",
+      "sample_count": 4,
+      "proven_live_human_relay_dependencies": 0,
+      "global_scope_complete": false
+    }
+  ],
+  "recompile_policy": {
+    "remove_resolved_from_active_frontier": true,
+    "preserve_question_history": true,
+    "reuse_original_hard_gates": true,
+    "reuse_original_pareto_dimensions": true,
+    "tie_break": [
+      "LOWEST_PROOF_COST",
+      "HIGHEST_FALSE_COMPLETION_DETECTION",
+      "STABLE_ID"
+    ]
+  },
+  "expected": {
+    "eligible_ids": [
+      "Q14_FALSE_FAILURE_DOMAIN_DIVERSITY",
+      "Q40_COMPILE_RECURRING_DEED_LOCAL"
+    ],
+    "pareto_frontier_ids": [
+      "Q14_FALSE_FAILURE_DOMAIN_DIVERSITY",
+      "Q40_COMPILE_RECURRING_DEED_LOCAL"
+    ],
+    "elected_next_proof_id": "Q14_FALSE_FAILURE_DOMAIN_DIVERSITY",
+    "elected_receiver": "resilience-auditor",
+    "elected_probe": "Compare a bounded proof set by provider, credential root, host, site, and execution substrate rather than receiver count alone.",
+    "runtime_effect": false,
+    "public_effect": false
+  },
+  "rails": [
+    "QUESTION_RESOLUTION_NE_HISTORY_ERASURE",
+    "SAMPLED_SCOPE_CLOSED_NE_GLOBAL_CENSUS_COMPLETE",
+    "VISIBLE_HISTORICAL_MANUAL_PATH_NE_LIVE_MANUAL_DEPENDENCY",
+    "FRONTIER_RECOMPILE_NE_TRUTH_REORDERING",
+    "QUESTION_PRIORITY_NE_TRUTH_PRIORITY",
+    "PARETO_FRONTIER_NE_GLOBAL_OPTIMUM",
+    "ELECTED_NEXT_PROOF_NE_RUNTIME_AUTHORITY",
+    "FAILURE_DOMAIN_LABEL_NE_FAILURE_DOMAIN_PROOF",
+    "VALIDATION_IS_NOT_ACCEPTANCE"
+  ]
+}

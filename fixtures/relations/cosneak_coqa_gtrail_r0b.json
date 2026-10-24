@@ -1,0 +1,171 @@
+{
+  "schema": "CoSneakCoQAGTrail.AdaptiveTrace.R0B",
+  "state": "CANDIDATE_ADAPTIVE_QA_TRACE_AND_SNEAK_DIAGNOSTIC_POLICY__NO_RUNTIME_AUTHORITY_CHANGE",
+  "source_bindings": {
+    "coqa_doc_path": "docs/Architecture/COQA_QUESTION_COMMONS_R0.md",
+    "coqa_doc_blob_sha": "b0dc1f12faebf6397c055fb31adf6b6d10fd0c66",
+    "coqa_schema_path": "schemas/coqa-object-v0.1.schema.json",
+    "coqa_schema_blob_sha": "1e5ba9b5465b5dc29fd21e144e371c7dea8cb5b3",
+    "cosneak_r0_path": "fixtures/relations/cosneak_coqa_gtrail_r0.json",
+    "cosneak_r0_blob_sha": "1762ef76cad59379a81f9765138b099ba334d207",
+    "local_census_path": "fixtures/relations/cosneak_local_census_r0a.json",
+    "local_census_blob_sha": "ef8c4d926cd4fce1529ad00337821a29665fc328"
+  },
+  "trail_levels": {
+    "NONE": "ephemeral low-value non-durable interaction",
+    "LIGHT": "identity + provenance + currentness + closure/successor",
+    "STANDARD": "LIGHT + evidence + challenge/next-question + receiver scope",
+    "DEEP": "STANDARD + branch points + reopen/currentness changes + competing answers",
+    "FORENSIC": "DEEP + exact hashes + authority/effect chain + readproof/custody + contradiction timeline"
+  },
+  "qa_objects": [
+    {
+      "id": "Q0_EPHEMERAL",
+      "durable": false,
+      "risk": "LOW",
+      "time_sensitive": false,
+      "disputed": false,
+      "reopened": false,
+      "authority_or_effect_impact": false,
+      "edge_count": 0,
+      "expected_trail": "NONE",
+      "expected_loop_mode": "NO_LOOP"
+    },
+    {
+      "id": "Q1_SETTLED_FAQ",
+      "durable": true,
+      "risk": "LOW",
+      "time_sensitive": false,
+      "disputed": false,
+      "reopened": false,
+      "authority_or_effect_impact": false,
+      "edge_count": 2,
+      "expected_trail": "LIGHT",
+      "expected_loop_mode": "CLOSED_FOR_SCOPE"
+    },
+    {
+      "id": "Q2_MULTI_SOURCE",
+      "durable": true,
+      "risk": "MEDIUM",
+      "time_sensitive": false,
+      "disputed": false,
+      "reopened": false,
+      "authority_or_effect_impact": false,
+      "edge_count": 5,
+      "expected_trail": "STANDARD",
+      "expected_loop_mode": "OPTIONAL_NEXT_QUESTION"
+    },
+    {
+      "id": "Q3_TIME_REOPENED",
+      "durable": true,
+      "risk": "MEDIUM",
+      "time_sensitive": true,
+      "disputed": true,
+      "reopened": true,
+      "authority_or_effect_impact": false,
+      "edge_count": 7,
+      "expected_trail": "DEEP",
+      "expected_loop_mode": "WAKE_ON_EVIDENCE_REOPEN"
+    },
+    {
+      "id": "Q4_AUTHORITY_CONFLICT",
+      "durable": true,
+      "risk": "HIGH",
+      "time_sensitive": true,
+      "disputed": true,
+      "reopened": true,
+      "authority_or_effect_impact": true,
+      "edge_count": 9,
+      "expected_trail": "FORENSIC",
+      "expected_loop_mode": "HOLD_UNTIL_AUTHORITY_RESOLVED"
+    }
+  ],
+  "sneak_signals": [
+    {
+      "signal_id": "S1",
+      "class": "STALE_VISIBLE_CURRENTNESS",
+      "evidence_source": "cosneak_local_census_r0a",
+      "causal_proof": false,
+      "diagnostic_question": "Which visible projections are actually consumed by the current receiver, and what fresher object supersedes each stale LATEST-labelled projection?"
+    },
+    {
+      "signal_id": "S2",
+      "class": "LATEST_LABEL_WITH_OLD_CONTENT",
+      "evidence_source": "cosneak_local_census_r0a",
+      "causal_proof": false,
+      "diagnostic_question": "Does LATEST reflect receiver-verified currentness or only a filename convention?"
+    },
+    {
+      "signal_id": "S3",
+      "class": "RECEIVER_PICKUP_GAP",
+      "evidence_source": "synthetic",
+      "causal_proof": false,
+      "diagnostic_question": "Is work landed but not picked up by the elected receiver?"
+    },
+    {
+      "signal_id": "S4",
+      "class": "QUESTION_REOPEN_WITHOUT_NEW_EVIDENCE",
+      "evidence_source": "synthetic",
+      "causal_proof": false,
+      "diagnostic_question": "What materially changed since prior closure, and should this be a duplicate rather than a reopened question?"
+    },
+    {
+      "signal_id": "S5",
+      "class": "TRAIL_INFLATION",
+      "evidence_source": "synthetic",
+      "causal_proof": false,
+      "diagnostic_question": "Is trace depth reducing uncertainty or merely increasing proof and attention load?"
+    },
+    {
+      "signal_id": "S6",
+      "class": "METRIC_UNIT_MISMATCH",
+      "evidence_source": "synthetic",
+      "causal_proof": false,
+      "diagnostic_question": "Are unlike units being compared or aggregated as though they shared a calibrated scale?"
+    }
+  ],
+  "qa_loop_policy": {
+    "every_qa_must_loop": false,
+    "semantic_loop_requires_graph_cycle": false,
+    "closure_is_receiver_and_scope_relative": true,
+    "reopen_requires_material_delta_or_explicit_receiver_request": true
+  },
+  "gtrail_policy": {
+    "adaptive_levels": ["NONE", "LIGHT", "STANDARD", "DEEP", "FORENSIC"],
+    "durable_object_minimum": "LIGHT",
+    "default_everything_forensic": false,
+    "trail_generated_on_demand_or_policy_need": true,
+    "trail_overhead_is_free": false,
+    "trace_implies_truth": false,
+    "path_implies_causation": false
+  },
+  "expected": {
+    "trail_distribution": {
+      "NONE": 1,
+      "LIGHT": 1,
+      "STANDARD": 1,
+      "DEEP": 1,
+      "FORENSIC": 1
+    },
+    "qa_objects_with_recurrence": 3,
+    "qa_objects_without_recurrence": 2,
+    "sneak_signals_generate_diagnostic_questions": 6,
+    "sneak_signals_with_causal_proof": 0
+  },
+  "rails": [
+    "COSNEAK_SIGNAL_NE_BLOCK",
+    "FRICTION_SIGNAL_NE_CAUSAL_PROOF",
+    "QA_LOOP_NE_INFINITE_LOOP",
+    "SEMANTIC_LOOP_NE_GRAPH_CYCLE_REQUIRED",
+    "ANSWER_NE_FORCED_NEXT_QUESTION",
+    "CLOSED_FOR_RECEIVER_NE_CLOSED_FOREVER",
+    "DURABLE_QA_REQUIRES_MIN_PROVENANCE",
+    "GTRAIL_DEPTH_NE_TRUTH_SCORE",
+    "FORENSIC_TRAIL_NE_TRUTH",
+    "TRAIL_OVERHEAD_NE_FREE",
+    "EVERYTHING_FORENSIC_NE_SAFER",
+    "TRACE_NE_TRUTH",
+    "PATH_EXISTS_NE_PATH_IS_CAUSAL",
+    "VALIDATION_IS_NOT_ACCEPTANCE"
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "schema": "CoQ40MachineOwnedTaskConsumer.R0V",
+  "state": "PASS_PREEXISTING_TASK_CONSUMED__HASHED_READONLY_RECEIPT_EMITTED__TRIGGER_INDEPENDENCE_UNPROVEN",
+  "machine": "X2",
+  "task_id": "r0v.currentness-read.cobar-control-view",
+  "task_sha256": "A1FEF1389B6ABC2FAF43C2A75204292B33CA1ECFA0DCB0CBB1F6D6C87CD41929",
+  "target": "D:\\CoCivium\\CoStacks\\RickBar\\COBAR_CONTROL_VIEW__LATEST.json",
+  "target_sha256": "E72555AFC67CA5B4FD54D0A9327C428F460C04B88A7047441648EFD21556A42A",
+  "receipt_sha256": "240B7F90C07AB737018F33D0375805FC70E2451E885DA1E2C06D0A5E136AF5A2",
+  "target_age_days": 180.177,
+  "disposition": "PARK_AS_STALE_VISIBLE_PROJECTION",
+  "preexisting_task_consumption_proven": true,
+  "deterministic_readonly_execution_proven": true,
+  "hashed_receipt_proven": true,
+  "model_call_required_for_execution_step": false,
+  "persistent_worker_installed": false,
+  "trigger_independence_proven": false,
+  "task_signature_present": false,
+  "receiver_acceptance_proven": false,
+  "cross_failure_domain_independence_proven": false,
+  "runtime_effects": {
+    "target_writes": 0,
+    "repo_mutations_from_worker": 0,
+    "public_effects": 0,
+    "authority_changes": 0
+  },
+  "rails": [
+    "TASK_HASH_NE_SIGNATURE",
+    "HASHED_RECEIPT_NE_RECEIVER_ACCEPTANCE",
+    "PREEXISTING_TASK_NE_INDEPENDENT_TRIGGER",
+    "READONLY_WORKER_NE_CHATGPT_INDEPENDENT_TRIGGER",
+    "ONE_SHOT_CONSUMER_NE_PERSISTENT_WORKER",
+    "TRIGGER_MECHANISM_NE_DEED_SEMANTICS",
+    "LOCAL_NE_INDEPENDENT_UNLESS_FAILURE_DOMAINS_PROVEN",
+    "VALIDATION_IS_NOT_ACCEPTANCE"
+  ]
+}

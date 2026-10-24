@@ -1,0 +1,44 @@
+{
+  "schema": "CoSneakHumanDependencyCensus.R0E",
+  "observed_at_utc": "2026-10-02T22:36:45.4566637Z",
+  "files_scanned": 263,
+  "counts": {
+    "COPYPASTE": {
+      "files": 8,
+      "mentions": 21
+    },
+    "DOWNLOAD": {
+      "files": 14,
+      "mentions": 48
+    },
+    "MANUAL": {
+      "files": 11,
+      "mentions": 37
+    },
+    "REFRESH": {
+      "files": 11,
+      "mentions": 25
+    },
+    "RICK_ACTION": {
+      "files": 0,
+      "mentions": 0
+    },
+    "HUMAN_GATE": {
+      "files": 0,
+      "mentions": 0
+    }
+  },
+  "receipt_sha256": "7F98A9D612AEBAC7757E141DA836573E71CA72FC599D1046AE3B247A8FCA0DFF",
+  "live_dependency_proven": false,
+  "causal_blocker_proven": false,
+  "repair_performed": false,
+  "candidate_relation": "HISTORICAL_MANUALITY_REMAINING_VISIBLE_OR_ROUTABLE_AFTER_AUTOMATION_EVOLVED",
+  "rails": [
+    "TEXT_MENTION_NE_LIVE_DEPENDENCY",
+    "HUMAN_GATE_NE_BAD_FRICTION",
+    "MANUAL_NE_WRONG_BY_DEFAULT",
+    "HISTORICAL_MANUAL_PATH_NE_CURRENT_HUMAN_BOTTLENECK",
+    "CENSUS_NE_CAUSAL_PROOF",
+    "READONLY_CENSUS_NE_REPAIR"
+  ]
+}

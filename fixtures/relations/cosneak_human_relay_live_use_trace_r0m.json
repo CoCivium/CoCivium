@@ -1,0 +1,48 @@
+{
+  "schema": "CoSneakHumanRelayLiveUseTrace.R0M",
+  "state": "PASS_BOUNDED_Q10_LIVE_USE_TRACE__SAMPLED_HISTORICAL_PATHS_NOT_PROVEN_LIVE",
+  "sample_count": 4,
+  "samples": [
+    {
+      "id": "coinjection_staging_v1",
+      "live_human_relay_proven": false,
+      "target_paths_checked_absent": 2,
+      "disposition": "HISTORICAL_STAGING_SURFACE__REFERENCED_LIVE_PATHS_ABSENT__NOT_PROVEN_CURRENT_DEPENDENCY"
+    },
+    {
+      "id": "rickbar_input_v2",
+      "live_human_relay_proven": false,
+      "target_paths_checked_absent": 1,
+      "disposition": "HISTORICAL_MANUAL_DOWNLOAD_PATH__LIVE_RECEIVER_UNPROVEN__TARGET_FILE_ABSENT"
+    },
+    {
+      "id": "coclip_placeholders",
+      "live_human_relay_proven": false,
+      "target_paths_checked_absent": 0,
+      "disposition": "DESIGN_PLACEHOLDER__NO_CURRENT_RECEIVER_WIRING_PROVEN"
+    },
+    {
+      "id": "cobar_control_view",
+      "live_human_relay_proven": false,
+      "target_paths_checked_absent": 0,
+      "disposition": "STALE_CONTROL_PROJECTION__ANTI_CLIPBOARD_INTENT__CURRENT_RECEIVER_BINDING_UNPROVEN"
+    }
+  ],
+  "totals": {
+    "proven_live_human_relay_dependencies": 0,
+    "historical_or_placeholder_live_use_unproven": 4,
+    "referenced_paths_checked_absent": 3
+  },
+  "sampled_scope_closed": true,
+  "global_census_complete": false,
+  "runtime_effect": false,
+  "public_effect": false,
+  "rails": [
+    "TEXT_MENTION_NE_LIVE_DEPENDENCY",
+    "VISIBLE_HISTORICAL_MANUAL_PATH_NE_LIVE_MANUAL_DEPENDENCY",
+    "STALE_INSTRUCTION_NE_CURRENT_REQUIREMENT",
+    "TARGET_PATH_ABSENT_NE_GLOBAL_DEPENDENCY_ABSENT",
+    "NO_RECEIVER_BINDING_NE_NO_RECEIVER_EXISTS_ANYWHERE",
+    "SAMPLED_SCOPE_CLOSED_NE_GLOBAL_CENSUS_COMPLETE"
+  ]
+}

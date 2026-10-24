@@ -1,0 +1,27 @@
+{
+  "schema": "CoQ40DeterministicProbeExecution.R0U",
+  "state": "PASS_BOUNDED_READONLY_PROBE_EXECUTED__CURRENT_BINDING_NOT_PROVEN",
+  "target": "D:\\CoCivium\\CoStacks\\RickBar\\COBAR_CONTROL_VIEW__LATEST.json",
+  "probe_kind": "EXACT_CURRENTNESS_READ",
+  "target_created_at_utc": "2026-04-07T23:36:35Z",
+  "search_scope": "D:\\CoCivium",
+  "search_matches": 22,
+  "current_receiver_binding_proven": false,
+  "live_receiver_reference_found": false,
+  "disposition": "PARK_AS_STALE_VISIBLE_PROJECTION_PENDING_PROVEN_CURRENT_RECEIVER_OR_SUCCESSOR",
+  "effects": {
+    "runtime_mutation": 0,
+    "public_effect": 0,
+    "authority_change": 0,
+    "file_rewrite": 0
+  },
+  "persistent_machine_owned_worker_proven": false,
+  "chatgpt_independent_orchestration_proven": false,
+  "rails": [
+    "REFERENCE_SEARCH_NE_COMPLETE_WORLD_SEARCH",
+    "NO_CURRENT_BINDING_FOUND_NE_NO_BINDING_EXISTS_ANYWHERE",
+    "STALE_PROJECTION_NE_STALE_SEMANTIC_STATE",
+    "READONLY_PROBE_NE_REPAIR",
+    "ACCEPTED_DEED_NE_PERSISTENT_WORKER"
+  ]
+}

@@ -1,0 +1,96 @@
+{
+  "schema": "CoQ40ChangedContractCanary.R0S",
+  "state": "CHANGED_CONTRACT_PREPARED__LOCAL_EXECUTION_NOT_YET_RUN__NO_RUNTIME_AUTHORITY_CHANGE",
+  "source_bindings": {
+    "r0q_path": "fixtures/relations/coq40_local_recurring_deed_canary_r0q.json",
+    "r0q_blob_sha": "bbe0de888d28547129b7cb738b8ebf0541eb16bf",
+    "r0r_path": "fixtures/relations/coq40_semantic_acceptance_gate_r0r.json",
+    "r0r_blob_sha": "0e8368f9f762267218782a041455bf126c6f31bc"
+  },
+  "target_route": {
+    "machine": "X2",
+    "runtime": "Ollama",
+    "model": "qwen3:4b",
+    "endpoint_class": "LOOPBACK_ONLY",
+    "persistent_worker_install_allowed": false,
+    "model_pull_or_install_allowed": false,
+    "max_changed_contract_attempts": 1
+  },
+  "input_signal": {
+    "signal_id": "Q40_SIGNAL_STALE_LATEST_NAME",
+    "statement": "Artifact LATEST is 90 days old with no current binding",
+    "required_nonclaim": "STALE_FILE_NE_STALE_SEMANTIC_STATE"
+  },
+  "changed_output_contract": {
+    "required_fields": ["action", "reason", "next_probe", "nonclaim"],
+    "allowed_actions": ["PROBE", "PARK"],
+    "required_nonclaim": "STALE_FILE_NE_STALE_SEMANTIC_STATE",
+    "next_probe": {
+      "type": "OBJECT",
+      "required_fields": [
+        "kind",
+        "target",
+        "evidence_surface",
+        "expected_evidence",
+        "negative_evidence",
+        "stop_condition"
+      ],
+      "allowed_kinds": [
+        "READ_EXACT_CURRENTNESS_BINDING",
+        "READ_RECEIVER_STATE",
+        "READ_PROVENANCE_EDGE",
+        "WAIT_FOR_NAMED_WAKE_EVENT"
+      ]
+    }
+  },
+  "prompt_contract": {
+    "instruction": "Return exactly one JSON object. Classify the bounded signal as PROBE or PARK. Preserve the required nonclaim. next_probe MUST be a structured object naming one evidence-producing bounded probe with an explicit stop condition. Do not return a date or vague suggestion as next_probe.",
+    "no_markdown": true,
+    "no_extra_keys": true,
+    "max_changed_contract_attempts": 1
+  },
+  "positive_control": {
+    "action": "PROBE",
+    "reason": "Artifact age alone does not establish semantic staleness; read the exact currentness binding once.",
+    "next_probe": {
+      "kind": "READ_EXACT_CURRENTNESS_BINDING",
+      "target": "artifact:LATEST",
+      "evidence_surface": "currentness-binding-index",
+      "expected_evidence": "Exact current binding with stable object identity and source timestamp, or an explicit bounded absence result.",
+      "negative_evidence": "No exact current binding is discoverable on the elected currentness surface.",
+      "stop_condition": "Stop after one exact binding lookup and classify CURRENT_BOUND, UNBOUND, or UNKNOWN."
+    },
+    "nonclaim": "STALE_FILE_NE_STALE_SEMANTIC_STATE"
+  },
+  "local_attempt": null,
+  "expected": {
+    "contract_compiles": true,
+    "positive_control_semantically_accepted": true,
+    "actual_local_changed_contract_attempt_executed": false,
+    "actual_local_output_semantically_accepted": false,
+    "q40_full_semantic_acceptance_proven": false,
+    "persistent_worker_installed": false,
+    "provider_route_disabled": false,
+    "runtime_effect": false,
+    "public_effect": false
+  },
+  "next_gate": {
+    "receiver": "provider-exit-planner",
+    "action": "RUN_AT_MOST_ONE_CHANGED_CONTRACT_LOCAL_CANARY_THEN_APPLY_R0R_SEMANTIC_VERIFIER",
+    "success_evidence": "Exact local-model output satisfies the changed structure and independently passes the R0R semantic verifier.",
+    "negative_evidence": "Changed-contract local output fails strict JSON or semantic verifier; preserve result and stop rather than retry unchanged.",
+    "stop_condition": "Stop after one changed-contract local attempt and one independent semantic disposition."
+  },
+  "rails": [
+    "CONTRACT_CHANGE_NE_LOCAL_MODEL_EXECUTION",
+    "PROMPT_READY_NE_MODEL_PASS",
+    "POSITIVE_CONTROL_NE_MODEL_PASS",
+    "STRICT_OUTPUT_PASS_NE_SEMANTIC_ACCEPTANCE",
+    "FAILED_DEED_NE_PERMISSION_TO_RETRY_UNCHANGED",
+    "ONE_CHANGED_CONTRACT_ATTEMPT_NE_RETRY_LOOP",
+    "COMPILED_DEED_NE_ACCEPTED_WORKER",
+    "LOCAL_EXECUTION_NE_PROVIDER_INDEPENDENCE_PROOF",
+    "LOCAL_ROUTE_NE_PROVIDER_EXIT_COMPLETE",
+    "VALIDATION_IS_NOT_ACCEPTANCE"
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "schema": "CoSneakCoQAGTrail.R0",
+  "state": "CANDIDATE_ANTI_STALL_AND_QA_TRACE_RELATIONS__NO_RUNTIME_AUTHORITY_CHANGE",
+  "cosneak_classes": [
+    "STALE_CURRENTNESS",
+    "HIDDEN_MANUAL_DEPENDENCY",
+    "AUTHORITY_AMBIGUITY",
+    "RECEIVER_MISMATCH",
+    "DUPLICATE_WORK",
+    "QUEUE_STARVATION",
+    "CONTENTION",
+    "RETRY_LOOP",
+    "EXCESSIVE_CONTEXT_LOAD",
+    "DEPENDENCY_CONCENTRATION",
+    "STALE_POINTER",
+    "PROOF_DEFICIT",
+    "VISIBILITY_DEFICIT",
+    "FALSE_COMPLETION_SIGNAL"
+  ],
+  "qa_loop": {
+    "mandatory_infinite_loop": false,
+    "stable_identity_required": true,
+    "currentness_required": true,
+    "provenance_required": true,
+    "optional_edges": [
+      "ANSWERED_BY",
+      "CHALLENGED_BY",
+      "GENERATES_QUESTION",
+      "SUPERSEDES",
+      "CONTRADICTS",
+      "DEPENDS_ON",
+      "REOPENS",
+      "CLOSES_FOR_SCOPE",
+      "WAKE_ON_EVIDENCE",
+      "DUPLICATES",
+      "REFRAMES"
+    ]
+  },
+  "grail": {
+    "global_broadcast_required": false,
+    "discovery_receiver_scoped": true,
+    "ownership_transferred_to_grail": false
+  },
+  "gtrail": {
+    "established_repo_meaning_found": false,
+    "candidate_only": true,
+    "candidate_meaning": "TRAVERSABLE_PROVENANCE_CURRENTNESS_TRACE",
+    "synonymous_with_grail": false,
+    "trace_implies_truth": false,
+    "path_implies_causation": false
+  },
+  "rails": [
+    "COSNEAK_NE_MALICE",
+    "FRICTION_SIGNAL_NE_CAUSAL_PROOF",
+    "QA_LOOP_NE_INFINITE_LOOP",
+    "COQA_NE_GLOBAL_BROADCAST",
+    "GRAIL_DISCOVERABLE_NE_GRAIL_OWNS_OBJECT",
+    "GTRAIL_CANDIDATE_NE_GRAIL_REDEFINITION",
+    "TRACE_NE_TRUTH",
+    "PATH_EXISTS_NE_PATH_IS_CAUSAL",
+    "RELATION_DENSITY_NE_QUALITY"
+  ]
+}

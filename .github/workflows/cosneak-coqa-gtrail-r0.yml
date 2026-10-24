@@ -1,0 +1,137 @@
+name: CoSneak CoQA GTRAIL R0
+
+on:
+  pull_request:
+    paths:
+      - "docs/Architecture/COSNEAK_COQA_GTRAIL_R0.md"
+      - "docs/Architecture/COSNEAK_LOCAL_CENSUS_R0A.md"
+      - "docs/Architecture/COQUESTION_FRONTIER_R0C.md"
+      - "docs/Architecture/COSNEAK_HUMAN_DEPENDENCY_CENSUS_R0E.md"
+      - "docs/Architecture/COQUESTION_SPACE_COMPILER_R0G.md"
+      - "docs/Architecture/COSNEAK_PASS_WITHOUT_PICKUP_AUDIT_R0I.md"
+      - "docs/Architecture/COSNEAK_PICKUP_GAP_DISPOSITION_R0K.md"
+      - "docs/Architecture/COSNEAK_HUMAN_RELAY_LIVE_USE_TRACE_R0M.md"
+      - "docs/Architecture/COSNEAK_FAILURE_DOMAIN_DIVERSITY_AUDIT_R0O.md"
+      - "docs/Architecture/COQ40_LOCAL_RECURRING_DEED_CANARY_R0Q.md"
+      - "docs/Architecture/COGENEXIS_BOUNDED_DISCOVERY_PAYLOAD_ECOLOGY_R0U.md"
+      - "docs/Architecture/COQ40_CHANGED_CONTRACT_LOCAL_CANARY_R0T.md"
+      - "docs/Architecture/COQ40_SEMANTIC_ACCEPTANCE_GATE_R0R.md"
+      - "docs/Architecture/COQ40_CHANGED_CONTRACT_CANARY_R0S.md"
+      - "docs/Architecture/COQ40_CHANGED_CONTRACT_LOCAL_SEMANTIC_PASS_R0T.md"
+      - "docs/Architecture/COQ40_DETERMINISTIC_PROBE_EXECUTION_R0U.md"
+      - "docs/Architecture/COQ40_MACHINE_OWNED_TASK_CONSUMER_R0V.md"
+      - "docs/Architecture/COQ40_TRIGGER_NEUTRAL_INBOX_LEASE_RECEIPT_R0W.md"
+      - "docs/Architecture/COQ40_TRIGGER_NEUTRAL_REPLAY_R0X.md"
+      - "docs/Architecture/COQ40_RECEIVER_DISPOSITION_R0Y.md"
+      - "docs/Architecture/COSNEAK_PASS_PICKUP_SOURCE_BOUND_R0J.md"
+      - "docs/Architecture/COQUESTION_RESERVOIR_R0H.md"
+      - "docs/Architecture/COSNEAK_COQA_METABOLISM_R0D.md"
+      - "docs/Architecture/COINQUIRY_COMPILER_R0F.md"
+      - "docs/Architecture/COINQUIRY_RECOMPILE_R0L.md"
+      - "docs/Architecture/COINQUIRY_RECOMPILE_R0N.md"
+      - "docs/Architecture/COINQUIRY_RECOMPILE_R0P.md"
+      - "fixtures/relations/cosneak_coqa_gtrail_r0.json"
+      - "fixtures/relations/cosneak_local_census_r0a.json"
+      - "fixtures/relations/coquestion_frontier_r0c.json"
+      - "fixtures/relations/cosneak_human_dependency_census_r0e.json"
+      - "fixtures/relations/coquestion_space_compiler_r0g.json"
+      - "fixtures/relations/cosneak_pass_without_pickup_audit_r0i.json"
+      - "fixtures/relations/cosneak_pickup_gap_disposition_r0k.json"
+      - "fixtures/relations/cosneak_human_relay_live_use_trace_r0m.json"
+      - "fixtures/relations/cosneak_failure_domain_diversity_audit_r0o.json"
+      - "fixtures/relations/coq40_local_recurring_deed_canary_r0q.json"
+      - "fixtures/relations/cogenexis_bounded_discovery_payload_ecology_r0u.json"
+      - "fixtures/relations/coq40_changed_contract_local_canary_r0t.json"
+      - "fixtures/relations/coq40_semantic_acceptance_gate_r0r.json"
+      - "fixtures/relations/coq40_changed_contract_canary_r0s.json"
+      - "fixtures/relations/coq40_changed_contract_local_semantic_pass_r0t.json"
+      - "fixtures/relations/coq40_deterministic_probe_execution_r0u.json"
+      - "fixtures/relations/coq40_machine_owned_task_consumer_r0v.json"
+      - "fixtures/relations/coq40_trigger_neutral_inbox_lease_receipt_r0w.json"
+      - "fixtures/relations/coq40_trigger_neutral_replay_r0x.json"
+      - "fixtures/relations/coq40_receiver_disposition_r0y.json"
+      - "fixtures/relations/cosneak_pass_pickup_source_bound_r0j.json"
+      - "fixtures/relations/coquestion_reservoir_r0h.json"
+      - "fixtures/relations/cosneak_coqa_gtrail_r0b.json"
+      - "fixtures/relations/cosneak_coqa_metabolism_r0d.json"
+      - "fixtures/relations/coinquiry_compiler_r0f.json"
+      - "fixtures/relations/coinquiry_recompile_r0l.json"
+      - "fixtures/relations/coinquiry_recompile_r0n.json"
+      - "fixtures/relations/coinquiry_recompile_r0p.json"
+      - "tools/validate_cosneak_coqa_gtrail_r0.py"
+      - "tools/validate_cosneak_local_census_r0a.py"
+      - "tools/validate_coquestion_frontier_r0c.py"
+      - "tools/validate_cosneak_human_dependency_census_r0e.py"
+      - "tools/compile_coquestion_space_r0g.py"
+      - "tools/validate_cosneak_pass_without_pickup_audit_r0i.py"
+      - "tools/validate_cosneak_pickup_gap_disposition_r0k.py"
+      - "tools/validate_cosneak_human_relay_live_use_trace_r0m.py"
+      - "tools/validate_cosneak_failure_domain_diversity_audit_r0o.py"
+      - "tools/validate_coq40_local_recurring_deed_canary_r0q.py"
+      - "tools/validate_cogenexis_bounded_discovery_payload_ecology_r0u.py"
+      - "tools/validate_coq40_changed_contract_local_canary_r0t.py"
+      - "tools/validate_coq40_semantic_acceptance_gate_r0r.py"
+      - "tools/validate_coq40_changed_contract_canary_r0s.py"
+      - "tools/validate_coq40_changed_contract_local_semantic_pass_r0t.py"
+      - "tools/validate_coq40_deterministic_probe_execution_r0u.py"
+      - "tools/validate_coq40_machine_owned_task_consumer_r0v.py"
+      - "tools/validate_coq40_trigger_neutral_inbox_lease_receipt_r0w.py"
+      - "tools/validate_coq40_trigger_neutral_replay_r0x.py"
+      - "tools/validate_coq40_receiver_disposition_r0y.py"
+      - "tools/validate_cosneak_pass_pickup_source_bound_r0j.py"
+      - "tools/validate_coquestion_reservoir_r0h.py"
+      - "tools/validate_cosneak_coqa_gtrail_r0b.py"
+      - "tools/validate_cosneak_coqa_metabolism_r0d.py"
+      - "tools/validate_coinquiry_compiler_r0f.py"
+      - "tools/validate_coinquiry_recompile_r0l.py"
+      - "tools/validate_coinquiry_recompile_r0n.py"
+      - "tools/validate_coinquiry_recompile_r0p.py"
+      - ".github/workflows/cosneak-coqa-gtrail-r0.yml"
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python tools/validate_cosneak_coqa_gtrail_r0.py
+      - run: python tools/validate_cosneak_local_census_r0a.py
+      - run: python tools/validate_coquestion_frontier_r0c.py
+      - run: python tools/validate_cosneak_human_dependency_census_r0e.py
+      - run: python tools/compile_coquestion_space_r0g.py
+      - run: python tools/validate_cosneak_pass_without_pickup_audit_r0i.py
+      - run: python tools/validate_cosneak_pickup_gap_disposition_r0k.py
+      - run: python tools/validate_cosneak_human_relay_live_use_trace_r0m.py
+      - run: python tools/validate_cosneak_failure_domain_diversity_audit_r0o.py
+      - run: python tools/validate_coq40_local_recurring_deed_canary_r0q.py
+      - run: python tools/validate_cogenexis_bounded_discovery_payload_ecology_r0u.py
+      - run: python tools/validate_coq40_changed_contract_local_canary_r0t.py
+      - run: python tools/validate_coq40_semantic_acceptance_gate_r0r.py
+      - run: python tools/validate_coq40_changed_contract_canary_r0s.py
+      - run: python tools/validate_coq40_changed_contract_local_semantic_pass_r0t.py
+      - run: python tools/validate_coq40_deterministic_probe_execution_r0u.py
+      - run: python tools/validate_coq40_machine_owned_task_consumer_r0v.py
+      - run: python tools/validate_coq40_trigger_neutral_inbox_lease_receipt_r0w.py
+      - run: python tools/validate_coq40_trigger_neutral_replay_r0x.py
+      - run: python tools/validate_coq40_receiver_disposition_r0y.py
+      - run: python tools/validate_cosneak_pass_pickup_source_bound_r0j.py
+      - run: python tools/validate_coquestion_reservoir_r0h.py
+      - run: python tools/validate_cosneak_coqa_gtrail_r0b.py
+      - run: python tools/validate_cosneak_coqa_metabolism_r0d.py
+      - run: python tools/validate_coinquiry_compiler_r0f.py
+      - run: python tools/validate_coinquiry_recompile_r0l.py
+      - run: python tools/validate_coinquiry_recompile_r0n.py
+      - run: python tools/validate_coinquiry_recompile_r0p.py
