@@ -11,6 +11,12 @@
 
 ## Public interactive research surfaces
 
+- CoObserverMap R0: public, source-labeled classes of potential observers, dependencies, AI crawlers, archived copies, collaborators and generic abusive behavior; not actual user surveillance, visitor IDs, a blacklist or an incident report.
+- Human map and CoPhoenix boundary: https://cocivium.github.io/CoAcademy/relay/observer-map/ (independent outside-browser readback NOT verified).
+- Machine registry of 15 classes: https://raw.githubusercontent.com/CoCivium/CoAcademy/master/docs/relay/observer-map/registry.json
+- Scope, privacy and recovery gates: https://github.com/CoCivium/CoAcademy/blob/master/docs/relay/observer-map/README.md
+- 28 isolated UI/source checks: https://github.com/CoCivium/CoAcademy/blob/master/docs/relay/observer-map/test_receipt_r0.json (NOT live security monitoring).
+- An observer class is not proof that a particular actor watched, indexed, attacked, endorsed or influenced CoCivium. Device and private-node probes were not performed.
 - CoRelay+ public AI beacon R1: source-linked, non-directive and opt-in public first-use currentness with GitHub-hosted runner verification, not autonomous CoVIA or model ingestion.
 - AI beacon: https://raw.githubusercontent.com/CoCivium/CoAcademy/master/docs/relay/beacon.json
 - Human entry: https://cocivium.github.io/CoAcademy/relay/

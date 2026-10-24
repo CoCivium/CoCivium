@@ -227,6 +227,23 @@
         "OUTREACH_DRAFT_NE_DELIVERED",
         "AI_DISCOVERY_POINTER_NE_AI_PROVIDER_INGESTION"
       ]
+    },
+    {
+      "id": "CoObserverMap.ExposureRelations.R0",
+      "family": [
+        "CoAll+",
+        "CoPatterna+",
+        "CoNull+",
+        "CoPhoenix+",
+        "CoAlive+"
+      ],
+      "class": "PUBLIC_SAFE_POTENTIAL_OBSERVER_AND_FAILURE_DOMAIN_INVENTORY",
+      "url_candidate": "https://cocivium.github.io/CoAcademy/relay/observer-map/",
+      "source": "https://github.com/CoCivium/CoAcademy/blob/master/docs/relay/observer-map/index.html",
+      "discovery": "https://raw.githubusercontent.com/CoCivium/CoAcademy/master/docs/relay/observer-map/registry.json",
+      "test": "https://github.com/CoCivium/CoAcademy/blob/master/docs/relay/observer-map/test_receipt_r0.json",
+      "truth": "15_CLASS_CANDIDATES__28_OF_28_ISOLATED_CHECKS__NO_ACTIVE_SURVEILLANCE_OR_CONFIRMED_THREAT_ACTOR",
+      "nonclaim": "POSSIBLE_READER_NE_ACTUAL_VISITOR__ARCHIVE_NE_LIVE_SERVICE__CRITIC_NE_HOSTILE_ACTOR__SOURCE_NE_HOST_READBACK"
     }
   ]
 }
