@@ -28,7 +28,7 @@ The CoPhoenix archive hash matched both the Library `.sha256` and the previously
 
 The public CI workflow `.github/workflows/cothumb-evoall-bounded-r1.yml` is a **read-only, capped regression watcher**, not a self-modifying AI or an always-on device controller. It runs on file changes/manual dispatch and proposes one weekly bounded scheduled cycle. It uses the repository's existing CoNod and CoStretch fixtures, never `--allow-partial-sandbox`, and publishes finite PASS/FAIL/HELD results as CI artifacts with short retention. Any failed or unavailable required fixture makes the job fail. The 600 MiB sparse preview is elected only for weekly/manual runs, not every push.
 
-Actual scheduled execution and any GitHub runner PASS remain unproven until a completed workflow run/attempt is separately inspected. GitHub runner and GitHub source share a single provider failure domain.
+A push-triggered [GitHub Actions run #40113478678](https://github.com/CoCivium/CoCivium/actions/runs/40113478678) was separately inspected and **completed success**, with 7/7 finite CoEvoCycle event rows PASS, zero FAIL/HELD, and artifact #12567118862. The independently downloaded artifact ZIP SHA-256 is `065002088841cd60797c0a29fb32d1dce35545a9538a3dc9657c286f61b1a6e7`, containing a `benchmark_evo.jsonl` whose SHA-256 is `21633e893a1c0ff58890ad9c5f83150c665d607df26b4288b8551ba9393e783d`. **Important:** this was a PUSH run. The 600 MiB large-path test reported 1 SKIPPED / 11 PASSED in that runner; its local 600 MiB test was separately exercised earlier. The first scheduled weekly GitHub large-path run remains **UNOBSERVED**. GitHub Actions and GitHub source share a provider failure domain; artifact upload is not off-provider custody.
 
 ## Highest-value unfinished adapters
 
