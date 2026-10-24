@@ -1,0 +1,535 @@
+{
+  "schema": "CoRelKernel.R0.adversarial.v0_5",
+  "state": "CANDIDATE__NEGATIVE_TESTS",
+  "cases": [
+    {
+      "id": "missing_provenance",
+      "expected_error": "missing required fields",
+      "relations": [
+        {
+          "rel_id": "bad-001",
+          "subject": "A",
+          "predicate": "RELATES_TO",
+          "object": "B",
+          "causal_status": "non_causal"
+        }
+      ]
+    },
+    {
+      "id": "invalid_confidence",
+      "expected_error": "confidence must be in [0, 1]",
+      "relations": [
+        {
+          "rel_id": "bad-002",
+          "subject": "A",
+          "predicate": "RELATES_TO",
+          "object": "B",
+          "causal_status": "non_causal",
+          "provenance": [
+            "fixture"
+          ],
+          "confidence": 1.5
+        }
+      ]
+    },
+    {
+      "id": "dangling_rel_ref",
+      "expected_error": "references unknown relation",
+      "relations": [
+        {
+          "rel_id": "bad-003",
+          "subject": {
+            "rel_ref": "missing-rel"
+          },
+          "predicate": "WEAKENS",
+          "object": "B",
+          "causal_status": "non_causal",
+          "provenance": [
+            "fixture"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "broken_supersession",
+      "expected_error": "supersedes unknown relation",
+      "relations": [
+        {
+          "rel_id": "bad-004",
+          "subject": "A",
+          "predicate": "RELATES_TO",
+          "object": "B",
+          "causal_status": "unknown",
+          "provenance": [
+            "fixture"
+          ],
+          "supersedes_rel_id": "missing-prior",
+          "change_reason": "test",
+          "changed_by": "fixture",
+          "changed_at": "2026-09-30T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "id": "revision_without_lineage",
+      "expected_error": "revision missing lineage field",
+      "relations": [
+        {
+          "rel_id": "prior-005",
+          "subject": "A",
+          "predicate": "RELATES_TO",
+          "object": "B",
+          "causal_status": "unknown",
+          "provenance": [
+            "fixture"
+          ]
+        },
+        {
+          "rel_id": "bad-005",
+          "subject": "A",
+          "predicate": "RELATES_TO",
+          "object": "B",
+          "causal_status": "unknown",
+          "provenance": [
+            "fixture"
+          ],
+          "supersedes_rel_id": "prior-005"
+        }
+      ]
+    },
+    {
+      "id": "null_relation_wrong_causal_status",
+      "expected_error": "typed absence relation should use causal_status='unknown'",
+      "relations": [
+        {
+          "rel_id": "bad-006",
+          "subject": "A",
+          "predicate": "EXPECTED_BUT_MISSING",
+          "object": "B",
+          "causal_status": "non_causal",
+          "provenance": [
+            "fixture"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "duplicate_rel_id",
+      "expected_error": "rel_id values must be unique",
+      "relations": [
+        {
+          "rel_id": "dup",
+          "subject": "A",
+          "predicate": "RELATES_TO",
+          "object": "B",
+          "causal_status": "unknown",
+          "provenance": [
+            "fixture"
+          ]
+        },
+        {
+          "rel_id": "dup",
+          "subject": "C",
+          "predicate": "RELATES_TO",
+          "object": "D",
+          "causal_status": "unknown",
+          "provenance": [
+            "fixture"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "self_supersession",
+      "expected_error": "supersession cycle",
+      "relations": [
+        {
+          "rel_id": "bad-self",
+          "subject": "A",
+          "predicate": "RELATES_TO",
+          "object": "B",
+          "causal_status": "unknown",
+          "provenance": [
+            "fixture"
+          ],
+          "supersedes_rel_id": "bad-self",
+          "change_reason": "impossible self-lineage",
+          "changed_by": "fixture",
+          "changed_at": "2026-09-30T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "id": "two_node_supersession_cycle",
+      "expected_error": "supersession cycle",
+      "relations": [
+        {
+          "rel_id": "cycle-a",
+          "subject": "A",
+          "predicate": "RELATES_TO",
+          "object": "B",
+          "causal_status": "unknown",
+          "provenance": [
+            "fixture"
+          ],
+          "supersedes_rel_id": "cycle-b",
+          "change_reason": "cycle",
+          "changed_by": "fixture",
+          "changed_at": "2026-09-30T00:00:00Z"
+        },
+        {
+          "rel_id": "cycle-b",
+          "subject": "A",
+          "predicate": "RELATES_TO",
+          "object": "B",
+          "causal_status": "unknown",
+          "provenance": [
+            "fixture"
+          ],
+          "supersedes_rel_id": "cycle-a",
+          "change_reason": "cycle",
+          "changed_by": "fixture",
+          "changed_at": "2026-09-30T00:00:01Z"
+        }
+      ]
+    },
+    {
+      "id": "unmarked_sibling_revisions",
+      "expected_error": "concurrent sibling revisions require conflict metadata",
+      "relations": [
+        {
+          "rel_id": "base-c1",
+          "subject": "A",
+          "predicate": "RELATES_TO",
+          "object": "B",
+          "causal_status": "unknown",
+          "provenance": [
+            "fixture"
+          ]
+        },
+        {
+          "rel_id": "sib-c1-a",
+          "subject": "A",
+          "predicate": "CAUSES",
+          "object": "B",
+          "causal_status": "causal",
+          "provenance": [
+            "fixture"
+          ],
+          "supersedes_rel_id": "base-c1",
+          "change_reason": "branch-a",
+          "changed_by": "a",
+          "changed_at": "2026-09-30T00:00:00Z"
+        },
+        {
+          "rel_id": "sib-c1-b",
+          "subject": "A",
+          "predicate": "POSSIBLY_CAUSES",
+          "object": "B",
+          "causal_status": "possibly_causal",
+          "provenance": [
+            "fixture"
+          ],
+          "supersedes_rel_id": "base-c1",
+          "change_reason": "branch-b",
+          "changed_by": "b",
+          "changed_at": "2026-09-30T00:00:01Z"
+        }
+      ]
+    },
+    {
+      "id": "mismatched_conflict_sets",
+      "expected_error": "sibling revisions must share one conflict_set_id",
+      "relations": [
+        {
+          "rel_id": "base-c2",
+          "subject": "A",
+          "predicate": "RELATES_TO",
+          "object": "B",
+          "causal_status": "unknown",
+          "provenance": [
+            "fixture"
+          ]
+        },
+        {
+          "rel_id": "sib-c2-a",
+          "subject": "A",
+          "predicate": "CAUSES",
+          "object": "B",
+          "causal_status": "causal",
+          "provenance": [
+            "fixture"
+          ],
+          "supersedes_rel_id": "base-c2",
+          "change_reason": "branch-a",
+          "changed_by": "a",
+          "changed_at": "2026-09-30T00:00:00Z",
+          "conflict_set_id": "set-a",
+          "conflict_status": "unresolved"
+        },
+        {
+          "rel_id": "sib-c2-b",
+          "subject": "A",
+          "predicate": "POSSIBLY_CAUSES",
+          "object": "B",
+          "causal_status": "possibly_causal",
+          "provenance": [
+            "fixture"
+          ],
+          "supersedes_rel_id": "base-c2",
+          "change_reason": "branch-b",
+          "changed_by": "b",
+          "changed_at": "2026-09-30T00:00:01Z",
+          "conflict_set_id": "set-b",
+          "conflict_status": "unresolved"
+        }
+      ]
+    },
+    {
+      "id": "resolution_unknown_conflict_set",
+      "expected_error": "resolves unknown conflict_set_id",
+      "relations": [
+        {
+          "rel_id": "resolution-bad",
+          "subject": "missing-set",
+          "predicate": "RESOLVES_CONFLICT",
+          "object": "B",
+          "causal_status": "non_causal",
+          "provenance": [
+            "fixture"
+          ],
+          "resolves_conflict_set_id": "missing-set",
+          "resolution_note": "invalid"
+        }
+      ]
+    },
+    {
+      "id": "resolution_target_not_member",
+      "expected_error": "resolution target must belong to conflict set",
+      "relations": [
+        {
+          "rel_id": "base-r",
+          "subject": "A",
+          "predicate": "RELATES_TO",
+          "object": "B",
+          "causal_status": "unknown",
+          "provenance": [
+            "fixture"
+          ]
+        },
+        {
+          "rel_id": "sib-r-a",
+          "subject": "A",
+          "predicate": "CAUSES",
+          "object": "B",
+          "causal_status": "causal",
+          "provenance": [
+            "fixture"
+          ],
+          "supersedes_rel_id": "base-r",
+          "change_reason": "a",
+          "changed_by": "a",
+          "changed_at": "2026-09-30T00:00:00Z",
+          "conflict_set_id": "set-r",
+          "conflict_status": "unresolved"
+        },
+        {
+          "rel_id": "sib-r-b",
+          "subject": "A",
+          "predicate": "POSSIBLY_CAUSES",
+          "object": "B",
+          "causal_status": "possibly_causal",
+          "provenance": [
+            "fixture"
+          ],
+          "supersedes_rel_id": "base-r",
+          "change_reason": "b",
+          "changed_by": "b",
+          "changed_at": "2026-09-30T00:00:01Z",
+          "conflict_set_id": "set-r",
+          "conflict_status": "unresolved"
+        },
+        {
+          "rel_id": "outside",
+          "subject": "X",
+          "predicate": "RELATES_TO",
+          "object": "Y",
+          "causal_status": "unknown",
+          "provenance": [
+            "fixture"
+          ]
+        },
+        {
+          "rel_id": "bad-resolution",
+          "subject": "set-r",
+          "predicate": "RESOLVES_CONFLICT",
+          "object": {
+            "rel_ref": "outside"
+          },
+          "causal_status": "non_causal",
+          "provenance": [
+            "fixture"
+          ],
+          "resolves_conflict_set_id": "set-r",
+          "resolution_note": "invalid target"
+        }
+      ]
+    },
+    {
+      "id": "contradiction_without_basis",
+      "expected_error": "CONTRADICTS requires contradiction_basis",
+      "relations": [
+        {
+          "rel_id": "c-a",
+          "subject": "X",
+          "predicate": "STATE_IS",
+          "object": "OPEN",
+          "observer": "a",
+          "causal_status": "non_causal",
+          "provenance": [
+            "fixture"
+          ]
+        },
+        {
+          "rel_id": "c-b",
+          "subject": "X",
+          "predicate": "STATE_IS",
+          "object": "CLOSED",
+          "observer": "b",
+          "causal_status": "non_causal",
+          "provenance": [
+            "fixture"
+          ]
+        },
+        {
+          "rel_id": "c-x",
+          "subject": {
+            "rel_ref": "c-a"
+          },
+          "predicate": "CONTRADICTS",
+          "object": {
+            "rel_ref": "c-b"
+          },
+          "causal_status": "non_causal",
+          "provenance": [
+            "fixture"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "reversed_time_interval",
+      "expected_error": "time.valid_from must be <= time.valid_to",
+      "relations": [
+        {
+          "rel_id": "t-bad",
+          "subject": "X",
+          "predicate": "STATE_IS",
+          "object": "OPEN",
+          "time": {
+            "valid_from": "2026-09-30T02:00:00Z",
+            "valid_to": "2026-09-30T01:00:00Z"
+          },
+          "causal_status": "non_causal",
+          "provenance": [
+            "fixture"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "temporal_contradiction_without_overlap",
+      "expected_error": "temporal_overlap contradiction requires overlapping validity intervals",
+      "relations": [
+        {
+          "rel_id": "t-a",
+          "subject": "X",
+          "predicate": "STATE_IS",
+          "object": "OPEN",
+          "observer": "a",
+          "time": {
+            "valid_from": "2026-09-30T00:00:00Z",
+            "valid_to": "2026-09-30T01:00:00Z"
+          },
+          "causal_status": "non_causal",
+          "provenance": [
+            "fixture"
+          ]
+        },
+        {
+          "rel_id": "t-b",
+          "subject": "X",
+          "predicate": "STATE_IS",
+          "object": "CLOSED",
+          "observer": "b",
+          "time": {
+            "valid_from": "2026-09-30T02:00:00Z",
+            "valid_to": "2026-09-30T03:00:00Z"
+          },
+          "causal_status": "non_causal",
+          "provenance": [
+            "fixture"
+          ]
+        },
+        {
+          "rel_id": "t-x",
+          "subject": {
+            "rel_ref": "t-a"
+          },
+          "predicate": "CONTRADICTS",
+          "object": {
+            "rel_ref": "t-b"
+          },
+          "contradiction_basis": "temporal_overlap",
+          "causal_status": "non_causal",
+          "provenance": [
+            "fixture"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "observer_relative_same_observer",
+      "expected_error": "observer_relative contradiction requires distinct observers",
+      "relations": [
+        {
+          "rel_id": "o-a",
+          "subject": "X",
+          "predicate": "STATE_IS",
+          "object": "OPEN",
+          "observer": "same",
+          "causal_status": "non_causal",
+          "provenance": [
+            "fixture"
+          ]
+        },
+        {
+          "rel_id": "o-b",
+          "subject": "X",
+          "predicate": "STATE_IS",
+          "object": "CLOSED",
+          "observer": "same",
+          "causal_status": "non_causal",
+          "provenance": [
+            "fixture"
+          ]
+        },
+        {
+          "rel_id": "o-x",
+          "subject": {
+            "rel_ref": "o-a"
+          },
+          "predicate": "CONTRADICTS",
+          "object": {
+            "rel_ref": "o-b"
+          },
+          "contradiction_basis": "observer_relative",
+          "causal_status": "non_causal",
+          "provenance": [
+            "fixture"
+          ]
+        }
+      ]
+    }
+  ]
+}

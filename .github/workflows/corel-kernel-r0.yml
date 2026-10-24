@@ -1,0 +1,63 @@
+name: CoRelKernel R0 contract
+
+on:
+  pull_request:
+    paths:
+      - "docs/Relations/CO_REL_KERNEL_R0.md"
+      - "docs/Relations/CO_REL_KERNEL_FIELD_CONVERGENCE_R0.md"
+      - "docs/Relations/CO_REL_KERNEL_FIELD_ADJUDICATION_R0.md"
+      - "schemas/relations/co_rel_kernel_r0.schema.json"
+      - "fixtures/relations/co_rel_kernel_r0.fixtures.json"
+      - "fixtures/relations/co_rel_kernel_r0.adversarial.json"
+      - "fixtures/relations/co_rel_kernel_field_collision_r0.json"
+      - "fixtures/relations/co_rel_kernel_field_adjudication_r0.json"
+      - "fixtures/relations/co_rel_kernel_field_translation_canary_r0.json"
+      - "tools/validate_corel_kernel_r0.py"
+      - "tools/validate_corel_kernel_field_collision_r0.py"
+      - "tools/validate_corel_kernel_field_adjudication_r0.py"
+      - "tools/validate_corel_kernel_field_translation_canary_r0.py"
+      - ".github/workflows/corel-kernel-r0.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out exact PR128 candidate head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 1
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validate CoRelKernel R0
+        run: python tools/validate_corel_kernel_r0.py
+
+      - name: Fetch exact frozen PR127 review snapshot
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch --no-tags --depth=1 origin review/corelation-field-pr127-95db0610
+          test "$(git rev-parse FETCH_HEAD)" = "95db06101b16954a90468c5ef4f1b4e78a3195a5"
+
+      - name: Validate exact CoRelKernel x CoRelationField collision R0
+        shell: bash
+        run: |
+          set -euo pipefail
+          python tools/validate_corel_kernel_field_collision_r0.py --field-ref FETCH_HEAD
+
+      - name: Validate collision ownership adjudication R0
+        run: python tools/validate_corel_kernel_field_adjudication_r0.py
+
+      - name: Validate exact-bound translation policy canary R0
+        shell: bash
+        run: |
+          set -euo pipefail
+          python tools/validate_corel_kernel_field_translation_canary_r0.py --field-ref FETCH_HEAD
