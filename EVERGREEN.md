@@ -50,6 +50,8 @@ The key rule is **parallel interpretation, bounded consequence**: object identif
 
 Large or proof-critical media should normally use file-backed/content-addressed transfer with a manifest and preview, not raw clipboard blobs. The physical X2 gesture and one real rich-media end-to-end receipt remain **HELD**.
 
+**Bounded first local gesture/payload experiment:** [CoCopy+ foreground rich-payload palette R0](docs/Architecture/COCOPY_RICH_PALETTE_R0.md) prepares up to 24 explicitly chosen file references (FileDrop+text), entered Unicode text, or one bounded bitmap preview. Its source is an exact-hashed package attached in the originating conversation, **not** committed to this repo or deployed on X2. **26/26 static source checks PASS; Windows GUI, clipboard target acceptance and physical mouse binding HELD.** [Machine scope and hashes](ai/payloads/cocopy-rich-palette-r0.json). No automatic paste, send, covert capture, global hook or account change.
+
 `RICH_MEDIA_NE_CLIPBOARD_BLOB`  
 `PARALLEL_PREPARATION_NE_PARALLEL_EFFECTS`  
 `PREPARED_ATTACHMENT_NE_SENT`
