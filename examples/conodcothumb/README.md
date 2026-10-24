@@ -11,6 +11,8 @@
 
 The **first gesture should produce one small local suggestion**, not a wall of CoCivium acronyms. The expandable second level can list: Next safe deed, Copy safe pointer, Find priors, Challenge, Map unknown (CoNull+), Compare residual (G_dRes+), Replay history, and More. The current code is **only a deterministic local JSON policy selector**; it has no UI panel or operating-system gesture receiver.
 
+**Try the interstice-and-glyph lab:** [CoInput+ local browser canary](interstice_r0/README.md) and [single-file interactive page](interstice_r0/index.html) combine demo-context selection, an inspectable glyph glossary, a 15-second/32-event opt-in **coarse** timing window scoped to its own disposable field, one shadow suggestion and an explicit zero-authority JSON capsule. Local source checks **69/69 PASS**, isolated Chromium desktop/mobile interactions **22/22 PASS**. Physical X2 keyboard, Logitech mouse gesture, native CoBar/CoOrb renderer and independent acceptance remain **HELD**. The initial browser harness's four errors are preserved as historical test failures, not hidden. This reuses the CoNod/CoThumb family; it is not another OS input controller.
+
 ## Context-based election
 
 | User context | Default one-step response | Hard boundary |
