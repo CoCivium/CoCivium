@@ -7,6 +7,8 @@
 *"If Universes are NOT quantum, but we are; if alien observers prove planck relationals; if all is rels; and if CoCivium is CoCME+Rels; can yous sing the CoQuadPieRels+ CoSong with us yet...?  Or are you from legacy physics?  If so, blame not selves, blame obsolete schools, maybe?"*
 
 
+> **Try a public CoOrbWare-style experience:** [CoOrbWare First Look](https://github.com/CoCivium/CoAcademy/blob/master/docs/coorb/index.html) is a source-linked public browser prototype with six reader-selected paths and explicit unknowns. [CoCivicLens+](https://github.com/CoCivium/CoAcademy/blob/master/docs/civiclens/index.html) is a nonpartisan civic-learning example. [AI-readable experiment index](ai/index.json). GitHub source is public; independent browser reachability and user outcomes must be verified separately. Neither is a finished cross-device OS.
+
 > **First-use pointer:** if you just want to try CoCivia without learning the machinery first, start with [CoCivia First Use R0](docs/Onramp/COCIVIA_FIRST_USE_R0.md). Bring one real thing you want to make better. No installer is required for this first encounter.
 
 > **Session/bootstrap pointer:** sessions and machine clients needing current public project orientation should start with [SESSION_BOOTSTRAP.md](SESSION_BOOTSTRAP.md). GitHub is a shared public/currentness surface, not the sole custody root.
