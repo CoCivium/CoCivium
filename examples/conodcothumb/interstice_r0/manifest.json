@@ -1,0 +1,39 @@
+{
+  "schema": "CoAll.CoInputIntersticeGlyph.R0",
+  "work_id": "conod-cothumb:interstice:r0:demo",
+  "lifecycle": "PUBLIC_SAFE_LOCAL_BROWSER_CANARY",
+  "authority": "NONE",
+  "privacy": "VOLUNTARY_FIELD_ONLY_EPHEMERAL_COARSE_COUNTS",
+  "default": "DISARMED",
+  "max_keystroke_events_per_arm": 32,
+  "max_observation_seconds": 15,
+  "max_active_workers": 0,
+  "network_calls": 0,
+  "side_effects": "USER_EXPLICIT_DOWNLOAD_ONLY",
+  "source_donors": [
+    {"path":"docs/Architecture/COINTERSTICE_COINVERSION_COGLYPH_INPUT_FABRIC_R0_20261024.md","git_blob":"1be02f2265542f6ea6010c2c6d512cd5c92bc5e8"},
+    {"path":"docs/broadcasts/EVO_ALL_BETTERS_CONTEXT_GLYPHS_TELLS_R0_20261024.md","git_blob":"28111cef1110722ff2d316cce5bf66215060ddb6"},
+    {"path":"examples/conodcothumb/CoNodCoThumbPolicyR0.mjs","git_blob":"5651f1d0dfad829c401f038ae021a555a919319e"},
+    {"path":"docs/Architecture/CORELATIONAL_UX_PREDICTIVE_INPUT_R0.md","git_blob":"6f74989df170c5381eb5c888fd6b9ee38c336bdb"}
+  ],
+  "contexts":["writing","relations","media","device","sensitive","unknown"],
+  "glyphs":{
+    "next":"\u2192",
+    "inverse":"\u2194",
+    "negate":"\u00ac",
+    "subset":"\u2282",
+    "compare":">",
+    "different":"\u2260",
+    "unbounded":"\u221e",
+    "candidate":"\u25c7"
+  },
+  "hard_limits":[
+    "NO_GLOBAL_HOOKS", "NO_RAW_KEYS_OR_TEXT_RECORDED", "NO_INFERRED_COGNITION", "NO_HIDDEN_STORAGE",
+    "NO_NETWORK", "NO_AUTO_PASTE", "NO_AUTO_UPLOAD", "NO_AUTO_WORKERS", "NO_NATIVE_MOUSE_MAPPING",
+    "NO_EXTERNAL_RECEIVER_ACK", "NO_X2_INSTALLATION_CLAIM", "PAUSE_NE_INTENT", "SYMBOL_NE_AUTHORITY"
+  ],
+  "unknown_gates":[
+    "REAL_PERIXX_EVENT_ON_X2", "PHYSICAL_THUMB_GESTURE", "INDEPENDENT_FIRST_USE",
+    "NATIVE_COBAR_COORB_RUNTIME", "SECOND_DEVICE_READPROOF", "COSTEAD_CUSTODY"
+  ]
+}
