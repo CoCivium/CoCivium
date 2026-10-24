@@ -1,0 +1,37 @@
+{
+  "schema": "CoCivium.ConversationParking.v0.1-candidate",
+  "scope": "Explicit starter queue from the 2026-10-21 voice discussion; not a census of all outstanding work.",
+  "next_id": 4,
+  "open_parked_count": 3,
+  "items": [
+    {
+      "id": "P1",
+      "topic": "Delayed and out-of-order human-facing updates",
+      "status": "PARKED",
+      "next_action": "Build a labeled delay/reordering fixture; keep obsolete updates from appearing current."
+    },
+    {
+      "id": "P2",
+      "topic": "Recursive evaluation of the hypothesis/research method",
+      "status": "PARKED",
+      "next_action": "Bind existing CoResearchEvidence contract; compare method versions against predeclared held-out outcomes."
+    },
+    {
+      "id": "P3",
+      "topic": "CoStead and GitHub custody/projection mapping",
+      "status": "PARKED",
+      "next_action": "Elect privacy-preserving object bindings and verify destination readback."
+    }
+  ],
+  "active_separate": [
+    "Restore reliable primary-device mouse and keyboard input"
+  ],
+  "rules": [
+    "Stable item IDs do not change when other items close.",
+    "Announce ID and short topic only when useful; expose open count separately.",
+    "Grunts or audio fillers alone do not establish a saved item.",
+    "Never equate highest issued ID with number open.",
+    "Keep resolved, resumed and superseded history; do not silently discard items.",
+    "This ledger does not schedule execution or establish receiver pickup."
+  ]
+}
