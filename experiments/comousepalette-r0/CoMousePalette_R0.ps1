@@ -1,6 +1,6 @@
 # CoMousePalette R0 - bounded, interactive CoCopy context palette.
 # Windows PowerShell 7; use pwsh -NoProfile -STA -File <thisfile>.
-# No global hooks, clipboard read until explicit button, disk writes, or network requests.
+# No global hooks, automatic clipboard reads, background disk writes, or network requests.
 [CmdletBinding()]
 param([switch]$SelfTest)
 
@@ -94,7 +94,7 @@ $context = Get-CoContext
 $state = [pscustomobject]@{ Loaded=$false; Truncated=$false }
 $form = [System.Windows.Forms.Form]::new()
 $form.Text='CoCopy+ | LOCAL PREVIEW - NOT SENT'
-$form.Size=[System.Drawing.Size]::new(640,430)
+$form.Size=[System.Drawing.Size]::new(640,470)
 $form.MinimumSize=[System.Drawing.Size]::new(580,380)
 $form.StartPosition='Manual'
 $form.FormBorderStyle='Sizable'
@@ -119,7 +119,7 @@ $layout.ColumnCount=1
 $layout.RowCount=3
 $layout.RowStyles.Add(([System.Windows.Forms.RowStyle]::new([System.Windows.Forms.SizeType]::Absolute,68))) | Out-Null
 $layout.RowStyles.Add(([System.Windows.Forms.RowStyle]::new([System.Windows.Forms.SizeType]::Percent,100))) | Out-Null
-$layout.RowStyles.Add(([System.Windows.Forms.RowStyle]::new([System.Windows.Forms.SizeType]::Absolute,78))) | Out-Null
+$layout.RowStyles.Add(([System.Windows.Forms.RowStyle]::new([System.Windows.Forms.SizeType]::Absolute,116))) | Out-Null
 $form.Controls.Add($layout)
 $layout.Controls.Add($header,0,0)
 
@@ -153,8 +153,13 @@ $bCapsule=New-CoButton 'Copy capsule' 112
 $bPlain=New-CoButton 'Copy text only' 112
 $bClear=New-CoButton 'Clear preview' 105
 $bClose=New-CoButton 'Close' 65
+$bRich=New-CoButton 'Rich files...' 120
 
 $bPreview.Add_Click({
+    if($context.Mode -ceq 'PRIVACY HOLD'){
+        [System.Windows.Forms.MessageBox]::Show('Clipboard preview disabled when a password-manager window is under the pointer.','CoCopy+ PRIVACY HOLD') | Out-Null
+        return
+    }
     try {
         if (![System.Windows.Forms.Clipboard]::ContainsText()) {
             [System.Windows.Forms.MessageBox]::Show('Clipboard contains no text. No change made.','CoCopy+');return
@@ -188,6 +193,23 @@ $bPlain.Add_Click({
     } catch { [System.Windows.Forms.MessageBox]::Show('Clipboard write failed.','CoCopy+') | Out-Null }
 })
 $bClear.Add_Click({$preview.Clear();$state.Loaded=$false;$state.Truncated=$false})
+$bRich.Add_Click({
+    if($context.Mode -ceq 'PRIVACY HOLD'){
+        [System.Windows.Forms.MessageBox]::Show('Rich file selection is held while a password-manager window is under the pointer.','CoCopy+ PRIVACY HOLD') | Out-Null
+        return
+    }
+    $helper=Join-Path $PSScriptRoot 'CoPayload_R1.ps1'
+    if(-not [System.IO.File]::Exists($helper)){
+        [System.Windows.Forms.MessageBox]::Show('CoPayload_R1.ps1 is missing from this local folder. No action taken.','CoCopy+') | Out-Null
+        return
+    }
+    try {
+        $pwsh=(Get-Command pwsh -ErrorAction Stop).Source
+        Start-Process -FilePath $pwsh -ArgumentList @('-NoLogo','-NoProfile','-STA','-File',('"' + $helper + '"')) -ErrorAction Stop | Out-Null
+    } catch {
+        [System.Windows.Forms.MessageBox]::Show('Could not start the opt-in local file palette.','CoCopy+') | Out-Null
+    }
+})
 $bClose.Add_Click({$form.Close()})
 $form.Add_KeyDown({if($_.KeyCode -eq [System.Windows.Forms.Keys]::Escape){$form.Close()}})
 $form.Add_FormClosed({$preview.Clear();$state.Loaded=$false})
