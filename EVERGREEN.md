@@ -1,5 +1,7 @@
 # CoGoAll Evergreen Blast R0
 
+**Review before fireworks:** [Review before fireworks](docs/Governance/COREVIEW_SPINE_R0.md) binds eleven lifecycle stages to source/prior-art tests, CoTurtle challenges, risk-appropriate human panels, external receiver proof and recovery. [Machine rule](ai/review/coreview-spine-r0.json) and [honest CoPreCursor example](ai/review/coreview-spine-r0-coprecursor-example.json) are on main. These are an advisory contract and documentary coverage audit, **not** a universally enforced panel or new product release. The central moustache remains visual art; no physical mouse remapping. Independent first-use and off-GitHub recovery remain HELD.
+
 **Survival before spectacle:** [CoSpiff+ survivability and fireworks gates](docs/Strategy/COSPIFF_FIREWORKS_SURVIVABILITY_R1.md) and its [14-gate machine scorecard](ai/resilience/cospiff-fireworks-r1.json) record what has actually passed and what is still missing. Public R&D is evidenced; independent adoption, off-provider recovery and public fireworks are HELD. No mass broadcasts or live worker expansion are implied.
 
 **First use before the firehose:** [Start here in 60 seconds](START_HERE.md), then optionally explore [specialist first-use routes](ai/onramp/specialist-entrypoints-r0.json) backed by six exact source references. These are audience choices, **not** six deployed brands, accounts, DNS domains or receiver acknowledgments.
