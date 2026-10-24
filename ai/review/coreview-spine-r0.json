@@ -332,7 +332,7 @@
   ],
   "external_donors": [
     {
-      "source": "https://airc.nist.gov/AI_RMF_Knowledge_Base/AI_RMF/Core",
+      "source": "https://airc.nist.gov/airmf-resources/airmf/5-sec-core/",
       "pattern": "Risk governance spans lifecycle; Govern/Map/Measure/Manage"
     },
     {
@@ -340,7 +340,7 @@
       "pattern": "Independent security controls including branch protection, code review, token permissions"
     },
     {
-      "source": "https://slsa.dev/spec/v1.0/provenance",
+      "source": "https://slsa.dev/spec/v1.2/provenance",
       "pattern": "Pin inputs, artifact and builder provenance; do not self-award conformance"
     }
   ],
