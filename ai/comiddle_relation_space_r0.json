@@ -1,0 +1,287 @@
+{
+  "schema": "CoAll.CoMiddle.RelationSpace.v0.1",
+  "observed_at": "2026-10-24T20:09:17Z",
+  "state": "PUBLIC_CANDIDATE_RELATION_SPACE__NOT_NATIVE_RUNTIME",
+  "purpose": "Generate a large addressable CoMiddle/CoThumb relation space from typed axes while rendering only a tiny context-ranked frontier.",
+  "source_relations": [
+    "CoMiddle+",
+    "CoThumb+",
+    "CoGibberTru",
+    "CoPriMath",
+    "CoGlyphRail",
+    "CoInterstice+",
+    "CoInversion+",
+    "CoDoodle+",
+    "CoNex+",
+    "CoStretch+",
+    "CoTurtle+",
+    "CoMap+",
+    "CoOrb+",
+    "CoFuture+",
+    "CoModelFabric+"
+  ],
+  "axes": {
+    "interrogative": [
+      "WHO",
+      "WHAT",
+      "WHY",
+      "HOW",
+      "WHEN",
+      "WHERE",
+      "WHICH",
+      "WHENCE",
+      "WHITHER",
+      "WHEREFORE",
+      "Q",
+      "A",
+      "AND",
+      "AT"
+    ],
+    "semantic_operation": [
+      "INSPECT",
+      "EXPLAIN",
+      "RELATE",
+      "COMPARE",
+      "SOURCE",
+      "PROVE",
+      "CHALLENGE",
+      "INVERT",
+      "NEGATE",
+      "ELSE",
+      "NULL",
+      "OUTSIDE",
+      "COUNTERFACTUAL",
+      "PREDICT",
+      "BACKCAST",
+      "ROUTE",
+      "PREVIEW",
+      "COPY",
+      "BUFFER",
+      "TRANSFORM",
+      "SUMMARIZE",
+      "EXPAND",
+      "COMPACT",
+      "WAKE",
+      "SLEEP",
+      "RECOVER",
+      "HIGHLIGHT",
+      "RECEIPT"
+    ],
+    "relation_family": [
+      "IDENTITY",
+      "TYPE",
+      "SOURCE",
+      "PROVENANCE",
+      "CURRENTNESS",
+      "CONFIDENCE",
+      "AUTHORITY",
+      "PRIVACY",
+      "RECEIVER",
+      "DEPENDENCY",
+      "BLOCKER",
+      "SUPPORT",
+      "CONTRADICTION",
+      "GENERALIZATION",
+      "SPECIALIZATION",
+      "DUAL",
+      "SUBSTITUTE",
+      "SUPERSESSION",
+      "DUPLICATE",
+      "CAUSAL",
+      "TEMPORAL",
+      "SPATIAL",
+      "SEMANTIC",
+      "ENERGETIC",
+      "CULTURAL",
+      "MYTHIC",
+      "ET_HYPOTHESIS",
+      "GD_HYPOTHESIS",
+      "RECOVERY",
+      "ACCESSIBILITY"
+    ],
+    "temporal_mode": [
+      "PRIOR",
+      "NOW",
+      "DELTA",
+      "NEXT",
+      "FUTURE",
+      "FORECAST",
+      "COUNTERFACTUAL",
+      "ANTI_HISTORY",
+      "RECOVERY",
+      "EXPIRED"
+    ],
+    "epistemic_mode": [
+      "OBSERVED",
+      "MEASURED",
+      "INFERRED",
+      "HYPOTHESIS",
+      "SIMULATION",
+      "METAPHOR",
+      "UNKNOWN",
+      "CONTESTED",
+      "PASS",
+      "FAIL",
+      "HELD"
+    ],
+    "receiver_mode": [
+      "SELF",
+      "CURRENT_WORK",
+      "LOCAL_DEVICE",
+      "MODEL_WORKER",
+      "HUMAN_RECEIVER",
+      "PUBLIC",
+      "RESEARCH",
+      "ARCHIVE",
+      "RECOVERY_RECEIVER",
+      "UNKNOWN_RECEIVER"
+    ],
+    "substrate_mode": [
+      "TEXT",
+      "FILE",
+      "IMAGE",
+      "AUDIO",
+      "VIDEO",
+      "CODE",
+      "EMAIL",
+      "WEB",
+      "GITHUB",
+      "LOCAL_MODEL",
+      "PROVIDER_MODEL",
+      "MOBILE",
+      "TABLET",
+      "VR",
+      "DESKTOP",
+      "HEADLESS",
+      "PUBLIC_SITE",
+      "DATASET"
+    ],
+    "effect_mode": [
+      "READ_ONLY",
+      "PREPARE",
+      "PROPOSE",
+      "PREVIEW",
+      "LOCAL_REVERSIBLE",
+      "EXTERNAL_EFFECT_GATED",
+      "IRREVERSIBLE_GATED"
+    ],
+    "inverse_mode": [
+      "DIRECT",
+      "INVERSE",
+      "NOT",
+      "ELSE",
+      "NULL",
+      "OUTSIDE",
+      "COUNTERFACTUAL"
+    ]
+  },
+  "first_ring": [
+    {
+      "glyph": "◎",
+      "semantic": "INSPECT_FOCUS"
+    },
+    {
+      "glyph": "?",
+      "semantic": "QUESTION_UNKNOWN_WHY"
+    },
+    {
+      "glyph": ">",
+      "semantic": "NEXT_PROJECT"
+    },
+    {
+      "glyph": "<",
+      "semantic": "PRIOR_SOURCE_BACK"
+    },
+    {
+      "glyph": "↔",
+      "semantic": "RELATE_COMPARE_REVERSIBLE"
+    },
+    {
+      "glyph": "¬",
+      "semantic": "INVERSE_NOT_CHALLENGE"
+    },
+    {
+      "glyph": "±",
+      "semantic": "ELSE_ALTERNATIVES_TRADEOFF"
+    },
+    {
+      "glyph": "Δ",
+      "semantic": "MATERIAL_CHANGE"
+    },
+    {
+      "glyph": "∞",
+      "semantic": "WIDER_ADDRESSABLE_SPACE_BOUNDED_EXECUTION"
+    },
+    {
+      "glyph": "✓",
+      "semantic": "PASS_EVIDENCE"
+    },
+    {
+      "glyph": "✕",
+      "semantic": "FAIL_CONTRADICTION"
+    },
+    {
+      "glyph": "⏸",
+      "semantic": "HELD_BLOCKED"
+    },
+    {
+      "glyph": "⟳",
+      "semantic": "BOUNDED_EVOLVE_REFRESH"
+    },
+    {
+      "glyph": "⇢",
+      "semantic": "ROUTE_RECEIVER"
+    },
+    {
+      "glyph": "⧉",
+      "semantic": "COPY_BUFFER_PAYLOAD"
+    },
+    {
+      "glyph": "⌁",
+      "semantic": "TRAIL_HISTORY_PROVENANCE"
+    }
+  ],
+  "context_rank_inputs": [
+    "foreground_app",
+    "object_type",
+    "pointer_position",
+    "selection",
+    "current_work_object",
+    "recent_action",
+    "receiver",
+    "authority",
+    "privacy",
+    "currentness",
+    "user_fluency",
+    "device_capability",
+    "evidence_state",
+    "human_time_saved",
+    "reversibility",
+    "failure_domain_value"
+  ],
+  "render_rule": "ADDRESSABLE_ALL -> CONTEXT_FILTER -> TOP_20 -> FIRST_RING_8 -> EXPLICIT_EFFECT_1",
+  "combinatoric_note": "The typed Cartesian candidate space is intentionally much larger than 1000 relations; it is lazily addressable, not pre-rendered or pre-executed.",
+  "cultural_priors": [
+    "FOSS_FOREVER",
+    "WORKING_TOGETHER_RESPECTFULLY",
+    "PRIVACY_BY_DESIGN",
+    "INCLUSIVE_RESPECTFUL_OPTIONAL",
+    "DISPLAY_REQUIRED_WEAR_OPTIONAL",
+    "PAY_FORWARD_AND_SIDEWAYS",
+    "LOLS_LAYERS_LAUGHS_LOVE_LEARNING"
+  ],
+  "rails": [
+    "SUMMON_NE_EFFECT",
+    "GLYPH_NE_AUTHORITY",
+    "ADDRESSABLE_NE_RENDERED",
+    "POSITION_NE_INTENT",
+    "MIDDLE_NE_SEND",
+    "MIDDLE_NE_EXECUTE",
+    "MIDDLE_NE_AUTHORITY",
+    "ALL_RELATIONS_NE_ALL_ACTIVE",
+    "MILLION_LOGICAL_SESSIONS_NE_MILLION_PROVIDER_TABS",
+    "HISTORICAL_PASS_NE_FRESH_PASS",
+    "GD_HYPOTHESIS_NE_MEASURED_FIELD",
+    "ET_HYPOTHESIS_NE_ET_DETECTION"
+  ]
+}
