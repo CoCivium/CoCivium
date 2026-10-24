@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src 'none'; connect-src 'none'; form-action 'none'; base-uri 'none'">
+<title>CoNotSpace+ | What does NOT mean?</title>
+<style>
+:root{color-scheme:dark;font-family:system-ui,"Segoe UI",Arial,sans-serif;--ink:#e8f1f5;--muted:#aec1cc;--bg:#0b1624;--panel:#132537;--border:#365469;--aqua:#8bdac7;--gold:#f1c77e}*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(ellipse at 65% 0%,#234055,#0b1624 65%);color:var(--ink);min-height:100vh}
+main{max-width:1140px;padding:clamp(16px,4vw,35px);margin:auto}h1{font-size:clamp(28px,4vw,45px);line-height:1.15;letter-spacing:-.035em;margin:12px 0 8px}h2{font-size:19px;margin:0 0 10px}p{line-height:1.55}.muted{color:var(--muted)}.eyebrow{font-size:12px;letter-spacing:.13em;text-transform:uppercase;color:var(--gold);font-weight:800}
+.hero{border:1px solid #41677a;background:#102334;border-radius:19px;padding:24px;margin-bottom:17px}.hero p{max-width:760px;margin:6px 0 0}.rail{color:#c9dce6;font-size:13px;margin-top:14px}
+.layout{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(260px,.7fr);gap:16px}.panel{background:var(--panel);border:1px solid var(--border);border-radius:16px;padding:20px;min-width:0}.controlrow{display:flex;gap:10px;flex-wrap:wrap;align-items:end;margin:12px 0 19px}
+label{display:grid;gap:6px;font-size:13px;font-weight:700;color:#d7e6ee;min-width:210px;flex:1}select,button{font:inherit;color:var(--ink);background:#21394b;border:1px solid #728f9d;border-radius:9px;padding:9px 11px;min-height:43px}button{cursor:pointer;font-size:13px;font-weight:700}button[aria-pressed=true]{background:#f0cc87;color:#192b37;border-color:#f0cc87}button:hover{border-color:#e8ca97}button:focus-visible,select:focus-visible,a:focus-visible{outline:3px solid #f1c77e;outline-offset:3px}a{color:#a1e1d8}
+.deck{display:flex;flex-wrap:wrap;gap:7px;margin-top:18px}.state{display:inline-block;border:1px solid #91b0bc;border-radius:999px;padding:5px 11px;font-size:12px;letter-spacing:.04em;color:var(--aqua);font-weight:800}.claim{font-weight:700;font-size:clamp(20px,3vw,28px);letter-spacing:-.02em;line-height:1.3;margin:12px 0}.kv{border-top:1px solid #365368;padding-top:11px;margin-top:11px}.key{color:var(--muted);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em}.value{color:#e3eff4;line-height:1.5;margin:5px 0 0;font-size:14px}.alert{background:#302b25;border-left:3px solid #efc67d;border-radius:5px;padding:12px;color:#f5dfb7;margin-top:12px}
+#orb{border:1px solid #4d7482;border-radius:18px;background:radial-gradient(circle at 52% 47%,#2c5761 0%,#122d40 45%,#0d1b2a 80%);height:300px;display:flex;justify-content:center;align-items:center;flex-direction:column;text-align:center;padding:16px}#orb .ring{width:150px;height:150px;border-radius:50%;border:3px solid #96dfcf;display:flex;justify-content:center;align-items:center;box-shadow:0 0 30px #1f6b6d88;color:#f3f7f9;font-size:14px;font-weight:800;letter-spacing:.04em;padding:20px}#orb small{margin-top:14px;color:#bfd3dc}
+#map{border:1px solid #4d7482;border-radius:18px;background:#0c2030;padding:16px;min-height:300px;display:grid;align-content:center;gap:12px}.mapnode{border:1px solid #5f8e9f;background:#1b3a4b;border-radius:11px;padding:11px;font-size:13px}.mapline{padding-left:25px;border-left:2px dashed #efc77c;margin-left:20px;color:#e9c78c;font-size:12px}.sideNote{font-size:12px;color:#bed1da}.footer{border-top:1px solid #355267;margin-top:24px;padding-top:14px;color:#a7bfcc;font-size:12px;line-height:1.7}.views{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:14px}
+[hidden]{display:none!important}@media(max-width:790px){.layout{grid-template-columns:1fr}.hero,.panel{padding:17px}.controlrow{display:grid}.controlrow label{min-width:0}}@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation:none!important}}
+</style>
+</head>
+<body>
+<main>
+<header class="hero">
+<div class="eyebrow">CoCivium / CoNull+ / CoNotSpace+ | EVO ALL BETTERS+</div>
+<h1>What does <em>NOT</em> mean?</h1>
+<p>Sometimes we see nothing. That does not mean nothing exists. Choose an example, inspect its evidence, and see what cannot safely be concluded.</p>
+<div class="rail">Public offline canary | synthetic examples | no accounts, network, tracking or external effects</div>
+</header>
+<div class="layout">
+<section class="panel" aria-labelledby="exampleHeading">
+<h2 id="exampleHeading">One missing relation, explained</h2>
+<div class="controlrow"><label for="scenario">Try an example<select id="scenario"></select></label><button id="overclaim" type="button">Test an overclaim</button></div>
+<div class="state" id="state">UNKNOWN</div>
+<p class="claim" id="claim"></p>
+<div class="kv"><div class="key">What we can say</div><p class="value" id="allowed"></p></div>
+<div class="kv"><div class="key">What we cannot say</div><p class="value" id="blocked"></p></div>
+<div class="kv"><div class="key">Evidence boundary</div><p class="value" id="evidence"></p></div>
+<div class="kv"><div class="key">Proof status</div><p class="value" id="truth"></p></div>
+<div id="overclaimResult" class="alert" role="status" aria-live="polite" hidden></div>
+</section>
+<aside class="panel" aria-label="Three views of the same work object">
+<h2>Same source. Three views.</h2>
+<div class="views" role="group" aria-label="Choose view">
+<button type="button" id="viewOrb" aria-pressed="true">Orb</button>
+<button type="button" id="viewMap" aria-pressed="false">Map</button>
+<button type="button" id="viewText" aria-pressed="false">Text</button>
+</div>
+<div id="orb"><div class="ring" id="orbState">UNKNOWN</div><small>Evidence is scoped. Absence is not universal.</small></div>
+<div id="map" hidden><div class="mapnode" id="mapClaim">Claim</div><div class="mapline">qualified by source, coverage and time</div><div class="mapnode" id="mapEvidence">Evidence</div><div class="mapline">does not grant effect authority</div><div class="mapnode" id="mapAuthority">No action / no receiver ACK</div></div>
+<div id="textView" hidden><p id="textContent" class="value"></p></div>
+<p class="sideNote">All three projections reuse one synthetic object identity. They are not a live CoOrbWare OS, a receiver, or independent corroboration.</p>
+</aside>
+</div>
+<section class="panel" aria-label="Not all is not none" style="margin-top:16px"><h2>Not all is not none</h2><p class="muted">In a closed, enumerated group of four, seeing one counterexample can refute <strong>all</strong> while three examples still exist. An incomplete or open-ended search cannot justify <strong>none</strong>. Negation needs its quantifier, scope and time.</p></section>
+<footer class="footer">An open-world catalogue does not convert an unlisted edge into a false edge. A qualified, time-bounded absence witness may support a local negative claim; it cannot establish universal nonexistence. Conceptual, spiritual, nonmaterial and counterfactual ideas are permitted as labeled hypotheses, not demonstrated physical facts. No private records or personal information are included. See the source and test contract in this repository.</footer>
+</main>
+<script type="application/json" id="ontology">
+{
+ "schema":"CoNotSpace.OpenWorldDemo.R0",
+ "source_id":"CoNotSpace.20261024.PublicSynthetic.v0",
+ "authority":"NONE",
+ "privacy":"PUBLIC_SYNTHETIC",
+ "logical_horizon":"OPEN_ENDED",
+ "materialized_workers":0,
+ "statuses":["UNKNOWN","UNOBSERVED","OBSERVED_ABSENT","EXPECTED_MISSING","NOT_YET","HYPOTHETICAL","CONTRADICTED","INAPPLICABLE","FORBIDDEN","WITHHELD","RETIRED","IRRECOVERABLE","LOGICALLY_IMPOSSIBLE"],
+ "examples":[
+  {"id":"receiver","state":"UNKNOWN","short":"Receiver acknowledgment","claim":"No receiver ACK is shown in this record.","allowed":"Receipt state is unknown in the inspected record.","blocked":"Therefore nobody received it, nobody read it, or nobody will.","evidence":"One selected publication record; no receiver-origin readproof bound.","true_evidence":false,"false_evidence":false},
+  {"id":"not_seen","state":"UNOBSERVED","short":"Search did not observe","claim":"A bounded search did not show this page.","allowed":"The chosen query did not return it at this observation time.","blocked":"Therefore the page does not exist anywhere or is being suppressed.","evidence":"Search terms and coverage would need an independent dated record.","true_evidence":false,"false_evidence":false},
+  {"id":"absent","state":"OBSERVED_ABSENT","short":"Empty test queue","claim":"No task was present in a fully enumerated test queue.","allowed":"No task was present within the sampled queue scope at the specified observation.","blocked":"Therefore no tasks exist globally, before or after the sample.","evidence":"Synthetic queue Q-demo, explicit finite coverage=complete, one dated inspection, method=list-all.","scope":"Q-demo finite queue","observed_at":"2026-10-24T00:00:00Z","method":"list-all","coverage_complete":true,"source_ref":"synthetic:test-queue:001","true_evidence":false,"false_evidence":true},
+  {"id":"missing","state":"EXPECTED_MISSING","short":"Expected file missing","claim":"An expected manifest was not found.","allowed":"The expected path was missing from the verified bounded inventory.","blocked":"Therefore the manifest was never created or was intentionally hidden.","evidence":"Synthetic expected-file manifest and observed local path scan.","true_evidence":false,"false_evidence":false},
+  {"id":"notyet","state":"NOT_YET","short":"Not yet running","claim":"Native CoOrbWare runtime has not been established.","allowed":"This is a candidate not qualified as an installed native runtime.","blocked":"Therefore it cannot exist later, or a JSON projection is a running OS.","evidence":"Source-linked public prototype plus explicit runtime-held field.","true_evidence":false,"false_evidence":false},
+  {"id":"hypothesis","state":"HYPOTHETICAL","short":"A future substrate","claim":"A proposed future substrate might render more dimensions.","allowed":"An idea is available for testable evaluation.","blocked":"Therefore the substrate exists or has exotic physical properties.","evidence":"Explicitly hypothetical example; no device, physics measurement or provider acceptance.","true_evidence":false,"false_evidence":false},
+  {"id":"contradiction","state":"CONTRADICTED","short":"Conflicting witnesses","claim":"Two explicitly supplied witnesses disagree about one claim.","allowed":"The evidence contains both support and opposition; preserve the conflict.","blocked":"Choose either side as settled, or infer any unrelated conclusion.","evidence":"Synthetic witness A supports, synthetic witness B opposes the same scoped claim.","true_evidence":true,"false_evidence":true},
+  {"id":"inapplicable","state":"INAPPLICABLE","short":"Wrong category","claim":"What is the colour of a virtual session ID?","allowed":"Colour is not a defined property of an identifier under this model.","blocked":"Its colour is hidden, absent, or forbidden.","evidence":"Schema defines IDs as opaque strings; appearance belongs to a renderer.","true_evidence":false,"false_evidence":false},
+  {"id":"forbidden","state":"FORBIDDEN","short":"Not authorized","claim":"A candidate worker does not have permission to send emails.","allowed":"The authority envelope excludes outbound sending.","blocked":"Email delivery is physically impossible or everyone rejected the message.","evidence":"Synthetic read-only authority envelope; no send adapter granted.","true_evidence":false,"false_evidence":false},
+  {"id":"withheld","state":"WITHHELD","short":"Private evidence","claim":"An object is not shown on this public surface.","allowed":"The public view withholds information under a privacy rule.","blocked":"No object exists, or the private contents can be inferred from a placeholder.","evidence":"Privacy class is restricted; original content deliberately absent from this demo.","true_evidence":false,"false_evidence":false},
+  {"id":"retired","state":"RETIRED","short":"Retired worker","claim":"A retired task identity has no automatic wake authority.","allowed":"A historical task may be preserved while effect permission remains ended.","blocked":"Lower pressure automatically reauthorizes it.","evidence":"Synthetic retirement declaration and no reactivation grant.","true_evidence":false,"false_evidence":false},
+  {"id":"irrecoverable","state":"IRRECOVERABLE","short":"Unrecoverable source","claim":"An exact source is not recoverable from the documented backups.","allowed":"The stated recovery method cannot restore it within the tested boundary.","blocked":"It is metaphysically impossible for any other copy to exist.","evidence":"Synthetic lost-file scenario with explicitly bounded backup coverage.","true_evidence":false,"false_evidence":false},
+  {"id":"impossible","state":"LOGICALLY_IMPOSSIBLE","short":"Contradiction under axioms","claim":"A single integer is both even and odd under standard parity definitions.","allowed":"This conjunction is inconsistent under the declared integer/parity axioms.","blocked":"Every speculative physical or metaphysical possibility is disproven.","evidence":"Declared definitions of integer, even, odd and elementary derivation, not an empirical universal.","assumptions":["standard integer parity"],"derivation_ref":"synthetic:parity-derivation","true_evidence":false,"false_evidence":true}
+ ]
+}
+</script>
+<script>
+"use strict";
+const CONFIG=JSON.parse(document.getElementById("ontology").textContent);
+// PURE_BEGIN
+function truthStatus(x){
+ if(x.true_evidence&&x.false_evidence)return "BOTH / CONFLICT";
+ if(x.true_evidence)return "TRUE-SUPPORTED";
+ if(x.false_evidence)return "FALSE-SUPPORTED IN SCOPE";
+ return "NEITHER / NOT ESTABLISHED";
+}
+function validateExample(x,allowed){
+ if(!allowed.includes(x.state))return false;
+ if(typeof x.id!=="string"||!x.id||typeof x.claim!=="string")return false;
+ if(x.state==="OBSERVED_ABSENT")return Boolean(x.scope&&x.observed_at&&x.method&&x.coverage_complete===true&&x.source_ref);
+ if(x.state==="LOGICALLY_IMPOSSIBLE")return Boolean(x.assumptions&&x.assumptions.length&&x.derivation_ref);
+ return true;
+}
+function globalNonexistenceProven(x){
+ // A bounded negative example never proves unbounded nonexistence.
+ return false;
+}
+function classify(x,allowed){
+ if(!validateExample(x,allowed))return {state:"UNKNOWN",qualified:false,truth:"NEITHER / NOT ESTABLISHED"};
+ return {state:x.state,qualified:true,truth:truthStatus(x)};
+}
+function quantifierStatus(x){
+ // Quantified absence requires a finite, explicitly closed and source-bound domain.
+ if(!x||x.coverage_complete!==true||!x.scope||!x.observed_at||!x.witness_ref)return "UNKNOWN_SCOPE";
+ const n=x.domain_size,p=x.positive_count,f=x.negative_count;
+ if(!Number.isSafeInteger(n)||!Number.isSafeInteger(p)||!Number.isSafeInteger(f)||n<0||p<0||f<0||p+f!==n)return "UNKNOWN_SCOPE";
+ if(n===0)return "EMPTY_DOMAIN";
+ if(p===0)return "NONE_WITHIN_SCOPE";
+ if(f>0)return "NOT_ALL_WITHIN_SCOPE";
+ return "ALL_WITHIN_SCOPE";
+}
+// PURE_END
+const $=id=>document.getElementById(id);
+const records=CONFIG.examples;
+let selected=records[0];
+records.forEach((x,i)=>{const o=document.createElement("option");o.value=x.id;o.textContent=x.short;$("scenario").append(o);});
+function render(){
+ const out=classify(selected,CONFIG.statuses);
+ $("state").textContent=out.state;
+ $("claim").textContent=selected.claim;
+ $("allowed").textContent=selected.allowed;
+ $("blocked").textContent=selected.blocked;
+ $("evidence").textContent=selected.evidence;
+ $("truth").textContent=out.truth+(out.qualified?" | state qualified for this demo":" | missing qualification");
+ $("orbState").textContent=out.state;
+ $("mapClaim").textContent=selected.claim;
+ $("mapEvidence").textContent=selected.evidence;
+ $("mapAuthority").textContent="Authority: NONE | Receiver ACK: NOT ESTABLISHED";
+ $("textContent").textContent=selected.state+": "+selected.claim+" Boundary: "+selected.allowed+" Counterclaim blocked: "+selected.blocked;
+ $("overclaimResult").hidden=true;
+}
+$("scenario").addEventListener("change",()=>{selected=records.find(x=>x.id===$("scenario").value)||records[0];render();});
+$("overclaim").addEventListener("click",()=>{
+ const box=$("overclaimResult");
+ box.textContent=globalNonexistenceProven(selected)?"Global absence established":"BLOCKED: This evidence cannot establish universal nonexistence, global invisibility, secret suppression, or unlimited authority.";
+ box.hidden=false;
+});
+const views={Orb:$("orb"),Map:$("map"),Text:$("textView")};
+function showView(name){
+ Object.entries(views).forEach(([k,node])=>{node.hidden=k!==name;$("view"+k).setAttribute("aria-pressed",k===name?"true":"false");});
+}
+Object.keys(views).forEach(name=>$("view"+name).addEventListener("click",()=>showView(name)));
+render();
+</script>
+</body>
+</html>
