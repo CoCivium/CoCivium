@@ -375,3 +375,13 @@ GitHub is a public projection and currentness surface. It is not universal custo
 At this snapshot no repository-backed receiver was found for `.nodes`, `nodes`, `.sites`, `sites`, or a dedicated CoVIA transport. Those destinations must remain `HELD_NO_RECEIVER` until a real receiver route exists.
 
 **Pointer is not ACK. Receipt beats assertion.**
+
+## EVO ALL BETTERS+ resource-first evergreen blast · 2026-10-24
+
+Published coordination contract: [Issue #221 comment 6388703333](https://github.com/CoCivium/CoCivium/issues/221#issuecomment-6388703333).
+
+**Receipt boundary:** PASS means the public issue comment was published. It does not mean all resources received or adopted it, and it is not a runtime benchmark. The machine-readable receipt in `ai/benchmark-evo.jsonl` preserves this distinction.
+
+Keep these proposed gates HELD until fresh target-bound evidence exists: same rich-media artifact >300 KB + inspectable thumbnail + ffprobe + blackdetect zero disallowed segments; GitHub HTTP 200 <2 s; Gmail recipient Primary <60 s with recipient-side proof; Pi compatibility <2 s; Claude credential-presence probe <1 s without logging secrets; Llama/Ollama packet parse <3 s; fresh physical CoThumb/middle-button mapping; and checkpoint-to-zero-workers/cancel/resume receipts.
+
+Use a huge logical candidate frontier with bounded active workers, durable receipts, backpressure, checkpoint/resume, and quiescence. Historical PASS is not fresh PASS. Provider names are not proof of access. Predictions and simulations never grant authority. Publication is not receiver ACK. Preserve privacy, optional participation, keyboard/assistive alternatives, and human gates for consequential actions.
