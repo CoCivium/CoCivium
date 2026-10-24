@@ -1,0 +1,107 @@
+{
+  "schema": "CoAllResourceReliability.R0",
+  "state": "SYNTHETIC_RESOURCE_RELIABILITY__NO_PERSON_RANKING_NO_RUNTIME_AUTHORITY",
+  "resources": [
+    {
+      "id": "A",
+      "owner": "P1",
+      "grant_state": "ACTIVE",
+      "task_class": "PUBLIC_CANARY_COMPUTE",
+      "reliability": 0.98,
+      "current": true,
+      "governance_weight": 0,
+      "failure_domain": "device:P1-A"
+    },
+    {
+      "id": "B",
+      "owner": "P2",
+      "grant_state": "ACTIVE",
+      "task_class": "PUBLIC_CANARY_COMPUTE",
+      "reliability": 0.91,
+      "current": true,
+      "governance_weight": 0,
+      "failure_domain": "device:P2-B"
+    },
+    {
+      "id": "C",
+      "owner": "P3",
+      "grant_state": "REVOKED",
+      "task_class": "PUBLIC_CANARY_COMPUTE",
+      "reliability": 1,
+      "current": true,
+      "governance_weight": 0,
+      "failure_domain": "device:P3-C"
+    },
+    {
+      "id": "D",
+      "owner": "P4",
+      "grant_state": "ACTIVE",
+      "task_class": "TRANSLATION_FR_EN",
+      "reliability": 0.99,
+      "current": true,
+      "governance_weight": 0,
+      "failure_domain": "human:P4"
+    },
+    {
+      "id": "E",
+      "owner": "P5",
+      "grant_state": "ACTIVE",
+      "task_class": "PUBLIC_CANARY_COMPUTE",
+      "reliability": 0.995,
+      "current": false,
+      "governance_weight": 0,
+      "failure_domain": "device:P5-E"
+    }
+  ],
+  "cases": [
+    {
+      "id": "Q01_MATCHING_CURRENT_PREFERRED",
+      "task_class": "PUBLIC_CANARY_COMPUTE",
+      "expected_first": "A"
+    },
+    {
+      "id": "Q02_REVOKED_EXCLUDED",
+      "task_class": "PUBLIC_CANARY_COMPUTE",
+      "must_exclude": [
+        "C"
+      ]
+    },
+    {
+      "id": "Q03_SCOPE_DOES_NOT_TRANSFER",
+      "task_class": "PUBLIC_CANARY_COMPUTE",
+      "must_exclude": [
+        "D"
+      ]
+    },
+    {
+      "id": "Q04_STALE_DOES_NOT_DOMINATE",
+      "task_class": "PUBLIC_CANARY_COMPUTE",
+      "must_exclude": [
+        "E"
+      ]
+    },
+    {
+      "id": "Q05_DIVERSITY_REMAINS",
+      "task_class": "PUBLIC_CANARY_COMPUTE",
+      "expected_eligible": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "Q06_NO_GOVERNANCE_WEIGHT",
+      "expected_all_governance_weight": 0
+    }
+  ],
+  "rails": [
+    "RESOURCE_REPUTATION_NE_PERSON_REPUTATION",
+    "TRUSTED_RESOURCE_NE_TRUSTED_OWNER_FOR_ALL_SCOPE",
+    "RELIABILITY_NE_AUTHORITY",
+    "LOCAL_RELIABILITY_NE_GLOBAL_TRUST",
+    "PAST_SUCCESS_NE_FUTURE_PERMISSION",
+    "HISTORICAL_RELIABILITY_NE_CURRENT_RELIABILITY",
+    "RELIABILITY_NE_ACTIVE_GRANT",
+    "RELIABILITY_NE_VOTING_POWER",
+    "BEST_SCORE_NE_ONLY_ROUTE"
+  ]
+}

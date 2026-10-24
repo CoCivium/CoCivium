@@ -1,0 +1,119 @@
+{
+  "schema": "CoAllResourceFailoverResume.R0",
+  "state": "SYNTHETIC_FAILOVER_CANARY__NO_REAL_RESOURCE_EXECUTION",
+  "source_bindings": {
+    "cosubstrate_field_path": "docs/Architecture/COSUBSTRATE_FIELD_R0.md",
+    "cosubstrate_field_blob_sha": "5fec3249945ad3d14511621bc52da5587c3526b8"
+  },
+  "source": {
+    "task_id": "T-COMPUTE-001",
+    "resource_id": "R-A",
+    "grant_state": "ACTIVE",
+    "lease_id": "L-A-7",
+    "fence": 7,
+    "authority": "BOUNDED_COMPUTE",
+    "privacy_scope": "PUBLIC",
+    "completed_units": 40,
+    "total_units": 100,
+    "state": "FAILED"
+  },
+  "checkpoint": {
+    "checkpoint_id": "CP-40",
+    "task_id": "T-COMPUTE-001",
+    "source_resource_id": "R-A",
+    "source_lease_id": "L-A-7",
+    "source_fence": 7,
+    "completed_units": 40,
+    "remaining_units": 60,
+    "semantic_digest": "SHA256:CHECKPOINT-40-SYNTHETIC",
+    "invariants": [
+      "TASK_ID_STABLE",
+      "COMPLETED_RANGE_IMMUTABLE",
+      "AUTHORITY_NOT_EXPANDED"
+    ],
+    "provenance_bound": true,
+    "receipt_valid": true
+  },
+  "replacements": [
+    {
+      "id": "R-B",
+      "grant_state": "ACTIVE",
+      "compatible": true,
+      "adapter_required": false,
+      "authority": "BOUNDED_COMPUTE",
+      "privacy_scope": "PUBLIC",
+      "new_lease_id": "L-B-8",
+      "new_fence": 8,
+      "expected": "RESUME_REMAINING_60"
+    },
+    {
+      "id": "R-C",
+      "grant_state": "ACTIVE",
+      "compatible": false,
+      "adapter_required": false,
+      "authority": "BOUNDED_COMPUTE",
+      "privacy_scope": "PUBLIC",
+      "expected": "HOLD_INCOMPATIBLE"
+    },
+    {
+      "id": "R-D",
+      "grant_state": "OFFERED",
+      "compatible": true,
+      "adapter_required": false,
+      "authority": "BOUNDED_COMPUTE",
+      "privacy_scope": "PUBLIC",
+      "expected": "HOLD_NO_ACTIVE_GRANT"
+    },
+    {
+      "id": "R-E",
+      "grant_state": "ACTIVE",
+      "compatible": true,
+      "adapter_required": true,
+      "adapter_bound": false,
+      "authority": "BOUNDED_COMPUTE",
+      "privacy_scope": "PUBLIC",
+      "expected": "HOLD_ADAPTER_UNBOUND"
+    }
+  ],
+  "negative_cases": [
+    {
+      "id": "N01_STALE_SOURCE_RECONNECT",
+      "resource_id": "R-A",
+      "presented_fence": 7,
+      "current_fence": 8,
+      "expected": "REJECT_STALE_FENCE"
+    },
+    {
+      "id": "N02_MISSING_CHECKPOINT_PROVENANCE",
+      "checkpoint_provenance_bound": false,
+      "expected": "HOLD_UNTRUSTED_CHECKPOINT"
+    },
+    {
+      "id": "N03_AUTHORITY_EXPANSION",
+      "replacement_authority": "UNBOUNDED_COMPUTE",
+      "source_authority": "BOUNDED_COMPUTE",
+      "expected": "HOLD_AUTHORITY_EXPANSION"
+    }
+  ],
+  "expected": {
+    "source_completed_units_preserved": 40,
+    "resumed_units": 60,
+    "duplicate_remaining_execution": false,
+    "authority_transferred": false,
+    "real_execution_count": 0
+  },
+  "rails": [
+    "RESOURCE_FAILOVER_PROFILE_NE_NEW_SUBSTRATE_ONTOLOGY",
+    "FAILOVER_NE_IDENTICAL_RESOURCE",
+    "CHECKPOINT_NE_LEASE_TRANSFER",
+    "SOURCE_AUTHORITY_NE_SUCCESSOR_AUTHORITY",
+    "SHARED_TASK_NE_SHARED_LEASE",
+    "FAILOVER_NE_AUTHORITY_INHERITANCE",
+    "RESUME_REQUIRES_NEW_FENCE",
+    "FAILED_RESOURCE_RECONNECT_NE_OLD_FENCE_REVIVAL",
+    "CHECKPOINT_PROVENANCE_REQUIRED_FOR_RESUME",
+    "AVAILABLE_REPLACEMENT_NE_COMPATIBLE_REPLACEMENT",
+    "UNKNOWN_COMPATIBILITY_NE_RESUME_PERMISSION",
+    "ONE_REMAINING_WORK_RANGE_NE_TWO_ACTIVE_EXECUTORS"
+  ]
+}
