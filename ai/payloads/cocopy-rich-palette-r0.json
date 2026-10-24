@@ -1,0 +1,69 @@
+{
+  "schema": "CoCivium.CoCopyRichPalette.R0.PublicCandidate",
+  "observed_date": "2026-10-24",
+  "artifact_type": "USER_DELIVERED_WINDOWS_PS7_FOREGROUND_CLIPBOARD_PALETTE",
+  "source_distribution": "ATTACHED_TO_CHAT_ONLY_NOT_YET_GITHUB_SOURCE_OR_X2_INSTALLED",
+  "source_file": "CoCopyRichPaletteR0.ps1",
+  "source_sha256": "e7d6d4446e74e35bb7a649ab21b73e2bc0379e891b32c5e44956aa32e1a7ae5f",
+  "package_file": "CoCopyRichPaletteR0.zip",
+  "package_sha256": "9eed927fc6a6797feb8793106e51129dc929eea347a2c132bca9a815f43e1b18",
+  "source_audit": {
+    "static_checks": 26,
+    "passed": 26,
+    "failed": 0,
+    "status": "PASS_STATIC_ONLY",
+    "runtime_parser": "HELD_NOT_AVAILABLE_ON_CONTAINER",
+    "windows_sta_selftest": "HELD_NOT_EXECUTED_ON_X2",
+    "clipboard_cross_application": "HELD_NOT_ACCEPTED",
+    "physical_button": "HELD_NOT_BOUND"
+  },
+  "capabilities": [
+    {
+      "id": "RICH_BUNDLE",
+      "representation": "FileDrop+UnicodeText",
+      "max_files": 24,
+      "reads_file_bytes": false,
+      "reads_file_metadata_on_opt_in": true,
+      "external_effect": "USER_MUST_MANUALLY_PASTE"
+    },
+    {
+      "id": "TEXT",
+      "representation": "UnicodeText",
+      "max_characters": 65536,
+      "reads_external_text": false,
+      "external_effect": "USER_MUST_MANUALLY_PASTE"
+    },
+    {
+      "id": "PIXELS",
+      "representation": "Bitmap",
+      "max_image_file_MiB": 32,
+      "max_decoded_pixels": 16000000,
+      "requires_single_explicit_image": true,
+      "external_effect": "USER_MUST_MANUALLY_PASTE"
+    },
+    {
+      "id": "CONTEXT",
+      "representation": "Foreground process basename + pointer screen region",
+      "reads_input_contents": false,
+      "reads_clipboard_by_default": false,
+      "changes_only_initial_tab": true
+    }
+  ],
+  "privacy": "EXPLICIT_CLICK_CHANGES_SHARED_WINDOWS_CLIPBOARD__NO_AUTOMATIC_CAPTURE__NO_HISTORY_MONITOR__NO_CLOUD_SEND__NO_HIDDEN_CONTEXT",
+  "execution": "FOREGROUND_ON_DEMAND__NO_OS_HOOKS__NO_DAEMON__NO_AUTOSTART__NO_BACKGROUND_WORKERS",
+  "prior_public_source": "https://github.com/CoCivium/CoCivium/blob/main/examples/conodcothumb/CoNodCoThumbPolicyR0.mjs",
+  "prior_public_identity": "5651f1d0dfad829c401f038ae021a555a919319e",
+  "next_proof": "Download pinned package on X2, run non-effect STA preflight, manually stage one public image/file, verify paste only in intended app, record user-confirmed clipboard and undo/stop; then identify physical mouse and test optional preview-only binding",
+  "nonclaims": [
+    "STATIC_AUDIT_NE_POWERSHELL_PARSE_OR_WINDOWS_EXECUTION",
+    "PUBLIC_DESCRIPTOR_NE_PUBLIC_SOURCE_CODE",
+    "CHAT_ARTIFACT_NE_COSTEAD_LANDING",
+    "FILEDROP_REFERENCES_NE_FILE_BYTES_TRANSFER",
+    "PIXEL_BITMAP_NE_ARBITRARY_SCREEN_PIXEL_INSERTION",
+    "SHARED_CLIPBOARD_NE_SECRET_VAULT",
+    "MOUSE_CONTEXT_PREVIEW_NE_HARDWARE_REMAP",
+    "GESTURE_NE_AUTHORITY",
+    "POINTER_NE_ACK",
+    "NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF"
+  ]
+}
