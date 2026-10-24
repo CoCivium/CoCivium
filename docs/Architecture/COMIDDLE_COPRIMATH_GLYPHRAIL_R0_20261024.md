@@ -337,3 +337,58 @@ This gives:
 `MIDDLE_NE_SEND`
 `MIDDLE_NE_EXECUTE`
 `MIDDLE_NE_AUTHORITY`
+
+## CoEvoAll Betters+ broadcast relation
+
+This rail participates in the wider bounded evolution fabric:
+
+`MIDDLE / THUMB INPUT -> CONTEXT -> CANDIDATE RELATIONS -> CoStretch RESOURCE ELECTION -> CoTurtle CHALLENGE -> TEST -> RECEIPT -> BENCHMARK -> EVERGREEN -> SLEEP / WAKE`
+
+### Expansion families
+
+- CoMiddle / CoThumb / XBUTTON adapters;
+- CoGibberTru / CoPriMath typed relation IR;
+- CoDoodle / CoNex experiment generation;
+- CoStretch resource selection;
+- CoTurtle recursive challenge;
+- CoModelFabric local + provider-neutral workers;
+- CoMap / CoOrb / CoBar projections;
+- CoFuture / inverse / null / counterfactual lanes;
+- FOSS / local-first / provider-substitutable execution;
+- historical gate preservation and negative-result retention.
+
+### Million-session boundary
+
+Prefer huge logical work/session address spaces with a small elected active frontier.
+
+`MILLION_LOGICAL_SESSIONS_NE_MILLION_PROVIDER_TABS`
+`MAX_STRETCH_NE_MAX_RESOURCE_BURN`
+`RESOURCE_AVAILABLE_NE_RESOURCE_SHOULD_RUN`
+
+### Historical test gates retained
+
+Keep these test names visible without upgrading stale evidence into fresh PASS:
+
+- media size >300KB + thumbnail;
+- ffprobe success;
+- ffmpeg blackdetect zero-event result;
+- GitHub HTTP 200 <2s probe;
+- Gmail recipient Primary <60s;
+- sent/message ID logged;
+- Pi compatibility <2s;
+- Claude credential-presence probe <1s;
+- local Llama/Ollama packet parse <3s.
+
+Only the first group and some local/GitHub probes have historical scoped PASS evidence. Gmail recipient-side Primary, Pi compatibility, Claude authenticated readiness, and full local Llama usefulness remain HELD unless freshly re-proved.
+
+### Cultural / commons rails
+
+`FOSS_FOREVER_CANDIDATE`
+`WORKING_TOGETHER_RESPECTFULLY`
+`PRIVACY_BY_DESIGN`
+`INCLUSIVE_OPTIONAL_PARTICIPATION`
+`DISPLAY_REQUIRED_WEAR_OPTIONAL`
+`PAY_FORWARD_AND_SIDEWAYS`
+`LOLS = LAYERS + LAUGHS + LOVE + LEARNING`
+
+These are cultural/design priors, not automatic authority or universal consent.
