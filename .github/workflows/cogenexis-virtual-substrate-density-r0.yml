@@ -1,0 +1,27 @@
+name: CoGenExIs Virtual Substrate Density R0
+
+on:
+  pull_request:
+    paths:
+      - "docs/CoTheoryAll/cogenexis-r0/README.md"
+      - "docs/Architecture/COVIRTUAL_SUBSTRATE_DENSITY_CONVERGENCE_R0.md"
+      - "fixtures/relations/cogenexis_virtual_substrate_density_r0.json"
+      - "tools/validate_cogenexis_virtual_substrate_density_r0.py"
+      - ".github/workflows/cogenexis-virtual-substrate-density-r0.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python tools/validate_cogenexis_virtual_substrate_density_r0.py
