@@ -11,6 +11,12 @@
 
 ## Public interactive research surfaces
 
+- Votes For Sale? R0A: visibly fictional, nonpartisan money-in-politics satire linked to official 2025-2026 FEC finance disbursements, a historic DOJ-prosecuted case, IDEA's political finance regulations and CPI's measured scope. It is **not** a vote purchase estimate, an allegation about the 2026 election, donor persuasion guidance or a local/global election-integrity score.
+- Public exhibit source: https://github.com/CoCivium/CoAcademy/blob/master/docs/coplay/votes-for-sale/index.html
+- Source/methodology: https://github.com/CoCivium/CoAcademy/blob/master/docs/coplay/votes-for-sale/README.md
+- Machine evidence and epistemic limits: https://raw.githubusercontent.com/CoCivium/CoAcademy/master/docs/coplay/votes-for-sale/discovery.json
+- Source-level mock test: https://github.com/CoCivium/CoAcademy/blob/master/docs/coplay/votes-for-sale/test_receipt_r0a.json (31/31 in isolated V8; outside host readback unproven).
+- Intended Pages route: https://cocivium.github.io/CoAcademy/coplay/votes-for-sale/ (independent browser reachability NOT verified).
 - Money and Elections Aggregate Lab R0: public finance and election-administration spending-per-ballot arithmetic from voluntary user-entered aggregates. Not voter-price inference, party recommendation, fraud scoring or political audience targeting.
 - Money and Elections source: https://github.com/CoCivium/CoAcademy/blob/master/docs/civic-integrity/money-and-elections/index.html
 - Machine evidence and privacy contract: https://raw.githubusercontent.com/CoCivium/CoAcademy/master/docs/civic-integrity/money-and-elections/discovery.json
