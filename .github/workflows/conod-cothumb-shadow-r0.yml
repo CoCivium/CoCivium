@@ -1,0 +1,23 @@
+name: CoNod CoThumb shadow R0
+on:
+  pull_request:
+    paths:
+      - 'examples/conodcothumb/**'
+      - '.github/workflows/conod-cothumb-shadow-r0.yml'
+  push:
+    paths:
+      - 'examples/conodcothumb/**'
+      - '.github/workflows/conod-cothumb-shadow-r0.yml'
+permissions:
+  contents: read
+jobs:
+  no_effect_policy_tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate CoNod shadow policy (never remap device or call provider)
+        run: node examples/conodcothumb/CoNodCoThumbPolicyR0.mjs --selftest
