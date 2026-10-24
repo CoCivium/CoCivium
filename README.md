@@ -6,6 +6,8 @@
 > **Public R&D / pre-launch transition:** CoCivium is moving from mostly private prototyping toward a public demo / pre-launch phase. Repositories, terms, interfaces, and machine-readable projections are being reorganized. Expect **StrawBe+** work-in-progress objects, explicit nonclaims, and superseded prototypes. **Public does not mean validated, finished, endorsed, or release-ready.** See [PRELAUNCH.md](PRELAUNCH.md).
 
 
+> **First time here?** [Start in 60 seconds](START_HERE.md). Choose one real task, inspect a small demo and its evidence, or tell us what failed. No account, new domain or CoAll vocabulary is required to start.
+
 *"If Universes are NOT quantum, but we are; if alien observers prove planck relationals; if all is rels; and if CoCivium is CoCME+Rels; can yous sing the CoQuadPieRels+ CoSong with us yet...?  Or are you from legacy physics?  If so, blame not selves, blame obsolete schools, maybe?"*
 
 
