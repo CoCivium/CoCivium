@@ -1,0 +1,21 @@
+{
+  "schema": "CoMousePaletteCI/1",
+  "candidate": "CoMousePalette_R0",
+  "head_commit": "ebca7fbb98b155be45eeedadccedcd5db3ca1bb4",
+  "source_sha256": "7822f9619ec212175bd4099e9fe94b3c681c8f9c2a01c16525af0a3061f8ce6d",
+  "github_run_id": 40110826879,
+  "github_run_url": "https://github.com/CoCivium/CoCivium/actions/runs/40110826879",
+  "jobs": {
+    "source-safety": "PASS",
+    "windows-sta-selftest": "PASS"
+  },
+  "physical_x2_mouse": "NOT_RUN",
+  "x2_remote": "OFFLINE_OBSERVED",
+  "network_effects": "NOT_RUNTIME_MEASURED",
+  "nonclaims": [
+    "WINDOWS_SELFTEST_NE_REAL_GUI",
+    "SOURCE_INSPECTION_NE_HARDWARE_VALIDATION",
+    "SOURCE_READBACK_NE_X2_INSTALL",
+    "CI_NE_PERSONAL_FIRST_USE"
+  ]
+}
