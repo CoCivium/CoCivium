@@ -13,7 +13,7 @@
 - Inspect provenance and missing evidence, then explicitly **Copy safe CoCopy+ capsule**; no private filesystem path is included.
 - Copies carry `resource_id`, `epistemic`, `lifecycle`, `effect_authority: NONE`, optional public URL, and `next_proof`.
 - Offline browser interface with no fetch, analytics, login, model API calls, autonomous input action, or background monitoring. Clipboard access occurs only on an explicit click; a manual-copy fallback is shown if clipboard permission is unavailable.
-- The centred moustache is a visual identifier, not a claim of measured resource efficiency.
+- The centred moustache is also a **preview-only button**: mouse primary-click, keyboard Enter or Space opens the first matching record's evidence. If there is no match, focus returns to intent search. It does not copy to the clipboard, execute, dispatch, remap a mouse, intercept middle-click, or transmit data. Copy remains a separate explicit action. The moustache is not a claim of measured resource efficiency.
 
 ## Validate
 

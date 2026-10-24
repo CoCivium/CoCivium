@@ -1,0 +1,33 @@
+name: CoThumb preview-only regression
+on:
+  pull_request:
+    paths:
+      - 'examples/coattractorpull/index.html'
+      - 'examples/coattractorpull/tests/smoke.cjs'
+      - 'examples/coattractorpull/README.md'
+      - '.github/workflows/cothumb-preview-r0.yml'
+permissions:
+  contents: read
+jobs:
+  preview-only:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Check smoke-test syntax
+        run: node --check examples/coattractorpull/tests/smoke.cjs
+      - name: Check inline browser-script syntax
+        run: |
+          node <<'NODE'
+          const fs=require('node:fs'), vm=require('node:vm');
+          const html=fs.readFileSync('examples/coattractorpull/index.html','utf8');
+          const start=html.lastIndexOf('<script>'), end=html.indexOf('</script>',start);
+          if(start<0||end<start)throw Error('Missing inline browser script');
+          new vm.Script(html.slice(start+8,end));
+          console.log('PASS_INLINE_SCRIPT_SYNTAX');
+          NODE
+      - name: Reproduce bounded safe-preview smoke tests
+        run: node examples/coattractorpull/tests/smoke.cjs

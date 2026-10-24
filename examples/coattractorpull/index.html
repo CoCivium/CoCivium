@@ -15,10 +15,11 @@ a{color:#92e1ee} a:hover{text-decoration:none} button,input{font:inherit}
 .detail{border:1px solid #517282;border-radius:15px;background:#10293b;padding:20px;margin-top:18px;display:none}.detail.active{display:block}.detail h2{font-size:20px}.facts{display:grid;grid-template-columns:minmax(100px,160px) 1fr;gap:8px;line-height:1.5;overflow-wrap:anywhere}.facts dt{color:#aed0da}.facts dd{margin:0}.private{color:#f6d8a6}.controls-small{display:flex;gap:10px;flex-wrap:wrap;margin-top:17px}#copyFallback{width:100%;background:#071521;color:#fff;border-radius:9px;margin-top:12px;padding:12px;display:none}.note{font-size:13px;color:#acc6ce}.footer{font-size:12px;line-height:1.6;border-top:1px solid #345062;margin-top:28px;padding-top:15px;color:#aec6cf}
 @media(max-width:620px){.hero{grid-template-columns:1fr}.moustache{width:112px}.facts{grid-template-columns:1fr}.facts dt{margin-top:8px}.section-heading{align-items:flex-start;flex-direction:column}}
  .hero{grid-template-columns:1fr;text-align:center} .hero .subtitle{margin-left:auto;margin-right:auto} .hero .moustache{justify-self:center;max-width:40vw}
+.moustache-trigger{justify-self:center;display:flex;flex-direction:column;align-items:center;gap:4px;border:1px solid #59717c;background:#092130;border-radius:16px;padding:12px 16px;cursor:pointer;color:#d5e6e9;max-width:300px}.moustache-trigger:hover{background:#193b49}.moustache-trigger:focus-visible{outline:3px solid #ffdc97;outline-offset:3px}.previewhint{font-size:11px;font-weight:700;letter-spacing:.06em;text-align:center}
 </style></head>
 <body><main>
 <section class="hero"><div><div class="overline">EVO ALL BETTERS + / CoCivium / CoAll / Public offline R0</div><h1>CoAttractorPull<span style="color:#f4c679">+</span> <span style="color:#add9e3">/ CoCopy+</span></h1><p class="subtitle">Find resources by intent. Inspect what is proven. Copy a safe capability capsule. Unknown resources stay unknown, not magically discovered.</p></div>
-<svg class="moustache" viewBox="0 0 300 140" role="img" aria-label="Gold centre moustache"><path fill="#e8af54" d="M150 52C111 18 81 30 61 69 47 94 25 82 11 60 6 100 36 131 75 120c35-10 60-38 75-56 15 18 40 46 75 56 39 11 69-20 64-60-14 22-36 34-50 9-20-39-50-51-89-17Z"/></svg></section>
+<button type="button" id="thumbPreview" class="moustache-trigger" aria-label="EVO ALL BETTERS: preview best matching resource, no copy or send"><svg class="moustache" viewBox="0 0 300 140" aria-hidden="true"><path fill="#e8af54" d="M150 52C111 18 81 30 61 69 47 94 25 82 11 60 6 100 36 131 75 120c35-10 60-38 75-56 15 18 40 46 75 56 39 11 69-20 64-60-14 22-36 34-50 9-20-39-50-51-89-17Z"/></svg><span class="previewhint">EVO ALL BETTERS + / Preview only</span></button></section>
 <div class="status"><span class="pill">READ ONLY</span><span class="pill">No background discovery</span><span class="pill">No mouse remap</span><span class="pill">No external transmission</span></div>
 <section class="controls"><label for="query">What resource or capability do you need?<input id="query" type="search" autocomplete="off" placeholder="e.g., video, CoAndrew, mouse, lineage, Llama"></label><label class="checkrow"><input id="frontier" type="checkbox"> Include unknown and hypothetical discovery questions</label><div class="note">This is a bounded public reference set, not a live scan or complete inventory. Private file paths are never copied automatically.</div></section>
 <div class="section-heading"><h2>Qualified pointers and frontier candidates</h2><span class="count" id="count" aria-live="polite"></span></div><section id="results" class="grid" aria-label="Resource choices"></section>
@@ -38,6 +39,7 @@ function filteredRecords(q, includeFrontier){
  const tokens=q.toLowerCase().split(/\s+/).filter(Boolean);
  return records.filter(r=>(includeFrontier||!isFrontier(r)) && tokens.every(t=>[r.title,r.family,r.kind,r.epistemic,...r.tags].join(' ').toLowerCase().includes(t))).sort((a,b)=>a.title.localeCompare(b.title));
 }
+function previewCandidate(q,includeFrontier){return filteredRecords(q,includeFrontier)[0] || null;}
 function el(name,className,content){const x=document.createElement(name);if(className)x.className=className;if(content!==undefined)x.textContent=content;return x;}
 function render(){display.replaceChildren();const matches=filteredRecords(query.value,frontier.checked);document.getElementById('count').textContent=matches.length+' shown of '+records.length+' bounded examples';
  for(const r of matches){const card=el('article','card');card.append(el('div','eyebrow',r.family+' / '+r.lifecycle),el('h2','',r.title),el('p','desc',r.proof||r.next_probe));
@@ -56,5 +58,6 @@ async function copySelected(){if(!selected)return;const content=JSON.stringify(s
 if(navigator.clipboard&&typeof navigator.clipboard.writeText==='function')try{await navigator.clipboard.writeText(content);status.textContent='SAFE CAPSULE COPIED. No network or receiver action occurred.';return;}catch(e){}
 const box=document.getElementById('copyFallback');box.value=content;box.style.display='block';box.focus();box.select();status.textContent='Browser clipboard unavailable. Text selected; press Ctrl+C to copy manually.';
 }
+document.getElementById('thumbPreview').addEventListener('click',()=>{const r=previewCandidate(query.value,frontier.checked);if(r)selectRecord(r);else query.focus();});
 query.addEventListener('input',render);frontier.addEventListener('change',render);render();
 </script></body></html>
