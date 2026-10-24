@@ -1,0 +1,53 @@
+{
+  "schema": "CoNex.ReadOnlySourceCatalog.R0",
+  "observed_date": "2026-10-24",
+  "execution": "NO_NETWORK_SOURCE_CATALOG_ONLY",
+  "scope": "Curated candidate sources, not installed feed connectors or automated watches",
+  "sources": [
+    {
+      "lane": "CO_ET_SCIENCE",
+      "name": "NASA Exoplanet Archive",
+      "url": "https://exoplanetarchive.ipac.caltech.edu/",
+      "claim_type": "astronomical_dataset",
+      "testable_question": "Which observations and selection biases are in the source database?",
+      "nonclaim": "Exoplanets are not ET detections",
+      "live_connection": "NOT_CONFIGURED"
+    },
+    {
+      "lane": "CO_ET_SCIENCE",
+      "name": "Berkeley SETI Breakthrough Listen Open Data",
+      "url": "https://seti.berkeley.edu/opendata",
+      "claim_type": "technosignature_search_dataset",
+      "testable_question": "Can a candidate signal survive terrestrial interference controls and independent reanalysis?",
+      "nonclaim": "Archive availability is not a confirmed ETI signal",
+      "live_connection": "NOT_CONFIGURED"
+    },
+    {
+      "lane": "CO_ET_SCIENCE",
+      "name": "IAA / SETI June 2026 detection declaration hosted by SETI Institute",
+      "url": "https://www.seti.org/research/seti-101/protocols-for-an-eti-signal-detection/",
+      "claim_type": "verification_and_reporting_protocol",
+      "testable_question": "Does a potential finding satisfy evidence, independent verification and announcement protocol?",
+      "nonclaim": "Protocol is not evidence of detected intelligence",
+      "live_connection": "NOT_CONFIGURED"
+    },
+    {
+      "lane": "CO_GD_PHILOSOPHY",
+      "name": "Stanford Encyclopedia of Philosophy - Divine Hiddenness",
+      "url": "https://plato.stanford.edu/entries/divine-hiddenness/",
+      "claim_type": "philosophical_argument_and_counterargument",
+      "testable_question": "Which premises change across competing arguments and what observations, if any, bear on them?",
+      "nonclaim": "A philosophical argument is not a sensor reading or physical G_d detection",
+      "live_connection": "NOT_CONFIGURED"
+    },
+    {
+      "lane": "CO_GD_PHILOSOPHY",
+      "name": "Stanford Encyclopedia of Philosophy - Skeptical Theism",
+      "url": "https://plato.stanford.edu/entries/skeptical-theism/",
+      "claim_type": "philosophical_critique",
+      "testable_question": "Are hiddenness and evil objections challenged without erasing their strongest form?",
+      "nonclaim": "Inability to falsify a metaphysical thesis is not confirming evidence",
+      "live_connection": "NOT_CONFIGURED"
+    }
+  ]
+}
