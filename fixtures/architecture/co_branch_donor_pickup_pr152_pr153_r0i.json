@@ -1,0 +1,310 @@
+{
+  "schema": "CoBranchDonorPickup.PR152_PR153.R0I.v0.1-candidate",
+  "state": "EXACT_DUAL_DONOR_MANIFEST_LANDED__HOST_RECEIVER_PICKUP_PENDING__NO_MERGE_NO_CLOSE_NO_CANON",
+  "repository": "CoCivium/CoCivium",
+  "host": {
+    "pr": 150,
+    "branch": "candidate/coall-branchfield-r0-20261003",
+    "role": "CANDIDATE_BRANCH_RELATION_HOST",
+    "receiver_identity": "github-actions:PR150_PR152_PR153_DONOR_PICKUP_R0I",
+    "authority": "READ_ONLY_DONOR_PICKUP__NO_MERGE_NO_CLOSE_NO_BRANCH_MUTATION"
+  },
+  "donors": [
+    {
+      "pr": 152,
+      "branch": "candidate/codiscovery-compression-genexis-r0-20261004",
+      "exact_head_sha": "937cfc1126b22a8e6487fa34bec9c55733bb65dc",
+      "title": "CoDiscoveryBound+ / CoGenExIs+ / CoSubstrateCompression+ R0",
+      "relation_to_host": "DONATES_DISCOVERY_COMPRESSION_BUDGET_RELATIONS_TO",
+      "objects": [
+        {
+          "Identity": "pr152:workflow",
+          "Provenance": {
+            "pr": 152,
+            "head_sha": "937cfc1126b22a8e6487fa34bec9c55733bb65dc",
+            "path": ".github/workflows/codiscovery-compression-genexis-r0.yml"
+          },
+          "ContentHash": "gitblob-sha1:22a9327351b1d13a44549ca6249815e044700deb",
+          "LifecycleState": "LANDED_PUBLIC_CANDIDATE_BRANCH",
+          "Authority": "DONOR_CANDIDATE_ONLY",
+          "Owner": "CoCivium/CoCivium#152",
+          "Receiver": "github-actions:PR150_PR152_PR153_DONOR_PICKUP_R0I",
+          "Dependencies": [],
+          "CollisionDomain": "coall-branchfield-frontier-convergence",
+          "DuplicateOf": null,
+          "Supersedes": null,
+          "VisibleSurface": "PR152:.github/workflows/codiscovery-compression-genexis-r0.yml",
+          "ProofGate": "Receiver must read exact donor head and exact git blob, then emit SHA-256 exact-object readproof",
+          "NextDeed": "Retain executable validation lineage",
+          "RetirementCondition": "Pickup alone is insufficient; preserve lineage/negative knowledge/wake conditions and prove no unresolved unique proof lane before any close/retirement decision"
+        },
+        {
+          "Identity": "pr152:architecture-doc",
+          "Provenance": {
+            "pr": 152,
+            "head_sha": "937cfc1126b22a8e6487fa34bec9c55733bb65dc",
+            "path": "docs/Architecture/CODISCOVERY_COMPRESSION_GENEXIS_R0.md"
+          },
+          "ContentHash": "gitblob-sha1:279efe379133e92f4bc88d5f7ba040873e56edd0",
+          "LifecycleState": "LANDED_PUBLIC_CANDIDATE_BRANCH",
+          "Authority": "DONOR_CANDIDATE_ONLY",
+          "Owner": "CoCivium/CoCivium#152",
+          "Receiver": "github-actions:PR150_PR152_PR153_DONOR_PICKUP_R0I",
+          "Dependencies": [],
+          "CollisionDomain": "coall-branchfield-frontier-convergence",
+          "DuplicateOf": null,
+          "Supersedes": null,
+          "VisibleSurface": "PR152:docs/Architecture/CODISCOVERY_COMPRESSION_GENEXIS_R0.md",
+          "ProofGate": "Receiver must read exact donor head and exact git blob, then emit SHA-256 exact-object readproof",
+          "NextDeed": "Preserve typed discovery/compression/budget relations on host relation surface",
+          "RetirementCondition": "Pickup alone is insufficient; preserve lineage/negative knowledge/wake conditions and prove no unresolved unique proof lane before any close/retirement decision"
+        },
+        {
+          "Identity": "pr152:fixture",
+          "Provenance": {
+            "pr": 152,
+            "head_sha": "937cfc1126b22a8e6487fa34bec9c55733bb65dc",
+            "path": "fixtures/relations/codiscovery_compression_genexis_r0.json"
+          },
+          "ContentHash": "gitblob-sha1:fb6bc61116374fc8595b87affda17fd02af9478f",
+          "LifecycleState": "LANDED_PUBLIC_CANDIDATE_BRANCH",
+          "Authority": "DONOR_CANDIDATE_ONLY",
+          "Owner": "CoCivium/CoCivium#152",
+          "Receiver": "github-actions:PR150_PR152_PR153_DONOR_PICKUP_R0I",
+          "Dependencies": [],
+          "CollisionDomain": "coall-branchfield-frontier-convergence",
+          "DuplicateOf": null,
+          "Supersedes": null,
+          "VisibleSurface": "PR152:fixtures/relations/codiscovery_compression_genexis_r0.json",
+          "ProofGate": "Receiver must read exact donor head and exact git blob, then emit SHA-256 exact-object readproof",
+          "NextDeed": "Verify no-runtime/public/financial-effect boundary",
+          "RetirementCondition": "Pickup alone is insufficient; preserve lineage/negative knowledge/wake conditions and prove no unresolved unique proof lane before any close/retirement decision"
+        },
+        {
+          "Identity": "pr152:validator",
+          "Provenance": {
+            "pr": 152,
+            "head_sha": "937cfc1126b22a8e6487fa34bec9c55733bb65dc",
+            "path": "tools/validate_codiscovery_compression_genexis_r0.py"
+          },
+          "ContentHash": "gitblob-sha1:ac7fc34f42f91783cedb2b71833f0de709083b33",
+          "LifecycleState": "LANDED_PUBLIC_CANDIDATE_BRANCH",
+          "Authority": "DONOR_CANDIDATE_ONLY",
+          "Owner": "CoCivium/CoCivium#152",
+          "Receiver": "github-actions:PR150_PR152_PR153_DONOR_PICKUP_R0I",
+          "Dependencies": [],
+          "CollisionDomain": "coall-branchfield-frontier-convergence",
+          "DuplicateOf": null,
+          "Supersedes": null,
+          "VisibleSurface": "PR152:tools/validate_codiscovery_compression_genexis_r0.py",
+          "ProofGate": "Receiver must read exact donor head and exact git blob, then emit SHA-256 exact-object readproof",
+          "NextDeed": "Retain validator lineage",
+          "RetirementCondition": "Pickup alone is insufficient; preserve lineage/negative knowledge/wake conditions and prove no unresolved unique proof lane before any close/retirement decision"
+        }
+      ],
+      "selected_donor_deltas": [
+        "METAPHYSICAL_MODEL_NE_ESTABLISHED_FACT",
+        "VIRTUALIZED_CLI_NE_HIDDEN_EFFECT",
+        "GLYPH_CANDIDATE_NE_CANON",
+        "BUDGET_NE_SPEND_AUTHORITY",
+        "COEXOS_CANDIDATE_NE_INSTALLED_OS",
+        "LOOPING_NE_SENTIENCE"
+      ],
+      "negative_knowledge_to_preserve": [
+        "DEATH_NE_PROVEN_REINTEGRATION_EVENT",
+        "PRELIFE_NE_PROVEN_STATE",
+        "COMPRESSION_NE_ERASURE",
+        "VALUE_RELATION_NE_FINANCIAL_ASSET",
+        "CONVERGENCE_NE_FINAL_TRUTH"
+      ],
+      "unique_proof_lane": "EXECUTABLE_DISCOVERY_COMPRESSION_GENEXIS_VALIDATOR",
+      "retirement_eligible_now": false
+    },
+    {
+      "pr": 153,
+      "branch": "candidate/cogenexis-virtual-substrate-density-r0-20261004",
+      "exact_head_sha": "4fc4d08723a703fd8bfa8fe0046ebdbc5f32c7c4",
+      "title": "CoGenExIs+ R0: bounded discovery and virtual substrate",
+      "relation_to_host": "DONATES_GENEXIS_VIRTUAL_SUBSTRATE_DENSITY_RELATIONS_TO",
+      "objects": [
+        {
+          "Identity": "pr153:workflow",
+          "Provenance": {
+            "pr": 153,
+            "head_sha": "4fc4d08723a703fd8bfa8fe0046ebdbc5f32c7c4",
+            "path": ".github/workflows/cogenexis-virtual-substrate-density-r0.yml"
+          },
+          "ContentHash": "gitblob-sha1:cdfbd74ffc1f063d4a038f75968272f822203bae",
+          "LifecycleState": "LANDED_PUBLIC_CANDIDATE_BRANCH",
+          "Authority": "DONOR_CANDIDATE_ONLY",
+          "Owner": "CoCivium/CoCivium#153",
+          "Receiver": "github-actions:PR150_PR152_PR153_DONOR_PICKUP_R0I",
+          "Dependencies": [],
+          "CollisionDomain": "coall-branchfield-frontier-convergence",
+          "DuplicateOf": null,
+          "Supersedes": null,
+          "VisibleSurface": "PR153:.github/workflows/cogenexis-virtual-substrate-density-r0.yml",
+          "ProofGate": "Receiver must read exact donor head and exact git blob, then emit SHA-256 exact-object readproof",
+          "NextDeed": "Retain executable validation lineage",
+          "RetirementCondition": "Pickup alone is insufficient; preserve lineage/negative knowledge/wake conditions and prove no unresolved unique proof lane before any close/retirement decision"
+        },
+        {
+          "Identity": "pr153:architecture-doc",
+          "Provenance": {
+            "pr": 153,
+            "head_sha": "4fc4d08723a703fd8bfa8fe0046ebdbc5f32c7c4",
+            "path": "docs/Architecture/COVIRTUAL_SUBSTRATE_DENSITY_CONVERGENCE_R0.md"
+          },
+          "ContentHash": "gitblob-sha1:cbefaf4d4aad71c1443becfabd03cb725241bd6a",
+          "LifecycleState": "LANDED_PUBLIC_CANDIDATE_BRANCH",
+          "Authority": "DONOR_CANDIDATE_ONLY",
+          "Owner": "CoCivium/CoCivium#153",
+          "Receiver": "github-actions:PR150_PR152_PR153_DONOR_PICKUP_R0I",
+          "Dependencies": [],
+          "CollisionDomain": "coall-branchfield-frontier-convergence",
+          "DuplicateOf": null,
+          "Supersedes": null,
+          "VisibleSurface": "PR153:docs/Architecture/COVIRTUAL_SUBSTRATE_DENSITY_CONVERGENCE_R0.md",
+          "ProofGate": "Receiver must read exact donor head and exact git blob, then emit SHA-256 exact-object readproof",
+          "NextDeed": "Preserve virtual substrate/density/convergence relations",
+          "RetirementCondition": "Pickup alone is insufficient; preserve lineage/negative knowledge/wake conditions and prove no unresolved unique proof lane before any close/retirement decision"
+        },
+        {
+          "Identity": "pr153:theory-doc",
+          "Provenance": {
+            "pr": 153,
+            "head_sha": "4fc4d08723a703fd8bfa8fe0046ebdbc5f32c7c4",
+            "path": "docs/CoTheoryAll/cogenexis-r0/README.md"
+          },
+          "ContentHash": "gitblob-sha1:bc91f73476b9d45e387cda5ff2edb0a0ad2d8c36",
+          "LifecycleState": "LANDED_PUBLIC_CANDIDATE_BRANCH",
+          "Authority": "DONOR_CANDIDATE_ONLY",
+          "Owner": "CoCivium/CoCivium#153",
+          "Receiver": "github-actions:PR150_PR152_PR153_DONOR_PICKUP_R0I",
+          "Dependencies": [],
+          "CollisionDomain": "coall-branchfield-frontier-convergence",
+          "DuplicateOf": null,
+          "Supersedes": null,
+          "VisibleSurface": "PR153:docs/CoTheoryAll/cogenexis-r0/README.md",
+          "ProofGate": "Receiver must read exact donor head and exact git blob, then emit SHA-256 exact-object readproof",
+          "NextDeed": "Preserve bounded-discovery hypothesis with epistemic rails",
+          "RetirementCondition": "Pickup alone is insufficient; preserve lineage/negative knowledge/wake conditions and prove no unresolved unique proof lane before any close/retirement decision"
+        },
+        {
+          "Identity": "pr153:fixture",
+          "Provenance": {
+            "pr": 153,
+            "head_sha": "4fc4d08723a703fd8bfa8fe0046ebdbc5f32c7c4",
+            "path": "fixtures/relations/cogenexis_virtual_substrate_density_r0.json"
+          },
+          "ContentHash": "gitblob-sha1:a9489cde2f0f91dd6e9f2d628d510e67e30219e4",
+          "LifecycleState": "LANDED_PUBLIC_CANDIDATE_BRANCH",
+          "Authority": "DONOR_CANDIDATE_ONLY",
+          "Owner": "CoCivium/CoCivium#153",
+          "Receiver": "github-actions:PR150_PR152_PR153_DONOR_PICKUP_R0I",
+          "Dependencies": [],
+          "CollisionDomain": "coall-branchfield-frontier-convergence",
+          "DuplicateOf": null,
+          "Supersedes": null,
+          "VisibleSurface": "PR153:fixtures/relations/cogenexis_virtual_substrate_density_r0.json",
+          "ProofGate": "Receiver must read exact donor head and exact git blob, then emit SHA-256 exact-object readproof",
+          "NextDeed": "Verify no runtime/public/financial/authority effects",
+          "RetirementCondition": "Pickup alone is insufficient; preserve lineage/negative knowledge/wake conditions and prove no unresolved unique proof lane before any close/retirement decision"
+        },
+        {
+          "Identity": "pr153:validator",
+          "Provenance": {
+            "pr": 153,
+            "head_sha": "4fc4d08723a703fd8bfa8fe0046ebdbc5f32c7c4",
+            "path": "tools/validate_cogenexis_virtual_substrate_density_r0.py"
+          },
+          "ContentHash": "gitblob-sha1:737faab445cca413431cb338789cf250bd92da70",
+          "LifecycleState": "LANDED_PUBLIC_CANDIDATE_BRANCH",
+          "Authority": "DONOR_CANDIDATE_ONLY",
+          "Owner": "CoCivium/CoCivium#153",
+          "Receiver": "github-actions:PR150_PR152_PR153_DONOR_PICKUP_R0I",
+          "Dependencies": [],
+          "CollisionDomain": "coall-branchfield-frontier-convergence",
+          "DuplicateOf": null,
+          "Supersedes": null,
+          "VisibleSurface": "PR153:tools/validate_cogenexis_virtual_substrate_density_r0.py",
+          "ProofGate": "Receiver must read exact donor head and exact git blob, then emit SHA-256 exact-object readproof",
+          "NextDeed": "Retain validator lineage",
+          "RetirementCondition": "Pickup alone is insufficient; preserve lineage/negative knowledge/wake conditions and prove no unresolved unique proof lane before any close/retirement decision"
+        }
+      ],
+      "selected_donor_deltas": [
+        "BOUNDING_CAN_CREATE_DISCOVERY_VALUE",
+        "PREDICTION_NE_PREKNOWLEDGE",
+        "DEATH_AS_REINTEGRATION_NE_ESTABLISHED_FACT",
+        "CLI_NE_USER_UX_BY_DEFAULT",
+        "COMPRESSED_SYMBOL_REQUIRES_EXPANDABLE_MEANING",
+        "MODEL_MEMORY_NE_CURRENT_BALANCE",
+        "RECURRENCE_NE_INSANITY"
+      ],
+      "negative_knowledge_to_preserve": [
+        "TOTAL_KNOWLEDGE_NE_ESTABLISHED_FACT",
+        "BODY_NE_PROOF_OF_COSMIC_INTENT",
+        "SPIRITUAL_MODEL_NE_MACHINE_VERIFIED_MECHANISM",
+        "HIDDEN_COMMAND_NE_HIDDEN_AUTHORITY",
+        "SENTIENCE_CLAIM_NE_LOOP_HEALTH"
+      ],
+      "unique_proof_lane": "EXECUTABLE_GENEXIS_VIRTUAL_SUBSTRATE_DENSITY_VALIDATOR",
+      "retirement_eligible_now": false
+    }
+  ],
+  "convergence_relation": {
+    "overlap": [
+      "BOUNDED_DISCOVERY",
+      "VIRTUAL_CLI",
+      "SUBSTRATE_COMPRESSION",
+      "PAYLOAD_DENSITY",
+      "BUDGET_RELATIONS",
+      "CONVERGENT_LOOPING"
+    ],
+    "distinct_pr152": [
+      "COSTONK_VALUE_EXPOSURE_RELATION",
+      "COEXOS_PROJECTION",
+      "INVENTORY_RELATIONALIZATION",
+      "COOPS_COMYTHOPS_TYPED_BRAID"
+    ],
+    "distinct_pr153": [
+      "DEDICATED_COGENEXIS_THEORY_SURFACE",
+      "PRELIFE_DEATH_REINTEGRATION_EPISTEMIC_RAILS",
+      "VIRTUAL_SUBSTRATE_DENSITY_CANARY",
+      "MODEL_MEMORY_NE_CURRENT_BALANCE_FINANCE_RAIL"
+    ],
+    "relation_policy": "RELATE_AND_PICK_UP_EXACT_DONOR_OBJECTS_WITHOUT_WHOLE_BRANCH_COPY_OR_RETIREMENT"
+  },
+  "post_pickup_status": {
+    "allowed_claim": "PICKED_UP_BY_PR150_DUAL_DONOR_RECEIVER",
+    "integration_inferred": false,
+    "branch_retirement_authorized": false,
+    "branch_close_authorized": false,
+    "merge_authorized": false,
+    "canon_inferred": false
+  },
+  "coverage_boundary": [
+    "PR152_AND_PR153_CURRENT_HEADS_MUST_EQUAL_MANIFEST_HEADS_AT_RECEIVER_RUN_TIME",
+    "FOUR_PR152_CHANGED_OBJECTS_READ_FROM_EXACT_HEAD",
+    "FIVE_PR153_CHANGED_OBJECTS_READ_FROM_EXACT_HEAD",
+    "SELECTED_DONOR_DELTAS_CHECKED_FOR_EXACT_TEXT_PRESENCE",
+    "NEGATIVE_KNOWLEDGE_CHECKED_FOR_EXACT_TEXT_PRESENCE",
+    "DONOR_FIXTURE_EFFECT_BOUNDARIES_CHECKED_ZERO_OR_FALSE",
+    "NO_FULL_SEMANTIC_REVIEW_BEYOND_MANIFESTED_OBJECTS",
+    "UNIQUE_PROOF_LANES_REMAIN_ACTIVE"
+  ],
+  "nonclaims": [
+    "FANIN_RELATION_NE_CONTENT_TRANSFER",
+    "DONOR_MANIFEST_NE_RECEIVER_PICKUP",
+    "PICKUP_NE_INTEGRATION",
+    "PICKUP_NE_BRANCH_RETIREMENT",
+    "OVERLAP_NE_DUPLICATE",
+    "DISTINCT_DELTA_NE_CANON",
+    "RETIREMENT_CANDIDATE_NE_RETIREMENT_AUTHORITY",
+    "BRANCH_CLOSE_NE_HISTORY_ERASURE",
+    "NO_NEWEST_WINS",
+    "VALIDATION_IS_NOT_ACCEPTANCE",
+    "NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE"
+  ]
+}

@@ -1,0 +1,608 @@
+{
+  "schema": "CoBranchEcology.R0B",
+  "state": "CANDIDATE_OPEN_PR_TOPOLOGY_SNAPSHOT__NO_MERGE_NO_CLOSE_NO_CANON_NO_RUNTIME_AUTHORITY",
+  "repository": "CoCivium/CoCivium",
+  "observed_main_sha": "98b2679dd885c74d0292cc0b6c20aa80fb0f9e65",
+  "open_pr_count": 26,
+  "open_prs": [
+    {
+      "number": 100,
+      "title": "CoLawSmoosh+ / CoJurisdictionWeave+ R0",
+      "draft": true,
+      "head_ref": "cocivia260924/colawsmoosh-jurisdiction-weave-r0",
+      "head_sha": "0afb1e36a764bed8ba4698f7c6e60ee19bbb1215",
+      "base_ref": "main",
+      "updated_at": "2026-09-25T13:31:53Z",
+      "lifecycle_state": "LANDED_PUBLIC_CANDIDATE_BRANCH",
+      "integration_state": "UNPROVEN",
+      "canon_state": "UNPROVEN"
+    },
+    {
+      "number": 116,
+      "title": "CoAdvisory Evidence / Scenario CI R0",
+      "draft": true,
+      "head_ref": "cocivia260924/coadvisory-evidence-scenario-ci-r0",
+      "head_sha": "d6b96c248428689433b4a8403e4812a372cc2f04",
+      "base_ref": "main",
+      "updated_at": "2026-09-25T13:52:56Z",
+      "lifecycle_state": "LANDED_PUBLIC_CANDIDATE_BRANCH",
+      "integration_state": "UNPROVEN",
+      "canon_state": "UNPROVEN"
+    },
+    {
+      "number": 117,
+      "title": "CoTime+ Darren financial-services strategy frame",
+      "draft": true,
+      "head_ref": "cocivia260924/darren-finserv-cotime-evidence-r0",
+      "head_sha": "e57db72b9641bd127cc545de116f11d69a6b9335",
+      "base_ref": "main",
+      "updated_at": "2026-09-24T23:28:21Z",
+      "lifecycle_state": "LANDED_PUBLIC_CANDIDATE_BRANCH",
+      "integration_state": "UNPROVEN",
+      "canon_state": "UNPROVEN"
+    },
+    {
+      "number": 118,
+      "title": "CoDarren+ CoTime advisory evidence lab R0",
+      "draft": true,
+      "head_ref": "cocivia260925/darren-evidence-advisory-ci-r0",
+      "head_sha": "54722c33af13216a3d52fd32ea908ba23ddf09a3",
+      "base_ref": "main",
+      "updated_at": "2026-09-25T13:29:32Z",
+      "lifecycle_state": "LANDED_PUBLIC_CANDIDATE_BRANCH",
+      "integration_state": "UNPROVEN",
+      "canon_state": "UNPROVEN"
+    },
+    {
+      "number": 124,
+      "title": "Public front door maintenance R0",
+      "draft": true,
+      "head_ref": "candidate/public-front-door-maintenance-r0-20260926",
+      "head_sha": "7376f64d64142945b526797236bd6e011ccdb659",
+      "base_ref": "main",
+      "updated_at": "2026-09-26T16:29:46Z",
+      "lifecycle_state": "LANDED_PUBLIC_CANDIDATE_BRANCH",
+      "integration_state": "UNPROVEN",
+      "canon_state": "UNPROVEN"
+    },
+    {
+      "number": 125,
+      "title": "CoNode: prove read-only GitHub-hosted seed",
+      "draft": true,
+      "head_ref": "coevoall/conode-hosted-seed-20260928",
+      "head_sha": "3d29787f7ab24704f57c37556eb9c119c562c701",
+      "base_ref": "main",
+      "updated_at": "2026-09-30T00:27:49Z",
+      "lifecycle_state": "LANDED_PUBLIC_CANDIDATE_BRANCH",
+      "integration_state": "UNPROVEN",
+      "canon_state": "UNPROVEN"
+    },
+    {
+      "number": 126,
+      "title": "CoProjectionCI R0: executable public-projection acceptance contract",
+      "draft": true,
+      "head_ref": "candidate/projection-ci-r0-20260929",
+      "head_sha": "a534e86ee8a75d14eb1778407d0905b325767628",
+      "base_ref": "main",
+      "updated_at": "2026-09-30T00:19:33Z",
+      "lifecycle_state": "LANDED_PUBLIC_CANDIDATE_BRANCH",
+      "integration_state": "UNPROVEN",
+      "canon_state": "UNPROVEN"
+    },
+    {
+      "number": 127,
+      "title": "CoEvoAll: causal + non-causal recursive relation field R0",
+      "draft": false,
+      "head_ref": "coevoall/causal-noncausal-relation-field-20260930",
+      "head_sha": "95db06101b16954a90468c5ef4f1b4e78a3195a5",
+      "base_ref": "main",
+      "updated_at": "2026-09-30T02:53:08Z",
+      "lifecycle_state": "LANDED_PUBLIC_CANDIDATE_BRANCH",
+      "integration_state": "UNPROVEN",
+      "canon_state": "UNPROVEN"
+    },
+    {
+      "number": 128,
+      "title": "CoRelKernel R0: minimal causal + non-causal relational substrate",
+      "draft": true,
+      "head_ref": "candidate/corel-kernel-r0-20260930",
+      "head_sha": "59cdeac5341bc216fac51575111e3d71a2f25a47",
+      "base_ref": "main",
+      "updated_at": "2026-09-30T05:36:26Z",
+      "lifecycle_state": "LANDED_PUBLIC_CANDIDATE_BRANCH",
+      "integration_state": "UNPROVEN",
+      "canon_state": "UNPROVEN"
+    },
+    {
+      "number": 135,
+      "title": "CoEvoAll: refine substrate-light model identity",
+      "draft": true,
+      "head_ref": "coevoall/model-substrate-decoupling-20260930",
+      "head_sha": "655215ad145b16d04a2c67fcf38fdae552ba392a",
+      "base_ref": "main",
+      "updated_at": "2026-09-30T17:14:23Z",
+      "lifecycle_state": "LANDED_PUBLIC_CANDIDATE_BRANCH",
+      "integration_state": "UNPROVEN",
+      "canon_state": "UNPROVEN"
+    },
+    {
+      "number": 136,
+      "title": "CoSubstrate Independence R0: portable semantic continuity candidate",
+      "draft": true,
+      "head_ref": "candidate/cosubstrate-independence-r0-20260930",
+      "head_sha": "4153c8487222054ba460a3c8b4a0731b087e4209",
+      "base_ref": "main",
+      "updated_at": "2026-10-02T01:22:00Z",
+      "lifecycle_state": "LANDED_PUBLIC_CANDIDATE_BRANCH",
+      "integration_state": "UNPROVEN",
+      "canon_state": "UNPROVEN"
+    },
+    {
+      "number": 137,
+      "title": "CoCivia Ambient Correspondence R0: consent-aware mention and referral routing",
+      "draft": true,
+      "head_ref": "candidate/cocivia-ambient-correspondence-r0-20260930",
+      "head_sha": "406a7507ffc95b6481412b77d300bc1557c90365",
+      "base_ref": "main",
+      "updated_at": "2026-10-02T20:59:54Z",
+      "lifecycle_state": "LANDED_PUBLIC_CANDIDATE_BRANCH",
+      "integration_state": "UNPROVEN",
+      "canon_state": "UNPROVEN"
+    },
+    {
+      "number": 138,
+      "title": "CoSession Provider Saturation R0: contract before spawning",
+      "draft": true,
+      "head_ref": "candidate/cosession-provider-saturation-r0-20261001",
+      "head_sha": "d4792c00b8daf3fa3ea3a0b769768465b334f5ab",
+      "base_ref": "main",
+      "updated_at": "2026-10-01T00:13:59Z",
+      "lifecycle_state": "LANDED_PUBLIC_CANDIDATE_BRANCH",
+      "integration_state": "UNPROVEN",
+      "canon_state": "UNPROVEN"
+    },
+    {
+      "number": 139,
+      "title": "CoInBet + CoTime R0: in-between states, predictive relations and optionality",
+      "draft": true,
+      "head_ref": "candidate/coinbet-cotime-optionality-r0-20261001",
+      "head_sha": "4cd47a125a06218cd1ef3ad58890d8f0d355fd5b",
+      "base_ref": "main",
+      "updated_at": "2026-10-01T23:47:50Z",
+      "lifecycle_state": "LANDED_PUBLIC_CANDIDATE_BRANCH",
+      "integration_state": "UNPROVEN",
+      "canon_state": "UNPROVEN"
+    },
+    {
+      "number": 140,
+      "title": "CoWear / CoConditionRel R0: cross-domain condition trajectories",
+      "draft": true,
+      "head_ref": "candidate/cowear-condition-rel-r0-20261001",
+      "head_sha": "a06706f1632367488fd69e90b0981d6acdcace38",
+      "base_ref": "main",
+      "updated_at": "2026-10-02T00:05:42Z",
+      "lifecycle_state": "LANDED_PUBLIC_CANDIDATE_BRANCH",
+      "integration_state": "UNPROVEN",
+      "canon_state": "UNPROVEN"
+    },
+    {
+      "number": 141,
+      "title": "CoProviderExit+ R0: revocable dependencies and mutual-aid resilience",
+      "draft": true,
+      "head_ref": "candidate/coprovexit-resilience-mutualaid-r0-20261002",
+      "head_sha": "cbaa967d0ed16c24b1bf0693cb46f102ea00a35a",
+      "base_ref": "main",
+      "updated_at": "2026-10-02T15:37:22Z",
+      "lifecycle_state": "LANDED_PUBLIC_CANDIDATE_BRANCH",
+      "integration_state": "UNPROVEN",
+      "canon_state": "UNPROVEN"
+    },
+    {
+      "number": 142,
+      "title": "CoFrontierIntake+ R0: bounded model provenance, canary and routing gate",
+      "draft": true,
+      "head_ref": "candidate/cofrontier-intake-r0-20261002",
+      "head_sha": "f14202c9767d988556e07ee4fcf1be2fb22db89b",
+      "base_ref": "main",
+      "updated_at": "2026-10-02T16:04:50Z",
+      "lifecycle_state": "LANDED_PUBLIC_CANDIDATE_BRANCH",
+      "integration_state": "UNPROVEN",
+      "canon_state": "UNPROVEN"
+    },
+    {
+      "number": 143,
+      "title": "CoUXCurrentness + CoSignet R0: self-refreshing surfaces and family brand relations",
+      "draft": true,
+      "head_ref": "candidate/coux-brand-currentness-r0-20261002",
+      "head_sha": "d05a3d3ff428b71b9fe4358b44430573b95ea4ce",
+      "base_ref": "main",
+      "updated_at": "2026-10-02T20:58:01Z",
+      "lifecycle_state": "LANDED_PUBLIC_CANDIDATE_BRANCH",
+      "integration_state": "UNPROVEN",
+      "canon_state": "UNPROVEN"
+    },
+    {
+      "number": 144,
+      "title": "CoBoss+ R0: anti-sovereign authority relations and ultimate referents",
+      "draft": true,
+      "head_ref": "candidate/coboss-anti-sovereign-authority-r0-20261002",
+      "head_sha": "783156d3815d4f05897507825648fb7ccf7e88fc",
+      "base_ref": "main",
+      "updated_at": "2026-10-02T21:01:45Z",
+      "lifecycle_state": "LANDED_PUBLIC_CANDIDATE_BRANCH",
+      "integration_state": "UNPROVEN",
+      "canon_state": "UNPROVEN"
+    },
+    {
+      "number": 145,
+      "title": "CoAuthorityField+ R0: scoped CoBoss relations without a universal crown",
+      "draft": true,
+      "head_ref": "candidate/coauthority-field-r0-20261002",
+      "head_sha": "6a7eabf54a215ee48c9a3c9599dc637ac46e8720",
+      "base_ref": "main",
+      "updated_at": "2026-10-02T21:03:22Z",
+      "lifecycle_state": "LANDED_PUBLIC_CANDIDATE_BRANCH",
+      "integration_state": "UNPROVEN",
+      "canon_state": "UNPROVEN"
+    },
+    {
+      "number": 146,
+      "title": "CoSneak+ / CoQ&A+ / GTRAIL+ R0: hidden friction and living trace relations",
+      "draft": true,
+      "head_ref": "candidate/cosneak-coqa-gtrail-r0-20261002",
+      "head_sha": "707d0d923f1cf77e82f6478295d5df83f7947a97",
+      "base_ref": "main",
+      "updated_at": "2026-10-03T16:24:39Z",
+      "lifecycle_state": "LANDED_PUBLIC_CANDIDATE_BRANCH",
+      "integration_state": "UNPROVEN",
+      "canon_state": "UNPROVEN"
+    },
+    {
+      "number": 147,
+      "title": "CoGenEx+ R0: bounded discovery, CoTime, CoExOS, CoStonk and CoBudget relations",
+      "draft": true,
+      "head_ref": "candidate/cogenex-bounded-discovery-r0-20261003",
+      "head_sha": "b0d3c233df053763cf55a8abd78966bf08a39a8d",
+      "base_ref": "main",
+      "updated_at": "2026-10-03T15:48:45Z",
+      "lifecycle_state": "LANDED_PUBLIC_CANDIDATE_BRANCH",
+      "integration_state": "UNPROVEN",
+      "canon_state": "UNPROVEN"
+    },
+    {
+      "number": 148,
+      "title": "CoBoundedDiscovery+ / Virtual CLI / CoBudget+ R0",
+      "draft": true,
+      "head_ref": "candidate/cobounded-discovery-virtual-cli-budget-r0-20261003",
+      "head_sha": "03b3fd111b31e7f7f16acf6070595b6956bd92d2",
+      "base_ref": "main",
+      "updated_at": "2026-10-03T16:13:51Z",
+      "lifecycle_state": "LANDED_PUBLIC_CANDIDATE_BRANCH",
+      "integration_state": "UNPROVEN",
+      "canon_state": "UNPROVEN"
+    },
+    {
+      "number": 149,
+      "title": "CoAllEvo+ R0: CoGenExIs, virtual CLI, substrate density and convergent loops",
+      "draft": true,
+      "head_ref": "candidate/coallevo-genex-substrate-ux-density-r0-20261003",
+      "head_sha": "77e3feddacbbdf1301ad2c0f4e85808581c94d8b",
+      "base_ref": "main",
+      "updated_at": "2026-10-03T16:16:52Z",
+      "lifecycle_state": "LANDED_PUBLIC_CANDIDATE_BRANCH",
+      "integration_state": "UNPROVEN",
+      "canon_state": "UNPROVEN"
+    },
+    {
+      "number": 150,
+      "title": "CoAll BranchField R0: bounded discovery, invisible substrate, payload density, budgets and spiral convergence",
+      "draft": true,
+      "head_ref": "candidate/coall-branchfield-r0-20261003",
+      "head_sha": "8fc176f9f4dec7d5471097544452302ccf86a7bd",
+      "base_ref": "main",
+      "updated_at": "2026-10-03T16:55:32Z",
+      "lifecycle_state": "LANDED_PUBLIC_CANDIDATE_BRANCH",
+      "integration_state": "UNPROVEN",
+      "canon_state": "UNPROVEN"
+    },
+    {
+      "number": 151,
+      "title": "CoAll bounded discovery + projection ecology R0",
+      "draft": true,
+      "head_ref": "candidate/coall-bounded-discovery-projection-r0-20261003",
+      "head_sha": "14749870cdeec138679852e8c339c16ab95524b4",
+      "base_ref": "main",
+      "updated_at": "2026-10-03T16:54:13Z",
+      "lifecycle_state": "LANDED_PUBLIC_CANDIDATE_BRANCH",
+      "integration_state": "UNPROVEN",
+      "canon_state": "UNPROVEN"
+    }
+  ],
+  "clusters": [
+    {
+      "id": "FRONTIER_DISCOVERY_CONVERGENCE",
+      "members": [
+        146,
+        147,
+        148,
+        149,
+        150,
+        151
+      ],
+      "basis": "titles plus PR149/150/151 reviewed content",
+      "interpretation": "high-overlap frontier; PR151 is a donor/fan-in candidate to PR150, not an automatic supersession"
+    },
+    {
+      "id": "AUTHORITY_GOVERNANCE",
+      "members": [
+        100,
+        144,
+        145
+      ],
+      "basis": "titles",
+      "interpretation": "authority/governance/jurisdiction family; no automatic semantic equivalence"
+    },
+    {
+      "id": "UX_PUBLIC_CORRESPONDENCE",
+      "members": [
+        124,
+        126,
+        137,
+        143
+      ],
+      "basis": "titles",
+      "interpretation": "public/front-door/projection/currentness/correspondence surfaces"
+    },
+    {
+      "id": "SUBSTRATE_PROVIDER_SESSION",
+      "members": [
+        125,
+        135,
+        136,
+        138,
+        141,
+        142
+      ],
+      "basis": "titles",
+      "interpretation": "node/substrate/session/provider-exit/frontier-intake execution ecology"
+    },
+    {
+      "id": "RELATIONAL_CORE",
+      "members": [
+        127,
+        128
+      ],
+      "basis": "titles plus prior exact-head review state",
+      "interpretation": "relation-field and kernel layering; keep distinct until review resolves boundaries"
+    },
+    {
+      "id": "TIME_CONDITION_OPTIONALITY",
+      "members": [
+        139,
+        140
+      ],
+      "basis": "titles",
+      "interpretation": "CoTime/in-between/condition-trajectory family"
+    },
+    {
+      "id": "ADVISORY_EVIDENCE",
+      "members": [
+        116,
+        117,
+        118
+      ],
+      "basis": "titles",
+      "interpretation": "advisory/scenario/financial-services evidence lineage"
+    }
+  ],
+  "candidate_relations": [
+    {
+      "from_pr": 150,
+      "to_pr": 149,
+      "relation": "CANDIDATE_SCOPE_OVERLAP",
+      "effect": "NO_SUPERSESSION_INFERENCE"
+    },
+    {
+      "from_pr": 150,
+      "to_pr": 148,
+      "relation": "CANDIDATE_SCOPE_OVERLAP",
+      "effect": "NO_SUPERSESSION_INFERENCE"
+    },
+    {
+      "from_pr": 150,
+      "to_pr": 147,
+      "relation": "CANDIDATE_SCOPE_OVERLAP",
+      "effect": "NO_SUPERSESSION_INFERENCE"
+    },
+    {
+      "from_pr": 150,
+      "to_pr": 146,
+      "relation": "CANDIDATE_SCOPE_OVERLAP",
+      "effect": "NO_SUPERSESSION_INFERENCE"
+    },
+    {
+      "from_pr": 149,
+      "to_pr": 148,
+      "relation": "CANDIDATE_SCOPE_OVERLAP",
+      "effect": "NO_SUPERSESSION_INFERENCE"
+    },
+    {
+      "from_pr": 149,
+      "to_pr": 147,
+      "relation": "CANDIDATE_SCOPE_OVERLAP",
+      "effect": "NO_SUPERSESSION_INFERENCE"
+    },
+    {
+      "from_pr": 149,
+      "to_pr": 146,
+      "relation": "CANDIDATE_SCOPE_OVERLAP",
+      "effect": "NO_SUPERSESSION_INFERENCE"
+    },
+    {
+      "from_pr": 148,
+      "to_pr": 147,
+      "relation": "CANDIDATE_SCOPE_OVERLAP",
+      "effect": "NO_SUPERSESSION_INFERENCE"
+    },
+    {
+      "from_pr": 147,
+      "to_pr": 139,
+      "relation": "CANDIDATE_SCOPE_OVERLAP",
+      "effect": "NO_SUPERSESSION_INFERENCE"
+    },
+    {
+      "from_pr": 136,
+      "to_pr": 135,
+      "relation": "CANDIDATE_SCOPE_OVERLAP",
+      "effect": "NO_SUPERSESSION_INFERENCE"
+    },
+    {
+      "from_pr": 136,
+      "to_pr": 141,
+      "relation": "CANDIDATE_SCOPE_OVERLAP",
+      "effect": "NO_SUPERSESSION_INFERENCE"
+    },
+    {
+      "from_pr": 135,
+      "to_pr": 125,
+      "relation": "CANDIDATE_SCOPE_OVERLAP",
+      "effect": "NO_SUPERSESSION_INFERENCE"
+    },
+    {
+      "from_pr": 138,
+      "to_pr": 141,
+      "relation": "CANDIDATE_SCOPE_OVERLAP",
+      "effect": "NO_SUPERSESSION_INFERENCE"
+    },
+    {
+      "from_pr": 145,
+      "to_pr": 144,
+      "relation": "CANDIDATE_SCOPE_OVERLAP",
+      "effect": "NO_SUPERSESSION_INFERENCE"
+    },
+    {
+      "from_pr": 144,
+      "to_pr": 100,
+      "relation": "CANDIDATE_SCOPE_OVERLAP",
+      "effect": "NO_SUPERSESSION_INFERENCE"
+    },
+    {
+      "from_pr": 128,
+      "to_pr": 127,
+      "relation": "CANDIDATE_SCOPE_OVERLAP",
+      "effect": "NO_SUPERSESSION_INFERENCE"
+    },
+    {
+      "from_pr": 143,
+      "to_pr": 137,
+      "relation": "CANDIDATE_SCOPE_OVERLAP",
+      "effect": "NO_SUPERSESSION_INFERENCE"
+    },
+    {
+      "from_pr": 143,
+      "to_pr": 124,
+      "relation": "CANDIDATE_SCOPE_OVERLAP",
+      "effect": "NO_SUPERSESSION_INFERENCE"
+    },
+    {
+      "from_pr": 137,
+      "to_pr": 124,
+      "relation": "CANDIDATE_SCOPE_OVERLAP",
+      "effect": "NO_SUPERSESSION_INFERENCE"
+    },
+    {
+      "from_pr": 126,
+      "to_pr": 124,
+      "relation": "CANDIDATE_SCOPE_OVERLAP",
+      "effect": "NO_SUPERSESSION_INFERENCE"
+    },
+    {
+      "from_pr": 140,
+      "to_pr": 139,
+      "relation": "CANDIDATE_SCOPE_OVERLAP",
+      "effect": "NO_SUPERSESSION_INFERENCE"
+    },
+    {
+      "from_pr": 118,
+      "to_pr": 117,
+      "relation": "CANDIDATE_SCOPE_OVERLAP",
+      "effect": "NO_SUPERSESSION_INFERENCE"
+    },
+    {
+      "from_pr": 117,
+      "to_pr": 116,
+      "relation": "CANDIDATE_SCOPE_OVERLAP",
+      "effect": "NO_SUPERSESSION_INFERENCE"
+    },
+    {
+      "from_pr": 151,
+      "to_pr": 150,
+      "relation": "CANDIDATE_FANIN_TO",
+      "effect": "NO_MERGE_NO_CLOSE_NO_SUPERSESSION_INFERENCE",
+      "donor_deltas": [
+        "POTENTIAL_RELATION_NE_INSTANTIATED_RELATION",
+        "COOMNI_NE_EVERY_RELATION_AT_ONCE",
+        "MOVE_OFF_X2_NE_MOVE_TO_ONE_NEW_ROOT",
+        "CANDIDATE_RECEIVER_NE_OUTREACH_AUTHORITY",
+        "COUNTDOWN_NE_RELEASE_AUTHORITY"
+      ]
+    }
+  ],
+  "policy": {
+    "branch_creation_preflight": [
+      "REFRESH_OPEN_PR_SNAPSHOT",
+      "SEARCH_TITLE_PATH_RELATION_AND_COLLISION_DOMAIN",
+      "PREFER_EXISTING_COMPATIBLE_HOST",
+      "CREATE_NEW_BRANCH_ONLY_FOR_DISTINCT_COLLISION_DOMAIN_ISOLATION_OR_INDEPENDENT_CANARY"
+    ],
+    "branch_reuse_preferred": true,
+    "fanin_before_more_parallel_mutation": true,
+    "newest_wins": false,
+    "merge_automatic": false,
+    "close_automatic": false,
+    "non_draft_review_sensitive_prs": [
+      127
+    ],
+    "current_branch_ecology_host_candidate": 150,
+    "current_branch_ecology_host_claim": "CANDIDATE_HOST_FOR_BRANCH_RELATIONS_ONLY__NOT_SUPERSEDER_NOT_CANON"
+  },
+  "coverage_boundary": [
+    "OPEN_PULL_REQUESTS_RETURNED_BY_GITHUB_FOR_COCIVIUM_COCIVIUM_AT_THIS_SNAPSHOT",
+    "TITLES_AND_BRANCH_METADATA_REVIEWED_FOR_CLUSTERING",
+    "OTHER_PR_CONTENT_NOT_FULLY_REVIEWED_IN_THIS_DEED",
+    "CLOSED_PRS_NOT_INCLUDED",
+    "COSTEWARD_AND_OTHER_REPOSITORIES_NOT_INCLUDED",
+    "BRANCHES_WITHOUT_OPEN_PRS_NOT_INCLUDED",
+    "PR149_PR150_AND_PR151_CONTENT_SEMANTICALLY_REVIEWED",
+    "SNAPSHOT_CAPTURED_FROM_GITHUB_OPEN_PR_QUERY_BEFORE_R0B_HOST_MUTATION"
+  ],
+  "nonclaims": [
+    "OPEN_PR_NE_ACTIVE_WORK",
+    "DRAFT_NE_SEMANTICALLY_UNREVIEWED",
+    "NON_DRAFT_NE_APPROVED",
+    "BRANCH_NE_AUTHORITY",
+    "CLUSTER_NE_DUPLICATE",
+    "OVERLAP_NE_SUPERSESSION",
+    "TITLE_SIMILARITY_NE_SEMANTIC_EQUIVALENCE",
+    "FANIN_NE_MERGE",
+    "PR_COUNT_NE_PROGRESS",
+    "NO_NEWEST_WINS",
+    "BRANCH_CLOSE_NE_HISTORY_ERASURE",
+    "INVENTORY_NE_COMPLETE_HISTORY",
+    "VALIDATION_IS_NOT_ACCEPTANCE",
+    "NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE",
+    "DISCOVERED_SET_IS_NOT_COMPLETE_HISTORY",
+    "SNAPSHOT_NE_LIVE_VIEW",
+    "HOST_HEAD_IN_SNAPSHOT_NE_POST_COMMIT_HEAD",
+    "CANDIDATE_FANIN_TO_NE_MERGED",
+    "DONOR_DELTA_NE_ACCEPTED_DELTA"
+  ],
+  "snapshot_semantics": {
+    "snapshot_source_branch_head": "8fc176f9f4dec7d5471097544452302ccf86a7bd",
+    "host_pr": 150,
+    "host_head_in_snapshot_interpretation": "OBSERVED_PRE_SNAPSHOT_MUTATION",
+    "host_head_expected_to_change_when_snapshot_is_committed": true,
+    "snapshot_remains_historical_evidence_after_host_head_changes": true,
+    "live_currentness_requires_fresh_query": true
+  }
+}

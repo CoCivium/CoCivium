@@ -1,0 +1,119 @@
+name: CoAll BranchField R0
+
+on:
+  pull_request:
+    paths:
+      - "docs/Architecture/COALL_BRANCHFIELD_R0.md"
+      - "docs/Architecture/COBRANCH_CONVERGENCE_DISPOSITION_R0C.md"
+      - "fixtures/architecture/coall_branchfield_r0.json"
+      - "fixtures/architecture/co_branch_ecology_r0.json"
+      - "fixtures/architecture/co_branch_convergence_disposition_r0c.json"
+      - "fixtures/architecture/co_branch_donor_pickup_pr151_r0d.json"
+      - "fixtures/architecture/co_branch_donor_pickup_pr152_pr153_r0i.json"
+      - "fixtures/architecture/co_branch_donor_pickup_pr154_r0j.json"
+      - "tools/validate_coall_branchfield_r0.py"
+      - "tools/validate_co_branch_ecology_r0.py"
+      - "tools/validate_co_branch_convergence_disposition_r0c.py"
+      - "tools/validate_co_branch_donor_pickup_pr151_r0d.py"
+      - "tools/validate_co_branch_donor_pickup_pr152_pr153_r0i.py"
+      - "tools/validate_co_branch_donor_pickup_pr154_r0j.py"
+      - "docs/Architecture/COBRANCH_DONOR_PICKUP_PR152_PR153_R0I.md"
+      - "docs/Architecture/COBRANCH_DONOR_PICKUP_PR154_R0J.md"
+      - ".github/workflows/coall-branchfield-r0.yml"
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 1
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: python tools/validate_coall_branchfield_r0.py
+      - run: python tools/validate_co_branch_ecology_r0.py
+      - run: python tools/validate_co_branch_convergence_disposition_r0c.py
+
+      - name: Check out exact PR151 donor head
+        uses: actions/checkout@v4
+        with:
+          repository: CoCivium/CoCivium
+          ref: 14749870cdeec138679852e8c339c16ab95524b4
+          path: donor-pr151
+          fetch-depth: 1
+
+      - name: Prove exact PR151 donor pickup by PR150 receiver
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python tools/validate_co_branch_donor_pickup_pr151_r0d.py --donor-root donor-pr151 --output artifacts/pr151-donor-pickup-r0d.json
+
+      - name: Upload donor readproof
+        uses: actions/upload-artifact@v4
+        with:
+          name: pr150-pr151-donor-pickup-r0d
+          path: artifacts/pr151-donor-pickup-r0d.json
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Check out exact PR152 donor head
+        uses: actions/checkout@v4
+        with:
+          repository: CoCivium/CoCivium
+          ref: 937cfc1126b22a8e6487fa34bec9c55733bb65dc
+          path: donor-pr152
+          fetch-depth: 1
+
+      - name: Check out exact PR153 donor head
+        uses: actions/checkout@v4
+        with:
+          repository: CoCivium/CoCivium
+          ref: 4fc4d08723a703fd8bfa8fe0046ebdbc5f32c7c4
+          path: donor-pr153
+          fetch-depth: 1
+
+      - name: Prove exact PR152 + PR153 donor pickup by PR150 receiver
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python tools/validate_co_branch_donor_pickup_pr152_pr153_r0i.py --donor-pr152-root donor-pr152 --donor-pr153-root donor-pr153 --output artifacts/pr152-pr153-donor-pickup-r0i.json
+
+      - name: Upload dual donor readproof
+        uses: actions/upload-artifact@v4
+        with:
+          name: pr150-pr152-pr153-donor-pickup-r0i
+          path: artifacts/pr152-pr153-donor-pickup-r0i.json
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Check out exact PR154 donor head
+        uses: actions/checkout@v4
+        with:
+          repository: CoCivium/CoCivium
+          ref: b0ad15e850a59b1e24d955e8818561b3e258ef93
+          path: donor-pr154
+          fetch-depth: 1
+
+      - name: Prove exact PR154 donor pickup by PR150 receiver
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python tools/validate_co_branch_donor_pickup_pr154_r0j.py --donor-root donor-pr154 --output artifacts/pr154-donor-pickup-r0j.json
+
+      - name: Upload PR154 donor readproof
+        uses: actions/upload-artifact@v4
+        with:
+          name: pr150-pr154-donor-pickup-r0j
+          path: artifacts/pr154-donor-pickup-r0j.json
+          if-no-files-found: error
+          retention-days: 30
