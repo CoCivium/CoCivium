@@ -206,6 +206,27 @@
       "discovery": "https://raw.githubusercontent.com/CoCivium/CoAcademy/master/docs/coplay/votes-for-sale/discovery.json",
       "methodology": "https://github.com/CoCivium/CoAcademy/blob/master/docs/coplay/votes-for-sale/README.md",
       "nonclaim": "FEC_DISBURSEMENTS_NE_VOTE_PURCHASE__DOJ_2016_CASE_NE_2026_FINDING__NO_PARTY_TARGETING__OUTSIDE_READBACK_NOT_PROVEN"
+    },
+    {
+      "id": "CoRelay.PublicFeedback.R0",
+      "family": [
+        "CoRelay+",
+        "CoPlay+",
+        "CoIndex+",
+        "CoSourceGraph+"
+      ],
+      "class": "voluntary_public_feedback_and_cross_channel_source_packaging",
+      "url_candidate": "https://cocivium.github.io/CoAcademy/relay/",
+      "source": "https://github.com/CoCivium/CoAcademy/blob/master/docs/relay/index.html",
+      "discovery": "https://raw.githubusercontent.com/CoCivium/CoAcademy/master/docs/relay/discovery.json",
+      "source_feed": "https://cocivium.github.io/CoAcademy/relay/feed.xml",
+      "nonclaims": [
+        "FEED_STATIC_NE_ALWAYS_ON",
+        "CONNECTED_ACCOUNT_NE_POSTED_CONTENT",
+        "PLANNED_DOMAIN_NE_PUBLIC_DEPLOYMENT",
+        "OUTREACH_DRAFT_NE_DELIVERED",
+        "AI_DISCOVERY_POINTER_NE_AI_PROVIDER_INGESTION"
+      ]
     }
   ]
 }
