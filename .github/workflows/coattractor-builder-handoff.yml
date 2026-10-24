@@ -1,0 +1,21 @@
+name: CoAttractorPull builder handoff canary
+
+on:
+  pull_request:
+    paths:
+      - 'examples/coattractorpull/**'
+      - '.github/workflows/coattractor-builder-handoff.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - name: Node version
+        run: node --version
+      - name: Public-safe resource discovery and copy checks
+        run: node examples/coattractorpull/tests/smoke.cjs
