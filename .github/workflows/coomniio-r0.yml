@@ -4,6 +4,7 @@ on:
   pull_request:
     paths:
       - "examples/coomniio/**"
+      - "experiments/cointerstice-r0/**"
       - ".github/workflows/coomniio-r0.yml"
   workflow_dispatch:
 
@@ -23,6 +24,14 @@ jobs:
         run: node --check examples/coomniio/CoOmniCycleR0.mjs
       - name: Run bounded synthetic queue tests
         run: node --test --test-reporter=tap examples/coomniio/CoOmniCycleR0.test.mjs
+      - name: Check bounded CoInterstice shadow syntax
+        run: node --check experiments/cointerstice-r0/CoIntersticeShadowR0.mjs
+      - name: Run bounded CoInterstice inversion and no-capture cases
+        run: node --test --test-reporter=tap experiments/cointerstice-r0/CoIntersticeShadowR0.test.mjs
+      - name: Check CoPriMath GlyphRail R1 syntax
+        run: node --check experiments/cointerstice-r0/CoPriMathGlyphRailR1.mjs
+      - name: Run bounded 20-glyph relation and inversion fixtures
+        run: node --test --test-reporter=tap experiments/cointerstice-r0/CoPriMathGlyphRailR1.test.mjs
       - name: Static PowerShell safety checks (not Windows execution)
         run: python3 examples/coomniio/audit_static.py
 
