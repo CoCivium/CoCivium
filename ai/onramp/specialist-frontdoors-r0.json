@@ -1,0 +1,172 @@
+{
+  "schema": "CoAll.SpecialistFrontDoorFederation.R0",
+  "state": "CANDIDATE_REVIEW_ONLY__NO_LIVE_SITE_OR_AUTO_ROUTING",
+  "created_utc": "2026-10-24",
+  "purpose": "Visitor-selected, low-jargon specialist entrances that reuse existing public research/demo sources and share an evidence/consent contract without forcing a single universal identity.",
+  "source_of_truth": "CoCivium currentness plus exact source hashes; this catalog is a public projection, not custody, authentication, a global registry, or proof of deployment.",
+  "parent_ref": "CoCivium/CoCivium PR #226",
+  "root": {
+    "user_label": "CoCivium",
+    "main_public_repo": "https://github.com/CoCivium/CoCivium",
+    "domain_status": "APEX_FETCH_404_AND_WWW_METADATA_INDEX_ON_2026_10_24__HOSTING_REVIEW_HELD",
+    "public_launch": "PRELAUNCH_R_AND_D"
+  },
+  "lanes": [
+    {
+      "slug": "learn",
+      "label": "Learn",
+      "internal_reference": "CoAcademy / CoCivicLens+",
+      "role": "PUBLIC_EDUCATION",
+      "audience_prompt": "I want to understand a claim using real sources.",
+      "first_deed": "Try one evidence-checking exercise",
+      "source": "https://github.com/CoCivium/CoAcademy/blob/master/docs/civiclens/README.md",
+      "source_blob_sha": "1cebfb2bc7be466c013d44348a0907e8939443aa",
+      "status": "PUBLIC_SOURCE_READBACK_ONLY__USER_OUTCOME_UNPROVEN",
+      "claim_scope": "NO_SIGNUP_TO_INSPECT_PUBLIC_SOURCE",
+      "proposed_public_path": "/learn",
+      "proposed_public_path_state": "RESERVED_LABEL_NOT_ROUTED",
+      "next_lane": "PARTICIPANT_CHOOSES_ONLY"
+    },
+    {
+      "slug": "play",
+      "label": "Play",
+      "internal_reference": "CoAcademy / CoPlay+",
+      "role": "PUBLIC_CREATIVE_EXPERIMENT",
+      "audience_prompt": "I want a playful way to test a coordination problem.",
+      "first_deed": "Read one clearly fictional software spoof and describe one real coordination pain",
+      "source": "https://github.com/CoCivium/CoAcademy/blob/master/docs/coplay/README.md",
+      "source_blob_sha": "4c62f1b6d6fc52384a4ae0f87723734f9f7d5256",
+      "status": "PUBLIC_SOURCE_READBACK_ONLY__INDEPENDENT_ENGAGEMENT_UNPROVEN",
+      "claim_scope": "NO_SIGNUP_TO_INSPECT_PUBLIC_SOURCE",
+      "proposed_public_path": "/play",
+      "proposed_public_path_state": "RESERVED_LABEL_NOT_ROUTED",
+      "next_lane": "PARTICIPANT_CHOOSES_ONLY"
+    },
+    {
+      "slug": "make",
+      "label": "Make",
+      "internal_reference": "CoPreCursor+ / CoAll tools",
+      "role": "PUBLIC_INTERACTIVE_TOOL_DEMO",
+      "audience_prompt": "I want to try one small, inspectable interface.",
+      "first_deed": "Download and open the offline demo; test Preview, Reject, Accept, Undo",
+      "source": "https://github.com/CoCivium/CoCivium/blob/main/examples/coprecursor/README.md",
+      "source_blob_sha": "14520a4992b2d723fe33c6cbfffa1815c87df670",
+      "status": "OFFLINE_DEMO_SOURCE_READBACK__LIVE_SERVICE_NOT_CLAIMED",
+      "claim_scope": "NO_SIGNUP_TO_INSPECT_PUBLIC_SOURCE",
+      "proposed_public_path": "/make",
+      "proposed_public_path_state": "RESERVED_LABEL_NOT_ROUTED",
+      "next_lane": "PARTICIPANT_CHOOSES_ONLY"
+    },
+    {
+      "slug": "explore",
+      "label": "Explore",
+      "internal_reference": "CoOrbWare+ / CoMap+",
+      "role": "PUBLIC_RESEARCH_EXPLORATION",
+      "audience_prompt": "I want to inspect claims and unknowns.",
+      "first_deed": "Choose one CoOrb node and follow its source or uncertainty",
+      "source": "https://github.com/CoCivium/CoAcademy/blob/master/docs/coorb/README.md",
+      "source_blob_sha": "3e54c1af42ceb7351a4e96126b1a13cd168f13be",
+      "status": "PUBLIC_SOURCE_READBACK_ONLY__LIVE_OS_UNPROVEN",
+      "claim_scope": "NO_SIGNUP_TO_INSPECT_PUBLIC_SOURCE",
+      "proposed_public_path": "/explore",
+      "proposed_public_path_state": "RESERVED_LABEL_NOT_ROUTED",
+      "next_lane": "PARTICIPANT_CHOOSES_ONLY"
+    }
+  ],
+  "shared_cross_surface_contract": {
+    "identity": {
+      "catalog_id": "CoCivium:pilot-frontdoor-federation-r0",
+      "roles": "DECLARED_CAPABILITY_NOT_PERSON_IMPERSONATION",
+      "node_identity": "PARTICIPANT_OWNED_MANIFEST_ONLY_WHEN_OPTED_IN",
+      "clone_identity": "EXPLICITLY_MARKED_DERIVATIVE_WITH_PARENT_AND_OWN_APPROVAL",
+      "personas": "OPTIONAL_DISPLAY_ROLE__NO_FORCED_REAL_IDENTITY"
+    },
+    "aliases": {
+      "dns": "No new DNS/TLD/registration/redirect claims. Use descriptive paths under one qualified HTTPS root only after hosting audit.",
+      "dot_node_dot_clone": "Symbolic type/name slots; not asserted globally delegated Internet TLDs",
+      "existing_app_game_domains": "Externally owned namespace; no ability to use without registration/rights"
+    },
+    "routing": [
+      "ASK_OR_OFFER_CHOICE",
+      "SOURCE_LINK_PREVIEW",
+      "OPEN_ON_CLICK",
+      "RETAIN_SELECTED_SCOPE",
+      "OPTIONAL_OPT_IN_NEXT_PATH",
+      "INDEPENDENT_EXIT"
+    ],
+    "privacy": "No background profiling, contact harvesting, silent cross-lane tracking, account inference or cross-domain identity correlation",
+    "authority": "READ_PUBLIC_SOURCE_ONLY_UNTIL_SEPARATELY_GRANTED",
+    "receiver_ack": "NOT_OBSERVED",
+    "fallback": "Source-linked static GitHub instructions, not another provider session"
+  },
+  "federation_policy": {
+    "cooperate": "Share portable consent, source evidence, accessibility, version/currentness and revocation contract, not user secrets.",
+    "compete": "Run consented comparable 5-minute experiments with different explicit headlines and tasks; judge each on independent task completion, comprehension, reversibility and cost.",
+    "scale_buffers": {
+      "entry": "COLD_BY_DEFAULT",
+      "layers": [
+        "GLANCE",
+        "USER_CHOSEN_LANE",
+        "EVIDENCE_ON_REQUEST",
+        "CROSS_LANE_OPT_IN"
+      ],
+      "logical_candidate_fanout": "UNBOUNDED_SYMBOLIC_ONLY",
+      "active_workers_default": 0,
+      "per_user_cross_lane_suggestions_max": 1,
+      "broadcast_default": "NONE",
+      "wake": "ON_USER_REQUEST_OR_QUALIFIED_EVENT",
+      "levers": [
+        "CACHE_PUBLIC_RESULT",
+        "DEDUP_RECEIPTS",
+        "BOUNDED_QUEUE",
+        "RATE_LIMIT_PER_RECEIVER",
+        "DORMANCY",
+        "PRIVACY_REDACTION",
+        "REVERSE_LINK_TO_SOURCE"
+      ]
+    }
+  },
+  "hypotheses": [
+    {
+      "id": "H1",
+      "claim": "Four plain-language task paths lower initial comprehension friction compared with research-heavy homepage.",
+      "test": "Consent-based A/B comparison: version-pinned generic entry vs participant-selected path; independent observer records unaided comprehension and correct first click; no covert assignments or fingerprinting."
+    },
+    {
+      "id": "H2",
+      "claim": "A specialized entry increases completing one useful task.",
+      "test": "Observe successful five-minute task completion and user-judged usefulness in a tiny consented cohort, separate visits from completions."
+    },
+    {
+      "id": "H3",
+      "claim": "Opt-in cross-lane links improve discovery without feeling like a firehose.",
+      "test": "Compare no suggestion vs one visible optional cross-link; record acceptance, confusion, requests to stop; abort if friction grows."
+    },
+    {
+      "id": "H4",
+      "claim": "Shared provenance and identity boundaries survive transitions among lanes.",
+      "test": "Same test object projected through two lanes retains its exact source ID, provenance and privacy scope; no receiver acknowledgment without a receiver receipt."
+    }
+  ],
+  "release_gates": [
+    "PRIVATE_HOSTING_SECURITY_REVIEW_AND_SAFE_APEX_WWW",
+    "INDEPENDENT_HTTP_200_ON_HOSTED_ROOT",
+    "MOBILE_KEYBOARD_ACCESSIBILITY",
+    "CONSENTED_FIRST_USE_OBSERVER",
+    "TASK_OUTCOME_READPROOF",
+    "NO_DUPLICATE_PUBLIC_IDENTITY",
+    "OPTIONAL_EXIT_AND_DATA_MINIMIZATION"
+  ],
+  "nonclaims": [
+    "SOURCE_NE_LIVE_SERVICE",
+    "FOUR_PATHS_NE_FOUR_DEPLOYMENTS",
+    "PUBLIC_URI_NE_AWARENESS",
+    "NEW_NAMESPACE_NE_DNS_OWNERSHIP",
+    "PERSONA_NE_PERSON",
+    "CLONE_NE_AUTHORITY",
+    "LINK_NE_RECEIVER_ACK",
+    "MODEL_AVAILABLE_NE_MODEL_CALLED",
+    "HIGH_ACTIVITY_NE_ADOPTION",
+    "NO_DOMAIN_PURCHASE_OR_BROADCAST"
+  ]
+}
