@@ -153,3 +153,14 @@ OBSERVE -> RECOVER CURRENT STATE -> EXPAND CANDIDATE FIELD -> DEDUPE -> SCORE SM
 Historical work remains eligible for REUSE / REVERIFY / REPLAY / REINTERPRET / REFACTOR / REPLACE / ARCHIVE_ONLY. AutoEvo should preferentially metabolize old failures into regression fixtures and new qualification tests rather than replay unchanged work for activity.
 
 All sessions and agents remain replaceable projections over durable task/evidence state. Vast reachable context and pooled resources are desirable; literal limitless tokens, limitless compute, omnipotence and universal live presence are not claimed.
+
+
+## 2026-10-24 | CoAutoWave R0: rich payload pointers + bounded local autocycles
+
+**Observed state:** X2 Desktop Commander remained OFFLINE from the authorized connector; no physical mouse or other I/O devices were controlled, no Task Scheduler execution observed. **Bounded local implementation** is packaged in the originating ChatGPT conversation, source bytes not yet in GitHub. A public-safe source-and-test identity note is [CoAutoWave R0 evidence](../Evolution/COAUTOWAVE_COTHUMB_X2_R0_20261024.md). One local Python engine and one Windows UI bridge contain a finite automatic private queue path rather than infinite context/provider sessions.
+
+**Proof:** 27/27 isolated Python fixture/selftests; 9/9 additional edge checks including concurrent lock, invalid job, symlink refusal, recovery/quarantine, bounded hashing and no clobber. Script source SHA-256 `014977f6279c7c1f1d188058dad1be7ca908d5252febf0171f0060a22c72d966`; Windows GUI source `cce92d0dae58a509e5d49f667bcffde7a8f60c77cbc89f3bd843fb75754e4fea`. GitHub log contains separate PASS_LOCAL and HELD_X2 entries in [benchmark-evo.jsonl](../../ai/benchmark-evo.jsonl). `benchmarks/evo.jsonl` legacy has an explicitly held malformed first physical JSONL line; its original bytes were not overwritten.
+
+**The large path, safely:** `rich local file reference -> CoCopy capsule -> typed private queue -> finite workers -> verified metadata/hash -> CoWave receipt -> optional provenance-based history comparison -> dormancy or separately authorized receiver pickup`. Optional model/provider, app-specific, video-visual, CoStead/cross-node, and automatic I/O effects remain separately gated. Unsupported tests (real media blackdetect, GitHub timed HTTP, Gmail recipient Primary, Pi, Claude credentials, Ollama parse, thumb gesture on X2, independent user ACK) remain NOT_RUN/UNKNOWN, not green.
+
+**Distribution:** this is a public GitHub pull projection, not a universal push. Existing CoVIA, nodes/sites, Gmail and other channels have no new receiver-delivery receipt from this wave. `CONTENT_POINTER_NE_CONTENT_TRANSFER`; `TOKEN_EXPANDER_NE_INFINITE_CONTEXT`; `TASK_SCHEDULE_CONFIG_NE_TASK_EXECUTION`; `COSTEAD_MIRROR_NE_INDEPENDENT_RESTORE`.
