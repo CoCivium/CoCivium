@@ -1,0 +1,25 @@
+name: CoDoodle zero-effect shadow R0
+on:
+  pull_request:
+    paths:
+      - "examples/codoodle/**"
+      - ".github/workflows/codoodle-shadow-r0.yml"
+  push:
+    paths:
+      - "examples/codoodle/**"
+      - ".github/workflows/codoodle-shadow-r0.yml"
+permissions:
+  contents: read
+jobs:
+  unit_and_synthetic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - name: Run no-effect unit tests
+        run: python3 -m unittest discover -s examples/codoodle/tests -p 'test_*.py' -v
+      - name: Compile synthetic fixture to stdout (never launch jobs)
+        run: python3 examples/codoodle/codoodle.py --input examples/codoodle/sample_synthetic.txt
