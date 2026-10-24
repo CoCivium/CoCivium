@@ -1,0 +1,127 @@
+{
+  "STATE": "PASS_CONTROLLED_COMPLEMENTARY_SEARCH_COUNTERFACTUAL_R0",
+  "advisory_width_decision": "POSITIVE_VERIFIED_COVERAGE_GAIN__PRESSURE_BUDGET_EVIDENCE_REQUIRED_BEFORE_WIDENING",
+  "checked_out_head_sha": "b48e2e27fe901a15130c31e675258a7e4c730f20",
+  "coverage_boundary": [
+    "SAME_EXACT_LOGICAL_SEARCH_OBJECT",
+    "FIXED_ONE_SHARD_PER_RECEIVER_LEASE",
+    "ONE_SINGLE_RECEIVER_VS_THREE_PARALLEL_RECEIVERS",
+    "OBJECTIVE_INTEGER_PREDICATE_SCORING",
+    "POSITIVE_COVERAGE_GAIN_ONLY",
+    "NO_EFFICIENCY_GAIN_CLAIM",
+    "NO_REAL_MODEL",
+    "NO_RUNTIME_WIDTH_AUTHORITY"
+  ],
+  "logical_work_id": "work:bounded-partitioned-search-r0",
+  "next_gate": "MEASURE_RECEIVER_PRESSURE_PROOF_DEBT_COLLISION_ATTENTION_AND_COMPUTE_BUDGETS_BEFORE_POSITIVE_WIDENING_ADVISORY",
+  "nonclaims": [
+    "PARALLEL_COVERAGE_GAIN_NE_PARALLEL_EFFICIENCY_GAIN",
+    "BENEFIT_PER_LOGICAL_WAVE_NE_BENEFIT_PER_COMPUTE",
+    "CONTROLLED_CI_COUNTERFACTUAL_NE_REAL_WORLD_BENEFIT",
+    "POSITIVE_GAIN_IN_THIS_TASK_NE_POSITIVE_GAIN_FOR_OTHER_TASKS",
+    "BENEFIT_OBSERVED_NE_BENEFIT_CAUSED_BEYOND_THIS_FIXTURE",
+    "BENEFIT_NE_AUTHORITY",
+    "PRESSURE_METRICS_ABSENT_NE_PRESSURE_BUDGET_PASS",
+    "COUNTERFACTUAL_PASS_NE_RUNTIME_SCHEDULER",
+    "VALIDATION_IS_NOT_ACCEPTANCE",
+    "PICKED_UP_BY_COMPLEMENTARY_COUNTERFACTUAL_COMPILER_NE_INTEGRATED",
+    "POSITIVE_COVERAGE_GAIN_NE_RUNTIME_WIDEN_PERMISSION",
+    "NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE"
+  ],
+  "parallel": {
+    "benefit_yield": {
+      "denominator": 1,
+      "numerator": 3
+    },
+    "covered_shards": [
+      "A",
+      "B",
+      "C"
+    ],
+    "execution_cost_units": 3,
+    "physical_width": 3,
+    "qualified_benefit_units": 3,
+    "receiver_count": 3,
+    "unique_verified_targets": [
+      7,
+      14,
+      21
+    ],
+    "verified_deeds": 1
+  },
+  "parallel_efficiency_gain_claimed": false,
+  "parallel_strict_verified_benefit_gain": true,
+  "physical_width_change_authorized": false,
+  "picked_up_receiver_receipt_count": 4,
+  "pressure_metrics_present": false,
+  "readproofs": [
+    {
+      "assigned_shard_id": "A",
+      "checked_out_head_sha": "b48e2e27fe901a15130c31e675258a7e4c730f20",
+      "counterfactual_mode": "PARALLEL",
+      "found_targets": [
+        7
+      ],
+      "receipt_content_sha256": "18CB3C93C0EFA217D09723E4F7CF2B7AE45767D0EDD6C78791F325E1ED164B24",
+      "receiver_readproof": "PASS_EXACT_OBJECT_READBACK",
+      "replica_id": "P0",
+      "source_artifact_relative_path": "receiver-artifacts/complementary-search-parallel-P0/complementary-search-receiver.json"
+    },
+    {
+      "assigned_shard_id": "B",
+      "checked_out_head_sha": "b48e2e27fe901a15130c31e675258a7e4c730f20",
+      "counterfactual_mode": "PARALLEL",
+      "found_targets": [
+        14
+      ],
+      "receipt_content_sha256": "FB8FDB7F676F3BD46D6BF5A58303434E04D7668321C16CACF9EEE8DF0B9FAFDF",
+      "receiver_readproof": "PASS_EXACT_OBJECT_READBACK",
+      "replica_id": "P1",
+      "source_artifact_relative_path": "receiver-artifacts/complementary-search-parallel-P1/complementary-search-receiver.json"
+    },
+    {
+      "assigned_shard_id": "C",
+      "checked_out_head_sha": "b48e2e27fe901a15130c31e675258a7e4c730f20",
+      "counterfactual_mode": "PARALLEL",
+      "found_targets": [
+        21
+      ],
+      "receipt_content_sha256": "6C5D148648421428E73617C403794D3B9DB60CF5350CFFB0FC73E8D7D1CE58D3",
+      "receiver_readproof": "PASS_EXACT_OBJECT_READBACK",
+      "replica_id": "P2",
+      "source_artifact_relative_path": "receiver-artifacts/complementary-search-parallel-P2/complementary-search-receiver.json"
+    },
+    {
+      "assigned_shard_id": "A",
+      "checked_out_head_sha": "b48e2e27fe901a15130c31e675258a7e4c730f20",
+      "counterfactual_mode": "SINGLE",
+      "found_targets": [
+        7
+      ],
+      "receipt_content_sha256": "7B747763E5319780F2A2DB2762E44ACFA76FAE65B43421A8975128602FEF3BBF",
+      "receiver_readproof": "PASS_EXACT_OBJECT_READBACK",
+      "replica_id": "S0",
+      "source_artifact_relative_path": "receiver-artifacts/complementary-search-single-S0/complementary-search-receiver.json"
+    }
+  ],
+  "receipt_set_semantic_sha256": "BBC60564B2AC3D8959427DEC794E3A95FDE87FCF576707D5C0113B3C4405F24D",
+  "same_exact_logical_work_object": true,
+  "schema": "CoModelSubstrateLight.ComplementarySearchCounterfactualFanin.v0.1",
+  "single": {
+    "benefit_yield": {
+      "denominator": 1,
+      "numerator": 1
+    },
+    "covered_shards": [
+      "A"
+    ],
+    "execution_cost_units": 1,
+    "physical_width": 1,
+    "qualified_benefit_units": 1,
+    "receiver_count": 1,
+    "unique_verified_targets": [
+      7
+    ],
+    "verified_deeds": 1
+  }
+}

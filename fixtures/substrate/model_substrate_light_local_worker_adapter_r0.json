@@ -1,0 +1,91 @@
+{
+  "schema": "CoModelSubstrateLight.LocalWorkerAdapter.v0.1-candidate",
+  "state": "DETERMINISTIC_LOOPBACK_OLLAMA_ADAPTER_CANARY__NO_REAL_MODEL_NO_RUNTIME_NO_CANON",
+  "source_bindings": {
+    "worker_path": "scripts/CoLocalModelWorkerR3.py",
+    "worker_blob_sha": "95217286632662bf8bc5e1a3fb197e252615c62f",
+    "worker_doc_path": "docs/Operations/COLOCAL_MODEL_WORKER_R3.md",
+    "worker_doc_blob_sha": "44f9eb0d2c590c6e1be0bd709af67b3708135950"
+  },
+  "model_name": "mock-ollama:r0",
+  "contract": {
+    "spawn_id": "spawn:substrate-light-local-worker-r0",
+    "purpose": "Qualify one bounded logical model role through the existing CoLocalModelWorkerR3 adapter.",
+    "parent_identity": "PR135:substrate-light-r0",
+    "role": "VERIFIER",
+    "scope": "SYNTHETIC_PUBLIC_ONLY",
+    "input_bindings": [
+      "fixture:model-substrate-light-local-worker-adapter-r0"
+    ],
+    "materialization_state": "LOGICAL_ONLY",
+    "effect_classes": [
+      "REVIEW_CHALLENGE"
+    ],
+    "authority_ceiling": "ADVISORY_ONLY",
+    "confidentiality": "PUBLIC",
+    "budget": {
+      "max_calls": 1,
+      "timeout_seconds": 20
+    },
+    "lease": "ONE_REQUEST",
+    "idempotency_key": "substrate-light-local-worker-r0",
+    "collision_domain": "SYNTHETIC_ONLY",
+    "receiver": "CI_RECEIPT_FANIN",
+    "success_condition": "ONE_JSON_CANDIDATE_OUTPUT_WITH_ZERO_EFFECT_EXECUTION",
+    "stop_condition": "AFTER_ONE_RESPONSE",
+    "checkpoint": "NONE_REQUIRED_FOR_MOCK_CANARY",
+    "recovery_pointer": "PR135",
+    "failure_domain": "GITHUB_HOSTED_RUNNER",
+    "handoff_rule": "RECEIPT_ONLY",
+    "retirement_condition": "AFTER_RECEIPT",
+    "provenance": [
+      "PR135",
+      "CoLocalModelWorkerR3"
+    ],
+    "currentness": "EXACT_PR_HEAD",
+    "uncertainty": null
+  },
+  "expected_worker_result": {
+    "analysis_summary": "Deterministic loopback adapter qualification response.",
+    "proposed_deltas": [],
+    "contradictions": [],
+    "tests": [
+      "loopback_ollama_protocol",
+      "json_response_parse",
+      "zero_effect_artifact"
+    ],
+    "uncertainty": [
+      "MOCK_RECEIVER_NE_REAL_MODEL"
+    ],
+    "source_refs": [
+      "fixture:model-substrate-light-local-worker-adapter-r0"
+    ],
+    "nonclaims": [
+      "MOCK_RESPONSE_NE_MODEL_REASONING",
+      "MOCK_OLLAMA_NE_REAL_OLLAMA_RUNTIME",
+      "ADAPTER_PASS_NE_MODEL_QUALITY"
+    ]
+  },
+  "required_worker_nonclaims": [
+    "MODEL_OUTPUT_NE_TRUTH",
+    "MODEL_OUTPUT_NE_EFFECT_PERMISSION",
+    "LOCAL_NE_TRUSTED",
+    "CANDIDATE_OUTPUT_NE_RECEIVER_PICKUP",
+    "CANDIDATE_OUTPUT_NE_INTEGRATION"
+  ],
+  "expected_effects": {
+    "repo_mutations": 0,
+    "provider_sessions": 0,
+    "public_outreach": 0,
+    "authority_changes": 0,
+    "credential_changes": 0
+  },
+  "nonclaims": [
+    "MOCK_OLLAMA_NE_REAL_OLLAMA_RUNTIME",
+    "ADAPTER_PROTOCOL_PASS_NE_REAL_MODEL_MATERIALIZATION",
+    "CROSS_OS_ADAPTER_PASS_NE_MODEL_MIGRATION",
+    "LOOPBACK_SERVER_NE_LOCAL_MODEL",
+    "VALIDATION_IS_NOT_ACCEPTANCE",
+    "ADAPTER_PASS_NE_COEX"
+  ]
+}
