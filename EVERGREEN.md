@@ -12,6 +12,8 @@
 
 CoCivium / CoAll is public R&D. This page is a living front door to the most useful proof-backed work we currently have. Nothing here is a claim of completeness, universal adoption, independent validation, or finished product status.
 
+**Review panels across the lifecycle:** [CoStageReview+ R0 policy and reproduction](docs/Architecture/COREVIEW_PANEL_LIFECYCLE_R0.md) maps nine stages to the existing seven-seat CoRoleSpace and bounded CoTurtle contracts. [Validator and tests](scripts/CoStageReviewGateR0.py) had **40/40 local synthetic regression checks PASS**; [benchmark event](ai/review/benchmark_evo_r0.jsonl) retains held real reviews and independent receiver evidence. CI workflow configured, run result not yet independently verified. No actual reviewers appointed, live enforcement, receiver ACK, CoEx or public-release promotion is inferred.
+
 **Fireworks and resilience gate:** [CoFireworks+ readiness R0](docs/Launch/COFIREWORKS_READINESS_R0_20261024.json) distinguishes source/demo spark from first-use, accessible public reach, independent stewardship, and off-GitHub recovery. Source evidence exists; public fireworks and failure-domain resilience are **HELD**, not inferred from commit or worker counts.
 
 ![EVO ALL BETTERS + centred moustache: publish, test, learn, improve](assets/evoall/evo_all_betters_moustache_20261023.svg)
