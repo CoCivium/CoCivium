@@ -11,6 +11,11 @@
 
 ## Public interactive research surfaces
 
+- Money and Elections Aggregate Lab R0: public finance and election-administration spending-per-ballot arithmetic from voluntary user-entered aggregates. Not voter-price inference, party recommendation, fraud scoring or political audience targeting.
+- Money and Elections source: https://github.com/CoCivium/CoAcademy/blob/master/docs/civic-integrity/money-and-elections/index.html
+- Machine evidence and privacy contract: https://raw.githubusercontent.com/CoCivium/CoAcademy/master/docs/civic-integrity/money-and-elections/discovery.json
+- 30/30 isolated V8 checks: https://github.com/CoCivium/CoAcademy/blob/master/docs/civic-integrity/money-and-elections/test_receipt_r0.json (not independent host/browser proof).
+- Intended public page: https://cocivium.github.io/CoAcademy/civic-integrity/money-and-elections/ (separate external readback needed).
 - Post-election continuity and CoPatterna+: official post-election results sources, canvass/audit/certification distinction, independent-source review, negative-result retention and bounded retry/stop rules. Educational, not an actual election audit.
 - Public post-election protocol: https://github.com/CoCivium/CoAcademy/blob/master/docs/civic-integrity/POST_ELECTION_CONTINUITY_R0.md
 - Machine review contract: https://raw.githubusercontent.com/CoCivium/CoAcademy/master/docs/civic-integrity/POST_ELECTION_CONTINUITY_R0.json
