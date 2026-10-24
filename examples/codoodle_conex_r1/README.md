@@ -46,6 +46,12 @@ For a future CoOrbWare receiver: one work ID, one content-hashed task capsule, s
 - [Local events and unknown gates](benchmark_evo.jsonl) retain PASS and explicit HELD; none claim a real Claude or Ollama worker, X2 gesture, ETA, G_d, ET discovery, independent receiver or CoStead landing.
 - Five [pinned donor Git blobs](source_donors.json) can be verified offline in a full repo checkout: `python3 examples/codoodle_conex_r1/verify_donors.py --repo-root .` from the repository root (or supply the checkout root explicitly). A changed donor must be inspected before updating the pin.
 
+## Sibling comparison, not a competing canonical engine
+
+The independently developed [CoDoodleNexus R0 sibling (draft PR #244)](https://github.com/CoCivium/CoCivium/pull/244) runs a different fifteen-axis, 1.41-trillion syntactic namespace, accepts an explicitly supplied text file into a privacy-filtered tag-only compiler, runs a bounded CoZombie freshness triage, and includes a tested browser viewer. Its 45 tests and five GitHub CI jobs are real scoped evidence on a **research branch**, not main-branch runtime adoption.
+
+This R1 uses a different twelve-axis, 2.25-trillion syntactic namespace, a **public synthetic JSON fixture** (not a private text parser), a scored 128-descriptor maximum sample, an elected frontier of at most 32, 82 negative/unit tests, provider-qualification descriptors and speculative ET/G_d epistemic separation. These indices, seeds and scores are **NOT interchangeable**. A reviewer should relate R0's input/privacy/CoZombie/browser donors to R1's bounded selection/route catalogue only via an explicit versioned adapter with independently tested loss and authority boundaries. Do not auto-merge, silently supersede, or claim an independent human acceptance by comparing two internal implementations.
+
 ## Why this is not already a product
 
 Still HELD: X2 reachability and a real mouse gesture, native CoOrb/CoOrbWare rendering, authenticated API adapters, actual public-science dataset retrieval, independent reviewer, human-time-to-usefulness test, off-provider recovery and user adoption. A fast candidate generator can make more noise just as efficiently as it makes useful hypotheses. **Human time to a falsifiable useful result**, including actual receiver acknowledgment, is the promotion metric.
