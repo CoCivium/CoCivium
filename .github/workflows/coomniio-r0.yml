@@ -28,6 +28,10 @@ jobs:
         run: node --check experiments/cointerstice-r0/CoIntersticeShadowR0.mjs
       - name: Run bounded CoInterstice inversion and no-capture cases
         run: node --test --test-reporter=tap experiments/cointerstice-r0/CoIntersticeShadowR0.test.mjs
+      - name: Check CoPriMath GlyphRail R1 syntax
+        run: node --check experiments/cointerstice-r0/CoPriMathGlyphRailR1.mjs
+      - name: Run bounded 20-glyph relation and inversion fixtures
+        run: node --test --test-reporter=tap experiments/cointerstice-r0/CoPriMathGlyphRailR1.test.mjs
       - name: Static PowerShell safety checks (not Windows execution)
         run: python3 examples/coomniio/audit_static.py
 
