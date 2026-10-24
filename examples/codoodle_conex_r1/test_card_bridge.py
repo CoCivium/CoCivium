@@ -1,5 +1,8 @@
 import copy
 import hashlib
+import tempfile
+import io
+import contextlib
 import json
 import sys
 import unittest
@@ -105,6 +108,28 @@ class CardBridgeTests(unittest.TestCase):
         self.assertEqual(out['selected_count'],5)
         self.assertEqual({c['scenario'] for c in out['cards']},set(a.ALLOWED_SCENARIOS))
         self.assertTrue(all(c['independent_receiver_ack'] is False for c in out['cards']))
+    @unittest.skipUnless((Path(__file__).resolve().parent/'CoDoodleNexR1.py').exists(),'R1 core not staged locally; CI runs integration')
+    def test_actual_mainline_cli_writes_receipts_and_times_complete_cards(self):
+        with tempfile.TemporaryDirectory(prefix='coconex_card_r0_') as tmp:
+            args=['--source',str(Path(__file__).resolve().parent/'synthetic_source.json'),
+                  '--seed','CI-PUBLIC-SYNTHETIC-R0','--max-cards','6',
+                  '--rounds','101','--output',tmp]
+            printed=io.StringIO()
+            with contextlib.redirect_stdout(printed):
+                a.main(args)
+            cards_bytes=(Path(tmp)/'cards.json').read_bytes()
+            benchmark=json.loads((Path(tmp)/'benchmark.json').read_text())
+            receipt=json.loads((Path(tmp)/'receipt.json').read_text())
+            cards=json.loads(cards_bytes)
+            self.assertEqual(cards['selected_count'],6)
+            self.assertEqual(cards['external_effects'],0)
+            self.assertEqual(receipt['cards_sha256'],hashlib.sha256(cards_bytes).hexdigest())
+            self.assertEqual(receipt['status'],'PASS_SHADOW_PROPOSALS_ONLY')
+            self.assertEqual(benchmark['rounds'],101)
+            self.assertTrue(benchmark['median_ns']>0)
+            self.assertEqual(json.loads(printed.getvalue())['sha256'],receipt['cards_sha256'])
+            print('MEASURED_FULL_SELECT_PLUS_CARD_COMPILE_MEDIAN_NS',benchmark['median_ns'],
+                  'P95_NS',benchmark['p95_ns'],'NOT_USER_TIME_OR_EXPERIMENT_EXECUTION')
     @unittest.skipUnless((Path(__file__).resolve().parent/'CoDoodleNexR1.py').exists(),'R1 core not staged locally; CI runs integration')
     def test_actual_mainline_r1_module_integration(self):
         core=a.load_core()
