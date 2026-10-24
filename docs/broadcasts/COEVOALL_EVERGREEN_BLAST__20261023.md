@@ -90,3 +90,24 @@ CoDynamicLOD+ and CoSemanticZoom+ let CoOrbWare+ change level of detail with att
 CoExpansionWake+ may unfold a folded region when contradiction, changed evidence, failure, uncertainty or explicit focus makes detail useful again. CoBackgroundFold+ may fold low-attention regions after preserving state.
 
 The default invariant is: conceptual spaces may remain open-ended; actual executions stay bounded.
+
+
+## CoAwarenessGap+
+
+No visible public awareness is a signal to investigate, not proof of suppression. Keep a ranked hypothesis tree and test the funnel:
+
+PUBLISHED -> INDEXED -> DISCOVERABLE -> SEEN -> UNDERSTOOD -> TRUSTED -> TRIED -> SHARED -> RETURNED
+
+Priority hypotheses:
+1. discoverability or indexing weakness;
+2. comprehension or front-door overload;
+3. insufficient distribution;
+4. fragmented identity and surfaces;
+5. insufficient simple public demonstration;
+6. audience mismatch;
+7. trust deficit;
+8. measurement blindness;
+9. algorithmic de-ranking or moderation;
+10. deliberate coordinated suppression, retained as a low-prior hypothesis until direct evidence appears.
+
+Every awareness claim should bind observable evidence. Absence of visible attention is not, by itself, evidence of interference.
