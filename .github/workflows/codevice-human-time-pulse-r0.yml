@@ -1,0 +1,49 @@
+name: CoDevice human-time pulse R0
+
+on:
+  pull_request:
+    paths:
+      - "scripts/CoDeviceHumanTimePulseR0.ps1"
+      - "docs/Operations/CODEVICE_HUMAN_TIME_PULSE_R0.md"
+      - ".github/workflows/codevice-human-time-pulse-r0.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  local-pulse:
+    runs-on: windows-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate bounded local pulse twice, no clobber
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $out = Join-Path $env:RUNNER_TEMP 'CoDevicePulseR0-CI'
+          $first = & ./scripts/CoDeviceHumanTimePulseR0.ps1 -OutputRoot $out
+          $second = & ./scripts/CoDeviceHumanTimePulseR0.ps1 -OutputRoot $out
+          if (-not $first.StartsWith('PASS_LOCAL_PULSE|')) { throw 'FIRST_PULSE_FAIL' }
+          if (-not $second.StartsWith('PASS_LOCAL_PULSE|')) { throw 'SECOND_PULSE_FAIL' }
+          $objects = @(Get-ChildItem -LiteralPath $out -Filter 'device_pulse.json' -File -Recurse)
+          if ($objects.Count -ne 2) { throw 'EXPECTED_TWO_APPEND_ONLY_RUNS' }
+          $expectedHash = (Get-FileHash -LiteralPath './scripts/CoDeviceHumanTimePulseR0.ps1' -Algorithm SHA256).Hash
+          foreach ($item in $objects) {
+            $obj = Get-Content -LiteralPath $item.FullName -Raw | ConvertFrom-Json
+            if ($obj.schema -cne 'CoDevice.HumanTimePulse.R0') { throw 'BAD_SCHEMA' }
+            if ($obj.state -cne 'BOUNDED_LOCAL_OBSERVATION_ONLY') { throw 'NOT_OBSERVATION_ONLY' }
+            if ($obj.source_script_sha256 -cne $expectedHash) { throw 'SOURCE_HASH_MISMATCH' }
+            if ($obj.device_enrolled -ne $false) { throw 'UNEXPECTED_DEVICE_ENROLLMENT' }
+            if ($obj.external_receiver_ack -cne 'NOT_TESTED') { throw 'FABRICATED_ACK' }
+            if (@($obj.effects.PSObject.Properties | Where-Object Value -ne 0).Count -ne 0) { throw 'UNEXPECTED_EFFECT' }
+            if (@($obj.process_name_observations.PSObject.Properties).Count -ne 3) { throw 'UNEXPECTED_PROCESS_COVERAGE' }
+            if ([long]$obj.elapsed_ms -gt 10000) { throw 'HUMAN_TIME_LOCAL_PULSE_OVER_10_SECONDS' }
+            $html = Join-Path $item.DirectoryName 'index.html'
+            if (-not (Test-Path -LiteralPath $html)) { throw 'MISSING_HTML' }
+            $markup = Get-Content -LiteralPath $html -Raw
+            foreach ($phrase in @('Here now', 'Meaning', 'Next safe action', $expectedHash)) {
+              if (-not $markup.Contains($phrase)) { throw "HTML_MISSING_$phrase" }
+            }
+          }
+          Write-Host ('PASS_TWO_NO_CLOBBER_LOCAL_PULSES|SOURCE_SHA=' + $expectedHash)
