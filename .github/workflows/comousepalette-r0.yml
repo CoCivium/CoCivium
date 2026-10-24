@@ -1,0 +1,29 @@
+name: CoMousePalette R0 offline gates
+on:
+  push:
+    branches: [research/comousepalette-r0-20261024]
+  pull_request:
+    paths:
+      - 'experiments/comousepalette-r0/**'
+      - '.github/workflows/comousepalette-r0.yml'
+permissions:
+  contents: read
+jobs:
+  source-safety:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Offline source boundaries
+        run: python -m unittest discover -s experiments/comousepalette-r0/tests -p 'test_source.py' -v
+  windows-sta-selftest:
+    runs-on: windows-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+      - name: Parse and compile interop without opening GUI or clipboard
+        shell: pwsh
+        run: pwsh -NoLogo -NoProfile -STA -File experiments/comousepalette-r0/tests/test_pwsh.ps1
