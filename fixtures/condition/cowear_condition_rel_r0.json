@@ -1,0 +1,162 @@
+{
+  "schema": "CoWearConditionRel.R0-candidate",
+  "state": "CANDIDATE_CROSS_DOMAIN_CONDITION_TRAJECTORY__NO_CANON_NO_RUNTIME_NO_AUTHORITY_CHANGE",
+  "concepts": {
+    "CoWear+": "Typed condition change produced by use, stress, environment, time-coupled degradation, drift, or repeated semantic loading.",
+    "CoConditionRel+": "Time-indexed relation between an object and its observed or estimated condition dimensions.",
+    "CoMaintenance+": "Intervention intended to alter a condition trajectory without erasing history.",
+    "CoRetirement+": "Bounded decision to stop relying on an object for a scope while preserving provenance and lineage."
+  },
+  "cause_families": [
+    "ABRASION",
+    "FATIGUE",
+    "COMPRESSION_SET",
+    "CHEMICAL_AGING",
+    "ENVIRONMENTAL_DEGRADATION",
+    "DEPENDENCY_DRIFT",
+    "DATA_STALENESS",
+    "SEMANTIC_OVERUSE",
+    "ATTENTION_FATIGUE"
+  ],
+  "scenarios": [
+    {
+      "id": "W01_ACTIVE_SHOE_WEAR",
+      "object_class": "FOOTWEAR",
+      "observations": [
+        {"t": 0, "use_cycles": 0, "age_days": 0, "tread_mm": 4.0, "cushion_index": 100},
+        {"t": 1, "use_cycles": 100, "age_days": 30, "tread_mm": 3.1, "cushion_index": 91}
+      ],
+      "expected_relations": [
+        "USE_CORRELATES_WITH_ABRASION_WEAR",
+        "USE_CORRELATES_WITH_COMPRESSION_SET",
+        "WEAR_PRESENT"
+      ]
+    },
+    {
+      "id": "W02_STORED_SHOE_AGING_WITHOUT_USE",
+      "object_class": "FOOTWEAR",
+      "observations": [
+        {"t": 0, "use_cycles": 0, "age_days": 0, "adhesive_integrity": 100},
+        {"t": 1, "use_cycles": 0, "age_days": 730, "adhesive_integrity": 93}
+      ],
+      "expected_relations": [
+        "AGE_INCREASED",
+        "USE_WEAR_NOT_OBSERVED",
+        "ENVIRONMENTAL_OR_CHEMICAL_DEGRADATION_CANDIDATE"
+      ]
+    },
+    {
+      "id": "W03_MAINTENANCE_DOES_NOT_REWIND_HISTORY",
+      "object_class": "FOOTWEAR",
+      "before": {"tread_mm": 3.1, "surface_cleanliness": 40},
+      "intervention": "CLEAN_AND_CONDITION_UPPER",
+      "after": {"tread_mm": 3.1, "surface_cleanliness": 95},
+      "expected_relations": [
+        "MAINTENANCE_IMPROVED_ONE_DIMENSION",
+        "ABRASION_HISTORY_PRESERVED",
+        "MAINTENANCE_NE_RESTORE_ORIGINAL"
+      ]
+    },
+    {
+      "id": "W04_SOFTWARE_CAN_DEGRADE_WITHOUT_PHYSICAL_ABRASION",
+      "object_class": "SOFTWARE_INTERFACE",
+      "observations": [
+        {"t": 0, "local_code_changes": 0, "compatibility_index": 100},
+        {"t": 1, "local_code_changes": 0, "upstream_dependency_changes": 3, "compatibility_index": 72}
+      ],
+      "expected_relations": [
+        "DEPENDENCY_DRIFT_PRESENT",
+        "PHYSICAL_ABRASION_NOT_APPLICABLE",
+        "CONDITION_DECLINED"
+      ]
+    },
+    {
+      "id": "W05_METAPHOR_CAN_WEAR_SEMANTICALLY",
+      "object_class": "SEMANTIC_OBJECT",
+      "observations": [
+        {"t": 0, "contexts_used": 1, "semantic_precision_index": 100},
+        {"t": 1, "contexts_used": 40, "semantic_precision_index": 61}
+      ],
+      "candidate_interventions": [
+        "REFRAME",
+        "ALIAS",
+        "SPLIT_MEANINGS",
+        "RETIRE_FOR_SCOPE",
+        "PRESERVE_LINEAGE"
+      ],
+      "expected_relations": [
+        "SEMANTIC_OVERUSE_CANDIDATE",
+        "OVERUSE_NE_FALSEHOOD",
+        "RETIREMENT_CAN_PRESERVE_LINEAGE"
+      ]
+    },
+    {
+      "id": "W06_REPLACEMENT_NE_PROGRESS",
+      "object_class": "COMPOSITE_SYSTEM",
+      "before": {"component_id": "sole-v1", "system_identity": "shoe:demo", "condition_index": 62},
+      "after": {"component_id": "sole-v2", "system_identity": "shoe:demo", "condition_index": 88},
+      "expected_relations": [
+        "COMPONENT_REPLACED",
+        "SYSTEM_IDENTITY_PRESERVED_FOR_FIXTURE",
+        "CONDITION_IMPROVED",
+        "REPLACEMENT_NE_PROGRESS"
+      ]
+    },
+    {
+      "id": "W07_PREDICTIVE_EOL_IS_A_WINDOW_NOT_CERTAINTY",
+      "object_class": "FOOTWEAR",
+      "condition_series": [
+        {"age_days": 0, "tread_mm": 4.0},
+        {"age_days": 30, "tread_mm": 3.1},
+        {"age_days": 60, "tread_mm": 2.4}
+      ],
+      "candidate_prediction": {
+        "threshold_tread_mm": 1.5,
+        "earliest_days": 85,
+        "latest_days": 120,
+        "confidence": "LOW_TO_MEDIUM",
+        "assumptions": [
+          "future_use_rate_similar",
+          "surface_mix_similar",
+          "no_major_maintenance"
+        ]
+      },
+      "expected_relations": [
+        "PREDICTION_IS_CONDITIONAL",
+        "EOL_WINDOW_NE_CERTAINTY",
+        "NEW_OBSERVATIONS_SHOULD_REVISE_PREDICTION"
+      ]
+    }
+  ],
+  "cross_domain_dimensions": {
+    "physical": ["abrasion", "fatigue", "compression", "chemical_integrity", "structural_integrity"],
+    "software": ["compatibility", "dependency_currentness", "test_health", "security_posture", "interface_stability"],
+    "information": ["currentness", "coverage", "proof_freshness", "semantic_precision"],
+    "operations": ["receiver_health", "proof_debt", "collision_rate", "recovery_time", "attention_cost"]
+  },
+  "rails": [
+    "AGE_NE_WEAR",
+    "USE_NE_DAMAGE",
+    "WEAR_NE_FAILURE",
+    "OLD_NE_OBSOLETE",
+    "MAINTENANCE_NE_FOREVER",
+    "MAINTENANCE_NE_RESTORE_ORIGINAL",
+    "REPAIR_NE_HISTORY_ERASURE",
+    "REPLACEMENT_NE_PROGRESS",
+    "CONDITION_NE_VALUE",
+    "VISIBLE_WEAR_NE_TOTAL_CONDITION",
+    "SEMANTIC_OVERUSE_NE_FALSEHOOD",
+    "PREDICTED_EOL_NE_CERTAINTY",
+    "METAPHOR_NE_MECHANISM",
+    "CONDITION_MODEL_NE_REALITY_TOTALITY",
+    "VALIDATION_IS_NOT_ACCEPTANCE"
+  ],
+  "nonclaims": [
+    "SHOE_EXAMPLE_NE_UNIVERSAL_WEAR_LAW",
+    "CONDITION_SCORE_NE_OBJECTIVE_TOTAL_VALUE",
+    "PREDICTION_NE_GUARANTEE",
+    "SEMANTIC_WEAR_NE_PHYSICAL_WEAR",
+    "CROSS_DOMAIN_ANALOGY_NE_CAUSAL_EQUIVALENCE",
+    "NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE"
+  ]
+}
