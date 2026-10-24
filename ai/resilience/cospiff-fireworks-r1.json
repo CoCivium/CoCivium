@@ -1,0 +1,256 @@
+{
+  "schema": "CoCivium.CoSpiffSurvivabilityFireworks.R1",
+  "observed_date": "2026-10-24",
+  "lifecycle": "SOURCE_BOUND_CANDIDATE_SCORECARD_NOT_RELEASE_CERTIFICATION",
+  "headline": "Make individual components safe to fail, useful to strangers and recoverable without any single account or maintainer.",
+  "current_stage": "PUBLIC_R_AND_D",
+  "basis": [
+    {
+      "id": "coacademy_r1",
+      "url": "https://github.com/CoCivium/CoAcademy/blob/master/docs/relay/EXTERNAL_READPROOF_20261024_R1.json",
+      "scope": "GitHub Actions probe, same provider, 9/9 unit tests and five public checks on recovered attempt"
+    },
+    {
+      "id": "coacademy_r2",
+      "url": "https://github.com/CoCivium/CoAcademy/blob/master/docs/relay/READPROOF_R2_RECEIPT_20261024.json",
+      "scope": "18/18 deterministic tests, Pages workflow success, no R2 host readback"
+    },
+    {
+      "id": "coacademy_fdomains",
+      "url": "https://github.com/CoCivium/CoAcademy/blob/master/docs/relay/resilience.json",
+      "scope": "Explicit shared GitHub failure domain; no off-provider verified replacement"
+    },
+    {
+      "id": "core_start",
+      "url": "https://github.com/CoCivium/CoCivium/blob/main/START_HERE.md",
+      "scope": "Source readback, not independent public reader"
+    },
+    {
+      "id": "onramp",
+      "url": "https://github.com/CoCivium/CoCivium/blob/main/ai/onramp/specialist-entrypoints-r0.json",
+      "scope": "Six pinned specialist public source entries, all external receivers held"
+    },
+    {
+      "id": "ruv",
+      "url": "https://github.com/ruvnet/ruvnet",
+      "scope": "External self-described constellation and model/memory/execution/witness architecture; not reproduced inside CoCivium"
+    },
+    {
+      "id": "temporal",
+      "url": "https://docs.temporal.io/ai",
+      "scope": "Durable workflow retry, recovery and fairness pattern"
+    },
+    {
+      "id": "langgraph",
+      "url": "https://docs.langchain.com/oss/javascript/langgraph/thinking-in-langgraph",
+      "scope": "Graph decomposition, checkpointer, interrupt and human approval pattern"
+    },
+    {
+      "id": "otel",
+      "url": "https://opentelemetry.io/docs/concepts/signals/",
+      "scope": "Traces/metrics/logs shared observability model"
+    },
+    {
+      "id": "chaoss",
+      "url": "https://www.chaoss.community/kb/metric-contributor-absence-factor/",
+      "scope": "Contributor absence and maintainer concentration measurement"
+    },
+    {
+      "id": "github_backup",
+      "url": "https://docs.github.com/en/repositories/archiving-a-github-repository/backing-up-a-repository",
+      "scope": "Mirror backup source strategy requiring test restore"
+    }
+  ],
+  "gates": [
+    {
+      "id": "G01",
+      "name": "Public source discoverability",
+      "state": "PASS_BOUNDED",
+      "observation": "Core repo GPL v3, source artifacts and intro page readable through GitHub",
+      "evidence": "GitHub exact main readback",
+      "next_proof": "Independent audience retrieval and comprehension separate",
+      "nonclaim": "PUBLIC_SOURCE_NE_ADOPTION"
+    },
+    {
+      "id": "G02",
+      "name": "Canonical human front door",
+      "state": "FAIL_OBSERVED",
+      "observation": "One external web route returned apex 404; www served dated CoInfra index",
+      "evidence": "2026-10-24 external HTTP inspection",
+      "next_proof": "Independent second vantage and privacy-safe domain remediation",
+      "nonclaim": "ONE_VANTAGE_NE_GLOBAL_OUTAGE"
+    },
+    {
+      "id": "G03",
+      "name": "Independent new user value",
+      "state": "HELD",
+      "observation": "No qualifying first-use receiver with return/use outcome evidenced",
+      "evidence": "Specialist registry marks all receivers held",
+      "next_proof": "5 consenting first-time completions, 2 voluntary returns; record outcome and correction",
+      "nonclaim": "SOURCE_TEST_NE_HUMAN_SUCCESS"
+    },
+    {
+      "id": "G04",
+      "name": "Off-provider restore",
+      "state": "HELD",
+      "observation": "CoRelay GitHub Pages, Raw, Actions and repository are one provider failure domain",
+      "evidence": "CoAcademy relay R1/R2 receipts and resilience.json",
+      "next_proof": "Cold restore exactly sourced public bundle to non-GitHub custody/host; receiver-produced hash and human retrieval",
+      "nonclaim": "MULTIPLE_URLS_NE_MULTIPLE_FAILURE_DOMAINS"
+    },
+    {
+      "id": "G05",
+      "name": "Multi-host durable work continuity",
+      "state": "HELD",
+      "observation": "CoStretch and virtual sessions have bounded tests; cross-power-domain running recovery unproven",
+      "evidence": "CoStretch R5 / CoScaleContinuum R0",
+      "next_proof": "Checkpoint, remove one host and resume elsewhere with leased authority and output parity",
+      "nonclaim": "SIMULATED_WORKER_NE_RUNTIME"
+    },
+    {
+      "id": "G06",
+      "name": "Contributor independence",
+      "state": "UNKNOWN",
+      "observation": "No verified independent maintainers or quantified contributor absence factor in this wave",
+      "evidence": "CHAOSS metric proposal",
+      "next_proof": "Measure 90-day contributor-absence factor; a non-originator rebuilds, patches and closes a challenge",
+      "nonclaim": "GITHUB_CONTRIBUTIONS_NE_MAINTAINER_CAPACITY"
+    },
+    {
+      "id": "G07",
+      "name": "Reuse rights and licensing",
+      "state": "REVIEW_REQUIRED",
+      "observation": "CoCivium root LICENSE is GPL-3.0; CoAcademy inspected root lacks top-level LICENSE",
+      "evidence": "GitHub root listing and source readback",
+      "next_proof": "Rights-holder inventory, per-file ownership/licence, NOTICE/third-party attribution and selected grant where authorized",
+      "nonclaim": "PUBLIC_SOURCE_NE_PERMISSIVE_FOSS_LICENSE"
+    },
+    {
+      "id": "G08",
+      "name": "Observed independent audience funnel",
+      "state": "HELD",
+      "observation": "Connected Metricool website URL blank; per-account social statistics not CoCivium reach",
+      "evidence": "Metricool retrieved 2026-10-24",
+      "next_proof": "Privacy-safe entry/first-action/readback counts with bot/self controls and time windows",
+      "nonclaim": "NULL_METRIC_NE_ZERO_VISITORS"
+    },
+    {
+      "id": "G09",
+      "name": "External service/receiver pickup",
+      "state": "PARTIAL_BOUNDED",
+      "observation": "GitHub Actions R1 external runner recovered HTTP checks after a Pages deployment race; R2 SHA tests passed CI without post-deploy serving verification",
+      "evidence": "CoRelay external R1 and R2 receipts plus Actions readbacks",
+      "next_proof": "Actual R2 seven-endpoint exact-byte HTTP result and separately controlled external reader/receiver ACK",
+      "nonclaim": "GITHUB_RUNNER_NE_OFF_PROVIDER_RECEIVER"
+    },
+    {
+      "id": "G10",
+      "name": "Model/adapter portability",
+      "state": "HELD",
+      "observation": "Metadata and logical provider candidates exist, no full comparable accepted task on Claude/Pi/Llama/Ollama all verified",
+      "evidence": "Earlier adapter and resource benchmarks",
+      "next_proof": "One open/local and one hosted adapter complete same permission-scoped task with portability/cost/quality evidence",
+      "nonclaim": "METADATA_PARSE_NE_MODEL_FALLBACK"
+    },
+    {
+      "id": "G11",
+      "name": "Security and privacy incident readiness",
+      "state": "HELD",
+      "observation": "Domain legacy index warrants exposure audit; no independent security acceptance in current evidence",
+      "evidence": "Private CoAwareness audit issue #33",
+      "next_proof": "Verify public exposure, secrets, release rights, signed artifacts and recovery paths; test controlled takedown/rollback",
+      "nonclaim": "PUBLIC_METADATA_LABEL_NE_PRIVACY_AUDIT"
+    },
+    {
+      "id": "G12",
+      "name": "Community and governance succession",
+      "state": "HELD",
+      "observation": "No proven independent steward rotation, dispute process or operations without primary developer",
+      "evidence": "Prelaunch and contributor guide",
+      "next_proof": "Non-originator can receive access, reject bad claim, rotate credential via safe process and release correction",
+      "nonclaim": "CANDIDATE_GOVERNANCE_NE_SELF_SUSTAINING"
+    },
+    {
+      "id": "G13",
+      "name": "Spiffy specialist UX effectiveness",
+      "state": "HELD",
+      "observation": "Six source-pinned routes and static checks pass, but no measured comparison against plain task-first default",
+      "evidence": "Specialist route registry and public first-use guide",
+      "next_proof": "Randomized consenting task trial; report completion/time/correction/privacy and participant choice",
+      "nonclaim": "COSPIFF_DESIGN_NE_PUBLIC_BENEFIT"
+    },
+    {
+      "id": "G14",
+      "name": "Independent livelihood/legal sustainability",
+      "state": "HELD",
+      "observation": "No audited budget runway, asset ownership, patent strategy or sustainable maintainer operations in this wave",
+      "evidence": "CoValue custody posture as candidate only",
+      "next_proof": "Private counsel/custodian ownership checks; a low-cost support budget with no public portfolio disclosure",
+      "nonclaim": "GITHUB_ACTIVITY_NE_WARCHEST_PROOF"
+    }
+  ],
+  "stages": [
+    {
+      "id": "PUBLIC_R_AND_D",
+      "criterion": "Public source, scoped demonstrations, disclosed limits",
+      "state": "EVIDENCED"
+    },
+    {
+      "id": "FIRST_USE_PILOT",
+      "criterion": "Verified safe human entry and one independently completed useful task",
+      "state": "NOT_YET_PROVEN"
+    },
+    {
+      "id": "INDEPENDENT_RESILIENCE",
+      "criterion": "Second failure domain, cold restore, reproducible receiver readproof and non-originator operation",
+      "state": "NOT_YET_PROVEN"
+    },
+    {
+      "id": "FIREWORKS_READY",
+      "criterion": "Five independent opted-in task completions, two voluntary returns, two independently functioning custodial domains, independent maintainer reproduction, tested disclosure/permissions, source rights and human-readable public route",
+      "state": "NOT_YET_PROVEN"
+    },
+    {
+      "id": "SELF_SUSTAINING_ECOSYSTEM",
+      "criterion": "Repeated outside contributions and independent governance, recovery and stewardship sustained over observation window",
+      "state": "NOT_YET_PROVEN"
+    }
+  ],
+  "priority_queue": [
+    "G11",
+    "G02",
+    "G04",
+    "G03",
+    "G07",
+    "G08",
+    "G06",
+    "G09",
+    "G05",
+    "G12",
+    "G13",
+    "G10",
+    "G14"
+  ],
+  "next_safe_deed": "Owner review and independently verify public-domain privacy/routing, then attempt one no-secrets public bundle restore to a verified off-GitHub receiver with exact-object readback.",
+  "proof_semantics": {
+    "PASS_BOUNDED": "Exact narrow source/tool/readback succeeds inside named scope, not a general security or benefit proof",
+    "FAIL_OBSERVED": "One observed negative from a specified vantage; must be reproduced before claiming globally failing service",
+    "PARTIAL_BOUNDED": "At least one narrow stage observed; required stronger independent stage absent",
+    "HELD": "Permission/source/recovery/user data necessary to assert claim is missing",
+    "UNKNOWN": "No sufficiently scoped observation either way",
+    "REVIEW_REQUIRED": "Requires ownership/rights/permission review, not unilateral autopublishing or relicensing"
+  },
+  "guards": [
+    "LOCAL_IS_NOT_LANDED",
+    "VALIDATION_IS_NOT_ACCEPTANCE",
+    "NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF",
+    "NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE",
+    "HASHING_IS_NOT_SEMANTIC_INGESTION",
+    "DISCOVERED_SET_IS_NOT_COMPLETE_HISTORY",
+    "ONE_PROVIDER_MANY_URLS_NE_RESILIENCE",
+    "PUBLICATION_NE_ADOPTION",
+    "FIREWORKS_NE_RELEASE_PERMISSION",
+    "HYPE_NE_UTILITY"
+  ],
+  "notifications": "No unsolicited mailing, no mass social posting, no autonomous ongoing watcher, no device mutation, no provider-account shutdown, no financial trades or legal filings"
+}
