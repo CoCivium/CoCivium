@@ -135,3 +135,21 @@ The X2 exemplar should be judged by cold-start recovery, not merely by whether i
 Current observation: the authorized X2 Desktop Commander bridge remains OFFLINE after restart. That blocks fresh local binding/verification of the contextual mouse layer. OFFLINE is not evidence of data loss or compromise; it is evidence that cold-start continuity remains unproven.
 
 Million-session evolution remains virtual-first: represent many candidate workers and gesture policies, materialize only bounded high-value experiments, and avoid turning provider tabs or fake identities into the scale unit.
+
+
+## 2026-10-24 | CoLargestPath+ / AutoCycle+ / AutoEvo+ bounded expansion
+
+The search space may be enormous, but execution remains sparse. In addition to the smallest useful next deed, each material wave should compare at least one largest admissible path: the highest expected decision-changing or continuity-improving path that still fits current authority, evidence, resource, recovery and verification budgets.
+
+CoLargestPath+ does not mean maximum compute, maximum fanout, longest chain or most concepts. Prefer paths that maximize verified useful delta across dependency centrality, information gain, receiver value, recovery value, public comprehension, failure-domain independence, and reduction of human relay.
+
+Candidate giant spaces may remain virtual. Materialize only bounded experiments or role sets whose expected value exceeds their resource and verification burden. Preserve REPRESENT_VASTLY_EXECUTE_SPARSely, LARGE_ADDRESS_SPACE_NE_LIVE_WORK, MANY_CANDIDATES_NE_MANY_RESOURCES, and FANOUT_WITHOUT_FANIN_IS_NOISE.
+
+AutoCycle+ / AutoEvo+ means recurring reevaluation of material changes, wake conditions, failed assumptions, stale evidence, benchmark drift, new resources, new receivers and new counterexamples. It does not mean endless busy loops. Each cycle must expose stop conditions, resource ceilings, dedupe, receipts, next wake and a no-material-delta quiescent state.
+
+Default wave:
+OBSERVE -> RECOVER CURRENT STATE -> EXPAND CANDIDATE FIELD -> DEDUPE -> SCORE SMALL AND LARGE PATHS -> ELECT BOUNDED PATH -> FAN OUT QUALIFIED READ-ONLY/ISOLATED WORK -> FAN IN -> VERIFY -> LOG PASS/FAIL/HOLD/UNKNOWN -> UPDATE PRIORS/PASSPORTS/BENCHMARKS -> COMPACT -> SLEEP UNTIL MATERIAL CHANGE.
+
+Historical work remains eligible for REUSE / REVERIFY / REPLAY / REINTERPRET / REFACTOR / REPLACE / ARCHIVE_ONLY. AutoEvo should preferentially metabolize old failures into regression fixtures and new qualification tests rather than replay unchanged work for activity.
+
+All sessions and agents remain replaceable projections over durable task/evidence state. Vast reachable context and pooled resources are desirable; literal limitless tokens, limitless compute, omnipotence and universal live presence are not claimed.
