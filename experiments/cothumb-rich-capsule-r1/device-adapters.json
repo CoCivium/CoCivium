@@ -1,0 +1,15 @@
+{
+  "schema": "CoOmniIO.DeviceAdapterCandidates.R1",
+  "status": "DESIGN_ONLY_NO_HARDWARE_BOUND",
+  "shared_event_contract": "CoInputEvent-R1.schema.json",
+  "routes": [
+    {"source":"mouse_gesture", "candidate":"Logitech Options+ custom chord to AHK v2 user-launched adapter", "state":"HELD_X2_OFFLINE_PHYSICAL_BUTTON_UNOBSERVED", "permission":"user-triggered only"},
+    {"source":"keyboard_shortcut", "candidate":"Ctrl+Alt+Shift+F12 in AutoHotkey v2", "state":"SOURCE_PREPARED_NOT_X2_EXECUTED", "permission":"user launches AHK script"},
+    {"source":"touch_ui", "candidate":"explicit local file-picker or drag/drop page", "state":"NOT_IMPLEMENTED", "permission":"foreground and user-selected file"},
+    {"source":"gamepad", "candidate":"optional accessible gesture adapter", "state":"NOT_IMPLEMENTED", "permission":"per-device and per-user mapping"},
+    {"source":"accessibility_switch", "candidate":"equivalent keyboard event", "state":"NOT_IMPLEMENTED", "permission":"no forced gesture or wearable"},
+    {"source":"voice_command", "candidate":"push-to-talk explicit consent, on-device recognition if independently tested", "state":"NOT_IMPLEMENTED", "permission":"never covert listening"},
+    {"source":"remote_agent", "candidate":"authenticated, lease-scoped call with exact receiver ID and receipt", "state":"NOT_IMPLEMENTED", "permission":"separate issued capability for each effect"}
+  ],
+  "rails": ["DEVICE_EVENT_NE_EXECUTION_AUTHORITY", "ADDRESSABLE_NE_BROADCAST", "POINTER_NE_ACK", "FANOUT_NE_UNBOUNDED_SPEND", "PRESENCE_NE_CONSCIOUSNESS"]
+}
