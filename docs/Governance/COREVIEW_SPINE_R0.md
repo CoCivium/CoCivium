@@ -10,6 +10,8 @@
 
 **Important:** No new operating CoPanel fleet, auto-release authority, human reviewer, patent attorney, trade engine, OS mouse mapping, trusted site receiver or remote model adapter was created by publishing this plan.
 
+**Applied coverage example:** [CoPreCursor+ stage-by-stage review receipt](../../ai/review/coreview-spine-r0-coprecursor-example.json) identifies 3 bounded source/design/build PASS stages, 2 historic test-only stages, 2 partial stages, 2 HELD stages (Turtle and independent acceptance), and 2 non-applicable operational/retirement stages. This is a documentary audit, not a newly convened review panel or a first-use receiver ACK.
+
 ## Review is lifelong but proportionate
 
 Do **not** convene twelve committees whenever someone fixes a comma. Every object gets a minimal provenance, authority and status review. High-effect objects additionally require explicit domain-appropriate human/professional review, prior-art/copyright checks, reproducible test harnesses, independent recipient value and recovery. A missing review must be visible as HELD, not silently interpreted as PASS.
