@@ -12,6 +12,24 @@ CoCivium / CoAll is public R&D. This page is a living front door to the most use
 
 **EVO ALL BETTERS +** is an evidence-first working banner, not a claim of complete integration, deployment, or adoption. [Machine-readable benchmark history](ai/benchmark-evo.jsonl) retains PASS, FAIL, and HELD records with their proof boundaries.
 
+## CoSpiff+ / CoFrontEcology+ | Learn from adjacent ecosystems without cloning them
+
+### PASS · External constellation-pattern comparison, adoption still HELD
+
+A bounded public comparison on 2026-10-24 found a useful contrast in the current rUv/ruvnet ecosystem: problem-first entry points route visitors into distinct projects for orchestration, memory, sensing, portable execution, evaluation and human-facing experiments while preserving a shared open-source constellation and published metrics/provenance. Anthropic's current Claude Code guidance likewise separates persistent instructions, skills, subagents and hooks by when they load, context cost and authority rather than forcing every behavior into one monolithic surface.
+
+The reusable delta for CoCivium is **not** “copy those brands or architectures.” It is to benchmark whether specialist CoFronts, CoScaleBuffers and receiver-sized first-use routes improve comprehension and useful action while sharing one evidence/provenance substrate.
+
+Candidate **CoSpiff+** means receiver-visible polish that improves legibility, confidence, delight, accessibility and first-use success **without hiding evidence, authority boundaries, failure states or costs**.
+
+`SPIFF_NE_DECORATION_ONLY`  
+`POLISH_NE_TRUTH`  
+`SPECIALIST_FRONT_NE_SEPARATE_TRUTH`  
+`VENDOR_DELTA_NE_VENDOR_SUPERIORITY`  
+`ADOPTION_METRIC_NE_UNIQUE_HUMAN_COUNT`
+
+**Next test:** compare the existing 60-second default route with at least two specialist routes for one consenting first-time receiver. Measure time-to-first-useful-action, explanation accuracy, backtracking, source inspection, confusion points and willingness to continue. Preserve the losing variant and write the result to `ai/benchmark-evo.jsonl`.
+
 ## CoAttractorPull+ / CoCopy+ | First bounded receiver
 
 ### PASS · Offline resource-to-evidence capsule R0
