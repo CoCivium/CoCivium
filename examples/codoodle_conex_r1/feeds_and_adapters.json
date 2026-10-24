@@ -1,0 +1,23 @@
+{
+  "schema": "CoDoodle.CoNex.ResearchAndProviderRoutes.R1",
+  "release_state": "PUBLIC_CANDIDATE_ZERO_LIVE_ADAPTERS",
+  "default_route": "DETERMINISTIC_LOCAL",
+  "privacy": "PUBLIC_SYNTHETIC_ONLY",
+  "provider_adapters": [
+    {"name":"DETERMINISTIC_LOCAL","availability":"IMPLEMENTED_NO_MODEL","credential_state":"NOT_REQUIRED","calls_allowed":0},
+    {"name":"OLLAMA_LOCAL","availability":"HELD_X2_RUNTIME","credential_state":"NOT_PROBED","calls_allowed":0},
+    {"name":"CLAUDE_API","availability":"HELD_USER_OWNED_AUTH","credential_state":"NOT_PROBED","calls_allowed":0,"integration_ref":"https://platform.claude.com/docs/en/api/overview","requirements":["explicit principal consent","API key in secure vault, not Git","per-task budget and spend cap","rate-limit handling","receiver-origin readproof"]},
+    {"name":"OPENAI_COMPATIBLE","availability":"HELD_UNQUALIFIED_ENDPOINT","credential_state":"NOT_PROBED","calls_allowed":0},
+    {"name":"PI_ADAPTER","availability":"HELD_UNVERIFIED_ADAPTER","credential_state":"NOT_PROBED","calls_allowed":0}
+  ],
+  "research_feeds": [
+    {"lane":"ET","name":"NASA Exoplanet Archive TAP","url":"https://exoplanetarchive.ipac.caltech.edu/docs/TAP/usingTAP.html","kind":"ASTRONOMY_DATA_SERVICE","connected":false,"claims_allowed":"CANDIDATE_CHARACTERIZATION_NOT_ET_DETECTION","falsifiers":["instrument calibration","target selection bias","non-technological explanations"]},
+    {"lane":"ET","name":"Berkeley Breakthrough Listen data and tutorials","url":"https://seti.berkeley.edu/listen/data.html","kind":"PUBLIC_SCIENCE_ARCHIVE","connected":false,"claims_allowed":"HYPOTHESIS_ONLY","falsifiers":["terrestrial radio interference","off-source control","instrument artifacts","no independent replication"]},
+    {"lane":"ET","name":"IAA/SETI 2026 detection principles","url":"https://www.seti.org/research/seti-101/protocols-for-an-eti-signal-detection/","kind":"SCIENTIFIC_REPLICATION_AND_REPORTING_PROTOCOL","connected":false,"claims_allowed":"REVIEW_STANDARD_ONLY"},
+    {"lane":"G_D","name":"Philosophical hypothesis register","url":null,"kind":"INTERPRETIVE_NONEMPIRICAL","connected":false,"claims_allowed":"INTERPRETATIONS_QUESTIONS_ONLY","constraint":"Do not assert any detected supernatural or divine entity; only separately defined falsifiable empirical statements may enter an empirical lane."},
+    {"lane":"CIV2_STORY","name":"Synthkind story and constitutional scenarios","url":null,"kind":"SPECULATIVE_NARRATIVE","connected":false,"claims_allowed":"STORY_ONLY","constraint":"Unverified primary Declaration is not quoted, attributed or promoted to current law/canon."}
+  ],
+  "receiver_ack": false,
+  "external_calls": 0,
+  "no_coex": true
+}
