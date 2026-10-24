@@ -40,6 +40,20 @@ Candidate **CoSpiff+** means receiver-visible polish that improves legibility, c
 
 **Next test:** compare the existing 60-second default route with at least two specialist routes for one consenting first-time receiver. Measure time-to-first-useful-action, explanation accuracy, backtracking, source inspection, confusion points and willingness to continue. Preserve the losing variant and write the result to `ai/benchmark-evo.jsonl`.
 
+## CoFleet+ | Human-time acceleration
+
+### PASS · Operating contract; multi-device runtime HELD
+
+The [CoFleet+ Human-Time Acceleration R0 contract](docs/Operations/COFLEET_HUMAN_TIME_ACCELERATION_R0_20261024.md) changes the optimization target from feature breadth to **minimum calendar time to a useful, trustworthy CoCivium presence on each authorized device class**.
+
+A device only counts as `MVC_PRESENT` after identity, visible ingress, currentness, stop/disable, one useful action, restart/recovery proof, privacy/authority boundary and receipt. Device lanes should qualify in parallel; **X2 being blocked must not stall the fleet**.
+
+Current runtime remains **HELD**: X2's remote observer is offline and no fresh two-device MVC_PRESENT proof exists.
+
+`CALENDAR_DELAY_IS_A_COST`  
+`X2_BLOCKED_NE_FLEET_BLOCKED`  
+`DEVICE_A_PASS_NE_DEVICE_B_PASS`
+
 ## CoEvoAll+ R1 | Largest paths + bounded AutoCycle
 
 ### PASS · Public architecture contract; runtime AutoCycle HELD
