@@ -1,5 +1,7 @@
 # CoCivium ⊂ Trust Together
 
+**New here? Start with one simple, proof-linked task:** [CoCivium in 60 seconds](START_HERE.md). The custom-domain front door is being verified; this GitHub entry is source-controlled, not a claim of independent audience uptake.
+
 > [!IMPORTANT]
 > **Public R&D / pre-launch transition:** CoCivium is moving from mostly private prototyping toward a public demo / pre-launch phase. Repositories, terms, interfaces, and machine-readable projections are being reorganized. Expect **StrawBe+** work-in-progress objects, explicit nonclaims, and superseded prototypes. **Public does not mean validated, finished, endorsed, or release-ready.** See [PRELAUNCH.md](PRELAUNCH.md).
 
