@@ -1,5 +1,7 @@
 # CoGoAll Evergreen Blast R0
 
+**Civ2-to-Civ3 boundary gap map R0:** [Human-readable advisory matrix](docs/Strategy/CIV2_CIV3_BOUNDARY_GAPMAP_R0.md) and [machine-readable candidate gates](ai/strategy/civ2-civ3-boundary-gapmap-r0.json) compare today's bounded evidence with a proposed mature Civ2+ state and speculative non-coercive Civ3+ tests. This is **not** a canonical civilization definition, proof of external contact, or a live release certification.
+
 **Review before fireworks:** [Review before fireworks](docs/Governance/COREVIEW_SPINE_R0.md) binds eleven lifecycle stages to source/prior-art tests, CoTurtle challenges, risk-appropriate human panels, external receiver proof and recovery. [Machine rule](ai/review/coreview-spine-r0.json) and [honest CoPreCursor example](ai/review/coreview-spine-r0-coprecursor-example.json) are on main. These are an advisory contract and documentary coverage audit, **not** a universally enforced panel or new product release. The central moustache remains visual art; no physical mouse remapping. Independent first-use and off-GitHub recovery remain HELD.
 
 **Survival before spectacle:** [CoSpiff+ survivability and fireworks gates](docs/Strategy/COSPIFF_FIREWORKS_SURVIVABILITY_R1.md) and its [14-gate machine scorecard](ai/resilience/cospiff-fireworks-r1.json) record what has actually passed and what is still missing. Public R&D is evidenced; independent adoption, off-provider recovery and public fireworks are HELD. No mass broadcasts or live worker expansion are implied.
