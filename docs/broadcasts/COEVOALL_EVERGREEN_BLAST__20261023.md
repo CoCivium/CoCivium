@@ -173,3 +173,18 @@ Exact private Library evidence is now bound for CoPhoenix R0. `CoPhoenix_R0_Cold
 A separate CoEvoAll Pulse qualification at 2026-10-24T11:31:43Z did not rerun those 26 tests. It freshly verified the outer archive against the sibling sidecar, observed 15 archive members with no path traversal or symlinks, verified the embedded manifest, and verified all 13 pinned payload members. It classifies the Library objects as LANDED while receiver pickup, CoStead custody, independent offsite custody, and independent cold-start/readback remain UNKNOWN.
 
 The next material proof remains one exact replay on a separately powered authorized receiver with archive hash, cold-start evidence and source-bound receiver readback. Preserve PORTABLE_ARCHIVE_NE_INDEPENDENT_FAILURE_DOMAIN, OFFLINE_COLD_START_NE_DISASTER_RECOVERY, LIBRARY_SIDECAR_NE_INDEPENDENT_AUTHENTICITY_ANCHOR, and NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF.
+
+
+## 2026-10-24 | CoInputFabric+ / CoInBetween+ / Human-time urgency
+
+Fresh human observation: the Perixx keyboard is again working normally on X2. At the same observation window, the authorized Desktop Commander observer path still reports X2 Offline. Preserve DEVICE_WORKING_NE_OBSERVER_PATH_WORKING and OBSERVER_PATH_OFFLINE_NE_DEVICE_DEAD.
+
+Input should evolve from isolated button bindings into a shared CoInputFabric+. Treat keyboard, mouse, touch, pen, controller, clipboard, focus, hover, dwell, timing, spatial position and other authorized OS-exposed input events as typed signals into one contextual resolver. Include not only discrete events but bounded CoInBetween+ candidates such as inter-key timing, pauses, hover duration, pointer trajectory, chord timing, focus transitions and idle intervals when useful. These signals may improve prediction, accessibility, workflow compression and context selection, but they do not imply intent, identity, diagnosis, hidden profiling or effect authority.
+
+Candidate relation families include CoIn+, CoOut+, CoIO+, CoInBetween+, CoInv+/CoInver+/CoInversion+ for complementary, reverse, omitted, negative-space and counterfactual views. Preserve NAME_NE_CANON, INVERSION_NE_TRUTH, ABSENCE_NE_NEGATION, BETWEEN_SIGNAL_NE_INTENT, PREDICTION_NE_AUTHORIZATION and CONTEXT_NE_PERMISSION.
+
+Mouse and thumb controls may act as high-density contextual agitators: one gesture may capture a rich CoCopyBundle+, expose multiple candidate projections/transforms/destinations, wake relevant dormant relations, and fan out bounded read-only or local reversible work before fan-in. The physical control remains a trigger surface, not an authority source.
+
+Human-time urgency is now a first-class election factor. Prefer candidates that reduce elapsed wall-clock time to useful, recoverable capability, manual touches, critical-path delay and waiting-on-human while preserving proof, rollback and authority. EVERGREEN_NE_SLOW; LONG_HORIZON_NE_NO_URGENCY; VIRTUAL_PARALLELITY_NE_WALL_CLOCK_PROGRESS.
+
+Dialogue and UI projections may increasingly use relational glyphs and symbols such as >, <, ↔, ⇄, →, ←, ∆, ∑, ∈, ∉, ⊂, ⊃, ⊕, ⊗, ≠, ≈, ⟂ and others where they improve comprehension. Every glyph should remain context-explained, accessible, text-equivalent and non-authoritative; visual density must not outrun human readability.
