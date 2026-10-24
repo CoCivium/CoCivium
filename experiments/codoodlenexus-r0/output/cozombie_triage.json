@@ -1,0 +1,62 @@
+{
+  "actual_device_observations": 0,
+  "agents_restarted": 0,
+  "assessments": [
+    {
+      "assessment": "RECENT_ACTIVITY_OBSERVED",
+      "automatic_wake": false,
+      "lease_overwritten": false,
+      "next_safe_action": "Observe only; recent heartbeat does not prove progress",
+      "note": "Input is a supplied observation; no live X2/provider inspection performed.",
+      "process_killed": false,
+      "receiver_ack": "NOT_VERIFIED",
+      "session_id": "synthetic-recent"
+    },
+    {
+      "assessment": "SUSPECTED_STALL",
+      "automatic_wake": false,
+      "lease_overwritten": false,
+      "next_safe_action": "Verify owner independently, then consider supervised recovery",
+      "note": "Input is a supplied observation; no live X2/provider inspection performed.",
+      "process_killed": false,
+      "receiver_ack": "NOT_VERIFIED",
+      "session_id": "synthetic-unknown-owner"
+    },
+    {
+      "assessment": "MANUAL_RECLAIM_CANDIDATE",
+      "automatic_wake": false,
+      "lease_overwritten": false,
+      "next_safe_action": "Supervisor must confirm owner death and compare exact checkpoint",
+      "note": "Input is a supplied observation; no live X2/provider inspection performed.",
+      "process_killed": false,
+      "receiver_ack": "NOT_VERIFIED",
+      "session_id": "synthetic-owner-confirmed-dead"
+    },
+    {
+      "assessment": "BLOCKED_REVOKED",
+      "automatic_wake": false,
+      "lease_overwritten": false,
+      "next_safe_action": "Keep suspended; require a new explicit grant",
+      "note": "Input is a supplied observation; no live X2/provider inspection performed.",
+      "process_killed": false,
+      "receiver_ack": "NOT_VERIFIED",
+      "session_id": "synthetic-revoked"
+    },
+    {
+      "assessment": "HELD_RATE_LIMIT",
+      "automatic_wake": false,
+      "lease_overwritten": false,
+      "next_safe_action": "Respect provider cooldown; prefer safe unrelated local work",
+      "note": "Input is a supplied observation; no live X2/provider inspection performed.",
+      "process_killed": false,
+      "receiver_ack": "NOT_VERIFIED",
+      "session_id": "synthetic-rate-limit"
+    }
+  ],
+  "nonclaims": [
+    "SUPPLIED_SNAPSHOT_NE_LIVE_PROCESS",
+    "STALE_HEARTBEAT_NE_DEAD_WORKER",
+    "RESTART_CANDIDATE_NE_AUTHORITY"
+  ],
+  "schema": "CoZombie.ReadOnlyTriage.R0"
+}
