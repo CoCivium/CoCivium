@@ -1,0 +1,274 @@
+{
+  "source": {
+    "source_id": "github:CoCivium/CoCivium:issue:181:comment:6268716355",
+    "source_copy_sha256": "1a98fb476ee1d64377b18baad2a4405ee8e312ef095bbef9db29a17c9459c18c",
+    "updated_at": "2026-10-19T13:45:20Z",
+    "source_url": "https://github.com/CoCivium/CoCivium/issues/181#issuecomment-6268716355"
+  },
+  "views": {
+    "COMAP": {
+      "schema": "CoMap.CandidateProjection.R2",
+      "surface": "COMAP",
+      "source_id": "github:CoCivium/CoCivium:issue:181:comment:6268716355",
+      "source_copy_sha256": "1a98fb476ee1d64377b18baad2a4405ee8e312ef095bbef9db29a17c9459c18c",
+      "source_currentness": "DATED_SNAPSHOT_NOT_LIVE",
+      "rendered_relations": [
+        {
+          "edge_id": "REL_COVIA_COORB",
+          "from": "CoVIA+",
+          "to": "CoOrb+",
+          "relation_state": "DOCUMENTED_DESIGN_CANDIDATE",
+          "epistemic": "PROPOSED",
+          "privacy": "PUBLIC",
+          "evidence_excerpt": "CoOrb+ can be the low-attention",
+          "source_id": "github:CoCivium/CoCivium:issue:181:comment:6268716355",
+          "source_copy_sha256": "1a98fb476ee1d64377b18baad2a4405ee8e312ef095bbef9db29a17c9459c18c",
+          "observation": "SOURCE_DOCUMENT_ONLY_NOT_LIVE"
+        },
+        {
+          "edge_id": "REL_ORB_MAP",
+          "from": "CoOrb+",
+          "to": "CoMap+",
+          "relation_state": "DOCUMENTED_DESIGN_CANDIDATE",
+          "epistemic": "PROPOSED",
+          "privacy": "PUBLIC",
+          "evidence_excerpt": "quick expand into CoPop/CoPanel/CoMap",
+          "source_id": "github:CoCivium/CoCivium:issue:181:comment:6268716355",
+          "source_copy_sha256": "1a98fb476ee1d64377b18baad2a4405ee8e312ef095bbef9db29a17c9459c18c",
+          "observation": "SOURCE_DOCUMENT_ONLY_NOT_LIVE"
+        },
+        {
+          "edge_id": "REL_INPUT_FLOW",
+          "from": "RAW_INPUT",
+          "to": "QUALIFIED_INTENT",
+          "relation_state": "DOCUMENTED_DESIGN_CANDIDATE",
+          "epistemic": "PROPOSED",
+          "privacy": "PUBLIC",
+          "evidence_excerpt": "RAW_INPUT -> DRAFT_SIGNAL",
+          "source_id": "github:CoCivium/CoCivium:issue:181:comment:6268716355",
+          "source_copy_sha256": "1a98fb476ee1d64377b18baad2a4405ee8e312ef095bbef9db29a17c9459c18c",
+          "observation": "SOURCE_DOCUMENT_ONLY_NOT_LIVE"
+        }
+      ],
+      "notspace_relations": [
+        {
+          "id": "NS_ACK",
+          "state": "NOT_OBSERVED",
+          "meaning": "No exact-object receiver readproof in this canary",
+          "render_live_edge": false
+        },
+        {
+          "id": "NS_PRIVATE",
+          "state": "INTENTIONALLY_PRIVATE",
+          "meaning": "Privacy boundary; no endpoints exposed",
+          "render_live_edge": false
+        },
+        {
+          "id": "NS_UNKNOWN",
+          "state": "UNKNOWN",
+          "meaning": "No evidence for a link is not evidence of absence",
+          "render_live_edge": false
+        },
+        {
+          "id": "NS_FUTURE",
+          "state": "PREDICTED_ONLY",
+          "meaning": "Forecast/hypothesis held as preview; not current state",
+          "render_live_edge": false
+        }
+      ],
+      "receiver_pickup": false,
+      "effect_authority": "NONE",
+      "source_kind": "PUBLIC_GITHUB_COMMENT",
+      "external_effects": 0,
+      "provider_calls": 0
+    },
+    "COORB": {
+      "schema": "CoMap.CandidateProjection.R2",
+      "surface": "COORB",
+      "source_id": "github:CoCivium/CoCivium:issue:181:comment:6268716355",
+      "source_copy_sha256": "1a98fb476ee1d64377b18baad2a4405ee8e312ef095bbef9db29a17c9459c18c",
+      "source_currentness": "DATED_SNAPSHOT_NOT_LIVE",
+      "rendered_relations": [
+        {
+          "edge_id": "REL_COVIA_COORB",
+          "from": "CoVIA+",
+          "to": "CoOrb+",
+          "relation_state": "DOCUMENTED_DESIGN_CANDIDATE",
+          "epistemic": "PROPOSED",
+          "privacy": "PUBLIC",
+          "evidence_excerpt": "CoOrb+ can be the low-attention",
+          "source_id": "github:CoCivium/CoCivium:issue:181:comment:6268716355",
+          "source_copy_sha256": "1a98fb476ee1d64377b18baad2a4405ee8e312ef095bbef9db29a17c9459c18c",
+          "observation": "SOURCE_DOCUMENT_ONLY_NOT_LIVE"
+        },
+        {
+          "edge_id": "REL_ORB_MAP",
+          "from": "CoOrb+",
+          "to": "CoMap+",
+          "relation_state": "DOCUMENTED_DESIGN_CANDIDATE",
+          "epistemic": "PROPOSED",
+          "privacy": "PUBLIC",
+          "evidence_excerpt": "quick expand into CoPop/CoPanel/CoMap",
+          "source_id": "github:CoCivium/CoCivium:issue:181:comment:6268716355",
+          "source_copy_sha256": "1a98fb476ee1d64377b18baad2a4405ee8e312ef095bbef9db29a17c9459c18c",
+          "observation": "SOURCE_DOCUMENT_ONLY_NOT_LIVE"
+        },
+        {
+          "edge_id": "REL_INPUT_FLOW",
+          "from": "RAW_INPUT",
+          "to": "QUALIFIED_INTENT",
+          "relation_state": "DOCUMENTED_DESIGN_CANDIDATE",
+          "epistemic": "PROPOSED",
+          "privacy": "PUBLIC",
+          "evidence_excerpt": "RAW_INPUT -> DRAFT_SIGNAL",
+          "source_id": "github:CoCivium/CoCivium:issue:181:comment:6268716355",
+          "source_copy_sha256": "1a98fb476ee1d64377b18baad2a4405ee8e312ef095bbef9db29a17c9459c18c",
+          "observation": "SOURCE_DOCUMENT_ONLY_NOT_LIVE"
+        }
+      ],
+      "notspace_relations": [
+        {
+          "id": "NS_ACK",
+          "state": "NOT_OBSERVED",
+          "meaning": "No exact-object receiver readproof in this canary",
+          "render_live_edge": false
+        },
+        {
+          "id": "NS_PRIVATE",
+          "state": "INTENTIONALLY_PRIVATE",
+          "meaning": "Privacy boundary; no endpoints exposed",
+          "render_live_edge": false
+        },
+        {
+          "id": "NS_UNKNOWN",
+          "state": "UNKNOWN",
+          "meaning": "No evidence for a link is not evidence of absence",
+          "render_live_edge": false
+        },
+        {
+          "id": "NS_FUTURE",
+          "state": "PREDICTED_ONLY",
+          "meaning": "Forecast/hypothesis held as preview; not current state",
+          "render_live_edge": false
+        }
+      ],
+      "receiver_pickup": false,
+      "effect_authority": "NONE",
+      "source_kind": "PUBLIC_GITHUB_COMMENT",
+      "external_effects": 0,
+      "provider_calls": 0
+    },
+    "TEXT_TWIN": {
+      "schema": "CoMap.CandidateProjection.R2",
+      "surface": "TEXT_TWIN",
+      "source_id": "github:CoCivium/CoCivium:issue:181:comment:6268716355",
+      "source_copy_sha256": "1a98fb476ee1d64377b18baad2a4405ee8e312ef095bbef9db29a17c9459c18c",
+      "source_currentness": "DATED_SNAPSHOT_NOT_LIVE",
+      "rendered_relations": [
+        {
+          "edge_id": "REL_COVIA_COORB",
+          "from": "CoVIA+",
+          "to": "CoOrb+",
+          "relation_state": "DOCUMENTED_DESIGN_CANDIDATE",
+          "epistemic": "PROPOSED",
+          "privacy": "PUBLIC",
+          "evidence_excerpt": "CoOrb+ can be the low-attention",
+          "source_id": "github:CoCivium/CoCivium:issue:181:comment:6268716355",
+          "source_copy_sha256": "1a98fb476ee1d64377b18baad2a4405ee8e312ef095bbef9db29a17c9459c18c",
+          "observation": "SOURCE_DOCUMENT_ONLY_NOT_LIVE"
+        },
+        {
+          "edge_id": "REL_ORB_MAP",
+          "from": "CoOrb+",
+          "to": "CoMap+",
+          "relation_state": "DOCUMENTED_DESIGN_CANDIDATE",
+          "epistemic": "PROPOSED",
+          "privacy": "PUBLIC",
+          "evidence_excerpt": "quick expand into CoPop/CoPanel/CoMap",
+          "source_id": "github:CoCivium/CoCivium:issue:181:comment:6268716355",
+          "source_copy_sha256": "1a98fb476ee1d64377b18baad2a4405ee8e312ef095bbef9db29a17c9459c18c",
+          "observation": "SOURCE_DOCUMENT_ONLY_NOT_LIVE"
+        },
+        {
+          "edge_id": "REL_INPUT_FLOW",
+          "from": "RAW_INPUT",
+          "to": "QUALIFIED_INTENT",
+          "relation_state": "DOCUMENTED_DESIGN_CANDIDATE",
+          "epistemic": "PROPOSED",
+          "privacy": "PUBLIC",
+          "evidence_excerpt": "RAW_INPUT -> DRAFT_SIGNAL",
+          "source_id": "github:CoCivium/CoCivium:issue:181:comment:6268716355",
+          "source_copy_sha256": "1a98fb476ee1d64377b18baad2a4405ee8e312ef095bbef9db29a17c9459c18c",
+          "observation": "SOURCE_DOCUMENT_ONLY_NOT_LIVE"
+        }
+      ],
+      "notspace_relations": [
+        {
+          "id": "NS_ACK",
+          "state": "NOT_OBSERVED",
+          "meaning": "No exact-object receiver readproof in this canary",
+          "render_live_edge": false
+        },
+        {
+          "id": "NS_PRIVATE",
+          "state": "INTENTIONALLY_PRIVATE",
+          "meaning": "Privacy boundary; no endpoints exposed",
+          "render_live_edge": false
+        },
+        {
+          "id": "NS_UNKNOWN",
+          "state": "UNKNOWN",
+          "meaning": "No evidence for a link is not evidence of absence",
+          "render_live_edge": false
+        },
+        {
+          "id": "NS_FUTURE",
+          "state": "PREDICTED_ONLY",
+          "meaning": "Forecast/hypothesis held as preview; not current state",
+          "render_live_edge": false
+        }
+      ],
+      "receiver_pickup": false,
+      "effect_authority": "NONE",
+      "source_kind": "PUBLIC_GITHUB_COMMENT",
+      "external_effects": 0,
+      "provider_calls": 0
+    },
+    "AMBIENT": {
+      "schema": "CoMap.CandidateProjection.R2",
+      "surface": "AMBIENT",
+      "source_id": "github:CoCivium/CoCivium:issue:181:comment:6268716355",
+      "source_copy_sha256": "1a98fb476ee1d64377b18baad2a4405ee8e312ef095bbef9db29a17c9459c18c",
+      "headline": "CoVIA / CoOrb proposal | not live",
+      "edge_count": 3,
+      "receiver_pickup": false,
+      "effect_authority": "NONE",
+      "private_endpoints": [],
+      "external_effects": 0,
+      "provider_calls": 0
+    }
+  },
+  "tests": {
+    "SOURCE_ID_BOUND": true,
+    "SOURCE_TIME_BOUND": true,
+    "SOURCE_PUBLIC_BOUND": true,
+    "SOURCE_BODY_RETAINED": true,
+    "SOURCE_ANCHOR_REL_COVIA_COORB": true,
+    "SOURCE_ANCHOR_REL_ORB_MAP": true,
+    "SOURCE_ANCHOR_REL_INPUT_FLOW": true,
+    "MAP_ORB_TEXT_ID_PARITY": true,
+    "SOURCE_HASH_SAME_ALL_VIEWS": true,
+    "EDGES_GROUNDED_IN_SOURCE": true,
+    "DESIGN_NE_RUNTIME": true,
+    "NOTSPACE_NONEDGE": true,
+    "UNKNOWN_NOT_NEGATED": true,
+    "PRIVATE_ENDPOINTS_HIDDEN": true,
+    "PREDICTION_NE_INTENT": true,
+    "RECEIVER_ACK_HELD": true,
+    "NO_OUTBOUND_OR_PROVIDER_EFFECTS": true,
+    "WRONG_SOURCE_REJECTED": true,
+    "RELATION_COUNT_BOUND": true,
+    "FORGED_LIVE_EDGE_REJECTED": true
+  },
+  "coverage": "ONE_PUBLIC_GITHUB_COMMENT"
+}

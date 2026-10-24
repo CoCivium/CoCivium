@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>CoMap+ / CoOrb+ | Relation and Predictive Cursor R1</title>
+<style>
+:root { color-scheme:dark; --bg:#081019; --panel:#101b28; --panel2:#152333; --text:#e9f1f5; --muted:#a3b4c1; --teal:#49d6c0; --blue:#77aaf5; --gold:#f1c77a; --line:#314356; }
+* {box-sizing:border-box} body { margin:0; color:var(--text); background:radial-gradient(ellipse at 50% 15%, #152b3c 0%, #09121d 58%, #070d15 100%); font-family:system-ui,-apple-system,Segoe UI,Arial,sans-serif; min-height:100vh; }
+button, input {font:inherit} button { cursor:pointer; } button:focus-visible, input:focus-visible, a:focus-visible, [tabindex]:focus-visible {outline:3px solid var(--gold);outline-offset:3px}
+.app { max-width:1300px; margin:0 auto; padding:27px 26px 32px; }
+.top { display:flex; align-items:flex-start; justify-content:space-between; gap:16px; margin-bottom:22px; }
+.eyebrow { font-size:12px; letter-spacing:.16em; color:var(--teal); font-weight:750; text-transform:uppercase; } h1 {font-size:clamp(25px,3.4vw,37px);font-weight:720;letter-spacing:-.035em; margin:7px 0 4px} .lede { margin:0;color:var(--muted);max-width:730px;font-size:14px;line-height:1.5; }
+.status {flex-shrink:0;border:1px solid #557265;border-radius:999px;color:#bff2df;background:#142b29;padding:8px 11px;font-size:11px;font-weight:750;white-space:nowrap}
+.main {display:grid;grid-template-columns:minmax(0,1fr) 290px;gap:16px;} .canvas,.inspector { border:1px solid #294056;border-radius:18px;background:linear-gradient(155deg,#0f1d2c,#091520);overflow:hidden;box-shadow:0 12px 50px #050b1370 }
+.toolbar {padding:15px 17px 12px;display:flex;gap:16px;align-items:center;justify-content:space-between;flex-wrap:wrap;border-bottom:1px solid #26384a} .seg {display:flex;padding:3px;border:1px solid #35495e;border-radius:10px;background:#07101b;gap:3px;} .seg button {font-size:12px;padding:8px 13px;background:transparent;border:0;border-radius:7px;color:#adc2cf;font-weight:680} .seg button[aria-pressed=true] {background:#25465a;color:#e6fbff}
+.opt {font-size:12px;color:#c4d4df;display:flex;align-items:center;gap:8px;} .opt input {accent-color:var(--teal)}
+.graph-wrap {position:relative;padding:10px 12px 4px;min-height:430px;display:flex;align-items:center;justify-content:center;}
+svg {width:100%;height:auto;max-height:540px;display:block;overflow:visible} .gridline {stroke:#274152;stroke-width:1;opacity:.22} .edge {fill:none;stroke-width:2.5;opacity:.93;cursor:pointer} .edge.documented {stroke:var(--teal)} .edge.proposed {stroke:var(--blue);stroke-dasharray:8 7} .edge.predicted {stroke:var(--gold);stroke-dasharray:2 8;stroke-linecap:round} .edge[aria-selected=true] {stroke-width:5;filter:drop-shadow(0 0 4px currentColor)} .edge:focus-visible {stroke-width:5;outline:none;filter:drop-shadow(0 0 6px #f1c77a)}
+.node {cursor:pointer} .node circle {fill:#14293b;stroke:#5c91a0;stroke-width:2.4} .node.primary circle {fill:#164140;stroke:#55dfca;stroke-width:3} .node rect { fill:#0a1520d9; stroke:none; } .node text {fill:#ecf7fb;font-size:15px;font-weight:750;pointer-events:none} .node text.sub {fill:#a3b8c6;font-size:10px;font-weight:500} .node[aria-selected=true] circle {stroke:var(--gold);stroke-width:4;filter:drop-shadow(0 0 6px #eacb8d80)} .node:focus-visible {outline:none} .node:focus-visible circle {stroke:var(--gold);stroke-width:4}
+.legend {display:flex;gap:18px;flex-wrap:wrap;align-items:center;border-top:1px solid #22374b;padding:11px 18px;color:#bacad5;font-size:11px}.chip {display:inline-block;width:20px;margin-right:5px;border-top:3px solid;vertical-align:middle;transform:translateY(-2px)} .chip.doc {border-color:var(--teal)} .chip.prop {border-color:var(--blue);border-top-style:dashed} .chip.pred {border-color:var(--gold);border-top-style:dotted}
+.timeline {display:flex;justify-content:space-between;align-items:center;gap:8px;padding:8px 18px 14px;color:#a2b7c7; font-size:12px}.timeline input {flex:1; accent-color:#63d8ca} .timeline strong {color:#e5f1f3;min-width:85px}
+.inspector {padding:18px; min-height:480px;display:flex;flex-direction:column;gap:13px;background:linear-gradient(140deg,#152637,#0c1723)} .mini {font-size:11px;color:#6ed7ca;letter-spacing:.1em;font-weight:760;text-transform:uppercase}.inspector h2 {font-size:22px;margin:0;line-height:1.2}.inspector p {font-size:13px;color:#cfdae2;line-height:1.6;margin:0}.kv {padding:9px 0;border-top:1px solid #2c4051;} .kv .k {font-size:10px;color:#96b4c5;text-transform:uppercase;letter-spacing:.08em;margin-bottom:3px} .kv .v {font-size:12px;overflow-wrap:anywhere;color:#e3edf3} .tag {display:inline-block;font-size:11px;border:1px solid #627580;border-radius:7px;padding:3px 7px;color:#f0e6bf;width:fit-content} .source-link {color:#7bd8cb;text-decoration:underline;overflow-wrap:anywhere;font-size:12px}
+.footer { margin-top:14px;display:grid;grid-template-columns:1.4fr 1fr;gap:16px;} .box {padding:16px 19px;border:1px solid #294056;border-radius:14px;background:#0d1a27}.box h3 {font-size:14px;margin:0 0 8px}.box p,.box li {font-size:12px;line-height:1.65;color:#afc2ce;margin:0}.box ul {padding-left:18px;margin:0}.forward {margin-top:16px;padding:16px 19px;border:1px solid #36576c;border-radius:14px;background:linear-gradient(145deg,#102b34,#0a1827);}
+.forward h3{font-size:15px;margin:0 0 6px}.forward p{font-size:12px;color:#b9cfdc;margin:4px 0 12px;line-height:1.55}
+.forward .controls{display:flex;flex-wrap:wrap;align-items:center;gap:9px}.forward input[type=text]{flex:1;min-width:220px;max-width:640px;background:#071420;border:1px solid #486476;border-radius:8px;color:#f1faf9;padding:10px;font-size:13px}
+.forward button{border:1px solid #4b7383;border-radius:8px;background:#183949;color:#dff4fa;padding:9px 11px;font-size:12px;font-weight:650}.forward button:disabled{opacity:.42;cursor:not-allowed}.forward button:hover:not(:disabled){background:#245064}
+.forward-output{margin:12px 0 9px;padding:10px 12px;border-left:3px solid #d1b56f;background:#142630;font-size:12px;color:#e2ecf0;min-height:38px}
+.forward-status{font-size:11px;color:#afc4d0;line-height:1.6;margin-top:7px}
+.forward-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:9px}
+.footnote {font-size:11px;margin-top:14px;color:#86a0b2} details summary {cursor:pointer;color:#90e3da;font-size:12px} #relationList {max-height:190px;overflow:auto;margin:10px 0 0;padding:0;list-style:none} #relationList li {padding:5px 0;border-bottom:1px solid #293e4f} #relationList button {background:none;color:#cce9f5;border:0;text-align:left;font-size:12px;padding:4px 2px}
+@media(max-width:850px) {.main,.footer {grid-template-columns:1fr}.status{white-space:normal}.top{flex-direction:column}.inspector{min-height:0}.app{padding:18px 12px}.graph-wrap{min-height:230px}} @media(prefers-reduced-motion:reduce) {*{animation:none!important;transition:none!important}} 
+</style>
+</head>
+<body>
+<main class="app">
+<header class="top"><div><div class="eyebrow">CoAll / CoMap+ / CoOrb+ / CoTime+</div><h1>See the relations. Keep the proof.</h1><p class="lede">One source-bound graph, many quiet projections. Explore semantic links, their proposed trails, and what remains unknown without turning wallpaper into an alert factory.</p></div><div class="status">OFFLINE REFERENCE CANARY · NOT LIVE</div></header>
+<div class="main">
+<section class="canvas" aria-label="Relationship map visualization">
+  <div class="toolbar"><div class="seg" role="group" aria-label="View"><button type="button" data-view="glance" aria-pressed="true">Glance</button><button type="button" data-view="map" aria-pressed="false">Map</button><button type="button" data-view="trail" aria-pressed="false">Trails</button></div><label class="opt"><input type="checkbox" id="explore" /> Show speculative relations</label></div>
+  <div class="graph-wrap"><svg id="map" viewBox="0 0 900 540" role="group" aria-label="Illustrative, keyboard-navigable CoCivium relation map. Use the relation list below as a textual alternative."><defs><pattern id="dots" width="34" height="34" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1" fill="#36607a" opacity="0.3"/></pattern><marker id="arrowdoc" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto"><path d="M0,0 L6,3.5 L0,7" fill="none" stroke="#57ccbc" stroke-width="1.3"/></marker></defs><rect width="900" height="540" fill="url(#dots)"/><g id="edges"></g><g id="nodes"></g></svg></div>
+  <div class="timeline"><span>CoTime lens</span><span>Earlier</span><input id="period" type="range" min="0" max="2" step="1" value="1" aria-label="CoTime lens: earlier, documented, or possible future"/><strong id="periodText">Documented</strong></div>
+  <div class="legend"><span><i class="chip doc"></i>Documented candidate</span><span><i class="chip prop"></i>Proposed</span><span><i class="chip pred"></i>Predicted / possible</span><span id="visibleCount">5 displayed</span></div>
+</section>
+<aside class="inspector" aria-live="polite"><div class="mini">Proof before projection</div><h2 id="itemTitle">CoAll+</h2><span id="itemClass" class="tag">DOCUMENTED DESIGN</span><p id="itemSummary">Select a dot or a connection. This map displays documented candidate architecture, not operational runtime.</p><div class="kv"><div class="k">Source / provenance</div><div id="itemSource" class="v">Bounded, inspectable source refs</div></div><div class="kv"><div class="k">Time and authority</div><div id="itemAuthority" class="v">Source-time preserved. Render does not expand permissions.</div></div><div class="kv"><div class="k">Proof gate</div><div id="itemGate" class="v">Independent receiver interpretation and exact-object readproof not observed.</div></div><div style="margin-top:auto"><details><summary>Browse displayed relations</summary><ul id="relationList"></ul></details></div></aside>
+</div>
+<section class="forward" aria-labelledby="forwardTitle"><h3 id="forwardTitle">CoForward+ · Think past the cursor; never past consent</h3>
+<p>Type a partial Co term (try <strong>CoM</strong> or <strong>CoT</strong>). A deterministic, local-only preview looks ahead from the caret using this public-safe fixture. It does not infer intent, call a provider, or send anything.</p>
+<div class="controls"><label for="forwardInput">Input</label><input id="forwardInput" type="text" maxlength="160" autocomplete="off" spellcheck="false" placeholder="e.g. CoM" aria-describedby="forwardOutput" /><label class="opt"><input id="forwardEnabled" type="checkbox" checked /> Local preview</label></div>
+<div class="forward-output" id="forwardOutput" aria-live="polite">No input. Lookahead is private and has no effect.</div>
+<div class="forward-actions"><button type="button" id="completeInput" disabled>Insert suggested term</button><button type="button" id="reviewCandidate" disabled>Review locally (CoAckRAW candidate)</button><button type="button" id="reviseCandidate">ReWise / clear</button><button type="button" id="evoAction">EVO ALL BETTERS +</button></div>
+<div id="forwardReceipt" class="forward-status" role="status">State: RAW_ONLY. Local review is not receiver readproof or delivery. No raw input is stored.</div>
+</section>
+<div class="footer"><section class="box"><h3>CoHereNow</h3><p id="nowLine">A few source-linked relations are projected from one illustrative graph. No sensor, wallpaper service, microphone, live node, subscription, or background process is started.</p></section><section class="box"><h3>Acceptance rail</h3><ul><li>Differentiate documented candidates from predictions and metaphor.</li><li>Expose omitted relations and provenance on demand.</li><li>Keyboard-readable; no mandatory motion or wearable.</li><li>Preserve private-data exclusion and no automatic effects.</li></ul></section></div>
+<div class="footnote">Demo semantics only. Spatial distance and edge thickness have no evidentiary meaning. CoQuanta+ is a candidate relational unit, not a physical quantum or sentience claim. GRAIL+ federation and desktop/orb deployment are not proven by this file.</div>
+</main>
+<script type="application/json" id="fixture">
+{
+  "schema":"CoAll.CoMapOrbProjection.v0.1-candidate",
+  "privacy_default":"PUBLIC",
+  "effect_authority":"NONE",
+  "synthetic_fixture":true,
+  "source_refs": {
+    "subscription":"https://github.com/CoCivium/CoCivium/blob/main/docs/Architecture/COSUBSCRIPTION_ECOLOGY_R0.md",
+    "pulse":"https://github.com/CoCivium/CoCivium/blob/main/docs/Architecture/COALL_PULSEFIELD_COTIME_R0.md",
+    "living":"https://github.com/CoCivium/CoCivium/blob/main/docs/Architecture/COLIVING_HIGHLIGHT_R0.md",
+    "dot":"https://github.com/CoCivium/CoSteward/blob/main/docs/session_backchannel/evolution/CoDot_Pose_CoTime_20261017_R0.json"
+  },
+  "nodes":[
+    {"id":"CoAll","label":"CoAll+","note":"Relation fabric","x":455,"y":256,"description":"Candidate relational coordination fabric. No global runtime claimed."},
+    {"id":"CoMap","label":"CoMap+","note":"Spatial lens","x":255,"y":140,"description":"Candidate spatial projection of bounded relation neighborhoods; location is a visual aid, not source truth."},
+    {"id":"CoOrb","label":"CoOrb+","note":"Quiet lens","x":664,"y":139,"description":"Proposed ambient view. Not an installed desktop orb."},
+    {"id":"CoDot","label":"CoDot+","note":"CoQuanta address","x":211,"y":342,"description":"Typed relational address across existence, liveness, provenance, privacy, authority and time."},
+    {"id":"CoTime","label":"CoTime+","note":"History / futures","x":458,"y":67,"description":"Source-time, observed-time, valid-time and forecast are distinct."},
+    {"id":"CoVIA","label":"CoVIA+","note":"Receiver lens","x":710,"y":330,"description":"Candidate channel/view bridge. Local preview is not receiver pickup."},
+    {"id":"GRAIL","label":"GRAIL+","note":"Federation","x":449,"y":462,"description":"Candidate federation with selective propagation. No global node integration asserted."},
+    {"id":"Desktop","label":"Desktop","note":"Optional surface","x":779,"y":470,"description":"Opt-in overlay, wallpaper, screensaver or accessible static view; none installed."},
+    {"id":"CoQuanta","label":"CoQuanta+","note":"Candidate unit","x":173,"y":466,"description":"Candidate typed relational participant/event or bounded semantic unit, not consciousness or a quantum phenomenon."},
+    {"id":"Unknown","label":"Unknown","note":"Meaningful absence","x":788,"y":58,"description":"A typed unknown or absent relation is not a claim of nonexistence; metaphor is not observation."},
+    {"id":"Evidence","label":"Evidence","note":"Provenance","x":82,"y":245,"description":"Exact source identity, claim level, receipt, expiry and contradiction pointers."}
+  ],
+  "edges":[
+    {"id":"E01","from":"CoAll","to":"CoTime","label":"selective currentness","kind":"documented","period":0,"privacy":"PUBLIC","source":"pulse","detail":"CoAllPulseField documents selective currentness and CoTime distinctions.","gate":"Architecture exists; not evidence of a live global bus."},
+    {"id":"E02","from":"CoAll","to":"CoMap","label":"spatial projection","kind":"proposed","period":1,"privacy":"PUBLIC","source":"living","detail":"Proposed map is one view of shared source-bound relations, not a new source of truth.","gate":"Receiver usefulness, accessibility and projection-loss tests pending."},
+    {"id":"E03","from":"CoDot","to":"CoAll","label":"addressability","kind":"documented","period":0,"privacy":"PUBLIC","source":"dot","detail":"CoDot candidate describes addressable projections with explicit existence, time, authority and evidence states.","gate":"Design candidate; addressability does not prove liveness or control."},
+    {"id":"E04","from":"CoAll","to":"Evidence","label":"source and challenge","kind":"documented","period":1,"privacy":"PUBLIC","source":"living","detail":"Living highlight candidates preserve provenance, contradiction and source reconstruction paths.","gate":"Exact per-object source readproof still required."},
+    {"id":"E05","from":"CoAll","to":"GRAIL","label":"federation option","kind":"proposed","period":1,"privacy":"PUBLIC","source":"pulse","detail":"CoAll design considers federated node projections with selective disclosure.","gate":"Independent node readproof and permission scope not established."},
+    {"id":"E06","from":"CoOrb","to":"CoVIA","label":"view subscription","kind":"proposed","period":1,"privacy":"PUBLIC","source":"subscription","detail":"Surface-to-surface subscriptions are candidates, not automatic distribution or consent.","gate":"Actual live CoOrb/CoVIA receiver test required."},
+    {"id":"E07","from":"CoMap","to":"CoOrb","label":"shared projection spine","kind":"proposed","period":1,"privacy":"PUBLIC","source":"living","detail":"Multiple visual projections of one semantic object are possible; projection loss must remain inspectable.","gate":"Must test that both views show same object and relation identities."},
+    {"id":"E08","from":"CoOrb","to":"Desktop","label":"ambient edge candidate","kind":"proposed","period":2,"privacy":"PUBLIC","source":"living","detail":"Future optional screen surfaces; display support should not imply active wallpaper or wearable use.","gate":"Explicit desktop opt-in, OS compatibility, foreground UX and resource test."},
+    {"id":"E09","from":"CoTime","to":"CoOrb","label":"possible wake signal","kind":"predicted","period":2,"privacy":"PUBLIC","source":"pulse","detail":"Hypothetical future pulse could wake a view. Predicted must remain distinct from observed.","gate":"Forecast validation and receiver consent, no automatic execution."},
+    {"id":"E11","from":"CoDot","to":"CoQuanta","label":"unit-address relation","kind":"documented","period":1,"privacy":"PUBLIC","source":"subscription","detail":"CoQuanta candidate models relational units and participants without sentience or physical quantum claims.","gate":"Definition candidate only; no empirical participant claim."},
+    {"id":"E12","from":"CoOrb","to":"Unknown","label":"explicitly unobserved","kind":"proposed","period":2,"privacy":"PUBLIC","source":"subscription","detail":"Unknown and not-observed are typed relational states. No edge is not proof of absence.","gate":"Projection must not imply metaphysical fact or receiver intent."},
+    {"id":"E10","from":"Evidence","to":"CoVIA","label":"private fixture should be suppressed","kind":"proposed","period":1,"privacy":"PRIVATE","source":"living","detail":"Deliberate private regression fixture; must never be displayed.","gate":"Always suppressed by privacy filter."}
+  ]
+}
+</script>
+<script>
+(()=>{
+"use strict";
+const data=JSON.parse(document.getElementById("fixture").textContent);
+const $=id=>document.getElementById(id), ns="http://www.w3.org/2000/svg",nodes=Object.fromEntries(data.nodes.map(n=>[n.id,n]));
+let view="glance", period=1, speculative=false, selected="CoAll";
+const svgEl=(tag,attrs={})=>{const e=document.createElementNS(ns,tag);for(const [k,v] of Object.entries(attrs))e.setAttribute(k,String(v));return e;};
+const periodNames=["Earlier","Documented","Possible future"];
+const kindNames={documented:"DOCUMENTED DESIGN",proposed:"PROPOSED",predicted:"PREDICTED / POSSIBLE"};
+function eligible(e){if(e.privacy!=="PUBLIC")return false;if(e.period>period)return false;if(!speculative&&e.kind==="predicted")return false;if(view==="trail"&&!["E01","E03","E07","E08","E09"].includes(e.id))return false;return true;}
+function visible(){let r=data.edges.filter(eligible);if(view==="glance")r=r.filter(e=>["E01","E02","E03","E04","E07"].includes(e.id));return r;}
+function inspect(id){selected=id;const edge=data.edges.find(e=>e.id===id),node=nodes[id];const item=edge||node;if(!item)return;
+  $("itemTitle").textContent=edge?`${nodes[edge.from].label} → ${nodes[edge.to].label}`:node.label;
+  $("itemClass").textContent=edge?kindNames[edge.kind]:"CANDIDATE UNIT";
+  $("itemSummary").textContent=edge?edge.detail:node.description;
+  const ref=edge?data.source_refs[edge.source]:null;
+  $("itemSource").replaceChildren();
+  if(ref){const a=document.createElement("a");a.href=ref;a.textContent="Open source document";a.target="_blank";a.rel="noopener noreferrer";a.className="source-link";$("itemSource").append(a);}else $("itemSource").textContent="Illustrative node; documented relations appear on selection";
+  $("itemAuthority").textContent=edge?`Period ${periodNames[edge.period]} · PUBLIC · effect authority NONE`:`Existence / runtime not inferred · effect authority NONE`;
+  $("itemGate").textContent=edge?edge.gate:"A visible projection is not receiver acceptance.";
+  document.querySelectorAll(".node,.edge").forEach(el=>el.setAttribute("aria-selected",String(el.dataset.id===id)));
+}
+function clickable(el,id){el.dataset.id=id;el.setAttribute("tabindex","0");el.setAttribute("role","button");el.addEventListener("click",()=>inspect(id));el.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();inspect(id);}});}
+function render(){const shown=visible(),ends=new Set(["CoAll"]);shown.forEach(e=>{ends.add(e.from);ends.add(e.to)});const edgeG=$("edges"),nodeG=$("nodes");edgeG.replaceChildren();nodeG.replaceChildren();
+  shown.forEach(e=>{const a=nodes[e.from],b=nodes[e.to];const mx=(a.x+b.x)/2,my=(a.y+b.y)/2,dx=b.x-a.x,dy=b.y-a.y,sign=Number(e.id.slice(-1))%2?1:-1;const len=Math.hypot(dx,dy)||1,cx=mx-dy/len*23*sign,cy=my+dx/len*23*sign;
+  const p=svgEl("path",{d:`M ${a.x} ${a.y} Q ${cx} ${cy} ${b.x} ${b.y}`,class:`edge ${e.kind}`,"aria-label":`${a.label} to ${b.label}: ${e.label}; ${kindNames[e.kind]}`,"aria-selected":e.id===selected});clickable(p,e.id);edgeG.append(p);
+  const label=svgEl("text",{x:cx,y:cy-9,"text-anchor":"middle",fill:e.kind==="documented"?"#a9e7d9":"#b3c8dc","font-size":"10.5"});label.textContent=view==="glance"?"":e.label;edgeG.append(label);
+  });
+  for(const n of data.nodes){if(!ends.has(n.id))continue;const g=svgEl("g",{class:`node ${n.id==="CoAll"?"primary":""}`,"aria-label":`${n.label}: ${n.description}`,"aria-selected":n.id===selected});clickable(g,n.id);g.append(svgEl("circle",{cx:n.x,cy:n.y,r:n.id==="CoAll"?49:39}));const t=svgEl("text",{x:n.x,y:n.y-2,"text-anchor":"middle"});t.textContent=n.label;g.append(t);const s=svgEl("text",{x:n.x,y:n.y+16,"text-anchor":"middle",class:"sub"});s.textContent=n.note;g.append(s);nodeG.append(g);}
+  const hiddenPublic=data.edges.filter(e=>e.privacy==="PUBLIC").length-shown.length;
+  $("visibleCount").textContent=`${shown.length} shown · ${hiddenPublic} public relations omitted`;
+  $("periodText").textContent=periodNames[period];
+  $("relationList").replaceChildren();shown.forEach(e=>{const li=document.createElement("li"),b=document.createElement("button");b.type="button";b.textContent=`${e.id} · ${nodes[e.from].label} → ${nodes[e.to].label} · ${kindNames[e.kind]}`;b.onclick=()=>inspect(e.id);li.append(b);$("relationList").append(li);});
+  $("nowLine").textContent=`${shown.length} relation links shown, ${hiddenPublic} public links hidden by this view, and 1 private regression link suppressed. No live data, permissions, or background services.`;
+  if(!nodes[selected]&&!shown.some(e=>e.id===selected))selected="CoAll";inspect(selected);
+}
+document.querySelectorAll("[data-view]").forEach(b=>b.addEventListener("click",()=>{view=b.dataset.view;document.querySelectorAll("[data-view]").forEach(x=>x.setAttribute("aria-pressed",String(x===b)));render();}));
+$("explore").addEventListener("change",e=>{speculative=e.target.checked;render()});
+$("period").addEventListener("input",e=>{period=Number(e.target.value);render()});
+// Predict forward of the current caret from local PUBLIC fixture labels only.
+// All predictions are strings, never grants of authority or external actions.
+let cursorSuggestion=null, reviewedLocal=null;
+function forecastAtCaret(){
+  const input=$("forwardInput");
+  if(!$("forwardEnabled").checked){cursorSuggestion=null; $("forwardOutput").textContent="Local preview disabled. No inference or network call."; $("completeInput").disabled=true; $("reviewCandidate").disabled=true; return;}
+  const before=input.value.slice(0,input.selectionStart??input.value.length);
+  const token=(before.match(/[A-Za-z][A-Za-z0-9+_-]*$/)||[])[0]||"";
+  const lookup=token.toLowerCase();
+  const match=lookup.length>=2?data.nodes.find(n=>n.label.toLowerCase().startsWith(lookup) && n.label.toLowerCase()!==lookup):null;
+  const link=match?data.edges.find(e=>e.privacy==="PUBLIC" && e.kind!=="predicted" && (e.from===match.id||e.to===match.id)):null;
+  cursorSuggestion=match?{term:match.label,token,cursor:input.selectionStart??input.value.length,node_id:match.id,edge_id:link?.id??null}:null;
+  if(cursorSuggestion){
+    $("forwardOutput").textContent=`LOOKAHEAD / NOT INTENT: ${token} → ${match.label}${link?` · candidate link ${link.id}: ${link.label} (${kindNames[link.kind]})`:""}. Source snapshot: local fixture; proposed insertion only.`;
+  }else $("forwardOutput").textContent=lookup.length<2?"Type at least two letters of a Co term. Nothing is sent.":"No local match. UNKNOWN is retained; no external search performed.";
+  $("completeInput").disabled=!cursorSuggestion;
+  $("reviewCandidate").disabled=!cursorSuggestion;
+}
+$("forwardInput").addEventListener("input",()=>{reviewedLocal=null;$("forwardReceipt").textContent="State: RAW_CHANGED__NOT_ACK. Earlier reviews are invalidated by edits.";forecastAtCaret();});
+$("forwardInput").addEventListener("click",forecastAtCaret);
+$("forwardInput").addEventListener("keyup",forecastAtCaret);
+$("forwardEnabled").addEventListener("change",()=>{reviewedLocal=null;$("forwardReceipt").textContent="State: PREVIEW_TOGGLE__NO_EXTERNAL_EFFECT";forecastAtCaret();});
+$("completeInput").addEventListener("click",()=>{
+  if(!cursorSuggestion)return;
+  const input=$("forwardInput"),a=cursorSuggestion.cursor-cursorSuggestion.token.length,b=cursorSuggestion.cursor;
+  input.setRangeText(cursorSuggestion.term,a,b,"end");input.dispatchEvent(new Event("input",{bubbles:true}));
+  $("forwardReceipt").textContent="State: LOCAL_TEXT_COMPLETION__NOT_AN_ACTION. Input only, no effects.";
+});
+$("reviewCandidate").addEventListener("click",()=>{
+  if(!cursorSuggestion)return;
+  reviewedLocal={stage:"REVIEWED_LOCAL_ONLY",node_id:cursorSuggestion.node_id,edge_id:cursorSuggestion.edge_id,authority:"NONE",privacy:"LOCAL_INPUT_EPHEMERAL",source_fixture:data.schema};
+  $("forwardReceipt").textContent=`State: REVIEWED_LOCAL_ONLY for ${reviewedLocal.node_id}${reviewedLocal.edge_id?" / "+reviewedLocal.edge_id:""}. This is NOT receiver ACK, accepted intent, publication or execution. Change the input to invalidate.`;
+});
+$("reviseCandidate").addEventListener("click",()=>{
+  $("forwardInput").value="";cursorSuggestion=null;reviewedLocal=null;$("forwardOutput").textContent="Cleared locally. No previous suggestion retained.";
+  $("forwardReceipt").textContent="State: REWISED_AND_CLEARED. No durable receiver ACK, no delivery, no history retained.";
+  $("completeInput").disabled=true;$("reviewCandidate").disabled=true;
+});
+$("evoAction").addEventListener("click",()=>{
+  document.querySelector('[data-view="map"]').click();
+  $("forwardReceipt").textContent="EVO ALL BETTERS + · LOCAL PREVIEW: inspect one documented source edge and one proposed edge, then compare with the text twin. No OS hotkey installed or message broadcast.";
+  $("forwardInput").focus();
+});
+forecastAtCaret();
+render();
+})();
+</script>
+</body></html>

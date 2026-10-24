@@ -1,0 +1,74 @@
+{
+  "schema": "CoAll.CoMapBroadcastManifest.v0.1-candidate",
+  "created_utc": "2026-10-23T18:45:04Z",
+  "object_id": "CoMap_CoOrb_ForwardCursor_R1_20261023",
+  "intent": "Public-safe discovery of an offline relation-graph and local predictive-cursor prototype; receiver-specific delivery is independent.",
+  "privacy": "PUBLIC_SAFE_SYNTHETIC_ONLY",
+  "authority": "PUBLISH_BOUNDED_PUBLIC_RND_CANDIDATE",
+  "publication_state": "LOCAL_CANDIDATE_PENDING_GITHUB_DRAFT",
+  "subscribed_delivery": false,
+  "source_lineage": [
+    "CoCivium/CoCivium:PR166 RD1 design",
+    "CoCivium/CoCivium:docs/Architecture/COSUBSCRIPTION_ECOLOGY_R0.md",
+    "CoCivium/CoCivium:docs/Architecture/COALL_PULSEFIELD_COTIME_R0.md",
+    "CoCivium/CoSteward:docs/session_backchannel/evolution/CoDot_Pose_CoTime_20261017_R0.json"
+  ],
+  "channels": [
+    {
+      "name": "GitHub",
+      "route": "existing draft PR #166",
+      "status": "PENDING_PROOF_OF_COMMIT",
+      "scope": "PUBLIC_REPO_CANDIDATE",
+      "receiver_readproof": null
+    },
+    {
+      "name": "CoVIA/CoOrb",
+      "route": "existing R0 contract/preview only",
+      "status": "NOT_SENT_NO_QUALIFIED_LIVE_RECEIVER",
+      "receiver_readproof": null
+    },
+    {
+      "name": "CoNodeMesh/.nodes",
+      "route": "consumer-elected subscription/feed",
+      "status": "DISCOVERY_CANDIDATE_NOT_PUSHED",
+      "receiver_readproof": null
+    },
+    {
+      "name": "sites/.sites",
+      "route": "static file or subscription later",
+      "status": "NOT_DEPLOYED",
+      "receiver_readproof": null
+    },
+    {
+      "name": "Gmail",
+      "route": "targeted only; avoid repeated or unsolicited blasts",
+      "status": "NOT_SENT_NO_SCOPED_RECIPIENT",
+      "receiver_readproof": null
+    },
+    {
+      "name": "Desktop/CoBar/CoOrbWare",
+      "route": "optional OS layer with user permission and resource test",
+      "status": "NOT_INSTALLED",
+      "receiver_readproof": null
+    }
+  ],
+  "hard_gates": [
+    "NO_PRIVATE_BROADCAST",
+    "NO_COVIA_ACK_INFERENCE",
+    "NO_KEYSTROKE_COLLECTION",
+    "NO_OS_OVERLAY_WITHOUT_OPT_IN",
+    "NO_ACCOUNT_CLOSURE_WITHOUT_PORTABILITY_PARITY_AND_USER_AUTHORITY"
+  ],
+  "receiver_intent": "SUBSCRIBE_BY_ROLE_AND_PRIVACY_SCOPE_NOT_BROADCAST_ALL_CONTENT",
+  "next_proof": "One public source event -> 3 projections -> exact-event receiver readproof",
+  "nonclaims": [
+    "NO_REALTIME_GLOBAL_MAP",
+    "NO_BACKGROUND_SERVICE",
+    "NO_INDEPENDENT_USER_ACCEPTANCE",
+    "NO_CANON",
+    "NO_RUNTIME",
+    "NO_COEX",
+    "NO_NODE_PICKUP",
+    "NO_GMAIL_SENT"
+  ]
+}
