@@ -1,0 +1,58 @@
+name: CoLens living-media R0 evidence gate
+on:
+  push:
+    paths:
+      - 'examples/colensmedia/**'
+      - 'docs/Architecture/COLIVING_HIGHLIGHT_R0.md'
+      - 'docs/Architecture/COMAP_COORB_COAHEAD_TEMPORAL_R0A_20261023.md'
+      - 'docs/Architecture/CORELATIONAL_UX_PREDICTIVE_INPUT_R0.md'
+      - 'docs/CoTheoryAll/costrawbe-r0/README.md'
+      - '.github/workflows/co-living-media-r0.yml'
+  pull_request:
+    paths:
+      - 'examples/colensmedia/**'
+      - 'docs/Architecture/COLIVING_HIGHLIGHT_R0.md'
+      - 'docs/Architecture/COMAP_COORB_COAHEAD_TEMPORAL_R0A_20261023.md'
+      - 'docs/Architecture/CORELATIONAL_UX_PREDICTIVE_INPUT_R0.md'
+      - 'docs/CoTheoryAll/costrawbe-r0/README.md'
+      - '.github/workflows/co-living-media-r0.yml'
+  schedule:
+    - cron: '37 10 * * *'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: colens-living-media-r0-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  evidence-only:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify source-backed browser view and pinned public donors
+        run: python3 -B examples/colensmedia/build.py --check --check-donors
+      - name: Positive and fail-closed negative regressions
+        run: python3 -B -m unittest discover -s examples/colensmedia/tests -p 'test_*.py' -v
+      - name: Generate machine evidence receipt, not promotion
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import hashlib, json, os, pathlib
+          root=pathlib.Path('examples/colensmedia')
+          obj=json.loads((root/'manifest.json').read_text())
+          sha=hashlib.sha256((root/'index.html').read_bytes()).hexdigest()
+          rec={'schema':'CoAll.BenchmarkEvo.CoLensMedia.R0','status':'PASS','test':'exact_source_lenses_and_donors',
+               'work_id':obj['work_id'],'html_sha256':sha,'runner':'GITHUB_ACTIONS_READ_ONLY',
+               'source_blob_pinning':'PASS','video_production':'NOT_CLAIMED','hardware':'NOT_TESTED',
+               'independent_receiver_ack':False,'nonclaims':obj['nonclaims']}
+          dest=pathlib.Path(os.environ['RUNNER_TEMP'])/'benchmark_evo.jsonl'
+          dest.write_text(json.dumps(rec,sort_keys=True)+'\n')
+          print('CI_EVENT',rec['status'],rec['work_id'],sha)
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: colens-living-media-r0-${{ github.run_id }}
+          path: ${{ runner.temp }}/benchmark_evo.jsonl
+          if-no-files-found: error
+          retention-days: 7
