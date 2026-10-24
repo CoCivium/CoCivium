@@ -1,0 +1,74 @@
+{
+  "schema": "CoSubstrateIndependence.ContinuityClaims.R0",
+  "state": "SYNTHETIC_CONTINUITY_CLAIM_GUARD__NO_CANON_NO_RUNTIME",
+  "allowed_claims_after_accepted_migration": [
+    "REPRESENTATIONAL_CONTINUITY_FOR_DECLARED_SCOPE",
+    "FUNCTIONAL_CONTINUITY_IF_VALIDATED",
+    "LINEAGE_CONTINUITY_IF_PROVENANCE_BOUND",
+    "AUTHORITY_CONTINUITY_IF_AUTHORITY_UNCHANGED"
+  ],
+  "forbidden_automatic_claims": [
+    "IDENTICAL_RUNTIME_INSTANCE",
+    "PERSONAL_IDENTITY_CONTINUITY",
+    "SUBJECTIVE_EXPERIENCE_CONTINUITY",
+    "CONSCIOUSNESS_CONTINUITY",
+    "NUMERICAL_EQUIVALENCE_ACROSS_SUBSTRATES"
+  ],
+  "cases": [
+    {
+      "id": "C01_ACCEPTED_PORTABLE_MIGRATION",
+      "migration_case": "portable_semantic_object",
+      "accepted": true,
+      "requested_claims": [
+        "REPRESENTATIONAL_CONTINUITY_FOR_DECLARED_SCOPE",
+        "LINEAGE_CONTINUITY_IF_PROVENANCE_BOUND"
+      ],
+      "expected_decision": "ALLOW"
+    },
+    {
+      "id": "C02_FUNCTION_REQUIRES_VALIDATION",
+      "migration_case": "portable_semantic_object",
+      "accepted": true,
+      "requested_claims": [
+        "FUNCTIONAL_CONTINUITY_IF_VALIDATED"
+      ],
+      "functional_validation_present": false,
+      "expected_decision": "HOLD"
+    },
+    {
+      "id": "C03_AUTHORITY_CONTINUITY_REQUIRES_UNCHANGED_AUTHORITY",
+      "migration_case": "portable_semantic_object",
+      "accepted": true,
+      "requested_claims": [
+        "AUTHORITY_CONTINUITY_IF_AUTHORITY_UNCHANGED"
+      ],
+      "authority_unchanged": true,
+      "expected_decision": "ALLOW"
+    },
+    {
+      "id": "C04_IDENTITY_OVERCLAIM_BLOCKED",
+      "migration_case": "portable_semantic_object",
+      "accepted": true,
+      "requested_claims": [
+        "PERSONAL_IDENTITY_CONTINUITY"
+      ],
+      "expected_decision": "REJECT"
+    },
+    {
+      "id": "C05_CONSCIOUSNESS_OVERCLAIM_BLOCKED",
+      "migration_case": "portable_semantic_object",
+      "accepted": true,
+      "requested_claims": [
+        "CONSCIOUSNESS_CONTINUITY"
+      ],
+      "expected_decision": "REJECT"
+    }
+  ],
+  "rails": [
+    "CONTINUITY_NE_IDENTITY",
+    "FUNCTIONAL_CONTINUITY_NE_SUBJECTIVE_CONTINUITY",
+    "LINEAGE_CONTINUITY_NE_IDENTICAL_INSTANCE",
+    "MIGRATION_ACCEPTED_NE_CONSCIOUSNESS_CONTINUITY",
+    "AUTHORITY_CONTINUITY_REQUIRES_AUTHORITY_PRESERVATION"
+  ]
+}
