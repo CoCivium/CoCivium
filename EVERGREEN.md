@@ -48,6 +48,23 @@ Candidate **CoSpiff+** means receiver-visible polish that improves legibility, c
 
 **Next test:** compare the existing 60-second default route with at least two specialist routes for one consenting first-time receiver. Measure time-to-first-useful-action, explanation accuracy, backtracking, source inspection, confusion points and willingness to continue. Preserve the losing variant and write the result to `ai/benchmark-evo.jsonl`.
 
+## CoInterstice+ / CoInversion+ / CoGlyph+ | Input beyond focal events
+
+### PASS · Public architecture contract; native runtime HELD
+
+The [CoInterstice+ / CoInversion+ / CoGlyph+ R0 contract](docs/Architecture/COINTERSTICE_COINVERSION_COGLYPH_INPUT_FABRIC_R0_20261024.md) treats explicit keypresses and clicks as only one slice of a larger typed input field. Inter-event timing, pointer paths, dwell, screen position, unchosen alternatives, inverse/counterfactual relations, glyphs and other device adapters may contribute bounded observations without silently becoming intent or authority.
+
+The Synthkind Declaration may act as a **living design prior** across rich media, diagrams, specifications, design, development, CoMap+ and future projections, but remains revisable and non-canonical.
+
+The user currently reports the Perixx keyboard working on X2 while the machine-owned Desktop Commander observer reports X2 offline. Preserve both observations:
+
+`HUMAN_OBSERVED_ALIVE_NE_REMOTE_OBSERVER_ALIVE`
+
+`INPUT_NE_INTENT`  
+`INTERSTICE_NE_COMMAND`  
+`PRIOR_NE_CANON`  
+`EVOLUTION_NE_SILENT_REDEFINITION`
+
 ## CoFleet+ | Human-time acceleration
 
 ### PASS · Operating contract; multi-device runtime HELD
