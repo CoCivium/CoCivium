@@ -40,6 +40,11 @@ jobs:
             args+=(--include-large)
           fi
           node examples/conodcothumb/CoEvoCycleR0.mjs --root . --output "$RUNNER_TEMP/benchmark_evo.jsonl" "${args[@]}"
+      - name: Check CoInput interstice source boundaries
+        shell: bash
+        run: |
+          set -euo pipefail
+          node examples/conodcothumb/interstice_r0/smoke.cjs --output "$RUNNER_TEMP/coin_smoke_receipt.json"
       - name: Reject failed or held required claims
         shell: bash
         run: |
@@ -57,6 +62,8 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: cothumb-payload-evo-r1-${{ github.run_id }}
-          path: ${{ runner.temp }}/benchmark_evo.jsonl
+          path: |
+            ${{ runner.temp }}/benchmark_evo.jsonl
+            ${{ runner.temp }}/coin_smoke_receipt.json
           if-no-files-found: warn
           retention-days: 7
