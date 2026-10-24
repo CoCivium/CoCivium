@@ -188,3 +188,20 @@ Mouse and thumb controls may act as high-density contextual agitators: one gestu
 Human-time urgency is now a first-class election factor. Prefer candidates that reduce elapsed wall-clock time to useful, recoverable capability, manual touches, critical-path delay and waiting-on-human while preserving proof, rollback and authority. EVERGREEN_NE_SLOW; LONG_HORIZON_NE_NO_URGENCY; VIRTUAL_PARALLELITY_NE_WALL_CLOCK_PROGRESS.
 
 Dialogue and UI projections may increasingly use relational glyphs and symbols such as >, <, ↔, ⇄, →, ←, ∆, ∑, ∈, ∉, ⊂, ⊃, ⊕, ⊗, ≠, ≈, ⟂ and others where they improve comprehension. Every glyph should remain context-explained, accessible, text-equivalent and non-authoritative; visual density must not outrun human readability.
+
+
+## 2026-10-24 | CoDoodleEngine+ / CoNex+ experiment-launch semantics
+
+Dense human CoDoodles may be treated as seed programs rather than prose-only artifacts. Parse a doodle into typed candidate objects, relations, operators, inversions, observer lenses, time scopes, projections, unknowns, metaphoric/mythic frames, testable claims, falsifiers, render hints and resource needs. Generate large virtual candidate fields cheaply; dedupe and score before materializing any experiment. RANDOM_VARIATION_NE_NOVELTY, GENERATION_NE_VALIDATION, MANY_CANDIDATES_NE_MANY_LIVE_WORKERS.
+
+CoNex+ is a candidate nexus relation for places where many typed relations, transforms, observers, substrates, renders, histories, futures and resource paths meet. A nexus may host random or pseudorandom perturbation, counterfactual generation, inversion, scale shifts, observer swaps, time shifts, substrate swaps, representation rotations and story-role permutations. Randomness is for exploration, not authority. RANDOM_NE_UNBIASED, SURPRISE_NE_IMPORTANCE, NOVEL_NE_USEFUL.
+
+A CoDoodle launch may emit candidate families such as: semantic parse; relation graph; inverse/complement set; absent/negative-space set; observer-lens matrix; time/future branches; alternate substrate/render proposals; story/narrative variants; deterministic tests; adversarial falsifiers; accessibility projections; UI/glyph/render variants; resource-election candidates; and human-time critical-path estimates. Promote only candidates that survive relevance, dedupe, authority, privacy, evidence, resource and stop-condition checks.
+
+For Civ2+/beyond, ET, G_d, mythic/spiritual and other unusual story spaces, preserve explicit epistemic typing. Such frames may generate hypotheses, analogies, future stories, observer models and discriminating experiments; they do not become empirical facts through narrative richness, model agreement, visual vividness or repetition. STORY_NE_OBSERVATION, G_D_FRAME_NE_EXTERNAL_ENTITY, ET_SCENARIO_NE_CONTACT, SYMBOLIC_NE_CAUSAL, PROJECTED_FUTURE_NE_FORECAST.
+
+CoT+ / temporal projection should compare source-time, observed-time, valid-time, scenario-time, forecast-time and retrospective reinterpretation rather than flattening them. Candidate deltas should be scored prospectively where possible and later compared with observed outcomes to update priors.
+
+A useful default loop is: DOODLE -> PARSE -> TYPE -> EXPAND -> INVERT -> RANDOMLY_PERTURB_WITH_SEED -> DEDUPE -> SCORE -> ELECT -> SIMULATE/RENDER/TEST -> FAN-IN -> VERIFY -> UPDATE_PRIORS -> COMPACT -> SLEEP/WAKE. Every branch requires stop conditions and a bounded materialization budget. Prefer microsecond-scale candidate generation only where it reduces human wall-clock time to a useful discriminating test; throughput itself is not a success metric.
+
+All-diagram evolution remains source-bound and event-driven. Any important CoAll object may project through text, glyphs, diagrams, CoMap, CoOrb, rich media, accessible twins, observer-relative lenses, timelines, code/spec views or experimental renders. The underlying source identity, provenance, epistemic type, authority, privacy, currentness and projection-loss contract remain visible. RENDER_NE_SOURCE, VIVID_NE_TRUE, DAILY_CAPABLE_NE_DAILY_CHURN.
