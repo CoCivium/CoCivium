@@ -11,6 +11,23 @@ const a=html.indexOf("const isFrontier="),b=html.indexOf("function el(",a);
 assert(a>=0 && b>a,"approved pure helper section missing");
 const f=vm.runInNewContext(html.slice(a,b)+";({safeCapsule,filteredRecords,previewCandidate})",{records:resources});
 const tests=[
+["revoking frontier opt-in clears selected detail and disables stale copy",()=>{
+ const nodes=new Map();let writes=0;
+ function node(){return {value:'',checked:false,textContent:'',children:[],style:{},classList:{add(){},remove(){}},append(...x){this.children.push(...x)},replaceChildren(...x){this.children=x},setAttribute(){},addEventListener(){},scrollIntoView(){},focus(){},select(){}};}
+ const document={getElementById(id){if(!nodes.has(id))nodes.set(id,node());return nodes.get(id)},createElement:node};
+ document.getElementById('resources-data').textContent=JSON.stringify(resources);
+ const script=html.match(/<script>\s*([\s\S]*?)<\/script>/)[1];
+ const ctx=vm.createContext({document,navigator:{clipboard:{writeText(){writes++;return Promise.resolve()}}}});
+ vm.runInContext(script,ctx);
+ vm.runInContext("frontier.checked=true;selectRecord(records.find(isFrontier));frontier.checked=false;render();copySelected();",ctx);
+ assert.equal(vm.runInContext('selected',ctx),null);
+ assert.equal(document.getElementById('detail').children.length,0);
+ assert.equal(writes,0);
+ vm.runInContext("selectRecord(records[0]);query.value='no-such-resource';render();copySelected();",ctx);
+ assert.equal(vm.runInContext('selected',ctx),null);
+ assert.equal(writes,0);
+}],
+
 ["six curated entries",()=>assert.equal(resources.length,6)],
 ["four public entries by default",()=>assert.equal(f.filteredRecords("",false).length,4)],
 ["two speculative entries only by opt-in",()=>assert.equal(f.filteredRecords("",true).length,6)],
@@ -22,7 +39,7 @@ const tests=[
 ["public locators are bounded",()=>resources.filter(r=>r.scope==="PUBLIC_REFERENCE").forEach(r=>assert.match(r.locator,/^https:\/\/github\.com\/CoCivium\//))],
 ["no private paths or unpublished media identifiers",()=>assert(!/F30B633008F2|MX Master 4|[A-Z]:\\/.test(html))],
 ["no network fetch or active input hooks",()=>assert(!/\bfetch\s*\(|XMLHttpRequest|WebSocket|addEventListener\(['\"]keydown/.test(html))],
-["accessible moustache preview trigger",()=>assert(html.includes('id="thumbPreview"') && html.includes('aria-label="EVO ALL BETTERS: preview best matching resource, no copy or send"') && html.includes(".hero{grid-template-columns:1fr;text-align:center}"))],
+["accessible moustache preview trigger",()=>assert(html.includes('id="thumbPreview"') && html.includes('aria-label="EVO ALL BETTERS: preview first matching resource, no copy or send"') && html.includes(".hero{grid-template-columns:1fr;text-align:center}"))],
 ["preview picks an eligible CoAndrew pointer",()=>assert.equal(f.previewCandidate("CoAndrew",false).id,"public:coandrewfirst:r0")],
 ["preview cannot reveal speculative resources without opt-in",()=>assert.equal(f.previewCandidate("spirit",false),null)],
 ["explicit opt-in exposes speculative question, not an executable tool",()=>assert.equal(f.previewCandidate("spirit",true).authority,"NONE")],
@@ -34,3 +51,4 @@ const failures=[];
 for(const [name,check] of tests){try{check();process.stdout.write("PASS "+name+"\n");}catch(e){failures.push({name,error:e.message});process.stdout.write("FAIL "+name+": "+e.message+"\n");}}
 process.stdout.write(JSON.stringify({schema:"CoAttractorPull.PublicSmoke.v0.1",total:tests.length,passed:tests.length-failures.length,failed:failures.length,nonclaims:["TEST_NE_USER_ACCEPTANCE","NO_REMOTE_DISCOVERY","NO_ACTIVE_MODEL_INTEGRATION"]})+"\n");
 if(failures.length)process.exitCode=1;
+
