@@ -1,0 +1,30 @@
+name: CoThumb R1 bounded capsule smoke
+on:
+  push:
+    paths:
+      - 'scripts/CoThumbCoCopyR1.ps1'
+      - '.github/workflows/cothumb-cocopy-r1.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  synthetic-windows:
+    runs-on: windows-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - name: Self-test in disposable local CoFarm fixture
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $testRoot = Join-Path $env:RUNNER_TEMP 'CoFarm'
+          New-Item -ItemType Directory -Force -Path $testRoot | Out-Null
+          $output = & pwsh -NoProfile -File ./scripts/CoThumbCoCopyR1.ps1 -Mode SelfTest -CoFarmRoot $testRoot
+          if ($LASTEXITCODE -ne 0) { throw "Selftest exit code: $LASTEXITCODE" }
+          $last = $output | Select-Object -Last 1
+          $result = $last | ConvertFrom-Json
+          if ($result.state -ne 'PASS_SYNTHETIC_LOCAL' -or $result.mouse_binding -ne 'NOT_TESTED') { throw 'Synthetic self-test mismatch.' }
+          if (-not (Test-Path -LiteralPath $result.receipt)) { throw 'Missing local receipt.' }
+          $receipt = Get-Content -LiteralPath $result.receipt -Raw | ConvertFrom-Json
+          if ($receipt.state -ne 'PASS_LOCAL' -or $receipt.source_pass_count -ne 1) { throw 'Invalid local source proof.' }
+          Write-Output "PASS_COTHUMB_R1_SYNTHETIC_CAPSULE|$($result.run)|PROPOSED=$($result.proposals)"
