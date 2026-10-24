@@ -32,7 +32,10 @@ function Write-NewText([string]$path,[string]$text) {
     $bytes = $utf8.GetBytes($text)
     $file = [IO.File]::Open($path,[IO.FileMode]::CreateNew,[IO.FileAccess]::Write,[IO.FileShare]::None)
     try { $file.Write($bytes,0,$bytes.Length) } finally { $file.Dispose() }
-    if (-not [IO.File]::ReadAllBytes($path).AsSpan().SequenceEqual($bytes)) {
+    $readback = [IO.File]::ReadAllBytes($path)
+    $originalHash = [Convert]::ToHexString([Security.Cryptography.SHA256]::HashData($bytes))
+    $readbackHash = [Convert]::ToHexString([Security.Cryptography.SHA256]::HashData($readback))
+    if ($readback.Length -ne $bytes.Length -or $readbackHash -ne $originalHash) {
         throw 'HOLD: exact local file readback differs.'
     }
 }
@@ -61,7 +64,8 @@ function Lane-Plan([string]$kind) {
         SOURCE { @('STATIC_TEST','LICENSE_REVIEW','SECURITY_REVIEW') }
         default { @('FORMAT_REVIEW') }
     }
-    return @($base) + @($extra) | ForEach-Object {
+    $all = @($base) + @($extra)
+    return $all | ForEach-Object {
         [ordered]@{ lane = $_; state = 'PROPOSED_ONLY'; executed = $false; receiver_ack = $false }
     }
 }
@@ -103,6 +107,7 @@ function Process-Request([string]$path) {
             $entry.kind = $kind
             $entry.sha256 = $digest
             if ($request.mode -eq 'STAGE_BYTES') {
+                if ($budget -gt 2GB) { throw 'Aggregate staged-copy budget is 2 GiB.' }
                 if ($beforeLength -gt 2GB) { throw 'File exceeds explicit 2 GiB staging cap.' }
                 $dst = Join-Path $folder ('asset_' + ('{0:D2}' -f ($rows.Count+1)) + $f.Extension.ToLowerInvariant())
                 $inStream = [IO.File]::Open($f.FullName,[IO.FileMode]::Open,[IO.FileAccess]::Read,[IO.FileShare]::Read)
@@ -125,6 +130,8 @@ function Process-Request([string]$path) {
         $rows += $entry
     }
     $overall = if (@($rows | Where-Object { $_.state -eq 'FAIL' }).Count -eq 0) { 'PASS_LOCAL' } else { 'FAIL_OR_HELD' }
+    $proposalTotal = 0
+    foreach ($candidate in $plans) { $proposalTotal += @($candidate.proposed).Count }
     $capsule = [ordered]@{
         schema = 'CoThumb.CoCopyCapsule.R1'; run_id = Split-Path $folder -Leaf
         observed_utc = [DateTime]::UtcNow.ToString('o')
@@ -132,7 +139,7 @@ function Process-Request([string]$path) {
         mode = [string]$request.mode; selected_files = @($rows)
         mouse_context = $request.context
         proposed_lane_groups = @($plans)
-        proposal_count = (@($plans | ForEach-Object { @($_.proposed).Count } | Measure-Object -Sum).Sum)
+        proposal_count = $proposalTotal
         executed_derivative_lanes = 0; parallel_worker_ceiling = 1
         permissions = [ordered]@{ network = $false; external_send = $false; paste_into_app = $false; use_credentials = $false; alter_mouse_mapping = $false }
         receiver_ack = $false; CoStead_landed = $false; canon = $false; CoEx = $false
@@ -198,6 +205,7 @@ $script:wasDown = $false
 $script:activeJob = $null
 $script:lastRun = $null
 $script:context = [ordered]@{ kind='EXPLICIT_PICKER'; region='NOT_OBSERVED'; source='visible_ui'; stores_coordinates=$false }
+$script:scriptFile = $PSCommandPath
 function Make-Label([string]$txt,[int]$x,[int]$y,[int]$w,[int]$h) {
     $c = [Windows.Forms.Label]::new();$c.Text=$txt;$c.SetBounds($x,$y,$w,$h);$form.Controls.Add($c);return $c
 }
@@ -209,7 +217,7 @@ $selection = Make-Label 'No file selected. Choose or copy file(s) from Windows E
 $picker = Make-Button 'Choose file(s)' 15 106 145 34
 $clipboard = Make-Button 'Use copied files' 170 106 145 34
 $copyBytes = [Windows.Forms.CheckBox]::new()
-$copyBytes.Text='Stage actual bytes (up to 2 GiB/file, explicit approval)'
+$copyBytes.Text='Stage actual bytes (2 GiB total, explicit approval)'
 $copyBytes.SetBounds(15,153,650,26)
 $form.Controls.Add($copyBytes)
 $preview = Make-Label 'Default: hash source and save a PRIVATE pointer only. No file duplication.' 15 186 660 48
@@ -294,7 +302,7 @@ $submit.Add_Click({
     if ($script:chosen.Count -eq 0) { $status.Text='Choose one or more files first. No action taken.';return }
     $mode=if($copyBytes.Checked){'STAGE_BYTES'}else{'REFERENCE_ONLY'}
     if ($mode -eq 'STAGE_BYTES') {
-        $choice=[Windows.Forms.MessageBox]::Show($form,'Create private duplicate bytes under CoFarm? No external sends. Up to 2 GiB per selected file.','Explicit rich-media staging consent',[Windows.Forms.MessageBoxButtons]::YesNo,[Windows.Forms.MessageBoxIcon]::Question)
+        $choice=[Windows.Forms.MessageBox]::Show($form,'Create private duplicate bytes under CoFarm? No external sends. Up to 2 GiB total per gesture.','Explicit rich-media staging consent',[Windows.Forms.MessageBoxButtons]::YesNo,[Windows.Forms.MessageBoxIcon]::Question)
         if ($choice -ne [Windows.Forms.DialogResult]::Yes) { $status.Text='Staging cancelled; no source changed.';return }
     }
     $run=New-RunFolder
@@ -303,7 +311,7 @@ $submit.Add_Click({
     Save-NewJson $requestPath $request
     $script:lastRun=$run
     $folderButton.Enabled=$true
-    $script:activeJob=Start-Job -ScriptBlock { param($file,$r) & $file -Mode Worker -RequestFile $r } -ArgumentList $PSCommandPath,$requestPath
+    $script:activeJob=Start-Job -ScriptBlock { param($file,$r) & $file -Mode Worker -RequestFile $r } -ArgumentList $script:scriptFile,$requestPath
     $status.Text="Processing selected files locally in a bounded worker. Work ID: $(Split-Path $run -Leaf)"
 })
 $folderButton.Add_Click({
