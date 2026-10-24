@@ -47,6 +47,8 @@ The Perixx keyboard working on X2 is human-observed today, not proof of CoInput 
 
 ## CoPriMath GlyphRail R1 | 1,760 lazy descriptions, eight visible choices
 
+**DUPLICATE-FRONTEND FAN-IN HOLD (2026-10-24):** Fresh source readback uncovered the stronger **public-main** [CoContextRail+ R1](https://github.com/CoCivium/CoCivium/blob/main/examples/conodcothumb/context_rail_r1/README.md), GitHub README blob `16544a43f1ce2dc3495555b3fed066988d08f502`, JS blob `137dacbd7e323dc6cce07006ea2b003a91f0b61d`. It already provides 15 contexts × 17 questions × 18 relations × 9 lenses × 7 times × 8 surfaces = 2,313,360 **syntactic** descriptions, one default suggestion/up to seven opt-in, 91/91 pure tests and 50/50 extracted-HTML browser checks. Its native X2 acceptance remains HELD. **This smaller 1,760-address CoPriMath selector is *only* a comparative 20-glyph/typed-inverse/negative-test donor, not a proposed replacement frontend.** Do not merge a second runtime/selector unless a line-by-line differential review finds unique accepted semantics or fixtures, then integrate those into the existing CoContextRail and supersede duplication with source lineage intact. A second selector doesn't create a second independent reviewer or deployment.\n\n
+
 **Dependency-free pure Node 22 source**: [CoPriMathGlyphRailR1.mjs](CoPriMathGlyphRailR1.mjs) plus [tests](CoPriMathGlyphRailR1.test.mjs). This is an optional **structural rendering donor** for [CoMiddle R0](https://github.com/CoCivium/CoCivium/blob/main/docs/Architecture/COMIDDLE_COPRIMATH_GLYPHRAIL_R0_20261024.md), not a competing input controller or a system-wide device binding.
 
 - Twenty exact semantic glyph IDs with accessible labels, plain ASCII fallbacks and spoken descriptions.
