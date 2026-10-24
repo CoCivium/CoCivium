@@ -1,0 +1,296 @@
+{
+  "authority_nonclaims": {
+    "consensus_not_independence": true,
+    "github_push_not_coex": true,
+    "offsite_copy_not_restore": true,
+    "panel_seats_not_actors": true,
+    "personas_are_not_people": true,
+    "turtle_template_not_live_worker": true,
+    "worker_process_not_receiver": true
+  },
+  "lifecycle_state": "DESIGN_ONLY_NOT_ENFORCED_RUNTIME",
+  "measurements": {
+    "named_thresholds": [
+      "MEDIA_VIDEO_SIZE_GT_300KiB",
+      "THUMB_VALID_AND_EDITORIAL_PASS",
+      "FFPROBE_STREAM_VALID",
+      "FFMPEG_BLACKDETECT_ZERO",
+      "GITHUB_HTTP_200_LT_2S",
+      "GMAIL_PRIMARY_CONNECTOR_QUERY_LT_60S_NOT_DELIVERY",
+      "IDENTITY_LOGGED_NOT_AUTHENTICATED",
+      "PI_COMPAT_LT_2S_ONLY_WITH_AUTHORIZED_ENDPOINT",
+      "CLAUDE_CRED_PRESENCE_LT_1S_NOT_AUTH",
+      "OLLAMA_PACKET_PARSE_LT_3S_NOT_INFERENCE"
+    ],
+    "not_objective": "worker count, token count, model agreement, number of names, stars or hypothetical descriptors",
+    "objective": "verified receiver-value per bounded cost, privacy risk, proof debt and failure-domain independence",
+    "threshold_disposition": "Per-source, per-run; no historical PASS inherited as a new PASS"
+  },
+  "next_deed": "Obtain one consenting outsider-origin first-use task result, then separately one off-GitHub exact cold restore by a second steward.",
+  "nonclaims": [
+    "DISCOVERED_SET_IS_NOT_COMPLETE_HISTORY",
+    "GITHUB_SOURCE_NE_RECEIVER_ACK",
+    "HASHING_IS_NOT_SEMANTIC_INGESTION",
+    "LOCAL_IS_NOT_LANDED",
+    "NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE",
+    "NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF",
+    "PANEL_SEAT_NE_INDEPENDENT_REVIEWER",
+    "STATIC_POLICY_PASS_NE_RUNTIME_ENFORCEMENT",
+    "SYNTHETIC_TEST_NE_PUBLIC_RELEASE",
+    "VALIDATION_IS_NOT_ACCEPTANCE"
+  ],
+  "observed_date": "2026-10-24",
+  "per_task_review_policy": {
+    "extraordinary_claim": "Reuse the existing research-evidence extraordinary-claim gate with primary sources, independent corroboration, prior art, replication and prospective falsifiers",
+    "high_risk": "Human permission/safety/domain reviewer and rollback required before irreversible or external effects; absence blocks promotion",
+    "low_risk": "May run automated provenance and test review; panel seats are optional declarations until a signed real decision exists",
+    "normal": "Challenge and provenance evidence required; use independent evidence sources rather than counting model votes"
+  },
+  "risk_mode": "FAIL_CLOSED_WHEN_UNPROVEN",
+  "schema": "CoCivium.CoStageReview.Policy.R0",
+  "seats": [
+    "PROPOSAL",
+    "FORMAL_CHECK",
+    "EMPIRICAL_CHECK",
+    "CHALLENGE",
+    "PERSPECTIVE",
+    "PROVENANCE_CHECK",
+    "SYNTHESIS"
+  ],
+  "source_bindings": [
+    {
+      "git_blob_sha1": "40d1a5706ce7cead09d9c6a9a155bb57e4162d46",
+      "path": "ai/resilience/cospiff-fireworks-r1.json",
+      "role": "latest_inspected_resilience_scorecard"
+    },
+    {
+      "git_blob_sha1": "22959b58ae09b1ff47fad1c4f39944fd141c3ad5",
+      "path": "docs/Architecture/COROLE_SPACE_PREVIEW_R0.md",
+      "role": "seven_seat_panel_donor"
+    },
+    {
+      "git_blob_sha1": "a91d8de5b924ce318f2f886d168a75877272e0b9",
+      "path": "docs/Architecture/COEXPERIMENT_SPACE_TURTLES_R0.md",
+      "role": "review_recursion_and_experiment_donor"
+    },
+    {
+      "git_blob_sha1": "90cc15e8ef956c32a0a57452be82a3e3fa98fcd7",
+      "path": "docs/Strategy/COSPIFF_FIREWORKS_SURVIVABILITY_R1.md",
+      "role": "failure_safe_fireworks_predecessor"
+    }
+  ],
+  "stages": [
+    {
+      "next_proof": "Recheck one exact corpus and document an older or missing useful alternative",
+      "promotion_boundary": "HELD_UNTIL_EXTERNAL_EVIDENCE_AND_AUTHORITY",
+      "required_evidence": [
+        "PRIOR_WORK_REVIEW",
+        "NEGATIVE_RESULT_PRESERVATION",
+        "SOURCE_IDENTITY",
+        "BOUNDED_RELEVANT_PRIORS",
+        "ALTERNATIVES_AND_GAPS"
+      ],
+      "required_gates": [
+        "G01",
+        "G08"
+      ],
+      "review_seats": [
+        "PROVENANCE_CHECK"
+      ],
+      "stage": "DISCOVERY"
+    },
+    {
+      "next_proof": "Independent counterexample or domain-relevant prior-art result",
+      "promotion_boundary": "HELD_UNTIL_EXTERNAL_EVIDENCE_AND_AUTHORITY",
+      "required_evidence": [
+        "PRIOR_WORK_REVIEW",
+        "NEGATIVE_RESULT_PRESERVATION",
+        "FALSIFIABLE_PREDICTION",
+        "COUNTEREVIDENCE",
+        "EPISTEMIC_LABEL"
+      ],
+      "required_gates": [
+        "G01",
+        "G07"
+      ],
+      "review_seats": [
+        "PROPOSAL",
+        "CHALLENGE"
+      ],
+      "stage": "HYPOTHESIS"
+    },
+    {
+      "next_proof": "Consent and security/accessibility challenge on selected actual task",
+      "promotion_boundary": "HELD_UNTIL_EXTERNAL_EVIDENCE_AND_AUTHORITY",
+      "required_evidence": [
+        "PRIOR_WORK_REVIEW",
+        "NEGATIVE_RESULT_PRESERVATION",
+        "AUTHORITY_SCOPE",
+        "PRIVACY_RISK",
+        "ACCESSIBILITY",
+        "ROLLBACK_PATH"
+      ],
+      "required_gates": [
+        "G11",
+        "G13"
+      ],
+      "review_seats": [
+        "FORMAL_CHECK",
+        "PERSPECTIVE",
+        "CHALLENGE"
+      ],
+      "stage": "DESIGN"
+    },
+    {
+      "next_proof": "Second environment independently builds and checks rights",
+      "promotion_boundary": "HELD_UNTIL_EXTERNAL_EVIDENCE_AND_AUTHORITY",
+      "required_evidence": [
+        "PRIOR_WORK_REVIEW",
+        "NEGATIVE_RESULT_PRESERVATION",
+        "EXACT_SOURCE_HASH",
+        "REPRODUCIBLE_BUILD",
+        "LICENSE_RIGHTS",
+        "DEPENDENCY_INVENTORY"
+      ],
+      "required_gates": [
+        "G01",
+        "G07"
+      ],
+      "review_seats": [
+        "FORMAL_CHECK",
+        "PROVENANCE_CHECK"
+      ],
+      "stage": "BUILD"
+    },
+    {
+      "next_proof": "Rerun representative task including negative outcomes and controls",
+      "promotion_boundary": "HELD_UNTIL_EXTERNAL_EVIDENCE_AND_AUTHORITY",
+      "required_evidence": [
+        "PRIOR_WORK_REVIEW",
+        "NEGATIVE_RESULT_PRESERVATION",
+        "PINNED_BASELINE",
+        "ACCEPTANCE_CRITERIA",
+        "ERROR_AND_TAIL_LATENCY",
+        "COST_AND_RESOURCE_BUDGET",
+        "COUNTEREXAMPLE"
+      ],
+      "required_gates": [
+        "G05",
+        "G09",
+        "G10"
+      ],
+      "review_seats": [
+        "EMPIRICAL_CHECK",
+        "CHALLENGE"
+      ],
+      "stage": "EXPERIMENT"
+    },
+    {
+      "next_proof": "Actual independent first-use, rights/privacy and current destination proof",
+      "promotion_boundary": "HELD_UNTIL_EXTERNAL_EVIDENCE_AND_AUTHORITY",
+      "required_evidence": [
+        "PRIOR_WORK_REVIEW",
+        "NEGATIVE_RESULT_PRESERVATION",
+        "CONSENTED_FIRST_USE",
+        "EXPLICIT_NONCLAIMS",
+        "LICENSE_RIGHTS",
+        "ACCESSIBILITY_CHECK",
+        "SAFE_ROLLBACK",
+        "CHALLENGE_RESPONSE"
+      ],
+      "required_gates": [
+        "G02",
+        "G03",
+        "G07",
+        "G11",
+        "G13"
+      ],
+      "review_seats": [
+        "EMPIRICAL_CHECK",
+        "CHALLENGE",
+        "PROVENANCE_CHECK",
+        "SYNTHESIS"
+      ],
+      "stage": "RELEASE"
+    },
+    {
+      "next_proof": "Real receiving client checks same work ID, state, lease, rights and safe stop",
+      "promotion_boundary": "HELD_UNTIL_EXTERNAL_EVIDENCE_AND_AUTHORITY",
+      "required_evidence": [
+        "PRIOR_WORK_REVIEW",
+        "NEGATIVE_RESULT_PRESERVATION",
+        "PRODUCER_RECEIPT",
+        "RECEIVER_ORIGIN_ACK",
+        "SERVICE_CURRENTNESS",
+        "ERROR_ALERTING",
+        "REVOCATION_AND_STOP"
+      ],
+      "required_gates": [
+        "G05",
+        "G09",
+        "G11"
+      ],
+      "review_seats": [
+        "EMPIRICAL_CHECK",
+        "FORMAL_CHECK"
+      ],
+      "stage": "OPERATION"
+    },
+    {
+      "next_proof": "Unrelated custodian restores public-safe capsule while GitHub and X2 are denied",
+      "promotion_boundary": "HELD_UNTIL_EXTERNAL_EVIDENCE_AND_AUTHORITY",
+      "required_evidence": [
+        "PRIOR_WORK_REVIEW",
+        "NEGATIVE_RESULT_PRESERVATION",
+        "INDEPENDENT_FAILURE_DOMAIN",
+        "COLD_RESTORE_CHECK",
+        "NON_ORIGINATOR_STEWARD",
+        "EXACT_OBJECT_READBACK",
+        "KEY_RECOVERY_RAIL"
+      ],
+      "required_gates": [
+        "G04",
+        "G05",
+        "G06",
+        "G12"
+      ],
+      "review_seats": [
+        "EMPIRICAL_CHECK",
+        "PROVENANCE_CHECK",
+        "CHALLENGE"
+      ],
+      "stage": "RECOVERY"
+    },
+    {
+      "next_proof": "Independent bounded comparison and retained lost/better alternatives",
+      "promotion_boundary": "HELD_UNTIL_EXTERNAL_EVIDENCE_AND_AUTHORITY",
+      "required_evidence": [
+        "PRIOR_WORK_REVIEW",
+        "NEGATIVE_RESULT_PRESERVATION",
+        "REPRODUCIBLE_COMPARATOR",
+        "REGRESSION_LEDGER",
+        "ALTERNATIVE_AND_EXIT",
+        "ATTRIBUTION_AND_DISSENT",
+        "RETIREMENT_CONDITION"
+      ],
+      "required_gates": [
+        "G06",
+        "G08",
+        "G10",
+        "G12"
+      ],
+      "review_seats": [
+        "CHALLENGE",
+        "PROVENANCE_CHECK",
+        "SYNTHESIS"
+      ],
+      "stage": "REEVO"
+    }
+  ],
+  "turtle_limits": {
+    "authority_inheritance": "NO_AUTHORITY_EXPANSION",
+    "budget_inheritance": "SHARED_PARENT_NO_REPLENISHMENT",
+    "max_depth": 2,
+    "max_rounds": 2
+  }
+}
