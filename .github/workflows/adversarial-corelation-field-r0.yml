@@ -1,0 +1,163 @@
+name: Adversarial CoRelationField R0
+
+on:
+  pull_request:
+    paths:
+      - "schemas/corelation-field-v0.1.schema.json"
+      - "examples/corelation-field-r0.example.json"
+      - "scripts/validate_corelation_field_r0.py"
+      - ".github/workflows/adversarial-corelation-field-r0.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  adversarial-negative-cases:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout exact candidate head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - name: Use Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install validator
+        run: python -m pip install --disable-pip-version-check jsonschema==4.23.0
+      - name: Require adversarial mutations to fail closed
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p artifacts .tmp-adversarial
+          python - <<'PY'
+          import copy, hashlib, json, os, subprocess
+          from pathlib import Path
+
+          fixture_path = Path("examples/corelation-field-r0.example.json")
+          fixture = json.loads(fixture_path.read_text(encoding="utf-8"))
+          validator = "scripts/validate_corelation_field_r0.py"
+
+          clean = subprocess.run(
+              ["python", validator],
+              text=True,
+              capture_output=True,
+          )
+          if clean.returncode != 0:
+              print(clean.stdout)
+              print(clean.stderr)
+              raise SystemExit("FAIL_CLEAN_FIXTURE_DID_NOT_PASS")
+
+          def relation(doc, rid):
+              return next(r for r in doc["relations"] if r["relation_id"] == rid)
+
+          def projection(doc, pid):
+              return next(p for p in doc["projections"] if p["projection_id"] == pid)
+
+          cases = []
+
+          def add_case(name, mutate, expected_prefix):
+              doc = copy.deepcopy(fixture)
+              mutate(doc)
+              path = Path(".tmp-adversarial") / f"{name}.json"
+              path.write_text(json.dumps(doc, indent=2) + "\n", encoding="utf-8")
+              run = subprocess.run(
+                  ["python", validator, "--fixture", str(path)],
+                  text=True,
+                  capture_output=True,
+              )
+              if run.returncode == 0:
+                  raise SystemExit("FAIL_ADVERSARIAL_MUTANT_ACCEPTED:" + name)
+              line = (run.stdout.strip().splitlines() or [""])[-1]
+              try:
+                  payload = json.loads(line)
+                  reason = payload.get("reason", "")
+              except Exception:
+                  reason = line
+              if not reason.startswith(expected_prefix):
+                  raise SystemExit(
+                      f"FAIL_ADVERSARIAL_WRONG_REJECTION:{name}:expected={expected_prefix}:actual={reason}"
+                  )
+              cases.append({"case": name, "expected_rejection": expected_prefix, "observed_rejection": reason})
+
+          def cycle(doc):
+              relation(doc, "R6")["relata"][-1] = {"ref":"relation:R7","kind":"RELATION"}
+              relation(doc, "R7")["relata"][-1] = {"ref":"relation:R6","kind":"RELATION"}
+          add_case("relation-cycle", cycle, "FAIL_RELATION_CYCLE")
+
+          add_case(
+              "meta-depth-lie",
+              lambda d: relation(d, "R8").__setitem__("meta_depth", 1),
+              "FAIL_META_DEPTH_MISMATCH",
+          )
+          add_case(
+              "transform-source-output-alias",
+              lambda d: d["transforms"][0].__setitem__("output_relation_ids", ["R6"]),
+              "FAIL_TRANSFORM_SOURCE_OUTPUT_ALIAS",
+          )
+          add_case(
+              "relatum-kind-mismatch",
+              lambda d: relation(d, "R3")["relata"][0].__setitem__("kind", "OBJECT"),
+              "FAIL_RELATUM_KIND_MISMATCH",
+          )
+          add_case(
+              "projection-coverage-hole",
+              lambda d: projection(d, "P1")["omitted_relation_ids"].remove("R10"),
+              "FAIL_PROJECTION_COVERAGE",
+          )
+          add_case(
+              "causal-family-status-conflict",
+              lambda d: relation(d, "R1").__setitem__("causal_status", "NONCAUSAL"),
+              "FAIL_SCHEMA",
+          )
+          add_case(
+              "duplicate-relatum-ref",
+              lambda d: d["relata"].append(copy.deepcopy(d["relata"][0])),
+              "FAIL_DUPLICATE_RELATUM_REF",
+          )
+
+          head = subprocess.check_output(["git","rev-parse","HEAD"], text=True).strip()
+          receipt = {
+              "schema":"CoRelationField.AdversarialReviewReceipt.v0.1",
+              "state":"PASS_ADVERSARIAL_NEGATIVE_CASES_FAIL_CLOSED",
+              "checked_out_head_sha":head,
+              "receiver_identity":f"github-hosted:{os.environ.get('RUNNER_OS','UNKNOWN')}:{os.environ.get('RUNNER_ARCH','UNKNOWN')}",
+              "clean_fixture":"PASS",
+              "negative_case_count":len(cases),
+              "cases":cases,
+              "coverage_boundary":[
+                  "DETERMINISTIC_SYNTHETIC_MUTANTS_ONLY",
+                  "NOT_INDEPENDENT_HUMAN_OR_MODEL_SEMANTIC_REVIEW",
+                  "NO_REALITY_TRUTH_VALIDATION",
+                  "NO_MERGE_AUTHORITY"
+              ],
+              "nonclaims":[
+                  "ADVERSARIAL_FIXTURE_PASS_NE_INDEPENDENT_REVIEW",
+                  "CI_PASS_NE_SEMANTIC_TRUTH",
+                  "NEGATIVE_CASE_SET_NE_COMPLETE_BUG_SEARCH"
+              ]
+          }
+          body=(json.dumps(receipt,indent=2,sort_keys=True)+"\n").encode("utf-8")
+          out=Path("artifacts/corelation-field-adversarial-review-r0.json")
+          out.write_bytes(body)
+          digest=hashlib.sha256(body).hexdigest().upper()
+          Path("artifacts/corelation-field-adversarial-review-r0.sha256").write_text(
+              digest+"  "+out.name+"\n", encoding="utf-8"
+          )
+          print(json.dumps({
+              "STATE":receipt["state"],
+              "negative_case_count":len(cases),
+              "receipt_sha256":digest,
+              "checked_out_head_sha":head
+          },separators=(",",":")))
+          PY
+      - name: Upload adversarial review receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: corelation-field-adversarial-review-r0
+          path: |
+            artifacts/corelation-field-adversarial-review-r0.json
+            artifacts/corelation-field-adversarial-review-r0.sha256
+          if-no-files-found: error
+          retention-days: 30

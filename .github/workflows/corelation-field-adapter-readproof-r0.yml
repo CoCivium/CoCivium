@@ -1,0 +1,192 @@
+name: CoRelationField adapter exact readproof R0
+
+on:
+  pull_request:
+    paths:
+      - "schemas/corelation-field-adapter-v0.1.schema.json"
+      - "examples/corelation-field-adapter-r0.example.json"
+      - "schemas/corelation-field-v0.1.schema.json"
+      - "examples/corelation-field-r0.example.json"
+      - ".github/workflows/corelation-field-adapter-readproof-r0.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact-readproof:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout exact candidate head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+
+      - name: Use Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Reconstruct exact adapter pack and emit receiver readproof
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p artifacts
+          python - <<'PY'
+          import hashlib, json, os, subprocess
+          from pathlib import Path
+
+          adapter_path = Path("examples/corelation-field-adapter-r0.example.json")
+          adapter_schema_path = Path("schemas/corelation-field-adapter-v0.1.schema.json")
+          field_path = Path("examples/corelation-field-r0.example.json")
+          field_schema_path = Path("schemas/corelation-field-v0.1.schema.json")
+
+          def sha256_path(path):
+              return hashlib.sha256(Path(path).read_bytes()).hexdigest().upper()
+
+          def git_blob_sha(path):
+              data = Path(path).read_bytes()
+              return hashlib.sha1(b"blob " + str(len(data)).encode() + b"\0" + data).hexdigest()
+
+          adapter = json.loads(adapter_path.read_text(encoding="utf-8"))
+          field = json.loads(field_path.read_text(encoding="utf-8"))
+          head_sha = subprocess.check_output(["git","rev-parse","HEAD"], text=True).strip()
+
+          expected_carriers = {
+              "COOPEN_RELATION",
+              "COENCOUNTER",
+              "CORESEARCH_EVIDENCE",
+              "COTIME",
+              "COEVO_DELTA",
+              "COSUBSTRATE_FIELD",
+          }
+          carriers = {b["source_carrier"] for b in adapter["bindings"]}
+          if carriers != expected_carriers:
+              raise SystemExit("FAIL_RECEIVER_CARRIER_SET")
+
+          field_ids = {r["relation_id"] for r in field["relations"]}
+          source_readbacks = []
+          referenced_ids = set()
+
+          for binding in adapter["bindings"]:
+              source_path = binding["source_path"]
+              observed_blob = git_blob_sha(source_path)
+              if observed_blob != binding["source_blob_sha"]:
+                  raise SystemExit("FAIL_RECEIVER_SOURCE_BLOB_MISMATCH:" + binding["binding_id"])
+              if not set(binding["relation_ids"]).issubset(field_ids):
+                  raise SystemExit("FAIL_RECEIVER_RELATION_REF:" + binding["binding_id"])
+              if binding["pointer_semantics"] != "REFERENCE_ONLY":
+                  raise SystemExit("FAIL_RECEIVER_POINTER_SEMANTICS:" + binding["binding_id"])
+              if binding["source_semantics_owner"] != "SOURCE_CARRIER":
+                  raise SystemExit("FAIL_RECEIVER_SOURCE_OWNERSHIP:" + binding["binding_id"])
+              if binding["relation_typing_owner"] != "CORELATION_FIELD":
+                  raise SystemExit("FAIL_RECEIVER_TYPING_OWNERSHIP:" + binding["binding_id"])
+              if binding["authority_change"] or binding["source_mutated"] or binding["field_mutated"]:
+                  raise SystemExit("FAIL_RECEIVER_EFFECT_INFLATION:" + binding["binding_id"])
+              if any(binding["lifecycle_claims"].values()):
+                  raise SystemExit("FAIL_RECEIVER_LIFECYCLE_INFLATION:" + binding["binding_id"])
+              referenced_ids.update(binding["relation_ids"])
+              source_readbacks.append({
+                  "binding_id": binding["binding_id"],
+                  "source_carrier": binding["source_carrier"],
+                  "source_path": source_path,
+                  "git_blob_sha": observed_blob,
+                  "sha256": sha256_path(source_path),
+                  "relation_ids": binding["relation_ids"],
+                  "pointer_semantics": binding["pointer_semantics"],
+              })
+
+          if git_blob_sha(field_schema_path) != adapter["field_schema_blob_sha"]:
+              raise SystemExit("FAIL_RECEIVER_FIELD_SCHEMA_BLOB_MISMATCH")
+
+          receipt = {
+              "schema": "CoRelationField.AdapterReadproof.v0.1",
+              "state": "PASS_EXACT_READONLY_RECONSTRUCTION",
+              "receiver_identity": f"github-hosted:{os.environ.get('RUNNER_OS','UNKNOWN')}:{os.environ.get('RUNNER_ARCH','UNKNOWN')}",
+              "repository": os.environ.get("GITHUB_REPOSITORY"),
+              "checked_out_head_sha": head_sha,
+              "workflow_run_id": os.environ.get("GITHUB_RUN_ID"),
+              "workflow_run_attempt": os.environ.get("GITHUB_RUN_ATTEMPT"),
+              "scope": "READONLY_EXACT_ADAPTER_PACK_RECONSTRUCTION",
+              "adapter_pack": {
+                  "path": str(adapter_path),
+                  "sha256": sha256_path(adapter_path),
+                  "git_blob_sha": git_blob_sha(adapter_path),
+                  "binding_count": len(adapter["bindings"]),
+                  "carriers": sorted(carriers),
+              },
+              "adapter_schema": {
+                  "path": str(adapter_schema_path),
+                  "sha256": sha256_path(adapter_schema_path),
+                  "git_blob_sha": git_blob_sha(adapter_schema_path),
+              },
+              "relation_field_fixture": {
+                  "path": str(field_path),
+                  "sha256": sha256_path(field_path),
+                  "git_blob_sha": git_blob_sha(field_path),
+                  "relation_count": len(field["relations"]),
+                  "referenced_relation_ids": sorted(referenced_ids),
+              },
+              "relation_field_schema": {
+                  "path": str(field_schema_path),
+                  "sha256": sha256_path(field_schema_path),
+                  "git_blob_sha": git_blob_sha(field_schema_path),
+              },
+              "source_readbacks": source_readbacks,
+              "authority": {
+                  "effect_authority": "NONE",
+                  "financial_authority": "NONE",
+                  "credential_transfer": "NONE",
+                  "source_mutation": False,
+                  "field_mutation": False,
+              },
+              "coverage_boundary": [
+                  "EXACT_BYTES_AND_DECLARED_POINTER_CONTRACT_ONLY",
+                  "NO_EXTERNAL_SOURCE_SEMANTIC_TRUTH_VALIDATION",
+                  "NO_RUNTIME_BEHAVIOR",
+                  "NO_DOMAIN_CARRIER_MUTATION",
+              ],
+              "lifecycle": {
+                  "adapter_pack_receiver_readproof": "PRODUCED",
+                  "integration": "UNPROVEN",
+                  "canon": "UNPROVEN",
+                  "runtime": "UNPROVEN",
+                  "coex": "UNPROVEN",
+              },
+              "nonclaims": [
+                  "READPROOF_NE_INTEGRATION",
+                  "VALIDATION_NE_ACCEPTANCE",
+                  "REFERENCE_NE_INGESTION",
+                  "POINTER_NE_AUTHORITY_TRANSFER",
+                  "GITHUB_HOSTED_EPHEMERAL_NE_DURABLE_CONTROL_PLANE",
+              ],
+          }
+
+          out = Path("artifacts/corelation-field-adapter-readproof-r0.json")
+          out.write_text(json.dumps(receipt, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+          receipt_sha = sha256_path(out)
+          Path("artifacts/corelation-field-adapter-readproof-r0.sha256").write_text(
+              receipt_sha + "  " + out.name + "\n",
+              encoding="utf-8",
+          )
+
+          print(json.dumps({
+              "STATE": receipt["state"],
+              "receiver_identity": receipt["receiver_identity"],
+              "checked_out_head_sha": head_sha,
+              "adapter_pack_sha256": receipt["adapter_pack"]["sha256"],
+              "receipt_sha256": receipt_sha,
+              "binding_count": receipt["adapter_pack"]["binding_count"],
+              "referenced_relation_ids": receipt["relation_field_fixture"]["referenced_relation_ids"],
+          }, separators=(",",":")))
+          PY
+
+      - name: Upload exact receiver readproof
+        uses: actions/upload-artifact@v4
+        with:
+          name: corelation-field-adapter-readproof-r0
+          path: |
+            artifacts/corelation-field-adapter-readproof-r0.json
+            artifacts/corelation-field-adapter-readproof-r0.sha256
+          if-no-files-found: error
+          retention-days: 30
