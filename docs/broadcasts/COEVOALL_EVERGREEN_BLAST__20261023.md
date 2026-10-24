@@ -111,3 +111,14 @@ Priority hypotheses:
 10. deliberate coordinated suppression, retained as a low-prior hypothesis until direct evidence appears.
 
 Every awareness claim should bind observable evidence. Absence of visible attention is not, by itself, evidence of interference.
+
+
+## 2026-10-24 | CoNod+ thumb context preview R0
+
+**One useful default:** `' CoNod+` / *Preview one safe next step*. A thumb or middle-button event should eventually open a **local preview**, not auto-inject `'`, send an email, approve an effect, or start background agents. The first panel shows one suggested action, `Preview`, `More`, and `Cancel` (with an accessible keyboard equivalent). Deeper options include safe pointer, priors, challenge, typed CoNull missing edge, G_dRes discrepancy, historical replay, safe handoff and alternatives. CoNod's historical apostrophe means bounded continuation while healthy, contraction/handoff when pressured; do not turn a human repeat-Enter habit into the scheduler.
+
+**Public inspectable R0:** [Human explanation](../../examples/conodcothumb/README.md) · [Node 22+ deterministic shadow policy/selftest](../../examples/conodcothumb/CoNodCoThumbPolicyR0.mjs). Exact source Git blob `5651f1d0dfad829c401f038ae021a555a919319e`, SHA-256 `bca0c68c08225a28f9320dd4c333042d399beaf7984c792dfd19fa18c71d9982`. Reconstructed source tested locally: **22/22 synthetic policy checks PASS**; media/GitHub HTTP speed/Gmail Primary/Pi/Claude/Ollama/cross-substrate provider tests remain NOT_RUN/UNPROVEN for this specific wave. See one append-only row in [`benchmarks/evo.jsonl`](../../benchmarks/evo.jsonl), ID `benchmark-evo:conod-cothumb-r0:shadow-policy-exact-source-22`.
+
+**CoNull+** means evidence-typed missing/withheld relation, **not** zero; **G_dRes+** is a provisional discoverability/discrepancy residual, **not** a new physical field or proof of sentience. The R1A [public donor](https://github.com/CoCivium/CoCivium/blob/experiment/comap-trails-ghost-cursor-r0-20261023/experiments/comap-cursor-r0/gap-residual-r1a/README.md) remains source-linked candidate, not a live integration. A historical X2 CoThumb selftest is not physical button binding. The X2 control route is currently offline; **no hardware mapping, OS injection, new provider worker, private file access, external sending or CoStead delivery occurred in this wave**.
+
+**Broadcast disposition:** Published to GitHub source/discovery only, for opted-in readers to pull. Per [CoGoAll R3 receiver manifest](../../docs/publishing/cogoall-evergreen-receivers-r3.json), Gmail/CoVIA are attention-dedup held, nodes/sites unbound, and independent ACK absent. `PUBLIC_NE_RECEIVED` | `POINTER_NE_ACK` | `GESTURE_NE_AUTHORITY`.
