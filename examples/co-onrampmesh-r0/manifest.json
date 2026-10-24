@@ -1,0 +1,58 @@
+{
+  "schema": "CoCivium.CoOnrampMesh.R0",
+  "status": "LOCAL_PUBLIC_SAFE_EXPERIMENT_NOT_DEPLOYED",
+  "observed_at_utc_date": "2026-10-24",
+  "shared_identity": "CoCivium.PublicResearch",
+  "canonical_proof_root": "https://github.com/CoCivium/CoCivium",
+  "authority_ceiling": "NONE",
+  "analytics": "NONE_BY_DEFAULT",
+  "personalization": "EXPLICIT_LOCAL_SELECTION_ONLY",
+  "tracking": false,
+  "external_messages": 0,
+  "domains_activated": 0,
+  "sources": [
+    {"id":"andrew_first","repo":"CoCivium/CoCivium","path":"examples/coandrewfirst/index.html","git_blob_sha1":"89304d8e703f271e070424753e23de62e4b0493c","url":"https://github.com/CoCivium/CoCivium/blob/main/examples/coandrewfirst/index.html","claim":"SOURCE_READBACK_ONLY_NOT_LIVE_HOSTED_DEMO"},
+    {"id":"civiclens","repo":"CoCivium/CoAcademy","path":"docs/civiclens/index.html","git_blob_sha1":"98e152b7cd589fd69332cc935af994d68fc18616","url":"https://github.com/CoCivium/CoAcademy/blob/master/docs/civiclens/index.html","claim":"SOURCE_READBACK_ONLY_NOT_LIVE_HOSTED_DEMO"},
+    {"id":"coorb","repo":"CoCivium/CoAcademy","path":"docs/coorb/index.html","git_blob_sha1":"634adc3ae92e5aba9671427ca56a78a1a72d05f9","url":"https://github.com/CoCivium/CoAcademy/blob/master/docs/coorb/index.html","claim":"SOURCE_READBACK_ONLY_NOT_LIVE_HOSTED_DEMO"}
+  ],
+  "routes": [
+    {
+      "id":"builder",
+      "brand_candidate":"CoBuild",
+      "label":"I build with AI",
+      "promise":"Try a smaller, inspectable task before choosing a platform.",
+      "exercise":"Write one goal, one constraint and one piece of evidence that would change your mind. Compare the result with what your preferred AI produces.",
+      "source_id":"andrew_first",
+      "action_label":"Inspect the five-step source",
+      "role":"developer_or_maker"
+    },
+    {
+      "id":"explorer",
+      "brand_candidate":"CoProof",
+      "label":"I check claims or decisions",
+      "promise":"Start with evidence, disagreement and what remains unknown.",
+      "exercise":"Choose one public claim. Note its original source, the strongest counterexample and the next observation needed to decide more confidently.",
+      "source_id":"civiclens",
+      "action_label":"Inspect the civic evidence example",
+      "role":"researcher_journalist_citizen"
+    },
+    {
+      "id":"community",
+      "brand_candidate":"CoPlay",
+      "label":"I help a community work better",
+      "promise":"Test fair coordination with one group rule, not an entire doctrine.",
+      "exercise":"Take one game or club rule. Who benefits, who may be excluded, how could anyone challenge it, and how would the group measure improvement?",
+      "source_id":"coorb",
+      "action_label":"Inspect the relational-view source",
+      "role":"educator_gamer_organizer"
+    }
+  ],
+  "experimental_controls": {
+    "baseline":"current generic CoCivium README landing page",
+    "target":"first_time_consented_visitors",
+    "minimum_exploratory_sample_per_lane":5,
+    "metrics":["time_to_understood_purpose_seconds","time_to_first_useful_action_seconds","correct_source_identification","voluntary_return_intent","effort_to_exit","privacy_or_credibility_concerns"],
+    "forbidden":["fake_personas","undeclared_affiliation","mass_unsolicited_outreach","automatic_tracking","new_domains_before_acceptance","permission_inheritance_from_brand"]
+  },
+  "nonclaims":["SOURCE_CODE_NE_RUNNING_SERVICE","PUBLIC_BRANCH_NE_PUBLIC_HOSTING","DISCOVERABLE_NE_ADOPTED","ONE_BRAND_NE_AUTHORITY","PERSONA_ROUTE_NE_PERSONHOOD","LOCAL_IS_NOT_LANDED","VALIDATION_IS_NOT_ACCEPTANCE","NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF","NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE","HASHING_IS_NOT_SEMANTIC_INGESTION","DISCOVERED_SET_IS_NOT_COMPLETE_HISTORY"]
+}
