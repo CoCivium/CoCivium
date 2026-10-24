@@ -1,0 +1,29 @@
+{
+  "completed": 32,
+  "completed_at_kill": 3,
+  "explicit_lock_reclaim": true,
+  "external_effects": 0,
+  "external_model_calls": 0,
+  "kill_nonzero_exit": true,
+  "live_worker_width": 1,
+  "mission_sha256": "6c4d8a0b86b1bc7fb1501a31daf890e20d957d80fd0bd0fdafa7e604077fdf3c",
+  "nonclaims": [
+    "SINGLE_CONTROLLER_NE_DISTRIBUTED_LEASE",
+    "PROCESS_DEATH_REPLAY_NE_MODEL_SESSION_RESTORED",
+    "LOCAL_CHECKPOINT_NE_INDEPENDENT_REMOTE_CUSTODY",
+    "HASH_NE_SIGNATURE_OR_REAL_WORLD_CORRECTNESS",
+    "ONE_RUN_NE_SUSTAINED_RELIABILITY"
+  ],
+  "proof": "ACTUAL_PROCESS_KILL_AND_INDEPENDENT_LOCAL_SUCCESSOR",
+  "real_subprocesses_launched": 3,
+  "receiver_ack": "NOT_OBSERVED",
+  "remote_receivers": 0,
+  "replay_exact_digest": true,
+  "restart_count": 1,
+  "result_digest_sha256": "1bc124cfe58067c69e7e7ce102239fd2c232a8cb06326ddb071a8d8ab28421ce",
+  "schema": "CoScaleMorph.KillRestartCanary/R1",
+  "source_sha256": "4eddc49ef5902673fa22af5ef969b60a74bbd3153bd5b493638c00230d963f27",
+  "stale_lock_blocked_attempt": true,
+  "successor_different_pid": true,
+  "task_count": 32
+}
