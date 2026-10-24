@@ -11,6 +11,8 @@
 
 > **Try a public CoOrbWare-style experience:** [CoOrbWare First Look](https://github.com/CoCivium/CoAcademy/blob/master/docs/coorb/index.html) is a source-linked public browser prototype with six reader-selected paths and explicit unknowns. [CoCivicLens+](https://github.com/CoCivium/CoAcademy/blob/master/docs/civiclens/index.html) is a nonpartisan civic-learning example. [AI-readable experiment index](ai/index.json). GitHub source is public; independent browser reachability and user outcomes must be verified separately. Neither is a finished cross-device OS.
 
+> **Try a device, not merely a diagram:** [CoDevice Bridge R0](https://cocivium.github.io/CoAcademy/device-first/) is a browser-first phone/tablet/laptop check with opt-in app-scoped offline caching and a manually copied SHA-256 challenge/ACK. The code and 26 isolated mock interactions passed; **no real device, independent browser HTTPS retrieval or offline recovery is yet proven**. It does not enroll devices, install RickBar, or touch X2. [Inspect exact source](https://github.com/CoCivium/CoAcademy/blob/master/docs/device-first/index.html) and [test receipt](https://github.com/CoCivium/CoAcademy/blob/master/docs/device-first/test_receipt_r0.json).
+
 > **First-use pointer:** if you just want to try CoCivia without learning the machinery first, start with [CoCivia First Use R0](docs/Onramp/COCIVIA_FIRST_USE_R0.md). Bring one real thing you want to make better. No installer is required for this first encounter.
 
 > **Session/bootstrap pointer:** sessions and machine clients needing current public project orientation should start with [SESSION_BOOTSTRAP.md](SESSION_BOOTSTRAP.md). GitHub is a shared public/currentness surface, not the sole custody root.

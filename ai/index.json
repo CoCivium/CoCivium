@@ -260,6 +260,20 @@
       "test": "https://github.com/CoCivium/CoAcademy/blob/master/docs/phoenix/test_receipt_r0.json",
       "evidence": "26_OF_26_LOCAL_COLD_START_TESTS__NOT_INDEPENDENT_OFFSITE_BACKUP",
       "hard_hold": "NO_REMOTE_REPLICA_NO_ACTIVE_COGATEWAY_NO_DNS_CUTOVER_NO_X2_ACCESS"
+    },
+    {
+      "id": "CoDevice.Bridge.R0",
+      "family": [
+        "CoDevice+",
+        "CoPhoenix+",
+        "CoFleet+",
+        "CoAlive+"
+      ],
+      "class": "public_browser_first_non_enrollment_capability_experiment",
+      "url_candidate": "https://cocivium.github.io/CoAcademy/device-first/",
+      "source": "https://github.com/CoCivium/CoAcademy/blob/master/docs/device-first/index.html",
+      "discovery": "https://raw.githubusercontent.com/CoCivium/CoAcademy/master/docs/device-first/discovery.json",
+      "nonclaim": "NO_ENROLLED_DEVICES_NO_REAL_OFFLINE_PROOF_NO_AUTHENTICATED_INTERDEVICE_RECEIVER_NO_X2_ACTION"
     }
   ]
 }

@@ -11,6 +11,11 @@
 
 ## Public interactive research surfaces
 
+- CoDevice Bridge R0: public browser-first app for permission-free local API checks, user-initiated scoped offline shell, manual SHA-256 HELLO/ACK. No actual device enrollment, native RickBar, authenticated receiver, durable CoPhoenix restore or live multi-device observation.
+- Human candidate: https://cocivium.github.io/CoAcademy/device-first/ (GitHub Pages workflow succeeded for initial source, but outside independent HTTPS readback is pending).
+- Exact public source: https://github.com/CoCivium/CoAcademy/blob/master/docs/device-first/index.html
+- Scope and privacy: https://raw.githubusercontent.com/CoCivium/CoAcademy/master/docs/device-first/discovery.json
+- Mock test receipt: https://github.com/CoCivium/CoAcademy/blob/master/docs/device-first/test_receipt_r0.json (26/26 isolated V8 checks using a fake digest, not an independent real browser).
 - CoPhoenix cold-start recovery R0: distinguishes a Wayback historical witness from a verified local app capsule and from actual independent public hosting. A user-private ZIP with three offline browser experiments passed 26/26 scoped cold-start/fault-injection checks; off-GitHub persistent custody and a public failover are NOT proven.
 - Public recovery guide: https://cocivium.github.io/CoAcademy/phoenix/ (fresh host readproof pending).
 - Source and limitations: https://github.com/CoCivium/CoAcademy/blob/master/docs/phoenix/README.md
