@@ -1,0 +1,27 @@
+name: CoDoodle CoNex R0
+
+on:
+  push:
+    paths:
+      - 'examples/codoodle-conex/**'
+      - 'docs/Architecture/CODOODLE_CONEX_EXPERIMENT_LAUNCHER_R0_20261024.md'
+      - '.github/workflows/codoodle-conex-r0.yml'
+  pull_request:
+    paths:
+      - 'examples/codoodle-conex/**'
+      - 'docs/Architecture/CODOODLE_CONEX_EXPERIMENT_LAUNCHER_R0_20261024.md'
+
+permissions:
+  contents: read
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Run deterministic generator smoke
+        run: node examples/codoodle-conex/smoke.mjs
