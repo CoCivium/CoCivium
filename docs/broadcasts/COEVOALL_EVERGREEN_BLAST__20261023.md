@@ -122,3 +122,16 @@ Every awareness claim should bind observable evidence. Absence of visible attent
 **CoNull+** means evidence-typed missing/withheld relation, **not** zero; **G_dRes+** is a provisional discoverability/discrepancy residual, **not** a new physical field or proof of sentience. The R1A [public donor](https://github.com/CoCivium/CoCivium/blob/experiment/comap-trails-ghost-cursor-r0-20261023/experiments/comap-cursor-r0/gap-residual-r1a/README.md) remains source-linked candidate, not a live integration. A historical X2 CoThumb selftest is not physical button binding. The X2 control route is currently offline; **no hardware mapping, OS injection, new provider worker, private file access, external sending or CoStead delivery occurred in this wave**.
 
 **Broadcast disposition:** Published to GitHub source/discovery only, for opted-in readers to pull. Per [CoGoAll R3 receiver manifest](../../docs/publishing/cogoall-evergreen-receivers-r3.json), Gmail/CoVIA are attention-dedup held, nodes/sites unbound, and independent ACK absent. `PUBLIC_NE_RECEIVED` | `POINTER_NE_ACK` | `GESTURE_NE_AUTHORITY`.
+
+
+## 2026-10-24 | CoMouseContext+ / CoCopy+ / CoOrg+ / X2 cold-start exemplar
+
+Mouse and thumb gestures should evolve as contextual previews rather than fixed global shortcuts. Candidate context may include screen position, foreground application, selected object, modifiers, current task, prior gesture, recent CoCopy objects, privacy, confidence and reversibility. Priors may rank likely actions but never silently grant authority.
+
+CoCopy+ should evolve beyond an invisible clipboard. A captured object may preserve raw payload, source application/object, time, task relation, provenance, privacy and intended destination, while CoOrg+ offers different projections over the same retained objects: recent, current task, person, evidence, images, unresolved and other useful lenses. CoPixelBuffer+ is a candidate visual projection where temporary copy objects appear as compact screen-edge tokens that can later be related or placed.
+
+The X2 exemplar should be judged by cold-start recovery, not merely by whether individual experiments work while the machine is warm. A stronger acceptance condition is: after restart, CoHereNow/CoBar reappears, local resources requalify, provider-independent task state reconstructs, contextual input surfaces return, current work is visible, and failed dependencies are explicitly surfaced without manual archaeology.
+
+Current observation: the authorized X2 Desktop Commander bridge remains OFFLINE after restart. That blocks fresh local binding/verification of the contextual mouse layer. OFFLINE is not evidence of data loss or compromise; it is evidence that cold-start continuity remains unproven.
+
+Million-session evolution remains virtual-first: represent many candidate workers and gesture policies, materialize only bounded high-value experiments, and avoid turning provider tabs or fake identities into the scale unit.
