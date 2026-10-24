@@ -1,0 +1,484 @@
+TAP version 13
+# Subtest: typed public candidate schema is R2
+ok 1 - typed public candidate schema is R2
+  ---
+  duration_ms: 1.944692
+  type: 'test'
+  ...
+# Subtest: one and only 36 unique relation definitions
+ok 2 - one and only 36 unique relation definitions
+  ---
+  duration_ms: 0.13971
+  type: 'test'
+  ...
+# Subtest: 16 directed pairs and four symmetric atoms
+ok 3 - 16 directed pairs and four symmetric atoms
+  ---
+  duration_ms: 0.082264
+  type: 'test'
+  ...
+# Subtest: logical candidate count exact and no workers
+ok 4 - logical candidate count exact and no workers
+  ---
+  duration_ms: 0.549348
+  type: 'test'
+  ...
+# Subtest: every family has an explicit uncertainty gate
+ok 5 - every family has an explicit uncertainty gate
+  ---
+  duration_ms: 0.217798
+  type: 'test'
+  ...
+# Subtest: validity inverts relation label, not a verified claim
+ok 6 - validity inverts relation label, not a verified claim
+  ---
+  duration_ms: 0.269386
+  type: 'test'
+  ...
+# Subtest: direct converse is not substitutability
+ok 7 - direct converse is not substitutability
+  ---
+  duration_ms: 0.328806
+  type: 'test'
+  ...
+# Subtest: outreach inverse never marks delivery
+ok 8 - outreach inverse never marks delivery
+  ---
+  duration_ms: 0.170226
+  type: 'test'
+  ...
+# Subtest: causal converse carries scientific warning
+ok 9 - causal converse carries scientific warning
+  ---
+  duration_ms: 0.259752
+  type: 'test'
+  ...
+# Subtest: measurement converse requires units
+ok 10 - measurement converse requires units
+  ---
+  duration_ms: 0.338521
+  type: 'test'
+  ...
+# Subtest: sensitive unknown does not expose source
+ok 11 - sensitive unknown does not expose source
+  ---
+  duration_ms: 0.150397
+  type: 'test'
+  ...
+# Subtest: missing privacy held
+ok 12 - missing privacy held
+  ---
+  duration_ms: 0.082574
+  type: 'test'
+  ...
+# Subtest: missing context held
+ok 13 - missing context held
+  ---
+  duration_ms: 0.065108
+  type: 'test'
+  ...
+# Subtest: unknown context held
+ok 14 - unknown context held
+  ---
+  duration_ms: 0.060882
+  type: 'test'
+  ...
+# Subtest: garbage gesture held
+ok 15 - garbage gesture held
+  ---
+  duration_ms: 0.063055
+  type: 'test'
+  ...
+# Subtest: missing source held
+ok 16 - missing source held
+  ---
+  duration_ms: 0.064617
+  type: 'test'
+  ...
+# Subtest: unvalidated digest syntax held
+ok 17 - unvalidated digest syntax held
+  ---
+  duration_ms: 0.062253
+  type: 'test'
+  ...
+# Subtest: authority escalation blocked
+ok 18 - authority escalation blocked
+  ---
+  duration_ms: 0.134013
+  type: 'test'
+  ...
+# Subtest: native middle always passes, even without classifying private app
+ok 19 - native middle always passes, even without classifying private app
+  ---
+  duration_ms: 0.080571
+  type: 'test'
+  ...
+# Subtest: missing gesture held
+ok 20 - missing gesture held
+  ---
+  duration_ms: 0.06005
+  type: 'test'
+  ...
+# Subtest: keyboard fallback may preview, not execute
+ok 21 - keyboard fallback may preview, not execute
+  ---
+  duration_ms: 0.184929
+  type: 'test'
+  ...
+# Subtest: non-object packets held without exception
+ok 22 - non-object packets held without exception
+  ---
+  duration_ms: 0.36511
+  type: 'test'
+  ...
+# Subtest: unknown relation never replaced by guess
+ok 23 - unknown relation never replaced by guess
+  ---
+  duration_ms: 0.227002
+  type: 'test'
+  ...
+# Subtest: unknown transform does not guess
+ok 24 - unknown transform does not guess
+  ---
+  duration_ms: 0.086069
+  type: 'test'
+  ...
+# Subtest: DEPENDS_ON -> IS_DEPENDENCY_OF converse
+ok 25 - DEPENDS_ON -> IS_DEPENDENCY_OF converse
+  ---
+  duration_ms: 0.135464
+  type: 'test'
+  ...
+# Subtest: IS_DEPENDENCY_OF -> DEPENDS_ON converse
+ok 26 - IS_DEPENDENCY_OF -> DEPENDS_ON converse
+  ---
+  duration_ms: 0.073711
+  type: 'test'
+  ...
+# Subtest: DERIVES_FROM -> IS_SOURCE_FOR converse
+ok 27 - DERIVES_FROM -> IS_SOURCE_FOR converse
+  ---
+  duration_ms: 0.052409
+  type: 'test'
+  ...
+# Subtest: IS_SOURCE_FOR -> DERIVES_FROM converse
+ok 28 - IS_SOURCE_FOR -> DERIVES_FROM converse
+  ---
+  duration_ms: 0.034852
+  type: 'test'
+  ...
+# Subtest: HAS_EVIDENCE -> EVIDENCE_FOR converse
+ok 29 - HAS_EVIDENCE -> EVIDENCE_FOR converse
+  ---
+  duration_ms: 0.07993
+  type: 'test'
+  ...
+# Subtest: EVIDENCE_FOR -> HAS_EVIDENCE converse
+ok 30 - EVIDENCE_FOR -> HAS_EVIDENCE converse
+  ---
+  duration_ms: 0.089705
+  type: 'test'
+  ...
+# Subtest: HAS_MEMBER -> MEMBER_OF converse
+ok 31 - HAS_MEMBER -> MEMBER_OF converse
+  ---
+  duration_ms: 0.05315
+  type: 'test'
+  ...
+# Subtest: MEMBER_OF -> HAS_MEMBER converse
+ok 32 - MEMBER_OF -> HAS_MEMBER converse
+  ---
+  duration_ms: 0.038297
+  type: 'test'
+  ...
+# Subtest: CONTAINS -> CONTAINED_BY converse
+ok 33 - CONTAINS -> CONTAINED_BY converse
+  ---
+  duration_ms: 0.035794
+  type: 'test'
+  ...
+# Subtest: CONTAINED_BY -> CONTAINS converse
+ok 34 - CONTAINED_BY -> CONTAINS converse
+  ---
+  duration_ms: 0.032249
+  type: 'test'
+  ...
+# Subtest: PRECEDES -> FOLLOWS converse
+ok 35 - PRECEDES -> FOLLOWS converse
+  ---
+  duration_ms: 0.073881
+  type: 'test'
+  ...
+# Subtest: FOLLOWS -> PRECEDES converse
+ok 36 - FOLLOWS -> PRECEDES converse
+  ---
+  duration_ms: 0.035493
+  type: 'test'
+  ...
+# Subtest: SUPERSEDES -> SUPERSEDED_BY converse
+ok 37 - SUPERSEDES -> SUPERSEDED_BY converse
+  ---
+  duration_ms: 0.036876
+  type: 'test'
+  ...
+# Subtest: SUPERSEDED_BY -> SUPERSEDES converse
+ok 38 - SUPERSEDED_BY -> SUPERSEDES converse
+  ---
+  duration_ms: 0.367134
+  type: 'test'
+  ...
+# Subtest: ROUTES_TO -> IS_ROUTE_TARGET_OF converse
+ok 39 - ROUTES_TO -> IS_ROUTE_TARGET_OF converse
+  ---
+  duration_ms: 0.062133
+  type: 'test'
+  ...
+# Subtest: IS_ROUTE_TARGET_OF -> ROUTES_TO converse
+ok 40 - IS_ROUTE_TARGET_OF -> ROUTES_TO converse
+  ---
+  duration_ms: 0.037487
+  type: 'test'
+  ...
+# Subtest: HAS_TEST -> TESTS converse
+ok 41 - HAS_TEST -> TESTS converse
+  ---
+  duration_ms: 0.041032
+  type: 'test'
+  ...
+# Subtest: TESTS -> HAS_TEST converse
+ok 42 - TESTS -> HAS_TEST converse
+  ---
+  duration_ms: 0.036816
+  type: 'test'
+  ...
+# Subtest: CHALLENGES -> CHALLENGED_BY converse
+ok 43 - CHALLENGES -> CHALLENGED_BY converse
+  ---
+  duration_ms: 0.037687
+  type: 'test'
+  ...
+# Subtest: CHALLENGED_BY -> CHALLENGES converse
+ok 44 - CHALLENGED_BY -> CHALLENGES converse
+  ---
+  duration_ms: 0.034212
+  type: 'test'
+  ...
+# Subtest: GREATER_THAN -> LESS_THAN converse
+ok 45 - GREATER_THAN -> LESS_THAN converse
+  ---
+  duration_ms: 0.034512
+  type: 'test'
+  ...
+# Subtest: LESS_THAN -> GREATER_THAN converse
+ok 46 - LESS_THAN -> GREATER_THAN converse
+  ---
+  duration_ms: 0.029965
+  type: 'test'
+  ...
+# Subtest: CAUSED_BY -> CAUSES converse
+ok 47 - CAUSED_BY -> CAUSES converse
+  ---
+  duration_ms: 0.036935
+  type: 'test'
+  ...
+# Subtest: CAUSES -> CAUSED_BY converse
+ok 48 - CAUSES -> CAUSED_BY converse
+  ---
+  duration_ms: 0.031087
+  type: 'test'
+  ...
+# Subtest: CITES -> CITED_BY converse
+ok 49 - CITES -> CITED_BY converse
+  ---
+  duration_ms: 0.031708
+  type: 'test'
+  ...
+# Subtest: CITED_BY -> CITES converse
+ok 50 - CITED_BY -> CITES converse
+  ---
+  duration_ms: 0.028874
+  type: 'test'
+  ...
+# Subtest: PROPOSES_TO -> IS_PROPOSED_RECIPIENT_OF converse
+ok 51 - PROPOSES_TO -> IS_PROPOSED_RECIPIENT_OF converse
+  ---
+  duration_ms: 0.029985
+  type: 'test'
+  ...
+# Subtest: IS_PROPOSED_RECIPIENT_OF -> PROPOSES_TO converse
+ok 52 - IS_PROPOSED_RECIPIENT_OF -> PROPOSES_TO converse
+  ---
+  duration_ms: 0.107112
+  type: 'test'
+  ...
+# Subtest: REPLACES -> REPLACED_BY converse
+ok 53 - REPLACES -> REPLACED_BY converse
+  ---
+  duration_ms: 0.052799
+  type: 'test'
+  ...
+# Subtest: REPLACED_BY -> REPLACES converse
+ok 54 - REPLACED_BY -> REPLACES converse
+  ---
+  duration_ms: 0.089225
+  type: 'test'
+  ...
+# Subtest: NEEDS_APPROVAL_FROM -> IS_APPROVAL_REQUIRED_FOR converse
+ok 55 - NEEDS_APPROVAL_FROM -> IS_APPROVAL_REQUIRED_FOR converse
+  ---
+  duration_ms: 0.090286
+  type: 'test'
+  ...
+# Subtest: IS_APPROVAL_REQUIRED_FOR -> NEEDS_APPROVAL_FROM converse
+ok 56 - IS_APPROVAL_REQUIRED_FOR -> NEEDS_APPROVAL_FROM converse
+  ---
+  duration_ms: 0.037557
+  type: 'test'
+  ...
+# Subtest: RELATED_TO symmetric converse does not prove anything
+ok 57 - RELATED_TO symmetric converse does not prove anything
+  ---
+  duration_ms: 0.18571
+  type: 'test'
+  ...
+# Subtest: CONNECTED_WITH symmetric converse does not prove anything
+ok 58 - CONNECTED_WITH symmetric converse does not prove anything
+  ---
+  duration_ms: 0.074061
+  type: 'test'
+  ...
+# Subtest: DIFFERENT_FROM symmetric converse does not prove anything
+ok 59 - DIFFERENT_FROM symmetric converse does not prove anything
+  ---
+  duration_ms: 0.041973
+  type: 'test'
+  ...
+# Subtest: CONTRADICTS symmetric converse does not prove anything
+ok 60 - CONTRADICTS symmetric converse does not prove anything
+  ---
+  duration_ms: 0.058628
+  type: 'test'
+  ...
+# Subtest: NEGATE is not masquerading as inverse
+ok 61 - NEGATE is not masquerading as inverse
+  ---
+  duration_ms: 0.097877
+  type: 'test'
+  ...
+# Subtest: ELSE is not masquerading as inverse
+ok 62 - ELSE is not masquerading as inverse
+  ---
+  duration_ms: 0.037857
+  type: 'test'
+  ...
+# Subtest: NULL is not masquerading as inverse
+ok 63 - NULL is not masquerading as inverse
+  ---
+  duration_ms: 0.033831
+  type: 'test'
+  ...
+# Subtest: OUTSIDE is not masquerading as inverse
+ok 64 - OUTSIDE is not masquerading as inverse
+  ---
+  duration_ms: 0.030406
+  type: 'test'
+  ...
+# Subtest: COUNTERFACTUAL is not masquerading as inverse
+ok 65 - COUNTERFACTUAL is not masquerading as inverse
+  ---
+  duration_ms: 0.728118
+  type: 'test'
+  ...
+# Subtest: UNKNOWN is not masquerading as inverse
+ok 66 - UNKNOWN is not masquerading as inverse
+  ---
+  duration_ms: 0.064077
+  type: 'test'
+  ...
+# Subtest: first / last mixed-radix addresses valid
+ok 67 - first / last mixed-radix addresses valid
+  ---
+  duration_ms: 0.206902
+  type: 'test'
+  ...
+# Subtest: bad logical addresses rejected
+ok 68 - bad logical addresses rejected
+  ---
+  duration_ms: 0.406944
+  type: 'test'
+  ...
+# Subtest: sample is deterministic from seed
+ok 69 - sample is deterministic from seed
+  ---
+  duration_ms: 1.98322
+  type: 'test'
+  ...
+# Subtest: different seed changes selected sample
+ok 70 - different seed changes selected sample
+  ---
+  duration_ms: 0.209485
+  type: 'test'
+  ...
+# Subtest: first seven unchanged when sample expanded to 32
+ok 71 - first seven unchanged when sample expanded to 32
+  ---
+  duration_ms: 0.322095
+  type: 'test'
+  ...
+# Subtest: 32 is absolute sample cap
+ok 72 - 32 is absolute sample cap
+  ---
+  duration_ms: 0.134613
+  type: 'test'
+  ...
+# Subtest: invalid seed rejected
+ok 73 - invalid seed rejected
+  ---
+  duration_ms: 0.148655
+  type: 'test'
+  ...
+# Subtest: sample addresses all within declared field and distinct
+ok 74 - sample addresses all within declared field and distinct
+  ---
+  duration_ms: 0.275676
+  type: 'test'
+  ...
+# Subtest: preview does not mutate input
+ok 75 - preview does not mutate input
+  ---
+  duration_ms: 0.102916
+  type: 'test'
+  ...
+# Subtest: preview result is deep zero-effect and no ACK for every transform
+ok 76 - preview result is deep zero-effect and no ACK for every transform
+  ---
+  duration_ms: 0.122905
+  type: 'test'
+  ...
+# Subtest: plain-text glyps have semantic names in source
+ok 77 - plain-text glyps have semantic names in source
+  ---
+  duration_ms: 0.065769
+  type: 'test'
+  ...
+# Subtest: source contains no global keyboard/clipboard hooks or fetch
+ok 78 - source contains no global keyboard/clipboard hooks or fetch
+  ---
+  duration_ms: 0.223797
+  type: 'test'
+  ...
+# Subtest: private local digest never projected
+ok 79 - private local digest never projected
+  ---
+  duration_ms: 0.083506
+  type: 'test'
+  ...
+1..79
+# tests 79
+# suites 0
+# pass 79
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 105.74954
