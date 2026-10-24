@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; connect-src 'none'; img-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'">
+<title>CoContextRail+ | One deliberate gesture</title>
+<style>
+:root{color-scheme:dark;font:16px/1.5 system-ui,-apple-system,'Segoe UI',sans-serif;--bg:#0d1420;--pane:#172535;--ink:#e7f4f9;--soft:#bfd1dc;--rule:#52697d;--teal:#b3e4ce;--accent:#f1d4a5}
+*{box-sizing:border-box}html{background:var(--bg)}body{margin:0;color:var(--ink);background:radial-gradient(ellipse at 75% 0%,#1a4152 0%,#0d1420 60%);min-height:100vh}
+main{max-width:1100px;margin:auto;padding:30px 18px 70px}header{display:flex;justify-content:space-between;align-items:start;gap:20px;flex-wrap:wrap;margin-bottom:20px}
+h1{font-size:clamp(1.9rem,5vw,3.25rem);letter-spacing:-.04em;line-height:1.12;margin:5px 0}h2{font-size:1.2rem;margin:0 0 12px}p{margin:9px 0;line-height:1.55}.lead{color:var(--soft);max-width:700px}.eyebrow{color:var(--teal);text-transform:uppercase;letter-spacing:.10em;font-weight:750;font-size:.79rem}
+.flag{display:inline-block;border:1px solid #7b8e95;border-radius:999px;padding:7px 11px;color:var(--teal);font-size:.8rem}
+.layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,.9fr);gap:16px}.panel{background:var(--pane);border:1px solid #436079;border-radius:18px;padding:20px;min-width:0}.stack{display:grid;gap:16px}
+label{display:block;color:var(--soft);font-size:.88rem;font-weight:650;margin:7px 0 5px}select{appearance:auto;width:100%;font:inherit;min-height:45px;background:#122030;color:var(--ink);border:1px solid #758e9e;padding:8px;border-radius:10px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 13px}
+button{font:inherit;cursor:pointer;border:1px solid #8197a9;border-radius:11px;background:#2b465c;color:#f2f8ff;padding:10px 13px;min-height:44px}button.primary{background:#b3e4ce;color:#05251e;border-color:#b3e4ce;font-weight:750}button:disabled{opacity:.5;cursor:not-allowed}button:hover:not(:disabled){filter:brightness(1.14)}a{color:#abddff}
+button:focus-visible,select:focus-visible,input:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid #f6d991;outline-offset:3px}.controls{display:flex;flex-wrap:wrap;gap:8px;margin-top:17px}
+blockquote{margin:12px 0 0;border-left:3px solid var(--teal);padding-left:12px;color:var(--soft)}.status{font-weight:800;color:var(--accent);font-size:.85rem}.result{border:1px solid #648494;background:#0d2030;border-radius:14px;padding:15px;min-height:130px}
+.result h3{font-size:1.1rem;margin:8px 0}.glyph{font-size:2rem;color:var(--teal);display:inline-block;line-height:1;vertical-align:middle;margin-right:10px}.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.subtle{font-size:.82rem;color:var(--soft)}.small{font-size:.8rem;color:var(--soft)}
+.actions{display:grid;gap:10px;list-style:none;padding:0;margin:15px 0 0}.actions li{background:#132d3a;border:1px solid #3c7180;padding:12px;border-radius:11px}.actions strong{font-size:.94rem}.actions p{font-size:.84rem;color:var(--soft);margin:5px 0 0}.actions .mark{font-size:1.5rem;min-width:28px}
+.rail{display:flex;gap:8px;flex-wrap:wrap}.chip{display:flex;gap:8px;align-items:center;border:1px solid #586f7a;background:#142d3a;border-radius:11px;padding:7px 10px}.chip b{font-size:1.15rem}.chip span{font-size:.78rem;color:var(--soft)}
+summary{cursor:pointer;font-weight:700;margin-bottom:10px}details p{font-size:.88rem;color:var(--soft)}footer{margin-top:18px;padding-top:15px;border-top:1px solid #52697d;color:var(--soft);font-size:.81rem}
+@media(max-width:800px){main{padding:18px 12px 46px}.layout{grid-template-columns:1fr}.panel{padding:15px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:420px){.grid{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<main>
+<header><div><div class="eyebrow">CoNod+ / CoThumb+ / CoOrb+ · CoSpiff+</div><h1>One gesture. Many relations.</h1><p class="lead">A safe, source-labelled preview of a contextual glyph rail. Choose a fictional context, ask one question, inspect one candidate. This page neither binds your mouse nor controls other apps.</p></div><div class="flag">OFFLINE · ZERO DEVICE EFFECTS · PREVIEW ONLY</div></header>
+<div class="layout">
+<div class="stack">
+<section class="panel" aria-labelledby="chooseHeading"><h2 id="chooseHeading">1. Choose an explicit context</h2><p class="subtle">A simulated Actions Ring or keyboard command is selected for the demo. Real middle-click remains untouched.</p>
+<div class="grid">
+<div><label for="context">Context</label><select id="context"></select></div>
+<div><label for="question">Q&amp;A&amp;@ question</label><select id="question"></select></div>
+<div><label for="relation">Relation / CoInv+</label><select id="relation"></select></div>
+<div><label for="lens">Observer / interpretation</label><select id="lens"></select></div>
+<div><label for="time">Time / CoT+</label><select id="time"></select></div>
+<div><label for="surface">Projection</label><select id="surface"></select></div>
+<div><label for="privacy">Data classification</label><select id="privacy"><option value="PUBLIC">Public synthetic fixture</option><option value="PRIVATE_LOCAL">Private local (redact source reference)</option><option value="SENSITIVE">Sensitive: block preview</option><option value="UNKNOWN">Unclassified: block</option></select></div>
+<div><label for="gesture">Gesture (simulated)</label><select id="gesture"><option value="EXPLICIT_RING">Explicit Actions Ring</option><option value="KEYBOARD_FALLBACK">Keyboard preview</option><option value="NATIVE_MIDDLE">Ordinary middle-click: pass through</option><option value="UNBOUND">No mapping: held</option></select></div>
+</div>
+<label style="margin-top:12px;font-weight:500"><input type="checkbox" id="fixture"> Attach a <strong>synthetic</strong> selected-file/hash fixture (no real file accessed)</label>
+<div class="controls"><button class="primary" id="preview">◇ Preview one safe option</button><button id="more">⊕ More relations</button><button id="reset">Reset</button></div>
+</section>
+<section class="panel" aria-labelledby="questionsHeading"><h2 id="questionsHeading">2. CoGibberTru+ / CoPriMath+ glyph grammar</h2><p class="subtle">Symbols are short labels for typed claims, not magic commands. Tap or focus a meaning to learn it.</p><div class="rail" id="glyphExamples" aria-label="Six first-use glyph examples"></div><details><summary>Show all 20 glyphs and their evidence limits</summary><div class="rail" id="glyphRail" aria-label="Full glyph glossary"></div><p>Millions of logical combinations can be addressed without creating workers. A useful interface shows at most seven reversible proposals, and opens evidence only on request. More syntax is not more truth.</p></details></section>
+</div>
+<div class="stack">
+<section class="panel" aria-labelledby="resultHeading"><h2 id="resultHeading">CoOrb+ preview · one source, one decision</h2>
+<div class="result" id="result" aria-live="polite"><div class="status" id="state">NOT RUN</div><h3 id="title">Nothing captured</h3><p class="subtle" id="explanation">Select a context and choose Preview. No actual mouse, keyboard or source file is observed.</p><ol id="actions" class="actions"></ol></div>
+<div class="controls"><button id="download" disabled>Download proposal JSON</button></div><p class="small">A local proposal is not authorization, a pasted object, provider contact, a receiver ACK, or a completed CoEx transition.</p>
+</section>
+<section class="panel"><h2>3. CoContext+ scale buffer</h2><div class="row"><div class="glyph">∞</div><div><strong id="count">Addressable only</strong><div class="subtle">Syntactic context combinations, not running processes</div></div></div>
+<div class="row"><div class="glyph">⏸</div><div><strong>0 active workers</strong><div class="subtle">No scheduler, auto-input, network, model or always-on agent</div></div></div>
+<blockquote>Question ? → prior ↔ → inversion ¬ → candidate ◇ → test ✓/✕/⏸ → receipt → sleep.</blockquote>
+</section>
+</div>
+</div>
+<footer>FOSS Forever · Working Together Respectfully · Display for effects; wearable optional · No crowns / No coercion / No corruption. This synthetic demonstration does not read your clipboard, real selected files, installed apps, device IDs, passwords or keystrokes.</footer>
+</main>
+<!-- DATA_MARKER -->
+<!-- CORE_MARKER -->
+<script>
+(function(){'use strict';
+const manifest=JSON.parse(document.getElementById('manifest').textContent);
+const core=window.CoContextRailR1;
+const $=id=>document.getElementById(id);
+const label=v=>v.replaceAll('_',' ').replaceAll('G D','G_d').replaceAll('AT RECEIVER','@ Receiver');
+for(const id of ['context','question','relation','lens','time','surface']){
+ const names={context:'contexts',question:'questions',relation:'relations',lens:'lenses',time:'times',surface:'surfaces'};
+ const selector=$(id);
+ for(const s of manifest[names[id]]){const opt=document.createElement('option');opt.value=s;opt.textContent=label(s);selector.appendChild(opt);}
+}
+$('context').value='RESEARCH';$('question').value='WHAT_ELSE';$('lens').value='PRACTICAL';$('relation').value='SOURCE';$('time').value='PRESENT';$('surface').value='TEXT';
+for(const [glyph,meaning] of Object.entries(manifest.glyphs)){
+ const entry=document.createElement('span');entry.className='chip';entry.title=meaning;
+ const mark=document.createElement('b');mark.textContent=glyph;const words=document.createElement('span');words.textContent=meaning.length>55?meaning.slice(0,51)+'…':meaning;
+ entry.setAttribute('aria-label',glyph+' '+meaning);entry.appendChild(mark);entry.appendChild(words);$('glyphRail').appendChild(entry);
+}
+for(const [g,label] of [['◇','Candidate'],['↔','Inverse'],['¬','Negation'],['?','Unknown'],['→','Next'],['∞','Logical scale']]){
+ const x=document.createElement('span');x.className='chip';x.setAttribute('aria-label',g+' '+manifest.glyphs[g]);
+ const b=document.createElement('b');b.textContent=g;const t=document.createElement('span');t.textContent=label;x.appendChild(b);x.appendChild(t);$('glyphExamples').appendChild(x);
+}
+$('count').textContent=Number(core.logicalSize(manifest)).toLocaleString('en-CA')+' possibilities';
+let last=null;
+function preview(mode){
+ const ctx=$('context').value;
+ const isFile=ctx==='FILE'||ctx==='MEDIA';
+ const packet={context:ctx,question:$('question').value,relation:$('relation').value,lens:$('lens').value,time:$('time').value,
+  surface:$('surface').value,gesture:$('gesture').value,privacy:$('privacy').value,mode,
+  object_kind:isFile?(ctx==='MEDIA'?'MEDIA':'FILE'):'QUESTION',user_selected:$('fixture').checked,
+  source_ref:$('fixture').checked?'sha256:'+('0'.repeat(64)):null};
+ const res=core.decide(packet,manifest);last={...res,simulator:'OFFLINE_PAGE_NOT_OS_INPUT',manifest_version:manifest.version};
+ $('state').textContent=res.state;$('title').textContent=res.state==='PROPOSED_ONLY'?'Shadow proposal, no execution':res.state==='PASS_THROUGH_NATIVE'?'Normal middle-click stays normal':'No action permitted';
+ $('explanation').textContent=res.explanation;
+ $('actions').replaceChildren();
+ res.suggestions.forEach(a=>{const li=document.createElement('li');const row=document.createElement('div');row.className='row';const icon=document.createElement('span');icon.className='mark';icon.textContent=a.glyph;
+  const title=document.createElement('strong');title.textContent=a.title;row.appendChild(icon);row.appendChild(title);const p=document.createElement('p');p.textContent=a.explanation;li.appendChild(row);li.appendChild(p);$('actions').appendChild(li);});
+ $('download').disabled=res.state!=='PROPOSED_ONLY';
+}
+$('preview').addEventListener('click',()=>preview('GLANCE'));
+$('more').addEventListener('click',()=>preview('MORE'));
+$('reset').addEventListener('click',()=>{for(const id of ['context','question','relation','lens','time','surface','privacy','gesture'])$(id).selectedIndex=0;$('context').value='RESEARCH';$('question').value='WHAT_ELSE';$('lens').value='PRACTICAL';$('privacy').value='PUBLIC';$('gesture').value='EXPLICIT_RING';$('fixture').checked=false;last=null;$('state').textContent='NOT RUN';$('title').textContent='Nothing captured';$('explanation').textContent='No device action or file read occurred.';$('actions').replaceChildren();$('download').disabled=true;});
+$('download').addEventListener('click',()=>{
+ if(!last||last.state!=='PROPOSED_ONLY')return;
+ const data=JSON.stringify({...last,downloaded_at:new Date().toISOString(),outbound_effects:0},null,2)+'\n';
+ const href=URL.createObjectURL(new Blob([data],{type:'application/json'}));
+ const a=document.createElement('a');a.href=href;a.download='CoContextRail_R1_PROPOSAL_ONLY.json';document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(href);
+});
+})();
+</script>
+</body></html>

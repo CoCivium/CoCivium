@@ -1,0 +1,26 @@
+{
+  "schema": "CoAll.CoContextRail.BrowserQA.R1",
+  "state": "FAIL",
+  "pass": 0,
+  "fail": 2,
+  "total": 2,
+  "html_sha256": "57b08355d84e36900456718608563cb8e0c4489e2caa351d7db5bad52d9ca03f",
+  "environment": "Chromium in isolated container, local file:// page, no real OS mouse/key capture",
+  "checks": [
+    {
+      "id": "desktop_browser_exception",
+      "status": "FAIL",
+      "error": "Page.goto: net::ERR_BLOCKED_BY_ADMINISTRATOR at file:///mnt/data/cocontext_rail_r1/index.html\nCall log:\n  - navigating to \"file:///mnt/data/cocontext_rail_r1/index.html\", waiting until \"domcontentloaded\"\n"
+    },
+    {
+      "id": "mobile_browser_exception",
+      "status": "FAIL",
+      "error": "Page.goto: net::ERR_BLOCKED_BY_ADMINISTRATOR at file:///mnt/data/cocontext_rail_r1/index.html\nCall log:\n  - navigating to \"file:///mnt/data/cocontext_rail_r1/index.html\", waiting until \"domcontentloaded\"\n"
+    }
+  ],
+  "nonclaims": [
+    "BROWSER_PASS_NE_X2_DEVICE_MAPPING",
+    "NO_INDEPENDENT_HUMAN_ACCEPTANCE",
+    "NO_RECEIVER_ACK"
+  ]
+}

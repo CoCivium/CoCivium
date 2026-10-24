@@ -45,6 +45,12 @@ jobs:
         run: |
           set -euo pipefail
           node examples/conodcothumb/interstice_r0/smoke.cjs --output "$RUNNER_TEMP/coin_smoke_receipt.json"
+      - name: CoContextRail R1 source and shadow policy checks
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 examples/conodcothumb/context_rail_r1/build.py --check
+          node --test examples/conodcothumb/context_rail_r1/tests/test_context_rail.cjs
       - name: Reject failed or held required claims
         shell: bash
         run: |

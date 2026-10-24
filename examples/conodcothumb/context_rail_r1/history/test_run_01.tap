@@ -1,0 +1,603 @@
+TAP version 13
+# CoContextRail R1: declared 91 deterministic tests
+# Subtest: schema pinned
+ok 1 - schema pinned
+  ---
+  duration_ms: 1.699664
+  type: 'test'
+  ...
+# Subtest: pure module schema same
+ok 2 - pure module schema same
+  ---
+  duration_ms: 0.154112
+  type: 'test'
+  ...
+# Subtest: no hardware binding is approved
+ok 3 - no hardware binding is approved
+  ---
+  duration_ms: 0.07357
+  type: 'test'
+  ...
+# Subtest: physical middle native by default
+ok 4 - physical middle native by default
+  ---
+  duration_ms: 0.210206
+  type: 'test'
+  ...
+# Subtest: zero network or hardware calls
+ok 5 - zero network or hardware calls
+  ---
+  duration_ms: 0.086279
+  type: 'test'
+  ...
+# Subtest: zero materialized workers
+ok 6 - zero materialized workers
+  ---
+  duration_ms: 0.096796
+  type: 'test'
+  ...
+# Subtest: no raw input capture
+ok 7 - no raw input capture
+  ---
+  duration_ms: 0.065749
+  type: 'test'
+  ...
+# Subtest: no authorized receiver ACK
+ok 8 - no authorized receiver ACK
+  ---
+  duration_ms: 0.076034
+  type: 'test'
+  ...
+# Subtest: max seven proposals
+ok 9 - max seven proposals
+  ---
+  duration_ms: 0.302024
+  type: 'test'
+  ...
+# Subtest: narrative source works
+ok 10 - narrative source works
+  ---
+  duration_ms: 0.454893
+  type: 'test'
+  ...
+# Subtest: all donors distinct
+ok 11 - all donors distinct
+  ---
+  duration_ms: 0.328203
+  type: 'test'
+  ...
+# Subtest: all donors valid git SHA1
+ok 12 - all donors valid git SHA1
+  ---
+  duration_ms: 0.253691
+  type: 'test'
+  ...
+# Subtest: Q&A&@ categories present
+ok 13 - Q&A&@ categories present
+  ---
+  duration_ms: 0.092529
+  type: 'test'
+  ...
+# Subtest: glyph grammar includes counterfactuals and negation
+ok 14 - glyph grammar includes counterfactuals and negation
+  ---
+  duration_ms: 0.160391
+  type: 'test'
+  ...
+# Subtest: no duplicate enum entries
+ok 15 - no duplicate enum entries
+  ---
+  duration_ms: 0.092899
+  type: 'test'
+  ...
+# Subtest: million-level addressability, not active compute
+ok 16 - million-level addressability, not active compute
+  ---
+  duration_ms: 0.907694
+  type: 'test'
+  ...
+# Subtest: known exact logical product
+ok 17 - known exact logical product
+  ---
+  duration_ms: 0.243015
+  type: 'test'
+  ...
+# Subtest: ordinary middle never intercepts
+ok 18 - ordinary middle never intercepts
+  ---
+  duration_ms: 0.986922
+  type: 'test'
+  ...
+# Subtest: middle pass-through with candidate file
+ok 19 - middle pass-through with candidate file
+  ---
+  duration_ms: 0.140321
+  type: 'test'
+  ...
+# Subtest: unbound gesture held
+ok 20 - unbound gesture held
+  ---
+  duration_ms: 0.075443
+  type: 'test'
+  ...
+# Subtest: garbage gesture held
+ok 21 - garbage gesture held
+  ---
+  duration_ms: 0.058959
+  type: 'test'
+  ...
+# Subtest: sensitive privacy fails closed
+ok 22 - sensitive privacy fails closed
+  ---
+  duration_ms: 0.086941
+  type: 'test'
+  ...
+# Subtest: unclassified privacy fails closed
+ok 23 - unclassified privacy fails closed
+  ---
+  duration_ms: 0.064146
+  type: 'test'
+  ...
+# Subtest: missing privacy fails closed
+ok 24 - missing privacy fails closed
+  ---
+  duration_ms: 0.231908
+  type: 'test'
+  ...
+# Subtest: garbage privacy fails closed
+ok 25 - garbage privacy fails closed
+  ---
+  duration_ms: 0.077106
+  type: 'test'
+  ...
+# Subtest: unknown context no text leak
+ok 26 - unknown context no text leak
+  ---
+  duration_ms: 0.129674
+  type: 'test'
+  ...
+# Subtest: invalid context held
+ok 27 - invalid context held
+  ---
+  duration_ms: 0.063535
+  type: 'test'
+  ...
+# Subtest: explicit sensitive context held
+ok 28 - explicit sensitive context held
+  ---
+  duration_ms: 0.130696
+  type: 'test'
+  ...
+# Subtest: plain preview one suggestion
+ok 29 - plain preview one suggestion
+  ---
+  duration_ms: 0.21281
+  type: 'test'
+  ...
+# Subtest: MORE max seven suggestions
+ok 30 - MORE max seven suggestions
+  ---
+  duration_ms: 0.177186
+  type: 'test'
+  ...
+# Subtest: MORE options distinct
+ok 31 - MORE options distinct
+  ---
+  duration_ms: 0.120782
+  type: 'test'
+  ...
+# Subtest: all suggestions keep non-authorization
+ok 32 - all suggestions keep non-authorization
+  ---
+  duration_ms: 0.163315
+  type: 'test'
+  ...
+# Subtest: user-selected file needed for meaningful capsule
+ok 33 - user-selected file needed for meaningful capsule
+  ---
+  duration_ms: 0.234552
+  type: 'test'
+  ...
+# Subtest: media with declared fixture can propose but never read
+ok 34 - media with declared fixture can propose but never read
+  ---
+  duration_ms: 0.492059
+  type: 'test'
+  ...
+# Subtest: private fixture hash withheld
+ok 35 - private fixture hash withheld
+  ---
+  duration_ms: 0.167402
+  type: 'test'
+  ...
+# Subtest: invalid file hash cannot qualify selection
+ok 36 - invalid file hash cannot qualify selection
+  ---
+  duration_ms: 0.222424
+  type: 'test'
+  ...
+# Subtest: fake user selection flag cannot qualify
+ok 37 - fake user selection flag cannot qualify
+  ---
+  duration_ms: 0.090606
+  type: 'test'
+  ...
+# Subtest: SHA fixture labelled unverified
+ok 38 - SHA fixture labelled unverified
+  ---
+  duration_ms: 0.142775
+  type: 'test'
+  ...
+# Subtest: WHAT_ELSE yields alternate branch
+ok 39 - WHAT_ELSE yields alternate branch
+  ---
+  duration_ms: 0.091027
+  type: 'test'
+  ...
+# Subtest: NOT_ELSE preserves null baseline
+ok 40 - NOT_ELSE preserves null baseline
+  ---
+  duration_ms: 0.062974
+  type: 'test'
+  ...
+# Subtest: WHY_NOT yields falsifier
+ok 41 - WHY_NOT yields falsifier
+  ---
+  duration_ms: 0.056045
+  type: 'test'
+  ...
+# Subtest: WHO checks consent not identity
+ok 42 - WHO checks consent not identity
+  ---
+  duration_ms: 0.061953
+  type: 'test'
+  ...
+# Subtest: WHEREFORE asks purpose not authority
+ok 43 - WHEREFORE asks purpose not authority
+  ---
+  duration_ms: 0.061863
+  type: 'test'
+  ...
+# Subtest: @ route no external send
+ok 44 - @ route no external send
+  ---
+  duration_ms: 0.07984
+  type: 'test'
+  ...
+# Subtest: G_d label never becomes evidence
+ok 45 - G_d label never becomes evidence
+  ---
+  duration_ms: 0.13306
+  type: 'test'
+  ...
+# Subtest: ET label never triggers a feed
+not ok 46 - ET label never triggers a feed
+  ---
+  duration_ms: 1.192582
+  type: 'test'
+  location: '/mnt/data/cocontext_rail_r1/tests/test_context_rail.cjs:14:21'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + 'WHAT_GENERAL'
+    - 'SEPARATE_HYPOTHESIS'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'SEPARATE_HYPOTHESIS'
+  actual: 'WHAT_GENERAL'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (/mnt/data/cocontext_rail_r1/tests/test_context_rail.cjs:60:103)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: device action only read-only
+not ok 47 - device action only read-only
+  ---
+  duration_ms: 0.184658
+  type: 'test'
+  location: '/mnt/data/cocontext_rail_r1/tests/test_context_rail.cjs:14:21'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + 'WHAT_GENERAL'
+    - 'READ_ONLY_HEALTH'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'READ_ONLY_HEALTH'
+  actual: 'WHAT_GENERAL'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (/mnt/data/cocontext_rail_r1/tests/test_context_rail.cjs:61:78)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: outreach action draft not send
+ok 48 - outreach action draft not send
+  ---
+  duration_ms: 0.096024
+  type: 'test'
+  ...
+# Subtest: inverse is not reverse causation
+ok 49 - inverse is not reverse causation
+  ---
+  duration_ms: 0.136886
+  type: 'test'
+  ...
+# Subtest: NULL_BASELINE ranking survives
+ok 50 - NULL_BASELINE ranking survives
+  ---
+  duration_ms: 0.267602
+  type: 'test'
+  ...
+# Subtest: future scenario remains proposed
+ok 51 - future scenario remains proposed
+  ---
+  duration_ms: 0.098307
+  type: 'test'
+  ...
+# Subtest: question default unknown never broadens authority
+ok 52 - question default unknown never broadens authority
+  ---
+  duration_ms: 0.181152
+  type: 'test'
+  ...
+# Subtest: lenses all have zero effect
+ok 53 - lenses all have zero effect
+  ---
+  duration_ms: 0.182865
+  type: 'test'
+  ...
+# Subtest: contexts all have zero effect
+ok 54 - contexts all have zero effect
+  ---
+  duration_ms: 0.385339
+  type: 'test'
+  ...
+# Subtest: questions all have zero effect
+ok 55 - questions all have zero effect
+  ---
+  duration_ms: 0.269144
+  type: 'test'
+  ...
+# Subtest: relations all have zero effect
+ok 56 - relations all have zero effect
+  ---
+  duration_ms: 0.200441
+  type: 'test'
+  ...
+# Subtest: surfaces all have zero effect
+ok 57 - surfaces all have zero effect
+  ---
+  duration_ms: 0.125569
+  type: 'test'
+  ...
+# Subtest: times all have zero effect
+ok 58 - times all have zero effect
+  ---
+  duration_ms: 0.132439
+  type: 'test'
+  ...
+# Subtest: all physical gestures have zero effect
+ok 59 - all physical gestures have zero effect
+  ---
+  duration_ms: 0.14635
+  type: 'test'
+  ...
+# Subtest: replay seed stable
+ok 60 - replay seed stable
+  ---
+  duration_ms: 0.287922
+  type: 'test'
+  ...
+# Subtest: different seed changes indices
+ok 61 - different seed changes indices
+  ---
+  duration_ms: 0.11332
+  type: 'test'
+  ...
+# Subtest: sampling returns at most 64
+ok 62 - sampling returns at most 64
+  ---
+  duration_ms: 0.079009
+  type: 'test'
+  ...
+# Subtest: no duplicate sampled candidate index
+ok 63 - no duplicate sampled candidate index
+  ---
+  duration_ms: 0.078989
+  type: 'test'
+  ...
+# Subtest: zero selection creates no index
+ok 64 - zero selection creates no index
+  ---
+  duration_ms: 0.058418
+  type: 'test'
+  ...
+# Subtest: reject 65 candidates
+ok 65 - reject 65 candidates
+  ---
+  duration_ms: 0.517617
+  type: 'test'
+  ...
+# Subtest: reject negative candidates
+ok 66 - reject negative candidates
+  ---
+  duration_ms: 0.092018
+  type: 'test'
+  ...
+# Subtest: reject noninteger candidate cap
+ok 67 - reject noninteger candidate cap
+  ---
+  duration_ms: 0.073601
+  type: 'test'
+  ...
+# Subtest: reject oversized seed
+ok 68 - reject oversized seed
+  ---
+  duration_ms: 0.087642
+  type: 'test'
+  ...
+# Subtest: decode all indices in range
+ok 69 - decode all indices in range
+  ---
+  duration_ms: 0.466721
+  type: 'test'
+  ...
+# Subtest: decode rejects out of range
+ok 70 - decode rejects out of range
+  ---
+  duration_ms: 0.101893
+  type: 'test'
+  ...
+# Subtest: decode rejects negative
+ok 71 - decode rejects negative
+  ---
+  duration_ms: 0.075553
+  type: 'test'
+  ...
+# Subtest: reject altered policy schema
+ok 72 - reject altered policy schema
+  ---
+  duration_ms: 0.111047
+  type: 'test'
+  ...
+# Subtest: reject array as packet
+ok 73 - reject array as packet
+  ---
+  duration_ms: 1.020714
+  type: 'test'
+  ...
+# Subtest: exact generated HTML includes core source
+ok 74 - exact generated HTML includes core source
+  ---
+  duration_ms: 0.06605
+  type: 'test'
+  ...
+# Subtest: HTML includes exact embedded manifest values
+ok 75 - HTML includes exact embedded manifest values
+  ---
+  duration_ms: 0.284287
+  type: 'test'
+  ...
+# Subtest: strict CSP denies network
+ok 76 - strict CSP denies network
+  ---
+  duration_ms: 0.096645
+  type: 'test'
+  ...
+# Subtest: strict CSP denies forms
+ok 77 - strict CSP denies forms
+  ---
+  duration_ms: 0.056384
+  type: 'test'
+  ...
+# Subtest: no global input hooks
+ok 78 - no global input hooks
+  ---
+  duration_ms: 0.132028
+  type: 'test'
+  ...
+# Subtest: no clipboard operations
+ok 79 - no clipboard operations
+  ---
+  duration_ms: 0.14645
+  type: 'test'
+  ...
+# Subtest: no camera microphone or screen recording
+ok 80 - no camera microphone or screen recording
+  ---
+  duration_ms: 0.187321
+  type: 'test'
+  ...
+# Subtest: no fetch/request send APIs
+ok 81 - no fetch/request send APIs
+  ---
+  duration_ms: 0.256626
+  type: 'test'
+  ...
+# Subtest: no persistent profiles
+ok 82 - no persistent profiles
+  ---
+  duration_ms: 0.242905
+  type: 'test'
+  ...
+# Subtest: download only via explicit click
+ok 83 - download only via explicit click
+  ---
+  duration_ms: 0.064196
+  type: 'test'
+  ...
+# Subtest: download initially disabled
+ok 84 - download initially disabled
+  ---
+  duration_ms: 0.322525
+  type: 'test'
+  ...
+# Subtest: no source bytes or private messages encoded
+ok 85 - no source bytes or private messages encoded
+  ---
+  duration_ms: 0.160301
+  type: 'test'
+  ...
+# Subtest: keyboard focus visible
+ok 86 - keyboard focus visible
+  ---
+  duration_ms: 0.071317
+  type: 'test'
+  ...
+# Subtest: mobile layout handled
+ok 87 - mobile layout handled
+  ---
+  duration_ms: 0.104557
+  type: 'test'
+  ...
+# Subtest: reduced motion supported
+ok 88 - reduced motion supported
+  ---
+  duration_ms: 0.064427
+  type: 'test'
+  ...
+# Subtest: glyph dictionary provides plaintext
+ok 89 - glyph dictionary provides plaintext
+  ---
+  duration_ms: 0.047782
+  type: 'test'
+  ...
+# Subtest: no more than 7 after any combination
+ok 90 - no more than 7 after any combination
+  ---
+  duration_ms: 1.847186
+  type: 'test'
+  ...
+# Subtest: no auto G_d truth
+ok 91 - no auto G_d truth
+  ---
+  duration_ms: 0.071988
+  type: 'test'
+  ...
+1..91
+# tests 91
+# suites 0
+# pass 89
+# fail 2
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 128.731

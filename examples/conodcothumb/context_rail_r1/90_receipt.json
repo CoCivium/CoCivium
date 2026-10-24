@@ -1,0 +1,54 @@
+{
+  "CoStead_landed": false,
+  "browser_ui_tests": {
+    "direct_file_acceptance": "HELD",
+    "failed": 0,
+    "historical_rank_failure": "history/browser_R1B_48_PASS_2_FAIL.json",
+    "initial_file_navigation": "FAIL_BLOCKED_BY_ADMINISTRATOR",
+    "passed": 50,
+    "status": "PASS"
+  },
+  "canon": false,
+  "coex": false,
+  "created_at": "2026-10-24T19:57:00.806575+00:00",
+  "human_report": "Perixx keyboard works on X2, separate human observation",
+  "independent_human_ux": "HELD",
+  "logical_descriptors": 2313360,
+  "materialized_workers": 0,
+  "max_visible_candidates": 7,
+  "native_coorbware": "HELD",
+  "node_unit_tests": {
+    "failed": 0,
+    "history_initial": "history/test_run_01.tap",
+    "initial": "FAIL_89_PASS_2_FAIL",
+    "passed": 91,
+    "status": "PASS"
+  },
+  "nonclaims": [
+    "STATIC_SOURCE_NE_NATIVE_DEVICE_RUNTIME",
+    "DEMO_PROPOSAL_NE_REAL_ACTION",
+    "BROWSER_RENDER_NE_HUMAN_ACCEPTANCE",
+    "LOCAL_IS_NOT_LANDED",
+    "VALIDATION_IS_NOT_ACCEPTANCE",
+    "NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF",
+    "NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE",
+    "HASHING_IS_NOT_SEMANTIC_INGESTION",
+    "DISCOVERED_SET_IS_NOT_COMPLETE_HISTORY"
+  ],
+  "physical_middle_thumb": "HELD",
+  "receiver_ack": false,
+  "schema": "CoAll.CoContextRail.LocalSourceReceipt.R1",
+  "scope": "isolated container source unit tests, exact build check, extracted HTML browser interaction",
+  "source_files_sha256": {
+    "CoContextRailR1.js": "95d765463b6680f29397fd616448ef52cb0e2d04dd57a1fdc72dae2257d6f3f3",
+    "README.md": "b4aaeb7ba22b98e280a9857b1f2fc74bc94c47268e8271c67ea4e0218c784189",
+    "build.py": "87b36209464075c1ef1c59558839770d0d66e63a618a8703f38944db0b1edf43",
+    "index.html": "74a885f261669cfa7fee2e54d616506b2b6dc452f1b51abf9cad614615450e56",
+    "manifest.json": "bc06c00f22b42b441f48046956dcc4052fddb093e100d922237946fa456ef8e1",
+    "template.html": "06244b79630d6490bed01e4a6d120e46b465661936e79c63cc01ceb40d98c11c",
+    "tests/browser_qa.py": "79de56a9089ca80862f911e01cf9921bd4b5c6f1ce014f981cf48b59e3343b97",
+    "tests/test_context_rail.cjs": "42ec96c364c76c468c7253426b86363d9f526a5c606677e945c8f4ee16ce1bd6"
+  },
+  "stage": "VERIFIED_LOCAL",
+  "x2_device_observation": "OFFLINE_TO_DESKTOP_COMMANDER"
+}

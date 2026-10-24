@@ -1,0 +1,63 @@
+{
+  "schema": "CoAll.CoContextRail.R1",
+  "work_id": "conod-cothumb:context-rail:r1:shadow",
+  "version": "2026-10-24-R1",
+  "scope": "PUBLIC_SAFE_SYNTHETIC_PROPOSAL",
+  "authority": "NONE",
+  "default_physical_middle_click": "NATIVE_PASS_THROUGH",
+  "approved_physical_gesture": "NONE_UNTIL_X2_RECEIVER_PROOF",
+  "candidate_binding": "EXPLICIT_LOGI_ACTIONS_RING_CTRL_ALT_SHIFT_N_CONFLICT_CHECK_REQUIRED",
+  "max_visible_suggestions": 7,
+  "max_materialized_workers": 0,
+  "network_calls": 0,
+  "device_io_calls": 0,
+  "provider_calls": 0,
+  "raw_input_capture": false,
+  "receiver_ack": false,
+  "contexts": [
+    "UNKNOWN", "FILE", "MEDIA", "WRITING", "CODE", "MAP", "ORB", "RESEARCH", "QUESTION", "DEVICE", "FLEET", "OUTREACH", "DESIGN", "CULTURE", "SENSITIVE"
+  ],
+  "questions": [
+    "WHAT", "WHY", "HOW", "WHEN", "WHERE", "WHO", "WHEREFORE", "WHICH", "WHAT_IF", "WHY_NOT", "WHAT_NOT", "WHAT_ELSE", "NOT_ELSE", "HOW_MUCH", "HOW_KNOW", "WHAT_NEXT", "AT_RECEIVER"
+  ],
+  "relations": [
+    "SOURCE", "PRIOR", "INVERSE", "NEGATION", "COMPLEMENT", "ELSE", "NOT_ELSE", "NULL_BASELINE", "FALSIFIER", "CHALLENGE", "LINEAGE", "DELTA", "TEMPORAL", "RECOVERY", "RECEIVER", "COST", "SCOPE", "UNCERTAINTY"
+  ],
+  "lenses": [
+    "PRACTICAL", "SCIENTIFIC", "STORY", "CULTURAL", "MATHEMATICAL", "ACCESSIBLE", "SKEPTICAL", "G_D_HYPOTHESIS", "ET_HYPOTHESIS"
+  ],
+  "times": ["PRIOR", "PRESENT", "FUTURE_SCENARIO", "COUNTERFACTUAL", "REPLAY", "EXPIRING", "UNKNOWN_TIME"],
+  "surfaces": ["TEXT", "GLYPH", "COMAP", "COORB", "RICH_MEDIA", "SPEC", "CODE", "ACCESSIBLE"],
+  "glyphs": {
+    "?": "Question or unresolved claim",
+    ">": "Greater-than comparison only with declared units; otherwise next-step label",
+    "\u2192": "Proposed direction; no effect inferred",
+    "\u2194": "Two-way or inverse candidate, not inverse causation",
+    "\u00ac": "Negation candidate, not established falsity",
+    "\u2205": "Empty within an evidenced closed domain, never universal absence by default",
+    "\u2282": "Scoped inclusion, never inherited authority",
+    "\u2260": "Different, not necessarily contradictory",
+    "\u25c7": "Candidate proposal, not execution",
+    "\u0394": "Source-bound change, not automatic improvement",
+    "\u29c1": "Combine resources within inherited limits",
+    "\u29c2": "Denied or incompatible, with private metadata redacted",
+    "\u25ce": "Observer/selected lens; not evidence of objective observation",
+    "\u27f3": "Bounded replay or cycle, not infinite runtime",
+    "\u221e": "Open-ended logical address space, not unbounded computing",
+    "@": "Attributed recipient/role candidate, never automatic broadcast",
+    "\u2713": "Scoped PASS with linked evidence",
+    "\u2715": "Scoped FAIL preserved",
+    "\u23f8": "HELD or paused",
+    "\u00bf": "Challenge framing; question, not a conclusion"
+  },
+  "source_donors": [
+    {"path":"examples/conodcothumb/CoNodCoThumbPolicyR0.mjs","git_blob":"5651f1d0dfad829c401f038ae021a555a919319e"},
+    {"path":"docs/Architecture/COINTERSTICE_COINVERSION_COGLYPH_INPUT_FABRIC_R0_20261024.md","git_blob":"1be02f2265542f6ea6010c2c6d512cd5c92bc5e8"},
+    {"path":"docs/Architecture/CORELATIONAL_UX_PREDICTIVE_INPUT_R0.md","git_blob":"6f74989df170c5381eb5c888fd6b9ee38c336bdb"},
+    {"path":"docs/Architecture/COQA_QUESTION_COMMONS_R0.md","git_blob":"b0dc1f12faebf6397c055fb31adf6b6d10fd0c66"},
+    {"path":"docs/Architecture/CODOODLE_CONEX_EXPERIMENT_LAUNCHER_R0_20261024.md","git_blob":"903d1d52179d62d44f1c70053e490ea6e1fe1023"}
+  ],
+  "nonclaims": [
+    "NATIVE_MIDDLE_CLICK_NOT_REMAPPED", "POLICY_NE_X2_RUNTIME", "NO_GLOBAL_INPUT_HOOK", "NO_CREDENTIAL_CAPTURE", "NO_CAMERA_OR_MIC", "NO_PROVIDER_ACCOUNT_CONTROL", "NO_EXTERNAL_SEND", "ZERO_LIVE_WORKERS", "PREDICTED_NE_AUTHORIZED", "G_D_AND_ET_ARE_SPECULATIVE_LENSES", "MANY_LOGICAL_OPTIONS_NE_MANY_RUNNING_PROCESSES", "POINTER_NE_ACK", "LOCAL_IS_NOT_LANDED", "VALIDATION_IS_NOT_ACCEPTANCE"
+  ]
+}

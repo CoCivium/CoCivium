@@ -1,0 +1,216 @@
+{
+  "schema": "CoAll.CoContextRail.BrowserQA.R1",
+  "state": "PASS",
+  "pass": 50,
+  "fail": 0,
+  "total": 50,
+  "html_sha256": "74a885f261669cfa7fee2e54d616506b2b6dc452f1b51abf9cad614615450e56",
+  "environment": "Chromium in isolated container, extracted offline HTML injected into page, direct file:// blocked by browser sandbox, no real OS input",
+  "checks": [
+    {
+      "id": "desktop_header",
+      "status": "PASS"
+    },
+    {
+      "id": "desktop_source_options",
+      "status": "PASS"
+    },
+    {
+      "id": "desktop_glyph_count",
+      "status": "PASS"
+    },
+    {
+      "id": "desktop_count_millions",
+      "status": "PASS"
+    },
+    {
+      "id": "desktop_no_horizontal_overflow",
+      "status": "PASS"
+    },
+    {
+      "id": "desktop_download_disabled_by_default",
+      "status": "PASS"
+    },
+    {
+      "id": "desktop_visible_preview",
+      "status": "PASS"
+    },
+    {
+      "id": "desktop_default_what_else",
+      "status": "PASS"
+    },
+    {
+      "id": "desktop_one_primary_option",
+      "status": "PASS"
+    },
+    {
+      "id": "desktop_bounded_many_options",
+      "status": "PASS"
+    },
+    {
+      "id": "desktop_native_middle_pass_through",
+      "status": "PASS"
+    },
+    {
+      "id": "desktop_native_no_options",
+      "status": "PASS"
+    },
+    {
+      "id": "desktop_privacy_block",
+      "status": "PASS"
+    },
+    {
+      "id": "desktop_privacy_export_disabled",
+      "status": "PASS"
+    },
+    {
+      "id": "desktop_media_needs_selection",
+      "status": "PASS"
+    },
+    {
+      "id": "desktop_synthetic_media",
+      "status": "PASS"
+    },
+    {
+      "id": "desktop_et_scoped",
+      "status": "PASS"
+    },
+    {
+      "id": "desktop_at_not_send",
+      "status": "PASS"
+    },
+    {
+      "id": "desktop_private_preview",
+      "status": "PASS"
+    },
+    {
+      "id": "desktop_private_reference_redacted",
+      "status": "PASS"
+    },
+    {
+      "id": "desktop_download_has_zero_effect",
+      "status": "PASS"
+    },
+    {
+      "id": "desktop_reset_erases_preview",
+      "status": "PASS"
+    },
+    {
+      "id": "desktop_reset_disables_export",
+      "status": "PASS"
+    },
+    {
+      "id": "desktop_no_external_requests",
+      "status": "PASS"
+    },
+    {
+      "id": "desktop_no_js_errors",
+      "status": "PASS"
+    },
+    {
+      "id": "mobile_header",
+      "status": "PASS"
+    },
+    {
+      "id": "mobile_source_options",
+      "status": "PASS"
+    },
+    {
+      "id": "mobile_glyph_count",
+      "status": "PASS"
+    },
+    {
+      "id": "mobile_count_millions",
+      "status": "PASS"
+    },
+    {
+      "id": "mobile_no_horizontal_overflow",
+      "status": "PASS"
+    },
+    {
+      "id": "mobile_download_disabled_by_default",
+      "status": "PASS"
+    },
+    {
+      "id": "mobile_visible_preview",
+      "status": "PASS"
+    },
+    {
+      "id": "mobile_default_what_else",
+      "status": "PASS"
+    },
+    {
+      "id": "mobile_one_primary_option",
+      "status": "PASS"
+    },
+    {
+      "id": "mobile_bounded_many_options",
+      "status": "PASS"
+    },
+    {
+      "id": "mobile_native_middle_pass_through",
+      "status": "PASS"
+    },
+    {
+      "id": "mobile_native_no_options",
+      "status": "PASS"
+    },
+    {
+      "id": "mobile_privacy_block",
+      "status": "PASS"
+    },
+    {
+      "id": "mobile_privacy_export_disabled",
+      "status": "PASS"
+    },
+    {
+      "id": "mobile_media_needs_selection",
+      "status": "PASS"
+    },
+    {
+      "id": "mobile_synthetic_media",
+      "status": "PASS"
+    },
+    {
+      "id": "mobile_et_scoped",
+      "status": "PASS"
+    },
+    {
+      "id": "mobile_at_not_send",
+      "status": "PASS"
+    },
+    {
+      "id": "mobile_private_preview",
+      "status": "PASS"
+    },
+    {
+      "id": "mobile_private_reference_redacted",
+      "status": "PASS"
+    },
+    {
+      "id": "mobile_download_has_zero_effect",
+      "status": "PASS"
+    },
+    {
+      "id": "mobile_reset_erases_preview",
+      "status": "PASS"
+    },
+    {
+      "id": "mobile_reset_disables_export",
+      "status": "PASS"
+    },
+    {
+      "id": "mobile_no_external_requests",
+      "status": "PASS"
+    },
+    {
+      "id": "mobile_no_js_errors",
+      "status": "PASS"
+    }
+  ],
+  "nonclaims": [
+    "BROWSER_PASS_NE_X2_DEVICE_MAPPING",
+    "NO_INDEPENDENT_HUMAN_ACCEPTANCE",
+    "NO_RECEIVER_ACK"
+  ]
+}
