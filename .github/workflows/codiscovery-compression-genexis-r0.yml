@@ -1,0 +1,26 @@
+name: CoDiscovery Compression GenExIs R0
+
+on:
+  pull_request:
+    paths:
+      - "docs/Architecture/CODISCOVERY_COMPRESSION_GENEXIS_R0.md"
+      - "fixtures/relations/codiscovery_compression_genexis_r0.json"
+      - "tools/validate_codiscovery_compression_genexis_r0.py"
+      - ".github/workflows/codiscovery-compression-genexis-r0.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python tools/validate_codiscovery_compression_genexis_r0.py
