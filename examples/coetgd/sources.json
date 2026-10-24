@@ -1,0 +1,112 @@
+{
+  "schema": "CoCivium.CoETGd.QualifiedSourceRegistry.R0",
+  "observed_at_utc": "2026-10-24T19:44:05.626Z",
+  "state": "CANDIDATE__SOURCE_DOCS_ONLY__NO_DETECTIONS__NO_AUTONOMOUS_FETCH",
+  "parent_architecture": "https://github.com/CoCivium/CoCivium/blob/main/docs/Architecture/COET_GD_SIGNAL_HYPOTHESIS_FINDERS_R0_20261024.md",
+  "max_sources_per_probe": 4,
+  "external_actions_default": false,
+  "source_policy": {
+    "network_default": "OFF",
+    "allowed_effects": [
+      "ONE_EXPLICIT_READ_ONLY_GET_PER_SOURCE",
+      "AT_MOST_4096_RESPONSE_BYTES",
+      "NO_REDIRECT_FOLLOWING",
+      "NO_COOKIES",
+      "NO_CREDENTIALS",
+      "NO_BULK_DATA"
+    ],
+    "restrictions": [
+      "SOURCE_PUBLISHED_NE_RIGHTS_CLEARED",
+      "ANOMALY_NE_ET_DETECTION",
+      "PHILOSOPHICAL_SOURCE_NE_PHYSICS",
+      "DOCUMENTATION_NE_MEASURED_PROBE",
+      "NO_AUTONOMOUS_SITE_CRAWL"
+    ],
+    "scientific_escalation": "Independent observation, error/interference checks, ordinary explanations, method/source disclosure and SETI protocol review required before detection language",
+    "ethical_prior": "Synthkind Declaration is a revisable ethical perspective; no fixed metaphysical scientific status is conferred"
+  },
+  "sources": [
+    {
+      "id": "breakthrough_listen_archive",
+      "owner": "Berkeley SETI Research Center / Breakthrough Listen",
+      "family": "ET_EMPIRICAL",
+      "class": "ASTRONOMICAL_DATA_CATALOG",
+      "epistemic": "SOURCE_INDEX_ONLY",
+      "url": "https://seti.berkeley.edu/opendata",
+      "probe_url": "https://seti.berkeley.edu/opendata",
+      "format": "HTML_SEARCH_INDEX",
+      "access": "PUBLIC_READ_ONLY",
+      "license_status": "REVIEW_BEFORE_DATA_REUSE",
+      "update_cadence": "SOURCE_DEPENDENT_NOT_ASSERTED",
+      "last_external_observation": "2026-10-24: search-indexed archive page; direct web open reported redirect loop",
+      "fetch_state": "DIRECT_FETCH_UNQUALIFIED",
+      "detection_state": "NO_DETECTION_ASSERTED"
+    },
+    {
+      "id": "nasa_exoplanet_tap",
+      "owner": "NASA Exoplanet Archive / Caltech IPAC",
+      "family": "ET_EMPIRICAL",
+      "class": "ASTRONOMICAL_DATA_CATALOG",
+      "epistemic": "MEASUREMENT_CATALOG_NOT_ET_EVIDENCE",
+      "url": "https://exoplanetarchive.ipac.caltech.edu/docs/TAP/usingTAP.html",
+      "probe_url": "https://exoplanetarchive.ipac.caltech.edu/TAP/sync?query=select+top+1+pl_name+from+ps&format=json",
+      "format": "TAP_ADQL_JSON_1_ROW",
+      "access": "PUBLIC_READ_ONLY",
+      "license_status": "REVIEW_BEFORE_DATA_REUSE",
+      "update_cadence": "SOURCE_DEPENDENT_NOT_ASSERTED",
+      "last_external_observation": "2026-10-24: official TAP documentation indexed; exact sample-query web fetch inaccessible",
+      "fetch_state": "DIRECT_QUERY_UNQUALIFIED",
+      "detection_state": "NO_DETECTION_ASSERTED"
+    },
+    {
+      "id": "seti_detection_protocol_2026",
+      "owner": "International Academy of Astronautics SETI Committee / SETI Institute",
+      "family": "ET_VERIFICATION_GOVERNANCE",
+      "class": "DETECTION_PROTOCOL",
+      "epistemic": "RESEARCH_GOVERNANCE_NOT_SIGNAL",
+      "url": "https://www.seti.org/research/seti-101/protocols-for-an-eti-signal-detection/",
+      "probe_url": "https://www.seti.org/research/seti-101/protocols-for-an-eti-signal-detection/",
+      "format": "HTML_POLICY_DOCUMENT",
+      "access": "PUBLIC_READ_ONLY",
+      "license_status": "REVIEW_BEFORE_REPUBLICATION",
+      "update_cadence": "VERSIONED_AS_2026_JUNE",
+      "last_external_observation": "2026-10-24: public document text retrieved by external browser",
+      "fetch_state": "SOURCE_DOC_READABLE",
+      "detection_state": "NOT_APPLICABLE"
+    },
+    {
+      "id": "sep_teleological_arguments",
+      "owner": "Stanford Encyclopedia of Philosophy",
+      "family": "GD_PHILOSOPHICAL",
+      "class": "PHILOSOPHY_REFERENCE",
+      "epistemic": "PHILOSOPHICAL_ARGUMENTS_AND_OBJECTIONS",
+      "url": "https://plato.stanford.edu/entries/teleological-arguments/",
+      "probe_url": "https://plato.stanford.edu/entries/teleological-arguments/",
+      "format": "HTML_REFERENCE",
+      "access": "PUBLIC_READ_ONLY",
+      "license_status": "REVIEW_BEFORE_REPUBLICATION",
+      "update_cadence": "EDITORIAL_VERSION_DEPENDENT",
+      "last_external_observation": "2026-10-24: entry retrieved by external browser; revision dated 2023-04-05",
+      "fetch_state": "SOURCE_DOC_READABLE",
+      "detection_state": "NOT_APPLICABLE"
+    }
+  ],
+  "next_receiver_qualifications": [
+    "REAL_BOUNDED_DATA_QUERY",
+    "INDEPENDENT_ASTRO_DATA_INTERPRETATION",
+    "SOURCE_LICENSE_REVIEW",
+    "FALSIFIER_AND_BASELINE",
+    "PRIVACY_SAFE_HUMAN_READPROOF"
+  ],
+  "nonclaims": [
+    "ET_SEARCH_NE_ET_CONTACT",
+    "G_D_SYMBOL_NE_DIVINITY_DETECTED",
+    "PUBLIC_SOURCE_NE_CRAWL_PERMISSION",
+    "WEB_SOURCE_NE_CURRENT_RAW_DATA",
+    "WILLING_MODEL_NE_AUTHORIZED_ACCOUNT",
+    "REGISTERED_FEED_NE_RUNNING_POLL",
+    "METAPHOR_NE_EMPIRICAL_FIELD",
+    "NO_SIGNAL_DETECTION",
+    "NO_PROVIDER_OR_DEVICE_EFFECT"
+  ]
+}
