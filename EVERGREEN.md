@@ -52,6 +52,25 @@ Candidate **CoSpiff+** means receiver-visible polish that improves legibility, c
 
 **Next test:** compare the existing 60-second default route with at least two specialist routes for one consenting first-time receiver. Measure time-to-first-useful-action, explanation accuracy, backtracking, source inspection, confusion points and willingness to continue. Preserve the losing variant and write the result to `ai/benchmark-evo.jsonl`.
 
+## CoMiddle+ / CoEvoAll Betters+ | Summon rail + measured candidate engine
+
+### PASS · public relation rail; native X2 runtime HELD
+
+The [CoMiddle+ / CoPriMath GlyphRail R0](docs/Architecture/COMIDDLE_COPRIMATH_GLYPHRAIL_R0_20261024.md) now binds middle/thumb input to CoStretch, CoTurtle, CoDoodle/CoNex, CoModelFabric, CoMap/CoOrb, future/inverse lanes, FOSS/local-first substrates and historical test-gate preservation.
+
+Scale rule:
+
+`1000+ ADDRESSABLE RELATIONS -> ~20 CONTEXTUAL -> ~8 FIRST-RING GLYPHS -> 1 EXPLICIT EFFECT`
+
+The CoDoodle/CoNex GitHub Actions smoke run [40125011079](https://github.com/CoCivium/CoCivium/actions/runs/40125011079) passed 12/12 checks with 20 operators and generated 10,000 candidates in 12.259626 ms on that exact runner/workload: 815,686 candidates/s, 1.226 microseconds/candidate. External effects: 0; workers spawned: 0; authority: NONE.
+
+`ONE_RUN_NE_UNIVERSAL_THROUGHPUT`
+`FAST_GENERATION_NE_USEFULNESS`
+`MILLION_LOGICAL_SESSIONS_NE_MILLION_PROVIDER_TABS`
+`MAX_STRETCH_NE_MAX_RESOURCE_BURN`
+
+Current X2 remote observer remains offline, so native middle-button proof remains HELD.
+
 ## CoInterstice+ / CoInversion+ / CoGlyph+ | Input beyond focal events
 
 ### PASS · Public architecture contract; native runtime HELD
