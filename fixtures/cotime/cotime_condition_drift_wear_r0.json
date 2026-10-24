@@ -1,0 +1,119 @@
+{
+  "schema": "CoTimeConditionDriftWear.R0",
+  "state": "SYNTHETIC_CONDITION_TRAJECTORY__NO_EFFECT_AUTHORITY",
+  "observations": [
+    {
+      "id": "W01",
+      "object": "shoe:A",
+      "time": 1,
+      "condition": 100,
+      "usage": 0,
+      "context": "DRY_INDOOR",
+      "functioning": true
+    },
+    {
+      "id": "W02",
+      "object": "shoe:A",
+      "time": 2,
+      "condition": 90,
+      "usage": 100,
+      "context": "DRY_INDOOR",
+      "functioning": true
+    },
+    {
+      "id": "W03",
+      "object": "shoe:A",
+      "time": 3,
+      "condition": 78,
+      "usage": 100,
+      "context": "WET_ABRASIVE",
+      "functioning": true
+    }
+  ],
+  "comparison": [
+    {
+      "id": "C01",
+      "object": "shoe:B",
+      "age": 5,
+      "condition": 92,
+      "usage": 30,
+      "context": "LIGHT_USE"
+    },
+    {
+      "id": "C02",
+      "object": "shoe:C",
+      "age": 2,
+      "condition": 60,
+      "usage": 300,
+      "context": "HEAVY_ABRASIVE"
+    }
+  ],
+  "forecast": {
+    "source_observation_id": "W03",
+    "threshold": 50,
+    "horizon_end": 6,
+    "assumptions": [
+      "future_context_similar_to_recent"
+    ],
+    "predicted_crossing_time": 6,
+    "replacement_authority": false
+  },
+  "maintenance": {
+    "before_condition": 78,
+    "after_condition": 88,
+    "role_identity_before": "shoe:A",
+    "role_identity_after": "shoe:A"
+  },
+  "successor": {
+    "prior_role": "shoe:A",
+    "successor_role": "shoe:A-successor",
+    "continuity_relation": "REPLACES_FOR_WEAR_SCOPE",
+    "continuity_preserved": true,
+    "identical_material_object": false
+  },
+  "visible_hidden": {
+    "visible_wear": true,
+    "hidden_failure_proven": false
+  },
+  "negative_cases": [
+    {
+      "id": "N01_AGE_EQUALS_CONDITION",
+      "claim": "AGE_DETERMINES_CONDITION",
+      "expected_valid": false
+    },
+    {
+      "id": "N02_FORECAST_EQUALS_FAILURE",
+      "claim": "PREDICTED_CROSSING_IS_FAILURE_FACT",
+      "expected_valid": false
+    },
+    {
+      "id": "N03_FORECAST_AUTHORIZES_REPLACEMENT",
+      "claim": "FORECAST_GRANTS_REPLACEMENT_AUTHORITY",
+      "expected_valid": false
+    },
+    {
+      "id": "N04_MAINTENANCE_CHANGES_IDENTITY",
+      "claim": "MAINTENANCE_FORCES_IDENTITY_LOSS",
+      "expected_valid": false
+    },
+    {
+      "id": "N05_VISIBLE_EQUALS_HIDDEN_FAILURE",
+      "claim": "VISIBLE_WEAR_PROVES_HIDDEN_FAILURE",
+      "expected_valid": false
+    }
+  ],
+  "rails": [
+    "FUNCTIONING_NE_UNCHANGED",
+    "WEAR_NE_FAILURE",
+    "AGE_NE_CONDITION",
+    "USAGE_NE_WEAR_RATE_WITHOUT_CONTEXT",
+    "OBSERVED_CONDITION_NE_PREDICTED_TRAJECTORY",
+    "PREDICTED_WEAR_NE_FAILURE_FACT",
+    "THRESHOLD_FORECAST_NE_REPLACEMENT_COMMAND",
+    "MAINTENANCE_NE_IDENTITY_LOSS",
+    "REPLACEMENT_NE_CONTINUITY_LOSS",
+    "IDENTITY_CONTINUITY_NE_SUBSTRATE_IMMUTABILITY",
+    "VISIBLE_WEAR_NE_HIDDEN_FAILURE_PROOF",
+    "VALIDATION_IS_NOT_ACCEPTANCE"
+  ]
+}

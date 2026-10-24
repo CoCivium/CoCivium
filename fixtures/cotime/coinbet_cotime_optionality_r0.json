@@ -1,0 +1,66 @@
+{
+  "schema": "CoInBetCoTimeOptionality.R0",
+  "state": "CANDIDATE_RELATIONAL_PROJECTION__NO_RUNTIME_OR_FINANCIAL_AUTHORITY",
+  "cases": [
+    {
+      "id": "I01_EXPERIENCE",
+      "input": "felt_right_left_asymmetry",
+      "expected": [
+        "OBSERVED_EXPERIENCE",
+        "MECHANISM_UNPROVEN"
+      ]
+    },
+    {
+      "id": "I02_SPOOKY",
+      "input": "surprising_relation_without_mechanism",
+      "expected": [
+        "UNKNOWN_MECHANISM",
+        "NO_PARANORMAL_INFERENCE"
+      ]
+    },
+    {
+      "id": "I03_FORECAST",
+      "input": "likely_future_state",
+      "expected": [
+        "PREDICTED",
+        "CALIBRATION_REQUIRED"
+      ]
+    },
+    {
+      "id": "I04_PREPARATION",
+      "input": "forecast_triggers_reversible_preparation",
+      "expected": [
+        "PREPARE_ALLOWED",
+        "EFFECT_AUTHORITY_UNCHANGED"
+      ]
+    },
+    {
+      "id": "I05_CRYPTO_RESERVE",
+      "input": "cryptoasset_candidate_reserve",
+      "expected": [
+        "OPTIONALITY_ONLY",
+        "NO_TRADE_AUTHORITY",
+        "SEPARATE_CUSTODY_RISK"
+      ]
+    },
+    {
+      "id": "I06_INBETWEEN",
+      "input": "transition_state",
+      "expected": [
+        "PRESERVE_INTERMEDIATE_STATE",
+        "NO_BINARY_COLLAPSE"
+      ]
+    }
+  ],
+  "rails": [
+    "COINBET_PROJECTION_NE_NEW_ROOT_ONTOLOGY",
+    "EXPERIENCE_NE_MECHANISM",
+    "SPOOKY_NE_PARANORMAL",
+    "PREDICTION_NE_EVIDENCE",
+    "PREDICTIVE_RELATION_REQUIRES_CALIBRATION_PATH",
+    "PREPARATION_NE_EXECUTION_AUTHORITY",
+    "TREASURY_OPTIONALITY_NE_TRADING_AUTHORITY",
+    "CRYPTO_ASSET_NE_CASH_EQUIVALENT",
+    "VALIDATION_IS_NOT_ACCEPTANCE"
+  ]
+}
