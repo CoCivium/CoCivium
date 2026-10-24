@@ -1,0 +1,44 @@
+{
+  "authority_ceiling": "NONE",
+  "byte_count": 406000,
+  "chunk_hashes": [
+    {
+      "bytes": 406000,
+      "offset": 0,
+      "sha256": "5fbf9bb6ff03c29e53cdad1d89681e3720d46f9d4173e50478c32916b7d24dff"
+    }
+  ],
+  "chunk_size": 1048576,
+  "content_not_embedded": true,
+  "human_ux_acceptance": "UNPROVEN",
+  "nonclaims": [
+    "FILE_BACKED_NE_RECEIVER_UPLOADED",
+    "PREVIEW_NE_PASTE_OR_SEND",
+    "SHA256_NE_SEMANTIC_TRUTH",
+    "MANIFEST_NE_CUSTODY",
+    "SOURCE_PATH_NOT_PUBLISHED",
+    "LOCAL_IS_NOT_LANDED",
+    "VALIDATION_IS_NOT_ACCEPTANCE",
+    "NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF",
+    "NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE",
+    "HASHING_IS_NOT_SEMANTIC_INGESTION",
+    "DISCOVERED_SET_IS_NOT_COMPLETE_HISTORY"
+  ],
+  "outbound_effects": 0,
+  "packet_id": "sha256:5fbf9bb6ff03c29e53cdad1d89681e3720d46f9d4173e50478c32916b7d24dff",
+  "payload_mode": "FILE_BACKED_CONTENT_ADDRESSED",
+  "payload_type_guess": "video/mp4",
+  "physical_button_event": "HELD_NOT_OBSERVED",
+  "preview_ref": null,
+  "privacy_class": "PUBLIC_SAFE_FIXTURE",
+  "readback_instruction": "Receiver supplies its own authorized exact file to `copayload.py verify`",
+  "receiver_ack": false,
+  "receiver_candidates": [],
+  "schema": "CoPayload.FileHandoffPreview.R1",
+  "source_class": "EXPLICITLY_SELECTED_LOCAL_REGULAR_FILE",
+  "source_path_included": false,
+  "source_ref": null,
+  "source_sha256": "5fbf9bb6ff03c29e53cdad1d89681e3720d46f9d4173e50478c32916b7d24dff",
+  "status": "LOCAL_CANDIDATE_PREVIEW_ONLY",
+  "type_evidence": "FILENAME_EXTENSION_ONLY_NOT_MEDIA_DECODER"
+}

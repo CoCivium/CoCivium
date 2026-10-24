@@ -1,0 +1,25 @@
+{
+  "byte_readback_status": "PASS_EXACT_BYTES_ONLY",
+  "counts": {
+    "FAIL": 0,
+    "HELD": 0,
+    "PASS": 19
+  },
+  "external_effects": 0,
+  "human_ux_acceptance": "UNPROVEN",
+  "media_decode_ffprobe": "NOT_RUN_SYNTHETIC_FIXTURE",
+  "native_physical_gesture": "HELD_X2_OFFLINE",
+  "nonclaims": [
+    "LOCAL_TEST_NE_X2_RUNTIME",
+    "SYNTHETIC_BYTES_NE_RICH_MEDIA_DECODE",
+    "READBACK_NE_REMOTE_RECEIVER_ACK",
+    "PUBLIC_MANIFEST_NE_DELIVERED_PAYLOAD"
+  ],
+  "observed_at_utc": "2026-10-24T16:27:13.890232+00:00",
+  "receiver_ack": false,
+  "schema": "CoPayload.ContainerQualification.R1",
+  "synthetic_bytes": 406000,
+  "synthetic_chunk_count": 1,
+  "synthetic_sha256": "5fbf9bb6ff03c29e53cdad1d89681e3720d46f9d4173e50478c32916b7d24dff",
+  "test_scope": "SYNTHETIC_NON_MEDIA_BYTES__OFFLINE__NO_X2"
+}
