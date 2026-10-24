@@ -2,12 +2,20 @@
 
 ## Try CoCivium in five minutes
 
-**The simple idea:** Explore how people and AI tools can work together with clearer evidence, explicit permission, and decisions you can check or undo. You do **not** need to learn our vocabulary first.
+**You don't need to understand CoCivium to try something useful.** Choose one path that interests you. Each links to an existing public experiment or source. These are **pre-launch research pilots**, not four live services.
 
-- **Try an offline interaction:** [CoPreCursor+ five-minute demo](examples/coprecursor/README.md). Download the example HTML, open it locally, and test **Preview next**, **Accept**, **Reject**, and **Undo** with made-up text. This is a deterministic browser demonstration, not a hosted AI assistant or a live model.
-- **Explore relationships:** [CoOrbWare First Look source](https://github.com/CoCivium/CoAcademy/blob/master/docs/coorb/index.html) presents an experimental visual interface with evidence and unknowns. Repository visibility does not establish that the hosted page or native desktop runtime works.
-- **Bring one actual problem:** [CoCivia First Use R0](docs/Onramp/COCIVIA_FIRST_USE_R0.md) explains a simple one-task intake. It is a **first-use design contract**, not a verified connected service.
-- **Challenge the work:** [Open a technical issue](https://github.com/CoCivium/CoCivium/issues/new) with one claim, its exact source, a counterexample or uncertainty, and a reproducible test. Do not submit private communications, passwords, wallet keys, or other secrets.
+| I want to… | Start here | Small first result |
+| --- | --- | --- |
+| **Learn** how to check a claim | [CoAcademy / CoCivicLens](https://github.com/CoCivium/CoAcademy/blob/master/docs/civiclens/README.md) | Follow one official source and check one statement |
+| **Play** with an idea | [CoPlay creative lab](https://github.com/CoCivium/CoAcademy/blob/master/docs/coplay/README.md) | Read one clearly fictional software spoof and identify a real coordination problem |
+| **Make** something practical | [CoPreCursor offline demo](examples/coprecursor/README.md) | Download the HTML and test Preview, Accept, Reject and Undo with invented text |
+| **Explore** evidence and unknowns | [CoOrbWare First Look](https://github.com/CoCivium/CoAcademy/blob/master/docs/coorb/README.md) | Choose one node and inspect its source or uncertainty |
+
+No account connection, private profile or model choice is required to inspect the linked public material. Move between paths only when you choose. Nothing here automatically routes your private text, runs AI workers, changes your desktop or sends messages.
+
+**Bring your own task?** [CoCivia First Use R0](docs/Onramp/COCIVIA_FIRST_USE_R0.md) explains a one-task intake pattern, not a verified connected AI service. **Found a problem?** [Challenge one claim](https://github.com/CoCivium/CoCivium/issues/new) with a source, a counterexample and a reproducible test. Do not disclose passwords, wallet keys, private communications or other secrets.
+
+**For machine clients and reviewers:** [specialist entry-path manifest](ai/onramp/specialist-frontdoors-r0.json) identifies current GitHub sources, proposed display roles, permissions, unknowns and acceptance gates. The labels Learn/Play/Make/Explore are visitor choices, not new registered domains, active `.node`/`.clone` identities or deployed sub-brands.
 
 **Current status:** Public R&D / pre-launch. The primary website and hosting paths require separate reachability and privacy qualification. Use these versioned GitHub sources for review until that work is complete. A published file is not independent public adoption.
 
