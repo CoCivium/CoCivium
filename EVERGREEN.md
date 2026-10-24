@@ -1,5 +1,7 @@
 # CoGoAll Evergreen Blast R0
 
+**First use before the firehose:** [Start here in 60 seconds](START_HERE.md), then optionally explore [specialist first-use routes](ai/onramp/specialist-entrypoints-r0.json) backed by six exact source references. These are audience choices, **not** six deployed brands, accounts, DNS domains or receiver acknowledgments.
+
 **Public working status · 2026-10-23**
 
 > **Publish the best we have, never ready. Update all we can, never perfect. Improve all we can, never finish. Log what can be tested. Preserve what failed. Keep evidence ahead of assertion.**
