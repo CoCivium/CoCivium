@@ -132,7 +132,7 @@ def main():
     parser = argparse.ArgumentParser(description="Offline source validation unless --probe supplied")
     mode = parser.add_mutually_exclusive_group()
     mode.add_argument("--validate", action="store_true")
-    mode.add_argument("--probe", action="store_true", help="Explicit one-pass 4-source public GET, 5s/source max")
+    mode.add_argument("--probe", action="store_true", help="Explicit four-source GET, 5s socket timeout per operation; no total deadline")
     args = parser.parse_args()
     registry = load_registry()
     checked = validate(registry)
