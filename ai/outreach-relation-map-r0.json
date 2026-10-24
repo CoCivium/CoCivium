@@ -1,0 +1,120 @@
+{
+  "schema": "cocivium.outreach-relation-map.r0",
+  "state": "CANDIDATE__DRAFT_PR__NO_CANON_RUNTIME_OR_RECEIVER_ACK_CLAIM",
+  "purpose": "Machine-readable companion to docs/Outreach/AGENTICS_ONRAMP_R0.md",
+  "source": "docs/Outreach/AGENTICS_ONRAMP_R0.md",
+  "principles": [
+    "MORE_OUTREACH_NE_BETTER_OUTREACH",
+    "DUPLICATE_CONTACT_NE_PROGRESS",
+    "ONGOING_NE_SPAM",
+    "CONTACTED_NE_READ",
+    "READ_NE_AGREED",
+    "RELATION_NE_ENDORSEMENT",
+    "RECEIVER_FIT_BEFORE_VOLUME",
+    "EVOLUTION_REQUIRES_LINEAGE"
+  ],
+  "relation_types": [
+    "RELATED_TO",
+    "IMPLEMENTS",
+    "CHALLENGES",
+    "EXTENDS",
+    "CONTRADICTS",
+    "TESTS",
+    "REUSES",
+    "CITES",
+    "SUPERSEDES",
+    "POTENTIAL_COLLABORATOR",
+    "WORKING_GROUP_RELEVANT_TO"
+  ],
+  "receiver_classes": [
+    {
+      "id": "agentics_multi_agent",
+      "label": "Agentics / multi-agent groups"
+    },
+    {
+      "id": "ai_safety_governance",
+      "label": "AI safety / alignment / governance groups"
+    },
+    {
+      "id": "local_first",
+      "label": "local-first and offline-first communities"
+    },
+    {
+      "id": "knowledge_graph_semweb",
+      "label": "knowledge-graph / semantic-web communities"
+    },
+    {
+      "id": "open_source",
+      "label": "open-source maintainers"
+    },
+    {
+      "id": "federated_protocols",
+      "label": "decentralised / federated protocol communities"
+    },
+    {
+      "id": "hci_human_ai",
+      "label": "HCI and human/AI interaction groups"
+    },
+    {
+      "id": "civic_tech",
+      "label": "digital-governance / civic-tech communities"
+    },
+    {
+      "id": "provenance_repro",
+      "label": "provenance / reproducibility / research-infrastructure groups"
+    },
+    {
+      "id": "accessibility",
+      "label": "accessibility and inclusive-design communities"
+    },
+    {
+      "id": "resilience_continuity",
+      "label": "resilience / continuity / disaster-recovery practitioners"
+    },
+    {
+      "id": "education_academic",
+      "label": "educational and academic research groups"
+    }
+  ],
+  "relation_record_minimum": [
+    "receiver",
+    "receiver_class",
+    "relation_type",
+    "relevance_reason",
+    "source_refs",
+    "observed_at",
+    "currentness",
+    "authority_scope",
+    "contact_state",
+    "response_state",
+    "dedupe_key",
+    "supersedes"
+  ],
+  "contact_states": [
+    "CANDIDATE",
+    "PREPARED",
+    "SENT",
+    "DELIVERED",
+    "UNKNOWN_DELIVERY",
+    "REPLIED",
+    "DECLINED",
+    "DORMANT",
+    "SUPERSEDED"
+  ],
+  "response_states": [
+    "UNKNOWN",
+    "UNREAD_OR_UNPROVEN",
+    "READ_UNPROVEN",
+    "ACKNOWLEDGED",
+    "CHALLENGED",
+    "INTERESTED",
+    "CONTRIBUTING",
+    "DECLINED"
+  ],
+  "evolution": {
+    "allow_new_receiver_classes": true,
+    "allow_new_relation_types": true,
+    "preserve_lineage": true,
+    "silent_overwrite": false
+  }
+}
