@@ -1,0 +1,229 @@
+{
+  "schema": "CoCivium.CoFireworksReadiness.EvidenceGate.R0",
+  "evidence_date": "2026-10-24",
+  "snapshot_scope": "Bounded public GitHub/CoAcademy evidence and one external web-reader observation; no private CoStead inspection or independent human study",
+  "publication_state": "PUBLIC_PRELAUNCH_READINESS_SNAPSHOT_NOT_RELEASE",
+  "overall": "SPARK_PROVEN__FIREWORKS_HELD__FAILURE_RESILIENCE_HELD",
+  "intent": "Make CoCivium useful and recoverable without dependence on one person, provider, site, device or unexplained terminology",
+  "semantics": {
+    "PASS": "Exact evidence supports the bounded named property only",
+    "PARTIAL": "Some corroborated lower-stage evidence, but promotion needs further proof",
+    "FAIL_SCOPED": "Observed failure only in the explicitly documented test vantage",
+    "HELD": "Qualification/receiver proof absent; no negative universal inference",
+    "UNKNOWN": "No qualified observation in this wave"
+  },
+  "stages": [
+    {
+      "id": "spark",
+      "status": "PASS",
+      "condition": "Public source-controlled first-use guidance, example routes and bounded test receipts exist",
+      "nonclaim": "No actual independent user adoption inferred"
+    },
+    {
+      "id": "first_real_flame",
+      "status": "HELD",
+      "condition": "At least one consenting unfamiliar person independently completes one task and reports the result with source/version bound evidence",
+      "nonclaim": "Github listing or internal smoke PASS is not first-use completion"
+    },
+    {
+      "id": "public_fireworks",
+      "status": "HELD",
+      "condition": "Multiple unrelated voluntary first-use reports; current accessible public host; demonstrable task advantage or useful delight; source-bound critique and safe rollback",
+      "nonclaim": "No scheduled release date, viral reach or audience scale claimed"
+    },
+    {
+      "id": "resilient_ecosystem",
+      "status": "HELD",
+      "condition": "A different person restores a verified public-safe capsule from a different failure-domain provider during a bounded GitHub-denied exercise, with independent receiver readproof",
+      "nonclaim": "CoStead, GitHub Pages and GitHub Raw are not counted as distinct proven hosts merely by label"
+    }
+  ],
+  "gates": [
+    {
+      "id": "public_source",
+      "status": "PASS",
+      "evidence": [
+        "https://github.com/CoCivium/CoCivium",
+        "https://github.com/CoCivium/CoCivium/blob/main/START_HERE.md",
+        "https://github.com/CoCivium/CoCivium/blob/main/ai/onramp/specialist-entrypoints-r0.json"
+      ],
+      "scope": "GitHub source and pinned route registry accessible; six route identities previously matched Git blobs",
+      "next_proof": "Independent outside-browser first-use"
+    },
+    {
+      "id": "public_interest_signal",
+      "status": "PARTIAL",
+      "evidence": [
+        "https://github.com/CoCivium/CoCivium"
+      ],
+      "observation": "One 2026-10-24 GitHub page readback showed 368 commits, 3 stars, 0 forks, 0 watchers",
+      "scope": "These are platform counts, not worldwide visitors, humans, use, endorsement or suppression",
+      "next_proof": "Consent-based first-use outcomes; do not infer population from stars"
+    },
+    {
+      "id": "repository_identity",
+      "status": "PARTIAL",
+      "evidence": [
+        "https://github.com/CoCivium/CoCivium",
+        "https://github.com/CoCivium/CoCivium/blob/main/README.md"
+      ],
+      "observation": "Repository About still describes XR avatar embellishments; README and START_HERE now describe public evidence-first human-AI R&D. Existing first-use CTA was kept without duplication.",
+      "next_proof": "GitHub repository About metadata correction and external stale-catalog/redirect check by a qualified owner"
+    },
+    {
+      "id": "custom_domain_public_read",
+      "status": "FAIL_SCOPED",
+      "evidence": [
+        "https://cocivium.org"
+      ],
+      "observation": "One web tool client received HTTP 404 on 2026-10-24",
+      "scope": "Single-vantage read, not a proven global outage",
+      "next_proof": "Check DNS/TLS HTTP from unrelated public networks; then correct domain landing or honest redirect with rollback"
+    },
+    {
+      "id": "coacademy_pages_currentness",
+      "status": "PARTIAL",
+      "evidence": [
+        "https://github.com/CoCivium/CoAcademy/blob/master/docs/relay/EXTERNAL_READPROOF_20261024_R1.json",
+        "https://github.com/CoCivium/CoAcademy/blob/master/docs/relay/READPROOF_R2_RECEIPT_20261024.json"
+      ],
+      "observation": "R1 GitHub Actions HTTP check recovered to 5/5 after deployment; R2 had 18/18 deterministic tests and Pages deployment success, but no completed new-version seven-target exact-byte HTTP readproof at recorded time. Separate web reader could not access the Pages routes.",
+      "scope": "All named GitHub Pages, GitHub Actions and GitHub Raw paths share a provider; the earlier 5/5 is not latest source parity or human experience",
+      "next_proof": "Actual completed R2 seven-target SHA comparison plus independent outside-provider browser read"
+    },
+    {
+      "id": "newcomer_first_use",
+      "status": "HELD",
+      "evidence": [
+        "https://github.com/CoCivium/CoCivium/blob/main/ai/onramp/specialist-entrypoints-r0.json"
+      ],
+      "observation": "Six route entries marked HELD_NO_FIRST_USE_ACK",
+      "next_proof": "One unfamiliar consenting reviewer completes one task and reports provenance, comprehension, accessibility, and what failed"
+    },
+    {
+      "id": "external_feedback",
+      "status": "HELD",
+      "evidence": [
+        "https://github.com/CoCivium/CoAcademy/blob/master/docs/relay/discovery.json"
+      ],
+      "observation": "CoRelay disclosure states no verified volunteer feedback or measured users as of its document",
+      "next_proof": "Opt-in reply/issue from an independent reader, with consent and no personal tracking"
+    },
+    {
+      "id": "local_cold_start",
+      "status": "PARTIAL",
+      "evidence": [
+        "https://github.com/CoCivium/CoAcademy/blob/master/docs/phoenix/README.md",
+        "https://github.com/CoCivium/CoAcademy/blob/master/docs/phoenix/test_receipt_r0.json"
+      ],
+      "observation": "CoPhoenix R0 has 26/26 scoped local cold-start tests on a private capsule; source hash exists in source record",
+      "next_proof": "Different custodian, fresh machine, source-bound restore in independent destination"
+    },
+    {
+      "id": "off_provider_durable_recovery",
+      "status": "HELD",
+      "evidence": [
+        "https://github.com/CoCivium/CoAcademy/blob/master/docs/phoenix/README.md",
+        "https://github.com/CoCivium/CoAcademy/blob/master/docs/relay/resilience.json"
+      ],
+      "observation": "No off-GitHub verified public restore; GitHub Repo/Raw/Pages/Actions/Issues are correlated",
+      "next_proof": "Test independent encrypted/public-safe custody and successful external restore without GitHub access"
+    },
+    {
+      "id": "second_steward_successor",
+      "status": "HELD",
+      "evidence": [
+        "https://github.com/CoCivium/CoCivium/blob/main/SESSION_BOOTSTRAP.md"
+      ],
+      "scope": "No verified non-originator ownerless cold start or governance succession exercise inspected",
+      "next_proof": "Consenting independent steward runs the first-use/restore guide without private accounts or Rick serving as mailman"
+    },
+    {
+      "id": "security_and_accessibility",
+      "status": "PARTIAL",
+      "evidence": [
+        "https://github.com/CoCivium/CoCivium/blob/main/SECURITY.md",
+        "https://www.w3.org/TR/WCAG22/"
+      ],
+      "observation": "Public responsible-reporting policy and accessibility standards exist; no independent security or WCAG conformance evidence gathered this wave",
+      "next_proof": "Keyboard, screen reader and mobile first-use study; scoped security review and clear revocation/stop"
+    },
+    {
+      "id": "real_work_and_observability",
+      "status": "PARTIAL",
+      "evidence": [
+        "https://github.com/CoCivium/CoCivium/blob/main/experiments/costretch-r1/horizon_r5/benchmark_evo_R5.jsonl",
+        "https://opentelemetry.io/docs/concepts/signals/"
+      ],
+      "observation": "Bounded synthetic process/continuity proof and machine benchmark logs, not an end-to-end independent receiver trace",
+      "next_proof": "Correlate one actual task request through selected surface, executor, receipt, independent receiver readback and expiry"
+    },
+    {
+      "id": "provider_replaceability",
+      "status": "HELD",
+      "evidence": [
+        "https://github.com/CoCivium/CoCivium/blob/main/docs/Architecture/COVIRTUAL_SESSION_MORPHOLOGY_R0.md"
+      ],
+      "scope": "Candidate virtual-session architecture is not measured cross-provider exit or cost parity",
+      "next_proof": "Perform one pinned real task with original vs fully local/replacement adapter and recover from failure before retiring accounts"
+    }
+  ],
+  "vendor_deltas": [
+    {
+      "source": "https://github.com/ruvnet/ruvnet",
+      "pattern": "Problem-first installable constellation, role-specialized components, dated metric definitions and contribution pathways",
+      "candidate_for_CoCivium": "CoSpiff task chooser plus tested interoperability; copy no supplier authority or performance claim"
+    },
+    {
+      "source": "https://claude.com/resources/articles/steering-claude-code-skills-hooks-rules-subagents-and-more",
+      "pattern": "Progressive instruction disclosure and distinct skill/subagent/hook permissions",
+      "candidate_for_CoCivium": "Bounded per-route context cost and explicit action/identity envelopes"
+    },
+    {
+      "source": "https://docs.temporal.io/workflows",
+      "pattern": "Event-history-based deterministic state reconstruction and side-effect boundary",
+      "candidate_for_CoCivium": "Lossless cursor and external receiver recovery test rather than more unqualified sessions"
+    },
+    {
+      "source": "https://github.com/langchain-ai/docs/blob/main/src/oss/langgraph/persistence.mdx",
+      "pattern": "Separate thread checkpointing from durable cross-thread knowledge",
+      "candidate_for_CoCivium": "Separate scratch session, authoritative source, receiver-accepted state and long-term custody"
+    },
+    {
+      "source": "https://opentelemetry.io/docs/concepts/signals/",
+      "pattern": "Correlated traces, metrics and logs",
+      "candidate_for_CoCivium": "One provenance-bound real-task span, latency, cost, stale reason and receiver proof"
+    },
+    {
+      "source": "https://www.w3.org/TR/WCAG22/",
+      "pattern": "Measured accessibility in real use",
+      "candidate_for_CoCivium": "CoSpiff must improve keyboard/screenreader/mobile task success, not just styling"
+    },
+    {
+      "source": "https://csrc.nist.gov/topics/security-and-privacy/security-programs-and-operations/contingency-planning",
+      "pattern": "Alternate equipment, processing and location recovery planning",
+      "candidate_for_CoCivium": "Independently practiced off-provider cold restore with known authority and bounds"
+    }
+  ],
+  "experiment_election": {
+    "next_safe_action": "Try one authorized independent reader first-use task versus default route, capture one receiver-origin result. In parallel, prepare an off-provider public-safe CoPhoenix restore; neither is asserted performed.",
+    "immediate_public_ux_fix": "GitHub repo About metadata still describes legacy XR avatar features and should be aligned with the existing public research front door; editable through authenticated repository settings, not updated by this gate.",
+    "priority": "FIRST_USE_AND_FAILURE_DOMAIN_PROOF_OVER_MORE_SUB_BRANDS_OR_LOGICAL_SESSIONS"
+  },
+  "nonclaims": [
+    "SOURCE_NE_LIVE_PRODUCT",
+    "REPO_STAR_NE_PERSON",
+    "GITHUB_ACTIONS_NE_DIFFERENT_PROVIDER",
+    "WEB_404_SINGLE_VANTAGE_NE_GLOBAL_OUTAGE",
+    "BACKUP_NE_RESTORE",
+    "LOCAL_IS_NOT_LANDED",
+    "VALIDATION_IS_NOT_ACCEPTANCE",
+    "NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF",
+    "NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE",
+    "HASHING_IS_NOT_SEMANTIC_INGESTION",
+    "DISCOVERED_SET_IS_NOT_COMPLETE_HISTORY",
+    "PUBLICATION_NE_AWARENESS",
+    "SPARK_NE_FIREWORKS",
+    "SCALE_NE_RESILIENCE"
+  ]
+}
