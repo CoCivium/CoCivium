@@ -63,3 +63,48 @@ Details, iteration counts, p95/p99 and limitations: `benchmark_receipt.json`. **
 ## Next smallest meaningful integration
 
 One private no-effect hook from an already-authorized, visible CoThumb/CoInbetween event into this bounded compiler. Compare the candidate JSON against the existing selector's required annotated input. No new global keyboard hook, unsolicited broadcast, background agent or endless session spawning. Live X2 device adoption and independent receiver ACK remain unverified.
+
+## CoNex+ seeded variation / CoET+ evidence / CoG_d+ argument lanes (R0 extension)
+
+This review-only extension to CoDoodle creates **bounded, reproducible, finite**
+variant proposals at each existing CoDoodle candidate nexus. It does **not**
+launch experiments, model agents, network discovery, or device input hooks.
+
+Each selected nexus receives a `NOT_ELSE` counterexample first. One or two
+additional source-bound lenses are chosen by a stable SHA-256 sort using an
+**explicit uint64 seed**. The seed is not a security key or proof of randomness.
+The engine caps per-nexus fanout to three and the global frontier to 24.
+Variants contain only the parent source SHA/offset and fixed policy questions,
+not the original CoDoodle text. Null/negative evidence retains its scope.
+
+From this directory, after producing an input report with the original
+`codoodle.py`:
+
+```sh
+python3 codoodle.py --input sample_synthetic.txt --output local_candidates.json
+python3 nexus.py --input local_candidates.json --seed 20261024 --fanout 2 --max-total 12 --output local_variants.json
+python3 -m unittest discover -s tests -p 'test_*.py' -v
+python3 nexus_benchmark.py
+```
+
+Those output files are **created only at explicit CLI instruction**; the
+original compiler and new generator use exclusive creation for `--output`.
+The benchmark script writes a measurement report, so use it in a disposable
+checkout or temp folder, not as a perpetual background task. The bundled
+read-only `nexus_benchmark_receipt.json` documents the isolated container test.
+
+`discovery_catalog.json` has scientific ET-data/source pointers (NASA's
+Exoplanet Archive and Berkeley SETI), the 2026 SETI confirmation principles,
+and separately typed philosophical arguments (Stanford Encyclopedia of
+Philosophy). **These are dated URLs, not activated feeds, scientific findings,
+contact events, or metaphysical sensors.** `provider_routes.json` sketches
+separate, not-connected Claude, Pi, local/Ollama and deterministic tasks with
+no stored credentials, no silent browser login, and no automatic cross-account
+execution. One shared task identity can be portable without sharing a browser
+cookie or adding fictitious provider authority.
+
+Candidate outputs require actual source/prior-art examination and evidence-backed
+benefit/penalty estimates before entering the existing CoExperimentSelector.
+Another *explicitly approved* process would be required to run any selected
+experiment. A PASS from an isolated synthetic test does not prove Windows/X2,
+external receiver readback, UI acceptance or CoStead custody.
