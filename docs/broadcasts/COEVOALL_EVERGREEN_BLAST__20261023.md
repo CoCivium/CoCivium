@@ -164,3 +164,12 @@ All sessions and agents remain replaceable projections over durable task/evidenc
 **The large path, safely:** `rich local file reference -> CoCopy capsule -> typed private queue -> finite workers -> verified metadata/hash -> CoWave receipt -> optional provenance-based history comparison -> dormancy or separately authorized receiver pickup`. Optional model/provider, app-specific, video-visual, CoStead/cross-node, and automatic I/O effects remain separately gated. Unsupported tests (real media blackdetect, GitHub timed HTTP, Gmail recipient Primary, Pi, Claude credentials, Ollama parse, thumb gesture on X2, independent user ACK) remain NOT_RUN/UNKNOWN, not green.
 
 **Distribution:** this is a public GitHub pull projection, not a universal push. Existing CoVIA, nodes/sites, Gmail and other channels have no new receiver-delivery receipt from this wave. `CONTENT_POINTER_NE_CONTENT_TRANSFER`; `TOKEN_EXPANDER_NE_INFINITE_CONTEXT`; `TASK_SCHEDULE_CONFIG_NE_TASK_EXECUTION`; `COSTEAD_MIRROR_NE_INDEPENDENT_RESTORE`.
+
+
+## 2026-10-24 | CoPhoenix R0 exact receipt qualification
+
+Exact private Library evidence is now bound for CoPhoenix R0. `CoPhoenix_R0_ColdStart_TestReceipt.json` records archive SHA-256 `868a2f8f9ca9276e359917b526c24cc178639b19a600e2c358b514e8f82f0d9f` and 26/26 scoped checks passing across fresh unpack/manifest verification, deliberate byte/missing-member fault detection and recovery, offline desktop/mobile browser rendering, user actions, zero automatic external requests, zero browser JS errors, and localhost-only GET smoke.
+
+A separate CoEvoAll Pulse qualification at 2026-10-24T11:31:43Z did not rerun those 26 tests. It freshly verified the outer archive against the sibling sidecar, observed 15 archive members with no path traversal or symlinks, verified the embedded manifest, and verified all 13 pinned payload members. It classifies the Library objects as LANDED while receiver pickup, CoStead custody, independent offsite custody, and independent cold-start/readback remain UNKNOWN.
+
+The next material proof remains one exact replay on a separately powered authorized receiver with archive hash, cold-start evidence and source-bound receiver readback. Preserve PORTABLE_ARCHIVE_NE_INDEPENDENT_FAILURE_DOMAIN, OFFLINE_COLD_START_NE_DISASTER_RECOVERY, LIBRARY_SIDECAR_NE_INDEPENDENT_AUTHENTICITY_ANCHOR, and NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF.
