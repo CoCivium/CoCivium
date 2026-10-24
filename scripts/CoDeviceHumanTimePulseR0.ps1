@@ -45,7 +45,7 @@ foreach ($group in $processGroups.Keys) {
   $match = @(Get-Process -Name $processGroups[$group] -ErrorAction SilentlyContinue).Count -gt 0
   $processStatus[$group] = if ($match) { 'OBSERVED_PROCESS_NAME' } else { 'NOT_OBSERVED_THIS_CHECK' }
 }
-$home = 'Device snapshot captured locally. No device enrollment or service activation performed.'
+$hereNowText = 'Device snapshot captured locally. No device enrollment or service activation performed.'
 $meaning = 'A named process is not proof that its user experience or receiver is working.'
 $next = if ($processStatus['RickBar_or_CoBar'] -eq 'OBSERVED_PROCESS_NAME') {
   'Verify one visible RickBar/CoBar interaction on this device and record its result.'
@@ -65,7 +65,7 @@ $receipt = [ordered]@{
   observed_path_presence = $checkedPaths
   command_discovery = $commandStatus
   process_name_observations = $processStatus
-  here_now = $home
+  here_now = $hereNowText
   meaning = $meaning
   next_safe_action = $next
   device_enrolled = $false
@@ -119,7 +119,7 @@ td,th{text-align:left;border-bottom:1px solid #999;padding:.55rem;vertical-align
 </style></head><body><main>
 <h1>CoDevice | Here Now</h1>
 <p class="meta">Observed on $(Escape $utc.ToString('u')) | One local device only</p>
-<section><h2>Here now</h2><p>$(Escape $home)</p></section>
+<section><h2>Here now</h2><p>$(Escape $hereNowText)</p></section>
 <section><h2>Meaning</h2><p>$(Escape $meaning)</p></section>
 <section><h2>Next safe action</h2><p>$(Escape $next)</p></section>
 <section><h2>Evidence</h2><table><tbody>$($tableRows -join [Environment]::NewLine)</tbody></table>
