@@ -1,0 +1,39 @@
+{
+  "schema": "CoCivium.CoMiddle.R2.Benchmark",
+  "environment": {
+    "node": "v22.16.0",
+    "platform": "linux",
+    "arch": "x64",
+    "cpu": "AMD EPYC 9V74 80-Core Processor"
+  },
+  "measure": "median per op amortized across five sequential 10k batches after three 5k warmup rounds; in-process only",
+  "logical_addresses": "445536",
+  "addressable_relations": 36,
+  "active_workers": 0,
+  "descriptor_decode": {
+    "median_ns": 447.8973,
+    "runs_ns": [
+      539.9291,
+      492.6803,
+      397.0446,
+      447.8973,
+      380.9614
+    ]
+  },
+  "shadow_preview": {
+    "median_ns": 313.1361,
+    "runs_ns": [
+      326.311,
+      316.6744,
+      313.1361,
+      270.3586,
+      240.9352
+    ]
+  },
+  "disclaimers": [
+    "SYNTHETIC_RUNTIME_NE_GUI",
+    "GENERATION_NE_SEMANTIC_VALIDATION",
+    "NO_RECIPIENT_OR_OS_IO",
+    "IN_PROCESS_TIMING_NE_SLO"
+  ]
+}
