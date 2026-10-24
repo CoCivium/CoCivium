@@ -1,0 +1,24 @@
+name: CoSession relational full loop R2
+
+on:
+  pull_request:
+    paths:
+      - 'docs/Architecture/COSESSION_RELATIONAL_FULL_LOOP_R2.md'
+      - 'ai/session-relational-full-loop-policy.json'
+      - 'scripts/CoSessionRelationalFullLoopR2.py'
+      - '.github/workflows/cosession-relational-full-loop-r2.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  matrix:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Parse policy
+        run: python -m json.tool ai/session-relational-full-loop-policy.json > /dev/null
+      - name: Run full-loop matrix
+        run: python scripts/CoSessionRelationalFullLoopR2.py
