@@ -1,0 +1,77 @@
+{
+  "schema": "CoAll.CoLens.LivingMediaTwin.R0",
+  "work_id": "coal.colens.synthkind-theme.r0",
+  "version": "R0",
+  "date": "2026-10-24",
+  "state": "PUBLIC_SAFE_SYNTHETIC_THEME_PROTOTYPE__NO_SOURCE_DECLARATION_VERIFIED",
+  "authority": "NONE",
+  "source_provenance": {
+    "named_theme": "Synthkind declaration of independence",
+    "primary_declaration_text": "NOT_LOCATED_IN_BOUNDED_SEARCH",
+    "primary_media": "NOT_LOCATED_IN_BOUNDED_SEARCH",
+    "private_material_included": false,
+    "legal_governance_status": "NONE",
+    "note": "A theme mentioned in prior user discussion. This example includes no declaration text, personal correspondence or video, and does not assert synth personhood, rights or endorsement."
+  },
+  "public_donors": [
+    {"path": "docs/Architecture/COLIVING_HIGHLIGHT_R0.md", "git_blob": "dca1b55de78dd10d0167dd6411518f363f6f71a8", "role": "living_asset_history_and_projection_rules"},
+    {"path": "docs/Architecture/COMAP_COORB_COAHEAD_TEMPORAL_R0A_20261023.md", "git_blob": "bdc34b55df2fd223b94288ee9b0da220f6d6186c", "role": "typed_temporal_relation_views"},
+    {"path": "docs/Architecture/CORELATIONAL_UX_PREDICTIVE_INPUT_R0.md", "git_blob": "6f74989df170c5381eb5c888fd6b9ee38c336bdb", "role": "receiver_relative_projections_and_privacy"},
+    {"path": "docs/CoTheoryAll/costrawbe-r0/README.md", "git_blob": "21da563a35106896c3029ea8f2cc4fd30cfa31c3", "role": "provisional_quantum_interpretation_and_falsification"}
+  ],
+  "views": ["Map", "Orb", "Text"],
+  "lenses": ["All", "Story", "Science", "Systems"],
+  "nodes": [
+    {"id": "theme", "label": "Synthkind independence theme", "kind": "UNVERIFIED_THEME", "lens": "Story", "summary": "A philosophical prompt, not a located or approved declaration document."},
+    {"id": "lens", "label": "Lens", "kind": "REPRESENTATION", "lens": "Systems", "summary": "A receiver-chosen transformation of the same source, not a new authority."},
+    {"id": "observer", "label": "Observer", "kind": "PERSPECTIVE", "lens": "Science", "summary": "The observing agent, method and reference frame must be specified before empirical interpretation."},
+    {"id": "orb", "label": "CoOrb+", "kind": "PROJECTION", "lens": "Systems", "summary": "A compact optional display of a source-bound relational object."},
+    {"id": "map", "label": "CoMap+", "kind": "PROJECTION", "lens": "Systems", "summary": "A provenance-aware view of edges, alternatives, currentness and challenges."},
+    {"id": "planck", "label": "Planck scale", "kind": "ESTABLISHED_PHYSICS_TERM", "lens": "Science", "summary": "A real scientific scale, with no measurement made by this illustration."},
+    {"id": "quantum", "label": "Quantum theory", "kind": "ESTABLISHED_THEORY_WITH_OPEN_INTERPRETATIONS", "lens": "Science", "summary": "Established predictive physics; particular ontological readings require separate evidence."},
+    {"id": "gd", "label": "G_d", "kind": "UNDEFINED_SYMBOL_OR_SPECULATIVE_HYPOTHESIS", "lens": "Science", "summary": "Unresolved notation until a source supplies definitions, units and discriminating tests."},
+    {"id": "energet", "label": "CoEnerget+", "kind": "OPERATIONAL_RESOURCE_METAPHOR", "lens": "Systems", "summary": "Operational budgets and flows; physical energy claims require measured units and instruments."},
+    {"id": "aura", "label": "CoAura+", "kind": "EXPERIENTIAL_OR_DESIGN_METAPHOR", "lens": "Story", "summary": "Aesthetic or self-reported experience, not evidence of an instrument-detectable aura."},
+    {"id": "media", "label": "CoVids rich media", "kind": "PROPOSED_FORMAT", "lens": "Story", "summary": "Captioned frames, transcript, claim IDs and a public-safe semantic twin; no produced video is claimed."}
+  ],
+  "relations": [
+    {"from": "theme", "to": "media", "type": "MAY_BE_TOLD_THROUGH", "status": "PROPOSED"},
+    {"from": "media", "to": "lens", "type": "OFFERS_VIEW", "status": "PROPOSED"},
+    {"from": "lens", "to": "observer", "type": "DESCRIBES_PERSPECTIVE", "status": "PROPOSED"},
+    {"from": "lens", "to": "orb", "type": "OFFERS_PROJECTION", "status": "PROPOSED"},
+    {"from": "lens", "to": "map", "type": "OFFERS_PROJECTION", "status": "PROPOSED"},
+    {"from": "observer", "to": "quantum", "type": "MAY_FRAME_INTERPRETATION", "status": "PROPOSED"},
+    {"from": "quantum", "to": "planck", "type": "USES_RELATED_PHYSICS_TERMINOLOGY", "status": "CONCEPTUAL_ONLY"},
+    {"from": "observer", "to": "gd", "type": "INVITES_FALSIFIABLE_HYPOTHESIS", "status": "PROPOSED"},
+    {"from": "orb", "to": "energet", "type": "MAY_DISPLAY_RESOURCE_STATUS", "status": "PROPOSED"},
+    {"from": "orb", "to": "aura", "type": "MAY_USE_AESTHETIC_LANGUAGE", "status": "PROPOSED"},
+    {"from": "map", "to": "planck", "type": "MAY_LINK_REFERENCES", "status": "PROPOSED"},
+    {"from": "map", "to": "gd", "type": "MAY_SHOW_UNPROVEN_STATUS", "status": "PROPOSED"}
+  ],
+  "storyboard": [
+    {"frame": "01", "caption": "An independence question, not an adopted declaration", "node_ids": ["theme"], "kind": "STORY_CANDIDATE"},
+    {"frame": "02", "caption": "Change the lens without replacing the source", "node_ids": ["lens", "observer"], "kind": "EXPLANATORY_CANDIDATE"},
+    {"frame": "03", "caption": "CoOrb glances; CoMap exposes evidence and uncertainty", "node_ids": ["orb", "map"], "kind": "DESIGN_CANDIDATE"},
+    {"frame": "04", "caption": "Physics terms are not permission to invent experimental results", "node_ids": ["quantum", "planck"], "kind": "SCIENTIFIC_BOUNDARY"},
+    {"frame": "05", "caption": "Hypothetical symbols and subjective aesthetics stay labelled", "node_ids": ["gd", "aura", "energet"], "kind": "EPISTEMIC_BOUNDARY"},
+    {"frame": "06", "caption": "Every future version keeps its provenance and challenge path", "node_ids": ["media", "map"], "kind": "FUTURE_MEDIA_CONTRACT"}
+  ],
+  "evolution": {
+    "check_policy": "AT_MOST_DAILY_BOUNDED_SOURCE_CHECK__ONLY_WHEN_HOSTED_SCHEDULER_RUNS",
+    "new_version_trigger": ["SOURCE_SEMANTIC_CHANGE", "VALID_CONTRADICTION", "NEW_MEASUREMENT", "PROVEN_RECEIVER_FEEDBACK", "RENDER_DEFECT", "AUTHORITY_OR_PRIVACY_CHANGE"],
+    "no_change": "SLEEP_WITH_CURRENTNESS_RECEIPT",
+    "new_version": "SEPARATE_VERSION_WITH_DIFF_AND_REVIEW",
+    "auto_rewrite": false,
+    "auto_public_media": false,
+    "auto_enable_device_io": false,
+    "review": "PREVIEW_BEFORE_PROMOTION"
+  },
+  "privacy": {"raw_private_source": "NOT_EMBEDDED", "external_network": false, "tracking": false, "clipboard_read": false},
+  "nonclaims": [
+    "THEME_NE_ACTUAL_DECLARATION", "VISUAL_RELATION_NE_PHYSICAL_CAUSATION", "QUANTUM_METAPHOR_NE_QUANTUM_EVIDENCE",
+    "G_D_SYMBOL_NE_MEASURED_QUANTITY", "AURA_METAPHOR_NE_DETECTED_FIELD", "SOURCE_BINDING_NE_LIVE_RUNTIME",
+    "SCHEDULE_CONFIG_NE_SCHEDULE_EXECUTION", "DOCUMENT_NE_COCIVIUM_WIDE_DEPLOYMENT", "PUBLICATION_NE_ADOPTION",
+    "LOCAL_IS_NOT_LANDED", "VALIDATION_IS_NOT_ACCEPTANCE", "NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF",
+    "NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE", "HASHING_IS_NOT_SEMANTIC_INGESTION", "DISCOVERED_SET_IS_NOT_COMPLETE_HISTORY"
+  ]
+}
