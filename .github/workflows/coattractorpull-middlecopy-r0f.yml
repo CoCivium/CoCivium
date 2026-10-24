@@ -1,0 +1,22 @@
+name: CoCopy app-scoped middle-click R0F
+on:
+  pull_request:
+    paths:
+      - 'examples/coattractorpull/**'
+      - '.github/workflows/coattractorpull-middlecopy-r0f.yml'
+  push:
+    branches:
+      - research/coattractorpull-middlecopy-r0f-20261023
+permissions:
+  contents: read
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Test safe copy and middle-click predicate
+        run: node examples/coattractorpull/tests/smoke.cjs
