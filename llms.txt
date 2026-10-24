@@ -11,6 +11,13 @@
 
 ## Public interactive research surfaces
 
+- CoRelay+ public AI beacon R1: source-linked, non-directive and opt-in public first-use currentness with GitHub-hosted runner verification, not autonomous CoVIA or model ingestion.
+- AI beacon: https://raw.githubusercontent.com/CoCivium/CoAcademy/master/docs/relay/beacon.json
+- Human entry: https://cocivium.github.io/CoAcademy/relay/
+- Provenance-aware brand/channel adapters: https://raw.githubusercontent.com/CoCivium/CoAcademy/master/docs/relay/adapters.json
+- Failure-domain continuity: https://raw.githubusercontent.com/CoCivium/CoAcademy/master/docs/relay/resilience.json
+- Actual external runner proof and initial negative result: https://github.com/CoCivium/CoAcademy/blob/master/docs/relay/EXTERNAL_READPROOF_20261024_R1.json
+- Six-hour read-only probe: https://github.com/CoCivium/CoAcademy/actions/workflows/corelay-public-probe.yml (future scheduled runs require actual execution receipts, and all GitHub endpoints share a provider).
 - CoRelay opt-in public feedback R0: source-linked public first-use invitation, voluntary GitHub Issues feedback, a static RSS snapshot and accurate reusable publisher formats, NOT a mass unsolicited outreach campaign.
 - Human entrypoint: https://cocivium.github.io/CoAcademy/relay/ (independent browser reachability still unverified).
 - CoRelay public source: https://github.com/CoCivium/CoAcademy/blob/master/docs/relay/index.html
