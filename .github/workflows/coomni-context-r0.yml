@@ -1,0 +1,22 @@
+name: CoOmni context compiler offline R0
+on:
+  pull_request:
+    paths:
+      - 'examples/coomni_context_r0/**'
+      - '.github/workflows/coomni-context-r0.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  source-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check compiler syntax
+        run: node --check examples/coomni_context_r0/compiler.mjs
+      - name: Test bounded context and exact rehydration
+        run: node --test examples/coomni_context_r0/compiler.test.mjs
