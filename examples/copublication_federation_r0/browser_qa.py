@@ -24,6 +24,10 @@ with sync_playwright() as p:
         page.set_content(content,wait_until='load')
         page.screenshot(path=str(ROOT/('preview_'+label+'.png')),full_page=True)
         # A real browser must expose both routes as links, never confuse the published post with the draft.
+        shortcut=page.get_by_role('link',name='Compare a published article with the draft chapter')
+        check(shortcut.count()==1 and shortcut.get_attribute('href')=='#edge-in-heading',label+'_first_screen_shortcut')
+        cta_bounds=shortcut.bounding_box()
+        check(bool(cta_bounds) and cta_bounds['y']>=0 and cta_bounds['y']<height and shortcut.is_visible(),label+'_shortcut_above_fold')
         bridge=page.locator('#edge-in-heading')
         check(bridge.count()==1 and bridge.is_visible(),label+'_reader_bridge_visible')
         live=page.get_by_role('link',name='Read the existing public article')
