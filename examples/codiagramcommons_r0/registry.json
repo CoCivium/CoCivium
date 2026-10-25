@@ -1,0 +1,380 @@
+{
+  "schema": "CoDiagramCommons.PublicDonorRegistry.R0",
+  "version": "R0",
+  "observed_at": "2026-10-25",
+  "state": "PUBLIC_SOURCE_REVIEW_CANDIDATE__NOT_ALL_PRIORS_RECONCILED",
+  "scope": "Ten inspected public GitHub blobs, including seven visual sources plus three semantic/design/generator donors. Neither all prior sessions nor private images have been exhaustively searched or ingested.",
+  "governing_principle": "ALL_HISTORICAL_DIAGRAMS_MAY_INSPIRE__NONE_AUTOMATICALLY_PROVES_OR_BECOMES_CANON",
+  "authority": "NONE",
+  "default_use": "INSPIRE_AND_CHALLENGE_ONLY",
+  "donor_provenance": "Exact Git blob SHA-1 from individually fetched GitHub public files on main, not screenshot identity or independent source/publisher authentication.",
+  "donors": [
+    {
+      "id": "colens_map_orb_text",
+      "path": "examples/colensmedia/index.html",
+      "git_blob_sha1": "2f62a78c6b034013fed206374c8677e435e2467e",
+      "asset_class": "VISUAL_CODE",
+      "role": "multi-view projections",
+      "axes": [
+        "MAP",
+        "ORB",
+        "TEXT",
+        "LENS_SWAP"
+      ],
+      "verified_scope": "PUBLIC_GITHUB_SOURCE_BLOB_READBACK",
+      "render_quality": "NOT_VERIFIED_BY_THIS_REGISTRY",
+      "adopted_runtime": false,
+      "origin": "CoCivium/CoCivium@main",
+      "inspiration_permission": "SOURCE_ONLY_REUSE_CONDITIONAL_ON_LICENSE_AND_ATTRIBUTION"
+    },
+    {
+      "id": "cotheoryall_visual_hypothesis",
+      "path": "docs/CoTheoryAll/costrawbe-r0/index.html",
+      "git_blob_sha1": "f75181ade8cd6c90a024e1817b4b1745d286784c",
+      "asset_class": "VISUAL_CODE",
+      "role": "question/falsifier visual expression",
+      "axes": [
+        "HYPOTHESIS",
+        "CONTRADICTION",
+        "LOSS_AWARE_PROJECTION"
+      ],
+      "verified_scope": "PUBLIC_GITHUB_SOURCE_BLOB_READBACK",
+      "render_quality": "NOT_VERIFIED_BY_THIS_REGISTRY",
+      "adopted_runtime": false,
+      "origin": "CoCivium/CoCivium@main",
+      "inspiration_permission": "SOURCE_ONLY_REUSE_CONDITIONAL_ON_LICENSE_AND_ATTRIBUTION"
+    },
+    {
+      "id": "coprecursor_relation_time",
+      "path": "examples/coprecursor/index.html",
+      "git_blob_sha1": "773e9de7aa7c6b03bf0bc75eddb7ca0a0c8dd101",
+      "asset_class": "VISUAL_CODE",
+      "role": "relations/time/ambient view comparison",
+      "axes": [
+        "RELATION",
+        "TIME",
+        "AMBIENT",
+        "ACCESSIBILITY"
+      ],
+      "verified_scope": "PUBLIC_GITHUB_SOURCE_BLOB_READBACK",
+      "render_quality": "NOT_VERIFIED_BY_THIS_REGISTRY",
+      "adopted_runtime": false,
+      "origin": "CoCivium/CoCivium@main",
+      "inspiration_permission": "SOURCE_ONLY_REUSE_CONDITIONAL_ON_LICENSE_AND_ATTRIBUTION"
+    },
+    {
+      "id": "cocontext_rail",
+      "path": "examples/conodcothumb/context_rail_r1/index.html",
+      "git_blob_sha1": "e50b11a2825d9548248746c4f7937049ea97caa8",
+      "asset_class": "VISUAL_CODE",
+      "role": "compact contextual symbol alternatives",
+      "axes": [
+        "GLYPH",
+        "INPUT_PROPOSAL",
+        "INVERSION"
+      ],
+      "verified_scope": "PUBLIC_GITHUB_SOURCE_BLOB_READBACK",
+      "render_quality": "NOT_VERIFIED_BY_THIS_REGISTRY",
+      "adopted_runtime": false,
+      "origin": "CoCivium/CoCivium@main",
+      "inspiration_permission": "SOURCE_ONLY_REUSE_CONDITIONAL_ON_LICENSE_AND_ATTRIBUTION"
+    },
+    {
+      "id": "coevo_moustache",
+      "path": "assets/evoall/evo_all_betters_moustache_20261023.svg",
+      "git_blob_sha1": "01ecf5ecfc2badeb6ad981151e8e2d53d2304178",
+      "asset_class": "SVG_BRAND",
+      "role": "brand silhouette with accessible semantics",
+      "axes": [
+        "IDENTITY_FAMILY",
+        "VISUAL_METAPHOR",
+        "ACCESSIBILITY"
+      ],
+      "verified_scope": "PUBLIC_GITHUB_SOURCE_BLOB_READBACK",
+      "render_quality": "NOT_VERIFIED_BY_THIS_REGISTRY",
+      "adopted_runtime": false,
+      "origin": "CoCivium/CoCivium@main",
+      "inspiration_permission": "SOURCE_ONLY_REUSE_CONDITIONAL_ON_LICENSE_AND_ATTRIBUTION"
+    },
+    {
+      "id": "conotspace_unknown",
+      "path": "examples/conotspace/index.html",
+      "git_blob_sha1": "7b0f3001eb31a6e7b8aa7844f8710172b20c6ba3",
+      "asset_class": "VISUAL_CODE",
+      "role": "not-observed, unknown, private and absent distinctions",
+      "axes": [
+        "UNKNOWN",
+        "NEGATIVE_SPACE",
+        "FALSIFIER"
+      ],
+      "verified_scope": "PUBLIC_GITHUB_SOURCE_BLOB_READBACK",
+      "render_quality": "NOT_VERIFIED_BY_THIS_REGISTRY",
+      "adopted_runtime": false,
+      "origin": "CoCivium/CoCivium@main",
+      "inspiration_permission": "SOURCE_ONLY_REUSE_CONDITIONAL_ON_LICENSE_AND_ATTRIBUTION"
+    },
+    {
+      "id": "coattractorpull_resource",
+      "path": "examples/coattractorpull/index.html",
+      "git_blob_sha1": "b0ab26ebc2b2ec7cf6e4ab601798d34c1cb66349",
+      "asset_class": "VISUAL_CODE",
+      "role": "resource candidate views",
+      "axes": [
+        "RESOURCE_SELECTION",
+        "PROVENANCE",
+        "OPTIONALITY"
+      ],
+      "verified_scope": "PUBLIC_GITHUB_SOURCE_BLOB_READBACK",
+      "render_quality": "NOT_VERIFIED_BY_THIS_REGISTRY",
+      "adopted_runtime": false,
+      "origin": "CoCivium/CoCivium@main",
+      "inspiration_permission": "SOURCE_ONLY_REUSE_CONDITIONAL_ON_LICENSE_AND_ATTRIBUTION"
+    },
+    {
+      "id": "colens_typed_manifest",
+      "path": "examples/colensmedia/manifest.json",
+      "git_blob_sha1": "b5a87427f2a6bf3c5e4928b7aa2c64e3a46deb01",
+      "asset_class": "SEMANTIC_MANIFEST",
+      "role": "typed underpinning for lens experiment",
+      "axes": [
+        "SEMANTIC_SOURCE",
+        "EPISTEMIC_BOUNDARY",
+        "PROJECTION_PARITY"
+      ],
+      "verified_scope": "PUBLIC_GITHUB_SOURCE_BLOB_READBACK",
+      "render_quality": "NOT_VERIFIED_BY_THIS_REGISTRY",
+      "adopted_runtime": false,
+      "origin": "CoCivium/CoCivium@main",
+      "inspiration_permission": "SOURCE_ONLY_REUSE_CONDITIONAL_ON_LICENSE_AND_ATTRIBUTION"
+    },
+    {
+      "id": "coomni_context_architecture",
+      "path": "docs/Architecture/COOMNI_CONTEXT_RESOURCE_FABRIC_R0_20261024.md",
+      "git_blob_sha1": "6ded7b10deb1d7cfe85920e4efb482d9674509c5",
+      "asset_class": "ARCHITECTURE_NOTE",
+      "role": "source/context scaling contract",
+      "axes": [
+        "CONTEXT_COMPILATION",
+        "SOURCE_RECOVERY",
+        "RESOURCE_BUDGET"
+      ],
+      "verified_scope": "PUBLIC_GITHUB_SOURCE_BLOB_READBACK",
+      "render_quality": "NOT_VERIFIED_BY_THIS_REGISTRY",
+      "adopted_runtime": false,
+      "origin": "CoCivium/CoCivium@main",
+      "inspiration_permission": "SOURCE_ONLY_REUSE_CONDITIONAL_ON_LICENSE_AND_ATTRIBUTION"
+    },
+    {
+      "id": "codoodle_experiment_grammar",
+      "path": "examples/codoodle_conex_r1/README.md",
+      "git_blob_sha1": "64b254d5f9bbc80b70bb499da72a11ca6f54f97e",
+      "asset_class": "GENERATOR_GUIDE",
+      "role": "bounded inverse/outside/perturbation experiments",
+      "axes": [
+        "COUNTERFACTUAL",
+        "INVERSE",
+        "NULL_BASELINE",
+        "EXPERIMENT_SEED"
+      ],
+      "verified_scope": "PUBLIC_GITHUB_SOURCE_BLOB_READBACK",
+      "render_quality": "NOT_VERIFIED_BY_THIS_REGISTRY",
+      "adopted_runtime": false,
+      "origin": "CoCivium/CoCivium@main",
+      "inspiration_permission": "SOURCE_ONLY_REUSE_CONDITIONAL_ON_LICENSE_AND_ATTRIBUTION"
+    }
+  ],
+  "candidate_edges": [
+    {
+      "from": "colens_typed_manifest",
+      "to": "colens_map_orb_text",
+      "relation_type": "SEMANTIC_DONOR_CANDIDATE",
+      "evidence_class": "RELATED_UNDER_DOC_CONTRACT",
+      "directional": true,
+      "authority": "NONE",
+      "causal_claim": false,
+      "converse_not_causal_reversal": true
+    },
+    {
+      "from": "colens_map_orb_text",
+      "to": "coprecursor_relation_time",
+      "relation_type": "COMPARE_VIEW_GRAMMAR",
+      "evidence_class": "CANDIDATE",
+      "directional": true,
+      "authority": "NONE",
+      "causal_claim": false,
+      "converse_not_causal_reversal": true
+    },
+    {
+      "from": "colens_map_orb_text",
+      "to": "cotheoryall_visual_hypothesis",
+      "relation_type": "COMPARE_OBSERVER_LENSES",
+      "evidence_class": "CANDIDATE",
+      "directional": true,
+      "authority": "NONE",
+      "causal_claim": false,
+      "converse_not_causal_reversal": true
+    },
+    {
+      "from": "cocontext_rail",
+      "to": "conotspace_unknown",
+      "relation_type": "EXPLORE_NEGATIVE_SPACE",
+      "evidence_class": "CANDIDATE",
+      "directional": true,
+      "authority": "NONE",
+      "causal_claim": false,
+      "converse_not_causal_reversal": true
+    },
+    {
+      "from": "cocontext_rail",
+      "to": "coattractorpull_resource",
+      "relation_type": "COMPARE_ACTION_SELECTION",
+      "evidence_class": "CANDIDATE",
+      "directional": true,
+      "authority": "NONE",
+      "causal_claim": false,
+      "converse_not_causal_reversal": true
+    },
+    {
+      "from": "coevo_moustache",
+      "to": "colens_map_orb_text",
+      "relation_type": "VISUAL_FAMILY_INSPIRATION",
+      "evidence_class": "CANDIDATE",
+      "directional": true,
+      "authority": "NONE",
+      "causal_claim": false,
+      "converse_not_causal_reversal": true
+    },
+    {
+      "from": "coomni_context_architecture",
+      "to": "colens_typed_manifest",
+      "relation_type": "REUSE_CONTEXT_BINDING_RULE",
+      "evidence_class": "CANDIDATE",
+      "directional": true,
+      "authority": "NONE",
+      "causal_claim": false,
+      "converse_not_causal_reversal": true
+    },
+    {
+      "from": "codoodle_experiment_grammar",
+      "to": "conotspace_unknown",
+      "relation_type": "GENERATE_FALSIFIER_VARIANT",
+      "evidence_class": "CANDIDATE",
+      "directional": true,
+      "authority": "NONE",
+      "causal_claim": false,
+      "converse_not_causal_reversal": true
+    },
+    {
+      "from": "codoodle_experiment_grammar",
+      "to": "cotheoryall_visual_hypothesis",
+      "relation_type": "GENERATE_CHALLENGE_VARIANT",
+      "evidence_class": "CANDIDATE",
+      "directional": true,
+      "authority": "NONE",
+      "causal_claim": false,
+      "converse_not_causal_reversal": true
+    }
+  ],
+  "future_intake": {
+    "accepted_mediums": [
+      "SVG",
+      "PNG",
+      "JPG",
+      "WEBP",
+      "Mermaid",
+      "Graphviz",
+      "HTML",
+      "JSON_GRAPH",
+      "PPTX_SLIDE",
+      "PDF_PAGE",
+      "VIDEO_FRAME",
+      "SKETCH",
+      "TEXT_DIAGRAM"
+    ],
+    "required_fields": [
+      "asset_id",
+      "source_ref",
+      "sha256_or_git_blob",
+      "license_and_attribution",
+      "writer_or_unknown",
+      "privacy",
+      "observed_at",
+      "semantic_scope",
+      "epistemic_class",
+      "authority_ceiling",
+      "loss_ledger",
+      "accessibility_twin",
+      "test_receipt_or_held"
+    ],
+    "unlocated_history_policy": "DISCOVERABLE_CANDIDATE__NOT_RECOVERED",
+    "private_policy": "PRIVATE_HOLD__NO_PUBLIC_AUTO_UPLOAD",
+    "rights_policy": "RIGHTS_AND_ATTRIBUTION_REVIEW_BEFORE_DERIVATIVE_PUBLICATION"
+  },
+  "variation_operators": [
+    "RENDER_AS_TEXT",
+    "RENDER_AS_MAP",
+    "RENDER_AS_ORB",
+    "RENDER_AS_TIMELINE",
+    "RENDER_AS_GLYPH",
+    "INVERT_EDGE_DIRECTION_AS_HYPOTHESIS",
+    "NEGATE_WITH_UNCERTAINTY",
+    "NULL_BASELINE",
+    "OUTSIDE_VIEW",
+    "COUNTERFACTUAL",
+    "OBSERVER_SWAP",
+    "TIME_SHIFT",
+    "SCALE_SHIFT",
+    "SUBSTRATE_SWAP",
+    "ACCESSIBILITY_TWIN",
+    "SOURCE_LOSS_COMPARE",
+    "CHALLENGE_WITH_FALSIFIER",
+    "REPLAY_HISTORICAL_FAILURE"
+  ],
+  "acceptance_gates": [
+    "source_retrieval_sha_match",
+    "rights_and_privacy",
+    "semantic_id_stability",
+    "typed_edges_not_decorative_arrows",
+    "same_source_multiple_projections",
+    "accessibility_text_without_color_or_motion",
+    "projection_loss_visible",
+    "counterexample_and_inverse_correctness",
+    "tested_renderer_quality",
+    "no_effect_without_authorized_selection",
+    "independent_receiver_task_usefulness",
+    "cold_recovery_source_readproof"
+  ],
+  "outputs": {
+    "modes": [
+      "CoMap",
+      "CoOrb",
+      "CoBar",
+      "AccessibleText",
+      "Diagram",
+      "Glyph",
+      "Timeline",
+      "RichMedia"
+    ],
+    "expected_proposal_mode": "SHADOW",
+    "external_effects": 0,
+    "live_workers_spawned": 0,
+    "process": "discover -> qualify -> pin -> relate -> perturb -> render -> challenge -> test -> receipt -> version_or_sleep"
+  },
+  "epistemic_rails": [
+    "DIAGRAM_NE_EVIDENCE",
+    "SOURCE_GIT_BLOB_NE_VISUAL_QA",
+    "VISUAL_SIMILARITY_NE_CAUSALITY",
+    "CONVERSE_NE_CAUSAL_REVERSE",
+    "VIVID_NE_TRUE",
+    "PRIVATE_PRIOR_NE_PUBLIC",
+    "INSPIRE_NE_ENDORSE",
+    "DERIVATIVE_NE_SOURCE_REPLACEMENT",
+    "SOURCE_BLOB_NE_RECEIVER_ACK",
+    "NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE",
+    "CONTEXT_ADDRESSABLE_NE_CONTEXT_LOADED",
+    "TOKEN_POINTER_NE_INFINITE_CONTEXT",
+    "INFINITY_NE_UNBOUNDED_COMPUTE",
+    "SIMILARITY_NE_LICENSE_PERMISSION",
+    "DAILY_CAPABLE_NE_DAILY_CHURN"
+  ]
+}
