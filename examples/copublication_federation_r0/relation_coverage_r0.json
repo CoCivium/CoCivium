@@ -295,6 +295,18 @@
       "authority": "NONE",
       "causal_claim": false,
       "action": "NONE"
+    },
+    {
+      "from": "co_game",
+      "to": "co_all",
+      "type": "MAY_BELONG_TO",
+      "family": "candidate_parent",
+      "epistemic": "HYPOTHESIS",
+      "evidence": "main:docs/Architecture/COEVOALL_MIDDLE_LATCH_R0_20261024.md",
+      "reason": "The latch includes CoGame within CoAll; taxonomy is a provisional view, not inheritance authority.",
+      "authority": "NONE",
+      "causal_claim": false,
+      "action": "NONE"
     }
   ],
   "tree_view": {
