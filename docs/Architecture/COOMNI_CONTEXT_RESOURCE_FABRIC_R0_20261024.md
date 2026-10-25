@@ -453,3 +453,16 @@ wide address space
 ```
 
 This is how CoOmni can compound without requiring literal infinite compute.
+
+
+## R1 bounded local reference compiler (2026-10-25)
+
+An **isolated dependency-free Python 3 reference compiler** was tested against a wholly synthetic 9-object context corpus. It binds exact source SHA-256 digests and a manifest identity; filters by declared worker privacy class (illustrative classification, **not authentication**); elects a small packet while retaining a CHALLENGE and a DELTA lane; enforces byte budgets and source path/symlink rejection; checks exact local source rehydration; and performs **zero** network calls or external effects.
+
+Bounded test evidence: **38/38 PASS** after a retained initial test-expectation FAIL; 7 public-eligible sources containing 4,702 raw bytes, 3 source-linked selections in a **1,287-byte packet** under a 1,500-byte limit. Four 300-packet batches on Linux Python 3.13 measured median amortized **0.573 ms per packet**. This is representation-size reduction, *not* measured tokenizer savings, semantic answer improvement, independent user benefit or context-window extension.
+
+[Scoped machine FAIL/PASS/HELD ledger](../../ai/benchmarks/coomni-context-r1/benchmark_evo.jsonl) records exact package/script SHA-256 and limitations. The ZIP source package is attached to the originating private conversation and verified **locally**, **not published into this GitHub repository, not landed on CoStead, and not installed on X2**. X2's connected Desktop Commander path was offline at the last check. Future source publication should use a reviewed repository branch, preserving byte-identity and third-party rights.
+
+**Next acceptance:** compare one authorized real task using its full source versus the smaller source-bound packet. Measure exact factual recall, hallucinations, latency, model tokenizer usage, correction burden, source recovery, confidentiality and cost. A receiver must independently accept its own packet and produce readproof; local verification is not receiver pickup.
+
+LOCAL_SOURCE_VERIFICATION_NE_DURABLE_LANDING | SUMMARY_NE_SOURCE | BYTE_REDUCTION_NE_MODEL_TOKEN_EXTENSION | SOURCE_HASH_NE_SOURCE_TRUTH | STATIC_TEST_NE_X2_RUNTIME | POINTER_NE_ACK.
