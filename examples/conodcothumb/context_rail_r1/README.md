@@ -81,3 +81,5 @@ For `G_d`, spiritual/nonmaterial, ET and Civ2+/Civ3+ stories: use a *labelled sy
 Rails: `CONTEXT_ADDRESSABLE_NE_CONTEXT_LOADED | GESTURE_NE_AUTHORITY | PREVIEW_NE_EXECUTE | QUESTION_NE_ANSWER | NULL_NE_FALSE | ET_SCENARIO_NE_CONTACT | G_D_FRAME_NE_MEASURED_FIELD | LOCAL_IS_NOT_LANDED | VALIDATION_IS_NOT_ACCEPTANCE | NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF | NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE`.
 
 **FOSS Forever | CoGoAll | Working Together Respectfully | privacy by design | visible effects, wearables optional.**
+
+**Next gate, still shadow:** [REQUEST_TOKEN_ADMISSION_R0.md](REQUEST_TOKEN_ADMISSION_R0.md) binds a separate *full model request* count receipt to its exact serialized request hash and declared model/window, reserves output tokens, and holds on stale, mismatched, text-only or oversize counts. Its [43 offline tests](test_request_token_admission_r0.cjs) run in the same existing CI workflow. This neither calls a provider nor verifies model limits, actual tokens, X2 runtime or model effect authority.
