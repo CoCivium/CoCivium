@@ -1,0 +1,21 @@
+{
+  "schema": "CoOmni.ContextCompiler.BenchmarkR0",
+  "workload": "5 synthetic sources; 1 restricted; 1 challenge; one 1400-byte public packet; local Python-only, no network",
+  "host_class": "container Linux; Python 3 stdlib; CPU not calibrated",
+  "iterations_per_trial": 5000,
+  "trials": 4,
+  "median_milliseconds_per_compile": 0.173292,
+  "source_compact_bytes": 7521,
+  "packet_compact_bytes": 1184,
+  "reduction_ratio_bytes": 6.352,
+  "actual_selected_sources": 2,
+  "withheld_nonpublic": 1,
+  "omitted_public": 2,
+  "status": "PASS_BOUNDED",
+  "qualifications": [
+    "Source texts are synthetic, not actual large archives or model-context retrieval",
+    "Amortized batch timing is not p95 user latency",
+    "Source digest tests are local, not independent custodian readproof",
+    "Zero token/provider/runtime integration"
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "schema": "CoAll.ContextSources.R0",
+  "work_id": "COOMNI_SAMPLE_001",
+  "intent": "improve CoOrb first use recovery",
+  "sources": [
+    {
+      "id": "public-guide",
+      "text": "First-use guide: inspect a source, preview, accept and undo. CoOrb contextual choices. Verify keyboard accessibility, source identity, device reach, fallback, permission and interruption cost. First-use guide: inspect a source, preview, accept and undo. CoOrb contextual choices. Verify keyboard accessibility, source identity, device reach, fallback, permission and interruption cost. First-use guide: inspect a source, preview, accept and undo. CoOrb contextual choices. Verify keyboard accessibility, source identity, device reach, fallback, permission and interruption cost. First-use guide: inspect a source, preview, accept and undo. CoOrb contextual choices. Verify keyboard accessibility, source identity, device reach, fallback, permission and interruption cost. First-use guide: inspect a source, preview, accept and undo. CoOrb contextual choices. Verify keyboard accessibility, source identity, device reach, fallback, permission and interruption cost. First-use guide: inspect a source, preview, accept and undo. CoOrb contextual choices. Verify keyboard accessibility, source identity, device reach, fallback, permission and interruption cost. First-use guide: inspect a source, preview, accept and undo. CoOrb contextual choices. Verify keyboard accessibility, source identity, device reach, fallback, permission and interruption cost. First-use guide: inspect a source, preview, accept and undo. CoOrb contextual choices. Verify keyboard accessibility, source identity, device reach, fallback, permission and interruption cost. First-use guide: inspect a source, preview, accept and undo. CoOrb contextual choices. Verify keyboard accessibility, source identity, device reach, fallback, permission and interruption cost. First-use guide: inspect a source, preview, accept and undo. CoOrb contextual choices. Verify keyboard accessibility, source identity, device reach, fallback, permission and interruption cost. First-use guide: inspect a source, preview, accept and undo. CoOrb contextual choices. Verify keyboard accessibility, source identity, device reach, fallback, permission and interruption cost. First-use guide: inspect a source, preview, accept and undo. CoOrb contextual choices. Verify keyboard accessibility, source identity, device reach, fallback, permission and interruption cost. First-use guide: inspect a source, preview, accept and undo. CoOrb contextual choices. Verify keyboard accessibility, source identity, device reach, fallback, permission and interruption cost. First-use guide: inspect a source, preview, accept and undo. CoOrb contextual choices. Verify keyboard accessibility, source identity, device reach, fallback, permission and interruption cost. First-use guide: inspect a source, preview, accept and undo. CoOrb contextual choices. Verify keyboard accessibility, source identity, device reach, fallback, permission and interruption cost. First-use guide: inspect a source, preview, accept and undo. CoOrb contextual choices. Verify keyboard accessibility, source identity, device reach, fallback, permission and interruption cost. First-use guide: inspect a source, preview, accept and undo. CoOrb contextual choices. Verify keyboard accessibility, source identity, device reach, fallback, permission and interruption cost. First-use guide: inspect a source, preview, accept and undo. CoOrb contextual choices. Verify keyboard accessibility, source identity, device reach, fallback, permission and interruption cost.",
+      "sha256": "4a170a72944cab63fe417b09c818f3cf89723bdba8146982fa8769ffce27eb22",
+      "role": "SOURCE",
+      "visibility": "PUBLIC",
+      "epistemic": "OBSERVED"
+    },
+    {
+      "id": "challenge",
+      "text": "Challenge: no independent human first-use acceptance or provider-independent restore receipt. User failure, absent consent, privacy leakage and stale source are counterexamples. Challenge: no independent human first-use acceptance or provider-independent restore receipt. User failure, absent consent, privacy leakage and stale source are counterexamples. Challenge: no independent human first-use acceptance or provider-independent restore receipt. User failure, absent consent, privacy leakage and stale source are counterexamples. Challenge: no independent human first-use acceptance or provider-independent restore receipt. User failure, absent consent, privacy leakage and stale source are counterexamples. Challenge: no independent human first-use acceptance or provider-independent restore receipt. User failure, absent consent, privacy leakage and stale source are counterexamples. Challenge: no independent human first-use acceptance or provider-independent restore receipt. User failure, absent consent, privacy leakage and stale source are counterexamples. Challenge: no independent human first-use acceptance or provider-independent restore receipt. User failure, absent consent, privacy leakage and stale source are counterexamples. Challenge: no independent human first-use acceptance or provider-independent restore receipt. User failure, absent consent, privacy leakage and stale source are counterexamples. Challenge: no independent human first-use acceptance or provider-independent restore receipt. User failure, absent consent, privacy leakage and stale source are counterexamples. Challenge: no independent human first-use acceptance or provider-independent restore receipt. User failure, absent consent, privacy leakage and stale source are counterexamples. Challenge: no independent human first-use acceptance or provider-independent restore receipt. User failure, absent consent, privacy leakage and stale source are counterexamples. Challenge: no independent human first-use acceptance or provider-independent restore receipt. User failure, absent consent, privacy leakage and stale source are counterexamples.",
+      "sha256": "4c3b4e380bc0104011ec1ae3dec1d783b95f8ae021e6e77cc2e0a87b9e4c3fb5",
+      "role": "CHALLENGE",
+      "visibility": "PUBLIC",
+      "epistemic": "HYPOTHESIS"
+    },
+    {
+      "id": "fallback",
+      "text": "Baseline: preserve a standalone accessible text view for recovery and compare against a task-first flow. Baseline: preserve a standalone accessible text view for recovery and compare against a task-first flow. Baseline: preserve a standalone accessible text view for recovery and compare against a task-first flow. Baseline: preserve a standalone accessible text view for recovery and compare against a task-first flow. Baseline: preserve a standalone accessible text view for recovery and compare against a task-first flow. Baseline: preserve a standalone accessible text view for recovery and compare against a task-first flow. Baseline: preserve a standalone accessible text view for recovery and compare against a task-first flow. Baseline: preserve a standalone accessible text view for recovery and compare against a task-first flow.",
+      "sha256": "c205efc7e851d68588250ddfc1e49ae8a429455f6cd592eb1337af268becc206",
+      "role": "BASELINE",
+      "visibility": "PUBLIC",
+      "epistemic": "OBSERVED"
+    },
+    {
+      "id": "private-example",
+      "text": "NOT FOR PUBLIC CONTEXT: synthetic restricted material.",
+      "sha256": "c7524df4d4b2ac1605164c04cf1ee207f890c82cf3d7bd60b2daf6c7f0d1bf35",
+      "role": "SOURCE",
+      "visibility": "RESTRICTED",
+      "epistemic": "OBSERVED"
+    },
+    {
+      "id": "other",
+      "text": "Visible event log and exact SHA references for CoOrb.",
+      "sha256": "550f135a3b0db0b394916986237d5fb90ebe1bef7bad5d7bd47f00239cd285fc",
+      "role": "SOURCE",
+      "visibility": "PUBLIC",
+      "epistemic": "OBSERVED"
+    }
+  ]
+}
