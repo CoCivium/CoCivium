@@ -103,12 +103,13 @@ export function planImpact({graph,event,max_depth=2,max_proposals=4,max_visits=6
       if(!Object.hasOwn(EDGE_WEIGHTS,edge.kind)){diagnostics.nonpropagating_relations++;continue;}
       if(edge.evidence!=='SYNTHETIC_DECLARATION'){diagnostics.held_unverified++;continue;}
       const receiver=nodes.get(edge.from);
+      // Deduplicate cycles before reclassifying a previously visited ancestor.
+      if(seenNodes.has(receiver.id)){diagnostics.cycle_deduped++;continue;}
       // A private or unknown neighbor never appears by id in the public output.
       if(receiver.privacy!=='PUBLIC'){diagnostics.held_privacy++;continue;}
       if(receiver.authority!=='NONE'){diagnostics.held_authority++;continue;}
       if(receiver.currentness!=='CURRENT'){diagnostics.held_stale++;continue;}
       if(receiver.subscription!=='EXPLICIT_SHADOW'){diagnostics.held_unsubscribed++;continue;}
-      if(seenNodes.has(receiver.id)){diagnostics.cycle_deduped++;continue;}
       if(seenNodes.size>=max_visits){diagnostics.visit_budget_held++;continue;}
       seenNodes.add(receiver.id);
       const depth=current.depth+1;
