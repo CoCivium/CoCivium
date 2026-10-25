@@ -1,0 +1,40 @@
+name: CoReaderFederation R0 source router
+
+on:
+  pull_request:
+    paths:
+      - 'examples/coreaderfederation/**'
+      - '.github/workflows/coreader-federation-r0.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  offline-reader-route:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate public source catalog JSON
+        run: python3 -m json.tool examples/coreaderfederation/catalog.json > /dev/null
+      - name: Run opt-in router tests
+        run: python3 -B -m unittest discover -s examples/coreaderfederation -p 'test_route.py' -v
+      - name: Repeat tests with optimized Python
+        run: python3 -O -B -m unittest discover -s examples/coreaderfederation -p 'test_route.py' -v
+      - name: No-tracking, no publication, no mutation smoke
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 examples/coreaderfederation/route.py --interest publishing --audience journalist --format text --mode SNAPSHOT --as-of 2026-10-25T12:00:00Z > "$RUNNER_TEMP/routes.json"
+          python3 - "$RUNNER_TEMP/routes.json" <<'PY'
+          import json,sys
+          from pathlib import Path
+          r=json.loads(Path(sys.argv[1]).read_text())
+          assert r["schema"]=="CoReaderFederation.RoutePreview.R0"
+          assert r["selected_count"] > 0
+          assert not any(r["effects"].values())
+          assert not r["privacy"]["click_tracking"]
+          assert not r["privacy"]["inferred_interests"]
+          assert all(e["historical_source_preserved"] for e in r["candidates"])
+          print("PASS_EXPLICIT_INTEREST_ZERO_EFFECTS_SOURCE_LINEAGE_PRESERVED")
+          PY
