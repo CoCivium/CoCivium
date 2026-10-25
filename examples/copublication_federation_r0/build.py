@@ -42,6 +42,17 @@ def validate(m):
     assert m['tracking'] is False and m['interest_inference'] is False
     assert m['urgency']['countdowns'] is False and m['urgency']['deliberately_expiring_links'] is False
     assert m['reader_feedback_writeback'] == 'NONE_LOCAL_PREVIEW_ONLY'
+    g=m['giggle_lens']
+    assert g['classification']=='HUMOROUS'
+    assert g['status']=='HUMOROUS_SOURCE_LINKED_PROJECTION_NOT_EVIDENCE'
+    assert g['default']=='OFF_UNTIL_EXPLICIT_READER_CLICK'
+    assert g['privacy']=='NO_INFERENCE_NO_STORAGE_NO_TRANSMISSION'
+    assert g['source_claim_ids']==m['claim_ids_required_in_every_route']
+    assert {'HUMOR_NE_EVIDENCE','PUNCHLINE_NE_PERFORMANCE_METRIC','LAUGHTER_NE_READER_ADOPTION','OPT_IN_NE_CONSENT_TO_SEND'}.issubset(g['nonclaims'])
+    assert len(g['examples'])==len(m['routes'])==6
+    assert {x['route_id'] for x in g['examples']}=={x['id'] for x in m['routes']}
+    assert all(x['claim_id'] in g['source_claim_ids'] and len(x['quip'])>=35 and len(x['translation'])>=35 and len(x['challenge'])>=30 for x in g['examples'])
+    assert all(not any(y in x['quip'].lower() for y in ('guaranteed viral','subscribe now','limited time','reader testimonial')) for x in g['examples'])
     return True
 
 def build(m):
