@@ -451,7 +451,10 @@ Provider access, X2 state, and runtime/device tests remain unknown or NOT_RUN/HE
 
 ## EVO ALL BETTERS+ · “=” / middle-button contextual relation latch · 2026-10-24
 
-**Design invariant:** `[ EVO ALL BETTERS + ] = middle button = '='`. Treat the middle button as an optional contextual relation-operation exemplar that invites the relevant CoOrbWare+ / CoSoftware+ / CoAll+ fabric into view. Relate context, resources, artifacts, people, time, permissions, evidence, dependencies, inverse/recovery, and outcomes; preview consequential effects; authorize; execute one bounded step; verify; write a minimal receipt; retain history and evolve from measured deltas.
+**Design invariant:** `[ EVO ALL BETTERS + ] = middle button = '='`.
+
+**CoDelegate+ alias:** the user's apostrophe shorthand (`'`) expresses a delegated, bounded CoAll planning/review intent. Treat it as a semantic alias for *summon / inspect / propose* in this work contract, alongside the optional middle/thumb gesture and the relation glyph `=`. It does not itself install a key binding, press a mouse, unlock a provider, authorize an external effect, or create a perpetual worker. A literal apostrophe in a document remains ordinary text unless intentionally invoked as a CoCivium command in an explicitly eligible interface. Preserve the visible OFF/cancel path and original OS/app input.
+ Treat the middle button as an optional contextual relation-operation exemplar that invites the relevant CoOrbWare+ / CoSoftware+ / CoAll+ fabric into view. Relate context, resources, artifacts, people, time, permissions, evidence, dependencies, inverse/recovery, and outcomes; preview consequential effects; authorize; execute one bounded step; verify; write a minimal receipt; retain history and evolve from measured deltas.
 
 Link CoEvergreen+, CoInfin+, CoFactory+, CoProduct+, CoProduce+, CoCareer+, CoPayback+, CoGame+, CoBottleneck−, and CoTurtle∞+ through typed relations with explicit inputs/outputs, constraints, costs, owners, expected value, evidence, and feedback. CoBottleneck− should surface limiting dependencies and human-time cost. CoTurtle∞+ may generate alternatives recursively, but the active frontier remains bounded, deduplicated, checkpointable, cancellable, and testable.
 
