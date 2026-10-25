@@ -47,3 +47,5 @@ jobs:
         run: python -m unittest discover -s tests -p 'test_logical_spawn_*.py' -v
       - name: Prove shadow work is visible but not a human blocker
         run: python scripts/CoFleetProjectionCompilerR4A.py --selftest
+      - name: Require truthful runtime counts under malformed observer facts
+        run: python -m unittest discover -s tests -p 'test_cofleet_runtime_counts_r4a.py' -v

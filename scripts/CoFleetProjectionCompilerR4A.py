@@ -60,7 +60,8 @@ def runtime_count(runtime: dict[str, Any] | None, key: str) -> tuple[int | None,
     if not runtime:
         return None, "NO_RUNTIME_FACTS_INPUT"
     value = runtime.get(key)
-    if isinstance(value, int) and value >= 0:
+    # bool is a subclass of int in Python; True/False are not observed counts.
+    if type(value) is int and value >= 0:
         return value, "BOUND_RUNTIME_FACT"
     return None, "RUNTIME_FACT_UNPROVEN"
 
@@ -129,9 +130,15 @@ def compile_projection(
     models_count, models_cov = runtime_count(runtime, "model_runtimes")
     front_n, front_cov = front_count(fronts)
 
-    if runtime and isinstance(runtime.get("effect_leases"), int):
-        lease_count = runtime["effect_leases"]
-        lease_cov = "BOUND_RUNTIME_FACT"
+    # Malformed live count must not silently become either 1 (True) or zero.
+    if runtime is not None and "effect_leases" in runtime:
+        raw_lease_count = runtime["effect_leases"]
+        if type(raw_lease_count) is int and raw_lease_count >= 0:
+            lease_count = raw_lease_count
+            lease_cov = "BOUND_RUNTIME_FACT"
+        else:
+            lease_count = None
+            lease_cov = "RUNTIME_FACT_UNPROVEN"
     else:
         lease_count = len(active_effect_leases)
         lease_cov = "LOGICAL_CONTRACTS_ONLY__LIVE_RUNTIME_UNPROVEN"
