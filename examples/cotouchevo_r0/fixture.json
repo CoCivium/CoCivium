@@ -1,0 +1,154 @@
+{
+  "schema": "CoAll.CoTouchEvo.ImpactProposal.R0",
+  "change": {
+    "subject": "source:colens",
+    "event_id": "synthetic:colens-changed",
+    "revision_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "evidence": "SYNTHETIC"
+  },
+  "nodes": [
+    {
+      "id": "source:colens",
+      "classification": "PUBLIC"
+    },
+    {
+      "id": "view:map",
+      "classification": "PUBLIC"
+    },
+    {
+      "id": "view:text",
+      "classification": "PUBLIC"
+    },
+    {
+      "id": "test:replay",
+      "classification": "PUBLIC"
+    },
+    {
+      "id": "page:frontdoor",
+      "classification": "PUBLIC"
+    },
+    {
+      "id": "prior:synthkind",
+      "classification": "PRIVATE"
+    },
+    {
+      "id": "memo:private",
+      "classification": "PRIVATE"
+    },
+    {
+      "id": "candidate:visual-look",
+      "classification": "PUBLIC"
+    },
+    {
+      "id": "candidate:critic",
+      "classification": "PUBLIC"
+    }
+  ],
+  "edges": [
+    {
+      "dependent": "view:map",
+      "dependency": "source:colens",
+      "relation": "RENDERS_FROM",
+      "evidence": "GROUNDED"
+    },
+    {
+      "dependent": "view:text",
+      "dependency": "source:colens",
+      "relation": "RENDERS_FROM",
+      "evidence": "GROUNDED"
+    },
+    {
+      "dependent": "test:replay",
+      "dependency": "view:map",
+      "relation": "DEPENDS_ON",
+      "evidence": "GROUNDED"
+    },
+    {
+      "dependent": "page:frontdoor",
+      "dependency": "test:replay",
+      "relation": "DEPENDS_ON",
+      "evidence": "PROPOSED"
+    },
+    {
+      "dependent": "prior:synthkind",
+      "dependency": "source:colens",
+      "relation": "INSPIRED_BY",
+      "evidence": "GROUNDED"
+    },
+    {
+      "dependent": "memo:private",
+      "dependency": "view:text",
+      "relation": "DEPENDS_ON",
+      "evidence": "GROUNDED"
+    },
+    {
+      "dependent": "source:colens",
+      "dependency": "test:replay",
+      "relation": "RELATED_TO",
+      "evidence": "GROUNDED"
+    },
+    {
+      "dependent": "candidate:visual-look",
+      "dependency": "source:colens",
+      "relation": "INSPIRED_BY",
+      "evidence": "GROUNDED"
+    },
+    {
+      "dependent": "candidate:critic",
+      "dependency": "source:colens",
+      "relation": "CONTRADICTS",
+      "evidence": "GROUNDED"
+    }
+  ],
+  "receivers": [
+    {
+      "id": "co-ux",
+      "clearance": "PUBLIC",
+      "mode": "WAKE_ONLY",
+      "targets": [
+        "view:map",
+        "view:text"
+      ],
+      "last_acked_event_id": null,
+      "max_items": 2
+    },
+    {
+      "id": "co-proof",
+      "clearance": "PUBLIC",
+      "mode": "DIGEST",
+      "targets": [
+        "test:replay"
+      ],
+      "last_acked_event_id": null,
+      "max_items": 1
+    },
+    {
+      "id": "co-public",
+      "clearance": "PUBLIC",
+      "mode": "LATEST_POINTER",
+      "targets": [
+        "page:frontdoor",
+        "memo:private"
+      ],
+      "last_acked_event_id": null,
+      "max_items": 2
+    },
+    {
+      "id": "co-private",
+      "clearance": "PRIVATE",
+      "mode": "WAKE_ONLY",
+      "targets": [
+        "memo:private",
+        "prior:synthkind"
+      ],
+      "last_acked_event_id": null,
+      "max_items": 1
+    }
+  ],
+  "limits": {
+    "max_hops": 2,
+    "max_visits": 12,
+    "max_proposals": 6,
+    "max_review": 3
+  }
+}
