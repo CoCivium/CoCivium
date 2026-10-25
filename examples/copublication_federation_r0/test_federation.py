@@ -123,6 +123,11 @@ class FederationTests(unittest.TestCase):
     def test_single_html_manifest(self):self.assertEqual((ROOT/'index.html').read_text().count('id="manifest"'),1)
     def test_keyboard_access(self):self.assertIn('focus-visible',(ROOT/'index.html').read_text())
     def test_reduced_motion(self):self.assertIn('prefers-reduced-motion',(ROOT/'index.html').read_text())
+    def test_source_digests_wrap_without_mobile_overflow(self):
+        html=(ROOT/'index.html').read_text()
+        template=(ROOT/'template.html').read_text()
+        self.assertIn('.panel{overflow-wrap:anywhere;',html)
+        self.assertIn('.panel{overflow-wrap:anywhere;',template)
     def test_mobile_breakpoints(self):self.assertIn('@media(max-width:760px)',(ROOT/'index.html').read_text())
     def test_no_raw_private_media(self):self.assertNotIn('WhatsApp',(ROOT/'index.html').read_text())
     def test_title_and_source(self):self.assertIn('The Great ReFact | Six reader doorways',(ROOT/'index.html').read_text())
