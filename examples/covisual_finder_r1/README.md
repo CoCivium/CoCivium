@@ -65,3 +65,23 @@ FIND public source pointer
 `SOURCE_PAGE_NE_LICENSE_CLEARANCE | SOURCE_LINK_NE_IMAGE_BYTES | PROPOSED_ROUTES_NE_SENT | BEAUTIFUL_NE_TRUE | GLYPH_NE_AUTHORITY | LOGICAL_INFINITY_NE_UNLIMITED_COMPUTE | LOCAL_IS_NOT_LANDED | NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF`.
 
 Code follows this repository's GPL-3.0 license. Third-party works remain under their own rights and are NOT included.
+
+## CoLens source-to-view bridge R0 | executable comparative donor
+
+A bounded [`lens_bridge.py`](lens_bridge.py) converts the **same four validated public-source metadata records** into three **specification payloads** per source: `Text`, `Map`, and `Orb`. All twelve carry identical work ID, source URL, source digest, rights state and epistemic classification. The Map records exactly two advisory relation edges plus one inverse-question node; the Orb records up to three candidate internal role labels and a plain-text alternative. No external images, private screen/media, provider credentials or source image bytes are imported.
+
+It reads [CoLens's existing three-view manifest](../colensmedia/manifest.json) solely to verify a compatible, no-authority view grammar. It **does not re-use** the unrelated Synthkind-theme content, modify CoLens's running renderer or introduce a second image viewer. The output is a typed **view-spec JSON**, not a visual render accepted by a participant.
+
+Reproduce offline from the repository root:
+
+```sh
+python3 examples/covisual_finder_r1/lens_bridge.py --check
+python3 examples/covisual_finder_r1/lens_bridge.py > visual_lens_bridge.json
+python3 -m unittest discover -s examples/covisual_finder_r1/tests -p 'test_*.py' -v
+```
+
+Thirty-five new negative/parity assertions verify stable source identities across all three view specifications, no source image bytes, no rights promotion, no authority, typed noncausal inverse questions, strict rejection of undeclared private source metadata, and tampering with graph edges, URLs, source rights or unqualified fanout. Source/registry changes affect the exact structural digest. The existing CoVisualFinder CI workflow now runs the bridge check alongside the original policy/browser-source tests.
+
+**Proof boundary:** This candidate builds **three linked view payloads**, *not* three independent renderers. A real CoMap/CoOrb/accessible first-use, currentness propagation, image-source rights review, media reproduction and a human receiver-origin comprehension ACK remain HELD. A good successor would integrate the resulting work objects into the existing CoLens renderer without starting another frontend.
+
+`ONE_SOURCE_THREE_SPECIFICATIONS_NE_THREE_RENDERERS | INSPIRED_BY_NE_LICENSE_TO_COPY | SOURCE_HASH_NE_TRUTH | MACHINE_PARITY_NE_HUMAN_COMPREHENSION | OMNI_ADDRESSABLE_NE_OMNI_LOADED`.
