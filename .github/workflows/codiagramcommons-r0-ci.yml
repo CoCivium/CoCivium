@@ -1,0 +1,43 @@
+name: CoDiagramCommons R0 provenance and policy
+
+on:
+  pull_request:
+    paths:
+      - 'examples/codiagramcommons_r0/**'
+      - '.github/workflows/codiagramcommons-r0-ci.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: codiagramcommons-r0-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  exact-donor-provenance:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - name: Checkout exact candidate
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Use Node 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Read-only source/provenance and semantic guardrails
+        shell: bash
+        run: |
+          set -euo pipefail
+          node --version
+          node --test examples/codiagramcommons_r0/tests/check.mjs | tee "$RUNNER_TEMP/codiagramcommons-r0-tests.tap"
+      - name: Retain CI scoped receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: codiagramcommons-r0-provenance
+          path: ${{ runner.temp }}/codiagramcommons-r0-tests.tap
+          if-no-files-found: warn
+          retention-days: 14
