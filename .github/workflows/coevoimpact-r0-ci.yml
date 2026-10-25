@@ -1,0 +1,60 @@
+name: CoEvoImpact R0 shadow impact planner
+
+on:
+  pull_request:
+    paths:
+      - 'examples/coevoimpact_r0/**'
+      - '.github/workflows/coevoimpact-r0-ci.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: coevoimpact-r0-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  shadow-policy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - name: Checkout exact pull-request tree
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Pin Node 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify finite graph, zero side effects and permissions
+        shell: bash
+        run: |
+          set -euo pipefail
+          node --test examples/coevoimpact_r0/tests/check.mjs | tee "$RUNNER_TEMP/coevoimpact-r0-tests.tap"
+          node examples/coevoimpact_r0/CoEvoImpactR0.mjs \
+            examples/coevoimpact_r0/fixture/graph.json \
+            examples/coevoimpact_r0/fixture/event.json > "$RUNNER_TEMP/coevoimpact-r0-plan.json"
+          node - "$RUNNER_TEMP/coevoimpact-r0-plan.json" <<'NODE'
+          const fs=require('node:fs');
+          const p=JSON.parse(fs.readFileSync(process.argv[2],'utf8'));
+          const expected=['tests','challenge','contextamp','diagramcommons'];
+          if(p.status!=='PASS_SYNTHETIC_SHADOW_PLAN'||
+             p.proposals.length!==4||p.candidate_count!==5||
+             JSON.stringify(p.proposals.map(x=>x.dependent_id))!==JSON.stringify(expected)||
+             p.authority!=='NONE'||!p.no_effects||
+             Object.values(p.effects).some(v=>v!==0))process.exit(1);
+          console.log(JSON.stringify({status:p.status,proposals:p.proposals.length,
+            candidate_count:p.candidate_count,held_counts:p.diagnostics,
+            effects:p.effects,nonclaim:'SYNTHETIC_FIXTURE_NOT_REAL_SOURCE_DELTA'}));
+          NODE
+      - name: Save synthetic test and plan receipts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: coevoimpact-r0-shadow-proof
+          path: |
+            ${{ runner.temp }}/coevoimpact-r0-tests.tap
+            ${{ runner.temp }}/coevoimpact-r0-plan.json
+          if-no-files-found: warn
+          retention-days: 14
