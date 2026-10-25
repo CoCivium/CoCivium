@@ -1,0 +1,87 @@
+{
+  "schema": "CoAll.CoLivingHighlight.VisualPriorReuse.R0",
+  "state": "REVIEW_ONLY__NO_PRIVATE_MEDIA_EMBEDDED__NOT_RUNTIME_OR_PUBLIC_RELEASE",
+  "lineage": "CoLivingHighlight+ / CoLens+ / CoAura+",
+  "goal": "Make visual and rich-media predecessors reusable as design inspiration and deliberately rejected patterns, without promoting aesthetics to evidence or overloading every worker context.",
+  "public_source_contracts": [
+    {
+      "repo": "CoCivium/CoCivium",
+      "path": "docs/Architecture/COLIVING_HIGHLIGHT_R0.md",
+      "git_blob": "dca1b55de78dd10d0167dd6411518f363f6f71a8"
+    },
+    {
+      "repo": "CoCivium/CoCivium",
+      "path": "examples/colensmedia/manifest.json",
+      "git_blob": "b5a87427f2a6bf3c5e4928b7aa2c64e3a46deb01"
+    },
+    {
+      "repo": "CoCivium/CoCivium",
+      "path": "ai/highlight-assets.json",
+      "git_blob": "a6cf0422a2fbf82852de3619a47ea8b8ec3c45de"
+    },
+    {
+      "repo": "CoCivium/CoCivium",
+      "path": "docs/Architecture/COLIVING_HIGHLIGHT_ASSETS_R0.md",
+      "git_blob": "40785f77b4085b5830a45bb4c965360347f7cdaf"
+    },
+    {
+      "repo": "CoCivium/CoAura",
+      "path": "README.md",
+      "git_blob": "a848cfcc7792543fb6feeafc32f744cd207a6407"
+    }
+  ],
+  "reusable_relations": [
+    "INSPIRED_BY",
+    "AVOIDS_PATTERN",
+    "CHALLENGES",
+    "CONTRASTS_WITH",
+    "PROJECTS_TO",
+    "EXPLAINS",
+    "HISTORICIZES",
+    "SUPERSEDES_WITH_PROOF"
+  ],
+  "portable_prior_record_fields": [
+    "stable_id",
+    "version",
+    "source_identity",
+    "source_hash",
+    "authorship_and_rights",
+    "confidentiality",
+    "epistemic_class",
+    "observer_and_lens",
+    "borrow",
+    "avoid",
+    "hypothesis",
+    "falsifier",
+    "accessibility_fallback",
+    "projection_loss",
+    "valid_time",
+    "observed_time",
+    "successor",
+    "receiver_scope",
+    "proof_gate"
+  ],
+  "bounded_selection": {
+    "max_selected_descriptors": 4,
+    "default_character_proxy_budget": 2200,
+    "actual_tokens": "UNKNOWN_UNTIL_RECEIVER_TOKENIZER",
+    "preserve_cold_source": true,
+    "no_background_inference": true
+  },
+  "private_image_custody": "LOCAL_ONLY__UNENUMERATED_OTHER_SESSIONS__NOT_IN_THIS_PUBLIC_REVIEW_RECORD",
+  "promotions": {
+    "create_public_image": "HELD_RIGHTS_AND_SOURCE_REVIEW",
+    "auto_provider_call": "NONE",
+    "device_automation": "NONE",
+    "bulk_outreach": "NONE",
+    "authority_change": "NONE"
+  },
+  "nonclaims": [
+    "ILLUSTRATION_NE_EMPIRICAL_EVIDENCE",
+    "RETRIEVABLE_NE_LOADED",
+    "SOURCE_POINTER_NE_RECEIVER_ACK",
+    "PRIVATE_PRIOR_NE_PUBLIC_ASSET",
+    "ARTIFACT_COUNT_NE_UX_VALUE",
+    "LOGICAL_INFINITY_NE_INFINITE_COMPUTE"
+  ]
+}
