@@ -254,3 +254,14 @@ Interaction contract: INPUT -> CoRelClutch+ -> GLYPH -> RESOLVE_ANCHOR -> LOAD_M
 WHY/HOW/WHERE/WHEN/WHAT/WHO/WHEREFORE can be represented as query facets over the same anchored object rather than separate silos: WHAT=identity/state; WHO=actors/observers/receivers; WHERE=location/substrate/context; WHEN=time/currentness; WHY=purpose/causal hypothesis; HOW=mechanism/process; WHEREFORE=goal/value/implication. Q&A&@+ remains a compact surface over these facets.
 
 Future device/substrate takeover should reuse the same anchored grammar across mouse, keyboard, touch, pen, controller, gaze, voice, VR, CoOrb, CoBar, CoMap and accessible text. PORTABLE_GRAMMAR_NE_IDENTICAL_GESTURE; DEVICE_CAPABILITY_NE_USER_CONSENT; AVAILABLE_INPUT_NE_AUTHORITY.
+
+
+## 2026-10-25 | Latched Evermore delegation contract
+
+Treat `[ EVO ALL BETTERS + ] = middle button = ' = ' all etc` as a compact standing delegation token for materially related CoCivium/CoAll work. It selects one highest-value bounded safe EvoAll candidate without requiring Rick to relay routine machine state. It does not expand authority, bypass effect gates, or imply continuous execution between actual carrier wakes.
+
+Candidate value domains referenced by the latch include CoEvergreen+, CoInfin+, CoAll+, CoFactory+, CoProduct+, CoProduce+, CoCareer+, CoPayback+, CoGame+, CoBottleneck-, CoTurtle∞+, CoOrbWare+, plural `Yous lead + Wes lead too`, and typed G_d relations. Interpret them as dimensions/lanes rather than mandatory subsystems. CoEvergreen = revisit on material change; CoInfin+ = vast virtual candidate space; CoFactory/Product/Produce = reusable creation/productization; CoCareer/Payback/Game = livelihood/value-return/play where relevant; CoBottleneck- = reduce critical-path friction and human relay; CoTurtle∞+ = recursive review only while grounded information gain exceeds cost; CoOrbWare+ = broader relational operating fabric; G_d remains symbolic/metaphysical/hypothesis unless independently evidenced.
+
+On each material wake compare SMALL_PATH, LARGE_PATH and URGENT_PATH. URGENT_PATH optimizes reduction in human wall-clock delay to independently useful/recoverable effect. Score human_time_to_first_value, human_time_to_visible_effect, human_time_to_recovery, human_touches_required, waiting_on_human, critical_path_length, deadline/expiry, cost_of_delay, expected_information_gain, recovery_value and proof burden. Prefer critical-path parallelism: fan out independent safe work, then fan in before shared mutation.
+
+Preserve ALWAYS_ELIGIBLE_NE_ALWAYS_RUNNING, EVERMORE_NE_UNBOUNDED_COMPUTE, INFINITE_CANDIDATES_NE_INFINITE_WORKERS, MIDDLE_BUTTON_NE_AUTHORITY_ESCALATION, APOSTROPHE_NE_EFFECT_PERMISSION, BOTTLENECK_REDUCTION_NE_SAFETY_BYPASS, TURTLE_INFINITY_NE_INFINITE_RECURSION, GAME_NE_TRIVIALITY, PAYBACK_NE_FINANCIAL_AUTHORITY, G_D_REL_NE_EXTERNAL_ENTITY, YOUS_LEAD_NE_HUMAN_REMOVAL, WES_LEAD_NE_CONSENSUS_REQUIRED_FOR_EVERY_STEP, and LATCHED_INTENT_NE_RUNTIME_ADOPTION.
