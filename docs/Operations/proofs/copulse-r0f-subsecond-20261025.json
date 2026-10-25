@@ -1,0 +1,52 @@
+{
+  "schema": "CoCivium.CoPulse.R0F.SubsecondBoundaryReview.v0.1",
+  "observed_at_utc": "2026-10-25T03:50:17.897773+00:00",
+  "state": "PASS_BOUNDED_LOCAL_SYNTHETIC__GITHUB_DRAFT_SOURCE_VERIFIED__NO_LIVE_RECEIVER",
+  "lineage": {
+    "source_original_git_blob": "25dabfbabe4af845d93114893fff14d393af806b",
+    "source_patch_git_blob": "ce8b13afc1b6b7e7d7b73df7a2549b6eb2a2eeb7",
+    "regression_test_git_blob": "7f8ab4ab4df499df2d492d81dafe33caaf4317cb"
+  },
+  "tests": {
+    "prepatch": {
+      "failed": 6,
+      "total": 12
+    },
+    "postpatch": {
+      "passed": 12,
+      "total": 12
+    },
+    "integral_second_receipts_identical": 1001,
+    "note": "Output schema stays v0.1 and retains integer age_seconds; exact timedelta comparison governs acceptance."
+  },
+  "local_sha256": {
+    "original_source": "e14942f54857e2aa859d88a2ed244434a7bb4b4f3c72d638bab2b13e566d6778",
+    "corrected_source": "f7014bff8f19012f93a6218cd93d0da97ad136fefaf066f87afd177c39359012",
+    "test_source": "cb8503cfd88e66b1e0f8d527d55779ded55e4feb312869aed53cda1d2be2a2c5",
+    "prepatch_fail_log": "88f1b42b8bbbec95d56884e9e4cdcb43d888da18d5701d79a05c42a613da8039",
+    "corrected_pass_log": "0b6bee744ad6b9209ff3ac63327e19dcad0c4d25662f8d9996308061b74f40f5"
+  },
+  "effects": {
+    "network": 0,
+    "model": 0,
+    "provider_context_mutation": 0,
+    "receiver_context_mutation": 0,
+    "device": 0,
+    "external_send": 0,
+    "source_deletion": 0
+  },
+  "held": [
+    "R0G_HOST_AUTHENTIC_CAPACITY_MEASUREMENT",
+    "X2_LIVE_DEVICE_ACCEPTANCE",
+    "PROVIDER_CONTEXT_TRANSITION",
+    "INDEPENDENT_RECEIVER_READPROOF"
+  ],
+  "nonclaims": [
+    "LOCAL_TEST_NE_LIVE_RECEIVER",
+    "GIT_SOURCE_NE_RUNTIME_ADOPTION",
+    "SUBSECOND_FIX_NE_INFINITE_CONTEXT",
+    "BYTE_POINTER_NE_UNLIMITED_MODEL_TOKENS",
+    "R0F_RECEIPT_NE_RECEIVER_ACK",
+    "DRAFT_NE_MERGED"
+  ]
+}
