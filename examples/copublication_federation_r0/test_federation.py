@@ -37,6 +37,37 @@ class FederationTests(unittest.TestCase):
     def test_no_runtime_claim(self):self.assertIn('NOT_SUBSTACK_POSTED',self.m['status'])
     def test_no_published_posts(self):self.assertEqual(self.m['actual_substack_posts_created'],0)
     def test_no_external_sends(self):self.assertEqual(self.m['external_sends'],0)
+    def test_giggle_is_explicitly_opt_in(self):
+        g=self.m['giggle_lens']
+        self.assertEqual(g['default'],'OFF_UNTIL_EXPLICIT_READER_CLICK')
+        self.assertEqual(g['classification'],'HUMOROUS')
+        self.assertEqual(g['privacy'],'NO_INFERENCE_NO_STORAGE_NO_TRANSMISSION')
+    def test_giggle_examples_cover_original_six_routes(self):
+        g=self.m['giggle_lens']
+        self.assertEqual({e['route_id'] for e in g['examples']},{r['id'] for r in self.m['routes']})
+        self.assertEqual(g['source_claim_ids'],self.m['claim_ids_required_in_every_route'])
+        self.assertTrue(all(e['claim_id'] in g['source_claim_ids'] for e in g['examples']))
+    def test_giggle_never_downgrades_evidence_labels(self):
+        g=self.m['giggle_lens']
+        self.assertIn('HUMOR_NE_EVIDENCE',g['nonclaims'])
+        self.assertIn('PUNCHLINE_NE_PERFORMANCE_METRIC',g['nonclaims'])
+        self.assertTrue(all(r['claims']==self.m['claim_ids_required_in_every_route'] for r in self.m['routes']))
+    def test_giggle_missing_route_fails_closed(self):
+        bad=deepcopy(self.m);bad['giggle_lens']['examples'].pop()
+        with self.assertRaises(AssertionError):validate(bad)
+    def test_giggle_claim_drift_fails_closed(self):
+        bad=deepcopy(self.m);bad['giggle_lens']['examples'][0]['claim_id']='FAKE'
+        with self.assertRaises(AssertionError):validate(bad)
+    def test_giggle_forced_mode_fails_closed(self):
+        bad=deepcopy(self.m);bad['giggle_lens']['default']='ON_ALWAYS'
+        with self.assertRaises(AssertionError):validate(bad)
+    def test_giggle_interface_has_reversible_control(self):
+        html=(ROOT/'index.html').read_text()
+        self.assertIn('id="giggle-toggle"',html)
+        self.assertIn('id="giggle-panel" hidden',html)
+        self.assertIn('aria-controls="giggle-panel"',html)
+        self.assertIn("giggle=!giggle;show()",html)
+        self.assertIn("HUMOROUS illustration, not evidence",html)
     def test_no_tracking(self):self.assertIs(self.m['tracking'],False)
     def test_no_inferred_interests(self):self.assertIs(self.m['interest_inference'],False)
     def test_no_read_implies_send(self):self.assertEqual(self.m['reader_feedback_writeback'],'NONE_LOCAL_PREVIEW_ONLY')
