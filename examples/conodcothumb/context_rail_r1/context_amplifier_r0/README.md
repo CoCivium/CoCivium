@@ -34,3 +34,32 @@ An old session can **rehydrate relevant context** via persistent exact sources, 
 **HELD gates:** independently recompute hashes from retrieved actual source bytes; compare supplied context costs with model-specific real tokenizer; prove no loss of required contradictions under truncation; run a provider-local and provider-swap answer quality benchmark against a fixed baseline; prove a real X2 CoThumb -> CoContextRail preview -> explicit selected source -> exact receiver-origin readback; prove local CoStead recovery after interruption.
 
 `REFERENCE_NE_CONTENT | TOKEN_ESTIMATE_NE_ACTUAL_TOKENS | RETRIEVAL_NE_TRUTH | PRIVATE_METADATA_NE_PUBLIC | SUMMARY_NE_SOURCE | NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF | LOGICAL_INFIN_NE_PHYSICAL_INFIN`.
+## R1 actual-byte rehydration (2026-10-25)
+
+**State:** \`PASS_LOCAL_SOURCE_BYTE_REHYDRATION__SHADOW_ONLY\`. This is a typed donor to the same CoContextRail / CoThumb / CoOrbWare PR. It is not a new OS controller or model context-window hack. R0 metadata selection remains unchanged. The R1 source adapter requires an explicit \`explicitLocalRead:true\` decision, an elected local root, a PUBLIC/current R0 plan, and separate per-file and aggregate byte limits.
+
+### Code and reproducibility
+
+- [CoContextRehydratorR1.mjs](CoContextRehydratorR1.mjs): standard-library-only Node 22 local file reader, SHA-256 recomputed from **actual source bytes**. \`includeText\` is false by default. UTF-8 text is exposed to the explicit local caller only when \`includeText:true\`.
+- [CoContextRehydratorR1.test.mjs](CoContextRehydratorR1.test.mjs): 31 adversarial and positive fixtures covering opt-in, source mutation, incorrect hash, missing and oversized files, path escapes, Windows-style escapes, final/intermediate symlinks, invalid UTF-8, stale/private metadata, evidence role separation, explicit nonclaims, bounded headroom and deterministic receipts.
+- [CoContextRehydratorR1.benchmark.mjs](CoContextRehydratorR1.benchmark.mjs): generates 24 short synthetic PUBLIC text files in a disposable temporary root, selects 5 with the R0 algorithm, verifies only the selected actual bytes, compares the materialized-byte total against the full generated corpus, and cleans the temporary files.
+- [R1 machine evidence](benchmark_evo_r1.jsonl): local PASS, model-tokenization/provider-quality/runtime and receiver gates HELD.
+
+Run within \`examples/conodcothumb/context_rail_r1/context_amplifier_r0\`:
+
+\`\`\`sh
+node --test CoContextRehydratorR1.test.mjs
+node CoContextRehydratorR1.benchmark.mjs
+\`\`\`
+
+### Measured isolated evidence
+
+- Source SHA-256: \`7f591c47d013340a2c58504e216369cc1f3ffefe1fff6b9e474236f8dd9e190b\`
+- Test SHA-256: \`6e7a43c87cc41e6ce8aee6ba7cb5642683715d3f30ecb02b2fdf0d5a07742e24\`
+- Benchmark-source SHA-256: \`2da127480f3e0ffcbac70579cbd5b46fdb151b1c2e0482a7b42d5e4bef59258b\`
+- **31/31 isolated Node 22.16.0 R1 tests PASS.** An initial test-file syntax failure was corrected before this passing run; do not silently reclassify early failures as software-runtime defects.
+- **10/10 independent benchmark checks PASS**, 24 synthetic descriptors; 5 selected exact local text files, 2,205 source bytes verified vs 10,584 generated corpus bytes (79.17% of bytes not materialized), required and opposing evidence retained; no network, sends, device effects, source mutations or provider calls. Synthetic timing is not an X2 or real-media performance result.
+
+**Remaining HELD:** actual GPT/Claude/Pi/Llama model-specific tokenizer and input/output reservation; quality and retrieval recall vs a blind/full-context baseline; independent recipient-readproof; native X2 thumb mapping; CoStead durable custody; Windows filesystem race-hardening. Current path checks are a defensive Node canary, **not** a general filesystem sandbox or Windows security certification.
+
+\`RETRIEVED_BYTES_NE_MODEL_TOKENS | SOURCE_HASH_NE_TRUTH | SELECTION_NE_QUALITY | LOCAL_READ_NE_PROVIDER_CONTEXT | SHADOW_NE_RUNTIME | POINTER_NE_ACK | NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF\`
