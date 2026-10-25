@@ -56,6 +56,13 @@ jobs:
         run: |
           set -euo pipefail
           node --test examples/conodcothumb/context_rail_r1/context_amplifier_r0/CoContextAmplifierR0.test.mjs
+      - name: CoContextRehydrator R1 actual-byte and fail-closed source checks
+        shell: bash
+        run: |
+          set -euo pipefail
+          node --test examples/conodcothumb/context_rail_r1/context_amplifier_r0/CoContextRehydratorR1.test.mjs
+          node examples/conodcothumb/context_rail_r1/context_amplifier_r0/CoContextRehydratorR1.benchmark.mjs > "$RUNNER_TEMP/source_rehydration_r1.json"
+          node -e 'const x=JSON.parse(require("fs").readFileSync(process.env.RUNNER_TEMP+"/source_rehydration_r1.json","utf8"));if(x.status!=="PASS_LOCAL_SOURCE_BYTE_REHYDRATION"||x.passed!==10||x.checked!==10||x.receiver_ack!==false||x.included_counterevidence!==true)process.exit(2)'
       - name: Reject failed or held required claims
         shell: bash
         run: |
@@ -76,5 +83,6 @@ jobs:
           path: |
             ${{ runner.temp }}/benchmark_evo.jsonl
             ${{ runner.temp }}/coin_smoke_receipt.json
+            ${{ runner.temp }}/source_rehydration_r1.json
           if-no-files-found: warn
           retention-days: 7
