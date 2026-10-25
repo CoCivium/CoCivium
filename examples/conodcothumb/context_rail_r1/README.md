@@ -18,6 +18,8 @@ No external npm packages or credentials are required for `build.py` and the Node
 
 ## What is context?
 
+**New candidate, CoContextWare bounded packets R0:** [CONTEXT_BUDGET_R0.md](CONTEXT_BUDGET_R0.md) describes a deterministic explicit-source packer that enforces a full serialized-byte ceiling, preserves FAIL/HELD evidence before positive snippets, labels unknown source readproof, and never invokes a model or device. Its [42 synthetic Node tests](test_context_budget_r0.cjs) run in the existing CoThumb bounded workflow. This is **not** a tokenizer, infinite model context, or approved live receiver. Do not configure a second input hook or use the packer as an authority engine.
+
 The current, **qualified** task slice, not every byte from every session:
 
 `CoContext = (Purpose, SelectedObject, Priors, Relations, Evidence, Scope, Privacy, Authority, Time, Receiver, ResourceBudget, DeviceCapability, Accessibility)`.
