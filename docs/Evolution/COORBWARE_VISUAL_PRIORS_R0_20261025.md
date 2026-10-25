@@ -11,6 +11,33 @@
 
 `UNLIKE_NE_IRRELEVANT | PRETTY_NE_TRUE | DIAGRAM_NE_DATA | INSPIRATION_NE_ENDORSEMENT | HISTORICAL_RENDER_NE_CURRENT_PROJECTION`
 
+## R1 | All media, rich media, and unlike media priors
+
+**Expanded candidate scope:** Every accessible, lawfully reusable visual, auditory, audiovisual, interactive, volumetric, mathematical, data-bearing, code-generated, live/recorded, failed, historical, speculative or hybrid source may contribute an idea. This includes rich media in older sessions **when exact source bytes and rights are actually recoverable**, not merely when remembered or mentioned.
+
+The [machine-readable CoOrbWare OmniMedia Prior R1 contract](COORBWARE_OMNIMEDIA_PRIOR_CONTRACT_R1_20261025.json) defines **20 candidate media families, 18 typed transfer/inverse relations, six hypothetical cross-modal translations and explicit rights/privacy/source/receiver fields**. Seventeen checks of that source structure passed before GitHub publication. These are **schema/content checks only**, not media analysis, render tests, native device proof, or full-history coverage.
+
+Media identity, tracks, timing, coordinates and the degree of evidence need to survive the translation:
+
+| Eligible prior | Potential donation to CoOrbWare / CoOmni | What must not silently follow |
+| --- | --- | --- |
+| Diagram, infographic, photograph, screenshot | topology, color-independent meaning, spatial arrangement, UI state | false physical measurement, guessed people/identities, inferred consent |
+| Video, motion, animation | cuts, keyframes, transitions, timing, interaction metaphors | transcript/frames never inspected, timecode drift, unsupported motion inference |
+| Audio, speech, music | rhythm, turn-taking, pause, timbre, event sequence, sonic interfaces | invented transcripts, lyrics, speaker authorization, recording rights |
+| Interactive software, games, websites | navigation, accessible focus order, feedback loops, mistakes and recovery | execution or account permission merely from observing a demo |
+| CAD/3D, XR/spatial worlds | mesh topology, perspective, affordances, occlusion, embodied state | claiming a 2D projection preserves full 3D or physics |
+| Scientific images, sensors, signals, datasets | hypothesis-generating patterns, calibrated time/unit series, negative data | scientific truth without instruments, methods and uncertainty |
+| Generative source, algorithms, typography | reproducible render recipes, symbols, mathematical forms and variants | source-code identity being mistaken for rendered or accepted behavior |
+| Composite rich media and multi-track projects | synchronize text, image, data, audio, animation, source and citations | assuming track receipt, perfect alignment or complete source recovery |
+
+**Like and not-like are equal first-class donor lenses.** Compare structural similarity, deliberate contrast, inverse perspective, negative-space omission, alternative interaction, temporal translation and dissonant counterevidence. A retrieved historical failed render is still a candidate donor; its failure state must travel with it.
+
+**No hidden full-history ingestion:** The visual R0 list is only eight verified public source identities. Past chat media, screenshots, CoFarm/CoStead objects, provider conversations and bystander recordings are not assumed available, owned or permitted for publication. Public output suppresses privacy-sensitive source metadata. The underlying rights and recovery state determine which media may be transformed or shared.
+
+For large media, reuse the existing [CoPayload P0–P6 source-custody ladder](../Architecture/COEVOALL_LARGEST_PATHS_AUTOCYCLE_R1_20261024.md). Preserve source hashes, component/timecode identities, track-specific rights, transform versions, declared information loss, alternate accessible representations, inverse interpretations, and negative findings. Rich media is not a license to inline a huge video into a chat token window.
+
+`EVERY_PRIOR_ELIGIBLE_NE_EVERY_PRIOR_INGESTED | UNLIKE_NE_IRRELEVANT | TRANSCRIPT_NE_AUDIO_SOURCE | FRAME_NE_WHOLE_VIDEO | GENERATOR_NE_RENDER | MEDIA_TRANSFORM_NE_RIGHTS_TRANSFER | MULTIMODAL_NE_INFINITE_CONTEXT`
+
 ## What may transfer between unlike forms?
 
 An image may donate any subset of:
