@@ -37,6 +37,9 @@ export function verifySource(s) {
         s.tags.every(t=>typeof t==='string' && /^[a-z0-9_-]{2,40}$/.test(t)),'BAD_SOURCE_TAGS');
   return true;
 }
+function sourceMetaDigest(s) {
+  return sha256(JSON.stringify({id:s.id,role:s.role,scope:s.scope,tags:s.tags,source_digest:s.sha256}));
+}
 export function makeSyntheticSource(id,role,scope,tags,text) {
   return {schema:SOURCE_SCHEMA,id,role,scope,tags,text,sha256:sha256(text)};
 }
@@ -87,7 +90,7 @@ export function compileContext({work,sources}) {
   for(const row of order) {
     if(packet.source_items.length>=work.max_items) break;
     const s=row.s;
-    const item={id:s.id,sha256:s.sha256,role:s.role,excerpt:s.text.slice(0,180)};
+    const item={id:s.id,sha256:s.sha256,meta_sha256:sourceMetaDigest(s),role:s.role,excerpt:s.text.slice(0,180)};
     const trial={...packet,source_items:[...packet.source_items,item],
       selected_count:packet.source_items.length+1,
       omitted_eligible:eligible.length-packet.source_items.length-1,
@@ -126,6 +129,7 @@ export function rehydrate(result,library,requestedReceiver) {
     guard(!!s,'SOURCE_MISSING_AT_RECEIVER');
     guard(visibleTo(s,requestedReceiver),'REHYDRATION_SCOPE_VIOLATION');
     guard(s.sha256===ref.sha256 && s.text.startsWith(ref.excerpt),'REHYDRATION_SOURCE_CHANGED');
+    guard(sourceMetaDigest(s)===ref.meta_sha256,'REHYDRATION_METADATA_CHANGED');
     recovered.push({id:s.id,sha256:s.sha256,role:s.role,exact_text:s.text});
   }
   return {work_id:result.packet.work_id,receiver:requestedReceiver,restored:recovered,
