@@ -23,6 +23,73 @@ class Tags(HTMLParser):
 
 class FederationTests(unittest.TestCase):
     def setUp(self):self.m=load_manifest()
+    def test_coconnect_probe_uses_current_manifest_bytes(self):
+        probe=json.loads((ROOT/'relation_coverage_r0.json').read_text())
+        manifest=(ROOT/'manifest.json').read_bytes()
+        got=hashlib.sha1(b'blob '+str(len(manifest)).encode()+b'\\0'+manifest).hexdigest()
+        self.assertEqual(got,probe['current_source']['manifest_git_blob_sha1'])
+        self.assertEqual(probe['current_subject'],'co_giggle')
+        self.assertIn('NOT_ONTOLOGY',probe['status'])
+    def test_coconnect_main_donors_have_exact_git_blob_identity(self):
+        probe=json.loads((ROOT/'relation_coverage_r0.json').read_text())
+        repo=ROOT.parents[1]
+        for donor in probe['donor_sources']:
+            source=repo/donor['path']
+            self.assertTrue(source.is_file(),donor['path'])
+            raw=source.read_bytes()
+            git_sha=hashlib.sha1(b'blob '+str(len(raw)).encode()+b'\\0'+raw).hexdigest()
+            self.assertEqual(git_sha,donor['git_blob_sha1'],donor['path'])
+    def test_coconnect_graph_has_typed_links_without_implicit_authority(self):
+        probe=json.loads((ROOT/'relation_coverage_r0.json').read_text())
+        nodes={n['id'] for n in probe['nodes']}
+        self.assertEqual(len(nodes),len(probe['nodes']))
+        self.assertLessEqual(len(nodes),probe['acceptance_contract']['relation_query_budget']['max_nodes'])
+        self.assertLessEqual(len(probe['edges']),probe['acceptance_contract']['relation_query_budget']['max_edges'])
+        keys=set()
+        for e in probe['edges']:
+            self.assertTrue(e['from'] in nodes and e['to'] in nodes)
+            self.assertNotEqual(e['from'],e['to'])
+            self.assertEqual(e['authority'],'NONE')
+            self.assertEqual(e['action'],'NONE')
+            self.assertIs(e['causal_claim'],False)
+            self.assertIn(e['epistemic'],{'SOURCE_VERIFIED','CANDIDATE_SEMANTIC','HYPOTHESIS','HELD','CANDIDATE_ARCHITECTURE'})
+            k=(e['from'],e['type'],e['to'])
+            self.assertNotIn(k,keys)
+            keys.add(k)
+    def test_coconnect_tree_is_just_one_explicit_projection(self):
+        probe=json.loads((ROOT/'relation_coverage_r0.json').read_text())
+        path=probe['tree_view']['one_proposed_parent_path']
+        for parent,child in zip(path,path[1:]):
+            self.assertTrue(any(e['from']==child and e['to']==parent and e['family']=='candidate_parent' for e in probe['edges']))
+        self.assertEqual(probe['tree_view']['type'],'CANDIDATE_PROJECTION_NOT_UNIQUE_GENEALOGY')
+        self.assertTrue(probe['tree_view']['preserve_cross_links'])
+        self.assertEqual(set(probe['tree_view']['alternate_parent_or_family_affinities']),{'co_lol','co_play'})
+    def test_coconnect_coverage_includes_upstream_downstream_and_unknowns(self):
+        probe=json.loads((ROOT/'relation_coverage_r0.json').read_text())
+        fam={x['family'] for x in probe['edges']}
+        for k in probe['acceptance_contract']['required_classes']:
+            self.assertIn(k,fam,k)
+        self.assertIn('INVERSE_AND_PROJECTION_LOSS',probe['missing_link_classes_to_check_on_new_feature'])
+        self.assertIn('UNKNOWN_OR_NOT_YET_SEARCHED',probe['missing_link_classes_to_check_on_new_feature'])
+    def test_coconnect_main_search_miss_cannot_be_interpreted_as_absence(self):
+        probe=json.loads((ROOT/'relation_coverage_r0.json').read_text())
+        note=probe['observed_gap']['search_observation']
+        self.assertEqual(note['query'],'CoGiggle')
+        self.assertEqual(note['results'],0)
+        self.assertEqual(note['limitation'],'BOUNDED_NONOBSERVATION_NOT_ABSENCE')
+        self.assertIn('Explicit feature manifest readback',note['recovery'])
+        self.assertIn('MAIN_SEARCH_MISS_NE_TERM_ABSENCE',probe['nonclaims'])
+    def test_coconnect_trigger_rules_are_bounded_and_not_self_executing(self):
+        probe=json.loads((ROOT/'relation_coverage_r0.json').read_text())
+        self.assertGreaterEqual(len(probe['future_wake_signals']),7)
+        self.assertTrue(all(s['signal'] and s['action'] for s in probe['future_wake_signals']))
+        b=probe['acceptance_contract']['relation_query_budget']
+        self.assertLessEqual(b['max_depth'],2)
+        self.assertLessEqual(b['max_wake_candidates'],4)
+        self.assertEqual(b['live_workers'],0)
+        self.assertEqual(probe['acceptance_contract']['external_effects'],0)
+        self.assertIs(probe['acceptance_contract']['auto_publish'],False)
+        self.assertIs(probe['acceptance_contract']['independent_receiver_ack'],False)
     def test_schema(self):self.assertEqual(self.m['schema'],'CoAll.CoPublicationFederation.FirstProof.R0')
     def test_validate(self):self.assertTrue(validate(self.m))
     def test_exclusive_six_routes(self):self.assertEqual(len(self.m['routes']),6)
