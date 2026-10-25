@@ -1,0 +1,28 @@
+{
+  "browser_checks": 12,
+  "compile_256_median_ms": 3.022,
+  "events": 30,
+  "head": "a01b430a6ff095e894ac45271fec2219eb228668d75552422daa9b5a209faff5",
+  "logical_capacity": 1411465305600,
+  "network_requests_browser_observed": 0,
+  "outcomes": {
+    "FAIL": 4,
+    "HOLD": 3,
+    "NOT_RUN": 5,
+    "PASS": 18
+  },
+  "real_agents": 0,
+  "real_experiments": 0,
+  "schema": "CoDoodleNexus.EvidenceSummary.R0",
+  "synthetic_adversarial": {
+    "losses": 20,
+    "ties": 0,
+    "wins": 0
+  },
+  "synthetic_normal": {
+    "losses": 0,
+    "ties": 0,
+    "wins": 20
+  },
+  "tests_passed": 45
+}

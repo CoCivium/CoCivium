@@ -1,0 +1,47 @@
+name: CoDoodleNexus R0 shadow safety
+on:
+  pull_request:
+    paths:
+      - 'experiments/codoodlenexus-r0/**'
+      - '.github/workflows/codoodlenexus-r0.yml'
+  push:
+    branches:
+      - research/codoodlenexus-shadow-r0-20261024
+permissions:
+  contents: read
+jobs:
+  offline-parity:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        python: ['3.11', '3.13']
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Test deterministic descriptor and stuck-session boundaries
+        working-directory: experiments/codoodlenexus-r0
+        run: python -m unittest discover -s tests -v
+      - name: Verify pinned evidence ledger
+        working-directory: experiments/codoodlenexus-r0
+        run: python verify_evidence.py
+      - name: Check compiled candidate namespace
+        working-directory: experiments/codoodlenexus-r0
+        run: python -c "import json,nexus; assert nexus.verify_compilation(json.load(open('output/shadow_candidates.json')))"
+  offline-page:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Regenerate one-file HTML from frozen public data
+        working-directory: experiments/codoodlenexus-r0
+        run: python build_view.py
+      - name: Ensure regeneration is byte-stable
+        run: git diff --exit-code -- experiments/codoodlenexus-r0/CoDoodleNexus_Viewer.html

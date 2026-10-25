@@ -1,0 +1,175 @@
+{
+  "adversarial": "exact negation of the assumed synthetic priority",
+  "baseline": "lowest-index of same pseudo-random sample",
+  "cases": [
+    {
+      "adversarial_delta": -142,
+      "baseline_score_synthetic": 73,
+      "normal_delta": 142,
+      "seed": 0,
+      "selector_score_synthetic": 215
+    },
+    {
+      "adversarial_delta": -151,
+      "baseline_score_synthetic": 62,
+      "normal_delta": 151,
+      "seed": 1,
+      "selector_score_synthetic": 213
+    },
+    {
+      "adversarial_delta": -162,
+      "baseline_score_synthetic": 45,
+      "normal_delta": 162,
+      "seed": 2,
+      "selector_score_synthetic": 207
+    },
+    {
+      "adversarial_delta": -150,
+      "baseline_score_synthetic": 62,
+      "normal_delta": 150,
+      "seed": 3,
+      "selector_score_synthetic": 212
+    },
+    {
+      "adversarial_delta": -157,
+      "baseline_score_synthetic": 54,
+      "normal_delta": 157,
+      "seed": 4,
+      "selector_score_synthetic": 211
+    },
+    {
+      "adversarial_delta": -161,
+      "baseline_score_synthetic": 49,
+      "normal_delta": 161,
+      "seed": 5,
+      "selector_score_synthetic": 210
+    },
+    {
+      "adversarial_delta": -141,
+      "baseline_score_synthetic": 75,
+      "normal_delta": 141,
+      "seed": 6,
+      "selector_score_synthetic": 216
+    },
+    {
+      "adversarial_delta": -147,
+      "baseline_score_synthetic": 55,
+      "normal_delta": 147,
+      "seed": 7,
+      "selector_score_synthetic": 202
+    },
+    {
+      "adversarial_delta": -120,
+      "baseline_score_synthetic": 93,
+      "normal_delta": 120,
+      "seed": 8,
+      "selector_score_synthetic": 213
+    },
+    {
+      "adversarial_delta": -141,
+      "baseline_score_synthetic": 72,
+      "normal_delta": 141,
+      "seed": 9,
+      "selector_score_synthetic": 213
+    },
+    {
+      "adversarial_delta": -158,
+      "baseline_score_synthetic": 53,
+      "normal_delta": 158,
+      "seed": 10,
+      "selector_score_synthetic": 211
+    },
+    {
+      "adversarial_delta": -165,
+      "baseline_score_synthetic": 49,
+      "normal_delta": 165,
+      "seed": 11,
+      "selector_score_synthetic": 214
+    },
+    {
+      "adversarial_delta": -144,
+      "baseline_score_synthetic": 58,
+      "normal_delta": 144,
+      "seed": 12,
+      "selector_score_synthetic": 202
+    },
+    {
+      "adversarial_delta": -176,
+      "baseline_score_synthetic": 42,
+      "normal_delta": 176,
+      "seed": 13,
+      "selector_score_synthetic": 218
+    },
+    {
+      "adversarial_delta": -139,
+      "baseline_score_synthetic": 76,
+      "normal_delta": 139,
+      "seed": 14,
+      "selector_score_synthetic": 215
+    },
+    {
+      "adversarial_delta": -129,
+      "baseline_score_synthetic": 75,
+      "normal_delta": 129,
+      "seed": 15,
+      "selector_score_synthetic": 204
+    },
+    {
+      "adversarial_delta": -145,
+      "baseline_score_synthetic": 50,
+      "normal_delta": 145,
+      "seed": 16,
+      "selector_score_synthetic": 195
+    },
+    {
+      "adversarial_delta": -167,
+      "baseline_score_synthetic": 41,
+      "normal_delta": 167,
+      "seed": 17,
+      "selector_score_synthetic": 208
+    },
+    {
+      "adversarial_delta": -141,
+      "baseline_score_synthetic": 70,
+      "normal_delta": 141,
+      "seed": 18,
+      "selector_score_synthetic": 211
+    },
+    {
+      "adversarial_delta": -135,
+      "baseline_score_synthetic": 68,
+      "normal_delta": 135,
+      "seed": 19,
+      "selector_score_synthetic": 203
+    }
+  ],
+  "not_measured": [
+    "real utility",
+    "AI inference",
+    "human comprehension",
+    "energy",
+    "provider speed"
+  ],
+  "outcome_adversarial": {
+    "losses": 20,
+    "ties": 0,
+    "wins": 0
+  },
+  "outcome_normal": {
+    "losses": 0,
+    "ties": 0,
+    "wins": 20
+  },
+  "schema": "CoDoodleNexus.SyntheticChallenge.R0",
+  "selector": "highest predeclared synthetic priority on same sample",
+  "timing": {
+    "host": "isolated container Python",
+    "max_ms": 3.258,
+    "median_compile_ms": 3.022,
+    "min_ms": 2.829,
+    "repeats": 7,
+    "sample": 256,
+    "warning": "Descriptor planning only; no experiment/model execution"
+  },
+  "trials": 20
+}
