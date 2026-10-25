@@ -1,0 +1,190 @@
+{
+  "schema": "CoEvoImpact.SyntheticGraph.R0",
+  "notice": "A small entirely synthetic CoCivium-themed dependency fixture. It describes hypothetical change-impact relations, NOT actual repo dependencies or authorized subscribers.",
+  "nodes": [
+    {
+      "id": "coomni",
+      "privacy": "PUBLIC",
+      "currentness": "CURRENT",
+      "subscription": "NONE",
+      "authority": "NONE"
+    },
+    {
+      "id": "tests",
+      "privacy": "PUBLIC",
+      "currentness": "CURRENT",
+      "subscription": "EXPLICIT_SHADOW",
+      "authority": "NONE"
+    },
+    {
+      "id": "challenge",
+      "privacy": "PUBLIC",
+      "currentness": "CURRENT",
+      "subscription": "EXPLICIT_SHADOW",
+      "authority": "NONE"
+    },
+    {
+      "id": "contextamp",
+      "privacy": "PUBLIC",
+      "currentness": "CURRENT",
+      "subscription": "EXPLICIT_SHADOW",
+      "authority": "NONE"
+    },
+    {
+      "id": "diagramcommons",
+      "privacy": "PUBLIC",
+      "currentness": "CURRENT",
+      "subscription": "EXPLICIT_SHADOW",
+      "authority": "NONE"
+    },
+    {
+      "id": "inspiration",
+      "privacy": "PUBLIC",
+      "currentness": "CURRENT",
+      "subscription": "EXPLICIT_SHADOW",
+      "authority": "NONE"
+    },
+    {
+      "id": "private_donor",
+      "privacy": "PRIVATE",
+      "currentness": "CURRENT",
+      "subscription": "EXPLICIT_SHADOW",
+      "authority": "NONE"
+    },
+    {
+      "id": "unsubscribed",
+      "privacy": "PUBLIC",
+      "currentness": "CURRENT",
+      "subscription": "NONE",
+      "authority": "NONE"
+    },
+    {
+      "id": "stale",
+      "privacy": "PUBLIC",
+      "currentness": "STALE",
+      "subscription": "EXPLICIT_SHADOW",
+      "authority": "NONE"
+    },
+    {
+      "id": "review_gate",
+      "privacy": "PUBLIC",
+      "currentness": "CURRENT",
+      "subscription": "EXPLICIT_SHADOW",
+      "authority": "REQUIRES_APPROVAL"
+    },
+    {
+      "id": "second_order",
+      "privacy": "PUBLIC",
+      "currentness": "CURRENT",
+      "subscription": "EXPLICIT_SHADOW",
+      "authority": "NONE"
+    },
+    {
+      "id": "third_order",
+      "privacy": "PUBLIC",
+      "currentness": "CURRENT",
+      "subscription": "EXPLICIT_SHADOW",
+      "authority": "NONE"
+    },
+    {
+      "id": "unverified",
+      "privacy": "PUBLIC",
+      "currentness": "CURRENT",
+      "subscription": "EXPLICIT_SHADOW",
+      "authority": "NONE"
+    },
+    {
+      "id": "metadata_relation",
+      "privacy": "PUBLIC",
+      "currentness": "CURRENT",
+      "subscription": "EXPLICIT_SHADOW",
+      "authority": "NONE"
+    }
+  ],
+  "edges": [
+    {
+      "from": "tests",
+      "to": "coomni",
+      "kind": "TESTS",
+      "evidence": "SYNTHETIC_DECLARATION"
+    },
+    {
+      "from": "challenge",
+      "to": "coomni",
+      "kind": "CHALLENGES",
+      "evidence": "SYNTHETIC_DECLARATION"
+    },
+    {
+      "from": "contextamp",
+      "to": "coomni",
+      "kind": "DEPENDS_ON",
+      "evidence": "SYNTHETIC_DECLARATION"
+    },
+    {
+      "from": "diagramcommons",
+      "to": "coomni",
+      "kind": "RENDERS",
+      "evidence": "SYNTHETIC_DECLARATION"
+    },
+    {
+      "from": "inspiration",
+      "to": "coomni",
+      "kind": "MAY_INSPIRE",
+      "evidence": "SYNTHETIC_DECLARATION"
+    },
+    {
+      "from": "private_donor",
+      "to": "coomni",
+      "kind": "DEPENDS_ON",
+      "evidence": "SYNTHETIC_DECLARATION"
+    },
+    {
+      "from": "unsubscribed",
+      "to": "coomni",
+      "kind": "DEPENDS_ON",
+      "evidence": "SYNTHETIC_DECLARATION"
+    },
+    {
+      "from": "stale",
+      "to": "coomni",
+      "kind": "DOCUMENTS",
+      "evidence": "SYNTHETIC_DECLARATION"
+    },
+    {
+      "from": "review_gate",
+      "to": "coomni",
+      "kind": "IMPLEMENTS",
+      "evidence": "SYNTHETIC_DECLARATION"
+    },
+    {
+      "from": "unverified",
+      "to": "coomni",
+      "kind": "DEPENDS_ON",
+      "evidence": "UNVERIFIED"
+    },
+    {
+      "from": "second_order",
+      "to": "contextamp",
+      "kind": "DEPENDS_ON",
+      "evidence": "SYNTHETIC_DECLARATION"
+    },
+    {
+      "from": "third_order",
+      "to": "second_order",
+      "kind": "DEPENDS_ON",
+      "evidence": "SYNTHETIC_DECLARATION"
+    },
+    {
+      "from": "coomni",
+      "to": "second_order",
+      "kind": "DEPENDS_ON",
+      "evidence": "SYNTHETIC_DECLARATION"
+    },
+    {
+      "from": "metadata_relation",
+      "to": "coomni",
+      "kind": "SIMILAR_TO",
+      "evidence": "SYNTHETIC_DECLARATION"
+    }
+  ]
+}
