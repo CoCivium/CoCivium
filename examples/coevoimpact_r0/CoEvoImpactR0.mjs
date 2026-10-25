@@ -78,6 +78,10 @@ export function planImpact({graph,event,max_depth=2,max_proposals=4,max_visits=6
     ...baseline,status:'HELD_SOURCE_PRIVACY_OR_AUTHORITY',proposals:[],
     candidate_count:0,no_effects:true
   };
+  if(root.currentness!=='CURRENT') return {
+    ...baseline,status:'HELD_SOURCE_CURRENTNESS_UNKNOWN_OR_STALE',proposals:[],
+    candidate_count:0,no_effects:true
+  };
   if(event.before_sha256===event.after_sha256) return {
     ...baseline,status:'HELD_NO_EXACT_DIGEST_CHANGE',proposals:[],
     candidate_count:0,no_effects:true
