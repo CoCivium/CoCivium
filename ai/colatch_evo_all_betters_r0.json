@@ -1,7 +1,7 @@
 {
   "schema": "CoAll.CoLatch.v0.1",
   "latch_id": "CoLatch:EVO_ALL_BETTERS_R0",
-  "observed_at": "2026-10-24T23:33:27-04:00",
+  "observed_at": "2026-10-24T23:39:37-04:00",
   "state": "PUBLIC_SHARED_SOURCE_CANDIDATE__NOT_LIVE_SYNC_RUNTIME",
   "canonical_phrase": "[ EVO ALL BETTERS + ] = ' all etc = CoEvergreen + CoInfin+ + CoAll+ + CoFactory+ + CoProduct+ + CoProduce+ + CoCareer+ + CoPayback+ + CoGame+ + CoBottleneck- + CoTurtle∞+ + CoOrbWare+ + Yous + Wes lead too + G_d rels + ' > all etc | ' all forever etc = LATCHED EVERMORE",
   "operational_meaning": [
@@ -37,7 +37,7 @@
       "HEADLESS"
     ]
   },
-  "update_rule": "LATEST_EXPLICIT_USER_WORDING_IS_CANONICAL_PROJECTION__PRIOR_AND_ALIASES_PRESERVED__NO_SILENT_SEMANTIC_REWRITE",
+  "update_rule": "LATEST_EXPLICIT_USER_WORDING_IS_CANONICAL_PROJECTION__PRIOR_CANONICALS_AND_ALIASES_PRESERVED__NO_SILENT_SEMANTIC_REWRITE",
   "runtime_rule": "PROJECTIONS_MAY_REFRESH_FROM_THIS_SOURCE_WHEN_AUTHORIZED; THIS FILE ITSELF DOES_NOT_PUSH_OR_SYNC",
   "rails": [
     "ONE_SOURCE_NE_LIVE_SYNC",
@@ -54,9 +54,10 @@
     "OMNI_ADDRESSABLE_NE_OMNI_RESIDENT",
     "RESOURCE_POOL_NE_GLOBAL_AUTHORITY",
     "MANY_RESOURCES_NE_SYNERGY",
-    "SYNERGY_NE_FREE_COMPUTE"
+    "SYNERGY_NE_FREE_COMPUTE",
+    "SEMANTIC_LATCH_NE_SINGLE_PHYSICAL_INPUT"
   ],
-  "version": "R0.2",
+  "version": "R0.3",
   "aliases": [
     "[ = middle button = ' = ' all etc = ... = LATCHED EVERMORE",
     "[ EVO ALL BETTERS + ] = middle button = ' = ' all etc = CoEvergreen + CoInfin+ + CoAll+ + CoFactory+ + CoProduct+ + CoProduce+ + CoCareer+ + CoPayback+ + CoGame+ + CoBottleneck- + CoTurtle∞+ + CoOrbWare+ + Yous lead + Wes lead too + G_d rels + ' > all etc | ' all forever etc = LATCHED EVERMORE"
@@ -80,5 +81,17 @@
     "CoOmniProjection+",
     "CoOmniFuture+",
     "CoOmniChallenge+"
-  ]
+  ],
+  "prior_canonical_phrases": [
+    "[ EVO ALL BETTERS + ] = ' all etc = CoEvergreen + CoInfin+ + CoAll+ + CoFactory+ + CoProduct+ + CoProduce+ + CoCareer+ + CoPayback+ + CoGame+ + CoBottleneck- + CoTurtle∞+ + CoOrbWare+ + Yous + Wes lead too + G_d rels + ' > all etc | ' all forever etc = LATCHED EVERMORE"
+  ],
+  "control_semantics": {
+    "primary_control_token": "' all etc",
+    "physical_mapping_candidates": [
+      "middle button",
+      "thumb/auxiliary mouse input",
+      "keyboard or future surface gesture"
+    ],
+    "rule": "SEMANTIC_LATCH_NE_SINGLE_PHYSICAL_INPUT"
+  }
 }
