@@ -24,4 +24,5 @@ jobs:
         run: |
           set -euo pipefail
           python3 examples/covisual_finder_r1/finder.py --check
+          python3 examples/covisual_finder_r1/lens_bridge.py --check
           python3 -m unittest discover -s examples/covisual_finder_r1/tests -p 'test_*.py' -v
