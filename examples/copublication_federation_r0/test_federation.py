@@ -99,7 +99,23 @@ class FederationTests(unittest.TestCase):
         self.assertEqual(len(p.ids),len(set(p.ids)))
     def test_external_links_allowlisted(self):
         p=Tags();p.feed((ROOT/'index.html').read_text())
-        self.assertTrue(all((link == 'https://github.com/CoCivium/CoCivium' or link.startswith('https://github.com/CoCivium/CoCivium/') or link.startswith('#')) for link in p.links))
+        self.assertTrue(all((link == 'https://github.com/CoCivium/CoCivium' or link.startswith('https://github.com/CoCivium/CoCivium/') or link.startswith('#') or link == 'https://rickpublic.substack.com/p/does-ai-make-the-stock-market-obsolete') for link in p.links))
+    def test_one_verified_rickpublic_published_link(self):
+        html=(ROOT/'index.html').read_text()
+        self.assertEqual(html.count('href="https://rickpublic.substack.com/p/does-ai-make-the-stock-market-obsolete"'),1)
+        self.assertIn('Read the existing public article',html)
+        self.assertIn('Its forecasts are hypotheses',html)
+    def test_draft_chapter_pinned_and_explicitly_unpublished(self):
+        html=(ROOT/'index.html').read_text()
+        self.assertEqual(html.count('https://github.com/CoCivium/CoCivium/blob/1487b330d35ddec03f32000e6846dd3b35ed774a/docs/books/great-refact-r0/01-your-product-is-still-here.md'),1)
+        self.assertIn('source-controlled, unmerged working draft, not a published Substack article',html)
+        self.assertIn('21bb508b5b0fe9e34011590539993e14d4325edc',html)
+    def test_reader_bridge_no_automatic_send_and_clear_exit(self):
+        html=(ROOT/'index.html').read_text()
+        self.assertIn('id="edge-in-heading"',html)
+        self.assertIn('or simply leave',html)
+        self.assertIn('No reading behavior or responses are transmitted by this page.',html)
+        self.assertIn("connect-src 'none'",html)
     def test_single_html_manifest(self):self.assertEqual((ROOT/'index.html').read_text().count('id="manifest"'),1)
     def test_keyboard_access(self):self.assertIn('focus-visible',(ROOT/'index.html').read_text())
     def test_reduced_motion(self):self.assertIn('prefers-reduced-motion',(ROOT/'index.html').read_text())
