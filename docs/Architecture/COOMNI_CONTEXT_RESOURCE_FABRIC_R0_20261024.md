@@ -268,3 +268,188 @@ Build a local reference context compiler over one durable work object:
 8. packet-size / retrieval-latency / source-recall benchmark;
 9. zero external effects;
 10. receipt.
+
+
+## R0.1 missing-but-reused relations
+
+The existing CoAll corpus already supplies several important relations that belong inside CoOmni+ rather than as new standalone systems.
+
+### CoCapabilityMarket+
+Resources advertise bounded capabilities; needs bind to capabilities rather than provider names.
+
+`CAPABILITY_NE_PROVIDER`  
+`OFFER_NE_PROMISE`
+
+This allows provider/model/device substitution without redefining the work object.
+
+### CoSubstitution+
+Maintain equivalent or degraded paths for:
+- model;
+- tool;
+- device;
+- human reviewer;
+- protocol;
+- storage;
+- network;
+- renderer.
+
+A preferred resource disappearing should reduce capability gracefully, not collapse the work identity.
+
+### CoBackpressure+
+Resource selection must account for:
+- concurrency;
+- fairness;
+- recovery reserve;
+- correlated failure;
+- cost;
+- energy;
+- latency;
+- human attention;
+- queue depth.
+
+`AVAILABLE_NE_SHOULD_RUN`
+
+### CoHerdAvoidance+
+When many nodes discover the same attractive resource:
+- lease;
+- stagger;
+- use canary cohorts;
+- randomize backoff;
+- fan-in evidence;
+- avoid mass adoption from one early result.
+
+`POPULAR_OPTION_NE_BEST_OPTION`
+
+### CoProofBudget+
+Proof effort should scale with:
+- blast radius;
+- irreversibility;
+- uncertainty;
+- affected parties;
+- replacement difficulty.
+
+Do not spend more proving a trivial reversible canary than the decision is worth.
+
+### CoRecipeCache+
+Every proven resolution may emit:
+
+```
+NeedPattern
++ Context
++ ResourceBundle
++ Preconditions
++ Canary
++ ObservedEffect
++ FailureModes
++ Rollback
++ Currentness
++ Provenance
+```
+
+This is the main compounding mechanism for CoPayback+ and CoFactory+.
+
+`RECIPE_NE_UNIVERSAL_TRUTH`
+
+### CoNegativeLearning+
+Failures should return reusable knowledge:
+- incompatibility;
+- misleading metric;
+- bad dependency;
+- stale assumption;
+- failure signature;
+- wasted route.
+
+`FAILED_CANARY_NE_FAILED_LEARNING`
+
+### CoEventWake+
+Prefer event-driven material wakes over permanent polling when possible.
+
+Wake classes include:
+- source delta;
+- receiver feedback;
+- expired currentness;
+- resource availability;
+- failure;
+- changed authority;
+- newly qualified substitute;
+- scheduled bounded checkpoint.
+
+### CoMultiObserver+
+Preserve multiple observer-relative projections without forcing premature collapse into one viewpoint.
+
+### CoMultiSubstrate+
+Test important concepts across admissible:
+- humans;
+- deterministic software;
+- local models;
+- provider models;
+- institutional processes;
+- devices;
+- physical experiments.
+
+`MULTISUBSTRATE_NE_ALL_SUBSTRATES_REQUIRED`
+
+### CoAmp+ governed tuning
+
+Reuse the existing CoAmp contract:
+
+`Target | Goal | Baseline | Direction | Magnitude | Constraint | Evidence | UserControl | StopRule | Rollback`
+
+Amplify:
+- comprehension;
+- capacity;
+- accessibility;
+- recovery;
+- evidence;
+- beneficial reach;
+- contribution readiness.
+
+Dampen:
+- overload;
+- coercion;
+- false certainty;
+- dependency;
+- noise;
+- framework sprawl;
+- unsafe urgency.
+
+`AMP_NE_MAXIMIZE_EVERYTHING`
+
+## Betterment vector
+
+Prefer changes that increase:
+
+`CAPABILITY + RECOVERY + OPTIONALITY + INDEPENDENCE + FAIRNESS + CURRENTNESS + RECEIVER_FIT + UX + LEARNING_RETURN`
+
+while reducing:
+
+`HUMAN_RELAY + CAPTURE + FRAGILITY + COST + EXTERNALITY + PRIVACY_RISK + MAINTENANCE_DEBT + PROOF_DEBT + STALENESS_DEBT`
+
+No scalar score overrides consent, rights, authority or safety.
+
+## CoOmni operating equation
+
+```
+NEED
+<-> CAPABILITY
+<-> RESOURCE
+<-> RECIPE
+<-> AUTHORITY
+<-> PROOF
+<-> WAKE
+<-> LEARNING
+```
+
+with:
+
+```
+wide address space
+-> tiny elected frontier
+-> leased embodiment
+-> measured effect
+-> reusable receipt/recipe
+-> release
+-> sleep
+```
+
+This is how CoOmni can compound without requiring literal infinite compute.
