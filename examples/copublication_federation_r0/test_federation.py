@@ -26,7 +26,7 @@ class FederationTests(unittest.TestCase):
     def test_coconnect_probe_uses_current_manifest_bytes(self):
         probe=json.loads((ROOT/'relation_coverage_r0.json').read_text())
         manifest=(ROOT/'manifest.json').read_bytes()
-        got=hashlib.sha1(b'blob '+str(len(manifest)).encode()+b'\\0'+manifest).hexdigest()
+        got=hashlib.sha1(b'blob '+str(len(manifest)).encode()+b'\0'+manifest).hexdigest()
         self.assertEqual(got,probe['current_source']['manifest_git_blob_sha1'])
         self.assertEqual(probe['current_subject'],'co_giggle')
         self.assertIn('NOT_ONTOLOGY',probe['status'])
@@ -37,7 +37,7 @@ class FederationTests(unittest.TestCase):
             source=repo/donor['path']
             self.assertTrue(source.is_file(),donor['path'])
             raw=source.read_bytes()
-            git_sha=hashlib.sha1(b'blob '+str(len(raw)).encode()+b'\\0'+raw).hexdigest()
+            git_sha=hashlib.sha1(b'blob '+str(len(raw)).encode()+b'\0'+raw).hexdigest()
             self.assertEqual(git_sha,donor['git_blob_sha1'],donor['path'])
     def test_coconnect_graph_has_typed_links_without_implicit_authority(self):
         probe=json.loads((ROOT/'relation_coverage_r0.json').read_text())
