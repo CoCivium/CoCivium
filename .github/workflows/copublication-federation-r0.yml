@@ -1,0 +1,24 @@
+name: CoPublication Federation R0
+
+on:
+  pull_request:
+    paths:
+      - 'examples/copublication_federation_r0/**'
+      - '.github/workflows/copublication-federation-r0.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  static-canary:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Deterministic source-to-HTML parity
+        run: python3 examples/copublication_federation_r0/build.py --check
+      - name: Source kernel and negative-case policy tests
+        run: |
+          cd examples/copublication_federation_r0
+          python3 -m unittest -v test_federation
