@@ -68,6 +68,11 @@ jobs:
         run: |
           set -euo pipefail
           node --test examples/conodcothumb/context_rail_r1/context_amplifier_r0/CoOmniMediaPriorR1.test.mjs
+      - name: CoOrbWare relation-as-node impact shadow policy
+        shell: bash
+        run: |
+          set -euo pipefail
+          node --test examples/conodcothumb/context_rail_r1/relation_impact_r0/planRelationImpact.test.mjs
       - name: Reject failed or held required claims
         shell: bash
         run: |
