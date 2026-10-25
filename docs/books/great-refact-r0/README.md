@@ -10,7 +10,7 @@ This is a trial of the existing [CoBook+ living rich-media architecture](../../A
 - [Reader-interest / publishing grammar](federation.json), exact Git blob 64ecef1f9c8c4230333f6ea303c45cf802307ba0, matching the generated local specimen.
 - [Scoped PASS/FAIL/HELD history](benchmark_evo.jsonl) distinguishes bounded tests from real publishing.
 
-The rich offline edition is a ZIP delivered in the originating conversation, **not hosted in this repository or published on Substack**. It includes one canonical chapter JSON, Markdown, a self-contained HTML reader with four reader-controlled lenses and an inline SVG relation map, an audio script, a video storyboard, a gift-card projection, a reproducible builder and 1,000 syntactic reading-route examples. There are no finished recorded media or independent reader acknowledgments.
+The exact-byte **[offline reader](reader.html)** has now been recovered from the source ZIP onto this draft PR branch; it has original Git blob `cc43b8d5f11ebf03e563ef48139846dfc6f386ff`. This is neither a hosted site nor a Substack publication. The complete historic ZIP remains in the owner's Library. It includes one canonical chapter JSON, Markdown, a self-contained HTML reader with four reader-controlled lenses and an inline SVG relation map, an audio script, a video storyboard, a gift-card projection, a reproducible builder and 1,000 syntactic reading-route examples. There are no finished recorded media or independent reader acknowledgments.
 
 ## Proposed RickPublic federation, not configured newsletters
 
