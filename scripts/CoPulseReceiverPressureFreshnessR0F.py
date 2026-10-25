@@ -51,12 +51,16 @@ def evaluate(
 
     sampled_dt = parse_time(str(pressure["sampled_at"]))
     evaluated_dt = parse_time(evaluated_at)
-    age_seconds = int((evaluated_dt - sampled_dt).total_seconds())
+    # Preserve the v0.1 integer age field while evaluating the deadline at
+    # full timedelta precision. int() truncates toward zero and would admit
+    # samples 0 < epsilon < 1 second outside the permitted freshness window.
+    age_exact_seconds = (evaluated_dt - sampled_dt).total_seconds()
+    age_seconds = int(age_exact_seconds)
 
-    if age_seconds < -max_future_skew_seconds:
+    if age_exact_seconds < -max_future_skew_seconds:
         state = "HOLD_FUTURE_PRESSURE_SAMPLE"
         nxt = "REACQUIRE_OR_REBIND_PRESSURE_SAMPLE_TIME"
-    elif age_seconds > max_age_seconds:
+    elif age_exact_seconds > max_age_seconds:
         state = "HOLD_STALE_PRESSURE_SAMPLE"
         nxt = "REACQUIRE_RECEIVER_PRESSURE_BEFORE_BUDGET_ELECTION"
     else:
