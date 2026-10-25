@@ -14,6 +14,10 @@ Core components: CoContextCompiler+, CoMemoryField+, CoResourcePool+, CoSynergy+
 `RESOURCE_POOL_NE_GLOBAL_AUTHORITY`  
 `SYNERGY_NE_FREE_COMPUTE`
 
+## CoVisualPriors+ | Source-linked images become testable design priors
+
+**PASS (bounded):** [CoVisualPriors+ design mapping](docs/Architecture/COVISUAL_PRIORS_TO_SPECS_R0_20261025.md) and [machine source-to-spec contract](ai/visual-priors-projection-r0.json) are read back on main. Six exact public donor Git objects and a separate **private five-object** Library sample inform original Orb, relation-map, glyph, living-version and text/media design patterns. The sample's raw screenshots remain private; no rights to republish them are inferred. **HELD:** exhaustive prior history, independent first-use acceptance, deployed X2 source-to-view runtime and unlimited token/compute claims. CoOmni+ may index/retrieve these visual priors without copying everything into every session. Source snapshots and inverse/negative examples persist; a daily check is not a mandatory daily rewrite.
+
 ## [ EVO ALL BETTERS + ] | Middle / apostrophe continuity latch
 
 ### PASS · persistent intent contract; runtime/effects remain separately qualified
