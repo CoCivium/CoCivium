@@ -448,3 +448,13 @@ Device input is an optional, explicit, configurable event catalyst. User reports
 For the “trillion all-elses” frontier, generate candidates with deterministic or seeded-random methods; deduplicate; rank by expected value, uncertainty reduction, cost, risk, reversibility, and human-time urgency; execute a bounded frontier; checkpoint/cancel/resume/adjudicate. Benchmark throughput and latency on a named environment. Microsecond generation is a hypothesis to measure, not a promise; verified useful outcomes matter more than candidate/session counts.
 
 Provider access, X2 state, and runtime/device tests remain unknown or NOT_RUN/HELD without fresh authorized receipts. Do not imply Claude is logged in on X2 or that provider accounts are controllable through CoOrb without verified access and authority. Publication is not universal broadcast; provider name is not access; SENT is not recipient-side Primary placement.
+
+## EVO ALL BETTERS+ · “=” / middle-button contextual relation latch · 2026-10-24
+
+**Design invariant:** `[ EVO ALL BETTERS + ] = middle button = '='`. Treat the middle button as an optional contextual relation-operation exemplar that invites the relevant CoOrbWare+ / CoSoftware+ / CoAll+ fabric into view. Relate context, resources, artifacts, people, time, permissions, evidence, dependencies, inverse/recovery, and outcomes; preview consequential effects; authorize; execute one bounded step; verify; write a minimal receipt; retain history and evolve from measured deltas.
+
+Link CoEvergreen+, CoInfin+, CoFactory+, CoProduct+, CoProduce+, CoCareer+, CoPayback+, CoGame+, CoBottleneck−, and CoTurtle∞+ through typed relations with explicit inputs/outputs, constraints, costs, owners, expected value, evidence, and feedback. CoBottleneck− should surface limiting dependencies and human-time cost. CoTurtle∞+ may generate alternatives recursively, but the active frontier remains bounded, deduplicated, checkpointable, cancellable, and testable.
+
+The middle button is not mandatory or universally implemented: offer keyboard, touch, voice, command, and accessible alternatives, preserve host-app behavior, and never silently intercept all input or capture raw keystrokes. “LATCHED EVERMORE” means durable, versioned design intent—not irreversible lock-in, perpetual execution, universal deployment, or blanket consent. Preserve pause, disable, rollback, and recovery.
+
+G_d relations must distinguish empirical observation, model, hypothesis, simulation, metaphor, and open question. No speculative lens is automatically empirical detection. Real implementation and performance gates remain NOT_RUN/HELD until fresh receipts prove them; publication is not deployment or acknowledgement.
