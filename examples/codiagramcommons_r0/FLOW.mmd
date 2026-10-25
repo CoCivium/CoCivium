@@ -1,0 +1,12 @@
+flowchart TD
+  S["Past diagrams / visual code / stories"] --> Q["Discover, dedupe, verify exact source"]
+  Q --> R["Rights, privacy, provenance, currentness"]
+  R --> G["Typed relational graph + uncertainty"]
+  G --> T["CoDoodle / CoTurtle bounded variants"]
+  T --> V["CoMap / CoOrb / Glyph / Text / Timeline"]
+  V --> E{"Tests, contradiction and visual review"}
+  E -->|"PASS scope only"| C["Receipt + versioned candidate"]
+  E -->|"FAIL / HELD"| H["Preserve failed prior and missing proof"]
+  C --> W["Wake only for significant delta"]
+  H --> W
+  W -.-> Q
