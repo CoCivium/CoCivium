@@ -10,9 +10,6 @@ on:
 permissions:
   contents: read
 
-permissions:
-  contents: read
-
 jobs:
   static-canary:
     runs-on: ubuntu-latest
@@ -42,6 +39,13 @@ jobs:
           python-version: '3.12'
       - name: Install pinned browser driver (no app runtime dependencies)
         run: python -m pip install --disable-pip-version-check --no-input 'playwright==1.55.0'
+      - name: Ensure a Chromium browser is available
+        shell: bash
+        run: |
+          set -euo pipefail
+          if ! command -v chromium >/dev/null 2>&1 && ! command -v google-chrome >/dev/null 2>&1 && ! command -v chromium-browser >/dev/null 2>&1; then
+            python -m playwright install --with-deps chromium
+          fi
       - name: Render desktop and mobile without outbound requests
         run: python examples/copublication_federation_r0/browser_qa.py
       - name: Preserve source-bound visual and browser receipts
