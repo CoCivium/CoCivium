@@ -1,3 +1,19 @@
+## ∞ CoOmni+ | Addressable context + pooled resources
+
+### PASS · architecture contract; literal unlimited resources HELD
+
+The [CoOmni+ / Context & Resource Fabric R0](docs/Architecture/COOMNI_CONTEXT_RESOURCE_FABRIC_R0_20261024.md) defines the target as omni-addressable, retrievable, rehydratable, routable and recoverable context/resources with bounded active materialization.
+
+`∞ [ EVO ALL BETTERS + ] ∞  CoTurtle∞+ ⇄ CoOrbWare+  CoOmni+ = LATCHED EVERMORE`
+
+Core components: CoContextCompiler+, CoMemoryField+, CoResourcePool+, CoSynergy+, CoAmp+, CoOmniContext+, CoOmniResource+, CoOmniProjection+, CoOmniFuture+ and CoOmniChallenge+.
+
+`CONTEXT_EXTENSION_NE_INFINITE_CONTEXT`  
+`TOKEN_POINTER_NE_UNLIMITED_CONTEXT`  
+`OMNI_ADDRESSABLE_NE_OMNI_RESIDENT`  
+`RESOURCE_POOL_NE_GLOBAL_AUTHORITY`  
+`SYNERGY_NE_FREE_COMPUTE`
+
 ## [ EVO ALL BETTERS + ] | Middle / apostrophe continuity latch
 
 ### PASS · persistent intent contract; runtime/effects remain separately qualified
