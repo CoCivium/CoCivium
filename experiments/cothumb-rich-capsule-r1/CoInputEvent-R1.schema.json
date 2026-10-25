@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/CoCivium/CoCivium/experiments/cothumb-rich-capsule-r1/CoInputEvent-R1.schema.json",
+  "title": "CoInputEvent.R1-CANDIDATE",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "event_id", "observed_at", "source_kind", "action", "selection", "authority"],
+  "properties": {
+    "schema": {"const": "CoInputEvent.R1-CANDIDATE"},
+    "event_id": {"type": "string", "pattern": "^coinput-[A-Za-z0-9-]{8,80}$"},
+    "observed_at": {"type": "string", "format": "date-time"},
+    "source_kind": {"enum": ["mouse_gesture", "keyboard_shortcut", "accessibility_switch", "touch_ui", "gamepad", "voice_command", "remote_agent", "file_picker", "script_api"]},
+    "action": {"enum": ["CAPTURE_PREVIEW", "LOCAL_CAPSULE", "VERIFY_LOCAL", "CANCEL"]},
+    "selection": {"type": "object", "additionalProperties": false, "required": ["explicit_selection"], "properties": {"explicit_selection":{"type":"boolean"},"object_count":{"type":"integer", "minimum":0,"maximum":8},"manifest_sha256":{"type":["string","null"],"pattern":"^[0-9a-f]{64}$"}}},
+    "authority": {"type": "object", "additionalProperties": false, "required": ["external_effects_allowed", "expires_at"], "properties": {"external_effects_allowed":{"const":false},"expires_at":{"type":"string", "format":"date-time"}}},
+    "provenance": {"type":"object", "additionalProperties": true},
+    "notes": {"type":"string"}
+  },
+  "description": "Proposed shared event contract only: an input device triggers a bounded local selection, never inherits remote execution authority. No input adapter automatically captures bystander media or clipboard contents."
+}
