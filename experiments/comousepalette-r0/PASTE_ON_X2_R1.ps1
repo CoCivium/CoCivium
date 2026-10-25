@@ -51,13 +51,36 @@ $check=& $exe -NoLogo -NoProfile -STA -File $payload -SelfTest | ConvertFrom-Jso
 if($LASTEXITCODE -ne 0 -or $check.status -ne 'PASS' -or $check.clipboard_read -ne $false){throw 'PAYLOAD_SELFTEST_FAILED'}
 $canary=& $exe -NoLogo -NoProfile -STA -File $payload -Canary | ConvertFrom-Json
 if($LASTEXITCODE -ne 0 -or $canary.status -ne 'PASS' -or $canary.hash_check -ne 'PASS'){throw 'PAYLOAD_CANARY_FAILED'}
-$launcher=Join-Path $dir 'Open-CoCopy-R1.cmd'
-if(-not(Test-Path -LiteralPath $launcher)){
-    $body='@echo off'+"`r`n"+'start "" "'+$exe+'" -NoLogo -NoProfile -STA -WindowStyle Hidden -File "'+$palette+'"'+"`r`n"
-    [System.IO.File]::WriteAllText($launcher,$body,[System.Text.Encoding]::ASCII)
+function Assert-CoLauncherBytes([string]$Path,[byte[]]$ExpectedBytes) {
+    # Exact contents, not mere file presence. Never overwrite an existing mapping target.
+    if ([System.IO.File]::Exists($Path) -or [System.IO.Directory]::Exists($Path)) {
+        $attr=[System.IO.File]::GetAttributes($Path)
+        if (($attr -band [System.IO.FileAttributes]::ReparsePoint) -ne 0 -or
+            ($attr -band [System.IO.FileAttributes]::Directory) -ne 0) { throw 'HALT_UNSAFE_LAUNCHER_PATH' }
+    } else {
+        # CreateNew closes the check/create race without clobbering an existing command file.
+        $stream=[System.IO.File]::Open($Path,[System.IO.FileMode]::CreateNew,[System.IO.FileAccess]::Write,[System.IO.FileShare]::None)
+        try { $stream.Write($ExpectedBytes,0,$ExpectedBytes.Length); $stream.Flush($true) }
+        finally { $stream.Dispose() }
+    }
+    $attr=[System.IO.File]::GetAttributes($Path)
+    if (($attr -band [System.IO.FileAttributes]::ReparsePoint) -ne 0 -or
+        ($attr -band [System.IO.FileAttributes]::Directory) -ne 0) { throw 'HALT_UNSAFE_LAUNCHER_PATH' }
+    [byte[]]$actual=[System.IO.File]::ReadAllBytes($Path)
+    [byte[]]$actualSha=[System.Security.Cryptography.SHA256]::HashData($actual)
+    [byte[]]$expectedSha=[System.Security.Cryptography.SHA256]::HashData($ExpectedBytes)
+    if ($actual.Length -ne $ExpectedBytes.Length -or
+        -not [System.Security.Cryptography.CryptographicOperations]::FixedTimeEquals($actualSha,$expectedSha)) {
+        throw 'HALT_LAUNCHER_BYTES_MISMATCH_NO_CLOBBER'
+    }
+    return [Convert]::ToHexString($actualSha).ToLowerInvariant()
 }
+$launcher=Join-Path $dir 'Open-CoCopy-R1.cmd'
+$body='@echo off'+"`r`n"+'start "" "'+$exe+'" -NoLogo -NoProfile -STA -WindowStyle Hidden -File "'+$palette+'"'+"`r`n"
+[byte[]]$intendedLauncherBytes=[System.Text.Encoding]::ASCII.GetBytes($body)
+$launcherSha256=Assert-CoLauncherBytes -Path $launcher -ExpectedBytes $intendedLauncherBytes
 $receipt=[ordered]@{schema='CoMousePaletteR1InstallReceipt/1';at_utc=[DateTime]::UtcNow.ToString('o');
-    commit=$revision;source_verified=$true;selftests='PASS';payload_canary='PASS';
+    commit=$revision;source_verified=$true;launcher_sha256=$launcherSha256;launcher_verified=$true;selftests='PASS';payload_canary='PASS';
     physical_mouse='NOT_TESTED';remote_receiver='NOT_OBSERVED';outbound_payloads=0;
     installed_files=@($files|ForEach-Object{$_.Name})}
 ($receipt|ConvertTo-Json -Compress -Depth 5)|Add-Content -LiteralPath (Join-Path $dir 'evo.jsonl') -Encoding utf8
