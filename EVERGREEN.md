@@ -1,3 +1,7 @@
+## CoEBE+ | Core-out invention ⇄ edge-in usefulness (2026-10-25)
+
+The [CoEBE core-to-edge gap map](docs/Strategy/COEBE_EDGE_IN_CORE_OUT_GAP_R0_20261025.md) reuses CoEvo, CoAttractor, CoSpiff, the public first-use onramp and existing awareness ownership. The [machine evidence contract](ai/strategy/coebe-edge-gap-r0-20261025.json) passed **22/22 static structure checks**. Its [dedicated benchmark_evo.jsonl](ai/benchmarks/coebe-edge-r0/benchmark_evo.jsonl) records **PASS** on narrow source checks, **FAIL_OBSERVED** for one persistent external 404/legacy first-use route, and **HELD** for independently proven audience, edge-to-edge agency and off-provider recovery. Public-source publication is not actual uptake. The domain issue needs a private exposure review and two independent HTTP readproofs **before** wider marketing. U.S. election-period cyber resilience is a nonpartisan continuity precaution, not a forecast of unrest. `CORE_INVENTION_NE_EDGE_VALUE` · `ONE_VANTAGE_NE_GLOBAL_FAILURE` · `NULL_ANALYTICS_NE_ZERO_VISITORS` · `FIREWORKS_NE_MARKETING_VOLUME`.
+
 ## ∞ CoOmni+ | Addressable context + pooled resources
 
 ### PASS · architecture contract; literal unlimited resources HELD
