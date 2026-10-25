@@ -51,6 +51,11 @@ jobs:
           set -euo pipefail
           python3 examples/conodcothumb/context_rail_r1/build.py --check
           node --test examples/conodcothumb/context_rail_r1/tests/test_context_rail.cjs
+      - name: CoContextAmplifier R0 bounded context and privacy shadow tests
+        shell: bash
+        run: |
+          set -euo pipefail
+          node --test examples/conodcothumb/context_rail_r1/context_amplifier_r0/CoContextAmplifierR0.test.mjs
       - name: Reject failed or held required claims
         shell: bash
         run: |
