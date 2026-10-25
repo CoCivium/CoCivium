@@ -50,4 +50,4 @@ Proposed **next evidence gate:** choose one actual image from the scoped census,
 
 `CANDIDATE_RELATION_NE_FACT` | `PUBLIC_GIT_FILE_NE_LICENSE` | `SOURCE_HASH_NE_SEMANTIC_REVIEW` | `IMAGE_SIMILARITY_NE_CAUSALITY` | `UNLIKE_NE_IRRELEVANT` | `DISCOVERY_NE_ALL_MEDIA_HISTORY` | `NO_WEB_SCRAPE_DOWNLOAD_OR_FAN_SPRAY` | `NO_MODEL_AGENTS_OR_DEVICE_EVENTS` | `NO_INFINITY_OF_TOKENS_OR_RESOURCES` | `NO_RECEIVER_ACK_OR_RUNTIME`
 
-**Reuse:** [CoLivingHighlight](../../docs/Architecture/COLIVING_HIGHLIGHT_ASSETS_R0.md), [CoThumb/CoPayload](../../docs/Architecture/COTHUMB_COPAYLOAD_R0_20261024.md), [CoOrbWare](../../docs/Architecture/COORBWARE_BEYOND_COSOFTWARE_R0_20261024.md), [CoLens](../../examples/colensmedia/README.md) and [OmniMedia PR #254](https://github.com/CoCivium/CoCivium/pull/254).
+**Reuse:** [CoLivingHighlight](../Architecture/COLIVING_HIGHLIGHT_ASSETS_R0.md), [CoThumb/CoPayload](../Architecture/COTHUMB_COPAYLOAD_R0_20261024.md), [CoOrbWare](../Architecture/COORBWARE_BEYOND_COSOFTWARE_R0_20261024.md), [CoLens](../../examples/colensmedia/README.md) and [OmniMedia PR #254](https://github.com/CoCivium/CoCivium/pull/254).
