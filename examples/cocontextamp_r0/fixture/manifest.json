@@ -1,0 +1,23 @@
+{
+  "format": "CoContextAmp.SourceManifest.R0",
+  "sources": [
+    {
+      "id": "fabric",
+      "path": "fabric.txt",
+      "sha256": "ca5f8e08dffce6791627756709a556fcbe74e8a58338629106ccce7da0484bfc",
+      "privacy": "PUBLIC",
+      "authority": "READ_ONLY_PUBLIC",
+      "currentness": "DECLARED_CURRENT",
+      "source_ref": "synthetic:CoContextAmp:R0:fabric.txt"
+    },
+    {
+      "id": "alternatives",
+      "path": "alternatives.txt",
+      "sha256": "338065f6c1b9cc715041ecee0139f309dba82cdec0c8952b25a6306384737b6c",
+      "privacy": "PUBLIC",
+      "authority": "READ_ONLY_PUBLIC",
+      "currentness": "DECLARED_CURRENT",
+      "source_ref": "synthetic:CoContextAmp:R0:alternatives.txt"
+    }
+  ]
+}
