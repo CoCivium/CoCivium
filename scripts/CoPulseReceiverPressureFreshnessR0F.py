@@ -4,7 +4,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 from pathlib import Path
 from typing import Any
 
@@ -51,16 +51,15 @@ def evaluate(
 
     sampled_dt = parse_time(str(pressure["sampled_at"]))
     evaluated_dt = parse_time(evaluated_at)
-    # Preserve the v0.1 integer age field while evaluating the deadline at
-    # full timedelta precision. int() truncates toward zero and would admit
-    # samples 0 < epsilon < 1 second outside the permitted freshness window.
-    age_exact_seconds = (evaluated_dt - sampled_dt).total_seconds()
-    age_seconds = int(age_exact_seconds)
+    # Preserve the v0.1 integer display field, but compare exact timedeltas.
+    # int() truncates toward zero and admits subsecond-outside-limit samples.
+    age_delta = evaluated_dt - sampled_dt
+    age_seconds = int(age_delta.total_seconds())
 
-    if age_exact_seconds < -max_future_skew_seconds:
+    if age_delta < -timedelta(seconds=max_future_skew_seconds):
         state = "HOLD_FUTURE_PRESSURE_SAMPLE"
         nxt = "REACQUIRE_OR_REBIND_PRESSURE_SAMPLE_TIME"
-    elif age_exact_seconds > max_age_seconds:
+    elif age_delta > timedelta(seconds=max_age_seconds):
         state = "HOLD_STALE_PRESSURE_SAMPLE"
         nxt = "REACQUIRE_RECEIVER_PRESSURE_BEFORE_BUDGET_ELECTION"
     else:
