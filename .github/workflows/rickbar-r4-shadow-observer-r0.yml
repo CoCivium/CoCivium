@@ -1,0 +1,47 @@
+name: RickBar R4 shadow observer R0
+
+on:
+  pull_request:
+    paths:
+      - 'scripts/CoRickBarR4PresenceShadowR0.ps1'
+      - '.github/workflows/rickbar-r4-shadow-observer-r0.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  synthetic_shadow_observer:
+    runs-on: windows-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify fail-closed, redacted, no-effect PowerShell fixtures
+        shell: pwsh
+        run: |
+          $output = & pwsh -NoProfile -File ./scripts/CoRickBarR4PresenceShadowR0.ps1 -SelfTest
+          if ($LASTEXITCODE -ne 0) { throw 'SHADOW_SELFTEST_PROCESS_FAILED' }
+          $receipt = $output | ConvertFrom-Json
+          if ($receipt.total -lt 21 -or $receipt.passed -ne $receipt.total) {
+            throw "SHADOW_SELFTEST_INCOMPLETE: $($receipt.passed)/$($receipt.total)"
+          }
+          Write-Host "PASS_SYNTHETIC_SHADOW_OBSERVER $($receipt.passed)/$($receipt.total)"
+      - name: Verify explicit fixture mode and redacted output
+        shell: pwsh
+        run: |
+          $path = Join-Path $env:RUNNER_TEMP 'r4-synthetic-fixture.json'
+          $fixture = @{
+            observer_status = 'OK'
+            processes = @(@{
+              Name = 'pwsh.exe'
+              ProcessId = 5884
+              CommandLine = 'pwsh.exe -NoProfile -File "D:\CoCivium\CoFarm\CoDesktop\20261016T002714Z_RickBar_R4\Start-RickBarR4.ps1" -Token PRIVATE_SYNTHETIC_SECRET'
+            })
+          } | ConvertTo-Json -Depth 5
+          Set-Content -LiteralPath $path -Value $fixture -Encoding utf8
+          $out = & pwsh -NoProfile -File ./scripts/CoRickBarR4PresenceShadowR0.ps1 -FixtureJson $path
+          if ($LASTEXITCODE -ne 0) { throw 'SHADOW_FIXTURE_PROCESS_FAILED' }
+          if ($out -match 'PRIVATE_SYNTHETIC_SECRET') { throw 'COMMANDLINE_LEAK_IN_OUTPUT' }
+          $o = $out | ConvertFrom-Json
+          if ($o.status -ne 'R4_LAUNCH_SIGNATURE_OBSERVED') { throw "UNEXPECTED_OBSERVER_STATE: $($o.status)" }
+          if ($o.observation_source -ne 'EXPLICIT_FIXTURE') { throw 'WRONG_RECEIVER_SCOPE' }
+          Write-Host 'PASS_FIXTURE_READBACK_NO_SECRET_IN_OUTPUT'
