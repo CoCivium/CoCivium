@@ -89,3 +89,16 @@ The existing reader page now offers a first-screen link to compare one **actual 
 
 **HELD independently of CI:** the page is not confirmed hosted as a public CoCivium reader destination, no invited or unfamiliar recipient has independently completed the proposed task, no subscriber metrics were measured, and no outgoing publication or social-message delivery was attempted. A zero-network local test does not prove a public click-through or recipient acknowledgment.
 
+## CoGiggle+ | Humor that points back to evidence (R0 candidate)
+
+The source-controlled federation now includes an **explicitly opt-in humorous explanation lens** for each of its six existing reader-chosen routes. It is deliberately **not a seventh audience, an inferred personality segment, a hidden recommendation engine, a new publication, or a permission to send anything**.
+
+The original CoCivium [CoLoL+](../../docs/Evolution/EVO_ALL_BETTERS_EVERGREEN_PULSE_20261023.md) premise is *layers, laughs, love, learning*. CoPlay+/CoSatire+ and [AI Wars satire](../../docs/Outreach/AI_WARS_YOU_WERE_NEVER_SUPPOSED_TO_BE_THE_OPERATING_SYSTEM_R1.md) already demonstrate clearly labeled fictional illustration. CoGiggle+ is a narrowly defined **reader-facing projection**: one humorous line, one serious plain-language meaning, one CoTurtle counterpoint, and an exact original claim ID per route.
+
+**Source model:** `make_manifest.py -> manifest.json (giggle_lens) -> build.py -> index.html`. An exact-manifest reproduction check is run in CI to prevent the authoring script, source data and displayed joke from quietly diverging. The original evidence kernel `C01..C06`, source blob SHA-1, old/current synthetic edition controls and first-reader links remain intact.
+
+**Reader behavior:** the lens begins hidden, becomes visible only when a reader activates **Try the humorous lens**, follows a separately selected reader route, and returns to plain explanation on the second click. No cookie, account, browser storage, network request, analytic event, fabricated testimonial, scarcity timer or automatic transmission is introduced.
+
+**CoTurtle guardrails:** `HUMOROUS_NE_OBSERVED | PUNCHLINE_NE_PERFORMANCE_METRIC | MEME_NE_MODEL | FUNNY_NE_TRUE | OPT_IN_TO_READ_NE_OPT_IN_TO_SEND | JOKE_NE_ENDORSEMENT | FICTIONAL_CHARACTER_NE_REAL_TESTIMONIAL`. The joke may explain the proposed behavior, but cannot replace a source, promise actual time saved, or confer execution authority.
+
+**Acceptance limits:** source tests and controlled Chromium browser tests may demonstrate coherent UI, accessibility controls, fixed claim identity and zero network effects. They cannot prove laughter, reader enjoyment, comprehension, viral reach, Substack publication or independent adoption. To make such a claim, conduct a consent-based comparison between the plain and humor versions with independent participants, an unchanged question, source comprehension, optional exit and actual measured time/helpfulness.
