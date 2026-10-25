@@ -1,0 +1,227 @@
+{
+  "schema": "CoCivium.CoVisualPriors.PublicProjection.R0",
+  "observed_date": "2026-10-25",
+  "state": "PUBLIC_SAFE_DESIGN_MAPPING_ONLY__NO_PRIVATE_MEDIA_PUBLISHED__NOT_DEVICE_RUNTIME",
+  "purpose": "Treat diagrams, rich media, screenshots, failed visuals and symbolic artwork as candidate design priors while preserving exact provenance, meaning, rights, accessibility and testability.",
+  "coverage": "Six public source files verified; separately sampled private visuals are NOT included or represented as a complete historical catalogue.",
+  "sources": [
+    {
+      "id": "living_asset",
+      "path": "docs/Architecture/COLIVING_HIGHLIGHT_ASSETS_R0.md",
+      "sha": "40785f77b4085b5830a45bb4c965360347f7cdaf",
+      "repository": "CoCivium/CoCivium",
+      "visibility": "PUBLIC_GITHUB_SOURCE_READBACK",
+      "source_url": "https://github.com/CoCivium/CoCivium/blob/main/docs/Architecture/COLIVING_HIGHLIGHT_ASSETS_R0.md"
+    },
+    {
+      "id": "middle_glyph",
+      "path": "docs/Architecture/COMIDDLE_COPRIMATH_GLYPHRAIL_R0_20261024.md",
+      "sha": "199c6b2e0067925439872a4337685c8d611141ac",
+      "repository": "CoCivium/CoCivium",
+      "visibility": "PUBLIC_GITHUB_SOURCE_READBACK",
+      "source_url": "https://github.com/CoCivium/CoCivium/blob/main/docs/Architecture/COMIDDLE_COPRIMATH_GLYPHRAIL_R0_20261024.md"
+    },
+    {
+      "id": "typed_relation",
+      "path": "ai/comiddle_relation_space_r0.json",
+      "sha": "95486951bac7a1b0c60a193ea65301f18e7bc592",
+      "repository": "CoCivium/CoCivium",
+      "visibility": "PUBLIC_GITHUB_SOURCE_READBACK",
+      "source_url": "https://github.com/CoCivium/CoCivium/blob/main/ai/comiddle_relation_space_r0.json"
+    },
+    {
+      "id": "living_demo",
+      "path": "examples/colensmedia/README.md",
+      "sha": "380bcbcc951960c01ded44a0efad3fe969c08d68",
+      "repository": "CoCivium/CoCivium",
+      "visibility": "PUBLIC_GITHUB_SOURCE_READBACK",
+      "source_url": "https://github.com/CoCivium/CoCivium/blob/main/examples/colensmedia/README.md"
+    },
+    {
+      "id": "living_demo_manifest",
+      "path": "examples/colensmedia/manifest.json",
+      "sha": "b5a87427f2a6bf3c5e4928b7aa2c64e3a46deb01",
+      "repository": "CoCivium/CoCivium",
+      "visibility": "PUBLIC_GITHUB_SOURCE_READBACK",
+      "source_url": "https://github.com/CoCivium/CoCivium/blob/main/examples/colensmedia/manifest.json"
+    },
+    {
+      "id": "glyph_context",
+      "path": "docs/broadcasts/EVO_ALL_BETTERS_CONTEXT_GLYPHS_TELLS_R0_20261024.md",
+      "sha": "7d4fd86a805c1d62bdb28f67780aec0b65c3dc2e",
+      "repository": "CoCivium/CoCivium",
+      "visibility": "PUBLIC_GITHUB_SOURCE_READBACK",
+      "source_url": "https://github.com/CoCivium/CoCivium/blob/main/docs/broadcasts/EVO_ALL_BETTERS_CONTEXT_GLYPHS_TELLS_R0_20261024.md"
+    }
+  ],
+  "patterns": [
+    {
+      "id": "RADIAL_ORB",
+      "meaning": "central object with radial action/state lenses",
+      "source_refs": [
+        "middle_glyph",
+        "living_demo"
+      ],
+      "benefit": "glanceable local context and compact first choice",
+      "anti_pattern": "ornamental rings masquerading as running workers or proof",
+      "required_text": "focus, available actions, held states, source"
+    },
+    {
+      "id": "DIRECTED_RELATION_MAP",
+      "meaning": "nodes with typed directional, inverse, missing and temporal edges",
+      "source_refs": [
+        "typed_relation",
+        "living_asset"
+      ],
+      "benefit": "explainable what/why/depends-on/what-else graph",
+      "anti_pattern": "unlabelled arrows imply causality or consent",
+      "required_text": "edge type, direction, source, confidence, valid time"
+    },
+    {
+      "id": "MULTILAYER_LENS",
+      "meaning": "ethical, scientific, systems, symbolic and accessibility lenses over stable source",
+      "source_refs": [
+        "living_demo_manifest",
+        "living_asset"
+      ],
+      "benefit": "one work object speaks appropriately to different readers",
+      "anti_pattern": "symbolic G_d/aura/ET imagery promoted into measured physics or verified contact",
+      "required_text": "epistemic class, projection omissions, source snapshot"
+    },
+    {
+      "id": "VERSION_CONSTELLATION",
+      "meaning": "several historical versions and alternatives coexisting with readable deltas",
+      "source_refs": [
+        "living_asset",
+        "glyph_context"
+      ],
+      "benefit": "comparisons and reversibility without erasing old work",
+      "anti_pattern": "quiet overwrites or endless unreadable versions",
+      "required_text": "snapshot id, changed fields, ancestor, restore path"
+    },
+    {
+      "id": "GLYPH_INVERSE_RAIL",
+      "meaning": "context-rated 8-action surface from a large typed possibility space",
+      "source_refs": [
+        "middle_glyph",
+        "typed_relation"
+      ],
+      "benefit": "minimal interruption with CoInv+, CoNull+, CoTurtle+ challenge",
+      "anti_pattern": "thousands of active controls or actions triggered by pointer presence",
+      "required_text": "glyph name, anti-meaning, spoken fallback, authority"
+    },
+    {
+      "id": "EVIDENCE_MEDIA_TWIN",
+      "meaning": "paired readable text, diagram/storyboard and source-linked machine sidecar",
+      "source_refs": [
+        "living_demo",
+        "living_demo_manifest"
+      ],
+      "benefit": "CoFactory can regenerate equivalent views with drift and loss checks",
+      "anti_pattern": "image or animation taken as legal/scientific acceptance",
+      "required_text": "frame claim/source IDs, captions, contrast, accessibility and loss ledger"
+    }
+  ],
+  "influence_not_ownership": "Visual style and pattern may inspire a new artifact; byte copying, redistribution, attribution, private material use, and licences need separate rights review.",
+  "pipeline": [
+    "OBSERVE_PRIOR",
+    "QUALIFY_SOURCE_RIGHTS_AND_PRIVACY",
+    "EXTRACT_VISUAL_MOTIF",
+    "BIND_TYPED_RELATION_AND_EPISTEMIC_CLASS",
+    "PROPOSE_NEW_DESIGN_OR_INVERSE",
+    "GENERATE_ACCESSIBLE_TEXT_ORB_MAP_SPEC",
+    "TEST_AND_PRESERVE_NEGATIVE_EXAMPLE",
+    "COMPARE_TO_SOURCE_AND_RECORD_LOSS",
+    "RECEIVER_OPT_IN_ACCEPTANCE",
+    "RETAIN_PRIOR_AND_VERSIONED_SUCCESSOR"
+  ],
+  "cross_cutting_consumers": [
+    {
+      "id": "CoFactory+",
+      "role": "reproducible view builder with source/rights checks"
+    },
+    {
+      "id": "CoProduct+",
+      "role": "task-first, use-case-specific front doors"
+    },
+    {
+      "id": "CoProduce+",
+      "role": "safe media/export packaging with manifest and captions"
+    },
+    {
+      "id": "CoCareer+",
+      "role": "voluntary education, contribution and reproducible tutorials"
+    },
+    {
+      "id": "CoPayback+",
+      "role": "independent measured user benefit and accessibility"
+    },
+    {
+      "id": "CoGame+",
+      "role": "opt-in simulations and creative inverse exploration, clearly fictional"
+    },
+    {
+      "id": "CoBottleneck-",
+      "role": "reduce manual relay and duplicate renders, budgeted operation"
+    },
+    {
+      "id": "CoTurtle+",
+      "role": "source, interpretation and falsification review; depth <=2, rounds <=2"
+    },
+    {
+      "id": "CoOrbWare+",
+      "role": "receiver-relative interactive projections from a shared work object"
+    }
+  ],
+  "refresh_policy": {
+    "check": "ON_RELEVANT_SOURCE_CHANGE_OR_OPTIONAL_DAILY_FRESHNESS_CHECK",
+    "rewrite": "ONLY_ON_MATERIAL_VERIFIED_DELTA_WITH_VERSIONED_RECEIPT",
+    "suppression": "NO_UNSOLICITED_PUBLIC_SPAM_OR_STANDING_WORKERS"
+  },
+  "first_use": {
+    "default": "one source-linked diagram and one plain-text meaning",
+    "expanded": "user elects one of up to eight context-action glyphs",
+    "on_accept": "one reversible local proof; any external effect gated",
+    "fallback": "text-first no colour/motion dependence"
+  },
+  "acceptance_gates": [
+    "PINNED_EXACT_SOURCE_REF",
+    "RIGHTS_AND_PRIVACY_REVIEW",
+    "VISIBLE_EPISTEMIC_CLASS",
+    "GLYPH_TEXT_SPEECH_ROUNDTRIP",
+    "TEXT_MAP_ORB_SOURCE_ID_PARITY",
+    "INVERSE_NOT_FALSE_CAUSALITY",
+    "MISSING_NOT_ASSERTED_ABSENT",
+    "COLOUR_OFF_AND_REDUCED_MOTION",
+    "SMALL_VIEWPORT_ACCESSIBILITY",
+    "VERSION_CHANGE_AND_ROLLBACK",
+    "TEST_FAILURE_PRESERVED",
+    "CONSENTING_RECEIVER_USE"
+  ],
+  "custody_states": [
+    "DISCOVERED_LOCAL",
+    "VERIFIED_LOCAL",
+    "LANDED",
+    "PICKED_UP",
+    "INTEGRATED",
+    "COEX"
+  ],
+  "next_safe_test": "Choose one public-safe, rights-cleared existing diagram and create one source-pinned CoLens Map/Orb/Text plus loss ledger. Ask one consenting first-time reader whether its meaning remains stable. Do not start from copying private screenshots.",
+  "nonclaims": [
+    "NOT_COMPLETE_HISTORY",
+    "PRIVATE_VISUAL_SEARCH_NE_PUBLISHED_MEDIA",
+    "SAMPLED_DIAGRAM_NE_AUTHORITATIVE_SPEC",
+    "INSPIRATION_NE_OWNERSHIP_OR_COPY_RIGHTS",
+    "SYMBOLIC_GD_ET_NE_VERIFIED_PHYSICS_OR_CONTACT",
+    "METAPHOR_NE_OBSERVATION",
+    "VISUAL_NE_CANON",
+    "SOURCE_READBACK_NE_RECEIVER_ACCEPTANCE",
+    "FIVE_SAMPLE_HASHES_NOT_OFFSITE_CUSTODY",
+    "LOCAL_IS_NOT_LANDED",
+    "VALIDATION_IS_NOT_ACCEPTANCE",
+    "NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF",
+    "NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE",
+    "HASHING_IS_NOT_SEMANTIC_INGESTION",
+    "DISCOVERED_SET_IS_NOT_COMPLETE_HISTORY"
+  ]
+}
