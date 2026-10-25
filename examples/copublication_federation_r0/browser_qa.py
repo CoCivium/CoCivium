@@ -14,7 +14,10 @@ def check(ok,label):
 with sync_playwright() as p:
     executable=shutil.which('chromium') or shutil.which('google-chrome') or shutil.which('chromium-browser')
     if not executable:
-        raise RuntimeError('HELD_NO_LOCAL_CHROMIUM_OR_CHROME_EXECUTABLE')
+        candidate=Path(p.chromium.executable_path)
+        if not candidate.is_file():
+            raise RuntimeError('HELD_NO_LOCAL_CHROMIUM_OR_CHROME_EXECUTABLE')
+        executable=str(candidate)
     browser=p.chromium.launch(headless=True,executable_path=executable,args=['--no-sandbox','--disable-dev-shm-usage'])
     for width,height,label in [(1280,840,'desktop'),(390,844,'mobile')]:
         page=browser.new_page(viewport={'width':width,'height':height},device_scale_factor=1,reduced_motion='reduce')
