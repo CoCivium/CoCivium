@@ -1,0 +1,84 @@
+{
+  "schema": "CoDoodle.LocalMicrobenchmark.R0",
+  "test_type": "ISOLATED_LOCAL_SYNTHETIC",
+  "environment": {
+    "python": "3.13.5",
+    "machine": "x86_64",
+    "platform": "Linux"
+  },
+  "results": {
+    "sample_923b": {
+      "bytes": 923,
+      "hot_trigger": {
+        "iterations": 20000,
+        "median_us": 0.071,
+        "p95_us": 0.081,
+        "p99_us": 0.1,
+        "min_us": 0.07
+      },
+      "full_seed_compiler": {
+        "iterations": 2000,
+        "median_us": 135.329,
+        "p95_us": 198.349,
+        "p99_us": 416.358,
+        "min_us": 129.215
+      }
+    },
+    "repeated_approx_3_7kb": {
+      "bytes": 3692,
+      "hot_trigger": {
+        "iterations": 20000,
+        "median_us": 0.071,
+        "p95_us": 0.081,
+        "p99_us": 0.081,
+        "min_us": 0.07
+      },
+      "full_seed_compiler": {
+        "iterations": 2000,
+        "median_us": 137.427,
+        "p95_us": 226.491,
+        "p99_us": 326.763,
+        "min_us": 130.727
+      }
+    },
+    "no_match_3_7kb": {
+      "bytes": 3692,
+      "hot_trigger": {
+        "iterations": 20000,
+        "median_us": 3.095,
+        "p95_us": 3.125,
+        "p99_us": 7.821,
+        "min_us": 3.064
+      },
+      "full_seed_compiler": {
+        "iterations": 1000,
+        "median_us": 553.96,
+        "p95_us": 1365.588,
+        "p99_us": 1714.083,
+        "min_us": 503.609
+      }
+    },
+    "no_match_64kb": {
+      "bytes": 65536,
+      "hot_trigger": {
+        "iterations": 500,
+        "median_us": 52.734,
+        "p95_us": 84.578,
+        "p99_us": 138.769,
+        "min_us": 52.58
+      },
+      "full_seed_compiler": {
+        "iterations": 100,
+        "median_us": 10078.96,
+        "p95_us": 12124.734,
+        "p99_us": 14315.115,
+        "min_us": 9176.66
+      }
+    }
+  },
+  "limits": [
+    "Wall-clock per-call timing includes Python invocation overhead",
+    "No operating system input hook, model, network, file IO, semantic verification or real experiment inside measured region",
+    "Timing on isolated container, not X2, not an SLA or an infinite-rate proof"
+  ]
+}

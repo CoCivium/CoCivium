@@ -1,0 +1,29 @@
+{
+  "schema": "CoDoodle.LocalTestReceipt.R0",
+  "observed_date_utc": "2026-10-24",
+  "scope": "ISOLATED_LOCAL_LINUX__NOT_GITHUB_CI__NOT_X2",
+  "tests": {
+    "passed": 26,
+    "total": 26,
+    "failed": 0
+  },
+  "source_sha256": "1654fbb430b581db4029580ff9245c64df75201709a0165ab7eceae4f9afc6d8",
+  "source_bytes": 11024,
+  "synthetic_fixture_bytes": 923,
+  "benchmark_ref": "examples/codoodle/benchmark_receipt.json",
+  "effects": {
+    "experiments_executed": 0,
+    "workers_started": 0,
+    "device_io": 0,
+    "network_calls": 0,
+    "public_posts": 0
+  },
+  "upstream": "CoExperimentSelectorR0 requires separately evidenced benefit/penalty estimates",
+  "nonclaims": [
+    "LOCAL_PASS_NE_CI_PASS",
+    "MICROSECOND_TRIGGER_NE_SEMANTIC_REASONING",
+    "SELECTOR_DESCRIPTOR_NE_VALIDATED_EXPERIMENT",
+    "PUBLIC_SOURCE_NE_PUBLIC_USER_ACK",
+    "NO_AUTONOMOUS_KEYBOARD_SENSING"
+  ]
+}
