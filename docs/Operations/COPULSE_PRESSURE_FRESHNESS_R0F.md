@@ -124,7 +124,7 @@ The existing R0F gate converted a `timedelta` into integer seconds **before** co
 The [draft regression patch](../../scripts/CoPulseReceiverPressureFreshnessR0F.py) compares the full-precision elapsed duration while preserving the established integer `age_seconds` result for the v0.1 schema. The reviewer should note that the legacy integer field is for coarse display; **classification uses full precision**, including subsecond edges. A later schema revision may add explicitly precise age reporting if consumers require it.
 
 - **Historical FAIL preserved:** 6/12 test cases failed against the exact original source (four 0.1–0.9-second over-limit cases, and the zero-slack future/stale edge cases).
-- **Corrected local PASS:** 12/12 identical tests pass against Git blob `eb68e47f755dc1a834324c4a571512116f4bae3b`.
+- **Corrected local PASS:** 12/12 identical tests pass against Git blob `ce8b13afc1b6b7e7d7b73df7a2549b6eb2a2eeb7`.
 - **Exact regression test source:** `tests/test_copulse_pressure_freshness_subsecond_r0f.py`; source Git blob `7f8ab4ab4df499df2d492d81dafe33caaf4317cb`.
 - Reproduce with `python -m unittest discover -s tests -p 'test_copulse_pressure_freshness_subsecond_r0f.py'` from a checked-out review branch.
 - This is a **local, synthetic test**, not proof of actual receiver accuracy, model-token amplification, X2 runtime, independent host adoption, provider-context mutation, or public deployment.
