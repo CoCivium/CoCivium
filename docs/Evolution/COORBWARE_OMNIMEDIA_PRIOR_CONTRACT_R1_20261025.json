@@ -1,0 +1,336 @@
+{
+  "format": "CoAll.CoOrbWare.OmniMediaPriorTaxonomy.R1",
+  "status": "PUBLIC_SAFE_DESIGN_CANDIDATE_ONLY__NO_ALL_SESSION_SCAN__NO_HISTORICAL_BYTES_CLAIM__NO_RUNTIME",
+  "observed_date_utc": "2026-10-25",
+  "extends": "docs/Evolution/COORBWARE_VISUAL_PRIORS_R0_20261025.md",
+  "parents": [
+    "docs/Architecture/COLIVING_HIGHLIGHT_R0.md",
+    "docs/Architecture/COTHUMB_COPAYLOAD_R0_20261024.md",
+    "docs/Architecture/COEVOALL_LARGEST_PATHS_AUTOCYCLE_R1_20261024.md",
+    "examples/colensmedia/README.md"
+  ],
+  "media_families": [
+    {
+      "id": "diagram",
+      "transferable_prior": "graph topology, labels, missing edges",
+      "minimum_accessible_twin": "node/edge claims with source pointers"
+    },
+    {
+      "id": "illustration",
+      "transferable_prior": "visual metaphor, composition, contrast",
+      "minimum_accessible_twin": "caption and metaphor mapping"
+    },
+    {
+      "id": "photograph",
+      "transferable_prior": "framing, measured scene only if provenance exists",
+      "minimum_accessible_twin": "descriptive scene and uncertainty"
+    },
+    {
+      "id": "screenshot",
+      "transferable_prior": "interface state and observed accessibility cues",
+      "minimum_accessible_twin": "state-labeled UI reconstruction"
+    },
+    {
+      "id": "video",
+      "transferable_prior": "keyframes, cuts, motion, synchronized tracks",
+      "minimum_accessible_twin": "timecoded storyboard and provenance"
+    },
+    {
+      "id": "animation",
+      "transferable_prior": "state transitions, easing, spatial-temporal metaphor",
+      "minimum_accessible_twin": "transition graph and timing notes"
+    },
+    {
+      "id": "audio",
+      "transferable_prior": "rhythm, timbre, spoken evidence if actually transcribed",
+      "minimum_accessible_twin": "timecoded annotation and transcript"
+    },
+    {
+      "id": "music",
+      "transferable_prior": "structure, harmony, motif, change and response",
+      "minimum_accessible_twin": "event/timing score without lyrics"
+    },
+    {
+      "id": "speech",
+      "transferable_prior": "speaker turns, pauses, intent as hypothesis",
+      "minimum_accessible_twin": "attributed transcript with consent"
+    },
+    {
+      "id": "interactive_ui",
+      "transferable_prior": "controls, states, error paths, focus order",
+      "minimum_accessible_twin": "accessible state machine and keyboard path"
+    },
+    {
+      "id": "three_d_mesh",
+      "transferable_prior": "geometry, topology, camera and coordinate assumptions",
+      "minimum_accessible_twin": "2D/text projection with loss report"
+    },
+    {
+      "id": "spatial_xr",
+      "transferable_prior": "embodied interactions and participant-relative viewpoints",
+      "minimum_accessible_twin": "flat/headless alternative and comfort flags"
+    },
+    {
+      "id": "simulation",
+      "transferable_prior": "declared model, parameters, trajectories, failure modes",
+      "minimum_accessible_twin": "parameter and uncertainty visualization"
+    },
+    {
+      "id": "sensor_time_series",
+      "transferable_prior": "samples, units, missingness, calibration and timing",
+      "minimum_accessible_twin": "chart plus exact data provenance"
+    },
+    {
+      "id": "scientific_image",
+      "transferable_prior": "instrument, scale, technique, artifacts and falsifiers",
+      "minimum_accessible_twin": "annotated hypothesis, not discovery"
+    },
+    {
+      "id": "dataset",
+      "transferable_prior": "schema, classes, outliers, uncertainty, sampling",
+      "minimum_accessible_twin": "chart or story retaining source field IDs"
+    },
+    {
+      "id": "source_code_renderer",
+      "transferable_prior": "generative algorithm, seed, version and reproducibility",
+      "minimum_accessible_twin": "render plus exact pinned source"
+    },
+    {
+      "id": "text_typography",
+      "transferable_prior": "language, symbol, layout, mathematical notation",
+      "minimum_accessible_twin": "readable semantic text equivalent"
+    },
+    {
+      "id": "composite_media",
+      "transferable_prior": "synchronized tracks, interactive/video/data layers",
+      "minimum_accessible_twin": "component graph and track manifest"
+    },
+    {
+      "id": "physical_artifact",
+      "transferable_prior": "shape, materials, affordance and measurement plan",
+      "minimum_accessible_twin": "model/test proposal, no physical equivalence"
+    }
+  ],
+  "transfer_relations": [
+    {
+      "id": "extracts_structure_from",
+      "semantics": "cross-modal structural inspiration, not equality"
+    },
+    {
+      "id": "extracts_timing_from",
+      "semantics": "audio/video/telemetry to temporally indexed relations"
+    },
+    {
+      "id": "translates_motif_from",
+      "semantics": "cultural/symbolic motif with attribution"
+    },
+    {
+      "id": "projects_into",
+      "semantics": "same source identity into alternate accessible medium"
+    },
+    {
+      "id": "contrasts_with",
+      "semantics": "explicit unlike donor/alternative"
+    },
+    {
+      "id": "inverts_view_of",
+      "semantics": "observer or directional inverse, not necessarily logical negation"
+    },
+    {
+      "id": "negates_hypothesis_of",
+      "semantics": "scoped logical claim and evidence required"
+    },
+    {
+      "id": "complements_scope_of",
+      "semantics": "requires defined reference universe"
+    },
+    {
+      "id": "counterfactually_reframes",
+      "semantics": "hypothetical variant, not observed state"
+    },
+    {
+      "id": "tests_failure_of",
+      "semantics": "negative prior, repaired error, or contradiction"
+    },
+    {
+      "id": "reveals_occlusion_in",
+      "semantics": "hidden or censored information, unknown != absent"
+    },
+    {
+      "id": "emulates_interaction_of",
+      "semantics": "one UI modality translated into another"
+    },
+    {
+      "id": "draws_counterexample_from",
+      "semantics": "adversarial prior retained with attribution"
+    },
+    {
+      "id": "supersedes_projection_of",
+      "semantics": "versioned display successor, not source erasure"
+    },
+    {
+      "id": "derives_from",
+      "semantics": "source and transform provenance retained"
+    },
+    {
+      "id": "annotates_measurement_of",
+      "semantics": "calibration and uncertainty retained"
+    },
+    {
+      "id": "requires_permission_for",
+      "semantics": "license, consent, retention, privacy or publication gate"
+    },
+    {
+      "id": "accessible_equivalent_of",
+      "semantics": "assistive modality without inventing source content"
+    }
+  ],
+  "prior_record_fields": [
+    "prior_id",
+    "source_locator",
+    "source_repo_ref_or_custodian",
+    "retrieval_state",
+    "source_sha256_if_computed",
+    "source_blob_identity_if_known",
+    "source_time",
+    "observed_at",
+    "content_type",
+    "track_or_segment_id",
+    "timecode_or_coordinate_frame",
+    "media_components",
+    "creator",
+    "license_or_rights",
+    "consent",
+    "privacy",
+    "purpose",
+    "evidence_class",
+    "transform_id",
+    "transform_version",
+    "transform_loss",
+    "attribution",
+    "like_relations",
+    "unlike_relations",
+    "inverse_kind",
+    "negative_findings",
+    "claims",
+    "accessible_alternates",
+    "currentness",
+    "lineage",
+    "proposed_test",
+    "receipt",
+    "receiver_ack"
+  ],
+  "epistemic_classes": [
+    "OBSERVED",
+    "CITED_SOURCE",
+    "MODEL_OUTPUT",
+    "SIMULATION",
+    "HYPOTHESIS",
+    "COUNTERFACTUAL",
+    "SYMBOLIC",
+    "FICTION",
+    "UNKNOWN"
+  ],
+  "retrieval_states": [
+    "REFERENCE_ONLY",
+    "LOCATOR_VERIFIED",
+    "EXACT_BYTES_VERIFIED",
+    "SEMANTICALLY_REVIEWED",
+    "UNAVAILABLE",
+    "RESTRICTED",
+    "UNKNOWN"
+  ],
+  "rights_states": [
+    "PERMITTED_FOR_SCOPE",
+    "PERMISSION_PENDING",
+    "RESTRICTED",
+    "UNKNOWN"
+  ],
+  "privacy_classes": [
+    "PUBLIC",
+    "PRIVATE",
+    "RESTRICTED",
+    "UNKNOWN"
+  ],
+  "ops_pipeline": [
+    "DISCOVER",
+    "QUALIFY_SOURCE",
+    "QUALIFY_RIGHTS_PRIVACY",
+    "HASH_IF_RETRIEVED",
+    "EXTRACT_MODALITY_SAFE_FEATURES",
+    "PROPOSE_LIKE_AND_UNLIKE",
+    "PROPOSE_TYPED_INVERSIONS",
+    "MAKE_ACCESSIBLE_TWIN",
+    "CHALLENGE_AND_TEST",
+    "RECEIPT",
+    "CHECKPOINT",
+    "SLEEP"
+  ],
+  "privacy_rules": {
+    "public_projection": "PUBLIC source/rights verified for specified scope; suppress restricted/private candidate metadata",
+    "automatic_ingestion": false,
+    "automatic_publication": false,
+    "implicit_authority_from_prior": false,
+    "prior_sourcing": "Only records with independently retrievable source identity may claim exact source verification",
+    "original_preservation": "Derivatives do not replace source bytes; compaction is not deletion",
+    "derived_content": "Transcript or caption claims must be backed by actually inspected source track, not a filename/summary",
+    "author_identity": "Do not imply creator consent, authorship or endorsement from reuse"
+  },
+  "media_transfer_examples": [
+    {
+      "source": "audio rhythm",
+      "target": "CoPulse/CoTime event visualization",
+      "state": "HYPOTHESIS_ONLY"
+    },
+    {
+      "source": "video editing transition",
+      "target": "CoOrbWare state change",
+      "state": "HYPOTHESIS_ONLY"
+    },
+    {
+      "source": "3D spatial mesh",
+      "target": "CoMap graph",
+      "state": "HYPOTHESIS_ONLY"
+    },
+    {
+      "source": "interactive failure",
+      "target": "CoNull negative edge + recovery affordance",
+      "state": "HYPOTHESIS_ONLY"
+    },
+    {
+      "source": "equation/geometry",
+      "target": "caption + text-based accessible proof proposal",
+      "state": "HYPOTHESIS_ONLY"
+    },
+    {
+      "source": "contradictory diagrams",
+      "target": "separate dissonant alternatives",
+      "state": "HYPOTHESIS_ONLY"
+    }
+  ],
+  "test_gates": [
+    "qualified exact source and bytes for every promoted evidence claim",
+    "authorship, third-party rights, consent and privacy review",
+    "explicit per-modality unit/time/coordinate assumption record",
+    "negative and unlike relations retained",
+    "accessible equivalent inspected against actual source",
+    "transform loss and uncertainty retained",
+    "comparison against baseline for human usefulness",
+    "independent receiver source readproof when delivery claimed"
+  ],
+  "nonclaims": [
+    "ELIGIBLE_PRIOR_NE_RECOVERED_BYTES",
+    "RICH_MEDIA_NE_ANY_MEDIA_INGESTED",
+    "LOCATOR_NE_CONTENT",
+    "MEDIA_DERIVATIVE_NE_LOSSLESS_SOURCE",
+    "SIMILARITY_NE_MECHANISM",
+    "UNLIKE_NE_IRRELEVANT",
+    "IMAGE_NE_MEASUREMENT",
+    "GENERATOR_NE_RENDER",
+    "SOURCE_VERIFIED_NE_CREATOR_CONSENT",
+    "BROKEN_PRIOR_NE_USELESS",
+    "POTENTIAL_INFINITY_NE_PHYSICAL_INFINITY",
+    "GITHUB_PROPOSAL_NE_X2_RUNTIME",
+    "POINTER_NE_ACK"
+  ]
+}
