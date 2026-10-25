@@ -1,0 +1,136 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="dark"><title>Your App Is an Ingredient | CoBook+ Reader Pilot R0</title><meta name="description" content="A portable living-book pilot about the Great ReFact: AI, cooperation, choice, and the right to leave."><style>
+:root { color-scheme: dark; --bg:#07171c; --surface:#10272d; --surface2:#123039; --ink:#f7f5e9; --dim:#c1cfca; --muted:#9eaca7; --line:#31565a; --gold:#f7cd7b; --blue:#97dce9; --green:#a6e0c0; }
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { margin:0; background:var(--bg); color:var(--ink); font:17px/1.7 system-ui,-apple-system,"Segoe UI",sans-serif; }
+a {color:var(--blue); text-underline-offset:3px;} a:hover{color:#fff;} a:focus-visible,button:focus-visible{outline:3px solid var(--gold);outline-offset:4px;}
+.skip{position:absolute;left:12px;top:-60px;background:#fff;color:#081419;padding:8px 12px;z-index:20;} .skip:focus{top:12px;}
+header.hero{min-height:560px;position:relative;overflow:hidden;border-bottom:1px solid var(--line);background:radial-gradient(circle at 85% 35%,#22454c 0%,#0a2028 30%,#07171c 67%);}
+.hero .inner{max-width:1110px;margin:auto;padding:106px 24px 70px;position:relative;z-index:2;}
+.kicker{font-size:.75rem;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);}
+h1{font-family:Georgia,serif;font-size:clamp(3.5rem,8vw,7.3rem);line-height:1.01;max-width:800px;letter-spacing:-.058em;margin:.35em 0 .25em;}
+.hero .sub{font-family:Georgia,serif;font-size:clamp(1.25rem,2.2vw,1.85rem);color:#e0e2d3;max-width:720px;line-height:1.32;}
+.hero .lede{max-width:660px;color:var(--dim);font-size:1.05rem;}
+.hero .orb{position:absolute;right:-110px;top:-70px;width:min(58vw,650px);height:min(58vw,650px);border-radius:50%;border:2px solid #6e9b99;box-shadow:0 0 0 30px #89ddce10,0 0 0 67px #8ee8d00a,0 0 0 111px #e1c77a0b,inset 0 0 100px #b5dfda1e;opacity:.52;}
+.hero .orb:before{content:'';position:absolute;inset:14%;border:2px solid #b5ddcf;border-radius:50%;transform:skew(-25deg);}
+.hero .orb:after{content:'';position:absolute;inset:32%;border:2px solid var(--gold);border-radius:50%;}
+.btn{display:inline-block;border:1px solid #8ad0c2;border-radius:999px;padding:10px 19px;text-decoration:none;font-size:.9rem;font-weight:700;background:#194147;color:#fff;min-height:44px;}
+.btn:hover{background:#285966;color:#fff;}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin:25px 0 0;}
+.bookbar{position:sticky;top:0;z-index:5;background:#07171ced;border-bottom:1px solid var(--line);backdrop-filter:blur(14px);}
+.bookbar .row{max-width:1110px;width:100%;padding:11px 24px;margin:auto;display:flex;gap:14px;align-items:center;justify-content:space-between;}
+.bookbar .brand{font-size:.8rem;font-weight:800;letter-spacing:.06em;color:var(--gold);white-space:nowrap;}
+.bookbar nav{display:flex;gap:17px;overflow-x:auto;white-space:nowrap;font-size:.82rem;max-width:100%;width:100%;min-width:0;}
+main{max-width:1110px;padding:26px 24px 75px;margin:auto;}
+.cover-note{border:1px solid var(--line);border-radius:15px;background:#0d262c;padding:15px 20px;color:var(--dim);font-size:.88rem;margin:26px 0 42px;}
+.portals{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px;margin:24px 0 65px;}
+.portal{border:1px solid var(--line);background:var(--surface);padding:22px;border-radius:16px;text-decoration:none;display:block;color:var(--ink);}
+.portal:hover{border-color:var(--gold);background:var(--surface2);color:var(--ink);}
+.portal .num{color:var(--gold);font-size:.72rem;letter-spacing:.13em;font-weight:800;}.portal h3{font-family:Georgia,serif;font-size:1.42rem;line-height:1.22;margin:12px 0;}.portal p{font-size:.85rem;color:var(--dim);margin:0;}
+h2.section-label{font-size:.72rem;text-transform:uppercase;letter-spacing:.15em;color:var(--gold);margin-bottom:12px;}
+article.chapter{max-width:785px;padding:42px 0 60px;border-top:1px solid var(--line);margin:auto;scroll-margin-top:60px;}
+article.chapter h2{font-family:Georgia,serif;font-weight:500;font-size:clamp(2.25rem,5vw,3.9rem);letter-spacing:-.045em;line-height:1.1;margin:6px 0 28px;}
+article.chapter h3{font-family:Georgia,serif;font-size:1.65rem;line-height:1.25;margin:38px 0 14px;}
+article.chapter p{margin:15px 0;} article.chapter p:first-of-type{font-size:1.08rem;}
+article.chapter strong{color:#fff;} article.chapter li{margin:9px 0;} article.chapter blockquote{margin:35px 0;padding:8px 0 8px 22px;border-left:3px solid var(--gold);color:#e5d2a8;font-style:italic;}
+article.chapter a{overflow-wrap:anywhere;}
+.label{display:inline-block;font-size:.7rem;font-weight:800;color:var(--green);letter-spacing:.12em;text-transform:uppercase;margin:12px 0;}
+.lensbox{margin:30px auto 60px;max-width:785px;border:1px solid #47666a;border-radius:16px;background:#112e35;padding:24px;}
+.lensbox h3{font-family:Georgia,serif;font-size:1.5rem;margin:0 0 14px;}
+.lens-controls{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px;}
+.lens-controls button{background:#1b4852;border:1px solid #547c80;border-radius:999px;padding:8px 15px;color:var(--ink);font:inherit;font-size:.85rem;cursor:pointer;min-height:44px;}
+.lens-controls button[aria-pressed='true']{background:var(--gold);color:#082326;border-color:var(--gold);font-weight:800;}
+#lens-view{border-top:1px solid var(--line);padding-top:14px;font-size:.96rem;color:#e3ebe5;min-height:90px;}
+.relmap{max-width:785px;margin:30px auto 65px;padding:24px;border:1px solid var(--line);border-radius:16px;background:var(--surface);}
+.relmap h3{font-family:Georgia,serif;margin:0 0 18px;}
+.relpills{display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:center;padding:12px 0;}
+.rel-node{display:inline-block;border:1px solid var(--line);border-radius:12px;background:#17383f;padding:12px 14px;font-size:.83rem;text-align:center;}
+.rel-arrow{color:var(--gold);font-weight:800;font-size:1.4rem;}
+.relmap figcaption{font-size:.76rem;color:var(--dim);text-align:center;margin:15px 0 0;}
+footer{background:#071419;border-top:1px solid var(--line);padding:28px 24px;color:var(--muted);font-size:.81rem;}
+footer .inner{max-width:1110px;margin:auto;} footer a{color:var(--blue);}
+@media(max-width:750px){.portals{grid-template-columns:1fr;}.bookbar .row{align-items:flex-start;flex-direction:column;gap:6px;}.hero .inner{padding-top:92px;}.hero .orb{opacity:.22;width:440px;height:440px;}.chapter{padding:30px 0 45px;}main{padding-left:18px;padding-right:18px;}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto;}.bookbar{backdrop-filter:none;}}
+@media print{body{background:white;color:black;font-size:12pt}.hero{min-height:100px!important;background:white!important;color:black}.hero .orb,.bookbar,.portals,.lens-controls{display:none!important}.hero .inner{padding:20px}.cover-note,.lensbox,.relmap{background:white;color:black;border:1px solid #999}.chapter{page-break-before:always;max-width:none}.chapter h2{color:black}a{color:#000;text-decoration:underline}footer{background:white;color:black}}
+</style></head>
+<body><a class="skip" href="#main">Skip to chapters</a>
+<header class="hero"><div class="orb" aria-hidden="true"></div><div class="inner"><div class="kicker">CoBook+ · Open reader pilot · 2026</div><h1>Your App<br>Is an Ingredient</h1><p class="sub">The Great ReFact: A field guide to AI, choice, cooperation, and the next shape of software.</p><p class="lede">What if tools could work together without claiming to own our goals, our data, or our decisions?</p><div class="hero-actions"><a class="btn" href="#chapter-welcome">Begin reading →</a><a class="btn" href="#choose">Choose an entrance</a></div></div></header>
+<div class="bookbar"><div class="row"><div class="brand">COCIVIUM · LIVING BOOK R0</div><nav aria-label="Chapter navigation"><a href="#chapter-welcome">Welcome</a> <a href="#chapter-app-ingredient">Your App Is an Ingredient</a> <a href="#chapter-right-to-leave">The Right to Leave</a> <a href="#chapter-many-lenses">Many Lenses, One Source</a> <a href="#chapter-fireworks">The Fireworks Test</a></nav></div></div>
+<main id="main"><p class="cover-note"><strong>Edition boundary.</strong> This is an offline reading prototype built from public-safe original editorial text. Linked CoCivium documents are public source material, not proof of broad deployment, scientific certainty, independent adoption, or a published Substack series. No tracking, credential access or network requests are performed by the book itself.</p>
+<section id="choose" aria-labelledby="portalheading"><h2 class="section-label" id="portalheading">Choose the door that fits you</h2><div class="portals"><a class="portal" href="#chapter-app-ingredient"><div class="num">01 / THE IDEA</div><h3>What changes when apps become ingredients?</h3><p>Read the accessible argument first. No engineering background required.</p></a><a class="portal" href="#lens"><div class="num">02 / THE EVIDENCE</div><h3>How much of this actually exists?</h3><p>Separate documented architecture and bounded demos from aspirations.</p></a><a class="portal" href="#chapter-fireworks"><div class="num">03 / THE CHALLENGE</div><h3>What would prove it useful?</h3><p>Put the claims under a serious, falsifiable first-use test.</p></a></div></section>
+<article class="chapter" id="chapter-welcome" aria-label="Welcome"><div class="label">Chapter 00 · Editorial pilot</div><h2 class="chapter-title">Welcome: The Question Behind the Machinery</h2>
+<p><em>An invitation to readers, not a demand that they adopt a new vocabulary.</em></p>
+<p>A screen can contain three conversations, twenty unfinished plans, a dozen apparently promising tools, and still leave one obvious question unanswered: <strong>What can I actually do with any of this?</strong></p>
+<p>CoCivium began exploring a different relationship among people, software, artificial intelligence, and the institutions that govern them. Its public research includes designs and small demonstrations for predictive input, evidence-aware relationships, visual explanations, reversible actions, and recoverable work. Some pieces have passed bounded technical tests. That is not the same as a working universal platform or independent adoption.</p>
+<p>This book starts where a newcomer starts: not with an architecture diagram, but with a problem. You want a tool to help you accomplish something. You want to know what it will touch, what it will cost, what it may misunderstand, and how to stop it.</p>
+<p>The central proposition is that useful capabilities can become more portable than the products that contain them. The corresponding responsibility is that consent, evidence, privacy, and the right to leave must travel with those capabilities.</p>
+<p>You can read this as a story, inspect it as a technical proposal, or challenge it as an unproven hypothesis. A good living book permits all three approaches without quietly changing its sources when you change your perspective.</p>
+<h3>Three ways in</h3>
+<ul>
+<li><strong>I want the story.</strong> Continue to <a href="#chapter-app-ingredient">Your App Is an Ingredient</a>.</li>
+<li><strong>I want the proof.</strong> Try the public, offline <a href="https://github.com/CoCivium/CoCivium/blob/main/examples/coprecursor/README.md">CoPreCursor+ example</a>. Preview, accept, then undo an explicitly fictional suggestion.</li>
+<li><strong>I want to challenge the premise.</strong> Start with the <a href="https://github.com/CoCivium/CoCivium/blob/main/docs/Strategy/COSPIFF_FIREWORKS_SURVIVABILITY_R1.md">CoSpiff survivability assessment</a>, which distinguishes published prototypes from unproven recovery and user benefit.</li>
+</ul>
+<p><strong>Reading contract:</strong> A link to public source code is evidence of a published source, not evidence that its software is installed, that a claim is true, or that a real person has adopted it. The reader may disagree, fork, leave, or retain the useful parts without accepting the whole project.</p>
+</article>
+<section class="lensbox" id="lens" aria-labelledby="lenstitle"><h3 id="lenstitle">↔ One claim, three lenses</h3><div class="lens-controls" role="group" aria-label="Choose a reading lens"><button type="button" aria-pressed="true" data-lens="story">Story</button><button type="button" aria-pressed="false" data-lens="evidence">Evidence</button><button type="button" aria-pressed="false" data-lens="challenge">Challenge</button></div><div id="lens-view" aria-live="polite">A person should not have to become the courier between the tools they already use. The book asks whether better composition could reduce that burden without reducing choice.</div><small style="color:var(--dim)">Changing this lens changes the explanation, not the underlying source.</small></section>
+<article class="chapter" id="chapter-app-ingredient" aria-label="Your App Is an Ingredient"><div class="label">Chapter 01 · Editorial pilot</div><h2 class="chapter-title">1. Your App Is an Ingredient</h2>
+<p><em>The Great ReFact: When product boundaries become negotiable.</em></p>
+<p>You have a calendar, notes, files, a browser, perhaps a drawing application, and a half-dozen AI tools. Each is useful. Yet the work you care about rarely respects their borders.</p>
+<p>The calendar knows when. The notes know what you meant. The drawing tells a different story about the same idea. The browser can retrieve a source. The AI may propose a next step. But somewhere between the products, a human becomes a courier, copying, pasting, naming files, repairing context, and repeating permissions. It is an absurd amount of ceremony just to move an idea across a screen.</p>
+<p><strong>What if an application becomes an ingredient rather than the entire meal?</strong></p>
+<p>That does not require abolishing vendors or seizing control of their software. A safer version begins with documented interfaces, portable files, consented automation, accessibility services, and small, reversible integrations. Each product keeps its identity and security boundary. The person retains the choice of how capabilities combine.</p>
+<p>Imagine a modest task: prepare a clear explanation of a technical proposal. A document editor might provide writing. A diagram tool might provide visual relationships. A model could generate a draft, a different model could challenge it, and a deterministic test could check whether all quoted source links still point to the right versions. An accessible reading view would remain available even if the visual diagram failed.</p>
+<p>This is a <em>candidate workflow</em>, not a report of an installed CoCivium orchestration service. The point of an example is to make its required proof visible.</p>
+<h3>The Great ReFact, in five moves</h3>
+<ol>
+<li><strong>Name the goal.</strong> What does the person actually need to achieve, in words they understand?</li>
+<li><strong>Select bounded capabilities.</strong> Which tools can help, and what are they allowed to see or change?</li>
+<li><strong>Compose without surrender.</strong> Keep source identities, vendor boundaries, privacy constraints and translation losses visible.</li>
+<li><strong>Preview and challenge.</strong> Show a proposed result before an externally consequential action, along with a test or plausible counterexample.</li>
+<li><strong>Verify the outcome.</strong> Did the person gain useful time, clarity or control? Can the result be exported, corrected or undone?</li>
+</ol>
+<p>A vendor might reasonably object that its carefully engineered application deserves more than being called an ingredient. It does. A reliable application embodies years of design, maintenance, security and support. The ingredient metaphor describes a new <em>possible relation</em> to other tools; it is not a claim that products have lost their value or that every boundary should disappear.</p>
+<p>A user might object from the other direction: composing ten tools could make life worse. They would be right. It may increase cost, leak data, introduce inconsistent answers or bury a simple task under a committee of agents. The correct response is not an even larger agent committee. It is a smaller, more measurable experiment.</p>
+<h3>One test instead of a thousand claims</h3>
+<p>Choose one everyday workflow, establish the time and error rate of doing it normally, then try one authorized adapter. Compare results. Deliberately turn that adapter off. Does the original product still work? Can the data be recovered? Are the extra permissions genuinely necessary?</p>
+<p>CoCivium's public <a href="https://github.com/CoCivium/CoCivium/blob/main/docs/Architecture/COGREAT_REFACT_R0_20261025.md">Great ReFact+ R0 architecture</a> proposes this sort of augmentation. It is an architectural hypothesis, <strong>not</strong> permission to bypass a vendor, modify another person's account, or claim an unapproved partnership.</p>
+<p>And the small <a href="https://github.com/CoCivium/CoCivium/blob/main/examples/coprecursor/README.md">CoPreCursor+ demonstration</a> illustrates a useful boundary: a suggestion can be shown, accepted and undone without becoming an unauthorized action. That demonstration is local and rule-based, not a claim of fully deployed agentic input control.</p>
+<p>The larger promise is not that an AI will do everything. It is that <strong>a person need not be the transport protocol between things they already own or are permitted to use</strong>.</p>
+<blockquote>
+<p><strong>Try a reversal:</strong> If an application could borrow another tool's capability, what is the smallest capability it should <em>refuse</em> to share? A serious architecture begins by answering that question, not by promising to connect everything.</p>
+</blockquote>
+</article>
+<article class="chapter" id="chapter-right-to-leave" aria-label="The Right to Leave"><div class="label">Chapter 02 · Editorial pilot</div><h2 class="chapter-title">2. The Right to Leave</h2>
+<p>The ability to connect tools is only half the proposition. The other half is the ability to disconnect them without losing yourself or your work.</p>
+<p>A future system might offer one pleasant interface over many providers. Its map could tell a story with text, diagrams, audio and interactive objects. It might remember the lineage of a project over years. Those features are useful only if the person can inspect and challenge what the system remembers, revoke an authorization, export a meaningful record, and leave.</p>
+<p>That leads to four simple tests:</p>
+<ul>
+<li><strong>Who is acting?</strong> A tool's internal role is not a new human identity or a license to impersonate its owner.</li>
+<li><strong>What is known?</strong> A saved file, a model-generated assertion, a measurement and a poetic metaphor are not the same kind of evidence.</li>
+<li><strong>What is allowed?</strong> Reading a public document does not authorize an email, a purchase or a device takeover.</li>
+<li><strong>What survives?</strong> A pointer to a repository is not an independently restored copy, and an archive hash alone is not a successful recovery.</li>
+</ul>
+<p>These tests are more compelling than slogans because they can be falsified. A system that claims to be portable should survive a deliberate removal of one provider. A system that promises consent should behave correctly when permission is withdrawn. A system that calls itself accessible should be tested with people and assistive technologies rather than judged solely from a screenshot.</p>
+<p>Cognocarta Consenti and related CoCivium work explore consent, civic accountability and voluntary cooperation. This book links the <a href="https://github.com/CoCivium/CoCivium/blob/main/docs/Public/Snapshots/2026-10-19_CoMegaScroller_CC_CoTheoryAll_R0.md">public-safe CC and CoTheoryAll index</a>, <strong>not an unpublished constitutional source or a claim of legal adoption</strong>.</p>
+<p>A portable system without an exit becomes another trap. A connected system without boundaries becomes another surveillance opportunity. The useful future needs both composition <strong>and</strong> refusal.</p>
+</article>
+<figure class="relmap" aria-labelledby="maptitle"><h3 id="maptitle">The book's smallest relation map</h3><div class="relpills"><span class="rel-node">Person's goal</span><span class="rel-arrow" aria-hidden="true">→</span><span class="rel-node">Authorized capability</span><span class="rel-arrow" aria-hidden="true">↔</span><span class="rel-node">Evidence + consent</span><span class="rel-arrow" aria-hidden="true">→</span><span class="rel-node">Useful outcome</span></div><figcaption>Arrows are editorial relations, not a claim that an operational CoOrbWare or other model has performed these actions.</figcaption></figure>
+<article class="chapter" id="chapter-many-lenses" aria-label="Many Lenses, One Source"><div class="label">Chapter 03 · Editorial pilot</div><h2 class="chapter-title">3. Many Lenses, One Source</h2>
+<p>A story, a graph and an engineering specification may describe the same underlying subject. They do not have to make the same claims.</p>
+<p>Suppose we are examining a proposed relationship between an observer and a visual representation. A poetic lens might ask what it feels like to see from another point of view. An engineering lens might ask which fields an interface must preserve. A scientific lens might require measured variables, uncertainty ranges, alternative explanations and independent replication. These interpretations can coexist <strong>only when the distinctions remain explicit</strong>.</p>
+<p>This matters for CoMap+, CoOrb+, the Synthkind-themed blueprint, and larger CoTheoryAll ideas. Quantum physics is a real scientific field; using the word <em>quantum</em> in a diagram does not establish new physics. Likewise, spiritual or G_d notation can serve as optional artistic or philosophical language without becoming proof of supernatural agency or verified extraterrestrial contact.</p>
+<p>The public <a href="https://github.com/CoCivium/CoCivium/blob/main/examples/colensmedia/README.md">CoLens+ living-media demonstration</a> offers Map, Orb and Text views over a single synthetic source. That is an inspectable first step, <strong>not</strong> a finished universal CoOrbWare renderer or authenticated release of the original Synthkind Declaration.</p>
+<p>A living book can apply the same rule: switch the presentation freely, retain the exact version of the source, and show what the new view omits. A diagram should be able to explain <em>why</em> an edge appears. The text alternative must not be a second, silently inconsistent truth.</p>
+<p><strong>Reader experiment:</strong> Read one claim as narrative, inspect its source, then try to invent the strongest reasonable counterexample. If the book cannot accommodate the counterexample without hiding it, the book needs revision.</p>
+</article>
+<article class="chapter" id="chapter-fireworks" aria-label="The Fireworks Test"><div class="label">Chapter 04 · Editorial pilot</div><h2 class="chapter-title">4. The Fireworks Test</h2>
+<p>It is tempting to count source files, tests, diagrams, model sessions and candidate futures. They are easy to count. They are not the same as a thriving public commons.</p>
+<p>CoCivium's public work includes bounded demonstrations and published tests. It also carries unresolved questions about first-time usability, deployment, independent recovery, licensing and continuity outside a particular provider or founder. The public <a href="https://github.com/CoCivium/CoCivium/blob/main/docs/Strategy/COSPIFF_FIREWORKS_SURVIVABILITY_R1.md">survivability assessment</a> records those distinctions rather than presenting a launch as accomplished.</p>
+<p>A useful first firework would be small: someone outside the project, without coaching, completes a task and understands the outcome. A stronger one would be a second custodian recovering a useful work object after the original machine and account are unavailable. Stronger still: another person improves it, disputes a claim, or forks it without losing the right to say no.</p>
+<p>The ambition is not to become too big to fail. It is to become <strong>too useful to lose and safe for any one part to fail</strong>.</p>
+<p>If this book helps, share a chapter. If a claim is weak, challenge it. If another tool does the job better, use it. A public idea becomes more valuable when people are free to test it rather than required to believe it.</p>
+<p><strong>The next edition belongs to evidence, not just enthusiasm.</strong></p>
+</article>
+</main><footer><div class="inner"><p><strong>CoCivium · Reader Pilot R0.</strong> Source and companion index: <a href="https://github.com/CoCivium/CoCivium/blob/main/docs/Architecture/COGREAT_REFACT_R0_20261025.md">Great ReFact R0</a> · <a href="https://github.com/CoCivium/CoCivium/blob/main/examples/colensmedia/README.md">CoLens R0</a> · <a href="https://github.com/CoCivium/CoCivium/blob/main/docs/Strategy/COSPIFF_FIREWORKS_SURVIVABILITY_R1.md">Survivability review</a></p><p>Readable offline. No analytics. Not posted to Substack. No sales or outside-user claims. Corrections and responsible disagreement are welcome.</p></div></footer>
+<script>(function(){'use strict';var lenses={"story": "A person should not have to become the courier between the tools they already use. The book asks whether better composition could reduce that burden without reducing choice.", "evidence": "A public Great ReFact architecture and a bounded offline CoPreCursor demonstration exist. Multi-vendor deployment, independent user benefit and a universal CoOrbWare runtime are not established.", "challenge": "Composing products might introduce new privacy leaks, cost, confusion, and failure modes. The right benchmark is one consented task against an ordinary baseline, plus a clean exit test."};var box=document.getElementById('lens-view');document.querySelectorAll('[data-lens]').forEach(function(b){b.addEventListener('click',function(){var v=b.getAttribute('data-lens');if(!Object.prototype.hasOwnProperty.call(lenses,v))return;document.querySelectorAll('[data-lens]').forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false')});box.textContent=lenses[v];});});})();</script></body></html>
