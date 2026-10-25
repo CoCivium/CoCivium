@@ -79,3 +79,16 @@ For `G_d`, spiritual/nonmaterial, ET and Civ2+/Civ3+ stories: use a *labelled sy
 Rails: `CONTEXT_ADDRESSABLE_NE_CONTEXT_LOADED | GESTURE_NE_AUTHORITY | PREVIEW_NE_EXECUTE | QUESTION_NE_ANSWER | NULL_NE_FALSE | ET_SCENARIO_NE_CONTACT | G_D_FRAME_NE_MEASURED_FIELD | LOCAL_IS_NOT_LANDED | VALIDATION_IS_NOT_ACCEPTANCE | NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF | NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE`.
 
 **FOSS Forever | CoGoAll | Working Together Respectfully | privacy by design | visible effects, wearables optional.**
+
+
+## Input-envelope R1 hardening (candidate, 2026-10-25 UTC)
+
+This is a **safety-first donor to the existing CoContextRail R1**, not a new hotkey controller or a claim that X2 already runs it. The pure preview classifier now rejects any undeclared `packet` field before returning visible context; this includes fake `raw_key`, `clipboard_text`, and `screen_pixels` fields. It also rejects explicit outward effect intent unless its field is exactly `false`; unsupported types do not inherit permission. The refusal includes no captured input bytes, source pointer, permission or receiver ACK.
+
+Allowed optional field: `external_effect_requested: false`. A true/string/unknown effect request yields `HELD_EFFECT_REQUEST`. Any other undeclared field yields `HELD_UNDECLARED_INPUT`. Existing declared synthetic-browser controls continue as before.
+
+**Proof protocol:** seven additional deterministic negative cases on top of the previously recorded 91; `node --test` + exact `python3 build.py --check` must be evaluated by branch CI before PASS claims. Regenerated `index.html` must match the *same* versioned manifest + source and not silently drift. Further browser-level and native Windows tests remain independently required.
+
+**Hard boundary:** `NATIVE_MIDDLE` remains pass-through, no OS hook or key capture, no callback executes or sends, no session worker spawn, no provider/secret/account controls. Source hardening alone is not user acceptance, deployment, or a physical button mapping. When merging, preserve the old R1 receipt and add a new explicitly scoped one rather than rewriting historical rows.
+
+`UNKNOWN_INPUT_NE_CONTEXT | PREVIEW_NE_SEND | GLYPH_NE_AUTHORITY | NEW_GUARD_NE_WINDOWS_RUNTIME`.
