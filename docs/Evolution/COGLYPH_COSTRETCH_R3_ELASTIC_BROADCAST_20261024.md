@@ -56,3 +56,17 @@ Promotion sequence: lineage/source check -> schema and negative cases -> isolate
 **FOSS Forever | CoGoAll | Working Together Respectfully | privacy-by-design | voluntary participation | visible effects, optional wearables.**
 
 `GESTURE_NE_AUTHORITY | VIEW_NE_SOURCE | LARGE_LOGICAL_SPACE_NE_LARGE_ACTIVE_POOL | INVERSE_NE_UNDO | UNKNOWN_NE_ABSENT | LOCAL_IS_NOT_LANDED | NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF | VALIDATION_IS_NOT_ACCEPTANCE`
+
+## CoContextAmplifier R0 donor | limited-budget token synergy (2026-10-25 UTC)
+
+The [source-bound selector](../../examples/conodcothumb/context_rail_r1/context_amplifier_r0/README.md), [pure JavaScript policy](../../examples/conodcothumb/context_rail_r1/context_amplifier_r0/CoContextAmplifierR0.mjs), [29 negative/positive tests](../../examples/conodcothumb/context_rail_r1/context_amplifier_r0/CoContextAmplifierR0.test.mjs), and [PASS/HELD ledger](../../examples/conodcothumb/context_rail_r1/context_amplifier_r0/benchmark_evo.jsonl) are part of this draft PR.
+
+**Actual evidence:** 29/29 isolated Node 22.16.0 deterministic policy fixtures PASS. Exact GitHub code/test/README readback PASS. Existing read-only CoThumb Node-22 workflow was extended to run these tests; no current Actions completion is inferred merely from workflow modification. SOURCE_SHA256=`7535c2c13fe3b0016e1fc3efc27518642083095f28b204d79b2ca5b7f7914c3a`. TEST_SHA256=`97619f021a6edcd6889e03f4daff6075d2fa87e7480a5e96f16afd7c2ad9dd62`.
+
+**Behavior:** PUBLIC-only, metadata-only, deterministic reference selection with explicit finite synthetic budget, reserved headroom, required/current source gates, SHA-256-format checks (not independent byte hashing), privacy-suppressed exclusion, same-byte dedup without collapsing argumentative role, selected counterevidence where affordable, omission report and zero effects.
+
+**Meaning of infinity:** The *addressable provenance and experiment space* may keep growing across source stores, virtual sessions, CoPulse currentness, local and provider-neutral agents, and CoTurtle checkpoints; a selected model call still has finite actual context, output tokens, budget and permissions. Multi-model perspectives must preserve dissent, attribution, and independent adapter evidence. No connector provides magical shared memory across idle chat tabs.
+
+**Explicit HELD:** true source rehydration/byte verification; actual model tokenizer and truncation; model-quality gain relative to a named baseline; real provider swap; X2 physical mouse and recipient-origin readproof. This is a contributor donor to CoContextRail, not a new controller or provider runtime.
+
+`LOGICAL_OPTIONALITY_NE_PHYSICAL_INFINITY | BUDGET_UNITS_NE_TOKENS | REFERENCE_NE_CONTENT | SUMMARY_NE_SOURCE | BRANCH_NE_MERGED | POINTER_NE_ACK`
