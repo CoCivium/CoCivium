@@ -1,0 +1,45 @@
+{
+  "schema": "CoCivium.FirstContact.HardenedR1.ReviewReceipt",
+  "observed_at": "2026-10-25",
+  "state": "DRAFT_SOURCE_EXACT_READBACK__NOT_DEPLOYED",
+  "local_validation": {
+    "source_tests": {
+      "pass": 10,
+      "fail": 0
+    },
+    "in_memory_browser_tests": {
+      "pass": 34,
+      "fail": 0
+    },
+    "limits": [
+      "CSP_SOURCE_ONLY_NOT_HTTP_CSP_EXECUTION",
+      "CHROMIUM_CONTENT_RECONSTRUCTION_NOT_PRODUCTION_HOST",
+      "NO_INDEPENDENT_HUMAN_ACCEPTANCE"
+    ]
+  },
+  "exact_git_blobs": {
+    "index.html": "12954fb87def27c2203443881554f842fa8a35df",
+    "proof-gallery.html": "702a794250df8139b861d9c7a92e75efa81e3e3f",
+    "site.css": "f996a723be3407f1387db3a9e5e7cd11b54e0618",
+    "first-use.js": "0d22f8ee7874e25bf08cbb887f22de2bd7438b81",
+    "gallery.css": "7d50d1d78e843fe7d3713ef9378e276532ca1ced",
+    "gallery.js": "c4dbfc0d5b9c15e72905f50fe03e4602bbf07b88",
+    "proof-gallery.json": "d490bb0ef491a3701e967a83036728e050d28f51"
+  },
+  "prerequisites": [
+    "ACTUAL_HOSTING_DNS_OWNER_AND_AUTHORITY",
+    "PRIVATE_LEGACY_METADATA_EXPOSURE_REVIEW",
+    "LIVE_RESPONSE_HEADER_CSP_FRAME_ANCESTORS",
+    "CONTROLLED_ROLLBACK",
+    "INDEPENDENT_APEX_WWW_AND_CACHE_PROBES",
+    "CONSENTING_NEWCOMER_TEST"
+  ],
+  "no_effects": [
+    "NOT_DEPLOYED",
+    "NO_DOMAIN_MUTATION",
+    "NO_EXTERNAL_MESSAGE",
+    "NO_DEVICE_CONTROL",
+    "NO_OUTREACH_RECEIPT",
+    "NO_INDEPENDENT_RESTORE"
+  ]
+}
