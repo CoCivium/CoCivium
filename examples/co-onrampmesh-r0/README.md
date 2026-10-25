@@ -32,3 +32,18 @@ Gate promotion on: (1) correct intended canonical domain; (2) security/privacy r
 **Source-of-truth:** CoCivium/CoCivium GitHub is a public projection. Private custody requires a distinct durable receiver and receipt.
 
 **Rail:** `ONE_IDENTITY_MANY_SPECIALIST_SURFACES` | `ROUTE_NE_PERSONA` | `BRAND_NE_AUTHORITY` | `VIEW_NE_PRODUCT_ACCEPTANCE` | `FOCUS_NE_EXCLUSION` | `NO_FAKE_SOCIAL_PROOF` | `NO_UNSOLICITED_BULK_CONTACT`.
+
+## Edge-in feedback capsule (review candidate, R0A)
+
+The source-defined exercise selector now includes an **opt-in, categorical first-use feedback note**. This is meant to improve the inbound edge of CoEBE, *not* manufacture endorsements, evidence or extra accounts.
+
+- A visitor explicitly selects one of five outcomes: useful completion, confusing instructions, unable to finish, missing source, privacy/trust concern.
+- The page prepares a JSON note containing only the role's fixed route ID, categorical choice and already-public source link. **No name, raw task, account, identity, location, clipboard contents or typed answer** enters that note.
+- Nothing is collected automatically, persisted or transmitted. Clicking Prepare tries a local browser clipboard write; if blocked, the note is displayed for manual selection. The separate GitHub issue/challenge link is optional and may require a GitHub account.
+- Every note explicitly says VOLUNTARY_SELF_REPORT_UNVERIFIED, transmitted:false, receiver_ack:null until an actual independently observed recipient returns source-bound proof. A copy action is not feedback received.
+- The existing machine manifest, historical smoke checks, prior receipt and no-network CSP remain unchanged. New offline tests exercise embedded browser handlers in a synthetic no-network DOM with 17 consent/privacy/no-effect cases.
+- Accessible first-use, independent reader utility, safe domain deployment, actual recipient-side receipt ingestion and audience metrics remain HELD. Self-reports are not impact simply because text is copied.
+
+**CoEBE diagnostic:** test whether a common reusable core can expose useful tasks while preserving each visitor's right to reject, challenge, exit or participate without capture. Measure user effort and meaningful value, not time-on-platform, forced signup or blast volume.
+
+CORE_OUTPUT_NE_EDGE_VALUE | COPY_NE_DELIVER | SELF_REPORT_NE_INDEPENDENT_ACK | USER_AGENCY_NE_CCC | NO_TRACKING_NE_NO_HUMAN_FEEDBACK
