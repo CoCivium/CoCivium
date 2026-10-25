@@ -114,6 +114,67 @@ Simulated success on these exercises is rehearsal, not contact, sentience, plane
 
 Source-linked civic support can be useful after an election through official certification, published audits, transparent corrections and accessible public explanations. It must remain jurisdiction-specific, nonpartisan, privacy-conscious and unable to infer any individual's secret ballot. This is a candidate limited social utility, not proof of democracy rescue or automatic global reach.
 
+
+## October 25 addendum | CoEBE, CCC and the core-out / edge-in bottleneck
+
+**Status:** HYPOTHESIS_AND_SOURCE_BOUND_OUTREACH_PRIORITIZATION; NOT AN ESTABLISHED STATISTICAL LAW, A POLITICAL FORECAST, DOMAIN CHANGE, GOVERNANCE VOTE OR OUTREACH AUTHORITY.
+
+### Preserve disputed and overlapping terms
+
+The [March CoEvo Megascroller](../CoEvo/CoEvo_Megascroller_v0__2026-03-24.md) publicly defines **CoEBE** as *CoEvolutionary Edge-Balanced Equilibrium*: no single actor dominates, adaptation and trust survive, and evolution avoids collapse. The historical working shorthand also used "Edge Balance Equilibrium"; preserve as an alias with source-time. Past discussion used **CCC** for *Core Controlled Coercion*, **CoCCC** for the candidate CoCivium term *CoCoreControlledCoercion* (an attempted name for that same failure mode), and **ECC / CoECC** for *Edge Controlled Coercion*. The exact CoCCC spelling/meaning does not yet have an independently pinned current public source and MUST remain a historical-proposed alias, not canon, an additional proven phase, or a governing mechanism.
+
+| Regime / hypothesis | Mechanism to observe | Candidate falsifier or negative case |
+| --- | --- | --- |
+| CCC / CoCCC (core-control failure) | A central controller can withhold identity, memory, payments, compute, distribution, governance or exit | Realistic independent export, replacement, refusal and continuation work without central consent |
+| ECC / CoECC (fragmented edge-control failure) | Local powers reproduce exclusion, surveillance or coercive mini-centers even without one global center | Open, non-discriminatory participation; minority refusal and multi-node dispute/repair survive independently |
+| CoEBE (desired testable balance) | Edges retain custody and exit while shared standards permit optional federation; no indispensable actor | Loss of any single core/edge prevents other qualified participants from continuing or correcting essential work |
+
+These are **competing architecture and social-design hypotheses**, not measured equilibria, physics/gravity laws or claims that current society has adopted any particular regime. CoEBE is not "no core"; its core services must be replaceable and subject to transparent rights/consent.
+
+### Core-out versus edge-in: test an asymmetry, not a slogan
+
+**H1: Controllability bias.** Internal changes are cheaper, repeatable and immediately rewarded by source/CI receipts; external adoption, reciprocity, restoration and independent dissent cost more time and require consent. A project may therefore optimize core throughput while edge evidence remains thin. This is one plausible account of the current gap, **not** a demonstrated statistical law. "Finite core, infinite edge" is a metaphor: both real populations and accessible resources are finite, and unbounded candidate-space descriptions do not prove reach.
+
+**H2: Boundary friction.** If the human public entry is confusing or broken, more publicity increases abandonment and possibly exposure rather than useful adoption. The October 24 assessment observed the apex-domain problem and older technical www projection from one vantage. A second October 25 public-web vantage again returned apex HTTP 404 and an older technical index at www. This warrants a **private security/owner review**, not publishing raw sensitive paths or editing DNS without an elected domain owner, rollback plan and independently verified HTTP acceptance. Public source entry through the main GitHub START_HERE route is an interim source pointer, not equivalent hosted-site acceptance.
+
+**H3: Edge legitimacy feedback.** Real proof enters when unrelated, consenting people use an artifact, identify a wrong assumption, correct it, return voluntarily, fork/restore and remain free to leave. Existing synthetic tests and a growing catalogue do not establish these effects.
+
+**Null hypotheses / dissent:** The apparent core/edge imbalance may instead be an instrumentation failure (outside successes occurred but lack reliable attribution), a rights/license barrier, unclear task value, traffic arriving at another site, no accessible device/browser route, or a rational decision to delay growth for safety. Record each instead of interpreting silence as zero users.
+
+### One small edge-in experimental loop, not a mass campaign
+
+Use the existing [first-use contract](../Onramp/COCIVIA_FIRST_USE_R0.md) and [14-gate CoSpiff assessment](../../ai/resilience/cospiff-fireworks-r1.json), **not** a new public interface or more core terminology.
+
+1. **P0 entry and rights:** qualified owner independently verifies and remediates the domain/privacy issue, or directs limited invited testers to an already source-verified alternative. Require HTTPS/visible site readback, no raw paths or secrets exposed, mobile/keyboard usability, clear refusal and no profile requirement. Hold broad promotion until the public path is safe.
+2. **P1 voluntary first-use:** two cohorts may compare (A) plain one-task first-use and (B) one optional specialist route, without political profiling or invented consent. Target **five independent first-use task completions and two voluntary returns**, as already specified in the survivability gate. Log task, useful output, elapsed time, user correction/rejection and privacy-safe source/version/receiver evidence; distinguish UNKNOWN from ZERO.
+3. **P1 real independent survival:** a second custodian, not GitHub Pages/Raw/Actions on the same provider, restores a public-safe capsule and independently checks exact content and one usable task. No keys/private source in the public copy; rollback and readproof required.
+4. **P2 independent steward:** a non-originator reviews one disputed claim, reproduces one build and contributes one accepted correction; separately measure contributor absence and continuity when founder/provider is removed.
+
+**Stop rule:** if private exposure, unsafe source rights, coercive recruitment, broken opt-out, misleading claims, bad latency/accessibility or review-debt growth appears, pause expansion and repair the smallest blocking issue. Do not exploit electoral anxiety, generate political persuasion, imply official election-service certification, or broadcast unsupported predictions.
+
+### Before / during / after the 2026 U.S. election
+
+The next federal general election is **November 3, 2026** (Federal Election Commission election-date guidance, checked October 25). Political disorder, war or a specific outage has **not** been forecast or verified by this note. Treat scheduled election as a fixed planning horizon, not a trigger for fear-based distribution.
+
+The same nonpartisan continuity controls are useful with or without unrest: verified independent backups, tested recovery, minimum privilege and multifactor authentication, owner-controlled domain routes, an offline-readable continuity/contact pack, provenance-bound civic source comparisons and a publicly correctable uncertainty policy. The [Ready.gov business continuity framework](https://www.ready.gov/business/emergency-plans) and [CISA high-impact cybersecurity baseline](https://www.cisa.gov/cybersecurity-performance-goals) provide external general guidance.
+
+### What to measure, explicitly
+
+| Metric / proof | Current evidence boundary | First acceptance |
+| --- | --- | --- |
+| Core-versus-edge work ratio | NOT_MEASURED; commit volume or agent tokens alone is not time allocation | Time-bound count of source-verified core changes vs externally useful independent results, with human hours and review debt |
+| Discoverable and safe public entry | Single-vantage FAIL_OBSERVED; current October 25 corroborating web vantage, independent network still needed | Two independently controlled outside clients read intended exact content without private source disclosure |
+| Real first-use funnel | HELD in October 24 14-gate assessment; unknown is not zero | 5 independent useful completions, 2 voluntary returns, honest exits, corrections and time-to-value |
+| Distributed recovery | HELD: correlated GitHub-hosted URLs are one failure domain | Cold restore under a distinct custodian, exact-object receiver-produced hash and independently useful retrieval |
+| Edge governance independence | HELD / UNKNOWN | Non-originator can challenge, repair, reproduce and decline, without founding account access |
+| Outreach safety | Standing research intent, but no bulk/public send authority implied | Opt-in, rights-reviewed, source-linked, rate-limited invitations; explicit receiver and send/delivery receipts |
+| External-shock resilience | NO ELECTION OR WAR FORECAST | Test loss of GitHub, primary account and one origin host, with honest unknowns and recovery time |
+
+**Decision criterion:** a new internally tested feature is valuable only when it repairs a demonstrated edge bottleneck, helps a real receiver or measurably improves survival/rights. If extra core evolution raises coordination debt faster than useful edge receipts, narrow work to one edge test before opening more lanes. The objective remains **too useful to lose and safe for any one part to fail**, never coercively "too big to fail."
+
+**Rails:** MAY_EVOLVE_NE_MUST_MUTATE | POSSIBLE_RECEIVER_NE_REAL_RECEIVER | PUBLICATION_NE_AWARENESS | CLICK_NE_USEFUL_ADOPTION | COEBE_NE_ECC | COCCC_ALIAS_NE_INDEPENDENT_PROVEN_STAGE | INSPIRATION_NE_DEPENDENCY | POLITICAL_RISK_NE_CERTAIN_UNREST | ONE_VANTAGE_NE_GLOBAL_OUTAGE | NO_RECIPIENT_ACK_WITHOUT_EXACT_RECEIVER_READPROOF | PERMISSION_NE_WISHFUL_THINKING
+
+
 ## Core nonclaims
 
 - AN_INTENTION_IS_NOT_A_RECEIPT
