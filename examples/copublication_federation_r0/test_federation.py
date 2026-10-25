@@ -100,6 +100,10 @@ class FederationTests(unittest.TestCase):
     def test_external_links_allowlisted(self):
         p=Tags();p.feed((ROOT/'index.html').read_text())
         self.assertTrue(all((link == 'https://github.com/CoCivium/CoCivium' or link.startswith('https://github.com/CoCivium/CoCivium/') or link.startswith('#') or link == 'https://rickpublic.substack.com/p/does-ai-make-the-stock-market-obsolete') for link in p.links))
+    def test_reader_bridge_discoverable_from_first_screen(self):
+        html=(ROOT/'index.html').read_text()
+        self.assertEqual(html.count('href="#edge-in-heading"'),1)
+        self.assertIn('Compare a published article with the draft chapter',html)
     def test_one_verified_rickpublic_published_link(self):
         html=(ROOT/'index.html').read_text()
         self.assertEqual(html.count('href="https://rickpublic.substack.com/p/does-ai-make-the-stock-market-obsolete"'),1)
