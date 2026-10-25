@@ -1,0 +1,247 @@
+{
+  "authority": "NONE",
+  "bridge": {
+    "evidence_state": "PUBLIC_SOURCE_METADATA_ONLY__NO_ORIGINAL_IMAGE_INSPECTION",
+    "id": "visual-external-commons-linkgraph-r1",
+    "inspiration_status": "INSPIRES_CANDIDATE__NO_DERIVATIVE_OR_SEND",
+    "inverse_challenge": "Do arrows represent actual reciprocal relationships, or only a proposed mapping?",
+    "next_test": "Use one source-linked CoMap graph; require distinct status and inverse semantics on each directional edge.",
+    "projection_loss": [
+      "Original image pixels absent",
+      "Original directional edges not independently verified",
+      "No spatial coordinates or physical metrics transferred"
+    ],
+    "receiver_ack": false,
+    "rights_evidence_page": "https://commons.wikimedia.org/wiki/File:Commons_Interwiki_links_with_wikidata_3.svg",
+    "selected_reuse": "MOTIF_ONLY_LINK_BACK_TO_SOURCE",
+    "source_page": "https://commons.wikimedia.org/wiki/File:Commons_Interwiki_links_with_wikidata_3.svg",
+    "source_type": "RELATION_GRAPH_DIAGRAM",
+    "title": "Commons / Wikipedia / Wikidata links",
+    "visible_source_record_sha256": "33b6996eea1606884e4213e762390b3e11a522d1deda98c5b28892c1bf768c53"
+  },
+  "date": "2026-10-25",
+  "evolution": {
+    "auto_enable_device_io": false,
+    "auto_public_media": false,
+    "auto_rewrite": false,
+    "new_version_trigger": [
+      "SOURCE_RECORD_CHANGE",
+      "REVIEWER_RECEIPT",
+      "ACCESSIBILITY_DEFECT",
+      "RIGHTS_EVIDENCE_CHANGE"
+    ],
+    "no_change": "QUIESCE"
+  },
+  "lenses": [
+    "All",
+    "Story",
+    "Science",
+    "Systems"
+  ],
+  "nodes": [
+    {
+      "id": "theme",
+      "kind": "DESIGN_CANDIDATE_NOT_EVIDENCE",
+      "label": "Visual question",
+      "lens": "Story",
+      "summary": "Can a licensed historical diagram inspire an original, useful and evidence-bound interface?"
+    },
+    {
+      "id": "source",
+      "kind": "EXTERNAL_METADATA_POINTER_NOT_MEDIA",
+      "label": "Original source",
+      "lens": "Systems",
+      "summary": "Commons / Wikipedia / Wikidata links | https://commons.wikimedia.org/wiki/File:Commons_Interwiki_links_with_wikidata_3.svg | source-record SHA-256 33b6996eea1606884e4213e762390b3e11a522d1deda98c5b28892c1bf768c53"
+    },
+    {
+      "id": "motif",
+      "kind": "DESIGN_INSPIRATION_ONLY",
+      "label": "Directed edges",
+      "lens": "Systems",
+      "summary": "Explicit directional edges across different information systems; accessible description: Boxes for Commons, Wikipedia and Wikidata, connected by arrows labelled with specific linkage operations."
+    },
+    {
+      "id": "inverse",
+      "kind": "COINVERSION_QUESTION_ONLY",
+      "label": "Inverse question",
+      "lens": "Science",
+      "summary": "Do arrows represent actual reciprocal relationships, or only a proposed mapping?"
+    },
+    {
+      "id": "unknown",
+      "kind": "UNKNOWN_NOT_FALSE_AND_NOT_TRUE",
+      "label": "Unknown evidence",
+      "lens": "Science",
+      "summary": "Visual arrows do not establish reciprocal edges or source-independent causation. No source image bytes were checked."
+    },
+    {
+      "id": "rights",
+      "kind": "RIGHTS_CONDITIONAL_NOT_APPROVAL",
+      "label": "Rights and credit",
+      "lens": "Systems",
+      "summary": "Jarekt (source work); Visite fortuitement prolongee (derivative work) | CC BY-SA 3.0 Unported | LICENSE_IDENTIFIED_CONDITIONS_REMAIN | no derivative authorized here."
+    },
+    {
+      "id": "map",
+      "kind": "PROJECTION_OF_THIS_WORK_OBJECT",
+      "label": "CoMap",
+      "lens": "Systems",
+      "summary": "Typed relations are between this source pointer, conceptual motif, inverse question and rights gate; not a claimed reproduction of the source diagram."
+    },
+    {
+      "id": "orb",
+      "kind": "PROJECTION_OF_THIS_WORK_OBJECT",
+      "label": "CoOrb",
+      "lens": "Story",
+      "summary": "Compact focus on the selected source with one useful proposed test and explicit HELD reuse gate."
+    },
+    {
+      "id": "text",
+      "kind": "EQUIVALENT_TEXT_PROJECTION",
+      "label": "Text twin",
+      "lens": "Story",
+      "summary": "Boxes for Commons, Wikipedia and Wikidata, connected by arrows labelled with specific linkage operations. | Next test: Use one source-linked CoMap graph; require distinct status and inverse semantics on each directional edge."
+    }
+  ],
+  "nonclaims": [
+    "SOURCE_PAGE_NE_IMAGE_BYTES",
+    "MOTIF_NE_DERIVATIVE_LICENSE",
+    "INVERSE_QUESTION_NE_REVERSE_FACT",
+    "THREE_VIEWS_NE_INDEPENDENT_RECEIVER",
+    "DISPLAYED_NODES_NE_ACTUAL_SOURCE_DIAGRAM",
+    "VISUAL_STYLE_NE_CAUSATION",
+    "PASS_TEST_NE_USER_ACCEPTANCE",
+    "NO_EXTERNAL_BROADCAST",
+    "NO_DEVICE_CONTROL"
+  ],
+  "privacy": {
+    "clipboard_read": false,
+    "external_network": false,
+    "raw_private_source": "NOT_EMBEDDED",
+    "tracking": false
+  },
+  "public_donors": [],
+  "relations": [
+    {
+      "from": "theme",
+      "status": "LINK_ONLY",
+      "to": "source",
+      "type": "SELECTS_EXTERNAL_SOURCE"
+    },
+    {
+      "from": "source",
+      "status": "PROPOSED",
+      "to": "motif",
+      "type": "INSPIRES_CANDIDATE_MOTIF"
+    },
+    {
+      "from": "source",
+      "status": "REQUIRED_HELD",
+      "to": "rights",
+      "type": "REQUIRES_ITEM_SPECIFIC_RIGHTS"
+    },
+    {
+      "from": "motif",
+      "status": "PROPOSED",
+      "to": "inverse",
+      "type": "HAS_COUNTERQUESTION_NOT_FACT"
+    },
+    {
+      "from": "inverse",
+      "status": "UNKNOWN",
+      "to": "unknown",
+      "type": "EXPOSES_UNVERIFIED_REVERSE"
+    },
+    {
+      "from": "motif",
+      "status": "PROPOSED",
+      "to": "map",
+      "type": "MAY_RENDER_AS_TYPED_MAP"
+    },
+    {
+      "from": "motif",
+      "status": "PROPOSED",
+      "to": "orb",
+      "type": "MAY_RENDER_AS_FOCUS"
+    },
+    {
+      "from": "motif",
+      "status": "PROPOSED",
+      "to": "text",
+      "type": "HAS_ACCESSIBLE_DESCRIPTION"
+    }
+  ],
+  "schema": "CoCivium.CoVisual.SourceLinkedCoLensBridge.R1",
+  "source_provenance": {
+    "credit": "Jarekt (source work); Visite fortuitement prolongee (derivative work)",
+    "image_bytes_verified": false,
+    "image_derivative_permission": "NOT_GRANTED_BY_THIS_ADAPTER",
+    "image_sha256": null,
+    "legal_governance_status": "NONE",
+    "named_theme": "One externally linked visual source informs an original diagram design",
+    "private_material_included": false,
+    "rights_status": "LICENSE_IDENTIFIED_CONDITIONS_REMAIN",
+    "source_page": "https://commons.wikimedia.org/wiki/File:Commons_Interwiki_links_with_wikidata_3.svg",
+    "source_record_sha256": "33b6996eea1606884e4213e762390b3e11a522d1deda98c5b28892c1bf768c53",
+    "source_status": "EXTERNAL_SOURCE_PAGE_METADATA_ONLY__NO_IMAGE_BYTES",
+    "stated_license": "CC BY-SA 3.0 Unported"
+  },
+  "state": "PUBLIC_SAFE_METADATA_PROJECTION__NOT_IMAGE_BYTES__NOT_RECEIVER_ACCEPTED",
+  "storyboard": [
+    {
+      "caption": "Select one public source pointer; do not copy its image",
+      "frame": "01",
+      "kind": "SOURCE_POINTER",
+      "node_ids": [
+        "theme"
+      ]
+    },
+    {
+      "caption": "Show the source credit and still-open rights question",
+      "frame": "02",
+      "kind": "RIGHTS_GATE",
+      "node_ids": [
+        "theme"
+      ]
+    },
+    {
+      "caption": "Extract a motif without inheriting unsupported facts",
+      "frame": "03",
+      "kind": "INSPIRATION",
+      "node_ids": [
+        "theme"
+      ]
+    },
+    {
+      "caption": "Ask whether an apparent inverse is justified",
+      "frame": "04",
+      "kind": "COINVERSION",
+      "node_ids": [
+        "theme"
+      ]
+    },
+    {
+      "caption": "Switch CoMap, CoOrb and Text over the same work ID",
+      "frame": "05",
+      "kind": "PROJECTION_PARITY",
+      "node_ids": [
+        "theme"
+      ]
+    },
+    {
+      "caption": "Hold release until a real reader verifies useful meaning",
+      "frame": "06",
+      "kind": "RECEIVER_GATE",
+      "node_ids": [
+        "theme"
+      ]
+    }
+  ],
+  "version": "R1",
+  "views": [
+    "Map",
+    "Orb",
+    "Text"
+  ],
+  "work_id": "coal.covisual.commons-source-graph.r1"
+}
