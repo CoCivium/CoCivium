@@ -1,0 +1,405 @@
+{
+  "schema": "CoAll.CoConnect.RelationCoverageProbe.R0",
+  "observed_utc": "2026-10-25",
+  "status": "BOUNDED_SOURCE_BOUND_RELATION_AUDIT__NOT_ONTOLOGY_NOT_RUNTIME",
+  "question": "Why did CoGiggle+ become a six-route feature without an explicit relation tree/forest and what future signals should trigger CoConnect+?",
+  "current_subject": "co_giggle",
+  "current_source": {
+    "repository": "CoCivium/CoCivium",
+    "branch": "experiment/copublication-federation-six-doors-r0-20261025",
+    "manifest_path": "examples/copublication_federation_r0/manifest.json",
+    "manifest_git_blob_sha1": "e2561d84fcc7a631c29dcf6aaf3085326bfcf91d",
+    "scope": "public PR candidate source only"
+  },
+  "observed_gap": {
+    "observation": "The source code manifested six static reader routes and six typed joke examples, but no explicit named ancestor/cousin/crosslink/discovery-coverage graph or relation audit accompanied the feature when it first passed CI.",
+    "contributing_factors": [
+      "USER_TEXT_WAS_TREATED_AS_FEATURE_REQUEST_NOT_GRAPH_QUERY",
+      "ROUTE_COVERAGE_TESTS_DID_NOT_REQUIRE_RELATION_COVERAGE",
+      "MAIN_BRANCH_CODE_SEARCH_DID_NOT_INCLUDE_UNMERGED_PR_FEATURE",
+      "MULTI_PARENT_CROSS_LINKS_CANNOT_BE_CORRECTLY_ASSUMED_AS_ONE_TREE",
+      "HISTORICAL_CHAT_CONTEXT_IS_NOT_AN_INDEPENDENT_VERIFIED_INVENTORY"
+    ],
+    "search_observation": {
+      "method": "GitHub connector code search",
+      "query": "CoGiggle",
+      "scope": "CoCivium/CoCivium default indexed branch",
+      "results": 0,
+      "limitation": "BOUNDED_NONOBSERVATION_NOT_ABSENCE",
+      "recovery": "Explicit feature manifest readback on unmerged PR branch"
+    },
+    "missing_previous_gate": "TYPED_RELATION_COVERAGE_INCLUDING_ALTERNATIVE_PARENTS_SIBLINGS_CROSS_LINKS_AND_NEGATIVE_KNOWLEDGE"
+  },
+  "donor_sources": [
+    {
+      "path": "docs/Evolution/EVO_ALL_BETTERS_EVERGREEN_PULSE_20261023.md",
+      "git_blob_sha1": "84c1b9c01bf6ede5cba1e6618b006ea05e4cc8f3",
+      "role": "CoLoL+ prior"
+    },
+    {
+      "path": "docs/Evolution/COSTRETCH_COTURTLE_PUBLIC_BENCHMARK_20261023.md",
+      "git_blob_sha1": "5e7a024c4c1cc2473cac755f318aa64bc9812219",
+      "role": "humor nonclaim"
+    },
+    {
+      "path": "docs/Architecture/COORBWARE_BEYOND_COSOFTWARE_R0_20261024.md",
+      "git_blob_sha1": "cde7189918f48072d86a83fe6d2f16ce6a99f751",
+      "role": "typed relation/projected view"
+    },
+    {
+      "path": "docs/Architecture/COSOURCE_GRAPH_R0.md",
+      "git_blob_sha1": "301c8951e566de9f9ec0bde16a6b991bd177bd47",
+      "role": "source evidence and coverage"
+    },
+    {
+      "path": "docs/Architecture/COLINEAGE_COMPACTOR_R0.md",
+      "git_blob_sha1": "c64c1b54b124a09dc171b9136f59e4ef830522b0",
+      "role": "proposed historical lineage"
+    },
+    {
+      "path": "docs/Architecture/COEVOALL_MIDDLE_LATCH_R0_20261024.md",
+      "git_blob_sha1": "f6814829e3f740a92ec07a4e9fc7bc184dcb8513",
+      "role": "user standing intent and CoGame semantics"
+    },
+    {
+      "path": "docs/Outreach/AI_WARS_YOU_WERE_NEVER_SUPPOSED_TO_BE_THE_OPERATING_SYSTEM_R1.md",
+      "git_blob_sha1": "d01d1ff74820c86d0f1ec88f1e78f1d7d4eb58a1",
+      "role": "public satire sibling"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "co_all",
+      "label": "CoAll+",
+      "role": "umbrella_intent"
+    },
+    {
+      "id": "co_game",
+      "label": "CoGame+",
+      "role": "historical_family"
+    },
+    {
+      "id": "co_lol",
+      "label": "CoLoL+",
+      "role": "documented_principle"
+    },
+    {
+      "id": "co_play",
+      "label": "CoPlay+/CoSatire+",
+      "role": "historical_sibling"
+    },
+    {
+      "id": "co_giggle",
+      "label": "CoGiggle+",
+      "role": "new_candidate"
+    },
+    {
+      "id": "co_turtle",
+      "label": "CoTurtle∞+",
+      "role": "challenge_method"
+    },
+    {
+      "id": "co_reader",
+      "label": "CoPublication Federation",
+      "role": "tested_implementation"
+    },
+    {
+      "id": "co_book",
+      "label": "CoBook+",
+      "role": "candidate_downstream"
+    },
+    {
+      "id": "co_orbware",
+      "label": "CoOrbWare+",
+      "role": "candidate_projection"
+    },
+    {
+      "id": "co_edgein",
+      "label": "CoEdgeIn+",
+      "role": "receiver_hypothesis"
+    },
+    {
+      "id": "co_marketing",
+      "label": "CoMarketing+",
+      "role": "candidate_downstream"
+    },
+    {
+      "id": "great_refact",
+      "label": "Great ReFact C01-C06",
+      "role": "source_claim_kernel"
+    },
+    {
+      "id": "co_sourcegraph",
+      "label": "CoSourceGraph+",
+      "role": "provenance_donor"
+    },
+    {
+      "id": "co_lineage",
+      "label": "CoLineageCompactor+",
+      "role": "lineage_donor"
+    }
+  ],
+  "edges": [
+    {
+      "from": "co_giggle",
+      "to": "co_reader",
+      "type": "PRESENTED_IN",
+      "family": "implementation",
+      "epistemic": "SOURCE_VERIFIED",
+      "evidence": "branch:examples/copublication_federation_r0/manifest.json",
+      "reason": "Six opt-in examples now exist in the same reader manifest",
+      "authority": "NONE",
+      "causal_claim": false,
+      "action": "NONE"
+    },
+    {
+      "from": "co_giggle",
+      "to": "great_refact",
+      "type": "ANNOTATES_WITHOUT_CHANGING",
+      "family": "source_identity",
+      "epistemic": "SOURCE_VERIFIED",
+      "evidence": "branch:examples/copublication_federation_r0/manifest.json",
+      "reason": "Each example pins one unchanged C01-C06 claim",
+      "authority": "NONE",
+      "causal_claim": false,
+      "action": "NONE"
+    },
+    {
+      "from": "co_giggle",
+      "to": "co_lol",
+      "type": "ALIGNS_WITH",
+      "family": "principle",
+      "epistemic": "CANDIDATE_SEMANTIC",
+      "evidence": "main:docs/Evolution/EVO_ALL_BETTERS_EVERGREEN_PULSE_20261023.md",
+      "reason": "CoLoL explicitly names layers, laughs, love and learning",
+      "authority": "NONE",
+      "causal_claim": false,
+      "action": "NONE"
+    },
+    {
+      "from": "co_giggle",
+      "to": "co_game",
+      "type": "MAY_SPECIALIZE",
+      "family": "candidate_parent",
+      "epistemic": "HYPOTHESIS",
+      "evidence": "main:docs/Architecture/COEVOALL_MIDDLE_LATCH_R0_20261024.md",
+      "reason": "CoGame includes playful experimentation; a parent designation is a design proposal",
+      "authority": "NONE",
+      "causal_claim": false,
+      "action": "NONE"
+    },
+    {
+      "from": "co_giggle",
+      "to": "co_play",
+      "type": "SHARES_SATIRE_PATTERN_WITH",
+      "family": "sibling",
+      "epistemic": "CANDIDATE_SEMANTIC",
+      "evidence": "main:docs/Outreach/AI_WARS_YOU_WERE_NEVER_SUPPOSED_TO_BE_THE_OPERATING_SYSTEM_R1.md",
+      "reason": "Public AI Wars text visibly labels fictional material",
+      "authority": "NONE",
+      "causal_claim": false,
+      "action": "NONE"
+    },
+    {
+      "from": "co_giggle",
+      "to": "co_turtle",
+      "type": "CARRIES_COUNTEREXAMPLE",
+      "family": "challenge",
+      "epistemic": "SOURCE_VERIFIED",
+      "evidence": "branch:examples/copublication_federation_r0/manifest.json",
+      "reason": "Every humorous example includes a challenge, not a proof",
+      "authority": "NONE",
+      "causal_claim": false,
+      "action": "NONE"
+    },
+    {
+      "from": "co_giggle",
+      "to": "co_orbware",
+      "type": "COULD_PROJECT_THROUGH",
+      "family": "projection",
+      "epistemic": "HYPOTHESIS",
+      "evidence": "main:docs/Architecture/COORBWARE_BEYOND_COSOFTWARE_R0_20261024.md",
+      "reason": "CoOrbWare is a future observer-relative presentation grammar, not installed for this lens",
+      "authority": "NONE",
+      "causal_claim": false,
+      "action": "NONE"
+    },
+    {
+      "from": "co_giggle",
+      "to": "co_book",
+      "type": "COULD_SUPPORT",
+      "family": "downstream",
+      "epistemic": "HYPOTHESIS",
+      "evidence": "main:docs/Architecture/COEVOALL_MIDDLE_LATCH_R0_20261024.md",
+      "reason": "A book could reuse source-linked humor but no current book integration was verified here",
+      "authority": "NONE",
+      "causal_claim": false,
+      "action": "NONE"
+    },
+    {
+      "from": "co_giggle",
+      "to": "co_edgein",
+      "type": "REQUIRES_RECEIVER_TEST_FOR",
+      "family": "receiver",
+      "epistemic": "HELD",
+      "evidence": "branch:examples/copublication_federation_r0/benchmark-evo.jsonl",
+      "reason": "No independent reader comprehension or usefulness acceptance",
+      "authority": "NONE",
+      "causal_claim": false,
+      "action": "NONE"
+    },
+    {
+      "from": "co_giggle",
+      "to": "co_marketing",
+      "type": "MAY_IMPROVE_MEMORABILITY_IF_MEASURED",
+      "family": "impact",
+      "epistemic": "HYPOTHESIS",
+      "evidence": "main:docs/Evolution/COSTRETCH_COTURTLE_PUBLIC_BENCHMARK_20261023.md",
+      "reason": "A punchline is not evidence of performance or virality",
+      "authority": "NONE",
+      "causal_claim": false,
+      "action": "NONE"
+    },
+    {
+      "from": "co_reader",
+      "to": "great_refact",
+      "type": "PRESERVES_SOURCE_CLAIMS",
+      "family": "dependency",
+      "epistemic": "SOURCE_VERIFIED",
+      "evidence": "branch:examples/copublication_federation_r0/manifest.json",
+      "reason": "All six routes include the same six source claim IDs",
+      "authority": "NONE",
+      "causal_claim": false,
+      "action": "NONE"
+    },
+    {
+      "from": "co_giggle",
+      "to": "co_sourcegraph",
+      "type": "SHOULD_REGISTER_SOURCE_RELATIONS_WITH",
+      "family": "provenance",
+      "epistemic": "CANDIDATE_ARCHITECTURE",
+      "evidence": "main:docs/Architecture/COSOURCE_GRAPH_R0.md",
+      "reason": "A source graph can preserve discovered, scoped and missing relations",
+      "authority": "NONE",
+      "causal_claim": false,
+      "action": "NONE"
+    },
+    {
+      "from": "co_giggle",
+      "to": "co_lineage",
+      "type": "SHOULD_PRESERVE_HISTORICAL_ANCESTRY_VIA",
+      "family": "lineage",
+      "epistemic": "CANDIDATE_ARCHITECTURE",
+      "evidence": "main:docs/Architecture/COLINEAGE_COMPACTOR_R0.md",
+      "reason": "A lineage view must not delete siblings or declare unproved successors",
+      "authority": "NONE",
+      "causal_claim": false,
+      "action": "NONE"
+    }
+  ],
+  "tree_view": {
+    "type": "CANDIDATE_PROJECTION_NOT_UNIQUE_GENEALOGY",
+    "one_proposed_parent_path": [
+      "co_all",
+      "co_game",
+      "co_giggle"
+    ],
+    "alternate_parent_or_family_affinities": [
+      "co_lol",
+      "co_play"
+    ],
+    "preserve_cross_links": true,
+    "claim": "A tree is one useful projection of a multi-parent, cyclic typed graph; no tree branch grants causality or authority."
+  },
+  "missing_link_classes_to_check_on_new_feature": [
+    "LINEAGE_OR_ALTERNATE_PARENTS",
+    "SIBLING_OR_PRIOR_ANALOGUE",
+    "SOURCE_PROVENANCE",
+    "IMPLEMENTATION_BINDING",
+    "CHALLENGE_OR_CONTRADICTION",
+    "RECEIVER_AND_ACCESSIBILITY",
+    "DOWNSTREAM_IMPACT",
+    "INVERSE_AND_PROJECTION_LOSS",
+    "UNKNOWN_OR_NOT_YET_SEARCHED"
+  ],
+  "future_wake_signals": [
+    {
+      "signal": "NEW_COTERM_OR_FEATURE_WITH_EXISTING_PRIOR",
+      "action": "Search exact term, synonyms and draft branches; propose typed family and alternate-parent links."
+    },
+    {
+      "signal": "SIX_FEATURE_TESTS_BUT_NO_RELATION_AUDIT",
+      "action": "Record RELATION_COVERAGE_HELD; run finite graph fan-in before calling feature complete."
+    },
+    {
+      "signal": "NO_MAIN_SEARCH_HIT_BUT_BRANCH_SOURCE_EXISTS",
+      "action": "Mark SEARCH_SCOPE_GAP, not ABSENT; capture branch/ref and source blob."
+    },
+    {
+      "signal": "NEW_PUBLICATION_OR_UI",
+      "action": "Trace claim-source -> route -> reader/receiver -> challenge -> revision, and stop at first unverified link."
+    },
+    {
+      "signal": "INVERSE_OR_DESCENDANT_REQUEST",
+      "action": "Generate possible converse/negation and alternative tree view as hypotheses, not causal reversals."
+    },
+    {
+      "signal": "CONFLICTING_ANCESTORS_OR_SHARED_SIBLINGS",
+      "action": "Preserve both proposed parents and explanatory evidence; do not collapse into a single official taxonomy."
+    },
+    {
+      "signal": "NEW_CAPABILITY_CROSSES_DEVICE_PROVIDER_PRIVACY",
+      "action": "Check authorization, currentness, projection loss, independent receiver before effect."
+    },
+    {
+      "signal": "BOUNDED_RELATION_FRONTIER_EXPLODES",
+      "action": "Deduplicate and prioritize candidate questions; never spawn workers solely from edge count."
+    }
+  ],
+  "acceptance_contract": {
+    "relation_query_budget": {
+      "max_nodes": 32,
+      "max_edges": 64,
+      "max_depth": 2,
+      "max_wake_candidates": 4,
+      "live_workers": 0
+    },
+    "required_classes": [
+      "candidate_parent",
+      "sibling",
+      "source_identity",
+      "implementation",
+      "challenge",
+      "projection",
+      "receiver",
+      "downstream",
+      "provenance",
+      "lineage"
+    ],
+    "promotion": [
+      "pin source",
+      "keep inferred edges CANDIDATE unless directly proven",
+      "compare with counterexamples",
+      "test recipient usefulness",
+      "record receipt and HELD"
+    ],
+    "external_effects": 0,
+    "auto_publish": false,
+    "independent_receiver_ack": false
+  },
+  "nonclaims": [
+    "MAIN_SEARCH_MISS_NE_TERM_ABSENCE",
+    "DIRECTORY_TREE_NE_SEMANTIC_TREE",
+    "TREE_VIEW_NE_SINGLE_TRUE_ONTOLOGY",
+    "CANDIDATE_PARENT_NE_PROVEN_ANCESTOR",
+    "EDGE_IN_GRAPH_NE_CAUSAL_EDGE",
+    "INVERSE_NE_EQUIVALENCE",
+    "MISSING_RELATION_NE_MISSING_OBJECT",
+    "SIMILARITY_NE_DEPENDENCY",
+    "RELATION_EXISTS_NE_TRAVERSAL_REQUIRED",
+    "SESSION_CONTEXT_NE_FULL_HISTORICAL_INVENTORY",
+    "CI_PASS_NE_INDEPENDENT_RECEIVER_USE",
+    "CONNECT_NE_PERMISSION",
+    "NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF"
+  ]
+}
