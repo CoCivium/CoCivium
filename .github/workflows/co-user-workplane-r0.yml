@@ -1,0 +1,47 @@
+name: CoUser Workplane R0
+
+on:
+  pull_request:
+    paths:
+      - "docs/UX/COUSER_WORKPLANE_R0.md"
+      - "docs/UX/COUSER_TAB_RETIREMENT_R0.md"
+      - "docs/UX/COSESSION_REGROUP_FULL_LOOP_R0.md"
+      - "fixtures/ux/co_user_workplane_r0.json"
+      - "fixtures/ux/co_user_tab_retirement_r0.json"
+      - "fixtures/ux/co_session_regroup_loop_r0.json"
+      - "tools/validate_co_user_workplane_r0.py"
+      - "tools/validate_co_user_tab_retirement_r0.py"
+      - "tools/validate_co_session_regroup_loop_r0.py"
+      - ".github/workflows/co-user-workplane-r0.yml"
+      - "docs/Architecture/COVIRTUAL_SESSION_MORPHOLOGY_R0.md"
+      - "docs/Architecture/COBOOGIE_REGROUP_RELATIONAL_RETURN_R1.md"
+      - "docs/UX/COFLEET_RICKBAR_R4.md"
+      - "ai/session-lifecycle-policy.json"
+      - "ai/coboogie-regroup-policy.json"
+      - "ai/virtual-session-policy.json"
+      - "ai/evolution-deltas/2026-09-24/coevo-turtles-bounded-traversal-humour-r1.json"
+      - "SESSION_BOOTSTRAP.md"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out exact candidate head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python tools/validate_co_user_workplane_r0.py
+      - run: python tools/validate_co_user_tab_retirement_r0.py
+      - run: python tools/validate_co_session_regroup_loop_r0.py
