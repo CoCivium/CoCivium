@@ -187,7 +187,7 @@ def main() -> None:
     parser.add_argument("--audience", default="curious")
     parser.add_argument("--format", dest="format_name", default="text")
     parser.add_argument("--mode", default="SNAPSHOT")
-    parser.add_argument("--as-of", default="2026-10-25T00:00:00Z")
+    parser.add_argument("--as-of", required=True, help="Explicit timezone-aware evaluation time")
     parser.add_argument("--limit", type=int, default=4)
     args = parser.parse_args()
     result = preview(json.loads(args.catalog.read_text(encoding="utf-8")),
