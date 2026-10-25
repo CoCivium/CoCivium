@@ -16,6 +16,12 @@ jobs:
     timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
+      - name: Regenerate public manifest from its single checked-in authoring source
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 examples/copublication_federation_r0/make_manifest.py
+          git diff --exit-code -- examples/copublication_federation_r0/manifest.json
       - name: Deterministic source-to-HTML parity
         run: python3 examples/copublication_federation_r0/build.py --check
       - name: Source kernel and negative-case policy tests
