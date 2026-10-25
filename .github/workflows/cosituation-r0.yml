@@ -1,0 +1,27 @@
+name: CoSituation R0 shadow universal relation acceptance
+
+on:
+  push:
+    paths:
+      - 'examples/cosituation/**'
+      - '.github/workflows/cosituation-r0.yml'
+  pull_request:
+    paths:
+      - 'examples/cosituation/**'
+      - '.github/workflows/cosituation-r0.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  shadow-five-substrate-fixtures:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+      - name: Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify CoSituation and CoSit synthetic relations
+        run: python3 -B -m unittest discover -s examples/cosituation -p 'test_situation_r0.py' -v
