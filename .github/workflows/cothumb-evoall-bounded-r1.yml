@@ -51,6 +51,7 @@ jobs:
           set -euo pipefail
           python3 examples/conodcothumb/context_rail_r1/build.py --check
           node --test examples/conodcothumb/context_rail_r1/tests/test_context_rail.cjs
+          node --test examples/conodcothumb/context_rail_r1/test_context_budget_r0.cjs
       - name: Reject failed or held required claims
         shell: bash
         run: |
