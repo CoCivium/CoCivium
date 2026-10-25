@@ -2,6 +2,7 @@
 """Bounded off-network Chromium acceptance for the static federation UI."""
 from pathlib import Path
 import json
+import shutil
 from playwright.sync_api import sync_playwright
 
 ROOT=Path(__file__).resolve().parent
@@ -11,7 +12,10 @@ def check(ok,label):
     results.append({'name':label,'outcome':'PASS' if ok else 'FAIL'})
     if not ok:raise AssertionError(label)
 with sync_playwright() as p:
-    browser=p.chromium.launch(headless=True,executable_path='/usr/bin/chromium',args=['--no-sandbox','--disable-dev-shm-usage'])
+    executable=shutil.which('chromium') or shutil.which('google-chrome') or shutil.which('chromium-browser')
+    if not executable:
+        raise RuntimeError('HELD_NO_LOCAL_CHROMIUM_OR_CHROME_EXECUTABLE')
+    browser=p.chromium.launch(headless=True,executable_path=executable,args=['--no-sandbox','--disable-dev-shm-usage'])
     for width,height,label in [(1280,840,'desktop'),(390,844,'mobile')]:
         page=browser.new_page(viewport={'width':width,'height':height},device_scale_factor=1,reduced_motion='reduce')
         errors=[];network=[]
@@ -19,6 +23,19 @@ with sync_playwright() as p:
         page.on('request',lambda request:network.append(request.url))
         page.set_content(content,wait_until='load')
         page.screenshot(path=str(ROOT/('preview_'+label+'.png')),full_page=True)
+        # A real browser must expose both routes as links, never confuse the published post with the draft.
+        bridge=page.locator('#edge-in-heading')
+        check(bridge.count()==1 and bridge.is_visible(),label+'_reader_bridge_visible')
+        live=page.get_by_role('link',name='Read the existing public article')
+        draft=page.get_by_role('link',name='Read the pinned chapter draft')
+        check(live.count()==1 and live.get_attribute('href')=='https://rickpublic.substack.com/p/does-ai-make-the-stock-market-obsolete',label+'_browser_bridge_live_link')
+        check(draft.count()==1 and draft.get_attribute('href')=='https://github.com/CoCivium/CoCivium/blob/1487b330d35ddec03f32000e6846dd3b35ed774a/docs/books/great-refact-r0/01-your-product-is-still-here.md',label+'_browser_bridge_draft_link')
+        check('not a published Substack article' in page.locator('#edge-in-heading').locator('xpath=..').inner_text(),label+'_draft_state_explained')
+        check(all(x.get_attribute('target')=='_blank' and {'noopener','noreferrer'}.issubset(set((x.get_attribute('rel') or '').split())) for x in [live,draft]),label+'_outbound_link_isolation')
+        bridge.scroll_into_view_if_needed()
+        bounds=bridge.bounding_box()
+        check(bool(bounds) and bounds['x']>=0 and bounds['x']+bounds['width']<=width+1,label+'_bridge_in_viewport')
+        check(page.get_by_role('link',name='Read the existing public article').is_visible() and draft.is_visible(),label+'_bridge_links_render')
         check(page.locator('.route-btn').count()==6,label+'_six_routes')
         check('You were never supposed' in page.locator('#route-head').inner_text(),label+'_initial_view')
         check(page.locator('.claim').count()==6,label+'_same_claim_kernel')
