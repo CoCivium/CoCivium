@@ -67,3 +67,14 @@ One newcomer should successfully choose an interest, identify which part of the 
 `TRILLION_CHOICES_NE_TRILLION_JOBS | ONE_SOURCE_MANY_VIEWS_NE_INDEPENDENT_EVIDENCE | SUBSTACK_NE_SOURCE_OF_TRUTH | READ_NE_MUTATION_AUTHORITY | EDITED_WEB_POST_NE_EDITED_EMAIL | FOREFRONT_FADE_NE_HISTORY_DELETION | URGENCY_NE_DECEPTION | VIEWS_NE_MEASURED_BENEFIT | NO_PUBLIC_BLAST_WITHOUT_AUTHORIZED_ROUTE`
 
 FOSS Forever | CoGoAll | Working Together Respectfully.
+
+
+## CoEdgeIn R0.1 | The first real-publication bridge (October 25, 2026)
+
+This page now explicitly links **two different publication states**. The public RickPublic article [Does AI Make the Stock Market Obsolete (and Without Even Cheating)?](https://rickpublic.substack.com/p/does-ai-make-the-stock-market-obsolete) is an existing July 20, 2026 publication, independently checked as publicly readable. It is **not** a Great ReFact chapter and this prototype did not publish it. The companion [Great ReFact opening chapter](https://github.com/CoCivium/CoCivium/blob/1487b330d35ddec03f32000e6846dd3b35ed774a/docs/books/great-refact-r0/01-your-product-is-still-here.md) is an unmerged, source-controlled working draft (verified blob SHA-1: `21bb508b5b0fe9e34011590539993e14d4325edc`), **not** a Substack article.
+
+For the one-reader canary: compare a narrow shared question about dependence on interconnected AI/product systems, identify a serious alternative explanation, and say what observation would change your view. A reader may choose to leave without submitting anything. The optional local challenge composer does not transmit data. Clicking an external link intentionally opens the destination site under that site's own privacy terms.
+
+The manifest's `actual_substack_posts_created: 0` records **posts created by this preview**, not whether RickPublic has historically published posts. The six routes still use only source-bound GitHub action URLs. The additional RickPublic URL is one explicitly verified, fixed editorial outbound link, not a broad exception allowing arbitrary third-party destinations.
+
+**Still HELD:** public deployment of this HTML; independently observed third-party reading/feedback, new Substack posts, subscriber activity, recipient acceptance, X2 native interaction, and cross-account shared execution. No subscriber count, open-rate lift, conversion or viral effect is inferred from the public permalink.
