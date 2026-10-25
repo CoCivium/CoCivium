@@ -2,6 +2,16 @@
 
 **State:** PUBLIC-SAFE CANDIDATE ON REVIEW BRANCH. Not merged, installed, device-integrated, accepted, canonical, a runtime, or a global receiver ACK.
 
+## Election and CoOrbWare substrate semantics (2026-10-24)
+
+**Elected donors, not a new controller:** [CoContextRail R1](../../examples/conodcothumb/context_rail_r1/README.md) remains the public interactive first-use example; [CoMiddle R2 draft PR #249](https://github.com/CoCivium/CoCivium/pull/249) is the typed inverse/converse algebra candidate; [CoMiddle coordination issue #246](https://github.com/CoCivium/CoCivium/issues/246) is the public routing/broadcast packet. PR #249 has a GitHub Actions typed-relation checks SUCCESS on head f5094162ac4fadbd78c2c55f1cd03bfc0655eb6b (run 40129197635), not a physical-device acceptance. The separate v0.3 CoInput/CoDoodle offline UX experiment is HELD_AS_COMPARISON_DONOR, not another front door, controller, or runtime.
+
+**CoOrbWare+ is a candidate grammar of relationships across substrate embodiments**: typed work/identity/evidence and context may project into software, devices, human-readable text, accessible glyphs, diagrams, XR, media, simulations, optional local agents, and hypothetical future substrates. Distinct views do not create additional truths, agents, authorities, or real-world effects. `ORBWARE_NE_INDEPENDENT_PHYSICAL_MECHANISM` and `PROJECTION_NE_SOURCE`.
+
+Candidate relation domains to make discoverable, not auto-execute: **material** (devices, resources, location), **informational** (source, citation, content), **temporal** (earlier/later, validity and expiry), **epistemic** (observed/unknown/contested/falsifier), **intentional** (goal, question, expected effect), **social** (identity, consent, rights, impact), **cultural** (story, attribution, interpretation), **operational** (capability, lease, budget, failure/recovery), **counterfactual** (not/else/inverse/compensation), and **future scenario** (forecast, wake condition, non-claim). Treat ET/G_d/quantum/aura as explicitly labeled hypothesis/metaphor/empirical term, never auto-promoted.
+
+**Next safe proof:** inspect X2 only when its remote endpoint is authenticated/online; reconcile existing OS mouse/keyboard bindings read-only; elect one no-global-hook, visibly armed CoOrb preview using a harmless source object in text and CoMap/CoOrb; measure native pass-through, Escape, accessible alternative, exact-object identity and one receiver-origin readproof. Desktop Commander currently reports OFFLINE; a pictured running browser is not an MCP receiver ACK. Do not republish private desktop screenshots.
+
 ## CoHereNow
 
 Expose one accessible **[ EVO ALL BETTERS + ]** entry, with typed relation glyphs, inverses, non-relations, evidence, authorization, bounded experiments and future-adapter hooks. The *user-facing* vocabulary stays small even as the *candidate* relation/query space grows.
