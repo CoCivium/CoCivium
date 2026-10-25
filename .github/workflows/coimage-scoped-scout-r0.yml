@@ -1,0 +1,54 @@
+name: CoImage scoped relation scout R0
+
+on:
+  pull_request:
+    paths:
+      - 'scripts/CoImageRelationScoutR0.py'
+      - 'tests/test_coimage_relation_scout_r0.py'
+      - 'docs/Research/COIMAGE_SCOPED_VISUAL_RELATION_SCOUT_R0_20261025.md'
+      - '.github/workflows/coimage-scoped-scout-r0.yml'
+  push:
+    paths:
+      - 'scripts/CoImageRelationScoutR0.py'
+      - 'tests/test_coimage_relation_scout_r0.py'
+      - '.github/workflows/coimage-scoped-scout-r0.yml'
+  # Only active when this workflow is merged to the default branch.
+  schedule:
+    - cron: '43 8 * * *'
+
+permissions:
+  contents: read
+
+jobs:
+  offline-scout:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Scoped synthetic regression suite
+        run: python3 -B -m unittest discover -s tests -p 'test_coimage_relation_scout_r0.py' -v
+      - name: Current public Git tracked image census
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -B scripts/CoImageRelationScoutR0.py --root . --max-files 150 --max-total-bytes 33554432 > "$RUNNER_TEMP/coimage_scoped.json"
+          python3 - "$RUNNER_TEMP/coimage_scoped.json" <<'PY'
+          import json,sys
+          from pathlib import Path
+          d=json.loads(Path(sys.argv[1]).read_text(encoding='utf-8'))
+          assert d["schema"]=="CoImage.TrackedVisualCandidateCensus.R0"
+          assert d["search_scope"]=="GIT_TRACKED_FILES_IN_SELECTED_REPOSITORY_ONLY"
+          assert not any(d["effects"].values())
+          assert d["hashed_candidate_count"]+d["unexamined_count"]==d["discovered_image_paths"]
+          assert all(item["publication"]=="HOLD" and item["license"]=="UNVERIFIED"
+                     and item["semantic_visual_review"]=="NOT_PERFORMED"
+                     for item in d["candidates"])
+          print("COIMAGE_SCOPED_PUBLIC_CENSUS_PASS",
+                "tracked_images",d["discovered_image_paths"],
+                "hashed",d["hashed_candidate_count"],
+                "unexamined",d["unexamined_count"],
+                "byte_identical_groups",len(d["duplicate_byte_groups"]))
+          PY
