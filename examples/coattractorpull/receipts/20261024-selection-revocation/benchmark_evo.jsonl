@@ -1,0 +1,4 @@
+{"test":"selection_revocation_regression","status":"FAIL","phase":"before_fix","date":"2026-10-24","source_commit":"cac0a5ff96e0f57fe5c273350836d641a6d30095","evidence":"Node vm with minimal DOM doubles retained excluded selected record","scope":"local interaction logic; not browser or hardware"}
+{"test":"cothumb_smoke","status":"PASS","phase":"after_fix","date":"2026-10-24","source_commit":"7fb1287396d9ca0e4b1aed134f0c6999abeb4fb8","passed":19,"failed":0,"command":"node examples/coattractorpull/tests/smoke.cjs","scope":"local tests including minimal DOM doubles; not screen-reader, browser, or hardware acceptance"}
+{"test":"large_payload_and_auto_cycle","status":"NOT_TESTED","date":"2026-10-24","reason":"No payload adapter or persistent runner implemented in this patch"}
+{"test":"physical_thumb_provider_media_email_thresholds","status":"NOT_TESTED","date":"2026-10-24","reason":"This patch only changes the offline preview and its tests"}
