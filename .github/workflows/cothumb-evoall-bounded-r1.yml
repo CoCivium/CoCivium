@@ -63,6 +63,11 @@ jobs:
           node --test examples/conodcothumb/context_rail_r1/context_amplifier_r0/CoContextRehydratorR1.test.mjs
           node examples/conodcothumb/context_rail_r1/context_amplifier_r0/CoContextRehydratorR1.benchmark.mjs > "$RUNNER_TEMP/source_rehydration_r1.json"
           node -e 'const x=JSON.parse(require("fs").readFileSync(process.env.RUNNER_TEMP+"/source_rehydration_r1.json","utf8"));if(x.status!=="PASS_LOCAL_SOURCE_BYTE_REHYDRATION"||x.passed!==10||x.checked!==10||x.receiver_ack!==false||x.included_counterevidence!==true)process.exit(2)'
+      - name: CoOrbWare OmniMedia R1 source-rights and cross-modal schema invariants
+        shell: bash
+        run: |
+          set -euo pipefail
+          node --test examples/conodcothumb/context_rail_r1/context_amplifier_r0/CoOmniMediaPriorR1.test.mjs
       - name: Reject failed or held required claims
         shell: bash
         run: |
