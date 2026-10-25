@@ -1,0 +1,57 @@
+test_authority_revoked (test_coscalemorph.ScaleTests.test_authority_revoked) ... ok
+test_bad_budget_rejected (test_coscalemorph.ScaleTests.test_bad_budget_rejected) ... ok
+test_bad_source_policy_rejected (test_coscalemorph.ScaleTests.test_bad_source_policy_rejected) ... ok
+test_bound_workers (test_coscalemorph.ScaleTests.test_bound_workers) ... ok
+test_erasure_gate_even_if_bytes_available (test_coscalemorph.ScaleTests.test_erasure_gate_even_if_bytes_available) ... ok
+test_forged_receiver_ack_rejected (test_coscalemorph.ScaleTests.test_forged_receiver_ack_rejected) ... ok
+test_lossy_summary_cannot_restore (test_coscalemorph.ScaleTests.test_lossy_summary_cannot_restore) ... ok
+test_million_logical_one_active_budget (test_coscalemorph.ScaleTests.test_million_logical_one_active_budget) ... ok
+test_mismatched_source_rejected (test_coscalemorph.ScaleTests.test_mismatched_source_rejected) ... ok
+test_missing_edge_endpoint (test_coscalemorph.ScaleTests.test_missing_edge_endpoint) ... ok
+test_no_effect_and_no_ack (test_coscalemorph.ScaleTests.test_no_effect_and_no_ack) ... ok
+test_no_external_effect_authority (test_coscalemorph.ScaleTests.test_no_external_effect_authority) ... ok
+test_no_source_no_restore (test_coscalemorph.ScaleTests.test_no_source_no_restore) ... ok
+test_nonpublic_node_rejected (test_coscalemorph.ScaleTests.test_nonpublic_node_rejected) ... ok
+test_orb_is_smaller_than_source (test_coscalemorph.ScaleTests.test_orb_is_smaller_than_source) ... ok
+test_rehydration_every_scale (test_coscalemorph.ScaleTests.test_rehydration_every_scale) ... ok
+test_rehydration_exact_bytes (test_coscalemorph.ScaleTests.test_rehydration_exact_bytes) ... ok
+test_reject_duplicate_json_keys (test_coscalemorph.ScaleTests.test_reject_duplicate_json_keys) ... ok
+test_schema_and_public_policy (test_coscalemorph.ScaleTests.test_schema_and_public_policy) ... ok
+test_source_hash_is_pinned (test_coscalemorph.ScaleTests.test_source_hash_is_pinned) ... ok
+test_source_reordered_same_count_rejected (test_coscalemorph.ScaleTests.test_source_reordered_same_count_rejected) ... ok
+test_tamper_capsule_rejected (test_coscalemorph.ScaleTests.test_tamper_capsule_rejected) ... ok
+test_three_scales_preserve_source_identity (test_coscalemorph.ScaleTests.test_three_scales_preserve_source_identity) ... ok
+test_duplicate_json_key (test_evidence_r1.EvidenceTests.test_duplicate_json_key) ... ok
+test_frozen_evidence (test_evidence_r1.EvidenceTests.test_frozen_evidence) ... ok
+test_missing_status_not_silent_pass (test_evidence_r1.EvidenceTests.test_missing_status_not_silent_pass) ... ok
+test_new_fake_head (test_evidence_r1.EvidenceTests.test_new_fake_head) ... ok
+test_row_modified (test_evidence_r1.EvidenceTests.test_row_modified) ... ok
+test_truncated_chain (test_evidence_r1.EvidenceTests.test_truncated_chain) ... ok
+test_wrong_parent (test_evidence_r1.EvidenceTests.test_wrong_parent) ... ok
+test_actual_ledger (test_ledger.LedgerTests.test_actual_ledger) ... ok
+test_fake_final_head_rejected (test_ledger.LedgerTests.test_fake_final_head_rejected) ... ok
+test_modified_content_rejected (test_ledger.LedgerTests.test_modified_content_rejected) ... ok
+test_truncation_rejected (test_ledger.LedgerTests.test_truncation_rejected) ... ok
+test_actual_os_process_death_and_independent_successor (test_process_recovery.RecoveryTests.test_actual_os_process_death_and_independent_successor) ... ok
+test_bounded_pause_then_resume (test_process_recovery.RecoveryTests.test_bounded_pause_then_resume) ... ok
+test_corrupted_checkpoint_digest_rejected (test_process_recovery.RecoveryTests.test_corrupted_checkpoint_digest_rejected) ... ok
+test_duplicates_in_grant_rejected (test_process_recovery.RecoveryTests.test_duplicates_in_grant_rejected) ... ok
+test_expired_grant_rejected (test_process_recovery.RecoveryTests.test_expired_grant_rejected) ... ok
+test_forged_receiver_ack_rejected (test_process_recovery.RecoveryTests.test_forged_receiver_ack_rejected) ... ok
+test_initial_worker_all_tasks (test_process_recovery.RecoveryTests.test_initial_worker_all_tasks) ... ok
+test_invented_progress_even_with_rehashed_checkpoint_rejected (test_process_recovery.RecoveryTests.test_invented_progress_even_with_rehashed_checkpoint_rejected) ... ok
+test_lock_fail_closed_with_live_owner (test_process_recovery.RecoveryTests.test_lock_fail_closed_with_live_owner) ... ok
+test_missing_source_rejected (test_process_recovery.RecoveryTests.test_missing_source_rejected) ... ok
+test_revoke_grant_while_worker_is_running (test_process_recovery.RecoveryTests.test_revoke_grant_while_worker_is_running) ... ok
+test_revoked_grant_rejected (test_process_recovery.RecoveryTests.test_revoked_grant_rejected) ... ok
+test_revoked_permission_not_overwritten (test_process_recovery.RecoveryTests.test_revoked_permission_not_overwritten) ... ok
+test_stale_mission_definition_rejected (test_process_recovery.RecoveryTests.test_stale_mission_definition_rejected) ... ok
+test_tasks_bounded (test_process_recovery.RecoveryTests.test_tasks_bounded) ... ok
+test_two_live_processes_do_not_share_one_checkpoint (test_process_recovery.RecoveryTests.test_two_live_processes_do_not_share_one_checkpoint) ... ok
+test_workspace_refuses_reinitialize (test_process_recovery.RecoveryTests.test_workspace_refuses_reinitialize) ... ok
+test_wrong_source_rejected (test_process_recovery.RecoveryTests.test_wrong_source_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 52 tests in 6.900s
+
+OK
