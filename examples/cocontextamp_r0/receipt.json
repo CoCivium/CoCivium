@@ -1,0 +1,53 @@
+{
+  "format": "CoContextAmp.LocalTestReceipt.R0",
+  "as_of": "2026-10-25",
+  "status": "PASS_LOCAL_SYNTHETIC",
+  "node_version": "v22.16.0",
+  "unit_passed": 21,
+  "unit_total": 21,
+  "test_name": "source-bound file-backed excerpt election",
+  "source_manifest": [
+    {
+      "path": "CoContextAmpR0.mjs",
+      "bytes": 8014,
+      "sha256": "51ebc37eaed4a7bbea5127bd9c226f9667a14914620130752505ac241902c4a1"
+    },
+    {
+      "path": "README.md",
+      "bytes": 4381,
+      "sha256": "b9df792fa35a49dc3d89f7f3b32653bea8ee305847554d2b1dab6d3b602c9851"
+    },
+    {
+      "path": "fixture/alternatives.txt",
+      "bytes": 249,
+      "sha256": "338065f6c1b9cc715041ecee0139f309dba82cdec0c8952b25a6306384737b6c"
+    },
+    {
+      "path": "fixture/fabric.txt",
+      "bytes": 561,
+      "sha256": "ca5f8e08dffce6791627756709a556fcbe74e8a58338629106ccce7da0484bfc"
+    },
+    {
+      "path": "fixture/manifest.json",
+      "bytes": 712,
+      "sha256": "2c2cfea2aaef4efe8638cc01cc82c7dab1544a2d057dade78b3ba39ba560c6c5"
+    },
+    {
+      "path": "tests/check.mjs",
+      "bytes": 6415,
+      "sha256": "877894aa88485f8ee7777cbb2ff7d7dc2c8727f3480e0e52f151c6a372a081c3"
+    }
+  ],
+  "effect_authority": "NONE",
+  "provider_context_window_extended": false,
+  "external_receivers_verified": 0,
+  "co_stead_landed": false,
+  "x2_native_runtime_verified": false,
+  "nonclaims": [
+    "LOCAL_TEST_NE_PROVIDER_EXTENSION",
+    "DATA_ACCESS_NE_PERMISSION",
+    "SOURCE_HASH_NE_RECIPIENT_ACK",
+    "RETRIEVAL_NE_REASONED_ANSWER",
+    "NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF"
+  ]
+}

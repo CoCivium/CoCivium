@@ -1,0 +1,64 @@
+name: CoContextAmp R0 exact-source and replay
+
+on:
+  pull_request:
+    paths:
+      - 'examples/cocontextamp_r0/**'
+      - '.github/workflows/cocontextamp-r0-ci.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: cocontextamp-r0-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  exact-source-replay:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - name: Checkout source without persisted credentials
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Pin Node 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify source identity, 21 tests and zero-effect proposal
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd examples/cocontextamp_r0
+          cat > "$RUNNER_TEMP/sources.sha256" <<'HASHES'
+          51ebc37eaed4a7bbea5127bd9c226f9667a14914620130752505ac241902c4a1  CoContextAmpR0.mjs
+          b9df792fa35a49dc3d89f7f3b32653bea8ee305847554d2b1dab6d3b602c9851  README.md
+          338065f6c1b9cc715041ecee0139f309dba82cdec0c8952b25a6306384737b6c  fixture/alternatives.txt
+          ca5f8e08dffce6791627756709a556fcbe74e8a58338629106ccce7da0484bfc  fixture/fabric.txt
+          2c2cfea2aaef4efe8638cc01cc82c7dab1544a2d057dade78b3ba39ba560c6c5  fixture/manifest.json
+          877894aa88485f8ee7777cbb2ff7d7dc2c8727f3480e0e52f151c6a372a081c3  tests/check.mjs
+          HASHES
+          sha256sum -c "$RUNNER_TEMP/sources.sha256"
+          node --version
+          node --test tests/check.mjs | tee "$RUNNER_TEMP/cocontextamp-r0-tests.tap"
+          node CoContextAmpR0.mjs fixture/manifest.json 'How does CoContextWare assemble context and verify source evidence?' 900 > "$RUNNER_TEMP/cocontextamp-r0-plan.json"
+          node - "$RUNNER_TEMP/cocontextamp-r0-plan.json" <<'NODE'
+          const fs = require('node:fs');
+          const plan = JSON.parse(fs.readFileSync(process.argv[2],'utf8'));
+          if (plan.state !== 'PASS_SHADOW_PLAN' || plan.selected.length !== 3 || plan.excerpt_budget.used_excerpt_bytes !== 349 ||
+              plan.authority !== 'NONE' || Object.values(plan.effects).some(x => x !== 0)) process.exit(1);
+          process.stdout.write(JSON.stringify({state:plan.state,slices:plan.selected.length,excerpt_bytes:plan.excerpt_budget.used_excerpt_bytes,authority:plan.authority,effects:plan.effects})+'\n');
+          NODE
+      - name: Save scoped read-only run receipts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cocontextamp-r0-exact-source-replay
+          path: |
+            ${{ runner.temp }}/cocontextamp-r0-tests.tap
+            ${{ runner.temp }}/cocontextamp-r0-plan.json
+            ${{ runner.temp }}/sources.sha256
+          if-no-files-found: warn
+          retention-days: 14
