@@ -7,6 +7,9 @@
   'use strict';
   const SCHEMA='CoAll.CoContextRail.R1';
   const NO_EFFECTS=Object.freeze({device:0,network:0,send:0,clipboard:0,model:0,workers:0});
+  // Only declared synthetic/UI fields are eligible for a source-labelled preview.
+  const PACKET_FIELDS=new Set(['context','question','relation','lens','time','surface','privacy',
+    'gesture','mode','object_kind','user_selected','source_ref','external_effect_requested']);
   const contextual={
     FILE:['INSPECT_IDENTITY','COPY_REFERENCE','CHECK_PRIORS','TRACE_RECOVERY','EXPLORE_RELATIONS'],
     MEDIA:['INSPECT_IDENTITY','PROPOSE_MEDIA_CAPSULE','CHECK_RIGHTS','FIND_PRIORS','CHECK_ALTERNATIVE'],
@@ -84,6 +87,12 @@
     const base={schema:SCHEMA,work_id:manifest.work_id,authority:'NONE',receiver_ack:false,effects:{...NO_EFFECTS},
       context: 'REDACTED',question:'REDACTED',privacy:'REDACTED',state:'HELD',source_ref:null,suggestions:[],
       nonclaims:['PREVIEW_NE_EXECUTION','GESTURE_NE_AUTHORITY','PROJECTION_NE_RECEIVER_PICKUP']};
+    // Fail closed before scope or identity hints are projected. Unknown metadata may
+    // include raw input or future effect-intent fields from an unqualified adapter.
+    if(Object.keys(packet).some(k=>!PACKET_FIELDS.has(k)))
+      return {...base,state:'HELD_UNDECLARED_INPUT',explanation:'Unqualified context fields withheld. No input captured.'};
+    if(Object.hasOwn(packet,'external_effect_requested') && packet.external_effect_requested!==false)
+      return {...base,state:'HELD_EFFECT_REQUEST',explanation:'Preview does not authorize device, network, send or paste effects.'};
     const privacy=cleanEnum(packet.privacy,['PUBLIC','PRIVATE_LOCAL','SENSITIVE','UNKNOWN'],'UNKNOWN');
     const g=cleanEnum(packet.gesture,['NATIVE_MIDDLE','EXPLICIT_RING','KEYBOARD_FALLBACK','UNBOUND'],'UNBOUND');
     if(privacy==='SENSITIVE'||privacy==='UNKNOWN')return {...base,state:'HELD_PRIVACY',explanation:'Sensitive or unclassified context. No capture or metadata disclosed.'};
