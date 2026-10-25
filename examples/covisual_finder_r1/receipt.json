@@ -1,0 +1,39 @@
+{
+  "active_workers": 0,
+  "actual_sends": 0,
+  "file_navigation": "HELD_ADMIN_BLOCKED",
+  "historical_test_fixture": "49/50 first run preserved as FAIL",
+  "nonclaims": [
+    "NOT_COMPLETE_HISTORY",
+    "NOT_X2_INSTALLED",
+    "NOT_LIVE_SOURCE_FEED",
+    "NOT_PUBLIC_BROADCAST",
+    "NOT_UNLIMITED_TOKENS",
+    "LOCAL_IS_NOT_LANDED",
+    "VALIDATION_IS_NOT_ACCEPTANCE",
+    "NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF"
+  ],
+  "observed_at": "2026-10-25T19:26:11+00:00",
+  "proposed_internal_roles": 12,
+  "receiver_state": "HELD_NO_INDEPENDENT_READER",
+  "rights": "NO_THIRD_PARTY_ARTWORK_BYTES_COPIED",
+  "schema": "CoCivium.CoVisualFinder.R1.LocalReceipt",
+  "scope": "BOUNDED_METADATA_ONLY_SOURCE_SAMPLE",
+  "sha256": {
+    "browser_qa.py": "53cbb6abe9950281d361ab9ab2ebdd0ed9b8b47bbd8556a0051c33bc213ab20e",
+    "finder.py": "97819667ef8c296fd5a4424d67837f1f93fd9800f824903ef299eff8cdebef1b",
+    "index.html": "b13825a3372a14f70614e4434ae6a97fc68602476d00c76a3dd56b2cf0f447b5",
+    "projection.json": "2028377f5646ec9d9946ce44b7718e5336940c58d8edfdc2cba7849da4dd9414",
+    "sources.json": "e8445f3e1bea49271d31397ce2812512c1edc99074ee88a25e0f79d14f1f5b2e",
+    "test_finder.py": "53b937011012125c7f8011e003834d801dcd4b1009414f83541361f58aaed5fd"
+  },
+  "sources": 4,
+  "tests_browser": {
+    "fail": 0,
+    "pass": 30
+  },
+  "tests_policy": {
+    "fail": 0,
+    "pass": 50
+  }
+}

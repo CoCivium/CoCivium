@@ -1,0 +1,27 @@
+name: CoVisualFinder R1 bounded source-pull checks
+on:
+  push:
+    paths:
+      - 'examples/covisual_finder_r1/**'
+      - '.github/workflows/covisual-finder-r1.yml'
+  pull_request:
+    paths:
+      - 'examples/covisual_finder_r1/**'
+      - '.github/workflows/covisual-finder-r1.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: covisual-finder-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  source-and-policy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check deterministic, no-network external-media intake
+        run: |
+          set -euo pipefail
+          python3 examples/covisual_finder_r1/finder.py --check
+          python3 -m unittest discover -s examples/covisual_finder_r1/tests -p 'test_*.py' -v

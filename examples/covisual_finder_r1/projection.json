@@ -1,0 +1,93 @@
+{
+  "actual_effects": 0,
+  "actual_receivers": 0,
+  "candidates": [
+    {
+      "accessibility": "Boxes for Commons, Wikipedia and Wikidata, connected by arrows labelled with specific linkage operations.",
+      "credit": "Jarekt (source work); Visite fortuitement prolongee (derivative work)",
+      "id": "visual-external-commons-linkgraph-r1",
+      "inversion": "Do arrows represent actual reciprocal relationships, or only a proposed mapping?",
+      "motif": "Explicit directional edges across different information systems",
+      "proposed_roles": [
+        "CoMap",
+        "CoTurtle",
+        "CoA11y"
+      ],
+      "proposed_test": "Use one source-linked CoMap graph; require distinct status and inverse semantics on each directional edge.",
+      "rights": "LICENSE_IDENTIFIED_CONDITIONS_REMAIN",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Commons_Interwiki_links_with_wikidata_3.svg",
+      "status": "INSPIRES_CANDIDATE__NO_DERIVATIVE_OR_SEND",
+      "title": "Commons / Wikipedia / Wikidata links"
+    },
+    {
+      "accessibility": "Approximate distances of Jupiter, Saturn, Uranus and Neptune from the Sun, using a shared legend and scale.",
+      "credit": "NASA / Lunar and Planetary Institute",
+      "id": "visual-external-nasa-orbit-r1",
+      "inversion": "Is this scale exact for every distance, and is the visual orbital layout a dynamic measurement?",
+      "motif": "Concentric orbital scale with a visible measurement legend",
+      "proposed_roles": [
+        "CoOrb",
+        "CoTheoryAll",
+        "CoA11y"
+      ],
+      "proposed_test": "Render one CoOrb scale metaphor beside source-linked units and a clear conceptual-only label on the UI metaphor.",
+      "rights": "MEDIA_GUIDELINES_KNOWN_ITEM_CLEARANCE_UNCONFIRMED",
+      "source_page": "https://science.nasa.gov/photojournal/gas-planet-orbits/",
+      "status": "INSPIRES_CANDIDATE__NO_DERIVATIVE_OR_SEND",
+      "title": "Gas Planet Orbits (PIA17304)"
+    },
+    {
+      "accessibility": "Two scopes describe relationships involving people, documents and artwork, with explicitly typed directional predicates.",
+      "credit": "W3C RDF & SPARQL Working Group",
+      "id": "visual-external-w3c-rdf-r1",
+      "inversion": "Does sharing a visual node imply the same graph scope, provenance or authority?",
+      "motif": "Named/default graphs and source-bound, typed subject-predicate-object relations",
+      "proposed_roles": [
+        "CoMap",
+        "CoOmni",
+        "CoTurtle"
+      ],
+      "proposed_test": "Create one CoMap named-graph example with source provenance and a negative test for cross-graph conflation.",
+      "rights": "DOCUMENT_SOURCE_FOUND_IMAGE_LICENSE_UNVERIFIED",
+      "source_page": "https://www.w3.org/TR/rdf12-primer/",
+      "status": "INSPIRES_CANDIDATE__NO_DERIVATIVE_OR_SEND",
+      "title": "RDF 1.2 Primer: multiple graphs"
+    },
+    {
+      "accessibility": "An interactive graph provides a text search to focus a subset of linked sources and their connections.",
+      "credit": "Creative Commons Open Source / Linked Commons contributors",
+      "id": "visual-external-creativecommons-linked-r1",
+      "inversion": "Does visual size or connection count masquerade as importance, authority or source independence?",
+      "motif": "Explore many linked nodes by filtering, rather than displaying the entire graph at once",
+      "proposed_roles": [
+        "CoOrb",
+        "CoProduct",
+        "CoA11y"
+      ],
+      "proposed_test": "Compare CoOrb focus-plus-neighbors against a text-first list in a bounded first-use task.",
+      "rights": "IMAGE_LICENSE_NOT_VERIFIED",
+      "source_page": "https://opensource.creativecommons.org/blog/entries/linked-commons-gsoc-wrap-up/",
+      "status": "INSPIRES_CANDIDATE__NO_DERIVATIVE_OR_SEND",
+      "title": "Linked Commons network viewer"
+    }
+  ],
+  "network_calls": 0,
+  "nonclaims": [
+    "NOT_ALL_WEB_IMAGES",
+    "NOT_ALL_PRIVATE_HISTORY",
+    "INSPIRATION_NE_OWNERSHIP",
+    "LICENSE_CLAIM_NE_DERIVATIVE_CLEARANCE",
+    "NO_PRIVATE_MEDIA_REPUBLISHED",
+    "NO_PUBLIC_BROADCAST",
+    "NO_MODEL_WORKER_OR_DEVICE_ACTION",
+    "CONCEPTUAL_ORBIT_NE_PHYSICAL_MEASUREMENT",
+    "W3C_GROUP_NOTE_DRAFT_NE_RECOMMENDATION",
+    "SOURCE_PAGE_NE_RECEIVER_ACK",
+    "SOURCE_NE_IMAGE_BYTES"
+  ],
+  "policy": "METADATA_ONLY_PREVIEW_NOT_BROADCAST",
+  "routes_proposed": 12,
+  "sample_size": 4,
+  "schema": "CoCivium.CoVisual.ExternalInspirationProjection.R1",
+  "sources_digest": "38ed531c34400314da320304e615a195f616f631797bba7d9a9e9db0808c5124"
+}
