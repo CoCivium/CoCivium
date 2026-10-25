@@ -1,0 +1,28 @@
+name: CoOnrampMesh edge-in first-use R0
+on:
+  pull_request:
+    paths:
+      - "examples/co-onrampmesh-r0/**"
+      - ".github/workflows/coonramp-edgefeedback-r0.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  consented-first-use-fixtures:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Test actual offline DOM feedback behavior and nonclaims
+        run: node --test examples/co-onrampmesh-r0/test_edge_feedback.cjs
+      - name: Re-run 26 existing source contract checks in disposable copy
+        shell: bash
+        run: |
+          mkdir -p "$RUNNER_TEMP/coonramp"
+          cp examples/co-onrampmesh-r0/index.html examples/co-onrampmesh-r0/manifest.json examples/co-onrampmesh-r0/smoke.cjs "$RUNNER_TEMP/coonramp/"
+          ( cd "$RUNNER_TEMP/coonramp" && node smoke.cjs )
+      - name: Preserve proof ceiling
+        run: echo "PASS qualifies synthetic offline sources and UI event simulation only; no independent user, website, receiver or outreach has been observed."
