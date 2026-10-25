@@ -1,0 +1,40 @@
+name: CoVisual Relations R0 offline reproduction
+on:
+  push:
+    branches: [research/covisual-source-relations-r0-20261025]
+  pull_request:
+    paths:
+      - 'experiments/covisual-relations-r0/**'
+      - '.github/workflows/covisual-relations-r0.yml'
+permissions:
+  contents: read
+jobs:
+  reference-only:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run source and safety tests
+        run: python3 -m unittest discover -s experiments/covisual-relations-r0/tests -v
+      - name: Rebuild offline research report and atlas
+        working-directory: experiments/covisual-relations-r0
+        run: |
+          python3 scout.py
+          python3 render.py
+      - name: Verify deterministic output and pinned content hashes
+        working-directory: experiments/covisual-relations-r0
+        run: |
+          python3 - <<'PY'
+          import hashlib,json,pathlib
+          root=pathlib.Path('.')
+          m=json.loads((root/'PACKAGE_MANIFEST.json').read_text())
+          for f in m['items']:
+              assert hashlib.sha256((root/f['path']).read_bytes()).hexdigest()==f['sha256'], f['path']
+          from scout import verify_ledger
+          assert verify_ledger((root/'benchmark_evo.jsonl').read_text(),(root/'HEAD.sha256').read_text().strip())
+          print('PASS: manifest, ledger and reference-only privacy gate')
+          PY
+          git diff --exit-code -- REPORT.json HEAD.sha256 benchmark_evo.jsonl CoVisual_Atlas.html
