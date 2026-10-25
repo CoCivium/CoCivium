@@ -997,7 +997,8 @@
     {
       "id": "leased_from",
       "label": "is leased from",
-      "family": "Resources & Runtime",      "glyph": "⌛",
+      "family": "Resources & Runtime",
+      "glyph": "⌛",
       "domain": "Worker",
       "range": "Pool",
       "converse": "leases_to",
@@ -1996,7 +1997,8 @@
       "b": "B follows A",
       "kind": "CONVERSE",
       "rail": "Same ordering, not time reversal."
-    },    {
+    },
+    {
       "a": "A causes B",
       "b": "B causes A",
       "kind": "NOT_INFERRED",
