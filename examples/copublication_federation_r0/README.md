@@ -78,3 +78,14 @@ For the one-reader canary: compare a narrow shared question about dependence on 
 The manifest's `actual_substack_posts_created: 0` records **posts created by this preview**, not whether RickPublic has historically published posts. The six routes still use only source-bound GitHub action URLs. The additional RickPublic URL is one explicitly verified, fixed editorial outbound link, not a broad exception allowing arbitrary third-party destinations.
 
 **Still HELD:** public deployment of this HTML; independently observed third-party reading/feedback, new Substack posts, subscriber activity, recipient acceptance, X2 native interaction, and cross-account shared execution. No subscriber count, open-rate lift, conversion or viral effect is inferred from the public permalink.
+
+## CoEdgeIn R0.2 | Real clean-runner desktop/mobile QA (October 25, 2026)
+
+The existing reader page now offers a first-screen link to compare one **actual published RickPublic article** with one **unmerged pinned Great ReFact chapter draft**. They remain separate evidence classes. No Substack account, email, author identity, subscriptions or recipients were changed.
+
+**[GitHub Actions #40243859275](https://github.com/CoCivium/CoCivium/actions/runs/40243859275) SUCCESS:** 64/64 static/source/negative-case tests and 54/54 browser checks on a clean runner. [Runner visual receipt](https://github.com/CoCivium/CoCivium/actions/runs/40243859275): full-height screenshots on 1280-pixel desktop and 390-pixel mobile; zero JS errors and zero outbound requests during tested clicks. The mobile screenshot is exactly 390 pixels wide, not wider than its viewport.
+
+**Historical failures remain preserved:** the CI YAML originally had duplicate root-level `permissions` keys that prevented normal workflow discovery. After repair, [the first Chromium run #40243637913](https://github.com/CoCivium/CoCivium/actions/runs/40243637913) failed the `mobile_no_horizontal_overflow` assertion; its screenshot was 469 pixels wide for a 390-pixel viewport. The new source digest in a comparison card was not breaking. Panel `overflow-wrap:anywhere` corrected the layout; the browser script now emits offender diagnostics on recurrence. Neither the earlier failure nor the successful fix should be erased from the evidence history.
+
+**HELD independently of CI:** the page is not confirmed hosted as a public CoCivium reader destination, no invited or unfamiliar recipient has independently completed the proposed task, no subscriber metrics were measured, and no outgoing publication or social-message delivery was attempted. A zero-network local test does not prove a public click-through or recipient acknowledgment.
+
