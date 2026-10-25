@@ -14,6 +14,13 @@ const tests=[];
 function t(name,fn){test(name,fn);tests.push(name)}
 t('schema pinned',()=>assert.equal(manifest.schema,'CoAll.CoContextRail.R1'));
 t('pure module schema same',()=>assert.equal(core.SCHEMA,manifest.schema));
+t('unknown raw-key fields fail closed without echo',()=>{const z=run({raw_key:'synthetic_nonsecret_fixture'});assert.equal(z.state,'HELD_UNDECLARED_INPUT');assert.equal(JSON.stringify(z).includes('synthetic_nonsecret_fixture'),false);zero(z)});
+t('unknown screenshot metadata fails closed',()=>{const z=run({screen_pixels:'synthetic_nonsecret_fixture'});assert.equal(z.state,'HELD_UNDECLARED_INPUT');zero(z)});
+t('unknown clipboard field cannot enter projection',()=>{const z=run({clipboard_text:'synthetic_nonsecret_fixture'});assert.equal(z.state,'HELD_UNDECLARED_INPUT');assert.equal(z.source_ref,null);zero(z)});
+t('outward effect request fails closed',()=>{const z=run({external_effect_requested:true,context:'OUTREACH'});assert.equal(z.state,'HELD_EFFECT_REQUEST');assert.equal(z.suggestions.length,0);zero(z)});
+t('untyped false-like effect intent fails closed',()=>{const z=run({external_effect_requested:'false'});assert.equal(z.state,'HELD_EFFECT_REQUEST');zero(z)});
+t('explicit false effect intent preserves bounded proposal',()=>{const z=run({external_effect_requested:false});assert.equal(z.state,'PROPOSED_ONLY');zero(z)});
+t('native middle remains zero-effect under injected raw metadata',()=>{const z=run({gesture:'NATIVE_MIDDLE',raw_key:'synthetic_nonsecret_fixture'});assert.equal(z.state,'HELD_UNDECLARED_INPUT');assert.equal(z.suggestions.length,0);zero(z)});
 t('no hardware binding is approved',()=>assert.equal(manifest.approved_physical_gesture,'NONE_UNTIL_X2_RECEIVER_PROOF'));
 t('physical middle native by default',()=>assert.equal(manifest.default_physical_middle_click,'NATIVE_PASS_THROUGH'));
 t('zero network or hardware calls',()=>assert.equal(manifest.network_calls+manifest.device_io_calls+manifest.provider_calls,0));
