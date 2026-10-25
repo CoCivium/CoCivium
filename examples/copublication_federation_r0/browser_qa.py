@@ -68,7 +68,17 @@ with sync_playwright() as p:
         check(challenge['state']=='UNSENT_LOCAL_PROPOSAL',label+'_local_challenge_only')
         check(challenge['external_send_count']==0,label+'_no_auto_send')
         check(challenge['source_blob']=='9202ab5a8d0bfef509922c8c047363ea7a346ce2',label+'_pinned_source')
-        check(page.evaluate('document.documentElement.scrollWidth <= innerWidth + 1'),label+'_no_horizontal_overflow')
+        measure=page.evaluate("""() => ({
+          viewport: innerWidth,
+          scroll: document.documentElement.scrollWidth,
+          offenders: [...document.querySelectorAll('body *')].filter(el => {
+            const r=el.getBoundingClientRect();
+            return r.width > 0 && r.right > innerWidth + 1;
+          }).slice(0,8).map(el => ({tag:el.tagName,id:el.id,className:String(el.className||'').slice(0,80),right:Math.round(el.getBoundingClientRect().right)}))
+        })""")
+        if measure['scroll']>measure['viewport']+1:
+            print('MOBILE_OR_DESKTOP_OVERFLOW_DIAGNOSTIC '+label+' '+json.dumps(measure))
+        check(measure['scroll']<=measure['viewport']+1,label+'_no_horizontal_overflow')
         check(not errors,label+'_zero_js_errors')
         check(not network,label+'_zero_http_requests')
         page.screenshot(path=str(ROOT/('qa_'+label+'.png')),full_page=True)
