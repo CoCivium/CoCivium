@@ -75,6 +75,22 @@ manifest = {
  "tracking":False,
  "interest_inference":False,
  "reader_feedback_writeback":"NONE_LOCAL_PREVIEW_ONLY",
+ "giggle_lens":{
+    "status":"HUMOROUS_SOURCE_LINKED_PROJECTION_NOT_EVIDENCE",
+    "default":"OFF_UNTIL_EXPLICIT_READER_CLICK",
+    "classification":"HUMOROUS",
+    "source_claim_ids":ids,
+    "privacy":"NO_INFERENCE_NO_STORAGE_NO_TRANSMISSION",
+    "nonclaims":["HUMOR_NE_EVIDENCE","PUNCHLINE_NE_PERFORMANCE_METRIC","LAUGHTER_NE_READER_ADOPTION","OPT_IN_NE_CONSENT_TO_SEND","JOKE_NE_ENDORSEMENT"],
+    "examples":[
+        {"route_id":"curious","claim_id":"C01","quip":"Congratulations! You are Chief Copy-and-Paste Officer. The promotion comes with twelve browser tabs and no salary.","translation":"The proposal is to reduce the work people do transferring context between apps.","challenge":"Ordinary built-in integrations might solve the job more simply."},
+        {"route_id":"developer","claim_id":"C03","quip":"We built a bridge between two APIs. The bridge immediately requested administrator access and a throne. We declined.","translation":"A connector is only useful when its permissions are narrow and its effects are reversible.","challenge":"An extra integration layer might introduce more bugs than it removes."},
+        {"route_id":"operator","claim_id":"C05","quip":"Your dashboard is lovely. But customers should be able to export their data without an archaeological expedition.","translation":"Useful vendor capabilities should keep working and remain portable through documented interfaces.","challenge":"Some native applications are clearer and safer than a composed workflow."},
+        {"route_id":"researcher","claim_id":"C06","quip":"Our workflow was 400 percent faster, until someone noticed we had stopped measuring the part that takes time.","translation":"Measure actual task outcomes against a fixed baseline; do not infer benefit from an attractive demo.","challenge":"Familiarity or a simpler interface may explain any improvement."},
+        {"route_id":"journalist","claim_id":"C04","quip":"Breaking: prototype announces that it changed civilization. Civilization says it has not received the memo.","translation":"An architecture or passing test is not evidence of deployment or independent adoption.","challenge":"A working native integration requires separate operational proof."},
+        {"route_id":"educator","claim_id":"C02","quip":"The group project involves six apps. Five forgot the password and the sixth brought a licensing committee.","translation":"Relating tools requires knowing what each owns, where it fails and what is lost during translation.","challenge":"A playful story can itself hide missing accessibility or data rights."}
+    ]
+ },
  "reader_choice":"EXPLICIT_LOCAL_CLICK_NO_BROWSER_STORAGE",
  "urgency":{"mode":"NONE_NO_REAL_DEADLINE_VERIFIED","countdowns":False,"deliberately_expiring_links":False},
  "publication_candidates":["one umbrella with reader-chosen Sections","separate publications only if independent editorial needs and capacity warrant"],
