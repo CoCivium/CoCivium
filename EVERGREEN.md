@@ -1,3 +1,15 @@
+## [ EVO ALL BETTERS + ] | Middle / apostrophe continuity latch
+
+### PASS · persistent intent contract; runtime/effects remain separately qualified
+
+The [Middle-Latch R0](docs/Architecture/COEVOALL_MIDDLE_LATCH_R0_20261024.md) binds the user's middle-button / apostrophe shorthand to persistent CoEvoAll intent: preserve priors, reduce bottlenecks, keep large possibility spaces addressable, elect bounded high-value work, challenge/test/receipt, project through CoOrbWare, and quiesce until material deltas wake the next wave.
+
+`EVERMORE_NE_ALWAYS_RUNNING`  
+`INFIN_NE_INFINITE_COMPUTE`  
+`ALL_NE_UNBOUNDED_AUTHORITY`  
+`MIDDLE_NE_EXECUTE`  
+`EVOLVE_NE_ERASE_PRIORS`
+
 # CoGoAll Evergreen Blast R0
 
 **2026-10-24 | CoFireworks public front-door repair frontier (RC1):** An external reader observed a scoped `https://cocivium.org/` **404** while `https://www.cocivium.org/` served an older bulk-static metadata index. **Privacy review of the public www metadata index and an owner-qualified domain/host cutover are P0.** [CoFireworks strategy](docs/Strategy/COFIREWORKS_FRONTDOOR_CULTURESUBSTRATE_R0_20261024.md), [existing highlights registry](ai/highlight-assets.json), and [append-only local PASS / live FAIL_SCOPED / external HELD benchmark events](ai/benchmark-evo.jsonl) now identify the proof boundary. A local deployment candidate reuses CoOnrampMesh (three newcomer routes), CoSpeedo evidence and five source-bound highlights; isolated checks: CoContextCycle **53/53**, synthetic video **5/5**, donor source smoke **26/26**, static desktop/mobile preview **44/44**. **None of this changed live DNS, www, X2, outreach or human first-use state.** Public index is a pull pointer, not an all-receiver ACK.  
