@@ -1,0 +1,38 @@
+name: CoGlyphRail R0 source policy
+
+on:
+  pull_request:
+    paths:
+      - 'examples/conodcothumb/coglyphrail_r0/**'
+      - '.github/workflows/coglyphrail-r0-ci.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: coglyphrail-r0-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  source-policy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout exact PR source
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Run bounded source/policy checks
+        shell: bash
+        run: |
+          node --version
+          node examples/conodcothumb/coglyphrail_r0/tests/check.cjs | tee "$RUNNER_TEMP/coglyphrail-source-policy-receipt.json"
+      - name: Retain scoped CI receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: coglyphrail-r0-source-policy
+          path: ${{ runner.temp }}/coglyphrail-source-policy-receipt.json
+          if-no-files-found: warn
+          retention-days: 14
