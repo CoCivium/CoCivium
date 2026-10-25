@@ -169,3 +169,9 @@ test('32 source with unknown currentness remains a HOLD',()=>{
   assert.ok(!p.proposals.some(x=>x.dependent_id==='tests'));
   assert.ok(p.diagnostics.held_stale>=2);
 });
+
+test('33 source with stale currentness blocks all review plans',()=>{
+  const p=planImpact(input({graph:altered(g=>g.nodes.find(x=>x.id==='coomni').currentness='STALE')}));
+  assert.equal(p.status,'HELD_SOURCE_CURRENTNESS_UNKNOWN_OR_STALE');
+  assert.equal(p.proposals.length,0);
+});
