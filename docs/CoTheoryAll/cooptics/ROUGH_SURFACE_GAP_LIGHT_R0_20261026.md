@@ -1,6 +1,6 @@
 # CoOpticsGap+ | Rough-surface valleys, speckle, polarization and meaningful negative space
 
-**26 October 2026 · Public scientific research candidate · NOT a measured surface, new physics, ET contact, DMT study or active optical sensor.**
+**R1 executable successor (synthetic only):** [Draft PR #281](https://github.com/CoCivium/CoCivium/pull/281) implements the bounded shadow-versus-coherent-speckle simulation called for below. **40/40 local and [GitHub CI](https://github.com/CoCivium/CoCivium/actions/runs/40278953711) tests PASS**, with a deliberately failed synthetic null hypothesis (reversed virtual illumination does not preserve the shadow mask). Source, unit tests, generated arrays and explicit HELD real-optics/receiver gates are reviewable. **No real laser, near-field measurement, DMT experiment, ET signal, G_d observation or main-branch code merge.** This additive link does not retroactively change R0's original planned-versus-performed snapshot.\n\n**26 October 2026 · Public scientific research candidate · NOT a measured surface, new physics, ET contact, DMT study or active optical sensor.**
 
 ## Immediate observation question
 
