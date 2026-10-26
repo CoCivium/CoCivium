@@ -65,3 +65,48 @@ FIND public source pointer
 `SOURCE_PAGE_NE_LICENSE_CLEARANCE | SOURCE_LINK_NE_IMAGE_BYTES | PROPOSED_ROUTES_NE_SENT | BEAUTIFUL_NE_TRUE | GLYPH_NE_AUTHORITY | LOGICAL_INFINITY_NE_UNLIMITED_COMPUTE | LOCAL_IS_NOT_LANDED | NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF`.
 
 Code follows this repository's GPL-3.0 license. Third-party works remain under their own rights and are NOT included.
+
+## CoLens source-to-view bridge R0 | executable comparative donor
+
+A bounded [`lens_bridge.py`](lens_bridge.py) converts the **same four validated public-source metadata records** into three **specification payloads** per source: `Text`, `Map`, and `Orb`. All twelve carry identical work ID, source URL, source digest, rights state and epistemic classification. The Map records exactly two advisory relation edges plus one inverse-question node; the Orb records up to three candidate internal role labels and a plain-text alternative. No external images, private screen/media, provider credentials or source image bytes are imported.
+
+It reads [CoLens's existing three-view manifest](../colensmedia/manifest.json) solely to verify a compatible, no-authority view grammar. It **does not re-use** the unrelated Synthkind-theme content, modify CoLens's running renderer or introduce a second image viewer. The output is a typed **view-spec JSON**, not a visual render accepted by a participant.
+
+Reproduce offline from the repository root:
+
+```sh
+python3 examples/covisual_finder_r1/lens_bridge.py --check
+python3 examples/covisual_finder_r1/lens_bridge.py > visual_lens_bridge.json
+python3 -m unittest discover -s examples/covisual_finder_r1/tests -p 'test_*.py' -v
+```
+
+Thirty-five new negative/parity assertions verify stable source identities across all three view specifications, no source image bytes, no rights promotion, no authority, typed noncausal inverse questions, strict rejection of undeclared private source metadata, and tampering with graph edges, URLs, source rights or unqualified fanout. Source/registry changes affect the exact structural digest. The existing CoVisualFinder CI workflow now runs the bridge check alongside the original policy/browser-source tests.
+
+**Proof boundary:** This candidate builds **three linked view payloads**, *not* three independent renderers. A real CoMap/CoOrb/accessible first-use, currentness propagation, image-source rights review, media reproduction and a human receiver-origin comprehension ACK remain HELD. A good successor would integrate the resulting work objects into the existing CoLens renderer without starting another frontend.
+
+`ONE_SOURCE_THREE_SPECIFICATIONS_NE_THREE_RENDERERS | INSPIRED_BY_NE_LICENSE_TO_COPY | SOURCE_HASH_NE_TRUTH | MACHINE_PARITY_NE_HUMAN_COMPREHENSION | OMNI_ADDRESSABLE_NE_OMNI_LOADED`.
+
+## CoLens static SVG preview R0 | a visible reference, not another control plane
+
+The [source-to-view bridge](lens_bridge.py) already creates three typed view *specifications* for each of four vetted **public source-page descriptions**. The [offline renderer](lens_preview_r0.py) now turns those specifications into a single **standalone, script-free HTML file** containing 12 actual Text/Map/Orb panels with eight inline SVG drawings and visible accessible alternatives.
+
+**Default has zero network or writes**:
+
+```sh
+python3 examples/covisual_finder_r1/lens_preview_r0.py --check
+python3 -m unittest discover -s examples/covisual_finder_r1/tests -p 'test_*.py' -v
+```
+
+To create a local, public-safe preview explicitly:
+
+```sh
+python3 examples/covisual_finder_r1/lens_preview_r0.py --output colens-public-inspirations-r0.html
+```
+
+Open that generated file in a browser. It displays **four public metadata references**, each with the same work ID, source SHA-256 identity, rights status and epistemic class across Text, Map and Orb. Map shows **PROPOSED** rather than causal lines; Orb shows *illustrative roles*, never live workers; Text and captions provide readable alternatives. No original images, third-party artwork, personal screenshots, audio/video, external scripts, private data, analytics, clipboard, network fetching or provider credentials are embedded. Clicking an original-source link is a deliberate browser navigation; source rights do not automatically permit republishing its media.
+
+The **existing CoVisualFinder GitHub Actions workflow** creates an unhosted public-safe HTML artifact for independent review. This renderer is a **bounded integration acceptance donor** to the elected [CoLens living-media UX](../colensmedia/README.md), not a competing deployed frontend, production site, working native CoOrbWare or permission to bypass release review. The markup is structurally renderable in ordinary browsers; actual browser visual QA, screen-reader comprehension, a new user's first-use and receiver-origin ACK remain independently **HELD**.
+
+**Acceptance scope:** new 32-case Python suite checks 4 sources, 12 views, eight SVGs, source/hash/rights parity, safe escaping, no external effects, negative cases and deterministic explicit export. Preserve every earlier failure and retention receipt. Do not silently upgrade "specification" to "independent visual user success."
+
+`INSPIRATION_NE_SOURCE_REUSE_RIGHTS | HTML_SOURCE_NE_HUMAN_ACCEPTANCE | RENDERED_MARKUP_NE_OFF_PROVIDER_PICKUP | MAP_EDGE_NE_CAUSE | ORB_CIRCLE_NE_AGENT | CI_ARTIFACT_NE_PUBLIC_SITE`.

@@ -24,4 +24,15 @@ jobs:
         run: |
           set -euo pipefail
           python3 examples/covisual_finder_r1/finder.py --check
+          python3 examples/covisual_finder_r1/lens_bridge.py --check
+          python3 examples/covisual_finder_r1/lens_preview_r0.py --check
+          mkdir -p dist
+          python3 examples/covisual_finder_r1/lens_preview_r0.py --output dist/colens-public-inspirations-r0.html
           python3 -m unittest discover -s examples/covisual_finder_r1/tests -p 'test_*.py' -v
+      - name: Retain offline public motif preview as an unhosted CI artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: colens-public-inspirations-r0
+          path: dist/colens-public-inspirations-r0.html
+          if-no-files-found: error
+          retention-days: 7
