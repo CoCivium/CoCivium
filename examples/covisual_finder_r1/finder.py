@@ -12,6 +12,19 @@ SOURCE = HERE / 'sources.json'
 ALLOWED = {'commons.wikimedia.org', 'science.nasa.gov', 'www.nasa.gov', 'www.w3.org', 'opensource.creativecommons.org'}
 ROLES = {'CoMap', 'CoOrb', 'CoTurtle', 'CoTheoryAll', 'CoA11y', 'CoOmni', 'CoProduct'}
 POLICY_STATUSES = {'LICENSE_IDENTIFIED_CONDITIONS_REMAIN','MEDIA_GUIDELINES_KNOWN_ITEM_CLEARANCE_UNCONFIRMED','DOCUMENT_SOURCE_FOUND_IMAGE_LICENSE_UNVERIFIED','IMAGE_LICENSE_NOT_VERIFIED'}
+# R1 is a fixed four-source public reference. Adding any input fields must receive
+# a deliberate schema/policy review, not silently enter a generated public artifact.
+ROOT_FIELDS = {'schema','observed_date','scope','privacy','effects','policy',
+               'public_donors','existing_donor_families','nonclaims'}
+SOURCE_FIELDS = {'id','title','source_page','origin','source_type','rights_state',
+                 'stated_license','rights_evidence_page','credit','motif',
+                 'accessible_twin','inverse_challenge','next_test',
+                 'epistemic_class','consumers','selected_reuse','noendorsement'}
+POLICY_FIELDS = {'route_mode','max_candidates','max_routes_per_candidate',
+                 'media_bytes_permitted','license_qualified_for_derivative',
+                 'wake_on','dedupe_by','no_inferred_publication'}
+EFFECT_FIELDS = {'network_calls','external_sends','source_media_downloads',
+                 'provider_workers','device_actions'}
 
 
 def canon(obj):
@@ -27,15 +40,35 @@ def load(path=SOURCE):
 
 
 def check_url(url):
-    p = urlparse(url)
-    return p.scheme == 'https' and p.hostname in ALLOWED and not p.username and not p.password and not p.fragment
+    # Source-page URLs are public *pointers*, never a transport for account data.
+    # Reject query strings, fragments, special ports, credentials and controls,
+    # including malformed parsed ports, before any link becomes part of a page.
+    if not isinstance(url, str) or not (1 <= len(url) <= 2048) or url != url.strip():
+        return False
+    if any(ord(c) < 32 or ord(c) == 127 for c in url):
+        return False
+    try:
+        p = urlparse(url)
+        return (p.scheme == 'https' and p.hostname in ALLOWED and
+                p.netloc == p.hostname and p.port is None and
+                p.username is None and p.password is None and
+                not p.params and not p.query and not p.fragment and
+                p.path.startswith('/') and len(p.path) > 1)
+    except ValueError:
+        return False
 
 
 def validate(reg):
-    if reg.get('schema') != 'CoCivium.CoVisual.ExternalInspiration.R1':
+    if not isinstance(reg, dict) or reg.get('schema') != 'CoCivium.CoVisual.ExternalInspiration.R1':
         raise ValueError('unknown schema')
-    pol = reg['policy']; rows = reg['public_donors']
-    if len(rows) > 4 or len(rows) > pol['max_candidates'] or pol.get('media_bytes_permitted') or pol.get('license_qualified_for_derivative'):
+    if set(reg) != ROOT_FIELDS:
+        raise ValueError('unexpected or missing public registry fields')
+    pol = reg['policy']; rows = reg['public_donors']; effects = reg['effects']
+    if not isinstance(pol, dict) or set(pol) != POLICY_FIELDS:
+        raise ValueError('unexpected public routing policy')
+    if not isinstance(effects, dict) or set(effects) != EFFECT_FIELDS:
+        raise ValueError('unexpected effect-class fields')
+    if not isinstance(rows, list) or len(rows) != 4 or pol.get('max_candidates') != 4 or pol.get('media_bytes_permitted') or pol.get('license_qualified_for_derivative'):
         raise ValueError('unsafe candidate/bulk/media policy')
     if pol.get('route_mode') != 'INTERNAL_PROPOSED_READONLY_ROLES_NO_SEND' or pol.get('max_routes_per_candidate',100) > 3:
         raise ValueError('unsafe routing policy')
@@ -44,6 +77,8 @@ def validate(reg):
     ids = set(); urls = set()
     needed = {'id','title','source_page','origin','rights_state','stated_license','rights_evidence_page','credit','motif','accessible_twin','inverse_challenge','next_test','epistemic_class','consumers','selected_reuse','noendorsement'}
     for x in rows:
+        if not isinstance(x, dict) or set(x) != SOURCE_FIELDS:
+            raise ValueError('unexpected or missing source fields')
         if not needed.issubset(x): raise ValueError('missing required source fields')
         if x['id'] in ids or x['source_page'] in urls: raise ValueError('duplicate id / URL')
         ids.add(x['id']); urls.add(x['source_page'])
