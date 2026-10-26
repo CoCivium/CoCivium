@@ -1,0 +1,26 @@
+name: CoArtifact Continuity VirtualCLI R0
+
+on:
+  pull_request:
+    paths:
+      - "docs/Architecture/COARTIFACT_CONTINUITY_VIRTUALCLI_R0.md"
+      - "fixtures/ux/coartifact_continuity_virtualcli_r0.json"
+      - "tools/validate_coartifact_continuity_virtualcli_r0.py"
+      - ".github/workflows/coartifact-continuity-virtualcli-r0.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python tools/validate_coartifact_continuity_virtualcli_r0.py
