@@ -60,11 +60,16 @@ function compile(input){
   const max=input.max_items;
   if(!Number.isInteger(max)||max<1||max>16)invalid('INVALID_ITEM_COUNT_1_16');
   if(!Array.isArray(input.candidates)||input.candidates.length>128)invalid('INVALID_CANDIDATE_COUNT');
-  const candidates=input.candidates.map(validRow);
-  const allowed=[];let excluded=0;
-  for(const r of candidates){
-    if(r.privacy==='SENSITIVE'||r.privacy==='UNKNOWN'||(input.output_privacy==='PUBLIC'&&r.privacy!=='PUBLIC')){excluded++;continue;}
-    allowed.push(r);
+  // Classify the receiver-visible subset before validating any hidden source
+  // details. Hidden records may be malformed or expensive; their mere presence
+  // must not change a packet's bytes or reveal an existence/metadata bit.
+  const allowed=[];
+  for(const raw of input.candidates){
+    if(!raw||typeof raw!=='object'||Array.isArray(raw))invalid('INVALID_ROW');
+    if(!PRIVACY.has(raw.privacy))invalid('INVALID_PRIVACY');
+    if(raw.privacy==='SENSITIVE'||raw.privacy==='UNKNOWN'||
+       (input.output_privacy==='PUBLIC'&&raw.privacy!=='PUBLIC'))continue;
+    allowed.push(validRow(raw));
   }
   const keys=new Set();const distinct=[];let duplicates=0;
   for(const r of allowed){
@@ -85,8 +90,8 @@ function compile(input){
   const base={schema:SCHEMA,work_id:input.work_id,state:'SHADOW_CONTEXT_ONLY',
     scope:'EXPLICIT_DECLARED_SOURCES_ONLY',output_privacy:input.output_privacy,
     query:'NOT_COPIED_TO_PACKET',budget_bytes:budget,max_items:max,
-    total_declared:candidates.length,eligible_unique:distinct.length,
-    duplicate_suppressed:duplicates,privacy_exclusions_present:excluded>0,
+    visible_declared:allowed.length,eligible_unique:distinct.length,
+    duplicate_suppressed:duplicates,
     status_counts:counts,required_negative_count:negatives.length,
     selected:[],omitted_eligible:0,
     authority:'NONE',receiver_ack:false,effects:{...EFFECTS},
@@ -107,7 +112,7 @@ function compile(input){
     const next=[...chosen,r];
     if(size(output('SHADOW_CONTEXT_ONLY',next))<=budget)chosen=next;
   }
-  const state=excluded>0?'SHADOW_CONTEXT_PARTIAL_PRIVACY':(distinct.length===0?'HELD_NO_ELIGIBLE_SOURCE':'SHADOW_CONTEXT_ONLY');
+  const state=distinct.length===0?'HELD_NO_ELIGIBLE_SOURCE':'SHADOW_CONTEXT_ONLY';
   const result=output(state,chosen);
   if(size(result)>budget)invalid('INTERNAL_BUDGET_ERROR');
   return result;
