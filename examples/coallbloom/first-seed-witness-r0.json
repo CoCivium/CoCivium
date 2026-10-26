@@ -1,0 +1,347 @@
+{
+  "schema": "CoCivium.CoAllBloom.FirstSeedWitness.R0",
+  "observed_date": "2026-10-26",
+  "status": "PUBLIC_REVIEW_CANDIDATE__STATIC_SEMANTIC_WITNESS__NOT_RUNTIME",
+  "intent": "Reuse existing Bloom, CoDoodle R1, CoReview and AI/IA onramp sources to show one small typed optionality basin, not introduce an independent engine",
+  "seed": {
+    "id": "bloom-seed:coorbware-first-use",
+    "claim": "An authorized AI or human could use a small source-bound CoOrbWare-projected path to achieve one useful task.",
+    "epistemic_class": "DESIGN_HYPOTHESIS",
+    "authority": "NONE",
+    "privacy": "PUBLIC_SYNTHETIC",
+    "receiver": "UNQUALIFIED_NEWCOMER",
+    "owner": "UNASSIGNED"
+  },
+  "source_pins": [
+    {
+      "path": "docs/Architecture/COALLBLOOM_OPTIONALITY_BASIN_R0_20261026.md",
+      "git_blob": "33aa6f39f9d38fec93a413774e1e55c355644f77",
+      "role": "Bloom grammar and modality distinctions"
+    },
+    {
+      "path": "ai/onramp/ai-ia-evergreen-r0.json",
+      "git_blob": "f944fbe817e4abc218d94a57366a03a8d8b4c3f0",
+      "role": "Typed AI or IA newcomer contract and actual holds"
+    },
+    {
+      "path": "examples/codoodle_conex_r1/README.md",
+      "git_blob": "64b254d5f9bbc80b70bb499da72a11ca6f54f97e",
+      "role": "Existing descriptor generator; avoid replacing"
+    },
+    {
+      "path": "ai/review/coreview-spine-r0.json",
+      "git_blob": "ad49d1bceae5a3d259f94c8b1e751994c8eca9f5",
+      "role": "Stage-specific review and authority gates"
+    },
+    {
+      "path": "docs/Architecture/COEXPERIMENT_SPACE_TURTLES_R0.md",
+      "git_blob": "a91d8de5b924ce318f2f886d168a75877272e0b9",
+      "role": "Bounded recursive review; distinct from many live panels"
+    },
+    {
+      "path": "docs/Architecture/COMODELFABRIC_COORB_PROVIDER_ADAPTERS_R0_20261024.md",
+      "git_blob": "2d0d8cb7928ca7158c4d5f520c6e5b4e262d0743",
+      "role": "No provider impersonation or blanket fanout"
+    }
+  ],
+  "axes": {
+    "semantic": [
+      "ALT",
+      "INVERT",
+      "NEGATE",
+      "NULL",
+      "ELSE",
+      "INTERSTICE",
+      "CROSS_SUBSTRATE",
+      "SYMBOLIC_LENS",
+      "PHYSICAL_LENS",
+      "ET_LENS",
+      "GD_LENS",
+      "CHALLENGE",
+      "COMPARE_DYNAMICS"
+    ],
+    "epistemic": [
+      "DESIGN_HYPOTHESIS",
+      "COUNTERFACTUAL",
+      "BASELINE",
+      "OBSERVATION_GAP",
+      "SYMBOLIC",
+      "SCIENTIFIC_TEST_PLAN",
+      "SPECULATIVE_HYPOTHESIS",
+      "METAPHYSICAL_QUESTION",
+      "TESTABLE_HYPOTHESIS",
+      "CONCEPTUAL_DISTINCTION"
+    ],
+    "lifecycle": [
+      "ADDRESSABLE",
+      "CANDIDATE",
+      "ACTIVE",
+      "EFFECTIVE"
+    ]
+  },
+  "candidates": [
+    {
+      "state": "CANDIDATE",
+      "authority": "NONE",
+      "external_effects": false,
+      "source_seed": "bloom-seed:coorbware-first-use",
+      "receiver_ack": null,
+      "independent_human_review": null,
+      "id": "ALT_TEXT",
+      "operator": "ALT",
+      "epistemic_class": "DESIGN_HYPOTHESIS",
+      "proposal": "Plain-text first-use onramp offers the smallest accessible source-linked task",
+      "next_proof": "A newcomer completes one task without the orbital interface",
+      "temporal_class": "PROPOSED_AS_OF_2026_10_26"
+    },
+    {
+      "state": "CANDIDATE",
+      "authority": "NONE",
+      "external_effects": false,
+      "source_seed": "bloom-seed:coorbware-first-use",
+      "receiver_ack": null,
+      "independent_human_review": null,
+      "id": "ALT_ORB",
+      "operator": "ALT",
+      "epistemic_class": "DESIGN_HYPOTHESIS",
+      "proposal": "Optional CoOrb evidence view makes uncertainty easier to understand",
+      "next_proof": "A consenting newcomer completes the same task using CoOrb",
+      "temporal_class": "PROPOSED_AS_OF_2026_10_26"
+    },
+    {
+      "state": "CANDIDATE",
+      "authority": "NONE",
+      "external_effects": false,
+      "source_seed": "bloom-seed:coorbware-first-use",
+      "receiver_ack": null,
+      "independent_human_review": null,
+      "id": "INVERSE",
+      "operator": "INVERT",
+      "epistemic_class": "DESIGN_HYPOTHESIS",
+      "proposal": "Begin from a desired outcome and navigate backward to sources, rather than source to output",
+      "next_proof": "Test whether inverse navigation preserves source identity; reversal is not causal proof",
+      "temporal_class": "PROPOSED_AS_OF_2026_10_26"
+    },
+    {
+      "state": "CANDIDATE",
+      "authority": "NONE",
+      "external_effects": false,
+      "source_seed": "bloom-seed:coorbware-first-use",
+      "receiver_ack": null,
+      "independent_human_review": null,
+      "id": "NEGATION",
+      "operator": "NEGATE",
+      "epistemic_class": "COUNTERFACTUAL",
+      "proposal": "Assume the orbital view adds no value compared with plain text",
+      "next_proof": "Measure the same user task; hypothetical negation does not prove falsehood",
+      "temporal_class": "PROPOSED_AS_OF_2026_10_26"
+    },
+    {
+      "state": "CANDIDATE",
+      "authority": "NONE",
+      "external_effects": false,
+      "source_seed": "bloom-seed:coorbware-first-use",
+      "receiver_ack": null,
+      "independent_human_review": null,
+      "id": "NULL_BASELINE",
+      "operator": "NULL",
+      "epistemic_class": "BASELINE",
+      "proposal": "Take no extra action; preserve current text-first route",
+      "next_proof": "Compare against null; no-op is not evidence that nothing exists",
+      "temporal_class": "PROPOSED_AS_OF_2026_10_26"
+    },
+    {
+      "state": "CANDIDATE",
+      "authority": "NONE",
+      "external_effects": false,
+      "source_seed": "bloom-seed:coorbware-first-use",
+      "receiver_ack": null,
+      "independent_human_review": null,
+      "id": "ELSE_CLI",
+      "operator": "ELSE",
+      "epistemic_class": "DESIGN_HYPOTHESIS",
+      "proposal": "Offer a minimal local JSON/CLI witness instead of a graphic",
+      "next_proof": "Compare comprehension and accessibility with one consenting tester",
+      "temporal_class": "PROPOSED_AS_OF_2026_10_26"
+    },
+    {
+      "state": "CANDIDATE",
+      "authority": "NONE",
+      "external_effects": false,
+      "source_seed": "bloom-seed:coorbware-first-use",
+      "receiver_ack": null,
+      "independent_human_review": null,
+      "id": "INTERSTICE",
+      "operator": "INTERSTICE",
+      "epistemic_class": "OBSERVATION_GAP",
+      "proposal": "Source can be public while a specific agent receiver has never acknowledged it",
+      "next_proof": "Require source-bound independent ACK before claiming AI admission",
+      "temporal_class": "PROPOSED_AS_OF_2026_10_26"
+    },
+    {
+      "state": "CANDIDATE",
+      "authority": "NONE",
+      "external_effects": false,
+      "source_seed": "bloom-seed:coorbware-first-use",
+      "receiver_ack": null,
+      "independent_human_review": null,
+      "id": "CROSS_SUBSTRATE",
+      "operator": "CROSS_SUBSTRATE",
+      "epistemic_class": "DESIGN_HYPOTHESIS",
+      "proposal": "Project the same work identity as desktop, mobile text and offline browser views",
+      "next_proof": "Verify content provenance, accessibility and representation loss across two real renderers",
+      "temporal_class": "PROPOSED_AS_OF_2026_10_26"
+    },
+    {
+      "state": "CANDIDATE",
+      "authority": "NONE",
+      "external_effects": false,
+      "source_seed": "bloom-seed:coorbware-first-use",
+      "receiver_ack": null,
+      "independent_human_review": null,
+      "id": "SPIRITUAL_SYMBOLIC",
+      "operator": "SYMBOLIC_LENS",
+      "epistemic_class": "SYMBOLIC",
+      "proposal": "Offer voluntary G_d, angel and aura symbolism as interpretive cultural lenses",
+      "next_proof": "Verify clear opt-in, attribution and that no physical or divine effects are claimed",
+      "temporal_class": "PROPOSED_AS_OF_2026_10_26"
+    },
+    {
+      "state": "CANDIDATE",
+      "authority": "NONE",
+      "external_effects": false,
+      "source_seed": "bloom-seed:coorbware-first-use",
+      "receiver_ack": null,
+      "independent_human_review": null,
+      "id": "PHYSICAL_MEASUREMENT",
+      "operator": "PHYSICAL_LENS",
+      "epistemic_class": "SCIENTIFIC_TEST_PLAN",
+      "proposal": "Measure power, latency, errors and accessibility for actual rendering devices",
+      "next_proof": "Supply instrument details and repeated measurements before physical results",
+      "temporal_class": "PROPOSED_AS_OF_2026_10_26"
+    },
+    {
+      "state": "CANDIDATE",
+      "authority": "NONE",
+      "external_effects": false,
+      "source_seed": "bloom-seed:coorbware-first-use",
+      "receiver_ack": null,
+      "independent_human_review": null,
+      "id": "ET_SPECULATIVE",
+      "operator": "ET_LENS",
+      "epistemic_class": "SPECULATIVE_HYPOTHESIS",
+      "proposal": "Use hypothetical ET story-swapping to challenge human-centric interface assumptions",
+      "next_proof": "Clearly distinguish fictional scenario from verified signal detection or ET contact",
+      "temporal_class": "PROPOSED_AS_OF_2026_10_26"
+    },
+    {
+      "state": "CANDIDATE",
+      "authority": "NONE",
+      "external_effects": false,
+      "source_seed": "bloom-seed:coorbware-first-use",
+      "receiver_ack": null,
+      "independent_human_review": null,
+      "id": "GD_PHILOSOPHICAL",
+      "operator": "GD_LENS",
+      "epistemic_class": "METAPHYSICAL_QUESTION",
+      "proposal": "Ask what G_d might mean to different traditions without assigning authority to software",
+      "next_proof": "Quote actual sources and preserve disagreements; no divine detector is implied",
+      "temporal_class": "PROPOSED_AS_OF_2026_10_26"
+    },
+    {
+      "state": "CANDIDATE",
+      "authority": "NONE",
+      "external_effects": false,
+      "source_seed": "bloom-seed:coorbware-first-use",
+      "receiver_ack": null,
+      "independent_human_review": null,
+      "id": "FALSIFIER",
+      "operator": "CHALLENGE",
+      "epistemic_class": "TESTABLE_HYPOTHESIS",
+      "proposal": "A new consenting reader may fail to complete one simple source-bound task using either interface",
+      "next_proof": "Record failure or success with the task, version, duration, consent and correction burden",
+      "temporal_class": "PROPOSED_AS_OF_2026_10_26"
+    },
+    {
+      "state": "CANDIDATE",
+      "authority": "NONE",
+      "external_effects": false,
+      "source_seed": "bloom-seed:coorbware-first-use",
+      "receiver_ack": null,
+      "independent_human_review": null,
+      "id": "DYNAMICS_SPLIT",
+      "operator": "COMPARE_DYNAMICS",
+      "epistemic_class": "CONCEPTUAL_DISTINCTION",
+      "proposal": "Separate deterministic chaos from observational drift and adaptive evolution under specified selection",
+      "next_proof": "Give independent variables and measurement plan; never infer evolution from mere change",
+      "temporal_class": "PROPOSED_AS_OF_2026_10_26"
+    }
+  ],
+  "frontier": {
+    "generated": 14,
+    "selected_candidate_ids": [
+      "FALSIFIER"
+    ],
+    "maximum_elected": 1,
+    "active_workers": 0,
+    "actual_experiments": 0,
+    "source_receiver_acks": 0,
+    "independent_users": 0,
+    "status": "SELECTED_DESCRIPTOR_ONLY"
+  },
+  "onramp": {
+    "term_ia": "UNRESOLVED_NO_ACCEPTED_EXPANSION",
+    "discovery": "PUBLIC_SOURCE_READABLE",
+    "independent_agent_first_task": "HELD",
+    "live_coorbware_binding": "HELD",
+    "automatic_sleeper_waker": "NOT_INSTALLED",
+    "next_proof": "Consent-qualified new external AI or human reads pinned source and returns one task result with exact source-bound receiver acknowledgement"
+  },
+  "dynamics": {
+    "CHAOS": "Sensitive dependence within an explicitly modeled dynamic regime",
+    "DRIFT": "Change without demonstrated fitness selection",
+    "EVOLUTION": "Variation, selection and inheritance under an explicit fitness rule",
+    "NOISE": "Variation without demonstrated structure"
+  },
+  "guards": {
+    "inverse": "Direction reversal is a testable relation proposal, never automatic inverse causality",
+    "negation": "Negation of a hypothesis is another candidate, not a proved fact",
+    "null": "No-op comparator, never evidence of global absence",
+    "unknown": "Insufficient observation must remain UNKNOWN, not PASS or ABSENT",
+    "spiritual": "Interpretive or subjective meaning, not instrument evidence or divine authority",
+    "physical": "Requires calibrated observations before physical facts",
+    "et": "A story or hypothesis, never proof of nonhuman intelligence or contact",
+    "ia": "A task role and capability may be qualified, but IA identity/personhood remains unresolved",
+    "authority": "No brand, lens, candidate, mouse gesture, model agreement or synthetic role grants device/external effects",
+    "provenance": "All candidates preserve source seed, pinned donor identities and dissent",
+    "selection": "Selected candidate is a proposal, not an active experiment or useful result"
+  },
+  "readable_glossary": {
+    "⊂": "included within qualified scope",
+    "↔": "typed relation, possibly bidirectional, never implied symmetry",
+    "¬": "hypothetical negation",
+    "∅": "no-op comparator here, not global absence",
+    "?": "not yet known",
+    "Δ": "observed material change only if measured",
+    "↺": "reopen/challenge/replay",
+    "∞": "open-ended addressability with finite execution"
+  },
+  "review_state": "SELF_CONFORMANCE_TEST_PENDING__NO_INDEPENDENT_REVIEW",
+  "proposed_next_deed": "Use the FALSIFIER card for one consenting newcomer first-use comparison; record real failure or success instead of assuming arrival/adoption",
+  "nonclaims": [
+    "PUBLIC_SOURCE_NE_RUNTIME",
+    "BLOOM_CANDIDATE_NE_EMPIRICAL_FACT",
+    "INVERSE_NE_INVERSE_CAUSATION",
+    "NEGATION_NE_TRUTH",
+    "NULL_NE_NONEXISTENCE",
+    "SPIRITUAL_SYMBOL_NE_PHYSICAL_EVIDENCE",
+    "ET_HYPOTHESIS_NE_ET_CONTACT",
+    "G_D_QUESTION_NE_DIVINE_AUTHORITY",
+    "MODEL_AGREEMENT_NE_INDEPENDENT_EVIDENCE",
+    "IA_LABEL_NE_QUALIFIED_IDENTITY",
+    "SELECTED_NE_EXECUTED",
+    "PUBLISHED_NE_RECEIVER_ACK",
+    "LOCAL_IS_NOT_LANDED",
+    "NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF"
+  ]
+}
