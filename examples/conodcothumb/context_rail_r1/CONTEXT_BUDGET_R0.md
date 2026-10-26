@@ -14,3 +14,18 @@ The query is ranked heuristically for keywords; this is a retrieval baseline, no
 Re-use: `CoContextRailR1.js` provides the one-gesture shadow action choice; this bounded packet feeds a future **authorized** model/task worker only after another adapter verifies the full source bytes, rights, freshness, and target context budget. Large files stay in CoPayload+, not inline text. Nothing here changes X2/RickBar, CoStead or provider credentials.
 
 **Non-equivalences:** `LOGICAL_POSSIBILITY_NE_UNBOUNDED_RESOURCES | COMPACT_BYTES_NE_EXACT_TOKENS | POINTER_NE_SOURCE | DECLARED_SHA_NE_READPROOF | PACKET_NE_RECEIVER_ACK | SHADOW_NE_EXECUTION | NEGATIVE_NOT_DROPPABLE | REPLAYABLE_NE_CUSTODIED`.
+
+## R0.1 privacy noninterference donor (2026-10-26)
+
+The initial R0 excluded secret text but published `total_declared`, `privacy_exclusions_present`, and `SHADOW_CONTEXT_PARTIAL_PRIVACY` when hidden candidates existed. Those fields can leak the very existence of private records to an otherwise identical PUBLIC request. R0.1 is a review-only correction on a dependent branch:
+
+- Select a **receiver-visible, typed subset before validating hidden candidate details**. Invalid publicly visible records still fail closed. An invalid privacy label fails closed.
+- Emit `visible_declared` rather than global candidate count; keep `status_counts`, `eligible_unique`, `duplicate_suppressed`, and `required_negative_count` scoped to visible eligible material only.
+- Never expose `privacy_exclusions_present` or a different public `state` based solely on classified hidden rows.
+- With equal public records, PUBLIC packets are **exact JSON-equal** despite added, removed, reordered, malformed or contradictory rows explicitly classified as PRIVATE_LOCAL, SENSITIVE or UNKNOWN. LOCAL packets analogously ignore SENSITIVE/UNKNOWN rows.
+- Keep `HELD_NO_ELIGIBLE_SOURCE` for an empty visible set and `HELD_REQUIRED_NEGATIVE_EVIDENCE_EXCEEDS_BUDGET` for a visible required negative that does not fit. External effects remain zero.
+- This is **serialized-output noninterference for declared classifications**. It is **not** a constant-time algorithm, an authenticated privacy classifier, a storage access-control enforcement, a proof of side-channel security, or permission to route source bytes. Timing, peak allocation, logging outside the pure function, and malicious caller-provided classifications require separate threat-model review.
+
+50 synthetic tests are provided in the existing `test_context_budget_r0.cjs` and are configured to run through the **existing** CoThumb workflow once the dependent PR opens. No new workflow, daemon, provider adapter, mouse input hook, X2 process or public receiver was created.
+
+`PUBLIC_PACKET_NE_HIDDEN_EXCLUSION_ORACLE | DECLARED_PRIVACY_NE_VERIFIED_ACL | TEST_NE_REAL_USER_ACCEPTANCE | NEGATIVE_EVIDENCE_NE_DROPPABLE`.

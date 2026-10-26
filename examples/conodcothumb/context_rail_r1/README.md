@@ -83,3 +83,7 @@ Rails: `CONTEXT_ADDRESSABLE_NE_CONTEXT_LOADED | GESTURE_NE_AUTHORITY | PREVIEW_N
 **FOSS Forever | CoGoAll | Working Together Respectfully | privacy by design | visible effects, wearables optional.**
 
 **Next gate, still shadow:** [REQUEST_TOKEN_ADMISSION_R0.md](REQUEST_TOKEN_ADMISSION_R0.md) binds a separate *full model request* count receipt to its exact serialized request hash and declared model/window, reserves output tokens, and holds on stale, mismatched, text-only or oversize counts. Its [43 offline tests](test_request_token_admission_r0.cjs) run in the same existing CI workflow. This neither calls a provider nor verifies model limits, actual tokens, X2 runtime or model effect authority.
+
+### CoOmni R0.1 privacy noninterference candidate (2026-10-26)
+
+The earlier draft's excluded-row counter and partial-privacy state exposed a hidden-source existence bit in public output. A dependent review patch tests that adding private/sensitive/unknown records to the same PUBLIC source set **does not change the exact serialized packet**, while preserving its bounded positive/negative selection and zero-effect semantics. The existing CoContextBudget R0 test count advances **42 → 50** on that review branch. See [CONTEXT_BUDGET_R0.md](CONTEXT_BUDGET_R0.md). This does not imply timing-side-channel protection or authenticated classifications.
