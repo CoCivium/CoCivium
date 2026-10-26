@@ -69,4 +69,30 @@ class TestCoVisualFinderR1(unittest.TestCase):
     def test_49_w3c_not_normative(self): self.assertEqual(self.reg['public_donors'][2]['epistemic_class'],'TECHNICAL_REFERENCE_DRAFT_NOT_NORMATIVE')
     def test_50_license_local_scope(self): self.assertTrue(all(x['selected_reuse']=='MOTIF_ONLY_LINK_BACK_TO_SOURCE' for x in self.reg['public_donors']))
 
+    def test_51_url_query_rejected(self):
+        self.assertFalse(finder.check_url('https://commons.wikimedia.org/wiki/File:Example.svg?token=synthetic-private'))
+    def test_52_custom_port_rejected(self):
+        self.assertFalse(finder.check_url('https://commons.wikimedia.org:8443/wiki/File:Example.svg'))
+    def test_53_invalid_port_rejected_without_exception(self):
+        self.assertFalse(finder.check_url('https://commons.wikimedia.org:bad/wiki/File:Example.svg'))
+    def test_54_non_string_url_rejected(self):
+        self.assertFalse(finder.check_url(None))
+    def test_55_control_character_rejected(self):
+        self.assertFalse(finder.check_url('https://commons.wikimedia.org/wiki/File:Example.svg\\n'))
+    def test_56_fewer_than_four_sources_rejected(self):
+        self.rejected(lambda x:x['public_donors'].pop())
+    def test_57_empty_catalogue_rejected(self):
+        self.rejected(lambda x:x.update(public_donors=[]))
+    def test_58_unknown_root_private_field_rejected(self):
+        self.rejected(lambda x:x.update(raw_private_data='synthetic-private-fixture'))
+    def test_59_unknown_source_field_rejected(self):
+        self.rejected(lambda x:x['public_donors'][0].update(user_clipboard='synthetic-private-fixture'))
+    def test_60_unknown_policy_field_rejected(self):
+        self.rejected(lambda x:x['policy'].update(autosend=True))
+    def test_61_unknown_effect_field_rejected(self):
+        self.rejected(lambda x:x['effects'].update(public_broadcast=0))
+    def test_62_original_public_reference_links_remain_valid(self):
+        self.assertTrue(all(finder.check_url(x['source_page']) and
+                            finder.check_url(x['rights_evidence_page']) for x in self.reg['public_donors']))
+
 if __name__=='__main__': unittest.main()
