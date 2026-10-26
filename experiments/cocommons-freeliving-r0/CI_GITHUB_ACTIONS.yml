@@ -1,0 +1,24 @@
+name: CoCommons free and living policy R0
+on:
+  pull_request:
+    paths:
+      - 'experiments/cocommons-freeliving-r0/**'
+      - '.github/workflows/cocommons-freeliving-r0.yml'
+  push:
+    branches:
+      - research/cocommons-freeliving-r0-20261026
+permissions:
+  contents: read
+jobs:
+  public-policy-integrity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Policy and adversarial source checks
+        run: python3 -m unittest discover -s experiments/cocommons-freeliving-r0/tests -v
+      - name: Pinned evidence ledger
+        run: python3 experiments/cocommons-freeliving-r0/verify_ledger.py
