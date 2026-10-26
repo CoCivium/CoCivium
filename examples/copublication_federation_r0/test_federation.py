@@ -382,6 +382,18 @@ class FederationTests(unittest.TestCase):
         self.assertIsNone(data['audit']['qualified_gd_measurement'])
         self.assertEqual(data['audit']['external_effect_count'],0)
 
+    def test_living_highlight_uses_main_only_donor_route(self):
+        readme=(ROOT/'README.md').read_text()
+        note=(ROOT/'HIGHLIGHT_CYCLIC_REGENERATION_R0.md').read_text()
+        asset=json.loads((ROOT/'coliving_highlight_cycle_r0.json').read_text())
+        source='https://github.com/CoCivium/CoCivium/blob/main/docs/Architecture/COAMPLIFICATORY_CYCLIC_REGENERATION_R0_20261026.md'
+        bad='](../../docs/Architecture/COAMPLIFICATORY_CYCLIC_REGENERATION_R0_20261026.md)'
+        self.assertIn(']('+source+')',readme)
+        self.assertIn(']('+source+')',note)
+        self.assertNotIn(bad,readme)
+        self.assertTrue(any(s.endswith('@blob:f0e7834add3aa2b310f2c03602c4fb2ae68c1838') for s in asset['source_bindings']))
+        self.assertIn('is not present in this older draft branch',readme)
+
     def test_cyclic_highlight_is_optional_and_not_seventh_claim(self):
         page=(ROOT/'index.html').read_text()
         self.assertIn('id="cyclic-heading"',page)
