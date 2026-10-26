@@ -159,6 +159,10 @@ class LegacyCompatibilityTests(unittest.TestCase):
     def test_30_unsupported_schema_rejected(self):
         self.reject(lambda d: d.__setitem__("schema", "CoAll.Canon"), "RELEASE_STATE_CHANGED")
 
+    def test_31_narrow_screen_unbroken_legacy_tokens_can_wrap(self):
+        self.assertIn("code,li,td,th,small{overflow-wrap:anywhere;word-break:break-word}", self.html)
+        self.assertIn(".tablewrap{max-width:100%;overflow-x:auto}", self.html)
+
 
 if __name__ == "__main__":
     unittest.main()
