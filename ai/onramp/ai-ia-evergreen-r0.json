@@ -12,13 +12,15 @@
   "pinned_source_observations": [
     {
       "path": "docs/AI_DISCOVERY_POLICY.md",
-      "sha": "7d1da57d7cb7725bc5ef4e7e1ef16e80f5272de4",
-      "why": "Public non-directive AI discovery"
+      "sha": "7fdac031ea710dbea26272f009c64a4ec3e1add0",
+      "why": "Public non-directive AI discovery; successor machine onramp pointer verified",
+      "observed_predecessor_sha": "7d1da57d7cb7725bc5ef4e7e1ef16e80f5272de4"
     },
     {
       "path": "ai/session-bootstrap.json",
-      "sha": "9eb5334419ee616b6888a133babd9d9e89bed9f9",
-      "why": "Role-filtered currentness and existing-session hold"
+      "sha": "9dc6b6bf687b0849ff9b758a5e8d108348d609ba",
+      "why": "Role-filtered currentness and existing-session hold; successor machine onramp pointer verified",
+      "observed_predecessor_sha": "9eb5334419ee616b6888a133babd9d9e89bed9f9"
     },
     {
       "path": "ai/index.json",
@@ -265,5 +267,7 @@
     "path": "ai/onramp/ai-ia-evergreen-benchmark-r0.jsonl",
     "observed_blob": "cf40ada4c79249bded5ef015c9afb1ef36dc76ec",
     "scope": "THREE_SCOPED_SOURCE_AND_REACHABILITY_RECEIPTS__NOT_GLOBAL_RUNTIME_METRICS"
-  }
+  },
+  "source_refresh_observed_at_utc": "2026-10-26",
+  "source_refresh_note": "Pins to AI Discovery Policy and machine bootstrap now reflect successful additive R0 link edits; observed source version is still not proof that any external receiver used them."
 }
