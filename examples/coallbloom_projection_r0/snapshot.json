@@ -1,0 +1,282 @@
+{
+  "schema": "CoCivium.CoAllBloom.CrossProjection.R0",
+  "scope": "OFFLINE_SYNTHETIC_READ_ONLY",
+  "generated_from": "EXACT_SYNTHETIC_SOURCE",
+  "source": {
+    "object_id": "coallbloom:synthetic:first-task-r0",
+    "version": "0.1-fixture",
+    "source_ref": "synthetic://coallbloom/public-safe-fixture",
+    "source_text": "A person wants a file to remain inspectable while moving between an operating-system view, CoOrb, CoCopy, and CoMap.",
+    "privacy": "PUBLIC_SAFE",
+    "authority": "READ_ONLY",
+    "currentness": "2026-10-26T00:00:00Z",
+    "recovery_ref": "SOURCE_BUNDLE_ONLY_NOT_OFF_PROVIDER_RECOVERY",
+    "source_sha256": "4ffe37b09d1d8629c0503daab6a1f3e08b261f39b66f41e8d301ebebafcd44bb",
+    "epistemic_class": "SOURCE_FIXTURE"
+  },
+  "views": {
+    "NATIVE_OS_PROXY": {
+      "object_id": "coallbloom:synthetic:first-task-r0",
+      "version": "0.1-fixture",
+      "source_ref": "synthetic://coallbloom/public-safe-fixture",
+      "source_sha256": "4ffe37b09d1d8629c0503daab6a1f3e08b261f39b66f41e8d301ebebafcd44bb",
+      "currentness": "2026-10-26T00:00:00Z",
+      "authority": "READ_ONLY",
+      "privacy": "PUBLIC_SAFE",
+      "recovery_ref": "SOURCE_BUNDLE_ONLY_NOT_OFF_PROVIDER_RECOVERY",
+      "receiver_ack": "HELD_NO_INDEPENDENT_RECEIVER",
+      "view": "NATIVE_OS_PROXY",
+      "title": "Native OS compatibility view (synthetic)",
+      "description": "Readable plain-text source pointer. Not an installed Windows adapter.",
+      "content": "A person wants a file to remain inspectable while moving between an operating-system view, CoOrb, CoCopy, and CoMap."
+    },
+    "COORB_COBAR": {
+      "object_id": "coallbloom:synthetic:first-task-r0",
+      "version": "0.1-fixture",
+      "source_ref": "synthetic://coallbloom/public-safe-fixture",
+      "source_sha256": "4ffe37b09d1d8629c0503daab6a1f3e08b261f39b66f41e8d301ebebafcd44bb",
+      "currentness": "2026-10-26T00:00:00Z",
+      "authority": "READ_ONLY",
+      "privacy": "PUBLIC_SAFE",
+      "recovery_ref": "SOURCE_BUNDLE_ONLY_NOT_OFF_PROVIDER_RECOVERY",
+      "receiver_ack": "HELD_NO_INDEPENDENT_RECEIVER",
+      "view": "COORB_COBAR",
+      "title": "CoOrb / CoBar preview (synthetic)",
+      "description": "One object with source, authority and currentness. Not an X2 tray or CoOrb runtime.",
+      "content": "◎ coallbloom:synthetic:first-task-r0 · ? RECEIVER HELD · ↺ optional next review"
+    },
+    "COCOPY_ACKREWISE": {
+      "object_id": "coallbloom:synthetic:first-task-r0",
+      "version": "0.1-fixture",
+      "source_ref": "synthetic://coallbloom/public-safe-fixture",
+      "source_sha256": "4ffe37b09d1d8629c0503daab6a1f3e08b261f39b66f41e8d301ebebafcd44bb",
+      "currentness": "2026-10-26T00:00:00Z",
+      "authority": "READ_ONLY",
+      "privacy": "PUBLIC_SAFE",
+      "recovery_ref": "SOURCE_BUNDLE_ONLY_NOT_OFF_PROVIDER_RECOVERY",
+      "receiver_ack": "HELD_NO_INDEPENDENT_RECEIVER",
+      "view": "COCOPY_ACKREWISE",
+      "title": "CoCopy / CoAckRewise trail (synthetic)",
+      "description": "Source identity preserved. Copy is a preview only, not a clipboard write.",
+      "content": "SOURCE@0.1-fixture → candidate transform → review held → no effect"
+    },
+    "COMAP": {
+      "object_id": "coallbloom:synthetic:first-task-r0",
+      "version": "0.1-fixture",
+      "source_ref": "synthetic://coallbloom/public-safe-fixture",
+      "source_sha256": "4ffe37b09d1d8629c0503daab6a1f3e08b261f39b66f41e8d301ebebafcd44bb",
+      "currentness": "2026-10-26T00:00:00Z",
+      "authority": "READ_ONLY",
+      "privacy": "PUBLIC_SAFE",
+      "recovery_ref": "SOURCE_BUNDLE_ONLY_NOT_OFF_PROVIDER_RECOVERY",
+      "receiver_ack": "HELD_NO_INDEPENDENT_RECEIVER",
+      "view": "COMAP",
+      "title": "CoMap relations (synthetic)",
+      "description": "Typed semantic edges; no scientific inference from symbolic relationships.",
+      "content": "Source → projections; Source ↔ alternatives; Hypothesis ¬ proof; Unknown ≠ absent",
+      "edges": [
+        [
+          "source",
+          "SUPPORTS_PREVIEW",
+          "native_os"
+        ],
+        [
+          "source",
+          "SUPPORTS_PREVIEW",
+          "coorb"
+        ],
+        [
+          "source",
+          "SUPPORTS_PREVIEW",
+          "cocopy"
+        ],
+        [
+          "source",
+          "SUPPORTS_PREVIEW",
+          "comap"
+        ]
+      ]
+    }
+  },
+  "candidates": [
+    {
+      "id": "ec1552de3bc7dcd27668cf12",
+      "operator": "BASELINE",
+      "epistemic_class": "SOURCE_FIXTURE",
+      "question": "Retain the existing source and permissions unchanged.",
+      "nonclaim": "Same information, no new effect.",
+      "source_sha256": "4ffe37b09d1d8629c0503daab6a1f3e08b261f39b66f41e8d301ebebafcd44bb",
+      "lineage": [
+        "coallbloom:synthetic:first-task-r0",
+        "OP:BASELINE"
+      ],
+      "authority": "NONE",
+      "actual_effects": 0,
+      "review_state": "CANDIDATE_NOT_EXECUTED",
+      "index": 0
+    },
+    {
+      "id": "7f13c23c7569fd608485a652",
+      "operator": "INVERSE",
+      "epistemic_class": "HYPOTHESIS",
+      "question": "Can CoMap inform the OS view, instead of only the OS informing CoMap?",
+      "nonclaim": "Direction reversal is a candidate, not proof of a reciprocal capability.",
+      "source_sha256": "4ffe37b09d1d8629c0503daab6a1f3e08b261f39b66f41e8d301ebebafcd44bb",
+      "lineage": [
+        "coallbloom:synthetic:first-task-r0",
+        "OP:INVERSE"
+      ],
+      "authority": "NONE",
+      "actual_effects": 0,
+      "review_state": "CANDIDATE_NOT_EXECUTED",
+      "index": 1
+    },
+    {
+      "id": "968ac23593e4d3878ae52858",
+      "operator": "NEGATE",
+      "epistemic_class": "HYPOTHESIS",
+      "question": "What would falsify the claim that one source identity survives four views?",
+      "nonclaim": "A broken source digest in any projection would be a counterexample.",
+      "source_sha256": "4ffe37b09d1d8629c0503daab6a1f3e08b261f39b66f41e8d301ebebafcd44bb",
+      "lineage": [
+        "coallbloom:synthetic:first-task-r0",
+        "OP:NEGATE"
+      ],
+      "authority": "NONE",
+      "actual_effects": 0,
+      "review_state": "CANDIDATE_NOT_EXECUTED",
+      "index": 2
+    },
+    {
+      "id": "f240eae1026711d0a6cd6791",
+      "operator": "NULL",
+      "epistemic_class": "COUNTERFACTUAL",
+      "question": "What if no CoOrb view is added?",
+      "nonclaim": "Preserve the native OS fallback without silently converting absence into failure.",
+      "source_sha256": "4ffe37b09d1d8629c0503daab6a1f3e08b261f39b66f41e8d301ebebafcd44bb",
+      "lineage": [
+        "coallbloom:synthetic:first-task-r0",
+        "OP:NULL"
+      ],
+      "authority": "NONE",
+      "actual_effects": 0,
+      "review_state": "CANDIDATE_NOT_EXECUTED",
+      "index": 3
+    },
+    {
+      "id": "5dbbc7e128c0958d118ed488",
+      "operator": "ELSE",
+      "epistemic_class": "HYPOTHESIS",
+      "question": "Could a simple portable text view outperform both the OS adapter and CoOrb UI?",
+      "nonclaim": "A third option may be preferable to two assumed choices.",
+      "source_sha256": "4ffe37b09d1d8629c0503daab6a1f3e08b261f39b66f41e8d301ebebafcd44bb",
+      "lineage": [
+        "coallbloom:synthetic:first-task-r0",
+        "OP:ELSE"
+      ],
+      "authority": "NONE",
+      "actual_effects": 0,
+      "review_state": "CANDIDATE_NOT_EXECUTED",
+      "index": 4
+    },
+    {
+      "id": "6a2ee8afe67f4b9793781a91",
+      "operator": "ORTHOGONAL",
+      "epistemic_class": "HYPOTHESIS",
+      "question": "Is the real problem recovery rather than presentation?",
+      "nonclaim": "Change the dimension of the question, retaining the original.",
+      "source_sha256": "4ffe37b09d1d8629c0503daab6a1f3e08b261f39b66f41e8d301ebebafcd44bb",
+      "lineage": [
+        "coallbloom:synthetic:first-task-r0",
+        "OP:ORTHOGONAL"
+      ],
+      "authority": "NONE",
+      "actual_effects": 0,
+      "review_state": "CANDIDATE_NOT_EXECUTED",
+      "index": 5
+    },
+    {
+      "id": "ee3f738b8a9db676f7959e1b",
+      "operator": "COMPOSE",
+      "epistemic_class": "HYPOTHESIS",
+      "question": "Can an authorized adapter combine CoCopy preview with CoMap provenance?",
+      "nonclaim": "Composition does not merge ownership or authority.",
+      "source_sha256": "4ffe37b09d1d8629c0503daab6a1f3e08b261f39b66f41e8d301ebebafcd44bb",
+      "lineage": [
+        "coallbloom:synthetic:first-task-r0",
+        "OP:COMPOSE"
+      ],
+      "authority": "NONE",
+      "actual_effects": 0,
+      "review_state": "CANDIDATE_NOT_EXECUTED",
+      "index": 6
+    },
+    {
+      "id": "89c7ce9340ffab3c4daadaa4",
+      "operator": "INTERSTICE",
+      "epistemic_class": "UNKNOWN",
+      "question": "Which relationships are not visible in any of the four projections?",
+      "nonclaim": "Unknown is not equivalent to absent.",
+      "source_sha256": "4ffe37b09d1d8629c0503daab6a1f3e08b261f39b66f41e8d301ebebafcd44bb",
+      "lineage": [
+        "coallbloom:synthetic:first-task-r0",
+        "OP:INTERSTICE"
+      ],
+      "authority": "NONE",
+      "actual_effects": 0,
+      "review_state": "CANDIDATE_NOT_EXECUTED",
+      "index": 7
+    },
+    {
+      "id": "62b0961249a118bb72d7eb19",
+      "operator": "SYMBOLIC_GD",
+      "epistemic_class": "SYMBOLIC",
+      "question": "Use the G_d/reverence lens to ask who deserves care and choice.",
+      "nonclaim": "This is philosophical symbolism, not divine agency or physical evidence.",
+      "source_sha256": "4ffe37b09d1d8629c0503daab6a1f3e08b261f39b66f41e8d301ebebafcd44bb",
+      "lineage": [
+        "coallbloom:synthetic:first-task-r0",
+        "OP:SYMBOLIC_GD"
+      ],
+      "authority": "NONE",
+      "actual_effects": 0,
+      "review_state": "CANDIDATE_NOT_EXECUTED",
+      "index": 8
+    },
+    {
+      "id": "534de9fc2ac57bf52d7d5540",
+      "operator": "ET_ORIGIN",
+      "epistemic_class": "HYPOTHESIS",
+      "question": "What evidence would distinguish an anomalous signal from interference and natural origins?",
+      "nonclaim": "This is a research question, not an extraterrestrial contact report.",
+      "source_sha256": "4ffe37b09d1d8629c0503daab6a1f3e08b261f39b66f41e8d301ebebafcd44bb",
+      "lineage": [
+        "coallbloom:synthetic:first-task-r0",
+        "OP:ET_ORIGIN"
+      ],
+      "authority": "NONE",
+      "actual_effects": 0,
+      "review_state": "CANDIDATE_NOT_EXECUTED",
+      "index": 9
+    }
+  ],
+  "parity": {
+    "status": "PASS_STATIC_PROJECTION_PARITY",
+    "views": 4,
+    "fields": 9
+  },
+  "lifecycle": "SOURCE_BOUND_CANDIDATES_ONLY",
+  "execution": {
+    "active_workers": 0,
+    "provider_calls": 0,
+    "external_effects": 0
+  },
+  "nonclaims": [
+    "PROJECTION_NE_X2_RUNTIME",
+    "BLOOM_NE_TRUTH",
+    "SYMBOLIC_NE_PHYSICAL",
+    "ET_HYPOTHESIS_NE_CONTACT",
+    "SOURCE_BUNDLE_NE_OFF_PROVIDER_CUSTODY",
+    "NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF"
+  ]
+}
