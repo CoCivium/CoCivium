@@ -1,0 +1,31 @@
+name: CoOpticsGap R1 synthetic shadow and speckle controls
+
+on:
+  pull_request:
+    paths:
+      - 'examples/cooptics_gap_r1/**'
+      - '.github/workflows/cooptics-gap-r1.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  offline-scientific-controls:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate deterministic synthetic optics syntax
+        run: node --check examples/cooptics_gap_r1/cooptics_gap_r1.mjs
+      - name: Run 50 no-effect geometric/phase/polarizer negative controls
+        run: node --test --test-reporter=tap examples/cooptics_gap_r1/cooptics_gap_r1.test.mjs
+      - name: Reproduce offline synthetic evidence
+        run: |
+          node examples/cooptics_gap_r1/cooptics_gap_r1.mjs > /tmp/cooptics-gap-r1-result.json
+          node -e "const fs=require('fs'); const x=JSON.parse(fs.readFileSync('/tmp/cooptics-gap-r1-result.json','utf8')); if(x.claim_ceiling!=='SYNTHETIC_DEMONSTRATION_ONLY'||x.receiver_ack!==null||Object.values(x.effects).some(v=>v!==0)) process.exit(1); console.log('SYNTHETIC_ONLY_PASS: source '+x.source_sha256)"
+      - name: Preserve truth boundary
+        run: echo "PASS is a synthetic method replay, not a real laser, ET, G_d, human observer, or independent receiver"
