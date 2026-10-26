@@ -1,0 +1,26 @@
+{
+  "schema": "CoCivium.CoMediaQualityGate.R1",
+  "asset_id": "great-refact-capabilities-short-r0",
+  "status": "WIP_STORYBOARD",
+  "publication_effect_authorized": false,
+  "source_identity": "CoCivium/CoCivium:docs/Architecture/COBOOK_LIVING_RICH_MEDIA_SYSTEM_R0_20261025.md",
+  "source_revision": "f0f5992302ddddc6dbb173dd16d2d77557f1b1a2",
+  "public_note": "WORK IN PROGRESS: Visual treatment, narration, accessibility, rights and release are not yet approved.",
+  "shape": "VERTICAL_9_16",
+  "platform_candidate": "YouTube Shorts and optional RickPublic/Substack embeds",
+  "rights": {"visuals": "UNKNOWN", "music": "UNKNOWN", "voice": "UNKNOWN"},
+  "accessibility": {"captions_prepared": false, "text_twin_prepared": true},
+  "realistic_ai_alteration": false,
+  "ai_use_declared": true,
+  "review": {"editorial_approval_receipt": null, "reader_comprehension_receipt": null},
+  "publication_url": null,
+  "receiver_ack": null,
+  "storyboard": [
+    {"shot":1,"seconds":6,"visual":"A messy grid of closed app boxes; each contains one useful capability.","voiceover":"We built entire products around a few useful abilities.","evidence_class":"DESIGN_PROPOSAL"},
+    {"shot":2,"seconds":7,"visual":"One box opens, revealing a typed capability card, not a broken product.","voiceover":"What if the capability could travel, with permission, beyond the box?","evidence_class":"HYPOTHESIS"},
+    {"shot":3,"seconds":8,"visual":"Three capability cards connect through a source-bound graph with visible consent gates.","voiceover":"The useful part is cooperation, without surrendering control.","evidence_class":"DESIGN_PROPOSAL"},
+    {"shot":4,"seconds":9,"visual":"Split screen: an imposing architecture map versus one real person finishing one task.","voiceover":"The test isn't the biggest diagram. It's whether someone actually gets something done.","evidence_class":"DESIGN_PROPOSAL"},
+    {"shot":5,"seconds":8,"visual":"Visible Proof/Held labels; older versions remain in a small readable history rail.","voiceover":"Show the evidence, the uncertainty and what changed.","evidence_class":"DESIGN_PROPOSAL"},
+    {"shot":6,"seconds":7,"visual":"A simple open doorway labelled Try, Challenge, Correct. End on a stable URL candidate.","voiceover":"Bring one task. Challenge one assumption. Help make the next version better.","evidence_class":"DESIGN_PROPOSAL"}
+  ]
+}
