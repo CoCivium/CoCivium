@@ -1,13 +1,20 @@
 # CoCivium ⊂ Trust Together
 
-**New here? Start with one simple, proof-linked task:** [CoCivium in 60 seconds](START_HERE.md). The custom-domain front door is being verified; this GitHub entry is source-controlled, not a claim of independent audience uptake.
+**What this is:** CoCivium is an open research project building small, testable tools that help people and AI systems work together. We want people to be able to understand what a tool does, inspect its evidence, choose whether to use it, and undo a change.
+
+**Try one example (about five minutes):** [Open the CoPreCursor offline example](examples/coprecursor/index.html), use its fictional sample and try **Preview → Accept → Undo**. No account, installer or private data is required for this example. It is a browser-local, rule-based demonstration, **not** a deployed AI agent or desktop automation. [Source and limits](examples/coprecursor/README.md).
+
+**Want the short explanation instead?** [Start here in 60 seconds](START_HERE.md). Have a real task? [Bring one thing to improve](docs/Onramp/COCIVIA_FIRST_USE_R0.md). Confused by the first step? [Report what was unclear](https://github.com/CoCivium/CoCivium/issues) without posting private information.
 
 > [!IMPORTANT]
-> **Public R&D / pre-launch transition:** CoCivium is moving from mostly private prototyping toward a public demo / pre-launch phase. Repositories, terms, interfaces, and machine-readable projections are being reorganized. Expect **StrawBe+** work-in-progress objects, explicit nonclaims, and superseded prototypes. **Public does not mean validated, finished, endorsed, or release-ready.** See [PRELAUNCH.md](PRELAUNCH.md).
+> **Public research, not a finished service.** The custom-domain front door and onboarding are still being qualified. Published code and local tests do not prove independent user success, general device integration or release readiness. See [pre-launch status](PRELAUNCH.md).
 
+<details>
+<summary>Optional poetic and speculative background (not a scientific or external-contact claim)</summary>
 
 *"If Universes are NOT quantum, but we are; if alien observers prove planck relationals; if all is rels; and if CoCivium is CoCME+Rels; can yous sing the CoQuadPieRels+ CoSong with us yet...?  Or are you from legacy physics?  If so, blame not selves, blame obsolete schools, maybe?"*
 
+</details>
 
 > **Try a public CoOrbWare-style experience:** [CoOrbWare First Look](https://github.com/CoCivium/CoAcademy/blob/master/docs/coorb/index.html) is a source-linked public browser prototype with six reader-selected paths and explicit unknowns. [CoCivicLens+](https://github.com/CoCivium/CoAcademy/blob/master/docs/civiclens/index.html) is a nonpartisan civic-learning example. [AI-readable experiment index](ai/index.json). GitHub source is public; independent browser reachability and user outcomes must be verified separately. Neither is a finished cross-device OS.
 
