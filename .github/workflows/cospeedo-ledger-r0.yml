@@ -1,0 +1,38 @@
+name: CoSpeedo evidence ledger strict offline audit
+on:
+  pull_request:
+    paths:
+      - "benchmarks/evo.jsonl"
+      - "ai/benchmark-evo.jsonl"
+      - "scripts/CoSpeedoLedgerAuditR0.py"
+      - "tests/test_cospeedo_ledger_audit_r0.py"
+      - ".github/workflows/cospeedo-ledger-r0.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Python syntax without services
+        run: python -m py_compile scripts/CoSpeedoLedgerAuditR0.py tests/test_cospeedo_ledger_audit_r0.py
+      - name: Run negative and evidence-ceiling fixtures
+        run: python -m unittest discover -s tests -p "test_cospeedo_ledger_audit_r0.py" -v
+      - name: Audit exact 7-day sampled source window
+        run: |
+          python scripts/CoSpeedoLedgerAuditR0.py --as-of 2026-10-26 > /tmp/cospeedo_r0.json
+          python - <<'PY'
+          import json
+          p=json.load(open("/tmp/cospeedo_r0.json",encoding="utf-8"))
+          assert p["schema"] == "CoCivium.CoSpeedo.EvidenceAudit.R0"
+          assert p["metrics"]["CoSpeedoBenefitAcceleration"]["state"] == "NOT_ESTABLISHED"
+          assert p["metrics"]["CoClosureYield"]["value"] is None
+          assert all(x == 0 for x in p["effects"].values())
+          print("PASS_SOURCE_LOGS_ONLY:",[(s["path"],s["physical_jsonl_rows"]) for s in p["source_checks"]])
+          print("NO_EXTERNAL_EFFECTS__NO_RECEIVER_BENEFIT_PROMOTION")
+          PY
