@@ -1,0 +1,69 @@
+{
+  "data_metrics": {
+    "coherent_speckle_cv": 0.87315,
+    "low_detector_bins_fraction_below_point_1_mean": 0.0625,
+    "mean_abs_polarization_change": 0.242915,
+    "mean_abs_wavelength_change": 0.903805,
+    "shadow_status_diff_count": 100,
+    "shadowed_left": 100,
+    "shadowed_right": 98
+  },
+  "date": "2026-10-26",
+  "et_detection": "NOT_CLAIMED",
+  "external_receivers": [],
+  "gd_measurement": "NOT_CLAIMED",
+  "matplotlib": "3.10.8",
+  "numpy": "2.3.5",
+  "objects": [
+    {
+      "bytes": 8519,
+      "path": "README.md",
+      "sha256": "77a7aaebf73b40d56cea79206fbcc15b5e631f069d0b09827db870a7a9d1359c"
+    },
+    {
+      "bytes": 1238,
+      "path": "benchmark_evo.jsonl",
+      "sha256": "bed3431b9adf7f376ada75330a196a96473c0d9f4e9a05b3158e82cf9f7881ae"
+    },
+    {
+      "bytes": 6804,
+      "path": "cooptics_canary_r1.py",
+      "sha256": "ee6fad72e7a6f2139adbbdd35b9d59982dd65fd956563ade1029c7482b6a8e69"
+    },
+    {
+      "bytes": 2950,
+      "path": "render_cooptics_r1.py",
+      "sha256": "7a13311ea6f9f54542523e0697fe99d1f7ee21b76816fc08bd8cbcd63bb6bc61"
+    },
+    {
+      "bytes": 153443,
+      "path": "shadow_geometry_r1.png",
+      "sha256": "bae9588a0d2951cf113691868b1247686dfeda6f226bb918dfc04781cf0469ca"
+    },
+    {
+      "bytes": 265780,
+      "path": "speckle_detector_r1.png",
+      "sha256": "8e72176ee34d9f75635f03e078075fae419aef01ba0ceb3f2cb255830ee22778"
+    },
+    {
+      "bytes": 19406,
+      "path": "synthetic_results_r1.json",
+      "sha256": "c2039ea0f498a4f5353298aafb07c8bf8cb253c353282dded41712e628e61e7d"
+    },
+    {
+      "bytes": 5644,
+      "path": "test_cooptics_canary_r1.py",
+      "sha256": "7b5b6edc018d81fdeaca5769661393a945fa52b4ecb7306f9bf467a70af8f59f"
+    }
+  ],
+  "platform": "Linux-6.18.55-x86_64-with-glibc2.41",
+  "python": "3.13.5",
+  "real_instrument": "HELD",
+  "schema": "CoCivium.CoOpticsGap.SyntheticShadowSpeckle.Manifest.R1",
+  "source_height_sha256": "8ddef8f8d8dc08a74eeeecff3b81a1dee7bbd09997e3bd0fa88987b8fc380d4c",
+  "status": "PASS_SYNTHETIC_ONLY",
+  "tests": {
+    "failed": 0,
+    "passed": 40
+  }
+}
