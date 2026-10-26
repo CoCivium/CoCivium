@@ -1,0 +1,43 @@
+{
+  "status": "PASS_BOUNDED_SYNTHETIC_R0",
+  "scope": "PUBLIC_SAFE_OFFLINE_NO_RECEIVER",
+  "version_count": 3,
+  "resource_id": "urn:co:resource:synthetic:living-commons-01",
+  "latest_sha256": "46cc3ff490af15dd24998690ba8abd86ad7c46f48a6546faba756721b72620ae",
+  "immutable_message_sha256": "bea2bbbd8c9971da88f69c4c2fa7132d50ec647e032e7e812e7c9fb9b876a355",
+  "actual_sends": 0,
+  "actual_subscribers": 0,
+  "payment_runtime": "NOT_CONFIGURED",
+  "html_sha256": "c5fb2214ee1c5524550d55e9e429e35c526aaf7e442702810b60540aeefb0c35",
+  "feed_sha256": "feb42a350bf92b447fad555fdfa66149d39657d4d97b25a7b6a49455cf6d0738",
+  "fixture_sha256": "1452fe7764ca2a15cf1e4aa8b7476f5136bcdcc8eb7aa0f4615ba3063b4d302e",
+  "source_contracts": [
+    {
+      "repo": "CoCivium/CoCivium",
+      "path": "docs/Architecture/COFREE_EVOLVING_PUBLICATION_COMMONS_R0_20261026.md",
+      "blob_sha": "f18885508b95654f13a7cb7802b32f2c58868466"
+    },
+    {
+      "repo": "CoCivium/CoCivium",
+      "path": "docs/Architecture/COPUBLICATION_FEDERATION_RECEIVER_INTEREST_R0_20261025.md",
+      "blob_sha": "6c0a394f14a4aa02e76f4296383d19bd14abbfbb"
+    },
+    {
+      "repo": "CoCivium/CoCivium",
+      "path": "docs/Architecture/CORELATIONSHIP_BRAID_FABRIC_R0_20261026.md",
+      "blob_sha": "d8efd15076763a19b289d4e0811736d6c4705ca6"
+    }
+  ],
+  "nonclaims": [
+    "NO_EMAIL_SENT",
+    "NO_RECIPIENT_CONFIRMED",
+    "NO_SUBSCRIBERS",
+    "NO_PAYMENT_SYSTEM",
+    "NO_PUBLIC_SITE_ADOPTION",
+    "NO_AUTOMATIC_PUBLICATION",
+    "NO_INDEPENDENT_HUMAN_ACCEPTANCE",
+    "NO_ACTUAL_LIVE_UPDATES",
+    "NO_SILENT_REWRITES"
+  ],
+  "source_not_receiver": true
+}

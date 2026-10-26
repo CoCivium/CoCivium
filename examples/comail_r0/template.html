@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; img-src data:; connect-src 'none'; form-action 'none'; base-uri 'none'">
+<title>CoMail R0 | A fixed invitation, a living resource</title>
+<style>
+:root{color-scheme:dark;--bg:#0d1420;--surface:#172333;--border:#33435a;--text:#edf3fc;--muted:#aec0d5;--accent:#76d8ca;--accent2:#f0ca79;--bad:#f1a1a4}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top right,#20384a,#0d1420 62%);color:var(--text);font:16px/1.55 system-ui,-apple-system,'Segoe UI',sans-serif}main{max-width:1110px;margin:auto;padding:28px 20px 70px}
+.eyebrow{color:var(--accent);font-size:.76rem;letter-spacing:.13em;font-weight:800;text-transform:uppercase}h1{font-size:clamp(2rem,4.4vw,3.15rem);line-height:1.13;margin:10px 0 13px;max-width:900px}h2{font-size:1.35rem;line-height:1.3;margin:0 0 12px}h3{font-size:1rem;margin:0 0 8px}p{margin:6px 0 14px}.lede{max-width:760px;color:var(--muted);font-size:1.08rem}.badges{display:flex;gap:8px;flex-wrap:wrap;margin:22px 0}.pill{border:1px solid #466277;color:#c5e5ed;border-radius:999px;padding:4px 10px;font-size:.78rem;letter-spacing:.02em}.pill.warn{border-color:#775c42;color:#eed1a4}.diagram{display:flex;gap:9px;align-items:stretch;flex-wrap:wrap;margin:26px 0 28px}.node{background:#1c2b3e;border:1px solid var(--border);padding:12px;flex:1 1 160px;min-width:145px;border-radius:12px}.node strong{display:block;color:#eef8ff}.node small{display:block;color:var(--muted);font-size:.78rem}.arrow{align-self:center;color:var(--accent);font-size:1.5rem}.columns{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:16px}.card{min-width:0;border:1px solid var(--border);background:rgba(24,36,53,.86);padding:22px;border-radius:16px;box-shadow:0 7px 24px #0002}.card.historic{border-top:3px solid var(--accent2)}.card.living{border-top:3px solid var(--accent)}.metadata{font-size:.86rem;color:var(--muted)}.content{font-size:1.08rem}.buttonrow{display:flex;gap:8px;flex-wrap:wrap;margin:17px 0}button{border:1px solid #587085;background:#223851;color:var(--text);border-radius:9px;padding:10px 13px;cursor:pointer;font:inherit;font-weight:650}button:focus-visible,a:focus-visible,textarea:focus-visible{outline:3px solid var(--accent2);outline-offset:3px}button:hover{background:#304861}button.active{background:#134e4d;border-color:var(--accent)}button[disabled]{opacity:.5;cursor:not-allowed}.pill.safe{color:var(--accent)}.versions{display:flex;flex-wrap:wrap;gap:8px}#revision-meta,#message-hash{overflow-wrap:anywhere}.hash{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:.73rem;color:#c7d6ed;overflow-wrap:anywhere}.divider{border-top:1px solid var(--border);margin:18px 0}.compare{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:10px}.diff-side{padding:12px;border:1px solid var(--border);background:#0f1b2a;border-radius:10px}.diff-side p{font-size:.88rem;white-space:pre-wrap}.diff-side small{color:var(--muted)}#compare-panel[hidden],#feedback-panel[hidden]{display:none}textarea{width:100%;background:#111e2c;border:1px solid #617187;border-radius:8px;color:var(--text);padding:12px;resize:vertical;font:inherit;min-height:95px;max-width:100%}.note{font-size:.88rem;color:var(--muted)}.status{color:var(--accent2);font-size:.83rem}code{background:#0c1a25;padding:2px 5px;border-radius:4px}a{color:#9ee5e1}footer{padding-top:18px;margin-top:20px;border-top:1px solid var(--border);font-size:.85rem;color:var(--muted)}
+@media(max-width:720px){main{padding:20px 14px 45px}.columns{grid-template-columns:minmax(0,1fr)}.compare{grid-template-columns:minmax(0,1fr)}.arrow{display:none}.node{flex:1 1 43%}.card{padding:17px}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+</style>
+</head>
+<body>
+<main>
+ <p class="eyebrow">CoMail+ R0 · Public-safe synthetic offline example</p>
+ <h1>Keep the invitation fixed. Let the work evolve.</h1>
+ <p class="lede">CoMail is a proposed pattern, not a new email service. The original message remains an inspectable historical record. A separate, stable resource identity can point to reviewed successor versions, with clear differences and voluntary feedback.</p>
+ <div class="badges"><span class="pill safe">No email sent</span><span class="pill">No sign-in or tracking</span><span class="pill">Three synthetic versions</span><span class="pill warn">No live subscription or donations</span></div>
+ <div class="diagram" aria-label="CoMail relationship sequence">
+  <div class="node"><strong>✉ Fixed</strong><small>Historical note, not rewritten</small></div><div class="arrow" aria-hidden="true">→</div>
+  <div class="node"><strong>◎ Living</strong><small>Stable resource identity</small></div><div class="arrow" aria-hidden="true">→</div>
+  <div class="node"><strong>Δ Version</strong><small>Predecessor and change reason</small></div><div class="arrow" aria-hidden="true">→</div>
+  <div class="node"><strong>↔ Feedback</strong><small>Optional local draft, not sent</small></div>
+ </div>
+ <div class="columns">
+  <section class="card historic" aria-label="Immutable invitation">
+   <p class="eyebrow">01 · Historical anchor</p><h2 id="message-title">Invitation</h2>
+   <p class="content" id="message-body"></p>
+   <p class="status">SYNTHETIC_NOT_SENT. Nobody was contacted.</p>
+   <div class="divider"></div>
+   <p class="metadata">Immutable example identity</p><p class="hash" id="message-id"></p>
+   <p class="metadata">Linked resource identity · fixed in this note</p><p class="hash" id="message-resource"></p><a href="#living-resource">Open linked living-resource example</a>
+   <p class="metadata">Content SHA-256</p><p class="hash" id="message-hash"></p>
+   <p class="note">A real message, once sent, needs its own provider send record and exact intended recipient. This fixture has neither.</p>
+  </section>
+  <section class="card living" id="living-resource" aria-label="Living resource and history">
+   <p class="eyebrow">02 · Versioned living resource</p><h2 id="resource-title">Living resource</h2>
+   <div class="versions" id="version-picker" role="group" aria-label="Select a published example version"></div>
+   <div class="buttonrow"><button type="button" id="current">◎ View latest</button><button type="button" id="compare">Δ Compare predecessor</button><button type="button" id="feedback">↔ Draft feedback</button></div>
+   <h3 id="version-headline"></h3><p id="version-body" class="content"></p>
+   <p class="metadata" id="revision-meta"></p><p class="hash" id="resource-sha"></p>
+   <div class="divider"></div>
+   <p class="metadata">Why the source changed</p><p id="change-reason"></p>
+   <section id="compare-panel" hidden aria-label="Version difference"><h3>Compare source versions</h3><div class="compare"><div class="diff-side"><small>Earlier · immutable</small><p id="before"></p></div><div class="diff-side"><small>Selected · candidate</small><p id="after"></p></div></div></section>
+   <section id="feedback-panel" hidden aria-label="Prepare a local feedback draft"><h3>Prepare feedback, without sending</h3><label for="feedback-text" class="metadata">Optional correction or question</label><textarea id="feedback-text" maxlength="1200" placeholder="What should be improved or challenged?"></textarea><div class="buttonrow"><button id="save-feedback" type="button">Download local proposal JSON</button><button id="clear-feedback" type="button">Clear</button></div><p id="feedback-state" class="status" aria-live="polite">No network, no account, no submission.</p></section>
+  </section>
+ </div>
+ <section class="card" style="margin-top:16px" aria-label="Governance and limitations">
+  <p class="eyebrow">03 · Proof and boundary</p><h2>What this example proves, and does not</h2>
+  <p><strong>Shows:</strong> fixed message identity, three content-hashed versions, exact predecessor links, visible source differences, an explicit current pointer, and an optional unsent feedback capsule. A reader can choose an older version without losing the newest one.</p>
+  <p><strong>Does not show:</strong> a sent email, verified consent, automatic publication, a payment processor, community adoption, recipient feedback, an authenticated editor, hosted live updates, or delivery receipts.</p>
+  <p class="note">Other CoAll relatives: CoEvergreen+ tracks lineage; CoLivingHighlight+ renders source-backed versions; CoMap+ maps relationships; CoOrbWare+ selects views; CoReach+ tracks actual delivery; CoTurtle+ challenges new claims; CoFree+ separates knowledge access from voluntary support.</p>
+  <p class="note">No donation solicitation operates here. Contributions or publicity must never purchase epistemic authority. <a href="feed.atom">View a static Atom feed example</a> (not a subscribed or hosted service).</p>
+ </section>
+ <footer>FOSS Forever · CoGoAll · Working Together Respectfully | <code>POINTER_NE_ACK</code> · <code>DIFF_NE_AUTOPUBLISH</code> · <code>FEEDBACK_DRAFT_NE_SEND</code> · <code>INFINITE_OPTIONALITY_NE_INFINITE_WORKERS</code></footer>
+</main>
+<script type="application/json" id="fixture-data">__COMAIL_JSON__</script>
+<script>
+'use strict';
+(() => {
+ const data=JSON.parse(document.getElementById('fixture-data').textContent);
+ const versions=data.resource.versions;
+ const urlVersion=(location.hash||"#").slice(1);
+ let selected=versions.some(v=>v.id===urlVersion)?urlVersion:data.resource.current;
+ const el=id=>document.getElementById(id);
+ const text=(id,value)=>{el(id).textContent=String(value)};
+ const state={compare:false,feedback:false};
+ function render(){
+  const item=versions.find(v=>v.id===selected);
+  const previous=item.predecessor ? versions.find(v=>v.id===item.predecessor):null;
+  text('version-headline',item.headline);
+  text('version-body',item.body);
+  text('revision-meta',item.id+' · '+item.observed_at+' · '+item.state+' · evidence: '+item.evidence);
+  text('resource-sha','SHA-256 '+item.sha256);
+  text('change-reason',item.why_changed);
+  el('compare').disabled=!previous;
+  el('compare-panel').hidden=!state.compare || !previous;
+  el('feedback-panel').hidden=!state.feedback;
+  if(previous){text('before',previous.body);text('after',item.body)}
+  el('version-picker').replaceChildren();
+  for(const v of versions){const b=document.createElement('button');b.type='button';b.textContent=v.id+(v.id===data.resource.current?' · latest':'');b.setAttribute('aria-pressed',String(v.id===selected));b.className=v.id===selected?'active':'';b.addEventListener('click',()=>{selected=v.id;state.compare=false;location.hash=v.id;render()});el('version-picker').append(b)}
+ }
+ text('message-title',data.fixed_message.title);text('message-body',data.fixed_message.body);
+ text('message-id',data.fixed_message.message_id);text('message-resource',data.fixed_message.resource_ref);text('message-hash',data.fixed_message.sha256);
+ text('resource-title',data.resource.title);render();
+ el('current').addEventListener('click',()=>{selected=data.resource.current;state.compare=false;location.hash=selected;render()});
+ addEventListener('hashchange',()=>{const v=(location.hash||'#').slice(1);if(versions.some(x=>x.id===v)){selected=v;state.compare=false;render()}});
+ el('compare').addEventListener('click',()=>{state.compare=!state.compare;render()});
+ el('feedback').addEventListener('click',()=>{state.feedback=!state.feedback;render();if(state.feedback)el('feedback-text').focus()});
+ el('clear-feedback').addEventListener('click',()=>{el('feedback-text').value='';text('feedback-state','Cleared. Nothing transmitted or stored by this page.')});
+ el('save-feedback').addEventListener('click',()=>{
+  const value=el('feedback-text').value.trim();
+  if(!value){text('feedback-state','Nothing to save. Enter a comment first.');return}
+  const item=versions.find(v=>v.id===selected);
+  const proposal={schema:'CoCivium.CoMail.LocalFeedbackProposal.R0',effect:'NONE',delivery:'NOT_SENT',source_resource_id:data.resource.resource_id,version_id:item.id,source_sha256:item.sha256,kind:'SUGGESTION_ONLY',content:value};
+  const blob=new Blob([JSON.stringify(proposal,null,2)+'\n'],{type:'application/json'}),a=document.createElement('a'),url=URL.createObjectURL(blob);
+  a.href=url;a.download='comail_feedback_unsent_'+item.id+'.json';a.click();URL.revokeObjectURL(url);
+  text('feedback-state','Prepared local JSON file. No submission, recipient or ACK.');
+ });
+})();
+</script>
+</body>
+</html>

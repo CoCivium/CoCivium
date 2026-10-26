@@ -1,0 +1,92 @@
+{
+  "schema": "CoCivium.CoMail.LivingResource.R0",
+  "visibility": "PUBLIC_SAFE_SYNTHETIC",
+  "artifact_id": "urn:co:comail:example:living-commons-01",
+  "distribution": {
+    "auto_send": false,
+    "actual_recipient_count": 0,
+    "subscription_runtime": "NOT_CONFIGURED",
+    "payment_runtime": "NOT_CONFIGURED",
+    "feedback_runtime": "LOCAL_UNSENT_ONLY",
+    "delivery_evidence": "NOT_SENT"
+  },
+  "fixed_message": {
+    "message_id": "urn:co:comail:synthetic:invitation-01",
+    "state": "SYNTHETIC_NOT_SENT",
+    "title": "A fixed invitation to an evolving commons",
+    "body": "This invitation is a fixed historical example. The linked work can have new versions, corrections and evidence. Nothing in this note means you have subscribed, agreed, endorsed, donated or received another message. Read, challenge, fork where rights permit, or leave.",
+    "sha256": "bea2bbbd8c9971da88f69c4c2fa7132d50ec647e032e7e812e7c9fb9b876a355",
+    "resource_ref": "urn:co:resource:synthetic:living-commons-01"
+  },
+  "resource": {
+    "resource_id": "urn:co:resource:synthetic:living-commons-01",
+    "title": "An invitation to a living commons",
+    "current": "v2",
+    "current_sha256": "46cc3ff490af15dd24998690ba8abd86ad7c46f48a6546faba756721b72620ae",
+    "rights": "ORIGINAL_SYNTHETIC_DEMO; NO THIRD_PARTY CONTENT",
+    "epistemic_status": "DESIGN_CANDIDATE_NOT_DEPLOYED",
+    "versions": [
+      {
+        "id": "v0",
+        "predecessor": null,
+        "observed_at": "2026-10-24T10:00:00Z",
+        "headline": "A useful question before another grand platform",
+        "body": "Can a stranger find one useful, checkable idea, keep a copy, disagree and leave? Access to this example is free. No account is required.",
+        "why_changed": "Original synthetic demonstration text.",
+        "evidence": "SYNTHETIC_EXAMPLE_NO_EXTERNAL_RECEIVER",
+        "state": "DRAFT_REVIEWED_ONLY_BY_BUILDER",
+        "sha256": "706ccf237db0541044a4d179f981826f53de689681a20f675bdc9df00f71b8e5"
+      },
+      {
+        "id": "v1",
+        "predecessor": "v0",
+        "observed_at": "2026-10-25T10:00:00Z",
+        "headline": "Corrections are part of the product",
+        "body": "Readers can compare a previous version with this one and prepare a proposed correction locally. Preparing feedback is not sending it, and feedback never silently edits the source.",
+        "why_changed": "Added inspectable versions and a non-transmitting feedback example.",
+        "evidence": "SYNTHETIC_EXAMPLE_NO_RECEIVER_FEEDBACK",
+        "state": "DRAFT_REVIEWED_ONLY_BY_BUILDER",
+        "sha256": "f702b3ce526823ab9a60099128213b1dd3f3f81985c3fd3377ed8ec74724f0ad"
+      },
+      {
+        "id": "v2",
+        "predecessor": "v1",
+        "observed_at": "2026-10-26T19:00:00Z",
+        "headline": "The commons stays free; support stays voluntary",
+        "body": "A source-linked work may be shared freely where rights permit. Optional donations could support contributors, accessibility, preservation and independent checking, with allocations disclosed before solicitation. This demo has no donation link and accepts no money.",
+        "why_changed": "Separated free access and transparent proposed support from payment and recognition authority.",
+        "evidence": "SYNTHETIC_EXAMPLE_NO_DONATION_OR_REVIEW_ACK",
+        "state": "DRAFT_REVIEWED_ONLY_BY_BUILDER",
+        "sha256": "46cc3ff490af15dd24998690ba8abd86ad7c46f48a6546faba756721b72620ae"
+      }
+    ]
+  },
+  "source_contracts": [
+    {
+      "repo": "CoCivium/CoCivium",
+      "path": "docs/Architecture/COFREE_EVOLVING_PUBLICATION_COMMONS_R0_20261026.md",
+      "blob_sha": "f18885508b95654f13a7cb7802b32f2c58868466"
+    },
+    {
+      "repo": "CoCivium/CoCivium",
+      "path": "docs/Architecture/COPUBLICATION_FEDERATION_RECEIVER_INTEREST_R0_20261025.md",
+      "blob_sha": "6c0a394f14a4aa02e76f4296383d19bd14abbfbb"
+    },
+    {
+      "repo": "CoCivium/CoCivium",
+      "path": "docs/Architecture/CORELATIONSHIP_BRAID_FABRIC_R0_20261026.md",
+      "blob_sha": "d8efd15076763a19b289d4e0811736d6c4705ca6"
+    }
+  ],
+  "nonclaims": [
+    "NO_EMAIL_SENT",
+    "NO_RECIPIENT_CONFIRMED",
+    "NO_SUBSCRIBERS",
+    "NO_PAYMENT_SYSTEM",
+    "NO_PUBLIC_SITE_ADOPTION",
+    "NO_AUTOMATIC_PUBLICATION",
+    "NO_INDEPENDENT_HUMAN_ACCEPTANCE",
+    "NO_ACTUAL_LIVE_UPDATES",
+    "NO_SILENT_REWRITES"
+  ]
+}
