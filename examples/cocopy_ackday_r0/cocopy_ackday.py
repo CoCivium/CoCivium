@@ -53,9 +53,11 @@ def location(root,day,create=False):
 
 def read_day(root,day):
     file=location(root,day)
+    if file.is_symlink():
+        raise ValueError("JOURNAL_NOT_REGULAR")
     if not file.exists():
         return []
-    if file.is_symlink() or not stat.S_ISREG(file.lstat().st_mode):
+    if not stat.S_ISREG(file.lstat().st_mode):
         raise ValueError("JOURNAL_NOT_REGULAR")
     if file.stat().st_size>MAX_LOG:
         raise ValueError("JOURNAL_TOO_LARGE")
@@ -128,7 +130,7 @@ def append(root,day,kind,source_id,data=b"",retain=False,parent=None,source_time
             raise ValueError("TOO_MANY_EVENTS")
         if parent is not None and parent not in {r["record_sha256"] for r in records}:
             raise ValueError("UNKNOWN_PARENT")
-        if file.exists() and (file.is_symlink() or not stat.S_ISREG(file.lstat().st_mode)):
+        if file.is_symlink() or (file.exists() and not stat.S_ISREG(file.lstat().st_mode)):
             raise ValueError("JOURNAL_NOT_REGULAR")
         row={"schema":SCHEMA,"seq":len(records)+1,"day":day,"kind":kind,
              "source_id":source_id,"source_time":source_time,
@@ -231,9 +233,14 @@ def cli():
         else:
             page=render(args.root,args.day)
             path=args.output.expanduser().absolute()
+            private_root=location(args.root,args.day).parent
+            if path.parent != private_root:
+                raise ValueError("OUTPUT_MUST_STAY_IN_PRIVATE_ROOT")
             if path.is_symlink():
                 raise ValueError("OUTPUT_SYMLINK_FORBIDDEN")
-            with path.open("x",encoding="utf8") as f:
+            flags=os.O_WRONLY|os.O_CREAT|os.O_EXCL|getattr(os,"O_NOFOLLOW",0)
+            fd=os.open(path,flags,0o600)
+            with os.fdopen(fd,"w",encoding="utf8") as f:
                 f.write(page)
             print(json.dumps({"state":"RENDERED_LOCAL_ONLY",
                               "day":args.day,"bytes":len(page.encode("utf8")),
