@@ -221,5 +221,16 @@ class CoLensStaticPreviewTests(unittest.TestCase):
         self.assertIn("min-height:44px", self.doc)
 
 
+    def test_33_mobile_long_status_wrap(self):
+        # Actual phone-width browser QA is separately required; this guards
+        # the CSS remedy for a first-try 390px horizontal-overflow failure.
+        self.assertIn("overflow-wrap:anywhere;", self.doc)
+        self.assertIn(
+            "STATIC_MARKUP_GENERATED__INDEPENDENT_BROWSER_AND_READER_ACCEPTANCE_HELD",
+            self.doc
+        )
+
+
+
 if __name__ == "__main__":
     unittest.main()
