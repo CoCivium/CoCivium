@@ -209,6 +209,8 @@ subject to:
 
 ## First bounded proof
 
+**Evidence update, 2026-10-26:** The [12-case worked-versus-blocked retrospective](../../ai/flow/coflow-anchor-delta-sample12-r1.json) now samples four scoped successes, four partial/blocked cases, and four historical/current failures from one pinned 138-record evolution ledger. Seventeen static checks passed with exact GitHub readback. This purposive sample supports **three provisional, falsifiable anchor hypotheses**, not causal inference or prospective prediction. The one observed current public-domain failure is separately reproduced via a web reader; owner privacy review and independent receiver acceptance remain HELD.
+
 Select 12 historical paths:
 - 4 worked/closed;
 - 4 partial/blocked;
