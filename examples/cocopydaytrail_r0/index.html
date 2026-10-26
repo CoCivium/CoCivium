@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; object-src 'none'; form-action 'none'; base-uri 'none'">
+<meta name="color-scheme" content="dark">
+<title>CoOrb DayTrail R0 | Offline UX canary</title>
+<style>
+:root{color-scheme:dark;--bg:#071716;--panel:#102826;--panel2:#0c201e;--stroke:#33594f;--text:#ebfff3;--muted:#acccc1;--soft:#659d88;--mint:#9ce5b8;--bright:#d4fbcf;--amber:#f1cc8e;--nav:#183b34;--button:#235746}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{background:radial-gradient(ellipse at 66% -25%,#19473a 0,transparent 48%),var(--bg);color:var(--text);font-family:system-ui,'Segoe UI',Arial,sans-serif;margin:0;font-size:14px;min-height:100vh;line-height:1.42}button,input,textarea,select{font:inherit;color:var(--text)}button{cursor:pointer}button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid var(--mint);outline-offset:3px}a{color:var(--mint)}.wrap{max-width:1470px;margin:auto;padding:22px 30px 94px}.top{display:flex;align-items:flex-start;justify-content:space-between;gap:20px}.title{font-size:clamp(22px,3vw,35px);font-weight:710;letter-spacing:-.8px}.sub{color:var(--muted);font-size:13px}.caps{text-transform:uppercase;font-size:10px;letter-spacing:1.7px;color:var(--mint);font-weight:700}.pill{border:1px solid #537f69;border-radius:999px;padding:6px 12px;background:#16372c;color:var(--bright);font-size:11px;white-space:nowrap}.divider{border-top:1px solid var(--stroke);margin:22px 0}.surface{background:linear-gradient(130deg,#142f2a,#102520);border:1px solid #3f6258;border-radius:18px;padding:18px;box-shadow:0 12px 28px #020e0b55}.head-row{display:flex;justify-content:space-between;align-items:center;gap:12px}.muted{color:var(--muted)}.small{font-size:12px}.tiny{font-size:11px}.status-rail{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px;margin:22px 0}.status-rail>div{border:1px solid #345b51;background:#102922;padding:12px;border-radius:11px;min-height:101px}.status-rail b{display:block;font-size:12px;margin:6px 0;line-height:1.25}.status-rail span{color:var(--muted);font-size:11px;display:block}.stats{display:flex;gap:8px;flex-wrap:wrap;margin-top:13px}.chip{background:#163e31;border:1px solid #3a7060;border-radius:999px;padding:7px 12px;color:var(--bright);font-size:11px}.layout{display:grid;grid-template-columns:minmax(315px,.72fr) minmax(400px,1.28fr);gap:16px}.orb-top{display:flex;align-items:center;gap:13px}.orb{width:63px;height:63px;border-radius:50%;flex:none;background:radial-gradient(circle at 32% 33%,#c7ffe6 0,#56c79d 15%,#174f40 56%,#09211e 100%);box-shadow:0 0 0 5px #3f846c44,0 0 0 9px #548d7744,0 5px 22px #51ffbb33;position:relative}.orb:after{content:'?';position:absolute;right:-5px;bottom:4px;background:#223f31;border:1px solid #7aa990;color:var(--mint);width:22px;height:22px;text-align:center;border-radius:50%;font-weight:700}.btn{border:1px solid #53826e;border-radius:9px;background:#24533f;padding:8px 13px;line-height:1.3;font-weight:620}.btn:hover{background:#2e684f}.btn.secondary{background:#152f2b;color:var(--mint)}.btn.danger{background:#382621;border-color:#80534a;color:#ffd4c6}.btn:disabled{opacity:.48;cursor:not-allowed}.mode-nav{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0 14px}.mode-nav button{padding:7px 11px;border-radius:8px;background:transparent;color:var(--muted);border:1px solid #3b5c54}.mode-nav button[aria-pressed="true"]{background:#2b694b;border-color:#76b98c;color:#f5fff8}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:11px}label{font-size:12px;color:var(--muted);display:block;margin-bottom:5px}input:not([type=checkbox]),select,textarea{width:100%;padding:10px 12px;border:1px solid #477264;background:#081c19;border-radius:9px}textarea{min-height:117px;resize:vertical}.full{grid-column:1/-1}.note{background:#193e32;border:1px solid #456e5f;padding:10px 12px;border-radius:9px;color:var(--bright);font-size:12px}.notice{background:#3a3020;border:1px solid #866d45;padding:10px 12px;border-radius:9px;color:#ffdeb0;font-size:12px}.event{background:#0b211d;border:1px solid #34594f;border-radius:12px;padding:14px 16px;margin-bottom:9px}.event-head{display:flex;align-items:center;justify-content:space-between;gap:8px}.event h3{font-size:13px;margin:3px 0}.event p{margin:8px 0;white-space:pre-wrap;overflow-wrap:anywhere;color:#e0f4e8}.evt-meta{color:var(--muted);font-size:11px;overflow-wrap:anywhere}.class{border-radius:7px;background:#24533f;padding:3px 8px;font-weight:700;font-size:10px;color:var(--bright)}.class.warn{background:#52442a;color:#ffdc99}.empty{color:var(--muted);padding:35px;text-align:center;border:1px dashed #477264;border-radius:14px}.question{border-left:3px solid #d6be78;background:#242c23;border-radius:6px;padding:11px 14px;margin:10px 0}.question b{color:#ffe8b0}.map-node{border:1px solid #46785f;padding:12px;margin:8px 0;border-radius:11px;background:#15352b}.map-node strong{display:block}.inline-controls{display:flex;gap:8px;flex-wrap:wrap;align-items:center}.check{display:flex;align-items:center;gap:8px}.check input{accent-color:#9ce5b8}.check label{margin:0}.bottom{position:fixed;bottom:0;left:0;right:0;z-index:4;background:#071b17eF;backdrop-filter:blur(12px);border-top:1px solid #3f6d5e;padding:10px max(calc((100vw - 1410px)/2),16px);display:flex;align-items:center;justify-content:space-between;gap:9px}.bottom .tiny{color:var(--muted)}.visually-hidden{position:absolute;clip:rect(0 0 0 0);width:1px;height:1px;overflow:hidden}#message{min-height:17px}#timeline{max-height:690px;overflow:auto;padding-right:5px}#fileInput{display:none}@media(max-width:950px){.layout{grid-template-columns:1fr}.status-rail{grid-template-columns:repeat(3,minmax(0,1fr))}.wrap{padding:15px 13px 105px}}@media(max-width:580px){.status-rail{grid-template-columns:repeat(2,minmax(0,1fr))}.form-grid{grid-template-columns:1fr}.bottom{flex-wrap:wrap}.top{flex-direction:column}.top .pill{align-self:flex-start}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<main class="wrap">
+<header class="top">
+  <div><div class="caps">CoCivium / CoCopy+ / CoAckRewise+ / CoOrb+</div><div class="title">DayTrail <span style="color:var(--mint)">R0</span></div><div class="sub">One source-bound daily ribbon. Many interpretations. No hidden recording.</div></div>
+  <div class="pill">LOCAL OFFLINE CANARY &nbsp; | &nbsp; OS STATUS UNKNOWN</div>
+</header>
+<div class="status-rail" aria-label="CoOrb six-field status">
+  <div><div class="caps">01 Current</div><b id="field-current">No entries yet</b><span>Explicit notes only</span></div>
+  <div><div class="caps">02 Why</div><b>Preserve useful deltas</b><span>Not a full transcript</span></div>
+  <div><div class="caps">03 Next</div><b id="field-next">Add one source-bound event</b><span>User-elected, no automatic action</span></div>
+  <div><div class="caps">04 Unknown</div><b id="field-unknown">Receiver not observed</b><span>Unknown is not absence</span></div>
+  <div><div class="caps">05 Challenge</div><b id="field-challenge">What if the assumption flips?</b><span>Generate one question, not a worker</span></div>
+  <div><div class="caps">06 Recover</div><b>Manual export and import</b><span>Nothing auto-saved</span></div>
+</div>
+<div class="layout">
+<section class="surface" aria-labelledby="compose-title">
+ <div class="orb-top"><div class="orb" role="img" aria-label="Decorative green orb with an unknown status marker"></div><div><h2 id="compose-title" style="margin:0;font-size:17px">Record one material delta</h2><div class="small muted">Only what you explicitly enter into this page.</div></div></div>
+ <div class="stats" id="count-chips" aria-live="polite"></div>
+ <div class="divider"></div>
+ <form id="captureForm" autocomplete="off">
+  <div class="form-grid">
+   <div><label for="work">Work object</label><input id="work" maxlength="80" value="CoOrb-X2" required></div>
+   <div><label for="kind">Event</label><select id="kind"></select></div>
+   <div><label for="privacy">Privacy</label><select id="privacy"><option value="LOCAL_PRIVATE">Private in memory</option><option value="PUBLIC_SAFE">Public-safe note</option></select></div>
+   <div><label for="parent">Relation / correction of</label><select id="parent"><option value="">None</option></select></div>
+   <div class="full"><label for="source">Source pointer (optional)</label><input id="source" maxlength="360" placeholder="URL, document ID or manually observed source"></div>
+   <div class="full"><label for="text">What changed, was questioned, or needs review?</label><textarea id="text" maxlength="1600" placeholder="One useful observation or proposed correction. Do not enter secrets." required></textarea></div>
+  </div>
+  <div class="inline-controls" style="margin-top:12px"><button type="submit" class="btn" id="add">+ Record deliberately</button><span class="small muted" id="length">0 / 1600</span></div>
+ </form>
+ <div class="divider"></div>
+ <div class="caps">CoAkimbo+ / CoTurtle+ · one bounded challenge</div>
+ <p class="small muted">A question can be valuable without being true. No ET, G_d, scientific, financial or external-action claim is inferred.</p>
+ <div class="form-grid"><div><label for="focus">Source event</label><select id="focus"><option value="">Latest entry</option></select></div><div><label for="lens">Lens</label><select id="lens"><option value="INVERT">Invert / reverse assumption</option><option value="NULL">Null / missing evidence</option><option value="ELSE">Else / orthogonal alternative</option><option value="CHALLENGE">Falsify / counterexample</option><option value="RECOVER">Recover without founder</option></select></div></div>
+ <div class="inline-controls" style="margin-top:11px"><button class="btn secondary" id="questionBtn" type="button">? Preview a question</button></div>
+ <div class="question" id="questionBox" hidden><b>Proposal only</b><div id="questionText"></div><div class="small muted" id="questionRef"></div></div>
+ <div class="divider"></div>
+ <div class="note">No global keyboard or clipboard monitor. No background workers, network requests, local storage, provider login or physical mouse binding. Browser extensions and the OS are outside this page's controls.</div>
+</section>
+<section class="surface" aria-label="Temporal ribbon and relations">
+ <div class="head-row"><div><div class="caps">CoTime+ / CoMap+ / CoAckRewise+</div><h2 style="margin:4px 0;font-size:18px" id="view-title">Today, explicitly recorded</h2></div><span class="pill" id="view-count">0 notes</span></div>
+ <nav class="mode-nav" aria-label="Choose projection" id="modes"><button data-view="TODAY" aria-pressed="true">Today</button><button data-view="ACKREWISE" aria-pressed="false">AckRewise</button><button data-view="UNRESOLVED" aria-pressed="false">Open loops</button><button data-view="RECEIPTS" aria-pressed="false">Receipts</button><button data-view="MAP" aria-pressed="false">CoMap</button><button data-view="RECOVER" aria-pressed="false">Recover</button></nav>
+ <div id="searchRow" style="margin-bottom:14px"><label for="search">Find within this manually entered local trail</label><input id="search" maxlength="160" placeholder="Work object, source or phrase"></div>
+ <div id="timeline" role="region" aria-label="DayTrail event list" tabindex="0"></div>
+ <div id="mapArea" hidden></div>
+ <div id="recoverArea" hidden>
+   <div class="notice">Memory only until export. Closing/reloading this tab loses unsaved events. External backups and browser extensions are beyond this page's control.</div>
+   <div class="check" style="margin:14px 0"><input type="checkbox" id="privateExport"><label for="privateExport">Include private note contents in downloaded export (default OFF)</label></div>
+   <div class="inline-controls"><button class="btn" type="button" id="exportBtn">Export JSON file</button><button class="btn secondary" type="button" id="importBtn">Import saved JSON</button><button class="btn danger" type="button" id="clearBtn">Clear this page's memory</button></div>
+   <input type="file" id="fileInput" accept=".json,application/json" aria-label="Choose a CoDayTrail JSON export">
+   <p class="small muted">Import replaces current in-memory events after confirmation. Source and external receipts remain unverified; a restored note is not an external receiver ACK.</p>
+ </div>
+ <p id="message" role="status" aria-live="polite" class="small muted"></p>
+</section>
+</div>
+</main>
+<footer class="bottom"><div><b style="color:var(--mint)">CoOrb+ &nbsp;&#8596;&nbsp; CoCopy+ &nbsp;&#8594;&nbsp; CoMap+</b><div class="tiny">Preview &#8800; effect &nbsp; | &nbsp; User record &#8800; third-party proof &nbsp; | &nbsp; X2 native runtime HELD</div></div><div class="inline-controls"><button id="recoveryLink" class="btn secondary" type="button">Recover / export</button><button id="hideLink" class="btn secondary" type="button">Clear draft</button></div></footer>
+<script>
+(function(root,factory){
+  'use strict';
+  var API=factory();
+  if(typeof module!=='undefined'&&module.exports)module.exports=API;
+  if(root&&root.window===root)root.CoDayTrail=API;
+})(typeof globalThis!=='undefined'?globalThis:this,function(){
+  'use strict';
+  const SCHEMA='CoCivium.CoCopy.DayTrail.R0';
+  const KINDS=Object.freeze(['OBSERVED','OFFERED','APPROVED','REVISED','CHALLENGED','DEFERRED','UNRESOLVED','FAILED','RECOVERED','PUBLISHED','RECEIPTED','JOURNALED']);
+  const PRIVACY=Object.freeze(['LOCAL_PRIVATE','PUBLIC_SAFE','REDACTED']);
+  const MAX_EVENTS=500;
+  const MAX_TEXT=1600;
+  function validDate(s){return typeof s==='string'&&Number.isFinite(Date.parse(s))&&s.length<=40;}
+  function str(v,n){return typeof v==='string'&&v.length<=n;}
+  function clean(s){return s.trim().replace(/\r\n?/g,'\n');}
+  function create(raw,prev,clock,id){
+    if(!raw||typeof raw!=='object'||!Array.isArray(prev))throw new Error('INVALID_INPUT');
+    if(prev.length>=MAX_EVENTS)throw new Error('HOLD_EVENT_LIMIT');
+    const kind=raw.kind;
+    if(!KINDS.includes(kind))throw new Error('UNKNOWN_EVENT_KIND');
+    const privacy=raw.privacy===undefined?'LOCAL_PRIVATE':raw.privacy;
+    if(!PRIVACY.includes(privacy))throw new Error('UNKNOWN_PRIVACY');
+    if(!str(raw.text,MAX_TEXT)||!clean(raw.text))throw new Error('MISSING_OR_OVERSIZED_TEXT');
+    if(!str(raw.work_id,80)||!clean(raw.work_id))throw new Error('INVALID_WORK_ID');
+    if(!str(raw.source_ref||'',360))throw new Error('INVALID_SOURCE_REF');
+    const parent=raw.parent_id||null;
+    if(parent!==null&&(!str(parent,96)||!prev.some(e=>e.id===parent)))throw new Error('UNKNOWN_PARENT');
+    if(!str(id,96)||!id||prev.some(e=>e.id===id))throw new Error('DUPLICATE_OR_INVALID_ID');
+    if(!validDate(clock))throw new Error('INVALID_CLOCK');
+    const evidenceClass='USER_RECORDED_NOT_INDEPENDENTLY_VERIFIED';
+    return Object.freeze({
+      id:id,kind:kind,privacy:privacy,text:clean(raw.text),work_id:clean(raw.work_id),
+      source_ref:clean(raw.source_ref||'')||'USER_ENTERED_NO_EXTERNAL_PROOF',
+      parent_id:parent,observed_at:clock,evidence_class:evidenceClass,
+      authority:'NO_EXTERNAL_EFFECT',origin:'EXPLICIT_FOREGROUND_ENTRY'
+    });
+  }
+  function validate(events){
+    if(!Array.isArray(events)||events.length>MAX_EVENTS)throw new Error('INVALID_EVENT_COLLECTION');
+    const ids=new Set();
+    for(const e of events){
+      if(!e||typeof e!=='object'||!str(e.id,96)||!e.id||ids.has(e.id))throw new Error('INVALID_OR_DUPLICATE_ID');
+      if(!KINDS.includes(e.kind)||!PRIVACY.includes(e.privacy))throw new Error('INVALID_KIND_OR_PRIVACY');
+      if(!str(e.text,MAX_TEXT)||!clean(e.text))throw new Error('INVALID_TEXT');
+      if(!str(e.work_id,80)||!clean(e.work_id))throw new Error('INVALID_WORK');
+      if(!str(e.source_ref,360)||!validDate(e.observed_at))throw new Error('INVALID_SOURCE_OR_TIME');
+      if(e.parent_id!==null&&e.parent_id!==undefined&&(!str(e.parent_id,96)||!ids.has(e.parent_id)))throw new Error('INVALID_EVENT_LINEAGE');
+      if(e.origin!=='EXPLICIT_FOREGROUND_ENTRY'||e.authority!=='NO_EXTERNAL_EFFECT'||e.evidence_class!=='USER_RECORDED_NOT_INDEPENDENTLY_VERIFIED')throw new Error('UNSUPPORTED_AUTHORITY_OR_PROOF');
+      ids.add(e.id);
+    }
+    return true;
+  }
+  function readExport(data){
+    if(!data||typeof data!=='object'||data.schema!==SCHEMA||data.state!=='USER_EXPORTED')throw new Error('INVALID_EXPORT_SCHEMA');
+    validate(data.events);
+    return data.events.map(e=>Object.freeze(Object.assign({},e)));
+  }
+  function exportData(events,date,includePrivate){
+    validate(events);
+    if(!validDate(date))throw new Error('INVALID_EXPORT_TIME');
+    return {schema:SCHEMA,state:'USER_EXPORTED',exported_at:date,origin:'LOCAL_IN_MEMORY_MANUAL_EXPORT',
+      notes:'Event text is user-recorded; entries are not verified third-party receipts. No background capture.',
+      private_text_included:!!includePrivate,
+      events:events.map(e=>e.privacy==='LOCAL_PRIVATE'&&!includePrivate?Object.assign({},e,{text:'[REDACTED_BY_EXPORT_SETTING]',privacy:'REDACTED'}):Object.assign({},e))};
+  }
+  function project(events,mode,query){
+    validate(events);
+    const q=(typeof query==='string'?query:'').trim().toLowerCase();
+    if(q.length>160)throw new Error('SEARCH_TOO_LONG');
+    const arr=events.filter(e=>{
+      if(mode==='ACKREWISE'&&!['APPROVED','REVISED','CHALLENGED','DEFERRED'].includes(e.kind))return false;
+      if(mode==='UNRESOLVED'&&!['UNRESOLVED','DEFERRED','CHALLENGED','FAILED'].includes(e.kind))return false;
+      if(mode==='RECEIPTS'&&!['RECEIPTED','RECOVERED','PUBLISHED'].includes(e.kind))return false;
+      return !q||e.text.toLowerCase().includes(q)||e.work_id.toLowerCase().includes(q)||e.source_ref.toLowerCase().includes(q);
+    });
+    return arr.slice().reverse();
+  }
+  function summary(events){
+    validate(events);
+    const byWork={};
+    for(const e of events){byWork[e.work_id]=(byWork[e.work_id]||0)+1;}
+    return {total:events.length,ackrewises:project(events,'ACKREWISE').length,open:project(events,'UNRESOLVED').length,receipts:project(events,'RECEIPTS').length,
+      work:Object.keys(byWork).sort().map(id=>({id:id,count:byWork[id]}))};
+  }
+  function proposal(event,lens){
+    const headings={INVERT:'What direction or assumed cause could be reversed?',NULL:'What has not actually been measured, and how would an absence be established?',ELSE:'What useful alternative falls outside the current binary choice?',CHALLENGE:'Which counterexample or independent source would change this conclusion?',RECOVER:'Who could retrieve and reconstruct this work without the present provider or device?'};
+    if(!Object.prototype.hasOwnProperty.call(headings,lens))throw new Error('UNKNOWN_LENS');
+    if(event!==null&&(!event||typeof event!=='object'||!str(event.text,MAX_TEXT)))throw new Error('INVALID_SOURCE_EVENT');
+    return {lens:lens,question:headings[lens],source_event_id:event?event.id:null,
+      status:'HYPOTHETICAL_QUESTION_ONLY',authority:'NONE',receiver_ack:'NOT_OBSERVED'};
+  }
+  function workGraph(events){
+    validate(events);
+    const out=[];
+    for(const e of events){
+      let w=out.find(k=>k.id===e.work_id);
+      if(!w){w={id:e.work_id,ids:[],open:0,latest:null};out.push(w);}
+      w.ids.push(e.id);if(['UNRESOLVED','DEFERRED','CHALLENGED','FAILED'].includes(e.kind))w.open++;
+      w.latest=e.observed_at;
+    }
+    return out.sort((a,b)=>a.id.localeCompare(b.id));
+  }
+  return Object.freeze({SCHEMA,KINDS,PRIVACY,MAX_EVENTS,MAX_TEXT,create,validate,readExport,exportData,project,summary,proposal,workGraph});
+});
+
+</script>
+<script>
+(function(){'use strict';
+const C=window.CoDayTrail;if(!C)throw Error('Missing exact core');
+const $=id=>document.getElementById(id);
+let events=[];let view='TODAY';let seq=0;
+const titles={TODAY:'Today, explicitly recorded',ACKREWISE:'Accepted, revised or challenged',UNRESOLVED:'Questions and blockers',RECEIPTS:'User-recorded effect claims, not external proof',MAP:'CoMap+ work-object neighborhood',RECOVER:'Export, restore or forget'};
+function node(tag,cls,txt){const x=document.createElement(tag);if(cls)x.className=cls;if(txt!==undefined)x.textContent=txt;return x;}
+function idNew(){seq+=1;return 'local-'+Date.now().toString(36)+'-'+seq.toString(36)+'-'+Math.floor(Math.random()*100000).toString(36);}
+function notice(msg,isError){$('message').textContent=msg;$('message').style.color=isError?'#ffd2c4':'#9ce5b8';}
+function fillOptions(){const list=$('kind');for(const v of C.KINDS){const x=node('option','',v.replaceAll('_',' '));x.value=v;list.appendChild(x);} list.value='OBSERVED';}
+function refreshLinks(){for(const name of ['parent','focus']){const e=$(name),selected=e.value;while(e.options.length>1)e.remove(1);for(const ev of events){const opt=node('option','',ev.kind+' / '+ev.work_id+' / '+ev.id.slice(-7));opt.value=ev.id;e.add(opt);}e.value=(Array.from(e.options).some(o=>o.value===selected))?selected:'';}}
+function stamp(s){const d=new Date(s);return Number.isFinite(d.valueOf())?d.toLocaleString():'Unknown time';}
+function card(ev){const item=node('article','event');const head=node('div','event-head');const title=node('h3','',ev.kind+'  /  '+ev.work_id);const badge=node('span','class'+(ev.privacy!=='PUBLIC_SAFE'?' warn':''),ev.privacy==='PUBLIC_SAFE'?'PUBLIC-SAFE':ev.privacy==='REDACTED'?'REDACTED':'PRIVATE');head.append(title,badge);item.append(head);item.append(node('div','evt-meta',stamp(ev.observed_at)+'  |  user-recorded, unverified'));item.append(node('p','',ev.text));item.append(node('div','evt-meta','Source: '+ev.source_ref));if(ev.parent_id)item.append(node('div','evt-meta','Relates to: '+ev.parent_id));return item;}
+function render(){const sum=C.summary(events);$('count-chips').replaceChildren(...[['TODAY',sum.total],['ACKREWISE',sum.ackrewises],['OPEN',sum.open],['RECEIPTS',sum.receipts]].map(([name,num])=>node('span','chip',name+' '+num)));$('field-current').textContent=events.length+' manually recorded '+(events.length===1?'event':'events');$('field-next').textContent=sum.open?'Review one open loop':'Record one useful next step';$('field-unknown').textContent='Independent receiver: UNKNOWN';$('view-title').textContent=titles[view];$('modes').querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.view===view)));$('searchRow').hidden=['RECOVER','MAP'].includes(view);$('timeline').hidden=['RECOVER','MAP'].includes(view);$('mapArea').hidden=view!=='MAP';$('recoverArea').hidden=view!=='RECOVER';
+ const list=C.project(events,view,$('search').value);$('view-count').textContent=list.length+' '+(list.length===1?'entry':'entries');$('timeline').replaceChildren();if(!list.length){$('timeline').append(node('div','empty',view==='TODAY'?'Start with one real observation. No session activity is captured automatically.':'No entries match this projection. UNKNOWN is not false or absent.'));}else for(const ev of list.slice(0,100))$('timeline').append(card(ev));
+ if(view==='MAP'){const m=$('mapArea');m.replaceChildren();const graph=C.workGraph(events);$('view-count').textContent=graph.length+' work objects';if(!graph.length)m.append(node('div','empty','No work objects yet. Add a note to create a source-linked node.'));else for(const v of graph){const item=node('div','map-node');item.append(node('strong','',v.id));item.append(node('div','small muted',v.ids.length+' linked manual entries; '+v.open+' unresolved/challenged; latest '+stamp(v.latest)));m.append(item);}}
+ refreshLinks();}
+function choose(next){view=next;render();}
+$('captureForm').addEventListener('submit',ev=>{ev.preventDefault();try{const raw={kind:$('kind').value,privacy:$('privacy').value,work_id:$('work').value,text:$('text').value,source_ref:$('source').value,parent_id:$('parent').value||null};const item=C.create(raw,events,new Date().toISOString(),idNew());events.push(item);$('text').value='';$('source').value='';$('length').textContent='0 / '+C.MAX_TEXT;view='TODAY';render();notice('PASS: one explicit local entry appended. NOT externally verified.',false);}catch(err){notice('HELD: '+err.message,true);}});
+$('text').addEventListener('input',()=>{$('length').textContent=$('text').value.length+' / '+C.MAX_TEXT;});
+$('modes').addEventListener('click',ev=>{const b=ev.target.closest('button[data-view]');if(b)choose(b.dataset.view);});
+$('search').addEventListener('input',render);
+$('questionBtn').addEventListener('click',()=>{try{const chosen=events.find(e=>e.id===$('focus').value)||events.at(-1)||null;const q=C.proposal(chosen,$('lens').value);$('questionText').textContent=q.question;$('questionRef').textContent='Source: '+(q.source_event_id||'no event yet')+'  |  '+q.status+'  |  no action';$('questionBox').hidden=false;notice('QUESTION_ONLY: the source and interpretation remain separate.');}catch(err){notice('HELD: '+err.message,true);}});
+$('recoveryLink').addEventListener('click',()=>choose('RECOVER'));$('hideLink').addEventListener('click',()=>{$('text').value='';$('source').value='';$('length').textContent='0 / '+C.MAX_TEXT;$('questionBox').hidden=true;notice('Draft cleared. Recorded events are unchanged.');});
+$('exportBtn').addEventListener('click',()=>{try{if(!events.length){notice('HELD: no recorded entries to export.',true);return;}const obj=C.exportData(events,new Date().toISOString(),$('privateExport').checked);const body=JSON.stringify(obj,null,2);const u=URL.createObjectURL(new Blob([body],{type:'application/json'}));const a=document.createElement('a');a.href=u;a.download='CoCopy-DayTrail-'+new Date().toISOString().slice(0,10)+'.json';document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),500);notice(obj.private_text_included?'Export started with opt-in private text. Protect the file.':'Export started: private note text REDACTED; this is not a full private-content backup.');}catch(err){notice('HELD: '+err.message,true);}});
+$('importBtn').addEventListener('click',()=>$('fileInput').click());
+$('fileInput').addEventListener('change',async ev=>{const f=ev.target.files?.[0];try{if(!f)return;if(f.size>2000000)throw Error('IMPORT_TOO_LARGE');const raw=await f.text();const data=JSON.parse(raw);const next=C.readExport(data);if(!window.confirm('Replace the current in-memory trail with '+next.length+' imported entries? Current unsaved entries will be lost.')){notice('Import cancelled.');return;}events=next;seq=events.length;view='TODAY';$('search').value='';render();notice('PASS: exported local records rehydrated. No receiver verification implied.');}catch(err){notice('HELD: import rejected: '+err.message,true);}finally{ev.target.value='';}});
+$('clearBtn').addEventListener('click',()=>{if(!window.confirm('Clear ALL '+events.length+' in-memory entries? This cannot be undone unless you previously exported them.'))return;events=[];seq=0;view='TODAY';render();notice('In-memory events cleared. Previously exported copies are not deleted.');});
+fillOptions();render();
+})();
+</script>
+</body></html>
