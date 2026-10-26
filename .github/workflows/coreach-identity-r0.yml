@@ -1,0 +1,23 @@
+name: CoReach R0 sender-recipient identity shadow tests
+on:
+  pull_request:
+    paths:
+      - 'examples/coreach_identity_r0/**'
+      - '.github/workflows/coreach-identity-r0.yml'
+  push:
+    paths:
+      - 'examples/coreach_identity_r0/**'
+      - '.github/workflows/coreach-identity-r0.yml'
+permissions:
+  contents: read
+jobs:
+  pre_send_shadow_only:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify fictional addresses and zero-send identity gating
+        run: python3 -m unittest discover -s examples/coreach_identity_r0 -p 'test_coreach_identity_gate_r0.py' -v
