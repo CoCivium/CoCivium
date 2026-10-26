@@ -45,10 +45,14 @@ CoCivium source donors:
 - https://github.com/CoCivium/CoCivium/blob/main/examples/colensmedia/README.md
 - https://github.com/CoCivium/CoCivium/blob/main/docs/Architecture/COVISUAL_PRIORS_TO_SPECS_R0_20261025.md
 
-## Exact evaluation scope
+## Exact evaluation scope and evidence-currentness
 
-**PASS:** 60/61 Python policy and negative tests; 42/42 desktop+mobile isolated Chromium interaction assertions, source-linked identity and conditional rights exposed, zero external script network requests, no image copies, no horizontal overflow. Early failed browser QA receipts retained, including one genuine mobile overflow defect and one test misreading collapsed details.
+**Historical local baseline (preserved):** The earliest bridge source suite reported **60/61** Python assertions, followed by browser fixture revisions; isolated Chromium desktop/mobile QA subsequently reported **42/42** interactive assertions. The early browser histories include an actual mobile-overflow defect and a test fixture misreading collapsed details. These earlier FAIL/PARTIAL observations remain lineage, not the current pass state.
 
-**HELD:** live X2 input or CoOrbWare install, independent human reader feedback, third-party media derivative rights, first-run direct-file browser navigation, source-image byte verification, GitHub CI for this particular new bridge, public source publication for these new source files, durable CoStead custody and any external broadcast.
+**Current verified source-suite PASS (2026-10-25):** [GitHub Actions run 40233891767](https://github.com/CoCivium/CoCivium/actions/runs/40233891767) completed successfully from a clean repository checkout with **96/96 Python tests**: **35 original CoLens tests plus 61 bridge source-to-view tests**. The workflow also passed exact build/donor checking and bridge source-to-projection parity. This is CI source/policy validation, **not** the 42 browser interaction tests, source-image byte verification, external hosting or human first-use acceptance.
 
-**Evolution:** source/rights/receiver/material test changes may justify a new version. No global scan, perpetual worker, infinite-token extension or automatic fanout is claimed. `SOURCE_POINTER_NE_SOURCE_BYTES | MOTIF_NE_LICENSE | VIEW_NE_RECEIVER_ACK | SOURCE_HASH_NE_PRIVACY_CLEARANCE | LOCAL_IS_NOT_LANDED | VALIDATION_IS_NOT_ACCEPTANCE`.
+**Related independent intake PASS (2026-10-26):** [CoVisualFinder Actions run 40275904807](https://github.com/CoCivium/CoCivium/actions/runs/40275904807) completed with **118/118 source/graph/static-preview tests**. It remains a separate metadata-only intake family: four source pages, source-linked roles and no third-party image bytes. This does not multiply independent receivers or validate rights for derivatives.
+
+**HELD:** native X2 input / CoOrbWare installation, independently observed receiver comprehension or usefulness, item-specific third-party derivative/publication rights, first-run `file://` browser navigation in the original isolated sandbox, source-image byte verification, durable CoStead custody, external recipient delivery and any global broadcast. **Publishing these source files to GitHub does not mean deploying a public product.**
+
+**Evolution:** Material source/rights/receiver/negative-test changes may justify a versioned successor and a new bounded test; an unchanged daily clock does not. No all-session corpus scan, perpetual worker, infinite token extension or automatic fanout is claimed. `SOURCE_POINTER_NE_SOURCE_BYTES | MOTIF_NE_LICENSE | VIEW_NE_RECEIVER_ACK | SOURCE_HASH_NE_PRIVACY_CLEARANCE | LOCAL_IS_NOT_LANDED | VALIDATION_IS_NOT_ACCEPTANCE`.
