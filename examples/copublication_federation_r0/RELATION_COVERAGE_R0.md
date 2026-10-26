@@ -62,3 +62,31 @@ This R0 is a **hand-audited source graph** and regression contract, **not a mode
 The engineering acceptance question is now: **When a new feature enters a surface, can we automatically flag the absence of upstream families, cross-links and downstream receiver questions, while keeping any inferred edge as a proposal until verified?** This R0 closes the missing *audit* gate for CoGiggle, not that future autonomous inference implementation.
 
 `DIRECTORY_TREE_NE_SEMANTIC_TREE | MAIN_SEARCH_MISS_NE_ABSENCE | HYPOTHESIZED_PARENT_NE_PROVEN_ANCESTRY | RELATION_NE_CAUSATION | LINK_NE_PERMISSION | SEMANTIC_DEPTH_NE_EXECUTION_DEPTH | NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF`.
+
+## Alien-tree challenge | Do not assume the shape of relationships
+
+**Trigger:** "or alien tree rels?" (October 25, 2026, Toronto time). This is deliberately **not** a report of an extraterrestrial organism or contact. It challenges our tendency to organize every new CoTerm as an ancestry tree.
+
+*Alien* has at least four relevant readings: **(1) alien to our ontology**, where we have insufficient relation types; **(2) unfamiliar nonhuman or artificial participant/session morphology**, already anticipated by [ALIEN_OR_UNKNOWN](../../docs/Architecture/COVIRTUAL_SESSION_MORPHOLOGY_R0.md); **(3) hypothetical extraterrestrial biology or intelligence**, qualified by the [CoETSignalFinder](../../docs/Architecture/COET_GD_SIGNAL_HYPOTHESIS_FINDERS_R0_20261024.md) and [CoFFF+ evidence ladder](../../docs/CoTheoryAll/cofff/COFFF_FIRST_FULL_CONTACT_RESEARCH_STORYBOARD_R0_20261025.md); or **(4) a literal non-native tree species**, which would require botanical context. None is silently elected as the user's unique meaning.
+
+A rooted hierarchy presupposes an origin, stable individual node identity and unique parentage. Such constraints may be inappropriate for multi-parent inheritance, mutual dependence, time-changing identities, indivisible group participation, cross-domain translation or unfamiliar communication. A useful CoOrbWare view should be able to expose **rooted tree, multi-parent DAG, cyclic graph, hypergraph, time-qualified graph and deliberately UNKNOWN shape** without inventing missing origins or authority.
+
+### Deterministic synthetic five-fact canary
+
+The machine-readable [AlienTree+ synthetic canary](relation_coverage_r0.json) is **fictional test data**, not biological or astrophysical evidence: A and B independently contribute to C; A, B and C form an indivisible group relation; and C and D reciprocally affect one another.
+
+| Representation with declared constraints | Exact facts retained | Lost or distorted |
+| --- | ---: | ---: |
+| Single-root, unique-parent binary tree | 2 / 5 | 3 |
+| Multi-parent, acyclic binary graph | 3 / 5 | 2 |
+| Typed directed hypergraph preserving original records | 5 / 5 | 0 |
+
+These are results of a *stated representation exercise*, not a universal theorem that hypergraphs are superior. The tree is useful when its assumptions fit the source; a compact projection can be better for a receiver if its omissions are honestly disclosed. A hypergraph retaining original records does not magically interpret a truly unknown relation.
+
+Test cases include **NO_ROOT, TWO_PARENTS, THREE_WAY, TIME_SHIFT, UNFAMILIAR_RECEIVER, UNEXPLAINED_PATTERN, FALSE_NEGATIVE_SCHEMA**. A missing schema type should produce `SCHEMA_COVERAGE_GAP`, not automatic deletion, a fabricated family link, ET inference or a guessed human identity.
+
+**Future wake:** a newly encountered relation cannot be represented without loss by the current grammar. Preserve original observation and provenance, propose competing relation shapes, rank falsifiers, compare projection loss and stop at the first unsupported causal/origin/consent claim.
+
+`UNKNOWN_MORPHOLOGY_NE_INVALID | RELATION_TOPOLOGY_NE_UNIQUE_ONTOLOGY | ALIEN_PATTERN_NE_ALIEN_ORIGIN | HYPOTHESIS_NE_ET_DETECTION | TREE_PROJECTION_LOSS_MUST_BE_VISIBLE | UNKNOWN_PARTICIPANT_NE_PERMISSION`.
+
+**Implementation state:** source-level candidate lens, finite synthetic topology fixture and deterministic regression tests. No live ET data, alleged nonhuman receiver, new browser UI, telescope job, contact attempt or autonomous inference worker has been created.
