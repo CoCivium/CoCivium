@@ -145,7 +145,7 @@ def orb_svg(view, sid):
        <text x="345" y="121" class="node-label">DESIGN</text>
        <text x="345" y="142" class="node-label">MOTIF</text>
        {''.join(circles)}
-       </svg><figcaption>Focus: {safe_text(view["focus"]["label"])}. '
+       </svg><figcaption>Focus: {safe_text(view["focus"]["label"])}.
        Roles are proposed labels, not executing workers.</figcaption></figure>"""
 
 
