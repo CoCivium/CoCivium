@@ -1,0 +1,32 @@
+name: CoMedia R1 WIP quality gate
+on:
+  pull_request:
+    paths:
+      - 'examples/comedia_r1/**'
+      - '.github/workflows/comedia-r1.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  offline-test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install/check media test tools
+        run: |
+          if ! command -v ffmpeg >/dev/null || ! command -v ffprobe >/dev/null; then
+            sudo apt-get update -qq
+            sudo env DEBIAN_FRONTEND=noninteractive apt-get install -y -qq ffmpeg
+          fi
+          command -v ffmpeg
+          command -v ffprobe
+      - name: Run synthetic and real local FFmpeg QA
+        run: python -m unittest discover -s examples/comedia_r1/tests -v
+      - name: Verify storyboard remains WIP and not release-authorized
+        run: |
+          python examples/comedia_r1/media_gate.py examples/comedia_r1/manifest.json > /tmp/comedia_receipt.json
+          python -c "import json; x=json.load(open('/tmp/comedia_receipt.json')); assert x['state']=='HELD_PREPUBLICATION'; assert not x['release_eligible']; assert x['publication_effects']==0; print('WIP_HOLD_CONFIRMED')"
