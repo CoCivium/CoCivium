@@ -1,0 +1,20 @@
+{
+  "schema": "CoCivium.CoAkimboInterstice.R0.SourceManifest",
+  "date": "2026-10-26",
+  "status": "OFFLINE_SYNTHETIC_CANDIDATE",
+  "source_surface": "generated_in_memory_seed_20261026",
+  "source_code": "src/optical_control.py",
+  "gain_policy_model": "src/gain_control.py",
+  "models": ["1D_horizon_geometry", "scalar_fft_farfield_phase_screen"],
+  "not_models": ["polarized_maxwell_solver", "laboratory_laser", "DMT_study", "ET_detector", "G_d_measurement"],
+  "test_command": "python -m unittest discover -s tests -v",
+  "nonclaims": ["SIMULATION_NE_OBSERVATION", "SPECKLE_NE_ET", "GD_SYMBOL_NE_AGENT", "DMT_EXPERIENCE_NE_CALIBRATED_SIGNAL", "DARK_PIXEL_NE_EMPTY_MATERIAL", "IMAGE_NE_RIGHTS_OR_AUTHORITY"],
+  "source_urls": [
+    "https://github.com/CoCivium/CoCivium/blob/main/docs/CoTheoryAll/cooptics/ROUGH_SURFACE_GAP_LIGHT_R0_20261026.md",
+    "https://github.com/CoCivium/CoCivium/blob/main/docs/Architecture/COAMPLIFICATORY_CYCLIC_REGENERATION_R0_20261026.md",
+    "https://github.com/CoCivium/CoCivium/blob/main/docs/Architecture/COCORE_EDGE_OUTREACH_RESILIENCE_R0_20261025.md",
+    "https://www.nist.gov/publications/polarization-light-scattered-microrough-surfaces-and-subsurface-defects-0",
+    "https://www.nobelprize.org/prizes/chemistry/1977/prigogine/facts/",
+    "https://www.seti.org/research/seti-101/protocols-for-an-eti-signal-detection/"
+  ]
+}
