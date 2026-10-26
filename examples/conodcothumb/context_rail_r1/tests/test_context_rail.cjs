@@ -14,6 +14,13 @@ const tests=[];
 function t(name,fn){test(name,fn);tests.push(name)}
 t('schema pinned',()=>assert.equal(manifest.schema,'CoAll.CoContextRail.R1'));
 t('pure module schema same',()=>assert.equal(core.SCHEMA,manifest.schema));
+t('inherited effect request fails closed',()=>{const p=Object.assign(Object.create({external_effect_requested:true}),defaults);const z=core.decide(p,manifest);assert.equal(z.state,'HELD_UNDECLARED_INPUT');zero(z)});
+t('inherited privacy and gesture cannot authorize preview',()=>{const p=Object.create({privacy:'PUBLIC',gesture:'EXPLICIT_RING'});const z=core.decide(p,manifest);assert.equal(z.state,'HELD_UNDECLARED_INPUT');zero(z)});
+t('nonenumerable hidden raw-key field rejected',()=>{const p={...defaults};Object.defineProperty(p,'raw_key',{value:'synthetic_hidden'});const z=core.decide(p,manifest);assert.equal(z.state,'HELD_UNDECLARED_INPUT');assert.equal(JSON.stringify(z).includes('synthetic_hidden'),false);zero(z)});
+t('symbol metadata rejected',()=>{const p={...defaults,[Symbol('raw-data')]:'synthetic_hidden'};const z=core.decide(p,manifest);assert.equal(z.state,'HELD_UNDECLARED_INPUT');zero(z)});
+t('accessor getter not invoked',()=>{let calls=0;const p={...defaults};Object.defineProperty(p,'privacy',{enumerable:true,get(){calls++;return 'PUBLIC'}});const z=core.decide(p,manifest);assert.equal(z.state,'HELD_UNDECLARED_INPUT');assert.equal(calls,0);zero(z)});
+t('non-plain built-in object rejected',()=>{const z=core.decide(new Date('2026-10-25T00:00:00Z'),manifest);assert.equal(z.state,'HELD_UNDECLARED_INPUT');zero(z)});
+t('null-prototype plain data packet remains usable',()=>{const p=Object.assign(Object.create(null),defaults);const z=core.decide(p,manifest);assert.equal(z.state,'PROPOSED_ONLY');zero(z)});
 t('unknown raw-key fields fail closed without echo',()=>{const z=run({raw_key:'synthetic_nonsecret_fixture'});assert.equal(z.state,'HELD_UNDECLARED_INPUT');assert.equal(JSON.stringify(z).includes('synthetic_nonsecret_fixture'),false);zero(z)});
 t('unknown screenshot metadata fails closed',()=>{const z=run({screen_pixels:'synthetic_nonsecret_fixture'});assert.equal(z.state,'HELD_UNDECLARED_INPUT');zero(z)});
 t('unknown clipboard field cannot enter projection',()=>{const z=run({clipboard_text:'synthetic_nonsecret_fixture'});assert.equal(z.state,'HELD_UNDECLARED_INPUT');assert.equal(z.source_ref,null);zero(z)});
