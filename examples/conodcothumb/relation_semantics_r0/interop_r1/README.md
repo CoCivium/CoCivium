@@ -26,7 +26,7 @@ On the candidate branch, with Node 22:
 
     node --test examples/conodcothumb/relation_semantics_r0/interop_r1/test_bridge.mjs
 
-The local fixture check (which modelled the R0 function signatures, **not an exact original R0 byte replay**) returned 32 PASS / 1 SKIP / 0 FAIL. A separate GitHub CI job on this branch additionally pins and imports the **exact R0 and R2 source blobs**. Its run must be observed before declaring cross-branch integration PASS.
+The local fixture check (which modelled the R0 function signatures, **not an exact original R0 byte replay**) returned 32 PASS / 1 SKIP / 0 FAIL. The [exact-source CI run #40420685292](https://github.com/CoCivium/CoCivium/actions/runs/40420685292) pinned the actual R0 and R2 source blobs and completed with 33/33 tests PASS, zero failures and zero skips. This is source-compatibility coverage only, **not approval of aliases**. [Scoped FAIL/PASS/HELD log](benchmark_evo.jsonl) records the result.
 
 The code:
 - requires explicit source version, public-synthetic privacy, qualified source marker, valid time and scope;
@@ -38,7 +38,7 @@ The code:
 
 ## Stage and next actual deed
 
-**STATIC SOURCE CANARY**, pending the cross-branch GitHub CI result. No X2 OS/runtime proof, real Logitech MX Master gesture, CoBar integration, native CoOrb display, media transfer or independent user acknowledgment. X2 Desktop Commander remote observer was offline at the most recent inspection. Remote offline **is not** a power-status determination.
+**SOURCE TESTED / DRAFT**, cross-branch CI PASS and human semantic approval HELD. No X2 OS/runtime proof, real Logitech MX Master gesture, CoBar integration, native CoOrb display, media transfer or independent user acknowledgment. X2 Desktop Commander remote observer was offline at the most recent inspection. Remote offline **is not** a power-status determination.
 
 Next, a consenting newcomer should use **existing R1**, not this code-only bridge, to distinguish one DEPENDS_ON converse, a NOT question, and a real undo action in ordinary language. Record their time-to-understand, failure points, successful cancel and genuine recipient-origin response.
 
