@@ -1,0 +1,107 @@
+{
+  "schema": "CoCivium.CoHighlightRegenerativeCanary.v0.1",
+  "state": "CANDIDATE_ONLY__NO_PUBLICATION_EFFECT__NO_CANON__NO_RUNTIME",
+  "observed_date": "2026-10-26",
+  "purpose": "Bind three distinct highlight roles into one regenerative canary: explanation, contradiction/open-question, and recovery/failure evidence.",
+  "rails": [
+    "HIGHLIGHTABILITY_NE_INTRINSIC_PROPERTY",
+    "HIGHLIGHT_NE_TRUTH_PROMOTION",
+    "ATTENTION_NE_EVIDENCE",
+    "REPETITION_NE_TRUTH",
+    "HIGHLIGHT_PERSISTENCE_NE_VALUE",
+    "PUBLICATION_NE_RELEASE_AUTHORITY"
+  ],
+  "assets": [
+    {
+      "id": "H1_EXPLANATION_COCIVIA",
+      "asset": "CoCivia teaching / inquiry / learnback / transparent-attention weave",
+      "role": "PUBLIC_EXPLANATION_CANDIDATE",
+      "source_basis": "Existing highlightable-asset freshness audit identifies this as a human-facing civic / learning product story candidate.",
+      "receiver": "GENERAL_OR_LEARNING_READER",
+      "purpose": "Explain a concrete CoCivium pattern through inquiry, learnback, and contestable attention rather than abstract ontology.",
+      "current_gate": "LOCAL_RECEIPT_PLUS_COLEX_COOPS_COGUARD_REVIEW__NO_PUBLIC_PROMOTION_YET",
+      "challenge_path": "Ask whether the teaching / attention pattern improves comprehension, preserves contestability, and avoids authority inflation.",
+      "expiry_or_requalification": [
+        "SOURCE_CURRENTNESS_EXPIRES",
+        "PUBLIC_SAFE_REVIEW_CHANGES",
+        "BETTER_RECEIVER_PROJECTION_EXISTS",
+        "REPEATED_READER_CONFUSION"
+      ],
+      "return_signal": [
+        "COMPREHENSION",
+        "CONFUSION",
+        "CHALLENGE",
+        "USEFUL_REUSE",
+        "CORRECTION"
+      ],
+      "successor_condition": "A newer source-bound explanation measurably improves receiver fit without changing the underlying claim/evidence state."
+    },
+    {
+      "id": "H2_CONTRADICTION_COHP_CURRENTNESS",
+      "asset": "CoHP source-of-truth / currentness unresolved",
+      "role": "ACTIVE_CONTRADICTION_OR_OPEN_QUESTION",
+      "source_basis": "The bounded freshness audit states that no completed July 26 primary CoHP source selection or semantic diff is proven and that CoHP is likely stale relative to material deltas.",
+      "receiver": "INTERNAL_GOVERNANCE_RESEARCHER_OR_REVIEWER",
+      "purpose": "Keep the unresolved source/currentness problem visible so newer interpretations do not silently overwrite uncertain lineage.",
+      "current_gate": "REPAIRED_SOURCE_DISCOVERY_AND_NO_CLOBBER_SEMANTIC_DIFF_REQUIRED",
+      "challenge_path": "Produce exact source discovery, source selection rationale, and append-only semantic diff; contradiction remains open until evidence closes it.",
+      "expiry_or_requalification": [
+        "EXACT_PRIMARY_SOURCE_SELECTED",
+        "SEMANTIC_DIFF_RECEIPTED",
+        "CONTRADICTION_RECLASSIFIED",
+        "NEWER_CONFLICTING_EVIDENCE"
+      ],
+      "return_signal": [
+        "SOURCE_BINDING",
+        "CONTRADICTION_RESOLUTION",
+        "NEW_CONTRADICTION",
+        "CURRENTNESS_DELTA"
+      ],
+      "successor_condition": "Replace the contradiction highlight with a source-bound currentness / lineage highlight once exact evidence resolves the ambiguity."
+    },
+    {
+      "id": "H3_RECOVERY_CUSTODY_RECONCILIATION",
+      "asset": "CoAll legacy/current custody reconciliation",
+      "role": "FAILURE_RECOVERY_PAIR",
+      "source_basis": "Existing audit records 405 legacy items, 78 current items, zero JSON parse failures, readproof hints, and one exact cross-inbox duplicate content set; it explicitly classifies this as custody/backlog evidence, not owner acceptance.",
+      "receiver": "GOVERNANCE_RECOVERY_OR_CUSTODY_READER",
+      "purpose": "Show why legacy/current reconciliation is required before source comprehensiveness, currentness, or acceptance may be inferred.",
+      "failure_side": "Fragmented legacy/current custody can hide stale, duplicate, or unacknowledged state.",
+      "recovery_side": "Read-only reconciliation plus dedupe/currentness mapping improves recoverability without implying adoption.",
+      "current_gate": "DO_NOT_PRESENT_AS_PUBLIC_PRODUCT_SUCCESS_OR_OWNER_ACCEPTANCE",
+      "challenge_path": "Test whether future reconciliation runs preserve exact counts, provenance, duplicate sets, receiver-state distinctions, and nonclaims.",
+      "expiry_or_requalification": [
+        "NEW_CUSTODY_CENSUS",
+        "INDEPENDENT_RECEIVER_READPROOF",
+        "CURRENT_LEGACY_TOPOLOGY_CHANGES",
+        "RECOVERY_METHOD_SUPERSEDED"
+      ],
+      "return_signal": [
+        "NEW_DUPLICATE_SET",
+        "MISSING_SOURCE",
+        "RECEIVER_STATE_CHANGE",
+        "RECOVERY_IMPROVEMENT",
+        "FALSE_ACCEPTANCE_INFERENCE"
+      ],
+      "successor_condition": "A newer reconciliation with stronger receiver-bound proof and independent failure-domain recovery supersedes this highlight."
+    }
+  ],
+  "canary_test": {
+    "method": "No publication. Render each asset as a compact highlight card with source, receiver, purpose, gate, challenge, expiry, and return fields; compare receiver usefulness and ambiguity.",
+    "pass_if": [
+      "all three roles remain distinct",
+      "no highlight changes truth or authority state",
+      "each has a challenge path",
+      "each has requalification or expiry",
+      "each returns learning",
+      "successorization is explicit"
+    ],
+    "fail_if": [
+      "highlighting is treated as endorsement",
+      "stale asset remains prominent without requalification",
+      "contradiction is hidden",
+      "recovery evidence is marketed as adoption",
+      "reader attention is counted as evidence"
+    ]
+  }
+}
