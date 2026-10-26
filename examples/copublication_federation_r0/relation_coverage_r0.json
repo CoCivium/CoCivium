@@ -755,6 +755,98 @@
       "no_publications_or_contact_attempts": true
     },
     "result": "CANDIDATE_SPECIFICATION_ONLY__NO_SYNTHETIC_CASE_RUN__NO_REAL_ET_EVIDENCE",
-    "next_test": "Use a fully synthetic 3-way relation with two parents, cycles and observer-dependent edge types; compare information preserved by tree, DAG and hypergraph serializations with explicit projection loss."
+    "next_test": "Use a fully synthetic 3-way relation with two parents, cycles and observer-dependent edge types; compare information preserved by tree, DAG and hypergraph serializations with explicit projection loss.",
+    "synthetic_topology_canary": {
+      "state": "SYNTHETIC_ONLY_NOT_EMPIRICAL",
+      "nodes": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "facts": [
+        {
+          "id": "F01",
+          "kind": "DIRECTED_PAIR",
+          "relation": "PARENT_OF",
+          "members": [
+            "A",
+            "C"
+          ],
+          "meaning": "A is one source for C"
+        },
+        {
+          "id": "F02",
+          "kind": "DIRECTED_PAIR",
+          "relation": "PARENT_OF",
+          "members": [
+            "B",
+            "C"
+          ],
+          "meaning": "B is another independent source for C"
+        },
+        {
+          "id": "F03",
+          "kind": "N_ARY",
+          "relation": "COOPERATE_AS_GROUP",
+          "members": [
+            "A",
+            "B",
+            "C"
+          ],
+          "meaning": "A,B,C jointly participate in one indivisible fact"
+        },
+        {
+          "id": "F04",
+          "kind": "DIRECTED_PAIR",
+          "relation": "FEEDBACK_TO",
+          "members": [
+            "C",
+            "D"
+          ],
+          "meaning": "C influences D"
+        },
+        {
+          "id": "F05",
+          "kind": "DIRECTED_PAIR",
+          "relation": "FEEDBACK_TO",
+          "members": [
+            "D",
+            "C"
+          ],
+          "meaning": "D reciprocally influences C"
+        }
+      ],
+      "projection_assumptions": {
+        "TREE": "One unique node identity, at most one incoming PARENT_OF per node, no directed cycles, binary edges only",
+        "DAG": "Multiple parents allowed, no directed cycles, binary edges only",
+        "TYPED_HYPERGRAPH": "Preserve all original directed pair and indivisible n-ary relation records including cycles"
+      },
+      "expected_retained_fact_ids": {
+        "TREE": [
+          "F01",
+          "F04"
+        ],
+        "DAG": [
+          "F01",
+          "F02",
+          "F04"
+        ],
+        "TYPED_HYPERGRAPH": [
+          "F01",
+          "F02",
+          "F03",
+          "F04",
+          "F05"
+        ]
+      },
+      "expected_lost_counts": {
+        "TREE": 3,
+        "DAG": 2,
+        "TYPED_HYPERGRAPH": 0
+      },
+      "measured_property": "Representational loss under the declared encoding restrictions, not ET probability or reader value",
+      "future_test": "Attempt two alternative tree encodings and require each to disclose which original relation identities are lost or duplicated."
+    }
   }
 }
