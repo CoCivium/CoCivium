@@ -1,0 +1,264 @@
+{
+  "schema": "CoCivium.AI_IA_OnrampEvergreen.R0",
+  "observed_at_utc": "2026-10-26",
+  "state": "PUBLIC_SOURCE_ADMISSION_CONTRACT__NOT_RUNNING_SERVICE__NOT_GLOBAL_AGENT_ADOPTION",
+  "purpose": "Make AI machine discovery and candidate agent-role onramping resumable, typed, reviewable and CoOrbWare-projectable, preserving user intent and factual status",
+  "terminology": {
+    "AI": "Actual model/system, provider account, or selected worker implementation; specify kind before inferring capabilities",
+    "IA": "UNRESOLVED_USER_TERM__NO_GLOBAL_CANONICAL_EXPANSION_FOUND; do not assume Intelligent Agent, Intelligence Augmentation, Independent Agent or independent actor without an explicit source-bound typed definition",
+    "CoOrbWare": "Optional evidence-bound projection and interaction grammar, not a model identity or provider-account root",
+    "evergreen": "Revalidate on material change, expiry or authorized cadence; preserve provenance, dissent and rollback; not a claim of perpetual live sessions"
+  },
+  "pinned_source_observations": [
+    {
+      "path": "docs/AI_DISCOVERY_POLICY.md",
+      "sha": "7d1da57d7cb7725bc5ef4e7e1ef16e80f5272de4",
+      "why": "Public non-directive AI discovery"
+    },
+    {
+      "path": "ai/session-bootstrap.json",
+      "sha": "9eb5334419ee616b6888a133babd9d9e89bed9f9",
+      "why": "Role-filtered currentness and existing-session hold"
+    },
+    {
+      "path": "ai/index.json",
+      "sha": "c412058a5b315d5113bec98161f74060ca73d656",
+      "why": "Machine navigation registry snapshot; age itself not currentness proof"
+    },
+    {
+      "path": "ai/colatch_evo_all_betters_r0.json",
+      "sha": "1840c2dc339332585bd92144ac869ff8bd47aa58",
+      "why": "User's durable revisable EVO ALL BETTERS intent"
+    },
+    {
+      "path": "docs/Architecture/COMODELFABRIC_COORB_PROVIDER_ADAPTERS_R0_20261024.md",
+      "sha": "2d0d8cb7928ca7158c4d5f520c6e5b4e262d0743",
+      "why": "Provider-neutral optional worker roles, no provider impersonation"
+    },
+    {
+      "path": "ai/onramp/cocivia-first-use-r0.json",
+      "sha": "e478257e23681f58771a29a8dfa7b784e4e0d1e2",
+      "why": "One useful task and progressive disclosure"
+    },
+    {
+      "path": "ai/benchmark-evo.jsonl",
+      "sha": "d617e3f3489a4fde725886b9487379a93801c7e7",
+      "why": "Historical PASS/FAIL/HELD evidence snapshot at bounded observation"
+    },
+    {
+      "path": "docs/Architecture/COEVOALL_MIDDLE_LATCH_R0_20261024.md",
+      "sha": "f6814829e3f740a92ec07a4e9fc7bc184dcb8513",
+      "why": "Latched intent and bounded wake/quiet lifecycle"
+    }
+  ],
+  "onramp": [
+    {
+      "id": "DISCOVER",
+      "input": "A fresh AI or authorized machine client",
+      "do": "Locate public AI index and bootstrap, find smallest relevant scope",
+      "gate": "PUBLIC_DISCOVERY_NOT_PROMPT_INJECTION"
+    },
+    {
+      "id": "BIND",
+      "input": "Selected source/version",
+      "do": "Record exact Git blob or immutable content hash, time and original rights",
+      "gate": "CURRENT_EXACT_SOURCE_AND_PROVENANCE"
+    },
+    {
+      "id": "TYPE",
+      "input": "Task and requested collaboration role",
+      "do": "Classify AI/model/agent/tool and any IA as typed proposed role; do not infer personhood or expand unagreed acronym",
+      "gate": "ROLE_SEMANTICS_EXPLICIT_AND_REVOCABLE"
+    },
+    {
+      "id": "QUALIFY",
+      "input": "Adapter and identity context",
+      "do": "Determine observable capabilities, cost, privacy, consent, authority and failure-domain limits",
+      "gate": "CAPABILITY_AND_PERMISSION_EXPLICIT"
+    },
+    {
+      "id": "FIRST_TASK",
+      "input": "One small safe user-relevant work object",
+      "do": "Produce a read-only or shadow candidate with source, baseline, uncertainty and one useful result",
+      "gate": "LOW_RISK_BOUNDED_TASK"
+    },
+    {
+      "id": "CHALLENGE",
+      "input": "Task result",
+      "do": "Run negative/counterexample check; compare original assertion and maintain dissent",
+      "gate": "TEST_PROOF_SCOPE_NOT_CONSENSUS"
+    },
+    {
+      "id": "ACCEPT",
+      "input": "A separately consenting receiver",
+      "do": "Require receiver-produced exact-object readback and task acceptance before claiming pickup/use",
+      "gate": "EXACT_RECEIVER_ACK_REQUIRED"
+    },
+    {
+      "id": "PROJECT",
+      "input": "Reviewed, accepted work object",
+      "do": "Optionally render source-bound CoMap/CoOrb/CoOrbWare view without granting new authority",
+      "gate": "VIEW_NOT_RUNTIME_OR_AUTHORITY"
+    },
+    {
+      "id": "CHECKPOINT",
+      "input": "Task and revision",
+      "do": "Append non-secret result/hold/lineage, successor reference and observed time",
+      "gate": "DURABLE_RECEIPT_AND_PRIVACY"
+    },
+    {
+      "id": "SLEEP_WAKE",
+      "input": "Material currentness delta or approved cadence",
+      "do": "Sleep while idle; revalidate source, permissions, expiry and recipient when awakened",
+      "gate": "MATERIAL_WAKE_NOT_ALWAYS_ON"
+    },
+    {
+      "id": "EXIT",
+      "input": "Revocation, supersession or expired lease",
+      "do": "Stop effects, preserve allowed public lineage and fulfill scoped deletion/export",
+      "gate": "EXIT_REVOKE_RECOVER"
+    }
+  ],
+  "current_scope": [
+    {
+      "id": "machine_discovery",
+      "status": "PASS_BOUNDED",
+      "evidence": "Exact source readbacks of AI_DISCOVERY_POLICY, ai/index.json and ai/session-bootstrap.json",
+      "nonclaim": "NO_INDEPENDENT_AGENT_NAVIGATION"
+    },
+    {
+      "id": "evo_latch",
+      "status": "PASS_BOUNDED",
+      "evidence": "CoLatch source exists with state PUBLIC_SHARED_SOURCE_CANDIDATE__NOT_LIVE_SYNC_RUNTIME",
+      "nonclaim": "NO_AUTONOMOUS_GLOBAL_WATCH"
+    },
+    {
+      "id": "agent_role_ia_definition",
+      "status": "HELD",
+      "evidence": "No specific accepted expansion or semantics for 'IA' established in reviewed source",
+      "nonclaim": "AI_NE_IA_BY_RENAMING"
+    },
+    {
+      "id": "independent_ai_receiver",
+      "status": "HELD",
+      "evidence": "No tested outside agent's readback + completed one-task receipt in this wave",
+      "nonclaim": "PUBLISHED_MACHINE_INDEX_NE_AI_ADOPTION"
+    },
+    {
+      "id": "coorbware_binding",
+      "status": "HELD",
+      "evidence": "CoModelFabric and CoOrbWare source candidates exist; no actual cross-provider X2 work execution proved",
+      "nonclaim": "PUBLIC_RENDERER_NE_INSTALLED_UI"
+    },
+    {
+      "id": "device_connection",
+      "status": "HELD",
+      "evidence": "X2 authorized Desktop Commander connection reported offline, last seen 53 hours ago at observation",
+      "nonclaim": "REMOTE_OFFLINE_NE_PC_POWER_OFF"
+    },
+    {
+      "id": "public_custom_domain_apex",
+      "status": "FAIL_OBSERVED",
+      "evidence": "One independent web vantage 2026-10-26: cocivium.org returned HTTP 404; www displayed legacy index",
+      "nonclaim": "ONE_VANTAGE_NE_ALL_ROUTES_FAILED"
+    },
+    {
+      "id": "full_evo_family_activation",
+      "status": "HELD",
+      "evidence": "143 historical benchmark rows (83 PASS, 46 HELD, 14 FAIL); no complete family-to-live-receiver census",
+      "nonclaim": "RECORD_COUNT_NE_DEPLOYED_PRODUCTS"
+    }
+  ],
+  "renewal": {
+    "on": "NEW_AUTHORIZED_RECEIVER_OR_MATERIAL_SOURCE_DELTA_OR_LEASE_EXPIRY_OR_QUALIFIED_SCHEDULE",
+    "do": [
+      "FETCH_ROLE_RELEVANT_CURRENTNESS",
+      "REVERIFY_PINNED_SOURCES_WITH_HASH_OR_REVISION",
+      "RECHECK_CAPABILITY_AUTHORITY_AND_CONFIDENTIALITY",
+      "DELTA_ONLY_REVISIT",
+      "RETAIN_DISAGREEMENT_AND_PRIOR_VERSIONS",
+      "EMIT_ONE_SCOPED_RECEIPT_IF_MEANINGFUL",
+      "SLEEP_IF_NO_MATERIAL_RESULT"
+    ],
+    "manual_relay": "NOT_DEFAULT",
+    "frequency": "NOT_INSTALLED_OR_SCHEDULED_BY_THIS_RECORD",
+    "human_time_priority": "ONE_REAL_SAFE_FIRST_USE_COMPLETION_AND_ONE_INDEPENDENT_RECOVERY_BEFORE_MORE_NAMES_OR_WORKERS"
+  },
+  "evo_operator_horizon": {
+    "bounded_path": "Discover → Qualify → Relate → Resource → Experiment → Produce → Verify → Preserve → Extend → Recombine",
+    "extensions": [
+      "QUESTION",
+      "CLASSIFY",
+      "TYPE",
+      "NEGATE",
+      "ELSE",
+      "NULL",
+      "INVERT",
+      "COMPARE",
+      "CHALLENGE",
+      "CONSENT",
+      "DEDUPE",
+      "RECOVER",
+      "FALSIFY",
+      "RETRACT",
+      "REVOKE",
+      "RESTORE",
+      "HANDOFF",
+      "SLEEP",
+      "WAKE",
+      "RETIRE",
+      "RETURN_VALUE"
+    ],
+    "logical_candidates": "OPEN_ENDED__NOT_ALL_MATERIALIZED",
+    "elected_execution": "LEAST_RESOURCE_AUTHORIZED_USEFUL_FRONTIER",
+    "recursion": "COTURTLE_SHARED_PARENT_BUDGET_DEPTH_AND_ROUND_LIMITS",
+    "G_d": "OPTIONAL_SYMBOLIC_OR_HYPOTHESIS_LANE__NO_REVELATION_OR_PHYSICAL_EVIDENCE_BY_LABEL"
+  },
+  "minimal_receipt_schema": [
+    "receiver_id_or_null",
+    "source_ref",
+    "source_revision",
+    "client_role",
+    "ia_type_or_null",
+    "task_id",
+    "permissions",
+    "capability_evidence",
+    "deadline_or_expiry",
+    "observed_time",
+    "test_status",
+    "result_ref_or_null",
+    "independent_ack_or_null",
+    "counterexample_or_null",
+    "nonclaims",
+    "next_wake_or_null"
+  ],
+  "next_canary": "Have one explicitly authorized independent AI client read the bootstrap, select one source-bound harmless task, produce a useful result and independently return the exact source revision and one proof/hold; later repeat after one material update without manual relay",
+  "source_ledger_snapshot": {
+    "path": "ai/benchmark-evo.jsonl",
+    "observed_blob": "d617e3f3489a4fde725886b9487379a93801c7e7",
+    "observed_rows": 143,
+    "statuses": {
+      "PASS": 83,
+      "HELD": 46,
+      "FAIL": 14
+    },
+    "not_a_census": true
+  },
+  "nonclaims": [
+    "IA_TERM_NE_CANONICAL_IDENTITY",
+    "AI_MODEL_NE_AGENTIC_AUTHORITY",
+    "ONRAMP_DOCUMENT_NE_AGENT_RECEIVER_PICKUP",
+    "PUBLIC_GITHUB_NE_CUSTOM_DOMAIN_FRONTDOOR",
+    "SESSION_BOOTSTRAP_NE_AUTOMATIC_EXISTING_SESSION_INJECTION",
+    "COORBWARE_RENDER_NE_INSTALLED_OS",
+    "LATCHED_EVERMORE_NE_LIVE_FOREVER",
+    "ADDRESSABLE_BILLIONS_NE_ACTIVE_BILLIONS",
+    "G_D_LABEL_NE_PROOF_OF_SUPERNATURAL_CAUSATION",
+    "NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF",
+    "LOCAL_IS_NOT_LANDED",
+    "VALIDATION_IS_NOT_ACCEPTANCE",
+    "NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE",
+    "HASHING_IS_NOT_SEMANTIC_INGESTION",
+    "DISCOVERED_SET_IS_NOT_COMPLETE_HISTORY"
+  ]
+}
