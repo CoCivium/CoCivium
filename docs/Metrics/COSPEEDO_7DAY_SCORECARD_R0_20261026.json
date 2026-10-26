@@ -1,0 +1,105 @@
+{
+  "schema": "CoSpeedo.7DayScorecard.R0.v0.1",
+  "observed_at": "2026-10-26",
+  "state": "SEED_WITH_PARTIAL_HISTORY__NO_EXPONENTIAL_CLAIM",
+  "purpose": "Establish comparable daily windows for closure, atomic debt, autonomy, recurrence internalization, receiver return, recovery, exemplar availability, latency and cost.",
+  "rails": [
+    "UNKNOWN_NE_ZERO",
+    "MORE_ARTIFACTS_NE_EXPONENTIAL_USEFULNESS",
+    "RECURSION_NE_COMPOUNDING",
+    "RECURRING_TASK_NE_PRODUCTIZED_CAPABILITY",
+    "PUBLICATION_NE_IMPACT",
+    "X2_EXEMPLAR_NE_X2_SPECIAL_CASE"
+  ],
+  "metric_definitions": {
+    "verified_useful_closures": "Count only work reaching a real receiver/use point with a receipt or independently verifiable effect.",
+    "atomic_debt_created": "New useful work stranded as isolated concepts/scripts/tests/files/handoffs lacking a closure path.",
+    "recurring_needs_internalized": "Recurring needs converted into reusable internal capabilities with trigger/receipt/recovery/retirement rules.",
+    "external_dependencies": "Material recurring needs still dependent on an external provider or manual external surface.",
+    "human_relay_events": "Material state transfer requiring Rick or another human to courier context between otherwise disconnected surfaces.",
+    "independent_receiver_returns": "Independent human or external-system responses that materially inform or challenge the work.",
+    "recovery_proofs": "Independent restart/replay/recovery events with receipts.",
+    "x2_observer_availability": "Fraction of the window the authorized remote observer is proven reachable; null if coverage is insufficient.",
+    "source_to_successor_latency_hours": "Measured hours from material source delta to accepted successor projection/capability when both timestamps are known.",
+    "measured_cost": "Known money/compute/human-time inputs for the window; incomplete fields remain null."
+  },
+  "windows": [
+    {
+      "date": "2026-10-20",
+      "status": "UNKNOWN",
+      "note": "Historical comparable receipt census not yet bound."
+    },
+    {
+      "date": "2026-10-21",
+      "status": "UNKNOWN",
+      "note": "Historical comparable receipt census not yet bound."
+    },
+    {
+      "date": "2026-10-22",
+      "status": "UNKNOWN",
+      "note": "Historical comparable receipt census not yet bound."
+    },
+    {
+      "date": "2026-10-23",
+      "status": "UNKNOWN",
+      "note": "Historical comparable receipt census not yet bound."
+    },
+    {
+      "date": "2026-10-24",
+      "status": "UNKNOWN",
+      "note": "Historical comparable receipt census not yet bound."
+    },
+    {
+      "date": "2026-10-25",
+      "status": "PARTIAL",
+      "note": "Public/article and architecture events exist, but a normalized closure/debt census is not yet complete."
+    },
+    {
+      "date": "2026-10-26",
+      "status": "PARTIAL_CURRENT",
+      "evidence": [
+        "CoOrb_CoSpeedo_R4_20261026 source-bound snapshot exists.",
+        "Great ReFact motion pilot generation succeeded and was receipted.",
+        "Great ReFact public surface is screenshot-visible; independent audience effect remains unverified.",
+        "X2 authorized remote observer path is offline; latest check reported last seen about 50h ago.",
+        "Recurring scheduled activity exists, but recurrence execution is not equivalent to useful closure.",
+        "No verified ET contact or live CoCivium ET feed."
+      ],
+      "metrics": {
+        "verified_useful_closures": null,
+        "atomic_debt_created": null,
+        "recurring_needs_internalized": null,
+        "external_dependencies": null,
+        "human_relay_events": null,
+        "independent_receiver_returns": null,
+        "recovery_proofs": null,
+        "x2_observer_availability": null,
+        "source_to_successor_latency_hours": null,
+        "measured_cost": null
+      },
+      "note": "Current evidence is sufficient to mark events and gaps, not yet to populate normalized counts without a dedicated receipt census."
+    }
+  ],
+  "analysis_gate": {
+    "minimum_comparable_windows": 4,
+    "preferred_windows": 7,
+    "allowed_fit_labels": [
+      "DECLINE",
+      "PLATEAU",
+      "NOISY",
+      "SUBLINEAR",
+      "LINEAR",
+      "SUPERLINEAR",
+      "EXPONENTIAL_CANDIDATE"
+    ],
+    "exponential_candidate_requires": [
+      "same metric definition across windows",
+      "positive useful-effect metric",
+      "cost normalization",
+      "uncertainty/missing-data handling",
+      "no fit based only on artifact counts",
+      "independent or reproducible observations"
+    ]
+  },
+  "next_bounded_deed": "Backfill Oct 20-25 only from receipts and source timestamps, preserving nulls where comparable evidence is missing."
+}
