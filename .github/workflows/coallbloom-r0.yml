@@ -1,0 +1,26 @@
+name: CoAllBloom R0 static contract check
+
+on:
+  pull_request:
+    paths:
+      - 'ai/bloom/**'
+      - 'docs/Architecture/COALLBLOOM_SEMANTIC_OPTIONALITY_R0_20261026.md'
+      - '.github/workflows/coallbloom-r0.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  typed-source-boundaries:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Parse pure checker
+        run: node --check ai/bloom/verify-r0.mjs
+      - name: Verify exact pinned donors and epistemic/authority guards
+        run: node ai/bloom/verify-r0.mjs
