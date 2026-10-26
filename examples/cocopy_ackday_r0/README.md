@@ -8,7 +8,7 @@
 - Each record carries sequence, event time, optional independently supplied source-time, source pointer, raw-content SHA-256, optional deliberately retained text, parent event identity and a local chained record digest.
 - **Default: hash-only source content**, with no raw note retained. The --retain-raw flag is required to store selected note text.
 - Separate **verify** readback and **render** of an offline HTML trail, with mobile-friendly green presentation, no JavaScript, no network, no CDN, readable source IDs, escaped private content, text fallbacks and keyboard-native disclosure.
-- The daily source is isolated by ISO date. An ACK event means a participant locally labeled an ACK; it **does not** establish that any outside provider or human receiver acknowledged anything.
+- The daily source is isolated by ISO date. HTML renders are permitted only as new, owner-private files inside the selected journal directory; writing elsewhere fails closed. An ACK event means a participant locally labeled an ACK; it **does not** establish that any outside provider or human receiver acknowledged anything.
 - Bad or unqualified data **HELD**. Single local writer uses an exclusive lock; interrupted writes require explicit recovery and verification, not silent auto-repair.
 
 ## One local-first example (public-safe synthetic fixture)
@@ -38,7 +38,7 @@ python3 -m py_compile examples/cocopy_ackday_r0/cocopy_ackday.py
 python3 -m unittest discover -s examples/cocopy_ackday_r0 -p 'test_cocopy_ackday.py' -v
 ~~~
 
-Forty negative/synthetic tests cover data limits, intentional retention, time/scope, sequence, tampering, partial writes, single writer lock, symlink, XSS escaping, output no-clobber and no provider/OS ingestion.
+Forty-two negative/synthetic tests cover data limits, intentional retention, time/scope, sequence, tampering, partial writes, single writer lock, symlink, XSS escaping, output no-clobber and no provider/OS ingestion.
 
 **Hard boundaries:** RAW_NE_PUBLIC · REWISE_NE_ERASURE · ACK_LABEL_NE_RECEIVER_ACK · EVENT_HASH_NE_TRUTH · LOCAL_NE_DURABLE · NO_CONTENT_NE_NO_THOUGHT · LOCAL_VIEW_NE_X2_RUNTIME · CI_PASS_NE_USER_ADOPTION.
 
