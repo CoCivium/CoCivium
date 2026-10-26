@@ -42,6 +42,10 @@ A repository path, branch, PR, README or commit can bind to a relation, but the 
 `GITHUB_NE_COALL_TOTALITY`  
 `RELATION_PERSISTS__BINDING_EVOLVES`
 
+## AI → IA? evergreen role admission
+
+[Machine-readable AI/IA CoOrbWare evergreen onramp](../ai/onramp/ai-ia-evergreen-r0.json) and its [human-readable twin](Onramp/AI_IA_COORBWARE_EVERGREEN_R0.md) are source-bound **advisory admission paths**, not model directives, an always-on scheduler, a verified external-agent receiver or an installed CoOrbWare runtime. The term **IA** remains unresolved pending a typed, explicitly authorized role definition. A client may inspect the smallest relevant public source, propose one low-risk task and preserve its actual receiver receipt; no public document grants provider or device permissions.
+
 ## Currentness
 
 Machine clients should prefer the smallest relevant current slice:
