@@ -1,0 +1,42 @@
+name: CoRegenerative Metabolism R0
+on:
+  push:
+    branches:
+      - experiment/coregenerative-metabolism-r0-20261026
+    paths:
+      - 'examples/coregenerative_metabolism_r0/**'
+      - '.github/workflows/coregenerative-metabolism-r0.yml'
+  pull_request:
+    paths:
+      - 'examples/coregenerative_metabolism_r0/**'
+      - '.github/workflows/coregenerative-metabolism-r0.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  synthetic-source-canary:
+    name: Source-identity and bounded regeneration tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - name: Checkout source without persisted credentials
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Select Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run 12-asset source and feedback tests
+        run: python3 examples/coregenerative_metabolism_r0/test_canary.py
+      - name: Produce deterministic local synthetic evidence
+        run: python3 examples/coregenerative_metabolism_r0/canary.py > /tmp/coregenerative-synthetic-r0.json
+      - name: Archive synthetic fixture only
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: coregenerative-synthetic-r0
+          path: /tmp/coregenerative-synthetic-r0.json
+          retention-days: 14
