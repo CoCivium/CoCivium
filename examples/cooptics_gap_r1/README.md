@@ -1,5 +1,18 @@
 # CoOpticsGap+ R1 | Synthetic shadows ≠ coherent detector speckle
 
+## R2 dependent numerical-null review (source candidate, not a second optics system)
+
+The base R1 table and original synthetic metrics are historical, unchanged in this dependent draft. **R2 contributes eight additional negative checks (48 total)** for a hidden but concrete numerical artefact: on a perfectly flat virtual relief with an orthogonal 90° toy analyzer, `cos(π/2)` is not represented by exactly zero in ordinary floating point. R1 normalized the nearly zero synthetic far-field intensity to unit mean, making a purely numerical channel look bright.
+
+R2 returns zeros when raw mean synthetic detector intensity is at or below `len(h) × 10⁻²⁴`. **This is a chosen dimensionless numerical guard, not a calibrated laser/camera threshold or physical proof of absent light.** Nonfinite height, incidence, wavelength, analyzer and geometry inputs now raise clear errors. Real polarimetric interpretation still requires radiometrically meaningful measurements, unnormalized channel power, calibration, instrument and material models.
+
+The original `synthetic_results_r1.json` remains pinned for direct replay; the earlier `manifest.json` represents R1 historical source byte identities, **not** a valid R2 package hash manifest after source edits. On integration, regenerate a separately versioned R2 manifest and independent receiver readback, preserving the R1 historical ancestor.
+
+Evidence: [dependent PR #285](https://github.com/CoCivium/CoCivium/pull/285); [CI 40279976518](https://github.com/CoCivium/CoCivium/actions/runs/40279976518) passed the new 48-test suite and pinned R1 replay. Append-only `benchmark_evo.jsonl` retains the original false-bright FAIL, corrected synthetic PASS, and physical/ET/G_d receiver HELD. No measurement, hardware, drug experiment, ET communication, or public outcome asserted.
+
+`DARK_NE_EMPTY | TINY_RAW_POWER_NE_NORMALIZE_TO_BRIGHT | NUMERICAL_FLOOR_NE_SENSOR_FLOOR | R1_MANIFEST_NE_R2_PACKAGING | CI_PASS_NE_ET_DETECTION`.
+
+
 **2026-10-26 · Public-safe scientific teaching canary · NOT measured optics, ET contact, divine evidence, a drug experiment or deployed CoOrbWare.**
 
 This is the **first bounded executable canary** for the pre-existing [CoOpticsGap+ R0 research plan](https://github.com/CoCivium/CoCivium/blob/main/docs/CoTheoryAll/cooptics/ROUGH_SURFACE_GAP_LIGHT_R0_20261026.md) and its [six-model hypothesis registry](https://github.com/CoCivium/CoCivium/blob/main/ai/research/cooptics-rough-gap-r0.json). It also respects the earlier [CoRenewal+ selective-amplification](https://github.com/CoCivium/CoCivium/blob/main/docs/Architecture/CORENEWAL_SELECTIVE_AMPLIFICATION_R0_20261026.md), [CoInterstice observer/field separation](https://github.com/CoCivium/CoCivium/blob/main/docs/Architecture/COINTERSTICE_OBSERVER_PERTURBATION_MEDIA_FABRIC_R0_20261026.md), and [CoFFF contact evidence ladder](https://github.com/CoCivium/CoCivium/blob/main/docs/CoTheoryAll/cofff/COFFF_FIRST_FULL_CONTACT_RESEARCH_STORYBOARD_R0_20261025.md).
