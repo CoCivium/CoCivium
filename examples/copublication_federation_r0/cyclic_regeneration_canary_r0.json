@@ -1,0 +1,121 @@
+{
+  "schema": "CoAll.CoAmplificatory.CycleCanary.R0",
+  "state": "SYNTHETIC_NORMALIZED_REPRESENTATION_TEST_NOT_REAL_OSCILLATOR",
+  "question": "Can finite driven loops renew a bounded proxy while keeping harmful gain and a nonempirical G_d lane separable?",
+  "source": {
+    "repo": "CoCivium/CoCivium",
+    "path": "docs/Architecture/COAMPLIFICATORY_CYCLIC_REGENERATION_R0_20261026.md",
+    "git_blob_sha1": "f0e7834add3aa2b310f2c03602c4fb2ae68c1838",
+    "source_state": "CANDIDATE_ARCHITECTURE_NOT_PHYSICS_PROOF_NOT_GD_PROOF_NOT_RUNTIME"
+  },
+  "observed_utc": "2026-10-26T05:27:07Z",
+  "formula": "x[n+1] = min(ceiling, max(0, (1-damping)*x[n]+drive_per_cycle-correction[n]))",
+  "cycles": 8,
+  "unit": "NORMALIZED_DIMENSIONLESS_PROXY_NOT_JOULES_OR_USER_UTILITY",
+  "regimes": [
+    {
+      "id": "damped_closed_proxy",
+      "initial": 1,
+      "damping": 0.25,
+      "drive_per_cycle": 0,
+      "correction_per_cycle": 0,
+      "correction_after_cycle": 100,
+      "ceiling": 1.5,
+      "interpretation": "No replenishment: the normalized proxy decays.",
+      "expected_series": [
+        1,
+        0.75,
+        0.5625,
+        0.421875,
+        0.316406,
+        0.237305,
+        0.177979,
+        0.133484,
+        0.100113
+      ]
+    },
+    {
+      "id": "bounded_replenishment",
+      "initial": 1,
+      "damping": 0.25,
+      "drive_per_cycle": 0.4,
+      "correction_per_cycle": 0,
+      "correction_after_cycle": 100,
+      "ceiling": 1.5,
+      "interpretation": "Explicit ongoing drive overcomes losses until a finite ceiling is reached.",
+      "expected_series": [
+        1,
+        1.15,
+        1.2625,
+        1.346875,
+        1.410156,
+        1.457617,
+        1.493213,
+        1.5,
+        1.5
+      ]
+    },
+    {
+      "id": "unchecked_positive_feedback_proxy",
+      "initial": 1,
+      "damping": -0.18,
+      "drive_per_cycle": 0.25,
+      "correction_per_cycle": 0,
+      "correction_after_cycle": 100,
+      "ceiling": 8,
+      "interpretation": "The unstable recurrence escalates, so a finite safety ceiling is required. Negative damping is a mathematical growth coefficient, not free physical energy.",
+      "expected_series": [
+        1,
+        1.43,
+        1.9374,
+        2.536132,
+        3.242636,
+        4.07631,
+        5.060046,
+        6.220854,
+        7.590608
+      ]
+    },
+    {
+      "id": "adaptive_correction",
+      "initial": 1,
+      "damping": 0.25,
+      "drive_per_cycle": 0.4,
+      "correction_per_cycle": 0.2,
+      "correction_after_cycle": 3,
+      "ceiling": 1.5,
+      "interpretation": "A modeled correction subtracts from raw amplitude; useful accuracy can improve even when amplitude decreases.",
+      "expected_series": [
+        1,
+        1.15,
+        1.2625,
+        1.346875,
+        1.210156,
+        1.107617,
+        1.030713,
+        0.973035,
+        0.929776
+      ]
+    }
+  ],
+  "audit": {
+    "measured_energy_joules": null,
+    "verified_reader_improvement": null,
+    "qualified_gd_measurement": null,
+    "independent_receiver_ack": false,
+    "external_effect_count": 0,
+    "success_definition": "Accurately classify decline, finite replenishment, unsafe gain and correction in a synthetic recurrence. Do not optimize for always-increasing raw amplitude.",
+    "future_external_test": "Measure real receiver usefulness, error corrections, human attention, resource cost and independent replication separately, using a negative-control cycle."
+  },
+  "nonclaims": [
+    "SYNTHETIC_AMPLITUDE_NE_MEASURED_ENERGY",
+    "NORMALIZED_DRIVE_NE_EXPLICIT_PHYSICAL_ENERGY_BUDGET",
+    "POSITIVE_FEEDBACK_NE_GOODNESS",
+    "AMPLIFICATION_NE_TRUTH",
+    "BRAND_RECALL_NE_INDEPENDENT_ADOPTION",
+    "GD_HYPOTHESIS_NE_MEASURED_FIELD",
+    "MEMORY_SEED_NE_AUTONOMOUS_WORKER",
+    "MODEL_UPPER_BOUND_NE_UNLIMITED_RESOURCES",
+    "FINITE_POSITIVE_GAIN_NE_INFINITE_REAL_GROWTH"
+  ]
+}
