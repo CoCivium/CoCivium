@@ -260,5 +260,10 @@
     "NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE",
     "HASHING_IS_NOT_SEMANTIC_INGESTION",
     "DISCOVERED_SET_IS_NOT_COMPLETE_HISTORY"
-  ]
+  ],
+  "benchmark_sidecar": {
+    "path": "ai/onramp/ai-ia-evergreen-benchmark-r0.jsonl",
+    "observed_blob": "cf40ada4c79249bded5ef015c9afb1ef36dc76ec",
+    "scope": "THREE_SCOPED_SOURCE_AND_REACHABILITY_RECEIPTS__NOT_GLOBAL_RUNTIME_METRICS"
+  }
 }
