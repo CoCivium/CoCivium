@@ -11,7 +11,7 @@ Establish one shared, iterative evolution workflow across CoCivium artifacts, au
 
 1. **Canonical versioned source:** CoCivium GitHub documents and source artifacts, with stable URLs, commit/version references, provenance, review state, and change history.
 2. **Human-controlled outreach staging:** Gmail Drafts for `rballard@inseed.com`, as requested, if an authorized Gmail integration or the account UI makes this available. This surface is a staging copy, not the canonical source.
-3. **Identity/contact projection:** `CoCivia@CXoCivium.org` is a requested project identity/address. Its ownership, mailbox state, alias/routing, and permissions are unverified. Do not assume it is the same mailbox as `rballard@inseed.com`.
+3. **Identity/contact projection:** `CoCivia@CoCivium.org` is a requested project identity/address. Its ownership, mailbox state, alias/routing, and permissions are unverified. Do not assume it is the same mailbox as `rballard@inseed.com`.
 4. **Contribution/review queue:** proposed changes, questions, source requests, disagreements, approvals, and next actions.
 5. **Publication ledger:** candidate outputs, evidence and citation checks, intended venue, review deadlines, submission status, and publication receipts.
 6. **Other workspaces:** connect only when an available, authorized integration is confirmed; record which source is authoritative and what synchronization does or does not cover.
@@ -51,7 +51,7 @@ Contributions can be suggestions, patches, critiques, references, tests, or fini
 >
 > Relevant work includes CoTheoryAll+, CoCitation+, CoFanOut+, CoChorus+, CoReview+, CoPublish+, CoProof+, CoOrbWare+, CoAllBloom+, CoEvergreen+, CoTime+, and related families. Look for cross-disciplinary links while distinguishing direct evidence, historical influence, independent convergence, analogy, and speculation. Preserve disagreements and credit.
 >
-> Where authorized and available, use the designated Gmail Drafts folder for `rballard@inseed.com` as human-reviewed outreach staging; keep versioned CoCivium source documents as canonical references. Treat `CoCivia@CXoCivium.org` as a requested identity pending verification of mailbox/alias status and permissions. Do not assume the two addresses are connected.
+> Where authorized and available, use the designated Gmail Drafts folder for `rballard@inseed.com` as human-reviewed outreach staging; keep versioned CoCivium source documents as canonical references. Treat `CoCivia@CoCivium.org` as a requested identity pending verification of mailbox/alias status and permissions. Do not assume the two addresses are connected.
 >
 > Participation is optional. Do not send messages, grant access, represent endorsement, or modify shared external systems without the relevant authority. Record what was actually saved, shared, sent, delivered, reviewed, or published; these are distinct states.
 >
@@ -59,11 +59,11 @@ Contributions can be suggestions, patches, critiques, references, tests, or fini
 
 ## Current execution boundary
 
-This document is a proposal and reusable broadcast text. It has not been broadcast to email, other sessions, agents, or external workspaces. The Gmail integration was found disabled by administrator, so no Gmail draft was created. The requested address `CoCivia@CXoCivium.org` and its relationship to the Gmail account have not been verified.
+This document is a proposal and reusable broadcast text. It has not been broadcast to email, other sessions, agents, or external workspaces. The Gmail integration was found disabled by administrator, so no Gmail draft was created. The requested address `CoCivia@CoCivium.org` and its relationship to the Gmail account have not been verified.
 
 ## Acceptance criteria for the first real integration
 
-- Verify the authorized mailbox and whether `CoCivia@CXoCivium.org` is a mailbox, alias, or separate route.
+- Verify the authorized mailbox and whether `CoCivia@CoCivium.org` is a mailbox, alias, or separate route.
 - Create one draft without sending it.
 - Record its exact draft identifier, source version, and saved-state receipt.
 - Make one versioned edit and verify the update and history.
