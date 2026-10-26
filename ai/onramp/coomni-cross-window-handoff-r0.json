@@ -1,0 +1,232 @@
+{
+  "schema": "CoCivium.CoOmni.CrossWindowHandoff.Canary.R0",
+  "date": "2026-10-26",
+  "status": "PUBLIC_SAFE_SYNTHETIC_CANARY_SOURCE_NOT_LIVE_SHARED_UI",
+  "work_object_id": "CoAll:CoOmni:OneWorkObjectManyViews:R0",
+  "intent": "Replace manual continuity relay between multiple chat windows with one consent-scoped, source-bound work object, a small context packet and explicit reader acknowledgment",
+  "basis": [
+    {
+      "role": "standing intent, not runtime",
+      "path": "ai/colatch_evo_all_betters_r0.json",
+      "sha": "1840c2dc339332585bd92144ac869ff8bd47aa58",
+      "url": "https://github.com/CoCivium/CoCivium/blob/main/ai/colatch_evo_all_betters_r0.json"
+    },
+    {
+      "role": "context compiler and bounded resource selection",
+      "path": "docs/Architecture/COOMNI_CONTEXT_RESOURCE_FABRIC_R0_20261024.md",
+      "sha": "4f2090fa339a971aede78e3cc4d9c62eac4c8272",
+      "url": "https://github.com/CoCivium/CoCivium/blob/main/docs/Architecture/COOMNI_CONTEXT_RESOURCE_FABRIC_R0_20261024.md"
+    },
+    {
+      "role": "source version and receiver-relative projection",
+      "path": "docs/Architecture/COLIVING_HIGHLIGHT_R0.md",
+      "sha": "dca1b55de78dd10d0167dd6411518f363f6f71a8",
+      "url": "https://github.com/CoCivium/CoCivium/blob/main/docs/Architecture/COLIVING_HIGHLIGHT_R0.md"
+    },
+    {
+      "role": "consent-scoped provider adapter",
+      "path": "docs/Architecture/COMODELFABRIC_COORB_PROVIDER_ADAPTERS_R0_20261024.md",
+      "sha": "2d0d8cb7928ca7158c4d5f520c6e5b4e262d0743",
+      "url": "https://github.com/CoCivium/CoCivium/blob/main/docs/Architecture/COMODELFABRIC_COORB_PROVIDER_ADAPTERS_R0_20261024.md"
+    },
+    {
+      "role": "AI onramp and proof gates",
+      "path": "docs/Onramp/AI_IA_COORBWARE_EVERGREEN_R0.md",
+      "sha": "7659308fbcf206a11514d594ff514180454729b5",
+      "url": "https://github.com/CoCivium/CoCivium/blob/main/docs/Onramp/AI_IA_COORBWARE_EVERGREEN_R0.md"
+    }
+  ],
+  "minimal_packet": {
+    "stable_identity": "CoAll:CoOmni:OneWorkObjectManyViews:R0",
+    "question": "What is the next independently useful, safe, reversible CoOrbWare/X2 continuation test?",
+    "elected_action": "Qualify one X2 receiver path and one first-use CoWorkObject handoff without copying private conversation text into other accounts",
+    "epistemic_class": "PLANNED_CANDIDATE",
+    "source_refs": [
+      {
+        "path": "ai/colatch_evo_all_betters_r0.json",
+        "blob": "1840c2dc339332585bd92144ac869ff8bd47aa58"
+      },
+      {
+        "path": "docs/Architecture/COOMNI_CONTEXT_RESOURCE_FABRIC_R0_20261024.md",
+        "blob": "4f2090fa339a971aede78e3cc4d9c62eac4c8272"
+      },
+      {
+        "path": "docs/Architecture/COLIVING_HIGHLIGHT_R0.md",
+        "blob": "dca1b55de78dd10d0167dd6411518f363f6f71a8"
+      },
+      {
+        "path": "docs/Architecture/COMODELFABRIC_COORB_PROVIDER_ADAPTERS_R0_20261024.md",
+        "blob": "2d0d8cb7928ca7158c4d5f520c6e5b4e262d0743"
+      },
+      {
+        "path": "docs/Onramp/AI_IA_COORBWARE_EVERGREEN_R0.md",
+        "blob": "7659308fbcf206a11514d594ff514180454729b5"
+      }
+    ],
+    "currentness": "SOURCE_READBACK_2026-10-26",
+    "authority": "READ_ONLY_PLANNING",
+    "privacy": "PUBLIC_SYNTHETIC_ONLY",
+    "recipient": "NO_RECEIVER_BOUND",
+    "uncertainty": [
+      "X2 remote connection observed OFFLINE; OS status not inferred",
+      "no live cross-window shared work object",
+      "CoOmni R1 compiler reported local tests, not production binding",
+      "no independent user acceptance or off-provider cold restore"
+    ],
+    "negative_space": [
+      "NO_INFERRED_ACTIVE_AI_SESSIONS",
+      "NO_INFERRED_CLAUDE_LOGIN",
+      "NO_IMPLICIT_PERMISSION_FROM_INPUT_GESTURE",
+      "NO_AUTOMATIC_SCREEN_CAPTURE",
+      "NO_G_D_OR_ET_EMPIRICAL_ASSERTION"
+    ],
+    "receipt": "NO_EXTERNAL_RECEIVER_ACK",
+    "recovery": "SOURCE_REFS_ONLY_NO_INDEPENDENT_COLD_RESTORE"
+  },
+  "projection_modes": [
+    {
+      "id": "STATIC_SNAPSHOT",
+      "behavior": "Pin source revision and show unchanged historic meaning",
+      "stage": "CANDIDATE"
+    },
+    {
+      "id": "LATEST_POINTER",
+      "behavior": "Show newer source pointer only after exact observed revision checks",
+      "stage": "CANDIDATE"
+    },
+    {
+      "id": "LIVE_OPT_IN",
+      "behavior": "Display explicit diff/currentness and hold missing receiver acknowledgment",
+      "stage": "HELD_NOT_RUNNING"
+    },
+    {
+      "id": "CROSS_PROVIDER",
+      "behavior": "Compile role-scoped context without importing passwords or raw private chats",
+      "stage": "HELD_NOT_RUNNING"
+    },
+    {
+      "id": "COBAR",
+      "behavior": "Glanceable source/effect/heartbeat, no inferred current runtime",
+      "stage": "HELD_NOT_BOUND"
+    }
+  ],
+  "typed_relations": [
+    {
+      "symbol": "→",
+      "kind": "NEXT",
+      "meaning": "bounded next step"
+    },
+    {
+      "symbol": "⇄",
+      "kind": "RELATES",
+      "meaning": "may be bidirectional, not necessarily equal"
+    },
+    {
+      "symbol": "⊂",
+      "kind": "IN_SCOPE",
+      "meaning": "declared subset, not permission"
+    },
+    {
+      "symbol": "¬",
+      "kind": "NOT",
+      "meaning": "negation or counterhypothesis"
+    },
+    {
+      "symbol": "∅",
+      "kind": "KNOWN_ABSENT",
+      "meaning": "absence only under an explicitly closed checked scope"
+    },
+    {
+      "symbol": "?",
+      "kind": "UNKNOWN",
+      "meaning": "not verified"
+    },
+    {
+      "symbol": "↺",
+      "kind": "REVISIT",
+      "meaning": "recheck or reversible successor"
+    },
+    {
+      "symbol": "∞",
+      "kind": "OPEN_CANDIDATES",
+      "meaning": "unbounded addressable ideas, finite active capacity"
+    }
+  ],
+  "test_plan": [
+    {
+      "id": "T01",
+      "name": "EXACT_SOURCE_READBACK",
+      "status": "PASS",
+      "proof": "Five public Git blobs fetched and pinned; no physical receiver"
+    },
+    {
+      "id": "T02",
+      "name": "PACKET_STRUCTURE_INVARIANTS",
+      "status": "PASS",
+      "proof": "Static schema checks on this candidate before publication"
+    },
+    {
+      "id": "T03",
+      "name": "TWO_DISTINCT_READER_ACKS",
+      "status": "HELD",
+      "proof_needed": "Separate consented receiver must return observed source digest, cursor and task result"
+    },
+    {
+      "id": "T04",
+      "name": "STALE_CURSOR_REFUSED",
+      "status": "HELD",
+      "proof_needed": "Simulated or live second view must not silently claim latest when pinned revision changed"
+    },
+    {
+      "id": "T05",
+      "name": "PRIVACY_CAPABILITY_NEGATIVE",
+      "status": "HELD",
+      "proof_needed": "Unauthorized role sees no private text, credentials, images or external effect capabilities"
+    },
+    {
+      "id": "T06",
+      "name": "X2_COORB_SURFACE",
+      "status": "HELD",
+      "proof_needed": "X2-origin runtime receipt with bound button/hotkey, provenance and stop control"
+    },
+    {
+      "id": "T07",
+      "name": "FIRST_HUMAN_VALUE",
+      "status": "HELD",
+      "proof_needed": "One consenting independent user completes a useful task, returns comprehension and correction evidence"
+    },
+    {
+      "id": "T08",
+      "name": "OFF_PROVIDER_COLD_RESTORE",
+      "status": "HELD",
+      "proof_needed": "Independently administered/powered custodian rehydrates exact bytes from its own durable object"
+    }
+  ],
+  "priority": [
+    "X2_REMOTE_RECEIVER_REQUALIFICATION",
+    "ONE_CROSS_WINDOW_HANDOFF",
+    "ONE_USER_FIRST_USE",
+    "OFF_PROVIDER_RESTORE",
+    "SPECIALIST_DOORWAYS"
+  ],
+  "boundedness": {
+    "max_active_work_objects_in_first_canary": 1,
+    "max_projections_to_accept": 2,
+    "max_review_rounds": 2,
+    "model_workers_started": 0,
+    "provider_accounts_created": 0,
+    "automatic_outbound_sends": 0
+  },
+  "nonclaims": [
+    "VISIBLE_BROWSER_WINDOWS_NE_SHARED_STATE",
+    "SOURCE_LINK_NE_LIVE_SUBSCRIPTION",
+    "PROJECTION_NE_RECEIVER_ACK",
+    "LOCAL_COMPILER_TEST_NE_X2_INSTALLATION",
+    "RECOVERY_POINTER_NE_COLD_RESTORE",
+    "TYPED_SYMBOL_NE_UNLIMITED_AUTHORITY",
+    "INFINITY_GLYPH_NE_INFINITE_COMPUTE",
+    "G_D_REL_NE_VERIFIED_DIVINITY",
+    "ET_HYPOTHESIS_NE_CONTACT",
+    "NO_REAL_PRIVATE_SCREENSHOT_CONTENT_PUBLISHED"
+  ]
+}
