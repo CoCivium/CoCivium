@@ -50,7 +50,7 @@ class ThemeSafety(unittest.TestCase):
             self.assertNotIn(forbidden,TEXT)
 
     def test_privacy_warning_visible(self):
-        self.assertIn("if($context.Mode -ceq 'PRIVACY HOLD'){$header.ForeColor=",TEXT)
+        self.assertIn("if($context.Mode -ceq 'PRIVACY HOLD') {$header.ForeColor=",TEXT)
         self.assertIn('$bPreview.Add_Click({',TEXT)
         self.assertIn("Authority: NONE / NOT SENT",TEXT)
 
