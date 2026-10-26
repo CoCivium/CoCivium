@@ -15,7 +15,7 @@ This is an intentionally small acceptance canary under the **existing** [CoAllBl
 - `snapshot.json` is a synthetic source fixture, not evidence of a real customer system or recovered document.
 - The full local generation/test package in the originating ChatGPT conversation passed **74/74 Node checks**. Those Node generators and the complete historical test record have **not** been committed to this draft PR. Do not confuse this repository file with a complete reproducible build from source.
 - Local Chromium interaction testing passed with desktop 1080px and mobile 390px using `set_content`, including two view switches, a symbolic lens, no JavaScript errors and no horizontal overflow. Direct standalone `file://` loading was blocked by the test environment and remains HELD until independently accepted.
-- The GitHub `check.mjs` and proposed PR CI independently check the embedded snapshot, common source metadata, typed meaning classes, no-effects ceiling and basic privacy/HTML invariants. **Those checks do not install or run a native OS adapter.**
+- The GitHub `check.mjs` is a reviewable Node test entrypoint for embedded snapshot parity, common metadata, typed meaning classes and no-effects invariants. A proposed GitHub Actions workflow was **blocked by a write-safety check and was neither added nor run**. The local 74-test suite is the measured pass, not a claimed GitHub CI result. No native OS adapter was installed.
 - Full local ZIP SHA-256: `22bdcf71db1753a813ce163ef9477461d79f1790f757e21bd13f632cc591701d`. Same generated HTML Git blob: `40bd3f197f11ba5de86e79306a4aab879241db28`. Snapshot Git blob: `cbaccfaf407b2eed00664e3eff4393e6f73a3121`.
 
 ## How it connects
