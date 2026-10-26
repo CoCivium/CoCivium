@@ -18,6 +18,8 @@ No external npm packages or credentials are required for `build.py` and the Node
 
 ## What is context?
 
+**New candidate, CoContextWare bounded packets R0:** [CONTEXT_BUDGET_R0.md](CONTEXT_BUDGET_R0.md) describes a deterministic explicit-source packer that enforces a full serialized-byte ceiling, preserves FAIL/HELD evidence before positive snippets, labels unknown source readproof, and never invokes a model or device. Its [42 synthetic Node tests](test_context_budget_r0.cjs) run in the existing CoThumb bounded workflow. This is **not** a tokenizer, infinite model context, or approved live receiver. Do not configure a second input hook or use the packer as an authority engine.
+
 The current, **qualified** task slice, not every byte from every session:
 
 `CoContext = (Purpose, SelectedObject, Priors, Relations, Evidence, Scope, Privacy, Authority, Time, Receiver, ResourceBudget, DeviceCapability, Accessibility)`.
@@ -79,3 +81,5 @@ For `G_d`, spiritual/nonmaterial, ET and Civ2+/Civ3+ stories: use a *labelled sy
 Rails: `CONTEXT_ADDRESSABLE_NE_CONTEXT_LOADED | GESTURE_NE_AUTHORITY | PREVIEW_NE_EXECUTE | QUESTION_NE_ANSWER | NULL_NE_FALSE | ET_SCENARIO_NE_CONTACT | G_D_FRAME_NE_MEASURED_FIELD | LOCAL_IS_NOT_LANDED | VALIDATION_IS_NOT_ACCEPTANCE | NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF | NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE`.
 
 **FOSS Forever | CoGoAll | Working Together Respectfully | privacy by design | visible effects, wearables optional.**
+
+**Next gate, still shadow:** [REQUEST_TOKEN_ADMISSION_R0.md](REQUEST_TOKEN_ADMISSION_R0.md) binds a separate *full model request* count receipt to its exact serialized request hash and declared model/window, reserves output tokens, and holds on stale, mismatched, text-only or oversize counts. Its [43 offline tests](test_request_token_admission_r0.cjs) run in the same existing CI workflow. This neither calls a provider nor verifies model limits, actual tokens, X2 runtime or model effect authority.
