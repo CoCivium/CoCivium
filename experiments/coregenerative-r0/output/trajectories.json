@@ -1,0 +1,7698 @@
+{
+  "note": "Synthetic model only; no physical energy or user behavior measured.",
+  "scenarios": {
+    "capacity_long_run": [
+      {
+        "after": {
+          "capacity": 34.875,
+          "cumulative_spend": 4.0,
+          "reserve": 28.8,
+          "useful": 14.96
+        },
+        "before": {
+          "capacity": 25.0,
+          "cumulative_spend": 0.0,
+          "reserve": 25.0,
+          "useful": 8.0
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 1
+      },
+      {
+        "after": {
+          "capacity": 44.700625,
+          "cumulative_spend": 8.0,
+          "reserve": 32.6,
+          "useful": 21.3632
+        },
+        "before": {
+          "capacity": 34.875,
+          "cumulative_spend": 4.0,
+          "reserve": 28.8,
+          "useful": 14.96
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 2
+      },
+      {
+        "after": {
+          "capacity": 54.47712188,
+          "cumulative_spend": 12.0,
+          "reserve": 36.4,
+          "useful": 27.254144
+        },
+        "before": {
+          "capacity": 44.700625,
+          "cumulative_spend": 8.0,
+          "reserve": 32.6,
+          "useful": 21.3632
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 3
+      },
+      {
+        "after": {
+          "capacity": 64.20473627,
+          "cumulative_spend": 16.0,
+          "reserve": 40.2,
+          "useful": 32.67381248
+        },
+        "before": {
+          "capacity": 54.47712188,
+          "cumulative_spend": 12.0,
+          "reserve": 36.4,
+          "useful": 27.254144
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 4
+      },
+      {
+        "after": {
+          "capacity": 73.88371259,
+          "cumulative_spend": 20.0,
+          "reserve": 44.0,
+          "useful": 37.65990748
+        },
+        "before": {
+          "capacity": 64.20473627,
+          "cumulative_spend": 16.0,
+          "reserve": 40.2,
+          "useful": 32.67381248
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 5
+      },
+      {
+        "after": {
+          "capacity": 83.51429403,
+          "cumulative_spend": 24.0,
+          "reserve": 47.8,
+          "useful": 42.24711488
+        },
+        "before": {
+          "capacity": 73.88371259,
+          "cumulative_spend": 20.0,
+          "reserve": 44.0,
+          "useful": 37.65990748
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 6
+      },
+      {
+        "after": {
+          "capacity": 93.09672256,
+          "cumulative_spend": 28.0,
+          "reserve": 51.6,
+          "useful": 46.46734569
+        },
+        "before": {
+          "capacity": 83.51429403,
+          "cumulative_spend": 24.0,
+          "reserve": 47.8,
+          "useful": 42.24711488
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 7
+      },
+      {
+        "after": {
+          "capacity": 102.63123895,
+          "cumulative_spend": 32.0,
+          "reserve": 55.4,
+          "useful": 50.34995803
+        },
+        "before": {
+          "capacity": 93.09672256,
+          "cumulative_spend": 28.0,
+          "reserve": 51.6,
+          "useful": 46.46734569
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 8
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 36.0,
+          "reserve": 59.2,
+          "useful": 53.92196139
+        },
+        "before": {
+          "capacity": 102.63123895,
+          "cumulative_spend": 32.0,
+          "reserve": 55.4,
+          "useful": 50.34995803
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 9
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 40.0,
+          "reserve": 63.0,
+          "useful": 57.20820448
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 36.0,
+          "reserve": 59.2,
+          "useful": 53.92196139
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 10
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 44.0,
+          "reserve": 66.8,
+          "useful": 60.23154812
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 40.0,
+          "reserve": 63.0,
+          "useful": 57.20820448
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 11
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 48.0,
+          "reserve": 70.6,
+          "useful": 63.01302427
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 44.0,
+          "reserve": 66.8,
+          "useful": 60.23154812
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 12
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 52.0,
+          "reserve": 74.4,
+          "useful": 65.57198233
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 48.0,
+          "reserve": 70.6,
+          "useful": 63.01302427
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 13
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 56.0,
+          "reserve": 78.2,
+          "useful": 67.92622374
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 52.0,
+          "reserve": 74.4,
+          "useful": 65.57198233
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 14
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 60.0,
+          "reserve": 82.0,
+          "useful": 70.09212584
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 56.0,
+          "reserve": 78.2,
+          "useful": 67.92622374
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 15
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 64.0,
+          "reserve": 85.8,
+          "useful": 72.08475577
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 60.0,
+          "reserve": 82.0,
+          "useful": 70.09212584
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 16
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 68.0,
+          "reserve": 89.6,
+          "useful": 73.91797531
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 64.0,
+          "reserve": 85.8,
+          "useful": 72.08475577
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 17
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 72.0,
+          "reserve": 93.4,
+          "useful": 75.60453729
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 68.0,
+          "reserve": 89.6,
+          "useful": 73.91797531
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 18
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 76.0,
+          "reserve": 97.2,
+          "useful": 77.15617431
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 72.0,
+          "reserve": 93.4,
+          "useful": 75.60453729
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 19
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 80.0,
+          "reserve": 101.0,
+          "useful": 78.58368037
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 76.0,
+          "reserve": 97.2,
+          "useful": 77.15617431
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 20
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 84.0,
+          "reserve": 104.8,
+          "useful": 79.89698594
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 80.0,
+          "reserve": 101.0,
+          "useful": 78.58368037
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 21
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 88.0,
+          "reserve": 108.6,
+          "useful": 81.10522706
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 84.0,
+          "reserve": 104.8,
+          "useful": 79.89698594
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 22
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 92.0,
+          "reserve": 112.4,
+          "useful": 82.2168089
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 88.0,
+          "reserve": 108.6,
+          "useful": 81.10522706
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 23
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 96.0,
+          "reserve": 116.2,
+          "useful": 83.23946419
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 92.0,
+          "reserve": 112.4,
+          "useful": 82.2168089
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 24
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 100.0,
+          "reserve": 120.0,
+          "useful": 84.18030705
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 96.0,
+          "reserve": 116.2,
+          "useful": 83.23946419
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 25
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 104.0,
+          "reserve": 123.8,
+          "useful": 85.04588249
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 100.0,
+          "reserve": 120.0,
+          "useful": 84.18030705
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 26
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 108.0,
+          "reserve": 127.6,
+          "useful": 85.84221189
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 104.0,
+          "reserve": 123.8,
+          "useful": 85.04588249
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 27
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 112.0,
+          "reserve": 131.4,
+          "useful": 86.57483494
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 108.0,
+          "reserve": 127.6,
+          "useful": 85.84221189
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 28
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 116.0,
+          "reserve": 135.2,
+          "useful": 87.24884814
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 112.0,
+          "reserve": 131.4,
+          "useful": 86.57483494
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 29
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 120.0,
+          "reserve": 139.0,
+          "useful": 87.86894029
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 116.0,
+          "reserve": 135.2,
+          "useful": 87.24884814
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 30
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 124.0,
+          "reserve": 142.8,
+          "useful": 88.43942507
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 120.0,
+          "reserve": 139.0,
+          "useful": 87.86894029
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 31
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 128.0,
+          "reserve": 146.6,
+          "useful": 88.96427106
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 124.0,
+          "reserve": 142.8,
+          "useful": 88.43942507
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 32
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 132.0,
+          "reserve": 150.4,
+          "useful": 89.44712938
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 128.0,
+          "reserve": 146.6,
+          "useful": 88.96427106
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 33
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 136.0,
+          "reserve": 154.2,
+          "useful": 89.89135903
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 132.0,
+          "reserve": 150.4,
+          "useful": 89.44712938
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 34
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 140.0,
+          "reserve": 158.0,
+          "useful": 90.30005031
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 136.0,
+          "reserve": 154.2,
+          "useful": 89.89135903
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 35
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 144.0,
+          "reserve": 161.8,
+          "useful": 90.67604629
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 140.0,
+          "reserve": 158.0,
+          "useful": 90.30005031
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 36
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 148.0,
+          "reserve": 165.6,
+          "useful": 91.02196259
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 144.0,
+          "reserve": 161.8,
+          "useful": 90.67604629
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 37
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 152.0,
+          "reserve": 169.4,
+          "useful": 91.34020558
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 148.0,
+          "reserve": 165.6,
+          "useful": 91.02196259
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 38
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 156.0,
+          "reserve": 173.2,
+          "useful": 91.63298913
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 152.0,
+          "reserve": 169.4,
+          "useful": 91.34020558
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 39
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 160.0,
+          "reserve": 177.0,
+          "useful": 91.90235
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 156.0,
+          "reserve": 173.2,
+          "useful": 91.63298913
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 40
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 164.0,
+          "reserve": 180.8,
+          "useful": 92.150162
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 160.0,
+          "reserve": 177.0,
+          "useful": 91.90235
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 41
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 168.0,
+          "reserve": 184.6,
+          "useful": 92.37814904
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 164.0,
+          "reserve": 180.8,
+          "useful": 92.150162
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 42
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 172.0,
+          "reserve": 188.4,
+          "useful": 92.58789712
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 168.0,
+          "reserve": 184.6,
+          "useful": 92.37814904
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 43
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 176.0,
+          "reserve": 192.2,
+          "useful": 92.78086535
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 172.0,
+          "reserve": 188.4,
+          "useful": 92.58789712
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 44
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 180.0,
+          "reserve": 196.0,
+          "useful": 92.95839612
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 176.0,
+          "reserve": 192.2,
+          "useful": 92.78086535
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 45
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 184.0,
+          "reserve": 199.8,
+          "useful": 93.12172443
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 180.0,
+          "reserve": 196.0,
+          "useful": 92.95839612
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 46
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 188.0,
+          "reserve": 203.6,
+          "useful": 93.27198648
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 184.0,
+          "reserve": 199.8,
+          "useful": 93.12172443
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 47
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 192.0,
+          "reserve": 207.4,
+          "useful": 93.41022756
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 188.0,
+          "reserve": 203.6,
+          "useful": 93.27198648
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 48
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 196.0,
+          "reserve": 211.2,
+          "useful": 93.53740936
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 192.0,
+          "reserve": 207.4,
+          "useful": 93.41022756
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 49
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 200.0,
+          "reserve": 215.0,
+          "useful": 93.65441661
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 196.0,
+          "reserve": 211.2,
+          "useful": 93.53740936
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 50
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 204.0,
+          "reserve": 218.8,
+          "useful": 93.76206328
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 200.0,
+          "reserve": 215.0,
+          "useful": 93.65441661
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 51
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 208.0,
+          "reserve": 222.6,
+          "useful": 93.86109822
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 204.0,
+          "reserve": 218.8,
+          "useful": 93.76206328
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 52
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 212.0,
+          "reserve": 226.4,
+          "useful": 93.95221036
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 208.0,
+          "reserve": 222.6,
+          "useful": 93.86109822
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 53
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 216.0,
+          "reserve": 230.2,
+          "useful": 94.03603353
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 212.0,
+          "reserve": 226.4,
+          "useful": 93.95221036
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 54
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 220.0,
+          "reserve": 234.0,
+          "useful": 94.11315085
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 216.0,
+          "reserve": 230.2,
+          "useful": 94.03603353
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 55
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 224.0,
+          "reserve": 237.8,
+          "useful": 94.18409878
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 220.0,
+          "reserve": 234.0,
+          "useful": 94.11315085
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 56
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 228.0,
+          "reserve": 241.6,
+          "useful": 94.24937088
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 224.0,
+          "reserve": 237.8,
+          "useful": 94.18409878
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 57
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 232.0,
+          "reserve": 245.4,
+          "useful": 94.30942121
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 228.0,
+          "reserve": 241.6,
+          "useful": 94.24937088
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 58
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 236.0,
+          "reserve": 249.2,
+          "useful": 94.36466751
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 232.0,
+          "reserve": 245.4,
+          "useful": 94.30942121
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 59
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 240.0,
+          "reserve": 253.0,
+          "useful": 94.41549411
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 236.0,
+          "reserve": 249.2,
+          "useful": 94.36466751
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 60
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 244.0,
+          "reserve": 256.8,
+          "useful": 94.46225458
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 240.0,
+          "reserve": 253.0,
+          "useful": 94.41549411
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 61
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 248.0,
+          "reserve": 260.6,
+          "useful": 94.50527421
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 244.0,
+          "reserve": 256.8,
+          "useful": 94.46225458
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 62
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 252.0,
+          "reserve": 264.4,
+          "useful": 94.54485227
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 248.0,
+          "reserve": 260.6,
+          "useful": 94.50527421
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 63
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 256.0,
+          "reserve": 268.2,
+          "useful": 94.58126409
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 252.0,
+          "reserve": 264.4,
+          "useful": 94.54485227
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 64
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 260.0,
+          "reserve": 272.0,
+          "useful": 94.61476296
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 256.0,
+          "reserve": 268.2,
+          "useful": 94.58126409
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 65
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 264.0,
+          "reserve": 275.8,
+          "useful": 94.64558192
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 260.0,
+          "reserve": 272.0,
+          "useful": 94.61476296
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 66
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 268.0,
+          "reserve": 279.6,
+          "useful": 94.67393537
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 264.0,
+          "reserve": 275.8,
+          "useful": 94.64558192
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 67
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 272.0,
+          "reserve": 283.4,
+          "useful": 94.70002054
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 268.0,
+          "reserve": 279.6,
+          "useful": 94.67393537
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 68
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 276.0,
+          "reserve": 287.2,
+          "useful": 94.7240189
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 272.0,
+          "reserve": 283.4,
+          "useful": 94.70002054
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 69
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 280.0,
+          "reserve": 291.0,
+          "useful": 94.74609739
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 276.0,
+          "reserve": 287.2,
+          "useful": 94.7240189
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 70
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 284.0,
+          "reserve": 294.8,
+          "useful": 94.7664096
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 280.0,
+          "reserve": 291.0,
+          "useful": 94.74609739
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 71
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 288.0,
+          "reserve": 298.6,
+          "useful": 94.78509683
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 284.0,
+          "reserve": 294.8,
+          "useful": 94.7664096
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 72
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 292.0,
+          "reserve": 302.4,
+          "useful": 94.80228908
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 288.0,
+          "reserve": 298.6,
+          "useful": 94.78509683
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 73
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 296.0,
+          "reserve": 306.2,
+          "useful": 94.81810595
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 292.0,
+          "reserve": 302.4,
+          "useful": 94.80228908
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 74
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 300.0,
+          "reserve": 310.0,
+          "useful": 94.83265747
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 296.0,
+          "reserve": 306.2,
+          "useful": 94.81810595
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 75
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 304.0,
+          "reserve": 313.8,
+          "useful": 94.84604487
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 300.0,
+          "reserve": 310.0,
+          "useful": 94.83265747
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 76
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 308.0,
+          "reserve": 317.6,
+          "useful": 94.85836128
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 304.0,
+          "reserve": 313.8,
+          "useful": 94.84604487
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 77
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 312.0,
+          "reserve": 321.4,
+          "useful": 94.86969238
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 308.0,
+          "reserve": 317.6,
+          "useful": 94.85836128
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 78
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 316.0,
+          "reserve": 325.2,
+          "useful": 94.88011699
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 312.0,
+          "reserve": 321.4,
+          "useful": 94.86969238
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 79
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 320.0,
+          "reserve": 329.0,
+          "useful": 94.88970763
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 316.0,
+          "reserve": 325.2,
+          "useful": 94.88011699
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 80
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 324.0,
+          "reserve": 332.8,
+          "useful": 94.89853102
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 320.0,
+          "reserve": 329.0,
+          "useful": 94.88970763
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 81
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 328.0,
+          "reserve": 336.6,
+          "useful": 94.90664854
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 324.0,
+          "reserve": 332.8,
+          "useful": 94.89853102
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 82
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 332.0,
+          "reserve": 340.4,
+          "useful": 94.91411666
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 328.0,
+          "reserve": 336.6,
+          "useful": 94.90664854
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 83
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 336.0,
+          "reserve": 344.2,
+          "useful": 94.92098733
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 332.0,
+          "reserve": 340.4,
+          "useful": 94.91411666
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 84
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 340.0,
+          "reserve": 348.0,
+          "useful": 94.92730834
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 336.0,
+          "reserve": 344.2,
+          "useful": 94.92098733
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 85
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 344.0,
+          "reserve": 351.8,
+          "useful": 94.93312367
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 340.0,
+          "reserve": 348.0,
+          "useful": 94.92730834
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 86
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 348.0,
+          "reserve": 355.6,
+          "useful": 94.93847378
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 344.0,
+          "reserve": 351.8,
+          "useful": 94.93312367
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 87
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 352.0,
+          "reserve": 359.4,
+          "useful": 94.94339588
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 348.0,
+          "reserve": 355.6,
+          "useful": 94.93847378
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 88
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 356.0,
+          "reserve": 363.2,
+          "useful": 94.94792421
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 352.0,
+          "reserve": 359.4,
+          "useful": 94.94339588
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 89
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 360.0,
+          "reserve": 367.0,
+          "useful": 94.95209027
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 356.0,
+          "reserve": 363.2,
+          "useful": 94.94792421
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 90
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 364.0,
+          "reserve": 370.8,
+          "useful": 94.95592305
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 360.0,
+          "reserve": 367.0,
+          "useful": 94.95209027
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 91
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 368.0,
+          "reserve": 374.6,
+          "useful": 94.95944921
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 364.0,
+          "reserve": 370.8,
+          "useful": 94.95592305
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 92
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 372.0,
+          "reserve": 378.4,
+          "useful": 94.96269327
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 368.0,
+          "reserve": 374.6,
+          "useful": 94.95944921
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 93
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 376.0,
+          "reserve": 382.2,
+          "useful": 94.96567781
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 372.0,
+          "reserve": 378.4,
+          "useful": 94.96269327
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 94
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 380.0,
+          "reserve": 386.0,
+          "useful": 94.96842359
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 376.0,
+          "reserve": 382.2,
+          "useful": 94.96567781
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 95
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 384.0,
+          "reserve": 389.8,
+          "useful": 94.9709497
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 380.0,
+          "reserve": 386.0,
+          "useful": 94.96842359
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 96
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 388.0,
+          "reserve": 393.6,
+          "useful": 94.97327372
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 384.0,
+          "reserve": 389.8,
+          "useful": 94.9709497
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 97
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 392.0,
+          "reserve": 397.4,
+          "useful": 94.97541182
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 388.0,
+          "reserve": 393.6,
+          "useful": 94.97327372
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 98
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 396.0,
+          "reserve": 401.2,
+          "useful": 94.97737887
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 392.0,
+          "reserve": 397.4,
+          "useful": 94.97541182
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 99
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 400.0,
+          "reserve": 405.0,
+          "useful": 94.97918856
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 396.0,
+          "reserve": 401.2,
+          "useful": 94.97737887
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 100
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 404.0,
+          "reserve": 408.8,
+          "useful": 94.98085348
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 400.0,
+          "reserve": 405.0,
+          "useful": 94.97918856
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 101
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 408.0,
+          "reserve": 412.6,
+          "useful": 94.9823852
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 404.0,
+          "reserve": 408.8,
+          "useful": 94.98085348
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 102
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 412.0,
+          "reserve": 416.4,
+          "useful": 94.98379438
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 408.0,
+          "reserve": 412.6,
+          "useful": 94.9823852
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 103
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 416.0,
+          "reserve": 420.2,
+          "useful": 94.98509083
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 412.0,
+          "reserve": 416.4,
+          "useful": 94.98379438
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 104
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 420.0,
+          "reserve": 424.0,
+          "useful": 94.98628356
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 416.0,
+          "reserve": 420.2,
+          "useful": 94.98509083
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 105
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 424.0,
+          "reserve": 427.8,
+          "useful": 94.98738088
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 420.0,
+          "reserve": 424.0,
+          "useful": 94.98628356
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 106
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 428.0,
+          "reserve": 431.6,
+          "useful": 94.98839041
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 424.0,
+          "reserve": 427.8,
+          "useful": 94.98738088
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 107
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 432.0,
+          "reserve": 435.4,
+          "useful": 94.98931918
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 428.0,
+          "reserve": 431.6,
+          "useful": 94.98839041
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 108
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 436.0,
+          "reserve": 439.2,
+          "useful": 94.99017365
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 432.0,
+          "reserve": 435.4,
+          "useful": 94.98931918
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 109
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 440.0,
+          "reserve": 443.0,
+          "useful": 94.99095976
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 436.0,
+          "reserve": 439.2,
+          "useful": 94.99017365
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 110
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 444.0,
+          "reserve": 446.8,
+          "useful": 94.99168298
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 440.0,
+          "reserve": 443.0,
+          "useful": 94.99095976
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 111
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 448.0,
+          "reserve": 450.6,
+          "useful": 94.99234834
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 444.0,
+          "reserve": 446.8,
+          "useful": 94.99168298
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 112
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 452.0,
+          "reserve": 454.4,
+          "useful": 94.99296047
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 448.0,
+          "reserve": 450.6,
+          "useful": 94.99234834
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 113
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 456.0,
+          "reserve": 458.2,
+          "useful": 94.99352363
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 452.0,
+          "reserve": 454.4,
+          "useful": 94.99296047
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 114
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 460.0,
+          "reserve": 462.0,
+          "useful": 94.99404174
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 456.0,
+          "reserve": 458.2,
+          "useful": 94.99352363
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 115
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 464.0,
+          "reserve": 465.8,
+          "useful": 94.9945184
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 460.0,
+          "reserve": 462.0,
+          "useful": 94.99404174
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 116
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 468.0,
+          "reserve": 469.6,
+          "useful": 94.99495693
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 464.0,
+          "reserve": 465.8,
+          "useful": 94.9945184
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 117
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 472.0,
+          "reserve": 473.4,
+          "useful": 94.99536038
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 468.0,
+          "reserve": 469.6,
+          "useful": 94.99495693
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 118
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 476.0,
+          "reserve": 477.2,
+          "useful": 94.99573155
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 472.0,
+          "reserve": 473.4,
+          "useful": 94.99536038
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 119
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 480.0,
+          "reserve": 481.0,
+          "useful": 94.99607303
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 476.0,
+          "reserve": 477.2,
+          "useful": 94.99573155
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 120
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 484.0,
+          "reserve": 484.8,
+          "useful": 94.99638719
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 480.0,
+          "reserve": 481.0,
+          "useful": 94.99607303
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 121
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 488.0,
+          "reserve": 488.6,
+          "useful": 94.99667621
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 484.0,
+          "reserve": 484.8,
+          "useful": 94.99638719
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 122
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 492.0,
+          "reserve": 492.4,
+          "useful": 94.99694211
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 488.0,
+          "reserve": 488.6,
+          "useful": 94.99667621
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 123
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 496.0,
+          "reserve": 496.2,
+          "useful": 94.99718674
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 492.0,
+          "reserve": 492.4,
+          "useful": 94.99694211
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 124
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 500.0,
+          "reserve": 500.0,
+          "useful": 94.9974118
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 496.0,
+          "reserve": 496.2,
+          "useful": 94.99718674
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 125
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 504.0,
+          "reserve": 503.8,
+          "useful": 94.99761886
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 500.0,
+          "reserve": 500.0,
+          "useful": 94.9974118
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 126
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 508.0,
+          "reserve": 507.6,
+          "useful": 94.99780935
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 504.0,
+          "reserve": 503.8,
+          "useful": 94.99761886
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 127
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 512.0,
+          "reserve": 511.4,
+          "useful": 94.9979846
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 508.0,
+          "reserve": 507.6,
+          "useful": 94.99780935
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 128
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 516.0,
+          "reserve": 515.2,
+          "useful": 94.99814583
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 512.0,
+          "reserve": 511.4,
+          "useful": 94.9979846
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 129
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 520.0,
+          "reserve": 519.0,
+          "useful": 94.99829416
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 516.0,
+          "reserve": 515.2,
+          "useful": 94.99814583
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 130
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 524.0,
+          "reserve": 522.8,
+          "useful": 94.99843063
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 520.0,
+          "reserve": 519.0,
+          "useful": 94.99829416
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 131
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 528.0,
+          "reserve": 526.6,
+          "useful": 94.99855618
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 524.0,
+          "reserve": 522.8,
+          "useful": 94.99843063
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 132
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 532.0,
+          "reserve": 530.4,
+          "useful": 94.99867169
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 528.0,
+          "reserve": 526.6,
+          "useful": 94.99855618
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 133
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 536.0,
+          "reserve": 534.2,
+          "useful": 94.99877795
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 532.0,
+          "reserve": 530.4,
+          "useful": 94.99867169
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 134
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 540.0,
+          "reserve": 538.0,
+          "useful": 94.99887571
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 536.0,
+          "reserve": 534.2,
+          "useful": 94.99877795
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 135
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 544.0,
+          "reserve": 541.8,
+          "useful": 94.99896565
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 540.0,
+          "reserve": 538.0,
+          "useful": 94.99887571
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 136
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 548.0,
+          "reserve": 545.6,
+          "useful": 94.9990484
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 544.0,
+          "reserve": 541.8,
+          "useful": 94.99896565
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 137
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 552.0,
+          "reserve": 549.4,
+          "useful": 94.99912453
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 548.0,
+          "reserve": 545.6,
+          "useful": 94.9990484
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 138
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 556.0,
+          "reserve": 553.2,
+          "useful": 94.99919457
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 552.0,
+          "reserve": 549.4,
+          "useful": 94.99912453
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 139
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 560.0,
+          "reserve": 557.0,
+          "useful": 94.999259
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 556.0,
+          "reserve": 553.2,
+          "useful": 94.99919457
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 140
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 564.0,
+          "reserve": 560.8,
+          "useful": 94.99931828
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 560.0,
+          "reserve": 557.0,
+          "useful": 94.999259
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 141
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 568.0,
+          "reserve": 564.6,
+          "useful": 94.99937282
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 564.0,
+          "reserve": 560.8,
+          "useful": 94.99931828
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 142
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 572.0,
+          "reserve": 568.4,
+          "useful": 94.99942299
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 568.0,
+          "reserve": 564.6,
+          "useful": 94.99937282
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 143
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 576.0,
+          "reserve": 572.2,
+          "useful": 94.99946915
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 572.0,
+          "reserve": 568.4,
+          "useful": 94.99942299
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 144
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 580.0,
+          "reserve": 576.0,
+          "useful": 94.99951162
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 576.0,
+          "reserve": 572.2,
+          "useful": 94.99946915
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 145
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 584.0,
+          "reserve": 579.8,
+          "useful": 94.99955069
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 580.0,
+          "reserve": 576.0,
+          "useful": 94.99951162
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 146
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 588.0,
+          "reserve": 583.6,
+          "useful": 94.99958663
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 584.0,
+          "reserve": 579.8,
+          "useful": 94.99955069
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 147
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 592.0,
+          "reserve": 587.4,
+          "useful": 94.9996197
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 588.0,
+          "reserve": 583.6,
+          "useful": 94.99958663
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 148
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 596.0,
+          "reserve": 591.2,
+          "useful": 94.99965012
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 592.0,
+          "reserve": 587.4,
+          "useful": 94.9996197
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 149
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 600.0,
+          "reserve": 595.0,
+          "useful": 94.99967811
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 596.0,
+          "reserve": 591.2,
+          "useful": 94.99965012
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 150
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 604.0,
+          "reserve": 598.8,
+          "useful": 94.99970386
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 600.0,
+          "reserve": 595.0,
+          "useful": 94.99967811
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 151
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 608.0,
+          "reserve": 602.6,
+          "useful": 94.99972755
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 604.0,
+          "reserve": 598.8,
+          "useful": 94.99970386
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 152
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 612.0,
+          "reserve": 606.4,
+          "useful": 94.99974935
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 608.0,
+          "reserve": 602.6,
+          "useful": 94.99972755
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 153
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 616.0,
+          "reserve": 610.2,
+          "useful": 94.9997694
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 612.0,
+          "reserve": 606.4,
+          "useful": 94.99974935
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 154
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 620.0,
+          "reserve": 614.0,
+          "useful": 94.99978785
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 616.0,
+          "reserve": 610.2,
+          "useful": 94.9997694
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 155
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 624.0,
+          "reserve": 617.8,
+          "useful": 94.99980482
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 620.0,
+          "reserve": 614.0,
+          "useful": 94.99978785
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 156
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 628.0,
+          "reserve": 621.6,
+          "useful": 94.99982043
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 624.0,
+          "reserve": 617.8,
+          "useful": 94.99980482
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 157
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 632.0,
+          "reserve": 625.4,
+          "useful": 94.9998348
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 628.0,
+          "reserve": 621.6,
+          "useful": 94.99982043
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 158
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 636.0,
+          "reserve": 629.2,
+          "useful": 94.99984802
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 632.0,
+          "reserve": 625.4,
+          "useful": 94.9998348
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 159
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 640.0,
+          "reserve": 633.0,
+          "useful": 94.99986018
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 636.0,
+          "reserve": 629.2,
+          "useful": 94.99984802
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 160
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 644.0,
+          "reserve": 636.8,
+          "useful": 94.99987137
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 640.0,
+          "reserve": 633.0,
+          "useful": 94.99986018
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 161
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 648.0,
+          "reserve": 640.6,
+          "useful": 94.99988166
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 644.0,
+          "reserve": 636.8,
+          "useful": 94.99987137
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 162
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 652.0,
+          "reserve": 644.4,
+          "useful": 94.99989113
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 648.0,
+          "reserve": 640.6,
+          "useful": 94.99988166
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 163
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 656.0,
+          "reserve": 648.2,
+          "useful": 94.99989984
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 652.0,
+          "reserve": 644.4,
+          "useful": 94.99989113
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 164
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 660.0,
+          "reserve": 652.0,
+          "useful": 94.99990785
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 656.0,
+          "reserve": 648.2,
+          "useful": 94.99989984
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 165
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 664.0,
+          "reserve": 655.8,
+          "useful": 94.99991522
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 660.0,
+          "reserve": 652.0,
+          "useful": 94.99990785
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 166
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 668.0,
+          "reserve": 659.6,
+          "useful": 94.999922
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 664.0,
+          "reserve": 655.8,
+          "useful": 94.99991522
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 167
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 672.0,
+          "reserve": 663.4,
+          "useful": 94.99992824
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 668.0,
+          "reserve": 659.6,
+          "useful": 94.999922
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 168
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 676.0,
+          "reserve": 667.2,
+          "useful": 94.99993398
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 672.0,
+          "reserve": 663.4,
+          "useful": 94.99992824
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 169
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 680.0,
+          "reserve": 671.0,
+          "useful": 94.99993926
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 676.0,
+          "reserve": 667.2,
+          "useful": 94.99993398
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 170
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 684.0,
+          "reserve": 674.8,
+          "useful": 94.99994412
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 680.0,
+          "reserve": 671.0,
+          "useful": 94.99993926
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 171
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 688.0,
+          "reserve": 678.6,
+          "useful": 94.99994859
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 684.0,
+          "reserve": 674.8,
+          "useful": 94.99994412
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 172
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 692.0,
+          "reserve": 682.4,
+          "useful": 94.9999527
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 688.0,
+          "reserve": 678.6,
+          "useful": 94.99994859
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 173
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 696.0,
+          "reserve": 686.2,
+          "useful": 94.99995648
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 692.0,
+          "reserve": 682.4,
+          "useful": 94.9999527
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 174
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 700.0,
+          "reserve": 690.0,
+          "useful": 94.99995996
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 696.0,
+          "reserve": 686.2,
+          "useful": 94.99995648
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 175
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 704.0,
+          "reserve": 693.8,
+          "useful": 94.99996316
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 700.0,
+          "reserve": 690.0,
+          "useful": 94.99995996
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 176
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 708.0,
+          "reserve": 697.6,
+          "useful": 94.99996611
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 704.0,
+          "reserve": 693.8,
+          "useful": 94.99996316
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 177
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 712.0,
+          "reserve": 701.4,
+          "useful": 94.99996882
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 708.0,
+          "reserve": 697.6,
+          "useful": 94.99996611
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 178
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 716.0,
+          "reserve": 705.2,
+          "useful": 94.99997131
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 712.0,
+          "reserve": 701.4,
+          "useful": 94.99996882
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 179
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 720.0,
+          "reserve": 709.0,
+          "useful": 94.99997361
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 716.0,
+          "reserve": 705.2,
+          "useful": 94.99997131
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 180
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 724.0,
+          "reserve": 712.8,
+          "useful": 94.99997572
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 720.0,
+          "reserve": 709.0,
+          "useful": 94.99997361
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 181
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 728.0,
+          "reserve": 716.6,
+          "useful": 94.99997766
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 724.0,
+          "reserve": 712.8,
+          "useful": 94.99997572
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 182
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 732.0,
+          "reserve": 720.4,
+          "useful": 94.99997945
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 728.0,
+          "reserve": 716.6,
+          "useful": 94.99997766
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 183
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 736.0,
+          "reserve": 724.2,
+          "useful": 94.99998109
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 732.0,
+          "reserve": 720.4,
+          "useful": 94.99997945
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 184
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 740.0,
+          "reserve": 728.0,
+          "useful": 94.9999826
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 736.0,
+          "reserve": 724.2,
+          "useful": 94.99998109
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 185
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 744.0,
+          "reserve": 731.8,
+          "useful": 94.99998399
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 740.0,
+          "reserve": 728.0,
+          "useful": 94.9999826
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 186
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 748.0,
+          "reserve": 735.6,
+          "useful": 94.99998527
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 744.0,
+          "reserve": 731.8,
+          "useful": 94.99998399
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 187
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 752.0,
+          "reserve": 739.4,
+          "useful": 94.99998645
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 748.0,
+          "reserve": 735.6,
+          "useful": 94.99998527
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 188
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 756.0,
+          "reserve": 743.2,
+          "useful": 94.99998753
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 752.0,
+          "reserve": 739.4,
+          "useful": 94.99998645
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 189
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 760.0,
+          "reserve": 747.0,
+          "useful": 94.99998853
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 756.0,
+          "reserve": 743.2,
+          "useful": 94.99998753
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 190
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 764.0,
+          "reserve": 750.8,
+          "useful": 94.99998945
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 760.0,
+          "reserve": 747.0,
+          "useful": 94.99998853
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 191
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 768.0,
+          "reserve": 754.6,
+          "useful": 94.99999029
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 764.0,
+          "reserve": 750.8,
+          "useful": 94.99998945
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 192
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 772.0,
+          "reserve": 758.4,
+          "useful": 94.99999107
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 768.0,
+          "reserve": 754.6,
+          "useful": 94.99999029
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 193
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 776.0,
+          "reserve": 762.2,
+          "useful": 94.99999178
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 772.0,
+          "reserve": 758.4,
+          "useful": 94.99999107
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 194
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 780.0,
+          "reserve": 766.0,
+          "useful": 94.99999244
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 776.0,
+          "reserve": 762.2,
+          "useful": 94.99999178
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 195
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 784.0,
+          "reserve": 769.8,
+          "useful": 94.99999304
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 780.0,
+          "reserve": 766.0,
+          "useful": 94.99999244
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 196
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 788.0,
+          "reserve": 773.6,
+          "useful": 94.9999936
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 784.0,
+          "reserve": 769.8,
+          "useful": 94.99999304
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 197
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 792.0,
+          "reserve": 777.4,
+          "useful": 94.99999411
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 788.0,
+          "reserve": 773.6,
+          "useful": 94.9999936
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 198
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 796.0,
+          "reserve": 781.2,
+          "useful": 94.99999458
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 792.0,
+          "reserve": 777.4,
+          "useful": 94.99999411
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 199
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 800.0,
+          "reserve": 785.0,
+          "useful": 94.99999501
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 796.0,
+          "reserve": 781.2,
+          "useful": 94.99999458
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 200
+      }
+    ],
+    "high_risk_held": [
+      {
+        "after": {
+          "capacity": 24.875,
+          "cumulative_spend": 0.0,
+          "reserve": 25.0,
+          "useful": 7.36
+        },
+        "before": {
+          "capacity": 25.0,
+          "cumulative_spend": 0.0,
+          "reserve": 25.0,
+          "useful": 8.0
+        },
+        "decision": {
+          "accepted": false,
+          "authorized": true,
+          "produced": 0.0,
+          "quality": 0.95,
+          "reason": "HELD_LOW_VERIFICATION_OR_HIGH_RISK",
+          "risk": 0.8,
+          "spend": 0.0
+        },
+        "turn": 1
+      },
+      {
+        "after": {
+          "capacity": 24.750625,
+          "cumulative_spend": 0.0,
+          "reserve": 25.0,
+          "useful": 6.7712
+        },
+        "before": {
+          "capacity": 24.875,
+          "cumulative_spend": 0.0,
+          "reserve": 25.0,
+          "useful": 7.36
+        },
+        "decision": {
+          "accepted": false,
+          "authorized": true,
+          "produced": 0.0,
+          "quality": 0.95,
+          "reason": "HELD_LOW_VERIFICATION_OR_HIGH_RISK",
+          "risk": 0.8,
+          "spend": 0.0
+        },
+        "turn": 2
+      },
+      {
+        "after": {
+          "capacity": 24.62687187,
+          "cumulative_spend": 0.0,
+          "reserve": 25.0,
+          "useful": 6.229504
+        },
+        "before": {
+          "capacity": 24.750625,
+          "cumulative_spend": 0.0,
+          "reserve": 25.0,
+          "useful": 6.7712
+        },
+        "decision": {
+          "accepted": false,
+          "authorized": true,
+          "produced": 0.0,
+          "quality": 0.95,
+          "reason": "HELD_LOW_VERIFICATION_OR_HIGH_RISK",
+          "risk": 0.8,
+          "spend": 0.0
+        },
+        "turn": 3
+      },
+      {
+        "after": {
+          "capacity": 24.50373751,
+          "cumulative_spend": 0.0,
+          "reserve": 25.0,
+          "useful": 5.73114368
+        },
+        "before": {
+          "capacity": 24.62687187,
+          "cumulative_spend": 0.0,
+          "reserve": 25.0,
+          "useful": 6.229504
+        },
+        "decision": {
+          "accepted": false,
+          "authorized": true,
+          "produced": 0.0,
+          "quality": 0.95,
+          "reason": "HELD_LOW_VERIFICATION_OR_HIGH_RISK",
+          "risk": 0.8,
+          "spend": 0.0
+        },
+        "turn": 4
+      },
+      {
+        "after": {
+          "capacity": 24.38121882,
+          "cumulative_spend": 0.0,
+          "reserve": 25.0,
+          "useful": 5.27265219
+        },
+        "before": {
+          "capacity": 24.50373751,
+          "cumulative_spend": 0.0,
+          "reserve": 25.0,
+          "useful": 5.73114368
+        },
+        "decision": {
+          "accepted": false,
+          "authorized": true,
+          "produced": 0.0,
+          "quality": 0.95,
+          "reason": "HELD_LOW_VERIFICATION_OR_HIGH_RISK",
+          "risk": 0.8,
+          "spend": 0.0
+        },
+        "turn": 5
+      },
+      {
+        "after": {
+          "capacity": 24.25931273,
+          "cumulative_spend": 0.0,
+          "reserve": 25.0,
+          "useful": 4.85084001
+        },
+        "before": {
+          "capacity": 24.38121882,
+          "cumulative_spend": 0.0,
+          "reserve": 25.0,
+          "useful": 5.27265219
+        },
+        "decision": {
+          "accepted": false,
+          "authorized": true,
+          "produced": 0.0,
+          "quality": 0.95,
+          "reason": "HELD_LOW_VERIFICATION_OR_HIGH_RISK",
+          "risk": 0.8,
+          "spend": 0.0
+        },
+        "turn": 6
+      },
+      {
+        "after": {
+          "capacity": 24.13801617,
+          "cumulative_spend": 0.0,
+          "reserve": 25.0,
+          "useful": 4.46277281
+        },
+        "before": {
+          "capacity": 24.25931273,
+          "cumulative_spend": 0.0,
+          "reserve": 25.0,
+          "useful": 4.85084001
+        },
+        "decision": {
+          "accepted": false,
+          "authorized": true,
+          "produced": 0.0,
+          "quality": 0.95,
+          "reason": "HELD_LOW_VERIFICATION_OR_HIGH_RISK",
+          "risk": 0.8,
+          "spend": 0.0
+        },
+        "turn": 7
+      },
+      {
+        "after": {
+          "capacity": 24.01732609,
+          "cumulative_spend": 0.0,
+          "reserve": 25.0,
+          "useful": 4.10575099
+        },
+        "before": {
+          "capacity": 24.13801617,
+          "cumulative_spend": 0.0,
+          "reserve": 25.0,
+          "useful": 4.46277281
+        },
+        "decision": {
+          "accepted": false,
+          "authorized": true,
+          "produced": 0.0,
+          "quality": 0.95,
+          "reason": "HELD_LOW_VERIFICATION_OR_HIGH_RISK",
+          "risk": 0.8,
+          "spend": 0.0
+        },
+        "turn": 8
+      },
+      {
+        "after": {
+          "capacity": 23.89723946,
+          "cumulative_spend": 0.0,
+          "reserve": 25.0,
+          "useful": 3.77729091
+        },
+        "before": {
+          "capacity": 24.01732609,
+          "cumulative_spend": 0.0,
+          "reserve": 25.0,
+          "useful": 4.10575099
+        },
+        "decision": {
+          "accepted": false,
+          "authorized": true,
+          "produced": 0.0,
+          "quality": 0.95,
+          "reason": "HELD_LOW_VERIFICATION_OR_HIGH_RISK",
+          "risk": 0.8,
+          "spend": 0.0
+        },
+        "turn": 9
+      },
+      {
+        "after": {
+          "capacity": 23.77775326,
+          "cumulative_spend": 0.0,
+          "reserve": 25.0,
+          "useful": 3.47510764
+        },
+        "before": {
+          "capacity": 23.89723946,
+          "cumulative_spend": 0.0,
+          "reserve": 25.0,
+          "useful": 3.77729091
+        },
+        "decision": {
+          "accepted": false,
+          "authorized": true,
+          "produced": 0.0,
+          "quality": 0.95,
+          "reason": "HELD_LOW_VERIFICATION_OR_HIGH_RISK",
+          "risk": 0.8,
+          "spend": 0.0
+        },
+        "turn": 10
+      },
+      {
+        "after": {
+          "capacity": 23.65886449,
+          "cumulative_spend": 0.0,
+          "reserve": 25.0,
+          "useful": 3.19709903
+        },
+        "before": {
+          "capacity": 23.77775326,
+          "cumulative_spend": 0.0,
+          "reserve": 25.0,
+          "useful": 3.47510764
+        },
+        "decision": {
+          "accepted": false,
+          "authorized": true,
+          "produced": 0.0,
+          "quality": 0.95,
+          "reason": "HELD_LOW_VERIFICATION_OR_HIGH_RISK",
+          "risk": 0.8,
+          "spend": 0.0
+        },
+        "turn": 11
+      },
+      {
+        "after": {
+          "capacity": 23.54057017,
+          "cumulative_spend": 0.0,
+          "reserve": 25.0,
+          "useful": 2.94133111
+        },
+        "before": {
+          "capacity": 23.65886449,
+          "cumulative_spend": 0.0,
+          "reserve": 25.0,
+          "useful": 3.19709903
+        },
+        "decision": {
+          "accepted": false,
+          "authorized": true,
+          "produced": 0.0,
+          "quality": 0.95,
+          "reason": "HELD_LOW_VERIFICATION_OR_HIGH_RISK",
+          "risk": 0.8,
+          "spend": 0.0
+        },
+        "turn": 12
+      },
+      {
+        "after": {
+          "capacity": 23.42286732,
+          "cumulative_spend": 0.0,
+          "reserve": 25.0,
+          "useful": 2.70602462
+        },
+        "before": {
+          "capacity": 23.54057017,
+          "cumulative_spend": 0.0,
+          "reserve": 25.0,
+          "useful": 2.94133111
+        },
+        "decision": {
+          "accepted": false,
+          "authorized": true,
+          "produced": 0.0,
+          "quality": 0.95,
+          "reason": "HELD_LOW_VERIFICATION_OR_HIGH_RISK",
+          "risk": 0.8,
+          "spend": 0.0
+        },
+        "turn": 13
+      },
+      {
+        "after": {
+          "capacity": 23.30575298,
+          "cumulative_spend": 0.0,
+          "reserve": 25.0,
+          "useful": 2.48954265
+        },
+        "before": {
+          "capacity": 23.42286732,
+          "cumulative_spend": 0.0,
+          "reserve": 25.0,
+          "useful": 2.70602462
+        },
+        "decision": {
+          "accepted": false,
+          "authorized": true,
+          "produced": 0.0,
+          "quality": 0.95,
+          "reason": "HELD_LOW_VERIFICATION_OR_HIGH_RISK",
+          "risk": 0.8,
+          "spend": 0.0
+        },
+        "turn": 14
+      },
+      {
+        "after": {
+          "capacity": 23.18922422,
+          "cumulative_spend": 0.0,
+          "reserve": 25.0,
+          "useful": 2.29037924
+        },
+        "before": {
+          "capacity": 23.30575298,
+          "cumulative_spend": 0.0,
+          "reserve": 25.0,
+          "useful": 2.48954265
+        },
+        "decision": {
+          "accepted": false,
+          "authorized": true,
+          "produced": 0.0,
+          "quality": 0.95,
+          "reason": "HELD_LOW_VERIFICATION_OR_HIGH_RISK",
+          "risk": 0.8,
+          "spend": 0.0
+        },
+        "turn": 15
+      },
+      {
+        "after": {
+          "capacity": 23.0732781,
+          "cumulative_spend": 0.0,
+          "reserve": 25.0,
+          "useful": 2.1071489
+        },
+        "before": {
+          "capacity": 23.18922422,
+          "cumulative_spend": 0.0,
+          "reserve": 25.0,
+          "useful": 2.29037924
+        },
+        "decision": {
+          "accepted": false,
+          "authorized": true,
+          "produced": 0.0,
+          "quality": 0.95,
+          "reason": "HELD_LOW_VERIFICATION_OR_HIGH_RISK",
+          "risk": 0.8,
+          "spend": 0.0
+        },
+        "turn": 16
+      },
+      {
+        "after": {
+          "capacity": 22.95791171,
+          "cumulative_spend": 0.0,
+          "reserve": 25.0,
+          "useful": 1.93857699
+        },
+        "before": {
+          "capacity": 23.0732781,
+          "cumulative_spend": 0.0,
+          "reserve": 25.0,
+          "useful": 2.1071489
+        },
+        "decision": {
+          "accepted": false,
+          "authorized": true,
+          "produced": 0.0,
+          "quality": 0.95,
+          "reason": "HELD_LOW_VERIFICATION_OR_HIGH_RISK",
+          "risk": 0.8,
+          "spend": 0.0
+        },
+        "turn": 17
+      },
+      {
+        "after": {
+          "capacity": 22.84312215,
+          "cumulative_spend": 0.0,
+          "reserve": 25.0,
+          "useful": 1.78349083
+        },
+        "before": {
+          "capacity": 22.95791171,
+          "cumulative_spend": 0.0,
+          "reserve": 25.0,
+          "useful": 1.93857699
+        },
+        "decision": {
+          "accepted": false,
+          "authorized": true,
+          "produced": 0.0,
+          "quality": 0.95,
+          "reason": "HELD_LOW_VERIFICATION_OR_HIGH_RISK",
+          "risk": 0.8,
+          "spend": 0.0
+        },
+        "turn": 18
+      },
+      {
+        "after": {
+          "capacity": 22.72890654,
+          "cumulative_spend": 0.0,
+          "reserve": 25.0,
+          "useful": 1.64081156
+        },
+        "before": {
+          "capacity": 22.84312215,
+          "cumulative_spend": 0.0,
+          "reserve": 25.0,
+          "useful": 1.78349083
+        },
+        "decision": {
+          "accepted": false,
+          "authorized": true,
+          "produced": 0.0,
+          "quality": 0.95,
+          "reason": "HELD_LOW_VERIFICATION_OR_HIGH_RISK",
+          "risk": 0.8,
+          "spend": 0.0
+        },
+        "turn": 19
+      },
+      {
+        "after": {
+          "capacity": 22.61526201,
+          "cumulative_spend": 0.0,
+          "reserve": 25.0,
+          "useful": 1.50954664
+        },
+        "before": {
+          "capacity": 22.72890654,
+          "cumulative_spend": 0.0,
+          "reserve": 25.0,
+          "useful": 1.64081156
+        },
+        "decision": {
+          "accepted": false,
+          "authorized": true,
+          "produced": 0.0,
+          "quality": 0.95,
+          "reason": "HELD_LOW_VERIFICATION_OR_HIGH_RISK",
+          "risk": 0.8,
+          "spend": 0.0
+        },
+        "turn": 20
+      },
+      {
+        "after": {
+          "capacity": 22.5021857,
+          "cumulative_spend": 0.0,
+          "reserve": 25.0,
+          "useful": 1.38878291
+        },
+        "before": {
+          "capacity": 22.61526201,
+          "cumulative_spend": 0.0,
+          "reserve": 25.0,
+          "useful": 1.50954664
+        },
+        "decision": {
+          "accepted": false,
+          "authorized": true,
+          "produced": 0.0,
+          "quality": 0.95,
+          "reason": "HELD_LOW_VERIFICATION_OR_HIGH_RISK",
+          "risk": 0.8,
+          "spend": 0.0
+        },
+        "turn": 21
+      },
+      {
+        "after": {
+          "capacity": 22.38967477,
+          "cumulative_spend": 0.0,
+          "reserve": 25.0,
+          "useful": 1.27768028
+        },
+        "before": {
+          "capacity": 22.5021857,
+          "cumulative_spend": 0.0,
+          "reserve": 25.0,
+          "useful": 1.38878291
+        },
+        "decision": {
+          "accepted": false,
+          "authorized": true,
+          "produced": 0.0,
+          "quality": 0.95,
+          "reason": "HELD_LOW_VERIFICATION_OR_HIGH_RISK",
+          "risk": 0.8,
+          "spend": 0.0
+        },
+        "turn": 22
+      },
+      {
+        "after": {
+          "capacity": 22.2777264,
+          "cumulative_spend": 0.0,
+          "reserve": 25.0,
+          "useful": 1.17546586
+        },
+        "before": {
+          "capacity": 22.38967477,
+          "cumulative_spend": 0.0,
+          "reserve": 25.0,
+          "useful": 1.27768028
+        },
+        "decision": {
+          "accepted": false,
+          "authorized": true,
+          "produced": 0.0,
+          "quality": 0.95,
+          "reason": "HELD_LOW_VERIFICATION_OR_HIGH_RISK",
+          "risk": 0.8,
+          "spend": 0.0
+        },
+        "turn": 23
+      },
+      {
+        "after": {
+          "capacity": 22.16633777,
+          "cumulative_spend": 0.0,
+          "reserve": 25.0,
+          "useful": 1.08142859
+        },
+        "before": {
+          "capacity": 22.2777264,
+          "cumulative_spend": 0.0,
+          "reserve": 25.0,
+          "useful": 1.17546586
+        },
+        "decision": {
+          "accepted": false,
+          "authorized": true,
+          "produced": 0.0,
+          "quality": 0.95,
+          "reason": "HELD_LOW_VERIFICATION_OR_HIGH_RISK",
+          "risk": 0.8,
+          "spend": 0.0
+        },
+        "turn": 24
+      }
+    ],
+    "hype_evidence_gate": [
+      {
+        "after": {
+          "capacity": 24.875,
+          "cumulative_spend": 0.0,
+          "reserve": 25.0,
+          "useful": 7.36
+        },
+        "before": {
+          "capacity": 25.0,
+          "cumulative_spend": 0.0,
+          "reserve": 25.0,
+          "useful": 8.0
+        },
+        "decision": {
+          "accepted": false,
+          "authorized": true,
+          "produced": 0.0,
+          "quality": 0.1,
+          "reason": "HELD_LOW_VERIFICATION_OR_HIGH_RISK",
+          "risk": 0.15,
+          "spend": 0.0
+        },
+        "turn": 1
+      },
+      {
+        "after": {
+          "capacity": 24.750625,
+          "cumulative_spend": 0.0,
+          "reserve": 25.0,
+          "useful": 6.7712
+        },
+        "before": {
+          "capacity": 24.875,
+          "cumulative_spend": 0.0,
+          "reserve": 25.0,
+          "useful": 7.36
+        },
+        "decision": {
+          "accepted": false,
+          "authorized": true,
+          "produced": 0.0,
+          "quality": 0.1,
+          "reason": "HELD_LOW_VERIFICATION_OR_HIGH_RISK",
+          "risk": 0.15,
+          "spend": 0.0
+        },
+        "turn": 2
+      },
+      {
+        "after": {
+          "capacity": 24.62687187,
+          "cumulative_spend": 0.0,
+          "reserve": 25.0,
+          "useful": 6.229504
+        },
+        "before": {
+          "capacity": 24.750625,
+          "cumulative_spend": 0.0,
+          "reserve": 25.0,
+          "useful": 6.7712
+        },
+        "decision": {
+          "accepted": false,
+          "authorized": true,
+          "produced": 0.0,
+          "quality": 0.1,
+          "reason": "HELD_LOW_VERIFICATION_OR_HIGH_RISK",
+          "risk": 0.15,
+          "spend": 0.0
+        },
+        "turn": 3
+      },
+      {
+        "after": {
+          "capacity": 24.50373751,
+          "cumulative_spend": 0.0,
+          "reserve": 25.0,
+          "useful": 5.73114368
+        },
+        "before": {
+          "capacity": 24.62687187,
+          "cumulative_spend": 0.0,
+          "reserve": 25.0,
+          "useful": 6.229504
+        },
+        "decision": {
+          "accepted": false,
+          "authorized": true,
+          "produced": 0.0,
+          "quality": 0.1,
+          "reason": "HELD_LOW_VERIFICATION_OR_HIGH_RISK",
+          "risk": 0.15,
+          "spend": 0.0
+        },
+        "turn": 4
+      },
+      {
+        "after": {
+          "capacity": 24.38121882,
+          "cumulative_spend": 0.0,
+          "reserve": 25.0,
+          "useful": 5.27265219
+        },
+        "before": {
+          "capacity": 24.50373751,
+          "cumulative_spend": 0.0,
+          "reserve": 25.0,
+          "useful": 5.73114368
+        },
+        "decision": {
+          "accepted": false,
+          "authorized": true,
+          "produced": 0.0,
+          "quality": 0.1,
+          "reason": "HELD_LOW_VERIFICATION_OR_HIGH_RISK",
+          "risk": 0.15,
+          "spend": 0.0
+        },
+        "turn": 5
+      },
+      {
+        "after": {
+          "capacity": 24.25931273,
+          "cumulative_spend": 0.0,
+          "reserve": 25.0,
+          "useful": 4.85084001
+        },
+        "before": {
+          "capacity": 24.38121882,
+          "cumulative_spend": 0.0,
+          "reserve": 25.0,
+          "useful": 5.27265219
+        },
+        "decision": {
+          "accepted": false,
+          "authorized": true,
+          "produced": 0.0,
+          "quality": 0.1,
+          "reason": "HELD_LOW_VERIFICATION_OR_HIGH_RISK",
+          "risk": 0.15,
+          "spend": 0.0
+        },
+        "turn": 6
+      },
+      {
+        "after": {
+          "capacity": 24.13801617,
+          "cumulative_spend": 0.0,
+          "reserve": 25.0,
+          "useful": 4.46277281
+        },
+        "before": {
+          "capacity": 24.25931273,
+          "cumulative_spend": 0.0,
+          "reserve": 25.0,
+          "useful": 4.85084001
+        },
+        "decision": {
+          "accepted": false,
+          "authorized": true,
+          "produced": 0.0,
+          "quality": 0.1,
+          "reason": "HELD_LOW_VERIFICATION_OR_HIGH_RISK",
+          "risk": 0.15,
+          "spend": 0.0
+        },
+        "turn": 7
+      },
+      {
+        "after": {
+          "capacity": 24.01732609,
+          "cumulative_spend": 0.0,
+          "reserve": 25.0,
+          "useful": 4.10575099
+        },
+        "before": {
+          "capacity": 24.13801617,
+          "cumulative_spend": 0.0,
+          "reserve": 25.0,
+          "useful": 4.46277281
+        },
+        "decision": {
+          "accepted": false,
+          "authorized": true,
+          "produced": 0.0,
+          "quality": 0.1,
+          "reason": "HELD_LOW_VERIFICATION_OR_HIGH_RISK",
+          "risk": 0.15,
+          "spend": 0.0
+        },
+        "turn": 8
+      },
+      {
+        "after": {
+          "capacity": 23.89723946,
+          "cumulative_spend": 0.0,
+          "reserve": 25.0,
+          "useful": 3.77729091
+        },
+        "before": {
+          "capacity": 24.01732609,
+          "cumulative_spend": 0.0,
+          "reserve": 25.0,
+          "useful": 4.10575099
+        },
+        "decision": {
+          "accepted": false,
+          "authorized": true,
+          "produced": 0.0,
+          "quality": 0.1,
+          "reason": "HELD_LOW_VERIFICATION_OR_HIGH_RISK",
+          "risk": 0.15,
+          "spend": 0.0
+        },
+        "turn": 9
+      },
+      {
+        "after": {
+          "capacity": 23.77775326,
+          "cumulative_spend": 0.0,
+          "reserve": 25.0,
+          "useful": 3.47510764
+        },
+        "before": {
+          "capacity": 23.89723946,
+          "cumulative_spend": 0.0,
+          "reserve": 25.0,
+          "useful": 3.77729091
+        },
+        "decision": {
+          "accepted": false,
+          "authorized": true,
+          "produced": 0.0,
+          "quality": 0.1,
+          "reason": "HELD_LOW_VERIFICATION_OR_HIGH_RISK",
+          "risk": 0.15,
+          "spend": 0.0
+        },
+        "turn": 10
+      },
+      {
+        "after": {
+          "capacity": 23.65886449,
+          "cumulative_spend": 0.0,
+          "reserve": 25.0,
+          "useful": 3.19709903
+        },
+        "before": {
+          "capacity": 23.77775326,
+          "cumulative_spend": 0.0,
+          "reserve": 25.0,
+          "useful": 3.47510764
+        },
+        "decision": {
+          "accepted": false,
+          "authorized": true,
+          "produced": 0.0,
+          "quality": 0.1,
+          "reason": "HELD_LOW_VERIFICATION_OR_HIGH_RISK",
+          "risk": 0.15,
+          "spend": 0.0
+        },
+        "turn": 11
+      },
+      {
+        "after": {
+          "capacity": 23.54057017,
+          "cumulative_spend": 0.0,
+          "reserve": 25.0,
+          "useful": 2.94133111
+        },
+        "before": {
+          "capacity": 23.65886449,
+          "cumulative_spend": 0.0,
+          "reserve": 25.0,
+          "useful": 3.19709903
+        },
+        "decision": {
+          "accepted": false,
+          "authorized": true,
+          "produced": 0.0,
+          "quality": 0.1,
+          "reason": "HELD_LOW_VERIFICATION_OR_HIGH_RISK",
+          "risk": 0.15,
+          "spend": 0.0
+        },
+        "turn": 12
+      },
+      {
+        "after": {
+          "capacity": 23.42286732,
+          "cumulative_spend": 0.0,
+          "reserve": 25.0,
+          "useful": 2.70602462
+        },
+        "before": {
+          "capacity": 23.54057017,
+          "cumulative_spend": 0.0,
+          "reserve": 25.0,
+          "useful": 2.94133111
+        },
+        "decision": {
+          "accepted": false,
+          "authorized": true,
+          "produced": 0.0,
+          "quality": 0.1,
+          "reason": "HELD_LOW_VERIFICATION_OR_HIGH_RISK",
+          "risk": 0.15,
+          "spend": 0.0
+        },
+        "turn": 13
+      },
+      {
+        "after": {
+          "capacity": 23.30575298,
+          "cumulative_spend": 0.0,
+          "reserve": 25.0,
+          "useful": 2.48954265
+        },
+        "before": {
+          "capacity": 23.42286732,
+          "cumulative_spend": 0.0,
+          "reserve": 25.0,
+          "useful": 2.70602462
+        },
+        "decision": {
+          "accepted": false,
+          "authorized": true,
+          "produced": 0.0,
+          "quality": 0.1,
+          "reason": "HELD_LOW_VERIFICATION_OR_HIGH_RISK",
+          "risk": 0.15,
+          "spend": 0.0
+        },
+        "turn": 14
+      },
+      {
+        "after": {
+          "capacity": 23.18922422,
+          "cumulative_spend": 0.0,
+          "reserve": 25.0,
+          "useful": 2.29037924
+        },
+        "before": {
+          "capacity": 23.30575298,
+          "cumulative_spend": 0.0,
+          "reserve": 25.0,
+          "useful": 2.48954265
+        },
+        "decision": {
+          "accepted": false,
+          "authorized": true,
+          "produced": 0.0,
+          "quality": 0.1,
+          "reason": "HELD_LOW_VERIFICATION_OR_HIGH_RISK",
+          "risk": 0.15,
+          "spend": 0.0
+        },
+        "turn": 15
+      },
+      {
+        "after": {
+          "capacity": 23.0732781,
+          "cumulative_spend": 0.0,
+          "reserve": 25.0,
+          "useful": 2.1071489
+        },
+        "before": {
+          "capacity": 23.18922422,
+          "cumulative_spend": 0.0,
+          "reserve": 25.0,
+          "useful": 2.29037924
+        },
+        "decision": {
+          "accepted": false,
+          "authorized": true,
+          "produced": 0.0,
+          "quality": 0.1,
+          "reason": "HELD_LOW_VERIFICATION_OR_HIGH_RISK",
+          "risk": 0.15,
+          "spend": 0.0
+        },
+        "turn": 16
+      },
+      {
+        "after": {
+          "capacity": 22.95791171,
+          "cumulative_spend": 0.0,
+          "reserve": 25.0,
+          "useful": 1.93857699
+        },
+        "before": {
+          "capacity": 23.0732781,
+          "cumulative_spend": 0.0,
+          "reserve": 25.0,
+          "useful": 2.1071489
+        },
+        "decision": {
+          "accepted": false,
+          "authorized": true,
+          "produced": 0.0,
+          "quality": 0.1,
+          "reason": "HELD_LOW_VERIFICATION_OR_HIGH_RISK",
+          "risk": 0.15,
+          "spend": 0.0
+        },
+        "turn": 17
+      },
+      {
+        "after": {
+          "capacity": 22.84312215,
+          "cumulative_spend": 0.0,
+          "reserve": 25.0,
+          "useful": 1.78349083
+        },
+        "before": {
+          "capacity": 22.95791171,
+          "cumulative_spend": 0.0,
+          "reserve": 25.0,
+          "useful": 1.93857699
+        },
+        "decision": {
+          "accepted": false,
+          "authorized": true,
+          "produced": 0.0,
+          "quality": 0.1,
+          "reason": "HELD_LOW_VERIFICATION_OR_HIGH_RISK",
+          "risk": 0.15,
+          "spend": 0.0
+        },
+        "turn": 18
+      },
+      {
+        "after": {
+          "capacity": 22.72890654,
+          "cumulative_spend": 0.0,
+          "reserve": 25.0,
+          "useful": 1.64081156
+        },
+        "before": {
+          "capacity": 22.84312215,
+          "cumulative_spend": 0.0,
+          "reserve": 25.0,
+          "useful": 1.78349083
+        },
+        "decision": {
+          "accepted": false,
+          "authorized": true,
+          "produced": 0.0,
+          "quality": 0.1,
+          "reason": "HELD_LOW_VERIFICATION_OR_HIGH_RISK",
+          "risk": 0.15,
+          "spend": 0.0
+        },
+        "turn": 19
+      },
+      {
+        "after": {
+          "capacity": 22.61526201,
+          "cumulative_spend": 0.0,
+          "reserve": 25.0,
+          "useful": 1.50954664
+        },
+        "before": {
+          "capacity": 22.72890654,
+          "cumulative_spend": 0.0,
+          "reserve": 25.0,
+          "useful": 1.64081156
+        },
+        "decision": {
+          "accepted": false,
+          "authorized": true,
+          "produced": 0.0,
+          "quality": 0.1,
+          "reason": "HELD_LOW_VERIFICATION_OR_HIGH_RISK",
+          "risk": 0.15,
+          "spend": 0.0
+        },
+        "turn": 20
+      },
+      {
+        "after": {
+          "capacity": 22.5021857,
+          "cumulative_spend": 0.0,
+          "reserve": 25.0,
+          "useful": 1.38878291
+        },
+        "before": {
+          "capacity": 22.61526201,
+          "cumulative_spend": 0.0,
+          "reserve": 25.0,
+          "useful": 1.50954664
+        },
+        "decision": {
+          "accepted": false,
+          "authorized": true,
+          "produced": 0.0,
+          "quality": 0.1,
+          "reason": "HELD_LOW_VERIFICATION_OR_HIGH_RISK",
+          "risk": 0.15,
+          "spend": 0.0
+        },
+        "turn": 21
+      },
+      {
+        "after": {
+          "capacity": 22.38967477,
+          "cumulative_spend": 0.0,
+          "reserve": 25.0,
+          "useful": 1.27768028
+        },
+        "before": {
+          "capacity": 22.5021857,
+          "cumulative_spend": 0.0,
+          "reserve": 25.0,
+          "useful": 1.38878291
+        },
+        "decision": {
+          "accepted": false,
+          "authorized": true,
+          "produced": 0.0,
+          "quality": 0.1,
+          "reason": "HELD_LOW_VERIFICATION_OR_HIGH_RISK",
+          "risk": 0.15,
+          "spend": 0.0
+        },
+        "turn": 22
+      },
+      {
+        "after": {
+          "capacity": 22.2777264,
+          "cumulative_spend": 0.0,
+          "reserve": 25.0,
+          "useful": 1.17546586
+        },
+        "before": {
+          "capacity": 22.38967477,
+          "cumulative_spend": 0.0,
+          "reserve": 25.0,
+          "useful": 1.27768028
+        },
+        "decision": {
+          "accepted": false,
+          "authorized": true,
+          "produced": 0.0,
+          "quality": 0.1,
+          "reason": "HELD_LOW_VERIFICATION_OR_HIGH_RISK",
+          "risk": 0.15,
+          "spend": 0.0
+        },
+        "turn": 23
+      },
+      {
+        "after": {
+          "capacity": 22.16633777,
+          "cumulative_spend": 0.0,
+          "reserve": 25.0,
+          "useful": 1.08142859
+        },
+        "before": {
+          "capacity": 22.2777264,
+          "cumulative_spend": 0.0,
+          "reserve": 25.0,
+          "useful": 1.17546586
+        },
+        "decision": {
+          "accepted": false,
+          "authorized": true,
+          "produced": 0.0,
+          "quality": 0.1,
+          "reason": "HELD_LOW_VERIFICATION_OR_HIGH_RISK",
+          "risk": 0.15,
+          "spend": 0.0
+        },
+        "turn": 24
+      }
+    ],
+    "hype_naive_attention": [
+      {
+        "after": {
+          "capacity": 34.875,
+          "cumulative_spend": 4.0,
+          "reserve": 21.4,
+          "useful": 8.16
+        },
+        "before": {
+          "capacity": 25.0,
+          "cumulative_spend": 0.0,
+          "reserve": 25.0,
+          "useful": 8.0
+        },
+        "decision": {
+          "accepted": false,
+          "authorized": true,
+          "produced": 0.8,
+          "quality": 0.1,
+          "reason": "INVEST",
+          "risk": 0.15,
+          "spend": 4.0
+        },
+        "turn": 1
+      },
+      {
+        "after": {
+          "capacity": 44.700625,
+          "cumulative_spend": 8.0,
+          "reserve": 17.8,
+          "useful": 8.3072
+        },
+        "before": {
+          "capacity": 34.875,
+          "cumulative_spend": 4.0,
+          "reserve": 21.4,
+          "useful": 8.16
+        },
+        "decision": {
+          "accepted": false,
+          "authorized": true,
+          "produced": 0.8,
+          "quality": 0.1,
+          "reason": "INVEST",
+          "risk": 0.15,
+          "spend": 4.0
+        },
+        "turn": 2
+      },
+      {
+        "after": {
+          "capacity": 54.47712188,
+          "cumulative_spend": 12.0,
+          "reserve": 14.2,
+          "useful": 8.442624
+        },
+        "before": {
+          "capacity": 44.700625,
+          "cumulative_spend": 8.0,
+          "reserve": 17.8,
+          "useful": 8.3072
+        },
+        "decision": {
+          "accepted": false,
+          "authorized": true,
+          "produced": 0.8,
+          "quality": 0.1,
+          "reason": "INVEST",
+          "risk": 0.15,
+          "spend": 4.0
+        },
+        "turn": 3
+      },
+      {
+        "after": {
+          "capacity": 64.20473627,
+          "cumulative_spend": 16.0,
+          "reserve": 10.6,
+          "useful": 8.56721408
+        },
+        "before": {
+          "capacity": 54.47712188,
+          "cumulative_spend": 12.0,
+          "reserve": 14.2,
+          "useful": 8.442624
+        },
+        "decision": {
+          "accepted": false,
+          "authorized": true,
+          "produced": 0.8,
+          "quality": 0.1,
+          "reason": "INVEST",
+          "risk": 0.15,
+          "spend": 4.0
+        },
+        "turn": 4
+      },
+      {
+        "after": {
+          "capacity": 73.88371259,
+          "cumulative_spend": 20.0,
+          "reserve": 7.0,
+          "useful": 8.68183695
+        },
+        "before": {
+          "capacity": 64.20473627,
+          "cumulative_spend": 16.0,
+          "reserve": 10.6,
+          "useful": 8.56721408
+        },
+        "decision": {
+          "accepted": false,
+          "authorized": true,
+          "produced": 0.8,
+          "quality": 0.1,
+          "reason": "INVEST",
+          "risk": 0.15,
+          "spend": 4.0
+        },
+        "turn": 5
+      },
+      {
+        "after": {
+          "capacity": 83.51429403,
+          "cumulative_spend": 24.0,
+          "reserve": 3.4,
+          "useful": 8.78728999
+        },
+        "before": {
+          "capacity": 73.88371259,
+          "cumulative_spend": 20.0,
+          "reserve": 7.0,
+          "useful": 8.68183695
+        },
+        "decision": {
+          "accepted": false,
+          "authorized": true,
+          "produced": 0.8,
+          "quality": 0.1,
+          "reason": "INVEST",
+          "risk": 0.15,
+          "spend": 4.0
+        },
+        "turn": 6
+      },
+      {
+        "after": {
+          "capacity": 91.59672256,
+          "cumulative_spend": 27.4,
+          "reserve": 0.34,
+          "useful": 8.76430679
+        },
+        "before": {
+          "capacity": 83.51429403,
+          "cumulative_spend": 24.0,
+          "reserve": 3.4,
+          "useful": 8.78728999
+        },
+        "decision": {
+          "accepted": false,
+          "authorized": true,
+          "produced": 0.68,
+          "quality": 0.1,
+          "reason": "INVEST",
+          "risk": 0.15,
+          "spend": 3.4
+        },
+        "turn": 7
+      },
+      {
+        "after": {
+          "capacity": 91.98873895,
+          "cumulative_spend": 27.74,
+          "reserve": 0.034,
+          "useful": 8.13116225
+        },
+        "before": {
+          "capacity": 91.59672256,
+          "cumulative_spend": 27.4,
+          "reserve": 0.34,
+          "useful": 8.76430679
+        },
+        "decision": {
+          "accepted": false,
+          "authorized": true,
+          "produced": 0.068,
+          "quality": 0.1,
+          "reason": "INVEST",
+          "risk": 0.15,
+          "spend": 0.34
+        },
+        "turn": 8
+      },
+      {
+        "after": {
+          "capacity": 91.61379526,
+          "cumulative_spend": 27.774,
+          "reserve": 0.0034,
+          "useful": 7.48746927
+        },
+        "before": {
+          "capacity": 91.98873895,
+          "cumulative_spend": 27.74,
+          "reserve": 0.034,
+          "useful": 8.13116225
+        },
+        "decision": {
+          "accepted": false,
+          "authorized": true,
+          "produced": 0.0068,
+          "quality": 0.1,
+          "reason": "INVEST",
+          "risk": 0.15,
+          "spend": 0.034
+        },
+        "turn": 9
+      },
+      {
+        "after": {
+          "capacity": 91.16422628,
+          "cumulative_spend": 27.7774,
+          "reserve": 0.00034,
+          "useful": 6.88915173
+        },
+        "before": {
+          "capacity": 91.61379526,
+          "cumulative_spend": 27.774,
+          "reserve": 0.0034,
+          "useful": 7.48746927
+        },
+        "decision": {
+          "accepted": false,
+          "authorized": true,
+          "produced": 0.00068,
+          "quality": 0.1,
+          "reason": "INVEST",
+          "risk": 0.15,
+          "spend": 0.0034
+        },
+        "turn": 10
+      },
+      {
+        "after": {
+          "capacity": 90.70925515,
+          "cumulative_spend": 27.77774,
+          "reserve": 3.4e-05,
+          "useful": 6.33808759
+        },
+        "before": {
+          "capacity": 91.16422628,
+          "cumulative_spend": 27.7774,
+          "reserve": 0.00034,
+          "useful": 6.88915173
+        },
+        "decision": {
+          "accepted": false,
+          "authorized": true,
+          "produced": 6.8e-05,
+          "quality": 0.1,
+          "reason": "INVEST",
+          "risk": 0.15,
+          "spend": 0.00034
+        },
+        "turn": 11
+      },
+      {
+        "after": {
+          "capacity": 90.25579387,
+          "cumulative_spend": 27.777774,
+          "reserve": 3.4e-06,
+          "useful": 5.83104738
+        },
+        "before": {
+          "capacity": 90.70925515,
+          "cumulative_spend": 27.77774,
+          "reserve": 3.4e-05,
+          "useful": 6.33808759
+        },
+        "decision": {
+          "accepted": false,
+          "authorized": true,
+          "produced": 6.8e-06,
+          "quality": 0.1,
+          "reason": "INVEST",
+          "risk": 0.15,
+          "spend": 3.4e-05
+        },
+        "turn": 12
+      },
+      {
+        "after": {
+          "capacity": 89.8045234,
+          "cumulative_spend": 27.7777774,
+          "reserve": 3.4e-07,
+          "useful": 5.36456427
+        },
+        "before": {
+          "capacity": 90.25579387,
+          "cumulative_spend": 27.777774,
+          "reserve": 3.4e-06,
+          "useful": 5.83104738
+        },
+        "decision": {
+          "accepted": false,
+          "authorized": true,
+          "produced": 6.8e-07,
+          "quality": 0.1,
+          "reason": "INVEST",
+          "risk": 0.15,
+          "spend": 3.4e-06
+        },
+        "turn": 13
+      },
+      {
+        "after": {
+          "capacity": 89.35550163,
+          "cumulative_spend": 27.77777774,
+          "reserve": 3e-08,
+          "useful": 4.9353992
+        },
+        "before": {
+          "capacity": 89.8045234,
+          "cumulative_spend": 27.7777774,
+          "reserve": 3.4e-07,
+          "useful": 5.36456427
+        },
+        "decision": {
+          "accepted": false,
+          "authorized": true,
+          "produced": 7e-08,
+          "quality": 0.1,
+          "reason": "INVEST",
+          "risk": 0.15,
+          "spend": 3.4e-07
+        },
+        "turn": 14
+      },
+      {
+        "after": {
+          "capacity": 88.9087242,
+          "cumulative_spend": 27.77777777,
+          "reserve": 0.0,
+          "useful": 4.54056727
+        },
+        "before": {
+          "capacity": 89.35550163,
+          "cumulative_spend": 27.77777774,
+          "reserve": 3e-08,
+          "useful": 4.9353992
+        },
+        "decision": {
+          "accepted": false,
+          "authorized": true,
+          "produced": 1e-08,
+          "quality": 0.1,
+          "reason": "INVEST",
+          "risk": 0.15,
+          "spend": 3e-08
+        },
+        "turn": 15
+      },
+      {
+        "after": {
+          "capacity": 88.46418058,
+          "cumulative_spend": 27.77777777,
+          "reserve": 0.0,
+          "useful": 4.17732189
+        },
+        "before": {
+          "capacity": 88.9087242,
+          "cumulative_spend": 27.77777777,
+          "reserve": 0.0,
+          "useful": 4.54056727
+        },
+        "decision": {
+          "accepted": false,
+          "authorized": true,
+          "produced": 0.0,
+          "quality": 0.1,
+          "reason": "HELD_LOW_VERIFICATION_OR_HIGH_RISK",
+          "risk": 0.15,
+          "spend": 0.0
+        },
+        "turn": 16
+      },
+      {
+        "after": {
+          "capacity": 88.02185968,
+          "cumulative_spend": 27.77777777,
+          "reserve": 0.0,
+          "useful": 3.84313614
+        },
+        "before": {
+          "capacity": 88.46418058,
+          "cumulative_spend": 27.77777777,
+          "reserve": 0.0,
+          "useful": 4.17732189
+        },
+        "decision": {
+          "accepted": false,
+          "authorized": true,
+          "produced": 0.0,
+          "quality": 0.1,
+          "reason": "HELD_LOW_VERIFICATION_OR_HIGH_RISK",
+          "risk": 0.15,
+          "spend": 0.0
+        },
+        "turn": 17
+      },
+      {
+        "after": {
+          "capacity": 87.58175038,
+          "cumulative_spend": 27.77777777,
+          "reserve": 0.0,
+          "useful": 3.53568525
+        },
+        "before": {
+          "capacity": 88.02185968,
+          "cumulative_spend": 27.77777777,
+          "reserve": 0.0,
+          "useful": 3.84313614
+        },
+        "decision": {
+          "accepted": false,
+          "authorized": true,
+          "produced": 0.0,
+          "quality": 0.1,
+          "reason": "HELD_LOW_VERIFICATION_OR_HIGH_RISK",
+          "risk": 0.15,
+          "spend": 0.0
+        },
+        "turn": 18
+      },
+      {
+        "after": {
+          "capacity": 87.14384163,
+          "cumulative_spend": 27.77777777,
+          "reserve": 0.0,
+          "useful": 3.25283043
+        },
+        "before": {
+          "capacity": 87.58175038,
+          "cumulative_spend": 27.77777777,
+          "reserve": 0.0,
+          "useful": 3.53568525
+        },
+        "decision": {
+          "accepted": false,
+          "authorized": true,
+          "produced": 0.0,
+          "quality": 0.1,
+          "reason": "HELD_LOW_VERIFICATION_OR_HIGH_RISK",
+          "risk": 0.15,
+          "spend": 0.0
+        },
+        "turn": 19
+      },
+      {
+        "after": {
+          "capacity": 86.70812242,
+          "cumulative_spend": 27.77777777,
+          "reserve": 0.0,
+          "useful": 2.992604
+        },
+        "before": {
+          "capacity": 87.14384163,
+          "cumulative_spend": 27.77777777,
+          "reserve": 0.0,
+          "useful": 3.25283043
+        },
+        "decision": {
+          "accepted": false,
+          "authorized": true,
+          "produced": 0.0,
+          "quality": 0.1,
+          "reason": "HELD_LOW_VERIFICATION_OR_HIGH_RISK",
+          "risk": 0.15,
+          "spend": 0.0
+        },
+        "turn": 20
+      },
+      {
+        "after": {
+          "capacity": 86.27458181,
+          "cumulative_spend": 27.77777777,
+          "reserve": 0.0,
+          "useful": 2.75319568
+        },
+        "before": {
+          "capacity": 86.70812242,
+          "cumulative_spend": 27.77777777,
+          "reserve": 0.0,
+          "useful": 2.992604
+        },
+        "decision": {
+          "accepted": false,
+          "authorized": true,
+          "produced": 0.0,
+          "quality": 0.1,
+          "reason": "HELD_LOW_VERIFICATION_OR_HIGH_RISK",
+          "risk": 0.15,
+          "spend": 0.0
+        },
+        "turn": 21
+      },
+      {
+        "after": {
+          "capacity": 85.8432089,
+          "cumulative_spend": 27.77777777,
+          "reserve": 0.0,
+          "useful": 2.53294003
+        },
+        "before": {
+          "capacity": 86.27458181,
+          "cumulative_spend": 27.77777777,
+          "reserve": 0.0,
+          "useful": 2.75319568
+        },
+        "decision": {
+          "accepted": false,
+          "authorized": true,
+          "produced": 0.0,
+          "quality": 0.1,
+          "reason": "HELD_LOW_VERIFICATION_OR_HIGH_RISK",
+          "risk": 0.15,
+          "spend": 0.0
+        },
+        "turn": 22
+      },
+      {
+        "after": {
+          "capacity": 85.41399286,
+          "cumulative_spend": 27.77777777,
+          "reserve": 0.0,
+          "useful": 2.33030483
+        },
+        "before": {
+          "capacity": 85.8432089,
+          "cumulative_spend": 27.77777777,
+          "reserve": 0.0,
+          "useful": 2.53294003
+        },
+        "decision": {
+          "accepted": false,
+          "authorized": true,
+          "produced": 0.0,
+          "quality": 0.1,
+          "reason": "HELD_LOW_VERIFICATION_OR_HIGH_RISK",
+          "risk": 0.15,
+          "spend": 0.0
+        },
+        "turn": 23
+      },
+      {
+        "after": {
+          "capacity": 84.9869229,
+          "cumulative_spend": 27.77777777,
+          "reserve": 0.0,
+          "useful": 2.14388044
+        },
+        "before": {
+          "capacity": 85.41399286,
+          "cumulative_spend": 27.77777777,
+          "reserve": 0.0,
+          "useful": 2.33030483
+        },
+        "decision": {
+          "accepted": false,
+          "authorized": true,
+          "produced": 0.0,
+          "quality": 0.1,
+          "reason": "HELD_LOW_VERIFICATION_OR_HIGH_RISK",
+          "risk": 0.15,
+          "spend": 0.0
+        },
+        "turn": 24
+      }
+    ],
+    "regenerative_bounded": [
+      {
+        "after": {
+          "capacity": 34.875,
+          "cumulative_spend": 4.0,
+          "reserve": 28.8,
+          "useful": 14.96
+        },
+        "before": {
+          "capacity": 25.0,
+          "cumulative_spend": 0.0,
+          "reserve": 25.0,
+          "useful": 8.0
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 1
+      },
+      {
+        "after": {
+          "capacity": 44.700625,
+          "cumulative_spend": 8.0,
+          "reserve": 32.6,
+          "useful": 21.3632
+        },
+        "before": {
+          "capacity": 34.875,
+          "cumulative_spend": 4.0,
+          "reserve": 28.8,
+          "useful": 14.96
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 2
+      },
+      {
+        "after": {
+          "capacity": 54.47712188,
+          "cumulative_spend": 12.0,
+          "reserve": 36.4,
+          "useful": 27.254144
+        },
+        "before": {
+          "capacity": 44.700625,
+          "cumulative_spend": 8.0,
+          "reserve": 32.6,
+          "useful": 21.3632
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 3
+      },
+      {
+        "after": {
+          "capacity": 64.20473627,
+          "cumulative_spend": 16.0,
+          "reserve": 40.2,
+          "useful": 32.67381248
+        },
+        "before": {
+          "capacity": 54.47712188,
+          "cumulative_spend": 12.0,
+          "reserve": 36.4,
+          "useful": 27.254144
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 4
+      },
+      {
+        "after": {
+          "capacity": 73.88371259,
+          "cumulative_spend": 20.0,
+          "reserve": 44.0,
+          "useful": 37.65990748
+        },
+        "before": {
+          "capacity": 64.20473627,
+          "cumulative_spend": 16.0,
+          "reserve": 40.2,
+          "useful": 32.67381248
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 5
+      },
+      {
+        "after": {
+          "capacity": 83.51429403,
+          "cumulative_spend": 24.0,
+          "reserve": 47.8,
+          "useful": 42.24711488
+        },
+        "before": {
+          "capacity": 73.88371259,
+          "cumulative_spend": 20.0,
+          "reserve": 44.0,
+          "useful": 37.65990748
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 6
+      },
+      {
+        "after": {
+          "capacity": 93.09672256,
+          "cumulative_spend": 28.0,
+          "reserve": 51.6,
+          "useful": 46.46734569
+        },
+        "before": {
+          "capacity": 83.51429403,
+          "cumulative_spend": 24.0,
+          "reserve": 47.8,
+          "useful": 42.24711488
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 7
+      },
+      {
+        "after": {
+          "capacity": 102.63123895,
+          "cumulative_spend": 32.0,
+          "reserve": 55.4,
+          "useful": 50.34995803
+        },
+        "before": {
+          "capacity": 93.09672256,
+          "cumulative_spend": 28.0,
+          "reserve": 51.6,
+          "useful": 46.46734569
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 8
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 36.0,
+          "reserve": 59.2,
+          "useful": 53.92196139
+        },
+        "before": {
+          "capacity": 102.63123895,
+          "cumulative_spend": 32.0,
+          "reserve": 55.4,
+          "useful": 50.34995803
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 9
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 40.0,
+          "reserve": 63.0,
+          "useful": 57.20820448
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 36.0,
+          "reserve": 59.2,
+          "useful": 53.92196139
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 10
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 44.0,
+          "reserve": 66.8,
+          "useful": 60.23154812
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 40.0,
+          "reserve": 63.0,
+          "useful": 57.20820448
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 11
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 48.0,
+          "reserve": 70.6,
+          "useful": 63.01302427
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 44.0,
+          "reserve": 66.8,
+          "useful": 60.23154812
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 12
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 52.0,
+          "reserve": 74.4,
+          "useful": 65.57198233
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 48.0,
+          "reserve": 70.6,
+          "useful": 63.01302427
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 13
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 56.0,
+          "reserve": 78.2,
+          "useful": 67.92622374
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 52.0,
+          "reserve": 74.4,
+          "useful": 65.57198233
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 14
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 60.0,
+          "reserve": 82.0,
+          "useful": 70.09212584
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 56.0,
+          "reserve": 78.2,
+          "useful": 67.92622374
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 15
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 64.0,
+          "reserve": 85.8,
+          "useful": 72.08475577
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 60.0,
+          "reserve": 82.0,
+          "useful": 70.09212584
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 16
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 68.0,
+          "reserve": 89.6,
+          "useful": 73.91797531
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 64.0,
+          "reserve": 85.8,
+          "useful": 72.08475577
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 17
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 72.0,
+          "reserve": 93.4,
+          "useful": 75.60453729
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 68.0,
+          "reserve": 89.6,
+          "useful": 73.91797531
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 18
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 76.0,
+          "reserve": 97.2,
+          "useful": 77.15617431
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 72.0,
+          "reserve": 93.4,
+          "useful": 75.60453729
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 19
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 80.0,
+          "reserve": 101.0,
+          "useful": 78.58368037
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 76.0,
+          "reserve": 97.2,
+          "useful": 77.15617431
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 20
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 84.0,
+          "reserve": 104.8,
+          "useful": 79.89698594
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 80.0,
+          "reserve": 101.0,
+          "useful": 78.58368037
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 21
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 88.0,
+          "reserve": 108.6,
+          "useful": 81.10522706
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 84.0,
+          "reserve": 104.8,
+          "useful": 79.89698594
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 22
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 92.0,
+          "reserve": 112.4,
+          "useful": 82.2168089
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 88.0,
+          "reserve": 108.6,
+          "useful": 81.10522706
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 23
+      },
+      {
+        "after": {
+          "capacity": 110.0,
+          "cumulative_spend": 96.0,
+          "reserve": 116.2,
+          "useful": 83.23946419
+        },
+        "before": {
+          "capacity": 110.0,
+          "cumulative_spend": 92.0,
+          "reserve": 112.4,
+          "useful": 82.2168089
+        },
+        "decision": {
+          "accepted": true,
+          "authorized": true,
+          "produced": 7.6,
+          "quality": 0.95,
+          "reason": "INVEST",
+          "risk": 0.04,
+          "spend": 4.0
+        },
+        "turn": 24
+      }
+    ],
+    "resource_exhausted": [
+      {
+        "after": {
+          "capacity": 24.875,
+          "cumulative_spend": 0.0,
+          "reserve": 0.0,
+          "useful": 16.56
+        },
+        "before": {
+          "capacity": 25,
+          "cumulative_spend": 0.0,
+          "reserve": 0,
+          "useful": 18
+        },
+        "decision": {
+          "accepted": false,
+          "authorized": true,
+          "produced": 0.0,
+          "quality": 0.95,
+          "reason": "HELD_NO_RESERVE",
+          "risk": 0.04,
+          "spend": 0
+        },
+        "turn": 1
+      },
+      {
+        "after": {
+          "capacity": 24.750625,
+          "cumulative_spend": 0.0,
+          "reserve": 0.0,
+          "useful": 15.2352
+        },
+        "before": {
+          "capacity": 24.875,
+          "cumulative_spend": 0.0,
+          "reserve": 0.0,
+          "useful": 16.56
+        },
+        "decision": {
+          "accepted": false,
+          "authorized": true,
+          "produced": 0.0,
+          "quality": 0.95,
+          "reason": "HELD_NO_RESERVE",
+          "risk": 0.04,
+          "spend": 0.0
+        },
+        "turn": 2
+      },
+      {
+        "after": {
+          "capacity": 24.62687187,
+          "cumulative_spend": 0.0,
+          "reserve": 0.0,
+          "useful": 14.016384
+        },
+        "before": {
+          "capacity": 24.750625,
+          "cumulative_spend": 0.0,
+          "reserve": 0.0,
+          "useful": 15.2352
+        },
+        "decision": {
+          "accepted": false,
+          "authorized": true,
+          "produced": 0.0,
+          "quality": 0.95,
+          "reason": "HELD_NO_RESERVE",
+          "risk": 0.04,
+          "spend": 0.0
+        },
+        "turn": 3
+      },
+      {
+        "after": {
+          "capacity": 24.50373751,
+          "cumulative_spend": 0.0,
+          "reserve": 0.0,
+          "useful": 12.89507328
+        },
+        "before": {
+          "capacity": 24.62687187,
+          "cumulative_spend": 0.0,
+          "reserve": 0.0,
+          "useful": 14.016384
+        },
+        "decision": {
+          "accepted": false,
+          "authorized": true,
+          "produced": 0.0,
+          "quality": 0.95,
+          "reason": "HELD_NO_RESERVE",
+          "risk": 0.04,
+          "spend": 0.0
+        },
+        "turn": 4
+      },
+      {
+        "after": {
+          "capacity": 24.38121882,
+          "cumulative_spend": 0.0,
+          "reserve": 0.0,
+          "useful": 11.86346742
+        },
+        "before": {
+          "capacity": 24.50373751,
+          "cumulative_spend": 0.0,
+          "reserve": 0.0,
+          "useful": 12.89507328
+        },
+        "decision": {
+          "accepted": false,
+          "authorized": true,
+          "produced": 0.0,
+          "quality": 0.95,
+          "reason": "HELD_NO_RESERVE",
+          "risk": 0.04,
+          "spend": 0.0
+        },
+        "turn": 5
+      },
+      {
+        "after": {
+          "capacity": 24.25931273,
+          "cumulative_spend": 0.0,
+          "reserve": 0.0,
+          "useful": 10.91439003
+        },
+        "before": {
+          "capacity": 24.38121882,
+          "cumulative_spend": 0.0,
+          "reserve": 0.0,
+          "useful": 11.86346742
+        },
+        "decision": {
+          "accepted": false,
+          "authorized": true,
+          "produced": 0.0,
+          "quality": 0.95,
+          "reason": "HELD_NO_RESERVE",
+          "risk": 0.04,
+          "spend": 0.0
+        },
+        "turn": 6
+      },
+      {
+        "after": {
+          "capacity": 24.13801617,
+          "cumulative_spend": 0.0,
+          "reserve": 0.0,
+          "useful": 10.04123883
+        },
+        "before": {
+          "capacity": 24.25931273,
+          "cumulative_spend": 0.0,
+          "reserve": 0.0,
+          "useful": 10.91439003
+        },
+        "decision": {
+          "accepted": false,
+          "authorized": true,
+          "produced": 0.0,
+          "quality": 0.95,
+          "reason": "HELD_NO_RESERVE",
+          "risk": 0.04,
+          "spend": 0.0
+        },
+        "turn": 7
+      },
+      {
+        "after": {
+          "capacity": 24.01732609,
+          "cumulative_spend": 0.0,
+          "reserve": 0.0,
+          "useful": 9.23793972
+        },
+        "before": {
+          "capacity": 24.13801617,
+          "cumulative_spend": 0.0,
+          "reserve": 0.0,
+          "useful": 10.04123883
+        },
+        "decision": {
+          "accepted": false,
+          "authorized": true,
+          "produced": 0.0,
+          "quality": 0.95,
+          "reason": "HELD_NO_RESERVE",
+          "risk": 0.04,
+          "spend": 0.0
+        },
+        "turn": 8
+      },
+      {
+        "after": {
+          "capacity": 23.89723946,
+          "cumulative_spend": 0.0,
+          "reserve": 0.0,
+          "useful": 8.49890454
+        },
+        "before": {
+          "capacity": 24.01732609,
+          "cumulative_spend": 0.0,
+          "reserve": 0.0,
+          "useful": 9.23793972
+        },
+        "decision": {
+          "accepted": false,
+          "authorized": true,
+          "produced": 0.0,
+          "quality": 0.95,
+          "reason": "HELD_NO_RESERVE",
+          "risk": 0.04,
+          "spend": 0.0
+        },
+        "turn": 9
+      },
+      {
+        "after": {
+          "capacity": 23.77775326,
+          "cumulative_spend": 0.0,
+          "reserve": 0.0,
+          "useful": 7.81899218
+        },
+        "before": {
+          "capacity": 23.89723946,
+          "cumulative_spend": 0.0,
+          "reserve": 0.0,
+          "useful": 8.49890454
+        },
+        "decision": {
+          "accepted": false,
+          "authorized": true,
+          "produced": 0.0,
+          "quality": 0.95,
+          "reason": "HELD_NO_RESERVE",
+          "risk": 0.04,
+          "spend": 0.0
+        },
+        "turn": 10
+      },
+      {
+        "after": {
+          "capacity": 23.65886449,
+          "cumulative_spend": 0.0,
+          "reserve": 0.0,
+          "useful": 7.19347281
+        },
+        "before": {
+          "capacity": 23.77775326,
+          "cumulative_spend": 0.0,
+          "reserve": 0.0,
+          "useful": 7.81899218
+        },
+        "decision": {
+          "accepted": false,
+          "authorized": true,
+          "produced": 0.0,
+          "quality": 0.95,
+          "reason": "HELD_NO_RESERVE",
+          "risk": 0.04,
+          "spend": 0.0
+        },
+        "turn": 11
+      },
+      {
+        "after": {
+          "capacity": 23.54057017,
+          "cumulative_spend": 0.0,
+          "reserve": 0.0,
+          "useful": 6.61799499
+        },
+        "before": {
+          "capacity": 23.65886449,
+          "cumulative_spend": 0.0,
+          "reserve": 0.0,
+          "useful": 7.19347281
+        },
+        "decision": {
+          "accepted": false,
+          "authorized": true,
+          "produced": 0.0,
+          "quality": 0.95,
+          "reason": "HELD_NO_RESERVE",
+          "risk": 0.04,
+          "spend": 0.0
+        },
+        "turn": 12
+      },
+      {
+        "after": {
+          "capacity": 23.42286732,
+          "cumulative_spend": 0.0,
+          "reserve": 0.0,
+          "useful": 6.08855539
+        },
+        "before": {
+          "capacity": 23.54057017,
+          "cumulative_spend": 0.0,
+          "reserve": 0.0,
+          "useful": 6.61799499
+        },
+        "decision": {
+          "accepted": false,
+          "authorized": true,
+          "produced": 0.0,
+          "quality": 0.95,
+          "reason": "HELD_NO_RESERVE",
+          "risk": 0.04,
+          "spend": 0.0
+        },
+        "turn": 13
+      },
+      {
+        "after": {
+          "capacity": 23.30575298,
+          "cumulative_spend": 0.0,
+          "reserve": 0.0,
+          "useful": 5.60147096
+        },
+        "before": {
+          "capacity": 23.42286732,
+          "cumulative_spend": 0.0,
+          "reserve": 0.0,
+          "useful": 6.08855539
+        },
+        "decision": {
+          "accepted": false,
+          "authorized": true,
+          "produced": 0.0,
+          "quality": 0.95,
+          "reason": "HELD_NO_RESERVE",
+          "risk": 0.04,
+          "spend": 0.0
+        },
+        "turn": 14
+      },
+      {
+        "after": {
+          "capacity": 23.18922422,
+          "cumulative_spend": 0.0,
+          "reserve": 0.0,
+          "useful": 5.15335328
+        },
+        "before": {
+          "capacity": 23.30575298,
+          "cumulative_spend": 0.0,
+          "reserve": 0.0,
+          "useful": 5.60147096
+        },
+        "decision": {
+          "accepted": false,
+          "authorized": true,
+          "produced": 0.0,
+          "quality": 0.95,
+          "reason": "HELD_NO_RESERVE",
+          "risk": 0.04,
+          "spend": 0.0
+        },
+        "turn": 15
+      },
+      {
+        "after": {
+          "capacity": 23.0732781,
+          "cumulative_spend": 0.0,
+          "reserve": 0.0,
+          "useful": 4.74108502
+        },
+        "before": {
+          "capacity": 23.18922422,
+          "cumulative_spend": 0.0,
+          "reserve": 0.0,
+          "useful": 5.15335328
+        },
+        "decision": {
+          "accepted": false,
+          "authorized": true,
+          "produced": 0.0,
+          "quality": 0.95,
+          "reason": "HELD_NO_RESERVE",
+          "risk": 0.04,
+          "spend": 0.0
+        },
+        "turn": 16
+      },
+      {
+        "after": {
+          "capacity": 22.95791171,
+          "cumulative_spend": 0.0,
+          "reserve": 0.0,
+          "useful": 4.36179822
+        },
+        "before": {
+          "capacity": 23.0732781,
+          "cumulative_spend": 0.0,
+          "reserve": 0.0,
+          "useful": 4.74108502
+        },
+        "decision": {
+          "accepted": false,
+          "authorized": true,
+          "produced": 0.0,
+          "quality": 0.95,
+          "reason": "HELD_NO_RESERVE",
+          "risk": 0.04,
+          "spend": 0.0
+        },
+        "turn": 17
+      },
+      {
+        "after": {
+          "capacity": 22.84312215,
+          "cumulative_spend": 0.0,
+          "reserve": 0.0,
+          "useful": 4.01285436
+        },
+        "before": {
+          "capacity": 22.95791171,
+          "cumulative_spend": 0.0,
+          "reserve": 0.0,
+          "useful": 4.36179822
+        },
+        "decision": {
+          "accepted": false,
+          "authorized": true,
+          "produced": 0.0,
+          "quality": 0.95,
+          "reason": "HELD_NO_RESERVE",
+          "risk": 0.04,
+          "spend": 0.0
+        },
+        "turn": 18
+      },
+      {
+        "after": {
+          "capacity": 22.72890654,
+          "cumulative_spend": 0.0,
+          "reserve": 0.0,
+          "useful": 3.69182601
+        },
+        "before": {
+          "capacity": 22.84312215,
+          "cumulative_spend": 0.0,
+          "reserve": 0.0,
+          "useful": 4.01285436
+        },
+        "decision": {
+          "accepted": false,
+          "authorized": true,
+          "produced": 0.0,
+          "quality": 0.95,
+          "reason": "HELD_NO_RESERVE",
+          "risk": 0.04,
+          "spend": 0.0
+        },
+        "turn": 19
+      },
+      {
+        "after": {
+          "capacity": 22.61526201,
+          "cumulative_spend": 0.0,
+          "reserve": 0.0,
+          "useful": 3.39647993
+        },
+        "before": {
+          "capacity": 22.72890654,
+          "cumulative_spend": 0.0,
+          "reserve": 0.0,
+          "useful": 3.69182601
+        },
+        "decision": {
+          "accepted": false,
+          "authorized": true,
+          "produced": 0.0,
+          "quality": 0.95,
+          "reason": "HELD_NO_RESERVE",
+          "risk": 0.04,
+          "spend": 0.0
+        },
+        "turn": 20
+      },
+      {
+        "after": {
+          "capacity": 22.5021857,
+          "cumulative_spend": 0.0,
+          "reserve": 0.0,
+          "useful": 3.12476154
+        },
+        "before": {
+          "capacity": 22.61526201,
+          "cumulative_spend": 0.0,
+          "reserve": 0.0,
+          "useful": 3.39647993
+        },
+        "decision": {
+          "accepted": false,
+          "authorized": true,
+          "produced": 0.0,
+          "quality": 0.95,
+          "reason": "HELD_NO_RESERVE",
+          "risk": 0.04,
+          "spend": 0.0
+        },
+        "turn": 21
+      },
+      {
+        "after": {
+          "capacity": 22.38967477,
+          "cumulative_spend": 0.0,
+          "reserve": 0.0,
+          "useful": 2.87478062
+        },
+        "before": {
+          "capacity": 22.5021857,
+          "cumulative_spend": 0.0,
+          "reserve": 0.0,
+          "useful": 3.12476154
+        },
+        "decision": {
+          "accepted": false,
+          "authorized": true,
+          "produced": 0.0,
+          "quality": 0.95,
+          "reason": "HELD_NO_RESERVE",
+          "risk": 0.04,
+          "spend": 0.0
+        },
+        "turn": 22
+      },
+      {
+        "after": {
+          "capacity": 22.2777264,
+          "cumulative_spend": 0.0,
+          "reserve": 0.0,
+          "useful": 2.64479817
+        },
+        "before": {
+          "capacity": 22.38967477,
+          "cumulative_spend": 0.0,
+          "reserve": 0.0,
+          "useful": 2.87478062
+        },
+        "decision": {
+          "accepted": false,
+          "authorized": true,
+          "produced": 0.0,
+          "quality": 0.95,
+          "reason": "HELD_NO_RESERVE",
+          "risk": 0.04,
+          "spend": 0.0
+        },
+        "turn": 23
+      },
+      {
+        "after": {
+          "capacity": 22.16633777,
+          "cumulative_spend": 0.0,
+          "reserve": 0.0,
+          "useful": 2.43321432
+        },
+        "before": {
+          "capacity": 22.2777264,
+          "cumulative_spend": 0.0,
+          "reserve": 0.0,
+          "useful": 2.64479817
+        },
+        "decision": {
+          "accepted": false,
+          "authorized": true,
+          "produced": 0.0,
+          "quality": 0.95,
+          "reason": "HELD_NO_RESERVE",
+          "risk": 0.04,
+          "spend": 0.0
+        },
+        "turn": 24
+      }
+    ]
+  },
+  "schema": "CoRegenerative.SyntheticTrajectories.R0"
+}
