@@ -46,8 +46,12 @@ def shadow_lit(h: np.ndarray, side: str, alpha_deg: float = ALPHA_DEG, pitch: fl
     """
     if side not in ("left", "right"):
         raise ValueError("side must be left or right")
-    if not (0 < alpha_deg < 90) or pitch <= 0:
+    if not all(isinstance(v, (int, float, np.integer, np.floating)) and np.isfinite(v)
+               for v in (alpha_deg, pitch)) or not (0 < alpha_deg < 90) or pitch <= 0:
         raise ValueError("invalid ray geometry")
+    h = np.asarray(h, dtype=float)
+    if h.ndim != 1 or not (2 <= h.size <= 2048) or not np.all(np.isfinite(h)):
+        raise ValueError('invalid or nonfinite shadow geometry')
     n = len(h)
     lit = np.ones(n, dtype=int)
     slope = math.tan(math.radians(alpha_deg)) * pitch
@@ -69,8 +73,14 @@ def toy_speckle(h: np.ndarray, wavelength: float, analyzer_deg: float = 0.0,
     simplified Jones cross-component depends on local slopes, solely to
     demonstrate how an analyzer can change a computed interference pattern.
     """
-    if wavelength <= 0 or not (0 <= analyzer_deg <= 180):
-        raise ValueError("invalid optical parameters")
+    if not all(isinstance(v, (int, float, np.integer, np.floating)) and np.isfinite(v)
+               for v in (wavelength, analyzer_deg, incidence_deg)):
+        raise ValueError('nonfinite or nonscalar optical parameters')
+    if wavelength <= 0 or not (0 <= analyzer_deg <= 180) or not (0 <= incidence_deg <= 90):
+        raise ValueError('invalid optical parameters')
+    h = np.asarray(h, dtype=float)
+    if h.ndim != 1 or not (2 <= h.size <= 2048) or not np.all(np.isfinite(h)):
+        raise ValueError('invalid or nonfinite surface heights')
     phase = 4 * math.pi * h * math.cos(math.radians(incidence_deg)) / wavelength
     slopes = np.gradient(h, PITCH)
     cross_amplitude = 0.38 * np.tanh(2.5 * slopes)
@@ -79,8 +89,14 @@ def toy_speckle(h: np.ndarray, wavelength: float, analyzer_deg: float = 0.0,
     analyzer_field = (math.cos(a) + math.sin(a)*cross_amplitude) * field
     spectrum = np.fft.fftshift(np.fft.fft(analyzer_field))
     intensity = np.abs(spectrum) ** 2
-    # Normalize only within an individual detector projection; no absolute radiometry.
-    return intensity / float(np.mean(intensity))
+    # CRITICAL NEGATIVE: a numerically extinguished synthetic polarization channel
+    # must not be amplified to unit mean by per-projection normalization.
+    # This fixed dimensionless floor is a numerical guard, NOT sensor sensitivity.
+    mean_raw = float(np.mean(intensity))
+    if not np.isfinite(mean_raw) or mean_raw <= len(h) * 1e-24:
+        return np.zeros_like(intensity)
+    # Normalize only within viable toy detector projection; no absolute radiometry.
+    return intensity / mean_raw
 
 
 def summarize(seed: int = 20261026, n: int = N) -> dict:

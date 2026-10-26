@@ -102,5 +102,53 @@ class Canary(unittest.TestCase):
     def test_synthetic_budget(self):
         self.assertLessEqual(self.d['n'],2048)
 
+    def test_flat_crossed_numeric_channel_stays_dark(self):
+        # A flat surface and 90-degree toy cross analyzer have ~zero raw
+        # amplitude. Never renormalize numerical cos(pi/2) residue to a
+        # detector peak: that was a real failure in original R1.
+        z = toy_speckle(np.zeros(64), 0.532, analyzer_deg=90)
+        self.assertTrue(np.array_equal(z, np.zeros(64)))
+        self.assertEqual(float(np.max(z)), 0.0)
+
+    def test_rough_cross_channel_remains_analyzable(self):
+        z = toy_speckle(self.h, .532, analyzer_deg=90)
+        self.assertGreater(float(np.max(z)), 0.0)
+        self.assertAlmostEqual(float(np.mean(z)), 1.0, places=7)
+
+    def test_nonfinite_surface_refused_by_both_models(self):
+        h = np.array([0.0, float('nan'), 0.5, 1.0])
+        with self.assertRaises(ValueError):
+            toy_speckle(h, .532)
+        with self.assertRaises(ValueError):
+            shadow_lit(h, 'left')
+
+    def test_nonfinite_wavelength_refused(self):
+        for bad in (float('nan'), float('inf'), -float('inf')):
+            with self.assertRaises(ValueError):
+                toy_speckle(self.h, bad)
+
+    def test_nonfinite_or_nonnumeric_analyzer_refused(self):
+        for bad in (float('nan'), float('inf'), '90', None):
+            with self.assertRaises(ValueError):
+                toy_speckle(self.h, .532, analyzer_deg=bad)
+
+    def test_nonfinite_incidence_refused(self):
+        for bad in (float('nan'), float('inf'), 92.0, -1.0, '15'):
+            with self.assertRaises(ValueError):
+                toy_speckle(self.h, .532, incidence_deg=bad)
+
+    def test_nonfinite_shadow_geometry_refused(self):
+        for bad in (float('nan'), float('inf'), '15'):
+            with self.assertRaises(ValueError):
+                shadow_lit(self.h, 'left', alpha_deg=bad)
+            with self.assertRaises(ValueError):
+                shadow_lit(self.h, 'right', pitch=bad)
+
+    def test_zeroed_cross_channel_not_claimed_real_optical(self):
+        z = toy_speckle(np.zeros(64), .532, analyzer_deg=90)
+        self.assertEqual(float(np.sum(z)), 0.0)
+        self.assertEqual(self.d['status'], 'PASS_SYNTHETIC_ONLY')
+        self.assertIn('NO_PHYSICAL_LIGHT_OR_SENSOR_USED', self.d['warnings'])
+
 if __name__=='__main__':
     unittest.main(verbosity=2)
