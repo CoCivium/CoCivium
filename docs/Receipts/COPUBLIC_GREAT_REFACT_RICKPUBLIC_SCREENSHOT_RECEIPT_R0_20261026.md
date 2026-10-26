@@ -56,3 +56,23 @@ This does not by itself prove indexing, subscriber delivery, independent reachab
 3. Record title, publication date, source links, and correction/currentness path.
 4. Only after a separate send/recipient receipt, relate outreach to this article.
 5. Seek voluntary independent reader feedback before escalating impact claims.
+
+## Independent public-web discovery check
+
+**Checked:** 2026-10-26
+
+Exact-title and title-plus-RickPublic web searches did not return the article in the search index during this check.
+
+This is a discovery/indexing result only. It does not negate the user-supplied screenshots showing the article on the RickPublic/Substack surface.
+
+Current split:
+
+- `VISIBLE_PUBLIC_SURFACE = YES_FOR_SCREENSHOT_WINDOW`
+- `SEARCH_ENGINE_DISCOVERY = NOT_YET_PROVEN`
+- `INDEPENDENT_DIRECT_URL_READBACK = OPEN`
+
+Additional rails:
+
+- `SEARCH_MISS_NE_NOT_PUBLISHED`
+- `INDEXED_NE_READ`
+- `PUBLIC_PAGE_VISIBLE_NE_DISCOVERABLE_BY_SEARCH`
