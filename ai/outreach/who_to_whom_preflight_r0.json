@@ -1,0 +1,75 @@
+{
+  "schema": "CoCivium.OutreachWhoToWhomPreflight.v0.1-candidate",
+  "state": "PUBLIC_SAFE_REVIEW_CONTRACT__NOT_RUNTIME__NOT_MAILBOX_AUTHORITY",
+  "observed_utc": "2026-10-26",
+  "existing_owners": [
+    "CoRelationshipBraid+",
+    "CoOrg+",
+    "CoReach+",
+    "CoOutreach+",
+    "CoCiviaFront"
+  ],
+  "identity_roles": {
+    "principal": "Responsible human or organization; not inferred from front",
+    "drafter": "Human or disclosed AI that authored exact revision",
+    "front": "Projected voice distinct from principal and authenticated sending seat",
+    "seat": "Actually authenticated provider account, permitted From alias and Reply-To",
+    "approver": "Scoped authorizer for exact revision, sender and audience",
+    "recipient": "Confirmed real individual/organization; namesake alone insufficient",
+    "referenced_party": "Person mentioned or cited, not presumed to endorse",
+    "cc_bcc": "Additional audience, separately privacy/authority checked",
+    "receiver": "Independent target who may acknowledge or challenge"
+  },
+  "mandatory_preflight": [
+    "SENDER_ACCOUNT_AUTHENTICATED",
+    "FRONT_AND_PRINCIPAL_DISCLOSED",
+    "FROM_REPLY_TO_VERIFIED",
+    "RECIPIENT_IDENTITY_AND_ROUTE_MATCH",
+    "CC_BCC_AUDIENCE_MATCH",
+    "CONTACT_PREFERENCES_CHECKED",
+    "EXACT_SUBJECT_BODY_ATTACHMENTS_HASH",
+    "CLAIMS_AND_REFERENCED_PARTIES_CHECKED",
+    "THREAD_CONTEXT_VERIFIED",
+    "PRIVACY_AND_RIGHTS_CHECKED",
+    "APPROVAL_BINDS_HASH_SENDER_AUDIENCE",
+    "DELIVERY_STATE_SUPPORTED_BY_SOURCE_EVIDENCE"
+  ],
+  "message_states": [
+    "PROPOSED",
+    "DRAFTED",
+    "REVIEWED",
+    "AUTHORIZED",
+    "SENT",
+    "DELIVERY_OBSERVED",
+    "RECEIVER_ACKED",
+    "ARCHIVED"
+  ],
+  "hold_on": [
+    "UNKNOWN_ACTUAL_SENDER",
+    "FRONT_SEAT_CONFUSION",
+    "NAME_COLLISION",
+    "UNKNOWN_RECIPIENT_ROUTE",
+    "CC_BCC_CHANGED",
+    "FROM_REPLY_TO_CHANGED",
+    "MESSAGE_CONTENT_CHANGED",
+    "UNVERIFIED_BIOGRAPHICAL_CLAIM",
+    "OPT_OUT",
+    "MISSING_APPROVAL",
+    "REPLY_THREAD_MISMATCH",
+    "RECEIVER_STATE_OVERCLAIM"
+  ],
+  "no_automatic_send": true,
+  "content_private_by_default": true,
+  "source_refs": [
+    "docs/Outreach/COOUTREACH_WHO_TO_WHOM_PREFLIGHT_R0_20261026.md",
+    "docs/Architecture/CORELATIONSHIP_BRAID_FABRIC_R0_20261026.md",
+    "docs/Identity/COFRONT_COCIVIA_GITHUB_R0.md"
+  ],
+  "nonclaims": [
+    "STRUCTURE_PASS_NE_SEND_AUTHORITY",
+    "BROWSER_VISIBLE_NE_CONNECTOR_ACCESS",
+    "DRAFT_NE_SENT",
+    "SENT_NE_ACK",
+    "PUBLIC_SOURCE_NE_RUNTIME"
+  ]
+}
