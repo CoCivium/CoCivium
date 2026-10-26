@@ -78,7 +78,7 @@ class TestCoVisualFinderR1(unittest.TestCase):
     def test_54_non_string_url_rejected(self):
         self.assertFalse(finder.check_url(None))
     def test_55_control_character_rejected(self):
-        self.assertFalse(finder.check_url('https://commons.wikimedia.org/wiki/File:Example.svg\\n'))
+        self.assertFalse(finder.check_url('https://commons.wikimedia.org/wiki/File:Example.svg\n'))
     def test_56_fewer_than_four_sources_rejected(self):
         self.rejected(lambda x:x['public_donors'].pop())
     def test_57_empty_catalogue_rejected(self):
