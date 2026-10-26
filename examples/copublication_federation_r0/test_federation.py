@@ -334,7 +334,7 @@ class FederationTests(unittest.TestCase):
         self.assertEqual(asset['read_mode'],'SNAPSHOT_PINNED')
         self.assertEqual(asset['currentness']['state'],'UNKNOWN')
         self.assertIn('NOT_PHYSICS_OR_GD_PROOF',asset['readiness'])
-        self.assertIn('candidate',asset['projection_ref'].lower())
+        self.assertTrue(asset['projection_ref'].endswith('HIGHLIGHT_CYCLIC_REGENERATION_R0.md'))
         self.assertTrue((ROOT/'HIGHLIGHT_CYCLIC_REGENERATION_R0.md').is_file())
         self.assertEqual(len(asset['source_bindings']),len(set(asset['source_bindings'])))
         for binding in asset['source_bindings']:
