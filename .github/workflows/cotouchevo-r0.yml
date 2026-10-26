@@ -1,0 +1,22 @@
+name: CoTouchEvo impact proposal R0
+on:
+  pull_request:
+    paths:
+      - 'examples/cotouchevo_r0/**'
+      - '.github/workflows/cotouchevo-r0.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  synthetic-shadow:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: R0 pure-Python tests
+        run: python3 -m unittest discover -s examples/cotouchevo_r0 -p 'test_*.py' -v
+      - name: Fixture shadow replay
+        run: python3 examples/cotouchevo_r0/touch_impact.py examples/cotouchevo_r0/fixture.json > /dev/null
