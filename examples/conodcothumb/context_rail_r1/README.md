@@ -79,3 +79,26 @@ For `G_d`, spiritual/nonmaterial, ET and Civ2+/Civ3+ stories: use a *labelled sy
 Rails: `CONTEXT_ADDRESSABLE_NE_CONTEXT_LOADED | GESTURE_NE_AUTHORITY | PREVIEW_NE_EXECUTE | QUESTION_NE_ANSWER | NULL_NE_FALSE | ET_SCENARIO_NE_CONTACT | G_D_FRAME_NE_MEASURED_FIELD | LOCAL_IS_NOT_LANDED | VALIDATION_IS_NOT_ACCEPTANCE | NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF | NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE`.
 
 **FOSS Forever | CoGoAll | Working Together Respectfully | privacy by design | visible effects, wearables optional.**
+
+
+## Input-envelope R1 hardening (candidate, 2026-10-25 UTC)
+
+This is a **safety-first donor to the existing CoContextRail R1**, not a new hotkey controller or a claim that X2 already runs it. The pure preview classifier now rejects any undeclared `packet` field before returning visible context; this includes fake `raw_key`, `clipboard_text`, and `screen_pixels` fields. It also rejects explicit outward effect intent unless its field is exactly `false`; unsupported types do not inherit permission. The refusal includes no captured input bytes, source pointer, permission or receiver ACK.
+
+Allowed optional field: `external_effect_requested: false`. A true/string/unknown effect request yields `HELD_EFFECT_REQUEST`. Any other undeclared field yields `HELD_UNDECLARED_INPUT`. Existing declared synthetic-browser controls continue as before.
+
+**Proof protocol:** seven additional deterministic negative cases on top of the previously recorded 91; `node --test` + exact `python3 build.py --check` must be evaluated by branch CI before PASS claims. Regenerated `index.html` must match the *same* versioned manifest + source and not silently drift. Further browser-level and native Windows tests remain independently required.
+
+**Hard boundary:** `NATIVE_MIDDLE` remains pass-through, no OS hook or key capture, no callback executes or sends, no session worker spawn, no provider/secret/account controls. Source hardening alone is not user acceptance, deployment, or a physical button mapping. When merging, preserve the old R1 receipt and add a new explicitly scoped one rather than rewriting historical rows.
+
+`UNKNOWN_INPUT_NE_CONTEXT | PREVIEW_NE_SEND | GLYPH_NE_AUTHORITY | NEW_GUARD_NE_WINDOWS_RUNTIME`.
+
+### 2026-10-26: prototype and hidden-field negative controls
+
+A differential review found that checking only `Object.keys(packet)` misses inherited fields, non-enumerable fields and symbol keys, and invoking an accessor can cause code to run before privacy classification. A pure browser-local proposal must not treat these as qualified metadata.
+
+The input envelope now accepts **plain own-data objects** with either the normal `Object.prototype` or a null prototype. It rejects inherited/custom-prototype records, hidden/symbol keys, undeclared properties, getters/setters and effect-intent values other than explicit `false`, before reading selected context fields. No unrecognized value appears in the held response.
+
+Seven new cases cover inherited effect/identity hints, nonenumerable metadata, symbol metadata, an accessor that must not fire, built-in-object input and the null-prototype positive control. This makes **105 declared offline Node tests** including 91 original and both seven-case hardening waves. All claims depend on exact-head CI readback; a test plan does not imply a deployed device or a privacy-certified integration.
+
+Hard gates unchanged: no physical middle/keyboard hook, no clipboard access, no files or network, no model use, no external effect, no receiver ACK, no canonical release. Browser UI and independent Windows/X2 acceptance remain separate.
