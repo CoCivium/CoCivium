@@ -1,0 +1,29 @@
+name: CoCivium living publication candidate
+
+on:
+  pull_request:
+    paths:
+      - "examples/colivingrelease_r0/**"
+      - ".github/workflows/colivingrelease-r0.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  candidate-integrity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Static source syntax
+        run: |
+          node --check examples/colivingrelease_r0/verify.mjs
+          node --check examples/colivingrelease_r0/verify.test.mjs
+      - name: Validate manifest and draft captions
+        run: node examples/colivingrelease_r0/verify.mjs
+      - name: Execute negative promotion and source tests
+        run: node --test --test-reporter=tap examples/colivingrelease_r0/verify.test.mjs
