@@ -14,6 +14,10 @@ The [CoEBE core-to-edge gap map](docs/Strategy/COEBE_EDGE_IN_CORE_OUT_GAP_R0_202
 
 ## ∞ CoOmni+ | Addressable context + pooled resources
 
+**One work object across windows, source-only canary (2026-10-26):** [CoOmni Cross-Window Handoff R0](ai/onramp/coomni-cross-window-handoff-r0.json) pins five public Git source identities (5/5 exact readback) with 18/18 structural invariants. One work object and at most two receiver views are proposed. Two static gates PASS; six runtime/receiver/privacy/recovery tests remain HELD. The X2 remote agent reported OFFLINE at the latest connector observation, despite a user-supplied screenshot showing an active desktop; this is not a conclusion about X2 power or installed controls. No screenshot, private chat text, credential, automatic send or hidden cross-window data exchange was published.
+
+
+
 ### PASS · architecture contract; literal unlimited resources HELD
 
 The [CoOmni+ / Context & Resource Fabric R0](docs/Architecture/COOMNI_CONTEXT_RESOURCE_FABRIC_R0_20261024.md) defines the target as omni-addressable, retrievable, rehydratable, routable and recoverable context/resources with bounded active materialization.
