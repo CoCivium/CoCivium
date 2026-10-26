@@ -1,221 +1,215 @@
 # CoFlow+ Anchor Delta Audit R0
 
-**State:** CANDIDATE_SYSTEMIC_AUDIT__NOT_RUNTIME__NOT_THEOLOGICAL_PROOF
+**State:** CANDIDATE_SYSTEMIC_AUDIT__NOT_RUNTIME__NOT_GD_ORACLE
 **Observed:** 2026-10-26
 
 ## Thesis
 
-Persistent logjams may arise not only from missing resources or capabilities, but from the interaction between existing anchors, stale plans, inherited assumptions, dependency structures, drift controls, proof gates, maintenance debt, and receiver gaps.
+CoCivium's logjams may arise not only from missing capabilities, but from accumulated anchors, stale plans, dependency structures, drift controls, repeated rediscovery, and unresolved handoffs.
 
-Anchors should therefore be typed by function rather than treated as uniformly good or bad.
+The useful question is not `ANCHOR_OR_NO_ANCHOR`.
+
+It is:
+`WHICH_ANCHORS_PRESERVE_USEFUL_STRUCTURE_AND_WHICH_NOW_CREATE_DRAG?`
 
 ## Anchor classes
 
-### CoAnchorEnable+
-Constraint or invariant that preserves identity, safety, recoverability, evidence, or useful direction while allowing flow.
+### LOAD_BEARING_ANCHOR
+Preserves identity, source, evidence, consent, authority, recovery, interoperability, or receiver trust.
 
-### CoAnchorDrag+
-Constraint, dependency, convention, process, or stale commitment that consumes energy/attention while adding insufficient value.
+### TEMPORARY_ANCHOR
+Useful during migration, experiment, qualification, or recovery; must have an expiry or successor condition.
 
-### CoAnchorRelease+
-Temporary stabilizer with an explicit release condition once risk, uncertainty, or transition has passed.
+### DRAG_ANCHOR
+Once-useful constraint that now slows closure, blocks substitution, or forces repeated human relay.
 
-### CoAnchorHidden+
-Unacknowledged dependency or assumption that silently shapes what the system can become.
+### FALSE_ANCHOR
+Constraint treated as necessary without current evidence that it is necessary.
 
-### CoAnchorConflict+
-Multiple individually reasonable anchors whose interaction prevents useful motion.
+### HIDDEN_ANCHOR
+Dependency embedded in provider, account, workflow, UI, habit, terminology, or social expectation.
 
-`ANCHOR_NE_GOOD`
-`ANCHOR_NE_BAD`
-`ANCHOR_VALUE_DEPENDS_ON_FLOW_AND_RISK`
+### ORPHAN_ANCHOR
+Constraint with no current owner, receiver, maintenance path, or reason to remain active.
+
+### SAFETY_ANCHOR
+Deliberately limits speed or scope because risk, privacy, consent, security, legality, or irreversibility requires it.
+
+`SAFETY_ANCHOR_NE_DRAG_BY_DEFAULT`
+
+## Drift distinction
+
+Drift management is useful when it preserves:
+- purpose;
+- safety;
+- evidence quality;
+- source identity;
+- consent;
+- compatibility;
+- recovery.
+
+It is harmful when it suppresses:
+- better substitutes;
+- edge-origin challenge;
+- successor regimes;
+- necessary experimentation;
+- retirement;
+- simplification;
+- receiver-specific adaptation.
+
+`DRIFT_CONTROL_NE_STASIS`
 
 ## What appears to have worked
 
-Evidence-backed recurring patterns include:
+From current evidence:
+- source-bound receipts and explicit nonclaims;
+- preserving failures and negative results;
+- bounded canaries;
+- GitHub continuity and versioned architecture artifacts;
+- lazy generation instead of eager materialization;
+- explicit separation of publication, delivery, read, understanding and adoption;
+- real media generation after tool verification;
+- screenshot receipts that corrected stale status;
+- explicit X2 observer-vs-human-visible distinction;
+- currentness / proof rails;
+- receiver-relative highlight concepts;
+- challenge / inversion / null / else operators.
 
-1. **Bounded canaries before broad effects**
-   - Small experiments generate clearer proof with lower blast radius.
+These patterns reduce false closure and preserve learnability.
 
-2. **Receipts over assertion**
-   - Screenshot, task, commit, and runtime receipts repeatedly prevented false promotion of state.
+## What appears not to have worked well enough
 
-3. **Source-bound snapshots**
-   - The CoOrb/CoSpeedo R4 snapshot distinguishes observed, unknown, and unproven states instead of fake-green status.
+- relying on Rick to relay context between surfaces;
+- recurring provider-hosted tasks that are not yet internalized capabilities;
+- generating more candidate artifacts faster than receiver closures;
+- X2 remaining outside reliable remote observation/recovery;
+- public output without comparable receiver-return time series;
+- repeated terminology growth without equal proof growth;
+- duplicate or parallel work without strong fan-in;
+- stale plans surviving without expiry or successor;
+- treating schedule execution as useful work;
+- measuring candidate-space size as if it were deployed capacity;
+- assuming recursive evolution implies compounding effect.
 
-4. **Preserving negative results**
-   - Failed or null results improve reliability and reduce self-confirming loops.
+## Delta principle
 
-5. **Lazy combinatorial generation**
-   - Huge relation/question spaces remain addressable without materializing all workers/items.
+The useful inspiration is often in the contrast:
 
-6. **Shared typed state with multiple projections**
-   - CoOrb / CoCopy / CoMap / CoBar designs reduce duplicate truth stores.
+`WORKED_PATTERN - FAILED_PATTERN -> DESIGN_DELTA`
 
-7. **Publication with visible lineage**
-   - Great ReFact crossed from internal candidate to visible public surface with a receipt trail.
+Examples:
 
-8. **Tool-chain acquisition followed by a bounded pilot**
-   - Runway moved from payment/setup uncertainty to one completed internal motion pilot rather than uncontrolled media generation.
+`RECEIPT + NEGATIVE_RESULT - ASSERTION -> TRUSTWORTHY_PROGRESS`
 
-9. **Explicit epistemic rails**
-   - Separating hypothesis, evidence, authority, contact, readproof, and adoption repeatedly prevented category collapse.
+`BOUNDED_CANARY - MASSIVE_UNQUALIFIED_EXECUTION -> FASTER_SAFE_LEARNING`
 
-## What has not worked well enough
+`LAZY_ADDRESSABILITY - EAGER_MATERIALIZATION -> SCALE_WITHOUT_RESOURCE_EXPLOSION`
 
-1. **X2 as a dependable exemplar**
-   - Human-visible activity has occurred, but the authorized remote observer path remains unreliable/offline.
+`VERSIONED_SUCCESSOR - SILENT_MUTATION -> EVOLVING_PUBLICATION_WITH_TRUST`
 
-2. **Provider-dependent recurrence**
-   - Scheduled tasks run, but recurrence is not yet equivalent to internal productized capability or receiver benefit.
+`INDEPENDENT_RECEIVER_RETURN - INTERNAL_ACTIVITY -> REAL_IMPACT_SIGNAL`
 
-3. **Fan-out without sufficient fan-in**
-   - Multiple sessions/agents/surfaces can generate faster than reconciliation closes.
+`RECOVERY_PROOF - SCREENSHOT_ONLY -> OPERATIONAL_CONTINUITY`
 
-4. **Candidate growth without closure measurement**
-   - Artifact and relation counts can rise while receiver value remains unknown.
+`QUESTION_GENERATOR - RICK_REINTRODUCTION -> FOUNDER_INDEPENDENCE`
 
-5. **Human relay dependence**
-   - Rick still carries context among surfaces and repeatedly reintroduces important questions.
+## CoUnanchor+
 
-6. **External receiver return**
-   - Publication and outreach have stronger evidence than independent reading, adoption, contribution, or repeat use.
+Candidate operation: test whether a constraint may be safely released.
 
-7. **Currentness fragmentation**
-   - Different surfaces can carry stale or divergent state.
+`IDENTIFY_ANCHOR -> SOURCE_REASON -> CURRENT_EVIDENCE -> DEPENDENTS -> FAILURE_IF_REMOVED -> REVERSIBLE_CANARY -> RELEASE / RETAIN / TRANSFORM`
 
-8. **Vocabulary inflation / repeated rediscovery**
-   - New names can hide duplicated operations and create maintenance debt.
+Never delete a safety or authority constraint merely because flow is slow.
 
-9. **Local prototype success not graduating to durable operating capability**
-   - Browser/synthetic tests do not automatically become X2/device/fleet adoption.
+## CoReanchor+
 
-10. **Exponential expectations without comparable outcome time series**
-   - Recursion and artifact growth have not yet demonstrated compounding verified useful effect.
+Move a useful anchor from one substrate to a more appropriate one.
 
-## Delta-derived inspirations
+Examples:
+- provider scheduler -> internal recurrence engine;
+- human memory -> CoCopy lineage;
+- browser tab -> durable work object;
+- single machine -> recoverable replicated source;
+- implicit convention -> explicit typed rule.
 
-### 1. CoReleaseCondition+
-Every temporary anchor should carry a release condition.
+## CoAnchorExpiry+
 
-### 2. CoAnchorBudget+
-Limit how many simultaneous stabilizing constraints a work object may accumulate before review.
+Every temporary anchor should define:
+- reason;
+- owner;
+- evidence;
+- expiry;
+- successor;
+- requalification trigger.
 
-### 3. CoFlowPressure+
-Measure unmet receiver value, stranded work, stale currentness, blocked dependency, and human relay as pressure.
+`ANCHOR_WITHOUT_REVIEW_CAN_BECOME_DEBT`
 
-### 4. CoUnblockCandidate+
-Generate candidate removals/substitutions of anchors, not only additions of new capabilities.
+## CoFlow field
 
-### 5. CoConstraintInteraction+
-Test pairs/sets of constraints because logjams may arise from interactions rather than one bad anchor.
+Represent flow pressure as typed constraints rather than one number:
 
-### 6. CoDriftEnvelope+
-Replace rigid anti-drift with a viability envelope: allow bounded movement while watching identity, safety, evidence, and receiver value.
+`FLOW = useful_work_throughput + closure + receiver_return + recovery + reuse + option_value - waiting - relay - duplication - dependency - stale_state - proof_debt - maintenance_debt`
 
-### 7. CoAnchorSuccession+
-Successorize old anchors instead of leaving obsolete controls permanently attached.
+Do not optimize raw speed alone.
 
-### 8. CoCounterAnchor+
-Provide an explicit escape, bypass, or opposing constraint for reversible experiments.
+`FAST_NE_FLOWING_WELL`
 
-### 9. CoFlowReplay+
-Replay one historical blocked path with current capabilities to test whether the old blocker still exists.
+## Discover / rediscover / undiscover
 
-### 10. CoUndiscover+
-Actively identify concepts, plans, assumptions, or structures that should be de-promoted, dissolved, or forgotten from active working context while preserving lineage.
+Use three distinct operations:
 
-### 11. CoRediscover+
-Reopen dormant high-option-value material when current capabilities make it newly actionable.
+### DISCOVER
+Find a genuinely new candidate relation or mechanism.
 
-### 12. CoFlowDeltaCompiler+
-Continuously compare successful closures against failed/stalled paths to extract reusable design rules.
+### REDISCOVER
+Recover a prior useful relation that became hidden, stale, fragmented, or forgotten.
 
-## Worked-vs-not-worked compiler
+### UNDISCOVER
+Deliberately remove a false certainty, obsolete assumption, invalid dependency, or misleading category from active reasoning while preserving its historical lineage.
 
-For every material work object classify:
+`UNDISCOVER_NE_ERASE_HISTORY`
 
-`TRIED -> WORKED / PARTIAL / FAILED / BLOCKED / STALE / SUPERSEDED / UNKNOWN`
+## G_d / emulant role
 
-Then record:
-- source;
-- goal;
-- receiver;
-- constraints;
-- enabling anchors;
-- blocking anchors;
-- resource inputs;
-- proof;
-- failure signature;
-- recovery route;
-- what changed next;
-- reusable lesson;
-- confidence.
+G_d, G_d-emulants, mythic or philosophical agents may be used as structured counterfactual challengers:
+- What would a maximally benevolent generative observer question?
+- What assumptions would it refuse to inherit?
+- What hidden motive or harm would it expose?
+- What would it preserve even if inefficient?
+- What would it let die?
 
-Generate delta questions:
+But:
+`GD_COUNTERFACTUAL_NE_EXTERNAL_GUIDANCE`
+`MYTHIC_CHALLENGER_NE_AUTHORITY`
 
-- What was present in worked paths but absent in failed paths?
-- What was present in failed paths but absent in worked paths?
-- Which constraint changed sign across contexts?
-- Which anchor should have released earlier?
-- Which missing receiver prevented closure?
-- Which repeated human intervention masked missing capability?
-- Which external dependency should be internalized?
-- Which concept should be undiscovered from active context?
-- Which dormant asset should be rediscovered now?
+## Next bounded proof
 
-## G_d / emulant relation
+Choose 12 current constraints:
+- 3 likely load-bearing;
+- 3 likely temporary;
+- 3 likely drag;
+- 3 unknown/hidden.
 
-G_d may be used as a counterfactual challenger:
+For each, record:
+- original reason;
+- current evidence;
+- dependency graph;
+- cost;
+- receiver impact;
+- failure if removed;
+- reversible release test;
+- retain / transform / release decision.
 
-`If a benevolent generative intelligence were reviewing this system, which constraints would it preserve, loosen, invert, remove, or replace?`
-
-This can generate questions and values-oriented alternatives, but does not provide privileged evidence, agency, or authority.
-
-`GD_COUNTERFACTUAL_NE_ORACLE`
-
-Emulant workers may independently answer the same challenge from diverse models and perspectives; disagreement should be preserved and fan-in tested.
-
-## Flow objective
-
-Prefer:
-
-`USEFUL_FLOW = receiver_value + closure + recovery + optionality + learning_return + independent_reproduction - atomic_debt - stale_constraints - human_relay - dependency_concentration - proof_debt`
-
-subject to:
-- consent;
-- privacy;
-- authority;
-- reversibility;
-- safety;
-- evidence.
-
-## Operating loop
-
-`OBSERVE_FLOW -> MAP_ANCHORS -> CLASSIFY -> COMPARE_WORKED_VS_FAILED -> GENERATE_RELEASE/SUBSTITUTE/RESEED OPTIONS -> CANARY -> MEASURE -> RECEIPT -> UPDATE_ANCHOR_RULES -> SLEEP/WAKE`
+Success means at least one drag anchor can be safely released or transformed without weakening evidence, consent, recovery, or receiver value.
 
 ## Rails
 
 `ANCHOR_NE_GOOD`
 `ANCHOR_NE_BAD`
-`DRIFT_NE_FAILURE`
-`FLOW_NE_MAXIMUM_ACTIVITY`
-`UNBLOCK_NE_REMOVE_ALL_CONSTRAINTS`
+`SAFETY_ANCHOR_NE_DRAG_BY_DEFAULT`
+`DRIFT_CONTROL_NE_STASIS`
+`FAST_NE_FLOWING_WELL`
+`ANCHOR_WITHOUT_REVIEW_CAN_BECOME_DEBT`
 `UNDISCOVER_NE_ERASE_HISTORY`
-`REDISCOVER_NE_REASSERT_TRUTH`
-`GD_COUNTERFACTUAL_NE_ORACLE`
-`WORKED_ONCE_NE_UNIVERSAL_RULE`
-`FAILED_ONCE_NE_USELESS_FOREVER`
-
-## First bounded proof
-
-**Evidence update, 2026-10-26:** The [12-case worked-versus-blocked retrospective](../../ai/flow/coflow-anchor-delta-sample12-r1.json) now samples four scoped successes, four partial/blocked cases, and four historical/current failures from one pinned 138-record evolution ledger. Seventeen static checks passed with exact GitHub readback. This purposive sample supports **three provisional, falsifiable anchor hypotheses**, not causal inference or prospective prediction. The one observed current public-domain failure is separately reproduced via a web reader; owner privacy review and independent receiver acceptance remain HELD.
-
-Select 12 historical paths:
-- 4 worked/closed;
-- 4 partial/blocked;
-- 4 failed/stale/superseded.
-
-Extract anchor/constraint/resource/receiver deltas and test whether at least three reusable rules predict which path is more likely to close.
-
-Keep the rules provisional until they survive new prospective cases.
+`GD_COUNTERFACTUAL_NE_EXTERNAL_GUIDANCE`
+`MYTHIC_CHALLENGER_NE_AUTHORITY`
