@@ -21,6 +21,7 @@ These are **optional source-linked paths**, not separate required accounts or co
 | Check a civic question with sources | [CoCivicLens+](https://github.com/CoCivium/CoAcademy/blob/master/docs/civiclens/index.html) |
 | Learn through a clearly fictional game/satire | [CoPlay+ Votes for Sale?](https://github.com/CoCivium/CoAcademy/blob/master/docs/coplay/votes-for-sale/index.html) |
 | Find evidence-backed resources for building | [CoAttractorPull+ / CoCopy+](examples/coattractorpull/README.md) |
+| Try contextual mouse glyphs without changing your mouse | [CoContextRail+ offline simulation](examples/conodcothumb/context_rail_r1/README.md): choose a sample context and Q&A&@ question; preview one safe option |
 
 No profile, linked account, persona, or new identity is required to inspect the public source. Each optional path keeps its own evidence and limitations. See the [machine-readable candidate route registry](ai/onramp/specialist-entrypoints-r0.json) for names, authority boundaries and proof gates.
 
