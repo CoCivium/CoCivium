@@ -1,0 +1,32 @@
+name: CoMousePalette Green R1 contrast and Windows STA
+on:
+  push:
+    branches:
+      - research/comousepalette-green-theme-r1-20261025
+  pull_request:
+    paths:
+      - 'experiments/comousepalette-r0/**'
+      - '.github/workflows/comousepalette-green-theme-r1.yml'
+permissions:
+  contents: read
+jobs:
+  static-contrast:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: WCAG contrast, privacy and no-global-hooks
+        run: python -m unittest discover -s experiments/comousepalette-r0/tests -p 'test_theme.py' -v
+      - name: Existing source safety regression
+        run: python -m unittest discover -s experiments/comousepalette-r0/tests -p 'test_source.py' -v
+  windows-sta-variants:
+    runs-on: windows-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - name: Parse and self-test Classic, Sage, Forest
+        shell: pwsh
+        run: pwsh -NoLogo -NoProfile -STA -File experiments/comousepalette-r0/tests/test_pwsh.ps1

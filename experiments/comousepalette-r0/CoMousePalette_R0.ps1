@@ -2,7 +2,7 @@
 # Windows PowerShell 7; use pwsh -NoProfile -STA -File <thisfile>.
 # No global hooks, automatic clipboard reads, background disk writes, or network requests.
 [CmdletBinding()]
-param([switch]$SelfTest)
+param([switch]$SelfTest,[ValidateSet('Forest','Sage','Classic')][string]$Theme='Forest')
 
 $ErrorActionPreference = 'Stop'
 if ($env:OS -ne 'Windows_NT') { throw 'WINDOWS_REQUIRED' }
@@ -43,6 +43,27 @@ function Get-CoZone([double]$XRatio,[double]$YRatio) {
     return "$h-$v"
 }
 
+# Optional, presentation-only themes. The OS still controls High Contrast.
+function Get-CoPalette([string]$Name) {
+    switch ($Name) {
+        'Forest' {
+            return @{
+                Frame='#11271F'; Header='#184332'; Footer='#18362B'; Editor='#111A18'
+                Text='#F0F7F0'; Button='#275A44'; ButtonText='#F9FFF9'
+                Alert='#FFD39A'; Border='#78AF91'
+            }
+        }
+        'Sage' {
+            return @{
+                Frame='#E3F1E3'; Header='#C6E5CC'; Footer='#D8EADB'; Editor='#FAFFFB'
+                Text='#163523'; Button='#B8DCC2'; ButtonText='#143021'
+                Alert='#5D3600'; Border='#6F9F80'
+            }
+        }
+        default { throw 'THEME_REQUIRES_FOREST_OR_SAGE' }
+    }
+}
+
 function Get-CoContext {
     $pos = [System.Windows.Forms.Cursor]::Position
     $screen = [System.Windows.Forms.Screen]::FromPoint($pos)
@@ -64,7 +85,15 @@ function Get-CoContext {
 }
 
 if ($SelfTest) {
+    if ($Theme -cne 'Classic') {
+        $paletteCheck=Get-CoPalette $Theme
+        foreach($property in @('Frame','Header','Footer','Editor','Text','Button','ButtonText','Alert','Border')) {
+            if(-not $paletteCheck.ContainsKey($property)) { throw 'THEME_COLOR_MISSING' }
+            $null=[System.Drawing.ColorTranslator]::FromHtml([string]$paletteCheck[$property])
+        }
+    }
     $cases = @(
+
         @('msedge','SOURCE / BROWSER'),
         @('Code','BUILD / CODE'),
         @('explorer','FILES / LOCAL'),
@@ -85,7 +114,7 @@ if ($SelfTest) {
         status='PASS'; tests=$passed; windowsFormsLoaded=$true;
         win32TypeLoaded=$true; externalRequests=0;
         mouseHookInstalled=$false; globalKeyHookInstalled=$false;
-        physicalThumbMapping='NOT_TESTED'
+        physicalThumbMapping='NOT_TESTED'; themeRequested=$Theme
     } | ConvertTo-Json -Compress
     exit 0
 }
@@ -154,6 +183,30 @@ $bPlain=New-CoButton 'Copy text only' 112
 $bClear=New-CoButton 'Clear preview' 105
 $bClose=New-CoButton 'Close' 65
 $bRich=New-CoButton 'Rich files...' 120
+
+# The green background changes only this window; no OS theme or mouse mapping.
+$effectiveTheme=if ([System.Windows.Forms.SystemInformation]::HighContrast) {'Classic'} else {$Theme}
+if ($effectiveTheme -cne 'Classic') {
+    $colors=Get-CoPalette $effectiveTheme
+    $toColor={param([string]$hex) [System.Drawing.ColorTranslator]::FromHtml($hex)}
+    $form.BackColor=(& $toColor $colors.Frame)
+    $layout.BackColor=(& $toColor $colors.Frame)
+    $header.BackColor=(& $toColor $colors.Header)
+    $header.ForeColor=(& $toColor $colors.Text)
+    $panel.BackColor=(& $toColor $colors.Footer)
+    $preview.BackColor=(& $toColor $colors.Editor)
+    $preview.ForeColor=(& $toColor $colors.Text)
+    $preview.BorderStyle=[System.Windows.Forms.BorderStyle]::FixedSingle
+    foreach($button in @($bPreview,$bCapsule,$bPlain,$bClear,$bClose,$bRich)) {
+        $button.UseVisualStyleBackColor=$false
+        $button.FlatStyle=[System.Windows.Forms.FlatStyle]::Flat
+        $button.BackColor=(& $toColor $colors.Button)
+        $button.ForeColor=(& $toColor $colors.ButtonText)
+        $button.FlatAppearance.BorderColor=(& $toColor $colors.Border)
+    }
+    if($context.Mode -ceq 'PRIVACY HOLD') {$header.ForeColor=(& $toColor $colors.Alert)}
+    $form.Text="CoCopy+ | $effectiveTheme preview - LOCAL, NOT SENT"
+}
 
 $bPreview.Add_Click({
     if($context.Mode -ceq 'PRIVACY HOLD'){
