@@ -201,7 +201,7 @@ def render_document(data):
 <title>CoLens | Four source-linked visual inspirations</title>
 <style>
 :root {{color-scheme:dark; background:#071a17; color:#e9f8f2; font-family:system-ui,-apple-system,sans-serif;}}
-* {{box-sizing:border-box;}} body {{margin:0 auto; padding:1rem; max-width:1050px; line-height:1.53;}}
+* {{box-sizing:border-box;}} body {{margin:0 auto; padding:1rem; max-width:1050px; line-height:1.53; overflow-wrap:anywhere;}}
 h1,h2,h3 {{line-height:1.25;}} h1 {{font-size:clamp(1.5rem,4vw,2.35rem);}}
 header,.source {{padding:1.1rem; margin:1.1rem 0; border:1px solid #548777; border-radius:14px; background:#102d27;}}
 .eyebrow,.loss,.next,.description {{color:#c4e7d9;}} .eyebrow {{font-weight:700;}}
