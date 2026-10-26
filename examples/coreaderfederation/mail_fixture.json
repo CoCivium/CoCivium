@@ -1,0 +1,60 @@
+{
+  "schema": "CoCivium.CoMail.VersionedEnvelope.R0",
+  "envelope": {
+    "envelope_id": "synthetic:comail:001",
+    "message_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "message_state": "SYNTHETIC_NOT_SENT",
+    "composed_at": "2026-10-25T10:00:00Z",
+    "resource_id": "public:coall:example",
+    "sent_version_id": "v1",
+    "send_receipt": null,
+    "effect_authority": "NONE"
+  },
+  "versions": [
+    {
+      "version_id": "v1",
+      "parent_id": null,
+      "source_sha256": "1111111111111111111111111111111111111111111111111111111111111111",
+      "source_url": "https://github.com/CoCivium/CoCivium/blob/main/docs/Architecture/COPUBLICATION_FEDERATION_RECEIVER_INTEREST_R0_20261025.md",
+      "issued_at": "2026-10-25T09:00:00Z",
+      "state": "PUBLISHED",
+      "epistemic_class": "DESIGN_PROPOSAL",
+      "change_summary": "Original public-safe conceptual note.",
+      "privacy": "DECLARED_PUBLIC_SAFE_NOT_RIGHTS_VERIFIED"
+    },
+    {
+      "version_id": "v2",
+      "parent_id": "v1",
+      "source_sha256": "2222222222222222222222222222222222222222222222222222222222222222",
+      "source_url": "https://github.com/CoCivium/CoCivium/blob/main/docs/Architecture/COPUBLICATION_FEDERATION_RECEIVER_INTEREST_R0_20261025.md",
+      "issued_at": "2026-10-25T13:00:00Z",
+      "state": "PUBLISHED",
+      "epistemic_class": "DESIGN_PROPOSAL",
+      "change_summary": "Added reader-selected snapshots and a clearer uncertainty label.",
+      "privacy": "DECLARED_PUBLIC_SAFE_NOT_RIGHTS_VERIFIED"
+    },
+    {
+      "version_id": "v3",
+      "parent_id": "v2",
+      "source_sha256": "3333333333333333333333333333333333333333333333333333333333333333",
+      "source_url": "https://github.com/CoCivium/CoCivium/blob/main/docs/Architecture/COPUBLICATION_FEDERATION_RECEIVER_INTEREST_R0_20261025.md",
+      "issued_at": "2026-10-26T07:00:00Z",
+      "state": "CORRECTED",
+      "epistemic_class": "DESIGN_PROPOSAL",
+      "change_summary": "Corrected an overbroad claim about automatic update delivery.",
+      "privacy": "DECLARED_PUBLIC_SAFE_NOT_RIGHTS_VERIFIED"
+    },
+    {
+      "version_id": "v2b",
+      "parent_id": "v1",
+      "source_sha256": "4444444444444444444444444444444444444444444444444444444444444444",
+      "source_url": "https://github.com/CoCivium/CoCivium/blob/main/docs/Architecture/COPUBLICATION_FEDERATION_RECEIVER_INTEREST_R0_20261025.md",
+      "issued_at": "2026-10-26T08:00:00Z",
+      "state": "PUBLISHED",
+      "epistemic_class": "DESIGN_PROPOSAL",
+      "change_summary": "Alternative design branch, not automatically elected as current.",
+      "privacy": "DECLARED_PUBLIC_SAFE_NOT_RIGHTS_VERIFIED"
+    }
+  ],
+  "current_version_id": "v3"
+}
