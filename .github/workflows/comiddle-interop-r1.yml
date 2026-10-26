@@ -1,0 +1,40 @@
+name: CoMiddle R0-R2 source-bound compatibility canary
+
+on:
+  pull_request:
+    paths:
+      - "examples/conodcothumb/relation_semantics_r0/interop_r1/**"
+      - ".github/workflows/comiddle-interop-r1.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  cross-schema:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Verify exact R0 candidate source identities
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git hash-object examples/conodcothumb/relation_semantics_r0/registry.json)" = "3ad1d048a864df9cb6ed364faebf40614d96edf1"
+          test "$(git hash-object examples/conodcothumb/relation_semantics_r0/CoRelationKernelR0.mjs)" = "67b3bd7b0d534e919730e55684dc4efc8290d98a"
+      - name: Fetch exact R2 source from its original review branch
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch --no-tags --depth=1 origin refs/heads/candidate/comiddle-relation-algebra-r2-20261024
+          mkdir -p "$RUNNER_TEMP/comiddle_r2"
+          git show FETCH_HEAD:examples/conodcothumb/relation_algebra_r2/CoRelationInverseR2.cjs > "$RUNNER_TEMP/comiddle_r2/CoRelationInverseR2.cjs"
+          test "$(git hash-object "$RUNNER_TEMP/comiddle_r2/CoRelationInverseR2.cjs")" = "15fb5d3065e147c3615d05e449d39de47abd4ef6"
+      - name: Test both original source contracts without effect
+        shell: bash
+        run: |
+          set -euo pipefail
+          R2_CJS_PATH="$RUNNER_TEMP/comiddle_r2/CoRelationInverseR2.cjs" node --test --test-reporter=tap examples/conodcothumb/relation_semantics_r0/interop_r1/test_bridge.mjs
