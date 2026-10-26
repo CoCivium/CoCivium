@@ -1,0 +1,44 @@
+name: CoOpticsGap R1 synthetic controls
+
+on:
+  pull_request:
+    paths:
+      - "examples/cooptics_gap_r1/**"
+      - ".github/workflows/cooptics-gap-r1.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  synthetic-control:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - name: Install bounded numerical tools
+        run: python -m pip install numpy==2.3.5 matplotlib==3.10.8
+      - name: Verify 40 unit tests
+        run: python -m unittest -v test_cooptics_canary_r1.py
+        working-directory: examples/cooptics_gap_r1
+      - name: Reproduce exact synthetic JSON and optional diagrams
+        shell: bash
+        working-directory: examples/cooptics_gap_r1
+        run: |
+          python cooptics_canary_r1.py --seed 20261026 --output /tmp/cooptics-ci-synthetic.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          expected = json.loads(Path("synthetic_results_r1.json").read_text())
+          actual = json.loads(Path("/tmp/cooptics-ci-synthetic.json").read_text())
+          assert actual == expected, "synthetic replay mismatch"
+          assert actual["external_effects"] == [] and actual["authority"] == "NONE"
+          assert actual["metrics"]["shadow_status_diff_count"] == 100
+          print("PASS_SYNTHETIC_REPLAY_ONLY")
+          PY
+          python render_cooptics_r1.py /tmp/cooptics-ci-synthetic.json --out /tmp/
+          test -s /tmp/shadow_geometry_r1.png
+          test -s /tmp/speckle_detector_r1.png
