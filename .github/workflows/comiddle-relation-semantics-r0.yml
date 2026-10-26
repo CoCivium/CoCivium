@@ -1,0 +1,27 @@
+name: CoMiddle relation algebra R0
+
+on:
+  pull_request:
+    paths:
+      - "examples/conodcothumb/relation_semantics_r0/**"
+      - ".github/workflows/comiddle-relation-semantics-r0.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  source-policy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Parse the two JavaScript modules
+        run: |
+          node --check examples/conodcothumb/relation_semantics_r0/CoRelationKernelR0.mjs
+          node --check examples/conodcothumb/relation_semantics_r0/test_registry.mjs
+      - name: Test synthetic relation invariants and negative cases
+        run: node --test --test-reporter=tap examples/conodcothumb/relation_semantics_r0/test_registry.mjs
