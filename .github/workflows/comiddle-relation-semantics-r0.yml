@@ -25,3 +25,7 @@ jobs:
           node --check examples/conodcothumb/relation_semantics_r0/test_registry.mjs
       - name: Test synthetic relation invariants and negative cases
         run: node --test --test-reporter=tap examples/conodcothumb/relation_semantics_r0/test_registry.mjs
+      - name: Syntax check CoAllBloom bounded composition donor
+        run: node --check examples/conodcothumb/relation_semantics_r0/CoAllBloomR0.mjs
+      - name: Test CoAllBloom null inverse composition and epistemic boundaries
+        run: node --test --test-reporter=tap examples/conodcothumb/relation_semantics_r0/test_bloom.mjs
