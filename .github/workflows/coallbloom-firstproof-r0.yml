@@ -1,0 +1,30 @@
+name: CoAllBloom bounded first proof R0
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'examples/codoodle_conex_r1/coallbloom_r0/**'
+      - 'docs/Architecture/COALLBLOOM_OPTIONALITY_BASIN_R0_20261026.md'
+      - 'docs/Onramp/AI_IA_COORBWARE_EVERGREEN_R0.md'
+      - 'ai/onramp/ai-ia-evergreen-r0.json'
+      - 'examples/codoodle_conex_r1/CoDoodleNexR1.py'
+      - 'docs/Architecture/COORBWARE_NONPRIVILEGED_INVERSION_SUPERFRAME_R0_20261026.md'
+  pull_request:
+    paths:
+      - 'examples/codoodle_conex_r1/coallbloom_r0/**'
+      - '.github/workflows/coallbloom-firstproof-r0.yml'
+permissions:
+  contents: read
+concurrency:
+  group: bloom-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  source-bound-local-only:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+      - name: Deterministic regeneration and exact donor bytes
+        run: python3 examples/codoodle_conex_r1/coallbloom_r0/bloom.py --check --check-donors .
+      - name: Negative controls and semantics
+        run: python3 -m unittest discover -s examples/codoodle_conex_r1/coallbloom_r0/tests -p 'test_*.py' -v
