@@ -92,3 +92,13 @@ Allowed optional field: `external_effect_requested: false`. A true/string/unknow
 **Hard boundary:** `NATIVE_MIDDLE` remains pass-through, no OS hook or key capture, no callback executes or sends, no session worker spawn, no provider/secret/account controls. Source hardening alone is not user acceptance, deployment, or a physical button mapping. When merging, preserve the old R1 receipt and add a new explicitly scoped one rather than rewriting historical rows.
 
 `UNKNOWN_INPUT_NE_CONTEXT | PREVIEW_NE_SEND | GLYPH_NE_AUTHORITY | NEW_GUARD_NE_WINDOWS_RUNTIME`.
+
+### 2026-10-26: prototype and hidden-field negative controls
+
+A differential review found that checking only `Object.keys(packet)` misses inherited fields, non-enumerable fields and symbol keys, and invoking an accessor can cause code to run before privacy classification. A pure browser-local proposal must not treat these as qualified metadata.
+
+The input envelope now accepts **plain own-data objects** with either the normal `Object.prototype` or a null prototype. It rejects inherited/custom-prototype records, hidden/symbol keys, undeclared properties, getters/setters and effect-intent values other than explicit `false`, before reading selected context fields. No unrecognized value appears in the held response.
+
+Seven new cases cover inherited effect/identity hints, nonenumerable metadata, symbol metadata, an accessor that must not fire, built-in-object input and the null-prototype positive control. This makes **105 declared offline Node tests** including 91 original and both seven-case hardening waves. All claims depend on exact-head CI readback; a test plan does not imply a deployed device or a privacy-certified integration.
+
+Hard gates unchanged: no physical middle/keyboard hook, no clipboard access, no files or network, no model use, no external effect, no receiver ACK, no canonical release. Browser UI and independent Windows/X2 acceptance remain separate.
