@@ -1,0 +1,258 @@
+{
+  "schema": "CoCivium.CoFlowAnchorDeltaRetrospective.R1",
+  "date": "2026-10-26",
+  "state": "PUBLIC_PROOF_SAFE_PURPOSIVE_12_CASE_COMPARISON__NOT_CAUSAL_OR_PROSPECTIVE_VALIDATION",
+  "parent": "docs/Architecture/COFLOW_ANCHOR_DELTA_AUDIT_R0_20261026.md",
+  "corpus": {
+    "repo": "CoCivium/CoCivium",
+    "ledger_path": "ai/benchmark-evo.jsonl",
+    "ledger_git_blob": "a84ef836a454c5cc00e2e182ad75a642b3b4c932",
+    "total_rows": 138,
+    "scope": "12 chosen historical records, not a census, no private local paths copied"
+  },
+  "sample_design": {
+    "worked_scoped": 4,
+    "partial_or_blocked": 4,
+    "failed_or_stale": 4,
+    "selection_bias": "Purposefully selected different failure patterns and paired repairs; no representativeness, inferential statistical rate or universal success claim",
+    "status_semantics": "WORKED means scoped test/source task, never independent adoption; PARTIAL includes a PASS in one scope with higher-order receiver gate unproved; FAILED includes historical defects subsequently repaired"
+  },
+  "cases": [
+    {
+      "id": "W01",
+      "stratum": "WORKED_SCOPED",
+      "record_id": "benchmark-evo:coprecursor-r0f:browser-pass",
+      "ledger_status": "PASS",
+      "observed_at": "2026-10-23T19:13:09.887Z",
+      "artifact": "CoPreCursor+ R0F headless browser",
+      "observed_result": "12/12 PASS: shadow preview, no typing before acceptance, explicit accept, exact local Undo, redacted receipt, Relations toggle, desktop/mobile screenshots, zero outbound network requests.",
+      "enabling_anchor_or_relevant_control": "Explicit Accept/Undo, narrow browser assertions, no outbound network",
+      "blocking_anchor_hypothesis": "Human first-use remains unverified",
+      "release_test": "Compare one independently completed task to same-source shadow preview",
+      "paired_case_id": "F01",
+      "epistemic_boundary": "Ledger result observed as stated; anchor explanation is a hypothesis, not a demonstrated causal result"
+    },
+    {
+      "id": "W02",
+      "stratum": "WORKED_SCOPED",
+      "record_id": "benchmark-evo:coattractorpull-r0c:private-roundtrip-pass",
+      "ledger_status": "PASS",
+      "observed_at": "2026-10-23T17:30:29.092Z",
+      "artifact": "CoAttractorPull+ / CoCopy+ private resource roundtrip R0C",
+      "observed_result": "9 PASS, 0 FAIL: one known media object matched private resolver, source SHA-256 and earlier local receipt; copied capsule contained no private source path or effect authority",
+      "enabling_anchor_or_relevant_control": "Source/hash-bound private capsule, BOM-guarded parser, no external effect authority",
+      "blocking_anchor_hypothesis": "One known resource and local resolver only",
+      "release_test": "Probe a second independently permissioned receiver without exposing paths",
+      "paired_case_id": "F02",
+      "epistemic_boundary": "Ledger result observed as stated; anchor explanation is a hypothesis, not a demonstrated causal result"
+    },
+    {
+      "id": "W03",
+      "stratum": "WORKED_SCOPED",
+      "record_id": "benchmark-evo:coscale-continuum-r0:offline-38-pass",
+      "ledger_status": "PASS",
+      "observed_at": "2026-10-23T22:24:03.991Z",
+      "artifact": "CoScaleContinuum/CoOrbWare synthetic event-source donor",
+      "observed_result": "38/38 Node 22 tests PASS in local bounded container. One trillion logical addressable descriptors without materialization, 2 simulated lease slots, 0 actual workers, finite parent budget, checkpoint replay match, same public-source digest across Orb/Map, private record redaction. Local packaged module sha256 517cc3766836f5cb87a3765c79040b4ae6b4dd294117e92db2400cc7aa47a931; zip sha256 3a4737b8aca5f55e430b1a2f3670c011f6b0a5beda1c6791d0fa23ce5db52e64.",
+      "enabling_anchor_or_relevant_control": "Finite parent budget, synthetic lease slots, replay and redaction tests",
+      "blocking_anchor_hypothesis": "Zero live workers and no independent substrate",
+      "release_test": "Qualify one actual permitted worker task and compare failure/recovery with the simulation",
+      "paired_case_id": null,
+      "epistemic_boundary": "Ledger result observed as stated; anchor explanation is a hypothesis, not a demonstrated causal result"
+    },
+    {
+      "id": "W04",
+      "stratum": "WORKED_SCOPED",
+      "record_id": "benchmark-evo:copredictiveinput-r0:postmerge",
+      "ledger_status": "PASS",
+      "observed_at": "2026-10-23T18:48:06Z",
+      "artifact": "CoPredictiveInput R0 local-only browser canary",
+      "observed_result": "PR #216 merged; post-merge predictive-input CI passed on main",
+      "enabling_anchor_or_relevant_control": "Narrow PR+CI promotion path, source currentness recorded",
+      "blocking_anchor_hypothesis": "Merge and CI do not prove user adoption",
+      "release_test": "One real accessible first-use acceptance with exact source version",
+      "paired_case_id": null,
+      "epistemic_boundary": "Ledger result observed as stated; anchor explanation is a hypothesis, not a demonstrated causal result"
+    },
+    {
+      "id": "P01",
+      "stratum": "PARTIAL_OR_BLOCKED",
+      "record_id": "benchmark-evo:cofleet-human-time-r0:current-fleet-runtime",
+      "ledger_status": "HELD",
+      "observed_at": "2026-10-24T16:48:56Z",
+      "artifact": "Local-device CoCiviumification",
+      "observed_result": "No fresh two-device MVC_PRESENT proof exists in this wave; X2 remote observer is offline and other device classes remain unqualified here.",
+      "enabling_anchor_or_relevant_control": "Human-visible desktop and historical local experiments are distinct observations",
+      "blocking_anchor_hypothesis": "Remote observer path missing; device owner/agent receiver not currently qualified",
+      "release_test": "Read-only X2 machine-origin heartbeat/health receipt when authorized connection returns",
+      "paired_case_id": null,
+      "epistemic_boundary": "Ledger result observed as stated; anchor explanation is a hypothesis, not a demonstrated causal result"
+    },
+    {
+      "id": "P02",
+      "stratum": "PARTIAL_OR_BLOCKED",
+      "record_id": "benchmark-evo:cospecialist-r0:source-pinned-registry-six-routes",
+      "ledger_status": "PASS",
+      "observed_at": "2026-10-24T15:32:30.562Z",
+      "artifact": "CoConstellation+ optional specialist first-use routes",
+      "observed_result": "6/6 source Git blob identities verified across CoCivium and CoAcademy; 16/16 structural/authority/optional-entry checks passed on freshly fetched public registry and START_HERE. Human entry page Git blob 71f67171a7e954ee86ca3661dc459bda836c2dda; registry blob 0c6148652cd3595d24dee6c319b5e290b46d716d. One default guide, a reversible offline demo, additional specialist links collapsed behind optional disclosure.",
+      "enabling_anchor_or_relevant_control": "Six exact source links, one default path, progressive disclosure",
+      "blocking_anchor_hypothesis": "No qualified independent newcomer outcome",
+      "release_test": "One consenting person completes one task and supplies a useful result plus correction",
+      "paired_case_id": null,
+      "epistemic_boundary": "Ledger result observed as stated; anchor explanation is a hypothesis, not a demonstrated causal result"
+    },
+    {
+      "id": "P03",
+      "stratum": "PARTIAL_OR_BLOCKED",
+      "record_id": "benchmark-evo:cospiff-r1:relay-actions-source-confidence",
+      "ledger_status": "PASS",
+      "observed_at": "2026-10-24T15:52:09.530Z",
+      "artifact": "CoRelay GitHub-owned public readproof stage",
+      "observed_result": "GitHub Actions run 40083802504 attempt 2 completion success independently read from GitHub API, matching R1 readproof receipt. R2 regression run 40103994128 and deployment run 40103993539 also completed success; R2 source receipt reports 18/18 deterministic tests, but the seven exact host-byte readproof checks after R2 were not evidenced.",
+      "enabling_anchor_or_relevant_control": "GitHub-owned runner and source receipt succeeded with explicit scoping",
+      "blocking_anchor_hypothesis": "Pages, Raw, runner and repository share a provider failure domain",
+      "release_test": "Cold restore one approved public-safe artifact without GitHub/ChatGPT live APIs",
+      "paired_case_id": null,
+      "epistemic_boundary": "Ledger result observed as stated; anchor explanation is a hypothesis, not a demonstrated causal result"
+    },
+    {
+      "id": "P04",
+      "stratum": "PARTIAL_OR_BLOCKED",
+      "record_id": "benchmark-evo:cofireworks-frontdoor-rc1:local-source-and-browser-20261024",
+      "ledger_status": "PASS",
+      "observed_at": "2026-10-24",
+      "artifact": "CoFireworks FrontDoor RC1 local static candidate and CoContextCycle R0",
+      "observed_result": "Local isolated 2026-10-24: CoContextCycle 53/53 deterministic tests PASS on fresh archive extraction; synthetic generated H.264 video 791966 bytes with PNG thumbnail, ffprobe and zero blackdetect segments 5/5 PASS; original CoOnrampMesh donor 26/26 Node smoke PASS; combined static front/proof/highlights preview 44/44 isolated Chromium checks PASS for desktop/mobile and zero page requests/errors in tested paths. Offline browser is set_content, not public host navigational acceptance. Bundle SHA256 b054203e32ab39a623eec268370fbbc0cfa6c9b3a21f0c9948f0c3a1dc466026. Exact Library storage readback matched; public GitHub deployment of bundle NOT performed.",
+      "enabling_anchor_or_relevant_control": "Deterministic source, isolated media and browser preview tests",
+      "blocking_anchor_hypothesis": "No equivalent independent hosted URL or human first-use result",
+      "release_test": "Verify safe owner-approved public host and obtain one nonbuilder outcome",
+      "paired_case_id": null,
+      "epistemic_boundary": "Ledger result observed as stated; anchor explanation is a hypothesis, not a demonstrated causal result"
+    },
+    {
+      "id": "F01",
+      "stratum": "FAILED_HISTORICAL_REPAIRED",
+      "record_id": "benchmark-evo:coprecursor-r0d:browser-caret-fail",
+      "ledger_status": "FAIL",
+      "observed_at": "2026-10-23T19:12:14.143Z",
+      "artifact": "CoPreCursor+ R0D headless Chromium/Edge test",
+      "observed_result": "11 PASS, 1 FAIL: clicking Preview before focusing textarea read selectionStart=0 and ignored existing content. Undo, redaction, projection mode, screenshot and network checks passed.",
+      "enabling_anchor_or_relevant_control": "Test isolated a specific unfocused-caret state; failure preserved",
+      "blocking_anchor_hypothesis": "Assumption that cursor selection was already initialized",
+      "release_test": "R0F browser test explicitly covers unfocused Preview with source text",
+      "paired_case_id": "W01",
+      "epistemic_boundary": "Ledger result observed as stated; anchor explanation is a hypothesis, not a demonstrated causal result"
+    },
+    {
+      "id": "F02",
+      "stratum": "FAILED_HISTORICAL_REPAIRED",
+      "record_id": "benchmark-evo:coattractorpull-r0b:private-roundtrip-fail",
+      "ledger_status": "FAIL",
+      "observed_at": "2026-10-23T17:30:01.058Z",
+      "artifact": "CoAttractorPull+ / CoCopy+ private resource roundtrip R0B",
+      "observed_result": "8 PASS, 1 FAIL: historical receipt contained UTF-8 BOM; JSON.parse rejected; no source mutation",
+      "enabling_anchor_or_relevant_control": "One bounded roundtrip and exact parse error report",
+      "blocking_anchor_hypothesis": "UTF-8 BOM violates unchecked JSON.parse input assumption",
+      "release_test": "R0C BOM guard and 9/9 exact-source validation",
+      "paired_case_id": "W02",
+      "epistemic_boundary": "Ledger result observed as stated; anchor explanation is a hypothesis, not a demonstrated causal result"
+    },
+    {
+      "id": "F03",
+      "stratum": "FAILED_HISTORICAL_REPAIRED",
+      "record_id": "benchmark-evo:coprecursor-ambient:prior-exposure",
+      "ledger_status": "FAIL",
+      "observed_at": "2026-10-23T21:28:03.228Z",
+      "artifact": "CoPreCursor+ prior Ambient browser projection",
+      "observed_result": "The initial ambient view reduced opacity but left the local editor and receipt visible. A source audit found the unsafe view before any OS wallpaper installation.",
+      "enabling_anchor_or_relevant_control": "Source privacy audit detected hidden-content visibility before native installation",
+      "blocking_anchor_hypothesis": "Opacity used where true concealment was required",
+      "release_test": "Require privacy-negative fixture and genuinely hidden private editor in later preview",
+      "paired_case_id": null,
+      "epistemic_boundary": "Ledger result observed as stated; anchor explanation is a hypothesis, not a demonstrated causal result"
+    },
+    {
+      "id": "F04",
+      "stratum": "FAILED_STILL_OBSERVED",
+      "record_id": "benchmark-evo:coawareness-r0:custom-domain-first-use-observation",
+      "ledger_status": "FAIL",
+      "observed_at": "2026-10-24T15:25:19.722Z",
+      "artifact": "CoCivium custom-domain entry-path test",
+      "observed_result": "One external public web checker returned HTTP 404 at custom-domain apex, and legacy metadata rather than a human landing page on www. Private routing/privacy investigation is tracked in authorized CoShareHub issue #33. Container DNS unavailable is an environment limit, not an independent domain failure. No hosting configurations changed.",
+      "enabling_anchor_or_relevant_control": "Public-safe GitHub START_HERE fallback exists",
+      "blocking_anchor_hypothesis": "Observed apex 404 and www legacy index, requires owner privacy/routing review",
+      "release_test": "Two external HTTP verifications + owner-approved exposure review + correct human landing; no bulk traffic before",
+      "paired_case_id": null,
+      "epistemic_boundary": "Ledger result observed as stated; anchor explanation is a hypothesis, not a demonstrated causal result"
+    }
+  ],
+  "rule_candidates": [
+    {
+      "id": "H1",
+      "description": "Exact reproducer plus bounded corrective test supports source-level closure more reliably than adding new names or sessions",
+      "supports": [
+        "F01",
+        "W01",
+        "F02",
+        "W02",
+        "F03"
+      ],
+      "counterexample": "A previously failing local test is repaired but a comparable later real-device test still fails",
+      "prospective_test": "Randomize two equally small in-scope backlog repairs to exact-repro-first versus architecture-first; compare verified fixed cases, hours and regression escapes",
+      "current_status": "HYPOTHESIS"
+    },
+    {
+      "id": "H2",
+      "description": "When a real outside receiver or current independent host is missing, publication/CI successes do not close product usefulness",
+      "supports": [
+        "P01",
+        "P02",
+        "P03",
+        "P04",
+        "F04"
+      ],
+      "counterexample": "Independent receiver reports useful task completion and durable recovery without the hypothesized required bridge",
+      "prospective_test": "Run one consented first-use acceptance with GitHub fallback and one independently administered restore; compare result before and after receiver binding",
+      "current_status": "HYPOTHESIS"
+    },
+    {
+      "id": "H3",
+      "description": "Privacy and evidence gates should be selectively retained; blocking anchors need owners, release conditions, and bounded escape paths",
+      "supports": [
+        "F03",
+        "F04",
+        "P01",
+        "P02"
+      ],
+      "counterexample": "Removing the review gate causes no reduction in safety/quality over multiple comparable independent trials",
+      "prospective_test": "Ablate only one low-risk redundant documentation approval under a rollback cap; retain privacy/security gate; measure completion and proof debt",
+      "current_status": "HYPOTHESIS"
+    }
+  ],
+  "next_elected_action": {
+    "workstream": "CoAwareness front-door owner gate",
+    "priority": "P0",
+    "parallel_independent_safe_lane": "Consenting first-use offline CoPreCursor through GitHub START_HERE, with no bulk outreach",
+    "gate": "owner-reviewed legacy site privacy plus independent canonical HTTP readproof",
+    "status": "HELD_NOT_OWNER_EXECUTED",
+    "success_metric": "One corrected safe human landing with two-vantage host proof, followed by a non-builder useful task receipt; no stars/clicks proxy"
+  },
+  "method": {
+    "classify": "TRIED -> WORKED_SCOPED / PARTIAL_OR_BLOCKED / FAILED_HISTORICAL_REPAIRED / FAILED_STILL_OBSERVED",
+    "do_not_claim": "Correlational selection does not prove anchor causation",
+    "drift_envelope": "Permit bounded change while preserving privacy, safety, evidence and user exit",
+    "human_time": "Measure minutes from issue visibility to useful receiver outcome, and manual relay count"
+  },
+  "nonclaims": [
+    "GITHUB_POINTER_NE_RECEIVER_ACK",
+    "SCOPED_PASS_NE_PRODUCT_ADOPTION",
+    "FAILED_THEN_REPAIRED_NE_ONGOING_FAILURE",
+    "SYNTHETIC_LEASE_NE_LIVE_WORKER",
+    "SCREENSHOT_OF_DESKTOP_NE_REMOTE_AGENT_ONLINE",
+    "ONE_WEB_VANTAGE_NE_GLOBAL_DOMAIN_OUTAGE",
+    "GD_COUNTERFACTUAL_NE_ORACLE",
+    "CASE_SELECTION_NE_CAUSAL_INFERENCE",
+    "PUBLIC_RECEIPT_NE_COSTEAD_CUSTODY"
+  ]
+}
