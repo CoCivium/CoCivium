@@ -324,6 +324,68 @@ class FederationTests(unittest.TestCase):
         template=(ROOT/'template.html').read_text()
         self.assertIn('.panel{overflow-wrap:anywhere;',html)
         self.assertIn('.panel{overflow-wrap:anywhere;',template)
+    def test_cyclic_highlight_contract_and_source(self):
+        asset=json.loads((ROOT/'coliving_highlight_cycle_r0.json').read_text())
+        schema=json.loads((ROOT.parents[1]/'schemas/coliving-highlight-asset-v0.1.schema.json').read_text())
+        self.assertEqual(asset['schema'],'CoLivingHighlightAsset.v0.1')
+        self.assertTrue(set(schema['required']).issubset(asset))
+        self.assertTrue(set(asset).issubset(schema['properties']))
+        self.assertEqual(asset['privacy_class'],'PUBLIC_SAFE')
+        self.assertEqual(asset['read_mode'],'SNAPSHOT_PINNED')
+        self.assertEqual(asset['currentness']['state'],'UNKNOWN')
+        self.assertIn('NOT_PHYSICS_OR_GD_PROOF',asset['readiness'])
+        self.assertIn('candidate',asset['projection_ref'].lower())
+        self.assertTrue((ROOT/'HIGHLIGHT_CYCLIC_REGENERATION_R0.md').is_file())
+        self.assertEqual(len(asset['source_bindings']),len(set(asset['source_bindings'])))
+        for binding in asset['source_bindings']:
+            if not binding.startswith('github:'):continue
+            src,digest=binding[len('github:'):].split('@blob:')
+            repo_id,relpath=src.split(':',1)
+            self.assertEqual(repo_id,'CoCivium/CoCivium')
+            raw=(ROOT.parents[1]/relpath).read_bytes()
+            git_sha=hashlib.sha1(b'blob '+str(len(raw)).encode()+b'\0'+raw).hexdigest()
+            self.assertEqual(git_sha,digest)
+
+    def test_cyclic_synthetic_four_regimes_no_perpetual_motion_claim(self):
+        data=json.loads((ROOT/'cyclic_regeneration_canary_r0.json').read_text())
+        self.assertEqual(data['cycles'],8)
+        self.assertEqual(data['schema'],'CoAll.CoAmplificatory.CycleCanary.R0')
+        self.assertIn('SYNTHETIC',data['state'])
+        self.assertEqual(data['unit'],'NORMALIZED_DIMENSIONLESS_PROXY_NOT_JOULES_OR_USER_UTILITY')
+        results={}
+        for r in data['regimes']:
+            value=r['initial']
+            predicted=[value]
+            for step in range(data['cycles']):
+                correction=r['correction_per_cycle'] if step>=r['correction_after_cycle'] else 0
+                value=min(r['ceiling'],max(0,(1-r['damping'])*value+r['drive_per_cycle']-correction))
+                predicted.append(value)
+            self.assertEqual(len(predicted),len(r['expected_series']))
+            for actual,expected in zip(predicted,r['expected_series']):
+                self.assertAlmostEqual(actual,expected,places=5)
+            results[r['id']]=predicted
+        self.assertEqual(len(results),4)
+        self.assertLess(results['damped_closed_proxy'][-1],1)
+        self.assertEqual(results['bounded_replenishment'][-1],1.5)
+        self.assertGreater(results['unchecked_positive_feedback_proxy'][-1],results['bounded_replenishment'][-1])
+        self.assertLess(results['adaptive_correction'][-1],results['bounded_replenishment'][-1])
+        self.assertIsNone(data['audit']['measured_energy_joules'])
+        self.assertIsNone(data['audit']['verified_reader_improvement'])
+        self.assertIsNone(data['audit']['qualified_gd_measurement'])
+        self.assertEqual(data['audit']['external_effect_count'],0)
+
+    def test_cyclic_highlight_is_optional_and_not_seventh_claim(self):
+        page=(ROOT/'index.html').read_text()
+        self.assertIn('id="cyclic-heading"',page)
+        self.assertIn('id="cyclic-details"',page)
+        self.assertIn('<summary>Explore four bounded cycle behaviors</summary>',page)
+        self.assertIn('.pulse-highlight{background:linear-gradient(155deg,#17382f,#0e2724)',page)
+        self.assertIn('synthetic normalized examples, not physical measurements',page)
+        self.assertIn('G_d remains a philosophical or explicitly testable hypothesis lane',page)
+        self.assertIn('docs/Architecture/COAMPLIFICATORY_CYCLIC_REGENERATION_R0_20261026.md',page)
+        self.assertEqual(len(self.m['claims']),6)
+        self.assertEqual(len(self.m['routes']),6)
+        self.assertIn("connect-src 'none'",page)
     def test_forest_surfaces_are_selective_and_contrast_friendly(self):
         html=(ROOT/'index.html').read_text()
         template=(ROOT/'template.html').read_text()
