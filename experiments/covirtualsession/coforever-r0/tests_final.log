@@ -1,0 +1,47 @@
+test_aging_over_recent_priority (test_coproc.TestField.test_aging_over_recent_priority) ... ok
+test_checkpoint_namespace_pinned (test_coproc.TestField.test_checkpoint_namespace_pinned) ... ok
+test_checkpoint_roundtrip (test_coproc.TestField.test_checkpoint_roundtrip) ... ok
+test_checkpoint_tamper (test_coproc.TestField.test_checkpoint_tamper) ... ok
+test_checkpoint_witness_immutable (test_coproc.TestField.test_checkpoint_witness_immutable) ... ok
+test_collision_held (test_coproc.TestField.test_collision_held) ... ok
+test_depth_over_limit_held_visibly (test_coproc.TestField.test_depth_over_limit_held_visibly) ... ok
+test_double_finish_rejected (test_coproc.TestField.test_double_finish_rejected) ... ok
+test_expired_finish_rejected (test_coproc.TestField.test_expired_finish_rejected) ... ok
+test_expired_lease_no_fake_ack (test_coproc.TestField.test_expired_lease_no_fake_ack) ... ok
+test_external_effect_held_visibly (test_coproc.TestField.test_external_effect_held_visibly) ... ok
+test_external_effect_not_leased (test_coproc.TestField.test_external_effect_not_leased) ... ok
+test_fake_ack_rejected (test_coproc.TestField.test_fake_ack_rejected) ... ok
+test_finishing_produces_no_ack (test_coproc.TestField.test_finishing_produces_no_ack) ... ok
+test_foreign_auth_rejected (test_coproc.TestField.test_foreign_auth_rejected) ... ok
+test_forged_source_rejected (test_coproc.TestField.test_forged_source_rejected) ... ok
+test_future_not_woken (test_coproc.TestField.test_future_not_woken) ... ok
+test_idempotent_admit (test_coproc.TestField.test_idempotent_admit) ... ok
+test_invalid_case (test_coproc.TestField.test_invalid_case) ... ok
+test_invalid_length (test_coproc.TestField.test_invalid_length) ... ok
+test_invalid_negative (test_coproc.TestField.test_invalid_negative) ... ok
+test_invalid_upper_bound (test_coproc.TestField.test_invalid_upper_bound) ... ok
+test_live_two_bounded_subprocesses (test_coproc.TestField.test_live_two_bounded_subprocesses) ... ok
+test_logical_scale (test_coproc.TestField.test_logical_scale) ... ok
+test_monotonic_clock (test_coproc.TestField.test_monotonic_clock) ... ok
+test_no_network_or_persistence_primitives (test_coproc.TestField.test_no_network_or_persistence_primitives) ... ok
+test_noninteger (test_coproc.TestField.test_noninteger) ... ok
+test_pressure_high (test_coproc.TestField.test_pressure_high) ... ok
+test_pressure_medium (test_coproc.TestField.test_pressure_medium) ... ok
+test_pressure_never_preempts_live (test_coproc.TestField.test_pressure_never_preempts_live) ... ok
+test_private_not_leased (test_coproc.TestField.test_private_not_leased) ... ok
+test_probe_refuses_more_than_eight (test_coproc.TestField.test_probe_refuses_more_than_eight) ... ok
+test_public_orb_hides_private_ids_and_counts (test_coproc.TestField.test_public_orb_hides_private_ids_and_counts) ... ok
+test_public_orb_no_live_claim (test_coproc.TestField.test_public_orb_no_live_claim) ... ok
+test_roundtrip_1024 (test_coproc.TestField.test_roundtrip_1024) ... ok
+test_shared_spec_sha256 (test_coproc.TestField.test_shared_spec_sha256) ... ok
+test_task_valid (test_coproc.TestField.test_task_valid) ... ok
+test_touch_limit (test_coproc.TestField.test_touch_limit) ... ok
+test_turtle_depth_three_held (test_coproc.TestField.test_turtle_depth_three_held) ... ok
+test_turtle_depth_two (test_coproc.TestField.test_turtle_depth_two) ... ok
+test_two_simulated_slots (test_coproc.TestField.test_two_simulated_slots) ... ok
+test_unknown_not_leased (test_coproc.TestField.test_unknown_not_leased) ... ok
+
+----------------------------------------------------------------------
+Ran 42 tests in 1.772s
+
+OK
