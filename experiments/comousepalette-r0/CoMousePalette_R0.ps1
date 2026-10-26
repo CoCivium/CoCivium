@@ -89,7 +89,11 @@ if ($SelfTest) {
     if ($Theme -cne 'Classic') {
         $themeCheck=Get-CoPalette $Theme
         foreach($property in @('Frame','Header','Footer','Editor','Text','Button','ButtonText','Alert','Border')) {
-            if($themeCheck[$property] -notmatch '^#[0-9A-Fa-f]{6}
+            if(-not $themeCheck.ContainsKey($property)) {throw 'THEME_COLOR_MISSING'}
+            $null=[System.Drawing.ColorTranslator]::FromHtml([string]$themeCheck[$property])
+        }
+    }
+    $cases = @(
         @('msedge','SOURCE / BROWSER'),
         @('Code','BUILD / CODE'),
         @('explorer','FILES / LOCAL'),
