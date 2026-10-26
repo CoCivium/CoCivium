@@ -93,6 +93,6 @@ The output is **synthetic local JSON**. The fixture's 64-character source hashes
 
 The sent message cannot be changed retroactively. The living target may change, but historical version meaning and reader agency survive it.
 
-**CI acceptance:** preserve the existing 17 route tests; add 35 CoMail negative/evolution checks in the existing reader-federation CI. Source and CI PASS never establish a sent message or subscriber uptake.
+**CI acceptance:** preserve the existing 17 route tests; add 36 CoMail negative/evolution checks in the existing reader-federation CI. Source and CI PASS never establish a sent message or subscriber uptake.
 
 \`STATIC_MESSAGE_NE_LIVING_SOURCE | POINTER_NE_RECEIVER_ACK | FOLLOW_NE_AUTO_OPTIN | CORRECTION_NE_NOTICE_DELIVERED | RETRACTION_NE_RECALL | FORK_NE_CANON | PUBLIC_DECLARATION_NE_RIGHTS_VERIFIED\`.
