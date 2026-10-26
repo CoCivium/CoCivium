@@ -11,3 +11,14 @@ if($env:OS -eq 'Windows_NT'){
   if($obj.status -ne 'PASS' -or $obj.tests -ne 9 -or $obj.mouseHookInstalled -ne $false){throw 'SELFTEST_NOT_PASS'}
   Write-Host 'PASS: nine live Windows mode/zone and Win32 interop tests'
 }
+
+# All theme selections must parse and pass the STA helper test without opening a GUI.
+if($env:OS -eq 'Windows_NT'){
+  foreach($variant in @('Classic','Sage','Forest')){
+    $json=& pwsh -NoLogo -NoProfile -STA -File $script -SelfTest -Theme $variant
+    if($LASTEXITCODE -ne 0){throw "THEME_SELFTEST_FAILED: $variant"}
+    $result=($json | Out-String).Trim() | ConvertFrom-Json
+    if($result.status -ne 'PASS' -or $result.themeRequested -cne $variant){throw "THEME_SELECTION_FAILED: $variant"}
+    Write-Host "PASS: $variant palette resolves without GUI"
+  }
+}
