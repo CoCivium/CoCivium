@@ -1,0 +1,219 @@
+{
+  "schema": "CoCivium.CoRenewal.SelectiveAmplification.R0",
+  "date": "2026-10-26",
+  "state": "PUBLIC_CANDIDATE_TOY_MODEL__NOT_RUNTIME_OR_PHYSICAL_PROOF",
+  "prior_sources": [
+    "docs/Architecture/COSCALE_REDUCTION_ECOLOGY_R0.md",
+    "docs/Architecture/COLIVING_HIGHLIGHT_ASSETS_R0.md",
+    "docs/Architecture/COSUBSCRIPTION_ECOLOGY_R0.md",
+    "docs/Architecture/COALL_PULSEFIELD_COTIME_R0.md",
+    "docs/Architecture/COBOOGIE_REGROUP_RELATIONAL_RETURN_R1.md",
+    "docs/Governance/COREVIEW_SPINE_R0.md"
+  ],
+  "thesis": "Selective compounding of verified benefit, not perpetual amplification of every perturbation.",
+  "model": "V[t+1]=min(K[t],max(0,(1-d[t])*V[t]+eligible*(min(gain[t],budget[t])+qualified_input[t])))",
+  "eligibility": "source current AND benefit measured AND authorized AND risk cleared; unknown states block new amplification",
+  "assumptions": "V is a chosen synthetic scalar proxy, not an empirical value or physical quantity. Gain and input are independently qualified in a real system; R0 flags are simulated.",
+  "positive_growth_condition": "Applied gain plus qualified input > d*V, before saturation; not guaranteed across all future cycles.",
+  "bounded_capacity": "K is finite and gain spending limited by budget; as carrying capacity is reached, gain plateaus or forces tradeoffs.",
+  "negative_feedback": "Risk, privacy breaches, invalid source currentness, missing independent evidence, consent failure, or ecological/human pressure stop the gain.",
+  "value_dimensions": [
+    "beneficial_outcomes",
+    "novice_comprehension",
+    "human_time_saved",
+    "real_independent_reuse",
+    "correction_quality",
+    "recovery",
+    "energy_cost",
+    "resource_burden",
+    "attention_fatigue",
+    "safety_and_privacy"
+  ],
+  "renewable_cycle": [
+    "CHECK_SOURCE_AND_PRIOR",
+    "ELECT_ONE_USEFUL_CANDIDATE",
+    "QUALIFY_CONSENT_AND_BUDGET",
+    "TEST_WITH_COUNTEREXAMPLE",
+    "ACCEPT_RECEIVER_PROOF",
+    "VERSION_HIGHLIGHT_AND_DIFF",
+    "PRESERVE_NEGATIVE_PRIORS",
+    "MEASURE_PRESSURE",
+    "SLEEP_OR_RETIRE",
+    "REAWAKEN_ON_MATERIAL_DELTA"
+  ],
+  "lanes": {
+    "CoLivingHighlight": "Stable identity, historic provenance, successor and receiver-relative projections",
+    "CoSubscriptionEcology": "Opt-in selective discovery, bounded attention, backfill",
+    "CoEnerget_CoPressure": "Cost, energy and load caps; fail-closed on unsustainable growth",
+    "CoReview_CoTurtle": "Challenge extrapolations and keep failed tests",
+    "CoBoogie_CoRegroup": "Detect drift, saturation and recover finite work",
+    "CoOrb_CoMap": "Show gain, uncertainty, resources, dissent and unverified limits separately",
+    "CoTheoryAll_Synthkind_G_d": "Separate science from symbolic, ethical and voluntary reverence interpretations"
+  },
+  "interpretation_guard": "G_d, spiritual, quantum and cosmic metaphors do not generate physical energy, prove divine intervention, or establish that the universe itself is being amplified.",
+  "test_results": {
+    "kind": "synthetic_V8_numerical",
+    "passed": 19,
+    "failed": 0,
+    "checks": [
+      {
+        "id": "passive_decay",
+        "status": "PASS",
+        "observed": 8,
+        "expected": 8
+      },
+      {
+        "id": "qualified_gain",
+        "status": "PASS",
+        "observed": 11,
+        "expected": 11
+      },
+      {
+        "id": "balanced_cycle",
+        "status": "PASS",
+        "observed": 10,
+        "expected": 10
+      },
+      {
+        "id": "insufficient_gain",
+        "status": "PASS",
+        "observed": 9.5,
+        "expected": 9.5
+      },
+      {
+        "id": "qualified_input",
+        "status": "PASS",
+        "observed": 12,
+        "expected": 12
+      },
+      {
+        "id": "gain_budget",
+        "status": "PASS",
+        "observed": 13,
+        "expected": 13
+      },
+      {
+        "id": "capacity_saturation",
+        "status": "PASS",
+        "observed": 12,
+        "expected": 12
+      },
+      {
+        "id": "not_verified",
+        "status": "PASS",
+        "observed": 9,
+        "expected": 9
+      },
+      {
+        "id": "not_current",
+        "status": "PASS",
+        "observed": 9,
+        "expected": 9
+      },
+      {
+        "id": "not_authorized",
+        "status": "PASS",
+        "observed": 9,
+        "expected": 9
+      },
+      {
+        "id": "not_safe",
+        "status": "PASS",
+        "observed": 9,
+        "expected": 9
+      },
+      {
+        "id": "capacity_zero",
+        "status": "PASS",
+        "observed": 0,
+        "expected": 0
+      },
+      {
+        "id": "budget_zero",
+        "status": "PASS",
+        "observed": 9,
+        "expected": 9
+      },
+      {
+        "id": "not_always_growing",
+        "status": "PASS",
+        "observed": 19,
+        "expected": 19
+      },
+      {
+        "id": "negative_gain",
+        "status": "PASS"
+      },
+      {
+        "id": "negative_budget",
+        "status": "PASS"
+      },
+      {
+        "id": "decay_over_one",
+        "status": "PASS"
+      },
+      {
+        "id": "infinite_input",
+        "status": "PASS"
+      },
+      {
+        "id": "finite_gain_monotonic_then_saturate",
+        "status": "PASS"
+      }
+    ],
+    "cap_trajectory": [
+      {
+        "cycle": 1,
+        "value": 11
+      },
+      {
+        "cycle": 2,
+        "value": 11.9
+      },
+      {
+        "cycle": 3,
+        "value": 12.71
+      },
+      {
+        "cycle": 4,
+        "value": 13.439
+      },
+      {
+        "cycle": 5,
+        "value": 14.0951
+      },
+      {
+        "cycle": 6,
+        "value": 14.68559
+      },
+      {
+        "cycle": 7,
+        "value": 15.21703
+      },
+      {
+        "cycle": 8,
+        "value": 15.69533
+      },
+      {
+        "cycle": 9,
+        "value": 16
+      },
+      {
+        "cycle": 10,
+        "value": 16
+      }
+    ]
+  },
+  "next_real_test": "Compare two consented first-use versions of one public-safe highlight on understood tasks, independent comprehension, task time, corrections, retention of consent, costs and user benefit with a separately produced receiver receipt.",
+  "nonclaims": [
+    "POSITIVE_FEEDBACK_NE_GOOD_FEEDBACK",
+    "AMPLITUDE_NE_IMPORTANCE",
+    "SIMULATION_NE_ADOPTION",
+    "VALUE_SCALAR_NE_OBJECTIVE_MORAL_SCORE",
+    "GAIN_NE_INFINITE_ENERGY",
+    "BENCH_PASS_NE_PHYSICAL_EXPERIMENT",
+    "SYMBOLIC_G_D_NE_CAUSAL_PROOF",
+    "SNAPSHOT_NE_RECEIVER_PICKUP",
+    "NO_AUTONOMOUS_AGENTS_STARTED"
+  ]
+}
