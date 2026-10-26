@@ -1,0 +1,41 @@
+name: CoOpticsGap R1 synthetic inverse controls
+
+on:
+  pull_request:
+    paths:
+      - 'experiments/cooptics-gap-r1/**'
+      - '.github/workflows/cooptics-gap-r1.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  synthetic-null-and-inversion:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Bounded numerical dependencies
+        run: python3 -m pip install 'numpy>=2.0,<3' 'matplotlib>=3.8,<4'
+      - name: Synthetic model and boundary tests
+        run: python3 -m unittest discover -s experiments/cooptics-gap-r1 -p 'test_*.py' -v
+      - name: Fresh generation with no sensors or accounts
+        run: python3 experiments/cooptics-gap-r1/cooptics_r1.py --out /tmp/cooptics-r1
+      - name: Check output is scoped, nonempty and falsifiable
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          d=Path('/tmp/cooptics-r1')
+          x=json.loads((d/'metrics.json').read_text())
+          assert x['state']=='SYNTHETIC_ONLY_NO_MEASUREMENT_OR_ET_SIGNAL'
+          assert x['flat_surface_shadows']==0
+          assert x['shadow_orientation_changed_fraction']>.1
+          assert x['averaged_speckle_contrast_std_div_mean']<x['single_speckle_contrast_std_div_mean']
+          assert (d/'cooptics_r1_control_figure.png').stat().st_size>300_000
+          print('PASS_COOPTICS_R1_CI_SYNTHETIC_SOURCE_ONLY')
+          PY
