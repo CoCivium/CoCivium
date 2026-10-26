@@ -1,0 +1,41 @@
+name: CoMiddle R2 typed relation checks
+
+on:
+  pull_request:
+    paths:
+      - 'examples/conodcothumb/relation_algebra_r2/**'
+      - '.github/workflows/comiddle-relation-algebra-r2.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  source-algebra:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Node syntax
+        run: node --check examples/conodcothumb/relation_algebra_r2/CoRelationInverseR2.cjs
+      - name: Exact R2 tests
+        run: node --test examples/conodcothumb/relation_algebra_r2/CoRelationInverseR2.test.cjs
+      - name: Existing R1 context-rail regression
+        run: node --test examples/conodcothumb/context_rail_r1/tests/test_context_rail.cjs
+      - name: Existing R1 deterministic browser source parity
+        run: python3 examples/conodcothumb/context_rail_r1/build.py --check
+      - name: Exact R2 source/receipt hash audit
+        run: |
+          python3 - <<'PY'
+          import json, hashlib, pathlib
+          root=pathlib.Path('examples/conodcothumb/relation_algebra_r2')
+          manifest=json.loads((root/'manifest.json').read_text(encoding='utf8'))
+          assert manifest['state']=='VERIFIED_LOCAL_ONLY_NO_RECEIVER_PICKUP'
+          for name,expected in manifest['files'].items():
+              got=hashlib.sha256((root/name).read_bytes()).hexdigest()
+              assert got==expected,(name,expected,got)
+          print('PASS_PINNED_LOCAL_SOURCE_AND_RECEIPT',len(manifest['files']))
+          PY
