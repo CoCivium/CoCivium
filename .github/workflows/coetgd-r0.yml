@@ -1,0 +1,26 @@
+name: CoET/Gd R0 offline source qualification
+on:
+  pull_request:
+    paths:
+      - 'examples/coetgd/**'
+      - '.github/workflows/coetgd-r0.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  offline-qualification:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Syntax-check bounded source probe
+        run: python -m py_compile examples/coetgd/source_probe.py
+      - name: Run negative, privacy and no-effect test suite
+        run: python -m unittest discover -s examples/coetgd -p 'test_*.py' -v
+      - name: Validate pinned source registry WITHOUT network
+        run: python examples/coetgd/source_probe.py --validate
+      - name: Reiterate evidence ceiling
+        run: echo "CI PASS is offline schema and negative tests only, not live feed or ET/Gd scientific evidence."
