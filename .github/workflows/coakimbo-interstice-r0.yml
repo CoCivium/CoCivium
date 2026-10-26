@@ -1,0 +1,39 @@
+name: CoAkimbo Interstice R0 synthetic controls
+on:
+  push:
+    branches:
+      - research/coakimbo-interstice-synthetic-controls-r0-20261026
+  pull_request:
+    paths:
+      - 'experiments/coakimbo-interstice-r0/**'
+      - '.github/workflows/coakimbo-interstice-r0.yml'
+permissions:
+  contents: read
+jobs:
+  reproduce:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install published open numerical dependencies
+        working-directory: experiments/coakimbo-interstice-r0
+        run: python -m pip install -r requirements.txt
+      - name: Run negative and deterministic fixtures
+        working-directory: experiments/coakimbo-interstice-r0
+        run: python -m unittest discover -s tests -v
+      - name: Check pinned 24-event chain
+        working-directory: experiments/coakimbo-interstice-r0
+        run: python src/evidence.py
+      - name: Rebuild simulation in a separate output scope
+        working-directory: experiments/coakimbo-interstice-r0
+        run: |
+          python src/optical_control.py
+          python src/gain_control.py
+      - name: Record reproducible generation result
+        working-directory: experiments/coakimbo-interstice-r0
+        run: |
+          python -c "import json; m=json.load(open('output/measurement.json')); assert m['n_surface_points']==512; assert m['dark_detector_bins_at_below_quartile']>0"
+          python -c "import json; g=json.load(open('output/gain_control.json')); assert g['calibrated_proxy']['wins']>0; assert g['reversed_proxy']['losses']>0"
