@@ -324,6 +324,38 @@ class FederationTests(unittest.TestCase):
         template=(ROOT/'template.html').read_text()
         self.assertIn('.panel{overflow-wrap:anywhere;',html)
         self.assertIn('.panel{overflow-wrap:anywhere;',template)
+    def test_forest_surfaces_are_selective_and_contrast_friendly(self):
+        html=(ROOT/'index.html').read_text()
+        template=(ROOT/'template.html').read_text()
+        for surface in (html,template):
+            self.assertIn('--forest:#15382e',surface)
+            self.assertIn('--forest-deep:#0f2523',surface)
+            self.assertIn('--forest-edge:#638f75',surface)
+            self.assertIn('var(--forest-glow)',surface)
+            self.assertIn('.aside{align-self:start;background:linear-gradient(160deg,var(--forest),var(--forest-deep))',surface)
+            self.assertIn('.giggle{margin-top:16px;background:linear-gradient(155deg,#17372f,#102a25)',surface)
+            self.assertIn('.public-bridge{background:linear-gradient(165deg,#142f29,#0e2522)',surface)
+            self.assertIn('class="panel section public-bridge" aria-labelledby="edge-in-heading"',surface)
+            self.assertIn('@media(prefers-contrast:more)',surface)
+            self.assertIn('button:focus-visible,a:focus-visible',surface)
+            self.assertIn('class="panel" id="article"',surface)
+            self.assertIn('class="panel section" aria-labelledby="editions-heading"',surface)
+
+    def test_forest_text_and_edge_wcag_contrast(self):
+        html=(ROOT/'index.html').read_text()
+        tokens=dict(re.findall(r'(--[a-z-]+):(#(?:[a-fA-F0-9]{6}))',html))
+        def luminance(value):
+            values=[int(value[i:i+2],16)/255 for i in (1,3,5)]
+            linear=[v/12.92 if v<=0.04045 else ((v+0.055)/1.055)**2.4 for v in values]
+            return 0.2126*linear[0]+0.7152*linear[1]+0.0722*linear[2]
+        def contrast(a,b):
+            l1,l2=sorted((luminance(a),luminance(b)),reverse=True)
+            return (l1+0.05)/(l2+0.05)
+        backgrounds=[tokens['--forest'],tokens['--forest-deep'],'#17372f','#102a25','#142f29','#0e2522']
+        for bg in backgrounds:
+            for foreground in (tokens['--ink'],tokens['--muted']):
+                self.assertGreaterEqual(contrast(foreground,bg),4.5,(foreground,bg))
+            self.assertGreaterEqual(contrast(tokens['--forest-edge'],bg),3.0,(tokens['--forest-edge'],bg))
     def test_mobile_breakpoints(self):self.assertIn('@media(max-width:760px)',(ROOT/'index.html').read_text())
     def test_no_raw_private_media(self):self.assertNotIn('WhatsApp',(ROOT/'index.html').read_text())
     def test_title_and_source(self):self.assertIn('The Great ReFact | Six reader doorways',(ROOT/'index.html').read_text())
