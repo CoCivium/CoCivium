@@ -65,3 +65,17 @@ FIND public source pointer
 `SOURCE_PAGE_NE_LICENSE_CLEARANCE | SOURCE_LINK_NE_IMAGE_BYTES | PROPOSED_ROUTES_NE_SENT | BEAUTIFUL_NE_TRUE | GLYPH_NE_AUTHORITY | LOGICAL_INFINITY_NE_UNLIMITED_COMPUTE | LOCAL_IS_NOT_LANDED | NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF`.
 
 Code follows this repository's GPL-3.0 license. Third-party works remain under their own rights and are NOT included.
+
+
+## R2 public-source link integrity guard
+
+**Candidate / review-only:** This small hardening change preserves the *same four public source pages and original metadata-only HTML*. It does **not** add new images, a crawler, live receivers, scheduled fetches, X2 actions or model workers. It is an integrity safeguard for how future visual-source pointers reach public projections.
+
+- Public source-page and item-rights links now require ordinary HTTPS host/path form with **no URL query, fragment, embedded credentials, explicit port or control characters**. This blocks using public source links as inadvertent token/tracking or private-data carriers. Existing published source references remain valid.
+- The fixed R1 **four-record** reference must have exactly four records; an empty or partially lost catalogue cannot still display a misleading "four verified references" banner.
+- The exact declared top-level, routing-policy, effects and public source-record fields are checked. Unknown fields, including a synthetic clipboard/private-field fixture, are HELD rather than silently smuggled into a public JSON artifact. Extensions require deliberate schema and source review.
+- Twelve new fail-closed negative tests extend the existing fifty tests. Use the existing [offline CI workflow](../../.github/workflows/covisual-finder-r1.yml), `python3 finder.py --check` and `python3 -m unittest discover -s tests -p 'test_*.py'` from this directory; inspect the exact completed workflow before claiming PASS. The generated `projection.json` and `index.html` should **not** change on an unchanged four-source manifest.
+
+**Remaining unknowns:** source-linked public metadata does not establish rights to reproduce pixels, source-image byte identity, all historical media discovery, native CoOrbWare, human first-use, actual recipient ACK, or off-GitHub custody. Do not publish private screenshot/WhatsApp/Gmail material merely because it inspires a new idea.
+
+`PUBLIC_URL_NE_PRIVATE_QUERY_CARRIER | FOUR_IN_BANNER_REQUIRES_FOUR_IN_SOURCE | LINK_NE_LICENSE | FIXTURE_NE_USER_ACK | UNBOUNDED_POSSIBILITIES_NE_UNBOUNDED_AUTHORITY`.
