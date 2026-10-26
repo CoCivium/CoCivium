@@ -77,7 +77,7 @@ The machine-readable [AlienTree+ synthetic canary](relation_coverage_r0.json) is
 
 | Representation with declared constraints | Exact facts retained | Lost or distorted |
 | --- | ---: | ---: |
-| Single-root, unique-parent binary tree | 2 / 5 | 3 |
+| Unique-parent, acyclic binary tree/forest projection | 2 / 5 | 3 |
 | Multi-parent, acyclic binary graph | 3 / 5 | 2 |
 | Typed directed hypergraph preserving original records | 5 / 5 | 0 |
 
