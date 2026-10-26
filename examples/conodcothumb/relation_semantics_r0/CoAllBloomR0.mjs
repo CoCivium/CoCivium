@@ -127,7 +127,8 @@ export function previewAddresses(indices, assertion, registry, right) {
     throw new Error('HELD_PREVIEW_BUDGET_OR_DUPLICATE');
   return indices.map(index=>{
     const axes=addressAt(index);
-    const candidate=propose({...axes,assertion,registry,...(axes.operator==='COMPOSE_PROPOSAL'?{right}:{})});
+    const candidate=propose({operator:axes.operator,frame:axes.frame,time:axes.time,
+      projection:axes.projection,assertion,registry,...(axes.operator==='COMPOSE_PROPOSAL'?{right}:{})});
     return {address:index,...candidate};
   });
 }
