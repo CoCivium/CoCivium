@@ -6,9 +6,9 @@ The user's question: why do the valleys and apparent spaces between the peaks of
 
 ## Run on a browser without any installation
 
-Open `CoPolarGap_Atelier_R0.html`. It is a single UTF-8 self-contained HTML file: no network, imports, telemetry, logging, cookies, key hooks, camera or laser control. In the two-panel interface, set roughness, illumination angle, analyzer orientation, coherence, wavelength and a reproducible seed. The resulting image and 1D profile update locally. Use **Export my simulation receipt** only if you want to save parameters and statistics.
+Open the published [`index.html`](index.html). It is a single UTF-8 self-contained HTML file: no network, imports, telemetry, logging, cookies, key hooks, camera or laser control. In the two-panel interface, set roughness, illumination angle, analyzer orientation, coherence, wavelength and a reproducible seed. The resulting image and 1D profile update locally. Use **Export my simulation receipt** only if you want to save parameters and statistics.
 
-Source lives separately in `model.mjs` (pure deterministic model), `app.js` (local UI), `index.template.html` and `build.mjs`; use `node build.mjs` to regenerate the standalone HTML. Use `node --test model.test.mjs ui.test.mjs` and `node benchmark.mjs` for bounded synthetic verification. Node 22 used for this reference wave.
+**Published-branch source scope:** this branch contains the bundled model and UI inside [`index.html`](index.html), not the individually named `model.mjs`, `app.js`, `index.template.html` or `build.mjs` files. Those files and the original 50-case source/fake-DOM test harness were reported as retained in the originating conversation ZIP; they are **not reproduced by this GitHub branch**. To verify what an actual downloader receives, run `node --test examples/copolar-gap/published_source.test.mjs` from the repository root (Node 22). The exact embedded pure model is executed without running the browser UI, and negative no-effect controls are exercised. No claim of complete browser or physical apparatus verification follows.
 
 ## What the toy does and does not model
 
@@ -61,3 +61,15 @@ Good controls: unpolarized LED, a flat matte card, a deliberately roughened card
 - No scientific discovery, new physics, ET evidence, Planck-scale measurement or proof of holographic ontology is claimed.
 
 FOSS Forever | CoGoAll | Working Together Respectfully | Privacy by design | CoFFF hypothesis, not contact confirmation.
+
+### Observer reports and DMT (not an optical detector)
+
+Some accounts connect laser-speckle patterns with DMT-associated geometric or glyph-like experiences. Such experiences can be studied as **subjective perception**, with careful controls for visual cortex effects, expectation, priming, camera/surface structure and reproducibility. The following published research documents drug-related changes in visual/brain activity, **not** externally sourced glyphs or ET/G_d communication:
+- Pais et al., *NeuroImage* (2024), DOI 10.1016/j.neuroimage.2024.120718: https://pubmed.ncbi.nlm.nih.gov/38964563/
+- Timmermann et al., *PNAS* (2023), DOI 10.1073/pnas.2218949120: https://pubmed.ncbi.nlm.nih.gov/36940333/
+
+**No psychedelic use or laser viewing under intoxication is an accepted part of this optics canary.** An investigator can compare sober, pre-registered, blinded interpretations of ordinary stored imagery instead. A pattern recognized by an observer, even repeatedly, is not an independently measured source or message. Observation → optics/brain/instrument null models → prospective controls → independent repeat → scientific review precede any stronger claim.
+
+### What a passing GitHub test actually proves
+
+`published_source.test.mjs` checks that the exact self-contained **published HTML** contains and runs the pure deterministic toy and has defined negative boundaries. It neither reconstructs the original separately archived modular source, nor executes real browser rendering, nor demonstrates a microscope, laser, camera, alien signal, fractal scaling or physical field. Preserve the original README's 50/50 private test description as historical scope, and keep native/observer acceptance HELD.
