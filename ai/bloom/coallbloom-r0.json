@@ -1,0 +1,664 @@
+{
+  "schema": "CoCivium.CoAllBloom.TypedSemanticOptionality.R0",
+  "created_utc": "2026-10-26",
+  "state": "REVIEW_CANDIDATE_SOURCE_ONLY__ZERO_ACTIVE_WORKERS__ZERO_EXTERNAL_EFFECTS",
+  "role": "Typed, plural, open-world semantic optionality projection over existing CoDoodle/CoNex, CoTurtle, CoExperimentSelector, CoLens and CoModelFabric: NOT another generator, not another CoAll source of truth",
+  "short_definition": "Grow meanings and non/else/inverse/in-between variants with source identity, epistemic class, observer, time, boundary, authority, receiver and dissent preserved.",
+  "donors": [
+    {
+      "id": "co_doodle_r0",
+      "repo": "CoCivium/CoCivium",
+      "path": "docs/Architecture/CODOODLE_CONEX_EXPERIMENT_LAUNCHER_R0_20261024.md",
+      "blob_sha": "903d1d52179d62d44f1c70053e490ea6e1fe1023",
+      "state": "PUBLIC_ARCHITECTURE_CANDIDATE"
+    },
+    {
+      "id": "co_doodle_r1",
+      "repo": "CoCivium/CoCivium",
+      "path": "examples/codoodle_conex_r1/CoDoodleNexR1.py",
+      "blob_sha": "ab3edf053b7027a6d124830c3d96bbdd675b4963",
+      "state": "LOCAL_TESTED_SOURCE_ZERO_EFFECTS"
+    },
+    {
+      "id": "co_nex_routes",
+      "repo": "CoCivium/CoCivium",
+      "path": "examples/codoodle_conex_r1/feeds_and_adapters.json",
+      "blob_sha": "0b2b00b4d409ababa585da15e7721258d26605b4",
+      "state": "ROUTES_ALL_EXTERNAL_ADAPTERS_HELD"
+    },
+    {
+      "id": "co_turtle",
+      "repo": "CoCivium/CoCivium",
+      "path": "docs/Architecture/COEXPERIMENT_SPACE_TURTLES_R0.md",
+      "blob_sha": "a91d8de5b924ce318f2f886d168a75877272e0b9",
+      "state": "CANDIDATE_REVIEW_BOUNDARY"
+    },
+    {
+      "id": "experiment_selector",
+      "repo": "CoCivium/CoCivium",
+      "path": "docs/Architecture/COEXPERIMENT_SELECTOR_R0.md",
+      "blob_sha": "428016b04e5b9e2ccd7d9506358d356fafd118bb",
+      "state": "POLICY_ONLY_ZERO_WORKERS"
+    },
+    {
+      "id": "model_fabric",
+      "repo": "CoCivium/CoCivium",
+      "path": "docs/Architecture/COMODELFABRIC_COORB_PROVIDER_ADAPTERS_R0_20261024.md",
+      "blob_sha": "2d0d8cb7928ca7158c4d5f520c6e5b4e262d0743",
+      "state": "ARCHITECTURE_NO_PROVIDER_LOGIN"
+    },
+    {
+      "id": "first_use",
+      "repo": "CoCivium/CoCivium",
+      "path": "docs/Onramp/COCIVIA_FIRST_USE_R0.md",
+      "blob_sha": "f18aec48eaa02fc15cdfb66a1b025460d57e02ff",
+      "state": "PUBLIC_GUIDE_NOT_RUNTIME"
+    },
+    {
+      "id": "specialist_routes",
+      "repo": "CoCivium/CoCivium",
+      "path": "ai/onramp/specialist-entrypoints-r0.json",
+      "blob_sha": "0c6148652cd3595d24dee6c319b5e290b46d716d",
+      "state": "SIX_PUBLIC_SOURCE_PATHS_NO_INDEPENDENT_ACK"
+    },
+    {
+      "id": "co_lens",
+      "repo": "CoCivium/CoCivium",
+      "path": "examples/colensmedia/manifest.json",
+      "blob_sha": "b5a87427f2a6bf3c5e4928b7aa2c64e3a46deb01",
+      "state": "SYNTHETIC_THEME_PROTOTYPE"
+    },
+    {
+      "id": "review_spine",
+      "repo": "CoCivium/CoCivium",
+      "path": "ai/review/coreview-spine-r0.json",
+      "blob_sha": "ad49d1bceae5a3d259f94c8b1e751994c8eca9f5",
+      "state": "ADVISORY_NOT_INSTALLED_RELEASE_GATE"
+    },
+    {
+      "id": "substrate_field",
+      "repo": "CoCivium/CoCivium",
+      "path": "docs/Architecture/COSUBSTRATE_FIELD_R0.md",
+      "blob_sha": "5fec3249945ad3d14511621bc52da5587c3526b8",
+      "state": "SUBSTRATE_DESIGN_NOT_UNIVERSAL_DEPLOYMENT"
+    },
+    {
+      "id": "middle_glyph_rail",
+      "repo": "CoCivium/CoCivium",
+      "path": "docs/Architecture/COMIDDLE_COPRIMATH_GLYPHRAIL_R0_20261024.md",
+      "blob_sha": "199c6b2e0067925439872a4337685c8d611141ac",
+      "state": "MOUSE_GLYPH_DESIGN_NOT_HARDWARE_BINDING"
+    }
+  ],
+  "axes": [
+    {
+      "id": "operator",
+      "values": [
+        "IDENTITY",
+        "ELSE",
+        "NOT",
+        "INVERSE",
+        "COMPLEMENT",
+        "NULL",
+        "UNKNOWN",
+        "OUTSIDE",
+        "INBETWEEN",
+        "COEXIST",
+        "COMPOSE",
+        "PERMUTE",
+        "COUNTERFACTUAL",
+        "ANTI_HISTORY",
+        "TIME_SHIFT",
+        "OBSERVER_SHIFT",
+        "LENS_SHIFT",
+        "SUBSTRATE_SHIFT",
+        "RENDER_SHIFT",
+        "SCALE_SHIFT",
+        "INVERSION",
+        "RANDOM_SEEDED",
+        "CHALLENGE",
+        "RECURSE_TURTLE",
+        "RECOVER",
+        "EXIT"
+      ]
+    },
+    {
+      "id": "epistemic",
+      "values": [
+        "OBSERVED",
+        "INFERRED",
+        "HYPOTHESIS",
+        "QUESTION",
+        "PREDICTED",
+        "COUNTERFACTUAL",
+        "SYMBOLIC",
+        "MYTHIC",
+        "FICTIONAL",
+        "UNKNOWN",
+        "DESIGN_PROPOSAL"
+      ]
+    },
+    {
+      "id": "domain",
+      "values": [
+        "PHYSICAL_MEASURED",
+        "MATERIAL",
+        "BIOLOGICAL",
+        "DIGITAL_EXECUTABLE",
+        "MATHEMATICAL_FORMAL",
+        "CULTURAL_SOCIAL",
+        "PHILOSOPHICAL",
+        "SPIRITUAL_SYMBOLIC",
+        "MYTHIC_FICTIONAL",
+        "NONPHYSICAL_PROPOSAL",
+        "UNKNOWN_UNCLASSIFIED",
+        "HYBRID"
+      ]
+    },
+    {
+      "id": "temporal",
+      "values": [
+        "PAST",
+        "PRESENT",
+        "FORECAST",
+        "COUNTERFACTUAL",
+        "ALTERNATIVE_HISTORY",
+        "RECOVERY",
+        "UNSPECIFIED"
+      ]
+    },
+    {
+      "id": "observer",
+      "values": [
+        "SELF",
+        "OTHER_PERSON",
+        "OUTSIDER",
+        "AI_ASSISTANT",
+        "FUTURE_SELF",
+        "HISTORIAN",
+        "CHALLENGER",
+        "UNKNOWN"
+      ]
+    },
+    {
+      "id": "projection",
+      "values": [
+        "TEXT",
+        "GLYPH",
+        "MAP",
+        "ORB",
+        "DIAGRAM",
+        "SPEC",
+        "STORYBOARD",
+        "ACCESSIBLE_ALT"
+      ]
+    },
+    {
+      "id": "scale",
+      "values": [
+        "ONE_OBJECT",
+        "SMALL_SET",
+        "CANDIDATE_FIELD",
+        "LOGICAL_OPEN_ENDED"
+      ]
+    },
+    {
+      "id": "authority",
+      "values": [
+        "NONE",
+        "READ_ONLY_SCOPED",
+        "SHADOW_CANDIDATE",
+        "EXPLICIT_EFFECT_GATED"
+      ]
+    },
+    {
+      "id": "receiver",
+      "values": [
+        "LOCAL_ONLY",
+        "AUTHORISED_PERSON",
+        "PUBLIC_SOURCE",
+        "INDEPENDENT_REVIEWER",
+        "NOT_YET_BOUND"
+      ]
+    }
+  ],
+  "domains": [
+    {
+      "type": "PHYSICAL_MEASURED",
+      "rule": "Use instruments and reproducible observations for empirical assertions"
+    },
+    {
+      "type": "MATERIAL",
+      "rule": "Physical object/material property, still requires source proof"
+    },
+    {
+      "type": "BIOLOGICAL",
+      "rule": "Living systems; permissions, welfare and empiricism required"
+    },
+    {
+      "type": "DIGITAL_EXECUTABLE",
+      "rule": "Built program with source/runtime proof separate"
+    },
+    {
+      "type": "MATHEMATICAL_FORMAL",
+      "rule": "Definition, proof assumptions and formal validity"
+    },
+    {
+      "type": "CULTURAL_SOCIAL",
+      "rule": "Human/collective interpretation; attribution and pluralism"
+    },
+    {
+      "type": "PHILOSOPHICAL",
+      "rule": "Argument, validity and disagreement, no automatic measurement"
+    },
+    {
+      "type": "SPIRITUAL_SYMBOLIC",
+      "rule": "Belief, ethics, practice or metaphor; do not infer detected entity"
+    },
+    {
+      "type": "MYTHIC_FICTIONAL",
+      "rule": "Story world or allegory, explicitly marked"
+    },
+    {
+      "type": "NONPHYSICAL_PROPOSAL",
+      "rule": "A candidate category, not evidence a nonphysical substrate exists"
+    },
+    {
+      "type": "UNKNOWN_UNCLASSIFIED",
+      "rule": "No forced category; qualification needed"
+    },
+    {
+      "type": "HYBRID",
+      "rule": "Multiple explicit domain tags with per-domain evidence gates"
+    }
+  ],
+  "epistemic_classes": [
+    "OBSERVED",
+    "INFERRED",
+    "HYPOTHESIS",
+    "QUESTION",
+    "PREDICTED",
+    "COUNTERFACTUAL",
+    "SYMBOLIC",
+    "MYTHIC",
+    "FICTIONAL",
+    "UNKNOWN",
+    "DESIGN_PROPOSAL"
+  ],
+  "operators": [
+    {
+      "id": "IDENTITY",
+      "glyph": "=",
+      "meaning": "Preserve source identity and statement",
+      "gate": "SOURCE_UNCHANGED"
+    },
+    {
+      "id": "ELSE",
+      "glyph": "±",
+      "meaning": "Alternative without asserting truth",
+      "gate": "CANDIDATE"
+    },
+    {
+      "id": "NOT",
+      "glyph": "¬",
+      "meaning": "Propose logical negation, preserving source truth-status",
+      "gate": "CANDIDATE"
+    },
+    {
+      "id": "INVERSE",
+      "glyph": "⇄",
+      "meaning": "Swap direction only for typed inverse relation or label it unverified",
+      "gate": "TYPE_CHECK_REQUIRED"
+    },
+    {
+      "id": "COMPLEMENT",
+      "glyph": "∁",
+      "meaning": "Describe unrepresented contrast, not automatically set-theoretic complement",
+      "gate": "CANDIDATE"
+    },
+    {
+      "id": "NULL",
+      "glyph": "∅",
+      "meaning": "No-effect baseline; absence only with closed-world scope",
+      "gate": "CLOSED_WORLD_REQUIRED_FOR_ABSENCE"
+    },
+    {
+      "id": "UNKNOWN",
+      "glyph": "?",
+      "meaning": "Preserve open uncertainty; neither false nor true",
+      "gate": "UNCERTAINTY_PRESERVED"
+    },
+    {
+      "id": "OUTSIDE",
+      "glyph": "⊃",
+      "meaning": "Inspect explicitly excluded or outer context",
+      "gate": "SCOPE_REQUIRED"
+    },
+    {
+      "id": "INBETWEEN",
+      "glyph": "◌",
+      "meaning": "Model unresolved boundary/interstitial relation",
+      "gate": "NO_INFERRED_CAUSATION"
+    },
+    {
+      "id": "COEXIST",
+      "glyph": "∥",
+      "meaning": "Explore joint possibility without asserting compatibility",
+      "gate": "CANDIDATE"
+    },
+    {
+      "id": "COMPOSE",
+      "glyph": "∘",
+      "meaning": "Compose only typed compatible relations",
+      "gate": "TYPE_CHECK_REQUIRED"
+    },
+    {
+      "id": "PERMUTE",
+      "glyph": "⟳",
+      "meaning": "Reorder relation or presentation without rewriting source",
+      "gate": "CANDIDATE"
+    },
+    {
+      "id": "COUNTERFACTUAL",
+      "glyph": "◇",
+      "meaning": "Alter premises; clearly mark not-observed",
+      "gate": "COUNTERFACTUAL_ONLY"
+    },
+    {
+      "id": "ANTI_HISTORY",
+      "glyph": "↶",
+      "meaning": "Explore contrary history without changing historical record",
+      "gate": "COUNTERFACTUAL_ONLY"
+    },
+    {
+      "id": "TIME_SHIFT",
+      "glyph": "Δt",
+      "meaning": "Compare time regimes while retaining original observation time",
+      "gate": "CURRENTNESS_REQUIRED"
+    },
+    {
+      "id": "OBSERVER_SHIFT",
+      "glyph": "◎",
+      "meaning": "Change viewpoint while preserving invariant source",
+      "gate": "CONTEXT_SCOPE_REQUIRED"
+    },
+    {
+      "id": "LENS_SHIFT",
+      "glyph": "◉",
+      "meaning": "Change art/science/ethics lens; never reclassify evidence silently",
+      "gate": "EPistemic_BOUNDARY"
+    },
+    {
+      "id": "SUBSTRATE_SHIFT",
+      "glyph": "⇥",
+      "meaning": "Propose translation across qualified substrates",
+      "gate": "CAPABILITY_NOT_IMPLIED"
+    },
+    {
+      "id": "RENDER_SHIFT",
+      "glyph": "▣",
+      "meaning": "Change text/map/orb/media output; preserve source and accessibility",
+      "gate": "PROJECTION_NOT_SOURCE"
+    },
+    {
+      "id": "SCALE_SHIFT",
+      "glyph": "↟",
+      "meaning": "Vary logical scale with finite work budget",
+      "gate": "FINITE_EXECUTION"
+    },
+    {
+      "id": "INVERSION",
+      "glyph": "↔",
+      "meaning": "Find candidate dual/negative/reversed conditions, not automatic equivalence",
+      "gate": "TYPE_CHECK_REQUIRED"
+    },
+    {
+      "id": "RANDOM_SEEDED",
+      "glyph": "✳",
+      "meaning": "Propose reproducible novelty, not empirical discovery",
+      "gate": "SOURCE_SEED_REQUIRED"
+    },
+    {
+      "id": "CHALLENGE",
+      "glyph": "✕",
+      "meaning": "Seek falsifier and strongest rival explanation",
+      "gate": "DISSENT_PRESERVED"
+    },
+    {
+      "id": "RECURSE_TURTLE",
+      "glyph": "↺",
+      "meaning": "Review reviewer within shared budget, max depth two/round two",
+      "gate": "BOUND_LIMIT"
+    },
+    {
+      "id": "RECOVER",
+      "glyph": "⌁",
+      "meaning": "Restore source/lineage with receiver-produced proof gate",
+      "gate": "NO_COEX_INFERENCE"
+    },
+    {
+      "id": "EXIT",
+      "glyph": "⏻",
+      "meaning": "Refuse, opt out, delete within scope or leave freely",
+      "gate": "REVOCATION_FIRST"
+    }
+  ],
+  "relation_types": [
+    "IS_A",
+    "PART_OF",
+    "CONTAINS",
+    "RELATES_TO",
+    "DERIVED_FROM",
+    "SUPPORTS",
+    "CHALLENGES",
+    "INVERSE_CANDIDATE_OF",
+    "DUAL_CANDIDATE_OF",
+    "CONTRADICTS_IF_SAME_SCOPE",
+    "COMPLEMENTS",
+    "DEPENDENT_ON",
+    "CAUSAL_HYPOTHESIS_FOR",
+    "TRANSLATES_TO",
+    "OBSERVED_BY",
+    "RENDERED_AS",
+    "PREDECESSOR_OF",
+    "SUPERSEDES",
+    "HISTORICAL_ALTERNATIVE_TO",
+    "OUT_OF_SCOPE_OF",
+    "UNKNOWN_RELATION_TO",
+    "RECEIVER_ACK_OF"
+  ],
+  "invariants": [
+    "UNVERIFIED_NEGATION_NE_TRUE",
+    "UNKNOWN_NE_FALSE",
+    "ABSENCE_NE_PROVEN_WITHOUT_CLOSED_WORLD_SCOPE",
+    "REVERSE_EDGE_NE_INVERSE_RELATION_WITHOUT_TYPED_RULE",
+    "METAPHOR_NE_PHYSICS",
+    "SPIRITUAL_SYMBOL_NE_DETECTED_ENTITY",
+    "ET_HYPOTHESIS_NE_ET_CONTACT",
+    "FORMAL_LOGIC_NE_EMPIRICAL_EVIDENCE",
+    "STORY_NE_HISTORICAL_RECORD",
+    "ONE_VIEW_NE_SOURCE_OF_TRUTH",
+    "AI_ROLE_NE_PERSONHOOD_OR_ACCOUNT_OWNERSHIP",
+    "IA_AUGMENTATION_NE_AUTOMATIC_AGENTIC_PERMISSION",
+    "PUBLIC_SOURCE_NE_WORKING_PRODUCT",
+    "LATENT_CANDIDATE_NE_RUNNING_WORKER",
+    "NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF",
+    "REVIEW_SCHEMA_NE_INDEPENDENT_REVIEW",
+    "EVERGREEN_CHECK_NE_EVERGREEN_RUNTIME",
+    "COEX_NE_GIT_BLOB"
+  ],
+  "semantics": {
+    "open_world": "Missing relations are UNKNOWN unless a declared, qualified closed-world test proves scoped absence.",
+    "negation": "NOT(P) is a candidate statement with its own evidence; lack of evidence for P is never proof of NOT(P).",
+    "inversion": "For a directed relation use a typed inverse predicate only when its inverse is defined; SUPPORTS(A,B) does not simply imply SUPPORTS(B,A).",
+    "composition": "A→B and B→C can suggest A→C only with a licensed composition rule and evidence class INFERRED/HYPOTHESIS, never automatic OBSERVED.",
+    "classification": "Domains overlap; cultural, spiritual and physical categories can be discussed together without collapsing their truth tests.",
+    "uncertainty": "An UNKNOWN is an eligible result; unanswerable is not useless.",
+    "chaos_drift_evolution": "CHAOS = sensitivity/complex dynamics (hypothesis to test); DRIFT = measurable distribution change over time; EVOLUTION = versioned change with selection/retained lineage. Terms are not interchangeable and each requires an operational definition in empirical use.",
+    "metaphysical": "G_d, angelic, mystic and other spiritual classes remain valid interpretive/cultural/hypothesis topics, not sensors or independent being claims.",
+    "external_intelligence": "ET candidate signals require terrestrial-source controls, independent replication and scientific review before any extraordinary claim.",
+    "token_and_compute": "Logical field size may be vast; budgets, context windows, power, RAM, provider quotas and independent receivers remain finite."
+  },
+  "basins": [
+    {
+      "id": "HUMAN_VALUE",
+      "kind": "MEASURED_ACCEPTANCE",
+      "asks": "Does a consenting person complete a useful task?"
+    },
+    {
+      "id": "EVIDENCE",
+      "kind": "EMPIRICAL",
+      "asks": "What source, measurement, replication and falsifier exist?"
+    },
+    {
+      "id": "COUNTEREXAMPLE",
+      "kind": "ADVERSARIAL",
+      "asks": "What breaks or contradicts the proposed relation?"
+    },
+    {
+      "id": "ETHICAL_PLURALISM",
+      "kind": "NORMATIVE",
+      "asks": "Whose agency, dissent, care, freedom and privacy are affected?"
+    },
+    {
+      "id": "SYMBOLIC_ART",
+      "kind": "INTERPRETIVE",
+      "asks": "What stories/metaphors/lenses help without masquerading as observations?"
+    },
+    {
+      "id": "PORTABILITY",
+      "kind": "OPERATIONAL",
+      "asks": "Can another custodian restore it and leave voluntarily?"
+    },
+    {
+      "id": "COST_AND_ECOLOGY",
+      "kind": "MEASURED_RESOURCE",
+      "asks": "Is this worth human time, compute, energy and money?"
+    }
+  ],
+  "onramps": {
+    "human": {
+      "source": "docs/Onramp/COCIVIA_FIRST_USE_R0.md",
+      "levels": [
+        "L0_USEFUL_RESULT",
+        "L1_PROJECT_VIEW",
+        "L2_OPTIONS",
+        "L3_EVIDENCE",
+        "L4_WORKFLOWS",
+        "L5_OPTIONAL_ARCHITECTURE"
+      ],
+      "status": "PUBLIC_GUIDE_NOT_USER_ADOPTION"
+    },
+    "ai_ia": {
+      "interpretation": "IA is a scoped intelligence-augmentation / intelligent-assistance ROLE, not a new person or provider account",
+      "states": [
+        "DISCOVERED",
+        "DESCRIBED",
+        "SHADOW_EVALUATED",
+        "QUALIFIED_FOR_TASK",
+        "AUTHORIZED_LEASED",
+        "CHECKPOINTED",
+        "REQUALIFY_OR_SLEEP",
+        "REVOKED_OR_RETIRED"
+      ],
+      "entry_gate": "Capability description + trustworthy source/currentness + explicit owner/account permissions + privacy/budget + negative tests",
+      "adapters": "DETERMINISTIC_LOCAL qualified source path; OLLAMA_LOCAL/CLAUDE_API/PI_ADAPTER/OPENAI_COMPATIBLE held in examined R1 feed registry",
+      "evergreen": "Repeat qualification only when source, model, permissions, cost, performance or receiver need materially changes; no permanent background process implied"
+    },
+    "coorbware": {
+      "state": "RENDER_AND_PROVIDER_CONTROL_FABRIC_CANDIDATE_NOT_INSTALLED_X2_RUNTIME",
+      "required": "Versioned CoWorkObject, source hashes, provenance, scoped roles, lease, budget, challenge, consent, exit, independent receiver receipts"
+    }
+  },
+  "execution_contract": {
+    "logical_candidates": "ADDRESSABLE_ONLY",
+    "selector_cap": 32,
+    "sample_cap": 128,
+    "review_depth_cap": 2,
+    "review_round_cap": 2,
+    "parent_budget_shared": true,
+    "external_effects": false,
+    "live_model_adapters_verified_by_this_contract": 0,
+    "live_devices_qualified_by_this_contract": 0,
+    "authority_upgrade_by_semantic_operator": false,
+    "wake": "ON_MATERIAL_DELTA_OR_EXPLICIT_REQUEST",
+    "sleep": "DEFAULT_AFTER_RECEIPT",
+    "admission": [
+      "SOURCE_PINNED",
+      "CATEGORY_EXPLICIT",
+      "EPISTEMIC_BOUNDARY",
+      "FALSIFIABLE_IF_EMPIRICAL",
+      "BUDGETED",
+      "STOP_RULE",
+      "PRIVACY_ALLOWED",
+      "RECEIVER_IN_SCOPE"
+    ],
+    "release": "REVIEW_AND_OWNER_AUTHORITY_GATES_STILL_APPLY"
+  },
+  "examples": [
+    {
+      "id": "EX1",
+      "source": "A symbolic CoOrb may depict angels or G_d as a voluntary artistic lens.",
+      "domain": "SPIRITUAL_SYMBOLIC",
+      "epistemic": "SYMBOLIC",
+      "operator": "LENS_SHIFT",
+      "status": "VALID_PROJECTION_CANDIDATE",
+      "nonclaim": "DOES_NOT_PROVE_EXTERNAL_ENTITY"
+    },
+    {
+      "id": "EX2",
+      "source": "An unidentified radio event could be an ET signal.",
+      "domain": "PHYSICAL_MEASURED",
+      "epistemic": "HYPOTHESIS",
+      "operator": "CHALLENGE",
+      "status": "REQUIRE_RFI_CALIBRATION_OFF_SOURCE_AND_REPLICATION",
+      "nonclaim": "NO_ET_DETECTION"
+    },
+    {
+      "id": "EX3",
+      "source": "An AI model can assist an individual as an IA under a scoped role.",
+      "domain": "DIGITAL_EXECUTABLE",
+      "epistemic": "DESIGN_PROPOSAL",
+      "operator": "SUBSTRATE_SHIFT",
+      "status": "ADAPTER_AND_CONSENT_HELD",
+      "nonclaim": "NOT_NEW_PERSON_OR_SHARED_ACCOUNT"
+    },
+    {
+      "id": "EX4",
+      "source": "No relation was found in an incomplete search.",
+      "domain": "UNKNOWN_UNCLASSIFIED",
+      "epistemic": "UNKNOWN",
+      "operator": "NULL",
+      "status": "HELD_ABSENCE_NOT_PROVEN",
+      "nonclaim": "INCOMPLETE_SEARCH_NE_EMPTY_UNIVERSE"
+    },
+    {
+      "id": "EX5",
+      "source": "A CoCivium designer uses the same source for Map and Orb projections.",
+      "domain": "DIGITAL_EXECUTABLE",
+      "epistemic": "DESIGN_PROPOSAL",
+      "operator": "RENDER_SHIFT",
+      "status": "SOURCE_IDENTITY_MUST_REMAIN_PINNED",
+      "nonclaim": "NOT_X2_RUNTIME"
+    },
+    {
+      "id": "EX6",
+      "source": "A historical design diverged from its successor.",
+      "domain": "CULTURAL_SOCIAL",
+      "epistemic": "HYPOTHESIS",
+      "operator": "ANTI_HISTORY",
+      "status": "COUNTERFACTUAL_ONLY",
+      "nonclaim": "HISTORY_NOT_OVERWRITTEN"
+    }
+  ],
+  "first_real_test": "Take one exact public-source CoDoodle R1 proposal, apply one typed inversion and one null/control without silently changing epistemic class, render a loss-aware text/CoMap comparison, obtain a consenting outside reader result, and preserve versioned receipt. This candidate contract implements none of those runtime effects.",
+  "nonclaims": [
+    "ALL_COMBINATIONS_NE_ALL_RUNNING",
+    "G_D_INTERPRETATION_NE_VERIFIED_GOD",
+    "ET_TOPIC_NE_ET_CONTACT",
+    "UNLIMITED_LOGICAL_SPACE_NE_INFINITE_TOKENS",
+    "COALLBLOOM_SCHEMA_NE_CANON_OR_DEPLOYED_RUNTIME",
+    "DRAFT_PR_NE_PUBLIC_RELEASE",
+    "NO_AUTHORIZED_HUMAN_OR_DEVICE_AUTOMATICALLY_CONSENTED"
+  ]
+}
