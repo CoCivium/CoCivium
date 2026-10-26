@@ -90,6 +90,104 @@ class FederationTests(unittest.TestCase):
         self.assertEqual(probe['acceptance_contract']['external_effects'],0)
         self.assertIs(probe['acceptance_contract']['auto_publish'],False)
         self.assertIs(probe['acceptance_contract']['independent_receiver_ack'],False)
+
+    def _alien_probe(self):
+        return json.loads((ROOT/'relation_coverage_r0.json').read_text())['alien_tree_lens']
+
+    def test_alien_tree_preserves_four_meanings_without_claiming_et(self):
+        lens=self._alien_probe()
+        meanings={x['id'] for x in lens['interpretations']}
+        self.assertEqual(meanings,{
+            'OUTSIDE_THE_CURRENT_ONTOLOGY',
+            'UNKNOWN_NONHUMAN_PARTICIPANT',
+            'EXTRATERRESTRIAL_BIOLOGY_OR_INTELLIGENCE',
+            'LITERAL_ALIEN_OR_NONNATIVE_TREE'
+        })
+        empirical=next(x for x in lens['interpretations'] if x['id']=='EXTRATERRESTRIAL_BIOLOGY_OR_INTELLIGENCE')
+        self.assertEqual(empirical['epistemic'],'ET_EMPIRICAL_HYPOTHESIS')
+        self.assertEqual(empirical['status'],'NOT_TESTED')
+        self.assertIn('NOT_ET_DETECTION',lens['state'])
+        self.assertIn('NO_REAL_ET_EVIDENCE',lens['result'])
+
+    def test_alien_tree_does_not_assume_root_or_stable_individual(self):
+        lens=self._alien_probe()
+        kinds={x['id'] for x in lens['allowed_topology_candidates']}
+        self.assertEqual(kinds,{
+          'ROOTED_TREE','DIRECTED_ACYCLIC_GRAPH','CYCLIC_GRAPH',
+          'HYPERGRAPH','TEMPORAL_EVENT_GRAPH','UNKNOWN_SHAPE'
+        })
+        self.assertIn('UNKNOWN_SHAPE',kinds)
+        self.assertIn('THREE_WAY',{x['id'] for x in lens['adversarial_cases']})
+        self.assertIn('NO_ROOT',{x['id'] for x in lens['adversarial_cases']})
+
+    def test_alien_tree_synthetic_loss_is_measured(self):
+        lens=self._alien_probe()
+        canary=lens['synthetic_topology_canary']
+        self.assertEqual(canary['state'],'SYNTHETIC_ONLY_NOT_EMPIRICAL')
+        facts=canary['facts']
+        self.assertEqual(len(facts),5)
+        self.assertEqual(len({x['id'] for x in facts}),len(facts))
+        self.assertTrue(all(set(x['members']).issubset(set(canary['nodes'])) for x in facts))
+        def would_close_cycle(src,dst,edges):
+            pending=[dst]; visited=set()
+            while pending:
+                current=pending.pop()
+                if current==src:return True
+                if current in visited:continue
+                visited.add(current)
+                pending.extend(b for a,b in edges if a==current)
+            return False
+        for mode in ('TREE','DAG','TYPED_HYPERGRAPH'):
+            preserved=[]; directed=[]; chosen_parent=set()
+            for fact in facts:
+                if fact['kind']=='N_ARY':
+                    if mode=='TYPED_HYPERGRAPH':preserved.append(fact['id'])
+                    continue
+                self.assertEqual(fact['kind'],'DIRECTED_PAIR')
+                a,b=fact['members']
+                if mode=='TREE' and fact['relation']=='PARENT_OF' and b in chosen_parent:
+                    continue
+                if mode!='TYPED_HYPERGRAPH' and would_close_cycle(a,b,directed):
+                    continue
+                preserved.append(fact['id'])
+                if mode!='TYPED_HYPERGRAPH':directed.append((a,b))
+                if mode=='TREE' and fact['relation']=='PARENT_OF':chosen_parent.add(b)
+            self.assertEqual(preserved,canary['expected_retained_fact_ids'][mode])
+            self.assertEqual(len(facts)-len(preserved),canary['expected_lost_counts'][mode])
+        self.assertEqual(canary['expected_lost_counts'],{
+          'TREE':3,'DAG':2,'TYPED_HYPERGRAPH':0
+        })
+
+    def test_alien_tree_no_effect_or_contact_authority(self):
+        lens=self._alien_probe()
+        g=lens['guardrails']
+        self.assertIs(g['observation_ne_origin'],True)
+        self.assertIs(g['hypothesis_ne_detection'],True)
+        self.assertIs(g['unusual_morphology_ne_personhood'],True)
+        self.assertIs(g['candidate_edge_ne_causality'],True)
+        self.assertIs(g['graph_projection_ne_source_mutation'],True)
+        self.assertIs(g['no_new_authority'],True)
+        self.assertEqual(g['external_effects'],0)
+        self.assertEqual(g['live_inference_workers'],0)
+        self.assertIs(g['no_publications_or_contact_attempts'],True)
+
+    def test_alien_tree_adversarial_cases_are_bounded_and_explain_loss(self):
+        lens=self._alien_probe()
+        self.assertEqual(len(lens['adversarial_cases']),7)
+        self.assertLessEqual(len(lens['allowed_topology_candidates']),lens['guardrails']['max_candidate_topologies'])
+        self.assertLessEqual(len(lens['adversarial_cases']),lens['guardrails']['max_adversarial_cases'])
+        self.assertTrue(all(x['id'] and x['input'] and x['expected'] for x in lens['adversarial_cases']))
+        self.assertEqual(lens['primary_wake_signal'],'KNOWN_RELATION_SCHEMA_FAILS_TO_PRESERVE_OBSERVED_STRUCTURE')
+
+    def test_alien_tree_cross_links_are_hypotheses_not_implicit_authority(self):
+        probe=json.loads((ROOT/'relation_coverage_r0.json').read_text())
+        alien_edges=[e for e in probe['edges'] if e['from']=='co_alien_tree']
+        self.assertGreaterEqual(len(alien_edges),8)
+        self.assertTrue(all(e['epistemic'] not in ('OBSERVED_ET','CONTACT_CONFIRMED') for e in alien_edges))
+        self.assertTrue(all(e['authority']=='NONE' and e['action']=='NONE' and e['causal_claim'] is False for e in alien_edges))
+        self.assertIn('UNKNOWN_PARTICIPANT_NE_AUTHORITY',probe['nonclaims'])
+        self.assertIn('TREE_NE_REQUIRED_RELATION_TOPOLOGY',probe['nonclaims'])
+
     def test_schema(self):self.assertEqual(self.m['schema'],'CoAll.CoPublicationFederation.FirstProof.R0')
     def test_validate(self):self.assertTrue(validate(self.m))
     def test_exclusive_six_routes(self):self.assertEqual(len(self.m['routes']),6)
