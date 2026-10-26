@@ -43,6 +43,19 @@ with sync_playwright() as p:
         bounds=bridge.bounding_box()
         check(bool(bounds) and bounds['x']>=0 and bounds['x']+bounds['width']<=width+1,label+'_bridge_in_viewport')
         check(page.get_by_role('link',name='Read the existing public article').is_visible() and draft.is_visible(),label+'_bridge_links_render')
+        palette=page.evaluate("""() => {
+          const bg=(selector)=>getComputedStyle(document.querySelector(selector)).backgroundImage;
+          return {sidebar:bg('.aside'),giggle:bg('.giggle'),bridge:bg('.public-bridge'),article:bg('#article'),body:bg('body')};
+        }""")
+        check('rgb(21, 56, 46)' in palette['sidebar'] and 'rgb(15, 37, 35)' in palette['sidebar'],label+'_forest_sidebar_computed')
+        check('rgb(23, 55, 47)' in palette['giggle'],label+'_forest_giggle_computed')
+        check('rgb(20, 47, 41)' in palette['bridge'],label+'_forest_public_bridge_computed')
+        check('rgb(35, 69, 56)' in palette['body'],label+'_forest_glow_computed')
+        check('rgb(19, 28, 43)' in palette['article'],label+'_ordinary_article_remains_navy')
+        page.emulate_media(contrast='more')
+        border=page.locator('.public-bridge').evaluate("(el) => getComputedStyle(el).borderTopWidth")
+        check(border=='2px',label+'_high_contrast_forest_border')
+        page.emulate_media(contrast='no-preference')
         check(page.locator('.route-btn').count()==6,label+'_six_routes')
         check('You were never supposed' in page.locator('#route-head').inner_text(),label+'_initial_view')
         check(page.locator('.claim').count()==6,label+'_same_claim_kernel')
