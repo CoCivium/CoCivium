@@ -1,0 +1,69 @@
+{
+  "averaged_screen_contrast": 0.153186,
+  "browser": {
+    "desktop": {
+      "details": 5,
+      "external_http_requests": 0,
+      "image_natural_width": 2160,
+      "page_errors": 0,
+      "status": "PASS_INJECTED_CONTENT"
+    },
+    "direct_file_navigation": "HOLD_BLOCKED_BY_SANDBOX_ADMINISTRATOR",
+    "mobile": {
+      "details": 5,
+      "external_http_requests": 0,
+      "image_natural_width": 2160,
+      "page_errors": 0,
+      "status": "PASS_INJECTED_CONTENT"
+    }
+  },
+  "date": "2026-10-26",
+  "evidence_chain_events": 24,
+  "evidence_outcomes": {
+    "FAIL": 2,
+    "HOLD": 6,
+    "NOT_RUN": 5,
+    "PASS": 11
+  },
+  "external_actions": {
+    "drugs": 0,
+    "network_requests": 0,
+    "outbound_messages": 0,
+    "physical_lasers": 0,
+    "remote_workers": 0
+  },
+  "gain_policy_study": {
+    "calibrated_proxy": {
+      "losses": 0,
+      "median_net_toy_utility": {
+        "amplify_all": 9.185212,
+        "conservative": 7.518412,
+        "evidence_proxy": 33.184214
+      },
+      "note": "Synthetic outcomes, no measured real task benefit or generalized policy superiority",
+      "seeds": 12,
+      "ties": 0,
+      "wins": 12
+    },
+    "reversed_proxy": {
+      "losses": 12,
+      "median_net_toy_utility": {
+        "amplify_all": 9.185212,
+        "conservative": 7.518412,
+        "evidence_proxy": -25.837302
+      },
+      "note": "Synthetic outcomes, no measured real task benefit or generalized policy superiority",
+      "seeds": 12,
+      "ties": 0,
+      "wins": 0
+    }
+  },
+  "head_sha256": "19c38484337d224defd1c8a1cfa2791f20e8fca1fb9d9792f8fae13052203290",
+  "schema": "CoCivium.CoAkimboInterstice.ReleaseR0",
+  "scientific_status": "MODEL_FIXTURE_NOT_NEW_PHYSICS_NOT_ET_OR_GD_PROOF",
+  "single_speckle_contrast": 1.094695,
+  "source_geometry_shadow_reversal_fraction": 0.212891,
+  "source_surface_sha256": "e72350e5a9d6dcc166556cf89ea021fd538d28ee3a89591a2f490be288721a01",
+  "source_tests_passed": 27,
+  "status": "OFFLINE_SYNTHETIC_PROTOTYPE"
+}
