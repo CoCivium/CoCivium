@@ -1,0 +1,225 @@
+{
+  "schema": "CoCivium.LivingPublication.Pilot.R0",
+  "id": "CoCivium:CoFirstUse:MediaPilot:R0",
+  "observed_date": "2026-10-26",
+  "version": "0.1.0-candidate",
+  "status": "SOURCE_AND_STORYBOARD_CANDIDATE_ONLY",
+  "purpose": "Invite one newcomer into a free, reversible offline writing UI demo with truthful claims, accessible media and open feedback",
+  "sources": [
+    {
+      "id": "first_use",
+      "url": "https://github.com/CoCivium/CoCivium/blob/main/START_HERE.md",
+      "evidence": "PUBLIC_SOURCE_ON_MAIN",
+      "as_of": "2026-10-26"
+    },
+    {
+      "id": "source_demo",
+      "url": "https://github.com/CoCivium/CoCivium/blob/main/examples/coprecursor/index.html",
+      "evidence": "PUBLIC_OFFLINE_DEMO_SOURCE",
+      "pinned_git_blob": "773e9de7aa7c6b03bf0bc75eddb7ca0a0c8dd101"
+    },
+    {
+      "id": "source_manifest",
+      "url": "https://github.com/CoCivium/CoCivium/blob/main/examples/coprecursor/README.md",
+      "evidence": "PUBLIC_README_NOT_INDEPENDENT_USER"
+    },
+    {
+      "id": "status_guide",
+      "url": "https://github.com/CoCivium/CoCivium/blob/main/docs/Strategy/COSPIFF_FIREWORKS_SURVIVABILITY_R1.md",
+      "evidence": "PUBLIC_HELD_GATES"
+    }
+  ],
+  "offer": {
+    "price": "FREE_TO_READ_AND_TRY",
+    "paid_tier": false,
+    "donations_enabled": false,
+    "payment_url": null,
+    "named_partners": [],
+    "partner_endorsements_proven": false,
+    "fiscal_status": "UNVERIFIED",
+    "tax_receipt_claim": false,
+    "benefit_priority_for_donors": false,
+    "disclosures": "No linked partner donation page until recipient, rights, governance, allocation and tax-receipt eligibility are verified. Sponsor funds cannot buy outcomes, ranking, private data, governance or endorsements.",
+    "source_licenses_global": "PER_ARTIFACT_RIGHTS_REVIEW_REQUIRED"
+  },
+  "media": {
+    "kind": "STORYBOARD_ONLY_NO_VIDEO_RENDER",
+    "platform": "YouTube Shorts candidate and other optional accessible platforms",
+    "length_seconds": 40,
+    "target_width": 1080,
+    "target_height": 1920,
+    "fps_target": 30,
+    "captions": "REQUIRED_AS_ACCESSIBLE_TWIN",
+    "transcript": "GENERATED_FROM_SCENES_FOR_DRAFT_REVIEW",
+    "audio_description": "REVIEW_REQUIRED_BEFORE_MEDIA_RELEASE",
+    "music": "NONE_PREFERRED_UNTIL_RIGHTS_VERIFIED",
+    "thumbnail": "HELD_NOT_RENDERED",
+    "rights_clearance": "HELD",
+    "scene_order": [
+      {
+        "id": "S01",
+        "duration_s": 4,
+        "visual": "Dark, uncluttered screen: a small writing draft, one caret, no surveillance indicators",
+        "narration": "What if a tool suggested something, but never took control?",
+        "caption": "Suggestions should not take over.",
+        "proof_label": "DESIGN_QUESTION",
+        "claim_refs": []
+      },
+      {
+        "id": "S02",
+        "duration_s": 6,
+        "visual": "Offline CoPreCursor demonstration: one grey suggestion preview distinct from user text",
+        "narration": "CoPreCursor is a small offline demonstration. Preview a phrase before accepting it.",
+        "caption": "Preview first. Nothing is typed automatically.",
+        "proof_label": "OFFLINE_BROWSER_SOURCE",
+        "claim_refs": [
+          "source_demo"
+        ]
+      },
+      {
+        "id": "S03",
+        "duration_s": 7,
+        "visual": "Pointer selects Accept, then Undo; the original phrase visibly returns",
+        "narration": "Accept, reject or undo. The original stays recoverable.",
+        "caption": "Accept ↺ Undo",
+        "proof_label": "SOURCE_IMPLEMENTATION_NE_HUMAN_ACCEPTANCE",
+        "claim_refs": [
+          "source_demo"
+        ]
+      },
+      {
+        "id": "S04",
+        "duration_s": 7,
+        "visual": "A compact CoMap relation card: source → test → limit → challenge",
+        "narration": "Every claim needs its source, a test, and a clear statement of what remains unproved.",
+        "caption": "Source → test → limit → challenge",
+        "proof_label": "EXAMPLE_PROVENANCE",
+        "claim_refs": [
+          "source_manifest"
+        ]
+      },
+      {
+        "id": "S05",
+        "duration_s": 8,
+        "visual": "Calm split screen: WHAT WORKS / STILL UNKNOWN, showing source and known gaps",
+        "narration": "The code is public. Independent usefulness, live device integration, and broader adoption remain open questions.",
+        "caption": "Public source ≠ proven adoption",
+        "proof_label": "NEGATIVE_KNOWLEDGE",
+        "claim_refs": [
+          "status_guide"
+        ]
+      },
+      {
+        "id": "S06",
+        "duration_s": 8,
+        "visual": "Readable stable GitHub first-use link, captioned plain-language invitation; no donation request",
+        "narration": "Try the free demonstration. Tell us what is confusing, inaccessible, or wrong. Help improve the next version.",
+        "caption": "Try → challenge → improve. Free to explore.",
+        "proof_label": "INVITATION_NOT_ENDORSEMENT",
+        "claim_refs": [
+          "first_use"
+        ]
+      }
+    ],
+    "tests_required": [
+      "RUNTIME_FFPROBE_CURRENT_MASTER",
+      "CAPTION_SYNC",
+      "UNINTENDED_BLACK_FRAME_SCAN",
+      "THUMBNAIL_TECHNICAL_AND_EDITORIAL",
+      "AUDIO_LOUDNESS_AND_CLIP_CHECK",
+      "MOBILE_READABILITY_AND_SAFE_ZONES",
+      "REDUCED_MOTION_EQUIVALENT",
+      "CLAIM_SOURCE_CHECK",
+      "RIGHTS_PRIVACY_LIKENESS",
+      "INDEPENDENT_HUMAN_COMPREHENSION"
+    ]
+  },
+  "community": {
+    "feedback_intake": "EXISTING_PUBLIC_GITHUB_ISSUES_AND_OPTIONAL_DIRECT_CONSENTED_CHANNEL",
+    "comments_opt_in": true,
+    "anonymous_feedback_channel_proven": false,
+    "fields": [
+      "artifact_version",
+      "first_time_user_optional",
+      "what_task_tried",
+      "what_worked",
+      "what_confused",
+      "observed_error",
+      "accessibility_needs_optional",
+      "what_could_disprove_claim",
+      "can_follow_up_optional"
+    ],
+    "prohibited": [
+      "PRIVATE_KEYS",
+      "UNCONSENTED_IDENTIFIERS",
+      "SECRET_ACCOUNT_DATA",
+      "UNPERMITTED_COPIED_MEDIA"
+    ],
+    "editorial_recognition": "CREDIT_ONLY_WITH_EXPLICIT_CONTRIBUTOR_CONSENT",
+    "fame_promotion": "NO_UNVERIFIED_ENDORSEMENT_NO_MANUFACTURED_REACTIONS",
+    "public_changelog": "SOURCE_LINKED_VERSION_HISTORY_CANDIDATE"
+  },
+  "evolution": {
+    "default": "OBSERVE_DELTA→TRIAGE→SOURCE_CHECK→PROPOSE_REVISION→TEST→HUMAN_OR_AUTHORIZED_EDITOR_REVIEW→PUBLIC_RELEASE_RECEIPT→FEEDBACK",
+    "wake_conditions": [
+      "SOURCE_CHANGED",
+      "MATERIAL_CORRECTION",
+      "CONSENTED_FIRST_USE_FEEDBACK",
+      "ACCESSIBILITY_FAILURE",
+      "RIGHTS_STATE_CHANGED",
+      "BETTER_VERIFIED_RENDER",
+      "MATERIAL_SECURITY_OR_PRIVACY_ISSUE"
+    ],
+    "automatic_publication": false,
+    "automatic_email": false,
+    "automatic_partner_payments": false,
+    "automatic_claim_promotion": false,
+    "recursive_budget_limit": "ONE_BOUNDED_REVIEW_WAVE_PER_MATERIAL_DELTA",
+    "history_retained": true,
+    "no_change_means": "QUIESCE_NO_FORCE_REWRITE"
+  },
+  "academic_outreach": {
+    "status": "HELD_NEW_BATCH",
+    "new_recipients_sent": 0,
+    "proposal": "SMALL_RECIPIENT_RELEVANCE_PILOT_AFTER_PUBLIC_HUMAN_PROJECTION",
+    "test_sample_cap": 10,
+    "required": [
+      "PUBLIC_FIRST_USE_URL_REACHABLE",
+      "RECIPIENT_SPECIFIC_RESEARCH_FIT",
+      "RIGHTS_AND_CLAIMS_REVIEW",
+      "NO_DUPLICATES",
+      "ONE_PERSONAL_INVITATION",
+      "EASY_NO_FOLLOW_UP",
+      "GROUNDED_SENDER_IDENTITY"
+    ],
+    "claimed_endorsements": 0,
+    "mass_1000_sending": false
+  },
+  "release_gates": {
+    "storyboard_integrity": "PASS_CANDIDATE_PENDING_VALIDATION",
+    "public_web_host": "HELD",
+    "human_playback": "HELD",
+    "actual_media_encode": "NOT_RUN",
+    "ffprobe_current": "NOT_RUN",
+    "thumbnail_editorial": "NOT_RUN",
+    "captions_actual_video": "NOT_RUN",
+    "rights_and_privacy": "HELD",
+    "independent_viewer": "HELD",
+    "partner_due_diligence": "HELD",
+    "public_release": "HELD"
+  },
+  "nonclaims": [
+    "STORYBOARD_NE_VIDEO",
+    "SOURCE_RELEASE_NE_USER_ADOPTION",
+    "FREE_ACCESS_NE_FREE_TO_COPY_EVERY_ASSET",
+    "VOLUNTARY_GIFT_NE_TAX_DEDUCTIBLE_RECEIPT",
+    "PARTNER_MENTION_NE_ENDORSEMENT",
+    "NO_HIDDEN_MOTIVE_INFERENCE",
+    "METAPHOR_G_D_NE_EVIDENCED_CAUSATION",
+    "FEEDBACK_NE_CONSENT_TO_PUBLIC_QUOTE",
+    "VIEW_COUNT_NE_USEFULNESS",
+    "SELF_EVOLUTION_NE_SELF_AUTHORIZED_PUBLISHING",
+    "CANARY_EMAIL_NE_MASS_SEND",
+    "DRAFT_PR_NE_LIVE_SITE"
+  ]
+}
