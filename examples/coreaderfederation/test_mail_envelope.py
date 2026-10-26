@@ -204,6 +204,14 @@ class LivingEnvelopeTests(unittest.TestCase):
         self.assertEqual(p["effects"]["notifications_sent"],0)
         self.assertIn("FOLLOW_NE_AUTO_NOTIFICATION",p["nonclaims"])
 
+    def test_36_history_identity_does_not_prove_legal_or_technical_access(self):
+        m=clone()
+        m["versions"][2]["state"]="RETRACTED"
+        p=project(m,"PIN")
+        self.assertTrue(p["historical_version_identity_preserved"])
+        self.assertEqual(p["historical_content_access"],"NOT_VERIFIED__MAY_BE_RESTRICTED")
+        self.assertEqual(p["historical_message_state"],"SYNTHETIC_NOT_SENT")
+
     def test_35_snapshot_and_current_are_distinct_identities(self):
         p=project(F,"COMPARE")
         self.assertNotEqual(p["selected_source_sha256"],"1"*64)
