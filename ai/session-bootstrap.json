@@ -8,6 +8,7 @@
     "README.md",
     "PRELAUNCH.md",
     "ai/onramp/cocivia-first-use-r0.json",
+    "ai/onramp/ai-ia-evergreen-r0.json",
     "docs/Onramp/COCIVIA_FIRST_USE_R0.md",
     "SESSION_BOOTSTRAP.md",
     "docs/Launch/COCIVIUM_PUBLIC_PRELAUNCH_R0.md",
@@ -157,7 +158,16 @@
     "human_first_use": "docs/Onramp/COCIVIA_FIRST_USE_R0.md",
     "machine_twin": "ai/onramp/cocivia-first-use-r0.json",
     "rule": "START_WITH_ONE_REAL_THING__RETURN_ONE_CONCRETE_USEFUL_RESULT_BEFORE_DEEP_ARCHITECTURE",
-    "installer_state": "NO_VERIFIED_PUBLIC_COCIVIUM_INSTALLER_LINKED"
+    "installer_state": "NO_VERIFIED_PUBLIC_COCIVIUM_INSTALLER_LINKED",
+    "machine_ai_ia": {
+      "path": "ai/onramp/ai-ia-evergreen-r0.json",
+      "human_twin": "docs/Onramp/AI_IA_COORBWARE_EVERGREEN_R0.md",
+      "status": "PUBLIC_ADMISSION_CONTRACT_ONLY__NO_AUTOMATIC_AGENT_RECEIVER",
+      "IA_term": "UNRESOLVED__MUST_BE_TYPED_BEFORE_ROLE_PROMOTION",
+      "default": "FETCH_MINIMAL_ROLE_RELEVANT_SOURCES__QUALIFY_ONE_TASK__PRESERVE_RECEIVER_ACK",
+      "no_implied_authority": true,
+      "source_snapshot_date": "2026-10-26"
+    }
   },
   "research_recovery": {
     "state": "PROTOCOL_CANDIDATE__RECEIVER_ADOPTION_UNPROVEN",
