@@ -260,5 +260,21 @@ class TrailTests(unittest.TestCase):
         self.write()
         self.assertEqual(app.summary(self.root,"2026-10-25")["events"],0)
 
+    @unittest.skipUnless(hasattr(os,"symlink"),"symlink absent")
+    def test_41_broken_symlink_is_not_empty_log(self):
+        self.make_root()
+        file=self.root/(DAY+".jsonl")
+        file.symlink_to(Path(self.tmp.name)/"absent.txt")
+        with self.assertRaisesRegex(ValueError,"JOURNAL_NOT_REGULAR"):
+            app.read_day(self.root,DAY)
+
+    def test_42_private_html_outside_root_held(self):
+        self.write(retain=True)
+        external=Path(self.tmp.name)/"unsafe-outside.html"
+        r=self.run_cli("render","--day",DAY,"--output",str(external))
+        self.assertNotEqual(r.returncode,0)
+        self.assertIn("OUTPUT_MUST_STAY_IN_PRIVATE_ROOT",r.stderr)
+        self.assertFalse(external.exists())
+
 if __name__=="__main__":
     unittest.main()
