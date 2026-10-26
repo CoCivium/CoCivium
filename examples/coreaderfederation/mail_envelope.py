@@ -24,7 +24,7 @@ ENVELOPE_FIELDS = {"envelope_id", "message_sha256", "message_state", "composed_a
                    "resource_id", "sent_version_id", "send_receipt", "effect_authority"}
 VERSION_FIELDS = {"version_id", "parent_id", "source_sha256", "source_url", "issued_at",
                   "state", "epistemic_class", "change_summary", "privacy"}
-ID_RE = re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_.:-]{2,79}$")
+ID_RE = re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_.:-]{1,79}$")
 SHA_RE = re.compile(r"^[0-9a-f]{64}$")
 
 
