@@ -342,9 +342,17 @@ class FederationTests(unittest.TestCase):
             src,digest=binding[len('github:'):].split('@blob:')
             repo_id,relpath=src.split(':',1)
             self.assertEqual(repo_id,'CoCivium/CoCivium')
-            raw=(ROOT.parents[1]/relpath).read_bytes()
-            git_sha=hashlib.sha1(b'blob '+str(len(raw)).encode()+b'\0'+raw).hexdigest()
-            self.assertEqual(git_sha,digest)
+            donor=ROOT.parents[1]/relpath
+            if donor.is_file():
+                raw=donor.read_bytes()
+                git_sha=hashlib.sha1(b'blob '+str(len(raw)).encode()+b'\0'+raw).hexdigest()
+                self.assertEqual(git_sha,digest)
+            else:
+                # A source added to main after this PR branch existed must not be
+                # treated as locally byte-verified or copied into this branch.
+                self.assertEqual(relpath,'docs/Architecture/COAMPLIFICATORY_CYCLIC_REGENERATION_R0_20261026.md')
+                self.assertEqual(digest,'f0e7834add3aa2b310f2c03602c4fb2ae68c1838')
+                self.assertTrue(any('exists on main but not in this older draft-PR checkout' in s for s in asset['notes']))
 
     def test_cyclic_synthetic_four_regimes_no_perpetual_motion_claim(self):
         data=json.loads((ROOT/'cyclic_regeneration_canary_r0.json').read_text())
