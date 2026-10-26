@@ -46,7 +46,8 @@ def shadow_lit(h: np.ndarray, side: str, alpha_deg: float = ALPHA_DEG, pitch: fl
     """
     if side not in ("left", "right"):
         raise ValueError("side must be left or right")
-    if not (0 < alpha_deg < 90) or pitch <= 0:
+    if not all(isinstance(v, (int, float, np.integer, np.floating)) and np.isfinite(v)
+               for v in (alpha_deg, pitch)) or not (0 < alpha_deg < 90) or pitch <= 0:
         raise ValueError("invalid ray geometry")
     h = np.asarray(h, dtype=float)
     if h.ndim != 1 or not (2 <= h.size <= 2048) or not np.all(np.isfinite(h)):
@@ -72,7 +73,8 @@ def toy_speckle(h: np.ndarray, wavelength: float, analyzer_deg: float = 0.0,
     simplified Jones cross-component depends on local slopes, solely to
     demonstrate how an analyzer can change a computed interference pattern.
     """
-    if not all(np.isscalar(v) and np.isfinite(v) for v in (wavelength, analyzer_deg, incidence_deg)):
+    if not all(isinstance(v, (int, float, np.integer, np.floating)) and np.isfinite(v)
+               for v in (wavelength, analyzer_deg, incidence_deg)):
         raise ValueError('nonfinite or nonscalar optical parameters')
     if wavelength <= 0 or not (0 <= analyzer_deg <= 180) or not (0 <= incidence_deg <= 90):
         raise ValueError('invalid optical parameters')
