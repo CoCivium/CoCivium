@@ -1,0 +1,44 @@
+{
+  "schema": "CoCivium.CoOrbIO.Package.R0",
+  "date": "2026-10-24",
+  "content_class": "Public source-only, candidate not deployed",
+  "runtime_status": "HELD_X2_OFFLINE",
+  "source_license_intent": "CoCivium GPL-3.0 ecosystem; third-party rights/attribution review before redistribution of other suppliers",
+  "source_root": "examples/coomniio/",
+  "files": {
+    "CoOmniCycleR0.mjs": "02140b9da1e6b4784734660c2155042dd70f0be82abed9c40f2781fd84d87078",
+    "CoOmniCycleR0.test.mjs": "23f24c71601100ec03eadb0006c9ce85676384ff23933e7cd8a2c5b546fadf0f",
+    "CoOrbIOHotkeyR0.ps1": "1397eaf3c349fcd367ed9bcc1a079c65ce30306eca5e10ee1b5123b48847f645",
+    "CoCopyRichPaletteR0.ps1": "e7d6d4446e74e35bb7a649ab21b73e2bc0379e891b32c5e44956aa32e1a7ae5f",
+    "Setup-CoOrbIO_R0.ps1": "721a5b660299777a6cf060a52097bf39452ace0d25a9993ae36be07e624d816c",
+    "README.md": "d58a0194ecec26acc066bc7c08931cf4491b9ef2c166ce06e5009931f978aaa9",
+    "static_audit.json": "b26f21e1ccc812d84cd0718c69dac558d2597a9c13a99a5c4aefdb2991d8b758",
+    "audit_static.py": "1d602c19afa8184e205b83cf55144480032059f1795d3e0eb9fb264792d0a3dc",
+    "audit_history.jsonl": "acc9bf98826d2ab9770ac4a96e679559e9881b39106e15e3826f04fc1dfe4dc9"
+  },
+  "tests": {
+    "node_tests": "38/38 PASS in Linux Node 22",
+    "static_structural_checks": "34/34 PASS with 33/34 false-positive history retained",
+    "windows_hotkey": "HELD_NOT_EXECUTED",
+    "physical_mx_master_4": "HELD_NOT_BOUND",
+    "task_scheduler": "HELD_NOT_INSTALLED"
+  },
+  "payload_boundaries": {
+    "user_selected_clipboard_files": 24,
+    "task_queue_cycle": 4,
+    "concurrent_reads": 2,
+    "per_cycle_bytes": 34359738368,
+    "max_file_bytes": 17179869184
+  },
+  "nonclaims": [
+    "LOCAL_IS_NOT_LANDED",
+    "VALIDATION_IS_NOT_ACCEPTANCE",
+    "NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF",
+    "NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE",
+    "HASHING_IS_NOT_SEMANTIC_INGESTION",
+    "DISCOVERED_SET_IS_NOT_COMPLETE_HISTORY",
+    "PRESENT_SOURCE_NE_LIVE_DEVICE",
+    "NO_UNBOUNDED_SESSIONS_OR_TOKENS",
+    "SCHEDULER_CONFIG_NE_AUTONOMY_WHEN_PC_OFFLINE"
+  ]
+}
