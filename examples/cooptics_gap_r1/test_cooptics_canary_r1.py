@@ -144,11 +144,11 @@ class Canary(unittest.TestCase):
             with self.assertRaises(ValueError):
                 shadow_lit(self.h, 'right', pitch=bad)
 
-    def test_zeroing_is_labelled_numerical_not_physical(self):
-        self.assertIn(
-            'NEAR_ZERO_SYNTHETIC_CHANNEL_ZEROED_BEFORE_NORMALIZATION_NOT_A_PHYSICAL_DARKNESS_MEASUREMENT',
-            self.d['warnings'])
+    def test_zeroed_cross_channel_not_claimed_real_optical(self):
+        z = toy_speckle(np.zeros(64), .532, analyzer_deg=90)
+        self.assertEqual(float(np.sum(z)), 0.0)
         self.assertEqual(self.d['status'], 'PASS_SYNTHETIC_ONLY')
+        self.assertIn('NO_PHYSICAL_LIGHT_OR_SENSOR_USED', self.d['warnings'])
 
 if __name__=='__main__':
     unittest.main(verbosity=2)
