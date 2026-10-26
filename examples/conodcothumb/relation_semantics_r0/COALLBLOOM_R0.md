@@ -4,6 +4,8 @@
 
 This is a **compositional donor** targeting [CoMiddle typed relation kernel PR #295](https://github.com/CoCivium/CoCivium/pull/295), not another CoDoodle generator, CoOrbWare control plane, ontology authority, provider session manager or OS mouse hook. It reuses [CoNotSpace+](../../conotspace/README.md), [CoDoodle/CoNex R1](../../codoodle_conex_r1/README.md), [CoOrbWare non-privileged inversion superframe](../../../docs/Architecture/COORBWARE_NONPRIVILEGED_INVERSION_SUPERFRAME_R0_20261026.md) and [CoOmni context fabric](../../../docs/Architecture/COOMNI_CONTEXT_RESOURCE_FABRIC_R0_20261024.md).
 
+**Existing source owner:** [CoAllBloom+ Optionality Basin R0](../../../docs/Architecture/COALLBLOOM_OPTIONALITY_BASIN_R0_20261026.md) is already on the CoCivium main branch (Git blob `33aa6f39f9d38fec93a413774e1e55c355644f77` at readback). It is the earlier architecture of record for this donor: ADDRESSABLE / CANDIDATE / ACTIVE / EFFECTIVE states, Bloom/harvest rhythm, chaos vs drift vs evolution, spiritual/angel/G_d/ET lanes and versioned AI-to-IA onramp. This module implements only a narrow, synthetic, non-effectful proposal composition slice, not the full architecture or its real receiver acceptance.
+
 ## What the name means
 
 **CoAllBloom+** is a label for *meaning branches, not an assertion of a newly discovered field or unlimited compute*.
