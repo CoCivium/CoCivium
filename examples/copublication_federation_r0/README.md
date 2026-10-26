@@ -102,3 +102,13 @@ The original CoCivium [CoLoL+](../../docs/Evolution/EVO_ALL_BETTERS_EVERGREEN_PU
 **CoTurtle guardrails:** `HUMOROUS_NE_OBSERVED | PUNCHLINE_NE_PERFORMANCE_METRIC | MEME_NE_MODEL | FUNNY_NE_TRUE | OPT_IN_TO_READ_NE_OPT_IN_TO_SEND | JOKE_NE_ENDORSEMENT | FICTIONAL_CHARACTER_NE_REAL_TESTIMONIAL`. The joke may explain the proposed behavior, but cannot replace a source, promise actual time saved, or confer execution authority.
 
 **Acceptance limits:** source tests and controlled Chromium browser tests may demonstrate coherent UI, accessibility controls, fixed claim identity and zero network effects. They cannot prove laughter, reader enjoyment, comprehension, viral reach, Substack publication or independent adoption. To make such a claim, conduct a consent-based comparison between the plain and humor versions with independent participants, an unchanged question, source comprehension, optional exit and actual measured time/helpfulness.
+
+## CoForest+ | Selective green surfaces and accessibility (October 26, 2026)
+
+The reader prototype now uses **muted forest green on selected backgrounds only**, retaining navy on the core article, evidence/history sections and most controls. The selected surfaces are the interest-choice sidebar, optional CoGiggle+ illustration card, and the real-RickPublic-versus-book-draft comparison. The upper-right ambient backdrop carries a subdued green glow. Green signals visual context, **not** that claims were proved or actions authorized.
+
+Source-owned design tokens are `--forest: #15382e`, `--forest-deep: #0f2523`, `--forest-edge: #638f75` and `--forest-glow: #234538`. Original text, links, active focus, warning labels, source IDs, opt-in behavior and six reader routes are retained. There are no external theme images, CSS dependencies or network calls. Extra-high contrast preferences receive stronger two-pixel light-green borders and brighter secondary text, while reduced-motion settings are unchanged.
+
+Static tests recompute WCAG-style relative-luminance contrast of the foreground and muted text against **every green background endpoint** and require at least 4.5:1 for ordinary text and 3:1 for the green edge. Chromium tests verify the actual computed colors on desktop and mobile, check the article retains its navy background, assert the contrast-preference fallback and retain zero-network/no-overflow checks.
+
+**Further candidates, not deployed changes:** opt-in day/light mode, reader-selected palette remembered only with explicit permission, printed grayscale, color-vision variants, CoOrb/CoBar tokens projected from the same semantic style registry, and independently measured comprehension of the palette. A page's green tint is not evidence that X2, Windows or Substack has changed.
