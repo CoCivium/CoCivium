@@ -1,0 +1,25 @@
+{
+  "controls": [
+    "illumination_direction_reversal_source_geometry",
+    "independent_phase_screen_average_detector_field"
+  ],
+  "dark_detector_bins_at_below_quartile": 90,
+  "fraction_changed_under_illumination_reversal": 0.212891,
+  "fraction_shadowed_from_left": 0.876953,
+  "fraction_shadowed_from_right": 0.859375,
+  "grazing_angle_degrees": 16.0,
+  "model_limitations": [
+    "1D geometric horizon and scalar far-field toy",
+    "not an actual polarized Maxwell/scattering solver",
+    "not a physical measurement or laser procedure",
+    "detector angular bins are not surface gaps",
+    "no inference about ET, G_d, DMT or invisible entities"
+  ],
+  "n_surface_points": 512,
+  "seed": 20261026,
+  "source_surface_sha256": "e72350e5a9d6dcc166556cf89ea021fd538d28ee3a89591a2f490be288721a01",
+  "speckle_contrast_averaged_independent_screens": 0.153186,
+  "speckle_contrast_single_phase_screen": 1.094695,
+  "surface_material_cells_present": 512,
+  "wavelength_um": 0.532
+}
