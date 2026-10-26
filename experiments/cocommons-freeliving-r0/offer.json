@@ -1,0 +1,73 @@
+{
+  "schema": "CoCivium.CoCommonsOffer.R0",
+  "date": "2026-10-26",
+  "state": "REVIEW_CANDIDATE_NOT_LIVE_DONATION_SERVICE",
+  "source_links": {
+    "human_first_use": "https://github.com/CoCivium/CoCivium/blob/main/START_HERE.md",
+    "living_publication_design": "https://github.com/CoCivium/CoCivium/blob/main/docs/Architecture/COPUBLICATION_METABOLISM_R0_20261025.md",
+    "federation_design": "https://github.com/CoCivium/CoCivium/blob/main/docs/Architecture/COPUBLICATION_FEDERATION_RECEIVER_INTEREST_R0_20261025.md",
+    "public_feedback": "https://github.com/CoCivium/CoCivium/issues"
+  },
+  "access": {
+    "public_research_free_to_read": true,
+    "eligible_foss_source_free_to_inspect": true,
+    "mandatory_donation": false,
+    "pay_to_jump_review_or_access": false,
+    "foss_rights_and_license_check_required": true,
+    "unlimited_hosted_inference_promised": false,
+    "unlimited_operating_resources_promised": false
+  },
+  "funding": {
+    "donations_optional": true,
+    "donation_channel_status": "HELD_UNVERIFIED",
+    "donation_url": null,
+    "verified_recipient_id": null,
+    "tax_deductible_claim": null,
+    "fiscal_host_affiliation": null,
+    "partners_verified_to_receive_funds": [],
+    "reporting_before_live_collection": [
+      "exact_recipient_identity_and_approval",
+      "payment_processor_and_fees",
+      "currency_tax_receipt_eligibility",
+      "refunds_and_chargebacks",
+      "recipient_specific_allocation",
+      "public_aggregate_receipt_and_expense_policy",
+      "conflict_of_interest_disclosures"
+    ],
+    "donations_buy_priority_governance_or_endorsement": false
+  },
+  "publication": {
+    "auto_evolution_mode": "PROPOSE_TEST_REVIEW_THEN_VERSION",
+    "original_edition_immutable": true,
+    "old_versions_recoverable_where_lawful": true,
+    "change_log_and_source_lineage_required": true,
+    "corrections_and_retractions_exposed": true,
+    "automatic_external_publication": false,
+    "reader_activity_grants_publication_authority": false,
+    "generated_claims_self_certify": false
+  },
+  "community": {
+    "participation_optional": true,
+    "attribution_default": "OPT_IN",
+    "endorsement_required_for_name_use": true,
+    "public_praise_without_consent": false,
+    "negative_feedback_retained": true,
+    "tracking_or_sensitive_profiling": false,
+    "feedback_routes": ["VOLUNTARY_PUBLIC_ISSUE", "OPTIONAL_PRIVATE_CONTACT_WHEN_VERIFIED"],
+    "status_of_real_receiver_adoption": "UNVERIFIED"
+  },
+  "outreach": {
+    "initial_academic_mode": "INDIVIDUAL_RELEVANT_RESEARCH_CHALLENGE",
+    "bulk_academic_blast_enabled": false,
+    "recipients_verified_and_permissioned": [],
+    "sender_mailbox": "UNBOUND_INSEED_CONTEXT",
+    "first_thousand_sent_or_authorized": false,
+    "record_sender_identity_consent_objections_and_optout": true
+  },
+  "interpretation": {
+    "benevolence_test": "OBSERVABLE_BENEFIT_CORRECTIONS_RIGHTS_COSTS_AND_TRANSPARENT_VALUE_FLOW",
+    "g_d": "OPTIONAL_PHILOSOPHICAL_OR_CREATIVE_LENS_NOT_VERIFIED_CAUSAL_OR_DIVINE_ENDORSEMENT",
+    "partners_endorsed": false,
+    "operational_continuous_evolution_proven": false
+  }
+}
