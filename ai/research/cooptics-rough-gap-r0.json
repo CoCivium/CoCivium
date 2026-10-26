@@ -1,0 +1,219 @@
+{
+  "schema": "CoCivium.CoOpticsRoughGap.R0",
+  "date": "2026-10-26",
+  "state": "PUBLIC_RESEARCH_AND_TEST_PLAN_NOT_EXPERIMENT_NOT_ET_DETECTION_NOT_OPTICAL_RUNTIME",
+  "intent": "Determine whether bright/dark features between high facets of a rough surface arise from geometry, coherent speckle, polarization, material/subsurface variation or sensor artifacts",
+  "parents": [
+    {
+      "path": "CoCivium/CoSteward:docs/session_backchannel/evolution/CoCarrierInterspace_CME_Field_20261017_R0.json",
+      "relation": "PRIVATE_PRIOR_DESIGN_RECONCILED_NOT_COPIED_INTO_PUBLIC_SOURCE"
+    },
+    {
+      "path": "CoCivium/CoCivium:docs/Architecture/CORENEWAL_SELECTIVE_AMPLIFICATION_R0_20261026.md",
+      "relation": "SELECTIVE_BENEFIT_AMPLIFICATION_EXISTING_OWNER"
+    },
+    {
+      "path": "CoCivium/CoCivium:docs/CoTheoryAll/cofff/COFFF_FIRST_FULL_CONTACT_RESEARCH_STORYBOARD_R0_20261025.md",
+      "relation": "SEPARATE_ET_RESEARCH_AND_CONTACT_EVIDENCE_LADDER"
+    },
+    {
+      "path": "CoCivium/CoCivium:examples/colensmedia/README.md",
+      "relation": "MANY_VIEWS_SINGLE_EVIDENCE_IDENTITY"
+    }
+  ],
+  "physics_equation": "I(x)=|sum_j A_j(x) exp(i phi_j(x))|^2 (schematic coherent detector model)",
+  "reference_scope": "Research literature and a test protocol; no surface height map, camera image, original sample or laser sensor measurement in this wave",
+  "competing_models": [
+    {
+      "id": "H0_INSTRUMENT",
+      "class": "ORDINARY",
+      "mechanism": "Exposure, vignetting, saturation, gamma, sensor noise or digital preprocessing",
+      "predicts": "Dark pattern or contrast changes with imaging pipeline, settings or camera independent of physical surface",
+      "discriminating_test": "Calibrated dark and flat-frame controls, locked exposure, comparison across cameras; preserve raw unprocessed frames",
+      "allowed_claim": "SENSOR_AND_PIPELINE_ARTIFACT_CANDIDATE"
+    },
+    {
+      "id": "H1_GEOMETRIC_SHADOW",
+      "class": "ORDINARY",
+      "mechanism": "Occlusion and masking by upper surface facets of lower valleys, most visible at oblique illumination",
+      "predicts": "Shadow location correlates with measured surface height and illumination angle; reverses or moves with illumination azimuth",
+      "discriminating_test": "Known-geometry synthetic relief with opposite virtual illumination azimuth; match real measured topography only under independent safe optical protocol",
+      "allowed_claim": "RAY_GEOMETRY_CANDIDATE"
+    },
+    {
+      "id": "H2_COHERENT_SPECKLE",
+      "class": "ORDINARY",
+      "mechanism": "Interference of coherent wavefront contributions from random surface height or multiple scattering paths",
+      "predicts": "Intensity pattern granularity and correlations change with optical path/coherence or observation geometry, even if the physical surface remains unchanged",
+      "discriminating_test": "Reproducible interference simulation first; authorized enclosed optical sample later, compare normalized coherence controls with geometry and camera held as constant as possible",
+      "allowed_claim": "SCATTER_INTERFERENCE_CANDIDATE"
+    },
+    {
+      "id": "H3_POLARIZATION",
+      "class": "ORDINARY",
+      "mechanism": "Fresnel polarization response, facet orientations, depolarization and multiple scattering",
+      "predicts": "Parallel and crossed analyzer channels can show different intensity and polarization statistics with angle and material",
+      "discriminating_test": "Calibrated synthetic Stokes/analyzer data; eventual appropriately supervised controlled co/cross polarization acquisitions with normalized exposure",
+      "allowed_claim": "POLARIMETRIC_ROUGHNESS_CANDIDATE"
+    },
+    {
+      "id": "H4_MATERIAL_OR_SUBSURFACE",
+      "class": "ORDINARY",
+      "mechanism": "Coating, absorption, grain/chemical difference or buried defect",
+      "predicts": "Persistent contrast can follow composition or wavelength even when geometry or viewing direction changes",
+      "discriminating_test": "Reference material/known coating control and independent material metrology if available; do not infer defects from image alone",
+      "allowed_claim": "MATERIAL_CONTRAST_CANDIDATE"
+    },
+    {
+      "id": "H5_RESIDUAL_UNRESOLVED",
+      "class": "UNKNOWN",
+      "mechanism": "Difference not explained by the tested and explicitly scoped models",
+      "predicts": "Pre-registered residual survives controls and independent replication",
+      "discriminating_test": "Blind independent repeat with documented instrument, raw files, calibration and negative controls",
+      "allowed_claim": "UNKNOWN_ONLY_NOT_NEW_PHYSICS_OR_ET"
+    }
+  ],
+  "proposed_protocol": [
+    {
+      "id": "P0",
+      "step": "PUBLIC_SAFE_SYNTHETIC_BASELINE",
+      "expected": "Model that ignores roughness produces smooth/known reference; random surface phase creates granular simulated intensity; no validation of real rough surface",
+      "state": "PLANNED_NOT_RUN"
+    },
+    {
+      "id": "P1",
+      "step": "GEOMETRIC_SHADOW_CONTROL",
+      "expected": "Direction-dependent dark valleys in known simulated relief, not equivalent to destructive interference dark pixels",
+      "state": "PLANNED_NOT_RUN"
+    },
+    {
+      "id": "P2",
+      "step": "COHERENCE_CONTROL",
+      "expected": "Coherent versus decorrelated phase ensemble produces different speckle statistics with same synthetic surface descriptor",
+      "state": "PLANNED_NOT_RUN"
+    },
+    {
+      "id": "P3",
+      "step": "POLARIZATION_CONTROL",
+      "expected": "Change simulated analyzer orientation or independently calibrated polarization channels; compare co-cross statistics without changing exposure",
+      "state": "PLANNED_NOT_RUN"
+    },
+    {
+      "id": "P4",
+      "step": "CAMERA_MATERIAL_NEGATIVES",
+      "expected": "Known smooth and rough material controls, dark/flat frames and independent image acquisition bound artifacts",
+      "state": "PLANNED_NOT_RUN"
+    },
+    {
+      "id": "P5",
+      "step": "INDEPENDENT_REPLICATION",
+      "expected": "Pre-registered predictions and blind another operator; preserve PASS, FAIL and HELD including unexplained residuals",
+      "state": "HELD_EXTERNAL_OPERATOR_AND_REAL_INPUT"
+    }
+  ],
+  "co_null": {
+    "DARK_PIXEL": "LOW_DETECTED_INTENSITY_AT_SPECIFIED_BAND_PASS_EXPOSURE_AND_APERTURE",
+    "NO_LIGHT": "NOT_INFERABLE_FROM_DARK_PIXEL_ALONE",
+    "BELOW_DETECTION": "SENSOR_SENSITIVITY_BOUND",
+    "NOT_TESTED": "DO_NOT_INFER_ABSENCE",
+    "UNKNOWN": "UNRESOLVED_WITH_DEFINED_SCOPE",
+    "NEGATIVE_WITH_SENSITIVITY": "REQUIRES_CALIBRATION_AND_COVERAGE",
+    "ET_OR_GD": "NO_EXTERNAL_AGENCY_EVIDENCE_FROM_OPTICAL_SPECKLE"
+  },
+  "epistemic_lanes": {
+    "physics": "Experimentally measurable optical polarization, roughness, coherence, phase and sensor statistics",
+    "CoTheoryAll": "Multiple explicit models, falsifiers, ordinary controls, independent replication and honest unknown",
+    "CoMap_CoOrb": "Different renders of one source, preserve uncertainty and status",
+    "CoEnerget": "Measured illumination, camera/compute energy and environmental cost; no unmetered energy claims",
+    "CoAura": "Optional observer/attention or aesthetic lens, no new aura sensor claimed",
+    "G_d": "Optional voluntary spiritual interpretation; preference or causal agency not empirically established",
+    "DMT": "Altered subjective perception may be reported and studied under qualified research; never independent instrument observation or ET validation",
+    "ET": "Only qualified external astronomical observations through publicly documented research data; not direct communications or a feed opened by an ET",
+    "Planck": "Ordinary optical roughness at visible wavelengths does not evidence Planck-scale phenomena"
+  },
+  "sources": [
+    {
+      "url": "https://www.nist.gov/publications/polarization-light-scattered-microrough-surfaces-and-subsurface-defects-0",
+      "type": "PRIMARY_RESEARCH",
+      "claim": "Microroughness/defect effects on measured polarization"
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/20160829/",
+      "type": "PRIMARY_RESEARCH",
+      "claim": "Angle-resolved Stokes/roughness scattering"
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10361163/",
+      "type": "REVIEW",
+      "claim": "Randomly rough surface multiple-scattering effects"
+    },
+    {
+      "url": "https://doi.org/10.1016/j.rsurfi.2025.100441",
+      "type": "REVIEW",
+      "claim": "Speckle from coherent reflected roughness"
+    },
+    {
+      "url": "https://arxiv.org/abs/2010.03927",
+      "type": "PREPRINT",
+      "claim": "Ray optics self-affine rough-surface geometric shadowing"
+    },
+    {
+      "url": "https://seti.berkeley.edu/opendata",
+      "type": "PUBLIC_DATA_INDEX",
+      "claim": "Research telescope data available, not ET contact"
+    },
+    {
+      "url": "https://science.nasa.gov/uap/faqs/",
+      "type": "AGENCY_STATUS",
+      "claim": "No verified ET or UAP extraterrestrial evidence"
+    },
+    {
+      "url": "https://www.canada.ca/en/health-canada/services/health-risks-safety/radiation/everyday-things-emit-radiation/laser-products.html",
+      "type": "SAFETY",
+      "claim": "Laser beam and reflection hazards"
+    },
+    {
+      "url": "https://www.samhsa.gov/substance-use/learn/hallucinogens",
+      "type": "HEALTH_INFORMATION",
+      "claim": "Altered perception and impaired judgment potential"
+    }
+  ],
+  "safety": {
+    "first_choice": "SYNTHETIC_IMAGES_AND_SIMULATION_NO_PHYSICAL_LASER",
+    "real_lab": "ONLY_EXPLICITLY_AUTHORIZED_ENCLOSED_CLASS_1_SYSTEM_OR_QUALIFIED_LASER_LAB_WITH_SAFETY_REVIEW",
+    "no_eye_exposure": true,
+    "no_reflective_unknown_paths": true,
+    "no_public_aircraft_vehicle_exposure": true,
+    "no_drug_experiment": true,
+    "no_sensor_activation": true,
+    "no_ambient_surveillance": true
+  },
+  "future_ingest": {
+    "scope": "Source-approved and rights-reviewed public research sample only, not full firehose",
+    "cadence": "MANUAL_OR_APPROVED_SCOPED_LOW_RATE_RETRIEVAL",
+    "safety": "Read-only pinned data; metadata, licence, sample hash, rate limit, no covert observation",
+    "status": "HELD_NO_FEED_CRAWLER_NO_X2_NO_RECEIVER"
+  },
+  "acceptance": {
+    "source_readback": "REQUIRES_EXACT_GITHUB_GET_AFTER_WRITE",
+    "structure_test": "R0_MACHINE_SCHEMA_ONLY_NOT_SIMULATION",
+    "optics_measurement": "HELD",
+    "human_acceptance": "HELD",
+    "independent_repeat": "HELD",
+    "physical_new_mechanism": "NOT_CLAIMED",
+    "ET_CONTACT": "NOT_CLAIMED"
+  },
+  "nonclaims": [
+    "DARK_PIXEL_NE_NO_LIGHT",
+    "SPECKLE_NE_ET_MESSAGE",
+    "PATTERN_NE_AGENCY",
+    "INTERPRETATION_NE_INSTRUMENT",
+    "ALTERED_PERCEPTION_NE_EXTERNAL_CONTACT",
+    "HYPOTHESIS_NE_MEASUREMENT",
+    "OPTICAL_WAVELENGTH_NE_PLANCK_SCALE",
+    "COHERENT_IMAGE_NE_SURFACE_MAP_BY_ITSELF",
+    "RESEARCH_NOTE_NE_LIVE_LASER_EXPERIMENT",
+    "SOURCE_READBACK_NE_INDEPENDENT_REPLICATION",
+    "PUBLIC_DATA_ARCHIVE_NE_ET_FEED_OPENED"
+  ]
+}
