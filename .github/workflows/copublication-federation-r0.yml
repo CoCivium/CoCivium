@@ -1,0 +1,69 @@
+name: CoPublication Federation R0
+
+on:
+  pull_request:
+    paths:
+      - 'examples/copublication_federation_r0/**'
+      - '.github/workflows/copublication-federation-r0.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  static-canary:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Regenerate public manifest from its single checked-in authoring source
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 examples/copublication_federation_r0/make_manifest.py
+          git diff --exit-code -- examples/copublication_federation_r0/manifest.json
+      - name: Deterministic source-to-HTML parity
+        run: python3 examples/copublication_federation_r0/build.py --check
+      - name: Source kernel and negative-case policy tests
+        run: |
+          cd examples/copublication_federation_r0
+          python3 -m unittest -v test_federation
+
+  rendered-bridge:
+    name: Offline Chromium reader-bridge canary
+    runs-on: ubuntu-latest
+    needs: static-canary
+    timeout-minutes: 8
+    steps:
+      - name: Checkout PR source without persisted credentials
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Select Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install pinned browser driver (no app runtime dependencies)
+        run: python -m pip install --disable-pip-version-check --no-input 'playwright==1.55.0'
+      - name: Ensure a Chromium browser is available
+        shell: bash
+        run: |
+          set -euo pipefail
+          if ! command -v chromium >/dev/null 2>&1 && ! command -v google-chrome >/dev/null 2>&1 && ! command -v chromium-browser >/dev/null 2>&1; then
+            python -m playwright install --with-deps chromium
+          fi
+      - name: Render desktop and mobile without outbound requests
+        run: python examples/copublication_federation_r0/browser_qa.py
+      - name: Preserve source-bound visual and browser receipts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: copublication-r0-browser-receipt
+          path: |
+            examples/copublication_federation_r0/browser_qa_receipt.json
+            examples/copublication_federation_r0/preview_desktop.png
+            examples/copublication_federation_r0/preview_mobile.png
+            examples/copublication_federation_r0/qa_desktop.png
+            examples/copublication_federation_r0/qa_mobile.png
+          if-no-files-found: warn
+          retention-days: 14
