@@ -1,0 +1,39 @@
+{
+  "schema": "CoBrowserRendererSubstitutionFixture.R0",
+  "work_object": {
+    "work_object_id": "cowork-renderer-substitution-r0",
+    "intent": "prove renderer substitution without moving work identity",
+    "currentness_cursor": "co-browser-r0.1",
+    "evidence_refs": [
+      "docs/Architecture/COBROWSER_COORB_CONTINUITY_R0_20261027.md",
+      "docs/Architecture/COBROWSER_RENDERER_SUBSTITUTION_R0_20261027.md",
+      "ai/cobrowser-renderer-policy-r0.json"
+    ],
+    "authority": {
+      "read": true,
+      "render_local": true,
+      "provider_mutation": false,
+      "credential_access": false,
+      "browser_install": false,
+      "browser_uninstall": false,
+      "default_browser_change": false
+    }
+  },
+  "projections": [
+    {
+      "renderer_id": "webview2-evergreen",
+      "renderer_family": "chromium",
+      "host": "synthetic_windows_embedded"
+    },
+    {
+      "renderer_id": "firefox-managed",
+      "renderer_family": "gecko",
+      "host": "synthetic_independent_browser"
+    },
+    {
+      "renderer_id": "typed-headless",
+      "renderer_family": "renderer_independent",
+      "host": "synthetic_typed_projection"
+    }
+  ]
+}
