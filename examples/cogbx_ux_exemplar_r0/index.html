@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; img-src data:">
+<title>CoGbx UX Exemplar R0</title>
+<style>
+:root{
+  color-scheme:dark;
+  --bg:#0b0e12;--panel:#111720;--line:#293444;--text:#edf3f7;--muted:#9fb0be;
+  --accent:#dce9f3;--soft:#18212c;--warn:#d7ba7d;--ok:#a8d5ba;--bad:#d7a5a5;
+  --radius:18px;--shadow:0 14px 44px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;background:radial-gradient(circle at 50% -10%,#182333 0,#0b0e12 48%);color:var(--text);font:15px/1.45 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+button,input{font:inherit}
+button{color:inherit}
+a{color:inherit}
+.shell{min-height:100vh;display:grid;grid-template-rows:auto 1fr auto}
+.topbar{position:sticky;top:0;z-index:20;display:flex;gap:10px;align-items:center;justify-content:space-between;padding:12px 16px;background:rgba(11,14,18,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.brand{display:flex;align-items:center;gap:10px;min-width:0}
+.mark{width:32px;height:32px;border:1px solid #6f8498;border-radius:50%;display:grid;place-items:center;box-shadow:inset 0 0 0 6px #101823}
+.brand strong{letter-spacing:.02em}
+.tag{color:var(--muted);font-size:12px;white-space:nowrap}
+.controls{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
+.controls button,.action{
+  border:1px solid var(--line);background:var(--soft);padding:8px 10px;border-radius:10px;cursor:pointer
+}
+.controls button[aria-pressed="true"]{background:#263546;border-color:#6f8498}
+.controls button:focus-visible,.action:focus-visible,.node:focus-visible,input:focus-visible{outline:2px solid #c6d9ea;outline-offset:2px}
+.main{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:14px;padding:14px;min-height:0}
+.stage,.rail,.textview{border:1px solid var(--line);border-radius:var(--radius);background:linear-gradient(180deg,rgba(18,25,34,.96),rgba(13,18,25,.96));box-shadow:var(--shadow)}
+.stage{min-height:680px;position:relative;overflow:hidden}
+.field{position:absolute;inset:0;perspective:1000px;transition:transform .35s ease}
+.field.threed{transform:rotateX(4deg) rotateY(-6deg) scale(.98)}
+.map{position:absolute;inset:0}
+.map svg{width:100%;height:100%;opacity:.8}
+.map line{stroke:#405066;stroke-width:1.2}
+.node{
+  position:absolute;min-width:130px;max-width:180px;padding:10px 11px;border:1px solid #3a4a60;border-radius:15px;
+  background:#121a24;box-shadow:0 8px 22px rgba(0,0,0,.28);cursor:pointer;text-align:left
+}
+.node small{display:block;color:var(--muted);margin-top:3px}
+.node.current{left:50%;top:44%;transform:translate(-50%,-50%);min-width:210px;border-color:#879aae;background:#162131}
+.node.source{left:8%;top:17%}
+.node.unknown{right:8%;top:17%}
+.node.next{right:7%;bottom:16%}
+.node.recover{left:8%;bottom:16%}
+.node.peer{left:50%;top:8%;transform:translateX(-50%)}
+.node[data-state="held"]{border-style:dashed}
+.orb{
+  position:absolute;left:50%;top:44%;transform:translate(-50%,-50%);width:310px;height:310px;border:1px solid #51647a;border-radius:50%;
+  pointer-events:none;box-shadow:0 0 0 24px rgba(70,88,108,.08),0 0 80px rgba(71,101,133,.18) inset
+}
+.orb:after{content:"";position:absolute;inset:58px;border:1px solid #2f3d4e;border-radius:50%}
+.status{position:absolute;left:16px;right:16px;bottom:14px;display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.stat{border:1px solid var(--line);background:rgba(11,15,21,.86);padding:9px;border-radius:12px}
+.stat b{display:block;font-size:13px}.stat span{color:var(--muted);font-size:12px}
+.rail{padding:14px;display:flex;flex-direction:column;gap:12px}
+.card{border:1px solid var(--line);background:#0f151d;border-radius:14px;padding:12px}
+.card h2,.card h3{font-size:14px;margin:0 0 8px}
+.card p{margin:4px 0;color:var(--muted)}
+.kv{display:grid;grid-template-columns:1fr auto;gap:6px 10px;font-size:13px}
+.kv span:nth-child(even){color:var(--accent)}
+.paths{display:grid;grid-template-columns:repeat(2,1fr);gap:6px}
+.path{border:1px solid var(--line);border-radius:10px;padding:8px;font-size:12px}
+.path b{display:block}.ok{color:var(--ok)}.held{color:var(--warn)}
+.predict{display:grid;gap:8px}
+.inputwrap{position:relative}
+.inputwrap input{width:100%;padding:10px;border-radius:10px;border:1px solid var(--line);background:#0b1016;color:var(--text)}
+.ghost{color:#8295a7;font-size:13px;min-height:38px;border-left:2px solid #51647a;padding-left:9px}
+.actions{display:flex;gap:6px}
+.actions button{flex:1}
+.notice{font-size:12px;color:var(--muted)}
+.textview{display:none;padding:18px}
+.textview h1{font-size:22px}
+.textview section{max-width:760px;margin:0 auto 22px}
+.ambient .rail,.ambient .status,.ambient .node:not(.current),.ambient .map{display:none}
+.ambient .stage{min-height:calc(100vh - 122px)}
+.ambient .node.current{top:50%;min-width:250px;text-align:center}
+.ambient .orb{top:50%;width:380px;height:380px}
+.textmode .stage,.textmode .rail{display:none}
+.textmode .textview{display:block;grid-column:1/-1}
+footer{padding:10px 16px;color:var(--muted);font-size:12px;border-top:1px solid var(--line)}
+.badge{display:inline-block;padding:2px 6px;border:1px solid var(--line);border-radius:999px;margin-right:5px}
+@media (max-width:900px){
+  .main{grid-template-columns:1fr}.stage{min-height:620px}.rail{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+  .node{min-width:110px;max-width:150px;font-size:13px}.node.current{min-width:180px}
+}
+@media (max-width:600px){
+  .topbar{align-items:flex-start}.tag{display:none}.main{padding:8px}.stage{min-height:560px}.rail{grid-template-columns:1fr}
+  .node.source{left:4%;top:17%}.node.unknown{right:4%;top:17%}.node.next{right:4%;bottom:18%}.node.recover{left:4%;bottom:18%}
+  .node.peer{top:5%}.orb{width:250px;height:250px}.status{grid-template-columns:repeat(2,1fr)}
+}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="shell" id="app">
+  <header class="topbar">
+    <div class="brand">
+      <div class="mark" aria-hidden="true">◎</div>
+      <div><strong>CoGbx UX Exemplar R0</strong><div class="tag">one work fabric · many embodiments · no single crown</div></div>
+    </div>
+    <div class="controls" aria-label="Projection controls">
+      <button id="mapBtn" aria-pressed="true">Orb + Map</button>
+      <button id="textBtn" aria-pressed="false">Text</button>
+      <button id="ambientBtn" aria-pressed="false">Ambient</button>
+      <button id="threeBtn" aria-pressed="false">3D+</button>
+    </div>
+  </header>
+
+  <main class="main">
+    <section class="stage" aria-label="Relational work field">
+      <div class="field" id="field">
+        <div class="map" aria-hidden="true">
+          <svg viewBox="0 0 1000 700" preserveAspectRatio="none">
+            <line x1="500" y1="308" x2="170" y2="145"/><line x1="500" y1="308" x2="830" y2="145"/>
+            <line x1="500" y1="308" x2="830" y2="575"/><line x1="500" y1="308" x2="170" y2="575"/>
+            <line x1="500" y1="308" x2="500" y2="82"/><line x1="170" y1="145" x2="500" y2="82"/>
+            <line x1="830" y1="145" x2="500" y2="82"/>
+          </svg>
+        </div>
+        <div class="orb" aria-hidden="true"></div>
+
+        <button class="node current" data-node="current">
+          CURRENT
+          <small>One durable work object across all projections.</small>
+        </button>
+        <button class="node source" data-node="source">
+          SOURCE
+          <small>Exact lineage + evidence pointers.</small>
+        </button>
+        <button class="node unknown" data-node="unknown" data-state="held">
+          UNKNOWN
+          <small>Currentness of one remote embodiment is unproved.</small>
+        </button>
+        <button class="node next" data-node="next">
+          NEXT
+          <small>Preview one reversible action.</small>
+        </button>
+        <button class="node recover" data-node="recover">
+          RECOVER
+          <small>Reconstruct without provider-tab identity.</small>
+        </button>
+        <button class="node peer" data-node="peer">
+          PEERS
+          <small>Several replaceable routes; no crown.</small>
+        </button>
+      </div>
+
+      <div class="status" aria-label="Compact status">
+        <div class="stat"><b>WORK</b><span>1 durable object</span></div>
+        <div class="stat"><b>EMBODIMENTS</b><span>3 optional</span></div>
+        <div class="stat"><b>UNKNOWN</b><span>1 held</span></div>
+        <div class="stat"><b>EXTERNAL EFFECTS</b><span>0</span></div>
+      </div>
+    </section>
+
+    <aside class="rail" aria-label="Focused details">
+      <section class="card">
+        <h2>CoHereNow</h2>
+        <div class="kv">
+          <span>currentness</span><span>local current</span>
+          <span>authority</span><span>preview only</span>
+          <span>recovery</span><span>available</span>
+          <span>crown risk</span><span>low</span>
+        </div>
+      </section>
+
+      <section class="card">
+        <h3>Independent paths</h3>
+        <div class="paths">
+          <div class="path"><b class="ok">LOCAL</b>typed recovery</div>
+          <div class="path"><b class="ok">WEB</b>replaceable renderer</div>
+          <div class="path"><b class="ok">PEER</b>federated candidate</div>
+          <div class="path"><b class="held">MODEL</b>provider optional</div>
+        </div>
+        <p class="notice">Redundancy does not duplicate authority.</p>
+      </section>
+
+      <section class="card predict">
+        <h3>Predictive shadow</h3>
+        <div class="inputwrap">
+          <label for="draft" class="notice">Local synthetic input</label>
+          <input id="draft" value="Show me the next useful relation" autocomplete="off">
+        </div>
+        <div class="ghost" id="ghost">Candidate: compare the current work object with its recovery path before materializing another provider session.</div>
+        <div class="actions">
+          <button class="action" id="acceptBtn">Accept locally</button>
+          <button class="action" id="rejectBtn">Reject</button>
+        </div>
+        <p class="notice" id="receipt">RAW preserved · SEND 0 · EXECUTE 0 · AUTHORITY 0</p>
+      </section>
+
+      <section class="card">
+        <h3>Why this projection</h3>
+        <p id="focusText">One calm surface carries identity, uncertainty, next action and recovery. Deeper evidence stays available without being permanently visible.</p>
+      </section>
+    </aside>
+
+    <article class="textview" aria-label="Accessible text projection">
+      <section>
+        <span class="badge">TEXT PROJECTION</span><span class="badge">SAME WORK OBJECT</span>
+        <h1>One work fabric. Many devices, models and communities. No single crown.</h1>
+        <p>This linear view contains the same core state as the Orb/Map view. It is the required fallback for narrow displays, assistive technology, exports, recovery and any situation where spatial presentation is unhelpful.</p>
+      </section>
+      <section>
+        <h2>Current</h2>
+        <p>A synthetic durable work object is current locally. One remote embodiment is explicitly unknown. No external action is authorized.</p>
+        <h2>Next</h2>
+        <p>Preview one reversible action, compare its evidence and recovery path, then explicitly accept or reject it.</p>
+        <h2>Unknown</h2>
+        <p>Unknown is not zero. A missing or stale embodiment does not erase the work object.</p>
+        <h2>Recover</h2>
+        <p>Reconstruct from durable identity, evidence pointers, currentness and receipts rather than from the continued existence of a browser tab.</p>
+      </section>
+    </article>
+  </main>
+
+  <footer>
+    STATIC OFFLINE SOURCE EXEMPLAR · NO FETCH · NO STORAGE · NO LOGIN · NO SEND ·
+    <span id="footerMode">Orb + Map</span>
+  </footer>
+</div>
+
+<script>
+(() => {
+  "use strict";
+  const app = document.getElementById("app");
+  const field = document.getElementById("field");
+  const mapBtn = document.getElementById("mapBtn");
+  const textBtn = document.getElementById("textBtn");
+  const ambientBtn = document.getElementById("ambientBtn");
+  const threeBtn = document.getElementById("threeBtn");
+  const footerMode = document.getElementById("footerMode");
+  const draft = document.getElementById("draft");
+  const ghost = document.getElementById("ghost");
+  const receipt = document.getElementById("receipt");
+  const focusText = document.getElementById("focusText");
+
+  const setMode = (mode) => {
+    app.classList.toggle("textmode", mode === "text");
+    app.classList.toggle("ambient", mode === "ambient");
+    mapBtn.setAttribute("aria-pressed", String(mode === "map"));
+    textBtn.setAttribute("aria-pressed", String(mode === "text"));
+    ambientBtn.setAttribute("aria-pressed", String(mode === "ambient"));
+    footerMode.textContent = mode === "map" ? "Orb + Map" : mode[0].toUpperCase()+mode.slice(1);
+  };
+
+  mapBtn.addEventListener("click", () => setMode("map"));
+  textBtn.addEventListener("click", () => setMode("text"));
+  ambientBtn.addEventListener("click", () => setMode("ambient"));
+  threeBtn.addEventListener("click", () => {
+    const on = !field.classList.contains("threed");
+    field.classList.toggle("threed", on);
+    threeBtn.setAttribute("aria-pressed", String(on));
+  });
+
+  document.querySelectorAll(".node").forEach((node) => {
+    node.addEventListener("click", () => {
+      const details = {
+        current:"Work identity is stable; visible embodiments are optional projections.",
+        source:"Source, version, evidence and currentness travel with the work object.",
+        unknown:"One embodiment may be stale or missing. UNKNOWN stays explicit instead of becoming false green.",
+        next:"Prediction may prepare candidates early, but effects remain separately authorized.",
+        recover:"The preferred recovery path reconstructs useful state without requiring the original provider tab.",
+        peer:"Local, web, peer and model routes are replaceable. No route gains crown authority by existing."
+      };
+      focusText.textContent = details[node.dataset.node];
+    });
+  });
+
+  document.getElementById("acceptBtn").addEventListener("click", () => {
+    const before = draft.value;
+    const addition = " → compare recovery before materialization";
+    draft.value = before + addition;
+    receipt.textContent = "LOCAL ACCEPTED · RAW length " + before.length + " · SEND 0 · EXECUTE 0";
+  });
+
+  document.getElementById("rejectBtn").addEventListener("click", () => {
+    ghost.textContent = "Rejected locally. Candidate remains unexecuted and can be regenerated.";
+    receipt.textContent = "LOCAL REJECTED · SEND 0 · EXECUTE 0 · AUTHORITY 0";
+  });
+})();
+</script>
+</body>
+</html>
