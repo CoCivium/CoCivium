@@ -42,6 +42,14 @@ must(/These are proposed alternatives, not verified independent failover paths/,
 must(/source and evidence pointers; not an active receiver/, "unverified receiver boundary");
 must(/--forest-bg:#17372c/, "restrained green optionality banner");
 must(/role="note"/, "semantic notice");
+must(/id="throughput-title"/, "qualified throughput context");
+must(/CoSpeedo\+ \| Throughput evidence/, "qualified capacity explainer");
+must(/Proven peak<\/span><span>NOT MEASURED/, "no fabricated peak");
+must(/Sustained baseline<\/span><span>NOT MEASURED/, "no fabricated sustainable baseline");
+must(/Useful outcomes \/ human-time<\/span><span>NOT MEASURED/, "no fabricated human-time throughput");
+must(/Available extra capacity<\/span><span>UNQUALIFIED/, "no inferred resource capacity");
+must(/New devices and agents are inventory candidates until independently qualified/, "inventory is not capacity");
+
 mustNot(/<span>recovery<\/span><span>available<\/span>/, "false live recovery state");
 mustNot(/<span>crown risk<\/span><span>low<\/span>/, "false measured crown risk");
 mustNot(/<span>currentness<\/span><span>local current<\/span>/, "false live currentness");
