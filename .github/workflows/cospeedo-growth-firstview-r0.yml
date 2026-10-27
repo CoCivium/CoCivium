@@ -1,0 +1,24 @@
+name: CoSpeedo CoVal Growth First View R0
+on:
+  pull_request:
+    paths:
+      - 'examples/cospeedo-growth-r0/**'
+      - 'ai/benchmark-evo.jsonl'
+      - 'docs/Metrics/COSPEEDO_7DAY_SCORECARD_R0_20261026.json'
+      - '.github/workflows/cospeedo-growth-firstview-r0.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  offline-source-and-ui-canary:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check 25 historical, no-fake-exponential and offline runtime cases
+        run: node --test examples/cospeedo-growth-r0/test_dashboard.cjs
+      - name: Confirm no external receiver has been contacted
+        run: echo "Static bounded data, no HTTP calls, no X2 deployment, no historical CoVal fit."
