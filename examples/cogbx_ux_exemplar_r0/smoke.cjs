@@ -35,7 +35,7 @@ must(/NO LOCAL PERSISTENCE/, "draft persistence nonclaim");
 must(/id="proposal"[^>]*aria-live="polite"/, "accessible separate proposal");
 must(/id="undoBtn"/, "preview undo control");
 must(/PREVIEW ONLY · Suggested next text \(not applied\)/, "explicit nonapplied prediction");
-mustNot(/\\bdraft\\.value\\s*=/, "raw input assignment forbidden");
+mustNot(/\bdraft\.value\s*=/, "raw input assignment forbidden");
 mustNot(/<b class="ok">/, "unverified peer paths cannot be green");
 
 must(/Redundancy does not duplicate authority/i, "redundancy boundary");
