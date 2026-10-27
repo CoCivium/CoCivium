@@ -1,5 +1,5 @@
 {
-  "schema": "CoBrowserContinuityFixture.R0",
+  "schema": "CoBrowserContinuityFixture.R0.1",
   "work_object": {
     "work_object_id": "cowork-browser-continuity-r0",
     "intent": "preserve useful work across provider surface degradation",
@@ -19,25 +19,45 @@
       "surface_id": "surface-healthy",
       "work_object_id": "cowork-browser-continuity-r0",
       "adapter_id": "provider-adapter-a",
-      "visual_state": "HEALTHY",
+      "render_state": "RENDERED",
+      "currentness_state": "CURRENT",
+      "interaction_state": "RESPONSIVE",
       "auth_state": "AUTHENTICATED_OBSERVED",
-      "network_state": "UNKNOWN"
+      "network_state": "REACHABLE",
+      "provider_state": "OK"
     },
     {
       "surface_id": "surface-blank",
       "work_object_id": "cowork-browser-continuity-r0",
       "adapter_id": "provider-adapter-b",
-      "visual_state": "BLANK_RENDER",
+      "render_state": "BLANK",
+      "currentness_state": "UNKNOWN",
+      "interaction_state": "UNKNOWN",
       "auth_state": "UNKNOWN",
-      "network_state": "UNKNOWN"
+      "network_state": "UNKNOWN",
+      "provider_state": "UNKNOWN"
     },
     {
       "surface_id": "surface-auth",
       "work_object_id": "cowork-browser-continuity-r0",
       "adapter_id": "provider-adapter-c",
-      "visual_state": "AUTH_REQUIRED",
+      "render_state": "RENDERED",
+      "currentness_state": "UNKNOWN",
+      "interaction_state": "UNKNOWN",
       "auth_state": "AUTH_REQUIRED",
-      "network_state": "UNKNOWN"
+      "network_state": "UNKNOWN",
+      "provider_state": "UNKNOWN"
+    },
+    {
+      "surface_id": "surface-visible-unknown",
+      "work_object_id": "cowork-browser-continuity-r0",
+      "adapter_id": "provider-adapter-d",
+      "render_state": "RENDERED",
+      "currentness_state": "UNKNOWN",
+      "interaction_state": "UNKNOWN",
+      "auth_state": "AUTHENTICATED_OBSERVED",
+      "network_state": "UNKNOWN",
+      "provider_state": "UNKNOWN"
     }
   ]
 }
