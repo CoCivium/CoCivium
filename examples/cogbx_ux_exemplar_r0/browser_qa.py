@@ -41,6 +41,19 @@ def case(browser, name, width, height):
     check("unverified candidate" in page.locator(".paths").inner_text(), name + "_peer_explicitly_unverified")
     check(page.locator(".node.unknown").get_attribute("data-state") == "held", name + "_unknown_is_held")
     check(page.get_by_role("button", name="Orb + Map").get_attribute("aria-pressed") == "true", name + "_default_map_mode")
+    if width <= 600:
+        cards = page.locator(".node").evaluate_all("""els => els.map(el => {
+            const r=el.getBoundingClientRect();
+            return {id:el.dataset.node,x:r.x,y:r.y,right:r.right,bottom:r.bottom};
+        })""")
+        def overlap(p,q):
+            return min(p["right"],q["right"]) - max(p["x"],q["x"]) > 1 and min(p["bottom"],q["bottom"]) - max(p["y"],q["y"]) > 1
+        check(not any(overlap(x,y) for i,x in enumerate(cards) for y in cards[i+1:]),name+"_mobile_relation_cards_do_not_overlap")
+        status = page.locator(".status").bounding_box()
+        check(bool(status) and status["y"] >= max(x["bottom"] for x in cards)-1,name+"_mobile_status_follows_cards")
+        check(page.locator(".topbar").evaluate("(el)=>getComputedStyle(el).position")=="relative",name+"_mobile_toolbar_not_sticky")
+        check(page.locator(".map").is_hidden() and page.locator(".orb").is_hidden(),name+"_mobile_cards_replace_spatial_map")
+
 
     page.get_by_role("button", name="Text", exact=True).click()
     check(page.locator(".textview").is_visible(), name + "_text_fallback_visible")
@@ -75,6 +88,7 @@ def case(browser, name, width, height):
     check(page.evaluate("document.documentElement.scrollWidth <= innerWidth + 1"), name + "_no_horizontal_overflow")
     check(len(outbound) == 0, name + "_zero_outbound_requests")
     check(len(errors) == 0, name + "_zero_browser_errors")
+    page.evaluate("window.scrollTo(0,0)")
     target=ROOT / ("preview_" + name + ".png")
     page.screenshot(path=str(target), full_page=True)
     check(target.is_file() and target.stat().st_size > 12000, name + "_screenshot_saved")
