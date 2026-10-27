@@ -38,3 +38,20 @@ node examples/cogbx_ux_exemplar_r0/smoke.cjs
 - `docs/Architecture/COVIRTUAL_SESSION_MORPHOLOGY_R0.md`
 - `docs/Architecture/CORELATIONAL_UX_PREDICTIVE_INPUT_R0.md`
 - `docs/Evolution/COSCALE_CONTINUUM_COORBWARE_R0_20261023.md`
+
+## R0.1 status-truth and non-capture revision (2026-10-27)
+
+The original R0 is a helpful **synthetic offline illustration**, but labels such as `recovery available`, `crown risk low`, and green-colored `PEER` paths could be mistaken for observed live device/federation state.
+
+R0.1 adds a conspicuous **STATIC DEMONSTRATION · NOT LIVE** notice and changes the sample values to `synthetic fixture`, `not live-tested`, `not measured` and `candidate`. The forest-green notice indicates **explanation/context**, not proof of healthy status. The existing orbital, map, ambient, text, 3D+ and reversible local predictive controls remain.
+
+This corrects presentation semantics only. It does **not** establish:
+- that X2's current CoBar, Desktop Commander, browser or native agent is reachable;
+- that PEER, WEB, MODEL and LOCAL are independently operable failover paths;
+- that recovery can reconstruct real work after one device or provider disappears;
+- that CoGbx.org is deployed, owned by the application, or an identity root;
+- that any synthetic user interaction implies actual user consent.
+
+**Next recommended test before native integration:** render the same **real, authorized, non-private** work-object packet on two independently implemented front ends and one text/headless projection; compare identity, source digest, freshness, unknown status and recovery bytes. Close one renderer, reconstruct from the portable packet, and confirm exact readback. The participant must be able to decline prediction, export/leave, and disable the UI. Report actual observed failure-domain diversity, not a count of logos.
+
+**CI regression:** `smoke.cjs` rejects misleading green-status/failover strings. The optional Chromium acceptance test also exercises desktop and mobile view transitions, keyboard-focused controls, local accept/reject and zero outbound requests. These checks are separate from independent human accessibility and first-use tests.
