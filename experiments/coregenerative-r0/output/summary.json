@@ -1,0 +1,35 @@
+{
+  "events": 13,
+  "examples": {
+    "hype_evidence_spend": 0.0,
+    "hype_naive_benefit_per_resource": 0.2,
+    "hype_naive_spend": 27.77777777,
+    "initial_useful": 8.0,
+    "max_allowed_capacity": 110.0,
+    "regenerative_useful_after_24": 83.23946419,
+    "regenerative_useful_after_8": 50.34995803,
+    "resource_exhausted_useful_after_24": 2.43321432
+  },
+  "ledger_head_sha256": "2c288a857fbc765eabdff6cacd5f13d1e5b01dd89bd2ffcd90c445f34a595fab",
+  "model": "unitless_synthetic",
+  "nonclaims": [
+    "NO_LIVE_USERS",
+    "NO_ETERNAL_AMPLIFICATION",
+    "NO_G_D_PHYSICAL_MEASUREMENT",
+    "NO_REAL_RESOURCES_MEASURED",
+    "NO_PUBLIC_RECEIVER_ACK"
+  ],
+  "runs": 6,
+  "schema": "CoRegenerative.RunSummary.R0",
+  "source_sha256": {
+    "README.md": "6182eb315a2f1d6bfe449cd1361f7936996e858f2f1c8b7536ad04d0921c6276",
+    "build.py": "9d50308cd74394eb897144978a2353825d0e1c9322840e06e084b2cb3f583b29",
+    "cycle.py": "f8f6402cc6bd17815495a75047b7e41450b477e5b2d463fe4a3cade8da6e2ae1"
+  },
+  "status_counts": {
+    "FAIL": 1,
+    "HOLD": 2,
+    "NOT_RUN": 3,
+    "PASS": 7
+  }
+}
