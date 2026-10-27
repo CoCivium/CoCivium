@@ -1,0 +1,63 @@
+name: CoBrowser Renderer Substitution R0
+
+permissions:
+  contents: read
+
+on:
+  pull_request:
+    paths:
+      - "docs/Architecture/COBROWSER_RENDERER_SUBSTITUTION_R0_20261027.md"
+      - "ai/cobrowser-renderer-policy-r0.json"
+      - "scripts/CoBrowserRendererSubstitutionR0.py"
+      - "ai/fixtures/cobrowser-renderer-substitution-r0.json"
+      - ".github/workflows/cobrowser-renderer-substitution-r0.yml"
+  push:
+    paths:
+      - "docs/Architecture/COBROWSER_RENDERER_SUBSTITUTION_R0_20261027.md"
+      - "ai/cobrowser-renderer-policy-r0.json"
+      - "scripts/CoBrowserRendererSubstitutionR0.py"
+      - "ai/fixtures/cobrowser-renderer-substitution-r0.json"
+      - ".github/workflows/cobrowser-renderer-substitution-r0.yml"
+
+jobs:
+  substitution:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run synthetic renderer substitution canary
+        run: |
+          python -B scripts/CoBrowserRendererSubstitutionR0.py \
+            --fixture ai/fixtures/cobrowser-renderer-substitution-r0.json \
+            > /tmp/cobrowser-renderer-r0.json
+
+      - name: Validate renderer policy and substitution rails
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          report = json.loads(Path("/tmp/cobrowser-renderer-r0.json").read_text())
+          policy = json.loads(Path("ai/cobrowser-renderer-policy-r0.json").read_text())
+
+          assert report["state"] == "BOUNDED_SYNTHETIC_SUBSTITUTION_PASS__NO_RUNTIME_ADOPTION"
+          assert report["projection_count"] == 3
+          assert report["same_invariant_projection_across_renderers"] is True
+          assert report["all_outward_effects_zero"] is True
+          assert report["retirement_eligible"] is False
+          assert set(report["renderer_families"]) == {"chromium","gecko","renderer_independent"}
+
+          assert policy["work_identity_root"] == "CoWorkObject"
+          assert policy["continuity_projection"] == "CoOrb"
+          assert policy["x2"]["mutations_allowed"] is False
+          assert policy["x2"]["inventory_state"] == "UNVERIFIED_CURRENT"
+          assert "human_gate_for_uninstall_default_browser_or_account_change" in policy["retirement_gate"]
+          assert "RENDERER_NE_WORK_IDENTITY" in policy["rails"]
+          assert "OFFLINE_OBSERVER_NE_RUNTIME_AUTHORITY" in policy["rails"]
+
+          print("PASS_COBROWSER_RENDERER_SUBSTITUTION_R0")
+          PY

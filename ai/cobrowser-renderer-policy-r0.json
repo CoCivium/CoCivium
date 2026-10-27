@@ -1,0 +1,134 @@
+{
+  "schema": "CoBrowser.RendererSubstitutionPolicy.R0.v0.1",
+  "state": "CANDIDATE__NO_X2_RUNTIME_MUTATION",
+  "observed_at": "2026-10-27",
+  "work_identity_root": "CoWorkObject",
+  "continuity_projection": "CoOrb",
+  "renderer_frontier": [
+    {
+      "renderer_id": "webview2-evergreen",
+      "family": "chromium",
+      "role": "PREFERRED_WINDOWS_EMBEDDED_RENDERER_CANDIDATE",
+      "runtime": "Microsoft Edge WebView2 Evergreen Runtime",
+      "selection_state": "QUALIFIED_BY_PUBLIC_PLATFORM_DOCS__X2_PRESENCE_UNVERIFIED",
+      "strengths": [
+        "windows_embedding",
+        "evergreen_servicing",
+        "shared_runtime",
+        "local_or_remote_web_projection"
+      ],
+      "nonclaims": [
+        "NOT_X2_INSTALLATION_PROOF",
+        "NOT_CONTINUITY_ROOT",
+        "NOT_SINGLE_RENDERER_DEFAULT_YET"
+      ]
+    },
+    {
+      "renderer_id": "firefox-managed",
+      "family": "gecko",
+      "role": "INDEPENDENT_ENGINE_CONTINUITY_CANARY_CANDIDATE",
+      "runtime": "Firefox current or ESR under explicit policy",
+      "selection_state": "QUALIFIED_BY_PUBLIC_POLICY_DOCS__X2_PRESENCE_UNVERIFIED",
+      "strengths": [
+        "independent_engine_family",
+        "enterprise_policy_surface",
+        "failure_domain_diversity"
+      ],
+      "nonclaims": [
+        "NOT_X2_INSTALLATION_PROOF",
+        "NOT_CONTINUITY_ROOT",
+        "NOT_FORCED_ESR_SELECTION"
+      ]
+    },
+    {
+      "renderer_id": "legacy-chromium-compat",
+      "family": "chromium",
+      "role": "COMPATIBILITY_EMBODIMENT",
+      "runtime": "existing Edge/Chrome/other Chromium browser where required",
+      "selection_state": "PRESERVE_UNTIL_SUBSTITUTION_PROVED",
+      "strengths": [
+        "provider_compatibility",
+        "migration_continuity"
+      ],
+      "nonclaims": [
+        "NOT_CANONICAL_STATE_STORE",
+        "NOT_AUTOMATICALLY_REMOVED"
+      ]
+    },
+    {
+      "renderer_id": "typed-headless",
+      "family": "renderer_independent",
+      "role": "RECOVERY_FLOOR",
+      "runtime": "typed JSON/HTML/text projection",
+      "selection_state": "REQUIRED_FOR_IMPORTANT_WORK_OBJECTS",
+      "strengths": [
+        "portability",
+        "diffability",
+        "recovery",
+        "low_hidden_state"
+      ],
+      "nonclaims": [
+        "NOT_FULL_INTERACTIVE_BROWSER"
+      ]
+    }
+  ],
+  "lattice_dimensions": [
+    "engine",
+    "host",
+    "work_object",
+    "provider_adapter",
+    "device",
+    "operating_system",
+    "auth_boundary",
+    "privacy_class",
+    "authority",
+    "currentness",
+    "recovery_mode",
+    "network_state",
+    "interaction_mode",
+    "accessibility_profile",
+    "cost_band",
+    "latency_band",
+    "energy_band",
+    "provenance_quality",
+    "exitability",
+    "portability"
+  ],
+  "hard_gates": [
+    "authority",
+    "privacy",
+    "credential_boundary",
+    "required_capability",
+    "minimum_currentness",
+    "minimum_evidence",
+    "platform_compatibility",
+    "accessibility",
+    "recovery_path"
+  ],
+  "retirement_gate": [
+    "qualified_export",
+    "durable_work_object_or_checkpoint",
+    "alternate_renderer_reconstruction_pass",
+    "evidence_and_currentness_preserved",
+    "required_provider_flows_reachable_or_replaced",
+    "rollback_path",
+    "human_gate_for_uninstall_default_browser_or_account_change"
+  ],
+  "x2": {
+    "observer_state": "OFFLINE_AS_OF_LAST_CHECK",
+    "inventory_state": "UNVERIFIED_CURRENT",
+    "mutations_allowed": false
+  },
+  "rails": [
+    "RENDERER_NE_WORK_IDENTITY",
+    "ENGINE_NE_CONTINUITY_ROOT",
+    "LEGACY_BROWSER_NE_CANONICAL_STATE",
+    "LOGICAL_OPTION_SPACE_NE_LIVE_PROCESSES",
+    "ADDRESSABLE_NE_MATERIALIZED",
+    "DUAL_ENGINE_NE_AVAILABILITY_GUARANTEE",
+    "PREFERENCE_NE_RETIREMENT_AUTHORITY",
+    "INSTALLED_NE_CONTINUITY_ROOT",
+    "OFFLINE_OBSERVER_NE_RUNTIME_AUTHORITY",
+    "SCREENSHOT_NE_MACHINE_INVENTORY"
+  ]
+}
