@@ -1,0 +1,31 @@
+name: CoObject Vitality Metabolism R0
+
+permissions:
+  contents: read
+
+on:
+  pull_request:
+    paths:
+      - "docs/Architecture/COOBJECT_VITALITY_METABOLISM_R0_20261027.md"
+      - "ai/vitality/**"
+      - "scripts/CoObjectVitalityR0.py"
+      - ".github/workflows/coobject-vitality-r0.yml"
+  push:
+    paths:
+      - "docs/Architecture/COOBJECT_VITALITY_METABOLISM_R0_20261027.md"
+      - "ai/vitality/**"
+      - "scripts/CoObjectVitalityR0.py"
+      - ".github/workflows/coobject-vitality-r0.yml"
+
+jobs:
+  vitality:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run bounded vitality canary
+        run: |
+          python -B scripts/CoObjectVitalityR0.py             --fixture ai/vitality/coobject-vitality-fixture-r0.json             --policy ai/vitality/coobject-vitality-policy-r0.json
