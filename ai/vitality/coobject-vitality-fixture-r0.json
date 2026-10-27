@@ -1,0 +1,239 @@
+{
+  "schema": "CoObject.VitalityFixture.R0.v0.1",
+  "observed_at": "2026-10-27T23:40:00Z",
+  "objects": [
+    {
+      "object_id": "cobaseline-frontier-r0",
+      "object_class": "SOFTWARE_COMPONENT",
+      "source_ref": "scripts/CoBaselineFrontierR0.py",
+      "lifecycle_state": "ACTIVE_WORKING",
+      "currentness_state": "CURRENT",
+      "health_state": "HEALTHY_BOUNDED_SYNTHETIC",
+      "authority_ceiling": "LOCAL_READONLY_OR_SYNTHETIC_TEST",
+      "confidentiality": "PUBLIC",
+      "metabolism": {
+        "sense": [
+          "NEW_COMPARABLE_BENCHMARK_RESULT",
+          "CURRENTNESS_CHANGE"
+        ],
+        "intake": [
+          "TYPED_BENCHMARK_RECORD"
+        ],
+        "transform": [
+          "COMPARABILITY_GATE",
+          "PARETO_UPDATE",
+          "CHAMPION_LABELS"
+        ],
+        "store": [
+          "VERSIONED_RESULT_LINEAGE"
+        ],
+        "route": [
+          "COHERE_NOW",
+          "COSPEEDO",
+          "BENCHMARK_REVIEW"
+        ],
+        "share": [
+          "PUBLIC_SAFE_FRONTIER_SUMMARY"
+        ],
+        "amplify": [
+          "REUSE_PROVEN_BASELINE",
+          "RECOVERY_AWARE_SELECTION"
+        ],
+        "dampen": [
+          "RAW_SPEED_HYPE",
+          "FALSE_COMPARISON"
+        ],
+        "return": [
+          "FRONTIER_DELTA",
+          "HELD_REASON"
+        ],
+        "repair": [
+          "FAIL_CLOSED_ON_MISSING_METRIC",
+          "REQUALIFY_STALE_RESULT"
+        ],
+        "wake": [
+          "NEW_COMPARABLE_PASS",
+          "FLOOR_OR_POLICY_CHANGE"
+        ],
+        "sleep": [
+          "NO_NEW_COMPARABLE_RESULT"
+        ],
+        "successor": [
+          "REAL_BENCHMARK_INGESTION_R1"
+        ],
+        "retire": [
+          "SUPERSEDED_BY_COMPATIBLE_REGISTRY_WITH_REPLAY"
+        ]
+      },
+      "known_debt": [
+        "REAL_BENCHMARK_INGESTION_UNPROVEN"
+      ],
+      "wake_predicates": [
+        "NEW_COMPARABLE_PASS",
+        "FLOOR_OR_POLICY_CHANGE"
+      ],
+      "wake_observations": [
+        "NEW_COMPARABLE_PASS"
+      ],
+      "last_material_delta": "SYNTHETIC_FRONTIER_REGISTRY_MERGED",
+      "evidence_refs": [
+        "docs/Architecture/COBASELINE_FRONTIER_REGISTRY_R0_20261027.md"
+      ]
+    },
+    {
+      "object_id": "cogbx-ux-exemplar-r0",
+      "object_class": "PUBLICATION_UX_OBJECT",
+      "source_ref": "examples/cogbx_ux_exemplar_r0/index.html",
+      "lifecycle_state": "QUIESCENT_CURRENT",
+      "currentness_state": "CURRENT",
+      "health_state": "SOURCE_PASS_RECEIVER_ACCEPTANCE_UNPROVEN",
+      "authority_ceiling": "LOCAL_PREVIEW_ONLY",
+      "confidentiality": "PUBLIC",
+      "metabolism": {
+        "sense": [
+          "RECEIVER_CONFUSION",
+          "ACCESSIBILITY_RESULT",
+          "RENDERER_RECOVERY_RESULT"
+        ],
+        "intake": [
+          "RECEIVER_FEEDBACK",
+          "ACCESSIBILITY_EVIDENCE",
+          "RECOVERY_EVIDENCE"
+        ],
+        "transform": [
+          "PROJECTION_REVISION",
+          "PROGRESSIVE_DISCLOSURE"
+        ],
+        "store": [
+          "VERSIONED_SOURCE",
+          "UX_NONCLAIMS"
+        ],
+        "route": [
+          "LOCAL_STATIC_RENDER",
+          "COORB_PROJECTION"
+        ],
+        "share": [
+          "PUBLIC_SAFE_SOURCE"
+        ],
+        "amplify": [
+          "CLARITY",
+          "RECOVERABILITY",
+          "EXITABILITY"
+        ],
+        "dampen": [
+          "JARGON",
+          "WINDOW_COUNT",
+          "ATTENTION_LOAD"
+        ],
+        "return": [
+          "RECEIVER_LESSON",
+          "UX_DELTA"
+        ],
+        "repair": [
+          "FIX_ACCESSIBILITY_FAILURE",
+          "FIX_STALE_PROJECTION"
+        ],
+        "wake": [
+          "RECEIVER_RETURN",
+          "ACCESSIBILITY_FAILURE",
+          "RECOVERY_FAILURE"
+        ],
+        "sleep": [
+          "NO_MATERIAL_RECEIVER_OR_TEST_DELTA"
+        ],
+        "successor": [
+          "ACCESSIBILITY_REVIEW_R1"
+        ],
+        "retire": [
+          "SUPERSEDED_BY_MORE_PORTABLE_EXEMPLAR_WITH_SOURCE_LINEAGE"
+        ]
+      },
+      "known_debt": [
+        "INDEPENDENT_ACCESSIBILITY_ACCEPTANCE_UNPROVEN",
+        "RECEIVER_PICKUP_UNPROVEN"
+      ],
+      "wake_predicates": [
+        "RECEIVER_RETURN",
+        "ACCESSIBILITY_FAILURE",
+        "RECOVERY_FAILURE"
+      ],
+      "wake_observations": [],
+      "last_material_delta": "SOURCE_EXEMPLAR_MERGED",
+      "evidence_refs": [
+        "docs/Architecture/COGBX_UNIVERSAL_UX_EXEMPLAR_R0_20261027.md"
+      ]
+    },
+    {
+      "object_id": "cogbx-peer-reconstruction-candidate",
+      "object_class": "DORMANT_HIGH_OPTION_CONCEPT",
+      "source_ref": "docs/Architecture/COGBX_UNIVERSAL_UX_EXEMPLAR_R0_20261027.md#device-evolution-ladder",
+      "lifecycle_state": "DORMANT_WITH_WAKE",
+      "currentness_state": "CURRENT_AS_CANDIDATE",
+      "health_state": "OPTION_VALUE_HIGH_PREREQUISITES_HELD",
+      "authority_ceiling": "NO_EXTERNAL_EFFECT",
+      "confidentiality": "PUBLIC",
+      "metabolism": {
+        "sense": [
+          "PEER_RECEIVER_AVAILABLE",
+          "EXACT_OBJECT_READPROOF_AVAILABLE"
+        ],
+        "intake": [
+          "PEER_CAPABILITY_DESCRIPTOR",
+          "EXACT_READPROOF"
+        ],
+        "transform": [
+          "FEDERATED_RECONSTRUCTION_PLAN"
+        ],
+        "store": [
+          "CANDIDATE_RELATION_ONLY"
+        ],
+        "route": [
+          "NONE_UNTIL_QUALIFIED"
+        ],
+        "share": [
+          "PUBLIC_SAFE_CONCEPT"
+        ],
+        "amplify": [
+          "FAILURE_DOMAIN_DIVERSITY",
+          "EXITABILITY"
+        ],
+        "dampen": [
+          "CENTRAL_DEPENDENCY",
+          "PREMATURE_MATERIALIZATION"
+        ],
+        "return": [
+          "QUALIFIED_PEER_PATH_OR_HELD_REASON"
+        ],
+        "repair": [
+          "REPLACE_FAILED_PEER_PATH_WITH_ALTERNATE"
+        ],
+        "wake": [
+          "EXACT_PEER_READPROOF",
+          "AUTHORIZED_PEER_RECEIVER"
+        ],
+        "sleep": [
+          "PREREQUISITES_ABSENT"
+        ],
+        "successor": [
+          "BOUNDED_PEER_RECONSTRUCTION_CANARY"
+        ],
+        "retire": [
+          "SIMPLER_QUALIFIED_FEDERATION_PATH_SUPERSEDES"
+        ]
+      },
+      "known_debt": [
+        "NO_QUALIFIED_PEER_RECEIVER",
+        "NO_EXACT_PEER_READPROOF"
+      ],
+      "wake_predicates": [
+        "EXACT_PEER_READPROOF",
+        "AUTHORIZED_PEER_RECEIVER"
+      ],
+      "wake_observations": [],
+      "last_material_delta": "CANDIDATE_DEFINED",
+      "evidence_refs": [
+        "docs/Architecture/COGBX_UNIVERSAL_UX_EXEMPLAR_R0_20261027.md"
+      ]
+    }
+  ]
+}
