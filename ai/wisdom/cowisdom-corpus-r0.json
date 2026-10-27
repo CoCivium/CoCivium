@@ -1,0 +1,534 @@
+{
+  "schema": "CoWisdomCorpus.R0.v0.1",
+  "state": "SYNTHETIC_ORIGINAL_CANARY",
+  "objects": [
+    {
+      "wisdom_id": "cw-001",
+      "kind": "PRINCIPLE",
+      "text_or_pointer": "Preserve the source before optimizing the story.",
+      "source_identity": "cocivium-original-r0",
+      "rights_state": "COCIVIUM_ORIGINAL",
+      "attribution_state": "ORIGINAL_SYNTHESIS",
+      "epistemic_type": "engineering heuristic",
+      "domain": [
+        "provenance",
+        "evidence"
+      ],
+      "receiver_fit": [
+        "builder",
+        "reviewer"
+      ],
+      "counterpoints": [
+        "cw-002"
+      ],
+      "known_limits": [
+        "Preservation can add cost and friction."
+      ],
+      "privacy": "PUBLIC",
+      "currentness": "CURRENT",
+      "surface_budget": "PRIMARY_ELIGIBLE",
+      "career_state": "PROBATION",
+      "wake_conditions": [
+        "source_changed",
+        "receiver_challenge"
+      ],
+      "scores": {
+        "relevance": 9,
+        "decision_value": 9,
+        "recurrence_value": 9,
+        "contradiction_value": 6,
+        "novelty": 5,
+        "evidence_quality": 9,
+        "recovery_value": 10,
+        "human_time_saved": 8,
+        "attention_cost": 2,
+        "repetition": 1,
+        "ambiguity": 1,
+        "staleness": 0,
+        "manipulation_risk": 0
+      }
+    },
+    {
+      "wisdom_id": "cw-002",
+      "kind": "COUNTERPOINT",
+      "text_or_pointer": "Preserve enough to recover, not so much that preservation becomes the work.",
+      "source_identity": "cocivium-original-r0",
+      "rights_state": "COCIVIUM_ORIGINAL",
+      "attribution_state": "ORIGINAL_SYNTHESIS",
+      "epistemic_type": "engineering heuristic",
+      "domain": [
+        "provenance",
+        "cost"
+      ],
+      "receiver_fit": [
+        "builder",
+        "reviewer"
+      ],
+      "counterpoint_of": "cw-001",
+      "known_limits": [
+        "Minimum sufficient evidence depends on consequence and reversibility."
+      ],
+      "privacy": "PUBLIC",
+      "currentness": "CURRENT",
+      "surface_budget": "COUNTERPOINT_ELIGIBLE",
+      "career_state": "PROBATION",
+      "wake_conditions": [
+        "storage_cost_changed",
+        "recovery_failure"
+      ],
+      "scores": {
+        "relevance": 8,
+        "decision_value": 8,
+        "recurrence_value": 8,
+        "contradiction_value": 10,
+        "novelty": 5,
+        "evidence_quality": 8,
+        "recovery_value": 8,
+        "human_time_saved": 7,
+        "attention_cost": 2,
+        "repetition": 1,
+        "ambiguity": 2,
+        "staleness": 0,
+        "manipulation_risk": 0
+      }
+    },
+    {
+      "wisdom_id": "cw-003",
+      "kind": "PRINCIPLE",
+      "text_or_pointer": "A receiver return teaches more than a sender count.",
+      "source_identity": "cocivium-original-r0",
+      "rights_state": "COCIVIUM_ORIGINAL",
+      "attribution_state": "ORIGINAL_SYNTHESIS",
+      "epistemic_type": "operational rule",
+      "domain": [
+        "outreach",
+        "receiver"
+      ],
+      "receiver_fit": [
+        "builder",
+        "outreach",
+        "steward"
+      ],
+      "counterpoints": [
+        "cw-004"
+      ],
+      "known_limits": [
+        "Some useful public resources produce delayed or anonymous returns."
+      ],
+      "privacy": "PUBLIC",
+      "currentness": "CURRENT",
+      "surface_budget": "PRIMARY_ELIGIBLE",
+      "career_state": "PROBATION",
+      "wake_conditions": [
+        "receiver_return",
+        "outreach_review"
+      ],
+      "scores": {
+        "relevance": 10,
+        "decision_value": 10,
+        "recurrence_value": 10,
+        "contradiction_value": 7,
+        "novelty": 6,
+        "evidence_quality": 8,
+        "recovery_value": 5,
+        "human_time_saved": 9,
+        "attention_cost": 2,
+        "repetition": 1,
+        "ambiguity": 1,
+        "staleness": 0,
+        "manipulation_risk": 0
+      }
+    },
+    {
+      "wisdom_id": "cw-004",
+      "kind": "COUNTERPOINT",
+      "text_or_pointer": "Do not punish quiet usefulness just because it has not yet replied.",
+      "source_identity": "cocivium-original-r0",
+      "rights_state": "COCIVIUM_ORIGINAL",
+      "attribution_state": "ORIGINAL_SYNTHESIS",
+      "epistemic_type": "operational caution",
+      "domain": [
+        "outreach",
+        "measurement"
+      ],
+      "receiver_fit": [
+        "builder",
+        "outreach",
+        "steward"
+      ],
+      "counterpoint_of": "cw-003",
+      "known_limits": [
+        "Silence still cannot be counted as adoption."
+      ],
+      "privacy": "PUBLIC",
+      "currentness": "CURRENT",
+      "surface_budget": "COUNTERPOINT_ELIGIBLE",
+      "career_state": "PROBATION",
+      "wake_conditions": [
+        "measurement_review"
+      ],
+      "scores": {
+        "relevance": 8,
+        "decision_value": 8,
+        "recurrence_value": 7,
+        "contradiction_value": 10,
+        "novelty": 6,
+        "evidence_quality": 7,
+        "recovery_value": 4,
+        "human_time_saved": 6,
+        "attention_cost": 2,
+        "repetition": 1,
+        "ambiguity": 2,
+        "staleness": 0,
+        "manipulation_risk": 0
+      }
+    },
+    {
+      "wisdom_id": "cw-005",
+      "kind": "QUESTION",
+      "text_or_pointer": "What would still work if the current provider vanished tomorrow?",
+      "source_identity": "cocivium-original-r0",
+      "rights_state": "COCIVIUM_ORIGINAL",
+      "attribution_state": "ORIGINAL_SYNTHESIS",
+      "epistemic_type": "challenge question",
+      "domain": [
+        "resilience",
+        "substitution"
+      ],
+      "receiver_fit": [
+        "builder",
+        "steward"
+      ],
+      "counterpoints": [],
+      "known_limits": [
+        "Redundancy has real cost."
+      ],
+      "privacy": "PUBLIC",
+      "currentness": "CURRENT",
+      "surface_budget": "DEEPER_ELIGIBLE",
+      "career_state": "PROBATION",
+      "wake_conditions": [
+        "provider_change",
+        "recovery_test"
+      ],
+      "scores": {
+        "relevance": 9,
+        "decision_value": 9,
+        "recurrence_value": 8,
+        "contradiction_value": 8,
+        "novelty": 7,
+        "evidence_quality": 7,
+        "recovery_value": 10,
+        "human_time_saved": 8,
+        "attention_cost": 2,
+        "repetition": 1,
+        "ambiguity": 1,
+        "staleness": 0,
+        "manipulation_risk": 0
+      }
+    },
+    {
+      "wisdom_id": "cw-006",
+      "kind": "FAILED_EXPERIMENT_LESSON",
+      "text_or_pointer": "A failed test that changes the next test is useful work.",
+      "source_identity": "cocivium-original-r0",
+      "rights_state": "COCIVIUM_ORIGINAL",
+      "attribution_state": "ORIGINAL_SYNTHESIS",
+      "epistemic_type": "engineering heuristic",
+      "domain": [
+        "testing",
+        "learning"
+      ],
+      "receiver_fit": [
+        "builder",
+        "reviewer"
+      ],
+      "counterpoints": [],
+      "known_limits": [
+        "Repeated avoidable failures can still be waste."
+      ],
+      "privacy": "PUBLIC",
+      "currentness": "CURRENT",
+      "surface_budget": "DEEPER_ELIGIBLE",
+      "career_state": "PROBATION",
+      "wake_conditions": [
+        "test_failure"
+      ],
+      "scores": {
+        "relevance": 8,
+        "decision_value": 8,
+        "recurrence_value": 9,
+        "contradiction_value": 6,
+        "novelty": 5,
+        "evidence_quality": 9,
+        "recovery_value": 7,
+        "human_time_saved": 7,
+        "attention_cost": 2,
+        "repetition": 1,
+        "ambiguity": 1,
+        "staleness": 0,
+        "manipulation_risk": 0
+      }
+    },
+    {
+      "wisdom_id": "cw-007",
+      "kind": "CAUTION",
+      "text_or_pointer": "Do not confuse a brighter dashboard with a better world.",
+      "source_identity": "cocivium-original-r0",
+      "rights_state": "COCIVIUM_ORIGINAL",
+      "attribution_state": "ORIGINAL_SYNTHESIS",
+      "epistemic_type": "measurement caution",
+      "domain": [
+        "metrics",
+        "ux"
+      ],
+      "receiver_fit": [
+        "builder",
+        "steward"
+      ],
+      "counterpoints": [],
+      "known_limits": [
+        "Good dashboards can still improve decisions."
+      ],
+      "privacy": "PUBLIC",
+      "currentness": "CURRENT",
+      "surface_budget": "DEEPER_ELIGIBLE",
+      "career_state": "PROBATION",
+      "wake_conditions": [
+        "dashboard_change",
+        "metric_claim"
+      ],
+      "scores": {
+        "relevance": 9,
+        "decision_value": 8,
+        "recurrence_value": 8,
+        "contradiction_value": 8,
+        "novelty": 7,
+        "evidence_quality": 8,
+        "recovery_value": 4,
+        "human_time_saved": 7,
+        "attention_cost": 2,
+        "repetition": 1,
+        "ambiguity": 1,
+        "staleness": 0,
+        "manipulation_risk": 0
+      }
+    },
+    {
+      "wisdom_id": "cw-008",
+      "kind": "PRACTICE",
+      "text_or_pointer": "When a task repeats, ask whether the system should learn the task instead of repeating the request.",
+      "source_identity": "cocivium-original-r0",
+      "rights_state": "COCIVIUM_ORIGINAL",
+      "attribution_state": "ORIGINAL_SYNTHESIS",
+      "epistemic_type": "operational practice",
+      "domain": [
+        "recurrence",
+        "automation"
+      ],
+      "receiver_fit": [
+        "builder",
+        "operator"
+      ],
+      "counterpoints": [],
+      "known_limits": [
+        "Some recurrence should remain human-gated."
+      ],
+      "privacy": "PUBLIC",
+      "currentness": "CURRENT",
+      "surface_budget": "DEEPER_ELIGIBLE",
+      "career_state": "PROBATION",
+      "wake_conditions": [
+        "repeat_task"
+      ],
+      "scores": {
+        "relevance": 9,
+        "decision_value": 9,
+        "recurrence_value": 10,
+        "contradiction_value": 7,
+        "novelty": 6,
+        "evidence_quality": 8,
+        "recovery_value": 8,
+        "human_time_saved": 10,
+        "attention_cost": 3,
+        "repetition": 1,
+        "ambiguity": 1,
+        "staleness": 0,
+        "manipulation_risk": 0
+      }
+    },
+    {
+      "wisdom_id": "cw-009",
+      "kind": "HUMOR",
+      "text_or_pointer": "A tab is not a memory system just because it remembers to be open.",
+      "source_identity": "cocivium-original-r0",
+      "rights_state": "COCIVIUM_ORIGINAL",
+      "attribution_state": "ORIGINAL_SYNTHESIS",
+      "epistemic_type": "humor",
+      "domain": [
+        "browser",
+        "continuity"
+      ],
+      "receiver_fit": [
+        "builder",
+        "general"
+      ],
+      "counterpoints": [],
+      "known_limits": [
+        "Humor is not proof."
+      ],
+      "privacy": "PUBLIC",
+      "currentness": "CURRENT",
+      "surface_budget": "AMBIENT_LOW_FREQUENCY",
+      "career_state": "PROBATION",
+      "wake_conditions": [
+        "browser_failure"
+      ],
+      "scores": {
+        "relevance": 7,
+        "decision_value": 5,
+        "recurrence_value": 6,
+        "contradiction_value": 4,
+        "novelty": 8,
+        "evidence_quality": 4,
+        "recovery_value": 6,
+        "human_time_saved": 3,
+        "attention_cost": 1,
+        "repetition": 1,
+        "ambiguity": 1,
+        "staleness": 0,
+        "manipulation_risk": 0
+      }
+    },
+    {
+      "wisdom_id": "cw-010",
+      "kind": "MYTHIC_OR_SPIRITUAL_LENS",
+      "text_or_pointer": "Treat wonder as an invitation to investigate, not a shortcut around evidence.",
+      "source_identity": "cocivium-original-r0",
+      "rights_state": "COCIVIUM_ORIGINAL",
+      "attribution_state": "ORIGINAL_SYNTHESIS",
+      "epistemic_type": "spiritual / mythic lens",
+      "domain": [
+        "wonder",
+        "evidence"
+      ],
+      "receiver_fit": [
+        "general",
+        "theory"
+      ],
+      "counterpoints": [],
+      "known_limits": [
+        "Some receivers may prefer no spiritual framing."
+      ],
+      "privacy": "PUBLIC",
+      "currentness": "CURRENT",
+      "surface_budget": "OPT_IN_ONLY",
+      "career_state": "PROBATION",
+      "wake_conditions": [
+        "explicit_receiver_opt_in"
+      ],
+      "scores": {
+        "relevance": 6,
+        "decision_value": 5,
+        "recurrence_value": 6,
+        "contradiction_value": 6,
+        "novelty": 7,
+        "evidence_quality": 5,
+        "recovery_value": 2,
+        "human_time_saved": 3,
+        "attention_cost": 3,
+        "repetition": 1,
+        "ambiguity": 2,
+        "staleness": 0,
+        "manipulation_risk": 2
+      }
+    },
+    {
+      "wisdom_id": "cw-011",
+      "kind": "EXACT_QUOTE",
+      "text_or_pointer": "[held exact quotation text]",
+      "source_identity": "unverified-external-source",
+      "rights_state": "RIGHTS_UNKNOWN_HELD",
+      "attribution_state": "UNKNOWN",
+      "epistemic_type": "unknown",
+      "domain": [
+        "test"
+      ],
+      "receiver_fit": [
+        "none"
+      ],
+      "counterpoints": [],
+      "known_limits": [
+        "Rights and attribution intentionally unresolved."
+      ],
+      "privacy": "PUBLIC",
+      "currentness": "UNKNOWN",
+      "surface_budget": "HELD",
+      "career_state": "DISCOVERED",
+      "wake_conditions": [
+        "rights_verified",
+        "source_verified"
+      ],
+      "scores": {
+        "relevance": 10,
+        "decision_value": 10,
+        "recurrence_value": 10,
+        "contradiction_value": 10,
+        "novelty": 10,
+        "evidence_quality": 0,
+        "recovery_value": 0,
+        "human_time_saved": 0,
+        "attention_cost": 0,
+        "repetition": 0,
+        "ambiguity": 10,
+        "staleness": 10,
+        "manipulation_risk": 5
+      }
+    },
+    {
+      "wisdom_id": "cw-012",
+      "kind": "RECEIVER_LESSON",
+      "text_or_pointer": "If the receiver cannot use it without learning the private vocabulary first, the boundary is unfinished.",
+      "source_identity": "cocivium-original-r0",
+      "rights_state": "COCIVIUM_ORIGINAL",
+      "attribution_state": "ORIGINAL_SYNTHESIS",
+      "epistemic_type": "receiver heuristic",
+      "domain": [
+        "onboarding",
+        "boundary"
+      ],
+      "receiver_fit": [
+        "builder",
+        "outreach",
+        "general"
+      ],
+      "counterpoints": [],
+      "known_limits": [
+        "Specialist vocabulary can be valuable after onboarding."
+      ],
+      "privacy": "PUBLIC",
+      "currentness": "CURRENT",
+      "surface_budget": "DEEPER_ELIGIBLE",
+      "career_state": "PROBATION",
+      "wake_conditions": [
+        "receiver_confusion",
+        "onboarding_test"
+      ],
+      "scores": {
+        "relevance": 10,
+        "decision_value": 10,
+        "recurrence_value": 9,
+        "contradiction_value": 7,
+        "novelty": 6,
+        "evidence_quality": 8,
+        "recovery_value": 5,
+        "human_time_saved": 10,
+        "attention_cost": 2,
+        "repetition": 1,
+        "ambiguity": 1,
+        "staleness": 0,
+        "manipulation_risk": 0
+      }
+    }
+  ]
+}

@@ -1,0 +1,98 @@
+{
+  "schema": "CoWisdomGoldenBraid.R0.v0.1",
+  "state": "CANDIDATE__NO_ALWAYS_ON_INGESTION__NO_UNBOUNDED_SURFACE_PUSH",
+  "observed_at": "2026-10-27",
+  "parents": [
+    "CoBraid",
+    "CoRenewal",
+    "CoSpeedo.GoldenBraid",
+    "CoOrb",
+    "CoMap",
+    "CoGlukeyCareer",
+    "CoOmni"
+  ],
+  "kinds": [
+    "EXACT_QUOTE",
+    "PARAPHRASE",
+    "ORIGINAL_SYNTHESIS",
+    "PROVERB",
+    "QUESTION",
+    "COUNTERPOINT",
+    "CAUTION",
+    "PRACTICE",
+    "PRINCIPLE",
+    "RECEIVER_LESSON",
+    "FAILED_EXPERIMENT_LESSON",
+    "HUMOR",
+    "MYTHIC_OR_SPIRITUAL_LENS"
+  ],
+  "rights_states": [
+    "USER_AUTHORED_OR_USER_LICENSED",
+    "COCIVIUM_ORIGINAL",
+    "VERIFIED_PUBLIC_DOMAIN",
+    "VERIFIED_OPEN_LICENSE",
+    "POINTER_ONLY",
+    "SHORT_EXCERPT_REVIEW_REQUIRED",
+    "PRIVATE_OR_RESTRICTED",
+    "RIGHTS_UNKNOWN_HELD"
+  ],
+  "hard_gates": [
+    "rights",
+    "privacy",
+    "consent_where_required",
+    "sensitive_context",
+    "attribution_quality",
+    "receiver_exclusions"
+  ],
+  "golden_braid": [
+    "NEED",
+    "SOURCE",
+    "WORDS_OR_PARAPHRASE",
+    "CONTEXT",
+    "INTERPRETATION",
+    "COUNTERPOINT",
+    "DECISION_RELEVANCE",
+    "BOUNDED_USE",
+    "RECEIVER_RESPONSE",
+    "LEARNING",
+    "SUCCESSOR"
+  ],
+  "default_projection": {
+    "primary_insights": 1,
+    "counterpoints_or_limits": 1,
+    "required_metadata": [
+      "source",
+      "epistemic_type",
+      "rights_state",
+      "why_now"
+    ],
+    "deeper_braid": "OPTIONAL"
+  },
+  "wake_conditions": [
+    "new_source",
+    "new_receiver_return",
+    "contradiction",
+    "attribution_correction",
+    "rights_change",
+    "changed_evidence",
+    "changed_context",
+    "stale_currentness",
+    "failed_experiment",
+    "better_successor",
+    "explicit_human_focus"
+  ],
+  "rails": [
+    "ADDRESSABLE_NE_DISPLAYED",
+    "MORE_QUOTES_NE_MORE_WISDOM",
+    "VISIBLE_ON_WEB_NE_REPUBLICATION_RIGHT",
+    "ATTRIBUTION_NE_LICENSE",
+    "ATTRIBUTION_NE_TRUTH",
+    "ELOQUENCE_NE_EVIDENCE",
+    "WISDOM_NE_UNIVERSAL_TRUTH",
+    "POPULARITY_NE_WISDOM",
+    "DENSITY_NE_FIREHOSE",
+    "CONTINUAL_NE_ALWAYS_RUNNING",
+    "CAREER_NE_DOGMA",
+    "INSPIRATION_NE_AUTHORITY"
+  ]
+}
