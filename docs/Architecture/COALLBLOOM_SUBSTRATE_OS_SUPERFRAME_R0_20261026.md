@@ -329,6 +329,85 @@ human relay and no extra hidden processes.
 `PROJECTION_NE_CANON` |
 `RESOURCE_AMPLIFICATION_NE_PERPETUAL_MOTION`.
 
+### CoResourceFrontier+ regenerative mesh and resource-sharing proof (R0A)
+
+**Reuse, do not spawn another master allocator.** The existing
+[CoResourceFrontier+ policy](CORESOURCE_FRONTIER_ALLOCATOR_R0.md),
+[CoOmni resource pool](COOMNI_CONTEXT_RESOURCE_FABRIC_R0_20261024.md),
+[CoSubscriptionEcology+](COSUBSCRIPTION_ECOLOGY_R0.md),
+[CoMetaTrainable+ source contract](https://github.com/CoCivium/CoSteward/blob/main/docs/session_backchannel/evolution/CoMetaTrainable_CoObject_Relations_20261017_R0.json),
+[CoPulse/CoTime+](COALL_PULSEFIELD_COTIME_R0.md), and
+[CoRenewal+](CORENEWAL_SELECTIVE_AMPLIFICATION_R0_20261026.md)
+already provide the selectors, resource/pressure accounting, optional
+trainability, topic subscriptions, currentness and finite requalification.
+Here we bind their *relations* to the CoObject identity from this candidate.
+
+A CoObject/CoTerm/relation, interstice, missingness or speculative hypothesis
+may carry a **potential contribution descriptor**: source identity,
+epistemic class, candidate resource class, owner/receiver, optional
+qualification tests, wake conditions, authority/privacy, costs, stop rule
+and recovery. It is never automatically a process, person, energy source
+or material phenomenon. In particular, abstract/mystical/ET/G_d concepts
+may generate questions, but not validated watts or free computation.
+
+A useful cross-scale fabric is **hierarchical with selective side links**,
+not mandatory every-node-to-every-node synchronization:
+
+`OBJECT/RELATION -> LOCAL COHERENCE -> DEVICE/NODE -> LAN/COCLUSTER ->
+COORG/FEDERATION -> GLOBAL PUBLIC-SAFE POINTER`
+
+Reverse paths carry feedback, contradiction, correction, negative knowledge
+and recovery requests. Each boundary retains permission, encryption,
+location/latency, reserve and confidentiality checks. The global view
+receives **compact pointers**, not all private bytes or every live process.
+
+**No demand for perpetual excitation:** CoEnerget+ must distinguish
+measured physical energy, synthetic cost estimate, compute, attention,
+data quality, reusable proof, freed capacity and social benefit as
+non-fungible vector dimensions. More value can mean **lower demand**:
+deduplication, no unnecessary rerun, fewer browser tabs, cache reuse,
+safe silence, better routing, or safely refusing unsuitable work.
+No conservation law is relaxed by using a relation vocabulary.
+
+Proposed allocation rhythm:
+
+`DISCOVER -> QUALIFY -> DEDUPE -> RESERVE -> ELECT SMALL WAVE ->
+SHADOW/ACT WITH DISTINCT AUTHORITY -> VERIFY -> RECOVER/RETURN ->
+COMPACT -> SLEEP OR REQUALIFY`
+
+Every receiver, nested cell and resource participates **as an option**
+only; bounded leaf work inherits stricter parent ceilings. Use
+partitioned capability offers, finite effect leases, cancellation,
+one elected actuator per collision domain, reserve floors, fairness and
+backpressure. Correlated failure, self-generated metrics, and
+evaluator drift must not create cascading amplifiers.
+
+**Source-backed first test:**
+[CoResourceFrontier synthetic shadow allocator R0A](../../examples/coresourcefrontier_shadow_r0/README.md).
+One deterministic fixture of **17 synthetic task candidates and 3
+fictional resources** compares six bounded policies; **35/35 offline
+unittest checks pass**, and all **8/8 example source/evidence files**
+were read back from this GitHub candidate branch as exact matches to
+their private original source bytes. An opt-in in-memory event routing
+example caps fanout and prevents private or unauthorized routing.
+Physical harvesting claims, external email, unknown recipients, offline
+resources, stale tasks and unconsented work are held. Fallback is only
+a *plan*, never proven real repair.
+
+**Current ceiling:** REVIEW_BRANCH_SOURCE_ONLY, SYNTHETIC_SHADOW_PASS.
+No X1/X2 runtime, federated subscriber ACK, new independent worker,
+physical harvesting, perpetual self-repair, public product readiness,
+unbounded energy, or global optimality. X2's remote observer is offline
+at this source review; don't increase its process load without fresh
+foreground-pressure evidence. Next independent proof is one rights-cleared
+work object with two authorized receivers and an exact source/version
+readback, bounded return receipt and interruption recovery.
+
+`POTENTIAL_NE_ACTIVE` · `TYPE_NE_PHYSICAL_CAUSE` ·
+`SHARED_POINTER_NE_SHARED_AUTHORITY` · `HARVEST_NE_FREE_ENERGY` ·
+`HIGH_UTILIZATION_NE_HIGH_VALUE` · `FANOUT_NE_BROADCAST` ·
+`FAILOVER_PLAN_NE_REPAIR` · `WORK_DONE_NE_RECEIVER_BENEFIT`.
+
 ## First bounded proof
 
 On X2 when reachable, bind one real public-safe work object through four projections:
