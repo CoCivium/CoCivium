@@ -1,0 +1,43 @@
+{
+  "schema": "CoBrowserContinuityFixture.R0",
+  "work_object": {
+    "work_object_id": "cowork-browser-continuity-r0",
+    "intent": "preserve useful work across provider surface degradation",
+    "checkpoint": {
+      "checkpoint_id": "cp-r0",
+      "currentness_cursor": 145,
+      "evidence_refs": [
+        "docs/Metrics/COSPEEDO_RECEIPT_CENSUS_R0_20261027.json",
+        "docs/Architecture/COVIRTUAL_SESSION_MORPHOLOGY_R0.md",
+        "docs/Architecture/COMODELFABRIC_COORB_PROVIDER_ADAPTERS_R0_20261024.md"
+      ]
+    },
+    "next_deed": "observe one authorized X2 surface without mutating provider state"
+  },
+  "surfaces": [
+    {
+      "surface_id": "surface-healthy",
+      "work_object_id": "cowork-browser-continuity-r0",
+      "adapter_id": "provider-adapter-a",
+      "visual_state": "HEALTHY",
+      "auth_state": "AUTHENTICATED_OBSERVED",
+      "network_state": "UNKNOWN"
+    },
+    {
+      "surface_id": "surface-blank",
+      "work_object_id": "cowork-browser-continuity-r0",
+      "adapter_id": "provider-adapter-b",
+      "visual_state": "BLANK_RENDER",
+      "auth_state": "UNKNOWN",
+      "network_state": "UNKNOWN"
+    },
+    {
+      "surface_id": "surface-auth",
+      "work_object_id": "cowork-browser-continuity-r0",
+      "adapter_id": "provider-adapter-c",
+      "visual_state": "AUTH_REQUIRED",
+      "auth_state": "AUTH_REQUIRED",
+      "network_state": "UNKNOWN"
+    }
+  ]
+}
