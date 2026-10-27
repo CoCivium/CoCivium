@@ -28,7 +28,7 @@ Run from repository root using Node 22 or later:
 
     node --test examples/cospeedo-growth-r0/test_dashboard.cjs
 
-The 22 offline cases verify input Git blob hashes; historical counts and seven-day unknown coverage; HTML/JSON exact equality; all three functional view controls; λ and β math; fail-closed missing data and insufficient time-series gates; no network, auto-polling, secret/device access, or invented outcome claim.
+The 25 offline cases verify input Git blob hashes; historical counts and seven-day unknown coverage; HTML/JSON exact equality; all three functional view controls, including fake-DOM runtime rendering; λ and β math; fail-closed missing data and insufficient time-series gates; no network, auto-polling, secret/device access, or invented outcome claim.
 
 [Oct 26 proof contract](../../docs/Architecture/COSPEEDO_EXPONENTIAL_PROOF_AND_RECURRENCE_INTERNALIZATION_R0_20261026.md) makes useful receiver closure, atomic debt and human-time cost the outcome variables, not activity volume.
 
