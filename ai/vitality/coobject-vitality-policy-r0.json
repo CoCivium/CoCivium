@@ -1,0 +1,44 @@
+{
+  "schema": "CoObject.VitalityPolicy.R0.v0.1",
+  "heartbeat_default": "EVENT_DRIVEN_MATERIAL_DELTA_ONLY",
+  "required_metabolism": [
+    "sense",
+    "intake",
+    "transform",
+    "store",
+    "route",
+    "share",
+    "amplify",
+    "dampen",
+    "return",
+    "repair",
+    "wake",
+    "sleep",
+    "successor",
+    "retire"
+  ],
+  "liveness_classes": [
+    "ACTIVE_WORKING",
+    "QUIESCENT_CURRENT",
+    "DORMANT_WITH_WAKE",
+    "DEGRADED_REPAIRABLE",
+    "RETIRING",
+    "RETIRED",
+    "UNKNOWN_CURRENTNESS"
+  ],
+  "rails": [
+    "VITALITY_NE_SENTIENCE",
+    "LIVENESS_NE_PERSISTENCE",
+    "HEARTBEAT_NE_CHATTER",
+    "OBSERVED_ALIVE_NE_STILL_ALIVE",
+    "DORMANT_NE_DEAD",
+    "ADDRESSABLE_NE_ACTIVE",
+    "AMPLIFY_NE_ALWAYS_INCREASE_ACTIVITY",
+    "TURTLE_TRAVERSAL_NE_MATERIALIZE_ALL",
+    "ALL_TO_ALL_NE_BROADCAST_ALL",
+    "CAPABILITY_NE_AUTHORITY",
+    "INTERFACE_INHERITANCE_NE_CAPABILITY_PROOF",
+    "RICK_NE_HEARTBEAT",
+    "NO_MATERIAL_DELTA_NE_WAKE"
+  ]
+}
