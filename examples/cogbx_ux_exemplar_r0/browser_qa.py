@@ -40,9 +40,9 @@ def case(browser, name, width, height):
     check("UNQUALIFIED" in entries and "inventory candidates" in entries, name + "_capacity_not_inferred_from_inventory")
 
     check(page.locator(".stat").count() == 4, name + "_four_glance_fields")
-    check("synthetic fixture" in page.locator(".kv").inner_text(), name + "_synthetic_currentness")
-    check("not live-tested" in page.locator(".kv").inner_text(), name + "_recovery_not_claimed")
-    check("not measured" in page.locator(".kv").inner_text(), name + "_crown_not_claimed")
+    check("synthetic fixture" in page.locator(".rail .card").first.locator(".kv").inner_text(), name + "_synthetic_currentness")
+    check("not live-tested" in page.locator(".rail .card").first.locator(".kv").inner_text(), name + "_recovery_not_claimed")
+    check("not measured" in page.locator(".rail .card").first.locator(".kv").inner_text(), name + "_crown_not_claimed")
     check("not verified independent failover paths" not in page.locator(".paths").inner_text(), name + "_paths_are_separate_from_notice")
     check("unverified candidate" in page.locator(".paths").inner_text(), name + "_peer_explicitly_unverified")
     check(page.locator(".node.unknown").get_attribute("data-state") == "held", name + "_unknown_is_held")
