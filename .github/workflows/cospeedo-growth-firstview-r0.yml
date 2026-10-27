@@ -18,7 +18,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Check 22 historical and no-fake-exponential cases
+      - name: Check 25 historical, no-fake-exponential and offline runtime cases
         run: node --test examples/cospeedo-growth-r0/test_dashboard.cjs
       - name: Confirm no external receiver has been contacted
         run: echo "Static bounded data, no HTTP calls, no X2 deployment, no historical CoVal fit."
