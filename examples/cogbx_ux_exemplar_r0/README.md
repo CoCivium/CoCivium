@@ -55,3 +55,11 @@ This corrects presentation semantics only. It does **not** establish:
 **Next recommended test before native integration:** render the same **real, authorized, non-private** work-object packet on two independently implemented front ends and one text/headless projection; compare identity, source digest, freshness, unknown status and recovery bytes. Close one renderer, reconstruct from the portable packet, and confirm exact readback. The participant must be able to decline prediction, export/leave, and disable the UI. Report actual observed failure-domain diversity, not a count of logos.
 
 **CI regression:** `smoke.cjs` rejects misleading green-status/failover strings. The optional Chromium acceptance test also exercises desktop and mobile view transitions, keyboard-focused controls, local accept/reject and zero outbound requests. These checks are separate from independent human accessibility and first-use tests.
+
+## R0.1 CoSpeedo+ capacity context
+
+The optional [throughput and qualified-resource contract](THROUGHPUT_BASELINE_R0.md) distinguishes **immutable historical high-watermark** from **repeatable sustainable baseline**, **verified useful results per human-time**, and **currently qualified spare capacity**. Each needs comparable workloads, correctness, receiver outcome, end-to-end timing, tail latency, resource/energy cost, currentness and recovery constraints.
+
+The demo now shows all corresponding counters as **NOT MEASURED / UNQUALIFIED**. Its 60+ local Chromium checks are proof that an offline UI behaves within the test scope, *not* an X2 production workload benchmark, global inventory census or proof of independent peer/failover paths.
+
+No resource discovery, private I/O access, telemetry capture, scheduled benchmark or device polling was added.
