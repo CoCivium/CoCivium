@@ -1,0 +1,17 @@
+{
+  "schema": "CoFlowBaseline.Fixture/0",
+  "fixture_only": true,
+  "description": "Illustrative arithmetic and authorization gates only; not observations from X2",
+  "observations": [
+    {"run_id":"base-1","system":"baseline","context":{"workload_digest":"work-a","dataset_digest":"data-a","device_class":"X2-SYNTHETIC","quality_contract":"q1"},"elapsed_seconds":10,"emitted":25,"correct":23,"receiver_accepted":20,"receiver_receipt":"SYNTHETIC_ACK","quality_pass":true,"currentness_pass":true},
+    {"run_id":"base-2","system":"baseline","context":{"workload_digest":"work-a","dataset_digest":"data-a","device_class":"X2-SYNTHETIC","quality_contract":"q1"},"elapsed_seconds":12,"emitted":30,"correct":29,"receiver_accepted":24,"receiver_receipt":"SYNTHETIC_ACK","quality_pass":true,"currentness_pass":true},
+    {"run_id":"base-3","system":"baseline","context":{"workload_digest":"work-a","dataset_digest":"data-a","device_class":"X2-SYNTHETIC","quality_contract":"q1"},"elapsed_seconds":9,"emitted":21,"correct":20,"receiver_accepted":18,"receiver_receipt":"SYNTHETIC_ACK","quality_pass":true,"currentness_pass":true},
+    {"run_id":"burst-1","system":"burst","context":{"workload_digest":"work-a","dataset_digest":"data-a","device_class":"X2-SYNTHETIC","quality_contract":"q1"},"elapsed_seconds":5,"emitted":60,"correct":55,"receiver_accepted":50,"receiver_receipt":"SYNTHETIC_ACK","quality_pass":true,"currentness_pass":true},
+    {"run_id":"candidate-1","system":"candidate","context":{"workload_digest":"work-a","dataset_digest":"data-a","device_class":"X2-SYNTHETIC","quality_contract":"q1"},"elapsed_seconds":10,"emitted":35,"correct":32,"receiver_accepted":30,"receiver_receipt":"SYNTHETIC_ACK","quality_pass":true,"currentness_pass":true},
+    {"run_id":"candidate-2","system":"candidate","context":{"workload_digest":"work-a","dataset_digest":"data-a","device_class":"X2-SYNTHETIC","quality_contract":"q1"},"elapsed_seconds":11,"emitted":38,"correct":37,"receiver_accepted":33,"receiver_receipt":"SYNTHETIC_ACK","quality_pass":true,"currentness_pass":true},
+    {"run_id":"candidate-3","system":"candidate","context":{"workload_digest":"work-a","dataset_digest":"data-a","device_class":"X2-SYNTHETIC","quality_contract":"q1"},"elapsed_seconds":7,"emitted":25,"correct":23,"receiver_accepted":21,"receiver_receipt":"SYNTHETIC_ACK","quality_pass":true,"currentness_pass":true},
+    {"run_id":"unacked-1","system":"unacked","context":{"workload_digest":"work-a","dataset_digest":"data-a","device_class":"X2-SYNTHETIC","quality_contract":"q1"},"elapsed_seconds":1,"emitted":500,"correct":500,"receiver_accepted":500,"receiver_receipt":"NOT_OBSERVED","quality_pass":true,"currentness_pass":true},
+    {"run_id":"bad-quality-1","system":"bad-quality","context":{"workload_digest":"work-a","dataset_digest":"data-a","device_class":"X2-SYNTHETIC","quality_contract":"q1"},"elapsed_seconds":1,"emitted":900,"correct":200,"receiver_accepted":200,"receiver_receipt":"SYNTHETIC_ACK","quality_pass":false,"currentness_pass":true},
+    {"run_id":"other-device-1","system":"unmatched-device","context":{"workload_digest":"work-a","dataset_digest":"data-a","device_class":"OTHER-SYNTHETIC","quality_contract":"q1"},"elapsed_seconds":1,"emitted":300,"correct":200,"receiver_accepted":200,"receiver_receipt":"SYNTHETIC_ACK","quality_pass":true,"currentness_pass":true}
+  ]
+}
