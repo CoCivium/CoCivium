@@ -1,0 +1,19 @@
+{
+ "policy":{"budget":4,"reserve":2,"width":2,"tick":50},
+ "objects":[
+  {"id":"syn:x2:ux","epistemic":"REPORTED","privacy":"PUBLIC","ttl":4,"source_hash":"synthetic-ux-v1"},
+  {"id":"syn:paper","epistemic":"RESEARCH","privacy":"PUBLIC","ttl":5,"source_hash":"synthetic-paper-v1"},
+  {"id":"syn:gap:ack","epistemic":"OBSERVATION","privacy":"PUBLIC","ttl":3,"source_hash":"synthetic-gap-v1"},
+  {"id":"syn:symbolic","epistemic":"SYMBOLIC","privacy":"PUBLIC","ttl":10,"source_hash":"synthetic-symbol-v1"},
+  {"id":"syn:process","epistemic":"OBSERVATION","privacy":"PUBLIC","ttl":5,"source_hash":"synthetic-lease-v1"},
+  {"id":"syn:secret","epistemic":"RESEARCH","privacy":"PRIVATE","ttl":5,"source_hash":"synthetic-private-v1"}
+ ],
+ "events":[
+  {"seq":1,"eid":"e1","obj":"syn:x2:ux","kind":"PRESSURE","privacy":"PUBLIC","scope":"READ_ONLY","evidence":"SYNTHETIC_VERIFIED","cost":1},
+  {"seq":2,"eid":"e2","obj":"syn:gap:ack","kind":"ACK_GAP","privacy":"PUBLIC","scope":"READ_ONLY","evidence":"SYNTHETIC_VERIFIED","cost":1},
+  {"seq":3,"eid":"e3","obj":"syn:paper","kind":"SOURCE_DELTA","privacy":"PUBLIC","scope":"READ_ONLY","evidence":"SYNTHETIC_VERIFIED","new_hash":"synthetic-paper-v2"},
+  {"seq":4,"eid":"e4","obj":"syn:symbolic","kind":"NEW_EVIDENCE","privacy":"PUBLIC","scope":"READ_ONLY","evidence":"SYNTHETIC_VERIFIED"},
+  {"seq":5,"eid":"e5","obj":"syn:process","kind":"LEASE_BEAT","privacy":"PUBLIC","scope":"READ_ONLY","evidence":"SYNTHETIC_VERIFIED","last_tick":38},
+  {"seq":6,"eid":"e6","obj":"syn:secret","kind":"SOURCE_DELTA","privacy":"PUBLIC","scope":"READ_ONLY","evidence":"SYNTHETIC_VERIFIED","new_hash":"synthetic-private-v2"}
+ ]
+}
