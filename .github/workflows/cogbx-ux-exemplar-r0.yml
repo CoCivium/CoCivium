@@ -1,0 +1,46 @@
+name: CoGbx UX Exemplar R0
+
+permissions:
+  contents: read
+
+on:
+  pull_request:
+    paths:
+      - "docs/Architecture/COGBX_UNIVERSAL_UX_EXEMPLAR_R0_20261027.md"
+      - "examples/cogbx_ux_exemplar_r0/**"
+      - ".github/workflows/cogbx-ux-exemplar-r0.yml"
+  push:
+    paths:
+      - "docs/Architecture/COGBX_UNIVERSAL_UX_EXEMPLAR_R0_20261027.md"
+      - "examples/cogbx_ux_exemplar_r0/**"
+      - ".github/workflows/cogbx-ux-exemplar-r0.yml"
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Smoke static exemplar
+        run: node examples/cogbx_ux_exemplar_r0/smoke.cjs
+      - name: Check source boundaries
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          arch = Path("docs/Architecture/COGBX_UNIVERSAL_UX_EXEMPLAR_R0_20261027.md").read_text()
+          readme = Path("examples/cogbx_ux_exemplar_r0/README.md").read_text()
+          for rail in [
+              "WORK_NE_WINDOW",
+              "3D_NE_MANDATORY",
+              "NO_CROWN_NE_NO_STEWARDSHIP",
+              "PREDICTED_NE_AUTHORIZED",
+              "PERSONALIZATION_NE_CAPTURE",
+              "ZILLIONS_LOGICAL_NE_ZILLIONS_VISIBLE",
+          ]:
+              assert rail in arch, rail
+          assert "Not deployed to CoGbx.org" in readme
+          print("PASS_COGBX_UX_SOURCE_BOUNDARIES_R0")
+          PY
