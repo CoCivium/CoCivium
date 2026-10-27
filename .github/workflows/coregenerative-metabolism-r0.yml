@@ -31,12 +31,18 @@ jobs:
           python-version: '3.12'
       - name: Run 12-asset source and feedback tests
         run: python3 examples/coregenerative_metabolism_r0/test_canary.py
+      - name: Run three-CoObject metabolic heartbeat tests
+        run: python3 examples/coregenerative_metabolism_r0/test_metabolic_heartbeat_r1.py
       - name: Produce deterministic local synthetic evidence
         run: python3 examples/coregenerative_metabolism_r0/canary.py > /tmp/coregenerative-synthetic-r0.json
+      - name: Produce offline CoAlive shadow heartbeat receipt
+        run: python3 examples/coregenerative_metabolism_r0/metabolic_heartbeat_r1.py > /tmp/coalive-heartbeat-shadow-r1.json
       - name: Archive synthetic fixture only
         if: success()
         uses: actions/upload-artifact@v4
         with:
           name: coregenerative-synthetic-r0
-          path: /tmp/coregenerative-synthetic-r0.json
+          path: |
+            /tmp/coregenerative-synthetic-r0.json
+            /tmp/coalive-heartbeat-shadow-r1.json
           retention-days: 14
