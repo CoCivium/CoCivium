@@ -1,0 +1,62 @@
+{
+  "schema": "CoAll.CoordinationReceiverInventory.R0.v0.1",
+  "observed_at": "2026-10-27T23:01:00Z",
+  "issue": 317,
+  "scope": "FIRST_BOUNDED_SYNTHETIC_COORDINATION_PROOF",
+  "destinations": [
+    {
+      "destination_id": "synthetic-local-a",
+      "kind": "LOCAL_FILE_RECEIVER",
+      "mechanism": "deterministic_json_projection_plus_receipt",
+      "availability": "AVAILABLE_AND_VERIFIED",
+      "authority": "AUTHORIZED_FOR_SYNTHETIC_TEST_ONLY",
+      "external_effects": false,
+      "behavior": "ACK_ALWAYS"
+    },
+    {
+      "destination_id": "synthetic-local-b",
+      "kind": "LOCAL_FILE_RECEIVER",
+      "mechanism": "deterministic_json_projection_plus_receipt",
+      "availability": "AVAILABLE_AND_VERIFIED",
+      "authority": "AUTHORIZED_FOR_SYNTHETIC_TEST_ONLY",
+      "external_effects": false,
+      "behavior": "FAIL_FIRST_THEN_ACK"
+    },
+    {
+      "destination_id": "github-issue-317",
+      "kind": "TRACKER",
+      "mechanism": "GitHub issue/comment",
+      "availability": "AVAILABLE_AND_VERIFIED",
+      "authority": "TRACKER_UPDATE_ONLY_IN_THIS_WAVE",
+      "external_effects": true,
+      "behavior": "EVIDENCE_POINTER_ONLY__NOT_CANARY_DISPATCH_TARGET"
+    },
+    {
+      "destination_id": "x2-remote-observer",
+      "kind": "REMOTE_DEVICE_OBSERVER",
+      "mechanism": "Remote Desktop Commander",
+      "availability": "UNAVAILABLE_CURRENTLY",
+      "authority": "READ_ONLY_OBSERVATION_WHEN_REACHABLE",
+      "external_effects": false,
+      "evidence": "X2 reported Offline; last seen 80h ago at inventory time",
+      "behavior": "EXCLUDED_FROM_CANARY"
+    },
+    {
+      "destination_id": "external-mail",
+      "kind": "EXTERNAL_COMMUNICATION",
+      "mechanism": "mail connector",
+      "availability": "AVAILABLE_BUT_UNVERIFIED_FOR_THIS_CANARY",
+      "authority": "HELD_SYNTHETIC_FIRST",
+      "external_effects": true,
+      "behavior": "EXCLUDED_FROM_CANARY"
+    }
+  ],
+  "rails": [
+    "SYNTHETIC_FIRST",
+    "ATTEMPT_NE_ACK",
+    "ACK_NE_RECEIVER_EFFECT",
+    "UNAVAILABLE_NE_ZERO_CAPABILITY",
+    "NO_EXTERNAL_OUTREACH_IN_CANARY",
+    "NO_DEVICE_MUTATION_IN_CANARY"
+  ]
+}

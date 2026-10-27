@@ -1,0 +1,114 @@
+name: CoAll Fanout Recovery R0
+
+permissions:
+  contents: read
+
+on:
+  pull_request:
+    paths:
+      - "ai/coordination/coall-fanout-r0/**"
+      - "scripts/CoAllFanoutR0.py"
+      - "docs/Architecture/COALL_COORDINATION_FANOUT_RECOVERY_R0_20261027.md"
+      - ".github/workflows/coall-fanout-recovery-r0.yml"
+  push:
+    paths:
+      - "ai/coordination/coall-fanout-r0/**"
+      - "scripts/CoAllFanoutR0.py"
+      - "docs/Architecture/COALL_COORDINATION_FANOUT_RECOVERY_R0_20261027.md"
+      - ".github/workflows/coall-fanout-recovery-r0.yml"
+
+jobs:
+  fanout-recovery:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Initialize bounded synthetic runtime
+        run: |
+          python -B scripts/CoAllFanoutR0.py init \
+            --packet ai/coordination/coall-fanout-r0/task-packet.json \
+            --reset \
+            --output /tmp/init.json
+
+      - name: First dispatch cycle
+        run: |
+          python -B scripts/CoAllFanoutR0.py dispatch \
+            --packet ai/coordination/coall-fanout-r0/task-packet.json \
+            --output /tmp/dispatch1.json
+
+      - name: Reconcile partial recoverable state
+        run: |
+          python -B scripts/CoAllFanoutR0.py reconcile \
+            --packet ai/coordination/coall-fanout-r0/task-packet.json \
+            --output /tmp/reconcile1.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          r = json.loads(Path("/tmp/reconcile1.json").read_text())
+          assert r["overall_state"] == "PARTIAL_RECOVERABLE"
+          by_id = {d["destination_id"]: d for d in r["destinations"]}
+          assert by_id["synthetic-local-a"]["state"] == "ACKED"
+          assert by_id["synthetic-local-a"]["attempt_count"] == 1
+          assert by_id["synthetic-local-a"]["ack_count"] == 1
+          assert by_id["synthetic-local-b"]["state"] == "RETRY_QUEUED"
+          assert by_id["synthetic-local-b"]["attempt_count"] == 1
+          assert by_id["synthetic-local-b"]["failure_count"] == 1
+          assert by_id["synthetic-local-b"]["ack_count"] == 0
+          assert all(v == 0 for v in r["effects"].values())
+          print("PASS_PHASE1_PARTIAL_RECOVERABLE")
+          PY
+
+      - name: Fresh-process recovery from canonical packet and durable receipts
+        run: |
+          python -B scripts/CoAllFanoutR0.py recover \
+            --packet ai/coordination/coall-fanout-r0/task-packet.json \
+            --output /tmp/recover.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          r = json.loads(Path("/tmp/recover.json").read_text())
+          assert r["recovered_from_task_packet_and_receipts"] is True
+          assert r["before_state"] == "PARTIAL_RECOVERABLE"
+          assert r["after_state"] == "COMPLETE_ACKED_LOCAL"
+          by_id = {d["destination_id"]: d for d in r["results"]}
+          assert by_id["synthetic-local-a"]["result"] == "SKIPPED_ALREADY_ACKED"
+          assert by_id["synthetic-local-b"]["result"] == "ACKED_LOCAL_PROJECTION"
+          assert all(v == 0 for v in r["effects"].values())
+          print("PASS_FRESH_PROCESS_RECOVERY")
+          PY
+
+      - name: Final reconcile and acceptance
+        run: |
+          python -B scripts/CoAllFanoutR0.py reconcile \
+            --packet ai/coordination/coall-fanout-r0/task-packet.json \
+            --output /tmp/reconcile2.json
+          python -B scripts/CoAllFanoutR0.py verify \
+            --packet ai/coordination/coall-fanout-r0/task-packet.json \
+            --output /tmp/acceptance.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          status = json.loads(Path("/tmp/reconcile2.json").read_text())
+          acceptance = json.loads(Path("/tmp/acceptance.json").read_text())
+
+          assert status["overall_state"] == "COMPLETE_ACKED_LOCAL"
+          assert acceptance["state"] == "PASS_SYNTHETIC_TWO_DESTINATION_FANOUT_AND_RECOVERY"
+          assert all(acceptance["checks"].values())
+          assert "SYNTHETIC_LOCAL_ACK_NE_EXTERNAL_DELIVERY" in acceptance["nonclaims"]
+
+          by_id = {d["destination_id"]: d for d in status["destinations"]}
+          assert by_id["synthetic-local-a"]["attempt_count"] == 1
+          assert by_id["synthetic-local-a"]["ack_count"] == 1
+          assert by_id["synthetic-local-a"]["recovery_skip_count"] == 1
+          assert by_id["synthetic-local-b"]["attempt_count"] == 2
+          assert by_id["synthetic-local-b"]["failure_count"] == 1
+          assert by_id["synthetic-local-b"]["ack_count"] == 1
+          print("PASS_COALL_FANOUT_RECOVERY_R0")
+          PY
