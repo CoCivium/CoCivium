@@ -147,3 +147,51 @@ test('22 proof and unknown statuses remain clearly named',()=>{
  assert.match(html,/Effect \?/);
  assert.match(html,/CoVal is provisional/);
 });
+
+function runOfflineDashboardInFakeDOM(){
+ class FakeElement{
+  constructor(tag){this.tagName=tag;this.children=[];this.attributes={};this.handlers={};this.dataset={};this.textContent='';this.hidden=false;}
+  setAttribute(k,v){this.attributes[k]=String(v);}
+  appendChild(x){this.children.push(x);return x;}
+  replaceChildren(...xs){this.children=[...xs];}
+  addEventListener(kind,cb){this.handlers[kind]=cb;}
+ }
+ const keys=['source-snapshot','ledger-total','passes','held','failed','stamp','ledger-link','scorecard-link','coverage','chart-slot','chart-explainer','chart-scope','legend'];
+ const elements=Object.fromEntries(keys.map(k=>[k,new FakeElement('div')]));
+ elements['source-snapshot'].textContent=JSON.stringify(snap);
+ const buttons=['activity','value','exponent'].map(mode=>{const b=new FakeElement('button');b.dataset={mode};return b;});
+ const document={
+  getElementById(id){if(!(id in elements))throw Error('Unknown UI id: '+id);return elements[id];},
+  querySelectorAll(sel){assert.equal(sel,'[data-mode]');return buttons;},
+  createElement(tag){return new FakeElement(tag);},
+  createElementNS(ns,tag){assert.equal(ns,'http://www.w3.org/2000/svg');return new FakeElement(tag);}
+ };
+ const script=html.match(/<script>\s*("use strict";[\s\S]*?)<\/script>/);
+ assert.ok(script,'inline dashboard runtime script missing');
+ vm.runInNewContext(script[1],{document},{timeout:1500});
+ return {elements,buttons};
+}
+test('23 offline HTML runtime produces seven real source rows and one SVG chart',()=>{
+ const {elements,buttons}=runOfflineDashboardInFakeDOM();
+ assert.equal(elements.coverage.children.length,7);
+ assert.equal(elements['chart-slot'].children[0].tagName,'svg');
+ assert.equal(String(elements['ledger-total'].textContent),'145');
+ assert.equal(buttons[0].attributes['aria-pressed'],'true');
+});
+test('24 toggling receiver view refuses to invent CoVal data',()=>{
+ const {elements,buttons}=runOfflineDashboardInFakeDOM();
+ buttons[1].handlers.click();
+ assert.equal(elements['chart-slot'].children[0].tagName,'div');
+ assert.match(elements['chart-slot'].children[0].textContent,/CoVal and useful closures are UNKNOWN/);
+ assert.equal(elements['chart-scope'].textContent,'Receiver outcome: HELD');
+ assert.equal(buttons[1].attributes['aria-pressed'],'true');
+});
+test('25 exponent view stays held and returning to activity redraws the SVG',()=>{
+ const {elements,buttons}=runOfflineDashboardInFakeDOM();
+ buttons[2].handlers.click();
+ assert.match(elements['chart-slot'].children[0].textContent,/HELD_RECEIVER_COST_OR_VALUE_GAP/);
+ assert.match(elements['chart-slot'].children[0].textContent,/HELD_INSUFFICIENT_SCALE_PAIRS/);
+ buttons[0].handlers.click();
+ assert.equal(elements['chart-slot'].children[0].tagName,'svg');
+ assert.equal(elements.legend.hidden,false);
+});
