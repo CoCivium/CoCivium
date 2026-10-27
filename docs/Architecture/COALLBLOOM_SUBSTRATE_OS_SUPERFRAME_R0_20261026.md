@@ -244,6 +244,91 @@ Likewise:
 `ET_HYPOTHESIS_NE_ET_DETECTION`
 `ANGEL_SYMBOL_NE_ANGEL_OBSERVATION`
 
+## CoGluGlobalKey+ / CoObjectEngine+ cross-scale bridge (candidate)
+
+**Shared public-safe design, 2026-10-27:** This is an additive, review-only
+candidate built on the existing CoObject+, CoMetaTrainable+, CoTime+,
+CoPulse+, CoSubscriptionEcology+ and CoScaleReduction+ source contracts. It
+is not a second ontology, global bus, authority root, resident worker,
+cryptographic key, installed X2 software, or universal physics theory.
+
+- **CoGluGlobalKey+** (candidate name): a *scoped, durable reference*
+  resolving the same evidence-bound work object across permitted views,
+  sessions, interfaces, devices and successor substrates. Its identity
+  envelope binds `namespace | immutable_source_reference | version |
+  content_digest | evidence_class | privacy | authority | receiver |
+  lineage | currentness | recovery`. Identity is **not** a credential,
+  signature, authorization or permission to reveal another participant's
+  private source. An example truncated digest is illustrative only; real
+  collision, namespace, revocation, signing and cross-organization policies
+  require separate qualification.
+- **CoObjectEngine+** (candidate name): a *bounded selector and reducer*
+  that checks source/currentness, deduplicates candidates, asks the useful
+  inverse/null/else questions, assigns tiny experiment budgets, compiles
+  receiver-specific projections and preserves a recovery checkpoint.
+  Default state is `DORMANT` or `LOGICAL_ONLY`; no object is owed a
+  permanent process.
+- **CoMetaTrainable+** decides *which object properties or selection
+  policies may adapt*, which evidence counts, allowed speed and budgets,
+  evaluator drift tests, safe stop/revert and when new consent is needed.
+  Training never expands effect authority by itself.
+- **CoTime+ / CoPulse+** supply dated, selective source deltas and
+  receiver-readproof rather than copying all state into all sessions.
+  `DISCOVERABLE != READ != PICKED_UP != INTEGRATED`.
+- **CoEnerget+ / CoPressure+ / CoBenefit+** compare measurable usefulness,
+  human attention, compute, energy, privacy and disruption costs against
+  the no-new-worker baseline; they can **reduce or stop** activity.
+- **CoOrbWare+** projects one work object into CoBar, CoOrb, CoMap,
+  CoCopy/CoAckRewise, legacy applications or headless recoverable packets.
+  An interface is a view, not a competing canonical work identity.
+
+### Cross-scale semantics and nonclaims
+
+The same typed envelope may describe a measured physical experiment,
+mathematical abstraction, symbolic construction, social relationship,
+software task, or speculative spiritual/nonphysical/ET hypothesis. It
+does **not** make their evidence interchangeable. Planck-scale terminology
+does not imply Planck-scale instrumentation; symbols do not generate
+physical energy; G_d notation does not confer religious, empirical or
+operational authority.
+
+Logical candidate generation may be extremely large; **physical execution
+remains finite, lease-bound, stoppable, reversible where possible and
+receiver-accountable**. A useful positive evolution can consist solely
+of reducing resource use, retiring duplicates or discovering an error.
+
+### One source-bound shadow observation (not an X2 diagnosis)
+
+An offline synthetic CoGluGlobalKey/CoObjectEngine canary was checked in a
+private local package on 2026-10-27: **18/18 Python object-gating tests**
+and **12/12 static PowerShell-source checks** passed. No real X2 PS7
+execution, sender/receiver exchange, physical energy effect, session
+synchronization or UI responsiveness measurement occurred. The private
+source package is *not* distributed by this public reference and these
+counts are not independently reproducible from this page alone.
+
+**Next independent proof:** one rights-cleared work object, one exact
+source/version, two independently managed projections, readback/ACK,
+and one restart/recovery check. Promote only if the same identity,
+privacy/authority boundary and correction history survive with lower
+human relay and no extra hidden processes.
+
+**Source relations:**
+[CoObject/CoMetaTrainable R0](https://github.com/CoCivium/CoSteward/blob/main/docs/session_backchannel/evolution/CoMetaTrainable_CoObject_Relations_20261017_R0.json);
+[CoPulse/CoTime R0](https://github.com/CoCivium/CoCivium/blob/main/docs/Architecture/COALL_PULSEFIELD_COTIME_R0.md);
+[Subscription ecology R0](https://github.com/CoCivium/CoCivium/blob/main/docs/Architecture/COSUBSCRIPTION_ECOLOGY_R0.md);
+[Scale/reduction R0](https://github.com/CoCivium/CoCivium/blob/main/docs/Architecture/COSCALE_REDUCTION_ECOLOGY_R0.md);
+[Selective renewal R0](https://github.com/CoCivium/CoCivium/blob/main/docs/Architecture/CORENEWAL_SELECTIVE_AMPLIFICATION_R0_20261026.md).
+
+`GLOBAL_REFERENCE_NE_GLOBAL_SECRET` |
+`OBJECT_NE_PERSON_OR_ACTUATOR` |
+`META_TRAINABLE_NE_SELF_AUTHORIZING` |
+`PLANCK_ANALOGY_NE_PHYSICAL_TEST` |
+`DISCOVERY_NE_PICKUP` |
+`EVERGREEN_NE_ALWAYS_ON` |
+`PROJECTION_NE_CANON` |
+`RESOURCE_AMPLIFICATION_NE_PERPETUAL_MOTION`.
+
 ## First bounded proof
 
 On X2 when reachable, bind one real public-safe work object through four projections:
