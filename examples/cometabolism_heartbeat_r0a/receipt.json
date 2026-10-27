@@ -1,0 +1,67 @@
+{
+  "budget": {
+    "initial": 4,
+    "remaining_above_reserve": 0,
+    "reserved": 2
+  },
+  "effects": {
+    "external_send": 0,
+    "network": 0,
+    "os": 0,
+    "process_spawn": 0
+  },
+  "held": [
+    {
+      "eid": "e3",
+      "why": "WIDTH_CAP"
+    },
+    {
+      "eid": "e4",
+      "why": "WIDTH_CAP"
+    },
+    {
+      "eid": "e6",
+      "why": "AUTHORITY_OR_PRIVACY"
+    }
+  ],
+  "limits": [
+    "BEAT_NE_BENEFIT",
+    "STALE_NE_DEAD",
+    "ADDRESSABLE_NE_RUNNING",
+    "HYPOTHESIS_NE_ENERGY",
+    "NO_X2_HEALTH_OBSERVATION",
+    "NO_AUTONOMOUS_LOOP"
+  ],
+  "observed": [
+    {
+      "eid": "e5",
+      "obj": "syn:process",
+      "state": "LEASE_STALE_RUNTIME_UNKNOWN"
+    }
+  ],
+  "receipt_digest": "0878deb44b35478ac0df93c297d19f08431300aef828277afa51ea13136485f0",
+  "schema": "CoAll.CoMetabolism.BeatShadow.R0A",
+  "selected": [
+    {
+      "action": "INSPECT_READ_ONLY",
+      "cost": 1,
+      "eid": "e1",
+      "kind": "PRESSURE",
+      "obj": "syn:x2:ux",
+      "priority": 90,
+      "result": "PROPOSAL_ONLY",
+      "source_hash": "synthetic-ux-v1"
+    },
+    {
+      "action": "CHECK_RECEIVER_PROOF",
+      "cost": 1,
+      "eid": "e2",
+      "kind": "ACK_GAP",
+      "obj": "syn:gap:ack",
+      "priority": 75,
+      "result": "PROPOSAL_ONLY",
+      "source_hash": "synthetic-gap-v1"
+    }
+  ],
+  "state": "SYNTHETIC_ONLY_NO_LIVE_BUS"
+}
