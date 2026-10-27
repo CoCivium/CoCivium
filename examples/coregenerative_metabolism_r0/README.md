@@ -71,3 +71,44 @@ For optical interstices, use [CoInterstice's independently testable optical/obse
 **HELD:** no external receiver use, live session/device control, astronomy feed ingestion, optical lab results, human psychedelic experiments, public publishing, outreach, theology/ET confirmation, global operational inventory, or perpetual execution.
 
 `REGENERATION_NE_FREE_ENERGY | GROWTH_NE_RUNAWAY | ACTIVITY_NE_USE | METAPHOR_NE_MECHANISM | REPEATED_NE_TRUE | EVERMORE_NE_ALWAYS_ON`
+
+## CoAlive+ R1: three-object heartbeat contract (27 October 2026)
+
+**User intent:** *an engine laying down heartbeat and alive CoObject relations wherever/whenever meaningful, with CoTurtle challenge in every direction and self-repair.* The architectural donor is [CoFractal Energetic Metabolism R0](../../docs/Architecture/COFRACTAL_ENERGETIC_METABOLISM_SUPERFRAME_R0_20261027.md), which explicitly requires typed intake, transfer, maintenance, repair, wake, sleep and retirement rather than perpetual activity. This R1 supplements, not replaces, the existing 12-source/24-cycle R0 canary.
+
+### The bounded first canary
+
+[`heartbeat_fixture_r1.json`](heartbeat_fixture_r1.json) selects exactly three unlike assets from the pinned twelve-source cohort:
+
+| Source identity | Candidate role | Material wake candidate | Missing proof |
+| --- | --- | --- | --- |
+| **M05:** CoDoodleNex software generator | SOFTWARE_GENERATOR | A qualified **source delta** may start source verification | No observed running worker, receiver or useful output |
+| **M07:** CoBook rich-media research | PUBLICATION_RESEARCH | An independently qualified **contradiction** may start challenge/review | A fabricated reader-feedback event is explicitly HELD |
+| **M08:** ET/G_d hypothesis finder | DORMANT_OPTION_CANDIDATE | A genuinely qualified **new source** could trigger bounded research | No observed astronomy feed event, ET detection or G_d effect |
+
+The label *dormant candidate* is a **proposed economical policy** for M08, not an observation that its real runtime is asleep. All 12 source assets remain `UNASSESSED` and `UNVERIFIED`, as R0 requires.
+
+[`metabolic_heartbeat_r1.py`](metabolic_heartbeat_r1.py) interprets **five invented pulse events** and produces a deterministic read-only JSON receipt. It prioritizes one contradiction and one source-delta review, holds unverified receiver testimony, ignores NO_CHANGE and defers a qualified but lower-priority alternative because of a **two-proposal limit and reserve**. A candidate cursor is explicitly **not** a receiver ACK. Every source SHA is inherited without claiming it is current or running. A relation between M07 and M05 is documented, but its fan-out remains **zero**.
+
+[`test_metabolic_heartbeat_r1.py`](test_metabolic_heartbeat_r1.py) includes negative cases for falsified adoption, unsafe event classes, private sources, repeated cursors, duplicate event IDs, unauthorized cascade, exhausted resources, replay, absence of meaningful change, exceeding the worker limit, and fake source liveness. All work uses only the Python standard library.
+
+**This is a *heartbeat specification and shadow test*, not an operating heartbeat.** A scheduled/triggered runner, durable append-only receiver, independently authenticated source deltas, exact recipient pickup/readproof, and rollback/restart evidence would be needed before claiming CoAlive runtime. GitHub Actions running a test proves the test ran, not that M05/M07/M08 are perpetually running.
+
+### Candidate system rhythm
+
+```text
+SOURCE / RELATION / RECEIVER DELTA
+  -> PROVENANCE + CURRENCY + PRIVACY + AUTHORITY FILTER
+  -> RANK CHALLENGE / REPAIR / REAL USE
+  -> PER-OBJECT QUOTA + SHARED RESOURCE RESERVE
+  -> SHADOW WAKE / STAY DORMANT / REPAIR / RETIRE PROPOSAL
+  -> TEST + RECEIPT + EXACT RECEIVER DISPOSITION
+  -> PRESERVE SOURCE + SUCCESSOR + QUIESCE
+  -> WAKE ON RELEVANT MATERIAL DELTA
+```
+
+Do **not** run a timer for every latent object or make every object subscribe to global state. A pulse can report health without progress; progress can be proposed without authorized execution; execution can occur without recipient acceptance. Prefer a sparse event-driven mesh with periodic bounded cold audits, recipient-specific subscriptions, backpressure and explicit lifecycle limits. Increase **independent useful results per unit of compute/human time**, not the sheer magnitude of oscillations, textual repetitions or numbers of agents.
+
+**Held gates:** live scheduler, CoStead readproof, native X2, source feed integration, real readers, legal/financial/public effects, independent recovery, G_d or ET mechanisms, limitless resources, perpetual growth.
+
+`LATCHED_NE_ALWAYS_ON | HEARTBEAT_NE_PROGRESS | PROGRESS_NE_RECEIVER_USE | WAKABLE_NE_ACTIVE | SOURCE_DELTA_NE_AUTHORIZATION | EDGE_NE_AUTOMATIC_FANOUT | MORE_PULSES_NE_MORE_VALUE | REGENERATION_NE_PERPETUAL_MOTION`.
