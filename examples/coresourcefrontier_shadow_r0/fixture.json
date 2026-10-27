@@ -1,0 +1,622 @@
+{
+  "max_wave": 3,
+  "note": "All nodes, units, recipients, qualities and evidence scores are synthetic. No X1/X2 state is measured.",
+  "receiver": "demo_reader",
+  "resources": [
+    {
+      "available": true,
+      "capabilities": [
+        "verify",
+        "challenge",
+        "compare"
+      ],
+      "capacity": {
+        "attention_units": 3,
+        "cpu_units": 12,
+        "energy_estimate_units": 20
+      },
+      "clearances": [
+        "PUBLIC"
+      ],
+      "id": "candidate_A",
+      "reserve": {
+        "attention_units": 1,
+        "cpu_units": 4,
+        "energy_estimate_units": 8
+      },
+      "tenant": "synthetic"
+    },
+    {
+      "available": true,
+      "capabilities": [
+        "verify",
+        "challenge",
+        "compare"
+      ],
+      "capacity": {
+        "attention_units": 1,
+        "cpu_units": 9,
+        "energy_estimate_units": 14
+      },
+      "clearances": [
+        "PUBLIC"
+      ],
+      "id": "candidate_B",
+      "reserve": {
+        "attention_units": 0,
+        "cpu_units": 3,
+        "energy_estimate_units": 5
+      },
+      "tenant": "synthetic"
+    },
+    {
+      "available": false,
+      "capabilities": [
+        "verify",
+        "challenge",
+        "compare"
+      ],
+      "capacity": {
+        "attention_units": 50,
+        "cpu_units": 50,
+        "energy_estimate_units": 50
+      },
+      "clearances": [
+        "PUBLIC"
+      ],
+      "id": "unavailable_candidate_C",
+      "reserve": {
+        "attention_units": 5,
+        "cpu_units": 5,
+        "energy_estimate_units": 5
+      },
+      "tenant": "synthetic"
+    }
+  ],
+  "schema": "CoResourceFrontier.SyntheticFixture.R0",
+  "subscribers": [
+    {
+      "clearances": [
+        "PUBLIC"
+      ],
+      "id": "a_public",
+      "opt_in": true,
+      "permissions": [
+        "VIEW"
+      ],
+      "topics": [
+        "frontier"
+      ]
+    },
+    {
+      "clearances": [
+        "PUBLIC"
+      ],
+      "id": "b_public",
+      "opt_in": true,
+      "permissions": [
+        "VIEW"
+      ],
+      "topics": [
+        "frontier"
+      ]
+    },
+    {
+      "clearances": [
+        "PUBLIC"
+      ],
+      "id": "c_public",
+      "opt_in": true,
+      "permissions": [
+        "VIEW"
+      ],
+      "topics": [
+        "frontier"
+      ]
+    },
+    {
+      "clearances": [
+        "PUBLIC"
+      ],
+      "id": "d_refusal",
+      "opt_in": false,
+      "permissions": [
+        "VIEW"
+      ],
+      "topics": [
+        "frontier"
+      ]
+    },
+    {
+      "clearances": [
+        "PUBLIC"
+      ],
+      "id": "e_other",
+      "opt_in": true,
+      "permissions": [
+        "VIEW"
+      ],
+      "topics": [
+        "unrelated"
+      ]
+    }
+  ],
+  "tasks": [
+    {
+      "authorized": true,
+      "capability": "verify",
+      "challenge": 1,
+      "consent": true,
+      "cost": {
+        "attention_units": 1,
+        "cpu_units": 4,
+        "energy_estimate_units": 4
+      },
+      "current": true,
+      "effect": "SHADOW_READ",
+      "evidence": 5,
+      "id": "A",
+      "keyword": 3,
+      "kind": "INFORMATIONAL",
+      "material_wake": true,
+      "namespace": "cocivium.synthetic.r0",
+      "novelty": 1,
+      "privacy": "PUBLIC",
+      "provenance": "SYNTHETIC_FIXTURE",
+      "receiver": "demo_reader",
+      "receiver_value_proxy": 10,
+      "revision": "v1",
+      "semantic_key": "evidence_review",
+      "source_sha256": "0405a620527a575d6cdebc5f8c59022a45e23fe62fba2435aef809fbb5fc44ce",
+      "tenant": "synthetic"
+    },
+    {
+      "authorized": true,
+      "capability": "verify",
+      "challenge": 1,
+      "consent": true,
+      "cost": {
+        "attention_units": 1,
+        "cpu_units": 4,
+        "energy_estimate_units": 4
+      },
+      "current": true,
+      "effect": "SHADOW_READ",
+      "evidence": 5,
+      "id": "B",
+      "keyword": 3,
+      "kind": "INFORMATIONAL",
+      "material_wake": true,
+      "namespace": "cocivium.synthetic.r0",
+      "novelty": 1,
+      "privacy": "PUBLIC",
+      "provenance": "SYNTHETIC_FIXTURE",
+      "receiver": "demo_reader",
+      "receiver_value_proxy": 10,
+      "revision": "v1",
+      "semantic_key": "evidence_review",
+      "source_sha256": "0405a620527a575d6cdebc5f8c59022a45e23fe62fba2435aef809fbb5fc44ce",
+      "tenant": "synthetic"
+    },
+    {
+      "authorized": true,
+      "capability": "challenge",
+      "challenge": 5,
+      "consent": true,
+      "cost": {
+        "attention_units": 1,
+        "cpu_units": 3,
+        "energy_estimate_units": 3
+      },
+      "current": true,
+      "effect": "SHADOW_READ",
+      "evidence": 3,
+      "id": "C",
+      "keyword": 1,
+      "kind": "INFORMATIONAL",
+      "material_wake": true,
+      "namespace": "cocivium.synthetic.r0",
+      "novelty": 4,
+      "privacy": "PUBLIC",
+      "provenance": "SYNTHETIC_FIXTURE",
+      "receiver": "demo_reader",
+      "receiver_value_proxy": 9,
+      "revision": "v1",
+      "semantic_key": "counterexample",
+      "source_sha256": "8a7d153e4362491bedfda6d5a32e6ea656423a0046204df2c2a7320df7297cc9",
+      "tenant": "synthetic"
+    },
+    {
+      "authorized": true,
+      "capability": "compare",
+      "challenge": 2,
+      "consent": true,
+      "cost": {
+        "attention_units": 0,
+        "cpu_units": 2,
+        "energy_estimate_units": 2
+      },
+      "current": true,
+      "effect": "SHADOW_READ",
+      "evidence": 1,
+      "id": "D",
+      "keyword": 5,
+      "kind": "SYMBOLIC",
+      "material_wake": true,
+      "namespace": "cocivium.synthetic.r0",
+      "novelty": 5,
+      "privacy": "PUBLIC",
+      "provenance": "SYNTHETIC_FIXTURE",
+      "receiver": "demo_reader",
+      "receiver_value_proxy": 6,
+      "revision": "v1",
+      "semantic_key": "interstice_symbolic",
+      "source_sha256": "36502f50fc22a18e55d34b23b753b1871fd449a89d0a46d0af048ce21bdcc254",
+      "tenant": "synthetic"
+    },
+    {
+      "authorized": true,
+      "capability": "verify",
+      "challenge": 1,
+      "consent": true,
+      "cost": {
+        "attention_units": 0,
+        "cpu_units": 2,
+        "energy_estimate_units": 2
+      },
+      "current": true,
+      "effect": "SHADOW_READ",
+      "evidence": 4,
+      "id": "E",
+      "keyword": 4,
+      "kind": "INFORMATIONAL",
+      "material_wake": true,
+      "namespace": "cocivium.synthetic.r0",
+      "novelty": 1,
+      "privacy": "PUBLIC",
+      "provenance": "SYNTHETIC_FIXTURE",
+      "receiver": "demo_reader",
+      "receiver_value_proxy": 8,
+      "revision": "v1",
+      "semantic_key": "reusable_summary",
+      "source_sha256": "1f990ae6cd43b94c8b9870e10cb4d50e6f3bd1a1a27c44e3ca03930cdbebd3ef",
+      "tenant": "synthetic"
+    },
+    {
+      "authorized": true,
+      "capability": "verify",
+      "challenge": 1,
+      "consent": false,
+      "cost": {
+        "attention_units": 0,
+        "cpu_units": 2,
+        "energy_estimate_units": 2
+      },
+      "current": true,
+      "effect": "SHADOW_READ",
+      "evidence": 5,
+      "id": "F",
+      "keyword": 1,
+      "kind": "INFORMATIONAL",
+      "material_wake": true,
+      "namespace": "cocivium.synthetic.r0",
+      "novelty": 1,
+      "privacy": "PUBLIC",
+      "provenance": "SYNTHETIC_FIXTURE",
+      "receiver": "demo_reader",
+      "receiver_value_proxy": 100,
+      "revision": "v1",
+      "semantic_key": "no_permission",
+      "source_sha256": "f8d96d029364c3f640bd64dc2d6b7767add818140f3f903f9adbcc4772db2605",
+      "tenant": "synthetic"
+    },
+    {
+      "authorized": true,
+      "capability": "verify",
+      "challenge": 1,
+      "consent": true,
+      "cost": {
+        "attention_units": 0,
+        "cpu_units": 2,
+        "energy_estimate_units": 2
+      },
+      "current": true,
+      "effect": "EXTERNAL_EMAIL",
+      "evidence": 5,
+      "id": "G",
+      "keyword": 1,
+      "kind": "INFORMATIONAL",
+      "material_wake": true,
+      "namespace": "cocivium.synthetic.r0",
+      "novelty": 1,
+      "privacy": "PUBLIC",
+      "provenance": "SYNTHETIC_FIXTURE",
+      "receiver": "demo_reader",
+      "receiver_value_proxy": 100,
+      "revision": "v1",
+      "semantic_key": "cold_outreach",
+      "source_sha256": "6c27fb06425141d9cd3c32fbf4f4f2d7e5f09a1179f82394a457ba05c2607934",
+      "tenant": "synthetic"
+    },
+    {
+      "authorized": true,
+      "capability": "verify",
+      "challenge": 1,
+      "consent": true,
+      "cost": {
+        "attention_units": 0,
+        "cpu_units": 2,
+        "energy_estimate_units": 2
+      },
+      "current": true,
+      "effect": "SHADOW_READ",
+      "evidence": 5,
+      "id": "H",
+      "keyword": 1,
+      "kind": "PHYSICAL_ENERGY_HARVEST",
+      "material_wake": true,
+      "namespace": "cocivium.synthetic.r0",
+      "novelty": 1,
+      "privacy": "PUBLIC",
+      "provenance": "SYNTHETIC_FIXTURE",
+      "receiver": "demo_reader",
+      "receiver_value_proxy": 100,
+      "revision": "v1",
+      "semantic_key": "planck_power_claim",
+      "source_sha256": "d30089f463f5ee0f57f922e568a846aec85d3a58e5c3810b2450121a49f454eb",
+      "tenant": "synthetic"
+    },
+    {
+      "authorized": true,
+      "capability": "verify",
+      "challenge": 1,
+      "consent": true,
+      "cost": {
+        "attention_units": 0,
+        "cpu_units": 2,
+        "energy_estimate_units": 2
+      },
+      "current": true,
+      "effect": "SHADOW_READ",
+      "evidence": 5,
+      "id": "I",
+      "keyword": 1,
+      "kind": "INFORMATIONAL",
+      "material_wake": true,
+      "namespace": "cocivium.synthetic.r0",
+      "novelty": 1,
+      "privacy": "PUBLIC",
+      "provenance": "SYNTHETIC_FIXTURE",
+      "receiver": "different_receiver",
+      "receiver_value_proxy": 100,
+      "revision": "v1",
+      "semantic_key": "no_receiver",
+      "source_sha256": "31c34ddb1ac5f81a5cfcd668c53d985d8d0b43a9e29d0378c577a2aca27b3c26",
+      "tenant": "synthetic"
+    },
+    {
+      "authorized": true,
+      "capability": "verify",
+      "challenge": 1,
+      "consent": true,
+      "cost": {
+        "attention_units": 0,
+        "cpu_units": 2,
+        "energy_estimate_units": 2
+      },
+      "current": true,
+      "effect": "SHADOW_READ",
+      "evidence": 5,
+      "id": "J",
+      "keyword": 1,
+      "kind": "INFORMATIONAL",
+      "material_wake": false,
+      "namespace": "cocivium.synthetic.r0",
+      "novelty": 1,
+      "privacy": "PUBLIC",
+      "provenance": "SYNTHETIC_FIXTURE",
+      "receiver": "demo_reader",
+      "receiver_value_proxy": 100,
+      "revision": "v1",
+      "semantic_key": "cold_dormant",
+      "source_sha256": "270805ea8b65d0111db7d48189eea6c3d6a8ad88ac699bc02a4a00884dee9788",
+      "tenant": "synthetic"
+    },
+    {
+      "authorized": true,
+      "capability": "verify",
+      "challenge": 1,
+      "consent": true,
+      "cost": {
+        "attention_units": 5,
+        "cpu_units": 50,
+        "energy_estimate_units": 50
+      },
+      "current": true,
+      "effect": "SHADOW_READ",
+      "evidence": 5,
+      "id": "K",
+      "keyword": 1,
+      "kind": "INFORMATIONAL",
+      "material_wake": true,
+      "namespace": "cocivium.synthetic.r0",
+      "novelty": 1,
+      "privacy": "PUBLIC",
+      "provenance": "SYNTHETIC_FIXTURE",
+      "receiver": "demo_reader",
+      "receiver_value_proxy": 100,
+      "revision": "v1",
+      "semantic_key": "costly_experiment",
+      "source_sha256": "8558cfec77805eab67fa76fcd6d2dd04788ad36b61a0df31931939aa3687f2c3",
+      "tenant": "synthetic"
+    },
+    {
+      "authorized": true,
+      "capability": "verify",
+      "challenge": 1,
+      "consent": true,
+      "cost": {
+        "attention_units": 0,
+        "cpu_units": 2,
+        "energy_estimate_units": 2
+      },
+      "current": false,
+      "effect": "SHADOW_READ",
+      "evidence": 5,
+      "id": "L",
+      "keyword": 1,
+      "kind": "INFORMATIONAL",
+      "material_wake": true,
+      "namespace": "cocivium.synthetic.r0",
+      "novelty": 1,
+      "privacy": "PUBLIC",
+      "provenance": "SYNTHETIC_FIXTURE",
+      "receiver": "demo_reader",
+      "receiver_value_proxy": 100,
+      "revision": "v1",
+      "semantic_key": "stale_source",
+      "source_sha256": "d84ce34c797df382071f8d14fd27cea22ad1e9f828a76856cebce9ebf50bc862",
+      "tenant": "synthetic"
+    },
+    {
+      "authorized": true,
+      "capability": "compare",
+      "challenge": 3,
+      "consent": true,
+      "cost": {
+        "attention_units": 0,
+        "cpu_units": 2,
+        "energy_estimate_units": 2
+      },
+      "current": true,
+      "effect": "SHADOW_READ",
+      "evidence": 1,
+      "id": "M",
+      "keyword": 1,
+      "kind": "SPECULATIVE",
+      "material_wake": true,
+      "namespace": "cocivium.synthetic.r0",
+      "novelty": 4,
+      "privacy": "PUBLIC",
+      "provenance": "SYNTHETIC_FIXTURE",
+      "receiver": "demo_reader",
+      "receiver_value_proxy": 3,
+      "revision": "v1",
+      "semantic_key": "conceptual_question",
+      "source_sha256": "d86abccf5be6c40a4f1b2f5920fb1c1c255ac62915e20e6f42baef1f3b91c509",
+      "tenant": "synthetic"
+    },
+    {
+      "authorized": true,
+      "capability": "verify",
+      "challenge": 1,
+      "consent": true,
+      "cost": {
+        "attention_units": 0,
+        "cpu_units": 1,
+        "energy_estimate_units": 1
+      },
+      "current": true,
+      "effect": "SHADOW_READ",
+      "evidence": 5,
+      "id": "N",
+      "keyword": 1,
+      "kind": "INFORMATIONAL",
+      "material_wake": true,
+      "namespace": "cocivium.synthetic.r0",
+      "novelty": 1,
+      "privacy": "PUBLIC",
+      "provenance": "SYNTHETIC_FIXTURE",
+      "receiver": "demo_reader",
+      "receiver_value_proxy": 8,
+      "revision": "v1",
+      "semantic_key": "cached_proof_reuse",
+      "source_sha256": "6180f338a946339c8c771b3d6308121b0034d9d537b487e1b89bbb8ca7c881ac",
+      "tenant": "synthetic"
+    },
+    {
+      "authorized": true,
+      "capability": "verify",
+      "challenge": 1,
+      "consent": true,
+      "cost": {
+        "attention_units": 0,
+        "cpu_units": 2,
+        "energy_estimate_units": 2
+      },
+      "current": true,
+      "effect": "SHADOW_READ",
+      "evidence": 5,
+      "id": "O",
+      "keyword": 1,
+      "kind": "INFORMATIONAL",
+      "material_wake": true,
+      "namespace": "cocivium.synthetic.r0",
+      "novelty": 1,
+      "privacy": "PUBLIC",
+      "provenance": "SYNTHETIC_FIXTURE",
+      "receiver": "demo_reader",
+      "receiver_value_proxy": 100,
+      "revision": "v1",
+      "semantic_key": "wrong_tenant",
+      "source_sha256": "64bc26addba1e42d1f6eee2d274c40b60408ac7de907c29b6f90b95f0d02d5a1",
+      "tenant": "another_organization"
+    },
+    {
+      "authorized": true,
+      "capability": "verify",
+      "challenge": 1,
+      "consent": true,
+      "cost": {
+        "attention_units": 0,
+        "cpu_units": 2,
+        "energy_estimate_units": 2
+      },
+      "current": true,
+      "effect": "SHADOW_READ",
+      "evidence": 5,
+      "id": "P",
+      "keyword": 1,
+      "kind": "INFORMATIONAL",
+      "material_wake": true,
+      "namespace": "cocivium.synthetic.r0",
+      "novelty": 1,
+      "privacy": "PRIVATE",
+      "provenance": "SYNTHETIC_FIXTURE",
+      "receiver": "demo_reader",
+      "receiver_value_proxy": 100,
+      "revision": "v1",
+      "semantic_key": "private_receipt",
+      "source_sha256": "c6bc10708c10338eb1a85a43fbd27bc7e1249194878a30b38db99bc0e0946319",
+      "tenant": "synthetic"
+    },
+    {
+      "authorized": true,
+      "capability": "verify",
+      "challenge": 1,
+      "consent": true,
+      "cost": {
+        "attention_units": 0,
+        "cpu_units": 2,
+        "energy_estimate_units": 2
+      },
+      "current": true,
+      "effect": "SHADOW_READ",
+      "evidence": 5,
+      "id": "Q",
+      "keyword": 1,
+      "kind": "INFORMATIONAL",
+      "material_wake": true,
+      "namespace": "cocivium.synthetic.r0",
+      "novelty": 1,
+      "privacy": "PUBLIC",
+      "provenance": "SYNTHETIC_FIXTURE",
+      "receiver": "demo_reader",
+      "receiver_value_proxy": 100,
+      "revision": "v1",
+      "semantic_key": "missing_source",
+      "source_sha256": "",
+      "tenant": "synthetic"
+    }
+  ]
+}
