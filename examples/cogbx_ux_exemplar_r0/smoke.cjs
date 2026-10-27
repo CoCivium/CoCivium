@@ -30,6 +30,22 @@ must(/aria-label="Projection controls"/, "projection control label");
 must(/aria-pressed/, "toggle semantics");
 must(/one durable work object/i, "durable work identity");
 must(/Redundancy does not duplicate authority/i, "redundancy boundary");
+must(/STATIC DEMONSTRATION · NOT LIVE/, "prominent example-only status");
+must(/CoGbx\.org hosting, independent peer paths, and X2 native runtime remain unverified/, "unverified external states");
+must(/1 synthetic object/, "synthetic durable object");
+must(/3 illustrative/, "illustrative embodiments");
+must(/1 simulated held state/, "simulated remote unknown");
+must(/currentness<\/span><span>synthetic fixture/, "no fake live currentness");
+must(/recovery<\/span><span>not live-tested/, "not-yet-restored label");
+must(/crown risk<\/span><span>not measured/, "no unverified crown-risk score");
+must(/These are proposed alternatives, not verified independent failover paths/, "candidate independence boundary");
+must(/source and evidence pointers; not an active receiver/, "unverified receiver boundary");
+must(/--forest-bg:#17372c/, "restrained green optionality banner");
+must(/role="note"/, "semantic notice");
+mustNot(/<span>recovery<\/span><span>available<\/span>/, "false live recovery state");
+mustNot(/<span>crown risk<\/span><span>low<\/span>/, "false measured crown risk");
+mustNot(/<span>currentness<\/span><span>local current<\/span>/, "false live currentness");
+
 
 mustNot(/\bfetch\s*\(/, "fetch");
 mustNot(/XMLHttpRequest/, "XHR");
