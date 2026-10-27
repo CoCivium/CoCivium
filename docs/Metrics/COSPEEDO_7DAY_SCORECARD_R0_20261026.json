@@ -1,7 +1,7 @@
 {
   "schema": "CoSpeedo.7DayScorecard.R0.v0.1",
   "observed_at": "2026-10-26",
-  "state": "SEED_WITH_PARTIAL_HISTORY__NO_EXPONENTIAL_CLAIM",
+  "state": "SEED_WITH_EXACT_LEDGER_CENSUS__NORMALIZED_OUTCOME_METRICS_STILL_PARTIAL",
   "purpose": "Establish comparable daily windows for closure, atomic debt, autonomy, recurrence internalization, receiver return, recovery, exemplar availability, latency and cost.",
   "rails": [
     "UNKNOWN_NE_ZERO",
@@ -27,32 +27,92 @@
     {
       "date": "2026-10-20",
       "status": "UNKNOWN",
-      "note": "Historical comparable receipt census not yet bound."
+      "note": "Historical comparable receipt census not yet bound.",
+      "receipt_ledger_census": {
+        "ledger_rows": 0,
+        "status_counts": {
+          "PASS": 0,
+          "FAIL": 0,
+          "HELD": 0,
+          "NOT_RUN": 0
+        },
+        "coverage_state": "NO_LEDGER_ROWS__UNKNOWN_NE_ZERO"
+      }
     },
     {
       "date": "2026-10-21",
       "status": "UNKNOWN",
-      "note": "Historical comparable receipt census not yet bound."
+      "note": "Historical comparable receipt census not yet bound.",
+      "receipt_ledger_census": {
+        "ledger_rows": 0,
+        "status_counts": {
+          "PASS": 0,
+          "FAIL": 0,
+          "HELD": 0,
+          "NOT_RUN": 0
+        },
+        "coverage_state": "NO_LEDGER_ROWS__UNKNOWN_NE_ZERO"
+      }
     },
     {
       "date": "2026-10-22",
       "status": "UNKNOWN",
-      "note": "Historical comparable receipt census not yet bound."
+      "note": "Historical comparable receipt census not yet bound.",
+      "receipt_ledger_census": {
+        "ledger_rows": 0,
+        "status_counts": {
+          "PASS": 0,
+          "FAIL": 0,
+          "HELD": 0,
+          "NOT_RUN": 0
+        },
+        "coverage_state": "NO_LEDGER_ROWS__UNKNOWN_NE_ZERO"
+      }
     },
     {
       "date": "2026-10-23",
-      "status": "UNKNOWN",
-      "note": "Historical comparable receipt census not yet bound."
+      "status": "PARTIAL_LEDGER_CENSUS",
+      "note": "Exact benchmark-evo receipt rows are now counted for this date, but normalized closure/debt/receiver/cost metrics remain unpopulated.",
+      "receipt_ledger_census": {
+        "ledger_rows": 64,
+        "status_counts": {
+          "PASS": 38,
+          "FAIL": 10,
+          "HELD": 16,
+          "NOT_RUN": 0
+        },
+        "coverage_state": "EXACT_LEDGER_ROWS_PRESENT"
+      }
     },
     {
       "date": "2026-10-24",
-      "status": "UNKNOWN",
-      "note": "Historical comparable receipt census not yet bound."
+      "status": "PARTIAL_LEDGER_CENSUS",
+      "note": "Exact benchmark-evo receipt rows are now counted for this date, but normalized closure/debt/receiver/cost metrics remain unpopulated.",
+      "receipt_ledger_census": {
+        "ledger_rows": 69,
+        "status_counts": {
+          "PASS": 40,
+          "FAIL": 3,
+          "HELD": 26,
+          "NOT_RUN": 0
+        },
+        "coverage_state": "EXACT_LEDGER_ROWS_PRESENT"
+      }
     },
     {
       "date": "2026-10-25",
       "status": "PARTIAL",
-      "note": "Public/article and architecture events exist, but a normalized closure/debt census is not yet complete."
+      "note": "Public/article and architecture events exist, but a normalized closure/debt census is not yet complete.",
+      "receipt_ledger_census": {
+        "ledger_rows": 5,
+        "status_counts": {
+          "PASS": 3,
+          "FAIL": 0,
+          "HELD": 2,
+          "NOT_RUN": 0
+        },
+        "coverage_state": "EXACT_LEDGER_ROWS_PRESENT"
+      }
     },
     {
       "date": "2026-10-26",
@@ -77,7 +137,17 @@
         "source_to_successor_latency_hours": null,
         "measured_cost": null
       },
-      "note": "Current evidence is sufficient to mark events and gaps, not yet to populate normalized counts without a dedicated receipt census."
+      "note": "Current evidence is sufficient to mark events and gaps, not yet to populate normalized counts without a dedicated receipt census.",
+      "receipt_ledger_census": {
+        "ledger_rows": 7,
+        "status_counts": {
+          "PASS": 3,
+          "FAIL": 1,
+          "HELD": 3,
+          "NOT_RUN": 0
+        },
+        "coverage_state": "EXACT_LEDGER_ROWS_PRESENT"
+      }
     }
   ],
   "analysis_gate": {
@@ -101,5 +171,11 @@
       "independent or reproducible observations"
     ]
   },
-  "next_bounded_deed": "Backfill Oct 20-25 only from receipts and source timestamps, preserving nulls where comparable evidence is missing."
+  "next_bounded_deed": "Classify the 145 exact ledger rows into closure-relevant evidence classes, then populate only normalized metrics whose receiver/effect semantics are independently supportable; preserve nulls otherwise.",
+  "receipt_census": {
+    "ref": "docs/Metrics/COSPEEDO_RECEIPT_CENSUS_R0_20261027.json",
+    "source_blob_sha": "8c5a99b279a4a24aa458b41b87b5a8e34755b110",
+    "selected_row_count": 145,
+    "interpretation": "The visible 145-event dashboard total is reconciled as exact benchmark-evo activity rows for Oct 23-26. It is not a growth exponent or closure-yield metric."
+  }
 }
