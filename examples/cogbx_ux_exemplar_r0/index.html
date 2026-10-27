@@ -10,7 +10,7 @@
   color-scheme:dark;
   --bg:#0b0e12;--panel:#111720;--line:#293444;--text:#edf3f7;--muted:#9fb0be;
   --accent:#dce9f3;--soft:#18212c;--warn:#d7ba7d;--ok:#a8d5ba;--bad:#d7a5a5;
-  --radius:18px;--shadow:0 14px 44px rgba(0,0,0,.35);
+  --forest-bg:#17372c;--forest-edge:#779f8b;--forest-ink:#e9f5ee;--radius:18px;--shadow:0 14px 44px rgba(0,0,0,.35);
 }
 *{box-sizing:border-box}
 html,body{margin:0;min-height:100%;background:radial-gradient(circle at 50% -10%,#182333 0,#0b0e12 48%);color:var(--text);font:15px/1.45 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
@@ -18,6 +18,8 @@ button,input{font:inherit}
 button{color:inherit}
 a{color:inherit}
 .shell{min-height:100vh;display:grid;grid-template-rows:auto 1fr auto}
+.demo-banner{grid-column:1/-1;padding:12px 15px;border:1px solid var(--forest-edge);border-radius:14px;background:var(--forest-bg);color:var(--forest-ink);font-size:13px;line-height:1.55}
+.demo-banner strong{display:inline-block;margin-right:8px}
 .topbar{position:sticky;top:0;z-index:20;display:flex;gap:10px;align-items:center;justify-content:space-between;padding:12px 16px;background:rgba(11,14,18,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
 .brand{display:flex;align-items:center;gap:10px;min-width:0}
 .mark{width:32px;height:32px;border:1px solid #6f8498;border-radius:50%;display:grid;place-items:center;box-shadow:inset 0 0 0 6px #101823}
@@ -112,6 +114,7 @@ footer{padding:10px 16px;color:var(--muted);font-size:12px;border-top:1px solid 
   </header>
 
   <main class="main">
+    <aside class="demo-banner" role="note"><strong>STATIC DEMONSTRATION · NOT LIVE</strong> All work, routes, currentness and recovery shown here are synthetic examples. CoGbx.org hosting, independent peer paths, and X2 native runtime remain unverified. No external actions are authorized.</aside>
     <section class="stage" aria-label="Relational work field">
       <div class="field" id="field">
         <div class="map" aria-hidden="true">
@@ -126,11 +129,11 @@ footer{padding:10px 16px;color:var(--muted);font-size:12px;border-top:1px solid 
 
         <button class="node current" data-node="current">
           CURRENT
-          <small>One durable work object across all projections.</small>
+          <small>One synthetic work object, shown in every projection.</small>
         </button>
         <button class="node source" data-node="source">
           SOURCE
-          <small>Exact lineage + evidence pointers.</small>
+          <small>Example source and evidence pointers; not an active receiver.</small>
         </button>
         <button class="node unknown" data-node="unknown" data-state="held">
           UNKNOWN
@@ -142,18 +145,18 @@ footer{padding:10px 16px;color:var(--muted);font-size:12px;border-top:1px solid 
         </button>
         <button class="node recover" data-node="recover">
           RECOVER
-          <small>Reconstruct without provider-tab identity.</small>
+          <small>Recovery principle, not a completed cross-device restore.</small>
         </button>
         <button class="node peer" data-node="peer">
           PEERS
-          <small>Several replaceable routes; no crown.</small>
+          <small>Several example routes; independence not proven.</small>
         </button>
       </div>
 
       <div class="status" aria-label="Compact status">
-        <div class="stat"><b>WORK</b><span>1 durable object</span></div>
-        <div class="stat"><b>EMBODIMENTS</b><span>3 optional</span></div>
-        <div class="stat"><b>UNKNOWN</b><span>1 held</span></div>
+        <div class="stat"><b>WORK</b><span>1 synthetic object</span></div>
+        <div class="stat"><b>EMBODIMENTS</b><span>3 illustrative</span></div>
+        <div class="stat"><b>UNKNOWN</b><span>1 simulated held state</span></div>
         <div class="stat"><b>EXTERNAL EFFECTS</b><span>0</span></div>
       </div>
     </section>
@@ -162,22 +165,22 @@ footer{padding:10px 16px;color:var(--muted);font-size:12px;border-top:1px solid 
       <section class="card">
         <h2>CoHereNow</h2>
         <div class="kv">
-          <span>currentness</span><span>local current</span>
-          <span>authority</span><span>preview only</span>
-          <span>recovery</span><span>available</span>
-          <span>crown risk</span><span>low</span>
+          <span>currentness</span><span>synthetic fixture</span>
+          <span>authority</span><span>none (demo)</span>
+          <span>recovery</span><span>not live-tested</span>
+          <span>crown risk</span><span>not measured</span>
         </div>
       </section>
 
       <section class="card">
         <h3>Independent paths</h3>
         <div class="paths">
-          <div class="path"><b class="ok">LOCAL</b>typed recovery</div>
-          <div class="path"><b class="ok">WEB</b>replaceable renderer</div>
-          <div class="path"><b class="ok">PEER</b>federated candidate</div>
-          <div class="path"><b class="held">MODEL</b>provider optional</div>
+          <div class="path"><b>LOCAL</b>illustrative route</div>
+          <div class="path"><b>WEB</b>candidate renderer</div>
+          <div class="path"><b>PEER</b>unverified candidate</div>
+          <div class="path"><b>MODEL</b>optional candidate</div>
         </div>
-        <p class="notice">Redundancy does not duplicate authority.</p>
+        <p class="notice">These are proposed alternatives, not verified independent failover paths. Redundancy does not duplicate authority.</p>
       </section>
 
       <section class="card predict">
@@ -196,7 +199,7 @@ footer{padding:10px 16px;color:var(--muted);font-size:12px;border-top:1px solid 
 
       <section class="card">
         <h3>Why this projection</h3>
-        <p id="focusText">One calm surface carries identity, uncertainty, next action and recovery. Deeper evidence stays available without being permanently visible.</p>
+        <p id="focusText">One synthetic fixture illustrates identity, uncertainty, next action and a proposed recovery path. Real availability and recovery require independent tests.</p>
       </section>
     </aside>
 
@@ -208,13 +211,13 @@ footer{padding:10px 16px;color:var(--muted);font-size:12px;border-top:1px solid 
       </section>
       <section>
         <h2>Current</h2>
-        <p>A synthetic durable work object is current locally. One remote embodiment is explicitly unknown. No external action is authorized.</p>
+        <p>This page contains a synthetic work-object fixture. No local X2 object or remote embodiment was checked, and no external action is authorized.</p>
         <h2>Next</h2>
         <p>Preview one reversible action, compare its evidence and recovery path, then explicitly accept or reject it.</p>
         <h2>Unknown</h2>
         <p>Unknown is not zero. A missing or stale embodiment does not erase the work object.</p>
         <h2>Recover</h2>
-        <p>Reconstruct from durable identity, evidence pointers, currentness and receipts rather than from the continued existence of a browser tab.</p>
+        <p>A future implementation should reconstruct from durable identity, evidence, currentness and receipts rather than relying on a browser tab. That recovery has not been demonstrated here.</p>
       </section>
     </article>
   </main>
@@ -261,12 +264,12 @@ footer{padding:10px 16px;color:var(--muted);font-size:12px;border-top:1px solid 
   document.querySelectorAll(".node").forEach((node) => {
     node.addEventListener("click", () => {
       const details = {
-        current:"Work identity is stable; visible embodiments are optional projections.",
-        source:"Source, version, evidence and currentness travel with the work object.",
+        current:"This fixture models one stable work identity; no live device continuity is established.",
+        source:"This static page illustrates source, version, evidence and currentness without connecting a real receiver.",
         unknown:"One embodiment may be stale or missing. UNKNOWN stays explicit instead of becoming false green.",
         next:"Prediction may prepare candidates early, but effects remain separately authorized.",
-        recover:"The preferred recovery path reconstructs useful state without requiring the original provider tab.",
-        peer:"Local, web, peer and model routes are replaceable. No route gains crown authority by existing."
+        recover:"Recovery without a provider tab is a design goal; no real cross-device restore was executed here.",
+        peer:"Local, web, peer and model routes are candidates, not proven independent alternatives. None gains authority merely by being named."
       };
       focusText.textContent = details[node.dataset.node];
     });
