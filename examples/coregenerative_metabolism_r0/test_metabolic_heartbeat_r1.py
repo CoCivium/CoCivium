@@ -13,7 +13,7 @@ REPO = ROOT.parents[1]
 
 
 def blob_sha(raw):
-    return hashlib.sha1(b"blob " + str(len(raw)).encode("ascii") + b"\\0" + raw).hexdigest()
+    return hashlib.sha1(b"blob " + str(len(raw)).encode("ascii") + b"\0" + raw).hexdigest()
 
 
 class CoObjectHeartbeatR1Tests(unittest.TestCase):
