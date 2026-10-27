@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark light">
+<title>CoSpeedo+ · CoVal historical growth | Source-bound snapshot</title>
+<style>
+:root{color-scheme:dark;--bg:#081322;--bg2:#0d1d31;--card:#12253a;--edge:#2c4760;--ink:#edf5fd;--muted:#aac1d4;--cyan:#66d5e3;--gold:#f2cc79;--pass:#78d7b0;--held:#eec77e;--fail:#f29893}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 82% -10%,#16465e 0%,transparent 37%),linear-gradient(145deg,var(--bg),var(--bg2) 58%,#071321);color:var(--ink);font:15px/1.55 system-ui,"Segoe UI",sans-serif}
+main{max-width:1250px;margin:auto;padding:25px 26px 70px}h1,h2,h3,p{margin-top:0}h1{font-size:clamp(1.7rem,3.5vw,3rem);letter-spacing:-.04em;line-height:1.12;margin:8px 0 8px}h2{font-size:1.14rem;margin:0 0 12px}h3{font-size:1rem;margin:0 0 7px}
+header{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;margin-bottom:24px}header p{color:var(--muted);margin:0}.brand{display:flex;align-items:center;gap:16px}.orb{width:55px;height:55px;border:2px solid #62cae7;border-radius:50%;box-shadow:0 0 0 7px #5b9dbc20,inset 0 0 24px #6fd3f655,0 0 22px #4ad2ed44;background:radial-gradient(circle at 60% 40%,#fff 0 3px,#58e0ed 5px,transparent 29px);flex:none}
+.eyebrow{font-size:.79rem;text-transform:uppercase;letter-spacing:.12em;color:var(--cyan);font-weight:800}.tag{border:1px solid #657c8d;border-radius:99px;padding:5px 11px;font-size:.76rem;color:#d2e7ef;background:#132d3e;white-space:nowrap}.sub{color:var(--muted);font-size:.9rem}
+.stats{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:11px}.stat,.panel{border:1px solid var(--edge);background:#12253ad9;border-radius:16px;box-shadow:0 7px 27px #00000015}.stat{padding:17px 15px;min-height:116px}.stat .label{font-size:.79rem;color:#b9cddf}.stat .num{font-weight:750;font-size:clamp(1.5rem,3vw,2.2rem);line-height:1.2;margin:8px 0 3px;font-variant-numeric:tabular-nums}.stat small{font-size:.71rem;color:var(--muted)}.pass{color:var(--pass)}.held{color:var(--held)}.fail{color:var(--fail)}.muted{color:var(--muted)}
+.layout{display:grid;grid-template-columns:minmax(0,1.95fr) minmax(275px,1fr);gap:14px;margin-top:16px}.panel{padding:19px;min-width:0}.modes{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:13px}.modes button{font:inherit;font-size:.84rem;border:1px solid #45657b;color:#d6e9f4;background:#172f45;border-radius:9px;padding:7px 12px;cursor:pointer}.modes button[aria-pressed=true]{background:#19566a;border-color:#73dbe8;color:white}.modes button:focus-visible,a:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+#chart{width:100%;height:auto;display:block;min-height:235px}.legend{display:flex;gap:16px;flex-wrap:wrap;font-size:.8rem;color:var(--muted)}.mark{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px}.empty-chart{border:1px dashed #608093;border-radius:12px;min-height:230px;display:flex;align-items:center;justify-content:center;padding:25px;text-align:center;color:#cfdeed}.chart-head{display:flex;justify-content:space-between;align-items:start;gap:12px}
+.kpi{display:flex;justify-content:space-between;gap:10px;border-bottom:1px solid #30465e;padding:10px 0}.kpi:last-child{border-bottom:0}.kpi .value{color:#f8e5b9;font-weight:700;text-align:right}.tiny{font-size:.8rem;color:var(--muted)}.small{font-size:.9rem}.note{background:#1c3348;border-left:3px solid #e8c77f;border-radius:0 9px 9px 0;padding:12px;color:#f2e5c7;margin-top:12px}.wide{margin-top:15px}.scroll{overflow-x:auto}table{border-collapse:collapse;width:100%;min-width:610px;font-variant-numeric:tabular-nums}th,td{border-bottom:1px solid #2b4158;text-align:left;padding:9px 8px;font-size:.82rem}th{color:#c4dcea}tr:last-child td{border-bottom:0}td strong{font-weight:680}
+a{color:#9ee1ef;text-decoration-thickness:1px;text-underline-offset:3px}a:hover{color:white}.braid{display:flex;flex-wrap:wrap;gap:6px;margin-top:13px}.braid span{border:1px solid #4e6779;border-radius:8px;padding:5px 9px;font-size:.75rem;color:#d4dfeb}.braid .missing{border-color:#bd935d;color:#f6dba5}.footer{margin-top:20px;padding-top:17px;border-top:1px solid #2b4b5e;display:flex;gap:13px;flex-wrap:wrap;font-size:.82rem;color:var(--muted)}
+.math{font:clamp(.89rem,1.8vw,1rem)/1.45 ui-monospace,SFMono-Regular,Consolas,monospace;color:#b1e9ea;padding:10px;background:#0b1d2a;border:1px solid #2b4b5e;border-radius:9px;overflow-wrap:anywhere}
+@media(max-width:950px){.stats{grid-template-columns:repeat(3,minmax(0,1fr))}.layout{grid-template-columns:1fr}}
+@media(max-width:560px){main{padding:17px 12px 50px}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.stat{padding:14px}.orb{height:43px;width:43px}.panel{padding:14px}.chart-head{display:block}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
+</style>
+</head>
+<body><main>
+<header>
+ <div class="brand"><div class="orb" aria-hidden="true"></div><div><div class="eyebrow">⊂EvoAll+ / CoOrbWare+ evidence aperture</div><h1>CoSpeedo+ <span style="color:#70d1dc">CoVal</span> Growth</h1><p>Historical change, actual value, and the gaps between them</p></div></div>
+ <div><div class="tag">STATIC SOURCE SNAPSHOT · NOT LIVE X2</div><div class="tiny" id="stamp" style="margin-top:7px;text-align:right">Checking source version…</div></div>
+</header>
+<section class="stats" aria-label="Evidence headline metrics">
+ <div class="stat"><div class="label">Proof ledger entries</div><div class="num" id="ledger-total">145</div><small>Heterogeneous scoped records</small></div>
+ <div class="stat"><div class="label">Scoped PASS</div><div class="num pass" id="passes">84</div><small>Not receiver closures</small></div>
+ <div class="stat"><div class="label">HELD</div><div class="num held" id="held">47</div><small>Unqualified work gates</small></div>
+ <div class="stat"><div class="label">FAIL</div><div class="num fail" id="failed">14</div><small>Recorded negative tests</small></div>
+ <div class="stat"><div class="label">CoVal exponent</div><div class="num held" id="coval">?</div><small>Unmeasured, not zero</small></div>
+</section>
+<div class="layout">
+ <section class="panel" aria-labelledby="graph-heading">
+  <div class="chart-head"><div><h2 id="graph-heading">What the history actually shows</h2><p class="tiny">Evidence-ledger activity, not proven useful value or acceleration</p></div><span class="tag" id="chart-scope">Scoped records</span></div>
+  <nav class="modes" aria-label="Historical measurement views">
+   <button type="button" data-mode="activity" aria-pressed="true">◎ Evidence activity</button>
+   <button type="button" data-mode="value" aria-pressed="false">◇ Receiver value</button>
+   <button type="button" data-mode="exponent" aria-pressed="false">Δ Growth exponents</button>
+  </nav>
+  <div id="chart-slot" aria-live="polite">
+   <svg id="chart" viewBox="0 0 820 296" role="img" aria-label="Evidence entries per day, October 23 through 26: PASS, HELD and FAIL"></svg>
+  </div>
+  <div class="legend" id="legend"><span><i class="mark" style="background:#78d7b0"></i>Scoped PASS</span><span><i class="mark" style="background:#eec77e"></i>HELD</span><span><i class="mark" style="background:#f29893"></i>FAIL</span></div>
+  <p class="tiny" id="chart-explainer" style="margin:10px 0 0">A drop in recorded events is not evidence of declining productivity. Collection windows and scopes differ.</p>
+ </section>
+ <aside class="panel" aria-label="CoVal growth qualification">
+  <h2>◎ Value and truth gates</h2>
+  <div class="kpi"><span>Receiver-verified closures</span><span class="value">UNKNOWN</span></div>
+  <div class="kpi"><span>CoAtomicDebt trend</span><span class="value">UNKNOWN</span></div>
+  <div class="kpi"><span>Human relay per closure</span><span class="value">UNKNOWN</span></div>
+  <div class="kpi"><span>Independent recovery rate</span><span class="value">UNKNOWN</span></div>
+  <div class="kpi"><span>Native X2 CoOrb dashboard</span><span class="value">NOT VERIFIED</span></div>
+  <div class="note"><strong>Primary bottleneck:</strong> receiver-side useful outcome and cost timestamps are not yet captured in comparable daily windows.</div>
+  <p class="tiny" style="margin-top:13px"><strong>CoVal is provisional.</strong> It is not yet an audited single-number index. Source, beneficiary, baseline, receiver effect and human/compute cost are required before assigning value.</p>
+ </aside>
+</div>
+<section class="panel wide" aria-label="Source window evidence">
+ <h2>Seven-day historical coverage</h2>
+ <p class="small muted">Days with no qualified rows are unknown, not zero. Even recorded days are partial source-ledger samples.</p>
+ <div class="scroll"><table><thead><tr><th scope="col">Date</th><th scope="col">Window qualification</th><th scope="col">PASS</th><th scope="col">HELD</th><th scope="col">FAIL</th><th scope="col">Verified useful closures</th></tr></thead><tbody id="coverage"><tr><td>Loading documented source…</td></tr></tbody></table></div>
+</section>
+<div class="layout">
+ <section class="panel">
+  <h2>λ versus β: two different growth questions</h2>
+  <p><strong>Temporal exponential rate, λ:</strong> does the <em>same measured useful value</em> grow multiplicatively per comparable time window?</p>
+  <p class="math">λ ≈ Δln(V) / Δt; &nbsp; doubling time = ln(2) / λ</p>
+  <p><strong>Scale exponent, β:</strong> how does qualified output vary with a measured scale variable such as independently active participants?</p>
+  <p class="math">V ≈ aN^β; &nbsp; β ≈ Δln(V) / Δln(N)</p>
+  <p class="tiny">Both currently unqualified. A β fitted against system size is not a λ fitted against elapsed time. At least four comparable qualified observations and uncertainty/cost review are required even for a candidate fit.</p>
+ </section>
+ <section class="panel">
+  <h2>Golden Braid: where to improve</h2>
+  <div class="braid" aria-label="Intent to effect and learning chain"><span>Intent</span><span>Source</span><span>Meaning</span><span>Decision</span><span>Deed</span><span>Receipt</span><span class="missing">Receiver ?</span><span class="missing">Effect ?</span><span class="missing">Learning ?</span><span class="missing">Successor ?</span></div>
+  <p class="small" style="margin-top:15px">First useful test: take one real work item through independently accepted receiver use, capture its elapsed time, human interventions, source/receiver timestamps and cost, and preserve a replayable proof.</p>
+  <p class="tiny">No automated polling, provider login, mouse hooks, personal data, account activity or external effects are performed by this page.</p>
+ </section>
+</div>
+<div class="footer">
+ <a id="ledger-link" href="https://github.com/CoCivium/CoCivium/blob/main/ai/benchmark-evo.jsonl" target="_blank" rel="noopener noreferrer">Evidence ledger</a>
+ <a id="scorecard-link" href="https://github.com/CoCivium/CoCivium/blob/main/docs/Metrics/COSPEEDO_7DAY_SCORECARD_R0_20261026.json" target="_blank" rel="noopener noreferrer">Seven-day scorecard</a>
+ <a href="https://github.com/CoCivium/CoCivium/pull/296" target="_blank" rel="noopener noreferrer">Prior ledger-audit draft</a>
+ <span>Static read-only page · no auto-refresh · FOSS-first</span>
+</div>
+</main>
+<script type="application/json" id="source-snapshot">{"schema":"CoSpeedo.CoValGrowthFirstView.R0","display_title":"CoSpeedo+ | CoVal Growth | Historical Evidence","generated_utc":"2026-10-27T06:29:27.475Z","state":"STATIC_PUBLIC_SOURCE_SNAPSHOT__OUTCOME_GROWTH_UNQUALIFIED","sources":{"scoped_evidence":{"repository":"CoCivium/CoCivium","path":"ai/benchmark-evo.jsonl","blob_sha":"8c5a99b279a4a24aa458b41b87b5a8e34755b110","entry_count":145,"url":"https://github.com/CoCivium/CoCivium/blob/main/ai/benchmark-evo.jsonl"},"metric_policy":{"repository":"CoCivium/CoCivium","path":"docs/Metrics/COSPEEDO_7DAY_SCORECARD_R0_20261026.json","blob_sha":"cd39a2730f7c05708bdffb20910867abe17a2e57","windows":7,"url":"https://github.com/CoCivium/CoCivium/blob/main/docs/Metrics/COSPEEDO_7DAY_SCORECARD_R0_20261026.json"},"measurement_contract":{"url":"https://github.com/CoCivium/CoCivium/blob/main/docs/Architecture/COSPEEDO_EXPONENTIAL_PROOF_AND_RECURRENCE_INTERNALIZATION_R0_20261026.md"},"previous_audit":{"url":"https://github.com/CoCivium/CoCivium/pull/296","note":"Separate draft for strict correction of secondary JSONL ledger. Not merged or used for this snapshot."}},"counts":{"scoped_ledger_events":145,"PASS":84,"HELD":47,"FAIL":14},"windows":[{"date":"2026-10-20","coverage":"UNKNOWN","pass":null,"held":null,"fail":null,"total":null,"closure":null,"atomic_debt":null,"human_relay":null,"receiver_returns":null,"recovery":null,"observed_cost":null,"scorecard_state":"UNKNOWN"},{"date":"2026-10-21","coverage":"UNKNOWN","pass":null,"held":null,"fail":null,"total":null,"closure":null,"atomic_debt":null,"human_relay":null,"receiver_returns":null,"recovery":null,"observed_cost":null,"scorecard_state":"UNKNOWN"},{"date":"2026-10-22","coverage":"UNKNOWN","pass":null,"held":null,"fail":null,"total":null,"closure":null,"atomic_debt":null,"human_relay":null,"receiver_returns":null,"recovery":null,"observed_cost":null,"scorecard_state":"UNKNOWN"},{"date":"2026-10-23","coverage":"SOURCE_LEDGER_SAMPLE_ONLY","pass":38,"held":16,"fail":10,"total":64,"closure":null,"atomic_debt":null,"human_relay":null,"receiver_returns":null,"recovery":null,"observed_cost":null,"scorecard_state":"UNKNOWN"},{"date":"2026-10-24","coverage":"SOURCE_LEDGER_SAMPLE_ONLY","pass":40,"held":26,"fail":3,"total":69,"closure":null,"atomic_debt":null,"human_relay":null,"receiver_returns":null,"recovery":null,"observed_cost":null,"scorecard_state":"UNKNOWN"},{"date":"2026-10-25","coverage":"SOURCE_LEDGER_SAMPLE_ONLY","pass":3,"held":2,"fail":0,"total":5,"closure":null,"atomic_debt":null,"human_relay":null,"receiver_returns":null,"recovery":null,"observed_cost":null,"scorecard_state":"PARTIAL"},{"date":"2026-10-26","coverage":"SOURCE_LEDGER_SAMPLE_ONLY","pass":3,"held":3,"fail":1,"total":7,"closure":null,"atomic_debt":null,"human_relay":null,"receiver_returns":null,"recovery":null,"observed_cost":null,"scorecard_state":"PARTIAL_CURRENT"}],"coval":{"status":"PROVISIONAL_METRIC_NOT_OPERATIONALIZED","interpretation":"Receiver-verified useful outcomes with explicit beneficiary, baseline, cost, risk and source/receiver receipts; no canonical scalar value or comparable historical units fixed.","value":null,"growth_rate_per_day":null,"exponential_time_rate_lambda":null,"exponential_doubling_days":null,"historical_scaling_exponent_beta":null,"valid_receiver_value_windows":0,"valid_scale_pairs":0,"tested_exponential_growth":false},"acceptance":{"min_comparable_time_windows":4,"min_comparable_scale_pairs":4,"must_have":["stable useful-outcome unit","independent receiver-effect receipt","comparable time windows","measurement coverage and missed records","cost / human-time normalization","uncertainty and alternative growth-model comparison"],"prohibited":["COUNT_PASS_AS_USEFUL_CLOSURE","COUNT_NOT_RUN_AS_ZERO","FIT_EXPONENTIAL_FROM_ARTIFACTS","INFER_LIVE_STATUS_FROM_STATIC_SNAPSHOT","CLAIM_NATIVE_X2_DEPLOYMENT"],"next_proof":"Independently validate the first completed source→deed→receiver→effect→learning chain with timestamps and cost, then backfill comparable windows."},"privacy":"PUBLIC_AGGREGATE_ONLY__NO_RAW_MESSAGES_OR_PRIVATE_CONTENT","limitations":["Evidence ledger rows are heterogeneous scoped tests/observations, not exhaustive daily task attempts.","October 20–22 missing ledger coverage is UNKNOWN, not zero.","No numeric receiver-useful closure, human-relay cost, atomic debt or X2 runtime coverage is qualified in the seven-day scorecard.","A static HTML dashboard is not a live X2 CoBar installation or background polling service."]}</script>
+<script>
+"use strict";
+/* CO_METRIC_MATH_BEGIN */
+function leastSquares(points){
+  if(!Array.isArray(points)||points.length<4) return null;
+  const n=points.length, xm=points.reduce((s,p)=>s+p[0],0)/n, ym=points.reduce((s,p)=>s+p[1],0)/n;
+  const den=points.reduce((s,p)=>s+(p[0]-xm)**2,0);
+  if(!Number.isFinite(den)||den<=0)return null;
+  const b=points.reduce((s,p)=>s+(p[0]-xm)*(p[1]-ym),0)/den, a=ym-b*xm;
+  const residual=points.reduce((s,p)=>s+(p[1]-a-b*p[0])**2,0);
+  const variance=points.reduce((s,p)=>s+(p[1]-ym)**2,0);
+  const r2=variance>0?1-residual/variance:1;
+  return {slope:b,intercept:a,r2:Number.isFinite(r2)?r2:null};
+}
+function temporalExponent(rows){
+  if(!Array.isArray(rows)||rows.length<4)return {status:'HELD_INSUFFICIENT_COMPARABLE_VALUE_WINDOWS',lambda:null};
+  const dates=rows.map(r=>Date.parse(r.date+'T00:00:00Z')/86400000);
+  if(rows.some((r,i)=>!r.independent_receiver||!r.cost_qualified||typeof r.value!=='number'||r.value<=0||!Number.isFinite(r.value)||!Number.isFinite(dates[i])))
+    return {status:'HELD_RECEIVER_COST_OR_VALUE_GAP',lambda:null};
+  for(let i=1;i<dates.length;i++)if(dates[i]<=dates[i-1])return {status:'HELD_NON_MONOTONIC_DATES',lambda:null};
+  const fit=leastSquares(rows.map((r,i)=>[dates[i]-dates[0],Math.log(r.value)]));
+  if(!fit)return {status:'HELD_CANNOT_FIT',lambda:null};
+  return {status:fit.slope>0&&fit.r2>=.95?'EXPONENTIAL_CANDIDATE_ONLY':'NO_STABLE_EXPONENTIAL_CANDIDATE',lambda:fit.slope,doubling_days:fit.slope>0?Math.log(2)/fit.slope:null,r2:fit.r2};
+}
+function scalingExponent(rows){
+  if(!Array.isArray(rows)||rows.length<4)return {status:'HELD_INSUFFICIENT_SCALE_PAIRS',beta:null};
+  if(rows.some(r=>!r.independent_receiver||!r.cost_qualified||typeof r.scale!=='number'||r.scale<=0||!Number.isFinite(r.scale)||typeof r.value!=='number'||r.value<=0||!Number.isFinite(r.value)))
+    return {status:'HELD_RECEIVER_COST_OR_SCALE_GAP',beta:null};
+  if(new Set(rows.map(r=>r.scale)).size<4)return {status:'HELD_INSUFFICIENT_DISTINCT_SCALES',beta:null};
+  const fit=leastSquares(rows.map(r=>[Math.log(r.scale),Math.log(r.value)]));
+  if(!fit)return {status:'HELD_CANNOT_FIT',beta:null};
+  return {status:'POWER_LAW_CANDIDATE_ONLY',beta:fit.slope,r2:fit.r2};
+}
+/* CO_METRIC_MATH_END */
+const snapshot=JSON.parse(document.getElementById('source-snapshot').textContent);
+const svgNS='http://www.w3.org/2000/svg';
+function svgElement(tag,attrs,parent,text){
+  const x=document.createElementNS(svgNS,tag);for(const [k,v] of Object.entries(attrs||{}))x.setAttribute(k,String(v));
+  if(text!==undefined)x.textContent=String(text);parent.appendChild(x);return x;
+}
+function renderActivity(){
+ const box=document.getElementById('chart-slot');
+ box.replaceChildren();
+ const svg=svgElement('svg',{id:'chart',viewBox:'0 0 820 296',role:'img','aria-label':'Historic daily PASS, HELD, FAIL evidence record counts'},box);
+ svgElement('title',{},svg,'CoSpeedo seven-day sampled proof-ledger activity');
+ svgElement('desc',{},svg,'October 20–22 have unknown source coverage. October 23–26 show recorded scoped PASS, HELD and FAIL counts. These are not receiver value.');
+ const raw=snapshot.windows, max=80, x0=71,y0=234,chartH=201;
+ for(const tick of [0,20,40,60,80]){
+  const y=y0-tick/max*chartH;
+  svgElement('line',{x1:x0,x2:795,y1:y,y2:y,stroke:'#29455b','stroke-width':1},svg);
+  svgElement('text',{x:57,y:y+5,fill:'#b0c5d5','text-anchor':'end','font-size':14},svg,tick);
+ }
+ const groups=raw.length,width=724/groups,barW=17;
+ raw.forEach((r,i)=>{
+  const cx=x0+width*(i+.5),y=y0+23;
+  if(r.total===null){
+   svgElement('text',{x:cx,y:121,fill:'#b9cdd7','text-anchor':'middle','font-size':27},svg,'?');
+   svgElement('text',{x:cx,y:148,fill:'#b9cdd7','text-anchor':'middle','font-size':11},svg,'unknown');
+  }else{
+   const vals=[r.pass,r.held,r.fail],colors=['#78d7b0','#eec77e','#f29893'],labels=['PASS','HELD','FAIL'];
+   vals.forEach((v,j)=>{
+    const h=v/max*chartH, bx=cx-26+j*barW, by=y0-h;
+    let rect=svgElement('rect',{x:bx,y:by,width:14,height:h,rx:3,fill:colors[j]},svg);
+    svgElement('title',{},rect,r.date+': '+v+' '+labels[j]+' scoped evidence entries');
+   });
+   svgElement('text',{x:cx,y:Math.max(22,y0-r.total/max*chartH-10),fill:'#e9f5fa','text-anchor':'middle','font-size':13},svg,r.total);
+  }
+  svgElement('text',{x:cx,y:y,fill:'#bfd2df','text-anchor':'middle','font-size':13},svg,r.date.slice(5));
+ });
+}
+function showMode(mode){
+ const slot=document.getElementById('chart-slot');
+ document.querySelectorAll('[data-mode]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.mode===mode)));
+ const note=document.getElementById('chart-explainer');
+ const scope=document.getElementById('chart-scope');
+ const legend=document.getElementById('legend');
+ if(mode==='activity'){
+  renderActivity();scope.textContent='Scoped ledger samples';legend.hidden=false;
+  note.textContent='Ledger count is observation activity, not independent useful output. Missing days are unknown, not zero.';
+  return;
+ }
+ slot.replaceChildren();
+ const empty=document.createElement('div');empty.className='empty-chart';empty.setAttribute('role','status');
+ if(mode==='value'){
+  empty.textContent='No source-qualified receiver-value series exists yet. CoVal and useful closures are UNKNOWN, not zero.';
+  scope.textContent='Receiver outcome: HELD';
+  note.textContent='Requires a repeatable beneficiary, baseline, verified effect, cost, receiver and receipt for each comparable window.';
+ }else{
+  const t=temporalExponent(snapshot.windows.map(w=>({date:w.date,value:w.closure,independent_receiver:false,cost_qualified:false})));
+  const s=scalingExponent([]);
+  empty.textContent='λ: '+t.status+' · β: '+s.status+'. No growth exponent can be estimated from scoped PASS counts.';
+  scope.textContent='Exponents: UNQUALIFIED';
+  note.textContent='Temporal λ is not a scale-law β. A fitted candidate would still require baseline, confounder, uncertainty and receiver-value review.';
+ }
+ legend.hidden=true;slot.appendChild(empty);
+}
+document.getElementById('ledger-total').textContent=snapshot.counts.scoped_ledger_events;
+document.getElementById('passes').textContent=snapshot.counts.PASS;
+document.getElementById('held').textContent=snapshot.counts.HELD;
+document.getElementById('failed').textContent=snapshot.counts.FAIL;
+document.getElementById('stamp').textContent='Source snapshot: '+snapshot.generated_utc.slice(0,16).replace('T',' ')+' UTC';
+document.getElementById('ledger-link').href=snapshot.sources.scoped_evidence.url;
+document.getElementById('scorecard-link').href=snapshot.sources.metric_policy.url;
+const coverage=document.getElementById('coverage');coverage.replaceChildren();
+snapshot.windows.forEach(w=>{
+ const tr=document.createElement('tr');
+ [w.date,w.coverage==='UNKNOWN'?'UNKNOWN':'PARTIAL LEDGER',w.pass===null?'?':w.pass,w.held===null?'?':w.held,w.fail===null?'?':w.fail,'UNKNOWN'].forEach((cell,j)=>{
+  const x=document.createElement(j===0?'th':'td');if(j===0)x.scope='row';x.textContent=String(cell);tr.appendChild(x);
+ });coverage.appendChild(tr);
+});
+for(const b of document.querySelectorAll('[data-mode]'))b.addEventListener('click',()=>showMode(b.dataset.mode));
+showMode('activity');
+</script>
+</body>
+</html>
