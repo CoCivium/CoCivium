@@ -1,0 +1,37 @@
+name: Golden Braid issue 317 R0 local conformance
+on:
+  push:
+    branches:
+      - research/golden-braid-issue317-r0-20261027
+  pull_request:
+    paths:
+      - 'experiments/coall-golden-braid-r0/**'
+      - '.github/workflows/coall-golden-braid-r0.yml'
+permissions:
+  contents: read
+jobs:
+  local-recovery:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Run two-receiver failure and recovery test suite
+        working-directory: experiments/coall-golden-braid-r0
+        run: python3 -m unittest discover -s tests -v
+      - name: Rebuild CoGbx one-file view, without changing source
+        working-directory: experiments/coall-golden-braid-r0
+        run: |
+          python3 ux/build.py
+          git diff --exit-code -- ux/CoGbx_OneWork_Exemplar_R0.html
+      - name: Check one work object across modes
+        working-directory: experiments/coall-golden-braid-r0
+        run: node --test ux/test_logic.cjs
+      - name: Verify frozen receiver-local receipts
+        working-directory: experiments/coall-golden-braid-r0
+        run: python3 verify_output.py --out output/demo
