@@ -1,0 +1,52 @@
+name: CoHereNow Convergence R0
+
+permissions:
+  contents: read
+
+on:
+  pull_request:
+    paths:
+      - "docs/Architecture/COHERENOW_CONVERGENCE_R0_20261027.md"
+      - "ai/convergence/coherenow-r0-fixture.json"
+      - "scripts/CoHereNowConvergenceR0.py"
+      - ".github/workflows/coherenow-convergence-r0.yml"
+  push:
+    paths:
+      - "docs/Architecture/COHERENOW_CONVERGENCE_R0_20261027.md"
+      - "ai/convergence/coherenow-r0-fixture.json"
+      - "scripts/CoHereNowConvergenceR0.py"
+      - ".github/workflows/coherenow-convergence-r0.yml"
+
+jobs:
+  convergence:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run CoHereNow convergence canary
+        run: |
+          python -B scripts/CoHereNowConvergenceR0.py             --fixture ai/convergence/coherenow-r0-fixture.json             > /tmp/coherenow-r0.json
+
+      - name: Validate convergence rails
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          r = json.loads(Path("/tmp/coherenow-r0.json").read_text())
+          assert r["state"] == "PASS_SYNTHETIC_SHARED_FRONT__NO_SESSION_MUTATION"
+          assert r["source_front_count"] == 3
+          assert r["convergence_group_count"] == 1
+          assert len(r["preserved_specialties"]) == 3
+          assert r["elected_next_action"] == "PROJECT_ONE_SHARED_FRONT_WITH_SOURCE_DRILLDOWN__NO_SESSION_MUTATION"
+          assert len(r["shared_action_operators"]) == 7
+          assert all(x["source_disposition"] == "PRESERVED" for x in r["source_lineage"])
+          assert all(v == 0 for v in r["effects"].values())
+          assert "CONVERGENCE_NE_MERGE_OF_TRUTH" in r["rails"]
+          assert "SESSION_COUNT_NE_FRONT_COUNT" in r["rails"]
+          print("PASS_COHERENOW_CONVERGENCE_R0")
+          PY
