@@ -1,0 +1,59 @@
+name: CoBrowser Continuity R0
+
+permissions:
+  contents: read
+
+on:
+  pull_request:
+    paths:
+      - "docs/Architecture/COBROWSER_COORB_CONTINUITY_R0_20261027.md"
+      - "scripts/CoBrowserContinuityR0.py"
+      - "ai/fixtures/cobrowser-continuity-r0.json"
+      - ".github/workflows/cobrowser-continuity-r0.yml"
+  push:
+    paths:
+      - "docs/Architecture/COBROWSER_COORB_CONTINUITY_R0_20261027.md"
+      - "scripts/CoBrowserContinuityR0.py"
+      - "ai/fixtures/cobrowser-continuity-r0.json"
+      - ".github/workflows/cobrowser-continuity-r0.yml"
+
+jobs:
+  continuity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run bounded continuity canary
+        run: |
+          python -B scripts/CoBrowserContinuityR0.py \
+            --fixture ai/fixtures/cobrowser-continuity-r0.json \
+            > /tmp/cobrowser-report.json
+
+      - name: Validate continuity rails
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          r = json.loads(Path("/tmp/cobrowser-report.json").read_text())
+          assert r["state"] == "BOUNDED_LOCAL_FIXTURE_PASS__NO_RUNTIME_ADOPTION"
+          assert r["surface_count"] == 3
+          assert r["all_work_identity_preserved"] is True
+          assert r["all_outward_effects_zero"] is True
+          assert r["blank_surface_recovery_proved"] is True
+
+          by_state = {x["visual_state"]: x for x in r["receipts"]}
+          assert by_state["HEALTHY"]["recovery_action"] == "KEEP_SURFACE"
+          assert by_state["BLANK_RENDER"]["recovery_action"] == "PROJECT_COORB_FROM_CHECKPOINT"
+          assert by_state["AUTH_REQUIRED"]["recovery_action"] == "HOLD_AUTH_AND_PROJECT_COORB"
+
+          for item in r["receipts"]:
+              assert item["work_object_digest_before"] == item["work_object_digest_after"]
+              assert all(v == 0 for v in item["effects"].values())
+
+          print("PASS_COBROWSER_CONTINUITY_R0")
+          PY
