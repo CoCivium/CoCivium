@@ -1,0 +1,72 @@
+{
+  "schema": "CoHereNow.ConvergenceFixture.R0.v0.1",
+  "shared_goal_id": "evo-all-betters-current-front",
+  "fronts": [
+    {
+      "front_id": "front-ux",
+      "source_ref": "docs/Architecture/COGBX_UNIVERSAL_UX_EXEMPLAR_R0_20261027.md",
+      "specialty": "UX_PROJECTION",
+      "confidentiality": "PUBLIC",
+      "authority_ceiling": "LOCAL_PREVIEW_ONLY",
+      "action_operators": [
+        "DISCOVER",
+        "PRESERVE_LINEAGE",
+        "RECONCILE_RELATIONS",
+        "EXPOSE_GAPS",
+        "RUN_BOUNDED_EXPERIMENT",
+        "VERIFY_RECEIPT",
+        "PRESERVE_AND_RECOMBINE"
+      ],
+      "candidate_next_actions": [
+        "PROJECT_ONE_SHARED_FRONT_WITH_SOURCE_DRILLDOWN__NO_SESSION_MUTATION"
+      ],
+      "unresolved": [
+        "X2_RUNTIME_UNVERIFIED"
+      ]
+    },
+    {
+      "front_id": "front-coordination",
+      "source_ref": "docs/Architecture/COALL_COORDINATION_FANOUT_RECOVERY_R0_20261027.md",
+      "specialty": "COORDINATION_PROOF",
+      "confidentiality": "PUBLIC",
+      "authority_ceiling": "LOCAL_PREVIEW_ONLY",
+      "action_operators": [
+        "DISCOVER",
+        "PRESERVE_LINEAGE",
+        "RECONCILE_RELATIONS",
+        "EXPOSE_GAPS",
+        "RUN_BOUNDED_EXPERIMENT",
+        "VERIFY_RECEIPT",
+        "PRESERVE_AND_RECOMBINE"
+      ],
+      "candidate_next_actions": [
+        "PROJECT_ONE_SHARED_FRONT_WITH_SOURCE_DRILLDOWN__NO_SESSION_MUTATION"
+      ],
+      "unresolved": [
+        "REAL_RECEIVER_READPROOF_HELD"
+      ]
+    },
+    {
+      "front_id": "front-evergreen",
+      "source_ref": "EVERGREEN.md",
+      "specialty": "EVERGREEN_REEVALUATION",
+      "confidentiality": "PUBLIC",
+      "authority_ceiling": "LOCAL_PREVIEW_ONLY",
+      "action_operators": [
+        "DISCOVER",
+        "PRESERVE_LINEAGE",
+        "RECONCILE_RELATIONS",
+        "EXPOSE_GAPS",
+        "RUN_BOUNDED_EXPERIMENT",
+        "VERIFY_RECEIPT",
+        "PRESERVE_AND_RECOMBINE"
+      ],
+      "candidate_next_actions": [
+        "PROJECT_ONE_SHARED_FRONT_WITH_SOURCE_DRILLDOWN__NO_SESSION_MUTATION"
+      ],
+      "unresolved": [
+        "GLOBAL_RECEIVER_COVERAGE_UNPROVEN"
+      ]
+    }
+  ]
+}
