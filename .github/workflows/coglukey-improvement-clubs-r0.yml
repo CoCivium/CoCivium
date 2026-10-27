@@ -1,0 +1,32 @@
+name: CoGlukey Careers Improvement Clubs R0
+
+permissions:
+  contents: read
+
+on:
+  pull_request:
+    paths:
+      - "docs/Strategy/COGLUKEY_CAREERS_IMPROVEMENT_CLUBS_R0_20261027.md"
+      - "docs/Outreach/IMPROVEMENT_CLUB_KIT_R0.md"
+      - "ai/strategy/coglukey-careers-improvement-clubs-r0.json"
+      - "scripts/CoGlukeyImprovementClubCheckR0.py"
+      - ".github/workflows/coglukey-improvement-clubs-r0.yml"
+  push:
+    paths:
+      - "docs/Strategy/COGLUKEY_CAREERS_IMPROVEMENT_CLUBS_R0_20261027.md"
+      - "docs/Outreach/IMPROVEMENT_CLUB_KIT_R0.md"
+      - "ai/strategy/coglukey-careers-improvement-clubs-r0.json"
+      - "scripts/CoGlukeyImprovementClubCheckR0.py"
+      - ".github/workflows/coglukey-improvement-clubs-r0.yml"
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Validate career and improvement-club rails
+        run: python -B scripts/CoGlukeyImprovementClubCheckR0.py
