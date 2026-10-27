@@ -28,7 +28,7 @@ must(/prefers-reduced-motion/, "reduced-motion support");
 must(/@media \(max-width:600px\)/, "narrow viewport support");
 must(/aria-label="Projection controls"/, "projection control label");
 must(/aria-pressed/, "toggle semantics");
-must(/one durable work object/i, "durable work identity");
+must(/One synthetic work object, shown in every projection/i, "stable synthetic identity across projections");
 must(/Redundancy does not duplicate authority/i, "redundancy boundary");
 must(/STATIC DEMONSTRATION · NOT LIVE/, "prominent example-only status");
 must(/CoGbx\.org hosting, independent peer paths, and X2 native runtime remain unverified/, "unverified external states");
