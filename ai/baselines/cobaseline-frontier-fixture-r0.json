@@ -1,0 +1,112 @@
+{
+  "schema": "CoBaseline.FrontierFixture.R0.v0.1",
+  "metric_directions": {
+    "useful_throughput": "max",
+    "correctness": "max",
+    "recovery_success": "max",
+    "p95_latency_ms": "min",
+    "human_minutes": "min",
+    "cost_units": "min"
+  },
+  "hard_floors": {
+    "correctness": 0.95,
+    "recovery_success": 0.9
+  },
+  "records": [
+    {
+      "result_id": "r-incumbent",
+      "workload_id": "w-alpha",
+      "environment": "local-python",
+      "receiver_class": "developer",
+      "authority_ceiling": "LOCAL_TEST",
+      "privacy_class": "PUBLIC_SAFE",
+      "observed_at": "2026-10-20T00:00:00Z",
+      "state": "PASS",
+      "current": true,
+      "metrics": {
+        "useful_throughput": 100,
+        "correctness": 0.98,
+        "recovery_success": 0.95,
+        "p95_latency_ms": 100,
+        "human_minutes": 10,
+        "cost_units": 10
+      }
+    },
+    {
+      "result_id": "r-challenger",
+      "workload_id": "w-alpha",
+      "environment": "local-python",
+      "receiver_class": "developer",
+      "authority_ceiling": "LOCAL_TEST",
+      "privacy_class": "PUBLIC_SAFE",
+      "observed_at": "2026-10-21T00:00:00Z",
+      "state": "PASS",
+      "current": true,
+      "metrics": {
+        "useful_throughput": 125,
+        "correctness": 0.99,
+        "recovery_success": 0.96,
+        "p95_latency_ms": 82,
+        "human_minutes": 8,
+        "cost_units": 9
+      }
+    },
+    {
+      "result_id": "r-recovery",
+      "workload_id": "w-alpha",
+      "environment": "local-python",
+      "receiver_class": "developer",
+      "authority_ceiling": "LOCAL_TEST",
+      "privacy_class": "PUBLIC_SAFE",
+      "observed_at": "2026-10-22T00:00:00Z",
+      "state": "PASS",
+      "current": true,
+      "metrics": {
+        "useful_throughput": 110,
+        "correctness": 0.99,
+        "recovery_success": 1,
+        "p95_latency_ms": 95,
+        "human_minutes": 8,
+        "cost_units": 9
+      }
+    },
+    {
+      "result_id": "r-fast-bad-quality",
+      "workload_id": "w-alpha",
+      "environment": "local-python",
+      "receiver_class": "developer",
+      "authority_ceiling": "LOCAL_TEST",
+      "privacy_class": "PUBLIC_SAFE",
+      "observed_at": "2026-10-23T00:00:00Z",
+      "state": "PASS",
+      "current": true,
+      "metrics": {
+        "useful_throughput": 170,
+        "correctness": 0.9,
+        "recovery_success": 0.97,
+        "p95_latency_ms": 60,
+        "human_minutes": 7,
+        "cost_units": 8
+      }
+    },
+    {
+      "result_id": "r-other-env",
+      "workload_id": "w-alpha",
+      "environment": "browser-js",
+      "receiver_class": "developer",
+      "authority_ceiling": "LOCAL_TEST",
+      "privacy_class": "PUBLIC_SAFE",
+      "observed_at": "2026-10-24T00:00:00Z",
+      "state": "PASS",
+      "current": true,
+      "metrics": {
+        "useful_throughput": 140,
+        "correctness": 0.99,
+        "recovery_success": 0.95,
+        "p95_latency_ms": 70,
+        "human_minutes": 8,
+        "cost_units": 9
+      }
+    }
+  ]
+}

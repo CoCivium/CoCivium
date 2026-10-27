@@ -1,0 +1,65 @@
+name: CoBaseline Frontier Registry R0
+
+permissions:
+  contents: read
+
+on:
+  pull_request:
+    paths:
+      - "docs/Architecture/COBASELINE_FRONTIER_REGISTRY_R0_20261027.md"
+      - "ai/baselines/cobaseline-frontier-policy-r0.json"
+      - "ai/baselines/cobaseline-frontier-fixture-r0.json"
+      - "scripts/CoBaselineFrontierR0.py"
+      - ".github/workflows/cobaseline-frontier-r0.yml"
+  push:
+    paths:
+      - "docs/Architecture/COBASELINE_FRONTIER_REGISTRY_R0_20261027.md"
+      - "ai/baselines/cobaseline-frontier-policy-r0.json"
+      - "ai/baselines/cobaseline-frontier-fixture-r0.json"
+      - "scripts/CoBaselineFrontierR0.py"
+      - ".github/workflows/cobaseline-frontier-r0.yml"
+
+jobs:
+  frontier:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Evaluate synthetic frontier
+        run: |
+          python -B scripts/CoBaselineFrontierR0.py             --fixture ai/baselines/cobaseline-frontier-fixture-r0.json             --policy ai/baselines/cobaseline-frontier-policy-r0.json             > /tmp/cobaseline-r0.json
+
+      - name: Validate champion semantics
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          r=json.loads(Path("/tmp/cobaseline-r0.json").read_text())
+          assert r["state"]=="PASS_SYNTHETIC_BASELINE_FRONTIER_REGISTRY"
+          assert r["family_count"]==2
+
+          fams=r["families"]
+          local=[f for f in fams if f["comparability_key"]["environment"]=="local-python"][0]
+          browser=[f for f in fams if f["comparability_key"]["environment"]=="browser-js"][0]
+
+          assert "r-challenger" in local["pareto_frontier_ids"]
+          assert "r-recovery" in local["pareto_frontier_ids"]
+          assert "r-incumbent" not in local["pareto_frontier_ids"]
+          assert browser["record_ids"]==["r-other-env"]
+          assert browser["pareto_frontier_ids"]==["r-other-env"]
+
+          held={x["result_id"]:x["reason"] for x in r["held"]}
+          assert held["r-fast-bad-quality"]=="HARD_FLOOR_FAIL"
+
+          assert "r-incumbent" in r["preserved_result_ids"]
+          assert "r-fast-bad-quality" in r["preserved_result_ids"]
+          assert all(v==0 for v in r["effects"].values())
+
+          assert "BASELINE_NE_CEILING" in r["rails"]
+          assert "PARETO_FRONTIER_NE_SINGLE_SCORE" in r["rails"]
+          print("PASS_COBASELINE_FRONTIER_REGISTRY_R0")
+          PY

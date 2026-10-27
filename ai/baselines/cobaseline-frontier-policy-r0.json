@@ -1,0 +1,32 @@
+{
+  "schema": "CoBaseline.FrontierPolicy.R0.v0.1",
+  "state": "CANDIDATE__SYNTHETIC_ONLY",
+  "comparability_key": [
+    "workload_id",
+    "environment",
+    "receiver_class",
+    "authority_ceiling",
+    "privacy_class"
+  ],
+  "champion_labels": [
+    "LAST_PROVEN",
+    "BEST_PROVEN",
+    "BEST_CURRENT",
+    "BEST_LOCAL",
+    "BEST_GLOBAL_KNOWN",
+    "BEST_SAFE",
+    "BEST_RECEIVER",
+    "BEST_RECOVERY"
+  ],
+  "rails": [
+    "BASELINE_NE_CEILING",
+    "MAX_PROVEN_NE_MAX_RAW",
+    "FAST_NE_FLOWING_WELL",
+    "INCOMPARABLE_NE_WORSE",
+    "PARETO_FRONTIER_NE_SINGLE_SCORE",
+    "THROUGHPUT_WITH_QUALITY_REGRESSION_NE_PROMOTION",
+    "OUTPUT_CAN_BECOME_INPUT",
+    "RESOURCE_NE_AUTHORITY",
+    "INVENTORY_GROWTH_NE_ACTIVE_FLEET_GROWTH"
+  ]
+}
