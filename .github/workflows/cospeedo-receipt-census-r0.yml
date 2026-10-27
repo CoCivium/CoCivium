@@ -1,0 +1,83 @@
+name: CoSpeedo Receipt Census R0
+
+permissions:
+  contents: read
+
+on:
+  pull_request:
+    paths:
+      - "ai/benchmark-evo.jsonl"
+      - "scripts/CoSpeedoReceiptCensusR0.py"
+      - "docs/Metrics/COSPEEDO_RECEIPT_CENSUS_R0_20261027.json"
+      - "docs/Metrics/COSPEEDO_7DAY_SCORECARD_R0_20261026.json"
+      - ".github/workflows/cospeedo-receipt-census-r0.yml"
+  push:
+    paths:
+      - "ai/benchmark-evo.jsonl"
+      - "scripts/CoSpeedoReceiptCensusR0.py"
+      - "docs/Metrics/COSPEEDO_RECEIPT_CENSUS_R0_20261027.json"
+      - "docs/Metrics/COSPEEDO_7DAY_SCORECARD_R0_20261026.json"
+      - ".github/workflows/cospeedo-receipt-census-r0.yml"
+
+jobs:
+  census:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Rebuild bounded receipt census
+        run: |
+          python -B scripts/CoSpeedoReceiptCensusR0.py ai/benchmark-evo.jsonl \
+            --start 2026-10-20 --end 2026-10-26 \
+            --output /tmp/census.json
+
+      - name: Validate census and scorecard rails
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          generated = json.loads(Path("/tmp/census.json").read_text())
+          published = json.loads(Path("docs/Metrics/COSPEEDO_RECEIPT_CENSUS_R0_20261027.json").read_text())
+          score = json.loads(Path("docs/Metrics/COSPEEDO_7DAY_SCORECARD_R0_20261026.json").read_text())
+
+          expected = {
+              "2026-10-20": (0, 0, 0, 0),
+              "2026-10-21": (0, 0, 0, 0),
+              "2026-10-22": (0, 0, 0, 0),
+              "2026-10-23": (64, 38, 10, 16),
+              "2026-10-24": (69, 40, 3, 26),
+              "2026-10-25": (5, 3, 0, 2),
+              "2026-10-26": (7, 3, 1, 3),
+          }
+
+          assert generated["selected_row_count"] == 145
+          assert published["selected_row_count"] == 145
+          for d, (total, passed, failed, held) in expected.items():
+              g = generated["days"][d]
+              p = published["days"][d]
+              assert g["ledger_rows"] == p["ledger_rows"] == total
+              assert g["status_counts"]["PASS"] == p["status_counts"]["PASS"] == passed
+              assert g["status_counts"]["FAIL"] == p["status_counts"]["FAIL"] == failed
+              assert g["status_counts"]["HELD"] == p["status_counts"]["HELD"] == held
+              if total == 0:
+                  assert g["coverage_state"] == "NO_LEDGER_ROWS__UNKNOWN_NE_ZERO"
+
+          assert "ACTIVITY_COUNT_NE_GROWTH_RATE" in published["rails"]
+          assert "NO_EXPONENTIAL_CLAIM" in published["nonclaims"]
+          assert score["receipt_census"]["selected_row_count"] == 145
+          assert "145-event dashboard total" in score["receipt_census"]["interpretation"]
+
+          for w in score["windows"]:
+              metrics = w.get("metrics")
+              if metrics is not None:
+                  assert all(v is None for v in metrics.values())
+              if w["date"] <= "2026-10-22":
+                  assert w["receipt_ledger_census"]["coverage_state"] == "NO_LEDGER_ROWS__UNKNOWN_NE_ZERO"
+
+          print("PASS_COSPEEDO_RECEIPT_CENSUS_R0")
+          PY
