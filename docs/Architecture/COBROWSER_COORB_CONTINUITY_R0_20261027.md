@@ -47,31 +47,44 @@ CoBrowser+ should initially reuse mature rendering substrates such as an existin
 
 ## Surface health is not sentience
 
-A provider tab that appears blank, confused, stale, truncated, or inconsistent should be represented with observable surface-health states rather than anthropomorphic claims.
+A provider tab that appears blank, confused, stale, truncated, or inconsistent should be represented with observable health axes rather than anthropomorphic claims.
 
-Candidate states:
+R0.1 factors health because one scalar such as `HEALTHY` hides important combinations.
 
-- `HEALTHY`
-- `BLANK_RENDER`
-- `PARTIAL_RENDER`
-- `STALE_RENDER`
-- `AUTH_REQUIRED`
-- `RATE_LIMITED`
-- `NETWORK_ERROR`
-- `PROVIDER_ERROR`
+### Render axis
+- `RENDERED`
+- `BLANK`
+- `PARTIAL`
+- `ERROR`
 - `UNKNOWN`
 
-A surface may be visually blank while provider-side context still exists, or may look healthy while the model/context is stale. These are separate observations.
+### Currentness axis
+- `CURRENT`
+- `STALE`
+- `UNKNOWN`
+
+### Interaction axis
+- `RESPONSIVE`
+- `DEGRADED`
+- `UNKNOWN`
+
+### Auth / network / provider axes
+
+Auth, network and provider state remain separate as well. A pane may therefore be visibly rendered while currentness, responsiveness, network reachability or provider state remain unknown.
+
+This distinction matters for human-supplied screenshots: visible content proves a rendered surface for that observation window, not current model context, semantic quality, provider reachability or remote-observer health.
 
 `VISUAL_BLANK_NE_CONTEXT_LOST`  
 `SESSION_HEALTH_NE_SENTIENCE`  
-`VISIBLE_NE_CURRENT`
+`VISIBLE_NE_CURRENT`  
+`RENDERED_NE_RESPONSIVE`  
+`HUMAN_OBSERVED_ALIVE_NE_REMOTE_OBSERVER_ALIVE`
 
 ## Surface-health envelope
 
 Candidate minimum envelope:
 
-`surface_id | work_object_id | adapter_id | provider | renderer | url_scope | observed_at | visual_state | auth_state | network_state | response_state | currentness_cursor | last_good_checkpoint | local_draft_state | recovery_options | evidence_refs | confidence`
+`surface_id | work_object_id | adapter_id | provider | renderer | url_scope | observed_at | render_state | currentness_state | interaction_state | auth_state | network_state | provider_state | currentness_cursor | last_good_checkpoint | local_draft_state | recovery_options | evidence_refs | confidence`
 
 Secrets stay inside OS/provider credential boundaries.
 
@@ -245,3 +258,22 @@ not a wall of provider tabs whose failure modes become the information architect
 `NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE`  
 `HASHING_IS_NOT_SEMANTIC_INGESTION`  
 `DISCOVERED_SET_IS_NOT_COMPLETE_HISTORY`
+
+
+## R0.1 health-axis correction
+
+A 2026-10-27 user-supplied X2 screenshot showed several provider surfaces visibly rendered while the authorized Remote Desktop Commander observer was separately offline. That combination demonstrates why visual rendering and observer/currentness state must not collapse into one health label.
+
+R0.1 therefore adds a synthetic `surface-visible-unknown` fixture:
+
+`RENDERED + CURRENTNESS_UNKNOWN + INTERACTION_UNKNOWN + NETWORK_UNKNOWN + PROVIDER_UNKNOWN`
+
+Expected recovery action:
+
+`PROJECT_COORB_AND_VERIFY_CURRENTNESS`
+
+not:
+
+`KEEP_SURFACE`
+
+The screenshot is human-observed visual evidence only. It does not establish provider-current context, remote-observer pickup, or runtime CoBrowser integration.
