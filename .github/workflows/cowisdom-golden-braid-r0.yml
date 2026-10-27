@@ -1,0 +1,54 @@
+name: CoWisdom Golden Braid R0
+
+permissions:
+  contents: read
+
+on:
+  pull_request:
+    paths:
+      - "docs/Architecture/COWISDOM_GOLDEN_BRAID_COORB_R0_20261027.md"
+      - "ai/wisdom/cowisdom-golden-braid-r0.json"
+      - "ai/wisdom/cowisdom-corpus-r0.json"
+      - "scripts/CoWisdomProjectionR0.py"
+      - ".github/workflows/cowisdom-golden-braid-r0.yml"
+  push:
+    paths:
+      - "docs/Architecture/COWISDOM_GOLDEN_BRAID_COORB_R0_20261027.md"
+      - "ai/wisdom/cowisdom-golden-braid-r0.json"
+      - "ai/wisdom/cowisdom-corpus-r0.json"
+      - "scripts/CoWisdomProjectionR0.py"
+      - ".github/workflows/cowisdom-golden-braid-r0.yml"
+
+jobs:
+  wisdom:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run bounded wisdom projection canary
+        run: |
+          python -B scripts/CoWisdomProjectionR0.py \
+            --corpus ai/wisdom/cowisdom-corpus-r0.json \
+            --policy ai/wisdom/cowisdom-golden-braid-r0.json \
+            > /tmp/cowisdom-r0.json
+      - name: Validate projection rails
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          r = json.loads(Path("/tmp/cowisdom-r0.json").read_text())
+          assert r["state"] == "BOUNDED_ORIGINAL_CORPUS_PASS__NO_EXTERNAL_INGESTION"
+          assert r["corpus_count"] == 12
+          assert r["held_count"] == 1
+          assert "cw-011" in r["held_ids"]
+          assert r["projection"]["primary"]
+          assert r["projection"]["counterpoint"]
+          assert r["projection"]["primary"] != r["projection"]["counterpoint"]
+          assert all(v == 0 for v in r["effects"].values())
+          assert "HARD_GATES_BEFORE_RANKING" in r["rails"]
+          assert "PRIMARY_REQUIRES_COUNTERPOINT" in r["rails"]
+          print("PASS_COWISDOM_GOLDEN_BRAID_R0")
+          PY
