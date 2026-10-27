@@ -23,17 +23,20 @@
     {
       "renderer_id": "webview2-evergreen",
       "renderer_family": "chromium",
-      "host": "synthetic_windows_embedded"
+      "host": "synthetic_windows_embedded",
+      "work_object_id": "cowork-renderer-substitution-r0"
     },
     {
       "renderer_id": "firefox-managed",
       "renderer_family": "gecko",
-      "host": "synthetic_independent_browser"
+      "host": "synthetic_independent_browser",
+      "work_object_id": "cowork-renderer-substitution-r0"
     },
     {
       "renderer_id": "typed-headless",
       "renderer_family": "renderer_independent",
-      "host": "synthetic_typed_projection"
+      "host": "synthetic_typed_projection",
+      "work_object_id": "cowork-renderer-substitution-r0"
     }
   ]
 }
