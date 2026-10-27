@@ -41,15 +41,17 @@ jobs:
 
           r = json.loads(Path("/tmp/cobrowser-report.json").read_text())
           assert r["state"] == "BOUNDED_LOCAL_FIXTURE_PASS__NO_RUNTIME_ADOPTION"
-          assert r["surface_count"] == 3
+          assert r["surface_count"] == 4
           assert r["all_work_identity_preserved"] is True
           assert r["all_outward_effects_zero"] is True
           assert r["blank_surface_recovery_proved"] is True
 
-          by_state = {x["visual_state"]: x for x in r["receipts"]}
-          assert by_state["HEALTHY"]["recovery_action"] == "KEEP_SURFACE"
-          assert by_state["BLANK_RENDER"]["recovery_action"] == "PROJECT_COORB_FROM_CHECKPOINT"
-          assert by_state["AUTH_REQUIRED"]["recovery_action"] == "HOLD_AUTH_AND_PROJECT_COORB"
+          by_id = {x["surface_id"]: x for x in r["receipts"]}
+          assert by_id["surface-healthy"]["recovery_action"] == "KEEP_SURFACE"
+          assert by_id["surface-blank"]["recovery_action"] == "PROJECT_COORB_FROM_CHECKPOINT"
+          assert by_id["surface-auth"]["recovery_action"] == "HOLD_AUTH_AND_PROJECT_COORB"
+          assert by_id["surface-visible-unknown"]["recovery_action"] == "PROJECT_COORB_AND_VERIFY_CURRENTNESS"
+          assert r["visible_unknown_not_promoted_to_healthy"] is True
 
           for item in r["receipts"]:
               assert item["work_object_digest_before"] == item["work_object_digest_after"]
