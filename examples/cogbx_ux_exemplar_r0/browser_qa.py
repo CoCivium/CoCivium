@@ -33,6 +33,12 @@ def case(browser, name, width, height):
     notice = page.locator(".demo-banner").inner_text()
     check("NOT LIVE" in notice and "X2 native runtime remain unverified" in notice, name + "_not_live_notice_truthful")
     check(page.locator(".node").count() == 6, name + "_six_nodes")
+    throughput = page.locator(".throughput")
+    check(throughput.is_visible(), name + "_throughput_context_visible")
+    entries = throughput.inner_text()
+    check("NOT MEASURED" in entries and entries.count("NOT MEASURED") == 3, name + "_three_unmeasured_counters")
+    check("UNQUALIFIED" in entries and "inventory candidates" in entries, name + "_capacity_not_inferred_from_inventory")
+
     check(page.locator(".stat").count() == 4, name + "_four_glance_fields")
     check("synthetic fixture" in page.locator(".kv").inner_text(), name + "_synthetic_currentness")
     check("not live-tested" in page.locator(".kv").inner_text(), name + "_recovery_not_claimed")
