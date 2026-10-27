@@ -1,0 +1,34 @@
+name: CoGoldenBraid Wisdom R0 offline guards
+on:
+  push:
+    branches:
+      - research/cogoldenbraid-wisdom-r0-20261027
+  pull_request:
+    paths:
+      - 'experiments/cogoldenbraid-wisdom-r0/**'
+      - '.github/workflows/cogoldenbraid-wisdom-r0.yml'
+permissions:
+  contents: read
+jobs:
+  test-source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run source and negative tests
+        working-directory: experiments/cogoldenbraid-wisdom-r0
+        run: python3 -m unittest discover -s tests -v
+      - name: Verify immutable local evidence
+        working-directory: experiments/cogoldenbraid-wisdom-r0
+        run: python3 verify_evidence.py
+      - name: Rebuild source and evidence deterministically
+        working-directory: experiments/cogoldenbraid-wisdom-r0
+        run: |
+          python3 create_seed.py
+          python3 build_viewer.py
+          python3 build_evidence.py
+      - name: Confirm no output drift
+        run: git diff --exit-code -- experiments/cogoldenbraid-wisdom-r0/seed.json experiments/cogoldenbraid-wisdom-r0/CoGoldenBraid_Viewer.html experiments/cogoldenbraid-wisdom-r0/benchmark_evo.jsonl experiments/cogoldenbraid-wisdom-r0/HEAD.sha256 experiments/cogoldenbraid-wisdom-r0/SUMMARY.json

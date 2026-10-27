@@ -1,0 +1,20 @@
+{
+  "schema": "CoGoldenBraidFixture/0.1",
+  "kind": "HAND_AUTHORED_NOT_INDEPENDENT_OUTCOMES",
+  "examples": [
+    {"intent": "This public claim has no counterexample", "expected": "W01"},
+    {"intent": "A newcomer is confused by too many doors", "expected": "W02"},
+    {"intent": "Our recurring weekly report still needs manual relay", "expected": "W03"},
+    {"intent": "A million agents have no useful results", "expected": "W04"},
+    {"intent": "We published on github but no visitors", "expected": "W05"},
+    {"intent": "Our orb hides evidence when I zoom", "expected": "W06"},
+    {"intent": "A collaborator revoked permission for the task", "expected": "W07"},
+    {"intent": "The cursor suggestion was accepted after editing", "expected": "W08"},
+    {"intent": "Several mirrors all depend on one corporate platform", "expected": "W09"},
+    {"intent": "Our skeptical reviewer raised criticism", "expected": "W10"},
+    {"intent": "We reinvented prior art instead of reusing it", "expected": "W11"},
+    {"intent": "How do I opt out before joining", "expected": "W12"},
+    {"intent": "Dashboard shows green status with unknown evidence", "expected": "W13"},
+    {"intent": "Our evergreen worker should not be always on", "expected": "W14"}
+  ]
+}

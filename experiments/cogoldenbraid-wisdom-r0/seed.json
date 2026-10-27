@@ -1,0 +1,382 @@
+{
+  "schema": "CoGoldenBraidWisdomSeed/0.1",
+  "state": "PUBLIC_OFFLINE_CANDIDATE_NOT_CANON",
+  "observed_date": "2026-10-27",
+  "provenance_note": "Original heuristic wording authored for this prototype. Public architecture links are design context, not empirical proofs or quotations.",
+  "design_sources": {
+    "golden": {
+      "repo": "CoCivium/CoCivium",
+      "path": "docs/Architecture/COSPEEDO_EXPONENTIAL_PROOF_AND_RECURRENCE_INTERNALIZATION_R0_20261026.md",
+      "git_blob": "717945816cc6cb18dc8a9b5b87093fbab6bb906a"
+    },
+    "review": {
+      "repo": "CoCivium/CoCivium",
+      "path": "docs/Governance/COREVIEW_SPINE_R0.md",
+      "git_blob": "e7cf641a991338d6826c586740f188b5db6cb941"
+    },
+    "orb": {
+      "repo": "CoCivium/CoCivium",
+      "path": "docs/Architecture/COORBWARE_BEYOND_COSOFTWARE_R0_20261024.md",
+      "git_blob": "cde7189918f48072d86a83fe6d2f16ce6a99f751"
+    },
+    "onramp": {
+      "repo": "CoCivium/CoCivium",
+      "path": "docs/Architecture/COAI_EVERGREEN_ONRAMP_COORBWARE_R0_20261026.md",
+      "git_blob": "d7854196975e0590aab2858183cb9be2d13b0ef5"
+    }
+  },
+  "principles": [
+    {
+      "id": "W01",
+      "statement": "A good principle says when it would stop being good.",
+      "domain": "evidence",
+      "applies_when": "A claim is treated as a durable rule.",
+      "limitation": "Some ethical commitments are values, not falsifiable empirical predictions.",
+      "next_test": "Find a concrete counterexample and record whether the principle changes.",
+      "match_phrases": [
+        "falsify",
+        "false claim",
+        "unfalsifiable",
+        "counterexample"
+      ],
+      "design_reference": "review",
+      "braid_stage": "CHALLENGE",
+      "kind": "NORMATIVE_HEURISTIC",
+      "status": "CANDIDATE_UNVALIDATED",
+      "privacy": "PUBLIC",
+      "authority": "NONE"
+    },
+    {
+      "id": "W02",
+      "statement": "Complexity becomes useful only when a newcomer can cross it.",
+      "domain": "onramp",
+      "applies_when": "Visitors face unfamiliar concepts or many paths.",
+      "limitation": "Some specialists legitimately require substantial training.",
+      "next_test": "Compare uncoached first-use success against the plain existing doorway.",
+      "match_phrases": [
+        "first time",
+        "new visitor",
+        "newcomer",
+        "too many doors",
+        "confusing"
+      ],
+      "design_reference": "onramp",
+      "braid_stage": "RECEIVER",
+      "kind": "NORMATIVE_HEURISTIC",
+      "status": "CANDIDATE_UNVALIDATED",
+      "privacy": "PUBLIC",
+      "authority": "NONE"
+    },
+    {
+      "id": "W03",
+      "statement": "A recurring task is not automated until it keeps its promise without rescue.",
+      "domain": "continuity",
+      "applies_when": "Reports or reviews require repeated manual relay.",
+      "limitation": "Human review can be intentionally mandatory for consequential actions.",
+      "next_test": "Miss a scheduled run and independently verify recovery and receiver effect.",
+      "match_phrases": [
+        "recurring",
+        "weekly report",
+        "manual relay",
+        "every morning",
+        "scheduler"
+      ],
+      "design_reference": "golden",
+      "braid_stage": "EFFECT",
+      "kind": "NORMATIVE_HEURISTIC",
+      "status": "CANDIDATE_UNVALIDATED",
+      "privacy": "PUBLIC",
+      "authority": "NONE"
+    },
+    {
+      "id": "W04",
+      "statement": "A thousand workers without a useful handoff are one expensive distraction.",
+      "domain": "orchestration",
+      "applies_when": "Many agents are active but outcomes stall.",
+      "limitation": "Parallel exploration can be valuable before a direct handoff is possible.",
+      "next_test": "Measure independently accepted closures per budget, not agent count.",
+      "match_phrases": [
+        "agents",
+        "workers",
+        "swarm",
+        "turtles",
+        "multiprocess"
+      ],
+      "design_reference": "golden",
+      "braid_stage": "BOUNDED_DEED",
+      "kind": "NORMATIVE_HEURISTIC",
+      "status": "CANDIDATE_UNVALIDATED",
+      "privacy": "PUBLIC",
+      "authority": "NONE"
+    },
+    {
+      "id": "W05",
+      "statement": "Publishing a result makes it addressable, not necessarily noticed.",
+      "domain": "outreach",
+      "applies_when": "Repository links or posts are mistaken for adoption.",
+      "limitation": "Public release is still valuable even before a receiver responds.",
+      "next_test": "Seek opt-in external first-use readproof and record nonresponse honestly.",
+      "match_phrases": [
+        "published",
+        "github",
+        "visitors",
+        "broadcast",
+        "audience"
+      ],
+      "design_reference": "golden",
+      "braid_stage": "RECEIVER",
+      "kind": "NORMATIVE_HEURISTIC",
+      "status": "CANDIDATE_UNVALIDATED",
+      "privacy": "PUBLIC",
+      "authority": "NONE"
+    },
+    {
+      "id": "W06",
+      "statement": "A smaller view stays faithful when its omissions can be inspected.",
+      "domain": "projection",
+      "applies_when": "A graph or work object is reduced to a compact CoOrb.",
+      "limitation": "Intentional deletion, revoked access, and lossy summaries prevent full restoration.",
+      "next_test": "Collapse and expand a pinned object and compare provenance and permissions.",
+      "match_phrases": [
+        "orb",
+        "map",
+        "collapse",
+        "zoom",
+        "hidden evidence",
+        "display"
+      ],
+      "design_reference": "orb",
+      "braid_stage": "MEANING",
+      "kind": "NORMATIVE_HEURISTIC",
+      "status": "CANDIDATE_UNVALIDATED",
+      "privacy": "PUBLIC",
+      "authority": "NONE"
+    },
+    {
+      "id": "W07",
+      "statement": "Permission belongs to a particular effect, not to a pleasing interface.",
+      "domain": "authority",
+      "applies_when": "A role, persona, or model proposes an action.",
+      "limitation": "Some public read-only operations require no personal grant.",
+      "next_test": "Attempt an out-of-scope action and prove fail-closed behavior.",
+      "match_phrases": [
+        "consent",
+        "revoked",
+        "permission",
+        "identity",
+        "privacy"
+      ],
+      "design_reference": "review",
+      "braid_stage": "DECISION",
+      "kind": "NORMATIVE_HEURISTIC",
+      "status": "CANDIDATE_UNVALIDATED",
+      "privacy": "PUBLIC",
+      "authority": "NONE"
+    },
+    {
+      "id": "W08",
+      "statement": "A prediction is a question offered early, not an action performed early.",
+      "domain": "input",
+      "applies_when": "A model or UI predicts the next input or recipient.",
+      "limitation": "Safe, explicitly authorized prefetch may be useful when it has no external effect.",
+      "next_test": "Change the input after a suggestion and confirm no stale dispatch or hidden paste.",
+      "match_phrases": [
+        "predict",
+        "suggestion",
+        "autocomplete",
+        "cursor",
+        "typing"
+      ],
+      "design_reference": "orb",
+      "braid_stage": "DECISION",
+      "kind": "NORMATIVE_HEURISTIC",
+      "status": "CANDIDATE_UNVALIDATED",
+      "privacy": "PUBLIC",
+      "authority": "NONE"
+    },
+    {
+      "id": "W09",
+      "statement": "Independence is demonstrated by a loss survived, not an alternate URL listed.",
+      "domain": "recovery",
+      "applies_when": "Several links or mirrors are treated as separate failure domains.",
+      "limitation": "A backup need not run continuously to be useful.",
+      "next_test": "Recover one exact public artifact outside its original provider and check usable state.",
+      "match_phrases": [
+        "backup",
+        "github down",
+        "single provider",
+        "outage",
+        "restore"
+      ],
+      "design_reference": "onramp",
+      "braid_stage": "EFFECT",
+      "kind": "NORMATIVE_HEURISTIC",
+      "status": "CANDIDATE_UNVALIDATED",
+      "privacy": "PUBLIC",
+      "authority": "NONE"
+    },
+    {
+      "id": "W10",
+      "statement": "Retained disagreement is raw material for a better successor.",
+      "domain": "review",
+      "applies_when": "Reviewers or models disagree about a claim.",
+      "limitation": "Repeated unsupported objections can waste scarce attention.",
+      "next_test": "Log one serious challenger objection and test which revision survives.",
+      "match_phrases": [
+        "reviewer",
+        "challenge",
+        "dissent",
+        "disagree",
+        "criticism"
+      ],
+      "design_reference": "review",
+      "braid_stage": "LEARNING",
+      "kind": "NORMATIVE_HEURISTIC",
+      "status": "CANDIDATE_UNVALIDATED",
+      "privacy": "PUBLIC",
+      "authority": "NONE"
+    },
+    {
+      "id": "W11",
+      "statement": "When a predecessor did it better, the next version should learn rather than rename.",
+      "domain": "priors",
+      "applies_when": "A new feature overlaps older code, theory, or outside prior art.",
+      "limitation": "A genuinely new implementation can still add value with measurable differences.",
+      "next_test": "Pin both versions and compare real first-use outcomes, cost, and recovery.",
+      "match_phrases": [
+        "prior art",
+        "old version",
+        "duplicate",
+        "rewrite",
+        "rename"
+      ],
+      "design_reference": "review",
+      "braid_stage": "SOURCE",
+      "kind": "NORMATIVE_HEURISTIC",
+      "status": "CANDIDATE_UNVALIDATED",
+      "privacy": "PUBLIC",
+      "authority": "NONE"
+    },
+    {
+      "id": "W12",
+      "statement": "A trustworthy invitation makes the exit as clear as the entrance.",
+      "domain": "participation",
+      "applies_when": "A visitor is asked to install, enroll, share or contribute.",
+      "limitation": "Exit may require a legally mandated retention period; explain it rather than hide it.",
+      "next_test": "Uninstall or revoke a demo and verify which state is still kept.",
+      "match_phrases": [
+        "leave",
+        "opt out",
+        "uninstall",
+        "quit",
+        "withdraw"
+      ],
+      "design_reference": "onramp",
+      "braid_stage": "RECEIVER",
+      "kind": "NORMATIVE_HEURISTIC",
+      "status": "CANDIDATE_UNVALIDATED",
+      "privacy": "PUBLIC",
+      "authority": "NONE"
+    },
+    {
+      "id": "W13",
+      "statement": "What cannot be measured should remain a question, not become a green light.",
+      "domain": "uncertainty",
+      "applies_when": "A dashboard lacks independent evidence for a reassuring claim.",
+      "limitation": "Action under uncertainty may still be warranted when risks and limits are explicit.",
+      "next_test": "Replace one false-green with a visible UNKNOWN and compare decision quality.",
+      "match_phrases": [
+        "unknown",
+        "dashboard",
+        "measurement",
+        "no evidence",
+        "green status"
+      ],
+      "design_reference": "golden",
+      "braid_stage": "RECEIPT",
+      "kind": "NORMATIVE_HEURISTIC",
+      "status": "CANDIDATE_UNVALIDATED",
+      "privacy": "PUBLIC",
+      "authority": "NONE"
+    },
+    {
+      "id": "W14",
+      "statement": "An evergreen system must know when to sleep, stop and be replaced.",
+      "domain": "lifecycle",
+      "applies_when": "Continuous evolution is mistaken for continuous execution.",
+      "limitation": "Critical safety monitors may require genuinely continuous uptime.",
+      "next_test": "Prove dormancy, wake criteria, bounded budget and a successor handoff.",
+      "match_phrases": [
+        "evergreen",
+        "always on",
+        "infinite",
+        "endless",
+        "dormant"
+      ],
+      "design_reference": "onramp",
+      "braid_stage": "SUCCESSOR",
+      "kind": "NORMATIVE_HEURISTIC",
+      "status": "CANDIDATE_UNVALIDATED",
+      "privacy": "PUBLIC",
+      "authority": "NONE"
+    }
+  ],
+  "typed_relations": [
+    {
+      "from": "W02",
+      "to": "W06",
+      "kind": "TENSION",
+      "reason": "Clarity may require compression, but too much hides evidence."
+    },
+    {
+      "from": "W04",
+      "to": "W03",
+      "kind": "DEPENDENCY",
+      "reason": "A team is useful only if completed work reaches a receiver."
+    },
+    {
+      "from": "W05",
+      "to": "W02",
+      "kind": "DEPENDENCY",
+      "reason": "A published link needs a newcomer-usable path."
+    },
+    {
+      "from": "W08",
+      "to": "W07",
+      "kind": "GUARD",
+      "reason": "Predictions do not create action authority."
+    },
+    {
+      "from": "W11",
+      "to": "W10",
+      "kind": "SUPPORT",
+      "reason": "Priors are a form of independent challenge."
+    },
+    {
+      "from": "W09",
+      "to": "W14",
+      "kind": "TENSION",
+      "reason": "Dormancy is safe only when restoration is trustworthy."
+    },
+    {
+      "from": "W13",
+      "to": "W01",
+      "kind": "SUPPORT",
+      "reason": "Admitting uncertainty makes a rule challengeable."
+    },
+    {
+      "from": "W12",
+      "to": "W05",
+      "kind": "GUARD",
+      "reason": "Outreach cannot manufacture a lock-in obligation."
+    }
+  ],
+  "rails": [
+    "HEURISTIC_NE_FACT",
+    "CANDIDATE_NE_CANON",
+    "PREDICTION_NE_AUTHORITY",
+    "ORBIT_VIEW_NE_TRUTH_STORE",
+    "ALWAYS_EVOLVE_NE_ALWAYS_RUNNING",
+    "VIEW_NE_RECEIVER_ACK"
+  ]
+}
