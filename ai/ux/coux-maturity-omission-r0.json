@@ -1,0 +1,913 @@
+{
+  "schema": "CoUX.MaturityOmissionRegistry.R0.v0.1",
+  "observed_at": "2026-10-28T17:31:49Z",
+  "state": "BOUNDED_PUBLIC_SAFE_AUDIT__NO_X2_RUNTIME_MUTATION",
+  "scope": "X2 exemplar, CoOrb/CoBar/CoBrowser/CoHereNow/CoGbx, adjacent continuity, input, accessibility, federation, receiver and proof lanes",
+  "truth_rules": [
+    "DOC_OR_DEMO_NE_RUNTIME",
+    "SOURCE_LANDED_NE_RECEIVER_PICKED_UP",
+    "HISTORICAL_PASS_NE_CURRENT_RUNTIME",
+    "SCREENSHOT_NE_MACHINE_READPROOF",
+    "PROPOSED_ONGOING_NE_ONGOING_MECHANISM",
+    "READY_PR_NE_MAIN",
+    "UX_POLISH_NE_UX_ACCEPTANCE",
+    "CAPABILITY_NE_AUTHORITY"
+  ],
+  "currentness_observations": [
+    {
+      "observation_id": "x2-human-visible-20261028",
+      "subject": "X2",
+      "observer": "USER_SCREENSHOT",
+      "result": "HUMAN_VISIBLE_ACTIVITY_OBSERVED",
+      "confidence": "HUMAN_VISUAL_ONLY",
+      "nonclaim": "SCREENSHOT_NE_MACHINE_READPROOF"
+    },
+    {
+      "observation_id": "x2-remote-observer-20261028",
+      "subject": "X2",
+      "observer": "REMOTE_DESKTOP_COMMANDER",
+      "result": "OFFLINE_LAST_SEEN_99H_AGO",
+      "confidence": "TOOL_OBSERVATION",
+      "nonclaim": "REMOTE_OBSERVER_OFFLINE_NE_DEVICE_DEAD"
+    },
+    {
+      "observation_id": "cogbx-public-probe-20261028",
+      "subject": "CoGbx.org",
+      "observer": "PUBLIC_WEB_PROBE",
+      "result": "INACCESSIBLE_FROM_THIS_PROBE",
+      "confidence": "SINGLE_VANTAGE",
+      "nonclaim": "PROBE_FAILURE_NE_DOMAIN_NONEXISTENCE"
+    },
+    {
+      "observation_id": "cocivium-public-probe-20261028",
+      "subject": "cocivium.org",
+      "observer": "PUBLIC_WEB_PROBE",
+      "result": "HTTP_404_FROM_THIS_PROBE",
+      "confidence": "SINGLE_VANTAGE",
+      "nonclaim": "SINGLE_VANTAGE_NE_GLOBAL_AVAILABILITY"
+    }
+  ],
+  "lanes": [
+    {
+      "lane_id": "x2-currentness-observer",
+      "domain": "X2_LOCAL_RUNTIME",
+      "goal": "Know current X2 runtime state without relying on screenshots or stale remote-observer data.",
+      "maturity_state": "HELD_CURRENTNESS",
+      "proof_scope": "SPLIT_OBSERVATION",
+      "source_state": "OBSERVED_BUT_CONTRADICTORY",
+      "runtime_state": "UNKNOWN_CURRENT",
+      "receiver_state": "N/A",
+      "ux_state": "UX_ACCEPTANCE_UNPROVEN",
+      "priority": 100,
+      "ongoing_expected": true,
+      "ongoing_mechanism": "NONE_PROVED_CURRENT",
+      "blockers": [
+        "REMOTE_OBSERVER_REPORTS_OFFLINE_99H",
+        "HUMAN_SCREENSHOT_SHOWS_ACTIVITY",
+        "NO_SECOND_MACHINE_READPROOF"
+      ],
+      "why_not_ongoing": "The machine observer path is stale/offline while human-visible activity continues; automatically treating either source as truth would collapse currentness classes.",
+      "wake_conditions": [
+        "REMOTE_OBSERVER_RECONNECT",
+        "AUTHORIZED_LOCAL_READONLY_PROBE",
+        "SECOND_INDEPENDENT_OBSERVER"
+      ],
+      "next_safe_deed": "Establish one current read-only X2 observer path and reconcile it with the human-visible state; no mutation.",
+      "evidence_refs": [
+        "docs/Architecture/COORB_LOCAL_UX_REGENERATIVE_R0_20261026.md",
+        "docs/Architecture/COBROWSER_COORB_CONTINUITY_R0_20261027.md"
+      ]
+    },
+    {
+      "lane_id": "x2-coorb-calm-front",
+      "domain": "X2_LOCAL_UX",
+      "goal": "Replace multi-window/provider-wall interaction with one calm CoHereNow/CoOrb front plus source drill-down.",
+      "maturity_state": "PARTIAL",
+      "proof_scope": "ARCHITECTURE_PLUS_SYNTHETIC",
+      "source_state": "LANDED_TO_MAIN",
+      "runtime_state": "NOT_PROVED_ON_CURRENT_X2",
+      "receiver_state": "USER_VISUAL_FEEDBACK_ONLY",
+      "ux_state": "UX_ACCEPTANCE_UNPROVEN",
+      "priority": 99,
+      "ongoing_expected": true,
+      "ongoing_mechanism": "CONTRACT_ONLY",
+      "blockers": [
+        "X2_CURRENTNESS_UNRESOLVED",
+        "NO_REAL_SESSION_DESCRIPTOR_INGESTION",
+        "NO_RUNTIME_ACCEPTANCE"
+      ],
+      "why_not_ongoing": "CoOrb/CoHereNow contracts exist, but no current X2 runtime binds real work/session descriptors into the calm front.",
+      "wake_conditions": [
+        "X2_READONLY_OBSERVER_AVAILABLE",
+        "REAL_WORK_OBJECT_DESCRIPTOR_AVAILABLE"
+      ],
+      "next_safe_deed": "Bind one real local work object/session descriptor into CoHereNow and render CURRENT/WHY/NEXT/UNKNOWN/CHALLENGE/RECOVER.",
+      "evidence_refs": [
+        "docs/Architecture/COORB_LOCAL_UX_REGENERATIVE_R0_20261026.md",
+        "docs/Architecture/COHERENOW_CONVERGENCE_R0_20261027.md",
+        "docs/UX/COFLEET_RICKBAR_R4.md"
+      ]
+    },
+    {
+      "lane_id": "cohere-now-convergence",
+      "domain": "FRONTIER_UX",
+      "goal": "Compress several compatible session/work fronts into one shared frontier without deleting source lineage or disagreement.",
+      "maturity_state": "PROVEN_BOUNDED",
+      "proof_scope": "SYNTHETIC_THREE_FRONT_CANARY",
+      "source_state": "LANDED_TO_MAIN",
+      "runtime_state": "NOT_LIVE_SESSION_INGESTION",
+      "receiver_state": "NOT_INDEPENDENTLY_PICKED_UP",
+      "ux_state": "UX_ACCEPTANCE_UNPROVEN",
+      "priority": 92,
+      "ongoing_expected": true,
+      "ongoing_mechanism": "SYNTHETIC_ONLY",
+      "blockers": [
+        "NO_REAL_SESSION_DESCRIPTOR_FEED"
+      ],
+      "why_not_ongoing": "The convergence semantics are proven only on synthetic descriptors; there is no live source adapter yet.",
+      "wake_conditions": [
+        "REAL_SESSION_DESCRIPTOR_AVAILABLE"
+      ],
+      "next_safe_deed": "Feed one bounded real descriptor set read-only and compare the compact frontier with the source panes.",
+      "evidence_refs": [
+        "docs/Architecture/COHERENOW_CONVERGENCE_R0_20261027.md",
+        "scripts/CoHereNowConvergenceR0.py"
+      ]
+    },
+    {
+      "lane_id": "cogbx-universal-exemplar",
+      "domain": "UNIVERSAL_UX",
+      "goal": "Provide one device-neutral local-first exemplar across Text, Orb/Map, Ambient and optional 3D+.",
+      "maturity_state": "PROVEN_BOUNDED",
+      "proof_scope": "STATIC_OFFLINE_SOURCE_AND_CI",
+      "source_state": "LANDED_TO_MAIN",
+      "runtime_state": "STATIC_SOURCE_ONLY",
+      "receiver_state": "NO_INDEPENDENT_ACCEPTANCE",
+      "ux_state": "UX_ACCEPTANCE_UNPROVEN",
+      "priority": 88,
+      "ongoing_expected": true,
+      "ongoing_mechanism": "SOURCE_ONLY",
+      "blockers": [
+        "NOT_DEPLOYED_TO_COGBX_ORG",
+        "NO_INDEPENDENT_ACCESSIBILITY_REVIEW",
+        "NO_REAL_X2_BINDING"
+      ],
+      "why_not_ongoing": "The exemplar is deliberately static/offline and has not yet been promoted to a hosted or device-bound runtime.",
+      "wake_conditions": [
+        "ACCESSIBILITY_REVIEW",
+        "X2_BINDING_AVAILABLE",
+        "HOSTING_DESTINATION_QUALIFIED"
+      ],
+      "next_safe_deed": "Run independent accessibility acceptance and one real X2 work-object binding before public hosting.",
+      "evidence_refs": [
+        "docs/Architecture/COGBX_UNIVERSAL_UX_EXEMPLAR_R0_20261027.md",
+        "examples/cogbx_ux_exemplar_r0/README.md"
+      ]
+    },
+    {
+      "lane_id": "cogbx-public-landing",
+      "domain": "PUBLIC_FRONT_DOOR",
+      "goal": "Offer a simple no-signup public CoGbx landing/exemplar with evidence and exit.",
+      "maturity_state": "MISSING_DEPLOYMENT",
+      "proof_scope": "PUBLIC_PROBE_ONLY",
+      "source_state": "SOURCE_EXISTS_IN_REPO",
+      "runtime_state": "PUBLIC_ENDPOINT_NOT_VERIFIED",
+      "receiver_state": "NONE",
+      "ux_state": "UX_NOT_EVALUATED",
+      "priority": 72,
+      "ongoing_expected": true,
+      "ongoing_mechanism": "NONE_PROVED",
+      "blockers": [
+        "COGBX_PUBLIC_PROBE_INACCESSIBLE",
+        "HOSTING_AND_DEPLOYMENT_NOT_PROVED"
+      ],
+      "why_not_ongoing": "The repo contains a source exemplar but no verified CoGbx.org deployment or receiver acceptance.",
+      "wake_conditions": [
+        "AUTHORIZED_HOSTING_PATH",
+        "PUBLIC_READBACK_PROOF"
+      ],
+      "next_safe_deed": "Qualify a reversible static hosting path, publish only after explicit public/deployment gate, then obtain independent readback.",
+      "evidence_refs": [
+        "examples/cogbx_ux_exemplar_r0/README.md"
+      ]
+    },
+    {
+      "lane_id": "cobrowser-continuity",
+      "domain": "BROWSER_CONTINUITY",
+      "goal": "Make browser/provider panes replaceable embodiments rather than work identity roots.",
+      "maturity_state": "PROVEN_BOUNDED",
+      "proof_scope": "SYNTHETIC_SURFACE_HEALTH_AND_RECOVERY",
+      "source_state": "LANDED_TO_MAIN",
+      "runtime_state": "NO_CURRENT_X2_CANARY",
+      "receiver_state": "N/A",
+      "ux_state": "UX_ACCEPTANCE_UNPROVEN",
+      "priority": 95,
+      "ongoing_expected": true,
+      "ongoing_mechanism": "TESTED_SOURCE_ONLY",
+      "blockers": [
+        "X2_OBSERVER_OFFLINE",
+        "NO_REAL_BLANK_OR_STALE_RECOVERY_READPROOF"
+      ],
+      "why_not_ongoing": "Surface-health/recovery semantics pass synthetic CI but current X2 observation/reconstruction is unproved.",
+      "wake_conditions": [
+        "X2_OBSERVER_AVAILABLE",
+        "AUTHORIZED_EXPENDABLE_SURFACE"
+      ],
+      "next_safe_deed": "Observe one expendable X2 surface read-only and reconstruct one local CoOrb projection if stale/blank.",
+      "evidence_refs": [
+        "docs/Architecture/COBROWSER_COORB_CONTINUITY_R0_20261027.md"
+      ]
+    },
+    {
+      "lane_id": "renderer-substitution",
+      "domain": "RENDERER_PORTABILITY",
+      "goal": "Preserve work identity across Chromium/WebView2, Firefox/Gecko and renderer-independent recovery forms.",
+      "maturity_state": "PROVEN_BOUNDED",
+      "proof_scope": "SYNTHETIC_RENDERER_LABEL_PARITY",
+      "source_state": "LANDED_TO_MAIN",
+      "runtime_state": "ACTUAL_RENDERER_PARITY_UNPROVED",
+      "receiver_state": "N/A",
+      "ux_state": "UX_NOT_EVALUATED",
+      "priority": 77,
+      "ongoing_expected": true,
+      "ongoing_mechanism": "TESTED_SOURCE_ONLY",
+      "blockers": [
+        "CURRENT_X2_BROWSER_INVENTORY_UNVERIFIED",
+        "NO_ACTUAL_CROSS_ENGINE_RENDER_TEST"
+      ],
+      "why_not_ongoing": "Synthetic substitution proves invariant work identity, not current installed renderer behavior.",
+      "wake_conditions": [
+        "X2_OBSERVER_AVAILABLE",
+        "EXACT_RENDERER_VERSION_READBACK"
+      ],
+      "next_safe_deed": "Inventory installed renderers read-only and run one local same-work reconstruction through two actual engine families.",
+      "evidence_refs": [
+        "docs/Architecture/COBROWSER_RENDERER_SUBSTITUTION_R0_20261027.md"
+      ]
+    },
+    {
+      "lane_id": "predictive-input-shadow",
+      "domain": "INPUT_PREDICTION",
+      "goal": "Predict beyond the cursor while preserving RAW input and separating prediction from authority/effect.",
+      "maturity_state": "PROVEN_BOUNDED",
+      "proof_scope": "LOCAL_ONLY_CANARY",
+      "source_state": "LANDED_TO_MAIN",
+      "runtime_state": "NO_CONTINUOUS_USER_CALIBRATION",
+      "receiver_state": "USER_ACCEPT_REJECT_CANARY_ONLY",
+      "ux_state": "UX_ACCEPTANCE_UNPROVEN",
+      "priority": 83,
+      "ongoing_expected": true,
+      "ongoing_mechanism": "LOCAL_INTERACTIVE_ONLY",
+      "blockers": [
+        "NO_REAL_ACCEPTANCE_PRECISION_DATA",
+        "NO_ACCESSIBILITY_ACCEPTANCE",
+        "NO_CROSS_DEVICE_CALIBRATION"
+      ],
+      "why_not_ongoing": "The shadow semantics are proven but adaptation has no real receiver calibration loop yet.",
+      "wake_conditions": [
+        "REAL_ACCEPT_REJECT_RECEIPTS",
+        "ACCESSIBILITY_TEST"
+      ],
+      "next_safe_deed": "Collect bounded local accept/reject calibration without sending outward or learning authority gates away.",
+      "evidence_refs": [
+        "docs/Architecture/CORELATIONAL_UX_PREDICTIVE_INPUT_R0.md",
+        "examples/copredictiveinput/README.md"
+      ]
+    },
+    {
+      "lane_id": "virtual-session-reconstruction",
+      "domain": "SESSION_CONTINUITY",
+      "goal": "Checkpoint, lose a live provider embodiment, and reconstruct the useful session from durable state plus pulses.",
+      "maturity_state": "MISSING_PROOF",
+      "proof_scope": "ARCHITECTURE_ONLY",
+      "source_state": "LANDED_TO_MAIN",
+      "runtime_state": "RECONSTRUCTION_NOT_PROVED",
+      "receiver_state": "NONE",
+      "ux_state": "UX_NOT_EVALUATED",
+      "priority": 94,
+      "ongoing_expected": true,
+      "ongoing_mechanism": "NONE_PROVED",
+      "blockers": [
+        "NO_REAL_DEMATERIALIZE_RECONSTRUCT_CANARY"
+      ],
+      "why_not_ongoing": "CoVirtualSession morphology is specified, but the core checkpoint-loss-reconstruct acceptance test remains open.",
+      "wake_conditions": [
+        "DURABLE_WORK_OBJECT_AVAILABLE",
+        "RECONSTRUCTION_HARNESS_AVAILABLE"
+      ],
+      "next_safe_deed": "Run one reversible dematerialize/reconstruct canary without deleting provider state.",
+      "evidence_refs": [
+        "docs/Architecture/COVIRTUAL_SESSION_MORPHOLOGY_R0.md"
+      ]
+    },
+    {
+      "lane_id": "cofleet-rickbar-cobar",
+      "domain": "PERSISTENT_LOCAL_BAND",
+      "goal": "Keep a small persistent CoBar/RickBar front with CoHereNow, exceptions, pressure and next safe action.",
+      "maturity_state": "PARTIAL",
+      "proof_scope": "UX_CONTRACT_PLUS_HISTORICAL_LOCAL_WORK",
+      "source_state": "LANDED_TO_MAIN",
+      "runtime_state": "CURRENT_PROCESS_STATE_UNVERIFIED",
+      "receiver_state": "USER_HISTORICAL_ONLY",
+      "ux_state": "UX_ACCEPTANCE_UNPROVEN",
+      "priority": 96,
+      "ongoing_expected": true,
+      "ongoing_mechanism": "NO_CURRENT_RUNTIME_PROOF",
+      "blockers": [
+        "X2_OBSERVER_CURRENTNESS",
+        "NO_CURRENT_PROCESS_READBACK",
+        "NO_BOUNDED_RESTART_RECOVERY_PROOF"
+      ],
+      "why_not_ongoing": "The contract is mature, but the current X2 process/runtime state is not machine-verified.",
+      "wake_conditions": [
+        "X2_READONLY_OBSERVER_AVAILABLE"
+      ],
+      "next_safe_deed": "Prove current CoBar process/surface state, then verify hide/disable/restart recovery and six-field compact UX.",
+      "evidence_refs": [
+        "docs/UX/COFLEET_RICKBAR_R4.md",
+        "docs/Architecture/COORB_LOCAL_UX_REGENERATIVE_R0_20261026.md"
+      ]
+    },
+    {
+      "lane_id": "cothumb-mouse-physical",
+      "domain": "PHYSICAL_INPUT",
+      "goal": "Map thumb/middle mouse events into visible local capsules with no implicit send/execute authority.",
+      "maturity_state": "HELD_PROOF",
+      "proof_scope": "LOCAL_HANDLER_SELFTEST_ONLY",
+      "source_state": "LOCAL_HISTORICAL_NOT_CURRENTLY_READABLE",
+      "runtime_state": "PHYSICAL_EVENT_NOT_PROVED",
+      "receiver_state": "N/A",
+      "ux_state": "UX_ACCEPTANCE_UNPROVEN",
+      "priority": 79,
+      "ongoing_expected": true,
+      "ongoing_mechanism": "WAITING_FOR_PHYSICAL_READPROOF",
+      "blockers": [
+        "NO_PHYSICAL_BUTTON_EVENT_RECEIPT",
+        "X2_REMOTE_OBSERVER_OFFLINE"
+      ],
+      "why_not_ongoing": "Local handler/self-test existed historically, but no actual physical middle/thumb event was receipted and current machine state is unverified.",
+      "wake_conditions": [
+        "PHYSICAL_BUTTON_OBSERVATION",
+        "X2_LOCAL_OBSERVER_AVAILABLE"
+      ],
+      "next_safe_deed": "Prove one physical event -> visible local capsule -> exact receipt; do not remap production behavior first.",
+      "evidence_refs": [
+        "ai/benchmark-evo.jsonl",
+        "docs/Architecture/COINTERSTICE_COINVERSION_COGLYPH_INPUT_FABRIC_R0_20261024.md"
+      ]
+    },
+    {
+      "lane_id": "accessibility-acceptance",
+      "domain": "ACCESSIBILITY",
+      "goal": "Make Text/Orb/Map/CoBar usable with keyboard, screen readers, zoom, reduced motion, contrast and narrow viewports.",
+      "maturity_state": "MISSING_ACCEPTANCE",
+      "proof_scope": "STATIC_SOURCE_CHECKS_ONLY",
+      "source_state": "SOME_ACCESSIBILITY_AFFORDANCES_IN_SOURCE",
+      "runtime_state": "INDEPENDENT_ACCEPTANCE_NOT_RUN",
+      "receiver_state": "NONE",
+      "ux_state": "UX_ACCEPTANCE_UNPROVEN",
+      "priority": 93,
+      "ongoing_expected": true,
+      "ongoing_mechanism": "NONE_PROVED",
+      "blockers": [
+        "NO_INDEPENDENT_ACCESSIBILITY_REVIEW"
+      ],
+      "why_not_ongoing": "Static smoke checks do not establish assistive-technology or real-user acceptance.",
+      "wake_conditions": [
+        "ACCESSIBILITY_REVIEWER_OR_TOOL_PATH_QUALIFIED"
+      ],
+      "next_safe_deed": "Run a bounded accessibility acceptance pack across the CoGbx exemplar and CoBar contract.",
+      "evidence_refs": [
+        "docs/Architecture/COGBX_UNIVERSAL_UX_EXEMPLAR_R0_20261027.md",
+        "examples/cogbx_ux_exemplar_r0/README.md"
+      ]
+    },
+    {
+      "lane_id": "mobile-parity",
+      "domain": "DEVICE_PARITY",
+      "goal": "Project the same work object/currentness/evidence onto phone/tablet without new truth stores.",
+      "maturity_state": "MISSING_RUNTIME",
+      "proof_scope": "ARCHITECTURE_ONLY",
+      "source_state": "DESCRIBED",
+      "runtime_state": "NOT_PROVED",
+      "receiver_state": "NONE",
+      "ux_state": "UX_NOT_EVALUATED",
+      "priority": 68,
+      "ongoing_expected": true,
+      "ongoing_mechanism": "NONE_PROVED",
+      "blockers": [
+        "NO_REAL_DEVICE_BINDING",
+        "NO_SHARED_TASK_PACKET_PARITY_TEST"
+      ],
+      "why_not_ongoing": "Mobile is in the projection grammar but lacks a real parity canary.",
+      "wake_conditions": [
+        "ONE_REAL_WORK_OBJECT_STABLE_ON_X2"
+      ],
+      "next_safe_deed": "After X2 binding, project the same work object to a narrow viewport/device and compare identity/currentness/evidence.",
+      "evidence_refs": [
+        "docs/Architecture/COGBX_UNIVERSAL_UX_EXEMPLAR_R0_20261027.md"
+      ]
+    },
+    {
+      "lane_id": "spatial-xr",
+      "domain": "SPATIAL_XR",
+      "goal": "Use 3D/XR only when spatial topology measurably improves navigation/comprehension while preserving complete 2D/Text fallback.",
+      "maturity_state": "DORMANT_WITH_WAKE",
+      "proof_scope": "ARCHITECTURE_PLUS_STATIC_3D_PERSPECTIVE",
+      "source_state": "DESCRIBED",
+      "runtime_state": "NO_WEBXR_OR_SPATIAL_ACCEPTANCE",
+      "receiver_state": "NONE",
+      "ux_state": "UX_ACCEPTANCE_UNPROVEN",
+      "priority": 40,
+      "ongoing_expected": false,
+      "ongoing_mechanism": "DORMANT_UNTIL_2D_BASELINE",
+      "blockers": [
+        "NO_STABLE_2D_RUNTIME_BASELINE",
+        "NO_BOUNDED_SPATIAL_TASK"
+      ],
+      "why_not_ongoing": "Spatial work would currently add novelty before baseline 2D/runtime/accessibility acceptance.",
+      "wake_conditions": [
+        "STABLE_2D_BASELINE",
+        "BOUNDED_SPATIAL_TASK_WITH_MEASURED_BENEFIT"
+      ],
+      "next_safe_deed": "Keep dormant; later test one spatial task against the 2D baseline.",
+      "evidence_refs": [
+        "docs/Architecture/COGBX_UNIVERSAL_UX_EXEMPLAR_R0_20261027.md",
+        "docs/Evolution/COSCALE_CONTINUUM_COORBWARE_R0_20261023.md"
+      ]
+    },
+    {
+      "lane_id": "ambient-wallpaper-idle",
+      "domain": "AMBIENT_UX",
+      "goal": "Provide low-attention currentness/CoOrb projections on wallpaper, idle, screensaver and ambient surfaces.",
+      "maturity_state": "PARTIAL",
+      "proof_scope": "ARCHITECTURE_AND_STATIC_AMBIENT_MODE",
+      "source_state": "LANDED_TO_MAIN",
+      "runtime_state": "NO_REAL_AMBIENT_RUNTIME_ACCEPTANCE",
+      "receiver_state": "NONE",
+      "ux_state": "UX_ACCEPTANCE_UNPROVEN",
+      "priority": 55,
+      "ongoing_expected": true,
+      "ongoing_mechanism": "SOURCE_ONLY",
+      "blockers": [
+        "PRIVACY_ATTENTION_POLICY_NOT_ACCEPTED",
+        "NO_REAL_IDLE_SURFACE_CANARY"
+      ],
+      "why_not_ongoing": "Ambient mode exists as a projection concept/source, but privacy, interruption and real desktop behavior are unproved.",
+      "wake_conditions": [
+        "X2_LOCAL_RUNTIME_AVAILABLE",
+        "PRIVACY_SAFE_CONTENT_SET"
+      ],
+      "next_safe_deed": "Run one local privacy-capped ambient surface with explicit off switch and no private payload.",
+      "evidence_refs": [
+        "docs/Architecture/CORELATIONAL_UX_PREDICTIVE_INPUT_R0.md",
+        "examples/cogbx_ux_exemplar_r0/README.md"
+      ]
+    },
+    {
+      "lane_id": "personalization-portability",
+      "domain": "PERSONALIZATION",
+      "goal": "Adapt density/projection/accessibility/evidence depth without capturing the user or learning away authority/privacy.",
+      "maturity_state": "MISSING_IMPLEMENTATION",
+      "proof_scope": "ARCHITECTURE_ONLY",
+      "source_state": "DESCRIBED",
+      "runtime_state": "NO_PORTABLE_PROFILE_CANARY",
+      "receiver_state": "NONE",
+      "ux_state": "UX_NOT_EVALUATED",
+      "priority": 66,
+      "ongoing_expected": true,
+      "ongoing_mechanism": "NONE_PROVED",
+      "blockers": [
+        "NO_EXPORTABLE_PERSONALIZATION_OBJECT",
+        "NO_ACCEPT_REJECT_LEARNING_LOOP"
+      ],
+      "why_not_ongoing": "Personalization principles exist, but there is no typed portable preference/learning object yet.",
+      "wake_conditions": [
+        "PREDICTIVE_ACCEPT_REJECT_RECEIPTS",
+        "ACCESSIBILITY_PROFILE_DEFINED"
+      ],
+      "next_safe_deed": "Define/export one local preference profile and prove the same projection preferences reconstruct on a second renderer.",
+      "evidence_refs": [
+        "docs/Architecture/COGBX_UNIVERSAL_UX_EXEMPLAR_R0_20261027.md"
+      ]
+    },
+    {
+      "lane_id": "provider-account-substitution",
+      "domain": "EXITABILITY",
+      "goal": "Make paid/provider accounts optional after export, reconstruction and dependency substitution prove continuity.",
+      "maturity_state": "DORMANT_WITH_WAKE",
+      "proof_scope": "ARCHITECTURE_AND_SYNTHETIC_SUBSTITUTION",
+      "source_state": "LANDED_TO_MAIN",
+      "runtime_state": "ACCOUNT_RETIREMENT_NOT_ELIGIBLE",
+      "receiver_state": "N/A",
+      "ux_state": "UX_NOT_EVALUATED",
+      "priority": 61,
+      "ongoing_expected": false,
+      "ongoing_mechanism": "GATED_BY_SUBSTITUTION_PROOF",
+      "blockers": [
+        "REAL_RECONSTRUCTION_UNPROVED",
+        "PROVIDER_FLOW_DEPENDENCIES_UNQUALIFIED",
+        "DESTRUCTIVE_ACCOUNT_CHANGE_GATE"
+      ],
+      "why_not_ongoing": "Retirement would be premature until real work reconstructs independently and required provider flows are replaced.",
+      "wake_conditions": [
+        "REAL_RECONSTRUCTION_PASS",
+        "EXPORT_CUSTODY_PASS",
+        "DEPENDENCY_SUBSTITUTION_PASS"
+      ],
+      "next_safe_deed": "Keep accounts intact; prove workload-by-workload substitution first.",
+      "evidence_refs": [
+        "docs/Architecture/COBROWSER_RENDERER_SUBSTITUTION_R0_20261027.md",
+        "docs/Architecture/CORELATIONAL_UX_PREDICTIVE_INPUT_R0.md"
+      ]
+    },
+    {
+      "lane_id": "peer-federated-reconstruction",
+      "domain": "FEDERATION",
+      "goal": "Reconstruct a work object across independently observable peers without a central continuity root.",
+      "maturity_state": "DORMANT_WITH_WAKE",
+      "proof_scope": "CANDIDATE_ONLY",
+      "source_state": "DESCRIBED",
+      "runtime_state": "NO_QUALIFIED_PEER_RECEIVER",
+      "receiver_state": "NO_EXACT_READPROOF",
+      "ux_state": "UX_NOT_EVALUATED",
+      "priority": 63,
+      "ongoing_expected": false,
+      "ongoing_mechanism": "DORMANT_WITH_EXACT_WAKE",
+      "blockers": [
+        "NO_QUALIFIED_PEER",
+        "NO_EXACT_OBJECT_READPROOF"
+      ],
+      "why_not_ongoing": "The candidate has high option value but prerequisites are absent; materializing it now would create another unproven distributed stack.",
+      "wake_conditions": [
+        "QUALIFIED_PEER_RECEIVER",
+        "EXACT_OBJECT_READPROOF"
+      ],
+      "next_safe_deed": "Remain dormant until one qualified peer exists, then run a two-node bounded reconstruction.",
+      "evidence_refs": [
+        "docs/Architecture/COGBX_UNIVERSAL_UX_EXEMPLAR_R0_20261027.md",
+        "docs/Architecture/COOBJECT_VITALITY_METABOLISM_R0_20261027.md"
+      ]
+    },
+    {
+      "lane_id": "receiver-first-use",
+      "domain": "RECEIVER_ACCEPTANCE",
+      "goal": "Have an independent receiver/client use one artifact, return exact evidence and later re-encounter a meaningful delta.",
+      "maturity_state": "HELD_RECEIVER",
+      "proof_scope": "SOURCE_READY_NO_RECEIVER_PAIR",
+      "source_state": "PUBLIC_SOURCE_CONTRACT_EXISTS",
+      "runtime_state": "NO_RECEIVER_PAIR",
+      "receiver_state": "PICKUP_UNPROVED",
+      "ux_state": "UX_ACCEPTANCE_UNPROVEN",
+      "priority": 91,
+      "ongoing_expected": true,
+      "ongoing_mechanism": "NO_QUALIFIED_RECEIVER_LOOP",
+      "blockers": [
+        "NO_INDEPENDENT_EXACT_OBJECT_ACK",
+        "NO_SECOND_DELTA_REENCOUNTER"
+      ],
+      "why_not_ongoing": "Publication/readability has repeatedly outrun exact receiver pickup and return evidence.",
+      "wake_conditions": [
+        "QUALIFIED_INDEPENDENT_RECEIVER",
+        "EXACT_OBJECT_ACK"
+      ],
+      "next_safe_deed": "Use one friendly receiver for one tiny task and require source revision + bounded output + ACK + later delta re-encounter.",
+      "evidence_refs": [
+        "docs/Onramp/AI_IA_COORBWARE_EVERGREEN_R0.md",
+        "docs/Outreach/IMPROVEMENT_CLUB_KIT_R0.md"
+      ]
+    },
+    {
+      "lane_id": "coobject-vitality-r0",
+      "domain": "METABOLIC_CONTROL",
+      "goal": "Represent active/quiescent/dormant/degraded/retiring objects with event-driven wake, repair and successor semantics.",
+      "maturity_state": "PROVEN_BOUNDED",
+      "proof_scope": "THREE_OBJECT_SYNTHETIC_CANARY",
+      "source_state": "LANDED_TO_MAIN",
+      "runtime_state": "NO_LIVE_BUS",
+      "receiver_state": "N/A",
+      "ux_state": "UX_NOT_EVALUATED",
+      "priority": 84,
+      "ongoing_expected": true,
+      "ongoing_mechanism": "EVENT_DRIVEN_CONTRACT_ONLY",
+      "blockers": [
+        "NO_REAL_OBJECT_FEED"
+      ],
+      "why_not_ongoing": "The policy is landed and tested, but not connected to real runtime objects/pulses.",
+      "wake_conditions": [
+        "REAL_OBJECT_DESCRIPTOR_AVAILABLE"
+      ],
+      "next_safe_deed": "Bind one real CoBaseline/CoHereNow object read-only and emit a pulse only on a material delta.",
+      "evidence_refs": [
+        "docs/Architecture/COOBJECT_VITALITY_METABOLISM_R0_20261027.md",
+        "scripts/CoObjectVitalityR0.py"
+      ]
+    },
+    {
+      "lane_id": "metabolic-wake-selector-r0a",
+      "domain": "METABOLIC_CONTROL",
+      "goal": "Select a tiny event-driven active frontier under privacy, revocation, collision and reserve constraints.",
+      "maturity_state": "READY_NOT_LANDED",
+      "proof_scope": "BRANCH_CI_36_TESTS",
+      "source_state": "PR_332_OPEN_READY",
+      "runtime_state": "SYNTHETIC_ONLY",
+      "receiver_state": "N/A",
+      "ux_state": "UX_NOT_EVALUATED",
+      "priority": 90,
+      "ongoing_expected": true,
+      "ongoing_mechanism": "BRANCH_ONLY",
+      "blockers": [
+        "NOT_MERGED_TO_MAIN"
+      ],
+      "why_not_ongoing": "The successor branch independently passes CI but is not part of main and remains synthetic.",
+      "wake_conditions": [
+        "MERGE_AUTHORITY_OR_SUCCESSOR_FORWARD_PORT",
+        "REAL_RIGHTS_CLEARED_DELTA"
+      ],
+      "next_safe_deed": "Land/forward-port the wake selector after current-main reconciliation; then feed one real rights-cleared delta.",
+      "evidence_refs": [
+        "PR#332",
+        "CI#40688931710"
+      ]
+    },
+    {
+      "lane_id": "baseline-frontier-real-ingestion",
+      "domain": "BENCHMARK_FRONTIER",
+      "goal": "Make proven comparable incumbents automatically seed future challenger baselines and Pareto views.",
+      "maturity_state": "PROVEN_BOUNDED",
+      "proof_scope": "SYNTHETIC_FRONTIER_REGISTRY",
+      "source_state": "LANDED_TO_MAIN",
+      "runtime_state": "REAL_BENCHMARK_INGESTION_NOT_PROVED",
+      "receiver_state": "N/A",
+      "ux_state": "UX_NOT_EVALUATED",
+      "priority": 75,
+      "ongoing_expected": true,
+      "ongoing_mechanism": "SYNTHETIC_ONLY",
+      "blockers": [
+        "REAL_COSTRETCH_COSPEEDO_INGESTION_MISSING"
+      ],
+      "why_not_ongoing": "The registry semantics exist, but actual compatible benchmark streams are not wired read-only.",
+      "wake_conditions": [
+        "QUALIFIED_REAL_BENCHMARK_RECORD"
+      ],
+      "next_safe_deed": "Ingest one compatible historical benchmark family read-only and verify incumbent/challenger selection.",
+      "evidence_refs": [
+        "docs/Architecture/COBASELINE_FRONTIER_REGISTRY_R0_20261027.md"
+      ]
+    },
+    {
+      "lane_id": "coordination-real-receiver",
+      "domain": "COORDINATION",
+      "goal": "Replace one synthetic fan-out receiver with an independently observable reversible receiver and exact readproof.",
+      "maturity_state": "HELD_RECEIVER",
+      "proof_scope": "TWO_DESTINATION_SYNTHETIC_RECOVERY_PASS",
+      "source_state": "LANDED_TO_MAIN",
+      "runtime_state": "LOCAL_SYNTHETIC_ONLY",
+      "receiver_state": "REAL_RECEIVER_UNPROVED",
+      "ux_state": "UX_NOT_EVALUATED",
+      "priority": 89,
+      "ongoing_expected": true,
+      "ongoing_mechanism": "SYNTHETIC_ONLY",
+      "blockers": [
+        "NO_REAL_RECEIVER_EXACT_READPROOF"
+      ],
+      "why_not_ongoing": "Fan-out/recovery semantics pass locally but no real receiver boundary has been crossed.",
+      "wake_conditions": [
+        "ONE_REVERSIBLE_RECEIVER_AVAILABLE"
+      ],
+      "next_safe_deed": "Replace only one synthetic receiver with one real reversible receiver; keep the other synthetic.",
+      "evidence_refs": [
+        "docs/Architecture/COALL_COORDINATION_FANOUT_RECOVERY_R0_20261027.md",
+        "GitHub issue #317"
+      ]
+    },
+    {
+      "lane_id": "fault-hardening-donor-329",
+      "domain": "COORDINATION",
+      "goal": "Harvest lock/STOP/crash-before-ACK/tamper-fail-closed semantics from the superseded donor without importing a second bus.",
+      "maturity_state": "READY_TO_HARVEST",
+      "proof_scope": "DONOR_RECONCILIATION",
+      "source_state": "PR_329_DONOR",
+      "runtime_state": "NOT_CANONICAL",
+      "receiver_state": "N/A",
+      "ux_state": "UX_NOT_EVALUATED",
+      "priority": 82,
+      "ongoing_expected": true,
+      "ongoing_mechanism": "DONOR_ONLY",
+      "blockers": [
+        "NOT_FORWARD_PORTED_TO_CANONICAL_PATH"
+      ],
+      "why_not_ongoing": "The donor overlaps heavily with current coordination/UX code; wholesale merge would duplicate stacks.",
+      "wake_conditions": [
+        "CANONICAL_COORDINATION_FORWARD_PORT"
+      ],
+      "next_safe_deed": "Forward-port only LOCK, STOP, crash-between-delivery-and-ACK, tamper rejection and local subprocess separation tests.",
+      "evidence_refs": [
+        "PR#329 donor reconciliation comment"
+      ]
+    },
+    {
+      "lane_id": "wisdom-surface-integration",
+      "domain": "CONTENT_INTELLIGENCE",
+      "goal": "Project sourced, rights-qualified insight plus counterpoint into CoOrb without quote-firehose behavior.",
+      "maturity_state": "PROVEN_BOUNDED",
+      "proof_scope": "ORIGINAL_SYNTHETIC_CORPUS",
+      "source_state": "LANDED_TO_MAIN",
+      "runtime_state": "NO_REAL_RIGHTS_QUALIFIED_FEED",
+      "receiver_state": "NONE",
+      "ux_state": "UX_ACCEPTANCE_UNPROVEN",
+      "priority": 45,
+      "ongoing_expected": true,
+      "ongoing_mechanism": "SYNTHETIC_ONLY",
+      "blockers": [
+        "REAL_SOURCE_RIGHTS_PIPELINE_MISSING",
+        "RECEIVER_ATTENTION_CALIBRATION_MISSING"
+      ],
+      "why_not_ongoing": "Rights/provenance/counterpoint semantics pass, but no real qualified source family is connected to CoOrb.",
+      "wake_conditions": [
+        "RIGHTS_QUALIFIED_SOURCE",
+        "RECEIVER_ATTENTION_RECEIPTS"
+      ],
+      "next_safe_deed": "Bind one public-domain/open-licensed source family pointer-first and measure whether the projection changes a decision usefully.",
+      "evidence_refs": [
+        "docs/Architecture/COWISDOM_GOLDEN_BRAID_COORB_R0_20261027.md"
+      ]
+    },
+    {
+      "lane_id": "improvement-club-pilot",
+      "domain": "OUTREACH_UX",
+      "goal": "Test a transparent opt-in improvement club with one friendly receiver and one independent experiment.",
+      "maturity_state": "MISSING_PILOT",
+      "proof_scope": "KIT_AND_POLICY_ONLY",
+      "source_state": "LANDED_TO_MAIN",
+      "runtime_state": "NO_EXTERNAL_CLUB_CREATED",
+      "receiver_state": "NO_PILOT",
+      "ux_state": "UX_NOT_EVALUATED",
+      "priority": 50,
+      "ongoing_expected": true,
+      "ongoing_mechanism": "NONE_PROVED",
+      "blockers": [
+        "NO_BOUND_PILOT_RECEIVER",
+        "EXTERNAL_COMMUNITY_ACTION_GATE"
+      ],
+      "why_not_ongoing": "The kit exists but deliberately did not create or spam external communities.",
+      "wake_conditions": [
+        "FRIENDLY_RECEIVER_AND_PLATFORM_SCOPE",
+        "EXPLICIT_EXTERNAL_ACTION_AUTHORITY"
+      ],
+      "next_safe_deed": "Pilot one tiny transparent club experiment with an existing friendly receiver before scaling.",
+      "evidence_refs": [
+        "docs/Strategy/COGLUKEY_CAREERS_IMPROVEMENT_CLUBS_R0_20261027.md",
+        "docs/Outreach/IMPROVEMENT_CLUB_KIT_R0.md"
+      ]
+    },
+    {
+      "lane_id": "public-cocivium-front-door",
+      "domain": "PUBLIC_FRONT_DOOR",
+      "goal": "Make a human-readable first-use public entry rather than an old technical index/404.",
+      "maturity_state": "HELD_PUBLIC_CURRENTNESS",
+      "proof_scope": "SINGLE_PUBLIC_PROBE_PLUS_INTERNAL_NOTE",
+      "source_state": "PUBLIC_SOURCE_EXISTS_BUT_FRONT_DOOR_UNQUALIFIED",
+      "runtime_state": "HTTP_404_FROM_CURRENT_PROBE",
+      "receiver_state": "UNKNOWN",
+      "ux_state": "UX_ACCEPTANCE_UNPROVEN",
+      "priority": 70,
+      "ongoing_expected": true,
+      "ongoing_mechanism": "NONE_PROVED_CURRENT",
+      "blockers": [
+        "PUBLIC_404_FROM_THIS_VANTAGE",
+        "DOMAIN_SECURITY_AND_DESTINATION_NEED_RECONCILIATION"
+      ],
+      "why_not_ongoing": "The public endpoint is not currently a verified human first-use route from this probe.",
+      "wake_conditions": [
+        "AUTHORIZED_PUBLIC_FRONT_DOOR_FIX",
+        "INDEPENDENT_READBACK"
+      ],
+      "next_safe_deed": "Reconcile domain/security ownership and deploy a minimal reversible first-use page only through an authorized publisher path.",
+      "evidence_refs": [
+        "docs/Onramp/AI_IA_COORBWARE_EVERGREEN_R0.md"
+      ]
+    },
+    {
+      "lane_id": "universal-undo-rollback",
+      "domain": "REVERSIBILITY",
+      "goal": "Make preview/effect/recovery/undo explicit across local UX actions rather than only individual canaries.",
+      "maturity_state": "MISSING_INTEGRATION",
+      "proof_scope": "SCATTERED_CANARY_SUPPORT",
+      "source_state": "PARTIAL_COMPONENTS_EXIST",
+      "runtime_state": "NO_UNIVERSAL_EFFECT_LEDGER",
+      "receiver_state": "N/A",
+      "ux_state": "UX_ACCEPTANCE_UNPROVEN",
+      "priority": 86,
+      "ongoing_expected": true,
+      "ongoing_mechanism": "NONE_SYSTEM_WIDE",
+      "blockers": [
+        "EFFECT_TYPES_NOT_UNIFIED",
+        "ROLLBACK_SEMANTICS_NOT_BOUND_TO_EVERY_ACTION"
+      ],
+      "why_not_ongoing": "Many canaries are reversible, but the user-facing UX lacks one typed effect/undo ledger across actions.",
+      "wake_conditions": [
+        "COORB_REAL_ACTION_BINDING"
+      ],
+      "next_safe_deed": "Define one effect-preview/receipt/recovery envelope and apply it to the first real CoOrb action.",
+      "evidence_refs": [
+        "docs/Architecture/COORB_LOCAL_UX_REGENERATIVE_R0_20261026.md",
+        "docs/Architecture/CORELATIONAL_UX_PREDICTIVE_INPUT_R0.md"
+      ]
+    },
+    {
+      "lane_id": "resource-attention-budget",
+      "domain": "ATTENTION_AND_RESOURCES",
+      "goal": "Expose active frontier, reserve, attention budget and why each object is awake.",
+      "maturity_state": "PARTIAL",
+      "proof_scope": "ARCHITECTURE_AND_SYNTHETIC_BUDGETS",
+      "source_state": "MULTIPLE_COMPONENTS_EXIST",
+      "runtime_state": "NO_UNIFIED_X2_VIEW",
+      "receiver_state": "NONE",
+      "ux_state": "UX_ACCEPTANCE_UNPROVEN",
+      "priority": 85,
+      "ongoing_expected": true,
+      "ongoing_mechanism": "NO_UNIFIED_RUNTIME",
+      "blockers": [
+        "BUDGETS_SPREAD_ACROSS_COMPONENTS",
+        "NO_COHERENOW_BUDGET_PROJECTION"
+      ],
+      "why_not_ongoing": "CoStretch, CoListFabric and R0A wake-selector budgets exist separately; CoHereNow does not yet show one reasoned active/reserve view.",
+      "wake_conditions": [
+        "WAKE_SELECTOR_LANDED",
+        "COHERE_NOW_REAL_DESCRIPTOR_FEED"
+      ],
+      "next_safe_deed": "Project ACTIVE/RESERVE/SLEEP/HELD counts and wake reasons into CoHereNow without exposing backend clutter.",
+      "evidence_refs": [
+        "docs/Architecture/COLISTFABRIC_ALL_LISTS_IN_FIELD_R0_20261026.md",
+        "PR#332"
+      ]
+    },
+    {
+      "lane_id": "io-omni-input-fabric",
+      "domain": "MULTIMODAL_IO",
+      "goal": "Treat keyboard, mouse, touch, voice, phone, sensors and future surfaces as typed source/receiver/resource roles.",
+      "maturity_state": "PARTIAL",
+      "proof_scope": "ARCHITECTURE_PLUS_LOCAL_INPUT_CANARIES",
+      "source_state": "MULTIPLE_DOCS_AND_CANARIES",
+      "runtime_state": "NO_UNIFIED_DEVICE_NEUTRAL_INPUT_BUS",
+      "receiver_state": "NONE",
+      "ux_state": "UX_ACCEPTANCE_UNPROVEN",
+      "priority": 73,
+      "ongoing_expected": true,
+      "ongoing_mechanism": "COMPONENT_ONLY",
+      "blockers": [
+        "PHYSICAL_MOUSE_PROOF_MISSING",
+        "VOICE_DEVICE_ORCHESTRATION_NOT_BOUND",
+        "NO_SHARED_INPUT_RECEIPT_SCHEMA"
+      ],
+      "why_not_ongoing": "Individual input concepts exist, but they have not converged on one typed source/authority/receipt envelope.",
+      "wake_conditions": [
+        "FIRST_REAL_COORB_ACTION",
+        "PHYSICAL_INPUT_READPROOF"
+      ],
+      "next_safe_deed": "Bind keyboard + one physical pointer event to the same local action-capsule schema before adding more modalities.",
+      "evidence_refs": [
+        "docs/Architecture/COINTERSTICE_COINVERSION_COGLYPH_INPUT_FABRIC_R0_20261024.md",
+        "docs/Architecture/CORELATIONAL_UX_PREDICTIVE_INPUT_R0.md"
+      ]
+    },
+    {
+      "lane_id": "recovery-drill-visible",
+      "domain": "RECOVERY_UX",
+      "goal": "Make recovery a visible first-class user action and prove interruption/restart continuity on X2.",
+      "maturity_state": "PARTIAL",
+      "proof_scope": "ARCHITECTURE_AND_LOCAL_SYNTHETIC_RECOVERY",
+      "source_state": "COMPONENTS_EXIST",
+      "runtime_state": "NO_CURRENT_X2_RESTART_RECOVERY",
+      "receiver_state": "N/A",
+      "ux_state": "UX_ACCEPTANCE_UNPROVEN",
+      "priority": 97,
+      "ongoing_expected": true,
+      "ongoing_mechanism": "NO_CURRENT_DEVICE_PROOF",
+      "blockers": [
+        "X2_CURRENTNESS_UNRESOLVED",
+        "NO_REAL_WORK_OBJECT_RESTART_TEST"
+      ],
+      "why_not_ongoing": "Recovery semantics exist in coordination/browser/session contracts but the user has not yet watched one real X2 front survive restart/reconstruction.",
+      "wake_conditions": [
+        "X2_READONLY_OBSERVER_AVAILABLE",
+        "REAL_LOCAL_WORK_OBJECT_AVAILABLE"
+      ],
+      "next_safe_deed": "Run a bounded local hide/close/reconstruct test on a disposable projection while preserving provider state.",
+      "evidence_refs": [
+        "docs/Architecture/COORB_LOCAL_UX_REGENERATIVE_R0_20261026.md",
+        "docs/Architecture/COVIRTUAL_SESSION_MORPHOLOGY_R0.md",
+        "docs/Architecture/COBROWSER_COORB_CONTINUITY_R0_20261027.md"
+      ]
+    }
+  ],
+  "required_nonclaims": [
+    "LOCAL_IS_NOT_LANDED",
+    "VALIDATION_IS_NOT_ACCEPTANCE",
+    "NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF",
+    "NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE",
+    "HASHING_IS_NOT_SEMANTIC_INGESTION",
+    "DISCOVERED_SET_IS_NOT_COMPLETE_HISTORY"
+  ]
+}
