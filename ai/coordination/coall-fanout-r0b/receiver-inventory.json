@@ -1,0 +1,33 @@
+{
+  "schema": "CoAll.CoordinationReceiverInventory.R0.v0.1",
+  "observed_at": "2026-10-28T18:31:00Z",
+  "issue": 317,
+  "scope": "FAULT_HARDENING_SYNTHETIC_ONLY",
+  "destinations": [
+    {
+      "destination_id": "synthetic-local-a",
+      "kind": "LOCAL_FILE_RECEIVER",
+      "mechanism": "deterministic_json_projection_plus_receipt",
+      "availability": "AVAILABLE_AND_VERIFIED",
+      "authority": "AUTHORIZED_FOR_SYNTHETIC_TEST_ONLY",
+      "external_effects": false,
+      "behavior": "ACK_ALWAYS"
+    },
+    {
+      "destination_id": "synthetic-local-crash",
+      "kind": "LOCAL_FILE_RECEIVER",
+      "mechanism": "deterministic_json_projection_plus_receipt",
+      "availability": "AVAILABLE_AND_VERIFIED",
+      "authority": "AUTHORIZED_FOR_SYNTHETIC_TEST_ONLY",
+      "external_effects": false,
+      "behavior": "CRASH_AFTER_WRITE_THEN_ACK"
+    }
+  ],
+  "rails": [
+    "SYNTHETIC_FIRST",
+    "ATTEMPT_NE_ACK",
+    "STOP_NE_DELETE",
+    "DELIVERED_UNACKED_NE_COMPLETE",
+    "TAMPER_FAILS_CLOSED"
+  ]
+}

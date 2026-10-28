@@ -1,0 +1,116 @@
+name: CoAll Fanout Fault Hardening R0B
+
+permissions:
+  contents: read
+
+on:
+  pull_request:
+    paths:
+      - "scripts/CoAllFanoutR0.py"
+      - "ai/coordination/coall-fanout-r0b/**"
+      - ".github/workflows/coall-fanout-fault-hardening-r0b.yml"
+  push:
+    paths:
+      - "scripts/CoAllFanoutR0.py"
+      - "ai/coordination/coall-fanout-r0b/**"
+      - ".github/workflows/coall-fanout-fault-hardening-r0b.yml"
+
+jobs:
+  fault-hardening:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Initialize
+        run: |
+          python -B scripts/CoAllFanoutR0.py init             --packet ai/coordination/coall-fanout-r0b/task-packet.json             --reset
+
+      - name: Lock fails closed
+        run: |
+          mkdir .coall-runtime/coall-fanout-r0b-317-crash/supervisor.lock
+          if python -B scripts/CoAllFanoutR0.py dispatch             --packet ai/coordination/coall-fanout-r0b/task-packet.json; then
+            echo "dispatch unexpectedly acquired held lock" >&2
+            exit 1
+          fi
+          rmdir .coall-runtime/coall-fanout-r0b-317-crash/supervisor.lock
+
+      - name: Crash after delivery before ACK
+        run: |
+          if python -B scripts/CoAllFanoutR0.py dispatch             --packet ai/coordination/coall-fanout-r0b/task-packet.json; then
+            echo "expected synthetic crash" >&2
+            exit 1
+          fi
+          python -B scripts/CoAllFanoutR0.py reconcile             --packet ai/coordination/coall-fanout-r0b/task-packet.json             --output /tmp/partial.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          r=json.loads(Path("/tmp/partial.json").read_text())
+          by={x["destination_id"]:x for x in r["destinations"]}
+          assert by["synthetic-local-a"]["state"]=="ACKED"
+          assert by["synthetic-local-crash"]["state"]=="DELIVERED_UNACKED_RECOVERABLE"
+          print("PASS_CRASH_AFTER_DELIVERY_BEFORE_ACK")
+          PY
+          sha256sum .coall-runtime/coall-fanout-r0b-317-crash/destinations/synthetic-local-crash/coall-fanout-r0b-317-crash.json > /tmp/before.sha
+
+      - name: STOP blocks recovery and dispatch
+        run: |
+          python -B scripts/CoAllFanoutR0.py stop             --packet ai/coordination/coall-fanout-r0b/task-packet.json             --reason BOUNDED_TEST_STOP             --output /tmp/stop.json
+          python -B scripts/CoAllFanoutR0.py recover             --packet ai/coordination/coall-fanout-r0b/task-packet.json             --output /tmp/stopped-recover.json
+          python -B scripts/CoAllFanoutR0.py dispatch             --packet ai/coordination/coall-fanout-r0b/task-packet.json             --output /tmp/stopped-dispatch.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          rr=json.loads(Path("/tmp/stopped-recover.json").read_text())
+          dd=json.loads(Path("/tmp/stopped-dispatch.json").read_text())
+          assert rr["after_state"]=="STOPPED_NO_RECOVERY"
+          assert dd["state"]=="STOPPED_NO_DISPATCH"
+          print("PASS_STOP_SUPPRESSES_ACTIVITY")
+          PY
+          python -B scripts/CoAllFanoutR0.py resume             --packet ai/coordination/coall-fanout-r0b/task-packet.json
+
+      - name: Fresh recovery reuses delivery bytes
+        run: |
+          python -B scripts/CoAllFanoutR0.py recover             --packet ai/coordination/coall-fanout-r0b/task-packet.json             --output /tmp/recover.json
+          sha256sum .coall-runtime/coall-fanout-r0b-317-crash/destinations/synthetic-local-crash/coall-fanout-r0b-317-crash.json > /tmp/after.sha
+          diff -u /tmp/before.sha /tmp/after.sha
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          r=json.loads(Path("/tmp/recover.json").read_text())
+          assert r["after_state"]=="COMPLETE_ACKED_LOCAL"
+          by={x["destination_id"]:x for x in r["results"]}
+          assert by["synthetic-local-a"]["result"]=="SKIPPED_ALREADY_ACKED"
+          assert by["synthetic-local-crash"]["result"]=="ACKED_LOCAL_PROJECTION"
+          print("PASS_RECOVERY_REUSES_DELIVERY")
+          PY
+
+      - name: Tampered projection fails closed
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path(".coall-runtime/coall-fanout-r0b-317-crash/destinations/synthetic-local-crash/coall-fanout-r0b-317-crash.json")
+          x=json.loads(p.read_text())
+          x["payload"]["message"]="TAMPERED"
+          p.write_text(json.dumps(x,indent=2,sort_keys=True)+"\n")
+          PY
+          if python -B scripts/CoAllFanoutR0.py reconcile             --packet ai/coordination/coall-fanout-r0b/task-packet.json; then
+            echo "tampered projection unexpectedly reconciled" >&2
+            exit 1
+          fi
+          echo PASS_TAMPER_FAILS_CLOSED
+
+      - name: Verify zero effectful primitives
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          s=Path("scripts/CoAllFanoutR0.py").read_text()
+          forbidden=["requests","urllib","http.client","socket","subprocess","os.system","Popen("]
+          hits=[x for x in forbidden if x in s]
+          assert not hits, hits
+          print("PASS_ZERO_EFFECTFUL_PRIMITIVES")
+          PY
