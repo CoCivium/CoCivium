@@ -10,6 +10,7 @@ import argparse
 import hashlib
 import json
 import shutil
+from contextlib import contextmanager
 from pathlib import Path
 from typing import Any
 
@@ -85,6 +86,63 @@ def ledger_path(runtime: Path) -> Path:
     return runtime / "receipts" / "ledger.jsonl"
 
 
+def lock_path(runtime: Path) -> Path:
+    return runtime / "supervisor.lock"
+
+
+def stop_path(runtime: Path) -> Path:
+    return runtime / "STOP.json"
+
+
+@contextmanager
+def exclusive_runtime_lock(runtime: Path):
+    path = lock_path(runtime)
+    try:
+        path.mkdir()
+    except FileExistsError as exc:
+        raise RuntimeError(f"runtime lock already held: {path}") from exc
+    try:
+        yield
+    finally:
+        path.rmdir()
+
+
+def stop_state(runtime: Path, packet: dict[str, Any]) -> dict[str, Any] | None:
+    path = stop_path(runtime)
+    if not path.exists():
+        return None
+    marker = read_json(path)
+    require(marker.get("schema") == "CoAll.CoordinationStop.R0.v0.1", "wrong STOP schema")
+    require(marker.get("task_id") == packet["task_id"], "STOP task identity mismatch")
+    require(marker.get("packet_sha256") == sha256(packet), "STOP packet digest mismatch")
+    return marker
+
+
+def write_stop(runtime: Path, packet: dict[str, Any], reason: str) -> dict[str, Any]:
+    marker = {
+        "schema": "CoAll.CoordinationStop.R0.v0.1",
+        "task_id": packet["task_id"],
+        "packet_sha256": sha256(packet),
+        "reason": reason,
+        "effects": dict(ZERO_EFFECTS),
+    }
+    path = stop_path(runtime)
+    if path.exists():
+        existing = read_json(path)
+        require(existing == marker, "conflicting STOP marker")
+        return existing
+    write_json(path, marker)
+    return marker
+
+
+def clear_stop(runtime: Path, packet: dict[str, Any]) -> dict[str, Any]:
+    marker = stop_state(runtime, packet)
+    if marker is None:
+        return {"state": "STOP_ALREADY_CLEAR", "effects": dict(ZERO_EFFECTS)}
+    stop_path(runtime).unlink()
+    return {"state": "STOP_CLEARED", "reason": marker["reason"], "effects": dict(ZERO_EFFECTS)}
+
+
 def read_ledger(runtime: Path) -> list[dict[str, Any]]:
     path = ledger_path(runtime)
     if not path.exists():
@@ -158,6 +216,8 @@ def summarize_destination(
 
     if acks:
         state = "ACKED"
+    elif payload_exists and attempts:
+        state = "DELIVERED_UNACKED_RECOVERABLE"
     elif failures:
         state = "RETRY_QUEUED"
     else:
@@ -286,6 +346,9 @@ def deliver(
     else:
         write_json(path, projection)
 
+    if behavior == "CRASH_AFTER_WRITE_THEN_ACK" and attempt == 1:
+        raise RuntimeError("SIMULATED_CRASH_AFTER_PROJECTION_BEFORE_ACK")
+
     ack = append_receipt(
         runtime,
         packet,
@@ -307,10 +370,20 @@ def deliver(
 def dispatch(packet_path: Path) -> dict[str, Any]:
     packet, runtime, inventory = load_packet(packet_path)
     require(runtime.exists(), "runtime not initialized")
-    results = [
-        deliver(runtime, packet, inventory, d, recovery=False)
-        for d in packet["destinations"]
-    ]
+    with exclusive_runtime_lock(runtime):
+        stopped = stop_state(runtime, packet)
+        if stopped is not None:
+            return {
+                "state": "STOPPED_NO_DISPATCH",
+                "task_id": packet["task_id"],
+                "stop_reason": stopped["reason"],
+                "results": [],
+                "effects": dict(ZERO_EFFECTS),
+            }
+        results = [
+            deliver(runtime, packet, inventory, d, recovery=False)
+            for d in packet["destinations"]
+        ]
     return {
         "state": "DISPATCH_CYCLE_COMPLETE",
         "task_id": packet["task_id"],
@@ -328,9 +401,10 @@ def reconcile(packet_path: Path) -> dict[str, Any]:
     ]
     acked = sum(1 for d in destinations if d["state"] == "ACKED")
     retry = sum(1 for d in destinations if d["state"] == "RETRY_QUEUED")
+    unacked = sum(1 for d in destinations if d["state"] == "DELIVERED_UNACKED_RECOVERABLE")
     if acked == len(destinations):
         overall = "COMPLETE_ACKED_LOCAL"
-    elif acked > 0 and retry > 0:
+    elif acked > 0 and (retry > 0 or unacked > 0):
         overall = "PARTIAL_RECOVERABLE"
     else:
         overall = "INCOMPLETE"
@@ -358,26 +432,39 @@ def reconcile(packet_path: Path) -> dict[str, Any]:
 def recover(packet_path: Path) -> dict[str, Any]:
     packet, runtime, inventory = load_packet(packet_path)
     require(runtime.exists(), "runtime not initialized")
-    before = reconcile(packet_path)
-    start = append_receipt(
-        runtime,
-        packet,
-        kind="RECOVERY_START",
-        result="RECONSTRUCTED_FROM_PACKET_AND_RECEIPTS",
-        detail="Fresh process derived runtime path from task packet and reconstructed destination states from receipt ledger.",
-    )
-    results = [
-        deliver(runtime, packet, inventory, d, recovery=True)
-        for d in packet["destinations"]
-    ]
-    after = reconcile(packet_path)
-    complete = append_receipt(
-        runtime,
-        packet,
-        kind="RECOVERY_COMPLETE",
-        result=after["overall_state"],
-        detail="Recovery cycle completed without redispatching already-acked destinations.",
-    )
+    with exclusive_runtime_lock(runtime):
+        stopped = stop_state(runtime, packet)
+        if stopped is not None:
+            return {
+                "schema": "CoAll.FreshProcessRecoveryReport.R0.v0.1",
+                "task_id": packet["task_id"],
+                "recovered_from_task_packet_and_receipts": True,
+                "before_state": reconcile(packet_path)["overall_state"],
+                "results": [],
+                "after_state": "STOPPED_NO_RECOVERY",
+                "stop_reason": stopped["reason"],
+                "effects": dict(ZERO_EFFECTS),
+            }
+        before = reconcile(packet_path)
+        start = append_receipt(
+            runtime,
+            packet,
+            kind="RECOVERY_START",
+            result="RECONSTRUCTED_FROM_PACKET_AND_RECEIPTS",
+            detail="Fresh process derived runtime path from task packet and reconstructed destination states from receipt ledger.",
+        )
+        results = [
+            deliver(runtime, packet, inventory, d, recovery=True)
+            for d in packet["destinations"]
+        ]
+        after = reconcile(packet_path)
+        complete = append_receipt(
+            runtime,
+            packet,
+            kind="RECOVERY_COMPLETE",
+            result=after["overall_state"],
+            detail="Recovery cycle completed without redispatching already-acked destinations.",
+        )
     return {
         "schema": "CoAll.FreshProcessRecoveryReport.R0.v0.1",
         "task_id": packet["task_id"],
@@ -431,6 +518,30 @@ def verify(packet_path: Path) -> dict[str, Any]:
     }
 
 
+def stop(packet_path: Path, reason: str) -> dict[str, Any]:
+    packet, runtime, _ = load_packet(packet_path)
+    require(runtime.exists(), "runtime not initialized")
+    with exclusive_runtime_lock(runtime):
+        marker = write_stop(runtime, packet, reason)
+    return {
+        "state": "STOP_ACTIVE",
+        "task_id": packet["task_id"],
+        "reason": marker["reason"],
+        "effects": dict(ZERO_EFFECTS),
+    }
+
+
+def resume(packet_path: Path) -> dict[str, Any]:
+    packet, runtime, _ = load_packet(packet_path)
+    require(runtime.exists(), "runtime not initialized")
+    with exclusive_runtime_lock(runtime):
+        result = clear_stop(runtime, packet)
+    return {
+        "task_id": packet["task_id"],
+        **result,
+    }
+
+
 def emit(value: Any, output: Path | None) -> None:
     text = json.dumps(value, indent=2, sort_keys=True) + "\n"
     if output:
@@ -442,10 +553,11 @@ def emit(value: Any, output: Path | None) -> None:
 
 def main() -> int:
     p = argparse.ArgumentParser()
-    p.add_argument("command", choices=["init", "dispatch", "reconcile", "recover", "verify"])
+    p.add_argument("command", choices=["init", "dispatch", "reconcile", "recover", "verify", "stop", "resume"])
     p.add_argument("--packet", type=Path, required=True)
     p.add_argument("--output", type=Path)
     p.add_argument("--reset", action="store_true")
+    p.add_argument("--reason", default="OPERATOR_STOP")
     args = p.parse_args()
 
     if args.command == "init":
@@ -456,8 +568,12 @@ def main() -> int:
         result = reconcile(args.packet)
     elif args.command == "recover":
         result = recover(args.packet)
-    else:
+    elif args.command == "verify":
         result = verify(args.packet)
+    elif args.command == "stop":
+        result = stop(args.packet, args.reason)
+    else:
+        result = resume(args.packet)
 
     emit(result, args.output)
     return 0
