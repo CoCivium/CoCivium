@@ -1,0 +1,32 @@
+name: CoLens legacy-highlight bridge R0 (offline)
+on:
+  pull_request:
+    paths:
+      - 'examples/colensmedia/highlight_registry_bridge_r0/**'
+      - 'ai/highlight-assets.json'
+      - '.github/workflows/colens-highlight-legacy-r0.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  source-to-view:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run negative and three-view parity tests (offline)
+        run: python3 -m unittest discover -s examples/colensmedia/highlight_registry_bridge_r0 -p 'test_*.py' -v
+      - name: Generate standalone read-only preview from pinned real registry
+        run: python3 examples/colensmedia/highlight_registry_bridge_r0/bridge.py --build
+      - name: Require exact regeneration parity and zero effects
+        run: python3 examples/colensmedia/highlight_registry_bridge_r0/bridge.py --check
+      - name: Retain a reviewable local preview artifact; no website deployment
+        uses: actions/upload-artifact@v4
+        with:
+          name: colens-highlight-legacy-bridge-r0-preview
+          path: examples/colensmedia/highlight_registry_bridge_r0/preview.html
+          if-no-files-found: error
+          retention-days: 14
