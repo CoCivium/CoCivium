@@ -211,8 +211,16 @@ def summarize_destination(
     if payload_exists:
         payload = read_json(payload_path)
         payload_sha = sha256(payload)
-        require(payload["task_id"] == packet["task_id"], "destination task identity mismatch")
-        require(payload["packet_sha256"] == sha256(packet), "destination packet digest mismatch")
+        expected_projection = {
+            "schema": "CoAll.SyntheticDestinationProjection.R0.v0.1",
+            "task_id": packet["task_id"],
+            "packet_sha256": sha256(packet),
+            "source": packet["source"],
+            "destination_id": destination_id,
+            "payload": packet["payload"],
+            "authority": "SYNTHETIC_LOCAL_TEST_ONLY",
+        }
+        require(payload == expected_projection, f"{destination_id}: projection exact-readback mismatch")
 
     if acks:
         state = "ACKED"
@@ -411,7 +419,12 @@ def reconcile(packet_path: Path) -> dict[str, Any]:
 
     ledger = read_ledger(runtime)
     require(all(r["task_id"] == packet["task_id"] for r in ledger), "mixed task ids in ledger")
+    require(all(r["packet_sha256"] == sha256(packet) for r in ledger), "receipt packet digest mismatch")
     require(all(all(v == 0 for v in r["effects"].values()) for r in ledger), "nonzero effect in ledger")
+
+    meta = read_json(runtime / "meta.json")
+    require(meta.get("task_id") == packet["task_id"], "runtime meta task mismatch")
+    require(meta.get("packet_sha256") == sha256(packet), "runtime meta packet digest mismatch")
 
     return {
         "schema": "CoAll.CoordinationStatusView.R0.v0.1",
