@@ -49,6 +49,13 @@ must(/Sustained baseline<\/span><span>NOT MEASURED/, "no fabricated sustainable 
 must(/Useful outcomes \/ human-time<\/span><span>NOT MEASURED/, "no fabricated human-time throughput");
 must(/Available extra capacity<\/span><span>UNQUALIFIED/, "no inferred resource capacity");
 must(/New devices and agents are inventory candidates until independently qualified/, "inventory is not capacity");
+must(/id="proposal" role="status" aria-live="polite"/, "source-separated accessible preview");
+must(/id="undoBtn"/, "undo preview control");
+must(/PREVIEW ACCEPTED · RAW unchanged/, "accepted preview does not mutate original");
+must(/PREVIEW CLEARED · RAW unchanged/, "undo clears only proposal");
+must(/NO LOCAL PERSISTENCE/, "no false durable source claim");
+mustNot(/draft\.value\s*=/, "preview must never rewrite raw user input");
+
 
 mustNot(/<span>recovery<\/span><span>available<\/span>/, "false live recovery state");
 mustNot(/<span>crown risk<\/span><span>low<\/span>/, "false measured crown risk");
