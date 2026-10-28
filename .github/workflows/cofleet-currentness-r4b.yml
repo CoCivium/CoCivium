@@ -1,0 +1,30 @@
+name: CoFleet R4B currentness fail-closed tests
+on:
+  push:
+    branches:
+      - research/cofleet-stale-observer-r4b-20261028
+  pull_request:
+    paths:
+      - scripts/CoFleetProjectionCompilerR4A.py
+      - tests/test_cofleet_currentness_r4b.py
+      - docs/UX/COFLEET_PROJECTION_COMPILER_R4A.md
+      - .github/workflows/cofleet-currentness-r4b.yml
+permissions:
+  contents: read
+jobs:
+  bounded-currentness:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11', '3.13']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Existing R4A self-test
+        run: python scripts/CoFleetProjectionCompilerR4A.py --selftest
+      - name: R4B bounded currentness, failure and type regressions
+        run: python -m unittest discover -s tests -p 'test_cofleet_currentness_r4b.py' -v

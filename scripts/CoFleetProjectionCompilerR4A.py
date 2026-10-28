@@ -60,7 +60,7 @@ def runtime_count(runtime: dict[str, Any] | None, key: str) -> tuple[int | None,
     if not runtime:
         return None, "NO_RUNTIME_FACTS_INPUT"
     value = runtime.get(key)
-    if isinstance(value, int) and value >= 0:
+    if type(value) is int and value >= 0:
         return value, "BOUND_RUNTIME_FACT"
     return None, "RUNTIME_FACT_UNPROVEN"
 
@@ -129,7 +129,7 @@ def compile_projection(
     models_count, models_cov = runtime_count(runtime, "model_runtimes")
     front_n, front_cov = front_count(fronts)
 
-    if runtime and isinstance(runtime.get("effect_leases"), int):
+    if runtime and type(runtime.get("effect_leases")) is int and runtime["effect_leases"] >= 0:
         lease_count = runtime["effect_leases"]
         lease_cov = "BOUND_RUNTIME_FACT"
     else:
@@ -146,6 +146,14 @@ def compile_projection(
                 "age_seconds":rc.get("age_seconds")
             }
 
+    if currentness["state"] in {"STALE", "DEGRADED"}:
+        exceptions.append({
+            "exception_class": "RUNTIME_CURRENTNESS_NOT_HEALTHY",
+            "subject": "BOUND_RUNTIME_OBSERVER",
+            "reason": currentness["state"],
+            "human_action_required": "UNPROVEN",
+        })
+
     dimensions = {
         "bounded_session_count":len(sessions),
         "logical_contract_count":len(contracts),
@@ -156,14 +164,20 @@ def compile_projection(
         "human_blockers":len(human_blockers),
         "effect_leases_observed_or_inferred":lease_count,
     }
-    if not sessions and not contracts:
-        headline = "UNKNOWN"
+    # A quiet logical queue does not prove healthy observation.  Currentness is
+    # about the bounded input/observer, NOT a diagnosis of the physical device.
+    if currentness["state"] in {"STALE", "DEGRADED"}:
+        headline = "DEGRADED"
     elif degraded > 0:
         headline = "DEGRADED"
     elif blocked or human_blockers:
         headline = "HIGH"
+    elif currentness["state"] == "AGING":
+        headline = "MODERATE"
     elif len(logical_only) > 0 or len(shadow) > 0:
         headline = "MODERATE"
+    elif not sessions and not contracts:
+        headline = "UNKNOWN"
     else:
         headline = "LOW"
 
@@ -184,7 +198,7 @@ def compile_projection(
                        sort_keys=True,separators=(",",":")).encode("utf-8")
         )[:24],
         "observed_at":observed_at,
-        "observer":"CoFleetProjectionCompiler.R4A.v0.1",
+        "observer":"CoFleetProjectionCompiler.R4B.v0.1",
         "coverage":{
             "state":coverage_state,
             "global_fleet_census":global_census,
@@ -216,6 +230,8 @@ def compile_projection(
             "SHADOW_CONTRACT_NE_LIVE_WORKER",
             "NO_PROVIDER_SESSION_DISCOVERY_WITHOUT_RUNTIME_FACT",
             "NO_RICKBAR_RUNTIME_BINDING_INFERRED",
+            "OBSERVER_PATH_STATE_NE_DEVICE_STATE",
+            "STALE_OBSERVER_NE_DEVICE_DEAD",
         ],
     }
 
