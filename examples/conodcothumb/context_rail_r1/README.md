@@ -4,6 +4,9 @@
 
 ## Try it in 30 seconds
 
+**CoEvergreen+ appearance candidate (R0):** choose *Forest dusk*, *Moss*, or *Sage daylight* from the visible **Background · appearance only** selector. The previous *Classic blue* remains available. The candidate defaults to Forest dusk, modifies only the page's CSS presentation, and stores no profile or preference. Three green palettes were checked against 42 explicit text/control/border contrast pairings; this is a scoped contrast test, **not** a full accessibility or browser-acceptance certification. The result words **PASS / FAIL / HELD** remain text, never colour alone. The page does not bind the physical mouse or read X2's display.
+
+
 Open [index.html](index.html) in a browser that permits opening local files, or through an approved offline/static preview host. Choose one explicitly labelled **context** and one **Q&A&@ question**, then press **Preview one safe option**. Click **More relations** to see up to seven bounded candidates. Select the **Ordinary middle-click** gesture to confirm the native action is represented as `PASS_THROUGH_NATIVE`. Private/sensitive classifications fail closed. The optional download creates a local, **zero-authority proposal**, never a sent message, OS action or receiver receipt.
 
 If your browser denies direct `file://`, that is a browser/sandbox restriction; no browser acceptance is inferred from extracting and rendering HTML in Chromium. The tested browser path used `page.set_content` with exact local source.

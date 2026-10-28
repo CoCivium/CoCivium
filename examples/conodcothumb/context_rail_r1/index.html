@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="forest">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; connect-src 'none'; img-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'">
@@ -22,11 +22,31 @@ summary{cursor:pointer;font-weight:700;margin-bottom:10px}details p{font-size:.8
 @media(max-width:800px){main{padding:18px 12px 46px}.layout{grid-template-columns:1fr}.panel{padding:15px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:420px){.grid{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+/* CoEvergreen+ R0: presentation only; status always remains written, never inferred from green. */
+.theme-choice{display:grid;gap:3px;min-width:195px}.theme-choice label{margin:0;color:var(--soft)}
+.theme-choice select{min-width:195px}
+:root[data-theme="forest"]{--bg:#0B1D15;--pane:#17362A;--ink:#F0F9F0;--soft:#D6E4D7;--rule:#71927E;--teal:#B8F0CB;--accent:#FFDEA8;--control-bg:#133427;--chip-bg:#1C4232;--action-bg:#224936;--button-bg:#245442;--button-text:#FFFFFF;--stroke:#71927E;--focus:#FFE3A5;--glow:#24533C;--link:#C2EEDE;--primary-bg:#B8F0CB;--primary-text:#072A1C;--result-bg:#10291F}
+:root[data-theme="moss"]{--bg:#172313;--pane:#2B3F27;--ink:#F6F9EE;--soft:#E0EDDB;--rule:#8EAC84;--teal:#BEF2B0;--accent:#FFE3AC;--control-bg:#263A20;--chip-bg:#364E30;--action-bg:#344A2C;--button-bg:#435F39;--button-text:#FFFFFF;--stroke:#8EAC84;--focus:#FFE0A8;--glow:#426D37;--link:#D1F5BC;--primary-bg:#C9EEBA;--primary-text:#173015;--result-bg:#1D3320}
+:root[data-theme="sage"]{color-scheme:light;--bg:#E5F0DF;--pane:#F5FBF1;--ink:#17291C;--soft:#33513B;--rule:#65796A;--teal:#195C36;--accent:#65370E;--control-bg:#EAF4E7;--chip-bg:#D5E8D7;--action-bg:#DBE9D5;--button-bg:#C6E2CE;--button-text:#17291C;--stroke:#65796A;--focus:#A54B14;--glow:#CFE7CC;--link:#164E68;--primary-bg:#276B43;--primary-text:#FFFFFF;--result-bg:#E0EEDA}
+:root:not([data-theme="classic"]) body{background:radial-gradient(ellipse at 75% 0%,var(--glow) 0%,var(--bg) 65%)}
+:root:not([data-theme="classic"]) .panel{background:var(--pane);border-color:var(--stroke)}
+:root:not([data-theme="classic"]) .result{background:var(--result-bg);border-color:var(--stroke)}
+:root:not([data-theme="classic"]) select{background:var(--control-bg);color:var(--ink);border-color:var(--stroke)}
+:root:not([data-theme="classic"]) .actions li{background:var(--action-bg);border-color:var(--stroke)}
+:root:not([data-theme="classic"]) .chip{background:var(--chip-bg);border-color:var(--stroke)}
+:root:not([data-theme="classic"]) button{background:var(--button-bg);color:var(--button-text);border-color:var(--stroke)}
+:root:not([data-theme="classic"]) button.primary{background:var(--primary-bg);color:var(--primary-text);border-color:var(--primary-bg)}
+:root:not([data-theme="classic"]) a{color:var(--link)}
+:root:not([data-theme="classic"]) .flag{border-color:var(--stroke)}
+:root:not([data-theme="classic"]) footer{border-color:var(--stroke)}
+:root:not([data-theme="classic"]) .status{color:var(--accent)}
+:root:not([data-theme="classic"]) button:focus-visible,:root:not([data-theme="classic"]) select:focus-visible,:root:not([data-theme="classic"]) input:focus-visible{outline-color:var(--focus)}
 </style>
 </head>
 <body>
 <main>
-<header><div><div class="eyebrow">CoNod+ / CoThumb+ / CoOrb+ · CoSpiff+</div><h1>One gesture. Many relations.</h1><p class="lead">A safe, source-labelled preview of a contextual glyph rail. Choose a fictional context, ask one question, inspect one candidate. This page neither binds your mouse nor controls other apps.</p></div><div class="flag">OFFLINE · ZERO DEVICE EFFECTS · PREVIEW ONLY</div></header>
+<header><div><div class="eyebrow">CoNod+ / CoThumb+ / CoOrb+ · CoSpiff+</div><h1>One gesture. Many relations.</h1><p class="lead">A safe, source-labelled preview of a contextual glyph rail. Choose a fictional context, ask one question, inspect one candidate. This page neither binds your mouse nor controls other apps.</p></div><div class="flag">OFFLINE · ZERO DEVICE EFFECTS · PREVIEW ONLY</div><div class="theme-choice"><label for="palette">Background · appearance only</label><select id="palette" aria-describedby="paletteExplanation"><option value="forest" selected>Forest dusk · deep green</option><option value="moss">Moss · richer green</option><option value="sage">Sage daylight · pale green</option><option value="classic">Classic blue · previous theme</option></select><span class="small" id="paletteExplanation">Colour never replaces PASS, FAIL or HELD evidence.</span></div></header>
 <div class="layout">
 <div class="stack">
 <section class="panel" aria-labelledby="chooseHeading"><h2 id="chooseHeading">1. Choose an explicit context</h2><p class="subtle">A simulated Actions Ring or keyboard command is selected for the demo. Real middle-click remains untouched.</p>
@@ -215,6 +235,11 @@ summary{cursor:pointer;font-weight:700;margin-bottom:10px}details p{font-size:.8
 const manifest=JSON.parse(document.getElementById('manifest').textContent);
 const core=window.CoContextRailR1;
 const $=id=>document.getElementById(id);
+// Presentation-only. No stored preference, event tracking, OS input or task authority.
+$('palette').addEventListener('change',()=>{
+ const selected=$('palette').value;
+ if(['forest','moss','sage','classic'].includes(selected))document.documentElement.dataset.theme=selected;
+});
 const label=v=>v.replaceAll('_',' ').replaceAll('G D','G_d').replaceAll('AT RECEIVER','@ Receiver');
 for(const id of ['context','question','relation','lens','time','surface']){
  const names={context:'contexts',question:'questions',relation:'relations',lens:'lenses',time:'times',surface:'surfaces'};

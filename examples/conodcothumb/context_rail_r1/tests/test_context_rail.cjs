@@ -103,4 +103,52 @@ t('reduced motion supported',()=>assert(html.includes('prefers-reduced-motion'))
 t('glyph dictionary provides plaintext',()=>assert.equal(Object.keys(manifest.glyphs).length,20));
 t('no more than 7 after any combination',()=>{for(const q of manifest.questions){for(const c of manifest.contexts){const z=run({question:q,context:c,mode:'MORE'});assert(z.suggestions.length<=7);zero(z)}}});
 t('no auto G_d truth',()=>assert(manifest.nonclaims.includes('G_D_AND_ET_ARE_SPECULATIVE_LENSES')));
+// CoEvergreen R0 candidate: presentation-only greens, with accessible light and classic blue options.
+const themeVars=(name)=>{
+  const hit=html.match(new RegExp(':root\\[data-theme="'+name+'"\\]\\{([^}]+)\\}'));
+  assert(hit,'missing CSS theme '+name);
+  return Object.fromEntries(hit[1].split(';').filter(Boolean).map(s=>s.trim().split(':').map(v=>v.trim())));
+};
+const themeContrast=(a,b)=>{
+  const lum=h=>{
+    const c=h.slice(1).match(/../g).map(v=>parseInt(v,16)/255).map(v=>v<=.04045?v/12.92:Math.pow((v+.055)/1.055,2.4));
+    return c[0]*.2126+c[1]*.7152+c[2]*.0722;
+  };
+  const x=lum(a),y=lum(b);
+  return (Math.max(x,y)+.05)/(Math.min(x,y)+.05);
+};
+t('green palettes are optional and classic blue survives',()=>{
+  assert(html.includes('<html lang="en" data-theme="forest">'));
+  for(const theme of ['forest','moss','sage','classic']) assert(html.includes('<option value="'+theme+'"'));
+  assert(html.includes('Background · appearance only'));
+  assert(html.includes('Colour never replaces PASS, FAIL or HELD evidence.'));
+});
+t('three green themes satisfy 42 scoped text and boundary contrast checks',()=>{
+  const pairs=[['--ink','--bg',4.5],['--ink','--pane',4.5],['--ink','--result-bg',4.5],
+    ['--soft','--pane',4.5],['--soft','--result-bg',4.5],['--teal','--pane',4.5],
+    ['--accent','--result-bg',4.5],['--ink','--chip-bg',4.5],['--ink','--action-bg',4.5],
+    ['--ink','--control-bg',4.5],['--button-text','--button-bg',4.5],
+    ['--primary-text','--primary-bg',4.5],['--link','--pane',4.5],['--stroke','--pane',3]];
+  let count=0;
+  for(const theme of ['forest','moss','sage']){
+    const css=themeVars(theme);
+    for(const [fg,bg,min] of pairs){
+      assert(/^#[0-9a-fA-F]{6}$/.test(css[fg]),fg+' invalid '+theme);
+      assert(/^#[0-9a-fA-F]{6}$/.test(css[bg]),bg+' invalid '+theme);
+      const ratio=themeContrast(css[fg],css[bg]);
+      assert(ratio>=min,theme+' '+fg+'/'+bg+' contrast='+ratio+' required='+min);
+      count++;
+    }
+  }
+  assert.equal(count,42);
+});
+t('green background never changes authority, telemetry or input capture',()=>{
+  assert(html.includes("document.documentElement.dataset.theme=selected;"));
+  assert(html.includes("['forest','moss','sage','classic'].includes(selected)"));
+  assert(html.includes("id=\"palette\" aria-describedby=\"paletteExplanation\""));
+  assert(!/localStorage|sessionStorage|indexedDB|serviceWorker/.test(html));
+  assert.equal(manifest.device_io_calls,0);
+  assert.equal(manifest.network_calls,0);
+  zero(run({context:'RESEARCH'}));
+});
 console.log(`CoContextRail R1: declared ${tests.length} deterministic tests`);
