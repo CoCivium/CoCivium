@@ -1,0 +1,24 @@
+name: CoCopy/CoAckRewise day trail R0 offline checks
+on:
+  pull_request:
+    paths:
+      - 'examples/cocopy_ackday_r0/**'
+      - '.github/workflows/cocopy-ackday-r0.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  offline-private-fixtures:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Compile local-only entry
+        run: python -m py_compile examples/cocopy_ackday_r0/cocopy_ackday.py
+      - name: Verify 42 scope, chain, and privacy tests
+        run: python -m unittest discover -s examples/cocopy_ackday_r0 -p 'test_cocopy_ackday.py' -v
+      - name: Explicit runtime nonclaims
+        run: echo 'TEST_PASS_NE_X2_RUNTIME;LOCAL_ACK_NE_RECEIVER_ACK;NO_PROVIDER_OR_DEVICE_EFFECT'
