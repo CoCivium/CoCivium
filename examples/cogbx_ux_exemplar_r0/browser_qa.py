@@ -78,12 +78,23 @@ def case(browser, name, width, height):
     check(page.locator(".rail").is_visible(), name + "_ambient_exit")
 
     old = page.locator("#draft").input_value()
-    page.get_by_role("button", name="Accept locally").click()
-    check(page.locator("#draft").input_value().startswith(old) and page.locator("#draft").input_value() != old, name + "_local_shadow_accept")
-    check("SEND 0" in page.locator("#receipt").inner_text() and "EXECUTE 0" in page.locator("#receipt").inner_text(), name + "_accept_no_external_effect")
-    page.get_by_role("button", name="Reject", exact=True).click()
-    check("LOCAL REJECTED" in page.locator("#receipt").inner_text(), name + "_shadow_reject")
+    proposal = page.locator("#proposal")
+    check("No preview selected" in proposal.inner_text(), name + "_proposal_empty_initially")
+    page.get_by_role("button", name="Preview accept").click()
+    check(page.locator("#draft").input_value() == old, name + "_raw_unchanged_after_preview")
+    check("Suggested next text (not applied)" in proposal.inner_text(), name + "_suggestion_separate_from_source")
+    check(old in proposal.inner_text(), name + "_preview_includes_user_original")
+    check("SEND 0" in page.locator("#receipt").inner_text() and "EXECUTE 0" in page.locator("#receipt").inner_text(), name + "_preview_no_external_effect")
+    page.get_by_role("button", name="Reject preview").click()
+    check(page.locator("#draft").input_value() == old, name + "_raw_unchanged_after_reject")
+    check("Preview rejected" in proposal.inner_text(), name + "_shadow_reject")
     check("AUTHORITY 0" in page.locator("#receipt").inner_text(), name + "_reject_not_authority")
+    page.get_by_role("button", name="Undo preview").click()
+    check("No preview selected" in proposal.inner_text(), name + "_undo_restores_plain")
+    check(page.locator("#draft").input_value() == old, name + "_raw_unchanged_after_undo")
+    page.locator("#draft").fill(old + " (user edit)")
+    check(page.locator("#draft").input_value() == old + " (user edit)", name + "_explicit_user_edit_allowed")
+    check("USER INPUT CHANGED" in page.locator("#receipt").inner_text(), name + "_user_edit_not_preview_effect")
 
     colors = page.evaluate("""() => ({
       demo: getComputedStyle(document.querySelector('.demo-banner')).backgroundColor,
