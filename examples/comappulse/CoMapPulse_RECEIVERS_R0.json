@@ -1,0 +1,15 @@
+{
+  "schema":"CoGoAll.RoutePlan/R0",
+  "purpose":"Disclosure of attempted and unattempted broadcast channels, not an execution manifest",
+  "source":"CoMapPulseGraph/R0",
+  "public_only":true,
+  "routes":[
+    {"target":"GitHub","mode":"PULL_DISCOVERY","state":"PROPOSED_REVIEW_BRANCH","effect":"NO_AUTOMATIC_DELIVERY","receiver_ack":null},
+    {"target":"Gmail","mode":"EXISTING_THREAD_ONLY","state":"SUPPRESS_RECENT_DUPLICATE","effect":"NO_NEW_MESSAGE","receiver_ack":null},
+    {"target":"CoVIA","mode":"DEDICATED_ENDPOINT","state":"HELD_NO_VERIFIED_RECEIVER","effect":"NONE","receiver_ack":null},
+    {"target":"nodes/.nodes","mode":"SUBSCRIPTION","state":"HELD_NO_VERIFIED_RECEIVER","effect":"NONE","receiver_ack":null},
+    {"target":"sites/.sites","mode":"SUBSCRIPTION","state":"HELD_NO_VERIFIED_RECEIVER","effect":"NONE","receiver_ack":null},
+    {"target":"CoOrb/RickBar native","mode":"OPTIONAL_LOCAL_VIEW","state":"NOT_INSTALLED","effect":"NONE","receiver_ack":null}
+  ],
+  "constraints":["RELEVANCE_NOT_PERMISSION","NO_UNSOLICITED_MASS_BROADCAST","POINTER_NE_ACK","VIRTUAL_SESSION_NE_PROVIDER_TAB"]
+}

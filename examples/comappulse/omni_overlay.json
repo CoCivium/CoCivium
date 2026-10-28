@@ -1,0 +1,84 @@
+{
+  "schema": "CoOmniIO.NotSpaceOverlay/R1",
+  "snapshot": "2026-10-23",
+  "base_graph_snapshot": "2026-10-23",
+  "base_graph_sha256": "4eddc49ef5902673fa22af5ef969b60a74bbd3153bd5b493638c00230d963f27",
+  "source_policy": "PUBLIC_ONLY__NO_REMOTE_EFFECT",
+  "run_mode": "OFFLINE_CANDIDATE__NO_AUTHORITY",
+  "description": "Proposed, missing, deliberately separated and speculative relations shown outside the proven trail graph. This is not discovery or runtime connection evidence.",
+  "items": [
+    {
+      "id": "io-source-output", "from": "comap", "to": "provenance", "frontier_label": null,
+      "roles": ["OUTPUT","INPUT","CONNECTOR"], "status": "PROPOSED",
+      "reason": "One public-safe snapshot might be both the map's output and a verifier's input; separate source identity and receiver pickup still matter.",
+      "next_test": "Have an independent local verifier consume the exact snapshot bytes, then compare the expected node and relation counts.",
+      "source_ref": "https://github.com/CoCivium/CoCivium/issues/214", "consent_state": "NOT_APPLICABLE",
+      "effect_authority": "NONE", "receiver_ack": "NOT_OBSERVED", "privacy_class": "PUBLIC", "reversible": true, "is_material_observation": false, "network_effect": false
+    },
+    {
+      "id": "missing-native-coorb", "from": "orb", "to": "receiver", "frontier_label": null,
+      "roles": ["ABSENCE","CONSTRAINT"], "status": "MISSING_PREREQUISITE",
+      "reason": "A native X2/CoBar/CoOrb receiver with current startup, currentness and exact readproof has not been qualified for this map.",
+      "next_test": "On an authorized device, verify the active receiver and one exact-object pickup before asserting native integration.",
+      "source_ref": "https://github.com/CoCivium/CoCivium/issues/178", "consent_state": "NOT_REQUESTED",
+      "effect_authority": "NONE", "receiver_ack": "NOT_OBSERVED", "privacy_class": "PUBLIC", "reversible": true, "is_material_observation": false, "network_effect": false
+    },
+    {
+      "id": "notspace-private-broadcast", "from": "comap", "to": "receiver", "frontier_label": null,
+      "roles": ["ABSENCE","CONSTRAINT"], "status": "INTENTIONAL_BOUNDARY",
+      "reason": "Public graph views must not automatically copy private state to Gmail, CoVIA, sites or undiscovered nodes; separation is intentional until an authorized route exists.",
+      "next_test": "Attempt a synthetic unauthorized dispatch and prove zero outbound messages or receiver-state promotions.",
+      "source_ref": "https://github.com/CoCivium/CoCivium/issues/214", "consent_state": "WITHHELD",
+      "effect_authority": "NONE", "receiver_ack": "NOT_OBSERVED", "privacy_class": "PUBLIC", "reversible": true, "is_material_observation": false, "network_effect": false
+    },
+    {
+      "id": "missing-real-model-bridge", "from": "virtual", "to": "models", "frontier_label": null,
+      "roles": ["ABSENCE","QUESTION","CONSTRAINT"], "status": "MISSING_PREREQUISITE",
+      "reason": "A virtual-session descriptor is not proof that Claude, Pi or local Ollama can execute and recover the same authorized work packet.",
+      "next_test": "Replay one consented public packet using a deterministic baseline and one actual available model, retaining latency and recovery receipts.",
+      "source_ref": "https://github.com/CoCivium/CoCivium/blob/main/docs/Architecture/COVIRTUAL_SESSION_MORPHOLOGY_R0.md", "consent_state": "NOT_REQUESTED",
+      "effect_authority": "NONE", "receiver_ack": "NOT_OBSERVED", "privacy_class": "PUBLIC", "reversible": true, "is_material_observation": false, "network_effect": false
+    },
+    {
+      "id": "rejected-glow-ack", "from": "predict", "to": "receiver", "frontier_label": null,
+      "roles": ["CONSTRAINT","CHALLENGE"], "status": "REJECTED_INFERENCE",
+      "reason": "A predicted destination, highlighted trail, animation or copied pointer cannot establish that a remote receiver applied the intended effect.",
+      "next_test": "Inject a forged receiver ACK into the local fixture and verify that promotion is refused without independent receiver readproof.",
+      "source_ref": "https://github.com/CoCivium/CoCivium/issues/214", "consent_state": "NOT_APPLICABLE",
+      "effect_authority": "NONE", "receiver_ack": "NOT_OBSERVED", "privacy_class": "PUBLIC", "reversible": true, "is_material_observation": false, "network_effect": false
+    },
+    {
+      "id": "question-unknown-substrate", "from": "virtual", "to": null, "frontier_label": "CoNotSpace+ unknown substrate",
+      "roles": ["ABSENCE","QUESTION"], "status": "UNKNOWN_UNSURVEYED",
+      "reason": "A further useful computation or representation substrate is possible, but no specific new substrate or endpoint has been observed and qualified.",
+      "next_test": "Write down one finite falsifiable candidate and test for its existence with permission; record a negative search outcome explicitly.",
+      "source_ref": null, "consent_state": "NOT_REQUESTED",
+      "effect_authority": "NONE", "receiver_ack": "NOT_OBSERVED", "privacy_class": "PUBLIC", "reversible": true, "is_material_observation": false, "network_effect": false
+    },
+    {
+      "id": "symbolic-cospirit", "from": "comap", "to": null, "frontier_label": "CoSpirit+ symbolic/subjective",
+      "roles": ["HYPOTHESIS","QUESTION"], "status": "HYPOTHESIS_ONLY",
+      "reason": "Spiritual or symbolic interpretations may inspire design and reflection but are not evidence of a nonmaterial communications channel.",
+      "next_test": "Specify the interpretation and any separate physical prediction before presenting it as an empirical claim.",
+      "source_ref": null, "consent_state": "NOT_APPLICABLE",
+      "effect_authority": "NONE", "receiver_ack": "NOT_OBSERVED", "privacy_class": "PUBLIC", "reversible": true, "is_material_observation": false, "network_effect": false
+    },
+    {
+      "id": "question-coet", "from": "comap", "to": null, "frontier_label": "CoET+ extraterrestrial hypothesis",
+      "roles": ["HYPOTHESIS","QUESTION"], "status": "HYPOTHESIS_ONLY",
+      "reason": "Extraterrestrial intelligence is an empirical research question; no extraterrestrial interface or conversation is observed in this prototype.",
+      "next_test": "Choose an existing publicly verifiable research hypothesis, prediction and evidence threshold before ranking resources.",
+      "source_ref": null, "consent_state": "NOT_APPLICABLE",
+      "effect_authority": "NONE", "receiver_ack": "NOT_OBSERVED", "privacy_class": "PUBLIC", "reversible": true, "is_material_observation": false, "network_effect": false
+    },
+    {
+      "id": "question-g-d", "from": "comap", "to": null, "frontier_label": "G_d+ proposed relational quantity",
+      "roles": ["HYPOTHESIS","QUESTION"], "status": "HYPOTHESIS_ONLY",
+      "reason": "G_d requires explicit units, definitions and discriminating tests before it can support resource selection or scientific conclusions.",
+      "next_test": "Specify a reproducible mathematical definition and seek a counterexample against simpler distance measures.",
+      "source_ref": null, "consent_state": "NOT_APPLICABLE",
+      "effect_authority": "NONE", "receiver_ack": "NOT_OBSERVED", "privacy_class": "PUBLIC", "reversible": true, "is_material_observation": false, "network_effect": false
+    }
+  ],
+  "nonclaims": ["NOT_GRAPH_EDGES", "ABSENCE_NE_CONSENT", "HYPOTHESIS_NE_OBSERVATION", "PREDICTION_NE_DISPATCH", "POINTER_NE_ACK", "NO_EXTERNAL_EFFECT", "NO_PROVIDER_OR_NATIVE_DESKTOP_INTEGRATION"]
+}

@@ -1,0 +1,41 @@
+'use strict';
+/* CoOmniIO R1 negative and compatibility tests; Node stdlib only. */
+const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto'),assert=require('node:assert/strict');
+const dir=path.resolve(__dirname,'..');
+const overlay=require('../omni_overlay.json'),graph=require('../graph.json'),omni=require('../omni_core.js'),core=require('../core.js');
+const html=fs.readFileSync(path.join(dir,'index.html'),'utf8'),onefile=fs.readFileSync(path.join(dir,'CoMapPulse_ONEFILE_R1.html'),'utf8');
+const clone=x=>JSON.parse(JSON.stringify(x)); let passed=0,failed=0;
+function test(name,fn){try{fn();passed++;console.log('PASS',name);}catch(e){failed++;console.log('FAIL',name,e.message);}}
+function rejects(name,mutate,error){test(name,()=>{const c=clone(overlay);mutate(c);assert.throws(()=>omni.validateOverlay(c,graph),error);});}
+test('9 candidate relations, zero runtime effect',()=>{const s=omni.validateOverlay(overlay,graph);assert.equal(s.total,9);assert.equal(s.external_effects,0);});
+test('source graph exact bytes SHA-256 pinned',()=>{const hash=crypto.createHash('sha256').update(fs.readFileSync(path.join(dir,'graph.json'))).digest('hex');assert.equal(hash,overlay.base_graph_sha256);});
+test('source graph altered while capacity unchanged fails offline digest binding',()=>{const g=clone(graph);g.nodes[0].title='A different goal';const b=Buffer.from(JSON.stringify(g));const altered=crypto.createHash('sha256').update(b).digest('hex');assert.notEqual(altered,overlay.base_graph_sha256);});
+test('every candidate remains inspection-only and not a proven graph edge',()=>{const c=omni.candidates(overlay,graph);assert(c.every(x=>x.action==='INSPECT_ONLY'&&x.draw_as_proven_edge===false&&x.receiver_ack==='NOT_OBSERVED'&&x.authority==='NONE'));});
+test('none of nine candidate IDs are in actual graph trails',()=>{const ids=new Set(graph.edges.map(e=>e.id));for(const c of overlay.items)assert(!ids.has(c.id));});
+test('hypotheses remain unbound and source-free',()=>{const items=overlay.items.filter(i=>i.status==='HYPOTHESIS_ONLY');assert.equal(items.length,3);assert(items.every(i=>i.to===null&&i.source_ref===null&&i.is_material_observation===false));});
+test('intentional boundary explicitly WITHHELD',()=>{const x=overlay.items.find(i=>i.status==='INTENTIONAL_BOUNDARY');assert.equal(x.consent_state,'WITHHELD');});
+test('all candidate sources use CoCivium public refs or null',()=>{assert(overlay.items.every(i=>i.source_ref===null||omni.safeUrl(i.source_ref)));});
+test('predict after caret opt-in includes CoOmniIO',()=>{assert.equal(core.predict('CoOm',4,true).term,'CoOmniIO+');assert.equal(core.predict('CoOm',4,false),null);});
+test('predict accepts candidate only while text matches',()=>{const original=core.predict('CoM',3,true);assert.equal(core.accept('CoM',3,original),'CoMap+');assert.throws(()=>core.accept('ZoM',3,original),/STALE_OR_MISMATCHED_PREDICTION/);});
+test('caret in middle supports CoNotSpace without changing trailing text',()=>{const input='CoNot other',cursor=5;const suggestion=core.predict(input,cursor,true);assert.equal(suggestion.term,'CoNotSpace+');assert.equal(core.accept(input,cursor,suggestion),'CoNotSpace+ other');});
+test('UI has visible separate candidate area with explicit filters',()=>{assert(html.includes('id="notspace-panel"')&&html.includes('id="omni-list"')&&html.includes('id="omni-hypotheses"'));});
+test('standalone includes new pure verifier and all embedded data',()=>{assert(onefile.includes('window.CoOmniCore=api')&&onefile.includes('omni_overlay.json')===false&&onefile.includes('id="omni-data"'));});
+test('embedded candidate JSON round trips without mutations',()=>{const m=html.match(/<script type="application\/json" id="omni-data">(.*?)<\/script>/s);assert(m);assert.deepEqual(JSON.parse(m[1]),overlay);});
+test('no remote loading, websocket or persistent storage',()=>{assert(!/<script[^>]+src="https?:\/\//.test(html));assert(!/\bfetch\s*\(|XMLHttpRequest|WebSocket|localStorage|sessionStorage|sendBeacon/.test(onefile));});
+test('speculative labels cannot be material observations',()=>{assert(overlay.items.filter(i=>i.status==='HYPOTHESIS_ONLY').every(i=>!i.is_material_observation));});
+rejects('forged receiver ACK fails closed',x=>{x.items[0].receiver_ack='ACK_VERIFIED';},/OMNI_EFFECT_OR_ACK_SPOOF/);
+rejects('proposed executable effect fails closed',x=>{x.items[0].effect_authority='SEND_EMAIL';},/OMNI_EFFECT_OR_ACK_SPOOF/);
+rejects('private source path rejected',x=>{x.items[0].source_ref='file:///Users/name/secrets.txt';},/PRIVATE_OR_UNQUALIFIED_OMNI_SOURCE/);
+rejects('external arbitrary URL rejected',x=>{x.items[0].source_ref='https://not-our-domain.example/';},/PRIVATE_OR_UNQUALIFIED_OMNI_SOURCE/);
+rejects('duplicate candidate ID rejected',x=>{x.items[1].id=x.items[0].id;},/BAD_OR_DUPLICATE_OMNI_ID/);
+rejects('unresolved target rejected',x=>{x.items[0].to='alien-machine';},/UNKNOWN_OR_SELF_OMNI_TARGET/);
+rejects('invented physical observation rejected',x=>{x.items[0].is_material_observation=true;},/OMNI_CLAIM_OF_MATERIAL_OBSERVATION/);
+rejects('private overlay rejected',x=>{x.items[0].privacy_class='PRIVATE';},/NON_PUBLIC_OMNI_INPUT/);
+rejects('intentional boundary cannot be silently consented',x=>{x.items.find(i=>i.status==='INTENTIONAL_BOUNDARY').consent_state='NOT_APPLICABLE';},/INTENTIONAL_BOUNDARY_NEEDS_WITHHELD_CONSENT/);
+rejects('hypothesis cannot assert proof',x=>{x.items.find(i=>i.status==='HYPOTHESIS_ONLY').source_ref='https://github.com/CoCivium/CoCivium';},/HYPOTHESIS_CLAIMED_EXTERNAL_EVIDENCE/);
+rejects('network effect not permitted',x=>{x.items[0].network_effect=true;},/OMNI_NETWORK_EFFECT/);
+rejects('unknown dimension reference refused',x=>{x.items[0].roles.push('MAGICAL_EXECUTION');},/INVALID_OMNI_ROLES/);
+rejects('snapshot drift refused',x=>{x.base_graph_snapshot='2026-10-24';},/GRAPH_SNAPSHOT_DRIFT/);
+rejects('bad source digest refused',x=>{x.base_graph_sha256='unknown';},/MISSING_GRAPH_DIGEST/);
+console.log(JSON.stringify({schema:'CoOmniIO.TestSummary/R1',passed,failed,total:passed+failed,actual_model_calls:0,actual_messages_sent:0}));
+if(failed)process.exit(1);

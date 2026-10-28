@@ -1,0 +1,40 @@
+name: CoMapOmni R1 relational boundary tests
+on:
+  pull_request:
+    paths:
+      - 'examples/comappulse/**'
+      - '.github/workflows/comap-omni-r1.yml'
+  push:
+    branches:
+      - research/comappulse-relational-ui-r0-20261023
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Existing CoMap regression tests
+        run: node examples/comappulse/tests/test_core.cjs
+      - name: CoOmniIO and CoNotSpace negative tests
+        run: node examples/comappulse/tests/test_omni.cjs
+      - name: R0 ledger head verification
+        run: node examples/comappulse/tests/test_receipt.cjs
+      - name: R1 independent Node receipt verification
+        run: node examples/comappulse/verify_benchmark_r1.cjs
+      - name: R1 independent Python receipt verification
+        run: |
+          cd examples/comappulse
+          python3 -c "from pathlib import Path; from verify_benchmark import verify; print(verify(Path('benchmark_evo_R1.jsonl'), Path('HEAD_R1.sha256')))"
+      - name: Rebuild browser sources and verify deterministic output
+        run: |
+          cd examples/comappulse
+          python3 build.py
+          git diff --exit-code -- index.html CoMapPulse_ONEFILE_R1.html

@@ -1,0 +1,34 @@
+{
+  "actual_remote_messages": 0,
+  "browser_checks": 12,
+  "browser_navigation": "BLOCKED_FILE_URL_IN_CONTAINER__INLINE_INJECTION_PASS",
+  "experimentally_active_workers": 0,
+  "input_baseline_failure": "STALE_R0_INPUT_ACCEPTED",
+  "ledger": {
+    "counts": {
+      "FAIL": 2,
+      "HOLD": 5,
+      "NOT_RUN": 7,
+      "PASS": 14
+    },
+    "events": 28,
+    "head": "099b480297f5b8472bba404b63a4384654d7422ed8eef022ce8d1c727c774297",
+    "meaning": "Receipt integrity only. No external ACK or scientific truth implied."
+  },
+  "new_chain_head": "099b480297f5b8472bba404b63a4384654d7422ed8eef022ce8d1c727c774297",
+  "nonclaims": [
+    "NO_PROVIDER_INTEGRATION",
+    "NO_REAL_SUBSCRIPTION_BUS",
+    "NO_GMAIL_OR_WHATSAPP_SEND",
+    "NO_SITE_OR_NODE_ACK",
+    "NOT_SCIENTIFIC_PROOF",
+    "NOT_FINANCIAL_OR_ENERGY_SAVINGS"
+  ],
+  "observed_at_utc": "2026-10-23T19:53:52Z",
+  "parent_r0_head": "58490bab7de0bc72f867476e738d3559fd7e2faf9af413df79308301c156e521",
+  "physical_mouse_mapping": "NOT_TESTED",
+  "r0_tests": 29,
+  "r1_tests": 30,
+  "regression_state": "R1_REJECTED_STALE_INPUT",
+  "schema": "CoMapOmni.Release/R1"
+}
