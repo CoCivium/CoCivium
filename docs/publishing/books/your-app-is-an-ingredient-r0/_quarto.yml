@@ -1,0 +1,22 @@
+project:
+  type: book
+book:
+  title: "Your App Is an Ingredient"
+  subtitle: "The Great ReFact: A field guide to AI, choice, cooperation, and the next shape of software"
+  author: "CoCivium | Public working pilot"
+  date: "2026-10-25"
+  chapters:
+    - chapters/00-welcome.md
+    - chapters/01-app-ingredient.md
+    - chapters/02-right-to-leave.md
+    - chapters/03-many-lenses.md
+    - chapters/04-fireworks.md
+format:
+  html:
+    toc: true
+    search: true
+    theme: cosmo
+  epub: default
+  pdf: default
+execute:
+  enabled: false
