@@ -1,0 +1,18 @@
+{
+  "actual_workers": 0,
+  "build_epoch_utc": "2026-10-27T23:55:48+00:00",
+  "event_count": 20,
+  "head": "f2f83b22638a330ba10d2db8bb02fdda8e7bb34fb8ed293abd5c7bcf86b91218",
+  "long_running_daemon": false,
+  "outcomes": {
+    "FAIL": 1,
+    "HOLD": 3,
+    "NOT_RUN": 5,
+    "PASS": 11
+  },
+  "remote_effects": 0,
+  "schema": "CoAliveObjectSummary/R0",
+  "source_sha256": "5b322806548b9c9b82751fb2eab3e51653feb0f479a3da18b26709c756b823f1",
+  "status": "OFFLINE_SHADOW_CANDIDATE__NOT_DEPLOYED",
+  "test_pass": 41
+}
