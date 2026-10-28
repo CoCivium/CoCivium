@@ -1,0 +1,50 @@
+name: CoAll Golden Braid R0 synthetic two-receiver proof
+
+on:
+  pull_request:
+    paths:
+      - 'examples/coall_golden_braid_r0/**'
+      - 'ai/evolution-deltas/2026-10-26/coevo-shared-draft-bridge-r0.json'
+      - '.github/workflows/coall-golden-braid-r0.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  synthetic-proof:
+    name: Two separate local readbacks, failure and replay
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout branch read-only without saved credentials
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Test source bindings, unauthorized paths, source drift and replay
+        run: python3 -m unittest discover -s examples/coall_golden_braid_r0 -p 'test_*.py' -v
+      - name: Run a new synthetic two-destination scenario
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p examples/coall_golden_braid_r0/ci-proof
+          python3 examples/coall_golden_braid_r0/canary.py demo --workspace examples/coall_golden_braid_r0/ci-proof | tee examples/coall_golden_braid_r0/ci-proof/ci_stdout.json
+      - name: Preserve test evidence, not receiver acceptance
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: coall-golden-braid-r0-synthetic-proof
+          path: |
+            examples/coall_golden_braid_r0/ci-proof/packet_manifest.json
+            examples/coall_golden_braid_r0/ci-proof/inbox/alpha/delta.json
+            examples/coall_golden_braid_r0/ci-proof/inbox/beta/delta.json
+            examples/coall_golden_braid_r0/ci-proof/readbacks/alpha.json
+            examples/coall_golden_braid_r0/ci-proof/readbacks/beta.json
+            examples/coall_golden_braid_r0/ci-proof/synthetic_result.json
+            examples/coall_golden_braid_r0/ci-proof/ci_stdout.json
+          retention-days: 14
+          if-no-files-found: warn

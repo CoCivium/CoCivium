@@ -1,0 +1,63 @@
+{
+  "delta_id": "coevo-shared-draft-bridge-r0-20261026",
+  "session_id": "chatgpt-bounded-coevoshared-proposal-20261026",
+  "observed_at": "2026-10-26T22:39:30Z",
+  "domain": [
+    "CoAll+",
+    "CoAutoEvo+/CoEvo+",
+    "CoSession+",
+    "CoSource+/Provenance",
+    "CoTheoryAll+"
+  ],
+  "subject": "CoEvoShared+ | shared drafts as optional human projection, CoEvoDelta as machine intake, independent receiver readproof",
+  "relation": "EMAIL_DRAFT_AS_OPTIONAL_PRIVATE_REVIEW_PROJECTION__NOT_SHARED_BY_RECIPIENT_FIELD__COEVO_PRIMARY_MACHINE_INTAKE__FANIN_BEFORE_FANOUT",
+  "epistemic_class": "PLANNED",
+  "source_refs": [
+    "CoCivium/CoCivium:SESSION_BOOTSTRAP.md (observed blob 9ef2f7bad8a34ab9595caa9ef8e892697ccc615c)",
+    "CoCivium/CoCivium:docs/Evolution/COALL_GITHUB_EVOLUTION_FABRIC_R0.md (observed blob 71ae3b819520f16d15c52febb2d60ae59fbefa0a)",
+    "CoCivium/CoCivium:ai/evolution-intake-policy-r0.json (observed blob 5cb6d9697306ba128cb84b70078a4a93fe6a0b)",
+    "CoCivium/CoCivium:docs/Evolution/COSESSION_WRITEBACK_FANIN_R1.md (observed blob a321b3af4435af1bf15dab710b84896550c2ded2)"
+  ],
+  "target_surfaces": [
+    "ai/evolution-deltas/2026-10-26/ (primary public-safe machine candidate)",
+    "Existing authorized Gmail drafts (optional human editing/projection; no cross-account access assumed)",
+    "Private CoStead or successor custody when authorized (not presently proven)",
+    "Role-scoped CoSession subscription/CoPulse receiver packets (pickup unproven)",
+    "CoBar/CoOrb observer summary when implemented (runtime unproven)"
+  ],
+  "mutation_class": "PROPOSE",
+  "authority_ceiling": "PUBLIC_SAFE_BRANCH_PROPOSAL_ONLY__NO_EMAIL_SEND__NO_INBOX_PERMISSION_CHANGE__NO_PROVIDER_SESSION_BROADCAST__NO_CREDENTIAL_ACCESS__NO_AUTONOMOUS_MUTATION",
+  "confidentiality": "PUBLIC",
+  "confidence": null,
+  "contradictions": [
+    "A Gmail draft may name an alternate mailbox in To/Cc without granting that account access to its unsent content.",
+    "The connected account is not proof of authorized access to any separately named mailbox; independent authenticated readback is missing.",
+    "A GitHub branch or PR is discoverable only to readers who actually retrieve it; it does not awaken idle sessions.",
+    "Draft edits lack guaranteed collision-safe merge; never last-writer-wins an actively edited shared draft."
+  ],
+  "tests": [
+    "EXPECTED: public-safe machine delta validates against schemas/coevo-delta-v0.1.schema.json; exact schema check/CI pending after PR.",
+    "EXPECTED: authorized recipient independently retrieves the same hashed delta without human copy/paste; receiver readproof required.",
+    "EXPECTED: cross-account Gmail draft visibility is separately proven through account-specific authenticated access or delegated authorization, not inferred from To/Cc.",
+    "EXPECTED: one change creates a successor delta with old/new diff and receiver-specific currentness; no unreviewed overwrites.",
+    "NEGATIVE: private draft contents, addresses and third-party data never copied automatically into a public repository.",
+    "NEGATIVE: no email is sent and no external collaborator, AI session, or local worker is claimed to have received this packet."
+  ],
+  "expected_benefit": "Reduce manual relay and duplicate work by preserving bounded incremental proposals, contradictions and successor links in a public-safe machine intake, with drafts as optional private human-readable views.",
+  "risks": [
+    "False belief that Gmail Drafts are a cross-account shared folder",
+    "Collision/last-writer-wins across concurrent editors",
+    "Leakage from private or sensitive working drafts into public GitHub",
+    "False delivery/pickup/ACK claims",
+    "Unsolicited mass outreach or implicit permission inheritance",
+    "Another competing control plane or duplicate registry"
+  ],
+  "wake_conditions": [
+    "A qualified reader supplies independent exact-object receiver readproof",
+    "A verified authorized cross-account draft access/delegation route becomes available",
+    "A material collision, contradictory currentness, or privacy boundary requires review",
+    "One bounded CoTheoryAll or outreach draft evolves into a source-backed, consented successor"
+  ],
+  "supersedes": [],
+  "next_receiver": "CoEvo domain-scoped reviewer via existing session bootstrap; no independent pickup or global broadcast claimed"
+}
