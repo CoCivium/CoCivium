@@ -1,0 +1,263 @@
+{
+  "limits": {
+    "max_fanout": 1,
+    "max_hops": 2,
+    "max_pending": 16,
+    "max_seen_entries": 2048,
+    "max_work_per_pulse": 4,
+    "mode": "SHADOW_ONLY"
+  },
+  "schema": "CoAlivePulseTrace/R0",
+  "source_binding": "5b322806548b9c9b82751fb2eab3e51653feb0f479a3da18b26709c756b823f1",
+  "trace": [
+    {
+      "label": "idle initial heartbeat, no work",
+      "manifest_sha256": "5b322806548b9c9b82751fb2eab3e51653feb0f479a3da18b26709c756b823f1",
+      "observed_tick": 0,
+      "result": {
+        "admissions": [],
+        "capacity_holds": 0,
+        "cycle_edges_suppressed": 0,
+        "duplicate_proposals_suppressed": 0,
+        "external_effects": 0,
+        "mode": "SYNTHETIC_SHADOW_ONLY",
+        "pending_count": 0,
+        "processed": [],
+        "processed_count": 0,
+        "provider_calls": 0,
+        "remote_acks_observed": 0,
+        "revocation_suppressed": 0,
+        "tick": 0
+      }
+    },
+    {
+      "label": "bounded software test failure wakes shadow review",
+      "manifest_sha256": "5b322806548b9c9b82751fb2eab3e51653feb0f479a3da18b26709c756b823f1",
+      "observed_tick": 4,
+      "result": {
+        "admissions": [
+          {
+            "event_id": "fixture-mouse-fail-1",
+            "outcome": "ADMITTED_SHADOW_ONLY"
+          }
+        ],
+        "capacity_holds": 0,
+        "cycle_edges_suppressed": 0,
+        "duplicate_proposals_suppressed": 1,
+        "external_effects": 0,
+        "mode": "SYNTHETIC_SHADOW_ONLY",
+        "pending_count": 1,
+        "processed": [
+          {
+            "action": "PROPOSE_REPRODUCE_FAILURE",
+            "depth": 0,
+            "effect_authority": "NONE",
+            "kind": "TEST_FAILURE_REPORTED",
+            "object_id": "mouse",
+            "receiver_ack": "NOT_OBSERVED"
+          },
+          {
+            "action": "PROPOSE_READ_ONLY_SOURCE_CHECK",
+            "depth": 0,
+            "effect_authority": "NONE",
+            "kind": "SOURCE_REVIEW_DUE",
+            "object_id": "mouse",
+            "receiver_ack": "NOT_OBSERVED"
+          },
+          {
+            "action": "PROPOSE_RELATION_INSPECTION",
+            "depth": 1,
+            "effect_authority": "NONE",
+            "kind": "RELATION_CHALLENGE",
+            "object_id": "spiff",
+            "receiver_ack": "NOT_OBSERVED"
+          },
+          {
+            "action": "PROPOSE_RELATION_INSPECTION",
+            "depth": 2,
+            "effect_authority": "NONE",
+            "kind": "RELATION_CHALLENGE",
+            "object_id": "morph",
+            "receiver_ack": "NOT_OBSERVED"
+          }
+        ],
+        "processed_count": 4,
+        "provider_calls": 0,
+        "remote_acks_observed": 0,
+        "revocation_suppressed": 0,
+        "tick": 4
+      }
+    },
+    {
+      "label": "first-door review and relational handoff",
+      "manifest_sha256": "5b322806548b9c9b82751fb2eab3e51653feb0f479a3da18b26709c756b823f1",
+      "observed_tick": 5,
+      "result": {
+        "admissions": [
+          {
+            "event_id": "fixture-spiff-1",
+            "outcome": "ADMITTED_SHADOW_ONLY"
+          }
+        ],
+        "capacity_holds": 0,
+        "cycle_edges_suppressed": 0,
+        "duplicate_proposals_suppressed": 2,
+        "external_effects": 0,
+        "mode": "SYNTHETIC_SHADOW_ONLY",
+        "pending_count": 1,
+        "processed": [
+          {
+            "action": "PROPOSE_RELATION_INSPECTION",
+            "depth": 2,
+            "effect_authority": "NONE",
+            "kind": "RELATION_CHALLENGE",
+            "object_id": "morph",
+            "receiver_ack": "NOT_OBSERVED"
+          },
+          {
+            "action": "PROPOSE_INDEPENDENT_DELTA_VERIFICATION",
+            "depth": 0,
+            "effect_authority": "NONE",
+            "kind": "SOURCE_DELTA_REPORTED",
+            "object_id": "spiff",
+            "receiver_ack": "NOT_OBSERVED"
+          },
+          {
+            "action": "PROPOSE_READ_ONLY_SOURCE_CHECK",
+            "depth": 0,
+            "effect_authority": "NONE",
+            "kind": "SOURCE_REVIEW_DUE",
+            "object_id": "spiff",
+            "receiver_ack": "NOT_OBSERVED"
+          },
+          {
+            "action": "PROPOSE_RELATION_INSPECTION",
+            "depth": 2,
+            "effect_authority": "NONE",
+            "kind": "RELATION_CHALLENGE",
+            "object_id": "mouse",
+            "receiver_ack": "NOT_OBSERVED"
+          }
+        ],
+        "processed_count": 4,
+        "provider_calls": 0,
+        "remote_acks_observed": 0,
+        "revocation_suppressed": 0,
+        "tick": 5
+      }
+    },
+    {
+      "label": "mismatched source is held, recovery source due",
+      "manifest_sha256": "5b322806548b9c9b82751fb2eab3e51653feb0f479a3da18b26709c756b823f1",
+      "observed_tick": 7,
+      "result": {
+        "admissions": [
+          {
+            "event_id": "fixture-stale-1",
+            "outcome": "HOLD_SOURCE_MISMATCH"
+          }
+        ],
+        "capacity_holds": 0,
+        "cycle_edges_suppressed": 0,
+        "duplicate_proposals_suppressed": 1,
+        "external_effects": 0,
+        "mode": "SYNTHETIC_SHADOW_ONLY",
+        "pending_count": 0,
+        "processed": [
+          {
+            "action": "PROPOSE_RELATION_INSPECTION",
+            "depth": 2,
+            "effect_authority": "NONE",
+            "kind": "RELATION_CHALLENGE",
+            "object_id": "mouse",
+            "receiver_ack": "NOT_OBSERVED"
+          },
+          {
+            "action": "PROPOSE_READ_ONLY_SOURCE_CHECK",
+            "depth": 0,
+            "effect_authority": "NONE",
+            "kind": "SOURCE_REVIEW_DUE",
+            "object_id": "morph",
+            "receiver_ack": "NOT_OBSERVED"
+          },
+          {
+            "action": "PROPOSE_RELATION_INSPECTION",
+            "depth": 2,
+            "effect_authority": "NONE",
+            "kind": "RELATION_CHALLENGE",
+            "object_id": "spiff",
+            "receiver_ack": "NOT_OBSERVED"
+          }
+        ],
+        "processed_count": 3,
+        "provider_calls": 0,
+        "remote_acks_observed": 0,
+        "revocation_suppressed": 0,
+        "tick": 7
+      }
+    },
+    {
+      "label": "revoked mouse shadow work is suppressed",
+      "manifest_sha256": "5b322806548b9c9b82751fb2eab3e51653feb0f479a3da18b26709c756b823f1",
+      "observed_tick": 8,
+      "result": {
+        "admissions": [],
+        "capacity_holds": 0,
+        "cycle_edges_suppressed": 0,
+        "duplicate_proposals_suppressed": 0,
+        "external_effects": 0,
+        "mode": "SYNTHETIC_SHADOW_ONLY",
+        "pending_count": 0,
+        "processed": [],
+        "processed_count": 0,
+        "provider_calls": 0,
+        "remote_acks_observed": 0,
+        "revocation_suppressed": 0,
+        "tick": 8
+      }
+    },
+    {
+      "label": "private payload holds, no network effects",
+      "manifest_sha256": "5b322806548b9c9b82751fb2eab3e51653feb0f479a3da18b26709c756b823f1",
+      "observed_tick": 10,
+      "result": {
+        "admissions": [
+          {
+            "event_id": "fixture-private-1",
+            "outcome": "HOLD_UNAUTHORIZED_EVENT"
+          }
+        ],
+        "capacity_holds": 0,
+        "cycle_edges_suppressed": 0,
+        "duplicate_proposals_suppressed": 0,
+        "external_effects": 0,
+        "mode": "SYNTHETIC_SHADOW_ONLY",
+        "pending_count": 0,
+        "processed": [
+          {
+            "action": "PROPOSE_READ_ONLY_SOURCE_CHECK",
+            "depth": 0,
+            "effect_authority": "NONE",
+            "kind": "SOURCE_REVIEW_DUE",
+            "object_id": "spiff",
+            "receiver_ack": "NOT_OBSERVED"
+          },
+          {
+            "action": "PROPOSE_RELATION_INSPECTION",
+            "depth": 1,
+            "effect_authority": "NONE",
+            "kind": "RELATION_CHALLENGE",
+            "object_id": "morph",
+            "receiver_ack": "NOT_OBSERVED"
+          }
+        ],
+        "processed_count": 2,
+        "provider_calls": 0,
+        "remote_acks_observed": 0,
+        "revocation_suppressed": 1,
+        "tick": 10
+      }
+    }
+  ],
+  "warning": "Simulated tick, not a timed background heartbeat. No real worker activated."
+}
