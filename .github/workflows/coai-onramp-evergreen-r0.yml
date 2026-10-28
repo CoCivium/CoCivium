@@ -1,0 +1,35 @@
+name: CoAI onramp evergreen source gate R0
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - ai/index.json
+      - ai/session-bootstrap.json
+      - ai/onramp/cocivia-first-use-r0.json
+      - ai/onramp/specialist-entrypoints-r0.json
+      - llms.txt
+      - scripts/coai_onramp_evergreen_r0.py
+      - scripts/test_coai_onramp_evergreen_r0.py
+      - .github/workflows/coai-onramp-evergreen-r0.yml
+  pull_request:
+    paths:
+      - ai/index.json
+      - ai/session-bootstrap.json
+      - ai/onramp/cocivia-first-use-r0.json
+      - ai/onramp/specialist-entrypoints-r0.json
+      - llms.txt
+      - scripts/coai_onramp_evergreen_r0.py
+      - scripts/test_coai_onramp_evergreen_r0.py
+      - .github/workflows/coai-onramp-evergreen-r0.yml
+permissions:
+  contents: read
+jobs:
+  verify-public-onramp:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate read-only and unchanged source contracts
+        run: |
+          python3 -m unittest discover -v -s scripts -p test_coai_onramp_evergreen_r0.py
+          python3 scripts/coai_onramp_evergreen_r0.py --repo-root .
