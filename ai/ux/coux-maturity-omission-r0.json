@@ -1,6 +1,6 @@
 {
   "schema": "CoUX.MaturityOmissionRegistry.R0.v0.1",
-  "observed_at": "2026-10-28T17:31:49Z",
+  "observed_at": "2026-10-28T18:33:30Z",
   "state": "BOUNDED_PUBLIC_SAFE_AUDIT__NO_X2_RUNTIME_MUTATION",
   "scope": "X2 exemplar, CoOrb/CoBar/CoBrowser/CoHereNow/CoGbx, adjacent continuity, input, accessibility, federation, receiver and proof lanes",
   "truth_rules": [
@@ -607,27 +607,30 @@
       "lane_id": "metabolic-wake-selector-r0a",
       "domain": "METABOLIC_CONTROL",
       "goal": "Select a tiny event-driven active frontier under privacy, revocation, collision and reserve constraints.",
-      "maturity_state": "READY_NOT_LANDED",
-      "proof_scope": "BRANCH_CI_36_TESTS",
-      "source_state": "PR_332_OPEN_READY",
-      "runtime_state": "SYNTHETIC_ONLY",
+      "maturity_state": "PROVEN_BOUNDED",
+      "proof_scope": "MERGED_R0A_PLUS_POST_BRANCH_CI",
+      "source_state": "LANDED_TO_MAIN",
+      "runtime_state": "SYNTHETIC_ONLY_NO_LIVE_BUS",
       "receiver_state": "N/A",
       "ux_state": "UX_NOT_EVALUATED",
       "priority": 90,
       "ongoing_expected": true,
-      "ongoing_mechanism": "BRANCH_ONLY",
+      "ongoing_mechanism": "EVENT_DRIVEN_SYNTHETIC_SELECTOR",
       "blockers": [
-        "NOT_MERGED_TO_MAIN"
+        "REAL_RIGHTS_CLEARED_SOURCE_DELTA_MISSING",
+        "AUTHORIZED_RECEIVER_ORIGIN_RESULT_MISSING"
       ],
-      "why_not_ongoing": "The successor branch independently passes CI but is not part of main and remains synthetic.",
+      "why_not_ongoing": "The event-driven selector is now in main and CI-proven, but it still operates only on synthetic fixtures and has no real receiver-benefit loop.",
       "wake_conditions": [
-        "MERGE_AUTHORITY_OR_SUCCESSOR_FORWARD_PORT",
-        "REAL_RIGHTS_CLEARED_DELTA"
+        "REAL_RIGHTS_CLEARED_SOURCE_DELTA",
+        "AUTHORIZED_RECEIVER_ORIGIN_RESULT"
       ],
-      "next_safe_deed": "Land/forward-port the wake selector after current-main reconciliation; then feed one real rights-cleared delta.",
+      "next_safe_deed": "Feed one real rights-cleared source delta plus one authorized receiver-origin result; compare cost/benefit against no-new-worker baseline.",
       "evidence_refs": [
         "PR#332",
-        "CI#40688931710"
+        "CI#40688931710",
+        "merge:d2584a8c53964e0e989350d398ea4c3425dc1bfe",
+        "postmerge-ci:40745695354"
       ]
     },
     {
@@ -685,25 +688,27 @@
       "lane_id": "fault-hardening-donor-329",
       "domain": "COORDINATION",
       "goal": "Harvest lock/STOP/crash-before-ACK/tamper-fail-closed semantics from the superseded donor without importing a second bus.",
-      "maturity_state": "READY_TO_HARVEST",
-      "proof_scope": "DONOR_RECONCILIATION",
-      "source_state": "PR_329_DONOR",
-      "runtime_state": "NOT_CANONICAL",
+      "maturity_state": "PROVEN_BOUNDED",
+      "proof_scope": "HARVESTED_TO_CANONICAL_COORDINATION_R0B",
+      "source_state": "DONOR_HISTORICAL_SOURCE_WITNESS",
+      "runtime_state": "CANONICAL_SYNTHETIC_R0B",
       "receiver_state": "N/A",
       "ux_state": "UX_NOT_EVALUATED",
       "priority": 82,
-      "ongoing_expected": true,
-      "ongoing_mechanism": "DONOR_ONLY",
-      "blockers": [
-        "NOT_FORWARD_PORTED_TO_CANONICAL_PATH"
-      ],
-      "why_not_ongoing": "The donor overlaps heavily with current coordination/UX code; wholesale merge would duplicate stacks.",
+      "ongoing_expected": false,
+      "ongoing_mechanism": "SUPERSEDED_BY_CANONICAL_R0B",
+      "blockers": [],
+      "why_not_ongoing": "The donor's unique LOCK/STOP/crash-before-ACK/tamper invariants were forward-ported into the canonical path; continuing the donor branch would duplicate the bus.",
       "wake_conditions": [
-        "CANONICAL_COORDINATION_FORWARD_PORT"
+        "CANONICAL_R0B_REGRESSION",
+        "NEW_UNIQUE_DONOR_DELTA"
       ],
-      "next_safe_deed": "Forward-port only LOCK, STOP, crash-between-delivery-and-ACK, tamper rejection and local subprocess separation tests.",
+      "next_safe_deed": "Keep donor as historical source witness; use canonical R0B for future coordination fault tests.",
       "evidence_refs": [
-        "PR#329 donor reconciliation comment"
+        "PR#329 donor",
+        "PR#336",
+        "CI#40746087030",
+        "merge:790c6e31a7186f4c71292d53e9e3758ba2f78178"
       ]
     },
     {

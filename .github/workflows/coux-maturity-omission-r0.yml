@@ -46,7 +46,7 @@ jobs:
           assert any(x["subject"]=="X2" for x in r["currentness_conflicts"])
           assert "accessibility-acceptance" in r["missing_lanes"]
           assert "receiver-first-use" in r["held_lanes"]
-          assert any(x["lane_id"]=="metabolic-wake-selector-r0a" for x in r["ongoing_mechanism_gaps"])
+          assert "metabolic-wake-selector-r0a" in r["proven_bounded"]
           for rail in [
               "LOCAL_IS_NOT_LANDED",
               "VALIDATION_IS_NOT_ACCEPTANCE",
