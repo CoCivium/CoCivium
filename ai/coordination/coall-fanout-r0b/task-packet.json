@@ -1,0 +1,66 @@
+{
+  "schema": "CoAll.CanonicalTaskPacket.R0.v0.1",
+  "task_id": "coall-fanout-r0b-317-crash",
+  "source": {
+    "pointer": "https://github.com/CoCivium/CoCivium/pull/329",
+    "version": "donor-fault-semantics@2026-10-28",
+    "source_type": "GITHUB_PR_DONOR"
+  },
+  "intent": "Prove lock, STOP, crash-after-delivery-before-ACK recovery, exact projection readback and packet-digest tamper failure on the canonical CoAll fan-out path.",
+  "scope": {
+    "permissions": [
+      "READ_REPO_FIXTURES",
+      "WRITE_LOCAL_SYNTHETIC_RUNTIME_STATE",
+      "WRITE_LOCAL_SYNTHETIC_DESTINATION_FILES",
+      "WRITE_LOCAL_SYNTHETIC_RECEIPTS"
+    ],
+    "forbidden": [
+      "EXTERNAL_EMAIL_SEND",
+      "EXTERNAL_MESSAGE_SEND",
+      "DEVICE_MUTATION",
+      "CREDENTIAL_ACCESS",
+      "ACCOUNT_CHANGE",
+      "PUBLICATION_OUTSIDE_GITHUB_PR_TRACKER"
+    ]
+  },
+  "owner": "CoCivium coordination proof",
+  "next_action": "INIT_CRASH_RECOVER_STOP_RESUME_TAMPER_VERIFY",
+  "acceptance_criteria": [
+    "LOCK_FAILS_CLOSED",
+    "STOP_SUPPRESSES_DISPATCH_AND_RECOVERY",
+    "CRASH_AFTER_WRITE_BEFORE_ACK_IS_RECOVERABLE",
+    "EXACT_PROJECTION_BYTES_ARE_REUSED",
+    "TAMPERED_PROJECTION_FAILS_CLOSED",
+    "TAMPERED_PACKET_BINDING_FAILS_CLOSED",
+    "ZERO_EXTERNAL_EFFECTS"
+  ],
+  "timestamp": "2026-10-28T18:31:00Z",
+  "status": "READY_FOR_SYNTHETIC_FAULT_TEST",
+  "receiver_inventory": "ai/coordination/coall-fanout-r0b/receiver-inventory.json",
+  "runtime_relpath": ".coall-runtime/coall-fanout-r0b-317-crash",
+  "destinations": [
+    "synthetic-local-a",
+    "synthetic-local-crash"
+  ],
+  "payload": {
+    "type": "SYNTHETIC_COORDINATION_FAULT_PROBE",
+    "message": "Local-only R0B fault-hardening probe."
+  },
+  "golden_learning": {
+    "capture": [
+      "lock",
+      "stop",
+      "crash",
+      "recovery",
+      "tamper",
+      "reconciliation"
+    ],
+    "distinctions": [
+      "LOCK_NE_GLOBAL_MUTEX",
+      "STOP_NE_DELETE",
+      "DELIVERED_NE_ACKED",
+      "RECOVERY_NE_REWRITE",
+      "TAMPER_NE_RETRYABLE_NOISE"
+    ]
+  }
+}
