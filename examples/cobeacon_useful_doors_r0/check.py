@@ -27,8 +27,9 @@ EMBED_RE = re.compile(
     r'<script id="experience-data" type="application/json">(.+?)</script>', re.S
 )
 DANGEROUS_JS = re.compile(
-    r"\b(fetch\s*\(|XMLHttpRequest|WebSocket|EventSource|navigator\.sendBeacon|"
-    r"localStorage|sessionStorage|document\.cookie)\b"
+    r"(?:\bfetch\s*\(|\bXMLHttpRequest\b|\bWebSocket\b|\bEventSource\b|"
+    r"\bnavigator\.sendBeacon\s*\(|\blocalStorage\b|\bsessionStorage\b|"
+    r"\bdocument\.cookie\b)"
 )
 TRACKS = {"START", "TRY", "EXPLORE", "LEARN", "BUILD"}
 
