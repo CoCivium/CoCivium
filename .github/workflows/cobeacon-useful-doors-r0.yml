@@ -7,11 +7,13 @@ on:
   pull_request:
     paths:
       - "ai/beacon/experience-catalog-r0.json"
+      - "ai/beacon/awards-criteria-r0.json"
       - "examples/cobeacon_useful_doors_r0/**"
       - ".github/workflows/cobeacon-useful-doors-r0.yml"
   push:
     paths:
       - "ai/beacon/experience-catalog-r0.json"
+      - "ai/beacon/awards-criteria-r0.json"
       - "examples/cobeacon_useful_doors_r0/**"
       - ".github/workflows/cobeacon-useful-doors-r0.yml"
   schedule:
@@ -31,6 +33,8 @@ jobs:
           python-version: "3.12"
       - name: Check catalog, HTML parity, policy and negative cases
         run: python -B examples/cobeacon_useful_doors_r0/check.py
+      - name: Check optional awards candidate and twelve negative cases
+        run: python -B examples/cobeacon_useful_doors_r0/check_awards.py
       - name: Weekly bounded external source-identity check
         if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
         run: python -B examples/cobeacon_useful_doors_r0/check.py --remote
