@@ -1,0 +1,26 @@
+{
+  "schema": "CoBaseline.FrontierPolicy.R1.v0.1",
+  "state": "REAL_HISTORICAL_INGESTION__READ_ONLY",
+  "comparability_key": [
+    "workload_id",
+    "environment",
+    "receiver_class",
+    "authority_ceiling",
+    "privacy_class"
+  ],
+  "champion_labels": [
+    "LAST_PROVEN",
+    "BEST_PROVEN",
+    "BEST_RECOVERY"
+  ],
+  "currentness_rule": "HISTORICAL_RECORDS_MAY_BE_BEST_PROVEN_BUT_NOT_BEST_CURRENT",
+  "rails": [
+    "BASELINE_NE_CEILING",
+    "MAX_PROVEN_NE_MAX_RAW",
+    "HISTORICAL_PASS_NE_CURRENT_RUNTIME",
+    "WIDTH_4_WIN_NE_UNIVERSAL_OPTIMUM",
+    "OFFLINE_FIXTURE_NE_X2_CALIBRATION",
+    "RECORDED_THROUGHPUT_NE_SUSTAINED_CAPACITY",
+    "PARETO_FRONTIER_NE_SINGLE_SCORE"
+  ]
+}

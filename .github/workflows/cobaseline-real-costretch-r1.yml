@@ -1,0 +1,68 @@
+name: CoBaseline Real CoStretch Ingestion R1
+
+permissions:
+  contents: read
+
+on:
+  pull_request:
+    paths:
+      - "scripts/CoBaselineIngestCoStretchR1.py"
+      - "ai/baselines/cobaseline-costretch-r1-policy.json"
+      - "docs/Architecture/COBASELINE_REAL_COSTRETCH_INGEST_R1_20261028.md"
+      - ".github/workflows/cobaseline-real-costretch-r1.yml"
+      - "benchmarks/costretch_r1/output/benchmark_evo.jsonl"
+  push:
+    paths:
+      - "scripts/CoBaselineIngestCoStretchR1.py"
+      - "ai/baselines/cobaseline-costretch-r1-policy.json"
+      - "docs/Architecture/COBASELINE_REAL_COSTRETCH_INGEST_R1_20261028.md"
+      - ".github/workflows/cobaseline-real-costretch-r1.yml"
+      - "benchmarks/costretch_r1/output/benchmark_evo.jsonl"
+
+jobs:
+  ingest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Normalize exact historical family
+        run: |
+          python -B scripts/CoBaselineIngestCoStretchR1.py             --source benchmarks/costretch_r1/output/benchmark_evo.jsonl             --output /tmp/costretch-r1-fixture.json
+
+      - name: Run existing baseline engine
+        run: |
+          python -B scripts/CoBaselineFrontierR0.py             --fixture /tmp/costretch-r1-fixture.json             --policy ai/baselines/cobaseline-costretch-r1-policy.json             > /tmp/frontier.json
+
+      - name: Validate historical frontier and nonclaims
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          fx=json.loads(Path("/tmp/costretch-r1-fixture.json").read_text())
+          r=json.loads(Path("/tmp/frontier.json").read_text())
+
+          assert fx["source"]["currentness"]=="HISTORICAL_NOT_CURRENT_RUNTIME"
+          assert len(fx["records"])==3
+
+          fam=r["families"][0]
+          assert fam["record_ids"]==[
+              "costretch-r1-queue_output_serial",
+              "costretch-r1-queue_output_fixed_2",
+              "costretch-r1-queue_output_fixed_4",
+          ]
+          assert fam["pareto_frontier_ids"]==["costretch-r1-queue_output_fixed_4"]
+
+          by={x["result_id"]:x for x in fx["records"]}
+          assert by["costretch-r1-queue_output_fixed_4"]["metrics"]["useful_throughput"] > by["costretch-r1-queue_output_fixed_2"]["metrics"]["useful_throughput"]
+          assert by["costretch-r1-queue_output_fixed_2"]["metrics"]["useful_throughput"] > by["costretch-r1-queue_output_serial"]["metrics"]["useful_throughput"]
+
+          assert "HISTORICAL_PASS_NE_CURRENT_RUNTIME" in fx["nonclaims"]
+          assert "WIDTH_4_WIN_NE_UNIVERSAL_OPTIMUM" in fx["nonclaims"]
+          assert all(v==0 for v in r["effects"].values())
+          print("PASS_COBASELINE_REAL_COSTRETCH_INGEST_R1")
+          PY
