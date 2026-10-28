@@ -1,0 +1,78 @@
+name: CoMetabolism Heartbeat R0A
+
+permissions:
+  contents: read
+
+on:
+  pull_request:
+    paths:
+      - "docs/Architecture/COFRACTAL_ENERGETIC_METABOLISM_SUPERFRAME_R0_20261027.md"
+      - "examples/cometabolism_heartbeat_r0a/**"
+      - ".github/workflows/cometabolism-heartbeat-r0a.yml"
+  push:
+    paths:
+      - "docs/Architecture/COFRACTAL_ENERGETIC_METABOLISM_SUPERFRAME_R0_20261027.md"
+      - "examples/cometabolism_heartbeat_r0a/**"
+      - ".github/workflows/cometabolism-heartbeat-r0a.yml"
+
+jobs:
+  heartbeat-shadow:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run isolated tests
+        working-directory: examples/cometabolism_heartbeat_r0a
+        run: |
+          python -B -m unittest -v test_beat.py 2> /tmp/test_result.txt
+          grep -q "Ran 36 tests" /tmp/test_result.txt
+          grep -q "^OK$" /tmp/test_result.txt
+
+      - name: Regenerate deterministic receipt
+        working-directory: examples/cometabolism_heartbeat_r0a
+        run: |
+          python -B beat.py --fixture fixture.json > /tmp/receipt.json
+          diff -u receipt.json /tmp/receipt.json
+
+      - name: Verify manifest source identities
+        run: |
+          python - <<'PY'
+          import hashlib, json
+          from pathlib import Path
+
+          root = Path("examples/cometabolism_heartbeat_r0a")
+          manifest = json.loads((root/"manifest.json").read_text())
+          assert manifest["state"] == "SYNTHETIC_SHADOW_ONLY"
+          assert manifest["tests_passed"] == 36
+          assert manifest["tests_failed"] == 0
+          assert manifest["no_runtime"] is True
+          assert manifest["real_receiver_proof"] is False
+
+          for name, meta in manifest["source_files"].items():
+              data=(root/name).read_bytes()
+              assert len(data) == meta["bytes"], (name, len(data), meta["bytes"])
+              assert hashlib.sha256(data).hexdigest() == meta["sha256"], name
+
+          receipt=json.loads((root/"receipt.json").read_text())
+          assert receipt["state"] == "SYNTHETIC_ONLY_NO_LIVE_BUS"
+          assert len(receipt["selected"]) == 2
+          assert all(v == 0 for v in receipt["effects"].values())
+          assert "STALE_NE_DEAD" in receipt["limits"]
+          assert "NO_AUTONOMOUS_LOOP" in receipt["limits"]
+          print("PASS_COMETABOLISM_HEARTBEAT_R0A")
+          PY
+
+      - name: Reject effectful primitives
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          s=Path("examples/cometabolism_heartbeat_r0a/beat.py").read_text()
+          forbidden=["subprocess","threading","socket","requests","urllib","http.client","asyncio","os.system","Popen(","fetch("]
+          hits=[x for x in forbidden if x in s]
+          assert not hits, hits
+          print("PASS_NO_EFFECTFUL_PRIMITIVES")
+          PY

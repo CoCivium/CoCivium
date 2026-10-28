@@ -1,0 +1,41 @@
+test_budget (test_beat.Tests.test_budget) ... ok
+test_budget_reserve_floor (test_beat.Tests.test_budget_reserve_floor) ... ok
+test_depth (test_beat.Tests.test_depth) ... ok
+test_digest_determinism (test_beat.Tests.test_digest_determinism) ... ok
+test_dormant_research (test_beat.Tests.test_dormant_research) ... ok
+test_duplicate_object_wave (test_beat.Tests.test_duplicate_object_wave) ... ok
+test_event_order (test_beat.Tests.test_event_order) ... ok
+test_explicit_stop (test_beat.Tests.test_explicit_stop) ... ok
+test_forbidden_effect (test_beat.Tests.test_forbidden_effect) ... ok
+test_fresh_lease (test_beat.Tests.test_fresh_lease) ... ok
+test_gap_first_class (test_beat.Tests.test_gap_first_class) ... ok
+test_id_collision (test_beat.Tests.test_id_collision) ... ok
+test_idempotent_zero_new_work (test_beat.Tests.test_idempotent_zero_new_work) ... ok
+test_inferred_health_never_alive (test_beat.Tests.test_inferred_health_never_alive) ... ok
+test_no_events (test_beat.Tests.test_no_events) ... ok
+test_no_external_effects (test_beat.Tests.test_no_external_effects) ... ok
+test_no_material_delta (test_beat.Tests.test_no_material_delta) ... ok
+test_no_receiver_acceptance_inferred (test_beat.Tests.test_no_receiver_acceptance_inferred) ... ok
+test_private_rejected (test_beat.Tests.test_private_rejected) ... ok
+test_public_router_rejects_matching_private_scope (test_beat.Tests.test_public_router_rejects_matching_private_scope) ... ok
+test_replay_deduped (test_beat.Tests.test_replay_deduped) ... ok
+test_round (test_beat.Tests.test_round) ... ok
+test_schema (test_beat.Tests.test_schema) ... ok
+test_secret_no_public_leak (test_beat.Tests.test_secret_no_public_leak) ... ok
+test_shares_no_authority (test_beat.Tests.test_shares_no_authority) ... ok
+test_source_change_requires_new_hash (test_beat.Tests.test_source_change_requires_new_hash) ... ok
+test_source_not_mutated (test_beat.Tests.test_source_not_mutated) ... ok
+test_symbolic_not_watts (test_beat.Tests.test_symbolic_not_watts) ... ok
+test_unknown_kind (test_beat.Tests.test_unknown_kind) ... ok
+test_unknown_object (test_beat.Tests.test_unknown_object) ... ok
+test_unknown_zero_inference (test_beat.Tests.test_unknown_zero_inference) ... ok
+test_unqualified_evidence (test_beat.Tests.test_unqualified_evidence) ... ok
+test_untrusted_stop_ignored (test_beat.Tests.test_untrusted_stop_ignored) ... ok
+test_width (test_beat.Tests.test_width) ... ok
+test_x2_not_reboot (test_beat.Tests.test_x2_not_reboot) ... ok
+test_zero_frontier (test_beat.Tests.test_zero_frontier) ... ok
+
+----------------------------------------------------------------------
+Ran 36 tests in 0.007s
+
+OK

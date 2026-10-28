@@ -210,6 +210,18 @@ But:
 
 ## First bounded proof
 
+### R0A CoObject heartbeat shadow donor
+
+[Reproduce the six-type CoObject pulse/lease/wake simulation](../../examples/cometabolism_heartbeat_r0a/README.md).
+This deliberately uses the existing CoFractal and CoPulse/CoTurtle contracts, not a second global bus.
+
+A 2026-10-27 synthetic fixture covers a local-software-pressure *analogy* (not X2 telemetry), publication revision, relation-gap/missing receiver ACK, dormant symbolic hypothesis, stale synthetic lease, and forbidden public-private source crossing. A bounded selector elects at most **two** read-only proposals with a reserved resource floor; it never executes them.
+
+The fixture has **36/36 Python standard-library unit tests PASS**, a deterministic result digest and private source custody plus exact readback. It tests duplicate/replay collision, no-change sleep, lease expiry without inferred death, revocation, Turtle depth limits, budget/width limits, public-only scope, and nonphysical energy rejection.
+
+**Proof ceiling:** SYNTHETIC_SHADOW_PASS only. No resident process, self-running heartbeat, active X2 observer, independent receiver ACK, physical energy input/output, production federation or verified user benefit. The next gate requires one rights-cleared real work-object delta, independent readback, measured cost and evidence that the extra mechanism improves on no new worker.
+
+
 Choose three unlike objects:
 1. one local software component;
 2. one publication/research object;
