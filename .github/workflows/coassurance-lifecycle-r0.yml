@@ -1,0 +1,24 @@
+name: CoAssurance lifecycle R0 (candidate only)
+on:
+  pull_request:
+    paths:
+      - 'experiments/coassurance_r0/**'
+      - '.github/workflows/coassurance-lifecycle-r0.yml'
+  push:
+    paths:
+      - 'experiments/coassurance_r0/**'
+      - '.github/workflows/coassurance-lifecycle-r0.yml'
+permissions:
+  contents: read
+jobs:
+  static-only:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run bounded negative and structural tests
+        run: |
+          python3 -m unittest discover -s experiments/coassurance_r0 -p 'test_gate.py' -v
+          python3 experiments/coassurance_r0/gate.py experiments/coassurance_r0/candidate.json
+      - name: Reaffirm scope
+        run: |
+          echo 'PASS means declared structure only; NO reviewer authentication, receiver readproof, real deployment or effect authority'

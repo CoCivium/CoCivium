@@ -1,0 +1,25 @@
+{
+  "schema": "CoAll.AssuranceStageReview.R0",
+  "work_id": "fixture:coassurance-design-r0",
+  "stage": "DESIGN",
+  "risk": "LOW",
+  "source_ref": "fixture:synthetic-coassurance-source-not-an-exact-github-file",
+  "source_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "authority_ceiling": "READ_ONLY",
+  "real_effects_executed": 0,
+  "receiver_ack": false,
+  "review_state": "CANDIDATE",
+  "independent_acceptance": false,
+  "turtle_budget": {"max_depth": 2, "max_rounds": 2, "max_active_workers": 0, "max_total_evaluations": 32},
+  "priors": [{"kind": "HISTORICAL", "source_ref": "https://github.com/CoCivium/CoCivium/blob/main/SESSION_BOOTSTRAP.md", "assumption": "Prior reviews are design-only until separately accepted."}],
+  "falsifier": "One unchallenged high-risk item is automatically promoted by the overlay.",
+  "panel": [
+    {"role": "PROPOSER", "reviewer_id": "fixture:proposer", "verdict": "SUPPORT", "evidence_ref": "fixture:design-note"},
+    {"role": "CHALLENGER", "reviewer_id": "fixture:challenger", "verdict": "DISSENT", "evidence_ref": "fixture:counterexample"}
+  ],
+  "tests": [{"test_id": "fixture:negative-tests", "status": "NOT_RUN"}],
+  "rollback_ref": null,
+  "security_privacy_review_ref": null,
+  "receiver_proof": null,
+  "external_user_outcome_ref": null
+}
