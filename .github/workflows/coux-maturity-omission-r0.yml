@@ -1,0 +1,60 @@
+name: CoUX Maturity Omission Registry R0
+
+permissions:
+  contents: read
+
+on:
+  pull_request:
+    paths:
+      - "ai/ux/coux-maturity-omission-r0.json"
+      - "docs/Architecture/COUX_MATURITY_OMISSION_REGISTRY_R0_20261028.md"
+      - "scripts/CoUXMaturityOmissionR0.py"
+      - ".github/workflows/coux-maturity-omission-r0.yml"
+  push:
+    paths:
+      - "ai/ux/coux-maturity-omission-r0.json"
+      - "docs/Architecture/COUX_MATURITY_OMISSION_REGISTRY_R0_20261028.md"
+      - "scripts/CoUXMaturityOmissionR0.py"
+      - ".github/workflows/coux-maturity-omission-r0.yml"
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Build maturity/omission report
+        run: |
+          python -B scripts/CoUXMaturityOmissionR0.py             --registry ai/ux/coux-maturity-omission-r0.json             > /tmp/coux-maturity-r0.json
+
+      - name: Validate front-door truths
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          r=json.loads(Path("/tmp/coux-maturity-r0.json").read_text())
+          assert r["state"]=="PASS_COUX_MATURITY_OMISSION_REGISTRY_R0"
+          assert r["lane_count"] >= 20
+          assert r["active_frontier"][0]["lane_id"]=="x2-currentness-observer"
+          top5={x["lane_id"] for x in r["active_frontier"][:5]}
+          assert "x2-coorb-calm-front" in top5
+          assert "recovery-drill-visible" in top5
+          assert any(x["subject"]=="X2" for x in r["currentness_conflicts"])
+          assert "accessibility-acceptance" in r["missing_lanes"]
+          assert "receiver-first-use" in r["held_lanes"]
+          assert any(x["lane_id"]=="metabolic-wake-selector-r0a" for x in r["ongoing_mechanism_gaps"])
+          for rail in [
+              "LOCAL_IS_NOT_LANDED",
+              "VALIDATION_IS_NOT_ACCEPTANCE",
+              "NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF",
+              "NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE",
+              "HASHING_IS_NOT_SEMANTIC_INGESTION",
+              "DISCOVERED_SET_IS_NOT_COMPLETE_HISTORY",
+          ]:
+              assert rail in r["required_nonclaims"]
+          print("PASS_COUX_MATURITY_OMISSION_REGISTRY_R0")
+          PY
