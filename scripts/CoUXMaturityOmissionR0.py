@@ -155,6 +155,9 @@ def run(payload: dict[str, Any]) -> dict[str, Any]:
     require("recovery-drill-visible" in {x["lane_id"] for x in active_frontier[:5]}, "recovery drill should remain top-five")
     require(any(c["subject"] == "X2" for c in conflicts), "X2 split-currentness conflict must remain explicit")
     require("metabolic-wake-selector-r0a" in ids, "R0A wake-selector lane required")
+    r0a = next(x for x in lanes if x["lane_id"] == "metabolic-wake-selector-r0a")
+    require(r0a["maturity_state"] == "PROVEN_BOUNDED", "R0A should be landed and proven")
+    require(r0a["source_state"] == "LANDED_TO_MAIN", "R0A source state stale")
     require("accessibility-acceptance" in ids, "accessibility lane required")
     require("receiver-first-use" in ids, "receiver lane required")
 
