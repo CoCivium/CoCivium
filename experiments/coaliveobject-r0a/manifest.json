@@ -1,0 +1,117 @@
+{
+  "schema": "CoAliveObjectManifest/R0",
+  "observed_at": "2026-10-27",
+  "objects": [
+    {
+      "id": "mouse",
+      "kind": "LOCAL_SOFTWARE_COMPONENT",
+      "source": {
+        "repo": "CoCivium/CoCivium",
+        "ref": "research/comousepalette-r0-20261024",
+        "path": "experiments/comousepalette-r0/CoMousePalette_R0.ps1",
+        "git_blob_sha1": "7622ed69aa314b45cec804739ef560ad7dfc4351"
+      },
+      "privacy": "PUBLIC_REVIEW",
+      "effect_authority": "NONE",
+      "review_period_ticks": 4,
+      "metabolism": {
+        "SENSE": "source identity",
+        "INTAKE": "synthetic checks",
+        "TRANSFORM": "propose tests",
+        "RETURN": "failure questions",
+        "REPAIR": "challenge implementation",
+        "WAKE": "on relevant delta",
+        "SLEEP": "no relevant delta"
+      }
+    },
+    {
+      "id": "spiff",
+      "kind": "PUBLICATION_AND_ONRAMP",
+      "source": {
+        "repo": "CoCivium/CoCivium",
+        "ref": "research/cospiff-firstdoor-r0-20261024",
+        "path": "experiments/cospiff-firstdoor-r0/CoSpiff_FirstDoor.html",
+        "git_blob_sha1": "15651fefa4e53e04030991001e83b28da82b63ba"
+      },
+      "privacy": "PUBLIC_REVIEW",
+      "effect_authority": "NONE",
+      "review_period_ticks": 5,
+      "metabolism": {
+        "SENSE": "evidence freshness",
+        "INTAKE": "public-source links",
+        "TRANSFORM": "first-door suggestion",
+        "RETURN": "visitor test question",
+        "REPAIR": "detect missing first-use evidence",
+        "WAKE": "on new independent proof",
+        "SLEEP": "no actionable delta"
+      }
+    },
+    {
+      "id": "morph",
+      "kind": "DORMANT_RECOVERY_OPTION",
+      "source": {
+        "repo": "CoCivium/CoCivium",
+        "ref": "research/coscalemorph-real-restart-r1-20261024",
+        "path": "experiments/coscalemorph-r1/process_recovery.py",
+        "git_blob_sha1": "df463763321f6b605daf9c4a4733520b129120b7"
+      },
+      "privacy": "PUBLIC_REVIEW",
+      "effect_authority": "NONE",
+      "review_period_ticks": 7,
+      "metabolism": {
+        "SENSE": "recovery gaps",
+        "INTAKE": "verified checkpoint description",
+        "TRANSFORM": "simulate recovery",
+        "RETURN": "recovery test case",
+        "REPAIR": "challenge stale lock",
+        "WAKE": "on recovery regression",
+        "SLEEP": "no recovery dependency"
+      }
+    }
+  ],
+  "relations": [
+    {
+      "from": "mouse",
+      "to": "spiff",
+      "type": "FIRST_USE_RELEVANCE_CANDIDATE",
+      "effect_authority": "NONE"
+    },
+    {
+      "from": "spiff",
+      "to": "morph",
+      "type": "RECOVERY_OPTION_CANDIDATE",
+      "effect_authority": "NONE"
+    },
+    {
+      "from": "morph",
+      "to": "mouse",
+      "type": "RECOVERY_REVIEW_CANDIDATE",
+      "effect_authority": "NONE"
+    }
+  ],
+  "gaps": [
+    {
+      "id": "x2-currentness",
+      "description": "X2 Desktop Commander offline at recent check; native device proof missing",
+      "state": "NOT_OBSERVED"
+    },
+    {
+      "id": "physical-mouse",
+      "description": "Physical MX4 thumb event not verified",
+      "state": "HELD"
+    },
+    {
+      "id": "independent-first-use",
+      "description": "Independent visitor success not measured",
+      "state": "UNKNOWN"
+    }
+  ],
+  "policy": {
+    "max_work_per_pulse": 4,
+    "max_hops": 2,
+    "max_fanout": 1,
+    "mode": "SHADOW_ONLY",
+    "max_pending": 16,
+    "max_seen_entries": 2048
+  }
+}
