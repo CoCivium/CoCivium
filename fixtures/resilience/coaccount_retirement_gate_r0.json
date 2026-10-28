@@ -1,0 +1,81 @@
+{
+  "schema": "CoAccountRetirementGate.R0",
+  "state": "CANDIDATE_EXIT_GATE__CURRENT_RESULT_HOLD",
+  "prior_cleanroom_proof": {
+    "exact_head": "a78dc429a41b1e844c8608b62a4690eb869ce3f8",
+    "workflow_name": "CoRecovery Kernel Clean Room R0",
+    "conclusion": "success",
+    "self_contained_orientation_proven": true,
+    "provider_chat_required_for_packet_read": false,
+    "x2_required_for_packet_read": false,
+    "repository_worktree_required_for_packet_read": false
+  },
+  "gates": [
+    {
+      "id": "UNIQUE_STATE_CENSUS_COMPLETE",
+      "satisfied": false
+    },
+    {
+      "id": "INDEPENDENT_BOOTSTRAP_PROVEN",
+      "satisfied": true
+    },
+    {
+      "id": "PRIVATE_OFFSITE_CUSTODY_PROVEN",
+      "satisfied": false
+    },
+    {
+      "id": "PUBLIC_BOOTSTRAP_ALTERNATE_PROVEN",
+      "satisfied": false
+    },
+    {
+      "id": "RECEIVER_PICKUP_PROVEN",
+      "satisfied": true
+    },
+    {
+      "id": "CREDENTIAL_INDEPENDENCE_PROVEN",
+      "satisfied": false
+    },
+    {
+      "id": "FAILURE_DOMAIN_DIVERSITY_PROVEN",
+      "satisfied": false
+    },
+    {
+      "id": "HUMAN_RECOVERY_PROVEN",
+      "satisfied": true
+    },
+    {
+      "id": "REVOCATION_AND_BILLING_MAP_COMPLETE",
+      "satisfied": false
+    },
+    {
+      "id": "EXCEPTION_REGISTER_ACCEPTED",
+      "satisfied": true
+    },
+    {
+      "id": "PROVIDER_INDEPENDENT_REASONING_ROUTE_PROVEN",
+      "satisfied": false
+    },
+    {
+      "id": "PRIMARY_GIT_HOST_NOT_REQUIRED_PROVEN",
+      "satisfied": false
+    },
+    {
+      "id": "PRIMARY_LOCAL_SITE_NOT_REQUIRED_PROVEN",
+      "satisfied": false
+    }
+  ],
+  "expected": {
+    "account_retirement_state": "HOLD_NOT_EXIT_READY",
+    "destructive_authority": false,
+    "account_deletion_allowed": false
+  },
+  "rails": [
+    "SELF_CONTAINED_ORIENTATION_NE_ACCOUNT_RETIREMENT_READINESS",
+    "CLOSE_SAFE_NE_ACCOUNT_DELETE_SAFE",
+    "DRAINED_NE_DELETE_SAFE",
+    "HOLD_NOT_EXIT_READY_NE_PERMANENT_DEPENDENCY",
+    "EXIT_GATE_PASS_NE_DELETION_AUTHORITY",
+    "ACCOUNT_RETIREMENT_REQUIRES_EXPLICIT_AUTHORITY",
+    "VALIDATION_IS_NOT_ACCEPTANCE"
+  ]
+}
