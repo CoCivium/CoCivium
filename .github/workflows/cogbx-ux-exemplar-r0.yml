@@ -44,3 +44,35 @@ jobs:
           assert "Not deployed to CoGbx.org" in readme
           print("PASS_COGBX_UX_SOURCE_BOUNDARIES_R0")
           PY
+
+  browser-proof:
+    name: Offline desktop/mobile Chromium UX canary
+    needs: smoke
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - name: Checkout without persisted credentials
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Select Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install pinned Chromium test harness
+        run: |
+          python -m pip install --disable-pip-version-check --no-input "playwright==1.55.0"
+          python -m playwright install --with-deps chromium
+      - name: Check two device views and zero outward effects
+        run: python examples/cogbx_ux_exemplar_r0/browser_qa.py
+      - name: Preserve visual and source-hash receipts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cogbx-ux-browser-proof-r01
+          path: |
+            examples/cogbx_ux_exemplar_r0/browser_qa_receipt.json
+            examples/cogbx_ux_exemplar_r0/preview_desktop.png
+            examples/cogbx_ux_exemplar_r0/preview_mobile.png
+          if-no-files-found: warn
+          retention-days: 14

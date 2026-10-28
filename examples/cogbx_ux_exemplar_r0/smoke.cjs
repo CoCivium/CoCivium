@@ -28,8 +28,39 @@ must(/prefers-reduced-motion/, "reduced-motion support");
 must(/@media \(max-width:600px\)/, "narrow viewport support");
 must(/aria-label="Projection controls"/, "projection control label");
 must(/aria-pressed/, "toggle semantics");
-must(/one durable work object/i, "durable work identity");
+must(/One synthetic work object, shown in every projection/i, "stable synthetic identity across projections");
 must(/Redundancy does not duplicate authority/i, "redundancy boundary");
+must(/STATIC DEMONSTRATION · NOT LIVE/, "prominent example-only status");
+must(/CoGbx\.org hosting, independent peer paths, and X2 native runtime remain unverified/, "unverified external states");
+must(/1 synthetic object/, "synthetic durable object");
+must(/3 illustrative/, "illustrative embodiments");
+must(/1 simulated held state/, "simulated remote unknown");
+must(/currentness<\/span><span>synthetic fixture/, "no fake live currentness");
+must(/recovery<\/span><span>not live-tested/, "not-yet-restored label");
+must(/crown risk<\/span><span>not measured/, "no unverified crown-risk score");
+must(/These are proposed alternatives, not verified independent failover paths/, "candidate independence boundary");
+must(/source and evidence pointers; not an active receiver/, "unverified receiver boundary");
+must(/--forest-bg:#17372c/, "restrained green optionality banner");
+must(/role="note"/, "semantic notice");
+must(/id="throughput-title"/, "qualified throughput context");
+must(/CoSpeedo\+ \| Throughput evidence/, "qualified capacity explainer");
+must(/Proven peak<\/span><span>NOT MEASURED/, "no fabricated peak");
+must(/Sustained baseline<\/span><span>NOT MEASURED/, "no fabricated sustainable baseline");
+must(/Useful outcomes \/ human-time<\/span><span>NOT MEASURED/, "no fabricated human-time throughput");
+must(/Available extra capacity<\/span><span>UNQUALIFIED/, "no inferred resource capacity");
+must(/New devices and agents are inventory candidates until independently qualified/, "inventory is not capacity");
+must(/id="proposal" role="status" aria-live="polite"/, "source-separated accessible preview");
+must(/id="undoBtn"/, "undo preview control");
+must(/PREVIEW ACCEPTED · RAW unchanged/, "accepted preview does not mutate original");
+must(/PREVIEW CLEARED · RAW unchanged/, "undo clears only proposal");
+must(/NO LOCAL PERSISTENCE/, "no false durable source claim");
+mustNot(/draft\.value\s*=/, "preview must never rewrite raw user input");
+
+
+mustNot(/<span>recovery<\/span><span>available<\/span>/, "false live recovery state");
+mustNot(/<span>crown risk<\/span><span>low<\/span>/, "false measured crown risk");
+mustNot(/<span>currentness<\/span><span>local current<\/span>/, "false live currentness");
+
 
 mustNot(/\bfetch\s*\(/, "fetch");
 mustNot(/XMLHttpRequest/, "XHR");
