@@ -52,6 +52,22 @@ This order is **editorial**, not a measured ranking or conversion forecast. Do n
 - RSS/Atom, translations, accessibility packs, podcasts, education and approved partner embeds: adapters proposed, not all deployed.
 - Local executable: **HELD** until signed release evidence.
 
+## CoAwards+ recognition relation
+
+[Proposed awards criteria](../../ai/beacon/awards-criteria-r0.json) adds twelve **candidate recognition categories**, not twelve issued awards. They span reproducible proof, repairs, useful dissent, accessibility, education, media craft, commons, bridges, continuity, generosity, resource-wise design and non-obvious better alternatives.
+
+The role of awards in beaconing is to **help others find evidence-backed contributions and learn from them**, not manufacture status or reward clicks. Each future award would reference an immutable source/version, contextual evidence, accountable review, limitations and an accessible media/text twin.
+
+Stages: `SUGGESTED -> NOMINATED -> QUALIFIED -> REVIEWED -> CONSENTED -> ISSUED -> REVISED_OR_WITHDRAWN`. No active nomination endpoint, issuer, recipient, prize, or award issuance is represented by this R0 draft. Recipients may decline or request correction. Financial contribution, popularity or social reach cannot buy an award. A prize has no governance, scientific, professional or operating authority.
+
+Run the opt-in recognition policy check:
+
+```sh
+python -B examples/cobeacon_useful_doors_r0/check_awards.py
+```
+
+The checker rejects synthetic award issuance, fake availability, missing consent, purchased rankings, auto-publication and missing nonclaims. It does not substitute for human or independent receiver acceptance.
+
 ## CI and currentness
 
 Run from repository root:
