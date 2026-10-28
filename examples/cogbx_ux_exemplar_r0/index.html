@@ -198,11 +198,13 @@ footer{padding:10px 16px;color:var(--muted);font-size:12px;border-top:1px solid 
           <input id="draft" value="Show me the next useful relation" autocomplete="off">
         </div>
         <div class="ghost" id="ghost">Candidate: compare the current work object with its recovery path before materializing another provider session.</div>
+        <div class="ghost" id="proposal" role="status" aria-live="polite">No preview selected. Original input is unchanged by all preview controls.</div>
         <div class="actions">
-          <button class="action" id="acceptBtn">Accept locally</button>
-          <button class="action" id="rejectBtn">Reject</button>
+          <button class="action" id="acceptBtn">Preview accept</button>
+          <button class="action" id="rejectBtn">Reject preview</button>
+          <button class="action" id="undoBtn">Undo preview</button>
         </div>
-        <p class="notice" id="receipt">RAW preserved · SEND 0 · EXECUTE 0 · AUTHORITY 0</p>
+        <p class="notice" id="receipt">NO LOCAL PERSISTENCE · RAW unchanged by preview · SEND 0 · EXECUTE 0 · AUTHORITY 0</p>
       </section>
 
       <section class="card throughput" aria-labelledby="throughput-title">
@@ -261,6 +263,7 @@ footer{padding:10px 16px;color:var(--muted);font-size:12px;border-top:1px solid 
   const draft = document.getElementById("draft");
   const ghost = document.getElementById("ghost");
   const receipt = document.getElementById("receipt");
+  const proposal = document.getElementById("proposal");
   const focusText = document.getElementById("focusText");
 
   const setMode = (mode) => {
@@ -296,15 +299,24 @@ footer{padding:10px 16px;color:var(--muted);font-size:12px;border-top:1px solid 
   });
 
   document.getElementById("acceptBtn").addEventListener("click", () => {
-    const before = draft.value;
-    const addition = " → compare recovery before materialization";
-    draft.value = before + addition;
-    receipt.textContent = "LOCAL ACCEPTED · RAW length " + before.length + " · SEND 0 · EXECUTE 0";
+    const proposed = draft.value + " → compare recovery before materialization";
+    proposal.textContent = "PREVIEW ONLY · Suggested next text (not applied): " + proposed;
+    receipt.textContent = "PREVIEW ACCEPTED · RAW unchanged · NO LOCAL PERSISTENCE · SEND 0 · EXECUTE 0 · AUTHORITY 0";
   });
 
   document.getElementById("rejectBtn").addEventListener("click", () => {
-    ghost.textContent = "Rejected locally. Candidate remains unexecuted and can be regenerated.";
-    receipt.textContent = "LOCAL REJECTED · SEND 0 · EXECUTE 0 · AUTHORITY 0";
+    proposal.textContent = "Preview rejected. Original input remains exactly as entered.";
+    receipt.textContent = "PREVIEW REJECTED · RAW unchanged · SEND 0 · EXECUTE 0 · AUTHORITY 0";
+  });
+
+  document.getElementById("undoBtn").addEventListener("click", () => {
+    proposal.textContent = "No preview selected. Original input remains unchanged.";
+    receipt.textContent = "PREVIEW CLEARED · RAW unchanged · SEND 0 · EXECUTE 0 · AUTHORITY 0";
+  });
+
+  draft.addEventListener("input", () => {
+    proposal.textContent = "Input edited by user. Preview again to inspect a new suggestion.";
+    receipt.textContent = "USER INPUT CHANGED · NO LOCAL PERSISTENCE · SEND 0 · EXECUTE 0 · AUTHORITY 0";
   });
 })();
 </script>
