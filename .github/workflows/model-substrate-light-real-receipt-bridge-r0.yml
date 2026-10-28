@@ -1,0 +1,69 @@
+name: Model substrate-light real receiver receipt bridge R0
+
+on:
+  pull_request:
+    paths:
+      - "docs/Architecture/COMODEL_SUBSTRATE_LIGHT_REAL_RECEIPT_BRIDGE_R0.md"
+      - "evidence/substrate/receiver-receipts-r0/**"
+      - "tools/validate_model_substrate_light_real_receipt_bridge_r0.py"
+      - ".github/workflows/model-substrate-light-real-receipt-bridge-r0.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  advisory-receiver:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out exact candidate head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 1
+
+      - name: Use Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Download exact historical portability fan-in
+        uses: actions/download-artifact@v4
+        with:
+          name: model-substrate-light-portability-fanin-r0
+          path: source-artifacts/portability
+          github-token: ${{ github.token }}
+          repository: CoCivium/CoCivium
+          run-id: 36728338535
+
+      - name: Download exact historical local-worker fan-in
+        uses: actions/download-artifact@v4
+        with:
+          name: model-substrate-light-local-worker-fanin-r0
+          path: source-artifacts/local-worker
+          github-token: ${{ github.token }}
+          repository: CoCivium/CoCivium
+          run-id: 36728338983
+
+      - name: Download exact historical bound-Ollama fan-in
+        uses: actions/download-artifact@v4
+        with:
+          name: model-substrate-light-bound-ollama-fanin-r0
+          path: source-artifacts/bound-ollama
+          github-token: ${{ github.token }}
+          repository: CoCivium/CoCivium
+          run-id: 36728338496
+
+      - name: Produce exact-object advisory receiver readproof
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python tools/validate_model_substrate_light_real_receipt_bridge_r0.py --download-root source-artifacts --output artifacts/real-receiver-receipt-advisory-r0.json
+
+      - name: Upload advisory readproof
+        uses: actions/upload-artifact@v4
+        with:
+          name: model-substrate-light-real-receiver-receipt-advisory-r0
+          path: artifacts/real-receiver-receipt-advisory-r0.json
+          if-no-files-found: error
+          retention-days: 30

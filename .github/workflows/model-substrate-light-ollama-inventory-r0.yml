@@ -1,0 +1,78 @@
+name: Model substrate-light Ollama inventory preflight R0
+
+on:
+  pull_request:
+    paths:
+      - "docs/Architecture/COMODEL_SUBSTRATE_LIGHT_OLLAMA_INVENTORY_R0.md"
+      - "fixtures/substrate/model_substrate_light_ollama_inventory_mock_r0.json"
+      - "tools/preflight_local_ollama_inventory_r0.py"
+      - "tools/mock_ollama_tags_loopback_r0.py"
+      - "tools/run_model_substrate_light_ollama_inventory_mock_r0.py"
+      - "tools/fanin_model_substrate_light_ollama_inventory_r0.py"
+      - ".github/workflows/model-substrate-light-ollama-inventory-r0.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  preflight:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-14]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Check out exact candidate head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 1
+
+      - name: Use Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Exercise read-only Ollama inventory preflight
+        run: python tools/run_model_substrate_light_ollama_inventory_mock_r0.py --output-root artifacts/ollama-inventory-r0
+
+      - name: Upload preflight receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: ollama-inventory-${{ runner.os }}-${{ runner.arch }}
+          path: artifacts/ollama-inventory-r0/ollama-inventory-receipt.json
+          if-no-files-found: error
+          retention-days: 30
+
+  fanin:
+    needs: preflight
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out exact candidate head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 1
+
+      - name: Use Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Download preflight receipts
+        uses: actions/download-artifact@v4
+        with:
+          pattern: ollama-inventory-*
+          path: receiver-artifacts
+
+      - name: Fan in inventory preflight convergence
+        run: python tools/fanin_model_substrate_light_ollama_inventory_r0.py --input-root receiver-artifacts --output artifacts/ollama-inventory-fanin-r0.json
+
+      - name: Upload fan-in receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: model-substrate-light-ollama-inventory-fanin-r0
+          path: artifacts/ollama-inventory-fanin-r0.json
+          if-no-files-found: error
+          retention-days: 30

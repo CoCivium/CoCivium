@@ -1,0 +1,79 @@
+name: Model substrate-light multi-embodiment fanin R0
+
+on:
+  pull_request:
+    paths:
+      - "docs/Architecture/COMODEL_SUBSTRATE_LIGHT_MULTI_EMBODIMENT_R0.md"
+      - "fixtures/substrate/model_substrate_light_multi_embodiment_r0.json"
+      - "tools/run_model_substrate_light_multi_embodiment_branch_r0.py"
+      - "tools/fanin_model_substrate_light_multi_embodiment_r0.py"
+      - ".github/workflows/model-substrate-light-multi-embodiment-r0.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  branch:
+    strategy:
+      fail-fast: false
+      matrix:
+        embodiment_id:
+          - "emb:risk-minimizer"
+          - "emb:option-explorer"
+          - "emb:proof-verifier"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out exact candidate head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 1
+
+      - name: Use Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Materialize one synthetic logical embodiment
+        run: python tools/run_model_substrate_light_multi_embodiment_branch_r0.py --embodiment-id "${{ matrix.embodiment_id }}" --output artifacts/branch-receipt.json
+
+      - name: Upload exact branch receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: multi-embodiment-${{ strategy.job-index }}
+          path: artifacts/branch-receipt.json
+          if-no-files-found: error
+          retention-days: 30
+
+  fanin:
+    needs: branch
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out exact candidate head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 1
+
+      - name: Use Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Download branch receipts
+        uses: actions/download-artifact@v4
+        with:
+          pattern: multi-embodiment-*
+          path: branch-artifacts
+
+      - name: Fan in without newest-wins or consensus collapse
+        run: python tools/fanin_model_substrate_light_multi_embodiment_r0.py --input-root branch-artifacts --fixture fixtures/substrate/model_substrate_light_multi_embodiment_r0.json --output artifacts/multi-embodiment-fanin-r0.json
+
+      - name: Upload fan-in receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: model-substrate-light-multi-embodiment-fanin-r0
+          path: artifacts/multi-embodiment-fanin-r0.json
+          if-no-files-found: error
+          retention-days: 30

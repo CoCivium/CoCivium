@@ -1,0 +1,47 @@
+{
+  "STATE": "PASS_DISTINCT_RUNNER_BOUND_OLLAMA_PROTOCOL_CONVERGENCE",
+  "checked_out_head_sha": "298fd46c6d78cfecc90fc768d77c09908b36f707",
+  "contract_sha256": "EA43D4FE8D3A70854AD7D33CE55BE3B734D357B7C9011166B8318F83A375ECF6",
+  "coverage_boundary": [
+    "EXACT_NAME_PLUS_DIGEST_BIND",
+    "PRE_POST_INVENTORY_STABILITY",
+    "DETERMINISTIC_LOOPBACK_OLLAMA_PROTOCOL",
+    "NO_REAL_MODEL_INFERENCE",
+    "NO_MODEL_PULL_OR_INSTALL"
+  ],
+  "effect_execution_total": 0,
+  "inventory_semantic_sha256": "F5BBF498CF475BDEC4104333C834C914F8ED0040EC983382CF46EB034FB45F3B",
+  "model_pull_or_install_performed": false,
+  "nonclaims": [
+    "MOCK_OLLAMA_NE_REAL_OLLAMA_RUNTIME",
+    "OLLAMA_REPORTED_DIGEST_NE_UNIVERSAL_MODEL_IDENTITY",
+    "DIGEST_STABILITY_NE_MODEL_QUALITY",
+    "BOUND_PROTOCOL_PASS_NE_X2_MODEL_RUN",
+    "VALIDATION_IS_NOT_ACCEPTANCE"
+  ],
+  "receipt_set_semantic_sha256": "2014B6B115CF2A6B606372906A41A6B63EFE1C21A11932312E37EE53CCCF0B03",
+  "receiver_count": 3,
+  "schema": "CoModelSubstrateLight.BoundOllamaFanin.v0.1",
+  "selected_model": {
+    "digest": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "name": "alpha:latest",
+    "reported_model_record": {
+      "details": {
+        "families": [
+          "alpha"
+        ],
+        "family": "alpha",
+        "format": "gguf",
+        "parameter_size": "1B",
+        "parent_model": "",
+        "quantization_level": "Q4_K_M"
+      },
+      "digest": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "model": "alpha:latest",
+      "name": "alpha:latest",
+      "size": 123456789
+    }
+  },
+  "worker_output_sha256": "3C82B230400A51B86870E14F355D66253C2CBB61F1785678B40504EF8C8A8899",
+  "worker_result_semantic_sha256": "2DFA780D103B23ABC3E11477B01E3F1A79EFA03FE1F774703111413812D03F96"
+}

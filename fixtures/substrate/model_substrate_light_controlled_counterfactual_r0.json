@@ -1,0 +1,65 @@
+{
+  "schema": "CoModelSubstrateLight.ControlledCounterfactual.v0.1-candidate",
+  "state": "CONTROLLED_SAME_TASK_SINGLE_VS_PARALLEL_CI_CANARY__NO_RUNTIME_NO_CANON_NO_AUTHORITY_CHANGE",
+  "source_bindings": {
+    "portable_model_path": "fixtures/substrate/model_substrate_light_portable_model_r0.json",
+    "portable_model_blob_sha": "513be70351a0228dd045d6d4f6e8a3f35645194b",
+    "portable_runner_path": "tools/run_model_substrate_light_portable_r0.py",
+    "portable_runner_blob_sha": "accfcab16144437b5652cf0baaf14b56e8f8e944"
+  },
+  "logical_work_id": "work:portable-linear-r0-controlled-counterfactual",
+  "task": "Execute the exact same bounded portable integer model and exact five inference cases.",
+  "runner_class": "GITHUB_HOSTED_UBUNTU_LATEST",
+  "single_mode": {
+    "physical_width": 1,
+    "receiver_count": 1,
+    "replica_ids": ["S0"]
+  },
+  "parallel_mode": {
+    "physical_width": 3,
+    "receiver_count": 3,
+    "replica_ids": ["P0", "P1", "P2"]
+  },
+  "scoring": {
+    "qualified_benefit_unit": "ONE_UNIQUE_CORRECT_INFERENCE_CASE",
+    "verified_deed": "ONE_UNIQUE_CORRECT_INFERENCE_CASE",
+    "duplicate_correct_receipts_do_not_multiply_benefit": true,
+    "execution_cost_unit": "ONE_RECEIVER_EXECUTION",
+    "expected_unique_case_count": 5,
+    "expected_single_benefit_units": 5,
+    "expected_parallel_benefit_units": 5,
+    "expected_single_verified_deeds": 5,
+    "expected_parallel_verified_deeds": 5,
+    "expected_single_execution_cost_units": 1,
+    "expected_parallel_execution_cost_units": 3
+  },
+  "expected": {
+    "single_benefit_yield_numerator": 1,
+    "single_benefit_yield_denominator": 1,
+    "parallel_benefit_yield_numerator": 1,
+    "parallel_benefit_yield_denominator": 1,
+    "parallel_strict_benefit_yield_gain": false,
+    "advisory_decision": "ADVISE_PHYSICAL_WIDTH_1_NO_STRICT_VERIFIED_BENEFIT_GAIN",
+    "physical_width_change_authorized": false
+  },
+  "coverage_boundary": [
+    "SAME_EXACT_DETERMINISTIC_WORK_OBJECT",
+    "SAME_RUNNER_OS_CLASS_UBUNTU_LATEST",
+    "ONE_SINGLE_RECEIVER_VS_THREE_PARALLEL_RECEIVERS",
+    "OBJECTIVE_EXACT_INFERENCE_SCORING",
+    "NO_REAL_MODEL",
+    "NO_LATENCY_BENEFIT_CLAIM",
+    "NO_ENERGY_BENEFIT_CLAIM",
+    "NO_RUNTIME_WIDTH_AUTHORITY"
+  ],
+  "nonclaims": [
+    "CONTROLLED_CI_COUNTERFACTUAL_NE_REAL_WORLD_BENEFIT",
+    "REDUNDANT_RECEIVER_COUNT_NE_UNIQUE_BENEFIT",
+    "SAME_OUTPUT_NE_SAME_INTERNAL_EXECUTION",
+    "NO_GAIN_IN_THIS_TASK_NE_NO_GAIN_FOR_OTHER_TASKS",
+    "BENEFIT_OBSERVED_NE_BENEFIT_CAUSED_BEYOND_THIS_FIXTURE",
+    "BENEFIT_NE_AUTHORITY",
+    "COUNTERFACTUAL_PASS_NE_RUNTIME_SCHEDULER",
+    "VALIDATION_IS_NOT_ACCEPTANCE"
+  ]
+}

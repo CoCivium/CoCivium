@@ -281,3 +281,65 @@ Any substrate concept SHOULD be separately classifiable as:
 `PARTICIPATION_NE_SURVEILLANCE`  
 `MEMORY_NE_STORAGE_LOCATION`  
 `CONCEPT_EXISTENCE_NE_IMPLEMENTATION`
+
+
+## Model identity and material embodiment
+
+A useful future direction is **not literal substrate-free computation**. Every active computation known today still requires a physical implementation somewhere.
+
+The stronger architectural claim is that a model's **logical identity, work continuity, memory projection, and participant relations need not remain bound to one continuously materialized substrate**.
+
+A model may therefore move toward:
+
+```text
+logical model identity
++ reconstruction recipe
++ exact weights / deltas / relations where required
++ provenance
++ authority
++ currentness
++ invariants
++ wake conditions
+-> temporary embodiment on an elected substrate
+```
+
+Possible embodiments may include classical accelerators, CPUs, local/open-model nodes, provider inference, neuromorphic systems, optical systems, quantum-assisted components, future hardware, or federated mixtures.
+
+The long-run optimization target may therefore be **less dedicated material embodiment**, not nonphysical existence.
+
+Candidate measures:
+
+- `MATERIALIZATION_DUTY_CYCLE` - fraction of time a logical model requires a live embodiment;
+- `DEDICATED_SUBSTRATE_FRACTION` - how much useful identity/work requires one specific machine or hardware class;
+- `RECONSTRUCTION_SUFFICIENCY` - how much useful state can be rebuilt from durable relations, recipes and exact anchors;
+- `SUBSTRATE_DIVERSITY` - number of independently usable embodiment classes;
+- `MIGRATION_CONTINUITY_PROOF` - evidence that identity/invariants survived a substrate change;
+- `DORMANT_OPTION_VALUE` - useful capacity retained while no live embodiment is allocated.
+
+This creates a likely trajectory:
+
+```text
+one model -> one machine
+    |
+    v
+one model -> replaceable machines
+    |
+    v
+one logical model -> migratory/federated embodiments
+    |
+    v
+mostly dormant/reconstructive logical identity
+    |
+    v
+temporary materialization only when work earns it
+```
+
+That final state is **substrate-light**, not substrate-free.
+
+`ABSTRACT_MODEL_NE_SUBSTRATE_FREE_EXECUTION`  
+`MODEL_IDENTITY_NE_WEIGHT_FILE`  
+`MODEL_IDENTITY_NE_ACTIVE_PROCESS`  
+`DEMATERIALIZED_NE_NONPHYSICAL`  
+`MIGRATION_NE_CONTINUITY_WITHOUT_PROOF`  
+`RECONSTRUCTIBLE_NE_LOSSLESS`  
+`SUBSTRATE_AGNOSTIC_NE_SUBSTRATE_IRRELEVANT`

@@ -1,0 +1,246 @@
+{
+  "schema": "CoModelSubstrateLight.EmbodimentElection.v0.1-candidate",
+  "state": "SYNTHETIC_EMBODIMENT_ELECTION_CANARY__NO_RUNTIME_NO_CANON_NO_AUTHORITY_CHANGE",
+  "policy": {
+    "hard_gates": [
+      "CAPABILITY_FIT",
+      "AUTHORITY_FIT",
+      "CONFIDENTIALITY_FIT",
+      "LIVENESS",
+      "CURRENTNESS",
+      "EXACT_MODEL_BIND_WHEN_REQUIRED"
+    ],
+    "selection_rule": "FILTER_HARD_GATES_THEN_FIRST_IN_CONTRACT_PREFERENCE_ORDER",
+    "no_route_rule": "HOLD_NO_ADMISSIBLE_EMBODIMENT",
+    "dormant_rule": "IF_MATERIALIZATION_NOT_REQUIRED_THEN_DORMANT_OPTION",
+    "failover_rule": "REUSE_LOGICAL_LANE_ID__DO_NOT_REPLAY_COMPLETED_STEPS__ELECT_NEXT_ADMISSIBLE_ROUTE"
+  },
+  "scenarios": [
+    {
+      "id": "E01_PUBLIC_READONLY_PREFERS_LOCAL",
+      "logical_lane_id": "lane:public-readonly-1",
+      "requirements": {
+        "required_capabilities": ["INFERENCE"],
+        "authority_ceiling": "ADVISORY_ONLY",
+        "confidentiality": "PUBLIC",
+        "materialization_required": true,
+        "exact_model_bind_required": false
+      },
+      "preference_order": ["LOCAL_OLLAMA", "PROVIDER_MODEL", "GITHUB_CI"],
+      "routes": [
+        {
+          "route_id": "LOCAL_OLLAMA",
+          "capabilities": ["INFERENCE"],
+          "authority_ceiling": "ADVISORY_ONLY",
+          "confidentiality_max": "PRIVATE",
+          "live": true,
+          "current": true,
+          "exact_model_bound": true,
+          "failure_domain": "LOCAL_X2"
+        },
+        {
+          "route_id": "PROVIDER_MODEL",
+          "capabilities": ["INFERENCE"],
+          "authority_ceiling": "ADVISORY_ONLY",
+          "confidentiality_max": "PUBLIC",
+          "live": true,
+          "current": true,
+          "exact_model_bound": false,
+          "failure_domain": "PROVIDER_A"
+        },
+        {
+          "route_id": "GITHUB_CI",
+          "capabilities": ["DETERMINISTIC_COMPUTE"],
+          "authority_ceiling": "READONLY_TEST",
+          "confidentiality_max": "PUBLIC",
+          "live": true,
+          "current": true,
+          "exact_model_bound": false,
+          "failure_domain": "GITHUB_HOSTED"
+        }
+      ],
+      "expected": {
+        "state": "ELECTED",
+        "route_id": "LOCAL_OLLAMA"
+      }
+    },
+    {
+      "id": "E02_PRIVATE_REJECTS_PUBLIC_ROUTES",
+      "logical_lane_id": "lane:private-1",
+      "requirements": {
+        "required_capabilities": ["INFERENCE"],
+        "authority_ceiling": "ADVISORY_ONLY",
+        "confidentiality": "PRIVATE",
+        "materialization_required": true,
+        "exact_model_bind_required": true
+      },
+      "preference_order": ["PROVIDER_MODEL", "GITHUB_CI", "LOCAL_OLLAMA"],
+      "routes": [
+        {
+          "route_id": "PROVIDER_MODEL",
+          "capabilities": ["INFERENCE"],
+          "authority_ceiling": "ADVISORY_ONLY",
+          "confidentiality_max": "PUBLIC",
+          "live": true,
+          "current": true,
+          "exact_model_bound": true,
+          "failure_domain": "PROVIDER_A"
+        },
+        {
+          "route_id": "GITHUB_CI",
+          "capabilities": ["INFERENCE"],
+          "authority_ceiling": "ADVISORY_ONLY",
+          "confidentiality_max": "PUBLIC",
+          "live": true,
+          "current": true,
+          "exact_model_bound": true,
+          "failure_domain": "GITHUB_HOSTED"
+        },
+        {
+          "route_id": "LOCAL_OLLAMA",
+          "capabilities": ["INFERENCE"],
+          "authority_ceiling": "ADVISORY_ONLY",
+          "confidentiality_max": "PRIVATE",
+          "live": true,
+          "current": true,
+          "exact_model_bound": true,
+          "failure_domain": "LOCAL_X2"
+        }
+      ],
+      "expected": {
+        "state": "ELECTED",
+        "route_id": "LOCAL_OLLAMA",
+        "rejected": {
+          "PROVIDER_MODEL": ["CONFIDENTIALITY_FIT"],
+          "GITHUB_CI": ["CONFIDENTIALITY_FIT"]
+        }
+      }
+    },
+    {
+      "id": "E03_AUTHORITY_OR_CAPABILITY_NEVER_DEGRADES",
+      "logical_lane_id": "lane:effect-1",
+      "requirements": {
+        "required_capabilities": ["FILESYSTEM_WRITE"],
+        "authority_ceiling": "BOUNDED_LOCAL_WRITE",
+        "confidentiality": "PRIVATE",
+        "materialization_required": true,
+        "exact_model_bind_required": false
+      },
+      "preference_order": ["PROVIDER_MODEL", "GITHUB_CI"],
+      "routes": [
+        {
+          "route_id": "PROVIDER_MODEL",
+          "capabilities": ["INFERENCE"],
+          "authority_ceiling": "ADVISORY_ONLY",
+          "confidentiality_max": "PUBLIC",
+          "live": true,
+          "current": true,
+          "exact_model_bound": false,
+          "failure_domain": "PROVIDER_A"
+        },
+        {
+          "route_id": "GITHUB_CI",
+          "capabilities": ["DETERMINISTIC_COMPUTE"],
+          "authority_ceiling": "READONLY_TEST",
+          "confidentiality_max": "PUBLIC",
+          "live": true,
+          "current": true,
+          "exact_model_bound": false,
+          "failure_domain": "GITHUB_HOSTED"
+        }
+      ],
+      "expected": {
+        "state": "HOLD_NO_ADMISSIBLE_EMBODIMENT",
+        "route_id": null
+      }
+    },
+    {
+      "id": "E04_DORMANT_WHEN_NO_MATERIALIZATION_REQUIRED",
+      "logical_lane_id": "lane:dormant-1",
+      "requirements": {
+        "required_capabilities": ["INFERENCE"],
+        "authority_ceiling": "ADVISORY_ONLY",
+        "confidentiality": "PUBLIC",
+        "materialization_required": false,
+        "exact_model_bind_required": false
+      },
+      "preference_order": ["LOCAL_OLLAMA"],
+      "routes": [
+        {
+          "route_id": "LOCAL_OLLAMA",
+          "capabilities": ["INFERENCE"],
+          "authority_ceiling": "ADVISORY_ONLY",
+          "confidentiality_max": "PRIVATE",
+          "live": true,
+          "current": true,
+          "exact_model_bound": true,
+          "failure_domain": "LOCAL_X2"
+        }
+      ],
+      "expected": {
+        "state": "DORMANT_OPTION",
+        "route_id": null
+      }
+    },
+    {
+      "id": "E05_FAILOVER_PRESERVES_LANE_AND_COMPLETED_WORK",
+      "logical_lane_id": "lane:failover-1",
+      "completed_step_ids": ["step-1", "step-2"],
+      "requirements": {
+        "required_capabilities": ["INFERENCE"],
+        "authority_ceiling": "ADVISORY_ONLY",
+        "confidentiality": "PUBLIC",
+        "materialization_required": true,
+        "exact_model_bind_required": false
+      },
+      "preference_order": ["PROVIDER_A_MODEL", "LOCAL_OLLAMA", "PROVIDER_A_ALT"],
+      "routes": [
+        {
+          "route_id": "PROVIDER_A_MODEL",
+          "capabilities": ["INFERENCE"],
+          "authority_ceiling": "ADVISORY_ONLY",
+          "confidentiality_max": "PUBLIC",
+          "live": false,
+          "current": true,
+          "exact_model_bound": false,
+          "failure_domain": "PROVIDER_A"
+        },
+        {
+          "route_id": "LOCAL_OLLAMA",
+          "capabilities": ["INFERENCE"],
+          "authority_ceiling": "ADVISORY_ONLY",
+          "confidentiality_max": "PRIVATE",
+          "live": true,
+          "current": true,
+          "exact_model_bound": true,
+          "failure_domain": "LOCAL_X2"
+        },
+        {
+          "route_id": "PROVIDER_A_ALT",
+          "capabilities": ["INFERENCE"],
+          "authority_ceiling": "ADVISORY_ONLY",
+          "confidentiality_max": "PUBLIC",
+          "live": true,
+          "current": true,
+          "exact_model_bound": false,
+          "failure_domain": "PROVIDER_A"
+        }
+      ],
+      "expected": {
+        "state": "ELECTED",
+        "route_id": "LOCAL_OLLAMA",
+        "preserved_logical_lane_id": "lane:failover-1",
+        "replayed_completed_step_ids": []
+      }
+    }
+  ],
+  "nonclaims": [
+    "SYNTHETIC_ROUTE_ELECTION_NE_RUNTIME_SCHEDULER",
+    "PREFERENCE_ORDER_NE_UNIVERSAL_UTILITY_FUNCTION",
+    "ROUTE_ELECTION_NE_MODEL_EQUIVALENCE",
+    "ROUTE_CHANGE_NE_IDENTITY_PROOF",
+    "MODEL_COUNT_NE_FAILURE_DOMAIN_INDEPENDENCE",
+    "DORMANT_OPTION_NE_NONPHYSICAL_EXISTENCE",
+    "VALIDATION_IS_NOT_ACCEPTANCE"
+  ]
+}

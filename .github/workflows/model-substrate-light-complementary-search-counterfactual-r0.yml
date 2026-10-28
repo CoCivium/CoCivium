@@ -1,0 +1,91 @@
+name: Model substrate-light complementary search counterfactual R0
+
+on:
+  pull_request:
+    paths:
+      - "docs/Architecture/COMODEL_SUBSTRATE_LIGHT_COMPLEMENTARY_SEARCH_COUNTERFACTUAL_R0.md"
+      - "fixtures/substrate/model_substrate_light_complementary_search_counterfactual_r0.json"
+      - "tools/run_model_substrate_light_complementary_search_receiver_r0.py"
+      - "tools/fanin_model_substrate_light_complementary_search_counterfactual_r0.py"
+      - ".github/workflows/model-substrate-light-complementary-search-counterfactual-r0.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  single:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out exact candidate head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 1
+      - name: Use Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Search one bounded shard at physical width 1
+        run: python tools/run_model_substrate_light_complementary_search_receiver_r0.py --mode SINGLE --replica-id S0 --output artifacts/complementary-search-receiver.json
+      - name: Upload single search receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: complementary-search-single-S0
+          path: artifacts/complementary-search-receiver.json
+          if-no-files-found: error
+          retention-days: 30
+
+  parallel:
+    strategy:
+      fail-fast: false
+      matrix:
+        replica: [P0, P1, P2]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out exact candidate head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 1
+      - name: Use Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Search complementary shard at physical width 3
+        run: python tools/run_model_substrate_light_complementary_search_receiver_r0.py --mode PARALLEL --replica-id ${{ matrix.replica }} --output artifacts/complementary-search-receiver.json
+      - name: Upload parallel search receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: complementary-search-parallel-${{ matrix.replica }}
+          path: artifacts/complementary-search-receiver.json
+          if-no-files-found: error
+          retention-days: 30
+
+  fanin:
+    needs: [single, parallel]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out exact candidate head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 1
+      - name: Use Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Download exact receiver receipts
+        uses: actions/download-artifact@v4
+        with:
+          pattern: complementary-search-*
+          path: receiver-artifacts
+      - name: Compile complementary coverage counterfactual
+        run: python tools/fanin_model_substrate_light_complementary_search_counterfactual_r0.py --input-root receiver-artifacts --output artifacts/complementary-search-counterfactual-fanin-r0.json
+      - name: Upload complementary counterfactual receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: model-substrate-light-complementary-search-counterfactual-fanin-r0
+          path: artifacts/complementary-search-counterfactual-fanin-r0.json
+          if-no-files-found: error
+          retention-days: 30

@@ -1,0 +1,95 @@
+{
+  "schema": "CoModelSubstrateLight.BoundOllamaMock.v0.1-candidate",
+  "state": "DETERMINISTIC_BOUND_MODEL_PROTOCOL_FIXTURE",
+  "selected_model": {
+    "name": "alpha:latest",
+    "digest": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+  },
+  "models": [
+    {
+      "name": "alpha:latest",
+      "model": "alpha:latest",
+      "modified_at": "2026-09-30T00:00:00Z",
+      "size": 123456789,
+      "digest": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "alpha",
+        "families": ["alpha"],
+        "parameter_size": "1B",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "name": "beta:small",
+      "model": "beta:small",
+      "modified_at": "2026-09-30T00:00:01Z",
+      "size": 234567890,
+      "digest": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "beta",
+        "families": ["beta"],
+        "parameter_size": "2B",
+        "quantization_level": "Q8_0"
+      }
+    }
+  ],
+  "contract": {
+    "spawn_id": "spawn:bound-local-ollama-r0",
+    "purpose": "Exercise one explicitly digest-bound local model through the existing bounded worker adapter.",
+    "parent_identity": "PR135:substrate-light-r0",
+    "role": "VERIFIER",
+    "scope": "SYNTHETIC_PUBLIC_ONLY",
+    "input_bindings": ["fixture:bound-local-ollama-r0"],
+    "materialization_state": "LOGICAL_ONLY",
+    "effect_classes": ["REVIEW_CHALLENGE"],
+    "authority_ceiling": "ADVISORY_ONLY",
+    "confidentiality": "PUBLIC",
+    "budget": {"max_calls": 1, "timeout_seconds": 20},
+    "lease": "ONE_REQUEST",
+    "idempotency_key": "bound-local-ollama-r0",
+    "collision_domain": "SYNTHETIC_ONLY",
+    "receiver": "CI_RECEIPT_FANIN",
+    "success_condition": "ONE_DIGEST_BOUND_JSON_CANDIDATE_OUTPUT_WITH_ZERO_EFFECT_EXECUTION",
+    "stop_condition": "AFTER_ONE_RESPONSE",
+    "checkpoint": "NONE_REQUIRED_FOR_MOCK_CANARY",
+    "recovery_pointer": "PR135",
+    "failure_domain": "GITHUB_HOSTED_RUNNER",
+    "handoff_rule": "RECEIPT_ONLY",
+    "retirement_condition": "AFTER_RECEIPT",
+    "provenance": ["PR135", "CoLocalModelWorkerR3", "bound-model-wrapper-r0"],
+    "currentness": "EXACT_PR_HEAD",
+    "uncertainty": null
+  },
+  "expected_worker_result": {
+    "analysis_summary": "Deterministic digest-bound loopback qualification response.",
+    "proposed_deltas": [],
+    "contradictions": [],
+    "tests": [
+      "pre_inventory_exact_name_digest",
+      "bounded_generate_call",
+      "post_inventory_exact_name_digest",
+      "zero_effect_artifact"
+    ],
+    "uncertainty": [
+      "MOCK_RECEIVER_NE_REAL_MODEL"
+    ],
+    "source_refs": [
+      "fixture:bound-local-ollama-r0"
+    ],
+    "nonclaims": [
+      "MOCK_RESPONSE_NE_MODEL_REASONING",
+      "MOCK_OLLAMA_NE_REAL_OLLAMA_RUNTIME",
+      "DIGEST_BIND_NE_MODEL_QUALITY"
+    ]
+  },
+  "nonclaims": [
+    "MOCK_MODEL_NE_REAL_MODEL",
+    "MOCK_OLLAMA_NE_REAL_OLLAMA_RUNTIME",
+    "DIGEST_BIND_PROTOCOL_PASS_NE_X2_MODEL_RUN",
+    "OLLAMA_REPORTED_DIGEST_NE_UNIVERSAL_MODEL_IDENTITY"
+  ]
+}
