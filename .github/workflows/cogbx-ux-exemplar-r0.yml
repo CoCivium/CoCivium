@@ -26,6 +26,8 @@ jobs:
           node-version: "22"
       - name: Smoke static exemplar
         run: node examples/cogbx_ux_exemplar_r0/smoke.cjs
+      - name: Run R1 accessible input interactions
+        run: node examples/cogbx_ux_exemplar_r0/interaction_r1.cjs
       - name: Check source boundaries
         run: |
           python - <<'PY'
