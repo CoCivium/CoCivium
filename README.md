@@ -6,7 +6,8 @@ CoCivium is an open research project exploring how people and AI tools can work 
 
 | What would you like to do? | Where it takes you |
 |---|---|
-| **See the whole weave** | [Explore the visual CoOrbWare experiment](https://cocivium.github.io/CoAcademy/coorb/) |
+| **Enter a living world: 3D + CoTime** | **[Watch, move, and explore the interactive world](https://cocivium.github.io/CoAcademy/experience/)** · Rotate ideas, move through time, compare possible futures. Browser animation, not immersive VR or real-world prediction. |
+| **Inspect the evidence behind the weave** | [Explore source-linked CoOrbWare](https://cocivium.github.io/CoAcademy/coorb/) |
 | **Build worlds, games or stories** | [Meet the BeaxaKitten creator prototype](https://cocivium.github.io/CoAcademy/kitten/) |
 | **Bring one problem or idea** | [Start with one real thing](docs/Onramp/COCIVIA_FIRST_USE_R0.md) |
 | **Understand CoCivium in plain language** | [About, history and practical doorways](https://cocivium.github.io/CoAcademy/about/) |
@@ -14,7 +15,7 @@ CoCivium is an open research project exploring how people and AI tools can work 
 | **Challenge or improve the research** | [Open a GitHub issue draft](https://github.com/CoCivium/CoCivium/issues/new) |
 | **Inspect proofs and what remains unproven** | [Read the evidence index](EVERGREEN.md) |
 
-**[Open the human-friendly project homepage](https://cocivium.github.io/CoAcademy/)** · [60-second introduction](START_HERE.md)
+**[Enter the Living World: 3D + CoTime](https://cocivium.github.io/CoAcademy/experience/)** · [Human-friendly homepage](https://cocivium.github.io/CoAcademy/) · [60-second introduction](START_HERE.md)
 
 **Community and collaboration:** This repository's [Issues](https://github.com/CoCivium/CoCivium/issues) support concrete feedback; [GitHub Discussions](https://github.com/CoCivium/CoCivium/discussions) is a route to check, **not a promise that discussions are enabled**.  Discord and other social/community platforms are **integration candidates**, not connected services shown here.  We will not claim account access, read private messages, or post automatically.
 
