@@ -1,5 +1,32 @@
 # CoCivium ⊂ Trust Together
 
+## Choose your CoCivium doorway
+
+CoCivium is an open research project exploring how people and AI tools can work together, while keeping consent and evidence visible.  **You do not need to understand the terminology to begin.**
+
+| What would you like to do? | Where it takes you |
+|---|---|
+| **See the whole weave** | [Explore the visual CoOrbWare experiment](https://cocivium.github.io/CoAcademy/coorb/) |
+| **Build worlds, games or stories** | [Meet the BeaxaKitten creator prototype](https://cocivium.github.io/CoAcademy/kitten/) |
+| **Bring one problem or idea** | [Start with one real thing](docs/Onramp/COCIVIA_FIRST_USE_R0.md) |
+| **Understand CoCivium in plain language** | [About, history and practical doorways](https://cocivium.github.io/CoAcademy/about/) |
+| **Try a device-side experiment** | [Open the browser-first device check](https://cocivium.github.io/CoAcademy/device-first/) |
+| **Challenge or improve the research** | [Open a GitHub issue draft](https://github.com/CoCivium/CoCivium/issues/new) |
+| **Inspect proofs and what remains unproven** | [Read the evidence index](EVERGREEN.md) |
+
+**[Open the human-friendly project homepage](https://cocivium.github.io/CoAcademy/)** · [60-second introduction](START_HERE.md)
+
+**Community and collaboration:** This repository's [Issues](https://github.com/CoCivium/CoCivium/issues) support concrete feedback; [GitHub Discussions](https://github.com/CoCivium/CoCivium/discussions) is a route to check, **not a promise that discussions are enabled**.  Discord and other social/community platforms are **integration candidates**, not connected services shown here.  We will not claim account access, read private messages, or post automatically.
+
+> **Current limitations:** All these are research/prelaunch paths. A link in source does not certify public runtime, a third-party receiver, or Quest compatibility. The short `cocivium.org` domain has a documented broken landing route and outstanding exposure review. Opening this README never grants device control, account access, or permission to post.
+
+<details><summary><strong>Deeper theory, project history, and technical documentation</strong></summary>
+
+The full original introduction and research material continue below.  They remain available for readers who want depth after finding a useful first action.
+
+</details>
+
+---
 **New here? Start with one simple, proof-linked task:** [CoCivium in 60 seconds](START_HERE.md). The custom-domain front door is being verified; this GitHub entry is source-controlled, not a claim of independent audience uptake.
 
 > [!IMPORTANT]
