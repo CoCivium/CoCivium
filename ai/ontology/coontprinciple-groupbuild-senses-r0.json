@@ -1,0 +1,105 @@
+{
+  "schema": "CoAll.CoOntPrinciple.R0.candidate",
+  "state": "PUBLIC_SOURCE_CANDIDATE_NOT_COTERM_REGISTRATION_NOT_RUNTIME",
+  "observed_date": "2026-11-01",
+  "concept": {
+    "id": "GroupBuild::contribution",
+    "aliases": [
+      "contribution",
+      "volunteering",
+      "work product"
+    ],
+    "global_definition": "NO_GLOBAL_DEFINITION_CLAIM"
+  },
+  "senses": [
+    {
+      "sense_id": "GroupBuild::contribution::commons-r0",
+      "label": "Community contribution",
+      "context": {
+        "project": "community park",
+        "doorway": "groupbuild.org",
+        "agreement": "not yet executed"
+      },
+      "definition": "Voluntary, scoped involvement with independently negotiated acknowledgement and rights.",
+      "status": "WORKING_CANDIDATE",
+      "epistemic_class": "PREFERRED",
+      "authority": "ADVISORY_ONLY"
+    },
+    {
+      "sense_id": "GroupBuild::contribution::commercial-r0",
+      "label": "Paid deliverable",
+      "context": {
+        "project": "managed service",
+        "doorway": "groupbuild.com",
+        "agreement": "not yet executed"
+      },
+      "definition": "Deliverable under a separate, explicit contract and compensation arrangement.",
+      "status": "WORKING_CANDIDATE",
+      "epistemic_class": "PREFERRED",
+      "authority": "ADVISORY_ONLY"
+    }
+  ],
+  "examples": [
+    {
+      "case_id": "e1",
+      "change": "community contribution -> paid deliverable",
+      "relation": "PROPOSED_RECLASSIFICATION",
+      "involves": [
+        "rights",
+        "compensation",
+        "consent"
+      ],
+      "expected_state": "HOLD_AFFECTED_PARTY_AND_CONTRACT_REVIEW",
+      "reason": "Cannot silently change legal/financial meaning."
+    },
+    {
+      "case_id": "e2",
+      "change": "community contribution -> time voluntarily spent",
+      "relation": "CONTEXTUAL_NARROWING",
+      "involves": [],
+      "expected_state": "REVIEW_CONTEXT_AND_PRESERVE_LINEAGE",
+      "reason": "Local definition may be narrowed if source/context/attribution are retained."
+    },
+    {
+      "case_id": "e3",
+      "change": "contributed to -> caused outcome",
+      "relation": "RELATION_PROMOTION",
+      "involves": [
+        "causal_claim"
+      ],
+      "expected_state": "HOLD_CAUSAL_EVIDENCE_REVIEW",
+      "reason": "Participation alone does not establish causation."
+    },
+    {
+      "case_id": "e4",
+      "change": "community contribution -> translated contribution",
+      "relation": "TRANSLATION",
+      "involves": [
+        "cross_culture"
+      ],
+      "expected_state": "REVIEW_TRANSLATION_LOSS",
+      "reason": "Translated sense may diverge from original."
+    }
+  ],
+  "gated_impacts": {
+    "rights": "HOLD_AFFECTED_PARTY_AND_CONTRACT_REVIEW",
+    "compensation": "HOLD_AFFECTED_PARTY_AND_CONTRACT_REVIEW",
+    "consent": "HOLD_AFFECTED_PARTY_AND_CONTRACT_REVIEW",
+    "causal_claim": "HOLD_CAUSAL_EVIDENCE_REVIEW",
+    "cross_culture": "REVIEW_TRANSLATION_LOSS"
+  },
+  "rails": [
+    "STABLE_HANDLE_NE_FIXED_SENSE",
+    "RELATION_NE_CAUSATION",
+    "MEANING_CHANGE_NE_PERMISSION_CHANGE",
+    "SOURCE_DIFF_NE_RECEIVER_ACK",
+    "COMMUNITY_PARTICIPATION_NE_COMMERCIAL_IP_TRANSFER"
+  ],
+  "source_refs": [
+    "docs/coterms/README.md",
+    "docs/Architecture/COSUBSCRIPTION_ECOLOGY_R0.md",
+    "docs/Architecture/COZILLION_GENERATIVE_RELATION_GRAMMAR_R0_20261026.md",
+    "docs/Architecture/COTEAMING_COPROJECTFIELD_R0_20261101.md",
+    "docs/Architecture/GROUPBUILD_COTEAMING_COPAYBACK_R0_20261101.md"
+  ]
+}
