@@ -1,0 +1,64 @@
+{
+  "schema": "CoGoldenBraidBrowserCanary/0.1",
+  "mode": "CHROMIUM_SET_CONTENT_NOT_FILE_NAVIGATION",
+  "tests": [
+    {
+      "test": "default_renders",
+      "passed": true
+    },
+    {
+      "test": "source_is_pinned",
+      "passed": true
+    },
+    {
+      "test": "all_fourteen_options",
+      "passed": true
+    },
+    {
+      "test": "all_ten_stages",
+      "passed": true
+    },
+    {
+      "test": "challenge_visible",
+      "passed": true
+    },
+    {
+      "test": "next_is_W02",
+      "passed": true
+    },
+    {
+      "test": "previous_is_W01",
+      "passed": true
+    },
+    {
+      "test": "advisory_matches_W05",
+      "passed": true
+    },
+    {
+      "test": "abstains_unknown",
+      "passed": true
+    },
+    {
+      "test": "mobile_no_horiz_scroll",
+      "passed": true
+    },
+    {
+      "test": "mobile_focus_visible",
+      "passed": true
+    },
+    {
+      "test": "zero_external_requests",
+      "passed": true
+    },
+    {
+      "test": "zero_browser_errors",
+      "passed": true
+    }
+  ],
+  "total": 13,
+  "passed": 13,
+  "requests": [],
+  "errors": [],
+  "authority": "NONE",
+  "claim": "LOCAL_BROWSER_ONLY"
+}
