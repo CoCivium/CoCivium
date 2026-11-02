@@ -12,6 +12,7 @@ p{line-height:1.5;color:#b5c1d6}.eyebrow{text-transform:uppercase;letter-spacing
 label{display:block;font-weight:600;margin:10px 0 6px}textarea{width:100%;min-height:100px;padding:14px;border-radius:9px;background:#0c1320;color:#fff;border:1px solid #7785ab;resize:vertical;font:inherit}
 button,.link{background:#aa9aff;color:#111223;border:0;border-radius:9px;padding:11px 16px;font:600 .96rem system-ui;cursor:pointer;text-decoration:none;display:inline-block;margin:5px 7px 5px 0}
 button.secondary,.link{background:#2c3550;color:#edf0fa;border:1px solid #7181a9}button:disabled{opacity:.45;cursor:not-allowed}
+.demo-views{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin-top:14px}.demo-views iframe{width:100%;height:360px;border:1px solid #7181a9;border-radius:12px;background:#0c1320}
 .check{display:inline-flex;align-items:center;gap:8px;margin:5px 15px 12px 0}.check input{accent-color:#aa9aff}
 .note{font-size:.88rem;color:#cfb99f}.status{font-size:.96rem;padding:9px 12px;border-radius:8px;background:#101726;border:1px solid #343c57}
 pre{background:#0c1320;padding:12px;border-radius:9px;white-space:pre-wrap;overflow-wrap:anywhere;min-height:70px;color:#cbd7ea;font-size:.82rem;line-height:1.5}
@@ -31,6 +32,8 @@ footer{font-size:.78rem;color:#aab3cc;margin-top:24px}code{color:#d8ccfa}a{color
 <div><label class="check"><input type="checkbox" id="to-ux" checked>UX receiver</label><label class="check"><input type="checkbox" id="to-theory" checked>Theory receiver</label></div>
 <div><button id="open-views">Open receiver views</button><button id="send">Send selected views</button><button id="replay" class="secondary" disabled>Replay last (negative test)</button><button id="stop" class="secondary">Stop session</button></div>
 <div id="links"></div>
+<p id="auto-note" class="note" hidden>Fixture auto-rail armed: receiver READY triggers one fixed fictional packet per role. User text is never auto-sent. STOP remains available.</p>
+<div id="embedded" class="demo-views"></div>
 <h2>Receipt observations</h2><pre id="source-log" aria-live="polite">No send yet.</pre>
 </section>
 <section id="receiver" class="panel" hidden>
@@ -49,8 +52,11 @@ footer{font-size:.78rem;color:#aab3cc;margin-top:24px}code{color:#d8ccfa}a{color
  const validRole = new Set(['ux','theory']);
  const role = validRole.has(params[0]) ? params[0] : 'sender';
  const id = /^[a-f0-9]{32}$/.test(params[1] || '') ? params[1] : Array.from(crypto.getRandomValues(new Uint8Array(16)), b=>b.toString(16).padStart(2,'0')).join('');
- if(role==='sender' && params[1]!==id) history.replaceState(null,'','#sender/'+id);
+ if(role==='sender' && params[1]!==id) history.replaceState(null,'','#sender/'+id+'/auto');
  const workId='coomni-local-'+id;
+ const autoMode=role==='sender' && (!params[1] || params[2]==='auto');
+ const fixtureText='Public-safe synthetic CoOmni work item: improve first use.';
+ const autoDispatched=new Set();
  const localId=Array.from(crypto.getRandomValues(new Uint8Array(8)), b=>b.toString(16).padStart(2,'0')).join('');
  const roles=['ux','theory'];
  const channels = {};
@@ -64,15 +70,42 @@ footer{font-size:.78rem;color:#aab3cc;margin-top:24px}code{color:#d8ccfa}a{color
  const hex = ab=>Array.from(new Uint8Array(ab),b=>b.toString(16).padStart(2,'0')).join('');
  const digest = async packet=>hex(await crypto.subtle.digest('SHA-256', new TextEncoder().encode(JSON.stringify(packet))));
  function viewUrl(r){return location.href.split('#')[0]+'#'+r+'/'+id;}
+ async function emitPacket(r,body){
+  const packet={schema:'CoOmni.LocalHandoff.R0',kind:'WORK',work_id:workId,role:r,seq:++seq[r],body};
+  const hash=await digest(packet);
+  if(stopped)return false;
+  pending.set(r+':'+packet.seq,hash);sentHashes.set(r+':'+packet.seq,hash);
+  channels[r].postMessage({packet,sha256:hash});
+  lastSent={r,packet,hash};
+  add('SENT role='+r+' cursor='+packet.seq+' sha256='+hash.slice(0,16)+' (delivery unproven)');
+  return true;
+ }
  function applyStatus(t){q('state').textContent=t;}
  if(!('BroadcastChannel' in window) || !crypto.subtle){applyStatus('UNSUPPORTED · needs modern secure-context browser');return;}
  if(role==='sender'){
-  q('sender').hidden=false;applyStatus('SOURCE READY · Browser-local, volatile');
+  q('sender').hidden=false;applyStatus(autoMode?'AUTO-ARMED · Fixed synthetic fixture; awaiting receiver READY':'SOURCE READY · Browser-local, volatile');
+  if(autoMode){
+   q('auto-note').hidden=false;
+   q('message').value=fixtureText;
+   q('message').disabled=true;
+   q('send').disabled=true;
+   for(const r of roles)q('to-'+r).disabled=true;
+  }
   for(const r of roles){
    const channel=new BroadcastChannel('coomni-r0-'+id+'-'+r);channels[r]=channel;
    channel.onmessage=e=>{
     const ack=e.data;
-    if(stopped || !ack || ack.kind!=='ACK' || ack.role!==r || ack.work_id!==workId)return;
+    if(stopped || !ack || ack.role!==r || ack.work_id!==workId)return;
+    if(ack.kind==='READY'){
+     add('READY observed role='+r+' (not an ACK)');
+     if(autoMode && !autoDispatched.has(r)){
+      autoDispatched.add(r);
+      add('AUTO-ELECT role='+r+' fixture-only');
+      void emitPacket(r,fixtureText).catch(()=>add('HELD auto-deed error role='+r));
+     }
+     return;
+    }
+    if(ack.kind!=='ACK')return;
     const k=r+':'+ack.seq, expected=pending.get(k);
     if(!expected || expected!==ack.packet_sha256){
      const prior=sentHashes.get(k);
@@ -87,6 +120,10 @@ footer{font-size:.78rem;color:#aab3cc;margin-top:24px}code{color:#d8ccfa}a{color
   }
   const linkBox=q('links');
   for(const r of roles){const a=document.createElement('a');a.className='link';a.href=viewUrl(r);a.target='_blank';a.rel='noopener';a.textContent='Open '+r+' view';linkBox.append(a);}
+  if(autoMode){
+   for(const r of roles){const frame=document.createElement('iframe');frame.src=viewUrl(r);frame.title='Local synthetic '+r+' receiver';q('embedded').append(frame);}
+   add('AUTO-ARMED two embedded receiver views; no user-entered text authorized');
+  }
   q('open-views').onclick=()=>{
    // Only a user gesture opens tabs; popup blocking may require using the explicit links.
    for(const r of roles) window.open(viewUrl(r),'_blank','noopener');
@@ -98,15 +135,7 @@ footer{font-size:.78rem;color:#aab3cc;margin-top:24px}code{color:#d8ccfa}a{color
    if(!body || body.length>800){applyStatus('HELD · message must contain 1-800 characters');return;}
    const selected=roles.filter(r=>q('to-'+r).checked);
    if(!selected.length){applyStatus('HELD · select a receiver');return;}
-   for(const r of selected){
-    const packet={schema:'CoOmni.LocalHandoff.R0',kind:'WORK',work_id:workId,role:r,seq:++seq[r],body};
-    const hash=await digest(packet);
-    if(stopped)return; // STOP may occur during asynchronous hashing.
-    pending.set(r+':'+packet.seq,hash);sentHashes.set(r+':'+packet.seq,hash);
-    channels[r].postMessage({packet,sha256:hash});
-    lastSent={r,packet,hash};
-    add('SENT role='+r+' cursor='+packet.seq+' sha256='+hash.slice(0,16)+' (delivery unproven)');
-   }
+   for(const r of selected){if(!(await emitPacket(r,body)))return;}
    q('replay').disabled=false;
    applyStatus('SENT · Awaiting per-role ACK, not global integration');
   };
@@ -139,6 +168,7 @@ footer{font-size:.78rem;color:#aab3cc;margin-top:24px}code{color:#d8ccfa}a{color
    }else add('HELD cursor='+packet.seq+' reason='+result);
    channel.postMessage({kind:'ACK',work_id:workId,role,seq:packet.seq,packet_sha256:actual,result,receiver_instance:localId});
   };
+  channel.postMessage({kind:'READY',work_id:workId,role,receiver_instance:localId});
  }
  window.__coomniR0={role,workId,localId};
 })();
