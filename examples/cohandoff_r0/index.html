@@ -101,6 +101,7 @@ footer{font-size:.78rem;color:#aab3cc;margin-top:24px}code{color:#d8ccfa}a{color
    for(const r of selected){
     const packet={schema:'CoOmni.LocalHandoff.R0',kind:'WORK',work_id:workId,role:r,seq:++seq[r],body};
     const hash=await digest(packet);
+    if(stopped)return; // STOP may occur during asynchronous hashing.
     pending.set(r+':'+packet.seq,hash);sentHashes.set(r+':'+packet.seq,hash);
     channels[r].postMessage({packet,sha256:hash});
     lastSent={r,packet,hash};
@@ -124,6 +125,7 @@ footer{font-size:.78rem;color:#aab3cc;margin-top:24px}code{color:#d8ccfa}a{color
    const packet=input?.packet;
    if(!packet || packet.kind!=='WORK' || packet.schema!=='CoOmni.LocalHandoff.R0' || packet.work_id!==workId || packet.role!==role)return;
    const actual=await digest(packet);
+   if(stopped)return; // A stopped receiver must not ACK a pending digest.
    if(actual!==input.sha256){add('REJECT packet digest mismatch');return;}
    let result='ACCEPTED';
    if(!Number.isSafeInteger(packet.seq) || packet.seq<=cursor)result='STALE_OR_REPLAY';
