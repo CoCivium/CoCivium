@@ -1,16 +1,25 @@
 #!/usr/bin/env python3
 """Pure CoMetabolism heartbeat selector. Synthetic, no processes, IO or sends."""
-import argparse, hashlib, json
+import argparse, hashlib, json, math
 from pathlib import Path
 
 WEIGHT={'PRESSURE':90,'ACK_GAP':75,'SOURCE_DELTA':60,'NEW_EVIDENCE':30}
 def stable(v):return json.dumps(v,sort_keys=True,separators=(',',':'))
 def hashof(v):return hashlib.sha256(stable(v).encode()).hexdigest()
 
+def finite_nonnegative(v):
+    if type(v) not in (int,float):return False
+    try:return math.isfinite(v) and v>=0
+    except (OverflowError,ValueError):return False
+
 def elect(objects,events,policy):
     by={o['id']:o for o in objects}
     if len(by)!=len(objects):raise ValueError('duplicate object identity')
-    if policy['budget']<policy['reserve'] or policy['width']<0:raise ValueError('invalid policy')
+    if (not finite_nonnegative(policy.get('budget')) or
+        not finite_nonnegative(policy.get('reserve')) or
+        not finite_nonnegative(policy.get('tick')) or
+        type(policy.get('width')) is not int or policy['width']<0 or
+        policy['budget']<policy['reserve']):raise ValueError('invalid policy')
     seen,plans,held,observed={},{},[],[]
     signatures={}
     for event in events:signatures.setdefault(event['eid'],set()).add(hashof(event))
@@ -30,13 +39,15 @@ def elect(objects,events,policy):
             held.append({'eid':eid,'why':'AUTHORITY_OR_PRIVACY'});continue
         if e['kind']=='STOP': observed.append({'eid':eid,'state':'STOP_OBSERVED','obj':o['id']});continue
         if o['id'] in stopped:held.append({'eid':eid,'why':'STOPPED'});continue
-        if e.get('depth',0)>2 or e.get('round',0)>2:
+        if any(type(e.get(axis,0)) is not int or not 0<=e.get(axis,0)<=2 for axis in ('depth','round')):
             held.append({'eid':eid,'why':'TURTLE_BUDGET'});continue
         if e.get('evidence')!='SYNTHETIC_VERIFIED':
             held.append({'eid':eid,'why':'UNVERIFIED'});continue
         k=e['kind']
         if k=='LEASE_BEAT':
-            status=('SYNTHETIC_LEASE_FRESH' if e.get('last_tick',-1)+o['ttl']>=policy['tick'] else 'LEASE_STALE_RUNTIME_UNKNOWN')
+            last=e.get('last_tick');ttl=o.get('ttl');tick=policy['tick']
+            valid=(finite_nonnegative(last) and finite_nonnegative(ttl) and last<=tick and tick-last<=ttl)
+            status=('SYNTHETIC_LEASE_FRESH' if valid else 'LEASE_STALE_RUNTIME_UNKNOWN')
             observed.append({'eid':eid,'state':status,'obj':o['id']});continue
         if k=='SOURCE_DELTA' and not isinstance(e.get('new_hash'),str):
             held.append({'eid':eid,'why':'MISSING_SOURCE_HASH'});continue
@@ -48,7 +59,7 @@ def elect(objects,events,policy):
         if k=='NEW_EVIDENCE' and o['epistemic'] not in ('SYMBOLIC','HYPOTHESIS'):
             held.append({'eid':eid,'why':'INCOMPATIBLE_TYPE'});continue
         cost=e.get('cost',1)
-        if cost<0:held.append({'eid':eid,'why':'INVALID_COST'});continue
+        if not finite_nonnegative(cost):held.append({'eid':eid,'why':'INVALID_COST'});continue
         plan={'eid':eid,'obj':o['id'],'kind':k,'action':{'PRESSURE':'INSPECT_READ_ONLY','ACK_GAP':'CHECK_RECEIVER_PROOF','SOURCE_DELTA':'REVIEW_SOURCE_VERSION','NEW_EVIDENCE':'CHALLENGE_HYPOTHESIS'}[k],
               'cost':cost,'priority':WEIGHT[k],'result':'PROPOSAL_ONLY','source_hash':o['source_hash']}
         plans.setdefault(o['id'],[]).append(plan)
