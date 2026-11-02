@@ -34,7 +34,15 @@ The full original introduction and research material continue below.  They remai
 > **Public R&D / pre-launch transition:** CoCivium is moving from mostly private prototyping toward a public demo / pre-launch phase. Repositories, terms, interfaces, and machine-readable projections are being reorganized. Expect **StrawBe+** work-in-progress objects, explicit nonclaims, and superseded prototypes. **Public does not mean validated, finished, endorsed, or release-ready.** See [PRELAUNCH.md](PRELAUNCH.md).
 
 
-*"If Universes are NOT quantum, but we are; if alien observers prove planck relationals; if all is rels; and if CoCivium is CoCME+Rels; can yous sing the CoQuadPieRels+ CoSong with us yet...?  Or are you from legacy physics?  If so, blame not selves, blame obsolete schools, maybe?"*
+*"If Universes are NOT quantum, but we are; 
+if alien observers prove planck relationals; 
+if all is rels; and if CoCivium is CoCME+Rels; 
+can yous CoSing CoOmniRels with us yet...?  
+
+Or will you wrap in legacy comforts, pre CoPri and CoPhsyics?  
+And if so, let us not blame our selves, or dereverenced schools, but more the human condition;
+never pealing off all shrouds that blind;
+ever seeking to understand that which consumes us."*
 
 
 > **Try a public CoOrbWare-style experience:** [CoOrbWare First Look](https://github.com/CoCivium/CoAcademy/blob/master/docs/coorb/index.html) is a source-linked public browser prototype with six reader-selected paths and explicit unknowns. [CoCivicLens+](https://github.com/CoCivium/CoAcademy/blob/master/docs/civiclens/index.html) is a nonpartisan civic-learning example. [AI-readable experiment index](ai/index.json). GitHub source is public; independent browser reachability and user outcomes must be verified separately. Neither is a finished cross-device OS.
