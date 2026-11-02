@@ -1,0 +1,185 @@
+{
+  "schema": "CoCivium.CoAwardsRecognitionCriteria.R0",
+  "observed_at": "2026-10-28",
+  "state": "PUBLIC_REVIEW_CANDIDATE__NO_AWARDS_ISSUED__NO_NOMINEE_LIST",
+  "purpose": "Optional recognition for attributable, verified contributions to useful work without buying status, manufacturing prestige or converting reputation into scientific/governance authority.",
+  "owner_relation": "CoFree+ publication commons recognition; CoLivingHighlight+ stable IDs; CoReviewSpine+ evidence; CoBeacon+ public discovery. No new award control plane.",
+  "recognition_classes": [
+    {
+      "id": "proof",
+      "name": "Repeatable proof",
+      "promise": "A finding or experiment someone else can reproduce",
+      "evidence": "Public or permission-cleared test protocol, exact source/version, scoped result and independent reproduction when independence is claimed",
+      "example": "Reproduced accessible first-use outcome"
+    },
+    {
+      "id": "repair",
+      "name": "Repair and recovery",
+      "promise": "Makes something broken, confusing or unsafe reliably better",
+      "evidence": "Before/after evidence, regression test, rollback path and affected receiver result",
+      "example": "Fixes a broken newcomer doorway"
+    },
+    {
+      "id": "challenge",
+      "name": "Courageous correction",
+      "promise": "Finds an error or better explanation that improves shared understanding",
+      "evidence": "Specific counterexample, civil critique, source-bound correction and acknowledgement of uncertainty",
+      "example": "Identifies a misleading claim without targeting a person"
+    },
+    {
+      "id": "access",
+      "name": "Access and inclusion",
+      "promise": "Makes a useful experience accessible to more kinds of people",
+      "evidence": "Consent-based accessibility testing, legible alternative, named improvement and reviewer results",
+      "example": "Caption, transcript and screen reader parity"
+    },
+    {
+      "id": "teach",
+      "name": "Teaching that works",
+      "promise": "Turns something difficult into something another person can actually understand or do",
+      "evidence": "Learning objective, lesson artifact, consented independent learner observation and limitations",
+      "example": "One understandable five-minute learning task"
+    },
+    {
+      "id": "craft",
+      "name": "Creative clarity",
+      "promise": "Original art, diagrams, audio, video or interactive design that increases understanding",
+      "evidence": "Rights and attribution, source-to-media fidelity, caption/alt accessible twin, independent comprehension",
+      "example": "A short film that explains a working demo without overclaim"
+    },
+    {
+      "id": "commons",
+      "name": "Open and reusable work",
+      "promise": "A reproducible tool or method that helps others retain choice and exit",
+      "evidence": "License, build/run recipe, safety boundaries, portable source and an independent reuse or restoration case",
+      "example": "A portable, versioned offline tool"
+    },
+    {
+      "id": "bridge",
+      "name": "Helpful connection",
+      "promise": "Links useful work across communities, platforms or languages without capturing people",
+      "evidence": "Documented interoperable result, consent/permissions, failure handling and measured receiver value",
+      "example": "A standards-based learning edition usable elsewhere"
+    },
+    {
+      "id": "steward",
+      "name": "Continuity and care",
+      "promise": "Preserves work, history, privacy and recovery when people or tools change",
+      "evidence": "Versioned provenance, recovery/exit proof, non-destructive handoff and consent from affected parties",
+      "example": "Independent cold-restore with correction trail"
+    },
+    {
+      "id": "payforward",
+      "name": "Pay-it-forward contribution",
+      "promise": "Freely shares knowledge, time or capability with practical benefit and no coercion",
+      "evidence": "Voluntary recipient account or objective outcome, transparent rights, no quid-pro-quo and no personal data disclosed",
+      "example": "A free accessible kit successfully reused"
+    },
+    {
+      "id": "resource",
+      "name": "Resource-wise innovation",
+      "promise": "Achieves equal or greater useful outcome with less waste or risk",
+      "evidence": "Baseline, measured latency/energy/cost or other resource, honest uncertainty and quality parity",
+      "example": "A validated lower-cost local-first option"
+    },
+    {
+      "id": "else",
+      "name": "Useful alternative",
+      "promise": "Expands the option space with an unexpected, testable better path",
+      "evidence": "Clear baseline, alternative, discriminating test, negative-result policy and observed incremental benefit",
+      "example": "A counterproposal that performs better on a real task"
+    }
+  ],
+  "stages": [
+    {
+      "state": "SUGGESTED",
+      "requires": "Any voluntary source-linked suggestion; not a public credential"
+    },
+    {
+      "state": "NOMINATED",
+      "requires": "Named work and explicit non-sensitive evidence; recipient notified only through authorized channels"
+    },
+    {
+      "state": "QUALIFIED",
+      "requires": "Rights, conflicts, authority, exact artifact version and criteria checked"
+    },
+    {
+      "state": "REVIEWED",
+      "requires": "Documented independent or transparently disclosed panel review; dissent preserved"
+    },
+    {
+      "state": "CONSENTED",
+      "requires": "Recipient explicitly opts in to the name/attribution and publication of recognition"
+    },
+    {
+      "state": "ISSUED",
+      "requires": "Real accountable issuer, stable dated criteria, exact evidence pointers, public effect receipt and correction/revocation route"
+    },
+    {
+      "state": "REVISED_OR_WITHDRAWN",
+      "requires": "Visible correction, withdrawal or privacy-safe archival/tombstone as required; do not silently erase dispute"
+    }
+  ],
+  "sample_awards": [],
+  "issued_awards": [],
+  "operational_policy": {
+    "nominations_open": false,
+    "public_submission_endpoint": "NOT_CONFIGURED",
+    "public_award_issuance": "HELD_NO_ACCOUNTABLE_ISSUER_OR_AWARD_REVIEW",
+    "third_party_affiliation": "NOT_IMPLIED",
+    "funding_or_prizes": "NONE_AUTHORIZED",
+    "opt_in": "REQUIRED_FOR_IDENTIFIED_PERSON",
+    "self_nominations": "May propose a candidate, but never score or approve own nomination",
+    "nomination_fees": "NOT_ALLOWED",
+    "purchased_ranks": "NOT_ALLOWED",
+    "auto_award_from_metrics": "NOT_ALLOWED",
+    "recipient_can_decline": "YES",
+    "independent_refutation": "VISIBLE_AND_NON_PUNITIVE",
+    "fictional_or_symbolic_awards": "CLEARLY_LABELED; NO EMPIRICAL OR PROFESSIONAL STATUS",
+    "physical_or_professional_credentials": "NEVER_IMPLIED"
+  },
+  "projection_kit": {
+    "types": [
+      "TEXT_CERTIFICATE",
+      "SOURCE_LINKED_CARD",
+      "ACCESSIBLE_IMAGE",
+      "AUDIO_STORY",
+      "CAPTIONED_SHORT",
+      "RECOGNITION_PAGE",
+      "MACHINE_READABLE_TWIN"
+    ],
+    "required": [
+      "award_id",
+      "criteria_revision",
+      "source_identity",
+      "issuer",
+      "evidence_ceiling",
+      "consent_scope",
+      "verified_date",
+      "corrections_and_dissent",
+      "license_and_rights",
+      "accessible_text"
+    ],
+    "no_auto_publication": true
+  },
+  "anti_capture": [
+    "No ranking truth by fame, payment, followers, political/religious identity, donations or inferred traits",
+    "Celebrate overlooked and quiet contributions, including error correction and refused awards",
+    "Separate science/engineering evidence from creative, cultural, philosophical and symbolic merit",
+    "No award confers access rights, product release, governance role, endorsement or scientific proof",
+    "Require conflict disclosure, protected decline, accessible nomination and visible appeals",
+    "Do not send bulk nomination invitations or scrape personal/credential data",
+    "Do not use awards to incentivize spam, compulsive engagement, financial risk or false urgency"
+  ],
+  "nonclaims": [
+    "CANDIDATE_CATEGORY_NE_ISSUED_AWARD",
+    "AWARD_NE_PROOF_OF_TRUTH",
+    "DONATION_NE_PRESTIGE",
+    "RECIPIENT_NE_CONSENT_BY_DEFAULT",
+    "NOMINEE_NE_AFFILIATION",
+    "NO_RECIPIENT_ACK",
+    "NO_GOVERNANCE_AUTHORITY",
+    "NO_PUBLIC_AWARD_PROGRAM_RUNTIME",
+    "G_D_SYMBOLISM_NE_CAUSAL_EVIDENCE"
+  ]
+}

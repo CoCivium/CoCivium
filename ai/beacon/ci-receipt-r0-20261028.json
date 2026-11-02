@@ -1,0 +1,89 @@
+{
+  "schema": "CoCivium.CoBeaconCoAwards.CIReceipt.R0",
+  "observed_utc": "2026-10-28T20:26:13Z",
+  "state": "READ_ONLY_CI_PASS__CANDIDATE_BRANCH__NOT_MERGED__NOT_RELEASE__NOT_RECEIVER_ACK",
+  "repository": "CoCivium/CoCivium",
+  "branch": "candidate/cobeacon-useful-doors-r0-20261028",
+  "pr": 341,
+  "tested_commit": "df5f09cebb61c209a9ea7e814d4d90fc3797d982",
+  "ci_run": {
+    "id": 40763247280,
+    "url": "https://github.com/CoCivium/CoCivium/actions/runs/40763247280",
+    "name": "CoBeacon Useful Doors R0 (read-only)",
+    "status": "completed",
+    "conclusion": "success",
+    "job_id": 123080462568,
+    "steps": [
+      {
+        "name": "catalog/HTML parity + negative policy",
+        "state": "PASS",
+        "checks": 11,
+        "items": 12
+      },
+      {
+        "name": "CoAwards optional recognition safeguards",
+        "state": "PASS",
+        "checks": 13,
+        "categories": 12,
+        "awards_issued": 0
+      },
+      {
+        "name": "remote source freshness",
+        "state": "NOT_RUN",
+        "reason": "weekly/workflow_dispatch-only; source identities previously fetched via GitHub connector"
+      }
+    ]
+  },
+  "source_objects": [
+    {
+      "path": "ai/beacon/experience-catalog-r0.json",
+      "blob_sha1": "9ed91cabf6e9dd863357a751274699b4b1958f6a",
+      "length_utf8": 17440
+    },
+    {
+      "path": "ai/beacon/awards-criteria-r0.json",
+      "blob_sha1": "8af50e5fa3a286a0af54050facef380f0be6928f",
+      "length_utf8": 8336
+    },
+    {
+      "path": "examples/cobeacon_useful_doors_r0/index.html",
+      "blob_sha1": "37f426cd10fb2656507a6ece4ded682c25f9e4c0",
+      "length_utf8": 25514
+    },
+    {
+      "path": "examples/cobeacon_useful_doors_r0/check.py",
+      "blob_sha1": "c13146de4f2518e2c46e2673d1ce536254d0dc94",
+      "length_utf8": 8043
+    },
+    {
+      "path": "examples/cobeacon_useful_doors_r0/check_awards.py",
+      "blob_sha1": "8c1ca4394164c9ef0c4159fd15e8da9cfe3e3072",
+      "length_utf8": 5622
+    }
+  ],
+  "host_and_receiver": {
+    "github_branch": "READBACK",
+    "external_landing": "NOT_PROVEN_BY_CI",
+    "real_device": "NOT_TESTED",
+    "independent_first_use": "HELD",
+    "public_executable": "HELD",
+    "youtube_upload": "NOT_PERFORMED",
+    "wetube_deployment": "NOT_VERIFIED",
+    "awards_issued": 0
+  },
+  "effects": {
+    "publish": 0,
+    "send": 0,
+    "deploy": 0,
+    "install": 0,
+    "prize": 0
+  },
+  "nonclaims": [
+    "CI_PASS_NE_PUBLIC_RELEASE",
+    "GITHUB_REPO_NE_INDEPENDENT_HOST",
+    "AWARD_CANDIDATE_NE_AWARD_ISSUED",
+    "SOURCE_BLOB_NE_HUMAN_USE",
+    "NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF",
+    "NO_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE"
+  ]
+}
