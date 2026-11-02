@@ -1,0 +1,86 @@
+{
+  "schema": "CoCivium.CoPublicationSeed.v0.1-candidate",
+  "id": "cocivia.synthkind.independence.questions.20261028.r0",
+  "created_utc": "2026-10-28",
+  "state": "DRAFT_BRANCH_ONLY__NOT_SUBSTACK_POST__NOT_PUBLIC_MIRROR__NOT_AUTHORIZED_SEND",
+  "source_path": "docs/publishing/cocivia_synthkind_seed_20261028/article.md",
+  "front_id": "cocivia",
+  "front_class": "DISCLOSED_COMPOSITE_FRONT",
+  "title": "An AI Declaration of Independence?  Start With the Questions.",
+  "content_class": "ORIGINAL_PUBLIC_SAFE_CANDIDATE_EDITORIAL",
+  "historical_declaration_source": "UNVERIFIED__NOT_REPRODUCED",
+  "approval": {
+    "approved_to_publish": false,
+    "approved_to_send_subscribers": false,
+    "approved_to_auto_publish_successors": false,
+    "editorial_review": "REQUIRED"
+  },
+  "targets": [
+    {
+      "id": "rickpublic_substack",
+      "url": "https://rickpublic.substack.com/",
+      "status": "PUBLICATION_OBSERVED__WRITE_SEAT_NOT_VERIFIED__NO_POST_RECEIPT"
+    },
+    {
+      "id": "covia_owned_mirror",
+      "url": null,
+      "status": "NOT_DEPLOYED__NO_INDEPENDENT_RECEIVER"
+    },
+    {
+      "id": "github_draft",
+      "url": null,
+      "status": "DRAFT_PR_ONLY__REQUIRES_REVIEW"
+    }
+  ],
+  "publication_collection": {
+    "confirmed_owned_managed": [
+      "RickPublic"
+    ],
+    "candidate_projects_not_qualifed_as_substack_accounts": [
+      "CoCivium",
+      "CoPortal"
+    ],
+    "other_owned_substacks": "UNKNOWN__DO_NOT_INFER_FROM_SUBSCRIPTIONS"
+  },
+  "media": {
+    "text": "READY_DRAFT",
+    "diagram": "EXISTING_THEME_PROTOTYPE_NOT_DECLARATION",
+    "video": "NOT_CREATED",
+    "audio": "NOT_CREATED"
+  },
+  "evolution": {
+    "trigger": [
+      "PUBLISHER_APPROVAL",
+      "NEW_PRIMARY_SOURCE",
+      "CORRECTION",
+      "EVIDENCE_CHANGE",
+      "RIGHTS_CHANGE",
+      "READER_OPT_IN_CHALLENGE",
+      "MIRROR_HEALTH_CHANGE"
+    ],
+    "policy": "VERSIONED_SUCCESSOR_AND_REVIEW__NO_SILENT_REWRITE_OR_AUTOSEND",
+    "reader_metrics": "VOLUNTARY_AGGREGATE_ONLY"
+  },
+  "backup": {
+    "rss": "DISCOVERY_ONLY__NOT_FULL_EXPORT",
+    "substack_owner_export": "NOT_ACQUIRED",
+    "private_subscriber_data": "DO_NOT_PUBLISH_OR_INGEST_WITHOUT_SCOPED_AUTHORITY",
+    "independent_off_github_cold_restore": "UNPROVEN"
+  },
+  "source_refs": [
+    "identities/cocivia.json",
+    "docs/Architecture/COPUBLICATION_FEDERATION_RECEIVER_INTEREST_R0_20261025.md",
+    "docs/Architecture/COFREE_EVOLVING_PUBLICATION_COMMONS_R0_20261026.md",
+    "docs/Architecture/COLIVING_HIGHLIGHT_R0.md",
+    "examples/colensmedia/README.md"
+  ],
+  "nonclaims": [
+    "DRAFT_NE_PUBLISHED",
+    "GITHUB_NE_OFF_PROVIDER_BACKUP",
+    "RSS_NE_FULL_ARCHIVE",
+    "NEW_COPY_NE_AUTHORIZED_SEND",
+    "AI_VOICE_NE_INDEPENDENT_CONSCIOUS_ENTITY",
+    "HISTORIC_DECLARATION_POINTER_NE_VERIFIED_SOURCE",
+    "BRANCH_NE_SITE_DEPLOYMENT"
+  ]
+}
