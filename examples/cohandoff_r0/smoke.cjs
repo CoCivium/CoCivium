@@ -17,11 +17,11 @@ function addChannel(name){
  q.add(mine);return mine;
 }
 function elem(id){return {id,hidden:false,value:'',checked:false,disabled:false,textContent:'',innerText:'',href:'',children:[],onclick:null,append(a){this.children.push(a)}};}
-function boot(role,session){
+function boot(role,session,cryptoShim=webcrypto){
  const elements=new Map(),e=id=>{if(!elements.has(id))elements.set(id,elem(id));return elements.get(id)};
  e('message').value='Improve first use';e('to-ux').checked=true;e('to-theory').checked=true;
- const context={window:{BroadcastChannel:addChannel,open(){return null}},document:{getElementById:e,createElement(tag){return elem(tag)}},location:{hash:'#'+role+'/'+session,href:'https://example.invalid/index.html#'+role+'/'+session},history:{replaceState(){}},crypto:webcrypto,TextEncoder,Uint8Array,Set,Array,Map,Number,String,JSON,queueMicrotask,structuredClone,console};
- context.BroadcastChannel=addChannel;context.window.crypto=webcrypto;
+ const context={window:{BroadcastChannel:addChannel,open(){return null}},document:{getElementById:e,createElement(tag){return elem(tag)}},location:{hash:'#'+role+'/'+session,href:'https://example.invalid/index.html#'+role+'/'+session},history:{replaceState(){}},crypto:cryptoShim,TextEncoder,Uint8Array,Set,Array,Map,Number,String,JSON,queueMicrotask,structuredClone,console};
+ context.BroadcastChannel=addChannel;context.window.crypto=cryptoShim;
  vm.createContext(context);vm.runInContext(code,context,{timeout:2000});
  return {e,context};
 }
@@ -59,5 +59,35 @@ const sleep=()=>new Promise(resolve=>setTimeout(resolve,20));
  await sleep();assert.match(alone.e('source-log').textContent,/REJECT unexpected ACK/);
  forgery.close();alone.e('stop').onclick();
  console.log('PASS actual source logic: missing receiver is NOT ACK and mismatched ACK rejected');
+
+
+ // Ensure a stop during delayed digest cannot revive a previously cancelled send.
+ const raceSession='2'.repeat(32);
+ let unblockSender;
+ const senderCrypto={getRandomValues:webcrypto.getRandomValues.bind(webcrypto),subtle:{digest:async(...args)=>{await new Promise(resolve=>{unblockSender=resolve});return webcrypto.subtle.digest(...args)}}};
+ const delayedSender=boot('sender',raceSession,senderCrypto);
+ const raceUx=boot('ux',raceSession);
+ await sleep();
+ const inFlight=delayedSender.e('send').onclick();await sleep();
+ assert.equal(typeof unblockSender,'function');
+ delayedSender.e('stop').onclick();unblockSender();
+ await inFlight;await sleep();
+ assert.doesNotMatch(delayedSender.e('source-log').textContent,/SENT role=/);
+ assert.doesNotMatch(delayedSender.e('source-log').textContent,/ACK accepted/);
+ console.log('PASS actual source logic: STOP during sender hash prevents posting and false ACK');
+
+ // Ensure receiver cannot accept/ACK a packet after STOP if hash calculation was delayed.
+ const delayedSession='3'.repeat(32);
+ let unblockReceiver;
+ const receiverCrypto={getRandomValues:webcrypto.getRandomValues.bind(webcrypto),subtle:{digest:async(...args)=>{await new Promise(resolve=>{unblockReceiver=resolve});return webcrypto.subtle.digest(...args)}}};
+ const delayedSource=boot('sender',delayedSession);
+ const delayedReceiver=boot('ux',delayedSession,receiverCrypto);
+ await sleep();delayedSource.e('to-theory').checked=false;
+ await delayedSource.e('send').onclick();await sleep();
+ assert.equal(typeof unblockReceiver,'function');
+ delayedSource.e('stop').onclick();await sleep();unblockReceiver();await sleep();
+ assert.doesNotMatch(delayedReceiver.e('receiver-log').textContent,/ACCEPTED cursor=/);
+ assert.doesNotMatch(delayedSource.e('source-log').textContent,/ACK accepted/);
+ console.log('PASS actual source logic: STOP during receiver hash prevents late acceptance');
 
 })().catch(e=>{console.error('FAIL',e);process.exitCode=1});
