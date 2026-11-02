@@ -21,3 +21,5 @@ jobs:
           node-version: '22'
       - name: Validate CoNod shadow policy (never remap device or call provider)
         run: node examples/conodcothumb/CoNodCoThumbPolicyR0.mjs --selftest
+      - name: Test CoB two-trigger synthetic invocation (zero external effects)
+        run: node --test examples/conodcothumb/context_rail_r1/event_invocation_r0/test_event_invocation.cjs
