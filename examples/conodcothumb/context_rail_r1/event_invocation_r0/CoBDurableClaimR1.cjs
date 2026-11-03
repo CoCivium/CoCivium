@@ -36,26 +36,53 @@ function atomicJson(file, obj) {
   fs.renameSync(tmp, file);
   syncDir(path.dirname(file));
 }
+// A completion claim is accepted only when its full local evidence chain agrees.
+// These fixture records are not authenticated receiver acknowledgements.
+function safeJson(file) {
+  try {
+    const stat=fs.lstatSync(file);
+    if(!stat.isFile()||stat.isSymbolicLink()||stat.size<3||stat.size>4096)return null;
+    const obj=JSON.parse(fs.readFileSync(file,'utf8'));
+    return obj&&typeof obj==='object'&&!Array.isArray(obj)?obj:null;
+  } catch(_) {return null;}
+}
+function checkedCompletion(dir,work_id,operation) {
+  const claim=safeJson(path.join(dir,'claim.json'));
+  const effect=safeJson(path.join(dir,'synthetic_effect.json'));
+  const complete=safeJson(path.join(dir,'completed.json'));
+  if(!claim||!effect||!complete)return null;
+  if(claim.work_id!==work_id||claim.operation!==operation||
+     !ident(claim.event_id)||!['BUTTON','COB_EVENT'].includes(claim.route)||
+     claim.phase!=='CLAIMED')return null;
+  if(effect.work_id!==work_id||effect.operation!==operation||
+     effect.event_id!==claim.event_id||effect.effect!=='LOCAL_FIXTURE_MARKER')return null;
+  if(complete.work_id!==work_id||complete.operation!==operation||
+     complete.event_id!==claim.event_id||complete.phase!=='COMPLETED')return null;
+  return {work_id,first_event_id:claim.event_id};
+}
 function invoke({root,route,event,now_ms=1000,inject_crash=null}) {
   const bad = validate(route,event,now_ms);
   if (bad) return receipt('HELD',bad);
-  // The test-root is not chosen from untrusted event fields.
+  // The test-root is chosen by the host, never the untrusted packet.
+  // Refuse non-existing or symlinked roots, including symlinked ancestors.
   if (typeof root !== 'string' || !path.isAbsolute(root)) return receipt('HELD','ISOLATED_ROOT_REQUIRED');
+  try {
+    const stat=fs.lstatSync(root);
+    if(!stat.isDirectory()||stat.isSymbolicLink()||fs.realpathSync(root)!==path.resolve(root))
+      return receipt('HELD','ISOLATED_ROOT_UNVERIFIED');
+  } catch(_) {return receipt('HELD','ISOLATED_ROOT_UNVERIFIED');}
   const key = crypto.createHash('sha256').update(event.work_id+'\0'+event.operation).digest('hex');
-  fs.mkdirSync(root,{recursive:true});
   const dir = path.join(root,key);
   try { fs.mkdirSync(dir); syncDir(root); }
   catch (e) {
     if (e.code !== 'EEXIST') throw e;
-    const completed = path.join(dir,'completed.json');
-    if (fs.existsSync(completed)) {
-      // Conservative: treat unreadable/corrupt completed evidence as HELD.
-      try {
-        const data = JSON.parse(fs.readFileSync(completed,'utf8'));
-        if (data.work_id===event.work_id && data.operation===event.operation)
-          return receipt('DEDUPED','DURABLE_COMPLETION_FOUND',{work_id:event.work_id,first_event_id:data.event_id});
-      } catch (_) { /* fail closed */ }
-    }
+    try {
+      const stat=fs.lstatSync(dir);
+      if(!stat.isDirectory()||stat.isSymbolicLink())
+        return receipt('HELD','CLAIMED_OR_RECOVERY_REQUIRED',{work_id:event.work_id});
+    } catch(_){return receipt('HELD','CLAIMED_OR_RECOVERY_REQUIRED',{work_id:event.work_id});}
+    const prior=checkedCompletion(dir,event.work_id,event.operation);
+    if(prior)return receipt('DEDUPED','DURABLE_COMPLETION_FOUND',prior);
     return receipt('HELD','CLAIMED_OR_RECOVERY_REQUIRED',{work_id:event.work_id});
   }
   // Failure before the claim is durable cannot produce an effect.
