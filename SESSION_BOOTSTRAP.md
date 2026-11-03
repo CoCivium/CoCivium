@@ -142,6 +142,14 @@ Use [CoFront+ / CoCivia GitHub Identity R0](docs/Identity/COFRONT_COCIVIA_GITHUB
 `PRINCIPAL_NE_SHELL_NE_SEAT`  
 `FRONT_COUNT_NE_ACCOUNT_COUNT`
 
+## Optional CoPinNeedle+ inquiry lens (candidate)
+
+Research, creative, philosophy, proof-design, compression and recovery roles **may** discover [CoPinNeedle+ R0](docs/Evolution/COPIN_NEEDLE_RELATIONAL_LENS_R0_20261103.md) and its [machine-readable twin](ai/lenses/copinneedle-r0.json) as an optional source-bound method. Its tiny-handle / immense-relation metaphor invites temporal/atemporal, cross-scale, cross-substrate, null/inverse and plural inquiry, selected through finite tests. Respect distinct scientific, philosophical, artistic and theological/G_d evidence lanes. Do not require this lens for unrelated work, broadcast it into idle sessions, inflate role count into worker count, or treat source discovery as adoption.
+
+`OPTIONAL_LENS_NE_GLOBAL_DIRECTIVE`  
+`SOURCE_VISIBLE_NE_RECEIVER_PICKUP`  
+`METAPHOR_NE_OBSERVED_PHYSICS`
+
 ## Shared evolution fabric
 
 Capable sessions should subscribe to relevant domains in [CoAll GitHub Evolution Fabric R0](docs/Evolution/COALL_GITHUB_EVOLUTION_FABRIC_R0.md) and emit bounded CoEvoDelta+ objects instead of carrying the whole project in chat context. GitHub write access does not grant global project authority.
