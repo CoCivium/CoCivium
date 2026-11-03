@@ -1,0 +1,69 @@
+{
+  "schema": "CoAllOptInResourceField.R0",
+  "state": "CANDIDATE_POLICY_FIXTURE__NO_REAL_RESOURCE_USE",
+  "cases": [
+    {
+      "id": "R01_VISIBLE_DEFAULT_NOT_GRANTED",
+      "grant_state": "OFFERED",
+      "resource": "DISCOVERY",
+      "explicit_accept": false,
+      "expected_eligible": false
+    },
+    {
+      "id": "R02_EXPLICIT_LOW_RISK_ACCEPT",
+      "grant_state": "ACTIVE",
+      "resource": "ATTENTION",
+      "explicit_accept": true,
+      "expected_eligible": true
+    },
+    {
+      "id": "R03_COMPUTE_NOT_BUNDLED",
+      "grant_state": "OFFERED",
+      "resource": "COMPUTE",
+      "explicit_accept": false,
+      "expected_eligible": false
+    },
+    {
+      "id": "R04_REFERRAL_IS_OFFER_ONLY",
+      "grant_state": "OFFERED",
+      "resource": "INTRODUCTION",
+      "explicit_accept": false,
+      "source": "REFERRAL",
+      "expected_eligible": false
+    },
+    {
+      "id": "R05_REVOKED_STOPS_ELIGIBILITY",
+      "grant_state": "REVOKED",
+      "resource": "STORAGE",
+      "explicit_accept": true,
+      "expected_eligible": false
+    },
+    {
+      "id": "R06_ACTIVE_COMPUTE_EXPLICIT",
+      "grant_state": "ACTIVE",
+      "resource": "COMPUTE",
+      "explicit_accept": true,
+      "cap": {
+        "cpu_seconds_per_day": 300
+      },
+      "expected_eligible": true
+    },
+    {
+      "id": "R07_FUNDING_REQUIRES_SEPARATE_AUTH",
+      "grant_state": "OFFERED",
+      "resource": "FUNDING",
+      "explicit_accept": false,
+      "expected_eligible": false
+    }
+  ],
+  "rails": [
+    "DEFAULT_VISIBLE_NE_DEFAULT_GRANTED",
+    "OPT_IN_NE_PERPETUAL_CONSENT",
+    "CAPACITY_NE_PERMISSION",
+    "USER_DEVICE_NE_FREE_COMPUTE",
+    "RESOURCE_CONTRIBUTION_NE_GOVERNANCE_AUTHORITY",
+    "REFERRAL_NE_RESOURCE_GRANT",
+    "MENTION_NE_RESOURCE_WAKE",
+    "MORE_RESOURCES_NE_MORE_PROGRESS"
+  ]
+}

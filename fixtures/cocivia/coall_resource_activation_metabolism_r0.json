@@ -1,0 +1,127 @@
+{
+  "schema": "CoAllResourceActivationMetabolism.R0",
+  "state": "SYNTHETIC_DEMAND_CONDITIONED_HOT_FRONTIER__NO_REAL_WAKE_NO_RUNTIME_AUTHORITY",
+  "source_bindings": {
+    "compaction_fixture_path": "fixtures/cocivia/coall_resource_field_compaction_r0.json",
+    "compaction_fixture_blob_sha": "265301329244540df635ae4bdeb7e3b0e4c37630",
+    "pulsefield_doc_path": "docs/Architecture/COALL_PULSEFIELD_COTIME_R0.md",
+    "pulsefield_doc_blob_sha": "af881fd2eebdd249c16c279a46003bd3836b96cf"
+  },
+  "policy": {
+    "default_materialization_state": "DORMANT_ELIGIBLE",
+    "demand_required_before_selection": true,
+    "selection_objective_order": [
+      "MEET_REQUIRED_CAPACITY",
+      "MINIMIZE_CAPACITY_OVERSHOOT",
+      "MINIMIZE_SELECTED_RESOURCE_COUNT",
+      "MINIMIZE_TOTAL_COST_UNITS",
+      "STABLE_ID_TIEBREAK"
+    ],
+    "max_hot_resources_per_requirement": 3,
+    "selected_state": "WAKE_CANDIDATE_ONLY",
+    "real_execution_authorized": false
+  },
+  "scenarios": [
+    {
+      "id": "A00_IDLE",
+      "requirement": null,
+      "expected_selected_ids": [],
+      "expected_selected_capacity": 0,
+      "expected_dormant_frontier_count": 9
+    },
+    {
+      "id": "A01_LOW_COMPUTE_250",
+      "requirement": {
+        "resource_class": "COMPUTE",
+        "purpose": "PUBLIC_SYNTHETIC_CANARY",
+        "privacy_scope": "PUBLIC",
+        "required_capacity": 250
+      },
+      "expected_selected_ids": ["C-B1-NEW"],
+      "expected_selected_capacity": 300,
+      "expected_dormant_frontier_count": 8
+    },
+    {
+      "id": "A02_SURGE_COMPUTE_800",
+      "requirement": {
+        "resource_class": "COMPUTE",
+        "purpose": "PUBLIC_SYNTHETIC_CANARY",
+        "privacy_scope": "PUBLIC",
+        "required_capacity": 800
+      },
+      "expected_selected_ids": ["C-D1-NEW", "C-X1"],
+      "expected_selected_capacity": 800,
+      "expected_dormant_frontier_count": 7
+    },
+    {
+      "id": "A03_PUBLIC_MIRROR_150",
+      "requirement": {
+        "resource_class": "STORAGE",
+        "purpose": "PUBLIC_ARTIFACT_MIRROR",
+        "privacy_scope": "PUBLIC",
+        "required_capacity": 150
+      },
+      "expected_selected_ids": ["S-C1-NEW", "S-Y1"],
+      "expected_selected_capacity": 180,
+      "expected_dormant_frontier_count": 7
+    },
+    {
+      "id": "A04_PUBLIC_REVIEW_1",
+      "requirement": {
+        "resource_class": "ATTENTION",
+        "purpose": "PUBLIC_SYNTHETIC_REVIEW",
+        "privacy_scope": "PUBLIC",
+        "required_capacity": 1
+      },
+      "expected_selected_ids": ["A-D1"],
+      "expected_selected_capacity": 1,
+      "expected_dormant_frontier_count": 8
+    },
+    {
+      "id": "A05_MENTION_ONLY_NO_RESOURCE_DEMAND",
+      "event": {
+        "type": "PUBLIC_MENTION",
+        "subject": "CoCivia"
+      },
+      "requirement": null,
+      "expected_selected_ids": [],
+      "expected_selected_capacity": 0,
+      "expected_dormant_frontier_count": 9
+    },
+    {
+      "id": "A06_PRIVATE_LOCAL_DRAFT_30",
+      "requirement": {
+        "resource_class": "LOCAL_MODEL",
+        "purpose": "PRIVATE_LOCAL_DRAFT",
+        "privacy_scope": "PRIVATE_LOCAL_ONLY",
+        "required_capacity": 30
+      },
+      "expected_selected_ids": ["L-H1"],
+      "expected_selected_capacity": 50,
+      "expected_dormant_frontier_count": 8
+    }
+  ],
+  "expected": {
+    "retained_frontier_count": 9,
+    "scenario_count": 7,
+    "max_selected_resource_count_observed": 2,
+    "real_resource_wake_count": 0,
+    "real_resource_execution_count": 0,
+    "current_runtime_authority": false
+  },
+  "rails": [
+    "GRANTED_NE_AWAKE",
+    "ELIGIBLE_NE_MATERIALIZED",
+    "DEMAND_NE_AUTHORITY",
+    "MENTION_NE_RESOURCE_WAKE",
+    "DORMANT_NE_REVOKED",
+    "NO_DEMAND_NE_NO_OPTION_VALUE",
+    "LARGE_RESOURCE_FIELD_NE_LARGE_ACTIVE_FOOTPRINT",
+    "WAKE_CANDIDATE_NE_LEASE",
+    "LEASE_NE_EXECUTION",
+    "SELECTION_NE_EXECUTION",
+    "RESOURCE_CONTRIBUTION_NE_GOVERNANCE_AUTHORITY",
+    "PULSE_WAKE_CONDITION_NE_COMMAND",
+    "VALIDATION_IS_NOT_ACCEPTANCE"
+  ]
+}

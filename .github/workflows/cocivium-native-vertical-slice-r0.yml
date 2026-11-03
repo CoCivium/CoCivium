@@ -1,0 +1,51 @@
+name: CoCivium native vertical slice R0
+
+on:
+  pull_request:
+    paths:
+      - "docs/UX/COCIVIUM_NATIVE_VERTICAL_SLICE_R0.md"
+      - "fixtures/ux/cocivium_native_vertical_slice_r0.json"
+      - "tools/render_cocivium_native_vertical_slice_r0.py"
+      - "tools/validate_cocivium_native_vertical_slice_r0.py"
+      - ".github/workflows/cocivium-native-vertical-slice-r0.yml"
+      - "docs/Comms/COCIVIA_PUBLIC_ONBOARDING_PLACEHOLDER_R0.md"
+      - "docs/Comms/COCIVIUM_COBAR_RESOURCE_OBSERVER_DELIVERY_R0.md"
+      - "docs/Architecture/COALL_PULSEFIELD_COTIME_R0.md"
+      - "identities/cocivia.json"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  render-and-validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out exact candidate head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 1
+
+      - name: Use Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Render one native CoCivium journey
+        run: python tools/render_cocivium_native_vertical_slice_r0.py --output artifacts/cocivium-native-r0/index.html
+
+      - name: Validate native journey contract
+        run: python tools/validate_cocivium_native_vertical_slice_r0.py --input artifacts/cocivium-native-r0/index.html
+
+      - name: Upload native journey artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: cocivium-native-vertical-slice-r0
+          path: artifacts/cocivium-native-r0
+          if-no-files-found: error
+          retention-days: 30

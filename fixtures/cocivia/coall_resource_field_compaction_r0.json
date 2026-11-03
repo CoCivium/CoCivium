@@ -1,0 +1,111 @@
+{
+  "schema": "CoAllResourceFieldCompaction.R0",
+  "state": "SYNTHETIC_OPTION_SPACE_COMPACTION__NO_REAL_RESOURCE_USE_NO_RUNTIME_AUTHORITY",
+  "source_bindings": {
+    "aggregation_fixture_path": "fixtures/cocivia/coall_resource_field_aggregation_r0.json",
+    "aggregation_fixture_blob_sha": "18830815736216a8d8833c2df4e87c0c637a8be2",
+    "composition_fixture_path": "fixtures/cocivia/coall_resource_composition_r0.json",
+    "composition_fixture_blob_sha": "71c6c22e292118d844a59878f021e66e7f07a822"
+  },
+  "dominance_rule": {
+    "comparable_only_within_same_substitutability_group": true,
+    "same_resource_class_required": true,
+    "same_purpose_required": true,
+    "same_privacy_scope_required": true,
+    "same_owner_required": true,
+    "same_failure_domain_required": true,
+    "dominates_if_capacity_gte": true,
+    "dominates_if_reliability_gte": true,
+    "dominates_if_cost_lte": true,
+    "at_least_one_dimension_strict": true
+  },
+  "resources": [
+    {"id":"C-B1-OLD","state":"ACTIVE","explicit_accept":true,"current":true,"owner":"B","failure_domain":"device:B1","substitutability_group":"compute:B1:vline","resource_class":"COMPUTE","purpose":"PUBLIC_SYNTHETIC_CANARY","privacy_scope":"PUBLIC","capacity":100,"reliability_bp":7000,"cost_units":5},
+    {"id":"C-B1-NEW","state":"ACTIVE","explicit_accept":true,"current":true,"owner":"B","failure_domain":"device:B1","substitutability_group":"compute:B1:vline","resource_class":"COMPUTE","purpose":"PUBLIC_SYNTHETIC_CANARY","privacy_scope":"PUBLIC","capacity":300,"reliability_bp":9000,"cost_units":4},
+    {"id":"C-D1-SHADOW","state":"ACTIVE","explicit_accept":true,"current":true,"owner":"D","failure_domain":"device:D1","substitutability_group":"compute:D1:vline","resource_class":"COMPUTE","purpose":"PUBLIC_SYNTHETIC_CANARY","privacy_scope":"PUBLIC","capacity":500,"reliability_bp":8000,"cost_units":9},
+    {"id":"C-D1-NEW","state":"ACTIVE","explicit_accept":true,"current":true,"owner":"D","failure_domain":"device:D1","substitutability_group":"compute:D1:vline","resource_class":"COMPUTE","purpose":"PUBLIC_SYNTHETIC_CANARY","privacy_scope":"PUBLIC","capacity":600,"reliability_bp":8500,"cost_units":7},
+    {"id":"C-X1","state":"ACTIVE","explicit_accept":true,"current":true,"owner":"X","failure_domain":"device:X1","substitutability_group":"compute:X1:independent","resource_class":"COMPUTE","purpose":"PUBLIC_SYNTHETIC_CANARY","privacy_scope":"PUBLIC","capacity":200,"reliability_bp":6000,"cost_units":2},
+
+    {"id":"S-C1-OLD","state":"ACTIVE","explicit_accept":true,"current":true,"owner":"C","failure_domain":"host:C1","substitutability_group":"storage:C1:vline","resource_class":"STORAGE","purpose":"PUBLIC_ARTIFACT_MIRROR","privacy_scope":"PUBLIC","capacity":50,"reliability_bp":8000,"cost_units":2},
+    {"id":"S-C1-NEW","state":"ACTIVE","explicit_accept":true,"current":true,"owner":"C","failure_domain":"host:C1","substitutability_group":"storage:C1:vline","resource_class":"STORAGE","purpose":"PUBLIC_ARTIFACT_MIRROR","privacy_scope":"PUBLIC","capacity":100,"reliability_bp":9000,"cost_units":2},
+    {"id":"S-Y1","state":"ACTIVE","explicit_accept":true,"current":true,"owner":"Y","failure_domain":"host:Y1","substitutability_group":"storage:Y1:independent","resource_class":"STORAGE","purpose":"PUBLIC_ARTIFACT_MIRROR","privacy_scope":"PUBLIC","capacity":80,"reliability_bp":7500,"cost_units":1},
+
+    {"id":"D-A1","state":"ACTIVE","explicit_accept":true,"current":true,"owner":"A","failure_domain":"account:A","substitutability_group":"discovery:A1","resource_class":"DISCOVERY","purpose":"PUBLIC_MENTION_FORWARDING","privacy_scope":"PUBLIC","capacity":20,"reliability_bp":8500,"cost_units":1},
+    {"id":"A-A1","state":"ACTIVE","explicit_accept":true,"current":true,"owner":"A","failure_domain":"human:A","substitutability_group":"attention:A1","resource_class":"ATTENTION","purpose":"PUBLIC_SYNTHETIC_REVIEW","privacy_scope":"PUBLIC","capacity":2,"reliability_bp":9000,"cost_units":3},
+    {"id":"A-D1","state":"ACTIVE","explicit_accept":true,"current":true,"owner":"D","failure_domain":"human:D","substitutability_group":"attention:D1","resource_class":"ATTENTION","purpose":"PUBLIC_SYNTHETIC_REVIEW","privacy_scope":"PUBLIC","capacity":1,"reliability_bp":8000,"cost_units":2},
+
+    {"id":"L-H1","state":"ACTIVE","explicit_accept":true,"current":true,"owner":"H","failure_domain":"device:H1","substitutability_group":"localmodel:H1","resource_class":"LOCAL_MODEL","purpose":"PRIVATE_LOCAL_DRAFT","privacy_scope":"PRIVATE_LOCAL_ONLY","capacity":50,"reliability_bp":8000,"cost_units":3},
+
+    {"id":"C-E1-REVOKED","state":"REVOKED","explicit_accept":true,"current":true,"owner":"E","failure_domain":"device:E1","substitutability_group":"compute:E1","resource_class":"COMPUTE","purpose":"PUBLIC_SYNTHETIC_CANARY","privacy_scope":"PUBLIC","capacity":5000,"reliability_bp":9999,"cost_units":1},
+    {"id":"S-F1-OFFERED","state":"OFFERED","explicit_accept":false,"current":true,"owner":"F","failure_domain":"host:F1","substitutability_group":"storage:F1","resource_class":"STORAGE","purpose":"PUBLIC_ARTIFACT_MIRROR","privacy_scope":"PUBLIC","capacity":5000,"reliability_bp":9999,"cost_units":1},
+    {"id":"C-Z1-STALE","state":"ACTIVE","explicit_accept":true,"current":false,"owner":"Z","failure_domain":"device:Z1","substitutability_group":"compute:Z1","resource_class":"COMPUTE","purpose":"PUBLIC_SYNTHETIC_CANARY","privacy_scope":"PUBLIC","capacity":9000,"reliability_bp":9999,"cost_units":1}
+  ],
+  "public_pipeline_signature": [
+    ["DISCOVERY","PUBLIC_MENTION_FORWARDING","PUBLIC"],
+    ["COMPUTE","PUBLIC_SYNTHETIC_CANARY","PUBLIC"],
+    ["STORAGE","PUBLIC_ARTIFACT_MIRROR","PUBLIC"],
+    ["ATTENTION","PUBLIC_SYNTHETIC_REVIEW","PUBLIC"]
+  ],
+  "tasks": [
+    {
+      "id":"P01_PUBLIC_PIPELINE",
+      "requirements":[
+        {"resource_class":"DISCOVERY","purpose":"PUBLIC_MENTION_FORWARDING","privacy_scope":"PUBLIC","required_capacity":1},
+        {"resource_class":"COMPUTE","purpose":"PUBLIC_SYNTHETIC_CANARY","privacy_scope":"PUBLIC","required_capacity":500},
+        {"resource_class":"STORAGE","purpose":"PUBLIC_ARTIFACT_MIRROR","privacy_scope":"PUBLIC","required_capacity":50},
+        {"resource_class":"ATTENTION","purpose":"PUBLIC_SYNTHETIC_REVIEW","privacy_scope":"PUBLIC","required_capacity":1}
+      ],
+      "expected_before":true,
+      "expected_after":true
+    },
+    {
+      "id":"P02_DISTRIBUTED_COMPUTE_800",
+      "requirements":[
+        {"resource_class":"COMPUTE","purpose":"PUBLIC_SYNTHETIC_CANARY","privacy_scope":"PUBLIC","required_capacity":800}
+      ],
+      "expected_before":true,
+      "expected_after":true
+    },
+    {
+      "id":"P03_PUBLIC_MIRROR_150",
+      "requirements":[
+        {"resource_class":"STORAGE","purpose":"PUBLIC_ARTIFACT_MIRROR","privacy_scope":"PUBLIC","required_capacity":150}
+      ],
+      "expected_before":true,
+      "expected_after":true
+    },
+    {
+      "id":"P04_PRIVATE_DRAFT_WITH_REVIEW",
+      "requirements":[
+        {"resource_class":"LOCAL_MODEL","purpose":"PRIVATE_LOCAL_DRAFT","privacy_scope":"PRIVATE_LOCAL_ONLY","required_capacity":30},
+        {"resource_class":"ATTENTION","purpose":"PRIVATE_LOCAL_REVIEW","privacy_scope":"PRIVATE_LOCAL_ONLY","required_capacity":1}
+      ],
+      "expected_before":false,
+      "expected_after":false
+    }
+  ],
+  "expected": {
+    "raw_resource_count": 15,
+    "eligible_resource_count": 12,
+    "dominated_resource_ids": ["C-B1-OLD","C-D1-SHADOW","S-C1-OLD"],
+    "retained_resource_count": 9,
+    "public_pipeline_cartesian_candidates_before": 30,
+    "public_pipeline_cartesian_candidates_after": 12,
+    "failure_domain_sets_preserved": true,
+    "task_feasibility_preserved": true,
+    "real_resource_execution_count": 0
+  },
+  "rails": [
+    "COMPACTION_NE_DELETION_OF_PROVENANCE",
+    "DOMINATED_FOR_SCOPE_NE_GLOBALLY_USELESS",
+    "SAME_FAILURE_DOMAIN_REQUIRED_FOR_DOMINANCE_PRUNE",
+    "SAME_OWNER_REQUIRED_FOR_DOMINANCE_PRUNE",
+    "SAME_PRIVACY_AND_PURPOSE_REQUIRED_FOR_DOMINANCE_PRUNE",
+    "UNIQUE_FAILURE_DOMAIN_NE_DOMINATED_BY_BIGGER_DONOR",
+    "CARTESIAN_CANDIDATE_COUNT_NE_FEASIBLE_COMPOSITION_COUNT",
+    "OPTION_SPACE_REDUCTION_NE_EXECUTION_AUTHORITY",
+    "COMPACTION_NE_TRUTH",
+    "RESOURCE_CONTRIBUTION_NE_GOVERNANCE_AUTHORITY",
+    "VALIDATION_IS_NOT_ACCEPTANCE"
+  ]
+}

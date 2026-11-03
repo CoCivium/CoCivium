@@ -1,0 +1,115 @@
+{
+  "schema": "CoAll.ResourceGrantLeaseInterfaceReceiverCanary.R0",
+  "state": "SYNTHETIC_INTERFACE_RECEIVER_CANARY__NO_EXTRACTION_NO_RUNTIME",
+  "source_bindings": {
+    "convergence_projection_path": "docs/Comms/COALL_RESOURCE_CONVERGENCE_PROJECTION_R0.md",
+    "convergence_projection_blob_sha": "7c84754ab25b3915cf6e0958e94a769fa005c0b7",
+    "coevo_union_schema_path": "schemas/coevo-delta-v0.2-union-candidate.schema.json",
+    "coevo_union_schema_blob_sha": "a6218e1e94857002e854b0190cdbc5b6972a2dd5",
+    "resource_field_aggregation_path": "fixtures/cocivia/coall_resource_field_aggregation_r0.json",
+    "resource_field_aggregation_blob_sha": "18830815736216a8d8833c2df4e87c0c637a8be2"
+  },
+  "grant": {
+    "schema": "CoResourceGrant.R0",
+    "grant_id": "G-D-COMP",
+    "participant_or_owner": "participant:D",
+    "resource_class": "COMPUTE",
+    "purpose_scope": "PUBLIC_SYNTHETIC_CANARY",
+    "privacy_scope": "PUBLIC",
+    "state": "ACTIVE",
+    "capacity": 600,
+    "revocation": {
+      "revocable": true,
+      "revoked": false,
+      "reason": null,
+      "observed_at": null
+    },
+    "provenance": [
+      "fixtures/cocivia/coall_resource_field_aggregation_r0.json#G-D-COMP"
+    ],
+    "current": true,
+    "consent_evidence": {
+      "explicit_accept": true,
+      "evidence_ref": "source-object:G-D-COMP"
+    }
+  },
+  "lease": {
+    "schema": "CoResourceLease.R0",
+    "lease_id": "L-R0-COMPUTE-A-1",
+    "grant_id": "G-R0-COMPUTE-A",
+    "resource_id": "resource:A:compute",
+    "work_or_holder_id": "task:T-R0",
+    "fence_or_epoch": 1,
+    "lease_state": "ACTIVE",
+    "expiry_or_revalidation_condition": "RECHECK_BEFORE_EFFECT",
+    "revocation_state": "NOT_REVOKED",
+    "provenance": [
+      "fixture:lease:L-R0-COMPUTE-A-1"
+    ],
+    "effect_authority": false
+  },
+  "expected_projection": {
+    "energet": {
+      "compute": 600,
+      "qualitative": "ACTIVE_SCOPED_GRANT__PUBLIC_SYNTHETIC_CANARY"
+    },
+    "coops": {
+      "reservation_state": "ACTIVE",
+      "holder": "task:T-R0",
+      "fence_or_epoch": 1,
+      "effect_authority": false
+    }
+  },
+  "negative_cases": [
+    {
+      "id": "N01_GRANT_NO_OWNER",
+      "target": "grant",
+      "drop": "participant_or_owner",
+      "expected": "INVALID"
+    },
+    {
+      "id": "N02_GRANT_EXTRA_FIELD",
+      "target": "grant",
+      "extra_key": "scheduler_authority",
+      "extra_value": true,
+      "expected": "INVALID"
+    },
+    {
+      "id": "N03_LEASE_EFFECT_AUTHORITY_TRUE",
+      "target": "lease",
+      "set_key": "effect_authority",
+      "set_value": true,
+      "expected": "INVALID"
+    },
+    {
+      "id": "N04_LEASE_NO_FENCE",
+      "target": "lease",
+      "drop": "fence_or_epoch",
+      "expected": "INVALID"
+    },
+    {
+      "id": "N05_GRANT_NO_CONSENT_EVIDENCE",
+      "target": "grant",
+      "drop": "consent_evidence",
+      "expected": "INVALID"
+    },
+    {
+      "id": "N06_ACTIVE_GRANT_ACCEPT_FALSE",
+      "target": "grant",
+      "set_consent_explicit_accept": false,
+      "expected": "INVALID"
+    }
+  ],
+  "rails": [
+    "RESOURCE_GRANT_NE_CAPACITY_FIELD",
+    "RESOURCE_LEASE_NE_EFFECT_LEASE",
+    "SCHEDULING_NE_EXECUTION_AUTHORITY",
+    "PROJECTION_NE_SCHEMA_MERGE",
+    "INTERFACE_VALID_NE_EXTRACTION_COMPLETE",
+    "RECEIVER_CANARY_NE_RUNTIME_ADOPTION",
+    "VALIDATION_IS_NOT_ACCEPTANCE",
+    "ACTIVE_GRANT_REQUIRES_EXPLICIT_ACCEPT",
+    "RECEIVER_READPROOF_NE_INTEGRATED",
+    "NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF"
+  ]
+}

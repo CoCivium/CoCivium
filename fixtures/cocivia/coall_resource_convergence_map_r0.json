@@ -1,0 +1,141 @@
+{
+  "schema": "CoAll.ResourceConvergenceMap.v0.1-candidate",
+  "state": "CONVERGENCE_COLLISION_MAP__NO_RENAME_NO_MERGE_NO_CANON_NO_RUNTIME",
+  "source_bindings": {
+    "main_head": "98b2679dd885c74d0292cc0b6c20aa80fb0f9e65",
+    "pulsefield_path": "docs/Architecture/COALL_PULSEFIELD_COTIME_R0.md",
+    "pulsefield_blob_sha": "af881fd2eebdd249c16c279a46003bd3836b96cf",
+    "prelaunch_path": "docs/Launch/COCIVIUM_PUBLIC_PRELAUNCH_R0.md",
+    "prelaunch_blob_sha": "261f120b648835c50e9a1e1ecb728e8cdc2825f6",
+    "substrate_path": "docs/Architecture/COSUBSTRATE_FIELD_R0.md",
+    "substrate_blob_sha": "5fec3249945ad3d14511621bc52da5587c3526b8",
+    "front_principal_path": "docs/Identity/COFRONT_GITHUB_SERVICE_PRINCIPAL_R1.md",
+    "front_principal_blob_sha": "188c2fc780b5f3ecaf0346609e90ec001e137521",
+    "correspondence_path": "docs/Comms/COCIVIA_AMBIENT_CORRESPONDENCE_R0.md",
+    "correspondence_blob_sha": "58012f95f9ec2cd82858dee793786fb5007a11bf",
+    "grant_field_path": "docs/Comms/COALL_OPTIN_RESOURCE_FIELD_R0.md",
+    "grant_field_blob_sha": "fa42c83c7edbb5d3e658045e825edf77e0360933",
+    "lease_path": "docs/Comms/COALL_RESOURCE_LEASE_REVOCATION_R0.md",
+    "lease_blob_sha": "e8196351fb5ac01c3ff73061737da3340c16600c",
+    "activation_path": "docs/Comms/COALL_RESOURCE_ACTIVATION_METABOLISM_R0.md",
+    "activation_blob_sha": "ac990859992cb5abeb12ae66e3b1dbf1f5fdd08b",
+    "failover_path": "docs/Comms/COALL_RESOURCE_FAILOVER_RESUME_R0.md",
+    "failover_blob_sha": "6615a2e1c2f13ac7c4839811d4aaa5ac675fa450",
+    "compaction_path": "docs/Comms/COALL_RESOURCE_FIELD_COMPACTION_R0.md",
+    "compaction_blob_sha": "4ad6fd9be7704e00683d07fa4172dd5c6b8409be"
+  },
+  "domains": [
+    {
+      "domain": "CORRESPONDENCE_TRIGGER_RELATIONSHIP_CONSENT",
+      "primary_owner": "CoCiviaCorrespondence",
+      "owner_status": "CANDIDATE_PR137",
+      "relations": ["EMITS_TASK_CANDIDATE_TO_RESOURCE_AND_OPS_LAYERS"],
+      "must_not_collapse_into": ["CoEnerget+", "CoOps+", "CoSubstrateField+"]
+    },
+    {
+      "domain": "PARTICIPANT_RESOURCE_GRANT_SCOPE_OWNER_REVOCATION",
+      "primary_owner": "CoResourceGrantLayer",
+      "owner_status": "CANDIDATE_EXTRACTION",
+      "relations": ["FEEDS_CoEnerget+", "QUALIFIES_RESOURCE_ELIGIBILITY"],
+      "must_not_collapse_into": ["CoEnerget+", "EffectLease", "CoSubstrateField+"]
+    },
+    {
+      "domain": "CAPACITY_RESOURCE_FIELD_THROTTLE_ROUTE_COMPACT_SLEEP_FANOUT",
+      "primary_owner": "CoEnerget+",
+      "owner_status": "EXISTING_MAIN",
+      "relations": ["CONSUMES_ELIGIBLE_GRANTS", "PROJECTS_ACTIVATION_METABOLISM"],
+      "must_not_collapse_into": ["CoResourceGrantLayer", "EffectLease"]
+    },
+    {
+      "domain": "EXECUTABLE_ROADMAP_QUEUE_RESOURCE_ALLOCATION_GATES_RECEIPTS",
+      "primary_owner": "CoPlan+/CoOps+",
+      "owner_status": "EXISTING_MAIN",
+      "relations": ["USES_CoEnerget+", "USES_CoResourceLease+", "EMITS_RECEIPTS"],
+      "must_not_collapse_into": ["EffectLease", "CoSubstrateField+"]
+    },
+    {
+      "domain": "RESOURCE_RESERVATION_FENCING_REVOCATION_AND_HANDOFF",
+      "primary_owner": "CoResourceLease+",
+      "owner_status": "CANDIDATE_EXTRACTION",
+      "relations": ["OPERATES_UNDER_CoOps+", "RESERVES_RESOURCE_WITHOUT_EFFECT_AUTHORITY"],
+      "must_not_collapse_into": ["EffectLease"]
+    },
+    {
+      "domain": "EFFECT_PERMISSION_FOR_ACTION_CLASS",
+      "primary_owner": "EffectLease",
+      "owner_status": "EXISTING_MAIN",
+      "relations": ["INTERSECTS_DELEGATED_AUTHORITY_INSTALLATION_CONFIDENTIALITY_CURRENTNESS"],
+      "must_not_collapse_into": ["CoResourceLease+", "CoEnerget+", "CoSubstrateField+"]
+    },
+    {
+      "domain": "SUBSTRATE_CAPABILITY_LOCALITY_PRIVACY_COST_FAILURE_TRANSLATION",
+      "primary_owner": "CoSubstrateField+",
+      "owner_status": "EXISTING_MAIN",
+      "relations": ["QUALIFIES_RESOURCE_IMPLEMENTATION_OPTIONS"],
+      "must_not_collapse_into": ["CoResourceGrantLayer", "EffectLease"]
+    },
+    {
+      "domain": "FAILOVER_CHECKPOINT_RESUME",
+      "primary_owner": "CoOps+ResourceExecutionProjection",
+      "owner_status": "CANDIDATE_EXTRACTION",
+      "relations": ["USES_CoResourceLease+", "USES_CoSubstrateField+", "PRESERVES_CHECKPOINT_PROVENANCE"],
+      "must_not_collapse_into": ["CoCiviaCorrespondence"]
+    },
+    {
+      "domain": "HOT_FRONTIER_COMPACTION_AND_DEMAND_CONDITIONED_WAKE",
+      "primary_owner": "CoEnerget+Projection",
+      "owner_status": "CANDIDATE_EXTRACTION",
+      "relations": ["SPECIALIZES_CoEnerget+", "CONSUMES_TASK_DEMAND_FROM_CoWant_OR_CoOps"],
+      "must_not_collapse_into": ["CoCiviaCorrespondence", "EffectLease"]
+    }
+  ],
+  "extraction_candidates": [
+    {
+      "candidate": "CoResourceGrantLayer",
+      "source": "PR137 grant and opt-in semantics",
+      "destination_relation": "FEEDS_CoEnerget+",
+      "action": "REVIEW_FOR_EXTRACTION_NOT_MOVE_YET"
+    },
+    {
+      "candidate": "CoResourceLease+",
+      "source": "PR137 lease/fencing/revocation semantics",
+      "destination_relation": "OPERATES_UNDER_CoOps+",
+      "action": "REVIEW_FOR_EXTRACTION_NOT_MOVE_YET"
+    },
+    {
+      "candidate": "CoEnerget+Projection",
+      "source": "PR137 compaction and activation metabolism",
+      "destination_relation": "SPECIALIZES_EXISTING_CoEnerget+",
+      "action": "REVIEW_FOR_FOLDING_NOT_RENAME_YET"
+    },
+    {
+      "candidate": "CoOps+ResourceExecutionProjection",
+      "source": "PR137 failover/checkpoint/resume/composition",
+      "destination_relation": "SPECIALIZES_EXISTING_CoOps+",
+      "action": "REVIEW_FOR_EXTRACTION_NOT_MOVE_YET"
+    }
+  ],
+  "required_rails": [
+    "RESOURCE_GRANT_NE_CAPACITY_FIELD",
+    "CAPACITY_FIELD_NE_SCHEDULER",
+    "SCHEDULING_NE_EXECUTION_AUTHORITY",
+    "RESOURCE_LEASE_NE_EFFECT_LEASE",
+    "SUBSTRATE_CAPABILITY_NE_RESOURCE_GRANT",
+    "CORRESPONDENCE_TRIGGER_NE_RESOURCE_AUTHORITY",
+    "CORESOURCEFIELD_CANDIDATE_RELATES_TO_COENERGET__NOT_AUTOMATIC_RENAME",
+    "OVERLAP_NE_DUPLICATE",
+    "EXTRACTION_CANDIDATE_NE_EXTRACTION",
+    "NEWEST_NE_WINNER",
+    "VALIDATION_IS_NOT_ACCEPTANCE"
+  ],
+  "nonclaims": [
+    "NOT_CANON",
+    "NOT_RUNTIME",
+    "NOT_SCHEMA_MERGE",
+    "NOT_FILE_MOVE",
+    "NOT_RENAME",
+    "NOT_MAIN_MERGE",
+    "NOT_INTEGRATED",
+    "NOT_COEX"
+  ]
+}

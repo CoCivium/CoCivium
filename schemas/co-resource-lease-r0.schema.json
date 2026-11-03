@@ -1,0 +1,80 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://cocivium.example/schemas/co-resource-lease-r0.schema.json",
+  "title": "CoResourceLease R0",
+  "description": "Candidate bounded resource reservation interface. Resource lease is not effect authority.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "lease_id",
+    "grant_id",
+    "resource_id",
+    "work_or_holder_id",
+    "fence_or_epoch",
+    "lease_state",
+    "expiry_or_revalidation_condition",
+    "revocation_state",
+    "provenance",
+    "effect_authority"
+  ],
+  "properties": {
+    "schema": {
+      "const": "CoResourceLease.R0"
+    },
+    "lease_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "grant_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "resource_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "work_or_holder_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "fence_or_epoch": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "lease_state": {
+      "enum": [
+        "PROPOSED",
+        "ACTIVE",
+        "CHECKPOINTING",
+        "COMPLETED",
+        "REVOKED",
+        "EXPIRED",
+        "BUDGET_EXHAUSTED",
+        "FAILED"
+      ]
+    },
+    "expiry_or_revalidation_condition": {
+      "type": "string",
+      "minLength": 1
+    },
+    "revocation_state": {
+      "enum": [
+        "NOT_REVOKED",
+        "REVOKED",
+        "UNKNOWN"
+      ]
+    },
+    "provenance": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1
+    },
+    "effect_authority": {
+      "const": false
+    }
+  }
+}
