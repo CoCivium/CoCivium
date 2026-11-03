@@ -31,6 +31,13 @@ def main():
             check(page.locator('body').evaluate('(e)=>e.scrollWidth<=window.innerWidth+1'),'no_horizontal_overflow')
             first='Text' if width<620 else 'Map'
             check(page.locator('[data-view="'+first+'"]').get_attribute('aria-pressed')=='true','correct_default')
+            check(page.locator('body').get_attribute('data-visual-theme')=='modern','retro_modern_default')
+            page.locator('[data-visual-theme="retro"]').click()
+            check(page.locator('body').get_attribute('data-visual-theme')=='retro','retro_enabled')
+            check('Plot-room illustration' in page.locator('#status').inner_text(),'retro_disclosed_as_illustrative')
+            check(page.locator('.retro-ring').first.evaluate('(e)=>getComputedStyle(e).display')=='block','retro_roundel_visible') if page.locator('.retro-ring').count() else check(width<620,'retro_mobile_text_no_svg')
+            page.locator('[data-visual-theme="modern"]').click()
+            check(page.locator('body').get_attribute('data-visual-theme')=='modern','retro_reverts')
             page.locator('[data-view="Orb"]').click()
             check(page.locator('#projection-title').inner_text().startswith('Orb'),'orb_switch')
             check(page.locator('#projection .item').count()==9,'orb_nine_nodes')
