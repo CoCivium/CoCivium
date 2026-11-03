@@ -28,3 +28,7 @@ jobs:
         run: python3 examples/codoodle_conex_r1/coallbloom_r0/bloom.py --check --check-donors .
       - name: Negative controls and semantics
         run: python3 -m unittest discover -s examples/codoodle_conex_r1/coallbloom_r0/tests -p 'test_*.py' -v
+      - name: Constraint-first public projection join parity and source-delta tests
+        run: python3 -m unittest discover -s examples/codoodle_conex_r1/coallbloom_r0/factorized_join_r0 -p 'test_*.py' -v
+      - name: Source-bound synthetic combination timing (no worker execution)
+        run: python3 examples/codoodle_conex_r1/coallbloom_r0/factorized_join_r0/CoMixFactorBenchR0.py --repeat 3 > /tmp/comix-factor-ci.json
