@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>CoGiftCommons · Choose your path · R0 preview</title>
+  <style>
+    :root{font-family:system-ui,-apple-system,Segoe UI,sans-serif;color:#17342c;background:#f6f9f5}
+    *{box-sizing:border-box}
+    body{margin:0;min-height:100vh}
+    a{color:#13634f;text-underline-offset:3px}
+    a:focus-visible,summary:focus-visible{outline:3px solid #a14a09;outline-offset:4px;border-radius:4px}
+    .wrap{max-width:1100px;padding:clamp(20px,4vw,52px);margin:auto}
+    header{display:flex;gap:16px;justify-content:space-between;align-items:center;flex-wrap:wrap}
+    .logo{font-weight:800;letter-spacing:-.025em;font-size:1.12rem}
+    .state{font-size:.8rem;border:1px solid #91b2a2;background:#eaf3e9;padding:7px 11px;border-radius:99px}
+    main{margin-top:clamp(45px,7vw,92px)}
+    h1{font-size:clamp(2.4rem,6vw,5.3rem);line-height:1.06;letter-spacing:-.055em;max-width:900px;margin:14px 0 24px}
+    h1 strong{color:#26735b}
+    .lead{font-size:clamp(1.08rem,2.1vw,1.35rem);line-height:1.52;color:#39574e;max-width:770px}
+    .eyebrow{text-transform:uppercase;font-size:.79rem;font-weight:750;letter-spacing:.13em;color:#356e5a}
+    .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:42px}
+    .route{background:#fff;border:1px solid #cee0d6;border-radius:16px;padding:clamp(20px,3vw,30px);box-shadow:0 6px 28px #174e3212}
+    .route h2{margin:0 0 10px;font-size:1.42rem;letter-spacing:-.02em}
+    .route p{line-height:1.55;color:#405b53;min-height:3.2em}
+    .route a{font-weight:720}
+    .marker{font-size:.8rem;color:#54806d;margin-bottom:13px}
+    .note{margin-top:42px;background:#e8f1e8;border-left:4px solid #2b7359;padding:19px 23px;border-radius:0 10px 10px 0;line-height:1.6}
+    .footer{border-top:1px solid #cbdcd2;margin-top:60px;padding-top:25px;font-size:.9rem;color:#496457;line-height:1.6}
+    details{margin-top:18px;border-bottom:1px solid #cbdcd2;padding-bottom:15px}
+    summary{cursor:pointer;font-weight:650}
+    @media(max-width:670px){.grid{grid-template-columns:1fr}.route p{min-height:auto}}
+    @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+  </style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div class="logo">CoGiftCommons<span aria-hidden="true">+</span></div>
+  <div class="state">R0 concept preview · Not a launched service</div>
+</header>
+<main id="main">
+  <p class="eyebrow">Open knowledge, voluntary participation</p>
+  <h1>Read freely. <strong>Improve together.</strong></h1>
+  <p class="lead">Free-to-read ideas and public-safe research, with a clear path to challenge them.  No account, payment, religious belief or membership is required to explore.  We publish candidates alongside their limitations and preserve the history of revisions.</p>
+  <section aria-labelledby="routes">
+    <h2 id="routes" class="eyebrow">Choose the route that matters to you</h2>
+    <div class="grid">
+      <article class="route">
+        <p class="marker">01 · Curious reader</p><h2>Explore the ideas</h2>
+        <p>Plain language, living essays, diagrams and multiple reading depths.  Old versions must remain recoverable.</p>
+        <a href="https://github.com/CoCivium/CoCivium/blob/main/docs/Architecture/COBOOK_LIVING_RICH_MEDIA_SYSTEM_R0_20261025.md">Explore the CoBook concept</a>
+      </article>
+      <article class="route">
+        <p class="marker">02 · Skeptical researcher</p><h2>Challenge a claim</h2>
+        <p>Demand sources, seek prior art, identify counterexamples and propose a falsifiable test.  Criticism is useful work.</p>
+        <a href="https://github.com/CoCivium/CoCivium/blob/main/docs/Architecture/COQA_QUESTION_COMMONS_R0.md">See the Question Commons approach</a>
+      </article>
+      <article class="route">
+        <p class="marker">03 · Builder or contributor</p><h2>Make something better</h2>
+        <p>Suggest accessibility fixes, translations, experiments or code.  Participation and attribution are voluntary, with explicit licensing.</p>
+        <a href="https://github.com/CoCivium/CoCivium/blob/main/docs/Architecture/COPARTICIPATION_ECOLOGY_R0.md">See contribution principles</a>
+      </article>
+      <article class="route">
+        <p class="marker">04 · Potential supporter</p><h2>Help without strings</h2>
+        <p>Optional support for named partners and helpers is a proposal, not an active donation collection.  Paying must never buy preferential authority.</p>
+        <a href="https://github.com/CoCivium/CoCivium/blob/feature/cogiftcommons-free-living-publishing-r0-20261026/docs/Public/COGIFT_COMMONS_FREE_LIVING_PUBLICATION_R0_20261026.md">Review the proposed support policy</a>
+      </article>
+    </div>
+  </section>
+  <aside class="note"><strong>What is real today?</strong> These links open public-source candidate documents.  This page does not collect donations, messages, accounts or behavioral data.  It is an offline-capable static preview, not evidence of a live learning or publication platform.</aside>
+  <section aria-label="Questions and limits">
+    <details><summary>Does reading a page automatically change it?</summary><p>No. Feedback can propose an update, but source review, licensing, privacy and versioned editorial acceptance come first.</p></details>
+    <details><summary>Can I leave or disagree?</summary><p>Yes. Disagreement, nonparticipation and leaving are valid outcomes. Public reading should not depend on donations or loyalty.</p></details>
+    <details><summary>Is this religious or asking for an endorsement?</summary><p>No. Philosophical and spiritual perspectives can be discussed voluntarily as perspectives, never imposed as prerequisites or presented as verified causal claims.</p></details>
+    <details><summary>Are all services free, even costly computing?</summary><p>No universal promise of unlimited compute or perpetual hosting is made. Public knowledge and public-safe resources are intended to remain openly available where rights and real capacity permit.</p></details>
+  </section>
+</main>
+<footer class="footer">CoCivium · R0 concept only · One public source, many useful views · No tracking script, cookies, payment processor or automatic external action. <a href="https://github.com/CoCivium/CoCivium">View the public project</a>.</footer>
+</div>
+</body>
+</html>
