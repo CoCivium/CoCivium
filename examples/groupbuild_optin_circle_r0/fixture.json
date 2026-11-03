@@ -1,0 +1,12 @@
+{
+  "schema":"GroupBuild.OptInCircle.PublicSynthetic.R0",
+  "as_of":"2026-11-03",
+  "circle":{"id":"groupbuild-practical-collaboration-r0","purpose":"help people solve one shared real project with low coordination burden","moderator":"NOT_ASSIGNED","status":"SYNTHETIC_CANDIDATE","affiliation_disclosed":true,"public_signup_open":false},
+  "members":[
+    {"id":"test-ada","synthetic":true,"club_opt_in":true,"offers":["accessibility-testing"],"needs":["prototyping"],"topics":["open-ux"],"intro_consents":[{"partner_id":"test-bex","scope":"PROJECT_CONTEXT_ONLY","expires_on":"2026-12-03","revoked":false}]},
+    {"id":"test-bex","synthetic":true,"club_opt_in":true,"offers":["prototyping"],"needs":["accessibility-testing"],"topics":["open-ux"],"intro_consents":[{"partner_id":"test-ada","scope":"PROJECT_CONTEXT_ONLY","expires_on":"2026-12-03","revoked":false}]},
+    {"id":"test-cam","synthetic":true,"club_opt_in":true,"offers":["prototyping"],"needs":["accessibility-testing"],"topics":["open-ux"],"intro_consents":[]},
+    {"id":"test-dev","synthetic":true,"club_opt_in":true,"offers":["accessibility-testing"],"needs":["prototyping"],"topics":["open-ux"],"intro_consents":[{"partner_id":"test-cam","scope":"PROJECT_CONTEXT_ONLY","expires_on":"2026-12-03","revoked":false}]}
+  ],
+  "suppressions":["test-cam"]
+}
