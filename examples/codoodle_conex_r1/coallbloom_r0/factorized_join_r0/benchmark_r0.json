@@ -1,0 +1,147 @@
+{
+  "design": {
+    "active_workers": 0,
+    "authority": "NONE",
+    "comparison": [
+      "exhaustive_qualified_cartesian",
+      "constraint_first_factorized",
+      "one_source_delta_copy_on_write"
+    ],
+    "external_effects": 0,
+    "network_calls": 0,
+    "outcome": "STRUCTURAL_OUTPUT_EQUIVALENCE_NOT_USEFUL_HUMAN_RESULTS",
+    "receiver_interest": "DECLARED_FIXTURE_ONLY",
+    "source_scope": "PUBLIC_SYNTHETIC"
+  },
+  "environment": {
+    "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+    "python": "3.13.5"
+  },
+  "nonclaims": [
+    "LOGICAL_COMBINATIONS_NE_MATERIALIZED_WORKERS",
+    "LATENCY_BENCH_NE_RECEIVER_BENEFIT",
+    "ONE_SOURCE_DELTA_NE_GLOBAL_CURRENTNESS",
+    "INDEX_SWAP_NE_DURABLE_RECEIVER_ACK",
+    "PRIVATE_HELD_NE_CONSENT",
+    "INTERPRETATION_NE_EMPIRICAL_PROOF",
+    "READ_ONLY_NE_PUBLIC_SEND",
+    "LOCAL_CONTAINER_NE_X2_RUNTIME",
+    "NO_LIVE_GLOBAL_BUS",
+    "NO_COEX_OR_CANON"
+  ],
+  "runs": [
+    {
+      "changed_source_projection_count": 512,
+      "constraint_first": {
+        "median_ms": 0.1699,
+        "p95_ms": 0.3048,
+        "repetitions": 5,
+        "result_length": 2048
+      },
+      "constraint_first_median_speedup": 82.78,
+      "delta_median_speedup_for_index_maintenance": 7.02,
+      "exhaustive": {
+        "median_ms": 14.0649,
+        "p95_ms": 15.797,
+        "repetitions": 5,
+        "result_length": 2048
+      },
+      "full_source_update_rebuild": {
+        "median_ms": 0.2536,
+        "p95_ms": 54.3049,
+        "repetitions": 5,
+        "result_length": 2048
+      },
+      "incremental_index_update": {
+        "median_ms": 0.0361,
+        "p95_ms": 0.0387,
+        "repetitions": 5,
+        "result_length": 4
+      },
+      "qualified_public_projection_count": 2048,
+      "same_output_after_delta_when_flattened": true,
+      "same_output_full_join": true,
+      "source_changed": "S002",
+      "source_count": 4,
+      "source_fingerprint": "66fec46d10a2731cbb0a69504d18c31697f370166e97dc0e6809d441538c1743",
+      "syntactic_cartesian_count": 103680,
+      "unaffected_source_partitions_retained": 3
+    },
+    {
+      "changed_source_projection_count": 512,
+      "constraint_first": {
+        "median_ms": 1.6324,
+        "p95_ms": 2.3781,
+        "repetitions": 5,
+        "result_length": 8192
+      },
+      "constraint_first_median_speedup": 30.1,
+      "delta_median_speedup_for_index_maintenance": 32.87,
+      "exhaustive": {
+        "median_ms": 49.1314,
+        "p95_ms": 53.0485,
+        "repetitions": 5,
+        "result_length": 8192
+      },
+      "full_source_update_rebuild": {
+        "median_ms": 1.2423,
+        "p95_ms": 1.3267,
+        "repetitions": 5,
+        "result_length": 8192
+      },
+      "incremental_index_update": {
+        "median_ms": 0.0378,
+        "p95_ms": 0.0406,
+        "repetitions": 5,
+        "result_length": 16
+      },
+      "qualified_public_projection_count": 8192,
+      "same_output_after_delta_when_flattened": true,
+      "same_output_full_join": true,
+      "source_changed": "S008",
+      "source_count": 16,
+      "source_fingerprint": "48f72445fcbeb34b503f641d414310bbbcd43ae55b75b56fd24938782c1f0a1f",
+      "syntactic_cartesian_count": 414720,
+      "unaffected_source_partitions_retained": 15
+    },
+    {
+      "changed_source_projection_count": 512,
+      "constraint_first": {
+        "median_ms": 3.5751,
+        "p95_ms": 4.4085,
+        "repetitions": 5,
+        "result_length": 24576
+      },
+      "constraint_first_median_speedup": 39.53,
+      "delta_median_speedup_for_index_maintenance": 83.71,
+      "exhaustive": {
+        "median_ms": 141.3299,
+        "p95_ms": 158.2206,
+        "repetitions": 5,
+        "result_length": 24576
+      },
+      "full_source_update_rebuild": {
+        "median_ms": 3.3149,
+        "p95_ms": 4.5874,
+        "repetitions": 5,
+        "result_length": 24576
+      },
+      "incremental_index_update": {
+        "median_ms": 0.0396,
+        "p95_ms": 0.0427,
+        "repetitions": 5,
+        "result_length": 48
+      },
+      "qualified_public_projection_count": 24576,
+      "same_output_after_delta_when_flattened": true,
+      "same_output_full_join": true,
+      "source_changed": "S024",
+      "source_count": 48,
+      "source_fingerprint": "07b01968ec847289a17152f3aad301952473c40348eceea705c65627eb872793",
+      "syntactic_cartesian_count": 1244160,
+      "unaffected_source_partitions_retained": 47
+    }
+  ],
+  "schema": "CoAll.CoMixFactorBench.R0",
+  "state": "LOCAL_SYNTHETIC_BENCHMARK_ONLY"
+}
