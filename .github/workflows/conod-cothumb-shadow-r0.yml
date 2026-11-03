@@ -23,3 +23,5 @@ jobs:
         run: node examples/conodcothumb/CoNodCoThumbPolicyR0.mjs --selftest
       - name: Test CoB two-trigger synthetic invocation (zero external effects)
         run: node --test examples/conodcothumb/context_rail_r1/event_invocation_r0/test_event_invocation.cjs
+      - name: Test CoB durable synthetic claim under crashes and process concurrency
+        run: node --test examples/conodcothumb/context_rail_r1/event_invocation_r0/test_durable_claim.cjs
