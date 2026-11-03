@@ -63,3 +63,63 @@ test('independent process concurrency elects exactly one local fixture effect',a
   assert.equal(workers.filter(w=>w.result.state==='LOCAL_ONLY_EXECUTED').length,1);
   assert.equal(markers(r),1);
 });
+
+test('completed receipt without its prior synthetic effect is HELD, not DEDUPED',t=>{
+  const r=root();t.after(()=>fs.rmSync(r,{recursive:true,force:true}));
+  assert.equal(run(r).status,0);
+  const dir=path.join(r,entries(r)[0]);
+  fs.unlinkSync(path.join(dir,'synthetic_effect.json'));
+  const replay=run(r,'BUTTON',packet({event_id:'e2'}));
+  assert.equal(replay.status,0,replay.stderr);
+  assert.equal(JSON.parse(replay.stdout).reason,'CLAIMED_OR_RECOVERY_REQUIRED');
+  assert.equal(markers(r),0);
+});
+test('mismatched claim, effect or completion refuses to certify replay',t=>{
+  for(const [name,edit] of [
+    ['claim.json',row=>({...row,route:'UNAUTHORIZED'})],
+    ['synthetic_effect.json',row=>({...row,event_id:'forged'})],
+    ['completed.json',row=>({...row,event_id:'forged'})]
+  ]){
+    const r=root();t.after(()=>fs.rmSync(r,{recursive:true,force:true}));
+    assert.equal(run(r).status,0);
+    const file=path.join(r,entries(r)[0],name);
+    fs.writeFileSync(file,JSON.stringify(edit(JSON.parse(fs.readFileSync(file,'utf8'))))+'\n');
+    const replay=run(r,'COB_EVENT',packet({event_id:'e2'}));
+    assert.equal(replay.status,0,replay.stderr);
+    assert.equal(JSON.parse(replay.stdout).reason,'CLAIMED_OR_RECOVERY_REQUIRED',name);
+    assert.equal(markers(r),1);
+  }
+});
+test('forged completion after interrupted claim cannot upgrade to completed',t=>{
+  const r=root();t.after(()=>fs.rmSync(r,{recursive:true,force:true}));
+  assert.equal(run(r,'BUTTON',packet(),'AFTER_CLAIM').status,71);
+  const dir=path.join(r,entries(r)[0]);
+  fs.writeFileSync(path.join(dir,'completed.json'),JSON.stringify({
+    work_id:'w1',operation:'REFRESH_LOCAL_STATUS',event_id:'e1',phase:'COMPLETED'
+  })+'\n');
+  const replay=run(r,'COB_EVENT',packet({event_id:'e2'}));
+  assert.equal(replay.status,0,replay.stderr);
+  assert.equal(JSON.parse(replay.stdout).reason,'CLAIMED_OR_RECOVERY_REQUIRED');
+  assert.equal(markers(r),0);
+});
+test('missing or symlinked fixture roots fail closed without writes',t=>{
+  const r=root();t.after(()=>fs.rmSync(r,{recursive:true,force:true}));
+  const missing=path.join(r,'not-created');
+  assert.equal(invoke({root:missing,route:'BUTTON',event:packet()}).reason,'ISOLATED_ROOT_UNVERIFIED');
+  assert.equal(fs.existsSync(missing),false);
+  const alias=path.join(r,'alias');fs.symlinkSync(r,alias,'dir');
+  assert.equal(invoke({root:alias,route:'BUTTON',event:packet()}).reason,'ISOLATED_ROOT_UNVERIFIED');
+  assert.equal(entries(r).length,0);
+});
+test('pre-existing symlink at elected work directory is not followed',t=>{
+  const r=root();t.after(()=>fs.rmSync(r,{recursive:true,force:true}));
+  const outside=root();t.after(()=>fs.rmSync(outside,{recursive:true,force:true}));
+  // Discover the digest without executing the operation by using a separate fixture.
+  const temp=root();t.after(()=>fs.rmSync(temp,{recursive:true,force:true}));
+  assert.equal(run(temp).status,0);
+  const digest=entries(temp)[0];
+  fs.symlinkSync(outside,path.join(r,digest),'dir');
+  const out=invoke({root:r,route:'COB_EVENT',event:packet()});
+  assert.equal(out.reason,'CLAIMED_OR_RECOVERY_REQUIRED');
+  assert.deepEqual(fs.readdirSync(outside),[]);
+});
