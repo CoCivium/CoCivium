@@ -59,10 +59,28 @@ def load_packet(packet_path: Path) -> tuple[dict[str, Any], Path, dict[str, Any]
     require(packet.get("source", {}).get("version"), "source version required")
     require(len(packet.get("destinations", [])) == 2, "exactly two canary destinations required")
 
+    # Packet-supplied runtime paths also reach --reset (shutil.rmtree).
+    # Check exact task identity, not merely a leading directory component:
+    # .coall-runtime/../outside otherwise passes the old lexical check.
     runtime_rel = Path(packet["runtime_relpath"])
     require(not runtime_rel.is_absolute(), "runtime path must be repo-relative")
-    require(runtime_rel.parts and runtime_rel.parts[0] == ".coall-runtime", "runtime must stay under .coall-runtime")
-    runtime = Path.cwd() / runtime_rel
+    require(
+        len(runtime_rel.parts) == 2
+        and runtime_rel.parts[0] == ".coall-runtime"
+        and runtime_rel.parts[1] == packet["task_id"],
+        "runtime must be a task-scoped child of .coall-runtime",
+    )
+    runtime_root = Path.cwd().resolve() / ".coall-runtime"
+    require(
+        not runtime_root.is_symlink() and runtime_root.resolve() == runtime_root,
+        "runtime root must not be a symlink",
+    )
+    runtime = runtime_root / runtime_rel.parts[1]
+    require(not runtime.is_symlink(), "runtime task path must not be a symlink")
+    require(
+        runtime.resolve().is_relative_to(runtime_root),
+        "runtime path resolves outside the permitted root",
+    )
 
     inv_path = Path(packet["receiver_inventory"])
     inventory = read_json(inv_path)
