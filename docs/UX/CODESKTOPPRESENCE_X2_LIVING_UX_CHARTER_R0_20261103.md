@@ -1,0 +1,86 @@
+# CoDesktopPresence+ / X2-first Living UX Charter R0
+
+**Observed:** 2026-11-03. **State:** PUBLIC-SAFE_REVIEW_CANDIDATE__LOCAL_BROWSER_PREVIEW_PASS__NOT_X2_INSTALLED__NOT_ALL_SESSION_ACK.
+
+## Decision
+
+Make X2 a first qualified exemplar of CoOrbWare, not a new sovereign operating system or another opaque dashboard. All receiver embodiments should converge on a **shared typed work/state/provenance/authority spine** and a compact contextual interaction grammar. They need not render identical screens or simultaneously run every worker. The user's desktop, native apps, CoBar, CoOrb, wallpaper, idle, mobile, headset, voice and headless projections are replaceable views of the same subject identity.
+
+**Key correction:** Replacing a static wallpaper alone will not improve active work when application windows cover it. Elect a *CoDesktopPresence* family: 
+
+`ACTIVE_DESKTOP -> GLANCE -> AMBIENT/WALLPAPER -> IDLE/SCREENSAVER -> WAKE/RESTORE_READ_CURSOR`
+
+with native legacy application access and a reversible exit at all times.
+
+## First user-visible journey
+
+1. **HereNow:** A calm first screen answers what matters, what changed, what is stale, and what is actually blocked. No raw worker swarm or unqualified global counts.
+2. **CoBar:** A persistent, low-attention control band only when a locally authorized, healthy host exists. One current work object and one qualified next deed.
+3. **CoLivingGlyph:** The green dot resolves `intent + current object + observer + proof + CoTime + resource envelope + consent/authority + inverse` into a context-specific *offer*. Green does not grant permission or indicate unobserved runtime health.
+4. **CoOrb / CoMap:** Expand typed relations, gaps, hypotheses and source pointers. Inverse/null/counterfactual and CoTurtle challenge are accessible, but visual connections are not evidence of causality.
+5. **CoTime / CoSHAT-like:** Distinguish event, observed, recorded and valid time. Historical source is immutable; forecasts remain conditional and later calibratable. A hash/time capsule is a candidate until an exact receiver contract accepts it.
+6. **CoProof / CoRecovery:** Drill into source, predecessor, checkpoint, receipt, unavailable observer, effect ceiling, undo, export and recovery. The user should not be the session heartbeat or the cross-surface mailman.
+7. **CoPlay:** Permit meaning-preserving artistic, spatial and playful projections with source/inverse available. Beauty alone is not benefit, verification or product adoption.
+
+## Shared UX agreement protocol (not an automatic vote)
+
+- `CANDIDATE`: publish exact version/hash, predecessor relation, objective, privacy class, affected contracts and demonstration.
+- `ROUTED`: interested sessions/receivers may discover a scope-relevant packet by HOT/WARM/DIGEST/WAKE subscription, not an all-to-all transcript broadcast.
+- `PICKED_UP`: distinct receiver independently reads/verifies exact objects and emits a scoped ACK; a GitHub commit or search result alone does not prove this.
+- `REVIEWED`: specialized UX, accessibility, operations, privacy, safety and CoTime reviewers can qualify, challenge, or propose successor. Preserve dissent, not fake consensus.
+- `PROVEN_FOR_SCOPE`: measurable task success, currentness/recovery and reversible interactions are independently tested on a named embodiment.
+- `INTEGRATED`: qualifying receiver uses exact state and evidence without depending on one provider tab.
+- `COEX / CANON / PUBLIC`: separate governed transitions; never inferred from appearance, adoption intent or local tests.
+
+No requirement that every session read every payload, agree on one visual style, or receive context while idle. What must converge is **the contract and lossless identity**, with receiver-relative presentation and causal proof.
+
+## Minimum typed record
+
+`work_object_id | semantic_version | source_ref/hash | relation_ids | receiver_id | embodiment_id | projection_mode | observer | observed_at | event_time | recorded_at | valid_from/to | currentness_cursor | last_acked_cursor | evidence_class | privacy_class | authority_ceiling | forecast_refs | recovery_pointer | inverse | receipt_refs | successor | competing_interpretations`
+
+## X2 acceptance frontier
+
+1. Requalify the authorized local X2 observer and exact process/task window provenance. A screenshot of an active desktop is not remote observer pickup.
+2. Preserve old wallpaper, current desktop state, shortcuts and undo path. Do not change OS wallpaper/startup automatically or relocate files.
+3. Select one already-existing local CoBar/RickBar/CoOrb surface; avoid duplicate watchers or a second control plane.
+4. Bind one real, permission-qualified CoWorkObject, then show `CURRENT / WHY / NEXT / UNKNOWN / CHALLENGE / RECOVER` in one accessible projection.
+5. Demonstrate hide/restore, normal Windows app access, degraded X2 state, restart and evidence-based recovery. No console windows for background CoRunner jobs, while preserving logs/errors/operator terminal on explicit request.
+6. Measure first-glance comprehension, task completion, recovery time, focus theft, false-greens, context loss, human relay, cognitive load, memory/CPU, accessibility and whether the user voluntarily returns.
+7. Require a real receiver/effect readback before graduating from prototype to local service. Sleep/retire failed candidates without erasing prior source.
+
+## Local proof / coverage (2026-11-03)
+
+- New standalone HTML preview: `CoDesktopPresence_X2_R0.html`. Works offline using inline CSS/JavaScript and synthetic/source-labeled records.
+- Local browser smoke: `33/33 PASS`, including context-dependent green glyph, inverse return from ambient, CoMap, CoTime, evidence links, no-network automatic page loads, no JS errors, local receipt export, mobile horizontal overflow and reduced motion. **Not X2 runtime**.
+- Wallpaper-like ambient projection: 2560x1440 screenshot available; actual Windows wallpaper untouched.
+- Cross-receiver adoption: NOT RUN / NOT ACKNOWLEDGED.
+- Native X2 host, CoStead ingestion, independent UX value, CoEx: NOT PROVEN.
+
+## Reused predecessors / no new control plane
+
+- Public CoDesktop/CoRunner productization: `CoCivium/CoCivium` issue #181.
+- CoOrb local UX regenerative: `docs/Architecture/COORB_LOCAL_UX_REGENERATIVE_R0_20261026.md`.
+- RickBar R4 contract: `docs/UX/COFLEET_RICKBAR_R4.md`.
+- CoOrbWare legacy coexistence and exit: `docs/Architecture/COORBWARE_LEGACY_COEXISTENCE_AND_ESCAPE_R0_20261026.md`.
+- CoCopy daily continuity and ambient/idle: `docs/Architecture/COCOPY_COACKREWISE_DAILY_CONTINUITY_R0_20261026.md`.
+- CoAllPulseField/CoTime + CoSessionSubscription selective currentness and exact readproof.
+- `CoDemoWow_R2.html` predecessor retained and hashed in local package (not integrated automatically).
+
+## Guardrails
+
+`MANY_PROJECTIONS_NE_MANY_TRUTH_STORES`  
+`GLYPH_NE_AUTHORITY`  
+`AMBIENT_NE_RUNTIME_PROOF`  
+`CURRENTNESS_FOR_ALL_NE_ALL_CONTENT_FOR_ALL`  
+`LOCAL_TEST_NE_X2_PASS`  
+`X2_OBSERVER_OFFLINE_NE_X2_POWERED_OFF`  
+`FOREGROUND_CONSOLE_NE_PRODUCT_INTERFACE`  
+`NATIVE_EXIT_REQUIRED`  
+`DRAFT_NE_RECEIVER_ACK`  
+`PUBLIC_REVIEW_NE_CANON`  
+`ONE_STATE_SPINE_NE_ONE_VISUAL_STYLE`  
+`G_D_SYMBOLIC_NE_EMPIRICAL_PROOF`  
+`RICK_NE_HEARTBEAT`  
+`COEX_NE_INFERRED`.
+
+**Next elected deed:** When X2 observer connectivity is authorized and verified, inspect the current CoBar/RickBar host and one actual work object read-only, then render this new projection side-by-side without altering wallpaper or startup. No manual PS7/CMD popup is an acceptable default in that journey.
