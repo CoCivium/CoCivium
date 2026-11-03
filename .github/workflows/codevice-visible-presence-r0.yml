@@ -1,0 +1,51 @@
+name: CoDevice Visible Presence R0
+permissions:
+  contents: read
+on:
+  pull_request:
+    paths:
+      - 'examples/codevice_visible_presence_r0/**'
+      - '.github/workflows/codevice-visible-presence-r0.yml'
+  push:
+    paths:
+      - 'examples/codevice_visible_presence_r0/**'
+      - '.github/workflows/codevice-visible-presence-r0.yml'
+jobs:
+  synthetic-read-only:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Tests and zero-effects policy
+        working-directory: examples/codevice_visible_presence_r0
+        run: |
+          python3 -B -m unittest -q test_visible_presence.py
+          python3 -B CoDeviceVisiblePresenceR0.py --fixture fixture.json --output /tmp/codevice-presence-r0.json
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          d=json.loads(Path('/tmp/codevice-presence-r0.json').read_text())
+          assert d['camera_count']==8
+          assert d['external_effects']==0 and d['hardware_writes']==0 and d['network_calls']==0
+          assert d['real_receiver_ack']=='UNPROVEN'
+          assert d['state']=='SYNTHETIC_SOURCE_ONLY_NO_REAL_CAMERAS'
+          assert any(x['status']=='UNKNOWN' for x in d['cards'])
+          assert all(x['physical_effect']=='NONE' and x['ptz']=='NEVER_MOVED' for x in d['cards'])
+          print('CO_DEVICE_PRESENCE_READONLY_PASS')
+          PY
+      - name: Inspect static prototype non-action boundaries
+        working-directory: examples/codevice_visible_presence_r0
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          h=Path('demo.html').read_text()
+          assert 'SYNTHETIC DEMO' in h
+          assert 'prefers-reduced-motion' in h
+          assert 'NOT CONNECTED TO CAMERAS' in h
+          assert 'aria-live' in h
+          assert 'fetch(' not in h and 'XMLHttpRequest' not in h
+          print('CO_DEVICE_PRESENCE_DEMO_STATIC_PASS')
+          PY
