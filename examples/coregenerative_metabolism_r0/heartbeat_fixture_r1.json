@@ -1,0 +1,137 @@
+{
+  "schema": "CoAll.CoObjectMetabolicHeartbeat.SyntheticShadow.R1",
+  "state": "FIXED_INPUT_SHADOW_ONLY_NOT_RUNTIME_HEARTBEAT",
+  "observed_date": "2026-10-27",
+  "source_cohort": "cohort.json",
+  "purpose": "Test three different object wake/repair patterns using exact source-pinned asset identities, bounded effort, and negative cases.",
+  "policy": {
+    "max_shadow_actions": 2,
+    "budget_units": 3,
+    "min_reserve_units": 1,
+    "max_cascade_hops": 0,
+    "external_effects": 0,
+    "live_workers": 0,
+    "allow_network": false,
+    "default_receiver_ack": false
+  },
+  "objects": [
+    {
+      "asset_id": "M05",
+      "kind": "SOFTWARE_GENERATOR",
+      "logical_state": "UNASSESSED",
+      "wake_on": [
+        "SOURCE_DELTA"
+      ],
+      "candidate_action": "REQUALIFY_SOURCE",
+      "estimated_cost_units": 1,
+      "repair_on": "VALIDATION_FAILURE",
+      "stop_rule": "NO_QUALIFIED_EVENT_OR_INSUFFICIENT_BUDGET"
+    },
+    {
+      "asset_id": "M07",
+      "kind": "PUBLICATION_RESEARCH",
+      "logical_state": "UNASSESSED",
+      "wake_on": [
+        "CONTRADICTION",
+        "RECEIVER_FEEDBACK"
+      ],
+      "candidate_action": "REVIEW_CLAIM_OR_READER_EVIDENCE",
+      "estimated_cost_units": 1,
+      "repair_on": "CONTRADICTION",
+      "stop_rule": "NO_INDEPENDENT_READER_READPROOF_OR_NO_DELTA"
+    },
+    {
+      "asset_id": "M08",
+      "kind": "DORMANT_OPTION_CANDIDATE",
+      "logical_state": "UNASSESSED_NOT_PROVEN_DORMANT",
+      "wake_on": [
+        "QUALIFIED_SOURCE"
+      ],
+      "candidate_action": "REQUALIFY_SOURCE_AND_ALTERNATIVES",
+      "estimated_cost_units": 1,
+      "repair_on": "PROVENANCE_FAILURE",
+      "stop_rule": "NO_QUALIFIED_FEED_SOURCE_OR_BUDGET"
+    }
+  ],
+  "relations": [
+    {
+      "from": "M07",
+      "to": "M05",
+      "type": "MAY_PROPOSE_SOURCE_REPAIR_FOR",
+      "evidence_class": "SYNTHETIC_RELATION_CANDIDATE",
+      "automatic_cascade": false,
+      "authority": "NONE",
+      "recipient_acceptance": "UNVERIFIED"
+    }
+  ],
+  "events": [
+    {
+      "cursor": 1,
+      "id": "S01",
+      "subject": "M05",
+      "type": "SOURCE_DELTA",
+      "evidence_class": "SYNTHETIC",
+      "fixture_qualified": true,
+      "public_safe": true,
+      "detail": "Invented generator source revision; prompt verification only"
+    },
+    {
+      "cursor": 2,
+      "id": "S02",
+      "subject": "M07",
+      "type": "RECEIVER_FEEDBACK",
+      "evidence_class": "UNVERIFIED_READER_CLAIM",
+      "fixture_qualified": false,
+      "public_safe": true,
+      "detail": "No receiver-origin readproof; never counts as adoption"
+    },
+    {
+      "cursor": 3,
+      "id": "S03",
+      "subject": "M08",
+      "type": "NO_CHANGE",
+      "evidence_class": "SYNTHETIC",
+      "fixture_qualified": false,
+      "public_safe": true,
+      "detail": "Unchanged option must not be awoken just for existing"
+    },
+    {
+      "cursor": 4,
+      "id": "S04",
+      "subject": "M07",
+      "type": "CONTRADICTION",
+      "evidence_class": "SYNTHETIC",
+      "fixture_qualified": true,
+      "public_safe": true,
+      "detail": "Invented contradictory source claim, prioritizes review not promotion"
+    },
+    {
+      "cursor": 5,
+      "id": "S05",
+      "subject": "M08",
+      "type": "QUALIFIED_SOURCE",
+      "evidence_class": "SYNTHETIC",
+      "fixture_qualified": true,
+      "public_safe": true,
+      "detail": "Invented qualified research source; ET and G_d status remain HYPOTHESIS"
+    }
+  ],
+  "priority": {
+    "CONTRADICTION": 100,
+    "SOURCE_DELTA": 80,
+    "QUALIFIED_SOURCE": 60,
+    "RECEIVER_FEEDBACK": 50
+  },
+  "nonclaims": [
+    "HEARTBEAT_CANDIDATE_NE_PROCESS_LIVENESS",
+    "PULSE_NE_VERIFIED_PROGRESS",
+    "SOURCE_GIT_BLOB_NE_RECEIVER_ACK",
+    "SYNTHETIC_QUALIFICATION_NE_REAL_QUALIFICATION",
+    "COOBJECT_WAKE_CANDIDATE_NE_ACTUAL_WAKE",
+    "REGENERATIVE_NE_INFINITE_COMPUTE_OR_ENERGY",
+    "G_D_METAPHOR_NE_EXTERNAL_AGENCY",
+    "ET_HYPOTHESIS_NE_ET_DETECTION",
+    "CASCADE_EDGE_NE_PERMISSION_TO_ACT",
+    "REPLAY_NE_DUPLICATED_EFFECT"
+  ]
+}

@@ -1,0 +1,303 @@
+{
+  "schema": "CoAll.CoMetabolismAssetCohort.R0",
+  "status": "SOURCE_PINNED_CANDIDATE_COHORT__NOT_RUNTIME_INVENTORY",
+  "observed_date": "2026-10-26",
+  "repository": "CoCivium/CoCivium",
+  "source_ref": "main",
+  "sampling": "PURPOSIVE_TWELVE_FAMILY_SAMPLE_NOT_A_REPRESENTATIVE_INVENTORY",
+  "selection_note": "Twelve public source identities checked at a bounded GitHub main-branch observation. No source-presence proof implies an active process, a recipient, adoption or maintained running infrastructure.",
+  "score_criteria": [
+    "source_current",
+    "active_use",
+    "recipient_use",
+    "maintenance_input",
+    "edge_return",
+    "independent_recovery",
+    "cost_known",
+    "wake_and_stop_qualified"
+  ],
+  "default_unknown_state": "HELD_UNASSESSED",
+  "asset_count": 12,
+  "assets": [
+    {
+      "id": "M01",
+      "family": "theory",
+      "name": "CoTheoryAll working hypothesis",
+      "source": {
+        "path": "docs/CoTheoryAll/costrawbe-r0/README.md",
+        "git_blob_sha1": "21da563a35106896c3029ea8f2cc4fd30cfa31c3",
+        "proof": "SOURCE_GIT_BLOB_READBACK_AT_OBSERVATION"
+      },
+      "source_observed": "2026-10-26",
+      "candidate_question": "What prediction or counterexample would materially change a reader's view?",
+      "lifecycle": "UNASSESSED",
+      "receiver_use": "UNVERIFIED",
+      "maintenance_input": "UNKNOWN",
+      "edge_return": "UNKNOWN",
+      "wake_rule": "SOURCE_DELTA_OR_QUALIFIED_RECEIVER_NEED",
+      "stop_rule": "NO_AUTOMATIC_RETIREMENT",
+      "successor": "UNASSESSED",
+      "independent_recovery": "UNVERIFIED",
+      "resource_cost": "UNKNOWN",
+      "verified_outcome": false
+    },
+    {
+      "id": "M02",
+      "family": "governance",
+      "name": "CoEBE edge balance",
+      "source": {
+        "path": "docs/Strategy/COEBE_EDGE_IN_CORE_OUT_GAP_R0_20261025.md",
+        "git_blob_sha1": "8983501cf1278daa22b48fc8c289c1e46e003a0a",
+        "proof": "SOURCE_GIT_BLOB_READBACK_AT_OBSERVATION"
+      },
+      "source_observed": "2026-10-26",
+      "candidate_question": "Can a separate receiver finish and exit without a privileged center?",
+      "lifecycle": "UNASSESSED",
+      "receiver_use": "UNVERIFIED",
+      "maintenance_input": "UNKNOWN",
+      "edge_return": "UNKNOWN",
+      "wake_rule": "SOURCE_DELTA_OR_QUALIFIED_RECEIVER_NEED",
+      "stop_rule": "NO_AUTOMATIC_RETIREMENT",
+      "successor": "UNASSESSED",
+      "independent_recovery": "UNVERIFIED",
+      "resource_cost": "UNKNOWN",
+      "verified_outcome": false
+    },
+    {
+      "id": "M03",
+      "family": "boundary",
+      "name": "Core-edge outreach resilience",
+      "source": {
+        "path": "docs/Architecture/COCORE_EDGE_OUTREACH_RESILIENCE_R0_20261025.md",
+        "git_blob_sha1": "1fac4d3b6c12943c61d36cc4090e3aba80b027a4",
+        "proof": "SOURCE_GIT_BLOB_READBACK_AT_OBSERVATION"
+      },
+      "source_observed": "2026-10-26",
+      "candidate_question": "Is an independently useful edge outcome returning evidence to the core?",
+      "lifecycle": "UNASSESSED",
+      "receiver_use": "UNVERIFIED",
+      "maintenance_input": "UNKNOWN",
+      "edge_return": "UNKNOWN",
+      "wake_rule": "SOURCE_DELTA_OR_QUALIFIED_RECEIVER_NEED",
+      "stop_rule": "NO_AUTOMATIC_RETIREMENT",
+      "successor": "UNASSESSED",
+      "independent_recovery": "UNVERIFIED",
+      "resource_cost": "UNKNOWN",
+      "verified_outcome": false
+    },
+    {
+      "id": "M04",
+      "family": "driver",
+      "name": "Amplificatory cyclic regeneration",
+      "source": {
+        "path": "docs/Architecture/COAMPLIFICATORY_CYCLIC_REGENERATION_R0_20261026.md",
+        "git_blob_sha1": "f0e7834add3aa2b310f2c03602c4fb2ae68c1838",
+        "proof": "SOURCE_GIT_BLOB_READBACK_AT_OBSERVATION"
+      },
+      "source_observed": "2026-10-26",
+      "candidate_question": "Which measured useful signal grows without growing error or cost unsustainably?",
+      "lifecycle": "UNASSESSED",
+      "receiver_use": "UNVERIFIED",
+      "maintenance_input": "UNKNOWN",
+      "edge_return": "UNKNOWN",
+      "wake_rule": "SOURCE_DELTA_OR_QUALIFIED_RECEIVER_NEED",
+      "stop_rule": "NO_AUTOMATIC_RETIREMENT",
+      "successor": "UNASSESSED",
+      "independent_recovery": "UNVERIFIED",
+      "resource_cost": "UNKNOWN",
+      "verified_outcome": false
+    },
+    {
+      "id": "M05",
+      "family": "engine",
+      "name": "CoDoodleNex deterministic candidate generator",
+      "source": {
+        "path": "examples/codoodle_conex_r1/CoDoodleNexR1.py",
+        "git_blob_sha1": "ab3edf053b7027a6d124830c3d96bbdd675b4963",
+        "proof": "SOURCE_GIT_BLOB_READBACK_AT_OBSERVATION"
+      },
+      "source_observed": "2026-10-26",
+      "candidate_question": "Which generated candidate earned external testing instead of another generated candidate?",
+      "lifecycle": "UNASSESSED",
+      "receiver_use": "UNVERIFIED",
+      "maintenance_input": "UNKNOWN",
+      "edge_return": "UNKNOWN",
+      "wake_rule": "SOURCE_DELTA_OR_QUALIFIED_RECEIVER_NEED",
+      "stop_rule": "NO_AUTOMATIC_RETIREMENT",
+      "successor": "UNASSESSED",
+      "independent_recovery": "UNVERIFIED",
+      "resource_cost": "UNKNOWN",
+      "verified_outcome": false
+    },
+    {
+      "id": "M06",
+      "family": "highlight",
+      "name": "CoLivingHighlightAsset design",
+      "source": {
+        "path": "docs/Architecture/COLIVING_HIGHLIGHT_ASSETS_R0.md",
+        "git_blob_sha1": "40785f77b4085b5830a45bb4c965360347f7cdaf",
+        "proof": "SOURCE_GIT_BLOB_READBACK_AT_OBSERVATION"
+      },
+      "source_observed": "2026-10-26",
+      "candidate_question": "Does a source-linked highlight help a reader reach proof and correction?",
+      "lifecycle": "UNASSESSED",
+      "receiver_use": "UNVERIFIED",
+      "maintenance_input": "UNKNOWN",
+      "edge_return": "UNKNOWN",
+      "wake_rule": "SOURCE_DELTA_OR_QUALIFIED_RECEIVER_NEED",
+      "stop_rule": "NO_AUTOMATIC_RETIREMENT",
+      "successor": "UNASSESSED",
+      "independent_recovery": "UNVERIFIED",
+      "resource_cost": "UNKNOWN",
+      "verified_outcome": false
+    },
+    {
+      "id": "M07",
+      "family": "book",
+      "name": "CoBook living rich media system",
+      "source": {
+        "path": "docs/Architecture/COBOOK_LIVING_RICH_MEDIA_SYSTEM_R0_20261025.md",
+        "git_blob_sha1": "f0f5992302ddddc6dbb173dd16d2d77557f1b1a2",
+        "proof": "SOURCE_GIT_BLOB_READBACK_AT_OBSERVATION"
+      },
+      "source_observed": "2026-10-26",
+      "candidate_question": "Has an independent reader completed a meaningful chapter task?",
+      "lifecycle": "UNASSESSED",
+      "receiver_use": "UNVERIFIED",
+      "maintenance_input": "UNKNOWN",
+      "edge_return": "UNKNOWN",
+      "wake_rule": "SOURCE_DELTA_OR_QUALIFIED_RECEIVER_NEED",
+      "stop_rule": "NO_AUTOMATIC_RETIREMENT",
+      "successor": "UNASSESSED",
+      "independent_recovery": "UNVERIFIED",
+      "resource_cost": "UNKNOWN",
+      "verified_outcome": false
+    },
+    {
+      "id": "M08",
+      "family": "finder",
+      "name": "ET and G_d hypothesis finders",
+      "source": {
+        "path": "docs/Architecture/COET_GD_SIGNAL_HYPOTHESIS_FINDERS_R0_20261024.md",
+        "git_blob_sha1": "d3500d3de1667f49a954c8cdd45d56086e1fe80d",
+        "proof": "SOURCE_GIT_BLOB_READBACK_AT_OBSERVATION"
+      },
+      "source_observed": "2026-10-26",
+      "candidate_question": "Which public feed metadata was actually qualified, with ordinary alternatives?",
+      "lifecycle": "UNASSESSED",
+      "receiver_use": "UNVERIFIED",
+      "maintenance_input": "UNKNOWN",
+      "edge_return": "UNKNOWN",
+      "wake_rule": "SOURCE_DELTA_OR_QUALIFIED_RECEIVER_NEED",
+      "stop_rule": "NO_AUTOMATIC_RETIREMENT",
+      "successor": "UNASSESSED",
+      "independent_recovery": "UNVERIFIED",
+      "resource_cost": "UNKNOWN",
+      "verified_outcome": false
+    },
+    {
+      "id": "M09",
+      "family": "storyboard",
+      "name": "CoFFF first-contact storyboard",
+      "source": {
+        "path": "docs/CoTheoryAll/cofff/COFFF_FIRST_FULL_CONTACT_RESEARCH_STORYBOARD_R0_20261025.md",
+        "git_blob_sha1": "96fa1f34c7fa2b2e9e90605c608464a3b26230cd",
+        "proof": "SOURCE_GIT_BLOB_READBACK_AT_OBSERVATION"
+      },
+      "source_observed": "2026-10-26",
+      "candidate_question": "Which visual is an illustration, which a sourced observation, and which a claim?",
+      "lifecycle": "UNASSESSED",
+      "receiver_use": "UNVERIFIED",
+      "maintenance_input": "UNKNOWN",
+      "edge_return": "UNKNOWN",
+      "wake_rule": "SOURCE_DELTA_OR_QUALIFIED_RECEIVER_NEED",
+      "stop_rule": "NO_AUTOMATIC_RETIREMENT",
+      "successor": "UNASSESSED",
+      "independent_recovery": "UNVERIFIED",
+      "resource_cost": "UNKNOWN",
+      "verified_outcome": false
+    },
+    {
+      "id": "M10",
+      "family": "optics",
+      "name": "CoInterstice observer and optics method",
+      "source": {
+        "path": "docs/Architecture/COINTERSTICE_OBSERVER_PERTURBATION_MEDIA_FABRIC_R0_20261026.md",
+        "git_blob_sha1": "ba8be0ed4135af8e21ee7ab006e3fbed98acfc65",
+        "proof": "SOURCE_GIT_BLOB_READBACK_AT_OBSERVATION"
+      },
+      "source_observed": "2026-10-26",
+      "candidate_question": "Can a controlled optical observation survive polarization and shuffled-data controls?",
+      "lifecycle": "UNASSESSED",
+      "receiver_use": "UNVERIFIED",
+      "maintenance_input": "UNKNOWN",
+      "edge_return": "UNKNOWN",
+      "wake_rule": "SOURCE_DELTA_OR_QUALIFIED_RECEIVER_NEED",
+      "stop_rule": "NO_AUTOMATIC_RETIREMENT",
+      "successor": "UNASSESSED",
+      "independent_recovery": "UNVERIFIED",
+      "resource_cost": "UNKNOWN",
+      "verified_outcome": false
+    },
+    {
+      "id": "M11",
+      "family": "operations",
+      "name": "CoSessionAutoCycle policy",
+      "source": {
+        "path": "docs/Architecture/COSESSION_AUTOCYCLE_R0.md",
+        "git_blob_sha1": "7458fd383521a4d41cc81f0684e257bf84c963dc",
+        "proof": "SOURCE_GIT_BLOB_READBACK_AT_OBSERVATION"
+      },
+      "source_observed": "2026-10-26",
+      "candidate_question": "Can a dormant session wake from an exact source delta without an always-on process?",
+      "lifecycle": "UNASSESSED",
+      "receiver_use": "UNVERIFIED",
+      "maintenance_input": "UNKNOWN",
+      "edge_return": "UNKNOWN",
+      "wake_rule": "SOURCE_DELTA_OR_QUALIFIED_RECEIVER_NEED",
+      "stop_rule": "NO_AUTOMATIC_RETIREMENT",
+      "successor": "UNASSESSED",
+      "independent_recovery": "UNVERIFIED",
+      "resource_cost": "UNKNOWN",
+      "verified_outcome": false
+    },
+    {
+      "id": "M12",
+      "family": "currentness",
+      "name": "CoAll PulseField and CoTime",
+      "source": {
+        "path": "docs/Architecture/COALL_PULSEFIELD_COTIME_R0.md",
+        "git_blob_sha1": "af881fd2eebdd249c16c279a46003bd3836b96cf",
+        "proof": "SOURCE_GIT_BLOB_READBACK_AT_OBSERVATION"
+      },
+      "source_observed": "2026-10-26",
+      "candidate_question": "Can an unrelated receiver establish freshness and recover without a live central tab?",
+      "lifecycle": "UNASSESSED",
+      "receiver_use": "UNVERIFIED",
+      "maintenance_input": "UNKNOWN",
+      "edge_return": "UNKNOWN",
+      "wake_rule": "SOURCE_DELTA_OR_QUALIFIED_RECEIVER_NEED",
+      "stop_rule": "NO_AUTOMATIC_RETIREMENT",
+      "successor": "UNASSESSED",
+      "independent_recovery": "UNVERIFIED",
+      "resource_cost": "UNKNOWN",
+      "verified_outcome": false
+    }
+  ],
+  "allowed_promotion": "Each lifecycle label requires a separately sourced observation; first prove recipient use and maintenance independently.",
+  "effects": {
+    "external_sends": 0,
+    "asset_mutations": 0,
+    "live_workers": 0,
+    "claims_of_et_contact": 0
+  },
+  "nonclaims": [
+    "SOURCE_PRESENT_NE_ACTIVE",
+    "HIGHLIGHT_NE_ADOPTION",
+    "DOCUMENTED_ARCHITECTURE_NE_RUNTIME",
+    "NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF",
+    "UNASSESSED_NE_STALLED",
+    "MANY_ARTIFACTS_NE_MANY_INDEPENDENT_RECEIVERS",
+    "SYNTHETIC_SIMULATION_NE_ACTUAL_PERFORMANCE"
+  ]
+}
