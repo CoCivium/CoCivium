@@ -1,0 +1,49 @@
+{
+  "boundaries": [
+    "NOT_X1_X2_RUNTIME",
+    "NOT_PHYSICAL_ENERGY_MEASUREMENT",
+    "NOT_EXTERNAL_RECEIVER",
+    "NOT_FEDERATED_MESH",
+    "NOT_SELF_REPAIR_EXECUTION",
+    "NOT_GLOBAL_OPTIMALITY",
+    "NOT_AUTHORITY_EXPANSION"
+  ],
+  "observed_date": "2026-10-27",
+  "schema": "CoResourceFrontier.ShadowProof.R0A",
+  "simulated_nodes": 3,
+  "simulated_tasks": 17,
+  "source": {
+    "README.md": {
+      "bytes": 7659,
+      "sha256": "53b27962654e8bf61e624541f113f083c3ee88b2a7a26c4d330788420df4d11b"
+    },
+    "comparison_receipt.json": {
+      "bytes": 19194,
+      "sha256": "f0665db8919b0380bbafc5950bb7168e1b0a34486e0f9684eeb789fd0e35c594"
+    },
+    "fixture.json": {
+      "bytes": 15979,
+      "sha256": "bcb16bc9016c611f68af8eee83568a4661ae2f297bb28326d0d11f0f58a498e4"
+    },
+    "make_fixture.py": {
+      "bytes": 4688,
+      "sha256": "905ebac443ce4b0e4aaed306ebeb7c196433f04e87895b9717a238ef5e72bef2"
+    },
+    "shadow_allocator.py": {
+      "bytes": 6320,
+      "sha256": "471626a174aefa55b487902f1c6d716923faaf4b9ab5b78978b0135f82bddfe7"
+    },
+    "test_result.txt": {
+      "bytes": 4363,
+      "sha256": "c768a3da07bc4132bc74f23b7a5593407790bba3f3463ff5314b309c48600d07"
+    },
+    "test_shadow_allocator.py": {
+      "bytes": 7822,
+      "sha256": "4d268740dfa080074df1f8bdc4154f9e810ed0c641b048050e70817f901698f1"
+    }
+  },
+  "state": "PASS_SOURCE_AND_OFFLINE_SHADOW_ONLY",
+  "strategies": 6,
+  "tests_passed": 35,
+  "tests_total": 35
+}

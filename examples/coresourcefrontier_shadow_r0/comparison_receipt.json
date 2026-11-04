@@ -1,0 +1,564 @@
+{
+  "fixture_sha256": "6948c959764bb3014e7a259bb72e804638b0fc2362b0ca5850404ddb5a3dcd17",
+  "results": [
+    {
+      "effect_ceiling": "ZERO_EXTERNAL_EFFECTS",
+      "held": {
+        "B": "DEDUPED_EXACT_WORK_OF:A",
+        "E": "DORMANT_WAVE_CAP",
+        "F": "HELD_CONSENT_OR_AUTHORITY",
+        "G": "HELD_EFFECT_NOT_SHADOW",
+        "H": "HELD_REQUIRES_INDEPENDENT_PHYSICAL_MEASUREMENT",
+        "I": "HELD_RECEIVER_OR_PRIVACY",
+        "J": "DORMANT_NO_MATERIAL_WAKE",
+        "K": "DORMANT_WAVE_CAP",
+        "L": "DORMANT_NO_MATERIAL_WAKE",
+        "M": "DORMANT_WAVE_CAP",
+        "N": "DORMANT_WAVE_CAP",
+        "O": "DORMANT_WAVE_CAP",
+        "P": "HELD_RECEIVER_OR_PRIVACY",
+        "Q": "HELD_NO_EXACT_SOURCE_PIN"
+      },
+      "nonclaims": [
+        "PROXY_NE_REAL_BENEFIT",
+        "SHADOW_NE_EXECUTION",
+        "RESOURCE_CANDIDATE_NE_WORKER",
+        "PHYSICAL_HARVEST_NOT_TESTED",
+        "POINTER_NE_RECEIVER_ACK",
+        "RESOURCE_ALLOCATION_NE_GLOBAL_OPTIMUM"
+      ],
+      "plan_sha256": "9c3f2d783c2e63a79650adc2a92a2cac6678eb9204dc702717c4ccfb5e40ad7d",
+      "policy": "first_n",
+      "projected_units_consumed": {
+        "attention_units": 2,
+        "cpu_units": 9,
+        "energy_estimate_units": 9
+      },
+      "projected_value_proxy": 25,
+      "receiver": "demo_reader",
+      "residual": {
+        "candidate_A": {
+          "attention_units": 0,
+          "cpu_units": 1,
+          "energy_estimate_units": 5
+        },
+        "candidate_B": {
+          "attention_units": 1,
+          "cpu_units": 4,
+          "energy_estimate_units": 7
+        },
+        "unavailable_candidate_C": {
+          "attention_units": 45,
+          "cpu_units": 45,
+          "energy_estimate_units": 45
+        }
+      },
+      "schema": "CoResourceFrontier.ShadowAllocator.R0",
+      "selected": [
+        {
+          "cost": {
+            "attention_units": 1,
+            "cpu_units": 4,
+            "energy_estimate_units": 4
+          },
+          "node": "candidate_A",
+          "receiver_value_proxy": 10,
+          "scope_ref": "candidate-ref:adbe227d116f167ba6dfd5ac38d23307341cbed70c5af8d79657d4d4b981f09b",
+          "source_sha256": "0405a620527a575d6cdebc5f8c59022a45e23fe62fba2435aef809fbb5fc44ce",
+          "task": "A"
+        },
+        {
+          "cost": {
+            "attention_units": 1,
+            "cpu_units": 3,
+            "energy_estimate_units": 3
+          },
+          "node": "candidate_A",
+          "receiver_value_proxy": 9,
+          "scope_ref": "candidate-ref:14f7a4f2cbb99af401afabcb240823de882786d3a4ab0165096e036fe255c997",
+          "source_sha256": "8a7d153e4362491bedfda6d5a32e6ea656423a0046204df2c2a7320df7297cc9",
+          "task": "C"
+        },
+        {
+          "cost": {
+            "attention_units": 0,
+            "cpu_units": 2,
+            "energy_estimate_units": 2
+          },
+          "node": "candidate_B",
+          "receiver_value_proxy": 6,
+          "scope_ref": "candidate-ref:c4aa4d61343e380422b33397d0170f72158e97cf35c7e03bb4c8f9135a808488",
+          "source_sha256": "36502f50fc22a18e55d34b23b753b1871fd449a89d0a46d0af048ce21bdcc254",
+          "task": "D"
+        }
+      ],
+      "source_pin": "6948c959764bb3014e7a259bb72e804638b0fc2362b0ca5850404ddb5a3dcd17"
+    },
+    {
+      "effect_ceiling": "ZERO_EXTERNAL_EFFECTS",
+      "held": {
+        "B": "DEDUPED_EXACT_WORK_OF:A",
+        "D": "DORMANT_WAVE_CAP",
+        "F": "HELD_CONSENT_OR_AUTHORITY",
+        "G": "HELD_EFFECT_NOT_SHADOW",
+        "H": "HELD_REQUIRES_INDEPENDENT_PHYSICAL_MEASUREMENT",
+        "I": "HELD_RECEIVER_OR_PRIVACY",
+        "J": "DORMANT_NO_MATERIAL_WAKE",
+        "K": "DORMANT_WAVE_CAP",
+        "L": "DORMANT_NO_MATERIAL_WAKE",
+        "M": "DORMANT_WAVE_CAP",
+        "N": "DORMANT_WAVE_CAP",
+        "O": "DORMANT_WAVE_CAP",
+        "P": "HELD_RECEIVER_OR_PRIVACY",
+        "Q": "HELD_NO_EXACT_SOURCE_PIN"
+      },
+      "nonclaims": [
+        "PROXY_NE_REAL_BENEFIT",
+        "SHADOW_NE_EXECUTION",
+        "RESOURCE_CANDIDATE_NE_WORKER",
+        "PHYSICAL_HARVEST_NOT_TESTED",
+        "POINTER_NE_RECEIVER_ACK",
+        "RESOURCE_ALLOCATION_NE_GLOBAL_OPTIMUM"
+      ],
+      "plan_sha256": "9382db4d694e631e9b65f2239a46798ae9a5a28b46a617166afac63b9459ec88",
+      "policy": "random",
+      "projected_units_consumed": {
+        "attention_units": 2,
+        "cpu_units": 9,
+        "energy_estimate_units": 9
+      },
+      "projected_value_proxy": 27,
+      "receiver": "demo_reader",
+      "residual": {
+        "candidate_A": {
+          "attention_units": 1,
+          "cpu_units": 3,
+          "energy_estimate_units": 7
+        },
+        "candidate_B": {
+          "attention_units": 0,
+          "cpu_units": 2,
+          "energy_estimate_units": 5
+        },
+        "unavailable_candidate_C": {
+          "attention_units": 45,
+          "cpu_units": 45,
+          "energy_estimate_units": 45
+        }
+      },
+      "schema": "CoResourceFrontier.ShadowAllocator.R0",
+      "selected": [
+        {
+          "cost": {
+            "attention_units": 0,
+            "cpu_units": 2,
+            "energy_estimate_units": 2
+          },
+          "node": "candidate_A",
+          "receiver_value_proxy": 8,
+          "scope_ref": "candidate-ref:d245d581e85600f4a867620b1f68b21028edf2fe2ab902a890ac0bdc4dd23134",
+          "source_sha256": "1f990ae6cd43b94c8b9870e10cb4d50e6f3bd1a1a27c44e3ca03930cdbebd3ef",
+          "task": "E"
+        },
+        {
+          "cost": {
+            "attention_units": 1,
+            "cpu_units": 3,
+            "energy_estimate_units": 3
+          },
+          "node": "candidate_A",
+          "receiver_value_proxy": 9,
+          "scope_ref": "candidate-ref:14f7a4f2cbb99af401afabcb240823de882786d3a4ab0165096e036fe255c997",
+          "source_sha256": "8a7d153e4362491bedfda6d5a32e6ea656423a0046204df2c2a7320df7297cc9",
+          "task": "C"
+        },
+        {
+          "cost": {
+            "attention_units": 1,
+            "cpu_units": 4,
+            "energy_estimate_units": 4
+          },
+          "node": "candidate_B",
+          "receiver_value_proxy": 10,
+          "scope_ref": "candidate-ref:adbe227d116f167ba6dfd5ac38d23307341cbed70c5af8d79657d4d4b981f09b",
+          "source_sha256": "0405a620527a575d6cdebc5f8c59022a45e23fe62fba2435aef809fbb5fc44ce",
+          "task": "A"
+        }
+      ],
+      "source_pin": "6948c959764bb3014e7a259bb72e804638b0fc2362b0ca5850404ddb5a3dcd17"
+    },
+    {
+      "effect_ceiling": "ZERO_EXTERNAL_EFFECTS",
+      "held": {
+        "B": "DEDUPED_EXACT_WORK_OF:A",
+        "C": "DORMANT_WAVE_CAP",
+        "F": "HELD_CONSENT_OR_AUTHORITY",
+        "G": "HELD_EFFECT_NOT_SHADOW",
+        "H": "HELD_REQUIRES_INDEPENDENT_PHYSICAL_MEASUREMENT",
+        "I": "HELD_RECEIVER_OR_PRIVACY",
+        "J": "DORMANT_NO_MATERIAL_WAKE",
+        "K": "DORMANT_WAVE_CAP",
+        "L": "DORMANT_NO_MATERIAL_WAKE",
+        "M": "DORMANT_WAVE_CAP",
+        "N": "DORMANT_WAVE_CAP",
+        "O": "DORMANT_WAVE_CAP",
+        "P": "HELD_RECEIVER_OR_PRIVACY",
+        "Q": "HELD_NO_EXACT_SOURCE_PIN"
+      },
+      "nonclaims": [
+        "PROXY_NE_REAL_BENEFIT",
+        "SHADOW_NE_EXECUTION",
+        "RESOURCE_CANDIDATE_NE_WORKER",
+        "PHYSICAL_HARVEST_NOT_TESTED",
+        "POINTER_NE_RECEIVER_ACK",
+        "RESOURCE_ALLOCATION_NE_GLOBAL_OPTIMUM"
+      ],
+      "plan_sha256": "46e12924c51f11a315e686a8c2e2bdb51a5a5c03cfc7c4ef5c01490b169472ab",
+      "policy": "keyword",
+      "projected_units_consumed": {
+        "attention_units": 1,
+        "cpu_units": 8,
+        "energy_estimate_units": 8
+      },
+      "projected_value_proxy": 24,
+      "receiver": "demo_reader",
+      "residual": {
+        "candidate_A": {
+          "attention_units": 1,
+          "cpu_units": 0,
+          "energy_estimate_units": 4
+        },
+        "candidate_B": {
+          "attention_units": 1,
+          "cpu_units": 6,
+          "energy_estimate_units": 9
+        },
+        "unavailable_candidate_C": {
+          "attention_units": 45,
+          "cpu_units": 45,
+          "energy_estimate_units": 45
+        }
+      },
+      "schema": "CoResourceFrontier.ShadowAllocator.R0",
+      "selected": [
+        {
+          "cost": {
+            "attention_units": 0,
+            "cpu_units": 2,
+            "energy_estimate_units": 2
+          },
+          "node": "candidate_A",
+          "receiver_value_proxy": 6,
+          "scope_ref": "candidate-ref:c4aa4d61343e380422b33397d0170f72158e97cf35c7e03bb4c8f9135a808488",
+          "source_sha256": "36502f50fc22a18e55d34b23b753b1871fd449a89d0a46d0af048ce21bdcc254",
+          "task": "D"
+        },
+        {
+          "cost": {
+            "attention_units": 0,
+            "cpu_units": 2,
+            "energy_estimate_units": 2
+          },
+          "node": "candidate_A",
+          "receiver_value_proxy": 8,
+          "scope_ref": "candidate-ref:d245d581e85600f4a867620b1f68b21028edf2fe2ab902a890ac0bdc4dd23134",
+          "source_sha256": "1f990ae6cd43b94c8b9870e10cb4d50e6f3bd1a1a27c44e3ca03930cdbebd3ef",
+          "task": "E"
+        },
+        {
+          "cost": {
+            "attention_units": 1,
+            "cpu_units": 4,
+            "energy_estimate_units": 4
+          },
+          "node": "candidate_A",
+          "receiver_value_proxy": 10,
+          "scope_ref": "candidate-ref:adbe227d116f167ba6dfd5ac38d23307341cbed70c5af8d79657d4d4b981f09b",
+          "source_sha256": "0405a620527a575d6cdebc5f8c59022a45e23fe62fba2435aef809fbb5fc44ce",
+          "task": "A"
+        }
+      ],
+      "source_pin": "6948c959764bb3014e7a259bb72e804638b0fc2362b0ca5850404ddb5a3dcd17"
+    },
+    {
+      "effect_ceiling": "ZERO_EXTERNAL_EFFECTS",
+      "held": {
+        "B": "DEDUPED_EXACT_WORK_OF:A",
+        "C": "DORMANT_WAVE_CAP",
+        "D": "DORMANT_WAVE_CAP",
+        "F": "HELD_CONSENT_OR_AUTHORITY",
+        "G": "HELD_EFFECT_NOT_SHADOW",
+        "H": "HELD_REQUIRES_INDEPENDENT_PHYSICAL_MEASUREMENT",
+        "I": "HELD_RECEIVER_OR_PRIVACY",
+        "J": "DORMANT_NO_MATERIAL_WAKE",
+        "K": "HELD_NO_QUALIFIED_RESOURCE_WITH_RESERVE",
+        "L": "DORMANT_NO_MATERIAL_WAKE",
+        "M": "DORMANT_WAVE_CAP",
+        "O": "HELD_NO_QUALIFIED_RESOURCE_WITH_RESERVE",
+        "P": "HELD_RECEIVER_OR_PRIVACY",
+        "Q": "HELD_NO_EXACT_SOURCE_PIN"
+      },
+      "nonclaims": [
+        "PROXY_NE_REAL_BENEFIT",
+        "SHADOW_NE_EXECUTION",
+        "RESOURCE_CANDIDATE_NE_WORKER",
+        "PHYSICAL_HARVEST_NOT_TESTED",
+        "POINTER_NE_RECEIVER_ACK",
+        "RESOURCE_ALLOCATION_NE_GLOBAL_OPTIMUM"
+      ],
+      "plan_sha256": "d1dc30deb9af916876c20aab7793f98d439b335dac94d8d9da80f26066c26d0a",
+      "policy": "evidence",
+      "projected_units_consumed": {
+        "attention_units": 1,
+        "cpu_units": 7,
+        "energy_estimate_units": 7
+      },
+      "projected_value_proxy": 26,
+      "receiver": "demo_reader",
+      "residual": {
+        "candidate_A": {
+          "attention_units": 1,
+          "cpu_units": 1,
+          "energy_estimate_units": 5
+        },
+        "candidate_B": {
+          "attention_units": 1,
+          "cpu_units": 6,
+          "energy_estimate_units": 9
+        },
+        "unavailable_candidate_C": {
+          "attention_units": 45,
+          "cpu_units": 45,
+          "energy_estimate_units": 45
+        }
+      },
+      "schema": "CoResourceFrontier.ShadowAllocator.R0",
+      "selected": [
+        {
+          "cost": {
+            "attention_units": 1,
+            "cpu_units": 4,
+            "energy_estimate_units": 4
+          },
+          "node": "candidate_A",
+          "receiver_value_proxy": 10,
+          "scope_ref": "candidate-ref:adbe227d116f167ba6dfd5ac38d23307341cbed70c5af8d79657d4d4b981f09b",
+          "source_sha256": "0405a620527a575d6cdebc5f8c59022a45e23fe62fba2435aef809fbb5fc44ce",
+          "task": "A"
+        },
+        {
+          "cost": {
+            "attention_units": 0,
+            "cpu_units": 1,
+            "energy_estimate_units": 1
+          },
+          "node": "candidate_A",
+          "receiver_value_proxy": 8,
+          "scope_ref": "candidate-ref:df1ab57c342a655ad1a362154509cb2ac562607c5a331be2f630ac16792d3a89",
+          "source_sha256": "6180f338a946339c8c771b3d6308121b0034d9d537b487e1b89bbb8ca7c881ac",
+          "task": "N"
+        },
+        {
+          "cost": {
+            "attention_units": 0,
+            "cpu_units": 2,
+            "energy_estimate_units": 2
+          },
+          "node": "candidate_A",
+          "receiver_value_proxy": 8,
+          "scope_ref": "candidate-ref:d245d581e85600f4a867620b1f68b21028edf2fe2ab902a890ac0bdc4dd23134",
+          "source_sha256": "1f990ae6cd43b94c8b9870e10cb4d50e6f3bd1a1a27c44e3ca03930cdbebd3ef",
+          "task": "E"
+        }
+      ],
+      "source_pin": "6948c959764bb3014e7a259bb72e804638b0fc2362b0ca5850404ddb5a3dcd17"
+    },
+    {
+      "effect_ceiling": "ZERO_EXTERNAL_EFFECTS",
+      "held": {
+        "A": "DORMANT_WAVE_CAP",
+        "B": "DEDUPED_EXACT_WORK_OF:A",
+        "E": "DORMANT_WAVE_CAP",
+        "F": "HELD_CONSENT_OR_AUTHORITY",
+        "G": "HELD_EFFECT_NOT_SHADOW",
+        "H": "HELD_REQUIRES_INDEPENDENT_PHYSICAL_MEASUREMENT",
+        "I": "HELD_RECEIVER_OR_PRIVACY",
+        "J": "DORMANT_NO_MATERIAL_WAKE",
+        "K": "DORMANT_WAVE_CAP",
+        "L": "DORMANT_NO_MATERIAL_WAKE",
+        "N": "DORMANT_WAVE_CAP",
+        "O": "DORMANT_WAVE_CAP",
+        "P": "HELD_RECEIVER_OR_PRIVACY",
+        "Q": "HELD_NO_EXACT_SOURCE_PIN"
+      },
+      "nonclaims": [
+        "PROXY_NE_REAL_BENEFIT",
+        "SHADOW_NE_EXECUTION",
+        "RESOURCE_CANDIDATE_NE_WORKER",
+        "PHYSICAL_HARVEST_NOT_TESTED",
+        "POINTER_NE_RECEIVER_ACK",
+        "RESOURCE_ALLOCATION_NE_GLOBAL_OPTIMUM"
+      ],
+      "plan_sha256": "f3fa75f3fe4f829b15b0d2ef6f3f8cbb716f784a473b7aee4bda7d8247874199",
+      "policy": "novelty",
+      "projected_units_consumed": {
+        "attention_units": 1,
+        "cpu_units": 7,
+        "energy_estimate_units": 7
+      },
+      "projected_value_proxy": 18,
+      "receiver": "demo_reader",
+      "residual": {
+        "candidate_A": {
+          "attention_units": 1,
+          "cpu_units": 1,
+          "energy_estimate_units": 5
+        },
+        "candidate_B": {
+          "attention_units": 1,
+          "cpu_units": 6,
+          "energy_estimate_units": 9
+        },
+        "unavailable_candidate_C": {
+          "attention_units": 45,
+          "cpu_units": 45,
+          "energy_estimate_units": 45
+        }
+      },
+      "schema": "CoResourceFrontier.ShadowAllocator.R0",
+      "selected": [
+        {
+          "cost": {
+            "attention_units": 0,
+            "cpu_units": 2,
+            "energy_estimate_units": 2
+          },
+          "node": "candidate_A",
+          "receiver_value_proxy": 6,
+          "scope_ref": "candidate-ref:c4aa4d61343e380422b33397d0170f72158e97cf35c7e03bb4c8f9135a808488",
+          "source_sha256": "36502f50fc22a18e55d34b23b753b1871fd449a89d0a46d0af048ce21bdcc254",
+          "task": "D"
+        },
+        {
+          "cost": {
+            "attention_units": 1,
+            "cpu_units": 3,
+            "energy_estimate_units": 3
+          },
+          "node": "candidate_A",
+          "receiver_value_proxy": 9,
+          "scope_ref": "candidate-ref:14f7a4f2cbb99af401afabcb240823de882786d3a4ab0165096e036fe255c997",
+          "source_sha256": "8a7d153e4362491bedfda6d5a32e6ea656423a0046204df2c2a7320df7297cc9",
+          "task": "C"
+        },
+        {
+          "cost": {
+            "attention_units": 0,
+            "cpu_units": 2,
+            "energy_estimate_units": 2
+          },
+          "node": "candidate_A",
+          "receiver_value_proxy": 3,
+          "scope_ref": "candidate-ref:a29f965b2958655db00de7c1fa81183c1583778fa45614decb8c8cb52a189edf",
+          "source_sha256": "d86abccf5be6c40a4f1b2f5920fb1c1c255ac62915e20e6f42baef1f3b91c509",
+          "task": "M"
+        }
+      ],
+      "source_pin": "6948c959764bb3014e7a259bb72e804638b0fc2362b0ca5850404ddb5a3dcd17"
+    },
+    {
+      "effect_ceiling": "ZERO_EXTERNAL_EFFECTS",
+      "held": {
+        "A": "DORMANT_WAVE_CAP",
+        "B": "DEDUPED_EXACT_WORK_OF:A",
+        "E": "DORMANT_WAVE_CAP",
+        "F": "HELD_CONSENT_OR_AUTHORITY",
+        "G": "HELD_EFFECT_NOT_SHADOW",
+        "H": "HELD_REQUIRES_INDEPENDENT_PHYSICAL_MEASUREMENT",
+        "I": "HELD_RECEIVER_OR_PRIVACY",
+        "J": "DORMANT_NO_MATERIAL_WAKE",
+        "K": "DORMANT_WAVE_CAP",
+        "L": "DORMANT_NO_MATERIAL_WAKE",
+        "N": "DORMANT_WAVE_CAP",
+        "O": "DORMANT_WAVE_CAP",
+        "P": "HELD_RECEIVER_OR_PRIVACY",
+        "Q": "HELD_NO_EXACT_SOURCE_PIN"
+      },
+      "nonclaims": [
+        "PROXY_NE_REAL_BENEFIT",
+        "SHADOW_NE_EXECUTION",
+        "RESOURCE_CANDIDATE_NE_WORKER",
+        "PHYSICAL_HARVEST_NOT_TESTED",
+        "POINTER_NE_RECEIVER_ACK",
+        "RESOURCE_ALLOCATION_NE_GLOBAL_OPTIMUM"
+      ],
+      "plan_sha256": "f7c78714ea453d1a7638c17b3f9f464b377236d90720ebd4cf99262caa29abac",
+      "policy": "challenge",
+      "projected_units_consumed": {
+        "attention_units": 1,
+        "cpu_units": 7,
+        "energy_estimate_units": 7
+      },
+      "projected_value_proxy": 18,
+      "receiver": "demo_reader",
+      "residual": {
+        "candidate_A": {
+          "attention_units": 1,
+          "cpu_units": 1,
+          "energy_estimate_units": 5
+        },
+        "candidate_B": {
+          "attention_units": 1,
+          "cpu_units": 6,
+          "energy_estimate_units": 9
+        },
+        "unavailable_candidate_C": {
+          "attention_units": 45,
+          "cpu_units": 45,
+          "energy_estimate_units": 45
+        }
+      },
+      "schema": "CoResourceFrontier.ShadowAllocator.R0",
+      "selected": [
+        {
+          "cost": {
+            "attention_units": 1,
+            "cpu_units": 3,
+            "energy_estimate_units": 3
+          },
+          "node": "candidate_A",
+          "receiver_value_proxy": 9,
+          "scope_ref": "candidate-ref:14f7a4f2cbb99af401afabcb240823de882786d3a4ab0165096e036fe255c997",
+          "source_sha256": "8a7d153e4362491bedfda6d5a32e6ea656423a0046204df2c2a7320df7297cc9",
+          "task": "C"
+        },
+        {
+          "cost": {
+            "attention_units": 0,
+            "cpu_units": 2,
+            "energy_estimate_units": 2
+          },
+          "node": "candidate_A",
+          "receiver_value_proxy": 3,
+          "scope_ref": "candidate-ref:a29f965b2958655db00de7c1fa81183c1583778fa45614decb8c8cb52a189edf",
+          "source_sha256": "d86abccf5be6c40a4f1b2f5920fb1c1c255ac62915e20e6f42baef1f3b91c509",
+          "task": "M"
+        },
+        {
+          "cost": {
+            "attention_units": 0,
+            "cpu_units": 2,
+            "energy_estimate_units": 2
+          },
+          "node": "candidate_A",
+          "receiver_value_proxy": 6,
+          "scope_ref": "candidate-ref:c4aa4d61343e380422b33397d0170f72158e97cf35c7e03bb4c8f9135a808488",
+          "source_sha256": "36502f50fc22a18e55d34b23b753b1871fd449a89d0a46d0af048ce21bdcc254",
+          "task": "D"
+        }
+      ],
+      "source_pin": "6948c959764bb3014e7a259bb72e804638b0fc2362b0ca5850404ddb5a3dcd17"
+    }
+  ],
+  "schema": "CoResourceFrontier.ShadowComparison.R0"
+}

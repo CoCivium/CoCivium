@@ -1,0 +1,40 @@
+test_all_candidates_offline_yields_no_selection (test_shadow_allocator.ShadowAllocatorTests.test_all_candidates_offline_yields_no_selection) ... ok
+test_capacity_and_attention_reserve_never_spent (test_shadow_allocator.ShadowAllocatorTests.test_capacity_and_attention_reserve_never_spent) ... ok
+test_distinct_policies_change_ranking (test_shadow_allocator.ShadowAllocatorTests.test_distinct_policies_change_ranking) ... ok
+test_distinct_source_not_deduped (test_shadow_allocator.ShadowAllocatorTests.test_distinct_source_not_deduped) ... ok
+test_exact_duplicates_do_not_double_spend (test_shadow_allocator.ShadowAllocatorTests.test_exact_duplicates_do_not_double_spend) ... ok
+test_failover_preserves_scope_identity (test_shadow_allocator.ShadowAllocatorTests.test_failover_preserves_scope_identity) ... ok
+test_group_routing_never_leaks_private (test_shadow_allocator.ShadowAllocatorTests.test_group_routing_never_leaks_private) ... ok
+test_group_routing_optin_and_cap (test_shadow_allocator.ShadowAllocatorTests.test_group_routing_optin_and_cap) ... ok
+test_group_routing_rejects_effect_permission (test_shadow_allocator.ShadowAllocatorTests.test_group_routing_rejects_effect_permission) ... ok
+test_group_routing_zero_fanout (test_shadow_allocator.ShadowAllocatorTests.test_group_routing_zero_fanout) ... ok
+test_hard_wave_cap (test_shadow_allocator.ShadowAllocatorTests.test_hard_wave_cap) ... ok
+test_high_value_outreach_held (test_shadow_allocator.ShadowAllocatorTests.test_high_value_outreach_held) ... ok
+test_high_value_unconsented_held (test_shadow_allocator.ShadowAllocatorTests.test_high_value_unconsented_held) ... ok
+test_invalid_reserve_node_is_disabled (test_shadow_allocator.ShadowAllocatorTests.test_invalid_reserve_node_is_disabled) ... ok
+test_invalid_source_digest_rejected (test_shadow_allocator.ShadowAllocatorTests.test_invalid_source_digest_rejected) ... ok
+test_large_task_cannot_deplete_budget (test_shadow_allocator.ShadowAllocatorTests.test_large_task_cannot_deplete_budget) ... ok
+test_missing_source_not_eligible (test_shadow_allocator.ShadowAllocatorTests.test_missing_source_not_eligible) ... ok
+test_negative_wave_rejected (test_shadow_allocator.ShadowAllocatorTests.test_negative_wave_rejected) ... ok
+test_no_effect_beyond_shadow (test_shadow_allocator.ShadowAllocatorTests.test_no_effect_beyond_shadow) ... ok
+test_no_material_wake_is_dormant (test_shadow_allocator.ShadowAllocatorTests.test_no_material_wake_is_dormant) ... ok
+test_other_receiver_not_admitted (test_shadow_allocator.ShadowAllocatorTests.test_other_receiver_not_admitted) ... ok
+test_physical_energy_claim_held (test_shadow_allocator.ShadowAllocatorTests.test_physical_energy_claim_held) ... ok
+test_private_not_admitted (test_shadow_allocator.ShadowAllocatorTests.test_private_not_admitted) ... ok
+test_receipt_hash_commits_to_contents (test_shadow_allocator.ShadowAllocatorTests.test_receipt_hash_commits_to_contents) ... ok
+test_repeatability_all_policies (test_shadow_allocator.ShadowAllocatorTests.test_repeatability_all_policies) ... ok
+test_scope_reference_is_source_version_bound (test_shadow_allocator.ShadowAllocatorTests.test_scope_reference_is_source_version_bound) ... ok
+test_six_policies (test_shadow_allocator.ShadowAllocatorTests.test_six_policies) ... ok
+test_source_fixture_not_mutated (test_shadow_allocator.ShadowAllocatorTests.test_source_fixture_not_mutated) ... ok
+test_stale_source_is_dormant (test_shadow_allocator.ShadowAllocatorTests.test_stale_source_is_dormant) ... ok
+test_symbolic_and_speculative_retained_as_candidates (test_shadow_allocator.ShadowAllocatorTests.test_symbolic_and_speculative_retained_as_candidates) ... ok
+test_synthetic_never_claims_real_benefit (test_shadow_allocator.ShadowAllocatorTests.test_synthetic_never_claims_real_benefit) ... ok
+test_unavailable_candidate_not_selected (test_shadow_allocator.ShadowAllocatorTests.test_unavailable_candidate_not_selected) ... ok
+test_unknown_policy_fails (test_shadow_allocator.ShadowAllocatorTests.test_unknown_policy_fails) ... ok
+test_wrong_tenant_does_not_route (test_shadow_allocator.ShadowAllocatorTests.test_wrong_tenant_does_not_route) ... ok
+test_zero_wave_creates_no_work (test_shadow_allocator.ShadowAllocatorTests.test_zero_wave_creates_no_work) ... ok
+
+----------------------------------------------------------------------
+Ran 35 tests in 0.016s
+
+OK
