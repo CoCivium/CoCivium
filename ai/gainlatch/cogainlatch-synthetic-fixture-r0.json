@@ -17,10 +17,10 @@
       "measurement_protocol": "ux-cold-restart-v1",
       "measurement_state": "PASS",
       "metrics": {
-        "correctness": 1.0,
+        "correctness": 1,
         "human_relay_minutes": 3,
         "p95_latency_ms": 1500,
-        "recovery_success": 1.0
+        "recovery_success": 1
       },
       "observed_at": "2026-11-04T21:58:00Z",
       "predecessor_config_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -43,10 +43,10 @@
     "environment": "x2-lab",
     "measurement_protocol": "ux-cold-restart-v1",
     "metrics": {
-      "correctness": 1.0,
+      "correctness": 1,
       "human_relay_minutes": 5,
       "p95_latency_ms": 2000,
-      "recovery_success": 1.0
+      "recovery_success": 1
     },
     "privacy_class": "private_local",
     "receiver_class": "rickbar-local",
@@ -63,6 +63,22 @@
       "human_relay_minutes": "min",
       "p95_latency_ms": "min",
       "recovery_success": "max"
+    },
+    "metric_domains": {
+      "correctness": {
+        "min": 0,
+        "max": 1
+      },
+      "recovery_success": {
+        "min": 0,
+        "max": 1
+      },
+      "p95_latency_ms": {
+        "min": 0
+      },
+      "human_relay_minutes": {
+        "min": 0
+      }
     }
   },
   "receiver_candidates": [
