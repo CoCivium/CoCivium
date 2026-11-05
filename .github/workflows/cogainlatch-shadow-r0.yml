@@ -1,0 +1,51 @@
+name: CoGainLatch Shadow R0
+
+permissions:
+  contents: read
+
+on:
+  pull_request:
+    paths:
+      - "scripts/CoGainLatchShadowR0.py"
+      - "tests/test_cogainlatch_shadow_r0.py"
+      - "ai/gainlatch/cogainlatch-synthetic-fixture-r0.json"
+      - "docs/Architecture/COGAINLATCH_SHADOW_R0_20261104.md"
+      - ".github/workflows/cogainlatch-shadow-r0.yml"
+  push:
+    paths:
+      - "scripts/CoGainLatchShadowR0.py"
+      - "tests/test_cogainlatch_shadow_r0.py"
+      - "ai/gainlatch/cogainlatch-synthetic-fixture-r0.json"
+      - "docs/Architecture/COGAINLATCH_SHADOW_R0_20261104.md"
+      - ".github/workflows/cogainlatch-shadow-r0.yml"
+  workflow_dispatch:
+
+jobs:
+  shadow-gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.11", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Test bounded shadow gate
+        run: python -B -m unittest discover -s tests -p 'test_cogainlatch_shadow_r0.py' -v
+      - name: Verify fixture does not promote synthetic evidence or mutate receivers
+        run: |
+          python -B scripts/CoGainLatchShadowR0.py --input ai/gainlatch/cogainlatch-synthetic-fixture-r0.json --out /tmp/cogainlatch-report.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          result=json.loads(Path('/tmp/cogainlatch-report.json').read_text())
+          assert result['eligible_shadow_proposals']==[], 'synthetic fixture cannot qualify'
+          assert result['runtime_status']=='NOT_INSTALLED__NO_X2_ACTION'
+          assert all(v==0 for v in result['effects'].values())
+          assert all(not row['applied'] for row in result['receiver_route_proposals'])
+          assert any(row['receiver_id']=='X2' and row['state']=='HOLD_OBSERVER_ROUTE_OFFLINE' for row in result['receiver_route_proposals'])
+          print('PASS_COGAINLATCH_SYNTHETIC_HOLD')
+          PY
