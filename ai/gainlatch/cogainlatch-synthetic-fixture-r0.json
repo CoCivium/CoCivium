@@ -1,0 +1,83 @@
+{
+  "as_of": "2026-11-04T22:00:00Z",
+  "challengers": [
+    {
+      "authority_ceiling": "read_only",
+      "candidate_id": "x2-rickbar-r1",
+      "config_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "environment": "x2-lab",
+      "evidence_class": "SYNTHETIC_FIXTURE",
+      "incumbent_id": "x2-rickbar-r0",
+      "independent_challenge_refs": [
+        "sample://synthetic-challenge"
+      ],
+      "inverse_falsifier_refs": [
+        "sample://synthetic-inverse"
+      ],
+      "measurement_protocol": "ux-cold-restart-v1",
+      "measurement_state": "PASS",
+      "metrics": {
+        "correctness": 1.0,
+        "human_relay_minutes": 3,
+        "p95_latency_ms": 1500,
+        "recovery_success": 1.0
+      },
+      "observed_at": "2026-11-04T21:58:00Z",
+      "predecessor_config_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "privacy_class": "private_local",
+      "receiver_class": "rickbar-local",
+      "rollback": {
+        "config_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "recovery_test_ref": "sample://synthetic-rollback"
+      },
+      "source_refs": [
+        "sample://synthetic-source"
+      ],
+      "workload_id": "x2-visible-ux"
+    }
+  ],
+  "incumbent": {
+    "authority_ceiling": "read_only",
+    "candidate_id": "x2-rickbar-r0",
+    "config_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "environment": "x2-lab",
+    "measurement_protocol": "ux-cold-restart-v1",
+    "metrics": {
+      "correctness": 1.0,
+      "human_relay_minutes": 5,
+      "p95_latency_ms": 2000,
+      "recovery_success": 1.0
+    },
+    "privacy_class": "private_local",
+    "receiver_class": "rickbar-local",
+    "workload_id": "x2-visible-ux"
+  },
+  "policy": {
+    "freshness_hours": 24,
+    "hard_floors": {
+      "correctness": 0.99,
+      "recovery_success": 0.99
+    },
+    "metric_directions": {
+      "correctness": "max",
+      "human_relay_minutes": "min",
+      "p95_latency_ms": "min",
+      "recovery_success": "max"
+    }
+  },
+  "receiver_candidates": [
+    {
+      "capability_verified": false,
+      "currentness_verified": false,
+      "observer_route": "OFFLINE",
+      "receiver_id": "X2"
+    },
+    {
+      "capability_verified": false,
+      "currentness_verified": false,
+      "observer_route": "UNKNOWN",
+      "receiver_id": "X1"
+    }
+  ],
+  "schema": "CoGainLatch.ShadowInput.R0"
+}
