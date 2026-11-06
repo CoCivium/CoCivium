@@ -17,7 +17,8 @@ class RecipeReplayTests(unittest.TestCase):
         self.assertEqual(before, sha256(RECORDS))
         self.assertEqual(early, replay(RECORDS, EARLY))
         self.assertEqual(late, replay(RECORDS, LATE))
-        self.assertEqual(early["source_manifest_sha256"], late["source_manifest_sha256"])
+        self.assertNotEqual(early["source_manifest_sha256"], late["source_manifest_sha256"])
+        self.assertEqual(early["source_scope"], "RECORDED_ON_OR_BEFORE_AS_OF")
         self.assertNotEqual(early["receipt_sha256"], late["receipt_sha256"])
         self.assertFalse(late["historical_interpretation"]["historical_events_modified"])
 
@@ -29,6 +30,21 @@ class RecipeReplayTests(unittest.TestCase):
         self.assertEqual(len(early["visible_sources"]), 3)
         self.assertEqual(len(late["visible_sources"]), 4)
         self.assertNotIn("synthetic-late-evidence", [x["id"] for x in early["visible_sources"]])
+
+    def test_no_lookahead_when_later_evidence_added(self):
+        original = replay(RECORDS, EARLY)
+        extended = copy.deepcopy(RECORDS)
+        extended.append({
+            "id": "later-unrelated-item", "domain": "new-domain",
+            "class": "OBSERVED", "lane": "software",
+            "event_at": "2026-11-02T21:30:00Z",
+            "recorded_at": "2026-11-02T22:30:00Z",
+            "predicate": "later_unrelated_result",
+            "source_ref": "fixture://later/item"
+        })
+        replayed = replay(extended, EARLY)
+        self.assertEqual(original, replayed)
+        self.assertEqual(original["receipt_sha256"], replayed["receipt_sha256"])
 
     def test_recipe_inverse_null_and_effect_ceiling(self):
         result = replay(RECORDS, LATE)
