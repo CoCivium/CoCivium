@@ -212,7 +212,7 @@ A sensible runtime:
 
 ## Living placeholders and publication contract
 
-A placeholder is a typed work object, **not a blank page quietly treated as finished**. See the [companion placeholder registry](PLACEHOLDERS.md).
+A placeholder is a typed work object, **not a blank page quietly treated as finished**. See the P01–P10 placeholder entries below; a separate machine-readable registry has not yet been published.
 
 Every placeholder should preserve: `id | question | source lineage | current claim class | CoCTA next action | CoJustify purpose and evidence standard | CoSHAT time/hash/authority target | dependencies | human gate | receiver | test | status | nonclaims`. Exact historical meanings of CoCTA, CoJustify and CoSHAT require source reconciliation. The labels here describe proposed fields, not recovered canon.
 
