@@ -237,6 +237,40 @@ Every placeholder should preserve: `id | question | source lineage | current cla
 6. A new edition is proposed, reviewed and tested before promotion.
 7. A link is an onramp, not proof of landing, uptake, endorsement or external acceptance.
 
+## Continuous research and additive evolution (R0.2 editorial protocol)
+
+**Status:** Adopted editorial workflow proposal, not a claim that all agents are running or that new science has been verified.
+
+This book is not a fixed monument. Its working method is iterative and cumulative: collect candidate lessons from ongoing CoAll/CoCivium work and public research; recover exact predecessors; compare rival explanations; challenge with independent methods; evaluate usefulness and safety; produce understandable editions for synthetic and human readers; preserve what was learned.
+
+**Research cycles:** Multiple research lanes may explore in parallel, but they must deduplicate proposals and elect one editor for each contested artifact. Fan-out can be large in *candidate space* without pretending that thousands of workers are actually executing. Cycle frequency is resource- and evidence-bounded, not an uninterrupted promise of computation.
+
+**Additive, not immutable:** Prefer adding corrections, alternatives, experiments, citations, reader challenges, new chapters, diagrams, machine-readable twins and successor links. Preserve old published editions by immutable commit reference. Material errors must be visibly corrected, not perpetuated in the name of additivity. Harmful or private material may require removal from public projections while keeping appropriately restricted audit evidence.
+
+**Every proposed book delta should declare:** stable change ID; source/version; observed date; proposition; established/observed/proposed/speculative/humorous class; what it adds or corrects; strongest objection; test or falsifier; estimated reader benefit; privacy/license check; human/public-effect gate; editor; review outcome; successor pointer.
+
+**Editorial cycle:**
+1. **Discover:** gather primary sources, prior experiments and challenges; avoid scraping private conversations or inferring permission from availability.
+2. **Relate:** map the candidate to existing chapters, concepts, competing accounts and edition lineage.
+3. **Challenge:** independently fact-check, generate counterexamples and check for conflated metaphors or false authority.
+4. **Build:** draft one testable improvement, worked example, correction, diagram or chapter; keep its evidence close.
+5. **Verify:** check source accessibility, claim bounds, privacy, accessibility, licensing, links and internal consistency.
+6. **Preserve:** commit a draft or reviewed revision; keep a changelog and a reference to the prior exact edition.
+7. **Publish:** promote to a public edition only within the actual authorized publication workflow; external channels and outreach require distinct delivery receipts.
+8. **Learn:** compare correctness, reader understanding, usefulness, maintenance cost and human intervention with the prior edition; update the research method itself.
+
+**CoTurtle+ test:** Can the cycle improve its own source recovery, challenge quality, deduplication, evidence readability or reader comprehension? A claimed recursive improvement needs a measured before/after result.
+
+**Reader interfaces:** Preserve one source-bound identity for Markdown, website, API/JSON, audio, interactive diagrams, accessible plain text, teaching modules and other projections. Readers should be able to pin an edition, inspect changes and propose corrections. Do not silently swap an edition while it is being read.
+
+**Open research queue:** P01 CME lineage; P02 Cognocarta/CC; P03 CoMetaTrain/CoCTA/CoJustify/CoSHAT; P04 worked CoScendence cases; P05 G_d philosophical bibliography; P06 measured recovery; P07 linked assets; P08 media projections; P09 CoRegroupCoBoogie continuity; P10 independent scientific prior art. Each remains unresolved until evidence closes it.
+
+**Publication measures:** independently verified corrections; tested lessons; reusable citations; useful demonstrations; genuine reader feedback; recovered historical versions; intervention avoided. Chapter count, tokens generated and unverified gauge movement are not success metrics.
+
+**No fabricated continuity:** A published protocol, scheduled editorial check or GitHub commit is not proof of perpetual execution, cross-session pickup, downstream syndication or audience adoption.
+
+---
+
 ## Colophon
 
 This book is a research and educational publication, not a declaration of AGI, artificial personhood, theology proved by experiment, canonical CoAll governance or a deployed autonomous federation.
