@@ -1,11 +1,30 @@
-# CoCivia AGI book preview
+# CoCivia AGI Book+ | One publication, many reader projections
 
-[Open the experimental CoCivia Field Guide to Thinking](CoCivia_Field_Guide_to_Thinking_Public_Preview_R0.html).
+**This is one evolving CoCivia AGI book family, not two competing books.** The current **Field Guide to Thinking** is the public-preview title and reader projection of the same newer CoCivia-led AGI book whose earlier private working title was *The Hitchhiker's Guide to Thinking*. The latter remains a historical editorial title candidate, not an approved public brand or an additional published book.
 
-Eight original short draft chapters in self-contained HTML. This public preview is not a completed, continuously updating or formally FOSS-licensed book. GitHub may show HTML source; save the standalone file to use its reading controls in a browser.
+## Start reading
 
-[CoBook architecture](../Architecture/COBOOK_LIVING_RICH_MEDIA_SYSTEM_R0_20261025.md) | [Start here](../../START_HERE.md) | [Challenge or contribute](https://github.com/CoCivium/CoCivium/issues)
+**[CoCivia's Field Guide to Thinking: eight-chapter public AGI preview](CoCivia_Field_Guide_to_Thinking_Public_Preview_R0.html)**
 
-## Continuity
+GitHub may display the HTML as source; save the standalone HTML and open it in a browser for reader controls. The preview currently has eight original short draft chapters and is **static**, not an independently updating website or finished book.
 
-The original AGI R0 snapshot, this preview snapshot, and a publication manifest are also preserved in CoCivium PublicationPackets Library. Another independent hosting/restore path and 24-hour recovery tests are still unverified. Earlier published revisions must remain recoverable. Content and source licenses still need review.
+## Publication lineage and other media
+
+| Relation | Role | Status |
+| --- | --- | --- |
+| CoCivia AGI Book+ | One logical publication family | Evolving editorial candidate |
+| Field Guide to Thinking R0 | Public AGI reader projection | HTML source on GitHub main, exact readback previously verified |
+| Earlier Hitchhiker-titled AGI R0 | Original private manuscript snapshot | Preserved separately; public title/rights not cleared |
+| The Great ReFact / Book Zero | Older related software/agency manuscript | Predecessor and research donor, **not** the same AGI book |
+| CoBook+ / CoAthene / CoRelAtlas | Chapter, educational, research and relationship extensions | Candidate bridges; individual links need verification |
+| Audio, EPUB, print, stories, media, CoOrb / CoMap and agent-readable editions | Additional projections of the same source/claim family | Not yet generated or released for this AGI edition |
+
+**[Existing CoBook rich-media design](../Architecture/COBOOK_LIVING_RICH_MEDIA_SYSTEM_R0_20261025.md)** | **[CoCivium first-use entrance](../../START_HERE.md)** | **[Challenge or contribute](https://github.com/CoCivium/CoCivium/issues)**
+
+## Evolution and source of truth
+
+One durable chapter/paragraph identity should connect all editions, experiments and media. Changes must carry provenance, explicit status, prior-version preservation and independent review. A reader can inspect history or choose a stable snapshot; no invisible mid-paragraph rewrites. Links, automated content updates and successful audience participation are not implied by the existence of a plan.
+
+The original AGI R0, this public preview, and a publication manifest are stored in the CoCivium PublicationPackets Library, with a recovery archive saved there as well. That supplies a second custody location, **not yet proven independent GitHub-loss restoration or continuous synchronization**. Licence permissions and title/brand review remain open.
+
+**Next proof:** Derive one new, clearly versioned public reader revision from this edition, preserve the old byte-exact snapshot, and demonstrate one independent reader-side and independent custody pickup. No second authoring canon.
