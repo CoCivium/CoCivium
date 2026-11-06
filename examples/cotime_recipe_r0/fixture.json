@@ -1,0 +1,42 @@
+[
+  {
+    "id": "synthetic-index-signal",
+    "domain": "indexing",
+    "class": "OBSERVED",
+    "lane": "software",
+    "event_at": "2026-11-02T18:00:00Z",
+    "recorded_at": "2026-11-02T19:00:00Z",
+    "predicate": "success_signal_without_effect_proof",
+    "source_ref": "fixture://indexing/signal"
+  },
+  {
+    "id": "synthetic-audio-queue",
+    "domain": "audio",
+    "class": "OBSERVED",
+    "lane": "software",
+    "event_at": "2026-11-02T18:20:00Z",
+    "recorded_at": "2026-11-02T19:05:00Z",
+    "predicate": "playback_queued_without_hearing_proof",
+    "source_ref": "fixture://audio/queue"
+  },
+  {
+    "id": "synthetic-late-evidence",
+    "domain": "indexing",
+    "class": "OBSERVED",
+    "lane": "software",
+    "event_at": "2026-11-02T18:30:00Z",
+    "recorded_at": "2026-11-02T21:00:00Z",
+    "predicate": "isolated_mock_canary_pass",
+    "source_ref": "fixture://indexing/mock-pass"
+  },
+  {
+    "id": "synthetic-symbolic-question",
+    "domain": "gnosis-symbolic",
+    "class": "HYPOTHESIS",
+    "lane": "symbolic",
+    "event_at": "2026-11-02T18:00:00Z",
+    "recorded_at": "2026-11-02T19:20:00Z",
+    "predicate": "question_about_subjective_meaning_not_external_causation",
+    "source_ref": "fixture://gnosis/interpretation"
+  }
+]
