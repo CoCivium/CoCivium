@@ -1,0 +1,131 @@
+{
+  "schema": "CoOnrampMesh.R0.OfflineSmoke",
+  "source_sha256": "c75650238ab21ea658b79a638822b3382547c68387f377f59f26deacb97e7517",
+  "manifest_sha256": "75d08e351b20dee76563478a4185702d92b99f0b143c29ebcd95d8fd88e79fbb",
+  "pass": 26,
+  "fail": 0,
+  "checks": [
+    {
+      "id": "embedded inline machine twin exists",
+      "status": "PASS"
+    },
+    {
+      "id": "machine twin agrees with manifest",
+      "status": "PASS"
+    },
+    {
+      "id": "shared project identity",
+      "status": "PASS"
+    },
+    {
+      "id": "three distinct roles",
+      "status": "PASS"
+    },
+    {
+      "id": "three distinct route ids",
+      "status": "PASS"
+    },
+    {
+      "id": "one real exercise per route",
+      "status": "PASS"
+    },
+    {
+      "id": "valid source pointers",
+      "status": "PASS"
+    },
+    {
+      "id": "pinned source blobs",
+      "status": "PASS"
+    },
+    {
+      "id": "public-source URLs only",
+      "status": "PASS"
+    },
+    {
+      "id": "no claim of hosted service",
+      "status": "PASS"
+    },
+    {
+      "id": "no automatic analytics",
+      "status": "PASS"
+    },
+    {
+      "id": "no tracking enabled",
+      "status": "PASS"
+    },
+    {
+      "id": "no domains activated",
+      "status": "PASS"
+    },
+    {
+      "id": "no external messages",
+      "status": "PASS"
+    },
+    {
+      "id": "authority ceiling NONE",
+      "status": "PASS"
+    },
+    {
+      "id": "no remote JS effects",
+      "status": "PASS"
+    },
+    {
+      "id": "CSP blocks connections",
+      "status": "PASS"
+    },
+    {
+      "id": "responsive single column",
+      "status": "PASS"
+    },
+    {
+      "id": "keyboard focus visibility",
+      "status": "PASS"
+    },
+    {
+      "id": "reduced motion support",
+      "status": "PASS"
+    },
+    {
+      "id": "explicit manual copy fallback",
+      "status": "PASS"
+    },
+    {
+      "id": "named project root visible",
+      "status": "PASS"
+    },
+    {
+      "id": "privacy no raw secrets in page",
+      "status": "PASS"
+    },
+    {
+      "id": "not covert personas",
+      "status": "PASS"
+    },
+    {
+      "id": "not permission inheriting",
+      "status": "PASS"
+    },
+    {
+      "id": "negative controls registered",
+      "status": "PASS"
+    }
+  ],
+  "environment": "LOCAL_CONTAINER_NODE22",
+  "external_effects": 0,
+  "receiver_ack": false,
+  "domain_deployment": false,
+  "ux_acceptance": "UNPROVEN",
+  "nonclaims": [
+    "SOURCE_CODE_NE_RUNNING_SERVICE",
+    "PUBLIC_BRANCH_NE_PUBLIC_HOSTING",
+    "DISCOVERABLE_NE_ADOPTED",
+    "ONE_BRAND_NE_AUTHORITY",
+    "PERSONA_ROUTE_NE_PERSONHOOD",
+    "LOCAL_IS_NOT_LANDED",
+    "VALIDATION_IS_NOT_ACCEPTANCE",
+    "NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF",
+    "NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE",
+    "HASHING_IS_NOT_SEMANTIC_INGESTION",
+    "DISCOVERED_SET_IS_NOT_COMPLETE_HISTORY"
+  ]
+}
