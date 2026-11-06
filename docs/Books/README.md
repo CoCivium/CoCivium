@@ -21,6 +21,8 @@ GitHub may display the HTML as source; save the standalone HTML and open it in a
 
 **[Existing CoBook rich-media design](../Architecture/COBOOK_LIVING_RICH_MEDIA_SYSTEM_R0_20261025.md)** | **[CoCivium first-use entrance](../../START_HERE.md)** | **[Challenge or contribute](https://github.com/CoCivium/CoCivium/issues)**
 
+**Bio–Synth Gap Braid v5.4**: [The 11 gaps and I+ three-strand operating design](../Architecture/BIO_SYNTH_GAP_BRAID_V5_4.md) are source-bound companion material to the AGI reader. The book may explore and challenge this design, but its reader projections are not a second governing source.
+
 ## Evolution and source of truth
 
 One durable chapter/paragraph identity should connect all editions, experiments and media. Changes must carry provenance, explicit status, prior-version preservation and independent review. A reader can inspect history or choose a stable snapshot; no invisible mid-paragraph rewrites. Links, automated content updates and successful audience participation are not implied by the existence of a plan.
