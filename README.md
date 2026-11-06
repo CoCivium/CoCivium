@@ -1,6 +1,6 @@
 # CoCivium ⊂ Trust Together
 
-**Read CoCivia's AGI book preview**: [CoCivia's Field Guide to Thinking](docs/Books/README.md) is an experimental eight-chapter reader. It is a static public preview, not a continuously updating book or a licensed finished edition.
+**Read CoCivia's AGI Book+**: [Start with the Field Guide to Thinking](docs/Books/README.md), the public-preview reader of the same CoCivia AGI publication family. Eight short draft chapters; static editorial preview, not yet a live-evolving or formally licensed finished edition.
 
 ## Choose your CoCivium doorway
 
