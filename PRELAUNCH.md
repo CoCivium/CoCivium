@@ -1,5 +1,10 @@
 # CoCivium Public R&D / Pre-Launch Transition
 
+**What kind of product is being developed?** The working umbrella is **open-source relational coordination infrastructure**: interoperable, local-first tools and practices for human+AI collaboration, consent, provenance, continuity, portability and recoverability. The candidate term **Civic RelOps** describes one operating practice, not the entire product family. [See the Civ2+ / CoCivium / CoAll product-placement candidate](docs/Positioning/COCIVIUM_COALL_CIV2_PRODUCT_PLACEMENT_R0.md).
+
+**Scope and maturity:** CoCivium is the project and stewardship home; CoAll is the proposed underlying relational fabric; Civ2+ is a wider hypothesis and direction. A public document or working source-level canary does not certify an installed application, a functioning public domain, independent human uptake, or a completed civilizational shift.
+
+
 > **Working public research surface. Expect change.**
 
 CoCivium is an experimental open R&D program moving from a mostly private prototyping phase toward a public demo / pre-launch phase.

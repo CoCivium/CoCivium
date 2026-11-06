@@ -1,5 +1,10 @@
 # CoCivium | Start here in 60 seconds
 
+**The plain-language idea:** CoCivium is developing open-source tools to help people and AI systems coordinate across apps and devices without losing control of their work. Its proposed technical category is **relational coordination infrastructure**. **CoAll** describes the architecture behind that ambition; **Civ2+** is the larger direction being researched, not a completed transition. [Explore the working product map](docs/Positioning/COCIVIUM_COALL_CIV2_PRODUCT_PLACEMENT_R0.md).
+
+**Today:** This is public research and pre-launch work, not a fully available cross-device service. Source-linked examples and their exact limits follow below.
+
+
 ![EVO ALL BETTERS + centred moustache, a visual marker only](assets/evoall/evo_all_betters_moustache_20261023.svg)
 
 **What is CoCivium?** An open research project building small, testable ways for people and AI tools to work together while keeping consent, evidence and responsibility visible.
