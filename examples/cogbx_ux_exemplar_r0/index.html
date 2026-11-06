@@ -85,6 +85,16 @@ a{color:inherit}
 .textmode .textview{display:block;grid-column:1/-1}
 footer{padding:10px 16px;color:var(--muted);font-size:12px;border-top:1px solid var(--line)}
 .badge{display:inline-block;padding:2px 6px;border:1px solid var(--line);border-radius:999px;margin-right:5px}
+
+.feedback-signals{border:0;padding:0;margin:8px 0;display:grid;gap:6px}
+.feedback-signals legend{font-size:12px;color:var(--muted);padding:0 0 6px}
+.feedback-signals label{display:flex;align-items:flex-start;gap:8px;padding:6px;border:1px solid var(--line);border-radius:8px;font-size:12px;cursor:pointer}
+.feedback-signals input{margin-top:3px;accent-color:#9ed9c9}
+.feedback-state{padding:10px;border-left:3px solid var(--warn);background:var(--soft);border-radius:6px}
+.feedback-state[data-state="QUIET"]{border-color:var(--ok)}
+.feedback-state[data-state="HELD_CONSENT"]{border-color:var(--bad)}
+.feedback-state strong{font-size:12px;letter-spacing:.02em}
+.feedback-state p{font-size:12px}
 @media (max-width:900px){
   .main{grid-template-columns:1fr}.stage{min-height:620px}.rail{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
   .node{min-width:110px;max-width:150px;font-size:13px}.node.current{min-width:180px}
@@ -163,24 +173,43 @@ footer{padding:10px 16px;color:var(--muted);font-size:12px;border-top:1px solid 
       <section class="card">
         <h2>CoHereNow</h2>
         <div class="kv">
-          <span>currentness</span><span>local current</span>
+          <span>currentness</span><span>synthetic only</span>
           <span>authority</span><span>preview only</span>
-          <span>recovery</span><span>available</span>
-          <span>crown risk</span><span>low</span>
+          <span>recovery</span><span>demo route only</span>
+          <span>crown risk</span><span>not assessed</span>
         </div>
       </section>
 
       <section class="card">
         <h3>Independent paths</h3>
         <div class="paths">
-          <div class="path"><b class="ok">LOCAL</b>typed recovery</div>
-          <div class="path"><b class="ok">WEB</b>replaceable renderer</div>
-          <div class="path"><b class="ok">PEER</b>federated candidate</div>
+          <div class="path"><b class="held">LOCAL DEMO</b>typed recovery example</div>
+          <div class="path"><b class="held">WEB DEMO</b>replaceable renderer example</div>
+          <div class="path"><b class="held">PEER HOLD</b>federated candidate</div>
           <div class="path"><b class="held">MODEL</b>provider optional</div>
         </div>
         <p class="notice">Redundancy does not duplicate authority.</p>
       </section>
 
+
+      <section class="card" aria-label="CoEyes event-driven feedback selector">
+        <h3>CoEyes+ · feedback selector <span class="badge">SYNTHETIC</span></h3>
+        <p class="notice">One evidence delta, one bounded local decision, then sleep. This demo reads no X2 processes, sensors, cameras, microphones or screens. No polling, network or device action.</p>
+        <fieldset class="feedback-signals">
+          <legend>Simulate evidence arriving</legend>
+          <label><input type="radio" name="eyesSignal" value="observer_gap" checked>New desktop image, stale remote observer</label>
+          <label><input type="radio" name="eyesSignal" value="overlap">Foreground windows obscure CoBar</label>
+          <label><input type="radio" name="eyesSignal" value="fresh">Current receipt; no material delta</label>
+          <label><input type="radio" name="eyesSignal" value="sensitive">Camera or screen capture requested</label>
+        </fieldset>
+        <div class="feedback-state" id="eyesContainer" data-state="HELD">
+          <strong id="eyesState">Fixture awaiting selection</strong>
+          <p id="eyesWhy">Only sample events are available.</p>
+          <p id="eyesNext">No live receiver is connected.</p>
+        </div>
+        <div class="actions"><button type="button" class="action" id="eyesRecheck">Recheck same evidence</button></div>
+        <p class="notice" id="eyesReceipt" role="status" aria-live="polite">SYNTHETIC · 0/4 evaluations · SEND 0 · CAPTURE 0 · EXECUTE 0</p>
+      </section>
       <section class="card predict">
         <h3>Predictive shadow</h3>
         <div class="inputwrap">
@@ -210,7 +239,7 @@ footer{padding:10px 16px;color:var(--muted);font-size:12px;border-top:1px solid 
       </section>
       <section>
         <h2>Current</h2>
-        <p>A synthetic durable work object is current locally. One remote embodiment is explicitly unknown. No external action is authorized.</p>
+        <p>A synthetic work object illustrates continuity. Current X2 and remote receiver state are unknown to this static page. No external action is authorized.</p>
         <h2>Next</h2>
         <p>Preview one reversible action, compare its evidence and recovery path, then explicitly accept or reject it.</p>
         <h2>Unknown</h2>
@@ -222,7 +251,7 @@ footer{padding:10px 16px;color:var(--muted);font-size:12px;border-top:1px solid 
   </main>
 
   <footer>
-    STATIC OFFLINE SOURCE EXEMPLAR · NO FETCH · NO STORAGE · NO LOGIN · NO SEND ·
+    STATIC OFFLINE SOURCE EXEMPLAR · CoEyes+ SYNTHETIC EVENT SELECTOR · NO FETCH · NO STORAGE · NO SENSOR · NO LOGIN · NO SEND ·
     <span id="footerMode">Orb + Map</span>
   </footer>
 </div>
@@ -264,6 +293,72 @@ footer{padding:10px 16px;color:var(--muted);font-size:12px;border-top:1px solid 
     field.classList.toggle("threed", on);
     threeBtn.setAttribute("aria-pressed", String(on));
   });
+
+
+  // CoEyes+ R1: event-triggered, bounded local policy only; no sensors, timers or I/O.
+  const feedbackPolicy = Object.freeze({
+    observer_gap: {
+      state:"HELD_OBSERVER",
+      why:"A recent visual image and an unavailable remote observer are different evidence sources. Neither verifies the other.",
+      next:"Require a fresh authorized receiver readback before calling X2 or CoSync healthy."
+    },
+    overlap: {
+      state:"PROPOSE_UX",
+      why:"Obscured controls are meaningful UX friction, not a reason to take over the foreground window.",
+      next:"Offer compact Text or Ambient projection; let the user choose. Never move or close windows automatically."
+    },
+    fresh: {
+      state:"QUIET",
+      why:"The synthetic current receipt offers no material change or unanswered decision.",
+      next:"Sleep until evidence changes, a recovery fails, or a receiver provides a new return."
+    },
+    sensitive: {
+      state:"HELD_CONSENT",
+      why:"An agentic wake event does not authorize screen capture, camera, microphone or private-context collection.",
+      next:"Wait for separately scoped, revocable consent. Do not open sensors or persist observations."
+    }
+  });
+  const eyesContainer = document.getElementById("eyesContainer");
+  const eyesState = document.getElementById("eyesState");
+  const eyesWhy = document.getElementById("eyesWhy");
+  const eyesNext = document.getElementById("eyesNext");
+  const eyesReceipt = document.getElementById("eyesReceipt");
+  const seenEvidence = new Set();
+  let evaluations = 0;
+  const evaluationBudget = 4;
+  function selectFeedback() {
+    const input = document.querySelector('input[name="eyesSignal"]:checked');
+    if (!input || !feedbackPolicy[input.value]) return;
+    // A real receiver requires a monotonic source/version; fixture keys are not live evidence IDs.
+    const evidenceKey = "synthetic-r1-" + input.value + "-v1";
+    if (seenEvidence.has(evidenceKey)) {
+      eyesReceipt.textContent = "DEDUPED · unchanged synthetic evidence · " +
+        evaluations + "/" + evaluationBudget + " evaluations · SEND 0 · CAPTURE 0 · EXECUTE 0";
+      return;
+    }
+    if (evaluations >= evaluationBudget) {
+      eyesContainer.dataset.state = "HELD";
+      eyesState.textContent = "SIMULATED BUDGET STOP";
+      eyesWhy.textContent = "Finite feedback budgets prevent always-on loops.";
+      eyesNext.textContent = "Await a new bounded session and fresh independent evidence.";
+      eyesReceipt.textContent = "HELD · budget exhausted · SEND 0 · CAPTURE 0 · EXECUTE 0";
+      return;
+    }
+    seenEvidence.add(evidenceKey);
+    evaluations++;
+    const decision = feedbackPolicy[input.value];
+    eyesContainer.dataset.state = decision.state;
+    eyesState.textContent = "SIMULATED " + decision.state;
+    eyesWhy.textContent = "WHY: " + decision.why;
+    eyesNext.textContent = "NEXT: " + decision.next;
+    eyesReceipt.textContent = "Fixture-only decision · " + evaluations + "/" +
+      evaluationBudget + " evaluations · no live receiver · SEND 0 · CAPTURE 0 · EXECUTE 0";
+  }
+  document.querySelectorAll('input[name="eyesSignal"]').forEach((input) => {
+    input.addEventListener("change", selectFeedback);
+  });
+  document.getElementById("eyesRecheck").addEventListener("click", selectFeedback);
+  selectFeedback();
 
   document.querySelectorAll(".node").forEach((node) => {
     node.addEventListener("click", () => {
