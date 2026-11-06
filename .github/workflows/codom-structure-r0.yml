@@ -1,0 +1,33 @@
+name: CoDOM offline structural mining R0
+on:
+  pull_request:
+    paths:
+      - "examples/codom_structure_r0/**"
+      - ".github/workflows/codom-structure-r0.yml"
+permissions:
+  contents: read
+jobs:
+  structural-shadow:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Local synthetic structural semantics and negative controls
+        run: python3 -m unittest discover -s examples/codom_structure_r0 -p 'test_*.py' -v
+      - name: Deterministic report, no external capture
+        run: |
+          python3 examples/codom_structure_r0/CoDOMStructureR0.py --fixture examples/codom_structure_r0/fixture.json > /tmp/codom-r0.json
+          python3 - <<'PY'
+          import json
+          with open('/tmp/codom-r0.json',encoding='utf-8') as f: x=json.load(f)
+          assert x['cross_surface_semantics_equal'] is True
+          assert x['delta']['changed']==['b-next']
+          assert x['effects']==0 and x['active_workers']==0
+          assert all(p['currentness']=='UNKNOWN' for p in x['projections'])
+          assert all(all(v==0 for v in p['effects'].values()) for p in x['projections'])
+          assert all('SENSITIVE_CANARY' not in json.dumps(p) for p in x['projections'])
+          print('PASS_CODOM_SYNTHETIC_R0')
+          PY
