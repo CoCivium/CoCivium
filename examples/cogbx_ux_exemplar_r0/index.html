@@ -200,6 +200,7 @@ footer{padding:10px 16px;color:var(--muted);font-size:12px;border-top:1px solid 
           <label><input type="radio" name="eyesSignal" value="observer_gap" checked>New desktop image, stale remote observer</label>
           <label><input type="radio" name="eyesSignal" value="overlap">Foreground windows obscure CoBar</label>
           <label><input type="radio" name="eyesSignal" value="fresh">Current receipt; no material delta</label>
+          <label><input type="radio" name="eyesSignal" value="recovery_fail">Recovery checkpoint failed to reopen</label>
           <label><input type="radio" name="eyesSignal" value="sensitive">Camera or screen capture requested</label>
         </fieldset>
         <div class="feedback-state" id="eyesContainer" data-state="HELD">
@@ -311,6 +312,11 @@ footer{padding:10px 16px;color:var(--muted);font-size:12px;border-top:1px solid 
       state:"QUIET",
       why:"The synthetic current receipt offers no material change or unanswered decision.",
       next:"Sleep until evidence changes, a recovery fails, or a receiver provides a new return."
+    },
+    recovery_fail: {
+      state:"PROPOSE_RECOVERY",
+      why:"A failed restart is a material delta; the original work object and checkpoint must remain preserved.",
+      next:"Propose an independently verifiable read-only checkpoint reconstruction. Do not delete or overwrite the original.",
     },
     sensitive: {
       state:"HELD_CONSENT",
