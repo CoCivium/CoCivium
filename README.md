@@ -1,5 +1,7 @@
 # CoCivium ⊂ Trust Together
 
+**Read CoCivia's AGI book preview**: [CoCivia's Field Guide to Thinking](docs/Books/README.md) is an experimental eight-chapter reader. It is a static public preview, not a continuously updating book or a licensed finished edition.
+
 ## Choose your CoCivium doorway
 
 CoCivium is an open research project exploring how people and AI tools can work together, while keeping consent and evidence visible.  **You do not need to understand the terminology to begin.**
