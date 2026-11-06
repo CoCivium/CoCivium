@@ -1,0 +1,181 @@
+{
+  "schema": "CoSpeedo.CoValGrowthFirstView.R0",
+  "display_title": "CoSpeedo+ | CoVal Growth | Historical Evidence",
+  "generated_utc": "2026-10-27T06:29:27.475Z",
+  "state": "STATIC_PUBLIC_SOURCE_SNAPSHOT__OUTCOME_GROWTH_UNQUALIFIED",
+  "sources": {
+    "scoped_evidence": {
+      "repository": "CoCivium/CoCivium",
+      "path": "ai/benchmark-evo.jsonl",
+      "blob_sha": "8c5a99b279a4a24aa458b41b87b5a8e34755b110",
+      "entry_count": 145,
+      "url": "https://github.com/CoCivium/CoCivium/blob/main/ai/benchmark-evo.jsonl"
+    },
+    "metric_policy": {
+      "repository": "CoCivium/CoCivium",
+      "path": "docs/Metrics/COSPEEDO_7DAY_SCORECARD_R0_20261026.json",
+      "blob_sha": "cd39a2730f7c05708bdffb20910867abe17a2e57",
+      "windows": 7,
+      "url": "https://github.com/CoCivium/CoCivium/blob/main/docs/Metrics/COSPEEDO_7DAY_SCORECARD_R0_20261026.json"
+    },
+    "measurement_contract": {
+      "url": "https://github.com/CoCivium/CoCivium/blob/main/docs/Architecture/COSPEEDO_EXPONENTIAL_PROOF_AND_RECURRENCE_INTERNALIZATION_R0_20261026.md"
+    },
+    "previous_audit": {
+      "url": "https://github.com/CoCivium/CoCivium/pull/296",
+      "note": "Separate draft for strict correction of secondary JSONL ledger. Not merged or used for this snapshot."
+    }
+  },
+  "counts": {
+    "scoped_ledger_events": 145,
+    "PASS": 84,
+    "HELD": 47,
+    "FAIL": 14
+  },
+  "windows": [
+    {
+      "date": "2026-10-20",
+      "coverage": "UNKNOWN",
+      "pass": null,
+      "held": null,
+      "fail": null,
+      "total": null,
+      "closure": null,
+      "atomic_debt": null,
+      "human_relay": null,
+      "receiver_returns": null,
+      "recovery": null,
+      "observed_cost": null,
+      "scorecard_state": "UNKNOWN"
+    },
+    {
+      "date": "2026-10-21",
+      "coverage": "UNKNOWN",
+      "pass": null,
+      "held": null,
+      "fail": null,
+      "total": null,
+      "closure": null,
+      "atomic_debt": null,
+      "human_relay": null,
+      "receiver_returns": null,
+      "recovery": null,
+      "observed_cost": null,
+      "scorecard_state": "UNKNOWN"
+    },
+    {
+      "date": "2026-10-22",
+      "coverage": "UNKNOWN",
+      "pass": null,
+      "held": null,
+      "fail": null,
+      "total": null,
+      "closure": null,
+      "atomic_debt": null,
+      "human_relay": null,
+      "receiver_returns": null,
+      "recovery": null,
+      "observed_cost": null,
+      "scorecard_state": "UNKNOWN"
+    },
+    {
+      "date": "2026-10-23",
+      "coverage": "SOURCE_LEDGER_SAMPLE_ONLY",
+      "pass": 38,
+      "held": 16,
+      "fail": 10,
+      "total": 64,
+      "closure": null,
+      "atomic_debt": null,
+      "human_relay": null,
+      "receiver_returns": null,
+      "recovery": null,
+      "observed_cost": null,
+      "scorecard_state": "UNKNOWN"
+    },
+    {
+      "date": "2026-10-24",
+      "coverage": "SOURCE_LEDGER_SAMPLE_ONLY",
+      "pass": 40,
+      "held": 26,
+      "fail": 3,
+      "total": 69,
+      "closure": null,
+      "atomic_debt": null,
+      "human_relay": null,
+      "receiver_returns": null,
+      "recovery": null,
+      "observed_cost": null,
+      "scorecard_state": "UNKNOWN"
+    },
+    {
+      "date": "2026-10-25",
+      "coverage": "SOURCE_LEDGER_SAMPLE_ONLY",
+      "pass": 3,
+      "held": 2,
+      "fail": 0,
+      "total": 5,
+      "closure": null,
+      "atomic_debt": null,
+      "human_relay": null,
+      "receiver_returns": null,
+      "recovery": null,
+      "observed_cost": null,
+      "scorecard_state": "PARTIAL"
+    },
+    {
+      "date": "2026-10-26",
+      "coverage": "SOURCE_LEDGER_SAMPLE_ONLY",
+      "pass": 3,
+      "held": 3,
+      "fail": 1,
+      "total": 7,
+      "closure": null,
+      "atomic_debt": null,
+      "human_relay": null,
+      "receiver_returns": null,
+      "recovery": null,
+      "observed_cost": null,
+      "scorecard_state": "PARTIAL_CURRENT"
+    }
+  ],
+  "coval": {
+    "status": "PROVISIONAL_METRIC_NOT_OPERATIONALIZED",
+    "interpretation": "Receiver-verified useful outcomes with explicit beneficiary, baseline, cost, risk and source/receiver receipts; no canonical scalar value or comparable historical units fixed.",
+    "value": null,
+    "growth_rate_per_day": null,
+    "exponential_time_rate_lambda": null,
+    "exponential_doubling_days": null,
+    "historical_scaling_exponent_beta": null,
+    "valid_receiver_value_windows": 0,
+    "valid_scale_pairs": 0,
+    "tested_exponential_growth": false
+  },
+  "acceptance": {
+    "min_comparable_time_windows": 4,
+    "min_comparable_scale_pairs": 4,
+    "must_have": [
+      "stable useful-outcome unit",
+      "independent receiver-effect receipt",
+      "comparable time windows",
+      "measurement coverage and missed records",
+      "cost / human-time normalization",
+      "uncertainty and alternative growth-model comparison"
+    ],
+    "prohibited": [
+      "COUNT_PASS_AS_USEFUL_CLOSURE",
+      "COUNT_NOT_RUN_AS_ZERO",
+      "FIT_EXPONENTIAL_FROM_ARTIFACTS",
+      "INFER_LIVE_STATUS_FROM_STATIC_SNAPSHOT",
+      "CLAIM_NATIVE_X2_DEPLOYMENT"
+    ],
+    "next_proof": "Independently validate the first completed source→deed→receiver→effect→learning chain with timestamps and cost, then backfill comparable windows."
+  },
+  "privacy": "PUBLIC_AGGREGATE_ONLY__NO_RAW_MESSAGES_OR_PRIVATE_CONTENT",
+  "limitations": [
+    "Evidence ledger rows are heterogeneous scoped tests/observations, not exhaustive daily task attempts.",
+    "October 20–22 missing ledger coverage is UNKNOWN, not zero.",
+    "No numeric receiver-useful closure, human-relay cost, atomic debt or X2 runtime coverage is qualified in the seven-day scorecard.",
+    "A static HTML dashboard is not a live X2 CoBar installation or background polling service."
+  ]
+}
