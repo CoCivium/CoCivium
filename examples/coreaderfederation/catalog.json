@@ -1,0 +1,169 @@
+{
+  "schema": "CoReaderFederation.Catalog.R0",
+  "state": "PUBLIC_SOURCE_SAMPLE_ONLY__NO_LIVE_SUBSTACK_POSTS_OR_READER_TRACKING",
+  "source_boundaries": "GitHub main URLs are current pointers; git_blob_sha records the inspected historical blob; no claim of immutable permalink or live published Substack edition.",
+  "illustrative_scale": {
+    "axes": 12,
+    "choices_per_axis": 10,
+    "raw_product": "1000000000000",
+    "status": "ILLUSTRATIVE_ONLY__NOT_A_MEANINGFUL_ROLE_OR_PAGE_COUNT"
+  },
+  "facets": [
+    "audience",
+    "question",
+    "topic",
+    "depth",
+    "time_budget",
+    "format",
+    "accessibility",
+    "language",
+    "channel",
+    "evidence_level",
+    "update_mode",
+    "offer_state"
+  ],
+  "topics": [
+    "architecture",
+    "publishing",
+    "research",
+    "evidence",
+    "agency",
+    "governance",
+    "recovery",
+    "education"
+  ],
+  "audiences": [
+    "curious",
+    "builder",
+    "researcher",
+    "journalist",
+    "educator"
+  ],
+  "formats": [
+    "text",
+    "technical",
+    "brief"
+  ],
+  "entries": [
+    {
+      "id": "great-refact",
+      "title": "The Great ReFact: Living Rich-Media Architecture",
+      "topics": [
+        "publishing",
+        "architecture",
+        "education"
+      ],
+      "audiences": [
+        "curious",
+        "educator",
+        "journalist"
+      ],
+      "formats": [
+        "text",
+        "brief"
+      ],
+      "depth": "intro",
+      "teaser": "How one durable source becomes many readable forms.",
+      "source_url": "https://github.com/CoCivium/CoCivium/blob/main/docs/Architecture/COBOOK_LIVING_RICH_MEDIA_SYSTEM_R0_20261025.md",
+      "git_blob_sha": "f0f5992302ddddc6dbb173dd16d2d77557f1b1a2",
+      "publication_state": "PUBLIC_GITHUB_ARCHITECTURE_CANDIDATE",
+      "offer": null
+    },
+    {
+      "id": "living-highlights",
+      "title": "Living Highlight Assets",
+      "topics": [
+        "publishing",
+        "evidence",
+        "architecture"
+      ],
+      "audiences": [
+        "builder",
+        "researcher",
+        "journalist"
+      ],
+      "formats": [
+        "text",
+        "technical"
+      ],
+      "depth": "deep",
+      "teaser": "How visible updates coexist with recoverable versions.",
+      "source_url": "https://github.com/CoCivium/CoCivium/blob/main/docs/Architecture/COLIVING_HIGHLIGHT_ASSETS_R0.md",
+      "git_blob_sha": "40785f77b4085b5830a45bb4c965360347f7cdaf",
+      "publication_state": "PUBLIC_GITHUB_ARCHITECTURE_CANDIDATE",
+      "offer": null
+    },
+    {
+      "id": "co-interest",
+      "title": "Subscription and Interest Ecology",
+      "topics": [
+        "agency",
+        "publishing",
+        "architecture"
+      ],
+      "audiences": [
+        "builder",
+        "researcher"
+      ],
+      "formats": [
+        "technical",
+        "text"
+      ],
+      "depth": "deep",
+      "teaser": "Explicit interests, bounded subscriptions and changing relevance.",
+      "source_url": "https://github.com/CoCivium/CoCivium/blob/main/docs/Architecture/COSUBSCRIPTION_ECOLOGY_R0.md",
+      "git_blob_sha": "4ea7a938bf72128cff2fe944f6738b8f4ea3b50c",
+      "publication_state": "PUBLIC_GITHUB_ARCHITECTURE_CANDIDATE",
+      "offer": null
+    },
+    {
+      "id": "fireworks",
+      "title": "CoFireworks: A Reader-First Front Door",
+      "topics": [
+        "publishing",
+        "education",
+        "agency"
+      ],
+      "audiences": [
+        "curious",
+        "journalist",
+        "educator"
+      ],
+      "formats": [
+        "text",
+        "brief"
+      ],
+      "depth": "intro",
+      "teaser": "A front door focused on first-use success rather than publication volume.",
+      "source_url": "https://github.com/CoCivium/CoCivium/blob/main/docs/Strategy/COFIREWORKS_FRONTDOOR_CULTURESUBSTRATE_R0_20261024.md",
+      "git_blob_sha": "02ff0b9c94ac0c9cbb423d9c345e714dffade4e4",
+      "publication_state": "PUBLIC_GITHUB_STRATEGY_CANDIDATE",
+      "offer": null
+    },
+    {
+      "id": "civ2-readiness",
+      "title": "Civ2 to Civ3: Evidence-Led Readiness Gaps",
+      "topics": [
+        "governance",
+        "recovery",
+        "evidence",
+        "research"
+      ],
+      "audiences": [
+        "researcher",
+        "journalist",
+        "builder"
+      ],
+      "formats": [
+        "technical",
+        "text"
+      ],
+      "depth": "deep",
+      "teaser": "What is proven, what remains held, and what would test the claims.",
+      "source_url": "https://github.com/CoCivium/CoCivium/blob/main/docs/Strategy/CIV2_CIV3_BOUNDARY_GAPMAP_R0.md",
+      "git_blob_sha": "98eff251a9b36b9abcbac8391189d18304e0721d",
+      "publication_state": "PUBLIC_GITHUB_ADVISORY_NOT_VERIFIED_LIVE_RUNTIME",
+      "offer": null
+    }
+  ]
+}
