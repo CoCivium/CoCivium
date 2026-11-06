@@ -1,0 +1,155 @@
+{
+  "schema": "CoSpeedo.CoValueEvidenceSnapshot.R1.v0.1",
+  "snapshot_date_utc": "2026-10-27",
+  "observed_through_utc": "2026-10-26",
+  "state": "PUBLIC_SAFE_HISTORICAL_LOG_SNAPSHOT__NO_REAL_COVALUE_EXPONENT",
+  "interpretation": "CoValue means receiver-verifiable useful effect, not speculative monetary valuation; the latter has no audited observations in these sources.",
+  "source_pins": {
+    "benchmark": {
+      "repo_path": "ai/benchmark-evo.jsonl",
+      "git_blob_sha1": "8c5a99b279a4a24aa458b41b87b5a8e34755b110",
+      "git_commit": "5c76703b19eebe9192f928634a14b760129382c3",
+      "url": "https://github.com/CoCivium/CoCivium/blob/5c76703b19eebe9192f928634a14b760129382c3/ai/benchmark-evo.jsonl",
+      "method": "one record per JSONL line, observed_at first 10 chars, top-level status, exact per-day grouping"
+    },
+    "scorecard": {
+      "repo_path": "docs/Metrics/COSPEEDO_7DAY_SCORECARD_R0_20261026.json",
+      "git_blob_sha1": "cd39a2730f7c05708bdffb20910867abe17a2e57",
+      "git_commit": "5c76703b19eebe9192f928634a14b760129382c3",
+      "url": "https://github.com/CoCivium/CoCivium/blob/5c76703b19eebe9192f928634a14b760129382c3/docs/Metrics/COSPEEDO_7DAY_SCORECARD_R0_20261026.json",
+      "method": "windows status, metric definitions and null/unknown preservation"
+    }
+  },
+  "benchmark_by_day": [
+    {
+      "date": "2026-10-23",
+      "PASS": 38,
+      "HELD": 16,
+      "FAIL": 10
+    },
+    {
+      "date": "2026-10-24",
+      "PASS": 40,
+      "HELD": 26,
+      "FAIL": 3
+    },
+    {
+      "date": "2026-10-25",
+      "PASS": 3,
+      "HELD": 2,
+      "FAIL": 0
+    },
+    {
+      "date": "2026-10-26",
+      "PASS": 3,
+      "HELD": 3,
+      "FAIL": 1
+    }
+  ],
+  "benchmark_totals": {
+    "records": 145,
+    "PASS": 84,
+    "HELD": 47,
+    "FAIL": 14,
+    "unique_record_ids": 145,
+    "duplicate_record_ids": 0
+  },
+  "scorecard_windows": [
+    {
+      "date": "2026-10-20",
+      "status": "UNKNOWN"
+    },
+    {
+      "date": "2026-10-21",
+      "status": "UNKNOWN"
+    },
+    {
+      "date": "2026-10-22",
+      "status": "UNKNOWN"
+    },
+    {
+      "date": "2026-10-23",
+      "status": "UNKNOWN"
+    },
+    {
+      "date": "2026-10-24",
+      "status": "UNKNOWN"
+    },
+    {
+      "date": "2026-10-25",
+      "status": "PARTIAL"
+    },
+    {
+      "date": "2026-10-26",
+      "status": "PARTIAL_CURRENT"
+    }
+  ],
+  "scorecard_metric_keys": [
+    "verified_useful_closures",
+    "atomic_debt_created",
+    "recurring_needs_internalized",
+    "external_dependencies",
+    "human_relay_events",
+    "independent_receiver_returns",
+    "recovery_proofs",
+    "x2_observer_availability",
+    "source_to_successor_latency_hours",
+    "measured_cost"
+  ],
+  "comparable_value_windows": null,
+  "comparable_value_windows_observed": 0,
+  "minimum_comparable_value_windows": 4,
+  "qualified_value_series": null,
+  "growth_exponent_per_day": null,
+  "doubling_time_days": null,
+  "exponent_status": "HELD_INSUFFICIENT_COMPARABLE_RECEIVER_COST_DATA",
+  "trend_classification": null,
+  "proof_gates": [
+    {
+      "name": "Stable metric definition",
+      "state": "SPECIFIED_NOT_OBSERVED",
+      "note": "CoSpeedo defines verified useful closure, but no complete daily observations"
+    },
+    {
+      "name": "At least 4 comparable windows",
+      "state": "HELD",
+      "note": "No comparable CoValue values populated in the 7-day source"
+    },
+    {
+      "name": "Real receiver and effect",
+      "state": "HELD",
+      "note": "Benchmark source PASS is not receiver usefulness"
+    },
+    {
+      "name": "Costs and human attention",
+      "state": "HELD",
+      "note": "Normalized compute/time/energy costs missing"
+    },
+    {
+      "name": "Independent reproducibility",
+      "state": "PARTIAL",
+      "note": "Source-backed benchmark log exists; useful-effect measurement not independently repeated"
+    },
+    {
+      "name": "X2 restart/recovery proof",
+      "state": "HELD",
+      "note": "X2 Desktop Commander remote route unavailable at check; screenshots do not prove current agent health"
+    }
+  ],
+  "x2_remote_observer": {
+    "status": "OFFLINE_REMOTE_CONNECTOR",
+    "last_seen_approx_hours": null,
+    "observed_on": "2026-10-27",
+    "not_claimed": "This is not a measured OS uptime, browser latency or powered-off status."
+  },
+  "nonclaims": [
+    "BENCHMARK_RECORDS_NE_BENEFIT",
+    "PASS_NE_INDEPENDENT_RECEIVER_ADOPTION",
+    "UNKNOWN_NE_ZERO",
+    "NO_EXPONENTIAL_FIT_FROM_LOG_COUNTS",
+    "NO_CROSS_DAY_COMPARABILITY_FOR_COVALUE",
+    "NO_LIVE_BACKGROUND_REFRESH",
+    "X2_REMOTE_OFFLINE_NE_DEVICE_DEAD",
+    "SOURCE_SNAPSHOT_NE_DEPLOYED_DASHBOARD"
+  ]
+}
