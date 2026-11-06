@@ -1,0 +1,27 @@
+name: CoAllBloom first bounded witness
+
+on:
+  pull_request:
+    paths:
+      - "examples/coallbloom/**"
+      - ".github/workflows/coallbloom-witness-r0.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  conformance:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Parse public synthetic witness
+        run: python3 -m json.tool examples/coallbloom/first-seed-witness-r0.json > /dev/null
+      - name: Validate source identity, negative cases and no-effect gates
+        run: python3 -m unittest discover -s examples/coallbloom -p 'test_*.py' -v
