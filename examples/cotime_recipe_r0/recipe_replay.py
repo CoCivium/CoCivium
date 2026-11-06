@@ -80,7 +80,8 @@ def replay(records, as_of):
         state = "MOCK_TEST_PASSED_LIMITED_SCOPE" if mock else "UNTESTED_CROSS_DOMAIN_CANDIDATE"
     artifact = {
         "schema": "CoTimeRecipeReplay.R0", "as_of": as_of,
-        "source_manifest_sha256": sha256(records),
+        "source_manifest_sha256": sha256(available),
+        "source_scope": "RECORDED_ON_OR_BEFORE_AS_OF",
         "evidence_class": "SYNTHETIC_FIXTURE", "external_effects": 0,
         "visible_sources": [
             {"id": x["id"], "class": x["class"], "source_sha256": sha256(x),
