@@ -1,5 +1,10 @@
 # CoCivium ⊂ Trust Together
 
+> **What is this?** CoCivium is an open-source research and product-development initiative exploring **relational coordination infrastructure**: tools that help people and AI systems work across applications, devices and organizations while preserving consent, evidence, continuity and the freedom to exit. **CoAll+** is the proposed coordination fabric; **Civ2+** is the wider civilizational direction under investigation, not a transition already achieved. [Read the product and terminology placement](docs/Positioning/COCIVIUM_COALL_CIV2_PRODUCT_PLACEMENT_R0.md).
+>
+> **What's available?** Public research, source-linked demos, reproducible bounded tests and pre-launch participation paths. A public GitHub file, completed CI run, or accessible demo does not establish general service readiness or independent human benefit. [Try one real task](START_HERE.md) · [Read the evidence and limitations](EVERGREEN.md).
+
+
 ## Choose your CoCivium doorway
 
 CoCivium is an open research project exploring how people and AI tools can work together, while keeping consent and evidence visible.  **You do not need to understand the terminology to begin.**
