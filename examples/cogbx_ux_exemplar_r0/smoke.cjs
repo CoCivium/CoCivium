@@ -30,6 +30,21 @@ must(/aria-label="Projection controls"/, "projection control label");
 must(/aria-pressed/, "toggle semantics");
 must(/one durable work object/i, "durable work identity");
 must(/Redundancy does not duplicate authority/i, "redundancy boundary");
+must(/CoEyes\+ · feedback selector/, "CoEyes feedback selector surfaced");
+must(/Simulate evidence arriving/, "explicit simulated evidence");
+must(/seenEvidence\.has\(evidenceKey\)/, "deduped feedback");
+must(/evaluationBudget = 4/, "bounded feedback budget");
+must(/HELD_CONSENT/, "sensitive sensing consent hold");
+must(/HELD_OBSERVER/, "split observation hold");
+must(/PROPOSE_UX/, "nonexecuting UX proposal");
+must(/synthetic only/, "no false live currentness");
+must(/Fixture-only decision/, "qualified synthetic receipt");
+must(/NO SENSOR/, "sensor boundary");
+mustNot(/\bsetInterval\s*\(/, "resident feedback timer");
+mustNot(/\bsetTimeout\s*\(/, "resident timeout loop");
+mustNot(/\bgetUserMedia\s*\(/, "sensor invocation");
+mustNot(/\bgetDisplayMedia\s*\(/, "screen capture invocation");
+
 
 mustNot(/\bfetch\s*\(/, "fetch");
 mustNot(/XMLHttpRequest/, "XHR");
