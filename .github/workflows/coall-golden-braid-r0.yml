@@ -1,0 +1,47 @@
+name: CoAll Golden Braid issue 317 local proof
+
+on:
+  pull_request:
+    paths:
+      - 'experiments/coall_golden_braid_r0/**'
+      - '.github/workflows/coall-golden-braid-r0.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  synthetic-two-destination:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Parse exact source and test file
+        run: |
+          python3 -m json.tool experiments/coall_golden_braid_r0/packet.json > /dev/null
+          python3 -m py_compile experiments/coall_golden_braid_r0/golden_braid.py
+      - name: Failure, tampering, stop and restart regressions
+        run: python3 -B -m unittest discover -s experiments/coall_golden_braid_r0 -p 'test_golden_braid.py' -v
+      - name: Fresh-process two-destination replay
+        shell: bash
+        run: |
+          set -euo pipefail
+          packet=experiments/coall_golden_braid_r0/packet.json
+          runner=experiments/coall_golden_braid_r0/golden_braid.py
+          root="$(mktemp -d)"
+          python3 "$runner" dispatch --packet "$packet" --root "$root" --fail test-beta > "$RUNNER_TEMP/phase1.json"
+          python3 "$runner" receive --packet "$packet" --root "$root" --dest test-alpha > "$RUNNER_TEMP/phase2.json"
+          python3 "$runner" dispatch --packet "$packet" --root "$root" > "$RUNNER_TEMP/phase3.json"
+          python3 "$runner" receive --packet "$packet" --root "$root" --dest test-beta > "$RUNNER_TEMP/phase4.json"
+          python3 "$runner" status --packet "$packet" --root "$root" > "$RUNNER_TEMP/final-status.json"
+          python3 - "$RUNNER_TEMP/final-status.json" "$root" <<'PY'
+          import json, sys
+          from pathlib import Path
+          status = json.loads(Path(sys.argv[1]).read_text())
+          root = Path(sys.argv[2])
+          assert status['all_local_ack'] is True
+          assert status['actual_external_receivers'] == 0
+          assert status['destinations']['test-beta']['failure_attempt_preserved']
+          assert all(x['state'] == 'ACKED_LOCAL_PROCESS' for x in status['destinations'].values())
+          assert all((root / d / 'attempt_landed.json').exists() for d in ('test-alpha', 'test-beta'))
+          print('PASS_SYNTHETIC_TWO_DESTINATION_LOCAL_RECEIPT_AND_RECOVERY')
+          PY

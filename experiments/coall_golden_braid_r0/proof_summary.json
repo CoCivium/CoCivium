@@ -1,0 +1,50 @@
+{
+  "external_receivers": 0,
+  "fresh_processes": true,
+  "hashes": {
+    "README.md": "C1F61857ABBA3044EEA742ADE2E72993A3AE956F7522D6C35C7CB290D99FF562",
+    "golden_braid.py": "9FF1ECE01147581A7C1F57597A63714F562F16612133521FA9F79A86074ABC34",
+    "local_tests.txt": "8CCCC79E6F3317239B75352D110E3C9B291C4F38063F84FC03DDA8183642CD81",
+    "packet.json": "1D3433579BD468E0FE5A0FBE339E094EAFADDE212536C30F2E55514322F46ACB",
+    "replay_final.json": "D6860066C21AE85517125E9078BEFF44B87710D11CA3B4C86305FEA7F4E54994",
+    "test_golden_braid.py": "98A664FA16182203286E68681A74AAA69F8CE5DED16D1692F73876716B0013BA",
+    "workflow.yml": "F6F78050BCF9C60C798E32E221F6F632A80C48FBB6267CDFB57E886F023DB869"
+  },
+  "issue": "https://github.com/CoCivium/CoCivium/issues/317",
+  "local_replay": {
+    "actual_external_receivers": 0,
+    "all_local_ack": true,
+    "destinations": {
+      "test-alpha": {
+        "ack_sha256": "B2216756A3E522293182987DEE978CEAF9EEF58FD9F5A07CCA4D152EABEA30F0",
+        "delivery_attempt_sha256": "B2424D56BCFAE2B96E7D3FFFE626FB0E728C387A9659C87B715F11D1DCF801BC",
+        "failure_attempt_preserved": false,
+        "problem": null,
+        "state": "ACKED_LOCAL_PROCESS"
+      },
+      "test-beta": {
+        "ack_sha256": "689690BE9A16B83A0EA42F371E16ECE63B7392608210C9AC68BD8D5B9F15AD67",
+        "delivery_attempt_sha256": "DC6D544924E5F7FED6426DA4F02DE2836D15009832A856102C9E650260C8D414",
+        "failure_attempt_preserved": true,
+        "problem": null,
+        "state": "ACKED_LOCAL_PROCESS"
+      }
+    },
+    "next": "VERIFY_REAL_AUTHORIZED_RECEIVERS",
+    "nonclaims": [
+      "LOCAL_PROCESS_NE_EXTERNAL_RECEIVER",
+      "ATTEMPT_NE_DELIVERY",
+      "FILE_LANDING_NE_ACK",
+      "ACK_NE_INTEGRATION",
+      "NO_LIVE_SESSION_SYNC"
+    ],
+    "schema": "CoAll.GoldenBraidLocalStatus.R0",
+    "source_sha256": "1D3433579BD468E0FE5A0FBE339E094EAFADDE212536C30F2E55514322F46ACB",
+    "stop": false,
+    "task_id": "coall-issue317-goldenbraid-synthetic-001"
+  },
+  "local_test_result": "PASS",
+  "local_tests": 17,
+  "scope": "SYNTHETIC_LOCAL_ONLY",
+  "source_version": "2026-10-27-candidate"
+}

@@ -1,0 +1,18 @@
+{
+  "schema": "CoAll.GoldenBraidLocalFanout.R0",
+  "task_id": "coall-issue317-goldenbraid-synthetic-001",
+  "source": {"repository": "CoCivium/CoCivium", "issue": 317, "version": "2026-10-27-synthetic-fixture", "evidence_class": "SYNTHETIC"},
+  "intent": "Test one-input fan-out, separate local receipts, failure recovery and restart",
+  "scope": "SYNTHETIC_LOCAL_TEST_ONLY",
+  "owner": "UNASSIGNED_TEST_FIXTURE",
+  "next_action": "Obtain two authorized real receivers only after local protocol review",
+  "acceptance": ["two separate local readproofs", "failure retained", "no duplicate overwrite", "fresh-process reconstruction", "stop honored"],
+  "timestamp": "2026-10-27T00:00:00Z",
+  "status": "TEST_PENDING",
+  "destinations": ["test-alpha", "test-beta"],
+  "provenance": {"source_ref": "https://github.com/CoCivium/CoCivium/issues/317", "use_real_contacts": false},
+  "epistemic_class": "TEST_FIXTURE",
+  "alternatives_retained": ["GitHub PR review", "private CoStead custody", "authorized provider connectors", "offline local test"],
+  "steward": null,
+  "stop_or_revocation": "root/STOP prevents further dispatch or ACK"
+}
