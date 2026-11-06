@@ -1,0 +1,61 @@
+{
+  "schema": "CoCivium.CoBook.ReaderPilot.R0",
+  "edition": "2026-10-25-r0",
+  "lifecycle": "EDITORIAL_CANDIDATE_PUBLIC_SOURCE_NOT_SUBSTACK_POST",
+  "title": "Your App Is an Ingredient",
+  "chapters": [
+    {
+      "id": "welcome",
+      "path": "chapters/00-welcome.md",
+      "git_blob": "7d1d1c42a1fd06a3531d95ce21214dfcf9decf5e"
+    },
+    {
+      "id": "app-ingredient",
+      "path": "chapters/01-app-ingredient.md",
+      "git_blob": "89c04c9314c1f5b19e523801436331ddcfa9f81d"
+    },
+    {
+      "id": "right-to-leave",
+      "path": "chapters/02-right-to-leave.md",
+      "git_blob": "21e69568d5f666da2003205ccb86320286445564"
+    },
+    {
+      "id": "many-lenses",
+      "path": "chapters/03-many-lenses.md",
+      "git_blob": "273b4055a809cefa2bb3f40ebeecb24d896b3b41"
+    },
+    {
+      "id": "fireworks",
+      "path": "chapters/04-fireworks.md",
+      "git_blob": "88aae7d95d661f19306177d450a52e4bf9567b5d"
+    }
+  ],
+  "reader_html": {
+    "path": "index.html",
+    "git_blob": "ba7cbf2a3c3cd40c1e962dbea598a130d439eecf",
+    "local_qa": "PASS_BROWSER_390_768_1366_AND_LENS_CONTROLS",
+    "public_site_http": "HELD_NOT_DEPLOYED"
+  },
+  "channels": {
+    "canonical": "versioned_public_source_candidate",
+    "substack": "HELD_NOT_APPROVED",
+    "epub": "LOCAL_VALIDATED_NOT_PUBLIC_REPO_RELEASE",
+    "audio": "NOT_PRODUCED",
+    "print": "NOT_PRODUCED",
+    "giftware_licence": "RIGHTS_REVIEW_HELD"
+  },
+  "basis": [
+    "https://github.com/CoCivium/CoCivium/blob/main/docs/Architecture/COGREAT_REFACT_R0_20261025.md",
+    "https://github.com/CoCivium/CoCivium/blob/main/examples/coprecursor/README.md",
+    "https://github.com/CoCivium/CoCivium/blob/main/examples/colensmedia/README.md",
+    "https://github.com/CoCivium/CoCivium/blob/main/docs/Public/Snapshots/2026-10-19_CoMegaScroller_CC_CoTheoryAll_R0.md",
+    "https://github.com/CoCivium/CoCivium/blob/main/docs/Strategy/COSPIFF_FIREWORKS_SURVIVABILITY_R1.md"
+  ],
+  "nonclaims": [
+    "BOOK_BLOB_NE_LIVE_SITE",
+    "DRAFT_NE_SUBSTACK_POST",
+    "GIFTS_NE_LICENSE_GRANT",
+    "LINK_NE_RECEIVER_ACK",
+    "SOURCE_TEST_NE_HUMAN_BENEFIT"
+  ]
+}
