@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CoOmni | One object, two local views (R0)</title>
+<style>
+:root{color-scheme:dark;font-family:system-ui,-apple-system,Segoe UI,sans-serif;background:#0e111a;color:#f1f3fa}
+*{box-sizing:border-box}body{margin:0;min-height:100vh}main{max-width:760px;margin:4vh auto;padding:20px}
+h1{font-size:clamp(1.6rem,4vw,2.6rem);margin:5px 0 8px}h2{font-size:1.1rem;margin:0 0 12px}
+p{line-height:1.5;color:#b5c1d6}.eyebrow{text-transform:uppercase;letter-spacing:.15em;color:#b6a2f3;font-size:.75rem}
+.panel{border:1px solid #39415a;background:#181e2d;border-radius:16px;padding:20px;margin:18px 0}
+label{display:block;font-weight:600;margin:10px 0 6px}textarea{width:100%;min-height:100px;padding:14px;border-radius:9px;background:#0c1320;color:#fff;border:1px solid #7785ab;resize:vertical;font:inherit}
+button,.link{background:#aa9aff;color:#111223;border:0;border-radius:9px;padding:11px 16px;font:600 .96rem system-ui;cursor:pointer;text-decoration:none;display:inline-block;margin:5px 7px 5px 0}
+button.secondary,.link{background:#2c3550;color:#edf0fa;border:1px solid #7181a9}button:disabled{opacity:.45;cursor:not-allowed}
+.demo-views{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin-top:14px}.demo-views iframe{width:100%;height:360px;border:1px solid #7181a9;border-radius:12px;background:#0c1320}
+.check{display:inline-flex;align-items:center;gap:8px;margin:5px 15px 12px 0}.check input{accent-color:#aa9aff}
+.note{font-size:.88rem;color:#cfb99f}.status{font-size:.96rem;padding:9px 12px;border-radius:8px;background:#101726;border:1px solid #343c57}
+pre{background:#0c1320;padding:12px;border-radius:9px;white-space:pre-wrap;overflow-wrap:anywhere;min-height:70px;color:#cbd7ea;font-size:.82rem;line-height:1.5}
+footer{font-size:.78rem;color:#aab3cc;margin-top:24px}code{color:#d8ccfa}a{color:#cbb8ff}
+</style>
+</head>
+<body><main>
+<div class="eyebrow">CoCivium · R0 local-only experiment</div>
+<h1>One object, two views</h1>
+<p>A bounded proof of one explicit input reaching two independent browser views, with per-view acknowledgement and stale-message rejection.</p>
+<div id="state" class="status" role="status" aria-live="polite">Initializing</div>
+<section id="sender" class="panel" hidden>
+<h2>Source · one explicit input</h2>
+<p class="note">Only enter fictional/public-safe material. Same-origin tabs can observe messages intended for their role; the session identifier is not authentication.</p>
+<label for="message">Work item (up to 800 characters)</label>
+<textarea id="message" maxlength="800" spellcheck="false">Improve the first-use experience and preserve clear evidence.</textarea>
+<div><label class="check"><input type="checkbox" id="to-ux" checked>UX receiver</label><label class="check"><input type="checkbox" id="to-theory" checked>Theory receiver</label></div>
+<div><button id="open-views">Open receiver views</button><button id="send">Send selected views</button><button id="replay" class="secondary" disabled>Replay last (negative test)</button><button id="stop" class="secondary">Stop session</button></div>
+<div id="links"></div>
+<p id="auto-note" class="note" hidden>Fixture auto-rail armed: receiver READY triggers one fixed fictional packet per role. User text is never auto-sent. STOP remains available.</p>
+<div id="embedded" class="demo-views"></div>
+<h2>Receipt observations</h2><pre id="source-log" aria-live="polite">No send yet.</pre>
+</section>
+<section id="receiver" class="panel" hidden>
+<h2 id="receiver-heading">Receiver</h2>
+<p id="receiver-role-note"></p>
+<div class="status" id="received">Awaiting scoped packet</div>
+<h2 style="margin-top:20px">Receiver-produced observations</h2><pre id="receiver-log">No packet yet.</pre>
+</section>
+<footer>No cross-provider ChatGPT sync · No X2/OS binding · No storage/recovery · No external send · No production authority. Close the page to discard volatile state. <a href="https://github.com/CoCivium/CoCivium/blob/main/ai/onramp/coomni-cross-window-handoff-r0.json">Underlying source contract</a></footer>
+</main>
+<script>
+'use strict';
+(async () => {
+ const q = id => document.getElementById(id);
+ const params = location.hash.slice(1).split('/');
+ const validRole = new Set(['ux','theory']);
+ const role = validRole.has(params[0]) ? params[0] : 'sender';
+ const id = /^[a-f0-9]{32}$/.test(params[1] || '') ? params[1] : Array.from(crypto.getRandomValues(new Uint8Array(16)), b=>b.toString(16).padStart(2,'0')).join('');
+ if(role==='sender' && params[1]!==id) history.replaceState(null,'','#sender/'+id+'/auto');
+ const workId='coomni-local-'+id;
+ const autoMode=role==='sender' && (!params[1] || params[2]==='auto');
+ const fixtureText='Public-safe synthetic CoOmni work item: improve first use.';
+ const autoDispatched=new Set();
+ const localId=Array.from(crypto.getRandomValues(new Uint8Array(8)), b=>b.toString(16).padStart(2,'0')).join('');
+ const roles=['ux','theory'];
+ const channels = {};
+ const seq = {ux:0,theory:0};
+ const pending = new Map();
+ const sentHashes = new Map();
+ const accepted = new Map();
+ const logEl = q(role==='sender'?'source-log':'receiver-log');
+ let stopped=false, lastSent=null, eventCount=0;
+ function add(line){ const str = '['+(++eventCount)+'] '+line; logEl.textContent=(eventCount===1?'':logEl.textContent+'\n')+str; }
+ const hex = ab=>Array.from(new Uint8Array(ab),b=>b.toString(16).padStart(2,'0')).join('');
+ const digest = async packet=>hex(await crypto.subtle.digest('SHA-256', new TextEncoder().encode(JSON.stringify(packet))));
+ function viewUrl(r){return location.href.split('#')[0]+'#'+r+'/'+id;}
+ async function emitPacket(r,body){
+  const packet={schema:'CoOmni.LocalHandoff.R0',kind:'WORK',work_id:workId,role:r,seq:++seq[r],body};
+  const hash=await digest(packet);
+  if(stopped)return false;
+  pending.set(r+':'+packet.seq,hash);sentHashes.set(r+':'+packet.seq,hash);
+  channels[r].postMessage({packet,sha256:hash});
+  lastSent={r,packet,hash};
+  add('SENT role='+r+' cursor='+packet.seq+' sha256='+hash.slice(0,16)+' (delivery unproven)');
+  return true;
+ }
+ function applyStatus(t){q('state').textContent=t;}
+ if(!('BroadcastChannel' in window) || !crypto.subtle){applyStatus('UNSUPPORTED · needs modern secure-context browser');return;}
+ if(role==='sender'){
+  q('sender').hidden=false;applyStatus(autoMode?'AUTO-ARMED · Fixed synthetic fixture; awaiting receiver READY':'SOURCE READY · Browser-local, volatile');
+  if(autoMode){
+   q('auto-note').hidden=false;
+   q('message').value=fixtureText;
+   q('message').disabled=true;
+   q('send').disabled=true;
+   for(const r of roles)q('to-'+r).disabled=true;
+  }
+  for(const r of roles){
+   const channel=new BroadcastChannel('coomni-r0-'+id+'-'+r);channels[r]=channel;
+   channel.onmessage=e=>{
+    const ack=e.data;
+    if(stopped || !ack || ack.role!==r || ack.work_id!==workId)return;
+    if(ack.kind==='READY'){
+     add('READY observed role='+r+' (not an ACK)');
+     if(autoMode && !autoDispatched.has(r)){
+      autoDispatched.add(r);
+      add('AUTO-ELECT role='+r+' fixture-only');
+      void emitPacket(r,fixtureText).catch(()=>add('HELD auto-deed error role='+r));
+     }
+     return;
+    }
+    if(ack.kind!=='ACK')return;
+    const k=r+':'+ack.seq, expected=pending.get(k);
+    if(!expected || expected!==ack.packet_sha256){
+     const prior=sentHashes.get(k);
+     if(prior===ack.packet_sha256 && ack.result!=='ACCEPTED')add('ACK held role='+r+' cursor='+ack.seq+' reason='+String(ack.result).slice(0,38));
+     else add('REJECT unexpected ACK role='+r+' cursor='+ack.seq);
+     return;
+    }
+    if(ack.result==='ACCEPTED'){accepted.set(r,ack.seq);add('ACK accepted role='+r+' cursor='+ack.seq+' sha256='+ack.packet_sha256.slice(0,16));}
+    else add('ACK held role='+r+' cursor='+ack.seq+' reason='+String(ack.result).slice(0,38));
+    pending.delete(k);
+   };
+  }
+  const linkBox=q('links');
+  for(const r of roles){const a=document.createElement('a');a.className='link';a.href=viewUrl(r);a.target='_blank';a.rel='noopener';a.textContent='Open '+r+' view';linkBox.append(a);}
+  if(autoMode){
+   for(const r of roles){const frame=document.createElement('iframe');frame.src=viewUrl(r);frame.title='Local synthetic '+r+' receiver';q('embedded').append(frame);}
+   add('AUTO-ARMED two embedded receiver views; no user-entered text authorized');
+  }
+  q('open-views').onclick=()=>{
+   // Only a user gesture opens tabs; popup blocking may require using the explicit links.
+   for(const r of roles) window.open(viewUrl(r),'_blank','noopener');
+   add('Receiver window open requested; no receiver ACK inferred');
+  };
+  q('send').onclick=async()=>{
+   if(stopped)return;
+   const body=q('message').value.trim();
+   if(!body || body.length>800){applyStatus('HELD · message must contain 1-800 characters');return;}
+   const selected=roles.filter(r=>q('to-'+r).checked);
+   if(!selected.length){applyStatus('HELD · select a receiver');return;}
+   for(const r of selected){if(!(await emitPacket(r,body)))return;}
+   q('replay').disabled=false;
+   applyStatus('SENT · Awaiting per-role ACK, not global integration');
+  };
+  q('replay').onclick=()=>{if(!stopped&&lastSent){channels[lastSent.r].postMessage({packet:lastSent.packet,sha256:lastSent.hash});add('REPLAY previous role='+lastSent.r+' cursor='+lastSent.packet.seq);}};
+  q('stop').onclick=()=>{if(stopped)return;stopped=true;for(const r of roles){channels[r].postMessage({kind:'STOP',work_id:workId});channels[r].close();}q('send').disabled=true;q('replay').disabled=true;applyStatus('STOPPED · New sends disabled');add('STOP issued, local channels closed; remote stop receipt unproven');};
+ } else {
+  q('receiver').hidden=false;q('receiver-heading').textContent='Receiver · '+(role==='ux'?'UX':'Theory');
+  q('receiver-role-note').textContent=role==='ux'?'Read UX-relevant version and record exact receipt.':'Read theory-relevant version and record exact receipt.';
+  applyStatus('RECEIVER '+role.toUpperCase()+' READY · Waiting for explicit source send');
+  const channel=new BroadcastChannel('coomni-r0-'+id+'-'+role);channels[role]=channel;
+  let cursor=0;
+  channel.onmessage=async e=>{
+   const input=e.data;
+   if(stopped)return;
+   if(input?.kind==='STOP' && input.work_id===workId){stopped=true;channel.close();applyStatus('STOPPED BY SOURCE');add('STOP observed and receiver channel closed');return;}
+   const packet=input?.packet;
+   if(!packet || packet.kind!=='WORK' || packet.schema!=='CoOmni.LocalHandoff.R0' || packet.work_id!==workId || packet.role!==role)return;
+   const actual=await digest(packet);
+   if(stopped)return; // A stopped receiver must not ACK a pending digest.
+   if(actual!==input.sha256){add('REJECT packet digest mismatch');return;}
+   let result='ACCEPTED';
+   if(!Number.isSafeInteger(packet.seq) || packet.seq<=cursor)result='STALE_OR_REPLAY';
+   else if(packet.seq!==cursor+1)result='GAP_HELD';
+   else if(typeof packet.body!=='string'||packet.body.length>800)result='INVALID_BODY';
+   if(result==='ACCEPTED'){
+    cursor=packet.seq;
+    q('received').textContent=packet.body;
+    applyStatus('RECEIVED · cursor '+cursor+' · scoped, volatile');
+    add('ACCEPTED cursor='+cursor+' sha256='+actual.slice(0,16));
+   }else add('HELD cursor='+packet.seq+' reason='+result);
+   channel.postMessage({kind:'ACK',work_id:workId,role,seq:packet.seq,packet_sha256:actual,result,receiver_instance:localId});
+  };
+  channel.postMessage({kind:'READY',work_id:workId,role,receiver_instance:localId});
+ }
+ window.__coomniR0={role,workId,localId};
+})();
+</script>
+</body></html>
