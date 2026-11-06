@@ -37,6 +37,9 @@ must(/evaluationBudget = 4/, "bounded feedback budget");
 must(/HELD_CONSENT/, "sensitive sensing consent hold");
 must(/HELD_OBSERVER/, "split observation hold");
 must(/PROPOSE_UX/, "nonexecuting UX proposal");
+must(/PROPOSE_RECOVERY/, "nonexecuting recovery proposal");
+must(/Recovery checkpoint failed to reopen/, "recovery change trigger");
+
 must(/synthetic only/, "no false live currentness");
 must(/Fixture-only decision/, "qualified synthetic receipt");
 must(/NO SENSOR/, "sensor boundary");
