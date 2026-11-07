@@ -518,5 +518,203 @@
     "displayName": "CoEntour+",
     "version": "R0.1",
     "relationToCoPet": "CoPet is the teaching character; CoEntour is the optional local set of cosmetic, self-claimed learning cues; CoPassport is a separate future protected progress and credentials layer."
+  },
+  "lens": {
+    "schema": "CoAthene.CoLensPresentation.R0-candidate",
+    "state": "PUBLIC_SOURCE_LOCAL_VOLUNTARY_PRESENTATION_ONLY_NOT_CHILD_AGE_VERIFICATION_OR_PROTECTION",
+    "defaultMode": "explore",
+    "defaultFocus": "wonder",
+    "rule": "A display lens changes wording, density, illustration and supported task, never the evidence truth, account rights, guardian authority, age or learner ability. All changes explicit and volatile.",
+    "modes": [
+      {
+        "id": "together",
+        "label": "Together",
+        "ageHint": "Adult with 1–3",
+        "hero": "Look together, then play off-screen",
+        "interaction": "ADULT_MEDIATED_PICTURE_ONLY_NO_QUIZ_NO_PROGRESS",
+        "disclosure": "For a 1-year-old, WHO recommends no sedentary screen time. Adults can use these prompts themselves and put the screen away. For a 2-year-old, less screen time is better; prioritize shared conversation and physical play.",
+        "noSoloChild": true,
+        "adultPresenceRequired": true,
+        "ageVerification": "NONE",
+        "credential": "NONE"
+      },
+      {
+        "id": "play",
+        "label": "Play",
+        "ageHint": "Roughly 4–7",
+        "hero": "Big pictures, brief choices and shared play",
+        "interaction": "SHORT_PICTURE_QUESTION_NO_SCORE",
+        "disclosure": "For an adult and younger learner to explore briefly together. A simple tap is not proof of mastery; offline play matters more than screen time.",
+        "noSoloChild": true,
+        "adultPresenceRequired": true,
+        "ageVerification": "NONE",
+        "credential": "NONE"
+      },
+      {
+        "id": "explore",
+        "label": "Explore",
+        "ageHint": "Roughly 8–12",
+        "hero": "Teach Moss an idea and test the evidence",
+        "interaction": "EXISTING_CORRECT_CLAIM_PLUS_EVIDENCE",
+        "disclosure": "Optional question-led exploration, with responsible adult support as appropriate. The authored check is not a grade.",
+        "noSoloChild": false,
+        "adultPresenceRequired": "CONTEXT_DEPENDENT",
+        "ageVerification": "NONE",
+        "credential": "NONE"
+      },
+      {
+        "id": "research",
+        "label": "Investigate",
+        "ageHint": "Teen / adult",
+        "hero": "Source, exception, counterexample, correction",
+        "interaction": "FULL_SOURCE_EVIDENCE_AND_LIMITS",
+        "disclosure": "More detailed source and limits; not an independent scientific validation or online school. Use expert review for consequential knowledge.",
+        "noSoloChild": false,
+        "adultPresenceRequired": "CONTEXT_DEPENDENT",
+        "ageVerification": "NONE",
+        "credential": "NONE"
+      }
+    ],
+    "focuses": [
+      {
+        "id": "wonder",
+        "label": "Wonder",
+        "meaning": "Ask a question without rushing an answer"
+      },
+      {
+        "id": "make",
+        "label": "Make",
+        "meaning": "Build or try something physical and safe"
+      },
+      {
+        "id": "explain",
+        "label": "Explain",
+        "meaning": "Show the idea with simple words and a counterexample"
+      },
+      {
+        "id": "challenge",
+        "label": "Challenge",
+        "meaning": "Look for an exception and choose evidence"
+      }
+    ],
+    "scenes": [
+      {
+        "id": "river",
+        "shortTitle": "Rain",
+        "art": "original_vector_rain",
+        "toddlerPrompt": "Look at the rain. Can you point to water?",
+        "offline": "Screen away: with a grown-up, notice a dry towel and a damp towel. Do not pour water near electronics.",
+        "playPrompt": "Does rain always soak into the ground?",
+        "playOptions": [
+          "Always!",
+          "Not always!"
+        ],
+        "correct": 1,
+        "playFeedback": "Not always. Very wet ground can make puddles too.",
+        "focusPrompts": {
+          "wonder": "Where does rain go?",
+          "make": "Draw a puddle on paper.",
+          "explain": "Tell Moss why wet ground can make puddles.",
+          "challenge": "What if the soil is already soaked?"
+        }
+      },
+      {
+        "id": "space",
+        "shortTitle": "Sky",
+        "art": "original_vector_sky",
+        "toddlerPrompt": "Point to a star in the picture. Can you spot the moon?",
+        "offline": "Screen away: point up at the real sky with a grown-up. Never stare at the sun.",
+        "playPrompt": "Is there no gravity when astronauts float?",
+        "playOptions": [
+          "No!",
+          "Yes!"
+        ],
+        "correct": 0,
+        "playFeedback": "Gravity still acts in orbit. Spacecraft and astronauts fall around Earth together.",
+        "focusPrompts": {
+          "wonder": "What keeps the Moon near Earth?",
+          "make": "Draw a Moon circling a planet.",
+          "explain": "Tell Moss why astronauts can float.",
+          "challenge": "Can something fall and still go around Earth?"
+        }
+      },
+      {
+        "id": "animals",
+        "shortTitle": "Butterfly",
+        "art": "original_vector_butterfly",
+        "toddlerPrompt": "Find the butterfly. What shapes are its wings?",
+        "offline": "Screen away: point out a leaf or draw a butterfly with a grown-up. Do not touch unfamiliar plants or insects.",
+        "playPrompt": "Is the same home best for every animal?",
+        "playOptions": [
+          "Yes!",
+          "No!"
+        ],
+        "correct": 1,
+        "playFeedback": "No. Different animals need different food, climate and shelter.",
+        "focusPrompts": {
+          "wonder": "Where might a butterfly live?",
+          "make": "Make a paper butterfly with a grown-up.",
+          "explain": "Tell Moss why a fish needs a different home.",
+          "challenge": "Would every animal like a cold forest?"
+        }
+      },
+      {
+        "id": "games",
+        "shortTitle": "Blocks",
+        "art": "original_vector_blocks",
+        "toddlerPrompt": "Find the red block. Can you point to a circle?",
+        "offline": "Screen away: stack two large, age-safe blocks with a grown-up. Avoid small choking hazards.",
+        "playPrompt": "Does the biggest score always mean the most learning?",
+        "playOptions": [
+          "Always!",
+          "Not always!"
+        ],
+        "correct": 1,
+        "playFeedback": "Not always. A score may count speed, not understanding.",
+        "focusPrompts": {
+          "wonder": "What can a block become?",
+          "make": "Stack two safe blocks together.",
+          "explain": "Tell Moss what a game score measures.",
+          "challenge": "Can you learn something without getting points?"
+        }
+      }
+    ],
+    "policy": {
+      "ageLabel": "ILLUSTRATIVE_PRESENTATION_HINT_NOT_AGE_GATING",
+      "selection": "EXPLICIT_CHOICE_ONLY_NO_DETECTION",
+      "childData": "NONE_NO_DATE_OF_BIRTH_NO_PROFILE",
+      "sameTruth": "SOURCE_AND_COUNTEREXAMPLE_MUST_REMAIN_ACCESSIBLE_TO_ADULT",
+      "sharedPlay": "NO_AUTO_AUDIO_NO_CAMERA_NO_MIC_NO_CHAT",
+      "persistence": "NONE_RESETS_ON_PAGE_REFRESH",
+      "sourceVerification": "ADULT_RESEARCH_VIEW_AND_ON_DEMAND_SOURCE_LINKS",
+      "interactivity": "TOGETHER_NO_CHILD_QUIZ_PLAY_SHORT_CHOICE_EXPLORE_EXISTING_EXPLANATION_RESEARCH_MORE_CONTEXT",
+      "realWorld": "TODDLER_FIRST_OFFSCREEN_ACTIVITY",
+      "noArtificialRewards": "NO_STREAKS_NO_RANKS_NO_FORCED_CONTINUATION",
+      "applicableAge": "UI_SELECTION_NE_LEGAL_AGE_VERIFICATION_OR_PERMISSION",
+      "legalSchool": "PRESENTATION_LENS_NE_LICENSED_SCHOOL_OR_CHILD_CARE"
+    },
+    "externalSources": [
+      {
+        "url": "https://www.who.int/news/item/24-04-2019-to-grow-up-healthy-children-need-to-sit-less-and-play-more",
+        "supports": "one-year no sedentary screen, two-year less than one hour recommended"
+      },
+      {
+        "url": "https://www.naeyc.org/resources/topics/technology-and-media/infants-and-toddlers",
+        "supports": "caregiver co-play, human interaction and real-world use"
+      },
+      {
+        "url": "https://publications.aap.org/pediatrics/article/157/2/e2025075320/206129/Digital-Ecosystems-Children-and-Adolescents-Policy",
+        "supports": "healthy development, content quality and family co-use"
+      }
+    ],
+    "effectBoundary": {
+      "realChildrenObserved": 0,
+      "guardianAccessValidated": 0,
+      "licensedEarlyChildhoodService": 0,
+      "schoolEnrollment": 0,
+      "personalizationModel": "NOT_PRESENT",
+      "screenTimeTelemetry": "NONE",
+      "teacherApproval": "NOT_OBSERVED"
+    }
   }
 }
