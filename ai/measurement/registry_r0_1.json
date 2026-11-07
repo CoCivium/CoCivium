@@ -1,6 +1,6 @@
 {
   "schema": "CoAll.MeasurementRegistry.R0_CANDIDATE",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "state": "CANDIDATE_PRIVATE_LOCAL_TESTABLE_NOT_CANON",
   "system_of_units": "SI_interop_with_semantic_kind_guard",
   "dimension_order": [
@@ -178,6 +178,22 @@
         0,
         0
       ]
+    },
+    {
+      "id": "delta_K",
+      "quantity_kind": "temperature_difference",
+      "code": "K",
+      "scale_to_anchor": "1",
+      "offset_to_anchor": "0",
+      "dimensions": [0, 0, 0, 0, 1, 0, 0]
+    },
+    {
+      "id": "delta_Cel",
+      "quantity_kind": "temperature_difference",
+      "code": "Cel",
+      "scale_to_anchor": "1",
+      "offset_to_anchor": "0",
+      "dimensions": [0, 0, 0, 0, 1, 0, 0]
     },
     {
       "id": "ratio",
@@ -421,6 +437,8 @@
     "ZERO_NE_NULL",
     "MISSING_NE_ZERO",
     "TIMESTAMP_NE_DURATION",
+    "ABSOLUTE_TEMPERATURE_NE_TEMPERATURE_DIFFERENCE",
+    "PREDICTED_NE_MEASURED",
     "RATIO_NE_COUNT",
     "DECLARED_RELATION_NE_CONVERSION",
     "HYPOTHESIS_NE_UNIT_STANDARD",
