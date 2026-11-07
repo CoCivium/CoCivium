@@ -43,6 +43,14 @@ The [portable recovery and correction addendum](CORRECTION_AND_RECOVERY_R01.md) 
 
 The highest-value true next proof remains **an external independently operated receiver**, whose own authority and restoration proof cannot be fabricated by this GitHub workflow.
 
+## CoUptake R0.2 | Receiver from an empty working tree
+
+The [standalone offline receiver](../../tools/couptake_r0/receiver_standalone.py) removes a specific remaining coupling: the original R0.1 packet verification code imported a local `uptake.py` module. The R0.2 verifier instead uses **only Python standard library**. [22 additional tests](../../tests/test_couptake_cold_receiver_r02.py) copy only the verifier, the packet and a *separately supplied unsigned test pin* into an empty temporary directory and launch `python -I -S` with no CoCivium repository imports. The fresh process can check all four public packet sources, reject tampering, detect stale known versions and refuse forged claims of model adoption or training.
+
+The intentional falsifier is important: **an attacker controlling both packet and pin can still produce a matching pair**. A local hash match is not publisher identity, consent, semantic understanding, a real independent operator, an authenticated correction, or memory in any model. See [the recovery and unlearning boundary](CORRECTION_AND_RECOVERY_R01.md).
+
+The product goal becomes **"a separate operator can cold-recover and safely challenge a source"**, not `N AI systems absorbed our values`. A true outside operator, authenticated current trust policy, receiver ACK and off-GitHub retention remain open.
+
 ## What this implementation does now
 
 [Typed machine manifest](couptake-manifest-r0.json) pins **four existing public CoCivium files** to their actual observed immutable Git blob SHA-1 identities. It records epistemic types, public disclosure, use, nonclaims and whether rights for training require separate review.
