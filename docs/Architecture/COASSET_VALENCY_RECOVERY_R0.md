@@ -18,6 +18,14 @@ The checked-in source-graph fixture is `ai/repo-field-projection-graph-r0.json`,
 
 The second part creates a synthetic binary payload, splits it into two padded halves, and stores their XOR parity as a third shard. It then discards the original for the reconstruction function and checks all three surviving pairs against its original SHA-256. Negative controls remove data bytes but leave pointer metadata, corrupt fragments, forge source hash/size, collapse declared failure domains and try too few surviving fragments. This only proves synthetic algorithm behaviour. All three fragments are created in one working process and the three failure-domain labels are **declared, not independently verified**.
 
+## Self-contained embedded capsule, not a bare sidecar
+
+The second tested candidate, `scripts/coasset_embedded_coshat_r0.py`, adds a **portable JSON capsule** for each of the three synthetic content fragments. Its envelope carries `coObject` identity/version, `coMeta` no-effect authority/privacy, `coMetaTrainable` frozen learning status, `coTime` fixture time, `coValence` two partner IDs and declared failure domain, `coSHAT` content/envelope SHA-256, and the fragment's actual base64 bytes. The canonical envelope digest excludes only its own `coSHAT.envelope_sha256` field, avoiding impossible self-hashing; it does not authenticate a writer without a separate trust/signature mechanism.
+
+After deleting the original synthetic source file, **any two of three intact capsules** reconstruct its exact bytes; all three pairings, zero-length/odd-length cases, metadata tampering, false partner/domain claims, duplicate keys, source-version collision, unauthorized effect/trainability change, missing fragments and single-survivor failure are tested. This is a wrapper, **not proof that arbitrary PNG/DOCX/executable formats can acquire native metadata without changing their format or signature**. It is also not a real independent multi-provider backup: the three files were created inside one process and one CI failure domain, with independence represented only by synthetic labels.
+
+A future asset-type policy can choose an inline, content-addressed, database-backed or externally stored reconstruction manifest according to format/rights/size/erasure requirements. Its *logical relation* should remain recoverable even if the physical metadata carrier moves. Neither a self-hash nor a successful CI test supplies semantic truth, custody landing, receiver ACK, a signature, or a 24-hour cold recovery.
+
 ## CoIndex / CI+ / CoOps+ relationships
 
 - `CoIndex+` proposes `OVERLAPS_WITH`, `DERIVED_FROM`, `HAS_RECOVERY_FRAGMENT`, `REBUILDABLE_FROM`, `DISSENTS_WITH`, `SUPERCEDES`, `VERSION_OF` and `RECEIVED_BY` with source, class, time, confidentiality, direction and role. (Existing semantic relations remain authoritative for their scopes; these are examples, not an asserted new global ontology.)
