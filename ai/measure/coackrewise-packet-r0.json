@@ -1,0 +1,166 @@
+{
+  "schema": "CoAll.CoAckRewise.MeasureCommonsPacket.R0",
+  "packet_id": "comeasure-counit-coprimath-20261107",
+  "issued_at": "2026-11-07",
+  "state": "SOURCE_PACKET_ON_PUBLIC_REVIEW_BRANCH__NOT_GLOBAL_DELIVERY__NO_REMOTE_RECEIVER_ACK",
+  "source_scope": "User request paraphrased into a public-safe brief; this is not a verbatim conversation transcript",
+  "request": {
+    "goal": "Agree or challenge names, construction methods, uses, dimensions, reference frames and relationships for many kinds of measurements across CoAll/CoCivium.",
+    "expand": [
+      "SI foundations",
+      "CoNull missingness",
+      "CoTime instant/duration",
+      "operational and scientific units",
+      "typed dimensional algebra",
+      "CoPriMath relations",
+      "natural-unit theory projections with declared conventions",
+      "multi-observer uncertainty and measurement provenance",
+      "multi-session reviews without invented worker count"
+    ],
+    "time_horizon": "Candidate 3-day fan-in check on or after 2026-11-10, not a delivery guarantee",
+    "explicit_boundary": "No session sentience, global all-session access, runtime, public release or actual recipient agreement inferred."
+  },
+  "sources": [
+    {
+      "id": "proposal",
+      "url": "https://github.com/CoCivium/CoCivium/blob/candidate/comeasure-counit-coprimath-r0-20261107/docs/Architecture/COMEASURE_COUNITS_COPRIMATH_R0_20261107.md",
+      "type": "TEXT_SOURCE"
+    },
+    {
+      "id": "registry",
+      "url": "https://github.com/CoCivium/CoCivium/blob/candidate/comeasure-counit-coprimath-r0-20261107/ai/measure/registry-r0.json",
+      "type": "MACHINE_REGISTRY"
+    },
+    {
+      "id": "validator",
+      "url": "https://github.com/CoCivium/CoCivium/blob/candidate/comeasure-counit-coprimath-r0-20261107/ai/measure/measure_r0.py",
+      "type": "READ_ONLY_PROTOTYPE"
+    },
+    {
+      "id": "synthetic_fixture",
+      "url": "https://github.com/CoCivium/CoCivium/blob/candidate/comeasure-counit-coprimath-r0-20261107/ai/measure/observations-synthetic-r0.json",
+      "type": "SYNTHETIC_DATA"
+    },
+    {
+      "id": "negative_tests",
+      "url": "https://github.com/CoCivium/CoCivium/blob/candidate/comeasure-counit-coprimath-r0-20261107/ai/measure/test_measure_r0.py",
+      "type": "SYNTHETIC_TESTS"
+    }
+  ],
+  "first_use": {
+    "default": "Review one measure definition and find one ambiguity or one useful conversion with a reproducible counterexample.",
+    "start_unit": "s",
+    "start_measure": "comeasure.ops.verified_effects.r0",
+    "next": "Qualify or reject a concrete candidate definition before naming new terms",
+    "no_network_required_for_tests": true
+  },
+  "roles": [
+    {
+      "role": "METROLOGY",
+      "challenge": "Unit dimensional consistency and uncertainty conventions",
+      "state": "LOGICAL_ROLE_ONLY__NOT_MATERIALIZED"
+    },
+    {
+      "role": "MATH_COPRIMATH",
+      "challenge": "Typed point/delta/ratio operators, impossible arithmetic and proof obligations",
+      "state": "LOGICAL_ROLE_ONLY__NOT_MATERIALIZED"
+    },
+    {
+      "role": "CONULL_EPISTEMIC",
+      "challenge": "Zero/null/unknown/contradiction/detection distinctions",
+      "state": "LOGICAL_ROLE_ONLY__NOT_MATERIALIZED"
+    },
+    {
+      "role": "COTIME_PHYSICS",
+      "challenge": "Time scales, reference frames, physical quantities, natural unit conventions",
+      "state": "LOGICAL_ROLE_ONLY__NOT_MATERIALIZED"
+    },
+    {
+      "role": "OPERATIONS_CI",
+      "challenge": "Defined receiver value, human relay, source freshness, recovery, resource cost",
+      "state": "LOGICAL_ROLE_ONLY__NOT_MATERIALIZED"
+    },
+    {
+      "role": "UX_A11Y",
+      "challenge": "Can an unfamiliar recipient understand a measure and correct an overclaim?",
+      "state": "LOGICAL_ROLE_ONLY__NOT_MATERIALIZED"
+    },
+    {
+      "role": "COTURTLE_ADVERSARIAL",
+      "challenge": "Find smallest counterexample to a seemingly valid conversion",
+      "state": "LOGICAL_ROLE_ONLY__NOT_MATERIALIZED"
+    },
+    {
+      "role": "COELSE_THEORY",
+      "challenge": "Generate genuinely novel but typed and falsifiable proposals; no speculative upgrade",
+      "state": "LOGICAL_ROLE_ONLY__NOT_MATERIALIZED"
+    }
+  ],
+  "fanout": {
+    "allowed": "PUBLIC_PULL_AND_EXISTING_AUTHORIZED_CARRIER_ONLY",
+    "direct_sessions_contacted": 0,
+    "virtual_sessions_materialized": 0,
+    "external_messages_sent": 0,
+    "new_autonomous_schedulers": 0,
+    "human_contacts_messaged": 0,
+    "privacy": "PUBLIC_SAFE_PARAPHRASE_AND_SYNTHETIC_FIXTURES_ONLY"
+  },
+  "feedback_contract": {
+    "fields": [
+      "packet_id",
+      "observer_identity_or_logical_only",
+      "role",
+      "source_commit_or_blob_sha",
+      "ack_state",
+      "proposed_quantity_id",
+      "proposed_definition",
+      "unit_and_quantity_kind",
+      "construction_or_measurement_method",
+      "primary_use_case",
+      "relation_or_conversion_constraint",
+      "uncertainty_and_reference_frame",
+      "smallest_counterexample",
+      "test_fixture_or_repro",
+      "source_evidence_refs",
+      "conflicts",
+      "authority_and_privacy",
+      "next_action_or_wake"
+    ],
+    "ack_semantics": "READ_PROOF_ONLY_NOT_AGREEMENT",
+    "revision_semantics": "CANDIDATE_DELTA_NOT_AUTO_CANON",
+    "priority": "CHALLENGE_ONE_SEMANTIC_COLLISION_BEFORE_GENERATING_TEN_NEW_TERMS"
+  },
+  "fanin": {
+    "anchor": "Public PR review comments or appropriately authorized existing CoEvoAll Pulse source-bound evidence; no forced receiver messages",
+    "dedup_keys": [
+      "quantity_id",
+      "definition_rev",
+      "unit_kind",
+      "source_hash",
+      "observer_scope",
+      "method"
+    ],
+    "election": "Hard-gate rights/privacy/authority/traceability, then compare source grounding, falsifiability, independent user value, reproducibility and cost",
+    "receipt": "Append evidence of actual reviewer-origin inputs, contradictions, accepted/rejected proposals and unobserved lanes",
+    "review_after": "2026-11-10",
+    "no_reply_result": "UNKNOWN_NOT_FAILURE"
+  },
+  "effects": {
+    "devices_modified": 0,
+    "public_posts_outside_GitHub": 0,
+    "users_contacted": 0,
+    "real_measurements_recorded": 0,
+    "claims_of_independent_review": 0
+  },
+  "rails": [
+    "PUBLIC_PULL_NE_BROADCAST_DELIVERY",
+    "COACK_NE_AGREEMENT",
+    "LOGICAL_ROLE_NE_MODEL_INSTANCE",
+    "SENTIENT_NE_INFERRED",
+    "SAME_MODEL_COPIES_NE_INDEPENDENT_REVIEW",
+    "QUANTITY_KIND_NE_DIMENSION_ONLY",
+    "CONULL_NE_ZERO",
+    "MEASURED_EFFECT_NE_COMMIT_COUNT",
+    "CI_PASS_NE_RECEIVER_ACK"
+  ]
+}
