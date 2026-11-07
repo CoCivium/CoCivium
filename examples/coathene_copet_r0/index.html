@@ -21,8 +21,17 @@ p{line-height:1.55;color:#d1dff0;margin:9px 0 16px}
 .layout{display:grid;grid-template-columns:minmax(175px,.75fr) minmax(0,2fr);gap:18px}
 .petbox,.panel{border:1px solid #59718e;border-radius:17px;background:#142337dc;padding:clamp(17px,3vw,28px)}
 .petbox{text-align:center;display:flex;flex-direction:column;gap:13px;align-items:center}
-.petface{width:min(165px,100%);aspect-ratio:1;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle at 38% 35%,#b1efc6 0,#54aa88 45%,#1e696d 100%);border:5px solid #baf6df;box-shadow:0 0 35px #81eabc2a}
-.petface span{font-size:clamp(55px,8vw,82px);line-height:1}
+.petface{position:relative;width:min(165px,100%);aspect-ratio:1;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle at 38% 35%,#b1efc6 0,#54aa88 45%,#1e696d 100%);border:5px solid #baf6df;box-shadow:0 0 35px #81eabc2a}
+.petface .pet-core{font-size:clamp(55px,8vw,82px);line-height:1}
+.petface .pet-token{position:absolute;z-index:2;display:grid;place-items:center;width:2.2rem;height:2.2rem;line-height:1;font-size:1.45rem;border:2px solid #d5ffe9;border-radius:50%;background:#20354d;box-shadow:0 2px 12px #0008}
+.petface .token-hat{top:-15%;left:50%;transform:translateX(-50%)}
+.petface .token-familiar{left:-15%;top:40%}
+.petface .token-badge{right:-15%;top:40%}
+.petface .token-trail{bottom:-16%;left:50%;transform:translateX(-50%)}
+.start-choices{display:flex;align-items:center;flex-wrap:wrap;gap:11px;margin:6px 0 22px}
+.start-choices button{background:#213c46}
+.start-choices span{color:#bddad7;font-size:.86rem}
+.petface .pet-token[hidden]{display:none!important}
 .petbox strong{font-size:1.3rem}.tiny{font-size:.79rem;color:#b9cce1;line-height:1.45}
 .current{border-top:1px solid #435a70;padding-top:14px;width:100%;text-align:left}
 .current strong{font-size:.89rem}.current p{font-size:.78rem;margin:6px 0 0}
@@ -65,8 +74,9 @@ footer{font-size:.81rem;color:#b3c6de;border-top:1px solid #4a6079;margin-top:30
 <h1>Help Moss learn something true.</h1>
 <p class="intro">Pick a topic you care about. Teach a pretend pet a more accurate idea, choose the evidence you would trust, and discover a useful exception. No name, login, headset, group or school required.</p>
 <div class="chips"><span>Works offline</span><span>No accounts</span><span>No tracking</span><span>No stored answers</span><span>No child identity collected</span></div>
+<nav class="start-choices" aria-label="Choose how to begin"><button id="dress-moss" type="button">Dress Moss · CoEntour+</button><span>Or choose any learning question below, with no outfit required.</span></nav>
 <div class="layout">
-<aside class="petbox" aria-label="Fictional learning pet, Moss"><div class="petface" role="img" aria-label="A friendly abstract green leaf creature"><span aria-hidden="true">🌱</span></div><div><strong>Moss</strong><p class="tiny">I'm a pretend learning pet, not a real person, teacher or guardian. I don't know who you are.</p></div>
+<aside class="petbox" aria-label="Fictional learning pet, Moss"><div class="petface" role="img" aria-label="Moss, a fictional green sprout learning pet"><span class="pet-core" aria-hidden="true">🌱</span><span id="pet-gear-hat" class="pet-token token-hat" aria-hidden="true" hidden></span><span id="pet-gear-familiar" class="pet-token token-familiar" aria-hidden="true" hidden></span><span id="pet-gear-badge" class="pet-token token-badge" aria-hidden="true" hidden></span><span id="pet-gear-trail" class="pet-token token-trail" aria-hidden="true" hidden></span></div><div><strong>Moss</strong><p class="tiny">I'm a pretend learning pet, not a real person, teacher or guardian. I don't know who you are.</p></div>
 <div class="current"><strong>CoEntour+ · My chosen look</strong><p id="gear-look" aria-live="polite">Nothing claimed. All learning topics are available.</p><p id="visit-markers" class="tiny">Trail marks appear only for questions explored in this visit.</p></div>
 <div class="current"><strong>Progress this visit</strong><p id="progress" aria-live="polite">0 of 4 questions explored. Nothing is saved after refresh.</p><div id="coverage" aria-label="Topics encountered this visit"></div></div></aside>
 <section class="panel" aria-labelledby="exercise-title">
@@ -205,6 +215,13 @@ if(typeof window!=="undefined"&&typeof document!=="undefined"){
    return item?item.icon+" "+item.label:"";
   }).filter(Boolean);
   by("gear-look").textContent=names.length?names.join(" · ")+" (self-claimed, this visit only)":"Nothing claimed. All learning topics are available.";
+  for(const type of ["hat","familiar","badge","trail"]){
+   const token=by("pet-gear-"+type);
+   const itemId=outfit.equipped[type];
+   const item=itemId?getGearType(type).items.find(x=>x.id===itemId):null;
+   token.hidden=!item;
+   token.textContent=item?item.icon:"";
+  }
   const cue=gearCue(outfit);
   by("gear-follow").disabled=!cue.routeLessonId;
   by("gear-cue").textContent=cue.routeLessonId?
@@ -244,6 +261,11 @@ if(typeof window!=="undefined"&&typeof document!=="undefined"){
  }
  function resetAll(){visit=newVisit();outfit=newOutfit();renderProgress();renderOutfit();renderLesson();sel.focus();}
  sel.addEventListener("change",renderLesson);
+ by("dress-moss").addEventListener("click",()=>{
+  const wardrobe=by("wardrobe");wardrobe.open=true;
+  wardrobe.scrollIntoView({behavior:"auto",block:"start"});
+  by("gear-type").focus();
+ });
  by("gear-type").addEventListener("change",fillGearChoices);
  by("gear-claim").addEventListener("click",claimGear);
  by("gear-follow").addEventListener("click",followGear);
