@@ -7,6 +7,9 @@ on:
       - 'ai/measurement/verify_registry_r0_1.py'
       - 'ai/measurement/counits_v6_7_alias_crosswalk.json'
       - 'tests/test_counits_v6_7_crosswalk.py'
+      - 'ai/measurement/copredict_drift_r0.py'
+      - 'ai/measurement/copredict_drift_fixture_r0.json'
+      - 'tests/test_copredict_drift_r0.py'
       - 'docs/Architecture/COALL_MEASUREMENT_R0_CANDIDATE.md'
       - '.github/workflows/comeasure-r0-ci.yml'
 
@@ -27,6 +30,8 @@ jobs:
         run: python ai/measurement/verify_registry_r0_1.py
       - name: Check CoUnits v6.7 proposed aliases and independent-ACK gates
         run: python -m unittest discover -s tests -p 'test_counits_v6_7_crosswalk.py' -v
+      - name: Challenge local FIFO versus global meaning with synthetic CoPredict tests
+        run: python -m unittest discover -s tests -p 'test_copredict_drift_r0.py' -v
       - name: Check scope and result counters
         run: |
           python - <<'PY'
