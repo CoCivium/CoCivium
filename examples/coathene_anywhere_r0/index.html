@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="dark">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; connect-src 'none'; img-src 'none'; font-src 'none'; media-src 'none'; frame-src 'none'; form-action 'none'; base-uri 'none'">
+<title>CoAthene Anywhere | Instant learning session builder · source prototype R0</title>
+<style>
+:root{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#edf3ff;background:#091120;color-scheme:dark;--mint:#93ebd5;--blue:#a3b8ff;--muted:#bfd0e7;--edge:#455a7a}
+*,*:before,*:after{box-sizing:border-box}
+body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 85% 0%,#2a304f 0%,#0b1529 50%,#091120 95%)}
+main{max-width:940px;margin:auto;padding:clamp(18px,4vw,38px) clamp(16px,3vw,32px) 60px}
+a{color:var(--mint);text-underline-offset:3px;overflow-wrap:anywhere}a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid #c1ffe8;outline-offset:3px}
+header{display:flex;gap:12px;justify-content:space-between;align-items:start;flex-wrap:wrap}
+.brand{font-size:1.14rem;font-weight:800;letter-spacing:-.03em}.brand small{font-size:.73rem;color:var(--muted);font-weight:500}
+.status{border:1px solid #877ba5;color:#d9cdf3;border-radius:999px;padding:6px 10px;font-size:.7rem;text-transform:uppercase;letter-spacing:.05em}
+.eyebrow{font-weight:750;letter-spacing:.12em;text-transform:uppercase;color:var(--mint);font-size:.76rem;margin-top:40px}
+h1{font-size:clamp(2rem,5vw,3.8rem);line-height:1.08;letter-spacing:-.045em;margin:12px 0 16px}
+h2{font-size:clamp(1.27rem,3vw,1.7rem);margin:0 0 8px}
+h3{font-size:1.02rem;margin:0 0 7px}
+p{line-height:1.55;color:var(--muted);margin:8px 0 13px}
+.lead{font-size:1.12rem;max-width:68ch}
+.benefits{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0 26px}
+.benefits span{font-size:.77rem;color:#c6f4e8;background:#152d35;border:1px solid #4a776f;border-radius:999px;padding:6px 10px}
+.panel{background:#142137db;border:1px solid var(--edge);border-radius:18px;padding:clamp(18px,3.2vw,30px);box-shadow:0 15px 40px #0003}
+.labelhelp{font-size:.83rem;color:#c0d0e5}
+fieldset{border:0;padding:0;margin:0;min-width:0}
+legend{font-weight:730;margin-bottom:13px;font-size:.92rem}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.field{display:flex;flex-direction:column;gap:7px;min-width:0}
+.field label{font-size:.85rem;font-weight:700;color:#deebfa}
+select{appearance:auto;width:100%;background:#0c182b;border:1px solid #8293b5;border-radius:10px;padding:12px;font:inherit;color:#f6f8fe;min-height:46px}
+button{font:inherit;background:#18443d;color:#eefff8;border:1px solid #81dac0;border-radius:11px;padding:12px 17px;font-weight:750;cursor:pointer;min-height:47px}
+button:hover{background:#1c5b50}
+button.secondary{background:#15253b;border-color:#7087a9;color:#e3edfa}
+button.secondary:hover{background:#263c56}
+button:disabled{opacity:.55;cursor:default}
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:21px}
+.note{font-size:.79rem;color:#b7cde0}
+.rule{margin:24px 0;border:0;border-top:1px solid #445771}
+[hidden]{display:none!important}
+#session{border-color:#80b7aa}
+#plan-label{font-size:.78rem;color:#a7e5d8;letter-spacing:.08em;text-transform:uppercase}
+.meta{display:flex;gap:7px;flex-wrap:wrap;margin:13px 0 19px}
+.chip{border-radius:99px;border:1px solid #7894ac;padding:5px 10px;font-size:.77rem;color:#d9e7f4}
+.grid .surface{border:1px solid #3c5773;border-radius:12px;padding:15px;background:#102035}
+.surface h3{color:#d0bfff}
+.surface p{margin:5px 0}
+.warning{border-left:4px solid #efb09b;padding:10px 15px;background:#352b35;border-radius:5px;margin-top:14px}
+.good{border-left:4px solid #81dac0;padding:10px 15px;background:#173a36;border-radius:5px;margin-top:14px}
+ol.roles{padding-left:23px;margin:12px 0;line-height:1.8;color:#dde7f6}
+.predictions{border:1px solid #4f6181;border-radius:12px;padding:15px;margin-top:20px}
+.predictions legend{font-size:1.02rem}
+.choice{display:flex;gap:11px;align-items:flex-start;padding:10px 7px;border-bottom:1px solid #364862;cursor:pointer}
+.choice:last-child{border-bottom:0}
+.choice input{margin:5px 0 0;accent-color:#80dec9;min-width:18px;min-height:18px}
+.choice span{color:#ebf2fb}
+#prediction-feedback{margin-top:11px;padding:10px;border-radius:7px;background:#26374b;color:#e3f3f0}
+details{margin-top:20px;border:1px solid #465879;border-radius:12px;background:#111e32;padding:16px}
+summary{cursor:pointer;font-weight:720}
+details p,details li{line-height:1.55}
+footer{border-top:1px solid #455575;margin-top:28px;padding-top:19px;font-size:.82rem;color:#bdd0e2}
+.micro{font-size:.83rem;color:#c6d6eb}
+.nojs{padding:10px;border:1px solid #e9aa95;border-radius:9px}
+@media(max-width:690px){.grid{grid-template-columns:1fr}.eyebrow{margin-top:28px}.actions button{flex:1}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+@media print{html,body{background:#fff!important;color:#000!important}header,.benefits,#setup,.actions,details,footer,.eyebrow,.lead{display:none!important}#session{display:block!important;border:0!important;box-shadow:none!important;color:#000!important}.panel,.surface{background:#fff!important;color:#000!important;box-shadow:none!important}.surface p,p,.meta .chip,.surface h3{color:#000!important}a{color:#000!important}}
+</style></head><body>
+<main>
+<header><div class="brand">CoAthene<span style="color:#93ebd5">+</span> <small>/ Anywhere Studio</small></div><div class="status">Public source candidate · Not a school</div></header>
+<p class="eyebrow">A question can travel. A building is optional.</p>
+<h1>Build a learning experience, wherever you are.</h1>
+<p class="lead">Choose a question, choose how to learn, and assemble a short activity with real subject knowledge, a test, an exception and a next connection. No enrolment, headset, fixed classroom or mandatory Clan.</p>
+<div class="benefits" aria-label="Privacy and accessibility defaults"><span>No account</span><span>No network needed</span><span>No tracking or saved answers</span><span>Printable if you choose</span></div>
+<noscript><p class="nojs">Interactive assembly needs JavaScript enabled locally. The core design and original example activities are also described in the linked README. This prototype does not run a class or contact anyone.</p></noscript>
+<section id="setup" class="panel" aria-labelledby="setup-title">
+<h2 id="setup-title">Assemble an Instabuild session</h2><p class="labelhelp">The choices stay in this browser page only. They do not create a school, a group, an account or a live connection.</p>
+<div class="grid">
+<div class="field"><label for="question">1 · Choose a useful question</label><select id="question" required>
+<option value="runoff">Where does the rain go?</option>
+<option value="mirror">When is a mirror not equivalent?</option>
+<option value="commons">What makes a shared space work?</option>
+</select></div>
+<div class="field"><label for="mode">2 · How do you want to learn?</label><select id="mode">
+<option value="solo">Solo Instabuild</option>
+<option value="group">Groupbuild kit</option>
+<option value="mentor">Mentored learning plan</option>
+<option value="institution">Institution-supported plan</option>
+</select></div>
+<div class="field"><label for="place">3 · Where is useful today?</label><select id="place">
+<option value="anywhere">Wherever I am</option>
+<option value="offline">Fully offline / print</option>
+<option value="remote">Online when available</option>
+<option value="local">Library / classroom / community</option>
+<option value="mixed">Mix physical and digital</option>
+</select></div>
+<div class="field"><label for="audience">4 · Participation context</label><select id="audience">
+<option value="adult">Adult / self-directed</option>
+<option value="youth">Youth with responsible adult</option>
+</select></div>
+<div class="field" id="participants-box" hidden><label for="participants">How many local group roles?</label><select id="participants"><option value="2">2 roles</option><option value="3">3 roles</option><option value="4" selected>4 roles</option><option value="5">5 roles</option><option value="6">6 roles</option></select><span class="note">Seat labels only. No names or participants are registered.</span></div>
+</div>
+<div class="actions"><button id="assemble" type="button">Assemble my local learning plan</button></div>
+<p class="note">A group plan is not group consent. A mentored plan is not a booked mentor. Institution support, credit and supervision require a separately authorized real provider.</p>
+</section>
+<section id="session" class="panel" aria-labelledby="session-title" hidden>
+<div id="plan-label">Local session candidate · no users connected</div>
+<h2 id="session-title"></h2>
+<p id="session-question" class="lead"></p>
+<div id="session-meta" class="meta"></div>
+<div class="grid">
+<div class="surface"><h3>Learn the subject</h3><p id="knowledge"></p></div>
+<div class="surface"><h3>Try a safe activity</h3><p id="activity"></p></div>
+<div class="surface"><h3>Find the counterexample</h3><p id="challenge"></p></div>
+<div class="surface"><h3>Transfer the learning</h3><p id="transfer"></p></div>
+</div>
+<div id="roles-box" hidden><hr class="rule"><h3>Groupbuild · role cards, not accounts</h3><p class="micro">Agree on purpose and roles in person or through an independently governed communication channel. No one is actually invited or connected by this prototype.</p><ol id="roles" class="roles"></ol></div>
+<div id="conditions" class="warning" role="note"></div>
+<fieldset class="predictions" aria-describedby="prediction-hint">
+<legend>Make a prediction before revealing the check</legend>
+<p id="prediction-hint" class="micro">This tests an idea, not a person's intelligence. No answer or score is saved.</p>
+<div id="prediction-choices"></div>
+<div class="actions"><button id="check" type="button" class="secondary">Reveal and challenge my prediction</button></div>
+<p id="prediction-feedback" aria-live="polite" aria-atomic="true" hidden></p>
+</fieldset>
+<div class="good"><strong>Responsible stop:</strong> the best result can be a corrected claim, a useful question or a justified decision not to connect two domains.</div>
+<p class="micro">Original source donor: <a id="lesson-source" href="https://github.com/CoCivium/CoCivium" target="_blank" rel="noopener noreferrer">Open source by choice</a>. Opening the link leaves the local-only prototype.</p>
+<div class="actions"><button id="new-plan" type="button">Build another plan</button><button id="print" type="button" class="secondary">Print this plan</button></div>
+<p class="note">Closing or refreshing this page discards your choices. Printing invokes your browser's ordinary print controls, not a CoAthene cloud service.</p>
+</section>
+<details><summary>What's actually optional?</summary>
+<p>Learning can be personal, cooperative, facilitated or institutionally supported. A physical venue, synchronous timetable, online link, XR headset, organization or permanent Clan are not prerequisites to exploring the public lesson. A real school, credential, child supervision or funded programme is a separate qualified service, not something this page silently creates.</p>
+<p>Virtual sessions are designed as temporary experiences around a stable question and context. A local printable learning object should remain useful if a browser, platform or school building is unavailable.</p>
+</details>
+<details><summary>Prior art, rights and status</summary>
+<p>Reuses the public CoAthene <a href="https://github.com/CoCivium/CoCivium/blob/main/docs/Business/CoAthene_RoamLab_R0/README.md" target="_blank" rel="noopener noreferrer">RoamLab standalone-first approach</a>, <a href="https://github.com/CoCivium/CoCivium/blob/main/docs/Architecture/GROUPBUILD_COTEAMING_COPAYBACK_R0_20261101.md" target="_blank" rel="noopener noreferrer">GroupBuild+ voluntary collaboration</a> and <a href="https://www.uil.unesco.org/en/unesco-institute/mandate/lifelong-learning" target="_blank" rel="noopener noreferrer">UNESCO's lifelong learning in many spaces</a>. Ontario's <a href="https://www.ontario.ca/document/ontario-schools-kindergarten-grade-12-policy-and-program-requirements/online-and-remote-learning" target="_blank" rel="noopener noreferrer">online-schooling rules</a> illustrate why remote learning and actual schooling must remain distinguishable.</p>
+<p>Source prototype only. No child records, live class, licence, accreditation, hosted service, independent learner study, virtual classroom or X2 installation is claimed. The exercises are examples, not a substitute for expert review or supervision.</p>
+<p><a href="../../docs/Public/COATHENE_WHY_HAVE_SCHOOLS_R0_20261107.md">Read Why Have Schools?</a> · <a href="./README.md">See source, test and build notes</a>.</p>
+</details>
+<footer>CoAthene Anywhere R0 · Public source candidate, not a deployed school · One question and one current session plan · Human learning first, medium and institution only where beneficial. <strong>No fake classroom, no forced login, no persistent profile, no claim of academic credit.</strong></footer>
+</main>
+<script id="coathene-recipe" type="application/json">{"schema":"CoAthene.AnywhereSessionRecipe.R0-candidate","modes":[{"id":"solo","title":"Solo Instabuild","description":"Individual local activity, no membership or timetable","requiresHumanInstitution":false,"requiresOnline":false},{"id":"group","title":"Groupbuild kit","description":"Optional cooperative plan and rotating roles, not a room or invitation","requiresHumanInstitution":false,"requiresOnline":false},{"id":"mentor","title":"Mentored learning plan","description":"Requires a separately arranged real consenting and appropriately qualified mentor","requiresHumanInstitution":false,"requiresOnline":false},{"id":"institution","title":"Institution-supported plan","description":"Requires separately authorized institution, staff and applicable curriculum/attendance rules","requiresHumanInstitution":true,"requiresOnline":false}],"placeOptions":[{"id":"anywhere","label":"Wherever I am","physicalRequired":false,"networkRequired":false},{"id":"offline","label":"Fully offline / print","physicalRequired":false,"networkRequired":false},{"id":"remote","label":"Online when available","physicalRequired":false,"networkRequired":false},{"id":"local","label":"Library / classroom / community","physicalRequired":true,"networkRequired":false},{"id":"mixed","label":"Mix physical and digital","physicalRequired":false,"networkRequired":false}],"audiences":[{"id":"adult","label":"Adult / self-directed","child":false,"adultFacilitatorRequired":false},{"id":"youth","label":"Youth with responsible adult","child":true,"adultFacilitatorRequired":true}],"groupRoles":["Questioner","Evidence checker","Counterexample finder","Builder / explainer"],"scenarios":[{"id":"runoff","title":"Where does the rain go?","subject":"Watershed science and local infrastructure","question":"How might paving change where rainwater goes?","coWay":"DISCERN","age":"ALL_WITH_QUALIFIED_FACILITATION_FOR_MINORS","knowledge":"Some rain infiltrates soil, some evaporates, and some runs over the surface. Surface cover, slope, soil, rainfall intensity and drainage alter the outcome.","prediction":["More paved surface often means more runoff","Less paved surface always means more runoff","A model proves the local flood outcome"],"correct":0,"challenge":"A grassy surface can also shed runoff if soil is saturated or rainfall is intense. Never assume one variable alone determines a real flood.","activity":"Use two equal, safely measured small water samples over contrasting surfaces or compare simple paper diagrams. Record observations as model-only and name a measurement you still need.","transfer":"Apply the same observation-versus-model distinction to a street drain, rain garden or different land surface.","source":"https://github.com/CoCivium/CoCivium/blob/main/docs/Business/CoAthene_RoamLab_R0/modules/WatershedExplorer_R0/README.md","sourceLabel":"Existing CoAthene Watershed Explorer lesson donor","safety":"Do not pour water near electronics. Indoor dry/paper alternative is valid. An adult supervises practical activities with minors."},{"id":"mirror","title":"When is a mirror not equivalent?","subject":"Digital literacy and careful analogy","question":"Does mirroring an interface also reverse who is allowed to use it?","coWay":"CHALLENGE","age":"ALL_WITH_QUALIFIED_FACILITATION_FOR_MINORS","knowledge":"A reflected icon or screen layout changes its visual appearance. Authentication and permissions are separately governed by software rules and authorizations.","prediction":["Mirrored icons grant mirrored access permissions","Mirrored icons do not by themselves grant new permissions","A useful visual analogy must always imply identical physical mechanisms"],"correct":1,"challenge":"The *question* of symmetry can be reused across subjects, but a software access rule is not a physical parity operator in particle physics.","activity":"Draw two mirror-image door symbols. List what changed visibly and what did not change about who has permission to enter. Avoid real accounts and credentials.","transfer":"Use the same distinction between appearance and authorization when critiquing a copycat website or a changed app layout.","source":"https://github.com/CoCivium/CoCivium/blob/main/docs/Architecture/COVIRTUAL_SESSION_MORPHOLOGY_R0.md","sourceLabel":"Public source on virtual projections versus identity","safety":"Use only fictional screen mock-ups. Do not test other people's accounts, devices or security controls."},{"id":"commons","title":"What makes a shared space work?","subject":"Civic design, collaboration and responsible decisions","question":"How could a community improve a shared public place for more people?","coWay":"JUDGE","age":"ALL_WITH_QUALIFIED_FACILITATION_FOR_MINORS","knowledge":"Different participants may value accessibility, shade, safety, cost, quiet, nature and maintenance differently. A plan needs factual site knowledge, legitimate authority and fair opportunity to disagree.","prediction":["The first popular proposal is always fair","A single AI ranking can authorize a public change","A good proposal should name who is affected and allow challenge"],"correct":2,"challenge":"A design that seems best for one group may obstruct another. A fictional planning exercise does not confer permission to modify public property.","activity":"Sketch three original proposals for a fictional park, note benefits and trade-offs, then describe a fair feedback route, including non-digital participation.","transfer":"Carry the same trade-off and consent checks into a classroom, club or shared digital community.","source":"https://github.com/CoCivium/CoCivium/blob/main/docs/Architecture/GROUPBUILD_COTEAMING_COPAYBACK_R0_20261101.md","sourceLabel":"Existing voluntary GroupBuild+ donor","safety":"Use fictional places and roles. Do not collect real neighbours' personal data or represent the exercise as a council decision."}]}</script>
+<script id="coathene-planner">
+"use strict";
+const recipe=JSON.parse(document.getElementById("coathene-recipe").textContent);
+function lookup(rows,id,label){const x=rows.find(v=>v.id===id);if(!x)throw new Error("Unknown "+label);return x;}
+function buildPlan(choice){
+ const lesson=lookup(recipe.scenarios,choice.question,"question");
+ const mode=lookup(recipe.modes,choice.mode,"mode");
+ const place=lookup(recipe.placeOptions,choice.place,"place");
+ const audience=lookup(recipe.audiences,choice.audience,"audience");
+ const n=mode.id==="group"?Number(choice.participants):0;
+ if(mode.id==="group" && (!Number.isInteger(n)||n<2||n>6))throw new Error("Invalid local role count");
+ const roles=mode.id==="group"?Array.from({length:n},(_,i)=>recipe.groupRoles[i%recipe.groupRoles.length]):[];
+ const conditions=[];
+ if(audience.child)conditions.push("For youth: a responsible real adult must supervise appropriately. This screen does not verify or provide one.");
+ if(mode.id==="group")conditions.push("Groupbuild makes only an offline team-role plan. Check the actual participants' consent and accessibility before a real meeting.");
+ if(mode.id==="mentor")conditions.push("No mentor is booked. Separately choose an available, qualified consenting human and appropriate safety procedures.");
+ if(mode.id==="institution")conditions.push("No institution is contacted, approved or accredited. Staff, enrolment, credits, attendance and privacy remain under lawful operator control.");
+ if(place.id==="remote")conditions.push("Online delivery is optional, but this page provides no room, messaging, video or collaborative server.");
+ if(place.id==="local"||place.id==="mixed")conditions.push("Any venue or in-person activity needs separately confirmed permission, access and safety.");
+ conditions.push(lesson.safety);
+ return {lesson,mode,place,audience,roles,conditions};
+}
+function describePlan(plan){
+ return [
+  plan.lesson.title,"Question: "+plan.lesson.question,
+  "Method: "+plan.lesson.coWay,"Mode: "+plan.mode.title,
+  "Place: "+plan.place.label,"Audience: "+plan.audience.label,
+  "Knowledge: "+plan.lesson.knowledge,
+  "Activity: "+plan.lesson.activity,
+  "Challenge: "+plan.lesson.challenge,
+  "Transfer: "+plan.lesson.transfer,
+  "Roles: "+(plan.roles.length?plan.roles.join(", "):"Not required"),
+  "Conditions: "+plan.conditions.join(" "),
+  "Source: "+plan.lesson.source,
+  "Status: Offline source prototype, not a school or a completed lesson"
+ ].join("\n");
+}
+if(typeof module!=="undefined"&&module.exports){module.exports={buildPlan,describePlan,recipe};}
+if(typeof document!=="undefined" && typeof window!=="undefined"){
+ const el=id=>document.getElementById(id);
+ const setup=el("setup"),session=el("session");
+ let active=null;
+ const setText=(id,value)=>{el(id).textContent=value;};
+ const clear=id=>{const node=el(id);while(node.firstChild)node.removeChild(node.firstChild);return node;};
+ function updateGroupField(){el("participants-box").hidden=el("mode").value!=="group";}
+ function chip(label){const p=document.createElement("span");p.className="chip";p.textContent=label;return p;}
+ function showPlan(plan){
+   active=plan;
+   setText("session-title",plan.lesson.title);
+   setText("session-question",plan.lesson.question);
+   for(const [id,val] of [["knowledge",plan.lesson.knowledge],["activity",plan.lesson.activity],
+                          ["challenge",plan.lesson.challenge],["transfer",plan.lesson.transfer]])setText(id,val);
+   const meta=clear("session-meta");
+   [plan.lesson.subject,plan.mode.title,plan.place.label,plan.lesson.coWay].forEach(x=>meta.appendChild(chip(x)));
+   const roles=clear("roles");
+   plan.roles.forEach((role,index)=>{const li=document.createElement("li");li.textContent="Seat "+(index+1)+": "+role;roles.appendChild(li);});
+   el("roles-box").hidden=plan.roles.length===0;
+   setText("conditions",plan.conditions.join("  "));
+   const choices=clear("prediction-choices");
+   plan.lesson.prediction.forEach((label,index)=>{
+      const row=document.createElement("label");row.className="choice";
+      const radio=document.createElement("input");radio.type="radio";radio.name="local-prediction";radio.value=String(index);
+      const span=document.createElement("span");span.textContent=label;row.appendChild(radio);row.appendChild(span);choices.appendChild(row);
+   });
+   el("prediction-feedback").hidden=true;setText("prediction-feedback","");
+   const anchor=el("lesson-source");anchor.href=plan.lesson.source;anchor.textContent=plan.lesson.sourceLabel;
+   setup.hidden=true;session.hidden=false;el("session-title").setAttribute("tabindex","-1");el("session-title").focus();
+ }
+ function assemble(){
+   const choice={question:el("question").value,mode:el("mode").value,place:el("place").value,
+                 audience:el("audience").value,participants:el("participants").value};
+   try{showPlan(buildPlan(choice));}catch(err){setText("setup-title","Unable to assemble. Check the selected options.");}
+ }
+ function check(){
+   if(!active)return;
+   const selected=document.querySelector('input[name="local-prediction"]:checked');
+   const fb=el("prediction-feedback");fb.hidden=false;
+   if(!selected){fb.textContent="Choose a prediction first. No score or personal record will be kept.";return;}
+   const ok=Number(selected.value)===active.lesson.correct;
+   fb.textContent=(ok?"This prediction matches the proposed lesson's basic domain check. ":"This choice does not match the proposed lesson's basic domain check. ")+
+     "A more defensible statement is: "+active.lesson.prediction[active.lesson.correct]+". "+
+     "Important exception: "+active.lesson.challenge+" No score is stored.";
+ }
+ function reset(){active=null;session.hidden=true;setup.hidden=false;el("setup-title").textContent="Assemble an Instabuild session";el("question").focus();}
+ el("assemble").addEventListener("click",assemble);
+ el("mode").addEventListener("change",updateGroupField);
+ el("check").addEventListener("click",check);
+ el("new-plan").addEventListener("click",reset);
+ el("print").addEventListener("click",()=>{if(active)window.print();});
+ updateGroupField();
+}
+</script>
+</body></html>
