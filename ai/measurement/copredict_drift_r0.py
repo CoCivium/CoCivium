@@ -81,11 +81,12 @@ def compare_sorting(proposals):
         label for label, rows in by_label.items()
         if len({signature(p) for p in rows}) > 1
     )
-    aliases = sorted(
-        {p["label"] for p in rows}
+    aliases = [
+        sorted({p["label"] for p in rows})
         for rows in by_semantics.values()
         if len({p["label"].strip().casefold() for p in rows}) > 1
-    , key=lambda labels: sorted(labels)[0])
+    ]
+    aliases.sort(key=lambda labels: labels[0])
     return {
         "schema": "CoAll.CoPredictDriftCounterfactual.R0",
         "scope": "SYNTHETIC_FIXTURES_ONLY_NOT_A_REAL_SESSION_OBSERVATION",
