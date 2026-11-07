@@ -1,0 +1,437 @@
+{
+  "schema": "CoAll.MeasurementRegistry.R0_CANDIDATE",
+  "version": "0.1.1",
+  "state": "CANDIDATE_PRIVATE_LOCAL_TESTABLE_NOT_CANON",
+  "system_of_units": "SI_interop_with_semantic_kind_guard",
+  "dimension_order": [
+    "L",
+    "M",
+    "T",
+    "I",
+    "Theta",
+    "N",
+    "J"
+  ],
+  "external_references": [
+    "https://www.bipm.org/en/publications/si-brochure/",
+    "https://ucum.org/ucum",
+    "https://qudt.org/",
+    "https://www.nist.gov/itl/sed/topic-areas/measurement-uncertainty"
+  ],
+  "units": [
+    {
+      "id": "m",
+      "quantity_kind": "length",
+      "code": "m",
+      "scale_to_anchor": "1",
+      "offset_to_anchor": "0",
+      "dimensions": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "cm",
+      "quantity_kind": "length",
+      "code": "cm",
+      "scale_to_anchor": "1/100",
+      "offset_to_anchor": "0",
+      "dimensions": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "km",
+      "quantity_kind": "length",
+      "code": "km",
+      "scale_to_anchor": "1000",
+      "offset_to_anchor": "0",
+      "dimensions": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "s",
+      "quantity_kind": "duration",
+      "code": "s",
+      "scale_to_anchor": "1",
+      "offset_to_anchor": "0",
+      "dimensions": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "ms",
+      "quantity_kind": "duration",
+      "code": "ms",
+      "scale_to_anchor": "1/1000",
+      "offset_to_anchor": "0",
+      "dimensions": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "min",
+      "quantity_kind": "duration",
+      "code": "min",
+      "scale_to_anchor": "60",
+      "offset_to_anchor": "0",
+      "dimensions": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "m_per_s",
+      "quantity_kind": "speed",
+      "code": "m/s",
+      "scale_to_anchor": "1",
+      "offset_to_anchor": "0",
+      "dimensions": [
+        1,
+        0,
+        -1,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "km_per_h",
+      "quantity_kind": "speed",
+      "code": "km/h",
+      "scale_to_anchor": "5/18",
+      "offset_to_anchor": "0",
+      "dimensions": [
+        1,
+        0,
+        -1,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "K",
+      "quantity_kind": "thermodynamic_temperature",
+      "code": "K",
+      "scale_to_anchor": "1",
+      "offset_to_anchor": "0",
+      "dimensions": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "Cel",
+      "quantity_kind": "thermodynamic_temperature",
+      "code": "Cel",
+      "scale_to_anchor": "1",
+      "offset_to_anchor": "27315/100",
+      "dimensions": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "ratio",
+      "quantity_kind": "fraction_of_whole",
+      "code": "1",
+      "scale_to_anchor": "1",
+      "offset_to_anchor": "0",
+      "dimensions": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "percent",
+      "quantity_kind": "fraction_of_whole",
+      "code": "%",
+      "scale_to_anchor": "1/100",
+      "offset_to_anchor": "0",
+      "dimensions": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "count",
+      "quantity_kind": "event_count",
+      "code": "1",
+      "scale_to_anchor": "1",
+      "offset_to_anchor": "0",
+      "dimensions": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "Hz",
+      "quantity_kind": "frequency",
+      "code": "Hz",
+      "scale_to_anchor": "1",
+      "offset_to_anchor": "0",
+      "dimensions": [
+        0,
+        0,
+        -1,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "J",
+      "quantity_kind": "energy",
+      "code": "J",
+      "scale_to_anchor": "1",
+      "offset_to_anchor": "0",
+      "dimensions": [
+        2,
+        1,
+        -2,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "W",
+      "quantity_kind": "power",
+      "code": "W",
+      "scale_to_anchor": "1",
+      "offset_to_anchor": "0",
+      "dimensions": [
+        2,
+        1,
+        -3,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "1/s",
+      "quantity_kind": "event_rate",
+      "code": "1/s",
+      "scale_to_anchor": "1",
+      "offset_to_anchor": "0",
+      "dimensions": [
+        0,
+        0,
+        -1,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "1/J",
+      "quantity_kind": "event_per_energy",
+      "code": "1/J",
+      "scale_to_anchor": "1",
+      "offset_to_anchor": "0",
+      "dimensions": [
+        -2,
+        -1,
+        2,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "domain_count",
+      "quantity_kind": "failure_domain_count",
+      "code": "1",
+      "scale_to_anchor": "1",
+      "offset_to_anchor": "0",
+      "dimensions": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  "null_states": [
+    "OBSERVED_ZERO",
+    "MISSING",
+    "UNKNOWN",
+    "NOT_APPLICABLE",
+    "BELOW_DETECTION_LIMIT",
+    "REDACTED",
+    "INVALID",
+    "UNDEFINED",
+    "INFINITE_SYMBOLIC"
+  ],
+  "null_contract": "MISSING/UNKNOWN/REDACTED/NOT_APPLICABLE are not numeric zero; INFINITE_SYMBOLIC is mathematical, not a finite measurement.",
+  "metric_families": [
+    {
+      "id": "CoTime.source_age",
+      "definition": "observer UTC minus source UTC",
+      "quantity_kind": "duration",
+      "unit_id": "s",
+      "scope": "defined clock and bounded skew"
+    },
+    {
+      "id": "CoSpeedo.verified_useful_delta_rate",
+      "definition": "receiver-accepted useful deltas divided by observed elapsed interval",
+      "quantity_kind": "event_rate",
+      "unit_id": "1/s",
+      "scope": "requires exact numerator and verified receiver"
+    },
+    {
+      "id": "CoMx.receiver_pickup_fraction",
+      "definition": "accepted exact-object ACKs divided by attempted qualified deliveries",
+      "quantity_kind": "fraction_of_whole",
+      "unit_id": "ratio",
+      "scope": "denominator zero means NOT_APPLICABLE"
+    },
+    {
+      "id": "CoUX.human_touch_count",
+      "definition": "count of discrete human interventions under declared policy",
+      "quantity_kind": "event_count",
+      "unit_id": "count",
+      "scope": "cannot equate touches to cognitive load"
+    },
+    {
+      "id": "CoResilience.mean_time_to_restore",
+      "definition": "sum of recovered incident durations divided by recovered incident count",
+      "quantity_kind": "duration",
+      "unit_id": "s",
+      "scope": "censored unresolved incidents separately"
+    },
+    {
+      "id": "CoEnergy.useful_delta_per_joule",
+      "definition": "receiver-accepted useful deltas divided by measured joules",
+      "quantity_kind": "event_per_energy",
+      "unit_id": "1/J",
+      "scope": "energy boundary and cost separate"
+    },
+    {
+      "id": "CoReach.failure_domain_coverage",
+      "definition": "qualified independent recovery domains count",
+      "quantity_kind": "failure_domain_count",
+      "unit_id": "domain_count",
+      "scope": "device count is not failure-domain count"
+    }
+  ],
+  "relations": [
+    "SAME_QUANTITY_KIND",
+    "CONVERTIBLE",
+    "DERIVED_FROM",
+    "NORMALIZED_BY",
+    "CORRELATED_WITH",
+    "CAUSAL_HYPOTHESIS",
+    "CONSTRAINED_BY",
+    "REFERENCES",
+    "ORTHOGONAL",
+    "INCOMPARABLE"
+  ],
+  "value_envelope_required": [
+    "quantity_kind",
+    "value_state",
+    "unit_id",
+    "observed_at_utc",
+    "observer_id",
+    "source_id",
+    "source_sha256",
+    "interval_or_window",
+    "uncertainty_kind",
+    "uncertainty_value_or_null",
+    "method_or_null",
+    "authority_scope",
+    "comparison_baseline_or_null"
+  ],
+  "theory_lane": "CoNull, natural units, complex numbers, and CoPriMath transformations are provisional typed hypotheses unless independently mapped to tested quantity kinds; symbolic 0 is not a missing observation.",
+  "strict_invariants": [
+    "KIND_MATCH_REQUIRED",
+    "DIMENSION_MATCH_REQUIRED",
+    "ZERO_NE_NULL",
+    "MISSING_NE_ZERO",
+    "TIMESTAMP_NE_DURATION",
+    "RATIO_NE_COUNT",
+    "DECLARED_RELATION_NE_CONVERSION",
+    "HYPOTHESIS_NE_UNIT_STANDARD",
+    "MEASUREMENT_NE_TRUTH",
+    "ABSOLUTE_DEFINITION_NE_ABSOLUTE_OBSERVATION"
+  ],
+  "nonclaims": [
+    "NOT_NEW_SI_STANDARD",
+    "NOT_GLOBAL_SESSION_CONSENSUS",
+    "NOT_AUTOMATIC_SESSION_BROADCAST",
+    "NOT_QUALITY_CERTIFIED",
+    "NOT_COPRIMATH_CANON"
+  ]
+}
