@@ -56,7 +56,7 @@ class CoPrivMinR0Tests(unittest.TestCase):
         d["fields"].append({"field":"private_hash","decision":"WITHHELD_EXACT",
                             "text":"00000000000000000000000000000000"})
         value,receipt=proj.validate(d)
-        self.assertNotIn("private_hash",json.dumps(value))
+        self.assertNotIn('"private_hash":',json.dumps(value))
         self.assertEqual(value["source_private_hashes"],"NOT_INCLUDED")
         self.assertFalse(receipt["source_input_hash_disclosed"])
 
