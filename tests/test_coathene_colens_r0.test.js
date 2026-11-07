@@ -121,6 +121,7 @@ test("four original inline SVG pictures have textual alternatives",()=>{
  assert.equal((html.match(/id="lens-art-(?:river|space|animals|games)"/g)||[]).length,4);
  assert.equal((html.match(/viewBox="0 0 320 230" role="img" aria-label=/g)||[]).length,4);
  assert.ok(canonical.lens.scenes.every(x=>x.art.startsWith("original_vector_")));
+ assert.ok(html.includes('toggleAttribute("hidden",scene.id!==lens.scene)'));
  assert.match(html,/lens-picture svg\[hidden\]/);
 });
 test("mode buttons are large, semantic and explicitly controllable",()=>{
