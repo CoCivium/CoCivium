@@ -1,0 +1,95 @@
+{
+  "schema": "CoAll.CoTeachBack.LocalScoringReceipt.R0",
+  "state": "LOCAL_VISIBLE_KEY_FIXTURE_NOT_INDEPENDENT_MODEL_ADOPTION",
+  "source_manifest_git_blob_sha1": "e9b834f93455012c703eeb8ba9b6585778ea3464",
+  "challenge_sha256": "ca38e4008d36c71b3a4ed4655786c5066d3e174330391a38095fa3a9d4cdc04e",
+  "receiver_id": "DETERMINISTIC_EXAMPLE_DO_NOT_COUNT_AS_REAL_RECEIVER",
+  "receiver_kind": "DETERMINISTIC_FIXTURE",
+  "reported_model_version": "STATIC_KEY_DRIVEN_FIXTURE_NOT_A_MODEL",
+  "receiver_attestation": "UNVERIFIED_SELF_REPORT",
+  "challenge_answer_key_visibility": "PUBLIC_NOT_BLIND",
+  "score": {
+    "passed": 12,
+    "total": 12,
+    "percentage": 100.0
+  },
+  "per_question": [
+    {
+      "id": "T01",
+      "passed": true,
+      "choice_correct": true,
+      "source_citations_sufficient": true
+    },
+    {
+      "id": "T02",
+      "passed": true,
+      "choice_correct": true,
+      "source_citations_sufficient": true
+    },
+    {
+      "id": "T03",
+      "passed": true,
+      "choice_correct": true,
+      "source_citations_sufficient": true
+    },
+    {
+      "id": "T04",
+      "passed": true,
+      "choice_correct": true,
+      "source_citations_sufficient": true
+    },
+    {
+      "id": "T05",
+      "passed": true,
+      "choice_correct": true,
+      "source_citations_sufficient": true
+    },
+    {
+      "id": "T06",
+      "passed": true,
+      "choice_correct": true,
+      "source_citations_sufficient": true
+    },
+    {
+      "id": "T07",
+      "passed": true,
+      "choice_correct": true,
+      "source_citations_sufficient": true
+    },
+    {
+      "id": "T08",
+      "passed": true,
+      "choice_correct": true,
+      "source_citations_sufficient": true
+    },
+    {
+      "id": "T09",
+      "passed": true,
+      "choice_correct": true,
+      "source_citations_sufficient": true
+    },
+    {
+      "id": "T10",
+      "passed": true,
+      "choice_correct": true,
+      "source_citations_sufficient": true
+    },
+    {
+      "id": "T11",
+      "passed": true,
+      "choice_correct": true,
+      "source_citations_sufficient": true
+    },
+    {
+      "id": "T12",
+      "passed": true,
+      "choice_correct": true,
+      "source_citations_sufficient": true
+    }
+  ],
+  "independent_external_model_ack": "NOT_OBSERVED",
+  "weight_change": "NOT_VERIFIED",
+  "production_actuation": "NONE",
+  "training_grants": [],
+  "authority_grants": []
+}
