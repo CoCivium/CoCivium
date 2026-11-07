@@ -116,7 +116,7 @@ test("wardrobe UI contains explicit claim and separate opt-in route action",()=>
  assert.match(html,/id="gear-clear"/);
  assert.match(html,/by\("gear-claim"\).addEventListener\("click",claimGear\)/);
  assert.match(html,/by\("gear-follow"\).addEventListener\("click",followGear\)/);
- assert.match(html,/sel.value=cue.routeLessonId;renderLesson\(\)/);
+ assert.match(html,/sel.value=cue.routeLessonId;lens.scene=cue.routeLessonId;renderLesson\(\);renderLens\(\)/);
  assert.match(html,/No route chosen/);
 });
 test("reset erases cosmetic state and transient exploration",()=>{
