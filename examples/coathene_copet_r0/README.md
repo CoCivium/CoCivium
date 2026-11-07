@@ -10,6 +10,12 @@ The display counts only the topics encountered **in this visit**. It shows five 
 
 This supports the user's long-term vision of **interest-led, revisable syllabuses**, while admitting that teaching real literacy, mathematics, disciplinary knowledge, child safety and educational assessment requires more than an unbounded path generator. The student can ask a question first, but a real educator can still see missing prerequisites and qualifications, and reject harmful topic omissions.
 
+## CoEntour+ | Optional looks and route invitations
+
+The same **Teach Moss** source page now includes an optional <strong>CoEntour+</strong> wardrobe with **16 freely claimable looks**: familiars, hats, cosmetic badges and trail markers. A look can suggest an interest-aligned lesson, but **it never automatically chooses the child's route**, records a learner type, reveals a rank or authenticates an identity. The separate **Try this question** action is required to follow the hint. The wardrobe, encountered-topic trail and chosen decorations are only in local volatile memory for this visit.
+
+The verified learning-level idea belongs in a **different layer**: a future issuer-backed credential with explicit skill criteria, learning evidence, suitable consent, cryptographic verification and minimal presentation. Neither a hat nor an image is a certificate, and R0 does not implement such credentials. See the [CoEntour+ architecture and evidence boundaries](../../docs/Architecture/COATHENE_COENTOUR_COSMETIC_ROUTE_R0_20261107.md), including [1EdTech Open Badges 3.0](https://standards.1edtech.org/open-badges/specifications/standards/v3p0) as a potential later standards donor.
+
 ## What “no login” actually means
 
 The learner need not sign into this **read-only demo**. There is **no persistent progress** in R0. To restore a real learner's history safely across devices, the product will need a purpose-limited, pseudonymous progress handle, authorized recovery and selective access. That may look like a **guardian-controlled passkey or encrypted learner passport**, without username/password fields, but authentication, age-appropriate consent and security controls would still occur.
