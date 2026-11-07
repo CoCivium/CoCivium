@@ -100,3 +100,15 @@ Store manifests and bytes with explicit content hashes, operator/failure-domain 
 Tests: Chromium desktop/mobile, search selection, depth controls, interstitial lens, micro-proposal, accessible list, machine packet, zero canvas drawing in machine-only mode, no JavaScript errors, no outgoing network requests, no horizontal overflow. See [example README](../../examples/cosysall/README.md) and private QA receipt. This is **not** actual IIIF/3D Tiles streaming, an infinite repository, GPU-scale performance, true 3D CoMap, live CoOrb/X2, background ingestion, production CoSysAll, legal canon, or independent hosting survivorship.
 
 **Next falsifiable benchmark:** supply 1 real IIIF image and 1 actual source-registered relation graph as separately versioned tiles; verify one-click discovery, staged region loading, no unnecessary/offscreen requests, rights/consent gating, a nonvisual equivalent, independent reader proof and concrete bytes/latency/energy readings. Keep the current finite source snapshot available during the test.
+
+## 2026-11-07 | D1: CoAll to CoSysAll reciprocal systemic adapter
+
+CoAll contributes stable identities, CoLex/CoIndex semantics, CoTime and provenance, consent/authority ceilings, CoEcoAll+ resource and diversity boundaries, CoEvoDelta change semantics and Civ2+ cell/receiver continuity. CoSysAll contributes receiver-relative rich-media projections, explicit no-render decisions, interstitial/inverse/unknown surfacing, accessibility evidence and micro-evolution *proposals*. Feedback from a map never grants authority to change the source it displays.
+
+**Executable bounded donor:** [CoSysAll reciprocity adapter R0](../../tools/cosysall_reciprocity_r0/README.md) uses the existing CoEvoDelta v0.1 candidate format rather than inventing a controller. On a 3-object/2-edge copied-source synthetic fixture, 17 Python tests passed, including invalid source/edge, private data, authority escalation, time fields and no-render. Actual output `candidate_coevo_delta.json` is `HYPOTHESIS` + `PROPOSE` with `NO_EXTERNAL_EFFECTS__REVIEW_ONLY`. Its 2 original registered relation IDs also exist in the full 56-object/61-edge public source graph; a separately independent full-source execution/receiver ACK has **not** passed.
+
+**Measured reciprocity rail:** `CoAll.source_bound -> CoSysAll.projection -> candidate_feedback -> independently_qualified_CoEvoDelta -> elected_test_or_HOLD`. No automatic promotion, inference of consent, hidden private fetch, session/watchdog creation or product deployment.
+
+**Cross-exemplar opportunity:** [CoVector+ Exemplar Gap Research R0](COVECTOR_EXEMPLAR_GAP_RESEARCH_R0.md) compares this direction against IIIF, 3D Tiles, Wikidata, STAC, W3C PROV, OpenTelemetry and cloud cell/bulkhead designs. Standards already solve large pieces. A novel combination remains only a falsifiable candidate, not a discovery or patentability claim.
+
+**Rails:** `VIEW_FEEDBACK_NE_FACT`, `GRAPH_PROXIMITY_NE_CAUSALITY`, `PROPOSAL_NE_EXECUTION`, `NOVEL_COMBINATION_NE_NOVELTY_PROVEN`.
