@@ -1,0 +1,50 @@
+{
+  "schema": "CoSysAll.Reciprocity.LocalQA.R0",
+  "run_boundary": "local_container_fixture_only",
+  "date_utc": "2026-11-07",
+  "executed_test_count": 17,
+  "result": "PASS_FOR_SYNTHETIC_SOURCE_SUBSET",
+  "checks": [
+    "registered-source path",
+    "strict hypothesis-class PROPOSE",
+    "source canonical digest",
+    "no-render zero draw",
+    "protected projection excluded",
+    "forged edge HELD",
+    "candidate edge cannot self-certify",
+    "explicit observation time",
+    "budget zero",
+    "duplicate IDs HELD"
+  ],
+  "graph_reference": "https://github.com/CoCivium/CoCivium/blob/main/ai/comap-source-projection-r0.json",
+  "original_graph_blob_sha": "9cc47926d2f61f439db1818702127382f78d693f",
+  "full_source_integration": "NOT_TESTED_IN_CONTAINER",
+  "receiver_ack": "NOT_OBSERVED",
+  "runtime_adoption": "NONE",
+  "files": {
+    "reciprocity.py": {
+      "sha256": "2fd752ac6a6923928b3ba7fcbddbf89c364888070b2706177faca8b9b76dbdf5",
+      "bytes": 9174
+    },
+    "test_reciprocity.py": {
+      "sha256": "633294e1d274e695d8e72d0bf791e079ad25fd6d5875a02fc864be8f8a662ad5",
+      "bytes": 3994
+    },
+    "mini_source_fixture.json": {
+      "sha256": "1f7ccfa22b40404f077855f8c84256f7280f084a5cd0e830cfd677cbc2b4418e",
+      "bytes": 993
+    },
+    "candidate_coevo_delta.json": {
+      "sha256": "e69a63fb079cf8b41e634cf9ea22a6f88e03c95e3db33c4e46e871a44ddb5a85",
+      "bytes": 1606
+    },
+    "nonrender.json": {
+      "sha256": "1ea6a90f5b6bf568b2dbe132e3ad9f2741fb83288ce79d80d1c8c17c3f47f730",
+      "bytes": 521
+    },
+    "README.md": {
+      "sha256": "5eb22160e62d2c13b1af126267c7c79e7a462358a5e1b04de185d31aba6a0d38",
+      "bytes": 2935
+    }
+  }
+}
