@@ -1,0 +1,35 @@
+{
+  "schema": "CoAll.SourcePinnedRetrievalLocalQA.R0",
+  "date_utc": "2026-11-07",
+  "state": "PASS_LOCAL_SYNTHETIC_SOURCE_FIXTURES_ONLY",
+  "cases_run": 33,
+  "passed": 33,
+  "failures": 0,
+  "errors": 0,
+  "artifacts": {
+    "README.md": {
+      "bytes": 4977,
+      "sha256": "611ab7f3c9203a2b3998a7b529e40ad144857b71f2420733ef7cc9a19d73a77e",
+      "git_blob_sha1": "b0b8b9be9a16eed63cbac0263dc7657e1ed77876"
+    },
+    "replay.py": {
+      "bytes": 3396,
+      "sha256": "c31b242c28bce50ab5771382bf7031e7256d128f624fc0567667edb4c78eabe3",
+      "git_blob_sha1": "1cddebcf545ccbba0c49dcf3fb35feb7086c7964"
+    },
+    "retrieval.py": {
+      "bytes": 9246,
+      "sha256": "a81f165b80435ae4d9e5e098b4e44c12115c81deef0f6a0dc1bd459da9c42742",
+      "git_blob_sha1": "7f54fa9ad924d25d43d959ea7089072372cb36a9"
+    },
+    "test_retrieval.py": {
+      "bytes": 8380,
+      "sha256": "31beaea68d935d2160bc3c1bcc5a85671380d2303f75a33376db5c8a911d4980",
+      "git_blob_sha1": "1cc0d425a5e8114560af02ad1922f270bb3fb7c9"
+    }
+  },
+  "external_model_calls": 0,
+  "training_jobs": 0,
+  "receiver_ack": "NOT_OBSERVED",
+  "actual_seven_source_checkout_benchmark": "PENDING_HOSTED_CI"
+}
