@@ -1,4 +1,4 @@
-name: CoPrivMin Public Projection R0 - static candidate
+name: CoPrivMin and CoAthene Anywhere R0 - public candidate checks
 on:
   push:
     branches:
@@ -8,6 +8,9 @@ on:
       - 'docs/Public/COATHENE_WHY_HAVE_SCHOOLS_R0_20261107.md'
       - 'scripts/CoPrivMinPublicProjectionR0.py'
       - 'tests/test_coprivmin_public_r0.py'
+      - 'tests/test_coathene_anywhere_r0.py'
+      - 'tests/test_coathene_anywhere_r0.test.js'
+      - 'examples/coathene_anywhere_r0/**'
       - '.github/workflows/coprivmin-public-r0.yml'
   pull_request:
     paths:
@@ -15,6 +18,9 @@ on:
       - 'docs/Public/COATHENE_WHY_HAVE_SCHOOLS_R0_20261107.md'
       - 'scripts/CoPrivMinPublicProjectionR0.py'
       - 'tests/test_coprivmin_public_r0.py'
+      - 'tests/test_coathene_anywhere_r0.py'
+      - 'tests/test_coathene_anywhere_r0.test.js'
+      - 'examples/coathene_anywhere_r0/**'
       - '.github/workflows/coprivmin-public-r0.yml'
 
 permissions:
@@ -33,9 +39,19 @@ jobs:
           python-version: '3.11'
       - name: Test private-field omission and release hold
         run: python -m unittest discover -s tests -p 'test_coprivmin_public_r0.py' -v
+      - name: Check CoAthene public-safe source, one-front and programme boundaries
+        run: python -m unittest discover -s tests -p 'test_coathene_anywhere_r0.py' -v
+      - name: Node for offline pure engine tests
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Execute exact embedded planner across solo/group/mentor/institution cases
+        run: node --test tests/test_coathene_anywhere_r0.test.js
       - name: State exact limited proof ceiling
         run: |
           echo "PASS_STATIC_NE_PRIVACY_CERTIFICATION"
           echo "PUBLIC_BRANCH_NE_MERGED_MAIN"
           echo "CANDIDATE_NE_AUTOPUBLISH"
           echo "NO_PRIVATE_FIELDS_NO_CHILD_DATA_NO_REAL_USERS"
+          echo "OFFLINE_PLAN_TEST_NE_LIVE_SCHOOL_OR_GROUP"
+          echo "SOURCE_PR_NE_HOSTED_WEBSITE_OR_X2_RUNTIME"
