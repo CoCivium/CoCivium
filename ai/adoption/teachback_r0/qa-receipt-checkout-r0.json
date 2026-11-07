@@ -1,0 +1,33 @@
+{
+  "schema": "CoAll.CoTeachBack.SourceCheckoutGateQA.R0",
+  "date_utc": "2026-11-07",
+  "scope": "LOCAL_CHECKOUT_VALIDATOR_UNIT_TESTS_ONLY",
+  "old_local_tests": 42,
+  "new_checkout_validator_tests": 11,
+  "combined_local_tests": 53,
+  "local_status": "PASS_FOR_FIXTURE_ONLY",
+  "exact_seven_file_repo_checkout": "PENDING_HOSTED_RUN",
+  "independent_model_adoption": "NOT_OBSERVED",
+  "files": {
+    "verify_pins.py": {
+      "bytes": 3210,
+      "sha256": "55833d626a0adfcbfca3a2f797885b0cfd6f2d58bed6450b601451db785e9a84",
+      "git_blob_sha1": "fe725ff88fb5ce00e8bb7bbeafe355e020ee1570"
+    },
+    "test_source_pins.py": {
+      "bytes": 2425,
+      "sha256": "5972a3382b3b2ea8a32d04692d9b8bb1e5e93796b48d68f93a6f2bb56e367f02",
+      "git_blob_sha1": "9dc10fa3c28a937c1d7f237241c0ee687e690d46"
+    },
+    "README.md": {
+      "bytes": 6724,
+      "sha256": "8db673c10882ffd022bcd14a35476d0f4dc45d5e696b210aa84a92e021af589d",
+      "git_blob_sha1": "c804fc0f1278907293a718292e9334321987b753"
+    }
+  },
+  "risks": [
+    "The prior public fixture key remains visible, not a blind benchmark",
+    "Verified source byte identity does not validate factual truth",
+    "No remote model call, independent receiver ACK or training permission"
+  ]
+}
