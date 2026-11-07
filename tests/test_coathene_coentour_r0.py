@@ -64,6 +64,15 @@ class CoEntourTests(unittest.TestCase):
         self.assertIn('id="gear-follow" type="button" class="alt" disabled',self.html)
         self.assertIn('by("gear-follow").addEventListener("click",followGear)',self.html)
 
+    def test_worn_visual_accessories_and_first_screen_entry(self):
+        self.assertIn('id="dress-moss" type="button"',self.html)
+        self.assertIn('by("dress-moss").addEventListener("click"',self.html)
+        for key in ("hat","familiar","badge","trail"):
+            self.assertIn('id="pet-gear-'+key+'"',self.html)
+        self.assertIn('token.hidden=!item',self.html)
+        self.assertIn('token.textContent=item?item.icon:""',self.html)
+        self.assertIn('wardrobe.scrollIntoView({behavior:"auto",block:"start"})',self.html)
+
     def test_visit_marker_not_learner_grading_or_verified_badge(self):
         self.assertTrue(self.e["visit_marker"]["noChildRank"])
         self.assertTrue(self.e["visit_marker"]["noStorage"])
