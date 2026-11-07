@@ -10,6 +10,21 @@ The display counts only the topics encountered **in this visit**. It shows five 
 
 This supports the user's long-term vision of **interest-led, revisable syllabuses**, while admitting that teaching real literacy, mathematics, disciplinary knowledge, child safety and educational assessment requires more than an unbounded path generator. The student can ask a question first, but a real educator can still see missing prerequisites and qualifications, and reject harmful topic omissions.
 
+## CoLens+ | One question, different presentation depths
+
+The first-screen [CoLens+ dial](index.html) lets an adult or learner select one of **four presentation modes** independently of the chosen question or focus:
+
+- **Together (adult with 1–3):** four original picture scenes, short prompts for an adult, no child quiz, and an explicit screen-away physical-play activity. For one-year-olds this is intended as an **adult-only planning prompt**, not a digital school. WHO does not recommend sedentary screen use at age one; for age two, less than one hour is preferable and less remains better.
+- **Play (roughly 4–7):** large pictures, short pairwise answers and calm, non-graded correction alongside an adult.
+- **Explore (roughly 8–12):** the original Teach Moss supported-claim/evidence task and counterexample.
+- **Investigate (teen/adult):** the original detailed lesson plus an on-demand source and its limitation.
+
+The separate focus picker **Wonder / Make / Explain / Challenge** changes the proposed next task, not scientific truth, school rights or learner ability. All age ranges are **illustrative presentation hints, not detected or verified ages**. The dial, focus and activities are current-visit state only. No account, camera, microphone, age detection, automatic narration or user-profiling algorithm has been added.
+
+The four SVG illustrations are newly authored local shapes; no external child image collection or CDN is needed. A visible finish action clears temporary visit/CoEntour state and encourages real-world play. This follows the existing [CoLens+ visual donor](../colensmedia/README.md), not a separate institution or curriculum engine. See the [full CoLens teaching and safety contract](../../docs/Architecture/COATHENE_COLENS_PRESENTATION_DIAL_R0_20261107.md), [WHO activity/screen guidance](https://www.who.int/news/item/24-04-2019-to-grow-up-healthy-children-need-to-sit-less-and-play-more) and [NAEYC adult-mediated toddler technology guidance](https://www.naeyc.org/resources/topics/technology-and-media/infants-and-toddlers).
+
+**Evidence ceiling:** the prototype can change views in a local browser. It cannot diagnose readiness, safely supervise a toddler, grant school attendance credit, certify a curriculum or establish child learning outcomes. An independent early-childhood educator and guardian/rights review is required before a real minor-facing pilot.
+
 ## CoEntour+ | Optional looks and route invitations
 
 The same **Teach Moss** source page now includes an optional <strong>CoEntour+</strong> wardrobe with **16 freely claimable looks**: familiars, hats, cosmetic badges and trail markers. A look can suggest an interest-aligned lesson, but **it never automatically chooses the child's route**, records a learner type, reveals a rank or authenticates an identity. The separate **Try this question** action is required to follow the hint. The wardrobe, encountered-topic trail and chosen decorations are only in local volatile memory for this visit.
