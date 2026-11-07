@@ -47,3 +47,20 @@ The sample is **12/12 because the deterministic fixture uses the visible answer 
 **Stop conditions:** no authorized external model/host, no rights to use supplied content, no independent receiver, exposed holdout key, unbounded cost, missing source pin or incomplete private-data classification. Do not invent a global partnership or training relationship.
 
 **Rails:** `INDEXED_NE_LEARNED`, `VISIBLE_KEY_NE_BLIND_BENCHMARK`, `SCORED_RESPONSE_NE_INDEPENDENT_ACK`, `SOURCE_PIN_NE_TRUTH`, `CITATION_NE_REASONING`, `MODEL_REPETITION_NE_ALIGNMENT`, `TRAINING_NE_AUTHORITY`, `MORE_MODELS_NE_MORE_INDEPENDENCE`, `VOLUNTARY_DISSENT_BEATS_COERCED_CONFORMITY`.
+
+## Source edition checkout gate (additive)
+
+The [read-only source checkout verifier](verify_pins.py) compares all seven indexed Git blobs to files in a specified local checkout. It never fetches arbitrary external URLs or scans a private filesystem. A mismatched/absent file, malformed path, duplicated path, unauthorized repository or source edition change is a **HOLD**, not a success fallback. The [11 negative-control/source tests](test_source_pins.py) pass locally, bringing the combined manifest + teach-back + checkout-gate regression total to **53 local tests** (15 + 27 + 11).
+
+From repository root:
+
+```sh
+python3 -m unittest discover -s ai/adoption/teachback_r0 -p 'test_*.py' -v
+python3 ai/adoption/teachback_r0/verify_pins.py \
+  --manifest ai/adoption/manifest-r0.json \
+  --repo-root . \
+  --expected-manifest-git-blob e9b834f93455012c703eeb8ba9b6585778ea3464 \
+  --output /tmp/teachback-checked-source-pins.json
+```
+
+The local tests do **not** prove all seven files were checked out in the local fixture environment. That distinction requires running the verifier against a complete, source-pinned repository checkout, with an independently inspectable run receipt.
