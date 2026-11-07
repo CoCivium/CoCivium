@@ -1,0 +1,38 @@
+{
+  "acceptance": {
+    "candidate_authority_ceiling": "NO_EXTERNAL_EFFECTS__REVIEW_ONLY",
+    "candidate_epistemic_class": "HYPOTHESIS",
+    "candidate_mutation_class": "PROPOSE",
+    "external_effects": 0,
+    "forged_permission_rejected": true,
+    "projection_claim_hash": "bde3e3780a99c1654cc09bc697cdb59080a4f3063660af912f70da60d51aec17",
+    "projections_structurally_equal": true,
+    "reversed_source_edge_rejected": true,
+    "source_edges": 61,
+    "source_nodes": 56,
+    "tests_passed": 33,
+    "total_local_tests": 33
+  },
+  "next_gate": "Hosted CI run readback, then independently observed reader comprehension.",
+  "qualifying_method": "Locally reconstructed public graph and schema exactly matched qualified original Git blob SHA1 (Git object hashes), then executed source-pinned full graph replay and 33 regression tests with no network",
+  "schema": "CoSysAll.CV01CV05.SourcePinnedLocalReadproof.R1",
+  "source_refs": {
+    "graph_git_blob": "9cc47926d2f61f439db1818702127382f78d693f",
+    "graph_sha256": "31043d240eafc5ad6ffd6f653d0a77c440b078c446bf0482590891ba501842ae",
+    "public_graph": "https://github.com/CoCivium/CoCivium/blob/main/ai/comap-source-projection-r0.json",
+    "replay_report_sha256": "3646805d5efd4eafd9934152dcf0123b07245056e8f8ac0b024bc36015f3280c",
+    "schema_git_blob": "5aa1bfc62a47492f41b422331d51dbfcccc831c4",
+    "schema_ref": "https://github.com/CoCivium/CoCivium/blob/main/schemas/coevo-delta-v0.1.schema.json",
+    "schema_sha256": "c14088d04c4ceea9674e4865eff62055ba323dbb31be484e462f1c95ff3ed506",
+    "test_code": "https://github.com/CoCivium/CoCivium/blob/main/tools/cosysall_reciprocity_r0/full_source_replay_r1.py"
+  },
+  "state": "PASS_LOCAL_SOURCE_PIN_ONLY__NOT_GITHUB_HOSTED_CI__NO_RUNTIME_EFFECTS",
+  "unproven": [
+    "GitHub hosted workflow actual completed result",
+    "independent human or external receiver acceptance",
+    "real visual/accessibility UX parity",
+    "CoOrb/X2 runtime adoption",
+    "cross-provider failure recovery",
+    "live global relation ingestion"
+  ]
+}
