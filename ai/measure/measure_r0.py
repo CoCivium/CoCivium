@@ -123,6 +123,8 @@ def convert(value: Any, origin: str, target: str, reg: dict) -> dict:
     with localcontext() as ctx:
         ctx.prec = 50
         base_value = number(value) * number(a["scale_to_reference"]) + number(a["offset_to_reference"])
+        if a["quantity_kind"] == "bounded_fraction":
+            require(Decimal(0) <= base_value <= Decimal(1), "BOUNDED_FRACTION_OUT_OF_RANGE")
         result = (base_value - number(b["offset_to_reference"])) / number(b["scale_to_reference"])
     return {
         "status": "PURE_DEFINITION_CONVERSION",
@@ -152,6 +154,8 @@ def observation_check(obs: dict, reg: dict) -> None:
     v = number(obs["value"])
     require(obs["status"] != "OBSERVED_ZERO" or v == 0, "FALSE_OBSERVED_ZERO")
     u_src, u_expected = units[obs["unit_id"]], units[spec["unit_id"]]
+    if u_src["kind"] == "COUNT":
+        require(v >= 0 and v == v.to_integral_value(), "DISCRETE_EVENT_COUNT_REQUIRED")
     require(u_src["quantity_kind"] == u_expected["quantity_kind"], "MEASUREMENT_UNIT_MISMATCH")
     if obs["unit_id"] != spec["unit_id"]:
         convert(obs["value"], obs["unit_id"], spec["unit_id"], reg)
