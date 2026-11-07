@@ -79,6 +79,13 @@ legend{padding:0 8px}
 .lens-stage{border:2px solid #8edac2;border-radius:22px;background:#122b3c;margin:20px 0 25px;padding:clamp(15px,3vw,26px)}
 body:not([data-lens="together"]):not([data-lens="play"]) .lens-stage{display:none}
 body[data-lens="together"] .layout,body[data-lens="play"] .layout{display:none}
+body[data-lens="together"] .intro,body[data-lens="play"] .intro{display:none}
+body[data-lens="together"] .chips,body[data-lens="play"] .chips{display:none}
+body[data-lens="together"] .kicker,body[data-lens="play"] .kicker{display:none}
+body[data-lens="together"] .start-choices,body[data-lens="play"] .start-choices{display:none}
+.lens-stage-nav{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.lens-stage-nav button{min-height:48px;background:#244050}
+.lens-stage-nav span{font-size:.8rem;color:#d5e8ee}
 body[data-lens="together"] #dress-moss,body[data-lens="play"] #dress-moss{font-size:.95rem}
 .lens-stage h2{font-size:clamp(1.65rem,4vw,2.4rem);margin:8px 0}
 .lens-stage .lens-stage-intro{font-size:1.02rem}
@@ -138,6 +145,7 @@ footer{font-size:.81rem;color:#b3c6de;border-top:1px solid #4a6079;margin-top:30
  <p class="lens-honesty" id="lens-honesty">These are presentation suggestions, not inferred age, ability, a diagnosis, an identity check or an official syllabus level.</p>
 </section>
 <section id="lens-stage" class="lens-stage" aria-labelledby="lens-stage-heading">
+ <div class="lens-stage-nav"><button id="lens-switch" type="button" class="alt">Change presentation</button><span>For adults guiding younger learners</span></div>
  <h2 id="lens-stage-heading">Look, point and try.</h2>
  <p class="lens-stage-intro">Picture-first activity. One question at a time, with a responsible grown-up.</p>
  <div id="lens-adult-note" class="lens-adult-note" role="note">A grown-up should guide this activity.</div>
@@ -432,6 +440,9 @@ if(typeof window!=="undefined"&&typeof document!=="undefined"){
  function chooseLensMode(id){
   lens.mode=lensMode(id).id;
   sel.value=lens.scene;renderLesson();closeShortLens();renderLens();
+  if(id==="together"||id==="play"){
+   by("lens-stage").scrollIntoView({behavior:"auto",block:"start"});
+  }
  }
  function chooseLensTopic(id){
   lens.scene=lensScene(id).id;
@@ -470,6 +481,10 @@ if(typeof window!=="undefined"&&typeof document!=="undefined"){
  document.querySelectorAll("[data-lens-topic]").forEach(button=>
   button.addEventListener("click",()=>chooseLensTopic(button.dataset.lensTopic)));
  by("lens-focus").addEventListener("change",()=>chooseLensFocus(by("lens-focus").value));
+ by("lens-switch").addEventListener("click",()=>{
+   by("lens-panel").scrollIntoView({behavior:"auto",block:"start"});
+   document.querySelector('[data-lens-mode="'+lens.mode+'"]').focus();
+ });
  by("lens-finish").addEventListener("click",()=>{
   visit=newVisit();outfit=newOutfit();renderProgress();renderOutfit();
   by("lens-scene-content").classList.add("is-finished");
