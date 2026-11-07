@@ -1,0 +1,56 @@
+{
+  "schema": "CoAll.SourcePinnedRetrievalHostedInspection.R0",
+  "state": "PASS_HOSTED_PINNED_SEVEN_SOURCES_LEXICAL_RETRIEVAL_ONLY",
+  "date_utc": "2026-11-07",
+  "github": {
+    "repo": "CoCivium/CoCivium",
+    "draft_pr": 362,
+    "draft_pr_url": "https://github.com/CoCivium/CoCivium/pull/362",
+    "head_commit": "99c00fec5f95636107bf3d6322d39f3e106e126f",
+    "run_id": 42362037279,
+    "run_url": "https://github.com/CoCivium/CoCivium/actions/runs/42362037279",
+    "job_id": 128372280267,
+    "job_result": "COMPLETED_SUCCESS",
+    "artifact_id": 13569978031,
+    "artifact_expires_utc": "2026-11-14T10:00:05Z"
+  },
+  "artifact": {
+    "name": "coall-source-retrieval-r0-42362037279.zip",
+    "bytes": 3084,
+    "sha256": "2d99b7dd3dcaa712dae0de4cb0bdfa77f40b3dcf2888169b1e136e54207dd45e",
+    "zip_crc_ok": true,
+    "entries": {
+      "coall-source-retrieval-r0-hosted-readproof.json": {
+        "bytes": 3574,
+        "sha256": "cd54df64942ef9613c6b077f23aea92da1f6c266a7f4b0ce599ab0712f1393b5"
+      },
+      "coall-source-retrieval-r0-sample.json": {
+        "bytes": 4182,
+        "sha256": "ab444ba3d50345fdf6470000f1c36cb637cc717ce26d59de650746fccbb39fd5"
+      }
+    }
+  },
+  "result": {
+    "source_files_pin_verified": 7,
+    "source_chucks_indexed": 123,
+    "adversarial_tests_passed": 33,
+    "bench_queries": 7,
+    "target_source_found_top5": 7,
+    "nature": "engineer-authored source lookup QA, not independent semantic benchmark",
+    "sample_first_citation": "docs/Evolution/COALL_GITHUB_EVOLUTION_FABRIC_R0.md#L1-L16",
+    "network_calls": 0,
+    "model_calls": 0,
+    "training_jobs": 0,
+    "external_receiver_ack": "NOT_OBSERVED",
+    "model_learning": "UNOBSERVED"
+  },
+  "limits": [
+    "source pin is not semantic correctness, signature or provenance of author",
+    "local operator must independently trust expected manifest pin",
+    "pinned source prompt injection still remains untrusted text",
+    "benchmark queries are handcrafted to map to known source files",
+    "no external independent model invoked, trained, or integrated",
+    "draft PR unmerged; no production runtime or CoEx",
+    "separate Library byte custody is not cross-provider live failover"
+  ]
+}
