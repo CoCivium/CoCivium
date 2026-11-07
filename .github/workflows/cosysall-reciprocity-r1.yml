@@ -1,0 +1,41 @@
+name: CoSysAll CV01 CV05 - source-pinned reciprocity R1
+on:
+  push:
+    paths:
+      - 'tools/cosysall_reciprocity_r0/**'
+      - 'ai/comap-source-projection-r0.json'
+      - 'schemas/coevo-delta-v0.1.schema.json'
+      - '.github/workflows/cosysall-reciprocity-r1.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  source-replay:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout exact repository source without stored credentials
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Use Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: R0 + R1 regression suite (no third-party packages)
+        run: python -m unittest discover -s tools/cosysall_reciprocity_r0 -p 'test_*.py' -v
+      - name: Actual source-blob-pinned CV01/CV05 full graph replay
+        run: |
+          python tools/cosysall_reciprocity_r0/full_source_replay_r1.py \
+            --graph ai/comap-source-projection-r0.json \
+            --schema schemas/coevo-delta-v0.1.schema.json \
+            --output cosysall-r1-ci-full-graph-readproof.json
+      - name: Preserve short-retention CI receipt only
+        uses: actions/upload-artifact@v4
+        with:
+          name: cosysall-r1-full-source-readproof-${{ github.run_id }}
+          path: cosysall-r1-ci-full-graph-readproof.json
+          if-no-files-found: error
+          retention-days: 7
+      - name: Preserve effect boundary
+        run: echo "Source-pinned local CI code proof only. Not X2, independent reader, privacy rights or production deployment."
