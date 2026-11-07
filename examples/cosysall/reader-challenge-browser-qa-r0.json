@@ -1,0 +1,39 @@
+{
+  "schema": "CoSysAll.ReaderChallengeBrowserQA.R0",
+  "scope": "LOCAL_CHROMIUM_ONLY_NOT_INDEPENDENT_HUMAN_OR_HOSTED_CI",
+  "html_sha256": "ae1615d7a327f7e0cabbe8f5a5d2805d26671a8f45d1a8a69e5bc6f8dd58471d",
+  "checks": [
+    {
+      "viewport": "1440x900",
+      "source_registered": true,
+      "accessible_and_machine_same_payload": true,
+      "none_surface_hides_graph": true,
+      "full_score": true,
+      "wrong_answer_rejected": true,
+      "local_receipt_download": true,
+      "browser_js_errors": 0,
+      "outgoing_requests": 0,
+      "horizontal_overflow_px": 0
+    },
+    {
+      "viewport": "390x844",
+      "source_registered": true,
+      "accessible_and_machine_same_payload": true,
+      "none_surface_hides_graph": true,
+      "full_score": true,
+      "wrong_answer_rejected": true,
+      "local_receipt_download": true,
+      "browser_js_errors": 0,
+      "outgoing_requests": 0,
+      "horizontal_overflow_px": 0
+    }
+  ],
+  "source_git_blob": "9cc47926d2f61f439db1818702127382f78d693f",
+  "external_receiver_ack": "NOT_OBSERVED",
+  "actual_network_effects": 0,
+  "screenshots": [
+    "reader_challenge_1440.png",
+    "reader_challenge_390.png"
+  ],
+  "evidence_boundary": "Browser automation and self-reported local reader results are not external reader acceptance"
+}
