@@ -1,0 +1,102 @@
+{
+  "schema": "CoAll.CoMeasure.FanInSeedReceipt.R0",
+  "observed_at": "2026-11-07",
+  "state": "PUBLIC_SAFE_SCOPED_CI_PASS__PRIMARY_PR365__SUPPLEMENT_PR366__NO_CANON__NO_RECEIVER_ACK",
+  "primary": {
+    "pr": 365,
+    "url": "https://github.com/CoCivium/CoCivium/pull/365",
+    "role": "ELECTED_PRIOR_CANDIDATE",
+    "tests_reported": 35,
+    "ci_run": "https://github.com/CoCivium/CoCivium/actions/runs/42410266679",
+    "independent_js_challenge": "21/21 reported in PR365 discussion, separate implementer but human/receiver independence not established"
+  },
+  "supplemental": {
+    "pr": 366,
+    "url": "https://github.com/CoCivium/CoCivium/pull/366",
+    "role": "TEST_DONOR_NOT_REPLACEMENT",
+    "tested_head": "e2c706a06eef5ab72a5b931a8267f6fab6ed2cbd",
+    "ci_run": "https://github.com/CoCivium/CoCivium/actions/runs/42411123032",
+    "ci_status": "COMPLETED_SUCCESS",
+    "asserted_tests": 67,
+    "verified_from_job_logs": true,
+    "job_id": 128519287781,
+    "units": 34,
+    "measures": 15,
+    "derived": 4,
+    "synthetic_fixtures": true
+  },
+  "donor_cases": [
+    "CH01_BOUNDED_FRACTION_0_TO_1",
+    "CH02_DISCRETE_NONNEGATIVE_EVENT_COUNT",
+    "SCOPE_WINDOW_METHOD_EPISTEMIC_COMPATIBLE_DERIVED_RATIOS",
+    "NULL_ZERO_UNDEFINED_DISTINCT",
+    "CONTEXTUAL_TOKEN_BYTE_CURRENCY_TIME_GATES"
+  ],
+  "sources": [
+    {
+      "path": "docs/Architecture/COMEASURE_COUNITS_COPRIMATH_R0_20261107.md",
+      "git_blob_sha1": "835af518974bcb8df39819a3916dbe6ed8d635d2",
+      "character_count": 14851
+    },
+    {
+      "path": "ai/measure/registry-r0.json",
+      "git_blob_sha1": "e9962d6f566e0e3c7a117b73d36cccfa529727f3",
+      "character_count": 22548
+    },
+    {
+      "path": "ai/measure/measure_r0.py",
+      "git_blob_sha1": "33a77d599a9e5719acbcb647a302eac8d1c27a70",
+      "character_count": 11545
+    },
+    {
+      "path": "ai/measure/test_measure_r0.py",
+      "git_blob_sha1": "fa2050176784f99aee0541d452f9895eeea1fa5d",
+      "character_count": 13794
+    },
+    {
+      "path": "ai/measure/coackrewise-packet-r0.json",
+      "git_blob_sha1": "54a717338685218116f27cfa375142d9db6cea3d",
+      "character_count": 7181
+    },
+    {
+      "path": "ai/measure/PR365_PR366_CROSSWALK_20261107.md",
+      "git_blob_sha1": "9587532abec52c2255178533f64c117ad95188ad",
+      "character_count": 7415
+    }
+  ],
+  "routing": {
+    "source_packet_id": "comeasure-counit-coprimath-20261107",
+    "public_pull": true,
+    "pr365_comment": "https://github.com/CoCivium/CoCivium/pull/365#issuecomment-6712614220",
+    "other_sessions_directly_contacted": 0,
+    "logical_roles_materialized": 0,
+    "independent_other_session_ack": "UNKNOWN",
+    "standing_pulse": "EXISTING_ENABLED__ALREADY_CONTAINS_MEASUREMENT_MANDATE",
+    "one_time_review": {
+      "title": "CoMeasure R0 Fan-In",
+      "enabled": true,
+      "at_utc": "2026-11-10T20:12:13Z",
+      "updated_to_include_pr366": true,
+      "new_scheduler_created": false
+    }
+  },
+  "effects": {
+    "merge": 0,
+    "deploy": 0,
+    "device_mutations": 0,
+    "account_permissions_changed": 0,
+    "external_outreach": 0,
+    "provider_worker_spawns": 0,
+    "confirmed_real_world_measurements": 0
+  },
+  "next_proof": "Compare actual November 10 receiver-origin challenge, exact current PR365/PR366 commits and at most one source-bound CH01/CH02 donor patch in the earlier Fraction interpreter; treat no-response as unknown.",
+  "nonclaims": [
+    "SCOPED_TESTS_NE_SCIENTIFIC_VALIDITY",
+    "TWO_DRAFTS_NE_TWO_STANDARDS",
+    "DRAFT_SOURCE_NE_MAINLINE",
+    "SAME_PROVIDER_CI_NE_INDEPENDENT_RECEIVER",
+    "LOGICAL_ROLE_NE_LIVE_SENTIENT_SESSION",
+    "COMMIT_NE_COLD_RECEIVER_PICKUP",
+    "NO_X2_OR_COSTEAD_EFFECT_FROM_THIS_WAVE"
+  ]
+}
