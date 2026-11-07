@@ -1,0 +1,266 @@
+{
+  "schema": "CoAthene.CoPetCoPath.TeachableCompanion.R0-candidate",
+  "date_utc": "2026-11-07",
+  "status": "PUBLIC_SOURCE_PRIVATE_USE_REVIEW_CANDIDATE_NOT_CERTIFIED_CHILD_SERVICE_NOT_DEPLOYED",
+  "purpose": "An original no-login, no-storage interest-led CoPath learning map and clearly fictional CoPet that a learner teaches using constrained choices. It is not an AI companion, learner clone, teacher, counsellor, tutor service, identity-provider, safety guardian or accredited school.",
+  "experience": {
+    "interest_selection": "EXPLICIT_USER_SELECTION_NOT_INFERRED_INTEREST_PROFILE",
+    "session_scope": "VOLATILE_BROWSER_MEMORY_ONLY_NEVER_SAVED",
+    "curriculum_policy": "BROAD_CAPABILITY_WINDOWS_NOT_OFFICIAL_ON_CURRICULUM_ALIGNMENT",
+    "syllabus_position": "REVISABLE_COVERAGE_MAP_NOT_LOCKED_LEARNING_ORDER",
+    "coverage_semantics": "LESSON_REFERENCES_THESE_VIEWS_NOT_CHILD_HAS_MASTERED_THEM",
+    "teachable_agent_mode": "FICTIONAL_CHARACTER_ASKS_CHILD_TO_CORRECT_A_KNOWN_MISCONCEPTION",
+    "character_name": "Moss",
+    "character_disclosure": "I'm a pretend learning pet. I'm not a human friend or a real teacher, and I don't know who you are.",
+    "character_emotion_policy": "NO_ATTACHMENT_PRESSURE_NO_GUILT_NO_STREAKS_NO_ROMANTIC_OR_DEPENDENCY_LANGUAGE",
+    "judge_mode": "BOUNDED_RULE_BASED_ANSWER_AND_EVIDENCE_CHECK_NOT_INDEPENDENT_AI_ARBITRATION",
+    "feedback_behavior": "CORRECTED_CONCEPT_AND_COUNTEREXAMPLE_FOR_BOTH_RIGHT_AND_WRONG_CHOICES",
+    "reverse_learning": "SHOW_SOURCE_BOUND_EXPLANATION_AFTER_LEARNER_TEACHES_NE_FIXED_QUESTION",
+    "learner_can_exit": true,
+    "time_limit": "NONE",
+    "model_training": "NONE",
+    "actual_AI": "NONE",
+    "human_review": "REQUIRED_BEFORE_UNSUPERVISED_MINOR_USE"
+  },
+  "coPathViews": [
+    {
+      "id": "communication",
+      "title": "Explain and communicate",
+      "meaning": "Make claims understandable, grounded and revisable."
+    },
+    {
+      "id": "quantitative",
+      "title": "Measure and compare",
+      "meaning": "Notice what a number captures and what it cannot prove."
+    },
+    {
+      "id": "science",
+      "title": "Investigate the world",
+      "meaning": "Use appropriate domain knowledge, reliable observations and models."
+    },
+    {
+      "id": "systems",
+      "title": "Connect carefully",
+      "meaning": "Explore relationships while preserving exceptions and limits."
+    },
+    {
+      "id": "ethics",
+      "title": "Care and judge responsibly",
+      "meaning": "Consider consequences, consent, living beings and fairness."
+    }
+  ],
+  "petLessons": [
+    {
+      "id": "river",
+      "interest": "Rivers and rain",
+      "icon": "◉",
+      "question": "Does grass always absorb more rainwater than pavement?",
+      "topic": "Water systems and evidence",
+      "prompt": "I'm Moss, a pretend learning pet. I think all grass absorbs rainwater, whatever happens. Can you teach me a more careful idea?",
+      "claims": [
+        "Grass always absorbs water, even when the soil is saturated.",
+        "Runoff depends on surfaces, soil, rain intensity and other conditions.",
+        "Concrete never changes how water moves."
+      ],
+      "claimCorrect": 1,
+      "evidence": [
+        "Test different wet and dry surfaces with the same amount of water, or examine a reliable model and explain its limits.",
+        "Count the number of people who like pictures of grass.",
+        "Ask the pet to promise that grass is always best."
+      ],
+      "evidenceCorrect": 0,
+      "why": "Water can soak into permeable soil, but saturated or frozen ground may shed runoff. Paving often increases runoff, yet a single variable is not a universal law.",
+      "source": "https://github.com/CoCivium/CoCivium/blob/main/docs/Business/CoAthene_RoamLab_R0/modules/WatershedExplorer_R0/README.md",
+      "sourceLabel": "Existing CoAthene Watershed Explorer",
+      "curricularViews": [
+        "science",
+        "quantitative",
+        "communication",
+        "systems"
+      ],
+      "next": "How would you test a rain garden when the soil is already soaked?",
+      "boundary": "An indoor dry model is fine. Do not pour water near electronics. Real flood prediction requires appropriate local evidence."
+    },
+    {
+      "id": "space",
+      "interest": "Space and motion",
+      "icon": "✦",
+      "question": "Is there no gravity where astronauts appear weightless?",
+      "topic": "Forces, models and motion",
+      "prompt": "I'm Moss, a pretend learning pet. Astronauts float, so maybe Earth has no gravity up there. What am I missing?",
+      "claims": [
+        "Earth's gravity still acts on orbiting spacecraft; astronauts feel weightless because they are in continuous free fall.",
+        "An orbiting spacecraft has escaped every gravitational influence.",
+        "Gravity only works when an object touches the ground."
+      ],
+      "claimCorrect": 0,
+      "evidence": [
+        "Check a spacecraft's orbital path and explain how gravity bends its motion, rather than measuring its popularity.",
+        "Decide by which space picture looks most exciting.",
+        "Treat the absence of a floor force as proof that gravity itself vanished."
+      ],
+      "evidenceCorrect": 0,
+      "why": "Orbiting spacecraft and their occupants fall around Earth together, producing apparent weightlessness. Gravity has not disappeared; it provides the acceleration that bends the orbit.",
+      "source": "https://science.nasa.gov/solar-system/what-is-gravity/",
+      "sourceLabel": "NASA gravity explainer",
+      "curricularViews": [
+        "science",
+        "quantitative",
+        "systems",
+        "communication"
+      ],
+      "next": "Could you sketch an orbit as constant forward motion combined with a continually changing direction?",
+      "boundary": "This is a simplified conceptual explanation, not orbital-flight training or an accurate simulation."
+    },
+    {
+      "id": "animals",
+      "interest": "Animals and habitats",
+      "icon": "✿",
+      "question": "Can one habitat be perfect for every animal?",
+      "topic": "Adaptation, ecosystems and care",
+      "prompt": "I'm Moss, a pretend learning pet. I found a lovely forest. It must be the best home for every creature, right?",
+      "claims": [
+        "Different organisms need different habitats and resources; a place that helps one species may harm another.",
+        "Every animal thrives best in a cold forest.",
+        "If a habitat looks attractive to a human, all species will be safe."
+      ],
+      "claimCorrect": 0,
+      "evidence": [
+        "Compare specific species' food, shelter and climate requirements using reliable observations or reference sources.",
+        "Pick the animal with the cutest photograph.",
+        "Treat the pet's preference as biological evidence."
+      ],
+      "evidenceCorrect": 0,
+      "why": "Habitat suitability depends on a species' adaptations, food webs, climate and threats. Even one species may need different conditions during its life cycle.",
+      "source": "https://www.nationalgeographic.org/encyclopedia/habitat/",
+      "sourceLabel": "National Geographic habitat reference",
+      "curricularViews": [
+        "science",
+        "communication",
+        "systems",
+        "ethics"
+      ],
+      "next": "Compare a fish, a desert lizard and a butterfly. What habitat requirements differ, and how could you check?",
+      "boundary": "Do not handle, relocate or feed wild animals as part of this activity without qualified guidance."
+    },
+    {
+      "id": "games",
+      "interest": "Games and inventions",
+      "icon": "◇",
+      "question": "Does the highest game score always show who learned most?",
+      "topic": "Design, measurement and fair judgment",
+      "prompt": "I'm Moss, a pretend learning pet. If you collect more points, that proves you understand more, doesn't it?",
+      "claims": [
+        "Scores can reward speed or repeated actions and may miss real understanding; use a separate explanation or transfer task.",
+        "More clicks always prove deeper understanding.",
+        "Every game score measures the same mental ability."
+      ],
+      "claimCorrect": 0,
+      "evidence": [
+        "Compare an original score with a new challenge that asks people to explain and apply the idea in a different context.",
+        "Count how often the pet asks you to return.",
+        "Trust the biggest number without inspecting what it measures."
+      ],
+      "evidenceCorrect": 0,
+      "why": "A game's rewards measure what its rules count. Learning requires a relevant task, good evidence, context and sometimes later transfer. One score cannot define a person's intelligence or worth.",
+      "source": "https://www.vanderbilt.edu/oele/teachable-agents/",
+      "sourceLabel": "Vanderbilt research on teachable agents",
+      "curricularViews": [
+        "quantitative",
+        "communication",
+        "systems",
+        "ethics"
+      ],
+      "next": "Design a fair way to check whether a player understands a strategy without ranking the player as a person.",
+      "boundary": "Do not rank or profile children, use addictive streaks, or turn the learning pet into an emotional loyalty test."
+    }
+  ],
+  "proxy_and_identity": {
+    "active_proxy": "GENERIC_FICTIONAL_PET_NOT_CHILD_PROXY_IDENTITY",
+    "alias": "SESSION_FICTIONAL_MOSS_NOT_PERSISTENT_IDENTIFICATION",
+    "child_names": "NEVER_REQUESTED",
+    "free_text_or_audio": "NONE",
+    "accounts": "NONE",
+    "cookies": "NONE",
+    "tracking": "NONE",
+    "localStorage": "NONE",
+    "indexedDB": "NONE",
+    "network_calls": "NONE",
+    "camera_microphone": "NONE",
+    "realtime_identity_binding": "NONE",
+    "sync_across_devices": "NOT_PRESENT",
+    "future_continuity_candidate": "If genuine continuity is desired, research an optional adult/learner-controlled portable encrypted progress object and narrowly scoped recovery capability. Require consent, age-appropriate controls, threat model, secure implementation and independent review; not a claim of anonymity.",
+    "future_shared_work": "Child elects an age-appropriate activity context; real group interactions require separate guardianship/school permissions and a safety-reviewed service.",
+    "distinction": "PROXY_NICKNAME_NE_AUTHENTICATION_OR_GUARDIAN_AUTHORITY"
+  },
+  "synth_review_future": {
+    "status": "NOT_IMPLEMENTED",
+    "permitted_future_roles": [
+      "SOURCE_CLAIM_CHECK",
+      "COUNTEREXAMPLE_CHECK",
+      "AGE_APPROPRIATE_REDIRECTION",
+      "PRIVACY_MINIMIZATION_HINT"
+    ],
+    "cannot": [
+      "ACT_AS_LEGAL_GUARDIAN",
+      "MAKE_CONSEQUENTIAL_CHILD_DECISIONS_SOLO",
+      "DIAGNOSE_CHILD",
+      "KEEP_HIDDEN_CHILD_PROFILE",
+      "MESSAGE_CHILD_PRIVATELY",
+      "KEEP_SECRETS_FROM_TRUSTED_ADULTS",
+      "DEMAND_CHILD_DEPENDENCY",
+      "IMPERSONATE_CHILD"
+    ],
+    "human_override": "HUMAN_EDUCATOR_OR_GUARDIAN_RETAIN_RELEVANT_SUPERVISION_AND_APPEAL",
+    "independence": "MULTIPLE_SYNTH_MODELS_NE_INDEPENDENT_VALIDATION_BY_DEFAULT",
+    "escalation": "If an interaction would require real-world safety intervention, stop in-app learning flow and direct to trusted responsible adult or local emergency help as appropriate. This R0 has no detection or response service.",
+    "scoring": "NO_PERSON_RANK_NO_BEHAVIORAL_PROFILE_NO_AUTOMATED_ASSIGNMENT"
+  },
+  "sources": [
+    {
+      "url": "https://www.vanderbilt.edu/oele/teachable-agents/",
+      "why": "Prior teachable-agent learning by teaching research; no claimed endorsement"
+    },
+    {
+      "url": "https://www.unicef.org/innocenti/reports/policy-guidance-ai-children",
+      "why": "UNICEF 2025 child-centered AI guidance including AI companions"
+    },
+    {
+      "url": "https://www.priv.gc.ca/en/privacy-topics/privacy-for-businesses/protection-of-children-for-businesses/childrens-privacy-code/children-code-final-report-2026/",
+      "why": "Canadian OPC October 2026 Children's Privacy Code"
+    },
+    {
+      "url": "https://github.com/CoCivium/CoCivium/blob/main/docs/Business/CoAthene_RoamLab_R0/modules/WatershedExplorer_R0/CURRICULUM_ALIGNMENT_R0B.md",
+      "why": "Candidate, not ministry-verified, curriculum coverage donor"
+    },
+    {
+      "url": "https://github.com/CoCivium/CoCivium/blob/main/docs/Business/CoAthene_RoamLab_R0/SAFETY_PRIVACY_ACCESSIBILITY.md",
+      "why": "Existing learner non-profile and privacy defaults"
+    }
+  ],
+  "assessment_and_evolution": {
+    "no_profile_adaptation": "Selection of interest explicitly changes the lesson; selection is not retained after page close or reload.",
+    "knowledge_evidence": "Learner chooses defensible claim and best available test, then sees correction regardless of their choices.",
+    "uncovered_goals": "All five broad curriculum windows remain visible as a map of exploration, never a checklist of completed school requirements.",
+    "external_qualification": "An actual whole-programme syllabus requires jurisdiction-specific licensed/current curriculum, prerequisites, access, educator review, assessment rights and change governance.",
+    "experiment": "A consenting independent adult educator compares this with a neutral teaching-by-explaining activity for comprehension, misconception correction, transfer and child-safety suitability.",
+    "failure_mode": "If a learner confuses Moss with a person, thinks they were graded or assumes an official curriculum is fulfilled, treat as failed UX and revise.",
+    "exit": "One click discards the session and refresh discards state; no data persistence."
+  },
+  "nonclaims": [
+    "PET_NE_CHILD_CLONE",
+    "NICKNAME_NE_SAFETY_ID",
+    "NO_LOGIN_NE_PERSISTENT_ID",
+    "PSEUDONYM_NE_ANONYMITY",
+    "SYNTH_CHECK_NE_TRUSTED_HUMAN_ARBITRATOR",
+    "SYNTH_REVIEW_NE_CHILD_GUARDIAN",
+    "LOCAL_CORRECT_CHOICE_NE_MASTERY",
+    "COVERAGE_MAP_NE_OFFICIAL_CURRICULUM",
+    "INTEREST_PATH_NE_FIXED_ABILITY_TYPE",
+    "CI_NE_CHILD_SAFETY_CERTIFICATION",
+    "TEACHING_CHARACTER_NE_REAL_FRIEND",
+    "ONE_SESSION_NE_PERSON_PROFILE",
+    "NO_SITE_DEPLOYED",
+    "NO_MINOR_PILOT_AUTHORIZED"
+  ]
+}
