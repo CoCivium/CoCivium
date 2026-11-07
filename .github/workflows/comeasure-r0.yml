@@ -1,0 +1,36 @@
+name: CoMeasure R0 typed units and null semantics (read-only)
+
+permissions:
+  contents: read
+
+on:
+  pull_request:
+    paths:
+      - "ai/measure/**"
+      - "docs/Architecture/COMEASURE_COUNITS_COPRIMATH_R0_20261107.md"
+      - ".github/workflows/comeasure-r0.yml"
+  push:
+    paths:
+      - "ai/measure/**"
+      - "docs/Architecture/COMEASURE_COUNITS_COPRIMATH_R0_20261107.md"
+      - ".github/workflows/comeasure-r0.yml"
+  workflow_dispatch:
+
+jobs:
+  unit-semantics:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+      - name: Use Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run scoped SI, CoNull and ratio negative tests
+        run: python -B -m unittest discover -s ai/measure -p 'test_measure_r0.py' -v
+      - name: Validate registry and deterministic read-only probes
+        run: |
+          python -B ai/measure/measure_r0.py validate
+          python -B ai/measure/measure_r0.py convert --value 20 --from-unit degC --to-unit K
+          python -B ai/measure/measure_r0.py derive --observations ai/measure/observations-synthetic-r0.json
