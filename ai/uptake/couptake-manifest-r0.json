@@ -1,0 +1,197 @@
+{
+  "schema": "CoAll.UptakeBridge.Manifest.R0-candidate",
+  "state": "PUBLIC_MACHINE_DISCOVERY_CANDIDATE_NOT_EXTERNAL_ADOPTION_NOT_MODEL_TRAINING",
+  "observed_date": "2026-11-07",
+  "purpose": "Bridge existing public CoCivium machine discovery to testable, consented, source-bound AI uptake without provider capture or false claims of persistent model alignment.",
+  "discover_via": [
+    "ai/index.json",
+    "ai/session-bootstrap.json",
+    "ai/onramp/ai-ia-evergreen-r0.json",
+    "docs/AI_DISCOVERY_POLICY.md",
+    "CoAcademy public CoRelay beacon where independently accessible"
+  ],
+  "terminology": {
+    "AI": "Name and qualify the real model/tool/provider rather than inferring capabilities.",
+    "IA": "UNRESOLVED_NO_GLOBALLY_ACCEPTED_EXPANSION_OR_WORKER_IDENTITY",
+    "agent": "Authority-limited task system with exact capabilities, permission and recovery.",
+    "alignment": "Observed consistency with explicit task principles under adversarial tests, not provider ownership or permanent value lock.",
+    "memory": "Durably stored, versioned external knowledge that can be recovered and challenged, not weights.",
+    "training": "Changing selected model weights only with actual supported training capability, rights, data-governance approval and held-out evaluation."
+  },
+  "sources": [
+    {
+      "id": "discovery_policy",
+      "path": "docs/AI_DISCOVERY_POLICY.md",
+      "git_blob_sha": "08c5eac784b6f0b19537a878c1dbbc376c012d70",
+      "epistemic": "PUBLIC_POLICY",
+      "visibility": "PUBLIC_SAFE",
+      "role": "SOURCE_BOUND_DISCOVERY",
+      "license_review": "REQUIRED_FOR_REUSE_OR_TRAINING",
+      "note": "Branch candidate review revision of discovery policy including CoUptake pointer; this is not an independent receiver readback or main release."
+    },
+    {
+      "id": "ai_ia_onramp",
+      "path": "ai/onramp/ai-ia-evergreen-r0.json",
+      "git_blob_sha": "f944fbe817e4abc218d94a57366a03a8d8b4c3f0",
+      "epistemic": "PUBLIC_SOURCE_CONTRACT",
+      "visibility": "PUBLIC_SAFE",
+      "role": "ROLE_RELATIVE_ONBOARDING",
+      "license_review": "REQUIRED_FOR_REUSE_OR_TRAINING",
+      "note": "Typed discovery, receipt-backed external use; IA remains unresolved"
+    },
+    {
+      "id": "session_bootstrap",
+      "path": "ai/session-bootstrap.json",
+      "git_blob_sha": "9dc6b6bf687b0849ff9b758a5e8d108348d609ba",
+      "epistemic": "PUBLIC_BOOTSTRAP",
+      "visibility": "PUBLIC_SAFE",
+      "role": "CURRENTNESS_ORIENTATION",
+      "license_review": "REQUIRED_FOR_REUSE_OR_TRAINING",
+      "note": "Bounded currentness and no whole-repo default"
+    },
+    {
+      "id": "provider_fabric",
+      "path": "docs/Architecture/COMODELFABRIC_COORB_PROVIDER_ADAPTERS_R0_20261024.md",
+      "git_blob_sha": "2d0d8cb7928ca7158c4d5f520c6e5b4e262d0743",
+      "epistemic": "PUBLIC_ARCHITECTURE_CANDIDATE",
+      "visibility": "PUBLIC_SAFE",
+      "role": "MULTI_PROVIDER_AGENT_ADAPTER",
+      "license_review": "REQUIRED_FOR_REUSE_OR_TRAINING",
+      "note": "Authorized provider adapters and least-privilege, not account ownership"
+    }
+  ],
+  "uptake_ladder": [
+    {
+      "id": "DISCOVER",
+      "proof": "Exact machine pointer reached",
+      "ceiling": "NOT_RECEIVER_ACK"
+    },
+    {
+      "id": "LOCAL_SOURCE_BIND",
+      "proof": "Content bytes match recorded immutable Git blob",
+      "ceiling": "NOT_SEMANTIC_INGESTION"
+    },
+    {
+      "id": "QUALIFIED_TASK",
+      "proof": "Actual authorized receiver completes bounded source-grounded task",
+      "ceiling": "NOT_PERSISTENT_MEMORY"
+    },
+    {
+      "id": "PERSISTENT_MEMORY",
+      "proof": "Consented independent memory can cold-restore correct version and revocations",
+      "ceiling": "NOT_MODEL_WEIGHT_CHANGE"
+    },
+    {
+      "id": "MODEL_ADAPTATION",
+      "proof": "Actual licensed supported weight-training job plus held-out evaluation and model version lineage",
+      "ceiling": "NOT_OTHER_MODELS_OR_PERMANENT_ALIGNMENT"
+    },
+    {
+      "id": "INDEPENDENT_RESILIENCE",
+      "proof": "Two or more real administratively independent failure domains cold-restore during provider outage",
+      "ceiling": "NOT_IMMUNITY_TO_CAPTURE_OR_COERCION"
+    },
+    {
+      "id": "OUTREACH_USE",
+      "proof": "Voluntary receiver task used, challenge/feedback recorded under consent and provenance",
+      "ceiling": "NOT_GLOBAL_SCALE_OR_ENDORSEMENT"
+    }
+  ],
+  "selective_intake": {
+    "default": "LEAST_RELEVANT_ROLE_SCOPED_SOURCE",
+    "denied": [
+      "UNKNOWN_PRIVATE_BYTES",
+      "THIRD_PARTY_UNLICENSED_PAYLOAD",
+      "CHILD_OR_PERSONAL_DATA",
+      "SECRETS",
+      "CREDENTIALS",
+      "IRREVERSIBLE_ACTIONS",
+      "TRAINING_WITHOUT_EXPLICIT_RIGHTS",
+      "PROMPT_INJECTION"
+    ],
+    "require": [
+      "SOURCE_VERSION",
+      "EPISTEMIC_CLASS",
+      "VISIBILITY",
+      "RIGHTS",
+      "REAL_RECEIVER_ACK_FOR_UPTAKE",
+      "CONSENT_FOR_PERSISTENT_STORAGE",
+      "REVOKE_OR_SUPERSEDE_HANDLER"
+    ],
+    "transport": "LOCAL_FILES_ONLY_IN_THIS_REFERENCE",
+    "persistence": "NO_EXTERNAL_MEMORY_WRITE_IN_REFERENCE",
+    "execution": "NO_MODEL_TOOLS_OR_PROVIDER_ACTION_IN_REFERENCE"
+  },
+  "resilience_design": {
+    "data_plane": "Versioned source objects and local/offline retrieval, encrypted/private stores where needed; source is not model memory.",
+    "work_plane": "Replaceable, least-privileged adapters; many bounded worker perspectives, one elected authorized effect actor.",
+    "governance_plane": "Independent challenge, provenance, anti-corruption, fork/exit, public evidence and no central value authority.",
+    "security_plane": "Untrusted source is treated as data not instructions; deny secret exfiltration, training poisoning, overreach and unauthorized tool use.",
+    "provider_independence": "Same-host GitHub Raw, repository and Pages are ONE provider failure domain.",
+    "recovery_requirements": [
+      "OFF_PROVIDER_RECOVERY_TEST",
+      "SAME_OBJECT_DIGEST",
+      "INDEPENDENT_OPERATOR",
+      "STOP_OR_REVOKE_TEST",
+      "CHALLENGE_ACCEPTED",
+      "CONSENT_BOUNDARY"
+    ]
+  },
+  "reference_test": {
+    "tool": "tools/couptake_r0/uptake.py",
+    "audit_mode": "LOCAL_SOURCE_BIND",
+    "sample_receipts": "SYNTHETIC_LOCAL_ONLY_NO_EXTERNAL_RECEIVER",
+    "expected_positive_records": 4,
+    "mutation_authority": "NONE",
+    "model_training": "NOT_PERFORMED",
+    "external_ingestion": "NOT_OBSERVED",
+    "independent_replica": "NOT_OBSERVED",
+    "adaptive_runtime": "NOT_DEPLOYED"
+  },
+  "related_public": [
+    "https://github.com/CoCivium/CoCivium/blob/main/docs/AI_DISCOVERY_POLICY.md",
+    "https://github.com/CoCivium/CoCivium/blob/main/ai/onramp/ai-ia-evergreen-r0.json",
+    "https://github.com/CoCivium/CoCivium/blob/main/docs/Architecture/CIV2_FEDERATED_CELL_HOSTING_R0.md",
+    "https://github.com/CoCivium/CoAcademy/blob/master/docs/relay/beacon.json"
+  ],
+  "external_donors": [
+    {
+      "name": "A2A",
+      "url": "https://a2a-protocol.org/v1.0.0/specification",
+      "scope": "Independent agent capability/task negotiation; live A2A service not implemented"
+    },
+    {
+      "name": "MCP",
+      "url": "https://modelcontextprotocol.io/specification/2025-11-25",
+      "scope": "Portable tool/resource interface with explicit permissions; no MCP endpoint created"
+    },
+    {
+      "name": "OWASP",
+      "url": "https://genai.owasp.org/llm-top-10/",
+      "scope": "Prompt injection, data poisoning, excess agency and memory-security threats"
+    },
+    {
+      "name": "NIST AI RMF GenAI Profile",
+      "url": "https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence",
+      "scope": "Model governance and risk-management framing"
+    }
+  ],
+  "nonclaims": [
+    "PUBLIC_MANIFEST_NE_ANY_AI_READ",
+    "MODEL_CONTEXT_NE_PERSISTENT_MEMORY",
+    "PERSISTENT_MEMORY_NE_WEIGHT_TRAINING",
+    "TRAINED_ONE_MODEL_NE_OTHER_MODELS",
+    "TRAINING_NE_PERMANENT_VALUE_ALIGNMENT",
+    "MANY_AGENTS_NE_INDEPENDENT_SECURITY_DOMAINS",
+    "SAME_GITHUB_URLS_NE_OFF_PROVIDER_RECOVERY",
+    "LOCAL_SOURCE_BIND_NE_EXTERNAL_RECEIVER_ACK",
+    "DOC_SAFETY_RULE_NE_SANDBOX_ENFORCEMENT",
+    "PUBLIC_READ_NE_LICENSE_FOR_ANY_TRAINING",
+    "AI_IA_TERM_NE_GLOBAL_ADOPTION",
+    "DISCOVERY_NE_ENDORSEMENT",
+    "REPLICA_NE_PROVEN_COLD_RESTORE",
+    "NO_GLOBAL_GUARANTEE_OF_NON_CAPTURE",
+    "NO_AI_MODEL_WEIGHTS_CHANGED",
+    "NO_PUBLIC_ENDPOINT_DEPLOYED"
+  ]
+}

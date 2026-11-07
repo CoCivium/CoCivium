@@ -46,6 +46,18 @@ A repository path, branch, PR, README or commit can bind to a relation, but the 
 
 [Machine-readable AI/IA CoOrbWare evergreen onramp](../ai/onramp/ai-ia-evergreen-r0.json) and its [human-readable twin](Onramp/AI_IA_COORBWARE_EVERGREEN_R0.md) are source-bound **advisory admission paths**, not model directives, an always-on scheduler, a verified external-agent receiver or an installed CoOrbWare runtime. The term **IA** remains unresolved pending a typed, explicitly authorized role definition. A client may inspect the smallest relevant public source, propose one low-risk task and preserve its actual receiver receipt; no public document grants provider or device permissions.
 
+## CoUptake+ | Source readback is not AI learning
+
+[CoUptake+ R0 public machine manifest](../ai/uptake/couptake-manifest-r0.json), [human explanation and uptake gates](../ai/uptake/README.md), and [offline source-bound preflight](../tools/couptake_r0/uptake.py) form a **candidate extension** of this discovery policy and the existing AI/IA onramp, not a competing control plane.
+
+Its **read-only verifier** binds a tiny relevant subset of public source bytes to exact Git object IDs and reports `LOCAL_SOURCE_BOUND` or `HELD`. That local evidence is not a model reading, a semantic interpretation, a durable external memory, weight training, provider permission, receiver ACK, off-provider replica, public endorsement or ongoing autonomous agent. No training rights or machine directives are granted merely because files are public.
+
+Any real acceptance must be receiver-owned, permissioned and separately measured; subsequent model/agent implementations may use relevant protocols only under independent capability, consent, privacy, license and security qualification.
+
+`PUBLIC_SOURCE_BIND_NE_EXTERNAL_AI_UPTAKE`  
+`EXTERNAL_MEMORY_NE_WEIGHT_ADAPTATION`  
+`DISCOVERABILITY_NE_GUARANTEED_ALIGNMENT`
+
 ## Currentness
 
 Machine clients should prefer the smallest relevant current slice:
