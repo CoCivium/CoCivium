@@ -10,6 +10,8 @@
 
 **Explore CoMap+ Source Weave R0**: [Open the interactive source-linked meaning map](examples/comap/README.md), showing registered CoAll domains, repositories, highlights and evidence links. Propose candidate relations locally without changing canon or authority. Historical snapshot, not live federation.
 
+**Explore CoSysAll+ Semantic Zoom R0**: [Interactive source-bound atlas](examples/cosysall/README.md) with semantic zoom, interstitial relationship lenses, accessible and headless projections, and a budget-aware **no-render** path. Tested offline example, not a live global map or X2 runtime. [Architecture](docs/Architecture/COSYSALL_SEMANTIC_ZOOM_SUBSTRATE_R0.md).
+
 ## Choose your CoCivium doorway
 
 CoCivium is an open research project exploring how people and AI tools can work together, while keeping consent and evidence visible.  **You do not need to understand the terminology to begin.**
