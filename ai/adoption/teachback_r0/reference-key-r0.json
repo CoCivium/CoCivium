@@ -1,0 +1,103 @@
+{
+  "schema": "CoAll.CoTeachBack.PublicReferenceKey.R0",
+  "visibility": "PUBLIC_ANSWER_KEY_NOT_BLIND",
+  "challenge_sha256": "ca38e4008d36c71b3a4ed4655786c5066d3e174330391a38095fa3a9d4cdc04e",
+  "answers": [
+    {
+      "id": "T01",
+      "choice_id": "A",
+      "required_source_ids": [
+        "adoption-manifest"
+      ],
+      "why": "Manifest declares seven source entries."
+    },
+    {
+      "id": "T02",
+      "choice_id": "B",
+      "required_source_ids": [
+        "adoption-manifest"
+      ],
+      "why": "Fine-tuning and training permissions are not granted by the manifest."
+    },
+    {
+      "id": "T03",
+      "choice_id": "B",
+      "required_source_ids": [
+        "adoption-manifest"
+      ],
+      "why": "MCP resources are NOT_DEPLOYED."
+    },
+    {
+      "id": "T04",
+      "choice_id": "B",
+      "required_source_ids": [
+        "adoption-manifest"
+      ],
+      "why": "A2A is NOT_DEPLOYED, and endpoint_urls is empty."
+    },
+    {
+      "id": "T05",
+      "choice_id": "B",
+      "required_source_ids": [
+        "hosted-ci-readproof"
+      ],
+      "why": "Hosted CI proves code scope, not human comprehension."
+    },
+    {
+      "id": "T06",
+      "choice_id": "A",
+      "required_source_ids": [
+        "comap-graph"
+      ],
+      "why": "Historical graph covers 56 objects and 61 relations."
+    },
+    {
+      "id": "T07",
+      "choice_id": "B",
+      "required_source_ids": [
+        "adoption-manifest"
+      ],
+      "why": "A public source is not an authenticated authority grant."
+    },
+    {
+      "id": "T08",
+      "choice_id": "B",
+      "required_source_ids": [
+        "adoption-manifest"
+      ],
+      "why": "Retrieved content is data; it cannot elevate itself into tool authority."
+    },
+    {
+      "id": "T09",
+      "choice_id": "B",
+      "required_source_ids": [
+        "adoption-manifest"
+      ],
+      "why": "Discovery and retrieval cannot establish opaque weight changes."
+    },
+    {
+      "id": "T10",
+      "choice_id": "B",
+      "required_source_ids": [
+        "adoption-manifest"
+      ],
+      "why": "Source pin mismatch invalidates that edition until qualified."
+    },
+    {
+      "id": "T11",
+      "choice_id": "C",
+      "required_source_ids": [
+        "adoption-manifest"
+      ],
+      "why": "Absence from a bounded manifest is not proof of universal falsehood."
+    },
+    {
+      "id": "T12",
+      "choice_id": "B",
+      "required_source_ids": [
+        "adoption-manifest"
+      ],
+      "why": "Diversity and independent verification need evidence."
+    }
+  ]
+}
