@@ -427,7 +427,7 @@ if(typeof window!=="undefined"&&typeof document!=="undefined"){
   by("lens-prompt").textContent=plan.childPrompt;
   by("lens-offline").textContent=plan.offscreen;
   for(const scene of lib.lens.scenes){
-   by("lens-art-"+scene.id).hidden=scene.id!==lens.scene;
+   by("lens-art-"+scene.id).toggleAttribute("hidden",scene.id!==lens.scene);
   }
   by("lens-play").hidden=lens.mode!=="play";
   if(lens.mode==="play")renderLensPlay(plan);
