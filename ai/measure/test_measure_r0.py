@@ -118,6 +118,36 @@ class RegistryAndUnitTests(unittest.TestCase):
     def test_percentage_to_bounded_fraction(self):
         self.assertEqual(m.convert("25", "percent", "one", self.reg)["converted_value"], "0.25")
 
+    def test_bounded_fraction_above_one_is_rejected(self):
+        with self.assertRaisesRegex(m.MeasureError, "BOUNDED_FRACTION_OUT_OF_RANGE"):
+            m.convert("1.2", "one", "percent", self.reg)
+
+    def test_percentage_over_hundred_is_rejected(self):
+        with self.assertRaisesRegex(m.MeasureError, "BOUNDED_FRACTION_OUT_OF_RANGE"):
+            m.convert("101", "percent", "one", self.reg)
+
+    def test_negative_fraction_rejected(self):
+        with self.assertRaisesRegex(m.MeasureError, "BOUNDED_FRACTION_OUT_OF_RANGE"):
+            m.convert("-0.1", "one", "percent", self.reg)
+
+    def test_fractional_outcome_count_rejected(self):
+        self.reject_ratio(lambda x:x["denominator"].update(value="2.5",status="OBSERVED"))
+
+    def test_fractional_human_touch_count_rejected(self):
+        f=copy.deepcopy(self.fx)
+        f["numerator"].update(measure_id="comeasure.ops.human_relay.r0",unit_id="human_touch",value="1.5")
+        with self.assertRaisesRegex(m.MeasureError, "DISCRETE_EVENT_COUNT_REQUIRED"):
+            m.derive_ratio("human_touches_per_verified_effect",f["numerator"],f["denominator"],self.reg)
+
+    def test_negative_count_rejected(self):
+        self.reject_ratio(lambda x:x["denominator"].update(value="-3",status="OBSERVED"))
+
+    def test_fractional_cold_restore_success_rejected(self):
+        f=copy.deepcopy(self.fx["optional_recovery_fixture"])
+        f["numerator"]["value"]="4.5"
+        with self.assertRaisesRegex(m.MeasureError, "DISCRETE_EVENT_COUNT_REQUIRED"):
+            m.derive_ratio("independent_cold_restore_success_ratio",f["numerator"],f["denominator"],self.reg)
+
     def test_nonfinite_number_fails(self):
         with self.assertRaises(m.MeasureError):
             m.convert("NaN", "m", "km", self.reg)
