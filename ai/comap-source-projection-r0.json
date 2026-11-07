@@ -1,0 +1,1152 @@
+{
+  "schema": "CoAll.CoMapProjection.R0",
+  "state": "PUBLIC_SOURCE_BOUND_PROJECTION_NOT_CANON_OR_RUNTIME",
+  "generated_date": "2026-11-06/07",
+  "sources": [
+    {
+      "id": "source:ai/evolution-lanes.json",
+      "path": "ai/evolution-lanes.json",
+      "url": "https://github.com/CoCivium/CoCivium/blob/main/ai/evolution-lanes.json",
+      "blob_sha": "0c87630a746f98281505ee4b620b60b03be6fc1b"
+    },
+    {
+      "id": "source:ai/repo-role-map.json",
+      "path": "ai/repo-role-map.json",
+      "url": "https://github.com/CoCivium/CoCivium/blob/main/ai/repo-role-map.json",
+      "blob_sha": "9e4e30e7b567f301c2fa32e7953e9749e6f05898"
+    },
+    {
+      "id": "source:ai/highlight-assets.json",
+      "path": "ai/highlight-assets.json",
+      "url": "https://github.com/CoCivium/CoCivium/blob/main/ai/highlight-assets.json",
+      "blob_sha": "a6cf0422a2fbf82852de3619a47ea8b8ec3c45de"
+    },
+    {
+      "id": "source:CoMapIssue217",
+      "url": "https://github.com/CoCivium/CoCivium/issues/217",
+      "kind": "existing_review_candidate"
+    },
+    {
+      "id": "source:CoAllFabric",
+      "url": "https://github.com/CoCivium/CoCivium/blob/main/docs/Evolution/COALL_GITHUB_EVOLUTION_FABRIC_R0.md",
+      "kind": "existing_shared_evolution_contract"
+    },
+    {
+      "id": "source:Civ2Cell",
+      "url": "https://github.com/CoCivium/CoCivium/blob/main/docs/Architecture/CIV2_FEDERATED_CELL_HOSTING_R0.md",
+      "kind": "existing_hosting_candidate"
+    }
+  ],
+  "coverage": {
+    "included": "Existing public CoAll evolution lanes, repository-role map, highlight registry, selected documented contextual edges",
+    "excluded": "Private repo contents, full CoLex term corpus, live sync, every CoObject, unqualified cross-domain semantic equivalence",
+    "source_registry_counts": {
+      "domains": 21,
+      "repositories": 21,
+      "highlights": 10
+    }
+  },
+  "rails": [
+    "REGISTERED_NE_AUTHORIZED",
+    "EDGE_NE_AUTHORITY",
+    "MAP_NE_CANON",
+    "HIGHLIGHT_NE_RELEASE_READY",
+    "PRIVATE_REPO_NAME_NE_PRIVATE_CONTENT",
+    "CANDIDATE_NE_OBSERVED",
+    "FRESHNESS_REQUIRES_REFETCH"
+  ],
+  "nodes": [
+    {
+      "id": "view:CoMap+",
+      "label": "CoMap+ projection",
+      "kind": "map",
+      "status": "PROJECTION_CANDIDATE",
+      "source": "source:CoMapIssue217",
+      "description": "Source-linked interactive lens over typed CoAll relations, not a new ontology or deployed renderer."
+    },
+    {
+      "id": "domain:CoStrategy+",
+      "label": "CoStrategy+",
+      "kind": "domain",
+      "status": "PRIVATE_FIRST_PUBLIC_SUMMARY",
+      "source": "source:ai/evolution-lanes.json",
+      "repositories": [
+        "MasterPlan",
+        "CoCivium"
+      ]
+    },
+    {
+      "id": "domain:CoInsight+",
+      "label": "CoInsight+",
+      "kind": "domain",
+      "status": "PRIVATE_ATOM_PUBLIC_PROJECTION",
+      "source": "source:ai/evolution-lanes.json",
+      "repositories": [
+        "CoInsights",
+        "CoCivium"
+      ]
+    },
+    {
+      "id": "domain:CoTheoryAll+",
+      "label": "CoTheoryAll+",
+      "kind": "domain",
+      "status": "CROSS_CUTTING_CANDIDATE",
+      "source": "source:ai/evolution-lanes.json",
+      "repositories": [
+        "CoCivium",
+        "CoInsights",
+        "CoSources"
+      ]
+    },
+    {
+      "id": "domain:CoHighlight+",
+      "label": "CoHighlight+",
+      "kind": "domain",
+      "status": "PUBLIC_SAFE_ONLY",
+      "source": "source:ai/evolution-lanes.json",
+      "repositories": [
+        "CoCivium"
+      ]
+    },
+    {
+      "id": "domain:CoIndex+",
+      "label": "CoIndex+",
+      "kind": "domain",
+      "status": "INDEX_AND_DISCOVERY",
+      "source": "source:ai/evolution-lanes.json",
+      "repositories": [
+        "GIBindex",
+        "CoCivium",
+        "CoShareHub"
+      ]
+    },
+    {
+      "id": "domain:CoLex+",
+      "label": "CoLex+",
+      "kind": "domain",
+      "status": "TERM_ALIAS_DEPRECATION",
+      "source": "source:ai/evolution-lanes.json",
+      "repositories": [
+        "GIBindex",
+        "CoCivium"
+      ]
+    },
+    {
+      "id": "domain:CoAll+",
+      "label": "CoAll+",
+      "kind": "domain",
+      "status": "PUBLIC_PRIVATE_SPLIT",
+      "source": "source:ai/evolution-lanes.json",
+      "repositories": [
+        "CoCivium",
+        "CoSteward"
+      ]
+    },
+    {
+      "id": "domain:CoOps+",
+      "label": "CoOps+",
+      "kind": "domain",
+      "status": "PRIVATE_OPS_AND_TOOLING",
+      "source": "source:ai/evolution-lanes.json",
+      "repositories": [
+        "CoSteward",
+        "CoToolbelt",
+        "CoStacks"
+      ]
+    },
+    {
+      "id": "domain:CoMythOps+",
+      "label": "CoMythOps+",
+      "kind": "domain",
+      "status": "TYPED_METAPHOR_MYTH_OPERATIONAL_PROJECTION",
+      "source": "source:ai/evolution-lanes.json",
+      "repositories": [
+        "CoCivium",
+        "CoInsights"
+      ]
+    },
+    {
+      "id": "domain:CoPriMath+",
+      "label": "CoPriMath+",
+      "kind": "domain",
+      "status": "FORMAL_PROJECTION_WITH_LOSS",
+      "source": "source:ai/evolution-lanes.json",
+      "repositories": [
+        "CoCivium",
+        "CoInsights"
+      ]
+    },
+    {
+      "id": "domain:CoGibberTru+",
+      "label": "CoGibberTru+",
+      "kind": "domain",
+      "status": "COMPRESSED_REVERSIBLE_PROJECTION",
+      "source": "source:ai/evolution-lanes.json",
+      "repositories": [
+        "CoCivium",
+        "GIBindex"
+      ]
+    },
+    {
+      "id": "domain:RickBar+/CoDesktop+",
+      "label": "RickBar+/CoDesktop+",
+      "kind": "domain",
+      "status": "PRODUCT_UX",
+      "source": "source:ai/evolution-lanes.json",
+      "repositories": [
+        "CoCivium",
+        "CoAura",
+        "CoToolbelt"
+      ]
+    },
+    {
+      "id": "domain:CoUX+/CoSurface+",
+      "label": "CoUX+/CoSurface+",
+      "kind": "domain",
+      "status": "PROJECTION_AND_ACCESSIBILITY",
+      "source": "source:ai/evolution-lanes.json",
+      "repositories": [
+        "CoAura",
+        "CoCivium"
+      ]
+    },
+    {
+      "id": "domain:CoHumour+",
+      "label": "CoHumour+",
+      "kind": "domain",
+      "status": "HUMOUR_TYPED_SEPARATELY_FROM_EVIDENCE",
+      "source": "source:ai/evolution-lanes.json",
+      "repositories": [
+        "CoCivium",
+        "CoInsights"
+      ]
+    },
+    {
+      "id": "domain:CoAutoEvo+/CoEvo+",
+      "label": "CoAutoEvo+/CoEvo+",
+      "kind": "domain",
+      "status": "CONTROL_PLANE",
+      "source": "source:ai/evolution-lanes.json",
+      "repositories": [
+        "CoCivium",
+        "CoStacks",
+        "CoSteward"
+      ]
+    },
+    {
+      "id": "domain:CoSession+",
+      "label": "CoSession+",
+      "kind": "domain",
+      "status": "VIRTUAL_AND_MATERIALIZED_SESSION_ECOLOGY",
+      "source": "source:ai/evolution-lanes.json",
+      "repositories": [
+        "CoCivium"
+      ]
+    },
+    {
+      "id": "domain:CoNodeMesh+/GRAIL+",
+      "label": "CoNodeMesh+/GRAIL+",
+      "kind": "domain",
+      "status": "FEDERATED_NODE_CURRENTNESS",
+      "source": "source:ai/evolution-lanes.json",
+      "repositories": [
+        "CoCivium",
+        "CoShareHub",
+        "CoSteward"
+      ]
+    },
+    {
+      "id": "domain:CoSource+/Provenance",
+      "label": "CoSource+/Provenance",
+      "kind": "domain",
+      "status": "SOURCE_AND_PUBLIC_PROJECTION",
+      "source": "source:ai/evolution-lanes.json",
+      "repositories": [
+        "CoSources",
+        "CoCivium"
+      ]
+    },
+    {
+      "id": "domain:CoFuture+",
+      "label": "CoFuture+",
+      "kind": "domain",
+      "status": "PRIVATE_FIRST",
+      "source": "source:ai/evolution-lanes.json",
+      "repositories": [
+        "CoFutures",
+        "CoCivium"
+      ]
+    },
+    {
+      "id": "domain:CoEducation+",
+      "label": "CoEducation+",
+      "kind": "domain",
+      "status": "PUBLIC_LEARNING",
+      "source": "source:ai/evolution-lanes.json",
+      "repositories": [
+        "CoAcademy",
+        "CoCivium"
+      ]
+    },
+    {
+      "id": "domain:CoRails+",
+      "label": "CoRails+",
+      "kind": "domain",
+      "status": "INVARIANTS_AND_GUARDRAILS",
+      "source": "source:ai/evolution-lanes.json",
+      "repositories": [
+        "CoRails",
+        "CoCivium"
+      ]
+    },
+    {
+      "id": "repo:CoCivium/CoCivium",
+      "label": "CoCivium",
+      "kind": "repository",
+      "status": "REGISTERED_PUBLIC_REPO",
+      "source": "source:ai/repo-role-map.json",
+      "full_name": "CoCivium/CoCivium",
+      "roles": [
+        "PUBLIC_FRONT_DOOR",
+        "SESSION_BOOTSTRAP",
+        "CURRENTNESS",
+        "CROSS_DOMAIN_INTEGRATION",
+        "HIGHLIGHTS"
+      ]
+    },
+    {
+      "id": "repo:CoCivium/CoInsights",
+      "label": "CoInsights",
+      "kind": "repository",
+      "status": "REGISTERED_PRIVATE_REPO",
+      "source": "source:ai/repo-role-map.json",
+      "full_name": "CoCivium/CoInsights",
+      "roles": [
+        "INSIGHT_ATOMS",
+        "IDEATION",
+        "WHITEPAPER_FRAGMENTS"
+      ]
+    },
+    {
+      "id": "repo:CoCivium/GIBindex",
+      "label": "GIBindex",
+      "kind": "repository",
+      "status": "REGISTERED_PRIVATE_REPO",
+      "source": "source:ai/repo-role-map.json",
+      "full_name": "CoCivium/GIBindex",
+      "roles": [
+        "COLEX",
+        "ALIASES",
+        "DEPRECATIONS",
+        "INDEX"
+      ]
+    },
+    {
+      "id": "repo:CoCivium/MasterPlan",
+      "label": "MasterPlan",
+      "kind": "repository",
+      "status": "REGISTERED_PRIVATE_REPO",
+      "source": "source:ai/repo-role-map.json",
+      "full_name": "CoCivium/MasterPlan",
+      "roles": [
+        "STRATEGY",
+        "PLANS",
+        "DECISIONS"
+      ]
+    },
+    {
+      "id": "repo:CoCivium/CoFutures",
+      "label": "CoFutures",
+      "kind": "repository",
+      "status": "REGISTERED_PRIVATE_REPO",
+      "source": "source:ai/repo-role-map.json",
+      "full_name": "CoCivium/CoFutures",
+      "roles": [
+        "FUTURES",
+        "PROBABILISTIC_LEDGER"
+      ]
+    },
+    {
+      "id": "repo:CoCivium/CoSteward",
+      "label": "CoSteward",
+      "kind": "repository",
+      "status": "REGISTERED_PRIVATE_REPO",
+      "source": "source:ai/repo-role-map.json",
+      "full_name": "CoCivium/CoSteward",
+      "roles": [
+        "OPS",
+        "TRIAGE",
+        "RUNBOOKS"
+      ]
+    },
+    {
+      "id": "repo:CoCivium/CoToolbelt",
+      "label": "CoToolbelt",
+      "kind": "repository",
+      "status": "REGISTERED_PRIVATE_REPO",
+      "source": "source:ai/repo-role-map.json",
+      "full_name": "CoCivium/CoToolbelt",
+      "roles": [
+        "SHARED_SCRIPTS",
+        "UTILITIES"
+      ]
+    },
+    {
+      "id": "repo:CoCivium/CoStacks",
+      "label": "CoStacks",
+      "kind": "repository",
+      "status": "REGISTERED_PUBLIC_REPO",
+      "source": "source:ai/repo-role-map.json",
+      "full_name": "CoCivium/CoStacks",
+      "roles": [
+        "AUTOMATION",
+        "OPERATOR_EXPERIMENTS"
+      ]
+    },
+    {
+      "id": "repo:CoCivium/CoRails",
+      "label": "CoRails",
+      "kind": "repository",
+      "status": "REGISTERED_PUBLIC_REPO",
+      "source": "source:ai/repo-role-map.json",
+      "full_name": "CoCivium/CoRails",
+      "roles": [
+        "RAILS",
+        "INVARIANTS",
+        "GUARDRAILS"
+      ]
+    },
+    {
+      "id": "repo:CoCivium/CoAura",
+      "label": "CoAura",
+      "kind": "repository",
+      "status": "REGISTERED_PUBLIC_REPO",
+      "source": "source:ai/repo-role-map.json",
+      "full_name": "CoCivium/CoAura",
+      "roles": [
+        "UX",
+        "SURFACE",
+        "PROJECTION"
+      ]
+    },
+    {
+      "id": "repo:CoCivium/CoAcademy",
+      "label": "CoAcademy",
+      "kind": "repository",
+      "status": "REGISTERED_PUBLIC_REPO",
+      "source": "source:ai/repo-role-map.json",
+      "full_name": "CoCivium/CoAcademy",
+      "roles": [
+        "EDUCATION",
+        "PUBLIC_LEARNING"
+      ]
+    },
+    {
+      "id": "repo:CoCivium/CoSources",
+      "label": "CoSources",
+      "kind": "repository",
+      "status": "REGISTERED_PUBLIC_REPO",
+      "source": "source:ai/repo-role-map.json",
+      "full_name": "CoCivium/CoSources",
+      "roles": [
+        "SOURCES",
+        "PROVENANCE"
+      ]
+    },
+    {
+      "id": "repo:CoCivium/CoShareHub",
+      "label": "CoShareHub",
+      "kind": "repository",
+      "status": "REGISTERED_PRIVATE_REPO",
+      "source": "source:ai/repo-role-map.json",
+      "full_name": "CoCivium/CoShareHub",
+      "roles": [
+        "NAVIGATION",
+        "DISCOVERY"
+      ]
+    },
+    {
+      "id": "repo:CoCivium/CoBusMirror",
+      "label": "CoBusMirror",
+      "kind": "repository",
+      "status": "REGISTERED_PUBLIC_REPO",
+      "source": "source:ai/repo-role-map.json",
+      "full_name": "CoCivium/CoBusMirror",
+      "roles": [
+        "LEGACY_PUBLIC_MIRROR",
+        "POINTER_LINEAGE"
+      ]
+    },
+    {
+      "id": "repo:CoCivium/EntMent",
+      "label": "EntMent",
+      "kind": "repository",
+      "status": "REGISTERED_PUBLIC_REPO",
+      "source": "source:ai/repo-role-map.json",
+      "full_name": "CoCivium/EntMent",
+      "roles": [
+        "AI_FIRST_BEACON_EXEMPLAR"
+      ]
+    },
+    {
+      "id": "repo:CoCivium/TEMP",
+      "label": "TEMP",
+      "kind": "repository",
+      "status": "REGISTERED_PUBLIC_REPO",
+      "source": "source:ai/repo-role-map.json",
+      "full_name": "CoCivium/TEMP",
+      "roles": [
+        "PUBLIC_SAFE_TRANSIENT_INBOX"
+      ]
+    },
+    {
+      "id": "repo:CoCivium/CoTrustedWindow",
+      "label": "CoTrustedWindow",
+      "kind": "repository",
+      "status": "REGISTERED_PRIVATE_REPO",
+      "source": "source:ai/repo-role-map.json",
+      "full_name": "CoCivium/CoTrustedWindow",
+      "roles": [
+        "TRUSTED_HUMAN_WINDOW"
+      ]
+    },
+    {
+      "id": "repo:CoCivium/CoLegalVault",
+      "label": "CoLegalVault",
+      "kind": "repository",
+      "status": "REGISTERED_PRIVATE_REPO",
+      "source": "source:ai/repo-role-map.json",
+      "full_name": "CoCivium/CoLegalVault",
+      "roles": [
+        "LEGAL_VAULT"
+      ]
+    },
+    {
+      "id": "repo:CoCivium/CoCrownJewelVault",
+      "label": "CoCrownJewelVault",
+      "kind": "repository",
+      "status": "REGISTERED_PRIVATE_REPO",
+      "source": "source:ai/repo-role-map.json",
+      "full_name": "CoCivium/CoCrownJewelVault",
+      "roles": [
+        "RESTRICTED_VAULT"
+      ]
+    },
+    {
+      "id": "repo:CoCivium/.github",
+      "label": ".github",
+      "kind": "repository",
+      "status": "REGISTERED_PRIVATE_REPO",
+      "source": "source:ai/repo-role-map.json",
+      "full_name": "CoCivium/.github",
+      "roles": [
+        "ACCOUNT_REPO_META"
+      ]
+    },
+    {
+      "id": "repo:CoCivium/CoPolitic-site",
+      "label": "CoPolitic-site",
+      "kind": "repository",
+      "status": "REGISTERED_PUBLIC_REPO",
+      "source": "source:ai/repo-role-map.json",
+      "full_name": "CoCivium/CoPolitic-site",
+      "roles": [
+        "SEPARATE_POLITICAL_PUBLIC_SCAFFOLD"
+      ]
+    },
+    {
+      "id": "highlight:CognocartaConsenti",
+      "label": "Cognocarta Consenti / constitutional consent lineage",
+      "kind": "highlight",
+      "status": "REQUIRES_CURRENT_PUBLIC_BINDING",
+      "source": "source:ai/highlight-assets.json",
+      "registry_state": "CANDIDATE_HIGHLIGHT"
+    },
+    {
+      "id": "highlight:CoTheoryAll",
+      "label": "CoTheoryAll+",
+      "kind": "highlight",
+      "status": "HYPOTHESIS_FRAMEWORK_NOT_ESTABLISHED_SCIENCE",
+      "source": "source:ai/highlight-assets.json",
+      "registry_state": "CANDIDATE_HIGHLIGHT"
+    },
+    {
+      "id": "highlight:CoCivia",
+      "label": "CoCivia disclosed composite front",
+      "kind": "highlight",
+      "status": "PUBLIC_IDENTITY_RECORD_LANDED",
+      "source": "source:ai/highlight-assets.json",
+      "registry_state": "CANDIDATE_HIGHLIGHT"
+    },
+    {
+      "id": "highlight:RickBar",
+      "label": "RickBar / CoDesktop+",
+      "kind": "highlight",
+      "status": "VISIBLE_NATIVE_CANARY_PROVEN_PRODUCT_NOT_FINISHED",
+      "source": "source:ai/highlight-assets.json",
+      "registry_state": "CANDIDATE_HIGHLIGHT"
+    },
+    {
+      "id": "highlight:CoVirtualSession",
+      "label": "CoVirtualSession+ / session morphology",
+      "kind": "highlight",
+      "status": "ARCHITECTURE_LANDED_RUNTIME_PARTIAL",
+      "source": "source:ai/highlight-assets.json",
+      "registry_state": "CANDIDATE_HIGHLIGHT"
+    },
+    {
+      "id": "highlight:CoNodeMesh",
+      "label": "CoNodeMesh+ / GRAIL+ federation",
+      "kind": "highlight",
+      "status": "ARCHITECTURE_CANDIDATE_PRIOR_GRAIL_RECOVERY_REQUIRED",
+      "source": "source:ai/highlight-assets.json",
+      "registry_state": "CANDIDATE_HIGHLIGHT"
+    },
+    {
+      "id": "highlight:CoPriMath",
+      "label": "CoPriMath+",
+      "kind": "highlight",
+      "status": "FORMAL_PROJECTION_FAMILY",
+      "source": "source:ai/highlight-assets.json",
+      "registry_state": "CANDIDATE_HIGHLIGHT"
+    },
+    {
+      "id": "highlight:CoGibberTru",
+      "label": "CoGibberTru+",
+      "kind": "highlight",
+      "status": "COMPRESSED_REVERSIBLE_REPRESENTATION_FAMILY",
+      "source": "source:ai/highlight-assets.json",
+      "registry_state": "CANDIDATE_HIGHLIGHT"
+    },
+    {
+      "id": "highlight:CoSalute",
+      "label": "The CoCivium Salute",
+      "kind": "highlight",
+      "status": "PUBLIC_POETIC_PROJECTION",
+      "source": "source:ai/highlight-assets.json",
+      "registry_state": "PUBLIC_HIGHLIGHT"
+    },
+    {
+      "id": "highlight:CoAllPulseField",
+      "label": "CoAllPulseField+ / CoTime+ currentness",
+      "kind": "highlight",
+      "status": "ARCHITECTURE_CANDIDATE_NO_GLOBAL_LIVE_BUS_CLAIM",
+      "source": "source:ai/highlight-assets.json",
+      "registry_state": "CANDIDATE_HIGHLIGHT"
+    },
+    {
+      "id": "doc:docs/Evolution/COALL_GITHUB_EVOLUTION_FABRIC_R0.md",
+      "label": "Evolution Fabric",
+      "kind": "source_document",
+      "status": "PUBLIC_ARCHITECTURE_SOURCE",
+      "source": "source:CoAllFabric",
+      "url": "https://github.com/CoCivium/CoCivium/blob/main/docs/Evolution/COALL_GITHUB_EVOLUTION_FABRIC_R0.md"
+    },
+    {
+      "id": "doc:docs/Architecture/CIV2_FEDERATED_CELL_HOSTING_R0.md",
+      "label": "Civ2+ Cell Hosting",
+      "kind": "source_document",
+      "status": "PUBLIC_ARCHITECTURE_SOURCE",
+      "source": "source:CoAllFabric",
+      "url": "https://github.com/CoCivium/CoCivium/blob/main/docs/Architecture/CIV2_FEDERATED_CELL_HOSTING_R0.md"
+    },
+    {
+      "id": "doc:schemas/coevo-delta-v0.1.schema.json",
+      "label": "CoEvoDelta Schema",
+      "kind": "source_document",
+      "status": "PUBLIC_ARCHITECTURE_SOURCE",
+      "source": "source:CoAllFabric",
+      "url": "https://github.com/CoCivium/CoCivium/blob/main/schemas/coevo-delta-v0.1.schema.json"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "from": "domain:CoStrategy+",
+      "to": "repo:CoCivium/MasterPlan",
+      "relation": "REGISTERED_REPOSITORY",
+      "source": "source:ai/evolution-lanes.json",
+      "state": "SOURCE_REGISTERED"
+    },
+    {
+      "id": "e2",
+      "from": "domain:CoStrategy+",
+      "to": "repo:CoCivium/CoCivium",
+      "relation": "REGISTERED_REPOSITORY",
+      "source": "source:ai/evolution-lanes.json",
+      "state": "SOURCE_REGISTERED"
+    },
+    {
+      "id": "e3",
+      "from": "domain:CoInsight+",
+      "to": "repo:CoCivium/CoInsights",
+      "relation": "REGISTERED_REPOSITORY",
+      "source": "source:ai/evolution-lanes.json",
+      "state": "SOURCE_REGISTERED"
+    },
+    {
+      "id": "e4",
+      "from": "domain:CoInsight+",
+      "to": "repo:CoCivium/CoCivium",
+      "relation": "REGISTERED_REPOSITORY",
+      "source": "source:ai/evolution-lanes.json",
+      "state": "SOURCE_REGISTERED"
+    },
+    {
+      "id": "e5",
+      "from": "domain:CoTheoryAll+",
+      "to": "repo:CoCivium/CoCivium",
+      "relation": "REGISTERED_REPOSITORY",
+      "source": "source:ai/evolution-lanes.json",
+      "state": "SOURCE_REGISTERED"
+    },
+    {
+      "id": "e6",
+      "from": "domain:CoTheoryAll+",
+      "to": "repo:CoCivium/CoInsights",
+      "relation": "REGISTERED_REPOSITORY",
+      "source": "source:ai/evolution-lanes.json",
+      "state": "SOURCE_REGISTERED"
+    },
+    {
+      "id": "e7",
+      "from": "domain:CoTheoryAll+",
+      "to": "repo:CoCivium/CoSources",
+      "relation": "REGISTERED_REPOSITORY",
+      "source": "source:ai/evolution-lanes.json",
+      "state": "SOURCE_REGISTERED"
+    },
+    {
+      "id": "e8",
+      "from": "domain:CoHighlight+",
+      "to": "repo:CoCivium/CoCivium",
+      "relation": "REGISTERED_REPOSITORY",
+      "source": "source:ai/evolution-lanes.json",
+      "state": "SOURCE_REGISTERED"
+    },
+    {
+      "id": "e9",
+      "from": "domain:CoIndex+",
+      "to": "repo:CoCivium/GIBindex",
+      "relation": "REGISTERED_REPOSITORY",
+      "source": "source:ai/evolution-lanes.json",
+      "state": "SOURCE_REGISTERED"
+    },
+    {
+      "id": "e10",
+      "from": "domain:CoIndex+",
+      "to": "repo:CoCivium/CoCivium",
+      "relation": "REGISTERED_REPOSITORY",
+      "source": "source:ai/evolution-lanes.json",
+      "state": "SOURCE_REGISTERED"
+    },
+    {
+      "id": "e11",
+      "from": "domain:CoIndex+",
+      "to": "repo:CoCivium/CoShareHub",
+      "relation": "REGISTERED_REPOSITORY",
+      "source": "source:ai/evolution-lanes.json",
+      "state": "SOURCE_REGISTERED"
+    },
+    {
+      "id": "e12",
+      "from": "domain:CoLex+",
+      "to": "repo:CoCivium/GIBindex",
+      "relation": "REGISTERED_REPOSITORY",
+      "source": "source:ai/evolution-lanes.json",
+      "state": "SOURCE_REGISTERED"
+    },
+    {
+      "id": "e13",
+      "from": "domain:CoLex+",
+      "to": "repo:CoCivium/CoCivium",
+      "relation": "REGISTERED_REPOSITORY",
+      "source": "source:ai/evolution-lanes.json",
+      "state": "SOURCE_REGISTERED"
+    },
+    {
+      "id": "e14",
+      "from": "domain:CoAll+",
+      "to": "repo:CoCivium/CoCivium",
+      "relation": "REGISTERED_REPOSITORY",
+      "source": "source:ai/evolution-lanes.json",
+      "state": "SOURCE_REGISTERED"
+    },
+    {
+      "id": "e15",
+      "from": "domain:CoAll+",
+      "to": "repo:CoCivium/CoSteward",
+      "relation": "REGISTERED_REPOSITORY",
+      "source": "source:ai/evolution-lanes.json",
+      "state": "SOURCE_REGISTERED"
+    },
+    {
+      "id": "e16",
+      "from": "domain:CoOps+",
+      "to": "repo:CoCivium/CoSteward",
+      "relation": "REGISTERED_REPOSITORY",
+      "source": "source:ai/evolution-lanes.json",
+      "state": "SOURCE_REGISTERED"
+    },
+    {
+      "id": "e17",
+      "from": "domain:CoOps+",
+      "to": "repo:CoCivium/CoToolbelt",
+      "relation": "REGISTERED_REPOSITORY",
+      "source": "source:ai/evolution-lanes.json",
+      "state": "SOURCE_REGISTERED"
+    },
+    {
+      "id": "e18",
+      "from": "domain:CoOps+",
+      "to": "repo:CoCivium/CoStacks",
+      "relation": "REGISTERED_REPOSITORY",
+      "source": "source:ai/evolution-lanes.json",
+      "state": "SOURCE_REGISTERED"
+    },
+    {
+      "id": "e19",
+      "from": "domain:CoMythOps+",
+      "to": "repo:CoCivium/CoCivium",
+      "relation": "REGISTERED_REPOSITORY",
+      "source": "source:ai/evolution-lanes.json",
+      "state": "SOURCE_REGISTERED"
+    },
+    {
+      "id": "e20",
+      "from": "domain:CoMythOps+",
+      "to": "repo:CoCivium/CoInsights",
+      "relation": "REGISTERED_REPOSITORY",
+      "source": "source:ai/evolution-lanes.json",
+      "state": "SOURCE_REGISTERED"
+    },
+    {
+      "id": "e21",
+      "from": "domain:CoPriMath+",
+      "to": "repo:CoCivium/CoCivium",
+      "relation": "REGISTERED_REPOSITORY",
+      "source": "source:ai/evolution-lanes.json",
+      "state": "SOURCE_REGISTERED"
+    },
+    {
+      "id": "e22",
+      "from": "domain:CoPriMath+",
+      "to": "repo:CoCivium/CoInsights",
+      "relation": "REGISTERED_REPOSITORY",
+      "source": "source:ai/evolution-lanes.json",
+      "state": "SOURCE_REGISTERED"
+    },
+    {
+      "id": "e23",
+      "from": "domain:CoGibberTru+",
+      "to": "repo:CoCivium/CoCivium",
+      "relation": "REGISTERED_REPOSITORY",
+      "source": "source:ai/evolution-lanes.json",
+      "state": "SOURCE_REGISTERED"
+    },
+    {
+      "id": "e24",
+      "from": "domain:CoGibberTru+",
+      "to": "repo:CoCivium/GIBindex",
+      "relation": "REGISTERED_REPOSITORY",
+      "source": "source:ai/evolution-lanes.json",
+      "state": "SOURCE_REGISTERED"
+    },
+    {
+      "id": "e25",
+      "from": "domain:RickBar+/CoDesktop+",
+      "to": "repo:CoCivium/CoCivium",
+      "relation": "REGISTERED_REPOSITORY",
+      "source": "source:ai/evolution-lanes.json",
+      "state": "SOURCE_REGISTERED"
+    },
+    {
+      "id": "e26",
+      "from": "domain:RickBar+/CoDesktop+",
+      "to": "repo:CoCivium/CoAura",
+      "relation": "REGISTERED_REPOSITORY",
+      "source": "source:ai/evolution-lanes.json",
+      "state": "SOURCE_REGISTERED"
+    },
+    {
+      "id": "e27",
+      "from": "domain:RickBar+/CoDesktop+",
+      "to": "repo:CoCivium/CoToolbelt",
+      "relation": "REGISTERED_REPOSITORY",
+      "source": "source:ai/evolution-lanes.json",
+      "state": "SOURCE_REGISTERED"
+    },
+    {
+      "id": "e28",
+      "from": "domain:CoUX+/CoSurface+",
+      "to": "repo:CoCivium/CoAura",
+      "relation": "REGISTERED_REPOSITORY",
+      "source": "source:ai/evolution-lanes.json",
+      "state": "SOURCE_REGISTERED"
+    },
+    {
+      "id": "e29",
+      "from": "domain:CoUX+/CoSurface+",
+      "to": "repo:CoCivium/CoCivium",
+      "relation": "REGISTERED_REPOSITORY",
+      "source": "source:ai/evolution-lanes.json",
+      "state": "SOURCE_REGISTERED"
+    },
+    {
+      "id": "e30",
+      "from": "domain:CoHumour+",
+      "to": "repo:CoCivium/CoCivium",
+      "relation": "REGISTERED_REPOSITORY",
+      "source": "source:ai/evolution-lanes.json",
+      "state": "SOURCE_REGISTERED"
+    },
+    {
+      "id": "e31",
+      "from": "domain:CoHumour+",
+      "to": "repo:CoCivium/CoInsights",
+      "relation": "REGISTERED_REPOSITORY",
+      "source": "source:ai/evolution-lanes.json",
+      "state": "SOURCE_REGISTERED"
+    },
+    {
+      "id": "e32",
+      "from": "domain:CoAutoEvo+/CoEvo+",
+      "to": "repo:CoCivium/CoCivium",
+      "relation": "REGISTERED_REPOSITORY",
+      "source": "source:ai/evolution-lanes.json",
+      "state": "SOURCE_REGISTERED"
+    },
+    {
+      "id": "e33",
+      "from": "domain:CoAutoEvo+/CoEvo+",
+      "to": "repo:CoCivium/CoStacks",
+      "relation": "REGISTERED_REPOSITORY",
+      "source": "source:ai/evolution-lanes.json",
+      "state": "SOURCE_REGISTERED"
+    },
+    {
+      "id": "e34",
+      "from": "domain:CoAutoEvo+/CoEvo+",
+      "to": "repo:CoCivium/CoSteward",
+      "relation": "REGISTERED_REPOSITORY",
+      "source": "source:ai/evolution-lanes.json",
+      "state": "SOURCE_REGISTERED"
+    },
+    {
+      "id": "e35",
+      "from": "domain:CoSession+",
+      "to": "repo:CoCivium/CoCivium",
+      "relation": "REGISTERED_REPOSITORY",
+      "source": "source:ai/evolution-lanes.json",
+      "state": "SOURCE_REGISTERED"
+    },
+    {
+      "id": "e36",
+      "from": "domain:CoNodeMesh+/GRAIL+",
+      "to": "repo:CoCivium/CoCivium",
+      "relation": "REGISTERED_REPOSITORY",
+      "source": "source:ai/evolution-lanes.json",
+      "state": "SOURCE_REGISTERED"
+    },
+    {
+      "id": "e37",
+      "from": "domain:CoNodeMesh+/GRAIL+",
+      "to": "repo:CoCivium/CoShareHub",
+      "relation": "REGISTERED_REPOSITORY",
+      "source": "source:ai/evolution-lanes.json",
+      "state": "SOURCE_REGISTERED"
+    },
+    {
+      "id": "e38",
+      "from": "domain:CoNodeMesh+/GRAIL+",
+      "to": "repo:CoCivium/CoSteward",
+      "relation": "REGISTERED_REPOSITORY",
+      "source": "source:ai/evolution-lanes.json",
+      "state": "SOURCE_REGISTERED"
+    },
+    {
+      "id": "e39",
+      "from": "domain:CoSource+/Provenance",
+      "to": "repo:CoCivium/CoSources",
+      "relation": "REGISTERED_REPOSITORY",
+      "source": "source:ai/evolution-lanes.json",
+      "state": "SOURCE_REGISTERED"
+    },
+    {
+      "id": "e40",
+      "from": "domain:CoSource+/Provenance",
+      "to": "repo:CoCivium/CoCivium",
+      "relation": "REGISTERED_REPOSITORY",
+      "source": "source:ai/evolution-lanes.json",
+      "state": "SOURCE_REGISTERED"
+    },
+    {
+      "id": "e41",
+      "from": "domain:CoFuture+",
+      "to": "repo:CoCivium/CoFutures",
+      "relation": "REGISTERED_REPOSITORY",
+      "source": "source:ai/evolution-lanes.json",
+      "state": "SOURCE_REGISTERED"
+    },
+    {
+      "id": "e42",
+      "from": "domain:CoFuture+",
+      "to": "repo:CoCivium/CoCivium",
+      "relation": "REGISTERED_REPOSITORY",
+      "source": "source:ai/evolution-lanes.json",
+      "state": "SOURCE_REGISTERED"
+    },
+    {
+      "id": "e43",
+      "from": "domain:CoEducation+",
+      "to": "repo:CoCivium/CoAcademy",
+      "relation": "REGISTERED_REPOSITORY",
+      "source": "source:ai/evolution-lanes.json",
+      "state": "SOURCE_REGISTERED"
+    },
+    {
+      "id": "e44",
+      "from": "domain:CoEducation+",
+      "to": "repo:CoCivium/CoCivium",
+      "relation": "REGISTERED_REPOSITORY",
+      "source": "source:ai/evolution-lanes.json",
+      "state": "SOURCE_REGISTERED"
+    },
+    {
+      "id": "e45",
+      "from": "domain:CoRails+",
+      "to": "repo:CoCivium/CoRails",
+      "relation": "REGISTERED_REPOSITORY",
+      "source": "source:ai/evolution-lanes.json",
+      "state": "SOURCE_REGISTERED"
+    },
+    {
+      "id": "e46",
+      "from": "domain:CoRails+",
+      "to": "repo:CoCivium/CoCivium",
+      "relation": "REGISTERED_REPOSITORY",
+      "source": "source:ai/evolution-lanes.json",
+      "state": "SOURCE_REGISTERED"
+    },
+    {
+      "id": "e47",
+      "from": "domain:CoHighlight+",
+      "to": "highlight:CognocartaConsenti",
+      "relation": "REGISTERS_HIGHLIGHT",
+      "source": "source:ai/highlight-assets.json",
+      "state": "SOURCE_REGISTERED"
+    },
+    {
+      "id": "e48",
+      "from": "domain:CoHighlight+",
+      "to": "highlight:CoTheoryAll",
+      "relation": "REGISTERS_HIGHLIGHT",
+      "source": "source:ai/highlight-assets.json",
+      "state": "SOURCE_REGISTERED"
+    },
+    {
+      "id": "e49",
+      "from": "domain:CoHighlight+",
+      "to": "highlight:CoCivia",
+      "relation": "REGISTERS_HIGHLIGHT",
+      "source": "source:ai/highlight-assets.json",
+      "state": "SOURCE_REGISTERED"
+    },
+    {
+      "id": "e50",
+      "from": "domain:CoHighlight+",
+      "to": "highlight:RickBar",
+      "relation": "REGISTERS_HIGHLIGHT",
+      "source": "source:ai/highlight-assets.json",
+      "state": "SOURCE_REGISTERED"
+    },
+    {
+      "id": "e51",
+      "from": "domain:CoHighlight+",
+      "to": "highlight:CoVirtualSession",
+      "relation": "REGISTERS_HIGHLIGHT",
+      "source": "source:ai/highlight-assets.json",
+      "state": "SOURCE_REGISTERED"
+    },
+    {
+      "id": "e52",
+      "from": "domain:CoHighlight+",
+      "to": "highlight:CoNodeMesh",
+      "relation": "REGISTERS_HIGHLIGHT",
+      "source": "source:ai/highlight-assets.json",
+      "state": "SOURCE_REGISTERED"
+    },
+    {
+      "id": "e53",
+      "from": "domain:CoHighlight+",
+      "to": "highlight:CoPriMath",
+      "relation": "REGISTERS_HIGHLIGHT",
+      "source": "source:ai/highlight-assets.json",
+      "state": "SOURCE_REGISTERED"
+    },
+    {
+      "id": "e54",
+      "from": "domain:CoHighlight+",
+      "to": "highlight:CoGibberTru",
+      "relation": "REGISTERS_HIGHLIGHT",
+      "source": "source:ai/highlight-assets.json",
+      "state": "SOURCE_REGISTERED"
+    },
+    {
+      "id": "e55",
+      "from": "domain:CoHighlight+",
+      "to": "highlight:CoSalute",
+      "relation": "REGISTERS_HIGHLIGHT",
+      "source": "source:ai/highlight-assets.json",
+      "state": "SOURCE_REGISTERED"
+    },
+    {
+      "id": "e56",
+      "from": "domain:CoHighlight+",
+      "to": "highlight:CoAllPulseField",
+      "relation": "REGISTERS_HIGHLIGHT",
+      "source": "source:ai/highlight-assets.json",
+      "state": "SOURCE_REGISTERED"
+    },
+    {
+      "id": "e57",
+      "from": "view:CoMap+",
+      "to": "domain:CoUX+/CoSurface+",
+      "relation": "PROPOSED_PROJECTION_FAMILY",
+      "source": "source:CoMapIssue217",
+      "state": "CANDIDATE"
+    },
+    {
+      "id": "e58",
+      "from": "view:CoMap+",
+      "to": "domain:CoAll+",
+      "relation": "PROPOSED_RELATIONAL_LENS",
+      "source": "source:CoMapIssue217",
+      "state": "CANDIDATE"
+    },
+    {
+      "id": "e59",
+      "from": "domain:CoAutoEvo+/CoEvo+",
+      "to": "doc:docs/Evolution/COALL_GITHUB_EVOLUTION_FABRIC_R0.md",
+      "relation": "RELATED_PUBLIC_DOCUMENT",
+      "source": "source:CoAllFabric",
+      "state": "CONTEXTUAL_LINK"
+    },
+    {
+      "id": "e60",
+      "from": "domain:CoNodeMesh+/GRAIL+",
+      "to": "doc:docs/Architecture/CIV2_FEDERATED_CELL_HOSTING_R0.md",
+      "relation": "RELATED_PUBLIC_DOCUMENT",
+      "source": "source:CoAllFabric",
+      "state": "CONTEXTUAL_LINK"
+    },
+    {
+      "id": "e61",
+      "from": "domain:CoAutoEvo+/CoEvo+",
+      "to": "doc:schemas/coevo-delta-v0.1.schema.json",
+      "relation": "RELATED_PUBLIC_DOCUMENT",
+      "source": "source:CoAllFabric",
+      "state": "CONTEXTUAL_LINK"
+    }
+  ]
+}
