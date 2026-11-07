@@ -106,7 +106,7 @@ test("no status implies an authenticated or verified child",()=>{
  assert.equal(state.sentToServer,false);
  assert.equal(state.actualGuardianVerified,false);
  assert.equal(state.actualMasteryVerified,false);
- assert.equal(doc.proxy_and_identity?.active_proxy,undefined);
+ assert.equal(doc.proxy_and_identity.active_proxy,"GENERIC_FICTIONAL_PET_NOT_CHILD_PROXY_IDENTITY");
 });
 test("no hidden storage, tracking, biometrics, network, or private-chat model",()=>{
  for(const bad of ["localStorage","sessionStorage","indexedDB","document.cookie",
