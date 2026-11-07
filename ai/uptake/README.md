@@ -35,6 +35,14 @@ The reusable term **CoUptake+** here means an evidence-gated progression from *p
 
 **IA remains undefined** in existing admitted CoCivium public source. It may be explicitly typed when a real participant or community accepts a definition; it cannot be assumed to mean an independent AI actor merely because an acronym sounds promising.
 
+## CoUptake R0.1 | Corrections must travel with the knowledge
+
+The [portable recovery and correction addendum](CORRECTION_AND_RECOVERY_R01.md) adds an **offline source packet with SHA-256 integrity**, a **separate receiver-held synthetic trust pin**, and a **test-only correction/supersession gate**. This is deliberately narrower than "permanent AI learning": a receiver with a newer known policy rejects a revoked edition, while a disconnected receiver with an old policy **can still accept it**. That uncomfortable failure is a tested design requirement, not a hidden edge case.
+
+[`portable.py`](../../tools/couptake_r0/portable.py) provides source-only `pack`, `pin-demo` and `verify`. No publisher signature, external receiver acknowledgement, legitimate revision authority, model-weight unlearning, encrypted private memory or live off-provider replication is implemented. The accompanying [negative tests](../../tests/test_couptake_portable_r01.py) reject tampered or unauthorized objects, revision-policy rollback and invented AI acceptance claims.
+
+The highest-value true next proof remains **an external independently operated receiver**, whose own authority and restoration proof cannot be fabricated by this GitHub workflow.
+
 ## What this implementation does now
 
 [Typed machine manifest](couptake-manifest-r0.json) pins **four existing public CoCivium files** to their actual observed immutable Git blob SHA-1 identities. It records epistemic types, public disclosure, use, nonclaims and whether rights for training require separate review.
