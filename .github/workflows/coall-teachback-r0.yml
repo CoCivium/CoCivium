@@ -1,0 +1,61 @@
+name: CoAll CoTeachBack R0 - source-pinned read-only receiver fixture
+on:
+  pull_request:
+    paths:
+      - 'ai/adoption/**'
+      - '.github/workflows/coall-teachback-r0.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  source-and-feedback-fixture:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout exact public source with no persistent credentials
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Use Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify all seven public source Git blobs on real checkout
+        run: |
+          python ai/adoption/teachback_r0/verify_pins.py \
+            --manifest ai/adoption/manifest-r0.json \
+            --repo-root . \
+            --expected-manifest-git-blob e9b834f93455012c703eeb8ba9b6585778ea3464 \
+            --output coall-teachback-pinned-source-readproof.json
+      - name: Regress public manifest and teach-back gates
+        run: |
+          python -m unittest discover -s ai/adoption -p test_manifest.py -v
+          python -m unittest discover -s ai/adoption/teachback_r0 -p 'test_*.py' -v
+      - name: Score transparent deterministic example only
+        run: |
+          python ai/adoption/teachback_r0/score_receiver.py \
+            --manifest ai/adoption/manifest-r0.json \
+            --challenge ai/adoption/teachback_r0/receiver-probes-r0.json \
+            --key ai/adoption/teachback_r0/reference-key-r0.json \
+            --response ai/adoption/teachback_r0/example-fixture-response-r0.json \
+            --output coall-teachback-visible-key-fixture-receipt.json
+          python - <<'PY'
+          import json
+          a=json.load(open('coall-teachback-visible-key-fixture-receipt.json'))
+          b=json.load(open('coall-teachback-pinned-source-readproof.json'))
+          assert a['score']['passed']==12 and a['receiver_attestation']=='UNVERIFIED_SELF_REPORT'
+          assert a['independent_external_model_ack']=='NOT_OBSERVED'
+          assert b['sources_count']==7 and b['external_receiver_ack']=='NOT_OBSERVED'
+          print('PASS_SCOPE_ONLY: 7 exact source files; 12 visible-key fixture answers; zero model adoption')
+          PY
+      - name: Preserve short-retention readproof artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: coall-coteachback-r0-source-readproof-${{ github.run_id }}
+          path: |
+            coall-teachback-pinned-source-readproof.json
+            coall-teachback-visible-key-fixture-receipt.json
+          if-no-files-found: error
+          retention-days: 7
+      - name: State effect ceiling
+        run: echo "Hosted code and byte-identity proof only. No independent AI or human receiver evaluated, no live MCP/A2A, training, authority, X2, CoEx or external effect."
