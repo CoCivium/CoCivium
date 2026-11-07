@@ -262,5 +262,256 @@
     "ONE_SESSION_NE_PERSON_PROFILE",
     "NO_SITE_DEPLOYED",
     "NO_MINOR_PILOT_AUTHORIZED"
-  ]
+  ],
+  "entourage": {
+    "schema": "CoAthene.CoEntourage.CosmeticRoute.R0-candidate",
+    "state": "PUBLIC_SOURCE_VISIT_ONLY_COSMETIC_NO_CHILD_ID_NO_VERIFIED_LEVELS",
+    "presentation_rule": "A selected appearance is a child's current invitation to explore a subject, not a diagnosis of interest, ability, grade, identity, guardian authority, age, enrollment or credential.",
+    "choice_mode": "ALL_ITEMS_AVAILABLE_FROM_START_NO_EARNING_GATE_NO_MONEY",
+    "current_level": "NONE_NO_SCALAR_LEARNER_RANK",
+    "visibility_default": "LOCAL_ONLY_NO_BROADCAST_NO_ONLINE_PROFILE",
+    "role_of_item": "EXPLICIT_SELF_SELECTION_LOCAL_ROUTE_HINT_ONLY",
+    "confirmed_route": "REQUIRES_SEPARATE_EXPLICIT_TRY_QUESTION_ACTION",
+    "default": "NO_CLAIM_NO_AUTOMATIC_STEREOTYPE",
+    "item_types": [
+      {
+        "id": "familiar",
+        "label": "Familiar",
+        "description": "A fictional companion theme; not a separate AI or trusted identity",
+        "items": [
+          {
+            "id": "familiar_river",
+            "label": "Brook",
+            "icon": "💧",
+            "routeLessonId": "river",
+            "claimClass": "COSMETIC_SELF_SELECTED_UNVERIFIED",
+            "levelClaim": "NONE",
+            "immutableIdentity": "NONE",
+            "accessRights": "NONE"
+          },
+          {
+            "id": "familiar_space",
+            "label": "Comet",
+            "icon": "✨",
+            "routeLessonId": "space",
+            "claimClass": "COSMETIC_SELF_SELECTED_UNVERIFIED",
+            "levelClaim": "NONE",
+            "immutableIdentity": "NONE",
+            "accessRights": "NONE"
+          },
+          {
+            "id": "familiar_animals",
+            "label": "Flutter",
+            "icon": "🦋",
+            "routeLessonId": "animals",
+            "claimClass": "COSMETIC_SELF_SELECTED_UNVERIFIED",
+            "levelClaim": "NONE",
+            "immutableIdentity": "NONE",
+            "accessRights": "NONE"
+          },
+          {
+            "id": "familiar_games",
+            "label": "Tinker",
+            "icon": "🛠️",
+            "routeLessonId": "games",
+            "claimClass": "COSMETIC_SELF_SELECTED_UNVERIFIED",
+            "levelClaim": "NONE",
+            "immutableIdentity": "NONE",
+            "accessRights": "NONE"
+          }
+        ]
+      },
+      {
+        "id": "hat",
+        "label": "Hat",
+        "description": "A freely selectable costume, not a learner-level label",
+        "items": [
+          {
+            "id": "hat_river",
+            "label": "Rain Explorer",
+            "icon": "🌧️",
+            "routeLessonId": "river",
+            "claimClass": "COSMETIC_SELF_SELECTED_UNVERIFIED",
+            "levelClaim": "NONE",
+            "immutableIdentity": "NONE",
+            "accessRights": "NONE"
+          },
+          {
+            "id": "hat_space",
+            "label": "Orbit Cap",
+            "icon": "🪐",
+            "routeLessonId": "space",
+            "claimClass": "COSMETIC_SELF_SELECTED_UNVERIFIED",
+            "levelClaim": "NONE",
+            "immutableIdentity": "NONE",
+            "accessRights": "NONE"
+          },
+          {
+            "id": "hat_animals",
+            "label": "Habitat Hood",
+            "icon": "🍃",
+            "routeLessonId": "animals",
+            "claimClass": "COSMETIC_SELF_SELECTED_UNVERIFIED",
+            "levelClaim": "NONE",
+            "immutableIdentity": "NONE",
+            "accessRights": "NONE"
+          },
+          {
+            "id": "hat_games",
+            "label": "Inventor Hat",
+            "icon": "🎩",
+            "routeLessonId": "games",
+            "claimClass": "COSMETIC_SELF_SELECTED_UNVERIFIED",
+            "levelClaim": "NONE",
+            "immutableIdentity": "NONE",
+            "accessRights": "NONE"
+          }
+        ]
+      },
+      {
+        "id": "badge",
+        "label": "Badge",
+        "description": "A self-claimed curiosity badge, not a verified achievement",
+        "items": [
+          {
+            "id": "badge_river",
+            "label": "Water Question",
+            "icon": "🔎",
+            "routeLessonId": "river",
+            "claimClass": "COSMETIC_SELF_SELECTED_UNVERIFIED",
+            "levelClaim": "NONE",
+            "immutableIdentity": "NONE",
+            "accessRights": "NONE"
+          },
+          {
+            "id": "badge_space",
+            "label": "Orbit Wonder",
+            "icon": "🌟",
+            "routeLessonId": "space",
+            "claimClass": "COSMETIC_SELF_SELECTED_UNVERIFIED",
+            "levelClaim": "NONE",
+            "immutableIdentity": "NONE",
+            "accessRights": "NONE"
+          },
+          {
+            "id": "badge_animals",
+            "label": "Nature Care",
+            "icon": "🌿",
+            "routeLessonId": "animals",
+            "claimClass": "COSMETIC_SELF_SELECTED_UNVERIFIED",
+            "levelClaim": "NONE",
+            "immutableIdentity": "NONE",
+            "accessRights": "NONE"
+          },
+          {
+            "id": "badge_games",
+            "label": "Fair Game Design",
+            "icon": "🧩",
+            "routeLessonId": "games",
+            "claimClass": "COSMETIC_SELF_SELECTED_UNVERIFIED",
+            "levelClaim": "NONE",
+            "immutableIdentity": "NONE",
+            "accessRights": "NONE"
+          }
+        ]
+      },
+      {
+        "id": "trail",
+        "label": "Trail marker",
+        "description": "An optional route clue, never a hidden completed-course credential",
+        "items": [
+          {
+            "id": "trail_river",
+            "label": "River Crossing",
+            "icon": "🌊",
+            "routeLessonId": "river",
+            "claimClass": "COSMETIC_SELF_SELECTED_UNVERIFIED",
+            "levelClaim": "NONE",
+            "immutableIdentity": "NONE",
+            "accessRights": "NONE"
+          },
+          {
+            "id": "trail_space",
+            "label": "Sky Trail",
+            "icon": "🌌",
+            "routeLessonId": "space",
+            "claimClass": "COSMETIC_SELF_SELECTED_UNVERIFIED",
+            "levelClaim": "NONE",
+            "immutableIdentity": "NONE",
+            "accessRights": "NONE"
+          },
+          {
+            "id": "trail_animals",
+            "label": "Habitat Path",
+            "icon": "🌲",
+            "routeLessonId": "animals",
+            "claimClass": "COSMETIC_SELF_SELECTED_UNVERIFIED",
+            "levelClaim": "NONE",
+            "immutableIdentity": "NONE",
+            "accessRights": "NONE"
+          },
+          {
+            "id": "trail_games",
+            "label": "Invention Path",
+            "icon": "🎲",
+            "routeLessonId": "games",
+            "claimClass": "COSMETIC_SELF_SELECTED_UNVERIFIED",
+            "levelClaim": "NONE",
+            "immutableIdentity": "NONE",
+            "accessRights": "NONE"
+          }
+        ]
+      }
+    ],
+    "visit_marker": {
+      "label": "Explored this visit",
+      "source": "EXACT_CURRENT_VISIT_TEACH_ACTION",
+      "state": "VISIT_ONLY_ATTEMPT_NE_CREDIT_OR_MASTERY",
+      "noChildRank": true,
+      "noStorage": true
+    },
+    "future_credential_candidate": {
+      "state": "NOT_IMPLEMENTED",
+      "relevantStandard": "1EdTech Open Badges 3.0 AchievementCredential / Comprehensive Learner Record",
+      "scope": "One scoped issuer-backed achievement with explicit criteria, evidence, lawful authorization, verified signature/issuer trust and child/guardian control",
+      "publicAppearance": "OFF_UNLESS_EXPLICITLY_ENABLED_AND_LEARNER_RIGHTS_QUALIFIED",
+      "privacy": "Issue/verify without exposing the student's full profile; data minimization, selective presentation, issuer controls and age-appropriate consent required",
+      "importantLimit": "A badge icon, hat, selected familiar, local progress count or unsigned file is not a credential or authentication method."
+    },
+    "threat_model": [
+      "A classmate looking at a pet's hat should not learn private grades, disability, age, identity, family relationships or assessment history.",
+      "Switching hats does not bypass access restrictions or cause a verified level to change.",
+      "A third party copying an avatar or screenshot cannot claim another student's progress or privileges.",
+      "No automatic inference from name, look or behavior; only a user-selected route on an explicit button click.",
+      "If a learner declines equipment, all lessons remain accessible.",
+      "No hidden persistent preference profile on a shared device; refresh discards costume.",
+      "Any future claimed badge credential requires an authorized issuer and minimal, selective disclosure under learner/guardian control."
+    ],
+    "sources": [
+      {
+        "url": "https://standards.1edtech.org/open-badges/specifications/standards/v3p0",
+        "purpose": "Future verifiable, issuer-scoped learning badges; not a claim of CoAthene conformance"
+      },
+      {
+        "url": "https://www.priv.gc.ca/en/privacy-topics/privacy-for-businesses/protection-of-children-for-businesses/childrens-privacy-code/children-code-final-report-2026",
+        "purpose": "Avoid harmful child profiling and default to private exposure of visual personal attributes"
+      },
+      {
+        "url": "https://www.unicef.org/innocenti/reports/policy-guidance-ai-children",
+        "purpose": "Fictional companions, non-manipulative teaching and adult safeguards"
+      }
+    ],
+    "nonclaims": [
+      "VISIBLE_HAT_NE_GRADE",
+      "BADGE_ICON_NE_VERIFIED_CREDENTIAL",
+      "CLAIMED_COSMETIC_NE_AUTHENTICATION",
+      "PET_LOOK_NE_LEARNER_ID",
+      "ROUTE_HINT_NE_ABILITY_INFERENCE",
+      "VISIT_COUNT_NE_MASTERY",
+      "NO_LOGIN_NE_TRUSTED_SYNC",
+      "NO_SCHOOL_IDENTITY",
+      "NO_PUBLIC_CHILD_PROFILE",
+      "NO_CRYPTO_OR_ISSUER_IMPLEMENTED"
+    ]
+  }
 }
