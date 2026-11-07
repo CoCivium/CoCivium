@@ -55,7 +55,7 @@ test("Together age-one guidance is adult prompt, no screen quiz",()=>{
  assert.equal(p.requiresAdult,true);
  assert.equal(p.playOptions.length,0);
  assert.equal(p.correct,null);
- assert.match(p.disclosure,/one-year-old/i);
+ assert.match(p.disclosure,/1-year-old/i);
  assert.match(p.disclosure,/no sedentary screen time/i);
  assert.match(p.childPrompt,/point to water/i);
 });
@@ -125,7 +125,7 @@ test("four original inline SVG pictures have textual alternatives",()=>{
  assert.match(html,/lens-picture svg\[hidden\]/);
 });
 test("mode buttons are large, semantic and explicitly controllable",()=>{
- assert.equal((html.match(/data-lens-mode="/g)||[]).length,4);
+ assert.equal((html.match(/<button type="button" data-lens-mode="/g)||[]).length,4);
  assert.match(html,/role="group" aria-label="Presentation mode, not an age test"/);
  assert.match(html,/aria-pressed="true"/);
  assert.match(html,/id="lens-switch"/);
