@@ -105,3 +105,51 @@ Provider failure, account lockout, DNS/registrar outage, identity/key compromise
 - [RFC 9420: Messaging Layer Security for appropriate end-to-end encrypted groups](https://datatracker.ietf.org/doc/html/rfc9420)
 
 **State boundary:** Publication of this architecture is only a public source-controlled candidate. It is not proof of installed infrastructure, active federation, independent-host cold restore, service SLO, canon, CoEx, security certification or operational readiness.
+
+## 2026-11-06 | CoAll meta-evolution pivot D1
+
+**Disposition:** Additive architecture delta, not runtime adoption or a substitute for independent receiver testing. Reuse the existing universal relation envelope (CoCivium #185), one-input/two-destination acceptance (CoCivium #317), receiver election (CoSteward #70), world-upgrade anti-capture doctrine (CoSteward #282), and unattended recovery proof (CoShareHub #40). This section sharpens their shared deployment implications.
+
+**Pivot:** From "all objects can evolve" to "**every eligible object, relation, policy, interface, hosting cell, organizational rule and evaluation method may be proposed for evolution; effects are permissioned, reviewable, versioned and independently recoverable**." Evolution of the evaluator itself requires an *external* unchanged baseline/independent adjudicator for each promotion. No cell or model can grant itself new authority by updating the rules that govern it.
+
+### Nine CoAll design deltas
+
+| ID | Delta | Acceptance boundary |
+| --- | --- | --- |
+| D1 | **Semantic protocol, not vocabulary monopoly** | Typed relation records carry `schema_id/version`, semantic owner, source/proof type, privacy, compatible projections, migrations and explicit unknown fields; no global forced reinterpretation |
+| D2 | **Local sovereignty and graceful federation** | Essential authorized offline functions survive coordinator loss; opt-in peering and dissent remain possible; one federation may fork into competing compatible implementations |
+| D3 | **Evolving evaluation under an invariant witness** | Proposed new metric/policy scored against previous test suite and independent critics; no self-approved changes that hide regressions or weaken authority |
+| D4 | **Separated trust, control and execution planes** | Observability cannot silently actuate; elected actuator is fenced; private data locality, role identity, revocation and policy remain enforced across cells |
+| D5 | **Causal receipts, not activity counts** | Effects carry `attempted/committed/receiver_observed/accepted`, pre/post, observation time, claim scope, user benefit and cost; no successful delivery assumed from Git write |
+| D6 | **Economics and ecological ceiling** | Verified benefit per human attention, money, energy, material cost and coordination; runaway automation/rate-limiting/maintenance debt become stop conditions |
+| D7 | **Multi-domain recovery and anti-monoculture** | One independently controlled cold restore including data, key access where lawful, rights, editions, dependencies and bootstrap instructions; test provider and primary-operator loss |
+| D8 | **Plural governance and institutional succession** | Local charters, appeal/withdrawal, conflict-of-interest, rights of minorities, human-protected actions, public audit without private leaks, documented key/role succession |
+| D9 | **Experience-first, accessible projection** | Users can tell what is current, what is hypothetical, who acted and how to exit/reverse; offer stable reading mode amid rapid publication evolution |
+
+### Metamorphic contract: evolve the evolver without a global crown
+
+Propose: `SOURCE -> DIFF -> COMPATIBILITY -> THREAT/RIGHTS REVIEW -> SHADOW -> INDEPENDENT TEST -> STAGED CANARY -> PROMOTE_OR_HOLD -> REVOKE/ROLLBACK -> PROVENANCE/WAKE`.
+
+- **Kernel that moves slowly:** identity/authority boundaries, signed or otherwise verifiable source lineage, explicit privacy and licensing, replay prevention, exact receiver effects, emergency suspension and recovery semantics. No magical immutable ontology; changing the kernel requires explicit version transition and independent witnesses.
+- **Surface that moves quickly:** reader routes, interface variants, new CoBooks/media, experimental models, diagnostics and low-risk content.
+- **Different data consistency needs:** immutable publications may converge by hashes; collaborative edits require merge and attribution; finance/legal/governance decisions require service-specific strongly consistent commit and authorized transaction processes. A federation must make partitions visible and reject split-brain effects.
+- **No forced upgrade:** support negotiated interoperability for old clients, migrations with reversible compatibility windows, and no automatic promotion of untrusted metadata into canon.
+- **No independent personhood or universal representation inference:** bio/synth differences, local charters, human stakes and individual consent remain distinguishable.
+
+### Specific missing control families to qualify
+
+Supply-chain signing and reproducible builds; secret custody, recovery and revocation; domain/DNS/CA and payment-provider exit; abuse/DoS and cost containment; localization and accessibility; AI output validity and contamination; data residency and child/bystander consent; hardware power/network independence; incident staffing and institutional succession; third-party rights/licensing; audit independence; key-person risk; climate/energy footprint and responsible end-of-life retirement.
+
+### Highest-value falsifiable test
+
+**A single low-risk publication service, two independently administered cells, one hostile partition, zero human relay.**
+
+1. Freeze a public AGI reader or CoDemoWow exact HTML/hash and a machine-readable manifest on cell A. Cell B, under a distinct operator/account/failure domain, must rehydrate it using a non-GitHub custody path.
+2. Deliberately deny GitHub and the federation coordinator in a controlled test. Cell B still serves the exact content to an independent reader; record `actual_RTO`, `actual_RPO`, source hash and `reader_ack`.
+3. While partitioned, offer B an **incompatible schema migration** and a **revoked capability**. B must preserve existing read-only functionality, HOLD unqualified writes, report conflict and reject the forbidden action.
+4. Recover connectivity and reconcile with one elected fenced actuator. Prove no duplicate irreversible effect, no silent data overwrite, no new implicit authority and no missing provenance.
+5. Compare baseline usefulness, accessibility, cost and operator burden; preserve negative findings and the independent witness receipt.
+
+**Observed state 2026-11-06:** None of these five acceptance steps is claimed to have passed. This is a design/pivot record, not a service deployment, completed peer negotiation, X2 runtime, global consensus or independently functioning CoAll federation.
+
+**Decision rail:** **KEEP** existing CoAll ontology/relation work; **PIVOT** toward typed interoperable contracts and plural cell authority; **BUILD/TEST** one real independently restored service before multiplying infrastructure. Prefer verified new value to ever more speculative labels.
