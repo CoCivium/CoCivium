@@ -1,0 +1,14 @@
+{
+  "schema": "CoAll.CoMapProjection.R0",
+  "state": "PUBLIC_SOURCE_BOUND_PROJECTION_NOT_CANON_OR_RUNTIME",
+  "sources": [{"id":"source:ai/evolution-lanes.json","url":"https://github.com/CoCivium/CoCivium/blob/main/ai/evolution-lanes.json"}],
+  "nodes": [
+    {"id":"domain:CoStrategy+","label":"CoStrategy+","kind":"domain","source":"source:ai/evolution-lanes.json"},
+    {"id":"repo:CoCivium/MasterPlan","label":"MasterPlan","kind":"repository","source":"source:ai/evolution-lanes.json"},
+    {"id":"repo:CoCivium/CoCivium","label":"CoCivium","kind":"repository","source":"source:ai/evolution-lanes.json"}
+  ],
+  "edges": [
+    {"id":"e1","from":"domain:CoStrategy+","to":"repo:CoCivium/MasterPlan","relation":"REGISTERED_REPOSITORY","source":"source:ai/evolution-lanes.json","state":"SOURCE_REGISTERED"},
+    {"id":"e2","from":"domain:CoStrategy+","to":"repo:CoCivium/CoCivium","relation":"REGISTERED_REPOSITORY","source":"source:ai/evolution-lanes.json","state":"SOURCE_REGISTERED"}
+  ]
+}
