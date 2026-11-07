@@ -156,6 +156,13 @@ class CoPetR0Tests(unittest.TestCase):
         self.assertIn("child-safe pet",guide)
         self.assertIn("PUBLIC_PR_NE_CLASSROOM_ACCEPTANCE",guide)
 
+    def test_reversible_copet_and_anywhere_without_new_social_service(self):
+        self.assertIn('href="../coathene_anywhere_r0/index.html"',self.html)
+        other=(BASE/"examples"/"coathene_anywhere_r0"/"index.html").read_text(encoding="utf-8")
+        self.assertIn('href="../coathene_copet_r0/index.html"',other)
+        self.assertIn("not an accredited school",self.html)
+        self.assertIn("No child identity collected",self.html)
+
     def test_no_false_child_deployment_or_school_identity(self):
         self.assertIn("NOT_CERTIFIED_CHILD_SERVICE",self.data["status"])
         self.assertIn("NO_MINOR_PILOT_AUTHORIZED",self.data["nonclaims"])
