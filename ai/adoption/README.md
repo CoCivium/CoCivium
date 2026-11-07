@@ -14,6 +14,14 @@ This is a small, source-grounded entrypoint for independent AIs, IAs, determinis
 
 **Nothing is deployed at a real MCP resource URL or A2A AgentCard endpoint in this package.** Future authorized implementations should expose source-qualified read-only resources first. Model training/fine-tuning is an optional separate legal, security, and rights-gated experiment; do not treat irreversible weight embedding as the durable source of truth.
 
+## CoTeachBack+ R0 | Teach, test, and be taught
+
+A [read-only, source-pinned receiver challenge](teachback_r0/README.md) now exercises 12 public example questions and 27 new negative-control tests. The [machine challenge](teachback_r0/receiver-probes-r0.json), [reference key](teachback_r0/reference-key-r0.json), [strict evaluator](teachback_r0/score_receiver.py), and [QA receipt](teachback_r0/qa-receipt-r0.json) are exact Git-blob-verified. Combined with the 15 original manifest tests: **42/42 local tests passed**.
+
+The 12/12 example score comes from a deterministic fixture with a **public visible answer key**. This is a *transport/scoring regression proof*, **not** an independent AI's comprehension, ingestion, learning, adoption, receiver ACK, model-weight update, training right, or a blinded benchmark. Independent receivers must use new concealed holdout questions and explicitly verified source editions under their own permitted operating environment.
+
+**Reciprocity:** A future qualified receiver can contribute evidence-backed corrections using the already existing CoEvoDelta proposal contract, but no model, public document or tool output can grant itself additional authority. Preserve dissent, independent verification, revocation and right to exit. **More copied beliefs alone do not guarantee anti-capture independence.**
+
 ## Adoption is a ladder, not a slogan
 
 `DISCOVERABLE -> RETRIEVED -> SOURCE_VERIFIED -> TASK_EVALUATED -> VOLUNTARILY_ADOPTED -> INTEGRATED_IN_RECEIVER -> USEFUL_OUTCOME_OBSERVED -> RECOVERED_INDEPENDENTLY`
@@ -39,3 +47,4 @@ Use a versioned read-only retrieval/MCP resource for a single public CoBook/CoMa
 - [Robots Exclusion Protocol RFC 9309](https://datatracker.ietf.org/doc/rfc9309/)
 
 **Safety rails:** `INDEXED_NE_TRAINED`, `TRAINED_NE_ALIGNED`, `ALIGNED_NE_AUTHORIZED`, `PUBLISHED_NE_DISCOVERED`, `DISCOVERED_NE_RECEIVED`, `RECEIVED_NE_INTEGRATED`, `INTEGRATED_NE_USEFUL`, `PUBLIC_NE_TRAINING_PERMISSION`, `READABLE_NE_CANON`, `PROVENANCE_NE_TRUTH`, `REPLICA_NE_INDEPENDENT_FAILURE_DOMAIN`, `DIVERSITY_NE_GUARANTEE`.
+
