@@ -28,6 +28,14 @@ The 12/12 example score comes from a deterministic fixture with a **public visib
 
 **Critical nonclaim:** No independent external model was called or accepted the contents, no weight update or training grant occurred, no verified receiver ACK, no authenticated MCP/A2A service or agent execution, no live X2/CoStead effect, no CoEx or canon. The example's score measures fixture/scorer reproducibility, **not model comprehension**. Existing 42-test earlier checkpoint remains historical and is superseded by 53-test combined hosted proof. This verified hosted CI enables a proper opt-in blind receiver test; it does not replace one.
 
+## 2026-11-07 | Source-Pinned Retrieval R0
+
+**New working read-only retrieval adapter:** [code, usage, safety and source-citation contract](retrieval_r0/README.md). Unlike a link index alone, this loads the actual content of seven public sources only after matching the prior qualified manifest Git blob and all seven individual source Git blobs. It chunks content into source-specific line ranges and retrieves with a pure-stdlib lexical ranking model; every result retains source ID, blob SHA-1, line range, state and an explicit **untrusted-data / no-tool-authority** boundary.
+
+**Hosted proof:** [GitHub Actions run #42362037279](https://github.com/CoCivium/CoCivium/actions/runs/42362037279), through [draft, unmerged PR #362](https://github.com/CoCivium/CoCivium/pull/362), completed **success**. The runner passed **33/33 synthetic adversarial tests**, verified all **seven exact source files**, indexed **123 real source chunks**, found the correct intended source in the top five for **7/7 engineer-authored source-discovery questions**, and generated a JSON result with precise citations, **zero model calls, network calls, training, or effects**. [Artifact readback receipt](retrieval_r0/hosted-inspection-r0.json) is source-controlled; its original ZIP and inspector manifest were uploaded to the private CoCivium PublicationPackets Library, retrieved again, and matched byte-for-byte. This is **not** an independent AI comprehension, a general retrieval benchmark, trained model, voluntary external adoption, or independent-host recovery claim. The read-only workflow remains unmerged.
+
+**Next evidence gate:** one separately operated, opted-in model/agent must actually consume a pinned retrieval packet, answer novel holdout questions with real source citations, reject hostile instructions, and return its own receiver-bound receipt. Keep failure/negative samples, rights, version invalidation and reviewer disagreement visible. **A source pin does not certify truth or authenticity of the original author; it only confirms the matched edition.**
+
 ## Adoption is a ladder, not a slogan
 
 `DISCOVERABLE -> RETRIEVED -> SOURCE_VERIFIED -> TASK_EVALUATED -> VOLUNTARILY_ADOPTED -> INTEGRATED_IN_RECEIVER -> USEFUL_OUTCOME_OBSERVED -> RECOVERED_INDEPENDENTLY`
@@ -53,5 +61,6 @@ Use a versioned read-only retrieval/MCP resource for a single public CoBook/CoMa
 - [Robots Exclusion Protocol RFC 9309](https://datatracker.ietf.org/doc/rfc9309/)
 
 **Safety rails:** `INDEXED_NE_TRAINED`, `TRAINED_NE_ALIGNED`, `ALIGNED_NE_AUTHORIZED`, `PUBLISHED_NE_DISCOVERED`, `DISCOVERED_NE_RECEIVED`, `RECEIVED_NE_INTEGRATED`, `INTEGRATED_NE_USEFUL`, `PUBLIC_NE_TRAINING_PERMISSION`, `READABLE_NE_CANON`, `PROVENANCE_NE_TRUTH`, `REPLICA_NE_INDEPENDENT_FAILURE_DOMAIN`, `DIVERSITY_NE_GUARANTEE`.
+
 
 
