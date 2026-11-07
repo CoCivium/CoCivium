@@ -280,3 +280,49 @@ At minimum:
 `METAPHOR_NE_EQUIVALENCE`  
 `HUMOUR_NE_EVIDENCE`  
 `NO_NEWEST_WINS`
+
+## 2026-11-06 | D2: Intent, legitimacy, authority and evidence mesh
+
+**Status:** public relational architecture candidate, **not** a constitutional amendment, automatic rule of precedence, actual receiver binding, canon/CoEx or runtime enforcement. This is an additive overlay on the already-present CoEvoDelta schema, evolution-domain registry, repo-role map and highlight registry. Do not mint another global ontology or controller.
+
+### The distinctive kinds of objects
+
+| Kind | Intended question | Likely existing home / boundary |
+| --- | --- | --- |
+| **Vision, values, CoGrace, desired futures** | What outcomes matter, and for whom? | CoStrategy+ / CoFutures, with declared plural stakeholders; aspirations are not permissions |
+| **Constitutional/CC commitments** | By what legitimate, revocable authority are rules accepted? | Earlier CC / CoConstitution / co-contract lineage *reported but currently unverified as operative canon*; require exact source and formal governance before enforcement |
+| **HP / CoHP / plans and roadmaps** | How might vision and accepted constraints become prioritized work? | Existing MasterPlan planning/decision home; historic `HP = High Plan`, `Hp = Hitchhiker's Plan`, `CoHP` as mapping layer are *alias candidates* needing CoLex verification, not assumed equivalences |
+| **CoTheoryAll, models and hypotheses** | What might be true, or explain what is observed? | CoTheoryAll / CoSources / CoInsights; distinguish metaphor, hypothesis, prediction and verified fact |
+| **Policy, contract, consent and role grants** | What is required or permitted for this actor, context and time? | CoRails candidates plus actual authenticating/consenting authorities; repository text alone cannot grant legal or operational authority |
+| **Directive, guide, playbook, bootcard** | How should qualified work proceed and recover? | CoSteward, CoToolbelt and documented receiver playbooks, strictly under effect/authority ceiling |
+| **CoObject, service, cell and running effect** | What exists or is proposed to run, where and with what isolation? | CoAll relation envelope / Civ2+ cell architecture; plan, executable and deployed instance must not be conflated |
+| **Test, observation, receipt, independent witness** | What was actually done, seen, reproduced, accepted, or contradicted? | CoSources, CoSteward, immutable hashes, CoEvoDelta currentness and receiver ladder |
+| **Highlightable asset, CoBook, CoMedia, teaching projection** | How can an audience discover, examine and challenge it? | Existing `ai/highlight-assets.json`, CoBook+ and media; attention and public visibility are not canon or release readiness |
+
+**Typed graph beats rank-by-title.** Relations may use `motivates`, `constrains`, `maps_to`, `proposes`, `depends_on`, `implements`, `observes`, `evidences`, `challenges`, `contradicts`, `supersedes`, `projects_as`, `deprecates`, `receives_ack_from` and `recoverable_at`. Edges must not silently inherit rights, consent, epistemic status, implementation or authority. A topological display for onboarding can be hierarchical; the underlying objects and conflicts are a *typed many-to-many mesh*.
+
+### A minimal binding envelope, expressed as a projection of existing CoEvoDelta
+
+`object_id | object_kind | term_id + semantic_version | source_ref + source_hash | author/issuer + attested authority | jurisdiction/scope | affected subjects | confidentiality + disclosure class | epistemic_class | valid_from/to + observed_at + freshness | relations[typed_edges] | authority/consent_refs | dependencies | conflict_set + dissent | acceptance_tests + receiver_proof | state/custody | successor + wake_predicates | supersedes/rollback_ref`.
+
+A field may be **unknown** rather than guessed. Preserve applicable confidentiality, data-minimization and rights restrictions. Not every object needs every field in its public projection; sensitive sources may remain private with sanitized, non-authoritative pointers.
+
+**Effect-state ladder:** `IDEA -> SOURCED -> REVIEWED -> AUTHORIZED_FOR_SCOPE -> STAGED -> TESTED -> INTEGRATED_RECEIVER_OBSERVED -> ACCEPTED`, with orthogonal `REJECTED/HOLD/SUPERSEDED/REVOKED` states. These are *candidate relation states*, not a replacement for more specific existing lifecycles, and must not be inferred by substring/filename/nearby receipt.
+
+### Priority and incompatibility resolution
+
+Do **not** use a simplistic rule like `CC > policy > plan > guide > evidence` for every decision. Legitimacy and effect authority are **contextual** (jurisdiction, actor, consent, safety, currentness). Facts are resolved through independent evidence, not document seniority. A contract may constrain a plan only where the responsible parties actually accepted it; a highlight cannot confer authority.
+
+For a proposed action: qualify the actor + precise effect; authenticate source/currentness; intersect binding rights/consent/security/legal constraints; compare compatible plans and receiver availability; reconcile contradictory rules and source versions; **HOLD** if the conflict cannot be resolved with established authority. Preserve dissent and make appeals or local exit visible. No hidden promotion or auto-authorization through cross-links.
+
+### CoAll + Civ2+ hosting integration
+
+Each federated cell should publish a **privacy-safe claim of which policy/contract/schema versions it accepts**, not expose private policy content or presume global allegiance. Peers negotiate compatibility and can refuse/fork while preserving authorized local functions. A cell must be able to reject stale or revoked authority even if an elegant CoTheoryAll projection suggests doing otherwise.
+
+Existing public home: [Civ2+ Federated Cell Hosting R0](../Architecture/CIV2_FEDERATED_CELL_HOSTING_R0.md). Reuse its independent-provider recovery and incompatible-schema/permission-revocation test.
+
+**First bounded demonstration:** select one **real** existing CoBook+ or CoDemoWow+ public artifact and record six typed source-grounded edges: purpose/vision, theory/hypothesis (if any), plan, applicable policy (or explicit UNVERIFIED), executable/test, receipt, and public highlight. Show both a reader-friendly path and exact source links; then inject a conflicting/revoked claim and prove the receiver cannot gain authority by chasing links. Prefer extensions of existing CoEvoDelta records and source registry over creating new platforms.
+
+**Nonclaims:** Existing GitHub objects and prior conversation labels do not prove that HP57, CC or CoConstitution definitions are currently authorized or that any global shared semantic graph, live hosting federation or independent receiver has adopted this mapping.
+
+**Rails:** `LINK_NE_AUTHORITY` · `HIERARCHY_VIEW_NE_TOTAL_ORDER` · `PLAN_NE_COMMAND` · `POLICY_TEXT_NE_ENFORCEMENT` · `PUBLIC_HIGHLIGHT_NE_CANON` · `CONTRACT_NE_CONSENT_OUTSIDE_SCOPE` · `THEORY_NE_FACT` · `SCHEMA_COMPATIBLE_NE_SEMANTIC_EQUIVALENT`.
