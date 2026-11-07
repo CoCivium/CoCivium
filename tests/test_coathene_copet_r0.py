@@ -128,7 +128,7 @@ class CoPetR0Tests(unittest.TestCase):
         self.assertIn("HOLD / data may be unrecoverable",text)
         self.assertIn("No central biometric template",text)
         self.assertIn("non-biometric",text)
-        self.assertIn("siblings",text.lower() if "siblings" in text.lower() else text.replace("sibling","siblings"))
+        self.assertIn("sibling separation",text.lower())
         self.assertIn("PASSKEY_NE_DATA_DECRYPTION_KEY",text)
 
     def test_evidence_cards_do_not_claim_a_universal_best_learning_method(self):
