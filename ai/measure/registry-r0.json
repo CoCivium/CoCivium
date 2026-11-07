@@ -1,0 +1,788 @@
+{
+  "schema": "CoAll.MeasureCommons.Registry.R0",
+  "observed_at": "2026-11-07",
+  "status": "PUBLIC_SAFE_CANDIDATE__NOT_ADOPTED__NO_RUNTIME__NO_RECEIVER_ACK",
+  "roots": {
+    "physical_standard": "BIPM_SI_BROCHURE_9_2026",
+    "vocabulary": "JCGM_VIM_2012",
+    "null_scope": "CoNull_QUALIFIED_ABSENCE",
+    "math": "CoPriMath_TYPED_PARTIAL_OPERATORS",
+    "observations": "NO_REAL_LIVE_MEASUREMENTS_IN_THIS_FIXTURE"
+  },
+  "sources": [
+    {
+      "id": "BIPM_SI_BROCHURE_9_2026",
+      "url": "https://www.bipm.org/en/publications/si-brochure/",
+      "type": "OFFICIAL_SI_STANDARD",
+      "note": "2026 update, seven base quantities/units and defining constants"
+    },
+    {
+      "id": "JCGM_VIM_2012",
+      "url": "https://jcgm.bipm.org/vim/en/info.html",
+      "type": "VOCABULARY",
+      "note": "Measurement, measurand, uncertainty and traceability concepts"
+    }
+  ],
+  "si_base_dimensions": [
+    {
+      "id": "L",
+      "quantity": "length",
+      "si_unit": "m"
+    },
+    {
+      "id": "M",
+      "quantity": "mass",
+      "si_unit": "kg"
+    },
+    {
+      "id": "T",
+      "quantity": "duration",
+      "si_unit": "s"
+    },
+    {
+      "id": "I",
+      "quantity": "electric_current",
+      "si_unit": "A"
+    },
+    {
+      "id": "Theta",
+      "quantity": "thermodynamic_temperature",
+      "si_unit": "K"
+    },
+    {
+      "id": "N",
+      "quantity": "amount_of_substance",
+      "si_unit": "mol"
+    },
+    {
+      "id": "J",
+      "quantity": "luminous_intensity",
+      "si_unit": "cd"
+    }
+  ],
+  "unit_registry": [
+    {
+      "id": "m",
+      "symbol": "m",
+      "quantity_kind": "length",
+      "kind": "LINEAR",
+      "dimension": {
+        "L": 1
+      },
+      "scale_to_reference": "1",
+      "offset_to_reference": "0",
+      "provenance": "BIPM_SI",
+      "notes": ""
+    },
+    {
+      "id": "km",
+      "symbol": "km",
+      "quantity_kind": "length",
+      "kind": "LINEAR",
+      "dimension": {
+        "L": 1
+      },
+      "scale_to_reference": "1000",
+      "offset_to_reference": "0",
+      "provenance": "BIPM_SI",
+      "notes": ""
+    },
+    {
+      "id": "s",
+      "symbol": "s",
+      "quantity_kind": "duration",
+      "kind": "LINEAR",
+      "dimension": {
+        "T": 1
+      },
+      "scale_to_reference": "1",
+      "offset_to_reference": "0",
+      "provenance": "BIPM_SI",
+      "notes": ""
+    },
+    {
+      "id": "ms",
+      "symbol": "ms",
+      "quantity_kind": "duration",
+      "kind": "LINEAR",
+      "dimension": {
+        "T": 1
+      },
+      "scale_to_reference": "0.001",
+      "offset_to_reference": "0",
+      "provenance": "BIPM_SI",
+      "notes": ""
+    },
+    {
+      "id": "min",
+      "symbol": "min",
+      "quantity_kind": "duration",
+      "kind": "LINEAR",
+      "dimension": {
+        "T": 1
+      },
+      "scale_to_reference": "60",
+      "offset_to_reference": "0",
+      "provenance": "ACCEPTED_NON_SI",
+      "notes": ""
+    },
+    {
+      "id": "h",
+      "symbol": "h",
+      "quantity_kind": "duration",
+      "kind": "LINEAR",
+      "dimension": {
+        "T": 1
+      },
+      "scale_to_reference": "3600",
+      "offset_to_reference": "0",
+      "provenance": "ACCEPTED_NON_SI",
+      "notes": ""
+    },
+    {
+      "id": "kg",
+      "symbol": "kg",
+      "quantity_kind": "mass",
+      "kind": "LINEAR",
+      "dimension": {
+        "M": 1
+      },
+      "scale_to_reference": "1",
+      "offset_to_reference": "0",
+      "provenance": "BIPM_SI",
+      "notes": ""
+    },
+    {
+      "id": "A",
+      "symbol": "A",
+      "quantity_kind": "electric_current",
+      "kind": "LINEAR",
+      "dimension": {
+        "I": 1
+      },
+      "scale_to_reference": "1",
+      "offset_to_reference": "0",
+      "provenance": "BIPM_SI",
+      "notes": ""
+    },
+    {
+      "id": "K",
+      "symbol": "K",
+      "quantity_kind": "temperature_point",
+      "kind": "AFFINE_POINT",
+      "dimension": {
+        "Theta": 1
+      },
+      "scale_to_reference": "1",
+      "offset_to_reference": "0",
+      "provenance": "BIPM_SI",
+      "notes": ""
+    },
+    {
+      "id": "degC",
+      "symbol": "°C",
+      "quantity_kind": "temperature_point",
+      "kind": "AFFINE_POINT",
+      "dimension": {
+        "Theta": 1
+      },
+      "scale_to_reference": "1",
+      "offset_to_reference": "273.15",
+      "provenance": "BIPM_SI",
+      "notes": "Celsius point; not a delta"
+    },
+    {
+      "id": "delta_K",
+      "symbol": "ΔK",
+      "quantity_kind": "temperature_difference",
+      "kind": "DELTA",
+      "dimension": {
+        "Theta": 1
+      },
+      "scale_to_reference": "1",
+      "offset_to_reference": "0",
+      "provenance": "BIPM_SI",
+      "notes": ""
+    },
+    {
+      "id": "delta_degC",
+      "symbol": "Δ°C",
+      "quantity_kind": "temperature_difference",
+      "kind": "DELTA",
+      "dimension": {
+        "Theta": 1
+      },
+      "scale_to_reference": "1",
+      "offset_to_reference": "0",
+      "provenance": "BIPM_SI",
+      "notes": "Difference; no absolute offset"
+    },
+    {
+      "id": "mol",
+      "symbol": "mol",
+      "quantity_kind": "amount_of_substance",
+      "kind": "LINEAR",
+      "dimension": {
+        "N": 1
+      },
+      "scale_to_reference": "1",
+      "offset_to_reference": "0",
+      "provenance": "BIPM_SI",
+      "notes": ""
+    },
+    {
+      "id": "cd",
+      "symbol": "cd",
+      "quantity_kind": "luminous_intensity",
+      "kind": "LINEAR",
+      "dimension": {
+        "J": 1
+      },
+      "scale_to_reference": "1",
+      "offset_to_reference": "0",
+      "provenance": "BIPM_SI",
+      "notes": ""
+    },
+    {
+      "id": "Joule",
+      "symbol": "J",
+      "quantity_kind": "energy",
+      "kind": "LINEAR",
+      "dimension": {
+        "M": 1,
+        "L": 2,
+        "T": -2
+      },
+      "scale_to_reference": "1",
+      "offset_to_reference": "0",
+      "provenance": "BIPM_SI",
+      "notes": ""
+    },
+    {
+      "id": "Wh",
+      "symbol": "W·h",
+      "quantity_kind": "energy",
+      "kind": "LINEAR",
+      "dimension": {
+        "M": 1,
+        "L": 2,
+        "T": -2
+      },
+      "scale_to_reference": "3600",
+      "offset_to_reference": "0",
+      "provenance": "DERIVED_ACCEPTED",
+      "notes": ""
+    },
+    {
+      "id": "W",
+      "symbol": "W",
+      "quantity_kind": "power",
+      "kind": "LINEAR",
+      "dimension": {
+        "M": 1,
+        "L": 2,
+        "T": -3
+      },
+      "scale_to_reference": "1",
+      "offset_to_reference": "0",
+      "provenance": "BIPM_SI",
+      "notes": ""
+    },
+    {
+      "id": "Hz",
+      "symbol": "Hz",
+      "quantity_kind": "frequency",
+      "kind": "LINEAR",
+      "dimension": {
+        "T": -1
+      },
+      "scale_to_reference": "1",
+      "offset_to_reference": "0",
+      "provenance": "BIPM_SI",
+      "notes": ""
+    },
+    {
+      "id": "bit",
+      "symbol": "bit",
+      "quantity_kind": "stored_information",
+      "kind": "LINEAR",
+      "dimension": {
+        "Data": 1
+      },
+      "scale_to_reference": "1",
+      "offset_to_reference": "0",
+      "provenance": "INFORMATION_CONVENTION",
+      "notes": "Not Shannon entropy bits"
+    },
+    {
+      "id": "B",
+      "symbol": "B",
+      "quantity_kind": "stored_information",
+      "kind": "LINEAR",
+      "dimension": {
+        "Data": 1
+      },
+      "scale_to_reference": "8",
+      "offset_to_reference": "0",
+      "provenance": "INFORMATION_CONVENTION",
+      "notes": ""
+    },
+    {
+      "id": "KiB",
+      "symbol": "KiB",
+      "quantity_kind": "stored_information",
+      "kind": "LINEAR",
+      "dimension": {
+        "Data": 1
+      },
+      "scale_to_reference": "8192",
+      "offset_to_reference": "0",
+      "provenance": "INFORMATION_CONVENTION",
+      "notes": ""
+    },
+    {
+      "id": "human_s",
+      "symbol": "human·s",
+      "quantity_kind": "human_attention_duration",
+      "kind": "LINEAR",
+      "dimension": {
+        "T": 1
+      },
+      "scale_to_reference": "1",
+      "offset_to_reference": "0",
+      "provenance": "OPERATIONAL_DEFINITION",
+      "notes": "Same duration dimension but different semantic measure family"
+    },
+    {
+      "id": "human_min",
+      "symbol": "human·min",
+      "quantity_kind": "human_attention_duration",
+      "kind": "LINEAR",
+      "dimension": {
+        "T": 1
+      },
+      "scale_to_reference": "60",
+      "offset_to_reference": "0",
+      "provenance": "OPERATIONAL_DEFINITION",
+      "notes": ""
+    },
+    {
+      "id": "verified_effect",
+      "symbol": "verified outcome",
+      "quantity_kind": "verified_receiver_effect",
+      "kind": "COUNT",
+      "dimension": {},
+      "scale_to_reference": "1",
+      "offset_to_reference": "0",
+      "provenance": "OPERATIONAL_DEFINITION",
+      "notes": "Must use explicit outcome definition and receiver receipt"
+    },
+    {
+      "id": "human_touch",
+      "symbol": "human touch",
+      "quantity_kind": "manual_relay_event",
+      "kind": "COUNT",
+      "dimension": {},
+      "scale_to_reference": "1",
+      "offset_to_reference": "0",
+      "provenance": "OPERATIONAL_DEFINITION",
+      "notes": ""
+    },
+    {
+      "id": "restore_trial",
+      "symbol": "cold-restore trial",
+      "quantity_kind": "qualified_cold_restore_trial",
+      "kind": "COUNT",
+      "dimension": {},
+      "scale_to_reference": "1",
+      "offset_to_reference": "0",
+      "provenance": "OPERATIONAL_DEFINITION",
+      "notes": ""
+    },
+    {
+      "id": "restore_success",
+      "symbol": "cold-restore success",
+      "quantity_kind": "verified_cold_restore_success",
+      "kind": "COUNT",
+      "dimension": {},
+      "scale_to_reference": "1",
+      "offset_to_reference": "0",
+      "provenance": "OPERATIONAL_DEFINITION",
+      "notes": ""
+    },
+    {
+      "id": "model_token",
+      "symbol": "model token",
+      "quantity_kind": "model_token",
+      "kind": "CONTEXTUAL",
+      "dimension": {},
+      "scale_to_reference": "1",
+      "offset_to_reference": "0",
+      "provenance": "TOKENIZER_DEPENDENT",
+      "notes": "Requires named model, tokenizer and version; no standard conversion into bytes"
+    },
+    {
+      "id": "UTC_instant",
+      "symbol": "UTC timestamp",
+      "quantity_kind": "calendar_instant",
+      "kind": "TIME_POINT",
+      "dimension": {
+        "T": 1
+      },
+      "scale_to_reference": "1",
+      "offset_to_reference": "0",
+      "provenance": "TIME_SCALE_CONTEXT",
+      "notes": "Requires named time scale/epoch/leap-second mapping; not a duration"
+    },
+    {
+      "id": "CAD",
+      "symbol": "CAD",
+      "quantity_kind": "currency_CAD",
+      "kind": "CONTEXTUAL",
+      "dimension": {},
+      "scale_to_reference": "1",
+      "offset_to_reference": "0",
+      "provenance": "FINANCIAL_CONTEXT",
+      "notes": "Currency/date and rate source required; no SI conversion"
+    },
+    {
+      "id": "USD",
+      "symbol": "USD",
+      "quantity_kind": "currency_USD",
+      "kind": "CONTEXTUAL",
+      "dimension": {},
+      "scale_to_reference": "1",
+      "offset_to_reference": "0",
+      "provenance": "FINANCIAL_CONTEXT",
+      "notes": ""
+    },
+    {
+      "id": "kgCO2e",
+      "symbol": "kg CO2e",
+      "quantity_kind": "emissions_equivalent",
+      "kind": "MODEL_DEPENDENT",
+      "dimension": {
+        "M": 1
+      },
+      "scale_to_reference": "1",
+      "offset_to_reference": "0",
+      "provenance": "GHG_MODEL",
+      "notes": "Requires GWP time horizon, characterization method and activity boundary"
+    },
+    {
+      "id": "percent",
+      "symbol": "%",
+      "quantity_kind": "bounded_fraction",
+      "kind": "LINEAR",
+      "dimension": {},
+      "scale_to_reference": "0.01",
+      "offset_to_reference": "0",
+      "provenance": "MATHEMATICAL_CONVENTION",
+      "notes": "0.01 corresponds to one percent"
+    },
+    {
+      "id": "one",
+      "symbol": "1",
+      "quantity_kind": "bounded_fraction",
+      "kind": "LINEAR",
+      "dimension": {},
+      "scale_to_reference": "1",
+      "offset_to_reference": "0",
+      "provenance": "MATHEMATICAL_CONVENTION",
+      "notes": "Only fraction/share with declared numerator and denominator scope"
+    }
+  ],
+  "measure_registry": [
+    {
+      "id": "comeasure.ops.verified_effects.r0",
+      "display": "Verified useful effects",
+      "unit_id": "verified_effect",
+      "method": "count qualified independent receiver results after exact-object effect and evidence",
+      "primary_use": "Closure yield",
+      "evidence_requirement": "receiver-readproof + outcome criteria + source and window",
+      "aggregate": "SUM",
+      "interpretation": "OBSERVED_OR_DERIVED",
+      "definition_version": "r0",
+      "definition_state": "CANDIDATE_NOT_ADOPTED"
+    },
+    {
+      "id": "comeasure.ops.human_relay.r0",
+      "display": "Human relay touches",
+      "unit_id": "human_touch",
+      "method": "count explicit required human routing actions under declared consent",
+      "primary_use": "Founder-independence",
+      "evidence_requirement": "auditable workflow step, no covert keystroke logging",
+      "aggregate": "SUM",
+      "interpretation": "OBSERVED_OR_DERIVED",
+      "definition_version": "r0",
+      "definition_state": "CANDIDATE_NOT_ADOPTED"
+    },
+    {
+      "id": "comeasure.ops.human_time.r0",
+      "display": "Human attention spent",
+      "unit_id": "human_s",
+      "method": "duration of explicitly scoped task participation, not extrapolated surveillance",
+      "primary_use": "Cost per useful outcome",
+      "evidence_requirement": "opt-in task start/end observations and timebase",
+      "aggregate": "SUM",
+      "interpretation": "OBSERVED_OR_DERIVED",
+      "definition_version": "r0",
+      "definition_state": "CANDIDATE_NOT_ADOPTED"
+    },
+    {
+      "id": "comeasure.ops.recovery_trial.r0",
+      "display": "Qualified recovery attempts",
+      "unit_id": "restore_trial",
+      "method": "count predeclared independent host-loss restoration trials",
+      "primary_use": "Recovery denominator",
+      "evidence_requirement": "predeclared trial scenario and failure-domain identities",
+      "aggregate": "SUM",
+      "interpretation": "OBSERVED_OR_DERIVED",
+      "definition_version": "r0",
+      "definition_state": "CANDIDATE_NOT_ADOPTED"
+    },
+    {
+      "id": "comeasure.ops.recovery_success.r0",
+      "display": "Verified recovery successes",
+      "unit_id": "restore_success",
+      "method": "count passes from the exact qualified recovery trial cohort",
+      "primary_use": "Recovery numerator",
+      "evidence_requirement": "exact cold readback and independent failure-domain proof",
+      "aggregate": "SUM",
+      "interpretation": "OBSERVED_OR_DERIVED",
+      "definition_version": "r0",
+      "definition_state": "CANDIDATE_NOT_ADOPTED"
+    },
+    {
+      "id": "comeasure.ops.energy.r0",
+      "display": "Measured energy consumed",
+      "unit_id": "Joule",
+      "method": "integrate metered energy over declared task/activity boundary",
+      "primary_use": "Energy per useful result",
+      "evidence_requirement": "meter method and calibration/uncertainty",
+      "aggregate": "SUM",
+      "interpretation": "OBSERVED_OR_DERIVED",
+      "definition_version": "r0",
+      "definition_state": "CANDIDATE_NOT_ADOPTED"
+    },
+    {
+      "id": "comeasure.ops.service_latency.r0",
+      "display": "Time to first useful result",
+      "unit_id": "s",
+      "method": "qualified event duration between defined trigger and receiver-verified result",
+      "primary_use": "User time-to-value",
+      "evidence_requirement": "paired timestamps and qualified receiver evidence",
+      "aggregate": "MEDIAN",
+      "interpretation": "OBSERVED_OR_DERIVED",
+      "definition_version": "r0",
+      "definition_state": "CANDIDATE_NOT_ADOPTED"
+    },
+    {
+      "id": "comeasure.ops.source_staleness.r0",
+      "display": "Source currentness age",
+      "unit_id": "s",
+      "method": "difference between source event time and receiver observation when comparable timebases exist",
+      "primary_use": "Currentness and UX trust",
+      "evidence_requirement": "source revision/time, receiver observation, clock qualification",
+      "aggregate": "MEDIAN",
+      "interpretation": "OBSERVED_OR_DERIVED",
+      "definition_version": "r0",
+      "definition_state": "CANDIDATE_NOT_ADOPTED"
+    },
+    {
+      "id": "comeasure.comms.payload_bytes.r0",
+      "display": "Payload bytes",
+      "unit_id": "B",
+      "method": "count exact encoded bytes in declared representation",
+      "primary_use": "Storage/data size",
+      "evidence_requirement": "payload identity and exact encoded representation",
+      "aggregate": "SUM",
+      "interpretation": "OBSERVED_OR_DERIVED",
+      "definition_version": "r0",
+      "definition_state": "CANDIDATE_NOT_ADOPTED"
+    },
+    {
+      "id": "comeasure.comms.provider_tokens.r0",
+      "display": "Model-provider token count",
+      "unit_id": "model_token",
+      "method": "provider tokenizer count with model, tokenizer revision and encoding",
+      "primary_use": "Budget planning only",
+      "evidence_requirement": "provider or named tokenizer, version and method",
+      "aggregate": "SUM",
+      "interpretation": "OBSERVED_OR_DERIVED",
+      "definition_version": "r0",
+      "definition_state": "CANDIDATE_NOT_ADOPTED"
+    },
+    {
+      "id": "comeasure.coall.handoff_count.r0",
+      "display": "Explicit handoff events",
+      "unit_id": "human_touch",
+      "method": "workflow handoffs requiring manual relay under declared criteria",
+      "primary_use": "Remove human courier burden",
+      "evidence_requirement": "workflow event receipt and privacy class",
+      "aggregate": "SUM",
+      "interpretation": "OBSERVED_OR_DERIVED",
+      "definition_version": "r0",
+      "definition_state": "CANDIDATE_NOT_ADOPTED"
+    },
+    {
+      "id": "comeasure.science.length.r0",
+      "display": "Measured length",
+      "unit_id": "m",
+      "method": "calibrated measurement under stated frame and uncertainty",
+      "primary_use": "Physical comparability",
+      "evidence_requirement": "calibration + instrument + frame + uncertainty",
+      "aggregate": "NONE",
+      "interpretation": "OBSERVED_OR_DERIVED",
+      "definition_version": "r0",
+      "definition_state": "CANDIDATE_NOT_ADOPTED"
+    },
+    {
+      "id": "comeasure.science.temperature.r0",
+      "display": "Thermodynamic temperature",
+      "unit_id": "K",
+      "method": "calibrated physical temperature point",
+      "primary_use": "Physical model",
+      "evidence_requirement": "thermometry method + environmental conditions",
+      "aggregate": "NONE",
+      "interpretation": "OBSERVED_OR_DERIVED",
+      "definition_version": "r0",
+      "definition_state": "CANDIDATE_NOT_ADOPTED"
+    },
+    {
+      "id": "comeasure.science.temp_delta.r0",
+      "display": "Temperature change",
+      "unit_id": "delta_K",
+      "method": "difference between two comparable temperature points",
+      "primary_use": "Experiments",
+      "evidence_requirement": "paired calibrated readings, same basis",
+      "aggregate": "NONE",
+      "interpretation": "OBSERVED_OR_DERIVED",
+      "definition_version": "r0",
+      "definition_state": "CANDIDATE_NOT_ADOPTED"
+    },
+    {
+      "id": "comeasure.learning.comprehension_ordinal.r0",
+      "display": "Comprehension rubric outcome",
+      "unit_id": null,
+      "method": "record rubric categories and cohort without assuming interval scale",
+      "primary_use": "Education",
+      "evidence_requirement": "rubric, consent, sampling, reviewer independence",
+      "aggregate": "ORDINAL_ONLY",
+      "interpretation": "ORDINAL",
+      "definition_version": "r0",
+      "definition_state": "CANDIDATE_NOT_ADOPTED"
+    }
+  ],
+  "derived_metrics": [
+    {
+      "id": "energy_per_verified_effect",
+      "operation": "RATIO",
+      "numerator": "comeasure.ops.energy.r0",
+      "denominator": "comeasure.ops.verified_effects.r0",
+      "output_unit": "J/verified_effect",
+      "required": [
+        "same_scope",
+        "same_window",
+        "positive_denominator",
+        "source_provenance",
+        "receiver_readproof"
+      ]
+    },
+    {
+      "id": "human_seconds_per_verified_effect",
+      "operation": "RATIO",
+      "numerator": "comeasure.ops.human_time.r0",
+      "denominator": "comeasure.ops.verified_effects.r0",
+      "output_unit": "human_s/verified_effect",
+      "required": [
+        "same_scope",
+        "same_window",
+        "positive_denominator",
+        "source_provenance",
+        "receiver_readproof"
+      ]
+    },
+    {
+      "id": "human_touches_per_verified_effect",
+      "operation": "RATIO",
+      "numerator": "comeasure.ops.human_relay.r0",
+      "denominator": "comeasure.ops.verified_effects.r0",
+      "output_unit": "human_touch/verified_effect",
+      "required": [
+        "same_scope",
+        "same_window",
+        "positive_denominator",
+        "source_provenance",
+        "receiver_readproof"
+      ]
+    },
+    {
+      "id": "independent_cold_restore_success_ratio",
+      "operation": "RATIO",
+      "numerator": "comeasure.ops.recovery_success.r0",
+      "denominator": "comeasure.ops.recovery_trial.r0",
+      "output_unit": "verified_success/qualified_trial",
+      "required": [
+        "same_scope",
+        "same_window",
+        "same_trial_cohort",
+        "positive_denominator",
+        "source_provenance"
+      ]
+    }
+  ],
+  "null_states": [
+    "OBSERVED_ZERO",
+    "NOT_OBSERVED",
+    "NOT_MEASURED",
+    "UNKNOWN",
+    "NOT_APPLICABLE",
+    "WITHHELD",
+    "FORBIDDEN",
+    "CONTRADICTORY",
+    "BELOW_DETECTION",
+    "EXPIRED",
+    "OBSERVED_ABSENT_WITH_SCOPE"
+  ],
+  "measurement_required_fields": [
+    "measure_id",
+    "unit_id",
+    "status",
+    "value",
+    "scope_id",
+    "window_id",
+    "observer",
+    "method_revision",
+    "evidence_ref",
+    "epistemic",
+    "uncertainty_state"
+  ],
+  "equality_constraints": [
+    "same_quantity_kind_and_kind_and_dimension_and_context",
+    "explicit_method_version",
+    "scope_and_time_alignment",
+    "distinguish_point_from_difference",
+    "never_assume_distinct_event_types_are_equivalent"
+  ],
+  "effects": {
+    "live_data_captured": 0,
+    "systems_changed": 0,
+    "messages_sent": 0,
+    "measurements_performed": 0,
+    "live_models_started": 0,
+    "virtual_sessions_materialized": 0
+  },
+  "nonclaims": [
+    "REGISTERED_NE_MEASURED",
+    "SI_DIMENSION_NE_SAME_SEMANTIC_KIND",
+    "CONVERTIBLE_NE_SAME_CAUSAL_MECHANISM",
+    "CO_NULL_NE_ZERO",
+    "TIME_POINT_NE_DURATION",
+    "TEMPERATURE_POINT_NE_DELTA",
+    "TOKENS_NE_BYTES",
+    "DRAFT_REGISTRY_NE_CANON",
+    "LOGICAL_ROLE_NE_INDEPENDENT_REVIEWER",
+    "CI_PASS_NE_RECEIVER_ACK"
+  ]
+}
