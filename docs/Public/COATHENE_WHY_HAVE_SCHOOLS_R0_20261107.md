@@ -18,6 +18,16 @@
 
 **Who decides?** Real educators, institutions, families, learners and public authorities have distinct responsibilities and legitimate powers. AI assistance does not confer teaching certification, custody, policy authority or learner safety oversight. Learners should be able to challenge instructions and hear alternative evidence.
 
+## Learning without compulsory buildings
+
+**A learning experience should not have to inherit a permanent building, classroom, timetable, account or organisational identity.** CoAthene should let people choose where a venue, human mentor, group or institution genuinely helps. A learning question can be explored offline, on an ordinary browser, in a library, with a community group, in a physical class or through an authorised online school.
+
+**The difficult distinction:** freedom from a *particular venue* does not remove obligations to supervise children, respect attendance laws, meet accreditation and curriculum standards, or obtain real group consent. In Ontario, remotely delivered credit courses and online private-school operations carry distinct responsibilities; a local digital workshop is not a credit-granting school merely because someone names it a virtual campus.
+
+**An original, public-source interactive candidate is now available:** [CoAthene Anywhere Instabuild and Groupbuild Studio R0](../../examples/coathene_anywhere_r0/README.md) ([single-file offline HTML source](../../examples/coathene_anywhere_r0/index.html)). It lets a reader choose one of three actual educational questions, assemble solo/group/mentored/institution-supported activity plans across five optional locations, challenge a prediction and choose to print/discard. The roles are local seat cards, **not real people or a live chat**, and no school, mentor or virtual room is provisioned. It needs independent adult educator and actual browser/learner testing before real programme claims.
+
+This prototype extends the existing [GroupBuild+ dual-doorway](../Architecture/GROUPBUILD_COTEAMING_COPAYBACK_R0_20261101.md) and [RoamLab standalone-first model](../Business/CoAthene_RoamLab_R0/README.md), rather than reinventing either.
+
 ## What might be distinctive about CoAthene?
 
 The proposed contribution is an **integrated pathway from a learner's own question to reliable knowledge, a reason to challenge it, a grounded test, an improved explanation, and a transferable result**, with rights and recoverability throughout.
