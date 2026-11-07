@@ -131,7 +131,7 @@
     "priority": "CHALLENGE_ONE_SEMANTIC_COLLISION_BEFORE_GENERATING_TEN_NEW_TERMS"
   },
   "fanin": {
-    "anchor": "Public PR review comments or appropriately authorized existing CoEvoAll Pulse source-bound evidence; no forced receiver messages",
+    "anchor": "Existing November 10 CoMeasure R0 Fan-In task, primary PR #365 and supplemental PR #366 crosswalk; independently verified source-bound reviewer input only",
     "dedup_keys": [
       "quantity_id",
       "definition_rev",
@@ -161,6 +161,15 @@
     "QUANTITY_KIND_NE_DIMENSION_ONLY",
     "CONULL_NE_ZERO",
     "MEASURED_EFFECT_NE_COMMIT_COUNT",
-    "CI_PASS_NE_RECEIVER_ACK"
-  ]
+    "CI_PASS_NE_RECEIVER_ACK",
+    "PR366_NE_SECOND_ELECTED_REGISTRY",
+    "EARLIER_PR365_NE_AUTO_CANON"
+  ],
+  "election": {
+    "elected_candidate": "https://github.com/CoCivium/CoCivium/pull/365",
+    "supplemental_challenger": "https://github.com/CoCivium/CoCivium/pull/366",
+    "collision_state": "RECONCILED_AS_PRIMARY_PLUS_TEST_DONOR__NOT_MERGED",
+    "crosswalk_url": "https://github.com/CoCivium/CoCivium/blob/candidate/comeasure-counit-coprimath-r0-20261107/ai/measure/PR365_PR366_CROSSWALK_20261107.md",
+    "rule": "Preserve earlier PR365 as primary candidate; evaluate PR366 as scoped test donor; no duplicate standards or schedulers."
+  }
 }
