@@ -28,6 +28,14 @@
 
 This prototype extends the existing [GroupBuild+ dual-doorway](../Architecture/GROUPBUILD_COTEAMING_COPAYBACK_R0_20261101.md) and [RoamLab standalone-first model](../Business/CoAthene_RoamLab_R0/README.md), rather than reinventing either.
 
+## Learning by teaching without a child profile
+
+The optional [CoPet Teach Moss source prototype](../../examples/coathene_copet_r0/README.md) lets an interested learner correct a fictional pet's misconception, select useful evidence and see why an easy rule can break. Its [evidence and counterclaim cards](COATHENE_EVIDENCE_FIRST_CLAIMS_R0_20261107.md) show why “the best way to learn is to teach” should be tested, not sold as a universal educational law. CoPet makes no claim to replace educators and collects no child's name, biometric, profile or persistent progress.
+
+The future [CoPassport+ loginless continuity concept](../Architecture/COATHENE_COPASSPORT_LOGINLESS_CONTINUITY_R0_20261107.md) separates optional accountless-looking interaction from **genuine authorized cross-device recovery**. Local passkey unlocking may use a fingerprint/face feature supplied by a trusted device, but CoAthene should never own a central children's biometric database. When a device is lost, safe recovery requires an independently authorized backup or guardian route; when all valid keys are lost, pretending to restore a protected record would be a security failure. None of those future recovery services exists in the current demo.
+
+School boards and educators are potential co-designers and safety/knowledge reviewers. The meaningful challenge is measured teaching benefit at sustainable cost and lawful risk, not proving existing professionals obsolete.
+
 ## What might be distinctive about CoAthene?
 
 The proposed contribution is an **integrated pathway from a learner's own question to reliable knowledge, a reason to challenge it, a grounded test, an improved explanation, and a transferable result**, with rights and recoverability throughout.
