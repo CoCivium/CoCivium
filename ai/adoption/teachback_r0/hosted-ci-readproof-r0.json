@@ -1,0 +1,107 @@
+{
+  "schema": "CoAll.CoTeachBack.HostedSourceReadproof.R0",
+  "date_utc": "2026-11-07",
+  "state": "HOSTED_READONLY_FIXTURE_VERIFIED_NO_EXTERNAL_AI_ADOPTION",
+  "workflow": {
+    "run_id": 42361088023,
+    "run_url": "https://github.com/CoCivium/CoCivium/actions/runs/42361088023",
+    "job_id": 128369431971,
+    "conclusion": "success",
+    "runner": "GitHub Actions Ubuntu",
+    "pr_number": 361,
+    "pr_url": "https://github.com/CoCivium/CoCivium/pull/361",
+    "pr_state": "OPEN_DRAFT_UNMERGED",
+    "head_commit": "2f4fa44689acdb27d7d72dcd0a6d6305eaf2b12e"
+  },
+  "source_edition": {
+    "manifest_git_blob": "e9b834f93455012c703eeb8ba9b6585778ea3464",
+    "verified_source_count": 7,
+    "all_source_blobs_match": true,
+    "sources": [
+      {
+        "id": "start-here",
+        "path": "START_HERE.md",
+        "git_blob_sha1": "bf9b8fa78aab3401b594d7fa5eb049b4586f0358",
+        "matched": true
+      },
+      {
+        "id": "evolution-fabric",
+        "path": "docs/Evolution/COALL_GITHUB_EVOLUTION_FABRIC_R0.md",
+        "git_blob_sha1": "7e374f9a1b5db17863b977740ab21e51d03cdf8d",
+        "matched": true
+      },
+      {
+        "id": "coevo-schema",
+        "path": "schemas/coevo-delta-v0.1.schema.json",
+        "git_blob_sha1": "5aa1bfc62a47492f41b422331d51dbfcccc831c4",
+        "matched": true
+      },
+      {
+        "id": "comap-graph",
+        "path": "ai/comap-source-projection-r0.json",
+        "git_blob_sha1": "9cc47926d2f61f439db1818702127382f78d693f",
+        "matched": true
+      },
+      {
+        "id": "highlight-register",
+        "path": "ai/highlight-assets.json",
+        "git_blob_sha1": "a6cf0422a2fbf82852de3619a47ea8b8ec3c45de",
+        "matched": true
+      },
+      {
+        "id": "cosysall-architecture",
+        "path": "docs/Architecture/COSYSALL_SEMANTIC_ZOOM_SUBSTRATE_R0.md",
+        "git_blob_sha1": "a09f84bba6bb52610f4afd433c0a8f4bb13000c3",
+        "matched": true
+      },
+      {
+        "id": "hosted-ci-readproof",
+        "path": "tools/cosysall_reciprocity_r0/hosted_ci_readback_20261107.json",
+        "git_blob_sha1": "d961e9cb8ca8762d35d6a3224f426d98485c41cf",
+        "matched": true
+      }
+    ]
+  },
+  "test_results": {
+    "manifest_unit_tests": 15,
+    "teachback_and_source_checkout_tests": 38,
+    "total_unit_tests": 53,
+    "unit_tests_all_passed": true,
+    "visible_key_fixture_score": {
+      "passed": 12,
+      "total": 12,
+      "percentage": 100.0
+    },
+    "visible_answer_key": true,
+    "independent_model_evaluation": "NOT_OBSERVED"
+  },
+  "artifact": {
+    "artifact_id": 13569801565,
+    "name": "coall-coteachback-r0-source-readproof-42361088023",
+    "expires_at_utc": "2026-11-14T09:45:48Z",
+    "zip_bytes": 1748,
+    "zip_sha256": "afdca03ed7a41fc899ec518a73733768bf6e1734c62b9b5134f37b705c18edfc",
+    "entries": [
+      {
+        "filename": "coall-teachback-pinned-source-readproof.json",
+        "sha256": "d485e75d5172d9ce0d1f97e4e454a50e0c84702ac613b44387932046eb0eac5f",
+        "bytes": 1621
+      },
+      {
+        "filename": "coall-teachback-visible-key-fixture-receipt.json",
+        "sha256": "c653ff53637338addca070348d0bc24de1d649d5dc3139927a1941a30a409bb0",
+        "bytes": 2378
+      }
+    ]
+  },
+  "effect_boundary": {
+    "independent_external_model_ack": "NOT_OBSERVED",
+    "independent_human_receiver_ack": "NOT_OBSERVED",
+    "model_training_weights_changed": "NOT_VERIFIED",
+    "mcp_a2a_deployment": "NONE",
+    "outreach_delivery": "NONE",
+    "production_runtime_effects": 0,
+    "coex_or_canon": "NOT_CLAIMED"
+  },
+  "next_qualified_action": "One independently authorized model/agent receives a fresh hidden-key challenge and produces source-bound output with distinct verifier receipt; no manual human relay presumed."
+}
