@@ -9,6 +9,8 @@ on:
       - 'scripts/test_coresearch_recovery.py'
       - 'scripts/coasset_valency_recovery_r0.py'
       - 'scripts/test_coasset_valency_recovery_r0.py'
+      - 'scripts/coasset_embedded_coshat_r0.py'
+      - 'scripts/test_coasset_embedded_coshat_r0.py'
       - 'docs/Architecture/COASSET_VALENCY_RECOVERY_R0.md'
       - 'examples/coresearch-recovery.example.json'
       - '.github/workflows/coresearch-evidence-contract.yml'
@@ -20,6 +22,8 @@ on:
       - 'scripts/test_coresearch_recovery.py'
       - 'scripts/coasset_valency_recovery_r0.py'
       - 'scripts/test_coasset_valency_recovery_r0.py'
+      - 'scripts/coasset_embedded_coshat_r0.py'
+      - 'scripts/test_coasset_embedded_coshat_r0.py'
       - 'docs/Architecture/COASSET_VALENCY_RECOVERY_R0.md'
       - 'examples/coresearch-recovery.example.json'
       - '.github/workflows/coresearch-evidence-contract.yml'
@@ -53,6 +57,9 @@ jobs:
             python scripts/test_coasset_valency_recovery_r0.py
             python -O scripts/test_coasset_valency_recovery_r0.py
             python scripts/coasset_valency_recovery_r0.py --graph ai/repo-field-projection-graph-r0.json
+            python scripts/test_coasset_embedded_coshat_r0.py
+            python -O scripts/test_coasset_embedded_coshat_r0.py
+            python scripts/coasset_embedded_coshat_r0.py
           fi
   source-currentness:
     runs-on: ubuntu-latest
