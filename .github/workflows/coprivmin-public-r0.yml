@@ -14,6 +14,7 @@ on:
       - 'tests/test_coathene_anywhere_r0.test.js'
       - 'tests/test_coathene_copet_r0.test.js'
       - 'tests/test_coathene_coentour_r0.test.js'
+      - 'tests/coathene_browser_acceptance_r0.cjs'
       - 'examples/coathene_anywhere_r0/**'
       - 'examples/coathene_copet_r0/**'
       - 'docs/Architecture/COATHENE_COPASSPORT_LOGINLESS_CONTINUITY_R0_20261107.md'
@@ -32,6 +33,7 @@ on:
       - 'tests/test_coathene_anywhere_r0.test.js'
       - 'tests/test_coathene_copet_r0.test.js'
       - 'tests/test_coathene_coentour_r0.test.js'
+      - 'tests/coathene_browser_acceptance_r0.cjs'
       - 'examples/coathene_anywhere_r0/**'
       - 'examples/coathene_copet_r0/**'
       - 'docs/Architecture/COATHENE_COPASSPORT_LOGINLESS_CONTINUITY_R0_20261107.md'
@@ -81,3 +83,43 @@ jobs:
           echo "COPET_IN_MEMORY_NE_CHILD_ID_OR_DURABLE_PASSPORT"
           echo "BIOMETRIC_LOCAL_UNLOCK_NE_RECOVERY_OR_GUARDIAN_PROOF"
           echo "COENTOUR_COSMETIC_NE_CHILD_PROFILE_OR_VERIFIED_BADGE"
+
+  browser-acceptance:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout public source candidate
+        uses: actions/checkout@v4
+      - name: Use Node for headless Chromium UI check
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install small browser-driver dependency
+        run: npm install --no-save --package-lock=false playwright-core@1.56.1
+      - name: Find or install local headless browser
+        shell: bash
+        run: |
+          set -eu
+          if command -v google-chrome >/dev/null 2>&1 || command -v chromium >/dev/null 2>&1; then
+            echo "PREINSTALLED_CHROMIUM_BROWSER_FOUND"
+          else
+            npx --yes playwright@1.56.1 install chromium
+          fi
+      - name: Exercise actual CoPet and Anywhere UI at desktop and phone widths
+        run: node tests/coathene_browser_acceptance_r0.cjs
+      - name: Preserve synthetic browser QA receipt and screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: coathene-r0-browser-proof
+          path: coathene-browser-proof/
+          if-no-files-found: warn
+          retention-days: 7
+      - name: Declare bounded UX proof
+        if: success()
+        run: |
+          echo "CHROMIUM_DESKTOP_MOBILE_UI_PASS_NE_EDUCATOR_OR_CHILD_VALIDATION"
+          echo "FILE_BROWSER_PROOF_NE_PUBLIC_HOSTED_SITE"
+          echo "NO_CHILD_DATA_NE_REAL_IDENTITY_OR_PASSPORT"
