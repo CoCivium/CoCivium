@@ -1,0 +1,65 @@
+name: CoAll source-pinned retrieval R0 - read-only hosted benchmark
+on:
+  pull_request:
+    paths:
+      - 'ai/adoption/retrieval_r0/**'
+      - 'ai/adoption/manifest-r0.json'
+      - 'START_HERE.md'
+      - 'docs/Evolution/COALL_GITHUB_EVOLUTION_FABRIC_R0.md'
+      - 'schemas/coevo-delta-v0.1.schema.json'
+      - 'ai/comap-source-projection-r0.json'
+      - 'ai/highlight-assets.json'
+      - 'docs/Architecture/COSYSALL_SEMANTIC_ZOOM_SUBSTRATE_R0.md'
+      - 'tools/cosysall_reciprocity_r0/hosted_ci_readback_20261107.json'
+      - '.github/workflows/coall-source-retrieval-r0.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify-and-retrieve:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout exact sources without stored credentials
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Use Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run synthetic adversarial retrieval controls
+        run: python -m unittest discover -s ai/adoption/retrieval_r0 -p 'test_*.py' -v
+      - name: Replay actual seven-source checkout and measure source discovery
+        run: |
+          python ai/adoption/retrieval_r0/replay.py \
+            --manifest ai/adoption/manifest-r0.json \
+            --repo-root . \
+            --output coall-source-retrieval-r0-hosted-readproof.json
+      - name: Demonstrate exact line-cited public read-only query
+        run: |
+          python ai/adoption/retrieval_r0/retrieval.py \
+            --manifest ai/adoption/manifest-r0.json \
+            --repo-root . \
+            --query "CoAll shared evolution protocol receiver permissions" \
+            --top-k 3 \
+            --output coall-source-retrieval-r0-sample.json
+          python - <<'PY'
+          import json
+          r=json.load(open('coall-source-retrieval-r0-sample.json'))
+          assert r['source_count']==7 and r['source_edition_verified']
+          assert r['authorized_effects']==[] and not r['model_invoked']
+          assert all('git_blob_sha1' in x and 'citation' in x for x in r['results'])
+          print('PASS_SCOPE_ONLY: source-pinned citations, no model call, no authority')
+          PY
+      - name: Preserve seven-source retrieval proof with short retention
+        uses: actions/upload-artifact@v4
+        with:
+          name: coall-source-retrieval-r0-${{ github.run_id }}
+          path: |
+            coall-source-retrieval-r0-hosted-readproof.json
+            coall-source-retrieval-r0-sample.json
+          if-no-files-found: error
+          retention-days: 7
+      - name: Verify effect ceiling
+        run: echo "Read-only retrieval only. No external model, training, receiver ACK, MCP/A2A, X2, CoEx or deployment."
