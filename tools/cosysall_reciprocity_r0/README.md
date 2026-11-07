@@ -1,5 +1,15 @@
 # CoAll <-> CoSysAll+ Reciprocity Bridge R0
 
+## CURRENT READPROOF | 2026-11-07 08:12 UTC
+
+**Hosted GitHub Actions proof is now VERIFIED FOR SCOPE.** Draft [PR #359](https://github.com/CoCivium/CoCivium/pull/359) exercised the **read-only** `pull_request` event on branch `proof/cosysall-r1-pr-readonly-20261107`; it remains **OPEN / DRAFT / UNMERGED**. [Run #42354438680](https://github.com/CoCivium/CoCivium/actions/runs/42354438680) concluded `success`. Job `source-replay` (#128349307547) and all seven substantive/pre-post steps completed successfully. The actual job log reports **33/33 Python regression tests passed**; its exact-graph replay step passed.
+
+**Artifact inspected, not merely a green badge:** GitHub Actions artifact #13566363382, `cosysall-r1-full-source-readproof-42354438680`, had one JSON receipt, SHA-256 `81babde22307059b81c0ddd0a5e5b4901e9fa17b818f73a8f0eee21b2154f874`. It reports source Git blob `9cc47926d2f61f439db1818702127382f78d693f`, 56 objects / 61 relations, identical projected structured-claim digests, reversed-edge and forged-permission rejection, and `HYPOTHESIS/PROPOSE/NO_EXTERNAL_EFFECTS__REVIEW_ONLY`. [Independent connector-artifact inspection record](hosted_ci_readback_20261107.json) is source-controlled and read back. The original ZIP and manifest were separately stored in the private CoCivium PublicationPackets Library, materialized again, and SHA-256 matched. GitHub's own artifact copy expires **2026-11-14 08:12 UTC**, but separate Library custody exists.
+
+**Scope boundary:** The previous no-run observations below are **historical, superseded for hosted PR CI**. The initial *push-triggered* run specifically remains unexamined. This PR-run verifies hosted code/fixture behavior only: **NOT** independent human comprehension, policy acceptance, real visual accessibility equivalence, X2/CoOrb runtime, independent hosting, CoEx or global semantic federation. `independent_reader_ack=NOT_OBSERVED` remains unchanged. Do not close the broader issue.
+
+**NEXT:** One uncoached, independently qualified reader completes [Reader Challenge R0](../../examples/cosysall/reader-challenge-r0.html) and produces verifiable reader-relative evidence. No one should act as Rick's relay by default. This is a test request, not a claimed receiver ACK.
+
 **Scope:** Tested, non-actuating local Python reference adapter. Not canon, installed runtime, global federation, authenticated semantic reviewer or autonomous graph ingestion.
 
 **Upstream:** The existing public `ai/comap-source-projection-r0.json` source graph; `schemas/coevo-delta-v0.1.schema.json` for proposal shape. Both are maintained separately in `CoCivium/CoCivium`.
