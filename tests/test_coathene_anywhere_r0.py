@@ -125,6 +125,12 @@ class AnywhereR0Tests(unittest.TestCase):
         self.assertIn("NOT_CLAIMED",self.data["limits"]["accreditation"])
         self.assertIn("school",self.html.lower())
 
+    def test_optional_pets_stay_separate_from_solo_groupbuilder(self):
+        self.assertIn('href="../coathene_copet_r0/index.html"',self.html)
+        self.assertIn("fictional learning pet",self.html)
+        self.assertIn("no child login",self.html.lower())
+        self.assertIn("not a",self.guide.lower())
+
     def test_no_automatic_source_navigation_or_read_receipt_claim(self):
         h=self.html
         self.assertNotIn("window.location",h)
