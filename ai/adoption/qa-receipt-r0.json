@@ -1,0 +1,34 @@
+{
+  "schema": "CoAll.AdoptionBootstrapLocalQA.R0",
+  "state": "LOCAL_FIXTURE_VALIDATION_ONLY",
+  "date_utc": "2026-11-07",
+  "tests": {
+    "total": 15,
+    "pass": 15,
+    "fail": 0,
+    "scope": "stdlib unittest on static manifest and adversarial mutations; no external model reader, source fetch or global training"
+  },
+  "files": {
+    "manifest-r0.json": {
+      "bytes": 7110,
+      "sha256": "112d0878dfa7bb6202b233ceb278b8e1d13964eb3c1f36b37702c1c04901fccd",
+      "git_blob_sha1": "e9b834f93455012c703eeb8ba9b6585778ea3464"
+    },
+    "README.md": {
+      "bytes": 4744,
+      "sha256": "9e9ca10b03d7a4e01974ee80d50394d83b5087124fea60a3485229bd1bbf86f7",
+      "git_blob_sha1": "f1dd28861fccd4cbd20d73cc0142081ac28854f1"
+    },
+    "test_manifest.py": {
+      "bytes": 3827,
+      "sha256": "7299b7fdab5f579fc079ac7870adacaf1a3e56b2df471eb414caf24b6a059451",
+      "git_blob_sha1": "42c6cb4c035f0f625bbd7a61e65180b03b56d42a"
+    }
+  },
+  "source_count": 7,
+  "external_receiver_count_verified": 0,
+  "weight_updates": 0,
+  "mcp_a2a_deployments": 0,
+  "public_release_claim": "NOT_UNTIL_GITHUB_READBACK",
+  "independent_review": "UNOBSERVED"
+}
