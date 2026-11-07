@@ -287,11 +287,40 @@ function visitTrail(visit){
  return visit.explored.map(id=>({lessonId:id,label:"Explored this visit: "+findLesson(id).interest,
                                   verified:false,grade:null,notPersistent:true}));
 }
-if(typeof module!=="undefined"&&module.exports)module.exports={lib,findLesson,newVisit,teach,viewCoverage,newOutfit,getGearType,selectGear,gearCue,visitTrail};
+function lensMode(id){
+ const x=lib.lens.modes.find(v=>v.id===id);
+ if(!x)throw Error("Unknown presentation lens");
+ return x;
+}
+function lensFocus(id){
+ const x=lib.lens.focuses.find(v=>v.id===id);
+ if(!x)throw Error("Unknown learning focus");
+ return x;
+}
+function lensScene(id){
+ const x=lib.lens.scenes.find(v=>v.id===id);
+ if(!x||!lib.petLessons.some(v=>v.id===id))throw Error("Unrecognized lesson illustration");
+ return x;
+}
+function lensPresentation(modeId,focusId,sceneId){
+ const mode=lensMode(modeId), focus=lensFocus(focusId), scene=lensScene(sceneId);
+ return {modeId,focusId,sceneId,modeTitle:mode.label,disclosure:mode.disclosure,
+         visual:scene.art,heading:scene.shortTitle,
+         activity:scene.focusPrompts[focusId],
+         childPrompt:modeId==="together"?scene.toddlerPrompt:scene.playPrompt,
+         offscreen:scene.offline,
+         playOptions:modeId==="play"?scene.playOptions:[],
+         correct:modeId==="play"?scene.correct:null,
+         feedback:modeId==="play"?scene.playFeedback:"",
+         requiresAdult:mode.adultPresenceRequired===true,
+         inputAgeCollected:false,ageInferred:false,masteryAssigned:false,stored:false};
+}
+if(typeof module!=="undefined"&&module.exports)module.exports={lib,findLesson,newVisit,teach,viewCoverage,newOutfit,getGearType,selectGear,gearCue,visitTrail,lensMode,lensFocus,lensScene,lensPresentation};
 if(typeof window!=="undefined"&&typeof document!=="undefined"){
  const by=id=>document.getElementById(id),sel=by("lesson-select");
  let visit=newVisit();
  let outfit=newOutfit();
+ let lens={mode:lib.lens.defaultMode,focus:lib.lens.defaultFocus,scene:lib.petLessons[0].id};
  function clear(node){while(node.firstChild)node.removeChild(node.firstChild);}
  function options(parentId,name,choices){const p=by(parentId);clear(p);
  choices.forEach((value,i)=>{
@@ -324,6 +353,9 @@ if(typeof window!=="undefined"&&typeof document!=="undefined"){
    return item?item.icon+" "+item.label:"";
   }).filter(Boolean);
   by("gear-look").textContent=names.length?names.join(" · ")+" (self-claimed, this visit only)":"Nothing claimed. All learning topics are available.";
+  const mini=Object.entries(outfit.equipped).map(([type,id])=>
+    getGearType(type).items.find(item=>item.id===id)?.icon||"").filter(Boolean);
+  by("lens-mini-gear").textContent=mini.join(" ");
   for(const type of ["hat","familiar","badge","trail"]){
    const token=by("pet-gear-"+type);
    const itemId=outfit.equipped[type];
@@ -343,7 +375,70 @@ if(typeof window!=="undefined"&&typeof document!=="undefined"){
  function followGear(){
   const cue=gearCue(outfit);
   if(!cue.routeLessonId)return;
-  sel.value=cue.routeLessonId;renderLesson();sel.focus();
+  sel.value=cue.routeLessonId;lens.scene=cue.routeLessonId;renderLesson();renderLens();sel.focus();
+ }
+ function closeShortLens(){
+  by("lens-scene-content").classList.remove("is-finished");
+  by("lens-done").hidden=true;
+ }
+ function renderLensPlay(plan){
+  const area=by("lens-play-options");clear(area);
+  plan.playOptions.forEach((option,i)=>{
+   const btn=document.createElement("button");
+   btn.type="button";btn.textContent=option;
+   btn.addEventListener("click",()=>{
+    by("lens-play-result").hidden=false;
+    by("lens-play-result").textContent=plan.feedback+
+     " A choice is not a grade. Explore this with a grown-up.";
+   });
+   area.appendChild(btn);
+  });
+  by("lens-play-result").hidden=true;
+  by("lens-play-result").textContent="";
+ }
+ function renderLens(){
+  const plan=lensPresentation(lens.mode,lens.focus,lens.scene);
+  const mode=lensMode(lens.mode);
+  document.body.dataset.lens=lens.mode;
+  by("lens-current").textContent=mode.label;
+  by("lens-knob").style.setProperty("--dial-angle",{
+   together:"0deg",play:"90deg",explore:"180deg",research:"270deg"}[lens.mode]);
+  document.querySelectorAll("[data-lens-mode]").forEach(button=>{
+   button.setAttribute("aria-pressed",String(button.dataset.lensMode===lens.mode));
+  });
+  document.querySelectorAll("[data-lens-topic]").forEach(button=>{
+   button.setAttribute("aria-pressed",String(button.dataset.lensTopic===lens.scene));
+  });
+  by("lens-honesty").textContent=mode.hero+
+   " · This is a chosen presentation view, not automatic age or ability detection.";
+  by("lens-focus").value=lens.focus;
+  by("lens-focus-cue").textContent="Try this: "+plan.activity;
+  by("lens-stage-heading").textContent=lens.mode==="together"?"Look together, then put the screen away.":"Choose a picture and help Moss.";
+  by("lens-adult-note").textContent=mode.disclosure;
+  by("lens-scene-title").textContent=plan.heading;
+  by("lens-prompt").textContent=plan.childPrompt;
+  by("lens-offline").textContent=plan.offscreen;
+  for(const scene of lib.lens.scenes){
+   by("lens-art-"+scene.id).hidden=scene.id!==lens.scene;
+  }
+  by("lens-play").hidden=lens.mode!=="play";
+  if(lens.mode==="play")renderLensPlay(plan);
+  const lesson=findLesson(lens.scene);
+  by("lens-research-source").href=lesson.source;
+  by("lens-research-source").textContent=lesson.sourceLabel||"Original public reference";
+  by("lens-research-limit").textContent="Limit and counterexample: "+lesson.boundary+
+   " · No independent educational effect or scientific certification is claimed.";
+ }
+ function chooseLensMode(id){
+  lens.mode=lensMode(id).id;
+  sel.value=lens.scene;renderLesson();closeShortLens();renderLens();
+ }
+ function chooseLensTopic(id){
+  lens.scene=lensScene(id).id;
+  sel.value=id;renderLesson();closeShortLens();renderLens();
+ }
+ function chooseLensFocus(id){
+  lens.focus=lensFocus(id).id;renderLens();
  }
  function renderLesson(){
   const l=findLesson(sel.value);by("prompt").textContent=l.prompt;
@@ -369,7 +464,19 @@ if(typeof window!=="undefined"&&typeof document!=="undefined"){
   }catch(e){by("prompt").textContent="Please choose one idea and one evidence option before teaching Moss.";}
  }
  function resetAll(){visit=newVisit();outfit=newOutfit();renderProgress();renderOutfit();renderLesson();sel.focus();}
- sel.addEventListener("change",renderLesson);
+ sel.addEventListener("change",()=>{lens.scene=sel.value;renderLesson();renderLens();});
+ document.querySelectorAll("[data-lens-mode]").forEach(button=>
+  button.addEventListener("click",()=>chooseLensMode(button.dataset.lensMode)));
+ document.querySelectorAll("[data-lens-topic]").forEach(button=>
+  button.addEventListener("click",()=>chooseLensTopic(button.dataset.lensTopic)));
+ by("lens-focus").addEventListener("change",()=>chooseLensFocus(by("lens-focus").value));
+ by("lens-finish").addEventListener("click",()=>{
+  visit=newVisit();outfit=newOutfit();renderProgress();renderOutfit();
+  by("lens-scene-content").classList.add("is-finished");
+  by("lens-done").hidden=false;
+ });
+ by("lens-reopen").addEventListener("click",()=>{closeShortLens();renderLens();});
+
  by("dress-moss").addEventListener("click",()=>{
   const wardrobe=by("wardrobe");wardrobe.open=true;
   wardrobe.scrollIntoView({behavior:"auto",block:"start"});
@@ -384,6 +491,6 @@ if(typeof window!=="undefined"&&typeof document!=="undefined"){
  by("clear").addEventListener("click",resetAll);
  by("clear-result").addEventListener("click",resetAll);
  by("print").addEventListener("click",()=>window.print());
- fillGearChoices();renderOutfit();renderLesson();renderProgress();
+ fillGearChoices();renderOutfit();renderLesson();renderProgress();renderLens();
 }
 </script></body></html>
