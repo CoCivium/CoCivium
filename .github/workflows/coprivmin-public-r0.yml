@@ -1,4 +1,4 @@
-name: CoPrivMin and CoAthene Anywhere R0 - public candidate checks
+name: CoPrivMin, CoAthene Anywhere and CoPet R0 - public candidate checks
 on:
   push:
     branches:
@@ -9,8 +9,12 @@ on:
       - 'scripts/CoPrivMinPublicProjectionR0.py'
       - 'tests/test_coprivmin_public_r0.py'
       - 'tests/test_coathene_anywhere_r0.py'
+      - 'tests/test_coathene_copet_r0.py'
       - 'tests/test_coathene_anywhere_r0.test.js'
+      - 'tests/test_coathene_copet_r0.test.js'
       - 'examples/coathene_anywhere_r0/**'
+      - 'examples/coathene_copet_r0/**'
+      - 'docs/Architecture/COATHENE_COPASSPORT_LOGINLESS_CONTINUITY_R0_20261107.md'
       - '.github/workflows/coprivmin-public-r0.yml'
   pull_request:
     paths:
@@ -19,8 +23,12 @@ on:
       - 'scripts/CoPrivMinPublicProjectionR0.py'
       - 'tests/test_coprivmin_public_r0.py'
       - 'tests/test_coathene_anywhere_r0.py'
+      - 'tests/test_coathene_copet_r0.py'
       - 'tests/test_coathene_anywhere_r0.test.js'
+      - 'tests/test_coathene_copet_r0.test.js'
       - 'examples/coathene_anywhere_r0/**'
+      - 'examples/coathene_copet_r0/**'
+      - 'docs/Architecture/COATHENE_COPASSPORT_LOGINLESS_CONTINUITY_R0_20261107.md'
       - '.github/workflows/coprivmin-public-r0.yml'
 
 permissions:
@@ -47,6 +55,10 @@ jobs:
           node-version: '20'
       - name: Execute exact embedded planner across solo/group/mentor/institution cases
         run: node --test tests/test_coathene_anywhere_r0.test.js
+      - name: Check CoPet source, guardian boundaries and loginless terminology
+        run: python -m unittest discover -s tests -p 'test_coathene_copet_r0.py' -v
+      - name: Execute CoPet's exact embedded teachable-agent engine
+        run: node --test tests/test_coathene_copet_r0.test.js
       - name: State exact limited proof ceiling
         run: |
           echo "PASS_STATIC_NE_PRIVACY_CERTIFICATION"
@@ -55,3 +67,5 @@ jobs:
           echo "NO_PRIVATE_FIELDS_NO_CHILD_DATA_NO_REAL_USERS"
           echo "OFFLINE_PLAN_TEST_NE_LIVE_SCHOOL_OR_GROUP"
           echo "SOURCE_PR_NE_HOSTED_WEBSITE_OR_X2_RUNTIME"
+          echo "COPET_IN_MEMORY_NE_CHILD_ID_OR_DURABLE_PASSPORT"
+          echo "BIOMETRIC_LOCAL_UNLOCK_NE_RECOVERY_OR_GUARDIAN_PROOF"
