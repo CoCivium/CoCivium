@@ -88,12 +88,17 @@ async function copetDesktop(browser) {
   try {
     await load(page, "examples/coathene_copet_r0/index.html");
     check((await text(page.locator("#progress"))).includes("0 of 4"), "guest progress starts empty");
+    check(await page.locator("#pet-gear-hat").isHidden(), "no preassigned hat or learning type");
+    check(await page.locator("#dress-moss").isVisible(), "first-screen CoEntour choice discoverable");
     await screenshot(page, "copet-desktop-first.png");
-    await page.locator("#wardrobe summary").click();
+    await page.locator("#dress-moss").click();
+    check(await page.locator("#wardrobe").evaluate(el => el.open), "front-door wardrobe opens by choice");
     await page.locator("#gear-type").selectOption("hat");
     await page.locator("#gear-item").selectOption("hat_space");
     await page.locator("#gear-claim").click();
     check((await text(page.locator("#gear-look"))).includes("Orbit Cap"), "chosen hat visible as self-claim");
+    check(await page.locator("#pet-gear-hat").isVisible(), "actual pet visibly wears chosen hat symbol");
+    check((await text(page.locator("#pet-gear-hat"))).length > 0, "visual hat token contains claimed icon");
     check((await text(page.locator("#progress"))).includes("0 of 4"), "costume alone does not count learning");
     check(await page.locator("#gear-follow").isEnabled(), "subject hint separately actionable");
     await screenshot(page, "copet-desktop-wardrobe.png");
@@ -113,6 +118,7 @@ async function copetDesktop(browser) {
     await page.locator("#clear").click();
     check((await text(page.locator("#progress"))).includes("0 of 4"), "explicit reset erases explored questions");
     check((await text(page.locator("#gear-look"))).includes("Nothing claimed"), "explicit reset erases outfit");
+    check(await page.locator("#pet-gear-hat").isHidden(), "reset removes actual pet accessory");
     await noStorage(page, "copet-desktop");
     await page.reload();
     check((await text(page.locator("#progress"))).includes("0 of 4"), "reload has no durable student profile");
@@ -128,6 +134,7 @@ async function copetMobile(browser) {
     await page.locator("#gear-item").selectOption("trail_animals");
     await page.locator("#gear-claim").click();
     check((await text(page.locator("#gear-look"))).includes("Habitat Path"), "mobile trail cue is visible");
+    check(await page.locator("#pet-gear-trail").isVisible(), "mobile pet displays chosen trail symbol");
     await page.locator("#gear-follow").click();
     check((await page.locator("#lesson-select").inputValue()) === "animals", "mobile explicit route action works");
     await page.locator('input[name="claim"][value="0"]').check();
