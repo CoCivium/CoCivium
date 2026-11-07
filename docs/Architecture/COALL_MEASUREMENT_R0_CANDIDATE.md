@@ -170,9 +170,13 @@ unit/semantic variants, 7 operating metric families and 35 deterministic
 verification assertions: 11 exact conversions, 7 invalid conversions
 rejected, 6 valid null states, 3 exact measured-value examples and 8
 invalid null/value representations rejected. The existing 24-case X2
-result does **not** attest this changed registry. Separate CI is introduced
-on the *draft PR branch*; treat its 35-case outcome as `PENDING` until an
-exact-head CI receipt is independently checked.
+result does **not** attest this changed registry. The first [exact-source GitHub CI](https://github.com/CoCivium/CoCivium/actions/runs/42410266679)
+completed SUCCESS at commit `248c09f8fab66fc015773d123aa03719aa07970e`:
+35/35 assertions, idempotent second execution, no external test effects.
+The tested registry SHA-256 was
+`14544bf12c8498c3fa664c7a11d01b8706d5d1f4704a7cc99f7040f159a033e7`.
+These are hosted CI claims only, not X2 reinstallation, independent
+semantic reviewer adoption, CoEx or canon.
 
 **No false consensus:** The private CoNeedleEvo 28-test candidate in
 [CoSteward draft PR #265](https://github.com/CoCivium/CoSteward/pull/265)
