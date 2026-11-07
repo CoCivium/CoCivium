@@ -50,6 +50,51 @@ A physical passkey or synced passkey can eliminate username entry and shared pas
 6. No permanent parental visibility beyond age-appropriate, lawful permissions; children gain independent privacy and control as they develop.
 7. No credential based on a printable “progress receipt” alone. A plain progress copy is **not** identity authentication, proof of independent learning, a grade, or tamper-resistant credit.
 
+## R0.1 | Lost device, no child biometric vault (2026-11-07)
+
+**User challenge:** kids lose passports, cards, keys and devices; biometrics seem harder to misplace. That is true for the **physical trait**, not for a lost device or the right to retrieve encrypted data. The distinction matters more than a clever login-free illustration.
+
+### The stronger design: CoRecoveryMesh+ as an *optional* scoped identity recovery method
+
+| Situation | Proposed authorized continuation | Protection or failure state |
+|---|---|---|
+| **No saved profile** | Guest CoPet works immediately with fictional content and in-memory progress | No real identity or progress to recover; no child account |
+| **Same trusted device** | A platform-protected, user-selected local progress vault (future) may unlock using device PIN or local biometric | **Not built**. Require sibling-safe OS separation and an alternative unlock method. Browser storage alone is not an encrypted private vault |
+| **A second pre-authorized device or guardian** | Another bound passkey or approved device can authenticate a narrow retrieval of the learner's encrypted capsule | Register in advance with consent. Revoke the lost device, rotate keys if exposed, record lawful access and avoid exposing the child's real name |
+| **Device lost; guardian still has access** | Guardian verifies their own independent authorization, then helps the child recover a **scoped** record on a new device | A guardian relationship must have been validated and remain lawful; holding a phone, sharing a surname or knowing pet name is not proof |
+| **Both devices/keys missing** | If configured, use a separately protected recovery key or appropriately vetted multiple-trustee recovery, with rate limiting, review, revocation and appeal | If nobody can prove authority and no recovery path exists, **HOLD / data may be unrecoverable**. Do not silently bypass encryption, demand child biometric enrollment or reveal family relationships |
+| **Child growing older / guardianship changes** | Age-appropriate transfer of access, consent renewal and revocation of prior delegated powers | Not perpetual parent surveillance, school ownership or indefinite behavioural archive |
+| **No biometrics available, inaccessible or refused** | PIN/platform verification, approved security key or other appropriate non-biometric credential | Equivalent opportunity to learn; no biometric participation requirement |
+
+**Biometrics belong at the *edge*, if used at all.** Device-local face or fingerprint recognition can activate a cryptographic passkey. In standard WebAuthn, the relying service receives a signed assertion, **not the biometric sample**. A server-side biometric registry is not a backup for an absent or lost physical authenticator. A child's biometric features can change; sensors fail; fingerprints and facial images are not revocable secrets; false matches/non-matches exist and access can be coerced. **No central biometric template, emotion-recognition identifier, gait/voice fingerprint, latent cross-site device fingerprint or child face database is part of this proposal.** [NIST SP 800-63B (2025)](https://pages.nist.gov/800-63-4/sp800-63b.html) limits biometrics to multifactor use with a physical authenticator and requires a non-biometric alternative. [WebAuthn](https://www.w3.org/TR/webauthn/) defines authenticator-local verification, not a legal guardianship certification.
+
+### CoRecoveryMesh+ capability/permission model, not an assumed implementation
+
+1. Random **site-scoped** learner handle, separated from real-world identity. Handle alone **never** grants access.
+2. One or more independent **cryptographic authenticators** bound to appropriate access scopes; guardian rights are separately documented, time-bound and revisable. A synced passkey may be convenient, but a single synced-provider account creates shared-provider recovery risks.
+3. Optional **end-to-end encrypted** minimal progress capsules and optional backed-up/recoverable data keys. Authentication of access and encryption of *data* are separate components; loss of every unlocking key is a real failure, not something a pet avatar can repair.
+4. Existing trusted device or approved guardian can initiate new-device binding; verify intent through a safe authenticated channel; log only minimal authorized receipt; **do not transfer raw biometrics**.
+5. Revocation, rollback detection, lost-device response, guardian dispute, sibling separation and child age transition must be tested before production. Multi-trustee recovery, if ever used, requires professional design and must not become a covert permanent parental watch service.
+6. If rights, recovery trust or provenance cannot be established, **stop and explain why**. Do not grant access merely to avoid UX friction.
+
+**What “loginless” may honestly mean:** no routine typed username or password and no account to enter a guest demo. A persistent, cross-device, child-specific record still needs explicit registration, key use, and lawful consent at appropriate moments. A hidden background identifier is **not** a safer substitute.
+
+### Disconfirming recovery drills before any real learner
+
+- A child chooses Moss on a family tablet; verify a sibling cannot read the first child's progress via the same pet selection.
+- A device is reported lost; test that its credential is invalidated and a correctly authorized second device can retrieve only the intended minimum capsule.
+- Both recovery methods are unavailable; system reports **UNRECOVERABLE_OR_HELD** instead of opening a backdoor.
+- Biometric access is refused or unavailable; a non-biometric method works with equivalent learning access.
+- Guardian authority expires or is contested; future access refuses unauthorized historical browsing.
+- A public recovery link/QR/screenshot is leaked; it cannot alone authenticate, authorize access, or reveal identifiable learning records.
+- A child requests correction/deletion; the responsible operator demonstrates appropriate effective control, including lawful limits.
+- A hostile participant knows the pet, surname, school and birthdate; still cannot authenticate.
+- A passkey is available but the record-decryption key is gone; the design must not promise data decryption merely because login succeeded.
+
+**Release boundary:** **This is a design and test plan, not a secure implementation**. CoPet R0 remains in-memory only. No child ID, biometric, encrypted profile, real guardian, sync, contact, credential or permanent progress has been created.
+
+`BIO_TRAIT_NE_SECRET` · `LOCAL_BIOMETRIC_NE_GLOBAL_CHILD_ID` · `PASSKEY_NE_DATA_DECRYPTION_KEY` · `AUTHENTICATION_NE_GUARDIAN_AUTHORITY` · `LOST_ALL_KEYS_NE_SILENT_BACKDOOR` · `NO_LOGIN_UI_NE_NO_AUTHENTICATION` · `CHILD_RIGHTS_SURVIVE_RECOVERY`.
+
 ## Trust, recovery and durable rights
 
 For any real learner progress service, first specify: responsible operator and jurisdiction; why a stable handle is necessary; lawful basis and age-appropriate guardian/learner consent; what proof allows recovery; key/device loss; revocation and delegation; minimal data fields and encryption; integrity/anti-rollback; retention and deletion; teacher access; accessibility; sibling separation on shared devices; breach procedure; human remedy and appeals; alternative no-ID route.
