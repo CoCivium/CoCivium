@@ -105,6 +105,24 @@ def build_packet(repo_root: Path, manifest: dict, selected: list[str]) -> dict:
 def validate_packet(packet: dict) -> list[dict]:
     if not isinstance(packet, dict) or packet.get("schema") != PACKET_SCHEMA:
         raise AdmissionError("UNRECOGNIZED_PACKET_SCHEMA")
+    expected_packet_fields = {
+        "schema", "state", "sources", "integrity", "source_instructions",
+        "external_receiver_ack", "independent_replica", "memory_write",
+        "model_weight_change", "created_by", "packet_sha256"
+    }
+    if set(packet) != expected_packet_fields:
+        raise AdmissionError("UNKNOWN_PACKET_FIELDS_OR_MISSING_CEILING")
+    ceilings = {
+        "state": "PUBLIC_SOURCE_LOCAL_PORTABLE_CANDIDATE",
+        "integrity": "SHA256_BYTES_PLUS_GIT_OBJECT_HASH_NOT_SIGNED_PUBLISHER",
+        "external_receiver_ack": "NOT_OBSERVED",
+        "independent_replica": "NOT_OBSERVED",
+        "memory_write": "NOT_PERFORMED",
+        "model_weight_change": "NOT_PERFORMED",
+        "created_by": "LOCAL_REFERENCE_TOOL_NOT_IDENTIFIED_EXTERNAL_PUBLISHER"
+    }
+    if any(packet.get(k) != v for k, v in ceilings.items()):
+        raise AdmissionError("FORBIDDEN_PACKET_EFFECT_OR_IDENTITY_CLAIM")
     if not isinstance(packet.get("sources"), list) or not 1 <= len(packet["sources"]) <= MAX_OBJECTS:
         raise AdmissionError("INVALID_PACKET_SOURCE_COUNT")
     if not isinstance(packet.get("packet_sha256"), str) or not SHA256_RE.fullmatch(packet["packet_sha256"]):
@@ -118,6 +136,12 @@ def validate_packet(packet: dict) -> list[dict]:
     for item in packet["sources"]:
         if not isinstance(item, dict):
             raise AdmissionError("INVALID_PACKET_OBJECT")
+        expected_source_fields = {
+            "id", "path", "sha256", "git_blob_sha", "bytes", "content_base64",
+            "visibility", "epistemic", "instruction_authority", "license_grant"
+        }
+        if set(item) != expected_source_fields:
+            raise AdmissionError("UNKNOWN_SOURCE_FIELDS_OR_DIRECTIVE_INJECTION")
         id_ = item.get("id")
         if not isinstance(id_, str) or not ID_RE.fullmatch(id_):
             raise AdmissionError("INVALID_PACKET_OBJECT_ID")
