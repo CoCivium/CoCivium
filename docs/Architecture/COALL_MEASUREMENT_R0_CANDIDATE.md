@@ -91,6 +91,27 @@ R0 exact affine transform: `anchor = source_value * source_scale + source_offset
 `dest_value = (anchor - dest_offset) / dest_scale`.
 This is a narrow scalar registry, not universal unit calculus.
 
+### Temperature points versus intervals
+
+An absolute thermodynamic-temperature point and a temperature difference
+can share the same physical dimension but have **different quantity kinds**.
+`0 Cel` as a point converts to `273.15 K`. A difference of `1 delta_Cel`
+converts to `1 delta_K`, **not** `274.15 K`.
+R0.1.2 registers `delta_K` and `delta_Cel` as zero-offset
+`temperature_difference` units. Neither may silently convert to absolute
+`Cel`/`K`. A quantity kind is not inferred from a unit's printed symbol.
+
+### Observed numeric value versus prediction or null
+
+`MEASURED` is permitted only with an exact numeric string under the
+R0 evaluator; `OBSERVED_ZERO` is a separate zero-specific state.
+`PREDICTED` is **not accepted** by this simple value validator because
+a prediction needs its own model version, target time, probability/interval
+and calibration. A numeric validation pass by itself does **not** authenticate
+the source, measurement method, uncertainty, clock or independent receiver.
+The private CoNeedleEvo challenger separately tests time, phase, metric
+version, population and denominator comparisons.
+
 ## 5. Measurement families worth agreeing upon
 
 * Physical: time, distance, temperature, mass, energy, power, information,
@@ -137,12 +158,28 @@ runner, no claim that other provider sessions read the candidate automatically.
 
 ## 7. R0 proof and gaps
 
-The corrected `registry_r0_1.json` declares 19 units/semantic variants and
-7 operating metric families. The Python standard-library verifier tests
-9 exact conversions, 5 invalid conversion rejections, 6 valid null states
-and 4 null misrepresentation rejections: 24/24 PASS_FOR_SCOPE on X2
-2026-11-07. The preceding `registry_r0.json` failed a referential-integrity
-test due to two missing metric unit IDs and was preserved as prior evidence.
+**Historical R0.1.1 checkpoint:** the registry contained 19 unit/semantic
+variants and 7 operating metric families. Its Python verifier passed 24/24
+scoped checks on X2 on 2026-11-07, with exact source SHA-256
+`30d8e27168bf9f9b3ccefa1fda267d872521127fb09c54f8458db0be0ad2b744`.
+The preceding `registry_r0.json` had failed two unbound metric-unit references
+and was preserved rather than silently overwritten.
+
+**R0.1.2 scoped challenger integration (new branch source):** 21 registered
+unit/semantic variants, 7 operating metric families and 35 deterministic
+verification assertions: 11 exact conversions, 7 invalid conversions
+rejected, 6 valid null states, 3 exact measured-value examples and 8
+invalid null/value representations rejected. The existing 24-case X2
+result does **not** attest this changed registry. Separate CI is introduced
+on the *draft PR branch*; treat its 35-case outcome as `PENDING` until an
+exact-head CI receipt is independently checked.
+
+**No false consensus:** The private CoNeedleEvo 28-test candidate in
+[CoSteward draft PR #265](https://github.com/CoCivium/CoSteward/pull/265)
+is retained as a time/metric-version/freshness *challenger*, **not** a
+second elected registry or an independent receiver ACK. The user requested
+cross-session fan-out/fan-in, but no system-wide delivery, voting or
+multi-provider adoption is established.
 
 Not implemented: uncertainty propagation, complex quantities, dimensional
 multiplication/inversion engine, SI traceability chain, calibration registry,
