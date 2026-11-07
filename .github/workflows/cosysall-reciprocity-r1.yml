@@ -6,6 +6,12 @@ on:
       - 'ai/comap-source-projection-r0.json'
       - 'schemas/coevo-delta-v0.1.schema.json'
       - '.github/workflows/cosysall-reciprocity-r1.yml'
+  pull_request:
+    paths:
+      - 'tools/cosysall_reciprocity_r0/**'
+      - 'ai/comap-source-projection-r0.json'
+      - 'schemas/coevo-delta-v0.1.schema.json'
+      - '.github/workflows/cosysall-reciprocity-r1.yml'
   workflow_dispatch:
 permissions:
   contents: read
