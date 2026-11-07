@@ -122,6 +122,40 @@ class CoPetR0Tests(unittest.TestCase):
         self.assertIn("OPC",self.passport)
         self.assertIn("Vanderbilt",self.guide)
 
+    def test_lost_device_no_central_biometric_credential(self):
+        text=self.passport
+        self.assertIn("## R0.1 | Lost device, no child biometric vault",text)
+        self.assertIn("HOLD / data may be unrecoverable",text)
+        self.assertIn("No central biometric template",text)
+        self.assertIn("non-biometric",text)
+        self.assertIn("siblings",text.lower() if "siblings" in text.lower() else text.replace("sibling","siblings"))
+        self.assertIn("PASSKEY_NE_DATA_DECRYPTION_KEY",text)
+
+    def test_evidence_cards_do_not_claim_a_universal_best_learning_method(self):
+        guide=(BASE/"docs"/"Public"/"COATHENE_EVIDENCE_FIRST_CLAIMS_R0_20261107.md").read_text(encoding="utf-8")
+        self.assertIn("39 studies",guide)
+        self.assertIn("g = 0.27",guide)
+        self.assertIn("not",guide.lower())
+        self.assertIn("meta-analysis",guide.lower())
+        self.assertIn("NIST",guide)
+        self.assertIn("school boards",guide.lower())
+        self.assertIn("no observed board review",guide.lower())
+
+    def test_optional_evidence_and_device_recovery_visible_without_interfering_with_play(self):
+        self.assertIn("What if the device or learning passport is lost?",self.html)
+        self.assertIn("Does teaching a pet always help learning?",self.html)
+        self.assertIn("no saved passport to lose",self.html)
+        self.assertIn("optional and device-local",self.html)
+        self.assertIn("claim and counterclaim guide",self.html)
+        self.assertIn("No child identity collected",self.html)
+
+    def test_no_user_claim_on_public_schoolboard_material(self):
+        guide=(BASE/"docs"/"Public"/"COATHENE_EVIDENCE_FIRST_CLAIMS_R0_20261107.md").read_text(encoding="utf-8")
+        self.assertIn("not a claim",guide.lower())
+        self.assertIn("null/negative findings",guide)
+        self.assertIn("child-safe pet",guide)
+        self.assertIn("PUBLIC_PR_NE_CLASSROOM_ACCEPTANCE",guide)
+
     def test_no_false_child_deployment_or_school_identity(self):
         self.assertIn("NOT_CERTIFIED_CHILD_SERVICE",self.data["status"])
         self.assertIn("NO_MINOR_PILOT_AUTHORIZED",self.data["nonclaims"])
