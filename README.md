@@ -14,6 +14,8 @@
 
 **CoVector+ R0**: [Compare nine global exemplars and six falsifiable discovery hypotheses](docs/Architecture/COVECTOR_EXEMPLAR_GAP_RESEARCH_R0.md). Source-bound research candidate, not a proven technical invention or deployed CoAll integration.
 
+**AI, IA and agent onboarding (read-only):** [CoAll AI Adoption Bootstrap R0](ai/adoption/README.md) supplies seven pinned public source pointers, a machine-readable manifest, and adversarial safety tests for voluntary retrieval and evaluation. It does **not** authorize model training, grant agent permissions, prove external uptake or deploy MCP/A2A endpoints.
+
 ## Choose your CoCivium doorway
 
 CoCivium is an open research project exploring how people and AI tools can work together, while keeping consent and evidence visible.  **You do not need to understand the terminology to begin.**
