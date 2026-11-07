@@ -64,6 +64,9 @@ class CoLensSourceTests(unittest.TestCase):
         self.assertEqual(len(re.findall(r'<svg id="lens-art-',self.html)),4)
         self.assertEqual(len(re.findall(r'<svg id="lens-art-[^"]+" viewBox="0 0 320 230" role="img" aria-label=',self.html)),4)
 
+    def test_svg_visibility_uses_reflected_attribute(self):
+        self.assertIn('toggleAttribute("hidden",scene.id!==lens.scene)',self.html)
+
     def test_explicit_mode_controls_not_deceptive_automatic_age_detection(self):
         h=self.html
         for mode in ("together","play","explore","research"):
