@@ -1,4 +1,4 @@
-name: CoSysAll CV01 CV05 - source-pinned reciprocity R1
+name: CoSysAll CV01 CV05 - source-pinned reciprocity R1/R2
 on:
   push:
     paths:
@@ -45,3 +45,40 @@ jobs:
           retention-days: 7
       - name: Preserve effect boundary
         run: echo "Source-pinned local CI code proof only. Not X2, independent reader, privacy rights or production deployment."
+  receiver-readproof:
+    needs: source-replay
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout independently in fresh hosted job
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Use Python 3.11 in fresh job
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Retrieve exact producer receipt from prior job
+        uses: actions/download-artifact@v4
+        with:
+          name: cosysall-r1-full-source-readproof-${{ github.run_id }}
+          path: incoming-producer
+      - name: Reconstruct from exact Git source and reject mismatches
+        run: |
+          python tools/cosysall_reciprocity_r0/cross_runner_receive_r2.py \
+            --producer incoming-producer/cosysall-r1-ci-full-graph-readproof.json \
+            --graph ai/comap-source-projection-r0.json \
+            --schema schemas/coevo-delta-v0.1.schema.json \
+            --receipt cosysall-r2-fresh-runner-receipt.json \
+            --run-id ${{ github.run_id }}
+      - name: Retain bounded receiver-origin receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: cosysall-r2-receiver-readproof-${{ github.run_id }}
+          path: cosysall-r2-fresh-runner-receipt.json
+          if-no-files-found: error
+          retention-days: 7
+      - name: Declare bounded proof scope
+        run: echo "Same-provider separate runner only. No cross-provider failure survival, independent model, human comprehension, X2 or CoEx."
