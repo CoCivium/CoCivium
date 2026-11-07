@@ -8,6 +8,8 @@
 
 **Civ2+ hosting architecture:** [Federated Cell Hosting R0](docs/Architecture/CIV2_FEDERATED_CELL_HOSTING_R0.md) proposes independently survivable local/regional/cloud service cells, zero-trust consent, source-bound recovery and a no-GitHub cold-restore acceptance test. Public architecture candidate, not a deployed network.
 
+**Explore CoMap+ Source Weave R0**: [Open the interactive source-linked meaning map](examples/comap/README.md), showing registered CoAll domains, repositories, highlights and evidence links. Propose candidate relations locally without changing canon or authority. Historical snapshot, not live federation.
+
 ## Choose your CoCivium doorway
 
 CoCivium is an open research project exploring how people and AI tools can work together, while keeping consent and evidence visible.  **You do not need to understand the terminology to begin.**
