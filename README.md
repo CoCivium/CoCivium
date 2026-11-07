@@ -6,6 +6,8 @@
 
 **Try CoDemoWow+ Truth Gate R0**: [Run the offline source-bound claim checker](examples/codemow/README.md). Verify the CI evidence boundary, deliberately reject an unsupported X2 claim, and export a local receipt. This is a working browser example, **not X2 runtime proof**.
 
+**Civ2+ hosting architecture:** [Federated Cell Hosting R0](docs/Architecture/CIV2_FEDERATED_CELL_HOSTING_R0.md) proposes independently survivable local/regional/cloud service cells, zero-trust consent, source-bound recovery and a no-GitHub cold-restore acceptance test. Public architecture candidate, not a deployed network.
+
 ## Choose your CoCivium doorway
 
 CoCivium is an open research project exploring how people and AI tools can work together, while keeping consent and evidence visible.  **You do not need to understand the terminology to begin.**
