@@ -4,6 +4,8 @@
 
 **Bio–Synth Gap Braid v5.4**: [Explore the 11 human–AI cooperation gaps and the three-strand I+ continuity design](docs/Architecture/BIO_SYNTH_GAP_BRAID_V5_4.md). Public design candidate, not an operating-system or consciousness claim.
 
+**Try CoDemoWow+ Truth Gate R0**: [Run the offline source-bound claim checker](examples/codemow/README.md). Verify the CI evidence boundary, deliberately reject an unsupported X2 claim, and export a local receipt. This is a working browser example, **not X2 runtime proof**.
+
 ## Choose your CoCivium doorway
 
 CoCivium is an open research project exploring how people and AI tools can work together, while keeping consent and evidence visible.  **You do not need to understand the terminology to begin.**
