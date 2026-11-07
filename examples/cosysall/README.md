@@ -22,6 +22,8 @@
 - **Browser tests:** Desktop 1440×900 and mobile 390×844 both passed initial 56/61 read, depth transition and evidence boundary, interstitial lens, CoTheoryAll selection, local two-hop proposal, machine-only zero draw, accessible list, return to canvas and no horizontal overflow. **Zero JS page errors**, no outgoing network requests. QA tested supplied HTML via browser content injection because container browsers blocked file and localhost navigation; this does not establish remote-host behavior.
 - **Limits:** No tiled IIIF imagery or spatial 3D source, no real background work, hardware GPU benchmark, independent external reader acceptance, model/provider interchange, cross-provider cold restore, schema adoption, CoEx, X2 or CoOrb runtime effect.
 
+**CoVector+ R0**: [Compare nine global exemplars and six falsifiable discovery hypotheses](../../docs/Architecture/COVECTOR_EXEMPLAR_GAP_RESEARCH_R0.md). Source-bound research candidate, not a proven technical invention or deployed CoAll integration.
+
 ## Architecture and bounded next experiment
 
 See [Semantic-Zoom Payload Substrate R0](../../docs/Architecture/COSYSALL_SEMANTIC_ZOOM_SUBSTRATE_R0.md) for typed tile/packet envelopes, semantic/spatial/time/media axes, cost/consent-aware render and no-render policy, CoInBet relations, micro-evolution/production separation, and standards-based media transport (IIIF, OGC 3D Tiles, MapLibre when genuinely geospatial).
