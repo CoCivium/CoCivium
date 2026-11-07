@@ -1,0 +1,262 @@
+{
+  "schema": "CoAll.CoVectorExemplarDeltas.R0",
+  "state": "SOURCE_GROUNDED_COMPARISON_NOT_NOVELTY_OR_DEPLOYMENT",
+  "snapshot_date": "2026-11-06",
+  "co_vector_term_state": "CANDIDATE_ALIAS_UNVERIFIED_IN_COLEX",
+  "comparative_method": "Only documented capabilities; uncovered intersections are research hypotheses, NOT product absence or patent novelty claims",
+  "invariants": [
+    "KNOWN_CAPABILITY_NE_COMPLETE_SYSTEM",
+    "UNVERIFIED_GAP_NE_PROVEN_ABSENCE",
+    "COMPOSITION_NE_NOVEL_DISCOVERY",
+    "READER_OBSERVATION_NE_POLICY_AUTHORITY",
+    "UNLICENSED_FETCH_NE_EXPERIMENT",
+    "PRIOR_ART_SEARCH_REQUIRED_BEFORE_NOVELTY_CLAIM"
+  ],
+  "source_graph": "ai/comap-source-projection-r0.json",
+  "reciprocity_adapter": "tools/cosysall_reciprocity_r0/",
+  "exemplars": [
+    {
+      "id": "google-earth",
+      "name": "Google Earth/Maps Tiles",
+      "sources": [
+        "https://earth.google.com/studio/docs/en_gb/best-practices/",
+        "https://developers.google.com/maps/documentation/tile/overview"
+      ],
+      "documented_capabilities": [
+        "globe-scale image tiles",
+        "selective detail by camera zoom",
+        "3D tiles"
+      ],
+      "scope_boundary": "Does not by itself establish CoAll consent, epistemic status or project authority; no absence claim about entire product."
+    },
+    {
+      "id": "nasa-worldview",
+      "name": "NASA Worldview",
+      "sources": [
+        "https://science.nasa.gov/mission/landsat/data-overview/",
+        "https://worldview.earthdata.nasa.gov/"
+      ],
+      "documented_capabilities": [
+        "global imagery exploration",
+        "time-oriented layer browsing",
+        "download and compare"
+      ],
+      "scope_boundary": "Its purpose is Earth-observation discovery; no unverified claim about broader semantic or policy features."
+    },
+    {
+      "id": "iiif",
+      "name": "IIIF",
+      "sources": [
+        "https://iiif.io/api/"
+      ],
+      "documented_capabilities": [
+        "image region/size tile access",
+        "compound digital object presentation",
+        "content search and change discovery"
+      ],
+      "scope_boundary": "Formal media APIs are not a complete CoAll authority model."
+    },
+    {
+      "id": "ogc-3dtiles",
+      "name": "OGC 3D Tiles",
+      "sources": [
+        "https://www.ogc.org/standards/3dtiles/"
+      ],
+      "documented_capabilities": [
+        "hierarchical spatial 3D streaming",
+        "massive geospatial data tiling"
+      ],
+      "scope_boundary": "A spatial format cannot by itself establish truth of semantic relations."
+    },
+    {
+      "id": "stac",
+      "name": "STAC",
+      "sources": [
+        "https://stacspec.org/en/about/stac-spec/"
+      ],
+      "documented_capabilities": [
+        "linked spatial-temporal asset catalogues",
+        "static and dynamic catalogues",
+        "portable item metadata"
+      ],
+      "scope_boundary": "Intended for space/time assets; do not misapply the format to unrelated abstract terms."
+    },
+    {
+      "id": "wikidata",
+      "name": "Wikidata/Wikibase",
+      "sources": [
+        "https://www.wikidata.org/wiki/Help:Statements/en",
+        "https://www.mediawiki.org/wiki/Wikibase/FAQ/en"
+      ],
+      "documented_capabilities": [
+        "linked multilingual statements",
+        "qualifiers and cited references",
+        "alternative disputed statements"
+      ],
+      "scope_boundary": "No claim that linked assertions imply execution authority."
+    },
+    {
+      "id": "w3c-prov",
+      "name": "W3C PROV",
+      "sources": [
+        "https://www.w3.org/ns/prov/"
+      ],
+      "documented_capabilities": [
+        "entity attribution",
+        "activity and derivation relations"
+      ],
+      "scope_boundary": "Provenance expresses claimed lineage, not automatic correctness."
+    },
+    {
+      "id": "opentelemetry",
+      "name": "OpenTelemetry",
+      "sources": [
+        "https://opentelemetry.io/docs/specs/semconv/general/trace/"
+      ],
+      "documented_capabilities": [
+        "cross-service trace semantics",
+        "cross-language operational correlation"
+      ],
+      "scope_boundary": "Operational trace data does not by itself certify reader comprehension or permissions."
+    },
+    {
+      "id": "aws-cells",
+      "name": "AWS bulkhead/cell pattern",
+      "sources": [
+        "https://docs.aws.amazon.com/wellarchitected/2024-06-27/framework/rel_fault_isolation_use_bulkhead.html"
+      ],
+      "documented_capabilities": [
+        "bounded failure domains",
+        "isolated workload replicas"
+      ],
+      "scope_boundary": "Using multiple copies does not alone prove independent hosting or lawful federation."
+    }
+  ],
+  "candidates": [
+    {
+      "id": "CV01",
+      "name": "Cross-surface meaning-preserving rendering",
+      "donors": [
+        "wikidata",
+        "w3c-prov",
+        "iiif",
+        "opentelemetry"
+      ],
+      "hypothesis": "The same source-bound ID and authority envelope can survive visual, accessible and machine-only projections without semantic drift.",
+      "local_evidence": "CoSysAll R0 offline 56-node/61-edge snapshot; local reciprocity bridge 17 fixture tests",
+      "critical_counterexample": "An accessible/no-render projection loses qualification and presents a candidate as accepted fact.",
+      "first_test": "Project one source and two edges into visual, accessible and zero-draw JSON, compare identity/claims/consent with independent checks.",
+      "measure": [
+        "identity_match",
+        "missing_provenance",
+        "authority_escalations",
+        "reader_task_completion",
+        "cpu_ms"
+      ],
+      "status": "CANDIDATE_UNPROVEN_CROSS_SYSTEM"
+    },
+    {
+      "id": "CV02",
+      "name": "Rights-aware interstitial multiscale retrieval",
+      "donors": [
+        "iiif",
+        "ogc-3dtiles",
+        "stac",
+        "wikidata"
+      ],
+      "hypothesis": "A semantic relation and media tile can be revealed selectively at zoom depth without private/offscreen fetch or unsupported inverse inference.",
+      "local_evidence": "CoSysAll simulated semantic levels and no-render browser check; no actual IIIF/3D tile requests yet",
+      "critical_counterexample": "Unpermitted source is fetched merely to decide not to draw it.",
+      "first_test": "With one rights-cleared IIIF image and registered relation, compare tile fetch counts and data leakage with and without privacy-aware culling.",
+      "measure": [
+        "authorized_bytes",
+        "unauthorized_requests",
+        "latency_ms",
+        "depth_information_gain",
+        "accessible_equivalence"
+      ],
+      "status": "CANDIDATE_UNPROVEN_CROSS_SYSTEM"
+    },
+    {
+      "id": "CV03",
+      "name": "Contradiction as a research object",
+      "donors": [
+        "wikidata",
+        "w3c-prov",
+        "opentelemetry"
+      ],
+      "hypothesis": "Representing unknown, inverse, contested or time-expired relations as independent challenge objects improves calibration and identifies valid follow-up experiments.",
+      "local_evidence": "CoMap and CoSysAll simulated inverse/unknown lenses; bridge rejects candidate self-promotion",
+      "critical_counterexample": "Graph proximity or inverse edge becomes claimed causal proof.",
+      "first_test": "Introduce one false reverse link and one expiry; compare independent reviewers' fact/unknown classification versus flat graph.",
+      "measure": [
+        "false_promotion_count",
+        "calibration",
+        "independent_agreement",
+        "reviewer_minutes"
+      ],
+      "status": "CANDIDATE_UNPROVEN_CROSS_SYSTEM"
+    },
+    {
+      "id": "CV04",
+      "name": "Meaning survives original host loss",
+      "donors": [
+        "stac",
+        "aws-cells",
+        "w3c-prov"
+      ],
+      "hypothesis": "A separately operated cell can cold-restore one rich experience with exact source/rights/currentness, even when original host and coordinator are unavailable.",
+      "local_evidence": "GitHub plus private Library copies exist; independent host cold restore not yet passed",
+      "critical_counterexample": "Copies share provider, keys, DNS or currentness service and cannot operate during outage.",
+      "first_test": "Restore one signed public experience from independent custody to unrelated host while primary origin and coordinator are deliberately unavailable.",
+      "measure": [
+        "actual_rto",
+        "actual_rpo",
+        "receipt_match",
+        "independent_readback",
+        "human_relay_steps"
+      ],
+      "status": "CANDIDATE_UNPROVEN_CROSS_SYSTEM"
+    },
+    {
+      "id": "CV05",
+      "name": "Experience feedback without auto-authority",
+      "donors": [
+        "opentelemetry",
+        "w3c-prov",
+        "wikidata"
+      ],
+      "hypothesis": "Measured comprehension/UX failures can become bounded CoEvoDelta HYPOTHESIS/PROPOSE packets without granting deployment, policy or personal authority.",
+      "local_evidence": "17 local reciprocity fixture tests and CoEvoDelta shape mapping; no external receiver",
+      "critical_counterexample": "A viewer's self-reported metric can rewrite source truth or permissions.",
+      "first_test": "Show a source-linked wrong claim; collect authorized anonymous usability feedback; generate candidate, reject forged permission, independently review.",
+      "measure": [
+        "valid_proposals",
+        "illicit_promotion_count",
+        "review_time",
+        "tested_improvement"
+      ],
+      "status": "CANDIDATE_UNPROVEN_CROSS_SYSTEM"
+    },
+    {
+      "id": "CV06",
+      "name": "Evolve evaluations without grading oneself",
+      "donors": [
+        "w3c-prov",
+        "aws-cells",
+        "opentelemetry"
+      ],
+      "hypothesis": "An evolving evaluator can be updated only after parallel scoring against an unchanged witness and an explicit actor/consent boundary.",
+      "local_evidence": "CoAll architecture D1 proposed, not a demonstrated evolving metric service",
+      "critical_counterexample": "Changing the evaluation metric hides a regression and labels the new version successful.",
+      "first_test": "Run old/new metric side-by-side on a negative-control fixture and retain external observer's frozen result.",
+      "measure": [
+        "regression_detection_rate",
+        "promotion_under_conflict",
+        "observer_independence",
+        "maintenance_cost"
+      ],
+      "status": "CANDIDATE_UNPROVEN_CROSS_SYSTEM"
+    }
+  ]
+}
