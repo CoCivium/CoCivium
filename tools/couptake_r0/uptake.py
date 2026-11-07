@@ -42,8 +42,9 @@ def safe_source_path(root: Path, name: str) -> Path:
     """Reject path traversal, absolute, symlink escapes and non-public directories."""
     if not isinstance(name, str) or not name or "\\" in name:
         raise AdmissionError("INVALID_PATH")
+    raw_parts = name.split("/")
     pure = PurePosixPath(name)
-    if pure.is_absolute() or "." in pure.parts or ".." in pure.parts:
+    if pure.is_absolute() or any(part in ("", ".", "..") for part in raw_parts):
         raise AdmissionError("INVALID_PATH")
     if pure.parts[0] not in ("ai", "docs") or len(pure.parts) < 2:
         raise AdmissionError("PATH_OUTSIDE_PUBLIC_ONRAMP")
@@ -66,13 +67,13 @@ def load_manifest(path: Path) -> dict:
         raise AdmissionError("INVALID_MANIFEST_JSON") from exc
     if not isinstance(obj, dict) or obj.get("schema") != SCHEMA:
         raise AdmissionError("UNRECOGNIZED_MANIFEST_SCHEMA")
-    if obj.get("reference_test", {}).get("mutation_authority") != "NONE":
+    if not isinstance(obj.get("reference_test"), dict) or obj["reference_test"].get("mutation_authority") != "NONE":
         raise AdmissionError("MANIFEST_CLAIMS_MUTATION_AUTHORITY")
     if not isinstance(obj.get("sources"), list) or not obj["sources"]:
         raise AdmissionError("EMPTY_SOURCE_SET")
     ids, paths = set(), set()
     for item in obj["sources"]:
-        if not isinstance(item, dict) or not isinstance(item.get("id"), str):
+        if not isinstance(item, dict) or not isinstance(item.get("id"), str) or not re.fullmatch(r"[a-z][a-z0-9_]*", item["id"]):
             raise AdmissionError("INVALID_SOURCE_ENTRY")
         if any(key in item for key in BLOCKED_RECORD_KEYS):
             raise AdmissionError("DIRECTIVE_OR_SECRET_FIELD")
@@ -176,7 +177,7 @@ def main(argv: list[str] | None = None) -> int:
             "reason":str(exc),"authority_granted":"NONE"},sort_keys=True))
         return 2
     print(json.dumps(result, sort_keys=True))
-    return 0 if result["held"] == 0 else 2
+    return 0 if result["held"] == 0 and args.intent != "train_candidate" else 2
 
 
 if __name__ == "__main__":
