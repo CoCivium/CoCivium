@@ -66,6 +66,20 @@ The **four middle stages**, from authenticating a policy update through real rec
 
 A real operator will need signed releases / transparency or qualified trustworthy governance, replay-resistant policy currentness, revocation distribution with independent acknowledgement and appeals, bounded on-device caches, privacy/copyright handling, and organizational rights to use or delete material. On shared/private data, encrypted transport and storage are separate hard requirements; this public-only prototype has no encryption.
 
+## R0.2 | A clean-room receiving process, not a fabricated independent operator
+
+The [standalone verification implementation](../../tools/couptake_r0/receiver_standalone.py) deliberately imports **no** CoCivium modules, third-party libraries, network stacks or model APIs. The [isolated subprocess tests](../../tests/test_couptake_cold_receiver_r02.py) copy **only** that single Python script, a portable packet and a separately supplied receiver test pin into a temporary folder outside the original repository. They launch a fresh `python -I -S` process with an invalid `PYTHONPATH`. This process can validate the selected public source bytes with SHA-256 and the Git blob digest without a checkout, and rejects a forged claim, stale source, known revoked digest or inadequate policy generation.
+
+**Critical limits that the tests intentionally expose:**
+
+- This tests **local portability and separation from repository Python imports**. A second process in GitHub Actions is **not** a separately controlled company, off-GitHub storage provider, autonomous AI receiver, consent, model-internal learning or public release.
+- The supplied receiver policy is marked `TEST_PIN_ONLY_NO_SIGNED_AUTHORITY`. Anyone who can replace **both** the unsigned packet and its synthetic pin can produce a matching local proof. The tests deliberately show that weakness. Production needs independently authenticated publisher identity, key custody, transparent releases, replay resistance and audited authorization.
+- With a trusted current version-two pin, a version-one packet is rejected. With a stale version-one pin, the exact old packet may still pass. Nothing guarantees correction delivery to a disconnected agent.
+- The result says `LOCAL_PIN_MATCH_ONLY`, not `ADOPTED`, `PERMANENTLY_LEARNED`, `ISSUER_SIGNATURE_VALIDATED`, `INDEPENDENT_COLD_RESTORE` or `COEX`. It prints no source contents, writes no learning memory, and does not execute source text as instructions.
+- `python -I -S` limits interpreter import paths; it is **not** a sandbox or adversarial network isolation. Production hostile-source validation requires qualified isolation and deployment security beyond this test.
+
+This is a higher-value result than another synthetic "AI persona read the document" demonstration because it removes a concrete coupling to the original software tree while retaining explicit distrust of unsigned authority. The next proof still needs a real separately operated receiver.
+
 ## CI proof versus outside reality
 
 [Portable unit tests](../../tests/test_couptake_portable_r01.py) exercise an actual local four-source packet and a fully synthetic two-edition correction; they check changed bytes, recomputed hostile hashes, fake ACK and authority, injected schema fields, path changes, old-policy replay, invalid base64, no clobber, and refusal of accidental implied model training.
