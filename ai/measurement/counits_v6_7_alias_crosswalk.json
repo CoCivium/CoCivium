@@ -1,0 +1,200 @@
+{
+  "schema": "CoAll.CoUnitsAliasProposalCrosswalk.R0",
+  "proposal_label": "CoUnits v6.7 (user-proposed; not a promoted registry version)",
+  "state": "SHADOW_PROPOSALS_NOT_CANON",
+  "primary_registry": {
+    "repository": "CoCivium/CoCivium",
+    "pr": 365,
+    "registry_version": "0.1.2",
+    "source_ref": "ai/measurement/registry_r0_1.json"
+  },
+  "supplemental_donors": [
+    {
+      "repository": "CoCivium/CoCivium",
+      "pr": 366,
+      "role": "CHALLENGER_TEST_DONOR"
+    },
+    {
+      "repository": "CoCivium/CoSteward",
+      "pr": 265,
+      "role": "PRIVATE_METRIC_SCOPE_TEST_DONOR"
+    }
+  ],
+  "source": "User-provided CoUnits v6.7 paste and screenshot, 2026-11-07. Screen images and personal chats NOT copied to repository.",
+  "provenance": "ONE_USER_SUBMISSION__NO_INDEPENDENT_SESSION_ACK",
+  "collection_policy": {
+    "per_session_per_measure_per_day_max": 1,
+    "session_identity_required": true,
+    "independent_definition_must_match": true,
+    "duplicates_suppressed": true,
+    "unreachable_chat_sessions": "NOT_ENUMERATED_OR_CONTACTED"
+  },
+  "admission_policy": {
+    "min_independent_receipts": 2,
+    "source_refs_required": true,
+    "method_and_scope_required": true,
+    "authorization_required": true,
+    "unit_conversion_requires_same_quantity_kind": true,
+    "conflict_preserved": true,
+    "all_autonomous_receivers": "NOT_PROVEN",
+    "no_canon_or_runtime_promotion": true
+  },
+  "fan_in": {
+    "existing_automation": "CoMeasure R0 Fan-In",
+    "next_utc": "2026-11-10T20:12:13Z",
+    "status": "ENABLED_NOT_YET_RUN",
+    "additional_scheduler_created": false
+  },
+  "proposals": [
+    {
+      "id": "CoNull",
+      "proposed_phrase": "0; no payload; no wallpaper; no OS background",
+      "object_kind": "EPISTEMIC_OR_PRESENTATION_STATE_NOT_UNIT",
+      "primary_use": "Represent typed unknown/absent/withheld/not-applicable states; optionally an intentionally empty visual layer",
+      "arrived_at": "User symbolic proposal, no independent metrological proof",
+      "converts_to_CoTick": "N",
+      "converts_to_CoNull": "N",
+      "conversion_note": "Not numerical zero; same label is not a unit conversion",
+      "existing_relation": "CoNull+ ontology; registry MISSING/UNKNOWN/NOT_APPLICABLE are distinct from OBSERVED_ZERO",
+      "proof_state": "PROPOSED_NOT_VERIFIED"
+    },
+    {
+      "id": "CoTick",
+      "proposed_phrase": "1 time, 1 motion, oldest first",
+      "object_kind": "EVENT_SEQUENCE_OR_CLOCK_SAMPLE_CANDIDATE",
+      "primary_use": "Order events or tag a measured time sample",
+      "arrived_at": "User symbolic proposal; tick duration and clock source undefined",
+      "converts_to_CoTick": "Y",
+      "converts_to_CoNull": "N",
+      "conversion_note": "Identity only. Mapping a tick count to seconds needs a clock/cadence, skew model and provenance; 1 motion is not 1 duration",
+      "existing_relation": "CoTime observed_at; SI s/ms/min when calibrated",
+      "proof_state": "PROPOSED_NOT_VERIFIED"
+    },
+    {
+      "id": "CoSeed",
+      "proposed_phrase": "1 held truth, survives >24h, handoff 1x",
+      "object_kind": "VERSIONED_DURABLE_WORK_OBJECT_NOT_UNIT",
+      "primary_use": "Content-addressed persistence, successor handoff and recovery",
+      "arrived_at": "User continuity target, not a completed >24h failure-domain restore",
+      "converts_to_CoTick": "N",
+      "converts_to_CoNull": "N",
+      "conversion_note": "Seed age and recovery latency can be separately measured in s; the Seed cannot convert into a duration",
+      "existing_relation": "CoSessionDrain, CoMx readproof, retention/recovery test",
+      "proof_state": "HELD_24H_COLD_RECOVERY_UNPROVEN"
+    },
+    {
+      "id": "CoPixel",
+      "proposed_phrase": "1 delta; humans letters, synths pixel delta",
+      "object_kind": "IMAGE_SAMPLE_OR_CHANGE_COUNT_CANDIDATE",
+      "primary_use": "Measure authorised visual change or dirty regions without resending wallpaper",
+      "arrived_at": "User CoEyes motion proposal; exact pixel/codec/ROI semantics not calibrated",
+      "converts_to_CoTick": "N",
+      "converts_to_CoNull": "N",
+      "conversion_note": "A pixel delta may have a timestamp but is not a time unit. Image delta and work effect differ",
+      "existing_relation": "CoEyes changefeed; bytes/px/delta counts need distinct definitions",
+      "proof_state": "PROPOSED_NOT_VERIFIED"
+    },
+    {
+      "id": "CoBreath",
+      "proposed_phrase": "1 bio tick, Bio dial 0-10 + Breath x/10",
+      "object_kind": "BIO_EVENT_OR_ORDINAL_STATE_NOT_SI_UNIT",
+      "primary_use": "Consented wellness or respiration observation, quiet UX and human rhythm",
+      "arrived_at": "User metaphoric/physiological proposal, no calibrated sampling or consent proof",
+      "converts_to_CoTick": "N",
+      "converts_to_CoNull": "N",
+      "conversion_note": "Breath duration is separately measurable with a clock; an ordinal 0-10 dial is not a ratio scale by default",
+      "existing_relation": "Biometric consent and method-specific event counts, not autonomously monitored",
+      "proof_state": "HELD_CONSENT_CALIBRATION_UNKNOWN"
+    },
+    {
+      "id": "CoGauge",
+      "proposed_phrase": "1 gauge, Synth proven, Bio waiting",
+      "object_kind": "STATUS_PROJECTION_NOT_UNIT",
+      "primary_use": "Show independent human/system measurements and evidence currentness",
+      "arrived_at": "User display rule, not evidence that both gauges are accurate",
+      "converts_to_CoTick": "N",
+      "converts_to_CoNull": "N",
+      "conversion_note": "Gauge values have their own unit; a gauge itself cannot convert to elapsed time",
+      "existing_relation": "CoSpeedo/CoSurface value and freshness; never infer human state",
+      "proof_state": "HELD_RECEIVER_BENEFIT_UNPROVEN"
+    },
+    {
+      "id": "CoThumb",
+      "proposed_phrase": "1 thumb, Macro v4",
+      "object_kind": "USER_INTENT_OR_ACTION_EVENT",
+      "primary_use": "One explicit, authorized action and human-intervention measurement",
+      "arrived_at": "User action-rail preference; mapping to a qualified event count is scope-dependent",
+      "converts_to_CoTick": "N",
+      "converts_to_CoNull": "N",
+      "conversion_note": "CoThumb may increment a declared event_count; action does not imply duration or authorization",
+      "existing_relation": "CoUX.human_touch_count, existing CoGlyphRail",
+      "proof_state": "PROPOSED_NOT_VERIFIED"
+    },
+    {
+      "id": "CoOrb",
+      "proposed_phrase": "1 orb, 1 facet at a time",
+      "object_kind": "USER_INTERFACE_VIEW_NOT_UNIT",
+      "primary_use": "One focal visualization and machine-readable status surface",
+      "arrived_at": "User interaction design preference",
+      "converts_to_CoTick": "N",
+      "converts_to_CoNull": "N",
+      "conversion_note": "Facet changes can be counted/timed separately but a CoOrb is not a unit of time",
+      "existing_relation": "CoOrb/CoDesktop R5; distinct from wallpaper and verified effect",
+      "proof_state": "PROPOSED_NOT_VERIFIED"
+    },
+    {
+      "id": "CoReceipt",
+      "proposed_phrase": "1 line, Time | Gauge | Delta | Action",
+      "object_kind": "SOURCE_AND_RECEIVER_EVIDENCE_RECORD_NOT_UNIT",
+      "primary_use": "Provide an exact, replayable, receiver-verifiable handoff",
+      "arrived_at": "User minimum display format; no independent receiver ACK follows from rendering a line",
+      "converts_to_CoTick": "N",
+      "converts_to_CoNull": "N",
+      "conversion_note": "Receipt count is a discrete event count; creation time/receipt latency are separate measured quantities",
+      "existing_relation": "CoMx receipt, independent pickup hash, CoEx custody gates",
+      "proof_state": "HELD_RECEIVER_ORIGIN_ACK_UNVERIFIED"
+    }
+  ],
+  "conflicts": [
+    {
+      "id": "C01",
+      "kind": "SEMANTIC_TYPE",
+      "rule": "CoNull = numeric zero",
+      "reason": "Missing/withheld/unknown and observed zero are distinct and must not collapse"
+    },
+    {
+      "id": "C02",
+      "kind": "DIMENSION",
+      "rule": "1 CoTick = 1 time = 1 motion",
+      "reason": "A timestamp, elapsed duration, clock step and motion event have different types until a calibrated relation is specified"
+    },
+    {
+      "id": "C03",
+      "kind": "CONVERSION_GATE",
+      "rule": "Every valid quantity must convert to CoTick or it is not canon",
+      "reason": "Incommensurate kinds cannot universally convert; a named relation is not a conversion"
+    },
+    {
+      "id": "C04",
+      "kind": "METAPHOR_VS_MATH",
+      "rule": "Virtual session is an imaginary number with real effect and zero persistence",
+      "reason": "Logical work identity is not the imaginary unit; effects and persistence demand observed receipts, not analogy"
+    }
+  ],
+  "runtime_truth": {
+    "wallpaper": "STATIC_DECORATION_NOT_LIVE_GAUGE",
+    "r5_status_scope": "R5 renderer record on X2 observed at 2026-11-07T20:30:15.8282954Z reports pid 44416, bar_visible=true and appbar_registered=true; independently checked earlier live native HWND, but this claim is timestamp-bounded.",
+    "legacy_receiver": "CoTime v0.4 uses legacy RickBar/CoBar recognition and may say RICKBAR_NONE while R5 is visible; cannot equate the identities",
+    "receiver_ack": "NOT_ESTABLISHED",
+    "port_7073": "NOT_VERIFIED_HERE",
+    "security": "No screenshot or private contact information recorded"
+  },
+  "receipt": {
+    "proposed_count": 9,
+    "independently_latched_count": 0,
+    "conflict_count": 4,
+    "next_fan_in_utc": "2026-11-10T20:12:13Z",
+    "effect": "SOURCE_CANDIDATE_ONLY",
+    "summary": "CoUnits v6.7 PROPOSAL | Latched 0/9 | Conflicts 4 | Next fan-in 2026-11-10T20:12:13Z"
+  }
+}
