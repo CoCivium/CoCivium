@@ -1,0 +1,63 @@
+{
+  "schema": "CoAll.CoTeachBack.LocalFixtureQA.R0",
+  "date_utc": "2026-11-07",
+  "scope": "LOCAL_PUBLIC_VISIBLE_ANSWER_KEY_FIXTURE_ONLY",
+  "source_manifest_git_blob": "e9b834f93455012c703eeb8ba9b6585778ea3464",
+  "questions": 12,
+  "new_negative_control_tests": 27,
+  "prior_manifest_tests": 15,
+  "combined_local_unit_tests_passed": 42,
+  "example_fixture_score": "12/12 KEY_DRIVEN_NOT_EXTERNAL_MODEL",
+  "independent_model_retrieval_ack": "NOT_OBSERVED",
+  "independent_model_test_result": "NOT_OBSERVED",
+  "training_weight_changes": "NOT_VERIFIED",
+  "external_effects": 0,
+  "source_file_hashes": {
+    "score_receiver.py": {
+      "bytes": 7543,
+      "sha256": "dfc8c29aadca81c41a7d0715e28b890a5951760dc67dc8d9d358b3c45159388c",
+      "git_blob_sha1": "623911d171b11598f93b54cb1d8ff1d1d1974fff"
+    },
+    "make_deck.py": {
+      "bytes": 4934,
+      "sha256": "88c11820049366260795a9f3ecb5b49ffed43f0b7c21a211ef4c3ed58f9feafc",
+      "git_blob_sha1": "69a2043f7e923215cb04a132c7ce92c1fcfec2a4"
+    },
+    "receiver-probes-r0.json": {
+      "bytes": 5423,
+      "sha256": "ca38e4008d36c71b3a4ed4655786c5066d3e174330391a38095fa3a9d4cdc04e",
+      "git_blob_sha1": "6631c78195947084a73f83b6c5c0e0b2ffce4d8f"
+    },
+    "reference-key-r0.json": {
+      "bytes": 2555,
+      "sha256": "3879750a05ec47e34aaa7d52a665244a64e92298eb431540c48e512f134477ce",
+      "git_blob_sha1": "3d12ed2489b3a18bc651f519dda70f88a13fac02"
+    },
+    "example-fixture-response-r0.json": {
+      "bytes": 1931,
+      "sha256": "be08f450a30b4426750d9760b0918f88375a853c0c5c095a4c859b2ee1bb5a06",
+      "git_blob_sha1": "fc676d43e75e0177cc729204ce9ba48ac2fca58e"
+    },
+    "test_teachback.py": {
+      "bytes": 5650,
+      "sha256": "c6cb868c91504c3ea6492ce4fcb490a7d26b0b62be5721e87b791edbdd2601a7",
+      "git_blob_sha1": "93101aa80a92b4113599fb6ad5096e0df13ea23e"
+    },
+    "README.md": {
+      "bytes": 5541,
+      "sha256": "f7fc75a05e8b6016cb5a8022018f4e0416024857f2beeec4fc1c6dbe1a3583f6",
+      "git_blob_sha1": "35645f7238d44499dacd73e0c7e4e9b2f21cc41b"
+    },
+    "local-fixture-receipt-r0.json": {
+      "bytes": 2378,
+      "sha256": "c653ff53637338addca070348d0bc24de1d649d5dc3139927a1941a30a409bb0",
+      "git_blob_sha1": "ea7e90e11f8199797c15d4a7c6a36cc28bf5d323"
+    }
+  },
+  "limitations": [
+    "The example contains the answers and cannot be used as a blind model benchmark",
+    "Local tests validate strict transport/choice/citation logic only",
+    "No live MCP/A2A endpoint, model invocation or independent provider agreement",
+    "No training license grant or permanent alignment claim"
+  ]
+}
