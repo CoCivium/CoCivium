@@ -146,6 +146,76 @@ async function copetMobile(browser) {
     await noStorage(page, "copet-mobile");
   } finally { await context.close(); }
 }
+async function colensDesktop(browser) {
+  const { context, page } = await newPage(browser, { width: 1280, height: 900 }, "colens-desktop");
+  try {
+    await load(page, "examples/coathene_copet_r0/index.html");
+    check((await page.locator("body").getAttribute("data-lens")) === "explore", "CoLens defaults to existing Explore, not inferred child age");
+    check(await page.locator("#lens-stage").isHidden(), "picture view not stacked over prior detailed front");
+    check(await page.locator('#lens-mode button[data-lens-mode="together"]').count() === 0, "mode is a choice of buttons, not a hidden selector");
+    await page.locator('[data-lens-mode="together"]').click();
+    check((await page.locator("body").getAttribute("data-lens")) === "together", "adult Together mode selected explicitly");
+    check(await page.locator("#lens-stage").isVisible(), "picture-first experience appears");
+    check(await page.locator("#lens-art-river").isVisible(), "original rain illustration actually rendered");
+    check(await page.locator("#lens-play").isHidden(), "one-to-three adult-first mode has no child quiz");
+    check((await text(page.locator("#lens-adult-note"))).includes("no sedentary screen time"), "age-one no-screen guidance visible");
+    check((await text(page.locator("#lens-offline"))).includes("Screen away:"), "toddler invitation leads away from display");
+    await screenshot(page, "colens-desktop-together.png");
+    await page.locator("#lens-switch").click();
+    await page.locator("#lens-focus").selectOption("make");
+    check((await text(page.locator("#lens-focus-cue"))).includes("Draw a puddle"), "independent Make focus cue changes only chosen prompt");
+    await page.locator('[data-lens-topic="animals"]').click();
+    check(await page.locator("#lens-art-animals").isVisible(), "adult selects butterfly picture without age detection");
+    check(await page.locator("#lens-art-river").isHidden(), "only one visual illustration is active");
+    await page.locator("#lens-finish").click();
+    check(await page.locator("#lens-done").isVisible(), "offscreen stop presents a simple exit");
+    check(await page.locator("#lens-scene-content").isHidden(), "stop hides active child activity instead of reward loop");
+    await page.locator("#lens-switch").click();
+    await page.locator('[data-lens-mode="play"]').click();
+    check((await page.locator("#lens-play-options button").count()) === 2, "Play offers two large choices");
+    check(await page.locator("#lens-art-animals").isVisible(), "Play retains same source picture without capability inference");
+    await page.locator("#lens-play-options button").first().click();
+    check(await page.locator("#lens-play-result").isVisible(), "non-graded correction shown after deliberate play choice");
+    check((await text(page.locator("#lens-play-result"))).includes("Different animals"), "child-facing feedback stays subject-grounded");
+    check((await text(page.locator("#lens-play-result"))).includes("not a grade"), "Play does not award learner rank");
+    await screenshot(page, "colens-desktop-play.png");
+    await page.locator("#lens-switch").click();
+    await page.locator('[data-lens-mode="research"]').click();
+    check(await page.locator(".layout").isVisible(), "Investigate recovers full original teachable lesson");
+    check(await page.locator("#lens-stage").isHidden(), "picture and details do not stack as competing active screens");
+    check(await page.locator("#lens-research-panel").isVisible(), "Investigate adds source and exception");
+    check((await page.locator("#lens-research-source").getAttribute("href")).startsWith("https://"), "research reference is explicit, not auto-loaded");
+    await screenshot(page, "colens-desktop-investigate.png");
+    await noStorage(page, "colens-desktop");
+  } finally { await context.close(); }
+}
+async function colensMobile(browser) {
+  const { context, page } = await newPage(browser, { width: 390, height: 844 }, "colens-mobile");
+  try {
+    await load(page, "examples/coathene_copet_r0/index.html");
+    const dims = await page.locator('[data-lens-mode="together"]').boundingBox();
+    check(dims && dims.height >= 65, "mobile age-choice touch target is large");
+    await page.locator('[data-lens-mode="together"]').focus();
+    await page.keyboard.press("Enter");
+    check((await page.locator("body").getAttribute("data-lens")) === "together", "keyboard Enter activates accessible mode control");
+    await page.locator('[data-lens-topic="games"]').click();
+    check(await page.locator("#lens-art-games").isVisible(), "mobile vector building blocks drawn");
+    check((await text(page.locator("#lens-prompt"))).includes("red block"), "mobile Together prompt is short and picture-led");
+    await sizeCheck(page, "colens-mobile-together");
+    await screenshot(page, "colens-mobile-together.png");
+    await page.locator("#lens-finish").click();
+    check(await page.locator("#lens-done").isVisible(), "mobile offscreen stop is usable");
+    await page.locator("#lens-switch").click();
+    await page.locator('[data-lens-mode="play"]').click();
+    check(await page.locator("#lens-stage").isVisible(), "mobile Play view renders");
+    check(await page.locator("#lens-play-options button").count() === 2, "mobile Play choices are usable");
+    await page.locator("#lens-play-options button").nth(1).click();
+    check((await text(page.locator("#lens-play-result"))).includes("score"), "short correction explains misleading score");
+    await sizeCheck(page, "colens-mobile-play");
+    await screenshot(page, "colens-mobile-play.png");
+    await noStorage(page, "colens-mobile");
+  } finally { await context.close(); }
+}
 async function anywhereDesktop(browser) {
   const { context, page } = await newPage(browser, { width: 1280, height: 900 }, "anywhere-desktop");
   try {
@@ -199,6 +269,8 @@ async function main() {
   try {
     await copetDesktop(browser);
     await copetMobile(browser);
+    await colensDesktop(browser);
+    await colensMobile(browser);
     await anywhereDesktop(browser);
     await anywhereMobile(browser);
   } finally { await browser.close(); }
@@ -208,7 +280,7 @@ async function main() {
     state: "PASS_BOUNDED_REAL_CHROMIUM_UI_NOT_CHILD_OR_EDUCATOR_REVIEW",
     testSurface: "locally opened repository HTML via file:// in headless Chromium",
     viewportSizes: ["1280x900", "390x844"],
-    exactInterfaces: ["CoPet+CoEntour R0", "Anywhere Studio R0"],
+    exactInterfaces: ["CoPet+CoEntour R0", "CoLens presentation dial R0", "Anywhere Studio R0"],
     checks: RECEIPTS.length,
     screenshots: fs.readdirSync(OUTPUT).filter(x => x.endsWith(".png")),
     browserNetworkCalls: "NONE_OBSERVED_UNTIL_EXPLICIT_EXTERNAL_LINK_NOT_TESTED",
