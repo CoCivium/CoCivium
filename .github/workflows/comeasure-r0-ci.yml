@@ -1,0 +1,47 @@
+name: CoMeasure R0 typed units CI
+
+on:
+  pull_request:
+    paths:
+      - 'ai/measurement/registry_r0_1.json'
+      - 'ai/measurement/verify_registry_r0_1.py'
+      - 'docs/Architecture/COALL_MEASUREMENT_R0_CANDIDATE.md'
+      - '.github/workflows/comeasure-r0-ci.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  exact-unit-and-conull-guards:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify conversions, semantic kind boundaries and null states
+        run: python ai/measurement/verify_registry_r0_1.py
+      - name: Verify idempotent receipt readback (no overwrite)
+        run: python ai/measurement/verify_registry_r0_1.py
+      - name: Check scope and result counters
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          base=Path('ai/measurement')
+          registry=json.loads((base/'registry_r0_1.json').read_text())
+          result=json.loads((base/'registry_test_receipt_r0.json').read_text())
+          assert registry['version']=='0.1.2'
+          assert len(registry['units'])==21
+          assert len(registry['metric_families'])==7
+          assert result['state']=='PASS_FOR_SCOPE'
+          assert result['conversion_tests_passed']==11
+          assert result['invalid_conversions_rejected']==7
+          assert result['null_states_passed']==6
+          assert result['measured_values_passed']==3
+          assert result['null_misrepresentations_rejected']==8
+          assert result['total_asserted_cases']==35
+          assert all(v==0 for v in result['effects'].values())
+          assert 'NOT_CROSS_SESSION_ADOPTED' in result['nonclaims']
+          print('PASS_COMEASURE_R0_35_SCOPED_ASSERTIONS__NO_EFFECTS')
+          PY
