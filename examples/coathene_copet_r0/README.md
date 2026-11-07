@@ -1,6 +1,6 @@
 # CoAthene CoPet R0 | Teach Moss, not a child profile
 
-**PUBLIC SOURCE CANDIDATE · 2026-11-07 · OFFLINE local demo · No child accounts, IDs, records, AI companion service, certified syllabus, live educator, or deployment.**
+**PUBLIC SOURCE CANDIDATE · 2026-11-07 · OFFLINE local demo · Not a deployed public website or child service. No child accounts, IDs, records, AI companion service, certified syllabus or live educator.**
 
 ## What actually works at source level
 
@@ -18,6 +18,12 @@ The learner need not sign into this **read-only demo**. There is **no persistent
 `CoGuest+ (ephemeral) | CoPet+ (story) | CoLearnerHandle+ (authorized random identity) | CoPassport+ (minimum records) | CoDelegation+ (scoped guardian/mentor/school access)`.
 
 A child's pet is never their legal identity, trusted adult, authenticated school account or proof of cognitive status. A printed summary can be personal work, not proof of its author or an authorized key. No implicit server-side child identifier, browser/device fingerprint or hidden persistent profile.
+
+## Evidence-first explanations and lost-passport recovery
+
+The evidence behind *“the best way to learn is to teach”* is **conditional**. This activity is a hypothesis inspired by teachable-agent research, not a verified superior teaching method. See [claim cards for educators and school boards](../../docs/Public/COATHENE_EVIDENCE_FIRST_CLAIMS_R0_20261107.md), including a 2024 meta-analysis and the conditions under which teaching helps or fails.
+
+Children lose devices, so the [CoPassport+ recovery addendum](../../docs/Architecture/COATHENE_COPASSPORT_LOGINLESS_CONTINUITY_R0_20261107.md) now discusses guardian-authorized alternate devices/passkeys, revocation, difficult loss-of-all-keys cases and age transitions. Optional device-local face/fingerprint unlocking is a convenience **not** an identifier, a replacement for lost keys or a condition of learning. No recovery vault, passkey registration or biometric system is implemented in CoPet R0.
 
 ## Pedagogical/safety limitations
 
