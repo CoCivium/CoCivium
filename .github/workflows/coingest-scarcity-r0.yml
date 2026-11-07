@@ -24,10 +24,17 @@ jobs:
           python examples/coingest_scarcity_r0/allocator.py \
             --fixture examples/coingest_scarcity_r0/fixture.json \
             --output coingest-scarcity-synthetic-receipt.json
+      - name: Capture budget-needle forecast comparison
+        run: |
+          python examples/coingest_scarcity_r0/budget_needles_r0.py \
+            --fixture examples/coingest_scarcity_r0/fixture.json \
+            --output coingest-budget-needles-synthetic-receipt.json
       - name: Short-retention, no-authority CI receipt
         uses: actions/upload-artifact@v4
         with:
           name: coingest-scarcity-synthetic-${{ github.run_id }}
-          path: coingest-scarcity-synthetic-receipt.json
+          path: |
+            coingest-scarcity-synthetic-receipt.json
+            coingest-budget-needles-synthetic-receipt.json
           if-no-files-found: error
           retention-days: 7
