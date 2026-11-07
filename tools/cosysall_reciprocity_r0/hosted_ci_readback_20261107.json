@@ -1,0 +1,58 @@
+{
+  "artifact": {
+    "entry": "cosysall-r1-ci-full-graph-readproof.json",
+    "entry_bytes": 1696,
+    "entry_sha256": "81babde22307059b81c0ddd0a5e5b4901e9fa17b818f73a8f0eee21b2154f874",
+    "expires_utc": "2026-11-14T08:12:02Z",
+    "id": 13566363382,
+    "name": "cosysall-r1-full-source-readproof-42354438680",
+    "zip_bytes": 1064,
+    "zip_sha256": "deb9305b079aacadc851e254e5e87c9b48f30a045ba0a353781e23887026d5f0"
+  },
+  "github_repo": "CoCivium/CoCivium",
+  "job": {
+    "conclusion": "success",
+    "id": 128349307547,
+    "name": "source-replay",
+    "regression_tests_failed": 0,
+    "regression_tests_passed": 33,
+    "status": "completed"
+  },
+  "limits": [
+    "GitHub hosted source-code CI only, not independent human reader comprehension",
+    "not X2, CoStead, live CoOrb or cross-provider cold restore",
+    "not governance or legal authority, security certification or CoEx",
+    "readback performed within GitHub connector and container, not an independent cloud-provider failure domain"
+  ],
+  "next_proof": "Uncoached independent reader result and source-bound acceptance receipt; preserve GitHub run artifact before 7-day expiration",
+  "pull_request": {
+    "head_sha": "1fb505de91e9b0f577f1a1d33aeaf64bea220352",
+    "number": 359,
+    "state": "OPEN_DRAFT_UNMERGED",
+    "url": "https://github.com/CoCivium/CoCivium/pull/359"
+  },
+  "schema": "CoCivium.CI.HostedReceiptIndependentReadback.R0",
+  "status": "PASS_FOR_HOSTED_CI_AND_ARTIFACT_INSPECTION_ONLY",
+  "verified_claims": {
+    "candidate_authority": "NO_EXTERNAL_EFFECTS__REVIEW_ONLY",
+    "candidate_epistemic_class": "HYPOTHESIS",
+    "candidate_mutation_class": "PROPOSE",
+    "claim_parity_sha256": "bde3e3780a99c1654cc09bc697cdb59080a4f3063660af912f70da60d51aec17",
+    "external_effects": 0,
+    "forged_permission_held": true,
+    "identical_claim_digests": true,
+    "reversed_edge_held": true,
+    "source_edges": 61,
+    "source_git_blob": "9cc47926d2f61f439db1818702127382f78d693f",
+    "source_nodes": 56,
+    "source_sha256": "1b5be72c549e3792af9a3c9d6b746deb744dc7b08e1db3f74c30c8f82f0b06da"
+  },
+  "workflow": {
+    "conclusion": "success",
+    "event": "pull_request",
+    "name": "CoSysAll CV01 CV05 - source-pinned reciprocity R1",
+    "run_id": 42354438680,
+    "run_url": "https://github.com/CoCivium/CoCivium/actions/runs/42354438680",
+    "status": "completed"
+  }
+}
