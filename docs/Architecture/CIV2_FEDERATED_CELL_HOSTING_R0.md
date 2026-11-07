@@ -153,3 +153,11 @@ Supply-chain signing and reproducible builds; secret custody, recovery and revoc
 **Observed state 2026-11-06:** None of these five acceptance steps is claimed to have passed. This is a design/pivot record, not a service deployment, completed peer negotiation, X2 runtime, global consensus or independently functioning CoAll federation.
 
 **Decision rail:** **KEEP** existing CoAll ontology/relation work; **PIVOT** toward typed interoperable contracts and plural cell authority; **BUILD/TEST** one real independently restored service before multiplying infrastructure. Prefer verified new value to ever more speculative labels.
+
+## 2026-11-06 | D3: Governance, plan, theory and highlight cross-binding
+
+The **source-bound relationship among vision, CC/constitutional legitimacy, HP/CoHP strategy, policy/consent/contract, CoTheoryAll hypothesis, directive/runbook, executed effect, receipt and highlightable media** is defined as a candidate **typed many-to-many mesh**, not a universal superior chain, in [CoAll GitHub Evolution Fabric R0 / D2](../Evolution/COALL_GITHUB_EVOLUTION_FABRIC_R0.md). The existing `CoEvoDelta` schema, evolution lanes, repository role map and highlight asset registry are the data/projection starting points; avoid a second competing hierarchy.
+
+A federated hosting cell **must not infer that shared terminology means shared institutional authority**. Each cell can advertise a privacy-safe schema/policy acceptance version, reject unverified or revoked grants, negotiate compatible projections, preserve dissent and reconstruct source-bound provenance after federation loss. Local lawful autonomy and service-specific transaction controls remain mandatory.
+
+**Acceptance:** choose one public reader/demo and source-link its vision/purpose, strategy, relevant rule/authority (or UNKNOWN), build/experiment, receiver result and public highlight; simulate an expired/revoked authority edge during a network partition. The cell must keep safe read-only use and refuse unauthorized actuation. No global canon, CC enforcement, or HP succession claim is implied by this documentation.
