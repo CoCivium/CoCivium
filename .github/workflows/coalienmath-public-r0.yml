@@ -1,0 +1,33 @@
+name: CoAlienMath Public R0 Falsifiers
+on:
+  pull_request:
+    paths:
+      - 'docs/CoTheoryAll/coalienmath-r0/**'
+      - 'ai/coalienmath/**'
+      - '.github/workflows/coalienmath-public-r0.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  negative-controls:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11', '3.13']
+    steps:
+      - name: Checkout proposed source
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Set Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Run strict finite fixture tests
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m unittest discover -s ai/coalienmath -p 'test_*.py' -v
+          python3 -O -m unittest discover -s ai/coalienmath -p 'test_*.py' -v
