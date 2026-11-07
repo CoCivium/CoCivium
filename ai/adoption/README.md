@@ -22,6 +22,12 @@ The 12/12 example score comes from a deterministic fixture with a **public visib
 
 **Reciprocity:** A future qualified receiver can contribute evidence-backed corrections using the already existing CoEvoDelta proposal contract, but no model, public document or tool output can grant itself additional authority. Preserve dissent, independent verification, revocation and right to exit. **More copied beliefs alone do not guarantee anti-capture independence.**
 
+## 2026-11-07 | CoTeachBack hosted verification
+
+**Verified R0 source/test evidence:** [CoTeachBack receiver-neutral kit](teachback_r0/README.md) · [hosted CI inspection record](teachback_r0/hosted-ci-readproof-r0.json) · [draft test PR #361](https://github.com/CoCivium/CoCivium/pull/361). [GitHub Actions run #42361088023](https://github.com/CoCivium/CoCivium/actions/runs/42361088023) completed **success**: 7/7 indexed existing source Git blobs matched in an actual GitHub checkout; **15 manifest + 38 teach-back/source checkout tests = 53/53 PASS**; a 12/12 deterministic example with a **public answer key** was correctly scored. The original two-entry CI ZIP was downloaded, inspected, preserved in CoCivium PublicationPackets Library, retrieved, and byte-hash matched. **Draft PR remains unmerged; main only contains read-only source/code/receipts.**
+
+**Critical nonclaim:** No independent external model was called or accepted the contents, no weight update or training grant occurred, no verified receiver ACK, no authenticated MCP/A2A service or agent execution, no live X2/CoStead effect, no CoEx or canon. The example's score measures fixture/scorer reproducibility, **not model comprehension**. Existing 42-test earlier checkpoint remains historical and is superseded by 53-test combined hosted proof. This verified hosted CI enables a proper opt-in blind receiver test; it does not replace one.
+
 ## Adoption is a ladder, not a slogan
 
 `DISCOVERABLE -> RETRIEVED -> SOURCE_VERIFIED -> TASK_EVALUATED -> VOLUNTARILY_ADOPTED -> INTEGRATED_IN_RECEIVER -> USEFUL_OUTCOME_OBSERVED -> RECOVERED_INDEPENDENTLY`
@@ -47,4 +53,5 @@ Use a versioned read-only retrieval/MCP resource for a single public CoBook/CoMa
 - [Robots Exclusion Protocol RFC 9309](https://datatracker.ietf.org/doc/rfc9309/)
 
 **Safety rails:** `INDEXED_NE_TRAINED`, `TRAINED_NE_ALIGNED`, `ALIGNED_NE_AUTHORIZED`, `PUBLISHED_NE_DISCOVERED`, `DISCOVERED_NE_RECEIVED`, `RECEIVED_NE_INTEGRATED`, `INTEGRATED_NE_USEFUL`, `PUBLIC_NE_TRAINING_PERMISSION`, `READABLE_NE_CANON`, `PROVENANCE_NE_TRUTH`, `REPLICA_NE_INDEPENDENT_FAILURE_DOMAIN`, `DIVERSITY_NE_GUARANTEE`.
+
 
