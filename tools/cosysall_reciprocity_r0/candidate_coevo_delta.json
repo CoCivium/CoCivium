@@ -1,0 +1,44 @@
+{
+  "authority_ceiling": "NO_EXTERNAL_EFFECTS__REVIEW_ONLY",
+  "confidence": null,
+  "confidentiality": "PUBLIC",
+  "contradictions": [
+    "Two-hop proximity does not prove an independent relation, shared meaning, causal connection or permission."
+  ],
+  "delta_id": "candidate:cosysall-source-path-r0",
+  "domain": [
+    "CoAll+",
+    "CoUX+/CoSurface+"
+  ],
+  "epistemic_class": "HYPOTHESIS",
+  "expected_benefit": "Candidate source-bound relationship for independent review and useful-view testing, not an automatic CoAll update",
+  "mutation_class": "PROPOSE",
+  "next_receiver": "ELIGIBLE_INDEPENDENT_SEMANTIC_REVIEWER_NOT_ELECTED",
+  "observed_at": "2026-11-07T02:53:30Z",
+  "relation": "CANDIDATE_CONTEXTUAL_PATH_TO:repo:CoCivium/CoCivium",
+  "risks": [
+    "Conflation of source association with verified relation or authority",
+    "Historical snapshot may be stale"
+  ],
+  "session_id": "OFFLINE_FIXTURE_NO_LIVE_SESSION_ACK",
+  "source_refs": [
+    "https://github.com/CoCivium/CoCivium/blob/main/ai/comap-source-projection-r0.json",
+    "canonical-graph-sha256:e862c91911d47a23160e243f872722a60dd7ccb70cf928b78958526cdb96ca45",
+    "https://github.com/CoCivium/CoCivium/blob/main/ai/evolution-lanes.json"
+  ],
+  "subject": "repo:CoCivium/MasterPlan",
+  "supersedes": [],
+  "target_surfaces": [
+    "CoMap+",
+    "CoSysAll+"
+  ],
+  "tests": [
+    "SOURCE_REGISTERED_EDGES:e1",
+    "SOURCE_REGISTERED_EDGES:e2",
+    "TWO_HOP_PATH_STRUCTURAL_ONLY"
+  ],
+  "wake_conditions": [
+    "Qualified independent reviewer verifies a new source-backed relation",
+    "Actual source/currentness change"
+  ]
+}
