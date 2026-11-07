@@ -6,7 +6,7 @@
 
 > **Can children understand a subject more deeply by teaching it to a fictional pet, receiving evidence-based correction, and trying the lesson in a new situation?**
 
-That is an experiment we can run with qualified educators. It is **not** a claim that AI companions out-teach teachers or that a child should learn unsupervised.
+That is an experiment we can run with qualified educators. It is not a claim that AI companions out-teach teachers or that a child should learn unsupervised.
 
 ### Claim cards, including disconfirming evidence
 
