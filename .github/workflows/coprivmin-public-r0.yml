@@ -1,0 +1,41 @@
+name: CoPrivMin Public Projection R0 - static candidate
+on:
+  push:
+    branches:
+      - candidate/coprivmin-public-existence-r0-20261107
+    paths:
+      - 'docs/Governance/COPRIVMIN_PUBLIC_PROJECTION_R0_20261107.md'
+      - 'docs/Public/COATHENE_WHY_HAVE_SCHOOLS_R0_20261107.md'
+      - 'scripts/CoPrivMinPublicProjectionR0.py'
+      - 'tests/test_coprivmin_public_r0.py'
+      - '.github/workflows/coprivmin-public-r0.yml'
+  pull_request:
+    paths:
+      - 'docs/Governance/COPRIVMIN_PUBLIC_PROJECTION_R0_20261107.md'
+      - 'docs/Public/COATHENE_WHY_HAVE_SCHOOLS_R0_20261107.md'
+      - 'scripts/CoPrivMinPublicProjectionR0.py'
+      - 'tests/test_coprivmin_public_r0.py'
+      - '.github/workflows/coprivmin-public-r0.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  static-projection:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout candidate branch
+        uses: actions/checkout@v4
+      - name: Python for synthetic no-release tests
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Test private-field omission and release hold
+        run: python -m unittest discover -s tests -p 'test_coprivmin_public_r0.py' -v
+      - name: State exact limited proof ceiling
+        run: |
+          echo "PASS_STATIC_NE_PRIVACY_CERTIFICATION"
+          echo "PUBLIC_BRANCH_NE_MERGED_MAIN"
+          echo "CANDIDATE_NE_AUTOPUBLISH"
+          echo "NO_PRIVATE_FIELDS_NO_CHILD_DATA_NO_REAL_USERS"
