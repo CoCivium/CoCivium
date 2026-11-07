@@ -7,6 +7,7 @@ on:
       - 'tools/couptake_r0/**'
       - 'tests/test_couptake_r0.py'
       - 'tests/test_couptake_portable_r01.py'
+      - 'tests/test_couptake_cold_receiver_r02.py'
       - '.github/workflows/couptake-r0.yml'
       - 'docs/AI_DISCOVERY_POLICY.md'
   workflow_dispatch:
@@ -29,6 +30,8 @@ jobs:
         run: python -m unittest discover -s tests -p 'test_couptake_r0.py' -v
       - name: Verify portable source packet, supersession, replay and fake-ACK refusals
         run: python -m unittest discover -s tests -p 'test_couptake_portable_r01.py' -v
+      - name: Isolate a fresh Python receiver subprocess from the CoCivium repo
+        run: python -m unittest discover -s tests -p 'test_couptake_cold_receiver_r02.py' -v
       - name: Bind exactly four public source objects locally
         shell: bash
         run: |
@@ -92,6 +95,33 @@ jobs:
           assert d["independent_cold_restore"]=="NOT_OBSERVED"
           assert d["external_receiver_ack"]=="NOT_OBSERVED"
           print("PORTABLE_PACKET_LOCAL_PIN_MATCH_NE_INDEPENDENT_RECEIVER")
+          PY
+      - name: Verify copied portable packet with a genuinely detached Python interpreter
+        shell: bash
+        run: |
+          set -eu
+          DETACHED="$RUNNER_TEMP/couptake-detached-r02"
+          mkdir -p "$DETACHED"
+          cp tools/couptake_r0/receiver_standalone.py "$DETACHED/receiver_standalone.py"
+          cp couptake-proof/public-onramp-packet.json "$DETACHED/packet.json"
+          cp couptake-proof/synthetic-receiver-pin.json "$DETACHED/pin.json"
+          (
+            cd "$DETACHED"
+            PYTHONPATH=/invalid/python/import/path python -I -S receiver_standalone.py \
+              --packet packet.json \
+              --receiver-pin pin.json
+          ) > couptake-proof/detached-local-receiver.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          result=json.loads(Path("couptake-proof/detached-local-receiver.json").read_text())
+          assert result["effect_boundary"]=="LOCAL_PIN_MATCH_ONLY", result
+          assert result["matched"]==1 and result["held"]==0
+          assert result["issuer_signature_validated"] is False
+          assert result["external_agent_ack"]=="NOT_OBSERVED"
+          assert result["off_provider_cold_restore"]=="NOT_OBSERVED"
+          assert result["persistent_memory_write"]=="NOT_PERFORMED"
+          print("DETACHED_PYTHON_PACKET_READBACK_NO_REPO_IMPORT_NE_EXTERNAL_OPERATOR")
           PY
       - name: Demonstrate synthetic revision, stale rejection and old-policy vulnerability
         shell: bash
@@ -161,3 +191,4 @@ jobs:
           echo "NO_MODEL_ENDORSEMENT_OR_COALL_ALIGNMENT_GUARANTEE"
           echo "LOCAL_PACKET_RECOVERY_NE_EXTERNAL_COLD_RESTORE"
           echo "SYNTHETIC_CORRECTION_NE_GLOBAL_MODEL_UNLEARNING"
+          echo "ISOLATED_PYTHON_PROCESS_NE_INDEPENDENT_OPERATOR_OR_OFF_PROVIDER_CUSTODY"
