@@ -26,6 +26,7 @@ def convert(value, src, dst, units):
     return (absolute-fraction(b["offset_to_anchor"]))/fraction(b["scale_to_anchor"])
 
 def validate_value(state, value):
+    """Validate only value semantics, NOT source authenticity or uncertainty."""
     nonfinite={"MISSING","UNKNOWN","NOT_APPLICABLE","BELOW_DETECTION_LIMIT","REDACTED","INVALID","UNDEFINED","INFINITE_SYMBOLIC"}
     if state in nonfinite:
         if value is not None:
@@ -33,7 +34,16 @@ def validate_value(state, value):
     elif state == "OBSERVED_ZERO":
         if value is None or fraction(value)!=0:
             raise ValueError("HOLD_ZERO_INVALID")
+    elif state == "MEASURED":
+        if not isinstance(value,str) or not 1<=len(value)<=80:
+            raise ValueError("HOLD_EXACT_MEASURED_VALUE_REQUIRED")
+        try:
+            fraction(value)
+        except (ValueError,ZeroDivisionError) as exc:
+            raise ValueError("HOLD_EXACT_MEASURED_VALUE_REQUIRED") from exc
     else:
+        # Prediction is intentionally NOT a measured-value state without
+        # an independently checked model, target time and probability envelope.
         raise ValueError("HOLD_UNKNOWN_VALUE_STATE")
 
 def check():
@@ -53,31 +63,40 @@ def check():
         ("kelvin_celsius",convert("273.15","K","Cel",units),Fraction(0)),
         ("percent",convert("50","percent","ratio",units),Fraction(1,2)),
         ("duration",convert("6","min","s",units),Fraction(360)),
-        ("zero",convert("0","cm","m",units),Fraction(0))
+        ("zero",convert("0","cm","m",units),Fraction(0)),
+        ("interval_kelvin",convert("1","delta_Cel","delta_K",units),Fraction(1)),
+        ("interval_celsius",convert("1","delta_K","delta_Cel",units),Fraction(1))
     ]
     for label, actual,expected in cases:
         assert actual==expected,(label,actual,expected)
     blocked=0
-    for src,dst in [("m","s"),("Hz","s"),("count","ratio"),("count","percent"),("J","W")]:
+    for src,dst in [("m","s"),("Hz","s"),("count","ratio"),("count","percent"),("J","W"),
+                    ("delta_Cel","K"),("Cel","delta_K")]:
         try: convert(1,src,dst,units)
         except ValueError: blocked+=1
         else: raise AssertionError("conversion wrongfully allowed "+src+"/"+dst)
-    assert blocked==5
+    assert blocked==7
     for state in ["MISSING","UNKNOWN","NOT_APPLICABLE","REDACTED","INVALID"]:
         validate_value(state,None)
     validate_value("OBSERVED_ZERO",0)
-    for state,value in [("MISSING",0),("UNKNOWN",0),("OBSERVED_ZERO",1),("BOGUS",None)]:
+    measured=["2.75","0","-1/4"]
+    for value in measured:
+        validate_value("MEASURED",value)
+    for state,value in [("MISSING",0),("UNKNOWN",0),("OBSERVED_ZERO",1),("BOGUS",None),
+                        ("MEASURED",None),("MEASURED",0),("MEASURED","NaN"),
+                        ("PREDICTED","12")]:
         try:validate_value(state,value)
         except ValueError:blocked+=1
         else:raise AssertionError("invalid null state accepted")
-    assert blocked==9
+    assert blocked==15
     result={"schema":"CoAll.MeasurementRegistryTestReceipt.R0",
       "registry_sha256":sha,
       "conversion_tests_passed":len(cases),
-      "invalid_conversions_rejected":5,
+      "invalid_conversions_rejected":7,
       "null_states_passed":6,
-      "null_misrepresentations_rejected":4,
-      "total_asserted_cases":len(cases)+5+6+4,
+      "measured_values_passed":len(measured),
+      "null_misrepresentations_rejected":8,
+      "total_asserted_cases":len(cases)+7+6+len(measured)+8,
       "state":"PASS_FOR_SCOPE","effects":{"network":0,"model_calls":0,"public_writes":0,"system_changes":0},
       "nonclaims":["NOT_SI_CERTIFIED","NOT_COPRIMATH_CANON","NOT_CROSS_SESSION_ADOPTED"]}
     output=BASE/"registry_test_receipt_r0.json"
