@@ -31,3 +31,14 @@ See [Semantic-Zoom Payload Substrate R0](../../docs/Architecture/COSYSALL_SEMANT
 Next evidence target: **one actual multiscale open-licensed image, one source-backed relation/annotation, a no-render machine projection and an independently operated reader**. Measure bytes loaded, source-currentness, unauthorized fetches, latency, accessible completion, cost and real receiver ACK. Hold if licenses, second host or authority are unavailable.
 
 **Rails:** `SEMANTIC_ZOOM_NE_INFINITE_INFORMATION` · `GRAPH_PROXIMITY_NE_FACT` · `INVERSE_CANDIDATE_NE_TRUTH` · `MISSING_EDGE_NE_NEGATIVE_EVIDENCE` · `NOT_RENDERED_NE_DELETED` · `PUBLIC_NAME_NE_PRIVATE_CONTENT` · `SOURCE_BOUND_NE_LIVE` · `AUTO_PROPOSE_NE_AUTO_PROMOTE`.
+
+## CV01 / CV05 reader acceptance challenge R0
+
+**[Open/save the offline blind-reader challenge](reader-challenge-r0.html)** · [browser QA receipt](reader-challenge-browser-qa-r0.json). This is a dedicated reader-acceptance *fixture*, not a report of an independent person's acceptance. It uses the exact registered CoMap graph edition `9cc47926d2f61f439db1818702127382f78d693f`, with the focused, cited 3-object/2-directed-edge CoStrategy+ relation sample.
+
+- Four comprehension questions examine registered edge direction, absence of a direct repository edge, the difference between registration and permission, and why a local inferred inverse cannot become policy/canon.
+- Visual SVG, accessible text list and machine JSON preserve the same source relations. A no-render mode hides the drawing without fetching data. Reader answers remain local, with optional local JSON export explicitly labelled `LOCAL_SELF_REPORT_NOT_INDEPENDENT_ACK`.
+- Chromium tests at **1440x900 and 390x844** passed correct-score (4/4), deliberate wrong-score (3/4), view switching, machine/data parity, local receipt download and reset. Zero JavaScript page errors, outgoing requests or horizontal overflow. This is browser QA only, not a proven independent human comprehension result.
+- A corresponding fixed-graph source-pin test and 33/33 local regression checks remain documented in the [CoAll↔CoSysAll adapter](../../tools/cosysall_reciprocity_r0/README.md). Hosted GitHub Actions completion remains **HOLD**: the connected status interfaces did not establish the actual push-run result.
+
+**Next independent proof:** an authorized person or independent receiver opens the challenge without coaching, reports their own reading/score via a verifiable receiver-bound receipt, and challenges a false relation. Do not infer ACK, consent, audience adoption or renderer correctness beyond tested scope from presence of a linked HTML page.
