@@ -121,8 +121,9 @@ def evaluate(session: Session, windows: tuple[tuple[Measure, ...], ...],
             window_ids.add(marker)
             valid_windows.append(good)
     # Repeated or overlapping sampled intervals do not establish persistence.
-    intervals = sorted((min(_utc(m.window_start_utc) for m in w),
-                        max(_utc(m.window_end_utc) for m in w), w) for w in valid_windows)
+    intervals = sorted(((min(_utc(m.window_start_utc) for m in w),
+                        max(_utc(m.window_end_utc) for m in w), w) for w in valid_windows),
+                       key=lambda item: (item[0], item[1]))
     nonoverlapping = []
     last_end = None
     for start, end, w in intervals:
