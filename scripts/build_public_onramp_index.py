@@ -14,7 +14,8 @@ import urllib.request
 from pathlib import Path
 from urllib.parse import quote
 
-REPOS = ("CoCivium/CoCivium", "CoCivium/CoAcademy")
+REPOS = ("CoCivium/CoCivium", "CoCivium/CoAcademy", "CoCivium/CoSources",
+         "CoCivium/InSeed", "CoCivium/CoStacks", "CoCivium/EntMent", "CoCivium/CoBusMirror")
 DOCUMENT_EXTENSIONS = (".md", ".html", ".htm", ".json", ".jsonl", ".txt")
 DENY_SEGMENTS = {"private", "secrets", "secret", "credentials", "credential", "tokens",
                  "keys", "personal", "pii", "contact", "contacts", "emails",
