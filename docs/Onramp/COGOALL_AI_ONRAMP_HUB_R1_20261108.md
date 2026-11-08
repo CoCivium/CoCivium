@@ -40,6 +40,14 @@ These are **links to public source**, not decorations or proof of product maturi
 - **G_dSide optional economics hypothesis:** [synthetic, falsifiable experiment PR #379](https://github.com/CoCivium/CoCivium/pull/379), not metaphysical fact.
 - **Current highlight registry:** [existing 10-entry candidate registry](https://github.com/CoCivium/CoCivium/blob/main/ai/highlight-assets.json), originally dated Sep 23, needs source-aware update; do not silently rewrite prior state.
 
+## Verified 1,891-page public source catalog | November 8 CI
+
+**Actual build result:** [GitHub Actions run 42519335261 completed SUCCESS](https://github.com/CoCivium/CoCivium/actions/runs/42519335261). It enumerated **1,891** eligible real source-pinned GitHub URLs across seven verified-public CoCivium-owned repositories. Its five offline negative/positive tests passed; the builder rejects fabricated counts, private repositories and truncated Git trees.
+
+**Open the full list:** [1,891 public pages, readable Markdown + JSONL + receipt (CI artifact 13632189865)](https://github.com/CoCivium/CoCivium/actions/runs/42519335261/artifacts/13632189865). GitHub Actions retains this artifact for 30 days (reported expiration December 8, 2026). The catalog consists of actual tracked paths from exact revisions, **not 1,891 independently content-reviewed insights, not page-by-page HTTP acceptance, not live WhatsApp uptake**. ZIP digest as reported by GitHub: `sha256:8a70e02feff0122482e3d63b5acbad5ed04bcf06a11c3707c71dd2ed5a262146`.
+
+Read this concise hub first; the 1,891-page file is only for selective search, audit and deeper research. A durable copy of the index should be pinned in ordinary source or publishing storage before the CI artifact expires.
+
 ## 1,000+ public web-page index: reproducible, not hallucinated
 
 The adjacent [`scripts/build_public_onramp_index.py`](../../scripts/build_public_onramp_index.py) enumerates **actual public tracked source pages** from the GitHub tree APIs of CoCivium/CoCivium and CoCivium/CoAcademy. Every selected page is a real `github.com/.../blob/<exact commit>/<actual path>` URL, with source SHA, file path, topic tag and a modest file extension filter. It excludes likely personal/security-sensitive paths and binaries, fails closed if GitHub returns a truncated tree or fewer than the requested **1,000 verified entries**, and produces JSONL plus Markdown. No custom web pages or invented link names are inserted to inflate the count. A successful builder run would prove enumerated public repository paths at a specific Git revision, **not that each page is useful or independently HTTP-opened by WhatsApp**.
