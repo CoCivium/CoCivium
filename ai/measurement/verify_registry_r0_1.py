@@ -9,12 +9,100 @@ from pathlib import Path
 BASE = Path(__file__).parent
 REG = BASE / "registry_r0_1.json"
 
+# R0.1.2 fixed-profile guards donated by private CoMeasure OptimizeGuard R0
+# and InputGuard R1. Version-bound, not SI certification or metric truth.
+_EXPECTED_DIMS = {
+    "length":(1,0,0,0,0,0,0), "duration":(0,0,1,0,0,0,0),
+    "speed":(1,0,-1,0,0,0,0),
+    "thermodynamic_temperature":(0,0,0,0,1,0,0),
+    "temperature_difference":(0,0,0,0,1,0,0),
+    "fraction_of_whole":(0,0,0,0,0,0,0),
+    "event_count":(0,0,0,0,0,0,0),
+    "failure_domain_count":(0,0,0,0,0,0,0),
+    "frequency":(0,0,-1,0,0,0,0),
+    "energy":(2,1,-2,0,0,0,0),
+    "power":(2,1,-3,0,0,0,0),
+    "event_rate":(0,0,-1,0,0,0,0),
+    "event_per_energy":(-2,-1,2,0,0,0,0),
+}
+
+def require(condition, message):
+    """Always run a correctness guard, including when Python uses -O."""
+    if not condition:
+        raise ValueError("HOLD_MEASUREMENT_INVARIANT: " + str(message))
+
+def validate_registry(reg):
+    """Validate every registered unit, including ones unused in smoke cases."""
+    require(isinstance(reg, dict), "REGISTRY_OBJECT")
+    require(reg.get("version") == "0.1.2", "UNSUPPORTED_REGISTRY_PROFILE")
+    require(reg.get("dimension_order") == ["L", "M", "T", "I", "Theta", "N", "J"],
+            "DIMENSION_ORDER")
+    require(isinstance(reg.get("units"), list) and bool(reg["units"]),
+            "UNITS_MISSING")
+    ids = set()
+    for u in reg["units"]:
+        require(isinstance(u, dict) and isinstance(u.get("id"), str)
+                and bool(u["id"]), "UNIT_SCHEMA")
+        uid = u["id"]
+        require(uid not in ids, (uid, "DUPLICATE_UNIT_ID"))
+        ids.add(uid)
+        kind = u.get("quantity_kind")
+        require(isinstance(kind, str) and kind in _EXPECTED_DIMS,
+                (uid, "UNKNOWN_QUANTITY_KIND"))
+        vec = u.get("dimensions")
+        require(isinstance(vec, list) and len(vec) == 7
+                and all(type(x) is int for x in vec),
+                (uid, "DIMENSION_VECTOR"))
+        require(tuple(vec) == _EXPECTED_DIMS[kind],
+                (uid, "WRONG_KIND_DIMENSION"))
+        for field in ("scale_to_anchor", "offset_to_anchor"):
+            v = u.get(field)
+            require(isinstance(v, str) and 0 < len(v) <= 80,
+                    (uid, "EXACT_RATIONAL_REQUIRED", field))
+            try:
+                fraction(v)
+            except (ValueError, ZeroDivisionError, OverflowError) as exc:
+                raise ValueError("HOLD_INVALID_RATIONAL: " + uid + "/" + field) from exc
+        require(fraction(u["scale_to_anchor"]) > 0,
+                (uid, "NONPOSITIVE_SCALE"))
+        off = fraction(u["offset_to_anchor"])
+        require(off == (Fraction(27315, 100) if uid == "Cel" else Fraction(0)),
+                (uid, "AFFINE_OFFSET_NOT_PERMITTED"))
+    metrics = reg.get("metric_families")
+    require(isinstance(metrics, list), "METRIC_FAMILIES_MISSING")
+    units = {u["id"]: u for u in reg["units"]}
+    mids = set()
+    for m in metrics:
+        require(isinstance(m, dict) and isinstance(m.get("id"), str)
+                and bool(m["id"]), "METRIC_SCHEMA")
+        require(m["id"] not in mids, (m["id"], "DUPLICATE_METRIC_ID"))
+        mids.add(m["id"])
+        uid = m.get("unit_id")
+        require(isinstance(uid, str) and uid in units, (m["id"], "UNBOUND_UNIT_ID"))
+        require(m.get("quantity_kind") == units[uid]["quantity_kind"],
+                (m["id"], "METRIC_KIND_MISMATCH"))
+
+def _reject_duplicate_pairs(pairs):
+    out = {}
+    for key, value in pairs:
+        if key in out:
+            raise ValueError("HOLD_DUPLICATE_JSON_KEY: " + key)
+        out[key] = value
+    return out
+
+def _reject_nonfinite_constant(value):
+    raise ValueError("HOLD_NONFINITE_JSON_CONSTANT: " + value)
+
+def parse_strict_json(raw):
+    return json.loads(raw, object_pairs_hook=_reject_duplicate_pairs,
+                      parse_constant=_reject_nonfinite_constant)
+
 def fraction(v):
     return Fraction(str(v))
 
 def load():
     b=REG.read_bytes()
-    return json.loads(b.decode("utf-8-sig")),hashlib.sha256(b).hexdigest()
+    return parse_strict_json(b.decode("utf-8-sig")),hashlib.sha256(b).hexdigest()
 
 def convert(value, src, dst, units):
     a,b=units[src],units[dst]
@@ -48,12 +136,13 @@ def validate_value(state, value):
 
 def check():
     reg,sha=load()
+    validate_registry(reg)
     units={u["id"]:u for u in reg["units"]}
-    assert len(units)==len(reg["units"]),"duplicate unit ids"
-    assert all(len(u["dimensions"])==7 for u in units.values())
+    require(len(units)==len(reg["units"]), "DUPLICATE_UNIT_ID")
+    require(all(len(u["dimensions"])==7 for u in units.values()), "DIMENSION_VECTOR")
     for m in reg["metric_families"]:
-        assert m["unit_id"] in units,(m["id"],"UNBOUND_UNIT_ID",m["unit_id"])
-        assert m["quantity_kind"]==units[m["unit_id"]]["quantity_kind"],(m["id"],"QUANTITY_KIND_MISMATCH")
+        require(m["unit_id"] in units, (m["id"],"UNBOUND_UNIT_ID",m["unit_id"]))
+        require(m["quantity_kind"]==units[m["unit_id"]]["quantity_kind"], (m["id"],"QUANTITY_KIND_MISMATCH"))
     cases=[
         ("centimetre",convert("100","cm","m",units),Fraction(1)),
         ("millisecond",convert("1000","ms","s",units),Fraction(1)),
@@ -68,14 +157,14 @@ def check():
         ("interval_celsius",convert("1","delta_K","delta_Cel",units),Fraction(1))
     ]
     for label, actual,expected in cases:
-        assert actual==expected,(label,actual,expected)
+        require(actual==expected, (label,actual,expected))
     blocked=0
     for src,dst in [("m","s"),("Hz","s"),("count","ratio"),("count","percent"),("J","W"),
                     ("delta_Cel","K"),("Cel","delta_K")]:
         try: convert(1,src,dst,units)
         except ValueError: blocked+=1
         else: raise AssertionError("conversion wrongfully allowed "+src+"/"+dst)
-    assert blocked==7
+    require(blocked==7, "BLOCKED_CONVERSION_COUNT")
     for state in ["MISSING","UNKNOWN","NOT_APPLICABLE","REDACTED","INVALID"]:
         validate_value(state,None)
     validate_value("OBSERVED_ZERO",0)
@@ -88,7 +177,7 @@ def check():
         try:validate_value(state,value)
         except ValueError:blocked+=1
         else:raise AssertionError("invalid null state accepted")
-    assert blocked==15
+    require(blocked==15, "INVALID_VALUE_COUNT")
     result={"schema":"CoAll.MeasurementRegistryTestReceipt.R0",
       "registry_sha256":sha,
       "conversion_tests_passed":len(cases),
@@ -101,8 +190,8 @@ def check():
       "nonclaims":["NOT_SI_CERTIFIED","NOT_COPRIMATH_CANON","NOT_CROSS_SESSION_ADOPTED"]}
     output=BASE/"registry_test_receipt_r0.json"
     if output.exists():
-        prior=json.loads(output.read_text(encoding="utf-8-sig"))
-        assert prior==result, "HOLD_EXISTING_RECEIPT_CONFLICT"
+        prior=parse_strict_json(output.read_text(encoding="utf-8-sig"))
+        require(prior==result, "HOLD_EXISTING_RECEIPT_CONFLICT")
     else:
         with output.open("x",encoding="utf-8") as f: json.dump(result,f,indent=2)
     print(json.dumps({"receipt":str(output),"receipt_sha256":hashlib.sha256(output.read_bytes()).hexdigest(),**result},sort_keys=True))
