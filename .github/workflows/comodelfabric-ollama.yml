@@ -29,3 +29,5 @@ jobs:
         run: python examples/comodelfabric/test_gateway_bridge.py
       - name: Run synthetic gateway-to-receipt integration tests
         run: python examples/comodelfabric/test_ollama_receipt_integration.py
+      - name: Check RickBar bridge CLI syntax
+        run: python -m py_compile examples/comodelfabric/rickbar_ollama_bridge_r0.py
