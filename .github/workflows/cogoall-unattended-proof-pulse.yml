@@ -27,7 +27,7 @@ jobs:
         continue-on-error: true
         shell: bash
         run: |
-          set -o pipefail
+          set -euo pipefail
           python -B examples/cotalkitout/decision_gate_r0.py 2>&1 | tee decision.log
           python -B examples/cotalkitout/cograce_recovery_r0.py 2>&1 | tee grace.log
           python -B examples/cotalkitout/cosuccession_handoff_r0.py 2>&1 | tee succession.log
@@ -45,7 +45,7 @@ jobs:
           python - <<'PY'
           import datetime, hashlib, json, os, pathlib
           logs = {}
-          for name in ('decision', 'grace', 'succession', 'progress'):
+          for name in ('decision', 'grace', 'succession', 'acceptance', 'progress'):
               p = pathlib.Path(name + '.log')
               logs[name] = hashlib.sha256(p.read_bytes()).hexdigest() if p.exists() else None
           record = dict(schema='cogoall-proof-pulse-r0',
