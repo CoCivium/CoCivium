@@ -7,6 +7,8 @@ def fake_fetch(url):
         return {"private": False, "default_branch": "main"}
     if url.endswith("/branches/main"):
         return {"commit": {"sha": "a" * 40}}
+    if "/git/commits/" in url:
+        return {"tree": {"sha": "0" * 40}}
     if "/git/trees/" in url:
         return {"truncated": False, "tree": [
             {"type": "blob", "path": "docs/Onramp/hello.md", "sha": "b" * 40, "size": 100},
