@@ -1,0 +1,23 @@
+name: CoTalkItOut bounded decision gate
+on:
+  push:
+    paths:
+      - "examples/cotalkitout/**"
+      - ".github/workflows/cotalkitout-r0.yml"
+  pull_request:
+    paths:
+      - "examples/cotalkitout/**"
+      - ".github/workflows/cotalkitout-r0.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  decision:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -B examples/cotalkitout/decision_gate_r0.py
