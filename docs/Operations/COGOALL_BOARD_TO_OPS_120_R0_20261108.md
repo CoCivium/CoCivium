@@ -211,6 +211,15 @@ Prioritize P0 001-030 for proof, X2 bridge, and interface; P1 031-070 for Ollama
 **Current X2 screenshot observed 2026-11-08 around 20:35 UTC:** desktop visibly had existing bottom CoAll rail, CoOrb, a CoSurface local-observations web view, PS7 windows and WhatsApp. Its visible content is consistent with a desktop/prototype present; not independent proof of model invocation, actual R5 producer-to-receiver binding or 24h survivorship. If native control becomes authorized, reuse those surfaces rather than inventing more.
 
 **Next acceptance:** bind this deterministic verdict (only as a read-only projection) into the existing actual R5 producer after authenticated readback, then test a real stalled work item and one changed external condition. Measure number of manual session messages and task completion against baseline; if no improvement, remove the extra layer.
+## CoGrace / CoZombie peer recovery R0 | 2026-11-08
+
+**Source candidate, not autonomous session control.** Reuse CoSessionAutocycle lifecycle, CoReGroup receipts and CoTalkItOut policy. [CoSessionGraceRecoveryR0](../../scripts/CoSessionGraceRecoveryR0.py) is pure advisory logic with [tests](../../test_cosession_grace_recovery_r0.py), no competing daemon or native R5 installation.
+
+**Recovery distinction:** Healthy quiet, deliberate sleep, and pause are never CoZombie/CoLazy. Two distinct time-windowed adverse observations are required before even proposing peer assistance. Insufficient observations -> OBSERVE; no persistent adversity -> QUIET; missing user consent or eligible peer -> HOLD. A healthy, consenting, capability-qualified peer can propose help, even when unrelated to the stalled topic. Without a real authenticated receiver/fenced lease -> PROPOSE_PEER_REVIEW only; with both -> PROPOSE_REVERSIBLE_HANDOFF only. No actual effect, impersonation, automatic session close, forced merge, independent ACK or new authority is claimed.
+
+**325 metric target:** The integer 325 denotes a registry design target, not verified active sensors or a magic threshold. Never fabricate or backfill metrics. Each metric requires unit, source, time window, independent verification, calibration, uncertainty, and falsification. CoMeasure is the existing typed-unit lineage to reuse. The current code checks supplied observation structure only; it cannot independently authenticate verifier strings, prove live external observation, or infer alive/sentience/personhood.
+
+**Next operational test:** Feed actual source-qualified R5 observations to a read-only policy projection. Independently verify consent, fenced lease, preserved Seed identity, native Stop/rollback, no healthy-idle intervention, and compare rescue success against false positives, added coordination cost and manual user messages. Keep all real device/session mutations gated.
 ## Immediate critical-path proof
 
 1. Authenticated X2 read-only local R5 process, feed and launcher inventory; do not diagnose host power from remote agent state.
