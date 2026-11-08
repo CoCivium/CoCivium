@@ -59,3 +59,11 @@ jobs:
         run: npm install --no-save --no-package-lock playwright@1.56.1
       - name: Exercise actual browser interactions
         run: node examples/cosurface_stitched_r0/browser_smoke.cjs
+      - name: Attach browser visual evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cosurface-chromium-evidence
+          path: examples/cosurface_stitched_r0/evidence/*.png
+          if-no-files-found: warn
+          retention-days: 7
