@@ -1,6 +1,6 @@
 """CoGoAll unattended-progress receipt gate R0.
 
-A scheduler tick is not a work effect. Classify source-bound evidence and
+A scheduler tick is not a work effect. Structurally classify caller-supplied
 fail closed when NO_UPDATE hides unchecked work or missing provenance.
 Pure deterministic classifier, no agent execution or new authority.
 """
@@ -8,7 +8,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Literal
 
-Disposition = Literal["VERIFIED_PROGRESS", "VERIFIED_NO_DELTA",
+Disposition = Literal["STRUCTURALLY_REPORTED_EFFECT", "SOURCE_CLAIMED_NO_DELTA",
                       "WAITING_ON_EVENT", "NO_PROGRESS_EVIDENCE", "AWAITING_RECEIVER_PROOF"]
 
 @dataclass(frozen=True)
@@ -38,7 +38,7 @@ def classify(p: Pulse) -> dict:
             return {"disposition": "NO_PROGRESS_EVIDENCE", "reason": "EXECUTION_NO_RECEIPT"}
         if not p.receiver_readback:
             return {"disposition": "AWAITING_RECEIVER_PROOF", "reason": "EFFECT_NOT_INDEPENDENTLY_READ"}
-        return {"disposition": "VERIFIED_PROGRESS", "reason": "SOURCE_AND_RECEIVER_BOUND"}
+        return {"disposition": "STRUCTURALLY_REPORTED_EFFECT", "reason": "CLAIMED_FIELDS_NOT_AUTHENTICATED"}
     if p.eligible_work:
         return {"disposition": "NO_PROGRESS_EVIDENCE", "reason": "ELIGIBLE_WORK_UNATTEMPTED"}
     if p.due_work and not p.blocked_reason:
@@ -47,7 +47,7 @@ def classify(p: Pulse) -> dict:
         return {"disposition": "NO_PROGRESS_EVIDENCE", "reason": "NO_NEXT_WAKE"}
     if p.due_work:
         return {"disposition": "WAITING_ON_EVENT", "reason": p.blocked_reason}
-    return {"disposition": "VERIFIED_NO_DELTA", "reason": "CURRENT_SOURCE_NO_ELIGIBLE_DELTA"}
+    return {"disposition": "SOURCE_CLAIMED_NO_DELTA", "reason": "CALLER_ASSERTS_CURRENT_SOURCE_NO_ELIGIBLE_DELTA"}
 
 if __name__ == "__main__":
     from dataclasses import asdict
