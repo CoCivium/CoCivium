@@ -55,3 +55,71 @@ One Seed / one Orb / one gauge / one reversible thumb / one time reference / zer
 ## Evidence membrane
 
 Metaphor -> hypothesis -> reproducible evidence -> authorized operation is a **bidirectional, multidimensional** movement with provenance and challenge. CoMythOps, CoAura, CoTele and CoScendence remain exploratory unless independently supported. No spiritual or speculative premise grants operational privileges.
+
+
+## CoGoldenBraid+ R0: recursive SupplySide / DemandSide / G_dSide relations
+
+**State:** PUBLIC_RESEARCH_CANDIDATE__NOT_A_RUNTIME_OPERATOR_OR_VERIFIED_ECONOMIC_LAW.
+
+A braid is a typed, versioned, evidence-bearing relational object, **not** merely a diagram. A braid may join entities, relations, hyperrelations, or other braids. It can itself be supplied, requested, assessed against candidate futures, recombined, challenged, superseded, or retired. Recursive braiding is bounded by explicit resource budgets, stable IDs, cycle detection, consent and provenance; it is not an instruction to expand every possible relation.
+
+Three simultaneous, nonexclusive perspectives:
+
+- **SupplySide:** available capabilities, energy, knowledge, labor, assets, constraints and latent capacity that a braid can assemble or unlock.
+- **DemandSide:** expressed, inferred and unmet needs, including how a braid is discovered, requested, evaluated or rejected. Inferred needs require uncertainty and consent safeguards.
+- **G_dSide+:** plural, revisable candidate future benefits and harms of a braid, including optionality, ecological and relational impacts and interests not represented by purchasing power. No theological claim or privileged authority follows.
+
+The **relations between these perspectives** are also candidate braids. A future-directed proposal can create new demand or new supply; existing supply can change plausible futures; unmet demand can reveal missing capability. Model feedback and negative effects explicitly. No side is automatically superior.
+
+Proposed record, subject to CoPriMath typing:
+
+```text
+braid {
+  braid_id, version, constituent_refs[], relation_types[],
+  supply_claims[], demand_claims[], future_claims[],
+  context, time_valid, time_observed, observer, provenance[],
+  uncertainty[], consent_constraints[], rights_constraints[],
+  counterclaims[], counterfactuals[], cost_units[], risk_units[],
+  measurement_plan, evidence_refs[], challenge_refs[],
+  successor_ref, readiness, effect_authority
+}
+```
+
+A braid may reference other braids by stable identity and version. A graph cycle is not necessarily an error, but recursive evaluation must terminate under a depth/compute budget and record truncation or uncertainty. Keep observed versions recoverable, never silently replace a previously read projection.
+
+**Candidate evolution relation, not a validated formula:**
+
+```text
+Braid[t+1] = Evolve(Braid[t], new_evidence, needs, candidate_futures,
+                    constraints, dissent, available_budget)
+```
+
+`Evolve` must eventually have typed input/output signatures, deterministic replay conditions, bounded termination, explicit effect authority and measurable acceptance criteria. Do not confuse changes in wording or graph density with improvement.
+
+### Comparative experiment R0
+
+For the **same WorkID, task set, information budget, model budget, time horizon and rights/consent constraints**, compare:
+
+1. Supply-only ranking of candidate braids.
+2. Demand-only ranking.
+3. Hybrid supply+demand ranking.
+4. G_dSide-informed ranking, with uncertain future benefits and explicit negative controls.
+5. Random or shuffled ranking baseline.
+
+Measure task outcome, unmet-need coverage, optionality retained, verified relational benefit, total cost/latency, reversibility, fairness/rights impacts, false discoveries, and recovery after contradictory evidence. Use preregistered weights or report sensitivity, confidence intervals and counterexamples; retain Pareto alternatives rather than force one scalar winner.
+
+### Failure and adversarial probes
+
+- Attractive but false future narratives; counterfactual harm; demand manufactured by recommendation loops.
+- Resource abundance that does not translate to real benefit; inferred demand without permission.
+- Recursive braid explosion, cycles, duplicates, identity drift, stale version and evidence laundering.
+- A braid that optimizes its own salience or metric instead of real-world outcomes.
+- Cases where supply-only, demand-only or hybrid methods outperform G_dSide.
+
+### Promotion gates
+
+**SPEC -> TESTED_SOURCE:** typed schema + property tests for replay, deduplication, cycles, version retention and uncertainty.  
+**TESTED_SOURCE -> VERIFIED_EXPERIMENT:** equal-budget independent benchmark with counterexamples and measured deltas.  
+**VERIFIED_EXPERIMENT -> AUTHORIZED_RUNTIME:** receiver-verified effects, bounded rollback, explicit rights/consent gates and independent operational receipts.
+
+Related source anchors: [CoGoAll outstanding register](../Operations/COGOALL_OUTSTANDING_REGISTER_20261108.md), [CoGoldenBraid discovery hub](../Onramp/COGOALL_PUBLIC_REBOUND_HUB_20261108.md), [CoLiving highlight asset contract](../Architecture/COLIVING_HIGHLIGHT_ASSETS_R0.md). Neither source publication nor recursive elegance is proof of a working braid engine.
