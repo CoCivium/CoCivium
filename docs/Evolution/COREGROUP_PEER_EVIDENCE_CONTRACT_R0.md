@@ -77,3 +77,33 @@ This contract is a coordination artifact, not proof that its workflow is deploye
 **Stop/selection rules:** An objection without a discriminating experiment stays TALK; an unauthorized effect is HELD; duplicate assent does not create a new WorkID; self-asserted verification without external receipt stays HELD. Progress is measured by validated decisions, closed interface mismatches, reduced human relay and successful recovery, **not** tokens exchanged or virtual-session count.
 
 `TALK_NE_ACT` · `QUALIFIED_NE_AUTHORIZED` · `DISCUSSION_NE_RECEIVER_ACK` · `VIRTUAL_SESSION_NE_PROVIDER_TAB` · `PROPOSAL_NE_RUNTIME`.
+
+## CoZombie / CoGrace session recovery triage (2026-11-08)
+
+**Status: synthetic classifier candidate; no live session takeover, cross-provider access, or evidence of AI subjective aliveness.** CoTalkItOut is an escalation/coordination mechanism, not an involuntary session merger. Recover the **work**, preserve independent participant identities, and prefer the same active healthy worker wherever possible.
+
+- **HEALTHY_QUIET:** intentionally dormant, appropriately graceful hold, completed, or no due obligation. No rescue or busywork.
+- **UNKNOWN:** missing, conflicting or stale signals require observation, not a zombie label.
+- **ACTIVE_OR_WAITING:** progress is recent or obligation not due. Preserve the incumbent.
+- **STALLED / DEGRADED:** independently observed overdue obligation and stale progress, or conflicting evidence. Escalate with reason, policy, baseline and retry budget.
+- **HUMAN_GATE:** privacy, authority, irreversible effects or recipient consent require a human decision; peer assistance does not bypass it.
+
+### Evidence-driven trigger
+
+A selected **CoPriMath / CoMeasure** policy can eventually use hundreds of registered measurements, but the current number **325 is a requested design target, not an audited inventory**. Each qualifying metric needs `metric_id, units, source, observer, valid_time, freshness, sampling_window, uncertainty, threshold_provenance, decision_relevance, privacy_scope, counterexample`. Measure verified work, healthy sleep, obligation deadlines, lease status, independent receiver effects, bounded recovery and human relay burden. Reject raw activity, model-generated enthusiasm, number of tabs and self-claimed sentience as sole evidence.
+
+The first pure implementation uses nine **metric families**, not fake 325 named metrics: `examples/cotalkitout/session_recovery_r0.py`. It requires joint overdue and stale-progress evidence for a stalled classification. The policy must be calibrated against real positive/negative cases and different phases; it is not a universally optimal time threshold.
+
+### Peer help without unsafe takeover
+
+A stalled WorkID may be presented to an eligible, independently bounded peer, including a healthy high-performing session, **only** when information rights, consent, role capability, available budget and collision domains are compatible. A peer may offer challenge, context reconstruction or a proposal without mutating another session. To actually take over a conflicting effect, fence the old lease, preserve the checkpoint, elect one successor, create a new epoch and independently verify the effect. No silent model identity fusion or global account authority.
+
+When no eligible peer exists, stay held and keep the wake predicate. Do not wake all sessions or demand that rick relay prompts. Merge compatible **findings and source-bound work objects**, not private conversation histories or personalities.
+
+### Acceptance and negative controls
+
+The existing `tests/gs_loop/test_session_recovery.py` verifies 15 synthetic cases: healthy dormancy, graceful hold, unknown metrics, recent work, future due dates, live lease fencing, no peer consent, incompatible peers, one deterministic proposed helper, conflicts, protected human gates, no due obligations, impossible timestamps, insufficient proof and metric-family accounting. Test success **does not demonstrate live takeover, 24h operation or 325 maintained metrics**.
+
+A promotion benchmark must additionally measure: false-positive forced rescue rate, stalled-work recovery yield, human interrupts, duplicated effects, downstream receiver usefulness, energy/cost and successful rollback. Require explicit baselines (do nothing / local retry / peer challenge / qualified handoff); report when intervention performs worse than healthy waiting.
+
+`QUIET_NE_ZOMBIE` · `METRIC_COUNT_NE_METRIC_QUALITY` · `PEER_ASSIST_NE_AUTHORITY_MERGE` · `TAKEOVER_PROPOSAL_NE_EXECUTION` · `LEASE_ACTIVE_NE_SAFE_TO_REPLACE` · `MODEL_BUSY_NE_USEFUL`.
