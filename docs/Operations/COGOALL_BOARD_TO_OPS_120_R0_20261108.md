@@ -220,6 +220,13 @@ Prioritize P0 001-030 for proof, X2 bridge, and interface; P1 031-070 for Ollama
 **325 metric target:** The integer 325 denotes a registry design target, not verified active sensors or a magic threshold. Never fabricate or backfill metrics. Each metric requires unit, source, time window, independent verification, calibration, uncertainty, and falsification. CoMeasure is the existing typed-unit lineage to reuse. The current code checks supplied observation structure only; it cannot independently authenticate verifier strings, prove live external observation, or infer alive/sentience/personhood.
 
 **Next operational test:** Feed actual source-qualified R5 observations to a read-only policy projection. Independently verify consent, fenced lease, preserved Seed identity, native Stop/rollback, no healthy-idle intervention, and compare rescue success against false positives, added coordination cost and manual user messages. Keep all real device/session mutations gated.
+## CoGrace observation validity hardening | 2026-11-08
+
+- [Current CI 42522324851](https://github.com/CoCivium/CoCivium/actions/runs/42522324851) completed SUCCESS for the updated source commit, including the CoGrace tests.
+- [CoSessionGraceRecoveryR0.py](../../scripts/CoSessionGraceRecoveryR0.py) now parses UTC timestamps, rejects malformed or non-UTC observations, rejects future observations when an explicit evaluation clock is supplied, applies bounded freshness, de-duplicates identical and overlapping windows, and limits the number of submitted windows.
+- Eight additional tests challenge stale/future/malformed/overlapping observations and invalid policy bounds. This closes a scoped synthetic false-positive pathway; it does not establish that an external verifier was authenticated or that a real receiver measured anything.
+- X2 Desktop Commander agent observed offline, last seen nine hours prior. Host power and existing native rickBar status are not inferred from this remote bridge.
+- Next needed proof: time-source authentication, exact receiver readback, unit registry binding and a real shadow observation stream before suggesting any session handoff.
 ## Immediate critical-path proof
 
 1. Authenticated X2 read-only local R5 process, feed and launcher inventory; do not diagnose host power from remote agent state.
