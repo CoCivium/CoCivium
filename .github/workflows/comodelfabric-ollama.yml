@@ -1,0 +1,27 @@
+name: CoModelFabric Ollama gateway tests
+
+on:
+  push:
+    paths:
+      - 'examples/comodelfabric/**'
+      - '.github/workflows/comodelfabric-ollama.yml'
+  pull_request:
+    paths:
+      - 'examples/comodelfabric/**'
+      - '.github/workflows/comodelfabric-ollama.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  loopback-gateway:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run isolated gateway tests
+        run: python examples/comodelfabric/ollama_gateway_r0.py
