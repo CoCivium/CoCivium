@@ -58,6 +58,16 @@ Rights violations here means group satisfaction below 0.5 in one period, not a l
 
 The relationship traversal fixture is an original deterministic executable test of source-linked reachability and explicit negative controls, not a causal model or economic forecast. The flat and recursive variants have unequal allowed traversal depth by design; this means their direct cost is **not** matched and no performance advantage can be inferred. No G_dSide welfare preference, model training, external API or live allocator is involved. More rigorous blinded comparisons under matched costs, information and shock seeds remain open.
 
+## G_dSide pull-vector backcasting R0: explicitly speculative future specification
+
+**Added executable candidate:** [pull_vector_r0.py](pull_vector_r0.py), with [14 adversarial tests](test_pull_vector_r0.py). It describes a desired future as a finite, plural, typed objective vector (named objective, unit, target, weight, minimum floor and source), plus bounded candidate actions (declared predicted effects, source, cost and rights gate). The output ranks **hypothetical** actions by expected reduction in objective shortfall. It cannot establish that those effects would occur. A chosen proposal is not automatically an instruction, welfare authority, evidence of a G_d preference or a deployed CoAll product.
+
+**Purpose:** treat an almost-spec-like future as a falsifiable set of constraints and competing values, not a single glowing destiny. Supply, demand and G_dSide are lenses on alternative feasible futures, subject to observed capacities, unheard needs, consent, ecology and future optionality. Preserve stakeholder conflicts and explicit UNKNOWNs.
+
+**Built-in counterexample:** a deliberately exaggerated future-effect claim labeled `hype` can defeat a less ambitious but more defensible proposal within the naïve selector. This shows that vector optimization without calibrated causal evidence can select the wrong action. At zero assumed effect reliability, none of the effects provides a positive modeled gain. Rights veto, resource budget and minimum objective floors remain hard constraints in this toy implementation. These are synthetic counterfactuals, not economic validation.
+
+**Next discriminating experiment:** compare multiple independently sourced objective vectors, input facts and action-effect estimates under the same budget, then pre-register forecasts and check eventual prediction error, downstream harms, regrets, minority-outcome quality and value disagreement. Require a separate evidence reviewer, not just more models voting on the same speculative assumptions. Do not activate any real allocation or public intervention without the relevant human authority.
+
 ## Reproducibility
 
 Requirements: Python 3.9+, standard library only.
