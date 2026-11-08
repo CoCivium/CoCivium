@@ -162,6 +162,42 @@ Prioritize P0 001-030 for proof, X2 bridge, and interface; P1 031-070 for Ollama
 - [ ] **119 | P3: Choose first board-visible use case**. Evidence required: exact WorkID, revision, effect, timestamp and independent verification of this scope.
 - [ ] **120 | P3: Receive and track board challenges**. Evidence required: exact WorkID, revision, effect, timestamp and independent verification of this scope.
 
+## CoEvo reconciliation delta | 2026-11-08
+
+**No new 120-item list.** The 120 original checkboxes remain the primary acceptance backlog. The items below separate evidence obtained from actual user-device effects still missing.
+
+### Newly verified source-level evidence
+
+- [AI Onramp Hub R1](../Onramp/COGOALL_AI_ONRAMP_HUB_R1_20261108.md) is landed on this candidate branch, linking current work and proof boundaries. This does not prove independent AI uptake.
+- [Source catalog run 42519335261](https://github.com/CoCivium/CoCivium/actions/runs/42519335261) completed SUCCESS, enumerating **1,891 actual eligible public GitHub source paths in seven public repositories**. Its five offline safety tests passed; the first 687-page attempt failed the threshold correctly.
+- [Catalog artifact 13632189865](https://github.com/CoCivium/CoCivium/actions/runs/42519335261/artifacts/13632189865) contains source-pinned Markdown, JSONL and digest; expiration is December 8, 2026. Not 1,891 human-reviewed insights or individual HTTP acceptance.
+- [Existing highlight registry](../../ai/highlight-assets.json) now carries source links, with lowercase rickBar. Some are general discovery links, explicitly not direct asset proof.
+- [Later onramp CI 42519396090](https://github.com/CoCivium/CoCivium/actions/runs/42519396090) completed SUCCESS for its specific revision. Do not extrapolate to runtime.
+- User reports the concise hub note was **sent** to WhatsApp Meta AI. State: USER_REPORTED_SENT / RECEIVER_ACK_UNPROVEN. No recipient response or source uptake verified.
+- Desktop Commander reports X2 remote agent offline, last seen 8 hours earlier. This does not imply that the host itself is off.
+- Existing CoEvoAll Pulse automation is enabled hourly, but current adoption of this backlog was not verified. Attempted additional watch was blocked by the account's ten-active-task limit. Do not overwrite existing automations.
+
+### Top ten unresolved gates, in execution order
+
+| Rank | Related IDs | Exit evidence |
+| --- | --- | --- |
+| 1 | 011-014 | Authenticated live X2 R5 process, launcher, producer/feed and receiver readback |
+| 2 | 022, 031-035 | Fresh existing R5 Ollama observation rendered through rickBar, not another window |
+| 3 | 036-040 | One authorized local Ollama inference with model, WorkID, output hash and useful user-visible result |
+| 4 | 041-048 | Receiver authenticated ACK, idempotent single effect and cold-restart Seed recovery |
+| 5 | 049-050 | Real greater-than-24-hour independent Seed readbacks, native Stop and rollback |
+| 6 | 051-060 | Two independent model proposals, one challenger and evidence-retaining reconciliation |
+| 7 | 061-070 | Fair single-model versus team versus federation benchmark, including negative results |
+| 8 | 071-100 | Exact-SHA CI, explicit release gates, secrets/rights controls and fault tolerance |
+| 9 | 101-110 | One independently tested first-use task and recoverable exit |
+| 10 | 111-120 | Board corrections, durable catalog mirror, source-linked public highlights and consented collaborators |
+
+### Two follow-ons mapped to current tasks
+
+- **Catalog longevity (IDs 113-114):** before the artifact expires, mirror the exact manifest to independently readable public custody, verifying unchanged hashes. An artifact available for 30 days is not a permanent published knowledge index.
+- **WhatsApp peer uptake (IDs 010, 120):** only promote beyond SENT when recipient independently reads a pinned source and contributes an attributable task/diff/ACK. Do not require routine human relays.
+
+**Operating state:** 120 task-level acceptance checkboxes remain open. Source creation and CI checks are progress, but no evidence here closes live X2 integration, actual receiver ACK, real >24-hour survivorship or federated superiority. One elected actuator per conflicting effect; all sessions are peers.
 ## Immediate critical-path proof
 
 1. Authenticated X2 read-only local R5 process, feed and launcher inventory; do not diagnose host power from remote agent state.
