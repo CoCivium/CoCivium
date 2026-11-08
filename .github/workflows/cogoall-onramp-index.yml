@@ -13,6 +13,8 @@ on:
       - 'test_cosession_grace_recovery_r0.py'
       - 'scripts/CoGraceTalkBridgeR0.py'
       - 'test_cograce_talk_bridge_r0.py'
+      - 'scripts/CoOrbMembraneTemporalR0.py'
+      - 'test_coorb_membrane_temporal_r0.py'
       - '.github/workflows/cogoall-onramp-index.yml'
   pull_request:
     paths:
@@ -25,6 +27,8 @@ on:
       - 'test_cosession_grace_recovery_r0.py'
       - 'scripts/CoGraceTalkBridgeR0.py'
       - 'test_cograce_talk_bridge_r0.py'
+      - 'scripts/CoOrbMembraneTemporalR0.py'
+      - 'test_coorb_membrane_temporal_r0.py'
       - '.github/workflows/cogoall-onramp-index.yml'
   workflow_dispatch:
 permissions:
@@ -48,6 +52,8 @@ jobs:
         run: python -B -m unittest -v test_cosession_grace_recovery_r0
       - name: CoGrace plus CoTalkItOut shadow integration tests
         run: python -B -m unittest -v test_cograce_talk_bridge_r0
+      - name: CoOrb temporal membrane version and forecast gates
+        run: python -B -m unittest -v test_coorb_membrane_temporal_r0
       - name: Enumerate 1000 public real GitHub source pages
         run: python -B scripts/build_public_onramp_index.py --output-dir "$RUNNER_TEMP/cogoall-index" --minimum-pages 1000
       - name: Publish catalog and receipts as CI artifact
