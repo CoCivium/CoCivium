@@ -27,3 +27,20 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - name: Run stitched UX fail-closed static checks
         run: python -B -m unittest discover -s examples/cosurface_stitched_r0 -p 'test_*.py' -v
+      - name: Build portable read-only preview bundle
+        if: matrix.python-version == '3.13'
+        run: |
+          mkdir -p dist/cosurface-preview-r0
+          cp examples/cosurface_stitched_r0/index.html examples/cosurface_stitched_r0/preview.ps1 dist/cosurface-preview-r0/
+          cd dist/cosurface-preview-r0
+          sha256sum index.html preview.ps1 > SHA256SUMS.txt
+          cd ..
+          zip -qr cosurface-preview-r0.zip cosurface-preview-r0
+      - name: Attach portable preview artifact
+        if: matrix.python-version == '3.13'
+        uses: actions/upload-artifact@v4
+        with:
+          name: cosurface-preview-r0
+          path: dist/cosurface-preview-r0.zip
+          if-no-files-found: error
+          retention-days: 7
