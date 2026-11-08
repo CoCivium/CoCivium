@@ -39,10 +39,11 @@ class RecoveryCoordinator:
     def handoff(self, permitted, receiver_readback):
         if self.status != "STALLED" or not permitted:
             return "DENIED"
-        next_epoch = self.seed.elect(self.seed_id)
         if not receiver_readback:
             self.status = "WAITING_ON_EVENT"
             return "ACK_UNPROVEN"
+        # This boolean is fixture input, not independent receiver proof.
+        next_epoch = self.seed.elect(self.seed_id)
         self.epoch = next_epoch
         self.status = "RECOVERING"
         return "HANDOFF_READBACK_CONFIRMED"
@@ -104,6 +105,7 @@ class CoTalkRecoveryTests(unittest.TestCase):
                 coordinator.observe("stuck", expected_to_work=True)
             self.assertEqual(coordinator.handoff(True, False), "ACK_UNPROVEN")
             self.assertEqual(coordinator.status, "WAITING_ON_EVENT")
+            self.assertEqual(seed.db.execute("SELECT epoch FROM seed").fetchone()[0], 1)
             seed.close()
 
 
