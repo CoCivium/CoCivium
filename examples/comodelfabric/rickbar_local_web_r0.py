@@ -53,6 +53,8 @@ def allowed_local_request(host, origin=None):
         parsed = urlsplit("//" + host)
         name = parsed.hostname
         port = parsed.port
+        if parsed.username is not None or parsed.password is not None:
+            return False
     except ValueError:
         return False
     if not name or (port is not None and not 1024 <= port <= 65535):
