@@ -29,6 +29,14 @@ const evidenceDir = resolve(__dirname, "evidence");
 
     await page.locator("#orb").click();
     assert.equal(await page.locator("#orb-panel").isVisible(), true, "Orb opens nav");
+    assert.equal(await page.locator("#orb").getAttribute("data-membrane-state"), "unknown", "No unverified green membrane");
+    assert.equal(await page.locator("#orb-contract-version").innerText(), "CoOrb.Membrane.R0");
+    assert.equal(await page.locator("#orb-evidence-source").innerText(), "UNBOUND");
+    assert.equal(await page.locator("#orb-receiver-version").innerText(), "UNBOUND");
+    assert.equal(await page.locator("#orb-present-state").innerText(), "UNKNOWN");
+    assert.equal(await page.locator("#orb-future-state").innerText(), "UNQUALIFIED");
+    assert.equal(await page.locator("#orb-past-state").innerText(), "NO READBACK");
+    assert.match(await page.locator("#membrane-truth").innerText(), /No live feed is attached/);
     await page.locator("#orbnav button", { hasText: "Future" }).click();
     assert.equal(await page.locator("#future").isVisible(), true);
     await page.screenshot({ path: resolve(evidenceDir, "future-workspace.png"), fullPage: true });
