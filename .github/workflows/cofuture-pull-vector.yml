@@ -1,0 +1,27 @@
+name: CoFuture pull-vector synthetic checks
+
+on:
+  push:
+    paths:
+      - 'experiments/gdside/**'
+      - '.github/workflows/cofuture-pull-vector.yml'
+  pull_request:
+    paths:
+      - 'experiments/gdside/**'
+      - '.github/workflows/cofuture-pull-vector.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  typed-pareto:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run synthetic pull vector checks
+        run: python -B experiments/gdside/cofuture_pull_vector_r0.py
