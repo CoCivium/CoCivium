@@ -1,6 +1,6 @@
 # CoGoAll 1,000+ source-pinned public page index
 
-Generated UTC: 2026-11-08T20:52:26.983004+00:00. Actual eligible source pages: **1892**.
+Generated UTC: 2026-11-08T20:52:36.030433+00:00. Actual eligible source pages: **1892**.
 Only public GitHub tree metadata was read. Pages are source paths, not independent human-reviewed insight claims.
 Do not load this entire index into an AI context; filter by topic, repository, and exact revision.
 
