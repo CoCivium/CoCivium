@@ -36,3 +36,40 @@
 6. User-reported WhatsApp paste establishes SEND_REPORTED, not RECEIVER_ACK or MEMORY_SYNC.
 
 **Next product proof:** one X2 RickBar prompt, one real local Ollama response, durable WorkID, receiver display, restart recovery and independent timing readback.
+
+
+## Unattended-progress causal acceptance chain (2026-11-08 17:32 EST observation)
+
+**Observed from automation/device tools:** CoEvoAll Pulse enabled with hourly schedule. Its 2026-11-08 21:38:42Z recorded invocation ended 21:38:43Z as `no_update`, with no run chat reference; no material engineering effect is demonstrated by that record. Ten enabled scheduled tasks reached the plan capacity, preventing creation of the additional CoGoAll proof watch. X2 Desktop Commander bridge reported OFFLINE, last seen about ten hours earlier; that says nothing definitive about host power or the locally visible UI. These observations do **not** imply that no other work happened across all providers or surfaces.
+
+### Causal chain required for a true unattended result
+
+`WAKE_VERIFIED -> SOURCE_CURRENTNESS_BOUND -> ELIGIBLE_WORK_SELECTED -> CAPABILITY_AND_AUTHORITY_CHECKED -> FENCED_LEASE -> EXECUTION_ATTEMPT -> ARTIFACT/RECEIPT -> INDEPENDENT_READBACK -> CHECKPOINT -> NEXT_WAKE_COMMITTED -> ORB_PROJECTION`.
+
+At each link record `work_id, attempt_id, observer, timestamp, source_revision, status, evidence_ref, authority_scope, predecessor, next_wake, nonclaims`. A scheduler invocation is **not** a WorkID advance. `NO_UPDATE` is acceptable only when the latest source/event check and selection decision are themselves inspectable, or the wake explicitly has no work obligation; otherwise classify `NO_PROGRESS_EVIDENCE`, not `SUCCESS`.
+
+### Diagnosis and bounded repair ladder
+
+1. **Wake exists, source unchecked:** inspect source revisions and due WorkIDs, not the whole historical corpus. Distinguish `NO_NEW_TRIGGER` from `SOURCE_UNAVAILABLE`.
+2. **Source available, work not selected:** choose one previously registered, authorized nonconflicting read-only or reversible proof gap; preserve all other work and expose its next wake. If none eligible, record `WAITING_ON_EVENT` with an exact event trigger.
+3. **Worker unavailable:** try only an already authorized alternative receiver/model/runtime; keep X2 bridge status separate from X2 host. No fabricated credentials, daemon or session pickup.
+4. **Execution attempted:** persist input hash, bounded output, exit code, exact test count and artifact hash; no `PASS` from code presence, screenshot, or status prose.
+5. **Receipt exists, independent readback missing:** mark `AWAITING_RECEIVER_PROOF`; retry or reassign the proof task under fencing, not the potentially irreversible original effect.
+6. **Checkpoint missing:** persist an idempotent successor-ready WorkID under existing approved custody; if store/authority unavailable, park explicit `BLOCKED` and do not pretend a chat message is durable.
+7. **No-progress recurrence:** use CoTalkItOut evidence challenge and one bounded alternate experiment, then cooldown/sleep on a concrete event rather than infinite loops. Preserve last working RickBar/CoBar and Break Glass.
+
+### CI+ synthetic fault matrix (NOT_RUN)
+
+- Scheduler fires but no WorkID is selected: not counted as engineering throughput.
+- `NO_UPDATE` without inspectable source/trigger observation: `NO_PROGRESS_EVIDENCE`.
+- A legitimate no-change wake: no noisy user message, clear next-wake record.
+- Offline X2 bridge while an independently reachable local service is healthy: avoid false host failure.
+- All ten automation slots occupied: reuse an authorized carrier, never silently replace/delete schedules.
+- Two peers propose the same job: one fenced effect writer, distinct challenge receipts, no duplicate committed effect.
+- Worker crashes before/after commit: successor resumes from exact checkpoint and rejects stale epoch.
+- Receiver never reads object: keep `AWAITING_RECEIVER_PROOF`, no fake acceptance.
+- Multiple idle hours with a due, authorized task: investigate selection/execution blockers rather than count routine scheduler health as progress.
+
+**Remediation priority:** implement these probes in the existing GS-loop/CoReGroup CI and bind a receiver-produced end-to-end record to the actual RickBar/Ollama host when reachable. Existing CoEvoAll Pulse already has extensive work-selection and recovery instructions; merely extending its prompt again is not a runtime fix. Do not create duplicate watches, new authority, or additional public task catalogs.
+
+**Proof boundary:** This section records a causal contract and current observations; it does not assert fixed runtime autonomy, ongoing execution, cross-session sync, >24h survival, or independent adoption.
