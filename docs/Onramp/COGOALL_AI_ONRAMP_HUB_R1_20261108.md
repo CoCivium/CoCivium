@@ -40,6 +40,15 @@ These are **links to public source**, not decorations or proof of product maturi
 - **G_dSide optional economics hypothesis:** [synthetic, falsifiable experiment PR #379](https://github.com/CoCivium/CoCivium/pull/379), not metaphysical fact.
 - **Current highlight registry:** [existing 10-entry candidate registry](https://github.com/CoCivium/CoCivium/blob/main/ai/highlight-assets.json), originally dated Sep 23, needs source-aware update; do not silently rewrite prior state.
 
+## Durable public index now source-controlled
+
+**A separate, current publication gate has been satisfied at the GitHub-source level.** The catalog is no longer dependent on a 30-day CI artifact:
+
+- [Readable public-page index (latest branch snapshot)](../../generated/onramp/public-pages.md)
+- [Machine JSONL catalog](../../generated/onramp/public-pages.jsonl)
+- [Exact generation timestamp, count and checksums](../../generated/onramp/receipt.json)
+
+The first durable source-controlled snapshot enumerated **1,892** real tracked public paths across seven public repositories at **2026-11-08T20:34:33Z**. Its receipt reports SHA-256 digests of the JSONL and Markdown bytes. Follow the receipt for the newest count rather than treating the initial 1,891-page CI artifact as permanently current. This is GitHub branch custody, not a second independent off-GitHub mirror, a guarantee of link freshness, page-level content review or external WhatsApp readback.
 ## Verified 1,891-page public source catalog | November 8 CI
 
 **Actual build result:** [GitHub Actions run 42519335261 completed SUCCESS](https://github.com/CoCivium/CoCivium/actions/runs/42519335261). It enumerated **1,891** eligible real source-pinned GitHub URLs across seven verified-public CoCivium-owned repositories. Its five offline negative/positive tests passed; the builder rejects fabricated counts, private repositories and truncated Git trees.
