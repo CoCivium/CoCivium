@@ -28,9 +28,21 @@ class GateTests(unittest.TestCase):
         self.assertEqual(route(base(verified_result=True))["reason"],
                          "verified_result_without_receipt")
     def test_source_bound_verification_qualifies_without_execution(self):
-        x=route(base(verified_result=True,evidence_refs=("job:123",)))
+        x=route(base(verified_result=True,evidence_refs=("job:123",)), verified_evidence=("job:123",))
         self.assertEqual(x["state"],"QUALIFIED")
         self.assertEqual(x["receipt_refs"],("job:123",))
+    def test_self_claim_with_receipt_string_is_held(self):
+        x=route(base(verified_result=True,evidence_refs=("job:forged",)))
+        self.assertEqual(x["state"],"HELD")
+        self.assertEqual(x["reason"],"independent_verifier_evidence_missing")
+    def test_mismatched_verifier_ref_is_held(self):
+        x=route(base(verified_result=True,evidence_refs=("job:forged",)),
+                verified_evidence=("job:different",))
+        self.assertEqual(x["state"],"HELD")
+    def test_partial_verifier_match_is_held(self):
+        x=route(base(verified_result=True,evidence_refs=("job:a","job:b")),
+                verified_evidence=("job:a",))
+        self.assertEqual(x["state"],"HELD")
     def test_missing_identity_is_held(self):
         self.assertEqual(route(base(source_refs=()))["state"],"HELD")
 
