@@ -95,6 +95,7 @@ class UXContract(unittest.TestCase):
     def test_rail_first_no_popup_default_and_reversible_workspace(self):
         self.assertIn('id="workspace" hidden', HTML)
         self.assertIn('id="r5-rail"', HTML)
+        self.assertIn('aria-label="rickBar: CoAll desktop navigation', HTML)
         self.assertIn('role="toolbar"', HTML)
         self.assertIn('id="rail-workspace"', HTML)
         self.assertIn('id="rail-stop"', HTML)
