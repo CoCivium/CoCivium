@@ -75,7 +75,11 @@ def gather(fetch=http_json, repos=REPOS):
         commit = branch.get("commit", {}).get("sha")
         if not isinstance(commit, str) or not re.fullmatch(r"[0-9a-f]{40}", commit):
             raise RuntimeError("UNPINNED_SOURCE_HOLD")
-        tree = fetch(f"https://api.github.com/repos/{repository}/git/trees/{commit}?recursive=1")
+        commit_data = fetch(f"https://api.github.com/repos/{repository}/git/commits/{commit}")
+        tree_sha = commit_data.get("tree", {}).get("sha")
+        if not isinstance(tree_sha, str) or not re.fullmatch(r"[0-9a-f]{40}", tree_sha):
+            raise RuntimeError("MISSING_GIT_TREE_SHA_HOLD")
+        tree = fetch(f"https://api.github.com/repos/{repository}/git/trees/{tree_sha}?recursive=1")
         if tree.get("truncated") is not False or not isinstance(tree.get("tree"), list):
             raise RuntimeError("TRUNCATED_OR_MISSING_TREE_HOLD")
         for object_ in tree["tree"]:
