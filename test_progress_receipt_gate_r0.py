@@ -11,7 +11,7 @@ def base(**updates):
 
 class Tests(unittest.TestCase):
     def test_true_no_change_with_source_and_wake(self):
-        self.assertEqual(classify(base())["disposition"],"VERIFIED_NO_DELTA")
+        self.assertEqual(classify(base())["disposition"],"SOURCE_CLAIMED_NO_DELTA")
     def test_no_update_without_check_fails(self):
         self.assertEqual(classify(base(source_checked=False))["reason"],"SOURCE_NOT_CHECKED")
     def test_due_eligible_work_cannot_claim_idle(self):
@@ -30,7 +30,7 @@ class Tests(unittest.TestCase):
     def test_full_caller_proof_is_only_structurally_classified(self):
         d=classify(base(execution_attempted=True,output_digest="sha256:fixture",
                         effect_receipt="fixture:receipt",receiver_readback="fixture:ack"))
-        self.assertEqual(d["disposition"],"VERIFIED_PROGRESS")
+        self.assertEqual(d["disposition"],"STRUCTURALLY_REPORTED_EFFECT")
     def test_missing_identity_fails(self):
         self.assertEqual(classify(base(source_revision=""))["reason"],"UNBOUND_WAKE_OR_SOURCE")
 
