@@ -8,7 +8,7 @@
 
 ## November 8, 2026 | CoGoAll / CoOmni catch-up route
 
-**One link to share:** this Evergreen onramp remains the stable entry address. A new [human-readable CoOmni catch-up hub](AI_ONRAMP_CATCHUP_HUB_20261108.md) and [26-entry machine-readable public-source manifest](../../ai/onramp/cogoall-catchup-20261108.json) are proposed together in [public draft PR #382](https://github.com/CoCivium/CoCivium/pull/382). Until that PR is reviewed and merged, its changes are **not** on `main`; do not mistake this candidate link for a deployed, independently consumed update.
+**One link to share:** this Evergreen onramp remains the stable entry address. The [CoOmni catch-up hub](AI_ONRAMP_CATCHUP_HUB_20261108.md) and [26-entry machine-readable public-source manifest](../../ai/onramp/cogoall-catchup-20261108.json) extend this onramp. [PR #382](https://github.com/CoCivium/CoCivium/pull/382) preserves the review lineage. Check the currently selected branch and revision when reading; public source availability is **not** deployment, cross-session synchronization, or independently confirmed uptake.
 
 The revised catch-up explains the open intelligence commons, source-backed work on RickBar and local Ollama, CoMindshare+/CoModelFabric+ ambitions, evidence and recovery boundaries, and useful optional links. It does not assert a live multi-model federation, WhatsApp/Meta AI ingestion, CoStead acceptance, or a thousand verified pages.
 
