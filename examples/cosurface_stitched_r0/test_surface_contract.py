@@ -93,6 +93,18 @@ class UXContract(unittest.TestCase):
             with self.subTest(term=term):
                 self.assertIn(term, HTML)
 
+    def test_rail_first_no_popup_default_and_reversible_workspace(self):
+        self.assertIn('id="workspace" hidden', HTML)
+        self.assertIn('id="r5-rail"', HTML)
+        self.assertIn('role="toolbar"', HTML)
+        self.assertIn('id="rail-workspace"', HTML)
+        self.assertIn('id="rail-stop"', HTML)
+        self.assertIn("openWorkspace(false)", HTML)
+        self.assertIn('document.getElementById("rail-map").addEventListener', HTML)
+        self.assertIn('document.getElementById("rail-evidence").addEventListener', HTML)
+        self.assertIn("NO LIVE EFFECT", HTML)
+        self.assertIn("LOCAL DEMO", HTML)
+
     def test_operator_escape_and_accessible_orb(self):
         self.assertIn('aria-label="Open CoOrb;', HTML)
         self.assertIn('id="close"', HTML)
