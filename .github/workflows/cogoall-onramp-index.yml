@@ -37,13 +37,13 @@ jobs:
       - name: CoTalkItOut peer-decision and adversarial tests
         run: python -B -m unittest -v test_cotalkitout_r0
       - name: Enumerate 1000 public real GitHub source pages
-        run: python -B scripts/build_public_onramp_index.py --output-dir generated/onramp --minimum-pages 1000
+        run: python -B scripts/build_public_onramp_index.py --output-dir "$RUNNER_TEMP/cogoall-index" --minimum-pages 1000
       - name: Publish catalog and receipts as CI artifact
         if: success()
         uses: actions/upload-artifact@v4
         with:
           name: cogoall-public-onramp-1000-pages
-          path: generated/onramp/
+          path: ${{ runner.temp }}/cogoall-index/
           if-no-files-found: error
           retention-days: 30
 
