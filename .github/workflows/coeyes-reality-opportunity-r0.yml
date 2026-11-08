@@ -1,0 +1,57 @@
+name: CoEyes reality and desktop opportunity R0 (source-only)
+on:
+  pull_request:
+    paths:
+      - 'tools/coeyes_reality_ops_r0/**'
+      - '.github/workflows/coeyes-reality-opportunity-r0.yml'
+permissions:
+  contents: read
+jobs:
+  synthetic-evidence:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Deterministic causal evidence and opportunity negative controls
+        shell: bash
+        run: |
+          set -euo pipefail
+          python tools/coeyes_reality_ops_r0/test_assess.py -v
+          python -O tools/coeyes_reality_ops_r0/test_assess.py -v
+          python tools/coeyes_reality_ops_r0/assess.py tools/coeyes_reality_ops_r0/fixture.json > /tmp/coeyes-r0-decision.json
+          python - <<'PY'
+          import json
+          d=json.load(open('/tmp/coeyes-r0-decision.json', encoding='utf-8'))
+          assert d['surface']['state'] == 'APPEARANCE_ONLY'
+          assert d['surface']['appearance'] == 'STATIC_ARTWORK'
+          assert d['popup_opportunity']['next'] == 'HOLD_REMOTE_OFFLINE_NO_RESTART'
+          assert d['actual_process_restart'] == 'NOT_ATTEMPTED'
+          assert d['live_automation_installed'] is False
+          assert d['actual_X2_acceptance'] == 'NOT_OBSERVED'
+          print('PASS_SYNTHETIC_COBAR_WALLPAPER_NE_LIVE_AND_OFFLINE_NE_RESTART')
+          PY
+  ps7-source-parse-only:
+    runs-on: windows-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Parse read-only Windows probe source; do not execute the probe
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $path = (Resolve-Path 'tools/coeyes_reality_ops_r0/ReadOnlyWindowsPopupProbe.ps1').Path
+          $tokens = $null
+          $parseErrors = $null
+          [System.Management.Automation.Language.Parser]::ParseFile($path,[ref]$tokens,[ref]$parseErrors) | Out-Null
+          if (@($parseErrors).Count -ne 0) {
+            $parseErrors | ForEach-Object { Write-Error $_.ToString() }
+            throw 'POWERSHELL_SYNTAX_FAILURE'
+          }
+          Write-Output 'PASS_POWERSHELL_SOURCE_SYNTAX_ONLY__NO_X2_OR_TASK_ENUMERATION'
