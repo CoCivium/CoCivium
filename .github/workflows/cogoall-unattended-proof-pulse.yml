@@ -1,5 +1,10 @@
 name: CoGoAll unattended proof pulse
 on:
+  push:
+    paths:
+      - '.github/workflows/cogoall-unattended-proof-pulse.yml'
+      - 'examples/cotalkitout/progress_receipt_gate_r0.py'
+      - 'test_progress_receipt_gate_r0.py'
   schedule:
     - cron: '17 * * * *'
   workflow_dispatch:
@@ -26,6 +31,7 @@ jobs:
           python -B examples/cotalkitout/decision_gate_r0.py 2>&1 | tee decision.log
           python -B examples/cotalkitout/cograce_recovery_r0.py 2>&1 | tee grace.log
           python -B examples/cotalkitout/cosuccession_handoff_r0.py 2>&1 | tee succession.log
+          python -B -m unittest -v test_progress_receipt_gate_r0 2>&1 | tee progress.log
       - name: Produce immutable run-scoped evidence
         if: always()
         env:
@@ -38,7 +44,7 @@ jobs:
           python - <<'PY'
           import datetime, hashlib, json, os, pathlib
           logs = {}
-          for name in ('decision', 'grace', 'succession'):
+          for name in ('decision', 'grace', 'succession', 'progress'):
               p = pathlib.Path(name + '.log')
               logs[name] = hashlib.sha256(p.read_bytes()).hexdigest() if p.exists() else None
           record = dict(schema='cogoall-proof-pulse-r0',
@@ -59,6 +65,7 @@ jobs:
             decision.log
             grace.log
             succession.log
+            progress.log
           if-no-files-found: error
           retention-days: 30
       - name: Fail closed when source tests failed
