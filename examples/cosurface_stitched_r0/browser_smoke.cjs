@@ -19,9 +19,10 @@ const evidenceDir = resolve(__dirname, "evidence");
     assert.equal(await page.locator("#orb").count(), 1);
     await page.screenshot({ path: resolve(evidenceDir, "quiet-default.png"), fullPage: true });
 
-    await page.locator("#rail-map").click();
+    assert.equal(await page.locator("#rail-map").isDisabled(), true);
+    await page.locator("#rail-evidence").click();
     assert.equal(await page.locator("#workspace").isVisible(), true, "Rail should open workspace");
-    assert.equal(await page.locator("#map").isVisible(), true);
+    assert.equal(await page.locator("#evidence").isVisible(), true);
 
     await page.locator("#rail-stop").click();
     assert.equal(await page.locator("#workspace").isVisible(), false, "Hide must reverse open");
