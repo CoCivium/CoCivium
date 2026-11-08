@@ -40,6 +40,20 @@ All policies are constrained by `min(0.14 * current_stock, sum(need_i/efficiency
 
 Rights violations here means group satisfaction below 0.5 in one period, not a legal or moral judgment. Average and worst-served satisfaction differ, as do output and useful consumption. The G_dSide algorithm's ratio equalizer directly drives its fairness metric, so its fairness advantage is expected from the model construction. A fair adversarial evaluation must vary policy weights, structural assumptions, stakeholder values, shocks, measurement access and action costs rather than report this fixed scenario as a general win. Real-world human allocation authority is not granted.
 
+## Recursive CoGoldenBraid: SupplySide × DemandSide × G_dSide (research extension)
+
+**Status:** proposed relational design and test plan; **not implemented in this package**, not an outcome of the numerical results above, not independent validation, and not a new economic law. This extension develops the [public CoGoldenBraid note](https://github.com/CoCivium/CoCivium/issues/317#issuecomment-6726682941) and [recursive tri-side research contribution](https://github.com/CoCivium/CoCivium/issues/377#issuecomment-6726700303) within the existing research lineage. The separate [multiobjective candidate](https://github.com/CoCivium/CoCivium/tree/candidate/gdside-multiobjective-r0-20261108) must not be silently overwritten or treated as equivalent.
+
+**Idea:** SupplySide (capacities and constraints), DemandSide (expressed and unrepresented needs), and G_dSide (plural, revisable, future-oriented possibilities) are *lenses over one evidence-bearing graph*. Each lens can contain the other two: production depends on inputs and future resilience; present demand depends on supply feasibility and unheard needs; candidate futures themselves have resource demands, feasible supply and competing values. Recursion is bounded by explicit depth, time horizon and compute budget, never an infinite background loop.
+
+**Typed relation proposal:** Every proposed connection retains `edge_id | subject_ref | relation_type | object_ref | source_uri | source_hash | observed_at | valid_interval | perspective | units | evidence_class | uncertainty | contradiction_refs | permission_scope | receiver_receipt?`. Distinguish observed causal effects, modeled dependencies, normative choices, contested semantics and unknowns. A content hash proves identity, not truth; absence or unknown is not zero. A future scenario is not an authorization token.
+
+**Falsifiable next fixture, not yet run:** On the **same** two-period community allocation world with unequal voice, scarce inputs and an ecological shock, compare (A) flat supply-, demand-, and candidate-future-side models; (B) a recursive typed braid; and (C) a naive/random negative control. Hold information, optimization budget, intervention opportunity and shock seeds equal. Check whether nested relationships reveal unmet need or a bottleneck absent from flat models, and whether those findings survive independent receiver readback and an intentionally false-edge control.
+
+**Measure and publish:** prediction error, worst-served outcomes, rights/consent violations, ecological stock, future option retention, recovery after shocks, uncertainty calibration, relation retrieval accuracy, source traceability, computational and coordination cost, and user intervention count. Pre-register a losing condition: recursion is *not* retained if it worsens regret, harms, instability, privacy, inference fabrication, or cost without a measured compensating benefit. Report confidence intervals and negative cases; do not re-label the existing 80 × 36 toy results as braid evidence.
+
+**G_d boundary:** G_d remains a philosophical/metaphorical referent. Operational G_dSide denotes testable, rights-constrained candidate-future ensembles with multiple stakeholders and revisable assumptions. No proposed interpretation claims divine preferences, authority, scientific proof, production deployment, or permission to overrule humans.
+
 ## Reproducibility
 
 Requirements: Python 3.9+, standard library only.
