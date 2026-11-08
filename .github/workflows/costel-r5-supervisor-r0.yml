@@ -1,0 +1,33 @@
+name: CoStel R5 synthetic supervisor contract
+on:
+  pull_request:
+    paths:
+      - 'experiments/costel_r5_r0/**'
+      - '.github/workflows/costel-r5-supervisor-r0.yml'
+  push:
+    paths:
+      - 'experiments/costel_r5_r0/**'
+      - '.github/workflows/costel-r5-supervisor-r0.yml'
+permissions:
+  contents: read
+jobs:
+  fail-closed-supervisor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11', '3.13']
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Compile synthetic source
+        run: python -m py_compile experiments/costel_r5_r0/test_r5_supervisor_contract.py
+      - name: Ordinary fail-closed regressions
+        run: python -B -m unittest discover -s experiments/costel_r5_r0 -p 'test_*.py' -v
+      - name: Optimized mode regressions
+        run: python -O -B -m unittest discover -s experiments/costel_r5_r0 -p 'test_*.py' -v
