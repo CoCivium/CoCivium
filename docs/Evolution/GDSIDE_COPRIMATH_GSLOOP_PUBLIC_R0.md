@@ -172,3 +172,5 @@ A proposal to plant one site may improve canopy and flood resilience while worse
 **First executable canary:** implement a deterministic, small, synthetic multi-objective comparison with units and hard constraints; include dominance, incomparable alternatives, unit mismatch, no fabricated values and forced loss of a G_dSide-labeled proposal. Only expand toward real-world models after a documented evaluator and external source-backed sample exist.
 
 **Rails:** `PULL_VECTOR_NE_PHYSICAL_FORCE` · `FUTURE_DESIRE_NE_FUTURE_FACT` · `G_D_METAPHOR_NE_AUTHORITY` · `MODEL_SPEC_NE_OBSERVED_CAUSATION` · `PARETO_FRONTIER_NE_SINGLE_WINNER` · `MORE_DIMENSIONS_NE_MORE_TRUTH`.
+
+**Executable source canary (candidate):** [`experiments/gdside/cofuture_pull_vector_r0.py`](../../experiments/gdside/cofuture_pull_vector_r0.py) now contains the deterministic typed Pareto evaluator and ten synthetic negative/baseline tests; [CI workflow](../../.github/workflows/cofuture-pull-vector.yml) is configured. Consult the actual workflow result before asserting PASS. This experiment does not infer real-world future benefits or operational authority.
