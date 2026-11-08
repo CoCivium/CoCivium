@@ -30,14 +30,21 @@ def next_view(previous, *, seed_revision=None, semantic_change=False):
                 previous.projection_revision + 1,
                 previous.semantic_revision + int(semantic_change), previous.observed_at)
 
+CROSSING_TYPES = {'OBSERVE_IN', 'RESEARCH_IMPORT', 'CONTEXT_EXPORT',
+                  'PEER_DELEGATE', 'RECEIVER_ACK', 'EFFECT_EXECUTE',
+                  'RECOVER', 'REVOKE'}
+
 def cross_border(kind, *, consent=False, authority=False, receiver_readproof=False):
+    """Fixture states never assert independent verification from booleans."""
+    if kind not in CROSSING_TYPES:
+        raise ValueError('unknown membrane crossing')
     if kind == 'CONTEXT_EXPORT' and not consent:
         return 'DENIED'
     if kind == 'EFFECT_EXECUTE' and not authority:
         return 'DENIED'
-    if kind in {'CONTEXT_EXPORT','PEER_DELEGATE','RECEIVER_ACK'} and not receiver_readproof:
-        return 'SENT_UNVERIFIED'
-    return 'VERIFIED_FIXTURE_ONLY'
+    if kind in {'CONTEXT_EXPORT','PEER_DELEGATE','RECEIVER_ACK','EFFECT_EXECUTE'}:
+        return 'READBACK_ASSERTED_FIXTURE_ONLY' if receiver_readproof else 'AWAITING_RECEIVER_PROOF'
+    return 'LOCAL_CANDIDATE_UNVERIFIED'
 
 def freshness(observed_at):
     return 'UNKNOWN' if observed_at is None else 'TIMESTAMP_PRESENT_NOT_VERIFIED_CURRENT'
@@ -56,7 +63,7 @@ class Tests(unittest.TestCase):
         self.assertEqual(updated.semantic_revision,self.initial.semantic_revision)
         self.assertEqual(updated.projection_revision,2)
     def test_no_receiver_ack_by_projection(self):
-        self.assertEqual(cross_border('PEER_DELEGATE'), 'SENT_UNVERIFIED')
+        self.assertEqual(cross_border('PEER_DELEGATE'), 'AWAITING_RECEIVER_PROOF')
     def test_export_no_consent_denied(self):
         self.assertEqual(cross_border('CONTEXT_EXPORT', receiver_readproof=True), 'DENIED')
     def test_effect_requires_authority(self):
@@ -67,6 +74,14 @@ class Tests(unittest.TestCase):
         with self.assertRaises(ValueError): TemporalClaim('PREDICTED_FUTURE','tomorrow',None)
         c=TemporalClaim('PREDICTED_FUTURE','tomorrow',None,'2026-11-09','wide interval')
         self.assertNotEqual(c.kind,'OBSERVED_PRESENT')
+    def test_unknown_crossing_fails_closed(self):
+        with self.assertRaises(ValueError):
+            cross_border('INVENTED_PERMEABILITY', receiver_readproof=True)
+    def test_authorized_effect_not_verified_by_authority(self):
+        self.assertEqual(cross_border('EFFECT_EXECUTE', authority=True), 'AWAITING_RECEIVER_PROOF')
+    def test_fixture_receiver_boolean_not_independent_proof(self):
+        self.assertEqual(cross_border('RECEIVER_ACK', receiver_readproof=True),
+                         'READBACK_ASSERTED_FIXTURE_ONLY')
     def test_invalid_temporal_class_rejected(self):
         with self.assertRaises(ValueError): TemporalClaim('VERIFIED_DESTINY','no',None)
 
