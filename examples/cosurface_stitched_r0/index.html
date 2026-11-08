@@ -26,6 +26,13 @@ small,.muted{color:var(--muted)}#orb-panel h2{margin-top:0}
 .signal-panel{border-left:3px solid #79adc4;padding:2px 12px;background:#0a1524;border-radius:4px}.signal-panel p{margin:5px 0}.signal-panel strong{color:#e8f0ff}#signal-source{font-size:12px}
 @media(max-width:750px){.tile[data-span]{grid-column:span 12}header{padding:12px}main{padding:9px}.tile{min-height:110px}}
 @media(prefers-reduced-motion:no-preference){#orb{transition:transform .15s ease}#orb:hover{transform:scale(1.08)}}
+
+/* CoOrb membrane is an evidence-state projection; unknown is intentionally neutral. */
+#orb[data-membrane-state="unknown"]{border-style:dashed;box-shadow:0 0 0 4px #9fb4c044}
+#orb[data-membrane-state="verified"]{border-style:solid}
+#orb[data-membrane-state="predicted"]{border-style:dotted}
+#membrane-truth{margin:12px 0;padding:10px;border:1px solid var(--border);border-radius:9px;background:#0c1a29;font-size:13px}
+#membrane-truth p{margin:4px 0;line-height:1.5}
 </style>
 </head>
 <body>
@@ -58,12 +65,17 @@ small,.muted{color:var(--muted)}#orb-panel h2{margin-top:0}
 <aside id="orb-panel" role="dialog" aria-label="CoOrb expanded navigation" hidden>
 <h2>CoOrb+ <small>expandable presence</small></h2>
 <p>Accessible zoom from quiet glance to full screen. Hover is preview-only; click toggles, Escape closes. Right click opens the familiar menu.</p>
-<nav id="orbnav"></nav><p class="muted">Synthetic navigation only. No privileges, OS replacement or autonomous service.</p>
+<nav id="orbnav"></nav><div id="membrane-truth" role="status" aria-live="polite">
+<p><strong>Membrane contract:</strong> <span id="orb-contract-version">CoOrb.Membrane.R0</span></p>
+<p><strong>Source:</strong> <span id="orb-evidence-source">UNBOUND</span> · <strong>Receiver:</strong> <span id="orb-receiver-version">UNBOUND</span></p>
+<p><strong>Present:</strong> <span id="orb-present-state">UNKNOWN</span> · <strong>Future:</strong> <span id="orb-future-state">UNQUALIFIED</span> · <strong>Past:</strong> <span id="orb-past-state">NO READBACK</span></p>
+<p class="muted">Dashed membrane = unknown. Prediction requires source, horizon and uncertainty; it never means verified effect. No live feed is attached.</p>
+</div><p class="muted">Synthetic navigation only. No privileges, OS replacement or autonomous service.</p>
 <label for="size">Orb projection: </label><select id="size"><option value="glance">Glance</option><option value="large">Large</option><option value="fullscreen">Full viewport</option></select>
 <button id="close">Close</button>
 </aside>
 <div id="legacy" role="menu" aria-label="Legacy navigation" hidden></div>
-<button id="orb" aria-label="Open CoOrb; right click for legacy menu" aria-expanded="false" aria-controls="orb-panel" aria-haspopup="dialog">CoOrb</button>
+<button id="orb" aria-label="Open CoOrb; right click for legacy menu" aria-expanded="false" aria-controls="orb-panel" aria-haspopup="dialog" data-membrane-state="unknown">CoOrb</button>
 <footer>Prototype only · Not installed on X2 · Native desktop compatibility is a release gate · Keyboard: Tab / Enter / Escape</footer>
 <script>
 "use strict";
@@ -82,6 +94,15 @@ function renderSignalCase(kind){
 document.getElementById("show-signal-case").addEventListener("click",()=>renderSignalCase("demonstration"));
 document.getElementById("reset-signals").addEventListener("click",()=>renderSignalCase("unknown"));
 renderSignalCase("unknown");
+// Public preview never manufactures a live signal or infers source identity from a version string.
+const orbMembrane=Object.freeze({contractVersion:"CoOrb.Membrane.R0",source:"UNBOUND",receiver:"UNBOUND",present:"UNKNOWN",future:"UNQUALIFIED",past:"NO READBACK",evidenceState:"unknown"});
+document.getElementById("orb-contract-version").textContent=orbMembrane.contractVersion;
+document.getElementById("orb-evidence-source").textContent=orbMembrane.source;
+document.getElementById("orb-receiver-version").textContent=orbMembrane.receiver;
+document.getElementById("orb-present-state").textContent=orbMembrane.present;
+document.getElementById("orb-future-state").textContent=orbMembrane.future;
+document.getElementById("orb-past-state").textContent=orbMembrane.past;
+document.getElementById("orb").dataset.membraneState=orbMembrane.evidenceState;
 const routes=[["Here","here"],["Evidence","evidence"],["Future","future"]];
 const orb=document.getElementById("orb"),panel=document.getElementById("orb-panel"),legacy=document.getElementById("legacy");
 let hoverTimer=null,openedByHover=false;
