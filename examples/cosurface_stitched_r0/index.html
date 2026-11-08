@@ -5,10 +5,10 @@
 <title>CoSurface R0 | Stitched Desktop Candidate</title>
 <style>
 :root{color-scheme:dark;--bg:#080b13;--surface:#111827;--border:#35425b;--fg:#e8f0ff;--muted:#a6b6d0;--accent:#8bdaf4}
-*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 50% -30%,#284064,var(--bg) 60%);color:var(--fg);font:15px system-ui,sans-serif}
-header{padding:16px 24px;display:flex;gap:12px;align-items:center;border-bottom:1px solid var(--border);flex-wrap:wrap}
+*{box-sizing:border-box}body{margin:0;background:#003a3a;color:var(--fg);font:15px system-ui,sans-serif;min-height:100vh}body.workspace-open{background:radial-gradient(ellipse at 50% -30%,#284064,var(--bg) 60%)}
+header{padding:16px 24px;display:none;gap:12px;align-items:center;border-bottom:1px solid var(--border);flex-wrap:wrap}.workspace-open header{display:flex}
 header strong{letter-spacing:.04em} .status{font-size:12px;color:var(--muted);margin-left:auto}
-main{max-width:1500px;margin:auto;padding:18px;min-height:calc(100vh - 126px)}
+main{max-width:1500px;margin:auto;padding:18px;min-height:calc(100vh - 126px)}main[hidden]{display:none}
 .surface{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:10px;grid-auto-flow:dense}
 .tile{border:1px solid var(--border);border-radius:12px;padding:16px;background:linear-gradient(145deg,#152139,#0d1423);min-height:145px;overflow:auto}
 .tile h2{font-size:15px;margin:0 0 12px}.tile p{color:var(--muted);line-height:1.5;margin:4px 0}
@@ -21,7 +21,7 @@ button[aria-pressed="true"]{background:#335e72}
 #orb-panel[hidden],#legacy[hidden]{display:none}
 #legacy{position:fixed;right:18px;bottom:80px;z-index:25;min-width:240px;padding:12px;background:#172238;border:1px solid #8299af;border-radius:10px;box-shadow:0 10px 36px #000b}
 #legacy button{display:block;width:100%;margin:3px 0;text-align:left}
-nav{display:flex;gap:8px;flex-wrap:wrap}footer{padding:12px 24px;border-top:1px solid var(--border);color:var(--muted);font-size:12px}
+nav{display:flex;gap:8px;flex-wrap:wrap}footer{padding:12px 24px;border-top:1px solid var(--border);color:var(--muted);font-size:12px;display:none}.workspace-open footer{display:block}#r5-rail{position:fixed;bottom:0;left:0;right:0;z-index:18;display:flex;align-items:center;gap:8px;min-height:37px;background:#092236;color:#dbedff;border-top:1px solid #376078;padding:4px 84px 4px 10px;font-size:12px}#r5-rail button{font-size:12px;padding:4px 7px}#r5-rail .rail-state{margin-left:auto;white-space:nowrap;color:#c0d0da}#r5-rail .rail-name{color:#8de9d7}#r5-rail .rail-warning{color:#eac57a}#r5-rail button[disabled]{opacity:.6;cursor:not-allowed}#orb{bottom:45px}@media(max-width:600px){#r5-rail{flex-wrap:wrap;padding-right:10px;padding-bottom:7px}#r5-rail .rail-state{margin-left:0;width:100%}}
 small,.muted{color:var(--muted)}#orb-panel h2{margin-top:0}
 .signal-panel{border-left:3px solid #79adc4;padding:2px 12px;background:#0a1524;border-radius:4px}.signal-panel p{margin:5px 0}.signal-panel strong{color:#e8f0ff}#signal-source{font-size:12px}
 @media(max-width:750px){.tile[data-span]{grid-column:span 12}header{padding:12px}main{padding:9px}.tile{min-height:110px}}
@@ -30,7 +30,7 @@ small,.muted{color:var(--muted)}#orb-panel h2{margin-top:0}
 </head>
 <body>
 <header><strong>CoSurface+ / Stitched Desktop R0</strong><span class="muted">Local demonstration, no device controls</span><span class="status">EVIDENCE: SYNTHETIC · X2: UNKNOWN</span></header>
-<main>
+<main id="workspace" hidden>
 <div class="surface" id="surface">
 <section class="tile" data-span="8" id="here"><h2>CoHereNow</h2><p>One underlying surface. Modules are zones, not independent floating applications.</p><p>This candidate contains sample state only. No live host, sensors, agents, messages, or model endpoints are connected.</p></section>
 <section class="tile" data-span="4" id="evidence">
@@ -54,6 +54,7 @@ small,.muted{color:var(--muted)}#orb-panel h2{margin-top:0}
 <section class="tile" data-span="6" id="nav"><h2>CoNavAlien+ ⇄ CoNavLegacy+</h2><p>Two navigation projections share exact same destination IDs.</p><nav id="navbuttons"></nav></section>
 </div>
 </main>
+<div id="r5-rail" role="toolbar" aria-label="CoAll desktop navigation, synthetic demonstration"><strong class="rail-name">CoAll / Here</strong><button id="rail-workspace" type="button" aria-controls="workspace" aria-expanded="false">Open workspace</button><button id="rail-map" type="button">CoMap</button><button id="rail-evidence" type="button">Evidence</button><button id="rail-stop" type="button">Hide workspace</button><span class="rail-state">LOCAL DEMO · <span class="rail-warning">NO LIVE EFFECT</span></span></div>
 <aside id="orb-panel" role="dialog" aria-label="CoOrb expanded navigation" hidden>
 <h2>CoOrb+ <small>expandable presence</small></h2>
 <p>Accessible zoom from quiet glance to full screen. Hover is preview-only; click toggles, Escape closes. Right click opens the familiar menu.</p>
@@ -84,13 +85,13 @@ renderSignalCase("unknown");
 const routes=[["Here","here"],["Evidence","evidence"],["Map","map"],["Time","time"],["Channels","channels"],["Future","future"],["Actions","actions"]];
 const orb=document.getElementById("orb"),panel=document.getElementById("orb-panel"),legacy=document.getElementById("legacy");
 let hoverTimer=null,openedByHover=false;
-function navigate(id){document.getElementById(id).scrollIntoView({behavior:"instant",block:"center"});document.getElementById(id).focus?.();hideMenu();hidePanel();}
+function openWorkspace(show){document.body.classList.toggle("workspace-open",show);document.getElementById("workspace").hidden=!show;document.getElementById("rail-workspace").setAttribute("aria-expanded",String(show));}function navigate(id){openWorkspace(true);document.getElementById(id).scrollIntoView({behavior:"instant",block:"center"});document.getElementById(id).focus?.();hideMenu();hidePanel();}
 function hideMenu(){legacy.hidden=true;}
 function hidePanel(){panel.hidden=true;orb.setAttribute("aria-expanded","false");openedByHover=false;}
 function showPanel(hover){hideMenu();panel.hidden=false;openedByHover=hover;orb.setAttribute("aria-expanded","true");}
 function navButton(label,id){const b=document.createElement("button");b.textContent=label;b.addEventListener("click",()=>navigate(id));return b;}
 for(const [label,id] of routes){document.getElementById("orbnav").append(navButton(label,id));document.getElementById("navbuttons").append(navButton(label,id));legacy.append(navButton(label,id));}
-orb.addEventListener("click",()=>panel.hidden?showPanel(false):hidePanel());
+document.getElementById("rail-workspace").addEventListener("click",()=>openWorkspace(document.getElementById("workspace").hidden));document.getElementById("rail-map").addEventListener("click",()=>navigate("map"));document.getElementById("rail-evidence").addEventListener("click",()=>navigate("evidence"));document.getElementById("rail-stop").addEventListener("click",()=>{openWorkspace(false);hidePanel();hideMenu();document.getElementById("rail-workspace").focus();});orb.addEventListener("click",()=>panel.hidden?showPanel(false):hidePanel());
 orb.addEventListener("contextmenu",event=>{event.preventDefault();hidePanel();legacy.hidden=false;legacy.querySelector("button")?.focus();});
 orb.addEventListener("pointerenter",event=>{if(event.pointerType==="mouse"){hoverTimer=setTimeout(()=>{if(panel.hidden)showPanel(true);},650);}});
 orb.addEventListener("pointerleave",()=>{clearTimeout(hoverTimer);});
