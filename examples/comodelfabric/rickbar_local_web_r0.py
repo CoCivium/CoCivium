@@ -28,7 +28,7 @@ small{color:#a6a4b6}
 const log=document.getElementById('log'), form=document.getElementById('chat');
 function line(t){const e=document.createElement('div');e.className='entry';e.textContent=t;log.appendChild(e);log.scrollTop=log.scrollHeight;}
 form.addEventListener('submit',async e=>{e.preventDefault();const input=document.getElementById('prompt'),prompt=input.value.trim();if(!prompt)return;input.value='';line('You: '+prompt);
-try{const r=await fetch('/api/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({prompt})});const d=await r.json();line('RickBar ['+d.status+'] '+(d.response||d.error||'')+'\nWorkID: '+(d.work_id||'unavailable')+'\nReceipt: '+(d.receipt_sha256||'unavailable'));}
+try{const r=await fetch('/api/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({prompt})});const d=await r.json();line('RickBar ['+d.status+'] '+(d.response||d.error||'')+String.fromCharCode(10)+'WorkID: '+(d.work_id||'unavailable')+String.fromCharCode(10)+'Receipt: '+(d.receipt_sha256||'unavailable'));}
 catch(err){line('Unavailable: '+err.message);}});
 </script></main></html>"""
 
