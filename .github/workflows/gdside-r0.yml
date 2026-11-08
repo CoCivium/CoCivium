@@ -1,0 +1,29 @@
+name: G_dSide R0 falsifiable synthetic comparison
+on:
+  pull_request:
+    paths:
+      - 'experiments/gdside_r0/**'
+      - '.github/workflows/gdside-r0.yml'
+  push:
+    paths:
+      - 'experiments/gdside_r0/**'
+      - '.github/workflows/gdside-r0.yml'
+permissions:
+  contents: read
+jobs:
+  bounded-falsification:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run rights, Pareto, and negative-control tests
+        working-directory: experiments/gdside_r0
+        run: python -B -m unittest -v test_model
+      - name: Emit synthetic results; not economic validation
+        working-directory: experiments/gdside_r0
+        run: python -B model.py
