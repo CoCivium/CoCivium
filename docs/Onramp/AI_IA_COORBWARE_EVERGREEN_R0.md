@@ -56,3 +56,11 @@ No new global machine identity, mandatory profile, privileged device takeover, s
 `AI_NE_IA_BY_RENAMING` · `LATCH_NE_PERPETUAL_PROCESS` · `READABLE_NE_READ_BY_RECEIVER` · `COORBWARE_VIEW_NE_AUTHORITY` · `EVO_NE_OVERWRITE_PRIORS` · `G_D_SYMBOL_NE_PHYSICAL_PROOF` · `NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF` · `DISCOVERED_SET_IS_NOT_COMPLETE_HISTORY`.
 
 **FOSS Forever | CoGoAll | Working Together Respectfully | privacy by design | inclusive, optional, reversible.**
+
+
+## Current public operational rebound (2026-11-08)
+
+- [CoGoAll Public Rebound Hub](COGOALL_PUBLIC_REBOUND_HUB_20261108.md): recent source, highlights, implementation, evidence boundaries and currentness.
+- [CoGoAll Outstanding Register](../Operations/COGOALL_OUTSTANDING_REGISTER_20261108.md): prioritized work and explicit verification gates; source progress is not deployment.
+
+These are source-bound navigational links, not automatic session synchronization, receiver acknowledgment, or authority to send messages.
