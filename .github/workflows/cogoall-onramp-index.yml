@@ -7,12 +7,16 @@ on:
       - 'docs/Onramp/COGOALL_AI_ONRAMP_HUB_R1_20261108.md'
       - 'scripts/build_public_onramp_index.py'
       - 'test_public_onramp_index.py'
+      - 'scripts/CoTalkItOutR0.py'
+      - 'test_cotalkitout_r0.py'
       - '.github/workflows/cogoall-onramp-index.yml'
   pull_request:
     paths:
       - 'docs/Onramp/COGOALL_AI_ONRAMP_HUB_R1_20261108.md'
       - 'scripts/build_public_onramp_index.py'
       - 'test_public_onramp_index.py'
+      - 'scripts/CoTalkItOutR0.py'
+      - 'test_cotalkitout_r0.py'
       - '.github/workflows/cogoall-onramp-index.yml'
   workflow_dispatch:
 permissions:
@@ -30,6 +34,8 @@ jobs:
           python-version: '3.13'
       - name: Offline proof and negative tests
         run: python -B -m unittest -v test_public_onramp_index
+      - name: CoTalkItOut peer-decision and adversarial tests
+        run: python -B -m unittest -v test_cotalkitout_r0
       - name: Enumerate 1000 public real GitHub source pages
         run: python -B scripts/build_public_onramp_index.py --output-dir generated/onramp --minimum-pages 1000
       - name: Publish catalog and receipts as CI artifact
