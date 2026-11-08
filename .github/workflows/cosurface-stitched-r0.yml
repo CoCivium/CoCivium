@@ -1,0 +1,29 @@
+name: CoSurface R0 static navigation contracts
+on:
+  pull_request:
+    paths:
+      - 'examples/cosurface_stitched_r0/**'
+      - '.github/workflows/cosurface-stitched-r0.yml'
+  push:
+    paths:
+      - 'examples/cosurface_stitched_r0/**'
+      - '.github/workflows/cosurface-stitched-r0.yml'
+permissions:
+  contents: read
+jobs:
+  static-contracts:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11', '3.13']
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Run stitched UX fail-closed static checks
+        run: python -B -m unittest discover -s examples/cosurface_stitched_r0 -p 'test_*.py' -v
