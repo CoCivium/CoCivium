@@ -33,12 +33,13 @@ class Orb:
             return self  # cosmetic redraw is never a semantic revision
         return Orb(self.work_id, self.revision+1, tuple(strands), self.digest())
 
-def project(orb, receiver, renderer, now):
+def project(orb, receiver, renderer, now, verifier_receipts=()):
     """Only two renderers are supported; output data is intentionally isomorphic."""
     if renderer not in ("map", "orb"):
         raise ValueError("unknown renderer")
     # Restricted strands do not contribute counts, IDs, glow or any visible metadata.
     visible=[]
+    verified=set(verifier_receipts)  # trusted verifier input, never model-generated
     for strand in orb.strands:
         if receiver not in strand.visible_to:
             continue
@@ -57,10 +58,15 @@ def project(orb, receiver, renderer, now):
             state=strand.epistemic
         visible.append({"id":strand.id,"kind":strand.kind,"state":state,
                         "source_ref":strand.source_ref,"delivery":delivery,
-                        "receiver_ack":bool(strand.observed_receipt)})
+                        "receiver_ack":bool(strand.observed_receipt and strand.observed_receipt in verified)})
+    # A receiver-visible projection has its own version. Do not disclose the
+    # full source digest, global revision or predecessor: each can reveal
+    # the existence or timing of changes to receiver-ineligible strands.
+    scoped={"work_id":orb.work_id,"strands":visible}
+    projection_hash=hashlib.sha256(
+        json.dumps(scoped,sort_keys=True).encode()).hexdigest()
     return {"renderer":renderer,"work_id":orb.work_id,
-            "source_hash":orb.digest(),"revision":orb.revision,
-            "predecessor":orb.predecessor,"strands":visible,
+            "projection_hash":projection_hash,"strands":visible,
             "visible_count":len(visible)}
 
 class CoOrbTwoView(unittest.TestCase):
@@ -77,7 +83,7 @@ class CoOrbTwoView(unittest.TestCase):
     def test_two_views_share_identity_and_epistemic_classes(self):
         x=project(self.orb,"public","orb",10)
         y=project(self.orb,"public","map",10)
-        self.assertEqual(x["source_hash"],y["source_hash"])
+        self.assertEqual(x["projection_hash"],y["projection_hash"])
         self.assertEqual(x["strands"],y["strands"])
         self.assertEqual(x["visible_count"],3)
 
@@ -113,6 +119,31 @@ class CoOrbTwoView(unittest.TestCase):
         self.assertEqual(public["visible_count"],3)
         self.assertEqual(private["visible_count"],1)
         self.assertNotIn("secret",str(public["strands"]))
+
+    def test_private_only_change_has_no_public_delta(self):
+        changed=replace(self.secret,payload="private new fact",source_ref="secret:2")
+        nxt=self.orb.successor((self.a,self.p,self.out,changed))
+        before=project(self.orb,"public","orb",10)
+        after=project(nxt,"public","orb",10)
+        self.assertEqual(before,after)
+        self.assertNotIn("source_hash",before)
+        self.assertNotIn("revision",before)
+        self.assertNotIn("predecessor",before)
+
+    def test_receipt_string_cannot_claim_receiver_ack(self):
+        changed=replace(self.a,observed_receipt="self:claimed")
+        nxt=self.orb.successor((changed,self.p,self.out,self.secret))
+        evidence=project(nxt,"public","orb",10)["strands"][0]
+        self.assertFalse(evidence["receiver_ack"])
+
+    def test_separately_supplied_verifier_ref_required(self):
+        changed=replace(self.a,observed_receipt="receiver:attested")
+        nxt=self.orb.successor((changed,self.p,self.out,self.secret))
+        without=project(nxt,"public","orb",10)["strands"][0]
+        with_proof=project(nxt,"public","orb",10,
+                           verifier_receipts=("receiver:attested",))["strands"][0]
+        self.assertFalse(without["receiver_ack"])
+        self.assertTrue(with_proof["receiver_ack"])
 
     def test_bad_renderer_fails_closed(self):
         with self.assertRaises(ValueError):
