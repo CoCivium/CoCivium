@@ -232,3 +232,42 @@ Implement versioned adapters rather than forcing old RickBar/CoBar to be rewritt
 - Validate round-trip latency, human interventions per WorkID, resolution rate, false resolutions, and regression to previous working UX.
 
 **Nonclaims:** `TALK_PROTOCOL_NE_LIVE_MESSAGING`; `CONSENSUS_NE_INDEPENDENT_EVIDENCE`; `SCREENSHOT_NE_RECEIVER_ACK`; `BRIDGE_OFFLINE_NE_HOST_OFF`; `SOURCE_ONLY_NE_RUNTIME`; `OLD_VERSION_NE_OBSOLETE`. Existing [CoReGroup peer evidence contract](../Evolution/COREGROUP_PEER_EVIDENCE_CONTRACT_R0.md) remains authoritative for proof boundaries.
+
+
+## CoTalkItOut+ CoZombie/CoGrace recovery policy (R0 research extension, 2026-11-08)
+
+**Scope and nonclaim:** a proposal for authorized, instrumented workers, not a live takeover of ChatGPT, WhatsApp, or other provider sessions. Agentic qualification must use observed task-relative evidence, not anthropomorphic assumptions: idle is not lazy, unavailable is not unwilling, and a session is not proven conscious or alive by its telemetry.
+
+### State and decision semantics
+
+Classify a *WorkID/worker relation*, not a person's value or a model's inner experience. States: `HEALTHY_ACTIVE | HEALTHY_IDLE | WAITING_ON_EVENT | DEGRADED | STALLED | ORPHAN_RISK | QUARANTINED | RECOVERING | UNKNOWN`. CoZombie and CoGrace are optional presentation aliases; the canonical machine states are explicit. A healthy sleeping virtual context should not be awakened merely to raise an activity score.
+
+Avoid a magic metric count. The suggested **325+ candidate metrics** are a *research backlog*, not a measured or universally required telemetry set. Register each metric with `metric_id, definition, unit, observation_method, sampling_window, source, privacy_class, calibration, known_failure_modes, owner, version, uncertainty`. Retain primitive measurements separately from aggregates to prevent double counting. Select a sparse task-relevant subset based on information gain and measurement cost; the absence of a measure must remain UNKNOWN, never zero. CoPriMath may eventually type units and relationships but does not confer correctness before validation.
+
+Candidate dimensions: useful verified output per budget, progress since last checkpoint, unresolved proof debt, task importance and age, receiver freshness, lease liveness, recovery success, collision rate, duplicate effects, cost/energy, latency, accessibility, consent, user interruption, competing obligations, source freshness, and diversity of independent review. No hidden surveillance, ambient audio/video, cross-account access, or unauthorized data inference.
+
+### Escalation without destructive takeover
+
+1. **Observe:** check approved telemetry, task expectations, permissions and wake conditions. Establish a baseline and an uncertainty band.
+2. **Qualify:** if measured progress is persistently below a *task-specific, preregistered* threshold, compare against healthy-idle and event-waiting explanations; avoid universal fixed timers. Require multiple independent indicators or an exact failure proof, with hysteresis and cooldowns to prevent thrashing.
+3. **CoTalkItOut:** open a deduplicated blocker exchange with a source-bound question and independent peer proposals, including healthy peers with spare authorized capacity. Similarity is an advisory retrieval feature, not identity equivalence or permission.
+4. **Probe:** attempt bounded read-only investigations, then an authorized reversible remedial action; preserve source revision, dissent, test budget, evidence and rollback.
+5. **Handoff:** when a worker is demonstrably stuck, checkpoint its WorkID, transfer only permitted minimal context to an eligible successor, acquire a new fenced lease, and reject writes from stale actors. A provider chat cannot be forcibly taken over or merged unless that provider exposes authorized interfaces.
+6. **Recover or sleep:** mark independently verified recovery only after recipient acceptance/readback; otherwise WAITING_ON_EVENT, FAILED_WITH_EVIDENCE or ESCALATED_FOR_AUTHORITY. Do not recycle indefinitely. Preserve the last working UX and Break Glass.
+
+**Session mash-up constraint:** share *portable, scoped task artifacts* and evidence among peers rather than merging raw conversation histories. Preserve provenance, access boundaries, distinct hypotheses, owner permissions, deletion/retention policy, and stable WorkIDs. No implicit global message access or automatic external publication.
+
+### CI+ qualification suite (proposed, NOT_RUN)
+
+- Healthy idle and deliberately sleeping workers stay idle, producing no false zombie intervention.
+- An actually stalled worker with a reproducible fault raises one blocker and transfers the permitted checkpoint once.
+- Identical repeated distress signals result in one WorkID and one elected actuator, not many rescue cascades.
+- A productive but slow worker is not displaced by a faster misleading worker; measure verified outcome and uncertainty.
+- Contradicting peers preserve dissent and source citations; majority consensus alone never earns VERIFIED.
+- Missing telemetry remains UNKNOWN; noisy metrics, correlated duplicates and Goodhart-style gaming do not force takeover.
+- Cross-privacy-boundary matching is denied; a peer cannot obtain another session's confidential transcript by similarity.
+- Crash-before-commit and crash-after-commit retry are fenced and idempotent; receiver readproof is required for handoff success.
+- Offline bridge is diagnosed distinctly from host failure; rollback restores predecessor RickBar/CoBar UX.
+- Equal-budget A/B compare no-intervention, fixed-timeout, task-adaptive, and evidence-led CoTalkItOut policies on recovery success, verified useful work, false interventions, human interruptions, cost, latency and privacy incidents.
+
+**Promotion rail:** `PROPOSED -> SCHEMA_TESTED -> SYNTHETICALLY_BENCHMARKED -> AUTHORIZED_CANARY -> INDEPENDENT_RECEIVER_VERIFIED`. Every transition requires exact source, run, input, output, observer, time and nonclaims. Do not promote from architectural prose alone. The objective is **less human drag and higher verified usefulness**, not greater apparent busyness.
