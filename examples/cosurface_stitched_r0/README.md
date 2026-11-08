@@ -1,39 +1,33 @@
-# CoSurface Stitched Desktop R0
+# CoSurface R0 | RickBar-first browser canary
 
-**Candidate, not X2 runtime.** Standalone static preview, no dependencies, telemetry, network calls, privileged APIs, sensors or connected agent endpoints.
+**Evidence class: PUBLIC DRAFT + CI BROWSER CANDIDATE. NOT installed in X2 R5.**
 
-Open `index.html` in a modern browser. All navigation controls target the same six local tile IDs. The CoOrb bottom-right anchor supports:
-- click or Enter to open a large navigation projection;
-- mouse hover for a delayed preview (not an action authorization);
-- right-click for a deliberately conventional legacy menu;
-- Escape to close; buttons and dropdown work with keyboard;
-- an adjustable Glance / Large / Full viewport projection;
-- a reversible synthetic tile span change to illustrate stitched zoning.
+The default surface is a quiet teal background, one bottom CoAll rail, one Orb. The stitched workspace starts hidden. Orb click/keyboard and right-click legacy menu project the same working destinations: **Here / Evidence / Future**. No remote data, messages or operating-system control. **CoMap is disabled** until an authenticated data source exists; empty placeholder zones are not shown. Escape, Hide workspace, and Windows fallback are fundamental.
 
-The visible prototype represents **one background surface with integrated zones**, not several floating Windows processes. CoOrb is the only expansion overlay; it is a preview for deliberate interaction, not a startup popup. OS-level system-tray embedding and real Windows desktop integration are **not** supplied by a browser page.
+`index.html` runs as a standalone local browser preview; `preview.ps1` launches that file explicitly on an authorized Windows machine. `preview.ps1 -NoLaunch` checks required source markers and prints a local hash without opening a window. This is not a native installer, service or replacement for R5.
 
-## User experience contract for next implementation
+## Local Ollama integration seam, without a new agent
 
-1. A native/tray CoOrb anchor can remain quiet and small while actual modules stay headless.
-2. Right click must preserve predictable legacy menu access; richer CoNavAlien navigation must be opt-in, discoverable, reversible, keyboard-accessible and never trap focus.
-3. Hover is preview-only. No sending, model execution, device control, privileged OS operations or user-data capture from hover.
-4. The same stable object IDs, search results, action contracts, permission ceilings, source refs and receipts power both CoNavAlien and CoNavLegacy. Their presentation may diverge radically.
-5. Zones can be tiled, resized, snapped and reflowed; preserve window accessibility, native OS taskbar, screen-reader semantics and user ownership of focus. No forced always-on-top layer.
-6. CoFeel, CoAura, CoTele and speculative GRAIL semantics must be typed, user-consented and avoid unsupported mental-state or telepathy claims.
-7. Distinguish observed time, predicted future, synthetic demo data and stale transport.
-8. Headless CoCore service life and independent user Stop must not depend on visible Orb.
-9. Safety-critical notices may require an explicit accessible OS-native channel even when routine panels/popups are suppressed.
-10. Never call a static demo a deployed replacement desktop.
+The repo **already has** [CoLocalModelWorker R3](../../scripts/CoLocalModelWorkerR3.py) for explicit bounded, advisory-only inference and its [operational contract](../../docs/Operations/COLOCAL_MODEL_WORKER_R3.md). Reuse it. Do not create another autonomous model process.
 
-## Acceptance before X2 installation
+`ollama_status.ps1` is a PowerShell 7 **local-only status observer** intended to be invoked by the *existing authorized RickBar/R5 producer*. It makes only `GET http://127.0.0.1:11434/api/tags` with a three-second default timeout and outputs one JSON status object. It **does not** start Ollama, pull models, send prompts, create services or install anything. It does not infer X2 status from the Ollama endpoint.
 
-- Current R5 executable/process, source and existing UX zones read-only inventory.
-- GitHub source, branch, reviewer, CI and UX proof.
-- Cold-open test on Windows with keyboard, screen reader and display scaling.
-- No unwanted console windows, startup popup, notification storm or focus stealing.
-- Bounded CPU/GPU/memory and startup measurements.
-- Native desktop fallback, easy disable/uninstall and rollback.
-- Right-click menu and richer CoOrb routes lead to the exact same authoritative objects.
-- Actual local receiver readback from X2 after any elected, reversible installation.
+Read-only invocation from an existing authorized local runner:
+```powershell
+pwsh -NoProfile -File .\ollama_status.ps1
+```
+Optional `-OutFile` creates one brand-new JSON observation file, never overwrites an existing one. A producer can consume that file **only after** explicitly mapping it to its existing status feed and validating source, age, revision and receiver; the live feed schema and exact R5 binding have **not** been verified. Keep model status out of the quiet rail unless it blocks an actual user task; expose it under evidence/drill-down otherwise.
 
-Context: [CoDesktopPresence #181](https://github.com/CoCivium/CoCivium/issues/181), [CoOrb receiver #178](https://github.com/CoCivium/CoCivium/issues/178), [CoOrbCanvas #180](https://github.com/CoCivium/CoCivium/issues/180), [CoSurface coherence #217](https://github.com/CoCivium/CoCivium/issues/217), [R5 supervisor draft #374](https://github.com/CoCivium/CoCivium/pull/374).
+**Do not run direct browser-to-Ollama JavaScript:** it would introduce cross-origin, local-network and prompt-consent problems. Real user-authorized inference should flow RickBar -> existing local receiver -> existing CoLocalModelWorker R3 -> loopback Ollama -> candidate output -> independent effect review. No automatic human-message sending or provider-session impersonation.
+
+## What CI actually tests
+
+- Python source contracts and synthetic concurrent SQLite Seed attempt election;
+- headless Chromium rail, Orb, conventional navigation, Stop, Escape and visible screenshots;
+- portable HTML/PS7 preview packaging and upload.
+
+CI does **not** prove an installed Windows R5, real local Ollama reachability, renderer restart on X2, >24h continuous operation, machine-owned autostart, a real authenticated receiver ACK or user benefit. Current screenshots are CI Chrome output, not X2 output.
+
+**Next acceptance:** identify the already-running R5 producer/launcher on X2, map one returned Ollama observation into its *existing* CoSpeedo/RickBar feed, independently read back that feed, and provide user-visible local and fallback evidence. No extra windows, no duplicate watchers.
+
+Related: [CoDesktopPresence #181](https://github.com/CoCivium/CoCivium/issues/181), [R5 supervisor draft #374](https://github.com/CoCivium/CoCivium/pull/374), [CoLocalModelWorker R3](../../scripts/CoLocalModelWorkerR3.py).
