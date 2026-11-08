@@ -1,7 +1,9 @@
 """Local-only RickBar browser surface. Source candidate, not installed on X2."""
 import json
 import os
+import ipaddress
 import pathlib
+from urllib.parse import urlsplit
 import re
 import sys
 import uuid
@@ -39,8 +41,49 @@ def respond(prompt, model, receipt_dir, bridge=run):
     result = bridge(prompt, model, receipt_dir, work_id=work_id)
     return 200, result
 
+def allowed_local_request(host, origin=None):
+    """Reject proxy/DNS-rebind/foreign-origin browser calls to loopback.
+
+    A native client without Origin is supported only with an explicit local
+    Host. This is defense-in-depth, not authentication of the calling user.
+    """
+    if not isinstance(host, str) or not host:
+        return False
+    try:
+        parsed = urlsplit("//" + host)
+        name = parsed.hostname
+        port = parsed.port
+    except ValueError:
+        return False
+    if not name or (port is not None and not 1024 <= port <= 65535):
+        return False
+    try:
+        local = ipaddress.ip_address(name).is_loopback
+    except ValueError:
+        local = name.lower().rstrip(".") == "localhost"
+    if not local:
+        return False
+    if origin is None:
+        return True
+    if not isinstance(origin, str):
+        return False
+    try:
+        src = urlsplit(origin)
+        return (src.scheme == "http" and src.hostname is not None
+                and src.hostname.lower().rstrip(".") == name.lower().rstrip(".")
+                and src.port == port and src.username is None
+                and src.password is None and not src.path.strip("/")
+                and not src.query and not src.fragment)
+    except ValueError:
+        return False
+
 def make_handler(model, receipt_dir):
     class Handler(BaseHTTPRequestHandler):
+        def guard_local(self):
+            if not allowed_local_request(self.headers.get("Host"), self.headers.get("Origin")):
+                self.send_json(403, {"error": "LOCAL_ORIGIN_REQUIRED"})
+                return False
+            return True
         def send_json(self, code, value):
             data = json.dumps(value).encode("utf-8")
             self.send_response(code)
@@ -49,6 +92,8 @@ def make_handler(model, receipt_dir):
             self.end_headers()
             self.wfile.write(data)
         def do_GET(self):
+            if not self.guard_local():
+                return
             if self.path != "/":
                 return self.send_json(404, {"error": "NOT_FOUND"})
             data = HTML.encode("utf-8")
@@ -58,6 +103,8 @@ def make_handler(model, receipt_dir):
             self.end_headers()
             self.wfile.write(data)
         def do_POST(self):
+            if not self.guard_local():
+                return
             if self.path != "/api/chat":
                 return self.send_json(404, {"error": "NOT_FOUND"})
             try:
