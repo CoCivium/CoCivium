@@ -10,6 +10,7 @@ on:
       - 'ai/measurement/copredict_drift_r0.py'
       - 'ai/measurement/copredict_drift_fixture_r0.json'
       - 'tests/test_copredict_drift_r0.py'
+      - 'tests/test_comeasure_optimized_failclosed_r0.py'
       - 'docs/Architecture/COALL_MEASUREMENT_R0_CANDIDATE.md'
       - '.github/workflows/comeasure-r0-ci.yml'
 
@@ -26,12 +27,16 @@ jobs:
           python-version: '3.12'
       - name: Verify conversions, semantic kind boundaries and null states
         run: python ai/measurement/verify_registry_r0_1.py
+      - name: Verify optimized interpreter cannot bypass the registry guards
+        run: python -O ai/measurement/verify_registry_r0_1.py
       - name: Verify idempotent receipt readback (no overwrite)
         run: python ai/measurement/verify_registry_r0_1.py
       - name: Check CoUnits v6.7 proposed aliases and independent-ACK gates
         run: python -m unittest discover -s tests -p 'test_counits_v6_7_crosswalk.py' -v
       - name: Challenge local FIFO versus global meaning with synthetic CoPredict tests
         run: python -m unittest discover -s tests -p 'test_copredict_drift_r0.py' -v
+      - name: Challenge exact registry with optimized mode and mutation canaries
+        run: python -m unittest discover -s tests -p 'test_comeasure_optimized_failclosed_r0.py' -v
       - name: Check scope and result counters
         run: |
           python - <<'PY'
