@@ -51,6 +51,15 @@ class ReconcileTests(unittest.TestCase):
         self.assertEqual(self.r.projection('seed-1'), ('received',2))
         self.assertEqual(self.r.db.execute('SELECT COUNT(*) FROM receipts').fetchone()[0],2)
 
+    def test_producer_sample_without_receiver_ack_is_not_verified(self):
+        # A producer-side sample alone cannot establish receiver evidence.
+        producer_sample = {'work_id': 'seed-1', 'cpu': 3.0, 'memory_gb': 66.9}
+        self.assertEqual(producer_sample['work_id'], 'seed-1')
+        self.assertEqual(self.r.projection('seed-1'), ('pending', 1))
+        self.assertEqual(self.r.db.execute('SELECT COUNT(*) FROM receipts').fetchone()[0], 0)
+        self.assertEqual(self.r.submit('ack-1', 'seed-1', 1, 'observer-verified'), 'COMMITTED')
+        self.assertEqual(self.r.projection('seed-1'), ('received', 1))
+
     def test_no_unverified_projection(self):
         self.assertEqual(self.r.projection('seed-1'), ('pending',1))
         self.assertEqual(self.r.db.execute('SELECT COUNT(*) FROM receipts').fetchone()[0],0)
