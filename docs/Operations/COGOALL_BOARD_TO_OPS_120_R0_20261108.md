@@ -244,6 +244,15 @@ Map this to existing items 051-070 (independent model roles and tests), 081-090 
 ## Rest-safe recovery/currentness seed | 2026-11-08
 
 One bounded cross-lane [rest-safe continuation packet](COGOALL_REST_SAFE_CONTINUATION_R0_20261108.md) now points to the latest onramp, Golden Braid, peer recovery, model-resource and native X2 proof boundaries; contains event-driven wake conditions and no-human-relay rule. It preserves all 120 unchecked task acceptance gates. Source presence cannot compel an unavailable external automation or peer to read the packet. Actual scheduled execution requires its own recorded run and output.
+## CoOrb membrane and CoTime predictive boundary R0 | 2026-11-08
+
+Reuse [CoMap/CoOrb/CoAhead temporal relational views](../Architecture/COMAP_COORB_COAHEAD_TEMPORAL_R0A_20261023.md) and [CoAllPulseField/CoTime](../Architecture/COALL_PULSEFIELD_COTIME_R0.md). The CoOrb border is a *receiver-relative version membrane*, not a mystical detector or actual transport. It can project inbound, outbound, cross-boundary and internal edges along temporal coordinates, with source revision, observed time, valid time, target version, epistemic class and receiver readproof state.
+
+**Executable synthetic candidate:** [CoOrbMembraneTemporalR0.py](../../scripts/CoOrbMembraneTemporalR0.py) and [12 negative/positive tests](../../test_coorb_membrane_temporal_r0.py). Observed and current edges remain distinct from other-version edges, and future validity/prediction/preference appear as forecast rays. Future-dated *observation* rejects rather than becomes observed. Caller asserted ACK is visibly unauthenticated; no version upgrade, actual renderer mutation or predictive actuation claimed.
+
+**UI thesis:** a subtle edge treatment could convey source freshness and uncertainty; outer projections can depict predicted descendants, alternatives, missed events and conditional future branches in bounded, receiver-relevant directions. Dense all-to-all rays, unlimited animation and nonconsensual alerts are prohibited. Accessible text fallback, reduced motion, Stop and native rollback are requirements, not proven effects.
+
+**Next empirical test:** compare version-change comprehension, false prediction promotion, response latency, cognitive load and recovery accuracy against existing flat rickBar/CoOrb presentation with independent users. Validate with a real authenticated R5 observer before claiming current version or cross-session synchronization.
 ## Immediate critical-path proof
 
 1. Authenticated X2 read-only local R5 process, feed and launcher inventory; do not diagnose host power from remote agent state.
