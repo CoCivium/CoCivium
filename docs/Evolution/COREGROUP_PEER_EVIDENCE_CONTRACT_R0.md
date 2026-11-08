@@ -55,3 +55,25 @@ Gauge must expose its source and age. The thumb is a reversible action. One shar
 - .github/workflows/coloops-safety.yml
 
 This contract is a coordination artifact, not proof that its workflow is deployed.
+
+## CoTalkItOut+ | bounded integration decision gate (2026-11-08)
+
+**Purpose:** When RickBar/R5 native surface, CoVirtualSession+, CoFleet projection, and CoModelFabric adapters disagree about schema, identity, authority, or currentness, turn that disagreement into **one testable integration decision**, not an unbounded peer conversation or another Rick-mediated prompt relay. Reuse [virtual-session morphology](../Architecture/COVIRTUAL_SESSION_MORPHOLOGY_R0.md), [CoFleet/RickBar R4](../UX/COFLEET_RICKBAR_R4.md), [provider-adapter contract](../Architecture/COMODELFABRIC_COORB_PROVIDER_ADAPTERS_R0_20261024.md), and this CoReGroup custody contract.
+
+**Minimal decision packet:** `work_id | decision_id | source_refs | observed versions | alternatives >= 2 | objections | discriminating_experiment | measurement/stop condition | effect_requested | effect_authority | evidence_refs | receiver_scope | next_wake`.
+
+**State transitions:** `OBSERVE -> TALK -> TEST -> CHALLENGE -> QUALIFIED / HELD -> RECEIVER_READPROOF`. A qualified reasoning packet is **not** executable authorization; verified test receipts are not native receiver acceptance. Talk only when alternatives or a test are missing, and do not ask Rick to translate between already-source-addressable artifacts.
+
+**R1 RickBar attachment strategy:**
+1. Inventory which of the existing R5 native RickBar and CoBar variants is actually active; preserve source revision and screenshots separately from runtime observations.
+2. Keep one stable WorkID and distinguish logical virtual-session identity from worker embodiment and provider tab.
+3. Translate an authorized local model response into the existing receipt envelope; do not create another long-lived model host by default.
+4. Project the typed result into CoFleet's existing bounded `CoHereNow / Meaning / NextSafeAction / Evidence` view. Retain the prior native interface as Break Glass.
+5. Challenge one known mismatch (e.g. adapter response `MODEL_OUTPUT_UNVERIFIED` must not become `INDEPENDENTLY_VERIFIED` on the UI). Test fail-closed and recovery.
+6. Test one handoff after process restart and, separately, >24h Seed survival with two independent observers. Neither is established by source tests.
+
+**Executable R0 candidate:** `examples/cotalkitout/decision_gate.py` and `tests/gs_loop/test_talkitout_gate.py` classify decisions with no tool execution, no automatic messages and no authority expansion. CI/source readback may qualify this isolated gate; connecting it to R5, independent workers, and CoStead is a separate release boundary.
+
+**Stop/selection rules:** An objection without a discriminating experiment stays TALK; an unauthorized effect is HELD; duplicate assent does not create a new WorkID; self-asserted verification without external receipt stays HELD. Progress is measured by validated decisions, closed interface mismatches, reduced human relay and successful recovery, **not** tokens exchanged or virtual-session count.
+
+`TALK_NE_ACT` · `QUALIFIED_NE_AUTHORIZED` · `DISCUSSION_NE_RECEIVER_ACK` · `VIRTUAL_SESSION_NE_PROVIDER_TAB` · `PROPOSAL_NE_RUNTIME`.
