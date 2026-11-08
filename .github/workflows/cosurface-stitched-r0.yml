@@ -27,6 +27,18 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - name: Run stitched UX fail-closed static checks
         run: python -B -m unittest discover -s examples/cosurface_stitched_r0 -p 'test_*.py' -v
+      - name: Verify exact PUBLIC source landing by HTTPS readback
+        if: matrix.python-version == '3.13'
+        env:
+          SOURCE_REVISION: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          SOURCE_PATH=examples/cosurface_stitched_r0/receiver_truth_r0.py
+          EXPECTED_SHA=$(sha256sum "$SOURCE_PATH" | cut -d ' ' -f1)
+          python -B examples/cosurface_stitched_r0/receiver_truth_r0.py \
+            --repo CoCivium/CoCivium \
+            --commit "$SOURCE_REVISION" \
+            --path "$SOURCE_PATH" \
+            --sha256 "$EXPECTED_SHA"
       - name: Build portable read-only preview bundle
         if: matrix.python-version == '3.13'
         run: |
