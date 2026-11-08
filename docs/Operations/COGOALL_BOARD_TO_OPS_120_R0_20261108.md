@@ -198,6 +198,19 @@ Prioritize P0 001-030 for proof, X2 bridge, and interface; P1 031-070 for Ollama
 - **WhatsApp peer uptake (IDs 010, 120):** only promote beyond SENT when recipient independently reads a pinned source and contributes an attributable task/diff/ACK. Do not require routine human relays.
 
 **Operating state:** 120 task-level acceptance checkboxes remain open. Source creation and CI checks are progress, but no evidence here closes live X2 integration, actual receiver ACK, real >24-hour survivorship or federated superiority. One elected actuator per conflicting effect; all sessions are peers.
+## CoTalkItOut+ control-plane extension | November 8, 2026
+
+**No new chat empire.** The existing [CoVirtualSession morphology](../Architecture/COVIRTUAL_SESSION_MORPHOLOGY_R0.md), [CoReGroup peer evidence contract](../Evolution/COREGROUP_PEER_EVIDENCE_CONTRACT_R0.md), [CoModelFabric adapter contract](../Architecture/COMODELFABRIC_COORB_PROVIDER_ADAPTERS_R0_20261024.md), and [CoSessionAutocycle](../Architecture/COSESSION_AUTOCYCLE_R0.md) already specify durable identities, bounded workers, challenge, receipts and lifecycle control. CoTalkItOut+ is the **missing decision seam**: for one WorkID decide when to act as a proposal, request one discriminating challenge, HOLD an unverified effect, escalate genuine human authority, or go QUIET on repeated no-delta debate.
+
+**New source:** [scripts/CoTalkItOutR0.py](../../scripts/CoTalkItOutR0.py) plus [16 bounded contract tests](../../test_cotalkitout_r0.py), now included in the existing onramp CI workflow. This code is pure decision logic: it does not start an agent, call a provider, manipulate WhatsApp, install rickBar or grant a receiver token.
+
+**Key decision invariants:** each proposal has peer/source/evidence class/risk; distinct peers do not magically imply independence; source or CI evidence cannot become receiver ACK; multiple disagreement proposals request one bounded independent test; unchanged repeated disagreement goes QUIET; no X2 receiver or missing consent HOLD; irreversible effects without authority ESCALATE; no fenced elected actuator means HOLD; no proposal leaves zero effects. Deliberation depth <= 3 and <= 12 participants per decision, not exponential chatter.
+
+**rickBar projection:** one existing interface can show WorkID, current verdict, supporting receipt count, dissent, source revision, next wake/trigger, and true receiver ACK if independently established. No new windows or UI subsystem required; no evidence of live R5 binding here.
+
+**Current X2 screenshot observed 2026-11-08 around 20:35 UTC:** desktop visibly had existing bottom CoAll rail, CoOrb, a CoSurface local-observations web view, PS7 windows and WhatsApp. Its visible content is consistent with a desktop/prototype present; not independent proof of model invocation, actual R5 producer-to-receiver binding or 24h survivorship. If native control becomes authorized, reuse those surfaces rather than inventing more.
+
+**Next acceptance:** bind this deterministic verdict (only as a read-only projection) into the existing actual R5 producer after authenticated readback, then test a real stalled work item and one changed external condition. Measure number of manual session messages and task completion against baseline; if no improvement, remove the extra layer.
 ## Immediate critical-path proof
 
 1. Authenticated X2 read-only local R5 process, feed and launcher inventory; do not diagnose host power from remote agent state.
