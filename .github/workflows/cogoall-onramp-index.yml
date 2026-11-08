@@ -1,5 +1,13 @@
 name: CoGoAll AI Onramp public index
 on:
+  push:
+    branches:
+      - 'candidate/cogoall-board-ops-120-r0-20261108'
+    paths:
+      - 'docs/Onramp/COGOALL_AI_ONRAMP_HUB_R1_20261108.md'
+      - 'scripts/build_public_onramp_index.py'
+      - 'test_public_onramp_index.py'
+      - '.github/workflows/cogoall-onramp-index.yml'
   pull_request:
     paths:
       - 'docs/Onramp/COGOALL_AI_ONRAMP_HUB_R1_20261108.md'
@@ -32,3 +40,48 @@ jobs:
           path: generated/onramp/
           if-no-files-found: error
           retention-days: 30
+
+  publish-proposal-catalog:
+    needs: source-contract
+    if: github.event_name == 'push' && github.ref == 'refs/heads/candidate/cogoall-board-ops-120-r0-20261108'
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: candidate/cogoall-board-ops-120-r0-20261108
+          persist-credentials: true
+      - uses: actions/download-artifact@v4
+        with:
+          name: cogoall-public-onramp-1000-pages
+          path: generated/onramp/
+      - name: Independently validate catalog size and exact digest before committing
+        run: |
+          python - <<'PY'
+          import hashlib, json
+          from pathlib import Path
+          p=Path('generated/onramp')
+          r=json.loads((p/'receipt.json').read_text())
+          data=(p/'public-pages.jsonl').read_bytes()
+          md=(p/'public-pages.md').read_bytes()
+          rows=[json.loads(x) for x in data.splitlines() if x]
+          assert r['count']==len(rows) and len(rows)>=1000, 'BAD_COUNT_HOLD'
+          assert hashlib.sha256(data).hexdigest()==r['jsonl_sha256'], 'BAD_JSONL_DIGEST_HOLD'
+          assert hashlib.sha256(md).hexdigest()==r['markdown_sha256'], 'BAD_MD_DIGEST_HOLD'
+          assert all(x['repository'].startswith('CoCivium/') for x in rows), 'BAD_REPO_HOLD'
+          assert len({x['url'] for x in rows})==len(rows), 'DUPLICATE_HOLD'
+          print('PUBLIC_SOURCE_CATALOG_VERIFIED',len(rows))
+          PY
+      - name: Commit versioned public catalog to candidate branch
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- generated/onramp/public-pages.md generated/onramp/public-pages.jsonl generated/onramp/receipt.json
+          if git diff --cached --quiet; then
+            echo 'NO_MATERIAL_CHANGE'
+          else
+            git commit -m 'onramp: persist verified source-pinned public page catalog'
+            git push origin HEAD:refs/heads/candidate/cogoall-board-ops-120-r0-20261108
+          fi
