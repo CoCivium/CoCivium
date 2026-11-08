@@ -6,11 +6,25 @@ defined, sourced, time-windowed and independently verified.
 """
 from __future__ import annotations
 from dataclasses import dataclass
+from datetime import datetime, timedelta, timezone
 from math import isfinite
 
 SCHEMA_TARGET = 325   # requested registry *target*, not 325 observed measurements
 MAX_METRICS = 512
 MAX_PEERS = 12
+MAX_WINDOWS = 32
+
+def _utc(value: str) -> datetime:
+    if not isinstance(value, str):
+        raise ValueError("NOT_A_TIMESTAMP")
+    try:
+        result = datetime.fromisoformat(value.replace("Z", "+00:00"))
+    except ValueError as exc:
+        raise ValueError("NOT_A_TIMESTAMP") from exc
+    if result.tzinfo is None or result.utcoffset() != timedelta(0):
+        raise ValueError("NOT_UTC_TIMESTAMP")
+    return result.astimezone(timezone.utc)
+
 
 @dataclass(frozen=True)
 class Measure:
@@ -46,17 +60,23 @@ class Peer:
     source_revision: str
     evidence_ref: str
 
-def _validated(m: Measure) -> bool:
-    return bool(m.name and m.unit and m.source and m.verifier
-                and m.observed_utc and m.window_start_utc and m.window_end_utc
-                and isinstance(m.value, (float, int))
-                and not isinstance(m.value, bool) and isfinite(m.value)
-                and m.window_start_utc <= m.observed_utc <= m.window_end_utc)
+def _validated(m: Measure, observed_limit: datetime | None = None) -> bool:
+    if not (m.name and m.unit and m.source and m.verifier
+            and isinstance(m.value, (float, int))
+            and not isinstance(m.value, bool) and isfinite(m.value)):
+        return False
+    try:
+        a, t, b = (_utc(m.window_start_utc), _utc(m.observed_utc), _utc(m.window_end_utc))
+    except ValueError:
+        return False
+    return a < b and a <= t <= b and (observed_limit is None or t <= observed_limit)
 
 def evaluate(session: Session, windows: tuple[tuple[Measure, ...], ...],
              peers: tuple[Peer, ...] = (), *,
              registry_count: int = 0, registry_verified: bool = False,
-             actual_receiver: bool = False, fenced_lease: bool = False) -> dict:
+             actual_receiver: bool = False, fenced_lease: bool = False,
+             as_of_utc: str | None = None,
+             max_age_hours: float = 24.0) -> dict:
     """One source-bound advisory decision, no effect and no automatic merging.
 
     Two distinct qualified windows with adverse metrics allow an aid proposal.
@@ -67,7 +87,7 @@ def evaluate(session: Session, windows: tuple[tuple[Measure, ...], ...],
         raise ValueError("MISSING_SESSION_BINDING")
     if registry_count < 0 or registry_count > 100000:
         raise ValueError("INVALID_REGISTRY_COUNT")
-    if len(peers) > MAX_PEERS or any(len(w) > MAX_METRICS for w in windows):
+    if len(peers) > MAX_PEERS or len(windows) > MAX_WINDOWS or any(len(w) > MAX_METRICS for w in windows):
         raise ValueError("EXCESS_INPUT")
     if any(not p.session_id or not p.source_revision or not p.evidence_ref for p in peers):
         raise ValueError("UNBOUND_PEER")
@@ -85,16 +105,31 @@ def evaluate(session: Session, windows: tuple[tuple[Measure, ...], ...],
     }
     if session.pause_requested or session.explicit_sleep or session.healthy_quiet:
         return dict(base, verdict="QUIET_HEALTHY", reason="QUIET_IS_NOT_ZOMBIE")
+    if max_age_hours <= 0 or not isfinite(max_age_hours):
+        raise ValueError("INVALID_FRESHNESS_POLICY")
+    as_of = _utc(as_of_utc) if as_of_utc is not None else None
     valid_windows = []
     window_ids = set()
     for window in windows:
-        good = [m for m in window if _validated(m)]
+        good = [m for m in window if _validated(m, as_of)]
+        if as_of is not None:
+            good = [m for m in good if as_of - _utc(m.observed_utc) <= timedelta(hours=max_age_hours)]
         if good:
             marker = tuple(sorted((m.window_start_utc, m.window_end_utc) for m in good))
             if marker in window_ids:
                 continue
             window_ids.add(marker)
             valid_windows.append(good)
+    # Repeated or overlapping sampled intervals do not establish persistence.
+    intervals = sorted((min(_utc(m.window_start_utc) for m in w),
+                        max(_utc(m.window_end_utc) for m in w), w) for w in valid_windows)
+    nonoverlapping = []
+    last_end = None
+    for start, end, w in intervals:
+        if last_end is None or start >= last_end:
+            nonoverlapping.append(w)
+            last_end = end
+    valid_windows = nonoverlapping
     if len(valid_windows) < 2:
         return dict(base, verdict="OBSERVE", reason="INSUFFICIENT_DISTINCT_VERIFIED_WINDOWS")
     adverse_windows = sum(any(m.adverse for m in w) for w in valid_windows)
