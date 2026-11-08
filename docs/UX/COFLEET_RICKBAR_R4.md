@@ -191,3 +191,44 @@ Those require separate receiver/runtime evidence.
 `SUCCESS_NE_NOTIFICATION_REQUIRED`  
 `RICK_NE_HEARTBEAT`  
 `HUMOUR_NE_STATUS`
+
+
+## CoTalkItOut+ peer blocker resolution and RickBar predecessor recovery (R0 proposal, 2026-11-08)
+
+**Boundary:** public UX/agent coordination specification, **not** proof of a deployed protocol, automatic session access, or repaired X2. Preserve earlier working RickBar/CoBar versions and their receipts until independently inventoried; never presume the newest prototype supersedes them.
+
+### Why this belongs in the fleet UX contract
+
+A question, disagreement or missing tool capability should not automatically become a user task. CoTalkItOut+ is a typed, bounded, evidence-first protocol for workers to exchange *resolvable uncertainties* without turning the user into a session courier. A human conversation is one possible escalation, not the default transport.
+
+**Blocker classification:** `EVIDENCE_MISSING | AUTHORITY_REQUIRED | CAPABILITY_MISSING | RECEIVER_UNAVAILABLE | LEASE_CONFLICT | AMBIGUOUS_GOAL | CONTRADICTORY_PROOFS | RESOURCE_LIMIT | UNKNOWN`. An unavailable provider does not block work if a safe authorized alternative exists. Safety or authority cannot be manufactured by a model vote.
+
+**Proposed exchange record:** `talk_id, work_id, seed_revision, blocker_type, question, competing_hypotheses[], source_refs[], source_hashes[], requester_role, responder_roles[], permission_scope, response_budget, deadline_or_wake, proposed_probes[], evidence_refs[], dissent[], adjudication, resolved_state, owner_of_next_effect, nonclaims[]`. Reuse IDs and existing receipts; do not add an unrelated canonical memory store.
+
+### Bounded resolution loop
+
+1. Discover the exact WorkID and relevant older RickBar/CoBar implementation versions, deployment paths and previous observed working behavior. Classify each predecessor as SOURCE_ONLY, OBSERVED_WORKING, RECEIVER_VERIFIED or UNKNOWN. Preserve old versions; avoid silent overwrite.
+2. Fetch only source-bound evidence needed for the unresolved question, including contrary evidence and the X2 bridge's *separate* connection status.
+3. Ask qualified independent peers for distinct hypotheses or probes. Record who saw which evidence; same model or same source is not independent confirmation.
+4. Execute bounded authorized **read-only** tests in parallel. For conflicting writes, use one elected fenced actuator; require idempotency and receipts.
+5. Decide RESOLVED_WITH_EVIDENCE, PARTIALLY_RESOLVED, WAITING_ON_EVENT, ESCALATED_FOR_AUTHORITY or FAILED_WITH_EVIDENCE. Record counterexamples, measured cost and next wake condition. A failed experiment is useful, but not a success receipt.
+6. Project only material meaning into RickBar: what changed, what remains unproven, and one reversible human action **only when needed**. Never show a permanent wall of agent discussion.
+7. Preserve the exchange and source revisions with WorkID/Seed lineage so a successor can resume without replaying chat manually.
+
+### Recovery and adapter acceptance
+
+Implement versioned adapters rather than forcing old RickBar/CoBar to be rewritten. First establish the actual host receiver and an authorized local API or event bridge. Confirm prompt -> local Ollama -> durable WorkID -> visible receiver output -> clean restart -> independent readback. The source CLI and a screenshot are not receiver ACKs. If X2's Desktop Commander connector is offline, report BRIDGE_OFFLINE without claiming X2 itself is off. Keep legacy/native UI and Break Glass usable even if all model workers stop.
+
+### CI+ and operations probes
+
+- Ten repeated equivalent blocker messages produce one unresolved work item, no duplicate user alerts or effects.
+- Missing evidence triggers one bounded retrieval; a mock recovered source unblocks without a human message.
+- Two disagreeing peers preserve dissent and cannot self-declare independent verification.
+- Two concurrent actors contend for the same effect; exactly one fenced writer commits.
+- Simulated receiver unavailable results in WAITING_ON_EVENT, not fake ACK.
+- A predecessor marked OBSERVED_WORKING remains recoverable after a failed successor migration.
+- Restart from the exact Seed revision reconstructs unresolved questions, evidence, lease and next wake without chat-history dependence.
+- Authority-required actions escalate once and do not auto-execute on peer consensus.
+- Validate round-trip latency, human interventions per WorkID, resolution rate, false resolutions, and regression to previous working UX.
+
+**Nonclaims:** `TALK_PROTOCOL_NE_LIVE_MESSAGING`; `CONSENSUS_NE_INDEPENDENT_EVIDENCE`; `SCREENSHOT_NE_RECEIVER_ACK`; `BRIDGE_OFFLINE_NE_HOST_OFF`; `SOURCE_ONLY_NE_RUNTIME`; `OLD_VERSION_NE_OBSOLETE`. Existing [CoReGroup peer evidence contract](../Evolution/COREGROUP_PEER_EVIDENCE_CONTRACT_R0.md) remains authoritative for proof boundaries.
