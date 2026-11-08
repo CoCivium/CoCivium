@@ -65,6 +65,26 @@ class UXContract(unittest.TestCase):
         self.assertIn("X2: UNKNOWN", HTML)
         self.assertIn("Not installed on X2", HTML)
 
+    def test_host_status_not_inferred_from_remote_transport(self):
+        # Proof status has three distinct fields, never one omnibus offline flag.
+        for ident in ("host-signal", "link-signal", "ux-signal", "signal-source"):
+            with self.subTest(field=ident):
+                self.assertIn('id="' + ident + '"', HTML)
+        self.assertIn('host:"REPORTED RUNNING"', HTML)
+        self.assertIn('link:"UNREACHABLE"', HTML)
+        self.assertIn('ux:"UNKNOWN"', HTML)
+        self.assertIn("No host power inference", HTML)
+        self.assertIn("No source is allowed to infer host state", HTML)
+
+    def test_signal_demo_is_local_reversible_and_not_live(self):
+        self.assertIn('id="show-signal-case"', HTML)
+        self.assertIn('id="reset-signals"', HTML)
+        self.assertIn('renderSignalCase("demonstration")', HTML)
+        self.assertIn('renderSignalCase("unknown")', HTML)
+        self.assertIn("SYNTHETIC EXAMPLE:", HTML)
+        self.assertIn("No live telemetry connected", HTML)
+        self.assertNotIn("X2 OFFLINE", HTML)
+
     def test_future_pull_is_explicitly_revisable_and_constrained(self):
         self.assertIn('id="future"', HTML)
         self.assertIn('["Future","future"]', HTML)
