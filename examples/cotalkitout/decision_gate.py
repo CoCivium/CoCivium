@@ -15,7 +15,7 @@ class Proposal:
     evidence_refs: Tuple[str, ...] = ()
     verified_result: bool = False
 
-def route(proposal: Proposal):
+def route(proposal: Proposal, verified_evidence=()):
     """Return a decision classification without executing any requested effect."""
     if not proposal.work_id or not proposal.decision_id or not proposal.source_refs:
         return {"state":"HELD","reason":"identity_or_provenance_missing"}
@@ -31,5 +31,11 @@ def route(proposal: Proposal):
         return {"state":"TEST","reason":"run_bounded_experiment","experiment":proposal.experiment}
     if not proposal.evidence_refs:
         return {"state":"HELD","reason":"verified_result_without_receipt"}
-    return {"state":"QUALIFIED","reason":"verified_result_with_receipt",
+    # The verifier's observations are supplied separately from the proposer.
+    # Matching strings alone do not prove independent receipt authenticity;
+    # the caller must obtain these from its trusted verifier boundary.
+    trusted = set(verified_evidence)
+    if not trusted or not set(proposal.evidence_refs).issubset(trusted):
+        return {"state":"HELD","reason":"independent_verifier_evidence_missing"}
+    return {"state":"QUALIFIED","reason":"verified_result_with_independent_evidence",
             "receipt_refs":proposal.evidence_refs}
