@@ -9,6 +9,8 @@ on:
       - 'test_public_onramp_index.py'
       - 'scripts/CoTalkItOutR0.py'
       - 'test_cotalkitout_r0.py'
+      - 'scripts/CoSessionGraceRecoveryR0.py'
+      - 'test_cosession_grace_recovery_r0.py'
       - '.github/workflows/cogoall-onramp-index.yml'
   pull_request:
     paths:
@@ -17,6 +19,8 @@ on:
       - 'test_public_onramp_index.py'
       - 'scripts/CoTalkItOutR0.py'
       - 'test_cotalkitout_r0.py'
+      - 'scripts/CoSessionGraceRecoveryR0.py'
+      - 'test_cosession_grace_recovery_r0.py'
       - '.github/workflows/cogoall-onramp-index.yml'
   workflow_dispatch:
 permissions:
@@ -36,6 +40,8 @@ jobs:
         run: python -B -m unittest -v test_public_onramp_index
       - name: CoTalkItOut peer-decision and adversarial tests
         run: python -B -m unittest -v test_cotalkitout_r0
+      - name: CoGrace session recovery safety tests
+        run: python -B -m unittest -v test_cosession_grace_recovery_r0
       - name: Enumerate 1000 public real GitHub source pages
         run: python -B scripts/build_public_onramp_index.py --output-dir "$RUNNER_TEMP/cogoall-index" --minimum-pages 1000
       - name: Publish catalog and receipts as CI artifact
