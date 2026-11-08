@@ -24,9 +24,9 @@ class CoGoAllReceiverTruthTests(unittest.TestCase):
 
     def test_appealing_formatted_header_is_not_authentication(self):
         out = classify_text_claims({
-            "FROM": "OpenAME-WhatsApp",
-            "Auth": "CoConsent+ ON",
-            "Custody": "CoReGroup-Holds-Seed",
+            "FROM": "SyntheticExternalChat",
+            "Auth": "SyntheticConsentFlag ON",
+            "Custody": "ClaimsSeedWithoutReadback",
             "Halo": "N", "Rep": "1.0",
         })
         self.assertEqual(out["claimed_origin"], "SELF_ASSERTION_NOT_AUTHENTICATED")
