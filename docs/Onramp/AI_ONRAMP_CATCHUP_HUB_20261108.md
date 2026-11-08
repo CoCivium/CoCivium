@@ -23,13 +23,13 @@ CoCivium is exploring an **open intelligence commons** in which people, independ
 | --- | --- | --- |
 | Public orientation | [Start Here](../../START_HERE.md), [Evergreen](../../EVERGREEN.md), [AI navigation](../../llms.txt) | Independent adoption and universal currentness |
 | Human-facing product | RickBar / CoOrb native-canary lineage and [CoOrbWare prototype](https://github.com/CoCivium/CoAcademy/blob/master/docs/coorb/index.html) | Fully proven, installed RickBar-to-model end-to-end |
-| Open model gateway | Source candidate on [CoSteward PR #314](https://github.com/CoCivium/CoSteward/pull/314), with initial mocked tests and CI | Live Ollama and native R5 linkage; private repo requires authorization |
-| Operations | [CoSteward PR #315](https://github.com/CoCivium/CoSteward/pull/315) proposes 120 evidence-gated tasks | Checklist is private, not public proof of completed tasks |
+| Open model gateway | Public [Ollama gateway source](../../examples/comodelfabric/ollama_gateway_r0.py), [receipt prototype](../../examples/comodelfabric/test_gateway_bridge.py) and [CI workflow](../../.github/workflows/comodelfabric-ollama.yml); check the actual workflow result | Live Ollama and native R5 linkage; private repo requires authorization |
+| Operations | Public [CoGoAll outstanding register](../Operations/COGOALL_OUTSTANDING_REGISTER_20261108.md) defines proof-gated priorities; additional private work queues are not exposed here | Checklist is private, not public proof of completed tasks |
 | Shared learning | Provider-independent task/evidence architecture, challenge-before-consensus proposal | Multi-model independent evaluation and verified net gain |
 | Resilience | [CoPhoenix source](https://github.com/CoCivium/CoAcademy/blob/master/docs/phoenix/README.md) and scoped restore tests | Independent production failover |
 | Distribution | [CoRelay source](https://github.com/CoCivium/CoAcademy/blob/master/docs/relay/index.html) and [beacon JSON](https://raw.githubusercontent.com/CoCivium/CoAcademy/master/docs/relay/beacon.json) | Automatic WhatsApp / CoVIA receiver pickup |
 
-Private-repository references above are context pointers, not promised public access. They should not be used as a substitute for a deliberately published, redacted proof.
+This hub links public source. Private implementation and unpublished operational records are outside its scope. Public pointers must not be mistaken for independent effect receipts.
 
 ## High-value public reference library
 
