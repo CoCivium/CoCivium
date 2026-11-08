@@ -65,6 +65,14 @@ class UXContract(unittest.TestCase):
         self.assertIn("X2: UNKNOWN", HTML)
         self.assertIn("Not installed on X2", HTML)
 
+    def test_future_pull_is_explicitly_revisable_and_constrained(self):
+        self.assertIn('id="future"', HTML)
+        self.assertIn('["Future","future"]', HTML)
+        self.assertIn("Research hypothesis, not a divine instruction", HTML)
+        for term in ("flourishing", "truth", "resilience", "optionality", "Rights, consent, recovery and Stop"):
+            with self.subTest(term=term):
+                self.assertIn(term, HTML)
+
     def test_operator_escape_and_accessible_orb(self):
         self.assertIn('aria-label="Open CoOrb;', HTML)
         self.assertIn('id="close"', HTML)
