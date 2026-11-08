@@ -44,3 +44,19 @@ jobs:
           path: dist/cosurface-preview-r0.zip
           if-no-files-found: error
           retention-days: 7
+  browser-interactions:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install isolated browser test dependency
+        run: npm install --no-save --no-package-lock playwright@1.56.1
+      - name: Install Chromium for headless interaction test
+        run: npx playwright install --with-deps chromium
+      - name: Exercise actual browser interactions
+        run: node examples/cosurface_stitched_r0/browser_smoke.cjs
