@@ -25,3 +25,7 @@ jobs:
           python-version: '3.12'
       - name: Run isolated gateway tests
         run: python examples/comodelfabric/ollama_gateway_r0.py
+      - name: Run receipt store tests
+        run: python examples/comodelfabric/test_gateway_bridge.py
+      - name: Run synthetic gateway-to-receipt integration tests
+        run: python examples/comodelfabric/test_ollama_receipt_integration.py
