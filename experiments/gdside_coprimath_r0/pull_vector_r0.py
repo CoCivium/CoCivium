@@ -92,5 +92,5 @@ def fixture(*, misleading: bool = False) -> dict:
     current=dict(learning=55,ecology=60,access=58)
     if misleading:
         # Falsifier: a superficially attractive policy overstates gains.
-        actions=(Action("hype",1,(("learning",100),),"fixture:false-forecast"),)+actions
+        actions=(Action("hype",1,(("learning",100),("access",100)),"fixture:false-forecast"),)+actions
     return assess(current,objectives,actions,budget=3)
