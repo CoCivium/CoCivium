@@ -3,6 +3,7 @@ import json
 import sqlite3
 import tempfile
 import unittest
+from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
 class SeedLedger:
@@ -23,19 +24,28 @@ class SeedLedger:
     def handoff(self, handoff_id, work_id, recipient, *, authorized):
         if not authorized: return "NOT_AUTHORIZED"
         if not self.db.execute("SELECT 1 FROM seeds WHERE work_id=?",(work_id,)).fetchone(): return "NO_SEED_HOLD"
-        existing=self.db.execute("SELECT handoff_id FROM attempts WHERE work_id=? AND recipient=?",(work_id,recipient)).fetchone()
-        if existing: return "REPLAY_SAME_HANDOFF" if existing[0]==handoff_id else "DUPLICATE_EFFECT_HOLD"
-        self.db.execute("INSERT INTO attempts VALUES (?,?,?,?)",(handoff_id,work_id,recipient,"ATTEMPTED"))
-        return "ATTEMPTED_NOT_VERIFIED"
+        # Atomic uniqueness constraint elects one attempt even across connections.
+        # A prior SELECT followed by INSERT raced and could raise IntegrityError.
+        inserted=self.db.execute("INSERT OR IGNORE INTO attempts VALUES (?,?,?,?)",
+                                 (handoff_id,work_id,recipient,"ATTEMPTED")).rowcount
+        if inserted: return "ATTEMPTED_NOT_VERIFIED"
+        exact=self.db.execute("SELECT work_id,recipient FROM attempts WHERE handoff_id=?",
+                              (handoff_id,)).fetchone()
+        if exact and exact!=(work_id,recipient): return "HANDOFF_ID_COLLISION_HOLD"
+        existing=self.db.execute("SELECT handoff_id FROM attempts WHERE work_id=? AND recipient=?",
+                                 (work_id,recipient)).fetchone()
+        return "REPLAY_SAME_HANDOFF" if existing and existing[0]==handoff_id else "DUPLICATE_EFFECT_HOLD"
     def independent_receive(self,handoff_id,observer,result):
         if not observer: raise ValueError("INDEPENDENT_OBSERVER_REQUIRED")
         attempt=self.db.execute("SELECT recipient FROM attempts WHERE handoff_id=?",(handoff_id,)).fetchone()
         if not attempt: return "NO_ATTEMPT_HOLD"
         if attempt[0]==observer: return "SELF_ACK_HOLD"
-        existing=self.db.execute("SELECT observer,result FROM receipts WHERE handoff_id=?",(handoff_id,)).fetchone()
-        if existing: return "RECEIPT_REPLAY" if existing==(observer,result) else "CONFLICTING_RECEIPT_HOLD"
-        self.db.execute("INSERT INTO receipts VALUES (?,?,?)",(handoff_id,observer,result))
-        return "INDEPENDENT_FIXTURE_RECEIPT"
+        inserted=self.db.execute("INSERT OR IGNORE INTO receipts VALUES (?,?,?)",
+                                 (handoff_id,observer,result)).rowcount
+        if inserted: return "INDEPENDENT_FIXTURE_RECEIPT"
+        existing=self.db.execute("SELECT observer,result FROM receipts WHERE handoff_id=?",
+                                 (handoff_id,)).fetchone()
+        return "RECEIPT_REPLAY" if existing==(observer,result) else "CONFLICTING_RECEIPT_HOLD"
     def counts(self):
         return tuple(self.db.execute("SELECT COUNT(*) FROM "+name).fetchone()[0] for name in ("seeds","attempts","receipts"))
     def close(self): self.db.close()
@@ -86,6 +96,26 @@ class SeedContractTests(unittest.TestCase):
         self.ledger.handoff("handoff-1","seed-1","target",authorized=True)
         self.ledger.independent_receive("handoff-1","independent-fixture","PASS")
         self.assertEqual(self.ledger.independent_receive("handoff-1","other-fixture","FAIL"),"CONFLICTING_RECEIPT_HOLD")
+    def test_handoff_id_collision_different_target_holds(self):
+        self.assertEqual(self.ledger.handoff("handoff-1","seed-1","target",authorized=True),
+                         "ATTEMPTED_NOT_VERIFIED")
+        self.assertEqual(self.ledger.handoff("handoff-1","seed-1","another",authorized=True),
+                         "HANDOFF_ID_COLLISION_HOLD")
+        self.assertEqual(self.ledger.counts(),(1,1,0))
+    def test_contending_connections_elect_only_one_attempt(self):
+        # Concurrency across independent SQLite connections to the same Seed.
+        def contend(i):
+            worker=SeedLedger(self.path)
+            try:
+                return worker.handoff(f"h-{i}","seed-1","target",authorized=True)
+            finally:
+                worker.close()
+        with ThreadPoolExecutor(max_workers=4) as pool:
+            outcomes=list(pool.map(contend,range(8)))
+        self.assertEqual(outcomes.count("ATTEMPTED_NOT_VERIFIED"),1)
+        self.assertEqual(outcomes.count("DUPLICATE_EFFECT_HOLD"),7)
+        self.assertEqual(self.ledger.counts(),(1,1,0))
+
     def test_missing_attempt_cannot_claim_receipt(self):
         self.assertEqual(self.ledger.independent_receive("no-handoff","independent-fixture","PASS"),"NO_ATTEMPT_HOLD")
 if __name__=="__main__": unittest.main()
