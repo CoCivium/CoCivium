@@ -1,0 +1,37 @@
+name: CoPullVector synthetic smoke CI
+on:
+  pull_request:
+    paths:
+      - 'experiments/copullvector/**'
+      - '.github/workflows/copullvector-synthetic-r0.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  deterministic-smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Compile and deterministic replay
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m py_compile experiments/copullvector/copull_benchmark_r0.py
+          python3 experiments/copullvector/copull_benchmark_r0.py > /tmp/copull-a.json
+          python3 experiments/copullvector/copull_benchmark_r0.py > /tmp/copull-b.json
+          cmp /tmp/copull-a.json /tmp/copull-b.json
+          python3 - <<'PY'
+          import json
+          data=json.load(open('/tmp/copull-a.json'))
+          assert data["synthetic"] and data["simulation_only"]
+          assert data["trials"] == 200
+          assert set(data["scores"]) == {"supply","demand","hybrid","gdside","random"}
+          assert all(x["unsafe_selections"] == 0 for x in data["scores"].values())
+          assert data["gdside_loses_to_hybrid_count"] > 0
+          assert "NOT_REAL_WORLD_VALIDATION" in data["nonclaims"]
+          print("PASS: synthetic deterministic replay and counterexample capture; no real-world validity claim")
+          PY
