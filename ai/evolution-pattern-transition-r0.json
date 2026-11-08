@@ -1,0 +1,167 @@
+{
+  "schema": "CoEvo.PatternTransitionPolicy.R0.v0.1",
+  "status": "PUBLIC_SOURCE_CANDIDATE__NO_RUNTIME_NO_AUTHORITY_NO_AUTO_FANOUT",
+  "date": "2026-11-08",
+  "parent_refs": [
+    "ai/evolution-intake-policy-r0.json",
+    "schemas/coevo-delta-v0.2-union-candidate.schema.json",
+    "docs/Evolution/COSESSION_WRITEBACK_FANIN_R1.md",
+    "docs/Architecture/COLISTFABRIC_ALL_LISTS_IN_FIELD_R0_20261026.md",
+    "docs/CoEvo/COMEASURE_COPRIMATH_RELATIONAL_FABRIC_R0_20261108.md",
+    "docs/CoEvo/COEVORATE_COMPARATIVE_FITNESS_R0_20261108.md"
+  ],
+  "trigger_classes": [
+    "MATERIAL_DELTA",
+    "NEW_CONTRADICTION",
+    "EVIDENCE_QUALITY_CHANGE",
+    "RECEIVER_NEED_CHANGE",
+    "FORECAST_MISFIT",
+    "STALE_DEPENDENCY_OR_BLOCKER",
+    "HIGH_VALUE_RETURN",
+    "RELEVANT_FAILURE_OR_NEGATIVE_CONTROL"
+  ],
+  "skip_if": [
+    "NO_MATERIAL_DELTA",
+    "IDENTICAL_SOURCE_ALREADY_RECONCILED",
+    "CLOSED_SCOPE_NO_WAKE_EVENT"
+  ],
+  "transition_questions": [
+    {
+      "id": "P01",
+      "lens": "PATTERN",
+      "prompt": "What recurs across independent, comparable cases, and what looks recurrent only because sources are correlated?"
+    },
+    {
+      "id": "P02",
+      "lens": "DELTA",
+      "prompt": "What worked, failed, stayed HELD or got worse, and which first missing edge explains it?"
+    },
+    {
+      "id": "P03",
+      "lens": "INVERSION",
+      "prompt": "What if we reverse, remove, roll back, split, merge, do nothing, or preserve the old version?"
+    },
+    {
+      "id": "P04",
+      "lens": "INBETWEEN",
+      "prompt": "Which interface, handoff, boundary, delay, missing relation or misunderstood semantic conversion lies between entities?"
+    },
+    {
+      "id": "P05",
+      "lens": "CO_NULL",
+      "prompt": "What is unobserved, undefined, contradicted, forbidden, stale, or absent only within a bounded observation scope?"
+    },
+    {
+      "id": "P06",
+      "lens": "PREDICTION",
+      "prompt": "What precise event, horizon, comparison, calibration method and falsifier would distinguish the leading pattern from alternatives?"
+    },
+    {
+      "id": "P07",
+      "lens": "CAUSAL_CHALLENGE",
+      "prompt": "Does any claimed multi-hop causal chain have a valid identification model, or are edges only hypotheses or analogies?"
+    },
+    {
+      "id": "P08",
+      "lens": "COMPETITOR",
+      "prompt": "Which prior art, external fork, predecessor, inverse or unrelated baseline could outperform the favored candidate?"
+    },
+    {
+      "id": "P09",
+      "lens": "DEFINITION",
+      "prompt": "Are quantities, units, semantic kinds, denominators, times and scales still compatible with current definitions?"
+    },
+    {
+      "id": "P10",
+      "lens": "ETHICS",
+      "prompt": "What privacy, consent, dignity, rights, nonparticipant, environmental or authority boundaries veto this route?"
+    },
+    {
+      "id": "P11",
+      "lens": "RESOURCE",
+      "prompt": "What is the cheapest discriminating test; is expected information gain higher than review, latency, proof and coordination costs?"
+    },
+    {
+      "id": "P12",
+      "lens": "RECEIVER",
+      "prompt": "Which independently identifiable receiver or first-use task benefits, and how will that effect be verified?"
+    },
+    {
+      "id": "P13",
+      "lens": "RETURN",
+      "prompt": "What exact receipt, independent return, wake, expiry, supersession or retirement condition ends this wave?"
+    }
+  ],
+  "types": {
+    "candidate_kinds": [
+      "RECURRENT",
+      "INVERSION",
+      "INBETWEEN",
+      "FEEDBACK",
+      "LAG",
+      "INVARIANT",
+      "CONTRADICTION",
+      "BOTTLENECK",
+      "TRANSFER",
+      "UNKNOWN_RELATION",
+      "REGRESSION"
+    ],
+    "hypothesis_requirements": [
+      "source_refs",
+      "typed_claim",
+      "epistemic_class",
+      "counterexamples",
+      "bounded_test",
+      "wake_condition",
+      "expiry_condition",
+      "receiver_class"
+    ],
+    "prediction_requirements": [
+      "outcome",
+      "horizon",
+      "falsifier",
+      "baseline_ref"
+    ],
+    "unknown_edge_rule": "Candidate question only, never implicit conversion, proof, cause or authority."
+  },
+  "output_dispositions": [
+    "QUIESCENT",
+    "HOLD_INVALID",
+    "HOLD_UNVERIFIED",
+    "HOLD_PRIVATE",
+    "HOLD_EFFECT_GATE",
+    "CHALLENGE_READ_ONLY",
+    "REVIEW_SHADOW_ONLY"
+  ],
+  "not_equivalent_to": [
+    "EXECUTION",
+    "MERGE",
+    "BROADCAST",
+    "PUBLICATION",
+    "CROSS_SESSION_ACK",
+    "RUNTIME_STATE",
+    "PERSON_RANKING"
+  ],
+  "deployment_rule": "Read-only adapter may propose review/shadow routes only. Source-controlled writes, receiver-specific routing and effect gates remain with previously authorized owners.",
+  "measurement_axes": [
+    "unique_qualified_hypotheses",
+    "falsifier_coverage",
+    "negative_controls_preserved",
+    "independent_source_fraction",
+    "avoided_duplicate_work",
+    "missing_edge_closure_rate",
+    "receiver_verified_utility",
+    "false_green_rate",
+    "review_latency",
+    "cost_of_information",
+    "unknowns_resolved_without_overclaim"
+  ],
+  "tests": "python3 scripts/CoEvoPatternTransitionR0.py --selftest",
+  "nonclaims": [
+    "SPEC_NOT_RUNTIME",
+    "SELFTEST_NOT_REAL_PATTERNS",
+    "TYPED_PLACEHOLDER_NOT_OBSERVATION",
+    "FANOUT_PROPOSAL_NOT_DELIVERY",
+    "UNKNOWN_EDGE_NOT_CAUSAL_PROOF"
+  ]
+}
