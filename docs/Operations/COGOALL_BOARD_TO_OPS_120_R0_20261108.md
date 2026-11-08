@@ -236,6 +236,11 @@ Prioritize P0 001-030 for proof, X2 bridge, and interface; P1 031-070 for Ollama
 **Hard currentness split:** source and CI are proved; actual X2 host binding, one native receiver effect, >24h independently witnessed Seed continuity, one authenticated handoff, autonomous cross-session pickup, no user relay and release authority are HELD. `one Seed/Orb/gauge/thumb/time` is a design and synthetic structure gate, not an observed screen census across all devices.
 
 **No-drag stopping rule:** when source and tests are unchanged, quiet. Reopen on authenticated receiver availability, changed code/head, new independent peer challenge, fresh negative observation, or actual user-result delta. Avoid repeating synthetic shadow fixtures for a green percentage. Strongest next proof is an authorized read-only R5 inventory followed by one reversible local model task and independent recovery receipt.
+## Provider diversity and research acquisition delta | 2026-11-08
+
+Existing [CoModelFabric model + research resource qualification](COMODELFABRIC_RESEARCH_RESOURCE_QUALIFICATION_R0_20261108.md) now names OpenAlex, Crossref, Semantic Scholar, Hugging Face inference and local Ollama as **separately qualified candidates**, with costs/rights/privacy, independent challenge, benchmark requirements and source ACK boundaries. This extends the existing provider-neutral architecture rather than declaring them operational. User-reported WhatsApp Meta AI message remains SENT_UNACKNOWLEDGED, not verified peer work.
+
+Map this to existing items 051-070 (independent model roles and tests), 081-090 (provider credentials/rights), 111-120 (public contribution and sustainability). No new 120-item checklist or duplicate agents. First independent effect: verified public scholarly retrieval with source provenance, then an authorized different model class challenging one result.
 ## Immediate critical-path proof
 
 1. Authenticated X2 read-only local R5 process, feed and launcher inventory; do not diagnose host power from remote agent state.
