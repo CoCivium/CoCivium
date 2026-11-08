@@ -80,5 +80,33 @@ class RecoveryTest(unittest.TestCase):
         with self.assertRaisesRegex(ValueError,"INVALID_REGISTRY"):
             evaluate(session(),windows(),registry_count=-1)
 
+    def test_future_measurement_cannot_trigger(self):
+        d=evaluate(session(),windows(),(peer(),),as_of_utc="2026-11-08T09:00:00Z")
+        self.assertEqual(d["verdict"],"OBSERVE")
+    def test_stale_measurement_cannot_trigger(self):
+        d=evaluate(session(),windows(),(peer(),),as_of_utc="2026-11-11T12:00:00Z")
+        self.assertEqual(d["verdict"],"OBSERVE")
+    def test_fresh_measurements_still_propose_review(self):
+        d=evaluate(session(),windows(),(peer(),),as_of_utc="2026-11-08T12:30:00Z")
+        self.assertEqual(d["verdict"],"PROPOSE_PEER_REVIEW")
+    def test_naive_as_of_rejected(self):
+        with self.assertRaisesRegex(ValueError,"NOT_UTC"):
+            evaluate(session(),windows(),(peer(),),as_of_utc="2026-11-08T13:00")
+    def test_malformed_measure_time_is_not_verified(self):
+        bad=Measure("progress", 0.0, "receipts/hour", "observer", "tomorrow",
+                    "verifier", "2026-11-08T10:00Z", "2026-11-08T11:00Z", True)
+        d=evaluate(session(),((bad,),(bad,)),(peer(),))
+        self.assertEqual(d["verdict"],"OBSERVE")
+    def test_overlapping_windows_not_persistence(self):
+        overlap=measure("2026-11-08T10:30Z","2026-11-08T11:30Z")
+        d=evaluate(session(),(windows()[0],(overlap,)),(peer(),))
+        self.assertEqual(d["verdict"],"OBSERVE")
+    def test_unbounded_freshness_rejected(self):
+        with self.assertRaisesRegex(ValueError,"INVALID_FRESHNESS"):
+            evaluate(session(),windows(),(peer(),),max_age_hours=float("inf"))
+    def test_too_many_windows_rejected(self):
+        with self.assertRaisesRegex(ValueError,"EXCESS_INPUT"):
+            evaluate(session(),tuple(windows()[0] for _ in range(33)),(peer(),))
+
 if __name__=="__main__":
     unittest.main()
