@@ -123,3 +123,52 @@ Measure task outcome, unmet-need coverage, optionality retained, verified relati
 **VERIFIED_EXPERIMENT -> AUTHORIZED_RUNTIME:** receiver-verified effects, bounded rollback, explicit rights/consent gates and independent operational receipts.
 
 Related source anchors: [CoGoAll outstanding register](../Operations/COGOALL_OUTSTANDING_REGISTER_20261108.md), [CoGoldenBraid discovery hub](../Onramp/COGOALL_PUBLIC_REBOUND_HUB_20261108.md), [CoLiving highlight asset contract](../Architecture/COLIVING_HIGHLIGHT_ASSETS_R0.md). Neither source publication nor recursive elegance is proof of a working braid engine.
+
+## CoFuture Pull Vector / CoMetaAttractor field R0 (2026-11-08)
+
+**Status: hypothesis and measurement specification, not a discovered cosmic law, a theological claim, a calibrated predictor or an operational authority.** The G_dSide metaphor suggests a useful engineering question: can plural desired futures be specified with enough detail to guide research and resource discovery without collapsing into one ideological or numerical objective?
+
+**A pull vector is not a force acting backward in time.** It is a versioned, receiver-relative comparison between current evidence and explicitly proposed future conditions. Keep optionality and Pareto frontiers; a scalar score is at most one contestable projection.
+
+Candidate vector envelope:
+
+```text
+future_id | version | phase | horizon | affected_parties
+dimension_id | definition | unit | target_range | direction
+baseline_value | measurement_method | uncertainty | evidence_refs
+scenario_assumptions | counterfactuals | distribution_or_bounds
+constraints: rights | consent | safety | resources | reversibility
+dependencies | negative_externalities | uncertainty_sources
+competing_futures | dissent | value_owner | decision_authority
+experiment | discriminating_observation | threshold | stop_condition
+work_id | owner_policy | receipt_refs | receiver_acceptance | next_wake
+```
+
+Candidate dimensions include ecological viability, agency, unmet-need coverage, resilience, public benefit, choice preservation, evidence quality and relational stewardship. **No dimension is assumed commensurable with another**. Refuse to assign scores to moral worth, divine approval, subjective consciousness or rights that cannot be responsibly measured.
+
+### How a vector becomes a decision experiment
+
+1. **Describe** two or more legitimate future states, each with its own stakeholders, bounds and alternatives; include supply-only, demand-only, hybrid, status quo and counterfuture baselines.
+2. **Map** present evidence, known gaps, uncertain dependencies, CoTime horizon, and what could actually change through authorized deeds.
+3. **Propose** one reversible intervention and predicted observations, including unfavorable outcomes and potential harms.
+4. **Challenge** predictions using an independent source/worker and recorded counterevidence. A model vote never substitutes for source verification.
+5. **Compare** measured outcomes in their original units. Report Pareto tradeoffs, irreducible disagreement, sensitivity, cost, who benefits and who bears risk.
+6. **Revise or retire** the future specification on observed evidence, changed stakeholder needs, or failed interventions. Preserve versions and source lineage.
+
+### Candidate example: community woodland
+
+A proposal to plant one site may improve canopy and flood resilience while worsening near-term water stress and maintenance burden. Express ecological survival (observed percent over a declared horizon), operating cost (local currency), participation (consented, counted), accessibility (audited outcome), and reversibility (documented contingency) as **separate typed axes**. An alternative with less planting can win. A long-horizon stewardship motive can nominate additional outcomes but cannot alter measurements or excuse consent.
+
+### Measurement and CI contract
+
+- Schema validation: reject missing units, horizon, evidence, consent/rights constraints or baseline; retain `UNKNOWN` where no responsible observation exists.
+- Dimensional safety: refuse to add percentages, dollars, probabilities and subjective interpretations as if equivalent units.
+- Epistemic boundary: future aspirations, mythic/G_d orientations and counterfactuals remain typed as proposals, never promoted to observed effect.
+- Non-domination: retain at least one counterexample where supply/demand baseline outranks the future-guided proposal.
+- Decision stability: perturb uncertain weights/bounds, record reversals and keep alternatives rather than declaring a universal winner.
+- Temporal calibration: measure predictions only once specified horizons and observation windows mature; never infer >24h durability from a short test.
+- Receiver truth: public source, synthetic CI, independently witnessed real-world outcome and authorized deployment remain separate gates.
+
+**First executable canary:** implement a deterministic, small, synthetic multi-objective comparison with units and hard constraints; include dominance, incomparable alternatives, unit mismatch, no fabricated values and forced loss of a G_dSide-labeled proposal. Only expand toward real-world models after a documented evaluator and external source-backed sample exist.
+
+**Rails:** `PULL_VECTOR_NE_PHYSICAL_FORCE` · `FUTURE_DESIRE_NE_FUTURE_FACT` · `G_D_METAPHOR_NE_AUTHORITY` · `MODEL_SPEC_NE_OBSERVED_CAUSATION` · `PARETO_FRONTIER_NE_SINGLE_WINNER` · `MORE_DIMENSIONS_NE_MORE_TRUTH`.
