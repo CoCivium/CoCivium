@@ -1,0 +1,34 @@
+name: CoGoAll AI Onramp public index
+on:
+  pull_request:
+    paths:
+      - 'docs/Onramp/COGOALL_AI_ONRAMP_HUB_R1_20261108.md'
+      - 'scripts/build_public_onramp_index.py'
+      - 'test_public_onramp_index.py'
+      - '.github/workflows/cogoall-onramp-index.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  source-contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Offline proof and negative tests
+        run: python -B -m unittest -v test_public_onramp_index
+      - name: Enumerate 1000 public real GitHub source pages
+        run: python -B scripts/build_public_onramp_index.py --output-dir generated/onramp --minimum-pages 1000
+      - name: Publish catalog and receipts as CI artifact
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cogoall-public-onramp-1000-pages
+          path: generated/onramp/
+          if-no-files-found: error
+          retention-days: 30
