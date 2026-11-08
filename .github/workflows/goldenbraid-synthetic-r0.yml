@@ -1,0 +1,30 @@
+name: CoGoldenBraid synthetic falsifier
+on:
+  pull_request:
+    paths:
+      - 'experiments/gdside_coprimath_r0/**'
+      - '.github/workflows/goldenbraid-synthetic-r0.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  synthetic-proof:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    strategy:
+      matrix:
+        python-version: ['3.11', '3.13']
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Run all CoPriMath and GoldenBraid synthetic tests
+        working-directory: experiments/gdside_coprimath_r0
+        run: python -B -m unittest discover -p 'test_*.py' -v
+      - name: Exercise deterministic recursive negative control
+        working-directory: experiments/gdside_coprimath_r0
+        run: |
+          python -B -c "from recursive_braid import compare_fixture; good=compare_fixture(); bad=compare_fixture(True); assert good['braid_retrieves_unheard_need']; assert not good['braid_false_positive']; assert bad['braid_false_positive']; print('STRUCTURAL_FIXTURE_ONLY__NOT_CAUSAL_PROOF')"
