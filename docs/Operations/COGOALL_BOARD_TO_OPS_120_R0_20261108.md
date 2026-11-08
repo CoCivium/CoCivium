@@ -227,6 +227,15 @@ Prioritize P0 001-030 for proof, X2 bridge, and interface; P1 031-070 for Ollama
 - Eight additional tests challenge stale/future/malformed/overlapping observations and invalid policy bounds. This closes a scoped synthetic false-positive pathway; it does not establish that an external verifier was authenticated or that a real receiver measured anything.
 - X2 Desktop Commander agent observed offline, last seen nine hours prior. Host power and existing native rickBar status are not inferred from this remote bridge.
 - Next needed proof: time-source authentication, exact receiver readback, unit registry binding and a real shadow observation stream before suggesting any session handoff.
+## CoLatch / CoBoogie / CoReGroup / Break Glass acceptance crosswalk | 2026-11-08
+
+**Existing test reuse, not another daemon.** [CoSurface release gate in PR #375](https://github.com/CoCivium/CoCivium/pull/375) already checks one Seed, Orb, gauge, thumb and time; no placeholders; one handoff; Stop/native escape/rollback; and a claimed >24-hour observation pair. Even a perfectly formed synthetic packet returns native X2 HOLD because those strings cannot authenticate a real receiver. [CoBoogie/CoReGroup policy](../../ai/coboogie-regroup-policy.json) distinguishes material drift detection from finite disposition; time passage alone is not a new signal.
+
+**New tested interlock:** [CoGraceTalkBridgeR0.py](../../scripts/CoGraceTalkBridgeR0.py) converts qualified, consented CoGrace rescue proposals into CoTalkItOut shadow peer review; [11 regression tests](../../test_cograce_talk_bridge_r0.py) reject quiet/paused, stale, source-mismatched or unconsented interventions and verify that even caller-asserted receiver/lease cannot become effect, fabricated ACK or session takeover. [CI 42522502670](https://github.com/CoCivium/CoCivium/actions/runs/42522502670) completed SUCCESS for its exact tested revision.
+
+**Hard currentness split:** source and CI are proved; actual X2 host binding, one native receiver effect, >24h independently witnessed Seed continuity, one authenticated handoff, autonomous cross-session pickup, no user relay and release authority are HELD. `one Seed/Orb/gauge/thumb/time` is a design and synthetic structure gate, not an observed screen census across all devices.
+
+**No-drag stopping rule:** when source and tests are unchanged, quiet. Reopen on authenticated receiver availability, changed code/head, new independent peer challenge, fresh negative observation, or actual user-result delta. Avoid repeating synthetic shadow fixtures for a green percentage. Strongest next proof is an authorized read-only R5 inventory followed by one reversible local model task and independent recovery receipt.
 ## Immediate critical-path proof
 
 1. Authenticated X2 read-only local R5 process, feed and launcher inventory; do not diagnose host power from remote agent state.
