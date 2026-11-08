@@ -11,6 +11,8 @@ on:
       - 'ai/measurement/copredict_drift_fixture_r0.json'
       - 'tests/test_copredict_drift_r0.py'
       - 'tests/test_comeasure_optimized_failclosed_r0.py'
+      - 'ai/measurement/observation_domain_r0.py'
+      - 'tests/test_observation_domain_r0.py'
       - 'docs/Architecture/COALL_MEASUREMENT_R0_CANDIDATE.md'
       - '.github/workflows/comeasure-r0-ci.yml'
 
@@ -37,6 +39,10 @@ jobs:
         run: python -m unittest discover -s tests -p 'test_copredict_drift_r0.py' -v
       - name: Challenge exact registry with optimized mode and mutation canaries
         run: python -m unittest discover -s tests -p 'test_comeasure_optimized_failclosed_r0.py' -v
+      - name: Validate observation-domain safety under both Python modes
+        run: |
+          python -m unittest discover -s tests -p 'test_observation_domain_r0.py' -v
+          python -O -m unittest discover -s tests -p 'test_observation_domain_r0.py' -v
       - name: Check scope and result counters
         run: |
           python - <<'PY'
