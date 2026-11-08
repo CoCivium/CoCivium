@@ -3,6 +3,8 @@ const { chromium } = require("playwright");
 const assert = require("node:assert/strict");
 const { pathToFileURL } = require("node:url");
 const { resolve } = require("node:path");
+const { mkdirSync } = require("node:fs");
+const evidenceDir = resolve(__dirname, "evidence");
 
 (async () => {
   const browser = await chromium.launch({ headless: true });
@@ -11,9 +13,11 @@ const { resolve } = require("node:path");
     const errors = [];
     page.on("pageerror", err => errors.push(err.message));
     await page.goto(pathToFileURL(resolve(__dirname, "index.html")).href);
+    mkdirSync(evidenceDir, { recursive: true });
     assert.equal(await page.locator("#workspace").isVisible(), false, "Default should be quiet");
     assert.equal(await page.locator("#r5-rail").isVisible(), true);
     assert.equal(await page.locator("#orb").count(), 1);
+    await page.screenshot({ path: resolve(evidenceDir, "quiet-default.png"), fullPage: true });
 
     await page.locator("#rail-map").click();
     assert.equal(await page.locator("#workspace").isVisible(), true, "Rail should open workspace");
@@ -26,6 +30,7 @@ const { resolve } = require("node:path");
     assert.equal(await page.locator("#orb-panel").isVisible(), true, "Orb opens nav");
     await page.locator("#orbnav button", { hasText: "Future" }).click();
     assert.equal(await page.locator("#future").isVisible(), true);
+    await page.screenshot({ path: resolve(evidenceDir, "future-workspace.png"), fullPage: true });
     assert.equal(await page.locator("#orb-panel").isVisible(), false);
     assert.match(await page.locator("#future").innerText(), /not a divine instruction/);
 
@@ -35,6 +40,7 @@ const { resolve } = require("node:path");
 
     await page.locator("#orb").click({ button: "right" });
     assert.equal(await page.locator("#legacy").isVisible(), true, "Right click opens legacy menu");
+    await page.screenshot({ path: resolve(evidenceDir, "legacy-menu.png"), fullPage: true });
     await page.locator("#legacy button", { hasText: "Evidence" }).click();
     assert.equal(await page.locator("#evidence").isVisible(), true);
 
