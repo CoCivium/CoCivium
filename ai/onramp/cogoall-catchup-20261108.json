@@ -1,0 +1,249 @@
+{
+  "schema": "CoCivium.AIOnrampHub.R0",
+  "created_utc": "2026-11-08",
+  "intent": "opt_in_source_navigation_not_broadcast_or_receiver_ack",
+  "count": 26,
+  "readme": "https://github.com/CoCivium/CoCivium/blob/cogowhatsapp-public-catchup-20261108/docs/Onramp/AI_ONRAMP_CATCHUP_HUB_20261108.md",
+  "caveats": [
+    "Public source links are not proof of live hosted apps.",
+    "No private repos, WhatsApp chats, credentials or contact data.",
+    "Candidate source routes should be independently checked before treating them as live.",
+    "No claim of 1000 independently verified pages."
+  ],
+  "entries": [
+    {
+      "id": "start",
+      "title": "Start here in 60 seconds",
+      "url": "https://github.com/CoCivium/CoCivium/blob/main/START_HERE.md",
+      "audience": "human",
+      "theme": "orientation",
+      "status": "source_locator",
+      "verified_receiver": false
+    },
+    {
+      "id": "evergreen",
+      "title": "Evergreen evidence index",
+      "url": "https://github.com/CoCivium/CoCivium/blob/main/EVERGREEN.md",
+      "audience": "human",
+      "theme": "evidence",
+      "status": "source_locator",
+      "verified_receiver": false
+    },
+    {
+      "id": "bootstrap",
+      "title": "Session bootstrap",
+      "url": "https://github.com/CoCivium/CoCivium/blob/main/SESSION_BOOTSTRAP.md",
+      "audience": "agent",
+      "theme": "continuity",
+      "status": "source_locator",
+      "verified_receiver": false
+    },
+    {
+      "id": "index",
+      "title": "Machine readable project index",
+      "url": "https://raw.githubusercontent.com/CoCivium/CoCivium/main/ai/index.json",
+      "audience": "agent",
+      "theme": "discovery",
+      "status": "source_locator",
+      "verified_receiver": false
+    },
+    {
+      "id": "llms",
+      "title": "AI navigation index",
+      "url": "https://raw.githubusercontent.com/CoCivium/CoCivium/main/llms.txt",
+      "audience": "agent",
+      "theme": "discovery",
+      "status": "source_locator",
+      "verified_receiver": false
+    },
+    {
+      "id": "prelaunch",
+      "title": "Public readiness and limitations",
+      "url": "https://github.com/CoCivium/CoCivium/blob/main/PRELAUNCH.md",
+      "audience": "human",
+      "theme": "truth",
+      "status": "source_locator",
+      "verified_receiver": false
+    },
+    {
+      "id": "onramp",
+      "title": "First-use intake",
+      "url": "https://github.com/CoCivium/CoCivium/blob/main/docs/Onramp/COCIVIA_FIRST_USE_R0.md",
+      "audience": "human",
+      "theme": "onboarding",
+      "status": "source_locator",
+      "verified_receiver": false
+    },
+    {
+      "id": "precursor",
+      "title": "CoPreCursor example",
+      "url": "https://github.com/CoCivium/CoCivium/blob/main/examples/coprecursor/README.md",
+      "audience": "human",
+      "theme": "demo",
+      "status": "source_locator",
+      "verified_receiver": false
+    },
+    {
+      "id": "precursor-app",
+      "title": "CoPreCursor offline HTML",
+      "url": "https://github.com/CoCivium/CoCivium/blob/main/examples/coprecursor/index.html",
+      "audience": "human",
+      "theme": "demo",
+      "status": "source_locator",
+      "verified_receiver": false
+    },
+    {
+      "id": "orb",
+      "title": "CoOrbWare First Look",
+      "url": "https://github.com/CoCivium/CoAcademy/blob/master/docs/coorb/index.html",
+      "audience": "human",
+      "theme": "demo",
+      "status": "source_locator",
+      "verified_receiver": false
+    },
+    {
+      "id": "civiclens",
+      "title": "CoCivicLens prototype",
+      "url": "https://github.com/CoCivium/CoAcademy/blob/master/docs/civiclens/index.html",
+      "audience": "human",
+      "theme": "demo",
+      "status": "source_locator",
+      "verified_receiver": false
+    },
+    {
+      "id": "coplay",
+      "title": "CoPlay civic satire prototype",
+      "url": "https://github.com/CoCivium/CoAcademy/blob/master/docs/coplay/votes-for-sale/index.html",
+      "audience": "human",
+      "theme": "demo",
+      "status": "source_locator",
+      "verified_receiver": false
+    },
+    {
+      "id": "device",
+      "title": "CoDevice Bridge prototype",
+      "url": "https://github.com/CoCivium/CoAcademy/blob/master/docs/device-first/index.html",
+      "audience": "human",
+      "theme": "demo",
+      "status": "source_locator",
+      "verified_receiver": false
+    },
+    {
+      "id": "phoenix",
+      "title": "CoPhoenix recovery guide",
+      "url": "https://github.com/CoCivium/CoAcademy/blob/master/docs/phoenix/README.md",
+      "audience": "human",
+      "theme": "recovery",
+      "status": "source_locator",
+      "verified_receiver": false
+    },
+    {
+      "id": "relay",
+      "title": "CoRelay opt-in source",
+      "url": "https://github.com/CoCivium/CoAcademy/blob/master/docs/relay/index.html",
+      "audience": "human",
+      "theme": "distribution",
+      "status": "source_locator",
+      "verified_receiver": false
+    },
+    {
+      "id": "beacon",
+      "title": "CoRelay AI beacon JSON",
+      "url": "https://raw.githubusercontent.com/CoCivium/CoAcademy/master/docs/relay/beacon.json",
+      "audience": "agent",
+      "theme": "distribution",
+      "status": "source_locator",
+      "verified_receiver": false
+    },
+    {
+      "id": "observer",
+      "title": "CoObserverMap guidance",
+      "url": "https://github.com/CoCivium/CoAcademy/blob/master/docs/relay/observer-map/README.md",
+      "audience": "human",
+      "theme": "security",
+      "status": "source_locator",
+      "verified_receiver": false
+    },
+    {
+      "id": "comail",
+      "title": "CoMail living publication example",
+      "url": "https://github.com/CoCivium/CoCivium/blob/main/examples/comail_r0/README.md",
+      "audience": "human",
+      "theme": "publishing",
+      "status": "source_locator",
+      "verified_receiver": false
+    },
+    {
+      "id": "cofree",
+      "title": "Free publication commons contract",
+      "url": "https://github.com/CoCivium/CoCivium/blob/main/docs/Architecture/COFREE_EVOLVING_PUBLICATION_COMMONS_R0_20261026.md",
+      "audience": "technical",
+      "theme": "governance",
+      "status": "source_locator",
+      "verified_receiver": false
+    },
+    {
+      "id": "continuity",
+      "title": "CoCopy continuity contract",
+      "url": "https://github.com/CoCivium/CoCivium/blob/main/docs/Architecture/COCOPY_COACKREWISE_DAILY_CONTINUITY_R0_20261026.md",
+      "audience": "technical",
+      "theme": "continuity",
+      "status": "source_locator",
+      "verified_receiver": false
+    },
+    {
+      "id": "relationships",
+      "title": "Relationship braid architecture",
+      "url": "https://github.com/CoCivium/CoCivium/blob/main/docs/Architecture/CORELATIONSHIP_BRAID_FABRIC_R0_20261026.md",
+      "audience": "technical",
+      "theme": "channels",
+      "status": "source_locator",
+      "verified_receiver": false
+    },
+    {
+      "id": "teams",
+      "title": "CoTeaming project field",
+      "url": "https://github.com/CoCivium/CoCivium/blob/main/docs/Architecture/COTEAMING_COPROJECTFIELD_R0_20261101.md",
+      "audience": "technical",
+      "theme": "teaming",
+      "status": "source_locator",
+      "verified_receiver": false
+    },
+    {
+      "id": "omni",
+      "title": "Multi-exemplar comparison",
+      "url": "https://github.com/CoCivium/CoCivium/blob/main/docs/Architecture/COOMNIPIE_MULTIEXEMPLAR_COMPARISON_R0_20261101.md",
+      "audience": "technical",
+      "theme": "evaluation",
+      "status": "source_locator",
+      "verified_receiver": false
+    },
+    {
+      "id": "repo",
+      "title": "CoCivium public source tree",
+      "url": "https://github.com/CoCivium/CoCivium",
+      "audience": "human",
+      "theme": "source",
+      "status": "source_locator",
+      "verified_receiver": false
+    },
+    {
+      "id": "academy",
+      "title": "CoAcademy public source tree",
+      "url": "https://github.com/CoCivium/CoAcademy",
+      "audience": "human",
+      "theme": "source",
+      "status": "source_locator",
+      "verified_receiver": false
+    },
+    {
+      "id": "issues",
+      "title": "Public challenge / feedback intake",
+      "url": "https://github.com/CoCivium/CoCivium/issues",
+      "audience": "human",
+      "theme": "feedback",
+      "status": "source_locator",
+      "verified_receiver": false
+    }
+  ]
+}
