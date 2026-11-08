@@ -43,7 +43,6 @@ class UXContract(unittest.TestCase):
 
     def test_two_navigation_surfaces_use_same_registry(self):
         self.assertIn('document.getElementById("orbnav").append(navButton(label,id))', HTML)
-        self.assertIn('document.getElementById("navbuttons").append(navButton(label,id))', HTML)
         self.assertIn("legacy.append(navButton(label,id))", HTML)
 
     def test_legacy_right_click_and_keyboard_escape(self):
@@ -100,10 +99,13 @@ class UXContract(unittest.TestCase):
         self.assertIn('id="rail-workspace"', HTML)
         self.assertIn('id="rail-stop"', HTML)
         self.assertIn("openWorkspace(false)", HTML)
-        self.assertIn('document.getElementById("rail-map").addEventListener', HTML)
+        self.assertIn('id="rail-map" type="button" disabled', HTML)
         self.assertIn('document.getElementById("rail-evidence").addEventListener', HTML)
         self.assertIn("NO LIVE EFFECT", HTML)
         self.assertIn("LOCAL DEMO", HTML)
+        for old_placeholder in ('id="map"', 'id="time"', 'id="channels"', 'id="actions"', 'id="nav"'):
+            with self.subTest(placeholder=old_placeholder):
+                self.assertNotIn(old_placeholder, HTML)
 
     def test_operator_escape_and_accessible_orb(self):
         self.assertIn('aria-label="Open CoOrb;', HTML)
