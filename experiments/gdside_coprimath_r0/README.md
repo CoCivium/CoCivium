@@ -80,3 +80,33 @@ Crossings are risk-dependent and require independent evidence, consent and rever
 The included source and fixtures are AI-assisted original synthetic examples. They contain no user chat logs, personal information, credentials, device addresses, private repository paths, or private operational receipts. The surrounding CoCivium repository carries its [GPL-3.0 license](https://github.com/CoCivium/CoCivium/blob/main/LICENSE). Review rights, attribution, and dependencies before any downstream redistribution.
 
 This package is offered as a **reviewable public research candidate**; an open PR does not mean the work has been merged, accepted, published to a production website, independently replicated, or validated on real people or economies. The related separate mathematical model on `candidate/gdside-multiobjective-r0-20261108` should be compared, not overwritten.
+
+## CoFuturePull+ | Spec-like candidate-future vectors (R0 research design)
+
+**Status:** A formalization proposal only. It does not assert that a future state physically pulls the present, that G_d emits measurable commands, or that mathematical detail establishes truth. “Pull” means *current decisions evaluated against explicit, plural candidate future conditions*. This section adds a falsifiable representation to the preceding Supply/Demand/G_dSide braid, not a new controlling ontology.
+
+### State and future envelope
+
+At observation time `t`, specify a state `x_t` with typed quantities (unit, dimension, reference frame, uncertainty, data freshness, source ID, rights/consent). Define a future portfolio `F_t = {f_1, ..., f_n}` in which each `f_i` has:
+
+- `future_id`, scope, stakeholder/author, time horizon and source/provenance;
+- **target vector** `y_i`: explicitly named outcome coordinates (e.g. welfare distribution, resource reserves, rights violations, recovery time, optionality, uncertainty), each with units or declared ordinal semantics;
+- **viability envelope** `C_i`: hard prohibitions, safe bounds, consent/rights constraints and reversible/irreversible effects;
+- assumptions, confidence intervals/scenarios, dissenting futures, negative controls and update/expiry conditions;
+- transition model `P(x_(t+1) | x_t, action, disturbances)`, alternatives and cost/resource budget.
+
+An illustrative **pull vector** is the *projected change needed* to approach a specific target under an explicit metric: `d_i = y_i - h(x_t)` for compatible measured coordinates; for categorical/rights/qualitative values use separate typed predicates, never illicit subtraction. Candidate action `a` has a modeled outcome distribution `P(y | x_t, a)`. Report `D_i(a)` (distance-to-viability envelope), `Pr(C_i violated | a)`, marginal information gain, regret, and resource cost as a **vector**, rather than assuming one scalar worth maximizing. Never mistake an estimate for an observed effect.
+
+### Why “spec-like” is useful but insufficient
+
+A detailed target state can function like an executable acceptance specification: it can say what success would look like, what is forbidden, how to measure, when to re-evaluate and which observations would falsify the forecast. It does **not** prescribe an unchallengeable single utopia. Preserve multiple incompatible stakeholder futures, Pareto alternatives, CoNull/unknowns and counterfactual baselines. The “best” future remains contingent on evidence, rights and legitimate human decisions.
+
+### CoGoldenBraid feedback cycle
+
+`Supply capabilities/constraints + Demand expressed/unheard needs + future portfolio F_t -> candidate actions -> predicted distributions -> independent challenge -> bounded test -> observed outcome/receipt -> revise x_(t+1), F_(t+1), uncertainty and models`.
+
+A source/hash/time link must exist for every numerical input and assumption. Recursive supply/demand/future subgraphs carry explicit depth/budget ceilings; no model or agent may promote itself from evaluator into authority merely because it predicts a desirable future.
+
+### First adversarial evaluation (NOT RUN)
+
+Extend the existing toy-world comparisons with **two versions of the future lens**: (A) static weighted future targets and (B) plural, time-indexed target vectors with explicit constraint envelopes and uncertainty. Compare against existing supply, demand, hybrid and random baselines on the same seeds, information access and compute/intervention budgets. Inject mistaken future preferences, a newly discovered stakeholder, misleading forecasts and ecological regime change. Pre-register that version B loses if it worsens calibrated prediction, rights/consent harms, worst-off outcomes, recovery time or measured future option retention after accounting for complexity/coordination cost. Preserve negative results and independently reproducible source/data manifests. The current 80×36 simulation does not test this additional design.
