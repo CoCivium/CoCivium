@@ -79,3 +79,18 @@ jobs:
           path: examples/cosurface_stitched_r0/evidence/*.png
           if-no-files-found: warn
           retention-days: 7
+  ollama-loopback-contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Confirm PowerShell 7 runtime
+        run: pwsh -NoProfile -Command '$PSVersionTable.PSVersion.ToString()'
+      - name: Test PS7 observation to rickBar projection with fake Ollama
+        working-directory: examples/cosurface_stitched_r0
+        run: python -B -m unittest -v ollama_integration_probe
