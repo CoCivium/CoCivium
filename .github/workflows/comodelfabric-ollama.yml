@@ -24,4 +24,7 @@ jobs:
         with:
           python-version: '3.12'
       - name: Run isolated gateway tests
-        run: python examples/comodelfabric/ollama_gateway_r0.py
+        run: |
+          python examples/comodelfabric/ollama_gateway_r0.py
+          python examples/comodelfabric/test_gateway_bridge.py
+          python examples/comodelfabric/test_rickbar_ollama_bridge_r0.py
