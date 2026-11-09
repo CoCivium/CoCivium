@@ -9,12 +9,20 @@ on:
       - "docs/Architecture/COOBJECT_VITALITY_METABOLISM_R0_20261027.md"
       - "ai/vitality/**"
       - "scripts/CoObjectVitalityR0.py"
+      - "scripts/CoObjectAgencyBridgeR0.py"
+      - "tests/test_coobject_agency_bridge_r0.py"
+      - "docs/Architecture/COOBJECT_AGENTIC_CAPABILITY_CIV3_R0_20261109.md"
+      - "docs/Evolution/COACKREWISE_COOBJECT_CIV3_FRONTIER_R0_20261109.md"
       - ".github/workflows/coobject-vitality-r0.yml"
   push:
     paths:
       - "docs/Architecture/COOBJECT_VITALITY_METABOLISM_R0_20261027.md"
       - "ai/vitality/**"
       - "scripts/CoObjectVitalityR0.py"
+      - "scripts/CoObjectAgencyBridgeR0.py"
+      - "tests/test_coobject_agency_bridge_r0.py"
+      - "docs/Architecture/COOBJECT_AGENTIC_CAPABILITY_CIV3_R0_20261109.md"
+      - "docs/Evolution/COACKREWISE_COOBJECT_CIV3_FRONTIER_R0_20261109.md"
       - ".github/workflows/coobject-vitality-r0.yml"
 
 jobs:
@@ -29,3 +37,5 @@ jobs:
       - name: Run bounded vitality canary
         run: |
           python -B scripts/CoObjectVitalityR0.py             --fixture ai/vitality/coobject-vitality-fixture-r0.json             --policy ai/vitality/coobject-vitality-policy-r0.json
+      - name: Exercise source-to-proposal bridge across unlike files and failure cases
+        run: python -B -m unittest discover -s tests -p 'test_coobject_agency_bridge_r0.py' -v
