@@ -24,6 +24,8 @@ The [source-bound CoSeed/CoPath machine graph](ai/copre-seed-path-federation-r0.
 
 ## Exact public companions
 
+- [CoHumanSurface rich hero and CoAudioFkOff audio consent proposal](docs/Design/COHUMAN_RICH_HERO_AND_AUDIO_CONSENT_R0_20261109.md): original visual-first human UX, with quiet accessible fallbacks and optional scroll-responsive audio only after opt-in.
+
 - [CoLatch / CoPreGeneric six-wave acceptance contract](ai/colatch-copre-wave-acceptance-r0-20261109.json): testable Seed, Orb, gauge, thumb, time, persistence and receiver thresholds; design candidate only.
 
 - [CoPre v8.79 source/feed proposal](ai/copre-source-feed-delta-v879-20261109.json): privacy-safe reciprocal discovery, with no claim of cross-front acceptance.
