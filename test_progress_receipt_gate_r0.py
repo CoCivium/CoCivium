@@ -46,5 +46,27 @@ class Tests(unittest.TestCase):
     def test_no_delta_requires_explicit_caller_claim(self):
         self.assertEqual(classify(base(claimed_no_update=False))["reason"],"NO_DELTA_CLAIM_MISSING")
 
+    def test_string_false_source_check_does_not_turn_true(self):
+        d=classify(base(source_checked="false"))
+        self.assertEqual(d["reason"], "INVALID_BOOLEAN_FLAGS")
+    def test_integer_or_text_control_flags_rejected(self):
+        for changes in ({"execution_attempted": 1}, {"claimed_no_update": "false"},
+                        {"eligible_work": "false"}, {"due_work": 0}):
+            with self.subTest(changes=changes):
+                self.assertEqual(classify(base(**changes))["reason"], "INVALID_BOOLEAN_FLAGS")
+    def test_invalid_calendar_date_rejected(self):
+        self.assertEqual(classify(base(observed_at_utc="2026-02-30T10:00:00Z"))["reason"],
+                         "INVALID_OBSERVED_TIME")
+    def test_naive_and_non_utc_observation_rejected(self):
+        for ts in ("2026-11-09T10:00:00", "2026-11-09T10:00:00-05:00",
+                   "not-a-time", 123456):
+            with self.subTest(ts=ts):
+                self.assertEqual(classify(base(observed_at_utc=ts))["reason"],
+                                 "INVALID_OBSERVED_TIME")
+    def test_explicit_utc_offset_is_acceptable_syntax_only(self):
+        d=classify(base(observed_at_utc="2026-11-09T10:00:00+00:00"))
+        self.assertEqual(d["disposition"], "SOURCE_CLAIMED_NO_DELTA")
+        self.assertNotEqual(d["disposition"], "INDEPENDENT_RECEIVER_VERIFIED")
+
 if __name__=="__main__":
     unittest.main()
