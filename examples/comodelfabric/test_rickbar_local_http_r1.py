@@ -83,6 +83,19 @@ class Tests(unittest.TestCase):
         self.assertEqual(state["turns"][0]["response"],"Synthetic local answer")
         self.assertFalse(state["receiver_ack"])
 
+    def test_http_provenance_is_observed_not_authenticated(self):
+        cid=self.create()
+        payload={"conversation_id":cid,"turn_id":"provenance","prompt":"Hello",
+                 "epoch":1,"trigger_kind":"SCHEDULED"}
+        status,answer=self.request("POST","/api/turn",payload)
+        self.assertEqual(status,200)
+        self.assertEqual(answer["trigger_kind"],"LOCAL_HTTP_REQUEST")
+        self.assertEqual(answer["trigger_evidence"],
+                         "LOOPBACK_REQUEST_OBSERVED_USER_UNAUTHENTICATED")
+        code,state=self.request("GET","/api/conversation/"+cid)
+        self.assertEqual(code,200)
+        self.assertEqual(state["turns"][0]["trigger_kind"],"LOCAL_HTTP_REQUEST")
+
     def test_new_turn_uses_prior_context(self):
         cid=self.create()
         base={"conversation_id":cid,"epoch":1}
