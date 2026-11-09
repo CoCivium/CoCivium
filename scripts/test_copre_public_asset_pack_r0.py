@@ -5,7 +5,7 @@ import json
 import re
 import unittest
 
-ROOT=Path(__file__).resolve().parents[2]
+ROOT=Path(__file__).resolve().parents[1]
 BASE=ROOT/"docs/Onramp/CoPreGenericR0"
 class TestPublicPack(unittest.TestCase):
     @classmethod
