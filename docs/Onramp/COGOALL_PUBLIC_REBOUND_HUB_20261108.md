@@ -37,6 +37,9 @@
 - [CoAcademy CoOrbWare First Look](https://github.com/CoCivium/CoAcademy/blob/master/docs/coorb/index.html).
 - [CoAcademy civic lens](https://github.com/CoCivium/CoAcademy/blob/master/docs/civiclens/index.html).
 
+### Continuity without missing fronts
+Before selecting work, inspect the existing [machine navigation index](../../ai/index.json), [evolution-lane registry](../../ai/evolution-lanes.json), [Session Bootstrap](../../SESSION_BOOTSTRAP.md), [outstanding proof register](../Operations/COGOALL_OUTSTANDING_REGISTER_20261108.md), and [AI catch-up hub](AI_ONRAMP_CATCHUP_HUB_20261108.md). These are different views of source, not independent authorities. The [read-only rebound integrity audit](../../scripts/CoReboundIntegrityR0.py) checks local links and lane structure; it does not certify source freshness, cross-session delivery, runtime uptake or exhaustive historical coverage.
+
 ## Discover the larger corpus without inventing a thousand vetted links
 - [All public CoCivium source files](https://github.com/CoCivium/CoCivium/tree/main)
 - [Architecture documents](../Architecture/)
