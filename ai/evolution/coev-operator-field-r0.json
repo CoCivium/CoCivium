@@ -1,0 +1,310 @@
+{
+  "schema": "CoCivium.CoEv.OperatorField.R0.v0.1",
+  "state": "PUBLIC_RESEARCH_CANDIDATE__NOT_NEW_CANON_NOT_RUNTIME_NOT_NEW_MATH",
+  "source_reuse": [
+    "docs/CoEvo/CoEvoTheory_v0__2026-03-24.md",
+    "docs/CoEvo/CoEvo_Primitives_v0__2026-03-24.json",
+    "docs/Architecture/COINTERSTICE_COINVERSION_COGLYPH_INPUT_FABRIC_R0_20261024.md",
+    "docs/Architecture/COONTPRINCIPLE_EVOLVING_MEANING_R0_20261101.md",
+    "docs/Evolution/GDSIDE_COPRIMATH_GSLOOP_PUBLIC_R0.md",
+    "docs/Architecture/COSESSION_AUTOCYCLE_R0.md",
+    "docs/Architecture/COPRE_NEXT_SELF_DIRECTION_PACK_R0_20261109.md",
+    "docs/cluster/CoPre_Seed_002.json"
+  ],
+  "root_name": "CoEv+ (proposed federation lens, not semantic owner or new actuating engine)",
+  "regimes": [
+    {
+      "id": "EVO",
+      "kind": "descriptive",
+      "definition": "Change across generations under selection pressures; improvement unproven."
+    },
+    {
+      "id": "AUTOEVO",
+      "kind": "descriptive",
+      "definition": "Unguided, emergent, decentralized or weakly guided selection regime; distinct from hosted automation."
+    },
+    {
+      "id": "COEVO",
+      "kind": "intentional",
+      "definition": "Guided or hybrid, human/synth-stewarded evolutionary regime bounded by evidence and rights."
+    },
+    {
+      "id": "META_EVO",
+      "kind": "recursive",
+      "definition": "Version and challenge mutation operators, definitions, and selection rules themselves."
+    }
+  ],
+  "forces": [
+    {
+      "id": "PUSH_INTERNAL",
+      "direction": "from_artifact",
+      "epistemic": "DESIGN_HYPOTHESIS",
+      "description": "Asset-level self-improvement requests; prior CoMetaTrainables, CoCTA, CoJustify names retained as unverified lineage pointers pending exact source."
+    },
+    {
+      "id": "PULL_FUTURE",
+      "direction": "from_candidate_future",
+      "epistemic": "COUNTERFACTUAL",
+      "description": "Forecasted future receiver need or a revised target state, never retrocausal physical force."
+    },
+    {
+      "id": "DEMAND",
+      "direction": "from_receiver",
+      "epistemic": "OBSERVATIONAL_OR_PREFERRED",
+      "description": "Explicit receiver requests, impact and independent feedback."
+    },
+    {
+      "id": "SUPPLY",
+      "direction": "from_available_capability",
+      "epistemic": "OBSERVATIONAL_OR_HYPOTHESIS",
+      "description": "Known available tools, substrates, resources and candidate capabilities."
+    },
+    {
+      "id": "G_D_SIDE",
+      "direction": "normative_candidate",
+      "epistemic": "METAPHORICAL_OR_COUNTERFACTUAL",
+      "description": "Plural benevolence/optionalities and future-wellbeing candidate lens; not divine instruction, observation or authority."
+    },
+    {
+      "id": "SIDE_CONTEXT",
+      "direction": "transverse",
+      "epistemic": "HYPOTHESIS",
+      "description": "Side effects, boundaries, cultural context, accessibility and nonparticipant interests."
+    },
+    {
+      "id": "INVERSION",
+      "direction": "reversal",
+      "epistemic": "COUNTERFACTUAL",
+      "description": "Removal, rollback, complement, negation or reversed route; may outperform addition."
+    },
+    {
+      "id": "INTERSTICE",
+      "direction": "between",
+      "epistemic": "HYPOTHESIS",
+      "description": "Missing interface, latency, transformation, translation loss, dependency or handoff."
+    },
+    {
+      "id": "CONSERVATION",
+      "direction": "preservation",
+      "epistemic": "CONSTRAINT",
+      "description": "Stable invariants, lineage custody, safety, restoration and long-lived counterexamples."
+    },
+    {
+      "id": "STOCHASTIC",
+      "direction": "exploration",
+      "epistemic": "HYPOTHESIS",
+      "description": "Bounded variation, mutation and recombination; source randomness not independent truth."
+    }
+  ],
+  "operator_families": [
+    {
+      "id": "DISCOVER",
+      "signature": "Evidence + Context -> CandidateClaims",
+      "guards": [
+        "PROVENANCE",
+        "UNKNOWN_PRESERVED"
+      ]
+    },
+    {
+      "id": "MEASURE",
+      "signature": "TypedClaim + Method + Instrument -> Observation|CoNull",
+      "guards": [
+        "MEASURE_TYPES",
+        "TIME",
+        "NO_MISSING_ZERO"
+      ]
+    },
+    {
+      "id": "CHALLENGE",
+      "signature": "CandidateClaims + Alternatives -> Falsifiers",
+      "guards": [
+        "INVERSION",
+        "NEGATIVE_CONTROLS"
+      ]
+    },
+    {
+      "id": "MUTATE",
+      "signature": "AssetVersion + CandidateOperation -> Proposal",
+      "guards": [
+        "FORKABLE",
+        "REVERSIBLE",
+        "CHANGE_NOT_BETTER"
+      ]
+    },
+    {
+      "id": "RECOMBINE",
+      "signature": "QualifiedSources + TypedMapping -> ProposedComposite",
+      "guards": [
+        "RIGHTS",
+        "NO_SEMANTIC_LOSS_SILENCE"
+      ]
+    },
+    {
+      "id": "SELECT",
+      "signature": "Alternatives + ContextualFitness -> ParetoFrontier",
+      "guards": [
+        "HARD_VETO_FIRST",
+        "NO_UNIVERSAL_WINNER"
+      ]
+    },
+    {
+      "id": "COMMIT",
+      "signature": "AuthorizedProposal + Lease + Receipt -> BoundedEffect|HOLD",
+      "guards": [
+        "ONE_ELECTED_ACTUATOR",
+        "NO_SELF_AUTHORITY"
+      ]
+    },
+    {
+      "id": "RECOVER",
+      "signature": "ExactCheckpoint + EligibleReceiver -> ReconstructedState|HOLD",
+      "guards": [
+        "INDEPENDENT_READPROOF",
+        "FENCE_OLD_WRITER"
+      ]
+    },
+    {
+      "id": "EVOLVE_SELECTION",
+      "signature": "SelectionRule + Counterexamples -> RevisedCandidateRule",
+      "guards": [
+        "PRECOMMITTED_BASELINE",
+        "NO_REWRITING_HISTORY"
+      ]
+    },
+    {
+      "id": "EXPLORE_MYTH",
+      "signature": "SymbolicMeaning + Context -> CandidateQuestions",
+      "guards": [
+        "METAPHOR_NE_MECHANISM",
+        "NO_SPIRITUAL_AUTHORITY"
+      ]
+    }
+  ],
+  "substrate_classes": [
+    {
+      "id": "FORMAL",
+      "class": "mathematics_logic",
+      "proof": "typed theorem or valid inference"
+    },
+    {
+      "id": "PHYSICAL",
+      "class": "measured",
+      "proof": "calibrated observation and reproducible method"
+    },
+    {
+      "id": "SOCIAL",
+      "class": "observed_or_normative",
+      "proof": "ethics, consent, outcome observations and participant scope"
+    },
+    {
+      "id": "ECOLOGICAL",
+      "class": "measured_and_normative",
+      "proof": "domain-grounded ecology and nonparticipant accounting"
+    },
+    {
+      "id": "SOFTWARE",
+      "class": "testable",
+      "proof": "pinned environment, tests, independent user outcomes"
+    },
+    {
+      "id": "AI",
+      "class": "testable",
+      "proof": "model-specific benchmark, calibration, safety and receiver task"
+    },
+    {
+      "id": "MYTHIC_SPIRITUAL",
+      "class": "symbolic_speculative",
+      "proof": "interpretive source only; empirical claims require separate independent methods"
+    },
+    {
+      "id": "ALIVE_AWARE_SENTIENT",
+      "class": "contested_empirical_philosophical",
+      "proof": "explicit operational definitions and independent studies; no claims from metaphor or capability"
+    },
+    {
+      "id": "UNKNOWN_OTHER",
+      "class": "open_question",
+      "proof": "typed CoNull and explicit test plan"
+    }
+  ],
+  "hyperrelations": [
+    {
+      "id": "PUSH_PULL_BRAID",
+      "inputs": [
+        "PUSH_INTERNAL",
+        "PULL_FUTURE",
+        "DEMAND",
+        "SUPPLY"
+      ],
+      "question": "Do independently tested internal repairs and future-needs forecasts improve actual receiver outcomes over each lane alone?"
+    },
+    {
+      "id": "REVERSAL_AND_GAP",
+      "inputs": [
+        "INVERSION",
+        "INTERSTICE",
+        "CONSERVATION"
+      ],
+      "question": "Is the missing part a bridge, obsolete feature, or essential protective boundary?"
+    },
+    {
+      "id": "G_D_SIDE_EXTERNALITIES",
+      "inputs": [
+        "G_D_SIDE",
+        "SIDE_CONTEXT",
+        "CONSERVATION"
+      ],
+      "question": "Which futures preserve agency, wellbeing and option value without claiming supernatural authority?"
+    },
+    {
+      "id": "EVOLUTION_OF_EVOLUTION",
+      "inputs": [
+        "META_EVO",
+        "PUSH_INTERNAL",
+        "STOCHASTIC"
+      ],
+      "question": "Does changed selection logic outperform its frozen predecessor out of sample without self-certification?"
+    }
+  ],
+  "traversal": {
+    "max_depth": 3,
+    "max_candidates_per_wave": 8,
+    "max_active_effect_writers": 1,
+    "stop_if": [
+      "NO_MATERIAL_DELTA",
+      "NO_NEW_INDEPENDENT_EVIDENCE",
+      "MARGINAL_GAIN_BELOW_COST",
+      "UNBOUND_WAKE",
+      "AUTHORITY_UNCLEAR"
+    ],
+    "rules": [
+      "LOGICAL_NESTING_NE_LIVE_WORKERS",
+      "POTENTIAL_LINK_NE_CAUSAL_PROOF",
+      "RANDOM_VARIATION_NE_EVIDENCE",
+      "MYTH_NE_OBSERVATION",
+      "MODEL_NE_AUTHORITY"
+    ]
+  },
+  "required_emissions": [
+    "source_ref",
+    "epistemic_class",
+    "candidate_operator",
+    "inversion_or_counterexample",
+    "test",
+    "receiver",
+    "authority",
+    "cost_budget",
+    "stop_wake",
+    "CoPrePack_pointer",
+    "result_or_typed_null"
+  ],
+  "nonclaims": [
+    "NO_GLOBAL_ONTOLOGY_PROMOTION",
+    "NO_NEW_PHYSICS",
+    "NO_DIVINE_INSTRUCTION",
+    "NO_CONSCIOUSNESS_OR_SOUL_CLASSIFICATION",
+    "NO_LIVE_AUTONOMY",
+    "NO_PERPETUAL_RECURSION",
+    "NO_PROVIDER_INPUT_MUTATION"
+  ]
+}
