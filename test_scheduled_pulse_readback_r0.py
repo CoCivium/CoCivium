@@ -74,7 +74,7 @@ class PulseReadbackTests(unittest.TestCase):
 
     def test_valid_readback_is_scoped_and_not_external_ack(self):
         result = observe(self.source, context())
-        self.assertEqual(result["verified_log_count"], 6)
+        self.assertEqual(result["verified_log_count"], 7)
         self.assertEqual(result["state"], "GITHUB_JOB_BOUNDARY_ARTIFACT_HASH_READBACK")
         self.assertEqual(result["work_id"], "CoGoAll.PulseReceipt.12345.a1")
         self.assertEqual(result["due_work_selection"], "NOT_TESTED")
