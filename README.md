@@ -1,5 +1,7 @@
 # CoCivium ⊂ Trust Together
 
+**CoLocal+ cross-front Seed registry:** [Browse CoSeed / CoPath entries](docs/CoLocal/README.md). A public discovery index, not evidence of automated front pickup or CoAll integration.
+
 **Read CoCivia's AGI Book+**: [Start with the Field Guide to Thinking](docs/Books/README.md), the public-preview reader of the same CoCivia AGI publication family. Eight short draft chapters; static editorial preview, not yet a live-evolving or formally licensed finished edition.
 
 **Bio–Synth Gap Braid v5.4**: [Explore the 11 human–AI cooperation gaps and the three-strand I+ continuity design](docs/Architecture/BIO_SYNTH_GAP_BRAID_V5_4.md). Public design candidate, not an operating-system or consciousness claim.
