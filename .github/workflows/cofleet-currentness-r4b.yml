@@ -3,6 +3,11 @@ on:
   push:
     branches:
       - research/cofleet-stale-observer-r4b-20261028
+      - main
+    paths:
+      - scripts/CoFleetProjectionCompilerR4A.py
+      - tests/test_cofleet_currentness_r4b.py
+      - .github/workflows/cofleet-currentness-r4b.yml
   pull_request:
     paths:
       - scripts/CoFleetProjectionCompilerR4A.py
