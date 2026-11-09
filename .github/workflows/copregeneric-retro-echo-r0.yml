@@ -3,6 +3,8 @@ on:
   pull_request:
     paths:
       - 'ai/onramp/copregeneric-retro-echo-sample-20261109.json'
+      - 'ai/onramp/copregeneric-seed-path-discovery-r0.json'
+      - 'scripts/test_copregeneric_seed_path_r0.py'
       - 'ai/onramp/copregeneric-session-delta-20261109.json'
       - 'docs/Onramp/COPREGENERIC_SESSION_CONTRIBUTION_20261109.md'
       - 'scripts/test_copregeneric_retro_echo_r0.py'
@@ -10,6 +12,8 @@ on:
   push:
     paths:
       - 'ai/onramp/copregeneric-retro-echo-sample-20261109.json'
+      - 'ai/onramp/copregeneric-seed-path-discovery-r0.json'
+      - 'scripts/test_copregeneric_seed_path_r0.py'
       - 'scripts/test_copregeneric_retro_echo_r0.py'
       - '.github/workflows/copregeneric-retro-echo-r0.yml'
 permissions:
@@ -25,5 +29,10 @@ jobs:
           python-version: '3.12'
       - name: Validate bounded retrospective sample and negative controls
         run: python3 -B scripts/test_copregeneric_retro_echo_r0.py -v
+      - name: Validate CoSeed source hashes, CoPath proposed routes and negative controls
+        run: |
+          python3 -B scripts/test_copregeneric_seed_path_r0.py -v
+          python3 -O -B scripts/test_copregeneric_seed_path_r0.py -v
+          python3 -m json.tool ai/onramp/copregeneric-seed-path-discovery-r0.json >/dev/null
       - name: Parse machine-facing CoPreGeneric delta
         run: python3 -m json.tool ai/onramp/copregeneric-session-delta-20261109.json >/dev/null
