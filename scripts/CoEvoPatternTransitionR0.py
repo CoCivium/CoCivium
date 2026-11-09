@@ -58,22 +58,13 @@ def evaluate(record):
         return outcome({}, "HOLD_INVALID", "RECORD_NOT_OBJECT")
     if not nonempty(record.get("delta_id")):
         return outcome(record, "HOLD_INVALID", "MISSING_DELTA_ID")
-    if record.get("materiality") == "NONMATERIAL":
-        return outcome(record, "QUIESCENT", "NO_MATERIAL_DELTA")
-    if record.get("materiality") != "MATERIAL":
+    materiality = record.get("materiality")
+    if materiality not in ("MATERIAL", "NONMATERIAL"):
         return outcome(record, "HOLD_INVALID", "UNKNOWN_MATERIALITY")
-    if not strings(record.get("source_refs"), 1):
-        return outcome(record, "HOLD_UNVERIFIED", "MISSING_SOURCE_BINDING")
-    if record.get("currentness") != "CURRENT":
-        return outcome(record, "HOLD_UNVERIFIED", "CURRENTNESS_UNQUALIFIED")
+    # Quiescence means no new research routing; it is not clearance to publish,
+    # cross a privacy boundary or exercise authority. Gate these first.
     if record.get("confidentiality") != "PUBLIC":
         return outcome(record, "HOLD_PRIVATE", "NO_PUBLIC_ROUTE_FROM_UNQUALIFIED_PRIVACY")
-    if record.get("pattern_kind") not in KINDS:
-        return outcome(record, "HOLD_INVALID", "UNKNOWN_PATTERN_KIND")
-    if record.get("epistemic_class") not in EPISTEMIC:
-        return outcome(record, "HOLD_INVALID", "UNKNOWN_EPISTEMIC_CLASS")
-    if not nonempty(record.get("claim")):
-        return outcome(record, "HOLD_INVALID", "MISSING_CLAIM")
     effects = record.get("effect_classes")
     if not strings(effects, 1) or any(e not in EFFECTS for e in effects):
         return outcome(record, "HOLD_INVALID", "INVALID_EFFECT_CLASS")
@@ -81,6 +72,18 @@ def evaluate(record):
         return outcome(record, "HOLD_EFFECT_GATE", "EFFECT_AUTHORIZATION_REQUIRED")
     if record.get("authority_ceiling") != "READ_ONLY":
         return outcome(record, "HOLD_EFFECT_GATE", "NO_AUTHORITY_PROMOTION")
+    if materiality == "NONMATERIAL":
+        return outcome(record, "QUIESCENT", "NO_MATERIAL_DELTA")
+    if not strings(record.get("source_refs"), 1):
+        return outcome(record, "HOLD_UNVERIFIED", "MISSING_SOURCE_BINDING")
+    if record.get("currentness") != "CURRENT":
+        return outcome(record, "HOLD_UNVERIFIED", "CURRENTNESS_UNQUALIFIED")
+    if record.get("pattern_kind") not in KINDS:
+        return outcome(record, "HOLD_INVALID", "UNKNOWN_PATTERN_KIND")
+    if record.get("epistemic_class") not in EPISTEMIC:
+        return outcome(record, "HOLD_INVALID", "UNKNOWN_EPISTEMIC_CLASS")
+    if not nonempty(record.get("claim")):
+        return outcome(record, "HOLD_INVALID", "MISSING_CLAIM")
     if not nonempty(record.get("receiver_class")):
         return outcome(record, "HOLD_UNVERIFIED", "MISSING_RECEIVER_FIT")
     if not nonempty(record.get("bounded_test")):
@@ -142,6 +145,11 @@ def selftest():
     scenarios = [
         ("eligible shadow", {}, "REVIEW_SHADOW_ONLY"),
         ("no material", {"materiality": "NONMATERIAL"}, "QUIESCENT"),
+        ("no material private", {"materiality": "NONMATERIAL", "confidentiality": "PRIVATE"}, "HOLD_PRIVATE"),
+        ("no material privacy unknown", {"materiality": "NONMATERIAL", "confidentiality": "UNKNOWN"}, "HOLD_PRIVATE"),
+        ("no material effect gated", {"materiality": "NONMATERIAL", "effect_classes": ["PUBLICATION"]}, "HOLD_EFFECT_GATE"),
+        ("no material authority gated", {"materiality": "NONMATERIAL", "authority_ceiling": "SYSTEM_ACTUATOR"}, "HOLD_EFFECT_GATE"),
+        ("no material missing effect class", {"materiality": "NONMATERIAL", "effect_classes": []}, "HOLD_INVALID"),
         ("missing source", {"source_refs": []}, "HOLD_UNVERIFIED"),
         ("stale", {"currentness": "STALE"}, "HOLD_UNVERIFIED"),
         ("unknown privacy", {"confidentiality": "UNKNOWN"}, "HOLD_PRIVATE"),
@@ -167,12 +175,18 @@ def selftest():
         r = copy.deepcopy(BASE)
         r.update(edits)
         actual = evaluate(r)
-        assert actual["disposition"] == expected, (name, actual, expected)
-        assert actual["effects_performed"] == 0
-        assert actual["receiver_ack"] == "UNPROVEN"
-        assert not actual["authority_granted"]
-        if r.get("confidentiality") != "PUBLIC":
-            assert actual["delta_id"] is None, (name, "PRIVATE_ID_LEAK")
+        # Explicit failures are still enforced with python -O.
+        invariants = {
+            "disposition": expected,
+            "effects_performed": 0,
+            "receiver_ack": "UNPROVEN",
+            "authority_granted": False,
+        }
+        for key, required in invariants.items():
+            if actual.get(key) != required:
+                raise AssertionError((name, key, actual, required))
+        if r.get("confidentiality") != "PUBLIC" and actual.get("delta_id") is not None:
+            raise AssertionError((name, "PRIVATE_ID_LEAK"))
     print(json.dumps({
         "schema": "CoEvo.PatternTransitionSelftest.R0",
         "cases": len(scenarios), "passed": len(scenarios),
