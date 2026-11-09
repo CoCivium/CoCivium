@@ -11,6 +11,10 @@ on:
       - "docs/Architecture/COEV_OPERATOR_FIELD_COPRE_COMPOSER_R0_20261109.md"
       - "docs/Architecture/COPRE_STICKY_INVARIANTS_RECOVERY_OPTIONS_R0_20261109.md"
       - "scripts/CoPreInvariantGuardR0.py"
+      - "scripts/CoExWaveEndcapsR0.py"
+      - "docs/Architecture/COEX_WAVE_ENDCAP_LANDING_R0_20261109.md"
+      - "docs/Operations/wave-renders/colot-endcaps-20261109/BEGIN.md"
+      - "docs/Operations/wave-renders/colot-endcaps-20261109/END.md"
       - "ai/evolution/coev-operator-field-r0.json"
       - ".github/workflows/copre-next-r0.yml"
   push:
@@ -64,3 +68,58 @@ jobs:
           PY
       - name: Test sticky session invariants, mirror optionality and fail-closed recovery
         run: python3 -B scripts/CoPreInvariantGuardR0.py --selftest
+
+      - name: Validate CoEx endcap action boundary and real saved wave renders
+        run: |
+          python3 -B scripts/CoExWaveEndcapsR0.py --selftest
+          python3 - <<'PY'
+          import hashlib
+          import importlib.util
+          from pathlib import Path
+          import subprocess
+
+          spec=importlib.util.spec_from_file_location("endcap","scripts/CoExWaveEndcapsR0.py")
+          m=importlib.util.module_from_spec(spec)
+          spec.loader.exec_module(m)
+          begin_path="docs/Operations/wave-renders/colot-endcaps-20261109/BEGIN.md"
+          end_path="docs/Operations/wave-renders/colot-endcaps-20261109/END.md"
+          a=Path(begin_path).read_text(encoding="utf-8")
+          b=Path(end_path).read_text(encoding="utf-8")
+          assert "Wave Render | BEGIN" in a
+          assert "Wave Render | END" in b
+          assert "CoLOT.Endcaps.20261109" in a and "CoLOT.Endcaps.20261109" in b
+          assert "INTENT_RECORDED__NOT_WORK_RESULT" in a
+          assert "SOURCE_LANDED__CI_PENDING_AT_RENDER_TIME" in b
+          assert "Independent receiver ACK:" in b
+          assert a != b
+          ac=subprocess.check_output(["git","log","-1","--format=%H","--",begin_path],text=True).strip()
+          bc=subprocess.check_output(["git","log","-1","--format=%H","--",end_path],text=True).strip()
+          assert ac and bc and ac!=bc, "BEGIN_AND_END_NOT_SEPARATELY_LANDED"
+          def cap(phase,raw,status):
+              return {
+                  "phase":phase, "work_id":"CoLOT.Endcaps.20261109", "wave_id":"R0",
+                  "source_ref":"CoCivium/CoCivium#401",
+                  "source_revision":subprocess.check_output(["git","rev-parse","HEAD"],text=True).strip(),
+                  "render_kind":"MARKDOWN_SOURCE_RENDER",
+                  "render_sha256":hashlib.sha256(raw.encode()).hexdigest(),
+                  "effect_intent":"SCRIPT_LANDING", "surface":"GITHUB_DRAFT_SOURCE",
+                  "target_ref":"research/copre-next-self-direction-r0-20261109",
+                  "authority_scope":"PUBLIC_DRAFT_BRANCH_ONLY", "confidentiality":"PUBLIC",
+                  "receipt_ref":"PR401:exact_git_file", "status":status,
+                  "next_wake":"material source or receiver change",
+                  "coex_claim":False, "landing_status":"PROPOSED"
+              }
+          ca=cap("BEGIN",a,"INTENT_RECORDED")
+          cb=cap("END",b,"VERIFIED_SOURCE")
+          cb["begin_render_sha256"]=ca["render_sha256"]
+          result=m.review(ca,cb,a,b)
+          assert result["status"]=="REVIEW_SOURCE_LANDING_ONLY",result
+          assert result["separate_landing_records"]==2
+          assert result["effects_performed"]==0
+          assert result["coex"]=="NOT_CERTIFIED"
+          print("PASS_SAVED_BEGIN_END_GIT_HISTORY_AND_READONLY_COEX_GATE_R0")
+          print("BEGIN_COMMIT="+ac)
+          print("END_COMMIT="+bc)
+          print("BEGIN_SHA256="+ca["render_sha256"])
+          print("END_SHA256="+cb["render_sha256"])
+          PY
