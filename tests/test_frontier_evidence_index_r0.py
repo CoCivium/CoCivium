@@ -3,6 +3,7 @@
 Temporary fixtures are source-shape checks, not receiver/effect certification.
 """
 import copy
+import hashlib
 import json
 import pathlib
 import sys
@@ -30,6 +31,23 @@ class FrontierIndexTests(unittest.TestCase):
             file.parent.mkdir(parents=True, exist_ok=True)
             file.write_text("public synthetic\n", encoding="utf-8")
         self.original = json.loads((ROOT / INDEX).read_text(encoding="utf-8"))
+        # Recreate source-bound file fixtures for any later added front, not
+        # only the seven originally indexed fronts. No external content read.
+        for front in self.original["fronts"]:
+            for field in ("source", "workflow"):
+                relative = front.get(field)
+                if not relative:
+                    continue
+                if relative.endswith("/"):
+                    target = self.root / relative / "synthetic_fixture.py"
+                    target.parent.mkdir(parents=True, exist_ok=True)
+                    target.write_text("public synthetic\n", encoding="utf-8")
+                else:
+                    target = self.root / relative
+                    target.parent.mkdir(parents=True, exist_ok=True)
+                    real = ROOT / relative
+                    target.write_bytes(real.read_bytes() if real.is_file()
+                                       else b"public synthetic\n")
         self.doc = copy.deepcopy(self.original)
 
     def test_real_current_index_is_valid_under_repo_root(self):
@@ -43,7 +61,8 @@ class FrontierIndexTests(unittest.TestCase):
         self.assertEqual(validate(self.doc, self.root)["baseline_count"], 7)
 
     def test_front_removal_fails_closed(self):
-        self.doc["fronts"].pop()
+        self.doc["fronts"] = [f for f in self.doc["fronts"]
+                              if f["id"] != "receiver-evidence"]
         with self.assertRaisesRegex(Hold, "HOLD_BASELINE_FRONT_DROPPED"):
             validate(self.doc, self.root)
 
@@ -104,7 +123,8 @@ class FrontierIndexTests(unittest.TestCase):
             "next_gate": "run one public-safe test",
             "blocked_claims": ["NOT_TESTED"],
         })
-        self.assertEqual(validate(self.doc, self.root)["front_count"], 8)
+        self.assertEqual(validate(self.doc, self.root)["front_count"],
+                         len(self.original["fronts"]) + 1)
 
     def test_unknown_status_rejected(self):
         self.doc["fronts"][0]["status"] = "FULLY_LIVE"
@@ -170,6 +190,39 @@ class FrontierIndexTests(unittest.TestCase):
         self.doc["rules"]["no_self_certified_effect"] = False
         with self.assertRaisesRegex(Hold, "HOLD_TRUST_RAILS"):
             validate(self.doc, self.root)
+
+    def test_optional_wave_proposals_remain_source_pinned_and_unscheduled(self):
+        wave_fronts = [f for f in self.original["fronts"] if "wave_profile" in f]
+        if not wave_fronts:
+            return  # Compatible with the original seven-front baseline.
+        required = {"mode", "audience", "substrate", "horizon",
+                    "hypothesis", "counterexample", "measure",
+                    "source_blob_sha1", "state"}
+        for front in wave_fronts:
+            wave = front["wave_profile"]
+            self.assertEqual(set(wave), required)
+            self.assertEqual(wave["state"], "PROPOSAL_ONLY_NOT_EXECUTED")
+            self.assertTrue(all(isinstance(v, str) and v.strip() for v in wave.values()))
+            raw = (ROOT / front["source"]).read_bytes()
+            actual = hashlib.sha1(b"blob " + str(len(raw)).encode("ascii") +
+                                  b"\x00" + raw).hexdigest()
+            self.assertEqual(wave["source_blob_sha1"], actual)
+
+    def test_wave_diversity_is_optional_multi_axis_not_a_ban_on_controls(self):
+        waves = [f["wave_profile"] for f in self.original["fronts"]
+                 if "wave_profile" in f]
+        if not waves:
+            return
+        axes = ("mode", "audience", "substrate", "horizon",
+                "hypothesis", "counterexample")
+        for i, left in enumerate(waves):
+            for right in waves[i+1:]:
+                self.assertGreaterEqual(
+                    sum(left[a] != right[a] for a in axes), 3
+                )
+        # This is a snapshot diversity check. Identical future control
+        # replays are permitted with separate evidence and authority.
+
 
 
 if __name__ == "__main__":
