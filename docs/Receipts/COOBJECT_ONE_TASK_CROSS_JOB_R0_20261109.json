@@ -1,0 +1,65 @@
+{
+  "schema": "CoObject.OneTaskCrossJobPublicReceipt.R0",
+  "observed_at_utc": "2026-11-09T11:50:06Z",
+  "work_id": "CoObject.PolicyReview.42612069597.a1",
+  "source_repository": "CoCivium/CoCivium",
+  "source_commit": "a754a76eae1c78c45ba3c70953d0de950b397797",
+  "source_worker_path": "scripts/CoObjectAgencyTaskR0.py",
+  "source_worker_git_blob": "2164368739712517b22039839e0da2682ab7ff9c",
+  "source_test_path": "tests/test_coobject_agency_task_r0.py",
+  "source_test_git_blob": "45697a1e78015d9c6ba727d8908f8d2b31616219",
+  "source_workflow_path": ".github/workflows/coobject-vitality-r0.yml",
+  "source_workflow_git_blob": "008d03d63c91a83eca5e16cbc2bd6aef323476a7",
+  "run": {
+    "url": "https://github.com/CoCivium/CoCivium/actions/runs/42612069597",
+    "id": 42612069597,
+    "event": "push",
+    "conclusion": "success"
+  },
+  "producer": {
+    "job_name": "object-task",
+    "job_id": 129142794093,
+    "conclusion": "success",
+    "new_tests_passed": 17,
+    "work_receipt_sha256": "6311d044f7ba479da65d0c81656786cfab5a68fc4b21e27ecb240c2902658510",
+    "artifact_id": 13670428561,
+    "artifact_name": "coobject-one-task-42612069597-a1",
+    "artifact_zip_sha256": "9af2facaf86dddd66c172ac1965adf11caa42a8673fbed5970d60b820aa61c7f"
+  },
+  "consumer": {
+    "job_name": "object-source-reader",
+    "job_id": 129142862631,
+    "conclusion": "success",
+    "recomputed_same_receipt_sha256": "6311d044f7ba479da65d0c81656786cfab5a68fc4b21e27ecb240c2902658510",
+    "artifact_id": 13670617475,
+    "artifact_name": "coobject-one-reader-42612069597-a1",
+    "artifact_zip_sha256": "921b66cab234b5c49313be9b7e109ffb2acfe951634f6f14190426a709296e39"
+  },
+  "verified_scope": [
+    "EXISTING_COOBJECT_VITALITY_VALIDATOR_EXECUTED_READ_ONLY",
+    "THREE_LOCAL_FIXTURE_OBJECTS_VALIDATED",
+    "REAL_CHECKED_IN_POLICY_AND_FIXTURE_SOURCE_DIGESTS",
+    "EXACT_WORKID_BOUND_SOURCE_JOB_RESULT",
+    "SEPARATE_GITHUB_CI_JOB_RECOMPUTED_RESULT",
+    "CREATE_ONLY_RECEIPT_WRITE"
+  ],
+  "invalidated_prior_run": {
+    "url": "https://github.com/CoCivium/CoCivium/actions/runs/42611995884",
+    "reason": "SYMLINK_ERROR_CLASS_MISMATCH",
+    "corrected_commit": "a754a76eae1c78c45ba3c70953d0de950b397797"
+  },
+  "nonclaims": [
+    "SAME_GITHUB_PROVIDER_FAILURE_DOMAIN",
+    "NOT_AN_AI_MODEL_AGENT",
+    "NOT_SEMANTIC_REVIEW_OF_ALL_OBJECTS",
+    "NOT_RIGHTS_REVIEW",
+    "NOT_EXTERNAL_RECEIVER_ACK",
+    "NOT_NATIVE_RICKBAR_X2_INSTALL",
+    "NOT_CO_STEAD_PICKUP",
+    "NOT_24H_SEED_SURVIVAL",
+    "NOT_C3_USER_QUALIFIED_MVP",
+    "NOT_AUTONOMOUS_MULTI_PROVIDER_COORDINATION",
+    "GITHUB_ARTIFACTS_EXPIRE_AFTER_RETENTION"
+  ],
+  "next_proof": "Authorize one existing rickBar R1/Ollama task on a real receiver, then independent readback, restart and full recovery while preserving selected baseline."
+}
