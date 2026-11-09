@@ -24,6 +24,9 @@ The [source-bound CoSeed/CoPath machine graph](ai/copre-seed-path-federation-r0.
 
 ## Exact public companions
 
+- [Interactive CoHuman living-continuity hero prototype](examples/cohuman/living-continuity-r0.html): original vector illustration, real internal source links, reduced-motion support and quiet preference; source prototype, not deployed website.
+- [CoHuman visual-seed media relation descriptor](ai/media/living-continuity-visual-seed-r0-20261109.json): ten concept-image regions with typed source, media and consent links; original image retained privately.
+
 - [CoEvSeed living-continuity hero media registry](ai/coevo-media-seeds-r0-20261109.json) and [public visual preview](assets/CoEvSeed/CoCivium_Living_Continuity_Hero_Preview_R0.svg): original artwork preserved separately with SHA-256; public preview is a design seed, not a deployed UI.\n
 - [CoHumanSurface rich hero and CoAudioFkOff audio consent proposal](docs/Design/COHUMAN_RICH_HERO_AND_AUDIO_CONSENT_R0_20261109.md): original visual-first human UX, with quiet accessible fallbacks and optional scroll-responsive audio only after opt-in.
 
