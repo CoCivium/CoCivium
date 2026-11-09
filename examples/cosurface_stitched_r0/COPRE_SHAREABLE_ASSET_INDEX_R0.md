@@ -25,3 +25,9 @@ Read only the latest authorized, reviewed, version-pinned immutable content; ver
 - [CoSeed/CoPath tests](test_co_seed_path_registry_r0.py) | challenge false ACK, missing provenance, private exposure, relationship integrity and source pinning.
 
 Consumers should verify exact source blobs or content digests and record their **own** authorized receiver readproof. Unknown sources and private historical sessions stay held.
+
+## Omnidirectional CoPath discovery
+
+- [CoOmniPath bounded graph explorer](co_omnipath_r0.py): traverse declared source relations forward or inspect incoming references in reverse, with explicit orientation, scope fences, hop limits, and conservative proof status.
+- [CoOmniPath adversarial tests](test_co_omnipath_r0.py): 13 synthetic checks for relation direction, privacy, bounded exploration and non-elevation of G_dSide hypotheses.
+- **Boundary:** this is a source-level reusable library, not automatic global session discovery, push-based synchronization, or verified cross-provider receiver pickup. G_dSide is a hypothesis lane only.
