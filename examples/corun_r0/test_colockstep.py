@@ -76,8 +76,7 @@ class SourceIslandTests(unittest.TestCase):
         v["candidate"]["components"][0]["git_blob_sha1"] = "0" * 40
         out = assess(v, ROOT)
         self.assertIn("SOURCE_DRIFT:dag-runner", out["candidate_holds"])
-        self.assertIn("REMOVED_BASELINE_COMPONENT:dag-runner",
-                      out["candidate_holds"])
+        self.assertFalse(out["candidate_source_compatible"])
 
     def test_old_failure_records_must_survive(self):
         v = source()
