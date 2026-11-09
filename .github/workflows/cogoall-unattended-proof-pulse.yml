@@ -9,6 +9,12 @@ on:
       - 'test_scheduled_pulse_readback_r0.py'
       - 'examples/cotalkitout/due_work_catchup_r0.py'
       - 'test_due_work_catchup_r0.py'
+      - 'scripts/CoReboundIntegrityR0.py'
+      - 'tests/test_corebound_integrity_r0.py'
+      - 'docs/Onramp/COGOALL_PUBLIC_REBOUND_HUB_20261108.md'
+      - 'docs/Onramp/AI_ONRAMP_CATCHUP_HUB_20261108.md'
+      - 'ai/index.json'
+      - 'ai/evolution-lanes.json'
   schedule:
     - cron: '17 * * * *'
   workflow_dispatch:
@@ -40,6 +46,8 @@ jobs:
           python -B -m unittest -v test_progress_receipt_gate_r0 2>&1 | tee progress.log
           python -B -m unittest -v test_scheduled_cadence_audit_r0 2>&1 | tee cadence-tests.log
           python -B -m unittest -v test_due_work_catchup_r0 2>&1 | tee catchup-tests.log
+          python -B -m unittest discover -s tests -p 'test_corebound_integrity_r0.py' -v 2>&1 | tee rebound-tests.log
+          python -B scripts/CoReboundIntegrityR0.py --root . --output rebound-report.json 2>&1 | tee rebound-links.log
       - name: Observe actual scheduled wake coverage from GitHub Actions
         if: always()
         env:
@@ -59,7 +67,7 @@ jobs:
           python - <<'PY'
           import datetime, hashlib, json, os, pathlib
           logs = {}
-          for name in ('decision', 'grace', 'succession', 'acceptance', 'progress', 'cadence-tests', 'catchup-tests'):
+          for name in ('decision', 'grace', 'succession', 'acceptance', 'progress', 'cadence-tests', 'catchup-tests', 'rebound-tests', 'rebound-links'):
               p = pathlib.Path(name + '.log')
               logs[name] = hashlib.sha256(p.read_bytes()).hexdigest() if p.exists() else None
           cadence = pathlib.Path('schedule-audit.json')
@@ -86,6 +94,9 @@ jobs:
             progress.log
             cadence-tests.log
             catchup-tests.log
+            rebound-tests.log
+            rebound-links.log
+            rebound-report.json
             schedule-audit.json
           if-no-files-found: error
           retention-days: 30
