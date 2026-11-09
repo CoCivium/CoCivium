@@ -1,0 +1,95 @@
+name: CoEvo PatternGate R0 read-only contract checks
+
+permissions:
+  contents: read
+
+on:
+  pull_request:
+    paths:
+      - "scripts/CoEvoPatternTransitionR0.py"
+      - "ai/evolution-pattern-transition-r0.json"
+      - "docs/CoEvo/COPATTERN_TRANSITION_FANIN_FANOUT_R0_20261108.md"
+      - ".github/workflows/coevo-pattern-gate-r0.yml"
+  push:
+    paths:
+      - "scripts/CoEvoPatternTransitionR0.py"
+      - "ai/evolution-pattern-transition-r0.json"
+      - ".github/workflows/coevo-pattern-gate-r0.yml"
+
+jobs:
+  pattern-gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run deterministic synthetic behavior tests
+        run: python3 -B scripts/CoEvoPatternTransitionR0.py --selftest
+      - name: Check policy, CLI, privacy and side-effect contract
+        run: |
+          python3 - <<'PY'
+          import copy
+          import importlib.util
+          import json
+          import pathlib
+          import subprocess
+          import sys
+          import tempfile
+
+          p = pathlib.Path("ai/evolution-pattern-transition-r0.json")
+          policy = json.loads(p.read_text(encoding="utf-8"))
+          assert policy["schema"] == "CoEvo.PatternTransitionPolicy.R0.v0.1"
+          assert len(policy["transition_questions"]) == 13
+          assert len({v["id"] for v in policy["transition_questions"]}) == 13
+          assert all(v.get("lens") and v.get("prompt") for v in policy["transition_questions"])
+          assert policy["deployment_rule"].startswith("Read-only adapter")
+          assert policy["status"] == "PUBLIC_SOURCE_CANDIDATE__NO_RUNTIME_NO_AUTHORITY_NO_AUTO_FANOUT"
+
+          spec = importlib.util.spec_from_file_location(
+              "pattern_gate", "scripts/CoEvoPatternTransitionR0.py")
+          mod = importlib.util.module_from_spec(spec)
+          spec.loader.exec_module(mod)
+          assert set(policy["types"]["candidate_kinds"]) == mod.KINDS
+          dispositions = set(policy["output_dispositions"])
+          assert dispositions == {
+              "QUIESCENT", "HOLD_INVALID", "HOLD_UNVERIFIED",
+              "HOLD_PRIVATE", "HOLD_EFFECT_GATE",
+              "CHALLENGE_READ_ONLY", "REVIEW_SHADOW_ONLY",
+          }
+
+          record = copy.deepcopy(mod.BASE)
+          snapshot = copy.deepcopy(record)
+          decision = mod.evaluate(record)
+          assert record == snapshot
+          assert decision["disposition"] == "REVIEW_SHADOW_ONLY"
+          assert decision["effects_performed"] == 0
+          assert decision["receiver_ack"] == "UNPROVEN"
+          assert decision["authority_granted"] is False
+
+          secret = copy.deepcopy(record)
+          secret["delta_id"] = "SECRET-DEVICE-IDENTIFIER"
+          secret["confidentiality"] = "PRIVATE"
+          result = mod.evaluate(secret)
+          assert result["disposition"] == "HOLD_PRIVATE"
+          assert result["delta_id"] is None
+          assert "SECRET-DEVICE-IDENTIFIER" not in json.dumps(result)
+
+          with tempfile.TemporaryDirectory() as d:
+              path = pathlib.Path(d) / "candidate.json"
+              path.write_text(json.dumps(record), encoding="utf-8")
+              done = subprocess.run(
+                  [sys.executable, "-B", "scripts/CoEvoPatternTransitionR0.py",
+                   "--input", str(path)],
+                  capture_output=True, text=True, check=True, timeout=10)
+              cli_result = json.loads(done.stdout)
+              assert cli_result == decision
+
+          done = subprocess.run(
+              [sys.executable, "-B", "scripts/CoEvoPatternTransitionR0.py",
+               "--selftest"],
+              capture_output=True, text=True, check=True, timeout=10)
+          report = json.loads(done.stdout)
+          assert report["scope"] == "SYNTHETIC_SELFTEST_ONLY"
+          assert report["cases"] == report["passed"] == 22
+          assert report["receiver_ack"] == "UNPROVEN"
+          print("PASS_PATTERN_GATE_R0_SOURCE_BEHAVIOR_AND_POLICY_ONLY")
+          PY
