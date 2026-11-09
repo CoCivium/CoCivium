@@ -236,6 +236,26 @@ class CoMVPTests(unittest.TestCase):
             self.assertEqual(self.store.qualify("orb", rev)["state"], "HELD_TEST_TIMEOUT")
         self.assertEqual(self.store.active(), {})
 
+    def test_unrelated_broken_source_cannot_freeze_independent_prodlet(self):
+        orb=self.candidate("orb","one")
+        self.activate("orb",orb)
+        # Old component is damaged after selection. This must be an
+        # incident for *orb*, not an implicit global stop-the-world gate.
+        (self.root/"orb-one.txt").write_text("damaged unrelated source")
+        worker=self.candidate("worker","one")
+        self.activate("worker",worker)
+        self.assertEqual(self.store.active()["worker"],worker)
+        self.assertEqual(self.store.active()["orb"],orb)
+
+    def test_mutated_declared_prerequisite_blocks_dependent_promotion(self):
+        engine=self.candidate("engine","one")
+        self.activate("engine",engine)
+        (self.root/"engine-one.txt").write_text("damaged required source")
+        ui=self.candidate("ui","one",deps=(("engine",engine),))
+        with self.assertRaisesRegex(Held,"ACTIVE_SOURCE_CHANGED"):
+            self.activate("ui",ui)
+        self.assertEqual(self.store.active(),{"engine":engine})
+
     def test_rollback_requires_exact_staged_source(self):
         one = self.candidate()
         two = self.candidate(label="two")
