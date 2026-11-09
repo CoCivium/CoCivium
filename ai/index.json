@@ -365,5 +365,20 @@
       "discovery": "https://raw.githubusercontent.com/CoCivium/CoAcademy/master/docs/device-first/discovery.json",
       "nonclaim": "NO_ENROLLED_DEVICES_NO_REAL_OFFLINE_PROOF_NO_AUTHENTICATED_INTERDEVICE_RECEIVER_NO_X2_ACTION"
     }
-  ]
+  ],
+  "coseed_copath_candidate_routes_20261109": {
+    "state": "PUBLIC_NAVIGATION_TO_UNMERGED_CANDIDATES_NOT_RECEIVER_SYNC",
+    "seed_entry": "ai/onramp/copre-generic-session-contribution-r0.json",
+    "source_bootstrap": "SESSION_BOOTSTRAP.md",
+    "human_rebound": "docs/Onramp/COGOALL_PUBLIC_REBOUND_HUB_20261108.md",
+    "candidate_public_asset_pack": "https://github.com/CoCivium/CoCivium/pull/431",
+    "candidate_retro_front_auditor": "https://github.com/CoCivium/CoCivium/pull/428",
+    "access_rule": "Currentness is role-relative and rights-bounded. Fetch exact edition and verify each claimed stage separately.",
+    "nonclaims": [
+      "INDEX_ROUTE_NE_RECEIVER_PICKUP",
+      "DRAFT_PR_NE_MAIN_OR_RELEASE",
+      "COSEED_POINTER_NE_RUNTIME_SEED",
+      "COPATH_POINTER_NE_AUTOMATED_HANDOFF"
+    ]
+  }
 }
