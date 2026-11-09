@@ -5,6 +5,7 @@ ChatGPT sessions, switch paid account sessions, delete provider data, install
 native rickBar, or prove cross-machine pickup. Separate from R0 intentionally.
 """
 import json
+import hashlib
 import pathlib
 import sys
 import uuid
@@ -124,6 +125,31 @@ load();
 </script></body></html>'''
 
 
+def scoped_receipt_work_id(conversation_id, turn_id):
+    """Stable, bounded namespace for one conversation's one model turn.
+
+    A TurnID is only unique within its ConversationID; bare TurnID could
+    reuse a different conversation's model-output receipt. A hash keeps the
+    existing receipt file interface fixed-length and ASCII-only.
+    """
+    if not isinstance(conversation_id, str) or not isinstance(turn_id, str):
+        raise ValueError("conversation and turn identifiers must be strings")
+    # Both IDs are already checked by ContinuityStore.begin_turn in act().
+    encoded=json.dumps({"conversation_id":conversation_id,"turn_id":turn_id},
+                       sort_keys=True,separators=(",",":")).encode("utf-8")
+    return "rb-" + hashlib.sha256(encoded).hexdigest()
+
+
+def valid_receipt(result, expected_work_id):
+    """Fail closed on stale/foreign model receipts or forged status fields."""
+    if not isinstance(result, dict) or result.get("status")!="RECORDED_UNVERIFIED":
+        return False
+    digest=result.get("receipt_sha256")
+    return (result.get("work_id")==expected_work_id
+            and isinstance(digest, str) and len(digest)==64
+            and all(c in "0123456789abcdef" for c in digest))
+
+
 def act(store, payload, model, receipt_dir, bridge=local_ollama_run):
     """Dispatch one explicit Ollama turn after local fenced reservation."""
     cid=payload.get("conversation_id")
@@ -138,10 +164,14 @@ def act(store, payload, model, receipt_dir, bridge=local_ollama_run):
         return started
     try:
         context=store.model_context(cid,prompt)
-        result=bridge(context,model,receipt_dir,work_id=tid)
-        if result.get("status") not in ("RECORDED_UNVERIFIED","REPLAY"):
+        receipt_work_id=scoped_receipt_work_id(cid,tid)
+        result=bridge(context,model,receipt_dir,work_id=receipt_work_id)
+        if not valid_receipt(result,receipt_work_id):
+            # REPLAY after STARTED is not a new result: a previous receipt
+            # could exist from a crash, a foreign source, or a stale writer.
+            # A future explicit reconciliation may inspect it; never promote.
             store.fail_turn(cid,tid,epoch)
-            return {"state":"MODEL_UNAVAILABLE","conversation_id":cid,
+            return {"state":"MODEL_RECEIPT_UNVERIFIED","conversation_id":cid,
                     "turn_id":tid,"evidence_class":"NONE"}
         response=result.get("response")
         if not isinstance(response,str):
@@ -223,7 +253,8 @@ def make_handler(store, model, receipt_dir, bridge=local_ollama_run):
                 state=result["state"]
                 code=200 if state in {"CREATED","EXISTS","COMMITTED","REPLAY"} else (
                     409 if state in {"FENCED","CONFLICT","ALREADY_PENDING","INDETERMINATE"} else 503
-                    if state in {"MODEL_UNAVAILABLE","INVALID_MODEL_RESPONSE"} else 400)
+                    if state in {"MODEL_UNAVAILABLE","INVALID_MODEL_RESPONSE",
+                                 "MODEL_RECEIPT_UNVERIFIED"} else 400)
                 self.json_response(code,result)
             except (ValueError,TypeError,KeyError,json.JSONDecodeError):
                 self.json_response(400,{"error":"INVALID_REQUEST"})
