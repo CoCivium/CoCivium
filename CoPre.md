@@ -24,6 +24,8 @@ The [source-bound CoSeed/CoPath machine graph](ai/copre-seed-path-federation-r0.
 
 ## Exact public companions
 
+- [CoPre v8.79 source/feed proposal](ai/copre-source-feed-delta-v879-20261109.json): privacy-safe reciprocal discovery, with no claim of cross-front acceptance.
+
 - [CoPre omni v8.79 additive pull/feed and future-use delta](ai/copre-omni-v879-intake-delta-r0-20261109.json): public-safe candidate; private source held in Library.
 
 - [Omnidirectional CoPath navigation (read-only inverse lookup)](ai/copre-omnidirectional-navigation-r0-20261109.json): forward and reverse discovery across the bounded 15-node graph, without reciprocal authority or global-integration claims.
