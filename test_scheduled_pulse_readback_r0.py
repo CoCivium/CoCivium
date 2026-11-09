@@ -17,7 +17,7 @@ import unittest
 ROOT = Path(__file__).resolve().parent
 sys.path.insert(0, str(ROOT / "examples" / "cotalkitout"))
 from scheduled_pulse_readback_r0 import (
-    EXPECTED_CLAIMS, EXPECTED_LOGS, observe, write_receipt
+    EXPECTED_CLAIMS, EXPECTED_LOGS, SOURCE_SCHEMA, observe, write_receipt
 )
 
 SHA = "a" * 40
@@ -55,13 +55,18 @@ class PulseReadbackTests(unittest.TestCase):
             hashes[name] = digest(raw)
         audit = b'{"scope":"synthetic-schedule-audit"}\n'
         (self.source / "schedule-audit.json").write_bytes(audit)
+        rebound = json.dumps({"schema": "CoAll.ReboundIntegrity.R0",
+                              "state": "SOURCE_LINKS_VALIDATED_ONLY",
+                              "missing_local_targets": [], "violations": []}).encode() + b"\n"
+        (self.source / "rebound-report.json").write_bytes(rebound)
         self.record = {
-            "schema": "cogoall-proof-pulse-r0",
+            "schema": SOURCE_SCHEMA,
             "observed_at_utc": "2026-11-09T03:22:17+00:00",
             "run_id": "12345", "attempt": "1",
             "head": SHA, "event": "schedule", "outcome": "success",
             "log_sha256": hashes,
             "schedule_audit_sha256": digest(audit),
+            "rebound_audit_sha256": digest(rebound),
             "claims": EXPECTED_CLAIMS[:],
         }
         self.save()
@@ -74,13 +79,14 @@ class PulseReadbackTests(unittest.TestCase):
 
     def test_valid_readback_is_scoped_and_not_external_ack(self):
         result = observe(self.source, context())
-        self.assertEqual(result["verified_log_count"], 7)
+        self.assertEqual(result["verified_log_count"], 9)
         self.assertEqual(result["state"], "GITHUB_JOB_BOUNDARY_ARTIFACT_HASH_READBACK")
         self.assertEqual(result["work_id"], "CoGoAll.PulseReceipt.12345.a1")
         self.assertEqual(result["due_work_selection"], "NOT_TESTED")
         self.assertEqual(result["real_worker_effect"], "NOT_TESTED")
         self.assertIs(result["external_receiver_ack"], False)
         self.assertEqual(result["provider_failure_domain"], "SAME_GITHUB_ACTIONS")
+        self.assertEqual(result["rebound_audit_sha256"], self.record["rebound_audit_sha256"])
         self.assertEqual(result["source_receipt_sha256"], digest(
             (self.source / "proof-receipt.json").read_bytes()))
 
@@ -186,6 +192,44 @@ class PulseReadbackTests(unittest.TestCase):
             write_receipt(readback, self.dest)
         self.assertEqual(before, self.dest.read_bytes())
 
+
+    def test_missing_rebound_audit_is_held(self):
+        (self.source / "rebound-report.json").unlink()
+        with self.assertRaisesRegex(ValueError, "HOLD_MISSING_OR_LINKED_ARTIFACT"):
+            observe(self.source, context())
+
+    def test_altered_rebound_report_is_held(self):
+        (self.source / "rebound-report.json").write_bytes(b"changed")
+        with self.assertRaisesRegex(ValueError, "HOLD_REBOUND_DIGEST_MISMATCH"):
+            observe(self.source, context())
+
+    def test_invalid_rebound_state_is_held_even_with_matching_digest(self):
+        raw = json.dumps({"schema": "CoAll.ReboundIntegrity.R0",
+                          "state": "SOURCE_CONTINUITY_HOLD",
+                          "missing_local_targets": ["lost"], "violations": []}).encode()
+        (self.source / "rebound-report.json").write_bytes(raw)
+        self.record["rebound_audit_sha256"] = digest(raw)
+        self.save()
+        with self.assertRaisesRegex(ValueError, "HOLD_REBOUND_REPORT_NOT_VALID"):
+            observe(self.source, context())
+
+    def test_legacy_schema_holds_in_new_receiver(self):
+        self.record["schema"] = "cogoall-proof-pulse-r0"
+        self.save()
+        with self.assertRaisesRegex(ValueError, "HOLD_PROOF_SCHEMA"):
+            observe(self.source, context())
+
+    def test_missing_rebound_hash_field_fails_closed(self):
+        del self.record["rebound_audit_sha256"]
+        self.save()
+        with self.assertRaisesRegex(ValueError, "HOLD_UNEXPECTED_PROOF_FIELDS"):
+            observe(self.source, context())
+
+    def test_new_rebound_log_hash_missing_fails_closed(self):
+        del self.record["log_sha256"]["rebound-links"]
+        self.save()
+        with self.assertRaisesRegex(ValueError, "HOLD_MISSING_LOG_IDENTITIES"):
+            observe(self.source, context())
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)
