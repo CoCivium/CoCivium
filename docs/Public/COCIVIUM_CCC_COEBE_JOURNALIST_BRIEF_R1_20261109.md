@@ -4,6 +4,7 @@
 **Journalist evidence brief R1** · **Observed 2026-11-09 UTC**  
 **Status:** `PUBLIC_REVIEW_CANDIDATE__NOT_SENT__NOT_EDITORIAL_PICKUP__NOT_PRODUCT_RELEASE`  
 **Source:** [CoCivium public repository](https://github.com/CoCivium/CoCivium)  
+**CoNav+ / CoBack+:** [Home](COCIVIUM_JOURNALIST_START_R0_20261109.md) · [One-page treatment](COCIVIUM_JOURNALIST_SERIES_TREATMENT_R0_20261109.md) · [Four sample articles](COCIVIUM_JOURNALIST_SAMPLE_SERIES_R0_20261109.md) · [AI research onramp](COCIVIUM_REPORTER_AI_ONRAMP_R0_20261109.md). These are draft source projections, not a live navigation engine.  
 **Predecessor:** [Press Readiness R0](COCIVIUM_COTHEORYALL_PRESS_READINESS_R0.md) (Git blob `fdb9cade257349d86cb3bc2de8b69235920b2c41`). No claim of canon promotion or complete previous-session coverage.
 
 ### One-sentence story
