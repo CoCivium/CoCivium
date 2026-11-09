@@ -53,8 +53,20 @@ class BridgeTests(unittest.TestCase):
 
     def test_invalid_work_id_rejected(self):
         with tempfile.TemporaryDirectory() as d:
+            fake=FakeGateway()
             with self.assertRaises(ValueError):
-                run("ping","qwen3:4b",d,"../escape",FakeGateway())
+                run("ping","qwen3:4b",d,"../escape",fake)
+            self.assertEqual(fake.calls,[])
+            self.assertEqual(list(pathlib.Path(d).glob("*.json")),[])
+
+    def test_nonstring_and_blank_work_id_rejected_without_model_call(self):
+        with tempfile.TemporaryDirectory() as d:
+            fake=FakeGateway()
+            for bad in (True, 42, "", "space id", "a/b"):
+                with self.subTest(work_id=bad):
+                    with self.assertRaises(ValueError):
+                        run("ping","qwen3:4b",d,bad,fake)
+            self.assertEqual(fake.calls,[])
             self.assertEqual(list(pathlib.Path(d).glob("*.json")),[])
 
 if __name__=="__main__":
