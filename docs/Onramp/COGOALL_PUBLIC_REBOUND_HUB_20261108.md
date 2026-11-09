@@ -10,6 +10,8 @@
 5. [CoReGroup peer evidence contract](../Evolution/COREGROUP_PEER_EVIDENCE_CONTRACT_R0.md): provenance, lease fencing, verification, recovery; proposed contract, not proof of live peer sync.
 
 ## Current engineering threads
+- [CoAckRewise+ of CoObject/CoOrbWare/Civ2+–Civ3+](../Evolution/COACKREWISE_COOBJECT_CIV3_FRONTIER_R0_20261109.md): source-bound recent-thread synthesis, stable MVP priority, public proof gaps and no false omni-session synchronization.
+- [CoObject file-to-agent proposal bridge](../../scripts/CoObjectAgencyBridgeR0.py): unlike files become bounded, source-hashed, nonexecuting work proposals; [31 adversarial CI tests](https://github.com/CoCivium/CoCivium/actions/runs/42609204946) PASS. **No automatic worker or authority.**
 - [CoMVP+ / CoLockStep+ stable-island release contract](../Architecture/COMVP_COLOCKSTEP_SOURCE_RELEASE_R0_20261109.md): runnable local source release-slot CLI, pinned minimum-use acceptance tests, atomic dependency cohorts, rollback and [76 passing CI checks](https://github.com/CoCivium/CoCivium/actions/runs/42605587773). **Not a qualified native X2/public MVP or CoAll-wide runtime controller.**
 - [rickBar Continuity R1 source and host acceptance contract](../Architecture/RICKBAR_CONTINUITY_R1_20261108.md): durable local conversation, fenced worker epoch and restart recovery with [passing synthetic CI](https://github.com/CoCivium/CoCivium/actions/runs/42540438846). **Not installed on X2 or native rickBar; no hosted-session swap or automatic deletion.**
 - [Ollama loopback gateway](../../examples/comodelfabric/ollama_gateway_r0.py) and [GitHub Actions workflow](../../.github/workflows/comodelfabric-ollama.yml): source and CI configuration; inspect actual run status before asserting PASS.
