@@ -24,6 +24,7 @@ The [source-bound CoSeed/CoPath machine graph](ai/copre-seed-path-federation-r0.
 
 ## Exact public companions
 
+- [CoEvSeed living-continuity hero media registry](ai/coevo-media-seeds-r0-20261109.json) and [public visual preview](assets/CoEvSeed/CoCivium_Living_Continuity_Hero_Preview_R0.svg): original artwork preserved separately with SHA-256; public preview is a design seed, not a deployed UI.\n
 - [CoHumanSurface rich hero and CoAudioFkOff audio consent proposal](docs/Design/COHUMAN_RICH_HERO_AND_AUDIO_CONSENT_R0_20261109.md): original visual-first human UX, with quiet accessible fallbacks and optional scroll-responsive audio only after opt-in.
 
 - [CoLatch / CoPreGeneric six-wave acceptance contract](ai/colatch-copre-wave-acceptance-r0-20261109.json): testable Seed, Orb, gauge, thumb, time, persistence and receiver thresholds; design candidate only.
