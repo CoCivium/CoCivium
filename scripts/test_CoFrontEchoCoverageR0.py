@@ -39,6 +39,28 @@ class TestFrontEcho(unittest.TestCase):
         baseline=echo.audit(packet([]))
         with_private=echo.audit(packet([p]))
         self.assertEqual(with_private,baseline)
+    def test_private_replays_do_not_change_public_counts(self):
+        private=obj(front_id="private-only",source_ref="private:sealed",
+                    source_sha256="b"*64,visibility="PRIVATE")
+        baseline=echo.audit(packet([]))
+        replayed=echo.audit(packet([private,dict(private)]))
+        self.assertEqual(replayed,baseline)
+
+    def test_private_collision_does_not_suppress_public_front(self):
+        public=obj()
+        private=dict(public,source_sha256="b"*64,visibility="PRIVATE")
+        expected=echo.audit(packet([public]))
+        actual=echo.audit(packet([private,public]))
+        self.assertEqual(actual,expected)
+        self.assertEqual(actual["coverage"]["conflicting_same_identity"],0)
+
+    def test_private_after_public_is_also_noninterfering(self):
+        public=obj()
+        private=dict(public,source_sha256="b"*64,visibility="PRIVATE")
+        expected=echo.audit(packet([public]))
+        actual=echo.audit(packet([public,private,private]))
+        self.assertEqual(actual,expected)
+
     def test_qualified_requires_exact_evidence(self):
         with self.assertRaisesRegex(ValueError,"QUALIFIED_WITHOUT_EVIDENCE"):
             echo.audit(packet([obj(state="QUALIFIED")]))
