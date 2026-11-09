@@ -52,6 +52,20 @@ def policy_action(name,need,productivity,wealth,stock,rng):
         return allocation
     return weighted(shares,budget)
 
+def checked_extraction(allocation, stock, groups):
+    """Fail-closed allocation boundary in ordinary AND optimized Python."""
+    if type(allocation) not in (list, tuple) or len(allocation) != groups:
+        raise ValueError("HOLD_ALLOCATION_SHAPE")
+    if any(type(x) not in (int, float) or not math.isfinite(x) or x < 0
+           for x in allocation):
+        raise ValueError("HOLD_ALLOCATION_NONFINITE_OR_NEGATIVE")
+    extraction = sum(allocation)
+    if (not math.isfinite(extraction) or
+        extraction > stock * 0.14 + 1e-7 or
+        extraction > stock + 1e-7):
+        raise ValueError("HOLD_EXTRACTION_CAP")
+    return extraction
+
 def conditions(seed,steps=STEPS):
     r=random.Random(seed)
     return [dict(demand=[max(0.7,r.gauss(1,0.15)) for _ in NEEDS],
@@ -60,7 +74,10 @@ def conditions(seed,steps=STEPS):
                  shock=r.random()<0.11) for _ in range(steps)]
 
 def run_one(seed,policy,steps=STEPS,trace=False):
-    assert policy in POLICIES
+    if policy not in POLICIES:
+        raise ValueError("HOLD_UNKNOWN_POLICY")
+    if type(steps) is not int or steps <= 0:
+        raise ValueError("HOLD_INVALID_STEPS")
     stock=1120.0
     rng=random.Random(seed+991832)
     world=conditions(seed,steps)
@@ -75,9 +92,7 @@ def run_one(seed,policy,steps=STEPS,trace=False):
         needs=[n*factor for n,factor in zip(NEEDS,w['demand'])]
         efficiency=[e*factor for e,factor in zip(EFF,w['productivity'])]
         allocation=policy_action(policy,needs,efficiency,WEALTH,stock,rng)
-        extraction=sum(allocation)
-        assert extraction<=stock*0.14+1e-7 and extraction<=stock+1e-7
-        assert all(x>=0 for x in allocation)
+        extraction=checked_extraction(allocation,stock,len(NEEDS))
         produced=[a*e for a,e in zip(allocation,efficiency)]
         saturation=[min(1.0,p/n) for p,n in zip(produced,needs)]
         min_sats.append(min(saturation))
