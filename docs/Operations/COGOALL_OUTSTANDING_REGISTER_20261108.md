@@ -257,3 +257,15 @@ Read-only GitHub Actions query during the CoObject closure turn found a **second
 **One next qualification, not another UX framework:** when the existing X2 control bridge is genuinely available, perform read-only native census of the **already-selected** CoAll Desktop R5/rickBar/CoOrb producer, process and asset source revisions, local receiver status timestamp and age, actual one-thumb interaction, Escape/Stop/native fallback, and 2048 display legibility. Preserve last qualified native version under CoMVP and do not install competing watchers, alter Windows shell, force overlay or start new surface processes on inference alone. If the bridge is unavailable, classify `HOLD_NATIVE_RECEIVER_UNOBSERVED`, not `X2_DEAD` or `COORB_CURRENT`.
 
 **Unchanged non-UX priorities:** CoPre PR #406 source C2 and independent user first-use, CoObject real WorkID validator cross-job source readback, incomplete hourly scheduler coverage and authentic local Ollama task, CoLockStep selective release, CoTime/predictive provenance, G_dSide, CoMeasure and CoAckRewise remain in their existing owners/receipts. Public source landing ≠ all-session pickup or installed product. No new work tracker, watcher, manual relay or public private screenshot was created.
+
+
+## Co261109 continuity reconciliation | 20:08 UTC
+
+**Exact checks in this session, without native host access:**
+- [CoSurface stitched UX draft #375](https://github.com/CoCivium/CoCivium/pull/375) remains OPEN / DRAFT / not merged, head `459cf88f56252fde0c5f0e94ce45fa7536b6deea`. [Run 42689180969](https://github.com/CoCivium/CoCivium/actions/runs/42689180969) was inspected via the workflow-jobs endpoint: four jobs completed SUCCESS (two static-contract matrix jobs, browser interactions and Ollama loopback contract). Two archive/public-readback steps were skipped in one matrix branch, not mistaken for failures. This qualifies source/browser CI, not native X2 user acceptance.
+- [CoOrbMembrane #391](https://github.com/CoCivium/CoCivium/pull/391) is CLOSED / MERGED, head `663de16bd59b66c34b129bbf7a086cf99d2a46b9`. Earlier paragraphs saying it remains open should be interpreted as historical observations, not current truth.
+- Desktop Commander X2 remained OFFLINE, last seen about 32h earlier. This does **not** imply host power state or native renderer health.
+
+**CoReGroup disposition:** KEEP_CURRENT existing source/browser test and outstanding register; RETAIN_HISTORICAL_WITNESS older open-draft observations; HOLD_NATIVE_RECEIVER_UNOBSERVED for X2; no new scheduler/daemon. Independent CoObject, CoPre, G_dSide, CoTime, CoModelFabric, CoResearch and CoZombie fronts retain existing owners. Do not promote browser CI into current X2 or claimed global cross-session sync.
+
+**Next elected product acceptance:** read-only census on a genuinely reachable X2 control/receiver path, pin installed WorkID and exact build/source SHA, exercise one visible CoBar/CoOrb roundtrip with native Stop/fallback, then receiver-owned reboot/24h recovery receipt. Until then UNKNOWN remains UNKNOWN.
