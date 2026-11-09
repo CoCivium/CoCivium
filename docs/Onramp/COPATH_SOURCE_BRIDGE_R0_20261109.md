@@ -7,6 +7,8 @@
 
 The public entry and machine graphs are already retrievable through the connected GitHub reader. The current CoPreGeneric ChatGPT session donor and WhatsApp-derived public-safe four-file candidate also exist in draft [PR #429](https://github.com/CoCivium/CoCivium/pull/429). [CoRun+/CoLockStep+](https://github.com/CoCivium/CoCivium/pull/402) remains a separate unmerged experimental donor.
 
+**Source drift is not deletion:** The first eight-role attempt found that concurrent fronts had advanced `CoPre.md` and the AI index on `main`. Exact older Git blobs are historical source candidates; an earlier source being recoverable does **not** make its assertions current or authorize promoting it.
+
 **Not yet proven:** Meta AI, X2, CoStead, family/private surfaces, all CoFronts, authorized independent receivers, or the three preferred canonical mirrors fetching, using or integrating any of this.
 
 ## How one permitted front draws from the existing source
@@ -29,7 +31,7 @@ python3 scripts/CoPathSourceBridgeR0.py \
   --repo-root . --strict --out /tmp/copath-source-proof-unique.json
 ```
 
-The PR-only CI test targets eight role routes and verifies exact source bytes from the `main`, this draft PR #429, and the separate CoRun PR #402 Git trees. The `builder` and `lockstep` routes explicitly include the existing `main` CoMVP controller and the unmerged CoRun donor; they do **not** merge, deploy or authorize either. Readback is **CI_SOURCE_ONLY**, not proof of human adoption, foreign-provider ingestion, self-healing runtime or off-provider cold restore. Missing/drifted source returns `HELD_SOURCE_PATH_UNVERIFIED`, preserving old evidence and no effects.
+The PR-only CI test targets eight role routes and verifies exact source bytes from the `main`, this draft PR #429, and the separate CoRun PR #402 Git trees. The `builder` and `lockstep` routes explicitly include the existing `main` CoMVP controller and the unmerged CoRun donor; they do **not** merge, deploy or authorize either. Readback is **CI_SOURCE_ONLY**, not proof of human adoption, foreign-provider ingestion, self-healing runtime or off-provider cold restore. A current-branch change triggers **CoTime-aware qualification**: when the exact earlier Git blob remains available, classify `HISTORICAL_PINS_RECOVERABLE__CURRENTNESS_HELD`, preserving the previous content without presenting it as the current main version. Missing or unverifiable historical blobs return `HELD_SOURCE_PATH_UNVERIFIED`. Public CI uses full Git history; a shallow independent checkout may need its missing objects fetched before it can reproduce this proof.
 
 ### What remains outside this scope
 
