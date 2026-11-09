@@ -1,0 +1,116 @@
+{
+  "schema": "CoAll.CoWet.HumanSurface.R0",
+  "date": "2026-11-09",
+  "status": "PUBLIC_SAFE_DESIGN_RULE_CANDIDATE_NOT_DEPLOYED_SITE_DEFAULT",
+  "intent": "New public human-facing surfaces should avoid CoDry+ by presenting a meaningful hero graphic or rich-media experiment while maintaining utility, source integrity, and accessibility.",
+  "scope": {
+    "future": "DEFAULT_EXPECTATION_WITH_ACCESSIBILITY_AND_CONTEXT_EXCEPTIONS",
+    "retro": "PRIORITIZE_HIGH_TRAFFIC_HIGH_VALUE_PAGES; DO_NOT_BLANKET_REWRITE_HISTORICAL_RECORDS",
+    "exceptions": [
+      "LEGAL_OR_SAFETY_FIRST",
+      "BANDWIDTH_CONSTRAINED",
+      "SCREEN_READER_ONLY",
+      "MACHINE_FIRST_JSON",
+      "PRINT_ARCHIVAL",
+      "AUTHOR_CONSENT_OR_RIGHTS_UNCLEAR"
+    ]
+  },
+  "co_glam": {
+    "required_for_eligible_surfaces": [
+      "one useful, original-or-rights-cleared hero illustration, interactive source graph, animation, visualization or embedded rich-media experience",
+      "headline and immediate human-readable purpose",
+      "plain-text fallback and accessible alt/summary",
+      "visible CoSeed/CoPath source/backtrack route",
+      "one meaningful user action, not decorative theater"
+    ],
+    "avoid": [
+      "stock-for-its-own-sake",
+      "indiscriminate autoplay",
+      "dark patterns",
+      "epileptogenic flicker",
+      "inaccessible animation",
+      "borrowed media without license",
+      "unverified product claims"
+    ]
+  },
+  "cowet": {
+    "modes": [
+      "STILL",
+      "QUIET_MOTION",
+      "RICH_INTERACTIVE",
+      "EXPERIMENTAL_AUDIO"
+    ],
+    "do_not_require_every_mode": true,
+    "relation": "CoDry+ useful density is preserved below the rich invitation; CoGlam+/CoWow+/CoJaz+ and CoGayAsAPeachBaby+ are opt-in creative voices, not universal visual treatment"
+  },
+  "audio_policy": {
+    "default": "SILENT_NO_AUDIO_CONTEXT",
+    "scroll_only": "NEVER_UNMUTE_ON_SCROLL_ALONE",
+    "opt_in": "REQUIRE_EXPLICIT_USER_GESTURE_TO_ENABLE_AUDIO",
+    "after_opt_in": "Volume may ramp gently with scroll within a visible, bounded cap; scrolling does not bypass mute/no-audio preference",
+    "controls": [
+      "persistent obvious OFF button",
+      "volume slider",
+      "pause or silence at any time",
+      "accessible label and keyboard interaction",
+      "persist 'no audio' preference only if user deliberately selects it, and respect it"
+    ],
+    "cap": "QUIET_DEFAULT_MAX_EXPERIMENTAL_GAIN_0.08_NOT_DECIBEL_CERTIFIED",
+    "visibility": "Pause/suspend on hidden tab where applicable",
+    "motion": "Respect prefers-reduced-motion; do not infer audio preference solely from it",
+    "accessibility": "Non-audio equivalent; avoid masking screen readers; meet WCAG audio control and contrast; no flashing content",
+    "privacy": "Do not infer hearing impairment, neurotype, or other sensitive traits from audio-off choice; do not track individual preference externally",
+    "user_label": "CoAudioFkOff+ = accessible no-audio choice; in production use ordinary 'Sound off' wording"
+  },
+  "experiments": [
+    {
+      "hypothesis": "visual source-bound hero improves comprehension and voluntary exploration",
+      "metrics": [
+        "time_to_correct_first_action",
+        "comprehension",
+        "source_traceability",
+        "task_completion",
+        "return_choice"
+      ],
+      "falsifier": "a plain equivalent performs as well or better"
+    },
+    {
+      "hypothesis": "opt-in, quiet scroll-responsive ambiance is enjoyable without disruption",
+      "metrics": [
+        "opt_in_rate",
+        "immediate_mute_rate",
+        "task_completion",
+        "reported_annoyance",
+        "keyboard_and_screen_reader_success"
+      ],
+      "falsifier": "higher annoyance or degraded comprehension compared with silent default"
+    },
+    {
+      "hypothesis": "retrofit high-value pages before applying sweeping redesign",
+      "metrics": [
+        "measured_reader_gain_per_implementation_hour",
+        "regressions",
+        "recovery_route_clarity"
+      ],
+      "falsifier": "retrofit breaks content or increases recovery friction"
+    }
+  ],
+  "sources": [
+    "https://developer.mozilla.org/en-US/docs/Web/Media/Guides/Autoplay",
+    "https://www.w3.org/WAI/WCAG21/Understanding/audio-control"
+  ],
+  "references_in_repo": [
+    "CoPre.md",
+    "examples/comap/megascroller-r0.html",
+    "examples/comap/README.md",
+    "ai/copre-seed-path-federation-r0.json"
+  ],
+  "nonclaims": [
+    "NOT_GLOBAL_UI_DEFAULT",
+    "NOT_SITE_DEPLOYMENT",
+    "NOT_ACCESSIBILITY_CERTIFIED",
+    "NO_AUTOPLAY_AUDIO",
+    "NO_USER_PREF_INFERENCE",
+    "NOT_HUMAN_FACING_VISUAL_ACCEPTANCE_PROOF"
+  ]
+}
