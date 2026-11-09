@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CoCivium public frontier atlas R0</title>
+<style>
+:root{color-scheme:dark;font:16px system-ui,sans-serif;background:#101321;color:#e9ecf8}
+body{max-width:1050px;margin:auto;padding:1rem 1.2rem 5rem}
+a{color:#9adbd8} header{position:sticky;top:0;background:#101321ee;padding:1rem 0;border-bottom:1px solid #536076;z-index:2}
+h1{font-size:1.7rem;margin:0} small,.muted{color:#a7b1c6}
+.controls{display:flex;gap:.6rem;flex-wrap:wrap;margin:1rem 0}
+input,button{background:#222b3d;color:#fff;border:1px solid #72809a;border-radius:.5rem;padding:.6rem}
+input{flex:1;min-width:12rem}
+.card{border:1px solid #536076;border-radius:1rem;padding:1rem;margin:1rem 0;background:#171d2c}
+.card h2{font-size:1.15rem;margin:.2rem 0}
+.state{font-size:.8rem;color:#f0c77a}
+details{margin-top:.6rem} summary{cursor:pointer}
+pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:.82rem}
+#map{width:100%;height:auto;max-height:480px;border:1px solid #536076;border-radius:.8rem}
+svg text{fill:#e9ecf8;font:11px system-ui,sans-serif}
+svg a:focus rect,svg a:hover rect{stroke:#76e1d6;stroke-width:2}
+</style>
+<header><h1>● CoCivium frontier atlas</h1><small>Public megascroller R0 · source-bound, read-only · no live-runtime claims</small></header>
+<p>One scroll, one navigable diagram, and source evidence. This page fetches the public frontier index; it does not discover private sessions or send emails.</p>
+<div class="controls"><input id="search" type="search" aria-label="Filter fronts" placeholder="Filter fronts and evidence"><button id="reload">Reload public index</button></div>
+<p id="status" role="status">Loading public index…</p><svg id="map" viewBox="0 0 800 100" role="img" aria-label="Frontier diagram"></svg><main id="fronts"></main>
+<footer><p><a href="https://github.com/CoCivium/CoCivium/blob/main/docs/Evolution/FRONTIER_EVIDENCE_INDEX_R0.json">Original public evidence index</a> · <a href="https://github.com/CoCivium/CoCivium">Source repository</a></p><p class="muted">Static viewer: no tracking, no writes, no implied ACK. A cached or failed source must be shown as such.</p></footer>
+<script>
+'use strict';
+const url='https://raw.githubusercontent.com/CoCivium/CoCivium/main/docs/Evolution/FRONTIER_EVIDENCE_INDEX_R0.json';
+const el=id=>document.getElementById(id);
+let records=[];
+function safe(v){return typeof v==='string'?v:JSON.stringify(v??'');}
+function text(tag,value){const e=document.createElement(tag);e.textContent=safe(value);return e;}
+function render(){
+ const q=el('search').value.toLowerCase();
+ const shown=records.filter(r=>JSON.stringify(r).toLowerCase().includes(q));
+ const main=el('fronts');main.replaceChildren();
+ const svg=el('map');svg.replaceChildren();svg.setAttribute('viewBox',`0 0 800 ${Math.max(100,shown.length*66+20)}`);
+ shown.forEach((r,i)=>{
+  const name=r.front_id||r.id||r.name||`Front ${i+1}`;
+  const box=document.createElement('section');box.className='card';box.id='front-'+i;
+  box.append(text('h2',name));
+  const state=text('p',r.state||r.status||'STATE_UNSPECIFIED');state.className='state';box.append(state);
+  const details=document.createElement('details');details.append(text('summary','Evidence and source fields'));
+  const pre=text('pre',JSON.stringify(r,null,2));details.append(pre);box.append(details);main.append(box);
+  const ns='http://www.w3.org/2000/svg', y=i*66+12;
+  const link=document.createElementNS(ns,'a');link.setAttribute('href','#front-'+i);
+  const rect=document.createElementNS(ns,'rect');for(const [k,v] of Object.entries({x:12,y,width:775,height:52,rx:9,fill:'#222b3d',stroke:'#63718e'}))rect.setAttribute(k,v);
+  const label=document.createElementNS(ns,'text');label.setAttribute('x','25');label.setAttribute('y',String(y+22));label.textContent=String(name).slice(0,95);
+  const sub=document.createElementNS(ns,'text');sub.setAttribute('x','25');sub.setAttribute('y',String(y+40));sub.textContent=String(r.state||r.status||'unverified').slice(0,100);
+  link.append(rect,label,sub);svg.append(link);
+ });
+ el('status').textContent=`${shown.length} of ${records.length} public fronts shown. Read-only; state comes from index, not live observation.`;
+}
+async function load(){
+ el('status').textContent='Loading public index…';
+ try{
+  const response=await fetch(url,{cache:'no-store'});if(!response.ok)throw Error('HTTP '+response.status);
+  const data=await response.json();
+  const candidates=Array.isArray(data)?data:(data.fronts||data.entries||data.items);
+  if(!Array.isArray(candidates))throw Error('Unsupported index shape: '+Object.keys(data).join(', '));
+  records=candidates;render();
+ }catch(err){records=[];el('map').replaceChildren();el('fronts').replaceChildren();el('status').textContent='Source unavailable or incompatible: '+err.message+'. Open original evidence index using the link below.';}
+}
+el('search').addEventListener('input',render);el('reload').addEventListener('click',load);load();
+</script></html>
