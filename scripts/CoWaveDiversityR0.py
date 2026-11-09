@@ -27,6 +27,10 @@ PROFILES = {
     "comvp-colockstep": ("rollback-qualification", "builder", "release-diff", "week", "intermediate-regression", 6),
     "coprimath-gdside": ("null-hypothesis-test", "researcher", "causal-model", "month", "baseline-beats-future", 4),
     "costead-onboarding": ("accessibility-task", "novice", "guided-setup", "day", "unrecoverable-first-use", 5),
+    "comap-megascroller": ("reader-comprehension", "independent-reader", "public-megascroller", "day", "lost-navigation-context", 5),
+    "colue-outreach": ("consent-route-test", "recipient", "mail-draft-review", "week", "cross-mailbox-send", 5),
+    "colensmedia-lineage": ("media-provenance-audit", "access-reader", "media-graph", "month", "private-source-leak", 4),
+    "cobrowser-cocarry": ("session-rebind", "session-owner", "browser-recovery", "immediate", "unsent-text-loss", 6),
 }
 AXES = ("method", "audience", "substrate", "horizon", "counterexample")
 NONCLAIMS = (
@@ -70,7 +74,7 @@ def distance(a, b):
 
 def choose(index, observed_at_utc, *, limit=4, prior=()):
     stamp = utc(observed_at_utc)
-    if type(limit) is not int or not 1 <= limit <= 7:
+    if type(limit) is not int or not 1 <= limit <= len(PROFILES):
         raise ValueError("HOLD_WAVE_LIMIT")
     if not isinstance(index, dict) or index.get("schema") != FRONT_SCHEMA:
         raise ValueError("HOLD_SOURCE_FRONT_INDEX")
