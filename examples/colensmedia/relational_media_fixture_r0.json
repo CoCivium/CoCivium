@@ -1,0 +1,142 @@
+{
+  "assets": [
+    {
+      "current": true,
+      "id": "work:media-r0",
+      "kind": "SOURCE",
+      "label": "Evidence and claims",
+      "sha256": "8f609f3f06b11d7b76203ea765ead99ddd12f8b37c0ef837c2391ae0dc2fdbad",
+      "source_revision": "src-v1",
+      "visibility": "PUBLIC",
+      "work_id": "work:media-r0"
+    },
+    {
+      "accessibility_twin_id": "alt:diagram",
+      "current": true,
+      "id": "diagram:v1",
+      "kind": "DIAGRAM",
+      "label": "CoMap diagram",
+      "sha256": "495c9cfb03a794d1a2243540ffa606cbb96ea7228734d5866f1c9f3f172f199c",
+      "source_revision": "src-v1",
+      "visibility": "PUBLIC",
+      "work_id": "work:media-r0"
+    },
+    {
+      "current": true,
+      "id": "alt:diagram",
+      "kind": "ACCESSIBLE_TEXT",
+      "label": "Diagram alt text",
+      "sha256": "bb65393aa35c575cd9dbee48836917e25b365949dd8cc94a82d4abef10c74ba0",
+      "source_revision": "src-v1",
+      "visibility": "PUBLIC",
+      "work_id": "work:media-r0"
+    },
+    {
+      "accessibility_twin_id": "alt:audio",
+      "current": true,
+      "id": "audio:v1",
+      "kind": "AUDIO",
+      "label": "CoMedia audio",
+      "sha256": "3804cf4fb94ac94f1ec75248698dfbc3705d705ccbeb39aecac0023bd055b162",
+      "source_revision": "src-v1",
+      "visibility": "PUBLIC",
+      "work_id": "work:media-r0"
+    },
+    {
+      "current": true,
+      "id": "alt:audio",
+      "kind": "ACCESSIBLE_TEXT",
+      "label": "Audio transcript",
+      "sha256": "636e605e055970972fc8f45101b81d4d841e4be4213e77d13f3db6c28a9142b3",
+      "source_revision": "src-v1",
+      "visibility": "PUBLIC",
+      "work_id": "work:media-r0"
+    },
+    {
+      "current": true,
+      "id": "draft:v1",
+      "kind": "EMAIL_DRAFT",
+      "label": "CoMail staged draft",
+      "sha256": "0c035a472d604cf7d40e0a5aa2356d79e47849ee83639269f8424a3174ca7280",
+      "source_revision": "src-v1",
+      "visibility": "PRIVATE",
+      "work_id": "work:media-r0"
+    },
+    {
+      "current": true,
+      "id": "orb:v1",
+      "kind": "ORB_VIEW",
+      "label": "CoOrb front",
+      "sha256": "473909304ab6c6dc5684b6340b93e55e2266e31a55383fd9c89b6c37eaaa016c",
+      "source_revision": "src-v1",
+      "visibility": "PUBLIC",
+      "work_id": "work:media-r0"
+    }
+  ],
+  "relations": [
+    {
+      "evidence_ref": "fixture:source-relation",
+      "from": "diagram:v1",
+      "to": "work:media-r0",
+      "type": "DERIVED_FROM"
+    },
+    {
+      "evidence_ref": "fixture:source-relation",
+      "from": "alt:diagram",
+      "to": "work:media-r0",
+      "type": "DERIVED_FROM"
+    },
+    {
+      "evidence_ref": "fixture:source-relation",
+      "from": "audio:v1",
+      "to": "work:media-r0",
+      "type": "DERIVED_FROM"
+    },
+    {
+      "evidence_ref": "fixture:source-relation",
+      "from": "alt:audio",
+      "to": "work:media-r0",
+      "type": "DERIVED_FROM"
+    },
+    {
+      "evidence_ref": "fixture:source-relation",
+      "from": "draft:v1",
+      "to": "work:media-r0",
+      "type": "DERIVED_FROM"
+    },
+    {
+      "evidence_ref": "fixture:source-relation",
+      "from": "orb:v1",
+      "to": "work:media-r0",
+      "type": "DERIVED_FROM"
+    },
+    {
+      "evidence_ref": "fixture:source-relation",
+      "from": "alt:diagram",
+      "to": "diagram:v1",
+      "type": "DESCRIBES"
+    },
+    {
+      "evidence_ref": "fixture:source-relation",
+      "from": "alt:audio",
+      "to": "audio:v1",
+      "type": "DESCRIBES"
+    },
+    {
+      "evidence_ref": "fixture:source-relation",
+      "from": "draft:v1",
+      "to": "diagram:v1",
+      "type": "RELATED_TO"
+    },
+    {
+      "evidence_ref": "fixture:source-relation",
+      "from": "orb:v1",
+      "to": "audio:v1",
+      "type": "RELATED_TO"
+    }
+  ],
+  "root_id": "work:media-r0",
+  "schema": "CoAll.RelationalMediaManifest.R0",
+  "status": "PUBLIC_SAFE_SYNTHETIC_METADATA_NO_MEDIA_BYTES",
+  "work_id": "work:media-r0"
+}
