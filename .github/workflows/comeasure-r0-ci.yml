@@ -13,6 +13,7 @@ on:
       - 'tests/test_comeasure_optimized_failclosed_r0.py'
       - 'ai/measurement/observation_domain_r0.py'
       - 'ai/measurement/first_use_demo_r0.py'
+      - 'ai/measurement/colockstep_survival_r0.py'
       - 'tests/test_observation_domain_r0.py'
       - 'docs/Architecture/COALL_MEASUREMENT_R0_CANDIDATE.md'
       - '.github/workflows/comeasure-r0-ci.yml'
@@ -48,6 +49,10 @@ jobs:
         run: |
           python ai/measurement/first_use_demo_r0.py
           python -O ai/measurement/first_use_demo_r0.py
+      - name: Demonstrate CoLockStep source-pinned baseline survival across broken successor
+        run: |
+          python -B ai/measurement/colockstep_survival_r0.py
+          python -O -B ai/measurement/colockstep_survival_r0.py
       - name: Check scope and result counters
         run: |
           python - <<'PY'
