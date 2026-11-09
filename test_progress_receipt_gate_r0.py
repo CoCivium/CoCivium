@@ -23,16 +23,29 @@ class Tests(unittest.TestCase):
     def test_due_blocked_work_is_held_not_success(self):
         self.assertEqual(classify(base(due_work=True,blocked_reason="X2_RECEIVER_UNAVAILABLE"))["disposition"],"WAITING_ON_EVENT")
     def test_work_without_receipt_not_success(self):
-        self.assertEqual(classify(base(execution_attempted=True))["reason"],"EXECUTION_NO_RECEIPT")
+        self.assertEqual(classify(base(execution_attempted=True,claimed_no_update=False))["reason"],"EXECUTION_NO_RECEIPT")
     def test_receipt_without_receiver_readback_not_success(self):
-        d=classify(base(execution_attempted=True,output_digest="sha256:fixture",effect_receipt="fixture:receipt"))
+        d=classify(base(execution_attempted=True,claimed_no_update=False,output_digest="sha256:fixture",effect_receipt="fixture:receipt"))
         self.assertEqual(d["disposition"],"AWAITING_RECEIVER_PROOF")
     def test_full_caller_proof_is_only_structurally_classified(self):
-        d=classify(base(execution_attempted=True,output_digest="sha256:fixture",
+        d=classify(base(execution_attempted=True,claimed_no_update=False,output_digest="sha256:fixture",
                         effect_receipt="fixture:receipt",receiver_readback="fixture:ack"))
         self.assertEqual(d["disposition"],"STRUCTURALLY_REPORTED_EFFECT")
     def test_missing_identity_fails(self):
         self.assertEqual(classify(base(source_revision=""))["reason"],"UNBOUND_WAKE_OR_SOURCE")
+
+    def test_executed_work_must_name_next_wake(self):
+        d=classify(base(execution_attempted=True,claimed_no_update=False,next_wake="",
+                        output_digest="sha256:fixture",effect_receipt="fixture:receipt",
+                        receiver_readback="fixture:ack"))
+        self.assertEqual(d["reason"],"NO_NEXT_WAKE")
+    def test_cannot_claim_no_update_and_work_effect(self):
+        d=classify(base(execution_attempted=True,claimed_no_update=True,
+                        output_digest="sha256:fixture",effect_receipt="fixture:receipt",
+                        receiver_readback="fixture:ack"))
+        self.assertEqual(d["reason"],"CONTRADICTORY_NO_UPDATE_AND_EXECUTION")
+    def test_no_delta_requires_explicit_caller_claim(self):
+        self.assertEqual(classify(base(claimed_no_update=False))["reason"],"NO_DELTA_CLAIM_MISSING")
 
 if __name__=="__main__":
     unittest.main()
