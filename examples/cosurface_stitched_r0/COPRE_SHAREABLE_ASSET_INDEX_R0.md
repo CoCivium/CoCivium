@@ -31,3 +31,8 @@ Consumers should verify exact source blobs or content digests and record their *
 - [CoOmniPath bounded graph explorer](co_omnipath_r0.py): traverse declared source relations forward or inspect incoming references in reverse, with explicit orientation, scope fences, hop limits, and conservative proof status.
 - [CoOmniPath adversarial tests](test_co_omnipath_r0.py): 13 synthetic checks for relation direction, privacy, bounded exploration and non-elevation of G_dSide hypotheses.
 - **Boundary:** this is a source-level reusable library, not automatic global session discovery, push-based synchronization, or verified cross-provider receiver pickup. G_dSide is a hypothesis lane only.
+
+## v8.79 public omni contribution
+
+- [CoPreGeneric v8.79 public-safe CoPublic / CoOmni / CoSeed / CoPath delta](COPRE_V879_PUBLIC_OMNI_DELTA.md) | concise source-derived scope, draw/feed contract, linked historical/reverse navigation, G_dSide hypothesis boundary, and actual independent receiver test.
+- The supplied large WhatsApp export stays private. A public-safe synthesis is landed instead; this is not evidence of full historical recovery or cross-provider ACK.
