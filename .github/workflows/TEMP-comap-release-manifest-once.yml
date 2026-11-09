@@ -1,0 +1,40 @@
+name: TEMP existing CoNav megascroller manifest compilation
+on:
+  push:
+    branches:
+      - 'feature/comap-existing-megascroller-manifest-r0-20261109'
+    paths:
+      - '.github/workflows/TEMP-comap-release-manifest-once.yml'
+permissions:
+  contents: write
+jobs:
+  exact-manifest-on-isolated-branch:
+    if: github.repository == 'CoCivium/CoCivium' && github.ref == 'refs/heads/feature/comap-existing-megascroller-manifest-r0-20261109'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Generate one deterministic manifest and test its exact source
+        shell: bash
+        run: |
+          set -euo pipefail
+          test ! -e examples/comap/megascroller-r0.release.json
+          node scripts/BuildCoPublicConstellationManifestR0.cjs
+          node scripts/BuildCoPublicConstellationManifestR0.cjs --check
+          node --test scripts/test_public_constellation_manifest_r0.cjs
+      - name: Commit only the exact manifest to this isolated branch
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$GITHUB_REF" = "refs/heads/feature/comap-existing-megascroller-manifest-r0-20261109"
+          git add -- examples/comap/megascroller-r0.release.json
+          test "$(git diff --cached --name-only)" = "examples/comap/megascroller-r0.release.json"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Build exact manifest for existing public CoNav megascroller"
+          git push origin HEAD:refs/heads/feature/comap-existing-megascroller-manifest-r0-20261109
