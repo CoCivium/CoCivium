@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="CoWet human-first surface experiment: meaningful hero, plain-view fallback, and opt-in scroll-reactive ambience.">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; connect-src 'none'; img-src 'none'; media-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<title>CoWet+ | Visual-first, silence-first prototype</title>
+<style>
+:root{color-scheme:dark;--bg:#090d1a;--fg:#f3f4fa;--sub:#c3cce1;--cyan:#73ebdd;--pink:#f28ed6;--violet:#a996fb;--border:#526184}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font:16px/1.55 system-ui,-apple-system,Segoe UI,sans-serif;background:var(--bg);color:var(--fg)}
+a{color:var(--cyan)}button{font:inherit;background:#1a2640;color:var(--fg);border:1px solid #8e9fbd;padding:.65rem .8rem;border-radius:.7rem;cursor:pointer}button:focus-visible,a:focus-visible{outline:3px solid var(--cyan);outline-offset:3px}
+.skip{position:absolute;top:-200vh;left:1rem;background:#18233a;padding:.5rem}.skip:focus{top:1rem}
+header{display:flex;gap:1rem;justify-content:space-between;align-items:center;flex-wrap:wrap;margin:auto;max-width:1100px;padding:1rem}
+.brand{font-weight:800;letter-spacing:.12em}.controls{display:flex;gap:.5rem;align-items:center;flex-wrap:wrap}
+main{max-width:1100px;margin:auto;padding:1.5rem}h1{font-size:clamp(2.6rem,7vw,6.5rem);line-height:1.02;letter-spacing:-.06em;margin:.2em 0}h2{font-size:clamp(1.6rem,3vw,2.3rem);margin-top:2.6rem}
+.lead{font-size:clamp(1.04rem,2vw,1.35rem);max-width:53ch;color:var(--sub)}
+.hero{position:relative;isolation:isolate;min-height:480px;padding:clamp(1rem,5vw,3rem);border:1px solid #465274;border-radius:1.4rem;overflow:hidden;background:radial-gradient(circle at 65% 35%,#43387c 0%,transparent 48%),linear-gradient(135deg,#102735,#111328 70%)}
+.hero svg{position:absolute;right:-5%;top:0;width:68%;height:100%;z-index:-1;opacity:.82}
+.hero .kicker{text-transform:uppercase;color:var(--cyan);font-size:.75rem;letter-spacing:.2em;font-weight:800}
+.hero p{max-width:36ch}.hero .text{position:relative;max-width:550px}
+.pill{display:inline-block;padding:.3rem .7rem;border:1px solid #8ba1b2;border-radius:99px;font-size:.8rem;background:#15283b}
+.actions{display:flex;gap:.5rem;flex-wrap:wrap}.feature-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1rem}
+.panel{border:1px solid #43546a;border-radius:1rem;padding:1.3rem;background:#111c2c;min-height:180px}.panel p{color:var(--sub)}.meta{font-size:.88rem;color:var(--sub)}
+.plain .hero svg{display:none}.plain .hero{min-height:initial;background:#121a2b}.plain .panel{background:transparent}.plain .hero h1{font-size:2.4rem}
+section{scroll-margin-top:2rem}.footer{border-top:1px solid #42506a;padding:2rem 0;margin-top:4rem}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}}
+@media(max-width:650px){.hero{min-height:440px}.hero svg{width:100%;opacity:.32}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header>
+ <div class="brand">CoWet+ / CoDry+</div>
+ <div class="controls" role="group" aria-label="Presentation and sound controls">
+  <button id="plain" type="button" aria-pressed="false">Plain source view</button>
+  <button id="soundOn" type="button">Enable ambience</button>
+  <button id="soundOff" type="button" aria-label="Sound off now">Sound off</button>
+ </div>
+</header>
+<main id="main">
+<section class="hero" aria-labelledby="title">
+<svg viewBox="0 0 750 520" role="img" aria-label="Illustrative network of distinct nodes, circular paths and a central common evidence point. Non-factual artistic depiction." xmlns="http://www.w3.org/2000/svg">
+<defs><radialGradient id="halo"><stop stop-color="#f28ed6" stop-opacity=".6"/><stop offset="1" stop-color="#a996fb" stop-opacity="0"/></radialGradient></defs>
+<circle cx="440" cy="252" r="260" fill="url(#halo)"/>
+<g fill="none" stroke="#a996fb" opacity=".65">
+<ellipse cx="450" cy="257" rx="262" ry="96" transform="rotate(-31 450 257)" stroke-width="2"/>
+<ellipse cx="450" cy="257" rx="233" ry="177" transform="rotate(35 450 257)" stroke-width="2"/>
+<ellipse cx="450" cy="257" rx="137" ry="249" transform="rotate(-19 450 257)" stroke-width="2"/>
+</g>
+<g stroke="#73ebdd" fill="#73ebdd"><circle cx="450" cy="257" r="15"/><circle cx="190" cy="241" r="6"/><circle cx="590" cy="102" r="8"/><circle cx="690" cy="310" r="6"/></g>
+<g stroke="#f28ed6" fill="#f28ed6"><circle cx="315" cy="414" r="8"/><circle cx="570" cy="427" r="6"/><circle cx="365" cy="94" r="6"/></g>
+</svg>
+<div class="text">
+<p class="kicker">Experimental CoCivium human-facing projection</p>
+<h1 id="title">A living map of meaning.</h1>
+<p class="lead">Different paths, one accountable evidence spine. Explore in colour, or switch to the same information without visual decoration.</p>
+<div class="actions"><a class="pill" href="#relations">Explore relationships</a><a class="pill" href="#evidence">See the proof boundary</a></div>
+</div>
+</section>
+<p id="soundState" class="meta" role="status" aria-live="polite">Sound is off. Scrolling never enables it.</p>
+<section id="relations"><h2>Paths worth following</h2>
+<div class="feature-grid">
+<article class="panel"><h3>CoSeed</h3><p>Discover a bounded, source-identified starting point without adopting unrelated claims.</p></article>
+<article class="panel"><h3>CoPath</h3><p>Traverse forward or backward, while keeping source permissions and meaning intact.</p></article>
+<article class="panel"><h3>CoEcho</h3><p>Recover prior versions, dissent and unresolved history rather than silently erasing it.</p></article>
+</div></section>
+<section id="evidence"><h2>Proof stays attached</h2><p>This is a visual design prototype, not a deployed global receiver or a claim of completed synchronization. The drawing is original abstract artwork. All factual labels are demonstrative definitions only.</p>
+<p>The audible experiment is strictly opt-in. After enabling, scrolling can change a very quiet synthesized ambient tone. Press Sound off, Escape or switch away to stop it. There is no network, tracking, microphone, video, audio file or background worker. The complete page remains readable with JavaScript disabled.</p>
+<p><a href="../../docs/Design/COWET_HUMAN_SURFACE_AUDIO_CONTRACT_R0_20261109.md">Read the design and accessibility contract</a>.</p></section>
+<div class="footer"><p class="meta">CoWet+ R0. Source-only public-safe draft. No proof of deployed product, cross-provider synchronization, site mirrors, or user acceptance.</p></div>
+</main>
+<script>
+(function(){
+"use strict";
+const on=document.getElementById("soundOn"),off=document.getElementById("soundOff"),
+ plain=document.getElementById("plain"),state=document.getElementById("soundState");
+let context=null,osc=null,gain=null,enabled=false;
+function silence(){
+ enabled=false;
+ if(gain&&context){gain.gain.setTargetAtTime(0,context.currentTime,0.02);}
+ if(osc){try{osc.stop();}catch(e){}osc.disconnect();osc=null;}
+ if(context){context.close().catch(()=>{});context=null;}
+ gain=null;state.textContent="Sound is off. Scrolling never enables it.";
+}
+function volume(){
+ if(!enabled||!context||!gain||!osc)return;
+ let total=Math.max(1,document.documentElement.scrollHeight-window.innerHeight);
+ let pos=Math.min(1,Math.max(0,window.scrollY/total));
+ // A deliberately low ambient ceiling. Browsers and speaker settings vary.
+ gain.gain.setTargetAtTime(Math.min(0.017,0.002+0.015*pos),context.currentTime,0.14);
+ osc.frequency.setTargetAtTime(180+110*pos,context.currentTime,0.18);
+}
+on.addEventListener("click",function(){
+ if(enabled)return;
+ const AudioCtx=window.AudioContext||window.webkitAudioContext;
+ if(!AudioCtx){state.textContent="Audio is not supported on this browser.";return;}
+ try{
+ context=new AudioCtx();gain=context.createGain();osc=context.createOscillator();
+ osc.type="sine";osc.frequency.value=180;gain.gain.value=0;osc.connect(gain);gain.connect(context.destination);
+ osc.start();enabled=true;context.resume().then(volume).catch(silence);
+ state.textContent="Ambience enabled by you. Scrolling may gradually adjust its very quiet level.";
+ }catch(e){silence();state.textContent="Audio unavailable; continuing silently.";}
+});
+off.addEventListener("click",silence);
+document.addEventListener("keydown",e=>{if(e.key==="Escape")silence();});
+document.addEventListener("visibilitychange",()=>{if(document.hidden)silence();});
+window.addEventListener("scroll",volume,{passive:true});
+plain.addEventListener("click",()=>{const val=document.body.classList.toggle("plain");plain.setAttribute("aria-pressed",String(val));plain.textContent=val?"Rich visual view":"Plain source view";});
+window.addEventListener("pagehide",silence);
+})();
+</script>
+</body></html>
