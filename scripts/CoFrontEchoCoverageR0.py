@@ -44,6 +44,10 @@ def audit(packet):
             raise ValueError("QUALIFIED_WITHOUT_EVIDENCE")
         if obs["state"]=="SUPERSEDED" and not obs.get("successor_ref"):
             raise ValueError("SUPERSEDED_WITHOUT_SUCCESSOR")
+        # Privacy noninterference: private rows must not affect public dedupe,
+        # counts, conflicts, order, or the visibility of public observations.
+        if obs["visibility"]=="PRIVATE":
+            continue
         key=(obs["window_id"],obs["front_id"],obs["source_ref"],obs["observed_at"])
         stamp=digest(obs)
         if key in seen:
@@ -54,9 +58,6 @@ def audit(packet):
                 exact_replay+=1
             continue
         seen[key]=stamp
-        # Private observations stay entirely outside the public projection, including counts.
-        if obs["visibility"]=="PRIVATE":
-            continue
         rows.append({"front_id":obs["front_id"],
                      "window_id":obs["window_id"],"state":obs["state"],
                      "disposition":obs["disposition"],"source_ref":obs["source_ref"],
