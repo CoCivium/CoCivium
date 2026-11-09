@@ -33,13 +33,14 @@ class Orb:
             return self  # cosmetic redraw is never a semantic revision
         return Orb(self.work_id, self.revision+1, tuple(strands), self.digest())
 
-def project(orb, receiver, renderer, now, verifier_receipts=()):
+def project(orb, receiver, renderer, now):
     """Only two renderers are supported; output data is intentionally isomorphic."""
     if renderer not in ("map", "orb"):
         raise ValueError("unknown renderer")
     # Restricted strands do not contribute counts, IDs, glow or any visible metadata.
     visible=[]
-    verified=set(verifier_receipts)  # trusted verifier input, never model-generated
+    # No trusted receiver-verifier boundary exists in this fixture. A model, caller
+    # or strand cannot certify receiver ACK. Defer all promotion to a real verifier.
     for strand in orb.strands:
         if receiver not in strand.visible_to:
             continue
@@ -58,7 +59,7 @@ def project(orb, receiver, renderer, now, verifier_receipts=()):
             state=strand.epistemic
         visible.append({"id":strand.id,"kind":strand.kind,"state":state,
                         "source_ref":strand.source_ref,"delivery":delivery,
-                        "receiver_ack":bool(strand.observed_receipt and strand.observed_receipt in verified)})
+                        "receiver_ack":False})
     # A receiver-visible projection has its own version. Do not disclose the
     # full source digest, global revision or predecessor: each can reveal
     # the existence or timing of changes to receiver-ineligible strands.
@@ -136,14 +137,16 @@ class CoOrbTwoView(unittest.TestCase):
         evidence=project(nxt,"public","orb",10)["strands"][0]
         self.assertFalse(evidence["receiver_ack"])
 
-    def test_separately_supplied_verifier_ref_required(self):
+    def test_self_claimed_receipt_cannot_become_receiver_ack(self):
         changed=replace(self.a,observed_receipt="receiver:attested")
         nxt=self.orb.successor((changed,self.p,self.out,self.secret))
-        without=project(nxt,"public","orb",10)["strands"][0]
-        with_proof=project(nxt,"public","orb",10,
-                           verifier_receipts=("receiver:attested",))["strands"][0]
-        self.assertFalse(without["receiver_ack"])
-        self.assertTrue(with_proof["receiver_ack"])
+        shown=project(nxt,"public","orb",10)["strands"][0]
+        self.assertFalse(shown["receiver_ack"])
+
+    def test_fake_verifier_argument_rejected(self):
+        with self.assertRaises(TypeError):
+            project(self.orb,"public","orb",10,
+                    verifier_receipts=("receiver:fake",))
 
     def test_bad_renderer_fails_closed(self):
         with self.assertRaises(ValueError):
