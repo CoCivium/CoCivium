@@ -49,6 +49,9 @@ class CoPathSourceBridgeTests(unittest.TestCase):
         self.assertIn("pr429-graph", v["routes"]["synth"])
         self.assertIn("retro-coverage", v["routes"]["recovery"])
         self.assertIn("highlights", v["routes"]["highlight"])
+        self.assertIn("corun-donor", v["routes"]["builder"])
+        self.assertIn("comvp-controller", v["routes"]["lockstep"])
+        self.assertEqual(sources["corun-donor"]["branch"], "corun")
 
     def test_valid_mock_source_readback_not_receiver_pickup(self):
         v = test_graph()
@@ -63,6 +66,17 @@ class CoPathSourceBridgeTests(unittest.TestCase):
         self.assertFalse(proof["receiver_acknowledged"])
         self.assertFalse(proof["public_mirrors_qualified"])
         self.assertEqual(proof["effects"], "NONE")
+        self.assertEqual(proof["cross_front_integration"], "NOT_ESTABLISHED")
+
+    def test_corun_branch_donor_no_promotion(self):
+        v = test_graph()
+        v["sources"][-1]["git_blob_sha1"] = git_blob(b"separate donor")
+        v["routes"]["testonly"] = ["copre-entry", "corun-donor"]
+        proof = assess(v, "testonly", lambda branch, path:
+                       b"known mock source" if branch == "main" else b"separate donor")
+        self.assertEqual(proof["status"], "SOURCE_PATH_READBACK__NOT_PICKUP")
+        self.assertEqual(proof["route"][1]["branch"], "corun")
+        self.assertFalse(proof["receiver_acknowledged"])
         self.assertEqual(proof["cross_front_integration"], "NOT_ESTABLISHED")
 
     def test_tampered_source_fails_without_promotion(self):
