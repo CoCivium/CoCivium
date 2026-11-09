@@ -32,6 +32,11 @@ jobs:
         run: |
           python -B budget_matched_probe_r0.py --seeds 80 --steps 36 > /tmp/gdside_matched.json
           python -B -c "import json; r=json.load(open('/tmp/gdside_matched.json')); assert r['scope']=='SYNTHETIC_SINGLE_STEP_PAIRED_ALLOCATION_ONLY'; assert all(x['max_matched_budget_difference']<=1e-6 for x in r['cases'].values()); assert len(r['cases'])==3; print('PASS_MATCHED_BUDGET_SYNTHETIC_ONLY')"
+      - name: Reproduce paired two-period shock and matched-resource outcome
+        working-directory: experiments/gdside_coprimath_r0
+        run: |
+          python -B two_period_shock_r0.py --seeds 80 > /tmp/gdside_two_period.json
+          python -B -c "import json; r=json.load(open('/tmp/gdside_two_period.json')); assert r['seed_count']==80; assert r['periods']==2; assert set(r['scenarios'])=={'no_shock','shock_second_period'}; assert all(s['max_per_seed_stock_gap']<=1e-7 for s in r['scenarios'].values()); assert all(v<0 for v in r['shock_minus_control_final_stock_matched'].values()); print('PASS_TWO_PERIOD_SYNTHETIC_SCOPE_ONLY')"
       - name: Exercise deterministic recursive negative control
         working-directory: experiments/gdside_coprimath_r0
         run: |
