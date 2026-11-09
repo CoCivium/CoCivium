@@ -5,12 +5,22 @@ on:
       - 'docs/Evolution/FRONTIER_EVIDENCE_INDEX_R0.json'
       - 'scripts/check_frontier_evidence_index_r0.py'
       - 'tests/test_frontier_evidence_index_r0.py'
+      - 'ai/coboogie-regroup-policy.json'
+      - 'examples/comap/megascroller-r0.html'
+      - 'examples/comail_r0/outreach_stage_gate_r0.py'
+      - 'examples/colensmedia/relational_media_manifest_r0.py'
+      - 'scripts/CoBrowserCarryProjectionR0.py'
       - '.github/workflows/frontier-evidence-index-r0.yml'
   pull_request:
     paths:
       - 'docs/Evolution/FRONTIER_EVIDENCE_INDEX_R0.json'
       - 'scripts/check_frontier_evidence_index_r0.py'
       - 'tests/test_frontier_evidence_index_r0.py'
+      - 'ai/coboogie-regroup-policy.json'
+      - 'examples/comap/megascroller-r0.html'
+      - 'examples/comail_r0/outreach_stage_gate_r0.py'
+      - 'examples/colensmedia/relational_media_manifest_r0.py'
+      - 'scripts/CoBrowserCarryProjectionR0.py'
       - '.github/workflows/frontier-evidence-index-r0.yml'
   workflow_dispatch:
 permissions:
