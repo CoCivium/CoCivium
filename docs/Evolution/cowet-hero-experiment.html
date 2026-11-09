@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CoWet+ | Human-facing surface experiment</title>
+<style>
+:root{color-scheme:dark;--bg:#080c1c;--fg:#f5f3ff;--muted:#b9c2df;--pink:#ff6ab6;--teal:#67e8d6}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 70% 5%,#34205e 0%,transparent 52%),var(--bg);color:var(--fg);font:clamp(16px,1.4vw,19px)/1.6 system-ui,sans-serif}
+a{color:var(--teal)}a:focus-visible,button:focus-visible{outline:3px solid #fff;outline-offset:4px}
+header,main,footer{max-width:1160px;margin:auto;padding:24px}
+header{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap}
+small,.eyebrow{color:var(--teal);letter-spacing:.14em;text-transform:uppercase;font-weight:700}
+button{background:#262246;color:white;border:1px solid #a49bd2;border-radius:100px;padding:.65rem 1rem;cursor:pointer}
+.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,1fr);align-items:center;gap:2rem;min-height:70vh}
+h1{font-size:clamp(3rem,7vw,6rem);line-height:1.02;letter-spacing:-.05em;margin:.3em 0}
+h1 em{font-style:normal;color:var(--pink)}p{max-width:62ch;color:var(--muted)}
+.orb{width:100%;max-width:520px;filter:drop-shadow(0 0 35px #ad69ff66)}
+.orbit{transform-origin:260px 260px;animation:spin 34s linear infinite}
+.orbit.rev{animation-direction:reverse;animation-duration:49s}
+@keyframes spin{to{transform:rotate(360deg)}}
+.pills{display:flex;gap:.5rem;flex-wrap:wrap}.pill{border:1px solid #665b8a;border-radius:100px;padding:.3rem .8rem;font-size:.8rem}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:2rem 0}
+article{background:#15152d;border:1px solid #40385d;border-radius:20px;padding:1.4rem}
+h2{font-size:1.35rem}footer{border-top:1px solid #494061;font-size:.85rem;color:var(--muted)}
+@media(max-width:760px){.hero{grid-template-columns:1fr}.grid{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){.orbit{animation:none!important}*{scroll-behavior:auto!important}}
+</style></head><body>
+<header><strong>CoCivium <span aria-hidden="true">✦</span> CoWet+</strong><button id="quiet" type="button" aria-pressed="true">Sound: off (CoAudioFkOff+)</button></header>
+<main><section class="hero" aria-labelledby="hero-title"><div><div class="eyebrow">A public design experiment · R0</div><h1 id="hero-title">Less <em>dry.</em><br>More <em>alive.</em></h1><p>Ideas deserve an inviting surface. Evidence deserves a traceable one. Here, a single Seed branches into many paths while preserving its source.</p><div class="pills"><span class="pill">1 Seed</span><span class="pill">Many CoPaths</span><span class="pill">No surprise audio</span></div><p><a href="COWET_HUMAN_SURFACE_STANDARD_R0.json">Read the design standard</a></p></div>
+<svg class="orb" viewBox="0 0 520 520" role="img" aria-labelledby="orb-title orb-desc"><title id="orb-title">CoSeed orbital paths</title><desc id="orb-desc">A luminous central Seed with concentric, intersecting paths, symbolizing multiple verified front connections.</desc><defs><radialGradient id="core"><stop stop-color="#fff"/><stop offset=".25" stop-color="#c4faff"/><stop offset=".7" stop-color="#9b7bff"/><stop offset="1" stop-color="#ff5eaa"/></radialGradient><linearGradient id="ring"><stop stop-color="#ff69b4"/><stop offset=".5" stop-color="#6bead5"/><stop offset="1" stop-color="#ad8cff"/></linearGradient></defs><circle cx="260" cy="260" r="202" fill="none" stroke="#554875" stroke-width="1"/><circle cx="260" cy="260" r="155" fill="none" stroke="#65548a" stroke-dasharray="2 12"/><g class="orbit"><ellipse cx="260" cy="260" rx="216" ry="90" fill="none" stroke="url(#ring)" stroke-width="2" transform="rotate(35 260 260)"/><circle cx="73" cy="155" r="9" fill="#67e8d6"/></g><g class="orbit rev"><ellipse cx="260" cy="260" rx="210" ry="90" fill="none" stroke="url(#ring)" stroke-width="2" transform="rotate(-44 260 260)"/><circle cx="420" cy="121" r="8" fill="#ff6ab6"/></g><circle cx="260" cy="260" r="82" fill="url(#core)" opacity=".12"/><circle cx="260" cy="260" r="42" fill="url(#core)"/><circle cx="260" cy="260" r="12" fill="#fff"/></svg></section>
+<section aria-label="Three design principles"><div class="grid"><article><small>CoSeed+</small><h2>Show the source</h2><p>Each visual claim should lead back to provenance and a recoverable evidence record.</p></article><article><small>CoPath+</small><h2>Explore without losing your place</h2><p>Branch into alternate explanations, experiments, and critiques. Preserve the way home.</p></article><article><small>CoAudioFkOff+</small><h2>Silence is a feature</h2><p>This prototype contains no audio track. Scrolling never starts sound. Future audio requires explicit consent.</p></article></div></section>
+</main><footer>Experimental human-facing concept, not evidence of a deployed federation. <a href="COFRONT_SEED_PATH_CONTRACT_R0.json">CoFront contract</a> · <a href="COOMNI_FRONT_RELATIONS_R0.json">CoOmni relations</a></footer>
+<script>
+const b=document.getElementById('quiet');let quiet=true;
+b.addEventListener('click',()=>{quiet=!quiet;b.setAttribute('aria-pressed',String(quiet));b.textContent=quiet?'Sound: off (CoAudioFkOff+)':'Audio allowed (no track in this demo)';});
+</script></body></html>
