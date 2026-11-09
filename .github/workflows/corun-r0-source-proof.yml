@@ -103,6 +103,35 @@ jobs:
                   assert evidence["source"]["git_blob_sha1"] == "3550b9c75e732c65ab3580494dd38f18b28f8c18"
               print(name, "PASS_DIFFERENTIAL_SEMANTICS_ONLY")
           PY
+      - name: Check CoLockStep source island and safe MVP nonpromotion
+        run: |
+          python -B examples/corun_r0/colockstep.py \
+            --manifest examples/corun_r0/colockstep_fixture.json \
+            --repo-root . \
+            --out "$RUNNER_TEMP/colockstep"
+      - name: Verify CoLockStep receipts and protected source baseline
+        shell: bash
+        run: |
+          python - <<'PY'
+          import hashlib, json, os
+          from pathlib import Path
+          p = Path(os.environ["RUNNER_TEMP"]) / "colockstep"
+          raw = (p / "colockstep.json").read_bytes()
+          result = json.loads(raw)
+          receipt = json.loads((p / "receipt.json").read_text())
+          assert hashlib.sha256(raw).hexdigest() == receipt["report_sha256"]
+          assert result["result"] == "SOURCE_COHERENT__NOT_MVP"
+          assert result["candidate_source_compatible"] is True
+          assert result["previous_baseline_preserved"] is True
+          assert result["baseline_source_verified"] is True
+          assert len(result["baseline_source_evidence"]) == 2
+          assert len(result["candidate_source_evidence"]) == 3
+          assert result["qualified_mvp"] is False
+          assert result["claimed_receiver_readproof_accepted"] is False
+          assert result["runtime_activation"] == "NOT_ATTEMPTED"
+          assert result["release_actuator"] == "NONE"
+          print("CoLockStep SOURCE_COHERENT__NOT_MVP PASS")
+          PY
       - name: Preserve run-scoped evidence
         if: always()
         uses: actions/upload-artifact@v4
@@ -114,5 +143,6 @@ jobs:
             ${{ runner.temp }}/corun-delay/*.json
             ${{ runner.temp }}/corun-reference-real/*.json
             ${{ runner.temp }}/corun-reference-synthetic/*.json
+            ${{ runner.temp }}/colockstep/*.json
           if-no-files-found: warn
           retention-days: 14
