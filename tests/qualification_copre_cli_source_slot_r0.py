@@ -65,14 +65,24 @@ def prove():
             assert not first["receiver_qualified"]
             assert not first["native_runtime_updated"]
 
-            # A worse successor can pass its own candidate test, but cannot
-            # displace the independently pinned local minimum-use contract.
-            bad = root / "scripts" / "CoMVPCoPreBadR0.py"
+            # A deceptive successor keeps the SAME entrypoint and public
+            # input but falsely claims a verified user MVP. It passes its
+            # own weak test; the pinned consumer contract must reject it.
+            variant_dir = root / "regression-fixture" / "scripts"
+            variant_dir.mkdir(parents=True, exist_ok=True)
+            bad = variant_dir / "CoMVPCoPreFirstUseR0.py"
+            shutil.copyfile(root / DONOR, variant_dir / "CoPreContinuationR0.py")
+            original = (root / ARTIFACT).read_text(encoding="utf-8")
+            marker = '"task_mvp": "NOT_QUALIFIED"'
+            assert original.count(marker) == 1, "NO_SINGLE_FALSE_PROMOTION_MUTATION"
+            bad.write_text(original.replace(
+                marker, '"task_mvp": "QUALIFIED_WITHOUT_USER"',
+                1), encoding="utf-8")
             weak = root / "tests" / "weak_candidate_check.py"
-            bad.write_text("print('newer but not a working CoPre')\n", encoding="utf-8")
-            weak.write_text("pass\n", encoding="utf-8")
-            bad_rev = store.stage(SLOT, "scripts/CoMVPCoPreBadR0.py",
-                                  "tests/weak_candidate_check.py")["revision"]
+            weak.write_text("pass\\n", encoding="utf-8")
+            bad_rev = store.stage(
+                SLOT, "regression-fixture/scripts/CoMVPCoPreFirstUseR0.py",
+                "tests/weak_candidate_check.py")["revision"]
             rejected = store.qualify(SLOT, bad_rev)
             assert rejected["state"] == "HELD_ACCEPTANCE_REGRESSION", rejected
             try:
