@@ -1,0 +1,74 @@
+{
+  "schema": "CoMVP.CoPreC2PinnedNegativeReceipt.R0",
+  "observed_at_utc": "2026-11-09T18:53:13Z",
+  "work_id": "CoMVP.CoPrePilot.20261109",
+  "pr": 406,
+  "issue": 403,
+  "branch": "candidate/comvp-copre-cli-pilot-r0-20261109",
+  "exact_commit": "999bee736da31d10f4dbddc90a08f50f73d62c9b",
+  "source_program": "scripts/CoMVPCoPreFirstUseR0.py",
+  "source_sha256": "e3c76fddc8c7ea022b4f8698f03a665437a1c61249ccc41b32dc5864630e73b0",
+  "consumer_minimum_use_contract": "tests/acceptance_copre_cli_minimum_use_r0.py",
+  "consumer_contract_sha256": "9a5120dc612a0148afea5e6d1c5f5dd385abd328939a4f59314292bf017e92b4",
+  "qualification_script": "tests/qualification_copre_cli_source_slot_r0.py",
+  "source_evidence": {
+    "status": "C2_SOURCE_CONTRACT_AND_SELECTED_LOCAL_HEAD",
+    "source_slot": "copre_issue403",
+    "candidate_test_status": "SOURCE_TESTED_CANDIDATE",
+    "acceptance_status": "CONTRACT_TESTED_LOCAL_ONLY",
+    "selected_source_head_remains": "e3c76fddc8c7ea022b4f8698f03a665437a1c61249ccc41b32dc5864630e73b0",
+    "isolated_regression_fixture": "same entrypoint, same public input, but task_mvp falsely changed from NOT_QUALIFIED to QUALIFIED_WITHOUT_USER",
+    "weak_candidate_selftest": "PASS (synthetic pass-only)",
+    "regression_result": "HELD_ACCEPTANCE_REGRESSION",
+    "regression_promoted": false,
+    "readback": "Fresh Python process reopened temporary SQLite store and confirmed selected source head",
+    "storage_scope": "Ephemeral CI runner database. Not a lasting deployed release manager.",
+    "actual_human_receiver": false,
+    "real_product_mvp": "NOT_QUALIFIED",
+    "native_x2_deployment": false
+  },
+  "run": {
+    "url": "https://github.com/CoCivium/CoCivium/actions/runs/42678000429",
+    "id": 42678000429,
+    "event": "push",
+    "conclusion": "success",
+    "initial_live_public_issue_job": {
+      "name": "cli-first-use",
+      "id": 129364520477,
+      "conclusion": "success"
+    },
+    "qualification_job": {
+      "name": "source-slot",
+      "id": 129364609623,
+      "conclusion": "success"
+    },
+    "reported_receipt_sha256": "93b11ecc4a47675ef9c5c86eb510c81c23c835e37ab32532abbd0f859e954905",
+    "artifact_id": 13700652631,
+    "artifact_name": "comvp-copre-source-slot-42678000429-a1",
+    "github_reported_archive_digest": "sha256:f719bae4d46623e64536dfd1edb5f32cc5abf98b6de6305ec836689197ad2556",
+    "artifact_expires_utc": "2026-12-09T18:53:13Z"
+  },
+  "negative_run_lineage": [
+    {
+      "run_id": 42677861464,
+      "conclusion": "failure",
+      "cause": "bad synthetic test fixture had literal backslash-n, causing candidate's own test to fail before pinned acceptance"
+    },
+    {
+      "run_id": 42678000429,
+      "conclusion": "success",
+      "effect": "weak selftest passes, pinned functional contract rejects false TASK_MVP claim"
+    }
+  ],
+  "source_boundary": "GitHub Actions source CI. Archive SHA is GitHub-reported metadata, not independently downloaded/recomputed. Source and tests authored on candidate branch, not independently consumer-authorized.",
+  "nonclaims": [
+    "NO_INDEPENDENT_USER_FIRST_USE",
+    "NO_PROTECTED_MAIN_BRANCH_RELEASE",
+    "NO_DURABLE_MULTIRUN_LOCAL_SELECTION",
+    "NO_NATIVE_X2_OLLAMA",
+    "NO_AUTHENTICATED_EXTERNAL_RECEIVER",
+    "NO_COEX_OR_CANON",
+    "NO_24H_CUSTODY_OR_RECOVERY"
+  ],
+  "next_qualified_gate": "One consenting independent receiver uses actual CoPre CLI output to reconstruct issue #403 task, verifies source/STOP/authority and completes a useful bounded task with zero Rick relay; only then evaluate TASK_MVP."
+}
