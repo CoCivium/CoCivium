@@ -113,5 +113,55 @@ class GateTests(unittest.TestCase):
         self.assertEqual(result["next_safe_action"], "REQUIRE_SEPARATE_PROVIDER_EFFECT_AND_RECEIPT")
 
 
+    def test_coturtle_variants_cannot_inherit_parent_approval(self):
+        """Three bounded candidate variants remain held until each digest is reviewed."""
+        parent = self.item
+        parent_result = evaluate(parent)
+        self.assertEqual(parent_result["state"], "PROVIDER_SEND_CANDIDATE_NOT_SENT")
+        for index in range(3):
+            child_digest = dig(f"candidate-variant-{index}")
+            child = replace(parent, work_id=f"synthetic-variant-{index}",
+                            source_revision=f"rev-{index + 2}",
+                            current_source_revision=f"rev-{index + 2}",
+                            content_sha256=child_digest)
+            with self.subTest(branch=index):
+                result = evaluate(child)
+                self.assertEqual(result["state"], "STAGED_HELD")
+                self.assertIn("HOLD_REVIEW_STALE_OR_ABSENT", result["holds"])
+                self.assertIn("HOLD_APPROVAL_STALE_OR_ABSENT", result["holds"])
+                self.assertEqual(result["observed_effect"], "NONE")
+
+    def test_coturtle_new_approval_still_requires_distinct_send_effect(self):
+        """A qualified variant is only a provider-send candidate, never a sent message."""
+        digest = dig("variant-that-was-re-reviewed")
+        child = replace(self.item, work_id="synthetic-reviewed-variant",
+                        content_sha256=digest, reviewed_content_sha256=digest,
+                        approved_content_sha256=digest)
+        result = evaluate(child)
+        self.assertEqual(result["state"], "PROVIDER_SEND_CANDIDATE_NOT_SENT")
+        self.assertIsNone(result["sender_provider_receipt"])
+        self.assertFalse(result["delivery_verified"])
+        self.assertFalse(result["read_verified"])
+
+    def test_coturtle_consent_withdrawal_not_overridden_by_review(self):
+        """Even a digest-qualified candidate cannot bypass an opt-out."""
+        digest = dig("variant-after-withdrawal")
+        child = replace(self.item, content_sha256=digest,
+                        reviewed_content_sha256=digest,
+                        approved_content_sha256=digest, opt_out=True)
+        result = evaluate(child)
+        self.assertEqual(result["state"], "STAGED_HELD")
+        self.assertIn("HOLD_OPTOUT", result["holds"])
+        self.assertEqual(result["observed_effect"], "NONE")
+
+    def test_coturtle_cross_mailbox_child_remains_held(self):
+        """A child variant cannot borrow a parent's mailbox-level authority."""
+        child = replace(self.item, work_id="synthetic-other-mailbox",
+                        draft_mailbox_id="other-mailbox")
+        result = evaluate(child)
+        self.assertIn("HOLD_WRONG_MAILBOX", result["holds"])
+        self.assertEqual(result["state"], "STAGED_HELD")
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)
