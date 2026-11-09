@@ -84,7 +84,7 @@ class CoPathSourceBridgeTests(unittest.TestCase):
         v["routes"]["testonly"] = ["copre-entry"]
         proof = assess(v, "testonly", lambda branch, path: b"tampered")
         self.assertEqual(proof["status"], "HELD_SOURCE_PATH_UNVERIFIED")
-        self.assertEqual(proof["route"][0]["readback_state"], "HELD_PIN_MISMATCH")
+        self.assertEqual(proof["route"][0]["readback_state"], "HELD_SOURCE_UNVERIFIED")
         self.assertIsNone(proof["route"][0]["receiver_ack"])
 
     def test_missing_source_held_not_fabricated(self):
@@ -93,8 +93,41 @@ class CoPathSourceBridgeTests(unittest.TestCase):
         def not_found(branch, path):
             raise OSError("not present")
         proof = assess(v, "testonly", not_found)
-        self.assertEqual(proof["route"][0]["readback_state"], "HELD_SOURCE_UNAVAILABLE")
+        self.assertEqual(proof["route"][0]["readback_state"], "HELD_SOURCE_UNVERIFIED")
         self.assertIsNone(proof["route"][0]["source_sha256_actual"])
+
+    def test_old_exact_blob_remains_recoverable_after_main_moves(self):
+        v = test_graph()
+        v["routes"]["testonly"] = ["copre-entry"]
+        proof = assess(v, "testonly", lambda branch, path: b"new current text",
+                       lambda pin: b"known mock source")
+        self.assertEqual(proof["status"],
+                         "HISTORICAL_PINS_RECOVERABLE__CURRENTNESS_HELD")
+        self.assertEqual(proof["source_readbacks"], 1)
+        self.assertEqual(proof["current_source_readbacks"], 0)
+        self.assertEqual(proof["currentness_challenges"], ["copre-entry"])
+        self.assertFalse(proof["receiver_acknowledged"])
+        self.assertEqual(proof["route"][0]["source_currentness"], "CURRENT_MOVED")
+
+    def test_missing_current_can_preserve_exact_legacy_blob(self):
+        v = test_graph()
+        v["routes"]["testonly"] = ["copre-entry"]
+        def missing(branch, path):
+            raise OSError("main is unavailable")
+        proof = assess(v, "testonly", missing, lambda pin: b"known mock source")
+        self.assertEqual(proof["status"],
+                         "HISTORICAL_PINS_RECOVERABLE__CURRENTNESS_HELD")
+        self.assertEqual(proof["route"][0]["source_currentness"],
+                         "CURRENT_UNAVAILABLE")
+        self.assertEqual(proof["source_readbacks"], 1)
+
+    def test_forged_historical_blob_fails_closed(self):
+        v = test_graph()
+        v["routes"]["testonly"] = ["copre-entry"]
+        proof = assess(v, "testonly", lambda branch, path: b"new current text",
+                       lambda pin: b"wrong old blob")
+        self.assertEqual(proof["status"], "HELD_SOURCE_PATH_UNVERIFIED")
+        self.assertEqual(proof["source_readbacks"], 0)
 
     def test_dropped_source_link_blocks_contract(self):
         v = loaded()
