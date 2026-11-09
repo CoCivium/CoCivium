@@ -31,3 +31,18 @@ CoMap is a **progressively disclosed, participant-relative projection** of exist
 **Current blockers:** Full CoLex ingestion, cross-provider currentness, independent receiver uptake, private semantic review, X2 CoBar/CoOrb binding and >24-hour survivorship remain **unverified**. This example is an editable local candidate explorer, not an autonomous term-harvesting worker.
 
 Existing [CoMap+ R3 review issue](https://github.com/CoCivium/CoCivium/issues/217) · [CoAll Evolution Fabric](../../docs/Evolution/COALL_GITHUB_EVOLUTION_FABRIC_R0.md) · [CoCivium first-use](../../START_HERE.md).
+
+
+## CoMegaScroller+ | Public atlas of atlases R0 (2026-11-09)
+
+**[Open CoMegaScroller R0, offline HTML source](megascroller-r0.html)** · [original interactive CoMap](source-weave-r0.html) · [paged Mermaid plus accessible text](diagram-of-diagrams-r0.md) · [retro-media overlay](prior-media-backfill-overlay-r0.json). GitHub's HTML file viewer may show markup instead of a running website; no independent domain deployment is verified.
+
+The new long-form source-bound reader **does not replace the old CoMap**. Its shared source spine remains [56 objects and 61 typed relations](../../ai/comap-source-projection-r0.json). Deduplicating five public overlay pointers and five public CoNav retro-manifest pointers by exact source path and Git blob yields **seven distinct unreviewed retro-media candidates**, for **63 addressable source/candidate cards and 68 displayed typed relations**. The seven additional edges remain `INSPIRATION_CANDIDATE_FOR`, not verified semantic adoption.
+
+The megascroller contains eight reading chapters, a compact six-way diagram, mobile/keyboard-compatible navigation, per-object relationship drill-down, original pinned media links, past/present/future framing, a CoLUE/CoEv route, and explicit disaster-recovery limitations. All page text, style and SVG diagrams are embedded. No external scripts, analytics, media bytes, Gmail content or X2 control are included.
+
+The **existing** [nested-atlas generator](../../scripts/CoNavNestedAtlasR0.cjs) now regenerates this HTML as well as the older Markdown atlas from the pinned graph, overlay and retro-manifest. The existing [test suite](../../scripts/test_conav_nested_atlas_r0.cjs) includes ten new regression cases for exact HTML parity, source deltas, private-source exclusion, deduplication, offline structure and nonclaims. These tests were published and GitHub source readback verified, but the updated GitHub Actions run and independent browser UX acceptance remain **UNVERIFIED**.
+
+**Wave diversity optionality:** CoEv+ waves should vary hypotheses, receiver/audience, modality, scale, temporal horizon and strongest counterexample while retaining stable identity, rights, custody, measurement and rollback invariants. An intentional control/replay may resemble an earlier wave; novelty cannot trump reproducibility or user value. A versioned `wave_fingerprint` is a comparison aid, not proof that a wave actually executed.
+
+**Redundancy boundary:** Git history gives a recoverable source revision within GitHub. A separate DNS name resolving to the same GitHub bytes is not an independent backup. Independent CoStead or second-provider copy, exact hash readback, and a cold restore need separate evidence; no domain publish, browser X2 adoption, external receiver ACK, or >24-hour service survival is asserted.
