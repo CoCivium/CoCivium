@@ -1,0 +1,167 @@
+{
+  "audiences": [
+    {
+      "falsifier": "Failure injection finds an unguarded effect",
+      "future_hypothesis": "Fewer false effects and easier reversible maintenance",
+      "id": "builder",
+      "need": "Typed dependencies and testable safety gates",
+      "supply": "CoMap typed edges and CoSourceGraph evidence"
+    },
+    {
+      "falsifier": "Restart cannot recover the chosen WorkID",
+      "future_hypothesis": "Lower interruption cost and less human relay",
+      "id": "steward",
+      "need": "Current WorkID next action and recovery",
+      "supply": "CoOrb and CoTime source receipts"
+    },
+    {
+      "falsifier": "A newcomer cannot explain a relationship",
+      "future_hypothesis": "Better comprehension without expert vocabulary",
+      "id": "newcomer",
+      "need": "Clear overview and guided deep links",
+      "supply": "CoNav nested diagrams and source links"
+    },
+    {
+      "falsifier": "Circuit metaphor predicts an effect falsely",
+      "future_hypothesis": "More information gain with fewer misleading metaphors",
+      "id": "researcher",
+      "need": "Testable explanations and competing accounts",
+      "supply": "Typed graph proofs and counterexamples"
+    },
+    {
+      "falsifier": "Essential relation missing in a text twin",
+      "future_hypothesis": "Less exclusion from cognitive and sensory differences",
+      "id": "access_reader",
+      "need": "Readable equivalents across visual and audio needs",
+      "supply": "Accessible text and alternate media proposals"
+    },
+    {
+      "falsifier": "Sender route or recipient basis fails review",
+      "future_hypothesis": "Voluntary participation without pressure",
+      "id": "recipient",
+      "need": "Relevant outreach with consent and an exit route",
+      "supply": "CoLUE staged draft and CoVIA preflight"
+    },
+    {
+      "falsifier": "Scenario harms a missing group or reduces choice",
+      "future_hypothesis": "Improved long horizon agency and reversibility",
+      "id": "future_stakeholder",
+      "need": "Preserved options for people not yet represented",
+      "supply": "CoGoldenBraid future scenarios and costs"
+    }
+  ],
+  "effect_authority": "NONE",
+  "g_dside_authority": "NONE_SYMBOLIC_HYPOTHESIS",
+  "lenses": [
+    "SUPPLY",
+    "DEMAND",
+    "G_DSIDE"
+  ],
+  "schema": "CoAll.CoRepresentationAudience.R0",
+  "source_git_blob": "51be2e100f4f01920c1e1cfa42af0bc6a4c78ff1",
+  "source_manifest_path": "examples/colensmedia/conav_retro_manifest_r0.json",
+  "substrates": [
+    {
+      "audience_ids": [
+        "builder",
+        "researcher"
+      ],
+      "effect_ceiling": "PROPOSE_ONLY_NO_EXTERNAL_EFFECT",
+      "id": "CIRCUIT",
+      "losses": [
+        "Consent meaning, human nuance, circuit is not electronics"
+      ],
+      "preserves": [
+        "Gate order, directional dependency, block conditions"
+      ]
+    },
+    {
+      "audience_ids": [
+        "newcomer",
+        "builder",
+        "steward"
+      ],
+      "effect_ceiling": "PROPOSE_ONLY_NO_EXTERNAL_EFFECT",
+      "id": "NESTED_MAP",
+      "losses": [
+        "Timing, causal certainty, invisible alternatives"
+      ],
+      "preserves": [
+        "Hierarchy, typed links, drill down"
+      ]
+    },
+    {
+      "audience_ids": [
+        "researcher",
+        "steward"
+      ],
+      "effect_ceiling": "PROPOSE_ONLY_NO_EXTERNAL_EFFECT",
+      "id": "TEMPORAL",
+      "losses": [
+        "Spatial interaction, exact causal mechanism"
+      ],
+      "preserves": [
+        "Version order, observed versus predicted time"
+      ]
+    },
+    {
+      "audience_ids": [
+        "steward",
+        "newcomer"
+      ],
+      "effect_ceiling": "PROPOSE_ONLY_NO_EXTERNAL_EFFECT",
+      "id": "ORB_STATUS",
+      "losses": [
+        "Full source graph, deep counterexamples"
+      ],
+      "preserves": [
+        "One focused WorkID, freshness, recovery affordance"
+      ]
+    },
+    {
+      "audience_ids": [
+        "access_reader",
+        "newcomer",
+        "researcher"
+      ],
+      "effect_ceiling": "PROPOSE_ONLY_NO_EXTERNAL_EFFECT",
+      "id": "ACCESSIBLE_TEXT",
+      "losses": [
+        "Spatial density, direct visual appearance"
+      ],
+      "preserves": [
+        "Relation labels, ordered explanation, alternatives"
+      ]
+    },
+    {
+      "audience_ids": [
+        "access_reader",
+        "newcomer",
+        "future_stakeholder"
+      ],
+      "effect_ceiling": "PROPOSE_ONLY_NO_EXTERNAL_EFFECT",
+      "id": "RICH_MEDIA",
+      "losses": [
+        "Interactive source checks, receiver uptake, rights"
+      ],
+      "preserves": [
+        "Narrative pacing, audio or video invitation"
+      ]
+    },
+    {
+      "audience_ids": [
+        "recipient",
+        "steward"
+      ],
+      "effect_ceiling": "PROPOSE_ONLY_NO_EXTERNAL_EFFECT",
+      "id": "OUTREACH",
+      "losses": [
+        "Broad source graph, delivery or understanding proof"
+      ],
+      "preserves": [
+        "Receiver context, consent, reviewed content hash"
+      ]
+    }
+  ],
+  "work_id": "coal.conav.retro-public-media.r0"
+}
