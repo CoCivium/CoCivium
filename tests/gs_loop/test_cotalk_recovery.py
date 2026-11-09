@@ -121,7 +121,12 @@ class RecoveryCoordinator:
         if not digest or digest != readproof.payload_sha256 or receiver_row != (self.epoch, digest):
             self.status = 'WAITING_ON_EVENT'
             return 'ACK_UNPROVEN'
-        self.epoch = self.seed.elect(self.seed_id)
+        # Atomic compare-and-swap: a newer owner must never be displaced.
+        next_epoch = self.seed.elect_if_current(self.seed_id, self.epoch)
+        if next_epoch is None:
+            self.status = 'WAITING_ON_EVENT'
+            return 'STALE_LEASE_FENCED'
+        self.epoch = next_epoch
         self.status = 'RECOVERING'
         return 'FIXTURE_READBACK_MATCHED_NOT_EXTERNAL_ACK'
 
@@ -206,5 +211,18 @@ class Tests(unittest.TestCase):
         self.seed.db.commit()
         self.assertEqual(self.coordinator.handoff(True, proof), 'ACK_UNPROVEN')
         self.assertEqual(self.seed.db.execute('SELECT epoch FROM seed').fetchone()[0], 1)
+
+    def test_stale_handoff_cannot_preempt_new_owner(self):
+        self.stall()
+        proof = self.proof()
+        contender = DurableSeed(self.db_path)
+        try:
+            self.assertEqual(contender.elect_if_current('co-seed', 1), 2)
+        finally:
+            contender.close()
+        self.assertEqual(self.coordinator.handoff(True, proof), 'STALE_LEASE_FENCED')
+        self.assertEqual(self.coordinator.status, 'WAITING_ON_EVENT')
+        self.assertEqual(self.seed.db.execute('SELECT epoch FROM seed').fetchone()[0], 2)
+        self.assertEqual(self.seed.commit('co-seed', 1, 'late', 'stale'), 'FENCED')
 
 if __name__ == '__main__': unittest.main(verbosity=2)
