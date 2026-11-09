@@ -94,6 +94,8 @@ def compile_ledger(source: Any, source_ref: str, source_sha256: str) -> dict[str
 
     rows: list[dict[str, Any]] = []
     signals: list[dict[str, Any]] = []
+    seen_exact: set[str] = set()
+    exact_repeats = 0
 
     for idx, obs in enumerate(observations):
         if not isinstance(obs, dict):
@@ -102,6 +104,15 @@ def compile_ledger(source: Any, source_ref: str, source_sha256: str) -> dict[str
                     "evidence_state","authority_ceiling","currentness"):
             if not obs.get(req):
                 raise ValueError(f"observation[{idx}] missing {req}")
+
+        # Repeated exact source observations are one logical observation, not
+        # a new session, activity proof or a new provider effect. Keep the
+        # first source pointer; retain the repeat count in coverage.
+        exact_key = json.dumps(obs, sort_keys=True, ensure_ascii=True, separators=(",", ":"))
+        if exact_key in seen_exact:
+            exact_repeats += 1
+            continue
+        seen_exact.add(exact_key)
 
         projection, basis = project(obs)
         candidate = label_for(obs, projection)
@@ -167,6 +178,8 @@ def compile_ledger(source: Any, source_ref: str, source_sha256: str) -> dict[str
         "state":"SHADOW_LEDGER_COMPILED__NO_PROVIDER_MUTATION",
         "coverage":{
             "observation_count":len(rows),
+            "input_observation_count":len(observations),
+            "exact_repeat_count":exact_repeats,
             "global_active_session_census":"UNPROVEN",
             "source_ref":source_ref,
             "source_sha256":source_sha256
@@ -186,6 +199,7 @@ def compile_ledger(source: Any, source_ref: str, source_sha256: str) -> dict[str
             "LIFECYCLE_LABEL_NE_LIFECYCLE_TRUTH",
             "DELIVERY_NE_PICKUP",
             "NO_GLOBAL_ACTIVE_SESSION_CENSUS",
+            "DUPLICATE_SOURCE_INPUT_NE_INDEPENDENT_ACK",
             "NO_PROVIDER_SESSION_MUTATION"
         ]
     }
