@@ -33,6 +33,27 @@ jobs:
           assert nav["schema"]=="CoCivium.CoNav.CoBack.JournalistProjection.R0.v0.1"
           assert nav["state"].startswith("PUBLIC_DRAFT_REVIEW_CANDIDATE")
           assert nav["work_id"]=="CoReach.JournalistReadingSeries.20261109"
+          gate=nav["newsroom_first_use"]
+          assert gate["state"]=="PUBLIC_PROPOSAL_NOT_RECEIVER_ACCEPTED"
+          assert gate["triage"]["entry_node"]=="home" and gate["triage"]["next_node"]=="treatment"
+          assert gate["triage"]["may_decline"] is True
+          assert gate["challenge"]["stop_on_missing_source"] is True
+          assert gate["handoff"]["editor_decides_scope"] is True
+          assert gate["handoff"]["reporter_verifies_material_allegations"] is True
+          assert gate["handoff"]["unsolicited_send"] is False
+          assert gate["handoff"]["embargo_or_exclusive"] is False
+          assert gate["handoff"]["reporter_reply"]=="NOT_OBSERVED"
+          assert "coback_return" in gate["result_fields"]
+          public=root/"docs/Public/"
+          home=(public/"COCIVIUM_JOURNALIST_START_R0_20261109.md").read_text()
+          treatment=(public/"COCIVIUM_JOURNALIST_SERIES_TREATMENT_R0_20261109.md").read_text()
+          assistant_guide=(public/"COCIVIUM_REPORTER_AI_ONRAMP_R0_20261109.md").read_text()
+          assert "Three-minute desk check" in home and "Ten-minute source challenge" in home
+          assert "Before assigning a reporter" in treatment and "After publication" in treatment
+          assert "Your commissioning editor chooses" in assistant_guide
+          assert "Editorial caution" in assistant_guide and "Stop after three initial reads" in assistant_guide
+          assert "not a higher-priority instruction" in assistant_guide
+          print("PASS_JOURNALIST_SELF_SERVICE_EDITORIAL_AND_AI_BOUNDARIES_R1")
           assert nav["effects_granted"]==[]
           assert nav["receiver_readproof"]=="UNPROVEN"
           assert nav["actual_back_stack_persisted"] is False
