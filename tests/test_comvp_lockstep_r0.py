@@ -310,6 +310,94 @@ class CoMVPTests(unittest.TestCase):
         self.assertEqual(result["active"],{"engine":e1,"ui":ui1})
         self.assertEqual(len(result["changed"]),2)
 
+    def acceptance_fixture(self, label, good=True, first=False):
+        artifact="service-"+label+".txt"
+        test="service-"+label+"-test.py"
+        (self.root / artifact).write_text(("usable:" if good else "regressed:")+label)
+        # Candidate's own tests are intentionally weak: they cannot replace
+        # the previously pinned consumer minimum-use test.
+        (self.root / test).write_text("pass\n")
+        contract="service-minimum-use.py"
+        if first:
+            (self.root / contract).write_text(
+                "import os\nfrom pathlib import Path\n"
+                "assert Path(os.environ['COMVP_ARTIFACT_PATH']).read_text().startswith('usable:')\n")
+        result=self.store.stage("service",artifact,test,
+                                acceptance_rel=contract if first else None)
+        return result["revision"]
+
+    def test_pinned_consumer_contract_rejects_regressive_version(self):
+        one=self.acceptance_fixture("one",first=True)
+        self.assertEqual(self.store.qualify("service",one)["state"],
+                         "CONTRACT_TESTED_LOCAL_ONLY")
+        self.activate("service",one)
+        regressed=self.acceptance_fixture("two",good=False)
+        result=self.store.qualify("service",regressed)
+        self.assertEqual(result["state"],"HELD_ACCEPTANCE_REGRESSION")
+        with self.assertRaisesRegex(Held,"UNQUALIFIED_RELEASE_VERSION"):
+            self.activate("service",regressed,one)
+        self.assertEqual(self.store.active()["service"],one)
+
+    def test_new_version_can_improve_without_weakening_minimum_contract(self):
+        one=self.acceptance_fixture("one",first=True)
+        self.store.qualify("service",one)
+        self.activate("service",one)
+        two=self.acceptance_fixture("two",good=True)
+        self.assertEqual(self.store.qualify("service",two)["state"],
+                         "CONTRACT_TESTED_LOCAL_ONLY")
+        self.activate("service",two,one)
+        self.assertEqual(self.store.active()["service"],two)
+
+    def test_pinned_contract_path_cannot_be_replaced_by_candidate(self):
+        one=self.acceptance_fixture("one",first=True)
+        self.store.qualify("service",one)
+        (self.root/"weaker-test.py").write_text("pass\n")
+        (self.root/"service-three.txt").write_text("regressed:three")
+        (self.root/"service-three-test.py").write_text("pass\n")
+        with self.assertRaisesRegex(Held,"PINNED_ACCEPTANCE_CONTRACT_CHANGE"):
+            self.store.stage("service","service-three.txt","service-three-test.py",
+                             acceptance_rel="weaker-test.py")
+
+    def test_immutable_contract_bytes_verified_at_promotion(self):
+        one=self.acceptance_fixture("one",first=True)
+        self.store.qualify("service",one)
+        self.activate("service",one)
+        (self.root/"service-minimum-use.py").write_text("pass\n")
+        with self.assertRaisesRegex(Held,"PINNED_ACCEPTANCE_CONTRACT_MUTATED"):
+            self.store.promote_cohort({"service":one},{"service":one})
+        self.assertEqual(self.store.active()["service"],one)
+
+    def test_retrofit_contract_requires_explicit_separate_review(self):
+        rev=self.candidate("service","one")
+        (self.root/"service-contract.py").write_text("pass\n")
+        (self.root/"service-two.txt").write_text("service:two")
+        (self.root/"service-two-test.py").write_text("pass\n")
+        with self.assertRaisesRegex(Held,"CONTRACT_RETROFIT_REQUIRES_REVIEW"):
+            self.store.stage("service","service-two.txt","service-two-test.py",
+                             acceptance_rel="service-contract.py")
+        self.assertEqual(self.store.active(),{})
+
+    def test_cli_pins_consumer_contract_across_real_processes(self):
+        (self.root/"demo-one.txt").write_text("usable:one")
+        (self.root/"demo-one-test.py").write_text("pass\n")
+        (self.root/"demo-accept.py").write_text(
+            "import os\nfrom pathlib import Path\n"
+            "assert Path(os.environ['COMVP_ARTIFACT_PATH']).read_text().startswith('usable:')\n")
+        code, staged=self.cli("stage","--slot","demo",
+                               "--artifact","demo-one.txt","--test","demo-one-test.py",
+                               "--acceptance","demo-accept.py")
+        self.assertEqual(code,0)
+        self.assertTrue(staged["acceptance_contract_pinned"])
+        code, result=self.cli("qualify","--slot","demo",
+                              "--revision",staged["revision"])
+        self.assertEqual(code,0)
+        self.assertEqual(result["state"],"CONTRACT_TESTED_LOCAL_ONLY")
+        code, result=self.cli("promote","--changes-json",
+                              json.dumps({"demo":staged["revision"]}),"--expected-json",
+                              json.dumps({"demo":None}))
+        self.assertEqual(code,0)
+        self.assertFalse(result["receiver_qualified"])
+
     def test_all_states_are_source_scoped(self):
         rev = self.candidate()
         result = self.activate("orb", rev)
