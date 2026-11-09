@@ -170,5 +170,72 @@
       "COBAR_SONIFICATION_OPTIONAL_ACCESSIBLE_EVIDENCE_LINKS_NOT_WHALE_COMMUNICATION_CLAIM"
     ],
     "acceptance": "One rights-cleared historical cohort yields source-hashed front relations and deliberate unknowns; independent WorkID pickup still required."
+  },
+  "coseed_copath_recovery_entry_20261109": {
+    "state": "PUBLIC_MAIN_INDEX_TO_REVIEWABLE_SOURCE__NO_RECEIVER_PICKUP_PROOF",
+    "seed": {
+      "id": "copre-generic-public-source-r0",
+      "meaning": "Small currentness entry that identifies source, scope, rights, predecessor, latest qualified head and recovery boundaries",
+      "entry": "SESSION_BOOTSTRAP.md",
+      "machine_twin": "ai/onramp/copre-generic-session-contribution-r0.json",
+      "draft_asset_manifest": "https://github.com/CoCivium/CoCivium/blob/feat/copre-generic-public-asset-pack-r0-261109/docs/Onramp/CoPreGenericR0/asset-manifest-r0.json",
+      "materialized_live_runtime": false
+    },
+    "paths": [
+      {
+        "id": "discover",
+        "next": "ai/index.json",
+        "proof": "SOURCE_DISCOVERY_ONLY"
+      },
+      {
+        "id": "review_draft",
+        "next": "https://github.com/CoCivium/CoCivium/pull/431",
+        "proof": "PUBLIC_GITHUB_DRAFT_PR__UNMERGED"
+      },
+      {
+        "id": "retro_reconcile",
+        "next": "https://github.com/CoCivium/CoCivium/pull/428",
+        "proof": "PUBLIC_SOURCE_TESTED__HISTORICAL_SCAN_UNPROVEN"
+      },
+      {
+        "id": "fallback",
+        "next": "docs/Onramp/COGOALL_PUBLIC_REBOUND_HUB_20261108.md",
+        "proof": "PUBLIC_HUMAN_NAVIGATION"
+      },
+      {
+        "id": "source_root",
+        "next": "SESSION_BOOTSTRAP.md",
+        "proof": "PUBLIC_CURRENTNESS_ONLY"
+      }
+    ],
+    "source_only_reuse": [
+      "CoFront",
+      "CoEcho",
+      "CoTime",
+      "CoCarry",
+      "CoLUE",
+      "CoMap",
+      "CoNav",
+      "CoOrb",
+      "CoMVP",
+      "CoPublication"
+    ],
+    "preserve": [
+      "HISTORICAL_PRIORS",
+      "UNSCANNED_WINDOWS",
+      "PRIVACY_RIGHTS",
+      "CONTRADICTIONS",
+      "QUALIFIED_LAST_KNOWN_GOOD",
+      "UNMERGED_DRAFTS",
+      "WAKE_CONDITIONS"
+    ],
+    "handoff_acceptance": "AN_AUTHORIZED_SEPARATE_RECEIVER_MUST_READ_EXACT_SOURCE_AND_RETURN_IDENTITY_PLUS_DIGEST_BEFORE_PICKUP",
+    "nonclaims": [
+      "COSEED_POINTER_NE_DURABLE_RUNTIME_SEED",
+      "COPATH_LINK_NE_RECEIVER_PICKUP",
+      "ALL_FRONTS_NE_ALL_FRONTS_ACTUATED",
+      "DRAFT_ASSET_PACK_NE_PUBLIC_RELEASE",
+      "HUMAN_NAVIGATION_NE_AUTO_SYNCHRONIZATION"
+    ]
   }
 }
