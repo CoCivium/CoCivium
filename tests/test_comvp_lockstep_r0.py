@@ -246,6 +246,70 @@ class CoMVPTests(unittest.TestCase):
             self.activate("orb", one, two)
         self.assertEqual(self.store.active()["orb"], two)
 
+    def cli(self, *args):
+        script = Path(__file__).resolve().parents[1] / "scripts" / "CoMVPLockStepR0.py"
+        process = subprocess.run([sys.executable, "-B", str(script),
+                                  "--root", str(self.root), "--db", str(self.db),
+                                  *args], cwd=str(self.root), capture_output=True,
+                                 text=True, timeout=10, check=False)
+        return process.returncode, json.loads(process.stdout)
+
+    def test_cli_end_to_end_local_slot_in_independent_processes(self):
+        (self.root / "real-fixture.txt").write_text("one functional local artifact")
+        (self.root / "real-test.py").write_text(
+            "from pathlib import Path\\nassert Path('real-fixture.txt').read_text() == "
+            "'one functional local artifact'\\n")
+        code, staged = self.cli("stage", "--slot", "demo",
+                                "--artifact", "real-fixture.txt", "--test", "real-test.py")
+        self.assertEqual(code, 0)
+        self.assertEqual(staged["state"], "STAGED_OR_EXISTING")
+        rev = staged["revision"]
+        code, tested = self.cli("qualify", "--slot", "demo", "--revision", rev)
+        self.assertEqual(code, 0)
+        self.assertEqual(tested["state"], "SOURCE_TESTED_LOCAL_ONLY")
+        code, promoted = self.cli("promote", "--changes-json",
+                                  json.dumps({"demo":rev}), "--expected-json",
+                                  json.dumps({"demo":None}))
+        self.assertEqual(code, 0)
+        self.assertEqual(promoted["active"], {"demo":rev})
+        code, status = self.cli("status")
+        self.assertEqual(code, 0)
+        self.assertEqual(status["active"]["demo"], rev)
+        self.assertFalse(status["receiver_qualified"])
+        self.assertGreaterEqual(status["audit"]["events_checked"],3)
+
+    def test_cli_bad_json_cannot_replace_old_head(self):
+        rev = self.candidate()
+        self.activate("orb", rev)
+        code, held = self.cli("promote", "--changes-json", "{not-json",
+                              "--expected-json", '{"orb":null}')
+        self.assertEqual(code, 3)
+        self.assertEqual(held["state"], "HELD")
+        self.assertEqual(self.store.active()["orb"], rev)
+
+    def test_cli_failed_candidate_is_not_mvp(self):
+        old = self.candidate()
+        self.activate("orb", old)
+        bad = self.candidate(label="bad", qualify=False, fail=True)
+        code, failed = self.cli("qualify", "--slot", "orb", "--revision", bad)
+        self.assertEqual(code, 3)
+        self.assertEqual(failed["state"], "HELD_TEST_FAILED")
+        code, held = self.cli("promote", "--changes-json", json.dumps({"orb":bad}),
+                              "--expected-json", json.dumps({"orb":old}))
+        self.assertEqual(code, 3)
+        self.assertEqual(held["state"], "HELD")
+        self.assertEqual(self.store.active()["orb"], old)
+
+    def test_cli_multi_prodlet_cohort_uses_one_atomic_commit(self):
+        e1=self.candidate("engine","one")
+        ui1=self.candidate("ui","one",deps=(("engine",e1),))
+        code, result=self.cli("promote", "--changes-json",
+                              json.dumps({"engine":e1,"ui":ui1}),
+                              "--expected-json", json.dumps({"engine":None,"ui":None}))
+        self.assertEqual(code, 0)
+        self.assertEqual(result["active"],{"engine":e1,"ui":ui1})
+        self.assertEqual(len(result["changed"]),2)
+
     def test_all_states_are_source_scoped(self):
         rev = self.candidate()
         result = self.activate("orb", rev)
