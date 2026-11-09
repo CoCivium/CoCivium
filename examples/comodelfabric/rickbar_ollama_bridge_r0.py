@@ -6,6 +6,13 @@ from ollama_gateway_r0 import OllamaGateway
 from test_gateway_bridge import ReceiptStore
 
 def run(prompt, model, receipt_dir, work_id=None, gateway=None):
+    # A caller-owned WorkID must be validated before any model request,
+    # even for a strictly loopback-only gateway.
+    if work_id is not None and (
+        not isinstance(work_id, str) or not work_id
+        or any(c not in "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_" for c in work_id)
+    ):
+        raise ValueError("invalid work id")
     gateway = gateway or OllamaGateway()
     result = gateway.generate(prompt, model, work_id)
     if result['status'] != 'MODEL_OUTPUT_UNVERIFIED':

@@ -25,6 +25,8 @@ jobs:
           python-version: '3.12'
       - name: Run isolated gateway tests
         run: python examples/comodelfabric/ollama_gateway_r0.py
+      - name: Run synthetic RickBar CLI to receipt negative controls
+        run: python -B examples/comodelfabric/test_rickbar_ollama_bridge_r0.py
       - name: Run receipt store tests
         run: python examples/comodelfabric/test_gateway_bridge.py
       - name: Run synthetic gateway-to-receipt integration tests
