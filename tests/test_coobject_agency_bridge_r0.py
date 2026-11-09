@@ -109,6 +109,26 @@ class CoObjectAgencyBridgeTests(unittest.TestCase):
         self.add()
         self.assertEqual(self.evaluate()["eligible_proposals"],0)
 
+    def test_repeated_source_observation_is_not_trigger(self):
+        o=self.add()
+        self.event(o,kind="SOURCE_OBSERVED")
+        self.assertEqual(self.evaluate()["eligible_proposals"],0)
+
+    def test_degraded_object_proposes_repair_before_new_feature(self):
+        o=self.add("module.py",data=b"pass\n",state="DEGRADED_REPAIRABLE")
+        self.event(o)
+        result=self.evaluate()["objects"][0]
+        self.assertEqual(result["proposal"],"REQUEST_REPAIR_DIAGNOSTIC")
+        self.assertFalse(result["permission_granted"])
+
+    def test_clock_and_event_authority_remain_unverified(self):
+        o=self.add()
+        self.event(o)
+        result=self.evaluate()
+        self.assertEqual(result["event_authorization"],
+                         "PRODUCER_ASSERTED_NOT_AUTHENTICATED")
+        self.assertFalse(result["actual_receiver_pickup"])
+
     def test_no_material_delta_does_not_wake(self):
         o=self.add()
         self.event(o,kind="NO_MATERIAL_DELTA")
