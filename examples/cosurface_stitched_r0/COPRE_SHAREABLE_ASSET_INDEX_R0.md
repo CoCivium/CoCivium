@@ -49,3 +49,9 @@ Consumers should verify exact source blobs or content digests and record their *
 
 - [Executable readiness gate](copre_readiness_gate_r0.py) | [observed evidence](copre_ready_cycle_observed_r0.json) | [nine adversarial tests](test_copre_readiness_gate_r0.py).
 - GitHub PR #375 source and CI verified at observed head; the three user-selected target destinations and independent receiver remain UNQUALIFIED. This gate is not a deployment or receiver. No autonomous cross-session synchronization claimed.
+
+## CoWet+ human surface rule and experiment
+
+- [CoWet+ / CoDry+ design rule](COWET_HUMAN_SURFACE_RULE_R0.md) | at least one meaningful hero visual or experimental rich media for appropriate new human-facing surfaces; documented accessibility, emergency and low-bandwidth exceptions, plus retro-prioritization.
+- [Original SVG hero + voluntary ambient audio prototype](cowet_hero_audio_r0.html) | static self-contained source, not deployed web product; persistent on-surface silence and fully usable CoDry mode.
+- [CoWet+ static safety tests](test_cowet_hero_audio_r0.py) | static opt-in, CoDry, reduced-motion and no-autoplay contract checks; live browser QA still required.
