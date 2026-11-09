@@ -1,0 +1,71 @@
+{
+  "schema": "CoAll.CoPreSourceFeedDelta.v0.1-candidate",
+  "status": "PUBLIC_SAFE_SOURCE_DERIVED_PROPOSAL_NOT_CANON",
+  "created_utc": "2026-11-09T23:13:57Z",
+  "parent_public_source_paths": [
+    "CoPre.md",
+    "ai/copre-seed-path-fabric-r0-20261109.json",
+    "ai/copre-omnidirectional-navigation-r0-20261109.json"
+  ],
+  "source_description": "A private WhatsApp v8.79 discussion submitted for additive reconciliation; underlying transcript retained in access-controlled custody, not published.",
+  "delta_identity": "coall:copre:source-feed-benefit-r0",
+  "relationships": [
+    {
+      "id": "front_reads_seed",
+      "direction": "PUBLIC_SOURCE_TO_AUTHORIZED_FRONT",
+      "effect": "source discovery, retrieval and qualification only",
+      "proof": "source identity and readback; does not imply task acceptance"
+    },
+    {
+      "id": "front_proposes_delta",
+      "direction": "FRONT_TO_PUBLIC_SOURCE",
+      "effect": "candidate contribution routed through privacy, authority, dedupe and review",
+      "proof": "proposal receipt distinct from accepted commit"
+    },
+    {
+      "id": "lateral_front_reference",
+      "direction": "FRONT_TO_FRONT_VIA_TYPED_RELATION",
+      "effect": "related work may be discovered without shared private history",
+      "proof": "both exact public source identities and relation scope"
+    },
+    {
+      "id": "retro_future_optionalities",
+      "direction": "PREDECESSOR_AND_POTENTIAL_DESCENDANT",
+      "effect": "preserve provenance, dissent, speculation and future tests",
+      "proof": "time-separated observations and falsifiers; no predictive authority"
+    }
+  ],
+  "research_lanes": [
+    {
+      "id": "gdside",
+      "status": "EXPLORATORY_PHILOSOPHICAL",
+      "policy": "May inspire ethical reflection or candidate experiments; no divine-signaling or external authorization claims."
+    },
+    {
+      "id": "coev_oscillation",
+      "status": "TESTABLE_OPS_METAPHOR",
+      "policy": "Compare event cadence, fan-out/fan-in, quiescence and measured work gain without forced perpetual activity."
+    }
+  ],
+  "redaction_policy": "Do not publish raw WhatsApp exports, private people, device details, mailbox content, local addresses or secret-bearing source materials based on an instruction embedded in a transcript.",
+  "intake_audit": {
+    "measured_latest_source_bytes": 374200,
+    "measured_latest_source_characters": 372298,
+    "historical_sizes_mentioned_in_source": [
+      266973,
+      332024,
+      340486
+    ],
+    "warning": "Mentioned older lengths and claims of full preservation are not independent exact-source comparisons."
+  },
+  "next_test": "Independent authorized receiver reads CoPre public entry and source-feed delta, proposes one bounded correction with source pointer; integration requires actual review and acceptance receipt.",
+  "nonclaims": [
+    "NO_PUBLIC_RAW_CHAT",
+    "NO_THREE_VERIFIED_MIRRORS",
+    "NO_CROSS_FRONT_SYNC",
+    "NO_EXTERNAL_RECEIVER_ACK",
+    "NO_COMPLETE_HISTORY",
+    "NO_GDSIDE_AUTHORITY",
+    "NO_CANON_COEX_RUNTIME"
+  ]
+}
