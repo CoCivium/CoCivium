@@ -58,7 +58,7 @@ def validate(manifest):
         key, path = source.get("id"), source.get("path")
         must(isinstance(key, str) and NAME.fullmatch(key), "BAD_SOURCE_ID")
         must(key not in source_by_id, "DUPLICATE_SOURCE_ID")
-        must(source.get("branch") in ("main", "candidate"), "BAD_BRANCH")
+        must(source.get("branch") in ("main", "candidate", "corun"), "BAD_BRANCH")
         must(isinstance(path, str) and path and not path.startswith("/")
              and "\\" not in path and ".." not in path.split("/"),
              "UNSAFE_PATH")
@@ -88,9 +88,10 @@ def validate(manifest):
     return source_by_id
 
 
-def git_reader(root, main_ref, candidate_ref):
+def git_reader(root, main_ref, candidate_ref, corun_ref):
     def get_bytes(branch, path):
-        ref = main_ref if branch == "main" else candidate_ref
+        ref = {"main": main_ref, "candidate": candidate_ref,
+               "corun": corun_ref}[branch]
         result = subprocess.run(["git", "-C", str(root), "show",
                                  ref + ":" + path], stdout=subprocess.PIPE,
                                 stderr=subprocess.PIPE, check=False)
@@ -169,6 +170,7 @@ def main(argv=None):
     parser.add_argument("--repo-root", type=Path, default=Path("."))
     parser.add_argument("--main-ref", default="origin/main")
     parser.add_argument("--candidate-ref", default="HEAD")
+    parser.add_argument("--corun-ref", default="origin/corun-donor")
     parser.add_argument("--role", required=True)
     parser.add_argument("--out", type=Path)
     parser.add_argument("--strict", action="store_true")
@@ -176,7 +178,8 @@ def main(argv=None):
     try:
         manifest = json.loads(args.manifest.read_text(encoding="utf-8"))
         proof = assess(manifest, args.role, git_reader(
-            args.repo_root, args.main_ref, args.candidate_ref))
+            args.repo_root, args.main_ref, args.candidate_ref,
+            args.corun_ref))
         if args.out:
             digest = write_receipt(args.out, proof)
             proof["report_sha256"] = digest
