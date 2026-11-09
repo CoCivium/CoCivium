@@ -18,3 +18,10 @@ Source scope: public-safe distillation of user-shared Meta AI/WhatsApp export fr
 ## Reuse protocol
 
 Read only the latest authorized, reviewed, version-pinned immutable content; verify exact artifact hash on each target; do not auto-publish private chats or endpoint control information; retain existing revision on split; independently read back all claimed receiver changes. Index is a convenient pointer, not canon or a deployment contract.
+
+## Cross-front CoSeed / CoPath registry
+
+- [CoSeed/CoPath public discovery registry](co_seed_path_registry_r0.json) | 12 source-indexed nodes, typed relations, explicit held fronts and independent receiver path | `SOURCE_LANDED_CANDIDATE`, **not** a verified automatic cross-session sync or CoEx.
+- [CoSeed/CoPath tests](test_co_seed_path_registry_r0.py) | challenge false ACK, missing provenance, private exposure, relationship integrity and source pinning.
+
+Consumers should verify exact source blobs or content digests and record their **own** authorized receiver readproof. Unknown sources and private historical sessions stay held.
