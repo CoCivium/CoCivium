@@ -26,10 +26,10 @@ def invalidation(changed_id, nodes, edges):
     results = {}
     for ident in affected_ids:
         node = nodes[ident]
-        if node["custody_scope"] == "private":
-            results[ident] = "PRIVATE_REVIEW_REQUIRED"
-        elif node["type"] == "email_sent":
+        if node["type"] == "email_sent":
             results[ident] = "IMMUTABLE_SENT_RECORD"
+        elif node["custody_scope"] == "private":
+            results[ident] = "PRIVATE_REVIEW_REQUIRED"
         else:
             results[ident] = "STALE_REVIEW_REQUIRED"
     return results
@@ -56,7 +56,7 @@ class MediaEvolutionTests(unittest.TestCase):
         self.assertEqual(invalidation("claim", self.nodes, self.edges)["draft"], "PRIVATE_REVIEW_REQUIRED")
 
     def test_sent_record_is_not_rewritten(self):
-        self.assertEqual(invalidation("claim", self.nodes, self.edges)["sent"], "PRIVATE_REVIEW_REQUIRED")
+        self.assertEqual(invalidation("claim", self.nodes, self.edges)["sent"], "IMMUTABLE_SENT_RECORD")
 
     def test_unrelated_change_does_not_propagate(self):
         self.assertEqual(invalidation("other", self.nodes, self.edges), {})
