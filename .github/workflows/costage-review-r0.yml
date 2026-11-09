@@ -8,6 +8,9 @@ on:
       - 'ai/resilience/cospiff-fireworks-r1.json'
       - 'scripts/CoStageReviewGateR0.py'
       - 'tests/test_stage_review_gate_r0.py'
+      - 'scripts/CoMVPLockStepR0.py'
+      - 'tests/test_comvp_lockstep_r0.py'
+      - 'docs/Architecture/COMVP_COLOCKSTEP_SOURCE_RELEASE_R0_20261109.md'
       - 'docs/Architecture/COROLE_SPACE_PREVIEW_R0.md'
       - 'docs/Architecture/COEXPERIMENT_SPACE_TURTLES_R0.md'
       - 'docs/Strategy/COSPIFF_FIREWORKS_SURVIVABILITY_R1.md'
@@ -18,6 +21,9 @@ on:
       - 'ai/resilience/cospiff-fireworks-r1.json'
       - 'scripts/CoStageReviewGateR0.py'
       - 'tests/test_stage_review_gate_r0.py'
+      - 'scripts/CoMVPLockStepR0.py'
+      - 'tests/test_comvp_lockstep_r0.py'
+      - 'docs/Architecture/COMVP_COLOCKSTEP_SOURCE_RELEASE_R0_20261109.md'
       - 'docs/Architecture/COROLE_SPACE_PREVIEW_R0.md'
       - 'docs/Architecture/COEXPERIMENT_SPACE_TURTLES_R0.md'
       - 'docs/Strategy/COSPIFF_FIREWORKS_SURVIVABILITY_R1.md'
@@ -37,5 +43,7 @@ jobs:
           persist-credentials: false
       - name: Run 40 bounded synthetic policy regressions
         run: python3 -m unittest discover -s tests -p 'test_stage_review_gate_r0.py' -v
+      - name: Run CoMVP local source-slot, rollback and selective-cohort regressions
+        run: python3 -m unittest discover -s tests -p 'test_comvp_lockstep_r0.py' -v
       - name: Verify exact source bindings and gate coverage (not approval)
         run: python3 scripts/CoStageReviewGateR0.py --repo-root .
