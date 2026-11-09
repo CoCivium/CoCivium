@@ -1,8 +1,7 @@
 import unittest
-from select import select as standard_select
 import importlib.util
 from pathlib import Path
-spec=importlib.util.spec_from_file_location("cowave",Path(__file__).with_name("select.py"))
+spec=importlib.util.spec_from_file_location("cowave",Path(__file__).with_name("wave_selector.py"))
 wave=importlib.util.module_from_spec(spec)
 spec.loader.exec_module(wave)
 
