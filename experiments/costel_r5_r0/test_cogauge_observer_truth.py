@@ -1,7 +1,7 @@
 """CoSpeedo observer honesty controls for unattended WorkID continuity.
 
-Pure synthetic contract. A fresh local sample or animated Orb never grants
-independent receiver ACK, useful work, or service survivorship.
+Pure synthetic contract. Matching caller-provided strings are unverified
+receipt claims, not independent receiver-origin evidence or useful results.
 """
 import unittest
 from dataclasses import dataclass
@@ -35,19 +35,23 @@ def projection(e: Evidence, freshness_ttl=30.0):
     else:
         source = "UNKNOWN"
 
-    valid_readback = bool(
+    claimed_match = bool(
         e.work_id and e.source_hash and e.producer_receipt_hash
         and e.receiver_identity and e.receiver_readback_hash
         and e.receiver_readback_hash == e.producer_receipt_hash
         and e.receiver_fresh and e.work_effect_verified
     )
+    # This pure model has no independently authenticated receiver channel.
+    # A caller can forge every field above. Never promote those assertions
+    # into a green indicator, independent ACK or 24h runtime proof.
     return {
         "observer": observer,
         "source": source,
-        "effect": "INDEPENDENTLY_RECEIPTED" if valid_readback else "UNVERIFIED",
-        "runtime_24h": "OBSERVED_24H" if e.tested_runtime_seconds >= 86400 and valid_readback
-                       else "NOT_PROVEN",
-        "display_green_effect": valid_readback,
+        "effect": "CLAIMED_RECEIPT_MATCH__INDEPENDENCE_UNVERIFIED" if claimed_match else "UNVERIFIED",
+        "claimed_hash_match": claimed_match,
+        "receiver_independence": "NOT_PROVEN",
+        "runtime_24h": "NOT_PROVEN",
+        "display_green_effect": False,
     }
 
 
@@ -86,11 +90,15 @@ class HonestProjectionTests(unittest.TestCase):
                      work_effect_verified=True)
         self.assertEqual(projection(e)["effect"], "UNVERIFIED")
 
-    def test_valid_synthetic_readback_requires_identity(self):
+    def test_matching_synthetic_strings_are_only_claims(self):
         e = Evidence(work_id="w1", source_hash="s", producer_receipt_hash="p",
                      receiver_identity="r2", receiver_readback_hash="p",
                      receiver_fresh=True, work_effect_verified=True)
-        self.assertEqual(projection(e)["effect"], "INDEPENDENTLY_RECEIPTED")
+        o = projection(e)
+        self.assertEqual(o["effect"], "CLAIMED_RECEIPT_MATCH__INDEPENDENCE_UNVERIFIED")
+        self.assertEqual(o["receiver_independence"], "NOT_PROVEN")
+        self.assertTrue(o["claimed_hash_match"])
+        self.assertFalse(o["display_green_effect"])
 
     def test_24h_not_inferred_from_receiver(self):
         e = Evidence(work_id="w1", source_hash="s", producer_receipt_hash="p",
@@ -99,16 +107,53 @@ class HonestProjectionTests(unittest.TestCase):
                      tested_runtime_seconds=60)
         self.assertEqual(projection(e)["runtime_24h"], "NOT_PROVEN")
 
-    def test_24h_requires_observed_duration_and_readback(self):
+    def test_24h_claimed_duration_does_not_prove_runtime(self):
         e = Evidence(work_id="w1", source_hash="s", producer_receipt_hash="p",
                      receiver_identity="r2", receiver_readback_hash="p",
                      receiver_fresh=True, work_effect_verified=True,
                      tested_runtime_seconds=86400)
-        self.assertEqual(projection(e)["runtime_24h"], "OBSERVED_24H")
+        self.assertEqual(projection(e)["runtime_24h"], "NOT_PROVEN")
 
     def test_time_without_readback_never_proves_seed(self):
         e = Evidence(sample_age_seconds=1, tested_runtime_seconds=999999)
         self.assertEqual(projection(e)["runtime_24h"], "NOT_PROVEN")
+
+    def test_forged_receiver_identity_cannot_claim_independence(self):
+        e = Evidence(work_id="w1", source_hash="s", producer_receipt_hash="p",
+                     receiver_identity="independent_receiver_claimed_by_writer",
+                     receiver_readback_hash="p", receiver_fresh=True,
+                     work_effect_verified=True)
+        self.assertEqual(projection(e)["receiver_independence"], "NOT_PROVEN")
+        self.assertFalse(projection(e)["display_green_effect"])
+
+    def test_forged_hundred_day_uptime_cannot_claim_survival(self):
+        e = Evidence(work_id="w1", source_hash="s", producer_receipt_hash="p",
+                     receiver_identity="r2", receiver_readback_hash="p",
+                     receiver_fresh=True, work_effect_verified=True,
+                     tested_runtime_seconds=100 * 86400)
+        self.assertEqual(projection(e)["runtime_24h"], "NOT_PROVEN")
+
+    def test_stopped_source_with_claimed_match_never_green(self):
+        e = Evidence(sample_age_seconds=1, source_status="STOPPED", work_id="w1",
+                     source_hash="s", producer_receipt_hash="p", receiver_identity="r2",
+                     receiver_readback_hash="p", receiver_fresh=True, work_effect_verified=True)
+        o = projection(e)
+        self.assertEqual(o["source"], "NOT_ACTIVE")
+        self.assertFalse(o["display_green_effect"])
+
+    def test_stale_observer_with_claimed_match_never_green(self):
+        e = Evidence(sample_age_seconds=3000, source_status="RUNNING", work_id="w1",
+                     source_hash="s", producer_receipt_hash="p", receiver_identity="r2",
+                     receiver_readback_hash="p", receiver_fresh=True, work_effect_verified=True)
+        o = projection(e)
+        self.assertEqual(o["observer"], "STALE")
+        self.assertFalse(o["display_green_effect"])
+
+    def test_verified_flag_without_external_attestation_is_not_green(self):
+        e = Evidence(sample_age_seconds=0, source_status="RUNNING", work_id="w1",
+                     source_hash="s", producer_receipt_hash="p", receiver_identity="r2",
+                     receiver_readback_hash="p", receiver_fresh=True, work_effect_verified=True)
+        self.assertFalse(projection(e)["display_green_effect"])
 
 
 if __name__ == "__main__":
