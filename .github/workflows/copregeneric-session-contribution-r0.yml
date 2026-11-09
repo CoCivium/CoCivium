@@ -56,16 +56,17 @@ jobs:
 
       - name: Validate role-bound CoPath failures and no-authority invariants
         run: python -B scripts/test_copath_source_bridge_r0.py -v
-      - name: Read back four bounded CoPath routes from public main and draft
+      - name: Read back eight CoPath source routes across main, PR429 and PR402
         shell: bash
         run: |
           set -euo pipefail
           git fetch --no-tags --depth=1 origin +refs/heads/main:refs/remotes/origin/main
+          git fetch --no-tags --depth=1 origin +refs/heads/candidate/corun-priorgraph-ab-runset-r0-20261109:refs/remotes/origin/corun-donor
           mkdir -p "$RUNNER_TEMP/copath-role-readbacks"
-          for role in synth bio recovery builder; do
+          for role in synth bio recovery builder highlight first_contact metaanalysis lockstep; do
             python -B scripts/CoPathSourceBridgeR0.py \
               --manifest ai/copregeneric/copath-front-bridge-r0-20261109.json \
-              --repo-root . --main-ref origin/main --candidate-ref HEAD \
+              --repo-root . --main-ref origin/main --candidate-ref HEAD --corun-ref origin/corun-donor \
               --role "$role" --strict \
               --out "$RUNNER_TEMP/copath-role-readbacks/$role.json" >/dev/null
           done
@@ -73,7 +74,7 @@ jobs:
           import json, os, pathlib
           root = pathlib.Path(os.environ["RUNNER_TEMP"]) / "copath-role-readbacks"
           receipts = [json.loads(p.read_text()) for p in sorted(root.glob("*.json"))]
-          assert len(receipts) == 4, "Expected exactly four scoped role checks"
+          assert len(receipts) == 8, "Expected exactly eight scoped role checks"
           for item in receipts:
               assert item["status"] == "SOURCE_PATH_READBACK__NOT_PICKUP"
               assert item["total"] == item["source_readbacks"]
@@ -87,7 +88,7 @@ jobs:
       - name: Archive bounded CoPath source receipts
         uses: actions/upload-artifact@v4
         with:
-          name: copath-source-only-four-role-readback-r0
+          name: copath-source-only-eight-role-readback-r0
           path: ${{ runner.temp }}/copath-role-readbacks/*.json
           if-no-files-found: error
           retention-days: 14
