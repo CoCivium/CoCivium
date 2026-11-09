@@ -33,3 +33,26 @@ This is an in-memory state-machine fixture. The lease is not persisted, crash-re
 ## CI and promotion
 
 A reviewer must inspect the exact source revision and actual Actions run logs for this PR. Subsequently challenge state transitions, reboot survival, simultaneous supervisor races, lease expiry, repeated failure, privacy/consent, and restore-to-native-desktop safety. A PASS here demonstrates only that this synthetic model satisfies these bounded expectations. Do not promote it to X2 live supervisor status.
+
+## Separate-job artifact pickup test (CoGoAll R0)
+
+The public workflow now declares `handoff-producer` and dependent
+`handoff-receiver` jobs. The first produces a canonical, public synthetic
+work object plus a SHA-256 claim, uploads it using `upload-artifact@v4`, and
+the second downloads it using `download-artifact@v4`, recomputes source bytes
+and hash, verifies GitHub run/attempt/commit identity, and emits a distinct
+receiver-job observation receipt.
+
+- Bounded fixture: `ci_artifact_handoff.py` and `test_ci_artifact_handoff.py`.
+- Locally reproducible negative controls: wrong run, revision, attempt,
+  producer/receiver role, forged content/hash/length, noncanonical JSON,
+  overwritten destination, and asserted cross-provider recovery.
+- A genuine pass requires BOTH separate GitHub Actions jobs green **and** the
+  receiver-produced receipt artifact bound to that exact run. Source and
+  test presence alone never count as `PICKED_UP`.
+- The receiver job still runs at the SAME GitHub Actions provider. A verified
+  pickup is thus `CI_SCOPE_DIFFERENT_JOB_READBACK`, not independent failure
+  domain, CoEx, X2 native reception, useful work acceptance or a real
+  cold-recovery test. There is no actual ChatGPT-session fanout.
+- Avoid public publication of private task IDs, user messages or device data.
+  Synthetic source and receipt are safe for the public repository.
