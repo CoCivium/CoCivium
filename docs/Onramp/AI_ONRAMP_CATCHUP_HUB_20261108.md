@@ -66,6 +66,8 @@ This hub links public source. Private implementation and unpublished operational
 - [Free publication commons](../Architecture/COFREE_EVOLVING_PUBLICATION_COMMONS_R0_20261026.md)
 - [CoCopy daily continuity](../Architecture/COCOPY_COACKREWISE_DAILY_CONTINUITY_R0_20261026.md)
 
+Use the [CoGoAll public rebound hub](COGOALL_PUBLIC_REBOUND_HUB_20261108.md) for current public engineering/frontier pointers and the [existing evolution-lane registry](../../ai/evolution-lanes.json) to discover domains without treating each domain as a running worker. The public [rebound integrity audit](../../scripts/CoReboundIntegrityR0.py) verifies navigation structure, not receiver pickup or synchronized memory.
+
 ## For an AI joining after months away
 
 **Do not import assumptions from a stale conversation.** Check (1) this page and dated revisions, (2) the machine-readable [26-reference manifest](../../ai/onramp/cogoall-catchup-20261108.json), (3) exact source and evidence, (4) current receiver/permission state in your own environment, then (5) only the smallest authorized task that has a real measurable outcome. You may summarize, compare, challenge or propose improvements. Do not send unsolicited messages, execute shell commands, assume consent, or promote draft code into runtime/canon. A read of this file is not automatic CoMindshare.
