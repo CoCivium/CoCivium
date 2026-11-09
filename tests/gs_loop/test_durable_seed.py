@@ -37,4 +37,45 @@ class Tests(unittest.TestCase):
             path=os.path.join(d,'seed.db'); a=DurableSeed(path); e=a.elect('s'); a.commit('s',e,'x','A'); a.close()
             b=DurableSeed(path); self.assertEqual(b.commit('s',e,'x','B'),'CONFLICT'); b.close()
 
+
+    def test_ten_duplicate_acks_one_receipt(self):
+        # This models duplicate transport delivery, not proof of live session fan-in.
+        with tempfile.TemporaryDirectory() as d:
+            path=os.path.join(d,'seed.db')
+            a=DurableSeed(path); epoch=a.elect('seed')
+            results=[a.commit('seed',epoch,'ack:one','same-request') for _ in range(10)]
+            self.assertEqual(results,['COMMITTED']+['REPLAY']*9)
+            self.assertEqual(a.db.execute('SELECT COUNT(*) FROM receipts').fetchone()[0],1)
+            self.assertEqual(a.db.execute('SELECT COUNT(*) FROM seed').fetchone()[0],1)
+            a.close()
+
+    def test_separate_receiver_reopens_checkpoint_after_handoff(self):
+        # Independent SQLite connection is not independent machine or CoEx ACK.
+        with tempfile.TemporaryDirectory() as d:
+            path=os.path.join(d,'seed.db')
+            source=DurableSeed(path)
+            old=source.elect('seed')
+            self.assertEqual(source.commit('seed',old,'evt1','A'),'COMMITTED')
+            receiver=DurableSeed(path)
+            self.assertEqual(receiver.db.execute(
+                'SELECT payload FROM receipts WHERE id=?',('evt1',)).fetchone()[0],'A')
+            new=receiver.elect('seed')
+            self.assertEqual(source.commit('seed',old,'late','B'),'FENCED')
+            self.assertEqual(receiver.commit('seed',new,'evt2','C'),'COMMITTED')
+            self.assertEqual(source.db.execute(
+                'SELECT payload FROM receipts WHERE id=?',('evt2',)).fetchone()[0],'C')
+            receiver.close(); source.close()
+
+    def test_replayed_old_epoch_cannot_claim_current_effect(self):
+        with tempfile.TemporaryDirectory() as d:
+            path=os.path.join(d,'seed.db')
+            a=DurableSeed(path)
+            old=a.elect('seed')
+            self.assertEqual(a.commit('seed',old,'first','A'),'COMMITTED')
+            next_epoch=a.elect('seed')
+            self.assertEqual(a.commit('seed',old,'first','A'),'FENCED')
+            self.assertEqual(a.commit('seed',next_epoch,'first','A'),'CONFLICT')
+            self.assertEqual(a.db.execute('SELECT COUNT(*) FROM receipts').fetchone()[0],1)
+            a.close()
+
 if __name__=='__main__':unittest.main(verbosity=2)
