@@ -24,6 +24,8 @@ The [source-bound CoSeed/CoPath machine graph](ai/copre-seed-path-federation-r0.
 
 ## Exact public companions
 
+- [Golden-braid source/media/retro/future bridge](ai/continuity-golden-braid-bridge-r0-20261109.json): typed reciprocal discovery with distinct evidence, consent and merge boundaries.
+
 - [Interactive CoHuman living-continuity hero prototype](examples/cohuman/living-continuity-r0.html): original vector illustration, real internal source links, reduced-motion support and quiet preference; source prototype, not deployed website.
 - [CoHuman visual-seed media relation descriptor](ai/media/living-continuity-visual-seed-r0-20261109.json): ten concept-image regions with typed source, media and consent links; original image retained privately.
 
