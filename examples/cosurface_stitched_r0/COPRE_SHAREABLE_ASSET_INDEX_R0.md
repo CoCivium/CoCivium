@@ -44,3 +44,8 @@ Consumers should verify exact source blobs or content digests and record their *
 ## Reciprocal challenge and productive co-petition
 
 - [CoHog+ reciprocal challenge contract](COHOG_RECIPROCAL_CHALLENGE_R0.md) | falsifiable positive-sum challenge, source-bound credit, permitted payback, public-safe pay-forward, retest and stop conditions; no live bounty or advantage claim.
+
+## CoPreGeneric DRAFT Ready Cycle (fail-closed)
+
+- [Executable readiness gate](copre_readiness_gate_r0.py) | [observed evidence](copre_ready_cycle_observed_r0.json) | [nine adversarial tests](test_copre_readiness_gate_r0.py).
+- GitHub PR #375 source and CI verified at observed head; the three user-selected target destinations and independent receiver remain UNQUALIFIED. This gate is not a deployment or receiver. No autonomous cross-session synchronization claimed.
