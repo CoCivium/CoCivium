@@ -1,0 +1,78 @@
+name: CoMVP CoPre one-task first-use canary
+
+on:
+  pull_request:
+    paths:
+      - "scripts/CoPreContinuationR0.py"
+      - "scripts/CoMVPCoPreFirstUseR0.py"
+      - "docs/Product/COMVP_COPRE_CLI_FIRST_USE_R0_20261109.md"
+      - "docs/Operations/wave-renders/comvp-copre-cli-20261109/**"
+      - ".github/workflows/comvp-copre-cli-pilot-r0.yml"
+  push:
+    paths:
+      - "scripts/CoPreContinuationR0.py"
+      - "scripts/CoMVPCoPreFirstUseR0.py"
+      - ".github/workflows/comvp-copre-cli-pilot-r0.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  cli-first-use:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Verify the immutable CoPre donor blob
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import hashlib
+          data=Path("scripts/CoPreContinuationR0.py").read_bytes()
+          digest=hashlib.sha1(b"blob "+str(len(data)).encode()+b"\\0"+data).hexdigest()
+          assert digest=="5a1a8cd15eb41af151c9255bee46cc7549e1acd8", digest
+          print("PASS_COPRE_ISOLATED_DONOR_BLOB_R0",digest)
+          PY
+      - name: Validate existing CoPre compiler and focused CLI
+        run: |
+          python3 -B scripts/CoPreContinuationR0.py --selftest
+          python3 -B scripts/CoMVPCoPreFirstUseR0.py --selftest
+      - name: Generate candidate from live public CoMVP issue 403
+        run: |
+          python3 -B scripts/CoMVPCoPreFirstUseR0.py --live-public-issue-403 > /tmp/comvp-copre-issue403.json
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          x=json.loads(Path("/tmp/comvp-copre-issue403.json").read_text())
+          assert x["status"]=="SOURCE_TASK_CLI_GENERATED_ONLY"
+          assert x["source_checked_twice"] is True
+          assert x["pack"]["work_id"]=="CoMVP.CoPrePilot.20261109"
+          assert x["pack"]["source_ref"]=="https://github.com/CoCivium/CoCivium/issues/403"
+          assert x["pack"]["authority_ceiling"]=="READ_ONLY"
+          assert x["pack"]["effects"]==0
+          assert x["pack_sha256"] in x["continuation_input"]
+          assert x["pointer_bytes"] < x["prompt_bytes"]
+          assert x["receiver_ack"]=="UNPROVEN"
+          assert x["task_mvp"]=="NOT_QUALIFIED"
+          print("PASS_COMVP_COPRE_REAL_PUBLIC_ISSUE_SOURCE_GENERATION")
+          print(json.dumps({k:x[k] for k in ("source_revision","pack_sha256","pointer_bytes","prompt_bytes","receiver_ack","task_mvp")},sort_keys=True))
+          PY
+      - name: Validate separate human-facing BEGIN/END render commits
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import subprocess
+          folder="docs/Operations/wave-renders/comvp-copre-cli-20261109/"
+          a,b=folder+"BEGIN.md",folder+"END.md"
+          first,last=Path(a).read_text(),Path(b).read_text()
+          assert "CoMVP.CoPrePilot.20261109" in first and "CoMVP.CoPrePilot.20261109" in last
+          assert "INTENT_ONLY" in first and "SOURCE_FILES_LANDED__CI_PENDING" in last
+          ac=subprocess.check_output(["git","log","-1","--format=%H","--",a],text=True).strip()
+          bc=subprocess.check_output(["git","log","-1","--format=%H","--",b],text=True).strip()
+          assert ac and bc and ac!=bc,(ac,bc)
+          print("PASS_COMVP_COPRE_TWO_WAVE_RENDER_COMMITS")
+          print("BEGIN_COMMIT="+ac)
+          print("END_COMMIT="+bc)
+          PY
