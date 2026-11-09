@@ -65,7 +65,9 @@ One local Python 3.13 run on November 9, 2026 (environment-specific, unreplicate
 | **No injected delay** | 1.56 ms | 1.59 ms | Equal | A slightly faster; parallel overhead wins this time |
 | **25 ms artificial wait per node** | 456.47 ms | 203.30 ms | Equal | B faster in *synthetic latency* only |
 
-In R0, **A is a same-code serial proxy, NOT a measured legacy product baseline**; B uses the same algorithm with bounded threads, and C is a same-code warning-stage, not an independent evaluator. The genuine legacy-versus-CoRun+ and independent-challenger studies remain HELD.\n\n18 of 18 local automated tests passed **after repairing** an initial missing DAG dependency, which is preserved as `FAIL_RESOLVED`. Each run completed 18 nodes, two historical-pair checks, one aggregate, an internal counterevidence check, and one deliverable. Exact output hash is equal between arms. The challenger is the same implementation, so there is **no independent empirical reviewer**. Worker threads are not autonomous synths. **Human active minutes, user adoption, off-provider receiver pickup, operational energy/cost, true concurrency benefit and product service-level outcome all remain UNKNOWN.**
+In R0, **A is a same-code serial proxy, NOT a measured legacy product baseline**; B uses the same algorithm with bounded threads, and C is a same-code warning-stage, not an independent evaluator. The genuine legacy-versus-CoRun+ and independent-challenger studies remain HELD.
+
+18 of 18 local automated tests passed **after repairing** an initial missing DAG dependency, which is preserved as `FAIL_RESOLVED`. Each run completed 18 nodes, two historical-pair checks, one aggregate, an internal counterevidence check, and one deliverable. Exact output hash is equal between arms. The challenger is the same implementation, so there is **no independent empirical reviewer**. Worker threads are not autonomous synths. **Human active minutes, user adoption, off-provider receiver pickup, operational energy/cost, true concurrency benefit and product service-level outcome all remain UNKNOWN.**
 
 ## Promotion rubric for real CoRun+ prodlets
 
@@ -85,6 +87,10 @@ In R0, **A is a same-code serial proxy, NOT a measured legacy product baseline**
 5. **CoRun.Continuity:** custody inventory -> hashes -> dedupe -> fork/merge candidates -> independent cold readback -> explicit CoStead receiver ACK. Never equate local source to custody.
 
 Current R0 is one *real executable local control*, not these five products, not a machine swarm, and not proof of beneficial acceleration in human time. Prefer an authorized adaptation of existing work over spinning up new dashboards and schedulers.
+
+## CI verification boundary
+
+The PR-only [CoRun source-proof workflow](../../.github/workflows/corun-r0-source-proof.yml) runs 18 offline unit tests, the source-pinned historical twelve-case CoFlow comparison, and two synthetic A/B conditions. It checks exact receipts, output equality, bounded workers, uncertainty and nonclaims. A GitHub Actions success would establish **runner-scoped test evidence**, not model-swarm autonomy, independent human benefit, CoStead custody, X2 execution, deployment, or live receiver acknowledgment. The workflow has **no schedule**, and does not modify the pre-existing hourly CoGoAll proof pulse.
 
 ## Nonclaims
 
