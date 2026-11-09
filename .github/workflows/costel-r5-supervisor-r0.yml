@@ -1,0 +1,81 @@
+name: CoStel R5 synthetic supervisor contract
+on:
+  pull_request:
+    paths:
+      - 'experiments/costel_r5_r0/**'
+      - '.github/workflows/costel-r5-supervisor-r0.yml'
+  push:
+    paths:
+      - 'experiments/costel_r5_r0/**'
+      - '.github/workflows/costel-r5-supervisor-r0.yml'
+permissions:
+  contents: read
+jobs:
+  fail-closed-supervisor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11', '3.13']
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Compile synthetic source
+        run: python -m py_compile experiments/costel_r5_r0/test_r5_supervisor_contract.py
+      - name: Ordinary fail-closed regressions
+        run: python -B -m unittest discover -s experiments/costel_r5_r0 -p 'test_*.py' -v
+      - name: Optimized mode regressions
+        run: python -O -B -m unittest discover -s experiments/costel_r5_r0 -p 'test_*.py' -v
+
+  handoff-producer:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Create one synthetic source and hash claim
+        run: python -B experiments/costel_r5_r0/ci_artifact_handoff.py produce out/costel-handoff/source
+      - name: Upload source package for distinct reader job
+        uses: actions/upload-artifact@v4
+        with:
+          name: costel-handoff-source
+          path: out/costel-handoff/source/
+          if-no-files-found: error
+          retention-days: 1
+
+  handoff-receiver:
+    needs: handoff-producer
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Download exact artifact from different job
+        uses: actions/download-artifact@v4
+        with:
+          name: costel-handoff-source
+          path: out/costel-handoff/source
+      - name: Recompute source hash and generate receiver-origin readproof
+        run: |
+          python -B experiments/costel_r5_r0/ci_artifact_handoff.py receive out/costel-handoff/source --receipt out/costel-handoff/receiver/receipt.json
+          python -m json.tool out/costel-handoff/receiver/receipt.json >/dev/null
+      - name: Upload receiver-side proof
+        uses: actions/upload-artifact@v4
+        with:
+          name: costel-handoff-receiver-proof
+          path: out/costel-handoff/receiver/receipt.json
+          if-no-files-found: error
+          retention-days: 1
