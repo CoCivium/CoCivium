@@ -304,3 +304,19 @@ Nonclaims: `CI_NE_RUNTIME` | `BRIDGE_OFFLINE_NE_HOST_DEAD` | `SOURCE_LANDED_NE_P
 **Existing workflow migrated, no new scheduler:** [CoGoAll proof-pulse](../../.github/workflows/cogoall-unattended-proof-pulse.yml) now emits R1 and already uploads `rebound-report.json` with the nine logs, commit `64793c3f02d9cd48c0d412b98007b43976d45b1e`, blob `ab88b6406f9032fa33ccd17b72379f40ecc6158c`. All GitHub file readbacks verified. **Post-change Actions job/run PASS remains UNVERIFIED** because the available commit-run wrapper lists PR-triggered runs only and the separate combined-status endpoint returned no checks. Do not infer live job pickup or schedule success.
 
 **Unchanged boundary:** Public-source validation is not complete prior-work coverage, cross-session ingestion, receiver-independent authentication, native X2 CoOrb, real Ollama effects, or >24-hour recovery. Continue other compatible fronts; only serialize conflicting shared effects. Next: observe a real mainline R1 proof + receiver job and hash-bound artifact, then turn to an authorized real WorkID receiver without requiring Rick as relay.
+
+
+## CoLUE+ outreach staging and lifecycle gap | 2026-11-09
+
+**Observed without publishing private mail contents:** a user screenshot of an InSeed Gmail Drafts view displayed 2 draft entries. A separately connected Gmail account returned 9 draft metadata records. These are NOT proven the same mailbox, and their counts must never be merged as if one custody scope. No message was sent, edited, labeled or deleted in this audit. Recipient identities, subjects, snippets and screenshots are excluded from this public record.
+
+**CoLUE+ interpretation for this scope:** lifecycle-aware outreach evolution and staging, as an interoperable relation over existing Gmail drafts, threads, CoVIA consent policies and CoAll WorkIDs; NOT a newly authorized bulk mailer or separate canonical tracker.
+
+**One outreach object (private custody, not public record):**
+`outreach_work_id | mailbox_identity | provider_draft_id | thread_id | recipient_relation_ref | sender_identity | why_this_recipient | why_now | consent_basis | source_revision | body_digest | state | editorial_review | factual_provenance | sending_authority | provider_message_id | delivery_evidence | response_evidence | followup_wake | supersession | rollback_or_withdrawal | next_owner`.
+
+**States:** `IDEA -> QUALIFIED -> STAGED_DRAFT -> REVIEWED -> APPROVED_FOR_SPECIFIC_SEND -> SENT_RECORDED -> DELIVERY_UNKNOWN/DELIVERED -> RESPONDED/NO_RESPONSE/BOUNCED -> CLOSED/WAKE_ON_EVENT`. Every stage may also be `HELD`, `SUPERSEDED` or `WITHDRAWN`. Gmail drafts alone qualify only as `STAGED_DRAFT_UNREVIEWED` unless independent reviews are evidenced. A successful Gmail send API receipt is not delivery, recipient reading, interest or consent for future contact. Follow-ups are not auto-sent on elapsed time alone.
+
+**Repair sequence:** 1) independently enumerate the correct mailbox without conflating accounts; 2) reconcile drafts to prior sent/reply threads by exact IDs in private custody; 3) dedupe/supersede old versions while preserving drafts; 4) elect recipient-specific editorial/fact/consent reviews; 5) human-authority-gated send for external outreach; 6) persist provider receipt and independently inspect real reply/bounce; 7) reserve follow-up only under recipient-relative justified wake; 8) update CoOrb/CoLUE progress projection without exposing private content on public surfaces.
+
+**Known blocker:** no authenticated matching InSeed mailbox context, sender-identity delegation or recipient-specific consent to promote the pictured drafts. Do not make Rick a manual mail relay, but do not silently send as Rick or CoCivia either. Protect all other CoGoAll fronts from duplicate staging or fabricated delivery.
