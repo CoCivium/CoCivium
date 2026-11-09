@@ -9,11 +9,14 @@ on:
       - "scripts/CoPreContinuationR0.py"
       - "docs/Architecture/COPRE_NEXT_SELF_DIRECTION_PACK_R0_20261109.md"
       - "docs/Architecture/COEV_OPERATOR_FIELD_COPRE_COMPOSER_R0_20261109.md"
+      - "docs/Architecture/COPRE_STICKY_INVARIANTS_RECOVERY_OPTIONS_R0_20261109.md"
+      - "scripts/CoPreInvariantGuardR0.py"
       - "ai/evolution/coev-operator-field-r0.json"
       - ".github/workflows/copre-next-r0.yml"
   push:
     paths:
       - "scripts/CoPreContinuationR0.py"
+      - "scripts/CoPreInvariantGuardR0.py"
       - ".github/workflows/copre-next-r0.yml"
 
 jobs:
@@ -59,3 +62,5 @@ jobs:
           assert mod.render_continuation_input({"status":"HOLD"}) is None
           print("PASS_COEV_REGISTRY_AND_INPUT_PROJECTION_R0")
           PY
+      - name: Test sticky session invariants, mirror optionality and fail-closed recovery
+        run: python3 -B scripts/CoPreInvariantGuardR0.py --selftest
