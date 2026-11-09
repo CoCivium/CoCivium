@@ -133,9 +133,8 @@ function generateAtlas(base, overlay) {
 }
 
 function gitBlobSHA(bytes) {
-  return crypto.createHash("sha1")
-    .update(Buffer.from("blob " + bytes.length + "\\0".replace("\\\\0","\\0")))
-    .update(bytes).digest("hex");
+  const prefix=Buffer.from("blob " + bytes.length + String.fromCharCode(0));
+  return crypto.createHash("sha1").update(prefix).update(bytes).digest("hex");
 }
 function securePath(root, rel) {
   if(typeof rel!=="string" || !/^[A-Za-z0-9_+./-]+$/.test(rel) ||
@@ -171,5 +170,5 @@ if(require.main===module) {
   const root=path.resolve(__dirname,"..");
   const target=path.resolve(root,"examples/comap/diagram-of-diagrams-r0.md");
   const status=run(root,target,check);
-  process.stdout.write(JSON.stringify({result:check?"EXACT_ATLAS_MATCH":"SOURCE_ONLY_ATLAS_GENERATED",coverage:status})+"\\n");
+  process.stdout.write(JSON.stringify({result:check?"EXACT_ATLAS_MATCH":"SOURCE_ONLY_ATLAS_GENERATED",coverage:status})+String.fromCharCode(10));
 }
