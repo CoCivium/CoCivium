@@ -16,6 +16,12 @@
 
 **Standing boundaries:** 1 Seed · 1 Orb · 1 truthful gauge · 1 reversible thumb · 1 time · 0 invented proofs. CoFront+/CoEcho+/CoTime+ backfill must preserve explicit scan-window coverage and no-orphan nonclaims. CoSynthVerse and CoBioVerse may use different representations of one source/evidence spine; G_dSide and CoAGI remain research hypotheses, not authority.
 
+## CoSeed / CoPath / CoFront federation
+
+The [source-bound CoSeed/CoPath machine graph](ai/copre-seed-path-federation-r0.json) connects the already-landed public CoPreGeneric packages and their distinct draft variants without falsely electing a global canon or introducing a third duplicate set. It offers role-relative paths to [public package A](docs/CoPreGeneric/Shareable_R0_20261109/README.md), [public package B](docs/CoPreGeneric/PublicDraft_R0_20261109/manifest.json), [front/echo continuity](docs/Architecture/COFRONT_RETRO_ECHO_NO_ORPHANS_R0_20261109.md), existing bootstrap, status and the exact receiver-readproof gate.
+
+**CoSeed** here means a durable source identity and relevant pointers, not automatic user-private session content or proved >24h runtime survival. **CoPath** is a navigable, authorized recovery route, not proof a second session followed it. Package A and B are different drafts whose exact bytes must not be presented as identical mirrors. No discovered front is silently retired; unknown/unscanned coverage stays unknown.
+
 ## Exact public companions
 
 - [CoSeed+/CoPath+ public discovery graph](ai/copre-seed-path-fabric-r0-20261109.json): bounded typed paths to the current public-safe CoPre package; not global front integration or receiver acceptance.
