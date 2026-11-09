@@ -98,6 +98,102 @@
       "blocked_claims": [
         "ONBOARDING_PASS"
       ]
+    },
+    {
+      "id": "comap-megascroller",
+      "status": "source_committed",
+      "source": "examples/comap/megascroller-r0.html",
+      "workflow": ".github/workflows/co-living-media-r0.yml",
+      "next_gate": "verify updated HTML source-to-generator CI and first-use navigation; separately prove site/independent mirror readback",
+      "blocked_claims": [
+        "CI_PASS",
+        "FIRST_USE_NAVIGATION_PASS",
+        "PUBLIC_HOST_READBACK",
+        "INDEPENDENT_BACKUP_RESTORE"
+      ],
+      "wave_profile": {
+        "mode": "NAVIGATE",
+        "audience": "FIRST_TIME_READER",
+        "substrate": "OFFLINE_HTML",
+        "horizon": "ONE_SESSION",
+        "hypothesis": "NESTED_ATLAS_REDUCES_FIND_TIME",
+        "counterexample": "NOVICE_CANNOT_FIND_PINNED_SOURCE",
+        "measure": "TIME_TO_FIND_PINNED_SOURCE",
+        "source_blob_sha1": "a6fb0483643201caf5501bc3e8d83fe800335a08",
+        "state": "PROPOSAL_ONLY_NOT_EXECUTED"
+      }
+    },
+    {
+      "id": "colue-outreach",
+      "status": "source_committed",
+      "source": "examples/comail_r0/outreach_stage_gate_r0.py",
+      "workflow": ".github/workflows/co-living-media-r0.yml",
+      "next_gate": "bind actual authorized InSeed mailbox read-only and demonstrate exact draft, thread and consent evidence before separate send authority",
+      "blocked_claims": [
+        "LIVE_MAILBOX_BINDING",
+        "DRAFT_THREAD_READPROOF",
+        "AUTHORIZED_SEND_RECEIPT",
+        "CONSENTED_RECIPIENT_OUTCOME"
+      ],
+      "wave_profile": {
+        "mode": "CHALLENGE",
+        "audience": "AUTHORIZED_OUTREACH_OPERATOR",
+        "substrate": "READONLY_MAILBOX",
+        "horizon": "BEFORE_SEND_DECISION",
+        "hypothesis": "PROVENANCE_GATE_PREVENTS_WRONG_ACCOUNT_SEND",
+        "counterexample": "GATE_ACCEPTS_MISMATCHED_MAILBOX",
+        "measure": "FALSE_SEND_READY_RATE",
+        "source_blob_sha1": "b33ec2f8608250643d7400d964f62224ff78daa0",
+        "state": "PROPOSAL_ONLY_NOT_EXECUTED"
+      }
+    },
+    {
+      "id": "colensmedia-lineage",
+      "status": "source_committed",
+      "source": "examples/colensmedia/relational_media_manifest_r0.py",
+      "workflow": ".github/workflows/co-living-media-r0.yml",
+      "next_gate": "obtain a rights-cleared real media sample and verify cross-format semantic/accessible parity with receiver readback",
+      "blocked_claims": [
+        "REAL_MEDIA_RIGHTS_REVIEW",
+        "SEMANTIC_PARITY_PASS",
+        "INDEPENDENT_MEDIA_RECEIVER",
+        "LIVE_RENDERER_BINDING"
+      ],
+      "wave_profile": {
+        "mode": "FALSIFY",
+        "audience": "MEDIA_EDITOR",
+        "substrate": "SOURCE_GRAPH",
+        "horizon": "AFTER_ONE_RENDER",
+        "hypothesis": "GRAPH_FLAGS_STALE_OR_PRIVATE_DERIVATION",
+        "counterexample": "PRIVATE_SOURCE_LEAKS_IN_PUBLIC_PROJECTION",
+        "measure": "UNDETECTED_PRIVATE_LEAK_COUNT",
+        "source_blob_sha1": "4e2fbe18f10635a037f9e725c8ea5b83aceea86a",
+        "state": "PROPOSAL_ONLY_NOT_EXECUTED"
+      }
+    },
+    {
+      "id": "cobrowser-cocarry",
+      "status": "source_committed",
+      "source": "scripts/CoBrowserCarryProjectionR0.py",
+      "workflow": ".github/workflows/cobrowser-renderer-substitution-r0.yml",
+      "next_gate": "verify private X2 ledger inventory, one Firefox session reopen and original WorkID recovery before touching any Edge tabs",
+      "blocked_claims": [
+        "LIVE_FIREFOX_REOPEN",
+        "PRIVATE_SESSION_CENSUS",
+        "UNSENT_COMPOSER_CUSTODY",
+        "X2_RUNTIME_PICKUP"
+      ],
+      "wave_profile": {
+        "mode": "RECOVER",
+        "audience": "SESSION_OPERATOR",
+        "substrate": "FIREFOX_X2",
+        "horizon": "AFTER_ONE_RESTART",
+        "hypothesis": "ONE_FOREGROUND_PRESERVES_OTHER_WORKIDS",
+        "counterexample": "CLOSING_EDGE_LOSES_UNSENT_TEXT",
+        "measure": "RECOVERABLE_WORKID_RATIO",
+        "source_blob_sha1": "0d08b2091adde7809f503740251c3c9f13a059e3",
+        "state": "PROPOSAL_ONLY_NOT_EXECUTED"
+      }
     }
   ],
   "change_policy": "append evidence and supersession; do not replace unresolved claims with optimistic summaries"
