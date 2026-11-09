@@ -79,3 +79,22 @@ The [CoLUE outreach stage gate](outreach_stage_gate_r0.py) and [21 synthetic tes
 A draft is historical staged content, not evidence that it was approved, sent, delivered, read or understood. Iterative CoEvo changes produce a new exact review/approval boundary, and previous versions remain recoverable. The real InSeed mailbox screenshot and separate Gmail account observations are **not** incorporated into public fixture content.
 
 The existing [CoLiving/CoMail CI workflow](../../.github/workflows/co-living-media-r0.yml) discovers the new tests; its current revision needs independent Actions execution confirmation. The actual CoLUE+ product remains blocked on authorized private account readback, provider receipt identity and a consent-aware receiver workflow; Rick is not the mailman.
+
+
+## CoLUE R1: bounded evolutionary draft lineage | 2026-11-09
+
+**Source state:** SEND_DISABLED_R1_SOURCE_ONLY. This **extends** the R0 outreach stage gate, never deletes or supersedes its tests, and does not access the InSeed account or send any message.
+
+- [R1 deterministic decision engine](colue_stage_r1.py), [27 synthetic regression cases](tests/test_colue_stage_r1.py). Exact locally tested Git blobs: `d9a7c89bb70ff039aae7c9f3ebfbd08efa0d758b` and `f3607aeb8faeca995ffcb63829801b1bdf4e6fbc`. CPython 3.13.5 **27/27 local PASS**. The older [R0 gate](outreach_stage_gate_r0.py) and [21 cases](tests/test_outreach_stage_gate_r0.py) remain source-preserved. The existing CoLiving-media CI discovers both, but a successful Actions result on the latest commit is not yet independently verified.
+- An outreach history is an ordered, source-hash-linked chain `R0 -> R1 -> ... -> Rn` with predecessor SHA-256, exact content revision and no invented improvement through unchanged bytes. Every material edit invalidates prior review/approval for the successor, not the historical predecessor.
+- A historical provider-send *assertion* belongs to its exact prior content digest. An **unsent successor remains unsent** and returns `SENT_HISTORY_WITH_UNSENT_SUCCESSOR / REVIEW_NEW_REVISION`; do not overwrite a sent message or treat another draft as already sent.
+- Mailbox mismatch, incomplete thread/collision observations, recipient route, opt-out, consent, factual review and appropriate approval continue to block promotion. A caller-supplied receipt or reply boolean is an assertion, **not independent provider/receiver readback**.
+- `PREFLIGHT_PASS_NO_SEND` is not actual send authorization. Any external provider send must remain separately authorized, consent-aware, exact-account-bound and independently receipted. No scheduled message or follow-up is installed by this module.
+
+### CoEv applied to its own loop
+
+`OBSERVE_SOURCE_CHANGE -> LINK_SUCCESSOR -> CHALLENGE_FRESHNESS/CLAIMS/CONSENT -> COMPARE_NET_BENEFIT -> PREPARE_EXACT_REVISION -> HUMAN/ROLE_AUTHORITY_GATE -> EXTERNAL_EFFECT_IF_SEPARATELY_AUTHORIZED -> READBACK/RECEIPT -> WAKE_ON_EVENT_OR_QUIESCE`.
+
+The process is recursive in *possible improvements*, not an unbounded stack of simultaneously running workers. Each cycle has version, budget, scope, independent challenges, measurable usefulness, rollback and a stopping condition. No new meaningful revision or qualified trigger means **QUIESCE**, not another draft. In CoSilo/CoSourceGraph, email, diagram, CoOrb projection and article retain typed links to the same evidence-bound WorkID, with private account identifiers and bodies excluded from public files.
+
+**Nonclaims:** `SOURCE_NE_SENT` | `EMAIL_EDITS_NE_PROGRESS` | `RECURSION_NE_UNLIMITED_AUTHORITY` | `HAS_HASH_NE_VERIFIED_PROVIDER_RECEIPT` | `OUTREACH_NE_CONSENT`.
