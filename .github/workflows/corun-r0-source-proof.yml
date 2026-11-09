@@ -1,0 +1,78 @@
+name: CoRun R0 bounded source proof
+
+on:
+  pull_request:
+    paths:
+      - 'examples/corun_r0/**'
+      - '.github/workflows/corun-r0-source-proof.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Run bounded offline tests
+        run: python -B -m unittest discover -s examples/corun_r0 -p 'test_*.py' -v
+      - name: Replay exact historical CoFlow donor with Git-blob pin
+        run: |
+          python -B examples/corun_r0/corun.py \
+            --input ai/flow/coflow-anchor-delta-sample12-r1.json \
+            --expected-git-blob 3550b9c75e732c65ab3580494dd38f18b28f8c18 \
+            --workers 4 \
+            --out "$RUNNER_TEMP/corun-real"
+      - name: Replay synthetic serial and parallel arms
+        run: |
+          python -B examples/corun_r0/corun.py \
+            --input examples/corun_r0/fixture.json \
+            --workers 4 \
+            --out "$RUNNER_TEMP/corun-zero"
+          python -B examples/corun_r0/corun.py \
+            --input examples/corun_r0/fixture.json \
+            --workers 4 \
+            --simulated-io-ms 25 \
+            --out "$RUNNER_TEMP/corun-delay"
+      - name: Verify runset hashes, boundedness, counterevidence and nonclaims
+        shell: bash
+        run: |
+          python - <<'PY'
+          import hashlib
+          import json
+          import os
+          from pathlib import Path
+          root = Path(os.environ["RUNNER_TEMP"])
+          for name in ("corun-real", "corun-zero", "corun-delay"):
+              runset_path = root / name / "runset.json"
+              receipt_path = root / name / "receipt.json"
+              runset = json.loads(runset_path.read_text())
+              receipt = json.loads(receipt_path.read_text())
+              assert hashlib.sha256(runset_path.read_bytes()).hexdigest() == receipt["runset_sha256"]
+              assert runset["outputs_equal"] is True
+              assert runset["comparison"]["human_time_saved"] is None
+              assert runset["comparison"]["independent_receiver_value"] == "UNKNOWN"
+              assert runset["comparison"]["production_promotion"] == "HELD"
+              assert runset["arms"]["A_SERIAL"]["nodes_completed"] == runset["arms"]["B_BOUNDED_PARALLEL"]["nodes_completed"]
+              assert runset["arms"]["B_BOUNDED_PARALLEL"]["peak_active"] <= 4
+              assert "TWO_ARMS_ONE_IMPLEMENTATION_NE_INDEPENDENT_REPLICATION" in runset["nonclaims"]
+              if name == "corun-real":
+                  assert runset["source"]["git_blob_sha1"] == "3550b9c75e732c65ab3580494dd38f18b28f8c18"
+                  assert runset["deliverable"]["audit"]["historical_sample_only"] is True
+              print(name, "PASS_EXACT_SHA_SCOPE_ONLY", runset["comparison"]["observed_latency_winner"])
+          PY
+      - name: Preserve run-scoped evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: corun-r0-scoped-proof
+          path: |
+            ${{ runner.temp }}/corun-real/*.json
+            ${{ runner.temp }}/corun-zero/*.json
+            ${{ runner.temp }}/corun-delay/*.json
+          if-no-files-found: warn
+          retention-days: 14
