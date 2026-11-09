@@ -22,3 +22,4 @@ jobs:
           python-version: "3.12"
       - run: python -B examples/cotalkitout/decision_gate_r0.py
       - run: python -B examples/cotalkitout/cograce_recovery_r0.py
+      - run: python -B examples/cotalkitout/cosuccession_handoff_r0.py

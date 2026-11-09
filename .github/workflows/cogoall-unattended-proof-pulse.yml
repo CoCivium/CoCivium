@@ -1,0 +1,75 @@
+name: CoGoAll unattended proof pulse
+on:
+  push:
+    paths:
+      - '.github/workflows/cogoall-unattended-proof-pulse.yml'
+      - 'examples/cotalkitout/progress_receipt_gate_r0.py'
+      - 'test_progress_receipt_gate_r0.py'
+  schedule:
+    - cron: '17 * * * *'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: cogoall-proof-pulse
+  cancel-in-progress: false
+jobs:
+  proof:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Exercise bounded recovery and handoff gates
+        id: tests
+        continue-on-error: true
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B examples/cotalkitout/decision_gate_r0.py 2>&1 | tee decision.log
+          python -B examples/cotalkitout/cograce_recovery_r0.py 2>&1 | tee grace.log
+          python -B examples/cotalkitout/cosuccession_handoff_r0.py 2>&1 | tee succession.log
+          python -B examples/cotalkitout/cogoall_acceptance_gate_r0.py 2>&1 | tee acceptance.log
+          python -B -m unittest -v test_progress_receipt_gate_r0 2>&1 | tee progress.log
+      - name: Produce immutable run-scoped evidence
+        if: always()
+        env:
+          TEST_OUTCOME: ${{ steps.tests.outcome }}
+          RUN_ID: ${{ github.run_id }}
+          RUN_ATTEMPT: ${{ github.run_attempt }}
+          COMMIT_SHA: ${{ github.sha }}
+          EVENT_NAME: ${{ github.event_name }}
+        run: |
+          python - <<'PY'
+          import datetime, hashlib, json, os, pathlib
+          logs = {}
+          for name in ('decision', 'grace', 'succession', 'acceptance', 'progress'):
+              p = pathlib.Path(name + '.log')
+              logs[name] = hashlib.sha256(p.read_bytes()).hexdigest() if p.exists() else None
+          record = dict(schema='cogoall-proof-pulse-r0',
+                        observed_at_utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),
+                        run_id=os.environ['RUN_ID'], attempt=os.environ['RUN_ATTEMPT'],
+                        head=os.environ['COMMIT_SHA'], event=os.environ['EVENT_NAME'],
+                        outcome=os.environ['TEST_OUTCOME'], log_sha256=logs,
+                        claims=['SOURCE_TESTS_ONLY', 'NO_X2_RECEIVER_ACK', 'NO_24H_SEED_PROOF'])
+          pathlib.Path('proof-receipt.json').write_text(json.dumps(record, sort_keys=True, indent=2)+'\n')
+          PY
+      - name: Upload run-scoped receipt and logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cogoall-proof-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            proof-receipt.json
+            decision.log
+            grace.log
+            succession.log
+            acceptance.log
+            progress.log
+          if-no-files-found: error
+          retention-days: 30
+      - name: Fail closed when source tests failed
+        if: steps.tests.outcome != 'success'
+        run: exit 1

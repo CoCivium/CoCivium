@@ -124,53 +124,56 @@ Measure task outcome, unmet-need coverage, optionality retained, verified relati
 
 Related source anchors: [CoGoAll outstanding register](../Operations/COGOALL_OUTSTANDING_REGISTER_20261108.md), [CoGoldenBraid discovery hub](../Onramp/COGOALL_PUBLIC_REBOUND_HUB_20261108.md), [CoLiving highlight asset contract](../Architecture/COLIVING_HIGHLIGHT_ASSETS_R0.md). Neither source publication nor recursive elegance is proof of a working braid engine.
 
-## CoFuture Pull Vector / CoMetaAttractor field R0 (2026-11-08)
 
-**Status: hypothesis and measurement specification, not a discovered cosmic law, a theological claim, a calibrated predictor or an operational authority.** The G_dSide metaphor suggests a useful engineering question: can plural desired futures be specified with enough detail to guide research and resource discovery without collapsing into one ideological or numerical objective?
+## G_dSide+ CoPullVector+ candidate model (R0, 2026-11-08)
 
-**A pull vector is not a force acting backward in time.** It is a versioned, receiver-relative comparison between current evidence and explicitly proposed future conditions. Keep optionality and Pareto frontiers; a scalar score is at most one contestable projection.
+**Status:** PUBLIC_RESEARCH_SPEC_ONLY. The word "pull" denotes a modelled gradient among candidate futures, not a detected external force, spiritual instruction, proof of destiny or a physical field.
 
-Candidate vector envelope:
+### Typed future state, feasibility and plurality
 
+Represent a candidate future at horizon `h` as a **vector of measured or estimated dimensions** `V(x,h) = [agency, wellbeing, ecological resilience, access, trust, scientific discovery, optionality, cost, risk, ...]`. Each dimension must have an explicit definition, unit/scale, direction, baseline, time horizon, data source, confidence/uncertainty and affected population. Do not silently aggregate incommensurable units or treat speculative values as observed facts. Preserve multiple futures and Pareto trade-offs rather than nominate a universal ideal state.
+
+Let `a` be a feasible proposed action under rights/consent/resource constraints, with a stochastic transition model `P(x' | x,a,h)`. A **candidate pull vector** is the predicted change `DeltaV(a | x,h) = E[V(x',h)-V(x,h)]` accompanied by intervals/scenarios, costs, harms, feasibility and uncertainty. There is **no guarantee** the predicted change will occur or be valuable. A scalar priority may be computed with explicitly chosen, revisable weights for a *specific task*, never as an objective measure of universal goodness. An optionality component values preserving future choices; it must not excuse present harms or violate hard rights constraints.
+
+### Relations between pull vectors
+
+Vectors themselves can form typed braids: reinforcing, competing, orthogonal, cancelling, time-lagged, contingent, mutually exclusive, scale-dependent or poorly understood. Include second-order consequences: an action can change future supply, future demand, the set of possible actions, and the accuracy of the model. Store negative and null edges. Track uncertainty propagation across recursive relationships and halt expansion at measured information-gain or resource-budget limits.
+
+**Candidate record:**
 ```text
-future_id | version | phase | horizon | affected_parties
-dimension_id | definition | unit | target_range | direction
-baseline_value | measurement_method | uncertainty | evidence_refs
-scenario_assumptions | counterfactuals | distribution_or_bounds
-constraints: rights | consent | safety | resources | reversibility
-dependencies | negative_externalities | uncertainty_sources
-competing_futures | dissent | value_owner | decision_authority
-experiment | discriminating_observation | threshold | stop_condition
-work_id | owner_policy | receipt_refs | receiver_acceptance | next_wake
+pull_candidate {
+  id, version, work_id, source_revision, baseline_state_ref,
+  population_scope, horizon, dimensions[{id, unit, baseline, predicted_delta,
+    uncertainty, evidence_refs}], intervention_ref, feasibility,
+  hard_constraints[], alternatives[], dependency_relations[],
+  competing_predictions[], validation_plan, harms[], expected_cost,
+  model_lineage[], observer, observed_at, next_review, nonclaims[]
+}
 ```
 
-Candidate dimensions include ecological viability, agency, unmet-need coverage, resilience, public benefit, choice preservation, evidence quality and relational stewardship. **No dimension is assumed commensurable with another**. Refuse to assign scores to moral worth, divine approval, subjective consciousness or rights that cannot be responsibly measured.
+### CoPriMath research questions
 
-### How a vector becomes a decision experiment
+- Which dimensions have principled cardinal units, and which require ordinal/Pareto comparison?
+- How should uncertainty and irreducible ambiguity propagate through recursive braids without creating false precision?
+- Can future-directed search discover neglected needs or capabilities that supply/demand ranking misses?
+- When do multi-model ensembles merely echo shared priors, and when do they provide demonstrably independent predictions?
+- What is the simplest useful predictive model relative to a much richer "almost-specification" model, accounting for maintenance and Goodhart risks?
 
-1. **Describe** two or more legitimate future states, each with its own stakeholders, bounds and alternatives; include supply-only, demand-only, hybrid, status quo and counterfuture baselines.
-2. **Map** present evidence, known gaps, uncertain dependencies, CoTime horizon, and what could actually change through authorized deeds.
-3. **Propose** one reversible intervention and predicted observations, including unfavorable outcomes and potential harms.
-4. **Challenge** predictions using an independent source/worker and recorded counterevidence. A model vote never substitutes for source verification.
-5. **Compare** measured outcomes in their original units. Report Pareto tradeoffs, irreducible disagreement, sensitivity, cost, who benefits and who bears risk.
-6. **Revise or retire** the future specification on observed evidence, changed stakeholder needs, or failed interventions. Preserve versions and source lineage.
+### Falsification and CI+ acceptance proposal
 
-### Candidate example: community woodland
+1. Assemble a public-safe set of *historical decision problems* with evidence available only up to each decision date; hold out later outcomes to prevent hindsight leakage.
+2. Compare equal-budget supply-only, demand-only, hybrid, single G_dSide pull, braided multi-vector pull, and simple/random baselines.
+3. Score calibration, ranking/regret, overlooked needs, false discoveries, fairness/rights, optionality, computational cost and decision usefulness. Preserve failures and cases where simpler models win.
+4. Perturb weights, missing values, delayed effects, spurious correlations, shared-source contamination, adversarial goals and nonstationary environments; verify that rankings do not become silently overconfident.
+5. Test dimensional type errors, conflicting constraints, cycles, replay determinism, source revision changes and deduplicated WorkIDs; ensure unknown remains unknown.
+6. Require an independent evidence and outcome reviewer before any "improvement" claim; no runtime authority follows from a promising numerical score.
 
-A proposal to plant one site may improve canopy and flood resilience while worsening near-term water stress and maintenance burden. Express ecological survival (observed percent over a declared horizon), operating cost (local currency), participation (consented, counted), accessibility (audited outcome), and reversibility (documented contingency) as **separate typed axes**. An alternative with less planting can win. A long-horizon stewardship motive can nominate additional outcomes but cannot alter measurements or excuse consent.
+**Next bounded implementation target:** a tiny typed fixture with 2-3 proposed actions, at least 3 independently defined outcome dimensions, uncertain deltas, conflicting objectives, and an explicit baseline. Render candidate vectors in CoOrb as *hypotheses*, never as verified forces. Iterate only after an actual benchmark produces discriminating evidence.
 
-### Measurement and CI contract
+## CoFuture R0 executable Pareto canary (source-level test)
 
-- Schema validation: reject missing units, horizon, evidence, consent/rights constraints or baseline; retain `UNKNOWN` where no responsible observation exists.
-- Dimensional safety: refuse to add percentages, dollars, probabilities and subjective interpretations as if equivalent units.
-- Epistemic boundary: future aspirations, mythic/G_d orientations and counterfactuals remain typed as proposals, never promoted to observed effect.
-- Non-domination: retain at least one counterexample where supply/demand baseline outranks the future-guided proposal.
-- Decision stability: perturb uncertain weights/bounds, record reversals and keep alternatives rather than declaring a universal winner.
-- Temporal calibration: measure predictions only once specified horizons and observation windows mature; never infer >24h durability from a short test.
-- Receiver truth: public source, synthetic CI, independently witnessed real-world outcome and authorized deployment remain separate gates.
+The prior `pull_candidate` specification and historical decision-benchmark plan above remain the research authority. The [small synthetic evaluator](../../experiments/gdside/cofuture_pull_vector_r0.py) compares alternatives along separate declared axes with an explicit unit, direction, horizon and evidence pointer; the [existing CoLoop CI bridge](../../tests/gs_loop/test_cofuture_ci_bridge.py) exercises its ten deterministic tests. No additional scheduler or parallel evaluator service is created.
 
-**First executable canary:** implement a deterministic, small, synthetic multi-objective comparison with units and hard constraints; include dominance, incomparable alternatives, unit mismatch, no fabricated values and forced loss of a G_dSide-labeled proposal. Only expand toward real-world models after a documented evaluator and external source-backed sample exist.
+Its falsifiers reject missing measurements, mismatched units, duplicate dimensions, nonfinite numbers, invalid horizon, absent provenance and violations of hard consent/rights/safety constraints. Two incomparable options must stay visible on the Pareto frontier; a `G_D_SIDE`-labeled proposal must be able to lose to a simpler supply baseline. This is **not** a quantitative moral ranking, divine-force detection, calibrated prediction, independent scientific replication or effect authority.
 
-**Rails:** `PULL_VECTOR_NE_PHYSICAL_FORCE` · `FUTURE_DESIRE_NE_FUTURE_FACT` · `G_D_METAPHOR_NE_AUTHORITY` · `MODEL_SPEC_NE_OBSERVED_CAUSATION` · `PARETO_FRONTIER_NE_SINGLE_WINNER` · `MORE_DIMENSIONS_NE_MORE_TRUTH`.
-
-**Executable source canary (candidate):** [`experiments/gdside/cofuture_pull_vector_r0.py`](../../experiments/gdside/cofuture_pull_vector_r0.py) now contains the deterministic typed Pareto evaluator and ten synthetic negative/baseline tests; [CI workflow](../../.github/workflows/cofuture-pull-vector.yml) is configured. Consult the actual workflow result before asserting PASS. This experiment does not infer real-world future benefits or operational authority.
+**Next promotion:** pass CI on the exact published main commit; independently review a source-backed historical decision sample under an equal information/compute budget, with calibration, cost, outcome and uncertainty recorded. Preserve hypotheses and failures. A passing Python fixture cannot establish CoEx or replace a real recipient's decision.
