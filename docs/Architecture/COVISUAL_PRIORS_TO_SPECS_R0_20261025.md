@@ -76,3 +76,35 @@ Choose **one public-safe CoLens source** and regenerate its equivalent Text + Ma
 `PRIVATE_SAMPLE_NE_COMPLETE_HISTORY` · `VERIFIED_LOCAL_NE_LANDED` · `VISUAL_INSPIRATION_NE_REPUBLICATION_LICENSE` · `METAPHOR_NE_MEASUREMENT` · `GLYPH_NE_AUTHORITY` · `PIXELS_NE_MEANING` · `RENDER_NE_RECEIVER_ACK` · `NOTHING_EXTERNAL_SENT`.
 
 **FOSS Forever · CoGoAll · Working Together Respectfully · Privacy by design · Inclusive, optional participation.**
+
+
+## CoDiagramEvolution+ | Front viability and version-aware projection R0
+
+**2026-11-09. State:** PUBLIC-SAFE DESIGN DELTA, not an automatic updater, deployed CoOrb renderer, or evidence of independent receiver pickup. Reuse CoLivingHighlight versioning, CoMap source graph, CoSessionAutocycle lifecycle and the existing CoGoAll outstanding register. **Never maintain the diagram as a second manual truth store.**
+
+```mermaid
+flowchart LR
+  A[Source events and receipts] --> B[Versioned WorkID and lineage]
+  B --> C{Evidence and rights qualified?}
+  C -->|Yes| D[CoMap relational graph]
+  C -->|No| H[HELD with reason and wake condition]
+  D --> E[CoOrb current / CoTime historical / CoAhead forecast]
+  E --> F{Independent outcome or material change?}
+  F -->|Verified| G[Receipted successor with rollback]
+  F -->|Not verified| H
+  G --> B
+  H -->|Relevant trigger| B
+  H -->|No eligible trigger| I[QUIESCENT, recoverable, indexed]
+```
+
+**Front state is not a heartbeat.** Per WorkID retain `front_id, source_sha, version, predecessor, evidence_status, lifecycle_state, last_observed_at, valid_time, wake_predicate, budget, authority, receiver_readproof, current_qualified_version, next_experiment, privacy_scope`. Headless JSON/text is the authority-filtered projection contract; SVG/Mermaid/CoOrb/CoBar and accessible speech render from it. Material source changes create a new projection revision only when receiver-visible meaning changes. Private-only changes cannot disclose their existence through public version drift.
+
+**Three frontier invariants:** (1) every registered front has a pinned source and either an eligible action or a concrete dormant/blocked trigger; (2) no front's historical or last-known-good MVP is overwritten by an unqualified candidate; (3) no diagram arrow or animation promotes a claim beyond its evidence and authority. Store disagreements and omitted edges so visual simplification does not launder uncertainty.
+
+**Operational discrimination:** An event update can legitimately change a front from HOT to DORMANT without failure; a due WorkID with repeated no-progress and verified available capability is a stall candidate; no reachable receiver leaves effect status UNKNOWN/HELD. CoGrace/CoZombie recovery remains proposal-only until a separate receiver's exact readproof. Show forecast branches distinctly from verified outcomes.
+
+**First executable acceptance candidate (NOT RUN here):** derive a sample with ACTIVE, DORMANT, STALLED, HELD and SUPERSEDED fronts from pinned records. Render accessible text and one diagram; mutate one source revision, make one receipt stale, withdraw one consent scope, then compare both outputs for identical typed state, correct visibility filtering, stable historical version and one recoverable next action. A third receiver must independently read the resulting object for pickup.
+
+**CoLUE outreach use:** the *same* source-graph/diagram lifecycle can represent `STAGED_DRAFT -> REVIEWED -> APPROVED -> SENT_RECORDED -> RESPONSE_OBSERVED -> CLOSED/WAKE`, with per-mailbox identity and protected private contents. No email send or reply is implied by drawing the arrow.
+
+**CoEx boundary:** `DIAGRAM_NE_RUNTIME` · `QUIET_NE_DEAD` · `UPDATED_SOURCE_NE_INDEPENDENT_PICKUP` · `MODEL_PREDICTION_NE_EVIDENCE` · `REGISTERED_FRONT_NE_RUNNING_PROCESS`.
