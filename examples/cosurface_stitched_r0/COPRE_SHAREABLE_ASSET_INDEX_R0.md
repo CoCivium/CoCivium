@@ -40,3 +40,7 @@ Consumers should verify exact source blobs or content digests and record their *
 ## AI-facing reciprocal usefulness
 
 - [CoMutualValue+ / CoAIHoney+ R0](CO_MUTUAL_VALUE_AI_HONEY_R0.md) | Ethical discoverability, machine/human projections, stakeholder utility, alternatives and falsifiable adoption benchmarks. Public source candidate only; no autonomous AI uptake implied.
+
+## Reciprocal challenge and productive co-petition
+
+- [CoHog+ reciprocal challenge contract](COHOG_RECIPROCAL_CHALLENGE_R0.md) | falsifiable positive-sum challenge, source-bound credit, permitted payback, public-safe pay-forward, retest and stop conditions; no live bounty or advantage claim.
