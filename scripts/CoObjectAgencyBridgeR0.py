@@ -16,7 +16,10 @@ from pathlib import Path
 import re
 import stat
 
-from CoObjectVitalityR0 import disposition
+if __package__:
+    from .CoObjectVitalityR0 import disposition
+else:
+    from CoObjectVitalityR0 import disposition
 
 MAX_OBJECTS = 24
 MAX_EVENTS = 48
