@@ -1,0 +1,60 @@
+{
+  "schema": "cocivium.copregeneric.seed.proposal.v1",
+  "seed_id": "copregeneric-retro-2026-11-09",
+  "status": "PUBLIC_PROPOSAL",
+  "authority": "NON_CANONICAL",
+  "version": "0.1.0-proposal",
+  "created_date": "2026-11-09",
+  "access_class": "PUBLIC_SANITIZED",
+  "source_status": "DERIVED_SUMMARY_PRIVATE_INPUT_NOT_PUBLISHED",
+  "source_repository": "CoCivium/CoCivium",
+  "source_branch": "proposal/copregeneric-retro-20261109",
+  "canonical_receiver_verified": false,
+  "website_mirrors_verified": false,
+  "meta_ai_ack_verified": false,
+  "costead_integrated_verified": false,
+  "automated_fanout_verified": false,
+  "paths": {
+    "index": "proposals/copregeneric/README.md",
+    "navigation": "proposals/copregeneric/CoPath.md",
+    "technical_proposal": "proposals/CoPreGeneric_CoFront_CoEcho_Retro_2026-11-09.md"
+  },
+  "fronts": [
+    "CoPreGeneric",
+    "CoSeed+",
+    "CoPath+",
+    "CoReceipt+",
+    "CoTru+",
+    "CoSource+",
+    "CoFront+",
+    "CoEcho+",
+    "CoTime+",
+    "CoNull+",
+    "CoSynthVerse+",
+    "CoBioVerse+",
+    "CoEv+",
+    "CoMap+",
+    "CoNav+",
+    "CoET+",
+    "CoFFF+",
+    "CoPlanck+",
+    "CoBar+"
+  ],
+  "states": [
+    "PROPOSED",
+    "HELD",
+    "OBSERVED",
+    "VERIFIED",
+    "RECEIVED",
+    "INTEGRATED",
+    "RELEASED"
+  ],
+  "claim_rules": [
+    "PUBLIC_AVAILABILITY_NE_CANON",
+    "GIT_COMMIT_NE_RECEIVER_ACK",
+    "SHA_NE_SOURCE_TRUTH",
+    "HYPOTHESIS_NE_EVIDENCE",
+    "NO_PUBLIC_PRIVATE_CONTENT"
+  ],
+  "next_gate": "Receiver-specific, version-specific read and acknowledgment with independent retrieval evidence"
+}
