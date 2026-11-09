@@ -59,7 +59,9 @@ function render(data){
     const item=document.createElement("div");item.className="entry";
     item.textContent="You: "+t.prompt+"\n"+
       (t.status==="COMMITTED"?"Local model (unverified): "+(t.response||""):
-       "Status: "+t.status+" (not a confirmed answer)");
+       "Status: "+t.status+" (not a confirmed answer)")+
+      "\nSource: "+(t.trigger_kind||"UNKNOWN")+" ["+
+      (t.trigger_evidence||"NONE")+"]");
     $("log").append(item);
   });
   $("log").scrollTop=$("log").scrollHeight;
@@ -128,7 +130,10 @@ def act(store, payload, model, receipt_dir, bridge=local_ollama_run):
     tid=payload.get("turn_id")
     prompt=payload.get("prompt")
     epoch=payload.get("epoch")
-    started=store.begin_turn(cid,tid,prompt,epoch)
+    # An HTTP caller cannot self-assert SCHEDULED, EVENT or authenticated USER.
+    # Loopback request observed does not identify the human or upstream cause.
+    started=store.begin_turn(cid,tid,prompt,epoch,
+                             trigger_kind="LOCAL_HTTP_REQUEST")
     if started["state"] != "STARTED":
         return started
     try:
