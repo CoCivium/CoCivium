@@ -5,6 +5,8 @@ on:
       - 'ai/copregeneric/session-contribution-r0-20261109.json'
       - 'docs/Onramp/COPREGENERIC_SESSION_HANDOFF_R0_20261109.md'
       - 'scripts/test_copregeneric_session_contribution_r0.py'
+      - 'scripts/test_copregeneric_whatsapp_package_r0.py'
+      - 'docs/Onramp/copregeneric_whatsapp_v8x/**'
       - '.github/workflows/copregeneric-session-contribution-r0.yml'
   workflow_dispatch:
 permissions:
@@ -20,3 +22,30 @@ jobs:
           python-version: '3.13'
       - name: Validate source-bound nonpromotion and retro-echo gaps
         run: python -B scripts/test_copregeneric_session_contribution_r0.py -v
+
+      - name: Validate public-safe four-file derivative
+        run: python -B scripts/test_copregeneric_whatsapp_package_r0.py -v
+      - name: Build exact four-file SHA-256 receipt package
+        shell: bash
+        run: |
+          set -euo pipefail
+          src="docs/Onramp/copregeneric_whatsapp_v8x"
+          dest="$RUNNER_TEMP/copregeneric-public-safe-four-file"
+          mkdir -p "$dest"
+          for f in CoPreGeneric-v1.0-DRAFT.md CoAckRewise-v8.74.md CoFeedLoop-Devs.md CoMindspace-Map.md INDEX.md; do
+            cp "$src/$f" "$dest/$f"
+          done
+          (
+            cd "$dest"
+            sha256sum CoPreGeneric-v1.0-DRAFT.md CoAckRewise-v8.74.md CoFeedLoop-Devs.md CoMindspace-Map.md INDEX.md > SHA256SUMS
+            sha256sum -c SHA256SUMS
+            cat SHA256SUMS
+          )
+          printf '%s\n' 'PUBLIC_DRAFT_PR_BRANCH__NOT_CANONICAL_THREE_WAY_MIRROR' > "$dest/RECEIPT_STATE.txt"
+      - name: Archive one exact shareable package
+        uses: actions/upload-artifact@v4
+        with:
+          name: copregeneric-public-safe-four-file-r0
+          path: ${{ runner.temp }}/copregeneric-public-safe-four-file/*
+          if-no-files-found: error
+          retention-days: 30
