@@ -109,6 +109,7 @@ def evaluate(draft: DraftEvidence) -> dict:
         ],
     }
 
+
 def propose_evolution(draft: DraftEvidence, *, proposed_content_sha256: str,
                       change_kind: str, depth: int, budget: int = 4) -> tuple[DraftEvidence, dict]:
     """Produce one *unapplied* bounded Turtle successor, never a provider draft edit.
