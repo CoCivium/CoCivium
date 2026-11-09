@@ -1,0 +1,237 @@
+{
+  "schema": "CoAll.CoEvSeed.MediaSemanticTwin.R0",
+  "status": "PUBLIC_MACHINE_SEMANTIC_TWIN_SOURCE_NOT_LIVE_APP",
+  "observed_date": "2026-11-09",
+  "work_id": "CoEvSeed:LivingContinuity:VisualSemantics:R0",
+  "family_ref": "CoEvSeed.hero.living-continuity.20261109.r0",
+  "attached_variant": {
+    "sha256": "7a1fe2bd075cbc03555c4c3c2bc5c8f265006579e381670604fac50a0c20c26d",
+    "bytes": 3175770,
+    "width": 1672,
+    "height": 941,
+    "format": "PNG",
+    "custody": "CURRENT_CONVERSATION_ATTACHMENT_ONLY_DURABILITY_NOT_PROVEN",
+    "public_binary": false,
+    "relationship": "SAME_CONCEPT_FAMILY_DIFFERENT_EXACT_CONTENT_FROM_EXISTING_PREVIEW_SOURCE",
+    "rights": "USER_PROVIDED_FOR_REVIEW_PUBLIC_BINARY_RELEASE_NOT_YET_CLEARED"
+  },
+  "existing_public_family": {
+    "registry": "ai/coevo-media-seeds-r0-20261109.json",
+    "preview": "assets/CoEvSeed/CoCivium_Living_Continuity_Hero_Preview_R0.svg",
+    "preview_git_blob": "bc5b9ab3729b6f483bf4e03cad8aa180a3a6dc83",
+    "original_sha256": "fe5fb651cff7097cc847cb757790983deccc48fbaaee893ca5a7a0cedbab676f",
+    "note": "Existing registry's original is another exact byte variant; don't assert identical pixels or promote its custody status to this upload."
+  },
+  "media_roles": [
+    "HERO_ILLUSTRATION",
+    "NAVIGATION_INSPIRATION",
+    "MEDIA_LINEAGE_SEED",
+    "COBRAIN_HUMAN_PROJECTION",
+    "VISUAL_ONBOARDING_CANDIDATE"
+  ],
+  "alt_text": "Dark violet cosmic CoCivium interface concept. A radiant orb and luminous ribbons connect media cards; Futures, Retros, CoMap and Media appear to the right, with smaller Continuity Map, Media Lineage and Across Time panels below; the top navigation includes quiet audio.",
+  "coordinate_system": "NORMALIZED_0_TO_1000_PREVIEW_COMPOSITION_APPROXIMATE_REVIEW_REQUIRED",
+  "regions": [
+    {
+      "id": "hero",
+      "label": "Living Continuity System",
+      "box": [
+        25,
+        135,
+        690,
+        475
+      ],
+      "semantic_role": "PURPOSE_AND_ORIENTATION",
+      "target": "CoPre.md",
+      "target_kind": "public_source"
+    },
+    {
+      "id": "futures",
+      "label": "Futures",
+      "box": [
+        713,
+        129,
+        261,
+        101
+      ],
+      "semantic_role": "POSSIBLE_DESCENDANTS",
+      "target": "ai/copre-seed-path-federation-r0.json",
+      "target_kind": "public_source"
+    },
+    {
+      "id": "retros",
+      "label": "Retros",
+      "box": [
+        713,
+        240,
+        261,
+        101
+      ],
+      "semantic_role": "SOURCE_PREDECESSORS",
+      "target": "docs/Architecture/COFRONT_RETRO_ECHO_NO_ORPHANS_R0_20261109.md",
+      "target_kind": "public_source"
+    },
+    {
+      "id": "comap",
+      "label": "CoMap",
+      "box": [
+        713,
+        352,
+        261,
+        99
+      ],
+      "semantic_role": "RELATIONAL_NAVIGATION",
+      "target": "examples/comap/README.md",
+      "target_kind": "public_source"
+    },
+    {
+      "id": "media",
+      "label": "Media",
+      "box": [
+        713,
+        464,
+        261,
+        100
+      ],
+      "semantic_role": "MEDIA_LIBRARY",
+      "target": "ai/coevo-media-seeds-r0-20261109.json",
+      "target_kind": "public_source"
+    },
+    {
+      "id": "continuity-map",
+      "label": "Continuity Map",
+      "box": [
+        31,
+        605,
+        315,
+        193
+      ],
+      "semantic_role": "RELATIONAL_GRAPH",
+      "target": "ai/copre-seed-path-fabric-r0-20261109.json",
+      "target_kind": "public_source"
+    },
+    {
+      "id": "media-lineage",
+      "label": "Media Lineage",
+      "box": [
+        359,
+        605,
+        321,
+        177
+      ],
+      "semantic_role": "SOURCE_TRANSFORMATION_SUCCESSORS",
+      "target": "examples/colensmedia/README.md",
+      "target_kind": "public_source"
+    },
+    {
+      "id": "across-time",
+      "label": "Across Time and Possibility",
+      "box": [
+        695,
+        610,
+        278,
+        173
+      ],
+      "semantic_role": "TEMPORAL_AND_COUNTERFACTUAL_LENS",
+      "target": "ai/onramp/copre-ready-cycle-acceptance-r0.json",
+      "target_kind": "public_source"
+    },
+    {
+      "id": "audio",
+      "label": "Quiet Mode",
+      "box": [
+        893,
+        15,
+        90,
+        65
+      ],
+      "semantic_role": "CONSENT_AND_AUDIO_ACCESSIBILITY",
+      "target": "ai/cowet-human-surface-rule-r0.json",
+      "target_kind": "public_source"
+    }
+  ],
+  "relations": [
+    {
+      "from": "hero",
+      "to": "futures",
+      "type": "CAN_EXPLORE",
+      "confidence": "DESIGN_INTENT"
+    },
+    {
+      "from": "hero",
+      "to": "retros",
+      "type": "CAN_RECOVER",
+      "confidence": "DESIGN_INTENT"
+    },
+    {
+      "from": "hero",
+      "to": "comap",
+      "type": "CAN_NAVIGATE",
+      "confidence": "DESIGN_INTENT"
+    },
+    {
+      "from": "hero",
+      "to": "media",
+      "type": "CAN_DISCOVER",
+      "confidence": "DESIGN_INTENT"
+    },
+    {
+      "from": "media",
+      "to": "media-lineage",
+      "type": "HAS_EXPLAINER",
+      "confidence": "DESIGN_INTENT"
+    },
+    {
+      "from": "continuity-map",
+      "to": "retros",
+      "type": "HAS_PREDECESSOR_LENS",
+      "confidence": "DESIGN_INTENT"
+    },
+    {
+      "from": "continuity-map",
+      "to": "futures",
+      "type": "HAS_SUCCESSOR_LENS",
+      "confidence": "DESIGN_INTENT"
+    },
+    {
+      "from": "across-time",
+      "to": "futures",
+      "type": "EXPLORES_POSSIBILITIES",
+      "confidence": "DESIGN_INTENT"
+    },
+    {
+      "from": "audio",
+      "to": "hero",
+      "type": "GOVERNS_OPTIONAL_SOUND",
+      "confidence": "DESIGN_INTENT"
+    }
+  ],
+  "substrate_adapters": {
+    "visual": "SEMANTIC_HOTSPOTS_OVER_PUBLIC_PREVIEW",
+    "diagram": "TYPED_NODES_AND_EDGES",
+    "text": "LABELS_SUMMARIES_AND_SOURCE_TARGETS",
+    "audio": "CONSENT_SCOPED_CAPTIONS_TRANSCRIPT_AND_SILENT_DEFAULT",
+    "spatial": "COORDINATE_TRANSFORM_REQUIRED_NOT_3D_AVAILABLE",
+    "cultural": "LOCALE_AWARE_NAMING_AND_REPRESENTATION_REVIEW_REQUIRED",
+    "offline": "SOURCE_HTML_AND_SVG_CAN_BE_DOWNLOADED_NOT_OFFLINE_TESTED"
+  },
+  "proof_boundary": {
+    "links": "PUBLIC_SOURCE_NAVIGATION_ONLY",
+    "interaction": "OVERLAY_PROTOTYPE_NOT_ORIGINAL_IMAGE_BUTTONS",
+    "reception": "NOT_PROVEN",
+    "production": "NOT_DEPLOYED",
+    "semantics": "HUMAN_INTERPRETATION_NOT_EXTRACTED_APP_STRUCTURE",
+    "coordinate_accuracy": "APPROXIMATE_NOT_TESTED_ACROSS_SCREEN_SIZES"
+  },
+  "next_proof": "Verify public preview rendering and nine hotspot coordinates in real mobile/desktop browser; then independent reader completes a source-bound navigation task without misleading app-status claims.",
+  "nonclaims": [
+    "IMAGE_NE_RUNNING_APP",
+    "IMAGE_CONCEPT_NE_CLICKABLE_SOURCE",
+    "PREVIEW_NE_IDENTICAL_TO_THIS_UPLOAD",
+    "SOURCE_PUBLIC_NE_INDEPENDENT_RECEIVER_ACK",
+    "ORIGINAL_BINARY_NOT_PUBLIC",
+    "NO_COMPLETE_MEDIA_CENSUS",
+    "NO_AUDIO_AUTO_OPT_IN",
+    "NO_UNVERIFIED_CANON"
+  ]
+}
