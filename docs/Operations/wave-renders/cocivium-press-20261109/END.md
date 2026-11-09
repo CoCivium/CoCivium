@@ -7,7 +7,7 @@
 
 ## CoHereNow
 
-The already-committed [BEGIN render](BEGIN.md) preserves the pre-work claim and limited authority. The [evidence-first journalist brief](../../../Public/COCIVIUM_CCC_COEBE_JOURNALIST_BRIEF_R1_20261109.md) is on a *separate public review branch*, not an edited live published CoCivium page or a message to a reporter.
+The [BEGIN reconstruction](BEGIN.md) preserves the pre-work intent and limited authority, **but its original source landing did not occur before implementation**. It was recovered and committed after this END file because the attempted earlier BEGIN was absent at exact GitHub readback. This is a documented chronology exception, not proof of a pre-work committed BEGIN. The [evidence-first journalist brief](../../../Public/COCIVIUM_CCC_COEBE_JOURNALIST_BRIEF_R1_20261109.md) is on a *separate public review branch*, not an edited live published CoCivium page or a message to a reporter.
 
 **Verified exact GitHub readback:** media brief Git blob `420470fecd7f654d8a0d82c340c2ea2cf66c0328`, source commit `e6e7c969c45da79a4064ae9d662ff467ba1fe75f`.
 
@@ -39,7 +39,7 @@ The already-committed [BEGIN render](BEGIN.md) preserves the pre-work claim and 
 
 ## Outcome and acceptance
 
-**Actual:** public draft-branch BEGIN and brief source commits, exact readback, and this separate END source mutation. The later PR status/source-readback is recorded separately and must not be presumed by this render.
+**Actual:** public draft-branch brief and END source commits, followed by a recovered BEGIN and this corrective END revision. Exact source readback can verify file presence and the ordering exception; it cannot rewrite earlier landing chronology. The later PR status/source-readback is recorded separately and must not be presumed by this render.
 
 **Unproven:** independent reader comprehension, reporter reply, editorial interest, scheduled interview, media article, virality, useful external AI adoption, live cross-provider session continuity, product task MVP, CoEx, or public release of a finished CoCivium app.
 
