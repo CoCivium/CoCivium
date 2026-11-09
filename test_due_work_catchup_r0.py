@@ -144,4 +144,68 @@ print(json.dumps({'work_id':c.work_id,'epoch':c.epoch,'lease_until':c.lease_unti
         self.assertEqual(self.a.snapshot(999)['complete'],1)
 
 
+    def test_interleaved_competitor_cannot_overwrite_first_result(self):
+        import sqlite3
+        token, = self.a.claim_due(now=10, owner='A')
+        competitor_digest = digest('competitor-result')
+        stale_digest = digest('stale-writer-result')
+        original = self.a.db
+        db_path = self.path
+
+        class InterposeOnce:
+            def __init__(self):
+                self.triggered = False
+            def __enter__(self):
+                original.__enter__()
+                return self
+            def __exit__(self, *args):
+                return original.__exit__(*args)
+            def __getattr__(self, name):
+                return getattr(original, name)
+            def execute(self, statement, params=()):
+                # Deterministic interleaving: another DB connection completes
+                # just before this writer's UPDATE. This is a local fixture.
+                if "UPDATE work" in statement and "SET state='DONE'" in statement and not self.triggered:
+                    self.triggered = True
+                    with sqlite3.connect(db_path, timeout=3) as other:
+                        other.execute("UPDATE work SET state='DONE', result_sha256=?, "
+                                      "completed_at=? WHERE work_id=?",
+                                      (competitor_digest, 11, token.work_id))
+                return original.execute(statement, params)
+        interceptor = InterposeOnce()
+        self.a.db = interceptor
+        try:
+            outcome = self.a.complete(token, result_sha256=stale_digest, now=12)
+        finally:
+            self.a.db = original
+        self.assertTrue(interceptor.triggered)
+        self.assertEqual(outcome, 'CONFLICT')
+        self.assertEqual(original.execute('SELECT result_sha256 FROM work WHERE work_id=?',
+                                          (token.work_id,)).fetchone()[0], competitor_digest)
+
+    def test_two_concurrent_finishers_one_commit_other_conflict(self):
+        token, = self.a.claim_due(now=10, owner='A')
+        barrier = threading.Barrier(2)
+        def finish(item):
+            q = DueWorkQueue(self.path)
+            try:
+                barrier.wait(timeout=4)
+                return q.complete(token, result_sha256=digest(item), now=11)
+            finally:
+                q.close()
+        with ThreadPoolExecutor(max_workers=2) as executor:
+            results = list(executor.map(finish, ['one', 'two']))
+        self.assertCountEqual(results, ['COMMITTED_LOCAL_ONLY', 'CONFLICT'])
+        final = self.a.db.execute('SELECT result_sha256 FROM work WHERE work_id=?',
+                                  (token.work_id,)).fetchone()[0]
+        self.assertIn(final, (digest('one'), digest('two')))
+
+    def test_replay_keeps_completed_identity_and_digest(self):
+        token, = self.a.claim_due(now=10, owner='A')
+        result = digest('first')
+        self.assertEqual(self.a.complete(token,result_sha256=result,now=11),'COMMITTED_LOCAL_ONLY')
+        self.assertEqual(self.a.complete(token,result_sha256=result,now=12),'REPLAY')
+        self.assertEqual(self.a.db.execute('SELECT completed_at FROM work').fetchone()[0],11)
+
+
 if __name__=='__main__': unittest.main(verbosity=2)
