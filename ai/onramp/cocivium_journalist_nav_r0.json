@@ -316,6 +316,54 @@
     "LINK_NE_REAL_SESSION_RETURN",
     "PR_REVIEW_BRANCH_NE_MAIN",
     "DOCUMENTED_CONTEXT_COMPILER_NE_RUNNING_RUNTIME",
-    "NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE"
-  ]
+    "NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE",
+    "THREE_MINUTE_LABEL_NE_MEASURED_READ_TIME",
+    "TEN_MINUTE_LABEL_NE_MEASURED_CHALLENGE_TIME",
+    "NEWSROOM_GUIDANCE_NE_NEWSROOM_APPROVAL"
+  ],
+  "newsroom_first_use": {
+    "state": "PUBLIC_PROPOSAL_NOT_RECEIVER_ACCEPTED",
+    "triage": {
+      "reader": "HUMAN",
+      "time_budget_label": "THREE_MINUTE_DESK_CHECK_NOT_MEASURED",
+      "entry_node": "home",
+      "next_node": "treatment",
+      "decision": "IS_THE_PROVIDER_EXIT_AND_RECOVERY_QUESTION_REPORTABLE",
+      "may_decline": true
+    },
+    "challenge": {
+      "reader": "HUMAN_OR_EDITOR_ASSIGNED_AI",
+      "time_budget_label": "TEN_MINUTE_SOURCE_CHALLENGE_NOT_MEASURED",
+      "nodes": [
+        "evidence",
+        "issue403",
+        "pr406"
+      ],
+      "focus": "ONE_INDEPENDENT_RECEIVER_COUNTEREXAMPLE",
+      "stop_on_missing_source": true,
+      "stop_on_privacy_conflict": true
+    },
+    "handoff": {
+      "editor_decides_scope": true,
+      "reporter_verifies_material_allegations": true,
+      "ai_may_research_with_permission": true,
+      "unsolicited_send": false,
+      "embargo_or_exclusive": false,
+      "corrections": "EXACT_CLAIM_AND_SOURCE_VERSION",
+      "reporter_reply": "NOT_OBSERVED",
+      "independent_ux": "NOT_TESTED"
+    },
+    "result_fields": [
+      "claim",
+      "source_ref",
+      "source_revision",
+      "observed_time",
+      "evidence_state",
+      "contrary_evidence",
+      "editorial_caution",
+      "pending_proof",
+      "next_or_hold",
+      "coback_return"
+    ]
+  }
 }
