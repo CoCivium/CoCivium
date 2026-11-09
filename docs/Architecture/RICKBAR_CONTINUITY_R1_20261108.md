@@ -40,6 +40,14 @@ Then browse to http://127.0.0.1:8766. This is a local browser prototype, not ins
 
 Record for each attempt: WorkID, ConversationID, TurnID, event time, observer, trigger_kind = USER_TURN / SCHEDULED / EVENT / MANUAL_OPERATOR / UNKNOWN, source revision, model/provider, authorization, output hash, receiver readproof, checkpoint, next wake and limitations. Never infer a cause from an unsourced next-morning status. GitHub commits indicate repository work, not whether a schedule, mobile session or independent agent caused it. For an unavailable source, use UNKNOWN.
 
+## Trigger provenance R1 extension (source candidate)
+
+The persisted `trigger_kind` now distinguishes `UNKNOWN`, `LOCAL_HTTP_REQUEST`, `SCHEDULED`, `EVENT` and `MANUAL_OPERATOR` on every *new* turn. The additional `trigger_evidence` records `NONE`, `LOOPBACK_REQUEST_OBSERVED_USER_UNAUTHENTICATED`, or `PRODUCER_CLAIM_UNVERIFIED`. Model-output receipt hashes and local readback include both fields. Previous R1 SQLite rows migrate to `UNKNOWN/NONE` without reclassifying historical activity.
+
+Local HTTP requests are always marked `LOCAL_HTTP_REQUEST`, even if client JSON pretends to be a scheduler; loopback origin does **not** prove which human, process or external trigger originated the request. A separate authenticated scheduler or event adapter is still necessary to attribute off-browser activity. No automatic overnight agent has been created.
+
+**Required next proof:** authenticated scheduler/host event identity `->` durable WorkID trigger `->` model execution `->` independent receiver acknowledgment `->` source revision and timing readback. A self-declared `SCHEDULED` label is not sufficient. Unknown preexisting turns and unattributed GitHub commits remain UNKNOWN.
+
 ## Human, virtual and non-sentient participants
 
 A participant can be a consenting human, a permissioned model/tool process, a device, a static source, or a simulation, but participant_type and authority_scope cannot be inferred from conversational persona. Voices, avatars and CoAvNims are revocable projections. Keep independent observer identities, uncertainty, time and evidence classes, no implicit equality between source publication and uptake. A reusable relational field is not automatic cross-session consciousness.
