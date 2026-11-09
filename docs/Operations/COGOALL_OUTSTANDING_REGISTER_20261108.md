@@ -192,3 +192,16 @@ A durable, independently byte-hash-checked **public source receipt** is [here](.
 **Still unproven:** no new `schedule` event at PR #404 revision has yet been inspected; a push event is not an unattended scheduled wake. This code does not elect and execute a real due authorized WorkID or verify a real X2/CoBar, CoStead or independent model/provider receiver, service restart, durable 24+ hour Seed, public-product first use, canon or CoEx. It performs source-test evidence custody within a single provider. No new scheduler, authority, daemon or Rick-as-relay was added.
 
 **Highest-value next proof:** the next actual `schedule` wake uses this same two-job path, records separate-job hash readback, and selects one authorized due WorkID with independently observed useful effect and a durable successor checkpoint; if that last edge is unavailable, record `AWAITING_RECEIVER_PROOF` or `BLOCKED`, not a green product PASS.
+
+
+## CoObject+ → CoOrbWare+ agentic objectification, CoAckRewise | 2026-11-09
+
+**Problem:** source/policy/media/receipts accumulate without reliable movement into qualified agent work and stable user-visible MVPs. “Make all files executable” is **not** the fix: untrusted source content must never grant execution authority. Keep existing CoObjectVitality, CoSessionAutocycle, CoModelFabric, CoStageReview, CoMVP/CoLockStep and CoOrbWare as the owning contract families.
+
+**Executed source increment:** [CoObjectAgencyBridgeR0](../../scripts/CoObjectAgencyBridgeR0.py) verifies source hashes of bounded regular files and emits typed, deterministic, **nonexecuting** proposals for source-test, policy/schema, dataset/provenance, image-accessibility, text/semantic review and unknown binary qualification. Material-change or eligible wake events are required; repeated observation stays quiet; degraded work gets repair-first proposals. The bridge cannot interpret arbitrary file semantics, open an AI session, accept a claimed effect or dispatch a worker. [Exact CoObject CI run 42609204946](https://github.com/CoCivium/CoCivium/actions/runs/42609204946) SUCCESS with **31 adversarial tests**. No new scheduled watcher, dashboard or second agent swarm.
+
+**Source-bound rewise:** [Recent CoObject/Civ2–Civ3/CoMVP crosswalk](../Evolution/COACKREWISE_COOBJECT_CIV3_FRONTIER_R0_20261109.md) reconciles selected current public docs and recent accessible work, explicitly **not** a complete inventory of all sessions. A separate 7-file bounded local custody sample found 4 images, 2 text and 1 binary, all hashed but none semantically reviewed or proven landed/picked up; private file paths and content were not published.
+
+**Preserved C3 product priority:** actual rickBar R1 → local Ollama useful task → WorkID + independent receiver readproof → restart/rollback; maintain last-known-good version with CoMVP+ selective dependencies and native Break Glass. Independently evolving research, G_dSide, CoTime, CoMeasure and public onramp continue without forcing global lockstep or false `CoEx`/canon/runtime promotion.
+
+**Next necessary interface, not yet implemented:** independently authorized event adapter, qualified worker registry with local/open model licensing and capability tests, sandbox/resource budget and distinct failure-domain receiver. Do not count candidate intents or CI green runs as agentic work performed.
