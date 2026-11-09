@@ -1,0 +1,44 @@
+name: CoAll frontier source continuity gate R0
+on:
+  push:
+    paths:
+      - 'docs/Evolution/FRONTIER_EVIDENCE_INDEX_R0.json'
+      - 'scripts/check_frontier_evidence_index_r0.py'
+      - 'tests/test_frontier_evidence_index_r0.py'
+      - '.github/workflows/frontier-evidence-index-r0.yml'
+  pull_request:
+    paths:
+      - 'docs/Evolution/FRONTIER_EVIDENCE_INDEX_R0.json'
+      - 'scripts/check_frontier_evidence_index_r0.py'
+      - 'tests/test_frontier_evidence_index_r0.py'
+      - '.github/workflows/frontier-evidence-index-r0.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  frontier-source-check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Regression tests for omissions and false promotion
+        run: python -B -m unittest discover -s tests -p 'test_frontier_evidence_index_r0.py' -v
+      - name: Validate existing index and compare to prior Git revision
+        shell: bash
+        run: |
+          set -euo pipefail
+          prior="docs/Evolution/FRONTIER_EVIDENCE_INDEX_R0.json"
+          if git cat-file -e "HEAD^:$prior" 2>/dev/null; then
+            git show "HEAD^:$prior" > /tmp/frontier-evidence-prior.json
+            python -B scripts/check_frontier_evidence_index_r0.py \
+              --root . --index "$prior" --prior /tmp/frontier-evidence-prior.json
+          else
+            python -B scripts/check_frontier_evidence_index_r0.py \
+              --root . --index "$prior"
+          fi
