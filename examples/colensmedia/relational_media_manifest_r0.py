@@ -136,7 +136,8 @@ def audit(manifest):
             twin = item.get("accessibility_twin_id")
             if twin not in found or found[twin]["kind"] != "ACCESSIBLE_TEXT":
                 a11y.append(key)
-            elif found[twin]["source_revision"] != item["source_revision"]:
+            elif (found[twin]["source_revision"] != item["source_revision"]
+                  or (item["visibility"] == "PUBLIC" and found[twin]["visibility"] != "PUBLIC")):
                 a11y.append(key)
 
     return {
@@ -159,6 +160,9 @@ def audit(manifest):
 def render_markdown(manifest):
     """A deterministic graph and accessible textual twin from the SAME manifest."""
     report = audit(manifest)
+    root = next(item for item in manifest["assets"] if item["id"] == manifest["root_id"])
+    if root["visibility"] != "PUBLIC":
+        raise ValueError("PRIVATE_SOURCE_CANNOT_RENDER_PUBLIC_VIEW")
     # Public projection must neither list private nodes nor expose full-graph
     # digests/counts that change solely when hidden private state changes.
     public_assets = [n for n in manifest["assets"] if n["visibility"] == "PUBLIC"]
