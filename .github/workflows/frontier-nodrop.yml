@@ -1,0 +1,26 @@
+name: CoNoDrop frontier gate
+on:
+  push:
+    paths:
+      - 'docs/Evolution/FRONTIER_EVIDENCE_INDEX_R0.json'
+      - 'scripts/validate_frontier_index.py'
+      - '.github/workflows/frontier-nodrop.yml'
+  pull_request:
+    paths:
+      - 'docs/Evolution/FRONTIER_EVIDENCE_INDEX_R0.json'
+      - 'scripts/validate_frontier_index.py'
+      - '.github/workflows/frontier-nodrop.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate-fronts:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check tracked fronts and evidence gates
+        run: python scripts/validate_frontier_index.py
