@@ -12,6 +12,11 @@ on:
       - "docs/Architecture/COPRE_STICKY_INVARIANTS_RECOVERY_OPTIONS_R0_20261109.md"
       - "scripts/CoPreInvariantGuardR0.py"
       - "scripts/CoExWaveEndcapsR0.py"
+      - "scripts/CoWaveOverlapGuardR0.py"
+      - "ai/evolution/cooverlap-prior-meaning-r0.json"
+      - "docs/Architecture/COWAVE_OVERLAP_COLOT_PRIOR_FABRIC_R0_20261109.md"
+      - "docs/Operations/wave-renders/cooverlap-20261109/BEGIN.md"
+      - "docs/Operations/wave-renders/cooverlap-20261109/END.md"
       - "docs/Architecture/COEX_WAVE_ENDCAP_LANDING_R0_20261109.md"
       - "docs/Operations/wave-renders/colot-endcaps-20261109/BEGIN.md"
       - "docs/Operations/wave-renders/colot-endcaps-20261109/END.md"
@@ -20,6 +25,7 @@ on:
   push:
     paths:
       - "scripts/CoPreContinuationR0.py"
+      - "scripts/CoWaveOverlapGuardR0.py"
       - "scripts/CoPreInvariantGuardR0.py"
       - ".github/workflows/copre-next-r0.yml"
 
@@ -124,4 +130,51 @@ jobs:
           print("END_COMMIT="+bc)
           print("BEGIN_SHA256="+ca["render_sha256"])
           print("END_SHA256="+cb["render_sha256"])
+          PY
+
+      - name: Test overlapping waves, term lineage and separately saved renders
+        run: |
+          python3 -B scripts/CoWaveOverlapGuardR0.py --selftest
+          python3 - <<'PY'
+          import hashlib
+          import json
+          from pathlib import Path
+          import subprocess
+          from importlib.util import spec_from_file_location, module_from_spec
+          ix=json.loads(Path("ai/evolution/cooverlap-prior-meaning-r0.json").read_text())
+          assert ix["schema"]=="CoCivium.CoOverlapPriorMeaning.R0.v0.1"
+          assert len(ix["candidates"])==21
+          assert len(ix["candidate_new_terms"])==5
+          unresolved={v["term"] for v in ix["candidates"] if v["class"]=="UNRESOLVED"}
+          assert {"CSMR","CiCollectibles"} <= unresolved
+          bp="docs/Operations/wave-renders/cooverlap-20261109/BEGIN.md"
+          ep="docs/Operations/wave-renders/cooverlap-20261109/END.md"
+          a=Path(bp).read_text();b=Path(ep).read_text()
+          assert "CoPre.Overlap.20261109" in a and "CoPre.Overlap.20261109" in b
+          assert "INTENT_ONLY" in a and "CI_PENDING" in b
+          ac=subprocess.check_output(["git","log","-1","--format=%H","--",bp],text=True).strip()
+          ec=subprocess.check_output(["git","log","-1","--format=%H","--",ep],text=True).strip()
+          assert ac and ec and ac!=ec
+          spec=spec_from_file_location("coex","scripts/CoExWaveEndcapsR0.py")
+          mod=module_from_spec(spec);spec.loader.exec_module(mod)
+          def endcap(phase,body,status):
+              return {"phase":phase,"work_id":"CoPre.Overlap.20261109","wave_id":"R0",
+              "source_ref":"CoCivium/CoCivium#401","source_revision":"bound-git-source-in-repo",
+              "render_kind":"MARKDOWN_SOURCE_RENDER","render_sha256":hashlib.sha256(body.encode()).hexdigest(),
+              "effect_intent":"SCRIPT_LANDING","surface":"GITHUB_DRAFT_SOURCE",
+              "target_ref":"research/copre-next-self-direction-r0-20261109",
+              "authority_scope":"PUBLIC_DRAFT_BRANCH_ONLY","confidentiality":"PUBLIC",
+              "receipt_ref":"PR401:read-only-CI","status":status,
+              "next_wake":"material source or receiver change","coex_claim":False,"landing_status":"PROPOSED"}
+          start=endcap("BEGIN",a,"INTENT_RECORDED")
+          end=endcap("END",b,"VERIFIED_SOURCE")
+          end["begin_render_sha256"]=start["render_sha256"]
+          result=mod.review(start,end,a,b)
+          assert result["status"]=="REVIEW_SOURCE_LANDING_ONLY",result
+          assert result["effects_performed"]==0 and result["coex"]=="NOT_CERTIFIED"
+          print("PASS_COOVERLAP_2_RENDER_COMMITS_AND_PRIOR_TERM_SCOPE_R0")
+          print("BEGIN_COMMIT="+ac)
+          print("END_COMMIT="+ec)
+          print("BEGIN_SHA256="+start["render_sha256"])
+          print("END_SHA256="+end["render_sha256"])
           PY
