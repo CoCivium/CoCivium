@@ -20,7 +20,7 @@ class Tests(unittest.TestCase):
         def fake(context,model,receipt_dir,work_id):
             cls.calls.append((context,model,work_id))
             return {"status":"RECORDED_UNVERIFIED","response":"Synthetic local answer",
-                    "receipt_sha256":"a"*64}
+                    "receipt_sha256":"a"*64,"work_id":work_id}
         cls.server=ThreadingHTTPServer(("127.0.0.1",0),
             make_handler(cls.store,"fixture-local-model",cls.temp.name,bridge=fake))
         cls.server.daemon_threads=True
@@ -95,6 +95,51 @@ class Tests(unittest.TestCase):
         code,state=self.request("GET","/api/conversation/"+cid)
         self.assertEqual(code,200)
         self.assertEqual(state["turns"][0]["trigger_kind"],"LOCAL_HTTP_REQUEST")
+
+    def test_same_turn_id_different_conversations_have_distinct_receipts(self):
+        a,b=self.create(),self.create()
+        self.assertNotEqual(a,b)
+        for cid in (a,b):
+            status,answer=self.request("POST","/api/turn",{
+                "conversation_id":cid,"turn_id":"identical","prompt":"Same",
+                "epoch":1})
+            self.assertEqual(status,200)
+            self.assertEqual(answer["state"],"COMMITTED")
+        self.assertNotEqual(self.calls[-1][2],self.calls[-2][2])
+        self.assertTrue(self.calls[-1][2].startswith("rb-"))
+        self.assertEqual(len(self.calls[-1][2]),67)
+
+    def test_receipt_replay_and_wrong_identity_not_committed(self):
+        cid=self.create()
+        payload={"conversation_id":cid,"turn_id":"foreign","prompt":"safe",
+                 "epoch":1}
+        import rickbar_local_web_r1 as surface
+        for wrong in (
+            {"status":"REPLAY","work_id":"irrelevant",
+             "response":"untrusted","receipt_sha256":"a"*64},
+            {"status":"RECORDED_UNVERIFIED","work_id":"other",
+             "response":"untrusted","receipt_sha256":"a"*64},
+            {"status":"RECORDED_UNVERIFIED","work_id":"rb-not-current",
+             "response":"untrusted","receipt_sha256":"a"*64},
+        ):
+            new_id=payload["turn_id"]+"-"+wrong["status"]+"-"+wrong["work_id"]
+            payload["turn_id"]=new_id[:90].replace(" ","")
+            def fake(context,model,receipt_dir,work_id):
+                return wrong
+            result=surface.act(self.store,payload,"fixture-local-model",
+                               self.temp.name,bridge=fake)
+            self.assertEqual(result["state"],"MODEL_RECEIPT_UNVERIFIED")
+            state=self.store.state(cid)
+            self.assertNotIn("COMMITTED",
+                             [t["status"] for t in state["turns"]])
+            self.assertEqual(state["turns"][-1]["status"],"INDETERMINATE")
+
+    def test_scoped_receipt_id_is_deterministic(self):
+        from rickbar_local_web_r1 import scoped_receipt_work_id
+        x=scoped_receipt_work_id("conversation-a","same-turn")
+        self.assertEqual(x,scoped_receipt_work_id("conversation-a","same-turn"))
+        self.assertNotEqual(x,scoped_receipt_work_id("conversation-b","same-turn"))
+        self.assertNotEqual(x,scoped_receipt_work_id("conversation-a","different"))
 
     def test_new_turn_uses_prior_context(self):
         cid=self.create()
