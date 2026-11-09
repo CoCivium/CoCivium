@@ -1,6 +1,10 @@
 # CoPreGeneric+ | Shareable public-safe candidate set
 Observed: 2026-11-09. WorkID: `CoAll.CoPreGeneric.CrossAudience.20261109`. Source state: DRAFT PR, not accepted canon, independent mirror, autonomous receiver or runtime.
 
+## Machine pull: CoSeed / CoPath
+
+[Typed CoSeed and CoPath discovery manifest](../../../ai/onramp/copregeneric-seed-path-discovery-r0.json) connects the machine/bootstrap, human rebound hub, historical echo and review routes. These are eligible paths, not executed sessions, universal integration or receiver ACK. Each front may fetch only its scoped relevant work.
+
 ## Four companion assets
 
 | Asset | Use | Exact Git blob at first readback |
