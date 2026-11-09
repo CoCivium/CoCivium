@@ -51,3 +51,15 @@ The [cross-media manifest compiler](relational_media_manifest_r0.py), [synthetic
 The public diagram excludes the private synthetic draft node; a private-only revision cannot alter its public projection hash. All source/fixture/diagram and test Git blob readbacks were verified; local tests passed in an isolated fixture. Media bytes, playback, perceptual/semantic parity, real recipient involvement and live renderer updates remain **NOT_TESTED**.
 
 The existing [CoLiving-media CI workflow](../../.github/workflows/co-living-media-r0.yml) now checks exact source-to-diagram parity as well as the test suites. No new scheduler, graph authority or public release was created. Historical versions and independently supported projections remain available.
+
+
+## CoNav+ retroactive diagram-of-diagrams R0
+
+The [expandable, static HTML CoNav source map](conav_navigator_r0.html) and its [Mermaid plus accessible-text twin](conav_diagram_r0.md) are generated from the [five-item public retro candidate manifest](conav_retro_manifest_r0.json) by [this read-only source validator/renderer](conav_retro_r0.py). The diagram has an overall CoAll root and separate CoMap, CoMedia, and CoLUE subdiagrams, initially just labeled boxes and connecting lines. Each candidate is a version-pinned public **source pointer**, not copied media or confirmed adoption into the inspiration corpus.
+
+**Proof scope:** 18/18 local Python negative and replay tests passed. The public HTML also passed two isolated Chromium viewports (desktop and mobile) using `page.set_content` with keyboard/touch-compatible native `details/summary` expansion and no horizontal overflow; direct `file://` navigation was blocked by the test environment and is not claimed. The existing CoLiving/CoMail CI now checks exact source Git blobs and regenerated views. Its new-run result remains unverified.
+
+**Retro scope:** Only five named public examples have been indexed here. Separately discovered private screenshots remain local evidence candidates: never copy their bytes, private hashes, contents, or recipient information to this public navigator. Unknown rights, missing semantic review, unindexed historical files, and receiver pickup remain explicit holds. Other CoMap/CoOrb/CoBook projections can use these links for authorized research without automatically running models, posting messages, or promoting a design.
+
+`RENDER_NE_INSPIRATION_ADOPTION` | `PUBLIC_POINTER_NE_COPY_RIGHTS` | `GRAPH_NE_CROSS_SESSION_SYNC` | `PRIVATE_ONLY_CHANGE_NE_PUBLIC_REVISION` | `SOURCE_LANDED_NE_RECEIVER_PICKUP`.
+
