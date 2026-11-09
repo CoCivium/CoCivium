@@ -114,5 +114,21 @@
     "GITHUB_NE_CUSTODY_ROOT",
     "MACHINE_INDEX_NE_CANON",
     "PUBLIC_SOURCE_NE_PUBLICATION_ACROSS_MIRRORS"
-  ]
+  ],
+  "retroactive_front_continuity": {
+    "status": "SOURCE_PROTOTYPE_IN_DRAFT_PR_UNMERGED",
+    "pr": "https://github.com/CoCivium/CoCivium/pull/428",
+    "source": "scripts/CoFrontEchoCoverageR0.py",
+    "tests": "scripts/test_CoFrontEchoCoverageR0.py",
+    "rules": [
+      "NO_DISCOVERED_FRONT_SILENTLY_DISAPPEARS",
+      "UNSCANNED_WINDOWS_REMAIN_UNSCANNED",
+      "PRIVATE_CUSTODY_NE_PUBLIC_BACKFILL",
+      "CHRONOLOGY_AND_LOSS_RISK_GUIDE_SCOPED_ECHO_SWEEPS",
+      "REPEATED_ECHO_NE_NEW_FRONT",
+      "SUPERSEDED_REQUIRES_EXPLICIT_SUCCESSOR",
+      "QUALIFIED_REQUIRES_EVIDENCE"
+    ],
+    "next": "After passing CI, test bounded rights-cleared historical source windows and compare front/WorkID relations without treating historic coverage as complete."
+  }
 }
