@@ -1,0 +1,84 @@
+{
+  "schema": "cocivium.copregeneric.latch_ready_cycle.r0",
+  "status": "DRAFT_DESIGN_NOT_RUNTIME_PROOF",
+  "title": "CoPreGeneric DRAFT Ready Cycle | CoLatch + CoReGroup + CoBoogie + Break Glass",
+  "version": "R0",
+  "canonical_verified_repo": "https://github.com/CoCivium/CoCivium",
+  "proposed_unverified_mirrors": [
+    "https://github.com/CoCivium/CoPreGeneric",
+    "https://CoCivium.org/CoPre",
+    "https://InSeed.com/Stead"
+  ],
+  "interface": {
+    "seed": "one versioned manifest pointer to content-addressed records; not a single point of failure",
+    "orb": "one coherent status surface rendering evidence, blockers, and next act",
+    "gauge": "one composite evidence-grounded score with published components; never conceal blockers in averages",
+    "thumb": "one short stable pointer-only action, idempotent and reversible",
+    "time": "one UTC source field plus observed_at, source clock, skew, and monotonic elapsed where supported",
+    "placeholders": 0
+  },
+  "cycle": [
+    "Discover divergent opportunities across fronts",
+    "CoReGroup source-bound records and conflicts",
+    "CoBoogie run bounded diverse experiments",
+    "Challenge with independent adversaries and inverse hypotheses",
+    "Deduplicate by identity, content hash and causal equivalence",
+    "Verify via repeated controls and novel holdouts",
+    "Publish only consented sanitized artifacts and SHA receipts",
+    "Latch durable checkpoint and tested handoff",
+    "Stop this cycle on diminishing expected information gain; schedule triggers for future reevaluation"
+  ],
+  "wave_policy": {
+    "exploration": "Prefer diverse independent hypotheses, modalities, time horizons and failure modes",
+    "replication": "Repeat identical trials when needed for falsifiability, reproducibility and drift detection",
+    "novelty_measure": "Measure semantic and causal novelty rather than enforcing unique wording",
+    "no_infinite_spin": "Bound compute, cost and risk; no claim of exhausting all possible improvements"
+  },
+  "gates": {
+    "seed_survives_24h": "NOT_TESTED; requires durable external store, kill/restart and delayed verification",
+    "handoff_once": "NOT_TESTED; requires independent consumer read, acknowledge and receipt",
+    "system_1_user_0": "NOT_PROVEN; requires authenticated receiver, scheduled or event-driven workers and safe actuation",
+    "cross_session_sync": "NOT_PROVEN; independent sessions cannot be assumed to read each other's context",
+    "mirrors_identical": "NOT_PROVEN; require exact bytes and SHA-256 comparison for all endpoints",
+    "public_release": "Draft-only safe publication, not authorization for personal data, secrets or credentials"
+  },
+  "break_glass": [
+    "Fail closed on missing evidence, unsafe privacy, stale authority or conflicting writers",
+    "Preserve last known good checkpoint and non-destructive incident record",
+    "One elected actuator; observers may propose but not race writes",
+    "Require human approval for irreversible, financial, credential, personal outreach, canon or authority changes",
+    "Reconcile with content hashes, compare-and-swap leases, replay-safe event IDs"
+  ],
+  "receipt_schema": {
+    "event_id": "UUID or stable dedupe ID",
+    "seed_ref": "content-addressed pointer",
+    "parent_ref": "prior checkpoint",
+    "artifact_sha256": "SHA-256 of exact bytes",
+    "source": "verified source identity",
+    "observed_at_utc": "UTC timestamp",
+    "actor": "authorized writer identity",
+    "action": "operation and scope",
+    "status": "PROPOSED | TESTED | VERIFIED | HELD | FAILED",
+    "evidence_refs": "test, commit and read-back links",
+    "supersedes": "explicit prior version refs",
+    "unknowns": "CoNull+ unresolved claims"
+  },
+  "metrics": [
+    "durable_recovery_rate",
+    "handoff_success_rate",
+    "independent_reproduction_rate",
+    "mean_time_to_detect",
+    "mean_time_to_recover",
+    "verified_novelty_per_cost",
+    "cross_front_reuse_rate",
+    "false_pass_rate",
+    "human_interventions_per_cycle",
+    "privacy_leakage_incidents"
+  ],
+  "next_test": "Create a non-sensitive seed and receipt; verify exact bytes from independent consumer after 24h, with one restart and one handoff; no success claim before evidence.",
+  "relations": [
+    "CoPre/CiPre/CoPrompt are interface aliases pending explicit version mapping",
+    "CoEv+ operates over the bounded cycle and source-bound evolutionary receipts",
+    "CoHog+ adversarial feedback may provide challenges and independent rewards but no live bounty is asserted"
+  ]
+}
