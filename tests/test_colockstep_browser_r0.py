@@ -31,7 +31,7 @@ def launch_browser(playwright):
                        ("google-chrome", "google-chrome-stable",
                         "chromium", "chromium-browser") if shutil.which(name)),
                       None)
-    options = {"executable_path": executable} if executable else {"channel": "chrome"}
+    options = {"executable_path": executable} if executable else {}
     return playwright.chromium.launch(
         headless=True, args=["--no-sandbox", "--disable-dev-shm-usage"],
         **options)
