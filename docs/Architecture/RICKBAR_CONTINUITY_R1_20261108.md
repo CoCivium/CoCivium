@@ -40,6 +40,14 @@ Then browse to http://127.0.0.1:8766. This is a local browser prototype, not ins
 
 Record for each attempt: WorkID, ConversationID, TurnID, event time, observer, trigger_kind = USER_TURN / SCHEDULED / EVENT / MANUAL_OPERATOR / UNKNOWN, source revision, model/provider, authorization, output hash, receiver readproof, checkpoint, next wake and limitations. Never infer a cause from an unsourced next-morning status. GitHub commits indicate repository work, not whether a schedule, mobile session or independent agent caused it. For an unavailable source, use UNKNOWN.
 
+## Model receipt namespace and replay barrier (2026-11-09)
+
+The R1 HTTP adapter now derives its model-output receipt WorkID from **both** ConversationID and TurnID. A bare turn number is only unique *within* a conversation, so using it as a global receipt filename could make two unrelated conversations collide. The derived bounded ID is deterministic and SHA-256-based; it protects the receipt namespace, not privacy or authorization.
+
+A newly reserved turn accepts only a **fresh** `RECORDED_UNVERIFIED` model result that returns the matching WorkID and syntactically valid digest. `REPLAY`, `CONFLICT`, absent identity, or foreign receipt identity cannot be silently promoted to a new committed reply. Ambiguity remains `INDETERMINATE`; no automatic model retry or data deletion. This is local consistency, **not** an authenticated receipt from an independent receiver or proof the model's answer is true.
+
+Existing raw receipt files are not rewritten or deleted. No local data or credentials are published.
+
 ## Trigger provenance R1 extension (source candidate)
 
 The persisted `trigger_kind` now distinguishes `UNKNOWN`, `LOCAL_HTTP_REQUEST`, `SCHEDULED`, `EVENT` and `MANUAL_OPERATOR` on every *new* turn. The additional `trigger_evidence` records `NONE`, `LOOPBACK_REQUEST_OBSERVED_USER_UNAUTHENTICATED`, or `PRODUCER_CLAIM_UNVERIFIED`. Model-output receipt hashes and local readback include both fields. Previous R1 SQLite rows migrate to `UNKNOWN/NONE` without reclassifying historical activity.
