@@ -41,6 +41,10 @@ New [CoObjectAgencyBridgeR0.py](../../scripts/CoObjectAgencyBridgeR0.py) reuses 
 
 This is **a tested partial bridge between unlike source objects and the agent selection problem**, not an agentic operating system. Triggers are producer-asserted, not authenticated events; qualified worker registry/actual dispatch, user-consent enforcement, multi-agent challenge, semantic accuracy, C3 product completion and cross-cell recovery are still **HELD**.
 
+## Public checked-in CoObject → proposed action receipt
+
+[Exact GitHub Actions run 42609889376](https://github.com/CoCivium/CoCivium/actions/runs/42609889376) completed SUCCESS, executing the 31 negative/positive tests and an extra **real checked-in public policy object** integration. CI read `ai/vitality/coobject-vitality-policy-r0.json`, computed actual SHA-256 `24a42d99690a0870857524e28a2b33c7b022af8367f166567d6c35d528c165a8`, and fed a **synthetic, producer-asserted** material-revision event into the bridge. It emitted `REQUEST_SCHEMA_AND_RIGHTS_REVIEW` with structural proposal receipt digest `2212c411a111ef8a6971f63f29d3f723b2a31cd397d13aa60c27435c4619941e`, `VERIFIED_LOCAL`, `workers_spawned=0`, `receiver_ack=false`. This is not a verified real source-change event or actual AI review, but it proves an existing non-code policy artifact can participate in the proposal grammar without executing its embedded text.
+
 ## External interoperability research candidates (checked 2026-11-09)
 
 Do not invent a proprietary CoAll protocol for every established layer. Candidate *standards donors* to evaluate, never claimed adopted/deployed:
