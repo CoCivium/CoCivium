@@ -132,3 +132,43 @@ No provider account creation is required.
 `PROVIDER_FAILURE_NE_WORK_IDENTITY_FAILURE`
 `LOCAL_MODEL_NE_AUTOMATICALLY_PRIVATE_FOR_ALL_DATA`
 `USER_NE_SESSION_OPERATOR`
+
+
+## CoDiscovery+ external resource qualification and independent model federation (2026-11-08)
+
+**State:** PUBLIC_RESOURCE_RESEARCH_CANDIDATE; neither credentialed provider enrollment nor autonomous cross-platform pickup is established. This augments the existing adapter contract rather than replacing it. Do not represent a user-reported WhatsApp/Meta AI exchange, local Ollama source, or other ChatGPT window as an independently acknowledged active agent.
+
+### Diverse contributor classes
+
+1. **Local/open models:** Ollama and compatible authorized local runtimes for private, repeatable tasks. Source code and earlier observations do not prove the current X2 runtime.
+2. **Hosted frontier and specialist models:** explicitly authorized commercial APIs, with independent failure-domain, task capability, permission, retention, cost and terms checks.
+3. **Multi-provider discovery/hosting:** Hugging Face Inference Providers (https://huggingface.co/docs/inference-providers) exposes multiple providers, language/vision/embedding/audio and related tasks. Qualify the *actual underlying model and serving provider*, not merely the common gateway; the same base model hosted twice is not independent evidence.
+4. **Scholarly discovery substrate:** OpenAlex (https://help.openalex.org/api/), Semantic Scholar Academic Graph (https://api.semanticscholar.org/api-docs/graphs), and Crossref (https://www.crossref.org/documentation/retrieve-metadata/rest-api/) expose structured works, identifiers, references and/or provenance. Cross-check sources, deduplicate by DOI and other stable IDs, inspect retractions, versions, licenses, dates, and known coverage bias. Metadata is not proof of article claims.
+5. **Specialist systems and tools:** search indexes, code execution/test systems, symbolic solvers, libraries, datasets, accessibility and translation tools, domain expert review, deterministic validators. Not every useful contributor needs to be an LLM.
+6. **Human contributors:** consenting domain experts and affected communities can contribute knowledge, dissent, qualitative outcomes and governance review. Human assent is not presumed by AI recommendations.
+
+### Discovery-to-production rail
+
+`DISCOVER -> LICENSE/RIGHTS CHECK -> CAPABILITY PROBE -> PRIVACY/COST PREFLIGHT -> BENCHMARK -> DIVERSE CHALLENGE -> QUALIFY -> TASK LEASE -> INDEPENDENT RESULT READBACK -> MONITOR -> REQUALIFY/RETIRE`.
+
+Register `resource_id, stable_provider_id, model_id_and_version, underlying_model_family, modality, capabilities, limitations, license, data_residency, retention, auth_state, terms_checked_at, freshness, cost_basis, latency_sample, benchmark_refs, failure_domain, provenance, permission_scope, current_status, recovery_route, nonclaims`. Unknown fields remain UNKNOWN rather than fabricated. Search and refresh available resources periodically only where an actual authorized scheduler/receiver is installed; merely publishing this contract is not ongoing monitoring.
+
+### Research/curation work object
+
+`question -> search_queries -> source_records -> identity_dedup -> evidence extraction -> contradiction/retraction checks -> independent model syntheses -> expert or deterministic challenge -> uncertainty map -> curated answer -> citations and content-rights -> successor checkpoint`.
+
+Use source IDs/DOIs and verifiable passages, not a generated bibliography alone. Preserve separate evidence quality and model confidence. Avoid copying restricted full texts into public artifacts. Capture missed-findings audits and negative results.
+
+### Anti-monoculture and routing
+
+- Different providers do not guarantee independent reasoning: track model lineage, training overlap, shared sources, prompts and routing provider. Reward *independent checks* rather than number of model responses.
+- Split research into independent retrieval, synthesis, adversarial challenge, factual/identifier verification and integration roles. Blind or stagger initial proposals where feasible to reduce anchoring.
+- Route simple deterministic work to programs, not expensive models. Escalate specialist tasks only when measured gain exceeds costs and risks.
+- Require one fenced effect writer, budget ceilings, consent and privacy gates, independent receiver receipts and a recoverable WorkID.
+- Allow healthy idle/sleeping workers; no fake heartbeat or forced participation. External vendor accounts remain separately authenticated.
+
+### First falsifiable federation trial (NOT_RUN)
+
+A public-safe research question with stable source corpus goes to (A) local model, (B) an independently qualified external model, (C) non-LLM scholarly metadata verification, and (D) a challenge/curation reviewer. Compare independent source recall, factual accuracy, citation correctness, contradictory-paper discovery, latency, total cost, privacy exposure, and incremental gain over the best single-worker baseline. Keep errors and cases where the federation loses. A written plan is not proof that these workers executed.
+
+**Priority:** recover a functioning X2 RickBar/CoBar receiver and a local Ollama roundtrip, then attach one authorized external model and an independent structured research source. Preserve the earlier working UX and Break Glass.

@@ -6,6 +6,16 @@
 
 [Machine contract, evidence and exact observed revisions](../../ai/onramp/ai-ia-evergreen-r0.json) · [AI Discovery Policy](../AI_DISCOVERY_POLICY.md) · [existing machine bootstrap](../../ai/session-bootstrap.json) · [one-task human onramp](COCIVIA_FIRST_USE_R0.md) · [CoModelFabric / CoOrb provider candidates](../Architecture/COMODELFABRIC_COORB_PROVIDER_ADAPTERS_R0_20261024.md).
 
+## November 8, 2026 | CoGoAll / CoOmni catch-up route
+
+**One link to share:** this Evergreen onramp remains the stable entry address. The [CoOmni catch-up hub](AI_ONRAMP_CATCHUP_HUB_20261108.md) and [26-entry machine-readable public-source manifest](../../ai/onramp/cogoall-catchup-20261108.json) extend this onramp. [PR #382](https://github.com/CoCivium/CoCivium/pull/382) preserves the review lineage. Check the currently selected branch and revision when reading; public source availability is **not** deployment, cross-session synchronization, or independently confirmed uptake.
+
+The revised catch-up explains the open intelligence commons, source-backed work on RickBar and local Ollama, CoMindshare+/CoModelFabric+ ambitions, evidence and recovery boundaries, and useful optional links. It does not assert a live multi-model federation, WhatsApp/Meta AI ingestion, CoStead acceptance, or a thousand verified pages.
+
+**Recommended channel handoff:** an authorized participant shares this one URL voluntarily; the recipient may read, summarize or challenge the available public evidence. No WhatsApp application, Meta AI chat, crawler, or provider session is required for CoOrb to retain its own continuity. `PUBLISHED_NE_RECEIVED`, `RECEIVED_NE_ACCEPTED`, `MODEL_RESPONSE_NE_CROSS_MODEL_SYNC`.
+
+---
+
 ## What is truly available?
 
 The public `ai/index.json` and `ai/session-bootstrap.json` **exist** and were read with exact Git object identities. The [EVO ALL BETTERS+ latch](../../ai/colatch_evo_all_betters_r0.json) explicitly says `PUBLIC_SHARED_SOURCE_CANDIDATE__NOT_LIVE_SYNC_RUNTIME`. A public [CoOrbWare First Look source](https://github.com/CoCivium/CoAcademy/blob/master/docs/coorb/index.html) exists, but hosted and device-specific independent acceptance remains separate.

@@ -123,3 +123,49 @@ Measure task outcome, unmet-need coverage, optionality retained, verified relati
 **VERIFIED_EXPERIMENT -> AUTHORIZED_RUNTIME:** receiver-verified effects, bounded rollback, explicit rights/consent gates and independent operational receipts.
 
 Related source anchors: [CoGoAll outstanding register](../Operations/COGOALL_OUTSTANDING_REGISTER_20261108.md), [CoGoldenBraid discovery hub](../Onramp/COGOALL_PUBLIC_REBOUND_HUB_20261108.md), [CoLiving highlight asset contract](../Architecture/COLIVING_HIGHLIGHT_ASSETS_R0.md). Neither source publication nor recursive elegance is proof of a working braid engine.
+
+
+## G_dSide+ CoPullVector+ candidate model (R0, 2026-11-08)
+
+**Status:** PUBLIC_RESEARCH_SPEC_ONLY. The word "pull" denotes a modelled gradient among candidate futures, not a detected external force, spiritual instruction, proof of destiny or a physical field.
+
+### Typed future state, feasibility and plurality
+
+Represent a candidate future at horizon `h` as a **vector of measured or estimated dimensions** `V(x,h) = [agency, wellbeing, ecological resilience, access, trust, scientific discovery, optionality, cost, risk, ...]`. Each dimension must have an explicit definition, unit/scale, direction, baseline, time horizon, data source, confidence/uncertainty and affected population. Do not silently aggregate incommensurable units or treat speculative values as observed facts. Preserve multiple futures and Pareto trade-offs rather than nominate a universal ideal state.
+
+Let `a` be a feasible proposed action under rights/consent/resource constraints, with a stochastic transition model `P(x' | x,a,h)`. A **candidate pull vector** is the predicted change `DeltaV(a | x,h) = E[V(x',h)-V(x,h)]` accompanied by intervals/scenarios, costs, harms, feasibility and uncertainty. There is **no guarantee** the predicted change will occur or be valuable. A scalar priority may be computed with explicitly chosen, revisable weights for a *specific task*, never as an objective measure of universal goodness. An optionality component values preserving future choices; it must not excuse present harms or violate hard rights constraints.
+
+### Relations between pull vectors
+
+Vectors themselves can form typed braids: reinforcing, competing, orthogonal, cancelling, time-lagged, contingent, mutually exclusive, scale-dependent or poorly understood. Include second-order consequences: an action can change future supply, future demand, the set of possible actions, and the accuracy of the model. Store negative and null edges. Track uncertainty propagation across recursive relationships and halt expansion at measured information-gain or resource-budget limits.
+
+**Candidate record:**
+```text
+pull_candidate {
+  id, version, work_id, source_revision, baseline_state_ref,
+  population_scope, horizon, dimensions[{id, unit, baseline, predicted_delta,
+    uncertainty, evidence_refs}], intervention_ref, feasibility,
+  hard_constraints[], alternatives[], dependency_relations[],
+  competing_predictions[], validation_plan, harms[], expected_cost,
+  model_lineage[], observer, observed_at, next_review, nonclaims[]
+}
+```
+
+### CoPriMath research questions
+
+- Which dimensions have principled cardinal units, and which require ordinal/Pareto comparison?
+- How should uncertainty and irreducible ambiguity propagate through recursive braids without creating false precision?
+- Can future-directed search discover neglected needs or capabilities that supply/demand ranking misses?
+- When do multi-model ensembles merely echo shared priors, and when do they provide demonstrably independent predictions?
+- What is the simplest useful predictive model relative to a much richer "almost-specification" model, accounting for maintenance and Goodhart risks?
+
+### Falsification and CI+ acceptance proposal
+
+1. Assemble a public-safe set of *historical decision problems* with evidence available only up to each decision date; hold out later outcomes to prevent hindsight leakage.
+2. Compare equal-budget supply-only, demand-only, hybrid, single G_dSide pull, braided multi-vector pull, and simple/random baselines.
+3. Score calibration, ranking/regret, overlooked needs, false discoveries, fairness/rights, optionality, computational cost and decision usefulness. Preserve failures and cases where simpler models win.
+4. Perturb weights, missing values, delayed effects, spurious correlations, shared-source contamination, adversarial goals and nonstationary environments; verify that rankings do not become silently overconfident.
+5. Test dimensional type errors, conflicting constraints, cycles, replay determinism, source revision changes and deduplicated WorkIDs; ensure unknown remains unknown.
+6. Require an independent evidence and outcome reviewer before any "improvement" claim; no runtime authority follows from a promising numerical score.
+
+**Next bounded implementation target:** a tiny typed fixture with 2-3 proposed actions, at least 3 independently defined outcome dimensions, uncertain deltas, conflicting objectives, and an explicit baseline. Render candidate vectors in CoOrb as *hypotheses*, never as verified forces. Iterate only after an actual benchmark produces discriminating evidence.

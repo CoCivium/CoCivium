@@ -19,6 +19,7 @@
 - [X2 diagnostic record](../Evolution/COWAVE_X2_DIAGNOSTIC_20261108_R0.md): observer/clone/test constraints; disconnected bridge does not mean X2 is powered off.
 
 ## Strategy and research
+- [Frontier evidence review (2026-11-08)](../Public/COALL_FRONTIER_PUBLIC_EVIDENCE_REVIEW_R0_20261108.md): source-qualified AI capability, AutoDNA, security, SETI, unknown intelligence and falsifiable follow-up; research evidence, not a deployed agent or independent confirmation.
 - [G_dSide / CoPriMath / GS-Loop public R0](../Evolution/GDSIDE_COPRIMATH_GSLOOP_PUBLIC_R0.md): candidate future-directed valuation, typed relations, anti-loop contracts.
 - [Five-lane workpack](../Evolution/GDSIDE_FIVE_LANE_WORKPACK_R0.md): proposed parallel areas, **not** fixed worker hierarchy.
 - [CoLiving highlight assets](../Architecture/COLIVING_HIGHLIGHT_ASSETS_R0.md): receiver-relative, versioned highlights; observed version remains recoverable.
