@@ -1,0 +1,37 @@
+{
+  "schema": "cocivium.media-fabric.r0",
+  "authority": "proposal; no runtime deployment or automatic synchronization claimed",
+  "core_invariant": "Many media projections reference one versioned work/evidence identity; projections never certify their own sources",
+  "node_types": ["work", "claim", "evidence", "diagram", "audio", "video", "email_draft", "email_sent", "test", "runtime_observation", "orb_view", "onboarding_step"],
+  "edge_types": ["depicts", "explains", "derived_from", "tests", "contradicts", "supersedes", "projects", "requires_consent", "authorized_by", "observed_by", "blocks", "revives"],
+  "required_node_fields": ["id", "type", "version", "content_digest", "source_refs", "custody_scope", "lifecycle_state"],
+  "required_edge_fields": ["source_id", "target_id", "relation", "evidence_ref", "asserted_by", "status"],
+  "invariants": [
+    "A render, narration or diagram is not source evidence by itself",
+    "Transformation preserves work identity and source references",
+    "Cross-surface update requires version comparison and invalidation of stale projections",
+    "Private custody cannot become public by traversal or embedding",
+    "Conflicting observations remain separate until independently adjudicated",
+    "Every active or sleeping front retains a next trigger or retirement reason",
+    "A sender draft is not sent, and sent is not delivered or replied",
+    "Public graphs contain no real recipient addresses or private message bodies"
+  ],
+  "silo_modes": {
+    "intentional_boundary": "privacy, safety, independent challenge, least privilege",
+    "accidental_silo": "unlinked representations or work without discoverable provenance",
+    "inverse_operation": "permissioned discovery and typed cross-reference, not unrestricted data merger"
+  },
+  "synthetic_example": {
+    "work_id": "demo-outreach-001",
+    "nodes": [
+      {"id": "claim-1", "type": "claim", "version": 1, "content_digest": "synthetic", "source_refs": [], "custody_scope": "public", "lifecycle_state": "proposed"},
+      {"id": "diagram-1", "type": "diagram", "version": 1, "content_digest": "synthetic", "source_refs": ["claim-1"], "custody_scope": "public", "lifecycle_state": "drafted"},
+      {"id": "draft-1", "type": "email_draft", "version": 1, "content_digest": "synthetic", "source_refs": ["claim-1"], "custody_scope": "private", "lifecycle_state": "held"}
+    ],
+    "edges": [
+      {"source_id": "diagram-1", "target_id": "claim-1", "relation": "depicts", "evidence_ref": "synthetic", "asserted_by": "fixture", "status": "unverified"},
+      {"source_id": "draft-1", "target_id": "claim-1", "relation": "derived_from", "evidence_ref": "synthetic", "asserted_by": "fixture", "status": "unverified"}
+    ]
+  },
+  "next_qualification": "Implement permissioned graph validator and prove stale-diagram and stale-draft invalidation against changed evidence"
+}
