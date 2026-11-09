@@ -169,3 +169,11 @@ pull_candidate {
 6. Require an independent evidence and outcome reviewer before any "improvement" claim; no runtime authority follows from a promising numerical score.
 
 **Next bounded implementation target:** a tiny typed fixture with 2-3 proposed actions, at least 3 independently defined outcome dimensions, uncertain deltas, conflicting objectives, and an explicit baseline. Render candidate vectors in CoOrb as *hypotheses*, never as verified forces. Iterate only after an actual benchmark produces discriminating evidence.
+
+## CoFuture R0 executable Pareto canary (source-level test)
+
+The prior `pull_candidate` specification and historical decision-benchmark plan above remain the research authority. The [small synthetic evaluator](../../experiments/gdside/cofuture_pull_vector_r0.py) compares alternatives along separate declared axes with an explicit unit, direction, horizon and evidence pointer; the [existing CoLoop CI bridge](../../tests/gs_loop/test_cofuture_ci_bridge.py) exercises its ten deterministic tests. No additional scheduler or parallel evaluator service is created.
+
+Its falsifiers reject missing measurements, mismatched units, duplicate dimensions, nonfinite numbers, invalid horizon, absent provenance and violations of hard consent/rights/safety constraints. Two incomparable options must stay visible on the Pareto frontier; a `G_D_SIDE`-labeled proposal must be able to lose to a simpler supply baseline. This is **not** a quantitative moral ranking, divine-force detection, calibrated prediction, independent scientific replication or effect authority.
+
+**Next promotion:** pass CI on the exact published main commit; independently review a source-backed historical decision sample under an equal information/compute budget, with calibration, cost, outcome and uncertainty recorded. Preserve hypotheses and failures. A passing Python fixture cannot establish CoEx or replace a real recipient's decision.
