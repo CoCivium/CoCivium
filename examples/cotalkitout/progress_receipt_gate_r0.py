@@ -33,6 +33,10 @@ def classify(p: Pulse) -> dict:
         return {"disposition": "NO_PROGRESS_EVIDENCE", "reason": "UNBOUND_WAKE_OR_SOURCE"}
     if not p.source_checked:
         return {"disposition": "NO_PROGRESS_EVIDENCE", "reason": "SOURCE_NOT_CHECKED"}
+    if p.claimed_no_update and p.execution_attempted:
+        return {"disposition": "NO_PROGRESS_EVIDENCE", "reason": "CONTRADICTORY_NO_UPDATE_AND_EXECUTION"}
+    if not p.next_wake:
+        return {"disposition": "NO_PROGRESS_EVIDENCE", "reason": "NO_NEXT_WAKE"}
     if p.execution_attempted:
         if not p.output_digest or not p.effect_receipt:
             return {"disposition": "NO_PROGRESS_EVIDENCE", "reason": "EXECUTION_NO_RECEIPT"}
@@ -43,10 +47,10 @@ def classify(p: Pulse) -> dict:
         return {"disposition": "NO_PROGRESS_EVIDENCE", "reason": "ELIGIBLE_WORK_UNATTEMPTED"}
     if p.due_work and not p.blocked_reason:
         return {"disposition": "NO_PROGRESS_EVIDENCE", "reason": "DUE_WORK_UNACCOUNTED"}
-    if not p.next_wake:
-        return {"disposition": "NO_PROGRESS_EVIDENCE", "reason": "NO_NEXT_WAKE"}
     if p.due_work:
         return {"disposition": "WAITING_ON_EVENT", "reason": p.blocked_reason}
+    if not p.claimed_no_update:
+        return {"disposition": "NO_PROGRESS_EVIDENCE", "reason": "NO_DELTA_CLAIM_MISSING"}
     return {"disposition": "SOURCE_CLAIMED_NO_DELTA", "reason": "CALLER_ASSERTS_CURRENT_SOURCE_NO_ELIGIBLE_DELTA"}
 
 if __name__ == "__main__":
