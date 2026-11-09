@@ -5,7 +5,7 @@ const fs=require("node:fs");
 const path=require("node:path");
 const os=require("node:os");
 const {
-  generateAtlas,gitBlobSHA,securePath,checkedSource,run
+  generateAtlas,generateMegaScroller,gitBlobSHA,securePath,checkedSource,run
 }=require("./CoNavNestedAtlasR0.cjs");
 
 const root=path.resolve(__dirname,"..");
@@ -93,4 +93,67 @@ test("no effect, runtime or recipient ACK is claimed",()=>{
   assert.match(text,/Diagram boxes do not imply running agents/);
   assert.match(text,/INSPIRATION_NE_LICENSE/);
 });
+
+const retro=JSON.parse(fs.readFileSync(path.join(root,"examples/colensmedia/conav_retro_manifest_r0.json"),"utf8"));
+const megaPins={
+  graph:gitBlobSHA(fs.readFileSync(path.join(root,"ai/comap-source-projection-r0.json"))),
+  overlay:gitBlobSHA(fs.readFileSync(path.join(root,"examples/comap/prior-media-backfill-overlay-r0.json"))),
+  retro:gitBlobSHA(fs.readFileSync(path.join(root,"examples/colensmedia/conav_retro_manifest_r0.json")))
+};
+
+test("CoMegaScroller reader parity: saved HTML exactly matches three pinned input manifests",()=>{
+  const rendered=generateMegaScroller(graph,overlay,retro,megaPins);
+  assert.equal(rendered,fs.readFileSync(path.join(root,"examples/comap/megascroller-r0.html"),"utf8"));
+  assert.match(rendered,/One source spine/);
+});
+test("CoMegaScroller includes 63 cards and seven deduplicated retro sources",()=>{
+  const html=generateMegaScroller(graph,overlay,retro,megaPins);
+  assert.equal((html.match(/<article id="node-/g)||[]).length,63);
+  assert.equal((html.match(/CoSeed\/CoPath: PROPOSED/g)||[]).length,7);
+  assert.match(html,/68 total displayed relations/);
+});
+test("CoMegaScroller is offline and accessible without a running JavaScript client",()=>{
+  const html=generateMegaScroller(graph,overlay,retro,megaPins);
+  assert.match(html,/script-src 'none'/);
+  assert.match(html,/role="img" aria-label=/);
+  assert.match(html,/class="tree-alt"/);
+  assert.match(html,/<main>/);
+  assert.doesNotMatch(html,/<script[ >]/i);
+  assert.doesNotMatch(html,/<img[ >]/i);
+});
+test("CoMegaScroller cannot leak private library or email account identifiers",()=>{
+  const html=generateMegaScroller(graph,overlay,retro,megaPins);
+  assert.doesNotMatch(html,/libfile_|file_000000|\/CoEvoAll\/CoInput|@inseed\.com/i);
+  assert.match(html,/Earlier private Library visuals, screenshots, private Gmail drafts/);
+});
+test("CoMegaScroller repeated materialization produces the same exact bytes",()=>{
+  assert.equal(generateMegaScroller(graph,overlay,retro,megaPins),
+               generateMegaScroller(graph,overlay,retro,megaPins));
+});
+test("CoMegaScroller changes when its exact source graph changes",()=>{
+  const changed=copy(graph);changed.nodes[1].label="Changed source label";
+  assert.notEqual(generateMegaScroller(changed,overlay,retro,megaPins),
+                  generateMegaScroller(graph,overlay,retro,megaPins));
+});
+test("CoMegaScroller rejects private retro media, without automatic publication",()=>{
+  const changed=copy(retro);changed.candidates[0].visibility="PRIVATE_LIBRARY_SOURCE";
+  assert.throws(()=>generateMegaScroller(graph,overlay,changed,megaPins),/HOLD_RETRO_MEDIA_POLICY/);
+});
+test("CoMegaScroller rejects conflicting source pins across overlapping prior indexes",()=>{
+  const changed=copy(retro);changed.candidates[0].git_blob="0".repeat(40);
+  assert.throws(()=>generateMegaScroller(graph,overlay,changed,megaPins),/HOLD_SOURCE_PIN_COLLISION/);
+});
+test("CoMegaScroller rejects media-byte promotion and source traversal",()=>{
+  const bad=copy(overlay);bad.media_bytes_uploaded=true;
+  assert.throws(()=>generateMegaScroller(graph,bad,retro,megaPins),/HOLD_OVERLAY_POLICY/);
+  const moved=copy(retro);moved.candidates[0].source_path="../../private/source";
+  assert.throws(()=>generateMegaScroller(graph,overlay,moved,megaPins),/HOLD_RETRO_MEDIA_POLICY/);
+});
+test("CoMegaScroller keeps independent site backup and X2 acceptance unverified",()=>{
+  const html=generateMegaScroller(graph,overlay,retro,megaPins);
+  assert.match(html,/Independent backup \/ CoStead/);
+  assert.match(html,/NOT VERIFIED/);
+  assert.match(html,/No Gmail draft was read, edited or sent/);
+});
+
 process.stdout.write(JSON.stringify({suite:"CoNav.NestedAtlas.R0",passed,source_only:true})+"\n");
