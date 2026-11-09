@@ -75,7 +75,7 @@ class FrontierIndexTests(unittest.TestCase):
 
     def test_valid_resolution_pointer_only_proves_structure(self):
         previous = copy.deepcopy(self.doc)
-        self.doc["fronts"][0]["blocked_claims"].remove("CI_PASS")
+        self.doc["fronts"][0]["blocked_claims"].pop(0)
         removed_claim = previous["fronts"][0]["blocked_claims"][0]
         self.doc["fronts"][0]["claim_resolutions"] = [{
             "claim": removed_claim,
