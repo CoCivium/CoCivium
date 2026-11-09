@@ -1,0 +1,165 @@
+{
+  "schema": "CoAll.CoLatchCoPreWaveAcceptance.R0-candidate",
+  "status": "PUBLIC_SAFE_EXPERIMENT_CONTRACT_NOT_RUNNING_SERVICE_NOT_CANON",
+  "created_utc": "2026-11-09T23:26:08Z",
+  "work_id": "coall:colatch:copre-generic:wave-acceptance:r0",
+  "source_refs": [
+    "CoPre.md",
+    "ai/copre-seed-path-fabric-r0-20261109.json",
+    "ai/copre-omnidirectional-navigation-r0-20261109.json",
+    "docs/CoPreGeneric/Shareable_R0_20261109/manifest.json"
+  ],
+  "intent": "One recoverable evidence spine and many role-specific projections with diversified bounded waves; achieve machine-owned operations without claiming them before tests.",
+  "components": {
+    "one_seed": {
+      "unit": "work identity plus versioned exact-source manifest",
+      "pass": "One stable WorkID recoverable and deduped by independent reader",
+      "status": "PARTIAL_PUBLIC_SOURCE_ONLY"
+    },
+    "one_orb": {
+      "unit": "readable comprehensible human/synth projections of that same work object",
+      "pass": "Both projections render, preserve evidence and allow recovery without user as courier",
+      "status": "NOT_PROVEN"
+    },
+    "one_gauge": {
+      "unit": "truthful machine-readable evidence state, not one global success flag",
+      "pass": "Explicit per-transition qualifiers and evidence; no stale PASS",
+      "status": "PARTIAL_CONTRACT_ONLY"
+    },
+    "one_thumb": {
+      "unit": "single reversible public entry pointer with a fallback",
+      "pass": "User-authorized button fires exact pointer, no truncation, one session, rollback works",
+      "status": "NOT_VERIFIED_ON_DEVICE"
+    },
+    "one_time": {
+      "unit": "event, observed, qualified, landed, receiver-read clocks",
+      "pass": "Actual timestamps with provenance; uncertain times null",
+      "status": "PARTIAL_CONTRACT_ONLY"
+    },
+    "zero_placeholders": {
+      "unit": "unknown represented explicitly as null or HELD with a wake",
+      "pass": "No placeholder asserted as actual value or proof",
+      "status": "DESIGN_RULE"
+    },
+    "sync_by_itself": {
+      "unit": "system-owned detection, fetch, reconcile and qualified update",
+      "pass": "Independent durable receiver notices new exact source and records readproof, with no human relay",
+      "status": "NOT_PROVEN"
+    },
+    "seed_survives_24h": {
+      "unit": "persisted object exact-byte identity plus independent read at time >24 hours",
+      "pass": "Independent receipt after 24h with same exact SHA256 from durable receiver",
+      "status": "NOT_PROVEN"
+    },
+    "handoff_once": {
+      "unit": "one initiated handoff to an independently controlled authorized receiver",
+      "pass": "Independent one-time exact-object pickup receipt, no human copy/paste",
+      "status": "NOT_PROVEN"
+    },
+    "you_zero_system_one": {
+      "unit": "user relay burden zero during bounded test",
+      "pass": "Machine-owned completion and signed or attributable receipts; human gated only for consequential actions",
+      "status": "NOT_PROVEN"
+    }
+  },
+  "waves": [
+    {
+      "id": "w1",
+      "purpose": "custody-lineage proof",
+      "hypothesis": "Recovery is possible after source relocation or session loss",
+      "test": "Independent fetch original exact source and recover work ID and predecessor",
+      "falsifier": "Recovery uses remembered prose rather than exact source",
+      "method": "deterministic-read"
+    },
+    {
+      "id": "w2",
+      "purpose": "human onboarding and consent",
+      "hypothesis": "A new human can identify state and next action without understanding internal jargon",
+      "test": "Blind onboarding comprehension and safe stop/rollback exercise",
+      "falsifier": "Participant mistakes design for running feature",
+      "method": "human-usability"
+    },
+    {
+      "id": "w3",
+      "purpose": "machine portability and interruptions",
+      "hypothesis": "Portable package survives interruption and replay",
+      "test": "Rehydrate from an external receiver at a distinct time",
+      "falsifier": "Needs session-specific hidden context",
+      "method": "fault-injection"
+    },
+    {
+      "id": "w4",
+      "purpose": "adversarial CoHog+ inversion",
+      "hypothesis": "Independent criticism improves verified outcomes more than ceremonial approvals",
+      "test": "Reward reproducible flaws and compare information gain with baseline",
+      "falsifier": "Attack surface or noise grows without quality gain",
+      "method": "challenge-baseline"
+    },
+    {
+      "id": "w5",
+      "purpose": "co-synthverse/co-bioverse translation loss",
+      "hypothesis": "Two diverse projections preserve same facts without interface mimicry",
+      "test": "Compare machine schema and accessible human view against one frozen source",
+      "falsifier": "Meaning, dissent or permission disappears in translation",
+      "method": "cross-modal-comparison"
+    },
+    {
+      "id": "w6",
+      "purpose": "retro-predictive inversion",
+      "hypothesis": "Historic warning evidence can improve future experiment selection",
+      "test": "Pre-register future test from an independently sourced older warning",
+      "falsifier": "Retrodiction offered as prediction or chronology silently changed",
+      "method": "time-separated-challenge"
+    }
+  ],
+  "wave_diversity_rule": "Different objectives, source sets, tools, falsifiers or failure models; same mandatory privacy, evidence, reproducibility and rollback controls. No arbitrary uniqueness constraint that prevents necessary replication.",
+  "stopping_rule": {
+    "bounded": "Stop when expected verified marginal gain is below explicit task threshold for two consecutive distinct challenge methods, or when safety, cost, time or authority budget expires.",
+    "continuity": "Keep unresolved hypothesis queue, named next wake, and exact last-known-good. Do not claim exhausted global possibility space.",
+    "zero_drag": "Reuse source/cached proof; do not respawn work on identical prompts."
+  },
+  "lifecycle": [
+    "DISCOVERED_LOCAL",
+    "VERIFIED_LOCAL",
+    "LANDED",
+    "PICKED_UP",
+    "INTEGRATED",
+    "COEX"
+  ],
+  "break_glass": [
+    "privacy promotion",
+    "unsupported divine or AGI operational authority",
+    "conflicting WorkID/receiver authority",
+    "unverified runtime claim",
+    "nonreversible effects",
+    "unresolved merge collisions",
+    "false 24h persistence claim"
+  ],
+  "mirrors": [
+    {
+      "url": "https://github.com/CoCivium/CoPreGeneric",
+      "state": "GITHUB_API_404_FOR_REQUESTED_REPO"
+    },
+    {
+      "url": "https://CoCivium.org/CoPre",
+      "state": "INDEPENDENT_HTTP_READ_UNVERIFIED"
+    },
+    {
+      "url": "https://InSeed.com/Stead",
+      "state": "INDEPENDENT_HTTP_READ_UNVERIFIED"
+    },
+    {
+      "url": "https://github.com/CoCivium/CoCivium/blob/main/CoPre.md",
+      "state": "GITHUB_CONNECTOR_READABLE_PUBLIC_REPO"
+    }
+  ],
+  "nonclaims": [
+    "NO_UNATTENDED_SYNC_PROVEN",
+    "NO_OVER_24H_SURVIVAL_PROVEN",
+    "NO_INDEPENDENT_HANDOFF_PROVEN",
+    "NO_MOUSE_ACTUATION_PROVEN",
+    "NO_CROSS_SESSION_GLOBAL_SYNC",
+    "NO_AGI_OR_SENTIENCE_PROOF",
+    "NO_CANON_RUNTIME_COEX_OR_PUBLIC_MIRROR_PROMOTION"
+  ]
+}
