@@ -1,0 +1,132 @@
+{
+  "schema": "CoAll.CoPreGeneric.SeedPathDiscovery.R0",
+  "state": "PUBLIC_SAFE_DRAFT__NOT_GLOBAL_INTEGRATION",
+  "work_id": "CoAll.CoPreGeneric.CrossAudience.20261109",
+  "observed_date": "2026-11-09",
+  "public_source": {
+    "repo": "CoCivium/CoCivium",
+    "branch": "candidate/copregeneric-synth-bio-pull-20261109",
+    "human_index": "docs/Onramp/CoPreGenericShareR0/README.md",
+    "machine_delta": "ai/onramp/copregeneric-session-delta-20261109.json",
+    "retro_echo": "ai/onramp/copregeneric-retro-echo-sample-20261109.json"
+  },
+  "seedables": [
+    {
+      "id": "CoPreGeneric.OperatingKernel",
+      "kind": "CANDIDATE_OPERATING_SEED",
+      "source": "docs/Onramp/CoPreGenericShareR0/CoPreGeneric-v1.0-DRAFT.md",
+      "effect": "PUBLIC_DISCOVERY_ONLY"
+    },
+    {
+      "id": "CoPreGeneric.CoAckRewise",
+      "kind": "PRESERVATION_SEED",
+      "source": "docs/Onramp/CoPreGenericShareR0/CoAckRewise-v8.74.md",
+      "effect": "PUBLIC_DISCOVERY_ONLY"
+    },
+    {
+      "id": "CoPreGeneric.DevFeedback",
+      "kind": "CANDIDATE_REPRODUCTION_SEED",
+      "source": "docs/Onramp/CoPreGenericShareR0/CoFeedLoop-Devs.md",
+      "effect": "NO_VENDOR_DELIVERY"
+    },
+    {
+      "id": "CoPreGeneric.InstanceComparison",
+      "kind": "CANDIDATE_BENCHMARK_SEED",
+      "source": "docs/Onramp/CoPreGenericShareR0/CoMindspace-Map.md",
+      "effect": "NO_SESSION_INSPECTION"
+    }
+  ],
+  "paths": [
+    {
+      "id": "Path.Machine",
+      "from": "SESSION_BOOTSTRAP.md",
+      "via": [
+        "ai/session-bootstrap.json",
+        "ai/onramp/copregeneric-session-delta-20261109.json"
+      ],
+      "to": "docs/Onramp/CoPreGenericShareR0/README.md",
+      "requires": [
+        "PUBLIC_SOURCE_ACCESS",
+        "SOURCE_REVISION_BINDING"
+      ]
+    },
+    {
+      "id": "Path.Human",
+      "from": "docs/Onramp/COGOALL_PUBLIC_REBOUND_HUB_20261108.md",
+      "via": [
+        "docs/Onramp/CoPreGenericShareR0/README.md"
+      ],
+      "to": "docs/Onramp/CoPreGenericShareR0/CoPreGeneric-v1.0-DRAFT.md",
+      "requires": [
+        "ACCESSIBILITY",
+        "EVIDENCE_CLASS_PRESERVED"
+      ]
+    },
+    {
+      "id": "Path.Retro",
+      "from": "ai/onramp/copregeneric-retro-echo-sample-20261109.json",
+      "via": [
+        "docs/Architecture/COEVO_ELIGIBILITY_PRESERVATION_R0_20261025.md"
+      ],
+      "to": "docs/Onramp/CoPreGenericShareR0/README.md",
+      "requires": [
+        "UNKNOWN_COVERAGE_EXPLICIT",
+        "NO_HISTORICAL_SOURCE_OVERWRITE"
+      ]
+    },
+    {
+      "id": "Path.Review",
+      "from": "docs/Onramp/CoPreGenericShareR0/CoFeedLoop-Devs.md",
+      "via": [
+        "https://github.com/CoCivium/CoCivium/pull/426"
+      ],
+      "to": "AUTHORIZED_REVIEW",
+      "requires": [
+        "NO_SELF_MERGE",
+        "NO_FAKE_RECEIVER_ACK"
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "CoPreGeneric.OperatingKernel",
+      "type": "RELATED_TO",
+      "to": "CoPreGeneric.DevFeedback",
+      "verified_semantics": "CANDIDATE"
+    },
+    {
+      "from": "CoPreGeneric.CoAckRewise",
+      "type": "PRESERVATION_GUARD_FOR",
+      "to": "CoPreGeneric.OperatingKernel",
+      "verified_semantics": "CANDIDATE"
+    },
+    {
+      "from": "CoPreGeneric.InstanceComparison",
+      "type": "CHALLENGES",
+      "to": "CoPreGeneric.OperatingKernel",
+      "verified_semantics": "CANDIDATE"
+    }
+  ],
+  "unresolved": {
+    "unscanned_historical_fronts": "UNKNOWN",
+    "domain_cocivium_org_copre": "NOT_VERIFIED",
+    "domain_inseed_com_stead": "NOT_VERIFIED",
+    "distinct_copregeneric_repo": "NOT_VERIFIED",
+    "third_party_receiver": "UNPROVEN",
+    "coex": "UNPROVEN",
+    "live_sync": "UNPROVEN"
+  },
+  "recovery": {
+    "last_good_source": "SESSION_BOOTSTRAP.md",
+    "fallback": "docs/Onramp/COGOALL_PUBLIC_REBOUND_HUB_20261108.md",
+    "read_only": true
+  },
+  "nonclaims": [
+    "PUBLIC_SOURCE_NE_RECEIVER_PICKUP",
+    "PROPOSED_PATH_NE_EXECUTED_PATH",
+    "DRAFT_NE_CANON",
+    "SOURCE_RELATION_NE_SEMANTIC_INGESTION",
+    "NO_GLOBAL_COMPLETE_HISTORICAL_SCAN",
+    "GITHUB_NE_INDEPENDENT_MIRROR"
+  ]
+}
