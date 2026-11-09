@@ -15,6 +15,9 @@ on:
       - "scripts/CoWaveOverlapGuardR0.py"
       - "scripts/CoStatusOffloadR0.py"
       - "scripts/CoPreUptakeBridgeR0.py"
+      - "scripts/CoPreRecoveryABR0.py"
+      - "docs/Operations/wave-renders/copre-recovery-ab-20261109/BEGIN.md"
+      - "docs/Operations/wave-renders/copre-recovery-ab-20261109/END.md"
       - "docs/Operations/wave-renders/copre-couptake-20261109/BEGIN.md"
       - "docs/Operations/wave-renders/copre-couptake-20261109/END.md"
       - "docs/Architecture/COSTATUS_OFFLOAD_SHARED_HEAD_R0_20261109.md"
@@ -34,6 +37,7 @@ on:
       - "scripts/CoPreContinuationR0.py"
       - "scripts/CoWaveOverlapGuardR0.py"
       - "scripts/CoStatusOffloadR0.py"
+      - "scripts/CoPreRecoveryABR0.py"
       - "scripts/CoPreInvariantGuardR0.py"
       - ".github/workflows/copre-next-r0.yml"
 
@@ -247,4 +251,43 @@ jobs:
           print("PASS_COPRE_UPTAKE_SEPARATE_SOURCE_RENDER_ENDCAPS_R0")
           print("BEGIN_COMMIT="+ac)
           print("END_COMMIT="+ec)
+          PY
+      - name: Compare full packet versus WorkID pointer for bounded synthetic failure cases
+        run: |
+          git fetch --no-tags origin 248d3f3bc4836bb2b42378152f087221494cf0bc
+          python3 -B scripts/CoPreRecoveryABR0.py --selftest --repo-root . > /tmp/copre-recovery-ab-r0.json
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          v=json.loads(Path("/tmp/copre-recovery-ab-r0.json").read_text())
+          assert v["schema"]=="CoCivium.CoPreRecoveryAB.R0.v0.1"
+          assert v["tests"]==v["passed"]==12
+          assert v["pointer_bytes"] < v["full_packet_bytes"]
+          assert v["remote_storage"]=="NOT_TESTED"
+          assert v["receiver_pin"]=="SELF_GENERATED_NOT_INDEPENDENT"
+          assert v["external_receiver_ack"]=="UNPROVEN"
+          assert v["effects_performed"]==0
+          cases={c["case"]:c for c in v["cases"]}
+          assert cases["source_resolver_unavailable"]["pointer"]=="HOLD_SOURCE_UNAVAILABLE"
+          assert cases["source_resolver_unavailable"]["full"]=="LOCAL_SOURCE_AND_WORK_CONTRACT_MATCH_ONLY"
+          assert cases["full_pin_mismatch"]["full"]=="HELD_OUTER_SOURCE_PIN"
+          print("PASS_COPRE_RECOVERY_AB_R0")
+          print(json.dumps({k:v[k] for k in ("pointer_bytes","full_packet_bytes","relative_full_to_pointer","tests","passed","remote_storage","external_receiver_ack")},sort_keys=True))
+          PY
+      - name: Verify separate BEGIN and END A/B render source commits
+        run: |
+          python3 - <<'PY'
+          import subprocess
+          from pathlib import Path
+          folder="docs/Operations/wave-renders/copre-recovery-ab-20261109/"
+          a,b=folder+"BEGIN.md",folder+"END.md"
+          first,last=Path(a).read_text(),Path(b).read_text()
+          assert "CoPreRecoveryAB.R0" in first and "CoPreRecoveryAB.R0" in last
+          assert "INTENT_ONLY" in first and "SOURCE_LANDED_CI_PENDING" in last
+          c1=subprocess.check_output(["git","log","-1","--format=%H","--",a],text=True).strip()
+          c2=subprocess.check_output(["git","log","-1","--format=%H","--",b],text=True).strip()
+          assert c1 and c2 and c1!=c2
+          print("PASS_COPRE_RECOVERY_AB_SEPARATE_WAVE_RENDER_COMMITS")
+          print("BEGIN_COMMIT="+c1)
+          print("END_COMMIT="+c2)
           PY
