@@ -1,0 +1,43 @@
+name: TEMP CoPublic deterministic edition build (one branch only)
+on:
+  push:
+    branches:
+      - 'feature/public-megascroller-release-r0-20261109'
+    paths:
+      - '.github/workflows/TEMP-copublic-megascroller-branch-build.yml'
+permissions:
+  contents: write
+jobs:
+  generate-exact-source-edition:
+    if: github.repository == 'CoCivium/CoCivium' && github.ref == 'refs/heads/feature/public-megascroller-release-r0-20261109'
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Compile exactly two candidate edition files
+        shell: bash
+        run: |
+          set -euo pipefail
+          test ! -e examples/comap/public-megascroller-r0/index.html
+          test ! -e examples/comap/public-megascroller-r0/release-manifest.json
+          node scripts/build_public_megascroller_r0.cjs
+          node scripts/build_public_megascroller_r0.cjs --check
+          node --test scripts/test_public_megascroller_r0.cjs
+      - name: Commit only approved edition paths to isolated branch
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$GITHUB_REF" = "refs/heads/feature/public-megascroller-release-r0-20261109"
+          git add -- examples/comap/public-megascroller-r0/index.html examples/comap/public-megascroller-r0/release-manifest.json
+          actual="$(git diff --cached --name-only | LC_ALL=C sort)"
+          expected="$(printf '%s\n' examples/comap/public-megascroller-r0/index.html examples/comap/public-megascroller-r0/release-manifest.json | LC_ALL=C sort)"
+          test "$actual" = "$expected"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Build exact CoPublic megascroller R0 edition from pinned public graph"
+          git push origin HEAD:refs/heads/feature/public-megascroller-release-r0-20261109
