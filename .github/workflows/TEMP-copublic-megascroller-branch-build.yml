@@ -41,3 +41,4 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git commit -m "Build exact CoPublic megascroller R0 edition from pinned public graph"
           git push origin HEAD:refs/heads/feature/public-megascroller-release-r0-20261109
+# attempt 2: rerun after casing-only regression assertion correction
