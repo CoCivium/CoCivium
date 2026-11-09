@@ -100,6 +100,14 @@ A second, separately implemented [reference oracle](reference_oracle.py) compute
 
 The proposed next stage is explicitly [preregistered in PROSPECTIVE_AB_R1.md](PROSPECTIVE_AB_R1.md): real legacy A versus CoRun+ B, independently evaluated outcomes, operator and receiver human minutes, source/authority parity, counterbalanced trial order, nullable costs, recovery and stop conditions. This is a study specification, **not a conducted study**. Remain draft and do not silently promote or deploy.
 
+## CoLockStep+ / CoMVP+ stability-island extension
+
+The [CoLockStep / CoMVP R0 release-island contract](COLOCKSTEP_COMVP_R0.md) addresses the case where newer intermediate code breaks a previously useful user workflow. **Do not impose global synchronous evolution.** Instead, declare a closed local dependency island and protect its last proven working version while other candidates evolve in parallel.
+
+The [source-island gate](colockstep.py), [exact pinned fixture](colockstep_fixture.json) and [15 adversarial unit tests](test_colockstep.py) are a bounded implementation in this R0 example. The protected predecessor is **source-qualified only**. It is explicitly **not** represented as a proven MVP. An additive compatible candidate may earn `SOURCE_COHERENT__NOT_MVP`, never real deployment, receiver ACK, human task completion, or cross-island synchronization merely from this check. Changed interface majors, missing dependencies, stale source pins, historical FAIL lineage loss, extra authority and fake receiver evidence hold promotion while keeping the baseline intact.
+
+Actual **CoMVP qualification** requires one reproducible useful human/receiver task, recovery and rollback, verified rights/consent/currentness, and context-specific usefulness evidence, then separately authorized release. The [prospective A/B protocol](PROSPECTIVE_AB_R1.md) proposes such testing but has not executed it. This source-only gate is additive to existing CoStageReview, AutoCycle and Civ2 cell release policies; it does not replace them or introduce a scheduler.
+
 ## Nonclaims
 
 `PREEXISTING_CORUN_NE_CURRENT_RUNTIME | SAME_SOURCE_NE_INDEPENDENT_TEST | MORE_PARALLELISM_NE_MORE_VALUE | ARTIFACT_NE_ADOPTION | RUN_COMPLETED_NE_RECEIVER_PICKUP | SYNTHETIC_WAIT_NE_REAL_DEPLOYMENT_SPEEDUP | GIT_PR_NE_PRODUCTION | PR_CANDIDATE_NE_MERGED | LOCAL_IS_NOT_LANDED | ACK_NE_ASSERTION | RICK_NE_MAILMAN`.
