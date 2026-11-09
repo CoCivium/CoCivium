@@ -24,6 +24,8 @@ The [source-bound CoSeed/CoPath machine graph](ai/copre-seed-path-federation-r0.
 
 ## Exact public companions
 
+- [Omnidirectional CoPath navigation (read-only inverse lookup)](ai/copre-omnidirectional-navigation-r0-20261109.json): forward and reverse discovery across the bounded 15-node graph, without reciprocal authority or global-integration claims.
+
 - [CoSeed+/CoPath+ public discovery graph](ai/copre-seed-path-fabric-r0-20261109.json): bounded typed paths to the current public-safe CoPre package; not global front integration or receiver acceptance.
 - [CoPreGeneric shareable R0 package](docs/CoPreGeneric/Shareable_R0_20261109/README.md): four public-safe documents plus manifest, all explicitly draft.
 
