@@ -84,3 +84,13 @@ The [machine-readable ReadyCycle R0](ai/onramp/copre-ready-cycle-acceptance-r0.j
 Exploratory waves should vary hypothesis, method, audience, substrate, horizon or falsifier to generate useful independent evidence. Exact repeated waves remain necessary for replication, safety controls, rollback and regression. No automatic new prompt version or named front is created merely by reasserting CoGoAll; when no material delta appears, report `NO_MATERIAL_DELTA`.
 
 The requested CoPreGeneric GitHub repository returned 404 to the connected GitHub account at this check. CoCivium.org/CoPre and InSeed.com/Stead remain held as unverified independent mirrors. This main-repository source landing does not prove them live.
+
+
+## CoWet+ human surface default | 2026-11-09
+
+New eligible **human-facing** public pages should normally offer a purposeful, rights-safe hero visual or rich-media experiment, a useful headline, immediate source navigation, and a nonvisual/text fallback. Existing pages should be improved selectively where comprehension, navigation, retention and time-to-value justify it. Exceptions remain for safety/legal, low-bandwidth, archival and machine-first surfaces.
+
+The [CoWet+ rule](ai/cowet-human-surface-rule-r0.json) defines CoDry/CoWet, CoGlam/CoWow/CoJaz creative options, source lineage, and accessibility boundaries. The [single-file CoWet hero and ambient-audio prototype](examples/cowet/hero-audio-r0.html) uses an original SVG and generated tones; it is an experimental source file, not a production website rollout. It starts silent, offers user-initiated audio, uses a bounded gentle scroll-volume ramp **only after explicit opt-in**, and has a prominent, device-local `Sound off, please` choice. Scrolling by itself never unmutes anything. A text-only fallback remains available.
+
+**Privacy and proof:** No raw chat disclosures, externally fetched audio, tracking, automatic sitewide policy rollout or independently verified accessibility acceptance are implied. Browsers can block unrequested sound; see [MDN autoplay](https://developer.mozilla.org/en-US/docs/Web/Media/Guides/Autoplay) and [W3C WCAG audio control](https://www.w3.org/WAI/WCAG21/Understanding/audio-control).
+
