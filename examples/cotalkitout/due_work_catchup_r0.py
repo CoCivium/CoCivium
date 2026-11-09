@@ -94,10 +94,27 @@ class DueWorkQueue:
         return acquired
 
     def complete(self, claim: Claim, *, result_sha256: str, now: int):
+        """Atomically commit one local result under the exact live claim.
+
+        The conditional UPDATE is the linearization point. Reading a lease
+        before an unconditional write would permit a stale finisher to clobber
+        another result. Owner strings and clocks remain fixture inputs, not
+        independently authenticated receiver or real-world effect proofs.
+        """
         if not isinstance(claim, Claim):
             raise TypeError("claim token required")
         result_sha256, now = _digest(result_sha256), _moment(now)
         with self.db:
+            changed = self.db.execute("""UPDATE work
+                SET state='DONE',result_sha256=?,completed_at=?
+                WHERE work_id=? AND state='LEASED' AND epoch=? AND owner=?
+                  AND lease_until=? AND lease_until>? AND source_revision=?
+                  AND payload_sha256=?""",
+                (result_sha256, now, claim.work_id, claim.epoch, claim.owner,
+                 claim.lease_until, now, claim.source_revision,
+                 claim.payload_sha256)).rowcount
+            if changed == 1:
+                return "COMMITTED_LOCAL_ONLY"
             row = self.db.execute("""SELECT state,epoch,owner,lease_until,
                 source_revision,payload_sha256,result_sha256 FROM work WHERE work_id=?""",
                 (claim.work_id,)).fetchone()
@@ -111,15 +128,7 @@ class DueWorkQueue:
                                and payload_sha256 == claim.payload_sha256
                                and old_result == result_sha256)
                 return "REPLAY" if exact_prior else "CONFLICT"
-            if (state != "LEASED" or epoch != claim.epoch or owner != claim.owner
-                or lease_until != claim.lease_until or lease_until <= now
-                or source_revision != claim.source_revision
-                or payload_sha256 != claim.payload_sha256):
-                return "FENCED"
-            self.db.execute("""UPDATE work SET state='DONE',result_sha256=?,completed_at=?
-                WHERE work_id=?""",
-                (result_sha256, now, claim.work_id))
-            return "COMMITTED_LOCAL_ONLY"
+            return "FENCED"
 
     def next_wake(self):
         row = self.db.execute("""SELECT MIN(CASE WHEN state='PENDING' THEN due_at
