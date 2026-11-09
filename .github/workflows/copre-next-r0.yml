@@ -1,0 +1,37 @@
+name: CoPre NEXT R0 bounded read-only tests
+
+permissions:
+  contents: read
+
+on:
+  pull_request:
+    paths:
+      - "scripts/CoPreContinuationR0.py"
+      - "docs/Architecture/COPRE_NEXT_SELF_DIRECTION_PACK_R0_20261109.md"
+      - ".github/workflows/copre-next-r0.yml"
+  push:
+    paths:
+      - "scripts/CoPreContinuationR0.py"
+      - ".github/workflows/copre-next-r0.yml"
+
+jobs:
+  copre:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Exercise exact-pack synthetic selftest
+        run: python3 -B scripts/CoPreContinuationR0.py --selftest
+      - name: Verify no-op, two-wave identity and stop boundary
+        run: |
+          python3 - <<'PY'
+          import importlib.util
+          import pathlib
+          spec=importlib.util.spec_from_file_location("copre","scripts/CoPreContinuationR0.py")
+          c=importlib.util.module_from_spec(spec)
+          spec.loader.exec_module(c)
+          assert c.SCHEMA=="CoCivium.CoPreContinuation.R0"
+          assert "PUBLIC_OUTREACH" in c.FORBIDDEN
+          assert c.compile_pack({"work_id":"partial"})["status"]=="HOLD"
+          print("PASS_COPRE_READ_ONLY_CONTRACT_R0")
+          PY
