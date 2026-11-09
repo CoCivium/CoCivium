@@ -1,0 +1,38 @@
+{
+  "schema": "cocivium.colue.outreach-lifecycle.r0",
+  "purpose": "Public, privacy-safe lifecycle contract; never a recipient ledger",
+  "principles": [
+    "An email draft is not an approved send",
+    "A sent message is not a delivered message",
+    "A delivery event is not a read or agreement",
+    "A reply is not consent to unrelated follow-ups",
+    "Different mailboxes retain distinct custody and access scopes",
+    "Superseded versions remain linked and auditable",
+    "No automation may promote its own claimed effect without independent evidence"
+  ],
+  "states": ["candidate", "researching", "drafted", "held", "reviewed", "approved", "sent", "delivery_observed", "replied", "superseded", "retired"],
+  "minimum_private_record": [
+    "work_id", "mailbox_identity", "recipient_identity", "relation_provenance",
+    "purpose", "consent_basis", "thread_id", "draft_or_message_id",
+    "version", "state", "state_evidence", "authority_for_next_action",
+    "next_trigger", "last_checked_at", "supersedes"
+  ],
+  "gates": {
+    "send": ["recipient_confirmed", "consent_checked", "message_current", "sender_authorized", "no_duplicate_or_superseded_send"],
+    "delivery_observed": ["provider_delivery_or_equivalent_evidence"],
+    "replied": ["actual_inbound_reply_bound_to_thread"],
+    "superseded": ["replacement_id_or_retirement_reason"]
+  },
+  "failure_tests": [
+    "draft_exists_but_sender_identity_differs",
+    "mailbox_A_and_mailbox_B_have_different_draft_counts",
+    "reply_in_old_thread_after_new_draft",
+    "approved_draft_modified_after_approval",
+    "send_retried_after_unknown_outcome",
+    "recipient_opt_out_after_draft",
+    "draft_held_indefinitely_without_trigger",
+    "stale_claim_of_delivery_without_provider_evidence"
+  ],
+  "privacy_boundary": "Store real recipients, account IDs, thread IDs and bodies only in authorized private custody; publish schema and synthetic tests only",
+  "status": "design_contract_only_not_deployed"
+}
