@@ -24,6 +24,9 @@ jobs:
       - name: Run all CoPriMath and GoldenBraid synthetic tests
         working-directory: experiments/gdside_coprimath_r0
         run: python -B -m unittest discover -p 'test_*.py' -v
+      - name: Verify guards under optimized Python (assertions disabled)
+        working-directory: experiments/gdside_coprimath_r0
+        run: python -O -B -m unittest discover -p 'test_*.py' -v
       - name: Exercise deterministic recursive negative control
         working-directory: experiments/gdside_coprimath_r0
         run: |
