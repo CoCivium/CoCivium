@@ -1,0 +1,165 @@
+{
+  "schema": "CoAll.CoPre.ReadyCycle.R0",
+  "date": "2026-11-09",
+  "status": "PUBLIC_SAFE_DRAFT_ACCEPTANCE_CONTRACT_NOT_RUNNING_SYSTEM",
+  "work_id": "CoPre:ReadyCycle:1Seed1Orb:R0",
+  "relationship_to_sources": "QUALIFICATION_CANDIDATE_NOT_NEW_CANONICAL_SEED",
+  "source_bindings": [
+    {
+      "path": "ai/colatch_evo_all_betters_r0.json",
+      "blob_sha": "1840c2dc339332585bd92144ac869ff8bd47aa58",
+      "role": "existing standing CoLatch"
+    },
+    {
+      "path": "scripts/CoWaveDiversityR0.py",
+      "blob_sha": "5de2babf1905f970cb6f67cded5f7fa8d71c71cd",
+      "role": "existing bounded diversity proposals"
+    },
+    {
+      "path": "ai/onramp/coomni-cross-window-handoff-r0.json",
+      "blob_sha": "7d4b0f98dbeda3bca9fce0cb6b6ae40c4a575d66",
+      "role": "existing synthetic cross-window handoff"
+    },
+    {
+      "path": "ai/copre-seed-path-federation-r0.json",
+      "blob_sha": "7eb2f170a725c61c7603062570a435503fea4131",
+      "role": "existing public CoSeed/CoPath discovery"
+    },
+    {
+      "path": "CoPre.md",
+      "role": "stable public entry; resolve live digest when consuming"
+    }
+  ],
+  "cycle": {
+    "intent": "Rebind current WorkID; reconcile unique delta; challenge and test; land only authorized public-safe changes; preserve prior sources; terminate or hold when expected useful gain does not justify cost",
+    "aliases": [
+      "CoLatch+",
+      "CoReGroup+",
+      "Break Glass",
+      "CoEv+",
+      "CoPre+",
+      "CiPre+",
+      "CoPrompt+",
+      "CiPrimpt+"
+    ],
+    "cohere_now": "PARTIAL_PUBLIC_SOURCE_NOT_FULL_SYSTEM",
+    "candidate_best_versions": "QUALIFY_BY_WORKID_TEST_PROOF_NOT_HIGHEST_LABEL",
+    "stop_rule": "NO_MATERIAL_DELTA_OR_NEGATIVE_EXPECTED_INFORMATION_GAIN_AFTER_MANDATORY_REGRESSION_TESTS"
+  },
+  "objectives": [
+    {
+      "name": "seed",
+      "target": "one source-bound identity",
+      "observed": "PUBLIC_SEED_POINTERS_AVAILABLE",
+      "acceptance": "exact WorkID, revision, verified object readback, rights and successor relations"
+    },
+    {
+      "name": "orb",
+      "target": "one coherent role-relative projection with fallback",
+      "observed": "SOURCE_PROPOSAL_ONLY",
+      "acceptance": "accessible independent first-user task across at least one real permitted surface"
+    },
+    {
+      "name": "gauge",
+      "target": "one truthful auditable status",
+      "observed": "SOURCE_REGISTERS_EXIST",
+      "acceptance": "display measured state, evidence and stale boundary; never fake PASS"
+    },
+    {
+      "name": "thumb",
+      "target": "one user-reversible pointer",
+      "observed": "STATIC_ONLY_NO_LOCAL_DEVICE_READBACK",
+      "acceptance": "single user-authorized physical button actuation; exact pointer pasted; native fallback and rollback"
+    },
+    {
+      "name": "time",
+      "target": "one coherent event/observe/qualify/receive clock map",
+      "observed": "PROPOSED_NOT_A_LIVE_CLOCK",
+      "acceptance": "bounded offsets and source-authenticated timestamps without invented arrival"
+    },
+    {
+      "name": "placeholders",
+      "target": 0,
+      "observed": "NOT_AUDITED",
+      "acceptance": "0 invented or silent missing fields; explicit UNKNOWN/HELD permitted"
+    },
+    {
+      "name": "autonomous_sync",
+      "target": "self-recovering across authorized receivers",
+      "observed": "NOT_PROVEN",
+      "acceptance": "independent receiver fetch + authenticated readproof + fenced nonduplicate next deed"
+    },
+    {
+      "name": "survival_24h",
+      "target": ">24h",
+      "observed": "NOT_MEASURED",
+      "acceptance": "two independently obtained receipts >=24 hours apart for the same recoverable source and successful restart"
+    },
+    {
+      "name": "handoff",
+      "target": "one complete real handoff",
+      "observed": "NOT_PROVEN",
+      "acceptance": "sender commit/readproof, receiver exact-object fetch, bounded continuation, no human relay"
+    },
+    {
+      "name": "human_relay",
+      "target": 0,
+      "observed": "NOT_PROVEN",
+      "acceptance": "no user copy/paste between source and receiver throughout accepted handoff"
+    },
+    {
+      "name": "system_ownership",
+      "target": 1,
+      "observed": "NOT_PROVEN",
+      "acceptance": "authorized worker performs retrieval, dedupe, continuation, recovery and evidence recording"
+    }
+  ],
+  "wave_policy": {
+    "principle": "DIVERSIFY_INFORMATION_NOT_MERE_SURFACE_STYLE",
+    "axes": [
+      "hypothesis",
+      "method",
+      "audience",
+      "substrate",
+      "time_horizon",
+      "falsifier"
+    ],
+    "novelty_requirement": "At least one meaningful axis changes per exploratory wave unless an exact reproducibility, regression, calibration or rollback control is intentionally repeated",
+    "negative_controls": "Repeat exact wave where independent replication or crash/recovery comparisons require same fixture",
+    "no_two_waves_identical": "NOT_A_UNIVERSAL_RULE",
+    "qualified_selection": "highest expected information/value improvement under time, resource, privacy, safety constraints",
+    "parallel_election": "MANY_WATCHERS_ONE_ELECTED_ACTUATOR_BY_COLLISION_DOMAIN_NOT_GLOBAL_UNLIMITED_AGENCY"
+  },
+  "future_and_ethics": {
+    "gdside": "symbolic and value-hypothesis lane; no operational divine authority",
+    "cohog": "welcome qualified counterexample and alternative better than platform; credit/benefit only for legitimate authorized contribution",
+    "external_challenge": "authorized bounded testing and consent rather than indiscriminate attack"
+  },
+  "requested_mirrors": [
+    {
+      "url": "https://github.com/CoCivium/CoPreGeneric",
+      "status": "GITHUB_REPO_404_IN_CONNECTED_ACCOUNT"
+    },
+    {
+      "url": "https://CoCivium.org/CoPre",
+      "status": "NOT_INDEPENDENTLY_VERIFIED"
+    },
+    {
+      "url": "https://InSeed.com/Stead",
+      "status": "NOT_INDEPENDENTLY_VERIFIED"
+    }
+  ],
+  "next_proof": "One authorized independent reader fetches source-bound CoSeed exact identity and records a useful bounded continuation without user-as-relay. Confirm duration later with a separate >=24h test.",
+  "nonclaims": [
+    "NOT_CANON",
+    "NOT_GLOBAL_SESSION_STATE",
+    "NO_AUTO_SYNC",
+    "NO_24H_SURVIVAL_PROOF",
+    "NO_HANDOFF_READPROOF",
+    "NO_X2_RUNTIME",
+    "NO_MIRROR_PARITY",
+    "NO_ALWAYS_ON_WATCHER",
+    "NO_SENTIENCE_OR_AGI_INFERENCE",
+    "PUBLIC_SOURCE_NE_PUBLIC_RELEASE_ACROSS_THREE_DOMAINS"
+  ]
+}
