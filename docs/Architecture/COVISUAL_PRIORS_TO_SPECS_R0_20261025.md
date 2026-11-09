@@ -108,3 +108,68 @@ flowchart LR
 **CoLUE outreach use:** the *same* source-graph/diagram lifecycle can represent `STAGED_DRAFT -> REVIEWED -> APPROVED -> SENT_RECORDED -> RESPONSE_OBSERVED -> CLOSED/WAKE`, with per-mailbox identity and protected private contents. No email send or reply is implied by drawing the arrow.
 
 **CoEx boundary:** `DIAGRAM_NE_RUNTIME` · `QUIET_NE_DEAD` · `UPDATED_SOURCE_NE_INDEPENDENT_PICKUP` · `MODEL_PREDICTION_NE_EVIDENCE` · `REGISTERED_FRONT_NE_RUNNING_PROCESS`.
+
+
+## CoSilo+ / CoMediaBraid+ anti-orphan relation R0
+
+**2026-11-09 | State: PUBLIC-SAFE RELATION CONTRACT ONLY.** Reuses CoLivingHighlight+, CoMap+, CoTime+, CoOrb+, CoFactory, CoPublication, CoVIA/CoLUE and CoAll WorkID; not an alternative registry, runtime, watcher or transport. The user identified an anti-pattern in two visually observed InSeed Gmail drafts and asked whether diagrams and other media evolve together without orphaning. Other connected Gmail metadata belonged to an unverified-different mailbox and is excluded from this public contract. No private image, subject, address, body or recipient is published.
+
+### CoSilo+ as a typed failure diagnosis, not a ban on boundaries
+
+A silo exists when a useful object has no **qualified discoverability, lineage, dependency, receiver or replay path** in the scope where reuse is authorized. A silo may also be a **legitimate isolation boundary** when privacy, consent, security, safety, intellectual property, competing hypotheses or independent failure domains require it. Do not create illegal cross-boundary links merely to raise connectedness.
+
+Distinguish:
+- `ORPHAN`: expected relation absent, with source and expected counterpart known.
+- `DELIBERATELY_ISOLATED`: isolation is a recorded rights/independence decision.
+- `UNKNOWN_RELATION`: coverage insufficient to decide.
+- `STALE_RELATION`: linked target exists but version/validity no longer matches.
+- `BROKEN_RELATION`: linked target cannot be resolved under the authorized check.
+- `DUPLICATED_RELATION`: equivalent copies compete without a qualified elected version.
+- `DISPUTED_RELATION`: provenance or semantics challenged.
+- `QUALIFIED_RELATION`: identity, authority, provenance, currentness and receiver scope verified.
+
+### CoSilo inverse relations
+
+`CoUnSilo+` makes an absent but authorized bridge discoverable; `CoReSilo+` deliberately restores isolation when exposure is harmful; `CoDeSilo+` moves a useful reference into the shared, consent-compatible index; `CoAntiSilo+` tests whether a purported bridge is misleading. None is a command to merge data, mutate a draft, distribute private content or grant an agent permissions.
+
+The inverse of isolation is **not maximal connectivity**. It is **qualified, reversible interoperability** with deliberate non-connections preserved and explained.
+
+### Common cross-media asset relation
+
+```text
+asset_relation {
+  asset_id, asset_version, asset_type, work_id, source_sha,
+  source_refs[], parent_refs[], predecessor_refs[], successor_refs[],
+  relation_type, relation_target_id, transformation_id,
+  purpose, target_audience, observer, observed_at, valid_time,
+  rights_scope, privacy_tier, authority_ceiling, consent_ref,
+  epistemic_class, uncertainty, source_evidence_refs[],
+  representation_loss[], accessible_fallback_ref,
+  receiver_id, receiver_readproof, readiness, currentness,
+  retention_policy, wake_predicate, rollback_ref
+}
+```
+
+Required relationship verbs should reuse CoLivingHighlight+ `derives_from`, `projects_to`, `explains`, `visualizes`, `challenges`, `contradicts`, `supersedes`, `formalizes`, `implements`, `demonstrates`, `depends_on`, `machine_twin_of`, `successor_of`, and `receiver_variant_of` rather than inventing another vocabulary. Cross-media transformations explicitly record omitted content, confidence loss and license/rights constraints.
+
+### Bidirectional evolution with evidence
+
+A changed diagram can **propose** a change to video, spec, implementation, story, educational activity, outreach draft or accessibility text. A response, failing test, correction, or source revision can **propose** changes back. Each proposal has a source revision, falsifier, consent/rights gate, resource budget, reviewer/receiver and successor trigger. No representation should silently change a stable snapshot already in use.
+
+### CoLUE/CoVIA link without data leakage
+
+The private outreach WorkID references its exact *mailbox-scoped* draft ID, thread ID, recipient relationship, review stage and authorized sender. Public diagrams may show only authorized aggregates or anonymized, non-inferable status projections; they must not reveal private recipient names, counts that permit disclosure, subjects or email text. A draft is `STAGED_DRAFT`, not a sent message; no automated follow-up or account conflation occurs from a diagram.
+
+### Five CI+ candidate counterexamples (NOT EXECUTED BY THIS DOC)
+
+1. A diagram and its narrated video have the same WorkID but different source revisions: flag `STALE_RELATION` and preserve both histories.
+2. A public CoOrb shows an edge inferred only from a private outreach draft: fail closed, report an authorized generic unknown without leaking existence.
+3. An explanatory diagram states a verified effect while the implementation has only synthetic test evidence: prohibit evidence promotion.
+4. A valid isolated independent verifier is not linked to other workers: retain `DELIBERATELY_ISOLATED`, not `ORPHAN`.
+5. A photo, PDF or email is missing from the searchable index: classify `UNKNOWN_RELATION` until the declared scan scope, rights and coverage are established. Never infer a universal inventory.
+
+**Measured outcome targets:** correct discovery and reuse per eligible source, independently accepted transformations, cross-media semantic consistency, false-bridge rate, orphan recovery latency, provenance retention, receiver comprehension, human relay and cost. Raw edge density or generated-media count is not useful progress.
+
+**First executable receiver gate:** use one public-safe work object already in CoMap/CoOrb, bind two distinct media projections and their source-digest/projection-loss records, inject a stale revision and an unauthorized relation, then compare a headless manifest against diagram+text. Only count independently read-back accepted result, not a rendered link or a new GitHub file.
+
+`MEDIA_COUNT_NE_PROGRESS` | `MANY_VIEWS_ONE_SOURCE_SPINE` | `ISOLATION_CAN_BE_REQUIRED` | `BRIDGE_NE_AUTHORIZATION` | `DIAGRAM_NE_RECEIVER_ACK` | `PUBLIC_PROJECTION_NE_PRIVATE_SOURCE`.
