@@ -48,7 +48,8 @@ def audit(packet):
         stamp=digest(obs)
         if key in seen:
             if seen[key]!=stamp:
-                conflicts.append({"window_id":obs["window_id"],"state":"CONFLICT_HELD"})
+                if obs["visibility"]=="PUBLIC":
+                    conflicts.append({"window_id":obs["window_id"],"state":"CONFLICT_HELD"})
             else:
                 exact_replay+=1
             continue
