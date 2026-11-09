@@ -216,3 +216,8 @@ A durable, independently byte-hash-checked **public source receipt** is [here](.
 **Earned:** one actual local deterministic validation work effect in GitHub CI, with a separate job's source/result readback, **not** an AI model, independent provider, rights review, CoStead pickup, X2 installation, user-visible rickBar MVP or persistent 24-hour Seed. Same GitHub Actions failure domain can still fail jointly; this is not independent external receiver acceptance. Artifacts have limited retention and their archive hashes were provider-reported, not independently downloaded and recomputed in this increment.
 
 **Next product gap unchanged:** one existing rickBar R1 -> real local Ollama -> durable WorkID -> authenticated receiver display -> restart/Break Glass with last-known-working MVP preserved. Do not expand this single CoObject validator into a generic privileged worker just to inflate object coverage.
+
+
+## Second observed scheduled wake (coverage remains incomplete) | 2026-11-09 11:29 UTC
+
+Read-only GitHub Actions query during the CoObject closure turn found a **second actual `schedule` event** for the existing [CoGoAll unattended proof pulse, run 42609495857](https://github.com/CoCivium/CoCivium/actions/runs/42609495857), created 11:29:52 UTC and completed SUCCESS. Earlier verified [run 42552131960](https://github.com/CoCivium/CoCivium/actions/runs/42552131960) at 02:39 UTC also succeeded. The observed gap between events still prevents a continuous hourly SLA or 24h Seed-survival claim. The pulse's source checks are not a replacement for durable independent work selection or native X2/Ollama progress. No additional automation was created.
