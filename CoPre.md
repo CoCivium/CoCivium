@@ -24,6 +24,8 @@ The [source-bound CoSeed/CoPath machine graph](ai/copre-seed-path-federation-r0.
 
 ## Exact public companions
 
+- [CoLatch / CoPreGeneric six-wave acceptance contract](ai/colatch-copre-wave-acceptance-r0-20261109.json): testable Seed, Orb, gauge, thumb, time, persistence and receiver thresholds; design candidate only.
+
 - [CoPre v8.79 source/feed proposal](ai/copre-source-feed-delta-v879-20261109.json): privacy-safe reciprocal discovery, with no claim of cross-front acceptance.
 
 - [CoPre omni v8.79 additive pull/feed and future-use delta](ai/copre-omni-v879-intake-delta-r0-20261109.json): public-safe candidate; private source held in Library.
