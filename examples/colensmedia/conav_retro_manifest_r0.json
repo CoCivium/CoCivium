@@ -1,0 +1,67 @@
+{
+  "schema": "CoAll.CoNavRetroMedia.R0",
+  "scope": "FIVE_VERIFIED_PUBLIC_SOURCE_POINTERS_NOT_COMPLETE_RETRO_HISTORY",
+  "candidate_policy": "LINK_ONLY_NO_MEDIA_BYTES_NO_AUTOMATIC_PUBLICATION_OR_PROMOTION",
+  "candidates": [
+    {
+      "id": "comap-relational-diagram",
+      "label": "Relational media diagram",
+      "group": "CoMap",
+      "kind": "DIAGRAM",
+      "source_path": "examples/colensmedia/relational_media_diagram_r0.md",
+      "git_blob": "476e5eeb6e24e1fae562552ac07dd234748ab8ce",
+      "visibility": "PUBLIC_REPO_SOURCE",
+      "rights_state": "METADATA_LINK_ONLY",
+      "status": "RETRO_INSPIRATION_CANDIDATE_UNREVIEWED",
+      "next_gate": "HUMAN_OR_AUTHORIZED_SEMANTIC_RIGHTS_REVIEW"
+    },
+    {
+      "id": "comap-living-view",
+      "label": "CoLens Map and Orb view",
+      "group": "CoMap",
+      "kind": "INTERACTIVE_VIEW",
+      "source_path": "examples/colensmedia/index.html",
+      "git_blob": "e9469dc5c87ee3c5bda13e3e9de39c0ef45201d2",
+      "visibility": "PUBLIC_REPO_SOURCE",
+      "rights_state": "METADATA_LINK_ONLY",
+      "status": "RETRO_INSPIRATION_CANDIDATE_UNREVIEWED",
+      "next_gate": "HUMAN_OR_AUTHORIZED_SEMANTIC_RIGHTS_REVIEW"
+    },
+    {
+      "id": "comedia-public-prior-bridge",
+      "label": "Visual prior bridge",
+      "group": "CoMedia",
+      "kind": "SOURCE_LINK_VIEW",
+      "source_path": "examples/colensmedia/visual_prior_bridge.html",
+      "git_blob": "aed071ba013e54320ce3e5b28c4c130a0317ba48",
+      "visibility": "PUBLIC_REPO_SOURCE",
+      "rights_state": "METADATA_LINK_ONLY",
+      "status": "RETRO_INSPIRATION_CANDIDATE_UNREVIEWED",
+      "next_gate": "HUMAN_OR_AUTHORIZED_SEMANTIC_RIGHTS_REVIEW"
+    },
+    {
+      "id": "comedia-source-finder",
+      "label": "Public visual source finder",
+      "group": "CoMedia",
+      "kind": "SOURCE_LINK_VIEW",
+      "source_path": "examples/covisual_finder_r1/index.html",
+      "git_blob": "2360b7ceea035599a7604e5c54d28b1765952e0d",
+      "visibility": "PUBLIC_REPO_SOURCE",
+      "rights_state": "METADATA_LINK_ONLY",
+      "status": "RETRO_INSPIRATION_CANDIDATE_UNREVIEWED",
+      "next_gate": "HUMAN_OR_AUTHORIZED_SEMANTIC_RIGHTS_REVIEW"
+    },
+    {
+      "id": "colue-mail-living-view",
+      "label": "CoMail living draft demo",
+      "group": "CoLUE",
+      "kind": "OUTREACH_DEMO",
+      "source_path": "examples/comail_r0/index.html",
+      "git_blob": "0a91a7e4a3c0bac502908630e0eef8472ebf46f7",
+      "visibility": "PUBLIC_REPO_SOURCE",
+      "rights_state": "METADATA_LINK_ONLY",
+      "status": "RETRO_INSPIRATION_CANDIDATE_UNREVIEWED",
+      "next_gate": "HUMAN_OR_AUTHORIZED_SEMANTIC_RIGHTS_REVIEW"
+    }
+  ]
+}
