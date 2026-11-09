@@ -37,5 +37,34 @@ jobs:
       - name: Run bounded vitality canary
         run: |
           python -B scripts/CoObjectVitalityR0.py             --fixture ai/vitality/coobject-vitality-fixture-r0.json             --policy ai/vitality/coobject-vitality-policy-r0.json
+      - name: Bind one real checked-in policy to a hypothetical safe work proposal
+        run: |
+          python - <<'PY'
+          import datetime, hashlib, json
+          from pathlib import Path
+          from scripts.CoObjectAgencyBridgeR0 import plan
+          source = Path("ai/vitality/coobject-vitality-policy-r0.json")
+          digest = hashlib.sha256(source.read_bytes()).hexdigest()
+          now = datetime.datetime.now(datetime.timezone.utc).isoformat()
+          obj = {"object_id": "coobject-vitality-policy", "relative_path": str(source),
+                 "expected_sha256": digest, "lifecycle_state": "ACTIVE_WORKING",
+                 "known_debt": ["independent review pending"], "wake_predicates": []}
+          event = {"object_id": obj["object_id"], "kind": "MATERIAL_REVISION",
+                   "observed_at": now, "observed_sha256": digest, "wake_key": None}
+          receipt = plan(".", {"schema": "CoObject.AgencyBridge.R0",
+                               "objects": [obj]}, [event], as_of=now)
+          observed = receipt["objects"][0]
+          assert observed["proposal"] == "REQUEST_SCHEMA_AND_RIGHTS_REVIEW"
+          assert observed["source_sha256"] == digest
+          assert receipt["workers_spawned"] == 0
+          assert not receipt["actual_receiver_pickup"]
+          print(json.dumps({"source": str(source), "sha256": digest,
+                            "proposal": observed["proposal"],
+                            "proof_state": observed["lifecycle_state"],
+                            "event_class": "SYNTHETIC_PRODUCER_ASSERTED_NOT_AUTHENTICATED",
+                            "receipt_sha256": receipt["receipt_sha256"],
+                            "workers_spawned": 0, "receiver_ack": False},
+                           sort_keys=True))
+          PY
       - name: Exercise source-to-proposal bridge across unlike files and failure cases
         run: python -B -m unittest discover -s tests -p 'test_coobject_agency_bridge_r0.py' -v
