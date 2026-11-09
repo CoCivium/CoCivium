@@ -1,0 +1,29 @@
+name: CoPreGeneric public retro-echo candidate tests
+on:
+  pull_request:
+    paths:
+      - 'ai/onramp/copregeneric-retro-echo-sample-20261109.json'
+      - 'ai/onramp/copregeneric-session-delta-20261109.json'
+      - 'docs/Onramp/COPREGENERIC_SESSION_CONTRIBUTION_20261109.md'
+      - 'scripts/test_copregeneric_retro_echo_r0.py'
+      - '.github/workflows/copregeneric-retro-echo-r0.yml'
+  push:
+    paths:
+      - 'ai/onramp/copregeneric-retro-echo-sample-20261109.json'
+      - 'scripts/test_copregeneric_retro_echo_r0.py'
+      - '.github/workflows/copregeneric-retro-echo-r0.yml'
+permissions:
+  contents: read
+jobs:
+  retro-echo-fail-closed:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate bounded retrospective sample and negative controls
+        run: python3 -B scripts/test_copregeneric_retro_echo_r0.py -v
+      - name: Parse machine-facing CoPreGeneric delta
+        run: python3 -m json.tool ai/onramp/copregeneric-session-delta-20261109.json >/dev/null
