@@ -18,7 +18,7 @@ from playwright.sync_api import sync_playwright
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / "examples" / "codemow" / "truth-gate-r1.html"
 PINNED_BLOB = "2d3a1248e63b409436b6def098755f93065ebebb"
-BOOTSCRIPT = "writePacket(baseline);validate();"
+BOOTSCRIPT = "writePacket(baseline);validate();$('run').addEventListener"
 
 
 def git_blob_sha1(blob):
