@@ -23,6 +23,12 @@ class Peer:
     authority_scope_match: bool
 
 def assess(o, peers, min_coverage=0.75):
+    if not isinstance(o.work_id, str) or not o.work_id.strip():
+        raise ValueError("work_id required")
+    if not 0 <= min_coverage <= 1:
+        raise ValueError("minimum coverage out of range")
+    if o.progress_events < 0 or o.repeated_noop < 0:
+        raise ValueError("negative event counters")
     if not 0 <= o.metric_coverage <= 1:
         raise ValueError("coverage out of range")
     if o.age_seconds < 0 or o.deadline_seconds < 0:
@@ -39,7 +45,8 @@ def assess(o, peers, min_coverage=0.75):
         return {"action": "NO_ACTION", "reason": "NO_STALL_PROVEN"}
     if o.repeated_noop < 3 and o.progress_events > 0:
         return {"action": "NO_ACTION", "reason": "PROGRESS_PRESENT"}
-    eligible = sorted(p.peer_id for p in peers if p.capability_match and p.healthy_observed
+    eligible = sorted(p.peer_id for p in peers if isinstance(p.peer_id, str) and p.peer_id.strip()
+                      and p.capability_match and p.healthy_observed
                       and p.capacity_available and p.authority_scope_match)
     if not eligible:
         return {"action": "SUSPEND_UNTIL_TRIGGER", "reason": "NO_ELIGIBLE_PEER"}
@@ -77,4 +84,19 @@ if __name__ == "__main__":
             from dataclasses import replace
             with self.assertRaises(ValueError):
                 assess(replace(self.stalled, metric_coverage=1.2), [self.peer])
+        def test_negative_event_counters_refused(self):
+            from dataclasses import replace
+            for update in ({"progress_events": -1}, {"repeated_noop": -1}):
+                with self.subTest(update=update), self.assertRaises(ValueError):
+                    assess(replace(self.stalled, **update), [self.peer])
+        def test_missing_work_identity_refused(self):
+            from dataclasses import replace
+            with self.assertRaises(ValueError):
+                assess(replace(self.stalled, work_id=" "), [self.peer])
+        def test_invalid_minimum_coverage_refused(self):
+            with self.assertRaises(ValueError):
+                assess(self.stalled, [self.peer], min_coverage=-0.1)
+        def test_empty_peer_identity_not_elected(self):
+            anonymous = Peer("", True, True, True, True)
+            self.assertEqual(assess(self.stalled, [anonymous])["action"], "SUSPEND_UNTIL_TRIGGER")
     unittest.main(verbosity=2)
