@@ -1,0 +1,22 @@
+name: CoPreGeneric source-bound session donor R0
+on:
+  pull_request:
+    paths:
+      - 'ai/copregeneric/session-contribution-r0-20261109.json'
+      - 'docs/Onramp/COPREGENERIC_SESSION_HANDOFF_R0_20261109.md'
+      - 'scripts/test_copregeneric_session_contribution_r0.py'
+      - '.github/workflows/copregeneric-session-contribution-r0.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  candidate-contract:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Validate source-bound nonpromotion and retro-echo gaps
+        run: python -B scripts/test_copregeneric_session_contribution_r0.py -v
