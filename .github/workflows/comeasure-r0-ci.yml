@@ -80,7 +80,8 @@ jobs:
           PY
 
   public-browser-survival-canary:
-    runs-on: ubuntu-latest
+    # Playwright 1.56 lacks support for ubuntu-26.04 in ubuntu-latest.
+    runs-on: ubuntu-24.04
     timeout-minutes: 12
     steps:
       - uses: actions/checkout@v4
