@@ -31,7 +31,7 @@ jobs:
           from pathlib import Path
           import hashlib
           data=Path("scripts/CoPreContinuationR0.py").read_bytes()
-          digest=hashlib.sha1(b"blob "+str(len(data)).encode()+b"\\0"+data).hexdigest()
+          digest=hashlib.sha1(b"blob "+str(len(data)).encode()+b"\0"+data).hexdigest()
           assert digest=="5a1a8cd15eb41af151c9255bee46cc7549e1acd8", digest
           print("PASS_COPRE_ISOLATED_DONOR_BLOB_R0",digest)
           PY
