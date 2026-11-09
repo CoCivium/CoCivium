@@ -1,0 +1,96 @@
+name: CoNav / CoBack journalist onramp R0
+
+on:
+  pull_request:
+    paths:
+      - "docs/Public/COCIVIUM_*JOURNALIST*"
+      - "docs/Public/COCIVIUM_CCC_COEBE_JOURNALIST_BRIEF_R1_20261109.md"
+      - "ai/onramp/cocivium_journalist_nav_r0.json"
+      - ".github/workflows/cocivium-journalist-nav-r0.yml"
+  push:
+    branches: [candidate/cocivium-press-proof-brief-r1-20261109]
+
+permissions:
+  contents: read
+
+jobs:
+  validate-nav:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate human, synth and hybrid navigation and source pins
+        run: |
+          python3 - <<'PY'
+          import copy
+          import json
+          import re
+          import subprocess
+          from pathlib import Path
+          from urllib.parse import unquote
+          root=Path.cwd()
+          nav=json.loads((root/"ai/onramp/cocivium_journalist_nav_r0.json").read_text())
+          assert nav["schema"]=="CoCivium.CoNav.CoBack.JournalistProjection.R0.v0.1"
+          assert nav["state"].startswith("PUBLIC_DRAFT_REVIEW_CANDIDATE")
+          assert nav["work_id"]=="CoReach.JournalistReadingSeries.20261109"
+          assert nav["effects_granted"]==[]
+          assert nav["receiver_readproof"]=="UNPROVEN"
+          assert nav["actual_back_stack_persisted"] is False
+          nodes=nav["nodes"]
+          ids=[n["id"] for n in nodes]
+          assert len(ids)==len(set(ids))==5
+          mapping={n["id"]:n for n in nodes}
+          rails={x["id"]:x for x in nav["source_authority_rails"]}
+          priors={x["id"]:x for x in nav["prior_work_pointers"]}
+          assert len(rails)==8
+          assert mapping["home"]["path"]=="docs/Public/COCIVIUM_JOURNALIST_START_R0_20261109.md"
+          for audience,route in nav["audience_routes"].items():
+              assert audience in ("human","synth","hybrid")
+              assert route[0]=="home"
+              assert all(x in mapping or x in rails or x in priors for x in route),(audience,route)
+          rels={(e["from"],e["to"],e["kind"]) for e in nav["relations"]}
+          assert len(rels)==len(nav["relations"])
+          assert ("home","treatment","START_HUMAN") in rels
+          assert ("home","ai_onramp","START_SYNTH") in rels
+          assert ("home","evidence","CHALLENGE_HYBRID") in rels
+          for item in nodes:
+              assert (root/item["path"]).is_file(),item
+              assert item["back"]=="home"
+              if item["id"]!="home":
+                  assert (item["id"],"home","RETURN") in rels,item
+          # A navigation contract is useful only if the same source works for every projected audience.
+          for x in rails.values():
+              p=root/x["path"]
+              assert p.is_file(),x
+              blob=subprocess.check_output(["git","hash-object",str(p)],text=True).strip()
+              assert blob==x["observed_blob_sha"],(x["id"],blob,x["observed_blob_sha"])
+          checked=0
+          target_paths=[n["path"] for n in nodes]
+          for source in target_paths:
+              text=(root/source).read_text(encoding="utf-8")
+              for raw in re.findall(r'(?<!!)\[[^\]]+\]\(([^)]+)\)',text):
+                  href=unquote(raw.split("#",1)[0])
+                  if not href or href.startswith(("http://","https://","mailto:")):
+                      continue
+                  target=(root/source).parent/href
+                  assert target.is_file(),(source,raw)
+                  checked+=1
+          series=(root/mapping["series"]["path"]).read_text(encoding="utf-8")
+          assert len(re.findall(r'^## [1-4]\. ',series,re.MULTILINE))==4
+          ai=(root/mapping["ai_onramp"]["path"]).read_text(encoding="utf-8")
+          assert "CoIndex" in ai and "CoSourceGraph" in ai and "CoLineageCompactor" in ai
+          # Negative controls: a missing return route and a nonexistent target MUST fail review.
+          def healthy(candidate):
+              cs={(x["from"],x["to"],x["kind"]) for x in candidate["relations"]}
+              return all(n["id"]=="home" or (n["id"],"home","RETURN") in cs for n in candidate["nodes"])
+          assert healthy(nav)
+          broken=copy.deepcopy(nav)
+          broken["relations"]=[e for e in broken["relations"] if not(e["from"]=="series" and e["to"]=="home")]
+          assert not healthy(broken)
+          assert not (root/"docs/Public/ABSENT_JOURNALIST_NAV.md").exists()
+          print("PASS_CONAV_COBACK_HUMAN_SYNTH_HYBRID_SOURCES_AND_BACKLINKS_R0")
+          print("NAV_NODES="+str(len(nodes)))
+          print("SOURCE_RAILS_VERIFIED="+str(len(rails)))
+          print("LINKS_VERIFIED="+str(checked))
+          print("SOURCE_MUTATIONS=0; NATIVE_UI_BACKSTACK=UNPROVEN; RECEIVER_ACK=UNPROVEN")
+          PY
