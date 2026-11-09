@@ -79,7 +79,7 @@ def prove():
                 marker, '"task_mvp": "QUALIFIED_WITHOUT_USER"',
                 1), encoding="utf-8")
             weak = root / "tests" / "weak_candidate_check.py"
-            weak.write_text("pass\\n", encoding="utf-8")
+            weak.write_text("pass\n", encoding="utf-8")
             bad_rev = store.stage(
                 SLOT, "regression-fixture/scripts/CoMVPCoPreFirstUseR0.py",
                 "tests/weak_candidate_check.py")["revision"]
