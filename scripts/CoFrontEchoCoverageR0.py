@@ -53,11 +53,13 @@ def audit(packet):
                 exact_replay+=1
             continue
         seen[key]=stamp
-        # Public report only includes source refs for source-qualified public observations.
-        rows.append({"front_id":obs["front_id"] if obs["visibility"]=="PUBLIC" else "PRIVATE_REDACTED",
+        # Private observations stay entirely outside the public projection, including counts.
+        if obs["visibility"]=="PRIVATE":
+            continue
+        rows.append({"front_id":obs["front_id"],
                      "window_id":obs["window_id"],"state":obs["state"],
-                     "disposition":obs["disposition"],"source_ref":obs["source_ref"] if obs["visibility"]=="PUBLIC" else None,
-                     "source_sha256":obs["source_sha256"] if obs["visibility"]=="PUBLIC" else None,
+                     "disposition":obs["disposition"],"source_ref":obs["source_ref"],
+                     "source_sha256":obs["source_sha256"],
                      "receiver_pickup":"UNPROVEN","inferred_runtime":False})
     counts=Counter(x["state"] for x in rows)
     return {"schema":"CoFront.EchoCoverage.Report.R0",
