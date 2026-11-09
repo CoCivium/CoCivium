@@ -119,6 +119,66 @@ class Tests(unittest.TestCase):
         self.assertNotIn("receipt ACK",self.a.model_context(self.cid,"carry"))
         self.assertEqual(self.a.state("unknown")["state"],"UNKNOWN_CONVERSATION")
 
+    def test_trigger_claim_is_durable_but_not_authentication(self):
+        started=self.a.begin_turn(self.cid,"from-event","hello",1,
+                                  trigger_kind="EVENT")
+        self.assertEqual(started["trigger_kind"],"EVENT")
+        self.assertEqual(started["trigger_evidence"],"PRODUCER_CLAIM_UNVERIFIED")
+        committed=self.a.commit_turn(self.cid,"from-event","reply",1)
+        self.assertEqual(committed["trigger_kind"],"EVENT")
+        self.assertEqual(committed["trigger_evidence"],"PRODUCER_CLAIM_UNVERIFIED")
+        self.assertEqual(self.a.begin_turn(self.cid,"from-event","hello",1,
+                                           trigger_kind="SCHEDULED")["state"],"CONFLICT")
+        b=ContinuityStore(self.path)
+        try:
+            recovered=b.state(self.cid)["turns"][0]
+            self.assertEqual(recovered["trigger_kind"],"EVENT")
+            self.assertEqual(recovered["trigger_evidence"],
+                             "PRODUCER_CLAIM_UNVERIFIED")
+        finally:
+            b.close()
+
+    def test_trigger_unknown_is_the_default(self):
+        self.a.begin_turn(self.cid,"old-turn","hello",1)
+        self.a.commit_turn(self.cid,"old-turn","reply",1)
+        turn=self.a.state(self.cid)["turns"][0]
+        self.assertEqual(turn["trigger_kind"],"UNKNOWN")
+        self.assertEqual(turn["trigger_evidence"],"NONE")
+        for bad in ("USER_TURN", "AUTONOMOUS", "", None, True):
+            with self.assertRaises(ValueError):
+                self.a.begin_turn(self.cid,"x","hello",1,trigger_kind=bad)
+
+    def test_legacy_schema_migrates_without_rewriting_history(self):
+        import sqlite3
+        legacy_path=os.path.join(self.temp.name,"legacy.sqlite")
+        db=sqlite3.connect(legacy_path)
+        db.execute("""CREATE TABLE conversations(
+            conversation_id TEXT PRIMARY KEY,epoch INTEGER NOT NULL,
+            worker TEXT NOT NULL,created_at TEXT NOT NULL,updated_at TEXT NOT NULL)""")
+        db.execute("""CREATE TABLE turns(
+            conversation_id TEXT NOT NULL,turn_id TEXT NOT NULL,
+            prompt_sha256 TEXT NOT NULL,prompt TEXT NOT NULL,response TEXT,
+            status TEXT NOT NULL,epoch INTEGER NOT NULL,worker TEXT NOT NULL,
+            receipt_sha256 TEXT,created_at TEXT NOT NULL,updated_at TEXT NOT NULL,
+            PRIMARY KEY(conversation_id,turn_id),
+            FOREIGN KEY(conversation_id) REFERENCES conversations(conversation_id))""")
+        db.execute("INSERT INTO conversations VALUES('legacy',1,'ollama:qwen3:4b','t','t')")
+        db.execute("""INSERT INTO turns VALUES(
+            'legacy','t1','oldhash','original','answer','COMMITTED',1,
+            'ollama:qwen3:4b','prior','t','t')""")
+        db.commit()
+        db.close()
+        migrate=ContinuityStore(legacy_path)
+        try:
+            old=migrate.state("legacy")["turns"][0]
+            self.assertEqual(old["prompt"],"original")
+            self.assertEqual(old["response"],"answer")
+            self.assertEqual(old["receipt_sha256"],"prior")
+            self.assertEqual(old["trigger_kind"],"UNKNOWN")
+            self.assertEqual(old["trigger_evidence"],"NONE")
+        finally:
+            migrate.close()
+
     def test_no_auto_deletion_or_unauthorized_provider_session_migration(self):
         snap=self.a.state(self.cid)
         self.assertNotIn("remote_session_id",snap)

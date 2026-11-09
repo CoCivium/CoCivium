@@ -18,6 +18,19 @@ import uuid
 
 _ID = re.compile(r"^[A-Za-z0-9_-]{1,96}$")
 EVIDENCE_CLASS = "MODEL_OUTPUT_UNVERIFIED"
+# A trigger label is a source assertion, not proof of a person's identity.
+TRIGGER_KINDS = frozenset({
+    "UNKNOWN", "LOCAL_HTTP_REQUEST", "SCHEDULED", "EVENT", "MANUAL_OPERATOR"
+})
+
+
+def _trigger_evidence(kind):
+    if kind == "LOCAL_HTTP_REQUEST":
+        return "LOOPBACK_REQUEST_OBSERVED_USER_UNAUTHENTICATED"
+    if kind == "UNKNOWN":
+        return "NONE"
+    return "PRODUCER_CLAIM_UNVERIFIED"
+
 
 
 def _id(value):
@@ -73,6 +86,20 @@ class ContinuityStore:
                 updated_at TEXT NOT NULL,
                 PRIMARY KEY(conversation_id, turn_id),
                 FOREIGN KEY(conversation_id) REFERENCES conversations(conversation_id))""")
+            # Serialize an additive migration. Existing R1 turns stay UNKNOWN.
+            self.db.execute("BEGIN IMMEDIATE")
+            try:
+                fields = {row[1] for row in self.db.execute("PRAGMA table_info(turns)")}
+                if "trigger_kind" not in fields:
+                    self.db.execute("ALTER TABLE turns ADD COLUMN "
+                                    "trigger_kind TEXT NOT NULL DEFAULT 'UNKNOWN'")
+                if "trigger_evidence" not in fields:
+                    self.db.execute("ALTER TABLE turns ADD COLUMN "
+                                    "trigger_evidence TEXT NOT NULL DEFAULT 'NONE'")
+                self.db.execute("COMMIT")
+            except BaseException:
+                self.db.execute("ROLLBACK")
+                raise
 
     def close(self):
         with self.lock:
@@ -134,8 +161,13 @@ class ContinuityStore:
                     "conversation_id": cid, "epoch": epoch, "worker": worker}
         return self._transaction(write)
 
-    def begin_turn(self, conversation_id, turn_id, prompt, epoch):
+    def begin_turn(self, conversation_id, turn_id, prompt, epoch,
+                   trigger_kind="UNKNOWN"):
+        """Record a producer-classified turn without inferring authentication."""
         cid, tid = _id(conversation_id), _id(turn_id)
+        if not isinstance(trigger_kind, str) or trigger_kind not in TRIGGER_KINDS:
+            raise ValueError("unsupported trigger_kind")
+        trigger_evidence = _trigger_evidence(trigger_kind)
         if type(epoch) is not int or epoch < 1:
             raise ValueError("epoch required")
         if not isinstance(prompt, str) or not prompt.strip() or len(prompt) > 12000:
@@ -150,21 +182,26 @@ class ContinuityStore:
             if not cv or cv[0] != epoch:
                 return {"state": "FENCED", "conversation_id": cid}
             old = self.db.execute(
-                "SELECT prompt_sha256,status,response,receipt_sha256 FROM turns "
-                "WHERE conversation_id=? AND turn_id=?", (cid,tid)).fetchone()
+                "SELECT prompt_sha256,status,response,receipt_sha256,trigger_kind "
+                "FROM turns WHERE conversation_id=? AND turn_id=?",
+                (cid,tid)).fetchone()
             if old:
-                if old[0] != digest:
+                if old[0] != digest or old[4] != trigger_kind:
                     return {"state": "CONFLICT", "conversation_id": cid, "turn_id": tid}
                 state = ("REPLAY" if old[1] == "COMMITTED" else
                          "ALREADY_PENDING" if old[1] == "PENDING" else "INDETERMINATE")
                 return {"state": state, "conversation_id": cid, "turn_id": tid,
                         "response": old[2], "receipt_sha256": old[3]}
             self.db.execute(
-                "INSERT INTO turns VALUES (?,?,?,?,?,?,?,?,?,?,?)",
+                "INSERT INTO turns (conversation_id,turn_id,prompt_sha256,prompt,"
+                "response,status,epoch,worker,receipt_sha256,created_at,updated_at,"
+                "trigger_kind,trigger_evidence) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)",
                 (cid, tid, digest, prompt, None, "PENDING",
-                 epoch, cv[1], None, now, now))
+                 epoch, cv[1], None, now, now, trigger_kind, trigger_evidence))
             return {"state": "STARTED", "conversation_id": cid,
-                    "turn_id": tid, "epoch": epoch}
+                    "turn_id": tid, "epoch": epoch,
+                    "trigger_kind": trigger_kind,
+                    "trigger_evidence": trigger_evidence}
         return self._transaction(write)
 
     def commit_turn(self, conversation_id, turn_id, response, epoch):
@@ -182,12 +219,14 @@ class ContinuityStore:
             if not cv or cv[0] != epoch:
                 return {"state": "FENCED"}
             row = self.db.execute(
-                "SELECT prompt_sha256,status,response,epoch,worker,receipt_sha256 "
-                "FROM turns WHERE conversation_id=? AND turn_id=?",
+                "SELECT prompt_sha256,status,response,epoch,worker,receipt_sha256,"
+                "trigger_kind,trigger_evidence FROM turns "
+                "WHERE conversation_id=? AND turn_id=?",
                 (cid,tid)).fetchone()
             if not row:
                 return {"state": "MISSING_TURN"}
-            digest,status,old_response,origin_epoch,worker,old_receipt = row
+            (digest,status,old_response,origin_epoch,worker,old_receipt,
+             trigger_kind,trigger_evidence) = row
             if status == "COMMITTED":
                 return {"state": "REPLAY" if old_response == response else "CONFLICT",
                         "receipt_sha256": old_receipt}
@@ -196,6 +235,8 @@ class ContinuityStore:
             receipt = _sha({"conversation_id": cid, "turn_id": tid,
                             "prompt_sha256": digest, "response": response,
                             "epoch": epoch, "worker": worker,
+                            "trigger_kind": trigger_kind,
+                            "trigger_evidence": trigger_evidence,
                             "evidence_class": EVIDENCE_CLASS})
             self.db.execute(
                 "UPDATE turns SET status='COMMITTED',response=?,receipt_sha256=?,"
@@ -203,6 +244,8 @@ class ContinuityStore:
                 (response, receipt, now, cid, tid))
             return {"state": "COMMITTED", "conversation_id": cid,
                     "turn_id": tid, "receipt_sha256": receipt,
+                    "trigger_kind": trigger_kind,
+                    "trigger_evidence": trigger_evidence,
                     "evidence_class": EVIDENCE_CLASS}
         return self._transaction(write)
 
@@ -234,10 +277,12 @@ class ContinuityStore:
                 return {"state": "UNKNOWN_CONVERSATION", "conversation_id": cid}
             rows = self.db.execute(
                 "SELECT turn_id,prompt,response,status,epoch,worker,receipt_sha256,"
-                "created_at,updated_at FROM turns WHERE conversation_id=? "
+                "created_at,updated_at,trigger_kind,trigger_evidence "
+                "FROM turns WHERE conversation_id=? "
                 "ORDER BY rowid DESC LIMIT ?", (cid,limit)).fetchall()[::-1]
             turns = [dict(zip(("turn_id","prompt","response","status","epoch",
-                               "worker","receipt_sha256","created_at","updated_at"),r))
+                               "worker","receipt_sha256","created_at","updated_at",
+                               "trigger_kind","trigger_evidence"),r))
                      for r in rows]
             # Digest is an exact snapshot fingerprint, NOT an independent receipt.
             digest = _sha({"conversation_id":cid,"epoch":cv[0],"turns":turns})
