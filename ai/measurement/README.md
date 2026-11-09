@@ -32,6 +32,12 @@ python -O -B ai/measurement/colockstep_survival_r0.py
 
 The output is a **synthetic within-one-failure-domain process-isolation receipt**, not live rollback, supervisor restart, a working user product, independent receiver ACK, public release, CoEx or CoAll-wide synchronized evolution. The existing [CoMeasure CI workflow](../../.github/workflows/comeasure-r0-ci.yml) invokes both commands. Inspect the exact HEAD run before calling this canary green. The next acceptance gate requires an independent receiver-origin useful task and tested process failure/recovery in its actual intended environment.
 
+## Browser-level CoLockStep R1 canary (separate from source-level R0)
+
+The [browser survival test](../../tests/test_colockstep_browser_r0.py) reuses the existing **public CoDemoWow Truth Gate R1** at [its source file](../../examples/codemow/truth-gate-r1.html), Git blob `2d3a1248e63b409436b6def098755f93065ebebb`, without modifying it. It opens the original offline HTML in one headless Chromium process and exercises the reader's **Run truth gate**, **Test unsupported X2 claim**, and **Restore proven scope** controls. A second isolated Chromium process opens a deliberately broken experimental copy that throws during initialization. The canary requires the broken copy to fail to complete the task, interrupts only that second browser, then checks the original still rejects an unsupported claim and restores its 5/5 scoped evidence view, with no JavaScript errors or page-origin network requests.
+
+This protects the existing demo **as an exercised browser UI** during a controlled synthetic successor failure. It does **not** implement automatic traffic switching, recover a crashed baseline, operate on X2, or demonstrate an independent human receiver. GitHub Actions installs Playwright/Chromium in a separate job; a browser setup failure must not be mistaken for a CoMeasure source-verifier failure. Only the CI result for the exact current commit can establish that this new browser test passed.
+
 ## Reproduce the current draft
 
 Use a clean, disposable checkout of the exact current PR head, not an old local receipt. Python 3.12 and its standard library are sufficient. Running the verifier creates a local scoped receipt; keep it out of shared source directories if you want an independent replay.
