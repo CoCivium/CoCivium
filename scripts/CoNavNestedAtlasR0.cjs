@@ -27,7 +27,9 @@ function generateAtlas(base, overlay) {
         m.rights !== "PUBLIC_SOURCE_READABLE_DERIVATIVE_RIGHTS_NOT_VERIFIED" ||
         m.bytes_copied_into_overlay !== false || ids.has(m.id) ||
         typeof m.label !== "string" || m.label.length > 90 ||
-        m.relation_type !== "INSPIRATION_CANDIDATE_FOR") fail("HOLD_MEDIA_CANDIDATE_BOUNDARY");
+        m.relation_type !== "INSPIRATION_CANDIDATE_FOR" || m.seed_ref !== overlay.work_id ||
+        m.path_status !== "PROPOSED_NOT_EXECUTED" ||
+        typeof m.next_test !== "string" || m.next_test.length < 15 || m.next_test.length > 200) fail("HOLD_MEDIA_CANDIDATE_BOUNDARY");
     ids.add(m.id);
     nodes.push({id:m.id,kind:"media_candidate",label:m.label,source:m.source.path});
   }
@@ -121,6 +123,11 @@ function generateAtlas(base, overlay) {
     lines.push("");
   }
   if (visible.size!==nodes.length || edgeShown.size!==edges.length) fail("HOLD_UNRENDERED_RELATIONS");
+  lines.push("## CoSeed and CoPath backfill proposals", "");
+  for (const m of overlay.candidates) {
+    lines.push(`- [${clean(m.label)}](../../${m.source.path}) | Seed pointer \`${clean(m.seed_ref)}\` | proposed test: ${clean(m.next_test)} | status \`${m.path_status}\``);
+  }
+  lines.push("");
   lines.push("## Evidence and privacy ceiling", "",
     `- Bounded graph: ${base.nodes.length} earlier source nodes / ${base.edges.length} typed source edges.`,
     `- Retroactive sample: ${overlay.candidates.length} public media **candidates** / same number of typed inspiration edges; prior private assets are not represented.`,
