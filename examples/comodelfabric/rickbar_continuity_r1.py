@@ -219,12 +219,14 @@ class ContinuityStore:
             if not cv or cv[0] != epoch:
                 return {"state": "FENCED"}
             row = self.db.execute(
-                "SELECT prompt_sha256,status,response,epoch,worker,receipt_sha256 "
-                "FROM turns WHERE conversation_id=? AND turn_id=?",
+                "SELECT prompt_sha256,status,response,epoch,worker,receipt_sha256,"
+                "trigger_kind,trigger_evidence FROM turns "
+                "WHERE conversation_id=? AND turn_id=?",
                 (cid,tid)).fetchone()
             if not row:
                 return {"state": "MISSING_TURN"}
-            digest,status,old_response,origin_epoch,worker,old_receipt = row
+            (digest,status,old_response,origin_epoch,worker,old_receipt,
+             trigger_kind,trigger_evidence) = row
             if status == "COMMITTED":
                 return {"state": "REPLAY" if old_response == response else "CONFLICT",
                         "receipt_sha256": old_receipt}
@@ -233,6 +235,8 @@ class ContinuityStore:
             receipt = _sha({"conversation_id": cid, "turn_id": tid,
                             "prompt_sha256": digest, "response": response,
                             "epoch": epoch, "worker": worker,
+                            "trigger_kind": trigger_kind,
+                            "trigger_evidence": trigger_evidence,
                             "evidence_class": EVIDENCE_CLASS})
             self.db.execute(
                 "UPDATE turns SET status='COMMITTED',response=?,receipt_sha256=?,"
@@ -240,6 +244,8 @@ class ContinuityStore:
                 (response, receipt, now, cid, tid))
             return {"state": "COMMITTED", "conversation_id": cid,
                     "turn_id": tid, "receipt_sha256": receipt,
+                    "trigger_kind": trigger_kind,
+                    "trigger_evidence": trigger_evidence,
                     "evidence_class": EVIDENCE_CLASS}
         return self._transaction(write)
 
@@ -271,10 +277,12 @@ class ContinuityStore:
                 return {"state": "UNKNOWN_CONVERSATION", "conversation_id": cid}
             rows = self.db.execute(
                 "SELECT turn_id,prompt,response,status,epoch,worker,receipt_sha256,"
-                "created_at,updated_at FROM turns WHERE conversation_id=? "
+                "created_at,updated_at,trigger_kind,trigger_evidence "
+                "FROM turns WHERE conversation_id=? "
                 "ORDER BY rowid DESC LIMIT ?", (cid,limit)).fetchall()[::-1]
             turns = [dict(zip(("turn_id","prompt","response","status","epoch",
-                               "worker","receipt_sha256","created_at","updated_at"),r))
+                               "worker","receipt_sha256","created_at","updated_at",
+                               "trigger_kind","trigger_evidence"),r))
                      for r in rows]
             # Digest is an exact snapshot fingerprint, NOT an independent receipt.
             digest = _sha({"conversation_id":cid,"epoch":cv[0],"turns":turns})
