@@ -18,6 +18,9 @@
 
 ## Exact public companions
 
+- [CoSeed+/CoPath+ public discovery graph](ai/copre-seed-path-fabric-r0-20261109.json): bounded typed paths to the current public-safe CoPre package; not global front integration or receiver acceptance.
+- [CoPreGeneric shareable R0 package](docs/CoPreGeneric/Shareable_R0_20261109/README.md): four public-safe documents plus manifest, all explicitly draft.
+
 - [Machine-readable CoPreGeneric session contribution](ai/onramp/copre-generic-session-contribution-r0.json)
 - [Public rebound hub](docs/Onramp/COGOALL_PUBLIC_REBOUND_HUB_20261108.md)
 - [Current AI discovery index](ai/index.json)
