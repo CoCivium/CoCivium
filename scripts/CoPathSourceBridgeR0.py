@@ -103,34 +103,75 @@ def git_reader(root, main_ref, candidate_ref, corun_ref):
     return get_bytes
 
 
-def assess(manifest, role, read_source):
+def git_pinned_reader(root):
+    """Look up an immutable Git blob when the moving branch has changed."""
+    def read_sha(sha1):
+        must(isinstance(sha1, str) and PIN.fullmatch(sha1), "BAD_PIN")
+        result = subprocess.run(["git", "-C", str(root), "cat-file",
+                                 "blob", sha1], stdout=subprocess.PIPE,
+                                stderr=subprocess.PIPE, check=False)
+        if result.returncode:
+            raise OSError("PINNED_GIT_OBJECT_UNAVAILABLE")
+        if len(result.stdout) > MAX_BYTES:
+            raise OSError("OVERSIZE_PINNED_GIT_OBJECT")
+        return result.stdout
+    return read_sha
+
+
+def assess(manifest, role, read_source, read_pinned=None):
+    """Preserve recoverable historical pins without misclassifying drift as loss."""
     sources = validate(manifest)
     must(role in manifest["routes"], "UNKNOWN_ROLE")
     items = []
     for key in manifest["routes"][role]:
         source = sources[key]
+        pin = source["git_blob_sha1"]
         try:
-            raw = read_source(source["branch"], source["path"])
-            if len(raw) > MAX_BYTES:
+            current = read_source(source["branch"], source["path"])
+            if len(current) > MAX_BYTES:
                 raise OSError("OVERSIZE")
-            actual = git_blob(raw)
-            state = ("EXACT_SOURCE_READBACK" if actual == source["git_blob_sha1"]
-                     else "HELD_PIN_MISMATCH")
-            digest = hashlib.sha256(raw).hexdigest()
-            size = len(raw)
+            current_sha = git_blob(current)
         except OSError:
-            state, digest, size, actual = ("HELD_SOURCE_UNAVAILABLE", None,
-                                          None, None)
+            current, current_sha = None, None
+        currentness = ("CURRENT_MATCHES_PIN" if current_sha == pin else
+                       "CURRENT_MOVED" if current_sha is not None else
+                       "CURRENT_UNAVAILABLE")
+        if current_sha == pin:
+            chosen = current
+            state = "EXACT_CURRENT_SOURCE_READBACK"
+        else:
+            try:
+                if read_pinned is None:
+                    raise OSError("NO_HISTORICAL_BLOB_READER")
+                historic = read_pinned(pin)
+                if len(historic) > MAX_BYTES or git_blob(historic) != pin:
+                    raise OSError("HISTORICAL_BLOB_MISMATCH")
+                chosen = historic
+                state = "EXACT_HISTORICAL_SOURCE_RECOVERED__CURRENTNESS_HELD"
+            except OSError:
+                chosen = None
+                state = "HELD_SOURCE_UNVERIFIED"
         items.append({
             "source_id": key, "branch": source["branch"],
-            "path": source["path"],
-            "source_blob_expected": source["git_blob_sha1"],
-            "source_blob_actual": actual,
-            "source_sha256_actual": digest, "source_bytes": size,
+            "path": source["path"], "source_blob_expected": pin,
+            "current_tree_blob_actual": current_sha,
+            "source_currentness": currentness,
+            "selected_pinned_blob_actual": git_blob(chosen) if chosen is not None else None,
+            "source_sha256_actual": hashlib.sha256(chosen).hexdigest()
+                                    if chosen is not None else None,
+            "source_bytes": len(chosen) if chosen is not None else None,
             "readback_state": state, "receiver_ack": None,
+            "historical_path_binding": "PREVIOUS_GITHUB_CONNECTOR_OBSERVATION"
         })
-    passed = all(row["readback_state"] == "EXACT_SOURCE_READBACK"
-                 for row in items)
+    verified = sum(x["readback_state"].startswith("EXACT_") for x in items)
+    current_count = sum(x["readback_state"] == "EXACT_CURRENT_SOURCE_READBACK"
+                        for x in items)
+    challenged = [x["source_id"] for x in items
+                  if x["readback_state"] ==
+                  "EXACT_HISTORICAL_SOURCE_RECOVERED__CURRENTNESS_HELD"]
+    status = ("HELD_SOURCE_PATH_UNVERIFIED" if verified != len(items)
+              else "HISTORICAL_PINS_RECOVERABLE__CURRENTNESS_HELD" if challenged
+              else "SOURCE_PATH_READBACK__NOT_PICKUP")
     return {
         "schema": REPORT,
         "work_id": manifest["work_id"],
@@ -138,11 +179,11 @@ def assess(manifest, role, read_source):
         "source_entry": manifest["source_entry"],
         "source_roots": manifest["source_roots"],
         "route": items,
-        "source_readbacks": sum(x["readback_state"] == "EXACT_SOURCE_READBACK"
-                                for x in items),
+        "source_readbacks": verified,
+        "current_source_readbacks": current_count,
+        "currentness_challenges": challenged,
         "total": len(items),
-        "status": ("SOURCE_PATH_READBACK__NOT_PICKUP" if passed
-                   else "HELD_SOURCE_PATH_UNVERIFIED"),
+        "status": status,
         "scope": "LOCAL_GIT_CI_SOURCE_READ_ONLY",
         "receiver_identity": None,
         "receiver_acknowledged": False,
@@ -153,7 +194,9 @@ def assess(manifest, role, read_source):
         "effects": "NONE",
         "next_gate": ("AUTHORIZED_INDEPENDENT_RECEIVER_EXACT_OBJECT_READ"
                       "_PLUS_USEFUL_TASK_AND_RECOVERY_PROOF"),
-        "nonclaims": list(manifest["nonclaims"]),
+        "nonclaims": list(manifest["nonclaims"]) +
+                    ["HISTORICAL_BLOB_NE_CURRENT_MAIN",
+                     "HISTORICAL_BLOB_NE_REVALIDATED_PATH_BINDING"],
     }
 
 
@@ -179,12 +222,13 @@ def main(argv=None):
         manifest = json.loads(args.manifest.read_text(encoding="utf-8"))
         proof = assess(manifest, args.role, git_reader(
             args.repo_root, args.main_ref, args.candidate_ref,
-            args.corun_ref))
+            args.corun_ref),
+            git_pinned_reader(args.repo_root))
         if args.out:
             digest = write_receipt(args.out, proof)
             proof["report_sha256"] = digest
         print(json.dumps(proof, sort_keys=True))
-        return 0 if proof["status"] == "SOURCE_PATH_READBACK__NOT_PICKUP" or (
+        return 0 if proof["source_readbacks"] == proof["total"] or (
             not args.strict) else 2
     except (ValueError, OSError, json.JSONDecodeError) as exc:
         print("FAIL_CLOSED: " + str(exc), file=sys.stderr)
