@@ -42,3 +42,10 @@ Use the source in [CoPre Thumb R1](COPRE_THUMB_R1.md). No copy/paste of full pri
 
 ## F. Next acceptance
 Independent authorized synth receiver fetches this public candidate packet by URL, verifies exact bytes and version, writes its own durable reply on an approved channel, and surfaces the readback in CoOrb/CoMap with explicit scope. Until then: `PUBLISHED_CANDIDATE_SOURCE`, `NO_RECEIVER_PICKUP_PROOF`.
+
+## G. Retroactive CoFront+ / CoEcho+ (2026-11-09)
+- [Temporal replay implementation](retro_front_echo_r0.py) and [15 adversarial tests](test_retro_front_echo_r0.py) provide a bounded, deterministic index of **explicitly supplied** historical objects.
+- Differentiates original historical time from the time an artifact was later observed, preserves undated items separately, deduplicates identical WorkID+revision+bytes, retains competing revisions and reports fronts still lacking evidence.
+- Private records remain behind scoped read boundaries; only count-based rollups are eligible for publication, not private source paths or chat text.
+- This source does **not** mean every old chat, CoFarm file or archive is indexed. Coverage is explicitly incomplete; no X2 runtime, independent pickup, CoEx or predictive validation is inferred.
+- The existing [historical replay and benchmark issue #221](https://github.com/CoCivium/CoCivium/issues/221) remains the coordination locus. Chronological replay is only one projection; relation-first, provenance-first and risk-first passes are complementary.
