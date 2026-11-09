@@ -11,7 +11,7 @@ RAW = "https://raw.githubusercontent.com/CoCivium/CoCivium/main/"
 MANIFEST = "docs/Evolution/COPREGENERIC_SESSION_POINTERS_R0.json"
 
 def git_blob_sha(data):
-    return hashlib.sha1(b"blob " + str(len(data)).encode() + b"\\0" + data).hexdigest()
+    return hashlib.sha1(b"blob " + str(len(data)).encode() + b"\0" + data).hexdigest()
 
 def verify(manifest, fetch):
     receipts = []
@@ -44,7 +44,7 @@ def main():
         manifest = json.loads(manifest_bytes)
         result = verify(manifest, remote_fetch)
         result["manifest_sha256"] = hashlib.sha256(manifest_bytes).hexdigest()
-        payload = json.dumps(result, sort_keys=True, indent=2) + "\\n"
+        payload = json.dumps(result, sort_keys=True, indent=2) + "\n"
         if args.output == "-":
             print(payload, end="")
         else:
