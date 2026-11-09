@@ -54,5 +54,38 @@ def validate(root: Path) -> dict:
             "missing_paths":0,"dangling_relations":0,
             "external_receiver_readproof":"NOT_OBSERVED","canon":"NOT_CERTIFIED"}
 
+
+def route_from_entry(root: Path, target_id: str, *, max_hops: int = 32) -> dict:
+    """Discover a traceable directed-or-reverse path, never invent reciprocal writes.
+
+    Traversing a reverse source link is a *reader navigation option*, not
+    evidence of reciprocal delivery, integration or permission.
+    """
+    if not isinstance(target_id,str) or not target_id or not 0 <= max_hops <= 32:
+        raise ValueError("HOLD_INVALID_ROUTE_REQUEST")
+    validate(root)
+    fabric=json.loads((Path(root)/FABRIC).read_text(encoding="utf-8"))
+    nodes={n["id"]:n for n in fabric["nodes"]}
+    if target_id not in nodes:
+        return {"state":"HELD_UNKNOWN_TARGET","target":target_id,"hops":[]}
+    entry="copre-entry"
+    pending=[(entry, [])]
+    visited={entry}
+    for current,path in pending:
+        if current==target_id:
+            return {"state":"PUBLIC_SOURCE_NAVIGATION_ONLY","target":target_id,
+                    "hops":path,"independent_pickup":False,"authority_granted":False}
+        if len(path)>=max_hops:
+            continue
+        forward=[(rel,"FORWARD_DECLARED") for rel in nodes[current]["relations"]]
+        reverse=[(n["id"],"REVERSE_DERIVED") for n in fabric["nodes"] if current in n["relations"]]
+        for next_id,kind in sorted(forward+reverse):
+            if next_id not in visited:
+                visited.add(next_id)
+                pending.append((next_id,path+[{"from":current,"to":next_id,"traversal":kind,
+                                             "source_path":nodes[next_id]["path"]}]))
+    return {"state":"HELD_UNREACHABLE_OR_HOP_LIMIT","target":target_id,"hops":[]}
+
+
 if __name__ == "__main__":
     print(json.dumps(validate(Path(__file__).resolve().parents[1]),sort_keys=True))
