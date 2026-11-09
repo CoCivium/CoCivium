@@ -55,6 +55,8 @@ class PulseReadbackTests(unittest.TestCase):
             hashes[name] = digest(raw)
         audit = b'{"scope":"synthetic-schedule-audit"}\n'
         (self.source / "schedule-audit.json").write_bytes(audit)
+        rebound = b'{"scope":"synthetic-rebound-audit"}\n'
+        (self.source / "rebound-report.json").write_bytes(rebound)
         self.record = {
             "schema": "cogoall-proof-pulse-r0",
             "observed_at_utc": "2026-11-09T03:22:17+00:00",
@@ -62,6 +64,7 @@ class PulseReadbackTests(unittest.TestCase):
             "head": SHA, "event": "schedule", "outcome": "success",
             "log_sha256": hashes,
             "schedule_audit_sha256": digest(audit),
+            "rebound_audit_sha256": digest(rebound),
             "claims": EXPECTED_CLAIMS[:],
         }
         self.save()
@@ -74,7 +77,8 @@ class PulseReadbackTests(unittest.TestCase):
 
     def test_valid_readback_is_scoped_and_not_external_ack(self):
         result = observe(self.source, context())
-        self.assertEqual(result["verified_log_count"], 7)
+        self.assertEqual(result["verified_log_count"], 9)
+        self.assertEqual(result["rebound_audit_sha256"], self.record["rebound_audit_sha256"])
         self.assertEqual(result["state"], "GITHUB_JOB_BOUNDARY_ARTIFACT_HASH_READBACK")
         self.assertEqual(result["work_id"], "CoGoAll.PulseReceipt.12345.a1")
         self.assertEqual(result["due_work_selection"], "NOT_TESTED")
@@ -116,6 +120,39 @@ class PulseReadbackTests(unittest.TestCase):
     def test_changed_schedule_audit_fails_closed(self):
         (self.source / "schedule-audit.json").write_bytes(b"changed")
         with self.assertRaisesRegex(ValueError, "HOLD_CADENCE_DIGEST_MISMATCH"):
+            observe(self.source, context())
+
+    def test_missing_new_rebound_log_key_fails_closed(self):
+        del self.record["log_sha256"]["rebound-links"]
+        self.save()
+        with self.assertRaisesRegex(ValueError, "HOLD_MISSING_LOG_IDENTITIES"):
+            observe(self.source, context())
+
+    def test_changed_new_rebound_log_fails_closed(self):
+        (self.source / "rebound-tests.log").write_text("tampered")
+        with self.assertRaisesRegex(ValueError, "HOLD_LOG_DIGEST_MISMATCH"):
+            observe(self.source, context())
+
+    def test_missing_rebound_receipt_field_fails_closed(self):
+        del self.record["rebound_audit_sha256"]
+        self.save()
+        with self.assertRaisesRegex(ValueError, "HOLD_UNEXPECTED_PROOF_FIELDS"):
+            observe(self.source, context())
+
+    def test_missing_rebound_report_fails_closed(self):
+        (self.source / "rebound-report.json").unlink()
+        with self.assertRaisesRegex(ValueError, "HOLD_MISSING_OR_LINKED_ARTIFACT"):
+            observe(self.source, context())
+
+    def test_changed_rebound_report_fails_closed(self):
+        (self.source / "rebound-report.json").write_bytes(b"tampered")
+        with self.assertRaisesRegex(ValueError, "HOLD_REBOUND_DIGEST_MISMATCH"):
+            observe(self.source, context())
+
+    def test_bad_rebound_digest_fails_closed(self):
+        self.record["rebound_audit_sha256"] = ""
+        self.save()
+        with self.assertRaisesRegex(ValueError, "HOLD_REBOUND_DIGEST_MISSING"):
             observe(self.source, context())
 
     def test_false_receiver_ack_field_fails_closed(self):
