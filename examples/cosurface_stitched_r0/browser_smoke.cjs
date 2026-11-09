@@ -17,6 +17,47 @@ const evidenceDir = resolve(__dirname, "evidence");
     assert.equal(await page.locator("#workspace").isVisible(), false, "Default should be quiet");
     assert.equal(await page.locator("#r5-rail").isVisible(), true);
     assert.equal(await page.locator("#orb").count(), 1);
+    // Screenshot-derived challenge: the user should not need to decipher a
+    // microscopic rail at a 2048x1151 desktop viewport, and the Orb must
+    // remain physically distinct from the rail on narrow screens.
+    async function railLegibility(width, height, screenshotName) {
+      const p = await browser.newPage({ viewport: { width, height } });
+      try {
+        await p.goto(pathToFileURL(resolve(__dirname, "index.html")).href);
+        const values = await p.evaluate(() => {
+          const rail = document.getElementById("r5-rail");
+          const orb = document.getElementById("orb");
+          const button = document.getElementById("rail-workspace");
+          const rb = rail.getBoundingClientRect(), ob = orb.getBoundingClientRect();
+          return {
+            font: parseFloat(getComputedStyle(rail).fontSize),
+            buttonFont: parseFloat(getComputedStyle(button).fontSize),
+            buttonHeight: button.getBoundingClientRect().height,
+            railTop: rb.top, orbBottom: ob.bottom,
+            railIsVisible: rb.width > 100 && rb.height >= 44,
+            workspaceHidden: document.getElementById("workspace").hidden,
+            orbCount: document.querySelectorAll("#orb").length,
+            evidence: rail.innerText,
+            membrane: orb.dataset.membraneState
+          };
+        });
+        assert.ok(values.font >= 14, "CoAll rail must be legible rather than microtext");
+        assert.ok(values.buttonFont >= 14);
+        assert.ok(values.buttonHeight >= 38, "Navigation controls should not shrink to tiny targets");
+        assert.ok(values.railIsVisible);
+        assert.ok(values.orbBottom <= values.railTop - 1,
+                  "Orb must sit above the rail, not cover its controls");
+        assert.equal(values.workspaceHidden, true, "Default remains quiet");
+        assert.equal(values.orbCount, 1);
+        assert.match(values.evidence, /NO LIVE EFFECT/);
+        assert.equal(values.membrane, "unknown");
+        await p.screenshot({ path: resolve(evidenceDir, screenshotName), fullPage: true });
+      } finally {
+        await p.close();
+      }
+    }
+    await railLegibility(2048, 1151, "x2-sized-quiet-candidate.png");
+    await railLegibility(390, 844, "narrow-quiet-candidate.png");
     await page.screenshot({ path: resolve(evidenceDir, "quiet-default.png"), fullPage: true });
 
     assert.equal(await page.locator("#rail-map").isDisabled(), true);
