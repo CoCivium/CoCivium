@@ -77,6 +77,9 @@ class CoMVPSlots:
             PRIMARY KEY(slot,revision))""")
         self.db.execute("""CREATE TABLE IF NOT EXISTS heads (
             slot TEXT PRIMARY KEY, revision TEXT NOT NULL, generation INTEGER NOT NULL)""")
+        self.db.execute("""CREATE TABLE IF NOT EXISTS contracts (
+            slot TEXT PRIMARY KEY, acceptance_rel TEXT NOT NULL,
+            acceptance_sha TEXT NOT NULL)""")
         self.db.execute("""CREATE TABLE IF NOT EXISTS events (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             timestamp TEXT NOT NULL, action TEXT NOT NULL,
@@ -111,10 +114,13 @@ class CoMVPSlots:
                         (stamp, action, _canonical(changed), parent, digest))
         return digest
 
-    def stage(self, slot, artifact_rel, test_rel, dependencies=()):
+    def stage(self, slot, artifact_rel, test_rel, dependencies=(), acceptance_rel=None):
         slot = _name(slot)
         _, revision = self._source(artifact_rel, MAX_SOURCE_BYTES)
         _, test_sha = self._source(test_rel, MAX_TEST_BYTES)
+        acceptance_sha = None
+        if acceptance_rel is not None:
+            _, acceptance_sha = self._source(acceptance_rel, MAX_TEST_BYTES)
         _require(isinstance(dependencies, (list, tuple)) and len(dependencies) <= 24,
                  "UNBOUNDED_DEPENDENCIES")
         deps = {}
@@ -127,6 +133,22 @@ class CoMVPSlots:
             deps[other] = required_rev
         self.db.execute("BEGIN IMMEDIATE")
         try:
+            contract = self.db.execute(
+                "SELECT acceptance_rel,acceptance_sha FROM contracts WHERE slot=?",
+                (slot,)).fetchone()
+            if contract is not None:
+                _require(acceptance_rel is None or
+                         (acceptance_rel, acceptance_sha) == contract,
+                         "PINNED_ACCEPTANCE_CONTRACT_CHANGE")
+            elif acceptance_rel is not None:
+                any_previous = self.db.execute(
+                    "SELECT 1 FROM versions WHERE slot=? LIMIT 1", (slot,)).fetchone()
+                _require(not any_previous, "CONTRACT_RETROFIT_REQUIRES_REVIEW")
+                self.db.execute(
+                    "INSERT INTO contracts(slot,acceptance_rel,acceptance_sha) VALUES (?,?,?)",
+                    (slot, acceptance_rel, acceptance_sha))
+                self._event("PIN_ACCEPTANCE_CONTRACT",
+                            {"slot": slot, "acceptance_sha256": acceptance_sha})
             row = self.db.execute("SELECT artifact_rel,test_rel,test_sha,deps_json FROM versions WHERE slot=? AND revision=?",
                                   (slot, revision)).fetchone()
             fields = (artifact_rel, test_rel, test_sha, _canonical(deps))
@@ -140,6 +162,7 @@ class CoMVPSlots:
             self.db.execute("ROLLBACK")
             raise
         return {"state": "STAGED_OR_EXISTING", "slot": slot, "revision": revision,
+                "acceptance_contract_pinned": bool(contract is not None or acceptance_sha),
                 "source_only": True}
 
     def qualify(self, slot, revision):
@@ -152,37 +175,75 @@ class CoMVPSlots:
         test_path, current_test_sha = self._source(test_rel, MAX_TEST_BYTES)
         _require(current_sha == revision and current_test_sha == expected_test_sha,
                  "SOURCE_OR_TEST_MUTATED")
-        # Deliberately run one explicitly registered local program; never a shell.
+        # Deliberately run registered Python programs without a shell.
+        # They are NOT sandboxed: on a real host only authorize trusted tests.
+        env = dict(os.environ, COMVP_ARTIFACT_PATH=str((self.root / artifact_rel).resolve()),
+                   COMVP_SLOT=slot, COMVP_REVISION=revision)
         try:
             out = subprocess.run([sys.executable, "-B", str(test_path)],
                                  cwd=str(self.root), timeout=MAX_TEST_SEC,
-                                 capture_output=True, check=False)
+                                 capture_output=True, check=False, env=env)
         except subprocess.TimeoutExpired:
             return {"state": "HELD_TEST_TIMEOUT", "slot": slot, "revision": revision}
+        contract = self.db.execute(
+            "SELECT acceptance_rel,acceptance_sha FROM contracts WHERE slot=?",
+            (slot,)).fetchone()
+        acceptance_out = None
+        if out.returncode == 0 and contract is not None:
+            acceptance_path, actual_acceptance_sha = self._source(
+                contract[0], MAX_TEST_BYTES)
+            _require(actual_acceptance_sha == contract[1],
+                     "PINNED_ACCEPTANCE_CONTRACT_MUTATED")
+            try:
+                acceptance_out = subprocess.run(
+                    [sys.executable, "-B", str(acceptance_path)], cwd=str(self.root),
+                    timeout=MAX_TEST_SEC, capture_output=True,
+                    check=False, env=env)
+            except subprocess.TimeoutExpired:
+                return {"state": "HELD_ACCEPTANCE_TIMEOUT", "slot": slot,
+                        "revision": revision}
         _, after_sha = self._source(artifact_rel, MAX_SOURCE_BYTES)
         _, after_test_sha = self._source(test_rel, MAX_TEST_BYTES)
         _require(after_sha == revision and after_test_sha == expected_test_sha,
                  "SOURCE_MUTATED_DURING_TEST")
-        digest = _sha((out.stdout + out.stderr)[:MAX_SOURCE_BYTES])
+        if contract is not None:
+            _, after_acceptance_sha = self._source(contract[0], MAX_TEST_BYTES)
+            _require(after_acceptance_sha == contract[1],
+                     "PINNED_ACCEPTANCE_CONTRACT_MUTATED")
+        log_bytes = out.stdout + out.stderr
+        if acceptance_out is not None:
+            log_bytes += acceptance_out.stdout + acceptance_out.stderr
+        digest = _sha(log_bytes[:MAX_SOURCE_BYTES])
         if out.returncode != 0:
             return {"state": "HELD_TEST_FAILED", "slot": slot, "revision": revision,
                     "test_log_sha256": digest, "exit_code": out.returncode}
+        if acceptance_out is not None and acceptance_out.returncode != 0:
+            return {"state": "HELD_ACCEPTANCE_REGRESSION",
+                    "slot": slot, "revision": revision,
+                    "acceptance_contract_sha256": contract[1],
+                    "test_log_sha256": digest, "exit_code": acceptance_out.returncode}
+        qualified_state = "CONTRACT_TESTED" if contract is not None else "SOURCE_TESTED"
         self.db.execute("BEGIN IMMEDIATE")
         try:
             row2 = self.db.execute("SELECT state,test_log_sha FROM versions WHERE slot=? AND revision=?",
                                    (slot, revision)).fetchone()
             _require(row2 is not None, "VERSION_DISAPPEARED")
-            if row2[0] != "SOURCE_TESTED":
-                self.db.execute("UPDATE versions SET state='SOURCE_TESTED',test_log_sha=? WHERE slot=? AND revision=?",
-                                (digest, slot, revision))
+            if row2[0] != qualified_state:
+                self.db.execute("UPDATE versions SET state=?,test_log_sha=? WHERE slot=? AND revision=?",
+                                (qualified_state, digest, slot, revision))
                 self._event("SOURCE_TEST_PASS", {"slot": slot, "revision": revision,
-                                                "test_log_sha256": digest})
+                                                "test_log_sha256": digest,
+                                                "contract_pinned": bool(contract)})
             self.db.execute("COMMIT")
         except BaseException:
             self.db.execute("ROLLBACK")
             raise
-        return {"state": "SOURCE_TESTED_LOCAL_ONLY", "slot": slot, "revision": revision,
-                "test_log_sha256": digest, "receiver_qualified": False}
+        return {"state": "CONTRACT_TESTED_LOCAL_ONLY" if contract is not None else
+                         "SOURCE_TESTED_LOCAL_ONLY",
+                "slot": slot, "revision": revision,
+                "test_log_sha256": digest,
+                "acceptance_contract_sha256": contract[1] if contract else None,
+                "receiver_qualified": False}
 
     def active(self):
         rows = self.db.execute("SELECT slot,revision FROM heads ORDER BY slot").fetchall()
@@ -211,13 +272,21 @@ class CoMVPSlots:
                 row = self.db.execute("""SELECT artifact_rel,test_rel,test_sha,deps_json,state
                                          FROM versions WHERE slot=? AND revision=?""",
                                       (slot, rev)).fetchone()
-                _require(row is not None and row[4] == "SOURCE_TESTED",
+                contract = self.db.execute(
+                    "SELECT acceptance_rel,acceptance_sha FROM contracts WHERE slot=?",
+                    (slot,)).fetchone()
+                required_state = "CONTRACT_TESTED" if contract else "SOURCE_TESTED"
+                _require(row is not None and row[4] == required_state,
                          "UNQUALIFIED_RELEASE_VERSION")
                 artifact_rel, test_rel, test_sha, deps_json, _ = row
                 _, actual_artifact = self._source(artifact_rel, MAX_SOURCE_BYTES)
                 _, actual_test = self._source(test_rel, MAX_TEST_BYTES)
                 _require(actual_artifact == rev and actual_test == test_sha,
                          "ACTIVE_SOURCE_CHANGED")
+                if contract is not None:
+                    _, check_acceptance = self._source(contract[0], MAX_TEST_BYTES)
+                    _require(check_acceptance == contract[1],
+                             "PINNED_ACCEPTANCE_CONTRACT_MUTATED")
                 deps = json.loads(deps_json)
                 for dependency, expected_rev in deps.items():
                     _require(proposed.get(dependency) == expected_rev,
@@ -277,6 +346,7 @@ def main(argv=None):
     stage.add_argument("--test", required=True)
     stage.add_argument("--deps-json", default="{}",
                        help="JSON object mapping dependent slot to exact source revision")
+    stage.add_argument("--acceptance", help="Trusted pinned minimum-use test, on first version only")
     qualify = sub.add_parser("qualify")
     qualify.add_argument("--slot", required=True)
     qualify.add_argument("--revision", required=True)
@@ -298,7 +368,7 @@ def main(argv=None):
                 deps = json.loads(a.deps_json)
                 _require(isinstance(deps, dict), "INVALID_DEPS_JSON")
                 value = store.stage(a.slot, a.artifact, a.test,
-                                    tuple(deps.items()))
+                                    tuple(deps.items()), acceptance_rel=a.acceptance)
             elif a.command == "qualify":
                 value = store.qualify(a.slot, a.revision)
             else:
