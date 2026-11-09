@@ -83,6 +83,36 @@ def compile_pack(observation, previous=None):
     return core
 
 
+def render_continuation_input(packet):
+    """Explicit user-turn projection; not a provider composer mutation."""
+    if not isinstance(packet, dict) or packet.get("status") != "PACK_COMPILED_READ_ONLY":
+        return None
+    parts = [
+        "CoPre+ | CONTINUATION REQUEST | NOT AN AUTHORITY GRANT",
+        "WorkID: " + packet["work_id"] + " | Wave: " + str(packet["sequence"]),
+        "Purpose: " + packet["purpose"],
+        "Source: " + packet["source_ref"] + " @ " + packet["source_revision"],
+        "Delta: " + packet["delta_ref"],
+        "CoPrePack SHA-256: " + packet["pack_sha256"],
+        "Parent: " + str(packet["parent_pack_sha256"]),
+        "Evidence: " + "; ".join(packet["evidence_refs"]),
+        "Receiver: " + packet["receiver"] + " | Observer: " + packet["observer"],
+        "Authority: READ_ONLY | Effects: NONE | Confidentiality: PUBLIC",
+        "Collision: " + packet["collision_domain"] + " | Failure domain: " + packet["failure_domain"],
+        "Bound: " + str(packet["budget"]["max_work_units"]) + " work units",
+        "NEXT: " + packet["next_deed"],
+        "Verify/falsify: " + packet["verification"],
+        "Wake only on: " + packet["wake_predicate"],
+        "Stop on: " + packet["stop_predicate"],
+        "Recovery: " + packet["recovery_ref"],
+        "FIRST: Verify exact source and pack identity. Reconcile latest WorkID state,",
+        "challenge with inverse/in-between and external alternatives, then elect one",
+        "bounded reversible deed. No ACK, deployment, canon, session access or",
+        "additional permissions follow from this message. On no delta: QUIESCENT.",
+    ]
+    return "\n".join(parts)
+
+
 def selftest():
     base={
       "work_id":"CoPre.test","source_ref":"github:example@blob",
@@ -102,6 +132,13 @@ def selftest():
     assert digest({k:v for k,v in first.items() if k not in ("pack_sha256","status","footer")})==first["pack_sha256"]
     checks+=2
     assert compile_pack(base)==first;checks+=1
+    user_turn=render_continuation_input(first)
+    assert "CoPrePack SHA-256: " + first["pack_sha256"] in user_turn
+    assert "NEXT: " + base["next_deed"] in user_turn
+    assert "Verify/falsify: " + base["verification"] in user_turn
+    assert "Authority: READ_ONLY | Effects: NONE" in user_turn
+    assert render_continuation_input({"status":"HOLD"}) is None
+    checks+=5
     for changes,reason in [
        ({"material_delta":False},"QUIESCENT"),
        ({"wake_is_bound":False},"HOLD"),
@@ -131,10 +168,15 @@ if __name__=="__main__":
     parser=argparse.ArgumentParser()
     parser.add_argument("--selftest",action="store_true")
     parser.add_argument("--input")
+    parser.add_argument("--emit-prompt",action="store_true",help="Render explicit user-turn text; cannot edit any provider input field")
     args=parser.parse_args()
     if args.selftest:
         selftest()
     elif args.input:
-        print(json.dumps(compile_pack(json.loads(Path(args.input).read_text(encoding="utf-8"))),indent=2,sort_keys=True))
+        result=compile_pack(json.loads(Path(args.input).read_text(encoding="utf-8")))
+        if args.emit_prompt and result.get("status")=="PACK_COMPILED_READ_ONLY":
+            print(render_continuation_input(result))
+        else:
+            print(json.dumps(result,indent=2,sort_keys=True))
     else:
         parser.error("Specify --selftest or --input")
