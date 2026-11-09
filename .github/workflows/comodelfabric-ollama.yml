@@ -24,7 +24,21 @@ jobs:
         with:
           python-version: '3.12'
       - name: Run isolated gateway tests
-        run: |
-          python examples/comodelfabric/ollama_gateway_r0.py
-          python examples/comodelfabric/test_gateway_bridge.py
-          python examples/comodelfabric/test_rickbar_ollama_bridge_r0.py
+        run: python examples/comodelfabric/ollama_gateway_r0.py
+      - name: Run synthetic RickBar CLI to receipt negative controls
+        run: python -B examples/comodelfabric/test_rickbar_ollama_bridge_r0.py
+      - name: Run receipt store tests
+        run: python examples/comodelfabric/test_gateway_bridge.py
+      - name: Run synthetic gateway-to-receipt integration tests
+        run: python examples/comodelfabric/test_ollama_receipt_integration.py
+      - name: Run RickBar local web boundary tests
+        run: python -B examples/comodelfabric/test_rickbar_local_web_r0.py
+      - name: Validate exact loopback URL and block proxy or redirect egress
+        run: python -B examples/comodelfabric/test_gateway_local_egress_r0.py
+      - name: Cold-process readback and tamper / false-ACK tests
+        run: python -B examples/comodelfabric/test_rickbar_receipt_readback_r0.py
+      - name: Check RickBar bridge CLI syntax
+        run: python -m py_compile examples/comodelfabric/rickbar_ollama_bridge_r0.py
+
+      - name: Exercise live loopback HTTP boundary with fake local model
+        run: python -B examples/comodelfabric/test_rickbar_local_http_r0.py
