@@ -1,0 +1,40 @@
+name: CoPre Seed Path Source Integrity R0
+
+permissions:
+  contents: read
+
+on:
+  pull_request:
+    paths:
+      - "CoPre.md"
+      - "SESSION_BOOTSTRAP.md"
+      - "ai/index.json"
+      - "ai/copre-seed-path-federation-r0.json"
+      - "ai/copre-seed-path-fabric-r0-20261109.json"
+      - "docs/CoPreGeneric/**"
+      - "scripts/CoPreSeedPathCheckR0.py"
+      - "scripts/test_CoPreSeedPathCheckR0.py"
+      - ".github/workflows/copre-seed-path-source-integrity-r0.yml"
+  push:
+    paths:
+      - "CoPre.md"
+      - "SESSION_BOOTSTRAP.md"
+      - "ai/index.json"
+      - "ai/copre-seed-path-federation-r0.json"
+      - "ai/copre-seed-path-fabric-r0-20261109.json"
+      - "docs/CoPreGeneric/**"
+      - "scripts/CoPreSeedPathCheckR0.py"
+      - "scripts/test_CoPreSeedPathCheckR0.py"
+      - ".github/workflows/copre-seed-path-source-integrity-r0.yml"
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Verify CoSeed CoPath source graph and fail-closed regressions
+        run: python -B -m unittest -v scripts/test_CoPreSeedPathCheckR0.py
