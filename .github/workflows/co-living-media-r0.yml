@@ -8,6 +8,9 @@ on:
       - 'ai/comap-source-projection-r0.json'
       - 'scripts/CoNavNestedAtlasR0.cjs'
       - 'scripts/test_conav_nested_atlas_r0.cjs'
+      - 'scripts/CoWaveDiversityR0.py'
+      - 'scripts/test_cowave_diversity_r0.py'
+      - 'docs/Evolution/FRONTIER_EVIDENCE_INDEX_R0.json'
       - 'docs/Architecture/COFREE_EVOLVING_PUBLICATION_COMMONS_R0_20261026.md'
       - 'docs/Architecture/COPUBLICATION_FEDERATION_RECEIVER_INTEREST_R0_20261025.md'
       - 'docs/Architecture/CORELATIONSHIP_BRAID_FABRIC_R0_20261026.md'
@@ -25,6 +28,9 @@ on:
       - 'ai/comap-source-projection-r0.json'
       - 'scripts/CoNavNestedAtlasR0.cjs'
       - 'scripts/test_conav_nested_atlas_r0.cjs'
+      - 'scripts/CoWaveDiversityR0.py'
+      - 'scripts/test_cowave_diversity_r0.py'
+      - 'docs/Evolution/FRONTIER_EVIDENCE_INDEX_R0.json'
       - 'docs/Architecture/COFREE_EVOLVING_PUBLICATION_COMMONS_R0_20261026.md'
       - 'docs/Architecture/COPUBLICATION_FEDERATION_RECEIVER_INTEREST_R0_20261025.md'
       - 'docs/Architecture/CORELATIONSHIP_BRAID_FABRIC_R0_20261026.md'
@@ -64,6 +70,22 @@ jobs:
         run: python3 -B examples/colensmedia/conav_retro_r0.py --root . --manifest examples/colensmedia/conav_retro_manifest_r0.json --diagram examples/colensmedia/conav_diagram_r0.md --html examples/colensmedia/conav_navigator_r0.html --check
       - name: Verify CoNav circuit representation and audience braid against pinned manifest
         run: python3 -B examples/colensmedia/coaudience_circuit_r0.py --manifest examples/colensmedia/conav_retro_manifest_r0.json --policy examples/colensmedia/coaudience_circuit_policy_r0.json --diagram examples/colensmedia/coaudience_circuit_r0.md --check
+      - name: Check bounded CoWave diversity without creating workers or effects
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -B -m unittest discover -s scripts -p 'test_cowave_diversity_r0.py' -v
+          python3 -B scripts/CoWaveDiversityR0.py --index docs/Evolution/FRONTIER_EVIDENCE_INDEX_R0.json --as-of "$(date -u +%Y-%m-%dT%H:%M:%SZ)" --output "$RUNNER_TEMP/cowave-proposals.json"
+          python3 - <<'PY'
+          import json, os, pathlib
+          receipt=json.loads((pathlib.Path(os.environ['RUNNER_TEMP'])/'cowave-proposals.json').read_text())
+          assert receipt['schema']=='CoAll.WaveDiversityProposal.R0'
+          assert receipt['state'] in ('PROPOSED_ONLY','HOLD_NO_ADMISSIBLE_DISTINCT_WAVE')
+          assert receipt['effects_performed']==0
+          assert receipt['receivers_acknowledged']==0
+          assert receipt['sessions_drained']==0
+          print('COWAVE_SOURCE_ONLY',receipt['state'],len(receipt['proposals']))
+          PY
       - name: Generate machine evidence receipt, not promotion
         shell: bash
         run: |
@@ -119,5 +141,6 @@ jobs:
             ${{ runner.temp }}/benchmark_evo.jsonl
             ${{ runner.temp }}/retro-media-index.json
             ${{ runner.temp }}/comap-coverage-lens.md
+            ${{ runner.temp }}/cowave-proposals.json
           if-no-files-found: error
           retention-days: 7
