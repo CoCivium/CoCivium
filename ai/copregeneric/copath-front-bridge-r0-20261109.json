@@ -1,0 +1,253 @@
+{
+  "schema": "CoAll.CoPath.SessionFrontBridge.R0",
+  "work_id": "coall:copre:copath:session-front-bridge:2026-11-09",
+  "state": "PUBLIC_DRAFT_CANDIDATE_NOT_MAIN_NOT_CANON",
+  "published_candidate": "https://github.com/CoCivium/CoCivium/pull/429",
+  "repo": "CoCivium/CoCivium",
+  "source_entry": "https://github.com/CoCivium/CoCivium/blob/main/CoPre.md",
+  "source_roots": [
+    {
+      "id": "seed-federation",
+      "meaning": "GOVERNING_PUBLIC_DISCOVERY_PREDECESSOR_NOT_REPLACED"
+    },
+    {
+      "id": "seed-fabric",
+      "meaning": "EXISTING_TYPED_PUBLIC_COPATH_GRAPH_NOT_DUPLICATED"
+    }
+  ],
+  "label": "Supplementary role-specific verified-source bridge; no new root or release actuator",
+  "sources": [
+    {
+      "id": "copre-entry",
+      "branch": "main",
+      "path": "CoPre.md",
+      "git_blob_sha1": "4638468cd874fa7d9b1e7dee133343657201a6dc",
+      "role": "public_human_entry",
+      "custody": "PUBLIC_REPO_SOURCE_ONLY",
+      "access": "AUTHORIZED_OPT_IN",
+      "verified_by": "GITHUB_CONNECTOR_READBACK_2026_11_09",
+      "receiver_ack": null
+    },
+    {
+      "id": "bootstrap",
+      "branch": "main",
+      "path": "SESSION_BOOTSTRAP.md",
+      "git_blob_sha1": "ddaf326239c6cbc92dafb9c9be7b03bbe2e6361a",
+      "role": "authorized_session_rebound",
+      "custody": "PUBLIC_REPO_SOURCE_ONLY",
+      "access": "AUTHORIZED_OPT_IN",
+      "verified_by": "GITHUB_CONNECTOR_READBACK_2026_11_09",
+      "receiver_ack": null
+    },
+    {
+      "id": "ai-index",
+      "branch": "main",
+      "path": "ai/index.json",
+      "git_blob_sha1": "f9e3f035f4d65c88d3c9c0f5e07486e58a656df1",
+      "role": "moving_public_navigation_snapshot",
+      "custody": "PUBLIC_REPO_SOURCE_ONLY",
+      "access": "AUTHORIZED_OPT_IN",
+      "verified_by": "GITHUB_CONNECTOR_READBACK_2026_11_09",
+      "receiver_ack": null
+    },
+    {
+      "id": "seed-federation",
+      "branch": "main",
+      "path": "ai/copre-seed-path-federation-r0.json",
+      "git_blob_sha1": "7eb2f170a725c61c7603062570a435503fea4131",
+      "role": "upstream_seed_path_contract",
+      "custody": "PUBLIC_REPO_SOURCE_ONLY",
+      "access": "AUTHORIZED_OPT_IN",
+      "verified_by": "GITHUB_CONNECTOR_READBACK_2026_11_09",
+      "receiver_ack": null
+    },
+    {
+      "id": "seed-fabric",
+      "branch": "main",
+      "path": "ai/copre-seed-path-fabric-r0-20261109.json",
+      "git_blob_sha1": "859f15f5736333b43074866d6a72a4b6857be962",
+      "role": "upstream_fifteen_node_path_graph",
+      "custody": "PUBLIC_REPO_SOURCE_ONLY",
+      "access": "AUTHORIZED_OPT_IN",
+      "verified_by": "GITHUB_CONNECTOR_READBACK_2026_11_09",
+      "receiver_ack": null
+    },
+    {
+      "id": "shareable-root",
+      "branch": "main",
+      "path": "docs/CoPreGeneric/Shareable_R0_20261109/README.md",
+      "git_blob_sha1": "9b0862028434814a2084605ced6a9ce2eb6213fe",
+      "role": "public_packaged_draft_A",
+      "custody": "PUBLIC_REPO_SOURCE_ONLY",
+      "access": "AUTHORIZED_OPT_IN",
+      "verified_by": "GITHUB_CONNECTOR_READBACK_2026_11_09",
+      "receiver_ack": null
+    },
+    {
+      "id": "retro-coverage",
+      "branch": "main",
+      "path": "ai/retro-echo-coverage-r0-20261109.json",
+      "git_blob_sha1": "332d8046cdaef1522ae4510d3a00f515fae04b7a",
+      "role": "partial_historical_coverage",
+      "custody": "PUBLIC_REPO_SOURCE_ONLY",
+      "access": "AUTHORIZED_OPT_IN",
+      "verified_by": "GITHUB_CONNECTOR_READBACK_2026_11_09",
+      "receiver_ack": null
+    },
+    {
+      "id": "highlights",
+      "branch": "main",
+      "path": "ai/highlight-assets.json",
+      "git_blob_sha1": "a6cf0422a2fbf82852de3619a47ea8b8ec3c45de",
+      "role": "public_highlight_candidates",
+      "custody": "PUBLIC_REPO_SOURCE_ONLY",
+      "access": "AUTHORIZED_OPT_IN",
+      "verified_by": "GITHUB_CONNECTOR_READBACK_2026_11_09",
+      "receiver_ack": null
+    },
+    {
+      "id": "dual-projection",
+      "branch": "main",
+      "path": "docs/Architecture/COPREGENERIC_DUAL_PROJECTION_R0_20261109.md",
+      "git_blob_sha1": "90a2b8e487d5a4c885abb880495446dd451a387b",
+      "role": "separate_synth_human_projector_contract",
+      "custody": "PUBLIC_REPO_SOURCE_ONLY",
+      "access": "AUTHORIZED_OPT_IN",
+      "verified_by": "GITHUB_CONNECTOR_READBACK_2026_11_09",
+      "receiver_ack": null
+    },
+    {
+      "id": "pr429-graph",
+      "branch": "candidate",
+      "path": "ai/copregeneric/session-contribution-r0-20261109.json",
+      "git_blob_sha1": "819221017c9dd1c2987adc4b4241caedc7002455",
+      "role": "scoped_contribution_draft",
+      "custody": "PUBLIC_REPO_SOURCE_ONLY",
+      "access": "AUTHORIZED_OPT_IN",
+      "verified_by": "GITHUB_CONNECTOR_READBACK_2026_11_09",
+      "receiver_ack": null
+    },
+    {
+      "id": "pr429-index",
+      "branch": "candidate",
+      "path": "docs/Onramp/copregeneric_whatsapp_v8x/INDEX.md",
+      "git_blob_sha1": "0386d9229a74f2de67eee9498943c65a225dbade",
+      "role": "four_file_derivative_guide",
+      "custody": "PUBLIC_REPO_SOURCE_ONLY",
+      "access": "AUTHORIZED_OPT_IN",
+      "verified_by": "GITHUB_CONNECTOR_READBACK_2026_11_09",
+      "receiver_ack": null
+    },
+    {
+      "id": "pr429-human",
+      "branch": "candidate",
+      "path": "docs/Onramp/COPREGENERIC_SESSION_HANDOFF_R0_20261109.md",
+      "git_blob_sha1": "533f0814fd831b6e0105576049ebc0178d22cba9",
+      "role": "human_handoff_review",
+      "custody": "PUBLIC_REPO_SOURCE_ONLY",
+      "access": "AUTHORIZED_OPT_IN",
+      "verified_by": "GITHUB_CONNECTOR_READBACK_2026_11_09",
+      "receiver_ack": null
+    }
+  ],
+  "routes": {
+    "synth": [
+      "copre-entry",
+      "seed-fabric",
+      "dual-projection",
+      "pr429-graph"
+    ],
+    "bio": [
+      "copre-entry",
+      "shareable-root",
+      "dual-projection",
+      "pr429-human"
+    ],
+    "recovery": [
+      "copre-entry",
+      "seed-federation",
+      "retro-coverage",
+      "pr429-graph"
+    ],
+    "builder": [
+      "copre-entry",
+      "bootstrap",
+      "seed-fabric",
+      "pr429-graph"
+    ],
+    "highlight": [
+      "copre-entry",
+      "ai-index",
+      "highlights",
+      "pr429-human"
+    ],
+    "first_contact": [
+      "copre-entry",
+      "bootstrap",
+      "ai-index",
+      "pr429-graph"
+    ],
+    "metaanalysis": [
+      "copre-entry",
+      "seed-federation",
+      "pr429-index",
+      "pr429-graph"
+    ]
+  },
+  "path_rules": {
+    "idempotency": "No new work from same exact WorkID+source pin+scope; mark DUPLICATE or NO_MATERIAL_DELTA",
+    "route_choice": "Choose only relevant authorized role. Never ingest whole registry by default.",
+    "resolution": "Verify Git blob SHA-1 on exact source read; record SHA-256 and actual source revision separately.",
+    "history": "No historical completeness inferred from search coverage; retro needs explicit scanned window.",
+    "consent": "Receiver may only read public-approved bytes; private/personal sources are not included.",
+    "promotion": "Source readback never upgrades to receiver PICKED_UP, integrated, canon, runtime, CoEx, or mirror verification.",
+    "challenge": "Every proposed better includes a named falsifier and last-known-good rollback pointer.",
+    "no_auto_fanout": true,
+    "external_effect_authority": "NONE",
+    "no_overwrite": true
+  },
+  "verified_source_readback_state": "GITHUB_CONNECTOR_FETCH_OF_MAIN_AND_CANDIDATE",
+  "selected_receiver_readproof_state": "NONE",
+  "operational_receiver_state": "UNKNOWN",
+  "private_custody_coverage": "NOT_SCANNED",
+  "website_mirrors": [
+    {
+      "url": "https://github.com/CoCivium/CoPreGeneric",
+      "verified": false,
+      "status": "NOT_FOUND_CONNECTED_GITHUB"
+    },
+    {
+      "url": "https://CoCivium.org/CoPre",
+      "verified": false,
+      "status": "NOT_ACCESSIBLE_BY_WEB_CHECK"
+    },
+    {
+      "url": "https://InSeed.com/Stead",
+      "verified": false,
+      "status": "NOT_ACCESSIBLE_BY_WEB_CHECK"
+    }
+  ],
+  "known_prior_variants": [
+    "docs/CoPreGeneric/Shareable_R0_20261109/manifest.json",
+    "docs/CoPreGeneric/PublicDraft_R0_20261109/manifest.json",
+    "docs/Onramp/copregeneric_whatsapp_v8x/INDEX.md"
+  ],
+  "actual_test_scope": "Local CI git-tree byte retrieval at its observed main and candidate revisions; role paths only. No Meta AI/X2/CoStead reader.",
+  "next_proof_gate": "One independent authorized front retrieves at least one selected exact source and gives source identity plus useful scoped effect readproof; reconcile with its existing baseline without relay",
+  "nonclaims": [
+    "NO_ALL_FRONTS_INGESTED",
+    "NO_COMPLETE_HISTORY",
+    "NO_META_AI_PICKUP",
+    "NO_INDEPENDENT_RECEIVER_ACK",
+    "NO_THREE_WAY_MIRRORS",
+    "NO_AUTOSYNC",
+    "NO_COGATEWAY_RUNTIME",
+    "NO_CANON_OR_COEX",
+    "LOCAL_IS_NOT_LANDED",
+    "VALIDATION_IS_NOT_ACCEPTANCE",
+    "NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF",
+    "NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE",
+    "HASHING_IS_NOT_SEMANTIC_INGESTION",
+    "DISCOVERED_SET_IS_NOT_COMPLETE_HISTORY"
+  ]
+}
