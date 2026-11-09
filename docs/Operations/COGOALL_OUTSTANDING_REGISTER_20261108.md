@@ -167,3 +167,16 @@ A durable, independently byte-hash-checked **public source receipt** is [here](.
 **Existing CI wiring:** [CoGoAll proof workflow](../../.github/workflows/cogoall-unattended-proof-pulse.yml) updated at commit `c25192c0502b9f6732e67b63d8486065e537d894` to run the new tests, hash their log in the run artifact, and trigger on these source paths. **New GitHub Actions PASS not yet independently observed.** No new scheduler or deployed worker was introduced.
 
 **Next receiver gate:** Bind the already authorized CoStead/X2 durable WorkID producer/receiver to one due-task lease, then measure independent readback, one real effect, crash/restart, and prolonged unattended survival. The remote X2 bridge is separately offline; absence of bridge connectivity does not imply host power state.
+
+
+## Atomic WorkID completion repair | 2026-11-09
+
+**Reproducible defect and counterexample:** Previous `DueWorkQueue.complete` read the lease and then wrote `UPDATE work SET state='DONE' ... WHERE work_id=?` without a guarded write. Its old exact public blob `879a17381cdc4c24ef5efdf394ff1d7e7ddca9b6` **FAILED** the new deterministic interleaving regression: a competing SQLite connection completed the same WorkID between read and write; the late finisher overwrote that result and incorrectly returned `COMMITTED_LOCAL_ONLY`.
+
+**Bounded fix:** [Queue implementation](../../examples/cotalkitout/due_work_catchup_r0.py) now performs a single atomic, conditioned UPDATE of `state`, `epoch`, `owner`, `lease_until`, `source_revision`, `payload_sha256` and remaining lease time before claiming `COMMITTED_LOCAL_ONLY`. No successful guarded UPDATE means exact idempotent `REPLAY`, `CONFLICT` or `FENCED`, never a second overwrite. Commit `267ac85975cb66f853039c3e72ba09eaa4ce9e61`; readback blob `a143e683967449d3a9f26ed534fe32602cf58619`; local SHA-256 `549e8abcaea6e570812c33372239eb344818beab334a7ac4ee609ad143d80eed`.
+
+**Evidence:** [16 regression tests](../../test_due_work_catchup_r0.py), including deterministic mid-write interleaving, simultaneous conflicting finishers, and completion replay; commit `821696534d6756bb57938f6da121f33aac4d3190`, exact readback blob `e4eb490b0245d54760dc0f9ca896b128026cd2aa`, SHA-256 `b2e552006a01575d93100230a737914905b52ef3b967374a19c2530f5dbb86b6`. CPython 3.13.5 local suite: **16/16 PASS**, exit 0, with previously pinned 13 baseline tests preserved. Existing CoGoAll workflow retains its test-file triggers; the *new revision's GitHub Actions PASS is not confirmed* by the available status endpoint.
+
+**Lifecycle:** exact source `LANDED` to public main; no independently verified receiver `PICKED_UP`, `INTEGRATED`, `COEX`, native X2 runtime, or >24h survival. DB claim owner strings and supplied timestamps are fixture values, not trustworthy external identities or independent clocks. Local DB commit is **not** evidence of an external effect. This repair does not promise exactly-once delivery to a model/provider.
+
+**Next causal gate:** verify the revised CI job and bind one authorized real receiver-owned effect to a durable WorkID with authenticated readback and recovery after process restart and missed wake. No new scheduler, duplicate queue, or Rick relay.
