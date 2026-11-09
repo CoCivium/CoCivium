@@ -260,3 +260,59 @@ class CoMVPSlots:
             count += 1
         return {"events_checked": count, "latest_digest": previous,
                 "tamper_evident_local_only": True, "independent_custody": False}
+
+
+def main(argv=None):
+    """Usable local CLI over the same atomic release slots; no remote effects."""
+    import argparse
+    p = argparse.ArgumentParser(description="Source-qualified CoMVP release heads (local only)")
+    p.add_argument("--root", required=True, help="Trusted existing source root")
+    p.add_argument("--db", required=True, help="Local SQLite release-head store")
+    sub = p.add_subparsers(dest="command", required=True)
+    sub.add_parser("status")
+    sub.add_parser("audit")
+    stage = sub.add_parser("stage")
+    stage.add_argument("--slot", required=True)
+    stage.add_argument("--artifact", required=True)
+    stage.add_argument("--test", required=True)
+    stage.add_argument("--deps-json", default="{}",
+                       help="JSON object mapping dependent slot to exact source revision")
+    qualify = sub.add_parser("qualify")
+    qualify.add_argument("--slot", required=True)
+    qualify.add_argument("--revision", required=True)
+    promote = sub.add_parser("promote")
+    promote.add_argument("--changes-json", required=True,
+                         help="JSON map slot -> source revision")
+    promote.add_argument("--expected-json", required=True,
+                         help="JSON map of exactly the changed slots to previous revision/null")
+    a = p.parse_args(argv)
+    try:
+        store = CoMVPSlots(a.db, a.root)
+        try:
+            if a.command == "status":
+                value = {"state": "SOURCE_HEADS_LOCAL_ONLY", "active": store.active(),
+                         "audit": store.audit_chain(), "receiver_qualified": False}
+            elif a.command == "audit":
+                value = store.audit_chain()
+            elif a.command == "stage":
+                deps = json.loads(a.deps_json)
+                _require(isinstance(deps, dict), "INVALID_DEPS_JSON")
+                value = store.stage(a.slot, a.artifact, a.test,
+                                    tuple(deps.items()))
+            elif a.command == "qualify":
+                value = store.qualify(a.slot, a.revision)
+            else:
+                value = store.promote_cohort(json.loads(a.changes_json),
+                                             json.loads(a.expected_json))
+        finally:
+            store.close()
+        print(_canonical(value))
+        return 0 if not str(value.get("state", "")).startswith("HELD_") else 3
+    except (Held, ValueError, TypeError, OSError, sqlite3.Error) as exc:
+        print(_canonical({"state": "HELD", "reason": str(exc)[:120],
+                          "native_runtime_updated": False, "receiver_qualified": False}))
+        return 3
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
