@@ -71,12 +71,14 @@ jobs:
               p = pathlib.Path(name + '.log')
               logs[name] = hashlib.sha256(p.read_bytes()).hexdigest() if p.exists() else None
           cadence = pathlib.Path('schedule-audit.json')
+          rebound = pathlib.Path('rebound-report.json')
           record = dict(schema='cogoall-proof-pulse-r0',
                         observed_at_utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),
                         run_id=os.environ['RUN_ID'], attempt=os.environ['RUN_ATTEMPT'],
                         head=os.environ['COMMIT_SHA'], event=os.environ['EVENT_NAME'],
                         outcome=os.environ['TEST_OUTCOME'], log_sha256=logs,
                         schedule_audit_sha256=hashlib.sha256(cadence.read_bytes()).hexdigest() if cadence.exists() else None,
+                        rebound_audit_sha256=hashlib.sha256(rebound.read_bytes()).hexdigest() if rebound.exists() else None,
                         claims=['SOURCE_TESTS_ONLY', 'NO_X2_RECEIVER_ACK', 'NO_24H_SEED_PROOF'])
           pathlib.Path('proof-receipt.json').write_text(json.dumps(record, sort_keys=True, indent=2)+'\n')
           PY
