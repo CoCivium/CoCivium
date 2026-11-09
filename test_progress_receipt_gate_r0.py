@@ -33,7 +33,6 @@ class Tests(unittest.TestCase):
         self.assertEqual(d["disposition"],"STRUCTURALLY_REPORTED_EFFECT")
     def test_missing_identity_fails(self):
         self.assertEqual(classify(base(source_revision=""))["reason"],"UNBOUND_WAKE_OR_SOURCE")
-
     def test_executed_work_must_name_next_wake(self):
         d=classify(base(execution_attempted=True,claimed_no_update=False,next_wake="",
                         output_digest="sha256:fixture",effect_receipt="fixture:receipt",
