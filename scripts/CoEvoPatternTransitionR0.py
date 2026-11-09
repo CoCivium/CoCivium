@@ -42,7 +42,7 @@ def outcome(record, disposition, reason):
     # Do not echo confidential claims or untrusted evidence into routing reports.
     return {
         "schema": "CoEvo.PatternTransitionDecision.R0",
-        "delta_id": record.get("delta_id") if nonempty(record.get("delta_id")) else None,
+        "delta_id": (record.get("delta_id") if record.get("confidentiality") == "PUBLIC" and nonempty(record.get("delta_id")) else None),
         "disposition": disposition,
         "reason": reason,
         "effects_performed": 0,
@@ -171,6 +171,8 @@ def selftest():
         assert actual["effects_performed"] == 0
         assert actual["receiver_ack"] == "UNPROVEN"
         assert not actual["authority_granted"]
+        if r.get("confidentiality") != "PUBLIC":
+            assert actual["delta_id"] is None, (name, "PRIVATE_ID_LEAK")
     print(json.dumps({
         "schema": "CoEvo.PatternTransitionSelftest.R0",
         "cases": len(scenarios), "passed": len(scenarios),
