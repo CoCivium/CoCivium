@@ -9,11 +9,15 @@ on:
       - "scripts/CoEvoPatternTransitionR0.py"
       - "ai/evolution-pattern-transition-r0.json"
       - "docs/CoEvo/COPATTERN_TRANSITION_FANIN_FANOUT_R0_20261108.md"
+      - "scripts/CoEvoPatternHistoricalReplayR0.py"
+      - "ai/pattern-gate/historical-public-replay-r0.json"
       - ".github/workflows/coevo-pattern-gate-r0.yml"
   push:
     paths:
       - "scripts/CoEvoPatternTransitionR0.py"
       - "ai/evolution-pattern-transition-r0.json"
+      - "scripts/CoEvoPatternHistoricalReplayR0.py"
+      - "ai/pattern-gate/historical-public-replay-r0.json"
       - ".github/workflows/coevo-pattern-gate-r0.yml"
 
 jobs:
@@ -92,4 +96,21 @@ jobs:
           assert report["cases"] == report["passed"] == 26
           assert report["receiver_ack"] == "UNPROVEN"
           print("PASS_PATTERN_GATE_R0_SOURCE_BEHAVIOR_AND_POLICY_ONLY")
+          PY
+
+      - name: Audit pinned historical CoEvo deltas without currentness backfill
+        run: |
+          python3 -B scripts/CoEvoPatternHistoricalReplayR0.py --repo-root . > /tmp/coevo-pattern-history-r0.json
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          report = json.loads(Path("/tmp/coevo-pattern-history-r0.json").read_text())
+          assert report["source_blob_count"] == 7
+          assert report["effects_performed"] == 0
+          assert report["receiver_useful_closures"] == "UNKNOWN"
+          assert report["live_currentness"] == "UNKNOWN"
+          assert all("currentness" in x["missing_pattern_fields"] for x in report["rows"])
+          assert not any(x["disposition"] == "REVIEW_SHADOW_ONLY" for x in report["rows"])
+          print("PASS_PINNED_HISTORICAL_REPLAY_R0")
+          print(json.dumps({"dispositions":report["dispositions"], "source_blob_count":7},sort_keys=True))
           PY
