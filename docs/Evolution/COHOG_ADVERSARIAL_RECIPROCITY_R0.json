@@ -1,0 +1,71 @@
+{
+  "schema": "cocivium.cohog.adversarial_reciprocity.r0",
+  "status": "public_hypothesis_and_experiment_design_not_operational",
+  "title": "CoHog+ Adversarial Reciprocity and Competitive-Gap Inversion",
+  "thesis": "Reward independently useful challenges, including competitor challenges, so the challenger and the challenged both gain while the public commons improves.",
+  "distinctions": {
+    "capability_gap": "Difference in demonstrated capability, learning speed, resilience, or usefulness.",
+    "participation_gap": "Barrier to discovering, testing, contributing, reusing, or receiving benefits.",
+    "goal": "Improve aggregate capability while lowering legitimate participation barriers, not necessarily to dominate competitors."
+  },
+  "cycle": [
+    "Publish bounded falsifiable claims and interfaces",
+    "Invite independent attacks and alternative hypotheses",
+    "Receive evidence with consent and safe disclosure controls",
+    "Reproduce and adjudicate independently",
+    "Reward contribution according to verified marginal value",
+    "Publish a redacted, source-bound fix and a challenge receipt",
+    "Re-test against fresh adversaries and monitor regressions"
+  ],
+  "co_seed": "Each challenge is a versioned hypothesis with provenance, safety classification, custody and expected impact.",
+  "co_path": "Challenge -> Triage -> Reproduce -> Repair -> Verify -> Credit -> Share -> Rechallenge",
+  "inversions": [
+    "Attack becomes quality assurance rather than mere damage.",
+    "Competitor becomes a possible paid contributor without surrendering independence.",
+    "A failure receipt becomes a reusable public seed.",
+    "Disagreement becomes evidence-producing collaboration rather than enforced consensus.",
+    "Open participation can strengthen the system even when proprietary advantage declines.",
+    "An apparently harmful critique may expose a higher-value alternative, but only after independent verification."
+  ],
+  "reward_principles": [
+    "Pay for independently verified improvement, not number or severity of unverified allegations.",
+    "Protect responsible disclosure and privacy; do not pay for destructive exploitation, harassment, or coercion.",
+    "Offer recognition, reciprocal access, grants or monetary bounties only when funded and explicitly authorized.",
+    "Publish adjudication criteria and appeals; prevent capture by repeat insiders.",
+    "Do not make acceptance conditional on agreement with CoCivium ideology."
+  ],
+  "falsifiers": [
+    "Challenge costs exceed reproducible improvements for sustained periods.",
+    "Rewards induce fabricated vulnerabilities or gaming.",
+    "Adversarial participation decreases after sharing improvements.",
+    "The participation gap widens or access becomes more coercive.",
+    "Open sharing destroys operational viability without offsetting public gains.",
+    "Claims of superior learning lack independent benchmarks."
+  ],
+  "measurements": [
+    "verified_improvement_per_challenge",
+    "median_time_to_reproduction",
+    "median_time_to_fix",
+    "challenger_reward_fairness",
+    "repeat_challenger_retention",
+    "independent_adoption_rate",
+    "capability_gap_on_public_benchmarks",
+    "participation_barrier_index",
+    "false_positive_and_abuse_rate",
+    "public_benefit_per_dollar"
+  ],
+  "gdside": "Permitted as a clearly labeled philosophical or value-hypothesis lens; not empirical proof or a substitute for consent, safety, or independent verification.",
+  "governance": "No autonomous payouts, security testing of third parties, public allegations, or publication of sensitive exploit details. Such actions require scoped permission and human authorization.",
+  "links": [
+    "docs/Evolution/COOMNI_FRONT_RELATIONS_R0.json",
+    "docs/Evolution/COFRONT_SEED_PATH_CONTRACT_R0.json"
+  ],
+  "acceptance": [
+    "A permitted benign challenge is independently reproduced and receives a source-bound receipt.",
+    "A rejected challenge preserves its reasoning and appeal path.",
+    "A public improvement is discoverable by an unaffiliated consumer.",
+    "Attribution and benefit sharing can be audited.",
+    "A malicious or privacy-invasive submission is held safely without public leakage."
+  ],
+  "proof_boundary": "This file is a design artifact, not an implemented reward program, active bounty, measured competitive advantage, or verified public benefit."
+}
