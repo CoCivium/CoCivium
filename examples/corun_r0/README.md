@@ -108,6 +108,14 @@ The [source-island gate](colockstep.py), [exact pinned fixture](colockstep_fixtu
 
 Actual **CoMVP qualification** requires one reproducible useful human/receiver task, recovery and rollback, verified rights/consent/currentness, and context-specific usefulness evidence, then separately authorized release. The [prospective A/B protocol](PROSPECTIVE_AB_R1.md) proposes such testing but has not executed it. This source-only gate is additive to existing CoStageReview, AutoCycle and Civ2 cell release policies; it does not replace them or introduce a scheduler.
 
+## Protected public browser plateau (new scoped experiment)
+
+[Browser canary](browser_plateau.py) identifies exact Git-blob revisions of [CoDemoWow R0](../codemow/truth-gate-r0.html) and [CoDemoWow R1](../codemow/truth-gate-r1.html), then replays both using Chromium with a 390-pixel viewport. It tests the original source qualification, unsupported-X2 claim refusal, timestamp-freshness rejection, bad-JSON refusal, reset, no JS errors, no HTTP requests and unchanged predecessor bytes.
+
+A deliberately **broken R1 successor** is created **only inside a temporary test directory** by disabling the pinned observation timestamp predicate. The adversarial test is designed to observe the unsafe false-green result and reject the successor. The original R1 is then reloaded and verified unchanged. The GitHub Actions `browser_plateau` job uses the Playwright Chromium runtime with a pinned Ubuntu runner and exports an exact SHA-256 report/receipt if its steps pass.
+
+This is not a deployment switchover, production rollback, independent user acceptance, second-provider reconstruction or certified CoMVP. A browser demo may work while CoBar/X2, the CoStead receiver, and independent first-use adoption remain unproven. Keep the public R0 and R1 sources unchanged; do not transfer the candidate's experimentally demonstrated false-positive behavior into the public demo.
+
 ## Nonclaims
 
 `PREEXISTING_CORUN_NE_CURRENT_RUNTIME | SAME_SOURCE_NE_INDEPENDENT_TEST | MORE_PARALLELISM_NE_MORE_VALUE | ARTIFACT_NE_ADOPTION | RUN_COMPLETED_NE_RECEIVER_PICKUP | SYNTHETIC_WAIT_NE_REAL_DEPLOYMENT_SPEEDUP | GIT_PR_NE_PRODUCTION | PR_CANDIDATE_NE_MERGED | LOCAL_IS_NOT_LANDED | ACK_NE_ASSERTION | RICK_NE_MAILMAN`.
