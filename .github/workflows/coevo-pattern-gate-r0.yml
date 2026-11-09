@@ -22,8 +22,10 @@ jobs:
     timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
-      - name: Run deterministic synthetic behavior tests
-        run: python3 -B scripts/CoEvoPatternTransitionR0.py --selftest
+      - name: Run deterministic synthetic behavior tests in normal and optimized Python
+        run: |
+          python3 -B scripts/CoEvoPatternTransitionR0.py --selftest
+          python3 -O -B scripts/CoEvoPatternTransitionR0.py --selftest
       - name: Check policy, CLI, privacy and side-effect contract
         run: |
           python3 - <<'PY'
@@ -89,7 +91,7 @@ jobs:
               capture_output=True, text=True, check=True, timeout=10)
           report = json.loads(done.stdout)
           assert report["scope"] == "SYNTHETIC_SELFTEST_ONLY"
-          assert report["cases"] == report["passed"] == 22
+          assert report["cases"] == report["passed"] and report["cases"] >= 31
           assert report["receiver_ack"] == "UNPROVEN"
           print("PASS_PATTERN_GATE_R0_SOURCE_BEHAVIOR_AND_POLICY_ONLY")
           PY
