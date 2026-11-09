@@ -95,3 +95,12 @@ The [CoWet+ rule](ai/cowet-human-surface-rule-r0.json) defines CoDry/CoWet, CoGl
 
 **Privacy and proof:** No raw chat disclosures, externally fetched audio, tracking, automatic sitewide policy rollout or independently verified accessibility acceptance are implied. Browsers can block unrequested sound; see [MDN autoplay](https://developer.mozilla.org/en-US/docs/Web/Media/Guides/Autoplay) and [W3C WCAG audio control](https://www.w3.org/WAI/WCAG21/Understanding/audio-control).
 
+
+
+## CoEvSeed connected living-continuity concept | 2026-11-09
+
+A user-supplied [Living Continuity System image] inspired a [source-only connected visual preview](examples/coevseed/living-continuity-connected-r0.html) with nine semantic navigation hotspots and a parallel image-free link list. Its [typed CoEvSeed semantic twin](ai/coevo-living-continuity-semantic-twin-r0.json) connects Futures, Retros, CoMap, Media, Continuity Map, Media Lineage, time/possibility and quiet-audio policy to actual source paths and explicitly named relation types.
+
+This reuses the [existing public CoEvSeed preview](assets/CoEvSeed/CoCivium_Living_Continuity_Hero_Preview_R0.svg) and [media registry](ai/coevo-media-seeds-r0-20261109.json) instead of publishing an unreviewed second binary under the same identity. The currently attached screenshot is a **different exact-byte version** and has only conversation-session custody here. Its SHA-256 and differences are recorded without claiming public image hosting, durable private custody or visual acceptance.
+
+**Cross-substrate principle:** Line-and-box diagrams, images, videos, audio, timelines, cultural translations and XR projections may share a typed relation/evidence spine, but their UI controls are real only when implemented and independently tested. Retain source links, accessibility twins, attribution, privacy and projection-loss records.
