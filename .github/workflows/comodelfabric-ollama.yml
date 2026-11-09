@@ -42,3 +42,7 @@ jobs:
 
       - name: Exercise live loopback HTTP boundary with fake local model
         run: python -B examples/comodelfabric/test_rickbar_local_http_r0.py
+      - name: Validate R1 continuity kernel and fenced successor tests
+        run: python -B examples/comodelfabric/test_rickbar_continuity_r1.py
+      - name: Validate R1 local HTTP persistence and boundary tests
+        run: python -B examples/comodelfabric/test_rickbar_local_http_r1.py
