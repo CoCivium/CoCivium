@@ -62,3 +62,13 @@ Read this page and the five-minute links above; identify source version and curr
 **Not established here:** Native RickBar input/output binding, real X2 Ollama round trip, independent CI pass readproof, 24-hour recovery, intersession delivery ACK, model-weight mindshare, or a production multi-model federation.
 
 **Next measurable product proof:** RickBar prompt → authorized local Ollama → persistent WorkID receipt → RickBar display → restart/recovery readback, with independent observation and baseline latency.
+
+
+## Browser CoCarry, outreach CoLUE and relational media | 2026-11-09
+
+For the current **source-only** cross-front handoff:
+- [CoBrowser Firefox/Edge continuation](../Architecture/COBROWSER_RENDERER_SUBSTITUTION_R0_20261027.md) and its [bounded CoCarry single-front adapter](../../scripts/CoBrowserCarryProjectionR0.py): private session ledger, one foreground proposal, recoverable offscreen records, no automatic tab closing or X2 runtime claim.
+- [CoMail/CoLUE outreach stages](../../examples/comail_r0/README.md) and [fail-closed stage gate](../../examples/comail_r0/outreach_stage_gate_r0.py): a draft is not an approved send; never substitute between mailbox identities or publish private correspondence.
+- [CoLens/CoSourceGraph relational media](../../examples/colensmedia/README.md) and its [source-generated diagram](../../examples/colensmedia/relational_media_diagram_r0.md): media variants share source/WorkID provenance while privacy, staleness, accessibility and intentionally disconnected relations remain visible to qualified observers.
+
+These links enable **authorized server-side discovery of public source**, not push delivery to every existing AI session or custody of private browsing state. The [outstanding register](../Operations/COGOALL_OUTSTANDING_REGISTER_20261108.md) retains unresolved receiver, CI and X2 acceptance gates.
