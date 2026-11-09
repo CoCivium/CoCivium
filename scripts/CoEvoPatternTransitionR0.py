@@ -16,7 +16,8 @@ KINDS = {
 }
 EPISTEMIC = {
     "OBSERVED", "INFERRED", "HYPOTHESIS", "PREDICTED", "UNKNOWN",
-    "COUNTERFACTUAL", "METAPHORICAL",
+    "COUNTERFACTUAL", "METAPHORICAL", "PLANNED", "PREFERRED",
+    "MYTHIC", "HUMOROUS",
 }
 EFFECTS = {
     "NONE", "PUBLICATION", "PUBLIC_OUTREACH", "RUNTIME",
@@ -74,6 +75,8 @@ def evaluate(record):
         return outcome(record, "HOLD_INVALID", "UNKNOWN_EPISTEMIC_CLASS")
     if not nonempty(record.get("claim")):
         return outcome(record, "HOLD_INVALID", "MISSING_CLAIM")
+    if record.get("epistemic_class") in {"HUMOROUS", "MYTHIC", "PREFERRED"}:
+        return outcome(record, "HOLD_UNVERIFIED", "NON_EMPIRICAL_CLAIM_REQUIRES_SEPARATE_LANE")
     effects = record.get("effect_classes")
     if not strings(effects, 1) or any(e not in EFFECTS for e in effects):
         return outcome(record, "HOLD_INVALID", "INVALID_EFFECT_CLASS")
@@ -162,6 +165,10 @@ def selftest():
         ("contradiction", {"pattern_kind": "CONTRADICTION"}, "CHALLENGE_READ_ONLY"),
         ("unresolved contradiction", {"contradiction_unresolved": True}, "CHALLENGE_READ_ONLY"),
         ("unknown effect", {"effect_classes": ["UNKNOWN"]}, "HOLD_EFFECT_GATE"),
+        ("planned is not observed", {"epistemic_class": "PLANNED"}, "REVIEW_SHADOW_ONLY"),
+        ("humour is not evidence", {"epistemic_class": "HUMOROUS"}, "HOLD_UNVERIFIED"),
+        ("mythic is not evidence", {"epistemic_class": "MYTHIC"}, "HOLD_UNVERIFIED"),
+        ("preferred is not evidence", {"epistemic_class": "PREFERRED"}, "HOLD_UNVERIFIED"),
     ]
     for name, edits, expected in scenarios:
         r = copy.deepcopy(BASE)
