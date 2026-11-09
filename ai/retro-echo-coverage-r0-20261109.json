@@ -1,0 +1,127 @@
+{
+  "schema": "CoAll.RetroEchoCoverage.R0-candidate",
+  "issued_utc": "2026-11-09T22:11:07Z",
+  "status": "PUBLIC_SAFE_CANDIDATE__PARTIAL_COVERAGE__NOT_CANON",
+  "scope": "Public bootstrap and named current public source entries, not complete CoAll history or a global chat census",
+  "work_id": "coall:retro-echo:coverage:r0:20261109",
+  "common_clocks": [
+    "event_at",
+    "observed_at",
+    "qualified_at",
+    "landed_at",
+    "receiver_read_at"
+  ],
+  "time_rule": "An old event discovered today retains its original event_at if independently sourced; missing clocks stay null; no inferred chronological precision.",
+  "dispositions": [
+    "LIVE_REFERENCED",
+    "PRESERVED_ALTERNATIVE",
+    "SUPERSEDED_WITH_LINK",
+    "DELIBERATELY_RETIRED_WITH_EVIDENCE",
+    "ORPHAN_RISK",
+    "UNKNOWN_REQUIRES_RECOVERY"
+  ],
+  "public_anchors": [
+    {
+      "id": "bootstrap",
+      "path": "SESSION_BOOTSTRAP.md",
+      "class": "public_bootstrap",
+      "disposition": "LIVE_REFERENCED",
+      "event_at": null
+    },
+    {
+      "id": "ai-index",
+      "path": "ai/index.json",
+      "class": "machine_navigation",
+      "disposition": "LIVE_REFERENCED",
+      "event_at": null
+    },
+    {
+      "id": "front-registry",
+      "path": "ai/front-registry.json",
+      "class": "identity_candidate",
+      "disposition": "LIVE_REFERENCED",
+      "event_at": null
+    },
+    {
+      "id": "highlight-assets",
+      "path": "ai/highlight-assets.json",
+      "class": "highlight_candidate",
+      "disposition": "LIVE_REFERENCED",
+      "event_at": null
+    },
+    {
+      "id": "lifecycle-policy",
+      "path": "ai/session-lifecycle-policy.json",
+      "class": "session_policy_candidate",
+      "disposition": "LIVE_REFERENCED",
+      "event_at": null
+    },
+    {
+      "id": "rebound-hub",
+      "path": "docs/Onramp/COGOALL_PUBLIC_REBOUND_HUB_20261108.md",
+      "class": "currentness_hub",
+      "disposition": "LIVE_REFERENCED",
+      "event_at": null
+    },
+    {
+      "id": "copregeneric-dual-projection",
+      "path": "docs/Architecture/COPREGENERIC_DUAL_PROJECTION_R0_20261109.md",
+      "class": "design_proposal",
+      "disposition": "LIVE_REFERENCED",
+      "event_at": null
+    }
+  ],
+  "historical_echo_rule": {
+    "capture": "Collect source pointer, original event identity, parent work-id, privacy class, provenance, digest if exact bytes are available, and explicit unknowns.",
+    "echo": "Attach candidate relevance to current CoFront without overwriting original meaning, challenge, dissent, or past status.",
+    "compare": "Compare against current descendant using claimed need, actual accepted effects, and remaining unsatisfied needs. Newest-wins prohibited.",
+    "recovery": "Choose one of dispositions with exact successor or retirement evidence; unresolved means ORPHAN_RISK, never silently dropped.",
+    "predictive_retro": "Counterfactuals are labeled simulations, not facts about past or future. Assess how earlier warning signs could have affected next-proof scheduling.",
+    "privacy": "No session transcripts, private mail, unpublished collaborations, credentials, or private source locators in public projection."
+  },
+  "gaps": [
+    {
+      "id": "complete-history",
+      "state": "UNKNOWN",
+      "reason": "No complete earliest-to-latest CoAll source census or bounded coverage manifest"
+    },
+    {
+      "id": "idle-provider-sessions",
+      "state": "UNKNOWN",
+      "reason": "No authorized global enumeration of historical sessions"
+    },
+    {
+      "id": "x2-and-costead",
+      "state": "HELD",
+      "reason": "Independent local/private receiver and exact readproof unavailable in this pass"
+    },
+    {
+      "id": "retro-media",
+      "state": "PARTIAL",
+      "reason": "Prior bounded Library index observed subset with traversal-limit warning; private source pointers not published"
+    },
+    {
+      "id": "external-receivers",
+      "state": "HELD",
+      "reason": "Public GitHub retrieval is not another agent's pickup or semantic integration"
+    }
+  ],
+  "acceptance": [
+    "A second reader reconstructs each public anchor from its exact repo path and commit.",
+    "An earlier source with changed interpretation stays recoverable; no silent supersession.",
+    "A missing source produces UNKNOWN_OR_ORPHAN_RISK, never PASS.",
+    "At least one prior historical object can be linked to a descendant using evidence not naming coincidence.",
+    "Public output exposes no private identifiers or session transcripts.",
+    "At least one independent receiver reports exact-object readproof before claiming pickup."
+  ],
+  "nonclaims": [
+    "NOT_COMPLETE_HISTORY",
+    "NOT_GLOBAL_COVERAGE",
+    "NOT_AUTO_SESSION_DRAIN",
+    "NOT_PUBLIC_CANON",
+    "NOT_COEX",
+    "NOT_CROSS_PROVIDER_ACK",
+    "NOT_LIVE_X2",
+    "NOT_AGI_OR_SENTIENCE_PROOF"
+  ]
+}
