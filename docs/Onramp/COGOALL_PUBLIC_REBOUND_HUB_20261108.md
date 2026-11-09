@@ -72,3 +72,12 @@ For the current **source-only** cross-front handoff:
 - [CoLens/CoSourceGraph relational media](../../examples/colensmedia/README.md) and its [source-generated diagram](../../examples/colensmedia/relational_media_diagram_r0.md): media variants share source/WorkID provenance while privacy, staleness, accessibility and intentionally disconnected relations remain visible to qualified observers.
 
 These links enable **authorized server-side discovery of public source**, not push delivery to every existing AI session or custody of private browsing state. The [outstanding register](../Operations/COGOALL_OUTSTANDING_REGISTER_20261108.md) retains unresolved receiver, CI and X2 acceptance gates.
+
+
+## CoMegaScroller+ public atlas front | 2026-11-09
+
+The [CoMegaScroller R0 offline HTML reader](../../examples/comap/megascroller-r0.html) is a new **public source projection** of the existing [CoMap registry](../../ai/comap-source-projection-r0.json), not a new authority. Its [CoMap source guide](../../examples/comap/README.md) links the old interactive reader and nested Mermaid diagrams. The megascroller has 63 browsable cards, 68 displayed typed edges, and seven deduplicated retro-media source pointers; all retro candidates remain **unreviewed**.
+
+The [nested atlas generator and check](../../scripts/CoNavNestedAtlasR0.cjs) and [regressions](../../scripts/test_conav_nested_atlas_r0.cjs) are public. Source readback is verified; the updated CI run, actual browser acceptance, authorized server-to-server pickup, website deployment, second-provider/CoStead backup, and native X2 integration are **not verified**. Prior public megascrollers and CoSourceGraph/CoMedia versions remain preserved. Do not disclose private sessions, screenshots, mailbox or media bytes in public backfill.
+
+CoWave optionality should rotate independent hypothesis, audience, substrate, time horizon and counterexample, **but preserve deliberate replay** for scientific controls and rollback. Distinct prose alone is not improvement; each qualified wave still needs an observable benefit or honest HOLD.
