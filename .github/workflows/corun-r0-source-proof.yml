@@ -38,6 +38,17 @@ jobs:
             --workers 4 \
             --simulated-io-ms 25 \
             --out "$RUNNER_TEMP/corun-delay"
+      - name: Differential oracle versus DAG on exact historical and synthetic input
+        run: |
+          python -B examples/corun_r0/reference_compare.py \
+            --input ai/flow/coflow-anchor-delta-sample12-r1.json \
+            --expected-git-blob 3550b9c75e732c65ab3580494dd38f18b28f8c18 \
+            --workers 4 --trials 7 \
+            --out "$RUNNER_TEMP/corun-reference-real"
+          python -B examples/corun_r0/reference_compare.py \
+            --input examples/corun_r0/fixture.json \
+            --workers 4 --trials 7 \
+            --out "$RUNNER_TEMP/corun-reference-synthetic"
       - name: Verify runset hashes, boundedness, counterevidence and nonclaims
         shell: bash
         run: |
@@ -65,6 +76,33 @@ jobs:
                   assert runset["deliverable"]["audit"]["historical_sample_only"] is True
               print(name, "PASS_EXACT_SHA_SCOPE_ONLY", runset["comparison"]["observed_latency_winner"])
           PY
+      - name: Verify differential equality and exact receipts without promotion
+        shell: bash
+        run: |
+          python - <<'PY'
+          import hashlib, json, os
+          from pathlib import Path
+          root = Path(os.environ["RUNNER_TEMP"])
+          for name in ("corun-reference-real", "corun-reference-synthetic"):
+              base = root / name
+              raw = (base / "reference-compare.json").read_bytes()
+              evidence = json.loads(raw)
+              receipt = json.loads((base / "reference-compare.receipt.json").read_text())
+              assert receipt["report_sha256"] == hashlib.sha256(raw).hexdigest()
+              assert evidence["output_equal_every_trial"] is True
+              assert evidence["trials"] == 7
+              assert evidence["product_promotion"] == "HELD"
+              assert evidence["external_effects"] == "NONE"
+              assert "SAME_SOURCE_AND_SPEC__NOT_INDEPENDENT_EVIDENCE" in evidence["measurement_limitations"]
+              assert "LEGACY_PRODUCT_BASELINE_NOT_MEASURED" in evidence["measurement_limitations"]
+              assert "HUMAN_ACTIVE_MINUTES_NOT_MEASURED" in evidence["measurement_limitations"]
+              assert len(evidence["arms"]["A_DIRECT_REFERENCE"]["elapsed_ns"]) == 7
+              assert len(evidence["arms"]["B_CORUN_DAG"]["elapsed_ns"]) == 7
+              assert receipt["independent_facts"] is False
+              if name == "corun-reference-real":
+                  assert evidence["source"]["git_blob_sha1"] == "3550b9c75e732c65ab3580494dd38f18b28f8c18"
+              print(name, "PASS_DIFFERENTIAL_SEMANTICS_ONLY")
+          PY
       - name: Preserve run-scoped evidence
         if: always()
         uses: actions/upload-artifact@v4
@@ -74,5 +112,7 @@ jobs:
             ${{ runner.temp }}/corun-real/*.json
             ${{ runner.temp }}/corun-zero/*.json
             ${{ runner.temp }}/corun-delay/*.json
+            ${{ runner.temp }}/corun-reference-real/*.json
+            ${{ runner.temp }}/corun-reference-synthetic/*.json
           if-no-files-found: warn
           retention-days: 14
