@@ -12,7 +12,7 @@ The public entry and machine graphs are already retrievable through the connecte
 ## How one permitted front draws from the existing source
 
 1. **Common CoSeed:** independently open [`main/CoPre.md`](https://github.com/CoCivium/CoCivium/blob/main/CoPre.md) and establish current WorkID, role, scope, source revision, privacy class and effect authority.
-2. **Role-relative CoPath:** choose one supported role from the [candidate bridge manifest](../../ai/copregeneric/copath-front-bridge-r0-20261109.json): `synth`, `bio`, `recovery`, `builder`, `highlight`, `first_contact`, or `metaanalysis`. A role is a source-query lens, **not** a new agent or permission grant.
+2. **Role-relative CoPath:** choose one supported role from the [candidate bridge manifest](../../ai/copregeneric/copath-front-bridge-r0-20261109.json): `synth`, `bio`, `recovery`, `builder`, `highlight`, `first_contact`, `metaanalysis`, or `lockstep`. A role is a source-query lens, **not** a new agent or permission grant.
 3. **Read exactly:** retrieve the selected source objects and verify each Git blob pin. Record SHA-256 and source bytes, without inventing event times, semantic acceptance or independent-provider origin.
 4. **Challenge:** compare the relevant prior, variant, dissent and falsifier. Do not newest-wins the existing published packages or overwrite the bootstrap.
 5. **Return a bounded deed:** one specific useful change or `NO_MATERIAL_DELTA`, one retained alternative or HELD gap, one next evidence object.
@@ -25,10 +25,11 @@ The public entry and machine graphs are already retrievable through the connecte
 python3 scripts/CoPathSourceBridgeR0.py \
   --manifest ai/copregeneric/copath-front-bridge-r0-20261109.json \
   --role synth --main-ref origin/main --candidate-ref HEAD \
+  --corun-ref origin/corun-donor \
   --repo-root . --strict --out /tmp/copath-source-proof-unique.json
 ```
 
-The PR-only CI test runs selected role routes and verifies exact source bytes from the `main` and candidate Git trees. Readback is **CI_SOURCE_ONLY**, not proof of human adoption, foreign-provider ingestion, self-healing runtime or off-provider cold restore. Missing/drifted source returns `HELD_SOURCE_PATH_UNVERIFIED`, preserving old evidence and no effects.
+The PR-only CI test targets eight role routes and verifies exact source bytes from the `main`, this draft PR #429, and the separate CoRun PR #402 Git trees. The `builder` and `lockstep` routes explicitly include the existing `main` CoMVP controller and the unmerged CoRun donor; they do **not** merge, deploy or authorize either. Readback is **CI_SOURCE_ONLY**, not proof of human adoption, foreign-provider ingestion, self-healing runtime or off-provider cold restore. Missing/drifted source returns `HELD_SOURCE_PATH_UNVERIFIED`, preserving old evidence and no effects.
 
 ### What remains outside this scope
 
