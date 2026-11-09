@@ -13,6 +13,10 @@ on:
       - "scripts/CoPreInvariantGuardR0.py"
       - "scripts/CoExWaveEndcapsR0.py"
       - "scripts/CoWaveOverlapGuardR0.py"
+      - "scripts/CoStatusOffloadR0.py"
+      - "docs/Architecture/COSTATUS_OFFLOAD_SHARED_HEAD_R0_20261109.md"
+      - "docs/Operations/wave-renders/cooffload-20261109/BEGIN.md"
+      - "docs/Operations/wave-renders/cooffload-20261109/END.md"
       - "ai/evolution/cooverlap-prior-meaning-r0.json"
       - "docs/Architecture/COWAVE_OVERLAP_COLOT_PRIOR_FABRIC_R0_20261109.md"
       - "docs/Operations/wave-renders/cooverlap-20261109/BEGIN.md"
@@ -26,6 +30,7 @@ on:
     paths:
       - "scripts/CoPreContinuationR0.py"
       - "scripts/CoWaveOverlapGuardR0.py"
+      - "scripts/CoStatusOffloadR0.py"
       - "scripts/CoPreInvariantGuardR0.py"
       - ".github/workflows/copre-next-r0.yml"
 
@@ -177,4 +182,25 @@ jobs:
           print("END_COMMIT="+ec)
           print("BEGIN_SHA256="+start["render_sha256"])
           print("END_SHA256="+end["render_sha256"])
+          PY
+      - name: Validate portable off-session WorkID and staged merge; verify two source renders
+        run: |
+          python3 -B scripts/CoStatusOffloadR0.py --selftest
+          python3 - <<'PY'
+          import subprocess
+          from pathlib import Path
+          p="docs/Operations/wave-renders/cooffload-20261109/"
+          begin=p+"BEGIN.md"
+          end=p+"END.md"
+          a=Path(begin).read_text(encoding="utf-8")
+          b=Path(end).read_text(encoding="utf-8")
+          assert "CoPre.Offshore.20261109" in a and "CoPre.Offshore.20261109" in b
+          assert "INTENT_RECORDED_NOT_RESULT" in a and "SOURCE_LANDED_CI_PENDING" in b
+          assert a!=b
+          ac=subprocess.check_output(["git","log","-1","--format=%H","--",begin],text=True).strip()
+          bc=subprocess.check_output(["git","log","-1","--format=%H","--",end],text=True).strip()
+          assert ac and bc and ac!=bc
+          print("PASS_COSTATUS_OFFLOAD_DISTINCT_BEGIN_END_SOURCE_COMMITS")
+          print("BEGIN_COMMIT="+ac)
+          print("END_COMMIT="+bc)
           PY
