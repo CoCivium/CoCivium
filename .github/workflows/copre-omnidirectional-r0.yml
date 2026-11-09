@@ -4,6 +4,8 @@ on:
     paths:
       - 'scripts/copre_path_query_r0.py'
       - 'scripts/test_copre_path_query_r0.py'
+      - 'scripts/copre_public_readback_r0.py'
+      - 'scripts/test_copre_public_readback_r0.py'
       - 'ai/copre-seed-path-fabric-r0-20261109.json'
       - '.github/workflows/copre-omnidirectional-r0.yml'
   push:
@@ -25,6 +27,15 @@ jobs:
           python-version: '3.12'
       - name: Read-only bidirectional source graph regression
         run: python -B scripts/test_copre_path_query_r0.py -v
+      - name: Mirror readback negative controls
+        run: python -B scripts/test_copre_public_readback_r0.py -v
+      - name: Run pinned public-source and proposed mirror readback (evidence only)
+        run: python -B scripts/copre_public_readback_r0.py --output /tmp/copre-mirror-readback.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: copre-readonly-mirror-evidence
+          path: /tmp/copre-mirror-readback.json
+          retention-days: 30
       - name: Machine query must never claim independent receiver ACK
         run: |
           python -B scripts/copre_path_query_r0.py copre-entry copre-package --direction both > /tmp/path.json
