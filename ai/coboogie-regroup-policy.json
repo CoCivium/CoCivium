@@ -94,5 +94,38 @@
     "NO_RECEIVER_PICKUP",
     "NO_CANON",
     "NO_PUBLIC_PRODUCT_RELEASE"
-  ]
+  ],
+  "wave_optionalities": {
+    "state": "SOURCE_ONLY_POLICY_NOT_RUNNING_SCHEDULER",
+    "purpose": "PRESERVE_FRONT_OPTIONALITY_WITH_DISTINCT_HYPOTHESES_AND_MEASURED_OUTCOMES",
+    "candidate_axes": [
+      "mode",
+      "audience",
+      "substrate",
+      "horizon",
+      "hypothesis",
+      "counterexample"
+    ],
+    "prefer_different_axes_at_least": 3,
+    "allowed_exceptions": [
+      "CONTROL_REPLAY",
+      "REGRESSION_REPLAY",
+      "DISASTER_RESTORE",
+      "BASELINE_REPRODUCTION"
+    ],
+    "priority_order": [
+      "AUTHORITY_AND_SAFETY",
+      "DURABLE_SOURCE_AND_WORKID",
+      "EXPECTED_RECEIVER_BENEFIT",
+      "EXPECTED_INFORMATION_GAIN",
+      "FRONT_COVERAGE",
+      "EXPERIMENTAL_DIVERSITY"
+    ],
+    "novelty_is_not_progress": true,
+    "repetitions_are_not_duplicate_effect_authority": true,
+    "preserve_existing_fronts": true,
+    "selection_output": "CANDIDATE_ONLY_NEVER_EFFECT_OR_RECEIVER_ACK",
+    "observability": "Unobserved fronts remain indexed, not silently declared dormant or running.",
+    "no_extra_scheduler": true
+  }
 }
