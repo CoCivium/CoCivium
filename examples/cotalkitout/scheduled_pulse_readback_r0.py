@@ -22,7 +22,7 @@ SOURCE_JOB = "proof"
 RECEIVER_JOB = "pulse-receiver"
 EXPECTED_LOGS = (
     "decision", "grace", "succession", "acceptance", "progress",
-    "cadence-tests", "catchup-tests"
+    "cadence-tests", "catchup-tests", "rebound-tests", "rebound-links"
 )
 EXPECTED_CLAIMS = [
     "SOURCE_TESTS_ONLY", "NO_X2_RECEIVER_ACK", "NO_24H_SEED_PROOF"
@@ -82,7 +82,8 @@ def observe(directory: str | Path, env: Mapping) -> dict:
     hold(isinstance(source, dict), "HOLD_INVALID_PROOF")
     expected_fields = {
         "schema", "observed_at_utc", "run_id", "attempt", "head", "event",
-        "outcome", "log_sha256", "schedule_audit_sha256", "claims"
+        "outcome", "log_sha256", "schedule_audit_sha256",
+        "rebound_audit_sha256", "claims"
     }
     hold(set(source) == expected_fields, "HOLD_UNEXPECTED_PROOF_FIELDS")
     hold(source["schema"] == SOURCE_SCHEMA, "HOLD_PROOF_SCHEMA")
@@ -116,6 +117,12 @@ def observe(directory: str | Path, env: Mapping) -> dict:
     ), "HOLD_CADENCE_DIGEST_MISSING")
     cadence = bounded_file(root / "schedule-audit.json", MAX_EVIDENCE)
     hold(sha(cadence) == cadence_digest, "HOLD_CADENCE_DIGEST_MISMATCH")
+    rebound_digest = source["rebound_audit_sha256"]
+    hold(isinstance(rebound_digest, str) and bool(
+        re.fullmatch(r"[a-f0-9]{64}", rebound_digest)
+    ), "HOLD_REBOUND_DIGEST_MISSING")
+    rebound = bounded_file(root / "rebound-report.json", MAX_EVIDENCE)
+    hold(sha(rebound) == rebound_digest, "HOLD_REBOUND_DIGEST_MISMATCH")
     return {
         "schema": RECEIVER_SCHEMA,
         "state": "GITHUB_JOB_BOUNDARY_ARTIFACT_HASH_READBACK",
@@ -128,6 +135,7 @@ def observe(directory: str | Path, env: Mapping) -> dict:
         "receiver_job": RECEIVER_JOB,
         "source_receipt_sha256": sha(original),
         "schedule_audit_sha256": cadence_digest,
+        "rebound_audit_sha256": rebound_digest,
         "verified_log_count": len(EXPECTED_LOGS),
         "provider_failure_domain": "SAME_GITHUB_ACTIONS",
         "due_work_selection": "NOT_TESTED",
