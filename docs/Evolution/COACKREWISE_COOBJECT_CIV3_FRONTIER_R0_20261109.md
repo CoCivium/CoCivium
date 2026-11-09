@@ -56,6 +56,12 @@ Do not invent a proprietary CoAll protocol for every established layer. Candidat
 
 Compare these with the existing CoPulse, CoObject, CoModelFabric, CoStead, CoOrbWare and Civ2 cell contracts using a bounded interoperability test and an explicit migration cost/escape assessment. This is **external public architecture research**, not CoAll provenance or actual agent execution.
 
+## One qualified read-only execution boundary | 2026-11-09 11:50 UTC
+
+[CoObject WorkID source receipt](../Receipts/COOBJECT_ONE_TASK_CROSS_JOB_R0_20261109.json) advances the earlier `proposal-only` bridge **one real stage**: a code-owned validator (not a model or arbitrary file executable) checked the existing public vitality policy and fixture, producing a run-specific receipt; a second GitHub Actions job downloaded and recomputed the result. [Run 42612069597](https://github.com/CoCivium/CoCivium/actions/runs/42612069597) passed across three jobs, including 17 new safety tests. The same WorkID digest was observed in both jobs, while actual external receiver ACK remains false.
+
+This **does not** supersede the proposal-only CoObject API; it demonstrates how a narrowly qualified, existing implementation may respond to an object under a separate code-owned effect ceiling. No untrusted source content, AI text, policy or file extension becomes executable authority. The two jobs share the GitHub provider failure domain. The case cannot yet establish an open-model worker, durable in-house queue, independent CoStead receiver, rickBar C3 MVP or >24h recovery. Preserve the prior proposal-only tests, all stable release heads and current CoMVP user-facing priority.
+
 ## CoBoogie / CoReGroup without a new global bureaucracy
 
 1. Preserve the existing **prior-work pointers** and current selected release heads. A local GitHub search or chat recap does not establish complete session coverage.
