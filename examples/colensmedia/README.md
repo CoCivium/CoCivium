@@ -40,3 +40,14 @@ python3 -m unittest discover -s examples/colensmedia/tests -p 'test_*.py' -v
 No actual rights declaration, legal adoption, public outreach, coercive enforcement, autonomous desktop control, Planck-scale measurement, newly discovered physical energy/aura, verified G_d mathematical relation, CoStead landing, receiver ACK or CoEx is claimed. A next *human-value* gate is a consenting outsider's first-use source-comprehension test. An *X2* gate remains independent device connection, native mouse input canary and current CoOrb display proof.
 
 **FOSS Forever | CoGoAll | Working Together Respectfully | privacy by design | display optional by context, wear optional.**
+
+
+## CoSourceGraph relational media and CoSilo inverse | 2026-11-09
+
+**State:** SOURCE-ONLY SYNTHETIC GRAPH/DIAGRAM; not the actual audio, video, private email or X2 CoOrb integration.
+
+The [cross-media manifest compiler](relational_media_manifest_r0.py), [synthetic source graph](relational_media_fixture_r0.json), [generated Mermaid + accessible text](relational_media_diagram_r0.md), and [29 regression tests](tests/test_relational_media_manifest_r0.py) join diagrams, audio, CoMail and CoOrb *metadata* through one WorkID and source revision. CoSilo inversion means detecting orphan edges, stale current versions, inaccessible media twins, unauthorized public derivation from private source, and lineage cycles. Intentional separation is preserved rather than treated as an error.
+
+The public diagram excludes the private synthetic draft node; a private-only revision cannot alter its public projection hash. All source/fixture/diagram and test Git blob readbacks were verified; local tests passed in an isolated fixture. Media bytes, playback, perceptual/semantic parity, real recipient involvement and live renderer updates remain **NOT_TESTED**.
+
+The existing [CoLiving-media CI workflow](../../.github/workflows/co-living-media-r0.yml) now checks exact source-to-diagram parity as well as the test suites. No new scheduler, graph authority or public release was created. Historical versions and independently supported projections remain available.
