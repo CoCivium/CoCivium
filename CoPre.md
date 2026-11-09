@@ -55,3 +55,15 @@ This entry incorporates the user-provided Meta AI WhatsApp draft (Nov 9, 2026) a
 A proposed `CoEvSpiral+` can fan out, fan in, deduplicate, improve and rest. `CoNull+` may denote explicit inactivity/unknown/gap; this does not mean a heartbeat ran. Musical wave/Golden Braid/G_dSide metaphors may inspire experiments, but do not prove universal dynamics, consciousness or whale communication.
 
 **Next qualifying deed:** Verify the temporary pointer from an independent device or receiver and produce a WorkID-specific receipt; then stage qualified, rights-reviewed publication to one of the elected owned domains. Never equate URL design with deployment.
+
+
+## CoOmni+ contribution return path | 2026-11-09
+
+A public CoSeed/CoPath is an **available source**, not universal session readproof. Recipients may traverse the [typed graph](ai/copre-seed-path-fabric-r0-20261109.json) and [federated source pointers](ai/copre-seed-path-federation-r0.json) in forward or reverse directions; reverse links are discovery-only, not evidence of reciprocal delivery, consent or write access.
+
+**Proposed feed-in contract:** `receiver_pseudonym | WorkID | source_ref + immutable revision/hash | scope/rights | unique_delta_or_NO_MATERIAL_DELTA | contradicting_evidence | proposed_relation | tests | HELD + wake | effect_authority`. A contribution becomes **CANDIDATE** when expressed in those fields; an authorized maintainer or fenced actuator must review before publication. Never infer that a front read a URL, received an event, wrote back, or merged merely from its appearance in a graph. Multiple proposals can challenge one another without globally electing a winner.
+
+**Source and privacy gate:** The user-provided Meta AI WhatsApp v8.79 proposal asks to publish a larger raw export and a separate “Better Alternative v8.78” document. **The raw export is held private**, because it contains conversation history not cleared for blanket disclosure. The Better Alternative artifact has no independently verified current landing in this repository and is **HELD**, not silently synthesized or claimed published. This page records only the public-safe principle: reciprocal discovery and contribution, preserving future optionality, with source identity and privacy checks.
+
+**Acceptance test:** one explicitly authorized external receiver fetches a pinned public object, returns an exact readproof and one demonstrable useful delta, and that delta is independently reviewed against prior work. A GitHub commit, passing graph traversal test, or echoed WhatsApp paragraph is not that proof. G_dSide-inspired future-value proposals remain speculative, ethically reviewable hypotheses rather than an operational command channel.
+
