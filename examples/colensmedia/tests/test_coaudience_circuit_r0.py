@@ -157,5 +157,10 @@ class CircuitTests(unittest.TestCase):
         for phrase in ('Supply means','Demand means','simpler baseline','Loses or cannot establish'):
             self.assertIn(phrase,doc)
 
+    def test_26_workid_must_stay_bound_to_source(self):
+        self.policy['work_id']='made-up-other-work'
+        with self.assertRaisesRegex(ValueError,'HOLD_WORKID_SOURCE_MISMATCH'):
+            validate(self.policy,self.manifest)
+
 if __name__ == '__main__':
     unittest.main(verbosity=2)
