@@ -92,6 +92,14 @@ Current R0 is one *real executable local control*, not these five products, not 
 
 The PR-only [CoRun source-proof workflow](../../.github/workflows/corun-r0-source-proof.yml) runs 18 offline unit tests, the source-pinned historical twelve-case CoFlow comparison, and two synthetic A/B conditions. It checks exact receipts, output equality, bounded workers, uncertainty and nonclaims. A GitHub Actions success would establish **runner-scoped test evidence**, not model-swarm autonomy, independent human benefit, CoStead custody, X2 execution, deployment, or live receiver acknowledgment. The workflow has **no schedule**, and does not modify the pre-existing hourly CoGoAll proof pulse.
 
+## R0 differential code-path verification and R1 prospective design
+
+A second, separately implemented [reference oracle](reference_oracle.py) computes the same evidence-summary contract without importing the DAG scheduler or copying its node/task implementation. The [counterbalanced differential runner](reference_compare.py) compares both implementations against the **same inputs** over repeated trials, preserving divergent outputs as fail-closed. The [11 adversarial tests](test_reference_compare.py) include dropped historical failures, altered counterevidence, missing/one-sided pair relations, duplicate cases, input pin drift, budget violations, and exact receipt/no-clobber checks.
+
+[GitHub Actions run #42600686685](https://github.com/CoCivium/CoCivium/actions/runs/42600686685) completed successfully on head `2d1f0dd7f3cdf08897f05ed1d6ebeb845974da84`, including the pinned historical sample, synthetic fixture, seven differential trials per source, and SHA-256 receipts. This is **independent-code-path semantic agreement**, not a truly independent scientific source, reviewer, provider, legacy production implementation, or fair productivity comparison. The direct reference does less work than the DAG (no per-node hashes), so **timings must not be treated as a fair speed contest**.
+
+The proposed next stage is explicitly [preregistered in PROSPECTIVE_AB_R1.md](PROSPECTIVE_AB_R1.md): real legacy A versus CoRun+ B, independently evaluated outcomes, operator and receiver human minutes, source/authority parity, counterbalanced trial order, nullable costs, recovery and stop conditions. This is a study specification, **not a conducted study**. Remain draft and do not silently promote or deploy.
+
 ## Nonclaims
 
 `PREEXISTING_CORUN_NE_CURRENT_RUNTIME | SAME_SOURCE_NE_INDEPENDENT_TEST | MORE_PARALLELISM_NE_MORE_VALUE | ARTIFACT_NE_ADOPTION | RUN_COMPLETED_NE_RECEIVER_PICKUP | SYNTHETIC_WAIT_NE_REAL_DEPLOYMENT_SPEEDUP | GIT_PR_NE_PRODUCTION | PR_CANDIDATE_NE_MERGED | LOCAL_IS_NOT_LANDED | ACK_NE_ASSERTION | RICK_NE_MAILMAN`.
