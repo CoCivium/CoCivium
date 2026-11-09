@@ -41,6 +41,17 @@ New [CoObjectAgencyBridgeR0.py](../../scripts/CoObjectAgencyBridgeR0.py) reuses 
 
 This is **a tested partial bridge between unlike source objects and the agent selection problem**, not an agentic operating system. Triggers are producer-asserted, not authenticated events; qualified worker registry/actual dispatch, user-consent enforcement, multi-agent challenge, semantic accuracy, C3 product completion and cross-cell recovery are still **HELD**.
 
+## External interoperability research candidates (checked 2026-11-09)
+
+Do not invent a proprietary CoAll protocol for every established layer. Candidate *standards donors* to evaluate, never claimed adopted/deployed:
+
+- [W3C PROV-O](https://www.w3.org/TR/prov-o/) for exchanged provenance entities, activities and agent relations. Ontology declarations do not make provenance truthful.
+- [CloudEvents](https://github.com/cloudevents/spec) for standardized event envelopes across hosts, queues and pub/sub. A valid event packet does not independently authenticate a producer or guarantee delivery.
+- [WebAssembly Component Model / WASI capabilities](https://github.com/WebAssembly/WASI/blob/main/docs/Capabilities.md) for typed, restrictable component imports and future replaceable worker implementations. Capability configuration, runtime sandboxing, host security, and live tool compatibility require their own security tests. Current [Component Model releases](https://github.com/WebAssembly/component-model) are evolving; qualify actual versions, no assumption all runtimes implement every feature.
+- [OCI Image and Runtime specifications](https://opencontainers.org/about/overview/) for portable worker packaging/launch at cells where containers are justified. Do not impose Kubernetes, Docker or an opaque image registry on a small standalone node.
+
+Compare these with the existing CoPulse, CoObject, CoModelFabric, CoStead, CoOrbWare and Civ2 cell contracts using a bounded interoperability test and an explicit migration cost/escape assessment. This is **external public architecture research**, not CoAll provenance or actual agent execution.
+
 ## CoBoogie / CoReGroup without a new global bureaucracy
 
 1. Preserve the existing **prior-work pointers** and current selected release heads. A local GitHub search or chat recap does not establish complete session coverage.
