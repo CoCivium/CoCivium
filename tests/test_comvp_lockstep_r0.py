@@ -257,8 +257,8 @@ class CoMVPTests(unittest.TestCase):
     def test_cli_end_to_end_local_slot_in_independent_processes(self):
         (self.root / "real-fixture.txt").write_text("one functional local artifact")
         (self.root / "real-test.py").write_text(
-            "from pathlib import Path\\nassert Path('real-fixture.txt').read_text() == "
-            "'one functional local artifact'\\n")
+            "from pathlib import Path\nassert Path('real-fixture.txt').read_text() == "
+            "'one functional local artifact'\n")
         code, staged = self.cli("stage", "--slot", "demo",
                                 "--artifact", "real-fixture.txt", "--test", "real-test.py")
         self.assertEqual(code, 0)
