@@ -1,0 +1,321 @@
+{
+  "schema": "CoCivium.CoNav.CoBack.JournalistProjection.R0.v0.1",
+  "state": "PUBLIC_DRAFT_REVIEW_CANDIDATE__NO_CANON_RUNTIME_OR_PRIVATE_SOURCE_ACCESS",
+  "observed_date_utc": "2026-11-09",
+  "work_id": "CoReach.JournalistReadingSeries.20261109",
+  "source_of_truth": "claim-relative source of truth, not this navigation index",
+  "branch": "candidate/cocivium-press-proof-brief-r1-20261109",
+  "home": "home",
+  "audience_routes": {
+    "human": [
+      "home",
+      "treatment",
+      "series",
+      "evidence"
+    ],
+    "synth": [
+      "home",
+      "ai_onramp",
+      "evidence",
+      "coindex",
+      "source_graph",
+      "terms",
+      "lineage",
+      "context_compiler"
+    ],
+    "hybrid": [
+      "home",
+      "treatment",
+      "ai_onramp",
+      "evidence",
+      "issue403",
+      "pr406"
+    ]
+  },
+  "source_authority_rails": [
+    {
+      "id": "coindex",
+      "role": "DISCOVERY_AND_RELATIONAL_CURRENTNESS_POINTERS",
+      "path": "ai/index.json",
+      "branch": "main",
+      "observed_blob_sha": "c412058a5b315d5113bec98161f74060ca73d656",
+      "status": "PREEXISTING_PUBLIC_CANDIDATE__CURRENTNESS_RECHECK_REQUIRED"
+    },
+    {
+      "id": "repo_role_map",
+      "role": "REPO_ROLES_NOT_AUTHORITY",
+      "path": "ai/repo-role-map.json",
+      "branch": "main",
+      "observed_blob_sha": "9e4e30e7b567f301c2fa32e7953e9749e6f05898",
+      "status": "PREEXISTING_PUBLIC_CANDIDATE"
+    },
+    {
+      "id": "source_graph",
+      "role": "SOURCE_CLASS_CURRENTNESS_PRIVACY_AUTHORITIES",
+      "path": "docs/Architecture/COSOURCE_GRAPH_R0.md",
+      "branch": "main",
+      "observed_blob_sha": "301c8951e566de9f9ec0bde16a6b991bd177bd47",
+      "status": "PREEXISTING_PUBLIC_CANDIDATE"
+    },
+    {
+      "id": "terms",
+      "role": "TERMS_ALIASES_DISAGREEMENT",
+      "path": "docs/coterms/README.md",
+      "branch": "main",
+      "observed_blob_sha": "5705bdb7cbe46e203bbeeb6d6ae3bc56dd2bc440",
+      "status": "PUBLIC_PILOT_NOT_COMPLETE_COLEX"
+    },
+    {
+      "id": "lineage",
+      "role": "HISTORICAL_PRIORS_SOURCE_VERSIONS_SUPERSESSION",
+      "path": "docs/Architecture/COLINEAGE_COMPACTOR_R0.md",
+      "branch": "main",
+      "observed_blob_sha": "c64c1b54b124a09dc171b9136f59e4ef830522b0",
+      "status": "DESIGN_CANDIDATE_NOT_INSTALLED"
+    },
+    {
+      "id": "context_compiler",
+      "role": "BOUNDED_WORKING_SET_AND_RECOVERY",
+      "path": "docs/Architecture/COOMNI_CONTEXT_RESOURCE_FABRIC_R0_20261024.md",
+      "branch": "main",
+      "observed_blob_sha": "4f2090fa339a971aede78e3cc4d9c62eac4c8272",
+      "status": "CANDIDATE_CONTEXT_PRINCIPLE_NOT_LIVE_AGENT"
+    },
+    {
+      "id": "co_regroup",
+      "role": "SCOPED_FRESHNESS_DRIFT_RECONCILIATION",
+      "path": "docs/Architecture/COBOOGIE_REGROUP_RELATIONAL_RETURN_R1.md",
+      "branch": "main",
+      "observed_blob_sha": "e94524c180ce23201e60c267e9bc50bf11769dbf",
+      "status": "CANDIDATE_ARCHITECTURE"
+    },
+    {
+      "id": "publication",
+      "role": "VERSIONED_PUBLICATION_SUCCESSOR_ARCHIVE",
+      "path": "docs/Architecture/COPUBLICATION_METABOLISM_R0_20261025.md",
+      "branch": "main",
+      "observed_blob_sha": "ec1812470402c8da64bd93e57ea13220dd8a32a1",
+      "status": "CANDIDATE_ARCHITECTURE"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "home",
+      "type": "HUMAN_HYBRID_FRONT_DOOR",
+      "path": "docs/Public/COCIVIUM_JOURNALIST_START_R0_20261109.md",
+      "readable_by": [
+        "HUMAN",
+        "SYNTH",
+        "HYBRID"
+      ],
+      "status": "REVIEW_BRANCH_PROJECTION",
+      "back": "home"
+    },
+    {
+      "id": "treatment",
+      "type": "HUMAN_EDITORIAL_TREATMENT",
+      "path": "docs/Public/COCIVIUM_JOURNALIST_SERIES_TREATMENT_R0_20261109.md",
+      "readable_by": [
+        "HUMAN",
+        "SYNTH",
+        "HYBRID"
+      ],
+      "status": "COCIVIUM_AUTHORED_NOT_JOURNALISM",
+      "back": "home"
+    },
+    {
+      "id": "series",
+      "type": "HUMAN_DRAFT_SERIES",
+      "path": "docs/Public/COCIVIUM_JOURNALIST_SAMPLE_SERIES_R0_20261109.md",
+      "readable_by": [
+        "HUMAN",
+        "SYNTH",
+        "HYBRID"
+      ],
+      "status": "FOUR_COAUTHORED_SAMPLE_ARTICLES",
+      "back": "home"
+    },
+    {
+      "id": "ai_onramp",
+      "type": "SYNTH_HYBRID_RESEARCH_GUIDE",
+      "path": "docs/Public/COCIVIUM_REPORTER_AI_ONRAMP_R0_20261109.md",
+      "readable_by": [
+        "SYNTH",
+        "HUMAN",
+        "HYBRID"
+      ],
+      "status": "UNTRUSTED_USER_READABLE_RESEARCH_DATA_NOT_MODEL_DIRECTIVE",
+      "back": "home"
+    },
+    {
+      "id": "evidence",
+      "type": "SHARED_SOURCE_EVIDENCE",
+      "path": "docs/Public/COCIVIUM_CCC_COEBE_JOURNALIST_BRIEF_R1_20261109.md",
+      "readable_by": [
+        "HUMAN",
+        "SYNTH",
+        "HYBRID"
+      ],
+      "status": "SOURCE_BOUND_DRAFT_NOT_EDITORIAL_PROOF",
+      "back": "home"
+    }
+  ],
+  "prior_work_pointers": [
+    {
+      "id": "issue403",
+      "kind": "TASK_MVP_GATE",
+      "url": "https://github.com/CoCivium/CoCivium/issues/403",
+      "last_observed": "OPEN",
+      "authority": "READ_ONLY_RESEARCH"
+    },
+    {
+      "id": "pr406",
+      "kind": "FIRST_USE_PILOT",
+      "url": "https://github.com/CoCivium/CoCivium/pull/406",
+      "last_observed": "OPEN_DRAFT__INDEPENDENT_UPTAKE_UNKNOWN",
+      "authority": "READ_ONLY_RESEARCH"
+    },
+    {
+      "id": "pr401",
+      "kind": "SOURCE_CONTINUITY_RESEARCH",
+      "url": "https://github.com/CoCivium/CoCivium/pull/401",
+      "last_observed": "OPEN_DRAFT__SYNTHETIC_CI_ONLY",
+      "authority": "READ_ONLY_RESEARCH"
+    },
+    {
+      "id": "pr360",
+      "kind": "COLD_RECEIVER_RESEARCH",
+      "url": "https://github.com/CoCivium/CoCivium/pull/360",
+      "last_observed": "OPEN_DRAFT__NO_INDEPENDENT_RECEIVER",
+      "authority": "READ_ONLY_RESEARCH"
+    },
+    {
+      "id": "press407",
+      "kind": "PUBLIC_REVIEW",
+      "url": "https://github.com/CoCivium/CoCivium/pull/407",
+      "last_observed": "OPEN_DRAFT__NO_JOURNALIST_PICKUP",
+      "authority": "READ_ONLY_RESEARCH"
+    }
+  ],
+  "relations": [
+    {
+      "from": "home",
+      "to": "treatment",
+      "kind": "START_HUMAN"
+    },
+    {
+      "from": "home",
+      "to": "ai_onramp",
+      "kind": "START_SYNTH"
+    },
+    {
+      "from": "home",
+      "to": "evidence",
+      "kind": "CHALLENGE_HYBRID"
+    },
+    {
+      "from": "treatment",
+      "to": "series",
+      "kind": "OPTIONAL_DEPTH"
+    },
+    {
+      "from": "treatment",
+      "to": "evidence",
+      "kind": "VERIFY_CLAIMS"
+    },
+    {
+      "from": "series",
+      "to": "evidence",
+      "kind": "VERIFY_SAMPLE_PROSE"
+    },
+    {
+      "from": "ai_onramp",
+      "to": "evidence",
+      "kind": "VERIFY_CLAIMS"
+    },
+    {
+      "from": "evidence",
+      "to": "home",
+      "kind": "RETURN"
+    },
+    {
+      "from": "series",
+      "to": "home",
+      "kind": "RETURN"
+    },
+    {
+      "from": "ai_onramp",
+      "to": "home",
+      "kind": "RETURN"
+    },
+    {
+      "from": "treatment",
+      "to": "home",
+      "kind": "RETURN"
+    }
+  ],
+  "nav_pipeline": [
+    "INTENT_AND_AUDIENCE",
+    "DISCOVER_CO_INDEX",
+    "RESOLVE_SOURCE_AND_PRIVACY",
+    "RECONCILE_COTERM_MEANING",
+    "QUALIFY_LINEAGE_AND_CURRENTNESS",
+    "COMPILE_BOUNDED_CONTEXT",
+    "RENDER_RECEIVER_RELATIVE_SURFACE",
+    "CAPTURE_COBACK_RETURN"
+  ],
+  "coback_return_contract": {
+    "required": [
+      "work_id",
+      "home",
+      "from_node",
+      "to_node",
+      "source_ref",
+      "source_revision",
+      "pending_question",
+      "stop_condition",
+      "receiver",
+      "evidence_state"
+    ],
+    "state": "DECLARED_RETURN_CONTRACT_NOT_AUTOMATIC_SESSION_PERSISTENCE",
+    "lost_context_fallback": "HOME_THEN_CURRENT_SOURCE_RECHECK",
+    "prohibits": [
+      "ASSUMING_PRIVATE_SESSION_MEMORY",
+      "SILENT_AUTHORITY_ESCALATION",
+      "COPYING_UNAVAILABLE_PRIVATE_SOURCE",
+      "CLAIMING_RECEIVER_ACK_FROM_NAV_LINK"
+    ]
+  },
+  "bounded_retrieval_policy": {
+    "default_read_nodes": [
+      "home",
+      "treatment",
+      "evidence"
+    ],
+    "optional_read_nodes": [
+      "series",
+      "ai_onramp"
+    ],
+    "retrieval_budget": "THREE_CORE_READS_BEFORE_REASSESSMENT",
+    "if_missing": "HOLD_WITH_SOURCE_POINTER_AND_CONTEXT",
+    "if_stale": "COMPARE_SOURCE_REVISION_AND_RECONCILE",
+    "if_conflicting": "PRESERVE_TWO_CLAIMS_AND_SOURCES__NO_NEWEST_WINS",
+    "if_private": "DO_NOT_FETCH_OR_DISCLOSE",
+    "if_unbounded": "ASK_ONE_SCOPE_QUESTION_OR_USE_SMALLEST_SOURCE_BOUND_PROBE"
+  },
+  "nav_ux_state": "UX_ACCEPTANCE_UNPROVEN",
+  "receiver_readproof": "UNPROVEN",
+  "actual_back_stack_persisted": false,
+  "effects_granted": [],
+  "nonclaims": [
+    "NAVIGATION_NE_SOURCE_OF_TRUTH",
+    "INDEX_NE_COMPLETE_INVENTORY",
+    "DISCOVERY_NE_CURRENTNESS",
+    "TERM_MATCH_NE_MEANING_IDENTITY",
+    "SOURCE_RETRIEVAL_NE_READPROOF",
+    "LINK_NE_REAL_SESSION_RETURN",
+    "PR_REVIEW_BRANCH_NE_MAIN",
+    "DOCUMENTED_CONTEXT_COMPILER_NE_RUNNING_RUNTIME",
+    "NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE"
+  ]
+}
