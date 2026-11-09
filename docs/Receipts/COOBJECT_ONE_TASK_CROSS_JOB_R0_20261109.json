@@ -24,7 +24,7 @@
     "work_receipt_sha256": "6311d044f7ba479da65d0c81656786cfab5a68fc4b21e27ecb240c2902658510",
     "artifact_id": 13670428561,
     "artifact_name": "coobject-one-task-42612069597-a1",
-    "artifact_zip_sha256": "9af2facaf86dddd66c172ac1965adf11caa42a8673fbed5970d60b820aa61c7f"
+    "github_reported_artifact_zip_sha256": "9af2facaf86dddd66c172ac1965adf11caa42a8673fbed5970d60b820aa61c7f"
   },
   "consumer": {
     "job_name": "object-source-reader",
@@ -33,7 +33,7 @@
     "recomputed_same_receipt_sha256": "6311d044f7ba479da65d0c81656786cfab5a68fc4b21e27ecb240c2902658510",
     "artifact_id": 13670617475,
     "artifact_name": "coobject-one-reader-42612069597-a1",
-    "artifact_zip_sha256": "921b66cab234b5c49313be9b7e109ffb2acfe951634f6f14190426a709296e39"
+    "github_reported_artifact_zip_sha256": "921b66cab234b5c49313be9b7e109ffb2acfe951634f6f14190426a709296e39"
   },
   "verified_scope": [
     "EXISTING_COOBJECT_VITALITY_VALIDATOR_EXECUTED_READ_ONLY",
@@ -61,5 +61,6 @@
     "NOT_AUTONOMOUS_MULTI_PROVIDER_COORDINATION",
     "GITHUB_ARTIFACTS_EXPIRE_AFTER_RETENTION"
   ],
-  "next_proof": "Authorize one existing rickBar R1/Ollama task on a real receiver, then independent readback, restart and full recovery while preserving selected baseline."
+  "next_proof": "Authorize one existing rickBar R1/Ollama task on a real receiver, then independent readback, restart and full recovery while preserving selected baseline.",
+  "hash_proof_boundary": "Artifact archive digests are GitHub API metadata, not independently downloaded and recomputed here. Matching WorkID receipt SHA-256 was observed in separate job logs; the reader re-ran validator within the same GitHub Actions failure domain."
 }
