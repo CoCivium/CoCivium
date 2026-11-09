@@ -19,6 +19,15 @@ def sha256(data: bytes) -> str:
     return hashlib.sha256(data).hexdigest().upper()
 
 
+def source_digest(value: Any) -> str | None:
+    """Stable content identity for input snapshots, not receiver authenticity."""
+    if value is None:
+        return None
+    encoded = json.dumps(value, sort_keys=True, separators=(",", ":"),
+                         ensure_ascii=False).encode("utf-8")
+    return sha256(encoded)
+
+
 def load(path: str | None) -> dict[str, Any] | None:
     if not path:
         return None
@@ -140,11 +149,13 @@ def compile_projection(
     if runtime and isinstance(runtime.get("currentness"), dict):
         rc = runtime["currentness"]
         state = str(rc.get("state","UNKNOWN")).upper()
-        if state in {"HEALTHY","AGING","STALE","DEGRADED","UNKNOWN"}:
-            currentness = {
-                "state":state,
-                "age_seconds":rc.get("age_seconds")
-            }
+        age = rc.get("age_seconds")
+        valid_age = type(age) in (int, float) and 0 <= age < float("inf")
+        if state in {"HEALTHY","AGING"} and valid_age:
+            currentness = {"state":state, "age_seconds":age}
+        elif state in {"STALE","DEGRADED","UNKNOWN"}:
+            currentness = {"state":state, "age_seconds":age if valid_age else None}
+        # A bare or malformed HEALTHY flag cannot certify currentness.
 
     if currentness["state"] in {"STALE", "DEGRADED"}:
         exceptions.append({
@@ -176,6 +187,8 @@ def compile_projection(
         headline = "MODERATE"
     elif len(logical_only) > 0 or len(shadow) > 0:
         headline = "MODERATE"
+    elif currentness["state"] == "UNKNOWN":
+        headline = "UNKNOWN"
     elif not sessions and not contracts:
         headline = "UNKNOWN"
     else:
@@ -191,10 +204,15 @@ def compile_projection(
         "front_registry_bound":fronts is not None,
         "runtime_facts_bound":runtime is not None,
     }
+    source_fingerprints = {
+        "ledger": source_digest(ledger), "spawn": source_digest(spawn),
+        "fronts": source_digest(fronts), "runtime": source_digest(runtime),
+    }
 
     return {
         "projection_id":"cofleet:" + sha256(
-            json.dumps({"observed_at":observed_at,"basis":projection_basis},
+            json.dumps({"observed_at":observed_at,"basis":projection_basis,
+                        "sources":source_fingerprints},
                        sort_keys=True,separators=(",",":")).encode("utf-8")
         )[:24],
         "observed_at":observed_at,
