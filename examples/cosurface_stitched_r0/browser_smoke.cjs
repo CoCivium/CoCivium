@@ -51,6 +51,7 @@ const evidenceDir = resolve(__dirname, "evidence");
         assert.equal(values.orbCount, 1);
         assert.match(values.evidence, /NO LIVE EFFECT/);
         assert.equal(values.membrane, "unknown");
+        mkdirSync(evidenceDir, { recursive: true });
         await p.screenshot({ path: resolve(evidenceDir, screenshotName), fullPage: true });
       } finally {
         await p.close();
