@@ -7,6 +7,16 @@
 
 CoCivium is an **open research attempt** to test that. The present evidence is source code, proposals and bounded tests, **not** an independently proven federated AI product. An investigation is welcome even if it finds the project deficient.
 
+### For reporters: begin with a decision, not a glossary
+
+**Three-minute desk check:** Read the [story treatment](COCIVIUM_JOURNALIST_SERIES_TREATMENT_R0_20261109.md) and decide whether the central question is worth reporting: *Can someone leave one AI provider and still recover their unfinished task, permissions, sources and STOP conditions through another?* You may reject the premise; the sample series is not a requested endorsement.
+
+**Ten-minute source challenge:** Inspect [CoMVP issue #403](https://github.com/CoCivium/CoCivium/issues/403) and [the narrow CoPre CLI candidate #406](https://github.com/CoCivium/CoCivium/pull/406). Try to identify one falsifier: missing independent receiver, stale source, unsupported authority, unclear first-use steps, or a simpler existing alternative. Follow the [evidence brief](COCIVIUM_CCC_COEBE_JOURNALIST_BRIEF_R1_20261109.md) for the claims we explicitly cannot prove.
+
+**If the story survives your desk check:** Seek independent developer, governance, security and user perspectives. Treat us as a source subject to scrutiny, not your technical verifier. Request an actual demonstration before attributing real-world capability. Use the [AI research onramp](COCIVIUM_REPORTER_AI_ONRAMP_R0_20261109.md) only if it helps, under your own newsroom instructions.
+
+**Editorial and contact boundary:** This public draft is freely readable research material, **not a commissioned article, exclusive, embargo, press response or permission to publish unverifiable claims**. The [public issue tracker](https://github.com/CoCivium/CoCivium/issues) is one route for a source-linked correction or challenge, not a requirement to register or disclose private notes. A journalist may decline, investigate independently, or ask for clarifications without surrendering editorial control.
+
 ### Choose a route
 
 | You are ... | First reading | Then | Return |
