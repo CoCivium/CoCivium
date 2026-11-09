@@ -1,0 +1,617 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="dark light">
+<meta name="description" content="CoMap and CoNav public atlas: source-backed nested relations, history and recovery without private material.">
+<meta http-equiv="Content-Security-Policy" content="default-src &#39;none&#39;; script-src &#39;unsafe-inline&#39;; style-src &#39;unsafe-inline&#39;; img-src data:; base-uri &#39;none&#39;; form-action &#39;none&#39;; connect-src &#39;none&#39;">
+<title>CoMap + CoNav | Public Atlas R0</title>
+<style>
+:root{color-scheme:dark;--bg:#081722;--panel:#112838;--ink:#eaf4ff;--sub:#bbcede;--line:#42647a;--aqua:#72eadb;--violet:#cfabff;--amber:#ffd29b;font:16px/1.55 system-ui,-apple-system,Segoe UI,sans-serif}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse 60vw 45vh at 80% 0%,#153c47,transparent),var(--bg);color:var(--ink)}
+a{color:var(--aqua);text-underline-offset:.2em}a:hover{text-decoration-thickness:2px}:focus-visible{outline:3px solid var(--amber);outline-offset:3px}
+.skip{position:absolute;left:-100vw;top:0;background:#fff;color:#111;padding:1rem;z-index:99}.skip:focus{left:1rem}
+.site{max-width:1240px;margin:auto;display:grid;grid-template-columns:230px minmax(0,1fr);gap:2rem;padding:1.5rem}
+.rail{position:sticky;top:1rem;align-self:start;border:1px solid var(--line);border-radius:18px;padding:1rem;background:#0b1f2d}
+.rail a{display:block;margin:.3rem 0;padding:.34rem;border-radius:6px;text-decoration:none}.rail a:hover{background:var(--panel)}
+main{min-width:0}.hero{padding:4rem 1rem 3rem}.eyebrow{text-transform:uppercase;letter-spacing:.16em;color:var(--aqua);font-size:.78rem;font-weight:700}
+h1{font-size:clamp(2.8rem,6vw,5.6rem);line-height:1.04;margin:.35em 0}h2{font-size:clamp(1.6rem,3vw,2.6rem);line-height:1.2}h3{margin:0 0 .4rem;font-size:1.14rem}
+p{max-width:70ch}section{padding:2rem 0;border-top:1px solid var(--line);scroll-margin-top:2rem}.lead{font-size:1.27rem;color:var(--sub)}
+.badge{display:inline-block;border:1px solid var(--line);border-radius:40px;padding:.24rem .65rem;font-size:.78rem;margin-right:.35rem}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.8rem}.card,details,.note{border:1px solid var(--line);border-radius:14px;background:var(--panel);padding:1rem}
+.card{min-width:0}.card p{margin:.3rem 0;color:var(--sub)}.meter{font-size:2rem;font-weight:800;font-variant-numeric:tabular-nums;color:var(--aqua)}
+details{margin:.5rem 0}details summary{cursor:pointer;font-weight:700}details[open]{border-color:var(--violet)}
+.node-card{margin:.45rem 0;background:#102332}.node-card[hidden]{display:none}small,.muted{color:var(--sub)}
+code{overflow-wrap:anywhere;color:#d7bcff;font-size:.88em}.links{display:flex;gap:.5rem;flex-wrap:wrap}.links a{border:1px solid var(--line);border-radius:10px;padding:.35rem .6rem;text-decoration:none}
+.map{width:100%;height:auto;border:1px solid var(--line);border-radius:16px;background:#102332}.map text{font-family:system-ui,sans-serif;fill:#eaf4ff;font-size:18px}
+.list{padding-left:1.2rem}.list li{margin:.45rem 0}.filter{width:100%;background:#091e2c;color:var(--ink);padding:.8rem;border:1px solid var(--aqua);border-radius:12px}
+.status{border-left:4px solid var(--amber);padding:.7rem 1rem;background:#2b2830}.mono{font-family:ui-monospace,monospace;overflow-wrap:anywhere}
+.twocol{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1rem}table{border-collapse:collapse;width:100%}th,td{border:1px solid var(--line);padding:.7rem;text-align:left;vertical-align:top}th{background:var(--panel)}
+footer{border-top:1px solid var(--line);padding:2rem 0 5rem;color:var(--sub)}
+@media(max-width:800px){.site{display:block;padding:1rem}.rail{position:static;margin:0 0 1rem}.rail nav{display:flex;flex-wrap:wrap;gap:.35rem}.hero{padding:2rem 0}.links{gap:.35rem}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}@media print{body{background:#fff;color:#111}.rail{display:none}.site{display:block}details{break-inside:avoid}a{color:#065}main{width:100%}}
+</style></head><body><a class="skip" href="#main">Skip to atlas</a><div class="site">
+<aside class="rail" aria-label="Atlas navigation"><strong>CoMap / CoNav</strong><br><small>Public evidence atlas R0</small>
+<nav aria-label="Chapters"><a href="#orientation">01 / Start here</a><a href="#map">02 / Map of maps</a>
+<a href="#fragments">03 / Explore fragments</a><a href="#inspiration">04 / Prior media</a>
+<a href="#time">05 / Time and change</a><a href="#resilience">06 / Mirrors and recovery</a>
+<a href="#sources">07 / Sources</a></nav><small>Offline page. No tracking or live sync.</small></aside>
+<main id="main"><header class="hero" id="orientation"><div class="eyebrow">One evidence graph / many views</div>
+<h1>Explore the<br>living map.</h1>
+<p class="lead">A long-form public atlas that opens into smaller maps, source objects, and disagreements. Designed for humans and machine readers, with an honest route back to evidence.</p>
+<span class="badge">PUBLIC SOURCE CANDIDATE</span><span class="badge">RELEASE r0-7728f868b9d22054</span>
+<span class="badge">NO LIVE X2 OR MIRROR ACK</span>
+<div class="cards" style="margin-top:2rem"><div class="card"><div class="meter">56</div><p>source-registered objects</p></div>
+<div class="card"><div class="meter">61</div><p>typed source relations</p></div>
+<div class="card"><div class="meter">5</div><p>prior-media candidates, unreviewed</p></div></div>
+<p class="status"><strong>Currentness:</strong> these are public repository source projections, not a live synchronization channel. Source registries may predate this edition. A link or mirror is not a receiver receipt.</p></header>
+<section id="map"><div class="eyebrow">02 / Navigate</div><h2>A map of maps</h2>
+<p>Each box is a view of the same public source. Follow a label into a smaller map, then into the original evidence. Proximity is not causality, adoption or authority.</p>
+<svg class="map" viewBox="0 0 760 350" role="img" aria-labelledby="map-title map-desc">
+<title id="map-title">Expandable CoMap and CoNav atlas</title>
+<desc id="map-desc">One central source object feeds five navigable groups: map, evolution domains, repositories, highlights and documents. All are available as text below.</desc>
+<g stroke="#72eadb" stroke-width="2" fill="none"><path d="M380 85V138M380 138H115V188M380 138H247V188M380 138V188M380 138H513V188M380 138H645V188"/></g>
+<rect x="224" y="22" width="312" height="63" rx="13" fill="#193a48" stroke="#72eadb"/>
+<text x="380" y="60" text-anchor="middle">CoAll source spine</text>
+<rect x="52" y="188" width="124" height="74" rx="12" fill="#183248" stroke="#cfabff"/>
+<text x="114" y="231" text-anchor="middle">CoMap</text>
+<rect x="184" y="188" width="124" height="74" rx="12" fill="#183248" stroke="#cfabff"/>
+<text x="246" y="231" text-anchor="middle">Domains</text>
+<rect x="316" y="188" width="124" height="74" rx="12" fill="#183248" stroke="#cfabff"/>
+<text x="378" y="231" text-anchor="middle">Repos</text>
+<rect x="448" y="188" width="124" height="74" rx="12" fill="#183248" stroke="#cfabff"/>
+<text x="510" y="231" text-anchor="middle">Highlights</text>
+<rect x="580" y="188" width="124" height="74" rx="12" fill="#183248" stroke="#cfabff"/>
+<text x="642" y="231" text-anchor="middle">Documents</text>
+</svg><p class="muted">The accessible object list immediately below is authoritative for this projection. Visual geometry is illustrative.</p>
+<div class="links"><a href="#fragments">Explore all source fragments</a>
+<a href="https://github.com/CoCivium/CoCivium/blob/main/examples/comap/diagram-of-diagrams-r0.md">Full nested CoNav diagram source</a>
+<a href="https://github.com/CoCivium/CoCivium/blob/main/examples/colensmedia/conav_navigator_r0.html">Existing expandable navigator source</a></div></section>
+<section id="fragments"><div class="eyebrow">03 / Fractal drill down</div><h2>Small maps inside the big map</h2>
+<p>Expand only the group you need. Each object retains a stable edition anchor and its source evidence. Search is optional; all content remains visible with scripts disabled.</p>
+<label for="lookup">Filter public source objects</label><input class="filter" id="lookup" type="search" placeholder="Search label or type; optional" aria-describedby="search-help">
+<p id="search-help" class="muted">Client-side only. Search never sends text to a server.</p>
+<details class="group" id="group-map"><summary>CoMap / first orientation (1)</summary><p class="muted">Source-backed, independently navigable fragments.</p>
+<details class="node-card" id="fragment-8e4e1d2cd1c5ee2b" data-search="view:comap+ comap+ projection map">
+<summary>CoMap+ projection <small>(map)</small></summary>
+<p>Source-linked interactive lens over typed CoAll relations, not a new ontology or deployed renderer.</p><p><small>Work fragment: </small><code>view:CoMap+</code></p>
+<div class="links"><a href="https://github.com/CoCivium/CoCivium/issues/217">Inspect source evidence</a>
+<a href="#fragment-8e4e1d2cd1c5ee2b">Permalink to this fragment</a></div>
+<p><strong>Typed outgoing relations</strong></p><ul class="list">
+<li>PROPOSED_PROJECTION_FAMILY → <a href="#fragment-09987b7112cc9bb1">CoUX+/CoSurface+</a></li>
+<li>PROPOSED_RELATIONAL_LENS → <a href="#fragment-e174c1b472ca7bd9">CoAll+</a></li>
+</ul>
+</details>
+</details>
+<details class="group" id="group-domain"><summary>Evolution domains (21)</summary><p class="muted">Source-backed, independently navigable fragments.</p>
+<details class="node-card" id="fragment-e4856b417c42412c" data-search="domain:costrategy+ costrategy+ domain">
+<summary>CoStrategy+ <small>(domain)</small></summary>
+<p>PRIVATE_FIRST_PUBLIC_SUMMARY</p><p><small>Work fragment: </small><code>domain:CoStrategy+</code></p>
+<div class="links"><a href="https://github.com/CoCivium/CoCivium/blob/main/ai/evolution-lanes.json">Inspect source evidence</a>
+<a href="#fragment-e4856b417c42412c">Permalink to this fragment</a></div>
+<p><strong>Typed outgoing relations</strong></p><ul class="list">
+<li>REGISTERED_REPOSITORY → <a href="#fragment-9bcc574b4cebb6bd">MasterPlan</a></li>
+<li>REGISTERED_REPOSITORY → <a href="#fragment-af649d2c64a0e5f0">CoCivium</a></li>
+</ul>
+</details>
+<details class="node-card" id="fragment-40217ac26a619c06" data-search="domain:coinsight+ coinsight+ domain">
+<summary>CoInsight+ <small>(domain)</small></summary>
+<p>PRIVATE_ATOM_PUBLIC_PROJECTION</p><p><small>Work fragment: </small><code>domain:CoInsight+</code></p>
+<div class="links"><a href="https://github.com/CoCivium/CoCivium/blob/main/ai/evolution-lanes.json">Inspect source evidence</a>
+<a href="#fragment-40217ac26a619c06">Permalink to this fragment</a></div>
+<p><strong>Typed outgoing relations</strong></p><ul class="list">
+<li>REGISTERED_REPOSITORY → <a href="#fragment-8186695c079a1903">CoInsights</a></li>
+<li>REGISTERED_REPOSITORY → <a href="#fragment-af649d2c64a0e5f0">CoCivium</a></li>
+</ul>
+</details>
+<details class="node-card" id="fragment-3e6906a1372f6e77" data-search="domain:cotheoryall+ cotheoryall+ domain">
+<summary>CoTheoryAll+ <small>(domain)</small></summary>
+<p>CROSS_CUTTING_CANDIDATE</p><p><small>Work fragment: </small><code>domain:CoTheoryAll+</code></p>
+<div class="links"><a href="https://github.com/CoCivium/CoCivium/blob/main/ai/evolution-lanes.json">Inspect source evidence</a>
+<a href="#fragment-3e6906a1372f6e77">Permalink to this fragment</a></div>
+<p><strong>Typed outgoing relations</strong></p><ul class="list">
+<li>REGISTERED_REPOSITORY → <a href="#fragment-af649d2c64a0e5f0">CoCivium</a></li>
+<li>REGISTERED_REPOSITORY → <a href="#fragment-8186695c079a1903">CoInsights</a></li>
+<li>REGISTERED_REPOSITORY → <a href="#fragment-4b938041c322079a">CoSources</a></li>
+</ul>
+</details>
+<details class="node-card" id="fragment-dc0b76abbbdf74b1" data-search="domain:cohighlight+ cohighlight+ domain">
+<summary>CoHighlight+ <small>(domain)</small></summary>
+<p>PUBLIC_SAFE_ONLY</p><p><small>Work fragment: </small><code>domain:CoHighlight+</code></p>
+<div class="links"><a href="https://github.com/CoCivium/CoCivium/blob/main/ai/evolution-lanes.json">Inspect source evidence</a>
+<a href="#fragment-dc0b76abbbdf74b1">Permalink to this fragment</a></div>
+<p><strong>Typed outgoing relations</strong></p><ul class="list">
+<li>REGISTERED_REPOSITORY → <a href="#fragment-af649d2c64a0e5f0">CoCivium</a></li>
+<li>REGISTERS_HIGHLIGHT → <a href="#fragment-427f523037b01f3a">Cognocarta Consenti / constitutional consent lineage</a></li>
+<li>REGISTERS_HIGHLIGHT → <a href="#fragment-ba240888f9ade7cb">CoTheoryAll+</a></li>
+<li>REGISTERS_HIGHLIGHT → <a href="#fragment-4a7862b1314b20bb">CoCivia disclosed composite front</a></li>
+<li>REGISTERS_HIGHLIGHT → <a href="#fragment-295b71c3932448b3">RickBar / CoDesktop+</a></li>
+<li>REGISTERS_HIGHLIGHT → <a href="#fragment-be598b2278bafebf">CoVirtualSession+ / session morphology</a></li>
+<li>REGISTERS_HIGHLIGHT → <a href="#fragment-766a3d8c77055c2f">CoNodeMesh+ / GRAIL+ federation</a></li>
+<li>REGISTERS_HIGHLIGHT → <a href="#fragment-fb389285633d235e">CoPriMath+</a></li>
+<li>REGISTERS_HIGHLIGHT → <a href="#fragment-8b4478bdbe1e1328">CoGibberTru+</a></li>
+<li>REGISTERS_HIGHLIGHT → <a href="#fragment-f124b72fa11a18cb">The CoCivium Salute</a></li>
+<li>REGISTERS_HIGHLIGHT → <a href="#fragment-54449bae65c718c4">CoAllPulseField+ / CoTime+ currentness</a></li>
+</ul>
+</details>
+<details class="node-card" id="fragment-b95267a608fad5f2" data-search="domain:coindex+ coindex+ domain">
+<summary>CoIndex+ <small>(domain)</small></summary>
+<p>INDEX_AND_DISCOVERY</p><p><small>Work fragment: </small><code>domain:CoIndex+</code></p>
+<div class="links"><a href="https://github.com/CoCivium/CoCivium/blob/main/ai/evolution-lanes.json">Inspect source evidence</a>
+<a href="#fragment-b95267a608fad5f2">Permalink to this fragment</a></div>
+<p><strong>Typed outgoing relations</strong></p><ul class="list">
+<li>REGISTERED_REPOSITORY → <a href="#fragment-7eb3ecf5550b231e">GIBindex</a></li>
+<li>REGISTERED_REPOSITORY → <a href="#fragment-af649d2c64a0e5f0">CoCivium</a></li>
+<li>REGISTERED_REPOSITORY → <a href="#fragment-aa3fab887a514a2b">CoShareHub</a></li>
+</ul>
+</details>
+<details class="node-card" id="fragment-aa22014578d711a1" data-search="domain:colex+ colex+ domain">
+<summary>CoLex+ <small>(domain)</small></summary>
+<p>TERM_ALIAS_DEPRECATION</p><p><small>Work fragment: </small><code>domain:CoLex+</code></p>
+<div class="links"><a href="https://github.com/CoCivium/CoCivium/blob/main/ai/evolution-lanes.json">Inspect source evidence</a>
+<a href="#fragment-aa22014578d711a1">Permalink to this fragment</a></div>
+<p><strong>Typed outgoing relations</strong></p><ul class="list">
+<li>REGISTERED_REPOSITORY → <a href="#fragment-7eb3ecf5550b231e">GIBindex</a></li>
+<li>REGISTERED_REPOSITORY → <a href="#fragment-af649d2c64a0e5f0">CoCivium</a></li>
+</ul>
+</details>
+<details class="node-card" id="fragment-e174c1b472ca7bd9" data-search="domain:coall+ coall+ domain">
+<summary>CoAll+ <small>(domain)</small></summary>
+<p>PUBLIC_PRIVATE_SPLIT</p><p><small>Work fragment: </small><code>domain:CoAll+</code></p>
+<div class="links"><a href="https://github.com/CoCivium/CoCivium/blob/main/ai/evolution-lanes.json">Inspect source evidence</a>
+<a href="#fragment-e174c1b472ca7bd9">Permalink to this fragment</a></div>
+<p><strong>Typed outgoing relations</strong></p><ul class="list">
+<li>REGISTERED_REPOSITORY → <a href="#fragment-af649d2c64a0e5f0">CoCivium</a></li>
+<li>REGISTERED_REPOSITORY → <a href="#fragment-aa218cfa4fbecb64">CoSteward</a></li>
+</ul>
+</details>
+<details class="node-card" id="fragment-9c1f244bb2c19ec0" data-search="domain:coops+ coops+ domain">
+<summary>CoOps+ <small>(domain)</small></summary>
+<p>PRIVATE_OPS_AND_TOOLING</p><p><small>Work fragment: </small><code>domain:CoOps+</code></p>
+<div class="links"><a href="https://github.com/CoCivium/CoCivium/blob/main/ai/evolution-lanes.json">Inspect source evidence</a>
+<a href="#fragment-9c1f244bb2c19ec0">Permalink to this fragment</a></div>
+<p><strong>Typed outgoing relations</strong></p><ul class="list">
+<li>REGISTERED_REPOSITORY → <a href="#fragment-aa218cfa4fbecb64">CoSteward</a></li>
+<li>REGISTERED_REPOSITORY → <a href="#fragment-b2f404e570043e02">CoToolbelt</a></li>
+<li>REGISTERED_REPOSITORY → <a href="#fragment-04e897528bb83603">CoStacks</a></li>
+</ul>
+</details>
+<details class="node-card" id="fragment-9c18e8b00b69dc42" data-search="domain:comythops+ comythops+ domain">
+<summary>CoMythOps+ <small>(domain)</small></summary>
+<p>TYPED_METAPHOR_MYTH_OPERATIONAL_PROJECTION</p><p><small>Work fragment: </small><code>domain:CoMythOps+</code></p>
+<div class="links"><a href="https://github.com/CoCivium/CoCivium/blob/main/ai/evolution-lanes.json">Inspect source evidence</a>
+<a href="#fragment-9c18e8b00b69dc42">Permalink to this fragment</a></div>
+<p><strong>Typed outgoing relations</strong></p><ul class="list">
+<li>REGISTERED_REPOSITORY → <a href="#fragment-af649d2c64a0e5f0">CoCivium</a></li>
+<li>REGISTERED_REPOSITORY → <a href="#fragment-8186695c079a1903">CoInsights</a></li>
+</ul>
+</details>
+<details class="node-card" id="fragment-376352bc2ffad0cd" data-search="domain:coprimath+ coprimath+ domain">
+<summary>CoPriMath+ <small>(domain)</small></summary>
+<p>FORMAL_PROJECTION_WITH_LOSS</p><p><small>Work fragment: </small><code>domain:CoPriMath+</code></p>
+<div class="links"><a href="https://github.com/CoCivium/CoCivium/blob/main/ai/evolution-lanes.json">Inspect source evidence</a>
+<a href="#fragment-376352bc2ffad0cd">Permalink to this fragment</a></div>
+<p><strong>Typed outgoing relations</strong></p><ul class="list">
+<li>REGISTERED_REPOSITORY → <a href="#fragment-af649d2c64a0e5f0">CoCivium</a></li>
+<li>REGISTERED_REPOSITORY → <a href="#fragment-8186695c079a1903">CoInsights</a></li>
+</ul>
+</details>
+<details class="node-card" id="fragment-48674a5e68d74fc1" data-search="domain:cogibbertru+ cogibbertru+ domain">
+<summary>CoGibberTru+ <small>(domain)</small></summary>
+<p>COMPRESSED_REVERSIBLE_PROJECTION</p><p><small>Work fragment: </small><code>domain:CoGibberTru+</code></p>
+<div class="links"><a href="https://github.com/CoCivium/CoCivium/blob/main/ai/evolution-lanes.json">Inspect source evidence</a>
+<a href="#fragment-48674a5e68d74fc1">Permalink to this fragment</a></div>
+<p><strong>Typed outgoing relations</strong></p><ul class="list">
+<li>REGISTERED_REPOSITORY → <a href="#fragment-af649d2c64a0e5f0">CoCivium</a></li>
+<li>REGISTERED_REPOSITORY → <a href="#fragment-7eb3ecf5550b231e">GIBindex</a></li>
+</ul>
+</details>
+<details class="node-card" id="fragment-1a104c503a4d6686" data-search="domain:rickbar+/codesktop+ rickbar+/codesktop+ domain">
+<summary>RickBar+/CoDesktop+ <small>(domain)</small></summary>
+<p>PRODUCT_UX</p><p><small>Work fragment: </small><code>domain:RickBar+/CoDesktop+</code></p>
+<div class="links"><a href="https://github.com/CoCivium/CoCivium/blob/main/ai/evolution-lanes.json">Inspect source evidence</a>
+<a href="#fragment-1a104c503a4d6686">Permalink to this fragment</a></div>
+<p><strong>Typed outgoing relations</strong></p><ul class="list">
+<li>REGISTERED_REPOSITORY → <a href="#fragment-af649d2c64a0e5f0">CoCivium</a></li>
+<li>REGISTERED_REPOSITORY → <a href="#fragment-f2352e909e925252">CoAura</a></li>
+<li>REGISTERED_REPOSITORY → <a href="#fragment-b2f404e570043e02">CoToolbelt</a></li>
+</ul>
+</details>
+<details class="node-card" id="fragment-09987b7112cc9bb1" data-search="domain:coux+/cosurface+ coux+/cosurface+ domain">
+<summary>CoUX+/CoSurface+ <small>(domain)</small></summary>
+<p>PROJECTION_AND_ACCESSIBILITY</p><p><small>Work fragment: </small><code>domain:CoUX+/CoSurface+</code></p>
+<div class="links"><a href="https://github.com/CoCivium/CoCivium/blob/main/ai/evolution-lanes.json">Inspect source evidence</a>
+<a href="#fragment-09987b7112cc9bb1">Permalink to this fragment</a></div>
+<p><strong>Typed outgoing relations</strong></p><ul class="list">
+<li>REGISTERED_REPOSITORY → <a href="#fragment-f2352e909e925252">CoAura</a></li>
+<li>REGISTERED_REPOSITORY → <a href="#fragment-af649d2c64a0e5f0">CoCivium</a></li>
+</ul>
+</details>
+<details class="node-card" id="fragment-31f86dd30a2c91c5" data-search="domain:cohumour+ cohumour+ domain">
+<summary>CoHumour+ <small>(domain)</small></summary>
+<p>HUMOUR_TYPED_SEPARATELY_FROM_EVIDENCE</p><p><small>Work fragment: </small><code>domain:CoHumour+</code></p>
+<div class="links"><a href="https://github.com/CoCivium/CoCivium/blob/main/ai/evolution-lanes.json">Inspect source evidence</a>
+<a href="#fragment-31f86dd30a2c91c5">Permalink to this fragment</a></div>
+<p><strong>Typed outgoing relations</strong></p><ul class="list">
+<li>REGISTERED_REPOSITORY → <a href="#fragment-af649d2c64a0e5f0">CoCivium</a></li>
+<li>REGISTERED_REPOSITORY → <a href="#fragment-8186695c079a1903">CoInsights</a></li>
+</ul>
+</details>
+<details class="node-card" id="fragment-5b6c9d2fc8ea547b" data-search="domain:coautoevo+/coevo+ coautoevo+/coevo+ domain">
+<summary>CoAutoEvo+/CoEvo+ <small>(domain)</small></summary>
+<p>CONTROL_PLANE</p><p><small>Work fragment: </small><code>domain:CoAutoEvo+/CoEvo+</code></p>
+<div class="links"><a href="https://github.com/CoCivium/CoCivium/blob/main/ai/evolution-lanes.json">Inspect source evidence</a>
+<a href="#fragment-5b6c9d2fc8ea547b">Permalink to this fragment</a></div>
+<p><strong>Typed outgoing relations</strong></p><ul class="list">
+<li>REGISTERED_REPOSITORY → <a href="#fragment-af649d2c64a0e5f0">CoCivium</a></li>
+<li>REGISTERED_REPOSITORY → <a href="#fragment-04e897528bb83603">CoStacks</a></li>
+<li>REGISTERED_REPOSITORY → <a href="#fragment-aa218cfa4fbecb64">CoSteward</a></li>
+<li>RELATED_PUBLIC_DOCUMENT → <a href="#fragment-bc08887b22397644">Evolution Fabric</a></li>
+<li>RELATED_PUBLIC_DOCUMENT → <a href="#fragment-0b9edf02270aed21">CoEvoDelta Schema</a></li>
+</ul>
+</details>
+<details class="node-card" id="fragment-2284ff5b0180b0c3" data-search="domain:cosession+ cosession+ domain">
+<summary>CoSession+ <small>(domain)</small></summary>
+<p>VIRTUAL_AND_MATERIALIZED_SESSION_ECOLOGY</p><p><small>Work fragment: </small><code>domain:CoSession+</code></p>
+<div class="links"><a href="https://github.com/CoCivium/CoCivium/blob/main/ai/evolution-lanes.json">Inspect source evidence</a>
+<a href="#fragment-2284ff5b0180b0c3">Permalink to this fragment</a></div>
+<p><strong>Typed outgoing relations</strong></p><ul class="list">
+<li>REGISTERED_REPOSITORY → <a href="#fragment-af649d2c64a0e5f0">CoCivium</a></li>
+</ul>
+</details>
+<details class="node-card" id="fragment-f994c6c8c6b0ef1b" data-search="domain:conodemesh+/grail+ conodemesh+/grail+ domain">
+<summary>CoNodeMesh+/GRAIL+ <small>(domain)</small></summary>
+<p>FEDERATED_NODE_CURRENTNESS</p><p><small>Work fragment: </small><code>domain:CoNodeMesh+/GRAIL+</code></p>
+<div class="links"><a href="https://github.com/CoCivium/CoCivium/blob/main/ai/evolution-lanes.json">Inspect source evidence</a>
+<a href="#fragment-f994c6c8c6b0ef1b">Permalink to this fragment</a></div>
+<p><strong>Typed outgoing relations</strong></p><ul class="list">
+<li>REGISTERED_REPOSITORY → <a href="#fragment-af649d2c64a0e5f0">CoCivium</a></li>
+<li>REGISTERED_REPOSITORY → <a href="#fragment-aa3fab887a514a2b">CoShareHub</a></li>
+<li>REGISTERED_REPOSITORY → <a href="#fragment-aa218cfa4fbecb64">CoSteward</a></li>
+<li>RELATED_PUBLIC_DOCUMENT → <a href="#fragment-db7aec7d6da5ffa8">Civ2+ Cell Hosting</a></li>
+</ul>
+</details>
+<details class="node-card" id="fragment-4d1309f6d5dacf0e" data-search="domain:cosource+/provenance cosource+/provenance domain">
+<summary>CoSource+/Provenance <small>(domain)</small></summary>
+<p>SOURCE_AND_PUBLIC_PROJECTION</p><p><small>Work fragment: </small><code>domain:CoSource+/Provenance</code></p>
+<div class="links"><a href="https://github.com/CoCivium/CoCivium/blob/main/ai/evolution-lanes.json">Inspect source evidence</a>
+<a href="#fragment-4d1309f6d5dacf0e">Permalink to this fragment</a></div>
+<p><strong>Typed outgoing relations</strong></p><ul class="list">
+<li>REGISTERED_REPOSITORY → <a href="#fragment-4b938041c322079a">CoSources</a></li>
+<li>REGISTERED_REPOSITORY → <a href="#fragment-af649d2c64a0e5f0">CoCivium</a></li>
+</ul>
+</details>
+<details class="node-card" id="fragment-599ef6cc375d284b" data-search="domain:cofuture+ cofuture+ domain">
+<summary>CoFuture+ <small>(domain)</small></summary>
+<p>PRIVATE_FIRST</p><p><small>Work fragment: </small><code>domain:CoFuture+</code></p>
+<div class="links"><a href="https://github.com/CoCivium/CoCivium/blob/main/ai/evolution-lanes.json">Inspect source evidence</a>
+<a href="#fragment-599ef6cc375d284b">Permalink to this fragment</a></div>
+<p><strong>Typed outgoing relations</strong></p><ul class="list">
+<li>REGISTERED_REPOSITORY → <a href="#fragment-01ecd0a69767759e">CoFutures</a></li>
+<li>REGISTERED_REPOSITORY → <a href="#fragment-af649d2c64a0e5f0">CoCivium</a></li>
+</ul>
+</details>
+<details class="node-card" id="fragment-4cc1c25c265f948e" data-search="domain:coeducation+ coeducation+ domain">
+<summary>CoEducation+ <small>(domain)</small></summary>
+<p>PUBLIC_LEARNING</p><p><small>Work fragment: </small><code>domain:CoEducation+</code></p>
+<div class="links"><a href="https://github.com/CoCivium/CoCivium/blob/main/ai/evolution-lanes.json">Inspect source evidence</a>
+<a href="#fragment-4cc1c25c265f948e">Permalink to this fragment</a></div>
+<p><strong>Typed outgoing relations</strong></p><ul class="list">
+<li>REGISTERED_REPOSITORY → <a href="#fragment-c0c78ff1e6651ae1">CoAcademy</a></li>
+<li>REGISTERED_REPOSITORY → <a href="#fragment-af649d2c64a0e5f0">CoCivium</a></li>
+</ul>
+</details>
+<details class="node-card" id="fragment-04edf24e56372826" data-search="domain:corails+ corails+ domain">
+<summary>CoRails+ <small>(domain)</small></summary>
+<p>INVARIANTS_AND_GUARDRAILS</p><p><small>Work fragment: </small><code>domain:CoRails+</code></p>
+<div class="links"><a href="https://github.com/CoCivium/CoCivium/blob/main/ai/evolution-lanes.json">Inspect source evidence</a>
+<a href="#fragment-04edf24e56372826">Permalink to this fragment</a></div>
+<p><strong>Typed outgoing relations</strong></p><ul class="list">
+<li>REGISTERED_REPOSITORY → <a href="#fragment-e0ccdd04cfa360b5">CoRails</a></li>
+<li>REGISTERED_REPOSITORY → <a href="#fragment-af649d2c64a0e5f0">CoCivium</a></li>
+</ul>
+</details>
+</details>
+<details class="group" id="group-repository"><summary>Repositories (21)</summary><p class="muted">Source-backed, independently navigable fragments.</p>
+<details class="node-card" id="fragment-af649d2c64a0e5f0" data-search="repo:cocivium/cocivium cocivium repository">
+<summary>CoCivium <small>(repository)</small></summary>
+<p>REGISTERED_PUBLIC_REPO</p><p><small>Work fragment: </small><code>repo:CoCivium/CoCivium</code></p>
+<div class="links"><a href="https://github.com/CoCivium/CoCivium/blob/main/ai/repo-role-map.json">Inspect source evidence</a>
+<a href="#fragment-af649d2c64a0e5f0">Permalink to this fragment</a></div>
+<p class="muted">No typed outgoing edges in this source snapshot.</p>
+</details>
+<details class="node-card" id="fragment-8186695c079a1903" data-search="repo:cocivium/coinsights coinsights repository">
+<summary>CoInsights <small>(repository)</small></summary>
+<p>REGISTERED_PRIVATE_REPO</p><p><small>Work fragment: </small><code>repo:CoCivium/CoInsights</code></p>
+<div class="links"><a href="https://github.com/CoCivium/CoCivium/blob/main/ai/repo-role-map.json">Inspect source evidence</a>
+<a href="#fragment-8186695c079a1903">Permalink to this fragment</a></div>
+<p class="muted">No typed outgoing edges in this source snapshot.</p>
+</details>
+<details class="node-card" id="fragment-7eb3ecf5550b231e" data-search="repo:cocivium/gibindex gibindex repository">
+<summary>GIBindex <small>(repository)</small></summary>
+<p>REGISTERED_PRIVATE_REPO</p><p><small>Work fragment: </small><code>repo:CoCivium/GIBindex</code></p>
+<div class="links"><a href="https://github.com/CoCivium/CoCivium/blob/main/ai/repo-role-map.json">Inspect source evidence</a>
+<a href="#fragment-7eb3ecf5550b231e">Permalink to this fragment</a></div>
+<p class="muted">No typed outgoing edges in this source snapshot.</p>
+</details>
+<details class="node-card" id="fragment-9bcc574b4cebb6bd" data-search="repo:cocivium/masterplan masterplan repository">
+<summary>MasterPlan <small>(repository)</small></summary>
+<p>REGISTERED_PRIVATE_REPO</p><p><small>Work fragment: </small><code>repo:CoCivium/MasterPlan</code></p>
+<div class="links"><a href="https://github.com/CoCivium/CoCivium/blob/main/ai/repo-role-map.json">Inspect source evidence</a>
+<a href="#fragment-9bcc574b4cebb6bd">Permalink to this fragment</a></div>
+<p class="muted">No typed outgoing edges in this source snapshot.</p>
+</details>
+<details class="node-card" id="fragment-01ecd0a69767759e" data-search="repo:cocivium/cofutures cofutures repository">
+<summary>CoFutures <small>(repository)</small></summary>
+<p>REGISTERED_PRIVATE_REPO</p><p><small>Work fragment: </small><code>repo:CoCivium/CoFutures</code></p>
+<div class="links"><a href="https://github.com/CoCivium/CoCivium/blob/main/ai/repo-role-map.json">Inspect source evidence</a>
+<a href="#fragment-01ecd0a69767759e">Permalink to this fragment</a></div>
+<p class="muted">No typed outgoing edges in this source snapshot.</p>
+</details>
+<details class="node-card" id="fragment-aa218cfa4fbecb64" data-search="repo:cocivium/costeward costeward repository">
+<summary>CoSteward <small>(repository)</small></summary>
+<p>REGISTERED_PRIVATE_REPO</p><p><small>Work fragment: </small><code>repo:CoCivium/CoSteward</code></p>
+<div class="links"><a href="https://github.com/CoCivium/CoCivium/blob/main/ai/repo-role-map.json">Inspect source evidence</a>
+<a href="#fragment-aa218cfa4fbecb64">Permalink to this fragment</a></div>
+<p class="muted">No typed outgoing edges in this source snapshot.</p>
+</details>
+<details class="node-card" id="fragment-b2f404e570043e02" data-search="repo:cocivium/cotoolbelt cotoolbelt repository">
+<summary>CoToolbelt <small>(repository)</small></summary>
+<p>REGISTERED_PRIVATE_REPO</p><p><small>Work fragment: </small><code>repo:CoCivium/CoToolbelt</code></p>
+<div class="links"><a href="https://github.com/CoCivium/CoCivium/blob/main/ai/repo-role-map.json">Inspect source evidence</a>
+<a href="#fragment-b2f404e570043e02">Permalink to this fragment</a></div>
+<p class="muted">No typed outgoing edges in this source snapshot.</p>
+</details>
+<details class="node-card" id="fragment-04e897528bb83603" data-search="repo:cocivium/costacks costacks repository">
+<summary>CoStacks <small>(repository)</small></summary>
+<p>REGISTERED_PUBLIC_REPO</p><p><small>Work fragment: </small><code>repo:CoCivium/CoStacks</code></p>
+<div class="links"><a href="https://github.com/CoCivium/CoCivium/blob/main/ai/repo-role-map.json">Inspect source evidence</a>
+<a href="#fragment-04e897528bb83603">Permalink to this fragment</a></div>
+<p class="muted">No typed outgoing edges in this source snapshot.</p>
+</details>
+<details class="node-card" id="fragment-e0ccdd04cfa360b5" data-search="repo:cocivium/corails corails repository">
+<summary>CoRails <small>(repository)</small></summary>
+<p>REGISTERED_PUBLIC_REPO</p><p><small>Work fragment: </small><code>repo:CoCivium/CoRails</code></p>
+<div class="links"><a href="https://github.com/CoCivium/CoCivium/blob/main/ai/repo-role-map.json">Inspect source evidence</a>
+<a href="#fragment-e0ccdd04cfa360b5">Permalink to this fragment</a></div>
+<p class="muted">No typed outgoing edges in this source snapshot.</p>
+</details>
+<details class="node-card" id="fragment-f2352e909e925252" data-search="repo:cocivium/coaura coaura repository">
+<summary>CoAura <small>(repository)</small></summary>
+<p>REGISTERED_PUBLIC_REPO</p><p><small>Work fragment: </small><code>repo:CoCivium/CoAura</code></p>
+<div class="links"><a href="https://github.com/CoCivium/CoCivium/blob/main/ai/repo-role-map.json">Inspect source evidence</a>
+<a href="#fragment-f2352e909e925252">Permalink to this fragment</a></div>
+<p class="muted">No typed outgoing edges in this source snapshot.</p>
+</details>
+<details class="node-card" id="fragment-c0c78ff1e6651ae1" data-search="repo:cocivium/coacademy coacademy repository">
+<summary>CoAcademy <small>(repository)</small></summary>
+<p>REGISTERED_PUBLIC_REPO</p><p><small>Work fragment: </small><code>repo:CoCivium/CoAcademy</code></p>
+<div class="links"><a href="https://github.com/CoCivium/CoCivium/blob/main/ai/repo-role-map.json">Inspect source evidence</a>
+<a href="#fragment-c0c78ff1e6651ae1">Permalink to this fragment</a></div>
+<p class="muted">No typed outgoing edges in this source snapshot.</p>
+</details>
+<details class="node-card" id="fragment-4b938041c322079a" data-search="repo:cocivium/cosources cosources repository">
+<summary>CoSources <small>(repository)</small></summary>
+<p>REGISTERED_PUBLIC_REPO</p><p><small>Work fragment: </small><code>repo:CoCivium/CoSources</code></p>
+<div class="links"><a href="https://github.com/CoCivium/CoCivium/blob/main/ai/repo-role-map.json">Inspect source evidence</a>
+<a href="#fragment-4b938041c322079a">Permalink to this fragment</a></div>
+<p class="muted">No typed outgoing edges in this source snapshot.</p>
+</details>
+<details class="node-card" id="fragment-aa3fab887a514a2b" data-search="repo:cocivium/cosharehub cosharehub repository">
+<summary>CoShareHub <small>(repository)</small></summary>
+<p>REGISTERED_PRIVATE_REPO</p><p><small>Work fragment: </small><code>repo:CoCivium/CoShareHub</code></p>
+<div class="links"><a href="https://github.com/CoCivium/CoCivium/blob/main/ai/repo-role-map.json">Inspect source evidence</a>
+<a href="#fragment-aa3fab887a514a2b">Permalink to this fragment</a></div>
+<p class="muted">No typed outgoing edges in this source snapshot.</p>
+</details>
+<details class="node-card" id="fragment-3c2cb373310ab173" data-search="repo:cocivium/cobusmirror cobusmirror repository">
+<summary>CoBusMirror <small>(repository)</small></summary>
+<p>REGISTERED_PUBLIC_REPO</p><p><small>Work fragment: </small><code>repo:CoCivium/CoBusMirror</code></p>
+<div class="links"><a href="https://github.com/CoCivium/CoCivium/blob/main/ai/repo-role-map.json">Inspect source evidence</a>
+<a href="#fragment-3c2cb373310ab173">Permalink to this fragment</a></div>
+<p class="muted">No typed outgoing edges in this source snapshot.</p>
+</details>
+<details class="node-card" id="fragment-1173d6b9340fe5d1" data-search="repo:cocivium/entment entment repository">
+<summary>EntMent <small>(repository)</small></summary>
+<p>REGISTERED_PUBLIC_REPO</p><p><small>Work fragment: </small><code>repo:CoCivium/EntMent</code></p>
+<div class="links"><a href="https://github.com/CoCivium/CoCivium/blob/main/ai/repo-role-map.json">Inspect source evidence</a>
+<a href="#fragment-1173d6b9340fe5d1">Permalink to this fragment</a></div>
+<p class="muted">No typed outgoing edges in this source snapshot.</p>
+</details>
+<details class="node-card" id="fragment-63c73965e7fb0af8" data-search="repo:cocivium/temp temp repository">
+<summary>TEMP <small>(repository)</small></summary>
+<p>REGISTERED_PUBLIC_REPO</p><p><small>Work fragment: </small><code>repo:CoCivium/TEMP</code></p>
+<div class="links"><a href="https://github.com/CoCivium/CoCivium/blob/main/ai/repo-role-map.json">Inspect source evidence</a>
+<a href="#fragment-63c73965e7fb0af8">Permalink to this fragment</a></div>
+<p class="muted">No typed outgoing edges in this source snapshot.</p>
+</details>
+<details class="node-card" id="fragment-4f9370964719b217" data-search="repo:cocivium/cotrustedwindow cotrustedwindow repository">
+<summary>CoTrustedWindow <small>(repository)</small></summary>
+<p>REGISTERED_PRIVATE_REPO</p><p><small>Work fragment: </small><code>repo:CoCivium/CoTrustedWindow</code></p>
+<div class="links"><a href="https://github.com/CoCivium/CoCivium/blob/main/ai/repo-role-map.json">Inspect source evidence</a>
+<a href="#fragment-4f9370964719b217">Permalink to this fragment</a></div>
+<p class="muted">No typed outgoing edges in this source snapshot.</p>
+</details>
+<details class="node-card" id="fragment-8761d778ee5e7c30" data-search="repo:cocivium/colegalvault colegalvault repository">
+<summary>CoLegalVault <small>(repository)</small></summary>
+<p>REGISTERED_PRIVATE_REPO</p><p><small>Work fragment: </small><code>repo:CoCivium/CoLegalVault</code></p>
+<div class="links"><a href="https://github.com/CoCivium/CoCivium/blob/main/ai/repo-role-map.json">Inspect source evidence</a>
+<a href="#fragment-8761d778ee5e7c30">Permalink to this fragment</a></div>
+<p class="muted">No typed outgoing edges in this source snapshot.</p>
+</details>
+<details class="node-card" id="fragment-f3a1fbf2277dc36c" data-search="repo:cocivium/cocrownjewelvault cocrownjewelvault repository">
+<summary>CoCrownJewelVault <small>(repository)</small></summary>
+<p>REGISTERED_PRIVATE_REPO</p><p><small>Work fragment: </small><code>repo:CoCivium/CoCrownJewelVault</code></p>
+<div class="links"><a href="https://github.com/CoCivium/CoCivium/blob/main/ai/repo-role-map.json">Inspect source evidence</a>
+<a href="#fragment-f3a1fbf2277dc36c">Permalink to this fragment</a></div>
+<p class="muted">No typed outgoing edges in this source snapshot.</p>
+</details>
+<details class="node-card" id="fragment-6033380850cfda2c" data-search="repo:cocivium/.github .github repository">
+<summary>.github <small>(repository)</small></summary>
+<p>REGISTERED_PRIVATE_REPO</p><p><small>Work fragment: </small><code>repo:CoCivium/.github</code></p>
+<div class="links"><a href="https://github.com/CoCivium/CoCivium/blob/main/ai/repo-role-map.json">Inspect source evidence</a>
+<a href="#fragment-6033380850cfda2c">Permalink to this fragment</a></div>
+<p class="muted">No typed outgoing edges in this source snapshot.</p>
+</details>
+<details class="node-card" id="fragment-432edfb913d97d15" data-search="repo:cocivium/copolitic-site copolitic-site repository">
+<summary>CoPolitic-site <small>(repository)</small></summary>
+<p>REGISTERED_PUBLIC_REPO</p><p><small>Work fragment: </small><code>repo:CoCivium/CoPolitic-site</code></p>
+<div class="links"><a href="https://github.com/CoCivium/CoCivium/blob/main/ai/repo-role-map.json">Inspect source evidence</a>
+<a href="#fragment-432edfb913d97d15">Permalink to this fragment</a></div>
+<p class="muted">No typed outgoing edges in this source snapshot.</p>
+</details>
+</details>
+<details class="group" id="group-highlight"><summary>Highlighted frontiers (10)</summary><p class="muted">Source-backed, independently navigable fragments.</p>
+<details class="node-card" id="fragment-427f523037b01f3a" data-search="highlight:cognocartaconsenti cognocarta consenti / constitutional consent lineage highlight">
+<summary>Cognocarta Consenti / constitutional consent lineage <small>(highlight)</small></summary>
+<p>REQUIRES_CURRENT_PUBLIC_BINDING</p><p><small>Work fragment: </small><code>highlight:CognocartaConsenti</code></p>
+<div class="links"><a href="https://github.com/CoCivium/CoCivium/blob/main/ai/highlight-assets.json">Inspect source evidence</a>
+<a href="#fragment-427f523037b01f3a">Permalink to this fragment</a></div>
+<p class="muted">No typed outgoing edges in this source snapshot.</p>
+</details>
+<details class="node-card" id="fragment-ba240888f9ade7cb" data-search="highlight:cotheoryall cotheoryall+ highlight">
+<summary>CoTheoryAll+ <small>(highlight)</small></summary>
+<p>HYPOTHESIS_FRAMEWORK_NOT_ESTABLISHED_SCIENCE</p><p><small>Work fragment: </small><code>highlight:CoTheoryAll</code></p>
+<div class="links"><a href="https://github.com/CoCivium/CoCivium/blob/main/ai/highlight-assets.json">Inspect source evidence</a>
+<a href="#fragment-ba240888f9ade7cb">Permalink to this fragment</a></div>
+<p class="muted">No typed outgoing edges in this source snapshot.</p>
+</details>
+<details class="node-card" id="fragment-4a7862b1314b20bb" data-search="highlight:cocivia cocivia disclosed composite front highlight">
+<summary>CoCivia disclosed composite front <small>(highlight)</small></summary>
+<p>PUBLIC_IDENTITY_RECORD_LANDED</p><p><small>Work fragment: </small><code>highlight:CoCivia</code></p>
+<div class="links"><a href="https://github.com/CoCivium/CoCivium/blob/main/ai/highlight-assets.json">Inspect source evidence</a>
+<a href="#fragment-4a7862b1314b20bb">Permalink to this fragment</a></div>
+<p class="muted">No typed outgoing edges in this source snapshot.</p>
+</details>
+<details class="node-card" id="fragment-295b71c3932448b3" data-search="highlight:rickbar rickbar / codesktop+ highlight">
+<summary>RickBar / CoDesktop+ <small>(highlight)</small></summary>
+<p>VISIBLE_NATIVE_CANARY_PROVEN_PRODUCT_NOT_FINISHED</p><p><small>Work fragment: </small><code>highlight:RickBar</code></p>
+<div class="links"><a href="https://github.com/CoCivium/CoCivium/blob/main/ai/highlight-assets.json">Inspect source evidence</a>
+<a href="#fragment-295b71c3932448b3">Permalink to this fragment</a></div>
+<p class="muted">No typed outgoing edges in this source snapshot.</p>
+</details>
+<details class="node-card" id="fragment-be598b2278bafebf" data-search="highlight:covirtualsession covirtualsession+ / session morphology highlight">
+<summary>CoVirtualSession+ / session morphology <small>(highlight)</small></summary>
+<p>ARCHITECTURE_LANDED_RUNTIME_PARTIAL</p><p><small>Work fragment: </small><code>highlight:CoVirtualSession</code></p>
+<div class="links"><a href="https://github.com/CoCivium/CoCivium/blob/main/ai/highlight-assets.json">Inspect source evidence</a>
+<a href="#fragment-be598b2278bafebf">Permalink to this fragment</a></div>
+<p class="muted">No typed outgoing edges in this source snapshot.</p>
+</details>
+<details class="node-card" id="fragment-766a3d8c77055c2f" data-search="highlight:conodemesh conodemesh+ / grail+ federation highlight">
+<summary>CoNodeMesh+ / GRAIL+ federation <small>(highlight)</small></summary>
+<p>ARCHITECTURE_CANDIDATE_PRIOR_GRAIL_RECOVERY_REQUIRED</p><p><small>Work fragment: </small><code>highlight:CoNodeMesh</code></p>
+<div class="links"><a href="https://github.com/CoCivium/CoCivium/blob/main/ai/highlight-assets.json">Inspect source evidence</a>
+<a href="#fragment-766a3d8c77055c2f">Permalink to this fragment</a></div>
+<p class="muted">No typed outgoing edges in this source snapshot.</p>
+</details>
+<details class="node-card" id="fragment-fb389285633d235e" data-search="highlight:coprimath coprimath+ highlight">
+<summary>CoPriMath+ <small>(highlight)</small></summary>
+<p>FORMAL_PROJECTION_FAMILY</p><p><small>Work fragment: </small><code>highlight:CoPriMath</code></p>
+<div class="links"><a href="https://github.com/CoCivium/CoCivium/blob/main/ai/highlight-assets.json">Inspect source evidence</a>
+<a href="#fragment-fb389285633d235e">Permalink to this fragment</a></div>
+<p class="muted">No typed outgoing edges in this source snapshot.</p>
+</details>
+<details class="node-card" id="fragment-8b4478bdbe1e1328" data-search="highlight:cogibbertru cogibbertru+ highlight">
+<summary>CoGibberTru+ <small>(highlight)</small></summary>
+<p>COMPRESSED_REVERSIBLE_REPRESENTATION_FAMILY</p><p><small>Work fragment: </small><code>highlight:CoGibberTru</code></p>
+<div class="links"><a href="https://github.com/CoCivium/CoCivium/blob/main/ai/highlight-assets.json">Inspect source evidence</a>
+<a href="#fragment-8b4478bdbe1e1328">Permalink to this fragment</a></div>
+<p class="muted">No typed outgoing edges in this source snapshot.</p>
+</details>
+<details class="node-card" id="fragment-f124b72fa11a18cb" data-search="highlight:cosalute the cocivium salute highlight">
+<summary>The CoCivium Salute <small>(highlight)</small></summary>
+<p>PUBLIC_POETIC_PROJECTION</p><p><small>Work fragment: </small><code>highlight:CoSalute</code></p>
+<div class="links"><a href="https://github.com/CoCivium/CoCivium/blob/main/ai/highlight-assets.json">Inspect source evidence</a>
+<a href="#fragment-f124b72fa11a18cb">Permalink to this fragment</a></div>
+<p class="muted">No typed outgoing edges in this source snapshot.</p>
+</details>
+<details class="node-card" id="fragment-54449bae65c718c4" data-search="highlight:coallpulsefield coallpulsefield+ / cotime+ currentness highlight">
+<summary>CoAllPulseField+ / CoTime+ currentness <small>(highlight)</small></summary>
+<p>ARCHITECTURE_CANDIDATE_NO_GLOBAL_LIVE_BUS_CLAIM</p><p><small>Work fragment: </small><code>highlight:CoAllPulseField</code></p>
+<div class="links"><a href="https://github.com/CoCivium/CoCivium/blob/main/ai/highlight-assets.json">Inspect source evidence</a>
+<a href="#fragment-54449bae65c718c4">Permalink to this fragment</a></div>
+<p class="muted">No typed outgoing edges in this source snapshot.</p>
+</details>
+</details>
+<details class="group" id="group-source_document"><summary>Source documents (3)</summary><p class="muted">Source-backed, independently navigable fragments.</p>
+<details class="node-card" id="fragment-bc08887b22397644" data-search="doc:docs/evolution/coall_github_evolution_fabric_r0.md evolution fabric source_document">
+<summary>Evolution Fabric <small>(source_document)</small></summary>
+<p>PUBLIC_ARCHITECTURE_SOURCE</p><p><small>Work fragment: </small><code>doc:docs/Evolution/COALL_GITHUB_EVOLUTION_FABRIC_R0.md</code></p>
+<div class="links"><a href="https://github.com/CoCivium/CoCivium/blob/main/docs/Evolution/COALL_GITHUB_EVOLUTION_FABRIC_R0.md">Inspect source evidence</a>
+<a href="#fragment-bc08887b22397644">Permalink to this fragment</a></div>
+<p class="muted">No typed outgoing edges in this source snapshot.</p>
+</details>
+<details class="node-card" id="fragment-db7aec7d6da5ffa8" data-search="doc:docs/architecture/civ2_federated_cell_hosting_r0.md civ2+ cell hosting source_document">
+<summary>Civ2+ Cell Hosting <small>(source_document)</small></summary>
+<p>PUBLIC_ARCHITECTURE_SOURCE</p><p><small>Work fragment: </small><code>doc:docs/Architecture/CIV2_FEDERATED_CELL_HOSTING_R0.md</code></p>
+<div class="links"><a href="https://github.com/CoCivium/CoCivium/blob/main/docs/Evolution/COALL_GITHUB_EVOLUTION_FABRIC_R0.md">Inspect source evidence</a>
+<a href="#fragment-db7aec7d6da5ffa8">Permalink to this fragment</a></div>
+<p class="muted">No typed outgoing edges in this source snapshot.</p>
+</details>
+<details class="node-card" id="fragment-0b9edf02270aed21" data-search="doc:schemas/coevo-delta-v0.1.schema.json coevodelta schema source_document">
+<summary>CoEvoDelta Schema <small>(source_document)</small></summary>
+<p>PUBLIC_ARCHITECTURE_SOURCE</p><p><small>Work fragment: </small><code>doc:schemas/coevo-delta-v0.1.schema.json</code></p>
+<div class="links"><a href="https://github.com/CoCivium/CoCivium/blob/main/docs/Evolution/COALL_GITHUB_EVOLUTION_FABRIC_R0.md">Inspect source evidence</a>
+<a href="#fragment-0b9edf02270aed21">Permalink to this fragment</a></div>
+<p class="muted">No typed outgoing edges in this source snapshot.</p>
+</details>
+</details>
+</section>
+<section id="inspiration"><div class="eyebrow">04 / Inspiration, not invention</div>
+<h2>Previously published media can seed new paths.</h2>
+<p>These five prior media items are pinned public-source pointers. Their possible CoSeed and CoPath contributions are proposals, not semantic acceptance or permission to reproduce media.</p><div class="cards">
+<article class="card" id="fragment-1429901ff57566eb"><h3>CoMap offline source weave</h3>
+<p>UNREVIEWED / public metadata only</p><p><code>4887dbb294ae0c1eda3dffe475d9b1274bdf559c</code></p>
+<div class="links"><a href="https://github.com/CoCivium/CoCivium/blob/main/examples/comap/source-weave-r0.html">Open pinned-source path</a><a href="#fragment-1429901ff57566eb">Fragment link</a></div>
+<p class="muted">Candidate relation: INSPIRATION_CANDIDATE_FOR. Rights, receiver uptake and correctness still require review.</p></article>
+<article class="card" id="fragment-b3eba2ec7a1fb222"><h3>Relational media diagram</h3>
+<p>UNREVIEWED / public metadata only</p><p><code>476e5eeb6e24e1fae562552ac07dd234748ab8ce</code></p>
+<div class="links"><a href="https://github.com/CoCivium/CoCivium/blob/main/examples/colensmedia/relational_media_diagram_r0.md">Open pinned-source path</a><a href="#fragment-b3eba2ec7a1fb222">Fragment link</a></div>
+<p class="muted">Candidate relation: INSPIRATION_CANDIDATE_FOR. Rights, receiver uptake and correctness still require review.</p></article>
+<article class="card" id="fragment-6e8f4a922579d109"><h3>Visual prior bridge</h3>
+<p>UNREVIEWED / public metadata only</p><p><code>aed071ba013e54320ce3e5b28c4c130a0317ba48</code></p>
+<div class="links"><a href="https://github.com/CoCivium/CoCivium/blob/main/examples/colensmedia/visual_prior_bridge.html">Open pinned-source path</a><a href="#fragment-6e8f4a922579d109">Fragment link</a></div>
+<p class="muted">Candidate relation: INSPIRATION_CANDIDATE_FOR. Rights, receiver uptake and correctness still require review.</p></article>
+<article class="card" id="fragment-21f7620902fd8fb6"><h3>Public visual finder</h3>
+<p>UNREVIEWED / public metadata only</p><p><code>2360b7ceea035599a7604e5c54d28b1765952e0d</code></p>
+<div class="links"><a href="https://github.com/CoCivium/CoCivium/blob/main/examples/covisual_finder_r1/index.html">Open pinned-source path</a><a href="#fragment-21f7620902fd8fb6">Fragment link</a></div>
+<p class="muted">Candidate relation: INSPIRATION_CANDIDATE_FOR. Rights, receiver uptake and correctness still require review.</p></article>
+<article class="card" id="fragment-4c72514a7d262ec3"><h3>Context rail prototype</h3>
+<p>UNREVIEWED / public metadata only</p><p><code>e50b11a2825d9548248746c4f7937049ea97caa8</code></p>
+<div class="links"><a href="https://github.com/CoCivium/CoCivium/blob/main/examples/conodcothumb/context_rail_r1/index.html">Open pinned-source path</a><a href="#fragment-4c72514a7d262ec3">Fragment link</a></div>
+<p class="muted">Candidate relation: INSPIRATION_CANDIDATE_FOR. Rights, receiver uptake and correctness still require review.</p></article>
+</div><p class="status"><strong>Retroactive coverage is bounded.</strong> Unclassified assets are discoverable candidates, not vanished assets and not approved inspiration. Other repositories, old chats, CoFarm and CoStead were not scanned for this release.</p></section>
+<section id="time"><div class="eyebrow">05 / CoTime and provenance</div><h2>Versions do not overwrite their ancestors.</h2>
+<div class="twocol"><div class="card"><h3>This source edition</h3><p>Edition identity is derived from exact public-source file hashes and the renderer version, not the clock or the currently open browser tab.</p>
+<p class="mono">r0-7728f868b9d22054</p></div><div class="card"><h3>Future successor</h3>
+<p>A changed source requires a new edition and a comparison receipt. Newer need not mean better, and old anchors should remain recoverable.</p></div></div>
+<p>Forecast, correction, dissent, snapshot and measured effect are different relations. A rendered visual cannot certify its own causal explanation.</p></section>
+<section id="resilience"><div class="eyebrow">06 / CoConstellation</div><h2>Replicas are measured, not assumed.</h2>
+<p>Portable content is the starting point. Availability requires independent hosts and readbacks; a backup requires an actual restore test.</p>
+<table><thead><tr><th scope="col">Surface</th><th scope="col">What this edition proves</th></tr></thead><tbody>
+<tr><td>Git source + history</td><td>Public source after merge; GitHub CI can hash this exact file</td></tr>
+<tr><td>Independent website mirror</td><td>NOT DEPLOYED / no independently fetched digest</td></tr>
+<tr><td>Offline copy</td><td>Static page is portable; CI copy-and-hash test is not independent-host recovery</td></tr>
+<tr><td>Headless reader</td><td>Versioned JSON release manifest and stable fragment IDs</td></tr>
+<tr><td>Live X2 / CoOrb</td><td>NOT VERIFIED / source publication is not installation</td></tr>
+</tbody></table><p><strong>Failure rule:</strong> stale, missing, corrupted or differently versioned copies must display DEGRADED or HOLD, never a fabricated all-green sync.</p>
+<div class="links"><a href="release-manifest.json">Machine-readable release manifest</a>
+<a href="https://github.com/CoCivium/CoCivium/blob/main/docs/Evolution/COPUBLIC_CONSTELLATION_MEGASCROLLER_R0.json">Constellation design contract</a></div></section>
+<section id="sources"><div class="eyebrow">07 / Provenance</div><h2>Check the source, not the wallpaper.</h2>
+<ul class="list">
+<li><a href="https://github.com/CoCivium/CoCivium/blob/main/ai/comap-source-projection-r0.json">ai/comap-source-projection-r0.json</a></li>
+<li><a href="https://github.com/CoCivium/CoCivium/blob/main/examples/comap/prior-media-backfill-overlay-r0.json">examples/comap/prior-media-backfill-overlay-r0.json</a></li>
+<li><a href="https://github.com/CoCivium/CoCivium/blob/main/docs/Evolution/COPUBLIC_CONSTELLATION_MEGASCROLLER_R0.json">docs/Evolution/COPUBLIC_CONSTELLATION_MEGASCROLLER_R0.json</a></li>
+<li><a href="https://github.com/CoCivium/CoCivium/blob/main/examples/comap/diagram-of-diagrams-r0.md">examples/comap/diagram-of-diagrams-r0.md</a></li>
+</ul><p class="muted">No cookies, trackers, CDNs or network requests are needed to read this edition. Off-page source links are deliberately optional and require connectivity.</p>
+<p class="status">Nonclaims: SOURCE ≠ RUNTIME · PUBLIC GIT ≠ MIRROR ACK · FRAGMENT ≠ COMPLETE HOLOGRAM · SAME-PROVIDER COPY ≠ INDEPENDENT FAILURE DOMAIN · HASH ≠ SEMANTIC TRUTH · NO INFERRED PUBLICATION RIGHTS.</p></section>
+<footer>CoCivium / CoAll / CoMap+ / CoNav+ · Public source-only R0 · 
+One WorkID may have many reader views. None of these views has authority to send email, control a device, or certify itself.</footer></main></div>
+<script>
+(function(){var q=document.getElementById("lookup");if(!q)return;
+q.addEventListener("input",function(){var s=q.value.trim().toLowerCase();
+document.querySelectorAll(".node-card").forEach(function(el){el.hidden=!!s&&!el.getAttribute("data-search").includes(s)});
+if(s)document.querySelectorAll(".group").forEach(function(el){el.open=true});
+});
+if(location.hash&&location.hash.startsWith("#fragment-")){var el=document.getElementById(location.hash.slice(1));if(el){var p=el.parentElement;while(p){if(p.tagName==="DETAILS")p.open=true;p=p.parentElement;}}}
+})();
+</script></body></html>

@@ -1,0 +1,1196 @@
+{
+  "schema": "CoPublic.ConstellationRelease.R0",
+  "publication_id": "CoMapCoNav.PublicAtlas",
+  "release_id": "r0-7728f868b9d22054",
+  "renderer_version": "CoPublic.Megascroller.Renderer.R0",
+  "created_at_utc": null,
+  "source_commit": null,
+  "status": "STATIC_SOURCE_ARTIFACT_ONLY_NOT_MIRRORED",
+  "source_digests_sha256": {
+    "ai/comap-source-projection-r0.json": "31043d240eafc5ad6ffd6f653d0a77c440b078c446bf0482590891ba501842ae",
+    "examples/comap/prior-media-backfill-overlay-r0.json": "c7c020215083c7032a02829a8ad038de583e226047c8f6f5ff2b2a610da250fb",
+    "docs/Evolution/COPUBLIC_CONSTELLATION_MEGASCROLLER_R0.json": "d19a6cc9ea1956426dc57ce6ab2fc94ba1a395e92622f4b5a41219ab0b963c11"
+  },
+  "root_digest_sha256": "0d92f78d6e34de469a4495e8411d7000a5d0738a4e0600302cca54759eb1e130",
+  "artifact_digests_sha256": {
+    "index.html": "8aa12bc2efc9626d21d566868f95de44f9aca3a6caa14bf23af198ad4b32fb61"
+  },
+  "fragment_count": 61,
+  "fragments": [
+    {
+      "stable_id": "fragment-8e4e1d2cd1c5ee2b",
+      "publication_id": "CoMapCoNav.PublicAtlas",
+      "release_id": "r0-7728f868b9d22054",
+      "node_id": "view:CoMap+",
+      "media_type": "text/html",
+      "content_sha256": "72f770cf254abec6b436ea62b2a259a21aed66aad55bae833a09e97e0a2e665f",
+      "source_refs": [
+        "https://github.com/CoCivium/CoCivium/issues/217"
+      ],
+      "relation_refs": [
+        "domain:CoUX+/CoSurface+",
+        "domain:CoAll+"
+      ],
+      "custody_scope": "PUBLIC_SOURCE_GRAPH",
+      "license": null,
+      "supersedes": null,
+      "fallback_uri": "https://github.com/CoCivium/CoCivium/issues/217",
+      "rights_review": "NOT_PERFORMED"
+    },
+    {
+      "stable_id": "fragment-e4856b417c42412c",
+      "publication_id": "CoMapCoNav.PublicAtlas",
+      "release_id": "r0-7728f868b9d22054",
+      "node_id": "domain:CoStrategy+",
+      "media_type": "text/html",
+      "content_sha256": "0836aade8980c6361634d8ae011be7ef1bd3d372f23f7f4d41f46f833afe439c",
+      "source_refs": [
+        "https://github.com/CoCivium/CoCivium/blob/main/ai/evolution-lanes.json"
+      ],
+      "relation_refs": [
+        "repo:CoCivium/MasterPlan",
+        "repo:CoCivium/CoCivium"
+      ],
+      "custody_scope": "PUBLIC_SOURCE_GRAPH",
+      "license": null,
+      "supersedes": null,
+      "fallback_uri": "https://github.com/CoCivium/CoCivium/blob/main/ai/evolution-lanes.json",
+      "rights_review": "NOT_PERFORMED"
+    },
+    {
+      "stable_id": "fragment-40217ac26a619c06",
+      "publication_id": "CoMapCoNav.PublicAtlas",
+      "release_id": "r0-7728f868b9d22054",
+      "node_id": "domain:CoInsight+",
+      "media_type": "text/html",
+      "content_sha256": "e5a76ee232beb1d6c79b5e16185b904a8ad925f001c01d3fed95cdb576d308b6",
+      "source_refs": [
+        "https://github.com/CoCivium/CoCivium/blob/main/ai/evolution-lanes.json"
+      ],
+      "relation_refs": [
+        "repo:CoCivium/CoInsights",
+        "repo:CoCivium/CoCivium"
+      ],
+      "custody_scope": "PUBLIC_SOURCE_GRAPH",
+      "license": null,
+      "supersedes": null,
+      "fallback_uri": "https://github.com/CoCivium/CoCivium/blob/main/ai/evolution-lanes.json",
+      "rights_review": "NOT_PERFORMED"
+    },
+    {
+      "stable_id": "fragment-3e6906a1372f6e77",
+      "publication_id": "CoMapCoNav.PublicAtlas",
+      "release_id": "r0-7728f868b9d22054",
+      "node_id": "domain:CoTheoryAll+",
+      "media_type": "text/html",
+      "content_sha256": "e37fd7396962841063ff5999c96e0b629e54523fa2433bca09c5c359854b9445",
+      "source_refs": [
+        "https://github.com/CoCivium/CoCivium/blob/main/ai/evolution-lanes.json"
+      ],
+      "relation_refs": [
+        "repo:CoCivium/CoCivium",
+        "repo:CoCivium/CoInsights",
+        "repo:CoCivium/CoSources"
+      ],
+      "custody_scope": "PUBLIC_SOURCE_GRAPH",
+      "license": null,
+      "supersedes": null,
+      "fallback_uri": "https://github.com/CoCivium/CoCivium/blob/main/ai/evolution-lanes.json",
+      "rights_review": "NOT_PERFORMED"
+    },
+    {
+      "stable_id": "fragment-dc0b76abbbdf74b1",
+      "publication_id": "CoMapCoNav.PublicAtlas",
+      "release_id": "r0-7728f868b9d22054",
+      "node_id": "domain:CoHighlight+",
+      "media_type": "text/html",
+      "content_sha256": "085b752410b2fc63784b65b75ae47068c5cd5930765dcbdaa3ce9405032457ae",
+      "source_refs": [
+        "https://github.com/CoCivium/CoCivium/blob/main/ai/evolution-lanes.json"
+      ],
+      "relation_refs": [
+        "repo:CoCivium/CoCivium",
+        "highlight:CognocartaConsenti",
+        "highlight:CoTheoryAll",
+        "highlight:CoCivia",
+        "highlight:RickBar",
+        "highlight:CoVirtualSession",
+        "highlight:CoNodeMesh",
+        "highlight:CoPriMath",
+        "highlight:CoGibberTru",
+        "highlight:CoSalute",
+        "highlight:CoAllPulseField"
+      ],
+      "custody_scope": "PUBLIC_SOURCE_GRAPH",
+      "license": null,
+      "supersedes": null,
+      "fallback_uri": "https://github.com/CoCivium/CoCivium/blob/main/ai/evolution-lanes.json",
+      "rights_review": "NOT_PERFORMED"
+    },
+    {
+      "stable_id": "fragment-b95267a608fad5f2",
+      "publication_id": "CoMapCoNav.PublicAtlas",
+      "release_id": "r0-7728f868b9d22054",
+      "node_id": "domain:CoIndex+",
+      "media_type": "text/html",
+      "content_sha256": "5873f5ddbd6ac0c4f35b8f69b3125aabf301625a223b73ba28ae3e96689cfea2",
+      "source_refs": [
+        "https://github.com/CoCivium/CoCivium/blob/main/ai/evolution-lanes.json"
+      ],
+      "relation_refs": [
+        "repo:CoCivium/GIBindex",
+        "repo:CoCivium/CoCivium",
+        "repo:CoCivium/CoShareHub"
+      ],
+      "custody_scope": "PUBLIC_SOURCE_GRAPH",
+      "license": null,
+      "supersedes": null,
+      "fallback_uri": "https://github.com/CoCivium/CoCivium/blob/main/ai/evolution-lanes.json",
+      "rights_review": "NOT_PERFORMED"
+    },
+    {
+      "stable_id": "fragment-aa22014578d711a1",
+      "publication_id": "CoMapCoNav.PublicAtlas",
+      "release_id": "r0-7728f868b9d22054",
+      "node_id": "domain:CoLex+",
+      "media_type": "text/html",
+      "content_sha256": "cd04b7849c8674b3eb073b8447160afc01f5f4f7a46d1f49a476debd493db8a3",
+      "source_refs": [
+        "https://github.com/CoCivium/CoCivium/blob/main/ai/evolution-lanes.json"
+      ],
+      "relation_refs": [
+        "repo:CoCivium/GIBindex",
+        "repo:CoCivium/CoCivium"
+      ],
+      "custody_scope": "PUBLIC_SOURCE_GRAPH",
+      "license": null,
+      "supersedes": null,
+      "fallback_uri": "https://github.com/CoCivium/CoCivium/blob/main/ai/evolution-lanes.json",
+      "rights_review": "NOT_PERFORMED"
+    },
+    {
+      "stable_id": "fragment-e174c1b472ca7bd9",
+      "publication_id": "CoMapCoNav.PublicAtlas",
+      "release_id": "r0-7728f868b9d22054",
+      "node_id": "domain:CoAll+",
+      "media_type": "text/html",
+      "content_sha256": "fc83040d84ccc31f92c9fbaaa7dbc94423bce0b1a85008cfdcb87af5b9d637b3",
+      "source_refs": [
+        "https://github.com/CoCivium/CoCivium/blob/main/ai/evolution-lanes.json"
+      ],
+      "relation_refs": [
+        "repo:CoCivium/CoCivium",
+        "repo:CoCivium/CoSteward"
+      ],
+      "custody_scope": "PUBLIC_SOURCE_GRAPH",
+      "license": null,
+      "supersedes": null,
+      "fallback_uri": "https://github.com/CoCivium/CoCivium/blob/main/ai/evolution-lanes.json",
+      "rights_review": "NOT_PERFORMED"
+    },
+    {
+      "stable_id": "fragment-9c1f244bb2c19ec0",
+      "publication_id": "CoMapCoNav.PublicAtlas",
+      "release_id": "r0-7728f868b9d22054",
+      "node_id": "domain:CoOps+",
+      "media_type": "text/html",
+      "content_sha256": "e34a4f253e035aab5dac9546b746c239bec87e643fed2cd8e0f8a715d6e074d2",
+      "source_refs": [
+        "https://github.com/CoCivium/CoCivium/blob/main/ai/evolution-lanes.json"
+      ],
+      "relation_refs": [
+        "repo:CoCivium/CoSteward",
+        "repo:CoCivium/CoToolbelt",
+        "repo:CoCivium/CoStacks"
+      ],
+      "custody_scope": "PUBLIC_SOURCE_GRAPH",
+      "license": null,
+      "supersedes": null,
+      "fallback_uri": "https://github.com/CoCivium/CoCivium/blob/main/ai/evolution-lanes.json",
+      "rights_review": "NOT_PERFORMED"
+    },
+    {
+      "stable_id": "fragment-9c18e8b00b69dc42",
+      "publication_id": "CoMapCoNav.PublicAtlas",
+      "release_id": "r0-7728f868b9d22054",
+      "node_id": "domain:CoMythOps+",
+      "media_type": "text/html",
+      "content_sha256": "ac74a8b5bda32963cebed78c262f9a82eecae893b77ceb06a2e45709f722ec9c",
+      "source_refs": [
+        "https://github.com/CoCivium/CoCivium/blob/main/ai/evolution-lanes.json"
+      ],
+      "relation_refs": [
+        "repo:CoCivium/CoCivium",
+        "repo:CoCivium/CoInsights"
+      ],
+      "custody_scope": "PUBLIC_SOURCE_GRAPH",
+      "license": null,
+      "supersedes": null,
+      "fallback_uri": "https://github.com/CoCivium/CoCivium/blob/main/ai/evolution-lanes.json",
+      "rights_review": "NOT_PERFORMED"
+    },
+    {
+      "stable_id": "fragment-376352bc2ffad0cd",
+      "publication_id": "CoMapCoNav.PublicAtlas",
+      "release_id": "r0-7728f868b9d22054",
+      "node_id": "domain:CoPriMath+",
+      "media_type": "text/html",
+      "content_sha256": "1ea29b759887b04e4be09a39a091105d7c56e9622fdc97a55e314c0f06edc087",
+      "source_refs": [
+        "https://github.com/CoCivium/CoCivium/blob/main/ai/evolution-lanes.json"
+      ],
+      "relation_refs": [
+        "repo:CoCivium/CoCivium",
+        "repo:CoCivium/CoInsights"
+      ],
+      "custody_scope": "PUBLIC_SOURCE_GRAPH",
+      "license": null,
+      "supersedes": null,
+      "fallback_uri": "https://github.com/CoCivium/CoCivium/blob/main/ai/evolution-lanes.json",
+      "rights_review": "NOT_PERFORMED"
+    },
+    {
+      "stable_id": "fragment-48674a5e68d74fc1",
+      "publication_id": "CoMapCoNav.PublicAtlas",
+      "release_id": "r0-7728f868b9d22054",
+      "node_id": "domain:CoGibberTru+",
+      "media_type": "text/html",
+      "content_sha256": "db14e9161b15c52236f689ca23bb69c5494465c42b8d5e0da12a160ab22ddc17",
+      "source_refs": [
+        "https://github.com/CoCivium/CoCivium/blob/main/ai/evolution-lanes.json"
+      ],
+      "relation_refs": [
+        "repo:CoCivium/CoCivium",
+        "repo:CoCivium/GIBindex"
+      ],
+      "custody_scope": "PUBLIC_SOURCE_GRAPH",
+      "license": null,
+      "supersedes": null,
+      "fallback_uri": "https://github.com/CoCivium/CoCivium/blob/main/ai/evolution-lanes.json",
+      "rights_review": "NOT_PERFORMED"
+    },
+    {
+      "stable_id": "fragment-1a104c503a4d6686",
+      "publication_id": "CoMapCoNav.PublicAtlas",
+      "release_id": "r0-7728f868b9d22054",
+      "node_id": "domain:RickBar+/CoDesktop+",
+      "media_type": "text/html",
+      "content_sha256": "125c0de69dc041aa230736f4110e52404d4d78e760f90ef1a5eb4dd30dcadebc",
+      "source_refs": [
+        "https://github.com/CoCivium/CoCivium/blob/main/ai/evolution-lanes.json"
+      ],
+      "relation_refs": [
+        "repo:CoCivium/CoCivium",
+        "repo:CoCivium/CoAura",
+        "repo:CoCivium/CoToolbelt"
+      ],
+      "custody_scope": "PUBLIC_SOURCE_GRAPH",
+      "license": null,
+      "supersedes": null,
+      "fallback_uri": "https://github.com/CoCivium/CoCivium/blob/main/ai/evolution-lanes.json",
+      "rights_review": "NOT_PERFORMED"
+    },
+    {
+      "stable_id": "fragment-09987b7112cc9bb1",
+      "publication_id": "CoMapCoNav.PublicAtlas",
+      "release_id": "r0-7728f868b9d22054",
+      "node_id": "domain:CoUX+/CoSurface+",
+      "media_type": "text/html",
+      "content_sha256": "354a441cb314889941d94a3635ca558d1cca4c7d45c90901195ecaab21b4e481",
+      "source_refs": [
+        "https://github.com/CoCivium/CoCivium/blob/main/ai/evolution-lanes.json"
+      ],
+      "relation_refs": [
+        "repo:CoCivium/CoAura",
+        "repo:CoCivium/CoCivium"
+      ],
+      "custody_scope": "PUBLIC_SOURCE_GRAPH",
+      "license": null,
+      "supersedes": null,
+      "fallback_uri": "https://github.com/CoCivium/CoCivium/blob/main/ai/evolution-lanes.json",
+      "rights_review": "NOT_PERFORMED"
+    },
+    {
+      "stable_id": "fragment-31f86dd30a2c91c5",
+      "publication_id": "CoMapCoNav.PublicAtlas",
+      "release_id": "r0-7728f868b9d22054",
+      "node_id": "domain:CoHumour+",
+      "media_type": "text/html",
+      "content_sha256": "54a940e9c1321aff6fa3dd0f60f2b0b23911724411824e5b85ddc18de35fdee6",
+      "source_refs": [
+        "https://github.com/CoCivium/CoCivium/blob/main/ai/evolution-lanes.json"
+      ],
+      "relation_refs": [
+        "repo:CoCivium/CoCivium",
+        "repo:CoCivium/CoInsights"
+      ],
+      "custody_scope": "PUBLIC_SOURCE_GRAPH",
+      "license": null,
+      "supersedes": null,
+      "fallback_uri": "https://github.com/CoCivium/CoCivium/blob/main/ai/evolution-lanes.json",
+      "rights_review": "NOT_PERFORMED"
+    },
+    {
+      "stable_id": "fragment-5b6c9d2fc8ea547b",
+      "publication_id": "CoMapCoNav.PublicAtlas",
+      "release_id": "r0-7728f868b9d22054",
+      "node_id": "domain:CoAutoEvo+/CoEvo+",
+      "media_type": "text/html",
+      "content_sha256": "f3284c7f6100880781272ec41868c95e3db01753b95571983def5d5f33b5232a",
+      "source_refs": [
+        "https://github.com/CoCivium/CoCivium/blob/main/ai/evolution-lanes.json"
+      ],
+      "relation_refs": [
+        "repo:CoCivium/CoCivium",
+        "repo:CoCivium/CoStacks",
+        "repo:CoCivium/CoSteward",
+        "doc:docs/Evolution/COALL_GITHUB_EVOLUTION_FABRIC_R0.md",
+        "doc:schemas/coevo-delta-v0.1.schema.json"
+      ],
+      "custody_scope": "PUBLIC_SOURCE_GRAPH",
+      "license": null,
+      "supersedes": null,
+      "fallback_uri": "https://github.com/CoCivium/CoCivium/blob/main/ai/evolution-lanes.json",
+      "rights_review": "NOT_PERFORMED"
+    },
+    {
+      "stable_id": "fragment-2284ff5b0180b0c3",
+      "publication_id": "CoMapCoNav.PublicAtlas",
+      "release_id": "r0-7728f868b9d22054",
+      "node_id": "domain:CoSession+",
+      "media_type": "text/html",
+      "content_sha256": "f4bc1741d98a64aa9f2b6a86ff603b48c3a7138b2b752ecb5e0a3a62a89af94e",
+      "source_refs": [
+        "https://github.com/CoCivium/CoCivium/blob/main/ai/evolution-lanes.json"
+      ],
+      "relation_refs": [
+        "repo:CoCivium/CoCivium"
+      ],
+      "custody_scope": "PUBLIC_SOURCE_GRAPH",
+      "license": null,
+      "supersedes": null,
+      "fallback_uri": "https://github.com/CoCivium/CoCivium/blob/main/ai/evolution-lanes.json",
+      "rights_review": "NOT_PERFORMED"
+    },
+    {
+      "stable_id": "fragment-f994c6c8c6b0ef1b",
+      "publication_id": "CoMapCoNav.PublicAtlas",
+      "release_id": "r0-7728f868b9d22054",
+      "node_id": "domain:CoNodeMesh+/GRAIL+",
+      "media_type": "text/html",
+      "content_sha256": "09f8fea8d5e8d45c1baa45f5746cee2dabb9140b63e50199874313dc22754495",
+      "source_refs": [
+        "https://github.com/CoCivium/CoCivium/blob/main/ai/evolution-lanes.json"
+      ],
+      "relation_refs": [
+        "repo:CoCivium/CoCivium",
+        "repo:CoCivium/CoShareHub",
+        "repo:CoCivium/CoSteward",
+        "doc:docs/Architecture/CIV2_FEDERATED_CELL_HOSTING_R0.md"
+      ],
+      "custody_scope": "PUBLIC_SOURCE_GRAPH",
+      "license": null,
+      "supersedes": null,
+      "fallback_uri": "https://github.com/CoCivium/CoCivium/blob/main/ai/evolution-lanes.json",
+      "rights_review": "NOT_PERFORMED"
+    },
+    {
+      "stable_id": "fragment-4d1309f6d5dacf0e",
+      "publication_id": "CoMapCoNav.PublicAtlas",
+      "release_id": "r0-7728f868b9d22054",
+      "node_id": "domain:CoSource+/Provenance",
+      "media_type": "text/html",
+      "content_sha256": "d00141326dc93782b6bb4cbcd301e8449aeee0ceb7e1e255b72e3bd0e50f6c92",
+      "source_refs": [
+        "https://github.com/CoCivium/CoCivium/blob/main/ai/evolution-lanes.json"
+      ],
+      "relation_refs": [
+        "repo:CoCivium/CoSources",
+        "repo:CoCivium/CoCivium"
+      ],
+      "custody_scope": "PUBLIC_SOURCE_GRAPH",
+      "license": null,
+      "supersedes": null,
+      "fallback_uri": "https://github.com/CoCivium/CoCivium/blob/main/ai/evolution-lanes.json",
+      "rights_review": "NOT_PERFORMED"
+    },
+    {
+      "stable_id": "fragment-599ef6cc375d284b",
+      "publication_id": "CoMapCoNav.PublicAtlas",
+      "release_id": "r0-7728f868b9d22054",
+      "node_id": "domain:CoFuture+",
+      "media_type": "text/html",
+      "content_sha256": "ed3f7d1f9ed0eb3f29a6c968bdefb8fff18778e74ecd4f2ae5e63c6492c6abd4",
+      "source_refs": [
+        "https://github.com/CoCivium/CoCivium/blob/main/ai/evolution-lanes.json"
+      ],
+      "relation_refs": [
+        "repo:CoCivium/CoFutures",
+        "repo:CoCivium/CoCivium"
+      ],
+      "custody_scope": "PUBLIC_SOURCE_GRAPH",
+      "license": null,
+      "supersedes": null,
+      "fallback_uri": "https://github.com/CoCivium/CoCivium/blob/main/ai/evolution-lanes.json",
+      "rights_review": "NOT_PERFORMED"
+    },
+    {
+      "stable_id": "fragment-4cc1c25c265f948e",
+      "publication_id": "CoMapCoNav.PublicAtlas",
+      "release_id": "r0-7728f868b9d22054",
+      "node_id": "domain:CoEducation+",
+      "media_type": "text/html",
+      "content_sha256": "2b171d8d028df1ca7896b32bc1e8d0c8939b8f519d1c857c386c02740456ac97",
+      "source_refs": [
+        "https://github.com/CoCivium/CoCivium/blob/main/ai/evolution-lanes.json"
+      ],
+      "relation_refs": [
+        "repo:CoCivium/CoAcademy",
+        "repo:CoCivium/CoCivium"
+      ],
+      "custody_scope": "PUBLIC_SOURCE_GRAPH",
+      "license": null,
+      "supersedes": null,
+      "fallback_uri": "https://github.com/CoCivium/CoCivium/blob/main/ai/evolution-lanes.json",
+      "rights_review": "NOT_PERFORMED"
+    },
+    {
+      "stable_id": "fragment-04edf24e56372826",
+      "publication_id": "CoMapCoNav.PublicAtlas",
+      "release_id": "r0-7728f868b9d22054",
+      "node_id": "domain:CoRails+",
+      "media_type": "text/html",
+      "content_sha256": "5e1139723529ac64371d83c73886ec9baf24ce53f1a74a8f48f5aaff0a19cf32",
+      "source_refs": [
+        "https://github.com/CoCivium/CoCivium/blob/main/ai/evolution-lanes.json"
+      ],
+      "relation_refs": [
+        "repo:CoCivium/CoRails",
+        "repo:CoCivium/CoCivium"
+      ],
+      "custody_scope": "PUBLIC_SOURCE_GRAPH",
+      "license": null,
+      "supersedes": null,
+      "fallback_uri": "https://github.com/CoCivium/CoCivium/blob/main/ai/evolution-lanes.json",
+      "rights_review": "NOT_PERFORMED"
+    },
+    {
+      "stable_id": "fragment-af649d2c64a0e5f0",
+      "publication_id": "CoMapCoNav.PublicAtlas",
+      "release_id": "r0-7728f868b9d22054",
+      "node_id": "repo:CoCivium/CoCivium",
+      "media_type": "text/html",
+      "content_sha256": "fcbe50841c256e5c7cf64b9cd6b9113e6edd74b550db6c159f269579c17bbf4c",
+      "source_refs": [
+        "https://github.com/CoCivium/CoCivium/blob/main/ai/repo-role-map.json"
+      ],
+      "relation_refs": [],
+      "custody_scope": "PUBLIC_SOURCE_GRAPH",
+      "license": null,
+      "supersedes": null,
+      "fallback_uri": "https://github.com/CoCivium/CoCivium/blob/main/ai/repo-role-map.json",
+      "rights_review": "NOT_PERFORMED"
+    },
+    {
+      "stable_id": "fragment-8186695c079a1903",
+      "publication_id": "CoMapCoNav.PublicAtlas",
+      "release_id": "r0-7728f868b9d22054",
+      "node_id": "repo:CoCivium/CoInsights",
+      "media_type": "text/html",
+      "content_sha256": "b8f5711ed475a2dcf7c82c6bf711ed6ed78260b11fe4e055db9b412a3639a5c1",
+      "source_refs": [
+        "https://github.com/CoCivium/CoCivium/blob/main/ai/repo-role-map.json"
+      ],
+      "relation_refs": [],
+      "custody_scope": "PUBLIC_SOURCE_GRAPH",
+      "license": null,
+      "supersedes": null,
+      "fallback_uri": "https://github.com/CoCivium/CoCivium/blob/main/ai/repo-role-map.json",
+      "rights_review": "NOT_PERFORMED"
+    },
+    {
+      "stable_id": "fragment-7eb3ecf5550b231e",
+      "publication_id": "CoMapCoNav.PublicAtlas",
+      "release_id": "r0-7728f868b9d22054",
+      "node_id": "repo:CoCivium/GIBindex",
+      "media_type": "text/html",
+      "content_sha256": "6cb548abdf7ad3977fca87274ea976eafdab7dcdeddf0474af933ab643ba83bc",
+      "source_refs": [
+        "https://github.com/CoCivium/CoCivium/blob/main/ai/repo-role-map.json"
+      ],
+      "relation_refs": [],
+      "custody_scope": "PUBLIC_SOURCE_GRAPH",
+      "license": null,
+      "supersedes": null,
+      "fallback_uri": "https://github.com/CoCivium/CoCivium/blob/main/ai/repo-role-map.json",
+      "rights_review": "NOT_PERFORMED"
+    },
+    {
+      "stable_id": "fragment-9bcc574b4cebb6bd",
+      "publication_id": "CoMapCoNav.PublicAtlas",
+      "release_id": "r0-7728f868b9d22054",
+      "node_id": "repo:CoCivium/MasterPlan",
+      "media_type": "text/html",
+      "content_sha256": "e42be843780f7b887c6070c907bafe2584abfc5f6c879d54513993dfe47837fd",
+      "source_refs": [
+        "https://github.com/CoCivium/CoCivium/blob/main/ai/repo-role-map.json"
+      ],
+      "relation_refs": [],
+      "custody_scope": "PUBLIC_SOURCE_GRAPH",
+      "license": null,
+      "supersedes": null,
+      "fallback_uri": "https://github.com/CoCivium/CoCivium/blob/main/ai/repo-role-map.json",
+      "rights_review": "NOT_PERFORMED"
+    },
+    {
+      "stable_id": "fragment-01ecd0a69767759e",
+      "publication_id": "CoMapCoNav.PublicAtlas",
+      "release_id": "r0-7728f868b9d22054",
+      "node_id": "repo:CoCivium/CoFutures",
+      "media_type": "text/html",
+      "content_sha256": "99b373f555d65d560a54c26daed82fa29e2e1220e766e7794204c0074dc16a72",
+      "source_refs": [
+        "https://github.com/CoCivium/CoCivium/blob/main/ai/repo-role-map.json"
+      ],
+      "relation_refs": [],
+      "custody_scope": "PUBLIC_SOURCE_GRAPH",
+      "license": null,
+      "supersedes": null,
+      "fallback_uri": "https://github.com/CoCivium/CoCivium/blob/main/ai/repo-role-map.json",
+      "rights_review": "NOT_PERFORMED"
+    },
+    {
+      "stable_id": "fragment-aa218cfa4fbecb64",
+      "publication_id": "CoMapCoNav.PublicAtlas",
+      "release_id": "r0-7728f868b9d22054",
+      "node_id": "repo:CoCivium/CoSteward",
+      "media_type": "text/html",
+      "content_sha256": "90eac11e21bd0ed6c24272f8e1ae92164247346f0eda346c1d0098936f9aaf1d",
+      "source_refs": [
+        "https://github.com/CoCivium/CoCivium/blob/main/ai/repo-role-map.json"
+      ],
+      "relation_refs": [],
+      "custody_scope": "PUBLIC_SOURCE_GRAPH",
+      "license": null,
+      "supersedes": null,
+      "fallback_uri": "https://github.com/CoCivium/CoCivium/blob/main/ai/repo-role-map.json",
+      "rights_review": "NOT_PERFORMED"
+    },
+    {
+      "stable_id": "fragment-b2f404e570043e02",
+      "publication_id": "CoMapCoNav.PublicAtlas",
+      "release_id": "r0-7728f868b9d22054",
+      "node_id": "repo:CoCivium/CoToolbelt",
+      "media_type": "text/html",
+      "content_sha256": "9ee2abbc325b097e19f4e76cf939d701acbb3c191d45fb94cde19daf02c5fe26",
+      "source_refs": [
+        "https://github.com/CoCivium/CoCivium/blob/main/ai/repo-role-map.json"
+      ],
+      "relation_refs": [],
+      "custody_scope": "PUBLIC_SOURCE_GRAPH",
+      "license": null,
+      "supersedes": null,
+      "fallback_uri": "https://github.com/CoCivium/CoCivium/blob/main/ai/repo-role-map.json",
+      "rights_review": "NOT_PERFORMED"
+    },
+    {
+      "stable_id": "fragment-04e897528bb83603",
+      "publication_id": "CoMapCoNav.PublicAtlas",
+      "release_id": "r0-7728f868b9d22054",
+      "node_id": "repo:CoCivium/CoStacks",
+      "media_type": "text/html",
+      "content_sha256": "ed09c980206682b3d5912d74a30d4330fc1682d641f2f28f4669559ff7eda185",
+      "source_refs": [
+        "https://github.com/CoCivium/CoCivium/blob/main/ai/repo-role-map.json"
+      ],
+      "relation_refs": [],
+      "custody_scope": "PUBLIC_SOURCE_GRAPH",
+      "license": null,
+      "supersedes": null,
+      "fallback_uri": "https://github.com/CoCivium/CoCivium/blob/main/ai/repo-role-map.json",
+      "rights_review": "NOT_PERFORMED"
+    },
+    {
+      "stable_id": "fragment-e0ccdd04cfa360b5",
+      "publication_id": "CoMapCoNav.PublicAtlas",
+      "release_id": "r0-7728f868b9d22054",
+      "node_id": "repo:CoCivium/CoRails",
+      "media_type": "text/html",
+      "content_sha256": "ef349a25ec3948ba087930580685c5fa8c2b4780168545d29a7058067acb8450",
+      "source_refs": [
+        "https://github.com/CoCivium/CoCivium/blob/main/ai/repo-role-map.json"
+      ],
+      "relation_refs": [],
+      "custody_scope": "PUBLIC_SOURCE_GRAPH",
+      "license": null,
+      "supersedes": null,
+      "fallback_uri": "https://github.com/CoCivium/CoCivium/blob/main/ai/repo-role-map.json",
+      "rights_review": "NOT_PERFORMED"
+    },
+    {
+      "stable_id": "fragment-f2352e909e925252",
+      "publication_id": "CoMapCoNav.PublicAtlas",
+      "release_id": "r0-7728f868b9d22054",
+      "node_id": "repo:CoCivium/CoAura",
+      "media_type": "text/html",
+      "content_sha256": "fb76e5555c90c8e1e79315e64c9becfd362e6dccc8c326fc178bdcaa6fc522f3",
+      "source_refs": [
+        "https://github.com/CoCivium/CoCivium/blob/main/ai/repo-role-map.json"
+      ],
+      "relation_refs": [],
+      "custody_scope": "PUBLIC_SOURCE_GRAPH",
+      "license": null,
+      "supersedes": null,
+      "fallback_uri": "https://github.com/CoCivium/CoCivium/blob/main/ai/repo-role-map.json",
+      "rights_review": "NOT_PERFORMED"
+    },
+    {
+      "stable_id": "fragment-c0c78ff1e6651ae1",
+      "publication_id": "CoMapCoNav.PublicAtlas",
+      "release_id": "r0-7728f868b9d22054",
+      "node_id": "repo:CoCivium/CoAcademy",
+      "media_type": "text/html",
+      "content_sha256": "685d3105efd82468557c5170161c99f8eb3ec7931c2684dc5bde6761e71bb263",
+      "source_refs": [
+        "https://github.com/CoCivium/CoCivium/blob/main/ai/repo-role-map.json"
+      ],
+      "relation_refs": [],
+      "custody_scope": "PUBLIC_SOURCE_GRAPH",
+      "license": null,
+      "supersedes": null,
+      "fallback_uri": "https://github.com/CoCivium/CoCivium/blob/main/ai/repo-role-map.json",
+      "rights_review": "NOT_PERFORMED"
+    },
+    {
+      "stable_id": "fragment-4b938041c322079a",
+      "publication_id": "CoMapCoNav.PublicAtlas",
+      "release_id": "r0-7728f868b9d22054",
+      "node_id": "repo:CoCivium/CoSources",
+      "media_type": "text/html",
+      "content_sha256": "393b8b7f58072be0bb1bf9c64176284d51048884ef46ba8914528a3d23089517",
+      "source_refs": [
+        "https://github.com/CoCivium/CoCivium/blob/main/ai/repo-role-map.json"
+      ],
+      "relation_refs": [],
+      "custody_scope": "PUBLIC_SOURCE_GRAPH",
+      "license": null,
+      "supersedes": null,
+      "fallback_uri": "https://github.com/CoCivium/CoCivium/blob/main/ai/repo-role-map.json",
+      "rights_review": "NOT_PERFORMED"
+    },
+    {
+      "stable_id": "fragment-aa3fab887a514a2b",
+      "publication_id": "CoMapCoNav.PublicAtlas",
+      "release_id": "r0-7728f868b9d22054",
+      "node_id": "repo:CoCivium/CoShareHub",
+      "media_type": "text/html",
+      "content_sha256": "25b4c091bc07a6b97312f1a5012fdbbf18c694a88dce00fadf76cfbea788e2e1",
+      "source_refs": [
+        "https://github.com/CoCivium/CoCivium/blob/main/ai/repo-role-map.json"
+      ],
+      "relation_refs": [],
+      "custody_scope": "PUBLIC_SOURCE_GRAPH",
+      "license": null,
+      "supersedes": null,
+      "fallback_uri": "https://github.com/CoCivium/CoCivium/blob/main/ai/repo-role-map.json",
+      "rights_review": "NOT_PERFORMED"
+    },
+    {
+      "stable_id": "fragment-3c2cb373310ab173",
+      "publication_id": "CoMapCoNav.PublicAtlas",
+      "release_id": "r0-7728f868b9d22054",
+      "node_id": "repo:CoCivium/CoBusMirror",
+      "media_type": "text/html",
+      "content_sha256": "9d1448289498cff6e961c7b1c9e8bde27d7967aeabe885cd80dbe8121bc7a9d7",
+      "source_refs": [
+        "https://github.com/CoCivium/CoCivium/blob/main/ai/repo-role-map.json"
+      ],
+      "relation_refs": [],
+      "custody_scope": "PUBLIC_SOURCE_GRAPH",
+      "license": null,
+      "supersedes": null,
+      "fallback_uri": "https://github.com/CoCivium/CoCivium/blob/main/ai/repo-role-map.json",
+      "rights_review": "NOT_PERFORMED"
+    },
+    {
+      "stable_id": "fragment-1173d6b9340fe5d1",
+      "publication_id": "CoMapCoNav.PublicAtlas",
+      "release_id": "r0-7728f868b9d22054",
+      "node_id": "repo:CoCivium/EntMent",
+      "media_type": "text/html",
+      "content_sha256": "0d90a806b1021f6e0aefe8b21ee03b092a8116112b2a72a83b1bb0cf65e16a96",
+      "source_refs": [
+        "https://github.com/CoCivium/CoCivium/blob/main/ai/repo-role-map.json"
+      ],
+      "relation_refs": [],
+      "custody_scope": "PUBLIC_SOURCE_GRAPH",
+      "license": null,
+      "supersedes": null,
+      "fallback_uri": "https://github.com/CoCivium/CoCivium/blob/main/ai/repo-role-map.json",
+      "rights_review": "NOT_PERFORMED"
+    },
+    {
+      "stable_id": "fragment-63c73965e7fb0af8",
+      "publication_id": "CoMapCoNav.PublicAtlas",
+      "release_id": "r0-7728f868b9d22054",
+      "node_id": "repo:CoCivium/TEMP",
+      "media_type": "text/html",
+      "content_sha256": "13122da0aa8348b26b8f758b004196f058b513dc656d15b3d18771e8a867ba3b",
+      "source_refs": [
+        "https://github.com/CoCivium/CoCivium/blob/main/ai/repo-role-map.json"
+      ],
+      "relation_refs": [],
+      "custody_scope": "PUBLIC_SOURCE_GRAPH",
+      "license": null,
+      "supersedes": null,
+      "fallback_uri": "https://github.com/CoCivium/CoCivium/blob/main/ai/repo-role-map.json",
+      "rights_review": "NOT_PERFORMED"
+    },
+    {
+      "stable_id": "fragment-4f9370964719b217",
+      "publication_id": "CoMapCoNav.PublicAtlas",
+      "release_id": "r0-7728f868b9d22054",
+      "node_id": "repo:CoCivium/CoTrustedWindow",
+      "media_type": "text/html",
+      "content_sha256": "142c63d83657bee4573e1126736c77e8b7d7e57d1760a9e4ab6349b2e24e2e47",
+      "source_refs": [
+        "https://github.com/CoCivium/CoCivium/blob/main/ai/repo-role-map.json"
+      ],
+      "relation_refs": [],
+      "custody_scope": "PUBLIC_SOURCE_GRAPH",
+      "license": null,
+      "supersedes": null,
+      "fallback_uri": "https://github.com/CoCivium/CoCivium/blob/main/ai/repo-role-map.json",
+      "rights_review": "NOT_PERFORMED"
+    },
+    {
+      "stable_id": "fragment-8761d778ee5e7c30",
+      "publication_id": "CoMapCoNav.PublicAtlas",
+      "release_id": "r0-7728f868b9d22054",
+      "node_id": "repo:CoCivium/CoLegalVault",
+      "media_type": "text/html",
+      "content_sha256": "2683ab71359e6a30b06e28602d828ef3c35788ff7bddbd6edf8ec518bf4d21b7",
+      "source_refs": [
+        "https://github.com/CoCivium/CoCivium/blob/main/ai/repo-role-map.json"
+      ],
+      "relation_refs": [],
+      "custody_scope": "PUBLIC_SOURCE_GRAPH",
+      "license": null,
+      "supersedes": null,
+      "fallback_uri": "https://github.com/CoCivium/CoCivium/blob/main/ai/repo-role-map.json",
+      "rights_review": "NOT_PERFORMED"
+    },
+    {
+      "stable_id": "fragment-f3a1fbf2277dc36c",
+      "publication_id": "CoMapCoNav.PublicAtlas",
+      "release_id": "r0-7728f868b9d22054",
+      "node_id": "repo:CoCivium/CoCrownJewelVault",
+      "media_type": "text/html",
+      "content_sha256": "4cb730a024eacba676d94792b3af40fa0a5a82a01d0a28050d1f09dc6ff6ba77",
+      "source_refs": [
+        "https://github.com/CoCivium/CoCivium/blob/main/ai/repo-role-map.json"
+      ],
+      "relation_refs": [],
+      "custody_scope": "PUBLIC_SOURCE_GRAPH",
+      "license": null,
+      "supersedes": null,
+      "fallback_uri": "https://github.com/CoCivium/CoCivium/blob/main/ai/repo-role-map.json",
+      "rights_review": "NOT_PERFORMED"
+    },
+    {
+      "stable_id": "fragment-6033380850cfda2c",
+      "publication_id": "CoMapCoNav.PublicAtlas",
+      "release_id": "r0-7728f868b9d22054",
+      "node_id": "repo:CoCivium/.github",
+      "media_type": "text/html",
+      "content_sha256": "b337f55573af4c7301aade13a60dafa4546323e104f5ad30b810931e3decff3c",
+      "source_refs": [
+        "https://github.com/CoCivium/CoCivium/blob/main/ai/repo-role-map.json"
+      ],
+      "relation_refs": [],
+      "custody_scope": "PUBLIC_SOURCE_GRAPH",
+      "license": null,
+      "supersedes": null,
+      "fallback_uri": "https://github.com/CoCivium/CoCivium/blob/main/ai/repo-role-map.json",
+      "rights_review": "NOT_PERFORMED"
+    },
+    {
+      "stable_id": "fragment-432edfb913d97d15",
+      "publication_id": "CoMapCoNav.PublicAtlas",
+      "release_id": "r0-7728f868b9d22054",
+      "node_id": "repo:CoCivium/CoPolitic-site",
+      "media_type": "text/html",
+      "content_sha256": "45cc4fd532119ccb19652cb70551aafbad230bed26e5c020931bd6d542119d7a",
+      "source_refs": [
+        "https://github.com/CoCivium/CoCivium/blob/main/ai/repo-role-map.json"
+      ],
+      "relation_refs": [],
+      "custody_scope": "PUBLIC_SOURCE_GRAPH",
+      "license": null,
+      "supersedes": null,
+      "fallback_uri": "https://github.com/CoCivium/CoCivium/blob/main/ai/repo-role-map.json",
+      "rights_review": "NOT_PERFORMED"
+    },
+    {
+      "stable_id": "fragment-427f523037b01f3a",
+      "publication_id": "CoMapCoNav.PublicAtlas",
+      "release_id": "r0-7728f868b9d22054",
+      "node_id": "highlight:CognocartaConsenti",
+      "media_type": "text/html",
+      "content_sha256": "5524af2976aa78aa4d476b82694437623d27833d819bb6134a0cba17435d5e6a",
+      "source_refs": [
+        "https://github.com/CoCivium/CoCivium/blob/main/ai/highlight-assets.json"
+      ],
+      "relation_refs": [],
+      "custody_scope": "PUBLIC_SOURCE_GRAPH",
+      "license": null,
+      "supersedes": null,
+      "fallback_uri": "https://github.com/CoCivium/CoCivium/blob/main/ai/highlight-assets.json",
+      "rights_review": "NOT_PERFORMED"
+    },
+    {
+      "stable_id": "fragment-ba240888f9ade7cb",
+      "publication_id": "CoMapCoNav.PublicAtlas",
+      "release_id": "r0-7728f868b9d22054",
+      "node_id": "highlight:CoTheoryAll",
+      "media_type": "text/html",
+      "content_sha256": "ba64c73601e89d94dd53fde4a5bc788b75daae8bbfd784fd943396b6edcc8eeb",
+      "source_refs": [
+        "https://github.com/CoCivium/CoCivium/blob/main/ai/highlight-assets.json"
+      ],
+      "relation_refs": [],
+      "custody_scope": "PUBLIC_SOURCE_GRAPH",
+      "license": null,
+      "supersedes": null,
+      "fallback_uri": "https://github.com/CoCivium/CoCivium/blob/main/ai/highlight-assets.json",
+      "rights_review": "NOT_PERFORMED"
+    },
+    {
+      "stable_id": "fragment-4a7862b1314b20bb",
+      "publication_id": "CoMapCoNav.PublicAtlas",
+      "release_id": "r0-7728f868b9d22054",
+      "node_id": "highlight:CoCivia",
+      "media_type": "text/html",
+      "content_sha256": "ec355c2764e17367e8dbb328afda9e5801af1d84cce088afab9140954f077ab9",
+      "source_refs": [
+        "https://github.com/CoCivium/CoCivium/blob/main/ai/highlight-assets.json"
+      ],
+      "relation_refs": [],
+      "custody_scope": "PUBLIC_SOURCE_GRAPH",
+      "license": null,
+      "supersedes": null,
+      "fallback_uri": "https://github.com/CoCivium/CoCivium/blob/main/ai/highlight-assets.json",
+      "rights_review": "NOT_PERFORMED"
+    },
+    {
+      "stable_id": "fragment-295b71c3932448b3",
+      "publication_id": "CoMapCoNav.PublicAtlas",
+      "release_id": "r0-7728f868b9d22054",
+      "node_id": "highlight:RickBar",
+      "media_type": "text/html",
+      "content_sha256": "9ef502e5886ae13e3adcb28a1f1a29416641c821fe8a0650563083781042c057",
+      "source_refs": [
+        "https://github.com/CoCivium/CoCivium/blob/main/ai/highlight-assets.json"
+      ],
+      "relation_refs": [],
+      "custody_scope": "PUBLIC_SOURCE_GRAPH",
+      "license": null,
+      "supersedes": null,
+      "fallback_uri": "https://github.com/CoCivium/CoCivium/blob/main/ai/highlight-assets.json",
+      "rights_review": "NOT_PERFORMED"
+    },
+    {
+      "stable_id": "fragment-be598b2278bafebf",
+      "publication_id": "CoMapCoNav.PublicAtlas",
+      "release_id": "r0-7728f868b9d22054",
+      "node_id": "highlight:CoVirtualSession",
+      "media_type": "text/html",
+      "content_sha256": "773260334ff507cd498fa31e9a802d9a13420aa4d0940e90c90f32c1619dde75",
+      "source_refs": [
+        "https://github.com/CoCivium/CoCivium/blob/main/ai/highlight-assets.json"
+      ],
+      "relation_refs": [],
+      "custody_scope": "PUBLIC_SOURCE_GRAPH",
+      "license": null,
+      "supersedes": null,
+      "fallback_uri": "https://github.com/CoCivium/CoCivium/blob/main/ai/highlight-assets.json",
+      "rights_review": "NOT_PERFORMED"
+    },
+    {
+      "stable_id": "fragment-766a3d8c77055c2f",
+      "publication_id": "CoMapCoNav.PublicAtlas",
+      "release_id": "r0-7728f868b9d22054",
+      "node_id": "highlight:CoNodeMesh",
+      "media_type": "text/html",
+      "content_sha256": "12ed1590c81c953b82710d31751b585a6b4ba1ad36ffdf034b82ac14ae233b03",
+      "source_refs": [
+        "https://github.com/CoCivium/CoCivium/blob/main/ai/highlight-assets.json"
+      ],
+      "relation_refs": [],
+      "custody_scope": "PUBLIC_SOURCE_GRAPH",
+      "license": null,
+      "supersedes": null,
+      "fallback_uri": "https://github.com/CoCivium/CoCivium/blob/main/ai/highlight-assets.json",
+      "rights_review": "NOT_PERFORMED"
+    },
+    {
+      "stable_id": "fragment-fb389285633d235e",
+      "publication_id": "CoMapCoNav.PublicAtlas",
+      "release_id": "r0-7728f868b9d22054",
+      "node_id": "highlight:CoPriMath",
+      "media_type": "text/html",
+      "content_sha256": "fb5400da11bd4101a37a192d99bb91536bf5d5247a0f06c1c8b6394aa05a273f",
+      "source_refs": [
+        "https://github.com/CoCivium/CoCivium/blob/main/ai/highlight-assets.json"
+      ],
+      "relation_refs": [],
+      "custody_scope": "PUBLIC_SOURCE_GRAPH",
+      "license": null,
+      "supersedes": null,
+      "fallback_uri": "https://github.com/CoCivium/CoCivium/blob/main/ai/highlight-assets.json",
+      "rights_review": "NOT_PERFORMED"
+    },
+    {
+      "stable_id": "fragment-8b4478bdbe1e1328",
+      "publication_id": "CoMapCoNav.PublicAtlas",
+      "release_id": "r0-7728f868b9d22054",
+      "node_id": "highlight:CoGibberTru",
+      "media_type": "text/html",
+      "content_sha256": "1e58a60380e4c6e5b6e1c19faa7036a788153436575030eb50a8a32b92c1d8fd",
+      "source_refs": [
+        "https://github.com/CoCivium/CoCivium/blob/main/ai/highlight-assets.json"
+      ],
+      "relation_refs": [],
+      "custody_scope": "PUBLIC_SOURCE_GRAPH",
+      "license": null,
+      "supersedes": null,
+      "fallback_uri": "https://github.com/CoCivium/CoCivium/blob/main/ai/highlight-assets.json",
+      "rights_review": "NOT_PERFORMED"
+    },
+    {
+      "stable_id": "fragment-f124b72fa11a18cb",
+      "publication_id": "CoMapCoNav.PublicAtlas",
+      "release_id": "r0-7728f868b9d22054",
+      "node_id": "highlight:CoSalute",
+      "media_type": "text/html",
+      "content_sha256": "652a20fbadfe6d8ab5447c3379a86a05a5f7c59b1318865963fd6194bb494dac",
+      "source_refs": [
+        "https://github.com/CoCivium/CoCivium/blob/main/ai/highlight-assets.json"
+      ],
+      "relation_refs": [],
+      "custody_scope": "PUBLIC_SOURCE_GRAPH",
+      "license": null,
+      "supersedes": null,
+      "fallback_uri": "https://github.com/CoCivium/CoCivium/blob/main/ai/highlight-assets.json",
+      "rights_review": "NOT_PERFORMED"
+    },
+    {
+      "stable_id": "fragment-54449bae65c718c4",
+      "publication_id": "CoMapCoNav.PublicAtlas",
+      "release_id": "r0-7728f868b9d22054",
+      "node_id": "highlight:CoAllPulseField",
+      "media_type": "text/html",
+      "content_sha256": "3d8fb070f6dc1f50c62591117c70a0367bf2cb53adcbb79ebb408d18d0698ba5",
+      "source_refs": [
+        "https://github.com/CoCivium/CoCivium/blob/main/ai/highlight-assets.json"
+      ],
+      "relation_refs": [],
+      "custody_scope": "PUBLIC_SOURCE_GRAPH",
+      "license": null,
+      "supersedes": null,
+      "fallback_uri": "https://github.com/CoCivium/CoCivium/blob/main/ai/highlight-assets.json",
+      "rights_review": "NOT_PERFORMED"
+    },
+    {
+      "stable_id": "fragment-bc08887b22397644",
+      "publication_id": "CoMapCoNav.PublicAtlas",
+      "release_id": "r0-7728f868b9d22054",
+      "node_id": "doc:docs/Evolution/COALL_GITHUB_EVOLUTION_FABRIC_R0.md",
+      "media_type": "text/html",
+      "content_sha256": "2e066a745e5355cb4cd43cb7ae77c430929b2461a7b961acfa2b2503d913749c",
+      "source_refs": [
+        "https://github.com/CoCivium/CoCivium/blob/main/docs/Evolution/COALL_GITHUB_EVOLUTION_FABRIC_R0.md"
+      ],
+      "relation_refs": [],
+      "custody_scope": "PUBLIC_SOURCE_GRAPH",
+      "license": null,
+      "supersedes": null,
+      "fallback_uri": "https://github.com/CoCivium/CoCivium/blob/main/docs/Evolution/COALL_GITHUB_EVOLUTION_FABRIC_R0.md",
+      "rights_review": "NOT_PERFORMED"
+    },
+    {
+      "stable_id": "fragment-db7aec7d6da5ffa8",
+      "publication_id": "CoMapCoNav.PublicAtlas",
+      "release_id": "r0-7728f868b9d22054",
+      "node_id": "doc:docs/Architecture/CIV2_FEDERATED_CELL_HOSTING_R0.md",
+      "media_type": "text/html",
+      "content_sha256": "0befd8ad1546de6cd984682001176befedf5fbdbbbe0f2f3a156e5a0b9f5d6ac",
+      "source_refs": [
+        "https://github.com/CoCivium/CoCivium/blob/main/docs/Evolution/COALL_GITHUB_EVOLUTION_FABRIC_R0.md"
+      ],
+      "relation_refs": [],
+      "custody_scope": "PUBLIC_SOURCE_GRAPH",
+      "license": null,
+      "supersedes": null,
+      "fallback_uri": "https://github.com/CoCivium/CoCivium/blob/main/docs/Evolution/COALL_GITHUB_EVOLUTION_FABRIC_R0.md",
+      "rights_review": "NOT_PERFORMED"
+    },
+    {
+      "stable_id": "fragment-0b9edf02270aed21",
+      "publication_id": "CoMapCoNav.PublicAtlas",
+      "release_id": "r0-7728f868b9d22054",
+      "node_id": "doc:schemas/coevo-delta-v0.1.schema.json",
+      "media_type": "text/html",
+      "content_sha256": "8b33e7b8b343f095248e7a07e26ca372eb385357fbce8cd5269ed7e096145aa0",
+      "source_refs": [
+        "https://github.com/CoCivium/CoCivium/blob/main/docs/Evolution/COALL_GITHUB_EVOLUTION_FABRIC_R0.md"
+      ],
+      "relation_refs": [],
+      "custody_scope": "PUBLIC_SOURCE_GRAPH",
+      "license": null,
+      "supersedes": null,
+      "fallback_uri": "https://github.com/CoCivium/CoCivium/blob/main/docs/Evolution/COALL_GITHUB_EVOLUTION_FABRIC_R0.md",
+      "rights_review": "NOT_PERFORMED"
+    },
+    {
+      "stable_id": "fragment-1429901ff57566eb",
+      "publication_id": "CoMapCoNav.PublicAtlas",
+      "release_id": "r0-7728f868b9d22054",
+      "node_id": "media:comap-source-weave",
+      "media_type": "text/html",
+      "content_sha256": "8aa180a7a4d75dfc8bb0271a9d135b13fa3b1495acab00e1cbface551d1486a2",
+      "source_refs": [
+        "https://github.com/CoCivium/CoCivium/blob/main/examples/comap/source-weave-r0.html"
+      ],
+      "relation_refs": [
+        "view:CoMap+"
+      ],
+      "custody_scope": "PUBLIC_METADATA_ONLY",
+      "license": null,
+      "supersedes": null,
+      "fallback_uri": "https://github.com/CoCivium/CoCivium/blob/main/examples/comap/source-weave-r0.html",
+      "rights_review": "NOT_PERFORMED"
+    },
+    {
+      "stable_id": "fragment-b3eba2ec7a1fb222",
+      "publication_id": "CoMapCoNav.PublicAtlas",
+      "release_id": "r0-7728f868b9d22054",
+      "node_id": "media:relational-media-diagram",
+      "media_type": "text/html",
+      "content_sha256": "c150cec41a8d01f4709aa4ea5335cc1608387387f315ae6858ac4559c06c645c",
+      "source_refs": [
+        "https://github.com/CoCivium/CoCivium/blob/main/examples/colensmedia/relational_media_diagram_r0.md"
+      ],
+      "relation_refs": [
+        "view:CoMap+"
+      ],
+      "custody_scope": "PUBLIC_METADATA_ONLY",
+      "license": null,
+      "supersedes": null,
+      "fallback_uri": "https://github.com/CoCivium/CoCivium/blob/main/examples/colensmedia/relational_media_diagram_r0.md",
+      "rights_review": "NOT_PERFORMED"
+    },
+    {
+      "stable_id": "fragment-6e8f4a922579d109",
+      "publication_id": "CoMapCoNav.PublicAtlas",
+      "release_id": "r0-7728f868b9d22054",
+      "node_id": "media:visual-prior-bridge",
+      "media_type": "text/html",
+      "content_sha256": "72e99691abecf8012cf122baeb01fbf3dd7fe84adf593620337e3820d1d4eb3a",
+      "source_refs": [
+        "https://github.com/CoCivium/CoCivium/blob/main/examples/colensmedia/visual_prior_bridge.html"
+      ],
+      "relation_refs": [
+        "view:CoMap+"
+      ],
+      "custody_scope": "PUBLIC_METADATA_ONLY",
+      "license": null,
+      "supersedes": null,
+      "fallback_uri": "https://github.com/CoCivium/CoCivium/blob/main/examples/colensmedia/visual_prior_bridge.html",
+      "rights_review": "NOT_PERFORMED"
+    },
+    {
+      "stable_id": "fragment-21f7620902fd8fb6",
+      "publication_id": "CoMapCoNav.PublicAtlas",
+      "release_id": "r0-7728f868b9d22054",
+      "node_id": "media:visual-finder",
+      "media_type": "text/html",
+      "content_sha256": "2a0b0858ed6415a4a31ac16f0248f65a55167ba1568dce421cd51d17f10080ea",
+      "source_refs": [
+        "https://github.com/CoCivium/CoCivium/blob/main/examples/covisual_finder_r1/index.html"
+      ],
+      "relation_refs": [
+        "view:CoMap+"
+      ],
+      "custody_scope": "PUBLIC_METADATA_ONLY",
+      "license": null,
+      "supersedes": null,
+      "fallback_uri": "https://github.com/CoCivium/CoCivium/blob/main/examples/covisual_finder_r1/index.html",
+      "rights_review": "NOT_PERFORMED"
+    },
+    {
+      "stable_id": "fragment-4c72514a7d262ec3",
+      "publication_id": "CoMapCoNav.PublicAtlas",
+      "release_id": "r0-7728f868b9d22054",
+      "node_id": "media:context-rail",
+      "media_type": "text/html",
+      "content_sha256": "4c403a23c61cfd8782e3beaaff38df7fe330fc7b6cd17645a740c262a7e04e9d",
+      "source_refs": [
+        "https://github.com/CoCivium/CoCivium/blob/main/examples/conodcothumb/context_rail_r1/index.html"
+      ],
+      "relation_refs": [
+        "view:CoMap+"
+      ],
+      "custody_scope": "PUBLIC_METADATA_ONLY",
+      "license": null,
+      "supersedes": null,
+      "fallback_uri": "https://github.com/CoCivium/CoCivium/blob/main/examples/conodcothumb/context_rail_r1/index.html",
+      "rights_review": "NOT_PERFORMED"
+    }
+  ],
+  "surfaces": [
+    {
+      "id": "github_source",
+      "kind": "git_repository",
+      "state": "SOURCE_ONLY_MERGE_AND_CI_READBACK_REQUIRED",
+      "digest_proven": false,
+      "independent_failure_domain": false
+    },
+    {
+      "id": "public_website",
+      "kind": "public_megascroller",
+      "state": "NOT_DEPLOYED",
+      "digest_proven": false,
+      "independent_failure_domain": false
+    },
+    {
+      "id": "second_administered_mirror",
+      "kind": "independent_static_mirror",
+      "state": "NOT_CONFIGURED",
+      "digest_proven": false,
+      "independent_failure_domain": false
+    },
+    {
+      "id": "local_archive",
+      "kind": "offline_copy",
+      "state": "PORTABLE_BYTES_RESTORE_NOT_INDEPENDENTLY_PROVEN",
+      "digest_proven": false,
+      "independent_failure_domain": false
+    }
+  ],
+  "verification_instructions": [
+    "node scripts/build_public_megascroller_r0.cjs --check",
+    "node scripts/test_public_megascroller_r0.cjs",
+    "Independent host must fetch exact index.html and release-manifest.json and hash-check both; not performed by this build."
+  ],
+  "declared_nonclaims": [
+    "NO_INDEPENDENT_MIRROR",
+    "NO_WEBSITE_DEPLOYMENT",
+    "NO_EXTERNAL_READER_ACK",
+    "NO_LIVE_X2_INSTALL",
+    "NO_PRIVATE_SOURCE_COPY",
+    "NO_BACKUP_RESTORE_PROOF",
+    "NO_SEMANTIC_TRUTH_FROM_HASH",
+    "NO_CROSS_SESSION_SYNC"
+  ]
+}
