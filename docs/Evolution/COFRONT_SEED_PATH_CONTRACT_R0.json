@@ -1,0 +1,141 @@
+{
+  "schema": "cocivium.front_seed_path_contract.r0",
+  "status": "public_design_contract_not_runtime_integration",
+  "generated_utc": "2026-11-09",
+  "source_manifest": "docs/Evolution/COPREGENERIC_SESSION_POINTERS_R0.json",
+  "source_manifest_blob_sha": "00b7faf5584bef9eb8883b39179c90327b3a15f2",
+  "intent": "Allow independently operating CoFronts and CoPreGeneric consumers to discover, verify, challenge, reuse and project public evidence without inventing cross-session synchronization.",
+  "co_seed": {
+    "required": [
+      "id",
+      "source_uri",
+      "source_blob_sha",
+      "source_type",
+      "claim_scope",
+      "provenance",
+      "license_or_permission",
+      "visibility",
+      "verification_state",
+      "supersedes"
+    ],
+    "defaults": {
+      "verification_state": "candidate",
+      "visibility": "hold_until_review"
+    },
+    "dedupe_key": "canonical_source_uri + source_blob_sha + claim_scope",
+    "rule": "No evidence, no promotion; do not silently replace older source."
+  },
+  "co_path": {
+    "stages": [
+      "discover",
+      "fetch",
+      "verify_blob",
+      "check_permissions",
+      "compare_with_current_custody",
+      "dedupe",
+      "challenge",
+      "test",
+      "authorize",
+      "project",
+      "publish",
+      "receipt",
+      "monitor",
+      "recover"
+    ],
+    "failure": "HOLD with explicit blocker, preserve last-known-good and rollback reference",
+    "fanout": "Consumers opt in to polling or webhooks; no cross-front automatic delivery is claimed.",
+    "recovery": "Read manifest, verify source blobs, replay receipts and reconcile supersession."
+  },
+  "co_front": {
+    "roles": [
+      "research",
+      "theory",
+      "ethics",
+      "governance",
+      "product",
+      "onboarding",
+      "public_surface",
+      "local_runtime",
+      "measurement"
+    ],
+    "consume_rule": "Each front records manifest version, evidence used, rejected candidates, own output URI, test results, receipt and next review time.",
+    "non_claims": [
+      "fronts are currently subscribed",
+      "X2 or CoStead is running this contract",
+      "public site deployed",
+      "all historic sessions have been recovered"
+    ]
+  },
+  "co_oscillation": {
+    "cycle": [
+      "hypothesize",
+      "forecast",
+      "experiment",
+      "measure",
+      "challenge",
+      "regroup",
+      "project",
+      "reassess"
+    ],
+    "metrics": [
+      "evidence_gain",
+      "translation_fidelity",
+      "time_to_recover",
+      "orphaned_source_count",
+      "front_coverage",
+      "reversal_cost",
+      "permission_violations",
+      "uncertainty_calibration"
+    ],
+    "baseline_required": true,
+    "stop_or_reverse_on": [
+      "permission_failure",
+      "missing_provenance",
+      "materially_worse_outcome",
+      "unverifiable_projection"
+    ]
+  },
+  "dual_projection": {
+    "synthverse": "Typed records, references and tests",
+    "bioverse": "Accessible narrative and diagram views",
+    "translation_proof": "For every projected claim retain source ID, scope, confidence, authorization and reverse lookup."
+  },
+  "public_landing": {
+    "source": "https://github.com/CoCivium/CoCivium/blob/main/docs/Evolution/COPREGENERIC_SESSION_POINTERS_R0.json",
+    "human_view": "https://github.com/CoCivium/CoCivium/blob/main/docs/Evolution/frontier-atlas.html",
+    "contract_path": "docs/Evolution/COFRONT_SEED_PATH_CONTRACT_R0.json"
+  },
+  "acceptance_tests": [
+    {
+      "id": "T1",
+      "pass_when": "manifest and each referenced blob fetched and hash-matched"
+    },
+    {
+      "id": "T2",
+      "pass_when": "every public claim traceable to authorized source"
+    },
+    {
+      "id": "T3",
+      "pass_when": "synth and bio projection preserve claim scope and uncertainty"
+    },
+    {
+      "id": "T4",
+      "pass_when": "independent front records successful ingestion receipt"
+    },
+    {
+      "id": "T5",
+      "pass_when": "a clean recovery replays same current head after >24 hours"
+    },
+    {
+      "id": "T6",
+      "pass_when": "missing or revoked source fails closed and preserves previous head"
+    }
+  ],
+  "verification": {
+    "github_file_write": "pending",
+    "runtime_ingestion": "not_tested",
+    "independent_receiver": "not_tested",
+    "survival_24h": "not_tested"
+  },
+  "next": "Implement consumer and test runner; produce independently verified receipt before claiming integration."
+}
