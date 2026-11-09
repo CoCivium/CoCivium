@@ -1,0 +1,27 @@
+name: CoWet human-facing hero/audio contract candidate
+on:
+  pull_request:
+    paths:
+      - 'docs/Design/COWET_HUMAN_SURFACE_AUDIO_CONTRACT_R0_20261109.md'
+      - 'examples/cowet/cowet-hero-audio-r0.html'
+      - 'scripts/test_cowet_human_surface_r0.py'
+      - '.github/workflows/cowet-human-surface-r0.yml'
+  push:
+    paths:
+      - 'docs/Design/COWET_HUMAN_SURFACE_AUDIO_CONTRACT_R0_20261109.md'
+      - 'examples/cowet/cowet-hero-audio-r0.html'
+      - 'scripts/test_cowet_human_surface_r0.py'
+      - '.github/workflows/cowet-human-surface-r0.yml'
+permissions:
+  contents: read
+jobs:
+  cowet-source-regression:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate source-level semantics, mute, focus and fallback rules
+        run: python -B scripts/test_cowet_human_surface_r0.py -v
