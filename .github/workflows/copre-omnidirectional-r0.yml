@@ -1,0 +1,31 @@
+name: CoPre public graph omni-navigation candidate
+on:
+  pull_request:
+    paths:
+      - 'scripts/copre_path_query_r0.py'
+      - 'scripts/test_copre_path_query_r0.py'
+      - 'ai/copre-seed-path-fabric-r0-20261109.json'
+      - '.github/workflows/copre-omnidirectional-r0.yml'
+  push:
+    paths:
+      - 'scripts/copre_path_query_r0.py'
+      - 'scripts/test_copre_path_query_r0.py'
+      - 'ai/copre-seed-path-fabric-r0-20261109.json'
+      - '.github/workflows/copre-omnidirectional-r0.yml'
+permissions:
+  contents: read
+jobs:
+  public-graph-navigation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Read-only bidirectional source graph regression
+        run: python -B scripts/test_copre_path_query_r0.py -v
+      - name: Machine query must never claim independent receiver ACK
+        run: |
+          python -B scripts/copre_path_query_r0.py copre-entry copre-package --direction both > /tmp/path.json
+          python -c 'import json; a=json.load(open("/tmp/path.json")); assert a["recipient_ack"] is False and a["authority_granted"] is False and a["integration"] is False'
