@@ -72,7 +72,7 @@ jobs:
               logs[name] = hashlib.sha256(p.read_bytes()).hexdigest() if p.exists() else None
           cadence = pathlib.Path('schedule-audit.json')
           rebound = pathlib.Path('rebound-report.json')
-          record = dict(schema='cogoall-proof-pulse-r0',
+          record = dict(schema='cogoall-proof-pulse-r1',
                         observed_at_utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),
                         run_id=os.environ['RUN_ID'], attempt=os.environ['RUN_ATTEMPT'],
                         head=os.environ['COMMIT_SHA'], event=os.environ['EVENT_NAME'],
