@@ -7,8 +7,8 @@
 | Priority | Work / acceptance evidence | Current state | Next autonomous work |
 |---|---|---|---|
 | P0 | RickBar input -> local Ollama -> output visible in existing bar -> restart recovery | SOURCE_ONLY | Locate actual host receiver and bind adapter; preserve native fallback |
-| P0 | Ollama gateway and CLI combined tests with exact exit codes and CI run URLs | CI_PASS_ISOLATED at [run 42536677984](https://github.com/CoCivium/CoCivium/actions/runs/42536677984); native X2 effect unproven | Preserve the passing exact SHA; next prove authorized X2 model-to-rickBar receiver readback |
-| P0 | WorkID receipt persistence, conflict, provenance, and independent readback | SOURCE_ONLY | Add end-to-end tests and source hashes |
+| P0 | Ollama gateway and CLI combined tests with exact exit codes and CI run URLs | CI_PASS_ISOLATED on public main at [run 42538440189](https://github.com/CoCivium/CoCivium/actions/runs/42538440189), commit `35d0ccb8be4ca320aacaf26c4468f4c9e1e2032c`: 58 synthetic / local-server regression tests PASS; native X2 effect unproven | Prove one actual authorized local Ollama -> existing rickBar receiver roundtrip; preserve Break Glass |
+| P0 | WorkID receipt persistence, conflict, provenance, and independent readback | CI_PASS_ISOLATED: [cold-process test run 42537993618](https://github.com/CoCivium/CoCivium/actions/runs/42537993618), 12 synthetic cases; [mainline bridge run 42538440189](https://github.com/CoCivium/CoCivium/actions/runs/42538440189), 6 fake-gateway bridge + 4 receipt-store tests. Authenticated independent receiver readproof NOT_OBSERVED | Prove receiver-produced exact-object ACK, host restart and real >24h continuity |
 | P0 | Live observer freshness: X2 machine vs remote bridge vs CoBar receiver distinguished | BLOCKED: verified execution path to X2 unavailable from current tool context | Reuse existing observer, no duplicate daemon |
 | P0 | CoLoopGuard fault injection and bounded stop/restart semantics | SOURCE_ONLY | Verify CI, crash-before/after-commit, stale lease, concurrency |
 | P1 | CoMindshare R0: two independent model proposals + challenge + dissent + adjudication | PROPOSED | Build deterministic synthetic benchmark, then real authorized models |
@@ -17,7 +17,7 @@
 | P1 | RickBar one-screen WorkID, model status, receipts, latency, fallback | SOURCE_ONLY UX contract | Compare first-use UX with browser baseline |
 | P1 | Independent CI+ run receipts, artifact hashes, regressions and failure triage | SOURCE_ONLY workflow | Read actual Actions results; fix failures |
 | P1 | Automated public change feed and versioned highlight catalog | PROPOSED | Generate deduped source index with freshness and broken-link checks |
-| P1 | AI/IA onramp -> rebound hub -> outstanding register navigation | SOURCE_ONLY | Bind canonical onramp to this register |
+| P1 | AI/IA onramp -> rebound hub -> outstanding register navigation | SOURCE_ONLY (public main): [PR #382](https://github.com/CoCivium/CoCivium/pull/382) merged and mainline readback verified; 26 unique public-source locators; automatic cross-model uptake NOT_OBSERVED | Independently measure human/agent first-use comprehension and receiver pickup without assuming broadcast |
 | P1 | WhatsApp/Meta AI delivery and reading | USER-REPORTED SEND, ACK UNVERIFIED | Wait for independently evidenced receiver acknowledgment; no manual chat relay |
 | P2 | G_dSide future-directed valuation against equal-budget baselines | PROPOSED | Benchmark with counterexamples and falsification |
 | P2 | CoPriMath typed primitives and CoLexicon compiler | PROPOSED | Formal semantics, dimensional consistency, property tests |
