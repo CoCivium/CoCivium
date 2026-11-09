@@ -10,6 +10,7 @@
 5. [CoReGroup peer evidence contract](../Evolution/COREGROUP_PEER_EVIDENCE_CONTRACT_R0.md): provenance, lease fencing, verification, recovery; proposed contract, not proof of live peer sync.
 
 ## Current engineering threads
+- [CoObject first trusted WorkID validation and second-job receipt](../Receipts/COOBJECT_ONE_TASK_CROSS_JOB_R0_20261109.json): existing open-source Python validator performed one real read-only policy/fixture task; [3 GitHub CI jobs PASS](https://github.com/CoCivium/CoCivium/actions/runs/42612069597) with 17 new tests and exact cross-job digest. **Same provider; not an AI, external ACK or X2 MVP.**
 - [CoAckRewise+ of CoObject/CoOrbWare/Civ2+–Civ3+](../Evolution/COACKREWISE_COOBJECT_CIV3_FRONTIER_R0_20261109.md): source-bound recent-thread synthesis, stable MVP priority, public proof gaps and no false omni-session synchronization.
 - [CoObject file-to-agent proposal bridge](../../scripts/CoObjectAgencyBridgeR0.py): unlike files become bounded, source-hashed, nonexecuting work proposals; [31 adversarial CI tests](https://github.com/CoCivium/CoCivium/actions/runs/42609204946) PASS. **No automatic worker or authority.**
 - [CoMVP+ / CoLockStep+ stable-island release contract](../Architecture/COMVP_COLOCKSTEP_SOURCE_RELEASE_R0_20261109.md): runnable local source release-slot CLI, pinned minimum-use acceptance tests, atomic dependency cohorts, rollback and [76 passing CI checks](https://github.com/CoCivium/CoCivium/actions/runs/42605587773). **Not a qualified native X2/public MVP or CoAll-wide runtime controller.**
