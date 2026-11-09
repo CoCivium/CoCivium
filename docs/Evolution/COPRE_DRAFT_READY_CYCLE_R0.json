@@ -1,0 +1,122 @@
+{
+  "schema": "cocivium.copre.draft_ready_cycle.r0",
+  "status": "DRAFT_READY_FOR_TEST_NOT_RUNTIME_CERTIFIED",
+  "as_of_utc": "2026-11-09",
+  "aliases": [
+    "CiPrimpt",
+    "CoPre",
+    "CiPre",
+    "CoPrompt",
+    "CoPreGeneric"
+  ],
+  "source_of_truth": {
+    "verified_repo": "https://github.com/CoCivium/CoCivium",
+    "proposed_primary": "https://github.com/CoCivium/CoPreGeneric",
+    "proposed_mirrors": [
+      "https://CoCivium.org/CoPre",
+      "https://InSeed.com/Stead"
+    ],
+    "proposed_primary_state": "NOT_FOUND_404_AT_CHECK",
+    "mirrors_state": "UNVERIFIED",
+    "rule": "Never label mirror, ACK, canonical, synchronized, or deployed without independent fetch, matching content digest, and receipt."
+  },
+  "invariants": {
+    "seed_count": 1,
+    "orb_count": 1,
+    "gauge_count": 1,
+    "thumb_count": 1,
+    "time_count": 1,
+    "placeholder_count": 0,
+    "human_manual_relay_target": 0,
+    "elected_actuator_target": 1,
+    "all_else_test": true,
+    "seed_survival_target_hours": 24,
+    "handoff_target_count": 1,
+    "notes": "Targets, not measured results. No automatic cross-session coordination is established."
+  },
+  "cycle": [
+    "CoLatch input with provenance and authorization",
+    "CoReGroup sources and previous receipts; deduplicate",
+    "CoGlass inspect contradictions and blind spots",
+    "Generate diverse wave candidates across fronts",
+    "Challenge and invert candidates independently",
+    "Choose bounded experiments by information gain",
+    "Run permitted tests; HOLD unavailable receivers",
+    "Measure with gauge and timestamp",
+    "Publish sanitized candidate and receipts",
+    "One elected receiver handoff with acknowledgment",
+    "Recheck at >24h from fresh independent consumer",
+    "Evolve, supersede explicitly, or preserve HOLD"
+  ],
+  "wave_policy": {
+    "goal": "High diversity without sacrificing deterministic recoverability",
+    "diversity_axes": [
+      "front",
+      "medium",
+      "hypothesis family",
+      "inversion",
+      "scale",
+      "time horizon",
+      "measurement method",
+      "challenge source",
+      "audience",
+      "sensory mode"
+    ],
+    "non_repetition": "Do not require mathematically impossible global uniqueness; avoid duplicate wave signatures and preserve useful replication and controls.",
+    "stable_invariants": [
+      "source-bound Seed",
+      "same typed receipt fields",
+      "permission checks",
+      "dedupe and explicit supersession",
+      "reversible actions",
+      "recovery tests"
+    ],
+    "selection": "Novelty is scored alongside evidence gain, accessibility, cost, and falsifiability; novelty alone is not success."
+  },
+  "receipt_schema": {
+    "required": [
+      "wave_id",
+      "seed_uri",
+      "seed_sha256",
+      "parent_receipt_sha256_or_null",
+      "timestamp_utc",
+      "actor",
+      "front",
+      "hypothesis",
+      "test",
+      "observation",
+      "evidence_uri",
+      "status",
+      "next_trigger"
+    ],
+    "status_values": [
+      "CANDIDATE",
+      "HOLD",
+      "TESTED",
+      "VERIFIED",
+      "REJECTED",
+      "SUPERSEDED"
+    ],
+    "note": "A Git blob SHA is not a SHA-256 receipt. Compute and verify the appropriate digest before populating seed_sha256."
+  },
+  "acceptance_tests": {
+    "T1": "All source hashes and permissions independently verified",
+    "T2": "Each wave has a unique signature within an explicit comparison window, or justified replication",
+    "T3": "At least one real receiver independently ingests and acknowledges the Seed",
+    "T4": "A fresh consumer recovers the same Seed and receipts after >24h",
+    "T5": "Unavailable mirror, revoked permission, or mismatch fails closed",
+    "T6": "One elected actuator prevents duplicate effects",
+    "T7": "Zero placeholder claims and no false PASS",
+    "T8": "Human-facing projections satisfy CoWet accessibility and consent-first audio gates"
+  },
+  "current_evidence": {
+    "github_public_repository": "VERIFIED",
+    "copregeneric_repository": "NOT_FOUND_404",
+    "website_mirrors": "UNVERIFIED",
+    "independent_receiver": "NOT_TESTED",
+    "seed_survival_over_24h": "NOT_TESTED",
+    "cross_session_sync": "NOT_TESTED",
+    "no_manual_handoff": "NOT_TESTED"
+  },
+  "next_action": "Implement an independent GitHub-backed consumer that fetches this file and the source manifest, validates typed fields, emits hashed receipt, and rechecks after >24h. Verify website mirrors only after deployed and readable."
+}
