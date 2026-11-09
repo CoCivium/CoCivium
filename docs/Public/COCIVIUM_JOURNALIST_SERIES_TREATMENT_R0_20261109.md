@@ -13,6 +13,16 @@ CoCivium is one open-source research attempt to make that possible. Its proposed
 
 The journalism is a test of an uncomfortable question: can federation preserve agency and useful work better than convenient centralization, or merely make the system harder to operate?
 
+### How a newsroom could use this proposal
+
+**At the pitch desk:** Choose a question you can independently test. The main one is whether a user can switch AI providers without losing the operative *task*, not just their chat log. The four articles are possible installments, not a fixed order or a request to publish four stories.
+
+**Before assigning a reporter:** Inspect the public code and identify a qualified outside user, a competitor or open-standards expert, and one critic of CoCivium's approach. Check who currently controls project repositories, trademarks, domains and hosting. Do not assume a GPL license prevents service-level capture.
+
+**Before publishing:** Confirm a real demonstration in the stated environment, compare it with a simpler alternative, obtain permission for any human example, and independently verify numbers, quotations and technical effects. A passing synthetic test cannot be described as a fully functioning product or independent receiver proof. The reporter should determine whether the correct conclusion is favorable, mixed or negative.
+
+**After publication:** Corrections should identify an exact claim and source version, preserve the historical article, and explain the substantive change. A reply from CoCivium is an attributed source response, not a newsroom-approved correction. A reporter may decline additional contact; no automatic follow-up or default exclusivity is requested.
+
 ### The four installments
 
 | Article | Editorial opening | The reporting test |
