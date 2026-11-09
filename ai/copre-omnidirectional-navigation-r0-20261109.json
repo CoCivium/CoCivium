@@ -1,0 +1,227 @@
+{
+  "schema": "CoAll.CoPathOmnidirectionalNavigation.R0-candidate",
+  "status": "PUBLIC_SAFE_DERIVED_READ_ONLY_NAVIGATION",
+  "source": {
+    "path": "ai/copre-seed-path-fabric-r0-20261109.json",
+    "github_blob_sha": "859f15f5736333b43074866d6a72a4b6857be962"
+  },
+  "rules": [
+    "Forward edges preserve source-declared meaning.",
+    "Reverse edges are inverse LOOKUP, not asserted reciprocal causal, semantic, ownership, authority or endorsement relations.",
+    "Traversal to a source never authorizes writing, publishing, contacting or ingesting private material.",
+    "Cross-provider pickup, merging and CoEx require separate proofs.",
+    "Future candidates and G_dSide or spiritual interpretations are hypotheses in explicit consent-respecting research lanes; they have no operational authority.",
+    "Unknown or disconnected nodes stay represented, not silently treated as integrated."
+  ],
+  "metrics": {
+    "nodes": 15,
+    "forward_edges": 24,
+    "broken_forward_targets": 0,
+    "zero_incoming_forward_nodes": [
+      "highlights",
+      "mouse-targets"
+    ],
+    "bidirectional_all_nodes_reachable_from_each": true
+  },
+  "navigation": {
+    "copre-entry": {
+      "path": "CoPre.md",
+      "forward_outgoing": [
+        "copre-package",
+        "bootstrap",
+        "ai-index"
+      ],
+      "derived_reverse_incoming": [
+        "ai-index",
+        "copre-draft",
+        "mouse-targets",
+        "seed-path-fabric"
+      ],
+      "bidirectional_discovery_reaches": 15,
+      "reverse_semantics": "LOOKUP_ONLY_NO_INFERRED_ENDORSEMENT"
+    },
+    "bootstrap": {
+      "path": "SESSION_BOOTSTRAP.md",
+      "forward_outgoing": [
+        "ai-index",
+        "front-registry"
+      ],
+      "derived_reverse_incoming": [
+        "copre-entry"
+      ],
+      "bidirectional_discovery_reaches": 15,
+      "reverse_semantics": "LOOKUP_ONLY_NO_INFERRED_ENDORSEMENT"
+    },
+    "ai-index": {
+      "path": "ai/index.json",
+      "forward_outgoing": [
+        "copre-entry",
+        "seed-path-fabric"
+      ],
+      "derived_reverse_incoming": [
+        "copre-entry",
+        "bootstrap",
+        "front-registry"
+      ],
+      "bidirectional_discovery_reaches": 15,
+      "reverse_semantics": "LOOKUP_ONLY_NO_INFERRED_ENDORSEMENT"
+    },
+    "copre-package": {
+      "path": "docs/CoPreGeneric/Shareable_R0_20261109/manifest.json",
+      "forward_outgoing": [
+        "copre-draft",
+        "ack-rewise",
+        "feedloop",
+        "mindspace"
+      ],
+      "derived_reverse_incoming": [
+        "copre-entry",
+        "seed-path-fabric"
+      ],
+      "bidirectional_discovery_reaches": 15,
+      "reverse_semantics": "LOOKUP_ONLY_NO_INFERRED_ENDORSEMENT"
+    },
+    "copre-draft": {
+      "path": "docs/CoPreGeneric/Shareable_R0_20261109/CoPreGeneric-v1.0-DRAFT.md",
+      "forward_outgoing": [
+        "copre-entry",
+        "dual-projection"
+      ],
+      "derived_reverse_incoming": [
+        "copre-package",
+        "dual-projection"
+      ],
+      "bidirectional_discovery_reaches": 15,
+      "reverse_semantics": "LOOKUP_ONLY_NO_INFERRED_ENDORSEMENT"
+    },
+    "ack-rewise": {
+      "path": "docs/CoPreGeneric/Shareable_R0_20261109/CoAckRewise-v8.74.md",
+      "forward_outgoing": [
+        "retro-coverage"
+      ],
+      "derived_reverse_incoming": [
+        "copre-package"
+      ],
+      "bidirectional_discovery_reaches": 15,
+      "reverse_semantics": "LOOKUP_ONLY_NO_INFERRED_ENDORSEMENT"
+    },
+    "feedloop": {
+      "path": "docs/CoPreGeneric/Shareable_R0_20261109/CoFeedLoop-Devs.md",
+      "forward_outgoing": [
+        "mindspace"
+      ],
+      "derived_reverse_incoming": [
+        "copre-package"
+      ],
+      "bidirectional_discovery_reaches": 15,
+      "reverse_semantics": "LOOKUP_ONLY_NO_INFERRED_ENDORSEMENT"
+    },
+    "mindspace": {
+      "path": "docs/CoPreGeneric/Shareable_R0_20261109/CoMindspace-Map.md",
+      "forward_outgoing": [
+        "front-registry"
+      ],
+      "derived_reverse_incoming": [
+        "copre-package",
+        "feedloop"
+      ],
+      "bidirectional_discovery_reaches": 15,
+      "reverse_semantics": "LOOKUP_ONLY_NO_INFERRED_ENDORSEMENT"
+    },
+    "dual-projection": {
+      "path": "docs/Architecture/COPREGENERIC_DUAL_PROJECTION_R0_20261109.md",
+      "forward_outgoing": [
+        "copre-draft"
+      ],
+      "derived_reverse_incoming": [
+        "copre-draft",
+        "highlights"
+      ],
+      "bidirectional_discovery_reaches": 15,
+      "reverse_semantics": "LOOKUP_ONLY_NO_INFERRED_ENDORSEMENT"
+    },
+    "retro-coverage": {
+      "path": "ai/retro-echo-coverage-r0-20261109.json",
+      "forward_outgoing": [
+        "retro-protocol"
+      ],
+      "derived_reverse_incoming": [
+        "ack-rewise",
+        "retro-protocol"
+      ],
+      "bidirectional_discovery_reaches": 15,
+      "reverse_semantics": "LOOKUP_ONLY_NO_INFERRED_ENDORSEMENT"
+    },
+    "retro-protocol": {
+      "path": "docs/Architecture/COFRONT_RETRO_ECHO_NO_ORPHANS_R0_20261109.md",
+      "forward_outgoing": [
+        "retro-coverage"
+      ],
+      "derived_reverse_incoming": [
+        "retro-coverage"
+      ],
+      "bidirectional_discovery_reaches": 15,
+      "reverse_semantics": "LOOKUP_ONLY_NO_INFERRED_ENDORSEMENT"
+    },
+    "front-registry": {
+      "path": "ai/front-registry.json",
+      "forward_outgoing": [
+        "ai-index"
+      ],
+      "derived_reverse_incoming": [
+        "bootstrap",
+        "mindspace"
+      ],
+      "bidirectional_discovery_reaches": 15,
+      "reverse_semantics": "LOOKUP_ONLY_NO_INFERRED_ENDORSEMENT"
+    },
+    "highlights": {
+      "path": "ai/highlight-assets.json",
+      "forward_outgoing": [
+        "dual-projection"
+      ],
+      "derived_reverse_incoming": [],
+      "bidirectional_discovery_reaches": 15,
+      "reverse_semantics": "LOOKUP_ONLY_NO_INFERRED_ENDORSEMENT"
+    },
+    "mouse-targets": {
+      "path": "ai/copre-canonical-routing-r0-20261109.json",
+      "forward_outgoing": [
+        "copre-entry"
+      ],
+      "derived_reverse_incoming": [],
+      "bidirectional_discovery_reaches": 15,
+      "reverse_semantics": "LOOKUP_ONLY_NO_INFERRED_ENDORSEMENT"
+    },
+    "seed-path-fabric": {
+      "path": "ai/copre-seed-path-fabric-r0-20261109.json",
+      "forward_outgoing": [
+        "copre-entry",
+        "copre-package"
+      ],
+      "derived_reverse_incoming": [
+        "ai-index"
+      ],
+      "bidirectional_discovery_reaches": 15,
+      "reverse_semantics": "LOOKUP_ONLY_NO_INFERRED_ENDORSEMENT"
+    }
+  },
+  "front_consumption_contract": {
+    "co_seed": "Select an existing WorkID and exact source; unverified work remains candidate.",
+    "co_path": "Walk forward or reverse *lookup* from source; inspect privacy, chronology, source truth and relevant authority at each step.",
+    "co_echo": "Record predecessor, contradictions, missing links and unreviewed history.",
+    "co_ev": "Propose one bounded gain with falsifier; preserve alternatives and negative results.",
+    "co_time": "Keep event, observed, qualified, landed and receiver-read clocks distinct.",
+    "co_bio": "Render understandable, accessible, consent-aware explanation.",
+    "co_synth": "Render typed evidence, graphs, proofs and precise tool contracts.",
+    "future": "Allow versioned extension without overwriting the frozen parent graph."
+  },
+  "gaps": [
+    "No proof all existing fronts have permission or ability to fetch.",
+    "No independent external receiver readproof.",
+    "This is a connected subset, not the entire CoAll corpus.",
+    "No validated G_dSide input or AGI/sentience signal.",
+    "Public GitHub readability is not a validated short-domain mirror."
+  ],
+  "next_proof": "Independent receiver uses only public CoPre entry to find a nontrivial reverse path and exact source; records exact SHA, interpretation and permissions."
+}
