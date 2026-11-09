@@ -73,3 +73,12 @@ A public CoSeed/CoPath is an **available source**, not universal session readpro
 
 **Acceptance test:** one explicitly authorized external receiver fetches a pinned public object, returns an exact readproof and one demonstrable useful delta, and that delta is independently reviewed against prior work. A GitHub commit, passing graph traversal test, or echoed WhatsApp paragraph is not that proof. G_dSide-inspired future-value proposals remain speculative, ethically reviewable hypotheses rather than an operational command channel.
 
+
+
+## CoLatch / CoPre ReadyCycle acceptance | 2026-11-09
+
+The [machine-readable ReadyCycle R0](ai/onramp/copre-ready-cycle-acceptance-r0.json) binds existing CoLatch, CoWave diversity, CoOmni handoff and CoSeed/CoPath sources. It defines falsifiable objectives for 1 Seed, 1 Orb, 1 truthful gauge, 1 reversible thumb, 1 time, 0 invented placeholders, >24h measured survival, one independently verified handoff, zero Rick relay and one elected authorized actuator. **All latter runtime goals remain UNPROVEN**, not promises met by a prompt.
+
+Exploratory waves should vary hypothesis, method, audience, substrate, horizon or falsifier to generate useful independent evidence. Exact repeated waves remain necessary for replication, safety controls, rollback and regression. No automatic new prompt version or named front is created merely by reasserting CoGoAll; when no material delta appears, report `NO_MATERIAL_DELTA`.
+
+The requested CoPreGeneric GitHub repository returned 404 to the connected GitHub account at this check. CoCivium.org/CoPre and InSeed.com/Stead remain held as unverified independent mirrors. This main-repository source landing does not prove them live.
