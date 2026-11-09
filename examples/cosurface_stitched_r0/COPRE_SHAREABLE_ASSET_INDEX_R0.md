@@ -55,3 +55,7 @@ Consumers should verify exact source blobs or content digests and record their *
 - [CoWet+ / CoDry+ design rule](COWET_HUMAN_SURFACE_RULE_R0.md) | at least one meaningful hero visual or experimental rich media for appropriate new human-facing surfaces; documented accessibility, emergency and low-bandwidth exceptions, plus retro-prioritization.
 - [Original SVG hero + voluntary ambient audio prototype](cowet_hero_audio_r0.html) | static self-contained source, not deployed web product; persistent on-surface silence and fully usable CoDry mode.
 - [CoWet+ static safety tests](test_cowet_hero_audio_r0.py) | static opt-in, CoDry, reduced-motion and no-autoplay contract checks; live browser QA still required.
+
+## Connected rich media and cultural substrates
+
+- [CoMediaGraph typed multi-modal sample](co_media_graph_r0.json) | [connection/coverage contract](CO_MEDIA_CONNECTABLES_R0.md) | [10 boundary tests](test_co_media_graph_r0.py). This binds source identities to diagram, hero, audio, video, timeline and cultural-interpretation anchors, without pretending missing media or receiver ACKs exist.
