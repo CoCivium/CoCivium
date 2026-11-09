@@ -151,7 +151,11 @@ jobs:
           assert len(ix["candidates"])==23
           assert len(ix["candidate_new_terms"])==5
           unresolved={v["term"] for v in ix["candidates"] if v["class"]=="UNRESOLVED"}
-          assert not {"CSMR","CiCollectibles"} & unresolved\n          meanings={v["term"]:v for v in ix["candidates"]}\n          assert meanings["CSMR"]["meaning"].startswith("CoScendent Modulation Ratio")\n          assert meanings["CoRiz+"]["source"]=="USER_DIRECT_2026-11-09"\n          assert "children and gamers" in meanings["CoCollectibles+"]["meaning"].lower()
+          assert not {"CSMR","CiCollectibles"} & unresolved
+          meanings={v["term"]:v for v in ix["candidates"]}
+          assert meanings["CSMR"]["meaning"].startswith("CoScendent Modulation Ratio")
+          assert meanings["CoRiz+"]["source"]=="USER_DIRECT_2026-11-09"
+          assert "children and gamers" in meanings["CoCollectibles+"]["meaning"].lower()
           bp="docs/Operations/wave-renders/cooverlap-20261109/BEGIN.md"
           ep="docs/Operations/wave-renders/cooverlap-20261109/END.md"
           a=Path(bp).read_text();b=Path(ep).read_text()
