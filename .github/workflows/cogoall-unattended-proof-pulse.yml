@@ -5,6 +5,8 @@ on:
       - '.github/workflows/cogoall-unattended-proof-pulse.yml'
       - 'examples/cotalkitout/progress_receipt_gate_r0.py'
       - 'test_progress_receipt_gate_r0.py'
+      - 'examples/cotalkitout/due_work_catchup_r0.py'
+      - 'test_due_work_catchup_r0.py'
   schedule:
     - cron: '17 * * * *'
   workflow_dispatch:
@@ -35,6 +37,7 @@ jobs:
           python -B examples/cotalkitout/cogoall_acceptance_gate_r0.py 2>&1 | tee acceptance.log
           python -B -m unittest -v test_progress_receipt_gate_r0 2>&1 | tee progress.log
           python -B -m unittest -v test_scheduled_cadence_audit_r0 2>&1 | tee cadence-tests.log
+          python -B -m unittest -v test_due_work_catchup_r0 2>&1 | tee catchup-tests.log
       - name: Observe actual scheduled wake coverage from GitHub Actions
         if: always()
         env:
@@ -52,7 +55,7 @@ jobs:
           python - <<'PY'
           import datetime, hashlib, json, os, pathlib
           logs = {}
-          for name in ('decision', 'grace', 'succession', 'acceptance', 'progress', 'cadence-tests'):
+          for name in ('decision', 'grace', 'succession', 'acceptance', 'progress', 'cadence-tests', 'catchup-tests'):
               p = pathlib.Path(name + '.log')
               logs[name] = hashlib.sha256(p.read_bytes()).hexdigest() if p.exists() else None
           cadence = pathlib.Path('schedule-audit.json')
@@ -78,6 +81,7 @@ jobs:
             acceptance.log
             progress.log
             cadence-tests.log
+            catchup-tests.log
             schedule-audit.json
           if-no-files-found: error
           retention-days: 30
