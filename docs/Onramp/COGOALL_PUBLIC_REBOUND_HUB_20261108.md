@@ -10,6 +10,7 @@
 5. [CoReGroup peer evidence contract](../Evolution/COREGROUP_PEER_EVIDENCE_CONTRACT_R0.md): provenance, lease fencing, verification, recovery; proposed contract, not proof of live peer sync.
 
 ## Current engineering threads
+- [CoMVP+ / CoLockStep+ stable-island release contract](../Architecture/COMVP_COLOCKSTEP_SOURCE_RELEASE_R0_20261109.md): runnable local source release-slot CLI, pinned minimum-use acceptance tests, atomic dependency cohorts, rollback and [74 passing CI checks](https://github.com/CoCivium/CoCivium/actions/runs/42605151164). **Not a qualified native X2/public MVP or CoAll-wide runtime controller.**
 - [rickBar Continuity R1 source and host acceptance contract](../Architecture/RICKBAR_CONTINUITY_R1_20261108.md): durable local conversation, fenced worker epoch and restart recovery with [passing synthetic CI](https://github.com/CoCivium/CoCivium/actions/runs/42540438846). **Not installed on X2 or native rickBar; no hosted-session swap or automatic deletion.**
 - [Ollama loopback gateway](../../examples/comodelfabric/ollama_gateway_r0.py) and [GitHub Actions workflow](../../.github/workflows/comodelfabric-ollama.yml): source and CI configuration; inspect actual run status before asserting PASS.
 - [WorkID receipt store](../../examples/comodelfabric/test_gateway_bridge.py): idempotency/replay/conflict prototype; not native receiver.
