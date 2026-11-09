@@ -5,6 +5,8 @@ on:
       - '.github/workflows/cogoall-unattended-proof-pulse.yml'
       - 'examples/cotalkitout/progress_receipt_gate_r0.py'
       - 'test_progress_receipt_gate_r0.py'
+      - 'examples/cotalkitout/scheduled_pulse_readback_r0.py'
+      - 'test_scheduled_pulse_readback_r0.py'
       - 'examples/cotalkitout/due_work_catchup_r0.py'
       - 'test_due_work_catchup_r0.py'
   schedule:
@@ -43,6 +45,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ github.token }}
         run: python -B examples/cotalkitout/scheduled_cadence_audit_r0.py
+      - name: Verify prospective second-job receipt contract
+        run: python -B -m unittest -v test_scheduled_pulse_readback_r0.py
       - name: Produce immutable run-scoped evidence
         if: always()
         env:
@@ -88,3 +92,33 @@ jobs:
       - name: Fail closed when source tests failed
         if: steps.tests.outcome != 'success'
         run: exit 1
+
+  pulse-receiver:
+    needs: proof
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Download exact run-scoped proof from upstream job
+        uses: actions/download-artifact@v4
+        with:
+          name: cogoall-proof-${{ github.run_id }}-${{ github.run_attempt }}
+          path: out/cogoall/pulse-source
+      - name: Verify actual source receipt, cadence and log hashes
+        run: |
+          python -B examples/cotalkitout/scheduled_pulse_readback_r0.py \
+            --source-dir out/cogoall/pulse-source \
+            --receipt out/cogoall/pulse-receiver/readback.json
+          python -m json.tool out/cogoall/pulse-receiver/readback.json >/dev/null
+      - name: Upload independently generated CI-scoped readback
+        uses: actions/upload-artifact@v4
+        with:
+          name: cogoall-pulse-readback-${{ github.run_id }}-${{ github.run_attempt }}
+          path: out/cogoall/pulse-receiver/readback.json
+          if-no-files-found: error
+          retention-days: 30
