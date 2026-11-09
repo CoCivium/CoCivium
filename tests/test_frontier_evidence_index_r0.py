@@ -68,7 +68,7 @@ class FrontierIndexTests(unittest.TestCase):
 
     def test_silent_blocker_removal_detected_by_predecessor(self):
         previous = copy.deepcopy(self.doc)
-        self.doc["fronts"][0]["blocked_claims"].remove("CI_PASS")
+        self.doc["fronts"][0]["blocked_claims"].pop(0)
         validate(self.doc, self.root)
         with self.assertRaisesRegex(Hold, "HOLD_SILENT_BLOCKER_REMOVAL"):
             validate_continuity(previous, self.doc)
@@ -76,8 +76,9 @@ class FrontierIndexTests(unittest.TestCase):
     def test_valid_resolution_pointer_only_proves_structure(self):
         previous = copy.deepcopy(self.doc)
         self.doc["fronts"][0]["blocked_claims"].remove("CI_PASS")
+        removed_claim = previous["fronts"][0]["blocked_claims"][0]
         self.doc["fronts"][0]["claim_resolutions"] = [{
-            "claim": "CI_PASS",
+            "claim": removed_claim,
             "evidence_ref": "github-actions-run:1234",
             "verifier_ref": "independent-review:1234",
             "observed_at": "2026-11-09T20:01:00Z",
@@ -112,6 +113,7 @@ class FrontierIndexTests(unittest.TestCase):
 
     def test_tested_promotion_needs_real_run_ref_shape(self):
         self.doc["fronts"][0]["status"] = "tests_executed"
+        self.doc["fronts"][0].pop("test_receipt", None)
         with self.assertRaisesRegex(Hold, "HOLD_UNGROUNDED_TEST_STATUS"):
             validate(self.doc, self.root)
 
@@ -160,7 +162,7 @@ class FrontierIndexTests(unittest.TestCase):
             validate(self.doc, self.root)
 
     def test_duplicate_blocker_rejected(self):
-        self.doc["fronts"][0]["blocked_claims"].append("CI_PASS")
+        self.doc["fronts"][0]["blocked_claims"].append(self.doc["fronts"][0]["blocked_claims"][0])
         with self.assertRaisesRegex(Hold, "HOLD_BLOCKED_CLAIMS"):
             validate(self.doc, self.root)
 
