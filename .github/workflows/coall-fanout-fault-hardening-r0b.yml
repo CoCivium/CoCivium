@@ -7,11 +7,13 @@ on:
   pull_request:
     paths:
       - "scripts/CoAllFanoutR0.py"
+      - "scripts/CoAllSessionFanInR0.py"
       - "ai/coordination/coall-fanout-r0b/**"
       - ".github/workflows/coall-fanout-fault-hardening-r0b.yml"
   push:
     paths:
       - "scripts/CoAllFanoutR0.py"
+      - "scripts/CoAllSessionFanInR0.py"
       - "ai/coordination/coall-fanout-r0b/**"
       - ".github/workflows/coall-fanout-fault-hardening-r0b.yml"
 
@@ -24,6 +26,10 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+
+      - name: Negative session-source fan-in regression (no external effects)
+        run: |
+          python -B -m unittest discover -s ai/coordination/coall-fanout-r0b -p "test_session_fanin_r0.py" -v
 
       - name: Initialize
         run: |
