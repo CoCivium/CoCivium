@@ -114,7 +114,6 @@ class GateTests(unittest.TestCase):
 
 
 
-
 class BoundedEvolutionTests(unittest.TestCase):
     """One candidate successor per call; never a provider side effect."""
 
