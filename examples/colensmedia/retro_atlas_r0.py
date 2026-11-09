@@ -29,6 +29,11 @@ def sha(blob: bytes) -> str:
     return hashlib.sha256(blob).hexdigest()
 
 
+def git_blob(blob: bytes) -> str:
+    """Same byte identity GitHub uses for pinned public objects."""
+    return hashlib.sha1(b"blob " + str(len(blob)).encode("ascii") + b"\0" + blob).hexdigest()
+
+
 def in_scope(relative: str) -> bool:
     if not isinstance(relative, str) or "\\" in relative or "\x00" in relative:
         return False
@@ -101,6 +106,7 @@ def inventory(root: Path, paths: list[str], prior: dict | None = None) -> dict:
                 value for old_path, value in stored if old_path == relative)
             stored[key] = {
                 "source_path": relative, "sha256": checksum,
+                "git_blob_sha1": git_blob(blob),
                 "byte_count": len(blob), "custody": "PUBLIC_REPO_CHECKOUT",
                 "lifecycle": "VERIFIED_LOCAL",
                 "semantic_coverage": "NOT_SEMANTICALLY_REVIEWED",
@@ -139,6 +145,66 @@ def inventory(root: Path, paths: list[str], prior: dict | None = None) -> dict:
     }
 
 
+def reconcile_curated_overlay(scan: dict, overlay: dict) -> dict:
+    """Relate bounded public scan to the EXISTING CoNav five-source overlay.
+
+    This verifies *source identity*, not whether an inspiration relationship
+    is true or licensed. Unmapped files remain explicit and noncanonical.
+    """
+    if (not isinstance(scan, dict) or scan.get("schema") != SCHEMA
+            or not isinstance(overlay, dict)
+            or overlay.get("schema") != "CoAll.CoNav.PriorMediaBackfillOverlay.R0"
+            or overlay.get("rights_release") is not False
+            or overlay.get("media_bytes_uploaded") is not False
+            or not isinstance(overlay.get("candidates"), list)
+            or len(overlay["candidates"]) > 150):
+        raise ValueError("HOLD_CURATED_OVERLAY_POLICY")
+    current = {(x["source_path"], x["sha256"])
+               for x in scan["current_source_keys"]}
+    known = {x["source_path"]: x for x in scan["candidates"]
+             if (x["source_path"], x["sha256"]) in current}
+    matched = set()
+    outside = []
+    seen = set()
+    for item in overlay["candidates"]:
+        if (not isinstance(item, dict)
+                or item.get("privacy") != "PUBLIC_METADATA_ONLY"
+                or item.get("rights") !=
+                   "PUBLIC_SOURCE_READABLE_DERIVATIVE_RIGHTS_NOT_VERIFIED"
+                or item.get("bytes_copied_into_overlay") is not False
+                or item.get("relation_type") != "INSPIRATION_CANDIDATE_FOR"):
+            raise ValueError("HOLD_CURATED_CANDIDATE_AUTHORITY")
+        source = item.get("source")
+        if (not isinstance(source, dict)
+                or source.get("repository") != "CoCivium/CoCivium"
+                or not isinstance(source.get("path"), str)
+                or not isinstance(source.get("git_blob_sha1"), str)
+                or not re.fullmatch(r"[a-f0-9]{40}", source["git_blob_sha1"])
+                or source["path"] in seen):
+            raise ValueError("HOLD_CURATED_SOURCE_IDENTITY")
+        path = source["path"]
+        seen.add(path)
+        if path not in known:
+            # A known curated candidate outside the bounded four-root scan
+            # is not a failed source proof, nor a silently discarded record.
+            outside.append(path)
+            continue
+        if known[path]["git_blob_sha1"] != source["git_blob_sha1"]:
+            raise ValueError("HOLD_CURATED_BLOB_DRIFT")
+        matched.add(path)
+    return {
+        "schema": "CoMap.RetroCuratedCoverage.R0",
+        "curated_exact_source_matches": sorted(matched),
+        "curated_outside_bounded_scan": sorted(outside),
+        "current_public_candidates_not_curated": sorted(set(known)-matched),
+        "curated_candidate_count": len(overlay["candidates"]),
+        "unclassified_count": len(set(known)-matched),
+        "inspiration_edges_adopted": 0,
+        "overlap_proves_semantic_relation": False,
+        "complete_media_history": False,
+    }
+
+
 def safe(value: str) -> str:
     if not isinstance(value, str) or not SAFE_LABEL.fullmatch(value):
         raise ValueError("HOLD_UNSAFE_ATLAS_LABEL")
@@ -165,7 +231,9 @@ def atlas(frontier: dict, manifest: dict, scan: dict) -> str:
     lines = [
         "# CoMap / CoNav atlas of atlases R0", "",
         "**SOURCE-ONLY PUBLIC PROJECTION. NO X2 OR LIVE RECEIVER ACK.**", "",
-        "One derived view of existing public evidence fronts, a CoLens WorkID,",
+        "Supplemental COVERAGE LENS, not a second governing CoNav graph.",
+        "Primary atlas: examples/comap/diagram-of-diagrams-r0.md.",
+        "This view combines existing public evidence fronts, one CoLens WorkID",
         "and a bounded retro scan. Proximity is not a verified relationship.", "",
         "~~~mermaid", "flowchart TB",
         '  subgraph COALL["CoAll atlas of atlases"]',
@@ -231,6 +299,16 @@ def atlas(frontier: dict, manifest: dict, scan: dict) -> str:
         lines.append("- ["+p+"]("+
                      "https://github.com/CoCivium/CoCivium/blob/main/"+p+
                      ") : SHA-256 "+x["sha256"]+"; unreviewed")
+    if isinstance(scan.get("curated_bridge"), dict):
+        bridge = scan["curated_bridge"]
+        lines += ["", "### Existing CoNav curated overlay comparison",
+                  "Curated exact Git blob matches in this scan: "+
+                  str(len(bridge["curated_exact_source_matches"])),
+                  "Curated paths outside this bounded scan: "+
+                  str(len(bridge["curated_outside_bounded_scan"])),
+                  "Public candidates not curated in the existing atlas: "+
+                  str(bridge["unclassified_count"]),
+                  "These are candidate discovery gaps, NOT approved inspiration."]
     lines += ["", "Additional public candidates omitted from this VIEW: "+
               str(max(0, len(current)-DISPLAY_LIMIT))+
               "; retained in the bounded machine index.",
@@ -247,11 +325,15 @@ def main() -> None:
                    "docs/Evolution/FRONTIER_EVIDENCE_INDEX_R0.json")
     p.add_argument("--media", default=
                    "examples/colensmedia/relational_media_fixture_r0.json")
+    p.add_argument("--overlay", default=
+                   "examples/comap/prior-media-backfill-overlay-r0.json")
     p.add_argument("--index-out", required=True)
     p.add_argument("--atlas-out", required=True)
     args = p.parse_args()
     root = Path(args.root).resolve()
     scan = inventory(root, tracked_public_paths(root))
+    overlay = json.loads((root/args.overlay).read_text(encoding="utf-8"))
+    scan["curated_bridge"] = reconcile_curated_overlay(scan, overlay)
     frontier = json.loads((root/args.frontier).read_text(encoding="utf-8"))
     media = json.loads((root/args.media).read_text(encoding="utf-8"))
     diagram = atlas(frontier, media, scan)
@@ -266,6 +348,8 @@ def main() -> None:
     print(json.dumps({
         "state": "PUBLIC_SOURCE_CANDIDATES_SCANNED",
         "count": len(scan["current_source_keys"]),
+        "curated_matches": len(scan["curated_bridge"]["curated_exact_source_matches"]),
+        "unclassified": scan["curated_bridge"]["unclassified_count"],
         "semantic_coverage": scan["semantic_coverage"],
         "atlas_sha256": sha(diagram.encode("utf-8")),
         "receiver_ack": False,
