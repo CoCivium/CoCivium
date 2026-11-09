@@ -63,3 +63,22 @@ The [expandable, static HTML CoNav source map](conav_navigator_r0.html) and its 
 
 `RENDER_NE_INSPIRATION_ADOPTION` | `PUBLIC_POINTER_NE_COPY_RIGHTS` | `GRAPH_NE_CROSS_SESSION_SYNC` | `PRIVATE_ONLY_CHANGE_NE_PUBLIC_REVISION` | `SOURCE_LANDED_NE_RECEIVER_PICKUP`.
 
+
+
+## CoCircuit+ audience and CoGoldenBraid lens | 2026-11-09
+
+**Purpose:** An additional representational lens, not a new source graph or literal electrical machine. This reuses the existing [five source-bound retro candidates](conav_retro_manifest_r0.json) and preserves the [nested CoNav diagram](conav_diagram_r0.md), [CoMap atlas](../comap/README.md), [CoSubstrateField](../../docs/Architecture/COSUBSTRATE_FIELD_R0.md), and [G_dSide / CoGoldenBraid experimental contract](../../docs/Evolution/GDSIDE_COPRIMATH_GSLOOP_PUBLIC_R0.md).
+
+- [Machine-readable audience and substrate policy](coaudience_circuit_policy_r0.json): seven audience needs and seven representation types, with declared preserved relations, semantic losses, receiver role, rights ceiling and falsifiers.
+- [Generated circuit-style Mermaid diagram plus demand/supply/future matrix](coaudience_circuit_r0.md): symbolic gates for rights, semantic review, and independent receiver readback, all **HELD** for the five unreviewed public-source candidates.
+- [Read-only projection compiler](coaudience_circuit_r0.py) and [26 regression tests](tests/test_coaudience_circuit_r0.py): pins the exact retro manifest Git blob, rejects source drift, private promotion, unbound audiences, hidden effect grants, unreviewed rights, fake G_dSide authority, and stale output.
+- Existing [CoLiving-media CI workflow](../../.github/workflows/co-living-media-r0.yml) now runs the compiler's generated-view parity check and discovers all 25 tests. **Local isolated PASS 26/26; revised GitHub Actions PASS not independently established.**
+
+### The braid is a comparison, not a crown
+
+**DemandSide:** distinguish receiver-expressed needs from inferred unmet needs, with uncertainty and consent. **SupplySide:** bind available capabilities, exact source, time and cost. **G_dSide:** test revisable candidate futures for agency, accessibility, fairness, ecological resilience, optionality and impacts on those absent from ordinary market signals. Prefer comparing these perspectives and a simpler baseline on the *same* task, budget, rights and receiver metrics. A spiritual or mythic lens confers no verified forecast and no special effect authority.
+
+**CoTranslation invariant:** stable source identity and WorkID survive view changes; declared representation loss, accessibility alternatives and preserved counterexamples travel with a projected view. A circuit arrow may express a candidate dependency, not proven electricity, causation, consent, or an executable step. Retroactive prior media stay metadata-only until independently qualified, permissioned, semantically reviewed and receiver-accepted. Emails remain at `STAGED` unless a separate authorized provider effect is actually verified.
+
+`CIRCUIT_NE_EXECUTABLE_EFFECT` | `AUDIENCE_FIT_NE_RECEIVER_ADOPTION` | `SUPPLY_NE_DEMAND` | `GDSIDE_NE_AUTHORITY` | `TRANSLATION_NE_EQUIVALENCE` | `MEDIA_SOURCE_NE_MEDIA_RIGHTS`.
+

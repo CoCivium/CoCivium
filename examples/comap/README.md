@@ -1,5 +1,9 @@
 # CoMap+ Source Weave R0 | Working offline reader
 
+## Public megascroller R0
+
+[Portable public megascroller release and manifest](public-megascroller-r0/README.md). A fully source-bound static HTML edition with stable fragment anchors, not a deployed website or independent replica. Exact output is checked by existing read-only media CI; remote hosting and reader uptake remain unproven.
+
 **[Open or save the interactive CoMap+ HTML](source-weave-r0.html)**. GitHub may display HTML markup rather than execute the file; save the single file and open it in a browser. This has **no external requests, telemetry or machine control**. It is a source-registered projection, **not a live semantic bus, all-term crawler, CoAll canon, policy enforcement engine or CoOrb/X2 installation**.
 
 ## What is implemented and tested

@@ -8,6 +8,9 @@ on:
       - 'ai/comap-source-projection-r0.json'
       - 'scripts/CoNavNestedAtlasR0.cjs'
       - 'scripts/test_conav_nested_atlas_r0.cjs'
+      - 'scripts/build_public_megascroller_r0.cjs'
+      - 'scripts/test_public_megascroller_r0.cjs'
+      - 'docs/Evolution/COPUBLIC_CONSTELLATION_MEGASCROLLER_R0.json'
       - 'docs/Architecture/COFREE_EVOLVING_PUBLICATION_COMMONS_R0_20261026.md'
       - 'docs/Architecture/COPUBLICATION_FEDERATION_RECEIVER_INTEREST_R0_20261025.md'
       - 'docs/Architecture/CORELATIONSHIP_BRAID_FABRIC_R0_20261026.md'
@@ -25,6 +28,9 @@ on:
       - 'ai/comap-source-projection-r0.json'
       - 'scripts/CoNavNestedAtlasR0.cjs'
       - 'scripts/test_conav_nested_atlas_r0.cjs'
+      - 'scripts/build_public_megascroller_r0.cjs'
+      - 'scripts/test_public_megascroller_r0.cjs'
+      - 'docs/Evolution/COPUBLIC_CONSTELLATION_MEGASCROLLER_R0.json'
       - 'docs/Architecture/COFREE_EVOLVING_PUBLICATION_COMMONS_R0_20261026.md'
       - 'docs/Architecture/COPUBLICATION_FEDERATION_RECEIVER_INTEREST_R0_20261025.md'
       - 'docs/Architecture/CORELATIONSHIP_BRAID_FABRIC_R0_20261026.md'
@@ -62,6 +68,8 @@ jobs:
           node scripts/CoNavNestedAtlasR0.cjs --check
       - name: Verify CoNav retro source pins and nested diagram projections
         run: python3 -B examples/colensmedia/conav_retro_r0.py --root . --manifest examples/colensmedia/conav_retro_manifest_r0.json --diagram examples/colensmedia/conav_diagram_r0.md --html examples/colensmedia/conav_navigator_r0.html --check
+      - name: Verify CoNav circuit representation and audience braid against pinned manifest
+        run: python3 -B examples/colensmedia/coaudience_circuit_r0.py --manifest examples/colensmedia/conav_retro_manifest_r0.json --policy examples/colensmedia/coaudience_circuit_policy_r0.json --diagram examples/colensmedia/coaudience_circuit_r0.md --check
       - name: Generate machine evidence receipt, not promotion
         shell: bash
         run: |
@@ -110,6 +118,15 @@ jobs:
           python3 -m json.tool "$RUNNER_TEMP/retro-media-index.json" >/dev/null
           grep -q "subgraph COALL" "$RUNNER_TEMP/comap-coverage-lens.md"
           grep -q "Verified CoSeed/CoPath inspiration links: ZERO" "$RUNNER_TEMP/comap-coverage-lens.md"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify byte-exact static megascroller and offline recovery
+        shell: bash
+        run: |
+          set -euo pipefail
+          node scripts/build_public_megascroller_r0.cjs --check
+          node --test scripts/test_public_megascroller_r0.cjs
       - uses: actions/upload-artifact@v4
         with:
           name: colens-living-media-r0-${{ github.run_id }}
@@ -117,5 +134,7 @@ jobs:
             ${{ runner.temp }}/benchmark_evo.jsonl
             ${{ runner.temp }}/retro-media-index.json
             ${{ runner.temp }}/comap-coverage-lens.md
+            examples/comap/public-megascroller-r0/index.html
+            examples/comap/public-megascroller-r0/release-manifest.json
           if-no-files-found: error
           retention-days: 7
