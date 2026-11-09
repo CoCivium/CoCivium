@@ -97,7 +97,7 @@ class CoPreGenericContractTests(unittest.TestCase):
         self.assertIn("UNKNOWN_REQUIRES_RECOVERY", self.doc)
         self.assertIn("Meta AI", self.doc)
         self.assertIn("PR #402", self.doc)
-        self.assertIn("not a deployed", self.doc.lower())
+        self.assertIn("not merged", self.doc.lower())
 
 
 if __name__ == "__main__":
