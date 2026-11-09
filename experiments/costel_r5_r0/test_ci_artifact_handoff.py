@@ -5,9 +5,11 @@ Fixtures imitate runner variables; actual separate-job pickup requires hosted CI
 from __future__ import annotations
 import hashlib
 import json
+import os
 import tempfile
 import unittest
 from pathlib import Path
+from unittest.mock import patch
 
 from ci_artifact_handoff import (
     WORK_ID, PRODUCER_JOB, RECEIVER_JOB, SOURCE_SCHEMA,
@@ -63,6 +65,23 @@ class HandoffTests(unittest.TestCase):
     def test_missing_job_context(self):
         with self.assertRaisesRegex(ValueError, "HOLD_MISSING_GITHUB_CONTEXT"):
             require_context({}, PRODUCER_JOB)
+
+    def test_real_os_environ_mapping_producer_receiver_roundtrip(self):
+        # The actual CLI passes os.environ (os._Environ), not a plain dict.
+        # This is the former CI failure even when all GitHub fields are set.
+        with patch.dict(os.environ, context(PRODUCER_JOB)):
+            self.assertEqual(produce(self.data, os.environ)["producer_job"], PRODUCER_JOB)
+        with patch.dict(os.environ, context(RECEIVER_JOB)):
+            receipt = receive(self.data, self.receipt, os.environ)
+        self.assertEqual(receipt["state"], "HASH_MATCHED_ARTIFACT_PICKUP_CI_SCOPE")
+        self.assertEqual(receipt["provider_failure_domain"], "SAME_GITHUB_ACTIONS_PROVIDER")
+        self.assertIs(receipt["global_session_ack"], False)
+
+    def test_empty_required_environment_value_fails_closed(self):
+        env = context(PRODUCER_JOB)
+        env["GITHUB_SHA"] = ""
+        with self.assertRaisesRegex(ValueError, "HOLD_MISSING_GITHUB_CONTEXT"):
+            produce(self.data, env)
 
     def test_explicit_actions_environment(self):
         env = context(PRODUCER_JOB)
