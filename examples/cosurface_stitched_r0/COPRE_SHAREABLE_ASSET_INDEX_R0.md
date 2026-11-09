@@ -59,3 +59,7 @@ Consumers should verify exact source blobs or content digests and record their *
 ## Connected rich media and cultural substrates
 
 - [CoMediaGraph typed multi-modal sample](co_media_graph_r0.json) | [connection/coverage contract](CO_MEDIA_CONNECTABLES_R0.md) | [10 boundary tests](test_co_media_graph_r0.py). This binds source identities to diagram, hero, audio, video, timeline and cultural-interpretation anchors, without pretending missing media or receiver ACKs exist.
+
+## Golden Thread and CoBraid front preservation
+
+- [CoGoldenThread+ / CoBraid+ R0](CO_GOLDEN_THREAD_BRAID_R0.md) | Preserve discovered front identities, competing alternatives, evidence relationships, holds, history and projection-specific provenance. This is not an all-history inventory or active-agent census.
