@@ -71,8 +71,8 @@ The [expandable, static HTML CoNav source map](conav_navigator_r0.html) and its 
 
 - [Machine-readable audience and substrate policy](coaudience_circuit_policy_r0.json): seven audience needs and seven representation types, with declared preserved relations, semantic losses, receiver role, rights ceiling and falsifiers.
 - [Generated circuit-style Mermaid diagram plus demand/supply/future matrix](coaudience_circuit_r0.md): symbolic gates for rights, semantic review, and independent receiver readback, all **HELD** for the five unreviewed public-source candidates.
-- [Read-only projection compiler](coaudience_circuit_r0.py) and [25 regression tests](tests/test_coaudience_circuit_r0.py): pins the exact retro manifest Git blob, rejects source drift, private promotion, unbound audiences, hidden effect grants, unreviewed rights, fake G_dSide authority, and stale output.
-- Existing [CoLiving-media CI workflow](../../.github/workflows/co-living-media-r0.yml) now runs the compiler's generated-view parity check and discovers all 25 tests. **Local isolated PASS 25/25; revised GitHub Actions PASS not independently established.**
+- [Read-only projection compiler](coaudience_circuit_r0.py) and [26 regression tests](tests/test_coaudience_circuit_r0.py): pins the exact retro manifest Git blob, rejects source drift, private promotion, unbound audiences, hidden effect grants, unreviewed rights, fake G_dSide authority, and stale output.
+- Existing [CoLiving-media CI workflow](../../.github/workflows/co-living-media-r0.yml) now runs the compiler's generated-view parity check and discovers all 25 tests. **Local isolated PASS 26/26; revised GitHub Actions PASS not independently established.**
 
 ### The braid is a comparison, not a crown
 
