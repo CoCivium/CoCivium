@@ -94,7 +94,12 @@ class ReceiverProjectionTests(unittest.TestCase):
             root = Path(tmp)
             self.assertEqual(child("producer", root).returncode, 0)
             self.assertEqual(child("receiver", root).returncode, 0)
-            (root / "receiver-effect.json").write_bytes(b'{"fake":"effect"}')
+            # Preserve WorkID and source relation; mutate only the bytes that
+            # the receiver's effect digest is supposed to authenticate.
+            effect_file = root / "receiver-effect.json"
+            effect = json.loads(effect_file.read_bytes())
+            effect["effect"] = "TAMPERED_EFFECT"
+            effect_file.write_text(json.dumps(effect), encoding="utf-8")
             p = receipt_projection(root)
             self.assertEqual(p["status"], "UNVERIFIED")
             self.assertEqual(p["reason"], "RECEIPT_EFFECT_MISMATCH")
