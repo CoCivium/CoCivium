@@ -108,3 +108,57 @@ def evaluate(draft: DraftEvidence) -> dict:
             "CONNECTED_ACCOUNT_NE_OTHER_ACCOUNT_AUTHORITY",
         ],
     }
+
+def propose_evolution(draft: DraftEvidence, *, proposed_content_sha256: str,
+                      change_kind: str, depth: int, budget: int = 4) -> tuple[DraftEvidence, dict]:
+    """Produce one *unapplied* bounded Turtle successor, never a provider draft edit.
+
+    The predecessor remains immutable. A proposed change invalidates editorial
+    review, approval and any specific authority for that exact content. Reuse
+    the old WorkID/source revision; a changed external source must be rebound
+    independently before candidate evolution can resume.
+    """
+    from dataclasses import replace
+    from hashlib import sha256
+
+    evaluate(draft)  # Validate snapshot shape and evidence flags, no effects.
+    if type(depth) is not int or type(budget) is not int or not (0 <= depth <= budget <= 8):
+        raise ValueError("bounded nonnegative Turtle depth required")
+    if change_kind not in {"CLAIM_CORRECTION", "ACCESSIBILITY", "CONTEXT_UPDATE",
+                           "CHALLENGE", "RETRACTION", "PROJECTION_EXPERIMENT"}:
+        raise ValueError("typed change purpose required")
+    if not isinstance(proposed_content_sha256, str) or not SHA256.fullmatch(proposed_content_sha256):
+        raise ValueError("new exact content digest required")
+    basis = {
+        "schema": "CoLUE.BoundedEvolution.R0",
+        "work_sha256": sha256(draft.work_id.encode("utf-8")).hexdigest(),
+        "parent_content_sha256": draft.content_sha256,
+        "source_revision": draft.source_revision,
+        "candidate_sha256": proposed_content_sha256,
+        "reason": change_kind,
+        "depth": depth,
+        "budget": budget,
+        "effect": "NONE",
+        "provider_draft_edited": False,
+        "recipient_contacted": False,
+        "receiver_ack": False,
+        "nonclaims": ["PROPOSAL_NE_PROVIDER_DRAFT", "TURTLE_NE_AUTHORITY",
+                      "SOURCE_REVISION_NE_RECEIVER_CURRENTNESS"],
+    }
+    if draft.source_revision != draft.current_source_revision:
+        return draft, {**basis, "state": "HOLD_UPSTREAM_SOURCE_DRIFT", "next_event": "REBIND_SOURCE"}
+    if proposed_content_sha256 == draft.content_sha256:
+        return draft, {**basis, "state": "QUIESCE_NO_MATERIAL_CHANGE", "next_event": "WAIT_FOR_NEW_EVIDENCE"}
+    if depth >= budget:
+        return draft, {**basis, "state": "QUIESCE_TURTLE_BUDGET", "next_event": "REVIEW_BUDGET"}
+    successor = replace(draft, content_sha256=proposed_content_sha256,
+                        reviewed_content_sha256=None, approved_content_sha256=None,
+                        specific_send_authority_ref=None)
+    # No mutation or authorization is performed by this function.
+    return successor, {
+        **basis,
+        "state": "SUCCESSOR_PROPOSED_UNAPPLIED",
+        "depth": depth + 1,
+        "next_event": "REVIEW_EXACT_SUCCESSOR_DIGEST",
+        "approval_reset": True,
+    }
