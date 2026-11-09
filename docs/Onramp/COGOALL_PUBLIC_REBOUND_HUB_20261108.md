@@ -109,3 +109,18 @@ The **existing** [CoLiving-media CI](../../.github/workflows/co-living-media-r0.
 **G_dSide+/CoMetaAttractor:** keep as a philosophical/value hypothesis and candidate future-oriented optimization research, distinct from evidence and operational authority. Oscillation/recursion across research and interfaces can inspire mechanisms; it does not prove divine messages, AGI, consciousness, sentience or a singularity. CoTheoryAll/CC and highlight entries remain candidate/source-bound pending their own rights, editorial, validation and release gates.
 
 **One acceptance gate:** an independently authorized receiver loads the exact public-safe WorkID/source digest, detects one distinct uncarried delta, checkpoints/resumes one bounded task, and returns exact readproof without Rick copying between sessions. Until that occurs, this contribution is `PUBLIC_SOURCE_LANDED__EXTERNAL_PICKUP_UNPROVEN`.
+
+
+## CoPreGeneric CoSeed+ / CoPath+ reusable handoff | 2026-11-09
+
+**CoHereNow:** The [public machine CoPreGeneric source](../../ai/onramp/copre-generic-session-contribution-r0.json) now includes an explicit `coseed_copath_recovery_entry_20261109`. **CoSeed+** is a compact source identity/currentness and recovery pointer, not a magically synchronized live Seed. **CoPath+** provides independently followable routes for machine and human readers to the appropriate original evidence, reviewable candidate, preserved predecessor, or HELD proof. They do not duplicate the real WorkID, confer authority or guarantee cross-session pickup.
+
+- [Bootstrap / CoSeed source root](../../SESSION_BOOTSTRAP.md): public-safe rebind and role-scoped currentness; consult live content when available.
+- [AI discovery index / CoPath navigation](../../ai/index.json): machine-readable currentness pointers, not canon or provider instructions.
+- [CoPreGeneric four-asset public draft PR #431](https://github.com/CoCivium/CoCivium/pull/431): portable protocol, CoAckRewise, reproducible developer feedback, observable model-session comparison and manifest; source tests passed at [run 42715790563](https://github.com/CoCivium/CoCivium/actions/runs/42715790563). **DRAFT, UNMERGED, NOT A RELEASE.**
+- [CoFront/CoEcho retrospective candidate PR #428](https://github.com/CoCivium/CoCivium/pull/428): bounded synthetic coverage/unknowns and private-public separation, tested at [run 42709771403](https://github.com/CoCivium/CoCivium/actions/runs/42709771403). Not an actual complete history scan.
+- [Existing CoGoAll outstanding proof register](../Operations/COGOALL_OUTSTANDING_REGISTER_20261108.md): independent receiver pickup, rights-cleared historic coverage, deploy/recovery acceptance, and native X2/CoStead gates remain separate.
+
+**Receiver rule:** Every front may read its relevant public-safe CoSeed and CoPath if an authorized read route exists, but no reading, pickup, integration, CoEx, cross-domain mirror or runtime effect is inferred. Draft PRs remain visible and qualified for review; last-known-good releases and predecessors remain untouched. Public-safe pointers, not private WhatsApp transcripts, drafts, contact IDs, credentials, or machine inventory, are published here.
+
+**Next independent proof:** a separate authorized receiver reads the exact WorkID/edition digest through CoPath, identifies one material delta and returns a verifiable readback/continuation receipt without Rick relaying.
