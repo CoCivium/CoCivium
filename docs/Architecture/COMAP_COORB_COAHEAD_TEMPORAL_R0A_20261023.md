@@ -39,69 +39,42 @@ Nonclaims: `LOCAL_IS_NOT_LANDED | VALIDATION_IS_NOT_ACCEPTANCE | NO_RECEIVER_PIC
 
 FOSS Forever | CoGoAll | Working Together Respectfully | privacy-by-design | voluntary and accessible.
 
-## CoOrb permeable boundary, outward vectors and versioned time | R0B candidate (2026-11-08)
 
-**State:** Public source-level extension to the same CoMap/CoOrb/CoAhead temporal contract. A cloud, halo, tendril, ripple, or blurred edge is a visualization of **qualified relations and uncertainty**, not a magic source of truth, undisclosed sensing, model sentience, or unrestricted data flow.
+## CoOrbMembrane+ / CoTimeSkin+ candidate extension (2026-11-08)
 
-### The boundary is typed, directional, consent-aware and time-aware
+**State:** PUBLIC-SAFE DESIGN CANDIDATE; NO LIVE RENDERER OR RECEIVER PICKUP CLAIM.
 
-For any current CoOrb version, define a finite **boundary projection** over the existing relational fabric. Relations may cross inward (authorized evidence/resource/feedback), outward (consented proposals, source-linked publications, receiver acknowledgments), tangentially (peer challenge, substitution, alternatives), or temporally (historical predecessor, currently due, forecast, counterfactual). A direction represents relation semantics, **not** physical motion or an automatically permitted send.
-
-Candidate boundary strand:
+CoOrb boundary is a typed evidence/authority membrane, not decorative proof. Model permeability across source trust, privacy, consent, permitted effects, and receiver reachability. Represent present, historic, future and counterfactual as distinct projections of **one owned WorkID**. Neither a visible filament nor a bright halo certifies delivery, health, or permission.
 
 ```text
-orb_id | orb_version | source_revision | source_hash | projection_revision
-strand_id | relation_id | direction | relation_type | target_ref
-epistemic_class | evidence_ref | observer | observer_scope
-observed_at | valid_from | valid_to | expires_at | forecast_horizon
-permission_scope | privacy_class | receiver | receiver_readproof
-confidence_or_unknown | challenge_refs | supersedes
-attention_budget | display_hint | last_good_fallback | next_wake
-```
-
-**Version identity is independent of the visual shape.** A version advances when there is a source-bound material change in knowledge, permission, valid-time, verified effect, dependency, forecast calibration, or receiver acceptance. Animations, pointer movement, glow, cosmetic themes, and repeated unchanged samples are merely render revisions. Retain the prior version, the exact reason for the transition, and a reconstructable predecessor pointer. Unknown measurements remain unknown; do not interpolate them as facts.
-
-### Boundary semantics
-
-- **Solid/inward**: received, authorized and verified evidence; source/readproof must be inspectable.
-- **Dotted/outward**: a proposed receiver or effect; emission remains disabled until an explicit effect authority gate.
-- **Faint/cloud**: uncertain, stale, incomplete, privacy-abstracted or out-of-budget relations; do not imply that faded means irrelevant or dead.
-- **Dashed/future**: forecast/scenario projection beyond observation-time; distinguish predicted from observed and attach calibration due time.
-- **Reverse/ghost trail**: historical source states, supersession, recovery and counterevidence; never silently overwrite prior claims.
-- **Tangent/peer**: alternatives, challenge and CoTalkItOut/CoReGroup peer proposals; compatibility does not imply session merging.
-- **Hidden but addressable**: confidential or receiver-ineligible data; no visual inference from existence, counts or opacity should leak protected facts.
-
-These descriptions are semantic tokens; renderers must support text/headless, keyboard, reduced-motion, screen reader and high-contrast alternatives. No requirement to literally color-code any state.
-
-### Version-delta / CoTime record
-
-```text
-orb_version_delta {
-  orb_id, from_version, to_version, source_hash,
-  changed_relation_ids, changed_epistemic_classes,
-  observed_at, valid_time, horizon_end, calibration_due,
-  impact: [CURRENTNESS | KNOWLEDGE | PERMISSION | FORECAST | EFFECT | RECEIVER],
-  verifier_refs, nonclaims, rollback_version, next_wake
+membrane_projection {
+ work_id, work_version, seed_sha, edge_id, projection_version,
+ source_sha, source_ref, observer_id, receiver_id, receiver_readproof,
+ epistemic_class, observed_at, valid_from, valid_to,
+ policy_id, privacy_tier, authority_ceiling, crossing_direction,
+ permeability_state, scenario_ref, forecast_horizon,
+ uncertainty, dissent_refs, render_policy, accessibility_text
 }
 ```
 
-A prediction never changes its own status to observed at its forecast horizon. It gets resolved only by a new independent observation and a typed calibration result: HIT, PARTIAL, MISS, UNRESOLVED, CENSORED or INVALIDATED_BY_ASSUMPTION_CHANGE. Time passing without evidence can make a strand stale, but cannot establish an outcome.
+**Projection classes:** CoMembrane (qualified crossings), CoReach (verified vs tentative external links), CoTimeSkin (replayable historic versions), CoAhead (uncertain alternative futures), CoProofSkin (receipted effects, stale data, contradictions), CoTurtleMembrane (bounded recursive evolution) and CoOmni (optional spatial/nD+T mappings). All projections share the same underlying source/evidence graph and accessible headless text state.
 
-### Omni directions / temporal projections
+**Hard invariants:** One Seed / one Orb / one gauge / one reversible thumb / one time; no invented placeholders. Render confidence and predictive horizon distinctly from evidence. Maintain independent work-version, observation-time, valid-time, projection-version and policy-version. Display UNKNOWN and HELD without green-washing. Do not convert predictions into unconsented actions. Color, luminosity, geometry and motion are presentation conventions, not measurements until calibrated against CoMeasureFabric+ #367.
 
-An nD+T+ CoOrb can expose multiple independent relation axes simultaneously: supply, demand, G_dSide candidate futures, agency, resource and computational cost, peer dissent, recipient feedback, spatial/geographical context, causal dependencies, as well as retrospective/prospective CoTime. The number of axes is an addressable option space, not a claim that every axis is currently measured. Show a **bounded, receiver-relative slice**, with inspectable source lineage and no unbounded broadcast or fanout.
+**First discriminating test, not run:** Create one frozen work object containing a verified receiver effect, stale receipt, contradictory forecast, unauthorized crossing, two incompatible futures and an earlier version. Independently project it as JSON/text and browser/SVG views. Compare WorkID, source SHA, epistemic labels and timestamp semantics. Inject expired receipt and ensure both views become stale; attempt illicit boundary crossing and require fail-close; verify keyboard, screen-reader and reduced-motion equivalent interpretation. A third independent observer must read back the exact artifact before calling this verified UI integration.
 
-### Falsifiable first canary
+**Ops linkage:** CoReGroup reconciling source/policy drift; CoBoogie on material contradictions; Break Glass only reversible, authority-scoped rescue; CoGrace when no valuable next deed. CoZombieApocalypse #386 supplies disruptive scenarios; CoPullVector #378 supplies competing candidate futures. Actual 24h Seed survival, cross-session pickup and X2 deployment remain unproven.
 
-Build two projections of one synthetic WorkID and a small set of versioned relation strands. Test that:
-1. Cosmetic redraws do **not** produce an orb semantic-version change.
-2. New independently verified evidence **does** yield a version delta and predecessor pointer.
-3. A predicted relation stays PREDICTED even after its horizon until an independently observed calibration record arrives.
-4. Unauthorized outbound relations never produce receiver send or acknowledgment claims.
-5. A stale source visibly becomes STALE without being removed from historical recovery.
-6. A second renderer receives the **same source hash and epistemic classes**, even if it chooses a different visual arrangement.
-7. A privacy-restricted relation never leaks through counts, aggregate glow or outward display metadata.
+## CoOrb R0B implementation canary: privacy-scoped version and fail-closed ACK
 
-Success requires observed test receipts and later true receiver readproof; this document itself establishes no X2 integration, optical UI behavior or predictive accuracy.
+The existing **CoOrbMembrane+ / CoTimeSkin+** section above is the governing design candidate. The [two-view synthetic test fixture](../../tests/gs_receiver/test_coorb_two_view.py) narrows its first test to `orb` and `map` *structured-data projections* of one WorkID. These are **not** two separately hosted visual renderers, real receiver copies or CoStead pickup.
 
-**Rails:** `HALO_NE_EVIDENCE` · `PROJECTION_VERSION_NE_SOURCE_VERSION` · `BOUNDARY_NE_AUTHORITY` · `PREDICTED_NE_OBSERVED` · `DIRECTION_NE_DELIVERY` · `OMNI_ADDRESSABLE_NE_OMNI_BROADCAST` · `RENDERED_GLOW_NE_HEALTH`.
+- A cosmetic redraw cannot change the semantic Orb revision; a source-bound material change records a predecessor link in the internal model.
+- The receiver-visible projection digest includes only authorized visible strands. It deliberately hides the global source hash, global revision and predecessor so a private-only change cannot be inferred through public counts or version drift. An independently authorized auditor can access full source lineage through a separate authority-bearing interface, not the public projection.
+- A future-dated strand stays `PREDICTED` at and after its horizon until an external observation supplies a separately evaluated outcome. Expired observations remain `STALE`, never silently disappear.
+- The synthetic projection can **never assert receiver ACK**: an arbitrary receipt-shaped value or caller parameter is insufficient. Genuine acknowledgment requires a later separately authenticated receiver readproof contract.
+- Outward strands remain `PROPOSAL_ONLY` unless explicitly authorized. Even authorized strands are not sent by this renderer; rendering has zero effect authority.
+
+**Proof ladder:** candidate source -> passing scoped CI tests -> independently rendered browser/text or CoBar receiver -> exact authenticated readproof -> witnessed recovery, measured over a real >24h interval. No synthetic test can skip a step.
+
+**Nonclaims:** `PROJECTION_NE_SOURCE` · `PROJECTION_HASH_NE_FULL_SOURCE_HASH` · `MODEL_CLAIM_NE_RECEIVER_ACK` · `RENDERER_TEST_NE_VISIBLE_PRODUCT` · `NO_X2_COEX_OR_LIVE_CROSS_MODEL_CLAIM`.

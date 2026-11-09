@@ -27,10 +27,11 @@ jobs:
         continue-on-error: true
         shell: bash
         run: |
-          set -o pipefail
+          set -euo pipefail
           python -B examples/cotalkitout/decision_gate_r0.py 2>&1 | tee decision.log
           python -B examples/cotalkitout/cograce_recovery_r0.py 2>&1 | tee grace.log
           python -B examples/cotalkitout/cosuccession_handoff_r0.py 2>&1 | tee succession.log
+          python -B examples/cotalkitout/cogoall_acceptance_gate_r0.py 2>&1 | tee acceptance.log
           python -B -m unittest -v test_progress_receipt_gate_r0 2>&1 | tee progress.log
       - name: Produce immutable run-scoped evidence
         if: always()
@@ -44,7 +45,7 @@ jobs:
           python - <<'PY'
           import datetime, hashlib, json, os, pathlib
           logs = {}
-          for name in ('decision', 'grace', 'succession', 'progress'):
+          for name in ('decision', 'grace', 'succession', 'acceptance', 'progress'):
               p = pathlib.Path(name + '.log')
               logs[name] = hashlib.sha256(p.read_bytes()).hexdigest() if p.exists() else None
           record = dict(schema='cogoall-proof-pulse-r0',
@@ -65,6 +66,7 @@ jobs:
             decision.log
             grace.log
             succession.log
+            acceptance.log
             progress.log
           if-no-files-found: error
           retention-days: 30

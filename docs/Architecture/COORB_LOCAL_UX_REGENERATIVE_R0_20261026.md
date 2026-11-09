@@ -177,3 +177,49 @@ Pass only if:
 `SEMANTIC_LATCH_NE_SINGLE_PHYSICAL_INPUT`
 `REMOTE_OBSERVER_OFFLINE_NE_DEVICE_DEAD`
 `RICK_RELAY_TARGET_ZERO_NE_RICK_EXCLUDED`
+
+## CoMembrane+ / CoVersionField+ / CoOmniProjection+ / CoTemporalCone+ (2026-11-08 research extension)
+
+**Status:** Public design candidate, not a physical field, operational policy engine, live X2 feature or evidence of prediction accuracy. Build on this document's calm CoOrb contract, [CoBrowser continuity](COBROWSER_COORB_CONTINUITY_R0_20261027.md) and [living assets' observed-version recovery](COLIVING_HIGHLIGHT_ASSETS_R0.md), rather than creating a second identity root.
+
+### Membrane: typed directional crossings, not one permeability number
+
+The CoOrb border is a *receiver-relative projection* of the transitions between a bound WorkID's known, unknown, external and authorized spaces. Crossing types include `OBSERVE_IN`, `RESEARCH_IMPORT`, `CONTEXT_EXPORT`, `PEER_DELEGATE`, `RECEIVER_ACK`, `EFFECT_EXECUTE`, `RECOVER` and `REVOKE`. Each crossing retains source/destination identity, direction, evidence, privacy, consent, authority, integrity checks, time and reversibility. A visible opening does not grant authority, and an outbound projection does not prove delivery. Different crossings need different gates, not merely different opacity.
+
+**Candidate crossing record:** `membrane_id | orb_identity | work_id | source_version | destination_scope | crossing_type | direction | proposed_at | observed_at | valid_interval | authority_ref | consent_ref | source_hash | effect_or_projection_ref | receiver_readproof | confidence | rollback_ref | state | nonclaims`. Preserve UNKNOWN distinct from DENIED and ZERO.
+
+### Version field: identity != rendering != current version
+
+Every Orb projection should identify stable `orb_identity`, pinned `seed_revision`, source set and hashes, projection version, renderer version, observer/time, and any successor version. Track version deltas separately for semantics, authority, capability, evidence, receiver state and visual presentation. Display last-good state only with its actual age and qualifier. A new animation, fresher clock or repainted border alone is not progress. A reader can pin, diff, or consciously follow newer versions; old observed versions remain recoverable.
+
+### Omni-temporal projection: distinguish facts and branches
+
+Project four strictly typed zones: `RECORDED_PAST` (what evidence says occurred), `OBSERVED_PRESENT` (with source age and freshness), `PREDICTED_FUTURE` (scenarios, horizons, assumptions and calibrated uncertainty), and `COUNTERFACTUAL` (alternatives not observed). Relations may extend across spatial/organizational scale and other typed axes; no literal infinite census or omniscient view is implied. Use distinct observed-at, valid-at, predicted-for and monotonic elapsed-duration fields. Model latency, error bands, missing observations, model lineage, retractions and changed assumptions.
+
+A temporal cone can become wider with longer predictive horizons as uncertainty grows; it should contract when new independent observations rule out branches. Never display a hypothesis in the same visual truth class as independent receiver readback.
+
+### Practical quiet UX
+
+- Inner core: stable Seed/WorkID and exact pinned version.
+- Near membrane: verified local evidence, capabilities and authorized transitions.
+- Across membrane: external source/peer links with distinct permission and readproof state.
+- Beyond: plural predicted and speculative possibilities, visibly separated from facts.
+- Temporal scrubber: compare pinned historical version, latest observed revision and prospective scenario, preserving the source and age of each.
+- Only animate genuinely material deltas; accessibility, reduced motion, low-power mode, native fallback and Break Glass remain intact.
+
+### Falsifiable CI+/CoOps probes (NOT_RUN)
+
+1. One Orb identity, two successive source revisions: a pinned reader sees the original; diff exposes change; no silent overwrite.
+2. A purely visual update does not increment semantic or evidence revision.
+3. An external projection without receiver readproof stays `SENT_UNVERIFIED`, never `ACKED`.
+4. A private export without consent remains denied even if the proposed recipient is a trusted peer.
+5. A prediction that later contradicts a verified observation is marked falsified, not silently reinterpreted.
+6. Missing timestamp/freshness yields UNKNOWN, not a zero-age currentness badge.
+7. Predicted future, counterfactual and observed past carry separate types, evidence and uncertainty.
+8. A corrupted checkpoint triggers last-good recovery with provenance; no fabricated current state.
+9. Cross-scale graph cycles terminate under a budget without losing prior evidence.
+10. Renderer restart and native fallback preserve the same WorkID and reversible UI controls.
+
+**Promotion:** SPEC -> SYNTHETIC_TESTED -> AUTHORIZED_LOCAL_CANARY -> INDEPENDENT_RECEIVER_VERIFIED. A screenshot or architecture file cannot advance to runtime. CoTime is an evidence/time semantics layer, not proof of physical time manipulation or foresight.
+
+**CoNext:** build a small deterministic membrane/version/temporal fixture and bind its output to an existing CoOrb projection without replacing previously working RickBar/CoBar embodiments.
