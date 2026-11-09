@@ -113,5 +113,95 @@ class GateTests(unittest.TestCase):
         self.assertEqual(result["next_safe_action"], "REQUIRE_SEPARATE_PROVIDER_EFFECT_AND_RECEIPT")
 
 
+
+
+class BoundedEvolutionTests(unittest.TestCase):
+    """One candidate successor per call; never a provider side effect."""
+
+    def setUp(self):
+        GateTests.setUp(self)
+
+    def test_evolution_distinct_content_clears_approval(self):
+        from outreach_stage_gate_r0 import propose_evolution
+        new, receipt = propose_evolution(self.item, proposed_content_sha256=dig('v2'),
+                                          change_kind='CLAIM_CORRECTION', depth=0)
+        self.assertEqual(receipt['state'], 'SUCCESSOR_PROPOSED_UNAPPLIED')
+        self.assertEqual(new.content_sha256, dig('v2'))
+        self.assertIsNone(new.reviewed_content_sha256)
+        self.assertIsNone(new.approved_content_sha256)
+        self.assertIsNone(new.specific_send_authority_ref)
+        self.assertEqual(evaluate(new)['state'], 'STAGED_HELD')
+        self.assertEqual(self.item.approved_content_sha256, self.item.content_sha256)
+        self.assertFalse(receipt['provider_draft_edited'])
+
+    def test_evolution_unchanged_digest_quiesces(self):
+        from outreach_stage_gate_r0 import propose_evolution
+        new, receipt = propose_evolution(self.item, proposed_content_sha256=self.item.content_sha256,
+                                          change_kind='CONTEXT_UPDATE', depth=0)
+        self.assertIs(new, self.item)
+        self.assertEqual(receipt['state'], 'QUIESCE_NO_MATERIAL_CHANGE')
+
+    def test_evolution_turtle_budget_quiesces(self):
+        from outreach_stage_gate_r0 import propose_evolution
+        new, receipt = propose_evolution(self.item, proposed_content_sha256=dig('proposal'),
+                                          change_kind='CHALLENGE', depth=4, budget=4)
+        self.assertIs(new, self.item)
+        self.assertEqual(receipt['state'], 'QUIESCE_TURTLE_BUDGET')
+
+    def test_stale_source_holds_without_generating(self):
+        from outreach_stage_gate_r0 import propose_evolution
+        stale = replace(self.item, current_source_revision='source-2')
+        new, receipt = propose_evolution(stale, proposed_content_sha256=dig('proposal'),
+                                          change_kind='CHALLENGE', depth=0)
+        self.assertIs(new, stale)
+        self.assertEqual(receipt['state'], 'HOLD_UPSTREAM_SOURCE_DRIFT')
+
+    def test_evolution_rejects_unknown_reason(self):
+        from outreach_stage_gate_r0 import propose_evolution
+        with self.assertRaises(ValueError):
+            propose_evolution(self.item, proposed_content_sha256=dig('proposal'),
+                              change_kind='AUTO_SEND', depth=0)
+
+    def test_evolution_rejects_boolean_depth_and_huge_budget(self):
+        from outreach_stage_gate_r0 import propose_evolution
+        for depth, budget in ((False, 4), (-1, 4), (1, 9), (5, 4)):
+            with self.subTest(depth=depth, budget=budget):
+                with self.assertRaises(ValueError):
+                    propose_evolution(self.item, proposed_content_sha256=dig('proposal'),
+                                      change_kind='ACCESSIBILITY', depth=depth, budget=budget)
+
+    def test_recursion_terminates_at_budget(self):
+        from outreach_stage_gate_r0 import propose_evolution
+        base = self.item
+        for depth in range(3):
+            base, receipt = propose_evolution(base, proposed_content_sha256=dig('v'+str(depth)),
+                                              change_kind='CHALLENGE', depth=depth, budget=3)
+            self.assertEqual(receipt['depth'], depth+1)
+            self.assertEqual(receipt['state'], 'SUCCESSOR_PROPOSED_UNAPPLIED')
+        unchanged, hold = propose_evolution(base, proposed_content_sha256=dig('v3'),
+                                             change_kind='CHALLENGE', depth=3, budget=3)
+        self.assertIs(unchanged, base)
+        self.assertEqual(hold['state'], 'QUIESCE_TURTLE_BUDGET')
+
+    def test_competing_successors_do_not_clobber_parent(self):
+        from outreach_stage_gate_r0 import propose_evolution
+        left, l = propose_evolution(self.item, proposed_content_sha256=dig('left'),
+                                     change_kind='CHALLENGE', depth=0)
+        right, r = propose_evolution(self.item, proposed_content_sha256=dig('right'),
+                                      change_kind='CHALLENGE', depth=0)
+        self.assertEqual(l['parent_content_sha256'], r['parent_content_sha256'])
+        self.assertNotEqual(left.content_sha256, right.content_sha256)
+        self.assertEqual(self.item.content_sha256, l['parent_content_sha256'])
+        self.assertFalse(l['receiver_ack'])
+
+    def test_receipt_contains_no_mailbox_recipient_or_private_body(self):
+        from outreach_stage_gate_r0 import propose_evolution
+        _, receipt = propose_evolution(self.item, proposed_content_sha256=dig('private content'),
+                                         change_kind='RETRACTION', depth=0)
+        report = str(receipt)
+        for secret in ('account-A', 'recipient:fixture', 'private content', 'synthetic-work-A'):
+            self.assertNotIn(secret, report)
+        self.assertEqual(receipt['effect'], 'NONE')
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)
