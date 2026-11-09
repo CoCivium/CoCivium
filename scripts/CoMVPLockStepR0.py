@@ -90,8 +90,11 @@ class CoMVPSlots:
         _require(isinstance(relative, str) and relative and
                  not Path(relative).is_absolute() and "\\" not in relative,
                  "INVALID_SOURCE_PATH")
-        path = (self.root / relative).resolve(strict=True)
-        _require(path.is_relative_to(self.root) and path.is_file(), "SOURCE_OUTSIDE_ROOT")
+        # Resolve without requiring existence first, so traversal is held even
+        # when the target outside root happens not to exist.
+        path = (self.root / relative).resolve()
+        _require(path.is_relative_to(self.root), "SOURCE_OUTSIDE_ROOT")
+        _require(path.is_file(), "SOURCE_MISSING_OR_NOT_FILE")
         _require(path.stat().st_size <= limit, "SOURCE_TOO_LARGE")
         raw = path.read_bytes()
         _require(len(raw) <= limit, "SOURCE_TOO_LARGE")
