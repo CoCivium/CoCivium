@@ -11,7 +11,7 @@ import unittest
 SRC = Path(__file__).resolve().parents[1]
 ROOT = SRC.parents[1]
 sys.path.insert(0, str(SRC))
-from retro_atlas_r0 import atlas, in_scope, inventory, read_public_file, sha
+from retro_atlas_r0 import atlas, in_scope, inventory, read_public_file, sha, reconcile_curated_overlay
 
 
 class RetroAtlasTests(unittest.TestCase):
@@ -163,6 +163,58 @@ class RetroAtlasTests(unittest.TestCase):
         self.assertIn("https://github.com/CoCivium/CoCivium/blob/main/", md)
         self.assertNotIn("chatgpt.com/c/", md)
         self.assertNotIn("mail.google.com/", md)
+
+    def test_existing_curated_overlay_out_of_scope_is_not_dropped(self):
+        overlay = json.loads(
+            (ROOT/"examples/comap/prior-media-backfill-overlay-r0.json").read_text())
+        bridge = reconcile_curated_overlay(self.scan, overlay)
+        self.assertEqual(bridge["curated_candidate_count"], 5)
+        self.assertEqual(len(bridge["curated_outside_bounded_scan"]), 5)
+        self.assertEqual(bridge["unclassified_count"], 2)
+        self.assertFalse(bridge["overlap_proves_semantic_relation"])
+
+    def test_same_exact_git_blob_proves_source_overlap_only(self):
+        overlay = json.loads(
+            (ROOT/"examples/comap/prior-media-backfill-overlay-r0.json").read_text())
+        a = next(x for x in self.scan["candidates"]
+                 if x["source_path"] == self.path_a)
+        overlay["candidates"][0]["source"]["path"] = self.path_a
+        overlay["candidates"][0]["source"]["git_blob_sha1"] = a["git_blob_sha1"]
+        bridge = reconcile_curated_overlay(self.scan, overlay)
+        self.assertEqual(bridge["curated_exact_source_matches"], [self.path_a])
+        self.assertEqual(bridge["unclassified_count"], 1)
+        self.assertEqual(bridge["inspiration_edges_adopted"], 0)
+        self.scan["curated_bridge"] = bridge
+        md = atlas(self.frontier, self.media, self.scan)
+        self.assertIn("Public candidates not curated in the existing atlas: 1", md)
+
+    def test_curated_blob_drift_holds_not_inspiration(self):
+        overlay = json.loads(
+            (ROOT/"examples/comap/prior-media-backfill-overlay-r0.json").read_text())
+        overlay["candidates"][0]["source"]["path"] = self.path_a
+        with self.assertRaisesRegex(ValueError, "HOLD_CURATED_BLOB_DRIFT"):
+            reconcile_curated_overlay(self.scan, overlay)
+
+    def test_curated_private_source_rejected(self):
+        overlay = json.loads(
+            (ROOT/"examples/comap/prior-media-backfill-overlay-r0.json").read_text())
+        overlay["candidates"][0]["privacy"] = "PRIVATE"
+        with self.assertRaisesRegex(ValueError, "HOLD_CURATED_CANDIDATE_AUTHORITY"):
+            reconcile_curated_overlay(self.scan, overlay)
+
+    def test_curated_rights_release_lie_rejected(self):
+        overlay = json.loads(
+            (ROOT/"examples/comap/prior-media-backfill-overlay-r0.json").read_text())
+        overlay["rights_release"] = True
+        with self.assertRaisesRegex(ValueError, "HOLD_CURATED_OVERLAY_POLICY"):
+            reconcile_curated_overlay(self.scan, overlay)
+
+    def test_duplicate_curated_path_fails_closed(self):
+        overlay = json.loads(
+            (ROOT/"examples/comap/prior-media-backfill-overlay-r0.json").read_text())
+        overlay["candidates"][1]["source"]["path"] = overlay["candidates"][0]["source"]["path"]
+        with self.assertRaisesRegex(ValueError, "HOLD_CURATED_SOURCE_IDENTITY"):
+            reconcile_curated_overlay(self.scan, overlay)
 
     def test_output_repeat_is_byte_identical(self):
         md = atlas(self.frontier, self.media, self.scan)
