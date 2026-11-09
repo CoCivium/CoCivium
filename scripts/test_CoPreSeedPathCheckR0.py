@@ -48,6 +48,27 @@ class CoPreGraphTests(unittest.TestCase):
             fed["coseed"]["qualified_semantic_head"]="latest"
             (p/mod.FEDERATION).write_text(json.dumps(fed))
             with self.assertRaisesRegex(ValueError,"HOLD_UNQUALIFIED_CANON_HEAD"):mod.validate(p)
+    def test_forward_and_reverse_navigation_all_declared_nodes(self):
+        fabric=json.loads((ROOT/mod.FABRIC).read_text())
+        for node in fabric["nodes"]:
+            route=mod.route_from_entry(ROOT,node["id"])
+            self.assertEqual(route["state"],"PUBLIC_SOURCE_NAVIGATION_ONLY",node["id"])
+            self.assertFalse(route["independent_pickup"])
+            self.assertFalse(route["authority_granted"])
+
+    def test_reverse_reachability_is_explicit_not_ack(self):
+        result=mod.route_from_entry(ROOT,"mouse-targets")
+        self.assertEqual(result["state"],"PUBLIC_SOURCE_NAVIGATION_ONLY")
+        self.assertTrue(any(h["traversal"]=="REVERSE_DERIVED" for h in result["hops"]))
+        self.assertFalse(result["independent_pickup"])
+
+    def test_unknown_and_bounded_navigation(self):
+        self.assertEqual(mod.route_from_entry(ROOT,"not-a-front")["state"],"HELD_UNKNOWN_TARGET")
+        self.assertEqual(mod.route_from_entry(ROOT,"mouse-targets",max_hops=0)["state"],
+                         "HELD_UNREACHABLE_OR_HOP_LIMIT")
+        with self.assertRaisesRegex(ValueError,"HOLD_INVALID_ROUTE_REQUEST"):
+            mod.route_from_entry(ROOT,"mouse-targets",max_hops=100)
+
     def test_missing_nonclaim_fails_closed(self):
         with tempfile.TemporaryDirectory() as td:
             p=Path(td);fed,_=self.clone(p)
