@@ -1,0 +1,141 @@
+{
+  "schema": "CoAll.CoPreGeneric.SeedPathFederation.R0",
+  "status": "PUBLIC_SOURCE_FEDERATION_NOT_GLOBAL_CANON_OR_RECEIVER_PICKUP",
+  "updated_date": "2026-11-09",
+  "root": {
+    "work_id": "copregeneric-source-federation-r0",
+    "temporary_entry": "CoPre.md",
+    "public_bootstrap": "SESSION_BOOTSTRAP.md",
+    "machine_index": "ai/index.json",
+    "receipt_status": "GITHUB_CONNECTOR_READBACK_FOR_SOURCE_POINTERS_ONLY"
+  },
+  "coseed": {
+    "identity": "copregeneric",
+    "relation": "SOURCE_BOUND_DISCOVERY_NOT_PRIVATE_CUSTODY_ROOT",
+    "landing": "CoPre.md",
+    "qualified_semantic_head": "UNDETERMINED",
+    "last_known_good": "UNDETERMINED",
+    "candidates": [
+      {
+        "path": "docs/Architecture/COPREGENERIC_DUAL_PROJECTION_R0_20261109.md",
+        "role": "shared dual-projection contract",
+        "disposition": "KEEP_NO_SUPERSESSION"
+      },
+      {
+        "path": "docs/CoPreGeneric/Shareable_R0_20261109/manifest.json",
+        "role": "shareable package A manifest",
+        "disposition": "KEEP_VARIANT"
+      },
+      {
+        "path": "docs/CoPreGeneric/PublicDraft_R0_20261109/manifest.json",
+        "role": "public draft package B manifest",
+        "disposition": "KEEP_VARIANT"
+      },
+      {
+        "path": "ai/onramp/copre-generic-session-contribution-r0.json",
+        "role": "source-bound session contribution",
+        "disposition": "KEEP_DELTA"
+      }
+    ]
+  },
+  "copath": {
+    "entry": "CoPre.md",
+    "paths": [
+      {
+        "id": "source_binding",
+        "path": "SESSION_BOOTSTRAP.md",
+        "gate": "RELEVANT_AUTHORIZED_SCOPE",
+        "outcome": "ORIENTED_NOT_PICKED_UP"
+      },
+      {
+        "id": "machine_view",
+        "path": "ai/index.json",
+        "gate": "RECEIVER_READPROOF_PENDING",
+        "outcome": "NAVIGATION_ONLY"
+      },
+      {
+        "id": "human_view",
+        "path": "docs/Onramp/COGOALL_PUBLIC_REBOUND_HUB_20261108.md",
+        "gate": "PUBLIC_SAFE_READER",
+        "outcome": "EXPLANATION_ONLY"
+      },
+      {
+        "id": "shareable_A",
+        "path": "docs/CoPreGeneric/Shareable_R0_20261109/README.md",
+        "gate": "DRAFT_VARIANT",
+        "outcome": "SOURCE_AVAILABLE"
+      },
+      {
+        "id": "shareable_B",
+        "path": "docs/CoPreGeneric/PublicDraft_R0_20261109/manifest.json",
+        "gate": "DRAFT_VARIANT",
+        "outcome": "SOURCE_AVAILABLE"
+      },
+      {
+        "id": "front_echo",
+        "path": "docs/Architecture/COFRONT_RETRO_ECHO_NO_ORPHANS_R0_20261109.md",
+        "gate": "DECLARED_WINDOWS",
+        "outcome": "PARTIAL_HISTORY"
+      },
+      {
+        "id": "outstanding",
+        "path": "docs/Operations/COGOALL_OUTSTANDING_REGISTER_20261108.md",
+        "gate": "RECHECK_CURRENTNESS",
+        "outcome": "PROOF_GAPS"
+      },
+      {
+        "id": "external_receiver",
+        "path": null,
+        "gate": "AUTHORIZED_INDEPENDENT_EXACT_OBJECT_READ",
+        "outcome": "HELD_NOT_PICKED_UP"
+      }
+    ]
+  },
+  "cobraid": {
+    "shared_evidence_spine": true,
+    "machine": "typed source identity, evidence, time, variant and privacy contracts",
+    "human": "accessible entry, explanation, recovery path, stop and consent",
+    "invariant": "PROJECTION_NE_CANON; SOURCE_NE_RECEIVER"
+  },
+  "cocontinuity": {
+    "fronts": "DISCOVERED_OR_HELD_WITH_EXPLICIT_SCOPE",
+    "retro": "BOUNDED_SOURCE_WINDOW_NOT_COMPLETE_HISTORY",
+    "duplicate_policy": "EXACT_REPLAY_NO_NEW_EFFECT",
+    "conflict_policy": "HOLD_CONFLICT_AND_KEEP_PRIORS",
+    "supersession": "REQUIRES_EXPLICIT_SUCCESSOR_AND_VERIFIED_RECONCILIATION"
+  },
+  "cofuture": {
+    "preferred_experiment": "one authorized independent receiver fetches an exact source object and emits reproducible WorkID-specific readproof",
+    "other_directions": [
+      "verify source package variants and elect qualified head only with independent comparison",
+      "validate accessible human/synth translation fidelity",
+      "publish owned DNS routes after privacy/security and byte-digest gates",
+      "reconcile historical source-window gaps"
+    ]
+  },
+  "elected_destinations": [
+    {
+      "url": "https://github.com/CoCivium/CoPreGeneric",
+      "status": "UNVERIFIED_TARGET"
+    },
+    {
+      "url": "https://CoCivium.org/CoPre",
+      "status": "UNVERIFIED_TARGET"
+    },
+    {
+      "url": "https://InSeed.com/Stead",
+      "status": "UNVERIFIED_TARGET"
+    }
+  ],
+  "nonclaims": [
+    "NO_INDEPENDENT_RECEIVER_PICKUP",
+    "NO_THREE_WAY_MIRROR",
+    "NO_GLOBAL_HISTORY_CENSUS",
+    "NO_PRIVATE_SESSION_DRAIN",
+    "NO_X2_RUNTIME_DEPLOYMENT",
+    "NO_24H_SURVIVAL_PROOF",
+    "NO_CANON_PROMOTION",
+    "NO_AUTONOMOUS_CROSS_PROVIDER_SYNC",
+    "NO_AGI_OR_SENTIENCE_PROOF"
+  ]
+}
