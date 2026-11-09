@@ -28,10 +28,10 @@ class Tests(unittest.TestCase):
         self.assertEqual(plan['effects_performed'],0)
         self.assertEqual(plan['sessions_drained'],0)
 
-    def test_seven_fronts_never_silently_dropped(self):
-        plan=choose(fixture(),STAMP,limit=7)
+    def test_all_known_fronts_never_silently_dropped(self):
+        plan=choose(fixture(),STAMP,limit=len(PROFILES))
         self.assertEqual(set(PROFILES),set(plan['held_fronts'])|{p['front_id'] for p in plan['proposals']})
-        self.assertEqual(len(plan['proposals'])+len(plan['held_fronts']),7)
+        self.assertEqual(len(plan['proposals'])+len(plan['held_fronts']),len(PROFILES))
 
     def test_replay_is_stable_not_falsely_novel(self):
         self.assertEqual(choose(fixture(),STAMP),choose(fixture(),STAMP))
@@ -46,6 +46,12 @@ class Tests(unittest.TestCase):
         plan=choose(obj,STAMP)
         self.assertIn('newly-observed-front',plan['unknown_profile_fronts'])
         self.assertIn('newly-observed-front',plan['held_fronts'])
+
+    def test_new_public_front_profiles_remain_eligible(self):
+        newer={'comap-megascroller','colue-outreach','colensmedia-lineage','cobrowser-cocarry'}
+        self.assertTrue(newer.issubset(PROFILES))
+        plan=choose(fixture(),STAMP,limit=len(PROFILES))
+        self.assertTrue(newer.issubset({p['front_id'] for p in plan['proposals']}))
 
     def test_no_candidate_is_executed_just_by_election(self):
         for proposal in choose(fixture(),STAMP)['proposals']:
@@ -87,7 +93,7 @@ class Tests(unittest.TestCase):
     def test_invalid_time_and_limit_rejected(self):
         for t in ('2026-11-09T21:23:40-05:00','2026-02-30T12:00:00Z','unknown'):
             with self.subTest(t=t),self.assertRaisesRegex(ValueError,'HOLD_OBSERVATION_TIME'):choose(fixture(),t)
-        for n in (True,0,10,-1):
+        for n in (True,0,len(PROFILES)+1,-1):
             with self.subTest(n=n),self.assertRaisesRegex(ValueError,'HOLD_WAVE_LIMIT'):choose(fixture(),STAMP,limit=n)
 
     def test_empty_frontier_and_oversized_history_rejected(self):
@@ -95,11 +101,11 @@ class Tests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError,'HOLD_PRIOR_WAVE_HISTORY'):choose(fixture(),STAMP,prior=[{}]*129)
 
     def test_all_previously_proposed_waves_quiesce(self):
-        first=choose(fixture(),STAMP,limit=7)
-        second=choose(fixture(),STAMP,limit=7,prior=first['proposals'])
+        first=choose(fixture(),STAMP,limit=len(PROFILES))
+        second=choose(fixture(),STAMP,limit=len(PROFILES),prior=first['proposals'])
         self.assertEqual(second['state'],'HOLD_NO_ADMISSIBLE_DISTINCT_WAVE')
         self.assertEqual(second['proposals'],[])
-        self.assertEqual(len(second['held_fronts']),7)
+        self.assertEqual(len(second['held_fronts']),len(PROFILES))
 
     def test_read_only_cli_no_clobber(self):
         with tempfile.TemporaryDirectory() as tmp:
