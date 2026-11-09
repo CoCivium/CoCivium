@@ -437,6 +437,14 @@ flowchart LR
 - [Public visual finder](../../examples/covisual_finder_r1/index.html) | Git blob `2360b7ceea035599a7604e5c54d28b1765952e0d` | rights and receiver uptake **unverified**
 - [Visual prior bridge](../../examples/colensmedia/visual_prior_bridge.html) | Git blob `aed071ba013e54320ce3e5b28c4c130a0317ba48` | rights and receiver uptake **unverified**
 
+## CoSeed and CoPath backfill proposals
+
+- [CoMap offline source weave](../../examples/comap/source-weave-r0.html) | Seed pointer `coal.conav.retro-public-media.r0` | proposed test: A reader opens one relation and explains the cited source | status `PROPOSED_NOT_EXECUTED`
+- [Relational media diagram](../../examples/colensmedia/relational_media_diagram_r0.md) | Seed pointer `coal.conav.retro-public-media.r0` | proposed test: Alter one source revision and verify diagram plus text HOLD | status `PROPOSED_NOT_EXECUTED`
+- [Visual prior bridge](../../examples/colensmedia/visual_prior_bridge.html) | Seed pointer `coal.conav.retro-public-media.r0` | proposed test: Compare one motif and inverse without reusing licensed pixels | status `PROPOSED_NOT_EXECUTED`
+- [Public visual finder](../../examples/covisual_finder_r1/index.html) | Seed pointer `coal.conav.retro-public-media.r0` | proposed test: Challenge one visual reference for rights and evidence | status `PROPOSED_NOT_EXECUTED`
+- [Context rail prototype](../../examples/conodcothumb/context_rail_r1/index.html) | Seed pointer `coal.conav.retro-public-media.r0` | proposed test: Test keyboard and readable text for one reversible glyph | status `PROPOSED_NOT_EXECUTED`
+
 ## Evidence and privacy ceiling
 
 - Bounded graph: 56 earlier source nodes / 61 typed source edges.
