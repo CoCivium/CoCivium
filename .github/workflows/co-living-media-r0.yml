@@ -48,6 +48,8 @@ jobs:
         run: python3 -B -m unittest discover -s examples/colensmedia/tests -p 'test_*.py' -v
       - name: Verify source-bound diagram remains in sync with its public-safe graph
         run: python3 -B examples/colensmedia/relational_media_manifest_r0.py --fixture examples/colensmedia/relational_media_fixture_r0.json --diagram examples/colensmedia/relational_media_diagram_r0.md --check
+      - name: Verify CoNav retro source pins and nested diagram projections
+        run: python3 -B examples/colensmedia/conav_retro_r0.py --root . --manifest examples/colensmedia/conav_retro_manifest_r0.json --diagram examples/colensmedia/conav_diagram_r0.md --html examples/colensmedia/conav_navigator_r0.html --check
       - name: Generate machine evidence receipt, not promotion
         shell: bash
         run: |
