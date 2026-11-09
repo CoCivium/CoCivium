@@ -6,6 +6,7 @@ Pure deterministic classifier, no agent execution or new authority.
 """
 from __future__ import annotations
 from dataclasses import dataclass
+from datetime import datetime, timedelta
 from typing import Literal
 
 Disposition = Literal["STRUCTURALLY_REPORTED_EFFECT", "SOURCE_CLAIMED_NO_DELTA",
@@ -28,9 +29,28 @@ class Pulse:
     blocked_reason: str = ""
     claimed_no_update: bool = False
 
+BOOLEAN_FIELDS = ('source_checked', 'due_work', 'eligible_work',
+                  'execution_attempted', 'claimed_no_update')
+
+
+def _utc_observation(value: object) -> bool:
+    """Validate time syntax and UTC offset, not authenticity or freshness."""
+    if not isinstance(value, str) or 'T' not in value:
+        return False
+    try:
+        stamp = datetime.fromisoformat(value.replace('Z', '+00:00'))
+    except (ValueError, TypeError):
+        return False
+    return stamp.tzinfo is not None and stamp.utcoffset() == timedelta(0)
+
+
 def classify(p: Pulse) -> dict:
     if not p.wake_id or not p.work_id or not p.source_revision or not p.observed_at_utc:
         return {"disposition": "NO_PROGRESS_EVIDENCE", "reason": "UNBOUND_WAKE_OR_SOURCE"}
+    if any(type(getattr(p, field)) is not bool for field in BOOLEAN_FIELDS):
+        return {"disposition": "NO_PROGRESS_EVIDENCE", "reason": "INVALID_BOOLEAN_FLAGS"}
+    if not _utc_observation(p.observed_at_utc):
+        return {"disposition": "NO_PROGRESS_EVIDENCE", "reason": "INVALID_OBSERVED_TIME"}
     if not p.source_checked:
         return {"disposition": "NO_PROGRESS_EVIDENCE", "reason": "SOURCE_NOT_CHECKED"}
     if p.claimed_no_update and p.execution_attempted:
