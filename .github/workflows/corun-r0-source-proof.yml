@@ -146,3 +146,51 @@ jobs:
             ${{ runner.temp }}/colockstep/*.json
           if-no-files-found: warn
           retention-days: 14
+
+  browser_plateau:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Install scoped browser harness
+        run: |
+          python -m pip install playwright==1.56.0
+          python -m playwright install --with-deps chromium
+      - name: Replay preserved browser baselines and detect rejected mutant
+        run: |
+          python -B examples/corun_r0/browser_plateau.py \
+            --repo-root . \
+            --out "$RUNNER_TEMP/codemow-browser"
+      - name: Verify browser receipts and nonpromotion gates
+        run: |
+          python - <<'PY'
+          import hashlib, json, os
+          from pathlib import Path
+          root = Path(os.environ["RUNNER_TEMP"]) / "codemow-browser"
+          raw = (root / "browser-plateau.json").read_bytes()
+          report = json.loads(raw)
+          receipt = json.loads((root / "receipt.json").read_text())
+          assert receipt["report_sha256"] == hashlib.sha256(raw).hexdigest()
+          assert report["passed"] == report["total"] and report["total"] >= 14
+          assert report["bad_candidate"]["unsafe_success_reproduced"] is True
+          assert report["bad_candidate"]["decision"] == "REJECT_AND_RETAIN_R1"
+          assert report["preserved_originals"] is True
+          assert report["qualified_mvp"] is False
+          assert report["independent_user_accepted"] == "UNKNOWN"
+          assert report["external_effects"] == "NONE"
+          assert receipt["qualified_mvp"] is False
+          print("PASS_SCOPED_BROWSER_TEST_NOT_MVP", report["total"])
+          PY
+      - name: Archive browser-scoped proof
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: corun-r0-codemow-browser-proof
+          path: ${{ runner.temp }}/codemow-browser/*.json
+          if-no-files-found: warn
+          retention-days: 14
