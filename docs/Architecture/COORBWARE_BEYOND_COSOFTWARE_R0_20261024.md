@@ -182,3 +182,28 @@ When an authorized device route is available, render one exact work object throu
 4. one desktop/mobile projection;
 
 and verify the same identity, evidence, authority, privacy and currentness survive all four views while projection loss is explicit.
+
+
+## CoOrbWare+ / Civ2+ / Civ3+ rewise | 2026-11-09
+
+The next step is not **more magical software**. It is a user- and evidence-facing separation of:
+
+`CoObject/source (data, code, policy, media, receipts)`
+`→ identity + provenance + currentness + semantic uncertainty`
+`→ typed possible operations/relations`
+`→ independent ability/capability qualification`
+`→ scoped authorized worker execution`
+`→ receiver-observed effect + recovery`
+`→ stable CoMVP release and a CoOrb projection`.
+
+An artifact may participate in discovery/repair/interpretation through a **trusted adapter**, regardless of file extension. It does not become executable or grant runtime permissions by being a file, a policy, a prompt, a model output, or a conversation. A source under uncertainty can be addressable without being semantically understood or actively running. The [CoObject source-to-proposal bridge](../../scripts/CoObjectAgencyBridgeR0.py) tests that preflight distinction in public source with no workers started.
+
+**Legacy software is an implementation option rather than the ontology.** Preserve working native OS/device/application paths as qualified adapters where practical. Use open formats, capability-scoped APIs and explicit import/export/rollback contracts to reduce lock-in. A move to open/local model implementations may reduce vendor dependence, but does not by itself prove model diversity, rights, accuracy, security, or replacement readiness. Proprietary, public-API and community-hosted models are separately qualified optional donors, not the identity root.
+
+**Civ2+ federation:** bounded cells independently host their own capability implementations, work state and recovery while exchanging permissioned typed source/evidence events. No indispensable centralized queue or always-on commercial provider. See [Civ2 federated hosting](CIV2_FEDERATED_CELL_HOSTING_R0.md).
+
+**Civ3+ candidate:** more adaptive object/relation-native operation, where source changes can generate reversible bounded experiments, different workers compete or challenge, and CoOrb renders evidence and timelines. It must still preserve plural human authority, privacy, uncertainty, and a stable product baseline. This is a long-horizon architectural research direction, not an installed Civ3 system or independent proof that replacing today's software is wise.
+
+**Qualify the usable plateau first:** Existing [CoMVP+/CoLockStep](COMVP_COLOCKSTEP_SOURCE_RELEASE_R0_20261109.md) prevents a source-tested but less useful replacement from silently displacing an existing candidate, and lets unrelated components improve without a global barrier. The next native proof remains one actual authorized rickBar/Ollama task, receiver readback, cold recovery and Break Glass. A philosophical refactor without that product test would merely make the unfinished software more sophisticated.
+
+[Source-bound CoAckRewise/cross-thread reconciliation](../Evolution/COACKREWISE_COOBJECT_CIV3_FRONTIER_R0_20261109.md) records the evidence, outstanding dependencies and nonclaims. The source is public; no all-session live synchronization or CoEx/canon pickup is implied.
