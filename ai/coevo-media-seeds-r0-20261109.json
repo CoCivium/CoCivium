@@ -1,0 +1,69 @@
+{
+  "schema": "CoAll.CoEvSeed.MediaRegistry.R0-candidate",
+  "status": "PUBLIC_SOURCE_PREVIEW_LANDED__ORIGINAL_PRIVATE_CUSTODY__NO_LIVE_UI_DEPLOYMENT",
+  "updated_utc": "2026-11-09T23:36:47Z",
+  "purpose": "Retrospectively preserve and connect the generated CoCivium human-facing hero artwork as a future-reusable media seed, with provenance and accessibility.",
+  "media_seeds": [
+    {
+      "id": "CoEvSeed.hero.living-continuity.20261109.r0",
+      "type": "illustration_hero_concept",
+      "title": "A Living Continuity System",
+      "original": {
+        "sha256": "fe5fb651cff7097cc847cb757790983deccc48fbaaee893ca5a7a0cedbab676f",
+        "bytes": 2231951,
+        "width": 1672,
+        "height": 941,
+        "format": "PNG",
+        "custody": "RETAINED_PRIVATE_LIBRARY",
+        "public_binary": false
+      },
+      "public_preview": {
+        "path": "assets/CoEvSeed/CoCivium_Living_Continuity_Hero_Preview_R0.svg",
+        "format": "SVG with embedded JPEG preview pixels",
+        "git_blob_sha": "bc5b9ab3729b6f483bf4e03cad8aa180a3a6dc83",
+        "state": "GITHUB_FETCH_READBACK",
+        "width": 1000,
+        "height": 563
+      },
+      "prompt_origin": "Original AI-generated CoCivium/CoAll UX concept in user-directed CoDry+/CoWet+ rich media exploration, 2026-11-09",
+      "semantic_summary": "Braided glowing orbital continuity hero with Futures, Retros, CoMap, media lineage and Quiet mode; an illustration of a possible UI, not a working app.",
+      "related_concepts": [
+        "CoDry+",
+        "CoWet+",
+        "CoGlam+",
+        "CoWow+",
+        "CoJaz+",
+        "CoGayAsAPeachBaby+",
+        "CoAudioFkOff+",
+        "CoMap+",
+        "CoNav+",
+        "CoTime+",
+        "CoPreGeneric+",
+        "CoEvSeed+"
+      ],
+      "candidate_destinations": [
+        "CoCivium public hero",
+        "CoPre landing page",
+        "CoMap future retro gallery",
+        "RickBar visual onboarding"
+      ],
+      "reuse_state": "CANDIDATE_NOT_DEPLOYED",
+      "rights": "AI-generated concept, subject to human review for external release"
+    }
+  ],
+  "coev_policy_candidate": {
+    "hero_visual": "For new public human-facing surfaces, offer one substantial contextual hero or equivalent purposeful rich media. Backfill important historical surfaces where it improves comprehension; do not inject decoration into utilitarian/security interfaces.",
+    "media_lineage": "Every generated image/audio/video candidate receives exact digest, work identity, role, source reference, semantic caption, privacy decision, relationships, proposed uses and testable acceptance.",
+    "audio": "DEFAULT_SILENT. Scrolling MUST NOT cause sound to activate; volume can evolve from zero only after clear opt-in. Respect persistent quiet choice, reduced motion, accessible controls and captions.",
+    "inverse": "CoDry should be deliberate, not accidental. CoWet must improve usability, not mask missing evidence."
+  },
+  "boundaries": [
+    "PUBLIC_PREVIEW_IS_NOT_FULL_RES_ORIGINAL",
+    "PUBLIC_ARTIFACT_IS_NOT_LIVE_APP",
+    "PRIVATE_ORIGINAL_NOT_PUBLIC",
+    "NO_BROWSER_AUTOPLAY",
+    "NO_INDEPENDENT_RECEIVER_ACK",
+    "NO_COMPLETE_RETRO_MEDIA_INVENTORY"
+  ],
+  "next_proof": "Integrate preview into one authorized human-facing page and verify its rendered accessibility and opt-in audio behavior."
+}
