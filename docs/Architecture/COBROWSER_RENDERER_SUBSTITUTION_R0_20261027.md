@@ -268,3 +268,21 @@ The cycle is open-ended, but execution remains bounded by evidence, authority, c
 - Mozilla Firefox Enterprise policy reference.
 
 These sources establish renderer/deployment capabilities only; they do not prove X2 installation, configuration, or suitability.
+
+
+## CoCarry+ Firefox single-foreground migration canary | 2026-11-09
+
+**State:** SOURCE_LANDED__12_LOCAL_SYNTHETIC_TESTS_PASS__NO_X2_BROWSER_MUTATION_OR_SESSION_CENSUS. This extends, rather than replaces, CoBrowser/CoRendererLattice and CoSessionShadowLedger.
+
+A single foreground Firefox tab is a **view allocation**, not a change of work identity or an order to deactivate all other sessions. The number of real Edge/Firefox/provider sessions, their state, unsent composer content, and checkpoint readiness remain unverified until an authorized X2 observer can inventory them. Remote Desktop Commander currently reports its X2 bridge offline; user screenshots are not a native file/provider census.
+
+**Migration order and recovery gates:**
+1. Keep existing Edge tabs, profile, cookies and account context intact until a bounded private session inventory, fallback and first real Firefox reopen are proven. Never publish session URLs, chat titles, private email, cookies, auth state or full exports.
+2. Reuse the existing [CoSessionShadowLedger](../../scripts/CoSessionShadowLedger.py) as a candidate private descriptor source, not another global session registry. [CoCarry Firefox focus projection](../../scripts/CoBrowserCarryProjectionR0.py) accepts a bounded, already-observed ledger, elects **one proposed foreground**, and retains all other rows as indexed/offscreen, **not** automatically dormant or close-safe.
+3. Require an independent readback of the chosen provider session, correct WorkID/checkpoint, source-currentness and any unsent local text before treating the Firefox replacement as useful or safe. Actual login remains an explicit browser/provider action.
+4. Edge remains a recoverable compatibility fallback. No mass close, tab-delete, browser uninstall, account transfer, credential access, or default-browser change is authorized by the source projection.
+5. Other fronts may continue with collision-safe bounded contributions; source-only public re-entry points may be published, but private session descriptors stay under private CoFarm/CoStead custody with receiver-specific access.
+
+**Synthetic evidence:** [12 regression tests](../../scripts/test_cobrowser_carry_r0.py) passed locally against a 1,001-row synthetic ledger (one proposed foreground, 1,000 still indexed), plus duplicate identity, missing focus, bounded-cap, no-clobber and no-side-effect controls. Exact tested public code blobs: `0d08b2091adde7809f503740251c3c9f13a059e3` and `dead0340e38de69eed93094e748dd12aff572f64`. The existing [renderer-substitution CI](../../.github/workflows/cobrowser-renderer-substitution-r0.yml) now includes those tests, but updated GitHub Actions PASS is not yet confirmed.
+
+**Nonclaims:** `1_FOREGROUND_NE_1_TOTAL_SESSION`; `OFFSCREEN_NE_DORMANT`; `VISIBLE_TAB_NE_RECOVERABLE_CHECKPOINT`; `LEDGER_NE_GLOBAL_HISTORY`; `FIREFOX_ENGINE_NE_COBROWSER_RUNTIME`; `PUBLIC_POINTER_NE_PRIVATE_SESSION_PUBLICATION`.
