@@ -224,6 +224,20 @@ class FrontierIndexTests(unittest.TestCase):
         # replays are permitted with separate evidence and authority.
 
 
+    def test_co_wave_policy_allows_replay_for_controls(self):
+        policy = json.loads((ROOT / "ai/coboogie-regroup-policy.json").read_text(
+            encoding="utf-8"))
+        w = policy["wave_optionalities"]
+        self.assertTrue(w["novelty_is_not_progress"])
+        self.assertTrue(w["preserve_existing_fronts"])
+        self.assertTrue(w["no_extra_scheduler"])
+        self.assertEqual(w["selection_output"],
+                         "CANDIDATE_ONLY_NEVER_EFFECT_OR_RECEIVER_ACK")
+        self.assertIn("CONTROL_REPLAY", w["allowed_exceptions"])
+        self.assertIn("DISASTER_RESTORE", w["allowed_exceptions"])
+        self.assertGreaterEqual(w["prefer_different_axes_at_least"], 3)
+
+
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)
