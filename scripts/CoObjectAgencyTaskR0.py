@@ -44,7 +44,8 @@ def digest(raw):
 
 def source_sha(root, relative):
     path = (Path(root) / relative)
-    require(path.is_file() and not path.is_symlink() and path.stat().st_size <= 2_097_152,
+    require(not path.is_symlink(), "SYMLINK_NOT_ALLOWED")
+    require(path.is_file() and path.stat().st_size <= 2_097_152,
             "SOURCE_NOT_BOUNDED_REGULAR")
     return digest(path.read_bytes())
 
