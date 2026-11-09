@@ -1,0 +1,35 @@
+name: CoFront public source consumer
+on:
+  push:
+    paths:
+      - 'scripts/cofront_public_consumer.py'
+      - 'scripts/test_cofront_public_consumer.py'
+      - '.github/workflows/cofront-public-consumer.yml'
+  pull_request:
+    paths:
+      - 'scripts/cofront_public_consumer.py'
+      - 'scripts/test_cofront_public_consumer.py'
+      - '.github/workflows/cofront-public-consumer.yml'
+  workflow_dispatch:
+jobs:
+  offline-tests:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run offline fail-closed tests
+        env:
+          PYTHONPATH: scripts
+        run: python -m unittest discover -s scripts -p 'test_cofront_public_consumer.py' -v
+      - name: Verify public source pointers
+        run: python scripts/cofront_public_consumer.py --output cofront-public-readback.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cofront-public-readback
+          path: cofront-public-readback.json
+          if-no-files-found: ignore
