@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CoWet R0 | A living idea, an honest boundary</title>
+<style>
+:root{color-scheme:dark;background:#0a0b1e;color:#f9f8ff;font:16px/1.5 system-ui,sans-serif}
+*{box-sizing:border-box}body{margin:0}header,main,footer{max-width:1020px;margin:auto;padding:1rem 1.5rem}
+header{display:flex;justify-content:space-between;gap:1rem;align-items:center;flex-wrap:wrap}
+a{color:#a9e9ff}button{font:inherit;border:1px solid #a9e9ff;background:#182448;color:#fff;border-radius:1rem;padding:.65rem 1rem;cursor:pointer}
+button:focus-visible,a:focus-visible{outline:3px solid #f9c755;outline-offset:3px}
+.hero{position:relative;border-radius:1.5rem;overflow:hidden;background:radial-gradient(circle at 48% 42%,#3d266b,#10172f 48%,#0a0b1e);border:1px solid #665293}
+.hero svg{width:100%;height:auto;display:block}
+.overlay{padding:1rem 1.5rem 2rem}h1{font-size:clamp(2rem,6vw,4.7rem);line-height:1.02;margin:.5rem 0;max-width:15ch}
+.lead{font-size:1.18rem;max-width:53ch;color:#dde9fb}.eyebrow{letter-spacing:.18em;color:#81e8da;font-size:.82rem;font-weight:700}
+.controls{display:flex;gap:.8rem;align-items:center;flex-wrap:wrap;margin:1rem 0}#soundStatus{font-size:.86rem;color:#dae9eb}
+.info{display:grid;grid-template-columns:repeat(auto-fit,minmax(225px,1fr));gap:1rem;margin:2rem 0 5rem}
+article{background:#161b36;padding:1.2rem;border-radius:1rem;border:1px solid #424b75}
+article h2{margin-top:0;font-size:1.1rem}.quiet{color:#b9bfdf;font-size:.9rem}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+</style>
+<header><strong>CoCivium / CoWet+ experiment</strong><div class="controls"><button id="enable" type="button">Enable atmosphere</button><button id="mute" type="button" hidden>Audio off</button><span id="soundStatus" role="status">Silent by default</span></div></header>
+<main><section class="hero" aria-labelledby="hero-title">
+<svg viewBox="0 0 1000 410" role="img" aria-labelledby="art-title art-desc" xmlns="http://www.w3.org/2000/svg">
+<title id="art-title">A constellation becomes a shared path</title>
+<desc id="art-desc">Many separate violet and teal circles connect through a luminous, branching route toward one open centre. This illustrates diverse knowledge fronts relating without merging into one blob.</desc>
+<defs><radialGradient id="g"><stop stop-color="#b45fff" stop-opacity=".9"/><stop offset="1" stop-color="#b45fff" stop-opacity="0"/></radialGradient><linearGradient id="path"><stop stop-color="#ff85b9"/><stop offset=".5" stop-color="#bca4ff"/><stop offset="1" stop-color="#67fae5"/></linearGradient></defs>
+<ellipse cx="520" cy="203" rx="245" ry="166" fill="url(#g)" opacity=".35"/>
+<g stroke="url(#path)" fill="none" stroke-width="3" opacity=".85">
+<path d="M72 290 Q210 75 369 180 T640 135 T916 170"/><path d="M120 75 Q310 315 450 200 T820 345"/><path d="M84 190 Q230 385 450 230 T900 62"/>
+</g>
+<g fill="#7cefe0"><circle cx="72" cy="290" r="13"/><circle cx="120" cy="75" r="8"/><circle cx="640" cy="135" r="10"/><circle cx="900" cy="62" r="12"/><circle cx="820" cy="345" r="9"/></g>
+<g fill="#e29aff"><circle cx="84" cy="190" r="9"/><circle cx="369" cy="180" r="12"/><circle cx="450" cy="230" r="19"/><circle cx="916" cy="170" r="13"/></g>
+<circle cx="520" cy="203" r="55" fill="#171334" stroke="#ebd4ff" stroke-width="3"/><circle cx="520" cy="203" r="43" fill="none" stroke="#68fbe2" stroke-width="2" stroke-dasharray="5 8"/><text x="520" y="210" fill="white" font-size="22" font-family="system-ui" text-anchor="middle">SEED</text>
+</svg>
+<div class="overlay"><p class="eyebrow">ONE SEED · MANY PATHS</p><h1 id="hero-title">Ideas deserve more than another wall of text.</h1><p class="lead">A source-bound constellation can be beautiful and useful. Every glowing route still leads back to evidence. Silence is the default.</p><p><a href="#explain">Explore the idea without sound</a></p></div></section>
+<section id="explain" class="info"><article><h2>CoDry+ is the foundation</h2><p>Readable text, source pointers, portability and proof. The page works even if media fails.</p></article><article><h2>CoWet+ adds comprehension</h2><p>Meaningful visual paths, humane rhythm and playful exploration, not obligatory spectacle.</p></article><article><h2>CoAudioFkOff+</h2><p>Your preference wins. Scrolling never starts sound. Once you opt in, scroll may gently adjust an original, low-volume tone. One click restores silence.</p></article></section><p class="quiet">Offline prototype only. No microphone, tracking, remote audio file or site deployment.</p></main>
+<footer class="quiet">CoWet+ R0 · Accessible text remains primary · Original SVG and locally synthesized demonstration tone</footer>
+<script>
+(()=>{'use strict';
+const enable=document.getElementById('enable'),mute=document.getElementById('mute'),status=document.getElementById('soundStatus');
+let context=null,osc=null,gain=null,active=false;
+const key='cowet-audio-off-v0';let disabled=true;
+try{disabled=localStorage.getItem(key)!=='explicitly-enabled'}catch(_){disabled=true}
+function store(v){try{localStorage.setItem(key,v)}catch(_){}}
+function silence(){active=false;disabled=true;store('off');if(gain&&context){gain.gain.setTargetAtTime(0,context.currentTime,.05)}if(osc){try{osc.stop()}catch(_){}osc=null}if(context){context.close();context=null}gain=null;mute.hidden=true;enable.hidden=false;status.textContent='Audio off. Preference kept.'}
+function scrollMix(){if(!active||!gain||!context)return;const doc=document.documentElement;const travel=Math.max(1,doc.scrollHeight-innerHeight);const fraction=Math.min(1,Math.max(0,scrollY/travel));const target=Math.min(.018,.004+fraction*.014);gain.gain.setTargetAtTime(target,context.currentTime,.35)}
+enable.addEventListener('click',async()=>{if(active)return;try{const C=window.AudioContext||window.webkitAudioContext;if(!C){status.textContent='Audio unavailable. Visual experience remains.';return}context=new C();gain=context.createGain();gain.gain.value=0;osc=context.createOscillator();osc.type='sine';osc.frequency.value=174.61;osc.connect(gain);gain.connect(context.destination);osc.start();await context.resume();active=true;disabled=false;store('explicitly-enabled');enable.hidden=true;mute.hidden=false;status.textContent='Atmosphere enabled. Audio off is always available.';scrollMix()}catch(e){silence();status.textContent='Audio unavailable. Still silent.'}});
+mute.addEventListener('click',silence);
+window.addEventListener('scroll',scrollMix,{passive:true});
+document.addEventListener('visibilitychange',()=>{if(document.hidden&&active&&gain&&context)gain.gain.setTargetAtTime(0,context.currentTime,.03);else scrollMix()});
+window.addEventListener('pagehide',()=>{if(active)silence()});
+})();
+</script></html>
