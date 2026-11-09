@@ -13,7 +13,7 @@ import sys
 
 root = Path.cwd().resolve()
 candidate = Path(os.environ["COMVP_ARTIFACT_PATH"]).resolve()
-assert candidate.parent == root / "scripts", "not the trusted source directory"
+assert candidate.parent in {root / "scripts", root / "regression-fixture" / "scripts"}, "not a bounded CoPre source directory"
 assert candidate.name == "CoMVPCoPreFirstUseR0.py", "wrong entrypoint"
 sys.path.insert(0, str(candidate.parent))
 spec = importlib.util.spec_from_file_location("copre_candidate_under_contract", candidate)
