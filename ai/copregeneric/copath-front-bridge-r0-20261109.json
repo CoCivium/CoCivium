@@ -148,6 +148,28 @@
       "access": "AUTHORIZED_OPT_IN",
       "verified_by": "GITHUB_CONNECTOR_READBACK_2026_11_09",
       "receiver_ack": null
+    },
+    {
+      "id": "comvp-controller",
+      "branch": "main",
+      "path": "docs/Architecture/COMVP_COLOCKSTEP_SOURCE_RELEASE_R0_20261109.md",
+      "git_blob_sha1": "bf69a16af06a54e39dfd303e1ac9b482680fdc2e",
+      "role": "existing_main_source_only_release_controller",
+      "custody": "PUBLIC_REPO_SOURCE_ONLY",
+      "access": "AUTHORIZED_OPT_IN",
+      "verified_by": "GITHUB_CONNECTOR_READBACK_2026_11_09",
+      "receiver_ack": null
+    },
+    {
+      "id": "corun-donor",
+      "branch": "corun",
+      "path": "examples/corun_r0/README.md",
+      "git_blob_sha1": "9d26f37327734217e923ef3785257f7524c64857",
+      "role": "unmerged_corun_comvp_differential_and_browser_tests",
+      "custody": "PUBLIC_REPO_SOURCE_ONLY",
+      "access": "AUTHORIZED_OPT_IN",
+      "verified_by": "GITHUB_CONNECTOR_READBACK_2026_11_09",
+      "receiver_ack": null
     }
   ],
   "routes": {
@@ -173,7 +195,9 @@
       "copre-entry",
       "bootstrap",
       "seed-fabric",
-      "pr429-graph"
+      "pr429-graph",
+      "comvp-controller",
+      "corun-donor"
     ],
     "highlight": [
       "copre-entry",
@@ -191,6 +215,12 @@
       "copre-entry",
       "seed-federation",
       "pr429-index",
+      "pr429-graph"
+    ],
+    "lockstep": [
+      "copre-entry",
+      "comvp-controller",
+      "corun-donor",
       "pr429-graph"
     ]
   },
@@ -232,7 +262,7 @@
     "docs/CoPreGeneric/PublicDraft_R0_20261109/manifest.json",
     "docs/Onramp/copregeneric_whatsapp_v8x/INDEX.md"
   ],
-  "actual_test_scope": "Local CI git-tree byte retrieval at its observed main and candidate revisions; role paths only. No Meta AI/X2/CoStead reader.",
+  "actual_test_scope": "PR-only GitHub CI: role-specific readback of exact source objects from main, candidate PR429, and separate CoRun PR402 Git trees. No external receiver effect.",
   "next_proof_gate": "One independent authorized front retrieves at least one selected exact source and gives source identity plus useful scoped effect readproof; reconcile with its existing baseline without relay",
   "nonclaims": [
     "NO_ALL_FRONTS_INGESTED",
@@ -248,6 +278,20 @@
     "NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF",
     "NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE",
     "HASHING_IS_NOT_SEMANTIC_INGESTION",
-    "DISCOVERED_SET_IS_NOT_COMPLETE_HISTORY"
-  ]
+    "DISCOVERED_SET_IS_NOT_COMPLETE_HISTORY",
+    "NO_CROSS_BRANCH_MERGE_OR_SUPERSESSION",
+    "NO_CORUN_MVP_PROMOTION"
+  ],
+  "reused_donor": {
+    "pr402": {
+      "url": "https://github.com/CoCivium/CoCivium/pull/402",
+      "head_sha": "ca72931c83f83e45ed29447ec6c92d2b8e04378d",
+      "state": "PUBLIC_DRAFT_UNMERGED_CI_PASS_SCOPED"
+    },
+    "comvp_main": {
+      "path": "docs/Architecture/COMVP_COLOCKSTEP_SOURCE_RELEASE_R0_20261109.md",
+      "role": "EXISTING_MAIN_DONOR_NOT_REPLACED"
+    },
+    "integration_state": "ONLY_CROSS_SOURCE_READBACK__NOT_MVP_OR_RUNTIME"
+  }
 }
