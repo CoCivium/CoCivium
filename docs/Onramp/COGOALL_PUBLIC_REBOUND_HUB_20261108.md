@@ -10,6 +10,7 @@
 5. [CoReGroup peer evidence contract](../Evolution/COREGROUP_PEER_EVIDENCE_CONTRACT_R0.md): provenance, lease fencing, verification, recovery; proposed contract, not proof of live peer sync.
 
 ## Current engineering threads
+- [rickBar Continuity R1 source and host acceptance contract](../Architecture/RICKBAR_CONTINUITY_R1_20261108.md): durable local conversation, fenced worker epoch and restart recovery with [passing synthetic CI](https://github.com/CoCivium/CoCivium/actions/runs/42540438846). **Not installed on X2 or native rickBar; no hosted-session swap or automatic deletion.**
 - [Ollama loopback gateway](../../examples/comodelfabric/ollama_gateway_r0.py) and [GitHub Actions workflow](../../.github/workflows/comodelfabric-ollama.yml): source and CI configuration; inspect actual run status before asserting PASS.
 - [WorkID receipt store](../../examples/comodelfabric/test_gateway_bridge.py): idempotency/replay/conflict prototype; not native receiver.
 - [Ollama-to-receipt CLI](../../examples/comodelfabric/rickbar_ollama_bridge_r0.py): source bridge, not verified X2 deployment.
@@ -19,6 +20,7 @@
 - [X2 diagnostic record](../Evolution/COWAVE_X2_DIAGNOSTIC_20261108_R0.md): observer/clone/test constraints; disconnected bridge does not mean X2 is powered off.
 
 ## Strategy and research
+- [Frontier evidence review (2026-11-08)](../Public/COALL_FRONTIER_PUBLIC_EVIDENCE_REVIEW_R0_20261108.md): source-qualified AI capability, AutoDNA, security, SETI, unknown intelligence and falsifiable follow-up; research evidence, not a deployed agent or independent confirmation.
 - [G_dSide / CoPriMath / GS-Loop public R0](../Evolution/GDSIDE_COPRIMATH_GSLOOP_PUBLIC_R0.md): candidate future-directed valuation, typed relations, anti-loop contracts.
 - [Five-lane workpack](../Evolution/GDSIDE_FIVE_LANE_WORKPACK_R0.md): proposed parallel areas, **not** fixed worker hierarchy.
 - [CoLiving highlight assets](../Architecture/COLIVING_HIGHLIGHT_ASSETS_R0.md): receiver-relative, versioned highlights; observed version remains recoverable.

@@ -2,15 +2,44 @@
 import json
 import urllib.request
 import urllib.error
+from urllib.parse import urlsplit
+import math
 import uuid
+
+
+class _NoRedirect(urllib.request.HTTPRedirectHandler):
+    """Fail closed before urllib can forward a local prompt elsewhere."""
+    def redirect_request(self, req, fp, code, msg, headers, newurl):
+        raise urllib.error.HTTPError(req.full_url, code, "REDIRECT_DENIED", headers, fp)
+
+
+def verified_loopback_base_url(value):
+    """Accept only exact HTTP Ollama origins, never prefix-matching authorities."""
+    if not isinstance(value, str):
+        raise ValueError("R0 permits exact loopback Ollama origins only")
+    try:
+        parsed = urlsplit(value)
+        host = parsed.hostname
+        port = parsed.port
+    except ValueError as exc:
+        raise ValueError("R0 permits exact loopback Ollama origins only") from exc
+    if (parsed.scheme != "http" or host not in {"127.0.0.1", "localhost"}
+            or port is None or not 1 <= port <= 65535
+            or parsed.username is not None or parsed.password is not None
+            or parsed.path not in {"", "/"} or parsed.query or parsed.fragment):
+        raise ValueError("R0 permits exact loopback Ollama origins only")
+    return "http://" + host + ":" + str(port)
+
 
 class OllamaGateway:
     def __init__(self, base_url="http://127.0.0.1:11434", timeout=8, opener=None):
-        if not (base_url.startswith("http://127.0.0.1:") or base_url.startswith("http://localhost:")):
-            raise ValueError("R0 permits loopback Ollama only")
-        self.base_url=base_url.rstrip("/")
-        self.timeout=timeout
-        self.opener=opener or urllib.request.urlopen
+        self.base_url = verified_loopback_base_url(base_url)
+        if not isinstance(timeout, (int, float)) or isinstance(timeout, bool) or not math.isfinite(timeout) or timeout <= 0:
+            raise ValueError("positive finite Ollama timeout required")
+        self.timeout = timeout
+        # No env proxies, no redirects, and no external network origin for model prompts.
+        self.opener = opener or urllib.request.build_opener(
+            urllib.request.ProxyHandler({}), _NoRedirect()).open
 
     def _request(self, path, payload=None):
         data=None if payload is None else json.dumps(payload).encode("utf-8")
