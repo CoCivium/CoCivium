@@ -182,14 +182,16 @@ def plan(root: str | Path, manifest: dict, events: list[dict], *, as_of: str):
         vitality = disposition(local_vitality)
         adapter = adapter_for(path, content_class)
         # Do not turn claimed timer events, quiet objects, or sidecars into active workers.
-        eligible = bool(e and e["kind"] in {"SOURCE_OBSERVED", "MATERIAL_REVISION",
+        eligible = bool(e and e["kind"] in {"MATERIAL_REVISION",
                      "WAKE_OBSERVED"} and vitality not in {
                         "PRESERVE_RETIRED_LINEAGE", "REMAIN_DORMANT_WITH_EXACT_WAKE",
                         "SLEEP_KEEP_ADDRESSABLE", "HOLD_UNKNOWN_CURRENTNESS"
                      } and adapter != "HOLD_TRANSIENT_NO_WAKE")
         if e and e["kind"] == "WAKE_OBSERVED" and not wake_ok:
             eligible = False
-        next_proposal = adapter if eligible else "QUIET_OR_HOLD"
+        next_proposal = ("REQUEST_REPAIR_DIAGNOSTIC" if eligible and
+                         vitality == "REPAIR_BEFORE_AMPLIFY" else
+                         adapter if eligible else "QUIET_OR_HOLD")
         pulse = {"subject": oid, "relation_type": "PROPOSED_OBJECT_ACTION",
                  "epistemic_class": "PLANNED", "evidence_ref": digest,
                  "authority_ceiling": "NONE", "effect_executed": False}
@@ -208,7 +210,9 @@ def plan(root: str | Path, manifest: dict, events: list[dict], *, as_of: str):
               "source_effects": 0, "workers_spawned": 0,
               "proven_lifecycle_max": "VERIFIED_LOCAL",
               "durable_landing": False, "actual_receiver_pickup": False,
-              "ux_acceptance": "UX_NOT_EVALUATED", "nonclaims": list(NONCLAIMS)}
+              "ux_acceptance": "UX_NOT_EVALUATED",
+              "event_authorization": "PRODUCER_ASSERTED_NOT_AUTHENTICATED",
+              "nonclaims": list(NONCLAIMS)}
     output["receipt_sha256"] = hashlib.sha256(json.dumps(
         output, sort_keys=True, separators=(",", ":")).encode()).hexdigest()
     return output
