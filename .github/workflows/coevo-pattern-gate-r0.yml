@@ -89,7 +89,7 @@ jobs:
               capture_output=True, text=True, check=True, timeout=10)
           report = json.loads(done.stdout)
           assert report["scope"] == "SYNTHETIC_SELFTEST_ONLY"
-          assert report["cases"] == report["passed"] == 22
+          assert report["cases"] == report["passed"] == 26
           assert report["receiver_ack"] == "UNPROVEN"
           print("PASS_PATTERN_GATE_R0_SOURCE_BEHAVIOR_AND_POLICY_ONLY")
           PY
