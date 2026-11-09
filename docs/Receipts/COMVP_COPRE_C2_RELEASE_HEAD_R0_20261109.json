@@ -1,0 +1,64 @@
+{
+  "schema": "CoMVP.CoPreC2SourceQualificationReceipt.R0",
+  "observed_at_utc": "2026-11-09T18:50:06Z",
+  "work_id": "CoMVP.CoPrePilot.20261109",
+  "source_repository": "CoCivium/CoCivium",
+  "source_branch": "candidate/comvp-copre-cli-pilot-r0-20261109",
+  "source_commit": "a1ccac82b0a6063924deafbe8ed9a36ba3b20a14",
+  "source_task": "Public issue #403 to CoPre continuation packet",
+  "task_source": "https://github.com/CoCivium/CoCivium/issues/403",
+  "source_program": "scripts/CoMVPCoPreFirstUseR0.py",
+  "source_sha256": "e3c76fddc8c7ea022b4f8698f03a665437a1c61249ccc41b32dc5864630e73b0",
+  "pinned_minimum_use_contract": "tests/acceptance_copre_cli_minimum_use_r0.py",
+  "acceptance_sha256": "0d908f8c681652e3ba5c78f997766c682849043f1ed6e78e2f57690448e07453",
+  "candidate_test": "tests/source_copre_cli_candidate_r0.py",
+  "c2_scenario": "stage actual source; run candidate selftest and pinned minimum-use test; commit local selected head; stage weak-test regressive candidate; deny replacement; fresh Python process reads same active head",
+  "state": "C2_SOURCE_CONTRACT_AND_SELECTED_LOCAL_HEAD",
+  "source_slot": "copre_issue403",
+  "acceptance_result": "CONTRACT_TESTED_LOCAL_ONLY",
+  "observed_negative": "HELD_ACCEPTANCE_REGRESSION",
+  "cold_process_selected_head_readback": true,
+  "material_effect": "DETERMINISTIC_LOCAL_SOURCE_QUALIFICATION_ONLY",
+  "run": {
+    "id": 42677521333,
+    "url": "https://github.com/CoCivium/CoCivium/actions/runs/42677521333",
+    "event": "push",
+    "conclusion": "success",
+    "source_job": {
+      "id": 129362817384,
+      "name": "cli-first-use",
+      "conclusion": "success"
+    },
+    "qualification_job": {
+      "id": 129362913250,
+      "name": "source-slot",
+      "conclusion": "success"
+    }
+  },
+  "source_receipt_sha256_from_runner_log": "0bf1a0727171328773064cb9c026aa7e49198ec0ca37ee2814184014111f7505",
+  "artifact": {
+    "provider": "GitHub Actions",
+    "id": 13701575674,
+    "name": "comvp-copre-source-slot-42677521333-a1",
+    "provider_reported_archive_digest": "sha256:59b4abe7133c55d9700a45e4a3c095d782b40be13aa45c1a866a152df7c478e9",
+    "expires_at": "2026-12-09T18:50:06Z"
+  },
+  "scope": [
+    "Source-level acceptance test authored and run within same GitHub organization",
+    "Clean temporary SQLite release slot and temporary source copy",
+    "No persistent elected local release-head outside this CI job",
+    "Real public GitHub issue fetched in different job of same exact workflow",
+    "Source candidate only, donor PR401 unchanged",
+    "Prior broad research PR401 and issue403 preserved"
+  ],
+  "not_proven": [
+    "No independent consumer-authored acceptance",
+    "No separately consenting human receiver first-use",
+    "No actual X2 rickBar installation or Ollama response",
+    "No product TASK_MVP or OPERATIONAL_MVP",
+    "No CoStead custody or independent provider ACK",
+    "No >24h Seed survivability or public product release",
+    "Archive hash is GitHub-provided metadata, not independently downloaded/recomputed here"
+  ],
+  "next_proof": "Independent user or authorized separate receiver reconstructs public issue403 task from CoPre output, validates STOP/currentness and completes one useful task without rick relay; then preserve source baseline and native recovery."
+}
