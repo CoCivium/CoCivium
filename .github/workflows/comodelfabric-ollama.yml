@@ -33,6 +33,8 @@ jobs:
         run: python -B examples/comodelfabric/test_rickbar_local_web_r0.py
       - name: Validate exact loopback URL and block proxy or redirect egress
         run: python -B examples/comodelfabric/test_gateway_local_egress_r0.py
+      - name: Cold-process readback and tamper / false-ACK tests
+        run: python -B examples/comodelfabric/test_rickbar_receipt_readback_r0.py
       - name: Check RickBar bridge CLI syntax
         run: python -m py_compile examples/comodelfabric/rickbar_ollama_bridge_r0.py
 
