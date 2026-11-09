@@ -2,7 +2,13 @@
   "schema": "cocivium.frontier-index.r0",
   "purpose": "Public coordination pointers, not runtime state or cross-session ACK",
   "authority": "non-canonical; evidence-linked; challengeable",
-  "promotion_states": ["proposed", "source_committed", "tests_executed", "independently_observed", "released"],
+  "promotion_states": [
+    "proposed",
+    "source_committed",
+    "tests_executed",
+    "independently_observed",
+    "released"
+  ],
   "rules": {
     "no_inferred_pass": true,
     "no_self_certified_effect": true,
@@ -14,49 +20,84 @@
   "fronts": [
     {
       "id": "receiver-evidence",
-      "status": "source_committed",
+      "status": "tests_executed",
       "source": "tests/gs_receiver/",
       "workflow": ".github/workflows/receiver-reconciliation.yml",
-      "next_gate": "obtain workflow run ID, test result, and retained artifact",
-      "blocked_claims": ["CI_PASS", "X2_INTEGRATED", "LIVE_RECEIVER_HEALTH"]
+      "next_gate": "obtain authenticated independent X2/CoBar receiver readproof on exact work source; CI pass does not prove live receiver health",
+      "blocked_claims": [
+        "X2_INTEGRATED",
+        "LIVE_RECEIVER_HEALTH"
+      ],
+      "test_receipt": {
+        "run_id": 42689393994,
+        "source_sha": "4a34e3aa22fee6c4aee20a2cd6b8ce12f7801669",
+        "conclusion": "success",
+        "scope": "source-only isolated receiver regression; 34 synthetic tests; no X2 readproof",
+        "artifact_id": 13706132475,
+        "artifact_zip_sha256": "1435567d073c129389c378c3d77c29c26871b030fde4d748d11bf3f205e515be",
+        "source_receipt_url": "https://github.com/CoCivium/CoCivium/actions/runs/42689393994"
+      },
+      "claim_resolutions": [
+        {
+          "claim": "CI_PASS",
+          "evidence_ref": "https://github.com/CoCivium/CoCivium/actions/runs/42689393994",
+          "verifier_ref": "github-actions:isolated-receiver:exit-0:34-tests",
+          "observed_at": "2026-11-09T20:04:26Z"
+        }
+      ]
     },
     {
       "id": "x2-coorb-ux",
       "status": "proposed",
       "evidence": "user-supplied desktop screenshot, 2026-11-09; not a build manifest",
       "next_gate": "read actual X2 build identity and verify receiver-to-CoBar observation",
-      "blocked_claims": ["CURRENT_BUILD", "DEPLOYED_FIX", "RECOVERY_PASS"]
+      "blocked_claims": [
+        "CURRENT_BUILD",
+        "DEPLOYED_FIX",
+        "RECOVERY_PASS"
+      ]
     },
     {
       "id": "runtime-recovery",
       "status": "proposed",
       "next_gate": "prove crash/restart replay against a real durable producer and independent observer",
-      "blocked_claims": ["SURVIVES_24H", "SELF_HEALS"]
+      "blocked_claims": [
+        "SURVIVES_24H",
+        "SELF_HEALS"
+      ]
     },
     {
       "id": "conav-coregroup",
       "status": "proposed",
       "next_gate": "demonstrate one durable work ID resolved across independent sessions without manual relay",
-      "blocked_claims": ["CROSS_SESSION_SYNC"]
+      "blocked_claims": [
+        "CROSS_SESSION_SYNC"
+      ]
     },
     {
       "id": "comvp-colockstep",
       "status": "proposed",
       "next_gate": "define and execute a usable release gate with rollback and no-regression check",
-      "blocked_claims": ["MVP_QUALIFIED"]
+      "blocked_claims": [
+        "MVP_QUALIFIED"
+      ]
     },
     {
       "id": "coprimath-gdside",
       "status": "source_committed",
       "source": "docs/Evolution/GDSIDE_COPRIMATH_GSLOOP_PUBLIC_R0.md",
       "next_gate": "run equal-budget candidate-future versus baseline experiments with negative controls",
-      "blocked_claims": ["EMPIRICAL_SUPERIORITY"]
+      "blocked_claims": [
+        "EMPIRICAL_SUPERIORITY"
+      ]
     },
     {
       "id": "costead-onboarding",
       "status": "proposed",
       "next_gate": "observe first-use onboarding and successful recovery on a real device",
-      "blocked_claims": ["ONBOARDING_PASS"]
+      "blocked_claims": [
+        "ONBOARDING_PASS"
+      ]
     }
   ],
   "change_policy": "append evidence and supersession; do not replace unresolved claims with optimistic summaries"
