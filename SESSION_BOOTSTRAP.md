@@ -486,3 +486,36 @@ readproof before pickup is claimed.
 `BLOCKED_EDGE_NE_BLOCKED_GRAPH`  
 `BEACON_NE_AUTHORITY`  
 `VIRTUAL_ARMADA_NE_AUTHORITY_MULTIPLICATION`
+
+
+## CoCarry+ browser consolidation and public server-to-server bootstrap | 2026-11-09
+
+**State: PUBLIC-SAFE OPERATING CONTRACT; not a global browser/session census, live Firefox extension, synchronized provider account, or automatic session pickup.** The user is consolidating many open Edge chat tabs into a single active Firefox tab, replacing a wall of provider rectangles with a quieter foreground UX. This is an intentional observer change, **not** a work/session retirement and **not** evidence that history has been exported, indexed, closed safely or that remote providers have been deleted.
+
+**Preserve:** existing `CoWorkObject/WorkID`, `CoVirtualSession+`, `CoSessionAutocycle+`, `CoReGroup+`, `CoAllPulseField+`, `CoLivingHighlight+`, `CoMap/CoOrb/CoTime`, `CoLUE/CoVIA`, `CoStead/private custody`, and `CoMVP/CoLockStep` as separate qualified concerns with one provenance spine. No new global session registry or browser daemon.
+
+### Safe tab-consolidation semantics
+
+1. **Tabs are views, not records of custody.** Do not infer that closing Edge erased a chat, moved it to Firefox, revoked a provider session, or stopped its scheduled tasks. Conversely a tab remaining open does not prove a live worker.
+2. **Recover known pointers before broad search.** Each *authorized, materially relevant* session can contribute `session_locator, provider, source_revision, WorkID_refs[], last_qualified_head, subscriptions, privacy_scope, currentness_cursor, lifecycle, unresolved_conflicts, next_wake, successor_pointer`. Preserve unavailable values as UNKNOWN; do not scrape all private tabs or copy credentials into public GitHub.
+3. **Finite scans are not a global census.** A viewport, sidebar, search index or a handful of known sessions cannot establish whether hundreds or thousands of others are active, dormant or missing. Record the declared coverage window and exclusions.
+4. **CoCarry minimality:** encode the source identity and material delta, proofs/counterexamples, future wake and recovery route; do not transfer whole conversations by default. Use receiver-relative HOT/WARM/DIGEST subscriptions and CoTwilight compaction.
+5. **No public mail leakage:** CoLUE/Gmail draft IDs, recipient relationships and body lineage stay within compatible private custody. Public status can be shared only after rights/consent and inference-risk review. A stage label never implies send/receipt/consent.
+6. **No forced global merges.** Preserve protected branches, alternate hypotheses, last-known-working UX, unmerged drafts, source/legal/consent gates and explicit supersession. Merge only after independent tests, conflict inspection and intended reviewer/release authority.
+7. **Firefox is optional.** Existing CoOrb/CoBar text/headless projections must still support other browsers and local/native receivers. Do not claim Mozilla browser availability equals a CoBrowser implementation.
+
+### Public server-to-server read surface
+
+Use existing stable `SESSION_BOOTSTRAP.md`, `ai/session-bootstrap.json`, `ai/index.json`, `ai/session-subscription-profiles.json`, repository commits and public-safe evolution/receipt objects. Publish only intentional public-safe **machine-readable pointers**, with `source_sha, valid_time, privacy_scope, epistemic_class, successor, relation_type, minimal nonclaims`. External synths may fetch them if they choose and are authorized; publication does not imply push, discovery, ingestion, independent readproof or consensus. Private payloads remain behind separate authenticated receivers.
+
+### Acceptance tests to earn later
+
+- Close a foreground tab and reopen the same exact WorkID from a fresh Firefox context without Rick pasting history.
+- Compare last-known-good version and read cursor with the original; demonstrate zero silent supersession and privacy leakage.
+- Independently read a public-safe source object on a separate receiver and record the object digest/readproof; verify no fake ACK.
+- Interrupt the nominated worker/receiver and recover from durable checkpoint; repeat over a witnessed >24h interval.
+- Demonstrate one useful complete CoOrb/RickBar task, including Escape/Stop and native fallback, while all irrelevant sessions remain dormant and recoverable.
+
+**Current limitation:** X2 remote Desktop Commander observer path was OFFLINE in the relevant audit. No Firefox tab mutation, provider session census, private session migration, CoStead pickup or native CoOrb deployment is claimed here.
+
+`TAB_NE_SESSION_IDENTITY` | `SESSION_POINTER_NE_COMPLETE_TRANSCRIPT` | `CLOSURE_NE_DELETION` | `PUBLIC_POINTER_NE_SERVER_TO_SERVER_ACK` | `DORMANT_NE_FORGOTTEN` | `RICK_NE_MAILMAN`.
