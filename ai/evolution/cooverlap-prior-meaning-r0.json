@@ -96,21 +96,27 @@
     },
     {
       "term": "CiCollectibles",
-      "class": "UNRESOLVED",
-      "meaning": null,
-      "source": null
+      "class": "PRIOR_SPELLING_ALIAS_PENDING_EXACT_LINEAGE",
+      "meaning": "Possible earlier spelling of CoCollectibles; retain as historical pointer, do not silently conflate independent assets.",
+      "source": "USER_DIRECT_2026-11-09",
+      "normalized_term_candidate": "CoCollectibles+",
+      "definition_version": "candidate-r0-user-correction"
     },
     {
       "term": "CSMR",
-      "class": "UNRESOLVED",
-      "meaning": null,
-      "source": null
+      "class": "USER_DEFINED_SEMANTIC_EXPANSION",
+      "meaning": "CoScendent Modulation Ratio. Exact measurand, numerator, denominator, normalization, scale, method, calibration and permitted uses remain to be defined and versioned; not a numeric observation.",
+      "source": "USER_DIRECT_2026-11-09",
+      "normalization": "CSMR",
+      "definition_version": "candidate-r0-user-correction"
     },
     {
       "term": "RIZ",
-      "class": "AMBIGUOUS",
-      "meaning": null,
-      "source": null
+      "class": "USER_CLARIFIED_ALIAS",
+      "meaning": "CoRiz reputation relationships. A contextual, contestable representation; not a universal human worth or authority score.",
+      "source": "USER_DIRECT_2026-11-09",
+      "normalized_term": "CoRiz+",
+      "definition_version": "candidate-r0-user-correction"
     },
     {
       "term": "Stink / CoStonk / trading",
@@ -129,6 +135,22 @@
       "class": "MULTIPLE_EVIDENCE_TYPES",
       "meaning": "Reputation/identity/projections and life/awareness are separate typed domains; operational liveness is not conscious awareness.",
       "source": "docs/Architecture/COOBJECT_VITALITY_METABOLISM_R0_20261027.md"
+    },
+    {
+      "term": "CoRiz+",
+      "class": "USER_DEFINED_SEMANTIC_EXPANSION",
+      "meaning": "Reputation and contextual reputation relationships, with source/evidence scope, distinct actors/roles, correction and appeal; not a universal social worth score.",
+      "source": "USER_DIRECT_2026-11-09",
+      "definition_version": "candidate-r0-user-correction",
+      "governance": "Consent, fairness, contextual accountability, and prohibition on inferred global human worth/authority."
+    },
+    {
+      "term": "CoCollectibles+",
+      "class": "USER_DEFINED_PRODUCT_CONCEPT",
+      "meaning": "Online bank-like place for holdings/collectibles beyond fiat, including children and gamers. This is a product vision covering non-fiat asset types; not proof of regulated banking, a custodial wallet, legal exchange, live financial infrastructure, or ownership.",
+      "source": "USER_DIRECT_2026-11-09",
+      "definition_version": "candidate-r0-user-correction",
+      "governance": "Minor/guardian permissions, privacy, digital ownership verification, fraud protections, age-suitable UX, asset classification, and separate legal/financial rails before real-money or transfer effects."
     }
   ],
   "candidate_new_terms": [
@@ -172,6 +194,29 @@
     "PRIOR_LABEL_NE_IMPLEMENTED_SERVICE",
     "FINANCIAL_RESEARCH_NE_TRADE_AUTHORITY",
     "PUBLIC_FILE_NE_COEX",
-    "AWARE_NE_CONSCIOUSNESS_PROOF"
+    "AWARE_NE_CONSCIOUSNESS_PROOF",
+    "USER_DEFINED_EXPANSION_NE_IMPLEMENTED_METRIC",
+    "BANK_LIKE_PRODUCT_NE_LICENSED_BANK",
+    "REPUTATION_NE_HUMAN_WORTH",
+    "CHILD_FACING_CONCEPT_NE_MINOR_ACCOUNT_AUTHORITY"
+  ],
+  "correction_history": [
+    {
+      "observed_date": "2026-11-09",
+      "event": "USER_DIRECT_TERM_CORRECTION",
+      "prior_rows": [
+        "CSMR:UNRESOLVED",
+        "RIZ:AMBIGUOUS",
+        "CiCollectibles:UNRESOLVED"
+      ],
+      "current_intents": [
+        "CSMR=CoScendent Modulation Ratio",
+        "CoRiz=reputation relationships",
+        "CoCollectibles=bank-like multi-asset collectibles home for kids and gamers"
+      ],
+      "authority_ceiling": "USER_STATED_MEANINGS__NO_CANON_PROMOTION",
+      "supersedes_assistant_guesses": true,
+      "older_source_unmodified": true
+    }
   ]
 }
