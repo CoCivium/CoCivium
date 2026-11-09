@@ -42,3 +42,14 @@ No private or child-facing state may be passed through this public demonstration
 - CoStageReview and CoWaitless still govern release and independent unaffected CoLOT work.
 
 **NEXT:** Obtain a separately operated, consenting first-use receiver for issue #403 with exact readback and useful task completion, compare compact pointer to full prompt, and retain the fitter candidate without overwriting the original.
+
+
+## CoMVP pinned C2 source qualification | 2026-11-09 18:53 UTC
+
+**Source-only qualification earned for this actual CoPre CLI candidate.** The previously existing [CoMVPLockStepR0](../../scripts/CoMVPLockStepR0.py) staged the exact `scripts/CoMVPCoPreFirstUseR0.py` byte content, tested it against its own source selftest **and** a [separately pinned minimum-use contract](../../tests/acceptance_copre_cli_minimum_use_r0.py), committed one selected source head in a **temporary SQLite release slot**, and read it back from a fresh Python process. Then a newer same-entrypoint candidate deceptively changed `task_mvp` from `NOT_QUALIFIED` to `QUALIFIED_WITHOUT_USER`: its weak selftest passed, but the pinned contract rejected it and preserved the previously selected source revision.
+
+[Exact passing CI run 42678000429](https://github.com/CoCivium/CoCivium/actions/runs/42678000429) at commit `999bee736da31d10f4dbddc90a08f50f73d62c9b` had two passing jobs: existing live public issue #403 CLI source check and new source-release slot qualification. Source SHA-256 `e3c76fddc8c7ea022b4f8698f03a665437a1c61249ccc41b32dc5864630e73b0`, immutable local acceptance test SHA-256 `9a5120dc612a0148afea5e6d1c5f5dd385abd328939a4f59314292bf017e92b4`, runner source receipt `93b11ecc4a47675ef9c5c86eb510c81c23c835e37ab32532abbd0f859e954905`. See [durable machine-readable provenance receipt](../Receipts/COMVP_COPRE_C2_PINNED_NEGATIVE_R0_20261109.json). The previous red CI run 42677861464 came from a malformed weak-test fixture and is retained, not hidden.
+
+**Qualifying this source does not publish an MVP.** All tasks ran on ephemeral GitHub-hosted environments, where the pinned acceptance author and code contributor are not independently separated. The local SQLite pointer is not a permanent CoStead/X2 elected release head. No real person or separate user-facing receiver used the CoPre output, no rights/consent or accessibility acceptance, no native rickBar/Ollama interaction, no durable multi-provider handoff and no rollback of a live service are shown. User `TASK_MVP` and release status remain **HELD**.
+
+**No scope drift:** PR #401 donor remains unchanged. This task-scoped PR #406 stays a reviewable candidate; don't merge or declare task acceptance solely because CI passed. The next *material* event is an independent authorized first-use record with task reconstruction, STOP/currentness fidelity, meaningful outcome and no Rick relay. Other unrelated work need not wait.
