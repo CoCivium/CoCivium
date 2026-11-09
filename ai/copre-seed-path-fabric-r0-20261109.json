@@ -1,0 +1,224 @@
+{
+  "schema": "CoAll.CoSeedCoPathFabric.R0-candidate",
+  "status": "PUBLIC_DISCOVERY_INDEX_NOT_COMPLETE_GRAPH_NOT_RECEIVER_ACK",
+  "created_utc": "2026-11-09T23:04:47Z",
+  "source_authority": "CoCivium/CoCivium public repository source; no global governing status",
+  "co_seed": {
+    "id": "copre-generic-public-draft-r0",
+    "entry": "CoPre.md",
+    "package_manifest": "docs/CoPreGeneric/Shareable_R0_20261109/manifest.json",
+    "version": "R0-public-draft",
+    "scope": "public-safe draft"
+  },
+  "nodes": [
+    {
+      "id": "copre-entry",
+      "path": "CoPre.md",
+      "kind": "entrypoint",
+      "relations": [
+        "copre-package",
+        "bootstrap",
+        "ai-index"
+      ],
+      "proof": "PUBLIC_REPO_PATH_NOT_INDEPENDENT_RECEIVER"
+    },
+    {
+      "id": "bootstrap",
+      "path": "SESSION_BOOTSTRAP.md",
+      "kind": "source-bound-session-bootstrap",
+      "relations": [
+        "ai-index",
+        "front-registry"
+      ],
+      "proof": "PUBLIC_REPO_PATH_NOT_INDEPENDENT_RECEIVER"
+    },
+    {
+      "id": "ai-index",
+      "path": "ai/index.json",
+      "kind": "machine-discovery-index",
+      "relations": [
+        "copre-entry",
+        "seed-path-fabric"
+      ],
+      "proof": "PUBLIC_REPO_PATH_NOT_INDEPENDENT_RECEIVER"
+    },
+    {
+      "id": "copre-package",
+      "path": "docs/CoPreGeneric/Shareable_R0_20261109/manifest.json",
+      "kind": "public-safe-package-manifest",
+      "relations": [
+        "copre-draft",
+        "ack-rewise",
+        "feedloop",
+        "mindspace"
+      ],
+      "proof": "PUBLIC_REPO_PATH_NOT_INDEPENDENT_RECEIVER"
+    },
+    {
+      "id": "copre-draft",
+      "path": "docs/CoPreGeneric/Shareable_R0_20261109/CoPreGeneric-v1.0-DRAFT.md",
+      "kind": "machine-human-contract",
+      "relations": [
+        "copre-entry",
+        "dual-projection"
+      ],
+      "proof": "PUBLIC_REPO_PATH_NOT_INDEPENDENT_RECEIVER"
+    },
+    {
+      "id": "ack-rewise",
+      "path": "docs/CoPreGeneric/Shareable_R0_20261109/CoAckRewise-v8.74.md",
+      "kind": "revision-recovery",
+      "relations": [
+        "retro-coverage"
+      ],
+      "proof": "PUBLIC_REPO_PATH_NOT_INDEPENDENT_RECEIVER"
+    },
+    {
+      "id": "feedloop",
+      "path": "docs/CoPreGeneric/Shareable_R0_20261109/CoFeedLoop-Devs.md",
+      "kind": "developer-feedback-proposals",
+      "relations": [
+        "mindspace"
+      ],
+      "proof": "PUBLIC_REPO_PATH_NOT_INDEPENDENT_RECEIVER"
+    },
+    {
+      "id": "mindspace",
+      "path": "docs/CoPreGeneric/Shareable_R0_20261109/CoMindspace-Map.md",
+      "kind": "observable-instantiation-comparison",
+      "relations": [
+        "front-registry"
+      ],
+      "proof": "PUBLIC_REPO_PATH_NOT_INDEPENDENT_RECEIVER"
+    },
+    {
+      "id": "dual-projection",
+      "path": "docs/Architecture/COPREGENERIC_DUAL_PROJECTION_R0_20261109.md",
+      "kind": "synth-bio-projections",
+      "relations": [
+        "copre-draft"
+      ],
+      "proof": "PUBLIC_REPO_PATH_NOT_INDEPENDENT_RECEIVER"
+    },
+    {
+      "id": "retro-coverage",
+      "path": "ai/retro-echo-coverage-r0-20261109.json",
+      "kind": "partial-historical-coverage",
+      "relations": [
+        "retro-protocol"
+      ],
+      "proof": "PUBLIC_REPO_PATH_NOT_INDEPENDENT_RECEIVER"
+    },
+    {
+      "id": "retro-protocol",
+      "path": "docs/Architecture/COFRONT_RETRO_ECHO_NO_ORPHANS_R0_20261109.md",
+      "kind": "predecessor-successor-coverage-policy",
+      "relations": [
+        "retro-coverage"
+      ],
+      "proof": "PUBLIC_REPO_PATH_NOT_INDEPENDENT_RECEIVER"
+    },
+    {
+      "id": "front-registry",
+      "path": "ai/front-registry.json",
+      "kind": "partial-front-registry",
+      "relations": [
+        "ai-index"
+      ],
+      "proof": "PUBLIC_REPO_PATH_NOT_INDEPENDENT_RECEIVER"
+    },
+    {
+      "id": "highlights",
+      "path": "ai/highlight-assets.json",
+      "kind": "public-highlight-candidates",
+      "relations": [
+        "dual-projection"
+      ],
+      "proof": "PUBLIC_REPO_PATH_NOT_INDEPENDENT_RECEIVER"
+    },
+    {
+      "id": "mouse-targets",
+      "path": "ai/copre-canonical-routing-r0-20261109.json",
+      "kind": "candidate-mirror-routes",
+      "relations": [
+        "copre-entry"
+      ],
+      "proof": "PUBLIC_REPO_PATH_NOT_INDEPENDENT_RECEIVER"
+    },
+    {
+      "id": "seed-path-fabric",
+      "path": "ai/copre-seed-path-fabric-r0-20261109.json",
+      "kind": "typed-link-graph",
+      "relations": [
+        "copre-entry",
+        "copre-package"
+      ],
+      "proof": "PUBLIC_REPO_PATH_NOT_INDEPENDENT_RECEIVER"
+    }
+  ],
+  "co_path_contract": {
+    "inputs": [
+      "work_id",
+      "source_ref",
+      "source_digest_when_available",
+      "privacy_scope",
+      "event_time",
+      "observation_time",
+      "qualification_time",
+      "authority",
+      "receiver"
+    ],
+    "operations": [
+      "discover",
+      "read_exact",
+      "qualify_source",
+      "compare_predecessors",
+      "dedupe",
+      "propose_bounded_better",
+      "challenge",
+      "land_authorized_delta",
+      "obtain_readback",
+      "record_receiver_ack_if_actual"
+    ],
+    "outputs": [
+      "qualified_seed_candidate",
+      "source_bound_path",
+      "held_unknown_orphan_risks",
+      "next_wake",
+      "exact_receipt_when_available"
+    ],
+    "constraints": [
+      "no hidden writes",
+      "no private chat promotion",
+      "no unearned canonical status",
+      "no all-fronts integration claim",
+      "no new task from duplicate without delta"
+    ]
+  },
+  "projection_roles": {
+    "synth": "Fetch typed links and manifest, validate files, report precise evidence boundary.",
+    "bio": "Follow CoPre.md and human-readable companion pages; accessibility, meaning and consent first.",
+    "retro": "Traverse links backward and forward preserving UNRESOLVED and ORPHAN_RISK."
+  },
+  "coverage": {
+    "public_anchor_count": 15,
+    "private_source_census": "NOT_RUN",
+    "historical_coverage": "PARTIAL",
+    "currentness": "REVALIDATE_AT_READ_TIME"
+  },
+  "integration_gates": [
+    "Every intended front has authorized read access to relevant source or explicit HELD.",
+    "Receiver reads an exact source and reports proof.",
+    "New front demonstrates a useful correct action rather than simply citing an index.",
+    "Cross-link found missing or contradictory is logged as a repair, not silently ignored."
+  ],
+  "nonclaims": [
+    "NO_COMPLETE_HISTORY",
+    "NO_INDEPENDENT_RECEIVER_ACK",
+    "NO_META_AI_ACCEPTANCE",
+    "NO_AUTOSYNC",
+    "NO_X2_INSTALL",
+    "NO_CANON_OR_COEX",
+    "NO_PUBLIC_WEBSITE_MIRRORS"
+  ]
+}
