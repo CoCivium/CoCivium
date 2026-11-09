@@ -27,6 +27,11 @@ jobs:
       - name: Verify guards under optimized Python (assertions disabled)
         working-directory: experiments/gdside_coprimath_r0
         run: python -O -B -m unittest discover -p 'test_*.py' -v
+      - name: Execute matched-budget probe with full 80 x 36 paired fixtures
+        working-directory: experiments/gdside_coprimath_r0
+        run: |
+          python -B budget_matched_probe_r0.py --seeds 80 --steps 36 > /tmp/gdside_matched.json
+          python -B -c "import json; r=json.load(open('/tmp/gdside_matched.json')); assert r['scope']=='SYNTHETIC_SINGLE_STEP_PAIRED_ALLOCATION_ONLY'; assert all(x['max_matched_budget_difference']<=1e-6 for x in r['cases'].values()); assert len(r['cases'])==3; print('PASS_MATCHED_BUDGET_SYNTHETIC_ONLY')"
       - name: Exercise deterministic recursive negative control
         working-directory: experiments/gdside_coprimath_r0
         run: |
