@@ -99,9 +99,23 @@ jobs:
           with out.open('a',encoding='utf-8') as f:f.write(json.dumps(rec,sort_keys=True)+'\n')
           print('CI_COMAIL_R0',rec['status'],rec['html_sha256'])
           PY
+      - name: Cross-check prior public media against curated CoNav overlay
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -B examples/colensmedia/retro_atlas_r0.py \
+            --root . \
+            --index-out "$RUNNER_TEMP/retro-media-index.json" \
+            --atlas-out "$RUNNER_TEMP/comap-coverage-lens.md"
+          python3 -m json.tool "$RUNNER_TEMP/retro-media-index.json" >/dev/null
+          grep -q "subgraph COALL" "$RUNNER_TEMP/comap-coverage-lens.md"
+          grep -q "Verified CoSeed/CoPath inspiration links: ZERO" "$RUNNER_TEMP/comap-coverage-lens.md"
       - uses: actions/upload-artifact@v4
         with:
           name: colens-living-media-r0-${{ github.run_id }}
-          path: ${{ runner.temp }}/benchmark_evo.jsonl
+          path: |
+            ${{ runner.temp }}/benchmark_evo.jsonl
+            ${{ runner.temp }}/retro-media-index.json
+            ${{ runner.temp }}/comap-coverage-lens.md
           if-no-files-found: error
           retention-days: 7
