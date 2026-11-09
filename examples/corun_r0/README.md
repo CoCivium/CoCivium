@@ -4,15 +4,15 @@
 
 ## Purpose
 
-A whole bounded unit of work, not a list of prompts, can be scheduled as a typed dependency graph with optional parallel tasks, independent challengers and a comparable legacy control. A completed run produces reproducible **content**, exact input identity, output identity, scoped evidence, failures and a recovery pointer. Existing CoRun+ / CoCivium.exe launcher and supervision work is *prior art*: this candidate supplies a **read-only test harness**, not a replacement for a proven local runner or CoBar.
+A whole bounded unit of work, not a list of prompts, can be scheduled as a typed dependency graph with optional parallel tasks, a self-challenge stage and a same-implementation serial proxy control. Independent challengers and a true legacy-product baseline remain future gates. A completed run produces reproducible **content**, exact input identity, output identity, scoped evidence, failures and a recovery pointer. Existing CoRun+ / CoCivium.exe launcher and supervision work is *prior art*: this candidate supplies a **read-only test harness**, not a replacement for a proven local runner or CoBar.
 
 One `WorkID` binds all the pieces:
 
 ```
 SOURCE / PRIOR GRAPH -> QUALIFY -> DAG
-                           |     | A serial (legacy control)
+                           |     | A serial proxy (same code)
                            |     | B bounded concurrent (same exact work)
-                           |     | C adversarial challenge (same codebase in R0)
+                           |     | C self-challenge (independence HELD)
                            +--> VERIFY CONTENT EQUALITY
                                 -> HASHED RECEIPT -> CHECKPOINT -> SLEEP
 ```
@@ -65,7 +65,7 @@ One local Python 3.13 run on November 9, 2026 (environment-specific, unreplicate
 | **No injected delay** | 1.56 ms | 1.59 ms | Equal | A slightly faster; parallel overhead wins this time |
 | **25 ms artificial wait per node** | 456.47 ms | 203.30 ms | Equal | B faster in *synthetic latency* only |
 
-18 of 18 local automated tests passed **after repairing** an initial missing DAG dependency, which is preserved as `FAIL_RESOLVED`. Each run completed 18 nodes, two historical-pair checks, one aggregate, an internal counterevidence check, and one deliverable. Exact output hash is equal between arms. The challenger is the same implementation, so there is **no independent empirical reviewer**. Worker threads are not autonomous synths. **Human active minutes, user adoption, off-provider receiver pickup, operational energy/cost, true concurrency benefit and product service-level outcome all remain UNKNOWN.**
+In R0, **A is a same-code serial proxy, NOT a measured legacy product baseline**; B uses the same algorithm with bounded threads, and C is a same-code warning-stage, not an independent evaluator. The genuine legacy-versus-CoRun+ and independent-challenger studies remain HELD.\n\n18 of 18 local automated tests passed **after repairing** an initial missing DAG dependency, which is preserved as `FAIL_RESOLVED`. Each run completed 18 nodes, two historical-pair checks, one aggregate, an internal counterevidence check, and one deliverable. Exact output hash is equal between arms. The challenger is the same implementation, so there is **no independent empirical reviewer**. Worker threads are not autonomous synths. **Human active minutes, user adoption, off-provider receiver pickup, operational energy/cost, true concurrency benefit and product service-level outcome all remain UNKNOWN.**
 
 ## Promotion rubric for real CoRun+ prodlets
 
