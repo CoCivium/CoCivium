@@ -21,7 +21,7 @@ button[aria-pressed="true"]{background:#335e72}
 #orb-panel[hidden],#legacy[hidden]{display:none}
 #legacy{position:fixed;right:18px;bottom:80px;z-index:25;min-width:240px;padding:12px;background:#172238;border:1px solid #8299af;border-radius:10px;box-shadow:0 10px 36px #000b}
 #legacy button{display:block;width:100%;margin:3px 0;text-align:left}
-nav{display:flex;gap:8px;flex-wrap:wrap}footer{padding:12px 24px;border-top:1px solid var(--border);color:var(--muted);font-size:12px;display:none}.workspace-open footer{display:block}#r5-rail{position:fixed;bottom:0;left:0;right:0;z-index:18;display:flex;align-items:center;gap:8px;min-height:44px;background:#092236;color:#dbedff;border-top:1px solid #376078;padding:5px 84px 5px 12px;font-size:14px}#r5-rail button{font-size:14px;padding:7px 11px;min-height:38px}#r5-rail .rail-state{margin-left:auto;white-space:nowrap;color:#c0d0da}#r5-rail .rail-name{color:#8de9d7}#r5-rail .rail-warning{color:#eac57a}#r5-rail button[disabled]{opacity:.6;cursor:not-allowed}.tile[hidden]{display:none}#orb{bottom:52px}@media(max-width:600px){#r5-rail{flex-wrap:wrap;padding-right:10px;padding-bottom:9px}#r5-rail .rail-state{margin-left:0;width:100%}#orb{bottom:108px}#orb-panel,#legacy{bottom:145px}#orb-panel{max-height:calc(100vh - 165px)}}
+nav{display:flex;gap:8px;flex-wrap:wrap}footer{padding:12px 24px;border-top:1px solid var(--border);color:var(--muted);font-size:12px;display:none}.workspace-open footer{display:block}#r5-rail{position:fixed;bottom:0;left:0;right:0;z-index:18;display:flex;align-items:center;gap:8px;min-height:44px;background:#092236;color:#dbedff;border-top:1px solid #376078;padding:5px 84px 5px 12px;font-size:14px}#r5-rail button{font-size:14px;padding:7px 11px;min-height:38px}#r5-rail .rail-state{margin-left:auto;white-space:nowrap;color:#c0d0da}#r5-rail .rail-name{color:#8de9d7}#r5-rail .rail-warning{color:#eac57a}#r5-rail button[disabled]{opacity:.6;cursor:not-allowed}.tile[hidden]{display:none}#orb{bottom:var(--orb-clearance,52px)}#orb-panel,#legacy{bottom:calc(var(--orb-clearance,52px) + 64px)}#orb-panel{max-height:calc(100vh - var(--orb-clearance,52px) - 84px)}@media(max-width:600px){#r5-rail{flex-wrap:wrap;padding-right:10px;padding-bottom:9px}#r5-rail .rail-state{margin-left:0;width:100%}}
 small,.muted{color:var(--muted)}#orb-panel h2{margin-top:0}
 .signal-panel{border-left:3px solid #79adc4;padding:2px 12px;background:#0a1524;border-radius:4px}.signal-panel p{margin:5px 0}.signal-panel strong{color:#e8f0ff}#signal-source{font-size:12px}
 @media(max-width:750px){.tile[data-span]{grid-column:span 12}header{padding:12px}main{padding:9px}.tile{min-height:110px}}
@@ -79,6 +79,19 @@ small,.muted{color:var(--muted)}#orb-panel h2{margin-top:0}
 <footer>Prototype only · Not installed on X2 · Native desktop compatibility is a release gate · Keyboard: Tab / Enter / Escape</footer>
 <script>
 "use strict";
+// Layout only: keep the one Orb above whatever height the native-like rail
+// takes at this viewport and text zoom. No agent polling, device observation,
+// or installation claim is implied by this ResizeObserver.
+const coallRail=document.getElementById("r5-rail");
+function syncOrbRailClearance(){
+  document.documentElement.style.setProperty(
+    "--orb-clearance", String(Math.ceil(coallRail.getBoundingClientRect().height)+8)+"px");
+}
+syncOrbRailClearance();
+if (typeof ResizeObserver!=="undefined") {
+  const railGeometryObserver=new ResizeObserver(syncOrbRailClearance);
+  railGeometryObserver.observe(coallRail);
+}
 // No source is allowed to infer host state from remote transport state.
 const signalCases=Object.freeze({
   unknown:{host:"UNKNOWN",link:"UNKNOWN",ux:"UNKNOWN",source:"No live telemetry connected; all fields UNKNOWN."},
