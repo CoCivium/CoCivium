@@ -52,6 +52,16 @@ The original 80-seed, 36-period simulation assigns **unequal resource withdrawal
 
 **Proof boundary:** `SYNTHETIC_SINGLE_STEP_PAIRED_ALLOCATION_ONLY`; no actual economics, exogenous ecological time series result, independent receiver ACK, real stakeholder consent, scientific authority, runtime agent or deployed policy. Negative and null outcomes are publishable results.
 
+## Two-period matched-resource ecological shock falsifier R0
+
+[Run the two-period synthetic experiment](two_period_shock_r0.py) using `python two_period_shock_r0.py --seeds 80`. It advances the one-step fixture to two sequential stock transitions. All five policies see identical seeded demand, productivity, replenishment and a period-2 exogenous shock of minus 70 toy units.
+
+There are two clearly separated arms: the original unequal-withdrawal budget factors (demand/supply/random 1.00, hybrid 0.92, G_dSide 0.84), and a matched-withdrawal arm that normalizes allocation shares to the same feasible withdrawal each period. [Ten negative and deterministic tests](test_two_period_shock_r0.py) challenge the same-stock invariant, shock-only-second-period, policy-order independence, invalid inputs, and baseline inequality. [CoGoldenBraid CI](../../.github/workflows/goldenbraid-synthetic-r0.yml) runs the test suite in ordinary and optimized Python and executes the full 80-seed toy trial. Check exact-head CI before treating the run as successful.
+
+**Falsifier specified in advance:** within this simulator the ecological stock update depends on *total extraction*, replenishment and shocks, not the allocation destination. Therefore, policies with identical withdrawals and common disturbances cannot differ in stock. Any claim that different allocations alone increase stock is contradicted by the actual update rule. If baseline G_dSide keeps more stock, the declared lower extraction allowance is an important causal explanation *inside this toy model*. Other modeled differences in need satisfaction or output remain allocation-dependent.
+
+**Boundaries:** The shock and replenishment are synthetic, the two-period horizon is short, and a common disturbance does not prove resilience, ecological validity or social value. Policies are not reoptimized under the new budget and compute costs are not matched. The distinct [Pareto/rights G_dSide PR #379](https://github.com/CoCivium/CoCivium/pull/379) remains qualitatively related but numerically incommensurable without a typed bridge. No field data, live CoOrb/CoStead receiver, independent ACK, economics certification, authority or deployment is claimed.
+
 ## Recursive CoGoldenBraid: SupplySide × DemandSide × G_dSide (research extension)
 
 **Status:** proposed relational design and test plan; **not implemented in this package**, not an outcome of the numerical results above, not independent validation, and not a new economic law. This extension develops the [public CoGoldenBraid note](https://github.com/CoCivium/CoCivium/issues/317#issuecomment-6726682941) and [recursive tri-side research contribution](https://github.com/CoCivium/CoCivium/issues/377#issuecomment-6726700303) within the existing research lineage. The separate [multiobjective candidate](https://github.com/CoCivium/CoCivium/tree/candidate/gdside-multiobjective-r0-20261108) must not be silently overwritten or treated as equivalent.
