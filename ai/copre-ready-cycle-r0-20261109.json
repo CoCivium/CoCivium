@@ -1,0 +1,74 @@
+{
+  "schema": "CoAll.CoPreGeneric.ReadyCycle.R0-candidate",
+  "state": "PUBLIC_SAFE_DRAFT_NOT_GLOBAL_CANON",
+  "updated_utc": "2026-11-09T23:36:47Z",
+  "identity": "CoPreGeneric draft ready cycle",
+  "families": [
+    {
+      "name": "CoPre+",
+      "role": "Stable source-bound session rebind and recovery contract",
+      "entry": "CoPre.md"
+    },
+    {
+      "name": "CoPrompt+",
+      "role": "Prompt/interface adaptation for a particular authorized system",
+      "entry": "docs/CoPreGeneric/Shareable_R0_20261109/CoPreGeneric-v1.0-DRAFT.md"
+    },
+    {
+      "name": "CiPre+",
+      "role": "Candidate nickname for instantiation-relative preflight, not independently versioned or deployed",
+      "entry": null
+    },
+    {
+      "name": "CiPrimpt+",
+      "role": "Rapid session-specific experimental extension, subject to dedupe and qualification",
+      "entry": null
+    },
+    {
+      "name": "CoEvSeed+",
+      "role": "Media and other generated artifact seed lineage",
+      "entry": "ai/coevo-media-seeds-r0-20261109.json"
+    }
+  ],
+  "cycle": [
+    "REBind exact source/currentness and authority",
+    "SEED typed identity + provenance + privacy",
+    "PATH discover forward/reverse without inventing reciprocal authority",
+    "RETRO compare predecessor and current descendant",
+    "CHALLENGE assumptions and run falsifiable bounded experiment",
+    "EVOLVE with one evidenced delta and preserve alternatives",
+    "LAND public-safe or private-scoped artifact",
+    "VERIFY public source and independent receiver separately",
+    "HOLD unresolved, quiesce on duplicate/no material delta"
+  ],
+  "media_rule": "Future and high-value retrospective human-facing surfaces receive contextual hero/rich-media seed, with accessibility and text alternatives; no forced decoration.",
+  "audio_rule": "START_SILENT; scroll-triggered sound without explicit opt-in prohibited. Visible mute and preference override; reduced-motion and sensory options honored.",
+  "mirror_intents": [
+    {
+      "url": "https://github.com/CoCivium/CoPreGeneric",
+      "state": "NOT_FOUND_404"
+    },
+    {
+      "url": "https://CoCivium.org/CoPre",
+      "state": "NOT_VERIFIED_IN_THIS_SESSION"
+    },
+    {
+      "url": "https://InSeed.com/Stead",
+      "state": "NOT_VERIFIED_IN_THIS_SESSION"
+    }
+  ],
+  "actual_public_source": {
+    "repo": "CoCivium/CoCivium",
+    "entry": "CoPre.md",
+    "media_registry": "ai/coevo-media-seeds-r0-20261109.json"
+  },
+  "nonclaims": [
+    "NOT_LATEST_VENDOR_MODEL_VERSION",
+    "NOT_UNIVERSAL_SESSION_ACCEPTANCE",
+    "NOT_CANON",
+    "NOT_COEX",
+    "NOT_X2_RUNTIME",
+    "NOT_AUTO_MIRRORING"
+  ],
+  "next_proof": "Have one independent authorized receiver read the entry, retrieve the media preview and report exact source and accessibility acceptance."
+}
