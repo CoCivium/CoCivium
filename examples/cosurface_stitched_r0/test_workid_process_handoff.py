@@ -81,11 +81,12 @@ def verify(root, *, expected_work_id):
     source = (root / "source.json").read_bytes()
     effect = (root / "receiver-effect.json").read_bytes()
     receipt = json.loads((root / "receiver-readback.json").read_bytes())
-    assert receipt["schema"] == SCHEMA
-    assert receipt["work_id"] == expected_work_id
-    assert receipt["source_sha256"] == digest(source)
-    assert receipt["effect_sha256"] == digest(effect)
-    assert json.loads(effect)["work_id"] == expected_work_id
+    if (receipt["schema"] != SCHEMA
+            or receipt["work_id"] != expected_work_id
+            or receipt["source_sha256"] != digest(source)
+            or receipt["effect_sha256"] != digest(effect)
+            or json.loads(effect)["work_id"] != expected_work_id):
+        raise ValueError("independent readback mismatch")
     return {"work_id": expected_work_id, "effect_sha256": digest(effect),
             "classification": "TWO_PROCESS_SYNTHETIC_READBACK"}
 
@@ -125,7 +126,7 @@ class TwoProcessHandoffTests(unittest.TestCase):
             root = Path(folder)
             self.assertEqual(child("producer", root).returncode, 0)
             self.assertEqual(child("receiver", root).returncode, 0)
-            with self.assertRaises(AssertionError):
+            with self.assertRaises(ValueError):
                 verify(root, expected_work_id="other-work")
 
     def test_receiver_absence_never_counts_as_pickup(self):
