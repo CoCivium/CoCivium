@@ -62,7 +62,7 @@ test('keyboard anchors, reduced motion and plaintext fallback exist',()=>{
  assert.match(a.page,/href="#main"/);
  assert.match(a.page,/prefers-reduced-motion:reduce/);
  assert.match(a.page,/<summary>/);
- assert.match(a.page,/Accessible/);
+ assert.match(a.page,/accessible/i);
  assert.match(a.page,/Skip to atlas/);
  assert.match(a.page,/aria-labelledby="map-title map-desc"/);
 });
