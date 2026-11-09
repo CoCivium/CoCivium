@@ -281,3 +281,14 @@ Read-only GitHub Actions query during the CoObject closure turn found a **second
 **Frontier still open:** The due-WorkID queue, source release controller, model gateway, CoOrb/CoFleet projection, public AI onramp and research lanes may advance independently under existing rights. One elected writer is required only for colliding effects/versions. Remote X2 connection was still OFFLINE at the earlier check; no native product runtime readproof, 24-hour Seed proof, or automatic intersession pickup follows from this source audit. Next proof: confirm new CI job and one real authenticated receiver WorkID, without Rick manually relaying artifacts.
 
 **Nonclaims:** `SOURCE_LINK_NE_RECEIVER_ACK` | `REGISTERED_LANE_NE_ACTIVE_WORKER` | `TEST_PASS_NE_MVP` | `LANDED_NE_PICKED_UP` | `REGISTER_NE_COMPLETE_HISTORY`.
+
+
+## CoSurface exact-head CI requalification | 2026-11-09 20:22 UTC
+
+- Read [draft PR #375](https://github.com/CoCivium/CoCivium/pull/375) exact head `faba8426a50d05d5bb8e70fd2fac6c4d183bfa05`: OPEN / DRAFT / not merged.
+- [Exact commit workflow run 42690232648](https://github.com/CoCivium/CoCivium/actions/runs/42690232648) returned `completed/success`. Independent GitHub jobs endpoint shows **four successful jobs**: `static-contracts (3.11)`, `static-contracts (3.13)`, `browser-interactions`, and `ollama-loopback-contract`. These represent current candidate-source/browser/loopback tests, not a native X2 UX or a real installed Ollama receiver.
+- Desktop Commander enumerated X2 `OFFLINE`, last seen ~32h earlier. Not proof X2 itself is powered off. Avoid retries requiring Rick, and preserve last-known-good native UX.
+- **Continuity disposition:** prior head-specific CI observations remain historical witnesses; new head is the current tested draft; other workstreams and P0 WorkID/recovery obligations unchanged. No new scheduler, agent, tracker, or receiver ACK was created.
+- **Next effect gate:** authorized native read-only census -> exact source/installed version comparison -> real WorkID input/output and independent receiver readback -> restart/24h continuity. If no trusted bridge appears, HOLD_NATIVE_RECEIVER_UNOBSERVED rather than describing CI as deployment.
+
+Nonclaims: `CI_NE_RUNTIME` | `BRIDGE_OFFLINE_NE_HOST_DEAD` | `SOURCE_LANDED_NE_PICKED_UP` | `HISTORICAL_HEAD_NE_CURRENT_HEAD`.
