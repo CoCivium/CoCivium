@@ -130,5 +130,45 @@
       "QUALIFIED_REQUIRES_EVIDENCE"
     ],
     "next": "After passing CI, test bounded rights-cleared historical source windows and compare front/WorkID relations without treating historic coverage as complete."
+  },
+  "designated_destinations_20261109": {
+    "state": "USER_DESIGNATED_TARGETS__PUBLICATION_NOT_VERIFIED",
+    "entries": [
+      {
+        "id": "github_repo_target",
+        "url": "https://github.com/CoCivium/CoPreGeneric",
+        "target_role": "public git source edition",
+        "verified_publication": false
+      },
+      {
+        "id": "human_pointer_target",
+        "url": "https://CoCivium.org/CoPre",
+        "target_role": "short mouse/thumb gateway",
+        "verified_publication": false
+      },
+      {
+        "id": "stead_pointer_target",
+        "url": "https://InSeed.com/Stead",
+        "target_role": "CoStead public-facing entry with rights boundary",
+        "verified_publication": false
+      }
+    ],
+    "rule": "Do not assert these are byte-identical mirrors, public releases, redirects or functional endpoints without separately fetched exact bytes and receiver receipts. Existing CoCivium/CoCivium bootstrap remains the verified source pointer until promotion.",
+    "mouse_pointer_principle": "STORE_A_STABLE_SHORT_POINTER_NOT_GROWING_TEXT",
+    "rollout": "Publish rights-cleared edition then readback primary, separately administer mirrors, check integrity and rollback before redirecting mouse."
+  },
+  "retroactive_recovery_extension_20261109": {
+    "scope": "PRIVATE_WHATSAPP_EXCHANGE_SUMMARIZED_AS_PUBLIC_SAFE_DESIGN_CANDIDATES_NOT_TRANSCRIPT",
+    "front_echo_draft_pr": "https://github.com/CoCivium/CoCivium/pull/428",
+    "rules": [
+      "DECLARE_SCANNED_SOURCE_WINDOWS_NOT_COMPLETE_HISTORY",
+      "BACKFILL_BY_CHRONOLOGICAL_AND_RISK_DEPENDENCY_ORDER",
+      "PRESERVE_ORIGINAL_WORKID_SOURCE_TIME_AND_SUCCESSOR",
+      "ECHO_REPLAY_NE_NEW_FRONT",
+      "COEV_SPIRAL_FANOUT_FANIN_MEASURED_STOP_WHEN_MARGINAL_VALUE_LE_COST",
+      "CONULL_TYPED_NULL_IDLE_ABSENCE_UNKNOWN_NE_EVIDENCE_OF_SUPERNATURAL_CAUSATION",
+      "COBAR_SONIFICATION_OPTIONAL_ACCESSIBLE_EVIDENCE_LINKS_NOT_WHALE_COMMUNICATION_CLAIM"
+    ],
+    "acceptance": "One rights-cleared historical cohort yields source-hashed front relations and deliberate unknowns; independent WorkID pickup still required."
   }
 }
