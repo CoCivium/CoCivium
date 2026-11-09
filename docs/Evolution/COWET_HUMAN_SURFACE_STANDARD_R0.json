@@ -1,0 +1,51 @@
+{
+  "schema": "cocivium.cowet.human_surface_standard.r0",
+  "status": "public_design_standard_draft_not_global_enforcement",
+  "scope": "Substantial new public human-facing pages; retrospective migration prioritized by traffic, importance, and dryness.",
+  "rule": "Every substantial new human-facing surface SHOULD include at least one meaningful hero visual, rich-media demonstration, interactive illustration, or accessible equivalent; exceptions require an explicit reason.",
+  "creative_modes": {
+    "CoDry": "Minimal legible text-first reference and low-bandwidth fallback",
+    "CoWet": "Visual storytelling that communicates the underlying evidence",
+    "CoGlam": "Polished editorial art direction",
+    "CoWow": "Surprising but meaningful visual interactions",
+    "CoJaz": "Rhythmic motion, playful contrast and improvisational exploration",
+    "CoGayAsAPeachBaby": "Opt-in exuberant, colorful, joyful experimental presentation"
+  },
+  "media": {
+    "hero": "Must express the core concept, not generic decoration.",
+    "motion": "Respect prefers-reduced-motion; avoid flashing and seizure risks.",
+    "audio": "Start silent. Scrolling alone must never unmute, raise volume, or begin audible playback. Require an affirmative audio activation.",
+    "audio_control": "Visible mute/unmute with persistent user preference where authorized; honor system-level reduced-sensory settings when available.",
+    "CoAudioFkOff": "Global opt-out contract for participating surfaces, no surprise sound, no nagging to re-enable; if preference cannot be shared across domains, disclose that limitation.",
+    "captions": "Provide transcript/captions and visual equivalent for meaningful audio.",
+    "autoplay": "Silent visual animation only where permitted; stop on reduced motion or page hidden."
+  },
+  "quality_gates": [
+    "Useful hero or justified exemption",
+    "Source-linked claims and accessible alt text",
+    "Keyboard navigation and focus visibility",
+    "Responsive mobile and low-bandwidth fallback",
+    "Reduced-motion support",
+    "No scroll-triggered audible sound",
+    "User-controlled audio with opt-out",
+    "Meaningful media performance budget",
+    "No privacy-invasive telemetry without permission",
+    "Evidence and receipt links remain visible"
+  ],
+  "retrofit_priority": "Expected comprehension and user benefit divided by migration cost; prioritize public onboarding and product surfaces over internal logs.",
+  "tests": [
+    "Without audio consent, scrolling 100% of the page produces zero audible sound.",
+    "CoAudioFkOff prevents sound across all participating surfaces that receive the preference.",
+    "With reduced motion, hero remains comprehensible without animation.",
+    "With media disabled, title, purpose, evidence and action remain accessible.",
+    "Hero communicates one tested concept rather than a misleading decorative claim.",
+    "Keyboard-only visitor can access all controls and turn sound off immediately."
+  ],
+  "next": "Build a static accessible CoWet hero demo and audit existing human-facing pages; do not claim policy is enforced until CI and runtime evidence exist.",
+  "relations": [
+    "CoSeed: every visual claim points to source evidence",
+    "CoPath: visual explorations expose reversible routes to detail and receipts",
+    "CoHog: visual challenge surface invites independent critiques",
+    "CoOmni: multiple fronts can derive presentations from the same typed evidence"
+  ]
+}
