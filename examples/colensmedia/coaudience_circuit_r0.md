@@ -2,6 +2,7 @@
 
 **PUBLIC SOURCE-ONLY RESEARCH PROJECTION. No physical circuit, auto-send, or receiver ACK.**
 
+WorkID: `coal.conav.retro-public-media.r0`
 Source manifest Git blob: `51be2e100f4f01920c1e1cfa42af0bc6a4c78ff1`
 Projection SHA-256: `1a5647dbdb25c2dda75b9572e94dd0ef4080bea59cd4467b404477abeedac591`
 
