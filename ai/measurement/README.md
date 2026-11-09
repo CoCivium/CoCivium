@@ -6,6 +6,19 @@ CoMeasure+ explores a **typed measurement commons** for people, AIs, agents and 
 
 The [proposed contract](../../docs/Architecture/COALL_MEASUREMENT_R0_CANDIDATE.md) and [machine-readable R0.1.2 registry](registry_r0_1.json) contain **21 unit/semantic variants** and **7 candidate operational metric families**. They distinguish physical dimensions from quantity kinds and separate observed zero from missing, unknown and redacted values. SI, UCUM and QUDT are methodological donors; this work does **not** redefine those standards.
 
+## First-use synthetic CoSpeedo example
+
+Run `python ai/measurement/first_use_demo_r0.py` from the repository root to see eight explicit examples of typed measurement admissibility. The [public first-use script](first_use_demo_r0.py) uses only the elected R0.1.2 registry and observation-domain validator, does not access live devices, and writes no data files. It illustrates a synthetic 3-of-4 pickup fraction, two fictitious human interventions and a synthetic useful-delta rate, along with deliberately rejected claims: a fraction above one, zero denominator, wrong time window, fractional human intervention and unknown-as-zero.
+
+Expected: **8 of 8 declared outcomes matched** (`passed=8`, `total=8`), with rejected inputs correctly held and accepted inputs labeled `DOMAIN_CONSISTENT_ONLY`. Reproduce with both ordinary and optimized Python:
+
+```sh
+python ai/measurement/first_use_demo_r0.py
+python -O ai/measurement/first_use_demo_r0.py
+```
+
+These are **test fixtures, not actual CoMx acknowledgments, real CoSpeedo values, measured performance, user benefit, or live CoOrb telemetry**. A 3-of-4 *synthetic* fraction is not a report that any three receivers accepted work. The deliberately repeated `a` source hash proves only that the code checks hash **syntax**, not source authenticity. Independent receiver-origin pickup/readback and meaningful user outcome remain separate open acceptance gates. The existing [CoMeasure CI workflow](../../.github/workflows/comeasure-r0-ci.yml) now invokes this example in both interpreter modes; check the *current exact head* CI conclusion before citing a run as PASS.
+
 ## Reproduce the current draft
 
 Use a clean, disposable checkout of the exact current PR head, not an old local receipt. Python 3.12 and its standard library are sufficient. Running the verifier creates a local scoped receipt; keep it out of shared source directories if you want an independent replay.
