@@ -8,32 +8,42 @@
     "branch": "candidate/copregeneric-synth-bio-pull-20261109",
     "human_index": "docs/Onramp/CoPreGenericShareR0/README.md",
     "machine_delta": "ai/onramp/copregeneric-session-delta-20261109.json",
-    "retro_echo": "ai/onramp/copregeneric-retro-echo-sample-20261109.json"
+    "retro_echo": "ai/onramp/copregeneric-retro-echo-sample-20261109.json",
+    "observed_commit_before_pin": "f7b210f2fb8da5680f5a7844a7d2326046e79066",
+    "hash_kind": "GIT_BLOB_SHA1_NOT_MIRROR_SHA256"
   },
   "seedables": [
     {
       "id": "CoPreGeneric.OperatingKernel",
       "kind": "CANDIDATE_OPERATING_SEED",
       "source": "docs/Onramp/CoPreGenericShareR0/CoPreGeneric-v1.0-DRAFT.md",
-      "effect": "PUBLIC_DISCOVERY_ONLY"
+      "effect": "PUBLIC_DISCOVERY_ONLY",
+      "source_blob_sha1": "043c421192eefe0625be67a0079d1654bedf058e",
+      "discovery_state": "PUBLIC_DRAFT_SOURCE_NOT_PICKED_UP"
     },
     {
       "id": "CoPreGeneric.CoAckRewise",
       "kind": "PRESERVATION_SEED",
       "source": "docs/Onramp/CoPreGenericShareR0/CoAckRewise-v8.74.md",
-      "effect": "PUBLIC_DISCOVERY_ONLY"
+      "effect": "PUBLIC_DISCOVERY_ONLY",
+      "source_blob_sha1": "ff65c8f4c9b60d27570444714761e3ef57e15c28",
+      "discovery_state": "PUBLIC_DRAFT_SOURCE_NOT_PICKED_UP"
     },
     {
       "id": "CoPreGeneric.DevFeedback",
       "kind": "CANDIDATE_REPRODUCTION_SEED",
       "source": "docs/Onramp/CoPreGenericShareR0/CoFeedLoop-Devs.md",
-      "effect": "NO_VENDOR_DELIVERY"
+      "effect": "NO_VENDOR_DELIVERY",
+      "source_blob_sha1": "b81ddfb2e7275f2375b4d818ce8b92ed44469652",
+      "discovery_state": "PUBLIC_DRAFT_SOURCE_NOT_PICKED_UP"
     },
     {
       "id": "CoPreGeneric.InstanceComparison",
       "kind": "CANDIDATE_BENCHMARK_SEED",
       "source": "docs/Onramp/CoPreGenericShareR0/CoMindspace-Map.md",
-      "effect": "NO_SESSION_INSPECTION"
+      "effect": "NO_SESSION_INSPECTION",
+      "source_blob_sha1": "cae7661fa98846d79abdaa3544c5ea18f7ed8811",
+      "discovery_state": "PUBLIC_DRAFT_SOURCE_NOT_PICKED_UP"
     }
   ],
   "paths": [
@@ -48,7 +58,9 @@
       "requires": [
         "PUBLIC_SOURCE_ACCESS",
         "SOURCE_REVISION_BINDING"
-      ]
+      ],
+      "execution_state": "PROPOSED_NOT_EXECUTED",
+      "receiver_readproof": null
     },
     {
       "id": "Path.Human",
@@ -60,7 +72,9 @@
       "requires": [
         "ACCESSIBILITY",
         "EVIDENCE_CLASS_PRESERVED"
-      ]
+      ],
+      "execution_state": "PROPOSED_NOT_EXECUTED",
+      "receiver_readproof": null
     },
     {
       "id": "Path.Retro",
@@ -72,7 +86,9 @@
       "requires": [
         "UNKNOWN_COVERAGE_EXPLICIT",
         "NO_HISTORICAL_SOURCE_OVERWRITE"
-      ]
+      ],
+      "execution_state": "PROPOSED_NOT_EXECUTED",
+      "receiver_readproof": null
     },
     {
       "id": "Path.Review",
@@ -84,7 +100,9 @@
       "requires": [
         "NO_SELF_MERGE",
         "NO_FAKE_RECEIVER_ACK"
-      ]
+      ],
+      "execution_state": "PROPOSED_NOT_EXECUTED",
+      "receiver_readproof": null
     }
   ],
   "relations": [
