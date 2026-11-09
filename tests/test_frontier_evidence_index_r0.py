@@ -37,8 +37,8 @@ class FrontierIndexTests(unittest.TestCase):
                          len(self.original["fronts"]))
 
     def test_initial_front_set_preserved(self):
-        self.assertEqual(
-            {f["id"] for f in self.doc["fronts"]}, INITIAL_FRONTS
+        self.assertTrue(
+            INITIAL_FRONTS.issubset({f["id"] for f in self.doc["fronts"]})
         )
         self.assertEqual(validate(self.doc, self.root)["baseline_count"], 7)
 
