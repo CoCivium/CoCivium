@@ -192,7 +192,6 @@ class PulseReadbackTests(unittest.TestCase):
             write_receipt(readback, self.dest)
         self.assertEqual(before, self.dest.read_bytes())
 
-
     def test_missing_rebound_audit_is_held(self):
         (self.source / "rebound-report.json").unlink()
         with self.assertRaisesRegex(ValueError, "HOLD_MISSING_OR_LINKED_ARTIFACT"):
@@ -230,6 +229,7 @@ class PulseReadbackTests(unittest.TestCase):
         self.save()
         with self.assertRaisesRegex(ValueError, "HOLD_MISSING_LOG_IDENTITIES"):
             observe(self.source, context())
+
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)
