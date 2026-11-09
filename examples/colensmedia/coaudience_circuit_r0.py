@@ -49,6 +49,8 @@ def validate(policy, manifest):
                      "audiences", "substrates"}
     if not isinstance(policy, dict) or policy.get("schema") != POLICY_SCHEMA or set(policy) != expected_keys:
         raise ValueError("INVALID_AUDIENCE_POLICY")
+    if policy.get("work_id") != "coal.conav.retro-public-media.r0":
+        raise ValueError("HOLD_WORKID_SOURCE_MISMATCH")
     if not isinstance(manifest, dict) or manifest.get("schema") != MEDIA_SCHEMA:
         raise ValueError("INVALID_RETRO_MANIFEST")
     if policy.get("source_manifest_path") != "examples/colensmedia/conav_retro_manifest_r0.json":
@@ -127,6 +129,7 @@ def render(policy, manifest, raw_source):
     lines = [
         "# CoNav+ Circuit Lens and Audience Braid R0", "",
         "**PUBLIC SOURCE-ONLY RESEARCH PROJECTION. No physical circuit, auto-send, or receiver ACK.**", "",
+        "WorkID: `" + policy["work_id"] + "`",
         "Source manifest Git blob: `" + actual + "`", "Projection SHA-256: `" + projection + "`", "",
         "## Symbolic signal-flow diagram", "",
         "```mermaid", "flowchart LR",
