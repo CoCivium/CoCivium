@@ -1,0 +1,88 @@
+{
+  "schema": "cocivium.cofront.coecho.retro.r0",
+  "status": "PROPOSED_NOT_RUNNING",
+  "source_paths": [
+    "docs/Evolution/FRONTIER_EVIDENCE_INDEX_R0.json",
+    "docs/Evolution/COPREGENERIC_SESSION_POINTERS_R0.json",
+    "docs/Evolution/COPRE_SESSION_DRAIN_R0.json"
+  ],
+  "intent": "Recover historical discoverable fronts with source lineage and no silent loss.",
+  "required_fields": [
+    "front_id",
+    "work_id",
+    "source_ref",
+    "source_digest",
+    "observed_at",
+    "source_time",
+    "custody_scope",
+    "state",
+    "claim_type",
+    "evidence_refs",
+    "dependencies",
+    "supersedes",
+    "next_trigger"
+  ],
+  "states": [
+    "DISCOVERED",
+    "QUALIFIED",
+    "ACTIVE",
+    "HELD",
+    "TESTED",
+    "RECEIPTED",
+    "PUBLIC_PROJECTED",
+    "SUPERSEDED",
+    "RETRACTED"
+  ],
+  "claim_types": [
+    "source_observation",
+    "derived_inference",
+    "proposal",
+    "test_result",
+    "verified_effect"
+  ],
+  "time_rules": [
+    "source_time is the event's claimed time and may be UNKNOWN",
+    "observed_at is when this collector discovered the record",
+    "never backdate an inference or overwrite earlier evidence",
+    "record supersession without deleting the old version"
+  ],
+  "dedup_key": [
+    "source_ref",
+    "source_digest",
+    "work_id"
+  ],
+  "echo_modes": {
+    "chronological": "Earliest accessible source first; preserve uncertainty.",
+    "dependency_first": "Trace upstream receipts before downstream claims.",
+    "risk_first": "Prioritize privacy, unsupported PASS, and custody failures.",
+    "inverse": "Trace present artifacts back to earliest verified lineage.",
+    "predictive_retro": "Current gaps nominate old sources to search, never proof of past execution.",
+    "counterfactual": "Compare intent with observed outcomes; label hypotheses."
+  },
+  "invariants": [
+    "private content stays private; public projection must be redacted and authorized",
+    "unknown or missing dependency is HELD, not dropped",
+    "one fenced writer for conflicting writes; many independent challengers",
+    "no runtime PASS from proposal or synthetic tests",
+    "rebuild public view from independently readable permitted receipts"
+  ],
+  "acceptance_tests": [
+    "duplicate replay does not create duplicate work",
+    "changed digest preserves both versions and supersession",
+    "out-of-order discovery does not change source timestamps",
+    "public projection excludes private data",
+    "crash resume is idempotent",
+    "orphan dependency becomes HELD with pointer",
+    "retraction and supersession preserve history",
+    "unverified claims cannot become verified effects",
+    "independent reader can restore public projection without original chat"
+  ],
+  "next_gate": "Implement collector and tests; execute them; receipt results; backfill accessible authorized sources.",
+  "unverified": [
+    "historical backfill",
+    "autonomous cross-session sync",
+    "24-hour survival",
+    "independent restore",
+    "X2 runtime"
+  ]
+}
