@@ -187,6 +187,18 @@ class GraphTests(unittest.TestCase):
         self.assertNotEqual(media.render_markdown(self.base), baseline)
 
 
+    def test_28_private_source_root_cannot_render_public_diagram(self):
+        for item in self.base['assets']:
+            item['visibility'] = 'PRIVATE'
+        with self.assertRaisesRegex(ValueError, 'PRIVATE_SOURCE_CANNOT_RENDER_PUBLIC_VIEW'):
+            media.render_markdown(self.base)
+
+    def test_29_private_accessible_twin_not_accepted_for_public_media(self):
+        self.base['assets'][2]['visibility'] = 'PRIVATE'
+        report = media.audit(self.base)
+        self.assertIn('diagram:v1', report['accessibility_gap_asset_ids'])
+
+
 
 if __name__=='__main__':
     unittest.main(verbosity=2)
