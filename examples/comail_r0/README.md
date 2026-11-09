@@ -68,3 +68,14 @@ The synthetic fixture deliberately has **no sender, recipient or provider send r
 ## Human-time acceptance
 
 For the first legitimate sender/reader pilot, measure one real **opt-in** recipient following a historical note to the current resource, comparing a predecessor, identifying a real correction, and recovering after a broken or expired pointer. Use exact provider send identity, consent and independent receiver-side evidence. Require hosted link safety, public-domain front-door correctness, privacy scan, rights, accessibility and actual feedback route qualification before release. `SOURCE_CODE_NE_LIVE_WEBSITE`, `POINTER_NE_ACK`, `EMAIL_NE_CURRENT_RESOURCE`, `DEMO_FEEDBACK_NE_COMMUNITY_ADOPTION`.
+
+
+## CoLUE+ outreach staging adapter | 2026-11-09
+
+**State:** PUBLIC_SAFE_SEND_DISABLED_SOURCE; no connected InSeed mailbox, draft edit, recipient send, independent delivery or real relationship uptake is asserted.
+
+The [CoLUE outreach stage gate](outreach_stage_gate_r0.py) and [21 synthetic tests](tests/test_outreach_stage_gate_r0.py) extend the existing fixed-message/living-resource demonstrator. They check mailbox identity, current source revision, recipient/relationship provenance, thread freshness, deduplication, opt-out, lawful basis, claims review and exact-content approval. Even a ready fixture returns `PROVIDER_SEND_CANDIDATE_NOT_SENT` and has **zero outward effects**. Gmail/InSeed/personal sender accounts must never be silently interchanged.
+
+A draft is historical staged content, not evidence that it was approved, sent, delivered, read or understood. Iterative CoEvo changes produce a new exact review/approval boundary, and previous versions remain recoverable. The real InSeed mailbox screenshot and separate Gmail account observations are **not** incorporated into public fixture content.
+
+The existing [CoLiving/CoMail CI workflow](../../.github/workflows/co-living-media-r0.yml) discovers the new tests; its current revision needs independent Actions execution confirmation. The actual CoLUE+ product remains blocked on authorized private account readback, provider receipt identity and a consent-aware receiver workflow; Rick is not the mailman.
