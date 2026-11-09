@@ -8,6 +8,7 @@ No network, credentials, scheduler, subprocess, or host mutation in this code.
 """
 from __future__ import annotations
 
+from collections.abc import Mapping
 import argparse
 import hashlib
 import json
@@ -32,7 +33,9 @@ def canonical(value):
 def require_context(env, job):
     keys = ("GITHUB_ACTIONS", "GITHUB_JOB", "GITHUB_RUN_ID",
             "GITHUB_RUN_ATTEMPT", "GITHUB_SHA")
-    if not isinstance(env, dict) or any(not isinstance(env.get(k), str) for k in keys):
+    # GitHub's real environment is os._Environ (a Mapping), not a dict.
+    # Still require every expected Actions field to be a nonempty string.
+    if not isinstance(env, Mapping) or any(not isinstance(env.get(k), str) or not env.get(k) for k in keys):
         raise ValueError("HOLD_MISSING_GITHUB_CONTEXT")
     if env["GITHUB_ACTIONS"] != "true" or env["GITHUB_JOB"] != job:
         raise ValueError("HOLD_WRONG_JOB_IDENTITY")
