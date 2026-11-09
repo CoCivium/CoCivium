@@ -268,6 +268,10 @@ class CoMVPSlots:
                 _require(current.get(slot) == expected_heads[slot], "STALE_RELEASE_HEAD")
             proposed = {**current, **changes}
             details = {}
+            # Global metadata compatibility is cheap and necessary.
+            # Content verification is scoped to changed heads and their
+            # *direct* pinned prerequisites: unrelated broken prodlets
+            # must not quietly become a global promotion barrier.
             for slot, rev in proposed.items():
                 row = self.db.execute("""SELECT artifact_rel,test_rel,test_sha,deps_json,state
                                          FROM versions WHERE slot=? AND revision=?""",
@@ -279,19 +283,28 @@ class CoMVPSlots:
                 _require(row is not None and row[4] == required_state,
                          "UNQUALIFIED_RELEASE_VERSION")
                 artifact_rel, test_rel, test_sha, deps_json, _ = row
-                _, actual_artifact = self._source(artifact_rel, MAX_SOURCE_BYTES)
-                _, actual_test = self._source(test_rel, MAX_TEST_BYTES)
-                _require(actual_artifact == rev and actual_test == test_sha,
-                         "ACTIVE_SOURCE_CHANGED")
-                if contract is not None:
-                    _, check_acceptance = self._source(contract[0], MAX_TEST_BYTES)
-                    _require(check_acceptance == contract[1],
-                             "PINNED_ACCEPTANCE_CONTRACT_MUTATED")
                 deps = json.loads(deps_json)
                 for dependency, expected_rev in deps.items():
                     _require(proposed.get(dependency) == expected_rev,
                              "COHORT_DEPENDENCY_INCOMPATIBLE")
-                details[slot] = {"revision": rev, "depends": deps}
+                details[slot] = {"revision": rev, "depends": deps,
+                                 "artifact": artifact_rel, "test": test_rel,
+                                 "test_sha": test_sha, "contract": contract}
+            verify_slots = set(changes)
+            for slot in changes:
+                verify_slots.update(details[slot]["depends"])
+            for slot in verify_slots:
+                item = details[slot]
+                _, actual_artifact = self._source(item["artifact"], MAX_SOURCE_BYTES)
+                _, actual_test = self._source(item["test"], MAX_TEST_BYTES)
+                _require(actual_artifact == item["revision"] and
+                         actual_test == item["test_sha"],
+                         "ACTIVE_SOURCE_CHANGED")
+                contract = item["contract"]
+                if contract is not None:
+                    _, check_acceptance = self._source(contract[0], MAX_TEST_BYTES)
+                    _require(check_acceptance == contract[1],
+                             "PINNED_ACCEPTANCE_CONTRACT_MUTATED")
             changed = {}
             for slot, rev in changes.items():
                 prior = current.get(slot)
