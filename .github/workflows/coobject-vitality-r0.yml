@@ -2,6 +2,7 @@ name: CoObject Vitality Metabolism R0
 
 permissions:
   contents: read
+  actions: read
 
 on:
   pull_request:
@@ -11,6 +12,8 @@ on:
       - "scripts/CoObjectVitalityR0.py"
       - "scripts/CoObjectAgencyBridgeR0.py"
       - "tests/test_coobject_agency_bridge_r0.py"
+      - "scripts/CoObjectAgencyTaskR0.py"
+      - "tests/test_coobject_agency_task_r0.py"
       - "docs/Architecture/COOBJECT_AGENTIC_CAPABILITY_CIV3_R0_20261109.md"
       - "docs/Evolution/COACKREWISE_COOBJECT_CIV3_FRONTIER_R0_20261109.md"
       - ".github/workflows/coobject-vitality-r0.yml"
@@ -21,6 +24,8 @@ on:
       - "scripts/CoObjectVitalityR0.py"
       - "scripts/CoObjectAgencyBridgeR0.py"
       - "tests/test_coobject_agency_bridge_r0.py"
+      - "scripts/CoObjectAgencyTaskR0.py"
+      - "tests/test_coobject_agency_task_r0.py"
       - "docs/Architecture/COOBJECT_AGENTIC_CAPABILITY_CIV3_R0_20261109.md"
       - "docs/Evolution/COACKREWISE_COOBJECT_CIV3_FRONTIER_R0_20261109.md"
       - ".github/workflows/coobject-vitality-r0.yml"
@@ -68,3 +73,61 @@ jobs:
           PY
       - name: Exercise source-to-proposal bridge across unlike files and failure cases
         run: python -B -m unittest discover -s tests -p 'test_coobject_agency_bridge_r0.py' -v
+
+  object-task:
+    name: object-task
+    needs: vitality
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Exercise trusted local worker denial and replay tests
+        run: python -B -m unittest discover -s tests -p 'test_coobject_agency_task_r0.py' -v
+      - name: Produce one actual read-only policy validation receipt
+        run: |
+          python -B scripts/CoObjectAgencyTaskR0.py produce \
+            --root . --receipt out/coobject/task-receipt.json
+      - name: Preserve exact run/attempt WorkID receipt for a distinct CI job
+        uses: actions/upload-artifact@v4
+        with:
+          name: coobject-one-task-${{ github.run_id }}-a${{ github.run_attempt }}
+          path: out/coobject/task-receipt.json
+          if-no-files-found: error
+          retention-days: 30
+
+  object-source-reader:
+    name: object-source-reader
+    needs: object-task
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Read run-specific artifact produced by separate worker job
+        uses: actions/download-artifact@v4
+        with:
+          name: coobject-one-task-${{ github.run_id }}-a${{ github.run_attempt }}
+          path: out/coobject/source
+      - name: Independently recompute the pinned policy validator result
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B scripts/CoObjectAgencyTaskR0.py readback \
+            --root . --receipt out/coobject/source/task-receipt.json \
+            | tee out/coobject/readback.log
+      - name: Preserve separate source-job readback result
+        uses: actions/upload-artifact@v4
+        with:
+          name: coobject-one-reader-${{ github.run_id }}-a${{ github.run_attempt }}
+          path: out/coobject/readback.log
+          if-no-files-found: error
+          retention-days: 30
