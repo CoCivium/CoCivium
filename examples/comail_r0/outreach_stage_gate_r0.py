@@ -108,4 +108,3 @@ def evaluate(draft: DraftEvidence) -> dict:
             "CONNECTED_ACCOUNT_NE_OTHER_ACCOUNT_AUTHORITY",
         ],
     }
-
