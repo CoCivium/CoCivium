@@ -28,7 +28,11 @@
     "preexisting_comvp_source_controller_on_main": true,
     "session_corun_pr402_state": "DRAFT_UNMERGED__CI_PASS_SCOPED_ONLY",
     "session_corun_pr402_commit": "ca72931c83f83e45ed29447ec6c92d2b8e04378d",
-    "session_corun_ci_run_id": 42677290237
+    "session_corun_ci_run_id": 42677290237,
+    "existing_public_copregeneric_contract_found": true,
+    "existing_parallel_session_contribution_found": true,
+    "existing_partial_retro_coverage_found": true,
+    "collision_resolution": "THIS_IS_A_SUPPLEMENTARY_SCOPED_DONOR__NO_COMPETING_BOOTSTRAP"
   },
   "source_manifest": [
     {
@@ -227,6 +231,72 @@
       "source_role": "first_full_contact_staged_inference",
       "exact_read_state": "GITHUB_CONNECTOR_CONTENT_READ",
       "provenance_locator": "https://github.com/CoCivium/CoCivium/blob/main/docs/CoTheoryAll/cofff/COFFF_FIRST_FULL_CONTACT_RESEARCH_STORYBOARD_R0_20261025.md",
+      "duplicate_of": null
+    },
+    {
+      "id": "dual",
+      "repo": "CoCivium/CoCivium",
+      "ref": "main",
+      "path": "docs/Architecture/COPREGENERIC_DUAL_PROJECTION_R0_20261109.md",
+      "git_blob_sha1": "90a2b8e487d5a4c885abb880495446dd451a387b",
+      "source_role": "existing_pregeneric_contract",
+      "exact_read_state": "GITHUB_CONNECTOR_CONTENT_READ",
+      "provenance_locator": "https://github.com/CoCivium/CoCivium/blob/main/docs/Architecture/COPREGENERIC_DUAL_PROJECTION_R0_20261109.md",
+      "duplicate_of": null
+    },
+    {
+      "id": "retro",
+      "repo": "CoCivium/CoCivium",
+      "ref": "main",
+      "path": "docs/Architecture/COFRONT_RETRO_ECHO_NO_ORPHANS_R0_20261109.md",
+      "git_blob_sha1": "9323c3a7df3e25cb193be1eba64f48963f4be423",
+      "source_role": "existing_retro_no_orphan_contract",
+      "exact_read_state": "GITHUB_CONNECTOR_CONTENT_READ",
+      "provenance_locator": "https://github.com/CoCivium/CoCivium/blob/main/docs/Architecture/COFRONT_RETRO_ECHO_NO_ORPHANS_R0_20261109.md",
+      "duplicate_of": null
+    },
+    {
+      "id": "retro-index",
+      "repo": "CoCivium/CoCivium",
+      "ref": "main",
+      "path": "ai/retro-echo-coverage-r0-20261109.json",
+      "git_blob_sha1": "332d8046cdaef1522ae4510d3a00f515fae04b7a",
+      "source_role": "existing_partial_retro_coverage",
+      "exact_read_state": "GITHUB_CONNECTOR_CONTENT_READ",
+      "provenance_locator": "https://github.com/CoCivium/CoCivium/blob/main/ai/retro-echo-coverage-r0-20261109.json",
+      "duplicate_of": null
+    },
+    {
+      "id": "prior-session",
+      "repo": "CoCivium/CoCivium",
+      "ref": "main",
+      "path": "ai/onramp/copre-generic-session-contribution-r0.json",
+      "git_blob_sha1": "598c6b5bf0da018eee9ae8b6bdd016edc209d819",
+      "source_role": "existing_parallel_session_donor",
+      "exact_read_state": "GITHUB_CONNECTOR_CONTENT_READ",
+      "provenance_locator": "https://github.com/CoCivium/CoCivium/blob/main/ai/onramp/copre-generic-session-contribution-r0.json",
+      "duplicate_of": null
+    },
+    {
+      "id": "retro-policy",
+      "repo": "CoCivium/CoCivium",
+      "ref": "main",
+      "path": "docs/Evolution/COFRONT_COECHO_RETRO_RECOVERY_R0.json",
+      "git_blob_sha1": "a8fa2c7e2d1f1ab7bee87e09fa9ad54406679783",
+      "source_role": "existing_retro_policy",
+      "exact_read_state": "GITHUB_CONNECTOR_CONTENT_READ",
+      "provenance_locator": "https://github.com/CoCivium/CoCivium/blob/main/docs/Evolution/COFRONT_COECHO_RETRO_RECOVERY_R0.json",
+      "duplicate_of": null
+    },
+    {
+      "id": "retro-local",
+      "repo": "CoCivium/CoCivium",
+      "ref": "main",
+      "path": "docs/Evolution/COFRONT_COECHO_LOCAL_TEST_RECEIPT_R0.json",
+      "git_blob_sha1": "5975c63af1ad231f812e911b095f4a02c4678cbe",
+      "source_role": "existing_local_synthetic_test_record",
+      "exact_read_state": "GITHUB_CONNECTOR_CONTENT_READ",
+      "provenance_locator": "https://github.com/CoCivium/CoCivium/blob/main/docs/Evolution/COFRONT_COECHO_LOCAL_TEST_RECEIPT_R0.json",
       "duplicate_of": null
     }
   ],
@@ -571,5 +641,56 @@
   "requested_next_receiver_effect": "Read these public sources if authorized, compare with independent private CoPreGeneric iteration, report exact-object readproof/contradictions; no implicit assent",
   "session_external_effects": "PUBLIC_DRAFT_REPO_CANDIDATE_ONLY",
   "collision_policy": "DO_NOT_SUPERSEDE_ANY_EXISTING_COPRE_OR_META_TARGET_WITHOUT_EXPLICIT_DIFF_AND_RECEIVER",
-  "reference_semantics": "The source manifest pins byte identities, not verified truth of all prose claims"
+  "reference_semantics": "The source manifest pins byte identities, not verified truth of all prose claims",
+  "retroactive_echo": {
+    "status": "REFERENCE_AND_GAP_AUDIT_ONLY__NO_GLOBAL_BACKFILL_EXECUTED",
+    "predecessor_source_ids": [
+      "copre-seed",
+      "copre-seed-alias",
+      "dual",
+      "retro",
+      "retro-index",
+      "prior-session",
+      "retro-policy",
+      "retro-local"
+    ],
+    "time_axes": [
+      "source_event_at",
+      "first_observed_at",
+      "qualified_at",
+      "public_landed_at",
+      "receiver_read_at",
+      "successor_effect_at"
+    ],
+    "traversal_families": [
+      "historical_chronological",
+      "reverse_lineage",
+      "dependency_first",
+      "risk_first",
+      "contradiction_first",
+      "predictive_retro_counterfactual",
+      "inverse_hypothesis"
+    ],
+    "dispositions": [
+      "LIVE_REFERENCED",
+      "PRESERVED_ALTERNATIVE",
+      "SUPERSEDED_WITH_LINK",
+      "DELIBERATELY_RETIRED_WITH_EVIDENCE",
+      "ORPHAN_RISK",
+      "UNKNOWN_REQUIRES_RECOVERY"
+    ],
+    "observed_exact_duplicate": "copre-seed-alias shares blob 942f88b2fbff441fbe107c380ece6733c2c50968 with copre-seed",
+    "unverified_coverage": [
+      "earliest_complete_history",
+      "private_provider_sessions",
+      "CoFarm_CoStead",
+      "Meta_AI_receiver",
+      "independent_cold_restore",
+      "retro_session_semantics"
+    ],
+    "explicit_no_orphan_rule": "discovered objects may be HELD or UNKNOWN but never silently discarded; private pointers never copied into public manifest",
+    "source_evidence_limit": "Six exact new public source files read, no cross-session receiver readproof and no historical source census",
+    "next_discriminating_proof": "An independently permitted reader reconstructs one older source and a demonstrably related descendant, preserving loss, dissent, exact hashes, rejected changes and privacy boundaries",
+    "no_claim_of_recovered_history": true
+  }
 }
