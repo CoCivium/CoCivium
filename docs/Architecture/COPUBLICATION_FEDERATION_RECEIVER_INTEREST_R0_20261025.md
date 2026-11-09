@@ -399,3 +399,50 @@ Then test:
 - return signal.
 
 Success means specificity increases usefulness without creating incompatible truths or manipulative targeting.
+
+
+## CoMegaScroller+ resilient constellation and fragment recovery R0
+
+**2026-11-09 | PUBLIC-SAFE CANDIDATE DESIGN, NOT A MULTI-HOST DEPLOYMENT.** Reuse CoPublication Metabolism, CoLivingHighlight, CoMap/CoNav/CoOrb, CoSourceGraph and the already-public dated [October 19 megascroller edition](../Public/Snapshots/2026-10-19_CoMegaScroller_CC_CoTheoryAll_R0.md). Do not turn a new megascroller domain, GitHub copy, newsletter or cached CDN page into a separate canonical source.
+
+### Publication object and nested navigation
+
+```text
+publication_id, edition_id, source_work_id, source_commit, source_sha256,
+section_ids[], fragment_anchors[], lineage_refs[], relation_refs[],
+rights_scope, publication_authority, generated_at, valid_time,
+evidence_class, correction_refs[], successor_id, predecessor_id,
+formats[], accessibility_fallback, expected_mirrors[],
+observed_mirrors[], recovery_recipe_ref, reader_feedback_gate
+```
+
+A section or fragment must preserve parent identity, edition and predecessor/successor anchors. Nested diagram, summary, text, video, audio and machine-twin views are **loss-aware projections** of a source object. A fragment's embedded pointer enables bounded context reconstruction; it is not a complete stored hologram or implied global lookup permission.
+
+### Distinguish redundancy classes
+
+- **Content redundancy:** exact-byte copies and hash-addressed revisions.
+- **Hosting redundancy:** independent failure domains for DNS, web host, storage, deployment, account, CDN, TLS and network route. Distinct URLs may still be a single failure domain.
+- **Temporal redundancy:** immutable reader editions plus current successor pointers.
+- **Format redundancy:** static HTML / accessible text / offline export, with optional dynamic megascroller, CoOrb, audio and diagram.
+- **Institutional redundancy:** rights to export/migrate, independent keys, documented recovery recipe, qualified custodians; never assume hosting company survival.
+- **Epistemic redundancy:** independent evidence, corrections and dissent; identical media copies add no independent verification.
+
+**Publication release fence:** producer signs/identifies exact immutable edition manifest; at least one separately administered recovery location independently fetches and hashes the exact edition before any multi-mirror acceptance; each mirror emits `mirror_id, failure_domain, source_sha, fetched_sha, fetched_at, HTTP/outage evidence, availability_status, recovery_test_id`. A DNS record or hyperlink alone is not receiver readproof. No credential or sensitive source is placed in the public edition.
+
+### Progressive first-use
+
+The public front door shows **one readable headline, one currentness/version cue and one route into the work**. CoNav offers a table of contents with stable anchors, a compact mini-map and one-context-at-a-time evidence expansions. Fractal exploration should not impose endless scrolling on keyboard, screen-reader, mobile or low-bandwidth users. Search engines and synth consumers receive static semantic HTML plus a deliberately public machine manifest; do not assume crawlers discovered or consumed it.
+
+### Recovery acceptance exercise (PROPOSED, NOT EXECUTED)
+
+1. Freeze a public-safe snapshot and exact source digest; test fragment anchors in static HTML and text.
+2. Produce a new edition with one corrected claim, one diagram and one preserved predecessor; compare fragment lineage without redirecting away historical meaning.
+3. Publish to two genuinely independent administered domains only after permissions and rights checks; read back each exact artifact and manifest.
+4. Disable the primary route; independently retrieve the same edition and accessible text from another failure domain.
+5. Inject stale CDN content, wrong hash, absent fragment, broken external URL, split DNS and failed private-data filter; display DEGRADED / HELD rather than a false synchronized green.
+6. Let one new consenting reader or synthetic agent retrieve a specific claim, evidence, correction and historical edition without copying the entire document.
+7. Record real recovery time, version parity, source availability, accessibility, cost and independent reader understanding. Do not count clicks, mirror URLs or generated media as useful outcomes without qualification.
+
+**CoMegaScroller is a reader-oriented *view*, not the source of truth or the only backup.** Local/offline copies may remain private until explicitly rights-cleared. CoLUE outreach may link an eligible public fragment but must not automatically send draft emails or publish private relationships.
+
+Nonclaims: `MULTIPLE_URLS_NE_FAILURE_DOMAIN_DIVERSITY` | `PUBLIC_GITHUB_NE_RECEIVER_PICKUP` | `IMMUTABLE_SNAPSHOT_NE_LIVE_SYNC` | `FRAGMENT_NE_COMPLETE_HOLOGRAM` | `MIRROR_NE_INDEPENDENT_EVIDENCE` | `PUBLICATION_NE_CANON` | `MEGASCROLLER_NE_ONLY_ACCESSIBLE_VIEW`.
