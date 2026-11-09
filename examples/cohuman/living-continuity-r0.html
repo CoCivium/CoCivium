@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="dark">
+<title>CoCivium | A Living Continuity System (R0)</title>
+<style>
+:root{color-scheme:dark;--bg:#090b1d;--card:#17213e;--line:#af82e899;--text:#f6efff;--muted:#b8c1e0;--pink:#fa8ecb;--teal:#66f7f0;--amber:#ffcf85}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--text);background:radial-gradient(circle at 61% 24%,#52255c7d,transparent 40%),radial-gradient(circle at 92% 56%,#12487b90,transparent 47%),var(--bg);font:16px/1.5 system-ui,Segoe UI,sans-serif}
+a{color:inherit}a:focus-visible,button:focus-visible{outline:3px solid var(--teal);outline-offset:4px}
+.skip{position:absolute;top:-70px;background:#fff;color:#000;padding:12px}.skip:focus{top:4px;z-index:99}
+header{position:sticky;top:0;z-index:5;background:#0c1029ee;border-bottom:1px solid #ae8cd344;backdrop-filter:blur(12px)}
+nav{max-width:1320px;margin:auto;display:flex;gap:clamp(12px,2vw,30px);align-items:center;padding:13px 22px;flex-wrap:wrap}
+.logo{font-size:1.2rem;font-weight:800;white-space:nowrap}.logo span{font-size:1.8rem;color:var(--pink);vertical-align:middle}
+nav a{text-decoration:none}nav a:hover{text-decoration:underline}.spacer{flex:1}
+button{cursor:pointer;background:#241f43;color:var(--text);border:1px solid #f7a9c0;border-radius:30px;padding:10px 16px;font:inherit}
+button:hover{background:#46335f}button[aria-pressed="true"]{border-color:var(--teal)}
+main{max-width:1320px;margin:auto;padding:24px}.hero{display:grid;grid-template-columns:minmax(280px,38%) 1fr;min-height:510px;align-items:center}
+h1{font-size:clamp(2.6rem,5vw,5.2rem);line-height:1.06;margin:.1em 0 .3em;letter-spacing:-.045em;background:linear-gradient(100deg,#fff2d8,var(--pink),#d08cf4);background-clip:text;color:transparent}
+.eyebrow{letter-spacing:.24em;color:var(--muted);font-size:.75rem}.lead{font-size:1.13rem;max-width:450px;color:#e5e1f7}
+.hero-art{width:100%;height:auto;max-height:520px;filter:drop-shadow(0 0 22px #f86acd60)}
+.orbit{transform-origin:50% 50%;animation:turn 35s linear infinite}.orbit.alt{animation-duration:51s;animation-direction:reverse}
+@keyframes turn{to{transform:rotate(360deg)}}.card-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:14px 0 35px}
+.card{display:block;text-decoration:none;min-height:160px;border:1px solid #ac91e588;border-radius:24px;padding:22px;background:linear-gradient(125deg,#69375d77,#18294fdd);box-shadow:inset 0 0 35px #ff75c01b}
+.card:hover{border-color:var(--teal);transform:translateY(-2px)}.card strong{display:block;font-size:1.5rem}.card small{color:#e4dff6}
+section{scroll-margin-top:120px}h2{margin:45px 0 8px;font-size:2rem}section p{color:#d1d9f3;max-width:780px}
+.panels{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.panel{border-radius:22px;border:1px solid #9c89df66;background:#121d3ccc;padding:20px;min-height:195px}
+.panel h3{margin-top:0}.tag{color:var(--teal);font-size:.8rem;text-transform:uppercase;letter-spacing:.12em}
+.path{display:flex;gap:5px;align-items:center;flex-wrap:wrap;margin:16px 0}.node{border:1px solid var(--line);border-radius:18px;padding:12px;background:#212548}.arrow{color:var(--pink)}
+footer{border-top:1px solid #958bc355;margin-top:60px;padding:24px;color:var(--muted)}footer a{color:var(--teal)}
+#status{color:var(--teal);font-size:.8rem}
+@media(max-width:940px){.hero{grid-template-columns:1fr}.hero-art{max-height:430px}.card-grid{grid-template-columns:repeat(2,1fr)}.panels{grid-template-columns:1fr}}
+@media(max-width:520px){.card-grid{grid-template-columns:1fr}main{padding:18px}nav{gap:12px}.logo{width:100%}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style></head>
+<body><a class="skip" href="#main">Skip to content</a>
+<header><nav aria-label="Primary"><a class="logo" href="#main"><span aria-hidden="true">∞</span> CoCivium / CoAll</a><a href="#futures">Futures</a><a href="#retros">Retros</a><a href="#comap">CoMap</a><a href="#media">Media</a><div class="spacer"></div><button id="quiet" aria-pressed="true" aria-label="Quiet mode on">◌ Quiet mode on</button><span id="status" role="status">No audio assets loaded</span></nav></header>
+<main id="main"><div class="hero"><div><div class="eyebrow">COCIVIUM / COALL · PUBLIC DESIGN EXPLORATION</div><h1>A Living<br>Continuity<br>System</h1><p class="lead">Interconnected futures, remembered pasts, and a vivid evolving map of ideas. Public sources. Traceable relationships. No invented runtime.</p><p><a href="#comap">Explore the continuity map ↓</a></p></div>
+<svg class="hero-art" viewBox="0 0 720 550" role="img" aria-labelledby="heroTitle heroDesc"><title id="heroTitle">Living continuity constellation</title><desc id="heroDesc">A luminous sphere surrounded by interwoven pink, violet and cyan orbital rings and connected source nodes.</desc><defs>
+<radialGradient id="core"><stop offset="0%" stop-color="#ffecb3"/><stop offset="23%" stop-color="#ff7cbd"/><stop offset="65%" stop-color="#663ad7"/><stop offset="100%" stop-color="#102b60"/></radialGradient>
+<linearGradient id="ribbon"><stop stop-color="#fd83c5"/><stop offset=".5" stop-color="#65ebfd"/><stop offset="1" stop-color="#f8a5c9"/></linearGradient>
+<filter id="glow"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+</defs>
+<g transform="translate(360 275)"><circle r="165" fill="url(#core)" opacity=".95"/><circle r="145" fill="none" stroke="#f7afee" opacity=".35" stroke-dasharray="4 9"/>
+<g class="orbit"><ellipse rx="316" ry="94" fill="none" stroke="url(#ribbon)" stroke-width="8" transform="rotate(-18)" filter="url(#glow)"/><ellipse rx="320" ry="90" fill="none" stroke="#ee88fa" stroke-width="2" transform="rotate(27)"/></g>
+<g class="orbit alt"><ellipse rx="240" ry="177" fill="none" stroke="url(#ribbon)" stroke-width="9" transform="rotate(42)" filter="url(#glow)"/><ellipse rx="275" ry="116" fill="none" stroke="#67f5e9" stroke-width="2" transform="rotate(-58)"/></g>
+<circle cx="-270" cy="-35" r="11" fill="#fac797" filter="url(#glow)"/><circle cx="286" cy="33" r="13" fill="#70fff0" filter="url(#glow)"/><circle cx="-66" cy="-201" r="12" fill="#ed8eff" filter="url(#glow)"/><circle cx="115" cy="171" r="9" fill="#ffc0a0" filter="url(#glow)"/>
+<path d="M-270 -35L-66 -201L286 33L115 171L-270 -35" fill="none" stroke="#f1a1ec" stroke-width="1.5" stroke-dasharray="3 7" opacity=".8"/></g></svg></div>
+<div class="card-grid" aria-label="Explore themes"><a class="card" href="#futures"><strong>✦ Futures</strong><small>Possibilities and falsifiable experiments</small></a><a class="card" href="#retros"><strong>↶ Retros</strong><small>Predecessors, learning and honest gaps</small></a><a class="card" href="#comap"><strong>◇ CoMap</strong><small>Typed CoSeed / CoPath relationships</small></a><a class="card" href="#media"><strong>▷ Media</strong><small>Source-bound images, clips and culture</small></a></div>
+<section id="futures"><span class="tag">Explore</span><h2>Futures</h2><p>Explore proposed pathways without confusing a possible future with a verified destination. Preserve alternatives and dissent.</p><p><a href="../../ai/colatch-copre-wave-acceptance-r0-20261109.json">Six-wave test contract (JSON)</a></p></section>
+<section id="retros"><span class="tag">Recover</span><h2>Retros</h2><p>Discover older sources, descendants and gaps. History stays inspectable instead of being overwritten by the newest headline.</p><p><a href="../../ai/retro-echo-coverage-r0-20261109.json">Historical coverage ledger (JSON)</a></p></section>
+<section id="comap"><span class="tag">Navigate</span><h2>CoMap | CoSeed ⇄ CoPath</h2><p>Media and diagrams can both be relationship-bearing views of a common evidence spine. The links are actual navigation, not fictional product controls.</p>
+<div class="path" aria-label="Source traversal path"><a class="node" href="../../CoPre.md">CoPre</a><span class="arrow">⇄</span><a class="node" href="../../ai/copre-seed-path-fabric-r0-20261109.json">CoSeed / CoPath</a><span class="arrow">⇄</span><a class="node" href="../../ai/copre-omnidirectional-navigation-r0-20261109.json">Reverse lookup</a></div></section>
+<section id="media"><span class="tag">Create and relate</span><h2>Media Lineage</h2><p>Images, animation, text, diagrams, voice, captions and cultural translations are separate expressive surfaces linked by source, consent, provenance and meaning.</p><div class="panels"><article class="panel"><h3>Visual seed</h3><p>Original image preserved privately. Public descriptor maps ten image regions to typed relations.</p><a href="../../ai/media/living-continuity-visual-seed-r0-20261109.json">Media graph JSON</a></article><article class="panel"><h3>Accessibility first</h3><p>Text, captions and reduced-motion fallbacks. No audible playback is triggered by scrolling.</p><a href="../../docs/Design/COHUMAN_RICH_HERO_AND_AUDIO_CONSENT_R0_20261109.md">Audio/hero policy</a></article><article class="panel"><h3>Actual status</h3><p>This is an interactive HTML prototype. It is not an X2 installation, production website, rendered film or verified receiver.</p><a href="../../ai/index.json">Machine discovery index</a></article></div></section>
+<footer><p>CoHumanSurface R0. Source-linked demonstration, not canon or deployed platform. Quiet mode preference is local to this browser; this prototype contains no sound. <a href="../../CoPre.md">Source and recovery</a>.</p></footer></main>
+<script>
+(function(){const b=document.getElementById('quiet'),s=document.getElementById('status');let quiet=true;try{quiet=localStorage.getItem('cohuman-quiet')!=='false'}catch(e){}function draw(){b.setAttribute('aria-pressed',String(quiet));b.setAttribute('aria-label',quiet?'Quiet mode on':'Quiet preference off');b.textContent=quiet?'◌ Quiet mode on':'◌ Quiet preference off';s.textContent='No audio assets loaded';}b.addEventListener('click',()=>{quiet=!quiet;try{localStorage.setItem('cohuman-quiet',String(quiet))}catch(e){}draw()});draw();})();
+</script></body></html>
