@@ -36,3 +36,7 @@ Consumers should verify exact source blobs or content digests and record their *
 
 - [CoPreGeneric v8.79 public-safe CoPublic / CoOmni / CoSeed / CoPath delta](COPRE_V879_PUBLIC_OMNI_DELTA.md) | concise source-derived scope, draw/feed contract, linked historical/reverse navigation, G_dSide hypothesis boundary, and actual independent receiver test.
 - The supplied large WhatsApp export stays private. A public-safe synthesis is landed instead; this is not evidence of full historical recovery or cross-provider ACK.
+
+## AI-facing reciprocal usefulness
+
+- [CoMutualValue+ / CoAIHoney+ R0](CO_MUTUAL_VALUE_AI_HONEY_R0.md) | Ethical discoverability, machine/human projections, stakeholder utility, alternatives and falsifiable adoption benchmarks. Public source candidate only; no autonomous AI uptake implied.
