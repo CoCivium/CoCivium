@@ -113,3 +113,15 @@ The existing local rickBar browser source (`examples/comodelfabric/rickbar_local
 **Unattended schedule observation:** At the GitHub Actions run-list check around 2026-11-09 00:00 UTC, the `CoGoAll unattended proof pulse` workflow had passing `push`-event test runs but no observed `schedule`-event run, including the initially expected 2026-11-08 23:17 UTC tick. Other workflows in the repo have scheduled run history. Treat as `SCHEDULE_WAKE_NOT_OBSERVED` rather than inventing a scheduler failure cause; GitHub timing may delay/drop jobs and the new schedule has not been independently qualified. Do not create a redundant watcher without evidence.
 
 **Highest-value next receiver gate:** authorized X2 read-only process/launcher/current receiver census -> one real Ollama interaction through the existing rickBar -> persist WorkID and digest -> separate authenticated receiver readback -> restart -> independent >24h sample. Preserve native Break Glass and quiet when external capability is absent.
+
+
+## CoTalk cross-process handoff evidence (2026-11-09 UTC)
+
+**Evidence class: TESTED_LOCAL + LANDED_PUBLIC_SOURCE; no authenticated independent receiver or X2 runtime pickup.**
+
+- Exact source: [subprocess recovery tests](../../tests/gs_loop/test_cotalk_process_boundary.py), commit `5e7ec1148967f311bab9c80a636602cd73558e46`, Git blob `45ef410055d2cd3afd3893a98cf6c6ab331199c4`.
+- Dependencies as tested against public current blobs: `test_cotalk_recovery.py` `a7847f27b458fa5e74ee989bb402fe66510a8f93`; `test_durable_seed.py` `7892c6e2a5cf955c445e0fdaa84be1da9e0d1fa2`; `test_loop_guard.py` `b551258511572c30d20d17a08dcb9b22534f1149`.
+- Execution: CPython 3.13.5, `python3 -m unittest discover -s tests/gs_loop -p 'test_*.py' -v` with **30 run, 30 pass, exit 0**, on an isolated local test directory. Six new tests spawn an independent local Python process, use a second SQLite connection, persist receiver readproof, and challenge stale CAS, replay, forged identity, incorrect WorkID, corruption and process-exit recovery. GitHub source readback matches the tested source blob; GitHub Actions PASS remains **NOT_VERIFIED**.
+- Interpretation: authentic **process isolation** and durable SQLite evidence in a synthetic fixture, **not** host/provider/failure-domain independence or secure receiver authentication. A string `receiver_id` and local DB witness must not be promoted to a CoEx ACK.
+- **Next autonomous candidate:** verify actual Actions run for the commit; qualify an authorized real receiver/CoStead transport and readproof, then measure recovery across host restart and >24h. No extra watcher, no manual Rick relay, no duplicate Orb, no runtime/public-release inference from source landing.
+
