@@ -21,6 +21,8 @@ jobs:
     timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: '3.13'
@@ -60,8 +62,8 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          git fetch --no-tags --depth=1 origin +refs/heads/main:refs/remotes/origin/main
-          git fetch --no-tags --depth=1 origin +refs/heads/candidate/corun-priorgraph-ab-runset-r0-20261109:refs/remotes/origin/corun-donor
+          git fetch --no-tags origin +refs/heads/main:refs/remotes/origin/main
+          git fetch --no-tags origin +refs/heads/candidate/corun-priorgraph-ab-runset-r0-20261109:refs/remotes/origin/corun-donor
           mkdir -p "$RUNNER_TEMP/copath-role-readbacks"
           for role in synth bio recovery builder highlight first_contact metaanalysis lockstep; do
             python -B scripts/CoPathSourceBridgeR0.py \
@@ -76,13 +78,13 @@ jobs:
           receipts = [json.loads(p.read_text()) for p in sorted(root.glob("*.json"))]
           assert len(receipts) == 8, "Expected exactly eight scoped role checks"
           for item in receipts:
-              assert item["status"] == "SOURCE_PATH_READBACK__NOT_PICKUP"
+              assert item["status"] in ("SOURCE_PATH_READBACK__NOT_PICKUP", "HISTORICAL_PINS_RECOVERABLE__CURRENTNESS_HELD")
               assert item["total"] == item["source_readbacks"]
               assert item["receiver_acknowledged"] is False
               assert item["cross_front_integration"] == "NOT_ESTABLISHED"
               assert item["public_mirrors_qualified"] is False
               assert item["effects"] == "NONE"
-          print("Copath exact-source readbacks:", [(r["chosen_role"], r["total"]) for r in receipts])
+          print("Copath exact-pin recovery:", [(r["chosen_role"], r["total"], r["currentness_challenges"]) for r in receipts])
           print("All source-only, no receiver-readproof")
           PY
       - name: Archive bounded CoPath source receipts
