@@ -5,6 +5,9 @@ on:
     paths:
       - "scripts/CoPreContinuationR0.py"
       - "scripts/CoMVPCoPreFirstUseR0.py"
+      - "tests/source_copre_cli_candidate_r0.py"
+      - "tests/acceptance_copre_cli_minimum_use_r0.py"
+      - "tests/qualification_copre_cli_source_slot_r0.py"
       - "docs/Product/COMVP_COPRE_CLI_FIRST_USE_R0_20261109.md"
       - "docs/Operations/wave-renders/comvp-copre-cli-20261109/**"
       - ".github/workflows/comvp-copre-cli-pilot-r0.yml"
@@ -12,6 +15,9 @@ on:
     paths:
       - "scripts/CoPreContinuationR0.py"
       - "scripts/CoMVPCoPreFirstUseR0.py"
+      - "tests/source_copre_cli_candidate_r0.py"
+      - "tests/acceptance_copre_cli_minimum_use_r0.py"
+      - "tests/qualification_copre_cli_source_slot_r0.py"
       - ".github/workflows/comvp-copre-cli-pilot-r0.yml"
 
 permissions:
@@ -76,3 +82,29 @@ jobs:
           print("BEGIN_COMMIT="+ac)
           print("END_COMMIT="+bc)
           PY
+
+  source-slot:
+    name: source-slot
+    needs: cli-first-use
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Pin the actual CoPre CLI in CoMVP source-release slots and reject regression
+        run: |
+          python3 -B tests/qualification_copre_cli_source_slot_r0.py \
+            --report out/comvp-copre/selected-source-head.json
+      - name: Preserve source-only release head and pinned acceptance receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: comvp-copre-source-slot-${{ github.run_id }}-a${{ github.run_attempt }}
+          path: out/comvp-copre/selected-source-head.json
+          if-no-files-found: error
+          retention-days: 30
