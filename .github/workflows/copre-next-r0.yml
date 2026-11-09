@@ -14,6 +14,9 @@ on:
       - "scripts/CoExWaveEndcapsR0.py"
       - "scripts/CoWaveOverlapGuardR0.py"
       - "scripts/CoStatusOffloadR0.py"
+      - "scripts/CoPreUptakeBridgeR0.py"
+      - "docs/Operations/wave-renders/copre-couptake-20261109/BEGIN.md"
+      - "docs/Operations/wave-renders/copre-couptake-20261109/END.md"
       - "docs/Architecture/COSTATUS_OFFLOAD_SHARED_HEAD_R0_20261109.md"
       - "docs/Operations/wave-renders/cooffload-20261109/BEGIN.md"
       - "docs/Operations/wave-renders/cooffload-20261109/END.md"
@@ -207,4 +210,41 @@ jobs:
           print("PASS_COSTATUS_OFFLOAD_DISTINCT_BEGIN_END_SOURCE_COMMITS")
           print("BEGIN_COMMIT="+ac)
           print("END_COMMIT="+bc)
+          PY
+
+      - name: Verify exact prior CoUptake source commit and run isolated CoPre bridge
+        run: |
+          git fetch --no-tags origin 248d3f3bc4836bb2b42378152f087221494cf0bc
+          python3 -B scripts/CoPreUptakeBridgeR0.py --selftest --repo-root . > /tmp/copre-uptake-bridge-r0.json
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          v=json.loads(Path("/tmp/copre-uptake-bridge-r0.json").read_text())
+          assert v["schema"]=="CoCivium.CoPreUptakeBridgeSynthetic.R0"
+          assert v["tests_passed"]==v["tests_run"]==9
+          assert v["donor_commit"]=="248d3f3bc4836bb2b42378152f087221494cf0bc"
+          assert v["donor_blob"]=="a3bbf5bf6b8ed9c1b54858346f67e8460ee958a5"
+          assert v["real_independent_receiver"]=="UNPROVEN"
+          assert v["remote_storage"]=="NOT_TESTED"
+          assert v["effects_performed"]==0
+          print("PASS_COPRE_UPTAKE_PINNED_DONOR_ISOLATED_PROCESS_BRIDGE_R0")
+          print(json.dumps(v, sort_keys=True))
+          PY
+      - name: Verify CoPre / CoUptake BEGIN and END source renders
+        run: |
+          python3 - <<'PY'
+          import subprocess
+          from pathlib import Path
+          p="docs/Operations/wave-renders/copre-couptake-20261109/"
+          bp,ep=p+"BEGIN.md",p+"END.md"
+          a,b=Path(bp).read_text(),Path(ep).read_text()
+          assert "CoPreUptakeBridge.R0" in a and "CoPreUptakeBridge.R0" in b
+          assert "INTENT_RECORDED_NOT_EFFECT" in a and "SOURCE_LANDED_CI_PENDING" in b
+          assert a!=b
+          ac=subprocess.check_output(["git","log","-1","--format=%H","--",bp],text=True).strip()
+          ec=subprocess.check_output(["git","log","-1","--format=%H","--",ep],text=True).strip()
+          assert ac and ec and ac!=ec, (ac,ec)
+          print("PASS_COPRE_UPTAKE_SEPARATE_SOURCE_RENDER_ENDCAPS_R0")
+          print("BEGIN_COMMIT="+ac)
+          print("END_COMMIT="+ec)
           PY
