@@ -64,3 +64,17 @@ membrane_projection {
 **First discriminating test, not run:** Create one frozen work object containing a verified receiver effect, stale receipt, contradictory forecast, unauthorized crossing, two incompatible futures and an earlier version. Independently project it as JSON/text and browser/SVG views. Compare WorkID, source SHA, epistemic labels and timestamp semantics. Inject expired receipt and ensure both views become stale; attempt illicit boundary crossing and require fail-close; verify keyboard, screen-reader and reduced-motion equivalent interpretation. A third independent observer must read back the exact artifact before calling this verified UI integration.
 
 **Ops linkage:** CoReGroup reconciling source/policy drift; CoBoogie on material contradictions; Break Glass only reversible, authority-scoped rescue; CoGrace when no valuable next deed. CoZombieApocalypse #386 supplies disruptive scenarios; CoPullVector #378 supplies competing candidate futures. Actual 24h Seed survival, cross-session pickup and X2 deployment remain unproven.
+
+## CoOrb R0B implementation canary: privacy-scoped version and fail-closed ACK
+
+The existing **CoOrbMembrane+ / CoTimeSkin+** section above is the governing design candidate. The [two-view synthetic test fixture](../../tests/gs_receiver/test_coorb_two_view.py) narrows its first test to `orb` and `map` *structured-data projections* of one WorkID. These are **not** two separately hosted visual renderers, real receiver copies or CoStead pickup.
+
+- A cosmetic redraw cannot change the semantic Orb revision; a source-bound material change records a predecessor link in the internal model.
+- The receiver-visible projection digest includes only authorized visible strands. It deliberately hides the global source hash, global revision and predecessor so a private-only change cannot be inferred through public counts or version drift. An independently authorized auditor can access full source lineage through a separate authority-bearing interface, not the public projection.
+- A future-dated strand stays `PREDICTED` at and after its horizon until an external observation supplies a separately evaluated outcome. Expired observations remain `STALE`, never silently disappear.
+- The synthetic projection can **never assert receiver ACK**: an arbitrary receipt-shaped value or caller parameter is insufficient. Genuine acknowledgment requires a later separately authenticated receiver readproof contract.
+- Outward strands remain `PROPOSAL_ONLY` unless explicitly authorized. Even authorized strands are not sent by this renderer; rendering has zero effect authority.
+
+**Proof ladder:** candidate source -> passing scoped CI tests -> independently rendered browser/text or CoBar receiver -> exact authenticated readproof -> witnessed recovery, measured over a real >24h interval. No synthetic test can skip a step.
+
+**Nonclaims:** `PROJECTION_NE_SOURCE` · `PROJECTION_HASH_NE_FULL_SOURCE_HASH` · `MODEL_CLAIM_NE_RECEIVER_ACK` · `RENDERER_TEST_NE_VISIBLE_PRODUCT` · `NO_X2_COEX_OR_LIVE_CROSS_MODEL_CLAIM`.
