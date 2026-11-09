@@ -1,0 +1,291 @@
+{
+  "schema": "CoAll.CoMedia.VisualReferenceRelations.R0",
+  "state": "PUBLIC_SAFE_DESCRIPTOR_ONLY__RAW_IMAGE_NOT_PUBLISHED__SOURCE_ONLY",
+  "work_id": "CoAll.CoWet.HumanSurface.20261109",
+  "observed_at": "2026-11-09",
+  "reference": {
+    "label": "CoCivium: A Living Continuity System (3)",
+    "kind": "USER_PROVIDED_RENDERED_PNG",
+    "sha256": "7a1fe2bd075cbc03555c4c3c2bc5c8f265006579e381670604fac50a0c20c26d",
+    "bytes": 3175770,
+    "width": 1672,
+    "height": 941,
+    "rights": "NOT_VERIFIED_FOR_REPUBLICATION",
+    "public_image_url": null,
+    "semantic_review": "VISUAL_MANUAL_REVIEW_ONLY",
+    "source_custody": "USER_UPLOAD_TO_CURRENT_SESSION_NOT_GITHUB"
+  },
+  "coordinate_system": {
+    "units": "normalized_0_to_1000",
+    "origin": "TOP_LEFT",
+    "bounds": "APPROXIMATE_REVIEWER_ANNOTATION_NOT_PIXEL_PRECISE"
+  },
+  "regions": [
+    {
+      "id": "hero.orb",
+      "type": "ILLUSTRATED_VISUAL_METAPHOR",
+      "bbox": [
+        238,
+        95,
+        721,
+        614
+      ],
+      "label": "Living continuity orb and braided paths",
+      "candidate_relations": [
+        "COBRAID",
+        "COPATH",
+        "COTIME"
+      ],
+      "truth": "ARTISTIC_NOT_GRAPH_PROOF"
+    },
+    {
+      "id": "hero.title",
+      "type": "HUMAN_NARRATIVE",
+      "bbox": [
+        39,
+        153,
+        261,
+        390
+      ],
+      "label": "A Living Continuity System",
+      "candidate_relations": [
+        "COBIOVERSE",
+        "COORB"
+      ],
+      "truth": "PRESENTATION_TEXT"
+    },
+    {
+      "id": "nav.futures",
+      "type": "VISUAL_LINK_PROPOSAL",
+      "bbox": [
+        715,
+        128,
+        974,
+        229
+      ],
+      "label": "Futures",
+      "candidate_relations": [
+        "COFUTUREPULL",
+        "COTIME"
+      ],
+      "truth": "NO_REAL_LINK_ON_PNG"
+    },
+    {
+      "id": "nav.retros",
+      "type": "VISUAL_LINK_PROPOSAL",
+      "bbox": [
+        715,
+        242,
+        973,
+        347
+      ],
+      "label": "Retros",
+      "candidate_relations": [
+        "COECHO",
+        "COFRONT"
+      ],
+      "truth": "NO_REAL_LINK_ON_PNG"
+    },
+    {
+      "id": "nav.comap",
+      "type": "VISUAL_LINK_PROPOSAL",
+      "bbox": [
+        714,
+        357,
+        975,
+        464
+      ],
+      "label": "CoMap",
+      "candidate_relations": [
+        "COMAP",
+        "CONAV"
+      ],
+      "truth": "NO_REAL_LINK_ON_PNG"
+    },
+    {
+      "id": "nav.media",
+      "type": "VISUAL_LINK_PROPOSAL",
+      "bbox": [
+        715,
+        474,
+        974,
+        575
+      ],
+      "label": "Media",
+      "candidate_relations": [
+        "COMEDIA",
+        "COLENS"
+      ],
+      "truth": "NO_REAL_LINK_ON_PNG"
+    },
+    {
+      "id": "panel.continuity_map",
+      "type": "GRAPH_PROJECTION_MOCK",
+      "bbox": [
+        31,
+        614,
+        343,
+        826
+      ],
+      "label": "Continuity Map",
+      "candidate_relations": [
+        "COSEED",
+        "COPATH",
+        "COSOURCE"
+      ],
+      "truth": "ARTISTIC_GRAPH_NO_IDS"
+    },
+    {
+      "id": "panel.media_lineage",
+      "type": "MEDIA_LINEAGE_MOCK",
+      "bbox": [
+        361,
+        618,
+        681,
+        777
+      ],
+      "label": "Media Lineage",
+      "candidate_relations": [
+        "COMEDIA",
+        "COECHO",
+        "COSOURCE"
+      ],
+      "truth": "MOCK_LINEAGE_NO_PROVENANCE"
+    },
+    {
+      "id": "panel.time_possibility",
+      "type": "TEMPORAL_PROJECTION_MOCK",
+      "bbox": [
+        691,
+        620,
+        972,
+        771
+      ],
+      "label": "Across Time and Possibility",
+      "candidate_relations": [
+        "COTIME",
+        "COFUTUREPULL"
+      ],
+      "truth": "HYPOTHESIS_NOT_FORECAST"
+    },
+    {
+      "id": "control.ambient",
+      "type": "AUDIO_CONTROL_MOCK",
+      "bbox": [
+        717,
+        18,
+        981,
+        88
+      ],
+      "label": "Ambient audio / Quiet mode",
+      "candidate_relations": [
+        "COAUDIOFKOFF"
+      ],
+      "truth": "IMAGE_NO_AUDIO_ENGINE"
+    },
+    {
+      "id": "control.scroll_cue",
+      "type": "SCROLL_AUDIO_CUE_MOCK",
+      "bbox": [
+        480,
+        884,
+        641,
+        937
+      ],
+      "label": "Scroll to go deeper; audio gradually rises",
+      "candidate_relations": [
+        "COAUDIOFKOFF"
+      ],
+      "truth": "REQUIRES_PRIOR_EXPLICIT_ENABLE"
+    }
+  ],
+  "relation_contract": {
+    "source_types": [
+      "PHOTO",
+      "VIDEO",
+      "AUDIO",
+      "ILLUSTRATION",
+      "ARTWORK",
+      "TEXT",
+      "DIAGRAM",
+      "CIRCUIT",
+      "MAP",
+      "HISTORICAL_EVENT",
+      "PREDICTIVE_HYPOTHESIS",
+      "CULTURAL_EXPRESSION",
+      "3D_SCENE",
+      "SIMULATION",
+      "RECEIPT",
+      "GRAPH_NODE"
+    ],
+    "shared_required_fields": [
+      "asset_id",
+      "source_ref",
+      "source_revision_or_hash",
+      "media_type",
+      "semantic_claim_class",
+      "creator_or_origin_when_known",
+      "rights_and_consent",
+      "captured_or_event_time_when_known",
+      "relations",
+      "human_alternative"
+    ],
+    "link_kinds": [
+      "DEPICTS",
+      "DERIVED_FROM",
+      "CITES",
+      "PROPOSES",
+      "CHALLENGES",
+      "PRECEDES",
+      "FOLLOWS",
+      "CORRESPONDS_TO",
+      "CONTRADICTS",
+      "PART_OF",
+      "PRESENTS_AS",
+      "IN_CONTEXT_OF",
+      "AUTHORIZED_FOR"
+    ],
+    "safety_rules": [
+      "VISUAL_RESEMBLANCE_NE_SEMANTIC_EQUIVALENCE",
+      "TIME_ADJACENCY_NE_CAUSALITY",
+      "CULTURAL_ANALOGY_NE_IDENTITY",
+      "LINK_NE_AUTHORIZED_ACTION",
+      "HYPOTHESIS_NE_FACT",
+      "GRAPH_EDGE_NE_RECEIVER_READPROOF",
+      "NO_UNVERIFIED_MEDIA_PUBLICATION"
+    ],
+    "projection_views": [
+      "HUMAN_HERO",
+      "MEGASCROLLER",
+      "LINE_BOX_TEXT",
+      "CIRCUIT",
+      "TEMPORAL_GRAPH",
+      "SOURCE_PLAIN_TEXT",
+      "AUDIO_DESCRIPTION",
+      "MACHINE_JSON",
+      "ACCESSIBLE_KEYBOARD_NAV",
+      "STATIC_LOW_BANDWIDTH"
+    ]
+  },
+  "media_ux_policy": {
+    "hero_default": "PURPOSEFUL_WITH_EXCEPTIONS",
+    "sound_initial": "SILENT",
+    "scroll_event": "NEVER_CONSENT",
+    "enable_action": "EXPLICIT_USER_ACTIVATION",
+    "stop_action": "ONE_ACTION_IMMEDIATE_OFF",
+    "no_audio_mode": "FULL_FUNCTIONAL_PARITY",
+    "motion_reduction": "RESPECT_PREFERS_REDUCED_MOTION"
+  },
+  "status": {
+    "image_hashed_locally": true,
+    "visual_regions_annotated": true,
+    "raw_image_published": false,
+    "live_hero_deployed": false,
+    "region_hit_testing": false,
+    "receiver_readback": false,
+    "licensing_review": false,
+    "interactive_media_mapping": "NOT_IMPLEMENTED",
+    "semantic_graph_binding": "CANDIDATE"
+  },
+  "future_test": "ONE_WORKID_EXACT_SOURCE_TO_ONE_VISUAL_REGION_AND_ONE_LINE_BOX_VIEW_WITH_MATCHING_RECEIPT_AND_ACCESSIBLE_TEXT"
+}
