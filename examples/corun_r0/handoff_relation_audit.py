@@ -89,6 +89,7 @@ def analyze(bundle, producer, report_raw, receiver, receiver_receipt):
          and manifest.get("product_promotion") is False,
          "MANIFEST_FORGED_PROMOTION")
 
+    need(canonical(receiver) == report_raw, "RECEIVER_REPORT_BYTES_MISMATCH")
     need(receiver_receipt.get("schema") ==
          "CoCivium.CoPreCursor.ReceiverReadbackReceiptR0", "RECEIVER_RECEIPT_SCHEMA")
     need(receiver_receipt.get("report_sha256") == sha(report_raw),
@@ -160,16 +161,23 @@ def analyze(bundle, producer, report_raw, receiver, receiver_receipt):
          "content_sha256": hreport, "verified_state": "VERIFIED_LOCAL",
          "owner": "GITHUB_ACTIONS_RECEIVER_JOB",
          "independent_human_witness": False},
+        {"id": "receiver_receipt:" + sha(canonical(receiver_receipt)),
+         "kind": "RECEIVER_RECEIPT",
+         "content_sha256": sha(canonical(receiver_receipt)),
+         "verified_state": "VERIFIED_LOCAL",
+         "owner": "GITHUB_ACTIONS_RECEIVER_JOB"},
         {"id": "synthetic_task:" + hreport, "kind": "AUTOMATED_FIRST_USE_TASK",
          "test_cases": len(tests), "verified_state": "AUTOMATED_CI_ONLY",
          "receiver_acceptance": False},
     ]
-    src, cap, producer_id, recv, task = (x["id"] for x in nodes)
+    src, cap, producer_id, recv, recv_receipt, task = (x["id"] for x in nodes)
     relations = [
         {"from": src, "type": "PACKAGED_AS", "to": cap,
          "proof": "exact Git-blob and SHA-256 bytes in manifest"},
         {"from": producer_id, "type": "ATTESTS_HASH_OF", "to": cap,
          "proof": "producer receipt SHA-256 recomputed"},
+        {"from": recv_receipt, "type": "ATTESTS_HASH_OF", "to": recv,
+         "proof": "receiver receipt SHA-256 recomputed"},
         {"from": cap, "type": "READ_BACK_BY", "to": recv,
          "proof": "receiver recomputed capsule, source and report hashes"},
         {"from": recv, "type": "REPLAYED_AS", "to": task,
@@ -241,10 +249,10 @@ def analyze(bundle, producer, report_raw, receiver, receiver_receipt):
                              "false_independent_origin": 0},
         "missing_relations": missing,
         "content_classes": {
-            "SUBSTANTIVE_TEXT_CANDIDATE": 1,
+            "SUBSTANTIVE_TEXT_CANDIDATE": 2,
             "SUBSTANTIVE_BINARY_CANDIDATE": 1,
             "IMAGE_EVIDENCE_CANDIDATE": 0,
-            "TRANSIENT_CONTROL_FILE": 3,
+            "TRANSIENT_CONTROL_FILE": 2,
             "UPLOAD_SIDECAR": 0,
         },
         "semantic_coverage": {"source_semantics": "BOUNDED_BROWSER_TASK_ONLY",
