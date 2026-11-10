@@ -52,7 +52,14 @@ function OwnedTask {
 
 function CandidateCounts {
   $otherTasks=@(Get-ScheduledTask -ErrorAction Stop | Where-Object {
-    $_.TaskName -match $CandidateRegex -and $_.TaskName -ne $TaskName
+    $task=$_
+    if ($task.TaskName -eq $TaskName) { return $false }
+    # Inspect action executable PATH only, never action Arguments.
+    # A generic task name must not hide a second CoAll startup owner.
+    $matchesExe=@($task.Actions | Where-Object {
+      $_.Execute -match '(?i)(CoCivium|CoAll.?Desktop|CoDesktop|RickBar|CoBar)'
+    })
+    return ($task.TaskName -match $CandidateRegex -or $matchesExe.Count -gt 0)
   })
   $startupDir=Join-Path $env:APPDATA 'Microsoft\Windows\Start Menu\Programs\Startup'
   $shortcuts=@()
@@ -132,7 +139,7 @@ if ($Mode -eq 'Audit') {
     startup_shortcuts=$counts.shortcut_count
     hkcu_run_names=$counts.run_count
     executable_identity='NOT_INSPECTED'
-    startup_scan_coverage='NAME_FILTERED_ONLY__ACTION_ARGUMENTS_NOT_INSPECTED'
+    startup_scan_coverage='TASK_NAME_OR_EXECUTABLE__RUN_AND_SHORTCUT_NAMES_ONLY__ARGUMENTS_NOT_SCANNED'
     provider_session_status='NOT_INSPECTED'
     user_reauth_cause='NOT_DETERMINED'
   }
