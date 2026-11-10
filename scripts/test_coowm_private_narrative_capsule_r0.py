@@ -67,6 +67,14 @@ class Tests(unittest.TestCase):
         self.source.unlink()
         self.source.symlink_to(other)
         with self.assertRaises(m.Held):m.capture(self.source,self.root)
+    def test_private_root_symlink_rejected(self):
+        actual=self.folder/"actual-private"
+        actual.mkdir()
+        self.root.symlink_to(actual,target_is_directory=True)
+        with self.assertRaises(m.Held) as error:
+            m.capture(self.source,self.root)
+        self.assertEqual(str(error.exception),"HELD_OUTPUT_SYMLINK")
+        self.assertEqual(list(actual.iterdir()),[])
     def test_distinct_content_distinct_capsule(self):
         a=m.capture(self.source,self.root)
         self.source.write_text("Different passage")
