@@ -152,6 +152,10 @@ def fetch_issue():
 
 
 def selftest():
+    # These R0 selftest assertions are intentionally not optimization-safe.
+    # Failing closed is mandatory until converted to always-on requirements.
+    if not __debug__:
+        raise RuntimeError("HOLD_OPTIMIZED_MODE_SELFTEST_ASSERTS_DISABLED")
     example = {"number": 403, "html_url": ISSUE_URL, "state": "open",
                "title": "CoMVP+ acceptance", "body": "CoMVP+ task contract",
                "updated_at": "2026-11-09T10:54:01Z"}
