@@ -37,7 +37,7 @@ class CoBindAdversarialTests(unittest.TestCase):
         self.assertEqual(out["evidence_effect"], "NONE")
 
     def test_observed_without_source_held(self):
-        self.assertEqual(mod.route(claim("OBSERVED"), [anchor("SOURCE_WITNESS")])["state"],
+        self.assertEqual(mod.route(claim("OBSERVED", temporal_mode="PRESENT"), [anchor("SOURCE_WITNESS")])["state"],
                          "HELD_NO_OBSERVED_SOURCE_PROOF")
 
     def test_observed_with_exact_witness(self):
