@@ -27,3 +27,33 @@ jobs:
         run: |
           node --test examples/conodcothumb/context_rail_r1/tests/test_context_rail.cjs
           node --test examples/conodcothumb/context_rail_r1/tests/test_owned_work_r0.cjs
+
+  browser-profile-restart:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install pinned Playwright controller for preinstalled Chromium
+        run: python -m pip install --disable-pip-version-check playwright==1.56.0
+      - name: Qualify actual browser-profile restart with synthetic local WorkID
+        shell: bash
+        run: |
+          set -euo pipefail
+          command -v google-chrome || command -v chromium
+          mkdir -p out/conod/browser-profile
+          python -B examples/conodcothumb/context_rail_r1/tests/browser_owned_work_r0.py \
+            | tee out/conod/browser-profile/receipt.json
+          python -m json.tool out/conod/browser-profile/receipt.json >/dev/null
+      - name: Preserve browser acceptance receipt without a private profile
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: conod-browser-profile-${{ github.run_id }}-a${{ github.run_attempt }}
+          path: out/conod/browser-profile/receipt.json
+          if-no-files-found: warn
+          retention-days: 30
