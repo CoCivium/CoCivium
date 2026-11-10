@@ -12,6 +12,8 @@ on:
       - 'scripts/CoBindBrowserSmokeR0.py'
       - '.github/workflows/comindseed-cobind-r0.yml'
   push:
+    branches:
+      - main
     paths:
       - 'ai/research/comindseed-cobind-golden-braid-cotheoryall-r0-20261110.json'
       - 'docs/Architecture/COMINDSEED_COBIND_GOLDEN_BRAID_R0_20261110.md'
@@ -21,6 +23,12 @@ on:
       - 'examples/cobind/cobind-golden-braid-orb-r0.html'
       - 'scripts/CoBindBrowserSmokeR0.py'
       - '.github/workflows/comindseed-cobind-r0.yml'
+
+# Keep just the newest candidate run for this PR or main branch.
+# Do not multiply full Chromium runs for every incremental commit.
+concurrency:
+  group: cobind-r0-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 
 permissions:
   contents: read
@@ -51,6 +59,7 @@ jobs:
           name: cobind-browser-smoke
           path: cobind-browser-smoke/
           if-no-files-found: ignore
+          retention-days: 30
       - name: Validate public source anchors and nonclaim boundaries
         run: |
           python3 - <<'PY'
