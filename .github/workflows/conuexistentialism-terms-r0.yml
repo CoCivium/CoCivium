@@ -1,0 +1,27 @@
+name: CoNuExistentialism candidate terminology source checks
+on:
+  pull_request:
+    paths:
+      - 'ai/ontology/conuexistentialism-gdside-candidates-r0.json'
+      - 'docs/coterms/CONUEXISTENTIALISM_GDSIDE_CANDIDATES_R0_20261110.md'
+      - 'scripts/test_conuexistentialism_terms_r0.py'
+      - '.github/workflows/conuexistentialism-terms-r0.yml'
+  push:
+    paths:
+      - 'ai/ontology/conuexistentialism-gdside-candidates-r0.json'
+      - 'docs/coterms/CONUEXISTENTIALISM_GDSIDE_CANDIDATES_R0_20261110.md'
+      - 'scripts/test_conuexistentialism_terms_r0.py'
+      - '.github/workflows/conuexistentialism-terms-r0.yml'
+permissions:
+  contents: read
+jobs:
+  candidate-terms:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify meaning, inverse, sources and noncanonical status
+        run: python -B scripts/test_conuexistentialism_terms_r0.py -v
