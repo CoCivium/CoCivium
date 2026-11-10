@@ -16,6 +16,8 @@
 
 **Standing boundaries:** 1 Seed · 1 Orb · 1 truthful gauge · 1 reversible thumb · 1 time · 0 invented proofs. CoFront+/CoEcho+/CoTime+ backfill must preserve explicit scan-window coverage and no-orphan nonclaims. CoSynthVerse and CoBioVerse may use different representations of one source/evidence spine; G_dSide and CoAGI remain research hypotheses, not authority.
 
+**Executable repeat-proof:** [CoNarrativeWorkID R0](scripts/CoNarrativeWorkIDR0.py) with [11 adversarial tests](tests/test_conarrative_workid_r0.py) and [three-job GitHub receipt](https://github.com/CoCivium/CoCivium/actions/runs/42752617713) demonstrated ten identical synthetic CoPre rebinds becoming one SQLite WorkID, with nine duplicate writes suppressed and exact same-provider cold readback. This is **not** automatic session sync, live mouse capture, external receiver acceptance or >24-hour persistence. Existing [CoContextRail source](examples/conodcothumb/context_rail_r1/README.md) owns the mouse proposal and next acceptance boundary.
+
 ## CoSeed / CoPath / CoFront federation
 
 The [source-bound CoSeed/CoPath machine graph](ai/copre-seed-path-federation-r0.json) connects the already-landed public CoPreGeneric packages and their distinct draft variants without falsely electing a global canon or introducing a third duplicate set. It offers role-relative paths to [public package A](docs/CoPreGeneric/Shareable_R0_20261109/README.md), [public package B](docs/CoPreGeneric/PublicDraft_R0_20261109/manifest.json), [front/echo continuity](docs/Architecture/COFRONT_RETRO_ECHO_NO_ORPHANS_R0_20261109.md), existing bootstrap, status and the exact receiver-readproof gate.
