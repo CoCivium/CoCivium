@@ -79,3 +79,7 @@ Consumers should verify exact source blobs or content digests and record their *
 ## Cold successor and opportunistic de-dependency
 
 - [CoPre cold-successor packet R0](copre_cold_successor_packet_r0.json) | [fail-closed regression checks](test_copre_cold_successor_packet_r0.py). A commit-pinned starting pointer and four non-overlapping work lanes, with honest nulls for all three target-mirror SHA-256 values, external receiver ACK, >24h survival and automatic orchestration. Public-source candidate, NOT proof of a receiver pickup or always-on agent.
+
+## CoRel / CoBraid causal chain planning
+
+- [Bounded causal wave planner](corel_braid_wave_planner_r0.py) | [10 regression checks](test_corel_braid_wave_planner_r0.py). Source-bound pure planning of independent parallel preparation and sequential dependencies. Every later step is explicitly **hypothetical** until a real independent predecessor receipt is supplied; no work is scheduled or executed by this component. HELD/FAILED predecessor gates remain visible.
