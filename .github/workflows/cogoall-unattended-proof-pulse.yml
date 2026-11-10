@@ -11,6 +11,8 @@ on:
       - 'test_due_work_catchup_r0.py'
       - 'scripts/CoGoAllDueWorkSourceCanaryR0.py'
       - 'test_cogoall_due_work_source_canary_r0.py'
+      - 'scripts/CoGoAllPriorRunReadbackR0.py'
+      - 'test_cogoall_prior_run_readback_r0.py'
       - 'scripts/CoReboundIntegrityR0.py'
       - 'scripts/copre_seed_24h_canary_r0.py'
       - 'scripts/test_copre_seed_24h_canary_r0.py'
@@ -25,6 +27,8 @@ on:
       - '.github/workflows/cogoall-unattended-proof-pulse.yml'
       - 'scripts/CoGoAllDueWorkSourceCanaryR0.py'
       - 'test_cogoall_due_work_source_canary_r0.py'
+      - 'scripts/CoGoAllPriorRunReadbackR0.py'
+      - 'test_cogoall_prior_run_readback_r0.py'
   schedule:
     - cron: '17 * * * *'
   workflow_dispatch:
@@ -264,4 +268,47 @@ jobs:
           name: cogoall-one-due-readback-${{ github.run_id }}-a${{ github.run_attempt }}
           path: out/cogoall/due-work-readback.json
           if-no-files-found: error
+          retention-days: 30
+
+  prior-task-reader:
+    # Different CI run re-reads a PINNED completed WorkID. No replay or new task.
+    # Historical artifacts expire; fail closed if missing or mismatched.
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Challenge wrong source, metadata, prior run and receipt mutation
+        run: python -B -m unittest -v test_cogoall_prior_run_readback_r0
+      - name: Fetch exact prior GitHub artifact metadata and completed WorkID
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          mkdir -p out/cogoall/prior-metadata out/cogoall/prior-run-work out/cogoall/prior-run-readback
+          gh api "repos/${GITHUB_REPOSITORY}/actions/artifacts/13738906845" > out/cogoall/prior-metadata/producer.json
+          gh api "repos/${GITHUB_REPOSITORY}/actions/artifacts/13739355879" > out/cogoall/prior-metadata/receiver.json
+          gh run download 42763951520 --repo "${GITHUB_REPOSITORY}" --name cogoall-one-due-work-42763951520-a1 --dir out/cogoall/prior-run-work
+          gh run download 42763951520 --repo "${GITHUB_REPOSITORY}" --name cogoall-one-due-readback-42763951520-a1 --dir out/cogoall/prior-run-readback
+      - name: Independently verify prior completed WorkID without executing effect
+        run: |
+          python -B -m scripts.CoGoAllPriorRunReadbackR0 \
+            --root . \
+            --bundle out/cogoall/prior-run-work \
+            --prior-readback out/cogoall/prior-run-readback/due-work-readback.json \
+            --producer-metadata out/cogoall/prior-metadata/producer.json \
+            --receiver-metadata out/cogoall/prior-metadata/receiver.json \
+            --output out/cogoall/prior-task-readback.json
+      - name: Preserve distinct-run readback receipt only
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cogoall-prior-run-readback-${{ github.run_id }}-a${{ github.run_attempt }}
+          path: out/cogoall/prior-task-readback.json
+          if-no-files-found: warn
           retention-days: 30
