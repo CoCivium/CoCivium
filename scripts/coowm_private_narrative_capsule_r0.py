@@ -82,8 +82,20 @@ def verify(folder, sha):
         return "HELD_DIGEST_OR_RECEIPT_MISMATCH"
     return "VERIFIED_LOCAL_ONLY"
 
-def capture(source,root):
-    raw=read_text(source)
+def capture_bytes(raw, root, *, source_kind="EXPLICIT_VISIBLE_LOCAL_BROWSER_POST"):
+    """Capture explicit UTF-8 bytes without creating an extra plaintext input file."""
+    if not isinstance(raw, bytes) or not raw or len(raw)>MAX_BYTES:
+        raise Held("HELD_INVALID_OR_OVERSIZED_TEXT")
+    try:
+        content=raw.decode("utf-8")
+    except UnicodeDecodeError:
+        raise Held("HELD_NON_UTF8")
+    if not content.strip():
+        raise Held("HELD_EMPTY_TEXT")
+    if "\x00" in content:
+        raise Held("HELD_BINARY_IN_TEXT")
+    if source_kind not in {"EXPLICIT_USER_SUPPLIED_UTF8_FILE", "EXPLICIT_VISIBLE_LOCAL_BROWSER_POST"}:
+        raise Held("HELD_UNKNOWN_SOURCE_KIND")
     sha=digest(raw)
     root=private_dir(root)
     folder=root/sha
@@ -100,7 +112,7 @@ def capture(source,root):
     receipt={"schema":SCHEMA,"sha256":sha,"bytes":len(raw),
              "capsule_id":"coowm:"+sha,"scope":"PRIVATE_LOCAL_ONLY",
              "created_at_utc":dt.datetime.now(dt.timezone.utc).isoformat(),
-             "source_kind":"EXPLICIT_USER_SUPPLIED_UTF8_FILE",
+             "source_kind":source_kind,
              "original_source_path_stored":False,"receiver_ack":False,
              "cross_session_sync":False,"published":False}
     try:
@@ -110,6 +122,9 @@ def capture(source,root):
         return {"state":"HELD_INCOMPLETE_CAPSULE","sha256":sha,
                 "capsule_id":"coowm:"+sha}
     return {"state":verify(folder,sha),"sha256":sha,"capsule_id":"coowm:"+sha}
+
+def capture(source,root):
+    return capture_bytes(read_text(source),root,source_kind="EXPLICIT_USER_SUPPLIED_UTF8_FILE")
 
 def main():
     ap=argparse.ArgumentParser(description="Explicit-file private CoOwm narrative capture")
