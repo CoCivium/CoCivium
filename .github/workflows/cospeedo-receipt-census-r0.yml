@@ -8,6 +8,8 @@ on:
     paths:
       - "ai/benchmark-evo.jsonl"
       - "scripts/CoSpeedoReceiptCensusR0.py"
+      - "scripts/check_cospeedo_needle_trails_r1.py"
+      - "examples/cospeedo/needle-trails-r1.html"
       - "docs/Metrics/COSPEEDO_RECEIPT_CENSUS_R0_20261027.json"
       - "docs/Metrics/COSPEEDO_7DAY_SCORECARD_R0_20261026.json"
       - ".github/workflows/cospeedo-receipt-census-r0.yml"
@@ -15,6 +17,8 @@ on:
     paths:
       - "ai/benchmark-evo.jsonl"
       - "scripts/CoSpeedoReceiptCensusR0.py"
+      - "scripts/check_cospeedo_needle_trails_r1.py"
+      - "examples/cospeedo/needle-trails-r1.html"
       - "docs/Metrics/COSPEEDO_RECEIPT_CENSUS_R0_20261027.json"
       - "docs/Metrics/COSPEEDO_7DAY_SCORECARD_R0_20261026.json"
       - ".github/workflows/cospeedo-receipt-census-r0.yml"
@@ -81,3 +85,6 @@ jobs:
 
           print("PASS_COSPEEDO_RECEIPT_CENSUS_R0")
           PY
+
+      - name: Verify NeedleTrails R1 archival plot, accessible fallback and nonclaims
+        run: python3 scripts/check_cospeedo_needle_trails_r1.py
