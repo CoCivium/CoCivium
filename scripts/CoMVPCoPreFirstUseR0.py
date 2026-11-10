@@ -49,27 +49,29 @@ def source_projection(raw):
 
 
 def source_identity(raw):
-    """Content fingerprint of two trusted-in-path source reads; not authorship proof."""
+    """Task-content fingerprint: issue updated_at includes comments and is NOT a body revision."""
     obj = source_projection(raw)
-    return "sha256:" + sha(obj)
+    # Do not create a new WorkID/source revision merely because someone comments.
+    # Preserve body/title/state changes as semantic version changes.
+    return "sha256:" + sha({k: obj[k] for k in ("issue", "url", "state", "title", "body")})
 
 
-def last_edit_age_class(raw, now_utc=None):
-    """Age of issue's LAST EDIT, not GitHub API response freshness."""
+def issue_activity_age_class(raw, now_utc=None):
+    """Age of GitHub issue activity (comments INCLUDED), not body-edit or cache freshness."""
     value = source_projection(raw)["updated_at"]
     try:
         edited = datetime.fromisoformat(value.replace("Z", "+00:00"))
     except ValueError:
-        return "UNPARSEABLE_LAST_EDIT"
+        return "UNPARSEABLE_ISSUE_ACTIVITY_TIME"
     if edited.tzinfo is None:
-        return "UNPARSEABLE_LAST_EDIT"
+        return "UNPARSEABLE_ISSUE_ACTIVITY_TIME"
     observed = now_utc or datetime.now(timezone.utc)
     age_seconds = (observed - edited).total_seconds()
     if age_seconds < -300:
-        return "FUTURE_LAST_EDIT_OR_CLOCK_CONFLICT"
+        return "ISSUE_ACTIVITY_FUTURE_CLOCK_CONFLICT"
     if age_seconds > 86400:
-        return "LAST_EDIT_OLDER_THAN_24H"
-    return "LAST_EDIT_WITHIN_24H"
+        return "ISSUE_ACTIVITY_OLDER_THAN_24H"
+    return "ISSUE_ACTIVITY_WITHIN_24H"
 
 
 def observation(raw, result_revision):
@@ -108,6 +110,8 @@ def build_report(first, second):
     sp = source_identity(second)
     if fp != sp:
         return {"status": "HOLD", "reason": "SOURCE_CHANGED_BETWEEN_READS", "effects_performed": 0}
+    # GitHub issue updated_at may advance on comments without task-body change.
+    activity_churn = source_projection(first)["updated_at"] != source_projection(second)["updated_at"]
     pack = compile_pack(observation(second, sp))
     if pack.get("status") != "PACK_COMPILED_READ_ONLY":
         return {"status": "HOLD", "reason": pack.get("reason", "PACK_INVALID"), "effects_performed": 0}
@@ -119,7 +123,8 @@ def build_report(first, second):
         "source_checked_twice": True,
         "source_content_consistency": "TWO_READS_MATCHED",
         "source_freshness": "UNPROVEN_TWO_READS_ARE_NOT_FRESHNESS",
-        "source_last_edit_age_class": last_edit_age_class(second),
+        "source_issue_activity_age_class": issue_activity_age_class(second),
+        "source_activity_churn_between_reads": ("ISSUE_ACTIVITY_CHANGED_TASK_UNCHANGED" if activity_churn else "NO_ACTIVITY_CHANGE_OBSERVED"),
         "source_updated_at": source_projection(second)["updated_at"],
         "source_origin_independence": "UNPROVEN_SAME_PUBLIC_API",
         "observer_attestation": "UNPROVEN_LOCAL_OR_CI",
@@ -170,8 +175,10 @@ def selftest():
     assert ok["observer_attestation"] == "UNPROVEN_LOCAL_OR_CI" and ok["pack"]["observer"] == "unattested-readonly-cli-executor";checks += 1
     stale = {**example, "updated_at": "2020-01-01T00:00:00Z"}
     old = build_report(stale, stale)
-    assert old["status"] == "SOURCE_TASK_CLI_GENERATED_ONLY" and old["source_last_edit_age_class"] == "LAST_EDIT_OLDER_THAN_24H" and old["source_freshness"].startswith("UNPROVEN");checks += 1
-    assert build_report(example, {**example, "updated_at": "new"})["reason"] == "SOURCE_CHANGED_BETWEEN_READS";checks += 1
+    assert old["status"] == "SOURCE_TASK_CLI_GENERATED_ONLY" and old["source_issue_activity_age_class"] == "ISSUE_ACTIVITY_OLDER_THAN_24H" and old["source_freshness"].startswith("UNPROVEN");checks += 1
+    activity_only = build_report(example, {**example, "updated_at": "new"})
+    assert activity_only["status"] == "SOURCE_TASK_CLI_GENERATED_ONLY" and activity_only["source_revision"] == ok["source_revision"] and activity_only["source_activity_churn_between_reads"] == "ISSUE_ACTIVITY_CHANGED_TASK_UNCHANGED";checks += 1
+    assert build_report(example, {**example, "body": "CoMVP+ materially changed task body"})["reason"] == "SOURCE_CHANGED_BETWEEN_READS";checks += 1
     for change in ({"number": 404}, {"html_url": "https://example.test"}, {"state": "closed"},
                    {"body": ""}, {"updated_at": ""}):
         try:
