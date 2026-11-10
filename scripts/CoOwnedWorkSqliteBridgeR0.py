@@ -124,7 +124,7 @@ def adapt(record, gate, source_path, js_path):
 
 def run(record_path, gate_path, source_path, js_path, output_dir):
     record = json.loads(checked_file(record_path, "browser-record.json", 8192))
-    gate = json.loads(checked_file(gate_path, "synthetic-gate.json", 8192))
+    gate = json.loads(checked_file(gate_path, "ownedwork_synthetic_gate_r0.json", 8192))
     packet = adapt(record, gate, source_path, js_path)
     out = Path(output_dir)
     require(not out.exists(), "HELD_OUTPUT_EXISTS_NO_CLOBBER")
