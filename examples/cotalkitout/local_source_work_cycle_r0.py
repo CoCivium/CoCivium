@@ -42,19 +42,27 @@ def run(root: str, db_path: str, source: str = "CoPre.md",
     # CONFLICT, not silent supersession of the existing WorkID.
     queue = DueWorkQueue(db_path)
     try:
-        decision = queue.enqueue(work_id, "sha256:" + digest, digest, moment)
-        if decision == "CONFLICT":
-            return {"state": "HOLD_SOURCE_REVISION_CONFLICT",
-                    "work_id": work_id, "source_sha256": digest,
-                    "external_receiver_ack": False}
-        # This one-shot command owns only its exact WorkID. Refuse a shared
-        # queue instead of accidentally leasing another front's due work.
+        # This one-shot command owns only its exact WorkID. Do not write
+        # into a shared queue while another front could be selected.
         foreign = queue.db.execute(
             "SELECT 1 FROM work WHERE work_id!=? LIMIT 1", (work_id,)
         ).fetchone()
         if foreign:
             return {"state": "HOLD_SHARED_QUEUE_REQUIRES_ELECTED_DISPATCHER",
                     "work_id": work_id, "external_receiver_ack": False}
+        # Due time belongs to the durable WorkID, not the invocation clock.
+        # Retain it across restart/replay. Never silently overwrite changed
+        # source bytes or bring a future-due WorkID forward.
+        existing = queue.db.execute(
+            "SELECT source_revision,payload_sha256,due_at FROM work WHERE work_id=?",
+            (work_id,)
+        ).fetchone()
+        due_at = existing[2] if existing else moment
+        decision = queue.enqueue(work_id, "sha256:" + digest, digest, due_at)
+        if decision == "CONFLICT":
+            return {"state": "HOLD_SOURCE_REVISION_CONFLICT",
+                    "work_id": work_id, "source_sha256": digest,
+                    "external_receiver_ack": False}
         claims = queue.claim_due(now=moment, owner="local-source-verifier",
                                  lease_seconds=30, limit=1)
         if not claims:
