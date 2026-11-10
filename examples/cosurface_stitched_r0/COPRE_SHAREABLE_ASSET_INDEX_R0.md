@@ -67,3 +67,7 @@ Consumers should verify exact source blobs or content digests and record their *
 ## CoBookCiv2+ human narrative seed
 
 - [Wings / Beacon / Tuner R0](COBOOK_WINGS_BEACON_TUNER_R0.md) | Public-safe three-screen conceptual strand: child-readable wings regrown while alive, emergent opt-in sonic beacon, and retro-futurist ethical tuner. Creative design seed, not illustrated book or operating runtime.
+
+## CoNuExistentialism and CoG_dSide candidate vocabulary
+
+- [40-entry CoTerms working registry](co_existential_coterms_candidates_r0.json) | [meaning and promotion guide](CO_NU_EXISTENTIALISM_TERMS_R0.md). Four groups with meanings, anti-meanings and epistemic classes. Candidate-only: does not supersede the existing 31-term curated CoLex public pilot or establish G_dSide claims.
