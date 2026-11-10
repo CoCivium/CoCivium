@@ -70,8 +70,15 @@ def stable_key(obj):
     """Identifier for an observation, not for an approved external effect."""
     _validated(obj)
     k=obj["kind"]
-    if k in {"SOURCE_CHANGED","RECEIVER_READBACK"}:
+    if k=="SOURCE_CHANGED":
+        # Repeated notifications of identical bytes are observations, not new
+        # independent work. Preserve event-specific identity for real receivers.
         fingerprint=[k,obj["source_ref"],obj["source_sha256"]]
+    elif k=="RECEIVER_READBACK":
+        # Different receiver observations of the same object must remain
+        # separately challengeable; event_id alone is NOT proof of distinct
+        # hosts or actual reader ACK.
+        fingerprint=[k,obj["source_ref"],obj["source_sha256"],obj["event_id"]]
     elif k=="SCHEDULED_DUE":
         fingerprint=[k,obj["source_ref"],obj["event_id"]]
     else:
