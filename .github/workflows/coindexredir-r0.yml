@@ -7,6 +7,7 @@ on:
       - 'examples/cospeedo/needle-trails-r1.html'
       - 'scripts/check_cospeedo_needle_trails_r1.py'
       - 'scripts/check_cospeedo_browser_r1.py'
+      - 'scripts/check_cospeedo_signedout_reader_r0.py'
       - 'scripts/check_coindexredir_r0.py'
       - '.github/workflows/coindexredir-r0.yml'
   workflow_dispatch:
@@ -34,6 +35,16 @@ jobs:
           fi
       - name: Test mobile/desktop rendering and accessible keyboard interaction
         run: python3 scripts/check_cospeedo_browser_r1.py
+      - name: Test signed-out GitHub reader and CoPre entry in real Chromium
+        run: python3 scripts/check_cospeedo_signedout_reader_r0.py
+      - name: Preserve signed-out browser evidence (not independent receiver)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cospeedo-signedout-github-r0
+          path: artifacts/cospeedo-signedout-r0/
+          if-no-files-found: ignore
+          retention-days: 7
       - name: Preserve read-only browser evidence (not deployment)
         if: always()
         uses: actions/upload-artifact@v4
