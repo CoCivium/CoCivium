@@ -75,3 +75,7 @@ Consumers should verify exact source blobs or content digests and record their *
 ## Reciprocal inversion and generational stewardship
 
 - [CoReciprocalBenchmark+ / CoGenerationalGift+ cross-branch bridge](CO_RECIPROCAL_GENERATIONAL_BRAID_R0.md). Reuses existing, commit-pinned CoNuExistentialism candidate nodes for reciprocal challenge, backseat stewardship, and the distinct agency of younger people. Child data and device enrollment remain out of scope; reference is not external receiver pickup.
+
+## Cold successor and opportunistic de-dependency
+
+- [CoPre cold-successor packet R0](copre_cold_successor_packet_r0.json) | [fail-closed regression checks](test_copre_cold_successor_packet_r0.py). A commit-pinned starting pointer and four non-overlapping work lanes, with honest nulls for all three target-mirror SHA-256 values, external receiver ACK, >24h survival and automatic orchestration. Public-source candidate, NOT proof of a receiver pickup or always-on agent.
