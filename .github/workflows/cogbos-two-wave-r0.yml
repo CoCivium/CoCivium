@@ -1,0 +1,27 @@
+name: CoGBOS two-wave synthetic proof
+on:
+  pull_request:
+    paths:
+      - 'scripts/cogbos_two_wave_r0.py'
+      - 'scripts/test_cogbos_two_wave_r0.py'
+      - '.github/workflows/cogbos-two-wave-r0.yml'
+  workflow_dispatch:
+jobs:
+  proof:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run bounded reproducible tests
+        run: python3 -m unittest discover -s scripts -p 'test_cogbos_two_wave_r0.py' -v
+      - name: Write synthetic evidence report
+        run: python3 scripts/cogbos_two_wave_r0.py > cogbos-two-wave-report.json
+      - name: Upload test artifact (not receiver ACK)
+        uses: actions/upload-artifact@v4
+        with:
+          name: cogbos-two-wave-synthetic-r0
+          path: cogbos-two-wave-report.json
