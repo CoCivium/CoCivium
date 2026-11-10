@@ -151,6 +151,8 @@ def main():
                 page.keyboard.press("Enter")
                 assert source_lens.get_attribute("open") is not None, (width, "lens keyboard open failed")
                 assert source_lens.locator("[data-lens-id]").count() == 4
+                source_open_shot = REPORT / f"beetle-human-lenses-{width}x{height}.png"
+                page.screenshot(path=str(source_open_shot), full_page=True, animations="disabled")
                 assert source_lens.get_by_text(
                     "A map can show the paths someone recorded", exact=False
                 ).count() == 1
@@ -168,6 +170,8 @@ def main():
                     "unexpected_network_requests": 0,
                     "screenshot": screenshot.name,
                     "screenshot_sha256": hashlib.sha256(screenshot.read_bytes()).hexdigest(),
+                    "optional_lenses_screenshot": source_open_shot.name,
+                    "optional_lenses_screenshot_sha256": hashlib.sha256(source_open_shot.read_bytes()).hexdigest(),
                 })
                 context.close()
         finally:
