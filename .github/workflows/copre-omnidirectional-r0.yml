@@ -70,8 +70,8 @@ jobs:
               exit 0
             fi
           done
-          if [ -f /tmp/copre-canary-prior/observation.json ]; then
-            cp /tmp/copre-canary-prior/observation.json /tmp/copre-prior.json
+          if [ -f /tmp/copre-canary-prior/copre-seed24h-observation.json ]; then
+            cp /tmp/copre-canary-prior/copre-seed24h-observation.json /tmp/copre-prior.json
           fi
       - name: Probe pinned CoPre Seed and qualify over 24h only with a real distinct prior run
         run: python -B scripts/copre_seed_24h_canary_r0.py --output /tmp/copre-seed24h-observation.json --prior /tmp/copre-prior.json
