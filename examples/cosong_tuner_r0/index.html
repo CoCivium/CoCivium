@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CoSong+ | Golden Braid Tuner R0</title>
+<style>
+:root{color-scheme:dark;font-family:system-ui,sans-serif;background:#0c1025;color:#f4f4fd}
+*{box-sizing:border-box}body{margin:0}main{max-width:880px;margin:auto;padding:2rem 1rem}
+.hero{background:radial-gradient(circle at 50% 30%,#4c3276,#151b3c 60%,#0d132b);border:1px solid #615a9e;border-radius:24px;padding:clamp(1rem,3vw,2.5rem)}
+h1{font-size:clamp(2rem,5vw,3.6rem);line-height:1.07;margin:.3rem 0}.eyebrow{letter-spacing:.15em;color:#8be4da;font-weight:700}
+p{max-width:65ch}.sub{color:#c9c8e7}
+svg{width:100%;height:auto;display:block}button{border:1px solid #a5e8e0;background:#1a3550;color:white;padding:.7rem 1rem;border-radius:10px;font:inherit;cursor:pointer;margin:.25rem}
+button:focus-visible,input:focus-visible{outline:3px solid #fad980;outline-offset:3px}
+.panel{padding:1.1rem;border:1px solid #4f557d;border-radius:14px;margin-top:1rem;background:#121b38}
+label{display:block;font-weight:600;margin:1rem 0 .35rem}input{width:100%}
+pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#0b132b;padding:.8rem;border-radius:8px}
+.quiet{font-size:.84rem;color:#bbc4d7}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+<main><section class="hero">
+<p class="eyebrow">CoCivium / CoSong+ / CoI/O+</p>
+<h1>A pattern can take many forms.</h1>
+<p class="sub">An original educational experiment: three events, silence, and a changed final event. Text, dots and optionally sound all share one explicit timing model. Not an extraterrestrial transmitter or detector.</p>
+<svg viewBox="0 0 680 185" role="img" aria-label="Three turquoise dots on a baseline followed by a pause and three violet dots, the final violet dot raised to show a difference">
+<path d="M25 118H655" stroke="#61778d" stroke-width="2" stroke-dasharray="6 8"/>
+<g fill="#79e7db"><circle cx="80" cy="118" r="19"/><circle cx="160" cy="118" r="19"/><circle cx="240" cy="118" r="19"/></g>
+<g fill="#dd8af5"><circle cx="420" cy="118" r="19"/><circle cx="500" cy="118" r="19"/><circle cx="580" cy="75" r="19"/></g>
+<path d="M330 65V145" stroke="#c7d3e0" stroke-opacity=".6" stroke-dasharray="4 10"/>
+<text x="160" y="164" fill="white" font-size="14" text-anchor="middle">same / same / same</text>
+<text x="500" y="164" fill="white" font-size="14" text-anchor="middle">same / same / changed</text>
+</svg>
+<p><strong>Pattern:</strong> ● ● ● · pause · ● ● ◕ (last event rises)</p>
+</section>
+<section class="panel" aria-labelledby="controls"><h2 id="controls">Explore the tuner</h2>
+<label for="rate">Event interval: <output id="rateOut">400</output> milliseconds</label>
+<input id="rate" type="range" min="200" max="1200" step="100" value="400">
+<div><button id="play" type="button">Play original motif (opt in)</button><button id="off" type="button">Audio off</button></div>
+<p id="status" role="status">Silent. No microphone, camera, radio transmitter or network request.</p>
+</section>
+<section class="panel"><h2>Readable source pattern</h2><pre id="pattern">events: [base,base,base,pause,base,base,rise]
+timebase: 400 ms
+source: local synthetic demonstration
+detection: none; no claims of ET contact</pre>
+<p>Listening is more than reacting to novelty. In science, a candidate needs baselines, repeatability, controls, independent scrutiny and careful treatment of interference. Here there is only one known synthetic motif.</p>
+</section>
+<section class="panel"><h2>CoMap links</h2><p>CoSong+ relates to CoBraid+ (temporal structure), CoTime+ (timing), CoMedia+ (different projections), CoAudioFkOff+ (consent), CoBook+ (reader path) and G_dSide (labeled philosophical interpretation).</p><p class="quiet">Offline candidate. No automatic publishing, live sensor input, ET claims, or independent receiver readproof.</p></section>
+</main>
+<script>
+(()=>{'use strict';
+const play=document.getElementById('play'),off=document.getElementById('off'),rate=document.getElementById('rate'),out=document.getElementById('rateOut'),status=document.getElementById('status'),pattern=document.getElementById('pattern');
+let ctx=null,playing=false,token=0;
+const stop=()=>{token++;playing=false;if(ctx){ctx.close().catch(()=>{});ctx=null}status.textContent='Audio off. Silent.'};
+off.addEventListener('click',stop);
+rate.addEventListener('input',()=>{out.textContent=rate.value;pattern.textContent='events: [base,base,base,pause,base,base,rise]\ntimebase: '+rate.value+' ms\nsource: local synthetic demonstration\ndetection: none; no claims of ET contact'});
+play.addEventListener('click',async()=>{
+if(playing)return;const C=window.AudioContext||window.webkitAudioContext;if(!C){status.textContent='Audio unavailable. Visual and text pattern still work.';return}
+const run=++token;playing=true;
+try{ctx=new C();await ctx.resume();const interval=Number(rate.value)/1000;let at=ctx.currentTime+.12;
+const notes=[0,0,0,null,0,0,1];
+for(const note of notes){if(note!==null){const osc=ctx.createOscillator(),gain=ctx.createGain();osc.type='sine';osc.frequency.value=note?392:349.23;gain.gain.setValueAtTime(0,at);gain.gain.linearRampToValueAtTime(.025,at+.03);gain.gain.linearRampToValueAtTime(0,at+Math.min(.24,interval*.75));osc.connect(gain);gain.connect(ctx.destination);osc.start(at);osc.stop(at+Math.min(.26,interval*.8))}at+=interval}
+status.textContent='Playing: original synthetic pattern. Audio off stops immediately.';
+setTimeout(()=>{if(run===token){playing=false;status.textContent='Playback finished. Silent.';ctx?.close().catch(()=>{});ctx=null}},Math.max(0,(at-ctx.currentTime+.4)*1000))
+}catch(e){stop();status.textContent='Audio unavailable. Silent.'}
+});
+})();
+</script></html>
