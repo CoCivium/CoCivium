@@ -32,7 +32,7 @@ def main():
             opts["executable_path"] = exe
         browser = p.chromium.launch(**opts)
         try:
-            for width, height in ((390, 900), (1440, 900)):
+            for width, height in ((360, 780), (390, 900), (1440, 900)):
                 context = browser.new_context(
                     viewport={"width": width, "height": height},
                     device_scale_factor=1,
@@ -57,6 +57,12 @@ def main():
                         width, "GitHub Markdown article missing or ambiguous"
                     )
                     content = article.inner_text(timeout=15000)
+                    assert article.locator("table").count() == 0, (
+                        width, "cramped GitHub table reintroduced"
+                    )
+                    assert page.get_by_role(
+                        "heading", name="The one-minute answer", exact=True
+                    ).count() == 1, (width, "no plain-language introduction")
                     for required in (
                         "not a live dashboard",
                         "24-hour survival",
