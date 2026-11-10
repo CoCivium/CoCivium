@@ -1,0 +1,21 @@
+name: CoPatternContagion source-only tests R0
+on:
+  pull_request:
+    paths:
+      - 'docs/CoTheoryAll/research/coemergence-dhp-r0/pattern_contagion/**'
+      - '.github/workflows/copattern-contagion-source-r0.yml'
+  workflow_dispatch:
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run bounded no-network source tests
+        run: |
+          cd docs/CoTheoryAll/research/coemergence-dhp-r0/pattern_contagion
+          python3 -m unittest -v test_pattern_contagion_r0.py
+          python3 pattern_contagion_r0.py fixture.json > /tmp/copattern-contagion-results.json
+          python3 -m json.tool /tmp/copattern-contagion-results.json > /dev/null
+          python3 -m json.tool term_candidates.json > /dev/null
