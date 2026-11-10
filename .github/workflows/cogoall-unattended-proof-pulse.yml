@@ -32,7 +32,9 @@ permissions:
   contents: read
   actions: read
 concurrency:
-  group: cogoall-proof-pulse
+  # PR qualification must not serialize or starve the existing mainline pulse.
+  # Keep main push + hourly schedules on one lane; PR refs are distinct.
+  group: cogoall-proof-pulse-${{ github.ref }}
   cancel-in-progress: false
 jobs:
   proof:
