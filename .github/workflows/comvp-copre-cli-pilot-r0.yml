@@ -120,6 +120,73 @@ jobs:
           print("PASS_COMVP_COPRE_REAL_PUBLIC_ISSUE_SOURCE_GENERATION")
           print(json.dumps({k:x[k] for k in ("source_revision","pack_sha256","pointer_bytes","prompt_bytes","receiver_ack","task_mvp")},sort_keys=True))
           PY
+      - name: Create bounded human-review packet from the actual public issue
+        run: |
+          python3 - <<'PY'
+          import json, re
+          from pathlib import Path
+          source = Path('/tmp/comvp-copre-issue403.json')
+          raw = source.read_bytes()
+          if len(raw) > 128 * 1024:
+              raise SystemExit('HELD_OVERSIZED_FIRST_USE_PACKET')
+          p = json.loads(raw)
+          if p.get('schema') != 'CoCivium.CoMVPCoPreFirstUse.R0' or p.get('status') != 'SOURCE_TASK_CLI_GENERATED_ONLY':
+              raise SystemExit('HELD_WRONG_CLI_PACKET')
+          if p.get('pack', {}).get('authority_ceiling') != 'READ_ONLY' or p['pack'].get('effects') != 0 or p.get('effects_performed') != 0:
+              raise SystemExit('HELD_ACTION_AUTHORITY_NOT_ZERO')
+          if p.get('source_freshness') != 'UNPROVEN_TWO_READS_ARE_NOT_FRESHNESS' or p.get('source_origin_independence') != 'UNPROVEN_SAME_PUBLIC_API':
+              raise SystemExit('HELD_FALSE_FRESHNESS_ORIGIN_PROMOTION')
+          if p.get('receiver_ack') != 'UNPROVEN' or p.get('task_mvp') != 'NOT_QUALIFIED' or p.get('ux_acceptance') != 'UX_ACCEPTANCE_UNPROVEN':
+              raise SystemExit('HELD_FALSE_USER_ACCEPTANCE')
+          if p['pack'].get('work_id') != 'CoMVP.CoPrePilot.20261109' or p['pack'].get('source_ref') != 'https://github.com/CoCivium/CoCivium/issues/403':
+              raise SystemExit('HELD_WRONG_REAL_TASK')
+          if not re.fullmatch(r'sha256:[0-9a-f]{64}', p.get('source_revision', '')):
+              raise SystemExit('HELD_SOURCE_DIGEST_NOT_PINNED')
+          if not re.fullmatch(r'[0-9a-f]{64}', p.get('pack_sha256', '')) or p['pack_sha256'] != p['pack'].get('pack_sha256'):
+              raise SystemExit('HELD_PACK_DIGEST_NOT_RECONCILED')
+          if p.get('pointer', {}).get('source_revision') != p['source_revision'] or p.get('pointer', {}).get('work_id') != p['pack']['work_id']:
+              raise SystemExit('HELD_POINTER_NOT_SAME_TASK')
+          if p['pack_sha256'] not in p.get('continuation_input', '') or 'Authority: READ_ONLY' not in p['continuation_input'] or 'Stop on:' not in p['continuation_input']:
+              raise SystemExit('HELD_MISSING_FULL_PACK_SAFETY')
+          output = Path('out/comvp-copre/reviewable-first-use')
+          output.mkdir(parents=True, exist_ok=True)
+          (output / 'issue403-source-bound-candidate.json').write_bytes(raw)
+          card = [
+              '# CoPre CLI | Real public issue #403, review packet',
+              '',
+              '**State: SOURCE VERIFIED CANDIDATE. Not a task MVP, accepted receiver, release, or live CoAll runtime.**',
+              '',
+              '## CoHereNow',
+              'The read-only CLI compiled a continuation candidate for [public issue #403](https://github.com/CoCivium/CoCivium/issues/403). It did not execute the task.',
+              '',
+              '## Recoverable task identity',
+              '- WorkID: `CoMVP.CoPrePilot.20261109`',
+              '- Source revision: `' + p['source_revision'] + '`',
+              '- Pack digest: `' + p['pack_sha256'] + '`',
+              '- Source consistency: `TWO_READS_MATCHED`; independent freshness: `UNPROVEN`',
+              '- Authority: `READ_ONLY`; effects performed: `0`',
+              '- Receiver ACK: `UNPROVEN`; task MVP: `NOT_QUALIFIED`',
+              '',
+              '## Two alternative consumer entries',
+              '- Short pointer: ' + str(p['pointer_bytes']) + ' bytes. Requires the consumer to retrieve and interpret the cited source.',
+              '- Full continuation: ' + str(p['prompt_bytes']) + ' bytes. Includes the read-only authorization ceiling, verification and STOP clauses.',
+              '- Machine-readable exact candidate and complete continuation input: `issue403-source-bound-candidate.json` in this artifact.',
+              '',
+              '## One meaningful independent first-use test still missing',
+              'An authorized receiver must cold-read either entry, identify the exact task and STOP/currentness rules, complete one permitted useful action, and produce its own result with source digest and no Rick relay. Compare both entries against actual recipient comprehension, errors and outcome, not byte count alone.',
+              '',
+              '**Nonclaims:** `CI_GENERATION_NE_RECEIVER_PICKUP`, `TWO_READS_NE_FRESHNESS`, `POINTER_SHORTER_NE_USABLE`, `ARTIFACT_VISIBLE_NE_PRODUCT_RELEASE`.',
+          ]
+          (output / 'README.md').write_text('\n'.join(card) + '\n', encoding='utf-8')
+          print('PASS_REAL_TASK_REVIEW_PACKET_WITH_UNPROVEN_RECEIVER')
+          PY
+      - name: Upload full bounded first-use packet and review card
+        uses: actions/upload-artifact@v4
+        with:
+          name: comvp-copre-issue403-review-${{ github.run_id }}-a${{ github.run_attempt }}
+          path: out/comvp-copre/reviewable-first-use/
+          retention-days: 30
+          if-no-files-found: error
       - name: Validate separate human-facing BEGIN/END render commits
         run: |
           python3 - <<'PY'
