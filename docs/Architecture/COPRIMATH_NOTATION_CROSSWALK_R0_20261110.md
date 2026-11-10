@@ -84,3 +84,38 @@ A powerful next progression would be:
 **No new named ontological universe is required.** Keep optionalities lazily addressable; prefer fewer verified transformations to millions of untested symbols.
 
 `NOTATION_NE_SEMANTICS` · `TYPECHECK_NE_TRUTH` · `DIMENSION_MATCH_NE_QUANTITY_KIND_MATCH` · `ZERO_NE_UNKNOWN` · `SOURCE_HASH_NE_CALIBRATION` · `MATHEMATICAL_ELEGANCE_NE_GOVERNANCE_LEGITIMACY` · `CI_PASS_NE_RECEIVER_ACCEPTANCE`.
+
+
+## 2026-11-10 | CoDiscover+ competitive representation witness R0
+
+**Distinct addition to the same candidate PR (not another ontology or watcher):** [CoDiscoverProjectionProbeR0.py](../../scripts/CoDiscoverProjectionProbeR0.py) + [27 source-level negative tests](../../tests/test_codiscover_projection_probe_r0.py). The **existing CoPriMath CI** checks this donor on Python 3.11 and 3.13.
+
+CoDiscovery+ for languages, notations and substrates should keep **multiple candidate representations available**, with receiver-specific qualification and explicit losses. An alternative may become the default for a particular task without erasing its competitors, source lineage or user exit path. Discovery should resume upon an **actual new source/version/capability/receiver requirement or failed proof**, not burn resources polling everything continuously.
+
+### Counterexample, rather than abstract naming
+
+For one synthetically constructed **typed ratio claim** with an exact zero rational, a source pointer and observation time, the existing bridge emits:
+
+- **Canonical typed JSON:** retains source pointer, observed time, kind, epistemic state and exact base value. Digest applies to the source-claim canonical structure, not physical truth.
+- **ASCII explanation:** includes number, kind and epistemic state but omits source pointer and timestamp. Two distinct provenance claims can display identically.
+- **Presentation MathML:** includes displayed number and unit but omits source, timestamp, kind and the difference between observed-zero and claimed-exact-zero for this example. Two meanings can share the same rendered formula.
+
+The new helper constructs a **pair of typed source claims differing in exactly one facet**, verifies that their canonical digests differ, then asks whether each actual output string also differs. It records a **collision witness** for each format, not a universal proof that the format could never be extended to preserve the distinction. It evaluates one receiver's required facets (up to five) and refuses to treat a collapsed field as preserved. Its only resource-cost observation is UTF-8 byte length for a synthetic example, not energy, latency, accessibility or actual consumer preference.
+
+**Three sample receiver profiles:**
+
+| Receiver's stated need | Qualifying R0 projection candidates in synthetic check | Held and why |
+| --- | --- | --- |
+| Machine source audit: source, time, kind, state, value | typed JSON | ASCII and MathML collapse provenance/time; MathML collapses more |
+| Fast explanation: kind, state, value | typed JSON and ASCII | Bare Presentation MathML collapses kind and status in tested case |
+| Display only: numerical value | all three | No semantic endorsement, usability or accessibility measured |
+
+This is a minimal **typed discovery selector**, *not* a semantic roundtrip, universal format converter, language performance benchmark, public crawler, FOSS-provider registry, an independently observed AI receiver or a non-GitHub artifact custodian. The HTML/MathML projection must still be made accessible to real users, including screen-reader consumers; a string-level test cannot substitute for that.
+
+### Evolving the same work without building a new control plane
+
+`DISCOVER_EVENT -> SOURCE_IDENTITY -> DIFFERENTIATING_WITNESS -> RECEIVER_REQUIREMENT -> NONDOMINATED_ALTERNATIVES -> REPLAY -> REAL_USE -> REVISE_OR_HOLD`.
+
+Future candidates: natural languages, formal languages, graphical notation, audio/speech, sign/tactile, glyphs, 3D/VR, source code, CPU/edge/network, and yet-unknown carriers. Qualify each by declared rights, actual parser/renderer capability, accessibility, energy/cost observations, safety, semantic roundtrip and failures. Cross-domain comparisons should preserve **incomparability** rather than force one score; no model/client is declared sentient, authoritative or an actual customer from notation discovery.
+
+`AVAILABLE_NE_EXECUTING` · `FORMAT_COMPETITION_NE_FORCED_WINNER` · `COLLISION_WITNESS_NE_UNIVERSAL_INCAPABILITY` · `DISTINCT_OUTPUT_NE_SEMANTIC_ROUNDTRIP` · `BYTES_NE_ENERGY` · `SYNTHETIC_QUALIFICATION_NE_CLIENT_SUCCESS` · `DISCOVERY_NE_EFFECT_AUTHORITY`.
