@@ -30,3 +30,7 @@ One durable chapter/paragraph identity should connect all editions, experiments 
 The original AGI R0, this public preview, and a publication manifest are stored in the CoCivium PublicationPackets Library, with a recovery archive saved there as well. That supplies a second custody location, **not yet proven independent GitHub-loss restoration or continuous synchronization**. Licence permissions and title/brand review remain open.
 
 **Next proof:** Derive one new, clearly versioned public reader revision from this edition, preserve the old byte-exact snapshot, and demonstrate one independent reader-side and independent custody pickup. No second authoring canon.
+
+## New CoEvSeed narrative triptych (draft)
+
+[The Whale Question / The First Feather / The Sticky Channel](COEVSEED_WHALE_FEATHER_HEARTBEAT_TRIPTYCH_R0_20261110.json) preserves three linked scene/media seeds with child-privacy, literary-interpretation and opt-in-audio boundaries. It is not a published book chapter or implemented sound channel.
