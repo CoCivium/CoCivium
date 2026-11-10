@@ -111,6 +111,32 @@ def observe(directory: str | Path, env: Mapping) -> dict:
              "HOLD_INVALID_LOG_HASH")
         raw = bounded_file(root / (name + ".log"), MAX_EVIDENCE)
         hold(sha(raw) == digest, "HOLD_LOG_DIGEST_MISMATCH")
+    # The producer's source-check witness must describe the same public CoPre
+    # bytes checked out by this receiver job. A matching log SHA alone only
+    # proves that somebody uploaded those bytes, not the claimed source check.
+    witness_raw = bounded_file(root / "source-check.log", MAX_EVIDENCE)
+    try:
+        witness = json.loads(witness_raw)
+    except (UnicodeDecodeError, ValueError) as exc:
+        raise ValueError("HOLD_SOURCE_CHECK_WITNESS_INVALID") from exc
+    hold(isinstance(witness, dict) and
+         set(witness) == {"state", "source_sha256", "work_id",
+                          "local_result_sha256", "independent_receiver_ack",
+                          "external_effect_verified"} and
+         witness["state"] == "CI_LOCAL_SOURCE_WORKID_REPLAY_VERIFIED" and
+         witness["work_id"] == "CoPre:source-integrity:R0" and
+         witness["independent_receiver_ack"] is False and
+         witness["external_effect_verified"] is False and
+         isinstance(witness["source_sha256"], str) and
+         re.fullmatch(r"[0-9a-f]{64}", witness["source_sha256"]) and
+         isinstance(witness["local_result_sha256"], str) and
+         re.fullmatch(r"[0-9a-f]{64}", witness["local_result_sha256"]),
+         "HOLD_SOURCE_CHECK_WITNESS_FIELDS")
+    checked_out = Path("CoPre.md")
+    hold(checked_out.is_file() and not checked_out.is_symlink(),
+         "HOLD_RECEIVER_SOURCE_UNAVAILABLE")
+    hold(sha(bounded_file(checked_out, MAX_EVIDENCE)) ==
+         witness["source_sha256"], "HOLD_RECEIVER_SOURCE_DIGEST_MISMATCH")
     cadence_digest = source["schedule_audit_sha256"]
     hold(isinstance(cadence_digest, str) and bool(
         re.fullmatch(r"[a-f0-9]{64}", cadence_digest)
@@ -147,7 +173,10 @@ def observe(directory: str | Path, env: Mapping) -> dict:
         "rebound_audit_sha256": rebound_digest,
         "verified_log_count": len(EXPECTED_LOGS),
         "provider_failure_domain": "SAME_GITHUB_ACTIONS",
-        "due_work_selection": "NOT_TESTED",
+        "due_work_selection": "CI_LOCAL_SOURCE_WORKID_REPLAY_VERIFIED",
+        "source_work_id": witness["work_id"],
+        "source_sha256": witness["source_sha256"],
+        "source_local_result_sha256": witness["local_result_sha256"],
         "real_worker_effect": "NOT_TESTED",
         "external_receiver_ack": False,
         "x2_receiver": "NOT_TESTED",
