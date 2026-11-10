@@ -4,6 +4,8 @@ on:
     paths:
       - 'scripts/cogbos_two_wave_r0.py'
       - 'scripts/test_cogbos_two_wave_r0.py'
+      - 'scripts/conarrative_latch_r0.py'
+      - 'scripts/test_conarrative_latch_r0.py'
       - '.github/workflows/cogbos-two-wave-r0.yml'
   workflow_dispatch:
 jobs:
@@ -18,6 +20,8 @@ jobs:
           python-version: '3.11'
       - name: Run bounded reproducible tests
         run: python3 -m unittest discover -s scripts -p 'test_cogbos_two_wave_r0.py' -v
+      - name: Test explicit narrative latch and tamper controls
+        run: python3 -m unittest discover -s scripts -p 'test_conarrative_latch_r0.py' -v
       - name: Write synthetic evidence report
         run: python3 scripts/cogbos_two_wave_r0.py > cogbos-two-wave-report.json
       - name: Upload test artifact (not receiver ACK)
