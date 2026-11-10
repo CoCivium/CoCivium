@@ -1,11 +1,17 @@
 name: CoPre public graph omni-navigation candidate
 on:
+  schedule:
+    # Activates only after this workflow is merged to the default branch.
+    - cron: '17 */6 * * *'
+  workflow_dispatch:
   pull_request:
     paths:
       - 'scripts/copre_path_query_r0.py'
       - 'scripts/test_copre_path_query_r0.py'
       - 'scripts/copre_public_readback_r0.py'
       - 'scripts/test_copre_public_readback_r0.py'
+      - 'scripts/copre_seed_24h_canary_r0.py'
+      - 'scripts/test_copre_seed_24h_canary_r0.py'
       - 'ai/copre-seed-path-fabric-r0-20261109.json'
       - '.github/workflows/copre-omnidirectional-r0.yml'
   push:
@@ -16,6 +22,10 @@ on:
       - '.github/workflows/copre-omnidirectional-r0.yml'
 permissions:
   contents: read
+  actions: read
+concurrency:
+  group: copre-public-readonly-survival
+  cancel-in-progress: false
 jobs:
   public-graph-navigation:
     runs-on: ubuntu-latest
@@ -27,6 +37,8 @@ jobs:
           python-version: '3.12'
       - name: Read-only bidirectional source graph regression
         run: python -B scripts/test_copre_path_query_r0.py -v
+      - name: Cross-run survival evidence negative controls
+        run: python -B scripts/test_copre_seed_24h_canary_r0.py -v
       - name: Mirror readback negative controls
         run: python -B scripts/test_copre_public_readback_r0.py -v
       - name: Run pinned public-source and proposed mirror readback (evidence only)
@@ -38,6 +50,43 @@ jobs:
           name: copre-readonly-mirror-evidence
           path: /tmp/copre-mirror-readback.json
           retention-days: 30
+      - name: Recover prior public canary observation where at least 24h elapsed
+        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          mkdir -p /tmp/copre-canary-prior
+          now=$(date -u +%s)
+          gh api "repos/${{ github.repository }}/actions/workflows/copre-omnidirectional-r0.yml/runs?status=success&per_page=60" --jq '.workflow_runs[] | [.id,.created_at] | @tsv' | while IFS=
+        run: |
+          python -B scripts/copre_path_query_r0.py copre-entry copre-package --direction both > /tmp/path.json
+          python -c 'import json; a=json.load(open("/tmp/path.json")); assert a["recipient_ack"] is False and a["authority_granted"] is False and a["integration"] is False'
+\t' read -r run created; do
+            [ "$run" != "${{ github.run_id }}" ] || continue
+            then=$(date -u -d "$created" +%s)
+            [ $((now - then)) -ge 86400 ] || continue
+            if gh run download "$run" --repo "${{ github.repository }}" --name copre-seed24h-observation --dir /tmp/copre-canary-prior 2>/dev/null; then
+              exit 0
+            fi
+          done
+          if [ -f /tmp/copre-canary-prior/observation.json ]; then
+            cp /tmp/copre-canary-prior/observation.json /tmp/copre-prior.json
+          fi
+      - name: Probe pinned CoPre Seed and qualify over 24h only with a real distinct prior run
+        run: python -B scripts/copre_seed_24h_canary_r0.py --output /tmp/copre-seed24h-observation.json --prior /tmp/copre-prior.json
+      - name: Print bounded >24h verdict
+        if: always()
+        run: |
+          if [ -f /tmp/copre-seed24h-observation.json ]; then cat /tmp/copre-seed24h-observation.json; fi
+      - name: Preserve independent-run observation for future comparisons
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: copre-seed24h-observation
+          path: /tmp/copre-seed24h-observation.json
+          retention-days: 30
+          if-no-files-found: warn
       - name: Machine query must never claim independent receiver ACK
         run: |
           python -B scripts/copre_path_query_r0.py copre-entry copre-package --direction both > /tmp/path.json
