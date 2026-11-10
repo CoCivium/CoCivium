@@ -80,8 +80,32 @@ def audit(entry, source):
             holds.append("HELD_AUTORUN_FOCUS_POLICY")
         if runtime in {"pwsh","powershell"}:
             lower=[v.lower() for v in argv]
+            file_positions=[i for i,v in enumerate(lower) if v=="-file"]
+            # PowerShell host switches after -File are script arguments, not
+            # proof that the terminal was actually launched noninteractively.
+            pre=lower[:file_positions[0]] if len(file_positions)==1 else []
+            post=lower[file_positions[0]+2:] if len(file_positions)==1 else []
             if not {"-noprofile","-noninteractive","-windowstyle","hidden"}.issubset(lower):
                 holds.append("HELD_POWERSHELL_BACKGROUND_CONSOLE_RISK")
+            if (len(file_positions)!=1 or not pre
+                    or pre.count("-noprofile")!=1
+                    or pre.count("-noninteractive")!=1
+                    or pre.count("-windowstyle")!=1
+                    or pre.index("-windowstyle")+1>=len(pre)
+                    or pre[pre.index("-windowstyle")+1]!="hidden"
+                    or any(v in {"-noprofile","-noninteractive","-windowstyle"} for v in post)):
+                holds.append("HELD_POWERSHELL_SWITCH_ORDER_UNTRUSTED")
+            elif (len(argv)<=file_positions[0]+1 or
+                  argv[file_positions[0]+1].replace("\\","/").lower() != entry["source"].lower()):
+                holds.append("HELD_POWERSHELL_LAUNCH_TARGET_MISMATCH")
+            if any(v=="-mode" and i+1<len(lower) and lower[i+1]=="ui"
+                   for i,v in enumerate(lower)):
+                holds.append("HELD_AUTOMATED_UI_MODE")
+            policy_aliases={"-executionpolicy","-ep","-exec","-ex"}
+            if any((v in policy_aliases and i+1<len(lower) and lower[i+1]=="bypass")
+                    or re.fullmatch(r"-(?:executionpolicy|ep|exec|ex)[:=]bypass",v)
+                    for i,v in enumerate(lower)):
+                holds.append("HELD_UNREVIEWED_EXECUTION_POLICY_BYPASS")
             if "-noexit" in lower or "-command" in lower or "-encodedcommand" in lower:
                 holds.append("HELD_DYNAMIC_OR_PERSISTENT_CONSOLE")
             if any(re.search(p,source) for p in GUI_TOKENS):
