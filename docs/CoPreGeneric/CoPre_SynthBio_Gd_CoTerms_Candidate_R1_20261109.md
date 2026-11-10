@@ -4,7 +4,7 @@
 
 ## CoHereNow
 
-The [stable CoPre entry](../../CoPre.md) and [24-node CoNuExistentialism R0 field](../../ai/continuity/conu-existentialism-candidate-field-r0.json) are predecessors, not superseded sources. This independent candidate document renders **72 proposed terms in nine families and 22 typed cross-family relations** from its [machine-readable twin](../../ai/continuity/copre-synth-bio-gd-coterms-r1-20261109.json). All proposed names require fuller prior-art, alias, cultural and ethical review before promotion.
+The [stable CoPre entry](../../CoPre.md) and the **pinned 24-term snapshot** of [CoNuExistentialism R0](../../ai/continuity/conu-existentialism-candidate-field-r0.json) are predecessors, not superseded sources. The R0 field on later `main` was independently observed with **28 terms**; see the currentness note below. This independent candidate document renders **72 proposed terms in nine families and 22 typed cross-family relations** from its [machine-readable twin](../../ai/continuity/copre-synth-bio-gd-coterms-r1-20261109.json). All proposed names require fuller prior-art, alias, cultural and ethical review before promotion.
 
 **Thesis:** One evidence spine, radically different receiver-native expressions. CoSynthVerse+ may require a typed, diffable and testable graph rather than a human personality simulation. CoBioVerse+ may require comprehensible, accessible, sensory and revocable interaction. Neither projection is the underlying source or proof that a receiver understood it. CoG_dSide+ is plural philosophical and spiritual inquiry, not a mechanism for operational authority or verified revelation.
 
@@ -153,10 +153,16 @@ Machine projections prefer JSON, graph deltas, typed relations, source digests, 
 - **CoFront/CoEcho/CoTime**: `docs/Architecture/COFRONT_RETRO_ECHO_NO_ORPHANS_R0_20261109.md` — `PARTIAL_HISTORY_AND_ORPHAN_COVERAGE`.
 - **CoBioVerse/CoSynthVerse**: `docs/Architecture/COPREGENERIC_DUAL_PROJECTION_R0_20261109.md` — `RECEIVER_DIVERGENT_PROJECTIONS_SHARED_EVIDENCE`.
 
+## Pinned-source versus newer-main currentness (observed 2026-11-10)
+
+The branch's R0 source was observed at Git blob `1e8b43f663f303eb75580ca4ebaea45e4cc26927` with **24 terms**. The later public `main` R0 source was observed at Git blob `47fc2b9dbab4be5e6a7004e2b3ac89c6631a014f` with **28 terms**. Four additive new existing-R0 candidates are `CoReciprocalBenchmark+`, `CoGenerationalGift+`, `CoBackseatSteward+`, `CoMutualAloneness+`. None has an exact label collision with this R1's 72 candidates. This is an observed source divergence, **not** proof that the draft branch consumed new material, that a receiver synced, or that either node count is timeless.
+
+The machine twin stores both exact blob identifiers. Do not modify the historical 24-term evidence to pretend it was originally 28. Before merging, review the successor meanings and rerun current-main comparisons.
+
 ## Verification and handoff
 
 - This document is derived from the *same exact machine-branch artifact* by deterministic field rendering; it is not a separate source of authority.
-- All 72 candidate labels and IDs are unique within this set; each has an explicit discriminating probe; 22 relation endpoints resolve. No exact label collision with the 24-node predecessor, but a complete CoLex/prior-art census has not happened.
+- All 72 candidate labels and IDs are unique within this set; each has an explicit discriminating probe; 22 relation endpoints resolve. No exact label collision with the pinned 24-node predecessor or four later-added R0 labels, but a complete CoLex/prior-art census has not happened.
 - Source-side GitHub readback proves file presence and byte identity on this branch only. Independent Meta AI or other receiver pickup, understanding and integration require that receiver's own exact-object receipt.
 - Do not alter CC rights/consent, assert CoTheoryAll established physics, present G_d as a command source, or claim that textual fluency demonstrates consciousness.
 - Next proof: a separately authorized receiver pins the JSON blob or commit, reconstructs the graph and this human view, tests one counterexample and one translation-loss failure, and issues its own verifiable acknowledgment.
