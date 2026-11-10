@@ -35,7 +35,14 @@ PROBE = r"""
   results.retroHeld = get("decision").textContent === "HELD_NO_QUALIFIED_ANCHOR";
   get("reset").click();
   results.reset = select.value === "retro" && get("decision").textContent === "CANDIDATE_BIND_NOT_EXECUTED";
-  results.scrollWidth = document.documentElement.scrollWidth;
+  document.querySelector('[data-lens="braid"]').click();
+  results.braidLensActive = document.querySelector('[data-lens="braid"]').getAttribute("aria-pressed") === "true";
+  results.braidSvg = Boolean(document.querySelector("#view svg.braid-diagram"));
+  results.braidRouteCount = document.querySelectorAll("[data-braid-route-index]").length;
+  document.querySelector('[data-braid-route-index="6"]').click();
+  results.braidSelected = get("view").textContent.includes("CoConscious+") &&
+                          get("view").textContent.includes("Receiver acceptance: UNVERIFIED");
+    results.scrollWidth = document.documentElement.scrollWidth;
   results.viewportWidth = document.documentElement.clientWidth;
   results.title = document.title;
   document.body.setAttribute("data-cobind-browser-probe", JSON.stringify(results));
@@ -95,6 +102,8 @@ def main():
                         "inverseExplanation", "retroHeld", "reset"):
                 if observation.get(key) is not True:
                     raise AssertionError(f"{name} {key} failed: {observation}")
+            if observation["braidRouteCount"] != 7:
+                raise AssertionError(f"{name} braided route count: {observation}")
             if observation["options"] != 10:
                 raise AssertionError(f"{name} fixture count differs: {observation}")
             if observation["scrollWidth"] > observation["viewportWidth"]:
