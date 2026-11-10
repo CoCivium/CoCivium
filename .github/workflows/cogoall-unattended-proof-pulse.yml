@@ -39,6 +39,31 @@ jobs:
           python-version: '3.12'
       - name: Verify one-shot durable local source WorkID (no external effect)
         run: python -B -m unittest -v test_local_source_work_cycle_r0
+      - name: Execute real public CoPre source with one local durable WorkID
+        shell: bash
+        run: |
+          set -euo pipefail
+          db="$RUNNER_TEMP/cogoall-source-check.sqlite"
+          python -B -m examples.cotalkitout.local_source_work_cycle_r0 --root . --db "$db" > source-check-first.json
+          python -B -m examples.cotalkitout.local_source_work_cycle_r0 --root . --db "$db" > source-check-replay.json
+          python - <<'PY' | tee source-check.log
+          import hashlib, json, pathlib
+          initial=json.loads(pathlib.Path('source-check-first.json').read_text())
+          repeat=json.loads(pathlib.Path('source-check-replay.json').read_text())
+          source=hashlib.sha256(pathlib.Path('CoPre.md').read_bytes()).hexdigest()
+          assert initial['state']=='COMMITTED_LOCAL_ONLY'
+          assert repeat['state']=='LOCAL_REPLAY_OR_LEASED' and repeat['queue_state']=='DONE'
+          assert initial['work_id']==repeat['work_id']=='CoPre:source-integrity:R0'
+          assert initial['source_sha256']==repeat['source_sha256']==source
+          assert initial['external_receiver_ack'] is False
+          assert initial['real_external_effect'] is False
+          assert repeat['external_receiver_ack'] is False
+          print(json.dumps(dict(state='CI_LOCAL_SOURCE_WORKID_REPLAY_VERIFIED',
+              source_sha256=source, work_id=initial['work_id'],
+              local_result_sha256=initial['local_result_sha256'],
+              independent_receiver_ack=False, external_effect_verified=False),
+              sort_keys=True))
+          PY
       - name: Exercise bounded recovery and handoff gates
         id: tests
         continue-on-error: true
@@ -73,7 +98,7 @@ jobs:
           python - <<'PY'
           import datetime, hashlib, json, os, pathlib
           logs = {}
-          for name in ('decision', 'grace', 'succession', 'acceptance', 'progress', 'cadence-tests', 'catchup-tests', 'rebound-tests', 'rebound-links'):
+          for name in ('decision', 'grace', 'succession', 'acceptance', 'progress', 'cadence-tests', 'catchup-tests', 'rebound-tests', 'rebound-links', 'source-check'):
               p = pathlib.Path(name + '.log')
               logs[name] = hashlib.sha256(p.read_bytes()).hexdigest() if p.exists() else None
           cadence = pathlib.Path('schedule-audit.json')
@@ -104,6 +129,7 @@ jobs:
             catchup-tests.log
             rebound-tests.log
             rebound-links.log
+            source-check.log
             rebound-report.json
             schedule-audit.json
           if-no-files-found: error
