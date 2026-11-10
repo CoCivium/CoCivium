@@ -4,15 +4,17 @@ The injected verifier is a test fixture. Real deployment requires independent
 receipt validation, continuity checks, and authorized observation.
 """
 import unittest
+import math
 
 
-def evaluate(events, duration_seconds=86400, verify=None):
+def evaluate(events, duration_seconds=86400, verify=None, max_heartbeat_gap=900):
     if not events:
         return "NO_EVIDENCE"
     if not callable(verify):
         return "UNVERIFIED"
     if any(not isinstance(e.get("at"), (int, float)) or
-           isinstance(e.get("at"), bool) for e in events):
+           isinstance(e.get("at"), bool) or
+           not math.isfinite(e["at"]) for e in events):
         return "INVALID_TIME"
     if any(e["kind"] == "duplicate_effect" for e in events):
         return "DUPLICATE_EFFECT"
@@ -25,6 +27,8 @@ def evaluate(events, duration_seconds=86400, verify=None):
     alive = sorted(e["at"] for e in verified if e["kind"] == "seed_alive")
     if len(alive) < 2 or alive[-1] - alive[0] < duration_seconds:
         return "INSUFFICIENT_DURATION"
+    if any(right - left > max_heartbeat_gap for left, right in zip(alive, alive[1:])):
+        return "CONTINUITY_GAP"
     return "ACCEPTED_FIXTURE_ONLY"
 
 
@@ -41,11 +45,17 @@ class AutonomyAcceptanceTests(unittest.TestCase):
             {"kind": "recovery", "at": 360, "receipt": "fixture-trusted"},
             {"kind": "observer_effect", "at": 720, "receipt": "fixture-trusted"},
             {"kind": "cobar_visible", "at": 1000, "receipt": "fixture-trusted"},
+            *({"kind": "seed_alive", "at": t, "receipt": "fixture-trusted"}
+              for t in range(600, 86400, 600)),
             {"kind": "seed_alive", "at": 86400, "receipt": "fixture-trusted"},
         ]
 
     def test_fixture_accepts(self):
         self.assertEqual(evaluate(self.complete(), verify=self.trusted), "ACCEPTED_FIXTURE_ONLY")
+
+    def test_daylong_silence_rejected(self):
+        e = [x for x in self.complete() if x["kind"] != "seed_alive" or x["at"] in (0, 86400)]
+        self.assertEqual(evaluate(e, verify=self.trusted), "CONTINUITY_GAP")
 
     def test_missing_proof_rejected(self):
         e = [x for x in self.complete() if x["kind"] != "observer_effect"]
@@ -53,7 +63,7 @@ class AutonomyAcceptanceTests(unittest.TestCase):
 
     def test_short_run_rejected(self):
         e = self.complete()
-        e[-1]["at"] = 1000
+        e = [x for x in e if x["at"] <= 1000]
         self.assertEqual(evaluate(e, verify=self.trusted), "INSUFFICIENT_DURATION")
 
     def test_duplicate_effect_rejected(self):
@@ -74,7 +84,7 @@ class AutonomyAcceptanceTests(unittest.TestCase):
 
     def test_unrelated_late_event_does_not_extend_survival(self):
         e = self.complete()
-        e[-1]["at"] = 1000
+        e = [x for x in e if x["at"] <= 1000]
         e.append({"kind": "unrelated", "at": 100000, "receipt": "fixture-trusted"})
         self.assertEqual(evaluate(e, verify=self.trusted), "INSUFFICIENT_DURATION")
 
