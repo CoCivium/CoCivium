@@ -16,6 +16,7 @@ from playwright.sync_api import sync_playwright
 ROOT = Path(__file__).resolve().parents[1]
 PAGE = ROOT / "docs" / "Books" / "CoBook_Origin_Beetle_Cartographer_Interactive_R0.html"
 STORY = ROOT / "docs" / "Books" / "COBOOK_ORIGIN_MYTHOS_BEETLE_CARTOGRAPHER_R0_20261110.md"
+LENSES = ROOT / "ai" / "cobook-source-to-human-lenses-r0.json"
 REPORT = ROOT / "artifacts" / "cobook-origin-scene-r0"
 EXPECTED = {
     "keep": ("Keep the door", "preserving something"),
@@ -55,7 +56,7 @@ def main():
     assert a.tags.get("button") == 3
     assert a.tags.get("title") >= 2
     assert a.tags.get("desc") == 1
-    assert a.tags.get("details") == 1
+    assert a.tags.get("details") == 2
     assert a.tags.get("script") == 1
     assert not a.external
     assert not any(f"<{tag}" in content for tag in ["iframe", "audio", "video", "form"])
@@ -69,6 +70,29 @@ def main():
     assert "not an autobiography" in story.lower()
     assert "The Cartographer's agency" in story
     assert "cobook.origin.beetle-cartographer.r0" in story
+
+    # The optional source-to-human lens is one reversible projection,
+    # not four new ungrounded storylets or a second source of truth.
+    manifest = json.loads(LENSES.read_text(encoding="utf-8"))
+    assert manifest["schema"] == "CoBook.SourceToHumanLenses.R0.v0.1"
+    assert manifest["story_identity"] in story
+    lenses = manifest["lenses"]
+    expected_ids = ["comap", "cotheoryall", "coglukey", "highlights"]
+    assert [lens["id"] for lens in lenses] == expected_ids
+    import re
+    assert re.findall(r'data-lens-id="([a-z]+)"', content) == expected_ids
+    for item in lenses:
+        source = (ROOT / item["source_path"]).resolve()
+        assert source.is_relative_to(ROOT) and source.is_file(), item["source_path"]
+        source_bytes = source.read_bytes()
+        source_blob = hashlib.sha1(
+            b"blob " + str(len(source_bytes)).encode("ascii") + b"\0" + source_bytes
+        ).hexdigest()
+        assert source_blob == item["git_blob_sha"], (item["id"], "source changed; review translation")
+        for field in ("plain_language", "technical_fact", "projection_loss", "evidence_limit"):
+            assert item[field] in content, (item["id"], field)
+        assert item["kind"].endswith(("CANDIDATE","SNAPSHOT","REGISTER")), item["id"]
+    assert "Do not introduce them here as competing standalone plots." in LENSES.read_text(encoding="utf-8")
 
     REPORT.mkdir(parents=True, exist_ok=True)
     results = []
@@ -99,7 +123,7 @@ def main():
                 assert page.get_by_role("heading", name="The Beetle and the Unfinished Map").count() == 1
                 assert page.locator("svg[role='img'] title").count() == 1
                 assert page.locator("svg[role='img'] desc").count() == 1
-                assert page.locator("details summary").count() == 1
+                assert page.locator("details summary").count() == 2
                 assert page.locator('a[href$="COBOOK_ORIGIN_MYTHOS_BEETLE_CARTOGRAPHER_R0_20261110.md"]').count() == 1
                 assert page.locator("button[data-route]").count() == 3
                 dims = page.evaluate("() => ({page:document.documentElement.scrollWidth, width:innerWidth})")
@@ -115,11 +139,23 @@ def main():
                         if other != key:
                             assert page.locator(f'button[data-route="{other}"]').get_attribute("aria-pressed") == "false"
                 # The alternate endings remain available without JS interaction.
-                disclosure = page.locator("details")
+                disclosure = page.locator("details").first
                 disclosure.locator("summary").focus()
                 page.keyboard.press("Enter")
                 assert disclosure.get_attribute("open") is not None, (width, "details inaccessible")
                 assert "Draw another" in disclosure.inner_text()
+                # Extra interpretation remains quiet until the reader requests it.
+                source_lens = page.locator("details#source-lenses")
+                assert source_lens.get_attribute("open") is None
+                source_lens.locator("summary").focus()
+                page.keyboard.press("Enter")
+                assert source_lens.get_attribute("open") is not None, (width, "lens keyboard open failed")
+                assert source_lens.locator("[data-lens-id]").count() == 4
+                assert source_lens.get_by_text(
+                    "A map can show the paths someone recorded", exact=False
+                ).count() == 1
+                page.keyboard.press("Enter")
+                assert source_lens.get_attribute("open") is None, (width, "lens keyboard close failed")
                 screenshot = REPORT / f"beetle-cartographer-{width}x{height}.png"
                 page.screenshot(path=str(screenshot), full_page=True, animations="disabled")
                 assert not errors, (width, "JavaScript errors", errors)
