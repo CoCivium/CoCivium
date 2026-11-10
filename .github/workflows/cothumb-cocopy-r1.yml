@@ -3,6 +3,16 @@ on:
   push:
     paths:
       - 'scripts/CoThumbCoCopyR1.ps1'
+      - 'scripts/coforeground_launch_gate_r0.py'
+      - 'scripts/test_coforeground_launch_gate_r0.py'
+      - 'ai/coforeground_launch_manifest_r0.json'
+      - '.github/workflows/cothumb-cocopy-r1.yml'
+  pull_request:
+    paths:
+      - 'scripts/CoThumbCoCopyR1.ps1'
+      - 'scripts/coforeground_launch_gate_r0.py'
+      - 'scripts/test_coforeground_launch_gate_r0.py'
+      - 'ai/coforeground_launch_manifest_r0.json'
       - '.github/workflows/cothumb-cocopy-r1.yml'
   workflow_dispatch:
 permissions:
@@ -13,6 +23,24 @@ jobs:
     timeout-minutes: 8
     steps:
       - uses: actions/checkout@v4
+      - name: Foreground launch policy audit and adversarial cases
+        shell: pwsh
+        run: |
+          python -B scripts/test_coforeground_launch_gate_r0.py -v
+          if ($LASTEXITCODE -ne 0) { throw "Foreground audit tests failed" }
+          python -B scripts/coforeground_launch_gate_r0.py --manifest ai/coforeground_launch_manifest_r0.json
+          if ($LASTEXITCODE -ne 0) { throw "Foreground source policy not accepted" }
+      - name: Bare launch fails before GUI or file mutation
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $testRoot = Join-Path $env:RUNNER_TEMP 'CoFarmBareLaunch'
+          New-Item -ItemType Directory -Force -Path $testRoot | Out-Null
+          $output = & pwsh -NoProfile -File ./scripts/CoThumbCoCopyR1.ps1 -CoFarmRoot $testRoot 2>&1 | Out-String
+          if ($LASTEXITCODE -eq 0) { throw 'Bare launch unexpectedly succeeded' }
+          if ($output -notmatch 'HELD_EXPLICIT_MODE_REQUIRED') { throw 'Missing explicit-mode hold' }
+          if (Test-Path (Join-Path $testRoot 'CoThumbR1')) { throw 'Bare launch mutated CoFarm fixture' }
+          Write-Output 'PASS_BARE_LAUNCH_HELD_NO_SIDE_EFFECTS'
       - name: Self-test in disposable local CoFarm fixture
         shell: pwsh
         run: |
