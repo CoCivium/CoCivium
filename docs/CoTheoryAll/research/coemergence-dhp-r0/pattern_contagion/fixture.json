@@ -1,0 +1,28 @@
+{
+  "schema": "CoAll.PatternContagion.SyntheticGraph.R0",
+  "comment": "Synthetic source-only example. Edges are not causal observations, actual sharing, or permission to contact real receivers.",
+  "external_effects": "NONE",
+  "steps": 4,
+  "seed_number": 3317,
+  "noise_amplitude": 0.04,
+  "seeds": ["question"],
+  "observation_target": "speedo",
+  "desired_future_target": "receiver",
+  "counterfactual_blocked_edges": [["pattern", "speedo"]],
+  "nodes": [
+    {"id": "question", "threshold": 0.30, "allow_synthetic_exposure": true},
+    {"id": "pattern", "threshold": 0.65, "allow_synthetic_exposure": true},
+    {"id": "speedo", "threshold": 0.55, "allow_synthetic_exposure": true},
+    {"id": "oomph", "threshold": 0.45, "allow_synthetic_exposure": true},
+    {"id": "receiver", "threshold": 0.48, "allow_synthetic_exposure": false},
+    {"id": "dissent", "threshold": 0.88, "allow_synthetic_exposure": true}
+  ],
+  "edges": [
+    {"from": "question", "to": "pattern", "strength": 0.9, "relation_type": "PATTERN_PROPAGATION_CANDIDATE", "authority": "NONE"},
+    {"from": "pattern", "to": "speedo", "strength": 0.7, "relation_type": "PATTERN_PROPAGATION_CANDIDATE", "authority": "NONE"},
+    {"from": "pattern", "to": "oomph", "strength": 0.6, "relation_type": "PATTERN_PROPAGATION_CANDIDATE", "authority": "NONE"},
+    {"from": "oomph", "to": "receiver", "strength": 0.9, "relation_type": "PATTERN_PROPAGATION_CANDIDATE", "authority": "NONE"},
+    {"from": "question", "to": "dissent", "strength": 0.40, "relation_type": "PATTERN_PROPAGATION_CANDIDATE", "authority": "NONE"},
+    {"from": "speedo", "to": "question", "strength": 0.9, "relation_type": "PATTERN_PROPAGATION_CANDIDATE", "authority": "NONE"}
+  ]
+}
