@@ -16,6 +16,7 @@ button[aria-pressed=true]{background:#4c3d87;border-color:#cbbcfb}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(205px,1fr));gap:1rem}.card h3{margin-top:0}.card p{color:#d0dbed}
 .small{font-size:.9rem;color:#c2cedd}.status{color:#a9e4d5;font-weight:650}footer{margin-top:2rem;border-top:1px solid #445372;padding-top:1rem}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+.intro{margin:1.2rem 0;padding:1.2rem;border:1px solid #7889ba;border-radius:18px;background:#142039}.intro p{margin:.6rem 0}.dialogue{max-width:66ch}.dialogue strong{color:#e5cbff}.proof{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:.65rem}.proof-item{padding:.8rem;border:1px solid #566786;border-radius:12px;background:#16223a}.proof-item b{display:block}.proof-item span{font-size:.88rem;color:#c5d3e8}.held{color:#ffd5a0}.verified{color:#aeeed4}details{margin:1rem 0}summary{cursor:pointer;padding:.55rem 0;font-weight:650}summary:focus-visible{outline:3px solid #ffcf77}.journey{display:flex;gap:.65rem;flex-wrap:wrap}.journey a{display:inline-block;border:1px solid #8dabe1;border-radius:12px;padding:.55rem .8rem;text-decoration:none}
 </style></head><body><main>
 <header class="top"><strong>CoCivium · Civ2+</strong><span class="flag">Public source-preview candidate · no live integration claimed</span></header>
 <section class="hero" aria-labelledby="headline">
@@ -33,6 +34,28 @@ button[aria-pressed=true]{background:#4c3d87;border-color:#cbbcfb}
 </svg>
 <p class="small">Original illustrative diagram. It shows a design objective, not measured live network redundancy.</p>
 </section>
+<section class="intro" aria-labelledby="storyTitle">
+<h2 id="storyTitle">A child, a parent, and an unfinished map</h2>
+<p class="dialogue"><strong>Child:</strong> Did you ever get lost?<br><strong>Parent:</strong> Many times.<br><strong>Child:</strong> Can you show me where?<br><strong>Parent:</strong> Yes. And you can decide which roads to take.</p>
+<p>This story is one way into the project: <strong>being with, learning with, and leaving room.</strong> You do not need to understand our vocabulary first.</p>
+<nav class="journey" aria-label="Three story paths">
+<a href="#source-book">Being</a><a href="#source-demo">Learning</a><a href="#evidence-gauge">Checking what is real</a>
+</nav>
+<p class="small">A candidate book scene, not a quote from a real child or a completed deployed reader. Characters are intentionally unspecified in gender.</p>
+</section>
+<section aria-labelledby="gaugeTitle" id="evidence-gauge">
+<h2 id="gaugeTitle">One honest evidence gauge</h2>
+<p class="small">Source-bound status snapshot for this draft. It does not update itself and is not a live device monitor. Open the source links for the current record.</p>
+<div class="proof">
+<div class="proof-item"><b class="verified">Verified source</b><span>Public GitHub artifacts can be inspected. <a href="https://github.com/CoCivium/CoCivium/blob/main/ai/copre-seed-path-handoff-r0-20261109.json">CoPre Seed record</a>.</span></div>
+<div class="proof-item"><b class="held">Held: receiver</b><span>No independently authenticated exact-object receiver acknowledgment. <a href="https://github.com/CoCivium/CoCivium/pull/444">Synthetic tests only</a>.</span></div>
+<div class="proof-item"><b class="held">Held: X2 runtime</b><span>X2 reported offline at the last connector check; this page cannot poll your PC or wake it.</span></div>
+<div class="proof-item"><b class="held">Held: deployment</b><span>This HTML remains a review candidate on <a href="https://github.com/CoCivium/CoCivium/pull/441">PR #441</a>, not a verified first-use website.</span></div>
+</div>
+<details><summary>See the acceptance tests and limitations</summary>
+<p class="small">A real receiver must retrieve the exact source version on its own, check identity and permissions, then report a independently verifiable digest and receipt. A 24-hour persistence test must be observed after the interval. A passing synthetic CI job is not that receipt. The CoOS and CivOS terms are still design candidates.</p>
+</details>
+</section>
 <section aria-label="Choose a perspective">
 <h2>One question. Three honest ways in.</h2>
 <div class="controls" role="group" aria-label="Reading perspective">
@@ -41,8 +64,8 @@ button[aria-pressed=true]{background:#4c3d87;border-color:#cbbcfb}
 <div class="panel" id="perspective" tabindex="-1" aria-live="polite"><strong>Imagine keeping your work when the software changes.</strong><p>What would we need to preserve to make that promise real? Follow the evidence, not just the illustration.</p></div>
 </section>
 <h2>Follow a real source trail</h2><section class="grid" aria-label="Source trail">
-<article class="card"><h3>Read the book</h3><p>CoCivia's eight-chapter public preview exists as an HTML source artifact. The full illustrated reader has not shipped.</p><a href="../../Books/README.md">Book family and reader source</a></article>
-<article class="card"><h3>Inspect a demonstration</h3><p>Explore an offline CoLens Map/Orb/Text example. It is a source demonstrator, not independent proof of cross-provider continuity.</p><a href="../../../examples/colensmedia/README.md">CoLens experiment and limitations</a></article>
+<article class="card" id="source-book"><h3>Read the book</h3><p>CoCivia's eight-chapter public preview exists as an HTML source artifact. The full illustrated reader has not shipped.</p><a href="../../Books/README.md">Book family and reader source</a></article>
+<article class="card" id="source-demo"><h3>Inspect a demonstration</h3><p>Explore an offline CoLens Map/Orb/Text example. It is a source demonstrator, not independent proof of cross-provider continuity.</p><a href="../../../examples/colensmedia/README.md">CoLens experiment and limitations</a></article>
 <article class="card"><h3>Challenge the claims</h3><p>Ask what an independent successor could actually recover, and which failure would invalidate the claim.</p><a href="https://github.com/CoCivium/CoCivium/issues/403">Unresolved first-use proof issue</a></article>
 <article class="card"><h3>Inspect version history</h3><p>Read current verified status and its limitations before repeating a claim.</p><a href="../../../EVERGREEN.md">Evergreen evidence and open gaps</a></article>
 </section>
