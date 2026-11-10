@@ -4,6 +4,12 @@
 
 > **Right now:** Public source and bounded automated checks are available. A working independent receiver, 24-hour survival, and measured human time saved are **not yet proven**.
 
+## Morning glance: one needle before the details
+
+The [CoSpeedo Morning Glance R2 source prototype](morning-glance-r2.html) is a **plain-language, graphical snapshot**, not a live service. Its needle rests at **same-provider cold handoff** because [two GitHub Actions jobs passed an exact-source transfer](https://github.com/CoCivium/CoCivium/actions/runs/42864184377), including **31 adversarial checks**. A genuinely independent receiver, elapsed 24-hour survival and measured minutes returned to people remain unproven. The [dated machine-readable evidence](../../docs/Metrics/COSPEEDO_MORNING_GLANCE_R2_20261110.json) distinguishes those states. No trackers, scripts, extra prompts or hidden panels.
+
+This R2 morning face **complements rather than replaces** the [R1 archival NeedleTrails](needle-trails-r1.html). GitHub may display the HTML as code; no live website, X2 installation, unsolicited email delivery or human comprehension has been verified from this source change.
+
 ## The one-minute answer
 
 **What works:** You can inspect the [R1 historical needle-trail source](needle-trails-r1.html) and the [archived evidence](../../docs/Metrics/COSPEEDO_RECEIPT_CENSUS_R0_20261027.json). The source and chart checks passed in [main-branch CI](https://github.com/CoCivium/CoCivium/actions/runs/42750710011).

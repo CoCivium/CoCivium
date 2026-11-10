@@ -1,0 +1,70 @@
+{
+  "schema": "CoSpeedo.MorningGlance.R2",
+  "state": "PUBLIC_SOURCE_CANDIDATE_NOT_LIVE_PRODUCT",
+  "observed_at": "2026-11-10T17:22:11Z",
+  "observation_basis": "SOURCE_BOUND_GITHUB_ACTIONS_CI_AND_CONNECTED_DEVICE_OBSERVER",
+  "gauge": {
+    "measurement_type": "CATEGORICAL_EVIDENCE_MATURITY_NOT_VELOCITY_OR_PERCENTAGE",
+    "observed_stage": "SAME_PROVIDER_COLD_HANDOFF",
+    "ordered_stages": [
+      "UNVERIFIED_SOURCE",
+      "VERIFIED_PUBLIC_SOURCE",
+      "SAME_PROVIDER_COLD_HANDOFF",
+      "INDEPENDENT_RECEIVER",
+      "PROVEN_RECOVERY_WITH_MEASURED_BENEFIT"
+    ],
+    "independent_receiver_ack": false,
+    "survived_24h": false,
+    "measured_human_time_saved_minutes": null,
+    "runtime_deployment": false
+  },
+  "evidence": [
+    {
+      "id": "copre_two_job_ci",
+      "run_id": 42864184377,
+      "conclusion": "success",
+      "source_commit": "5515752ee7defff42136ecbcb238638733f09bba",
+      "detail": "two GitHub Actions jobs, 31/31 adversarial packet checks and immutable-source cold readback",
+      "external_receiver_ack": false,
+      "work_id": "copre:cold:4814ee7c6c96a75d2023c53d19d898332cae6db64c462deb44787eade5dd40ab"
+    },
+    {
+      "id": "ps7_foreground_ci",
+      "run_id": 42851899467,
+      "conclusion": "success",
+      "source_commit": "eb233b0d2c3e96e697421346b03064cbea61ee91",
+      "detail": "28/28 source-policy tests; bare PowerShell launch held without fixture writes; X2 installation unknown",
+      "x2_runtime_proof": false
+    }
+  ],
+  "public_routes": {
+    "source": "https://github.com/CoCivium/CoCivium/blob/main/CoPre.md",
+    "proposed_mirrors": [
+      {
+        "url": "https://github.com/CoCivium/CoPreGeneric",
+        "last_verified_http_status": 404
+      },
+      {
+        "url": "https://CoCivium.org/CoPre",
+        "last_verified_http_status": 404
+      },
+      {
+        "url": "https://InSeed.com/Stead",
+        "last_verified_http_status": 404
+      }
+    ],
+    "mirror_observed_at": "2026-11-10T17:22:00Z"
+  },
+  "next_elected_gate": "EXACT_OBJECT_COLD_READBACK_BY_AUTHORIZED_RECEIVER_OUTSIDE_GITHUB_FAILURE_DOMAIN",
+  "no_user_action_required_for_this_source_review": true,
+  "nonclaims": [
+    "NOT_LIVE_TELEMETRY",
+    "DRAFT_NE_DEPLOYED",
+    "CI_PASS_NE_EXTERNAL_RECEIVER_ACK",
+    "SOURCE_SURVIVAL_NE_RUNTIME_CONTINUITY",
+    "NO_COCIVIUM_PUBLIC_SITE_DEPLOYMENT",
+    "NO_MEASURED_HUMAN_TIME_SAVED",
+    "X2_OBSERVER_OFFLINE_NE_MACHINE_OFF",
+    "NOT_COMPLETE_HISTORICAL_COVERAGE"
+  ]
+}

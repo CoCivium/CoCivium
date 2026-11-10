@@ -28,6 +28,8 @@ The [source-bound CoSeed/CoPath machine graph](ai/copre-seed-path-federation-r0.
 
 ## Exact public companions
 
+- [CoSpeedo Morning Glance R2: honest visual needle](examples/cospeedo/morning-glance-r2.html) plus [dated machine evidence](docs/Metrics/COSPEEDO_MORNING_GLANCE_R2_20261110.json): one-screen public-safe prototype from exact November 10 GitHub Actions checks, **not** a deployed website, live telemetry, independent receiver or measured human benefit.
+
 - [CoSpeedo: What actually got better? (human-readable public entry)](examples/cospeedo/README.md): source-linked Pass/Held/Fail history, plain-language caveats and the [R1 HTML prototype source](examples/cospeedo/needle-trails-r1.html); source-browser QA [PASS](https://github.com/CoCivium/CoCivium/actions/runs/42744256246), **not** a live gauge, independent receiver, X2 runtime or deployed website.
 
 
