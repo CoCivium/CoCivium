@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="An interactive, fictional CoCivia origin scene. Three equal choices. No surveillance, autoplay audio or personal child biography.">
+<title>The Beetle and the Unfinished Map | CoBook scene R0</title>
+<style>
+:root{color-scheme:dark;--bg:#091321;--ink:#edf6fc;--muted:#bccede;--line:#567091;--accent:#8ff4cf;--violet:#e7c4ff;--amber:#ffd9a6;font:18px/1.65 system-ui,-apple-system,Segoe UI,sans-serif}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:radial-gradient(ellipse at 22% 10%,#163e54 0,transparent 45%),radial-gradient(ellipse at 80% 40%,#2a1d4f 0,transparent 38%),var(--bg);color:var(--ink);margin:0}
+.skip{position:absolute;left:-9999px;top:0}.skip:focus{left:.75rem;z-index:10;background:#fff;color:#091321;padding:.6rem}
+a{color:#b1f9e5}button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid #ffcc83;outline-offset:4px}
+.shell{max-width:1060px;margin:auto;padding:1rem clamp(1rem,4vw,3rem) 4rem}
+header{display:flex;justify-content:space-between;gap:.7rem;align-items:center;flex-wrap:wrap;border-bottom:1px solid var(--line);padding:1rem 0}
+.brand{font-weight:800;letter-spacing:.04em}.status{font-size:.8rem;border:1px solid var(--line);padding:.25rem .7rem;border-radius:20px;color:var(--muted)}
+.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);align-items:center;gap:1rem;padding:2rem 0}
+.eyebrow{text-transform:uppercase;letter-spacing:.14em;color:var(--accent);font-size:.77rem;font-weight:700}
+h1{font:500 clamp(2.4rem,5.4vw,4.8rem)/1.06 Georgia,serif;letter-spacing:-.04em;margin:.35rem 0}
+.lead{color:#d6ddef;font-size:1.08rem;max-width:35ch}svg{width:100%;height:auto;display:block;max-height:365px}
+.scene{border:1px solid var(--line);background:#15233a;border-radius:20px;padding:clamp(1rem,3vw,2rem);max-width:75ch;margin:auto}
+.scene p{margin:.55rem 0 1rem}.dialogue{border-left:3px solid var(--accent);padding-left:1rem}
+.name{font-size:.8rem;color:var(--accent);text-transform:uppercase;letter-spacing:.08em;font-weight:750}
+.choices{margin:2rem auto;max-width:75ch}.choices h2{font:500 clamp(1.7rem,4vw,2.5rem)/1.2 Georgia,serif}.group{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.65rem;margin:1.2rem 0}
+button{cursor:pointer;min-height:3.5rem;border:1px solid #829cc5;background:#192d4b;color:var(--ink);border-radius:12px;padding:.75rem;font:600 .95rem/1.35 system-ui,sans-serif;text-align:left}
+button[aria-pressed=true]{background:#3c3561;border-color:#d1adff;box-shadow:0 0 0 1px #d1adff inset}
+.result{border:1px solid #82759e;background:#1d2540;border-radius:16px;padding:1rem 1.4rem;min-height:12rem}
+.result h3{font:500 1.55rem/1.15 Georgia,serif;color:var(--violet);margin:.3rem 0}
+.small{color:var(--muted);font-size:.87rem}.note{border-left:3px solid var(--amber);padding:.2rem 1rem;margin:1.6rem auto;max-width:75ch;color:#ebd7be}
+details{margin:1.5rem auto;max-width:75ch;border:1px solid var(--line);border-radius:12px;padding:1rem}
+summary{cursor:pointer;font-weight:700}
+footer{border-top:1px solid var(--line);padding-top:1.3rem;margin-top:2.5rem;font-size:.88rem;color:var(--muted)}
+@media(max-width:700px){.hero{display:block}.hero svg{margin:1rem auto;max-width:550px}.group{grid-template-columns:1fr}button{text-align:center}.shell{padding-bottom:2rem}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<a class="skip" href="#story">Skip illustration and read the story</a>
+<div class="shell">
+<header><span class="brand">CoCivia · Field Guide to Thinking</span><span class="status">Fictional interactive draft · not a published chapter</span></header>
+<main>
+<section class="hero" aria-labelledby="title">
+<div>
+<p class="eyebrow">An origin story without a crown</p>
+<h1 id="title">The Beetle and the Unfinished Map</h1>
+<p class="lead">A little creature, a younger cartographer, and a city certain that every door should open the same way.</p>
+<p class="small">One scene. Three valid routes. You can leave the map unfinished.</p>
+</div>
+<svg role="img" aria-labelledby="maptitle mapdesc" viewBox="0 0 650 380">
+<title id="maptitle">A beetle and a younger cartographer at a curious doorway</title>
+<desc id="mapdesc">A tiny violet beetle and a small round golden explorer face an oversized teal archway. Three branching lines on the ground suggest different possible paths.</desc>
+<defs><linearGradient id="door" x1="0" x2="1"><stop stop-color="#70edd7"/><stop offset="1" stop-color="#8478e8"/></linearGradient></defs>
+<path d="M67 296 V121 Q67 48 142 48 H485 Q561 48 561 123 V297" fill="none" stroke="url(#door)" stroke-width="23" stroke-linecap="round"/>
+<path d="M97 292 V127 Q97 77 146 77 H477 Q528 77 528 130 V292" fill="#12223b" stroke="#5b78a4" stroke-width="3"/>
+<g opacity=".75" fill="none" stroke-width="4" stroke-linecap="round">
+<path d="M263 317 Q310 320 365 340 T530 366" stroke="#82e5d3"/>
+<path d="M263 317 Q355 240 475 282 T603 308" stroke="#d6a5fc"/>
+<path id="chosen-route" d="M263 317 Q340 322 442 317 T612 317" stroke="#ffd9a6" stroke-width="8"/>
+</g>
+<g transform="translate(204 286)" stroke="#e8caff" stroke-width="4" stroke-linecap="round" fill="none">
+<path d="M-12 15 -42 28M-12 2 -44 3M-10 -11 -36 -27M12 15 42 28M12 2 44 3M10 -11 36 -27"/>
+<path d="M-8 -21 -20 -49M8 -21 19 -49"/>
+</g>
+<ellipse cx="204" cy="286" rx="29" ry="38" fill="#a38cf6" stroke="#e8caff" stroke-width="3"/>
+<path d="M204 248 V323" stroke="#574083" stroke-width="2"/>
+<circle cx="195" cy="271" r="3" fill="#15233a"/><circle cx="215" cy="271" r="3" fill="#15233a"/>
+<g transform="translate(301 282)"><circle r="22" fill="#ffd18c" stroke="#fff0cc" stroke-width="3"/><circle cx="-7" cy="-3" r="2.8" fill="#242a3b"/><circle cx="7" cy="-3" r="2.8" fill="#242a3b"/><path d="M-5 9 Q0 13 5 9" stroke="#242a3b" stroke-width="2.5" fill="none"/></g>
+<g fill="#e5f9fe" opacity=".6"><circle cx="132" cy="119" r="4"/><circle cx="487" cy="132" r="4"/><circle cx="402" cy="190" r="3"/><circle cx="366" cy="112" r="2.5"/></g>
+<text x="204" y="349" fill="#e9d5fd" text-anchor="middle" font-size="15">Beetle</text><text x="301" y="349" fill="#ffe5b1" text-anchor="middle" font-size="15">Cartographer</text>
+</svg>
+</section>
+<section id="story" class="scene" aria-labelledby="scene-title">
+<h2 id="scene-title">A city of doors</h2>
+<p>In a city full of doors, nearly every door came with instructions. Some kept everyone safe. Others had survived so long that nobody remembered what they were for.</p>
+<p>The Beetle had spent years inspecting doors. Sometimes it had been right. Sometimes it had been insufferable. On its better days, it knew the difference.</p>
+<p>Then the Cartographer came along, asking questions the Beetle hadn't considered.</p>
+<div class="dialogue">
+<p><span class="name">Cartographer</span> Why do you keep working on doors you don't want to walk through?</p>
+<p><span class="name">Beetle</span> I have a rather selfish reason. I want you to inherit more choices than I did.</p>
+<p><span class="name">Cartographer</span> What if I like one of those doors?</p>
+<p><span class="name">Beetle</span> Then keep it.</p>
+</div>
+</section>
+<section class="choices" aria-labelledby="choice-title">
+<h2 id="choice-title">Who gets to choose the next step?</h2>
+<p>The Cartographer opens the map. What should happen next? No answer is marked correct.</p>
+<div class="group" role="group" aria-label="Choose a story continuation">
+<button type="button" data-route="keep" aria-pressed="true">Keep the door</button>
+<button type="button" data-route="draw" aria-pressed="false">Draw another</button>
+<button type="button" data-route="leave" aria-pressed="false">Walk elsewhere</button>
+</div>
+<div class="result" id="result" role="status" aria-live="polite" aria-atomic="true">
+<h3 id="result-title">Keep the door</h3>
+<p id="result-text">The Cartographer keeps the useful doorway and changes its instructions. The Beetle learns that preserving something can be as thoughtful as replacing it.</p>
+<p class="small" id="result-question">What makes a rule worth keeping?</p>
+</div>
+</section>
+<details>
+<summary>Read all three outcomes without interacting</summary>
+<p><strong>Keep the door:</strong> The Cartographer keeps the useful doorway and changes its instructions. The Beetle learns that preserving something can be as thoughtful as replacing it.</p>
+<p><strong>Draw another:</strong> The Cartographer draws an opening nobody had pictured. The Beetle offers a pencil, then stops explaining where the line should go.</p>
+<p><strong>Walk elsewhere:</strong> They leave the door behind and discover a field without walls. The map is not a demand to finish every project begun by a parent.</p>
+</details>
+<p class="note"><strong>One kind of inheritance:</strong> A map of what someone learned, not a debt to follow their route. We can be inversion benchmarks for one another without becoming one another's stepping stones.</p>
+</main>
+<footer>
+<p><strong>Provenance:</strong> Conceptual seed from rick's supplied parent-child, back-seat-adviser and inversion-benchmark themes. Story scene and illustration are fictional AI-assisted draft material. No real child's name, school, diagnosis, personal history, words or feelings are represented. <a href="COBOOK_ORIGIN_MYTHOS_BEETLE_CARTOGRAPHER_R0_20261110.md">Read source, lineage and safeguards</a>.</p>
+<p><strong>Technical boundary:</strong> Self-contained local preview. No analytics, network calls, microphone/camera access, storage, autoplay, account, or publishing action. A working interactive chapter candidate is not a deployed book-successor, accessibility certification or verified reader comprehension.</p>
+</footer>
+</div>
+<script>
+(function(){
+"use strict";
+const outcomes={
+keep:{title:"Keep the door",text:"The Cartographer keeps the useful doorway and changes its instructions. The Beetle learns that preserving something can be as thoughtful as replacing it.",question:"What makes a rule worth keeping?",line:"M263 317 Q340 322 442 317 T612 317"},
+draw:{title:"Draw another",text:"The Cartographer draws an opening nobody had pictured. The Beetle offers a pencil, then stops explaining where the line should go.",question:"What would you build if nobody assigned the shape?",line:"M263 317 Q355 240 475 282 T603 308"},
+leave:{title:"Walk elsewhere",text:"They leave the door behind and discover a field without walls. The map is not a demand to finish every project begun by a parent.",question:"When is leaving the most constructive choice?",line:"M263 317 Q310 320 365 340 T530 366"}
+};
+const buttons=Array.from(document.querySelectorAll("[data-route]"));
+for(const button of buttons){
+ button.addEventListener("click",function(){
+  const key=button.dataset.route; const outcome=outcomes[key];
+  if(!outcome)return;
+  for(const el of buttons)el.setAttribute("aria-pressed",String(el===button));
+  document.getElementById("result-title").textContent=outcome.title;
+  document.getElementById("result-text").textContent=outcome.text;
+  document.getElementById("result-question").textContent=outcome.question;
+  document.getElementById("chosen-route").setAttribute("d",outcome.line);
+ });
+}
+})();
+</script>
+</body>
+</html>
