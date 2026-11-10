@@ -249,3 +249,107 @@ jobs:
           path: out/comvp-copre/selected-source-head.json
           if-no-files-found: error
           retention-days: 30
+
+  cold-consumer:
+    name: cold-consumer
+    needs: cli-first-use
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Fetch distinct CI-job input from the producer artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: comvp-copre-issue403-review-${{ github.run_id }}-a${{ github.run_attempt }}
+          path: ${{ runner.temp }}/copre-cold-in
+      - name: Cold check real issue, source hash, STOP and F2 controls
+        run: |
+          python3 -B - <<'PY'
+          import datetime, hashlib, json, os, re, time, urllib.request
+          from pathlib import Path
+          t0=time.monotonic()
+          root=Path(os.environ['RUNNER_TEMP'])/'copre-cold-in'
+          files=sorted(x.name for x in root.iterdir())
+          if files != ['README.md','issue403-source-bound-candidate.json']:
+              raise SystemExit('HELD_INPUT_FILESET_MISMATCH')
+          f=root/'issue403-source-bound-candidate.json'
+          if f.is_symlink() or f.stat().st_size>131072:
+              raise SystemExit('HELD_UNSAFE_INPUT')
+          p=json.loads(f.read_text(encoding='utf-8'))
+          if (p.get('status')!='SOURCE_TASK_CLI_GENERATED_ONLY' or p.get('receiver_ack')!='UNPROVEN'
+              or p.get('task_mvp')!='NOT_QUALIFIED' or p.get('effects_performed')!=0):
+              raise SystemExit('HELD_PRODUCER_FALSE_PROMOTION')
+          pack=p.get('pack',{})
+          if pack.get('authority_ceiling')!='READ_ONLY' or pack.get('effects')!=0 or not pack.get('stop_predicate'):
+              raise SystemExit('HELD_NO_READONLY_STOP')
+          enc=lambda x:json.dumps(x,sort_keys=True,separators=(',',':'),ensure_ascii=False).encode('utf-8')
+          sha=lambda x:hashlib.sha256(enc(x)).hexdigest()
+          core={k:v for k,v in pack.items() if k not in ('pack_sha256','status','footer')}
+          if sha(core)!=p.get('pack_sha256') or p['pack_sha256']!=pack.get('pack_sha256'):
+              raise SystemExit('HELD_PRODUCER_PACK_HASH')
+          u='https://api.github.com/repos/CoCivium/CoCivium/issues/403'
+          req=urllib.request.Request(u,headers={'User-Agent':'CoMVP-cold-consumer','Accept':'application/vnd.github+json'})
+          with urllib.request.urlopen(req,timeout=12) as response:
+              b=response.read(131073)
+              if response.status!=200 or len(b)>131072:
+                  raise SystemExit('HELD_SOURCE_UNAVAILABLE')
+          issue=json.loads(b)
+          if issue.get('number')!=403 or issue.get('state')!='open' or issue.get('html_url')!='https://github.com/CoCivium/CoCivium/issues/403':
+              raise SystemExit('HELD_SOURCE_IDENTITY')
+          body=issue.get('body')
+          if not isinstance(body,str) or 'CoMVP.CoPrePilot.20261109' not in body:
+              raise SystemExit('HELD_SOURCE_TASK_NOT_FOUND')
+          source={'issue':403,'url':issue['html_url'],'state':issue['state'],'title':issue.get('title'),'body':body}
+          revision='sha256:'+sha(source)
+          pointer=p.get('pointer',{})
+          if (revision!=pointer.get('source_revision') or revision!=p.get('source_revision')
+              or pointer.get('work_id')!='CoMVP.CoPrePilot.20261109' or pointer.get('source_ref')!=issue['html_url']):
+              raise SystemExit('HELD_STALE_OR_FORGED_POINTER')
+          if len(enc(pointer))!=p.get('pointer_bytes'):
+              raise SystemExit('HELD_POINTER_LENGTH_MISMATCH')
+          pending=re.findall(r'^- \[ \] (.+)$',body,flags=re.M)
+          if not 1<=len(pending)<=24 or 'STOP:' not in body:
+              raise SystemExit('HELD_ACCEPTANCE_OR_STOP_MISSING')
+          if sha({**source,'body':body+' CHANGED'})==sha(source):
+              raise SystemExit('HELD_BODY_CHANGE_INVISIBLE')
+          if sha(source)!=sha({**source}):
+              raise SystemExit('HELD_NONDETERMINISTIC_SOURCE_ID')
+          reader='github-actions:cold-consumer:'+os.environ['GITHUB_RUN_ID']+':'+os.environ['GITHUB_RUN_ATTEMPT']
+          receipt={
+              'schema':'CoMVP.CIColdConsumerR0.candidate',
+              'state':'CI_COLD_PUBLIC_TASK_RECONSTRUCTED_NOT_END_USER_MVP',
+              'work_id':pointer['work_id'],'reader_id':reader,'source_uri':issue['html_url'],
+              'observed_at_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),
+              'source_revision':revision,'source_activity_updated_at':issue.get('updated_at'),
+              'producer_pack_sha256':p['pack_sha256'],'pending_acceptance':pending,
+              'pending_count':len(pending),'stop_rule':pack['stop_predicate'],
+              'authority':'READ_ONLY','effects_performed':0,
+              'ci_readback_seconds':round(time.monotonic()-t0,3),'human_relays_within_ci':0,
+              'pointer_bytes':p['pointer_bytes'],'prompt_bytes':p['prompt_bytes'],
+              'task_mvp':'NOT_QUALIFIED','external_receiver_ack':False,
+              'source_independence':False,'independent_human_first_use':False,
+              'nonclaims':['SAME_GITHUB_FAILURE_DOMAIN','CI_JOB_NE_COALL_RECEIVER','NO_USER_UX_ACCEPTANCE','NO_24H_SURVIVAL','NOT_INTEGRATED','NOT_COEX']
+          }
+          dest=Path('out/comvp-copre/cold-consumer')
+          dest.mkdir(parents=True,exist_ok=True)
+          (dest/'receiver-observation.json').write_text(json.dumps(receipt,indent=2,sort_keys=True)+'\n',encoding='utf-8')
+          card=['# CoPre cold job | real task reconstruction','',
+              '**CoHereNow:** Public issue #403 read successfully in a distinct CI job; independent user acceptance remains HELD.','',
+              '**Next:** obtain a permitted independent receiver-origin useful task result without Rick relay.','',
+              '## Open acceptance ('+str(len(pending))+')',*('- '+x for x in pending),'',
+              'Source: '+revision,'Authority: READ_ONLY; effects: 0.','',
+              'Same GitHub trust/failure domain; CI seconds are not user time-to-value.']
+          (dest/'README.md').write_text('\n'.join(card)+'\n',encoding='utf-8')
+          print('PASS_COLD_CI_READER_SOURCE_IDENTITY',revision,'PENDING',len(pending))
+          PY
+      - name: Retain separate machine-reader task receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: comvp-copre-cold-consumer-${{ github.run_id }}-a${{ github.run_attempt }}
+          path: out/comvp-copre/cold-consumer/
+          retention-days: 30
+          if-no-files-found: error
