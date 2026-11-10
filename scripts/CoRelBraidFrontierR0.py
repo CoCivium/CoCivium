@@ -80,14 +80,6 @@ def validate(payload):
         else:
             require(t["receipt_ref"] is None, "NON_DONE_MUST_NOT_HAVE_RECEIPT")
     require(edges <= MAX_EDGES, "EDGE_BUDGET")
-    by_id = {t["id"]: t for t in tasks}
-    for t in tasks:
-        if t["state"] == "DECLARED_DONE":
-            # An impossible completion order must never open a downstream path.
-            # Even valid declared receipts remain UNVERIFIED, not receiver ACKs.
-            require(all(by_id[dep]["state"] == "DECLARED_DONE"
-                        for dep in t["depends_on"]),
-                    "DECLARED_DONE_WITH_INCOMPLETE_PREREQUISITE")
     indeg = {i: 0 for i in ids}
     child = {i: [] for i in ids}
     for t in tasks:
@@ -108,6 +100,14 @@ def validate(payload):
                     nxt.append(v)
         wave = sorted(nxt)
     require(visited == len(ids), "CAUSAL_CYCLE_REJECTED")
+    by_id = {t["id"]: t for t in tasks}
+    for t in tasks:
+        if t["state"] == "DECLARED_DONE":
+            # Check order only after detecting cycles, so the root cause wins.
+            # A declared receipt is still unverified until receiver-origin proof.
+            require(all(by_id[dep]["state"] == "DECLARED_DONE"
+                        for dep in t["depends_on"]),
+                    "DECLARED_DONE_WITH_INCOMPLETE_PREREQUISITE")
     return levels
 
 
