@@ -98,7 +98,12 @@ Check 'startup audit declares partial coverage' {
   $r=Probe @('-Mode','Audit')
   Ensure ($r.exit -eq 0) $r.text
   $j=$r.text|ConvertFrom-Json
-  Ensure ($j.startup_scan_coverage -eq 'NAME_FILTERED_ONLY__ACTION_ARGUMENTS_NOT_INSPECTED') 'Overclaimed complete scan'
+  Ensure ($j.startup_scan_coverage -eq 'TASK_NAME_OR_EXECUTABLE__RUN_AND_SHORTCUT_NAMES_ONLY__ARGUMENTS_NOT_SCANNED') 'Overclaimed complete scan'
+}
+Check 'scheduled task identity checks action executable not arguments' {
+  $src=Get-Content -LiteralPath $TargetScript -Raw
+  Ensure ($src.Contains("$"+"task.Actions")) 'Missing competing task action scan'
+  Ensure ($src.Contains('CoCivium|CoAll.?Desktop')) 'Executable identity matcher missing'
 }
 Check 'disable requires own task provenance' {
   $src=Get-Content -LiteralPath $TargetScript -Raw
