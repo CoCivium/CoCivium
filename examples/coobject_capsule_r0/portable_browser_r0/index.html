@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; object-src 'none'; frame-src 'none'; form-action 'none'">
+<meta name="description" content="A complete offline CoObject file recovery task: pack, verify, simulate loss, and recover with explicit proof boundaries.">
+<title>CoObject+ | Portable Recovery Prodlet R0</title>
+<style>
+:root{color-scheme:dark;--bg:#0c1118;--ink:#edf2f6;--muted:#aebfce;--edge:#344254;--panel:#171f2a;--teal:#84ddcb;--violet:#c5adef;--coral:#ffad9d;--amber:#f1c88d}
+*{box-sizing:border-box}html{font-size:16px}body{margin:0;background:radial-gradient(ellipse at 95% -10%,#27334b 0,transparent 50%),var(--bg);color:var(--ink);font:1rem/1.5 system-ui,-apple-system,Segoe UI,sans-serif}button,input{font:inherit}button{cursor:pointer}button:disabled{cursor:not-allowed;opacity:.48}button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(--amber);outline-offset:3px}a{color:var(--teal)}.wrap{max-width:1000px;margin:0 auto;padding:32px 18px 64px}.eyebrow{color:var(--teal);font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;font-weight:800}h1{font-size:clamp(2rem,5vw,3.4rem);line-height:1.1;letter-spacing:-.035em;margin:.55rem 0 1rem}h2{font-size:1.12rem;margin:0 0 10px}p{margin:.45rem 0 .9rem}.sub{font-size:1.1rem;color:#c7d6e2;max-width:740px}.caveat{padding:12px 15px;border-left:4px solid var(--amber);background:#302a22;border-radius:8px;margin:18px 0}.layout{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:14px}.panel{border:1px solid var(--edge);border-radius:16px;padding:18px;background:var(--panel);min-width:0}.stack{display:grid;gap:14px}.field{display:grid;gap:5px;margin:13px 0}.field label{font-weight:700}.field input{padding:10px;color:var(--ink);background:#111923;border:1px solid #566780;border-radius:9px;width:100%;max-width:100%}.field input[type=file]{font-size:.88rem}.buttons{display:flex;flex-wrap:wrap;gap:9px;margin:12px 0}.btn{background:#1b3d45;color:#f2fffc;border:1px solid #4d7a83;border-radius:9px;padding:10px 13px;font-weight:740;min-height:43px}.btn.primary{background:#277363;border-color:#5cb4a5}.btn.warning{background:#533734;border-color:#985c57}.state{display:inline-block;border:1px solid var(--edge);border-radius:999px;padding:3px 10px;color:var(--amber);font-weight:800;font-size:.8rem;overflow-wrap:anywhere}.state.good{color:var(--teal)}.state.bad{color:var(--coral)}.orb{width:92px;height:92px;border-radius:50%;background:radial-gradient(circle at 30% 28%,#dcfcf0,#5da8ae 32%,#64549f 70%);border:2px solid #a6c2d5;box-shadow:0 0 22px #4dc6bb33}.orb.bad{filter:hue-rotate(155deg) saturate(.7)}.orbrow{display:flex;align-items:center;gap:20px;margin:12px 0}.grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}.metric{background:#111925;border:1px solid var(--edge);border-radius:11px;padding:11px}.metric b{display:block;font-size:1.02rem;overflow-wrap:anywhere}.metric small{font-size:.78rem;color:var(--muted)}.small{font-size:.85rem;color:var(--muted)}.trace{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:.78rem;overflow-wrap:anywhere;padding:12px;background:#0c1621;border:1px solid var(--edge);border-radius:9px;white-space:pre-wrap;max-height:250px;overflow:auto}.row{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid #334150;font-size:.92rem}.row span:last-child{text-align:right}.amber{color:var(--amber)}.teal{color:var(--teal)}.muted{color:var(--muted)}footer{border-top:1px solid var(--edge);margin-top:25px;padding-top:18px;color:var(--muted);font-size:.83rem}details{margin-top:12px}summary{cursor:pointer;font-weight:700;color:var(--violet)}code{overflow-wrap:anywhere}@media(max-width:780px){.layout{grid-template-columns:1fr}.wrap{padding:18px 12px 42px}.panel{padding:15px}}@media(max-width:420px){.grid{grid-template-columns:1fr}.orbrow{gap:12px}.orb{width:68px;height:68px}.buttons .btn{flex:1 1 auto}}@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body><main class="wrap">
+<div class="eyebrow">CoCivium / CoObject+ / CoGrace+ / OVP+</div>
+<h1>One file. One portable object.<br><span style="color:var(--teal)">An honest recovery path.</span></h1>
+<p class="sub">A real, offline file task. Select a file, package exact bytes, export a self-contained capsule, reopen it in another browser, test loss, and restore what survives. No server, account, provider, or automatic effects.</p>
+<div class="caveat" role="note"><b>Proof boundary:</b> Two copies within one downloaded JSON file share a failure domain. SHA-256 checks internal integrity, not authorship. This browser does not prove remote custody, X2 health, human acceptance, 24-hour uptime, or that a capsule is better than copying a file directly.</div>
+<div class="layout">
+<div class="stack">
+<section class="panel" aria-label="Create or import portable CoObject">
+<h2>1. Pick one task</h2>
+<div class="field"><label for="source">A. Select a local file, maximum 256 KiB</label><input type="file" id="source" aria-describedby="privacyNotice"></div>
+<p id="privacyNotice" class="small">The chosen file stays in browser memory. No upload, fetch, storage, or automatic execution. Closing or resetting is not a guaranteed forensic memory wipe. Avoid sensitive data unless you accept local-export risk.</p>
+<div class="buttons"><button id="pack" class="btn primary" disabled>Package CoObject</button><button id="direct" class="btn" disabled>Simple copy baseline</button></div>
+<div class="field"><label for="capsuleFile">B. Or import an exported capsule</label><input type="file" id="capsuleFile" accept=".json,application/json"></div>
+<div class="buttons"><button id="inspect" class="btn" disabled>Inspect imported capsule</button><button id="reset" class="btn">Forget local object reference</button></div>
+</section>
+<section class="panel" aria-label="Recover or challenge object">
+<h2>2. Test, recover, export</h2>
+<p class="small">This is an explicit, reversible experiment on the object in memory. The original file and any previously exported capsule are untouched.</p>
+<div class="buttons"><button id="exportCapsule" class="btn primary" disabled>Export portable capsule</button><button id="simulateLoss" class="btn" disabled>Simulate copy A loss</button><button id="tamperAll" class="btn warning" disabled>Corrupt both copies</button><button id="restore" class="btn primary" disabled>Restore exact file</button><button id="receipt" class="btn" disabled>Export local receipt</button></div>
+<p class="small">Exports use ordinary browser downloads initiated by a click; browser download names are suggestions, not writes into existing files. A corrupt object fails closed.</p>
+</section>
+</div>
+<div class="stack">
+<section class="panel" aria-label="One transparent proof gauge">
+<h2>CoOrb · Source integrity, not machine health</h2>
+<div class="orbrow"><div class="orb" id="orb" aria-hidden="true"></div><div><div id="state" class="state" role="status" aria-live="polite">EMPTY</div><p class="small" id="stateText">No file selected or imported.</p></div></div>
+<div class="grid">
+<div class="metric"><small>Valid local byte copies</small><b id="copies">0 / 0</b></div>
+<div class="metric"><small>Selected content</small><b id="contentSize">UNKNOWN</b></div>
+<div class="metric"><small>Independent receiver ACK</small><b>UNKNOWN</b></div>
+<div class="metric"><small>External effects</small><b>NONE</b></div>
+</div>
+<h2 style="margin-top:18px">Evidence receipt</h2>
+<pre class="trace" id="trace" aria-live="polite">No local observation yet.</pre>
+</section>
+<section class="panel" aria-label="Scope and comparison">
+<h2>3. Is the capsule actually better?</h2>
+<div class="row"><span>Direct simple copy</span><span id="directSize" class="muted">UNKNOWN</span></div>
+<div class="row"><span>Portable 2-copy capsule</span><span id="capsuleSize" class="muted">UNKNOWN</span></div>
+<div class="row"><span>Extra storage overhead</span><span id="overhead" class="muted">UNKNOWN</span></div>
+<div class="row"><span>Detection/recovery benefit</span><span class="amber">Locally testable only</span></div>
+<div class="row"><span>Real human time saved</span><span class="amber">UNKNOWN</span></div>
+<p class="small">A simple copy may be faster, smaller and entirely sufficient. The capsule pays for checks, metadata and recovery options with size and complexity. No universal winner.</p>
+<details><summary>Object contract and recovery limits</summary><p class="small">Identity is content-derived. State and observation time belong to this browser only; the local clock is untrusted. All imported bytes are data, even if they contain scripts. Manifest hashes do not authenticate original publishers. No external rights or consent are inferred. Unknown is not zero. Source selection, package, transport, inspection, challenge and restore are distinct events.</p></details>
+</section>
+</div>
+</div>
+<footer>CoObject Portable Browser Prodlet R0 · PUBLIC-SAFE SOURCE REVIEW CANDIDATE · NOT CANON / NOT HOSTED APP / NOT COEX ACK / NOT X2 RUNTIME. Every action is user-initiated. <a href="https://github.com/CoCivium/CoCivium/pull/446" target="_blank" rel="noopener noreferrer">Source review PR #446</a>.</footer>
+</main>
+<script>
+'use strict';
+(() => {
+const SCHEMA='CoCivium.CoObject.PortableBrowserCapsule.R0';
+const MAX=256*1024;
+const fields=['schema','manifest','payload_a_b64','payload_b_b64'];
+const manifestFields=['object_id','source_name','content_sha256','content_bytes','copies','authority','privacy','minimum_use','created_utc','origin_authentication','recovery_scope'];
+const $=id=>document.getElementById(id);
+let capsule=null, selected=null, inspection=null, event='EMPTY', lastError='', observed=null;
+const sameKeys=(obj,ks)=>!!obj&&typeof obj==='object'&&!Array.isArray(obj)&&Object.keys(obj).length===ks.length&&ks.every(k=>Object.hasOwn(obj,k));
+const safeName=n=>{let x=String(n||'object.bin').replace(/[\\/\u0000-\u001f\u007f<>:"|?*]/g,'_').slice(0,100).replace(/^\.+/,'_');return x||'object.bin'};
+const hasSubtle=()=>!!(globalThis.crypto&&crypto.subtle);
+function hex(bytes){return Array.from(bytes,b=>b.toString(16).padStart(2,'0')).join('')}
+async function sha(bytes){if(!hasSubtle())throw Error('NO_SECURE_CRYPTO_CONTEXT');return hex(new Uint8Array(await crypto.subtle.digest('SHA-256',bytes)))}
+function b64(bytes){let t='';for(let p=0;p<bytes.length;p+=8192)t+=String.fromCharCode(...bytes.slice(p,p+8192));return btoa(t)}
+function from64(encoded){if(typeof encoded!=='string'||encoded.length>Math.ceil(MAX/3)*4+8||encoded.length%4===1||!/^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$/.test(encoded))throw Error('UNSAFE_OR_OVERSIZE_COPY');const raw=atob(encoded),bytes=Uint8Array.from(raw,c=>c.charCodeAt(0));if(bytes.length>MAX||b64(bytes)!==encoded)throw Error('INVALID_BASE64_COPY');return bytes}
+function nbytes(n){return Number.isInteger(n)?n.toLocaleString('en-US')+' bytes':'UNKNOWN'}
+function down(data, name, type){const u=URL.createObjectURL(new Blob([data],{type}));const a=document.createElement('a');a.download=safeName(name);a.href=u;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),5000)}
+function guard(c,code){if(!c)throw Error(code)}
+async function inspectCapsule(c){
+ guard(sameKeys(c,fields),'INVALID_CAPSULE_FIELDS');const m=c.manifest;
+ guard(sameKeys(m,manifestFields),'INVALID_MANIFEST_FIELDS');
+ guard(m.schema===undefined && c.schema===SCHEMA,'INVALID_SCHEMA');
+ guard(typeof m.object_id==='string'&&/^coobj-[a-f0-9]{20}$/.test(m.object_id),'INVALID_OBJECT_ID');
+ guard(typeof m.content_sha256==='string'&&/^[a-f0-9]{64}$/.test(m.content_sha256),'INVALID_SOURCE_HASH');
+ guard(Number.isInteger(m.content_bytes)&&m.content_bytes>=0&&m.content_bytes<=MAX,'INVALID_CONTENT_LENGTH');
+ guard(typeof m.source_name==='string'&&m.source_name===safeName(m.source_name)&&m.source_name.length<=100,'INVALID_SOURCE_NAME');
+ guard(Array.isArray(m.copies)&&m.copies.length===2&&m.copies[0]==='payload_a_b64'&&m.copies[1]==='payload_b_b64','COPY_LAYOUT_INVALID');
+ guard(m.authority==='DATA_ONLY_NO_EXECUTION'&&m.privacy==='USER_CHOSEN_BROWSER_LOCAL','AUTHORITY_OR_PRIVACY_ESCALATION');
+ guard(m.origin_authentication==='NOT_VERIFIED'&&m.recovery_scope==='SINGLE_JSON_SHARED_FAILURE_DOMAIN','FALSE_AUTHENTICATION_OR_REDUNDANCY');
+ guard(m.minimum_use==='Restore exact bytes from one valid local copy','INVALID_PURPOSE');
+ guard(typeof m.created_utc==='string'&&m.created_utc.length<=40&&!Number.isNaN(Date.parse(m.created_utc)),'INVALID_LOCAL_TIME');
+ guard(m.object_id==='coobj-'+m.content_sha256.slice(0,20),'ID_DIGEST_MISMATCH');
+ let valid=[],status={};
+ for(const k of m.copies){
+   if(c[k]===null){status[k]='MISSING';continue;}
+   let bs;
+   try{bs=from64(c[k]);}catch(_){status[k]='CORRUPT_OR_UNSAFE';continue;}
+   if(bs.length===m.content_bytes&&(await sha(bs))===m.content_sha256){status[k]='VALID';valid.push(k)}else status[k]='CORRUPT_OR_WRONG_BYTES';
+ }
+ return {valid,status,state:valid.length===2?'READY_LOCAL_TWO_COPIES':valid.length===1?'DEGRADED_ONE_COPY':'HELD_NO_VALID_BYTES'};
+}
+function stateRender(){
+ const v=inspection?.valid||[];
+ $('state').textContent=inspection?inspection.state:event;
+ $('state').className='state '+(inspection?.state==='READY_LOCAL_TWO_COPIES'?'good':inspection?.state==='HELD_NO_VALID_BYTES'||event==='HELD_INVALID_CAPSULE'?'bad':'');
+ $('stateText').textContent=lastError?('Held: '+lastError):(inspection?.state==='READY_LOCAL_TWO_COPIES'?'Both local byte copies match the embedded digest; original authorship is unverified.':inspection?.state==='DEGRADED_ONE_COPY'?'One copy remains valid and recovery can be attempted.':inspection?.state==='HELD_NO_VALID_BYTES'?'No trustworthy local byte copy remains. Restore is prohibited.':event==='FILE_SELECTED'?'File selected; package only if the local browser supports SHA-256.':'No verified capsule in memory.');
+ $('orb').classList.toggle('bad',event==='HELD_INVALID_CAPSULE'||inspection?.state==='HELD_NO_VALID_BYTES');
+ $('copies').textContent=inspection?v.length+' / 2':'0 / 0';
+ $('contentSize').textContent=capsule?nbytes(capsule.manifest.content_bytes):'UNKNOWN';
+ $('pack').disabled=!selected||!hasSubtle();$('direct').disabled=!selected;
+ $('inspect').disabled=!$('capsuleFile').files?.length||!hasSubtle();
+ $('exportCapsule').disabled=!capsule||!inspection?.valid.length;
+ $('simulateLoss').disabled=!capsule||!inspection?.valid.includes('payload_a_b64');
+ $('tamperAll').disabled=!capsule||!inspection?.valid.length;
+ $('restore').disabled=!capsule||!inspection?.valid.length;
+ $('receipt').disabled=!capsule;
+ $('trace').textContent=JSON.stringify({event,observed_local_utc:observed,object_id:capsule?.manifest.object_id||null,content_sha256:capsule?.manifest.content_sha256||null,valid_copies:inspection?.valid||[],copy_states:inspection?.status||null,external_receiver_ack:null,origin_authentication:false,independent_storage:false,x2_runtime:false,external_effects:'NONE',error:lastError||null},null,2);
+ $('directSize').textContent=selected?nbytes(selected.size):capsule?nbytes(capsule.manifest.content_bytes):'UNKNOWN';
+ if(capsule){const size=new TextEncoder().encode(JSON.stringify(capsule,null,2)+'\n').byteLength;const raw=capsule.manifest.content_bytes;$('capsuleSize').textContent=nbytes(size);$('overhead').textContent=raw===0?'Not comparable for empty file':(size/raw).toFixed(2)+'× of raw file size';}else{$('capsuleSize').textContent='UNKNOWN';$('overhead').textContent='UNKNOWN';}
+}
+function mark(e,error=''){event=e;lastError=error;observed=new Date().toISOString();stateRender()}
+async function transact(fn){try{await fn()}catch(err){capsule=null;inspection=null;mark('HELD_INVALID_CAPSULE',String(err.message||err))}}
+$('source').addEventListener('change',()=>{selected=$('source').files?.[0]||null;capsule=null;inspection=null;mark(selected?'FILE_SELECTED':'EMPTY')});
+$('capsuleFile').addEventListener('change',()=>{selected=null;capsule=null;inspection=null;mark($('capsuleFile').files?.length?'CAPSULE_FILE_SELECTED':'EMPTY')});
+$('pack').addEventListener('click',()=>transact(async()=>{
+ guard(selected&&selected.size<=MAX,'FILE_OVER_256K_OR_MISSING');const bytes=new Uint8Array(await selected.arrayBuffer());guard(bytes.length<=MAX,'FILE_TOO_LARGE');const d=await sha(bytes);
+ const packed={schema:SCHEMA,manifest:{object_id:'coobj-'+d.slice(0,20),source_name:safeName(selected.name),content_sha256:d,content_bytes:bytes.length,copies:['payload_a_b64','payload_b_b64'],authority:'DATA_ONLY_NO_EXECUTION',privacy:'USER_CHOSEN_BROWSER_LOCAL',minimum_use:'Restore exact bytes from one valid local copy',created_utc:new Date().toISOString(),origin_authentication:'NOT_VERIFIED',recovery_scope:'SINGLE_JSON_SHARED_FAILURE_DOMAIN'},payload_a_b64:b64(bytes),payload_b_b64:b64(bytes)};
+ const inspected=await inspectCapsule(packed);guard(inspected.valid.length===2,'PACK_INTEGRITY_FAILED');capsule=packed;inspection=inspected;mark('PACKED_LOCAL');
+}));
+$('direct').addEventListener('click',()=>transact(async()=>{guard(selected,'NO_FILE_SELECTED');down(await selected.arrayBuffer(),selected.name,'application/octet-stream');mark('DIRECT_COPY_REQUESTED')}));
+$('inspect').addEventListener('click',()=>transact(async()=>{
+ const file=$('capsuleFile').files?.[0];guard(file&&file.size<=2*1024*1024,'CAPSULE_OVERSIZE_OR_MISSING');const json=JSON.parse(await file.text());const checked=await inspectCapsule(json);capsule=json;inspection=checked;mark('IMPORTED_LOCAL_CAPSULE');
+}));
+$('exportCapsule').addEventListener('click',()=>{if(!inspection?.valid.length)return;down(JSON.stringify(capsule,null,2)+'\n',capsule.manifest.object_id+'.json','application/json');mark('EXPORT_REQUESTED')});
+$('simulateLoss').addEventListener('click',()=>transact(async()=>{guard(capsule&&inspection?.valid.includes('payload_a_b64'),'NO_VALID_COPY_A');capsule.payload_a_b64=null;inspection=await inspectCapsule(capsule);mark('SIMULATED_COPY_LOSS')}));
+$('tamperAll').addEventListener('click',()=>transact(async()=>{guard(capsule,'NO_CAPSULE');capsule.payload_a_b64='INVALID###';capsule.payload_b_b64='INVALID###';inspection=await inspectCapsule(capsule);mark('SIMULATED_BOTH_COPIES_CORRUPT')}));
+$('restore').addEventListener('click',()=>transact(async()=>{guard(capsule&&inspection?.valid.length,'NO_VALID_SOURCE_COPY');const key=inspection.valid[0];const bytes=from64(capsule[key]);guard(bytes.length===capsule.manifest.content_bytes&&(await sha(bytes))===capsule.manifest.content_sha256,'SOURCE_CHANGED_AFTER_CHECK');down(bytes,'restored-'+capsule.manifest.source_name,'application/octet-stream');mark('RESTORE_DOWNLOAD_REQUESTED')}));
+$('receipt').addEventListener('click',()=>{if(!capsule)return;const payload={schema:'CoCivium.CoObject.PortableBrowserReceipt.R0',local_observation:observed,object_id:capsule.manifest.object_id,content_sha256:capsule.manifest.content_sha256,byte_count:capsule.manifest.content_bytes,copy_integrity:inspection?.status||{},valid_copy_count:inspection?.valid.length||0,source_authentication_verified:false,independent_receiver_ack:null,offline_browser_only:true,real_effects:'NONE',proof_scope:'USER_BROWSER_STRUCTURAL_CHECK_ONLY'};down(JSON.stringify(payload,null,2)+'\n',capsule.manifest.object_id+'-local-receipt.json','application/json');mark('LOCAL_RECEIPT_EXPORT_REQUESTED')});
+$('reset').addEventListener('click',()=>{selected=null;capsule=null;inspection=null;$('source').value='';$('capsuleFile').value='';mark('EMPTY')});
+mark('EMPTY');
+})();
+</script>
+</body></html>
