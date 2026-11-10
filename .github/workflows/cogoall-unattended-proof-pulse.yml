@@ -9,6 +9,8 @@ on:
       - 'test_scheduled_pulse_readback_r0.py'
       - 'examples/cotalkitout/due_work_catchup_r0.py'
       - 'test_due_work_catchup_r0.py'
+      - 'scripts/CoGoAllDueWorkSourceCanaryR0.py'
+      - 'test_cogoall_due_work_source_canary_r0.py'
       - 'scripts/CoReboundIntegrityR0.py'
       - 'scripts/copre_seed_24h_canary_r0.py'
       - 'scripts/test_copre_seed_24h_canary_r0.py'
@@ -194,4 +196,60 @@ jobs:
             out/copre-seed24h/current.json
             out/copre-seed24h/prior/copre-seed24h-observation.json
           if-no-files-found: warn
+          retention-days: 30
+
+  task-producer:
+    # One new run-scoped, code-owned READ-ONLY WorkID; never an existing
+    # external backlog or live X2 / CoStead task.
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Challenge the source-bound due-work and receipt contract
+        run: python -B -m unittest -v test_cogoall_due_work_source_canary_r0
+      - name: Claim and execute one bounded read-only source WorkID
+        run: |
+          python -B scripts/CoGoAllDueWorkSourceCanaryR0.py produce \
+            --root . --bundle out/cogoall/due-work
+      - name: Save exact run-scoped task, queue, and checkpoint
+        uses: actions/upload-artifact@v4
+        with:
+          name: cogoall-one-due-work-${{ github.run_id }}-a${{ github.run_attempt }}
+          path: out/cogoall/due-work/
+          if-no-files-found: error
+          retention-days: 30
+
+  task-receiver:
+    # Separate CI job, SAME provider failure domain. No external ACK.
+    needs: task-producer
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Download exact WorkID checkpoint from producer
+        uses: actions/download-artifact@v4
+        with:
+          name: cogoall-one-due-work-${{ github.run_id }}-a${{ github.run_attempt }}
+          path: out/cogoall/due-work/
+      - name: Recompute validator and verify fenced SQLite completion
+        run: |
+          python -B scripts/CoGoAllDueWorkSourceCanaryR0.py readback \
+            --root . --bundle out/cogoall/due-work \
+            --readback out/cogoall/due-work-readback.json
+      - name: Preserve separate-job exact source readback
+        uses: actions/upload-artifact@v4
+        with:
+          name: cogoall-one-due-readback-${{ github.run_id }}-a${{ github.run_attempt }}
+          path: out/cogoall/due-work-readback.json
+          if-no-files-found: error
           retention-days: 30
