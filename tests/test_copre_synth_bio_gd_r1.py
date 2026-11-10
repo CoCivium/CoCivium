@@ -1,23 +1,39 @@
 """Fail-closed source and projection tests for CoPreGeneric Synth/Bio/G_d R1.
 
-Runs without network access or provider credentials. Verifies the local checkout,
-not independent receiver pickup, AGI, sentience, canon, or runtime handoff.
+Runs without network access or provider credentials. Requires full Git history
+so historical source blobs are fetched by exact Git object ID rather than by the
+mutable working-tree path. Not an independent receiver, canon or runtime proof.
 Run: python3 tests/test_copre_synth_bio_gd_r1.py
 """
 import copy
 import hashlib
 import json
+import subprocess
 import unittest
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 MACHINE = ROOT / "ai/continuity/copre-synth-bio-gd-coterms-r1-20261109.json"
 HUMAN = ROOT / "docs/CoPreGeneric/CoPre_SynthBio_Gd_CoTerms_Candidate_R1_20261109.md"
-PREDECESSOR = ROOT / "ai/continuity/conu-existentialism-candidate-field-r0.json"
+PINNED_R0_BLOB = "1e8b43f663f303eb75580ca4ebaea45e4cc26927"
+LATER_MAIN_R0_BLOB = "47fc2b9dbab4be5e6a7004e2b3ac89c6631a014f"
 
 
 def git_blob_sha(data):
     return hashlib.sha1(b"blob " + str(len(data)).encode("ascii") + b"\0" + data).hexdigest()
+
+
+def read_historical_blob(blob_id):
+    """Read immutable blob bytes, fail-closed if checkout omitted required history."""
+    if len(blob_id) != 40 or any(ch not in "0123456789abcdef" for ch in blob_id):
+        raise ValueError("invalid pinned blob ID")
+    result = subprocess.run(
+        ["git", "cat-file", "blob", blob_id], cwd=ROOT,
+        check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+    )
+    if git_blob_sha(result.stdout) != blob_id:
+        raise AssertionError("historical Git blob digest mismatch")
+    return result.stdout
 
 
 def validate(machine, human, predecessor_bytes):
@@ -100,10 +116,27 @@ class CoPreR1Qualification(unittest.TestCase):
     def setUpClass(cls):
         cls.payload = json.loads(MACHINE.read_text(encoding="utf-8"))
         cls.human = HUMAN.read_text(encoding="utf-8")
-        cls.predecessor = PREDECESSOR.read_bytes()
+        cls.predecessor = read_historical_blob(PINNED_R0_BLOB)
+        cls.observed_main = read_historical_blob(LATER_MAIN_R0_BLOB)
 
     def test_exact_checkout_contract(self):
         self.assertEqual(validate(self.payload, self.human, self.predecessor)["terms"], 72)
+
+    def test_historical_and_later_main_are_distinct_verified_blobs(self):
+        """The 24-node pin and the later 28-node observation are both real."""
+        old = json.loads(self.predecessor)
+        newer = json.loads(self.observed_main)
+        self.assertEqual(len(old["nodes"]), 24)
+        self.assertEqual(len(newer["nodes"]), 28)
+        self.assertEqual(git_blob_sha(self.predecessor), PINNED_R0_BLOB)
+        self.assertEqual(git_blob_sha(self.observed_main), LATER_MAIN_R0_BLOB)
+        obs = self.payload["predecessor_currentness_observation"]
+        self.assertEqual(obs["branch_blob_sha"], PINNED_R0_BLOB)
+        self.assertEqual(obs["main_observed_blob_sha"], LATER_MAIN_R0_BLOB)
+        originals = {node["label"] for node in old["nodes"]}
+        additions = {node["label"] for node in newer["nodes"]} - originals
+        recorded = {node["label"] for node in obs["new_main_candidates"]}
+        self.assertEqual(additions, recorded)
 
     def test_duplicate_term_id_fails(self):
         x = copy.deepcopy(self.payload)
