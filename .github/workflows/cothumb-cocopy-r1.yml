@@ -7,6 +7,7 @@ on:
       - 'scripts/test_coforeground_launch_gate_r0.py'
       - 'scripts/coforeground_launcher_triage_r0.py'
       - 'scripts/test_coforeground_launcher_triage_r0.py'
+      - 'docs/Architecture/COFOREGROUND_QUIET_BOOT_FUNCTION_SALVAGE_R0_20261110.md'
       - 'ai/coforeground_launch_manifest_r0.json'
       - '.github/workflows/cothumb-cocopy-r1.yml'
   pull_request:
@@ -16,6 +17,7 @@ on:
       - 'scripts/test_coforeground_launch_gate_r0.py'
       - 'scripts/coforeground_launcher_triage_r0.py'
       - 'scripts/test_coforeground_launcher_triage_r0.py'
+      - 'docs/Architecture/COFOREGROUND_QUIET_BOOT_FUNCTION_SALVAGE_R0_20261110.md'
       - 'ai/coforeground_launch_manifest_r0.json'
       - '.github/workflows/cothumb-cocopy-r1.yml'
   workflow_dispatch:
