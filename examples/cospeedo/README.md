@@ -36,6 +36,16 @@ The dated needle history above is **not live**. For more recent technical result
 
 These are **selected fronts**, not a complete or continuously monitored inventory. A red run must remain visible alongside green runs; later fixes do not erase earlier failures.
 
+## What happened while the user was away?
+
+**Last separately checked scheduled pulse:** On **2026-11-10 at 13:28 UTC**, the existing [CoGoAll unattended proof pulse](https://github.com/CoCivium/CoCivium/actions/runs/42824746546) completed **three GitHub Actions jobs**. A second job read back the first job's exact receipt and log hashes. That is real, bounded machine-run recovery evidence **inside the same GitHub Actions provider**, without a manual copy-and-paste relay.
+
+**Counter-needles remain visible:** The 24-hour canary returned **`HELD_LESS_THAN_24H`** for its pinned historical CoPre file, and the current mainline differs from that historical pin. The downstream receipt explicitly says `external_receiver_ack: false`, and X2 runtime, independent-host pickup, live human benefit, all-sessions sync, and exactly-once external effects remain unverified. **Three green jobs do not make seven green continuity gates.**
+
+**Evergreen heartbeat, proposed operating rule:** A heartbeat observes and records currentness; *qualified new evidence* may trigger a bounded reversible task. An unchanged state returns **`NO_MATERIAL_DELTA`** and stops. Missed wakes, stale observations, privacy conflicts, failed signatures or absent receiver readproof stay visible as **HELD**, not automatic retries without a budget. Public release, outreach and authority changes still require their separate gates. See the [CoLatch seven-gate contract](../../ai/colatch-ready-cycle-r0-20261110.json) and the [independent receiver acceptance task](https://github.com/CoCivium/CoCivium/issues/317).
+
+This is a **dated pulse receipt**, not an always-running intelligence, a guarantee of scheduled punctuality, or proof of metaphysical purpose. G_dSide belongs to optional philosophical inquiry, not a machine-health or authority claim.
+
 ## What would prove a real improvement?
 
 A useful needle should connect **a real intention → a bounded action → a receipt → an independent receiver → an observed human benefit**. The first few links exist in source-side experiments. The full chain, cost comparison and durable restart recovery are not yet verified.
