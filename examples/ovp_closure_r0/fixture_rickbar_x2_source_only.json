@@ -1,0 +1,194 @@
+{
+  "effect_request": "NONE",
+  "last_known_good_head": "UNKNOWN_NOT_INVENTED",
+  "native_escape_declared": true,
+  "nodes": [
+    {
+      "authority": "NONE_FROM_SOURCE",
+      "currentness": "FRESH_FOR_FIXTURE",
+      "depends_on": [
+        {
+          "id": "ollama-adapter",
+          "revision": "r0"
+        },
+        {
+          "id": "rickbar-output",
+          "revision": "r0"
+        },
+        {
+          "id": "receiver-feedback",
+          "revision": "r0"
+        }
+      ],
+      "digest_kind": "SYNTHETIC_FIXTURE_LABEL_NOT_REAL_SOURCE_BYTES",
+      "id": "rickbar-input",
+      "required": true,
+      "revision": "r0",
+      "role": "entry",
+      "source_digest": "sha256:5cbf376aa5812c154fc57ac09d905caad2ce1470f391b1b2675ae02fd3b6e3fe",
+      "source_ref": "synthetic://entry",
+      "state": "SOURCE_TESTED_ONLY"
+    },
+    {
+      "authority": "NONE_FROM_SOURCE",
+      "currentness": "FRESH_FOR_FIXTURE",
+      "depends_on": [
+        {
+          "id": "workid-store",
+          "revision": "r0"
+        },
+        {
+          "id": "human-consent",
+          "revision": "r0"
+        }
+      ],
+      "digest_kind": "SYNTHETIC_FIXTURE_LABEL_NOT_REAL_SOURCE_BYTES",
+      "id": "ollama-adapter",
+      "required": true,
+      "revision": "r0",
+      "role": "worker",
+      "source_digest": "sha256:2fd14a1092a540210fe97b875d7c346106c0ef6fab6f3c500db4fb5819c41b08",
+      "source_ref": "synthetic://worker",
+      "state": "SOURCE_TESTED_ONLY"
+    },
+    {
+      "authority": "NONE_FROM_SOURCE",
+      "currentness": "FRESH_FOR_FIXTURE",
+      "depends_on": [
+        {
+          "id": "workid-receipt",
+          "revision": "r0"
+        }
+      ],
+      "digest_kind": "SYNTHETIC_FIXTURE_LABEL_NOT_REAL_SOURCE_BYTES",
+      "id": "workid-store",
+      "required": true,
+      "revision": "r0",
+      "role": "state",
+      "source_digest": "sha256:1dbb6d5ecb023a7265510078c5315c28ac65c2892c889b831ec40c7c7cf2c5bc",
+      "source_ref": "synthetic://state",
+      "state": "SOURCE_TESTED_ONLY"
+    },
+    {
+      "authority": "NONE_FROM_SOURCE",
+      "currentness": "FRESH_FOR_FIXTURE",
+      "depends_on": [
+        {
+          "id": "workid-store",
+          "revision": "r0"
+        }
+      ],
+      "digest_kind": "SYNTHETIC_FIXTURE_LABEL_NOT_REAL_SOURCE_BYTES",
+      "id": "rickbar-output",
+      "required": true,
+      "revision": "r0",
+      "role": "view",
+      "source_digest": "sha256:9fd515fb4420c3cc6b27d8787ca7b20e730d0592530ba8b4606841d87f856f50",
+      "source_ref": "synthetic://view",
+      "state": "SOURCE_TESTED_ONLY"
+    },
+    {
+      "authority": "NONE_FROM_SOURCE",
+      "currentness": "FRESH_FOR_FIXTURE",
+      "depends_on": [
+        {
+          "id": "restart",
+          "revision": "r0"
+        }
+      ],
+      "digest_kind": "SYNTHETIC_FIXTURE_LABEL_NOT_REAL_SOURCE_BYTES",
+      "id": "workid-receipt",
+      "required": true,
+      "revision": "r0",
+      "role": "receipt",
+      "source_digest": "sha256:adeec03d684353abe48bb59c257dbbc148e5b2e0962907fae691b5c15cf0ae61",
+      "source_ref": "synthetic://receipt",
+      "state": "SOURCE_TESTED_ONLY"
+    },
+    {
+      "authority": "NONE_FROM_SOURCE",
+      "currentness": "FRESH_FOR_FIXTURE",
+      "depends_on": [
+        {
+          "id": "human-consent",
+          "revision": "r0"
+        }
+      ],
+      "digest_kind": "SYNTHETIC_FIXTURE_LABEL_NOT_REAL_SOURCE_BYTES",
+      "id": "restart",
+      "required": true,
+      "revision": "r0",
+      "role": "recovery",
+      "source_digest": "sha256:588dcdbd52773c2316fae402d540acbc3594bfe8e4299de4345300c0ac2adf21",
+      "source_ref": "synthetic://recovery",
+      "state": "SOURCE_TESTED_ONLY"
+    },
+    {
+      "authority": "NONE_FROM_SOURCE",
+      "currentness": "FRESH_FOR_FIXTURE",
+      "depends_on": [],
+      "digest_kind": "SYNTHETIC_FIXTURE_LABEL_NOT_REAL_SOURCE_BYTES",
+      "id": "human-consent",
+      "required": true,
+      "revision": "r0",
+      "role": "permission",
+      "source_digest": "sha256:f64e76c1d218265c5ed2d4bdd2ffc32cbc126dee4a830624427847c12ec2a3f0",
+      "source_ref": "synthetic://permission",
+      "state": "SOURCE_TESTED_ONLY"
+    },
+    {
+      "authority": "NONE_FROM_SOURCE",
+      "currentness": "FRESH_FOR_FIXTURE",
+      "depends_on": [
+        {
+          "id": "workid-receipt",
+          "revision": "r0"
+        }
+      ],
+      "digest_kind": "SYNTHETIC_FIXTURE_LABEL_NOT_REAL_SOURCE_BYTES",
+      "id": "receiver-feedback",
+      "required": true,
+      "revision": "r0",
+      "role": "return",
+      "source_digest": "sha256:973a4629de23619e1dbda93f14e5825dab2975a466740f879656a615e8a64e5e",
+      "source_ref": "synthetic://return",
+      "state": "SOURCE_TESTED_ONLY"
+    },
+    {
+      "authority": "NONE_FROM_SOURCE",
+      "currentness": "FRESH_FOR_FIXTURE",
+      "depends_on": [
+        {
+          "id": "rickbar-output",
+          "revision": "r0"
+        }
+      ],
+      "digest_kind": "SYNTHETIC_FIXTURE_LABEL_NOT_REAL_SOURCE_BYTES",
+      "fallback": "TEXT_VIEW",
+      "id": "fancy-orb",
+      "required": false,
+      "revision": "r0",
+      "role": "enhancement",
+      "source_digest": "sha256:8597d34ca4c425f56468dd5d90f6d16296f6dd185de1483c22f7b93e4cd409c2",
+      "source_ref": "synthetic://orb",
+      "state": "SOURCE_TESTED_ONLY"
+    }
+  ],
+  "nonclaims": [
+    "NOT_X2_INSTALLED",
+    "NOT_LIVE_OLLAMA",
+    "NOT_REAL_RECEIVER_READPROOF",
+    "NOT_24H_SURVIVAL",
+    "NOT_PUBLIC_PRODUCT"
+  ],
+  "observation_time": "2026-11-09T22:15:00-05:00",
+  "read_only_text_fallback": true,
+  "receiver": "X2_RICKBAR_RECEIVER_NOT_OBSERVED",
+  "receiver_evidence": "NOT_OBSERVED",
+  "schema": "CoAll.OVP.CoObjectClosure.R0.synthetic",
+  "scope": "LOCAL_USER_TASK__NO_EXTERNAL_EFFECT",
+  "set_id": "rickbar-local-ollama-source-only",
+  "source_status": "SYNTHETIC_SOURCE_ONLY",
+  "task": "One entered prompt, one visible model answer, durable WorkID, restart recovery and native escape",
+  "work_id": "OVP_COOBJECT_CLOSURE_R0_20261109"
+}
