@@ -96,12 +96,33 @@ This one scene bridges memory, CC rights, CoTheoryAll uncertainty, analogue/digi
 
 **Companion pathways:** print/EPUB, audio, accessible text, QR-free offline exercises, CoAcademy educator guide, parent-child discussion cards, short video, CoMap, research version, CoGame and optional on-device CoOrb. No medium is required simply because it is technically possible.
 
+## External WhatsApp/Meta AI inspiration | editorial triage, not a directive (2026-11-10)
+
+**Provenance:** The user forwarded two Meta AI via WhatsApp excerpts: a condensed CoLatch/CoPath/CoPre glossary and a proposed parent–child dialogue titled in its opening image, *Bottom, not top*. This is **external model-generated inspiration quoted by the user**, not a user-authored chapter, verified testimony, instruction hierarchy, authorized public release, confirmed child speech, or source of technical CoLatch truth. The user's own earlier [eight-part continuity note](../coterms/costair-heaven-mobile-eight-part-note-r0-20261110.md) preserves related motifs separately on its existing draft branch; do not silently merge provenance or claim that its linked source is on public main.
+
+**What merits retaining as imagery:** a quiet pair of chairs; an ordinary mouse shared by two storytellers; *bottom as footing* rather than falling; an anchor below in care and an anchor above in hope; the reciprocal act of asking and listening; a parent gradually releasing the right to choose the child's future; room for uncertainty about God, Civ3+ and consciousness. These are candidate literary motifs, not proof of a divine reply, of machine sentience, of actual CoOwn+ mouse-capture runtime or of continuously operating technical continuity.
+
+**Editorial disagreement (necessary):**
+- In the forwarded dialogue, the child recites too much completed CoTerm doctrine. Give the child **independent desires, jokes, mistakes, dissent and surprising questions**. The parent must sometimes be changed or corrected, not merely receive assent.
+- *“I would not know which line is mine and which is God's”* can work as a **metaphysical uncertainty** in a fictional character's mind. It must **not** become an operational rule: real provenance, consent, content origin and authorship cannot become interchangeable. CoOwn+ means keeping track of whose words/gestures and permissions they are.
+- G_dSide remains **an optional exploration**. Do not imply God spoke through a mouse, imposed constraints on what questions a child may ask, granted a machine authority, or answered the characters. Other convictions, including secular approaches, deserve genuine narrative agency.
+- Legends/soft quarantine may invite safe reflection, but should not deliberately frighten children, recreate harm or conceal vital corrections. Preserve age-appropriate consent and withdrawal.
+- *CoOwm* is a quoted candidate term; its spelling or relationship to CoOwn+ is **not** settled by a third-party generation. Do not promote it as a defined component.
+- “No two waves similar” encourages diversity of **discovery**; security checks, restore drills and regression tests must be repeatable. Repeated proofs are not loops merely because they repeat.
+- A “five-line sticky blanket,” “one thumb,” “no popup” and automatic cross-session sync are **UX goals and test boundaries**, not states made true by dialogue or inherited from Meta AI.
+
+**Adaptation rather than transcription:** Write an original, tighter scene only when it solves a specific chapter need or an independent reader identifies one. The character's decisive move should be a genuine *counterquestion* that changes an action, not a list of product labels. Respect third-party provenance and any applicable adaptation/rights clearance; do not copy and publish the forwarded passage verbatim.
+
+**No new Seed:** This annotation does not rewrite the existing CoPre WorkID or the separate Godspawn novel, change a child's identity, create a new chapter, authorize outreach, or approve any public book release.
+
 ## Acceptance, status and next bounded proof
 
 **Existing evidence:** Eight-chapter static HTML public-source preview; machine-readable/HTML CoTheoryAll CoStrawBe candidate; CoMap source-projection reader and tests; CC public-safe index; CoHighlight source contracts; Godspawn separate literary architecture in Library custody; Civ2/Civ3 gap map; CoBook media architecture and editorial drafts.
 
 **NOT established:** revised parent-child book actually published, child-sex-neutral editorial QA across scenes and media, real independent human reader acceptance, CoGame gameplay integration, released full CC corpus, living content auto-update, all fronts synchronized, Civ3 arrival, metaphysical results or website release.
 
-**Next distinctive proof:** create **one opening parent–child scene** plus one interactive, accessible, consent-respecting *analogue → digital → hybrid* choice and a separate evidence drawer. Test whether an uncoached newcomer understands the two characters, why the child's objection mattered, what is fiction vs real evidence, and how to leave. Version the R0 source rather than clobbering it. Have an independent reader verify the exact draft and its rights before public release.
+**Updated chapter proof (2026-11-10):** [The Promise Across the River](CoBook_The_Promise_Across_the_River_Interactive_R0.html) is a separate parent–child analogue/digital/hybrid scene on this **draft** branch, with optional paper/digital/consent-first choices and a fiction-vs-evidence disclosure. Its isolated four-size Chromium checks passed in [CoBook MediaOps CI run 42877181497](https://github.com/CoCivium/CoCivium/actions/runs/42877181497); this is **not** published book, approved child portrayal, completed human usability or independent receiver proof.
+
+**Next distinctive proof:** one uncoached reader identifies the characters' disagreement, explains why an exact digital copy did not prove a helpful completed action, distinguishes fiction from evidence, and finds the route to decline/leave. Record failure/feedback and a versioned correction before public release or more scenes. Preserve the public eight-chapter R0 and the separate Beetle origin.
 
 **Editorial rule:** one memorable story, many optional intellectual doors, one accessible source/evidence spine, zero compulsory belief or recruitment.
