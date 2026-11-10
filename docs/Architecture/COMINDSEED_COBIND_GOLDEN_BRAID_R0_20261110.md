@@ -62,7 +62,7 @@ Run with trusted Python 3 source in a reviewed checkout:
 
 The standard-library [router](../../scripts/CoBindCandidateRouterR0.py) accepts JSON with claim and anchors, rejects unsupported bindings, ranks only eligible candidates, and returns CANDIDATE_BIND_NOT_EXECUTED. No network, model call, file modification, action execution, real permission grant, synthetic consciousness score, automatic session synchronization or broad front scan is performed.
 
-Synthetic tests cover unsourced observations, immutable event dates, private data, wrong work identities, forecast issued_at, counterfactuals, inverse-only lookup, unsupported physics/sentience promotion, metric bounds and candidate ranking. A passing test establishes **source-only logic**, not that the heuristic is globally optimal or that a user has benefited.
+Synthetic tests cover unsourced observations, frozen event clocks, timezone-aware timestamps, forecast issued_at and target_at, private data, malformed anchor/receiver inputs, wrong work identities, counterfactuals, inverse-only lookup, unsupported physics/sentience promotion, metric bounds and candidate ranking. A date field is a declared value, not an independently proven clock or a cryptographic witness. An anchor claiming a source digest is not by itself proof that source exists or is authoritative. A passing test establishes **source-only logic**, not that the heuristic is globally optimal or that a user has benefited.
 
 ## CoLockStep / CoMVP gate
 
