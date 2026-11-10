@@ -25,10 +25,39 @@ button[aria-pressed="true"]{background:#2d6f72}
 footer{border-top:1px solid #34415b;margin-top:34px;padding-top:20px;color:#aebed2;line-height:1.6}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation:none!important}}
 .overview{margin-top:24px}.overview-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}.overview-grid article{background:#1a2a3d;border:1px solid #536781;border-radius:14px;padding:15px}.overview-grid h3{font-size:1.12rem;line-height:1.3;margin:.4rem 0}.overview-grid p{line-height:1.5;margin:.4rem 0}.signal{color:#9af4d6;font-size:.86rem;font-weight:750}.signal.amber{color:#ffd294}.signal.unknown{color:#e9d1fa}.needle{width:100%;height:auto;display:block;max-width:690px;margin:1rem auto;background:#131c30;border:1px solid #465670;border-radius:14px}.legend{display:flex;gap:1.25rem;flex-wrap:wrap;font-size:.9rem;color:#d8e0f0}.legend span{display:inline-flex;gap:.4rem;align-items:center}.legend i{display:inline-block;width:.75rem;height:.75rem;border-radius:50%}.tablewrap{overflow-x:auto}table{border-collapse:collapse;width:100%;min-width:370px;font-size:.91rem}caption{font-size:.82rem;color:#bdcde3;text-align:left;margin-bottom:.5rem}th,td{border-bottom:1px solid #3f516b;padding:.7rem .45rem;text-align:right;font-variant-numeric:tabular-nums}th:first-child{text-align:left}thead th{color:#edf7ff}tbody tr:hover{background:#1c2a43}a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid #ffcf88;outline-offset:3px}.detail-archive{margin:1rem 0;border:1px solid #40536f;padding:.65rem .9rem;border-radius:12px}.detail-archive summary{cursor:pointer;font-weight:650;color:#bdeef1}.detail-archive .grid{margin-bottom:.5rem}@media(max-width:480px){.tile{min-height:0}.needle{margin:.6rem 0}}
+
+/* Story-first, source-bound historical ribbon: milestones are categorical, not equal-value increments. */
+.journey{margin:24px 0 10px;background:linear-gradient(135deg,#17243a,#142d35);border:1px solid #4d7181;border-radius:18px;padding:19px}
+.journey h2{margin:.15rem 0 .45rem;font-size:1.25rem}
+.journey-lede{color:#cad8e9;line-height:1.5;margin:.25rem 0 .8rem}
+.journey-track{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;position:relative;padding:1.2rem 0 .4rem}
+.journey-step{position:relative;border-top:4px solid #56728a;padding:13px 8px 4px 0;min-width:0}
+.journey-step::before{content:"";position:absolute;top:-10px;left:0;width:15px;height:15px;border-radius:50%;background:#75e5ca;border:3px solid #112236}
+.journey-step.unknown::before{background:#ffd095}
+.journey-step time{color:#c0d3e9;font-size:.75rem}
+.journey-step strong{display:block;font-size:.94rem;margin:.2rem 0;color:#f0f7ff}
+.journey-step span{display:block;font-size:.82rem;line-height:1.45;color:#bfd0df}
+.journey-note{color:#abbfd1;font-size:.81rem;line-height:1.55;margin:.9rem 0 0}
+.journey a{font-weight:650}
+@media(max-width:620px){.journey-track{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:20px}}
+
 </style></head><body><main>
 <header><div class="eyebrow">CoCivium / CoAll · CoSpeedo NeedleTrails · R1</div>
 <h1>What actually got better?</h1>
 <p class="subtitle">A simple trail of evidence. Every green step means a bounded test was verified. Amber means work remains. More commits are not the same as more human benefit.</p></header>
+
+<section class="journey" aria-labelledby="journey-title">
+<div class="eyebrow">A journey you can inspect</div>
+<h2 id="journey-title">What changed along the way?</h2>
+<p class="journey-lede">The work has travelled from recorded checks to repeatable machine handoffs. The bridge to independent, lasting human benefit is still being built.</p>
+<div class="journey-track" role="list" aria-label="Four historical evidence checkpoints">
+<div class="journey-step" role="listitem"><time datetime="2026-10-23">October 23</time><strong>We began measuring</strong><span>Archived checks recorded successes, failures and unfinished work.</span></div>
+<div class="journey-step" role="listitem"><time datetime="2026-11-10T00:36:47Z">November 10, 00:36 UTC</time><strong>The source was recovered</strong><span>A pinned public CoPre source was fetched and its exact digest recorded.</span></div>
+<div class="journey-step" role="listitem"><time datetime="2026-11-10T00:55:00Z">November 10, 00:55 UTC</time><strong>Two jobs exchanged proof</strong><span>A receiving GitHub Actions job checked the producer's artifact.</span></div>
+<div class="journey-step unknown" role="listitem"><span>Next evidence gate</span><strong>Independent usefulness</strong><span>External receiver, 24-hour recovery and less human repetition remain unproven.</span></div>
+</div>
+<p class="journey-note"><strong>Not a velocity plot:</strong> These are different kinds of evidence, not equivalent steps on a numerical scale. Older checks do not measure people helped. <a href="#trail-title">Explore dated proof</a> or <a href="#activity-title">inspect the full historical chart</a>.</p>
+</section>
 <section class="overview" aria-labelledby="overview-title">
 <h2 id="overview-title">The one-minute answer</h2>
 <div class="overview-grid">
