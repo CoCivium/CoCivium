@@ -45,6 +45,28 @@ jobs:
         run: |
           python3 -B scripts/CoPreContinuationR0.py --selftest
           python3 -B scripts/CoMVPCoPreFirstUseR0.py --selftest
+      - name: Reject optimized Python false-green checks
+        run: |
+          python3 - <<'PY'
+          import os
+          import subprocess
+          import sys
+          cases = [
+              ("scripts/CoMVPCoPreFirstUseR0.py", ["--selftest"],
+               "HOLD_OPTIMIZED_MODE_SELFTEST_ASSERTS_DISABLED"),
+              ("tests/source_copre_cli_candidate_r0.py", [],
+               "HOLD_OPTIMIZED_MODE_SOURCE_CONTRACT_ASSERTS_DISABLED"),
+              ("tests/acceptance_copre_cli_minimum_use_r0.py", [],
+               "HOLD_OPTIMIZED_MODE_PINNED_CONTRACT_ASSERTS_DISABLED"),
+          ]
+          for path, args, code in cases:
+              env = dict(os.environ, COMVP_ARTIFACT_PATH="scripts/CoMVPCoPreFirstUseR0.py")
+              run = subprocess.run([sys.executable, "-O", "-B", path, *args],
+                                   env=env, capture_output=True, text=True, timeout=20)
+              if run.returncode == 0 or code not in run.stderr:
+                  raise SystemExit("HOLD_OPTIMIZED_GUARD_REGRESSION_" + path)
+          print("PASS_THREE_OPTIMIZED_MODE_FALSE_GREEN_GUARDS")
+          PY
       - name: Generate candidate from live public CoMVP issue 403
         run: |
           python3 -B scripts/CoMVPCoPreFirstUseR0.py --live-public-issue-403 > /tmp/comvp-copre-issue403.json
