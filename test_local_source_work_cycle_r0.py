@@ -66,8 +66,31 @@ class LocalSourceCycle(unittest.TestCase):
         finally:
             q.close()
         result = run(str(self.root), self.db, now=100)
-        self.assertEqual(result["state"], "HOLD_SOURCE_REVISION_CONFLICT")
-        # Different due times are deliberate conflicts, never silent reschedules.
+        self.assertEqual(result["state"], "LOCAL_REPLAY_OR_LEASED")
+        self.assertEqual(result["queue_state"], "PENDING")
+        q = DueWorkQueue(self.db)
+        try:
+            self.assertEqual(q.next_wake(), 200)
+            self.assertEqual(q.snapshot(100)["complete"], 0)
+        finally:
+            q.close()
+
+    def test_foreign_workid_is_not_claimed_or_mutated(self):
+        q = DueWorkQueue(self.db)
+        try:
+            self.assertEqual(q.enqueue("another-front", "revision",
+                hashlib.sha256(b"foreign").hexdigest(), 5), "ENQUEUED")
+        finally:
+            q.close()
+        result = run(str(self.root), self.db, now=100)
+        self.assertEqual(result["state"], "HOLD_SHARED_QUEUE_REQUIRES_ELECTED_DISPATCHER")
+        q = DueWorkQueue(self.db)
+        try:
+            self.assertEqual(q.snapshot(100)["total"], 1)
+            self.assertEqual(q.snapshot(100)["due_pending"], 1)
+            self.assertEqual(q.db.execute("SELECT state FROM work").fetchone()[0], "PENDING")
+        finally:
+            q.close()
 
 
 if __name__ == "__main__":
