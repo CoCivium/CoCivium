@@ -19,3 +19,7 @@ jobs:
           python3 pattern_contagion_r0.py fixture.json > /tmp/copattern-contagion-results.json
           python3 -m json.tool /tmp/copattern-contagion-results.json > /dev/null
           python3 -m json.tool term_candidates.json > /dev/null
+          python3 -m unittest -v test_counter_contagion_r0.py
+          python3 counter_contagion_r0.py counter_contagion_fixture.json > /tmp/cocounter-results.json
+          python3 -m json.tool /tmp/cocounter-results.json > /dev/null
+          python3 build_counterneedle_r0.py --check
