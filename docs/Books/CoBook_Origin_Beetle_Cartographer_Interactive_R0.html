@@ -31,6 +31,13 @@ button[aria-pressed=true]{background:#3c3561;border-color:#d1adff;box-shadow:0 0
 details{margin:1.5rem auto;max-width:75ch;border:1px solid var(--line);border-radius:12px;padding:1rem}
 summary{cursor:pointer;font-weight:700}
 footer{border-top:1px solid var(--line);padding-top:1.3rem;margin-top:2.5rem;font-size:.88rem;color:var(--muted)}
+.source-lenses{background:#17283b;border-color:#6797a3}
+.source-lenses summary{color:var(--accent)}
+.source-cards{display:grid;grid-template-columns:minmax(0,1fr);gap:.75rem;margin-top:1.25rem}
+.source-card{border:1px solid var(--line);border-radius:12px;padding:.8rem 1.1rem;background:#101e33}
+.source-card h3{font:500 1.35rem/1.2 Georgia,serif;color:var(--violet);margin:.25rem 0 .6rem}
+.source-card p{margin:.45rem 0}
+.source-plain{font-size:1.06rem}
 @media(max-width:700px){.hero{display:block}.hero svg{margin:1rem auto;max-width:550px}.group{grid-template-columns:1fr}button{text-align:center}.shell{padding-bottom:2rem}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important;animation:none!important}}
 </style>
@@ -101,6 +108,45 @@ footer{border-top:1px solid var(--line);padding-top:1.3rem;margin-top:2.5rem;fon
 <p><strong>Keep the door:</strong> The Cartographer keeps the useful doorway and changes its instructions. The Beetle learns that preserving something can be as thoughtful as replacing it.</p>
 <p><strong>Draw another:</strong> The Cartographer draws an opening nobody had pictured. The Beetle offers a pencil, then stops explaining where the line should go.</p>
 <p><strong>Walk elsewhere:</strong> They leave the door behind and discover a field without walls. The map is not a demand to finish every project begun by a parent.</p>
+</details>
+<details class="source-lenses" id="source-lenses">
+<summary>After the story: four ways to read its map</summary>
+<p>Optional connections, not extra plot twists. The next pages introduce each idea only if a character encounters a reason to ask. The statements below are interpretations linked to specific sources, not interchangeable facts.</p>
+<div class="source-cards">
+<section class="source-card" data-lens-id="comap" aria-labelledby="lens-comap">
+<h3 id="lens-comap">The map is not the whole world</h3>
+<p class="source-plain">A map can show the paths someone recorded without containing every road that exists.</p>
+<p class="small"><strong>Technical source:</strong> CoMap R0 registers 56 objects and 61 typed relations from bounded public registries.</p>
+<p class="small"><strong>What this translation leaves out:</strong> The short analogy omits exact object IDs, edge types, source timestamps, and registered coverage boundaries.</p>
+<p class="small"><strong>What remains unproven:</strong> Registered relations are not proof of universal coverage, equivalence, live sync, or authority.</p>
+<p class="small"><a href="../../ai/comap-source-projection-r0.json">Inspect the original CoMap registry</a></p>
+</section>
+<section class="source-card" data-lens-id="cotheoryall" aria-labelledby="lens-cotheoryall">
+<h3 id="lens-cotheoryall">A question is not an answer</h3>
+<p class="source-plain">What if the way we look at the world changes the picture we make of it?</p>
+<p class="small"><strong>Technical source:</strong> CoTheoryAll's R0 explores whether quantum structure is fundamental or an observer-relative projection of deeper relations.</p>
+<p class="small"><strong>What this translation leaves out:</strong> This ordinary-language question drops mathematical definitions, competing models, controls, and falsifying predictions.</p>
+<p class="small"><strong>What remains unproven:</strong> A fictional question is not scientific confirmation that reality is non-quantum.</p>
+<p class="small"><a href="../CoTheoryAll/costrawbe-r0/README.md">Inspect the original CoTheoryAll research hypothesis</a></p>
+</section>
+<section class="source-card" data-lens-id="coglukey" aria-labelledby="lens-coglukey">
+<h3 id="lens-coglukey">The helper can rest</h3>
+<p class="source-plain">A good helper keeps a doorway usable and can rest until someone needs another repair.</p>
+<p class="small"><strong>Technical source:</strong> CoGlukey careers propose durable identity, bounded budgets, sleep on no meaningful change, and reawakening on material need.</p>
+<p class="small"><strong>What this translation leaves out:</strong> The metaphor drops qualification, budget, election, receiver, and recovery contracts.</p>
+<p class="small"><strong>What remains unproven:</strong> This is a proposed stewardship relation, not an operating improvement club or autonomous worker.</p>
+<p class="small"><a href="../Strategy/COGLUKEY_CAREERS_IMPROVEMENT_CLUBS_R0_20261027.md">Inspect the original CoGlukey architecture</a></p>
+</section>
+<section class="source-card" data-lens-id="highlights" aria-labelledby="lens-highlights">
+<h3 id="lens-highlights">A bright dot is not a certificate</h3>
+<p class="source-plain">Ten named curiosities can be worth exploring without being ten proven treasures.</p>
+<p class="small"><strong>Technical source:</strong> The source registry lists 10 highlighted assets with different readiness states and explicit no-canon rails.</p>
+<p class="small"><strong>What this translation leaves out:</strong> The analogy suppresses detailed per-asset status, currentness, and privacy rules.</p>
+<p class="small"><strong>What remains unproven:</strong> A source highlight is not validated, adopted, public-release-ready, or necessarily central to the reader.</p>
+<p class="small"><a href="../../ai/highlight-assets.json">Inspect the original highlight registry</a></p>
+</section>
+</div>
+<p class="small">Different projections share source pointers but can lose important detail. The plain-language version is an invitation to explore, not a substitute for the research, status, counterarguments or original material. <a href="../../ai/cobook-source-to-human-lenses-r0.json">Inspect the translation record and source hashes.</a></p>
 </details>
 <p class="note"><strong>One kind of inheritance:</strong> A map of what someone learned, not a debt to follow their route. We can be inversion benchmarks for one another without becoming one another's stepping stones.</p>
 </main>
