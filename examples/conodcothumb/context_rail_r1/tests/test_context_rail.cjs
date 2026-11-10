@@ -93,7 +93,8 @@ t('no global input hooks',()=>assert(!/document\.addEventListener\(['"]key|windo
 t('no clipboard operations',()=>assert(!/navigator\.clipboard|document\.execCommand|ClipboardEvent/.test(html)));
 t('no camera microphone or screen recording',()=>assert(!/getUserMedia|getDisplayMedia|mediaDevices/.test(html)));
 t('no fetch/request send APIs',()=>assert(!/\bfetch\s*\(|XMLHttpRequest|WebSocket|sendBeacon|EventSource/.test(html)));
-t('no persistent profiles',()=>assert(!/localStorage|sessionStorage|indexedDB|serviceWorker|document\.cookie/.test(html)));
+t('no covert persistence or background service',()=>assert(!/sessionStorage|indexedDB|serviceWorker|document\.cookie/.test(html)));
+t('only explicit synthetic WorkID persistence is offered',()=>{assert(html.includes('id="workPreserve"'));assert(html.includes('id="workRecover"'));assert(html.includes('id="workRevoke"'));assert(html.includes('CoOwnedWorkR0'));});
 t('download only via explicit click',()=>assert(html.includes("$('download').addEventListener('click'")));
 t('download initially disabled',()=>assert(html.includes('id="download" disabled')));
 t('no source bytes or private messages encoded',()=>assert(!/BEGIN PRIVATE KEY|password\s*=|xoxb-|sk-ant-api/.test(html)));
