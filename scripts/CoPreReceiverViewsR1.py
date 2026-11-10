@@ -175,6 +175,14 @@ def build_portable_packet(output_root: Path) -> dict:
     views = project(source, human)
     root = Path(output_root)
     previews = save_local_preview(root, views)
+    # The archived raw source makes a fresh receiver able to recompute the
+    # Git blob identity without relying on a shared workspace or source link.
+    raw_path = root / "source" / "copre-r1-source.json"
+    raw_path.parent.mkdir(parents=True, exist_ok=False)
+    with raw_path.open("xb") as handle:
+        handle.write(source)
+    if raw_path.read_bytes() != source:
+        raise IOError("raw source exact readback mismatch")
     guide = "\n".join([
         "# CoPreGeneric R1 | Two-view preview packet",
         "",
@@ -187,6 +195,7 @@ def build_portable_packet(output_root: Path) -> dict:
         "For a machine graph use synthetic-local-a/copre-r1-synth.json.",
         "",
         "Evidence: receipt.json contains source and output digests.",
+        "Pinned source bytes: source/copre-r1-source.json.",
         "This is an expiring local/CI preview, not durable CoEx custody.",
         "",
         "HOLD: No external pickup, integration, canon, deployment or autonomy.",
@@ -214,6 +223,12 @@ def build_portable_packet(output_root: Path) -> dict:
         },
         "lifecycle": "TEMPORARY_CI_PREVIEW_NOT_DURABLE_RECEIVER_LANDING",
         "readback": {
+            "source": {
+                "path": "source/copre-r1-source.json",
+                "sha256": sha256(source),
+                "bytes": len(source),
+                "git_blob_sha": views["common"]["source_git_blob_sha"],
+            },
             "synth": {
                 "path": "synthetic-local-a/copre-r1-synth.json",
                 **previews["synth"],
@@ -251,7 +266,7 @@ def build_portable_packet(output_root: Path) -> dict:
         "source_git_blob_sha": views["common"]["source_git_blob_sha"],
         "work_id": views["common"]["work_id"],
         "receipt_sha256": sha256(manifest_bytes),
-        "file_count": 4,
+        "file_count": 5,
         "external_effects": 0,
     }
 
