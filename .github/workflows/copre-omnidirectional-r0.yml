@@ -11,6 +11,8 @@ on:
       - 'scripts/copre_public_readback_r0.py'
       - 'scripts/test_copre_public_readback_r0.py'
       - 'scripts/copre_seed_24h_canary_r0.py'
+      - 'scripts/copre_cold_handoff_r0.py'
+      - 'scripts/test_copre_cold_handoff_r0.py'
       - 'scripts/test_copre_seed_24h_canary_r0.py'
       - 'scripts/copre_handoff_fence_sim_r0.py'
       - 'scripts/test_copre_handoff_fence_sim_r0.py'
@@ -23,6 +25,8 @@ on:
       - 'scripts/copre_public_readback_r0.py'
       - 'scripts/test_copre_public_readback_r0.py'
       - 'scripts/copre_seed_24h_canary_r0.py'
+      - 'scripts/copre_cold_handoff_r0.py'
+      - 'scripts/test_copre_cold_handoff_r0.py'
       - 'scripts/test_copre_seed_24h_canary_r0.py'
       - 'ai/copre-seed-path-fabric-r0-20261109.json'
       - '.github/workflows/copre-omnidirectional-r0.yml'
@@ -49,6 +53,8 @@ jobs:
         run: python -B scripts/test_copre_handoff_fence_sim_r0.py -v
       - name: Mirror readback negative controls
         run: python -B scripts/test_copre_public_readback_r0.py -v
+      - name: Test bounded public packet, cold replay and false-ACK controls
+        run: python -B scripts/test_copre_cold_handoff_r0.py -v
       - name: Run pinned public-source and proposed mirror readback (evidence only)
         run: python -B scripts/copre_public_readback_r0.py --output /tmp/copre-mirror-readback.json
       - name: Print bounded mirror status (no secrets)
@@ -91,3 +97,53 @@ jobs:
         run: |
           python -B scripts/copre_path_query_r0.py copre-entry copre-package --direction both > /tmp/path.json
           python -c 'import json; a=json.load(open("/tmp/path.json")); assert a["recipient_ack"] is False and a["authority_granted"] is False and a["integration"] is False'
+
+      - name: Checkout exact source commit for cold handoff packet
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - name: Prepare public-only cold handoff packet
+        env:
+          SOURCE_COMMIT: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          python -B scripts/copre_cold_handoff_r0.py emit --source-root . --output /tmp/copre-cold-packet --commit "$SOURCE_COMMIT"
+      - name: Transfer exact source packet to a new isolated job
+        uses: actions/upload-artifact@v4
+        with:
+          name: copre-cold-readback-packet
+          path: /tmp/copre-cold-packet/
+          if-no-files-found: error
+          retention-days: 7
+  public-cold-recovery:
+    needs: public-graph-navigation
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - name: Check out verifier only at source commit
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Download source capsule from preceding job
+        uses: actions/download-artifact@v4
+        with:
+          name: copre-cold-readback-packet
+          path: /tmp/copre-cold-received/
+      - name: Independently re-fetch public immutable source and validate work pointer
+        env:
+          COLD_READER: actions-${{ github.run_id }}-${{ github.run_attempt }}-fresh-job
+        run: |
+          python -B scripts/copre_cold_handoff_r0.py accept --packet /tmp/copre-cold-received --receipt /tmp/copre-cold-readback.json --reader "$COLD_READER"
+      - name: Print qualified bounded receipt without private content
+        run: |
+          python -c 'import json; r=json.load(open("/tmp/copre-cold-readback.json")); assert r["state"]=="CI_SEPARATE_JOB_COLD_SOURCE_READBACK_ONLY" and not r["independent_external_receiver_ack"] and not r["co_stead_pickup"] and not r["survived_24h"] and r["effect_count"]==0'
+          cat /tmp/copre-cold-readback.json
+      - name: Preserve isolated cold-readback evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: copre-cold-readback-receipt
+          path: /tmp/copre-cold-readback.json
+          if-no-files-found: error
+          retention-days: 14
