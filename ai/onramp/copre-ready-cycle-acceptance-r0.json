@@ -86,7 +86,7 @@
     {
       "name": "autonomous_sync",
       "target": "self-recovering across authorized receivers",
-      "observed": "NOT_PROVEN",
+      "observed": "NOT_PROVEN_SCHEDULE_TICKS_UNOBSERVED",
       "acceptance": "independent receiver fetch + authenticated readproof + fenced nonduplicate next deed"
     },
     {
@@ -98,7 +98,7 @@
     {
       "name": "handoff",
       "target": "one complete real handoff",
-      "observed": "NOT_PROVEN",
+      "observed": "CI_CROSS_JOB_READBACK_ONLY_NO_EXTERNAL_COPRE_RECEIVER",
       "acceptance": "sender commit/readproof, receiver exact-object fetch, bounded continuation, no human relay"
     },
     {
@@ -190,6 +190,43 @@
       "exactly_once_effect_handoff": false,
       "source": "https://github.com/CoCivium/CoCivium/issues/317#issuecomment-6755455691",
       "next_qualification": "Independent authorized read of exact pinned object after >24 elapsed hours with attributable receiver, digest and useful continuation."
+    },
+    "ci_cross_job_handoff": {
+      "id": "GitHubActionsCrossJob:42731889949",
+      "run_url": "https://github.com/CoCivium/CoCivium/actions/runs/42731889949",
+      "run_source_commit": "733d40b6f5f98c602965e33799d0a761e5b373d2",
+      "observed_ci_jobs": [
+        {
+          "id": 129551688767,
+          "name": "proof",
+          "conclusion": "success"
+        },
+        {
+          "id": 129551776892,
+          "name": "pulse-receiver",
+          "conclusion": "success"
+        }
+      ],
+      "source_artifact_id": 13724867742,
+      "receiver_artifact_id": 13724717886,
+      "reported_verified_artifact_sha256": "1811aef663597f92d84960e2bfb7531785a7ce3864ec5e1f99b4efaad027e3eb",
+      "qualifier": "CI_SCOPED_CROSS_JOB_READBACK",
+      "failure_domain": "SAME_GITHUB_ACTIONS",
+      "external_receiver_ack": false,
+      "real_worker_effect": "NOT_TESTED",
+      "coex": "NOT_CLAIMED",
+      "note": "This tests a CoGoAll CI transfer, not the independent CoPre WorkID acceptance or real user-zero system operation."
+    },
+    "schedule_observation": {
+      "source_run_id": 42731889949,
+      "reported_status": "SCHEDULE_TICKS_UNOBSERVED",
+      "expected_ticks": 9,
+      "matched_ticks": 1,
+      "unobserved_ticks": 8,
+      "observed_event_type": "push",
+      "separate_schedule_event_verified": false,
+      "source": "https://github.com/CoCivium/CoCivium/issues/317#issuecomment-6755815083",
+      "next_action": "Reconcile expected vs actual scheduled trigger history; do not infer hourly autonomous operation from a push run."
     }
   }
 }
