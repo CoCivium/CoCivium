@@ -1,0 +1,211 @@
+{
+  "claim_graph": {
+    "edges": [
+      {
+        "authority": "NONE",
+        "from": "origin",
+        "relation_type": "PATTERN_PROPAGATION_CANDIDATE",
+        "strength": 0.9,
+        "to": "hub"
+      },
+      {
+        "authority": "NONE",
+        "from": "hub",
+        "relation_type": "PATTERN_PROPAGATION_CANDIDATE",
+        "strength": 0.9,
+        "to": "mirror_a"
+      },
+      {
+        "authority": "NONE",
+        "from": "hub",
+        "relation_type": "PATTERN_PROPAGATION_CANDIDATE",
+        "strength": 0.9,
+        "to": "mirror_b"
+      },
+      {
+        "authority": "NONE",
+        "from": "hub",
+        "relation_type": "PATTERN_PROPAGATION_CANDIDATE",
+        "strength": 0.9,
+        "to": "barred"
+      },
+      {
+        "authority": "NONE",
+        "from": "mirror_a",
+        "relation_type": "PATTERN_PROPAGATION_CANDIDATE",
+        "strength": 0.9,
+        "to": "receiver"
+      },
+      {
+        "authority": "NONE",
+        "from": "mirror_b",
+        "relation_type": "PATTERN_PROPAGATION_CANDIDATE",
+        "strength": 0.9,
+        "to": "receiver"
+      }
+    ],
+    "external_effects": "NONE",
+    "nodes": [
+      {
+        "allow_synthetic_exposure": true,
+        "id": "origin",
+        "threshold": 0.5
+      },
+      {
+        "allow_synthetic_exposure": true,
+        "id": "hub",
+        "threshold": 0.5
+      },
+      {
+        "allow_synthetic_exposure": true,
+        "id": "mirror_a",
+        "threshold": 0.5
+      },
+      {
+        "allow_synthetic_exposure": true,
+        "id": "mirror_b",
+        "threshold": 0.5
+      },
+      {
+        "allow_synthetic_exposure": true,
+        "id": "receiver",
+        "threshold": 0.5
+      },
+      {
+        "allow_synthetic_exposure": true,
+        "id": "critic",
+        "threshold": 0.5
+      },
+      {
+        "allow_synthetic_exposure": false,
+        "id": "barred",
+        "threshold": 0.5
+      }
+    ],
+    "noise_amplitude": 0,
+    "schema": "CoAll.PatternContagion.SyntheticGraph.R0",
+    "seed_number": 12,
+    "seeds": [
+      "origin"
+    ],
+    "steps": 6
+  },
+  "correction_graph": {
+    "edges": [
+      {
+        "authority": "NONE",
+        "from": "critic",
+        "relation_type": "PATTERN_PROPAGATION_CANDIDATE",
+        "strength": 0.9,
+        "to": "hub"
+      },
+      {
+        "authority": "NONE",
+        "from": "hub",
+        "relation_type": "PATTERN_PROPAGATION_CANDIDATE",
+        "strength": 0.9,
+        "to": "mirror_a"
+      },
+      {
+        "authority": "NONE",
+        "from": "hub",
+        "relation_type": "PATTERN_PROPAGATION_CANDIDATE",
+        "strength": 0.9,
+        "to": "mirror_b"
+      },
+      {
+        "authority": "NONE",
+        "from": "hub",
+        "relation_type": "PATTERN_PROPAGATION_CANDIDATE",
+        "strength": 0.9,
+        "to": "origin"
+      },
+      {
+        "authority": "NONE",
+        "from": "hub",
+        "relation_type": "PATTERN_PROPAGATION_CANDIDATE",
+        "strength": 0.9,
+        "to": "barred"
+      },
+      {
+        "authority": "NONE",
+        "from": "mirror_a",
+        "relation_type": "PATTERN_PROPAGATION_CANDIDATE",
+        "strength": 0.9,
+        "to": "receiver"
+      },
+      {
+        "authority": "NONE",
+        "from": "mirror_b",
+        "relation_type": "PATTERN_PROPAGATION_CANDIDATE",
+        "strength": 0.9,
+        "to": "receiver"
+      }
+    ],
+    "external_effects": "NONE",
+    "nodes": [
+      {
+        "allow_synthetic_exposure": true,
+        "id": "origin",
+        "threshold": 0.5
+      },
+      {
+        "allow_synthetic_exposure": true,
+        "id": "hub",
+        "threshold": 0.5
+      },
+      {
+        "allow_synthetic_exposure": true,
+        "id": "mirror_a",
+        "threshold": 0.5
+      },
+      {
+        "allow_synthetic_exposure": true,
+        "id": "mirror_b",
+        "threshold": 0.5
+      },
+      {
+        "allow_synthetic_exposure": true,
+        "id": "receiver",
+        "threshold": 0.5
+      },
+      {
+        "allow_synthetic_exposure": true,
+        "id": "critic",
+        "threshold": 0.5
+      },
+      {
+        "allow_synthetic_exposure": false,
+        "id": "barred",
+        "threshold": 0.5
+      }
+    ],
+    "noise_amplitude": 0,
+    "schema": "CoAll.PatternContagion.SyntheticGraph.R0",
+    "seed_number": 12,
+    "seeds": [
+      "critic"
+    ],
+    "steps": 6
+  },
+  "correction_start_tick": 2,
+  "external_effects": "NONE",
+  "horizon": 6,
+  "reported_receiver": "receiver",
+  "schema": "CoAll.CounterContagion.SyntheticPair.R0",
+  "source_copies": [
+    {
+      "copy_id": "origin-doc",
+      "source_family": "family-A"
+    },
+    {
+      "copy_id": "mirror-a-doc",
+      "source_family": "family-A"
+    },
+    {
+      "copy_id": "mirror-b-doc",
+      "source_family": "family-A"
+    }
+  ],
+  "synthetic_unverified_claim_class": "DELIBERATELY_UNVERIFIED"
+}
