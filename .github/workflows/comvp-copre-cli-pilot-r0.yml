@@ -148,6 +148,12 @@ jobs:
               raise SystemExit('HELD_POINTER_NOT_SAME_TASK')
           if p['pack_sha256'] not in p.get('continuation_input', '') or 'Authority: READ_ONLY' not in p['continuation_input'] or 'Stop on:' not in p['continuation_input']:
               raise SystemExit('HELD_MISSING_FULL_PACK_SAFETY')
+          pointer_json = json.dumps(p['pointer'], separators=(',', ':'), sort_keys=True, ensure_ascii=True)
+          if (len(pointer_json.encode('utf-8')) != p.get('pointer_bytes') or
+              p['pointer'].get('source_revision') != p['pack'].get('source_revision') or
+              p['pointer'].get('source_ref') != p['pack'].get('source_ref') or
+              any(token in pointer_json for token in ('\\n', '\\r', '```'))):
+              raise SystemExit('HELD_POINTER_FOR_HUMAN_REVIEW_NOT_SOURCE_BOUND')
           output = Path('out/comvp-copre/reviewable-first-use')
           output.mkdir(parents=True, exist_ok=True)
           (output / 'issue403-source-bound-candidate.json').write_bytes(raw)
@@ -168,8 +174,17 @@ jobs:
               '- Receiver ACK: `UNPROVEN`; task MVP: `NOT_QUALIFIED`',
               '',
               '## Two alternative consumer entries',
-              '- Short pointer: ' + str(p['pointer_bytes']) + ' bytes. Requires the consumer to retrieve and interpret the cited source.',
+              '**Short WorkID pointer: copy this source-bound JSON, then independently retrieve the cited public issue.**',
+              '```json',
+              pointer_json,
+              '```',
+              '- Pointer size: ' + str(p['pointer_bytes']) + ' bytes. Smaller is not automatically more usable or current.',
               '- Full continuation: ' + str(p['prompt_bytes']) + ' bytes. Includes the read-only authorization ceiling, verification and STOP clauses.',
+              '',
+              '## Authority and STOP before any receiver action',
+              '- Authority: `READ_ONLY`; no outbound execution, state mutation, private disclosures, or presumed permissions.',
+              '- STOP from the pinned candidate: `' + p['pack']['stop_predicate'].replace('`', '') + '`',
+              '- A pointer is not proof of source freshness, independent task completion, consent, or runtime acceptance.',
               '- Machine-readable exact candidate and complete continuation input: `issue403-source-bound-candidate.json` in this artifact.',
               '',
               '## One meaningful independent first-use test still missing',
@@ -177,8 +192,12 @@ jobs:
               '',
               '**Nonclaims:** `CI_GENERATION_NE_RECEIVER_PICKUP`, `TWO_READS_NE_FRESHNESS`, `POINTER_SHORTER_NE_USABLE`, `ARTIFACT_VISIBLE_NE_PRODUCT_RELEASE`.',
           ]
-          (output / 'README.md').write_text('\n'.join(card) + '\n', encoding='utf-8')
-          print('PASS_REAL_TASK_REVIEW_PACKET_WITH_UNPROVEN_RECEIVER')
+          review_text='\n'.join(card) + '\n'
+          if (pointer_json not in review_text or '## Authority and STOP' not in review_text or
+              'UNPROVEN' not in review_text):
+              raise SystemExit('HELD_FIRST_USE_REVIEW_CARD_MISSING_SOURCE_OR_STOP')
+          (output / 'README.md').write_text(review_text, encoding='utf-8')
+          print('PASS_REAL_TASK_REVIEW_PACKET_WITH_COPYABLE_POINTER_AND_STOP')
           PY
       - name: Upload full bounded first-use packet and review card
         uses: actions/upload-artifact@v4
