@@ -6,6 +6,7 @@ and authority boundaries. They do not establish independent receiver uptake.
 import copy
 import hashlib
 import json
+import shutil
 import sys
 import tempfile
 import unittest
@@ -14,6 +15,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 from CoPreReceiverViewsR1 import project, save_local_preview, git_blob_sha, build_portable_packet
+from CoPrePacketReadbackR1 import verify as verify_packet
 
 SOURCE = ROOT / "ai/continuity/copre-synth-bio-gd-coterms-r1-20261109.json"
 HUMAN = ROOT / "docs/CoPreGeneric/CoPre_SynthBio_Gd_CoTerms_Candidate_R1_20261109.md"
@@ -101,6 +103,56 @@ class ReceiverNativeViews(unittest.TestCase):
             with self.assertRaises(FileExistsError):
                 build_portable_packet(root)
             self.assertEqual(marker.read_text(encoding="utf-8"), "existing prior")
+
+    def prepared_packet(self, workdir):
+        """Create a complete portable packet, including the standalone verifier."""
+        root = Path(workdir) / "portable"
+        build_portable_packet(root)
+        shutil.copyfile(ROOT / "scripts/CoPrePacketReadbackR1.py", root / "verify.py")
+        return root
+
+    def test_cold_packet_verifies_with_separate_source_pin(self):
+        with tempfile.TemporaryDirectory(prefix="copre-verifier-") as tmp:
+            root = self.prepared_packet(tmp)
+            result = verify_packet(root, git_blob_sha(self.source))
+            self.assertEqual(
+                result["state"],
+                "PORTABLE_PACKET_VERIFIED_WITH_EXTERNAL_PIN_NOT_RECEIVER_ACCEPTANCE",
+            )
+            self.assertIsNone(result["receiver_readproof"])
+            self.assertEqual(result["external_effects"], 0)
+            self.assertEqual(result["verified_payload_members"], 4)
+
+    def test_cold_packet_rejects_unlisted_extra_file(self):
+        with tempfile.TemporaryDirectory(prefix="copre-extra-") as tmp:
+            root = self.prepared_packet(tmp)
+            (root / "unreviewed.txt").write_text("unlisted payload", encoding="utf-8")
+            with self.assertRaisesRegex(ValueError, "UNLISTED_OR_MISSING_PACKET_MEMBER"):
+                verify_packet(root, git_blob_sha(self.source))
+
+    def test_cold_packet_rejects_wrong_external_pin(self):
+        with tempfile.TemporaryDirectory(prefix="copre-wrongpin-") as tmp:
+            root = self.prepared_packet(tmp)
+            with self.assertRaisesRegex(ValueError, "SOURCE_NOT_MATCH_EXPECTED_PIN"):
+                verify_packet(root, "0" * 40)
+
+    def test_cold_packet_rejects_source_corruption(self):
+        with tempfile.TemporaryDirectory(prefix="copre-corrupt-") as tmp:
+            root = self.prepared_packet(tmp)
+            source = root / "source/copre-r1-source.json"
+            source.write_bytes(source.read_bytes() + b"\n")
+            with self.assertRaisesRegex(ValueError, "SHA256_MISMATCH:source"):
+                verify_packet(root, git_blob_sha(self.source))
+
+    def test_cold_packet_rejects_receiver_ack_injection(self):
+        with tempfile.TemporaryDirectory(prefix="copre-ack-") as tmp:
+            root = self.prepared_packet(tmp)
+            manifest = root / "receipt.json"
+            data = json.loads(manifest.read_text(encoding="utf-8"))
+            data["receiver_readproof"] = "UNVERIFIED_ACK"
+            manifest.write_text(json.dumps(data), encoding="utf-8")
+            with self.assertRaisesRegex(ValueError, "INVENTED_RECEIVER"):
+                verify_packet(root, git_blob_sha(self.source))
 
     def test_machine_graph_relation_authority_escalation_denied(self):
         changed = self.mutated(lambda d: d["relations"][0].update(effect_authority="ALL"))
