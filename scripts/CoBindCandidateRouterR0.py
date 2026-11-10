@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """CoBind candidate routing R0: deterministic read-only proposal, not an actuator."""
 import argparse
+from datetime import datetime, timezone
 import json
 from pathlib import Path
 
@@ -16,26 +17,57 @@ TEMPORAL = {"PAST", "PRESENT", "FUTURE", "COUNTERFACTUAL", "UNSPECIFIED"}
 METRICS = ("provenance", "meaning", "time", "recovery", "receiver", "cost", "risk")
 
 
+def aware_time(value):
+    """Parse ISO-8601 including an offset. Naive or invalid clocks cannot attest order."""
+    if not isinstance(value, str) or not value.strip():
+        return None
+    try:
+        moment = datetime.fromisoformat(value.replace("Z", "+00:00"))
+        return moment.astimezone(timezone.utc) if moment.tzinfo is not None else None
+    except (ValueError, OverflowError):
+        return None
+
+
 def route(claim, anchors):
-    """Find a proposed source-bound anchor. Never execute a binding or upgrade claims."""
+    """Propose a location. No authorization, evidence upgrade, binding, or execution."""
+    if not isinstance(claim, dict) or not isinstance(anchors, list):
+        return {"state": "HELD_MALFORMED_INPUT"}
     required = ("relation_id", "work_id", "epistemic", "temporal_mode", "privacy", "receiver")
-    missing = [k for k in required if not claim.get(k)]
+    missing = [k for k in required
+               if not isinstance(claim.get(k), str) or not claim[k].strip()]
     if missing:
         return {"state": "HELD_MISSING_CLAIM_FIELDS", "missing": missing}
     epistemic = claim["epistemic"]
-    if epistemic not in CLAIM_TO_ANCHOR or claim["temporal_mode"] not in TEMPORAL:
+    mode = claim["temporal_mode"]
+    if epistemic not in CLAIM_TO_ANCHOR or mode not in TEMPORAL:
         return {"state": "HELD_UNSUPPORTED_CLASS"}
     if epistemic == "OBSERVED":
-        if not claim.get("source_ref") or not claim.get("evidence_refs"):
+        if mode not in ("PAST", "PRESENT"):
+            return {"state": "HELD_OBSERVED_TEMPORAL_MODE"}
+        if (not isinstance(claim.get("source_ref"), str)
+                or not claim["source_ref"].strip()
+                or not isinstance(claim.get("evidence_refs"), list)
+                or not claim["evidence_refs"]):
             return {"state": "HELD_NO_OBSERVED_SOURCE_PROOF"}
-        if claim["temporal_mode"] == "FUTURE":
-            return {"state": "HELD_FUTURE_IS_NOT_OBSERVED"}
-        if claim["temporal_mode"] == "PAST" and not claim.get("event_at"):
+        observed = aware_time(claim.get("observed_at"))
+        if observed is None:
+            return {"state": "HELD_UNDATED_OBSERVATION"}
+        if mode == "PAST" and not claim.get("event_at"):
             return {"state": "HELD_UNDATED_PAST_WITNESS"}
+        if claim.get("event_at") is not None:
+            event = aware_time(claim["event_at"])
+            if event is None or event > observed:
+                return {"state": "HELD_INVALID_OBSERVATION_CLOCKS"}
     if epistemic == "PREDICTED":
-        if claim["temporal_mode"] != "FUTURE" or not claim.get("issued_at") or not claim.get("assumptions"):
+        if (mode != "FUTURE" or not claim.get("issued_at")
+                or not isinstance(claim.get("assumptions"), list)
+                or not claim["assumptions"]):
             return {"state": "HELD_UNBOUND_FORECAST"}
-    if epistemic == "COUNTERFACTUAL" and claim["temporal_mode"] != "COUNTERFACTUAL":
+        issued = aware_time(claim["issued_at"])
+        target = aware_time(claim.get("target_at"))
+        if issued is None or target is None or target <= issued:
+            return {"state": "HELD_INVALID_FORECAST_CLOCKS"}
+    if epistemic == "COUNTERFACTUAL" and mode != "COUNTERFACTUAL":
         return {"state": "HELD_COUNTERFACTUAL_SCOPE"}
     if epistemic == "HYPOTHESIS" and not claim.get("challenge"):
         return {"state": "HELD_UNCHALLENGEABLE_HYPOTHESIS"}
@@ -43,24 +75,37 @@ def route(claim, anchors):
         return {"state": "HELD_INTERPRETATION_AS_EVIDENCE"}
     accepted, rejected = [], []
     for a in anchors:
+        if not isinstance(a, dict):
+            rejected.append({"id": "malformed-anchor", "reasons": ["malformed_anchor"]})
+            continue
         failures = []
+        if not isinstance(a.get("id"), str) or not a["id"].strip():
+            failures.append("missing_anchor_identity")
         if a.get("kind") != CLAIM_TO_ANCHOR[epistemic]:
             failures.append("wrong_epistemic_anchor")
         if a.get("work_id") != claim["work_id"]:
             failures.append("work_identity_mismatch")
         if a.get("privacy") != claim["privacy"]:
             failures.append("privacy_mismatch")
-        if claim["receiver"] not in a.get("allowed_receivers", []):
+        if (not isinstance(a.get("allowed_receivers"), list)
+                or claim["receiver"] not in a["allowed_receivers"]):
             failures.append("receiver_not_qualified")
-        if claim.get("source_ref") and epistemic == "OBSERVED" and a.get("source_ref") != claim["source_ref"]:
-            failures.append("source_mismatch")
-        if epistemic == "OBSERVED" and a.get("immutable_event_at") not in (None, claim.get("event_at")):
-            failures.append("historical_event_would_be_rewritten")
-        if claim.get("operation") == "INVERSE_LOOKUP" and "INVERSE_LOOKUP" not in a.get("operations", []):
-            failures.append("inverse_lookup_unsupported")
+        if epistemic == "OBSERVED":
+            if a.get("source_ref") != claim["source_ref"]:
+                failures.append("source_mismatch")
+            if mode == "PAST" and a.get("immutable_event_at") is None:
+                failures.append("missing_frozen_event_time")
+            if (a.get("immutable_event_at") is not None
+                    and aware_time(a["immutable_event_at"]) != aware_time(claim.get("event_at"))):
+                failures.append("historical_event_would_be_rewritten")
+        if claim.get("operation") == "INVERSE_LOOKUP":
+            if (not isinstance(a.get("operations"), list)
+                    or "INVERSE_LOOKUP" not in a["operations"]):
+                failures.append("inverse_lookup_unsupported")
         metrics = a.get("metrics", {})
-        if any(not isinstance(metrics.get(m), int) or isinstance(metrics.get(m), bool)
-               or not 0 <= metrics[m] <= 5 for m in METRICS):
+        if (not isinstance(metrics, dict)
+                or any(not isinstance(metrics.get(m), int) or isinstance(metrics.get(m), bool)
+                       or not 0 <= metrics[m] <= 5 for m in METRICS)):
             failures.append("invalid_bounded_metrics")
         if failures:
             rejected.append({"id": a.get("id", "unnamed"), "reasons": failures})
