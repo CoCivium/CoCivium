@@ -78,7 +78,17 @@ def run():
                 assert dims["mainRight"] <= width + 2, (width, "main overflows", dims)
                 assert dims["chartRight"] <= width + 2, (width, "chart overflows", dims)
 
-                # Keyboard navigation and the source's single optional disclosure.
+                # Technical receipts stay accessible without cluttering the first screen.
+                archive = page.locator("details.detail-archive")
+                assert archive.count() == 1, (width, "missing archived details")
+                assert archive.get_attribute("open") is None, (width, "archive must be collapsed")
+                archive.locator("summary").focus()
+                page.keyboard.press("Enter")
+                assert archive.get_attribute("open") is not None, (width, "archive did not open")
+                page.keyboard.press("Enter")
+                assert archive.get_attribute("open") is None, (width, "archive did not close")
+
+                # Keyboard navigation and the existing interactive gauge disclosure.
                 page.keyboard.press("Tab")
                 tag = page.evaluate("document.activeElement.tagName")
                 assert tag in {"A", "BUTTON"}, (width, "unreachable keyboard focus", tag)
