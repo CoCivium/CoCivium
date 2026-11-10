@@ -79,3 +79,17 @@ jobs:
           path: out/costel-handoff/receiver/receipt.json
           if-no-files-found: error
           retention-days: 1
+
+  windows-desktop-logon-source:
+    runs-on: windows-latest
+    timeout-minutes: 8
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Test per-user logon source without changing OS startup
+        shell: pwsh
+        run: |
+          ./experiments/costel_r5_r0/test_costel_desktop_logon_r0.ps1
