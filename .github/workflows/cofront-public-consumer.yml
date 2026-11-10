@@ -7,6 +7,7 @@ on:
       - 'scripts/cogolden_braid_reader.py'
       - 'scripts/test_cogolden_braid_reader.py'
       - 'docs/Evolution/COGOLDEN_BRAID_FRONT_CONTINUITY_R0.json'
+      - 'docs/Evolution/COPREGENERIC_SESSION_POINTERS_R0.json'
       - '.github/workflows/cofront-public-consumer.yml'
   pull_request:
     paths:
@@ -16,6 +17,8 @@ on:
       - 'scripts/test_cogolden_braid_reader.py'
       - 'docs/Evolution/COGOLDEN_BRAID_FRONT_CONTINUITY_R0.json'
       - '.github/workflows/cofront-public-consumer.yml'
+  schedule:
+    - cron: '17 3 * * *'
   workflow_dispatch:
 jobs:
   offline-tests:
