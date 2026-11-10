@@ -14,6 +14,8 @@ on:
       - "tests/test_coobject_agency_bridge_r0.py"
       - "scripts/CoObjectAgencyTaskR0.py"
       - "tests/test_coobject_agency_task_r0.py"
+      - "scripts/CoNarrativeWorkIDR0.py"
+      - "tests/test_conarrative_workid_r0.py"
       - "docs/Architecture/COOBJECT_AGENTIC_CAPABILITY_CIV3_R0_20261109.md"
       - "docs/Evolution/COACKREWISE_COOBJECT_CIV3_FRONTIER_R0_20261109.md"
       - ".github/workflows/coobject-vitality-r0.yml"
@@ -26,6 +28,8 @@ on:
       - "tests/test_coobject_agency_bridge_r0.py"
       - "scripts/CoObjectAgencyTaskR0.py"
       - "tests/test_coobject_agency_task_r0.py"
+      - "scripts/CoNarrativeWorkIDR0.py"
+      - "tests/test_conarrative_workid_r0.py"
       - "docs/Architecture/COOBJECT_AGENTIC_CAPABILITY_CIV3_R0_20261109.md"
       - "docs/Evolution/COACKREWISE_COOBJECT_CIV3_FRONTIER_R0_20261109.md"
       - ".github/workflows/coobject-vitality-r0.yml"
@@ -100,6 +104,24 @@ jobs:
           if-no-files-found: error
           retention-days: 30
 
+      - name: Test one WorkID after repeated synthetic CoLatch events
+        run: python -B -m unittest discover -s tests -p 'test_conarrative_workid_r0.py' -v
+      - name: Commit exactly one synthetic Narrative-to-WorkID SQLite record
+        run: |
+          python -B scripts/CoNarrativeWorkIDR0.py produce \
+            --db out/conarrative/work.sqlite \
+            --source CoPre.md --source-commit "$GITHUB_SHA" \
+            --report out/conarrative/producer.json
+      - name: Hand off synthetic WorkID for a cold, separate-job reader
+        uses: actions/upload-artifact@v4
+        with:
+          name: conarrative-workid-${{ github.run_id }}-a${{ github.run_attempt }}
+          path: |
+            out/conarrative/work.sqlite
+            out/conarrative/producer.json
+          if-no-files-found: error
+          retention-days: 30
+
   object-source-reader:
     name: object-source-reader
     needs: object-task
@@ -129,5 +151,23 @@ jobs:
         with:
           name: coobject-one-reader-${{ github.run_id }}-a${{ github.run_attempt }}
           path: out/coobject/readback.log
+          if-no-files-found: error
+          retention-days: 30
+      - name: Receive synthetic WorkID from the independent CI job
+        uses: actions/download-artifact@v4
+        with:
+          name: conarrative-workid-${{ github.run_id }}-a${{ github.run_attempt }}
+          path: out/conarrative/received
+      - name: Cold verify source, WorkID, narrative, receipt and suppressed duplicates
+        run: |
+          python -B scripts/CoNarrativeWorkIDR0.py verify \
+            --db out/conarrative/received/work.sqlite \
+            --source CoPre.md --source-commit "$GITHUB_SHA" \
+            --report out/conarrative/reader.json
+      - name: Preserve receiver readback as an independent artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: conarrative-reader-${{ github.run_id }}-a${{ github.run_attempt }}
+          path: out/conarrative/reader.json
           if-no-files-found: error
           retention-days: 30
