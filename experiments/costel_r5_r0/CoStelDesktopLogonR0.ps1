@@ -116,9 +116,11 @@ function SameTask([object]$Task,[string]$Path) {
 $existing=OwnedTask
 $counts=CandidateCounts
 if ($Mode -eq 'Audit') {
+  $enabled=$false
+  if ($existing) { $enabled=($existing.State -ne 'Disabled') }
   Report 'READ_ONLY_OBSERVATION__NOT_UI_HEALTH' @{
     task_present=($null -ne $existing)
-    task_enabled=if($existing){$existing.State -ne 'Disabled'}else{$false}
+    task_enabled=$enabled
     other_matching_tasks=$counts.task_count
     startup_shortcuts=$counts.shortcut_count
     hkcu_run_names=$counts.run_count
