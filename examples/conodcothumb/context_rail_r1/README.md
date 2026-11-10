@@ -79,3 +79,25 @@ For `G_d`, spiritual/nonmaterial, ET and Civ2+/Civ3+ stories: use a *labelled sy
 Rails: `CONTEXT_ADDRESSABLE_NE_CONTEXT_LOADED | GESTURE_NE_AUTHORITY | PREVIEW_NE_EXECUTE | QUESTION_NE_ANSWER | NULL_NE_FALSE | ET_SCENARIO_NE_CONTACT | G_D_FRAME_NE_MEASURED_FIELD | LOCAL_IS_NOT_LANDED | VALIDATION_IS_NOT_ACCEPTANCE | NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF | NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE`.
 
 **FOSS Forever | CoGoAll | Working Together Respectfully | privacy by design | visible effects, wearables optional.**
+
+
+## CoOwnedWork+ | Narrative-to-WorkID handoff candidate
+
+**State:** PUBLIC-SAFE ACCEPTANCE CONTRACT, NOT A LIVE X2 MOUSE BINDING, AUTOMATED CHAT CAPTURE, SESSION BRIDGE, RECEIVER PICKUP, OR DEPLOYED CoOwm+. The user proposed `CoOwm+`; treat the spelling and semantic identity as **unresolved**, with `CoOwnedWork+` an explanatory candidate, not an automatic rename.
+
+**Problem:** Repeatedly re-pasting CoLatch/CoPre and narrative decisions into new sessions reveals missing machine-owned continuity. A mouse summon alone does not solve it. The work object, not the chat window or gesture, must retain the thread.
+
+**One deliberate gesture -> one persistent work root -> one elected actor.** The existing optional Logi Actions Ring / keyboard-equivalent preview is preferred over a second hook, daemon, logger, or mouse remap. Ordinary middle-click/wheel pass through by default. A context-sensitive preview must show selected WorkID, bounded intent, source/provenance, latest qualified receipt, authority/privacy, and the one next action. The operator can reject, stop, recover or choose a different work object without leaking screen content or silently sending anything.
+
+Candidate `NarrativeCapsule` fields: `work_id`, `source_ref`, `source_revision`, `selected_span_or_pointer`, `declared_intent`, `relationships`, `decisions`, `unresolved_questions`, `permissions`, `privacy_class`, `previous_receipt_refs`, `next_event`, `lease_holder`, `fencing_token`, `receiver_ref`, `expiry`, `recovery_ref`, `human_readable_summary`. Text available only in this chat must remain `UNEXPORTED_CHAT_CONTEXT` until an authorized receiver makes an exact independent readback; no simulated UI action can promote that state.
+
+**Acceptance benchmarks:**
+
+1. **Recovery over recital:** repeat an identical CoLatch input 10 times with the same WorkID; zero duplicated committed effects or new redundant workstreams. Any changed source or unresolved conflict must surface as a visible delta.
+2. **Gesture and non-gesture parity:** both explicit ring activation and accessible keyboard fallback preview the same WorkID/version. Native middle-click does not invoke the application.
+3. **Single actor, many challengers:** at most one fenced worker owns a collision-domain write. Independent inversion challengers may report alternative hypotheses and counterexamples without being given write authority.
+4. **Effect boundary:** distinguish `PREVIEWED`, `COMMITTED`, `RECEIVER_READBACK`, `USEFUL_EFFECT_VERIFIED`, `RESTART_RECOVERED` and `24H_PERSISTENCE_VERIFIED`. Hashing, a GitHub artifact, or cross-job CI cannot silently qualify a cross-provider external receiver or a live mouse.
+5. **Least powerful participant controls their own future:** parental/guardian relationships are separate permission domains; no child becomes the executor or custodian of adult ambitions. Opt-out and revocation must work; no private family narrative enters public source or telemetry.
+6. **CoSpeedo readout:** track verified human-time saved, independent receiver effects, stale-source alerts, manual-relay count, errors and rollback. Unknown is not zero; source count is not exponential productivity.
+
+**Next proof:** using existing R1 browser-local preview, let an explicitly selected, non-sensitive synthetic narrative resolve to an existing WorkID and one reversible proposed action; test duplicate suppression, revocation, accessible keyboard parity and recovery. Later native adapter/device acceptance requires separate consented X2 evidence, not an optimistic GitHub badge.
