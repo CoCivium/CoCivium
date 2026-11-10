@@ -14,6 +14,18 @@ One portable public orientation, many role-sensitive projections. This page is n
 6. Protect private scopes. Public source is an index and permissioned projection, not permission to publish transcripts, personal data or internal services.
 7. Report one real deed or NO_UPDATE, evidence pointer, explicit HELD boundary, and elected next proof. No invented ACK, public mirror, deployment, CoEx, AGI or cross-session sync.
 
+## Optional-input interface | CoNoNudge compatibility R0
+
+**No new user message is required** to renew established bounded work. The CoLatch/CoGoAll apostrophe, long CoPre rant, button, voice input, regular sentence and silence are possible *inputs*, not availability prerequisites or authorization tokens. The user may continue typing the old formula for familiarity, but a robot must not make the next cycle depend on it. A message containing a substantive correction or safety request must not be silently classified as duplicate assent simply because it starts with the familiar formula.
+
+A real event, such as an already-authorized scheduled due check, qualified source change, observed device recovery or independent receiver readback, may nominate a new **review candidate** without user typing. No event is also an acceptable state: remain quiet instead of fabricating output. This source-only contract does not schedule events, open a UI, call another session, grant permissions, or guarantee any task runs. It is compatible with the already-existing CoEvoAll Pulse's no-new-user-input review, without becoming a second heartbeat.
+
+The [bounded machine admission preview](../../../scripts/copre_optional_ingress_r0.py) accepts explicit typed event kinds. It stores **no raw user text**, makes no effects, does not refetch source digests, and returns a stable candidate work pointer plus explicit unknowns; its [adversarial tests](../../../scripts/test_copre_optional_ingress_r0.py) cover silence, repeated assent, due-period replay, separate receiver observations, new ideas, corrections, and stop requests. Any upstream classification of a free-text message is an **unverified caller claim**. A source hash string is a pointer, not independent readproof. An explicit STOP or CORRECTION must be escalated to an authorized receiver with real acknowledgment; a source-only preview cannot stop running processes.
+
+**Most active sessions** is a proposed adoption measure, not a known electorate. **No adopted cross-session consensus** or majority-vote evidence exists in this draft. To claim broad adoption later, define the eligible session/receiver population, gather consent-appropriate current independent acceptance receipts, record dissent/abstention and failure domains, then perform a fresh receiver readback. Self-reported agents, a shared prompt, a GitHub PR or several jobs on one provider are not a majority of independently active sessions.
+
+**Human experience target:** no script to memorize. Say what changed, tap a relevant control, or do nothing; the human sees one real outcome and an easy STOP/undo. Preserve public/private gates, native OS fallback, and source/custody boundaries. This public draft is not the installed CoBar/CoOrb universal interface.
+
 ## One source, distinct views
 Machine: JSON/typed graph, hashes, policy, ledger, provenance, dependency edges, recovery cursors. Human: accessible navigation, explanation, consent and fallback. Both refer to a common exact source object without claiming identical rendered bytes.
 
