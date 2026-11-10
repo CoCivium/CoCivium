@@ -221,3 +221,126 @@ jobs:
             ${{ runner.temp }}/coprecursor-first-task/*.json
           if-no-files-found: warn
           retention-days: 14
+
+
+  handoff_producer:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 4
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Package immutable CoPreCursor source and handoff script
+        run: |
+          mkdir -p "$RUNNER_TEMP/coprecursor-handoff"
+          python -B examples/corun_r0/first_use_capsule.py \
+            --repo-root . \
+            --out "$RUNNER_TEMP/coprecursor-handoff/capsule.zip"
+          cp examples/corun_r0/first_use_receiver.py \
+            "$RUNNER_TEMP/coprecursor-handoff/first_use_receiver.py"
+      - name: Verify exact producer source, receiver script and receipt
+        run: |
+          python - <<'PY'
+          import hashlib, json, os
+          from pathlib import Path
+          base = Path(os.environ["RUNNER_TEMP"]) / "coprecursor-handoff"
+          bundle = (base / "capsule.zip").read_bytes()
+          source = (base / "first_use_receiver.py").read_bytes()
+          rec = json.loads((base / "capsule.zip.receipt.json").read_text())
+          def gitblob(data):
+              return hashlib.sha1(b"blob " + str(len(data)).encode()
+                                  + b"\x00" + data).hexdigest()
+          assert gitblob(source) == "58bb0dbfafcb0a64e4b70ee273b6453aae6a6c03"
+          assert hashlib.sha256(bundle).hexdigest() == rec["capsule_sha256"]
+          assert rec["source_blob_sha1"] == "773e9de7aa7c6b03bf0bc75eddb7ca0a0c8dd101"
+          assert rec["result"] == "PACKAGE_CREATED_NOT_LANDED"
+          assert rec["receiver_ack"] is False
+          assert rec["coex"] is False
+          assert rec["qualified_mvp"] is False
+          print("PASS_PINNED_EPHEMERAL_PRODUCER_NO_LANDING")
+          PY
+      - name: Handoff to fresh runner with exact artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: coprecursor-ephemeral-transport
+          path: ${{ runner.temp }}/coprecursor-handoff/*
+          if-no-files-found: error
+          retention-days: 7
+
+  handoff_receiver:
+    needs: handoff_producer
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    permissions:
+      contents: read
+    steps:
+      # Intentionally no actions/checkout. Only download the producer capsule.
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Download producer capsule without repository checkout
+        uses: actions/download-artifact@v4
+        with:
+          name: coprecursor-ephemeral-transport
+          path: ${{ runner.temp }}/coprecursor-inbox
+      - name: Verify pinned execution script from received bytes
+        run: |
+          python - <<'PY'
+          import hashlib, os
+          from pathlib import Path
+          p = Path(os.environ["RUNNER_TEMP"]) / "coprecursor-inbox"
+          raw = (p / "first_use_receiver.py").read_bytes()
+          h = hashlib.sha1(b"blob " + str(len(raw)).encode()
+                           + b"\x00" + raw).hexdigest()
+          assert h == "58bb0dbfafcb0a64e4b70ee273b6453aae6a6c03"
+          assert sorted(item.name for item in p.iterdir()) == [
+              "capsule.zip", "capsule.zip.receipt.json", "first_use_receiver.py"
+          ]
+          print("PASS_PINNED_EXECUTION_SCRIPT_NO_REPO_CHECKOUT")
+          PY
+      - name: Install scoped Chromium for isolated receiver
+        run: |
+          python -m pip install playwright==1.56.0
+          python -m playwright install --with-deps chromium
+      - name: Prove exact-object readback and replay synthetic first use
+        run: |
+          python -B "$RUNNER_TEMP/coprecursor-inbox/first_use_receiver.py" \
+            --capsule "$RUNNER_TEMP/coprecursor-inbox/capsule.zip" \
+            --producer-receipt "$RUNNER_TEMP/coprecursor-inbox/capsule.zip.receipt.json" \
+            --out "$RUNNER_TEMP/coprecursor-receiver"
+      - name: Verify receipt and explicit nonpromotion boundaries
+        run: |
+          python - <<'PY'
+          import hashlib, json, os
+          from pathlib import Path
+          base = Path(os.environ["RUNNER_TEMP"]) / "coprecursor-receiver"
+          raw = (base / "receiver-readback.json").read_bytes()
+          result = json.loads(raw)
+          receipt = json.loads((base / "receipt.json").read_text())
+          assert hashlib.sha256(raw).hexdigest() == receipt["report_sha256"]
+          assert result["passed"] == result["total"] and result["total"] >= 21
+          assert result["source_blob_sha1"] == "773e9de7aa7c6b03bf0bc75eddb7ca0a0c8dd101"
+          assert result["receiver_readback"] == "EXACT_BUNDLE_AND_SOURCE_BYTES"
+          assert result["behavioral_replay"] == "PASS_AUTOMATED_SYNTHETIC_TASK"
+          assert result["receiver_type"] == "ISOLATED_GITHUB_ACTIONS_JOB_NO_REPOSITORY_CHECKOUT"
+          assert result["cross_provider"] is False
+          assert result["durable_destination"] is False
+          assert result["human_acceptance"] == "NOT_TESTED"
+          assert result["qualified_mvp"] is False
+          assert result["no_external_effects"] is True
+          assert receipt["result"] == "PASS_ISOLATED_SAME_PROVIDER_JOB_ONLY"
+          assert receipt["durable_custody"] is False
+          assert receipt["human_acceptance"] is False
+          print("PASS_CROSS_RUNNER_READBACK_SCOPE_ONLY", result["total"])
+          PY
+      - name: Preserve exact receiver evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: coprecursor-ephemeral-readback-proof
+          path: ${{ runner.temp }}/coprecursor-receiver/*.json
+          if-no-files-found: warn
+          retention-days: 7
