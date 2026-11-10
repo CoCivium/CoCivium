@@ -26,6 +26,12 @@ jobs:
           if ($r.schema -ne 'CoRunner.PopupOriginObservation.R0') { throw 'Invalid schema' }
           if ($r.scope -ne 'LOCAL_READ_ONLY_SAMPLE_NOT_COMPLETE_RUNNER_CENSUS') { throw 'Invalid scope' }
           if (-not $r.observed_utc) { throw 'Missing observation timestamp' }
+          if (-not $r.foreground_sample) { throw 'Missing foreground sample' }
+          if (-not $r.foreground_sample.sampled_utc) { throw 'Missing foreground sample timestamp' }
+          if ($r.foreground_sample.reliability -notin @('UNKNOWN','ONE_INSTANT_NOT_POPUP_ATTRIBUTION')) { throw 'Invalid foreground reliability' }
+          if ($r.foreground_sample.PSObject.Properties.Name -contains 'window_title') { throw 'Window title must not be captured' }
+          if ($r.foreground_sample.PSObject.Properties.Name -contains 'hwnd') { throw 'Raw window handle must not be exported' }
+          if (-not (@($r.nonclaims) -contains 'FOREGROUND_SAMPLE_NE_POPUP_CAUSATION')) { throw 'Missing causation boundary' }
           if ($r.sampled_processes -gt 20) { throw 'Unbounded process sample' }
           if ($r.sampled_power_related_tasks -gt 200) { throw 'Unexpected task sample' }
           foreach ($p in @($r.processes)) {
