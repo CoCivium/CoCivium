@@ -5,10 +5,13 @@ No mouse remapping, auto-paste, outgoing network, clipboard reads of text,
 credential reads, provider calls, background services, or file deletion.
 #>
 param(
-    [ValidateSet('UI','Worker','SelfTest')][string]$Mode = 'UI',
+    [ValidateSet('HOLD','UI','Worker','SelfTest')][string]$Mode = 'HOLD',
     [string]$RequestFile = '',
     [string]$CoFarmRoot = ''
 )
+if ($Mode -eq 'HOLD') {
+    throw 'HELD_EXPLICIT_MODE_REQUIRED: specify -Mode UI, Worker, or SelfTest. The default must not open a window.'
+}
 Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
 
