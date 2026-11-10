@@ -52,9 +52,29 @@ def read_member(root: Path, relative: str) -> bytes:
     return candidate.read_bytes()
 
 
-def verify(root: Path) -> dict:
+def verify(root: Path, expected_source_git_blob: str) -> dict:
+    """Require a source pin supplied separately by the receiving caller."""
     root = Path(root)
     require(root.is_dir() and not root.is_symlink(), "INVALID_ROOT")
+    require(isinstance(expected_source_git_blob, str) and
+            len(expected_source_git_blob) == 40 and
+            all(c in "0123456789abcdef" for c in expected_source_git_blob),
+            "INVALID_EXTERNAL_SOURCE_PIN")
+    expected_files = set(EXPECTED_PATHS.values()) | {MANIFEST_PATH, "verify.py"}
+    expected_dirs = {"source", "synthetic-local-a", "synthetic-local-b"}
+    actual_files = set()
+    actual_dirs = set()
+    for entry in root.rglob("*"):
+        require(not entry.is_symlink(), "SYMLINK_IN_PACKET")
+        rel = entry.relative_to(root).as_posix()
+        if entry.is_dir():
+            actual_dirs.add(rel)
+        elif entry.is_file():
+            actual_files.add(rel)
+        else:
+            raise ValueError("UNSUPPORTED_PACKET_MEMBER")
+    require(actual_files == expected_files and actual_dirs == expected_dirs,
+            "UNLISTED_OR_MISSING_PACKET_MEMBER")
     receipt_bytes = read_member(root, MANIFEST_PATH)
     receipt = json.loads(receipt_bytes)
     require(receipt.get("schema") == "CoAll.CoPre.PortablePreviewReceipt.R1", "INVALID_SCHEMA")
@@ -81,6 +101,7 @@ def verify(root: Path) -> dict:
     bio = raw["bio"].decode("utf-8")
     guide = raw["front_door"].decode("utf-8")
     blob = git_blob_sha(raw["source"])
+    require(blob == expected_source_git_blob, "SOURCE_NOT_MATCH_EXPECTED_PIN")
     work_id = obj["work_id"]
 
     require(obj.get("schema") == "CoAll.CoPreGeneric.SynthBioGdTerms.R1-candidate",
@@ -125,12 +146,12 @@ def verify(root: Path) -> dict:
             "INVENTED_EQUIVALENCE")
 
     return {
-        "state": "CI_CROSS_JOB_PACKET_READBACK_VERIFIED_NOT_EXTERNAL_RECEIVER",
+        "state": "PORTABLE_PACKET_VERIFIED_WITH_EXTERNAL_PIN_NOT_RECEIVER_ACCEPTANCE",
         "work_id": work_id,
         "source_git_blob_sha": blob,
         "receipt_sha256": sha256(receipt_bytes),
         "verified_payload_members": 4,
-        "receiver_scope": "SAME_GITHUB_ACTIONS_DISTINCT_JOB",
+        "receiver_scope": "LOCAL_STANDALONE_VERIFICATION_NO_IDENTITY_ATTESTATION",
         "external_effects": 0,
         "receiver_readproof": None,
         "nonclaims": sorted(REQUIRED_NONCLAIMS | {
@@ -144,8 +165,9 @@ def verify(root: Path) -> dict:
 def main() -> int:
     p = argparse.ArgumentParser()
     p.add_argument("--root", type=Path, required=True)
+    p.add_argument("--expect-source-git-blob", required=True)
     args = p.parse_args()
-    print(json.dumps(verify(args.root), sort_keys=True, indent=2))
+    print(json.dumps(verify(args.root, args.expect_source_git_blob), sort_keys=True, indent=2))
     return 0
 
 
