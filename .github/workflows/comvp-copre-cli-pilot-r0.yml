@@ -316,8 +316,11 @@ jobs:
               raise SystemExit('HELD_ACCEPTANCE_OR_STOP_MISSING')
           if sha({**source,'body':body+' CHANGED'})==sha(source):
               raise SystemExit('HELD_BODY_CHANGE_INVISIBLE')
-          if sha(source)!=sha({**source}):
-              raise SystemExit('HELD_NONDETERMINISTIC_SOURCE_ID')
+          activity_only={**issue,'updated_at':'2099-01-01T00:00:00Z'}
+          activity_projection={'issue':activity_only['number'],'url':activity_only['html_url'],
+              'state':activity_only['state'],'title':activity_only.get('title'),'body':activity_only['body']}
+          if sha(activity_projection)!=sha(source):
+              raise SystemExit('HELD_ACTIVITY_FALSE_TASK_REVISION')
           reader='github-actions:cold-consumer:'+os.environ['GITHUB_RUN_ID']+':'+os.environ['GITHUB_RUN_ATTEMPT']
           receipt={
               'schema':'CoMVP.CIColdConsumerR0.candidate',
