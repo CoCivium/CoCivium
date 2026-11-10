@@ -1,0 +1,5 @@
+{"schema":"CoMousePaletteEvo/1","id":"R0-01","status":"PASS","test":"source_offline_safety","scope":"static Python source tests","result":"Six checks passed in isolated Linux environment: no network clients, no OS hooks, explicit clipboard read, no storage write, reversible close, authority markings."}
+{"schema":"CoMousePaletteEvo/1","id":"R0-02","status":"NOT_RUN","test":"windows_pwsh_sta_selftest","scope":"Windows PowerShell 7","result":"Pending Windows CI. Linux cannot run WinForms / mouse context."}
+{"schema":"CoMousePaletteEvo/1","id":"R0-03","status":"NOT_RUN","test":"actual_mx_master4_thumb_button","scope":"X2 physical hardware","result":"X2 remote agent offline. Logitech Options+ mapping not changed."}
+{"schema":"CoMousePaletteEvo/1","id":"R0-04","status":"HOLD","test":"local_clipboard_preview_and_pixel_overlay","scope":"X2 consented UI test","result":"No real clipboard or screen was accessed."}
+{"schema":"CoMousePaletteEvo/1","id":"R0-05","status":"HOLD","test":"global_continuity_and_first_use","scope":"X2 exemplar","result":"No startup or provider-independent work object integration; test only a local first-use palette."}
