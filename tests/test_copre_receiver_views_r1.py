@@ -13,7 +13,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
-from CoPreReceiverViewsR1 import project, save_local_preview, git_blob_sha
+from CoPreReceiverViewsR1 import project, save_local_preview, git_blob_sha, build_portable_packet
 
 SOURCE = ROOT / "ai/continuity/copre-synth-bio-gd-coterms-r1-20261109.json"
 HUMAN = ROOT / "docs/CoPreGeneric/CoPre_SynthBio_Gd_CoTerms_Candidate_R1_20261109.md"
@@ -64,6 +64,41 @@ class ReceiverNativeViews(unittest.TestCase):
 
             with self.assertRaises(FileExistsError):
                 save_local_preview(root, views)  # never clobber same WorkID output
+
+    def test_portable_packet_manifest_and_no_clobber(self):
+        with tempfile.TemporaryDirectory(prefix="copre-portable-") as tmp:
+            root = Path(tmp) / "handoff"
+            receipt = build_portable_packet(root)
+            self.assertEqual(receipt["state"], "LOCAL_PACKET_BUILT_READBACK_NOT_RECEIVER_PICKUP")
+            self.assertEqual(receipt["file_count"], 4)
+            self.assertEqual(receipt["external_effects"], 0)
+            source = json.loads((root / "receipt.json").read_text(encoding="utf-8"))
+            self.assertEqual(source["work_id"], self.obj["work_id"])
+            self.assertEqual(source["source"]["git_blob_sha"], git_blob_sha(self.source))
+            self.assertIsNone(source["receiver_readproof"])
+            self.assertEqual(source["lifecycle"], "TEMPORARY_CI_PREVIEW_NOT_DURABLE_RECEIVER_LANDING")
+            self.assertEqual(source["effect_authority"], "NONE")
+            self.assertIn("Next:", (root / "README.md").read_text(encoding="utf-8"))
+            for role in ("synth", "bio", "front_door"):
+                observed = source["readback"][role]
+                output_bytes = (root / observed["path"]).read_bytes()
+                self.assertEqual(hashlib.sha256(output_bytes).hexdigest(), observed["sha256"])
+            self.assertEqual(
+                hashlib.sha256((root / "receipt.json").read_bytes()).hexdigest(),
+                receipt["receipt_sha256"],
+            )
+            with self.assertRaises(FileExistsError):
+                build_portable_packet(root)
+
+    def test_portable_packet_source_denial_does_not_overwrite(self):
+        with tempfile.TemporaryDirectory(prefix="copre-portable-guard-") as tmp:
+            root = Path(tmp) / "handoff"
+            root.mkdir()
+            marker = root / "README.md"
+            marker.write_text("existing prior", encoding="utf-8")
+            with self.assertRaises(FileExistsError):
+                build_portable_packet(root)
+            self.assertEqual(marker.read_text(encoding="utf-8"), "existing prior")
 
     def test_machine_graph_relation_authority_escalation_denied(self):
         changed = self.mutated(lambda d: d["relations"][0].update(effect_authority="ALL"))
