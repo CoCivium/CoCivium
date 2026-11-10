@@ -69,3 +69,37 @@ jobs:
           path: ${{ runner.temp }}/coobject_readback/receipt.json
           retention-days: 7
           if-no-files-found: error
+
+  crossjob-witness:
+    needs: [crossjob-producer, crossjob-receiver]
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Adversarial independent witness source tests
+        run: python3 -m unittest discover -s examples/coobject_capsule_r0 -p 'test_cross_job_witness_r0.py' -v
+      - name: Retrieve producer artifact to third independent runner job
+        uses: actions/download-artifact@v4
+        with:
+          name: coobject-synthetic-handoff-r0
+          path: ${{ runner.temp }}/witness_producer
+      - name: Retrieve receiver readback separately
+        uses: actions/download-artifact@v4
+        with:
+          name: coobject-synthetic-readback-r0
+          path: ${{ runner.temp }}/witness_receiver
+      - name: Independently check producer exact bytes, receiver claims, and source baseline
+        run: |
+          mkdir -p "$RUNNER_TEMP/witness_result"
+          python3 examples/coobject_capsule_r0/cross_job_witness_r0.py "$RUNNER_TEMP/witness_producer" "$RUNNER_TEMP/witness_receiver" --report "$RUNNER_TEMP/witness_result/witness.json"
+          python3 -m json.tool "$RUNNER_TEMP/witness_result/witness.json" > /dev/null
+      - name: Preserve scoped third-job witness receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: coobject-synthetic-third-job-witness-r0
+          path: ${{ runner.temp }}/witness_result/witness.json
+          retention-days: 7
+          if-no-files-found: error
