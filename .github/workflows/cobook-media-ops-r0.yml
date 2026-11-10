@@ -1,0 +1,22 @@
+name: CoBook media-ops reference guard R0
+on:
+  pull_request:
+    paths:
+      - 'ai/cobook-media-ops-r0.json'
+      - 'scripts/check_cobook_media_ops_r0.py'
+      - 'docs/Books/**'
+      - 'examples/colensmedia/README.md'
+      - 'examples/comap/diagram-of-diagrams-r0.md'
+      - '.github/workflows/cobook-media-ops-r0.yml'
+  workflow_dispatch:
+jobs:
+  reference-integrity:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python3 scripts/check_cobook_media_ops_r0.py
