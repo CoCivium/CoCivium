@@ -1,0 +1,174 @@
+{
+  "schema": "CoCivium.CoSpeedo.PublicProofDoor.R0",
+  "identity": "CoCivium.EvoAll.CoHereNow.PublicProofDoor.20261024.R0",
+  "observed_date_utc": "2026-10-24",
+  "observation_scope": "PUBLIC_GITHUB_DEFAULT_BRANCH_READBACK_SNAPSHOT",
+  "headline": "Public proof is available. X2 receiver readback is unverified.",
+  "meaning": "Verified GitHub readback is a public projection. It is not proof that a local CoSpeedo, CoBar, CoOrbWare receiver, person, agent or model adopted the update.",
+  "next_safe_action": "When X2 is reachable, bind one exact CoSpeedo source object to one user-visible receiver, perform an independent source/hash readback, and record first-use accessibility and meaning.",
+  "source_refs": [
+    {
+      "path": "EVERGREEN.md",
+      "blob_sha1_at_observation": "4a4a728cc478a21e0e9fe564681edbd7119f0d4d",
+      "title": "CoGoAll Evergreen",
+      "scope": "Public working index; no universal receiver claim",
+      "link": "https://github.com/CoCivium/CoCivium/blob/main/EVERGREEN.md",
+      "readback": "GITHUB_DEFAULT_BRANCH"
+    },
+    {
+      "path": "ai/benchmark-evo.jsonl",
+      "blob_sha1_at_observation": "26951288f6143d55e30734a55dfbcb62b6a5aa55",
+      "title": "Evidence ledger",
+      "scope": "Historical PASS / FAIL / HELD entries, not continuous live monitoring",
+      "link": "https://github.com/CoCivium/CoCivium/blob/main/ai/benchmark-evo.jsonl",
+      "readback": "GITHUB_DEFAULT_BRANCH"
+    },
+    {
+      "path": "docs/Architecture/CORESOURCE_FRONTIER_ALLOCATOR_R0.md",
+      "blob_sha1_at_observation": "86af1c2a70e2f14380d87fc4b81a1fb48ed710c5",
+      "title": "CoStretch allocator",
+      "scope": "Finite measured waves, bounded concurrency, marginal-value stop rules",
+      "link": "https://github.com/CoCivium/CoCivium/blob/main/docs/Architecture/CORESOURCE_FRONTIER_ALLOCATOR_R0.md",
+      "readback": "GITHUB_DEFAULT_BRANCH"
+    },
+    {
+      "path": "docs/Architecture/COSCALE_REDUCTION_ECOLOGY_R0.md",
+      "blob_sha1_at_observation": "9a15d0ac46de5aede6df8b329a2d88274828d926",
+      "title": "CoScale / CoReduce",
+      "scope": "Scale-relative relations, reversible views, no infinite compute",
+      "link": "https://github.com/CoCivium/CoCivium/blob/main/docs/Architecture/COSCALE_REDUCTION_ECOLOGY_R0.md",
+      "readback": "GITHUB_DEFAULT_BRANCH"
+    },
+    {
+      "path": "assets/evoall/evo_all_betters_moustache_20261023.svg",
+      "blob_sha1_at_observation": "01ecf5ecfc2badeb6ad981151e8e2d53d2304178",
+      "title": "Centred moustache thumbnail",
+      "scope": "Visual working identity, not performance evidence",
+      "link": "https://github.com/CoCivium/CoCivium/blob/main/assets/evoall/evo_all_betters_moustache_20261023.svg",
+      "readback": "GITHUB_DEFAULT_BRANCH"
+    },
+    {
+      "path": "docs/Architecture/COSTRETCH_EVO_ALL_BETTERS_R3_20261023.md",
+      "blob_sha1_at_observation": "f7dab077bb3f4e663fabf11e8094f262f3c1a048",
+      "title": "Media quality caveat",
+      "scope": "Prior media technical passes with separate clipped overlay FAIL",
+      "link": "https://github.com/CoCivium/CoCivium/blob/main/docs/Architecture/COSTRETCH_EVO_ALL_BETTERS_R3_20261023.md",
+      "readback": "GITHUB_DEFAULT_BRANCH"
+    }
+  ],
+  "frontier": [
+    {
+      "name": "CoGoAll evergreen + benchmark",
+      "status": "PUBLIC_READBACK",
+      "source_index": 0,
+      "detail": "Public evidence exists; receivers and external adoption remain unproven."
+    },
+    {
+      "name": "CoQuanta / CoScale / CoStretch",
+      "status": "PUBLIC_ARCHITECTURE",
+      "source_index": 3,
+      "detail": "Scale-free typed references, finite resource allocation, explicit compression loss classes."
+    },
+    {
+      "name": "CoAttractor / CoCopy / thumb",
+      "status": "MIXED",
+      "source_index": 0,
+      "detail": "Public offline canaries exist; native physical middle/thumb detection and mapping remain HELD."
+    },
+    {
+      "name": "CoSpeedo + CoOrbWare current X2",
+      "status": "HELD",
+      "source_index": 1,
+      "detail": "Screenshot shows a local page. This package has no independent X2 byte or current process proof."
+    }
+  ],
+  "gates": [
+    {
+      "name": "GitHub Evergreen main readback",
+      "status": "PASS",
+      "proof": "GitHub connector readback, pinned blob SHA-1 above",
+      "limit": "LINK_NE_ADOPTION"
+    },
+    {
+      "name": "Source-based offline proof door",
+      "status": "CANDIDATE",
+      "proof": "Bundled smoke suite, inspect receipt",
+      "limit": "STATIC_TEST_NE_HUMAN_ACCEPTANCE"
+    },
+    {
+      "name": "Current X2 Desktop Commander receiver",
+      "status": "HELD",
+      "proof": "Remote Desktop Commander reported offline at observation",
+      "limit": "CONNECTOR_OFFLINE_NE_OS_OFFLINE"
+    },
+    {
+      "name": "Native CoSpeedo / CoOrbWare receiver ACK",
+      "status": "HELD",
+      "proof": "No exact current receiver-produced readproof",
+      "limit": "POINTER_NE_ACK"
+    },
+    {
+      "name": "Physical middle/thumb gesture",
+      "status": "HELD",
+      "proof": "No verified physical button event for this receiver",
+      "limit": "CLICK_SIMULATION_NE_HARDWARE_GESTURE"
+    },
+    {
+      "name": "Gmail Primary under 60 seconds",
+      "status": "HELD",
+      "proof": "Recipient-side Primary classification/time unobserved",
+      "limit": "SENT_NE_PRIMARY"
+    },
+    {
+      "name": "Claude / Pi adapters",
+      "status": "HELD",
+      "proof": "No fresh authenticated task or Pi compatibility receipt",
+      "limit": "CANDIDATE_NE_ACTIVE_ADAPTER"
+    },
+    {
+      "name": "Llama/Ollama task inference",
+      "status": "HELD",
+      "proof": "Earlier tags inventory does not prove model inference",
+      "limit": "METADATA_NE_COMPLETION"
+    },
+    {
+      "name": "Media human visual acceptance",
+      "status": "HELD",
+      "proof": "Known historic clipped-overlay finding despite technical media passes",
+      "limit": "BLACKDETECT_ZERO_NE_VISUAL_ACCEPTANCE"
+    }
+  ],
+  "scaling": {
+    "logical_horizon": "OPEN_ENDED_CANDIDATES",
+    "actual_workers": 0,
+    "background_processes": 0,
+    "external_messages_sent": 0,
+    "protocol": "DISCOVER -> QUALIFY -> SELECT -> BOUNDED_RUN -> VERIFY -> RECEIPT -> SLEEP_OR_REPEAT",
+    "claim": "HIGH_UTILIZATION_NE_HIGH_VALUE"
+  },
+  "privacy": {
+    "scope": "PUBLIC_ONLY",
+    "private_screenshot_content_included": false,
+    "credential_material_included": false,
+    "external_effect_authority": "NONE"
+  },
+  "receiver_state": {
+    "ack": false,
+    "integrated": false,
+    "coex": false,
+    "human_ux_accepted": false,
+    "native_runtime": false
+  },
+  "nonclaims": [
+    "LOCAL_IS_NOT_LANDED",
+    "VALIDATION_IS_NOT_ACCEPTANCE",
+    "NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF",
+    "NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE",
+    "HASHING_IS_NOT_SEMANTIC_INGESTION",
+    "DISCOVERED_SET_IS_NOT_COMPLETE_HISTORY",
+    "ONE_SAMPLE_NE_SLA",
+    "RENDER_NE_RUNTIME",
+    "ADDRESSABLE_NE_BROADCAST",
+    "COQUANTA_NE_PHYSICAL_QUANTUM"
+  ]
+}
