@@ -55,6 +55,10 @@ def check_source():
     assert all(not u.startswith(("http://", "https://")) for u in tree.links)
     for href in tree.links:
         assert href and not href.startswith("/"), href
+        if href.startswith("#"):
+            # In-page navigation is not a filesystem dependency.
+            assert 'id="' + href[1:] + '"' in content, href
+            continue
         path = (PAGE.parent / href.split("#", 1)[0]).resolve()
         assert path.is_relative_to(ROOT) and path.is_file(), href
     for forbidden in (
