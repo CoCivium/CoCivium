@@ -1,0 +1,134 @@
+{
+  "schema": "cocivium.coinverse_benchmark.generational_stewardship.r0",
+  "status": "PUBLIC_DESIGN_DRAFT_NOT_CANON_OR_RUNTIME",
+  "title": "CoInverseBenchmark+ / CoNextGeneration+ / CoLatch+",
+  "purpose": "Build reciprocal, independent challenge and voluntary intergenerational continuity while reducing dependence on founders, chat sessions, or any single AI.",
+  "source_pointers": [
+    {
+      "path": "docs/Evolution/COPRE_DRAFT_READY_CYCLE_R0.json",
+      "blob_sha": "522a45140d1c19b8f58987fa8044c6fdceffcb11"
+    },
+    {
+      "path": "docs/Evolution/COPREGENERIC_LATCH_READY_CYCLE_R0.md",
+      "blob_sha": "d9099c81a8e045214c8adbd21e02e46b92da0393"
+    }
+  ],
+  "invariants": {
+    "seed": 1,
+    "orb": 1,
+    "gauge": 1,
+    "thumb": 1,
+    "time": 1,
+    "placeholders": 0,
+    "human_manual_relay_target": 0,
+    "elected_actuator_target": 1,
+    "seed_survival_target_hours": 24,
+    "independent_handoff_target": 1,
+    "claims": "targets_not_verified"
+  },
+  "principles": [
+    "No actor or model self-certifies: require independently sourced reciprocal challenge.",
+    "No crown: founders, stewards, assistants and successors retain bounded, revocable authority.",
+    "The next generation inherits options, not duties; consent, age-appropriate autonomy, privacy, and refusal are primary.",
+    "Public narrative is a consent-filtered projection; never publish a child's identity, private history, or inferred preferences by default.",
+    "Human agency is not a dependency to optimize away: remove mechanical relay, preserve meaningful choice.",
+    "Distinct experimental waves maximize coverage and novelty; matched controls preserve reproducibility.",
+    "Spiritual or G_dSide interpretations are welcome as labeled philosophical or belief lanes, not empirical certifications."
+  ],
+  "benchmark_matrix": [
+    {
+      "id": "independence",
+      "measure": "successful independent recovery without originating session",
+      "unit": "verified_recoveries/attempts",
+      "challenge": "new reader with no chat context"
+    },
+    {
+      "id": "inversion",
+      "measure": "material errors found by independent challengers",
+      "unit": "confirmed_unique_findings",
+      "challenge": "reverse premise and test counterexamples"
+    },
+    {
+      "id": "transfer",
+      "measure": "handoff completed without founder as messenger",
+      "unit": "verified_handoffs/attempts",
+      "challenge": "receiver produces source-bound ACK"
+    },
+    {
+      "id": "optionality",
+      "measure": "meaningfully different paths available to successors",
+      "unit": "validated_distinct_paths",
+      "challenge": "successor can reject or fork"
+    },
+    {
+      "id": "agency",
+      "measure": "decisions that remain reversible and consented",
+      "unit": "reversible_consented_decisions/decisions",
+      "challenge": "withdrawal and rollback rehearsal"
+    },
+    {
+      "id": "continuity",
+      "measure": "independent recovery after >24h",
+      "unit": "elapsed_hours_and_digest_match",
+      "challenge": "cold-start receiver"
+    },
+    {
+      "id": "loop_break",
+      "measure": "duplicate proposals avoided without hiding conflicts",
+      "unit": "verified_duplicates_deduplicated",
+      "challenge": "repeat input and inspect preserved history"
+    },
+    {
+      "id": "epistemic",
+      "measure": "claims with accurate evidence labels",
+      "unit": "correctly_labeled_claims/claims",
+      "challenge": "independent source audit"
+    }
+  ],
+  "roles": [
+    {
+      "role": "originator",
+      "authority": "propose and explain",
+      "cannot": "self-approve evidence"
+    },
+    {
+      "role": "challenger",
+      "authority": "independent counterexamples and inversion",
+      "cannot": "silently clobber source"
+    },
+    {
+      "role": "receiver",
+      "authority": "verify digest and issue bounded ACK",
+      "cannot": "claim human consent"
+    },
+    {
+      "role": "steward",
+      "authority": "govern safety and reversible transitions",
+      "cannot": "bind future generations irrevocably"
+    },
+    {
+      "role": "successor",
+      "authority": "choose, change, decline or fork",
+      "cannot": "be presumed to consent"
+    }
+  ],
+  "cycle": [
+    "CoLatch verified source",
+    "CoReGroup competing heads and receipts",
+    "CoInvert hypotheses with independent benchmarks",
+    "CoBoogie bounded diverse and replicated tests",
+    "CoGlass inspect blind spots and dissent",
+    "CoDeed commit verified improvement",
+    "CoReceipt independent verification",
+    "CoHandoff without manual relay",
+    "CoRecover after >24h",
+    "CoEvo revise or retire failed candidates"
+  ],
+  "break_glass": "Pause on privacy, minor safety, identity, credentials, finance, deletion, public release, canon and irreversible authority gates until appropriate human approval and logged recovery.",
+  "mirror_status": {
+    "github_copregeneric": "NOT_FOUND_404_AT_CHECK",
+    "cocivium_org_copre": "UNVERIFIED",
+    "inseed_com_stead": "UNVERIFIED"
+  },
+  "proof_boundary": "This artifact demonstrates only a published design and readback, not a running coordination system, cross-session ACK, child consent, 24h recovery or verified mirrors."
+}
