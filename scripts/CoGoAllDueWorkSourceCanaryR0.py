@@ -52,7 +52,7 @@ def _require_checkout(root: Path, env, role: str) -> dict:
             "HOLD_RUN_ID")
     require(isinstance(head, str) and HEAD.fullmatch(head),
             "HOLD_SOURCE_COMMIT")
-    require(event in {"push", "schedule", "workflow_dispatch"},
+    require(event in {"push", "schedule", "workflow_dispatch", "pull_request"},
             "HOLD_UNQUALIFIED_EVENT")
     result = subprocess.run(
         ["git", "rev-parse", "HEAD"], cwd=root, capture_output=True, text=True,
