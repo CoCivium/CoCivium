@@ -54,6 +54,18 @@ COOBJECT_BROWSER_MODE=native python3 test_browser.py
 
 This test invokes real UI controls and samples DOM state; it is not a static parser. It writes `browser_qa.json`, `desktop_portable_qa.png` and `mobile_portable_qa.png` only under the test directory. The screenshots are not production releases.
 
+## Additional cross-engine and state-race proof | 2026-11-10
+
+At exact draft branch head `2a075450463a10a086ab0a2681537dcef8045c3f`, [GitHub Actions run 42781526864](https://github.com/CoCivium/CoCivium/actions/runs/42781526864) completed all six jobs successfully:
+
+- **Chromium native WebCrypto:** 17/17 full UI interactions, real file export, separate browser-context import, same-byte recovery, corruption/security failures and a strong direct-copy baseline.
+- **Firefox native WebCrypto:** the same 17/17 UI checks at a 390px viewport; Firefox does not implement Playwright Chromium's mobile emulation flag, so this is viewport coverage, not mobile-device acceptance.
+- **Async operation fencing:** three separate Chromium regressions deliberately withhold SHA-256 completion. Reset blocks a pending package, changing source selection blocks an older package, and reset blocks a pending restore download. The app uses a local incrementing operation epoch to ignore stale completions; this does not interrupt actual cryptography or certify all possible concurrency.
+- **Producer, receiver, third-job witness and source tests:** all succeeded at this head within one GitHub provider trust boundary.
+- **Operational cost:** Firefox CI installs its browser and support packages. A six-job source test is justified as a challenge suite for proposed changes, not evidence that running it constantly would be economical. Avoid recurring tasks without a concrete change and receiver.
+
+No human receiver, different real device, separate storage failure domain, long-term availability, live CoAll service, externally useful effect or X2 software is certified. A direct copy remains the lower-overhead baseline.
+
 ## Existing proofs and next independent receiver gate
 
 - [CoObject/OVP draft PR #446](https://github.com/CoCivium/CoCivium/pull/446), [source-level four-job cross-job receipt and independent witness](https://github.com/CoCivium/CoCivium/actions/runs/42770867550).
