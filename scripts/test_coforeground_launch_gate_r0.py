@@ -132,8 +132,8 @@ class GuardTests(unittest.TestCase):
             self.assertIn(relation,text)
     def test_retro_echo_preserves_uncertainty_and_private_holds(self):
         text=(ROOT/"docs/Architecture/COFRONT_RETRO_ECHO_NO_ORPHANS_R0_20261109.md").read_text(encoding="utf-8")
-        for contract in ("ORPHAN_RISK", "not a complete reconstruction",
-                         "does not retroactively establish",
+        for contract in ("ORPHAN_RISK", "**not** a complete reconstruction",
+                         "**does not** retroactively establish",
                          "not private conversation ingestion"):
             self.assertIn(contract.lower(),text.lower())
     def test_never_launches_from_source(self):
