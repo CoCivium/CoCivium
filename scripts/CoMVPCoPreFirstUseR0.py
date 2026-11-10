@@ -90,7 +90,7 @@ def observation(raw, result_revision):
         "budget": {"max_work_units": 1},
         "evidence_refs": [ISSUE_URL, "git:CoPreContinuationR0.py@5a1a8cd15eb41af151c9255bee46cc7549e1acd8"],
         "next_deed": "prove exact read-only task reconstruction with an independent first-use receiver",
-        "verification": "source digest, bounded authority, user task and STOP independently checked",
+        "verification": "Same-origin two-read content agreement and local READ_ONLY compiler gate only; independent task and STOP acceptance UNPROVEN",
         "recovery_ref": ISSUE_URL,
         "failure_domain": "single-unattested-cli-executor",
         "requested_effects": ["NONE"],
