@@ -20,6 +20,10 @@ GitHub may display the HTML as source; save the standalone HTML and open it in a
 
 This original, fictional chapter candidate is a distinct experiment beside [the existing Beetle origin vignette](CoBook_Origin_Beetle_Cartographer_Interactive_R0.html), not a replacement for the eight-chapter preview. A reader may simply read the story; the three keyboard-operable routes and the fiction/evidence disclosure are optional. The child's sex is not disclosed. **No independent human acceptance or public-site deployment is claimed.**
 
+### CoQ&A+ as the story's voluntary question engine (draft)
+
+[Question-to-scene lens R0](COBOOK_COQA_QUESTION_TO_SCENE_LENS_R0_20261110.md) connects one freely answered profound question to an independently challenging parent–child scene, with provenance, privacy, epistemic labels, reader agency and uncoached acceptance. It does **not** publish private answers, reproduce third-party WhatsApp text or create a second CoQA source of truth.
+
 ## Publication lineage and other media
 
 | Relation | Role | Status |
