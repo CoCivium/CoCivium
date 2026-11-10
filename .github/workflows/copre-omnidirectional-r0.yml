@@ -12,6 +12,8 @@ on:
       - 'scripts/test_copre_public_readback_r0.py'
       - 'scripts/copre_seed_24h_canary_r0.py'
       - 'scripts/test_copre_seed_24h_canary_r0.py'
+      - 'scripts/copre_handoff_fence_sim_r0.py'
+      - 'scripts/test_copre_handoff_fence_sim_r0.py'
       - 'ai/copre-seed-path-fabric-r0-20261109.json'
       - '.github/workflows/copre-omnidirectional-r0.yml'
   push:
@@ -43,6 +45,8 @@ jobs:
         run: python -B scripts/test_copre_path_query_r0.py -v
       - name: Cross-run survival evidence negative controls
         run: python -B scripts/test_copre_seed_24h_canary_r0.py -v
+      - name: Simulated exactly-once local handoff and stale-writer negative controls
+        run: python -B scripts/test_copre_handoff_fence_sim_r0.py -v
       - name: Mirror readback negative controls
         run: python -B scripts/test_copre_public_readback_r0.py -v
       - name: Run pinned public-source and proposed mirror readback (evidence only)
