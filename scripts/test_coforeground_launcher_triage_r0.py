@@ -123,6 +123,18 @@ class LauncherTriageTests(unittest.TestCase):
     def test_malformed_task_rejected(self):
         x=fixture();x["tasks"].append("text")
         self.assert_held(x,"HELD_UNDECLARED_TASK_FIELDS")
+    def test_quiet_boot_preserves_all_known_legacy_functions(self):
+        note=(SCRIPT.parents[1]/"docs/Architecture/COFOREGROUND_QUIET_BOOT_FUNCTION_SALVAGE_R0_20261110.md").read_text(encoding="utf-8")
+        for name in m.KNOWN_FUNCTIONS:
+            self.assertIn(name,note)
+        self.assertIn("not current installation truth",note.lower())
+        self.assertIn("SOURCE-ONLY",note)
+    def test_no_remote_scheduler_as_single_point_of_failure(self):
+        note=(SCRIPT.parents[1]/"docs/Architecture/COFOREGROUND_QUIET_BOOT_FUNCTION_SALVAGE_R0_20261110.md").read_text(encoding="utf-8")
+        self.assertIn("sole clock",note)
+        self.assertIn("sole store",note)
+        self.assertIn("sole actuator",note)
+        self.assertIn("No X2 task, process, registry, service, DNS or scheduler was modified",note)
     def test_never_use_remote_scheduler_as_runtime(self):
         code=SCRIPT.read_text(encoding="utf-8")
         for unsafe in ("subprocess", "os.system", "Stop-Process", "Disable-ScheduledTask",
