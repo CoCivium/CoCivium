@@ -8,7 +8,9 @@ on:
       - 'examples/cotalkitout/scheduled_pulse_readback_r0.py'
       - 'test_scheduled_pulse_readback_r0.py'
       - 'examples/cotalkitout/due_work_catchup_r0.py'
+      - 'examples/cotalkitout/local_source_work_cycle_r0.py'
       - 'test_due_work_catchup_r0.py'
+      - 'test_local_source_work_cycle_r0.py'
       - 'scripts/CoReboundIntegrityR0.py'
       - 'scripts/copre_seed_24h_canary_r0.py'
       - 'scripts/test_copre_seed_24h_canary_r0.py'
@@ -35,6 +37,8 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - name: Verify one-shot durable local source WorkID (no external effect)
+        run: python -B -m unittest -v test_local_source_work_cycle_r0
       - name: Exercise bounded recovery and handoff gates
         id: tests
         continue-on-error: true
