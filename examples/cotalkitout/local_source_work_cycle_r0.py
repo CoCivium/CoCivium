@@ -47,6 +47,14 @@ def run(root: str, db_path: str, source: str = "CoPre.md",
             return {"state": "HOLD_SOURCE_REVISION_CONFLICT",
                     "work_id": work_id, "source_sha256": digest,
                     "external_receiver_ack": False}
+        # This one-shot command owns only its exact WorkID. Refuse a shared
+        # queue instead of accidentally leasing another front's due work.
+        foreign = queue.db.execute(
+            "SELECT 1 FROM work WHERE work_id!=? LIMIT 1", (work_id,)
+        ).fetchone()
+        if foreign:
+            return {"state": "HOLD_SHARED_QUEUE_REQUIRES_ELECTED_DISPATCHER",
+                    "work_id": work_id, "external_receiver_ack": False}
         claims = queue.claim_due(now=moment, owner="local-source-verifier",
                                  lease_seconds=30, limit=1)
         if not claims:
@@ -92,7 +100,9 @@ def main() -> None:
                           "external_receiver_ack": False}, sort_keys=True))
         raise SystemExit(2)
     print(json.dumps(result, sort_keys=True))
-    if result["state"] not in ("COMMITTED_LOCAL_ONLY", "LOCAL_REPLAY_OR_LEASED"):
+    if not (result["state"] == "COMMITTED_LOCAL_ONLY" or
+            (result["state"] == "LOCAL_REPLAY_OR_LEASED" and
+             result.get("queue_state") == "DONE")):
         raise SystemExit(2)
 
 
