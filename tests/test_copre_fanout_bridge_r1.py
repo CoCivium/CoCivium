@@ -40,6 +40,8 @@ def bound_packet(source_bytes, human_text, packet, inventory):
         raise ValueError("CoPre source content is not the qualified 72/22 structure")
     if obj.get("effect_authority") != "NONE":
         raise ValueError("CoPre source unexpectedly grants effects")
+    if any(link.get("effect_authority") != "NONE" for link in links):
+        raise ValueError("CoPre relation unexpectedly grants effects")
     if not all("**" + label + "**" in human_text for label in labels):
         raise ValueError("Human projection omitted a source term")
     if any(t.get("status") != "UNQUALIFIED_PUBLIC_CANDIDATE" for t in obj["terms"]):
@@ -134,6 +136,12 @@ class CoPreBoundedFanout(unittest.TestCase):
                          copy.deepcopy(self.base_inventory))
         with self.assertRaises(ValueError):
             bound_packet(self.source_bytes, self.human_text.replace("**CoClaimAltitude+**", ""),
+                         copy.deepcopy(self.base_packet), copy.deepcopy(self.base_inventory))
+        # Both graph-edge and source-level authority inversions must fail closed.
+        edited = json.loads(self.source_bytes)
+        edited["effect_authority"] = "ALL"
+        with self.assertRaises(ValueError):
+            bound_packet(json.dumps(edited).encode("utf-8"), self.human_text,
                          copy.deepcopy(self.base_packet), copy.deepcopy(self.base_inventory))
 
     def test_two_synthetic_receivers_recover_without_relay_or_duplicate(self):
