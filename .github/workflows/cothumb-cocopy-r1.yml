@@ -5,6 +5,8 @@ on:
       - 'scripts/CoThumbCoCopyR1.ps1'
       - 'scripts/coforeground_launch_gate_r0.py'
       - 'scripts/test_coforeground_launch_gate_r0.py'
+      - 'scripts/coforeground_launcher_triage_r0.py'
+      - 'scripts/test_coforeground_launcher_triage_r0.py'
       - 'ai/coforeground_launch_manifest_r0.json'
       - '.github/workflows/cothumb-cocopy-r1.yml'
   pull_request:
@@ -12,6 +14,8 @@ on:
       - 'scripts/CoThumbCoCopyR1.ps1'
       - 'scripts/coforeground_launch_gate_r0.py'
       - 'scripts/test_coforeground_launch_gate_r0.py'
+      - 'scripts/coforeground_launcher_triage_r0.py'
+      - 'scripts/test_coforeground_launcher_triage_r0.py'
       - 'ai/coforeground_launch_manifest_r0.json'
       - '.github/workflows/cothumb-cocopy-r1.yml'
   workflow_dispatch:
@@ -28,6 +32,8 @@ jobs:
         run: |
           python -B scripts/test_coforeground_launch_gate_r0.py -v
           if ($LASTEXITCODE -ne 0) { throw "Foreground audit tests failed" }
+          python -B scripts/test_coforeground_launcher_triage_r0.py -v
+          if ($LASTEXITCODE -ne 0) { throw "Launcher triage negative controls failed" }
           python -B scripts/coforeground_launch_gate_r0.py --manifest ai/coforeground_launch_manifest_r0.json
           if ($LASTEXITCODE -ne 0) { throw "Foreground source policy not accepted" }
       - name: Bare launch fails before GUI or file mutation
