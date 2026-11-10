@@ -75,8 +75,10 @@ def replay(browser, raw):
     answer = draft.input_value()
     check("mid_caret_exact", answer == value[:caret] + suffix + value[caret:])
     check("not_appended", answer != value + suffix)
-    page.keyboard.press("Tab")
-    page.keyboard.press("Tab")
+    # After Accept, focus returns to the draft. Tab through Preview,
+    # Accept and Reject before reaching Undo.
+    for _ in range(4):
+        page.keyboard.press("Tab")
     check("keyboard_undo_focus", page.evaluate("document.activeElement.id") == "undo")
     page.keyboard.press("Enter")
     check("keyboard_undo_exact", draft.input_value() == value)
