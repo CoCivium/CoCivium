@@ -14,6 +14,7 @@ param(
 Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
 $TaskName = 'CoStel.CoAllDesktop.UserLogon.R0'
+$TaskDescription='CoStel CoAll Desktop user logon task. Stop and rollback available.'
 $CandidateRegex = '(?i)(CoAll.?Desktop|CoDesktop|RickBar|CoBar)'
 
 function Hold([string]$Reason) { throw ('COSTEL_HOLD:' + $Reason) }
@@ -146,6 +147,9 @@ if ($Mode -eq 'Disable') {
   if ($existing.Principal.UserId -notin @($user,$sid)) {
     Hold 'FOREIGN_TASK_OWNER'
   }
+  if ($existing.Description -ne $TaskDescription) {
+    Hold 'UNRECOGNIZED_TASK_PROVENANCE'
+  }
   Disable-ScheduledTask -TaskName $TaskName -ErrorAction Stop | Out-Null
   Report 'OWN_TASK_DISABLED__RUNNING_APP_NOT_TERMINATED' @{
     task_present=$true
@@ -197,7 +201,7 @@ $arguments=@{
   Trigger=$trigger
   Principal=$principal
   Settings=$settings
-  Description='CoStel CoAll Desktop user logon task. Stop and rollback available.'
+  Description=$TaskDescription
   ErrorAction='Stop'
 }
 Register-ScheduledTask @arguments | Out-Null
