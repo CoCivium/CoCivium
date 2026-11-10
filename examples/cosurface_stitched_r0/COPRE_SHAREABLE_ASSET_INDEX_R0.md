@@ -63,3 +63,7 @@ Consumers should verify exact source blobs or content digests and record their *
 ## Golden Thread and CoBraid front preservation
 
 - [CoGoldenThread+ / CoBraid+ R0](CO_GOLDEN_THREAD_BRAID_R0.md) | Preserve discovered front identities, competing alternatives, evidence relationships, holds, history and projection-specific provenance. This is not an all-history inventory or active-agent census.
+
+## CoBookCiv2+ human narrative seed
+
+- [Wings / Beacon / Tuner R0](COBOOK_WINGS_BEACON_TUNER_R0.md) | Public-safe three-screen conceptual strand: child-readable wings regrown while alive, emergent opt-in sonic beacon, and retro-futurist ethical tuner. Creative design seed, not illustrated book or operating runtime.
