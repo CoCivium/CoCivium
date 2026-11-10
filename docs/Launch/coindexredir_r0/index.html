@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CoCivium | A living question about AI continuity</title>
+<meta name="description" content="Explore a falsifiable question about portable AI-assisted work, source evidence, and what remains unproven.">
+<style>
+:root{color-scheme:dark;font-family:system-ui,-apple-system,sans-serif;background:#080d1b;color:#ecf4ff}*{box-sizing:border-box}
+body{margin:0;line-height:1.6}a{color:#bcb6ff}a:focus-visible,button:focus-visible{outline:3px solid #ffcf77;outline-offset:3px}
+main{max-width:1040px;margin:auto;padding:1rem 1.1rem 5rem}.top{display:flex;justify-content:space-between;gap:1rem;align-items:center}
+.flag{border:1px solid #638f9c;border-radius:20px;padding:.25rem .75rem;font-size:.8rem;color:#b6e4e1}
+.hero{border:1px solid #42577b;border-radius:22px;overflow:hidden;background:radial-gradient(ellipse at 45% 28%,#1a3160,#10182e 58%,#0c1020);padding:1rem}
+h1{font-size:clamp(2rem,5vw,4rem);line-height:1.11;margin:1rem 0 0.4rem}h2{font-size:1.5rem}
+.lead{max-width:65ch;font-size:1.15rem;color:#d3dced}.hero svg{display:block;width:100%;max-height:340px}
+.controls{display:flex;gap:.65rem;flex-wrap:wrap;margin:1.2rem 0}button{background:#1d3154;border:1px solid #8dabe1;border-radius:12px;color:#fff;padding:.65rem 1rem;font:inherit;cursor:pointer}
+button[aria-pressed=true]{background:#4c3d87;border-color:#cbbcfb}
+.panel,.card{border:1px solid #435779;background:#101a2e;border-radius:16px;padding:1rem 1.2rem}.panel{min-height:8.5rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(205px,1fr));gap:1rem}.card h3{margin-top:0}.card p{color:#d0dbed}
+.small{font-size:.9rem;color:#c2cedd}.status{color:#a9e4d5;font-weight:650}footer{margin-top:2rem;border-top:1px solid #445372;padding-top:1rem}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+</style></head><body><main>
+<header class="top"><strong>CoCivium · Civ2+</strong><span class="flag">Public source-preview candidate · no live integration claimed</span></header>
+<section class="hero" aria-labelledby="headline">
+<h1 id="headline">What survives when an AI session disappears?</h1>
+<p class="lead">A question about memory, evidence, consent and recoverable work. Not a promise that our whole system already works.</p>
+<svg role="img" aria-labelledby="artTitle artDesc" viewBox="0 0 920 310">
+<title id="artTitle">An illustrated continuity braid</title><desc id="artDesc">Three independently labeled paths, Story, Test and Challenge, intertwine across time from one source seed to one evidence checkpoint.</desc>
+<defs><linearGradient id="a"><stop stop-color="#56dfd0"/><stop offset="1" stop-color="#8b70f9"/></linearGradient><linearGradient id="b"><stop stop-color="#ffbd83"/><stop offset="1" stop-color="#a47ff7"/></linearGradient></defs>
+<g opacity=".6"><circle cx="460" cy="153" r="132" fill="none" stroke="#354e8a" stroke-dasharray="3 11"/><circle cx="460" cy="153" r="92" fill="none" stroke="#354e8a"/><circle cx="460" cy="153" r="48" fill="#202f59"/></g>
+<path d="M70 90 C215 90 268 248 458 155 S715 84 840 85" fill="none" stroke="url(#a)" stroke-width="8" stroke-linecap="round"/>
+<path d="M70 155 C230 250 260 72 460 153 S705 245 840 156" fill="none" stroke="url(#b)" stroke-width="7" stroke-linecap="round"/>
+<path d="M70 221 C260 150 300 250 460 153 S720 227 840 220" fill="none" stroke="#9eecff" stroke-width="4" stroke-dasharray="7 10"/>
+<g fill="#edf9ff" font-size="17" font-weight="600"><text x="15" y="92">Story</text><text x="15" y="157">Test</text><text x="15" y="224">Challenge</text><text x="851" y="158">Proof</text></g>
+<circle cx="460" cy="153" r="18" fill="#c5afff" stroke="#fff" stroke-width="3"/><text x="460" y="195" fill="#fff" text-anchor="middle" font-size="16">One source identity</text>
+</svg>
+<p class="small">Original illustrative diagram. It shows a design objective, not measured live network redundancy.</p>
+</section>
+<section aria-label="Choose a perspective">
+<h2>One question. Three honest ways in.</h2>
+<div class="controls" role="group" aria-label="Reading perspective">
+<button type="button" aria-pressed="true" data-mode="wonder">Wonder</button><button type="button" aria-pressed="false" data-mode="quiet">Quiet</button><button type="button" aria-pressed="false" data-mode="challenge">Challenge</button>
+</div>
+<div class="panel" id="perspective" tabindex="-1" aria-live="polite"><strong>Imagine keeping your work when the software changes.</strong><p>What would we need to preserve to make that promise real? Follow the evidence, not just the illustration.</p></div>
+</section>
+<h2>Follow a real source trail</h2><section class="grid" aria-label="Source trail">
+<article class="card"><h3>Read the book</h3><p>CoCivia's eight-chapter public preview exists as an HTML source artifact. The full illustrated reader has not shipped.</p><a href="../../Books/README.md">Book family and reader source</a></article>
+<article class="card"><h3>Inspect a demonstration</h3><p>Explore an offline CoLens Map/Orb/Text example. It is a source demonstrator, not independent proof of cross-provider continuity.</p><a href="../../../examples/colensmedia/README.md">CoLens experiment and limitations</a></article>
+<article class="card"><h3>Challenge the claims</h3><p>Ask what an independent successor could actually recover, and which failure would invalidate the claim.</p><a href="https://github.com/CoCivium/CoCivium/issues/403">Unresolved first-use proof issue</a></article>
+<article class="card"><h3>Inspect version history</h3><p>Read current verified status and its limitations before repeating a claim.</p><a href="../../../EVERGREEN.md">Evergreen evidence and open gaps</a></article>
+</section>
+<h2>What has and has not been proved</h2>
+<p><span class="status">Source artifacts exist.</span> GitHub readback has verified relevant book and demo source. A full public first-use browser journey, independent cross-provider handoff, live mirror sync and universal reader adoption are not established. External browser testing is still required.</p>
+<p class="small">No autoplay audio; no third-party analytics scripts; no signup; text equivalents for the original SVG; movement disabled under reduced-motion preference. The interaction below changes presentation, not evidence or attribution.</p>
+<footer><p><strong>Source and restoration:</strong> This self-contained HTML is a review candidate. Every linked source remains inspectable; no claim of automated redirect deployment or future guaranteed uptime is made.</p><a href="https://github.com/CoCivium/CoCivium">CoCivium source repository</a></footer></main>
+<script>
+const views={
+wonder:['Imagine keeping your work when the software changes.','What would we need to preserve to make that promise real? Follow the evidence, not just the illustration.'],
+quiet:['Research question: portability of unfinished AI-assisted work.','Can a second system recover task state, sources, permissions, and stop rules after a session interruption? This page does not certify that it can.'],
+challenge:['Which observation would prove our claim wrong?','Try an independent recovery attempt: a different provider, a missing original session, a preserved work ID, a hostile edit, and a checked result. The negative control matters.']
+};
+document.querySelectorAll('button[data-mode]').forEach(btn=>btn.addEventListener('click',()=>{
+document.querySelectorAll('button[data-mode]').forEach(b=>b.setAttribute('aria-pressed',String(b===btn)));
+const v=views[btn.dataset.mode];const el=document.getElementById('perspective');el.replaceChildren();
+const strong=document.createElement('strong');strong.textContent=v[0];const p=document.createElement('p');p.textContent=v[1];el.append(strong,p);
+}));
+</script></body></html>
