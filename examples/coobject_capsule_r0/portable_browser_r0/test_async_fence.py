@@ -30,6 +30,15 @@ INTERCEPT = r"""
 def assert_state(page, text):
     expect(page.locator("#state")).to_have_text(text, timeout=12000)
 
+def wait_digest_intercept(page):
+    # Playwright wait_for_function eval is blocked by the app's intentionally strict CSP.
+    # A direct inspector evaluate reads the test-only hook without relaxing page policy.
+    for _ in range(80):
+        if page.evaluate("typeof window.__releaseDigest === 'function'"):
+            return
+        page.wait_for_timeout(75)
+    raise AssertionError("Timed out waiting for test-only digest intercept")
+
 def release(page):
     page.evaluate("window.__releaseDigest()")
     page.wait_for_timeout(180)  # Allow pending WebCrypto continuation to settle.
@@ -55,7 +64,7 @@ def run():
             })
             page.evaluate("window.__holdNextDigest=true")
             page.locator("#pack").click()
-            page.wait_for_function("typeof window.__releaseDigest === 'function'")
+            wait_digest_intercept(page)
             page.locator("#reset").click()
             assert_state(page, "EMPTY")
             release(page)
@@ -72,7 +81,7 @@ def run():
             })
             page.evaluate("window.__holdNextDigest=true")
             page.locator("#pack").click()
-            page.wait_for_function("typeof window.__releaseDigest === 'function'")
+            wait_digest_intercept(page)
             page.locator("#source").set_input_files({
                 "name":"second.txt", "mimeType":"text/plain", "buffer":b"New second."
             })
@@ -90,7 +99,7 @@ def run():
             page.evaluate("window.__releaseDigest=undefined")
             page.evaluate("window.__holdNextDigest=true")
             page.locator("#restore").click()
-            page.wait_for_function("typeof window.__releaseDigest === 'function'")
+            wait_digest_intercept(page)
             page.locator("#reset").click()
             release(page)
             assert_state(page, "EMPTY")
