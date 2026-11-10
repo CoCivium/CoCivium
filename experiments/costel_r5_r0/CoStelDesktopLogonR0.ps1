@@ -59,13 +59,19 @@ function CandidateCounts {
     $shortcuts=@(Get-ChildItem -LiteralPath $startupDir -File -ErrorAction Stop |
       Where-Object { $_.Name -match $CandidateRegex })
   }
-  $runKey='HKCU:\Software\Microsoft\Windows\CurrentVersion\Run'
   $runNames=@()
-  if (Test-Path -LiteralPath $runKey) {
-    $props=Get-ItemProperty -LiteralPath $runKey -ErrorAction Stop
-    $runNames=@($props.PSObject.Properties.Name | Where-Object {
-      $_ -notmatch '^PS' -and $_ -match $CandidateRegex
-    })
+  # Enumerate value NAMES only. Never load a Run value that might contain
+  # a secret-bearing command argument. Name-based detection is PARTIAL.
+  $runKey=[Microsoft.Win32.Registry]::CurrentUser.OpenSubKey(
+    'Software\Microsoft\Windows\CurrentVersion\Run', $false)
+  if ($null -ne $runKey) {
+    try {
+      $runNames=@($runKey.GetValueNames() | Where-Object {
+        $_ -match $CandidateRegex
+      })
+    } finally {
+      $runKey.Close()
+    }
   }
   return @{
     task_count=$otherTasks.Count
@@ -125,6 +131,7 @@ if ($Mode -eq 'Audit') {
     startup_shortcuts=$counts.shortcut_count
     hkcu_run_names=$counts.run_count
     executable_identity='NOT_INSPECTED'
+    startup_scan_coverage='NAME_FILTERED_ONLY__ACTION_ARGUMENTS_NOT_INSPECTED'
     provider_session_status='NOT_INSPECTED'
     user_reauth_cause='NOT_DETERMINED'
   }
