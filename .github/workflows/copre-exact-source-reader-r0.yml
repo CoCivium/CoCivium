@@ -58,3 +58,77 @@ jobs:
           path: copre-readback-envelope.json
           if-no-files-found: error
           retention-days: 30
+
+  cold-second-job-readback:
+    needs: [offline-and-pinned-readproof]
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Download the first-job receipt as an artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: copre-pinned-source-readback
+          path: ${{ runner.temp }}/copre-first-job
+      - name: Independently re-fetch pinned source and check first-job claims
+        run: |
+          python3 -B scripts/CoPreSeedPathReaderR0.py \
+            --source-url 'https://raw.githubusercontent.com/CoCivium/CoCivium/8246bf93aab2b0ebf969785e0047c127b6f0e99f/ai/copre-seed-path-handoff-r0-20261109.json' \
+            --expected-git-blob '58b250351c551852d369b05a5063f5ca51b6aa76' \
+            --expected-work-id 'copregeneric:handoff:public-seed-path:r0:20261109' \
+            --reader-id "github-actions:second-job:${GITHUB_RUN_ID}:${GITHUB_RUN_ATTEMPT}" \
+            --output "${RUNNER_TEMP}/copre-cold-second.json"
+          python3 - <<'PY'
+          import datetime, json, os
+          from pathlib import Path
+          temp = Path(os.environ['RUNNER_TEMP'])
+          incoming = temp / 'copre-first-job'
+          paths = sorted(incoming.iterdir(), key=lambda p: p.name)
+          if len(paths) != 1 or paths[0].name != 'copre-readback-envelope.json' or paths[0].is_symlink():
+              raise SystemExit('HELD_FIRST_JOB_RECEIPT_FILESET_MISMATCH')
+          first = json.loads(paths[0].read_text(encoding='utf-8'))
+          second = json.loads((temp / 'copre-cold-second.json').read_text(encoding='utf-8'))
+          source_commit = '8246bf93aab2b0ebf969785e0047c127b6f0e99f'
+          expected_sha256 = '5306367df9616b9a0b940e734c5b07c8843af06c93fcb042b28a48dba81accd4'
+          expected_blob = '58b250351c551852d369b05a5063f5ca51b6aa76'
+          expected_work = 'copregeneric:handoff:public-seed-path:r0:20261109'
+          original = first.get('readback', {})
+          if first.get('schema') != 'CoPreCIRunnerReadbackR0.candidate' or first.get('state') != 'CI_RUNNER_EXACT_PUBLIC_SOURCE_READ_VERIFIED_NOT_COALL_RECEIVER_ACK':
+              raise SystemExit('HELD_FIRST_JOB_PROOF_CLASS_MISMATCH')
+          if first.get('ci_run_id') != os.environ['GITHUB_RUN_ID'] or first.get('ci_attempt') != os.environ['GITHUB_RUN_ATTEMPT'] or first.get('source_commit') != source_commit:
+              raise SystemExit('HELD_FIRST_JOB_ID_OR_SOURCE_MISMATCH')
+          for receipt in [original, second]:
+              if receipt.get('sha256') != expected_sha256 or receipt.get('git_blob_sha') != expected_blob or receipt.get('work_id') != expected_work or receipt.get('cop_path_count') != 4:
+                  raise SystemExit('HELD_EXACT_SOURCE_READBACK_DIVERGENCE')
+              if receipt.get('pickup_state') != 'NOT_CLAIMED' or receipt.get('integration_state') != 'UNPROVEN':
+                  raise SystemExit('HELD_FALSE_RECEIVER_PROMOTION')
+          if original.get('reader_id') == second.get('reader_id'):
+              raise SystemExit('HELD_READER_JOB_ID_COLLISION')
+          envelope = {
+              'schema': 'CoPreTwoJobReadbackR0.candidate',
+              'state': 'CI_TWO_JOB_PUBLIC_SOURCE_READ_VERIFIED_NOT_COALL_RECEIVER_ACK',
+              'observed_at_utc': datetime.datetime.now(datetime.timezone.utc).isoformat(),
+              'ci_run_id': os.environ['GITHUB_RUN_ID'],
+              'producer_job_reader_id': original['reader_id'],
+              'second_job_reader_id': second['reader_id'],
+              'source_commit': source_commit,
+              'source_sha256': expected_sha256,
+              'git_blob_sha': expected_blob,
+              'work_id': expected_work,
+              'cop_path_count': second['cop_path_count'],
+              'nonclaims': ['SHARED_GITHUB_FAILURE_DOMAIN', 'NOT_INTENDED_COALL_RECEIVER_ACK', 'NOT_INTEGRATED', 'NOT_CANON', 'NOT_COEX', 'NOT_24H_SURVIVAL'],
+          }
+          out = Path(os.environ['GITHUB_WORKSPACE']) / 'copre-second-job-readback.json'
+          out.write_text(json.dumps(envelope, sort_keys=True, indent=2) + '\n', encoding='utf-8')
+          print(json.dumps(envelope, sort_keys=True))
+          PY
+      - name: Preserve second-job readback as separate evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: copre-second-job-readback
+          path: copre-second-job-readback.json
+          if-no-files-found: error
+          retention-days: 30
