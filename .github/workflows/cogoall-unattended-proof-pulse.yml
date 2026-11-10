@@ -214,7 +214,7 @@ jobs:
         run: python -B -m unittest -v test_cogoall_due_work_source_canary_r0
       - name: Claim and execute one bounded read-only source WorkID
         run: |
-          python -B scripts/CoGoAllDueWorkSourceCanaryR0.py produce \
+          python -B -m scripts.CoGoAllDueWorkSourceCanaryR0 produce \
             --root . --bundle out/cogoall/due-work
       - name: Save exact run-scoped task, queue, and checkpoint
         uses: actions/upload-artifact@v4
@@ -243,7 +243,7 @@ jobs:
           path: out/cogoall/due-work/
       - name: Recompute validator and verify fenced SQLite completion
         run: |
-          python -B scripts/CoGoAllDueWorkSourceCanaryR0.py readback \
+          python -B -m scripts.CoGoAllDueWorkSourceCanaryR0 readback \
             --root . --bundle out/cogoall/due-work \
             --readback out/cogoall/due-work-readback.json
       - name: Preserve separate-job exact source readback
