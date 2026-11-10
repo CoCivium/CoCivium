@@ -71,7 +71,9 @@
   "predecessor_field": {
     "path": "ai/continuity/conu-existentialism-candidate-field-r0.json",
     "known_candidate_count": 24,
-    "superseded": false
+    "superseded": false,
+    "pinned_blob_sha": "1e8b43f663f303eb75580ca4ebaea45e4cc26927",
+    "pinned_observation": "24 candidates at branch creation; not a statement about latest main"
   },
   "intent": "Add an evidence-bounded term and relation field across synth-native, bio-native, source/truth, spiritual ethics, oscillation, retro/future, AGI and constitutional challenge without claiming automatic acceptance or semantic novelty.",
   "receiver_native_contract": {
@@ -1476,5 +1478,35 @@
     "NO_MAIL_OR_EXTERNAL_OUTREACH_EFFECT"
   ],
   "effect_authority": "NONE",
-  "attribution": "Proposed terms and tests in CoCivium session research; preserve outside sources and cultural credit subject to independent qualification."
+  "attribution": "Proposed terms and tests in CoCivium session research; preserve outside sources and cultural credit subject to independent qualification.",
+  "predecessor_currentness_observation": {
+    "observed_date": "2026-11-10",
+    "scope": "read-only comparison of existing branch predecessor to public main predecessor",
+    "path": "ai/continuity/conu-existentialism-candidate-field-r0.json",
+    "branch_blob_sha": "1e8b43f663f303eb75580ca4ebaea45e4cc26927",
+    "branch_predecessor_count": 24,
+    "main_observed_blob_sha": "47fc2b9dbab4be5e6a7004e2b3ac89c6631a014f",
+    "main_predecessor_count": 28,
+    "new_main_candidates": [
+      {
+        "id": "nu-ex-25",
+        "label": "CoReciprocalBenchmark+"
+      },
+      {
+        "id": "nu-ex-26",
+        "label": "CoGenerationalGift+"
+      },
+      {
+        "id": "nu-ex-27",
+        "label": "CoBackseatSteward+"
+      },
+      {
+        "id": "nu-ex-28",
+        "label": "CoMutualAloneness+"
+      }
+    ],
+    "disposition": "PRESERVE_24_AS_PINNED_HISTORY_AND_28_AS_LATER_MAIN_OBSERVATION; NO_AUTO_SUPERSESSION_OR_SYNC",
+    "relation_to_72": "NO_EXACT_LABEL_COLLISIONS_OBSERVED",
+    "public_readback_is_not_receiver_acceptance": true
+  }
 }
