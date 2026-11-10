@@ -70,5 +70,22 @@ class OfflineCoBindOrbContract(unittest.TestCase):
         self.assertIn("prefers-reduced-motion", html)
 
 
+    def test_braid_routes_are_exact_manifest_projection(self):
+        html, _ = fixtures()
+        match = re.search(r'<script id="braid" type="application/json">(.*?)</script>', html, re.S)
+        self.assertIsNotNone(match, "Missing embedded Golden Braid source projection")
+        braid = json.loads(match.group(1))
+        manifest = json.loads((ROOT / "ai" / "research" /
+            "comindseed-cobind-golden-braid-cotheoryall-r0-20261110.json").read_text(encoding="utf-8"))
+        self.assertEqual(braid["cross_front_routes"], manifest["cross_front_routes"])
+        self.assertEqual(braid["anchors"], manifest["anchors"])
+        self.assertEqual(len(braid["cross_front_routes"]), 7)
+        self.assertEqual(len(braid["anchors"]), 6)
+        self.assertTrue(all(edge["authority"] == "NONE" for edge in braid["cross_front_routes"]))
+        self.assertIn("NOT_RECEIVER_ACCEPTANCE", braid["status"])
+        self.assertIn("data-lens=\"braid\"", html)
+
+
+
 if __name__ == "__main__":
     unittest.main()
