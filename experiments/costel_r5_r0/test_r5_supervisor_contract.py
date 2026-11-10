@@ -11,6 +11,8 @@ class Worker:
     stopped_by_user: bool = False
     restart_attempts: int = 0
     max_attempts: int = 1
+    needs_interactive_session: bool = True
+    auth_required: bool = False
 
 
 class SupervisorModel:
@@ -18,9 +20,14 @@ class SupervisorModel:
         self.leases = set()
         self.receipts = []
 
-    def reconcile(self, worker, *, owner, observer_fresh=True):
+    def reconcile(self, worker, *, owner, observer_fresh=True,
+                  interactive_session_ready=True):
         if worker.stopped_by_user:
             decision = "USER_STOP_HOLD"
+        elif worker.needs_interactive_session and not interactive_session_ready:
+            decision = "WAIT_INTERACTIVE_USER_SESSION"
+        elif worker.process_present and worker.endpoint_ready and worker.auth_required:
+            decision = "HEALTHY_SHELL_AUTH_GATE_REQUIRED"
         elif worker.process_present and worker.endpoint_ready:
             decision = "HEALTHY"
         elif worker.restart_attempts >= worker.max_attempts:
@@ -69,6 +76,41 @@ class ContractTests(unittest.TestCase):
         s.reconcile(w, owner="a")
         self.assertEqual(s.reconcile(w, owner="b")["decision"], "DUPLICATE_OWNER_HOLD")
         self.assertEqual(w.restart_attempts, 1)
+
+    def test_windows_boot_without_user_session_does_not_spawn_desktop(self):
+        s = SupervisorModel()
+        w = Worker("coall-desktop", False, False)
+        before = s.reconcile(w, owner="os", interactive_session_ready=False)
+        self.assertEqual(before["decision"], "WAIT_INTERACTIVE_USER_SESSION")
+        self.assertEqual(w.restart_attempts, 0)
+        after = s.reconcile(w, owner="os", interactive_session_ready=True)
+        self.assertEqual(after["decision"], "RESTART_ATTEMPT_ONLY")
+        self.assertEqual(w.restart_attempts, 1)
+        self.assertFalse(after["effect_verified"])
+
+    def test_authenticated_shell_reconnect_is_not_repeated_login_or_respawn(self):
+        s = SupervisorModel()
+        w = Worker("coall-desktop", endpoint_ready=True, process_present=True,
+                   auth_required=True)
+        r = s.reconcile(w, owner="os")
+        self.assertEqual(r["decision"], "HEALTHY_SHELL_AUTH_GATE_REQUIRED")
+        self.assertEqual(w.restart_attempts, 0)
+        self.assertFalse(r["effect_verified"])
+
+    def test_headless_worker_does_not_need_interactive_session(self):
+        w = Worker("authorized-headless", False, False,
+                   needs_interactive_session=False)
+        r = SupervisorModel().reconcile(
+            w, owner="os", interactive_session_ready=False)
+        self.assertEqual(r["decision"], "RESTART_ATTEMPT_ONLY")
+        self.assertFalse(r["effect_verified"])
+
+    def test_stop_precedes_session_and_auth_gates(self):
+        w = Worker("coall-desktop", False, False,
+                   stopped_by_user=True, auth_required=True)
+        self.assertEqual(SupervisorModel().reconcile(
+            w, owner="os", interactive_session_ready=False)["decision"],
+            "USER_STOP_HOLD")
 
     def test_attempt_does_not_claim_effect(self):
         r = SupervisorModel().reconcile(Worker("r5", False, False), owner="os")
