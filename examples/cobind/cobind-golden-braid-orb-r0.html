@@ -41,8 +41,9 @@ footer{margin-top:1.2rem;font-size:.83rem;color:var(--muted)}.footlinks{display:
 .braid-source-list a{font-size:.79rem;padding:.3rem .52rem;border:1px solid #40575a;border-radius:8px;text-decoration:none}
 
 /* Offline reader comprehension is a self-check, never external acceptance. */
-.reader-check fieldset{border:1px solid var(--line);border-radius:12px;padding:.78rem;margin:.75rem 0;background:#12182d}
-.reader-check legend{font-weight:700;padding:0 .35rem}
+.reader-check{min-width:0;max-width:100%;overflow-wrap:anywhere}
+.reader-check fieldset{min-width:0;max-width:100%;border:1px solid var(--line);border-radius:12px;padding:.78rem;margin:.75rem 0;background:#12182d}
+.reader-check legend{font-weight:700;padding:0 .35rem;max-width:100%;white-space:normal;overflow-wrap:anywhere}
 .reader-check label.choice{display:flex;align-items:start;gap:.65rem;padding:.42rem .4rem;cursor:pointer}
 .reader-check input[type=radio]{accent-color:var(--teal);margin-top:.27rem;flex:0 0 auto}
 .reader-check textarea{width:100%;min-height:84px;resize:vertical;border-radius:10px;padding:.75rem;color:var(--ink);background:#0e1427;border:1px solid #6b729d;font:inherit}
