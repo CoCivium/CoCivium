@@ -12,7 +12,6 @@ import hashlib
 import json
 from pathlib import Path
 
-from playwright.sync_api import sync_playwright
 
 BASE = "773e9de7aa7c6b03bf0bc75eddb7ca0a0c8dd101"
 CANDIDATE = "9daba0043b74eee129e78b1eaaad0c44e4005640"
@@ -101,6 +100,9 @@ def main():
     raw = {name: path.read_bytes() for name, path in paths.items()}
     if blob(raw["baseline"]) != BASE or blob(raw["candidate"]) != CANDIDATE:
         raise SystemExit("FAIL_CLOSED: SOURCE_PIN_DRIFT")
+
+    # Lazy optional import so source-only unittest discovery stays dependency-free.
+    from playwright.sync_api import sync_playwright
 
     with sync_playwright() as pw:
         browser = pw.chromium.launch(headless=True)
