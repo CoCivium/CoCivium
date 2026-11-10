@@ -41,6 +41,7 @@ jobs:
           if ($output -notmatch 'HELD_EXPLICIT_MODE_REQUIRED') { throw 'Missing explicit-mode hold' }
           if (Test-Path (Join-Path $testRoot 'CoThumbR1')) { throw 'Bare launch mutated CoFarm fixture' }
           Write-Output 'PASS_BARE_LAUNCH_HELD_NO_SIDE_EFFECTS'
+          $global:LASTEXITCODE = 0
       - name: Self-test in disposable local CoFarm fixture
         shell: pwsh
         run: |
