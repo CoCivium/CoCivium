@@ -5,6 +5,7 @@ on:
       - 'ai/cobook-media-ops-r0.json'
       - 'scripts/check_cobook_media_ops_r0.py'
       - 'scripts/check_cobook_origin_scene_r0.py'
+      - 'scripts/check_cobook_promise_scene_r0.py'
       - 'docs/Books/**'
       - 'examples/colensmedia/README.md'
       - 'examples/comap/diagram-of-diagrams-r0.md'
@@ -33,6 +34,16 @@ jobs:
           fi
       - name: Verify interactive origin myth in mobile and desktop Chromium
         run: python3 scripts/check_cobook_origin_scene_r0.py
+      - name: Verify parent-child river-promise scene in mobile and desktop Chromium
+        run: python3 scripts/check_cobook_promise_scene_r0.py
+      - name: Retain parent-child scene browser proof
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cobook-parent-child-promise-r0
+          path: artifacts/cobook-promise-scene-r0/
+          if-no-files-found: ignore
+          retention-days: 7
       - name: Retain local candidate browser QA screenshots
         if: always()
         uses: actions/upload-artifact@v4
