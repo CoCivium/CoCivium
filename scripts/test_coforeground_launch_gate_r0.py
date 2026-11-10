@@ -124,7 +124,7 @@ class GuardTests(unittest.TestCase):
         self.assertEqual(out["state"],"HOLD")
     def test_never_launches_from_source(self):
         content=SCRIPT.read_text()
-        for token in ("subprocess.run(","subprocess.Popen(","os.system(","os.startfile(","Start-Process"):
+        for token in ("subprocess.run(","subprocess.Popen(","os.system(","os.startfile(","os.execv("):
             self.assertNotIn(token,content)
 
 if __name__=="__main__":
