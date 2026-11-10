@@ -25,6 +25,17 @@ These are recorded **test activities**, not people helped or proof of growing us
 
 **October 20–22 have no captured ledger rows.** That is **unknown coverage**, not proof that nothing happened. The four observed dates contain 145 entries in the [exact archived census](../../docs/Metrics/COSPEEDO_RECEIPT_CENSUS_R0_20261027.json). Fewer passed checks on a later day may simply mean fewer checks ran.
 
+## Check newer engineering evidence
+
+The dated needle history above is **not live**. For more recent technical results, GitHub updates these existing workflow run lists as checks execute. They show CI activity, **not** X2 health, independent receiver acceptance or human benefit.
+
+- [CoLoop safety tests](https://github.com/CoCivium/CoCivium/actions/workflows/coloops-safety.yml): versioned recovery, safety and historical-source regressions.
+- [Receiver reconciliation tests](https://github.com/CoCivium/CoCivium/actions/workflows/receiver-reconciliation.yml): bounded source-side reconciliation, **not** external receipt acceptance.
+- [CoMVP first-use canary](https://github.com/CoCivium/CoCivium/actions/workflows/comvp-copre-cli-pilot-r0.yml): isolated newcomer-oriented task tests, **not** a verified X2 rollout.
+- [CoPre Synth/Bio/G_d qualification](https://github.com/CoCivium/CoCivium/actions/workflows/copre-synth-bio-gd-r1.yml): source-side candidate checks, **not** scientific confirmation or canon.
+
+These are **selected fronts**, not a complete or continuously monitored inventory. A red run must remain visible alongside green runs; later fixes do not erase earlier failures.
+
 ## What would prove a real improvement?
 
 A useful needle should connect **a real intention → a bounded action → a receipt → an independent receiver → an observed human benefit**. The first few links exist in source-side experiments. The full chain, cost comparison and durable restart recovery are not yet verified.
