@@ -1,0 +1,64 @@
+{
+  "schema": "CoSpeedo.DashboardTestReceipt.R1.v0.1",
+  "local_run_utc_date": "2026-10-27",
+  "scope": "SELF_CONTAINED_STATIC_SOURCE_BROWSER_INTERACTIONS__NOT_X1_X2_RUNTIME",
+  "total": 31,
+  "passed": 31,
+  "checks": {
+    "145_source_counts": true,
+    "status_totals_correct": true,
+    "unique_id_total": true,
+    "seven_windows": true,
+    "five_unknown_two_partial": true,
+    "no_exponent": true,
+    "no_fake_zero": true,
+    "minimum_four": true,
+    "evidence_pins_sha": true,
+    "offline_no_fetch": true,
+    "no_remote_assets": true,
+    "no_false_green": true,
+    "not_live": true,
+    "source_snapshot": true,
+    "title": true,
+    "cards_count": true,
+    "kpi_values": true,
+    "four_bars": true,
+    "seven_days": true,
+    "six_gates": true,
+    "growth_held": true,
+    "git_source_pinned": true,
+    "tab_value_shows_hold": true,
+    "tab_activity_restores": true,
+    "download_filename": true,
+    "csv_header": true,
+    "csv_four_day_lines": true,
+    "network_free": true,
+    "no_js_errors": true,
+    "mobile_no_horizontal_scroll": true,
+    "mobile_working": true
+  },
+  "browser_errors": [],
+  "non_file_network_requests": [],
+  "sources": {
+    "benchmark": {
+      "repo_path": "ai/benchmark-evo.jsonl",
+      "git_blob_sha1": "8c5a99b279a4a24aa458b41b87b5a8e34755b110",
+      "git_commit": "5c76703b19eebe9192f928634a14b760129382c3",
+      "url": "https://github.com/CoCivium/CoCivium/blob/5c76703b19eebe9192f928634a14b760129382c3/ai/benchmark-evo.jsonl",
+      "method": "one record per JSONL line, observed_at first 10 chars, top-level status, exact per-day grouping"
+    },
+    "scorecard": {
+      "repo_path": "docs/Metrics/COSPEEDO_7DAY_SCORECARD_R0_20261026.json",
+      "git_blob_sha1": "cd39a2730f7c05708bdffb20910867abe17a2e57",
+      "git_commit": "5c76703b19eebe9192f928634a14b760129382c3",
+      "url": "https://github.com/CoCivium/CoCivium/blob/5c76703b19eebe9192f928634a14b760129382c3/docs/Metrics/COSPEEDO_7DAY_SCORECARD_R0_20261026.json",
+      "method": "windows status, metric definitions and null/unknown preservation"
+    }
+  },
+  "nonclaims": [
+    "LOCAL_RENDER_NE_X2_INSTALL",
+    "SOURCE_ACTIVITY_NE_COVALUE_GROWTH",
+    "TEST_PASS_NE_INDEPENDENT_ACCEPTANCE",
+    "ONE_SNAPSHOT_NE_LIVE_TELEMETRY"
+  ]
+}
