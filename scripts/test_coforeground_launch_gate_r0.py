@@ -106,6 +106,18 @@ class GuardTests(unittest.TestCase):
         e["launch_args"]=["-NoProfile","-NonInteractive","-WindowStyle","Hidden",
                           "-ep","Bypass","-File","scripts/worker.ps1"]
         self.assertIn("HELD_UNREVIEWED_EXECUTION_POLICY_BYPASS",m.audit(e,HEADLESS_SCRIPT))
+    def test_automated_launcher_cannot_point_at_a_different_script(self):
+        e=auto()
+        e["launch_args"][-1]="scripts/unreviewed-popup.ps1"
+        self.assertIn("HELD_POWERSHELL_LAUNCH_TARGET_MISMATCH",m.audit(e,HEADLESS_SCRIPT))
+    def test_automated_launcher_cannot_claim_hidden_but_pass_mode_ui(self):
+        e=auto()
+        e["launch_args"]+=["-Mode","UI"]
+        self.assertIn("HELD_AUTOMATED_UI_MODE",m.audit(e,HEADLESS_SCRIPT))
+    def test_automated_launcher_requires_explicit_file_mode(self):
+        e=auto()
+        e["launch_args"]=["-NoProfile","-NonInteractive","-WindowStyle","Hidden"]
+        self.assertIn("HELD_POWERSHELL_SWITCH_ORDER_UNTRUSTED",m.audit(e,HEADLESS_SCRIPT))
     def test_good_headless_flag_order_is_still_admissible_as_source(self):
         self.assertEqual(m.audit(auto(),HEADLESS_SCRIPT),[])
     def test_candidate_cannot_autostart_even_when_hidden(self):
