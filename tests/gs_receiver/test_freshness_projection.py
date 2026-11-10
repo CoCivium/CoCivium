@@ -1,5 +1,6 @@
 """Isolated freshness projection contract. Not deployed on X2."""
 import unittest
+import math
 
 
 def project(sample, now_seconds, maximum_age_seconds, verify_receipt=None):
@@ -9,6 +10,7 @@ def project(sample, now_seconds, maximum_age_seconds, verify_receipt=None):
     observed = sample.get("observed_at")
     if (not isinstance(observed, (int, float))
             or isinstance(observed, bool)
+            or not math.isfinite(observed)
             or not callable(verify_receipt)
             or not verify_receipt(sample)):
         return {"state": "UNVERIFIED", "age_seconds": None}
@@ -43,6 +45,11 @@ class FreshnessTests(unittest.TestCase):
         forged = {"observed_at": 199, "verified": True, "receipt_id": "forged"}
         self.assertEqual(project(forged, 200, 60, self.trusted)["state"], "UNVERIFIED")
         self.assertEqual(project(forged, 200, 60)["state"], "UNVERIFIED")
+
+    def test_nonfinite_timestamps_are_unverified(self):
+        for observed in (float("nan"), float("inf"), float("-inf")):
+            s = {"observed_at": observed, "receipt_id": "fixture-accepted"}
+            self.assertEqual(project(s, 200, 60, self.trusted)["state"], "UNVERIFIED")
 
     def test_boolean_timestamp_is_not_valid_time(self):
         s = {"observed_at": True, "receipt_id": "fixture-accepted"}
