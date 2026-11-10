@@ -6,6 +6,7 @@ Not a dispatch engine, external receiver ACK, deployment, canon or CoEx.
 """
 from __future__ import annotations
 
+import argparse
 import hashlib
 import json
 from pathlib import Path
@@ -162,3 +163,108 @@ def save_local_preview(root: Path, views: dict) -> dict:
     if receipts["synth"]["sha256"] == receipts["bio"]["sha256"]:
         raise AssertionError("receiver native projections are not distinct")
     return receipts
+
+
+def build_portable_packet(output_root: Path) -> dict:
+    """Produce one temporary source-bound dual-view packet, with no overwrite."""
+    base = Path(__file__).resolve().parents[1]
+    source_rel = "ai/continuity/copre-synth-bio-gd-coterms-r1-20261109.json"
+    human_rel = "docs/CoPreGeneric/CoPre_SynthBio_Gd_CoTerms_Candidate_R1_20261109.md"
+    source = (base / source_rel).read_bytes()
+    human = (base / human_rel).read_text(encoding="utf-8")
+    views = project(source, human)
+    root = Path(output_root)
+    previews = save_local_preview(root, views)
+    guide = "\n".join([
+        "# CoPreGeneric R1 | Two-view preview packet",
+        "",
+        "CoHereNow: Two local, source-bound views from one candidate WorkID.",
+        "",
+        "Meaning: The synth-native graph and human narrative share source identity",
+        "but do not assert equivalent comprehension or external receiver approval.",
+        "",
+        "Next: Inspect synthetic-local-b/copre-r1-bio.md for human context.",
+        "For a machine graph use synthetic-local-a/copre-r1-synth.json.",
+        "",
+        "Evidence: receipt.json contains source and output digests.",
+        "This is an expiring local/CI preview, not durable CoEx custody.",
+        "",
+        "HOLD: No external pickup, integration, canon, deployment or autonomy.",
+        "No messages, credentials, device effects or external publication.",
+        "",
+        "Source path: " + source_rel,
+        "Source git blob: " + views["common"]["source_git_blob_sha"],
+        "Human path: " + human_rel,
+        "",
+    ]) + "\n"
+    guide_bytes = guide.encode("utf-8")
+    with (root / "README.md").open("xb") as handle:
+        handle.write(guide_bytes)
+    if (root / "README.md").read_bytes() != guide_bytes:
+        raise IOError("front door readback mismatch")
+
+    manifest = {
+        "schema": "CoAll.CoPre.PortablePreviewReceipt.R1",
+        "work_id": views["common"]["work_id"],
+        "source": {
+            "path": source_rel,
+            "git_blob_sha": views["common"]["source_git_blob_sha"],
+            "human_path": human_rel,
+            "human_sha256": views["common"]["human_source_sha256"],
+        },
+        "lifecycle": "TEMPORARY_CI_PREVIEW_NOT_DURABLE_RECEIVER_LANDING",
+        "readback": {
+            "synth": {
+                "path": "synthetic-local-a/copre-r1-synth.json",
+                **previews["synth"],
+            },
+            "bio": {
+                "path": "synthetic-local-b/copre-r1-bio.md",
+                **previews["bio"],
+            },
+            "front_door": {
+                "path": "README.md",
+                "sha256": sha256(guide_bytes),
+                "bytes": len(guide_bytes),
+            },
+        },
+        "loss_ledger": views["loss_ledger"],
+        "receiver": None,
+        "receiver_readproof": None,
+        "effect_authority": "NONE",
+        "external_effects": 0,
+        "ux_acceptance": "UX_NOT_EVALUATED",
+        "nonclaims": sorted(EXPECTED_NONCLAIMS | {
+            "CI_ARTIFACT_NOT_DURABLE_LANDING",
+            "LOCAL_BUILD_NOT_INDEPENDENT_RECEIVER_PICKUP",
+            "NO_AUTONOMOUS_PUBLIC_SYNC",
+            "NO_HUMAN_RELAY_DEMONSTRATED",
+        }),
+    }
+    manifest_bytes = stable_bytes(manifest)
+    with (root / "receipt.json").open("xb") as handle:
+        handle.write(manifest_bytes)
+    if (root / "receipt.json").read_bytes() != manifest_bytes:
+        raise IOError("receipt exact readback mismatch")
+    return {
+        "state": "LOCAL_PACKET_BUILT_READBACK_NOT_RECEIVER_PICKUP",
+        "source_git_blob_sha": views["common"]["source_git_blob_sha"],
+        "work_id": views["common"]["work_id"],
+        "receipt_sha256": sha256(manifest_bytes),
+        "file_count": 4,
+        "external_effects": 0,
+    }
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(
+        description="Build a no-clobber source-bound CoPre receiver preview packet."
+    )
+    parser.add_argument("--output-root", type=Path, required=True)
+    args = parser.parse_args()
+    print(stable_bytes(build_portable_packet(args.output_root)).decode("utf-8"), end="")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
