@@ -12,7 +12,7 @@ permissions:
   contents: read
 
 jobs:
-  offline-readproof-tests:
+  offline-and-pinned-readproof:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
@@ -20,5 +20,41 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Check exact-source verification and negative controls
+      - name: Test exact-source verification and negative controls
         run: python3 -B -m unittest discover -s tests -p 'test_copre_seed_path_reader_r0.py' -v
+      - name: Read exact pinned public source with fail-closed verification
+        run: |
+          python3 -B scripts/CoPreSeedPathReaderR0.py \
+            --source-url 'https://raw.githubusercontent.com/CoCivium/CoCivium/8246bf93aab2b0ebf969785e0047c127b6f0e99f/ai/copre-seed-path-handoff-r0-20261109.json' \
+            --expected-git-blob '58b250351c551852d369b05a5063f5ca51b6aa76' \
+            --expected-work-id 'copregeneric:handoff:public-seed-path:r0:20261109' \
+            --reader-id "github-actions:copre-r0:${GITHUB_RUN_ID}:${GITHUB_RUN_ATTEMPT}" \
+            --output "${RUNNER_TEMP}/copre-pinned-readback.json"
+      - name: Record run-scoped evidence and effect boundary
+        run: |
+          python3 - <<'PY'
+          import datetime, json, os
+          from pathlib import Path
+          original = json.loads((Path(os.environ['RUNNER_TEMP']) / 'copre-pinned-readback.json').read_text(encoding='utf-8'))
+          envelope = {
+              'schema': 'CoPreCIRunnerReadbackR0.candidate',
+              'state': 'CI_RUNNER_EXACT_PUBLIC_SOURCE_READ_VERIFIED_NOT_COALL_RECEIVER_ACK',
+              'observed_at_utc': datetime.datetime.now(datetime.timezone.utc).isoformat(),
+              'ci_run_id': os.environ['GITHUB_RUN_ID'],
+              'ci_attempt': os.environ['GITHUB_RUN_ATTEMPT'],
+              'ci_workflow_sha': os.environ['GITHUB_SHA'],
+              'source_commit': '8246bf93aab2b0ebf969785e0047c127b6f0e99f',
+              'readback': original,
+              'nonclaims': ['NOT_INDEPENDENT_FAILURE_DOMAIN_PROOF', 'NOT_INTENDED_COALL_RECEIVER_PICKUP', 'NOT_INTEGRATED', 'NOT_CANON', 'NOT_COEX', 'NOT_24H_SURVIVAL'],
+          }
+          out = Path(os.environ['GITHUB_WORKSPACE']) / 'copre-readback-envelope.json'
+          out.write_text(json.dumps(envelope, indent=2, sort_keys=True) + '\n', encoding='utf-8')
+          print(json.dumps(envelope, sort_keys=True))
+          PY
+      - name: Preserve bounded CI evidence artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: copre-pinned-source-readback
+          path: copre-readback-envelope.json
+          if-no-files-found: error
+          retention-days: 30
