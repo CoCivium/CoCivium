@@ -7,6 +7,7 @@ import argparse
 import hashlib
 import json
 import sys
+from datetime import datetime, timezone
 import urllib.error
 import urllib.request
 from pathlib import Path
@@ -53,6 +54,24 @@ def source_identity(raw):
     return "sha256:" + sha(obj)
 
 
+def last_edit_age_class(raw, now_utc=None):
+    """Age of issue's LAST EDIT, not GitHub API response freshness."""
+    value = source_projection(raw)["updated_at"]
+    try:
+        edited = datetime.fromisoformat(value.replace("Z", "+00:00"))
+    except ValueError:
+        return "UNPARSEABLE_LAST_EDIT"
+    if edited.tzinfo is None:
+        return "UNPARSEABLE_LAST_EDIT"
+    observed = now_utc or datetime.now(timezone.utc)
+    age_seconds = (observed - edited).total_seconds()
+    if age_seconds < -300:
+        return "FUTURE_LAST_EDIT_OR_CLOCK_CONFLICT"
+    if age_seconds > 86400:
+        return "LAST_EDIT_OLDER_THAN_24H"
+    return "LAST_EDIT_WITHIN_24H"
+
+
 def observation(raw, result_revision):
     p = source_projection(raw)
     return {
@@ -61,7 +80,7 @@ def observation(raw, result_revision):
         "source_revision": result_revision,
         "purpose": "Finish one usable read-only CoPre CLI, not expand PR #401",
         "delta_ref": "CoMVP.first-use.issue403." + result_revision,
-        "observer": "github-actions-public-read-only",
+        "observer": "unattested-readonly-cli-executor",
         "authority_ceiling": "READ_ONLY",
         "confidentiality": "PUBLIC",
         "collision_domain": "CoMVP.CoPrePilot",
@@ -73,10 +92,13 @@ def observation(raw, result_revision):
         "next_deed": "prove exact read-only task reconstruction with an independent first-use receiver",
         "verification": "source digest, bounded authority, user task and STOP independently checked",
         "recovery_ref": ISSUE_URL,
-        "failure_domain": "github-hosted-ci",
+        "failure_domain": "single-unattested-cli-executor",
         "requested_effects": ["NONE"],
         "material_delta": True,
         "wake_is_bound": True,
+        # Legacy CoPre compiler's internal guard accepts only VERIFIED.
+        # Here this means the source representation agreed across two reads
+        # in build_report, NEVER GitHub recency, origin independence or ACK.
         "source_currentness": "VERIFIED",
     }
 
@@ -95,6 +117,12 @@ def build_report(first, second):
         "schema": "CoCivium.CoMVPCoPreFirstUse.R0",
         "status": "SOURCE_TASK_CLI_GENERATED_ONLY",
         "source_checked_twice": True,
+        "source_content_consistency": "TWO_READS_MATCHED",
+        "source_freshness": "UNPROVEN_TWO_READS_ARE_NOT_FRESHNESS",
+        "source_last_edit_age_class": last_edit_age_class(second),
+        "source_updated_at": source_projection(second)["updated_at"],
+        "source_origin_independence": "UNPROVEN_SAME_PUBLIC_API",
+        "observer_attestation": "UNPROVEN_LOCAL_OR_CI",
         "source_revision": sp,
         "pack_sha256": pack["pack_sha256"],
         "pack": pack,
@@ -134,6 +162,11 @@ def selftest():
     assert ok["pack_sha256"] in ok["continuation_input"];checks += 1
     assert ok["pointer_bytes"] < ok["prompt_bytes"];checks += 1
     assert ok["receiver_ack"] == "UNPROVEN" and ok["task_mvp"] == "NOT_QUALIFIED";checks += 1
+    assert ok["source_content_consistency"] == "TWO_READS_MATCHED" and ok["source_freshness"].startswith("UNPROVEN");checks += 1
+    assert ok["observer_attestation"] == "UNPROVEN_LOCAL_OR_CI" and ok["pack"]["observer"] == "unattested-readonly-cli-executor";checks += 1
+    stale = {**example, "updated_at": "2020-01-01T00:00:00Z"}
+    old = build_report(stale, stale)
+    assert old["status"] == "SOURCE_TASK_CLI_GENERATED_ONLY" and old["source_last_edit_age_class"] == "LAST_EDIT_OLDER_THAN_24H" and old["source_freshness"].startswith("UNPROVEN");checks += 1
     assert build_report(example, {**example, "updated_at": "new"})["reason"] == "SOURCE_CHANGED_BETWEEN_READS";checks += 1
     for change in ({"number": 404}, {"html_url": "https://example.test"}, {"state": "closed"},
                    {"body": ""}, {"updated_at": ""}):
