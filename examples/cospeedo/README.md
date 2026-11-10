@@ -1,43 +1,36 @@
 # What actually got better?
 
-**CoSpeedo NeedleTrails** is a plain-language record of what CoCivium has tested, what has failed, and what remains unknown. It is not a live dashboard.
+**CoSpeedo NeedleTrails** shows which CoCivium engineering checks passed, which failed, and which still need evidence. **It is not a live dashboard.**
 
-> **Right now:** The source is publicly readable and some bounded automated checks passed. A working independent recovery service, 24-hour survival, and measured human time saved are **not yet proven**.
+> **Right now:** Public source and bounded automated checks are available. A working independent receiver, 24-hour survival, and measured human time saved are **not yet proven**.
 
-| Question | Current answer | Evidence |
-| --- | --- | --- |
-| Can I inspect the work? | **Yes.** The R1 source and archived measurements are on public GitHub. | [NeedleTrails R1 HTML source](needle-trails-r1.html) |
-| Did an automated check pass? | **Yes.** Source and four-size Chromium browser tests passed. | [Browser verification, 10 Nov 2026](https://github.com/CoCivium/CoCivium/actions/runs/42744256246) |
-| Did the public-source data checks pass? | **Yes.** The existing census and R1 chart consistency gate passed on main. | [Main-branch verification](https://github.com/CoCivium/CoCivium/actions/runs/42750710011) |
-| Does CoSpeedo automatically track all devices and projects? | **Not proven.** This page summarizes a *dated snapshot*, not continuously refreshed telemetry. | [Measurement contract](../../docs/Architecture/COSPEEDO_EXPONENTIAL_PROOF_AND_RECURRENCE_INTERNALIZATION_R0_20261026.md) |
-| Has independent 24-hour recovery worked? | **Not proven.** A GitHub CI job is not an independent external receiver. | [Receiver acceptance issue](https://github.com/CoCivium/CoCivium/issues/317) |
-| How much effort did people save? | **Unknown.** No comparable receiver-side human outcome baseline has been established. | [Seven-day scorecard](../../docs/Metrics/COSPEEDO_7DAY_SCORECARD_R0_20261026.json) |
+## The one-minute answer
+
+**What works:** You can inspect the [R1 historical needle-trail source](needle-trails-r1.html) and the [archived evidence](../../docs/Metrics/COSPEEDO_RECEIPT_CENSUS_R0_20261027.json). The source and chart checks passed in [main-branch CI](https://github.com/CoCivium/CoCivium/actions/runs/42750710011).
+
+**What a browser actually showed:** The source prototype passed [four-screen-size browser QA](https://github.com/CoCivium/CoCivium/actions/runs/42744256246). That test does not establish a deployed CoCivium website or a useful outcome.
+
+**What remains held:** Continuous tracking across devices, independent receiver recovery, and survival beyond 24 hours have not been demonstrated. See the [acceptance rail](https://github.com/CoCivium/CoCivium/issues/317).
+
+**What is unknown:** We do not yet have a comparable human outcome baseline for time saved or comprehension. See the [seven-day scorecard](../../docs/Metrics/COSPEEDO_7DAY_SCORECARD_R0_20261026.json).
 
 ## The needle trail, without the jargon
 
-The archived test ledger records **Pass**, **Held**, and **Fail** events. Those are engineering check outcomes, not numbers of people helped. A low Pass count could mean fewer tests ran, not that quality declined.
+These are recorded **test activities**, not people helped or proof of growing usefulness. Passed means a bounded check passed. Held means evidence is missing. Failed means a check failed.
 
-| Recorded day (UTC) | Passed checks | Held for evidence | Failed checks |
-| --- | ---: | ---: | ---: |
-| 2026-10-23 | 38 | 16 | 10 |
-| 2026-10-24 | 40 | 26 | 3 |
-| 2026-10-25 | 3 | 2 | 0 |
-| 2026-10-26 | 3 | 3 | 1 |
+- **2026-10-23:** 38 passed, 16 held, 10 failed.
+- **2026-10-24:** 40 passed, 26 held, 3 failed.
+- **2026-10-25:** 3 passed, 2 held, 0 failed.
+- **2026-10-26:** 3 passed, 3 held, 1 failed.
 
-**October 20–22 have no captured ledger rows.** That is **unknown coverage**, not proof that nothing happened. The four observed dates total 145 ledger rows. Source: [exact archived census](../../docs/Metrics/COSPEEDO_RECEIPT_CENSUS_R0_20261027.json).
+**October 20–22 have no captured ledger rows.** That is **unknown coverage**, not proof that nothing happened. The four observed dates contain 145 entries in the [exact archived census](../../docs/Metrics/COSPEEDO_RECEIPT_CENSUS_R0_20261027.json). Fewer passed checks on a later day may simply mean fewer checks ran.
 
-## Three things to remember
+## What would prove a real improvement?
 
-**Source available:** You can read what was built.  
-**Bounded test passed:** A reproducible check ran successfully.  
-**Useful real-world outcome:** A person or independent receiver actually benefited, with measurable evidence.
+A useful needle should connect **a real intention → a bounded action → a receipt → an independent receiver → an observed human benefit**. The first few links exist in source-side experiments. The full chain, cost comparison and durable restart recovery are not yet verified.
 
-The first two do **not** automatically establish the third. That distinction is the purpose of the gauge.
+For details, inspect the [R1 plotted HTML prototype](needle-trails-r1.html), the [measurement contract](../../docs/Architecture/COSPEEDO_EXPONENTIAL_PROOF_AND_RECURRENCE_INTERNALIZATION_R0_20261026.md) and the [browser-QA run](https://github.com/CoCivium/CoCivium/actions/runs/42744256246). GitHub may show the HTML *source*, not a hosted application.
 
-## Explore the evidence
-
-The [R1 HTML prototype source](needle-trails-r1.html) includes a plotted historical needle trail, counter-needles and an optional technical explanation. GitHub's file view may show HTML *source*, not a hosted application. The [browser-QA run](https://github.com/CoCivium/CoCivium/actions/runs/42744256246) retains rendered screenshots and checks at 360, 390, 768 and 1440 pixels, subject to GitHub artifact retention. This Markdown page is the directly readable GitHub entry.
-
-**Next proof:** An independently operated receiver must recover the exact source, a real reader must understand the result without coaching, and a later run must demonstrate durable recovery. Until then, the gauge stays honest rather than merely enthusiastic.
+**Next proof:** An independently operated receiver recovers the exact work, an uncoached reader understands the status, and recovery is measured across an actual interruption.
 
 *Source snapshot: 10 November 2026. No automatic refresh, external tracking, background microphone/camera capture, service deployment, or independent receipt is claimed.*
