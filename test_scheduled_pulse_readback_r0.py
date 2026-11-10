@@ -49,7 +49,7 @@ class PulseReadbackTests(unittest.TestCase):
         self.source.mkdir()
         self.dest = self.root / "receiver" / "readback.json"
         self.co_pre = self.root / "CoPre.md"
-        self.co_pre.write_bytes(b"synthetic public CoPre fixture\\n")
+        self.co_pre.write_bytes(b"synthetic public CoPre fixture\n")
         self.source_sha = digest(self.co_pre.read_bytes())
         self.source_workid = "CoPre:source-integrity:R0"
         self.source_result_sha = digest(b"synthetic completed source receipt")
@@ -145,7 +145,7 @@ class PulseReadbackTests(unittest.TestCase):
     def test_receiver_rejects_forged_workid_even_when_log_hash_matches(self):
         witness = json.loads((self.source / "source-check.log").read_text())
         witness["work_id"] = "OTHER_WORK"
-        raw = (json.dumps(witness, sort_keys=True) + "\\n").encode()
+        raw = (json.dumps(witness, sort_keys=True) + "\n").encode()
         (self.source / "source-check.log").write_bytes(raw)
         self.record["log_sha256"]["source-check"] = digest(raw)
         self.save()
@@ -155,7 +155,7 @@ class PulseReadbackTests(unittest.TestCase):
     def test_receiver_rejects_claimed_external_ack_with_matching_hash(self):
         witness = json.loads((self.source / "source-check.log").read_text())
         witness["independent_receiver_ack"] = True
-        raw = (json.dumps(witness, sort_keys=True) + "\\n").encode()
+        raw = (json.dumps(witness, sort_keys=True) + "\n").encode()
         (self.source / "source-check.log").write_bytes(raw)
         self.record["log_sha256"]["source-check"] = digest(raw)
         self.save()
