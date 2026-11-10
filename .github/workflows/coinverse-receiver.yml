@@ -1,0 +1,32 @@
+name: CoInverse Receiver Verification
+on:
+  push:
+    paths:
+      - 'scripts/coinverse_receiver.py'
+      - 'scripts/test_coinverse_receiver.py'
+      - '.github/workflows/coinverse-receiver.yml'
+  workflow_dispatch:
+  schedule:
+    - cron: '41 4 * * *'
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run deterministic fail-closed tests
+        run: python3 -m unittest discover -s scripts -p 'test_coinverse_receiver.py' -v
+      - name: Fetch pinned public sources and emit receipt
+        run: |
+          mkdir -p receipts
+          python3 scripts/coinverse_receiver.py --output receipts/coinverse-receiver.json
+      - name: Preserve receipt for inspection
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: coinverse-receiver-receipt
+          path: receipts/coinverse-receiver.json
+          if-no-files-found: warn
+          retention-days: 30
