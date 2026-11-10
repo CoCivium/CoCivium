@@ -73,7 +73,7 @@ receiver-job observation receipt.
 - No automatic credential vault access, cookie extraction, MFA bypass, false cross-provider session restore or persistent remote administration.
 - The script cannot prove that the executable stays healthy, that the right CoAll Desktop binary was selected, that startup was quiet, or that any user session was restored. These require separate **native X2** readbacks.
 
-**Source tests:** [test_costel_desktop_logon_r0.ps1](test_costel_desktop_logon_r0.ps1) contains 16 Windows read-only/negative cases; existing CoStel CI runs it on a `windows-latest` runner. Test results must be inspected before any PASS is claimed.
+**Source tests:** [test_costel_desktop_logon_r0.ps1](test_costel_desktop_logon_r0.ps1) contains 19 Windows read-only/negative cases; existing CoStel CI runs it on a `windows-latest` runner. Test results must be inspected before any PASS is claimed.
 
 **Next native gate:** an authorized existing X2 observer must do a **read-only first census** of actual CoAll Desktop binary/hash, its Task Scheduler/Startup/Run entries, owner conflicts, logon type, startup delays, crash/event logs and real credential-policy prompts. Elect just one owner, register only with current machine-authority proof, capture pre/post reboot source hashes and first usable visible response, Stop and rollback. Accept only when manual starts=0, no duplicate popups, actual CoAll visible state returns, and previously valid identities reconnect where providers permit. A revoked token or MFA event remains a legitimate human security gate.
 
