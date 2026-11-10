@@ -38,7 +38,7 @@ class CircuitTests(unittest.TestCase):
         self.assertEqual(render(self.policy,self.manifest,self.raw),render(self.policy,self.manifest,self.raw))
 
     def test_04_source_blob_is_exact(self):
-        self.assertEqual(self.policy['source_git_blob'],'51be2e100f4f01920c1e1cfa42af0bc6a4c78ff1')
+        self.assertEqual(self.policy['source_git_blob'],'d26df13471d707dbe41f7b83b6f26883cada0637')
         self.assertIn(self.policy['source_git_blob'],render(self.policy,self.manifest,self.raw)[0])
 
     def test_05_source_byte_drift_fails(self):

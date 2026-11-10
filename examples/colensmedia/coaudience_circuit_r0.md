@@ -4,7 +4,7 @@
 
 WorkID: `coal.conav.retro-public-media.r0`
 Source manifest Git blob: `d26df13471d707dbe41f7b83b6f26883cada0637`
-Projection SHA-256: `1a5647dbdb25c2dda75b9572e94dd0ef4080bea59cd4467b404477abeedac591`
+Projection SHA-256: `0cf70a0595cf767d24a3f079c605937290f310bf9204f557f56864fd5623a6d5`
 
 ## Symbolic signal-flow diagram
 
