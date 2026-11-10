@@ -16,6 +16,7 @@ from playwright.sync_api import sync_playwright, expect
 HERE = Path(__file__).resolve().parent
 HTML_SOURCE = (HERE / 'index.html').read_text(encoding='utf-8')
 MODE = os.environ.get('COOBJECT_BROWSER_MODE','shim')
+ENGINE = os.environ.get('COOBJECT_BROWSER_ENGINE','chromium')
 
 def open_page(page):
     if MODE == 'native':
@@ -57,9 +58,14 @@ def run():
         results.append(name)
         print('PASS', name)
     with sync_playwright() as p:
-        browser = (p.chromium.launch(headless=True, channel='chrome', args=['--no-sandbox'])
-                   if MODE == 'native' else
-                   p.chromium.launch(headless=True, executable_path='/usr/bin/chromium', args=['--no-sandbox']))
+        if MODE == 'native' and ENGINE == 'firefox':
+            browser = p.firefox.launch(headless=True)
+        elif MODE == 'native' and ENGINE == 'chromium':
+            browser = p.chromium.launch(headless=True, channel='chrome', args=['--no-sandbox'])
+        elif MODE == 'shim' and ENGINE == 'chromium':
+            browser = p.chromium.launch(headless=True, executable_path='/usr/bin/chromium', args=['--no-sandbox'])
+        else:
+            raise RuntimeError('Unsupported browser mode/engine combination')
         try:
             context = browser.new_context(accept_downloads=True, viewport={'width': 1100,'height': 850})
             page = context.new_page()
@@ -185,7 +191,7 @@ def run():
                 check(state(page)=='EMPTY' and page.locator('#restore').is_disabled(),'Reset not clearing state')
                 passed('reset drops object references and disables recovery')
                 report={'schema':'CoCivium.CoObject.PortableBrowser.BrowserQA.R0',
-                    'scope':('CI_CHROMIUM_FILE_URL_NATIVE_WEBCRYPTO' if MODE=='native' else 'LOCAL_CHROMIUM_IN_MEMORY_HTML_WITH_EXTERNAL_PYTHON_SHA256_SHIM_NOT_NATIVE_WEBCRYPTO'),
+                    'scope':(('CI_'+ENGINE.upper()+'_FILE_URL_NATIVE_WEBCRYPTO') if MODE=='native' else 'LOCAL_CHROMIUM_IN_MEMORY_HTML_WITH_EXTERNAL_PYTHON_SHA256_SHIM_NOT_NATIVE_WEBCRYPTO'),
                     'total':len(results),'passed':len(results),'tests':results,
                     'source_sha256':hashlib.sha256((HERE/'index.html').read_bytes()).hexdigest(),
                     'source_content_sha256':HASH,
