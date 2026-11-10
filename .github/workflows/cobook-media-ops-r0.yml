@@ -6,6 +6,7 @@ on:
       - 'scripts/check_cobook_media_ops_r0.py'
       - 'scripts/check_cobook_origin_scene_r0.py'
       - 'scripts/check_cobook_promise_scene_r0.py'
+      - 'scripts/check_cobook_coqa_causal_braid_r0.py'
       - 'docs/Books/**'
       - 'examples/colensmedia/README.md'
       - 'examples/comap/diagram-of-diagrams-r0.md'
@@ -22,6 +23,8 @@ jobs:
         with:
           python-version: '3.11'
       - run: python3 scripts/check_cobook_media_ops_r0.py
+      - name: Verify CoQA causal braid with synthetic no-input, parallel review and release gates
+        run: python3 scripts/check_cobook_coqa_causal_braid_r0.py
       - name: Install pinned browser QA
         run: |
           python3 -m pip install playwright==1.55.0
