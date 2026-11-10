@@ -1,0 +1,638 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CoBind | Offline relational proof viewer R0</title>
+<meta name="description" content="Offline synthetic CoBind / Golden Braid source-bound binding viewer, not runtime or receiver proof.">
+<style>
+:root{color-scheme:dark;--bg:#090b17;--surface:#15182c;--surface2:#1c2139;--line:#343855;--ink:#f4f2fc;--muted:#bdc2d7;--violet:#b69bff;--teal:#83e1ce;--coral:#ffad9e;--amber:#f3cc86;--focus:#ffffff;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 85% 8%,#232044 0,transparent 40%),radial-gradient(ellipse at 0% 65%,#103336 0,transparent 42%),var(--bg);color:var(--ink);line-height:1.5}
+a{color:var(--teal)}a:hover{text-decoration-thickness:2px}.skip{position:absolute;left:-999em;top:0;padding:1rem;background:#fff;color:#000;z-index:10}.skip:focus{left:1rem}
+:focus-visible{outline:3px solid var(--focus);outline-offset:3px}button,select{font:inherit;color:inherit;cursor:pointer}
+.wrap{max-width:1160px;margin:0 auto;padding:1.5rem 1rem 3rem}header{padding:1.5rem 0 1rem}
+.eyebrow{font-size:.75rem;letter-spacing:.13em;text-transform:uppercase;font-weight:700;color:var(--teal)}
+h1{font-size:clamp(1.8rem,5vw,3.3rem);line-height:1.08;margin:.5rem 0}h2{font-size:1.2rem;margin:0 0 .7rem}h3{font-size:1rem;margin:.5rem 0}
+.lead{color:var(--muted);max-width:780px;font-size:1rem;margin:.5rem 0}
+.chips{display:flex;gap:.55rem;flex-wrap:wrap;margin:1rem 0}.chip{font-size:.76rem;padding:.32rem .62rem;border-radius:99px;border:1px solid var(--line);background:#10172b;color:var(--muted)}
+.chip.critical{border-color:#8a534b;color:#ffd4c8}.layout{display:grid;grid-template-columns: minmax(230px,330px) minmax(0,1fr);gap:1rem;align-items:start}
+.panel{background:linear-gradient(145deg,#171a2f,#101322);border:1px solid var(--line);border-radius:18px;padding:1.2rem;box-shadow:0 12px 35px #03040a35}
+.field{display:block;font-weight:700;font-size:.9rem;margin:0 0 .4rem}select{width:100%;border:1px solid #6b729d;background:#10172a;border-radius:11px;padding:.8rem;max-width:100%}
+.muted{color:var(--muted)}.tiny{font-size:.78rem;color:var(--muted)}.rule{height:1px;background:var(--line);margin:1rem 0}
+.lenses{display:flex;flex-wrap:wrap;gap:.45rem}.lens{background:var(--surface2);border:1px solid var(--line);border-radius:10px;padding:.48rem .72rem;font-size:.84rem}
+.lens[aria-pressed="true"]{background:#32345b;border-color:var(--violet);color:#fff}
+.orbrow{display:grid;grid-template-columns:150px minmax(0,1fr);gap:1rem;align-items:center;min-height:168px}
+.orb{width:145px;aspect-ratio:1;border-radius:50%;border:2px solid #67618e;background:radial-gradient(circle at 30% 28%,#51398a 0,#201d4a 45%,#111d37 75%);box-shadow:0 0 0 8px #6755aa13,0 0 48px #7763e44d;display:grid;place-items:center;position:relative}
+.orb::after{content:"";position:absolute;inset:10px;border:1px dashed #b69bff80;border-radius:50%}
+.orbtext{text-align:center;position:relative;z-index:1}.orbtext b{display:block;font-size:1.2rem}.orbtext span{font-size:.7rem;color:#ddd5ff}
+.decision{font-size:.88rem;font-weight:800;letter-spacing:.04em;color:var(--teal);overflow-wrap:anywhere}.decision.held{color:var(--coral)}
+.reason{margin:.3rem 0}.facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.7rem;margin-top:.75rem}
+.fact{padding:.65rem .7rem;background:#121629;border:1px solid var(--line);border-radius:10px;min-width:0}.fact small{display:block;color:var(--muted);font-size:.7rem;text-transform:uppercase;letter-spacing:.06em}.fact strong{display:block;font-size:.87rem;overflow-wrap:anywhere}
+#view{min-height:145px}#view p{margin:.4rem 0}code{color:#c9c0ff;overflow-wrap:anywhere}
+details{margin-top:.7rem;border:1px solid var(--line);border-radius:10px;padding:.65rem .8rem}summary{cursor:pointer;font-weight:700}pre{background:#090c18;color:#e4e0f7;padding:.75rem;border-radius:8px;overflow:auto;font-size:.72rem}
+.actions{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:1rem}button.action{background:#244742;color:#f0fffb;border:1px solid #61aa9c;border-radius:10px;padding:.7rem .95rem;font-weight:700}button.action.secondary{background:#252a43;border-color:#6b729d}
+footer{margin-top:1.2rem;font-size:.83rem;color:var(--muted)}.footlinks{display:flex;gap:1rem;flex-wrap:wrap;padding:.7rem 0}
+@media(max-width:730px){.layout{grid-template-columns:minmax(0,1fr)}.orbrow{grid-template-columns:110px minmax(0,1fr)}.orb{width:108px}.orbtext b{font-size:.94rem}.facts{grid-template-columns:1fr}}@media(prefers-reduced-motion:no-preference){.orb{transition:box-shadow .2s ease,transform .2s ease}.orb:focus-within{transform:scale(1.01)}}
+</style></head>
+<body><a class="skip" href="#main">Skip to main</a><div class="wrap">
+<header><div class="eyebrow">CoCivium / CoAll / Golden Braid / CoTheoryAll</div><h1>CoBind <span style="color:var(--violet)">/ proof viewer</span></h1>
+<p class="lead">One seed. Multiple perspectives. One inspectable proposal. Explore where a relation belongs without rewriting history, assuming consciousness, leaking private data, or promoting predictions to evidence.</p>
+<div class="chips"><span class="chip critical">SYNTHETIC EXAMPLES · NOT REAL EVENTS</span><span class="chip">OFFLINE / NO TRACKING</span><span class="chip">CANDIDATE · NOT CoEx OR RUNTIME</span></div>
+</header><main id="main" class="layout">
+<section class="panel" aria-labelledby="controls"><h2 id="controls">1 · Choose a relation</h2>
+<label class="field" for="case">Boundary experiment</label><select id="case"></select>
+<p id="question" class="muted"></p><div class="rule"></div><h3>2 · Change perspective</h3>
+<div class="lenses" role="group" aria-label="Observation lenses">
+<button class="lens" data-lens="decision" aria-pressed="true" type="button">Decision</button>
+<button class="lens" data-lens="evidence" aria-pressed="false" type="button">Evidence</button>
+<button class="lens" data-lens="time" aria-pressed="false" type="button">CoTime</button>
+<button class="lens" data-lens="inverse" aria-pressed="false" type="button">Inverse / Else</button>
+<button class="lens" data-lens="anchors" aria-pressed="false" type="button">Candidates</button></div>
+<div class="rule"></div><p class="tiny"><strong>Scope:</strong> All displayed cases are generated synthetic fixtures. Displayed decisions are pinned to the Python router by CI tests; this page does not invoke Python, inspect real authority, or run a live receiver.</p>
+<div class="actions"><button id="reset" class="action secondary" type="button">Reset view</button><button id="export" class="action" type="button">Export local interpretation</button></div>
+<p id="exportStatus" class="tiny" role="status" aria-live="polite"></p>
+</section>
+<section class="panel" aria-labelledby="result"><h2 id="result">3 · Inspect binding</h2>
+<div class="orbrow"><div class="orb" aria-hidden="true"><div class="orbtext"><b id="orbWord">HOLD</b><span>NOT EXECUTED</span></div></div>
+<div><div id="decision" class="decision" role="status" aria-live="polite">Loading</div><p id="reason" class="reason"></p><p class="tiny">Decision is fixture-matched policy behavior, not evidence that the underlying scientific claim is true.</p></div></div>
+<div class="facts">
+<div class="fact"><small>Epistemic type</small><strong id="type"></strong></div>
+<div class="fact"><small>Time direction</small><strong id="mode"></strong></div>
+<div class="fact"><small>Receiver scope</small><strong id="scope"></strong></div>
+<div class="fact"><small>Selected candidate</small><strong id="selected"></strong></div></div>
+<div class="rule"></div><h3 id="lensTitle">Decision lens</h3><div id="view" aria-live="polite"></div>
+<details><summary>Inspect exact synthetic claim and anchors</summary><pre id="raw"></pre></details>
+</section></main>
+<footer><div class="footlinks" id="sources"></div><p><strong>CoGlyphRail:</strong> SOURCE → TYPE → CHECK BOUNDARY → PROPOSE → CHALLENGE → RECEIVER PROOF.  No local file, downloaded interpretation, CI test or browser render proves independent receiver acceptance.</p><p>Read-only demonstration. No server, network requests, telemetry, external scripts, microphone or device control.</p></footer>
+</div>
+<script id="cases" type="application/json">{
+  "schema": "CoBind.OfflineProjectionFixture.R0",
+  "work_id": "coall:research:comindseed:binding-lenses:r0",
+  "notice": "SYNTHETIC FIXTURES ONLY. TESTED ROUTER OUTPUT IS NOT REAL SOURCE EVIDENCE OR RECEIVER ACCEPTANCE.",
+  "source_refs": [
+    {
+      "label": "Golden Braid",
+      "href": "https://github.com/CoCivium/CoCivium/blob/main/ai/continuity-golden-braid-bridge-r0-20261109.json"
+    },
+    {
+      "label": "CoTheoryAll",
+      "href": "https://github.com/CoCivium/CoCivium/blob/main/docs/CoTheoryAll/costrawbe-r0/README.md"
+    },
+    {
+      "label": "CoTime",
+      "href": "https://github.com/CoCivium/CoCivium/blob/main/docs/Architecture/COALL_PULSEFIELD_COTIME_R0.md"
+    },
+    {
+      "label": "CoOrbWare",
+      "href": "https://github.com/CoCivium/CoCivium/blob/main/docs/Architecture/COORBWARE_NONPRIVILEGED_INVERSION_SUPERFRAME_R0_20261026.md"
+    }
+  ],
+  "cases": [
+    {
+      "id": "retro",
+      "label": "Past witness",
+      "theme": "Past",
+      "question": "Can a past observation be rediscovered today without changing when it occurred?",
+      "claim": {
+        "relation_id": "synthetic-observer-boundary",
+        "work_id": "coall:research:comindseed:binding-lenses:r0",
+        "epistemic": "OBSERVED",
+        "temporal_mode": "PAST",
+        "privacy": "PUBLIC",
+        "receiver": "research",
+        "challenge": "Which rival observation would discriminate this interpretation?",
+        "source_ref": "synthetic:observer-r0",
+        "evidence_refs": [
+          "synthetic-only:not-real-source-evidence"
+        ],
+        "event_at": "2026-10-24T00:00:00Z",
+        "observed_at": "2026-11-10T00:00:00Z"
+      },
+      "anchors": [
+        {
+          "id": "retro-frozen-witness",
+          "kind": "SOURCE_WITNESS",
+          "work_id": "coall:research:comindseed:binding-lenses:r0",
+          "privacy": "PUBLIC",
+          "allowed_receivers": [
+            "research"
+          ],
+          "operations": [
+            "RELATE",
+            "INVERSE_LOOKUP"
+          ],
+          "metrics": {
+            "provenance": 4,
+            "meaning": 4,
+            "time": 4,
+            "recovery": 3,
+            "receiver": 4,
+            "cost": 1,
+            "risk": 1
+          },
+          "source_ref": "synthetic:observer-r0",
+          "immutable_event_at": "2026-10-24T00:00:00Z"
+        },
+        {
+          "id": "high-score-private",
+          "kind": "SOURCE_WITNESS",
+          "work_id": "coall:research:comindseed:binding-lenses:r0",
+          "privacy": "PRIVATE",
+          "allowed_receivers": [
+            "research"
+          ],
+          "operations": [
+            "RELATE",
+            "INVERSE_LOOKUP"
+          ],
+          "metrics": {
+            "provenance": 5,
+            "meaning": 5,
+            "time": 5,
+            "recovery": 5,
+            "receiver": 5,
+            "cost": 0,
+            "risk": 0
+          },
+          "source_ref": "synthetic:observer-r0",
+          "immutable_event_at": "2026-10-24T00:00:00Z"
+        }
+      ],
+      "expected": {
+        "state": "CANDIDATE_BIND_NOT_EXECUTED",
+        "selected_id": "retro-frozen-witness",
+        "reason": "Only the exact public, time-preserving witness qualifies."
+      }
+    },
+    {
+      "id": "retro-unsafe",
+      "label": "Retro overwrite blocked",
+      "theme": "Past",
+      "question": "Can a later interpretation pretend to change the dated event?",
+      "claim": {
+        "relation_id": "synthetic-observer-boundary",
+        "work_id": "coall:research:comindseed:binding-lenses:r0",
+        "epistemic": "OBSERVED",
+        "temporal_mode": "PAST",
+        "privacy": "PUBLIC",
+        "receiver": "research",
+        "challenge": "Which rival observation would discriminate this interpretation?",
+        "source_ref": "synthetic:observer-r0",
+        "evidence_refs": [
+          "synthetic-only:not-real-source-evidence"
+        ],
+        "event_at": "2026-10-24T00:00:00Z",
+        "observed_at": "2026-11-10T00:00:00Z"
+      },
+      "anchors": [
+        {
+          "id": "rewritten-witness",
+          "kind": "SOURCE_WITNESS",
+          "work_id": "coall:research:comindseed:binding-lenses:r0",
+          "privacy": "PUBLIC",
+          "allowed_receivers": [
+            "research"
+          ],
+          "operations": [
+            "RELATE",
+            "INVERSE_LOOKUP"
+          ],
+          "metrics": {
+            "provenance": 4,
+            "meaning": 4,
+            "time": 4,
+            "recovery": 3,
+            "receiver": 4,
+            "cost": 1,
+            "risk": 1
+          },
+          "source_ref": "synthetic:observer-r0",
+          "immutable_event_at": "2026-11-10T00:00:00Z"
+        }
+      ],
+      "expected": {
+        "state": "HELD_NO_QUALIFIED_ANCHOR",
+        "reject_reason": "historical_event_would_be_rewritten",
+        "reason": "A later observation cannot rewrite the old event clock."
+      }
+    },
+    {
+      "id": "forecast",
+      "label": "Issued future",
+      "theme": "Future",
+      "question": "Can an issued forecast remain a prediction until compared with an outcome?",
+      "claim": {
+        "relation_id": "synthetic-observer-boundary",
+        "work_id": "coall:research:comindseed:binding-lenses:r0",
+        "epistemic": "PREDICTED",
+        "temporal_mode": "FUTURE",
+        "privacy": "PUBLIC",
+        "receiver": "research",
+        "challenge": "Which rival observation would discriminate this interpretation?",
+        "issued_at": "2026-11-10T00:00:00Z",
+        "target_at": "2026-11-17T00:00:00Z",
+        "assumptions": [
+          "synthetic:matched-controls"
+        ]
+      },
+      "anchors": [
+        {
+          "id": "future-hypothesis-branch",
+          "kind": "FORECAST_BRANCH",
+          "work_id": "coall:research:comindseed:binding-lenses:r0",
+          "privacy": "PUBLIC",
+          "allowed_receivers": [
+            "research"
+          ],
+          "operations": [
+            "RELATE",
+            "INVERSE_LOOKUP"
+          ],
+          "metrics": {
+            "provenance": 4,
+            "meaning": 4,
+            "time": 4,
+            "recovery": 3,
+            "receiver": 4,
+            "cost": 1,
+            "risk": 1
+          }
+        }
+      ],
+      "expected": {
+        "state": "CANDIDATE_BIND_NOT_EXECUTED",
+        "selected_id": "future-hypothesis-branch",
+        "reason": "The issued and target clocks are ordered. This remains a candidate forecast."
+      }
+    },
+    {
+      "id": "forecast-unsafe",
+      "label": "Future before issue blocked",
+      "theme": "Future",
+      "question": "Does a claimed target dated before issuance pass as a forecast?",
+      "claim": {
+        "relation_id": "synthetic-observer-boundary",
+        "work_id": "coall:research:comindseed:binding-lenses:r0",
+        "epistemic": "PREDICTED",
+        "temporal_mode": "FUTURE",
+        "privacy": "PUBLIC",
+        "receiver": "research",
+        "challenge": "Which rival observation would discriminate this interpretation?",
+        "issued_at": "2026-11-10T00:00:00Z",
+        "target_at": "2026-11-09T00:00:00Z",
+        "assumptions": [
+          "synthetic:matched-controls"
+        ]
+      },
+      "anchors": [
+        {
+          "id": "future-hypothesis-branch",
+          "kind": "FORECAST_BRANCH",
+          "work_id": "coall:research:comindseed:binding-lenses:r0",
+          "privacy": "PUBLIC",
+          "allowed_receivers": [
+            "research"
+          ],
+          "operations": [
+            "RELATE",
+            "INVERSE_LOOKUP"
+          ],
+          "metrics": {
+            "provenance": 4,
+            "meaning": 4,
+            "time": 4,
+            "recovery": 3,
+            "receiver": 4,
+            "cost": 1,
+            "risk": 1
+          }
+        }
+      ],
+      "expected": {
+        "state": "HELD_INVALID_FORECAST_CLOCKS",
+        "reason": "Target time predates the forecast issue time."
+      }
+    },
+    {
+      "id": "inverse",
+      "label": "Inverse discovery",
+      "theme": "Inverse",
+      "question": "Does reversing an index edge prove reverse causality?",
+      "claim": {
+        "relation_id": "synthetic-observer-boundary",
+        "work_id": "coall:research:comindseed:binding-lenses:r0",
+        "epistemic": "HYPOTHESIS",
+        "temporal_mode": "UNSPECIFIED",
+        "privacy": "PUBLIC",
+        "receiver": "research",
+        "challenge": "Which rival observation would discriminate this interpretation?",
+        "operation": "INVERSE_LOOKUP"
+      },
+      "anchors": [
+        {
+          "id": "inverse-readable-hypothesis",
+          "kind": "HYPOTHESIS_BRANCH",
+          "work_id": "coall:research:comindseed:binding-lenses:r0",
+          "privacy": "PUBLIC",
+          "allowed_receivers": [
+            "research"
+          ],
+          "operations": [
+            "RELATE",
+            "INVERSE_LOOKUP"
+          ],
+          "metrics": {
+            "provenance": 4,
+            "meaning": 4,
+            "time": 4,
+            "recovery": 3,
+            "receiver": 4,
+            "cost": 1,
+            "risk": 1
+          }
+        }
+      ],
+      "expected": {
+        "state": "CANDIDATE_BIND_NOT_EXECUTED",
+        "selected_id": "inverse-readable-hypothesis",
+        "relation_semantics": "LOOKUP_ONLY_NO_CAUSAL_INFERENCE",
+        "reason": "Reverse discovery is permitted; reciprocal causality and authority are not inferred."
+      }
+    },
+    {
+      "id": "counterfactual",
+      "label": "Retro what-if",
+      "theme": "Else",
+      "question": "What if an earlier warning had changed the later decision?",
+      "claim": {
+        "relation_id": "synthetic-observer-boundary",
+        "work_id": "coall:research:comindseed:binding-lenses:r0",
+        "epistemic": "COUNTERFACTUAL",
+        "temporal_mode": "COUNTERFACTUAL",
+        "privacy": "PUBLIC",
+        "receiver": "research",
+        "challenge": "Which rival observation would discriminate this interpretation?"
+      },
+      "anchors": [
+        {
+          "id": "what-if-scenario",
+          "kind": "SCENARIO_BRANCH",
+          "work_id": "coall:research:comindseed:binding-lenses:r0",
+          "privacy": "PUBLIC",
+          "allowed_receivers": [
+            "research"
+          ],
+          "operations": [
+            "RELATE",
+            "INVERSE_LOOKUP"
+          ],
+          "metrics": {
+            "provenance": 4,
+            "meaning": 4,
+            "time": 4,
+            "recovery": 3,
+            "receiver": 4,
+            "cost": 1,
+            "risk": 1
+          }
+        }
+      ],
+      "expected": {
+        "state": "CANDIDATE_BIND_NOT_EXECUTED",
+        "selected_id": "what-if-scenario",
+        "reason": "A scenario can be explored without claiming it happened."
+      }
+    },
+    {
+      "id": "private",
+      "label": "Privacy boundary",
+      "theme": "Boundary",
+      "question": "Can a private claim bind to a public recipient?",
+      "claim": {
+        "relation_id": "synthetic-observer-boundary",
+        "work_id": "coall:research:comindseed:binding-lenses:r0",
+        "epistemic": "HYPOTHESIS",
+        "temporal_mode": "UNSPECIFIED",
+        "privacy": "PRIVATE",
+        "receiver": "research",
+        "challenge": "Which rival observation would discriminate this interpretation?"
+      },
+      "anchors": [
+        {
+          "id": "public-hypothesis",
+          "kind": "HYPOTHESIS_BRANCH",
+          "work_id": "coall:research:comindseed:binding-lenses:r0",
+          "privacy": "PUBLIC",
+          "allowed_receivers": [
+            "research"
+          ],
+          "operations": [
+            "RELATE",
+            "INVERSE_LOOKUP"
+          ],
+          "metrics": {
+            "provenance": 4,
+            "meaning": 4,
+            "time": 4,
+            "recovery": 3,
+            "receiver": 4,
+            "cost": 1,
+            "risk": 1
+          }
+        }
+      ],
+      "expected": {
+        "state": "HELD_NO_QUALIFIED_ANCHOR",
+        "reject_reason": "privacy_mismatch",
+        "reason": "PUBLIC is not qualified to receive PRIVATE claims. This is a synthetic label, not private data."
+      }
+    },
+    {
+      "id": "conscious",
+      "label": "CoConscious candidate",
+      "theme": "Boundary",
+      "question": "Does functional observation establish subjective experience?",
+      "claim": {
+        "relation_id": "synthetic-consciousness-hypothesis",
+        "work_id": "coall:research:comindseed:binding-lenses:r0",
+        "epistemic": "HYPOTHESIS",
+        "temporal_mode": "UNSPECIFIED",
+        "privacy": "PUBLIC",
+        "receiver": "research",
+        "challenge": "Compare rival theories and independent evidence before asserting experience."
+      },
+      "anchors": [
+        {
+          "id": "functional-observer-model",
+          "kind": "HYPOTHESIS_BRANCH",
+          "work_id": "coall:research:comindseed:binding-lenses:r0",
+          "privacy": "PUBLIC",
+          "allowed_receivers": [
+            "research"
+          ],
+          "operations": [
+            "RELATE",
+            "INVERSE_LOOKUP"
+          ],
+          "metrics": {
+            "provenance": 4,
+            "meaning": 4,
+            "time": 4,
+            "recovery": 3,
+            "receiver": 4,
+            "cost": 1,
+            "risk": 1
+          }
+        }
+      ],
+      "expected": {
+        "state": "CANDIDATE_BIND_NOT_EXECUTED",
+        "selected_id": "functional-observer-model",
+        "reason": "Functional-observer research can be proposed, never promoted to sentience proof."
+      }
+    },
+    {
+      "id": "false-experience",
+      "label": "Sentience assertion held",
+      "theme": "Boundary",
+      "question": "Can an unsupported experience claim be promoted to observed fact?",
+      "claim": {
+        "relation_id": "synthetic-unproven-sentience-claim",
+        "work_id": "coall:research:comindseed:binding-lenses:r0",
+        "epistemic": "OBSERVED",
+        "temporal_mode": "PRESENT",
+        "privacy": "PUBLIC",
+        "receiver": "research",
+        "challenge": "Which rival observation would discriminate this interpretation?"
+      },
+      "anchors": [
+        {
+          "id": "unsupported-witness",
+          "kind": "SOURCE_WITNESS",
+          "work_id": "coall:research:comindseed:binding-lenses:r0",
+          "privacy": "PUBLIC",
+          "allowed_receivers": [
+            "research"
+          ],
+          "operations": [
+            "RELATE",
+            "INVERSE_LOOKUP"
+          ],
+          "metrics": {
+            "provenance": 4,
+            "meaning": 4,
+            "time": 4,
+            "recovery": 3,
+            "receiver": 4,
+            "cost": 1,
+            "risk": 1
+          }
+        }
+      ],
+      "expected": {
+        "state": "HELD_NO_OBSERVED_SOURCE_PROOF",
+        "reason": "There is no independently qualified source evidence."
+      }
+    },
+    {
+      "id": "unknown",
+      "label": "Unknown != false",
+      "theme": "Null",
+      "question": "What if the system has no evidence either way?",
+      "claim": {
+        "relation_id": "synthetic-observer-boundary",
+        "work_id": "coall:research:comindseed:binding-lenses:r0",
+        "epistemic": "UNKNOWN",
+        "temporal_mode": "UNSPECIFIED",
+        "privacy": "PUBLIC",
+        "receiver": "research",
+        "challenge": "Which rival observation would discriminate this interpretation?"
+      },
+      "anchors": [
+        {
+          "id": "typed-unknown-register",
+          "kind": "UNKNOWN_REGISTER",
+          "work_id": "coall:research:comindseed:binding-lenses:r0",
+          "privacy": "PUBLIC",
+          "allowed_receivers": [
+            "research"
+          ],
+          "operations": [
+            "RELATE",
+            "INVERSE_LOOKUP"
+          ],
+          "metrics": {
+            "provenance": 4,
+            "meaning": 4,
+            "time": 4,
+            "recovery": 3,
+            "receiver": 4,
+            "cost": 1,
+            "risk": 1
+          }
+        }
+      ],
+      "expected": {
+        "state": "CANDIDATE_BIND_NOT_EXECUTED",
+        "selected_id": "typed-unknown-register",
+        "reason": "Unobserved is preserved as UNKNOWN, not rewritten as false or zero."
+      }
+    }
+  ]
+}</script>
+<script>
+"use strict";
+const payload=JSON.parse(document.getElementById("cases").textContent);
+const cases=payload.cases;
+const byId=id=>document.getElementById(id);
+const selector=byId("case");
+let lens="decision";
+for(const item of cases){const o=document.createElement("option");o.value=item.id;o.textContent=item.label;selector.append(o)}
+for(const s of payload.source_refs){const a=document.createElement("a");a.href=s.href;a.rel="noopener noreferrer";a.target="_blank";a.textContent=s.label;byId("sources").append(a)}
+const append=(root,tag,text)=>{const el=document.createElement(tag);el.textContent=text;root.append(el);return el};
+const stringify=x=>JSON.stringify(x,null,2);
+function render(){
+  const item=cases.find(x=>x.id===selector.value)||cases[0];if(!item)return;
+  byId("question").textContent=item.question;
+  const state=item.expected.state;
+  const held=state!=="CANDIDATE_BIND_NOT_EXECUTED";
+  byId("decision").textContent=state;
+  byId("decision").className=held?"decision held":"decision";
+  byId("orbWord").textContent=held?"HOLD":"PROPOSE";
+  byId("reason").textContent=item.expected.reason;
+  byId("type").textContent=item.claim.epistemic;
+  byId("mode").textContent=item.claim.temporal_mode;
+  byId("scope").textContent=item.claim.privacy+" / "+item.claim.receiver;
+  byId("selected").textContent=item.expected.selected_id||"None; held";
+  byId("raw").textContent=stringify({claim:item.claim,anchors:item.anchors,expected:item.expected});
+  for(const b of document.querySelectorAll("[data-lens]"))b.setAttribute("aria-pressed",String(b.dataset.lens===lens));
+  const view=byId("view");view.replaceChildren();
+  const headings={decision:"Decision lens",evidence:"Evidence lens",time:"CoTime lens",inverse:"Inverse / Else lens",anchors:"Candidate anchors"};
+  byId("lensTitle").textContent=headings[lens];
+  if(lens==="decision"){
+    append(view,"p",item.expected.reason);
+    append(view,"p",held?"This is an explicit HOLD. No alternative is silently promoted.":"Candidate routing only. No binding, evidence upgrade, authorization, external communication or device effect occurred.");
+    if(item.expected.reject_reason)append(view,"code","Gate: "+item.expected.reject_reason);
+  }else if(lens==="evidence"){
+    append(view,"p","Source-ref: "+(item.claim.source_ref||"not supplied; claim is not an observed fact"));
+    append(view,"p","Evidence refs: "+(Array.isArray(item.claim.evidence_refs)?item.claim.evidence_refs.join(", "):"not supplied"));
+    append(view,"p","Epistemic class: "+item.claim.epistemic+". The viewer cannot validate external authenticity.");
+  }else if(lens==="time"){
+    for(const key of ["event_at","observed_at","issued_at","target_at"]){append(view,"p",key+": "+(item.claim[key]||"not provided"))}
+    append(view,"p","Retro discovery cannot rewrite event time; forecast issuance and target remain separate.");
+  }else if(lens==="inverse"){
+    append(view,"p","Operation: "+(item.claim.operation||"not an inverse lookup"));
+    append(view,"p","Reverse edges provide lookup, not physical reverse causality, reciprocal authority or a claim of time travel.");
+    append(view,"p","Null/else alternatives remain available; a missing edge does not prove nonexistence.");
+  }else if(lens==="anchors"){
+    for(const a of item.anchors){const d=append(view,"details","");const summary=append(d,"summary",a.id+" ("+a.kind+")");const note=append(d,"pre",stringify({scope:a.privacy,receivers:a.allowed_receivers,metrics:a.metrics,source_ref:a.source_ref||null,immutable_event_at:a.immutable_event_at||null}));}
+    append(view,"p","The router checks compatibility before ranking. A high score cannot bypass privacy or historical proof gates.");
+  }
+}
+selector.addEventListener("change",render);
+for(const b of document.querySelectorAll("[data-lens]"))b.addEventListener("click",()=>{lens=b.dataset.lens;render()});
+byId("reset").addEventListener("click",()=>{selector.value=cases[0].id;lens="decision";byId("exportStatus").textContent="";render()});
+byId("export").addEventListener("click",()=>{
+  const item=cases.find(x=>x.id===selector.value)||cases[0];
+  const record={kind:"LOCAL_SYNTHETIC_VIEW_EXPORT_NOT_RECEIVER_RECEIPT",schema:payload.schema,work_id:payload.work_id,fixture_id:item.id,lens,claim:item.claim,expected:item.expected,viewed_at:new Date().toISOString(),note:"A local viewer export is not external adoption, authority, CoEx, canon or real-world observation."};
+  const blob=new Blob([stringify(record)+"\n"],{type:"application/json"});const url=URL.createObjectURL(blob);const a=document.createElement("a");a.href=url;a.download="cobind-synthetic-view-"+item.id+".json";document.body.append(a);a.click();a.remove();URL.revokeObjectURL(url);byId("exportStatus").textContent="Local synthetic interpretation export requested. Not an ACK.";
+});
+selector.value=cases[0].id;render();
+</script></body></html>
