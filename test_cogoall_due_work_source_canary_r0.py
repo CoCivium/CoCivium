@@ -167,5 +167,28 @@ class ContextDenialTests(unittest.TestCase):
                 sut._require_checkout(Path(root), env, "task-producer")
 
 
+    def test_pr_event_allowed_only_with_bound_checkout(self):
+        from types import SimpleNamespace
+        env = {"GITHUB_ACTIONS": "true", "GITHUB_JOB": "task-producer",
+               "GITHUB_RUN_ID": "11", "GITHUB_RUN_ATTEMPT": "1",
+               "GITHUB_SHA": "a" * 40, "GITHUB_EVENT_NAME": "pull_request"}
+        with patch.object(sut.subprocess, "run",
+                          return_value=SimpleNamespace(returncode=0, stdout="a" * 40 + "\\n")):
+            with tempfile.TemporaryDirectory() as root:
+                ctx = sut._require_checkout(Path(root), env, "task-producer")
+        self.assertEqual(ctx["event"], "pull_request")
+
+    def test_pr_event_with_wrong_checkout_fails_closed(self):
+        from types import SimpleNamespace
+        env = {"GITHUB_ACTIONS": "true", "GITHUB_JOB": "task-producer",
+               "GITHUB_RUN_ID": "11", "GITHUB_RUN_ATTEMPT": "1",
+               "GITHUB_SHA": "a" * 40, "GITHUB_EVENT_NAME": "pull_request"}
+        with patch.object(sut.subprocess, "run",
+                          return_value=SimpleNamespace(returncode=0, stdout="b" * 40 + "\\n")):
+            with tempfile.TemporaryDirectory() as root:
+                with self.assertRaisesRegex(Held, "HOLD_CHECKOUT_HEAD_MISMATCH"):
+                    sut._require_checkout(Path(root), env, "task-producer")
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)
