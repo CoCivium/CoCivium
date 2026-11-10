@@ -24,6 +24,16 @@ SCHEMA = "CoAll.CoPre.ColdHandoff.R0"
 REPO = "CoCivium/CoCivium"
 FILES = ("CoPre.md", "ai/copre-seed-path-fabric-r0-20261109.json")
 MAX_BYTES = 524288
+MAX_MANIFEST_BYTES = 8192
+MANIFEST_FIELDS = frozenset((
+    "schema", "source_repo", "source_commit", "scope", "work_id", "files",
+    "producer", "receiver", "independent_receiver_ack", "co_stead_pickup",
+    "cross_session_sync", "effect_count",
+))
+RECORD_FIELDS = frozenset(("path", "sha256", "byte_count"))
+PACKET_FILES = frozenset(("packet.json", "payload/CoPre.md",
+                          "payload/ai/copre-seed-path-fabric-r0-20261109.json"))
+PACKET_DIRS = frozenset(("payload", "payload/ai"))
 NONCLAIMS = [
     "SEPARATE_GITHUB_JOB_NE_INDEPENDENT_FAILURE_DOMAIN",
     "CI_READBACK_NE_CO_STEAD_ACK",
@@ -106,15 +116,38 @@ def emit(source_root, output_root, commit):
                     (json.dumps(manifest, sort_keys=True, indent=2) + "\n").encode("utf-8"))
     return manifest
 
+def validate_packet_tree(root):
+    """No unlisted files, directories, or symlinks survive artifact download."""
+    if root.is_symlink() or not root.is_dir():
+        raise Held("HELD_PACKET_ROOT_UNTRUSTED")
+    for folder in (root, root / "payload", root / "payload" / "ai"):
+        if folder.is_symlink() or not folder.is_dir():
+            raise Held("HELD_PACKET_CONTAINS_UNDECLARED_ENTRY")
+        for child in folder.iterdir():
+            relative = child.relative_to(root).as_posix()
+            if child.is_symlink():
+                raise Held("HELD_PACKET_CONTAINS_UNDECLARED_ENTRY")
+            if child.is_dir() and relative in PACKET_DIRS:
+                continue
+            if child.is_file() and relative in PACKET_FILES:
+                continue
+            raise Held("HELD_PACKET_CONTAINS_UNDECLARED_ENTRY")
+
+
 def validate(root):
-    """Validate packet entirely from untrusted downloaded artifact."""
+    """Validate only the declared public bytes in an untrusted downloaded artifact."""
     root = Path(root)
+    validate_packet_tree(root)
     manifest_file = root / "packet.json"
     if manifest_file.is_symlink() or not manifest_file.is_file():
         raise Held("HELD_MANIFEST_ABSENT_OR_LINKED")
+    if manifest_file.stat().st_size > MAX_MANIFEST_BYTES:
+        raise Held("HELD_MANIFEST_TOO_LARGE")
     manifest = json.loads(manifest_file.read_text(encoding="utf-8"))
     if not isinstance(manifest, dict):
         raise Held("HELD_MANIFEST_INVALID")
+    if set(manifest) != MANIFEST_FIELDS:
+        raise Held("HELD_MANIFEST_UNDECLARED_FIELD")
     if (manifest.get("schema") != SCHEMA or manifest.get("source_repo") != REPO or
         manifest.get("scope") != "PUBLIC_SOURCE_ONLY" or
         manifest.get("producer") != "GITHUB_ACTIONS_JOB" or
@@ -130,6 +163,8 @@ def validate(root):
         [r.get("path") for r in records if isinstance(r, dict)] != list(FILES)):
         raise Held("HELD_FILE_ALLOWLIST_OR_ORDER")
     for record in records:
+        if set(record) != RECORD_FIELDS:
+            raise Held("HELD_RECORD_UNDECLARED_FIELD")
         raw = safe_read(root / "payload", record["path"])
         if (not isinstance(record.get("sha256"), str) or
             record.get("sha256") != sha(raw) or
