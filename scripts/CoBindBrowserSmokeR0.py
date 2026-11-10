@@ -42,7 +42,19 @@ PROBE = r"""
   document.querySelector('[data-braid-route-index="6"]').click();
   results.braidSelected = get("view").textContent.includes("CoConscious+") &&
                           get("view").textContent.includes("Receiver acceptance: UNVERIFIED");
-    results.scrollWidth = document.documentElement.scrollWidth;
+    document.querySelector('[data-lens="reader"]').click();
+  results.readerLens = document.querySelector('[data-lens="reader"]').getAttribute("aria-pressed") === "true";
+  results.readerInitiallyNoExport = document.getElementById("readerExport").disabled === true;
+  document.getElementById("readerCheck").click();
+  results.readerIncompleteHeld = document.getElementById("readerFeedback").textContent.includes("HOLD");
+  ["typed", "none", "readproof"].forEach((v,i) => {
+    const r = document.querySelector('input[name="reader_q'+i+'"][value="'+v+'"]');
+    if (r) r.click();
+  });
+  document.getElementById("readerCheck").click();
+  results.readerCorrect = document.getElementById("readerFeedback").textContent.includes("3/3");
+  results.readerExportEnabled = document.getElementById("readerExport").disabled === false;
+  results.scrollWidth = document.documentElement.scrollWidth;
   results.viewportWidth = document.documentElement.clientWidth;
   results.title = document.title;
   document.body.setAttribute("data-cobind-browser-probe", JSON.stringify(results));
@@ -99,7 +111,9 @@ def main():
                                          screenshot=screenshot, profile=tmp_dir / f"profile-{name}")
             observation = execute(browser, options, rendered)
             for key in ("privateHold", "inverseProposed", "lensActive",
-                        "inverseExplanation", "retroHeld", "reset"):
+                        "inverseExplanation", "retroHeld", "reset",
+                        "readerLens", "readerInitiallyNoExport", "readerIncompleteHeld",
+                        "readerCorrect", "readerExportEnabled"):
                 if observation.get(key) is not True:
                     raise AssertionError(f"{name} {key} failed: {observation}")
             if observation["braidRouteCount"] != 7:
