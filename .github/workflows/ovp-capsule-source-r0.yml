@@ -117,11 +117,42 @@ jobs:
         env:
           COOBJECT_BROWSER_MODE: native
         run: python3 examples/coobject_capsule_r0/portable_browser_r0/test_browser.py
+      - name: Chromium race-fenced package and restore regression
+        run: python3 examples/coobject_capsule_r0/portable_browser_r0/test_async_fence.py
       - name: Preserve synthetic browser QA and mobile/desktop screenshots
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: coobject-portable-browser-qa-r0
+          path: |
+            examples/coobject_capsule_r0/portable_browser_r0/browser_qa.json
+            examples/coobject_capsule_r0/portable_browser_r0/desktop_portable_qa.png
+            examples/coobject_capsule_r0/portable_browser_r0/mobile_portable_qa.png
+          retention-days: 7
+          if-no-files-found: warn
+
+  portable-browser-firefox:
+    runs-on: ubuntu-latest
+    timeout-minutes: 14
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install pinned UI test driver
+        run: python3 -m pip install --disable-pip-version-check playwright==1.56.0
+      - name: Install Firefox and required runner dependencies
+        run: python3 -m playwright install --with-deps firefox
+      - name: Firefox native WebCrypto exact-file receiver test
+        env:
+          COOBJECT_BROWSER_MODE: native
+          COOBJECT_BROWSER_ENGINE: firefox
+        run: python3 examples/coobject_capsule_r0/portable_browser_r0/test_browser.py
+      - name: Preserve source-only Firefox evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: coobject-portable-firefox-qa-r0
           path: |
             examples/coobject_capsule_r0/portable_browser_r0/browser_qa.json
             examples/coobject_capsule_r0/portable_browser_r0/desktop_portable_qa.png
