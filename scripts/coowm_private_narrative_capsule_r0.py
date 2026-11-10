@@ -44,7 +44,9 @@ def read_text(path):
     return data
 
 def private_dir(p):
-    p=Path(p).resolve()
+    p=Path(p).expanduser()
+    if p.is_symlink():
+        raise Held("HELD_OUTPUT_SYMLINK")
     p.mkdir(parents=True,exist_ok=True,mode=0o700)
     if p.is_symlink():
         raise Held("HELD_OUTPUT_SYMLINK")
