@@ -22,4 +22,7 @@ jobs:
           python3 -m unittest -v test_counter_contagion_r0.py
           python3 counter_contagion_r0.py counter_contagion_fixture.json > /tmp/cocounter-results.json
           python3 -m json.tool /tmp/cocounter-results.json > /dev/null
+          cp counterneedle.html /tmp/counterneedle-committed.html
+          python3 build_counterneedle_r0.py
+          diff -u /tmp/counterneedle-committed.html counterneedle.html
           python3 build_counterneedle_r0.py --check
