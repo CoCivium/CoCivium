@@ -116,6 +116,12 @@ A deliberately **broken R1 successor** is created **only inside a temporary test
 
 This is not a deployment switchover, production rollback, independent user acceptance, second-provider reconstruction or certified CoMVP. A browser demo may work while CoBar/X2, the CoStead receiver, and independent first-use adoption remain unproven. Keep the public R0 and R1 sources unchanged; do not transfer the candidate's experimentally demonstrated false-positive behavior into the public demo.
 
+## CoPreCursor first-task browser canary (2026-11-10)
+
+[First-task canary](coprecursor_first_task.py) protects the existing public [CoPreCursor offline HTML](../coprecursor/index.html), exact source Git blob `773e9de7aa7c6b03bf0bc75eddb7ca0a0c8dd101`, without modifying it. Playwright Chromium walks the user-visible **Preview next → Accept in this field → Undo last acceptance** path and checks explicit reject, an in-memory synthetic private marker not leaking into local count-only receipts, hidden editor/receipt in ambient projection, reversible view switching, reset, reload clearing the draft, narrow mobile layout, no HTTP requests and no page errors. The PR CI browser job produces a run-scoped report with a SHA-256 receipt; **the report passes only if the job actually completes successfully**.
+
+This adds **automated functional first-task evidence**, not human first-use acceptance. A 390px viewport and a scripted synthetic task cannot measure real-world usefulness, comprehension, accessibility, support load or independent receiver acceptance. The HTML intentionally does **not** persist a draft beyond reload: this confirms no hidden private retention but is not a durable restore. No X2 runtime, custom-domain product availability, CoStead/CoEx custody, production rollback or qualified MVP is implied. Keep independent first-use evaluation and authorized durable recovery as explicit open gates.
+
 ## Nonclaims
 
 `PREEXISTING_CORUN_NE_CURRENT_RUNTIME | SAME_SOURCE_NE_INDEPENDENT_TEST | MORE_PARALLELISM_NE_MORE_VALUE | ARTIFACT_NE_ADOPTION | RUN_COMPLETED_NE_RECEIVER_PICKUP | SYNTHETIC_WAIT_NE_REAL_DEPLOYMENT_SPEEDUP | GIT_PR_NE_PRODUCTION | PR_CANDIDATE_NE_MERGED | LOCAL_IS_NOT_LANDED | ACK_NE_ASSERTION | RICK_NE_MAILMAN`.
