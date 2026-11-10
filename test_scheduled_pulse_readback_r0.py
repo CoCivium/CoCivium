@@ -79,7 +79,7 @@ class PulseReadbackTests(unittest.TestCase):
 
     def test_valid_readback_is_scoped_and_not_external_ack(self):
         result = observe(self.source, context())
-        self.assertEqual(result["verified_log_count"], 9)
+        self.assertEqual(result["verified_log_count"], 10)
         self.assertEqual(result["state"], "GITHUB_JOB_BOUNDARY_ARTIFACT_HASH_READBACK")
         self.assertEqual(result["work_id"], "CoGoAll.PulseReceipt.12345.a1")
         self.assertEqual(result["due_work_selection"], "NOT_TESTED")
@@ -111,6 +111,16 @@ class PulseReadbackTests(unittest.TestCase):
     def test_missing_log_fails_closed(self):
         (self.source / "decision.log").unlink()
         with self.assertRaisesRegex(ValueError, "HOLD_MISSING_OR_LINKED_ARTIFACT"):
+            observe(self.source, context())
+
+    def test_source_check_witness_missing_fails_closed(self):
+        (self.source / "source-check.log").unlink()
+        with self.assertRaisesRegex(ValueError, "HOLD_MISSING_OR_LINKED_ARTIFACT"):
+            observe(self.source, context())
+
+    def test_source_check_witness_tampering_fails_closed(self):
+        (self.source / "source-check.log").write_text("not the witnessed source")
+        with self.assertRaisesRegex(ValueError, "HOLD_LOG_DIGEST_MISMATCH"):
             observe(self.source, context())
 
     def test_missing_log_hash_fails_closed(self):
