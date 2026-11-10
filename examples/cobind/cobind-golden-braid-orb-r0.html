@@ -39,6 +39,18 @@ footer{margin-top:1.2rem;font-size:.83rem;color:var(--muted)}.footlinks{display:
 .braid-detail{background:#13192d;border:1px solid var(--line);border-radius:10px;padding:.8rem;word-break:break-word}
 .braid-source-list{display:flex;flex-wrap:wrap;gap:.5rem;margin:.65rem 0}
 .braid-source-list a{font-size:.79rem;padding:.3rem .52rem;border:1px solid #40575a;border-radius:8px;text-decoration:none}
+
+/* Offline reader comprehension is a self-check, never external acceptance. */
+.reader-check fieldset{border:1px solid var(--line);border-radius:12px;padding:.78rem;margin:.75rem 0;background:#12182d}
+.reader-check legend{font-weight:700;padding:0 .35rem}
+.reader-check label.choice{display:flex;align-items:start;gap:.65rem;padding:.42rem .4rem;cursor:pointer}
+.reader-check input[type=radio]{accent-color:var(--teal);margin-top:.27rem;flex:0 0 auto}
+.reader-check textarea{width:100%;min-height:84px;resize:vertical;border-radius:10px;padding:.75rem;color:var(--ink);background:#0e1427;border:1px solid #6b729d;font:inherit}
+.reader-check .challenge-actions{display:flex;flex-wrap:wrap;gap:.6rem;margin:1rem 0}
+.reader-check button{font:inherit;border-radius:9px;padding:.6rem .8rem;border:1px solid #78b7ab;background:#244842;color:#fff;cursor:pointer}
+.reader-check button:disabled{opacity:.55;cursor:not-allowed}
+.reader-result{background:#111a29;border-left:3px solid var(--teal);padding:.7rem .8rem;min-height:3.5rem}
+.reader-check .disclosure{font-size:.83rem;color:var(--muted)}
 </style></head>
 <body><a class="skip" href="#main">Skip to main</a><div class="wrap">
 <header><div class="eyebrow">CoCivium / CoAll / Golden Braid / CoTheoryAll</div><h1>CoBind <span style="color:var(--violet)">/ proof viewer</span></h1>
@@ -54,7 +66,8 @@ footer{margin-top:1.2rem;font-size:.83rem;color:var(--muted)}.footlinks{display:
 <button class="lens" data-lens="time" aria-pressed="false" type="button">CoTime</button>
 <button class="lens" data-lens="inverse" aria-pressed="false" type="button">Inverse / Else</button>
 <button class="lens" data-lens="anchors" aria-pressed="false" type="button">Candidates</button>
-<button class="lens" data-lens="braid" aria-pressed="false" type="button">Golden Braid · 7 fronts</button></div>
+<button class="lens" data-lens="braid" aria-pressed="false" type="button">Golden Braid · 7 fronts</button>
+<button class="lens" data-lens="reader" aria-pressed="false" type="button">Receiver self-check</button></div>
 <div class="rule"></div><p class="tiny"><strong>Scope:</strong> All displayed cases are generated synthetic fixtures. Displayed decisions are pinned to the Python router by CI tests; this page does not invoke Python, inspect real authority, or run a live receiver.</p>
 <div class="actions"><button id="reset" class="action secondary" type="button">Reset view</button><button id="export" class="action" type="button">Export local interpretation</button></div>
 <p id="exportStatus" class="tiny" role="status" aria-live="polite"></p>
@@ -617,7 +630,7 @@ function render(){
   byId("raw").textContent=stringify({claim:item.claim,anchors:item.anchors,expected:item.expected});
   for(const b of document.querySelectorAll("[data-lens]"))b.setAttribute("aria-pressed",String(b.dataset.lens===lens));
   const view=byId("view");view.replaceChildren();
-  const headings={decision:"Decision lens",evidence:"Evidence lens",time:"CoTime lens",inverse:"Inverse / Else lens",anchors:"Candidate anchors",braid:"Golden Braid · source-bound fan-out"};
+  const headings={decision:"Decision lens",evidence:"Evidence lens",time:"CoTime lens",inverse:"Inverse / Else lens",anchors:"Candidate anchors",braid:"Golden Braid · source-bound fan-out",reader:"Receiver self-check · source understanding"};
   byId("lensTitle").textContent=headings[lens];
   if(lens==="decision"){
     append(view,"p",item.expected.reason);
@@ -683,6 +696,75 @@ function render(){
       links.append(anchor);
     }
     append(view,"p","Golden Braid = design/continuity metaphor. CoTheoryAll and CoConscious remain challengeable hypotheses, not new physics or sentience proof.");
+
+  }else if(lens==="reader"){
+    const selected=braid.cross_front_routes[selectedBraid];
+    const panel=append(view,"div","");panel.className="reader-check";
+    append(panel,"p","This local check refers to "+selected.to+". Its proposed relation is "+selected.type+". Inspect the Golden Braid lens and source anchors first.");
+    const questions=[
+      {prompt:"What does this source relationship establish about "+selected.to+"?",choices:[
+        ["typed","A proposed typed discovery link, not verified adoption"],
+        ["accepted","An independently accepted integration"],
+        ["physics","Evidence of a physical or consciousness discovery"]],answer:"typed"},
+      {prompt:"What authority does this relationship grant?",choices:[
+        ["merge","Permission to merge and deploy automatically"],
+        ["none","No authority: its explicit ceiling is NONE"],
+        ["private","Permission to disclose private material"]],answer:"none"},
+      {prompt:"What is required before claiming real receiver uptake?",choices:[
+        ["readproof","Independent source-bound readback and interpreted meaning"],
+        ["count","Seven edges drawn in an appealing diagram"],
+        ["tests","Passing synthetic tests and screenshots alone"]],answer:"readproof"}
+    ];
+    questions.forEach((q,i)=>{
+      const field=append(panel,"fieldset","");
+      append(field,"legend",(i+1)+". "+q.prompt);
+      q.choices.forEach(([val,label])=>{
+        const wrapper=append(field,"label","");wrapper.className="choice";
+        const radio=document.createElement("input");
+        radio.type="radio";radio.name="reader_q"+i;radio.value=val;radio.required=true;
+        wrapper.append(radio);append(wrapper,"span",label);
+      });
+    });
+    const noteLabel=append(panel,"label","Optional independent interpretation in your own words. Avoid names, passwords or private details.");
+    const note=append(noteLabel,"textarea","");note.id="readerNote";note.maxLength=500;
+    note.placeholder="What does this link mean, and what remains unproven?";
+    const actions=append(panel,"div","");actions.className="challenge-actions";
+    const verify=append(actions,"button","Check understanding");verify.type="button";verify.id="readerCheck";
+    const exportBtn=append(actions,"button","Export local self-check");exportBtn.type="button";exportBtn.id="readerExport";exportBtn.disabled=true;
+    const feedback=append(panel,"div","Answer the three questions to get local feedback.");feedback.id="readerFeedback";feedback.className="reader-result";feedback.setAttribute("role","status");feedback.setAttribute("aria-live","polite");
+    append(panel,"p","This is a browser self-assessment, not an independent receiver receipt, source authentication, CoEx, canon, deployment or real-world evidence. No answers are transmitted. Export only on request.").className="disclosure";
+    const started=performance.now();
+    let evaluated=null;
+    verify.addEventListener("click",()=>{
+      const answers=questions.map((q,i)=>{
+        const radio=panel.querySelector('input[name="reader_q'+i+'"]:checked');
+        return radio?radio.value:null;
+      });
+      if(answers.some(x=>x===null)){
+        feedback.textContent="HOLD: answer all three questions. No receipt issued.";
+        exportBtn.disabled=true;evaluated=null;return;
+      }
+      const score=answers.filter((a,i)=>a===questions[i].answer).length;
+      evaluated={kind:"LOCAL_RECEIVER_SELF_CHECK_NOT_INDEPENDENT_ACK",
+        schema:"CoBind.ReaderComprehensionSelfCheck.R0",selected_front:selected.to,
+        relation_type:selected.type,authority:selected.authority,
+        manifest_path:braid.source.path,manifest_git_blob_sha:braid.source.blob_sha,
+        questionnaire_version:"three-source-meaning-questions-r0",
+        answers,score,possible:3,interpretation:note.value.trim().slice(0,500),
+        local_elapsed_seconds:Math.max(0,Math.round((performance.now()-started)/1000)),
+        client_recorded_at:new Date().toISOString(),
+        nonclaims:["NOT_INDEPENDENT_READPROOF","NOT_RECEIVER_ACCEPTANCE","NOT_COEX","NOT_CANON","NOT_RUNTIME","NOT_SENTIENCE_EVIDENCE"]};
+      feedback.textContent=score+"/3 source-meaning self-check. "+(score===3?"Locally correct answers; independent receiver acceptance remains UNVERIFIED.":"Review the Golden Braid source and retry. This does not establish uptake.");
+      exportBtn.disabled=false;
+    });
+    exportBtn.addEventListener("click",()=>{
+      if(!evaluated)return;
+      const blob=new Blob([stringify(evaluated)+"\\n"],{type:"application/json"});
+      const url=URL.createObjectURL(blob),a=document.createElement("a");
+      a.href=url;a.download="cobind-local-self-check-"+selected.to.replace(/[^a-z0-9]+/gi,"-").toLowerCase()+".json";
+      document.body.append(a);a.click();a.remove();URL.revokeObjectURL(url);
+      feedback.textContent="Local self-check export requested. NOT independent readproof or ACK.";
+    });
   }else if(lens==="anchors"){
     for(const a of item.anchors){const d=append(view,"details","");const summary=append(d,"summary",a.id+" ("+a.kind+")");const note=append(d,"pre",stringify({scope:a.privacy,receivers:a.allowed_receivers,metrics:a.metrics,source_ref:a.source_ref||null,immutable_event_at:a.immutable_event_at||null}));}
     append(view,"p","The router checks compatibility before ranking. A high score cannot bypass privacy or historical proof gates.");
