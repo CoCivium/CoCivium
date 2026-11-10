@@ -2,7 +2,7 @@
 
 **PUBLIC SOURCE-POINTER CANDIDATES ONLY. No media copied, no receiver ACK.**
 
-Projection SHA-256: `58a27149995f27a093c12ff9cfa609d9f3d75943623aa3eb40f86af00924ba9e`
+Projection SHA-256: `7feb551ce60a2f648fb385e85669a8528f29cb33725f561e150aa5029646cc08`
 
 ```mermaid
 flowchart TD
