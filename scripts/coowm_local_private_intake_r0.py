@@ -72,10 +72,13 @@ class CoOwmHandler(http.server.BaseHTTPRequestHandler):
     def _host_ok(self):
         return self.headers.get("Host") == "127.0.0.1:" + str(self.server.server_port)
 
-    def respond(self, code, *, status=""):
+    def respond(self, code, *, status="", allow_form=True):
         display = ('<aside role="status">' + html.escape(status, quote=True) + '</aside>') if status else ""
-        content = PAGE_TEMPLATE.format(css=FORM_CSS, status=display,
-                                       token=html.escape(self.server.form_token, quote=True)).encode("utf-8")
+        if allow_form:
+            content = PAGE_TEMPLATE.format(css=FORM_CSS, status=display,
+                token=html.escape(self.server.form_token, quote=True)).encode("utf-8")
+        else:
+            content = b"Request rejected. Return to the local CoOwm window."
         self.send_response(code)
         self.send_header("Content-Type", "text/html; charset=utf-8")
         self.send_header("Content-Length", str(len(content)))
@@ -91,16 +94,16 @@ class CoOwmHandler(http.server.BaseHTTPRequestHandler):
 
     def do_GET(self):
         if self.path != "/" or not self._host_ok():
-            self.respond(404, status="HELD_NO_SUCH_LOCAL_ROUTE")
+            self.respond(404, status="HELD_NO_SUCH_LOCAL_ROUTE", allow_form=False)
         else:
             self.respond(200)
 
     def do_POST(self):
         if self.path != "/" or not self._host_ok():
-            self.respond(403, status="HELD_INVALID_LOCAL_HOST")
+            self.respond(403, status="HELD_INVALID_LOCAL_HOST", allow_form=False)
             return
         if self.headers.get("Origin") != self._origin():
-            self.respond(403, status="HELD_ORIGIN_NOT_LOCAL_FORM")
+            self.respond(403, status="HELD_ORIGIN_NOT_LOCAL_FORM", allow_form=False)
             return
         if self.headers.get("Content-Type", "").split(";", 1)[0].lower() != "application/x-www-form-urlencoded":
             self.respond(415, status="HELD_UNSUPPORTED_POST_FORMAT")
@@ -123,7 +126,7 @@ class CoOwmHandler(http.server.BaseHTTPRequestHandler):
         if (set(fields) != {"token", "narrative"} or
             len(fields["token"]) != 1 or len(fields["narrative"]) != 1 or
             not secrets.compare_digest(fields["token"][0], self.server.form_token)):
-            self.respond(403, status="HELD_INVALID_OR_MISSING_FORM_TOKEN")
+            self.respond(403, status="HELD_INVALID_OR_MISSING_FORM_TOKEN", allow_form=False)
             return
         try:
             raw = fields["narrative"][0].encode("utf-8")
