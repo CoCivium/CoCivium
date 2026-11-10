@@ -111,3 +111,7 @@ A user-supplied [Living Continuity System image] inspired a [source-only connect
 This reuses the [existing public CoEvSeed preview](assets/CoEvSeed/CoCivium_Living_Continuity_Hero_Preview_R0.svg) and [media registry](ai/coevo-media-seeds-r0-20261109.json) instead of publishing an unreviewed second binary under the same identity. The currently attached screenshot is a **different exact-byte version** and has only conversation-session custody here. Its SHA-256 and differences are recorded without claiming public image hosting, durable private custody or visual acceptance.
 
 **Cross-substrate principle:** Line-and-box diagrams, images, videos, audio, timelines, cultural translations and XR projections may share a typed relation/evidence spine, but their UI controls are real only when implemented and independently tested. Retain source links, accessibility twins, attribution, privacy and projection-loss records.
+
+## CoSpeedo NeedleTrails | Human-readable proof surface candidate
+
+- [NeedleTrails R0 source prototype](examples/cospeedo/needle-trails-r0.html): simple evidence steps, negative controls, explicit unknowns, and accessible explanation. **Source code only**; no live deployment or exponential productivity proof. It reuses the [existing CoSpeedo contract](docs/Architecture/COSPEEDO_EXPONENTIAL_PROOF_AND_RECURRENCE_INTERNALIZATION_R0_20261026.md) and [seven-day scorecard](docs/Metrics/COSPEEDO_7DAY_SCORECARD_R0_20261026.json).
