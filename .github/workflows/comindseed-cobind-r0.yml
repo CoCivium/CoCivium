@@ -28,7 +28,7 @@ jobs:
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
           persist-credentials: false
-      - name: Compile and run 15 bounded synthetic tests
+      - name: Compile and run 26 bounded synthetic tests
         run: |
           python3 -m py_compile scripts/CoBindCandidateRouterR0.py tests/test_cobind_candidate_router_r0.py
           python3 -m unittest discover -s tests -p 'test_cobind_candidate_router_r0.py' -v
