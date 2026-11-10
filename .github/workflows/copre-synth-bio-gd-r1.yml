@@ -1,0 +1,40 @@
+name: CoPre Synth Bio G_d R1 read-only qualification
+
+on:
+  pull_request:
+    paths:
+      - 'ai/continuity/copre-synth-bio-gd-coterms-r1-20261109.json'
+      - 'ai/continuity/conu-existentialism-candidate-field-r0.json'
+      - 'docs/CoPreGeneric/CoPre_SynthBio_Gd_CoTerms_Candidate_R1_20261109.md'
+      - 'tests/test_copre_synth_bio_gd_r1.py'
+      - '.github/workflows/copre-synth-bio-gd-r1.yml'
+  push:
+    branches:
+      - 'evo/copre-synth-bio-gd-coterms-r1-20261109'
+    paths:
+      - 'ai/continuity/copre-synth-bio-gd-coterms-r1-20261109.json'
+      - 'ai/continuity/conu-existentialism-candidate-field-r0.json'
+      - 'docs/CoPreGeneric/CoPre_SynthBio_Gd_CoTerms_Candidate_R1_20261109.md'
+      - 'tests/test_copre_synth_bio_gd_r1.py'
+      - '.github/workflows/copre-synth-bio-gd-r1.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  offline-qualification:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - name: Checkout source-only PR branch
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Install Python for standard-library tests
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Execute fail-closed source and projection tests
+        run: python3 -B tests/test_copre_synth_bio_gd_r1.py
+      - name: Print scope boundary
+        run: echo "STRUCTURAL_TESTS_ONLY__NOT_INDEPENDENT_RECEIVER_ACK__NO_DEPLOYMENT__NO_CANON"
