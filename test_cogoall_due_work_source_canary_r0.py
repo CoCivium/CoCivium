@@ -173,7 +173,7 @@ class ContextDenialTests(unittest.TestCase):
                "GITHUB_RUN_ID": "11", "GITHUB_RUN_ATTEMPT": "1",
                "GITHUB_SHA": "a" * 40, "GITHUB_EVENT_NAME": "pull_request"}
         with patch.object(sut.subprocess, "run",
-                          return_value=SimpleNamespace(returncode=0, stdout="a" * 40 + "\\n")):
+                          return_value=SimpleNamespace(returncode=0, stdout="a" * 40 + "\n")):
             with tempfile.TemporaryDirectory() as root:
                 ctx = sut._require_checkout(Path(root), env, "task-producer")
         self.assertEqual(ctx["event"], "pull_request")
@@ -184,7 +184,7 @@ class ContextDenialTests(unittest.TestCase):
                "GITHUB_RUN_ID": "11", "GITHUB_RUN_ATTEMPT": "1",
                "GITHUB_SHA": "a" * 40, "GITHUB_EVENT_NAME": "pull_request"}
         with patch.object(sut.subprocess, "run",
-                          return_value=SimpleNamespace(returncode=0, stdout="b" * 40 + "\\n")):
+                          return_value=SimpleNamespace(returncode=0, stdout="b" * 40 + "\n")):
             with tempfile.TemporaryDirectory() as root:
                 with self.assertRaisesRegex(Held, "HOLD_CHECKOUT_HEAD_MISMATCH"):
                     sut._require_checkout(Path(root), env, "task-producer")
