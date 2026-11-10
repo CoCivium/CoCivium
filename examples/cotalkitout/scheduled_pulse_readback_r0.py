@@ -71,7 +71,7 @@ def check_context(env: Mapping) -> dict:
     return {k: env[k] for k in keys}
 
 
-def observe(directory: str | Path, env: Mapping) -> dict:
+def observe(directory: str | Path, env: Mapping, source_path: str | Path = "CoPre.md") -> dict:
     ctx = check_context(env)
     root = Path(directory)
     hold(root.is_dir() and not root.is_symlink(), "HOLD_ARTIFACT_DIRECTORY")
@@ -132,7 +132,7 @@ def observe(directory: str | Path, env: Mapping) -> dict:
          isinstance(witness["local_result_sha256"], str) and
          re.fullmatch(r"[0-9a-f]{64}", witness["local_result_sha256"]),
          "HOLD_SOURCE_CHECK_WITNESS_FIELDS")
-    checked_out = Path("CoPre.md")
+    checked_out = Path(source_path)
     hold(checked_out.is_file() and not checked_out.is_symlink(),
          "HOLD_RECEIVER_SOURCE_UNAVAILABLE")
     hold(sha(bounded_file(checked_out, MAX_EVIDENCE)) ==
