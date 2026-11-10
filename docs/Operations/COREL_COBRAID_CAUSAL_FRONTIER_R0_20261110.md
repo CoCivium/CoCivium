@@ -18,7 +18,9 @@ Synthetic seven-node WorkID:
 - `receiver_result` depends on outreach and remains deferred.
 - `other` shares a collision domain with source-check, so is not elected concurrently.
 
-The 20 adversarial tests cover source/ID validation, deterministic reordering, cycles, missing/self dependencies, event/receipt contradictions, collision caps, logical budgets, held edges, effect gates, and explicit zero external effects.
+The 23 adversarial tests cover source/ID validation, deterministic reordering, cycles, missing/self dependencies, event/receipt contradictions, collision caps, logical budgets, held edges, effect gates, and explicit zero external effects.
+
+**CH03 | False causal completion:** A task labelled `DECLARED_DONE` must not depend on a task still labelled `CANDIDATE` or `HELD`. The planner now rejects such input as `DECLARED_DONE_WITH_INCOMPLETE_PREREQUISITE`, rather than letting an impossible completion order open downstream proposals. Even when a declared parent is also labelled done, the receipt remains **unverified** until independent receiver proof; the planner still grants no effect authority. This is a syntactic consistency guard, not proof that the underlying causal relationship is true.
 
 Run **locally with Python standard library** (review source first):
 
