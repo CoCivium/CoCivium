@@ -70,6 +70,16 @@ def main():
     assert "No background recording" in html
     assert "No comparable baseline" in html
     assert "verified useful closur" not in html.lower(), "No inferred closure claim"
+    # The November journey must not silently turn GitHub-scoped evidence into
+    # a deployed product, external receiver ACK, or measured human benefit.
+    assert 'id="recent-proof-title"' in html, "Missing November proof section"
+    assert "42886529449" in html and "42888625071" in html, "Missing source-bound CI run links"
+    assert "CoPre source was processed as one durable local WorkID" in html, "Missing exact WorkID scope"
+    assert "source WorkID and SHA-256 against the checked-out CoPre file" in html, "Missing receiver check claim"
+    assert "Both producing and receiving jobs ran within GitHub Actions" in html, "Missing failure domain boundary"
+    assert "No X2/CoStead receiver ACK" in html, "Missing independent receiver nonclaim"
+    assert "no completed 24-hour source-survival qualification" in html, "Missing 24-hour boundary"
+    assert "no measured time saved" in html, "Missing measured-benefit boundary"
     assert "setInterval" not in html and "window.open(" not in html
     print("PASS_COSPEEDO_NEEDLE_TRAILS_R1_COUNTS_ACCESSIBILITY_NONCLAIMS")
 
