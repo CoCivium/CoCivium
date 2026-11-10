@@ -97,6 +97,20 @@ class LocalIntakeTests(unittest.TestCase):
             "Origin":self.origin,"Content-Type":"application/x-www-form-urlencoded"})
         self.assertEqual(status,403)
         self.assertEqual(len(list(self.root.iterdir())),0)
+    def test_untrusted_host_or_origin_never_receives_form_token(self):
+        rejected = [
+            self.request("GET",headers={"Host":"rebinding.attacker.test:"+str(self.port)}),
+            self.post(origin="https://attacker.test"),
+            self.post(token="bad-token"),
+        ]
+        for status,_,body in rejected:
+            self.assertIn(status,(403,404))
+            self.assertNotIn(self.server.form_token,body)
+            self.assertNotIn('name="token"',body)
+    def test_wrong_route_does_not_echo_form_token(self):
+        status,_,body=self.request("GET",path="/private-capsules")
+        self.assertEqual(status,404)
+        self.assertNotIn(self.server.form_token,body)
     def test_invalid_content_type(self):
         status,_,_=self.request("POST",body='{"text":"hi"}',headers={
             "Origin":self.origin,"Content-Type":"application/json"})
