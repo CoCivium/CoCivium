@@ -85,6 +85,6 @@ jobs:
         with:
           python-version: '3.12'
       - name: Validate exact packet bytes, source identity, projections and receipts
-        run: python3 -B packet/verify.py --root packet
+        run: python3 -B packet/verify.py --root packet --expect-source-git-blob 46ae68b4b35e12aa1f7d4e80a1a74d9f05b79473
       - name: Mark narrow cross-job claim
         run: echo "SAME_GITHUB_CI_CROSS_JOB_READBACK_NOT_EXTERNAL_ACK_OR_COEX"
