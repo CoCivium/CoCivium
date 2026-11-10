@@ -30,6 +30,15 @@ details{margin-top:.7rem;border:1px solid var(--line);border-radius:10px;padding
 .actions{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:1rem}button.action{background:#244742;color:#f0fffb;border:1px solid #61aa9c;border-radius:10px;padding:.7rem .95rem;font-weight:700}button.action.secondary{background:#252a43;border-color:#6b729d}
 footer{margin-top:1.2rem;font-size:.83rem;color:var(--muted)}.footlinks{display:flex;gap:1rem;flex-wrap:wrap;padding:.7rem 0}
 @media(max-width:730px){.layout{grid-template-columns:minmax(0,1fr)}.orbrow{grid-template-columns:110px minmax(0,1fr)}.orb{width:108px}.orbtext b{font-size:.94rem}.facts{grid-template-columns:1fr}}@media(prefers-reduced-motion:no-preference){.orb{transition:box-shadow .2s ease,transform .2s ease}.orb:focus-within{transform:scale(1.01)}}
+
+/* CoMindSeed source-bound Braid: all relationships remain explicitly proposed. */
+.braid-diagram{width:100%;height:auto;max-height:370px;border:1px solid var(--line);border-radius:12px;background:radial-gradient(circle at center,#23264b 0,#121629 70%);display:block}
+.braid-route-buttons{display:flex;gap:.4rem;flex-wrap:wrap;margin:.9rem 0}
+.braid-route-buttons button{font:inherit;font-size:.76rem;border:1px solid #5c637f;background:#202740;color:var(--ink);border-radius:8px;padding:.38rem .5rem}
+.braid-route-buttons button[aria-pressed="true"]{border-color:var(--teal);background:#24524d;font-weight:700}
+.braid-detail{background:#13192d;border:1px solid var(--line);border-radius:10px;padding:.8rem;word-break:break-word}
+.braid-source-list{display:flex;flex-wrap:wrap;gap:.5rem;margin:.65rem 0}
+.braid-source-list a{font-size:.79rem;padding:.3rem .52rem;border:1px solid #40575a;border-radius:8px;text-decoration:none}
 </style></head>
 <body><a class="skip" href="#main">Skip to main</a><div class="wrap">
 <header><div class="eyebrow">CoCivium / CoAll / Golden Braid / CoTheoryAll</div><h1>CoBind <span style="color:var(--violet)">/ proof viewer</span></h1>
@@ -44,7 +53,8 @@ footer{margin-top:1.2rem;font-size:.83rem;color:var(--muted)}.footlinks{display:
 <button class="lens" data-lens="evidence" aria-pressed="false" type="button">Evidence</button>
 <button class="lens" data-lens="time" aria-pressed="false" type="button">CoTime</button>
 <button class="lens" data-lens="inverse" aria-pressed="false" type="button">Inverse / Else</button>
-<button class="lens" data-lens="anchors" aria-pressed="false" type="button">Candidates</button></div>
+<button class="lens" data-lens="anchors" aria-pressed="false" type="button">Candidates</button>
+<button class="lens" data-lens="braid" aria-pressed="false" type="button">Golden Braid · 7 fronts</button></div>
 <div class="rule"></div><p class="tiny"><strong>Scope:</strong> All displayed cases are generated synthetic fixtures. Displayed decisions are pinned to the Python router by CI tests; this page does not invoke Python, inspect real authority, or run a live receiver.</p>
 <div class="actions"><button id="reset" class="action secondary" type="button">Reset view</button><button id="export" class="action" type="button">Export local interpretation</button></div>
 <p id="exportStatus" class="tiny" role="status" aria-live="polite"></p>
@@ -577,10 +587,13 @@ footer{margin-top:1.2rem;font-size:.83rem;color:var(--muted)}.footlinks{display:
     }
   ]
 }</script>
+<script id="braid" type="application/json">{"schema":"CoBind.GoldenBraidSourceBoundFanout.R0","source":{"path":"ai/research/comindseed-cobind-golden-braid-cotheoryall-r0-20261110.json","blob_sha":"9281f42c785207539294d5f13f936ed9d7adc4e1","immutable_anchor_commit":"02d25fb5fde8059aac6f41c3830d9b0a305cdaa3"},"status":"SEVEN_CANDIDATE_DISCOVERY_EDGES_NOT_RECEIVER_ACCEPTANCE_OR_COEX","cross_front_routes":[{"from":"CoMindSeed","to":"CoTheoryAll+","type":"PROPOSES_TESTABLE_AND_INTERPRETIVE_MODELS","authority":"NONE"},{"from":"CoMindSeed","to":"GoldenBraid","type":"PROPOSES_TYPED_STRAND","authority":"NONE"},{"from":"CoMindSeed","to":"CoOrbWare+","type":"REQUESTS_RECEIVER_RELATIVE_PROJECTION","authority":"NONE"},{"from":"CoMindSeed","to":"CoTime+","type":"USES_SEPARATE_EVENT_OBSERVATION_RECORD_VALID_ISSUED_CLOCKS","authority":"NONE"},{"from":"CoMindSeed","to":"CoNull+","type":"PRESERVES_MISSINGNESS_AND_CONTRADICTION","authority":"NONE"},{"from":"CoMindSeed","to":"CoEvoAll+","type":"ELIGIBLE_FOR_CHALLENGE_NOT_AUTO_MUTATION","authority":"NONE"},{"from":"CoMindSeed","to":"CoConscious+","type":"CONSCIOUSNESS_HYPOTHESIS_NOT_SENTIENCE_DETECTION","authority":"NONE"}],"anchors":[{"path":"ai/continuity-golden-braid-bridge-r0-20261109.json","github_blob_sha":"779ec9b0dc0e7456d0a182548d4ccb600109b1de","role":"braid_relation_index"},{"path":"docs/CoTheoryAll/costrawbe-r0/README.md","github_blob_sha":"21da563a35106896c3029ea8f2cc4fd30cfa31c3","role":"competing_hypotheses"},{"path":"docs/Architecture/COALL_PULSEFIELD_COTIME_R0.md","github_blob_sha":"af881fd2eebdd249c16c279a46003bd3836b96cf","role":"multitemporal_events"},{"path":"ai/retro-echo-coverage-r0-20261109.json","github_blob_sha":"332d8046cdaef1522ae4510d3a00f515fae04b7a","role":"past_coverage_and_unknowns"},{"path":"docs/Architecture/COORBWARE_NONPRIVILEGED_INVERSION_SUPERFRAME_R0_20261026.md","github_blob_sha":"de80d5b9a7e3ec3948aaacd18e9ca5c53e5867c1","role":"inverse_null_else_grammar"},{"path":"docs/Architecture/COEVO_ELIGIBILITY_PRESERVATION_R0_20261025.md","github_blob_sha":"312c935d4a36d1ad174512b439039aa8bbfececc","role":"evolution_preservation_classes"}]}</script>
 <script>
 "use strict";
 const payload=JSON.parse(document.getElementById("cases").textContent);
 const cases=payload.cases;
+const braid=JSON.parse(document.getElementById("braid").textContent);
+let selectedBraid=0;
 const byId=id=>document.getElementById(id);
 const selector=byId("case");
 let lens="decision";
@@ -604,7 +617,7 @@ function render(){
   byId("raw").textContent=stringify({claim:item.claim,anchors:item.anchors,expected:item.expected});
   for(const b of document.querySelectorAll("[data-lens]"))b.setAttribute("aria-pressed",String(b.dataset.lens===lens));
   const view=byId("view");view.replaceChildren();
-  const headings={decision:"Decision lens",evidence:"Evidence lens",time:"CoTime lens",inverse:"Inverse / Else lens",anchors:"Candidate anchors"};
+  const headings={decision:"Decision lens",evidence:"Evidence lens",time:"CoTime lens",inverse:"Inverse / Else lens",anchors:"Candidate anchors",braid:"Golden Braid · source-bound fan-out"};
   byId("lensTitle").textContent=headings[lens];
   if(lens==="decision"){
     append(view,"p",item.expected.reason);
@@ -621,6 +634,55 @@ function render(){
     append(view,"p","Operation: "+(item.claim.operation||"not an inverse lookup"));
     append(view,"p","Reverse edges provide lookup, not physical reverse causality, reciprocal authority or a claim of time travel.");
     append(view,"p","Null/else alternatives remain available; a missing edge does not prove nonexistence.");
+
+  }else if(lens==="braid"){
+    append(view,"p","Seven source-proposed discovery relations from CoMindSeed. No edge certifies integration, receiver pickup, reciprocal causality or authority.");
+    const xmlns="http://www.w3.org/2000/svg";
+    const svg=document.createElementNS(xmlns,"svg");
+    svg.setAttribute("viewBox","0 0 640 420");svg.setAttribute("role","img");svg.setAttribute("class","braid-diagram");
+    svg.setAttribute("aria-label","CoMindSeed hub with seven dashed candidate links to CoTheoryAll, GoldenBraid, CoOrbWare, CoTime, CoNull, CoEvoAll and CoConscious.");
+    const node=(tag,attrs,label)=>{
+      const e=document.createElementNS(xmlns,tag);
+      for(const [key,value] of Object.entries(attrs))e.setAttribute(key,String(value));
+      if(label!==undefined)e.textContent=label;
+      svg.append(e);return e;
+    };
+    const midX=320,midY=204,rx=225,ry=157;
+    braid.cross_front_routes.forEach((edge,i)=>{
+      const angle=-Math.PI/2+2*Math.PI*i/braid.cross_front_routes.length;
+      const x=midX+rx*Math.cos(angle),y=midY+ry*Math.sin(angle),active=i===selectedBraid;
+      node("line",{x1:midX,y1:midY,x2:x,y2:y,stroke:active?"#83e1ce":"#766baf","stroke-width":active?3:1.5,"stroke-dasharray":"5 5"});
+      node("rect",{x:x-69,y:y-19,width:138,height:38,rx:12,fill:active?"#244e49":"#242446",stroke:active?"#83e1ce":"#7973a7","stroke-width":active?2:1});
+      node("text",{x,y:y+4,"text-anchor":"middle",fill:"#f8f3ff","font-size":14,"font-weight":active?700:500},edge.to);
+    });
+    node("rect",{x:midX-80,y:midY-22,width:160,height:44,rx:15,fill:"#402f68",stroke:"#b69bff","stroke-width":2});
+    node("text",{x:midX,y:midY+5,"text-anchor":"middle",fill:"#fff","font-size":17,"font-weight":700},"CoMindSeed");
+    view.append(svg);
+    const routes=append(view,"div","");
+    routes.className="braid-route-buttons";routes.setAttribute("role","group");routes.setAttribute("aria-label","Choose a candidate front relation");
+    braid.cross_front_routes.forEach((edge,i)=>{
+      const button=append(routes,"button",edge.to);button.type="button";
+      button.dataset.braidRouteIndex=String(i);
+      button.setAttribute("aria-pressed",String(i===selectedBraid));
+      button.addEventListener("click",()=>{selectedBraid=i;render()});
+    });
+    const selected=braid.cross_front_routes[selectedBraid];
+    const info=append(view,"div","");
+    info.className="braid-detail";
+    append(info,"p","Selected candidate: "+selected.from+" -> "+selected.to);
+    append(info,"p","Declared relationship: "+selected.type);
+    append(info,"p","Declared authority: "+selected.authority+" (never inferred from a visualization).");
+    append(info,"p","Receiver acceptance: UNVERIFIED. The edge is proposed for source-bound discovery, not established integration.");
+    append(view,"h4","Pinned existing source anchors");
+    const links=append(view,"div","");links.className="braid-source-list";
+    for(const source of braid.anchors){
+      const anchor=document.createElement("a");
+      anchor.href="https://github.com/CoCivium/CoCivium/blob/"+braid.source.immutable_anchor_commit+"/"+source.path;
+      anchor.rel="noopener noreferrer";anchor.target="_blank";
+      anchor.textContent=source.role;anchor.title=source.path+" · Git blob "+source.github_blob_sha;
+      links.append(anchor);
+    }
+    append(view,"p","Golden Braid = design/continuity metaphor. CoTheoryAll and CoConscious remain challengeable hypotheses, not new physics or sentience proof.");
   }else if(lens==="anchors"){
     for(const a of item.anchors){const d=append(view,"details","");const summary=append(d,"summary",a.id+" ("+a.kind+")");const note=append(d,"pre",stringify({scope:a.privacy,receivers:a.allowed_receivers,metrics:a.metrics,source_ref:a.source_ref||null,immutable_event_at:a.immutable_event_at||null}));}
     append(view,"p","The router checks compatibility before ranking. A high score cannot bypass privacy or historical proof gates.");
@@ -628,7 +690,7 @@ function render(){
 }
 selector.addEventListener("change",render);
 for(const b of document.querySelectorAll("[data-lens]"))b.addEventListener("click",()=>{lens=b.dataset.lens;render()});
-byId("reset").addEventListener("click",()=>{selector.value=cases[0].id;lens="decision";byId("exportStatus").textContent="";render()});
+byId("reset").addEventListener("click",()=>{selector.value=cases[0].id;lens="decision";selectedBraid=0;byId("exportStatus").textContent="";render()});
 byId("export").addEventListener("click",()=>{
   const item=cases.find(x=>x.id===selector.value)||cases[0];
   const record={kind:"LOCAL_SYNTHETIC_VIEW_EXPORT_NOT_RECEIVER_RECEIPT",schema:payload.schema,work_id:payload.work_id,fixture_id:item.id,lens,claim:item.claim,expected:item.expected,viewed_at:new Date().toISOString(),note:"A local viewer export is not external adoption, authority, CoEx, canon or real-world observation."};
