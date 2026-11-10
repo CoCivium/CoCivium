@@ -24,7 +24,7 @@ The [source-bound CoSeed/CoPath machine graph](ai/copre-seed-path-federation-r0.
 
 ## Exact public companions
 
-- [CoSpeedo NeedleTrails R1, plain-language evidence history](examples/cospeedo/needle-trails-r1.html): historical Pass/Held/Fail trails, source-linked milestones, and explicitly unknown human benefit; source-browser QA [PASS](https://github.com/CoCivium/CoCivium/actions/runs/42744256246), **not** a live gauge, independent receiver, X2 runtime, or deployed website.
+- [CoSpeedo: What actually got better? (human-readable public entry)](examples/cospeedo/README.md): source-linked Pass/Held/Fail history, plain-language caveats and the [R1 HTML prototype source](examples/cospeedo/needle-trails-r1.html); source-browser QA [PASS](https://github.com/CoCivium/CoCivium/actions/runs/42744256246), **not** a live gauge, independent receiver, X2 runtime or deployed website.
 
 
 
