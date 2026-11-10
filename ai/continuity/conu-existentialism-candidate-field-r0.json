@@ -6,7 +6,8 @@
     "docs/coterms/README.md",
     "docs/Architecture/COONTPRINCIPLE_EVOLVING_MEANING_R0_20261101.md",
     "docs/CoLocal/CoLocal2601109_CoRelGRAILS_CoSeed_R0.md",
-    "docs/Architecture/COMEDIA_INSPIRATION_CORPUS_R0_20261025.md"
+    "docs/Architecture/COMEDIA_INSPIRATION_CORPUS_R0_20261025.md",
+    "docs/Security/DEPENDENT_DEVICE_ENROLLMENT_R0.md"
   ],
   "intent": "Build a diverse relation-rich inquiry field rather than treating coined names as verified novelty.",
   "qualification": {
@@ -288,6 +289,50 @@
       "lane": "METHOD",
       "epistemic_class": "PROPOSED_CONCEPT",
       "state": "WORKING_LABEL_NOT_CANON"
+    },
+    {
+      "id": "nu-ex-25",
+      "label": "CoReciprocalBenchmark+",
+      "definition": "Each participating front can challenge and be challenged by independently situated others, measuring asymmetric blind spots instead of self-certifying success.",
+      "does_not_mean": "Every participant has equal expertise in every domain or disagreement itself establishes truth.",
+      "anchor": "CoInversionFirst+",
+      "discriminating_experiment": "Ask two distinct evaluators to independently audit the same source-bound decision and record errors unique to each.",
+      "lane": "METHOD",
+      "epistemic_class": "PROPOSED_CONCEPT",
+      "state": "WORKING_LABEL_NOT_CANON"
+    },
+    {
+      "id": "nu-ex-26",
+      "label": "CoGenerationalGift+",
+      "definition": "Steward useful knowledge, tools and repairable institutions for younger and future participants without assigning them parental goals or identities.",
+      "does_not_mean": "Children inherit an obligation to perform a parent's ambitions or surrender privacy and autonomy.",
+      "anchor": "CoAgencyWithoutCapture+",
+      "discriminating_experiment": "Have a voluntary age-appropriate learner select, reject or transform an inherited idea; measure independent choice and reversibility.",
+      "lane": "INTERGENERATIONAL_ETHICS",
+      "epistemic_class": "PROPOSED_CONCEPT",
+      "state": "WORKING_LABEL_NOT_CANON"
+    },
+    {
+      "id": "nu-ex-27",
+      "label": "CoBackseatSteward+",
+      "definition": "A parent or mentor may choose a supportive advisory role while the younger person retains their own voice, interests and developmental agency.",
+      "does_not_mean": "A child is an extension, successor identity, emotional substitute or permanent project of a parent.",
+      "anchor": "CoGenerationalGift+",
+      "discriminating_experiment": "Review a parent-child project for child-led choices, opt-out, guardian responsibilities, and independent review of coercive defaults.",
+      "lane": "INTERGENERATIONAL_ETHICS",
+      "epistemic_class": "PROPOSED_CONCEPT",
+      "state": "WORKING_LABEL_NOT_CANON"
+    },
+    {
+      "id": "nu-ex-28",
+      "label": "CoMutualAloneness+",
+      "definition": "Recognize that perspectives are irreducibly situated yet meaning can be enriched through voluntary reciprocal contact, including disagreement.",
+      "does_not_mean": "Absolute loneliness can be eliminated, or a relationship must be made compulsory.",
+      "anchor": "CoReciprocalBenchmark+",
+      "discriminating_experiment": "Compare collaborative outcomes with isolated baselines while respecting private boundaries and withdrawal.",
+      "lane": "PHILOSOPHICAL_FRAME",
+      "epistemic_class": "PROPOSED_CONCEPT",
+      "state": "WORKING_LABEL_NOT_CANON"
     }
   ],
   "relations": [
@@ -451,6 +496,34 @@
       "type": "EXPLORES_OR_EXTENDS_CANDIDATE",
       "authority": "NONE",
       "state": "NOT_EQUIVALENCE"
+    },
+    {
+      "from": "nu-ex-25",
+      "to": "nu-ex-03",
+      "type": "EXPLORES_OR_EXTENDS_CANDIDATE",
+      "authority": "NONE",
+      "state": "NOT_EQUIVALENCE"
+    },
+    {
+      "from": "nu-ex-26",
+      "to": "nu-ex-16",
+      "type": "EXPLORES_OR_EXTENDS_CANDIDATE",
+      "authority": "NONE",
+      "state": "NOT_EQUIVALENCE"
+    },
+    {
+      "from": "nu-ex-27",
+      "to": "nu-ex-26",
+      "type": "EXPLORES_OR_EXTENDS_CANDIDATE",
+      "authority": "NONE",
+      "state": "NOT_EQUIVALENCE"
+    },
+    {
+      "from": "nu-ex-28",
+      "to": "nu-ex-25",
+      "type": "EXPLORES_OR_EXTENDS_CANDIDATE",
+      "authority": "NONE",
+      "state": "NOT_EQUIVALENCE"
     }
   ],
   "methods": [
@@ -478,5 +551,16 @@
     "NOT_COMPLETE_HISTORICAL_TERMS_CENSUS",
     "NO_AUTONOMOUS_CROSS_SESSION_PICKUP",
     "NOT_PUBLIC_PRODUCT_DEPLOYMENT"
-  ]
+  ],
+  "intergenerational_guard": {
+    "principle": "YOUNGER_PARTICIPANTS_ARE_INDEPENDENT_PERSONS_NOT_SUCCESSOR_IDENTITIES",
+    "checks": [
+      "age-appropriate agency",
+      "opt-out and revocable sharing",
+      "guardian responsibility and consent",
+      "no private childhood data in public candidate record",
+      "independent preference/interest selection"
+    ],
+    "status": "CANDIDATE_ONLY"
+  }
 }
