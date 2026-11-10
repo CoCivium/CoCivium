@@ -21,3 +21,9 @@ jobs:
           node-version: '22'
       - name: Validate CoNod shadow policy (never remap device or call provider)
         run: node examples/conodcothumb/CoNodCoThumbPolicyR0.mjs --selftest
+      - name: Verify deterministic offline CoContextRail build
+        run: python3 examples/conodcothumb/context_rail_r1/build.py --check
+      - name: Exercise existing context rules and opt-in synthetic WorkID recovery
+        run: |
+          node --test examples/conodcothumb/context_rail_r1/tests/test_context_rail.cjs
+          node --test examples/conodcothumb/context_rail_r1/tests/test_owned_work_r0.cjs
