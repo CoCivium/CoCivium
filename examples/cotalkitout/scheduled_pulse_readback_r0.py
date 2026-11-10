@@ -196,8 +196,9 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--source-dir", required=True)
     parser.add_argument("--receipt", required=True)
+    parser.add_argument("--source-path", default="CoPre.md")
     args = parser.parse_args()
-    observation = observe(args.source_dir, os.environ)
+    observation = observe(args.source_dir, os.environ, args.source_path)
     write_receipt(observation, args.receipt)
     print(json.dumps(observation, sort_keys=True))
 
