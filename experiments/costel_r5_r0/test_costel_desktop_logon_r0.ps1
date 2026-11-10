@@ -100,6 +100,11 @@ Check 'startup audit declares partial coverage' {
   $j=$r.text|ConvertFrom-Json
   Ensure ($j.startup_scan_coverage -eq 'NAME_FILTERED_ONLY__ACTION_ARGUMENTS_NOT_INSPECTED') 'Overclaimed complete scan'
 }
+Check 'disable requires own task provenance' {
+  $src=Get-Content -LiteralPath $TargetScript -Raw
+  Ensure ($src.Contains('UNRECOGNIZED_TASK_PROVENANCE')) 'Untrusted same-name task could be disabled'
+  Ensure ($src.Contains('FOREIGN_TASK_OWNER')) 'Foreign task owner not checked'
+}
 Check 'no task installed by test' {
   $after=Get-ScheduledTask -TaskName 'CoStel.CoAllDesktop.UserLogon.R0' -ErrorAction SilentlyContinue
   Ensure ($null -eq $prior -and $null -eq $after) 'Mutated startup state'
