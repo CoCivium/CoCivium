@@ -57,7 +57,11 @@ function CandidateCounts {
     # Inspect action executable PATH only, never action Arguments.
     # A generic task name must not hide a second CoAll startup owner.
     $matchesExe=@($task.Actions | Where-Object {
-      $_.Execute -match '(?i)(CoCivium|CoAll.?Desktop|CoDesktop|RickBar|CoBar)'
+      $action=$_
+      if ($null -eq $action) { return $false }
+      $executeProperty=$action.PSObject.Properties['Execute']
+      if ($null -eq $executeProperty) { return $false }
+      return ([string]$executeProperty.Value -match '(?i)(CoCivium|CoAll.?Desktop|CoDesktop|RickBar|CoBar)')
     })
     return ($task.TaskName -match $CandidateRegex -or $matchesExe.Count -gt 0)
   })
