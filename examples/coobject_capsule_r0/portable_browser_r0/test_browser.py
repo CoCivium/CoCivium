@@ -101,7 +101,7 @@ def run():
                 passed('self-contained portable capsule exported with strict nonclaims')
 
                 # New context is a distinct session with no memory inherited.
-                isolated=browser.new_context(accept_downloads=True, viewport={'width': 390,'height': 844}, is_mobile=True)
+                isolated=browser.new_context(accept_downloads=True, viewport={'width': 390,'height': 844}, is_mobile=(ENGINE != 'firefox'))
                 receiver=isolated.new_page();receiver.on('request',lambda x:net.append(x.url) if not (MODE=='native' and x.url == (HERE/'index.html').resolve().as_uri()) else None);receiver.on('pageerror',lambda x:errors.append(str(x)))
                 open_page(receiver)
                 check(state(receiver)=='EMPTY','Clean receiver did not start blank')
