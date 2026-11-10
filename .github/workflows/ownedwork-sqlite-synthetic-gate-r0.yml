@@ -45,6 +45,25 @@ jobs:
             JSON.stringify(read.row,null,2)+'\n');
           console.log('PASS_NODE_SIMULATED_BROWSER_MODULE_NOT_REAL_GESTURE');
           JS
+      - name: Exercise actual Chromium Preview, Preserve, Recover and Revoke UI
+        run: |
+          if ! command -v google-chrome >/dev/null && ! command -v google-chrome-stable >/dev/null; then
+            echo 'HELD_BROWSER_UNAVAILABLE'
+            exit 1
+          fi
+          npm install --no-save --package-lock=false --ignore-scripts --no-audit --no-fund playwright-core@1.56.0
+          node tests/ownedwork_browser_gesture_r0.cjs
+          node - <<'JS'
+          const fs=require('node:fs'),assert=require('node:assert/strict');
+          const fromNode=JSON.parse(fs.readFileSync('out/ownedwork-browser-r0/browser-record.json'));
+          const fromBrowser=JSON.parse(fs.readFileSync('out/ownedwork-chromium-r0/browser-record.json'));
+          assert.deepEqual(fromBrowser,fromNode,'real browser and module fixture diverged');
+          assert.equal(fromBrowser.receiver_ack,false);
+          assert.equal(fromBrowser.source_verified_by_browser,false);
+          fs.copyFileSync('out/ownedwork-chromium-r0/browser-record.json',
+                          'out/ownedwork-browser-r0/browser-record.json');
+          console.log('PASS_BROWSER_UI_AGREES_WITH_NODE_FIXTURE_AND_DOWNSTREAM_RECEIVES_BROWSER_BYTES');
+          JS
       - uses: actions/upload-artifact@v4
         with:
           name: ownedwork-browser-origin-r0
