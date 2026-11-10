@@ -1,0 +1,62 @@
+{
+  "schema": "CoIndexRedir.RouteRegister.r0",
+  "status": "DRAFT_NOT_DEPLOYED",
+  "published_at": null,
+  "authority": "No host/domain ownership or redirect behavior proven",
+  "routes": [
+    {
+      "slug": "/start",
+      "audience": "general",
+      "target": "docs/Launch/coindexredir_r0/index.html",
+      "state": "DRAFT_BRANCH",
+      "fallback": "https://github.com/CoCivium/CoCivium/blob/main/START_HERE.md"
+    },
+    {
+      "slug": "/book",
+      "audience": "book-reader",
+      "target": "docs/Books/README.md",
+      "state": "MAIN_FILE",
+      "fallback": "https://github.com/CoCivium/CoCivium"
+    },
+    {
+      "slug": "/golden-braid",
+      "audience": "Hofstadter",
+      "target": "https://github.com/CoCivium/CoCivium/pull/440",
+      "state": "DRAFT_PR_440",
+      "fallback": "https://github.com/CoCivium/CoCivium/pull/440"
+    },
+    {
+      "slug": "/challenge",
+      "audience": "skeptical-reviewer",
+      "target": "https://github.com/CoCivium/CoCivium/issues/403",
+      "state": "EXTERNAL_ISSUE",
+      "fallback": "https://github.com/CoCivium/CoCivium/issues"
+    }
+  ],
+  "required_redirect_behavior": [
+    "HTTPS and authorized hostname",
+    "stable public path never points to branch-only content",
+    "server-side 302/307 for movable targets; 301/308 only for permanent route policy",
+    "target version metadata and change history",
+    "no open redirect: allowlisted target origins only",
+    "no silent auto-advance to unverified revisions",
+    "health checks from outside host with rollback, expiry and owner",
+    "version snapshot permalink and independently checked readback"
+  ],
+  "release_gates": [
+    "first-use browser render",
+    "hero/source rights",
+    "mobile and keyboard QA",
+    "no autoplay and text equivalent",
+    "destination readproof",
+    "redirect allowlist/rollback",
+    "mail source/recipient/CC verified"
+  ],
+  "nonclaims": [
+    "NO_LIVE_REDIRECT",
+    "NO_PUBLIC_DOMAIN_CONTROL",
+    "NO_AUTOMATIC_EVOLUTION_RUNTIME",
+    "NO_DESTINATION_HTTPS_READPROOF",
+    "NO_HOFSTADTER_DELIVERY"
+  ]
+}
