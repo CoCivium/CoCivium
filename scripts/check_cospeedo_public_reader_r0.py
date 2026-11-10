@@ -31,6 +31,14 @@ def main():
     assert "42744256246" in body and "42750710011" in body
     assert "<iframe" not in body and "<script" not in body
     assert "Needle trails through time" in chart
+    # An observed scheduled CI pulse is not an independent-host receiver or 24h pass.
+    assert "42824746546" in body, "Missing dated source run"
+    assert "HELD_LESS_THAN_24H" in body, "24h counter-needle erased"
+    assert "external_receiver_ack: false" in body, "No receiver boundary"
+    assert "same GitHub Actions provider" in body, "Provider failure domain missing"
+    assert "NO_MATERIAL_DELTA" in body, "No-drag quiescence missing"
+    assert "G_dSide belongs to optional philosophical inquiry" in body
+
 
     # Plain-language bullets work on narrow GitHub mobile views without a table.
     assert not re.search(r"^\|", body, flags=re.M), "Mobile reader reverted to a table"
