@@ -62,6 +62,27 @@ class SurvivalEvidence(unittest.TestCase):
         self.assertNotIn("receiver_ack",self.b)
         self.assertNotIn("exactly_once_effect_handoff",self.b)
 
+    def test_mainline_divergence_is_not_sync(self):
+        state=m.classify_mainline(pinned_digest=m.EXPECTED_SHA256,
+                                  mainline_status=200,mainline_digest="e"*64)
+        self.assertEqual(state,"MAINLINE_DIVERGED_FROM_HISTORICAL_PIN")
+    def test_mainline_match_is_observation_only(self):
+        state=m.classify_mainline(pinned_digest=m.EXPECTED_SHA256,
+                                  mainline_status=200,mainline_digest=m.EXPECTED_SHA256)
+        self.assertEqual(state,"MATCHED_PINNED_AT_OBSERVATION")
+    def test_mainline_unavailable_is_held(self):
+        self.assertEqual(m.classify_mainline(
+            pinned_digest=m.EXPECTED_SHA256,mainline_status=None,mainline_digest=None),
+            "HELD_MAINLINE_UNAVAILABLE")
+    def test_mainline_must_not_rescue_bad_historical_pin(self):
+        self.assertEqual(m.classify_mainline(
+            pinned_digest="a"*64,mainline_status=200,mainline_digest=m.EXPECTED_SHA256),
+            "HELD_PINNED_SOURCE_UNVERIFIED")
+    def test_distinct_source_urls(self):
+        self.assertIn("/main/CoPre.md",m.MAINLINE_URL)
+        self.assertIn(m.PINNED_COMMIT,m.URL)
+        self.assertNotEqual(m.MAINLINE_URL,m.URL)
+
     def test_exact_baseline_hash(self):
         self.assertRegex(m.EXPECTED_SHA256,r"^[0-9a-f]{64}$")
         self.assertEqual(len(m.PINNED_COMMIT),40)
