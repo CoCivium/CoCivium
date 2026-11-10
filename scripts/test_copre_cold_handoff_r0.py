@@ -145,6 +145,38 @@ class ColdHandoffTests(unittest.TestCase):
     def test_empty_response_cannot_pass_readback(self):
         with self.assertRaisesRegex(m.Held, "HELD_COLD_REFETCH_MISMATCH"):
             m.accept(self.payload,lambda *_:b"",reader_id="actions:1:reader")
+    def test_extra_payload_file_is_not_silent_custody(self):
+        (self.payload / "payload" / "private-notes.txt").write_text("DO NOT UPLOAD", encoding="utf-8")
+        with self.assertRaisesRegex(m.Held, "HELD_PACKET_CONTAINS_UNDECLARED_ENTRY"):
+            m.validate(self.payload)
+    def test_extra_root_file_is_rejected(self):
+        (self.payload / "extra-secret.txt").write_text("not source material", encoding="utf-8")
+        with self.assertRaisesRegex(m.Held, "HELD_PACKET_CONTAINS_UNDECLARED_ENTRY"):
+            m.validate(self.payload)
+    def test_extra_empty_directory_is_not_ignored(self):
+        (self.payload / "payload" / "private").mkdir()
+        with self.assertRaisesRegex(m.Held, "HELD_PACKET_CONTAINS_UNDECLARED_ENTRY"):
+            m.validate(self.payload)
+    def test_extra_authority_field_cannot_inflate_manifest(self):
+        self.update_manifest("external_receiver_ack", True)
+        with self.assertRaisesRegex(m.Held, "HELD_MANIFEST_UNDECLARED_FIELD"):
+            m.validate(self.payload)
+    def test_record_must_have_no_undeclared_effect_fields(self):
+        obj=copy.deepcopy(self.manifest)
+        obj["files"][0]["effect_verified"]=True
+        obj["work_id"]=m.content_identity(COMMIT,obj["files"])
+        (self.payload / "packet.json").write_text(json.dumps(obj),encoding="utf-8")
+        with self.assertRaisesRegex(m.Held, "HELD_RECORD_UNDECLARED_FIELD"):
+            m.validate(self.payload)
+    def test_manifest_cannot_be_oversized(self):
+        file=self.payload / "packet.json"
+        file.write_text(file.read_text()+(" " * 20000),encoding="utf-8")
+        with self.assertRaisesRegex(m.Held, "HELD_MANIFEST_TOO_LARGE"):
+            m.validate(self.payload)
+    def test_undeclared_symlink_cannot_hide_external_file(self):
+        (self.payload / "payload" / "private-ref").symlink_to(self.root / "unrelated-private-file")
+        with self.assertRaisesRegex(m.Held, "HELD_PACKET_CONTAINS_UNDECLARED_ENTRY"):
+            m.validate(self.payload)
     def test_historical_hash_not_24h(self):
         r=m.accept(self.payload,self.readback,reader_id="actions:1:reader")
         self.assertFalse(r["survived_24h"])
