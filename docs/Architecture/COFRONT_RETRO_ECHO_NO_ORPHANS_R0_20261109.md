@@ -54,3 +54,24 @@ The ledger points to seven **existing** public entrypoints. It does not copy the
 From an independently held older source, reconstruct one actual predecessor-to-descendant relationship, demonstrate what prior insight survived and what was not integrated, and issue one exact-object recovery receipt from an authorized receiver. A failed link must leave an ORPHAN_RISK object, not disappear.
 
 **CoGlyphRail:** SOURCE -> ECHO BACK -> COMPARE FORWARD -> HOLD OR LINK -> VERIFY -> REVISIT.
+
+## Bounded CoEcho example | X2 foreground interruption, 2026-11-10
+
+**Why this front was reopened:** The user reports that transient PS7 research panels interrupt browser typing, fragmenting CoLatch instructions; sometimes hourly PC restarts feel necessary. The symptom is an **observed user report**, not telemetry attributing a specific process or proof of a universal restart requirement. The operative failure to test is whether a background runner can unexpectedly acquire foreground focus.
+
+**Backward provenance, separate observation times:**
+
+1. [CoResourcePressureField R0, observation 2026-10-12](https://github.com/CoCivium/CoSteward/blob/main/docs/session_backchannel/evolution/CoResourceFlow_PressureField_20261012_R0.json) records focus harm, input difficulty and proposed foreground reservations. It is a private-candidate design source available as a public repository path, not a live resource controller.
+2. [X2 ForegroundPressure observation, 2026-10-16](https://github.com/CoCivium/CoSteward/blob/main/docs/session_backchannel/x2/CoX2_ForegroundPressure_Observation_20261016_R0.json) recorded heavy Windows Terminal memory and PS7 processes, but explicitly **did not attribute user input lag to those observations**.
+3. [Issue #181, CoRunner productization, 2026-10-18](https://github.com/CoCivium/CoCivium/issues/181) already required no foreground console for unelected background services, typed visibility and crash-loop quarantine.
+4. [CoThumbCoCopy R1](../../scripts/CoThumbCoCopyR1.ps1), still current on main when this branch was cut, defaulted to `-Mode UI`. **Specific reproducible candidate defect:** An undifferentiated bare script launch could request an interactive panel. This does not prove that this particular script caused the user's interruptions.
+5. This candidate source correction changes the default to **HOLD unless an explicit mode is supplied**, adds a [CoRunner source admission gate](../../scripts/coforeground_launch_gate_r0.py), and a [bounded manifest](../../ai/coforeground_launch_manifest_r0.json). CI must demonstrate one bare-launch hold without filesystem effects while preserving deliberate `-Mode SelfTest`. A real Windows foreground probe and device owner attestation are still missing.
+
+**Forward comparison / residual:**
+- **Retained prior insight:** Protect active keyboard/pointer input; non-product background workers do not own popups. CoFront lineage is explicit rather than being rebranded as a new discovery.
+- **Source-closed only if CI confirms:** Bare `CoThumb` invocation has no default GUI side effect; static admission audit excludes scheduled visible launches.
+- **Still open:** Other scheduled tasks and PS7 wrappers have not been comprehensively inventoried, focused-window transitions on X2 have not been measured, and the cause of hourly-restart pressure is unknown. This is a **single front/sample**, not a declaration that every predecessor or every UI risk was recovered.
+- **Potential inverse cause:** Browser extensions, system resource saturation, Windows update windows or a different terminal parent may be responsible. Correlate active-window ownership and time-stamped launcher PID with the next interruption before assigning cause or disabling unknown tasks.
+- **No orphan disposition:** Preserve source links and `ORPHAN_RISK` for unsurveyed process/launcher families. Do not auto-retire scripts, kill PowerShell, rewrite startup tasks or expose private user text. Require a separate scope/authority and exact receiver readback before acceptance.
+
+**Chronology boundary:** Source observations in October are historical. This November recovery **does not** retroactively establish that the proposed 2026-10-12/18 controls ran on X2. It discovers the relation and measures one later source-level control. Public-safe references only; not private conversation ingestion. 
