@@ -1,0 +1,115 @@
+{
+  "schema": "CoBook.MediaOpsRegister.v0.1-candidate",
+  "status": "PUBLIC_SAFE_CI_CANDIDATE_NOT_DEPLOYED_NOT_CANON",
+  "date": "2026-11-09",
+  "publication_family": "CoBook+ cross-publication media index, not a replacement for existing CoCivia AGI book family or Civ2+ Book Zero",
+  "policy": {
+    "hero": "A meaningful accessible hero or rich-media element is the default for major human-facing entries; exceptions must be reasoned, not placeholder art",
+    "audio": "SILENT_UNTIL_EXPLICIT_OPT_IN",
+    "motion": "REDUCED_MOTION_EQUIVALENT",
+    "source": "SOURCE_AND_RIGHTS_BOUND",
+    "time": "OBSERVATION_NE_PREDICTION",
+    "privacy": "NO_PRIVATE_SOURCE_PUBLICATION",
+    "changes": "IMMUTABLE_SOURCE_VISIBLE_SUCCESSOR"
+  },
+  "references": [
+    {
+      "id": "book:field-guide",
+      "kind": "existing_book",
+      "path": "docs/Books/README.md",
+      "state": "LANDED_MAIN"
+    },
+    {
+      "id": "book:rich-media-contract",
+      "kind": "architecture",
+      "path": "docs/Architecture/COBOOK_LIVING_RICH_MEDIA_SYSTEM_R0_20261025.md",
+      "state": "LANDED_MAIN"
+    },
+    {
+      "id": "media:inspiration",
+      "kind": "architecture",
+      "path": "docs/Architecture/COMEDIA_INSPIRATION_CORPUS_R0_20261025.md",
+      "state": "LANDED_MAIN"
+    },
+    {
+      "id": "media:lens",
+      "kind": "demo",
+      "path": "examples/colensmedia/README.md",
+      "state": "LANDED_MAIN"
+    },
+    {
+      "id": "nav:diagram-of-diagrams",
+      "kind": "diagram",
+      "path": "examples/comap/diagram-of-diagrams-r0.md",
+      "state": "LANDED_MAIN"
+    },
+    {
+      "id": "future:wet-hero",
+      "kind": "candidate",
+      "pr": 435,
+      "state": "DRAFT_PR_NOT_MAIN",
+      "source": "examples/cowet_r0/index.html"
+    },
+    {
+      "id": "future:semantic-connectables",
+      "kind": "candidate",
+      "pr": 437,
+      "state": "DRAFT_PR_NOT_MAIN",
+      "source": "ai/comedia-connectables-20261109-r0.json"
+    },
+    {
+      "id": "future:song-tuner",
+      "kind": "candidate",
+      "pr": 438,
+      "state": "DRAFT_PR_NOT_MAIN",
+      "source": "examples/cosong_tuner_r0/index.html"
+    },
+    {
+      "id": "future:golden-brail",
+      "kind": "planned",
+      "state": "PROPOSED_NOT_EXECUTED",
+      "requirement": "tactile/Braille encoding with standards-compliant tests and explicit projection-loss log"
+    }
+  ],
+  "projection_contract": [
+    "book",
+    "map",
+    "image",
+    "svg",
+    "video",
+    "audio",
+    "tactile",
+    "braille",
+    "plain_text",
+    "machine_manifest"
+  ],
+  "ci_gates": [
+    "unique IDs",
+    "states from known set",
+    "all LANDED_MAIN paths present",
+    "no DRAFT_PR mistaken for LANDED_MAIN",
+    "silent-first audio policy",
+    "at least one accessible existing reader entry",
+    "CoTime nonclaim held",
+    "nonclaims explicit"
+  ],
+  "future_tests": [
+    "semantic media twin links go both directions",
+    "real consent/mute browser QA",
+    "reduced motion and keyboard QA",
+    "tactile encoding decodability",
+    "time-linked revisions and predictions",
+    "source/rights check for supplied hero image",
+    "independent reader receipt",
+    "real live-site publish test"
+  ],
+  "nonclaims": [
+    "NO_ALL_FRONT_INTEGRATION",
+    "NO_CI_PASS_UNTIL_RUN",
+    "NO_PUBLIC_SITE_DEPLOYMENT",
+    "NO_AUDIO_AUTOPLAY",
+    "NO_INDEPENDENT_RECEIVER_ACK",
+    "NO_COGOLDENBRAIL_HARDWARE",
+    "NO_COEX"
+  ]
+}
