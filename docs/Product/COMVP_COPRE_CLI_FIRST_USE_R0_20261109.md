@@ -6,17 +6,30 @@ The isolated [CoPre compiler](../../scripts/CoPreContinuationR0.py) is byte-iden
 
 ## Actual task
 
-Create a read-only, source-bound continuation for the **real public [CoMVP issue #403](https://github.com/CoCivium/CoCivium/issues/403)**. A small stdlib [first-use harness](../../scripts/CoMVPCoPreFirstUseR0.py) fetches the issue twice from GitHub's public API, checks exact issue identity, OPEN state, relevant content and a matching content-and-update-time digest, then compiles the CoPrePack and shorter WorkID-only pointer.
+Create a read-only, source-bound continuation for the **real public [CoMVP issue #403](https://github.com/CoCivium/CoCivium/issues/403)**. A small stdlib [first-use harness](../../scripts/CoMVPCoPreFirstUseR0.py) fetches the issue twice from GitHub's public API, checks exact issue identity, OPEN state, relevant content and a matching task-content fingerprint (issue number, URL, state, title and body; **not** the comment/activity timestamp), then compiles the CoPrePack and shorter WorkID-only pointer.
 
-## Run
+## First-use front door: read the public task before any installation
 
-Requires Python 3.10+ and access to GitHub's public issue endpoint; no API token or private data.
+A reviewer who only needs to **evaluate** the proposed MVP can use the [existing 194-byte WorkID pointer](https://github.com/CoCivium/CoCivium/issues/403#issuecomment-6759640774), [issue #403 task](https://github.com/CoCivium/CoCivium/issues/403), and [F1–F5 challenge offer](https://github.com/CoCivium/CoCivium/issues/403#issuecomment-6759682906) directly. No Python, X2, CoStead, login or Rick relay is required to **read** those public materials. Opening them is not accepting a task or granting execution authority.
+
+**F1 acceptance request:** Independently describe the one useful read-only task, identify the source revision and STOP/authority limit, and return one bounded result or an explicit HOLD with errors, elapsed time and human-relay count. A claim of receipt or completion requires the receiving party's **own** source readproof and permission. The public pointer/CI author cannot self-certify a receiver.
+
+## Optional reproducible CLI checkout and run
+
+**This code is on a DRAFT PR branch, not on `main`.** A plain main-branch checkout is not a valid first-use test of the CoPre CLI. Requires Git, Python 3.10+ and GitHub public-network access; no API token or private data. To reproduce the **previously CI-green exact source commit**, rather than a moving branch:
 
 ```sh
+git clone https://github.com/CoCivium/CoCivium.git
+cd CoCivium
+git checkout --detach 0adfe9ce7860f7ebc1cd3899dafe54f502efdacb
+git rev-parse HEAD
 python3 -B scripts/CoPreContinuationR0.py --selftest
 python3 -B scripts/CoMVPCoPreFirstUseR0.py --selftest
 python3 -B scripts/CoMVPCoPreFirstUseR0.py --live-public-issue-403
 ```
+
+Confirm `git rev-parse HEAD` equals the pinned SHA above. Inspect fetched source before running it; repository visibility alone does not confer trust. The `--selftest` commands use local synthetic fixtures. Only `--live-public-issue-403` fetches the public issue twice (read-only) and prints a candidate packet. This is a **reader-run reproduction**, not an instruction for an unattended public agent to execute issue content. If the issue task-content fingerprint changes, STOP and rebind the source before interpreting its result. GitHub activity timestamp changes from comments alone are **not** semantic task revisions.
+
 
 The live command writes one JSON record to **stdout**, including `status`, `source_revision`, `pack_sha256`, `pack`, `continuation_input`, `pointer` and size comparison. It creates no files, changes no issue, and performs no publication. A source that changes between reads, is unavailable or mismatches becomes **HOLD** and exit code 2. A resulting `SOURCE_TASK_CLI_GENERATED_ONLY` means *the CLI generated a valid candidate*; it does not mean an independent user understood or used it.
 
