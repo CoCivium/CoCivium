@@ -46,6 +46,8 @@ def check_source():
     content = PAGE.read_text(encoding="utf-8")
     tree = Audit()
     tree.feed(content)
+    assert "**fictional thought experiment**" not in content, "Raw Markdown in HTML"
+    assert "<strong>fictional thought experiment</strong>" in content
     assert tree.choice_ids == list(CHOICES)
     assert tree.tags.get("button", 0) == 3
     assert tree.tags.get("script", 0) == 1
