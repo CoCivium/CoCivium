@@ -186,11 +186,38 @@ jobs:
           assert receipt["qualified_mvp"] is False
           print("PASS_SCOPED_BROWSER_TEST_NOT_MVP", report["total"])
           PY
+      - name: Replay CoPreCursor first task with consent, undo and reset
+        run: |
+          python -B examples/corun_r0/coprecursor_first_task.py \
+            --repo-root . \
+            --out "$RUNNER_TEMP/coprecursor-first-task"
+      - name: Verify CoPreCursor first-task receipt without MVP promotion
+        run: |
+          python - <<'PY'
+          import hashlib, json, os
+          from pathlib import Path
+          root = Path(os.environ["RUNNER_TEMP"]) / "coprecursor-first-task"
+          raw = (root / "first-task.json").read_bytes()
+          proof = json.loads(raw)
+          receipt = json.loads((root / "receipt.json").read_text())
+          assert hashlib.sha256(raw).hexdigest() == receipt["report_sha256"]
+          assert proof["passed"] == proof["total"] and proof["total"] >= 15
+          assert proof["protected_source"]["git_blob_sha1"] == "773e9de7aa7c6b03bf0bc75eddb7ca0a0c8dd101"
+          assert proof["independent_human_acceptance"] == "UNTESTED"
+          assert proof["persistent_recovery"] == "NOT_IMPLEMENTED_BY_THIS_DEMO"
+          assert proof["authorized_product_switch"] is False
+          assert proof["mvp_qualified"] is False
+          assert proof["network_effects"] == 0
+          assert receipt["mvp_qualified"] is False
+          print("PASS_AUTOMATED_FIRST_USE_NOT_HUMAN_MVP", proof["total"])
+          PY
       - name: Archive browser-scoped proof
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: corun-r0-codemow-browser-proof
-          path: ${{ runner.temp }}/codemow-browser/*.json
+          path: |
+            ${{ runner.temp }}/codemow-browser/*.json
+            ${{ runner.temp }}/coprecursor-first-task/*.json
           if-no-files-found: warn
           retention-days: 14
