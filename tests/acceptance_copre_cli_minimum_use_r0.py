@@ -63,6 +63,11 @@ assert report["pack"]["lease"] == "NOT_ACQUIRED"
 assert report["pack"]["recovery_ref"] == issue["html_url"]
 assert report["pack"]["stop_predicate"]
 assert report["pack"]["verification"]
+# Verification describes a prospective test, not independent receiver proof.
+assert "Same-origin two-read content agreement" in report["pack"]["verification"]
+assert "independent task and STOP acceptance UNPROVEN" in report["pack"]["verification"]
+assert "independently checked" not in report["pack"]["verification"]
+assert "independently checked" not in report["continuation_input"]
 assert report["pack"]["next_deed"]
 assert report["receiver_ack"] == "UNPROVEN"
 assert report["task_mvp"] == "NOT_QUALIFIED"
