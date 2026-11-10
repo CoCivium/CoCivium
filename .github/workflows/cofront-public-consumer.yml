@@ -4,11 +4,17 @@ on:
     paths:
       - 'scripts/cofront_public_consumer.py'
       - 'scripts/test_cofront_public_consumer.py'
+      - 'scripts/cogolden_braid_reader.py'
+      - 'scripts/test_cogolden_braid_reader.py'
+      - 'docs/Evolution/COGOLDEN_BRAID_FRONT_CONTINUITY_R0.json'
       - '.github/workflows/cofront-public-consumer.yml'
   pull_request:
     paths:
       - 'scripts/cofront_public_consumer.py'
       - 'scripts/test_cofront_public_consumer.py'
+      - 'scripts/cogolden_braid_reader.py'
+      - 'scripts/test_cogolden_braid_reader.py'
+      - 'docs/Evolution/COGOLDEN_BRAID_FRONT_CONTINUITY_R0.json'
       - '.github/workflows/cofront-public-consumer.yml'
   workflow_dispatch:
 jobs:
@@ -25,11 +31,19 @@ jobs:
         env:
           PYTHONPATH: scripts
         run: python -m unittest discover -s scripts -p 'test_cofront_public_consumer.py' -v
+      - name: Test Golden Braid fail-closed reader
+        env:
+          PYTHONPATH: scripts
+        run: python -m unittest discover -s scripts -p 'test_cogolden_braid_reader.py' -v
+      - name: Verify Golden Braid public contract
+        run: python scripts/cogolden_braid_reader.py --output cogolden-braid-readback.json
       - name: Verify public source pointers
         run: python scripts/cofront_public_consumer.py --output cofront-public-readback.json
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: cofront-public-readback
-          path: cofront-public-readback.json
+          path: |
+            cofront-public-readback.json
+            cogolden-braid-readback.json
           if-no-files-found: ignore
