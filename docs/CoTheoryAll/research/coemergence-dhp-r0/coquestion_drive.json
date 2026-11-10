@@ -1,0 +1,203 @@
+{
+  "schema": "CoTheoryAll.CoQuestionCommons.QuestionDrive.v0.1-candidate",
+  "work_id": "COEMERGENCE_DHP_QUESTION_DRIVE_R0_20261109",
+  "status": "PUBLIC_SAFE_DRAFT_RESEARCH__NO_CANON_NO_RUNTIME_NO_DEGREE_NO_INDEPENDENT_TEST",
+  "relation_to_prior": "REFINEMENT_OF_EXISTING_COQUESTIONCOMMONS_AND_EXPERIMENT_SELECTOR_NOT_NEW_ROOT",
+  "observed_at_utc": "2026-11-10",
+  "source_refs": {
+    "coqa": "https://github.com/CoCivium/CoCivium/blob/main/docs/Architecture/COQA_QUESTION_COMMONS_R0.md",
+    "selector": "https://github.com/CoCivium/CoCivium/blob/main/docs/Architecture/COEXPERIMENT_SELECTOR_R0.md",
+    "cozillion": "https://github.com/CoCivium/CoCivium/blob/main/docs/Architecture/COZILLION_GENERATIVE_RELATION_GRAMMAR_R0_20261026.md",
+    "selfaudit": "https://github.com/CoCivium/CoCivium/blob/main/docs/Architecture/COSYSTEMIC_METABOLISM_SELF_INTERFERENCE_AUDIT_R0_20261026.md"
+  },
+  "core_invariant": "QUESTION_LEADS_ANSWER_SERVES_EVIDENCE_ADJUDICATES_RECEIVER_RETURNS",
+  "selection_contract": {
+    "before": "DEDUP_AND_RECEIVER_SCOPE",
+    "question_steps": [
+      "CLARIFY_TYPE_SCOPE",
+      "RETRIEVE_EXISTING_ANSWERS_AND_PRIORS",
+      "FORK_MINIMUM_DISTINCT_RIVALS",
+      "FIND_DISCRIMINATOR_OR_ADMIT_NONE",
+      "COMPARE_WITH_STRONG_BASELINE_AND_NULL",
+      "SELECT_BOUNDED_AUTHORIZED_ACT_OR_DORMANT_WAKE",
+      "OBSERVE_RECEIVER_EFFECT",
+      "VERSION_ANSWER_AND_NEW_QUESTIONS"
+    ],
+    "preserved_lanes": [
+      "DIRECT_ANSWER",
+      "CHALLENGE",
+      "INVERSION",
+      "STOCHASTIC_EXPLORE",
+      "NULL_NO_CHANGE"
+    ],
+    "multiobjective_metrics": [
+      "verified_information_gain",
+      "receiver_task_success",
+      "epistemic_calibration",
+      "recovery",
+      "optionality",
+      "fairness",
+      "rights",
+      "total_cost",
+      "question_overhead"
+    ],
+    "no_single_truth_score": true,
+    "question_volume_not_progress": true,
+    "stop": "NO_ADMISSIBLE_DISCRIMINATOR_OR_BENEFIT_AND_NO_NEW_EVIDENCE__DORMANT_WITH_TRIGGER",
+    "effect_ceiling": "NO_EXTERNAL_ACTION_WITHOUT_SEPARATE_AUTHORITY"
+  },
+  "questions": [
+    {
+      "id": "CQD-001",
+      "question": "What observation would distinguish observer-relative experience from universal personal identity?",
+      "lane": "PHILOSOPHY",
+      "status": "CANDIDATE_UNANSWERED",
+      "source_keys": [
+        "coqa",
+        "selector",
+        "cozillion",
+        "selfaudit"
+      ],
+      "baseline": "Distinct observers with shared world vs open-individualist interpretation",
+      "discriminator": "Require an identity criterion and a contrast that would differ; otherwise NO_EMPIRICAL_DISCRIMINATOR_KNOWN",
+      "wake": "New defensible identity condition or independent critique",
+      "authority": "NONE_FROM_QUESTION",
+      "privacy": "PUBLIC_SAFE",
+      "evidence_state": "NOT_RUN",
+      "epistemic_class": "METAPHYSICAL_QUESTION"
+    },
+    {
+      "id": "CQD-002",
+      "question": "When does question-led inquiry beat a strong direct answer?",
+      "lane": "EMPIRICAL_UX",
+      "status": "CANDIDATE_UNANSWERED",
+      "source_keys": [
+        "coqa",
+        "selector",
+        "cozillion",
+        "selfaudit"
+      ],
+      "baseline": "Strong answer-first with sources; question-led evidence-and-test flow",
+      "discriminator": "Blind compare accuracy, latency, human effort, confusion and voluntary return over bounded tasks; allow the answer-first baseline to win",
+      "wake": "Consent-based receiver evaluation",
+      "authority": "NONE_FROM_QUESTION",
+      "privacy": "PUBLIC_SAFE",
+      "evidence_state": "NOT_RUN",
+      "epistemic_class": "TESTABLE_RESEARCH_QUESTION"
+    },
+    {
+      "id": "CQD-003",
+      "question": "When does stochastic variation improve information gain rather than reinforce noise?",
+      "lane": "EXPERIMENT_DESIGN",
+      "status": "CANDIDATE_UNANSWERED",
+      "source_keys": [
+        "coqa",
+        "selector",
+        "cozillion",
+        "selfaudit"
+      ],
+      "baseline": "Diversity-preserving selected alternatives vs reproducibly seeded random vs no-change",
+      "discriminator": "Equal-budget preregistered question yield, false positives, downstream test quality and opportunity cost",
+      "wake": "Repeat on changed datasets and independent reviews",
+      "authority": "NONE_FROM_QUESTION",
+      "privacy": "PUBLIC_SAFE",
+      "evidence_state": "NOT_RUN",
+      "epistemic_class": "TESTABLE_RESEARCH_QUESTION"
+    },
+    {
+      "id": "CQD-004",
+      "question": "Which simpler forecasting baseline wins under distribution shift?",
+      "lane": "PREDICTION_METHOD",
+      "status": "CANDIDATE_UNANSWERED",
+      "source_keys": [
+        "coqa",
+        "selector",
+        "cozillion",
+        "selfaudit"
+      ],
+      "baseline": "Last-observation vs moving average vs richer history model",
+      "discriminator": "Prequential prospective errors on held-out data, report regime-change and missingness effects; avoid retrospective fitting",
+      "wake": "New time-stamped held-out observations",
+      "authority": "NONE_FROM_QUESTION",
+      "privacy": "PUBLIC_SAFE",
+      "evidence_state": "NOT_RUN",
+      "epistemic_class": "TESTABLE_RESEARCH_QUESTION"
+    },
+    {
+      "id": "CQD-005",
+      "question": "What invariants survive a local-to-global-to-local translation?",
+      "lane": "REPRESENTATION",
+      "status": "CANDIDATE_UNANSWERED",
+      "source_keys": [
+        "coqa",
+        "selector",
+        "cozillion",
+        "selfaudit"
+      ],
+      "baseline": "Direct local description vs aggregated global graph vs reverse-projected local view",
+      "discriminator": "Track scope, source and uncertainty; count information loss and reversibility failures",
+      "wake": "Qualified cross-scale dataset",
+      "authority": "NONE_FROM_QUESTION",
+      "privacy": "PUBLIC_SAFE",
+      "evidence_state": "NOT_RUN",
+      "epistemic_class": "TESTABLE_RESEARCH_QUESTION"
+    },
+    {
+      "id": "CQD-006",
+      "question": "Which unexpressed needs merit exploration without inventing consent?",
+      "lane": "ETHICAL_RESEARCH",
+      "status": "CANDIDATE_UNANSWERED",
+      "source_keys": [
+        "coqa",
+        "selector",
+        "cozillion",
+        "selfaudit"
+      ],
+      "baseline": "Explicit demand-only vs alternative supply/demand/G_dSide ranking",
+      "discriminator": "Declare who is affected, rights, alternatives, permission and negative effects before optionality claims",
+      "wake": "Independent beneficiary/rights review",
+      "authority": "NONE_FROM_QUESTION",
+      "privacy": "PUBLIC_SAFE",
+      "evidence_state": "NOT_RUN",
+      "epistemic_class": "TESTABLE_RESEARCH_QUESTION"
+    },
+    {
+      "id": "CQD-007",
+      "question": "What should remain unanswered, dormant or retired?",
+      "lane": "OPERATIONAL_CONTROL",
+      "status": "CANDIDATE_UNANSWERED",
+      "source_keys": [
+        "coqa",
+        "selector",
+        "cozillion",
+        "selfaudit"
+      ],
+      "baseline": "Always-questioning vs no-change with explicit wake vs bounded challenge pass",
+      "discriminator": "Count cost, duplication, orphaned work, evidence yield and real receiver benefit; stop on no discriminating next test",
+      "wake": "New evidence, contradiction, changed receiver need",
+      "authority": "NONE_FROM_QUESTION",
+      "privacy": "PUBLIC_SAFE",
+      "evidence_state": "NOT_RUN",
+      "epistemic_class": "TESTABLE_RESEARCH_QUESTION"
+    },
+    {
+      "id": "CQD-008",
+      "question": "Does a question-oriented public entrance help someone without CoAll vocabulary?",
+      "lane": "ONBOARDING_UX",
+      "status": "CANDIDATE_UNANSWERED",
+      "source_keys": [
+        "coqa",
+        "selector",
+        "cozillion",
+        "selfaudit"
+      ],
+      "baseline": "Direct answer/FAQ vs question garden with answer, counterpoint and path",
+      "discriminator": "Compare first-task completion, time-to-usefulness, understanding, opt-out burden and retention without engagement optimization",
+      "wake": "Accessible independent reader test",
+      "authority": "NONE_FROM_QUESTION",
+      "privacy": "PUBLIC_SAFE",
+      "evidence_state": "NOT_RUN",
+      "epistemic_class": "TESTABLE_RESEARCH_QUESTION"
+    }
+  ]
+}
