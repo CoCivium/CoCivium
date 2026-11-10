@@ -10,6 +10,8 @@ on:
       - 'examples/cotalkitout/due_work_catchup_r0.py'
       - 'test_due_work_catchup_r0.py'
       - 'scripts/CoReboundIntegrityR0.py'
+      - 'scripts/copre_seed_24h_canary_r0.py'
+      - 'scripts/test_copre_seed_24h_canary_r0.py'
       - 'tests/test_corebound_integrity_r0.py'
       - 'docs/Onramp/COGOALL_PUBLIC_REBOUND_HUB_20261108.md'
       - 'docs/Onramp/AI_ONRAMP_CATCHUP_HUB_20261108.md'
@@ -134,4 +136,62 @@ jobs:
           name: cogoall-pulse-readback-${{ github.run_id }}-${{ github.run_attempt }}
           path: out/cogoall/pulse-receiver/readback.json
           if-no-files-found: error
+          retention-days: 30
+
+  seed24h-qualification:
+    # Reuse the existing hourly pulse. This observes historical source bytes,
+    # not runtime, cross-provider pickup, or scheduled cadence guarantees.
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Assert fail-closed 24-hour qualification controls
+        run: python -B scripts/test_copre_seed_24h_canary_r0.py -v
+      - name: Retrieve the actual first-run GitHub artifact (not a reconstructed timestamp)
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p out/copre-seed24h/prior
+          gh run download 42729597075 --repo "${{ github.repository }}" \
+            --name copre-seed24h-observation --dir out/copre-seed24h/prior
+          python - <<'PY'
+          import json, pathlib
+          from scripts.copre_seed_24h_canary_r0 import SCHEMA, PINNED_COMMIT, EXPECTED_SHA256
+          p=pathlib.Path('out/copre-seed24h/prior/copre-seed24h-observation.json')
+          x=json.loads(p.read_text(encoding='utf-8'))
+          assert x['schema']==SCHEMA and x['source_commit']==PINNED_COMMIT
+          assert x['sha256']==EXPECTED_SHA256 and x['state']=='PINNED_SOURCE_MATCH'
+          assert x['workflow_run_id']=='42729597075'
+          assert x['observed_at']=='2026-11-10T00:36:47.681591+00:00'
+          assert x['qualification']=='BASELINE_ONLY'
+          print('HISTORICAL_BASELINE_ARTIFACT_RETRIEVED_AND_VALIDATED')
+          PY
+      - name: Refetch pinned CoPre and compare with actual baseline after elapsed time
+        run: |
+          mkdir -p out/copre-seed24h
+          python -B scripts/copre_seed_24h_canary_r0.py \
+            --output out/copre-seed24h/current.json \
+            --prior out/copre-seed24h/prior/copre-seed24h-observation.json
+          python - <<'PY'
+          import json
+          x=json.load(open('out/copre-seed24h/current.json', encoding='utf-8'))
+          print('SEED24H_QUALIFICATION:', x['qualification'])
+          print('MAINLINE_CURRENTNESS:', x['mainline']['comparison'])
+          assert x['receiver_ack'] is False and x['current_seed_synchronized'] is False
+          assert x['exactly_once_effect_handoff'] is False and x['coex'] is False
+          PY
+      - name: Keep readproof or failure boundary, never fabricated 24h success
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: copre-seed24h-recheck-${{ github.run_id }}-a${{ github.run_attempt }}
+          path: |
+            out/copre-seed24h/current.json
+            out/copre-seed24h/prior/copre-seed24h-observation.json
+          if-no-files-found: warn
           retention-days: 30
