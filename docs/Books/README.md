@@ -14,6 +14,12 @@ GitHub may display the HTML as source; save the standalone HTML and open it in a
 
 **Draft editorial direction, not a rewrite of the existing eight-chapter public R0.** Keep Godspawn a separate novel, preserve the child's unspecified sex in this book, and treat imminent Civ2+ history as a literary device and Civ3+ as uncertain, not as a forecast. G_dSide remains an optional philosophical theme; no forced ideology, recruitment or unverified product claims.
 
+### The first parent–child experiment (draft, local HTML)
+
+[Read *The Promise Across the River*: parent and child test paper, an exact digital copy and a consent-first hybrid handoff](CoBook_The_Promise_Across_the_River_Interactive_R0.html).
+
+This original, fictional chapter candidate is a distinct experiment beside [the existing Beetle origin vignette](CoBook_Origin_Beetle_Cartographer_Interactive_R0.html), not a replacement for the eight-chapter preview. A reader may simply read the story; the three keyboard-operable routes and the fiction/evidence disclosure are optional. The child's sex is not disclosed. **No independent human acceptance or public-site deployment is claimed.**
+
 ## Publication lineage and other media
 
 | Relation | Role | Status |
