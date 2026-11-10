@@ -13,6 +13,9 @@ on:
       - 'scripts/copre_seed_24h_canary_r0.py'
       - 'scripts/copre_cold_handoff_r0.py'
       - 'scripts/test_copre_cold_handoff_r0.py'
+      - 'scripts/copre_optional_ingress_r0.py'
+      - 'scripts/test_copre_optional_ingress_r0.py'
+      - 'docs/CoPreGeneric/Shareable_R0_20261109/CoPreGeneric-v1.0-DRAFT.md'
       - 'scripts/test_copre_seed_24h_canary_r0.py'
       - 'scripts/copre_handoff_fence_sim_r0.py'
       - 'scripts/test_copre_handoff_fence_sim_r0.py'
@@ -27,6 +30,9 @@ on:
       - 'scripts/copre_seed_24h_canary_r0.py'
       - 'scripts/copre_cold_handoff_r0.py'
       - 'scripts/test_copre_cold_handoff_r0.py'
+      - 'scripts/copre_optional_ingress_r0.py'
+      - 'scripts/test_copre_optional_ingress_r0.py'
+      - 'docs/CoPreGeneric/Shareable_R0_20261109/CoPreGeneric-v1.0-DRAFT.md'
       - 'scripts/test_copre_seed_24h_canary_r0.py'
       - 'ai/copre-seed-path-fabric-r0-20261109.json'
       - '.github/workflows/copre-omnidirectional-r0.yml'
@@ -55,6 +61,8 @@ jobs:
         run: python -B scripts/test_copre_public_readback_r0.py -v
       - name: Test bounded public packet, cold replay and false-ACK controls
         run: python -B scripts/test_copre_cold_handoff_r0.py -v
+      - name: Test CoPre optional ingress with no mandatory rant and real stop/correction holds
+        run: python -B scripts/test_copre_optional_ingress_r0.py -v
       - name: Run pinned public-source and proposed mirror readback (evidence only)
         run: python -B scripts/copre_public_readback_r0.py --output /tmp/copre-mirror-readback.json
       - name: Print bounded mirror status (no secrets)
