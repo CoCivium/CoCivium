@@ -9,6 +9,8 @@ on:
       - 'examples/cowet/copre-three-views-r0.html'
       - 'examples/cowet/copre-five-anchor-frontdoor-r0.html'
       - 'scripts/test_cowet_copre_five_anchor_r0.py'
+      - 'scripts/coowm_private_narrative_capsule_r0.py'
+      - 'scripts/test_coowm_private_narrative_capsule_r0.py'
       - '.github/workflows/cowet-human-surface-r0.yml'
   push:
     paths:
@@ -31,5 +33,7 @@ jobs:
         run: python -B scripts/test_cowet_human_surface_r0.py -v
       - name: Verify real CoPre WorkID across rich, circuit, and plain projections
         run: python -B scripts/test_cowet_copre_three_views_r0.py -v
+      - name: Validate explicitly supplied private narrative capsules and recovery
+        run: python -B scripts/test_coowm_private_narrative_capsule_r0.py -v
       - name: Validate one-screen CoPre front door and truthful acceptance rail
         run: python -B scripts/test_cowet_copre_five_anchor_r0.py -v
