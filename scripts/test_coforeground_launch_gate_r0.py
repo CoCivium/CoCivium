@@ -122,6 +122,20 @@ class GuardTests(unittest.TestCase):
         e=base();e["source"]="scripts/nonexistent-do-not-create.ps1"
         out=m.inspect_manifest(ROOT,{"schema":m.SCHEMA,"entries":[e]})
         self.assertEqual(out["state"],"HOLD")
+    def test_retroactive_lineage_links_existing_source_not_new_canon(self):
+        text=(ROOT/"docs/Architecture/COFRONT_RETRO_ECHO_NO_ORPHANS_R0_20261109.md").read_text(encoding="utf-8")
+        for relation in ("CoResourceFlow_PressureField_20261012_R0.json",
+                         "CoX2_ForegroundPressure_Observation_20261016_R0.json",
+                         "CoCivium/issues/181",
+                         "scripts/coforeground_launch_gate_r0.py",
+                         "## Bounded CoEcho example | X2 foreground interruption"):
+            self.assertIn(relation,text)
+    def test_retro_echo_preserves_uncertainty_and_private_holds(self):
+        text=(ROOT/"docs/Architecture/COFRONT_RETRO_ECHO_NO_ORPHANS_R0_20261109.md").read_text(encoding="utf-8")
+        for contract in ("ORPHAN_RISK", "not a complete reconstruction",
+                         "does not retroactively establish",
+                         "not private conversation ingestion"):
+            self.assertIn(contract.lower(),text.lower())
     def test_never_launches_from_source(self):
         content=SCRIPT.read_text()
         for token in ("subprocess.run(","subprocess.Popen(","os.system(","os.startfile(","os.execv("):
