@@ -9,6 +9,9 @@ import os
 import subprocess
 import sys
 
+if not __debug__:
+    raise RuntimeError("HOLD_OPTIMIZED_MODE_SOURCE_CONTRACT_ASSERTS_DISABLED")
+
 path = Path(os.environ["COMVP_ARTIFACT_PATH"]).resolve()
 root = Path.cwd().resolve()
 assert path.is_relative_to(root / "scripts"), "wrong CoPre artifact family"
