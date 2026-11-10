@@ -7,6 +7,8 @@ on:
       - 'docs/Architecture/COMINDSEED_COBIND_GOLDEN_BRAID_R0_20261110.md'
       - 'scripts/CoBindCandidateRouterR0.py'
       - 'tests/test_cobind_candidate_router_r0.py'
+      - 'tests/test_cobind_orb_fixtures_r0.py'
+      - 'examples/cobind/cobind-golden-braid-orb-r0.html'
       - '.github/workflows/comindseed-cobind-r0.yml'
   push:
     paths:
@@ -14,6 +16,8 @@ on:
       - 'docs/Architecture/COMINDSEED_COBIND_GOLDEN_BRAID_R0_20261110.md'
       - 'scripts/CoBindCandidateRouterR0.py'
       - 'tests/test_cobind_candidate_router_r0.py'
+      - 'tests/test_cobind_orb_fixtures_r0.py'
+      - 'examples/cobind/cobind-golden-braid-orb-r0.html'
       - '.github/workflows/comindseed-cobind-r0.yml'
 
 permissions:
@@ -32,6 +36,9 @@ jobs:
         run: |
           python3 -m py_compile scripts/CoBindCandidateRouterR0.py tests/test_cobind_candidate_router_r0.py
           python3 -m unittest discover -s tests -p 'test_cobind_candidate_router_r0.py' -v
+      - name: Verify ten offline Orb scenarios against the actual Python router
+        run: |
+          python3 -m unittest discover -s tests -p 'test_cobind_orb_fixtures_r0.py' -v
       - name: Validate public source anchors and nonclaim boundaries
         run: |
           python3 - <<'PY'
