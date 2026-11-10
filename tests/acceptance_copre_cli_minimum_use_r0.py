@@ -11,6 +11,9 @@ import os
 from pathlib import Path
 import sys
 
+if not __debug__:
+    raise RuntimeError("HOLD_OPTIMIZED_MODE_PINNED_CONTRACT_ASSERTS_DISABLED")
+
 root = Path.cwd().resolve()
 candidate = Path(os.environ["COMVP_ARTIFACT_PATH"]).resolve()
 assert candidate.parent in {root / "scripts", root / "regression-fixture" / "scripts"}, "not a bounded CoPre source directory"
