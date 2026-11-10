@@ -92,7 +92,7 @@
     {
       "name": "survival_24h",
       "target": ">24h",
-      "observed": "NOT_MEASURED",
+      "observed": "BASELINE_ONLY_2026-11-10T00:36:47Z_NO_ELAPSED_24H",
       "acceptance": "two independently obtained receipts >=24 hours apart for the same recoverable source and successful restart"
     },
     {
@@ -175,6 +175,21 @@
     "independent_receiver": "HELD_RECEIVER_NOT_ESTABLISHED",
     "overnight_survival": "UNMEASURED",
     "no_new_version_when": "NO_MATERIAL_DELTA",
-    "wave_diversity": "VARY_INFORMATION_AXIS_UNLESS_REPLICATION_OR_REGRESSION_CONTROL"
+    "wave_diversity": "VARY_INFORMATION_AXIS_UNLESS_REPLICATION_OR_REGRESSION_CONTROL",
+    "observed_baseline": {
+      "id": "CoPrePinnedSourceBaseline:42729597075",
+      "observed_at_utc": "2026-11-10T00:36:47.681591+00:00",
+      "source_commit": "63b41ead8797e5a781699f32bcbc77b78bdbd7af",
+      "source_path": "CoPre.md",
+      "source_sha256": "58f8c722bfbfc34cac41189c072d2effe4b19dbbe8a37be4f8687344d6b00b9a",
+      "source_http_status": 200,
+      "run_url": "https://github.com/CoCivium/CoCivium/actions/runs/42729597075",
+      "artifact_id": 13723563953,
+      "qualification": "BASELINE_ONLY",
+      "receiver_ack": false,
+      "exactly_once_effect_handoff": false,
+      "source": "https://github.com/CoCivium/CoCivium/issues/317#issuecomment-6755455691",
+      "next_qualification": "Independent authorized read of exact pinned object after >24 elapsed hours with attributable receiver, digest and useful continuation."
+    }
   }
 }
