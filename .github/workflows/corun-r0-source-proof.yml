@@ -344,3 +344,65 @@ jobs:
           path: ${{ runner.temp }}/coprecursor-receiver/*.json
           if-no-files-found: warn
           retention-days: 7
+
+
+  handoff_relation_audit:
+    needs: [handoff_producer, handoff_receiver]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 4
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Download both scoped receipt families
+        uses: actions/download-artifact@v4
+        with:
+          pattern: coprecursor-ephemeral-*
+          path: ${{ runner.temp }}/cap-receipts
+          merge-multiple: false
+      - name: Verify cross-job relations and seven adversarial controls
+        run: |
+          python -B examples/corun_r0/handoff_relation_audit.py \
+            --capsule "$RUNNER_TEMP/cap-receipts/coprecursor-ephemeral-transport/capsule.zip" \
+            --producer-receipt "$RUNNER_TEMP/cap-receipts/coprecursor-ephemeral-transport/capsule.zip.receipt.json" \
+            --receiver-report "$RUNNER_TEMP/cap-receipts/coprecursor-ephemeral-readback-proof/receiver-readback.json" \
+            --receiver-receipt "$RUNNER_TEMP/cap-receipts/coprecursor-ephemeral-readback-proof/receipt.json" \
+            --out "$RUNNER_TEMP/handoff-relations"
+      - name: Verify graph receipts, no false provider independence or promotion
+        run: |
+          python - <<'PY'
+          import hashlib, json, os
+          from pathlib import Path
+          d = Path(os.environ["RUNNER_TEMP"]) / "handoff-relations"
+          raw = (d / "relations.json").read_bytes()
+          graph = json.loads(raw)
+          receipt = json.loads((d / "receipt.json").read_text())
+          assert hashlib.sha256(raw).hexdigest() == receipt["report_sha256"]
+          assert graph["result"] == "VERIFIED_SAME_PROVIDER_CI_GRAPH_ONLY"
+          assert graph["graph_validation"]["pass"] is True
+          assert graph["graph_validation"]["false_independent_origin"] == 0
+          assert graph["all_negative_controls_rejected"] is True
+          assert len(graph["negative_controls"]) == 7
+          assert len(graph["relations"]) == 7
+          assert graph["lifecycle_evidence"]["LANDED"] is False
+          assert graph["lifecycle_evidence"]["PICKED_UP_BY_DURABLE_RECEIVER"] is False
+          assert graph["lifecycle_evidence"]["INTEGRATED"] is False
+          assert graph["lifecycle_evidence"]["COEX"] is False
+          assert graph["ux_summary"]["state"] == "UX_ACCEPTANCE_UNPROVEN"
+          assert graph["option_set"]["execution_authority"] == "NONE"
+          assert receipt["mvp_qualified"] is False
+          assert receipt["durable_custody"] is False
+          assert receipt["independent_source_validation"] is False
+          print("PASS_GRAPH_OF_EVIDENCE_WITHOUT_CUSTODY_PROMOTION")
+          PY
+      - name: Preserve scoped relational audit
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: coprecursor-handoff-relations-proof
+          path: ${{ runner.temp }}/handoff-relations/*.json
+          if-no-files-found: warn
+          retention-days: 7
