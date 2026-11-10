@@ -71,3 +71,7 @@ Consumers should verify exact source blobs or content digests and record their *
 ## CoNuExistentialism and CoG_dSide candidate vocabulary
 
 - [40-entry CoTerms working registry](co_existential_coterms_candidates_r0.json) | [meaning and promotion guide](CO_NU_EXISTENTIALISM_TERMS_R0.md). Four groups with meanings, anti-meanings and epistemic classes. Candidate-only: does not supersede the existing 31-term curated CoLex public pilot or establish G_dSide claims.
+
+## Reciprocal inversion and generational stewardship
+
+- [CoReciprocalBenchmark+ / CoGenerationalGift+ cross-branch bridge](CO_RECIPROCAL_GENERATIONAL_BRAID_R0.md). Reuses existing, commit-pinned CoNuExistentialism candidate nodes for reciprocal challenge, backseat stewardship, and the distinct agency of younger people. Child data and device enrollment remain out of scope; reference is not external receiver pickup.
