@@ -32,7 +32,13 @@ def main():
     assert "<iframe" not in body and "<script" not in body
     assert "Needle trails through time" in chart
 
-    rows = re.findall(r"^\| (2026-10-\d{2}) \| (\d+) \| (\d+) \| (\d+) \|$", body, flags=re.M)
+    # Plain-language bullets work on narrow GitHub mobile views without a table.
+    assert not re.search(r"^\\|", body, flags=re.M), "Mobile reader reverted to a table"
+    rows = re.findall(
+        r"^- \\*\\*(2026-10-\\d{2})\\*\\*: (\\d+) passed, (\\d+) held, (\\d+) failed\\.$",
+        body,
+        flags=re.M,
+    )
     expected_dates = ["2026-10-23", "2026-10-24", "2026-10-25", "2026-10-26"]
     assert [r[0] for r in rows] == expected_dates, rows
     total = 0
