@@ -41,7 +41,7 @@ class CoBindAdversarialTests(unittest.TestCase):
                          "HELD_NO_OBSERVED_SOURCE_PROOF")
 
     def test_observed_with_exact_witness(self):
-        c = claim("OBSERVED", temporal_mode="PAST", event_at="2026-10-24T00:00:00Z",
+        c = claim("OBSERVED", temporal_mode="PAST", event_at="2026-10-24T00:00:00Z", observed_at="2026-11-10T00:00:00Z",
                   source_ref="sha:synthetic", evidence_refs=["synthetic-only"])
         a = anchor("SOURCE_WITNESS", source_ref="sha:synthetic",
                    immutable_event_at="2026-10-24T00:00:00Z")
@@ -61,6 +61,7 @@ class CoBindAdversarialTests(unittest.TestCase):
         self.assertEqual(mod.route(c, [anchor("FORECAST_BRANCH")])["state"],
                          "HELD_UNBOUND_FORECAST")
         c["issued_at"] = "2026-11-10T00:00:00Z"
+        c["target_at"] = "2026-11-11T00:00:00Z"
         self.assertEqual(mod.route(c, [anchor("FORECAST_BRANCH")])["state"],
                          "CANDIDATE_BIND_NOT_EXECUTED")
 
@@ -68,7 +69,7 @@ class CoBindAdversarialTests(unittest.TestCase):
         c = claim("OBSERVED", temporal_mode="FUTURE", source_ref="synthetic",
                   evidence_refs=["synthetic-only"])
         self.assertEqual(mod.route(c, [anchor("SOURCE_WITNESS")])["state"],
-                         "HELD_FUTURE_IS_NOT_OBSERVED")
+                         "HELD_OBSERVED_TEMPORAL_MODE")
 
     def test_counterfactual_stays_scenario(self):
         c = claim("COUNTERFACTUAL", temporal_mode="COUNTERFACTUAL")
@@ -117,6 +118,78 @@ class CoBindAdversarialTests(unittest.TestCase):
         out = mod.route(claim(), [a])
         self.assertEqual(out["state"], "HELD_NO_QUALIFIED_ANCHOR")
         self.assertIn("invalid_bounded_metrics", out["rejected"][0]["reasons"])
+
+
+    def test_past_witness_requires_frozen_anchor_time(self):
+        c = claim("OBSERVED", temporal_mode="PAST", event_at="2026-10-24T00:00:00Z",
+                  observed_at="2026-11-10T00:00:00Z", source_ref="sha:synthetic",
+                  evidence_refs=["synthetic-only"])
+        a = anchor("SOURCE_WITNESS", source_ref="sha:synthetic")
+        out = mod.route(c, [a])
+        self.assertEqual(out["state"], "HELD_NO_QUALIFIED_ANCHOR")
+        self.assertIn("missing_frozen_event_time", out["rejected"][0]["reasons"])
+
+    def test_observed_missing_observation_clock_held(self):
+        c = claim("OBSERVED", temporal_mode="PRESENT", source_ref="sha:synthetic",
+                  evidence_refs=["synthetic-only"])
+        self.assertEqual(mod.route(c, [anchor("SOURCE_WITNESS", source_ref="sha:synthetic")])["state"],
+                         "HELD_UNDATED_OBSERVATION")
+
+    def test_observed_event_cannot_follow_observation(self):
+        c = claim("OBSERVED", temporal_mode="PAST", event_at="2026-11-11T00:00:00Z",
+                  observed_at="2026-11-10T00:00:00Z", source_ref="sha:synthetic",
+                  evidence_refs=["synthetic-only"])
+        self.assertEqual(mod.route(c, [anchor("SOURCE_WITNESS", source_ref="sha:synthetic")])["state"],
+                         "HELD_INVALID_OBSERVATION_CLOCKS")
+
+    def test_forecast_needs_future_target(self):
+        c = claim("PREDICTED", temporal_mode="FUTURE", assumptions=["synthetic"],
+                  issued_at="2026-11-10T00:00:00Z", target_at="2026-11-09T00:00:00Z")
+        self.assertEqual(mod.route(c, [anchor("FORECAST_BRANCH")])["state"],
+                         "HELD_INVALID_FORECAST_CLOCKS")
+
+    def test_forecast_rejects_naive_timestamps(self):
+        c = claim("PREDICTED", temporal_mode="FUTURE", assumptions=["synthetic"],
+                  issued_at="2026-11-10T00:00:00", target_at="2026-11-11T00:00:00Z")
+        self.assertEqual(mod.route(c, [anchor("FORECAST_BRANCH")])["state"],
+                         "HELD_INVALID_FORECAST_CLOCKS")
+
+    def test_receiver_string_membership_does_not_authorize(self):
+        a = anchor(allowed_receivers="research")
+        out = mod.route(claim(receiver="sea"), [a])
+        self.assertEqual(out["state"], "HELD_NO_QUALIFIED_ANCHOR")
+        self.assertIn("receiver_not_qualified", out["rejected"][0]["reasons"])
+
+    def test_malformed_anchors_do_not_crash(self):
+        out = mod.route(claim(), [None, "research", 123])
+        self.assertEqual(out["state"], "HELD_NO_QUALIFIED_ANCHOR")
+        self.assertEqual(len(out["rejected"]), 3)
+
+    def test_missing_anchor_id_held(self):
+        a = anchor()
+        a.pop("id")
+        out = mod.route(claim(), [a])
+        self.assertEqual(out["state"], "HELD_NO_QUALIFIED_ANCHOR")
+        self.assertIn("missing_anchor_identity", out["rejected"][0]["reasons"])
+
+    def test_time_offsets_compare_instants(self):
+        c = claim("OBSERVED", temporal_mode="PAST", event_at="2026-11-09T19:00:00-05:00",
+                  observed_at="2026-11-10T00:00:01Z", source_ref="sha:synthetic",
+                  evidence_refs=["synthetic-only"])
+        a = anchor("SOURCE_WITNESS", source_ref="sha:synthetic",
+                   immutable_event_at="2026-11-10T00:00:00Z")
+        self.assertEqual(mod.route(c, [a])["state"], "CANDIDATE_BIND_NOT_EXECUTED")
+
+    def test_malformed_claim_and_anchors_held(self):
+        self.assertEqual(mod.route(None, [])["state"], "HELD_MALFORMED_INPUT")
+        self.assertEqual(mod.route({}, None)["state"], "HELD_MALFORMED_INPUT")
+
+    def test_observed_event_timestamp_malformed(self):
+        c = claim("OBSERVED", temporal_mode="PAST", event_at="yesterday",
+                  observed_at="2026-11-10T00:00:00Z", source_ref="sha:synthetic",
+                  evidence_refs=["synthetic-only"])
+        self.assertEqual(mod.route(c, [anchor("SOURCE_WITNESS")])["state"],
+                         "HELD_INVALID_OBSERVATION_CLOCKS")
 
 
 if __name__ == "__main__":
