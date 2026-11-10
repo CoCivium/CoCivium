@@ -1,0 +1,25 @@
+name: CoObject OVP capsule source tests R0
+on:
+  pull_request:
+    paths:
+      - 'examples/ovp_closure_r0/**'
+      - 'examples/coobject_capsule_r0/**'
+      - '.github/workflows/ovp-capsule-source-r0.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  test-source-only:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: OVP synthetic source closure checks
+        run: python3 -m unittest discover -s examples/ovp_closure_r0 -p 'test_*.py' -v
+      - name: CoObject offline capsule checks
+        run: python3 -m unittest discover -s examples/coobject_capsule_r0 -p 'test_*.py' -v
+      - name: Fresh-process offline capsule demonstration
+        run: python3 examples/coobject_capsule_r0/demo_coobject_capsule_r0.py
