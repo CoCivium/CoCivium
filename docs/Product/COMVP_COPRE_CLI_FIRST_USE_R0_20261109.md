@@ -26,6 +26,14 @@ Input is the current public issue #403 (not a synthetic paragraph). No human pas
 
 No private or child-facing state may be passed through this public demonstration. Public issue text is untrusted **data**; it is never executed or embedded verbatim as instructions. Its content digest is a byte-level consistency anchor **for the observed two reads**, not a signed GitHub historical version or proof of global currentness.
 
+## Two-read agreement is not freshness
+
+The R0 CLI deliberately distinguishes the **same data returned twice** from a **fresh, authenticated observation**. Its public JSON output now reports `source_content_consistency=TWO_READS_MATCHED`, `source_freshness=UNPROVEN_TWO_READS_ARE_NOT_FRESHNESS`, and `source_origin_independence=UNPROVEN_SAME_PUBLIC_API`. The `source_last_edit_age_class` is based on the public issue's `updated_at` timestamp and local execution time; it describes **age since last edit**, not API-cache freshness, authenticated time, or an independent receiver's successful read. Unparseable and clock-conflicting timestamps are classified without being treated as fresh.
+
+The packed continuation's `observer` and `failure_domain` are now labeled **unattested CLI executor** rather than claiming every local run was GitHub Actions. The unchanged, pinned CoPre donor compiler still internally requires `source_currentness=VERIFIED` to compile its **content-consistent representation**. That legacy internal gate must not be interpreted as an externally attested freshness or independence proof; the explicit exported freshness field is **UNPROVEN**. Donor source was not rewritten, and stronger origin/freshness evidence remains an independent promotion requirement.
+
+The separate pinned consumer test now injects a **stale-but-identical pair of issue records** and an unparseable time. It requires the record to preserve consistency without promoting freshness or observer identity. Passing those tests is source-contract evidence only. `TASK_MVP`, `receiver_ack`, X2 installation, product release and CoEx remain unproven.
+
 ### What counts as MVP
 
 **SOURCE_VERIFIED:** real public issue fetched reproducibly, exact scoped source identity and outputs, negative controls pass.
