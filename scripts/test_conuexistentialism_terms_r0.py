@@ -31,7 +31,7 @@ class CandidateTest(unittest.TestCase):
     def test_gdside_explicit_epistemic_boundary(self):
         self.assertIn("G_D_SIDE_NE_EMPIRICAL_PROOF",self.m["epistemic_boundaries"])
         self.assertIn("FINITUDE_NE_DEATH_PREFERENCE",self.m["epistemic_boundaries"])
-        self.assertIn("NOT CANON",self.doc)
+        self.assertIn("Not CoLex canon",self.doc)
     def test_existing_source_files(self):
         for path in self.m["source_refs"]:
             self.assertTrue((ROOT/path).is_file(),path)
