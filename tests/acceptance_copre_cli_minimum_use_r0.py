@@ -91,17 +91,25 @@ assert module.sha(core) == report["pack_sha256"]
 stale = dict(issue, updated_at="2020-01-01T00:00:00Z")
 stale_report = module.build_report(stale, dict(stale))
 assert stale_report["status"] == "SOURCE_TASK_CLI_GENERATED_ONLY"
-assert stale_report["source_last_edit_age_class"] == "LAST_EDIT_OLDER_THAN_24H"
+assert stale_report["source_issue_activity_age_class"] == "ISSUE_ACTIVITY_OLDER_THAN_24H"
 assert stale_report["source_freshness"].startswith("UNPROVEN")
 assert stale_report["observer_attestation"] == "UNPROVEN_LOCAL_OR_CI"
 # Invalid timestamp strings remain distinct from source agreement.
 unparsed = dict(issue, updated_at="not-a-time")
 unparsed_report = module.build_report(unparsed, dict(unparsed))
-assert unparsed_report["source_last_edit_age_class"] == "UNPARSEABLE_LAST_EDIT"
+assert unparsed_report["source_issue_activity_age_class"] == "UNPARSEABLE_ISSUE_ACTIVITY_TIME"
 assert unparsed_report["source_freshness"].startswith("UNPROVEN")
 
 changed = dict(issue, updated_at="2026-11-09T11:15:00Z")
-assert module.build_report(issue, changed) == {
+activity_only = module.build_report(issue, changed)
+assert activity_only["status"] == "SOURCE_TASK_CLI_GENERATED_ONLY"
+assert activity_only["source_revision"] == report["source_revision"]
+assert activity_only["source_activity_churn_between_reads"] == "ISSUE_ACTIVITY_CHANGED_TASK_UNCHANGED"
+assert activity_only["source_freshness"].startswith("UNPROVEN")
+assert activity_only["source_updated_at"] == changed["updated_at"]
+# A meaningful body change, unlike comment/activity churn, must fail closed.
+changed_body = dict(issue, body=issue["body"] + "\nCoMVP+ changed task instructions")
+assert module.build_report(issue, changed_body) == {
     "status": "HOLD", "reason": "SOURCE_CHANGED_BETWEEN_READS",
     "effects_performed": 0,
 }
