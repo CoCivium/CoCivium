@@ -70,16 +70,18 @@ class ReceiverNativeViews(unittest.TestCase):
             root = Path(tmp) / "handoff"
             receipt = build_portable_packet(root)
             self.assertEqual(receipt["state"], "LOCAL_PACKET_BUILT_READBACK_NOT_RECEIVER_PICKUP")
-            self.assertEqual(receipt["file_count"], 4)
+            self.assertEqual(receipt["file_count"], 5)
             self.assertEqual(receipt["external_effects"], 0)
             source = json.loads((root / "receipt.json").read_text(encoding="utf-8"))
             self.assertEqual(source["work_id"], self.obj["work_id"])
             self.assertEqual(source["source"]["git_blob_sha"], git_blob_sha(self.source))
             self.assertIsNone(source["receiver_readproof"])
+            self.assertEqual((root / "source/copre-r1-source.json").read_bytes(), self.source)
+            self.assertEqual(source["readback"]["source"]["git_blob_sha"], git_blob_sha(self.source))
             self.assertEqual(source["lifecycle"], "TEMPORARY_CI_PREVIEW_NOT_DURABLE_RECEIVER_LANDING")
             self.assertEqual(source["effect_authority"], "NONE")
             self.assertIn("Next:", (root / "README.md").read_text(encoding="utf-8"))
-            for role in ("synth", "bio", "front_door"):
+            for role in ("source", "synth", "bio", "front_door"):
                 observed = source["readback"][role]
                 output_bytes = (root / observed["path"]).read_bytes()
                 self.assertEqual(hashlib.sha256(output_bytes).hexdigest(), observed["sha256"])
