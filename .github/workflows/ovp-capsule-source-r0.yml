@@ -103,3 +103,28 @@ jobs:
           path: ${{ runner.temp }}/witness_result/witness.json
           retention-days: 7
           if-no-files-found: error
+  portable-browser-receiver:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install pinned browser UI test driver
+        run: python3 -m pip install --disable-pip-version-check playwright==1.56.0
+      - name: Chromium native WebCrypto exact-file E2E test
+        env:
+          COOBJECT_BROWSER_MODE: native
+        run: python3 examples/coobject_capsule_r0/portable_browser_r0/test_browser.py
+      - name: Preserve synthetic browser QA and mobile/desktop screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: coobject-portable-browser-qa-r0
+          path: |
+            examples/coobject_capsule_r0/portable_browser_r0/browser_qa.json
+            examples/coobject_capsule_r0/portable_browser_r0/desktop_portable_qa.png
+            examples/coobject_capsule_r0/portable_browser_r0/mobile_portable_qa.png
+          retention-days: 7
+          if-no-files-found: warn
