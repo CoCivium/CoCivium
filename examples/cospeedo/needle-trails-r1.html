@@ -41,6 +41,15 @@ footer{border-top:1px solid #34415b;margin-top:34px;padding-top:20px;color:#aebe
 .journey a{font-weight:650}
 @media(max-width:620px){.journey-track{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:20px}}
 
+
+/* An honest historical activity scrubber: archive composition, not velocity or useful benefit. */
+.history-picker{border:1px solid #45647a;background:#17243b;border-radius:16px;padding:18px;margin:18px 0}
+.history-picker h3{font-size:1.12rem;margin:0 0 9px}.history-picks{display:flex;gap:9px;flex-wrap:wrap;margin:12px 0}
+.history-picks button{flex:1 1 100px;min-width:90px;padding:9px 7px}.history-picks button[aria-pressed="true"]{background:#276b63;border:2px solid #8df3d4}
+.history-stack{display:flex;height:26px;border-radius:9px;overflow:hidden;background:#344057;margin:12px 0;border:1px solid #8592a8}
+.history-stack span{display:block;min-width:0;transition:width .12s linear}
+.history-stack .passes{background:#72ead3}.history-stack .helds{background:#ffca87}.history-stack .fails{background:#ff8c9b}
+.history-readout{font-size:1.04rem;font-weight:650;line-height:1.5}.history-footnote{color:#afc0d7;font-size:.88rem;line-height:1.6}
 </style></head><body><main>
 <header><div class="eyebrow">CoCivium / CoAll · CoSpeedo NeedleTrails · R1</div>
 <h1>What actually got better?</h1>
@@ -90,6 +99,20 @@ footer{border-top:1px solid #34415b;margin-top:34px;padding-top:20px;color:#aebe
 <section id="activity" aria-labelledby="activity-title">
 <h2 id="activity-title">Needle trails through time</h2>
 <p>These are actual <strong>recorded evaluation events</strong> from an October ledger. They are <strong>not</strong> measurements of how many people we helped or how much time we saved. The plot deliberately begins October 23: October 20–22 have no recorded rows, which means unknown coverage, not proof of zero activity.</p>
+
+<div class="history-picker" id="history-picker" aria-labelledby="history-picker-title">
+<h3 id="history-picker-title">Explore a day from the evidence archive</h3>
+<p class="meta">Select a date to see the share of recorded checks that passed, remained held or failed. This is a historical workload breakdown, <strong>not</strong> a speedometer for human benefit.</p>
+<div class="history-picks" role="group" aria-label="Select a historical day">
+<button type="button" data-history-day="2026-10-23" aria-pressed="true">Oct 23</button>
+<button type="button" data-history-day="2026-10-24" aria-pressed="false">Oct 24</button>
+<button type="button" data-history-day="2026-10-25" aria-pressed="false">Oct 25</button>
+<button type="button" data-history-day="2026-10-26" aria-pressed="false">Oct 26</button>
+</div>
+<div class="history-stack" role="img" aria-label="October 23: 38 passed, 16 held, 10 failed, total 64 checks"><span class="passes" style="width:59.375%"></span><span class="helds" style="width:25%"></span><span class="fails" style="width:15.625%"></span></div>
+<p class="history-readout" id="history-readout" role="status" aria-live="polite">October 23: 38 passed · 16 held · 10 failed (64 recorded checks)</p>
+<p class="history-footnote">The relative shares change when you choose a day; counts remain exact. Fewer checks on another day may only mean less activity. October 20–22 had no captured rows and are intentionally not shown as zeros.</p>
+</div>
 <div class="legend" aria-label="Needle meanings"><span><i style="background:#72ead3"></i>Pass: bounded check</span><span><i style="background:#ffca87"></i>Held: unresolved</span><span><i style="background:#ff8c9b"></i>Fail: check failed</span></div>
 <svg class="needle" role="img" aria-labelledby="needle-title needle-desc" viewBox="0 0 620 255"><title id="needle-title">Recorded evaluation outcomes across four October dates</title><desc id="needle-desc">Line chart showing recorded PASS, HELD and FAIL counts from October 23 to 26, 2026. Pass: 38, 40, 3, 3. Held: 16, 26, 2, 3. Fail: 10, 3, 0, 1. These counts do not measure usefulness. October 20 to 22 had no observed ledger entries and are not plotted as zero.</desc><g fill="none" stroke="#506280" stroke-width="1"><path d="M70 60H545M70 125H545M70 190H545"/></g><g fill="#b8c7df" font-size="15"><text x="22" y="65">40</text><text x="22" y="130">20</text><text x="30" y="195">0</text><text x="85" y="227" text-anchor="middle">10-23</text><text x="225" y="227" text-anchor="middle">10-24</text><text x="365" y="227" text-anchor="middle">10-25</text><text x="505" y="227" text-anchor="middle">10-26</text></g><polyline points="85,66.5 225,60 365,180.25 505,180.25" fill="none" stroke="#72ead3" stroke-width="4"  stroke-linecap="round" stroke-linejoin="round"/><circle cx="85" cy="66.5" r="5.5" fill="#72ead3" stroke="#111a30" stroke-width="2"/><circle cx="225" cy="60.0" r="5.5" fill="#72ead3" stroke="#111a30" stroke-width="2"/><circle cx="365" cy="180.3" r="5.5" fill="#72ead3" stroke="#111a30" stroke-width="2"/><circle cx="505" cy="180.3" r="5.5" fill="#72ead3" stroke="#111a30" stroke-width="2"/><polyline points="85,138 225,105.5 365,183.5 505,180.25" fill="none" stroke="#ffca87" stroke-width="4" stroke-dasharray="8 6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="85" cy="138.0" r="5.5" fill="#ffca87" stroke="#111a30" stroke-width="2"/><circle cx="225" cy="105.5" r="5.5" fill="#ffca87" stroke="#111a30" stroke-width="2"/><circle cx="365" cy="183.5" r="5.5" fill="#ffca87" stroke="#111a30" stroke-width="2"/><circle cx="505" cy="180.3" r="5.5" fill="#ffca87" stroke="#111a30" stroke-width="2"/><polyline points="85,157.5 225,180.25 365,190 505,186.75" fill="none" stroke="#ff8c9b" stroke-width="4" stroke-dasharray="2 6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="85" cy="157.5" r="5.5" fill="#ff8c9b" stroke="#111a30" stroke-width="2"/><circle cx="225" cy="180.3" r="5.5" fill="#ff8c9b" stroke="#111a30" stroke-width="2"/><circle cx="365" cy="190.0" r="5.5" fill="#ff8c9b" stroke="#111a30" stroke-width="2"/><circle cx="505" cy="186.8" r="5.5" fill="#ff8c9b" stroke="#111a30" stroke-width="2"/><text x="307" y="250" text-anchor="middle" fill="#aabbd6" font-size="13">October 2026 · ledger activity only</text></svg>
 <div class="tablewrap"><table><caption>Exact archived daily counts, source window October 23–26, 2026</caption><thead><tr><th scope="col">Day (UTC)</th><th scope="col">Pass</th><th scope="col">Held</th><th scope="col">Fail</th><th scope="col">Total</th></tr></thead><tbody>
@@ -108,4 +131,8 @@ footer{border-top:1px solid #34415b;margin-top:34px;padding-top:20px;color:#aebe
 </main><script>
 const b=document.querySelector("#explain"),d=document.querySelector("#explain-details");
 b.addEventListener("click",()=>{const on=b.getAttribute("aria-expanded")!=="true";b.setAttribute("aria-expanded",String(on));d.classList.toggle("open",on);b.textContent=on?"Hide gauge explanation":"Show how the gauge works";});
+
+const historyCounts={"2026-10-23":[38,16,10],"2026-10-24":[40,26,3],"2026-10-25":[3,2,0],"2026-10-26":[3,3,1]};
+const picker=document.querySelector("#history-picker");
+if(picker){const buttons=[...picker.querySelectorAll("[data-history-day]")],segments=[...picker.querySelectorAll(".history-stack span")],stack=picker.querySelector(".history-stack"),readout=picker.querySelector("#history-readout");buttons.forEach(btn=>btn.addEventListener("click",()=>{const day=btn.getAttribute("data-history-day"),counts=historyCounts[day];if(!counts)return;const total=counts.reduce((a,b)=>a+b,0);buttons.forEach(b=>b.setAttribute("aria-pressed",String(b===btn)));segments.forEach((seg,i)=>{seg.style.width=(counts[i]/total*100)+"%";});const date=new Date(day+"T00:00:00Z").toLocaleDateString("en-US",{month:"long",day:"numeric",timeZone:"UTC"});const message=date+": "+counts[0]+" passed · "+counts[1]+" held · "+counts[2]+" failed ("+total+" recorded checks)";readout.textContent=message;stack.setAttribute("aria-label",message);}));}
 </script></body></html>
