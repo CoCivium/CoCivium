@@ -48,9 +48,20 @@ class PulseReadbackTests(unittest.TestCase):
         self.source = self.root / "download"
         self.source.mkdir()
         self.dest = self.root / "receiver" / "readback.json"
+        self.co_pre = self.root / "CoPre.md"
+        self.co_pre.write_bytes(b"synthetic public CoPre fixture\\n")
+        self.source_sha = digest(self.co_pre.read_bytes())
+        self.source_workid = "CoPre:source-integrity:R0"
+        self.source_result_sha = digest(b"synthetic completed source receipt")
+        witness = {
+            "state": "CI_LOCAL_SOURCE_WORKID_REPLAY_VERIFIED",
+            "source_sha256": self.source_sha, "work_id": self.source_workid,
+            "local_result_sha256": self.source_result_sha,
+            "independent_receiver_ack": False, "external_effect_verified": False
+        }
         hashes = {}
         for name in EXPECTED_LOGS:
-            raw = ("CI synthetic " + name + "\n").encode()
+            raw = (json.dumps(witness, sort_keys=True) + "\n").encode() if name == "source-check" else ("CI synthetic " + name + "\n").encode()
             (self.source / (name + ".log")).write_bytes(raw)
             hashes[name] = digest(raw)
         audit = b'{"scope":"synthetic-schedule-audit"}\n'
@@ -78,11 +89,13 @@ class PulseReadbackTests(unittest.TestCase):
         )
 
     def test_valid_readback_is_scoped_and_not_external_ack(self):
-        result = observe(self.source, context())
+        result = observe(self.source, context(), self.co_pre)
         self.assertEqual(result["verified_log_count"], 10)
         self.assertEqual(result["state"], "GITHUB_JOB_BOUNDARY_ARTIFACT_HASH_READBACK")
         self.assertEqual(result["work_id"], "CoGoAll.PulseReceipt.12345.a1")
-        self.assertEqual(result["due_work_selection"], "NOT_TESTED")
+        self.assertEqual(result["due_work_selection"], "CI_LOCAL_SOURCE_WORKID_REPLAY_VERIFIED")
+        self.assertEqual(result["source_work_id"], self.source_workid)
+        self.assertEqual(result["source_sha256"], self.source_sha)
         self.assertEqual(result["real_worker_effect"], "NOT_TESTED")
         self.assertIs(result["external_receiver_ack"], False)
         self.assertEqual(result["provider_failure_domain"], "SAME_GITHUB_ACTIONS")
@@ -93,7 +106,8 @@ class PulseReadbackTests(unittest.TestCase):
     def test_actual_subprocess_cli_uses_os_environ(self):
         cmd = [sys.executable, "-B",
                str(ROOT / "examples" / "cotalkitout" / "scheduled_pulse_readback_r0.py"),
-               "--source-dir", str(self.source), "--receipt", str(self.dest)]
+               "--source-dir", str(self.source), "--receipt", str(self.dest),
+               "--source-path", str(self.co_pre)]
         proc = subprocess.run(
             cmd, env={**os.environ, **context()}, text=True,
             capture_output=True, timeout=10
@@ -123,6 +137,31 @@ class PulseReadbackTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "HOLD_LOG_DIGEST_MISMATCH"):
             observe(self.source, context())
 
+    def test_receiver_rejects_different_copre_source_bytes(self):
+        self.co_pre.write_bytes(b"changed source bytes")
+        with self.assertRaisesRegex(ValueError, "HOLD_RECEIVER_SOURCE_DIGEST_MISMATCH"):
+            observe(self.source, context(), self.co_pre)
+
+    def test_receiver_rejects_forged_workid_even_when_log_hash_matches(self):
+        witness = json.loads((self.source / "source-check.log").read_text())
+        witness["work_id"] = "OTHER_WORK"
+        raw = (json.dumps(witness, sort_keys=True) + "\\n").encode()
+        (self.source / "source-check.log").write_bytes(raw)
+        self.record["log_sha256"]["source-check"] = digest(raw)
+        self.save()
+        with self.assertRaisesRegex(ValueError, "HOLD_SOURCE_CHECK_WITNESS_FIELDS"):
+            observe(self.source, context(), self.co_pre)
+
+    def test_receiver_rejects_claimed_external_ack_with_matching_hash(self):
+        witness = json.loads((self.source / "source-check.log").read_text())
+        witness["independent_receiver_ack"] = True
+        raw = (json.dumps(witness, sort_keys=True) + "\\n").encode()
+        (self.source / "source-check.log").write_bytes(raw)
+        self.record["log_sha256"]["source-check"] = digest(raw)
+        self.save()
+        with self.assertRaisesRegex(ValueError, "HOLD_SOURCE_CHECK_WITNESS_FIELDS"):
+            observe(self.source, context(), self.co_pre)
+
     def test_missing_log_hash_fails_closed(self):
         del self.record["log_sha256"]["decision"]
         self.save()
@@ -148,27 +187,27 @@ class PulseReadbackTests(unittest.TestCase):
 
     def test_wrong_sha_fails_closed(self):
         with self.assertRaisesRegex(ValueError, "HOLD_WRONG_RUN_OR_SOURCE"):
-            observe(self.source, context(GITHUB_SHA="b"*40))
+            observe(self.source, context(GITHUB_SHA="b"*40), self.co_pre)
 
     def test_wrong_run_attempt_fails_closed(self):
         with self.assertRaisesRegex(ValueError, "HOLD_WRONG_RUN_OR_SOURCE"):
-            observe(self.source, context(GITHUB_RUN_ATTEMPT="2"))
+            observe(self.source, context(GITHUB_RUN_ATTEMPT="2"), self.co_pre)
 
     def test_wrong_job_identity_fails_closed(self):
         with self.assertRaisesRegex(ValueError, "HOLD_NOT_RECEIVER_JOB"):
-            observe(self.source, context(GITHUB_JOB="proof"))
+            observe(self.source, context(GITHUB_JOB="proof"), self.co_pre)
 
     def test_wrong_event_fails_closed(self):
         with self.assertRaisesRegex(ValueError, "HOLD_WRONG_RUN_OR_SOURCE"):
-            observe(self.source, context(GITHUB_EVENT_NAME="push"))
+            observe(self.source, context(GITHUB_EVENT_NAME="push"), self.co_pre)
 
     def test_unqualified_event_fails_closed(self):
         with self.assertRaisesRegex(ValueError, "HOLD_EVENT_NOT_QUALIFIED"):
-            observe(self.source, context(GITHUB_EVENT_NAME="pull_request"))
+            observe(self.source, context(GITHUB_EVENT_NAME="pull_request"), self.co_pre)
 
     def test_missing_environment_fails_closed(self):
         with self.assertRaisesRegex(ValueError, "HOLD_GITHUB_CONTEXT_MISSING"):
-            observe(self.source, {})
+            observe(self.source, {}, self.co_pre)
 
     def test_source_tests_not_passed_fails_closed(self):
         self.record["outcome"] = "failure"
