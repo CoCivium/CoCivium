@@ -1,0 +1,40 @@
+name: CoPriMath typed notation bridge R0
+
+on:
+  pull_request:
+    paths:
+      - 'scripts/CoPriMathNotationBridgeR0.py'
+      - 'tests/test_coprimath_notation_bridge_r0.py'
+      - 'docs/Architecture/COPRIMATH_NOTATION_CROSSWALK_R0_20261110.md'
+      - '.github/workflows/coprimath-notation-bridge-r0.yml'
+  push:
+    paths:
+      - 'scripts/CoPriMathNotationBridgeR0.py'
+      - 'tests/test_coprimath_notation_bridge_r0.py'
+      - 'docs/Architecture/COPRIMATH_NOTATION_CROSSWALK_R0_20261110.md'
+      - '.github/workflows/coprimath-notation-bridge-r0.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  typed-source-only:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11', '3.13']
+    steps:
+      - name: Checkout pinned source
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Use CPython
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Check CoPriMath standard-library bridge
+        run: python -B -m unittest discover -s tests -p 'test_coprimath_notation_bridge_r0.py' -v
+      - name: Emit one bounded synthetic demonstration
+        run: python -B scripts/CoPriMathNotationBridgeR0.py
