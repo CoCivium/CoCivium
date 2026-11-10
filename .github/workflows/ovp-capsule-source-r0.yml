@@ -23,3 +23,49 @@ jobs:
         run: python3 -m unittest discover -s examples/coobject_capsule_r0 -p 'test_*.py' -v
       - name: Fresh-process offline capsule demonstration
         run: python3 examples/coobject_capsule_r0/demo_coobject_capsule_r0.py
+
+  crossjob-producer:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Test strict cross-job handoff schema and negative cases
+        run: python3 -m unittest discover -s examples/coobject_capsule_r0 -p 'test_cross_job_handoff_r0.py' -v
+      - name: Prepare public-synthetic CoObject capsule
+        run: python3 examples/coobject_capsule_r0/cross_job_handoff_r0.py produce "$RUNNER_TEMP/coobject_handoff"
+      - name: Upload only the bounded capsule and producer envelope
+        uses: actions/upload-artifact@v4
+        with:
+          name: coobject-synthetic-handoff-r0
+          path: ${{ runner.temp }}/coobject_handoff/
+          retention-days: 7
+          if-no-files-found: error
+  crossjob-receiver:
+    needs: [crossjob-producer]
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Download producer capsule into a distinct runner job
+        uses: actions/download-artifact@v4
+        with:
+          name: coobject-synthetic-handoff-r0
+          path: ${{ runner.temp }}/coobject_receiver_in
+      - name: Verify exact source and reconstruct after deliberate local copy loss
+        run: |
+          mkdir -p "$RUNNER_TEMP/coobject_readback"
+          python3 examples/coobject_capsule_r0/cross_job_handoff_r0.py consume "$RUNNER_TEMP/coobject_receiver_in" --receipt "$RUNNER_TEMP/coobject_readback/receipt.json"
+          python3 -m json.tool "$RUNNER_TEMP/coobject_readback/receipt.json" > /dev/null
+      - name: Preserve synthetic readback, not a user acceptance credential
+        uses: actions/upload-artifact@v4
+        with:
+          name: coobject-synthetic-readback-r0
+          path: ${{ runner.temp }}/coobject_readback/receipt.json
+          retention-days: 7
+          if-no-files-found: error
