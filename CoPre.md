@@ -24,6 +24,8 @@ The [source-bound CoSeed/CoPath machine graph](ai/copre-seed-path-federation-r0.
 
 ## Exact public companions
 
+- [CoLatch R0 visible Orb / proof gauge](examples/colatch/colatch-proof-gauge-r0.html) and [seven-gate candidate contract](ai/colatch-ready-cycle-r0-20261110.json): public source only; no independent cross-session sync proven.
+
 - [Golden-braid source/media/retro/future bridge](ai/continuity-golden-braid-bridge-r0-20261109.json): typed reciprocal discovery with distinct evidence, consent and merge boundaries.
 
 - [Interactive CoHuman living-continuity hero prototype](examples/cohuman/living-continuity-r0.html): original vector illustration, real internal source links, reduced-motion support and quiet preference; source prototype, not deployed website.
