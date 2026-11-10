@@ -120,22 +120,22 @@ class PulseReadbackTests(unittest.TestCase):
     def test_changed_log_fails_closed(self):
         (self.source / "decision.log").write_text("attacker rewrote")
         with self.assertRaisesRegex(ValueError, "HOLD_LOG_DIGEST_MISMATCH"):
-            observe(self.source, context())
+            observe(self.source, context(), self.co_pre)
 
     def test_missing_log_fails_closed(self):
         (self.source / "decision.log").unlink()
         with self.assertRaisesRegex(ValueError, "HOLD_MISSING_OR_LINKED_ARTIFACT"):
-            observe(self.source, context())
+            observe(self.source, context(), self.co_pre)
 
     def test_source_check_witness_missing_fails_closed(self):
         (self.source / "source-check.log").unlink()
         with self.assertRaisesRegex(ValueError, "HOLD_MISSING_OR_LINKED_ARTIFACT"):
-            observe(self.source, context())
+            observe(self.source, context(), self.co_pre)
 
     def test_source_check_witness_tampering_fails_closed(self):
         (self.source / "source-check.log").write_text("not the witnessed source")
         with self.assertRaisesRegex(ValueError, "HOLD_LOG_DIGEST_MISMATCH"):
-            observe(self.source, context())
+            observe(self.source, context(), self.co_pre)
 
     def test_receiver_rejects_different_copre_source_bytes(self):
         self.co_pre.write_bytes(b"changed source bytes")
@@ -166,24 +166,24 @@ class PulseReadbackTests(unittest.TestCase):
         del self.record["log_sha256"]["decision"]
         self.save()
         with self.assertRaisesRegex(ValueError, "HOLD_MISSING_LOG_IDENTITIES"):
-            observe(self.source, context())
+            observe(self.source, context(), self.co_pre)
 
     def test_changed_schedule_audit_fails_closed(self):
         (self.source / "schedule-audit.json").write_bytes(b"changed")
         with self.assertRaisesRegex(ValueError, "HOLD_CADENCE_DIGEST_MISMATCH"):
-            observe(self.source, context())
+            observe(self.source, context(), self.co_pre)
 
     def test_false_receiver_ack_field_fails_closed(self):
         self.record["external_receiver_ack"] = True
         self.save()
         with self.assertRaisesRegex(ValueError, "HOLD_UNEXPECTED_PROOF_FIELDS"):
-            observe(self.source, context())
+            observe(self.source, context(), self.co_pre)
 
     def test_modified_nonclaims_fails_closed(self):
         self.record["claims"].append("VERIFIED_EXTERNAL_ACK")
         self.save()
         with self.assertRaisesRegex(ValueError, "HOLD_AUTHORITY_OR_ACK_INFLATION"):
-            observe(self.source, context())
+            observe(self.source, context(), self.co_pre)
 
     def test_wrong_sha_fails_closed(self):
         with self.assertRaisesRegex(ValueError, "HOLD_WRONG_RUN_OR_SOURCE"):
@@ -213,13 +213,13 @@ class PulseReadbackTests(unittest.TestCase):
         self.record["outcome"] = "failure"
         self.save()
         with self.assertRaisesRegex(ValueError, "HOLD_TESTS_NOT_PASSED"):
-            observe(self.source, context())
+            observe(self.source, context(), self.co_pre)
 
     def test_non_utc_timestamp_fails_closed(self):
         self.record["observed_at_utc"] = "2026-11-09T03:22:17-05:00"
         self.save()
         with self.assertRaisesRegex(ValueError, "HOLD_NOT_UTC"):
-            observe(self.source, context())
+            observe(self.source, context(), self.co_pre)
 
     def test_symlink_log_fails_closed(self):
         alternate = self.root / "secret"
@@ -231,10 +231,10 @@ class PulseReadbackTests(unittest.TestCase):
         except (OSError, NotImplementedError):
             self.skipTest("symlink unavailable")
         with self.assertRaisesRegex(ValueError, "HOLD_MISSING_OR_LINKED_ARTIFACT"):
-            observe(self.source, context())
+            observe(self.source, context(), self.co_pre)
 
     def test_no_clobber_existing_receiver(self):
-        readback = observe(self.source, context())
+        readback = observe(self.source, context(), self.co_pre)
         write_receipt(readback, self.dest)
         before = self.dest.read_bytes()
         with self.assertRaises(FileExistsError):
@@ -244,12 +244,12 @@ class PulseReadbackTests(unittest.TestCase):
     def test_missing_rebound_audit_is_held(self):
         (self.source / "rebound-report.json").unlink()
         with self.assertRaisesRegex(ValueError, "HOLD_MISSING_OR_LINKED_ARTIFACT"):
-            observe(self.source, context())
+            observe(self.source, context(), self.co_pre)
 
     def test_altered_rebound_report_is_held(self):
         (self.source / "rebound-report.json").write_bytes(b"changed")
         with self.assertRaisesRegex(ValueError, "HOLD_REBOUND_DIGEST_MISMATCH"):
-            observe(self.source, context())
+            observe(self.source, context(), self.co_pre)
 
     def test_invalid_rebound_state_is_held_even_with_matching_digest(self):
         raw = json.dumps({"schema": "CoAll.ReboundIntegrity.R0",
@@ -259,25 +259,25 @@ class PulseReadbackTests(unittest.TestCase):
         self.record["rebound_audit_sha256"] = digest(raw)
         self.save()
         with self.assertRaisesRegex(ValueError, "HOLD_REBOUND_REPORT_NOT_VALID"):
-            observe(self.source, context())
+            observe(self.source, context(), self.co_pre)
 
     def test_legacy_schema_holds_in_new_receiver(self):
         self.record["schema"] = "cogoall-proof-pulse-r0"
         self.save()
         with self.assertRaisesRegex(ValueError, "HOLD_PROOF_SCHEMA"):
-            observe(self.source, context())
+            observe(self.source, context(), self.co_pre)
 
     def test_missing_rebound_hash_field_fails_closed(self):
         del self.record["rebound_audit_sha256"]
         self.save()
         with self.assertRaisesRegex(ValueError, "HOLD_UNEXPECTED_PROOF_FIELDS"):
-            observe(self.source, context())
+            observe(self.source, context(), self.co_pre)
 
     def test_new_rebound_log_hash_missing_fails_closed(self):
         del self.record["log_sha256"]["rebound-links"]
         self.save()
         with self.assertRaisesRegex(ValueError, "HOLD_MISSING_LOG_IDENTITIES"):
-            observe(self.source, context())
+            observe(self.source, context(), self.co_pre)
 
 
 if __name__ == "__main__":
