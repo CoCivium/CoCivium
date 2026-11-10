@@ -24,8 +24,8 @@ from scripts.CoObjectAgencyTaskR0 import (
 )
 
 SCHEMA = "CoGoAll.OneDueSourceTask.R0"
-RUN = re.compile(r"[1-9][0-9]*\\Z")
-HEAD = re.compile(r"[a-f0-9]{40}\\Z")
+RUN = re.compile(r"[1-9][0-9]*\Z")
+HEAD = re.compile(r"[a-f0-9]{40}\Z")
 MAX_JSON = 32768
 MAX_DB = 2_000_000
 CHECKPOINT_FIELDS = {
