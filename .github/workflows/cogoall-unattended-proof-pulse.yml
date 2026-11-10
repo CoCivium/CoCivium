@@ -36,6 +36,7 @@ concurrency:
   cancel-in-progress: false
 jobs:
   proof:
+    if: github.event_name != 'pull_request'
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
@@ -147,6 +148,7 @@ jobs:
           retention-days: 30
 
   seed24h-qualification:
+    if: github.event_name != 'pull_request'
     # Reuse the existing hourly pulse. This observes historical source bytes,
     # not runtime, cross-provider pickup, or scheduled cadence guarantees.
     runs-on: ubuntu-latest
