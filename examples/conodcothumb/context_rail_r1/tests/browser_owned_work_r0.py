@@ -81,13 +81,13 @@ def main():
                 page.locator("#workPreserve").click()
                 require(page.locator("#workState").inner_text() == "COMMITTED_BROWSER_LOCAL",
                         "FIRST_WRITE_NOT_COMMITTED")
-                before = page.evaluate("localStorage.getItem(arguments[0])", STORAGE_KEY)
+                before = page.evaluate("(key) => localStorage.getItem(key)", STORAGE_KEY)
                 require(before is not None, "WORKID_NOT_IN_BROWSER_STORE")
                 for _ in range(9):
                     page.locator("#workPreserve").click()
                     require(page.locator("#workState").inner_text() == "DUPLICATE_SUPPRESSED",
                             "DUPLICATE_WRITE_NOT_SUPPRESSED")
-                require(page.evaluate("localStorage.getItem(arguments[0])", STORAGE_KEY) == before,
+                require(page.evaluate("(key) => localStorage.getItem(key)", STORAGE_KEY) == before,
                         "DUPLICATE_CHANGED_EXACT_RECORD")
                 events.extend(["EXPLICIT_STORE", "NINE_DUPLICATES_SUPPRESSED"])
             finally:
@@ -103,7 +103,7 @@ def main():
                 content = page.locator("#workNarrative").inner_text()
                 for term in ("Ready Cycle", "Prior decisions:", "Blockers:", "Next:", "browser"):
                     require(term in content, "MISSING_RECOVERED_FIELD:" + term)
-                require(page.evaluate("localStorage.getItem(arguments[0])", STORAGE_KEY) == before,
+                require(page.evaluate("(key) => localStorage.getItem(key)", STORAGE_KEY) == before,
                         "RESTART_CHANGED_RECORD")
                 events.append("CHROMIUM_PROCESS_RESTART_RECOVERED")
 
@@ -121,7 +121,7 @@ def main():
                         "MIDDLE_CLICK_NOT_NATIVE")
                 require(page.locator("#workPreserve").is_disabled(),
                         "NATIVE_INPUT_GRANTED_STORAGE")
-                require(page.evaluate("localStorage.getItem(arguments[0])", STORAGE_KEY) == before,
+                require(page.evaluate("(key) => localStorage.getItem(key)", STORAGE_KEY) == before,
                         "DENIED_INPUT_CHANGED_RECORD")
                 events.append("PRIVACY_AND_NATIVE_PASS_THROUGH")
 
