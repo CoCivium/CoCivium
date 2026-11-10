@@ -25,9 +25,9 @@ def main():
     assert "not a live dashboard" in body.lower()
     assert "not yet proven" in body.lower()
     assert "unknown coverage" in body.lower()
-    assert "Human" in body and "receiver" in body
+    assert "human outcome baseline" in body.lower() and "receiver" in body.lower()
     assert "No automatic refresh" in body
-    assert "2026-10-20" in body
+    assert "October 20–22 have no captured ledger rows" in body
     assert "42744256246" in body and "42750710011" in body
     assert "<iframe" not in body and "<script" not in body
     assert "Needle trails through time" in chart
