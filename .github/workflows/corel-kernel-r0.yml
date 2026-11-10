@@ -13,6 +13,9 @@ on:
       - "fixtures/relations/co_rel_kernel_field_adjudication_r0.json"
       - "fixtures/relations/co_rel_kernel_field_translation_canary_r0.json"
       - "tools/validate_corel_kernel_r0.py"
+      - "tools/corel_braid_logical_wave_r0.py"
+      - "tools/test_corel_braid_logical_wave_r0.py"
+      - "fixtures/relations/corel_braid_logical_wave_r0.json"
       - "tools/validate_corel_kernel_field_collision_r0.py"
       - "tools/validate_corel_kernel_field_adjudication_r0.py"
       - "tools/validate_corel_kernel_field_translation_canary_r0.py"
@@ -39,6 +42,11 @@ jobs:
 
       - name: Validate CoRelKernel R0
         run: python tools/validate_corel_kernel_r0.py
+      - name: Prove CoRel+ / CoBraid+ ordered prerequisites and parallel read-only challenges
+        run: |
+          python -B tools/test_corel_braid_logical_wave_r0.py -v
+          python -B tools/corel_braid_logical_wave_r0.py --snapshot fixtures/relations/corel_braid_logical_wave_r0.json
+
 
       - name: Fetch exact frozen PR127 review snapshot
         shell: bash
