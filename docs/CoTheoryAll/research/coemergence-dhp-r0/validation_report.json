@@ -1,0 +1,90 @@
+{
+  "checks": {
+    "all_cards_research_only": true,
+    "candidate_status_only": true,
+    "cards_12": true,
+    "no_credential_issued": true,
+    "no_review_claim": true,
+    "relation_targets_exist": true,
+    "relations_20": true,
+    "required_fields": true,
+    "schema_matches": true,
+    "source_refs_public_or_explicit_gaps": true,
+    "typed_noncausal_relations": true,
+    "unique_nonempty_ids": true
+  },
+  "negative_controls": [
+    {
+      "case": 1,
+      "failed_checks": [
+        "no_credential_issued"
+      ],
+      "rejected": true
+    },
+    {
+      "case": 2,
+      "failed_checks": [
+        "candidate_status_only"
+      ],
+      "rejected": true
+    },
+    {
+      "case": 3,
+      "failed_checks": [
+        "relation_targets_exist"
+      ],
+      "rejected": true
+    },
+    {
+      "case": 4,
+      "failed_checks": [
+        "all_cards_research_only"
+      ],
+      "rejected": true
+    },
+    {
+      "case": 5,
+      "failed_checks": [
+        "no_review_claim"
+      ],
+      "rejected": true
+    },
+    {
+      "case": 6,
+      "failed_checks": [
+        "typed_noncausal_relations"
+      ],
+      "rejected": true
+    },
+    {
+      "case": 7,
+      "failed_checks": [
+        "typed_noncausal_relations"
+      ],
+      "rejected": true
+    },
+    {
+      "case": 8,
+      "failed_checks": [
+        "unique_nonempty_ids",
+        "relation_targets_exist"
+      ],
+      "rejected": true
+    }
+  ],
+  "not_measured": [
+    "human reader accuracy",
+    "originality",
+    "utility vs well-designed Markdown",
+    "independent peer review",
+    "diploma or credential conferral",
+    "runtime adoption"
+  ],
+  "passed_structural_checks": 12,
+  "rejected_seeded_invalid_cases": 8,
+  "schema": "CoEmergence.CoDhP.EvidenceFirstResearchBatch.R0",
+  "status": "SOURCE_FIXTURE_ONLY__NOT_HUMAN_EXPERIMENT",
+  "total_invalid_cases": 8,
+  "total_structural_checks": 12,
+  "work_id": "COEMERGENCE_DHP_GOLDENBRAID_RESEARCH_PACKET_R0_20261109"
+}
