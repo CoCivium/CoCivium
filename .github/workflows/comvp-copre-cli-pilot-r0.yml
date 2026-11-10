@@ -2,35 +2,68 @@ name: CoMVP CoPre one-task first-use canary
 
 on:
   pull_request:
-    paths:
-      - "scripts/CoPreContinuationR0.py"
-      - "scripts/CoMVPCoPreFirstUseR0.py"
-      - "tests/source_copre_cli_candidate_r0.py"
-      - "tests/acceptance_copre_cli_minimum_use_r0.py"
-      - "tests/qualification_copre_cli_source_slot_r0.py"
-      - "docs/Product/COMVP_COPRE_CLI_FIRST_USE_R0_20261109.md"
-      - "docs/Operations/wave-renders/comvp-copre-cli-20261109/**"
-      - ".github/workflows/comvp-copre-cli-pilot-r0.yml"
+    types: [opened, reopened, synchronize]
   push:
-    paths:
-      - "scripts/CoPreContinuationR0.py"
-      - "scripts/CoMVPCoPreFirstUseR0.py"
-      - "tests/source_copre_cli_candidate_r0.py"
-      - "tests/acceptance_copre_cli_minimum_use_r0.py"
-      - "tests/qualification_copre_cli_source_slot_r0.py"
-      - ".github/workflows/comvp-copre-cli-pilot-r0.yml"
+    branches:
+      - 'candidate/comvp-copre-cli-pilot-r0-20261109'
 
 permissions:
   contents: read
 
 jobs:
   cli-first-use:
+    if: github.event_name == 'push' || github.event.pull_request.head.ref == 'candidate/comvp-copre-cli-pilot-r0-20261109'
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+      - name: Protect CoPre CLI slice from silent expansion
+        run: |
+          python3 - <<'PY'
+          import json
+          import subprocess
+          allowed = {
+              ".github/workflows/comvp-copre-cli-pilot-r0.yml",
+              "docs/Operations/wave-renders/comvp-copre-cli-20261109/BEGIN.md",
+              "docs/Operations/wave-renders/comvp-copre-cli-20261109/END.md",
+              "docs/Product/COMVP_COPRE_CLI_FIRST_USE_R0_20261109.md",
+              "docs/Receipts/COMVP_COPRE_C2_PINNED_NEGATIVE_R0_20261109.json",
+              "docs/Receipts/COMVP_COPRE_C2_RELEASE_HEAD_R0_20261109.json",
+              "scripts/CoMVPCoPreFirstUseR0.py",
+              "scripts/CoPreContinuationR0.py",
+              "tests/acceptance_copre_cli_minimum_use_r0.py",
+              "tests/qualification_copre_cli_source_slot_r0.py",
+              "tests/source_copre_cli_candidate_r0.py",
+          }
+          base = subprocess.check_output(
+              ["git", "merge-base", "origin/main", "HEAD"], text=True
+          ).strip()
+          records = subprocess.check_output(
+              ["git", "diff", "--name-status", "--no-renames", base, "HEAD"],
+              text=True,
+          )
+          changed = {}
+          for line in records.splitlines():
+              status, path = line.split("\t", 1)
+              if path in changed or status not in {"A", "M"}:
+                  raise SystemExit("HOLD_COPRE_DELETED_RENAMED_OR_DUPLICATED_PATH")
+              changed[path] = status
+          def within_elected_slice(paths):
+              return paths == allowed
+          current = set(changed)
+          if not within_elected_slice(current):
+              print(json.dumps({
+                  "unexpected": sorted(current - allowed),
+                  "missing": sorted(allowed - current),
+                  "scope": "CANDIDATE_PR_DIFF_ONLY",
+              }, sort_keys=True))
+              raise SystemExit("HOLD_COPRE_CHANGE_SET_DRIFT")
+          if within_elected_slice(current | {"scripts/unrelated_expansion.py"}):
+              raise SystemExit("HOLD_COPRE_SCOPE_NEGATIVE_BYPASS")
+          print("PASS_COPRE_ELECTED_11_FILE_SLICE__UNRELATED_PATH_HELD")
+          PY
       - name: Verify the immutable CoPre donor blob
         run: |
           python3 - <<'PY'
