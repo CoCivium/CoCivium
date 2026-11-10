@@ -8,6 +8,12 @@
 
 GitHub may display the HTML as source; save the standalone HTML and open it in a browser for reader controls. The preview currently has eight original short draft chapters and is **static**, not an independently updating website or finished book.
 
+## Parent–child Civ2+/Civ3+ adventure | proposed next reader edition
+
+[Editorial constellation R0: a sex-unspecified child, reciprocal parent–child exploration, analogue ⇄ digital ⇄ hybrid, optional CME/CC/CoTheoryAll/CoGame and the distinct Godspawn bridge](COBOOK_PARENT_CHILD_CIV2_CIV3_CONSTELLATION_R0_20261110.md).
+
+**Draft editorial direction, not a rewrite of the existing eight-chapter public R0.** Keep Godspawn a separate novel, preserve the child's unspecified sex in this book, and treat imminent Civ2+ history as a literary device and Civ3+ as uncertain, not as a forecast. G_dSide remains an optional philosophical theme; no forced ideology, recruitment or unverified product claims.
+
 ## Publication lineage and other media
 
 | Relation | Role | Status |
