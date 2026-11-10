@@ -89,6 +89,17 @@ Check 'no credential reader or password helper' {
   $text=Get-Content -LiteralPath $TargetScript -Raw
   Ensure ($text -notmatch '(?i)(Get-Credential|Export-Clixml|PasswordVault|CredentialManager|cookie[s]?\.sqlite|dpapi|Set-ItemProperty)') 'Credential handling'
 }
+Check 'audit enumerates Run names without reading command values' {
+  $src=Get-Content -LiteralPath $TargetScript -Raw
+  Ensure ($src.Contains('GetValueNames()')) 'Registry names not enumerated'
+  Ensure (-not $src.Contains('Get-ItemProperty')) 'Registry values could be read'
+}
+Check 'startup audit declares partial coverage' {
+  $r=Probe @('-Mode','Audit')
+  Ensure ($r.exit -eq 0) $r.text
+  $j=$r.text|ConvertFrom-Json
+  Ensure ($j.startup_scan_coverage -eq 'NAME_FILTERED_ONLY__ACTION_ARGUMENTS_NOT_INSPECTED') 'Overclaimed complete scan'
+}
 Check 'no task installed by test' {
   $after=Get-ScheduledTask -TaskName 'CoStel.CoAllDesktop.UserLogon.R0' -ErrorAction SilentlyContinue
   Ensure ($null -eq $prior -and $null -eq $after) 'Mutated startup state'
