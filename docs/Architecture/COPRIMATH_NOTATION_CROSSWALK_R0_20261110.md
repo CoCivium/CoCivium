@@ -119,3 +119,27 @@ This is a minimal **typed discovery selector**, *not* a semantic roundtrip, univ
 Future candidates: natural languages, formal languages, graphical notation, audio/speech, sign/tactile, glyphs, 3D/VR, source code, CPU/edge/network, and yet-unknown carriers. Qualify each by declared rights, actual parser/renderer capability, accessibility, energy/cost observations, safety, semantic roundtrip and failures. Cross-domain comparisons should preserve **incomparability** rather than force one score; no model/client is declared sentient, authoritative or an actual customer from notation discovery.
 
 `AVAILABLE_NE_EXECUTING` · `FORMAT_COMPETITION_NE_FORCED_WINNER` · `COLLISION_WITNESS_NE_UNIVERSAL_INCAPABILITY` · `DISTINCT_OUTPUT_NE_SEMANTIC_ROUNDTRIP` · `BYTES_NE_ENERGY` · `SYNTHETIC_QUALIFICATION_NE_CLIENT_SUCCESS` · `DISCOVERY_NE_EFFECT_AUTHORITY`.
+
+## CoDiscover+ / CoFed+ / CoInverse+ / CoTurtle+ | bounded federated graph donor (2026-11-10)
+
+**Existing owners, not a new federation authority:** [Civ2+ federated cells](CIV2_FEDERATED_CELL_HOSTING_R0.md), [CoNode participation](CONODE_PARTICIPATION_R0.md), [CoSubstrateField](COSUBSTRATE_FIELD_R0.md), [CoTurtle deep provenance](../Evolution/COSTRETCH_COTURTLE_PUBLIC_BENCHMARK_20261023.md), and the existing [CoPre source-federation pointer](../../ai/copre-seed-path-federation-r0.json). This donor is in the current CoPriMath/CoDiscover draft for a **synthetic cross-domain falsifier only**. It should not be merged or become a second node registry without review by the actual federation owner.
+
+### Core relational distinction
+
+A federation is **both** a discoverable object and a *possible* discovery participant. A discovered object may itself be a system, federation or substrate and may recursively link to others. The graph is not necessarily a tree, and the recursion is not unlimited.
+
+`FEDERATION/SYSTEM/SUBSTRATE -> TYPED_PUBLIC_EDGE -> BOUNDED_NESTED_DISCOVERY -> INVERSE_CHALLENGE -> RECEIVER_GATED_USE`
+
+- **Turtles:** Limit max traversed depth to 5, candidate input nodes to 32, candidate edges to 96, and displayed public nodes to 24. A repeated node is visited once; graph cycles and repeated paths do not mint more workers or independent witnesses.
+- **Inversion:** `A DISCOVERS B` does not create `B DISCOVERED_BY A` as a *declared reverse edge*, still less B's consent, peer trust or granted membership. When both opposite directions are explicitly declared, they remain `REVERSE_DECLARED_ONLY_UNVERIFIED`. Changing the root changes what is actually addressable within the same depth budget.
+- **Privacy:** PUBLIC scoped output must not emit private node IDs, private edges, descendant IDs, private counts or a whole-input digest that could vary with a private subtree. Validation of the synthetic fixture precedes traversal. Discovery of a public edge naming a private child still cannot elect that child as public.
+- **CoNull/currentness:** All source hashes in the fixture are synthetic declared strings, not fetched source bytes, signed manifests or evidence of independent operator identity. Unknown transport reachability or remote receipt remains NOT_TESTED. All materialized effects, provider requests and running workers equal zero.
+- **CoFed:** No hierarchy of roots, global governor, external trust, compulsory membership, consent inheritance, rights transfer or automatic storage replication. A member can leave or hide scoped content without disclosing its private topology to everyone.
+
+The actual bounded source and its tests are [CoDiscoverFederationTurtleProbeR0.py](../../scripts/CoDiscoverFederationTurtleProbeR0.py) and [test_codiscover_federation_turtle_r0.py](../../tests/test_codiscover_federation_turtle_r0.py). The same path-triggered CoPriMath/CoDiscover CI runs **36 synthetic checks** alongside the earlier notation tests. This is a source-level scope/edge proof, not remote federation onboarding, a >24h receiver cold restore, a cross-device benchmark or an omniverse census.
+
+**A particularly useful discriminating canary:** Discover a publicly described regional federation in two directions using the **same** max-hop budget. Confirm public paths differ by root; a newly declared reverse edge changes a relation claim without creating trust or authority; inserting, editing or unlinking a PRIVATE subtree leaves public output unchanged. Then require an independent operator-controlled reader before any claim of actual interoperation.
+
+**Scale policy:** Recursion can generate a large *logical* optionality field without opening a huge active queue. Discover on material source/capability changes or an explicit receiver need, stop at privacy/lease/budget gates, checkpoint only qualified public-safe work, and sleep when no new information is gained.
+
+`COFED_NE_ONE_CENTRAL_OPERATOR` · `TURTLE_NE_ENDLESS_RECURSION` · `INVERSION_NE_AUTOMATIC_RECIPROCITY` · `DISCOVERABLE_NE_CONSENT` · `MANY_PATHS_NE_INDEPENDENT_FAILURE_DOMAINS` · `PUBLIC_EDGE_NE_PRIVATE_DISCLOSURE` · `CI_PASS_NE_LIVE_FEDERATION`.
