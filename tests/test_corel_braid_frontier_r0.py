@@ -99,6 +99,38 @@ class Tests(unittest.TestCase):
         x=payload();x["tasks"][0]["mutation_class"]="EFFECT_GATED"
         with self.assertRaisesRegex(mod.Hold,"EFFECT_CANNOT_BE_SELF_CERTIFIED_DONE"):
             mod.compile_frontier(x)
+    def test_done_cannot_depend_on_candidate_parent(self):
+        x=payload()
+        x["tasks"][0]["state"]="CANDIDATE"
+        x["tasks"][0]["receipt_ref"]=None
+        x["tasks"][1]["state"]="DECLARED_DONE"
+        x["tasks"][1]["receipt_ref"]="fixture:claimed-complete-source"
+        with self.assertRaisesRegex(mod.Hold,
+                                   "DECLARED_DONE_WITH_INCOMPLETE_PREREQUISITE"):
+            mod.compile_frontier(x)
+
+    def test_done_cannot_depend_on_held_parent(self):
+        x=payload()
+        x["tasks"][1]["state"]="HELD"
+        x["tasks"][4]["state"]="DECLARED_DONE"
+        x["tasks"][4]["mutation_class"]="READ_ONLY"
+        x["tasks"][4]["receipt_ref"]="fixture:claimed-complete-outreach"
+        with self.assertRaisesRegex(mod.Hold,
+                                   "DECLARED_DONE_WITH_INCOMPLETE_PREREQUISITE"):
+            mod.compile_frontier(x)
+
+    def test_done_with_declared_parent_remains_unverified(self):
+        x=payload()
+        x["tasks"][1]["state"]="DECLARED_DONE"
+        x["tasks"][1]["receipt_ref"]="fixture:claimed-complete-source"
+        z=mod.compile_frontier(x)
+        self.assertEqual(
+            next(t["status"] for t in z["declared_complete_unverified"]
+                 if t["id"]=="source_check"),
+            "DECLARED_ONLY_NOT_INDEPENDENTLY_VERIFIED",
+        )
+        self.assertEqual(z["metrics"]["receiver_acks"],0)
+
     def test_source_revision_required(self):
         x=payload();x["source_revision"]="unknown"
         with self.assertRaisesRegex(mod.Hold,"INVALID_SOURCE_REVISION"):
