@@ -1,0 +1,39 @@
+name: CoRunner popup observer smoke
+on:
+  push:
+    paths:
+      - 'scripts/CoRunnerPopupObserverR0.ps1'
+      - '.github/workflows/corunner-popup-observer-r0.yml'
+  pull_request:
+    paths:
+      - 'scripts/CoRunnerPopupObserverR0.ps1'
+      - '.github/workflows/corunner-popup-observer-r0.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  windows-readonly-smoke:
+    runs-on: windows-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Observe local ephemeral Windows runner and validate JSON contract
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $raw = & ./scripts/CoRunnerPopupObserverR0.ps1 -MaxItems 20 | Out-String
+          $r = $raw | ConvertFrom-Json -Depth 12
+          if ($r.schema -ne 'CoRunner.PopupOriginObservation.R0') { throw 'Invalid schema' }
+          if ($r.scope -ne 'LOCAL_READ_ONLY_SAMPLE_NOT_COMPLETE_RUNNER_CENSUS') { throw 'Invalid scope' }
+          if (-not $r.observed_utc) { throw 'Missing observation timestamp' }
+          if ($r.sampled_processes -gt 20) { throw 'Unbounded process sample' }
+          if ($r.sampled_power_related_tasks -gt 200) { throw 'Unexpected task sample' }
+          foreach ($p in @($r.processes)) {
+            if (-not $p.executable -or $p.PSObject.Properties.Name -contains 'command_line') { throw 'Unexpected process content' }
+          }
+          foreach ($t in @($r.task_candidates)) {
+            if ($t.PSObject.Properties.Name -contains 'arguments') { throw 'Private arguments leaked' }
+          }
+          if (-not (@($r.nonclaims) -contains 'NO_TASK_DISABLED')) { throw 'Missing no-mutation claim' }
+          if (-not (@($r.nonclaims) -contains 'NO_PROCESS_TERMINATED')) { throw 'Missing process safety claim' }
+          Write-Host 'CoRunner observer schema and privacy-field smoke PASS; Windows test runner only, not X2.'
