@@ -33,9 +33,9 @@ def main():
     assert "Needle trails through time" in chart
 
     # Plain-language bullets work on narrow GitHub mobile views without a table.
-    assert not re.search(r"^\\|", body, flags=re.M), "Mobile reader reverted to a table"
+    assert not re.search(r"^\|", body, flags=re.M), "Mobile reader reverted to a table"
     rows = re.findall(
-        r"^- \\*\\*(2026-10-\\d{2})\\*\\*: (\\d+) passed, (\\d+) held, (\\d+) failed\\.$",
+        r"^- \*\*(2026-10-\d{2})\*\*: (\d+) passed, (\d+) held, (\d+) failed\.$",
         body,
         flags=re.M,
     )
