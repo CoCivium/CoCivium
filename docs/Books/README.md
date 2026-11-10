@@ -34,3 +34,5 @@ The original AGI R0, this public preview, and a publication manifest are stored 
 ## New CoEvSeed narrative triptych (draft)
 
 [The Whale Question / The First Feather / The Sticky Channel](COEVSEED_WHALE_FEATHER_HEARTBEAT_TRIPTYCH_R0_20261110.json) preserves three linked scene/media seeds with child-privacy, literary-interpretation and opt-in-audio boundaries. It is not a published book chapter or implemented sound channel.
+
+[The Little While: mortality, preciousness and reverence](COEVSEED_MORTALITY_PRECIOUSNESS_R0_20261110.json) is a fourth companion CoEvSeed, preserved as a spiritual and literary hypothesis alongside explicit counterarguments and age-affirming safeguards. Not a biological claim, published chapter or audio implementation.
