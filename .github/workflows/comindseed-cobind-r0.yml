@@ -1,0 +1,54 @@
+name: CoMindSeed CoBind R0 candidate verification
+
+on:
+  pull_request:
+    paths:
+      - 'ai/research/comindseed-cobind-golden-braid-cotheoryall-r0-20261110.json'
+      - 'docs/Architecture/COMINDSEED_COBIND_GOLDEN_BRAID_R0_20261110.md'
+      - 'scripts/CoBindCandidateRouterR0.py'
+      - 'tests/test_cobind_candidate_router_r0.py'
+      - '.github/workflows/comindseed-cobind-r0.yml'
+  push:
+    paths:
+      - 'ai/research/comindseed-cobind-golden-braid-cotheoryall-r0-20261110.json'
+      - 'docs/Architecture/COMINDSEED_COBIND_GOLDEN_BRAID_R0_20261110.md'
+      - 'scripts/CoBindCandidateRouterR0.py'
+      - 'tests/test_cobind_candidate_router_r0.py'
+      - '.github/workflows/comindseed-cobind-r0.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  candidate-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout exact source, no persistent credentials
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+      - name: Compile and run 15 bounded synthetic tests
+        run: |
+          python3 -m py_compile scripts/CoBindCandidateRouterR0.py tests/test_cobind_candidate_router_r0.py
+          python3 -m unittest discover -s tests -p 'test_cobind_candidate_router_r0.py' -v
+      - name: Validate public source anchors and nonclaim boundaries
+        run: |
+          python3 - <<'PY'
+          import json
+          import subprocess
+          from pathlib import Path
+
+          p = Path('ai/research/comindseed-cobind-golden-braid-cotheoryall-r0-20261110.json')
+          d = json.loads(p.read_text(encoding='utf-8'))
+          assert d['schema'] == 'CoAll.CoMindSeed.CoBindRouting.R0-candidate'
+          assert 'NOT_CANON' in d['status'] and 'NOT_RUNTIME' in d['status']
+          assert len(d['anchors']) >= 6
+          for anchor in d['anchors']:
+              path = anchor['path']
+              assert Path(path).is_file(), path
+              got = subprocess.check_output(['git', 'hash-object', '--', path], text=True).strip()
+              assert got == anchor['github_blob_sha'], (path, got, anchor['github_blob_sha'])
+          assert 'NO_COEX' in d['nonclaims'] and 'NO_CANON' in d['nonclaims']
+          print('PASS: source references have exact Git blob match; no runtime or receiver proof inferred')
+          PY
