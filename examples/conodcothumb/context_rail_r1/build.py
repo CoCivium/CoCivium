@@ -11,7 +11,9 @@ def build():
     core=(ROOT/'CoContextRailR1.js').read_text(encoding='utf-8')
     page=page.replace('<!-- DATA_MARKER -->','<script type="application/json" id="manifest">'+obj+'</script>')
     page=page.replace('<!-- CORE_MARKER -->','<script>\n'+core+'</script>')
-    assert '<!-- CORE_MARKER -->' not in page and '<!-- DATA_MARKER -->' not in page
+    owned=(ROOT/'CoOwnedWorkR0.js').read_text(encoding='utf-8')
+    page=page.replace('<!-- WORK_MARKER -->','<script>\n'+owned+'</script>')
+    assert '<!-- CORE_MARKER -->' not in page and '<!-- DATA_MARKER -->' not in page and '<!-- WORK_MARKER -->' not in page
     return page
 
 def main():
