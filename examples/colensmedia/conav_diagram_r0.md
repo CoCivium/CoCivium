@@ -54,7 +54,7 @@ flowchart TD
     N0["CoMail living draft demo"]
 ```
 
-- [CoMail living draft demo](https://github.com/CoCivium/CoCivium/blob/main/examples/comail_r0/index.html): `examples/comail_r0/index.html`; blob `0a91a7e4a3c0bac502908630e0eef8472ebf46f7`; **review pending**, no adopted inspiration claim
+- [CoMail living draft demo](https://github.com/CoCivium/CoCivium/blob/main/examples/comail_r0/index.html): `examples/comail_r0/index.html`; blob `84c012175c54937d91c2494261b76938a5bb5a5d`; **review pending**, no adopted inspiration claim
 
 ## Evidence boundary
 

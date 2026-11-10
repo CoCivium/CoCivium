@@ -3,7 +3,7 @@
 **PUBLIC SOURCE-ONLY RESEARCH PROJECTION. No physical circuit, auto-send, or receiver ACK.**
 
 WorkID: `coal.conav.retro-public-media.r0`
-Source manifest Git blob: `51be2e100f4f01920c1e1cfa42af0bc6a4c78ff1`
+Source manifest Git blob: `d26df13471d707dbe41f7b83b6f26883cada0637`
 Projection SHA-256: `1a5647dbdb25c2dda75b9572e94dd0ef4080bea59cd4467b404477abeedac591`
 
 ## Symbolic signal-flow diagram
@@ -61,7 +61,7 @@ The dotted edges are **possible future transitions**, not permissions, completed
 | `comap-living-view` | `e9469dc5c87ee3c5bda13e3e9de39c0ef45201d2` | NO | NO | NO | HOLD |
 | `comedia-public-prior-bridge` | `aed071ba013e54320ce3e5b28c4c130a0317ba48` | NO | NO | NO | HOLD |
 | `comedia-source-finder` | `2360b7ceea035599a7604e5c54d28b1765952e0d` | NO | NO | NO | HOLD |
-| `colue-mail-living-view` | `0a91a7e4a3c0bac502908630e0eef8472ebf46f7` | NO | NO | NO | HOLD |
+| `colue-mail-living-view` | `84c012175c54937d91c2494261b76938a5bb5a5d` | NO | NO | NO | HOLD |
 
 ## CoBraid evaluation and falsifiers
 
