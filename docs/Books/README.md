@@ -24,6 +24,8 @@ This original, fictional chapter candidate is a distinct experiment beside [the 
 
 [Question-to-scene lens R0](COBOOK_COQA_QUESTION_TO_SCENE_LENS_R0_20261110.md) connects one freely answered profound question to an independently challenging parent–child scene, with provenance, privacy, epistemic labels, reader agency and uncoached acceptance. It does **not** publish private answers, reproduce third-party WhatsApp text or create a second CoQA source of truth.
 
+The [CoRel+/CoBraid+ causal plan](cobook-coqa-causal-braid-r0.json) defines which steps must be sequential, which three independent read-only checks can share a bounded parallel batch, and where missing consent or reader evidence stops the chain. The [synthetic gate check](../../scripts/check_cobook_coqa_causal_braid_r0.py) tests the plan; it does not execute private interviews or public release.
+
 ## Publication lineage and other media
 
 | Relation | Role | Status |
