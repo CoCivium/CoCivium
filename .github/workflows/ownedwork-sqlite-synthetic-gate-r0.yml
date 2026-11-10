@@ -1,0 +1,166 @@
+name: CoOwnedWork synthetic browser to SQLite bridge
+on:
+  push:
+    branches: [candidate/ownedwork-sqlite-synthetic-bridge-r0-20261110]
+  pull_request:
+    paths:
+      - scripts/CoOwnedWorkSqliteBridgeR0.py
+      - tests/test_ownedwork_sqlite_bridge_r0.py
+      - tests/fixtures/ownedwork_synthetic_gate_r0.json
+      - .github/workflows/ownedwork-sqlite-synthetic-gate-r0.yml
+permissions:
+  contents: read
+jobs:
+  browser-module-producer:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Explicit synthetic browser-module event, not real gesture
+        run: |
+          node - <<'JS'
+          const fs=require('node:fs'), path=require('node:path');
+          const api=require('./examples/conodcothumb/context_rail_r1/CoOwnedWorkR0.js');
+          const mem=new Map();
+          const storage={getItem:k=>mem.has(k)?mem.get(k):null,setItem:(k,v)=>mem.set(k,v)};
+          const action={privacy:'PUBLIC',context:'RESEARCH',question:'WHAT_ELSE',
+            gesture:'EXPLICIT_RING',preview_state:'PROPOSED_ONLY'};
+          const first=api.preserve(storage,action);
+          if(first.state!=='COMMITTED_BROWSER_LOCAL'||first.committed!==1)
+            throw Error('HELD_SYNTHETIC_GESTURE');
+          const repeat=api.preserve(storage,action);
+          if(repeat.state!=='DUPLICATE_SUPPRESSED'||repeat.committed!==0)
+            throw Error('HELD_DUPLICATE');
+          const read=api.read(storage);
+          if(read.state!=='ACTIVE'||read.row.receiver_ack!==false||
+            read.row.source_verified_by_browser!==false)
+            throw Error('HELD_FALSE_BROWSER_ACK');
+          fs.mkdirSync('out/ownedwork-browser-r0',{recursive:true});
+          fs.writeFileSync(path.join('out/ownedwork-browser-r0','browser-record.json'),
+            JSON.stringify(read.row,null,2)+'\n');
+          console.log('PASS_NODE_SIMULATED_BROWSER_MODULE_NOT_REAL_GESTURE');
+          JS
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ownedwork-browser-origin-r0
+          path: out/ownedwork-browser-r0/browser-record.json
+          retention-days: 30
+          if-no-files-found: error
+  sqlite-receiver:
+    needs: browser-module-producer
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          name: ownedwork-browser-origin-r0
+          path: /tmp/browser-origin
+      - name: Verify pinned historical source, not current main
+        run: |
+          git cat-file -e 63b41ead8797e5a781699f32bcbc77b78bdbd7af:CoPre.md
+          git show 63b41ead8797e5a781699f32bcbc77b78bdbd7af:CoPre.md > /tmp/CoPre.md
+          python3 - <<'PY'
+          from pathlib import Path
+          import hashlib
+          digest=hashlib.sha256(Path('/tmp/CoPre.md').read_bytes()).hexdigest()
+          assert digest=='58f8c722bfbfc34cac41189c072d2effe4b19dbbe8a37be4f8687344d6b00b9a',digest
+          print('PASS_PINNED_GIT_SOURCE_SHA256',digest)
+          PY
+      - name: Test schema, consent fixture, provenance, duplication and revocation
+        env:
+          COPRE_PINNED_SOURCE: /tmp/CoPre.md
+        run: python3 -B -m unittest discover -s tests -p 'test_ownedwork_sqlite_bridge_r0.py' -v
+      - name: Commit one local synthetic WorkID and read back
+        run: |
+          python3 -B scripts/CoOwnedWorkSqliteBridgeR0.py \
+            --record /tmp/browser-origin/browser-record.json \
+            --gate tests/fixtures/ownedwork_synthetic_gate_r0.json \
+            --source /tmp/CoPre.md \
+            --js examples/conodcothumb/context_rail_r1/CoOwnedWorkR0.js \
+            --output out/ownedwork-sqlite-r0
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ownedwork-sqlite-receiver-r0
+          path: out/ownedwork-sqlite-r0/
+          retention-days: 30
+          if-no-files-found: error
+  cold-reader:
+    needs: sqlite-receiver
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          name: ownedwork-sqlite-receiver-r0
+          path: /tmp/sqlite-input
+      - name: Cold source readback, duplicate suppression, revoke and replay refusal
+        run: |
+          git show 63b41ead8797e5a781699f32bcbc77b78bdbd7af:CoPre.md > /tmp/CoPre.md
+          python3 -B - <<'PY'
+          import json,sys
+          from pathlib import Path
+          sys.path.insert(0,'scripts')
+          from CoNarrativeWorkIDR0 import Held,commit_once,readback,revoke
+          from CoOwnedWorkSqliteBridgeR0 import PINNED_SHA256,WORK_ID,source_check
+          root=Path('/tmp/sqlite-input')
+          names=sorted(p.name for p in root.iterdir())
+          assert names==['receiver-observation.json','receiver.sqlite','translated-packet.json'],names
+          packet=json.loads((root/'translated-packet.json').read_text())
+          producer=json.loads((root/'receiver-observation.json').read_text())
+          assert source_check('/tmp/CoPre.md')==PINNED_SHA256
+          assert packet['work_id']==WORK_ID and producer['receiver_ack'] is False
+          assert producer['local_commits']==1
+          db=root/'receiver.sqlite'
+          proof=readback(db,expected_packet=packet,source_path='/tmp/CoPre.md')
+          assert proof['state']=='COLD_SOURCE_RECONSTRUCTED' and proof['committed_work_ids']==1
+          assert proof['external_receiver_ack'] is False
+          duplicate=commit_once(db,packet)
+          assert duplicate['new_commits']==0 and duplicate['duplicate']
+          revoke(db,packet)
+          assert readback(db,expected_packet=packet)['state']=='HELD_REVOKED'
+          try:
+            commit_once(db,packet)
+          except Held as e:
+            assert str(e)=='HELD_REVOKED',str(e)
+          else:
+            raise AssertionError('REPLAY_AFTER_REVOKE')
+          receipt={'schema':'CoAll.CoOwnedWork.ColdCIProof.R0',
+            'state':'COLD_READBACK_REVOKE_AND_REPLAY_DENIAL_PASS',
+            'work_id':WORK_ID,'source_sha256':PINNED_SHA256,
+            'committed_work_ids':1,'duplicate_new_commits':0,
+            'replay_after_revoke':'HELD_REVOKED','receiver_ack':False,
+            'real_human_consent':False,'x2_or_costead_runtime':False,
+            'survival_over_24h':False,'same_github_failure_domain':True}
+          out=Path('out/ownedwork-sqlite-cold')
+          out.mkdir(parents=True,exist_ok=True)
+          (out/'cold-receiver.json').write_text(json.dumps(receipt,sort_keys=True,indent=2)+'\n')
+          print(json.dumps(receipt,sort_keys=True))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ownedwork-sqlite-cold-readback-r0
+          path: out/ownedwork-sqlite-cold/
+          retention-days: 30
+          if-no-files-found: error
