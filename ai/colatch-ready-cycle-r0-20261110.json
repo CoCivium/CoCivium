@@ -1,0 +1,111 @@
+{
+  "schema": "CoAll.CoLatch.ReadyCycle.R0-candidate",
+  "status": "PUBLIC_SAFE_SPEC_NOT_RUNTIME_PROOF",
+  "source_refs": [
+    {
+      "path": "CoPre.md",
+      "observed_git_blob_sha": "d24ccc0840905ccb5bcd49978b61874bd980ae19"
+    },
+    {
+      "path": "ai/copre-ready-cycle-r0-20261109.json",
+      "observed_git_blob_sha": "42ebd7f95b643dd24df2bbf4b5918f504eeffd2b"
+    },
+    {
+      "path": "SESSION_BOOTSTRAP.md",
+      "observed_git_blob_sha": "ddaf326239c6cbc92dafb9c9be7b03bbe2e6361a"
+    }
+  ],
+  "identity": "CoLatch+ CoReGroup+ CoBoogie+ BreakGlass candidate",
+  "one_each": {
+    "seed": "Versioned immutable CoPre source revision plus exact hash; content is public-safe",
+    "orb": "One visible coherent local surface; different projections can reuse same source",
+    "gauge": "One proof gauge: source, hash, persisted age, handoff, receiver readproof, integration, privacy",
+    "thumb": "One user-invoked no-side-effect pointer or command; never auto-acts on authority-changing channels",
+    "time": "One explicit UTC reference clock, with age derivation; clock drift reported",
+    "placeholders": 0
+  },
+  "gate_tests": [
+    {
+      "name": "EXACT_SOURCE",
+      "pass_if": "Specified source retrieved and exact bytes/hash verified",
+      "state": "NOT_RUN_AT_SPEC_PUBLICATION"
+    },
+    {
+      "name": "SEED_GT_24H",
+      "pass_if": "Same exact Seed hash available after more than 24 elapsed hours via independently read source or durable receiver",
+      "state": "NOT_RUN_AT_SPEC_PUBLICATION"
+    },
+    {
+      "name": "HANDOFF_ONCE",
+      "pass_if": "One complete transfer accepted by an independently identified receiver with object-specific acknowledgement, no Rick relay",
+      "state": "NOT_RUN_AT_SPEC_PUBLICATION"
+    },
+    {
+      "name": "SYSTEM_1_USER_0",
+      "pass_if": "An authorized worker discovers, dedupes, acts safely and publishes receipt without human courier work",
+      "state": "NOT_RUN_AT_SPEC_PUBLICATION"
+    },
+    {
+      "name": "SYNC_SELF",
+      "pass_if": "After a controlled source revision, an authorized receiver detects it, qualifies it and updates within stated SLA without manual paste",
+      "state": "NOT_RUN_AT_SPEC_PUBLICATION"
+    },
+    {
+      "name": "NO_EXTRA_DRAG",
+      "pass_if": "Measured reduction of human relays, duplicated work and attention cost versus baseline",
+      "state": "NOT_RUN_AT_SPEC_PUBLICATION"
+    },
+    {
+      "name": "WAVE_DIVERSITY",
+      "pass_if": "Independent strategies produce meaningfully different useful hypotheses while retaining stable proof identity; duplicate chatter not rewarded",
+      "state": "NOT_RUN_AT_SPEC_PUBLICATION"
+    }
+  ],
+  "loop": [
+    "BIND",
+    "DISCOVER",
+    "CHALLENGE",
+    "TEST",
+    "ADJUDICATE",
+    "DEDUPLICATE",
+    "REUSE_OR_PUBLISH",
+    "VERIFY",
+    "PRESERVE"
+  ],
+  "break_glass": [
+    "Unknown authorization, unverified mirror or missing exact source: HOLD",
+    "Privacy or public-release uncertainty: HOLD private, propose public-safe derivative",
+    "Conflicting same identity: branch for review, never overwrite",
+    "Repeated echo without measurable improvement: QUIESCE and preserve alternatives",
+    "No independent receiver readproof: do not claim PICKED_UP or INTEGRATED"
+  ],
+  "source_bound_all_fronts": "Any authorized front may retrieve source, report evidence, propose a candidate better and receive a machine-readable response. No automatic cross-provider pickup, authority, memory, or live runtime inferred.",
+  "creative_variation": "No two waves need identical presentation or hypotheses; do not enforce artificial difference at the expense of truth, reproducibility or usability.",
+  "philosophy": "G_dSide remains optional symbolic, ethical and imaginative exploration, not technical proof or authority.",
+  "target_mirrors": [
+    {
+      "url": "https://github.com/CoCivium/CoPreGeneric",
+      "status": "CONNECTED_GITHUB_404_UNAVAILABLE"
+    },
+    {
+      "url": "https://CoCivium.org/CoPre",
+      "status": "UNVERIFIED"
+    },
+    {
+      "url": "https://InSeed.com/Stead",
+      "status": "UNVERIFIED"
+    }
+  ],
+  "current_public_source": "https://github.com/CoCivium/CoCivium/blob/main/CoPre.md",
+  "not_claimed": [
+    "CANON",
+    "RUNTIME",
+    "COEX",
+    "SYNC_BY_ITSELF",
+    "SEED_SURVIVED_GT_24H",
+    "SYSTEM_1",
+    "USER_0",
+    "ALL_SESSIONS_INTEGRATED"
+  ],
+  "next_evidence": "Bounded visible browser canary with exact source hash, persistent receipt, explicit export and controlled 24-hour check."
+}
