@@ -66,7 +66,7 @@ def main():
     assert "No real child's name" in content
     assert "not a published chapter" in content
     assert "fictional" in story.lower()
-    assert "not a biography" in story.lower()
+    assert "not an autobiography" in story.lower()
     assert "The Cartographer's agency" in story
     assert "cobook.origin.beetle-cartographer.r0" in story
 
