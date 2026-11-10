@@ -6,6 +6,7 @@ on:
       - 'docs/Launch/coindexredir_r0/**'
       - 'examples/cospeedo/needle-trails-r1.html'
       - 'scripts/check_cospeedo_needle_trails_r1.py'
+      - 'scripts/check_cospeedo_browser_r1.py'
       - 'scripts/check_coindexredir_r0.py'
       - '.github/workflows/coindexredir-r0.yml'
   workflow_dispatch:
@@ -21,3 +22,24 @@ jobs:
           python-version: '3.11'
       - run: python3 scripts/check_coindexredir_r0.py
       - run: python3 scripts/check_cospeedo_needle_trails_r1.py
+      - name: Install pinned browser harness
+        run: |
+          python3 -m pip install playwright==1.55.0
+          if command -v google-chrome >/dev/null 2>&1; then
+            echo "COSPEEDO_CHROME_PATH=$(command -v google-chrome)" >> "$GITHUB_ENV"
+          elif command -v chromium >/dev/null 2>&1; then
+            echo "COSPEEDO_CHROME_PATH=$(command -v chromium)" >> "$GITHUB_ENV"
+          else
+            python3 -m playwright install --with-deps chromium
+          fi
+      - name: Test mobile/desktop rendering and accessible keyboard interaction
+        run: python3 scripts/check_cospeedo_browser_r1.py
+      - name: Preserve read-only browser evidence (not deployment)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cospeedo-r1-browser-qa
+          path: artifacts/cospeedo-browser-r1/
+          if-no-files-found: ignore
+          retention-days: 7
+
