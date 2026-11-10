@@ -138,8 +138,8 @@ class CoFedTurtleInverseTests(unittest.TestCase):
         self.assertFalse(e["membership_granted"])
 
     def test_22_reverse_view_is_scope_relative(self):
-        root_view = {x["id"] for x in view(root="fed:root")["nodes"]}
-        regional_view = {x["id"] for x in view(root="fed:regional")["nodes"]}
+        root_view = {x["id"] for x in view(root="fed:root", depth=1)["nodes"]}
+        regional_view = {x["id"] for x in view(root="fed:regional", depth=1)["nodes"]}
         self.assertIn("system:local", root_view)
         self.assertNotIn("system:local", regional_view)
         self.assertIn("fed:root", regional_view)
