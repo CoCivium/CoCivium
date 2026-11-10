@@ -211,6 +211,32 @@ jobs:
           assert receipt["mvp_qualified"] is False
           print("PASS_AUTOMATED_FIRST_USE_NOT_HUMAN_MVP", proof["total"])
           PY
+      - name: Verify R0 keyboard regression and protected R1 candidate
+        run: |
+          python -B examples/corun_r0/test_keyboard_caret_browser.py \
+            --repo-root . \
+            --out "$RUNNER_TEMP/coprecursor-keyboard"
+      - name: Check exact keyboard regression receipt and nonpromotion
+        run: |
+          python - <<'PY'
+          import hashlib, json, os
+          from pathlib import Path
+          root = Path(os.environ["RUNNER_TEMP"]) / "coprecursor-keyboard"
+          raw = (root / "keyboard-caret.json").read_bytes()
+          report = json.loads(raw)
+          receipt = json.loads((root / "receipt.json").read_text())
+          assert hashlib.sha256(raw).hexdigest() == receipt["report_sha256"]
+          assert report["expected_baseline_failures"] == ["mid_caret_exact", "not_appended"]
+          assert report["candidate"]["total"] == report["candidate"]["passed"] == 17
+          assert report["baseline"]["passed"] == 15
+          assert report["source"]["baseline"]["git_blob_sha1"] == "773e9de7aa7c6b03bf0bc75eddb7ca0a0c8dd101"
+          assert report["source"]["candidate"]["git_blob_sha1"] == "9daba0043b74eee129e78b1eaaad0c44e4005640"
+          assert report["qualification"] == "PASS_REGRESSION_CHALLENGE_ONLY"
+          assert report["production_switch"] is False
+          assert report["mvp_qualified"] is False
+          assert report["independent_human_acceptance"] is False
+          print("PASS_KEYBOARD_REGRESSION_R0_FAIL_R1_CANDIDATE_PASS")
+          PY
       - name: Archive browser-scoped proof
         if: always()
         uses: actions/upload-artifact@v4
@@ -219,6 +245,7 @@ jobs:
           path: |
             ${{ runner.temp }}/codemow-browser/*.json
             ${{ runner.temp }}/coprecursor-first-task/*.json
+            ${{ runner.temp }}/coprecursor-keyboard/*.json
           if-no-files-found: warn
           retention-days: 14
 
