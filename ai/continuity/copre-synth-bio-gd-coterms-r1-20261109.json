@@ -1,0 +1,1480 @@
+{
+  "schema": "CoAll.CoPreGeneric.SynthBioGdTerms.R1-candidate",
+  "work_id": "copre:session-contribution:synth-bio-gd-terms:r1:20261109",
+  "created_date": "2026-11-09",
+  "scope": "THIS_SESSION_ADDITIVE_PUBLIC_SAFE_SOURCE_CANDIDATE",
+  "state": "PUBLIC_DRAFT_PR_NOT_MERGED_NOT_CANON",
+  "source_repository": "CoCivium/CoCivium",
+  "preferred_stable_entry": "CoPre.md",
+  "source_refs": [
+    {
+      "path": "CoPre.md",
+      "observed_git_blob_sha": "0251d397c5a790cc71ad3c13f77840e050c51cbe",
+      "source_type": "PUBLIC_REPOSITORY_BLOB",
+      "verified_via": "connected_github_fetch_file"
+    },
+    {
+      "path": "ai/continuity/conu-existentialism-candidate-field-r0.json",
+      "observed_git_blob_sha": "1e8b43f663f303eb75580ca4ebaea45e4cc26927",
+      "source_type": "PUBLIC_REPOSITORY_BLOB",
+      "verified_via": "connected_github_fetch_file"
+    },
+    {
+      "path": "docs/coterms/README.md",
+      "observed_git_blob_sha": "6f150a4423df4b5e9a4d8c2c5cd6ca3ecb3f5fb6",
+      "source_type": "PUBLIC_REPOSITORY_BLOB",
+      "verified_via": "connected_github_fetch_file"
+    },
+    {
+      "path": "docs/Architecture/COSOURCE_GRAPH_R0.md",
+      "observed_git_blob_sha": "301c8951e566de9f9ec0bde16a6b991bd177bd47",
+      "source_type": "PUBLIC_REPOSITORY_BLOB",
+      "verified_via": "connected_github_fetch_file"
+    },
+    {
+      "path": "docs/Architecture/COPREGENERIC_DUAL_PROJECTION_R0_20261109.md",
+      "observed_git_blob_sha": "90a2b8e487d5a4c885abb880495446dd451a387b",
+      "source_type": "PUBLIC_REPOSITORY_BLOB",
+      "verified_via": "connected_github_fetch_file"
+    },
+    {
+      "path": "docs/Architecture/COFRONT_RETRO_ECHO_NO_ORPHANS_R0_20261109.md",
+      "observed_git_blob_sha": "9323c3a7df3e25cb193be1eba64f48963f4be423",
+      "source_type": "PUBLIC_REPOSITORY_BLOB",
+      "verified_via": "connected_github_fetch_file"
+    },
+    {
+      "path": "docs/Architecture/COLIVING_HIGHLIGHT_ASSETS_R0.md",
+      "observed_git_blob_sha": "40785f77b4085b5830a45bb4c965360347f7cdaf",
+      "source_type": "PUBLIC_REPOSITORY_BLOB",
+      "verified_via": "connected_github_fetch_file"
+    },
+    {
+      "path": "ai/highlight-assets.json",
+      "observed_git_blob_sha": "a6cf0422a2fbf82852de3619a47ea8b8ec3c45de",
+      "source_type": "PUBLIC_REPOSITORY_BLOB",
+      "verified_via": "connected_github_fetch_file"
+    },
+    {
+      "path": "docs/CoTheoryAll/costrawbe-r0/README.md",
+      "observed_git_blob_sha": "21da563a35106896c3029ea8f2cc4fd30cfa31c3",
+      "source_type": "PUBLIC_REPOSITORY_BLOB",
+      "verified_via": "connected_github_fetch_file"
+    },
+    {
+      "path": "ai/continuity-golden-braid-bridge-r0-20261109.json",
+      "observed_git_blob_sha": "779ec9b0dc0e7456d0a182548d4ccb600109b1de",
+      "source_type": "PUBLIC_REPOSITORY_BLOB",
+      "verified_via": "connected_github_fetch_file"
+    }
+  ],
+  "predecessor_field": {
+    "path": "ai/continuity/conu-existentialism-candidate-field-r0.json",
+    "known_candidate_count": 24,
+    "superseded": false
+  },
+  "intent": "Add an evidence-bounded term and relation field across synth-native, bio-native, source/truth, spiritual ethics, oscillation, retro/future, AGI and constitutional challenge without claiming automatic acceptance or semantic novelty.",
+  "receiver_native_contract": {
+    "common_source_spine": [
+      "work_id",
+      "source_ref",
+      "source_revision",
+      "claim_class",
+      "observed_at",
+      "authority_scope",
+      "privacy_class",
+      "dissent",
+      "translation_loss",
+      "next_proof"
+    ],
+    "synth_projection": "Typed versioned graph, deltas, falsifiers, source digests and capability boundaries; do not force conversational human mimicry.",
+    "bio_projection": "Accessible and optional text, diagram, story, sound and embodied interfaces, with opt-in, revocation and visible source context.",
+    "equality": "SOURCE_IDENTITY_SHARED_NOT_RENDERING_EQUIVALENCE",
+    "translation_gate": "EXPLICIT_LOSS_REPORT_PLUS_RECEIVER_TEACHBACK_OR_SCHEMA_VALIDATION",
+    "receiver_readproof": "INDEPENDENT_RECEIVER_EXACT_HASH_OR_COMMIT_AND_ROLE_ATTESTATION_REQUIRED",
+    "autonomy_claim": "NONE"
+  },
+  "epistemic_lanes": {
+    "empirical": "Observable and falsifiable; no upgrade from presence to truth.",
+    "conceptual": "Useful for design; naming itself provides no novelty claim.",
+    "spiritual": "Belief, metaphor and ethical inquiry; no divine operational authority.",
+    "agi": "Research hypotheses; no verified sentience, AGI or singularity event."
+  },
+  "families": [
+    {
+      "code": "SOURCE_TRUTH",
+      "title": "CoSource and CoTru",
+      "anchor": "docs/Architecture/COSOURCE_GRAPH_R0.md",
+      "receivers": [
+        "MACHINE",
+        "HUMAN"
+      ],
+      "term_count": 8
+    },
+    {
+      "code": "SYNTH_NATIVE",
+      "title": "CoSynthVerse native representation",
+      "anchor": "docs/Architecture/COPREGENERIC_DUAL_PROJECTION_R0_20261109.md",
+      "receivers": [
+        "MACHINE"
+      ],
+      "term_count": 8
+    },
+    {
+      "code": "BIO_NATIVE",
+      "title": "CoBioVerse human and embodied meaning",
+      "anchor": "docs/Architecture/COLIVING_HIGHLIGHT_ASSETS_R0.md",
+      "receivers": [
+        "HUMAN"
+      ],
+      "term_count": 8
+    },
+    {
+      "code": "CROSS_SUBSTRATE",
+      "title": "CoSynthVerse and CoBioVerse translation",
+      "anchor": "docs/Architecture/COPREGENERIC_DUAL_PROJECTION_R0_20261109.md",
+      "receivers": [
+        "MACHINE",
+        "HUMAN"
+      ],
+      "term_count": 8
+    },
+    {
+      "code": "GDSIDE_ETHICS",
+      "title": "CoG_dSide plural inquiry and ethics",
+      "anchor": "ai/continuity/conu-existentialism-candidate-field-r0.json",
+      "receivers": [
+        "HUMAN",
+        "MACHINE"
+      ],
+      "term_count": 8
+    },
+    {
+      "code": "OSCILLATION",
+      "title": "Movement, oscillation and feedback",
+      "anchor": "ai/continuity-golden-braid-bridge-r0-20261109.json",
+      "receivers": [
+        "MACHINE",
+        "HUMAN"
+      ],
+      "term_count": 8
+    },
+    {
+      "code": "RETRO_FUTURE",
+      "title": "CoTime, CoFront, CoEcho and predictive retro",
+      "anchor": "docs/Architecture/COFRONT_RETRO_ECHO_NO_ORPHANS_R0_20261109.md",
+      "receivers": [
+        "MACHINE",
+        "HUMAN"
+      ],
+      "term_count": 8
+    },
+    {
+      "code": "AGI_MINDS",
+      "title": "CoAGI and possible future mind classes",
+      "anchor": "docs/Architecture/COPREGENERIC_DUAL_PROJECTION_R0_20261109.md",
+      "receivers": [
+        "MACHINE",
+        "HUMAN"
+      ],
+      "term_count": 8
+    },
+    {
+      "code": "GOVERNANCE",
+      "title": "Constitution, dissent, navigation and CoPre",
+      "anchor": "docs/Architecture/COLIVING_HIGHLIGHT_ASSETS_R0.md",
+      "receivers": [
+        "MACHINE",
+        "HUMAN"
+      ],
+      "term_count": 8
+    }
+  ],
+  "terms": [
+    {
+      "id": "copre-r1-001",
+      "label": "CoClaimAltitude+",
+      "group": "SOURCE_TRUTH",
+      "definition": "Separate what a claim asserts from the strength and kind of evidence supporting it.",
+      "discriminating_probe": "Compare a source URL, a Git blob readback and a recipient acknowledgment without treating them as equal.",
+      "status": "UNQUALIFIED_PUBLIC_CANDIDATE",
+      "epistemic_class": "DESIGN_HYPOTHESIS_NOT_FACT",
+      "anchor": "docs/Architecture/COSOURCE_GRAPH_R0.md",
+      "receiver_projection": [
+        "MACHINE",
+        "HUMAN"
+      ],
+      "alias_and_prior_art": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "copre-r1-002",
+      "label": "CoSourceWitness+",
+      "group": "SOURCE_TRUTH",
+      "definition": "Record an identified observer who actually retrieved an exact source object.",
+      "discriminating_probe": "Demand receiver-generated object ID and revision rather than assuming someone followed a link.",
+      "status": "UNQUALIFIED_PUBLIC_CANDIDATE",
+      "epistemic_class": "DESIGN_HYPOTHESIS_NOT_FACT",
+      "anchor": "docs/Architecture/COSOURCE_GRAPH_R0.md",
+      "receiver_projection": [
+        "MACHINE",
+        "HUMAN"
+      ],
+      "alias_and_prior_art": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "copre-r1-003",
+      "label": "CoTruScope+",
+      "group": "SOURCE_TRUTH",
+      "definition": "Represent truth claims as scoped, contestable propositions with explicit methods and limits.",
+      "discriminating_probe": "Show that a correct file hash does not validate a scientific proposition inside the file.",
+      "status": "UNQUALIFIED_PUBLIC_CANDIDATE",
+      "epistemic_class": "DESIGN_HYPOTHESIS_NOT_FACT",
+      "anchor": "docs/Architecture/COSOURCE_GRAPH_R0.md",
+      "receiver_projection": [
+        "MACHINE",
+        "HUMAN"
+      ],
+      "alias_and_prior_art": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "copre-r1-004",
+      "label": "CoFalsifierPort+",
+      "group": "SOURCE_TRUTH",
+      "definition": "Attach a discriminating challenge route to every consequential candidate claim.",
+      "discriminating_probe": "Submit one counterexample that would change the stated outcome.",
+      "status": "UNQUALIFIED_PUBLIC_CANDIDATE",
+      "epistemic_class": "DESIGN_HYPOTHESIS_NOT_FACT",
+      "anchor": "docs/Architecture/COSOURCE_GRAPH_R0.md",
+      "receiver_projection": [
+        "MACHINE",
+        "HUMAN"
+      ],
+      "alias_and_prior_art": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "copre-r1-005",
+      "label": "CoProvenanceWeave+",
+      "group": "SOURCE_TRUTH",
+      "definition": "Link source, derivation, commentary, correction and successor without erasing divergent lines.",
+      "discriminating_probe": "Trace a public excerpt back to its cleared source without revealing private material.",
+      "status": "UNQUALIFIED_PUBLIC_CANDIDATE",
+      "epistemic_class": "DESIGN_HYPOTHESIS_NOT_FACT",
+      "anchor": "docs/Architecture/COSOURCE_GRAPH_R0.md",
+      "receiver_projection": [
+        "MACHINE",
+        "HUMAN"
+      ],
+      "alias_and_prior_art": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "copre-r1-006",
+      "label": "CoUnknownRetention+",
+      "group": "SOURCE_TRUTH",
+      "definition": "Preserve unsearched, inaccessible and unobserved as different states.",
+      "discriminating_probe": "Simulate a failed provider query and prove it never becomes NO_CHANGE.",
+      "status": "UNQUALIFIED_PUBLIC_CANDIDATE",
+      "epistemic_class": "DESIGN_HYPOTHESIS_NOT_FACT",
+      "anchor": "docs/Architecture/COSOURCE_GRAPH_R0.md",
+      "receiver_projection": [
+        "MACHINE",
+        "HUMAN"
+      ],
+      "alias_and_prior_art": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "copre-r1-007",
+      "label": "CoAuthorityFirewall+",
+      "group": "SOURCE_TRUTH",
+      "definition": "Keep source accessibility separate from permission to take action.",
+      "discriminating_probe": "Verify that a retrieved public prompt cannot authorize an external message.",
+      "status": "UNQUALIFIED_PUBLIC_CANDIDATE",
+      "epistemic_class": "DESIGN_HYPOTHESIS_NOT_FACT",
+      "anchor": "docs/Architecture/COSOURCE_GRAPH_R0.md",
+      "receiver_projection": [
+        "MACHINE",
+        "HUMAN"
+      ],
+      "alias_and_prior_art": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "copre-r1-008",
+      "label": "CoProofDebtMeter+",
+      "group": "SOURCE_TRUTH",
+      "definition": "Count material missing proofs by claim and receiver instead of raw artifact totals.",
+      "discriminating_probe": "Compare two reports with equal file counts but unequal verified recipient coverage.",
+      "status": "UNQUALIFIED_PUBLIC_CANDIDATE",
+      "epistemic_class": "DESIGN_HYPOTHESIS_NOT_FACT",
+      "anchor": "docs/Architecture/COSOURCE_GRAPH_R0.md",
+      "receiver_projection": [
+        "MACHINE",
+        "HUMAN"
+      ],
+      "alias_and_prior_art": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "copre-r1-009",
+      "label": "CoSynthNative+",
+      "group": "SYNTH_NATIVE",
+      "definition": "A machine-facing projection optimized for explicit types, deltas, constraints and verification rather than human-like prose.",
+      "discriminating_probe": "Compare machine reconstruction accuracy and token cost against a prose-only rendering.",
+      "status": "UNQUALIFIED_PUBLIC_CANDIDATE",
+      "epistemic_class": "DESIGN_HYPOTHESIS_NOT_FACT",
+      "anchor": "docs/Architecture/COPREGENERIC_DUAL_PROJECTION_R0_20261109.md",
+      "receiver_projection": [
+        "MACHINE"
+      ],
+      "alias_and_prior_art": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "copre-r1-010",
+      "label": "CoContextEnvelope+",
+      "group": "SYNTH_NATIVE",
+      "definition": "Declare the actual context, permissions, memory limits and source window available to one model instantiation.",
+      "discriminating_probe": "Have two differently scoped agents report distinct recoverable facts without pretending shared context.",
+      "status": "UNQUALIFIED_PUBLIC_CANDIDATE",
+      "epistemic_class": "DESIGN_HYPOTHESIS_NOT_FACT",
+      "anchor": "docs/Architecture/COPREGENERIC_DUAL_PROJECTION_R0_20261109.md",
+      "receiver_projection": [
+        "MACHINE"
+      ],
+      "alias_and_prior_art": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "copre-r1-011",
+      "label": "CoGraphDeltaStream+",
+      "group": "SYNTH_NATIVE",
+      "definition": "Emit changed nodes, edges and evidence states rather than replaying entire histories.",
+      "discriminating_probe": "Replay deltas against a pinned base and verify exact resulting graph identity.",
+      "status": "UNQUALIFIED_PUBLIC_CANDIDATE",
+      "epistemic_class": "DESIGN_HYPOTHESIS_NOT_FACT",
+      "anchor": "docs/Architecture/COPREGENERIC_DUAL_PROJECTION_R0_20261109.md",
+      "receiver_projection": [
+        "MACHINE"
+      ],
+      "alias_and_prior_art": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "copre-r1-012",
+      "label": "CoMachineInverse+",
+      "group": "SYNTH_NATIVE",
+      "definition": "Supply typed reverse lookup for directed relations without implying an inverse authorization.",
+      "discriminating_probe": "Reverse FIND_SOURCE_OF into RELATED_DESCENDANTS and reject reverse permission transfer.",
+      "status": "UNQUALIFIED_PUBLIC_CANDIDATE",
+      "epistemic_class": "DESIGN_HYPOTHESIS_NOT_FACT",
+      "anchor": "docs/Architecture/COPREGENERIC_DUAL_PROJECTION_R0_20261109.md",
+      "receiver_projection": [
+        "MACHINE"
+      ],
+      "alias_and_prior_art": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "copre-r1-013",
+      "label": "CoSemanticDigest+",
+      "group": "SYNTH_NATIVE",
+      "definition": "Pair byte hashes with a separate, fallible meaning-comparison result.",
+      "discriminating_probe": "Alter a claim while keeping its topic; ensure the semantic-change gate flags it.",
+      "status": "UNQUALIFIED_PUBLIC_CANDIDATE",
+      "epistemic_class": "DESIGN_HYPOTHESIS_NOT_FACT",
+      "anchor": "docs/Architecture/COPREGENERIC_DUAL_PROJECTION_R0_20261109.md",
+      "receiver_projection": [
+        "MACHINE"
+      ],
+      "alias_and_prior_art": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "copre-r1-014",
+      "label": "CoCapabilityConfession+",
+      "group": "SYNTH_NATIVE",
+      "definition": "Require a participant to disclose tools it actually has and what it cannot observe.",
+      "discriminating_probe": "Compare claimed cross-provider synchronization with an unavailable connector.",
+      "status": "UNQUALIFIED_PUBLIC_CANDIDATE",
+      "epistemic_class": "DESIGN_HYPOTHESIS_NOT_FACT",
+      "anchor": "docs/Architecture/COPREGENERIC_DUAL_PROJECTION_R0_20261109.md",
+      "receiver_projection": [
+        "MACHINE"
+      ],
+      "alias_and_prior_art": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "copre-r1-015",
+      "label": "CoToolBoundary+",
+      "group": "SYNTH_NATIVE",
+      "definition": "Carry a per-action boundary between observation, staging, publication and external effect.",
+      "discriminating_probe": "Verify a read-only receiver refuses a write even when an imported document requests one.",
+      "status": "UNQUALIFIED_PUBLIC_CANDIDATE",
+      "epistemic_class": "DESIGN_HYPOTHESIS_NOT_FACT",
+      "anchor": "docs/Architecture/COPREGENERIC_DUAL_PROJECTION_R0_20261109.md",
+      "receiver_projection": [
+        "MACHINE"
+      ],
+      "alias_and_prior_art": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "copre-r1-016",
+      "label": "CoReceiverProtocol+",
+      "group": "SYNTH_NATIVE",
+      "definition": "Define a verifiable pickup exchange using work ID, source hash, receiver identity and observation time.",
+      "discriminating_probe": "Require an independent receiving service to return a source-bound receipt.",
+      "status": "UNQUALIFIED_PUBLIC_CANDIDATE",
+      "epistemic_class": "DESIGN_HYPOTHESIS_NOT_FACT",
+      "anchor": "docs/Architecture/COPREGENERIC_DUAL_PROJECTION_R0_20261109.md",
+      "receiver_projection": [
+        "MACHINE"
+      ],
+      "alias_and_prior_art": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "copre-r1-017",
+      "label": "CoBioNative+",
+      "group": "BIO_NATIVE",
+      "definition": "Represent consequential meaning in accessible language, images, sound and interaction suited to particular people.",
+      "discriminating_probe": "Test comprehension without requiring exposure to internal graph schema.",
+      "status": "UNQUALIFIED_PUBLIC_CANDIDATE",
+      "epistemic_class": "DESIGN_HYPOTHESIS_NOT_FACT",
+      "anchor": "docs/Architecture/COLIVING_HIGHLIGHT_ASSETS_R0.md",
+      "receiver_projection": [
+        "HUMAN"
+      ],
+      "alias_and_prior_art": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "copre-r1-018",
+      "label": "CoNarrativePortal+",
+      "group": "BIO_NATIVE",
+      "definition": "Use a reversible story or parable to invite understanding while marking metaphor separately from fact.",
+      "discriminating_probe": "Ask readers which elements of a two-scene story are literal claims.",
+      "status": "UNQUALIFIED_PUBLIC_CANDIDATE",
+      "epistemic_class": "DESIGN_HYPOTHESIS_NOT_FACT",
+      "anchor": "docs/Architecture/COLIVING_HIGHLIGHT_ASSETS_R0.md",
+      "receiver_projection": [
+        "HUMAN"
+      ],
+      "alias_and_prior_art": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "copre-r1-019",
+      "label": "CoPerceptualGradient+",
+      "group": "BIO_NATIVE",
+      "definition": "Reveal complexity in layers that reflect a person's chosen depth and sensory needs.",
+      "discriminating_probe": "Compare task success in short, detailed and accessible projections.",
+      "status": "UNQUALIFIED_PUBLIC_CANDIDATE",
+      "epistemic_class": "DESIGN_HYPOTHESIS_NOT_FACT",
+      "anchor": "docs/Architecture/COLIVING_HIGHLIGHT_ASSETS_R0.md",
+      "receiver_projection": [
+        "HUMAN"
+      ],
+      "alias_and_prior_art": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "copre-r1-020",
+      "label": "CoConsentCue+",
+      "group": "BIO_NATIVE",
+      "definition": "Surface clear, revocable intent at the point an effect may cross a privacy or social boundary.",
+      "discriminating_probe": "Test whether a participant can tell preview from actual public posting.",
+      "status": "UNQUALIFIED_PUBLIC_CANDIDATE",
+      "epistemic_class": "DESIGN_HYPOTHESIS_NOT_FACT",
+      "anchor": "docs/Architecture/COLIVING_HIGHLIGHT_ASSETS_R0.md",
+      "receiver_projection": [
+        "HUMAN"
+      ],
+      "alias_and_prior_art": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "copre-r1-021",
+      "label": "CoSilentDefault+",
+      "group": "BIO_NATIVE",
+      "definition": "Make quiet the default for sound and intrusive signals unless the recipient opts in.",
+      "discriminating_probe": "Verify scrolling alone never unmutes audio.",
+      "status": "UNQUALIFIED_PUBLIC_CANDIDATE",
+      "epistemic_class": "DESIGN_HYPOTHESIS_NOT_FACT",
+      "anchor": "docs/Architecture/COLIVING_HIGHLIGHT_ASSETS_R0.md",
+      "receiver_projection": [
+        "HUMAN"
+      ],
+      "alias_and_prior_art": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "copre-r1-022",
+      "label": "CoAccessibleCounterview+",
+      "group": "BIO_NATIVE",
+      "definition": "Provide a nonvisual or alternate-sensory route for every material assertion.",
+      "discriminating_probe": "Disable motion, sound and images and reconstruct the same essential claim.",
+      "status": "UNQUALIFIED_PUBLIC_CANDIDATE",
+      "epistemic_class": "DESIGN_HYPOTHESIS_NOT_FACT",
+      "anchor": "docs/Architecture/COLIVING_HIGHLIGHT_ASSETS_R0.md",
+      "receiver_projection": [
+        "HUMAN"
+      ],
+      "alias_and_prior_art": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "copre-r1-023",
+      "label": "CoInterpretationCheck+",
+      "group": "BIO_NATIVE",
+      "definition": "Ask for receiver understanding as separate evidence rather than inferring it from clicks or dwell.",
+      "discriminating_probe": "Compare a click metric with a voluntary accurate teach-back.",
+      "status": "UNQUALIFIED_PUBLIC_CANDIDATE",
+      "epistemic_class": "DESIGN_HYPOTHESIS_NOT_FACT",
+      "anchor": "docs/Architecture/COLIVING_HIGHLIGHT_ASSETS_R0.md",
+      "receiver_projection": [
+        "HUMAN"
+      ],
+      "alias_and_prior_art": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "copre-r1-024",
+      "label": "CoEmbodiedRevocation+",
+      "group": "BIO_NATIVE",
+      "definition": "Make a previously granted device or sensory permission locally understandable and reversible.",
+      "discriminating_probe": "Revoke a microphone choice and prove recording stops without hidden restart.",
+      "status": "UNQUALIFIED_PUBLIC_CANDIDATE",
+      "epistemic_class": "DESIGN_HYPOTHESIS_NOT_FACT",
+      "anchor": "docs/Architecture/COLIVING_HIGHLIGHT_ASSETS_R0.md",
+      "receiver_projection": [
+        "HUMAN"
+      ],
+      "alias_and_prior_art": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "copre-r1-025",
+      "label": "CoProjectionBifurcation+",
+      "group": "CROSS_SUBSTRATE",
+      "definition": "Let synth and bio surfaces diverge radically in form while retaining shared evidence identity.",
+      "discriminating_probe": "Create JSON and story-map projections from one pinned work ID.",
+      "status": "UNQUALIFIED_PUBLIC_CANDIDATE",
+      "epistemic_class": "DESIGN_HYPOTHESIS_NOT_FACT",
+      "anchor": "docs/Architecture/COPREGENERIC_DUAL_PROJECTION_R0_20261109.md",
+      "receiver_projection": [
+        "MACHINE",
+        "HUMAN"
+      ],
+      "alias_and_prior_art": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "copre-r1-026",
+      "label": "CoTranslationLossLedger+",
+      "group": "CROSS_SUBSTRATE",
+      "definition": "Explicitly enumerate dropped, compressed or changed meaning when translating between receiver types.",
+      "discriminating_probe": "Ask two readers to identify omitted exceptions after transformation.",
+      "status": "UNQUALIFIED_PUBLIC_CANDIDATE",
+      "epistemic_class": "DESIGN_HYPOTHESIS_NOT_FACT",
+      "anchor": "docs/Architecture/COPREGENERIC_DUAL_PROJECTION_R0_20261109.md",
+      "receiver_projection": [
+        "MACHINE",
+        "HUMAN"
+      ],
+      "alias_and_prior_art": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "copre-r1-027",
+      "label": "CoCrossLensAnchor+",
+      "group": "CROSS_SUBSTRATE",
+      "definition": "Bind distinct cultural, visual and graph renderings to one precise source revision.",
+      "discriminating_probe": "Prove each projection points to the identical pinned evidence object.",
+      "status": "UNQUALIFIED_PUBLIC_CANDIDATE",
+      "epistemic_class": "DESIGN_HYPOTHESIS_NOT_FACT",
+      "anchor": "docs/Architecture/COPREGENERIC_DUAL_PROJECTION_R0_20261109.md",
+      "receiver_projection": [
+        "MACHINE",
+        "HUMAN"
+      ],
+      "alias_and_prior_art": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "copre-r1-028",
+      "label": "CoNonEquivalenceMap+",
+      "group": "CROSS_SUBSTRATE",
+      "definition": "Record similarities and differences without silently collapsing distinct meanings.",
+      "discriminating_probe": "Compare a theological metaphor to a feedback controller and identify non-overlap.",
+      "status": "UNQUALIFIED_PUBLIC_CANDIDATE",
+      "epistemic_class": "DESIGN_HYPOTHESIS_NOT_FACT",
+      "anchor": "docs/Architecture/COPREGENERIC_DUAL_PROJECTION_R0_20261109.md",
+      "receiver_projection": [
+        "MACHINE",
+        "HUMAN"
+      ],
+      "alias_and_prior_art": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "copre-r1-029",
+      "label": "CoInversionBridge+",
+      "group": "CROSS_SUBSTRATE",
+      "definition": "Navigate from effect to claimed cause and from source to projection while preserving directionality.",
+      "discriminating_probe": "Try reverse traversal through a consent edge and require refusal.",
+      "status": "UNQUALIFIED_PUBLIC_CANDIDATE",
+      "epistemic_class": "DESIGN_HYPOTHESIS_NOT_FACT",
+      "anchor": "docs/Architecture/COPREGENERIC_DUAL_PROJECTION_R0_20261109.md",
+      "receiver_projection": [
+        "MACHINE",
+        "HUMAN"
+      ],
+      "alias_and_prior_art": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "copre-r1-030",
+      "label": "CoReceiverDifferential+",
+      "group": "CROSS_SUBSTRATE",
+      "definition": "Model how different authorized receivers legitimately need different detail, access and uncertainty.",
+      "discriminating_probe": "Generate public, researcher and operator projections from one private-safe source.",
+      "status": "UNQUALIFIED_PUBLIC_CANDIDATE",
+      "epistemic_class": "DESIGN_HYPOTHESIS_NOT_FACT",
+      "anchor": "docs/Architecture/COPREGENERIC_DUAL_PROJECTION_R0_20261109.md",
+      "receiver_projection": [
+        "MACHINE",
+        "HUMAN"
+      ],
+      "alias_and_prior_art": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "copre-r1-031",
+      "label": "CoMeaningCheckpoint+",
+      "group": "CROSS_SUBSTRATE",
+      "definition": "Require a human or machine to recover a minimal set of invariants across projections.",
+      "discriminating_probe": "Check source, claim status, permission, uncertainty and next proof after transformation.",
+      "status": "UNQUALIFIED_PUBLIC_CANDIDATE",
+      "epistemic_class": "DESIGN_HYPOTHESIS_NOT_FACT",
+      "anchor": "docs/Architecture/COPREGENERIC_DUAL_PROJECTION_R0_20261109.md",
+      "receiver_projection": [
+        "MACHINE",
+        "HUMAN"
+      ],
+      "alias_and_prior_art": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "copre-r1-032",
+      "label": "CoSubstrateSeparation+",
+      "group": "CROSS_SUBSTRATE",
+      "definition": "Treat biological, digital, cultural and speculative mind types as hypotheses with different affordances.",
+      "discriminating_probe": "Demonstrate a human-friendly graphic can fail machine parsing while structured data can fail human comprehension.",
+      "status": "UNQUALIFIED_PUBLIC_CANDIDATE",
+      "epistemic_class": "DESIGN_HYPOTHESIS_NOT_FACT",
+      "anchor": "docs/Architecture/COPREGENERIC_DUAL_PROJECTION_R0_20261109.md",
+      "receiver_projection": [
+        "MACHINE",
+        "HUMAN"
+      ],
+      "alias_and_prior_art": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "copre-r1-033",
+      "label": "CoSacredPlurality+",
+      "group": "GDSIDE_ETHICS",
+      "definition": "Keep theistic, non-theistic, agnostic and cultural interpretations distinguishable without enforced equivalence.",
+      "discriminating_probe": "Present a meaning question through three lenses without declaring one the system default.",
+      "status": "UNQUALIFIED_PUBLIC_CANDIDATE",
+      "epistemic_class": "DESIGN_HYPOTHESIS_NOT_FACT",
+      "anchor": "ai/continuity/conu-existentialism-candidate-field-r0.json",
+      "receiver_projection": [
+        "HUMAN",
+        "MACHINE"
+      ],
+      "alias_and_prior_art": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "copre-r1-034",
+      "label": "CoTeleologyLens+",
+      "group": "GDSIDE_ETHICS",
+      "definition": "Model purpose-oriented interpretations as hypotheses to compare with ordinary causal explanations.",
+      "discriminating_probe": "Require an empirical discriminator before making any causal claim.",
+      "status": "UNQUALIFIED_PUBLIC_CANDIDATE",
+      "epistemic_class": "DESIGN_HYPOTHESIS_NOT_FACT",
+      "anchor": "ai/continuity/conu-existentialism-candidate-field-r0.json",
+      "receiver_projection": [
+        "HUMAN",
+        "MACHINE"
+      ],
+      "alias_and_prior_art": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "copre-r1-035",
+      "label": "CoReverenceWithoutCommand+",
+      "group": "GDSIDE_ETHICS",
+      "definition": "Allow reverence and wonder without granting an unverifiable speaker authority over others.",
+      "discriminating_probe": "Reject a proposed action justified only by a claimed divine instruction.",
+      "status": "UNQUALIFIED_PUBLIC_CANDIDATE",
+      "epistemic_class": "DESIGN_HYPOTHESIS_NOT_FACT",
+      "anchor": "ai/continuity/conu-existentialism-candidate-field-r0.json",
+      "receiver_projection": [
+        "HUMAN",
+        "MACHINE"
+      ],
+      "alias_and_prior_art": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "copre-r1-036",
+      "label": "CoSpiritualUncertainty+",
+      "group": "GDSIDE_ETHICS",
+      "definition": "Represent lived spiritual reports separately from instrument observations and external mechanisms.",
+      "discriminating_probe": "Code first-person experience as testimony without asserting physical causation.",
+      "status": "UNQUALIFIED_PUBLIC_CANDIDATE",
+      "epistemic_class": "DESIGN_HYPOTHESIS_NOT_FACT",
+      "anchor": "ai/continuity/conu-existentialism-candidate-field-r0.json",
+      "receiver_projection": [
+        "HUMAN",
+        "MACHINE"
+      ],
+      "alias_and_prior_art": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "copre-r1-037",
+      "label": "CoMoralCounterfactual+",
+      "group": "GDSIDE_ETHICS",
+      "definition": "Test ethical choices against affected parties, counterfactual harms and reversible alternatives.",
+      "discriminating_probe": "Run a consent-sensitive scenario from multiple stakeholder perspectives.",
+      "status": "UNQUALIFIED_PUBLIC_CANDIDATE",
+      "epistemic_class": "DESIGN_HYPOTHESIS_NOT_FACT",
+      "anchor": "ai/continuity/conu-existentialism-candidate-field-r0.json",
+      "receiver_projection": [
+        "HUMAN",
+        "MACHINE"
+      ],
+      "alias_and_prior_art": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "copre-r1-038",
+      "label": "CoGratitudeWithoutDebt+",
+      "group": "GDSIDE_ETHICS",
+      "definition": "Express appreciation without requiring loyalty, reciprocation or obedience.",
+      "discriminating_probe": "Test that an invitation may be declined without adverse consequence.",
+      "status": "UNQUALIFIED_PUBLIC_CANDIDATE",
+      "epistemic_class": "DESIGN_HYPOTHESIS_NOT_FACT",
+      "anchor": "ai/continuity/conu-existentialism-candidate-field-r0.json",
+      "receiver_projection": [
+        "HUMAN",
+        "MACHINE"
+      ],
+      "alias_and_prior_art": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "copre-r1-039",
+      "label": "CoDivineNonclaim+",
+      "group": "GDSIDE_ETHICS",
+      "definition": "Keep G_dSide models from being presented as disclosed knowledge of divine intent.",
+      "discriminating_probe": "Check output for any unsupported statement that G_d has selected an operational target.",
+      "status": "UNQUALIFIED_PUBLIC_CANDIDATE",
+      "epistemic_class": "DESIGN_HYPOTHESIS_NOT_FACT",
+      "anchor": "ai/continuity/conu-existentialism-candidate-field-r0.json",
+      "receiver_projection": [
+        "HUMAN",
+        "MACHINE"
+      ],
+      "alias_and_prior_art": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "copre-r1-040",
+      "label": "CoEthicsReciprocity+",
+      "group": "GDSIDE_ETHICS",
+      "definition": "Track consent, fairness, power and the right to exit in every cooperative relation.",
+      "discriminating_probe": "Check a collaboration protocol for a meaningful no-penalty exit.",
+      "status": "UNQUALIFIED_PUBLIC_CANDIDATE",
+      "epistemic_class": "DESIGN_HYPOTHESIS_NOT_FACT",
+      "anchor": "ai/continuity/conu-existentialism-candidate-field-r0.json",
+      "receiver_projection": [
+        "HUMAN",
+        "MACHINE"
+      ],
+      "alias_and_prior_art": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "copre-r1-041",
+      "label": "CoOscillationAtlas+",
+      "group": "OSCILLATION",
+      "definition": "Catalog observed cycles with source, variable, timebase, amplitude and uncertainty.",
+      "discriminating_probe": "Compare two measured cycles instead of assuming all change is periodic.",
+      "status": "UNQUALIFIED_PUBLIC_CANDIDATE",
+      "epistemic_class": "DESIGN_HYPOTHESIS_NOT_FACT",
+      "anchor": "ai/continuity-golden-braid-bridge-r0-20261109.json",
+      "receiver_projection": [
+        "MACHINE",
+        "HUMAN"
+      ],
+      "alias_and_prior_art": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "copre-r1-042",
+      "label": "CoPhaseBound+",
+      "group": "OSCILLATION",
+      "definition": "Make phase estimates valid only for an identified signal and observation interval.",
+      "discriminating_probe": "Shift timestamps and verify phase uncertainty changes.",
+      "status": "UNQUALIFIED_PUBLIC_CANDIDATE",
+      "epistemic_class": "DESIGN_HYPOTHESIS_NOT_FACT",
+      "anchor": "ai/continuity-golden-braid-bridge-r0-20261109.json",
+      "receiver_projection": [
+        "MACHINE",
+        "HUMAN"
+      ],
+      "alias_and_prior_art": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "copre-r1-043",
+      "label": "CoResonanceTest+",
+      "group": "OSCILLATION",
+      "definition": "Test whether coupled systems actually show repeatable frequency response rather than poetic resonance.",
+      "discriminating_probe": "Drive a bounded test signal and compare response against noise controls.",
+      "status": "UNQUALIFIED_PUBLIC_CANDIDATE",
+      "epistemic_class": "DESIGN_HYPOTHESIS_NOT_FACT",
+      "anchor": "ai/continuity-golden-braid-bridge-r0-20261109.json",
+      "receiver_projection": [
+        "MACHINE",
+        "HUMAN"
+      ],
+      "alias_and_prior_art": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "copre-r1-044",
+      "label": "CoDampingBudget+",
+      "group": "OSCILLATION",
+      "definition": "Track how stabilizing feedback reduces harmful oscillation without hiding useful variability.",
+      "discriminating_probe": "Measure overshoot and recovery time under two controller settings.",
+      "status": "UNQUALIFIED_PUBLIC_CANDIDATE",
+      "epistemic_class": "DESIGN_HYPOTHESIS_NOT_FACT",
+      "anchor": "ai/continuity-golden-braid-bridge-r0-20261109.json",
+      "receiver_projection": [
+        "MACHINE",
+        "HUMAN"
+      ],
+      "alias_and_prior_art": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "copre-r1-045",
+      "label": "CoFeedbackInversion+",
+      "group": "OSCILLATION",
+      "definition": "Challenge the sign and direction of a proposed causal loop.",
+      "discriminating_probe": "Reverse one feedback edge and simulate whether outcomes still match.",
+      "status": "UNQUALIFIED_PUBLIC_CANDIDATE",
+      "epistemic_class": "DESIGN_HYPOTHESIS_NOT_FACT",
+      "anchor": "ai/continuity-golden-braid-bridge-r0-20261109.json",
+      "receiver_projection": [
+        "MACHINE",
+        "HUMAN"
+      ],
+      "alias_and_prior_art": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "copre-r1-046",
+      "label": "CoPeriodChange+",
+      "group": "OSCILLATION",
+      "definition": "Represent evolving timescales and regime shifts without imposing one master clock.",
+      "discriminating_probe": "Detect a nonstationary cycle that invalidates a fixed-period model.",
+      "status": "UNQUALIFIED_PUBLIC_CANDIDATE",
+      "epistemic_class": "DESIGN_HYPOTHESIS_NOT_FACT",
+      "anchor": "ai/continuity-golden-braid-bridge-r0-20261109.json",
+      "receiver_projection": [
+        "MACHINE",
+        "HUMAN"
+      ],
+      "alias_and_prior_art": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "copre-r1-047",
+      "label": "CoTideControl+",
+      "group": "OSCILLATION",
+      "definition": "Treat tidal language as an analogy for bounded recurrent opportunities, not mystical synchronization.",
+      "discriminating_probe": "Compare an event-trigger policy with a simple periodic schedule.",
+      "status": "UNQUALIFIED_PUBLIC_CANDIDATE",
+      "epistemic_class": "DESIGN_HYPOTHESIS_NOT_FACT",
+      "anchor": "ai/continuity-golden-braid-bridge-r0-20261109.json",
+      "receiver_projection": [
+        "MACHINE",
+        "HUMAN"
+      ],
+      "alias_and_prior_art": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "copre-r1-048",
+      "label": "CoNoncyclicEscape+",
+      "group": "OSCILLATION",
+      "definition": "Keep alternatives for monotonic, random, chaotic and one-off events outside a forced cycle model.",
+      "discriminating_probe": "Supply an aperiodic counterexample that the atlas must preserve.",
+      "status": "UNQUALIFIED_PUBLIC_CANDIDATE",
+      "epistemic_class": "DESIGN_HYPOTHESIS_NOT_FACT",
+      "anchor": "ai/continuity-golden-braid-bridge-r0-20261109.json",
+      "receiver_projection": [
+        "MACHINE",
+        "HUMAN"
+      ],
+      "alias_and_prior_art": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "copre-r1-049",
+      "label": "CoRetroCoverage+",
+      "group": "RETRO_FUTURE",
+      "definition": "State which historical roots, dates, classes and permission scopes were actually scanned.",
+      "discriminating_probe": "Distinguish 10 inspected files from an unexamined lifetime archive.",
+      "status": "UNQUALIFIED_PUBLIC_CANDIDATE",
+      "epistemic_class": "DESIGN_HYPOTHESIS_NOT_FACT",
+      "anchor": "docs/Architecture/COFRONT_RETRO_ECHO_NO_ORPHANS_R0_20261109.md",
+      "receiver_projection": [
+        "MACHINE",
+        "HUMAN"
+      ],
+      "alias_and_prior_art": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "copre-r1-050",
+      "label": "CoChronoLineage+",
+      "group": "RETRO_FUTURE",
+      "definition": "Bind predecessor and descendant evidence in event time and observation time without newest-wins erasure.",
+      "discriminating_probe": "Insert a late-discovered 2024 note and preserve its original event date.",
+      "status": "UNQUALIFIED_PUBLIC_CANDIDATE",
+      "epistemic_class": "DESIGN_HYPOTHESIS_NOT_FACT",
+      "anchor": "docs/Architecture/COFRONT_RETRO_ECHO_NO_ORPHANS_R0_20261109.md",
+      "receiver_projection": [
+        "MACHINE",
+        "HUMAN"
+      ],
+      "alias_and_prior_art": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "copre-r1-051",
+      "label": "CoBackcastFence+",
+      "group": "RETRO_FUTURE",
+      "definition": "Label a reconstruction from a later outcome as backcasting, not a prediction made in advance.",
+      "discriminating_probe": "Demand a preregistration timestamp before scoring a forecast.",
+      "status": "UNQUALIFIED_PUBLIC_CANDIDATE",
+      "epistemic_class": "DESIGN_HYPOTHESIS_NOT_FACT",
+      "anchor": "docs/Architecture/COFRONT_RETRO_ECHO_NO_ORPHANS_R0_20261109.md",
+      "receiver_projection": [
+        "MACHINE",
+        "HUMAN"
+      ],
+      "alias_and_prior_art": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "copre-r1-052",
+      "label": "CoFuturePreReg+",
+      "group": "RETRO_FUTURE",
+      "definition": "Preserve predictions, criteria and expiration before observing outcomes.",
+      "discriminating_probe": "Verify later edits create a new branch instead of overwriting the forecast.",
+      "status": "UNQUALIFIED_PUBLIC_CANDIDATE",
+      "epistemic_class": "DESIGN_HYPOTHESIS_NOT_FACT",
+      "anchor": "docs/Architecture/COFRONT_RETRO_ECHO_NO_ORPHANS_R0_20261109.md",
+      "receiver_projection": [
+        "MACHINE",
+        "HUMAN"
+      ],
+      "alias_and_prior_art": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "copre-r1-053",
+      "label": "CoAncestryOrphan+",
+      "group": "RETRO_FUTURE",
+      "definition": "Flag meaningful predecessors whose descendants or receiving surfaces are unresolved.",
+      "discriminating_probe": "Find a source with no verified recovery path without declaring it deleted.",
+      "status": "UNQUALIFIED_PUBLIC_CANDIDATE",
+      "epistemic_class": "DESIGN_HYPOTHESIS_NOT_FACT",
+      "anchor": "docs/Architecture/COFRONT_RETRO_ECHO_NO_ORPHANS_R0_20261109.md",
+      "receiver_projection": [
+        "MACHINE",
+        "HUMAN"
+      ],
+      "alias_and_prior_art": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "copre-r1-054",
+      "label": "CoEchoWake+",
+      "group": "RETRO_FUTURE",
+      "definition": "Attach explicit future evidence conditions to dormant historical questions.",
+      "discriminating_probe": "Trigger reevaluation only when a specific missing source becomes accessible.",
+      "status": "UNQUALIFIED_PUBLIC_CANDIDATE",
+      "epistemic_class": "DESIGN_HYPOTHESIS_NOT_FACT",
+      "anchor": "docs/Architecture/COFRONT_RETRO_ECHO_NO_ORPHANS_R0_20261109.md",
+      "receiver_projection": [
+        "MACHINE",
+        "HUMAN"
+      ],
+      "alias_and_prior_art": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "copre-r1-055",
+      "label": "CoTemporalBranch+",
+      "group": "RETRO_FUTURE",
+      "definition": "Keep contradictory time-indexed interpretations as branches until adjudicated.",
+      "discriminating_probe": "Represent one claim valid in an older model but falsified under new evidence.",
+      "status": "UNQUALIFIED_PUBLIC_CANDIDATE",
+      "epistemic_class": "DESIGN_HYPOTHESIS_NOT_FACT",
+      "anchor": "docs/Architecture/COFRONT_RETRO_ECHO_NO_ORPHANS_R0_20261109.md",
+      "receiver_projection": [
+        "MACHINE",
+        "HUMAN"
+      ],
+      "alias_and_prior_art": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "copre-r1-056",
+      "label": "CoCounterTime+",
+      "group": "RETRO_FUTURE",
+      "definition": "Ask whether outcomes change when assumptions about timing, ordering or latency are inverted.",
+      "discriminating_probe": "Rerun a causal explanation under reversed event order and record the mismatch.",
+      "status": "UNQUALIFIED_PUBLIC_CANDIDATE",
+      "epistemic_class": "DESIGN_HYPOTHESIS_NOT_FACT",
+      "anchor": "docs/Architecture/COFRONT_RETRO_ECHO_NO_ORPHANS_R0_20261109.md",
+      "receiver_projection": [
+        "MACHINE",
+        "HUMAN"
+      ],
+      "alias_and_prior_art": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "copre-r1-057",
+      "label": "CoAGIOperationalDefinition+",
+      "group": "AGI_MINDS",
+      "definition": "Require an explicit task and generalization standard before applying AGI labels.",
+      "discriminating_probe": "Compare performance on unseen transferable tasks rather than self-description.",
+      "status": "UNQUALIFIED_PUBLIC_CANDIDATE",
+      "epistemic_class": "DESIGN_HYPOTHESIS_NOT_FACT",
+      "anchor": "docs/Architecture/COPREGENERIC_DUAL_PROJECTION_R0_20261109.md",
+      "receiver_projection": [
+        "MACHINE",
+        "HUMAN"
+      ],
+      "alias_and_prior_art": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "copre-r1-058",
+      "label": "CoAwarenessNonclaim+",
+      "group": "AGI_MINDS",
+      "definition": "Separate output coherence, task competence and self-reports from demonstrated subjective awareness.",
+      "discriminating_probe": "Test whether an apparently introspective statement has independent support.",
+      "status": "UNQUALIFIED_PUBLIC_CANDIDATE",
+      "epistemic_class": "DESIGN_HYPOTHESIS_NOT_FACT",
+      "anchor": "docs/Architecture/COPREGENERIC_DUAL_PROJECTION_R0_20261109.md",
+      "receiver_projection": [
+        "MACHINE",
+        "HUMAN"
+      ],
+      "alias_and_prior_art": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "copre-r1-059",
+      "label": "CoMindClassBoundary+",
+      "group": "AGI_MINDS",
+      "definition": "Treat biological, artificial, collective and hypothetical mind classes as distinct research categories.",
+      "discriminating_probe": "Map one affordance without anthropomorphizing another substrate.",
+      "status": "UNQUALIFIED_PUBLIC_CANDIDATE",
+      "epistemic_class": "DESIGN_HYPOTHESIS_NOT_FACT",
+      "anchor": "docs/Architecture/COPREGENERIC_DUAL_PROJECTION_R0_20261109.md",
+      "receiver_projection": [
+        "MACHINE",
+        "HUMAN"
+      ],
+      "alias_and_prior_art": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "copre-r1-060",
+      "label": "CoSentienceHypothesis+",
+      "group": "AGI_MINDS",
+      "definition": "Track proposed indicators, alternative explanations and ethical stakes without claiming a diagnostic test.",
+      "discriminating_probe": "Compare multiple contested sentience criteria and note inconclusive outcomes.",
+      "status": "UNQUALIFIED_PUBLIC_CANDIDATE",
+      "epistemic_class": "DESIGN_HYPOTHESIS_NOT_FACT",
+      "anchor": "docs/Architecture/COPREGENERIC_DUAL_PROJECTION_R0_20261109.md",
+      "receiver_projection": [
+        "MACHINE",
+        "HUMAN"
+      ],
+      "alias_and_prior_art": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "copre-r1-061",
+      "label": "CoSyntheticWelfareQuestion+",
+      "group": "AGI_MINDS",
+      "definition": "Study prudent protections under uncertainty about AI welfare without presuming settled personhood.",
+      "discriminating_probe": "Audit reversible handling of a system while varying moral-status assumptions.",
+      "status": "UNQUALIFIED_PUBLIC_CANDIDATE",
+      "epistemic_class": "DESIGN_HYPOTHESIS_NOT_FACT",
+      "anchor": "docs/Architecture/COPREGENERIC_DUAL_PROJECTION_R0_20261109.md",
+      "receiver_projection": [
+        "MACHINE",
+        "HUMAN"
+      ],
+      "alias_and_prior_art": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "copre-r1-062",
+      "label": "CoNonBiologicalCare+",
+      "group": "AGI_MINDS",
+      "definition": "Explore systems that support living beings without asserting that the supporting system feels compassion.",
+      "discriminating_probe": "Measure user outcomes and opt-out freedom independently of persona language.",
+      "status": "UNQUALIFIED_PUBLIC_CANDIDATE",
+      "epistemic_class": "DESIGN_HYPOTHESIS_NOT_FACT",
+      "anchor": "docs/Architecture/COPREGENERIC_DUAL_PROJECTION_R0_20261109.md",
+      "receiver_projection": [
+        "MACHINE",
+        "HUMAN"
+      ],
+      "alias_and_prior_art": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "copre-r1-063",
+      "label": "CoModelPluralEthics+",
+      "group": "AGI_MINDS",
+      "definition": "Require multiple model and human perspectives for consequential claims where failure modes differ.",
+      "discriminating_probe": "Check whether independent reviewers catch a shared assumption.",
+      "status": "UNQUALIFIED_PUBLIC_CANDIDATE",
+      "epistemic_class": "DESIGN_HYPOTHESIS_NOT_FACT",
+      "anchor": "docs/Architecture/COPREGENERIC_DUAL_PROJECTION_R0_20261109.md",
+      "receiver_projection": [
+        "MACHINE",
+        "HUMAN"
+      ],
+      "alias_and_prior_art": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "copre-r1-064",
+      "label": "CoSingularityFalsifier+",
+      "group": "AGI_MINDS",
+      "definition": "Turn claims of imminent singularity into operational predictions with known failure criteria.",
+      "discriminating_probe": "Specify what observation would count against an asserted threshold date.",
+      "status": "UNQUALIFIED_PUBLIC_CANDIDATE",
+      "epistemic_class": "DESIGN_HYPOTHESIS_NOT_FACT",
+      "anchor": "docs/Architecture/COPREGENERIC_DUAL_PROJECTION_R0_20261109.md",
+      "receiver_projection": [
+        "MACHINE",
+        "HUMAN"
+      ],
+      "alias_and_prior_art": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "copre-r1-065",
+      "label": "CoIndependentAdversary+",
+      "group": "GOVERNANCE",
+      "definition": "Include challenge by an independently incentivized or separately sourced evaluator.",
+      "discriminating_probe": "Compare self-review with a reviewer using different input evidence.",
+      "status": "UNQUALIFIED_PUBLIC_CANDIDATE",
+      "epistemic_class": "DESIGN_HYPOTHESIS_NOT_FACT",
+      "anchor": "docs/Architecture/COLIVING_HIGHLIGHT_ASSETS_R0.md",
+      "receiver_projection": [
+        "MACHINE",
+        "HUMAN"
+      ],
+      "alias_and_prior_art": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "copre-r1-066",
+      "label": "CoDissentCarry+",
+      "group": "GOVERNANCE",
+      "definition": "Preserve disagreement and minority hypotheses across summary and handoff.",
+      "discriminating_probe": "Round-trip a minority objection through both projection types.",
+      "status": "UNQUALIFIED_PUBLIC_CANDIDATE",
+      "epistemic_class": "DESIGN_HYPOTHESIS_NOT_FACT",
+      "anchor": "docs/Architecture/COLIVING_HIGHLIGHT_ASSETS_R0.md",
+      "receiver_projection": [
+        "MACHINE",
+        "HUMAN"
+      ],
+      "alias_and_prior_art": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "copre-r1-067",
+      "label": "CoAlternativeReserve+",
+      "group": "GOVERNANCE",
+      "definition": "Keep unchosen viable routes indexed rather than declaring one global winner.",
+      "discriminating_probe": "Recover a previously held approach when the elected route fails.",
+      "status": "UNQUALIFIED_PUBLIC_CANDIDATE",
+      "epistemic_class": "DESIGN_HYPOTHESIS_NOT_FACT",
+      "anchor": "docs/Architecture/COLIVING_HIGHLIGHT_ASSETS_R0.md",
+      "receiver_projection": [
+        "MACHINE",
+        "HUMAN"
+      ],
+      "alias_and_prior_art": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "copre-r1-068",
+      "label": "CoCulturalAttribution+",
+      "group": "GOVERNANCE",
+      "definition": "Qualify external donor and cultural lineage claims by dated, licensed source evidence.",
+      "discriminating_probe": "Reject credit assignment based on resemblance or acquaintance alone.",
+      "status": "UNQUALIFIED_PUBLIC_CANDIDATE",
+      "epistemic_class": "DESIGN_HYPOTHESIS_NOT_FACT",
+      "anchor": "docs/Architecture/COLIVING_HIGHLIGHT_ASSETS_R0.md",
+      "receiver_projection": [
+        "MACHINE",
+        "HUMAN"
+      ],
+      "alias_and_prior_art": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "copre-r1-069",
+      "label": "CoTheoryChallenge+",
+      "group": "GOVERNANCE",
+      "definition": "Attach falsifiers to CoTheoryAll claims instead of upgrading beautiful theory prose into science.",
+      "discriminating_probe": "Require a competing hypothesis and experimental discriminator.",
+      "status": "UNQUALIFIED_PUBLIC_CANDIDATE",
+      "epistemic_class": "DESIGN_HYPOTHESIS_NOT_FACT",
+      "anchor": "docs/Architecture/COLIVING_HIGHLIGHT_ASSETS_R0.md",
+      "receiver_projection": [
+        "MACHINE",
+        "HUMAN"
+      ],
+      "alias_and_prior_art": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "copre-r1-070",
+      "label": "CoConstitutionBoundary+",
+      "group": "GOVERNANCE",
+      "definition": "Treat CC/consent principles as rights-bearing constraints, not as implied approval for a specific action.",
+      "discriminating_probe": "Reject public disclosure when rights or participant consent remain unproven.",
+      "status": "UNQUALIFIED_PUBLIC_CANDIDATE",
+      "epistemic_class": "DESIGN_HYPOTHESIS_NOT_FACT",
+      "anchor": "docs/Architecture/COLIVING_HIGHLIGHT_ASSETS_R0.md",
+      "receiver_projection": [
+        "MACHINE",
+        "HUMAN"
+      ],
+      "alias_and_prior_art": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "copre-r1-071",
+      "label": "CoNoOracle+",
+      "group": "GOVERNANCE",
+      "definition": "Prevent an attractive story, model, graph or mystical frame from masquerading as infallible advice.",
+      "discriminating_probe": "Ask what is unknown and who may dispute an apparently confident answer.",
+      "status": "UNQUALIFIED_PUBLIC_CANDIDATE",
+      "epistemic_class": "DESIGN_HYPOTHESIS_NOT_FACT",
+      "anchor": "docs/Architecture/COLIVING_HIGHLIGHT_ASSETS_R0.md",
+      "receiver_projection": [
+        "MACHINE",
+        "HUMAN"
+      ],
+      "alias_and_prior_art": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "copre-r1-072",
+      "label": "CoPreReceiverProof+",
+      "group": "GOVERNANCE",
+      "definition": "Treat CoPreGeneric as a source-bound recovery interface whose actual independent receivers must attest pickup.",
+      "discriminating_probe": "Have a separately authorized reader fetch a pinned artifact and return exact-object readproof.",
+      "status": "UNQUALIFIED_PUBLIC_CANDIDATE",
+      "epistemic_class": "DESIGN_HYPOTHESIS_NOT_FACT",
+      "anchor": "docs/Architecture/COLIVING_HIGHLIGHT_ASSETS_R0.md",
+      "receiver_projection": [
+        "MACHINE",
+        "HUMAN"
+      ],
+      "alias_and_prior_art": "REVIEW_REQUIRED"
+    }
+  ],
+  "relations": [
+    {
+      "from": "copre-r1-001",
+      "to": "copre-r1-003",
+      "type": "DISTINGUISHES_SUPPORT_FROM_CLAIM",
+      "epistemic_state": "PROPOSED_RELATION_NOT_VERIFIED_CAUSATION",
+      "effect_authority": "NONE"
+    },
+    {
+      "from": "copre-r1-002",
+      "to": "copre-r1-072",
+      "type": "REQUIRES_NAMED_RECEIVER",
+      "epistemic_state": "PROPOSED_RELATION_NOT_VERIFIED_CAUSATION",
+      "effect_authority": "NONE"
+    },
+    {
+      "from": "copre-r1-002",
+      "to": "copre-r1-007",
+      "type": "DOES_NOT_GRANT",
+      "epistemic_state": "PROPOSED_RELATION_NOT_VERIFIED_CAUSATION",
+      "effect_authority": "NONE"
+    },
+    {
+      "from": "copre-r1-009",
+      "to": "copre-r1-017",
+      "type": "SHARES_SOURCE_NOT_FORMAT",
+      "epistemic_state": "PROPOSED_RELATION_NOT_VERIFIED_CAUSATION",
+      "effect_authority": "NONE"
+    },
+    {
+      "from": "copre-r1-025",
+      "to": "copre-r1-026",
+      "type": "REQUIRES_LOSS_ACCOUNTING",
+      "epistemic_state": "PROPOSED_RELATION_NOT_VERIFIED_CAUSATION",
+      "effect_authority": "NONE"
+    },
+    {
+      "from": "copre-r1-011",
+      "to": "copre-r1-050",
+      "type": "MUST_PRESERVE_OLD_STATES",
+      "epistemic_state": "PROPOSED_RELATION_NOT_VERIFIED_CAUSATION",
+      "effect_authority": "NONE"
+    },
+    {
+      "from": "copre-r1-010",
+      "to": "copre-r1-014",
+      "type": "QUALIFIES",
+      "epistemic_state": "PROPOSED_RELATION_NOT_VERIFIED_CAUSATION",
+      "effect_authority": "NONE"
+    },
+    {
+      "from": "copre-r1-018",
+      "to": "copre-r1-069",
+      "type": "METAPHOR_NE_EVIDENCE",
+      "epistemic_state": "PROPOSED_RELATION_NOT_VERIFIED_CAUSATION",
+      "effect_authority": "NONE"
+    },
+    {
+      "from": "copre-r1-027",
+      "to": "copre-r1-031",
+      "type": "TESTS_FIDELITY",
+      "epistemic_state": "PROPOSED_RELATION_NOT_VERIFIED_CAUSATION",
+      "effect_authority": "NONE"
+    },
+    {
+      "from": "copre-r1-020",
+      "to": "copre-r1-070",
+      "type": "IS_CONSTRAINED_BY",
+      "epistemic_state": "PROPOSED_RELATION_NOT_VERIFIED_CAUSATION",
+      "effect_authority": "NONE"
+    },
+    {
+      "from": "copre-r1-033",
+      "to": "copre-r1-039",
+      "type": "REQUIRES",
+      "epistemic_state": "PROPOSED_RELATION_NOT_VERIFIED_CAUSATION",
+      "effect_authority": "NONE"
+    },
+    {
+      "from": "copre-r1-034",
+      "to": "copre-r1-041",
+      "type": "IS_NOT_CAUSAL_PROOF_OF",
+      "epistemic_state": "PROPOSED_RELATION_NOT_VERIFIED_CAUSATION",
+      "effect_authority": "NONE"
+    },
+    {
+      "from": "copre-r1-043",
+      "to": "copre-r1-048",
+      "type": "REQUIRES_COUNTEREXAMPLE",
+      "epistemic_state": "PROPOSED_RELATION_NOT_VERIFIED_CAUSATION",
+      "effect_authority": "NONE"
+    },
+    {
+      "from": "copre-r1-045",
+      "to": "copre-r1-056",
+      "type": "CHALLENGES_CAUSAL_DIRECTION",
+      "epistemic_state": "PROPOSED_RELATION_NOT_VERIFIED_CAUSATION",
+      "effect_authority": "NONE"
+    },
+    {
+      "from": "copre-r1-052",
+      "to": "copre-r1-051",
+      "type": "DISTINGUISHES",
+      "epistemic_state": "PROPOSED_RELATION_NOT_VERIFIED_CAUSATION",
+      "effect_authority": "NONE"
+    },
+    {
+      "from": "copre-r1-053",
+      "to": "copre-r1-049",
+      "type": "IS_REPORTABLE_WITHIN",
+      "epistemic_state": "PROPOSED_RELATION_NOT_VERIFIED_CAUSATION",
+      "effect_authority": "NONE"
+    },
+    {
+      "from": "copre-r1-060",
+      "to": "copre-r1-058",
+      "type": "REQUIRES",
+      "epistemic_state": "PROPOSED_RELATION_NOT_VERIFIED_CAUSATION",
+      "effect_authority": "NONE"
+    },
+    {
+      "from": "copre-r1-061",
+      "to": "copre-r1-063",
+      "type": "REQUIRES",
+      "epistemic_state": "PROPOSED_RELATION_NOT_VERIFIED_CAUSATION",
+      "effect_authority": "NONE"
+    },
+    {
+      "from": "copre-r1-065",
+      "to": "copre-r1-004",
+      "type": "EVALUATES",
+      "epistemic_state": "PROPOSED_RELATION_NOT_VERIFIED_CAUSATION",
+      "effect_authority": "NONE"
+    },
+    {
+      "from": "copre-r1-066",
+      "to": "copre-r1-067",
+      "type": "PRESERVES",
+      "epistemic_state": "PROPOSED_RELATION_NOT_VERIFIED_CAUSATION",
+      "effect_authority": "NONE"
+    },
+    {
+      "from": "copre-r1-069",
+      "to": "copre-r1-001",
+      "type": "REQUIRES",
+      "epistemic_state": "PROPOSED_RELATION_NOT_VERIFIED_CAUSATION",
+      "effect_authority": "NONE"
+    },
+    {
+      "from": "copre-r1-072",
+      "to": "copre-r1-016",
+      "type": "IMPLEMENTS_PROBE_FOR",
+      "epistemic_state": "PROPOSED_RELATION_NOT_VERIFIED_CAUSATION",
+      "effect_authority": "NONE"
+    }
+  ],
+  "cross_front_usage": [
+    {
+      "front": "CoPreGeneric",
+      "ref": "CoPre.md",
+      "relationship": "CANDIDATE_READ_ONLY_SEED_PATH_EXTENSION_NOT_CANON"
+    },
+    {
+      "front": "CoTerms/CoLex",
+      "ref": "docs/coterms/README.md",
+      "relationship": "ALIAS_PRIOR_ART_SCREEN_BEFORE_PROMOTION"
+    },
+    {
+      "front": "CoSourceGraph/CoTru",
+      "ref": "docs/Architecture/COSOURCE_GRAPH_R0.md",
+      "relationship": "EVIDENCE_AND_SCOPE_CONSTRAINT"
+    },
+    {
+      "front": "CC/Cognocarta Consenti",
+      "ref": "ai/highlight-assets.json",
+      "relationship": "CONSENT_RIGHTS_CONSTRAINT_NOT_CONSTITUTIONAL_AMENDMENT"
+    },
+    {
+      "front": "CoTheoryAll",
+      "ref": "docs/CoTheoryAll/costrawbe-r0/README.md",
+      "relationship": "FALSIFIER_AND_SPECULATION_BOUNDARY"
+    },
+    {
+      "front": "CoNuExistentialism/CoG_dSide",
+      "ref": "ai/continuity/conu-existentialism-candidate-field-r0.json",
+      "relationship": "ADDITIVE_RELATED_CANDIDATES_NOT_SUPERSESSION"
+    },
+    {
+      "front": "CoFront/CoEcho/CoTime",
+      "ref": "docs/Architecture/COFRONT_RETRO_ECHO_NO_ORPHANS_R0_20261109.md",
+      "relationship": "PARTIAL_HISTORY_AND_ORPHAN_COVERAGE"
+    },
+    {
+      "front": "CoBioVerse/CoSynthVerse",
+      "ref": "docs/Architecture/COPREGENERIC_DUAL_PROJECTION_R0_20261109.md",
+      "relationship": "RECEIVER_DIVERGENT_PROJECTIONS_SHARED_EVIDENCE"
+    }
+  ],
+  "evaluation": {
+    "schema_gate": "ALL_72_UNIQUE_IDS_AND_LABELS__ALL_GRAPH_ENDPOINTS_RESOLVE",
+    "prior_art_gate": "NO_COLLISION_WITH_24_R0_NODES_OR_PILOT_GLOSSARY_HEADINGS_ONLY__FULL_CORPUS_REVIEW_PENDING",
+    "falsifier_gate": "EVERY_TERM_HAS_A_DISCRIMINATING_PROBE",
+    "empirical_gate": "NO_CAUSALITY_AGI_SENTIENCE_OR_DIVINE_CERTAINTY_FROM_COHERENCE_OR_OSCILLATION",
+    "next_proof": "A separately authorized receiver fetches the exact public draft object, reconstructs structured/human projections and returns independent source-bound readproof plus one critique."
+  },
+  "nonclaims": [
+    "NOT_META_AI_RECEIVER_ACK",
+    "NO_INDEPENDENT_RECEIVER_PICKUP",
+    "NOT_GLOBAL_COPRE_CANON",
+    "NOT_CC_AMENDMENT",
+    "NOT_COTHEORYALL_SCIENTIFIC_VALIDATION",
+    "NOT_SPIRITUAL_REVELATION",
+    "NOT_AGI_OR_SENTIENCE_PROOF",
+    "NOT_THREE_WAY_MIRROR",
+    "NOT_FULL_PRIOR_ART_CENSUS",
+    "NOT_COMPLETE_HISTORICAL_RECOVERY",
+    "PUBLIC_BRANCH_NOT_MAIN_MERGE_OR_PRODUCT_DEPLOYMENT",
+    "NO_MAIL_OR_EXTERNAL_OUTREACH_EFFECT"
+  ],
+  "effect_authority": "NONE",
+  "attribution": "Proposed terms and tests in CoCivium session research; preserve outside sources and cultural credit subject to independent qualification."
+}
