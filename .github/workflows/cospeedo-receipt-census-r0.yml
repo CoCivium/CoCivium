@@ -9,6 +9,9 @@ on:
       - "ai/benchmark-evo.jsonl"
       - "scripts/CoSpeedoReceiptCensusR0.py"
       - "scripts/check_cospeedo_needle_trails_r1.py"
+      - "scripts/check_cospeedo_morning_glance_r2.py"
+      - "examples/cospeedo/morning-glance-r2.html"
+      - "docs/Metrics/COSPEEDO_MORNING_GLANCE_R2_20261110.json"
       - "examples/cospeedo/needle-trails-r1.html"
       - "examples/cospeedo/README.md"
       - "CoPre.md"
@@ -21,6 +24,9 @@ on:
       - "ai/benchmark-evo.jsonl"
       - "scripts/CoSpeedoReceiptCensusR0.py"
       - "scripts/check_cospeedo_needle_trails_r1.py"
+      - "scripts/check_cospeedo_morning_glance_r2.py"
+      - "examples/cospeedo/morning-glance-r2.html"
+      - "docs/Metrics/COSPEEDO_MORNING_GLANCE_R2_20261110.json"
       - "examples/cospeedo/needle-trails-r1.html"
       - "examples/cospeedo/README.md"
       - "CoPre.md"
@@ -96,3 +102,5 @@ jobs:
         run: python3 scripts/check_cospeedo_needle_trails_r1.py
       - name: Verify public reader discovery, archival counts and nonclaims
         run: python3 scripts/check_cospeedo_public_reader_r0.py
+      - name: Verify R2 needle-first morning glance source, accessible diagram and evidence limits
+        run: python3 scripts/check_cospeedo_morning_glance_r2.py
