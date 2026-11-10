@@ -52,11 +52,11 @@ def main():
     assert "October 20–22 have no recorded rows" in html, "Missing unknown coverage"
     assert len(p.polylines)==3, "Missing real pass/hold/fail visual traces"
     for idx,key in enumerate(("PASS","HELD","FAIL")):
-        expected=" ".join(f"{85+140*i},{190-(archive['days'][d]['status_counts'][key]/40)*130:.1f}" for i,d in enumerate(day_keys))
+        expected=" ".join(f"{85+140*i},{190-(archive['days'][d]['status_counts'][key]/40)*130}" for i,d in enumerate(day_keys))
         supplied=p.polylines[idx]["points"]
         actual=[(float(pair.split(",")[0]),float(pair.split(",")[1])) for pair in supplied.split()]
         target=[(float(pair.split(",")[0]),float(pair.split(",")[1])) for pair in expected.split()]
-        assert all(abs(a-b)<0.01 for (ax,ay),(bx,by) in zip(actual,target) for a,b in ((ax,bx),(ay,by))), (key,supplied,expected)
+        assert all(abs(a-b)<1e-6 for (ax,ay),(bx,by) in zip(actual,target) for a,b in ((ax,bx),(ay,by))), (key,supplied,expected)
     assert len(p.svgs)==1 and p.svgs[0].get("role")=="img"
     assert p.tables==1
     assert p.dialogs==0 and p.external_assets==[], "No surprise popups or external embeds"
