@@ -19,6 +19,12 @@ on:
       - 'docs/Onramp/AI_ONRAMP_CATCHUP_HUB_20261108.md'
       - 'ai/index.json'
       - 'ai/evolution-lanes.json'
+  pull_request:
+    branches: [main]
+    paths:
+      - '.github/workflows/cogoall-unattended-proof-pulse.yml'
+      - 'scripts/CoGoAllDueWorkSourceCanaryR0.py'
+      - 'test_cogoall_due_work_source_canary_r0.py'
   schedule:
     - cron: '17 * * * *'
   workflow_dispatch:
