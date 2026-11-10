@@ -126,6 +126,8 @@ def validate_packet_tree(root):
         for child in folder.iterdir():
             relative = child.relative_to(root).as_posix()
             if child.is_symlink():
+                if relative in PACKET_FILES:
+                    raise Held("HELD_MISSING_OR_LINKED_SOURCE")
                 raise Held("HELD_PACKET_CONTAINS_UNDECLARED_ENTRY")
             if child.is_dir() and relative in PACKET_DIRS:
                 continue
