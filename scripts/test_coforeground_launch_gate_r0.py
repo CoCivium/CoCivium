@@ -82,6 +82,32 @@ class GuardTests(unittest.TestCase):
         self.assertIn("HELD_DYNAMIC_OR_PERSISTENT_CONSOLE",m.audit(e,HEADLESS_SCRIPT))
     def test_headless_source_can_pass_static_gate_not_runtime(self):
         self.assertEqual(m.audit(auto(),HEADLESS_SCRIPT),[])
+    def test_automated_flags_after_file_are_not_host_flags(self):
+        e=auto()
+        e["launch_args"]=["-File","scripts/worker.ps1","-NoProfile","-NonInteractive","-WindowStyle","Hidden"]
+        self.assertIn("HELD_POWERSHELL_SWITCH_ORDER_UNTRUSTED",m.audit(e,HEADLESS_SCRIPT))
+    def test_automated_windowstyle_must_bind_hidden_value(self):
+        e=auto()
+        e["launch_args"]=["-NoProfile","-NonInteractive","-WindowStyle","Normal",
+                          "-File","scripts/worker.ps1","Hidden"]
+        self.assertIn("HELD_POWERSHELL_SWITCH_ORDER_UNTRUSTED",m.audit(e,HEADLESS_SCRIPT))
+    def test_automated_duplicate_windowstyle_conflict_is_held(self):
+        e=auto()
+        e["launch_args"]=["-NoProfile","-NonInteractive","-WindowStyle","Hidden",
+                          "-WindowStyle","Normal","-File","scripts/worker.ps1"]
+        self.assertIn("HELD_POWERSHELL_SWITCH_ORDER_UNTRUSTED",m.audit(e,HEADLESS_SCRIPT))
+    def test_automated_executionpolicy_bypass_is_held(self):
+        e=auto()
+        e["launch_args"]=["-NoProfile","-NonInteractive","-WindowStyle","Hidden",
+                          "-ExecutionPolicy","Bypass","-File","scripts/worker.ps1"]
+        self.assertIn("HELD_UNREVIEWED_EXECUTION_POLICY_BYPASS",m.audit(e,HEADLESS_SCRIPT))
+    def test_automated_executionpolicy_ep_alias_is_held(self):
+        e=auto()
+        e["launch_args"]=["-NoProfile","-NonInteractive","-WindowStyle","Hidden",
+                          "-ep","Bypass","-File","scripts/worker.ps1"]
+        self.assertIn("HELD_UNREVIEWED_EXECUTION_POLICY_BYPASS",m.audit(e,HEADLESS_SCRIPT))
+    def test_good_headless_flag_order_is_still_admissible_as_source(self):
+        self.assertEqual(m.audit(auto(),HEADLESS_SCRIPT),[])
     def test_candidate_cannot_autostart_even_when_hidden(self):
         e=auto();e["qualification"]="CANDIDATE_SOURCE_ONLY"
         self.assertIn("HELD_AUTOSTART_OF_CANDIDATE",m.audit(e,HEADLESS_SCRIPT))
