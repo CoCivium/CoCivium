@@ -122,24 +122,75 @@ function stateRender(){
  if(capsule){const size=new TextEncoder().encode(JSON.stringify(capsule,null,2)+'\n').byteLength;const raw=capsule.manifest.content_bytes;$('capsuleSize').textContent=nbytes(size);$('overhead').textContent=raw===0?'Not comparable for empty file':(size/raw).toFixed(2)+'× of raw file size';}else{$('capsuleSize').textContent='UNKNOWN';$('overhead').textContent='UNKNOWN';}
 }
 function mark(e,error=''){event=e;lastError=error;observed=new Date().toISOString();stateRender()}
-async function transact(fn){try{await fn()}catch(err){capsule=null;inspection=null;mark('HELD_INVALID_CAPSULE',String(err.message||err))}}
-$('source').addEventListener('change',()=>{selected=$('source').files?.[0]||null;capsule=null;inspection=null;mark(selected?'FILE_SELECTED':'EMPTY')});
-$('capsuleFile').addEventListener('change',()=>{selected=null;capsule=null;inspection=null;mark($('capsuleFile').files?.length?'CAPSULE_FILE_SELECTED':'EMPTY')});
-$('pack').addEventListener('click',()=>transact(async()=>{
- guard(selected&&selected.size<=MAX,'FILE_OVER_256K_OR_MISSING');const bytes=new Uint8Array(await selected.arrayBuffer());guard(bytes.length<=MAX,'FILE_TOO_LARGE');const d=await sha(bytes);
- const packed={schema:SCHEMA,manifest:{object_id:'coobj-'+d.slice(0,20),source_name:safeName(selected.name),content_sha256:d,content_bytes:bytes.length,copies:['payload_a_b64','payload_b_b64'],authority:'DATA_ONLY_NO_EXECUTION',privacy:'USER_CHOSEN_BROWSER_LOCAL',minimum_use:'Restore exact bytes from one valid local copy',created_utc:new Date().toISOString(),origin_authentication:'NOT_VERIFIED',recovery_scope:'SINGLE_JSON_SHARED_FAILURE_DOMAIN'},payload_a_b64:b64(bytes),payload_b_b64:b64(bytes)};
- const inspected=await inspectCapsule(packed);guard(inspected.valid.length===2,'PACK_INTEGRITY_FAILED');capsule=packed;inspection=inspected;mark('PACKED_LOCAL');
+// CoObject operation fence: a reset, changed file, or newer operation supersedes every
+// unfinished async read/hash. Stale work may finish computing, but cannot commit UI state
+// or trigger a download. This does not claim to cancel native WebCrypto work itself.
+let operationEpoch=0;
+async function transact(fn){
+ const ticket=++operationEpoch;
+ const current=()=>ticket===operationEpoch;
+ try{await fn(current)}
+ catch(err){
+   if(!current())return;
+   capsule=null;inspection=null;mark('HELD_INVALID_CAPSULE',String(err.message||err));
+ }
+}
+$('source').addEventListener('change',()=>{operationEpoch++;selected=$('source').files?.[0]||null;capsule=null;inspection=null;mark(selected?'FILE_SELECTED':'EMPTY')});
+$('capsuleFile').addEventListener('change',()=>{operationEpoch++;selected=null;capsule=null;inspection=null;mark($('capsuleFile').files?.length?'CAPSULE_FILE_SELECTED':'EMPTY')});
+$('pack').addEventListener('click',()=>transact(async current=>{
+ const file=selected;
+ guard(file&&file.size<=MAX,'FILE_OVER_256K_OR_MISSING');
+ const bytes=new Uint8Array(await file.arrayBuffer());
+ guard(current(),'STALE_OPERATION');
+ guard(bytes.length<=MAX,'FILE_TOO_LARGE');
+ const d=await sha(bytes);
+ guard(current(),'STALE_OPERATION');
+ const packed={schema:SCHEMA,manifest:{object_id:'coobj-'+d.slice(0,20),source_name:safeName(file.name),content_sha256:d,content_bytes:bytes.length,copies:['payload_a_b64','payload_b_b64'],authority:'DATA_ONLY_NO_EXECUTION',privacy:'USER_CHOSEN_BROWSER_LOCAL',minimum_use:'Restore exact bytes from one valid local copy',created_utc:new Date().toISOString(),origin_authentication:'NOT_VERIFIED',recovery_scope:'SINGLE_JSON_SHARED_FAILURE_DOMAIN'},payload_a_b64:b64(bytes),payload_b_b64:b64(bytes)};
+ const inspected=await inspectCapsule(packed);
+ guard(current(),'STALE_OPERATION');
+ guard(inspected.valid.length===2,'PACK_INTEGRITY_FAILED');
+ capsule=packed;inspection=inspected;mark('PACKED_LOCAL');
 }));
-$('direct').addEventListener('click',()=>transact(async()=>{guard(selected,'NO_FILE_SELECTED');down(await selected.arrayBuffer(),selected.name,'application/octet-stream');mark('DIRECT_COPY_REQUESTED')}));
-$('inspect').addEventListener('click',()=>transact(async()=>{
- const file=$('capsuleFile').files?.[0];guard(file&&file.size<=2*1024*1024,'CAPSULE_OVERSIZE_OR_MISSING');const json=JSON.parse(await file.text());const checked=await inspectCapsule(json);capsule=json;inspection=checked;mark('IMPORTED_LOCAL_CAPSULE');
+$('direct').addEventListener('click',()=>transact(async current=>{
+ const file=selected;guard(file,'NO_FILE_SELECTED');
+ const bytes=await file.arrayBuffer();
+ guard(current(),'STALE_OPERATION');
+ down(bytes,file.name,'application/octet-stream');mark('DIRECT_COPY_REQUESTED');
+}));
+$('inspect').addEventListener('click',()=>transact(async current=>{
+ const file=$('capsuleFile').files?.[0];
+ guard(file&&file.size<=2*1024*1024,'CAPSULE_OVERSIZE_OR_MISSING');
+ const content=await file.text();
+ guard(current(),'STALE_OPERATION');
+ const json=JSON.parse(content);
+ const checked=await inspectCapsule(json);
+ guard(current(),'STALE_OPERATION');
+ capsule=json;inspection=checked;mark('IMPORTED_LOCAL_CAPSULE');
 }));
 $('exportCapsule').addEventListener('click',()=>{if(!inspection?.valid.length)return;down(JSON.stringify(capsule,null,2)+'\n',capsule.manifest.object_id+'.json','application/json');mark('EXPORT_REQUESTED')});
-$('simulateLoss').addEventListener('click',()=>transact(async()=>{guard(capsule&&inspection?.valid.includes('payload_a_b64'),'NO_VALID_COPY_A');capsule.payload_a_b64=null;inspection=await inspectCapsule(capsule);mark('SIMULATED_COPY_LOSS')}));
-$('tamperAll').addEventListener('click',()=>transact(async()=>{guard(capsule,'NO_CAPSULE');capsule.payload_a_b64='INVALID###';capsule.payload_b_b64='INVALID###';inspection=await inspectCapsule(capsule);mark('SIMULATED_BOTH_COPIES_CORRUPT')}));
-$('restore').addEventListener('click',()=>transact(async()=>{guard(capsule&&inspection?.valid.length,'NO_VALID_SOURCE_COPY');const key=inspection.valid[0];const bytes=from64(capsule[key]);guard(bytes.length===capsule.manifest.content_bytes&&(await sha(bytes))===capsule.manifest.content_sha256,'SOURCE_CHANGED_AFTER_CHECK');down(bytes,'restored-'+capsule.manifest.source_name,'application/octet-stream');mark('RESTORE_DOWNLOAD_REQUESTED')}));
+$('simulateLoss').addEventListener('click',()=>transact(async current=>{
+ guard(capsule&&inspection?.valid.includes('payload_a_b64'),'NO_VALID_COPY_A');
+ const next={...capsule,payload_a_b64:null};
+ const checked=await inspectCapsule(next);
+ guard(current(),'STALE_OPERATION');
+ capsule=next;inspection=checked;mark('SIMULATED_COPY_LOSS');
+}));
+$('tamperAll').addEventListener('click',()=>transact(async current=>{
+ guard(capsule,'NO_CAPSULE');
+ const next={...capsule,payload_a_b64:'INVALID###',payload_b_b64:'INVALID###'};
+ const checked=await inspectCapsule(next);
+ guard(current(),'STALE_OPERATION');
+ capsule=next;inspection=checked;mark('SIMULATED_BOTH_COPIES_CORRUPT');
+}));
+$('restore').addEventListener('click',()=>transact(async current=>{
+ const c=capsule;guard(c&&inspection?.valid.length,'NO_VALID_SOURCE_COPY');
+ const key=inspection.valid[0],bytes=from64(c[key]);
+ guard(bytes.length===c.manifest.content_bytes&&(await sha(bytes))===c.manifest.content_sha256,'SOURCE_CHANGED_AFTER_CHECK');
+ guard(current(),'STALE_OPERATION');
+ down(bytes,'restored-'+c.manifest.source_name,'application/octet-stream');mark('RESTORE_DOWNLOAD_REQUESTED');
+}));
 $('receipt').addEventListener('click',()=>{if(!capsule)return;const payload={schema:'CoCivium.CoObject.PortableBrowserReceipt.R0',local_observation:observed,object_id:capsule.manifest.object_id,content_sha256:capsule.manifest.content_sha256,byte_count:capsule.manifest.content_bytes,copy_integrity:inspection?.status||{},valid_copy_count:inspection?.valid.length||0,source_authentication_verified:false,independent_receiver_ack:null,offline_browser_only:true,real_effects:'NONE',proof_scope:'USER_BROWSER_STRUCTURAL_CHECK_ONLY'};down(JSON.stringify(payload,null,2)+'\n',capsule.manifest.object_id+'-local-receipt.json','application/json');mark('LOCAL_RECEIPT_EXPORT_REQUESTED')});
-$('reset').addEventListener('click',()=>{selected=null;capsule=null;inspection=null;$('source').value='';$('capsuleFile').value='';mark('EMPTY')});
+$('reset').addEventListener('click',()=>{operationEpoch++;selected=null;capsule=null;inspection=null;$('source').value='';$('capsuleFile').value='';mark('EMPTY')});
 mark('EMPTY');
 })();
 </script>
