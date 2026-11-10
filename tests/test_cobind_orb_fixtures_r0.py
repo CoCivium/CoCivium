@@ -44,8 +44,8 @@ class OfflineCoBindOrbContract(unittest.TestCase):
 
     def test_offline_no_remote_scripts_tracking_or_network_calls(self):
         html, d = fixtures()
-        self.assertNotRegex(html, r"<script\\s+[^>]*src\\s*=")
-        self.assertNotRegex(html, r"\\b(fetch|XMLHttpRequest|WebSocket|EventSource)\\s*\\(")
+        self.assertNotRegex(html, r"<script\s+[^>]*src\s*=")
+        self.assertNotRegex(html, r"\b(fetch|XMLHttpRequest|WebSocket|EventSource)\s*\(")
         self.assertNotIn("<iframe", html.lower())
         self.assertNotIn("navigator.sendBeacon", html)
         self.assertNotIn("localStorage", html)
