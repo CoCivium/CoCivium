@@ -22,7 +22,8 @@ SOURCE_JOB = "proof"
 RECEIVER_JOB = "pulse-receiver"
 EXPECTED_LOGS = (
     "decision", "grace", "succession", "acceptance", "progress",
-    "cadence-tests", "catchup-tests", "rebound-tests", "rebound-links"
+    "cadence-tests", "catchup-tests", "rebound-tests", "rebound-links",
+    "source-check"
 )
 EXPECTED_CLAIMS = [
     "SOURCE_TESTS_ONLY", "NO_X2_RECEIVER_ACK", "NO_24H_SEED_PROOF"
