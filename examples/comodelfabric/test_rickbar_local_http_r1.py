@@ -83,6 +83,47 @@ class Tests(unittest.TestCase):
         self.assertEqual(state["turns"][0]["response"],"Synthetic local answer")
         self.assertFalse(state["receiver_ack"])
 
+    def test_conversation_worker_matches_actual_configured_http_route(self):
+        cid=self.create()
+        state=self.store.state(cid)
+        self.assertEqual(state["worker"],"ollama:fixture-local-model")
+        self.assertEqual(state["epoch"],1)
+
+    def test_restarted_server_cannot_implicitly_switch_model_route(self):
+        # Simulate an older conversation created for another local model.
+        cid="route-mismatch-existing"
+        self.assertEqual(self.store.create(
+            worker="ollama:qwen3:4b",conversation_id=cid)["state"],"CREATED")
+        before=len(self.calls)
+        status,answer=self.request("POST","/api/turn",{
+            "conversation_id":cid,"turn_id":"must-not-run","prompt":"Hello","epoch":1})
+        self.assertEqual(status,409)
+        self.assertEqual(answer["state"],"MODEL_ROUTE_MISMATCH")
+        self.assertEqual(len(self.calls),before)
+        self.assertEqual(self.store.state(cid)["turns"],[])
+
+    def test_explicit_epoch_election_allows_new_local_model_route(self):
+        from rickbar_local_web_r1 import act
+        cid=self.create()
+        called=[]
+        def fake(context,model,receipt_dir,work_id):
+            called.append((model,work_id))
+            return {"status":"RECORDED_UNVERIFIED","work_id":work_id,
+                    "response":"synthetic successor","receipt_sha256":"b"*64}
+        old={"conversation_id":cid,"turn_id":"before-election",
+             "prompt":"Hello","epoch":1}
+        result=act(self.store,old,"other-model",self.temp.name,bridge=fake)
+        self.assertEqual(result["state"],"MODEL_ROUTE_MISMATCH")
+        self.assertEqual(called,[])
+        change=self.store.elect(cid,"ollama:other-model",1)
+        self.assertEqual(change["epoch"],2)
+        after={**old,"epoch":2}
+        result=act(self.store,after,"other-model",self.temp.name,bridge=fake)
+        self.assertEqual(result["state"],"COMMITTED")
+        self.assertEqual(called[0][0],"other-model")
+        self.assertEqual(self.store.state(cid)["worker"],"ollama:other-model")
+        self.assertEqual(self.store.state(cid)["turns"][0]["status"],"COMMITTED")
+
     def test_http_provenance_is_observed_not_authenticated(self):
         cid=self.create()
         payload={"conversation_id":cid,"turn_id":"provenance","prompt":"Hello",
