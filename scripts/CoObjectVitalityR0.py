@@ -19,7 +19,12 @@ def require(ok: bool, message: str) -> None:
     if not ok:
         raise ValueError(message)
 
-def disposition(obj: dict[str, Any], policy: dict[str, Any]) -> str:
+def disposition(obj: dict[str, Any]) -> str:
+    """Lifecycle-only projection for nonexecuting proposal consumers.
+
+    This is NOT evidence admission or effect authority. The run() evaluator
+    applies currentness and health checks before an active work disposition.
+    """
     state = obj["lifecycle_state"]
     wakes = set(obj.get("wake_predicates", []))
     observed = set(obj.get("wake_observations", []))
@@ -37,11 +42,6 @@ def disposition(obj: dict[str, Any], policy: dict[str, Any]) -> str:
             return "WAKE_FOR_BOUNDED_REQUALIFICATION"
         return "SLEEP_KEEP_ADDRESSABLE"
     if state == "ACTIVE_WORKING":
-        # Evidence labels are only synthetic policy declarations; they do not
-        # attest a real observer, a current process, or an external receiver.
-        if (obj["currentness_state"] not in policy["active_currentness_allowlist"]
-                or obj["health_state"] not in policy["active_health_allowlist"]):
-            return "HOLD_REQUALIFY_ACTIVE_EVIDENCE"
         if obj.get("known_debt"):
             return "EXTEND_ONE_BOUNDED_DEBT_REDUCTION"
         return "CONTINUE_ONLY_ON_MATERIAL_DELTA"
@@ -81,7 +81,14 @@ def run(fixture: dict[str, Any], policy: dict[str, Any]) -> dict[str, Any]:
         require(obj.get("authority_ceiling"), "authority required")
         require(obj.get("evidence_refs"), "evidence required")
 
-        disp = disposition(obj, policy)
+        # Synthetic policy-class admission belongs to run(), not the legacy
+        # lifecycle-only helper also used by the nonexecuting agency bridge.
+        if (obj["lifecycle_state"] == "ACTIVE_WORKING"
+                and (obj["currentness_state"] not in policy["active_currentness_allowlist"]
+                     or obj["health_state"] not in policy["active_health_allowlist"])):
+            disp = "HOLD_REQUALIFY_ACTIVE_EVIDENCE"
+        else:
+            disp = disposition(obj)
         results.append({
             "object_id": obj["object_id"],
             "object_class": obj["object_class"],

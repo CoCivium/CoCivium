@@ -88,6 +88,26 @@ class VitalityAdmissionR0ATests(unittest.TestCase):
             report["results"][2]["heartbeat_mode"], "QUIET_UNTIL_MATERIAL_DELTA"
         )
 
+    def test_bridge_compatible_lifecycle_only_heuristic(self):
+        # The bridge emits a read-only proposal; this is not trusted admission.
+        candidate = {
+            "lifecycle_state": "ACTIVE_WORKING",
+            "known_debt": ["REVIEW_SOURCE"],
+            "wake_predicates": [],
+            "wake_observations": [],
+        }
+        self.assertEqual(
+            vitality.disposition(candidate),
+            "EXTEND_ONE_BOUNDED_DEBT_REDUCTION",
+        )
+        fixture = copy.deepcopy(FIXTURE)
+        fixture["objects"][0]["currentness_state"] = "STALE"
+        fixture["objects"][0]["health_state"] = "HEALTH_UNKNOWN"
+        report = vitality.run(fixture, copy.deepcopy(POLICY))
+        self.assertEqual(
+            report["results"][0]["disposition"], "HOLD_REQUALIFY_ACTIVE_EVIDENCE"
+        )
+
     def test_missing_policy_allowlist_fails_closed(self):
         policy = copy.deepcopy(POLICY)
         del policy["active_health_allowlist"]
