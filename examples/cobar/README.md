@@ -37,6 +37,14 @@ Review `copre_local_io_r4b.html` as source. Open the static HTML in an isolated 
 
 Browser `localStorage` is **not** durable shared custody. Once revoked, this synthetic WorkID must not be silently reset in the same profile merely to re-run a green demo.
 
+## Additional control challenges (X2 process stdout only)
+
+A separate, bounded X2 headless Edge challenge confirmed that the Run/consent/Stop sequence remained clickable and functional at five lower-height sizes: **320×568, 375×667, 390×667, 1280×600 and 1280×720**, with zero external requests or local artifact writes. This extends the prior browser receipt but does **not** alter its original 33/33 claim or create an additional receiver ACK.
+
+**Important negative control:** A deliberately fabricated, internally schema-consistent `localStorage` record was accepted on reload as `RECOVERED_LOCAL_ONLY`, without a new checkbox interaction. That is an expected limitation of a client-controlled browser store. The field validator rejects malformed records but **cannot authenticate who wrote a well-formed record, prove genuine consent, or establish remote receiver identity**. Never promote the status label, nonce-like fields, local timestamp or self-declared receipt into authorization or a third-party ACK. A real receiver requires a separate trusted origin, consent validation, and exact readproof.
+
+`LOCAL_STORAGE_SCHEMA_VALID_NE_AUTHENTICATED_CONSENT`  `BROWSER_RELOAD_NE_INDEPENDENT_RECEIVER`
+
 ## Required next proof
 
 The existing [CoSpeedo/CoBar acceptance issue #453](https://github.com/CoCivium/CoCivium/issues/453) remains the product owner; [browser-to-SQLite bridge issue #450](https://github.com/CoCivium/CoCivium/issues/450) remains the receiver-contract gap, and [cross-surface recovery issue #317](https://github.com/CoCivium/CoCivium/issues/317) remains the external-origin ACK and custody gap.
