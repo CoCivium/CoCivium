@@ -8,6 +8,7 @@ on:
     paths:
       - "scripts/CoAllFanoutR0.py"
       - "scripts/CoAllSessionFanInR0.py"
+      - "scripts/CoAllForkRejoinShadowR0.py"
       - "scripts/CoAllSessionPublicProjectionGateR0.py"
       - "ai/coordination/coall-fanout-r0b/**"
       - ".github/workflows/coall-fanout-fault-hardening-r0b.yml"
@@ -15,6 +16,7 @@ on:
     paths:
       - "scripts/CoAllFanoutR0.py"
       - "scripts/CoAllSessionFanInR0.py"
+      - "scripts/CoAllForkRejoinShadowR0.py"
       - "scripts/CoAllSessionPublicProjectionGateR0.py"
       - "ai/coordination/coall-fanout-r0b/**"
       - ".github/workflows/coall-fanout-fault-hardening-r0b.yml"
@@ -32,6 +34,10 @@ jobs:
       - name: Negative session-source fan-in regression (no external effects)
         run: |
           python -B -m unittest discover -s ai/coordination/coall-fanout-r0b -p "test_session_fanin_r0.py" -v
+
+      - name: CoForkRejoin dual-surface, provider-neutral anti-capture negative controls
+        run: |
+          python -B -m unittest discover -s ai/coordination/coall-fanout-r0b -p "test_fork_rejoin_shadow_r0.py" -v
 
       - name: Public session derivative redaction and authority negative controls
         run: |
