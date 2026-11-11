@@ -123,7 +123,7 @@ test("CoMegaScroller includes exactly 10 original vector thumbnails from the reg
 });
 test("CoMegaScroller fails closed on unregistered/relabelled highlights",()=>{
   const missing=copy(graph);
-  missing.nodes=missing.nodes.filter(n=>n.id!=="highlight:RickBar");
+  missing.nodes.find(n=>n.id==="highlight:RickBar").kind="source_document";
   assert.throws(()=>generateMegaScroller(missing,overlay,retro,megaPins),/HOLD_HIGHLIGHT_REGISTRY_DRIFT/);
   const changed=copy(graph);
   const target=changed.nodes.find(n=>n.id==="highlight:CoCivia");
