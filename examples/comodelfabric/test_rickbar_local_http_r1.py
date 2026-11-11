@@ -141,6 +141,38 @@ class Tests(unittest.TestCase):
         self.assertNotEqual(x,scoped_receipt_work_id("conversation-b","same-turn"))
         self.assertNotEqual(x,scoped_receipt_work_id("conversation-a","different"))
 
+    def test_exact_read_only_turn_status_does_not_reinvoke_worker(self):
+        cid=self.create()
+        original={"conversation_id":cid,"turn_id":"lost-response",
+                  "prompt":"Persist me","epoch":1}
+        status,_=self.request("POST","/api/turn",original)
+        self.assertEqual(status,200)
+        before=len(self.calls)
+        status,readback=self.request("GET","/api/turn/"+cid+"/lost-response")
+        self.assertEqual(status,200)
+        self.assertEqual(readback["state"],"TURN_LOCAL_READBACK")
+        self.assertEqual(readback["turn"]["status"],"COMMITTED")
+        self.assertEqual(readback["turn"]["response"],"Synthetic local answer")
+        self.assertFalse(readback["independent_receiver_ack"])
+        self.assertFalse(readback["model_resubmitted"])
+        self.assertEqual(len(self.calls),before)
+
+    def test_exact_turn_pending_indeterminate_missing_and_invalid(self):
+        cid=self.create()
+        self.store.begin_turn(cid,"pending","No model invoked",1)
+        before=len(self.calls)
+        code,value=self.request("GET","/api/turn/"+cid+"/pending")
+        self.assertEqual(code,200)
+        self.assertEqual(value["turn"]["status"],"PENDING")
+        self.assertEqual(self.store.elect(cid,"ollama:replacement",1)["epoch"],2)
+        code,value=self.request("GET","/api/turn/"+cid+"/pending")
+        self.assertEqual(code,200)
+        self.assertEqual(value["turn"]["status"],"INDETERMINATE")
+        self.assertEqual(self.request("GET","/api/turn/"+cid+"/never-created")[0],404)
+        self.assertEqual(self.request("GET","/api/turn/"+cid+"/%2e%2e")[0],400)
+        self.assertEqual(self.request("GET","/api/turn/bad")[0],404)
+        self.assertEqual(len(self.calls),before)
+
     def test_new_turn_uses_prior_context(self):
         cid=self.create()
         base={"conversation_id":cid,"epoch":1}

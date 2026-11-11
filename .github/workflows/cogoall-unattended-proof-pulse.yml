@@ -1,9 +1,6 @@
 name: CoGoAll unattended proof pulse
 on:
   push:
-    # Preserve mainline proof; candidate PRs already run this workflow.
-    # Avoid redundant push and pull_request runs for the same draft head.
-    branches: [main]
     paths:
       - '.github/workflows/cogoall-unattended-proof-pulse.yml'
       - 'examples/cotalkitout/progress_receipt_gate_r0.py'
@@ -11,11 +8,9 @@ on:
       - 'examples/cotalkitout/scheduled_pulse_readback_r0.py'
       - 'test_scheduled_pulse_readback_r0.py'
       - 'examples/cotalkitout/due_work_catchup_r0.py'
+      - 'examples/cotalkitout/local_source_work_cycle_r0.py'
       - 'test_due_work_catchup_r0.py'
-      - 'scripts/CoGoAllDueWorkSourceCanaryR0.py'
-      - 'test_cogoall_due_work_source_canary_r0.py'
-      - 'scripts/CoGoAllPriorRunReadbackR0.py'
-      - 'test_cogoall_prior_run_readback_r0.py'
+      - 'test_local_source_work_cycle_r0.py'
       - 'scripts/CoReboundIntegrityR0.py'
       - 'scripts/copre_seed_24h_canary_r0.py'
       - 'scripts/test_copre_seed_24h_canary_r0.py'
@@ -24,6 +19,9 @@ on:
       - 'docs/Onramp/AI_ONRAMP_CATCHUP_HUB_20261108.md'
       - 'ai/index.json'
       - 'ai/evolution-lanes.json'
+      - 'CoPre.md'
+      - 'SESSION_BOOTSTRAP.md'
+      - 'ai/session-bootstrap.json'
   pull_request:
     branches: [main]
     paths:
@@ -41,8 +39,6 @@ permissions:
   contents: read
   actions: read
 concurrency:
-  # PR qualification must not serialize or starve the existing mainline pulse.
-  # Keep main push + hourly schedules on one lane; PR refs are distinct.
   group: cogoall-proof-pulse-${{ github.ref }}
   cancel-in-progress: false
 jobs:
@@ -55,6 +51,33 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - name: Verify one-shot durable local source WorkID (no external effect)
+        run: python -B -m unittest -v test_local_source_work_cycle_r0
+      - name: Execute real public CoPre source with one local durable WorkID
+        shell: bash
+        run: |
+          set -euo pipefail
+          db="$RUNNER_TEMP/cogoall-source-check.sqlite"
+          python -B -m examples.cotalkitout.local_source_work_cycle_r0 --root . --db "$db" > source-check-first.json
+          python -B -m examples.cotalkitout.local_source_work_cycle_r0 --root . --db "$db" > source-check-replay.json
+          python - <<'PY' | tee source-check.log
+          import hashlib, json, pathlib
+          initial=json.loads(pathlib.Path('source-check-first.json').read_text())
+          repeat=json.loads(pathlib.Path('source-check-replay.json').read_text())
+          source=hashlib.sha256(pathlib.Path('CoPre.md').read_bytes()).hexdigest()
+          assert initial['state']=='COMMITTED_LOCAL_ONLY'
+          assert repeat['state']=='LOCAL_REPLAY_OR_LEASED' and repeat['queue_state']=='DONE'
+          assert initial['work_id']==repeat['work_id']=='CoPre:source-integrity:R0'
+          assert initial['source_sha256']==repeat['source_sha256']==source
+          assert initial['external_receiver_ack'] is False
+          assert initial['real_external_effect'] is False
+          assert repeat['external_receiver_ack'] is False
+          print(json.dumps(dict(state='CI_LOCAL_SOURCE_WORKID_REPLAY_VERIFIED',
+              source_sha256=source, work_id=initial['work_id'],
+              local_result_sha256=initial['local_result_sha256'],
+              independent_receiver_ack=False, external_effect_verified=False),
+              sort_keys=True))
+          PY
       - name: Exercise bounded recovery and handoff gates
         id: tests
         continue-on-error: true
@@ -89,7 +112,7 @@ jobs:
           python - <<'PY'
           import datetime, hashlib, json, os, pathlib
           logs = {}
-          for name in ('decision', 'grace', 'succession', 'acceptance', 'progress', 'cadence-tests', 'catchup-tests', 'rebound-tests', 'rebound-links'):
+          for name in ('decision', 'grace', 'succession', 'acceptance', 'progress', 'cadence-tests', 'catchup-tests', 'rebound-tests', 'rebound-links', 'source-check'):
               p = pathlib.Path(name + '.log')
               logs[name] = hashlib.sha256(p.read_bytes()).hexdigest() if p.exists() else None
           cadence = pathlib.Path('schedule-audit.json')
@@ -120,6 +143,7 @@ jobs:
             catchup-tests.log
             rebound-tests.log
             rebound-links.log
+            source-check.log
             rebound-report.json
             schedule-audit.json
           if-no-files-found: error
@@ -129,6 +153,7 @@ jobs:
         run: exit 1
 
   pulse-receiver:
+    if: github.event_name != 'pull_request'
     needs: proof
     runs-on: ubuntu-latest
     timeout-minutes: 5
@@ -203,6 +228,14 @@ jobs:
           x=json.load(open('out/copre-seed24h/current.json', encoding='utf-8'))
           print('SEED24H_QUALIFICATION:', x['qualification'])
           print('MAINLINE_CURRENTNESS:', x['mainline']['comparison'])
+          # The historical source can now be rechecked after the actual 24h
+          # boundary. A green job must mean the qualification is real, not
+          # merely that the script printed an explicit HELD classification.
+          expected='VERIFIED_SOURCE_REFETCH_24H_PLUS_NOT_RUNTIME_SURVIVAL'
+          if x['qualification'] != expected:
+              raise SystemExit('HOLD_24H_SOURCE_QUALIFICATION: '+x['qualification'])
+          assert x['state']=='PINNED_SOURCE_MATCH'
+          assert x['sha256']=='58f8c722bfbfc34cac41189c072d2effe4b19dbbe8a37be4f8687344d6b00b9a'
           assert x['receiver_ack'] is False and x['current_seed_synchronized'] is False
           assert x['exactly_once_effect_handoff'] is False and x['coex'] is False
           PY
@@ -216,7 +249,6 @@ jobs:
             out/copre-seed24h/prior/copre-seed24h-observation.json
           if-no-files-found: warn
           retention-days: 30
-
   task-producer:
     # Pending qualification: draft PR canary only, never scheduled false progress.
     if: github.event_name == 'pull_request'

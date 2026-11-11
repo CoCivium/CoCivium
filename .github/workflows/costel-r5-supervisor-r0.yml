@@ -3,10 +3,12 @@ on:
   pull_request:
     paths:
       - 'experiments/costel_r5_r0/**'
+      - 'scripts/CoRunnerStartupInventoryR0.ps1'
       - '.github/workflows/costel-r5-supervisor-r0.yml'
   push:
     paths:
       - 'experiments/costel_r5_r0/**'
+      - 'scripts/CoRunnerStartupInventoryR0.ps1'
       - '.github/workflows/costel-r5-supervisor-r0.yml'
 permissions:
   contents: read
@@ -79,3 +81,25 @@ jobs:
           path: out/costel-handoff/receiver/receipt.json
           if-no-files-found: error
           retention-days: 1
+
+  windows-startup-readonly:
+    # Executes only on an ephemeral GitHub Actions Windows runner, NOT X2.
+    runs-on: windows-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Verify startup classification redaction (synthetic)
+        shell: pwsh
+        run: |
+          $record = & pwsh -NoProfile -NonInteractive -File scripts/CoRunnerStartupInventoryR0.ps1 -SelfTest | ConvertFrom-Json
+          if ($record.state -ne 'SYNTHETIC_CLASSIFIER_PASS' -or $record.raw_arguments_emitted -or $record.x2_host_observed) { throw 'SELFTEST_UNSAFE_OR_FAILED' }
+      - name: Verify real Windows read-only inventory envelope (ephemeral CI host)
+        shell: pwsh
+        run: |
+          $record = & pwsh -NoProfile -NonInteractive -File scripts/CoRunnerStartupInventoryR0.ps1 | ConvertFrom-Json
+          if ($record.schema -ne 'CoAll.CoRunnerStartupInventory.R0' -or $record.state -ne 'READ_ONLY_LOCAL_WINDOWS_SNAPSHOT') { throw 'INVENTORY_SCHEMA_FAILED' }
+          if (!$record.no_registry_or_task_writes -or !$record.no_network_or_external_effect -or $record.raw_command_lines_emitted -or $record.credentials_or_tokens_emitted -or $record.x2_host_observed) { throw 'INVENTORY_AUTHORITY_FAILED' }
+          if ($record.visible_popup_attribution -ne 'NOT_TESTED' -or $record.reboot_autostart_success -ne 'NOT_TESTED') { throw 'INVENTORY_PROOF_INFLATION' }
+          Write-Output ('PASS_EPHEMERAL_WINDOWS_STARTUP_INVENTORY task_count=' + $record.scheduled_task_count_scanned)

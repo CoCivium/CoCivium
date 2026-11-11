@@ -31,6 +31,17 @@ def main():
     assert "42744256246" in body and "42750710011" in body
     assert "<iframe" not in body and "<script" not in body
     assert "Needle trails through time" in chart
+    # A 24h historical source refetch is not an independent-host receiver or runtime survival.
+    assert "42824746546" in body, "Missing dated source run"
+    assert "HELD_LESS_THAN_24H" in body, "Earlier 24h HOLD erased"
+    assert "VERIFIED_SOURCE_REFETCH_24H_PLUS_NOT_RUNTIME_SURVIVAL" in body, "Actual source refetch PASS omitted"
+    assert "42934800629" in body, "Missing exact recheck run"
+    assert "runtime" in body.lower() and "survival" in body.lower(), "Runtime survival boundary lost"
+    assert "external_receiver_ack: false" in body, "No receiver boundary"
+    assert "same GitHub Actions provider" in body, "Provider failure domain missing"
+    assert "NO_MATERIAL_DELTA" in body, "No-drag quiescence missing"
+    assert "G_dSide belongs to optional philosophical inquiry" in body
+
 
     # Plain-language bullets work on narrow GitHub mobile views without a table.
     assert not re.search(r"^\|", body, flags=re.M), "Mobile reader reverted to a table"

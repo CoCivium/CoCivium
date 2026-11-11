@@ -20,6 +20,9 @@
 
 **Visible WorkID preview (synthetic, browser-local):** [CoContextRail offline HTML source](examples/conodcothumb/context_rail_r1/index.html) now offers explicit Preserve / Recover / Revoke controls for one *public synthetic* CoPre narrative. [CI run 42754053463](https://github.com/CoCivium/CoCivium/actions/runs/42754053463) passed 92 existing context tests, 13 new WorkID tests and exact static build verification. No hosted app, private-chat ingestion, real mouse remapping, user UX acceptance or external receiver effect is claimed. Use the existing [CoContextRail instructions](examples/conodcothumb/context_rail_r1/README.md) for first use and limits.
 
+## Local staging retirement is gated, not broadcast
+Local X2/CoFarm artifacts are intended to become disposable **only after qualifying custody and restore proof**, not as a blanket deletion instruction. Every relevant session should read the [bootstrap local-staging retirement gate](SESSION_BOOTSTRAP.md#local-staging-retirement) and the [machine policy](ai/session-bootstrap.json) before proposing retirement. If exact independent readproof, recovery test, scope-specific deletion authorization, or rollback preservation is absent, return `HOLD_NO_DELETE`. Do **not** delete files, issue provider account actions, or infer universal session ACK from this link.
+
 ## CoSeed / CoPath / CoFront federation
 
 The [source-bound CoSeed/CoPath machine graph](ai/copre-seed-path-federation-r0.json) connects the already-landed public CoPreGeneric packages and their distinct draft variants without falsely electing a global canon or introducing a third duplicate set. It offers role-relative paths to [public package A](docs/CoPreGeneric/Shareable_R0_20261109/README.md), [public package B](docs/CoPreGeneric/PublicDraft_R0_20261109/manifest.json), [front/echo continuity](docs/Architecture/COFRONT_RETRO_ECHO_NO_ORPHANS_R0_20261109.md), existing bootstrap, status and the exact receiver-readproof gate.
@@ -27,6 +30,8 @@ The [source-bound CoSeed/CoPath machine graph](ai/copre-seed-path-federation-r0.
 **CoSeed** here means a durable source identity and relevant pointers, not automatic user-private session content or proved >24h runtime survival. **CoPath** is a navigable, authorized recovery route, not proof a second session followed it. Package A and B are different drafts whose exact bytes must not be presented as identical mirrors. No discovered front is silently retired; unknown/unscanned coverage stays unknown.
 
 ## Exact public companions
+
+- [CoOmniFront+ / CoTimeBraid+ one-work/many-minds orientation](docs/Architecture/COOMNIFRONT_TIMEBRAID_R0_20261108.md): [accessible public wallchart](examples/coomnifront_r0/wallchart.svg) and [machine-readable work identity / evidence contract](ai/foresight/coomnifront-timebraid-r0.json) connect historical priors, current decisions, future scenarios, independent challenge and six observer lenses. Exact GitHub source readback exists for all three, but this is **not** proof of live session sync, X2/iOS deployment, independent reader adoption or receiver ACK.
 
 - [CoSpeedo: What actually got better? (human-readable public entry)](examples/cospeedo/README.md): source-linked Pass/Held/Fail history, plain-language caveats and the [R1 HTML prototype source](examples/cospeedo/needle-trails-r1.html); source-browser QA [PASS](https://github.com/CoCivium/CoCivium/actions/runs/42744256246), **not** a live gauge, independent receiver, X2 runtime or deployed website.
 

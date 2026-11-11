@@ -107,6 +107,34 @@ class QueueTests(unittest.TestCase):
         self.assertEqual(len(a)+len(b),1)
         self.assertEqual(self.a.snapshot(11)['total'],1)
 
+    def test_parallel_independent_workids_and_fenced_single_effect(self):
+        # Two independent prep/work lanes may be claimed concurrently. No
+        # shared WorkID is executed twice, and the local receipts remain scoped.
+        self.assertEqual(self.a.enqueue('w2', 'other:sha2',
+            digest('payload2'), 10), 'ENQUEUED')
+        barrier = threading.Barrier(2)
+        def work(owner):
+            q = DueWorkQueue(self.path)
+            try:
+                barrier.wait(timeout=4)
+                claims = q.claim_due(now=100, owner=owner, limit=1)
+                self.assertEqual(len(claims), 1)
+                claim = claims[0]
+                outcome = q.complete(claim,
+                    result_sha256=digest(owner + ':' + claim.work_id), now=101)
+                return claim.work_id, claim.epoch, outcome
+            finally:
+                q.close()
+        with ThreadPoolExecutor(max_workers=2) as pool:
+            results = list(pool.map(work, ('laneA', 'laneB')))
+        self.assertEqual({row[0] for row in results}, {'w1', 'w2'})
+        self.assertEqual([row[2] for row in results],
+                         ['COMMITTED_LOCAL_ONLY', 'COMMITTED_LOCAL_ONLY'])
+        self.assertEqual(self.a.snapshot(102)['complete'], 2)
+        self.assertFalse(self.a.snapshot(102)['independent_receiver_ack'])
+        self.assertFalse(self.a.snapshot(102)['external_effect_verified'])
+        self.assertEqual(self.a.claim_due(now=200,owner='late'), [])
+
     def test_invalid_clock_digest_and_batch_fail_closed(self):
         for now in (True,-1,'99'):
             with self.assertRaises(ValueError):

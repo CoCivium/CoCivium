@@ -10,6 +10,7 @@ on:
       - "docs/Architecture/COOBJECT_VITALITY_METABOLISM_R0_20261027.md"
       - "ai/vitality/**"
       - "scripts/CoObjectVitalityR0.py"
+      - "tests/test_coobject_vitality_admission_r0a.py"
       - "scripts/CoObjectAgencyBridgeR0.py"
       - "tests/test_coobject_agency_bridge_r0.py"
       - "scripts/CoObjectAgencyTaskR0.py"
@@ -24,6 +25,7 @@ on:
       - "docs/Architecture/COOBJECT_VITALITY_METABOLISM_R0_20261027.md"
       - "ai/vitality/**"
       - "scripts/CoObjectVitalityR0.py"
+      - "tests/test_coobject_vitality_admission_r0a.py"
       - "scripts/CoObjectAgencyBridgeR0.py"
       - "tests/test_coobject_agency_bridge_r0.py"
       - "scripts/CoObjectAgencyTaskR0.py"
@@ -171,3 +173,23 @@ jobs:
           path: out/conarrative/reader.json
           if-no-files-found: error
           retention-days: 30
+
+  vitality-admission:
+    name: vitality-admission (${{ matrix.python-version }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.11", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "${{ matrix.python-version }}"
+      - name: Exercise original and negative synthetic vitality gates
+        run: |
+          python -B scripts/CoObjectVitalityR0.py --fixture ai/vitality/coobject-vitality-fixture-r0.json --policy ai/vitality/coobject-vitality-policy-r0.json
+          python -B -m unittest discover -s tests -p 'test_coobject_vitality_admission_r0a.py' -v

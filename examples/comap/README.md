@@ -46,3 +46,13 @@ The **existing** [nested-atlas generator](../../scripts/CoNavNestedAtlasR0.cjs) 
 **Wave diversity optionality:** CoEv+ waves should vary hypotheses, receiver/audience, modality, scale, temporal horizon and strongest counterexample while retaining stable identity, rights, custody, measurement and rollback invariants. An intentional control/replay may resemble an earlier wave; novelty cannot trump reproducibility or user value. A versioned `wave_fingerprint` is a comparison aid, not proof that a wave actually executed.
 
 **Redundancy boundary:** Git history gives a recoverable source revision within GitHub. A separate DNS name resolving to the same GitHub bytes is not an independent backup. Independent CoStead or second-provider copy, exact hash readback, and a cold restore need separate evidence; no domain publish, browser X2 adoption, external receiver ACK, or >24-hour service survival is asserted.
+
+## CoLocal2601109 | Cross-front CoSeed candidate (2026-11-10)
+
+CoMap has now **read and indexed** the [public CoLocal CoRelGRAILS+ Seed](../../docs/CoLocal/CoLocal2601109_CoRelGRAILS_CoSeed_R0.md) via the [CoLocal discovery registry](../../docs/CoLocal/README.md). This is a typed **documentation/source-reference consumer path**, not an update to the embedded 56-node/61-edge graph, runtime semantic ingestion, all-session synchronization, or CoAll admission.
+
+- **Source object:** `docs/CoLocal/CoLocal2601109_CoRelGRAILS_CoSeed_R0.md`; Git blob SHA-1 `c9c6dd3a4d6074a5a34e3decdbeb56f574d9f200`; source readback performed during this documentation update.
+- **Candidate CoPath relations:** `CoLocal2601109_CoRelGRAILS_R0 --CANDIDATE_SOURCE_FOR--> CoMap+`; `CoInEx+ --REQUIRES_RECEIVER_READPROOF--> CoStead+`; `CoTime+ --PROPOSES_INVERSE_TESTS_FOR--> CoEv+`.
+- **Disposition:** `REFERENCED_FOR_REVIEW`. No independent agent pickup, executable graph mutation, operational integration, or governance authority is implied.
+- **Next qualification:** map the candidate through the existing graph's explicit source registry only after graph schema validation, rights/authority review, and a regression test that maintains the previous projection as recoverable predecessor.
+
