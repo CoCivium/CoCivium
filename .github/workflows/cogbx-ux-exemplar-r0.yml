@@ -8,11 +8,13 @@ on:
     paths:
       - "docs/Architecture/COGBX_UNIVERSAL_UX_EXEMPLAR_R0_20261027.md"
       - "examples/cogbx_ux_exemplar_r0/**"
+      - "examples/cobar/**"
       - ".github/workflows/cogbx-ux-exemplar-r0.yml"
   push:
     paths:
       - "docs/Architecture/COGBX_UNIVERSAL_UX_EXEMPLAR_R0_20261027.md"
       - "examples/cogbx_ux_exemplar_r0/**"
+      - "examples/cobar/**"
       - ".github/workflows/cogbx-ux-exemplar-r0.yml"
 
 jobs:
@@ -28,6 +30,8 @@ jobs:
         run: node examples/cogbx_ux_exemplar_r0/smoke.cjs
       - name: Run R1 accessible input interactions
         run: node examples/cogbx_ux_exemplar_r0/interaction_r1.cjs
+      - name: Check CoBar R4b exact-source synthetic local interaction
+        run: node examples/cobar/interaction_r4b.cjs
       - name: Check source boundaries
         run: |
           python - <<'PY'
