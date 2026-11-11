@@ -152,6 +152,111 @@ def new_placeholder(slot, state=None, *, reason=None, wake_condition=None):
     return validate_placeholder(item)
 
 
+# A separate thought experiment can relate CoEther facets, but it cannot
+# turn metaphor, representation or correlation into causal proof.
+RELATION_EDGES = ("ANALOGY_TO", "INTERPRETED_AS", "MODELS", "MERGER_HYPOTHESIS")
+RELATION_NONCLAIMS = (
+    "SYNTHETIC_PROPOSAL_NE_EXTERNAL_OBSERVATION",
+    "ANALOGY_NE_CAUSE",
+    "CANDIDATE_MERGER_NE_IDENTITY",
+    "NO_INDEPENDENT_RECEIVER_OR_PUBLICATION",
+)
+RELATION_FIELDS = frozenset({
+    "schema", "proposal_id", "source_facet", "target_facet",
+    "edge_type", "interpretation_domain", "hypothesis",
+    "discriminator", "ordinary_alternative", "status",
+    "source_scope", "evidence_refs", "receiver_ack",
+    "verified_bridge", "authority", "nonclaims",
+})
+EMPIRICAL_EDGES = frozenset({"MODELS", "MERGER_HYPOTHESIS"})
+SYMBOLIC_EDGES = frozenset({"ANALOGY_TO", "INTERPRETED_AS"})
+EMPIRICAL_FACETS = frozenset({
+    "PHYSICAL_OBSERVATION", "VIRTUAL_REPRESENTATION", "UNKNOWN_OBSERVER_GAP",
+})
+
+
+def validate_relation_proposal(item):
+    """Admit bounded *hypotheses*, never proven cross-domain mergers."""
+    require(type(item) is dict and set(item) == RELATION_FIELDS,
+            "RELATION_FIELDS")
+    require(item["schema"] == "CoAll.CoEther.RelationProposal.R0",
+            "RELATION_SCHEMA")
+    identifier = item["proposal_id"]
+    require(type(identifier) is str and identifier.startswith("synthetic:")
+            and 11 <= len(identifier) <= 80
+            and all(c.isalnum() or c in "._:-" for c in identifier),
+            "RELATION_ID")
+    left, right = item["source_facet"], item["target_facet"]
+    require(type(left) is str and type(right) is str
+            and left in ETHER_FACETS and right in ETHER_FACETS
+            and left != right, "DISTINCT_REGISTERED_FACETS_REQUIRED")
+    edge = item["edge_type"]
+    require(type(edge) is str and edge in RELATION_EDGES, "RELATION_EDGE")
+    require(type(item["hypothesis"]) is str
+            and 10 <= len(item["hypothesis"].strip()) <= 200,
+            "BOUNDED_HYPOTHESIS")
+    require(item["status"] == "PROPOSED_UNVERIFIED"
+            and item["source_scope"] == "SYNTHETIC_FIXTURE_ONLY",
+            "RELATION_CANNOT_SELF_PROMOTE")
+    require(type(item["evidence_refs"]) is list and not item["evidence_refs"]
+            and item["receiver_ack"] is False
+            and item["verified_bridge"] is False
+            and item["authority"] == "NONE",
+            "RELATION_NO_FALSE_EVIDENCE_OR_AUTHORITY")
+    require(item["nonclaims"] == list(RELATION_NONCLAIMS),
+            "RELATION_NONCLAIMS")
+    discriminant = item["discriminator"]
+    alternative = item["ordinary_alternative"]
+    if edge in EMPIRICAL_EDGES:
+        require(item["interpretation_domain"] == "EMPIRICAL_TEST_PROPOSAL",
+                "EMPIRICAL_DOMAIN")
+        require(left in EMPIRICAL_FACETS and right in EMPIRICAL_FACETS,
+                "NO_EMPIRICAL_MERGER_WITH_MYTHOS_OR_G_D")
+        if edge == "MODELS":
+            require(left == "VIRTUAL_REPRESENTATION"
+                    and right == "PHYSICAL_OBSERVATION",
+                    "MODEL_DIRECTION")
+        require(type(discriminant) is str
+                and 15 <= len(discriminant.strip()) <= 240
+                and type(alternative) is str
+                and 10 <= len(alternative.strip()) <= 240,
+                "REQUIRES_DISCRIMINATOR_AND_ALTERNATIVE")
+    else:
+        require(item["interpretation_domain"] == "NARRATIVE_OR_PHILOSOPHICAL"
+                and discriminant is None and alternative is None,
+                "SYMBOLIC_RELATION_NE_INSTRUMENT_RESULT")
+        if edge == "INTERPRETED_AS":
+            require(right in ("MYTHOS_NARRATIVE", "PHILOSOPHICAL_G_D_INQUIRY"),
+                    "INTERPRETATION_TARGET")
+    return deepcopy(item)
+
+
+def propose_relation(proposal_id, source_facet, target_facet, edge_type,
+                     hypothesis, *, discriminator=None, ordinary_alternative=None):
+    """Build synthetic unverified proposals only; no cross-domain conclusion."""
+    edge_domain = ("EMPIRICAL_TEST_PROPOSAL" if edge_type in EMPIRICAL_EDGES
+                   else "NARRATIVE_OR_PHILOSOPHICAL")
+    item = {
+        "schema": "CoAll.CoEther.RelationProposal.R0",
+        "proposal_id": proposal_id,
+        "source_facet": source_facet,
+        "target_facet": target_facet,
+        "edge_type": edge_type,
+        "interpretation_domain": edge_domain,
+        "hypothesis": hypothesis,
+        "discriminator": discriminator,
+        "ordinary_alternative": ordinary_alternative,
+        "status": "PROPOSED_UNVERIFIED",
+        "source_scope": "SYNTHETIC_FIXTURE_ONLY",
+        "evidence_refs": [],
+        "receiver_ack": False,
+        "verified_bridge": False,
+        "authority": "NONE",
+        "nonclaims": list(RELATION_NONCLAIMS),
+    }
+    return validate_relation_proposal(item)
+
+
 def initial_projections():
     """Three optional slots. Not a request to add three UI panels."""
     return (
