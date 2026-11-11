@@ -45,6 +45,28 @@ A separate, bounded X2 headless Edge challenge confirmed that the Run/consent/St
 
 `LOCAL_STORAGE_SCHEMA_VALID_NE_AUTHENTICATED_CONSENT`  `BROWSER_RELOAD_NE_INDEPENDENT_RECEIVER`
 
+## Hosted source-bound CI
+
+The exact candidate has a dependency-free Node `vm` interaction harness,
+[`interaction_r4b.cjs`](interaction_r4b.cjs), reusing the **existing CoGbx UX Exemplar R0** GitHub Actions workflow instead of introducing another scheduler. It checks the pinned HTML hash and 18 logical safety/state invariants.
+
+[GitHub Actions PR run #43092172933](https://github.com/CoCivium/CoCivium/actions/runs/43092172933) completed **success** at commit `ee4e663c03662ce7f64bd2dc062e6ebb8b11fe0c` on the PR test merge, including the preexisting CoGbx checks and the new CoBar source-bound test. The sibling branch-push workflow also passed. The Node DOM shim verifies state logic, **not** browser geometry; the separate X2 Edge 33/33 and low-height hit-target results supply the limited layout evidence. No hosted browser action should be inferred from the DOM shim.
+
+## Existing WorkID/receiver donor crosswalk (different identities)
+
+Reuse the advanced [synthetic browser-to-SQLite draft #452](https://github.com/CoCivium/CoCivium/pull/452) and its [acceptance issue #450](https://github.com/CoCivium/CoCivium/issues/450) as donor, **not** a new receiver. These are separately scoped evidence lanes:
+
+| Dimension | CoBar R4b (this candidate) | Existing #452 bridge |
+| --- | --- | --- |
+| Browser WorkID | `CO-SESSION-RECOVERY::LOCAL-SYNTHETIC-R0` | `CoPre.ReadyCycle.Synthetic.R0` |
+| Browser record schema | `CoBar.CoPreLocalIO.R0.Record` | `CoAll.CoOwnedWork.BrowserLocal.R0.Record` |
+| Source anchor | Frozen CoBar R3c snapshot SHA-256 `BB1483149B30A336617805CDF3AF02483EA3A46A8347C8220602E1DCB7AE0B6A` | Pinned historical `CoPre.md` commit `63b41ead8797e5a781699f32bcbc77b78bdbd7af` and SHA-256 `58f8c722bfbfc34cac41189c072d2effe4b19dbbe8a37be4f8687344d6b00b9a` |
+| Execution/receipt | Local browser `localStorage`, no transport, self-declared client consent | Separate synthetic CI producer, SQLite receiver and cold-reader using `CoOwnedWorkSqliteBridgeR0.py` |
+| ACK boundary | `receiver_ack=false`; no receiver | Synthetic CI job transfers/readbacks only; no independently authenticated external host or human consent |
+| Stop | Browser-local R4b revocation only | Existing bridge tests producer revocation, SQLite update and replay denial for its **different** WorkID |
+
+**Integration rule:** R4b must eventually **project an already qualified existing CoOwnedWork record**, or declare a new explicit parent/child relation and obtain new authorization. Never silently overwrite a WorkID, rewrite narrative/epoch fields, assert receiver ACK, or import user-controlled `localStorage` as authenticated consent. No shared durable receiver is established merely by the two PRs passing their separate CIs. Scope the next independent test to one explicitly authorized WorkID and preserve Stop, lease fencing and rollback.
+
 ## Required next proof
 
 The existing [CoSpeedo/CoBar acceptance issue #453](https://github.com/CoCivium/CoCivium/issues/453) remains the product owner; [browser-to-SQLite bridge issue #450](https://github.com/CoCivium/CoCivium/issues/450) remains the receiver-contract gap, and [cross-surface recovery issue #317](https://github.com/CoCivium/CoCivium/issues/317) remains the external-origin ACK and custody gap.
