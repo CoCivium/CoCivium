@@ -12,12 +12,14 @@ on:
       - 'tests/test_copredict_drift_r0.py'
       - 'tests/test_comeasure_optimized_failclosed_r0.py'
       - 'ai/measurement/observation_domain_r0.py'
+      - 'ai/measurement/ux_placeholder_r0.py'
       - 'ai/measurement/first_use_demo_r0.py'
       - 'ai/measurement/README.md'
       - 'ai/measurement/colockstep_survival_r0.py'
       - 'tests/test_colockstep_browser_r0.py'
       - 'examples/codemow/truth-gate-r1.html'
       - 'tests/test_observation_domain_r0.py'
+      - 'tests/test_ux_placeholder_r0.py'
       - 'docs/Architecture/COALL_MEASUREMENT_R0_CANDIDATE.md'
       - '.github/workflows/comeasure-r0-ci.yml'
 
@@ -48,6 +50,10 @@ jobs:
         run: |
           python -m unittest discover -s tests -p 'test_observation_domain_r0.py' -v
           python -O -m unittest discover -s tests -p 'test_observation_domain_r0.py' -v
+      - name: Reject fake CoIb and CoEther measurements in ordinary and optimized Python
+        run: |
+          python -B -m unittest discover -s tests -p 'test_ux_placeholder_r0.py' -v
+          python -O -B -m unittest discover -s tests -p 'test_ux_placeholder_r0.py' -v
       - name: Demonstrate synthetic first use under both interpreter modes
         run: |
           python ai/measurement/first_use_demo_r0.py
