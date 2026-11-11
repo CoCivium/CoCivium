@@ -10,7 +10,9 @@ import unittest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "ai" / "measurement"))
 from ux_placeholder_r0 import (new_placeholder, validate_placeholder,
-                               initial_projections, ETHER_FACETS)
+                               initial_projections, ETHER_FACETS,
+                               propose_relation, validate_relation_proposal,
+                               RELATION_NONCLAIMS)
 
 
 class PlaceholderContractTests(unittest.TestCase):
@@ -164,6 +166,166 @@ class PlaceholderContractTests(unittest.TestCase):
         clone = validate_placeholder(c)
         clone["nonclaims"].clear()
         self.assertNotEqual(c, clone)
+
+
+
+class CrossDomainProposalTests(unittest.TestCase):
+    """An appealing connection is not evidence of a shared physical cause."""
+
+    def modeled(self):
+        return propose_relation(
+            "synthetic:virtual_clock_model",
+            "VIRTUAL_REPRESENTATION", "PHYSICAL_OBSERVATION", "MODELS",
+            "A simulated timing rule may predict a future instrument reading",
+            discriminator="Pre-register a blinded prospective holdout and compare predictions.",
+            ordinary_alternative="Overfitting shared calibration or a common source sample",
+        )
+
+    def analogized(self):
+        return propose_relation(
+            "synthetic:mythos_pattern_analogy",
+            "MYTHOS_NARRATIVE", "PHYSICAL_OBSERVATION", "ANALOGY_TO",
+            "A fictional pattern resembles an observed instrument trace",
+        )
+
+    def rejects(self, candidate):
+        with self.assertRaises(ValueError):
+            validate_relation_proposal(candidate)
+
+    def test_model_proposal_requires_prospective_discriminator(self):
+        model = self.modeled()
+        self.assertEqual(model["status"], "PROPOSED_UNVERIFIED")
+        self.assertEqual(model["interpretation_domain"], "EMPIRICAL_TEST_PROPOSAL")
+        self.assertFalse(model["verified_bridge"])
+        self.assertIsNone(model.get("actual_observation"))
+        self.assertEqual(model["evidence_refs"], [])
+        self.assertIn("CANDIDATE_MERGER_NE_IDENTITY", model["nonclaims"])
+
+    def test_analogy_stays_symbolic_and_cannot_prove_mechanism(self):
+        analogy = self.analogized()
+        self.assertEqual(analogy["interpretation_domain"], "NARRATIVE_OR_PHILOSOPHICAL")
+        self.assertIsNone(analogy["discriminator"])
+        self.assertEqual(analogy["source_scope"], "SYNTHETIC_FIXTURE_ONLY")
+        self.assertFalse(analogy["verified_bridge"])
+
+    def test_philosophical_interpretation_is_not_divine_signal_evidence(self):
+        thought = propose_relation(
+            "synthetic:interpretation_fixture",
+            "PHYSICAL_OBSERVATION", "PHILOSOPHICAL_G_D_INQUIRY",
+            "INTERPRETED_AS", "A fictional observer interprets a pattern spiritually",
+        )
+        self.assertEqual(thought["status"], "PROPOSED_UNVERIFIED")
+        self.assertFalse(thought["receiver_ack"])
+        self.assertEqual(thought["evidence_refs"], [])
+        for key, value in [
+            ("divine_origin_verified", True),
+            ("signal_verified", "G_d"),
+        ]:
+            with self.subTest(key=key):
+                changed = copy.deepcopy(thought)
+                changed[key] = value
+                self.rejects(changed)
+
+    def test_candidate_merger_stays_unverified_even_when_testable(self):
+        merger = propose_relation(
+            "synthetic:merger_fixture",
+            "VIRTUAL_REPRESENTATION", "PHYSICAL_OBSERVATION",
+            "MERGER_HYPOTHESIS",
+            "A simulated system may encode the same referent as a measured event",
+            discriminator="Use independent instruments to predict a hidden new observation.",
+            ordinary_alternative="Two descriptions may share training examples or calibration",
+        )
+        self.assertEqual(merger["status"], "PROPOSED_UNVERIFIED")
+        self.assertFalse(merger["verified_bridge"])
+        self.assertNotIn("SAME_REFERENT", merger["edge_type"])
+
+    def test_wrong_edges_never_promote_analogy_to_identity(self):
+        for edge in ("SAME_REFERENT", "CAUSES", "G_D_CONFIRMED", "VERIFIED_MERGER"):
+            with self.subTest(edge=edge):
+                changed = self.analogized()
+                changed["edge_type"] = edge
+                self.rejects(changed)
+
+    def test_no_self_verification_or_receiver_ack(self):
+        for key, value in [
+            ("status", "VERIFIED"),
+            ("verified_bridge", True),
+            ("receiver_ack", True),
+            ("authority", "COEX_APPROVED"),
+            ("source_scope", "INDEPENDENT_OBSERVATORY"),
+            ("evidence_refs", ["claimed:independent_reviewer"]),
+        ]:
+            with self.subTest(key=key):
+                changed = self.modeled()
+                changed[key] = value
+                self.rejects(changed)
+
+    def test_empirical_proposal_requires_competing_explanation(self):
+        for key, value in [
+            ("discriminator", None),
+            ("discriminator", "Just trust us"),
+            ("ordinary_alternative", None),
+            ("ordinary_alternative", "N/A"),
+        ]:
+            with self.subTest(key=key):
+                changed = self.modeled()
+                changed[key] = value
+                self.rejects(changed)
+
+    def test_no_empirical_merger_with_mythos_or_g_d(self):
+        for facet in ("MYTHOS_NARRATIVE", "PHILOSOPHICAL_G_D_INQUIRY"):
+            with self.subTest(facet=facet):
+                changed = self.modeled()
+                changed["target_facet"] = facet
+                self.rejects(changed)
+
+    def test_models_has_declared_direction_not_mythos_as_sensor(self):
+        for src, dst in [
+            ("PHYSICAL_OBSERVATION", "VIRTUAL_REPRESENTATION"),
+            ("UNKNOWN_OBSERVER_GAP", "PHYSICAL_OBSERVATION"),
+        ]:
+            with self.subTest(src=src):
+                changed = self.modeled()
+                changed["source_facet"], changed["target_facet"] = src, dst
+                self.rejects(changed)
+
+    def test_unknown_facet_requires_versioned_extension(self):
+        changed = self.analogized()
+        changed["target_facet"] = "NEW_UNKNOWN_FACET"
+        self.rejects(changed)
+
+    def test_same_facet_not_a_cross_domain_rel(self):
+        changed = self.analogized()
+        changed["target_facet"] = changed["source_facet"]
+        self.rejects(changed)
+
+    def test_symbolic_relation_must_not_hide_empirical_witness(self):
+        changed = self.analogized()
+        changed["discriminator"] = "Faked external evidence from source"
+        self.rejects(changed)
+        changed = self.analogized()
+        changed["interpretation_domain"] = "EMPIRICAL_TEST_PROPOSAL"
+        self.rejects(changed)
+
+    def test_proposed_relation_must_preserve_nonclaims(self):
+        changed = self.modeled()
+        changed["nonclaims"] = list(RELATION_NONCLAIMS[:-1])
+        self.rejects(changed)
+
+    def test_replay_is_pure_and_does_not_mutate_original(self):
+        original = self.modeled()
+        verified_copy = validate_relation_proposal(original)
+        verified_copy["nonclaims"].clear()
+        self.assertNotEqual(original, verified_copy)
+        self.assertEqual(validate_relation_proposal(original), original)
+
+    def test_id_and_hypothesis_are_bounded(self):
+        changed = self.analogized()
+        changed["proposal_id"] = "a"
+        self.rejects(changed)
+        changed = self.analogized()
+        changed["hypothesis"] = ""
+        self.rejects(changed)
 
 
 if __name__ == "__main__":
