@@ -23,6 +23,15 @@ jobs:
           cd docs/CoTheoryAll/research/coemergence-dhp-r0/pattern_contagion
           python3 -m unittest -v test_pattern_contagion_r0.py
           python3 -m unittest -v test_counistax_crosswalk_r0.py
+          python3 -m pip install playwright==1.55.0
+          if command -v google-chrome >/dev/null 2>&1; then
+            COSPEEDO_CHROME_PATH=$(command -v google-chrome) python3 test_counistax_pairlab_browser_r0.py
+          elif command -v chromium >/dev/null 2>&1; then
+            COSPEEDO_CHROME_PATH=$(command -v chromium) python3 test_counistax_pairlab_browser_r0.py
+          else
+            python3 -m playwright install --with-deps chromium
+            python3 test_counistax_pairlab_browser_r0.py
+          fi
           python3 pattern_contagion_r0.py fixture.json > /tmp/copattern-contagion-results.json
           python3 -m json.tool /tmp/copattern-contagion-results.json > /dev/null
           python3 -m json.tool term_candidates.json > /dev/null
