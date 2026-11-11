@@ -220,6 +220,19 @@ def make_handler(store, model, receipt_dir, bridge=local_ollama_run):
                 self.end_headers()
                 self.wfile.write(data)
                 return
+            if path.startswith("/api/turn/"):
+                try:
+                    parts=path.split("/")
+                    if len(parts)!=5 or not parts[3] or not parts[4]:
+                        return self.json_response(404,{"error":"NOT_FOUND"})
+                    cid,tid=unquote(parts[3]),unquote(parts[4])
+                    item=store.read_turn(cid,tid)
+                    self.json_response(404 if item["state"] in
+                                       {"UNKNOWN_CONVERSATION","UNKNOWN_TURN"}
+                                       else 200,item)
+                except ValueError:
+                    self.json_response(400,{"error":"INVALID_TURN"})
+                return
             if path.startswith("/api/conversation/"):
                 try:
                     cid=unquote(path.rsplit("/",1)[-1])
