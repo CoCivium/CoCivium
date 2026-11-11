@@ -122,6 +122,56 @@ def adapt(record, gate, source_path, js_path):
     return packet
 
 
+
+def apply_browser_revocation(db_path, active_record, revoked_record,
+                             gate, source_path, js_path):
+    """Synthetic cross-job revocation of the exact browser-origin WorkID.
+
+    Validates record identity and epoch before touching SQLite. Caller-supplied
+    browser JSON is not cryptographically authenticated human authorization.
+    """
+    packet = adapt(active_record, gate, source_path, js_path)
+    require(type(revoked_record) is dict and
+            set(revoked_record) == RECORD_FIELDS,
+            "HELD_REVOKE_RECORD_SCHEMA")
+    require(revoked_record == {**active_record, "state": "REVOKED"},
+            "HELD_REVOKE_NOT_SAME_BROWSER_RECORD")
+    # The destination must already contain precisely this unrevised WorkID.
+    original = readback(db_path, expected_packet=packet,
+                        source_path=source_path)
+    require(original["state"] == "COLD_SOURCE_RECONSTRUCTED"
+            and original["committed_work_ids"] == 1
+            and original["external_receiver_ack"] is False,
+            "HELD_RECEIVER_NOT_ACTIVE_FOR_REVOKE")
+    revoke(db_path, packet, expected_lease=packet["lease_epoch"])
+    observed = readback(db_path, expected_packet=packet,
+                        source_path=source_path)
+    require(observed["state"] == "HELD_REVOKED"
+            and observed["next_safe_deed"] is None
+            and observed["external_receiver_ack"] is False,
+            "HELD_REVOCATION_NOT_APPLIED")
+    return {
+        "schema": "CoAll.CoOwnedWork.BrowserRevokeToSqliteR0",
+        "state": "SYNTHETIC_BROWSER_ORIGIN_REVOCATION_APPLIED_CI_ONLY",
+        "work_id": WORK_ID, "source_sha256": PINNED_SHA256,
+        "active_browser_record_sha256": digest(active_record),
+        "revoked_browser_record_sha256": digest(revoked_record),
+        "sqlite_packet_sha256": digest(packet),
+        "consent_epoch": packet["consent_epoch"],
+        "before": original["state"], "after": observed["state"],
+        "receiver_ack": False, "real_human_consent": False,
+        "independent_sender_authentication": False,
+        "cross_provider_delivery": False, "external_effects": 0,
+        "nonclaims": [
+            "CI_SIMULATED_UI_REVOCATION_NOT_REAL_HUMAN_CONSENT",
+            "SOURCE_ORIGIN_BYTES_NOT_AUTHENTICATED_SIGNED_EVENT",
+            "SAME_GITHUB_FAILURE_DOMAIN",
+            "EPHEMERAL_SQLITE_NOT_PRODUCTION_RECEIVER",
+            "NO_24H_SURVIVAL", "NOT_CANON", "NOT_COEX"
+        ]
+    }
+
+
 def run(record_path, gate_path, source_path, js_path, output_dir):
     record = json.loads(checked_file(record_path, "browser-record.json", 8192))
     gate = json.loads(checked_file(gate_path, "ownedwork_synthetic_gate_r0.json", 8192))
