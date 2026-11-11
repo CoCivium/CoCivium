@@ -9,7 +9,8 @@ import sys
 import unittest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "ai" / "measurement"))
-from ux_placeholder_r0 import new_placeholder, validate_placeholder, initial_projections
+from ux_placeholder_r0 import (new_placeholder, validate_placeholder,
+                               initial_projections, ETHER_FACETS)
 
 
 class PlaceholderContractTests(unittest.TestCase):
@@ -37,14 +38,53 @@ class PlaceholderContractTests(unittest.TestCase):
         self.assertIn("independent_receiver_readback", p["wake_condition"])
         self.assertEqual(p["established_metric_ref"], "CoMx.receiver_pickup_fraction")
 
-    def test_coether_no_fictitious_clean_status(self):
+    def test_coether_remains_open_research_placeholder(self):
         p = new_placeholder("CoEther")
+        self.assertEqual(p["state"], "RESEARCH_CONCEPT")
+        self.assertEqual(p["kind"], "OPEN_INTERSTICE_RESEARCH_PLACEHOLDER")
+        self.assertEqual(p["display"], "Open questions; no empirical bridge established")
+        self.assertIsNone(p["established_metric_ref"])
+        self.assertIsNone(p["value"])
+        self.assertFalse(p["measurement_verified"])
+        self.assertIn("no verified common mechanism", p["reason"])
+
+    def test_coether_transport_is_optional_child_not_the_umbrella(self):
+        p = new_placeholder("CoEther.Transport")
         self.assertEqual(p["state"], "UNKNOWN")
         self.assertEqual(p["display"], "Not yet measured")
         self.assertEqual(p["established_metric_ref"], "CoTime.source_age")
         c = copy.deepcopy(p)
         c["display"] = "Signal Clean"
         self.rejects(c)
+        # Never collapse the umbrella into its narrow measured descendant.
+        c = new_placeholder("CoEther")
+        c["established_metric_ref"] = "CoTime.source_age"
+        self.rejects(c)
+
+    def test_coether_facets_distinct_without_merger_assertion(self):
+        self.assertIn("PHYSICAL_OBSERVATION", ETHER_FACETS)
+        self.assertIn("VIRTUAL_REPRESENTATION", ETHER_FACETS)
+        self.assertIn("MYTHOS_NARRATIVE", ETHER_FACETS)
+        self.assertIn("PHILOSOPHICAL_G_D_INQUIRY", ETHER_FACETS)
+        self.assertIn("UNKNOWN_OBSERVER_GAP", ETHER_FACETS)
+        p = new_placeholder("CoEther", reason="open inquiry, no factual interpretation yet")
+        self.assertEqual(p["reason"], "open inquiry, no factual interpretation yet")
+        for key, value in [
+            ("merged_with", "CoIb"),
+            ("god_signal_confirmed", True),
+            ("real_virtual_bridge", "PROVEN"),
+        ]:
+            with self.subTest(key=key):
+                c = copy.deepcopy(p)
+                c[key] = value
+                self.rejects(c)
+
+    def test_coether_cannot_be_promoted_to_measured_or_not_applicable(self):
+        for state in ("UNKNOWN", "AWAITING_EVIDENCE", "NOT_APPLICABLE"):
+            with self.subTest(state=state):
+                with self.assertRaises(ValueError):
+                    new_placeholder("CoEther", state=state,
+                                    reason="symbolic only", wake_condition="test")
 
     def test_coasym_not_synthetic_physics(self):
         self.assertIsNone(initial_projections()[2]["established_metric_ref"])
@@ -98,14 +138,14 @@ class PlaceholderContractTests(unittest.TestCase):
 
     def test_not_applicable_needs_justification(self):
         with self.assertRaises(ValueError):
-            new_placeholder("CoEther", state="NOT_APPLICABLE")
-        p = new_placeholder("CoEther", state="NOT_APPLICABLE",
+            new_placeholder("CoEther.Transport", state="NOT_APPLICABLE")
+        p = new_placeholder("CoEther.Transport", state="NOT_APPLICABLE",
                             reason="offline isolated, no transport")
         self.assertIn("declared, not independently verified", p["display"])
 
     def test_unknown_must_not_claim_schedule(self):
         with self.assertRaises(ValueError):
-            new_placeholder("CoEther", state="UNKNOWN", wake_condition="next-hour")
+            new_placeholder("CoEther.Transport", state="UNKNOWN", wake_condition="next-hour")
 
     def test_wrong_slot_and_extraneous_telemetry(self):
         with self.assertRaises(ValueError):
