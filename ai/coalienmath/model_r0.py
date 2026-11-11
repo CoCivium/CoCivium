@@ -31,8 +31,9 @@ class QualifiedObservation:
     null_kind: NullKind | None = None
 
     def __post_init__(self) -> None:
-        if not self.subject or not self.quantity_kind or not self.unit:
-            raise ValueError("Missing subject, quantity kind, or unit")
+        if any(type(label) is not str or not label.strip() or label != label.strip()
+               for label in (self.subject, self.quantity_kind, self.unit)):
+            raise ValueError("Subject, quantity kind, and unit require nonblank canonical strings")
         if self.null_kind is not None and not isinstance(self.null_kind, NullKind):
             raise ValueError("Null state must be a recognized NullKind")
         if self.null_kind is None:
@@ -67,7 +68,13 @@ def numeric_residual(predicted: QualifiedObservation, observed: QualifiedObserva
         raise ValueError("Observed outcome is null or withheld")
     if predicted.value is None or observed.value is None:
         raise ValueError("Numeric observation missing despite declared non-null state")
-    return float(observed.value - predicted.value)
+    try:
+        delta = float(observed.value - predicted.value)
+    except OverflowError as exc:
+        raise ValueError("Nonfinite numeric residual") from exc
+    if not isfinite(delta):
+        raise ValueError("Nonfinite numeric residual")
+    return delta
 
 
 def decision_preserving(
@@ -98,8 +105,9 @@ def distinguishable_by(world_a: T, world_b: T, observation: Callable[[T], Hashab
 def count_failure_domains(witness_domains: Iterable[str]) -> int:
     """Deduplicate claimed witnesses by their explicitly assigned failure domain."""
     domains = list(witness_domains)
-    if not domains or any(not x for x in domains):
-        raise ValueError("Independent domains cannot be inferred from missing labels")
+    if not domains or any(type(x) is not str or not x.strip() or x != x.strip()
+                          for x in domains):
+        raise ValueError("Independent domains require canonical nonblank string labels")
     return len(set(domains))
 
 
