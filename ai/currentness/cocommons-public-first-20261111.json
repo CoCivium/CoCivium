@@ -1,0 +1,60 @@
+{
+  "schema": "CoCivium.CoCommons.PublicFirstAdvisory.R0.v0.1",
+  "observed_date": "2026-11-11",
+  "state": "PUBLIC_SAFE_REVIEW_ADVISORY_NOT_EFFECT_AUTHORITY",
+  "event_id": "cocommons-public-first-transition-20261111",
+  "human_advisory": "docs/Launch/COCOMMONS_PUBLIC_FIRST_TRANSITION_ADVISORY_20261111.md",
+  "human_front": "README.md",
+  "machine_bootstrap": "ai/session-bootstrap.json",
+  "priors": [
+    "docs/Architecture/COFREE_EVOLVING_PUBLICATION_COMMONS_R0_20261026.md",
+    "docs/Architecture/ENCRYPTED_STAGING_PUBLIC_MIRROR_R0.md",
+    "docs/Architecture/COPUBLICATION_METABOLISM_R0_20261025.md"
+  ],
+  "intent": "Rights-cleared works open by default, private originals preserved in authorized private custody, contribution/feedback voluntary, no exclusive crown by assertion.",
+  "source_inventory": {
+    "observed": "2026-11-11",
+    "surface": "Authenticated GitHub CoCivium owner listing",
+    "public_repositories": 12,
+    "private_repositories": 11,
+    "completeness": "BOUNDED_GITHUB_SURFACE_NOT_ALL_NODES"
+  },
+  "elected_receivers": {
+    "mode": "ROLE_FILTERED_PULL_ONLY",
+    "entrypoints": [
+      "SESSION_BOOTSTRAP.md",
+      "CoPre.md",
+      "ai/index.json"
+    ],
+    "automatic_provider_session_injection": false
+  },
+  "challenge_topics": [
+    "RIGHTS_HOLD",
+    "PERSONAL_OR_CHILD_DATA",
+    "CREDENTIAL_HISTORY",
+    "THIRD_PARTY_LICENSE",
+    "HISTORICAL_PROVENANCE",
+    "ACCESSIBILITY",
+    "PROOF_OVERCLAIM",
+    "MIRROR_DIVERGENCE",
+    "ANTI_CAPTURE_GOVERNANCE"
+  ],
+  "next_bounded_experiment": "One public-safe historical source plus one separately authorized private source: preserve originals, test independent private restore, derive reviewed public projection, verify external readback.",
+  "no_effects": {
+    "bulk_private_migration": false,
+    "public_repo_visibility_changes": false,
+    "license_changes": false,
+    "scheduler_created": false,
+    "provider_messages_sent": false,
+    "private_source_deleted": false,
+    "all_sessions_acknowledged": false
+  },
+  "nonclaims": [
+    "PUBLIC_POSTURE_NE_COMPLETE_RELEASE",
+    "NOTICE_NE_RECEIVER_PICKUP",
+    "NO_PRIVATE_CONTENT_PUBLICATION",
+    "NO_AUTOMATIC_SESSION_ACK",
+    "NO_EFFECT_AUTHORITY_BY_DOCUMENT",
+    "GPLV3_UNCHANGED"
+  ]
+}
