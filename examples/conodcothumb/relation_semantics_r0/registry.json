@@ -1,0 +1,528 @@
+{
+  "schema": "CoCivium.CoMiddle.TypedRelations.R0",
+  "version": "2026-10-26.R0",
+  "state": "PUBLIC_DRAFT_SOURCE_REVIEW_ONLY_NO_DEVICE_OR_PROVIDER_RUNTIME",
+  "owner_issue": "https://github.com/CoCivium/CoCivium/issues/246",
+  "purpose": "A 20-type learnable, source-bound core for CoMiddle/CoContextRail/CoMap/CoOrb without equating converse, negation, inverse action or effect.",
+  "donors": [
+    {
+      "path": "ai/comiddle_relation_space_r0.json",
+      "blob": "95486951bac7a1b0c60a193ea65301f18e7bc592",
+      "role": "large addressable relation axes"
+    },
+    {
+      "path": "examples/conodcothumb/context_rail_r1/README.md",
+      "blob": "16544a43f1ce2dc3495555b3fed066988d08f502",
+      "role": "bounded human-first preview and native middle-click passthrough"
+    },
+    {
+      "path": "docs/Architecture/CODOODLE_CONEX_EXPERIMENT_LAUNCHER_R0_20261024.md",
+      "blob": "903d1d52179d62d44f1c70053e490ea6e1fe1023",
+      "role": "else/not/negative candidate semantics"
+    },
+    {
+      "path": "docs/Architecture/COEXPERIMENT_SPACE_TURTLES_R0.md",
+      "blob": "a91d8de5b924ce318f2f886d168a75877272e0b9",
+      "role": "bounded challenge and promotion"
+    },
+    {
+      "path": "docs/Governance/COREVIEW_SPINE_R0.md",
+      "blob": "e7cf641a991338d6826c586740f188b5db6cb941",
+      "role": "review and effect gates"
+    }
+  ],
+  "relation_types": [
+    {
+      "id": "RELATES_TO",
+      "subject_type": "Entity",
+      "object_type": "Entity",
+      "counterpart": "RELATES_TO",
+      "counterpart_kind": "SYMMETRIC_VIEW",
+      "glyph": "↔",
+      "definition": "Generic relatedness with weak semantics; neither causal nor permission-bearing.",
+      "scope_requirement": "REQUIRE_EXPLICIT_RELATION_CONTEXT",
+      "authority_ceiling": "NONE",
+      "claim_status": "SOURCE_BOUND_NOT_AUTOVERIFIED",
+      "effect": "NONE"
+    },
+    {
+      "id": "CONFLICT_CANDIDATE_WITH",
+      "subject_type": "Claim",
+      "object_type": "Claim",
+      "counterpart": "CONFLICT_CANDIDATE_WITH",
+      "counterpart_kind": "SYMMETRIC_VIEW",
+      "glyph": "⊥",
+      "definition": "A contestable claim conflict at an explicitly comparable scope; not automatic truth adjudication.",
+      "scope_requirement": "REQUIRE_COMPARABLE_SOURCE_SCOPE_TIME",
+      "authority_ceiling": "NONE",
+      "claim_status": "SOURCE_BOUND_NOT_AUTOVERIFIED",
+      "effect": "NONE"
+    },
+    {
+      "id": "DEPENDS_ON",
+      "subject_type": "WorkObject",
+      "object_type": "WorkObject",
+      "counterpart": "REQUIRED_BY",
+      "counterpart_kind": "CONVERSE_VIEW",
+      "glyph": "→",
+      "definition": "First work object depends on the second.",
+      "scope_requirement": "REQUIRE_SAME_SOURCE_SCOPE_AND_VALID_TIME",
+      "authority_ceiling": "NONE",
+      "claim_status": "SOURCE_BOUND_NOT_AUTOVERIFIED",
+      "effect": "NONE"
+    },
+    {
+      "id": "REQUIRED_BY",
+      "subject_type": "WorkObject",
+      "object_type": "WorkObject",
+      "counterpart": "DEPENDS_ON",
+      "counterpart_kind": "CONVERSE_VIEW",
+      "glyph": "↶",
+      "definition": "Second is required by the first.",
+      "scope_requirement": "REQUIRE_SAME_SOURCE_SCOPE_AND_VALID_TIME",
+      "authority_ceiling": "NONE",
+      "claim_status": "SOURCE_BOUND_NOT_AUTOVERIFIED",
+      "effect": "NONE"
+    },
+    {
+      "id": "CONTAINS",
+      "subject_type": "Container",
+      "object_type": "Member",
+      "counterpart": "PART_OF",
+      "counterpart_kind": "CONVERSE_VIEW",
+      "glyph": "⊃",
+      "definition": "Container explicitly includes member under a named boundary.",
+      "scope_requirement": "REQUIRE_SAME_SOURCE_SCOPE_AND_VALID_TIME",
+      "authority_ceiling": "NONE",
+      "claim_status": "SOURCE_BOUND_NOT_AUTOVERIFIED",
+      "effect": "NONE"
+    },
+    {
+      "id": "PART_OF",
+      "subject_type": "Member",
+      "object_type": "Container",
+      "counterpart": "CONTAINS",
+      "counterpart_kind": "CONVERSE_VIEW",
+      "glyph": "↶",
+      "definition": "Member is within the stated container.",
+      "scope_requirement": "REQUIRE_SAME_SOURCE_SCOPE_AND_VALID_TIME",
+      "authority_ceiling": "NONE",
+      "claim_status": "SOURCE_BOUND_NOT_AUTOVERIFIED",
+      "effect": "NONE"
+    },
+    {
+      "id": "DERIVED_FROM",
+      "subject_type": "Artifact",
+      "object_type": "SourceArtifact",
+      "counterpart": "SOURCE_FOR",
+      "counterpart_kind": "CONVERSE_VIEW",
+      "glyph": "⇠",
+      "definition": "Artifact reports a derivation from an identified source.",
+      "scope_requirement": "REQUIRE_SAME_SOURCE_SCOPE_AND_VALID_TIME",
+      "authority_ceiling": "NONE",
+      "claim_status": "SOURCE_BOUND_NOT_AUTOVERIFIED",
+      "effect": "NONE"
+    },
+    {
+      "id": "SOURCE_FOR",
+      "subject_type": "SourceArtifact",
+      "object_type": "Artifact",
+      "counterpart": "DERIVED_FROM",
+      "counterpart_kind": "CONVERSE_VIEW",
+      "glyph": "↶",
+      "definition": "Source artifact is recorded as a source for the derived artifact.",
+      "scope_requirement": "REQUIRE_SAME_SOURCE_SCOPE_AND_VALID_TIME",
+      "authority_ceiling": "NONE",
+      "claim_status": "SOURCE_BOUND_NOT_AUTOVERIFIED",
+      "effect": "NONE"
+    },
+    {
+      "id": "SUPPORTS",
+      "subject_type": "Evidence",
+      "object_type": "Claim",
+      "counterpart": "SUPPORTED_BY",
+      "counterpart_kind": "CONVERSE_VIEW",
+      "glyph": "⊢",
+      "definition": "Evidence is cited as supporting a scoped claim.",
+      "scope_requirement": "REQUIRE_SAME_SOURCE_SCOPE_AND_VALID_TIME",
+      "authority_ceiling": "NONE",
+      "claim_status": "SOURCE_BOUND_NOT_AUTOVERIFIED",
+      "effect": "NONE"
+    },
+    {
+      "id": "SUPPORTED_BY",
+      "subject_type": "Claim",
+      "object_type": "Evidence",
+      "counterpart": "SUPPORTS",
+      "counterpart_kind": "CONVERSE_VIEW",
+      "glyph": "↶",
+      "definition": "Claim cites the evidence as support, without inferring truth.",
+      "scope_requirement": "REQUIRE_SAME_SOURCE_SCOPE_AND_VALID_TIME",
+      "authority_ceiling": "NONE",
+      "claim_status": "SOURCE_BOUND_NOT_AUTOVERIFIED",
+      "effect": "NONE"
+    },
+    {
+      "id": "BLOCKS",
+      "subject_type": "Blocker",
+      "object_type": "WorkObject",
+      "counterpart": "BLOCKED_BY",
+      "counterpart_kind": "CONVERSE_VIEW",
+      "glyph": "⛔",
+      "definition": "Blocker prevents progress of the work object within the stated conditions.",
+      "scope_requirement": "REQUIRE_SAME_SOURCE_SCOPE_AND_VALID_TIME",
+      "authority_ceiling": "NONE",
+      "claim_status": "SOURCE_BOUND_NOT_AUTOVERIFIED",
+      "effect": "NONE"
+    },
+    {
+      "id": "BLOCKED_BY",
+      "subject_type": "WorkObject",
+      "object_type": "Blocker",
+      "counterpart": "BLOCKS",
+      "counterpart_kind": "CONVERSE_VIEW",
+      "glyph": "↶",
+      "definition": "Work object is blocked by the named blocker.",
+      "scope_requirement": "REQUIRE_SAME_SOURCE_SCOPE_AND_VALID_TIME",
+      "authority_ceiling": "NONE",
+      "claim_status": "SOURCE_BOUND_NOT_AUTOVERIFIED",
+      "effect": "NONE"
+    },
+    {
+      "id": "PRECEDES",
+      "subject_type": "Event",
+      "object_type": "Event",
+      "counterpart": "FOLLOWS",
+      "counterpart_kind": "CONVERSE_VIEW",
+      "glyph": "<",
+      "definition": "Event is earlier in a qualified ordering.",
+      "scope_requirement": "REQUIRE_SAME_SOURCE_SCOPE_AND_VALID_TIME",
+      "authority_ceiling": "NONE",
+      "claim_status": "SOURCE_BOUND_NOT_AUTOVERIFIED",
+      "effect": "NONE"
+    },
+    {
+      "id": "FOLLOWS",
+      "subject_type": "Event",
+      "object_type": "Event",
+      "counterpart": "PRECEDES",
+      "counterpart_kind": "CONVERSE_VIEW",
+      "glyph": "↶",
+      "definition": "Event follows the other event in the same ordering.",
+      "scope_requirement": "REQUIRE_SAME_SOURCE_SCOPE_AND_VALID_TIME",
+      "authority_ceiling": "NONE",
+      "claim_status": "SOURCE_BOUND_NOT_AUTOVERIFIED",
+      "effect": "NONE"
+    },
+    {
+      "id": "SUPERSEDES",
+      "subject_type": "Version",
+      "object_type": "Version",
+      "counterpart": "SUPERSEDED_BY",
+      "counterpart_kind": "CONVERSE_VIEW",
+      "glyph": ">",
+      "definition": "A version is reported to supersede an older version.",
+      "scope_requirement": "REQUIRE_SAME_SOURCE_SCOPE_AND_VALID_TIME",
+      "authority_ceiling": "NONE",
+      "claim_status": "SOURCE_BOUND_NOT_AUTOVERIFIED",
+      "effect": "NONE"
+    },
+    {
+      "id": "SUPERSEDED_BY",
+      "subject_type": "Version",
+      "object_type": "Version",
+      "counterpart": "SUPERSEDES",
+      "counterpart_kind": "CONVERSE_VIEW",
+      "glyph": "↶",
+      "definition": "An older version is reported superseded by a newer version.",
+      "scope_requirement": "REQUIRE_SAME_SOURCE_SCOPE_AND_VALID_TIME",
+      "authority_ceiling": "NONE",
+      "claim_status": "SOURCE_BOUND_NOT_AUTOVERIFIED",
+      "effect": "NONE"
+    },
+    {
+      "id": "RENDERS",
+      "subject_type": "Projection",
+      "object_type": "SourceObject",
+      "counterpart": "RENDERED_BY",
+      "counterpart_kind": "CONVERSE_VIEW",
+      "glyph": "◈",
+      "definition": "Projection represents one source object; it does not replace the source.",
+      "scope_requirement": "REQUIRE_SAME_SOURCE_SCOPE_AND_VALID_TIME",
+      "authority_ceiling": "NONE",
+      "claim_status": "SOURCE_BOUND_NOT_AUTOVERIFIED",
+      "effect": "NONE"
+    },
+    {
+      "id": "RENDERED_BY",
+      "subject_type": "SourceObject",
+      "object_type": "Projection",
+      "counterpart": "RENDERS",
+      "counterpart_kind": "CONVERSE_VIEW",
+      "glyph": "↶",
+      "definition": "Source object has a projection representation.",
+      "scope_requirement": "REQUIRE_SAME_SOURCE_SCOPE_AND_VALID_TIME",
+      "authority_ceiling": "NONE",
+      "claim_status": "SOURCE_BOUND_NOT_AUTOVERIFIED",
+      "effect": "NONE"
+    },
+    {
+      "id": "CITES",
+      "subject_type": "Artifact",
+      "object_type": "Source",
+      "counterpart": "CITED_BY",
+      "counterpart_kind": "CONVERSE_VIEW",
+      "glyph": "⌁",
+      "definition": "Artifact cites a source with enough identifier detail to inspect it.",
+      "scope_requirement": "REQUIRE_SAME_SOURCE_SCOPE_AND_VALID_TIME",
+      "authority_ceiling": "NONE",
+      "claim_status": "SOURCE_BOUND_NOT_AUTOVERIFIED",
+      "effect": "NONE"
+    },
+    {
+      "id": "CITED_BY",
+      "subject_type": "Source",
+      "object_type": "Artifact",
+      "counterpart": "CITES",
+      "counterpart_kind": "CONVERSE_VIEW",
+      "glyph": "↶",
+      "definition": "Source is cited by an artifact, not thereby endorsed.",
+      "scope_requirement": "REQUIRE_SAME_SOURCE_SCOPE_AND_VALID_TIME",
+      "authority_ceiling": "NONE",
+      "claim_status": "SOURCE_BOUND_NOT_AUTOVERIFIED",
+      "effect": "NONE"
+    }
+  ],
+  "question_forms": [
+    {
+      "id": "WHO",
+      "meaning": "Actor or responsible role",
+      "action": "PROPOSE_OR_INSPECT_ONLY"
+    },
+    {
+      "id": "WHAT",
+      "meaning": "Object or claim",
+      "action": "PROPOSE_OR_INSPECT_ONLY"
+    },
+    {
+      "id": "WHY",
+      "meaning": "Reason, explanation or hypothesis",
+      "action": "PROPOSE_OR_INSPECT_ONLY"
+    },
+    {
+      "id": "HOW",
+      "meaning": "Method or mechanism",
+      "action": "PROPOSE_OR_INSPECT_ONLY"
+    },
+    {
+      "id": "WHEN",
+      "meaning": "Time validity and observation",
+      "action": "PROPOSE_OR_INSPECT_ONLY"
+    },
+    {
+      "id": "WHERE",
+      "meaning": "Location or surface",
+      "action": "PROPOSE_OR_INSPECT_ONLY"
+    },
+    {
+      "id": "WHEREFORE",
+      "meaning": "Purpose and rationale",
+      "action": "PROPOSE_OR_INSPECT_ONLY"
+    },
+    {
+      "id": "WHICH",
+      "meaning": "Alternatives and selection criteria",
+      "action": "PROPOSE_OR_INSPECT_ONLY"
+    },
+    {
+      "id": "WHAT_IF",
+      "meaning": "Counterfactual branch",
+      "action": "PROPOSE_OR_INSPECT_ONLY"
+    },
+    {
+      "id": "WHY_NOT",
+      "meaning": "Blocking reasons or dissent",
+      "action": "PROPOSE_OR_INSPECT_ONLY"
+    },
+    {
+      "id": "WHAT_ELSE",
+      "meaning": "Priors and unexplored relations",
+      "action": "PROPOSE_OR_INSPECT_ONLY"
+    },
+    {
+      "id": "NOT_ELSE",
+      "meaning": "Null and complement scope",
+      "action": "PROPOSE_OR_INSPECT_ONLY"
+    },
+    {
+      "id": "FOR_WHOM",
+      "meaning": "Receiver, consent and benefit",
+      "action": "PROPOSE_OR_INSPECT_ONLY"
+    },
+    {
+      "id": "HOW_KNOW",
+      "meaning": "Evidence, falsifier and independent receipt",
+      "action": "PROPOSE_OR_INSPECT_ONLY"
+    },
+    {
+      "id": "HOW_MUCH",
+      "meaning": "Resource and cost budget",
+      "action": "PROPOSE_OR_INSPECT_ONLY"
+    },
+    {
+      "id": "WHAT_NEXT",
+      "meaning": "Smallest independently testable deed",
+      "action": "PROPOSE_OR_INSPECT_ONLY"
+    }
+  ],
+  "candidate_operations": [
+    {
+      "id": "CONVERSE_VIEW",
+      "semantics": "Swap subject/object using a declared counterpart; preserve exact source and claim status.",
+      "authority_ceiling": "NONE",
+      "execution": "NO_EXTERNAL_EFFECT",
+      "truth_promotion": "FORBIDDEN"
+    },
+    {
+      "id": "NEGATE_AS_QUESTION",
+      "semantics": "Form an explicitly hypothetical NOT relation; do not infer truth.",
+      "authority_ceiling": "NONE",
+      "execution": "NO_EXTERNAL_EFFECT",
+      "truth_promotion": "FORBIDDEN"
+    },
+    {
+      "id": "ALTERNATIVE",
+      "semantics": "Candidate replacement, not a changed work object.",
+      "authority_ceiling": "NONE",
+      "execution": "NO_EXTERNAL_EFFECT",
+      "truth_promotion": "FORBIDDEN"
+    },
+    {
+      "id": "NULL_BASELINE",
+      "semantics": "No-change comparison, not proof that a relationship is absent.",
+      "authority_ceiling": "NONE",
+      "execution": "NO_EXTERNAL_EFFECT",
+      "truth_promotion": "FORBIDDEN"
+    },
+    {
+      "id": "INVERSE_HYPOTHESIS",
+      "semantics": "Propose a reversed causal/operational mechanism only if separately specified and tested.",
+      "authority_ceiling": "NONE",
+      "execution": "NO_EXTERNAL_EFFECT",
+      "truth_promotion": "FORBIDDEN"
+    },
+    {
+      "id": "COMPLEMENT",
+      "semantics": "Identify outside/missing context; lack of evidence is not negative evidence.",
+      "authority_ceiling": "NONE",
+      "execution": "NO_EXTERNAL_EFFECT",
+      "truth_promotion": "FORBIDDEN"
+    },
+    {
+      "id": "COUNTERFACTUAL",
+      "semantics": "Vary explicit assumptions while labelling simulated state.",
+      "authority_ceiling": "NONE",
+      "execution": "NO_EXTERNAL_EFFECT",
+      "truth_promotion": "FORBIDDEN"
+    },
+    {
+      "id": "OUTSIDE_SCOPE",
+      "semantics": "Review boundaries and excluded interests without violating privacy.",
+      "authority_ceiling": "NONE",
+      "execution": "NO_EXTERNAL_EFFECT",
+      "truth_promotion": "FORBIDDEN"
+    },
+    {
+      "id": "UNDO_EFFECT",
+      "semantics": "Only a tested action-specific rollback with authority and effect receipt; not a converse.",
+      "authority_ceiling": "NONE",
+      "execution": "NO_EXTERNAL_EFFECT",
+      "truth_promotion": "FORBIDDEN"
+    },
+    {
+      "id": "COMPENSATE_EFFECT",
+      "semantics": "A new effect with separate authority/receipt, not restored history.",
+      "authority_ceiling": "NONE",
+      "execution": "NO_EXTERNAL_EFFECT",
+      "truth_promotion": "FORBIDDEN"
+    },
+    {
+      "id": "CHALLENGE",
+      "semantics": "Present a falsifier or conflicting evidence; no self-certification.",
+      "authority_ceiling": "NONE",
+      "execution": "NO_EXTERNAL_EFFECT",
+      "truth_promotion": "FORBIDDEN"
+    },
+    {
+      "id": "SEEDED_VARIANT",
+      "semantics": "Reproducible candidate perturbation; does not confer novelty or evidence.",
+      "authority_ceiling": "NONE",
+      "execution": "NO_EXTERNAL_EFFECT",
+      "truth_promotion": "FORBIDDEN"
+    }
+  ],
+  "assertion_contract": {
+    "required": [
+      "relation_id",
+      "subject_id",
+      "object_id",
+      "source_ref",
+      "source_version",
+      "scope",
+      "valid_time",
+      "privacy_class",
+      "claim_status"
+    ],
+    "allowed_privacy": [
+      "PUBLIC_SYNTHETIC"
+    ],
+    "allowed_status": [
+      "SOURCE_ASSERTED",
+      "HYPOTHESIS",
+      "UNKNOWN",
+      "CONTESTED"
+    ],
+    "no_effects": "ALWAYS",
+    "converse_view_rule": "Only derive typed converse as a pointer to the same source assertion; retain scope/time/privacy/status and original source, no new independent evidence.",
+    "unknown_rule": "Unknown context must not be transformed into consent, proof, zero, negation or execution.",
+    "media_projection": "Same exact work ID can render in text, map, orb, diagram or glyph; visual interpretation is not an independent source.",
+    "retention_rule": "Source-linked history and user-controlled export/delete; no passive keylogging or third-party data capture.",
+    "middle_button": "NATIVE_PASS_THROUGH_DEFAULT; optional explicitly configured summon/preview only, never automatic paste or send.",
+    "device_or_provider": "NO_ACCESS_OR_AUTHORITY_GRANTED_BY_THIS_REGISTRY"
+  },
+  "limits": {
+    "max_core_types": 20,
+    "max_first_ring": 8,
+    "max_preview_candidates": 8,
+    "max_worker_materializations": 0,
+    "max_external_effects": 0,
+    "max_turtle_depth": 2,
+    "max_turtle_rounds": 2
+  },
+  "sample_assertion": {
+    "relation_id": "DEPENDS_ON",
+    "subject_id": "SyntheticWritingDemo",
+    "object_id": "SyntheticSourceExcerpt",
+    "source_ref": "synthetic://codemo/001",
+    "source_version": "r0",
+    "scope": "synthetic_fixture_only",
+    "valid_time": "2026-10-26",
+    "privacy_class": "PUBLIC_SYNTHETIC",
+    "claim_status": "HYPOTHESIS"
+  },
+  "nonclaims": [
+    "RELATION_NAME_NE_VERIFIED_FACT",
+    "CONVERSE_VIEW_NE_INDEPENDENT_EVIDENCE",
+    "NEGATION_CANDIDATE_NE_FALSEHOOD_PROOF",
+    "UNDO_NE_CONVERSE",
+    "COMPENSATION_NE_REVERSE_HISTORY",
+    "GLYPH_NE_AUTHORITY",
+    "PROJECTION_NE_SOURCE",
+    "SYMBOLIC_GD_NE_EMPIRICAL_DETECTION",
+    "ET_HYPOTHESIS_NE_CONTACT",
+    "STATIC_TEST_NE_NATIVE_X2_MOUSE_RUNTIME",
+    "PUBLIC_SOURCE_NE_RECEIVER_ACK",
+    "MILLIONS_OF_ADDRESSES_NE_MILLIONS_OF_WORKERS",
+    "LATCHED_DESIGN_INTENT_NE_PERPETUAL_RUNTIME"
+  ]
+}
