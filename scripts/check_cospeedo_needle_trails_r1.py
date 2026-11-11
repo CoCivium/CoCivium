@@ -78,7 +78,9 @@ def main():
     assert "source WorkID and SHA-256 against the checked-out CoPre file" in html, "Missing receiver check claim"
     assert "Both producing and receiving jobs ran within GitHub Actions" in html, "Missing failure domain boundary"
     assert "No X2/CoStead receiver ACK" in html, "Missing independent receiver nonclaim"
-    assert "24-hour pinned-source refetch passed" in html, "Missing observed historical source refetch"\n    assert "42934800629" in html, "Missing 24-hour source run reference"\n    assert "no 24-hour runtime/restart survival" in html, "Missing runtime survival hold"
+    assert "24-hour pinned-source refetch passed" in html, "Missing observed historical source refetch"
+    assert "42934800629" in html, "Missing 24-hour source run reference"
+    assert "no 24-hour runtime/restart survival" in html, "Missing runtime survival hold"
     assert "no measured time saved" in html, "Missing measured-benefit boundary"
     assert "setInterval" not in html and "window.open(" not in html
     print("PASS_COSPEEDO_NEEDLE_TRAILS_R1_COUNTS_ACCESSIBILITY_NONCLAIMS")
