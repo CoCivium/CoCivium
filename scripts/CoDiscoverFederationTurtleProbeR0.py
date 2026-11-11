@@ -146,17 +146,32 @@ def discover(graph: dict, root: str,
         for edge in index[ident]["edges"]:
             if edge["to"] not in selected:
                 continue
-            reverse = any(
+            # The formal inverse of (A DISCOVERS B) is
+            # (B DISCOVERED_BY A). It is NOT (B DISCOVERS A), which is a
+            # different, reciprocal action/claim.
+            counterpart = index[edge["to"]]["edges"]
+            formal_inverse_declared = any(
                 r["to"] == ident and r["relation"] == INVERSE[edge["relation"]]
-                for r in index[edge["to"]]["edges"]
+                for r in counterpart
+            )
+            reciprocal_discovery_declared = (
+                any(r["to"] == ident and r["relation"] == "DISCOVERS"
+                    for r in counterpart)
+                if edge["relation"] == "DISCOVERS" else None
             )
             visible_edges.append({
                 "from": ident, "to": edge["to"],
                 "declared_relation": edge["relation"],
-                "inverse_required_for_reciprocity": INVERSE[edge["relation"]],
-                "inverse_evidence": (
-                    "REVERSE_DECLARED_ONLY_UNVERIFIED" if reverse
-                    else "REVERSE_NOT_DECLARED"
+                "formal_inverse_relation": INVERSE[edge["relation"]],
+                "formal_inverse_evidence": (
+                    "INVERSE_DECLARED_ONLY_UNVERIFIED" if formal_inverse_declared
+                    else "INVERSE_NOT_DECLARED"
+                ),
+                "reciprocal_discovery_evidence": (
+                    "NOT_APPLICABLE" if reciprocal_discovery_declared is None
+                    else ("RECIPROCAL_DECLARED_ONLY_UNVERIFIED"
+                          if reciprocal_discovery_declared
+                          else "RECIPROCAL_NOT_DECLARED")
                 ),
                 "membership_granted": False,
                 "trust_granted": False,
@@ -188,6 +203,8 @@ def discover(graph: dict, root: str,
             "FEDERATION_NE_CONTROLLER",
             "DISCOVERABLE_NE_IN_SCOPE",
             "DISCOVERS_A_TO_B_NE_B_DISCOVERS_A",
+            "FORMAL_INVERSE_NE_RECIPROCAL_DISCOVERY",
+            "RECIPROCAL_DISCOVERY_DECLARATION_NE_REMOTE_ACK",
             "INVERSE_EDGE_DECLARED_NE_MUTUAL_CONSENT",
             "NESTED_TURTLES_NE_INFINITE_ACTIVE_WORKERS",
             "MULTIPLE_ROUTES_NE_INDEPENDENT_EVIDENCE",
