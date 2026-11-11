@@ -145,8 +145,8 @@
       "source": {
         "repository": "CoCivium/CoCivium",
         "path": "examples/conodcothumb/context_rail_r1/index.html",
-        "git_blob_sha1": "e50b11a2825d9548248746c4f7937049ea97caa8",
-        "readback": "VERIFIED_GITHUB_SOURCE_THIS_TURN"
+        "git_blob_sha1": "6a079d2a2a6d1be3bc1f9aacd3bb082ba42513c0",
+        "readback": "VERIFIED_PUBLIC_GITHUB_SOURCE_2026_11_11"
       },
       "media_kind": "HTML_INTERACTIVE",
       "motifs": [
@@ -183,5 +183,16 @@
     "PROJECTION_NE_RECEIVER_ACK",
     "PUBLIC_SOURCE_NE_X2_INSTALL",
     "PREVIOUS_PRIVATE_INDEX_NE_PUBLICATION_PERMISSION"
+  ],
+  "source_pin_currentness": [
+    {
+      "source_path": "examples/conodcothumb/context_rail_r1/index.html",
+      "prior_git_blob_sha1": "e50b11a2825d9548248746c4f7937049ea97caa8",
+      "successor_git_blob_sha1": "6a079d2a2a6d1be3bc1f9aacd3bb082ba42513c0",
+      "prior_observation_date": "2026-11-09",
+      "requalified_date": "2026-11-11",
+      "interpretation": "EXACT_PUBLIC_SOURCE_REVISION_ADVANCED; PREDECESSOR_PRESERVED_IN_GIT_HISTORY",
+      "rights_state": "UNCHANGED_DERIVATIVE_RIGHTS_UNVERIFIED"
+    }
   ]
 }
