@@ -28,6 +28,8 @@ The [source-bound CoSeed/CoPath machine graph](ai/copre-seed-path-federation-r0.
 
 ## Exact public companions
 
+- [CoOmniFront+ / CoTimeBraid+ one-work/many-minds orientation](docs/Architecture/COOMNIFRONT_TIMEBRAID_R0_20261108.md): [accessible public wallchart](examples/coomnifront_r0/wallchart.svg) and [machine-readable work identity / evidence contract](ai/foresight/coomnifront-timebraid-r0.json) connect historical priors, current decisions, future scenarios, independent challenge and six observer lenses. Exact GitHub source readback exists for all three, but this is **not** proof of live session sync, X2/iOS deployment, independent reader adoption or receiver ACK.
+
 - [CoSpeedo: What actually got better? (human-readable public entry)](examples/cospeedo/README.md): source-linked Pass/Held/Fail history, plain-language caveats and the [R1 HTML prototype source](examples/cospeedo/needle-trails-r1.html); source-browser QA [PASS](https://github.com/CoCivium/CoCivium/actions/runs/42744256246), **not** a live gauge, independent receiver, X2 runtime or deployed website.
 
 
