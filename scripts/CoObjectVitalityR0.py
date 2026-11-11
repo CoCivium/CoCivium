@@ -19,7 +19,7 @@ def require(ok: bool, message: str) -> None:
     if not ok:
         raise ValueError(message)
 
-def disposition(obj: dict[str, Any]) -> str:
+def disposition(obj: dict[str, Any], policy: dict[str, Any]) -> str:
     state = obj["lifecycle_state"]
     wakes = set(obj.get("wake_predicates", []))
     observed = set(obj.get("wake_observations", []))
@@ -37,6 +37,11 @@ def disposition(obj: dict[str, Any]) -> str:
             return "WAKE_FOR_BOUNDED_REQUALIFICATION"
         return "SLEEP_KEEP_ADDRESSABLE"
     if state == "ACTIVE_WORKING":
+        # Evidence labels are only synthetic policy declarations; they do not
+        # attest a real observer, a current process, or an external receiver.
+        if (obj["currentness_state"] not in policy["active_currentness_allowlist"]
+                or obj["health_state"] not in policy["active_health_allowlist"]):
+            return "HOLD_REQUALIFY_ACTIVE_EVIDENCE"
         if obj.get("known_debt"):
             return "EXTEND_ONE_BOUNDED_DEBT_REDUCTION"
         return "CONTINUE_ONLY_ON_MATERIAL_DELTA"
@@ -55,6 +60,13 @@ def run(fixture: dict[str, Any], policy: dict[str, Any]) -> dict[str, Any]:
     require(fixture.get("schema") == "CoObject.VitalityFixture.R0.v0.1", "wrong fixture schema")
     require(policy.get("schema") == "CoObject.VitalityPolicy.R0.v0.1", "wrong policy schema")
     required = set(policy["required_metabolism"])
+    for key in ("active_currentness_allowlist", "active_health_allowlist"):
+        values = policy.get(key)
+        require(
+            isinstance(values, list) and bool(values)
+            and all(isinstance(v, str) and bool(v.strip()) for v in values),
+            f"{key}: nonempty list of synthetic evidence labels required",
+        )
 
     results = []
     for obj in fixture["objects"]:
@@ -69,7 +81,7 @@ def run(fixture: dict[str, Any], policy: dict[str, Any]) -> dict[str, Any]:
         require(obj.get("authority_ceiling"), "authority required")
         require(obj.get("evidence_refs"), "evidence required")
 
-        disp = disposition(obj)
+        disp = disposition(obj, policy)
         results.append({
             "object_id": obj["object_id"],
             "object_class": obj["object_class"],
@@ -86,20 +98,35 @@ def run(fixture: dict[str, Any], policy: dict[str, Any]) -> dict[str, Any]:
         })
 
     by_id = {r["object_id"]: r for r in results}
-    require(by_id["cobaseline-frontier-r0"]["disposition"] == "EXTEND_ONE_BOUNDED_DEBT_REDUCTION", "software allocation mismatch")
+    require(
+        by_id["cobaseline-frontier-r0"]["disposition"]
+        in ("EXTEND_ONE_BOUNDED_DEBT_REDUCTION", "HOLD_REQUALIFY_ACTIVE_EVIDENCE"),
+        "software allocation mismatch",
+    )
     require(by_id["cogbx-ux-exemplar-r0"]["disposition"] == "SLEEP_KEEP_ADDRESSABLE", "publication should quiesce")
     require(by_id["cogbx-peer-reconstruction-candidate"]["disposition"] == "REMAIN_DORMANT_WITH_EXACT_WAKE", "dormant candidate should remain dormant")
     require(all(r["heartbeat_mode"] != "FIXED_FREQUENCY" for r in results), "fixed heartbeat forbidden")
     require(all(all(v == 0 for v in r["effects"].values()) for r in results), "external effect detected")
 
+    held_active_ids = [
+        r["object_id"] for r in results
+        if r["disposition"] == "HOLD_REQUALIFY_ACTIVE_EVIDENCE"
+    ]
     return {
         "schema":"CoObject.VitalityReport.R0.v0.1",
-        "state":"PASS_THREE_OBJECT_METABOLIC_INTERFACE__EVENT_DRIVEN_HEARTBEAT",
+        "state":(
+            "HOLD_ACTIVE_EVIDENCE_REQUALIFICATION" if held_active_ids
+            else "PASS_THREE_OBJECT_METABOLIC_INTERFACE__EVENT_DRIVEN_HEARTBEAT"
+        ),
+        "held_active_ids": held_active_ids,
         "object_count":len(results),
         "results":results,
         "heartbeat_default":policy["heartbeat_default"],
         "useful_findings":[
-            "SOFTWARE_DEBT_ELECTS_ONE_BOUNDED_EXTENSION",
+            (
+                "ACTIVE_EVIDENCE_REQUALIFICATION_REQUIRED" if held_active_ids
+                else "SOFTWARE_DEBT_ELECTS_ONE_BOUNDED_EXTENSION"
+            ),
             "CURRENT_PUBLICATION_QUIESCES_WITH_RECEIVER_WAKE",
             "HIGH_OPTION_CONCEPT_REMAINS_DORMANT_UNTIL_EXACT_PREREQUISITES"
         ],
