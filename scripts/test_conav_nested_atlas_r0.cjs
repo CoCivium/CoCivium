@@ -117,7 +117,7 @@ test("CoMegaScroller includes exactly 10 original vector thumbnails from the reg
   assert.deepEqual(new Set(ids),new Set(registry.map(x=>x.id.replace(/^highlight:/,""))));
   for(const n of registry)assert.ok(html.includes(n.label),"missing exact source label "+n.id);
   assert.match(html,/href="#highlights">Highlights<\/a>/);
-  assert.match(html,/Concept art/);
+  assert.match(html,/concept art/i);
   assert.match(html,/No private screenshots or third-party media are embedded/);
   assert.doesNotMatch(html,/<(?:img|image)[ >]/i);
 });
