@@ -23,18 +23,18 @@ class Tests(unittest.TestCase):
     def test_due_blocked_work_is_held_not_success(self):
         self.assertEqual(classify(base(due_work=True,blocked_reason="X2_RECEIVER_UNAVAILABLE"))["disposition"],"WAITING_ON_EVENT")
     def test_work_without_receipt_not_success(self):
-        self.assertEqual(classify(base(execution_attempted=True,claimed_no_update=False))["reason"],"EXECUTION_NO_RECEIPT")
+        self.assertEqual(classify(base(due_work=True,eligible_work=True,execution_attempted=True,claimed_no_update=False))["reason"],"EXECUTION_NO_RECEIPT")
     def test_receipt_without_receiver_readback_not_success(self):
-        d=classify(base(execution_attempted=True,claimed_no_update=False,output_digest="sha256:fixture",effect_receipt="fixture:receipt"))
+        d=classify(base(due_work=True,eligible_work=True,execution_attempted=True,claimed_no_update=False,output_digest="sha256:fixture",effect_receipt="fixture:receipt"))
         self.assertEqual(d["disposition"],"AWAITING_RECEIVER_PROOF")
     def test_full_caller_proof_is_only_structurally_classified(self):
-        d=classify(base(execution_attempted=True,claimed_no_update=False,output_digest="sha256:fixture",
+        d=classify(base(due_work=True,eligible_work=True,execution_attempted=True,claimed_no_update=False,output_digest="sha256:fixture",
                         effect_receipt="fixture:receipt",receiver_readback="fixture:ack"))
         self.assertEqual(d["disposition"],"STRUCTURALLY_REPORTED_EFFECT")
     def test_missing_identity_fails(self):
         self.assertEqual(classify(base(source_revision=""))["reason"],"UNBOUND_WAKE_OR_SOURCE")
     def test_executed_work_must_name_next_wake(self):
-        d=classify(base(execution_attempted=True,claimed_no_update=False,next_wake="",
+        d=classify(base(due_work=True,eligible_work=True,execution_attempted=True,claimed_no_update=False,next_wake="",
                         output_digest="sha256:fixture",effect_receipt="fixture:receipt",
                         receiver_readback="fixture:ack"))
         self.assertEqual(d["reason"],"NO_NEXT_WAKE")
@@ -63,6 +63,28 @@ class Tests(unittest.TestCase):
             with self.subTest(ts=ts):
                 self.assertEqual(classify(base(observed_at_utc=ts))["reason"],
                                  "INVALID_OBSERVED_TIME")
+    def test_no_false_progress_for_not_due_autoaction(self):
+        d=classify(base(execution_attempted=True,claimed_no_update=False,
+                        output_digest="sha256:fixture",effect_receipt="fixture:receipt",
+                        receiver_readback="claimed:ack",eligible_work=True,due_work=False))
+        self.assertEqual(d["reason"], "EFFECT_NOT_DUE")
+        self.assertEqual(d["disposition"], "NO_PROGRESS_EVIDENCE")
+
+    def test_no_false_progress_for_ineligible_autoaction(self):
+        d=classify(base(execution_attempted=True,claimed_no_update=False,
+                        output_digest="sha256:fixture",effect_receipt="fixture:receipt",
+                        receiver_readback="claimed:ack",eligible_work=False,due_work=True))
+        self.assertEqual(d["reason"], "EFFECT_NOT_ELIGIBLE")
+        self.assertEqual(d["disposition"], "NO_PROGRESS_EVIDENCE")
+
+    def test_no_false_progress_while_human_gate_blocked(self):
+        d=classify(base(execution_attempted=True,claimed_no_update=False,
+                        output_digest="sha256:fixture",effect_receipt="fixture:receipt",
+                        receiver_readback="claimed:ack",eligible_work=True,due_work=True,
+                        blocked_reason="HUMAN_AUTHORITY_REQUIRED"))
+        self.assertEqual(d["reason"], "EXECUTION_WHILE_BLOCKED")
+        self.assertEqual(d["disposition"], "NO_PROGRESS_EVIDENCE")
+
     def test_explicit_utc_offset_is_acceptable_syntax_only(self):
         d=classify(base(observed_at_utc="2026-11-09T10:00:00+00:00"))
         self.assertEqual(d["disposition"], "SOURCE_CLAIMED_NO_DELTA")
