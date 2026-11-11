@@ -10,8 +10,6 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'scripts'))
 from CoNarrativeWorkIDR0 import Held, commit_once, connect, readback, revoke, source_packet
 
-HEAD = 'a' * 40
-
 class WorkIDTests(unittest.TestCase):
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory()
@@ -19,8 +17,57 @@ class WorkIDTests(unittest.TestCase):
         self.dir = Path(self.temp.name)
         self.source = self.dir / 'CoPre.md'
         self.source.write_text('Synthetic public CoPre seed\n', encoding='utf-8')
-        self.packet = source_packet(self.source, HEAD)
+        self.git('init', '--quiet')
+        self.git('add', 'CoPre.md')
+        self.git('-c', 'user.name=Synthetic Test', '-c', 'user.email=synthetic@example.invalid',
+                 'commit', '--quiet', '-m', 'synthetic public fixture')
+        self.head = self.git('rev-parse', 'HEAD').decode().strip()
+        self.packet = source_packet(self.source, self.head)
         self.db = self.dir / 'recover.sqlite'
+
+    def git(self, *args):
+        return subprocess.run(['git', '-C', str(self.dir), *args],
+                              capture_output=True, check=True, timeout=10).stdout
+
+    def test_nonexistent_well_formed_commit_rejected(self):
+        with self.assertRaisesRegex(Held, 'SOURCE_COMMIT_UNAVAILABLE'):
+            source_packet(self.source, 'f' * 40)
+        self.assertFalse(self.db.exists())
+
+    def test_existing_commit_wrong_bytes_rejected(self):
+        self.source.write_text('uncommitted different source\n', encoding='utf-8')
+        with self.assertRaisesRegex(Held, 'SOURCE_COMMIT_BYTES_MISMATCH'):
+            source_packet(self.source, self.head)
+
+    def test_git_blob_cannot_impersonate_commit(self):
+        blob = self.git('rev-parse', self.head + ':CoPre.md').decode().strip()
+        with self.assertRaisesRegex(Held, 'SOURCE_OBJECT_NOT_COMMIT'):
+            source_packet(self.source, blob)
+
+    def test_source_outside_repository_rejected(self):
+        with tempfile.TemporaryDirectory() as directory:
+            source = Path(directory) / 'CoPre.md'
+            source.write_bytes(self.source.read_bytes())
+            with self.assertRaisesRegex(Held, 'SOURCE_COMMIT_UNAVAILABLE'):
+                source_packet(source, self.head)
+
+    def test_historical_commit_valid_with_matching_bytes(self):
+        self.git('-c', 'user.name=Synthetic Test', '-c', 'user.email=synthetic@example.invalid',
+                 'commit', '--quiet', '--allow-empty', '-m', 'later commit')
+        packet = source_packet(self.source, self.head)
+        self.assertTrue(packet['source_ref'].endswith('@' + self.head))
+
+    def test_cold_source_check_rejects_forged_commit(self):
+        changed = dict(self.packet, source_ref='CoCivium/CoCivium:CoPre.md@' + 'f' * 40)
+        commit_once(self.db, changed)  # Schema validation alone does not fetch source.
+        report = self.dir / 'forged-readback.json'
+        result = subprocess.run([sys.executable, str(Path(__file__).resolve().parents[1] /
+            'scripts' / 'CoNarrativeWorkIDR0.py'), 'verify', '--db', str(self.db),
+            '--source', str(self.source), '--source-commit', 'f' * 40,
+            '--report', str(report)], capture_output=True, timeout=10)
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn(b'SOURCE_COMMIT_UNAVAILABLE', result.stderr)
+        self.assertFalse(report.exists())
 
     def test_ten_duplicate_assents_one_workid(self):
         results = [commit_once(self.db, self.packet) for _ in range(10)]

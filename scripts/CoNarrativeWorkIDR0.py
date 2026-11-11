@@ -10,6 +10,7 @@ import hashlib
 import json
 import re
 import sqlite3
+import subprocess
 from pathlib import Path
 
 SCHEMA = "CoAll.CoNarrativeWorkID.R0"
@@ -41,12 +42,40 @@ def require(condition, reason):
         raise Held(reason)
 
 
+def verify_source_commit(path, commit, raw):
+    """Bind bytes to a local Git commit; this does not authenticate its owner.
+
+    No network or checkout mutation. A missing historical object stays HELD;
+    callers must retrieve it through their separately authorized source route.
+    """
+    require(isinstance(commit, str) and SHA1.fullmatch(commit), "SOURCE_COMMIT_REQUIRED")
+    cwd = str(Path(path).resolve().parent)
+    def git(*args):
+        try:
+            result = subprocess.run(
+                ["git", "--no-replace-objects", "-C", cwd, *args],
+                capture_output=True, check=True, timeout=10)
+            return result.stdout
+        except (OSError, subprocess.SubprocessError) as error:
+            raise Held("SOURCE_COMMIT_UNAVAILABLE") from error
+    require(git("cat-file", "-t", commit).strip() == b"commit",
+            "SOURCE_OBJECT_NOT_COMMIT")
+    target = commit + ":CoPre.md"
+    try:
+        size = int(git("cat-file", "-s", target))
+    except ValueError as error:
+        raise Held("SOURCE_COMMIT_UNAVAILABLE") from error
+    require(0 < size <= 131072, "SOURCE_SIZE_UNSAFE")
+    require(git("cat-file", "blob", target) == raw, "SOURCE_COMMIT_BYTES_MISMATCH")
+
+
 def source_packet(path, commit):
     path = Path(path)
     require(path.name == "CoPre.md" and not path.is_symlink() and path.is_file(), "SOURCE_NOT_PINNED_COPRE")
     require(isinstance(commit, str) and SHA1.fullmatch(commit), "SOURCE_COMMIT_REQUIRED")
     raw = path.read_bytes()
     require(0 < len(raw) <= 131072, "SOURCE_SIZE_UNSAFE")
+    verify_source_commit(path, commit, raw)
     return {
         "schema": SCHEMA,
         "work_id": WORK_ID,
@@ -171,7 +200,11 @@ def revoke(db_path, packet, *, expected_lease=1):
 
 
 def readback(db_path, *, expected_packet=None, source_path=None):
-    """Cold, read-only verification; integrity is not a cryptographic identity proof."""
+    """Cold, read-only integrity verification, not source provenance or identity.
+
+    Direct callers must separately qualify source_ref. The CLI builds an
+    expected packet with source_packet(), which checks local Git binding.
+    """
     conn = connect(db_path, readonly=True)
     try:
         rows = conn.execute("SELECT * FROM work").fetchall()
