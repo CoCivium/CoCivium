@@ -66,6 +66,38 @@ else:
         for k in ("human_15s","human_60s","machine","operator","release")
     ):
         errors.append("CoBF audience acceptance tests incomplete")
+    fed=bf.get("federation_profile")
+    if not isinstance(fed,dict):
+        errors.append("missing CoFedGRAILS federation profile")
+    else:
+        if (fed.get("alias")!="CoFedGRAILS+"
+                or fed.get("state")!="SOURCE_AND_SYNTHETIC_SHADOW_ONLY"
+                or fed.get("epistemic_status")!="GRAILS_ACRONYM_UNRESOLVED_DO_NOT_REDEFINE"):
+            errors.append("CoFedGRAILS must remain bounded and meaning-preserving")
+        if fed.get("bridge")!="scripts/CoFedGRAILSShadowBridgeR0.py":
+            errors.append("CoFedGRAILS bridge pointer missing")
+        if fed.get("source_tests")!="scripts/test_cofedgrails_shadow_bridge_r0.py":
+            errors.append("CoFedGRAILS test pointer missing")
+        for k in ("bridge","source_tests"):
+            ref=fed.get(k)
+            if not isinstance(ref,str) or not (ROOT/ref).is_file():
+                errors.append("CoFedGRAILS broken source pointer: "+k)
+        sources=fed.get("governing_public_sources")
+        if (not isinstance(sources,list) or len(sources)<4
+                or any(not isinstance(p,str) or not (ROOT/p).is_file() for p in sources)):
+            errors.append("CoFedGRAILS missing governing source links")
+        if fed.get("proof_state")!={"peer_authentication":None,
+                                    "independent_receiver_ack":None,
+                                    "cold_restore":None,
+                                    "live_cross_cell_federation":False}:
+            errors.append("CoFedGRAILS claims unverified live federation or receiver ACK")
+        constraints=set(fed.get("universal_constraints",[])
+                        if isinstance(fed.get("universal_constraints"),list) else [])
+        if not {"GLOBAL_DISCOVERY_NE_GLOBAL_AUTHORITY",
+                "PRIVATE_NE_PUBLIC_BY_FEDERATION",
+                "ONE_ELECTED_ACTUATOR_PER_EFFECT_DOMAIN",
+                "SOURCE_CI_NE_FEDERATION_DEPLOYMENT"}.issubset(constraints):
+            errors.append("CoFedGRAILS missing local autonomy or safety constraints")
     if bf.get("proof_state")!={"public_host_readproof":None,
                              "independent_first_use":None,
                              "receiver_ack":None,
