@@ -162,9 +162,14 @@ class ContinuityStore:
         return self._transaction(write)
 
     def begin_turn(self, conversation_id, turn_id, prompt, epoch,
-                   trigger_kind="UNKNOWN"):
-        """Record a producer-classified turn without inferring authentication."""
+                   trigger_kind="UNKNOWN", expected_worker=None):
+        """Reserve against epoch and optional exact worker in one transaction."""
         cid, tid = _id(conversation_id), _id(turn_id)
+        if expected_worker is not None and (
+                not isinstance(expected_worker,str)
+                or not expected_worker.startswith("ollama:")
+                or len(expected_worker)>128):
+            raise ValueError("invalid expected worker")
         if not isinstance(trigger_kind, str) or trigger_kind not in TRIGGER_KINDS:
             raise ValueError("unsupported trigger_kind")
         trigger_evidence = _trigger_evidence(trigger_kind)
@@ -181,6 +186,11 @@ class ContinuityStore:
                 (cid,)).fetchone()
             if not cv or cv[0] != epoch:
                 return {"state": "FENCED", "conversation_id": cid}
+            if expected_worker is not None and cv[1] != expected_worker:
+                # A resumed server with a different --model cannot silently
+                # write under the old conversation's model identity. Elect a
+                # successor explicitly before changing the provider route.
+                return {"state": "MODEL_ROUTE_MISMATCH", "conversation_id": cid}
             old = self.db.execute(
                 "SELECT prompt_sha256,status,response,receipt_sha256,trigger_kind "
                 "FROM turns WHERE conversation_id=? AND turn_id=?",

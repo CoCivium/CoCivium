@@ -181,7 +181,8 @@ def act(store, payload, model, receipt_dir, bridge=local_ollama_run):
     # An HTTP caller cannot self-assert SCHEDULED, EVENT or authenticated USER.
     # Loopback request observed does not identify the human or upstream cause.
     started=store.begin_turn(cid,tid,prompt,epoch,
-                             trigger_kind="LOCAL_HTTP_REQUEST")
+                             trigger_kind="LOCAL_HTTP_REQUEST",
+                             expected_worker="ollama:"+model)
     if started["state"] != "STARTED":
         return started
     try:
@@ -282,12 +283,13 @@ def make_handler(store, model, receipt_dir, bridge=local_ollama_run):
                     raise ValueError("object required")
                 if path=="/api/conversation":
                     if payload: raise ValueError("empty request expected")
-                    result=store.create()
+                    result=store.create(worker="ollama:"+model)
                 else:
                     result=act(store,payload,model,receipt_dir,bridge=bridge)
                 state=result["state"]
                 code=200 if state in {"CREATED","EXISTS","COMMITTED","REPLAY"} else (
-                    409 if state in {"FENCED","CONFLICT","ALREADY_PENDING","INDETERMINATE"} else 503
+                    409 if state in {"FENCED","CONFLICT","ALREADY_PENDING",
+                                     "INDETERMINATE","MODEL_ROUTE_MISMATCH"} else 503
                     if state in {"MODEL_UNAVAILABLE","INVALID_MODEL_RESPONSE",
                                  "MODEL_RECEIPT_UNVERIFIED"} else 400)
                 self.json_response(code,result)

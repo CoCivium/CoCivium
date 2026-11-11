@@ -40,6 +40,16 @@ Then browse to http://127.0.0.1:8766. This is a local browser prototype, not ins
 
 Record for each attempt: WorkID, ConversationID, TurnID, event time, observer, trigger_kind = USER_TURN / SCHEDULED / EVENT / MANUAL_OPERATOR / UNKNOWN, source revision, model/provider, authorization, output hash, receiver readproof, checkpoint, next wake and limitations. Never infer a cause from an unsourced next-morning status. GitHub commits indicate repository work, not whether a schedule, mobile session or independent agent caused it. For an unavailable source, use UNKNOWN.
 
+## Model identity / route pinning (2026-11-11)
+
+A bounded local X2 real-model canary exposed a source defect: a newly created conversation defaulted to `ollama:qwen3:4b` even when the HTTP server actually routed work to a different configured Ollama model. A separate local candidate check repaired the mismatch, but the original source needed a canonical, regression-tested fix.
+
+**R1 source fix:** When the HTTP server creates a conversation, it now records `worker=ollama:<configured --model>`. Every new HTTP turn passes the same `expected_worker` into `ContinuityStore.begin_turn`, which checks **both the current epoch and exact model route within one SQLite write transaction**. A mismatch is `MODEL_ROUTE_MISMATCH` (HTTP 409), with **no model invocation and no new committed turn**. Reassignment requires an explicit epoch-fenced `elect()` and updated caller epoch, never an implicit restart side effect.
+
+This qualifies **configured route attribution**, *not* independent confirmation of the actual backend model: the R0 gateway reports the requested model and does not yet validate Ollama's returned model identity. Model output, model identity, authenticated user identity, receipt authenticity, receiver acknowledgment, and useful external effect remain distinct evidence classes. This fix does not modify the native desktop renderer, rotate hosted ChatGPT sessions, export or delete chats, or prove unattended recovery.
+
+**Discriminators:** create model A, restart a fixture server configured for B, assert 409 and zero calls; explicitly elect B and assert one bounded committed synthetic turn. For a stronger live claim, verify provider-returned model identity against the route and independently inspect the exact resulting receipt.
+
 ## Exact uncertain-turn recovery candidate (2026-11-10)
 
 A lost HTTP response need not mean the model operation was lost. The local continuity store now has a **read-only exact (ConversationID, TurnID) lookup** and a loopback `GET /api/turn/{conversation_id}/{turn_id}` route. The result distinguishes `COMMITTED`, `PENDING`, and `INDETERMINATE` without dispatching the model again. The browser stores an uncertain turn identifier locally and consults that endpoint after re-opening; it does not automatically retry a model operation.
