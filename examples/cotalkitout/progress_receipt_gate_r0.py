@@ -58,6 +58,15 @@ def classify(p: Pulse) -> dict:
     if not p.next_wake:
         return {"disposition": "NO_PROGRESS_EVIDENCE", "reason": "NO_NEXT_WAKE"}
     if p.execution_attempted:
+        # Structural eligibility is a necessary precondition even when a
+        # caller supplies a receipt and an apparent receiver-readback string.
+        # These fields are still caller assertions, not an authority grant.
+        if p.blocked_reason:
+            return {"disposition": "NO_PROGRESS_EVIDENCE", "reason": "EXECUTION_WHILE_BLOCKED"}
+        if not p.due_work:
+            return {"disposition": "NO_PROGRESS_EVIDENCE", "reason": "EFFECT_NOT_DUE"}
+        if not p.eligible_work:
+            return {"disposition": "NO_PROGRESS_EVIDENCE", "reason": "EFFECT_NOT_ELIGIBLE"}
         if not p.output_digest or not p.effect_receipt:
             return {"disposition": "NO_PROGRESS_EVIDENCE", "reason": "EXECUTION_NO_RECEIPT"}
         if not p.receiver_readback:
