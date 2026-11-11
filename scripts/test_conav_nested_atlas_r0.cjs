@@ -106,6 +106,39 @@ test("CoMegaScroller reader parity: saved HTML exactly matches three pinned inpu
   assert.equal(rendered,fs.readFileSync(path.join(root,"examples/comap/megascroller-r0.html"),"utf8"));
   assert.match(rendered,/One source spine/);
 });
+test("CoMegaScroller includes exactly 10 original vector thumbnails from the registered highlights",()=>{
+  const html=generateMegaScroller(graph,overlay,retro,megaPins);
+  const registry=graph.nodes.filter(n=>n.kind==="highlight");
+  assert.equal(registry.length,10);
+  assert.equal((html.match(/class="highlight-card"/g)||[]).length,10);
+  assert.equal((html.match(/class="highlight-art"/g)||[]).length,10);
+  const ids=[...html.matchAll(/data-asset-id="([^"]+)"/g)].map(m=>m[1]);
+  assert.equal(new Set(ids).size,10);
+  assert.deepEqual(new Set(ids),new Set(registry.map(x=>x.id.replace(/^highlight:/,""))));
+  for(const n of registry)assert.ok(html.includes(n.label),"missing exact source label "+n.id);
+  assert.match(html,/href="#highlights">Highlights<\/a>/);
+  assert.match(html,/Concept art/);
+  assert.match(html,/No private screenshots or third-party media are embedded/);
+  assert.doesNotMatch(html,/<(?:img|image)[ >]/i);
+});
+test("CoMegaScroller fails closed on unregistered/relabelled highlights",()=>{
+  const missing=copy(graph);
+  missing.nodes=missing.nodes.filter(n=>n.id!=="highlight:RickBar");
+  assert.throws(()=>generateMegaScroller(missing,overlay,retro,megaPins),/HOLD_HIGHLIGHT_REGISTRY_DRIFT/);
+  const changed=copy(graph);
+  const target=changed.nodes.find(n=>n.id==="highlight:CoCivia");
+  target.label="Source-revised composite front";
+  assert.match(generateMegaScroller(changed,overlay,retro,megaPins),/Source-revised composite front/);
+});
+test("CoMegaScroller thumbnail artwork remains offline-safe source interpretation, not a remote asset fetch",()=>{
+  const html=generateMegaScroller(graph,overlay,retro,megaPins);
+  assert.match(html,/default-src 'none'/);
+  assert.match(html,/img-src 'none'/);
+  assert.match(html,/aria-label="Original conceptual illustration/);
+  assert.doesNotMatch(html,/<script[ >]|<iframe[ >]|<image[ >]|<img[ >]/i);
+  assert.match(html,/ai\/highlight-assets\.json/);
+});
+
 test("CoMegaScroller includes 63 cards and seven deduplicated retro sources",()=>{
   const html=generateMegaScroller(graph,overlay,retro,megaPins);
   assert.equal((html.match(/<article id="node-/g)||[]).length,63);
