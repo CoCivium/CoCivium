@@ -33,14 +33,17 @@ class QualifiedObservation:
     def __post_init__(self) -> None:
         if not self.subject or not self.quantity_kind or not self.unit:
             raise ValueError("Missing subject, quantity kind, or unit")
+        if self.null_kind is not None and not isinstance(self.null_kind, NullKind):
+            raise ValueError("Null state must be a recognized NullKind")
         if self.null_kind is None:
             if isinstance(self.value, bool) or not isinstance(self.value, (float, int)):
                 raise ValueError("Numeric observation requires finite nonboolean value")
             if not isfinite(self.value):
                 raise ValueError("Nonfinite observation forbidden")
         elif self.null_kind is NullKind.OBSERVED_ZERO:
-            if self.value != 0 or isinstance(self.value, bool):
-                raise ValueError("Observed-zero must carry numeric zero")
+            if (isinstance(self.value, bool) or not isinstance(self.value, (float, int))
+                    or not isfinite(self.value) or self.value != 0):
+                raise ValueError("Observed-zero must carry finite numeric zero")
         elif self.value is not None:
             raise ValueError("Non-numeric null state cannot carry a numeric value")
 
@@ -109,7 +112,9 @@ def likelihood_evidence_bits(p_e_given_h: float, p_e_given_not_h: float) -> floa
     probs = (p_e_given_h, p_e_given_not_h)
     if any(isinstance(p, bool) or not isinstance(p, (int, float)) or not isfinite(p) or p <= 0 or p > 1 for p in probs):
         raise ValueError("Likelihoods must be finite nonzero probabilities")
-    return log2(p_e_given_h / p_e_given_not_h)
+    # Difference of logs avoids a representable likelihood ratio overflowing
+    # or underflowing even when both inputs are finite positive probabilities.
+    return log2(p_e_given_h) - log2(p_e_given_not_h)
 
 
 def gauge_equivalent(quantity: float, gains: tuple[float, ...], scale: float) -> bool:
