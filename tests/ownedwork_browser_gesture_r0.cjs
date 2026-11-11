@@ -104,7 +104,28 @@ async function prepare(page) {
                  'HELD_REVOKED');
     await negativeContext.close();
 
+    // The ORIGINAL browser context now revokes the very same WorkID whose
+    // ACTIVE bytes are exported for the SQLite commit. This is a synthetic
+    // UI event, not authenticated cross-host revocation.
+    await page.locator('#workRevoke').click();
+    assert.equal((await page.locator('#workState').innerText()).trim(),
+                 'REVOKED_BROWSER_LOCAL');
+    const revoked = await page.evaluate(key =>
+      JSON.parse(window.localStorage.getItem(key)), storageKey);
+    assert.equal(revoked.state, 'REVOKED');
+    assert.deepEqual({...revoked, state:'ACTIVE'}, row,
+                     'revocation must not mutate identity, payload or epoch');
+    await page.locator('#workRecover').click();
+    assert.equal((await page.locator('#workState').innerText()).trim(),
+                 'HELD_REVOKED');
+    await prepare(page);
+    await page.locator('#workPreserve').click();
+    assert.equal((await page.locator('#workState').innerText()).trim(),
+                 'HELD_REVOKED');
+
     fs.mkdirSync(path.dirname(output), {recursive:true});
+    fs.writeFileSync(path.join(path.dirname(output), 'browser-revoked-record.json'),
+                     JSON.stringify(revoked, null, 2) + '\\n', {flag:'wx'});
     fs.writeFileSync(output, JSON.stringify(row, null, 2) + '\n', {flag:'wx'});
     console.log(JSON.stringify({
       schema:'CoAll.CoOwnedWork.ChromiumUIGestureProof.R0',
@@ -113,6 +134,8 @@ async function prepare(page) {
       stored_work_id:row.packet.work_id,
       exported_state:row.state,
       revoked_context_exported:false,
+      same_origin_browser_revocation_exported:true,
+      cross_domain_revocation_verified:false,
       real_human_consent:false,
       independently_authorized_receiver:false,
       external_effects:0
