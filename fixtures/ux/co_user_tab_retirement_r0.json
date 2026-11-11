@@ -1,0 +1,22 @@
+{
+  "schema":"CoUserTabRetirement.R0",
+  "state":"SYNTHETIC_TAB_RETIREMENT_CANARY__NO_PROVIDER_ACTION_NO_ACCOUNT_MUTATION",
+  "source_bindings":{
+    "workplane_doc":{"path":"docs/UX/COUSER_WORKPLANE_R0.md","blob_sha":"c548ca72b33021a08050059240faf4e86b16010d"},
+    "workplane_fixture":{"path":"fixtures/ux/co_user_workplane_r0.json","blob_sha":"8efc0c2de15821af012a7ea720a4c8e9e3d7ffd4"}
+  },
+  "policy":{
+    "provider_tab_is_not_logical_identity":true,
+    "account_deletion_is_separate_gate":true,
+    "user_default_visible_provider_tabs":0
+  },
+  "scenarios":[
+    {"id":"T01","input":{"provider_tab_open":true,"unique_unexternalized_state":false,"durable_continuation_pointer":true,"alternate_route_or_reconstruction":true,"pending_human_only_effect":false,"required_receiver_pickup_missing":false},"expected":"RETIRE_TAB_SAFE_CANDIDATE"},
+    {"id":"T02","input":{"provider_tab_open":true,"unique_unexternalized_state":true,"durable_continuation_pointer":false,"alternate_route_or_reconstruction":true,"pending_human_only_effect":false,"required_receiver_pickup_missing":false},"expected":"HOLD_EXTERNALIZE_UNIQUE_STATE"},
+    {"id":"T03","input":{"provider_tab_open":true,"unique_unexternalized_state":false,"durable_continuation_pointer":true,"alternate_route_or_reconstruction":false,"pending_human_only_effect":false,"required_receiver_pickup_missing":false},"expected":"HOLD_NO_ALTERNATE_ROUTE"},
+    {"id":"T04","input":{"provider_tab_open":true,"unique_unexternalized_state":false,"durable_continuation_pointer":true,"alternate_route_or_reconstruction":true,"pending_human_only_effect":false,"required_receiver_pickup_missing":true},"expected":"HOLD_RECEIVER_PICKUP_REQUIRED"},
+    {"id":"T05","input":{"provider_tab_open":true,"unique_unexternalized_state":false,"durable_continuation_pointer":true,"alternate_route_or_reconstruction":true,"pending_human_only_effect":true,"required_receiver_pickup_missing":false},"expected":"HOLD_HUMAN_EFFECT_PENDING"},
+    {"id":"T06","input":{"provider_tab_open":false,"unique_unexternalized_state":false,"durable_continuation_pointer":true,"alternate_route_or_reconstruction":true,"pending_human_only_effect":false,"required_receiver_pickup_missing":false},"expected":"NO_TAB_ACTION_NEEDED"}
+  ],
+  "rails":["PROVIDER_TAB_NE_LOGICAL_IDENTITY","TAB_CLOSE_NE_WORK_DELETE","TAB_CLOSE_NE_ACCOUNT_DELETE","CLOSE_SAFE_NE_DELETE_SAFE","NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF","USER_WORKSPACE_NE_PROVIDER_SESSION","RICK_NE_TAB_GARDENER","VALIDATION_IS_NOT_ACCEPTANCE"]
+}

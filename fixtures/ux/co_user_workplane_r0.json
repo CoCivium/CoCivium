@@ -1,0 +1,216 @@
+{
+  "schema": "CoUserWorkplane.R0",
+  "state": "SYNTHETIC_USER_SURFACE_AND_MOMENTUM_CANARY__NO_RUNTIME_BINDING",
+  "source_bindings": {
+    "virtual_session_doc": {
+      "path": "docs/Architecture/COVIRTUAL_SESSION_MORPHOLOGY_R0.md",
+      "blob_sha": "5dff7fff33f8637c3c333fdca360874db1e0bfe5"
+    },
+    "rickbar_doc": {
+      "path": "docs/UX/COFLEET_RICKBAR_R4.md",
+      "blob_sha": "9706a0a477aac8ec6a5a9de4834c753f7614c5e1"
+    },
+    "session_lifecycle_policy": {
+      "path": "ai/session-lifecycle-policy.json",
+      "blob_sha": "a2fbd76d083d99d7324da9bfe2afa910f2c5f7f7"
+    },
+    "bootstrap": {
+      "path": "SESSION_BOOTSTRAP.md",
+      "blob_sha": "01c91f93c413cbd817501aa5c48a599c7593ce9a"
+    }
+  },
+  "ux_policy": {
+    "default_visible_classes": [
+      "WORKSPACE",
+      "COBAR",
+      "HUMAN_BLOCKER",
+      "MATERIAL_EXCEPTION",
+      "OUTBOUND_MOMENTUM"
+    ],
+    "default_hidden_classes": [
+      "PROVIDER_SESSION",
+      "BACKEND_SESSION_ID",
+      "RAW_QUEUE",
+      "RAW_RECEIPT_LEDGER",
+      "MODEL_RUNTIME_DETAIL",
+      "INTERNAL_VIRTUAL_SESSION"
+    ],
+    "drilldown_available": true,
+    "routine_manual_session_cycling_required": false
+  },
+  "momentum_state_machine": [
+    "PREPARED",
+    "QUEUED",
+    "SENT",
+    "DELIVERED",
+    "PICKED_UP",
+    "INTEGRATED"
+  ],
+  "ready_language": {
+    "user_visible_READY_allowed_only_when": [
+      "NO_HUMAN_TRANSPORT_REQUIRED",
+      "MACHINE_OWNED_NEXT_STEP_BOUND",
+      "STATE_AT_LEAST_SENT_OR_DURABLY_AVAILABLE_TO_ELECTED_RECEIVER"
+    ],
+    "prepared_but_unsent_label": "PREPARED",
+    "queued_but_unsent_label": "QUEUED",
+    "sent_label": "SENT",
+    "delivered_ne_picked_up": true
+  },
+  "health_dimensions": [
+    "CURRENTNESS_AGE",
+    "QUEUE_AGE",
+    "FANIN_DRAIN_RATE",
+    "RECEIVER_BACKLOG",
+    "PROOF_DEBT",
+    "COLLISION_PRESSURE",
+    "MATERIALIZATION_LOAD",
+    "OUTBOUND_DELIVERY_STATE"
+  ],
+  "scenarios": [
+    {
+      "id": "U01_MANY_VIRTUAL_FEW_VISIBLE",
+      "input": {
+        "virtual_sessions": 120,
+        "materialized_workers": 9,
+        "provider_sessions": 6,
+        "workspaces": 4,
+        "human_blockers": 0,
+        "material_exceptions": 0,
+        "outbound_items": 3
+      },
+      "expected": {
+        "default_visible_session_rows": 0,
+        "visible_workspace_count": 4,
+        "backend_session_drilldown": true
+      }
+    },
+    {
+      "id": "U02_ROUTINE_HEALTH_NO_USER_ACTION",
+      "input": {
+        "currentness_age_s": 15,
+        "queue_age_s": 20,
+        "fanin_drain_rate": 8,
+        "receiver_backlog": 3,
+        "proof_debt": 1,
+        "material_exception": false
+      },
+      "expected": {
+        "headline": "HEALTHY",
+        "rick_action": "NONE"
+      }
+    },
+    {
+      "id": "U03_STALE_CURRENTNESS_RAISES_EXCEPTION",
+      "input": {
+        "currentness_age_s": 900,
+        "currentness_sla_s": 300,
+        "material_exception": false
+      },
+      "expected": {
+        "headline": "DEGRADED",
+        "exception": "CURRENTNESS_STALE"
+      }
+    },
+    {
+      "id": "U04_QUEUE_JAM_RAISES_EXCEPTION",
+      "input": {
+        "queue_age_s": 700,
+        "queue_sla_s": 180,
+        "fanin_drain_rate": 0,
+        "receiver_backlog": 22
+      },
+      "expected": {
+        "headline": "DEGRADED",
+        "exception": "FLOW_STALLED"
+      }
+    },
+    {
+      "id": "U05_PREPARED_IS_NOT_READY",
+      "input": {
+        "delivery_state": "PREPARED",
+        "human_transport_required": true,
+        "machine_next_step_bound": false
+      },
+      "expected": {
+        "user_label": "PREPARED",
+        "ready": false
+      }
+    },
+    {
+      "id": "U06_MACHINE_OWNED_SENT_CAN_BE_READY",
+      "input": {
+        "delivery_state": "SENT",
+        "human_transport_required": false,
+        "machine_next_step_bound": true
+      },
+      "expected": {
+        "user_label": "READY",
+        "ready": true
+      }
+    },
+    {
+      "id": "U07_DELIVERED_NOT_PICKED_UP",
+      "input": {
+        "delivery_state": "DELIVERED",
+        "receiver_readproof": false
+      },
+      "expected": {
+        "lifecycle_claim": "DELIVERED_ONLY"
+      }
+    },
+    {
+      "id": "U08_PICKUP_REQUIRES_READPROOF",
+      "input": {
+        "delivery_state": "PICKED_UP",
+        "receiver_readproof": true
+      },
+      "expected": {
+        "lifecycle_claim": "PICKED_UP"
+      }
+    },
+    {
+      "id": "U09_PARALLELISM_WITH_BACKPRESSURE",
+      "input": {
+        "logical_lanes": 80,
+        "active_embodiments": 12,
+        "receiver_backlog": 40,
+        "fanin_drain_rate": 3,
+        "new_discovery_rate": 20
+      },
+      "expected": {
+        "action": "CONTRACT_DISCOVERY_AND_FANIN",
+        "user_session_rows_added": 0
+      }
+    },
+    {
+      "id": "U10_MOMENTUM_TO_AUDIENCE",
+      "input": {
+        "target_audience_bound": true,
+        "delivery_state": "SENT",
+        "last_proof_age_s": 30,
+        "stall_sla_s": 300
+      },
+      "expected": {
+        "momentum": "MOVING",
+        "rick_action": "NONE"
+      }
+    }
+  ],
+  "rails": [
+    "USER_WORKSPACE_NE_PROVIDER_SESSION",
+    "VIRTUAL_SESSION_NE_PROVIDER_TAB",
+    "RICK_NE_HEARTBEAT",
+    "SUCCESS_NE_NOTIFICATION_REQUIRED",
+    "READY_NE_PREPARED",
+    "SENT_NE_DELIVERED",
+    "DELIVERY_NE_PICKUP",
+    "NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF",
+    "MASSIVE_PARALLELITY_NE_MASSIVE_SIMULTANEOUS_MATERIALIZATION",
+    "WORKER_COUNT_NE_PROGRESS",
+    "FLOW_HEALTH_NE_ACTIVITY_COUNT",
+    "OUTBOUND_MOMENTUM_NE_AUDIENCE_PICKUP",
+    "RICKBAR_FIRST__RECEIPTS_BEHIND",
+    "VALIDATION_IS_NOT_ACCEPTANCE"
+  ]
+}
