@@ -2,7 +2,7 @@
 
 **PUBLIC SOURCE-POINTER CANDIDATES ONLY. No media copied, no receiver ACK.**
 
-Projection SHA-256: `58a27149995f27a093c12ff9cfa609d9f3d75943623aa3eb40f86af00924ba9e`
+Projection SHA-256: `7feb551ce60a2f648fb385e85669a8528f29cb33725f561e150aa5029646cc08`
 
 ```mermaid
 flowchart TD
@@ -54,7 +54,7 @@ flowchart TD
     N0["CoMail living draft demo"]
 ```
 
-- [CoMail living draft demo](https://github.com/CoCivium/CoCivium/blob/main/examples/comail_r0/index.html): `examples/comail_r0/index.html`; blob `0a91a7e4a3c0bac502908630e0eef8472ebf46f7`; **review pending**, no adopted inspiration claim
+- [CoMail living draft demo](https://github.com/CoCivium/CoCivium/blob/main/examples/comail_r0/index.html): `examples/comail_r0/index.html`; blob `84c012175c54937d91c2494261b76938a5bb5a5d`; **review pending**, no adopted inspiration claim
 
 ## Evidence boundary
 
