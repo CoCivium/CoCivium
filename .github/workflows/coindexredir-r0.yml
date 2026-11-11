@@ -11,6 +11,8 @@ on:
       - 'scripts/check_coindexredir_r0.py'
       - 'scripts/CoBestFaceFutureShadowR0.py'
       - 'scripts/test_cobestface_future_shadow_r0.py'
+      - 'scripts/CoFedGRAILSShadowBridgeR0.py'
+      - 'scripts/test_cofedgrails_shadow_bridge_r0.py'
       - '.github/workflows/coindexredir-r0.yml'
   push:
     branches:
@@ -21,6 +23,8 @@ on:
       - 'scripts/check_coindexredir_r0.py'
       - 'scripts/CoBestFaceFutureShadowR0.py'
       - 'scripts/test_cobestface_future_shadow_r0.py'
+      - 'scripts/CoFedGRAILSShadowBridgeR0.py'
+      - 'scripts/test_cofedgrails_shadow_bridge_r0.py'
       - '.github/workflows/coindexredir-r0.yml'
   workflow_dispatch:
 jobs:
@@ -36,6 +40,8 @@ jobs:
       - run: python3 scripts/check_coindexredir_r0.py
       - name: CoBestFace futures shadow and anti-flicker negative controls
         run: python3 -B scripts/test_cobestface_future_shadow_r0.py -v
+      - name: CoFedGRAILS federated shadow and authority negative controls
+        run: python3 -B scripts/test_cofedgrails_shadow_bridge_r0.py -v
       - run: python3 scripts/check_cospeedo_needle_trails_r1.py
       - name: Install pinned browser harness
         run: |
