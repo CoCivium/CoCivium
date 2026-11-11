@@ -35,6 +35,28 @@ Candidate measured families:
 - edge-origin return incorporated into core;
 - recovery domains independently replayable.
 
+## CoOomph+ fan-in saturation: worker count is not verified value
+
+The [bounded synthetic fan-in canary](../../scripts/CoOomphFanInSaturationR0.py) invokes the existing, exact Git-blob-pinned [CoSession relational fan-in compiler](../../scripts/CoSessionRelationalFanIn.py). It compares **1, 18, 64 and 256 logical proposals** under five fixtures: perfect echoes, unique operations, a 32-operation repeated pool, contradictory-object candidates, and private-only records. The test intentionally starts **zero AI workers**, opens **zero provider chats**, runs no LLMs and delivers nothing to a receiver. Its only benchmark is actual compiler behavior over synthetic JSON on the CI runner.
+
+Measurements are kept separate:
+
+- `GENERATED_LOGICAL_PROPOSALS`: fixture records, not agents.
+- `ACCEPTED_SCHEMA_RECORDS`: syntactically accepted CoSession deltas, not independently proven facts.
+- `UNIQUE_OPERATION_CANDIDATES`: canonical operation hashes, not semantic novelty or usefulness.
+- `DUPLICATE_GROUPS` and `COLLISION_REVIEW_GROUPS`: compression potential and review demand, **not proof of agreement or contradiction**.
+- `PUBLIC_HOLDS`: fail-closed privacy gating; never merge into public projections because there is spare capacity.
+- `HYPOTHETICAL_NEXT_WAVE_BACKLOG`: `max(0, eligible_unique_review_candidates - 8)` where eight is a **chosen fictional review budget**, not an observed CoStead/CI capacity.
+- `COMPILER_WALL_MS_RUNNER_ONLY`: an environment-dependent measurement of the existing deterministic merger, **not an AI scaling speedup**.
+
+The measurable conjecture: for the same 18 logical proposals, an echo wave should yield one exact unique operation, whereas a syntactically diverse wave should yield eighteen; the latter creates ten hypothetical unreviewed candidates under a budget of eight. At 256 proposals, a pool of 32 unique operations saturates at 32, while 256 genuinely distinct syntax-level operations generate 248 hypothetical review backlog items. The cost of **meaningful verification** and receiver pickup remains unmeasured.
+
+The goal of `CoOomph+` is to increase **verified receiver usefulness / cost and human relay** under evidence/authority gates, not to maximize proposal count. The existing [CoLogicalSession million preview](COLOGICAL_SESSION_MILLION_PREVIEW_R0.md) already supports up to 10^12 *logical descriptions* with no actual worker materialization; it does not grant a trillion provider sessions or accounts.
+
+A trillion repeated prompts cannot be extrapolated from this bounded canary. To claim genuine step-function/superlinear gains, run comparable live tasks and report source-bound outcomes, model family diversity, correlation/common-mode failures, fan-in latency and queue pressure, human corrections, resource ceilings, independent receiver proofs and recovery. Diversity is an experiment variable; novelty remains unverified until challenged.
+
+`LOGICAL_POPULATION_NE_LIVE_WORKERS`  `CANONICAL_HASH_NE_SEMANTIC_TRUTH`  `QUEUE_MODEL_NE_OBSERVED_BACKLOG`  `COMPILE_NE_RECEIVER_ACK`  `NO_EXPONENTIAL_GROWTH_CLAIM`
+
 ## Turtle / recursive acceleration
 
 CoTurtle∞+ should not mean recursion depth or repeated self-reference.
