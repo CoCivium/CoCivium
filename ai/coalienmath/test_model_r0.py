@@ -93,6 +93,31 @@ class CoAlienMathR0Tests(unittest.TestCase):
         with self.assertRaises(ValueError):
             QualifiedObservation("X", "duration", "s", 0j, NullKind.OBSERVED_ZERO)
 
+    def test_numeric_subject_identifier_rejected(self):
+        with self.assertRaises(ValueError):
+            QualifiedObservation(123, "duration", "s", 2)
+
+    def test_numeric_unit_identifier_rejected(self):
+        with self.assertRaises(ValueError):
+            QualifiedObservation("X", "duration", 16, 2)
+
+    def test_blank_unit_rejected(self):
+        with self.assertRaises(ValueError):
+            QualifiedObservation("X", "duration", " ", 2)
+
+    def test_nonfinite_numeric_residual_rejected(self):
+        with self.assertRaises(ValueError):
+            numeric_residual(QualifiedObservation("X", "duration", "s", -1e308),
+                             QualifiedObservation("X", "duration", "s", 1e308))
+
+    def test_nonstr_failure_domain_rejected(self):
+        with self.assertRaises(ValueError):
+            count_failure_domains(["host-A", 55])
+
+    def test_whitespace_alias_failure_domain_rejected(self):
+        with self.assertRaises(ValueError):
+            count_failure_domains(["host-A", " host-A "])
+
     def test_extreme_likelihood_ratios_remain_finite_and_symmetric(self):
         # Both are valid finite probabilities; ratio-first log2 would return inf.
         import math
