@@ -27,6 +27,16 @@ CORE_LINKS = {
     HUBS[1]: (HUBS[0],),
 }
 LINK = re.compile(r"\]\(([^)]+)\)")
+RETIREMENT_FILES = ("CoPre.md", "SESSION_BOOTSTRAP.md", "ai/session-bootstrap.json")
+RETIREMENT_GATES = ["EXACT_OBJECT_IDENTITY_AND_HASH","DURABLE_DESTINATION_LANDED_AND_READ_BACK","INDEPENDENT_RECEIVER_ORIGIN_BOUND_EXACT_READPROOF","COLD_RESTORE_TEST_PASS","RETENTION_DEPENDENTS_AND_ROLLBACK_CLEAR","EXPLICIT_OBJECT_SCOPED_DELETE_APPROVAL","NO_CLOBBER_DELETION_RECEIPT"]
+RETIREMENT_NONCLAIMS = (
+    "LOCAL_IS_NOT_LANDED",
+    "VALIDATION_IS_NOT_ACCEPTANCE",
+    "NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF",
+    "NO_LOCAL_DELETE_WITHOUT_AUTHORIZED_EXACT_RESTORE",
+    "SHARED_SOURCE_NE_ALL_SESSIONS_ACK",
+    "NO_AUTO_DELETE_FROM_BOOTSTRAP",
+)
 
 
 def sha256(data: bytes) -> str:
@@ -58,6 +68,63 @@ def resolve_local(root: Path, base: Path, raw: str) -> Path | None:
     location = (base.parent / target).resolve()
     _relative(root, location)
     return location
+
+
+def audit_local_retirement(root: Path, inspected: dict, missing: set, violations: list) -> str:
+    """Check declared bootstrap coherence, never authorize or execute deletion."""
+    sources = {}
+    for name in RETIREMENT_FILES:
+        path = root / name
+        if not path.is_file():
+            missing.add(name)
+            continue
+        raw = path.read_bytes()
+        inspected[name] = sha256(raw)
+        sources[name] = raw.decode("utf-8")
+    if len(sources) != len(RETIREMENT_FILES):
+        violations.append("RETIREMENT_BOOTSTRAP_SOURCE_MISSING")
+        return "HOLD_NO_DELETE"
+
+    copre = sources["CoPre.md"]
+    doc = sources["SESSION_BOOTSTRAP.md"]
+    if "[bootstrap local-staging retirement gate](SESSION_BOOTSTRAP.md#local-staging-retirement)" not in copre:
+        violations.append("RETIREMENT_COPRE_DISCOVERY_POINTER_MISSING")
+    if "## Local staging retirement" not in doc or "HOLD_NO_DELETE" not in doc:
+        violations.append("RETIREMENT_BOOTSTRAP_DOC_GATE_MISSING")
+    for marker in ("NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF",
+                   "NO_LOCAL_DELETE_WITHOUT_AUTHORIZED_EXACT_RESTORE",
+                   "SHARED_SOURCE_NE_ALL_SESSIONS_ACK"):
+        if marker not in doc:
+            violations.append("RETIREMENT_BOOTSTRAP_DOC_MISSING:" + marker)
+
+    try:
+        machine = json.loads(sources["ai/session-bootstrap.json"])
+        rule = machine.get("local_retirement")
+        if not isinstance(rule, dict):
+            raise ValueError("MISSING_LOCAL_RETIREMENT_CONTRACT")
+        expected = {
+            "state": "PUBLIC_BOOTSTRAP_POLICY_ONLY__NOT_DELETION_AUTHORITY",
+            "default_decision": "HOLD_NO_DELETE",
+            "deletion_authorized": False,
+            "automatic_cleanup_enabled": False,
+            "all_sessions_ack": "UNKNOWN",
+            "requires_independent_receiver_readproof": True,
+            "human_contract": "SESSION_BOOTSTRAP.md#local-staging-retirement",
+        }
+        for key, value in expected.items():
+            if key not in rule or type(rule[key]) is not type(value) or rule[key] != value:
+                raise ValueError("UNSAFE_LOCAL_RETIREMENT_FIELD:" + key)
+        if rule.get("required_gates") != RETIREMENT_GATES:
+            raise ValueError("INCOMPLETE_LOCAL_RETIREMENT_GATES")
+        if not set(RETIREMENT_NONCLAIMS).issubset(set(rule.get("nonclaims") or [])):
+            raise ValueError("MISSING_LOCAL_RETIREMENT_NONCLAIMS")
+        if "NO_LOCAL_DELETE_WITHOUT_AUTHORIZED_EXACT_RESTORE" not in machine.get("rules", []):
+            raise ValueError("MISSING_GLOBAL_LOCAL_RETIREMENT_RULE")
+    except (ValueError, TypeError, KeyError, json.JSONDecodeError) as exc:
+        violations.append("RETIREMENT_MACHINE_POLICY_INVALID:" + str(exc))
+    return "POLICY_SOURCE_VERIFIED_ONLY" if not any(
+        x.startswith("RETIREMENT_") for x in violations
+    ) else "HOLD_NO_DELETE"
 
 
 def audit(root: Path) -> dict:
@@ -154,6 +221,7 @@ def audit(root: Path) -> dict:
         except (ValueError, KeyError, TypeError, json.JSONDecodeError) as exc:
             violations.append("EVOLUTION_LANES_INVALID:" + str(exc))
 
+    retirement_state = audit_local_retirement(root, inspected, missing, violations)
     state = "SOURCE_LINKS_VALIDATED_ONLY" if not missing and not violations else "SOURCE_CONTINUITY_HOLD"
     return {
         "schema": "CoAll.ReboundIntegrity.R0",
@@ -167,6 +235,7 @@ def audit(root: Path) -> dict:
             "full_historical_coverage": False,
         },
         "source_sha256": dict(sorted(inspected.items())),
+        "local_retirement_policy_state": retirement_state,
         "missing_local_targets": sorted(missing),
         "violations": sorted(violations),
         "nonclaims": [
@@ -176,6 +245,8 @@ def audit(root: Path) -> dict:
             "NO_RUNTIME_OR_X2_CLAIM",
             "PUBLIC_SOURCE_NE_CROSS_SESSION_SYNC",
             "DISCOVERED_LINKS_NE_COMPLETE_HISTORY",
+            "BOOTSTRAP_POLICY_CHECK_NE_DELETION_ENFORCEMENT",
+            "SHARED_SOURCE_NE_ALL_SESSIONS_ACK",
         ],
     }
 

@@ -62,6 +62,36 @@ Do not treat public encryption as a substitute for private custody. Unknown or p
 `ENCRYPTED_NE_PUBLIC_SAFE`  
 `UNKNOWN_NE_PUBLIC`
 
+## Local staging retirement
+
+**Intent:** local X2/CoFarm and similar files may become disposable after independently proven durable recovery. **Current authority:** `HOLD_NO_DELETE`. This is a public-safe policy disclosure, **not** an instruction, credential, deletion request, scheduler, or receiver ACK. Generic assent or a changed desktop UI cannot authorize cleanup.
+
+**Lifecycle distinctions:** `DISCOVERED_LOCAL -> VERIFIED_LOCAL -> LANDED -> PICKED_UP -> INTEGRATED -> COEX` remain separate custody/effect claims. A separate retirement decision is permitted only if **all** the following evidence gates are satisfied for each exact object:
+
+| Required gate | Evidence that can qualify it |
+| --- | --- |
+| `EXACT_OBJECT_IDENTITY_AND_HASH` | Stable WorkID/object/version and verified content digest |
+| `DURABLE_DESTINATION_LANDED_AND_READ_BACK` | Authorized durable off-device destination with no-clobber storage receipt and exact readback |
+| `INDEPENDENT_RECEIVER_ORIGIN_BOUND_EXACT_READPROOF` | Elected receiver's own source-bound exact-object receipt, with observer identity, origin and failure-domain limits |
+| `COLD_RESTORE_TEST_PASS` | A tested reconstruction on the elected surviving route, with explicit unavailable-source/failure scenario |
+| `RETENTION_DEPENDENTS_AND_ROLLBACK_CLEAR` | No unresolved dependents, unique copies, legal/retention holds, predecessor lineage or rollback needs |
+| `EXPLICIT_OBJECT_SCOPED_DELETE_APPROVAL` | Current, attributable, revocable authority identifying **which** objects and which effect are allowed |
+| `NO_CLOBBER_DELETION_RECEIPT` | Deletion only after all preceding gates, with exact pre/post evidence and recovery pointer |
+
+No source deletion is authorized by this document, a successful CI fixture, ChatGPT memory, the user's generic `'`, an X2-mounted NAS share, or the same provider's independent job. Never reinterpret a `PICKED_UP` exact-object proof as automatic `INTEGRATED`, `COEX`, or permission to delete. A GitHub public hash and a fresh CPU sample are not a backup policy.
+
+**CoStead and private data:** store private source payloads only through independently authorized private custody. Public GitHub may carry minimized, privacy-reviewed metadata and test contracts, **never** private family, chat, health, mailbox, passwords, device secrets or raw NAS manifests. A NAS read performed on X2 is not a NAS-native execution/ACK. Do not erase prior CoBar R2/R3/R3a/R3b, CoFarm receipts, or predecessors merely because a newer candidate exists.
+
+**Session uptake:** this section and [machine bootstrap](ai/session-bootstrap.json) are available to a receiver with authorized fetch access. They cannot inject into already-open conversations. Record the specific receiver ID, immutable source revision, actual readproof and adoption decision separately; `NO_MATERIAL_DELTA` if already covered. All-sessions ACK remains `UNKNOWN`.
+
+**Existing acceptance rail:** [CoAll one-input/receiver issue #317](https://github.com/CoCivium/CoCivium/issues/317). No duplicate watcher or task. The [CoRebound source-integrity audit](scripts/CoReboundIntegrityR0.py) checks **published policy consistency** only, not actual storage, third-party receiver identity, restoration or deletion enforcement.
+
+`LOCAL_IS_NOT_LANDED`  
+`VALIDATION_IS_NOT_ACCEPTANCE`  
+`NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF`  
+`NO_LOCAL_DELETE_WITHOUT_AUTHORIZED_EXACT_RESTORE`  
+`SHARED_SOURCE_NE_ALL_SESSIONS_ACK`
+
 ## ChatGPT memory
 
 ChatGPT account-level memory is a convenience/cache, not CoAll operational custody or currentness.

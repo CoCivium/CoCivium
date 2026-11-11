@@ -49,7 +49,10 @@
     "BLOCKED_EDGE_NE_BLOCKED_GRAPH",
     "ROLLBACK_CAPABLE_NE_AUTHORIZED",
     "BEACON_NE_AUTHORITY",
-    "VIRTUAL_ARMADA_NE_AUTHORITY_MULTIPLICATION"
+    "VIRTUAL_ARMADA_NE_AUTHORITY_MULTIPLICATION",
+    "LOCAL_STAGING_DISPOSABLE_ONLY_AFTER_QUALIFIED_RECOVERY",
+    "NO_LOCAL_DELETE_WITHOUT_AUTHORIZED_EXACT_RESTORE",
+    "SHARED_SOURCE_NE_ALL_SESSIONS_ACK"
   ],
   "routing": {
     "github": [
@@ -275,5 +278,53 @@
       "scope": "DECLARED_RECORD_CONSISTENCY_ONLY",
       "runtime_invocation": "RECEIVER_OPT_IN_REQUIRED__GLOBAL_ADOPTION_UNPROVEN"
     }
+  },
+  "local_retirement": {
+    "state": "PUBLIC_BOOTSTRAP_POLICY_ONLY__NOT_DELETION_AUTHORITY",
+    "intent": "LOCAL_STAGING_DISPOSABLE_AFTER_QUALIFIED_RECOVERY",
+    "human_contract": "SESSION_BOOTSTRAP.md#local-staging-retirement",
+    "public_handoff": "CoPre.md#local-staging-retirement-is-gated-not-broadcast",
+    "acceptance_tracking": "https://github.com/CoCivium/CoCivium/issues/317",
+    "default_decision": "HOLD_NO_DELETE",
+    "deletion_authorized": false,
+    "automatic_cleanup_enabled": false,
+    "all_sessions_ack": "UNKNOWN",
+    "requires_independent_receiver_readproof": true,
+    "required_gates": [
+      "EXACT_OBJECT_IDENTITY_AND_HASH",
+      "DURABLE_DESTINATION_LANDED_AND_READ_BACK",
+      "INDEPENDENT_RECEIVER_ORIGIN_BOUND_EXACT_READPROOF",
+      "COLD_RESTORE_TEST_PASS",
+      "RETENTION_DEPENDENTS_AND_ROLLBACK_CLEAR",
+      "EXPLICIT_OBJECT_SCOPED_DELETE_APPROVAL",
+      "NO_CLOBBER_DELETION_RECEIPT"
+    ],
+    "receiver_readproof_required_fields": [
+      "object_id",
+      "source_revision",
+      "sha256",
+      "receiver_id",
+      "observer_origin",
+      "observed_at",
+      "scope",
+      "receipt_identity"
+    ],
+    "blocked_substitutes": [
+      "GITHUB_LINK",
+      "NAS_SHARE_MOUNTED_BY_X2",
+      "SAME_PROVIDER_CI_READBACK",
+      "SESSION_ASSENT",
+      "UNVERIFIED_ACK_BOOLEAN",
+      "SCREENSHOT"
+    ],
+    "nonclaims": [
+      "LOCAL_IS_NOT_LANDED",
+      "VALIDATION_IS_NOT_ACCEPTANCE",
+      "NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF",
+      "NO_LOCAL_DELETE_WITHOUT_AUTHORIZED_EXACT_RESTORE",
+      "SHARED_SOURCE_NE_ALL_SESSIONS_ACK",
+      "NO_AUTO_DELETE_FROM_BOOTSTRAP"
+    ],
+    "recorded_date": "2026-11-11"
   }
 }
