@@ -1,0 +1,31 @@
+{
+  "schema": "CoCivium.CoFirstContactCandidateEvidence.R0",
+  "date": "2026-10-24",
+  "source": "experiments/first-contact-safe-page-r0/index.html",
+  "source_sha256": "8571ded6bb4bd1d9f2a7e91681b998e2425358a16a4604be592fc6abeb67ea69",
+  "state": "LOCAL_SOURCE_AND_BROWSER_QA_PASS__INDEPENDENT_ACCEPTANCE_HELD__NOT_DEPLOYED",
+  "local_checks": {
+    "static_source": {
+      "pass": 11,
+      "fail": 0
+    },
+    "adversarial_unit": {
+      "pass": 5,
+      "fail": 0
+    },
+    "headless_browser": {
+      "pass": 14,
+      "fail": 0
+    }
+  },
+  "scope": "ChatGPT isolated container local HTML snapshot; exact public GitHub branch source readback separate",
+  "claims_not_made": [
+    "NOT_DEPLOYED",
+    "NO_HUMAN_FIRST_USE_ACK",
+    "NO_OFF_PROVIDER_RESTORE",
+    "NO_HARDWARE_OR_PROVIDER_TEST",
+    "NOT_SECURITY_CERTIFIED",
+    "NOT_CANON_OR_RUNTIME"
+  ],
+  "next_safe_deed": "A qualified site owner reviews private metadata exposure, verifies rights and rollback, then authorizes and independently tests one safe prelaunch front door."
+}
