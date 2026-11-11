@@ -75,11 +75,16 @@ def replay(browser, raw):
     answer = draft.input_value()
     check("mid_caret_exact", answer == value[:caret] + suffix + value[caret:])
     check("not_appended", answer != value + suffix)
-    # After Accept, focus returns to the draft. Tab through Preview,
-    # Accept and Reject before reaching Undo.
-    for _ in range(4):
+    # Enabled/disabled controls change the tab order after acceptance.
+    # Discover the next focus target with bounded keyboard-only navigation
+    # instead of assuming a fixed number of Tab presses.
+    tab_trace = [page.evaluate("document.activeElement.id")]
+    for _ in range(8):
+        if tab_trace[-1] == "undo":
+            break
         page.keyboard.press("Tab")
-    check("keyboard_undo_focus", page.evaluate("document.activeElement.id") == "undo")
+        tab_trace.append(page.evaluate("document.activeElement.id"))
+    check("keyboard_undo_focus", tab_trace[-1] == "undo")
     page.keyboard.press("Enter")
     check("keyboard_undo_exact", draft.input_value() == value)
     check("no_remote_http", len(outgoing) == 0)
