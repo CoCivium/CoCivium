@@ -27,6 +27,54 @@ for route in obj.get("routes",[]):
     if not fb.startswith("https://github.com/CoCivium/CoCivium"):errors.append("unsafe fallback: "+slug)
     if route.get("state")=="DRAFT_BRANCH" and slug=="/start" and obj.get("status")!="DRAFT_NOT_DEPLOYED":errors.append("unreviewed live start")
 if not all(k in obj.get("nonclaims",[]) for k in ["NO_LIVE_REDIRECT","NO_PUBLIC_DOMAIN_CONTROL"]):errors.append("missing release nonclaims")
+# CoBestFace+ R0 is a source-level audience projection contract only.
+# Fail closed if any front silently inherits authority or if release proof is invented.
+bf=obj.get("best_face_candidate")
+if not isinstance(bf,dict):
+    errors.append("missing CoBestFace candidate")
+else:
+    if bf.get("alias")!="CoBF+": errors.append("CoBF alias mismatch")
+    if bf.get("state")!="SOURCE_CANDIDATE_ONLY_NOT_GLOBAL_OR_DEPLOYED":
+        errors.append("CoBF may not imply global deployment")
+    front_types={"PUBLIC_HUMAN","PUBLIC_MACHINE","PRIVATE_OPERATOR","HEADLESS_WORKER"}
+    if set(bf.get("front_types",[]) if isinstance(bf.get("front_types"),list) else [])!=front_types:
+        errors.append("CoBF missing explicit audience-specific fronts")
+    for key, expected in {
+        "canonical_human_source":"START_HERE.md",
+        "canonical_machine_source":"ai/index.json",
+        "canonical_evidence_source":"EVERGREEN.md",
+    }.items():
+        if bf.get(key)!=expected or not (ROOT/expected).is_file():
+            errors.append("CoBF missing expected mainline source: "+key)
+    if bf.get("proposed_front_door_route")!="/start" or "/start" not in seen:
+        errors.append("CoBF target route unqualified")
+    rules=set(bf.get("selection_rules",[]) if isinstance(bf.get("selection_rules"),list) else [])
+    for needed in [
+        "QUALIFIED_LAST_GOOD_GT_UNVERIFIED_NEWEST",
+        "SHARED_EVIDENCE_DIFFERENT_RECEIVER_RELATIVE_PROJECTIONS",
+        "DISCLOSURE_NE_PUBLISH_PRIVATE_DATA",
+        "NO_UNSOLICITED_FOREGROUND_FOCUS_OR_AUDIO",
+        "ROUTE_STATUS_NE_WEB_DEPLOYMENT",
+        "RECEIVER_ACCEPTANCE_NE_SOURCE_CI",
+        "FOREGROUND_VIEW_OPTIONAL_FOR_HEADLESS_WORKERS",
+        "SOURCE_CURRENTNESS_AND_SAFE_ROLLBACK_REQUIRED",
+    ]:
+        if needed not in rules: errors.append("CoBF missing safety rule: "+needed)
+    validations=bf.get("validation_targets")
+    if not isinstance(validations,dict) or not all(
+        isinstance(validations.get(k),str) and len(validations[k])>=20
+        for k in ("human_15s","human_60s","machine","operator","release")
+    ):
+        errors.append("CoBF audience acceptance tests incomplete")
+    if bf.get("proof_state")!={"public_host_readproof":None,
+                             "independent_first_use":None,
+                             "receiver_ack":None,
+                             "live_global_binding":False}:
+        errors.append("CoBF cannot claim deployment, receiver, or user acceptance")
+    nonclaims=set(bf.get("nonclaims",[]) if isinstance(bf.get("nonclaims"),list) else [])
+    if not {"THIS_MANIFEST_NE_DEPLOYED_COBF","SOURCE_OR_CI_NE_USER_ACCEPTANCE"}.issubset(nonclaims):
+        errors.append("CoBF nonclaims missing")
+
 html=(ROOT/"docs"/"Launch"/"coindexredir_r0"/"index.html").read_text(encoding="utf-8")
 for invariant in ['<svg','<title id="artTitle">','aria-live="polite"','prefers-reduced-motion','<script>','No autoplay audio']:
     if invariant not in html: errors.append("missing accessible UI invariant: "+invariant)
