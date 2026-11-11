@@ -81,6 +81,29 @@ class SyntheticSqliteConvergenceTests(unittest.TestCase):
             with self.assertRaises(receiver.Held):
                 receiver.commit_once(db, packet)
 
+    def test_lost_ack_recovers_without_second_commit(self):
+        receiver = receiver_module()
+        with tempfile.TemporaryDirectory() as d:
+            root = Path(d)
+            source = root / "CoPre.md"
+            source.write_bytes(source_bytes())
+            db = root / "synthetic.sqlite3"
+            candidate = proposal()
+            gate = inspect_with_source(candidate, authorization(), source)
+            self.assertEqual(gate["state"], "PROPOSAL_SOURCE_BYTES_MATCHED_ONLY")
+            packet = dict(candidate, schema=receiver.SCHEMA, consent_epoch=1)
+            with self.assertRaisesRegex(receiver.Held, "INJECTED_AFTER_COMMIT_ACK_LOST"):
+                receiver.commit_once(db, packet, fault="AFTER_COMMIT")
+            cold = receiver.readback(db, expected_packet=packet, source_path=source)
+            self.assertEqual(cold["state"], "COLD_SOURCE_RECONSTRUCTED")
+            self.assertEqual(cold["committed_work_ids"], 1)
+            self.assertFalse(cold["external_receiver_ack"])
+            replay = receiver.commit_once(db, packet)
+            self.assertEqual(replay["new_commits"], 0)
+            self.assertTrue(replay["duplicate"])
+            self.assertEqual(replay["receipt"]["receipt_sha256"], cold["receipt_sha256"])
+
+
     def test_held_source_does_not_create_sqlite_record(self):
         with tempfile.TemporaryDirectory() as d:
             root = Path(d)
