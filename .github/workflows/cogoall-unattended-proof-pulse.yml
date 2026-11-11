@@ -1,6 +1,9 @@
 name: CoGoAll unattended proof pulse
 on:
   push:
+    # Preserve mainline proof; candidate PRs already run this workflow.
+    # Avoid redundant push and pull_request runs for the same draft head.
+    branches: [main]
     paths:
       - '.github/workflows/cogoall-unattended-proof-pulse.yml'
       - 'examples/cotalkitout/progress_receipt_gate_r0.py'
