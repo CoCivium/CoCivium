@@ -65,7 +65,12 @@ def main():
                     ).count() == 1, (width, "no plain-language introduction")
                     for required in (
                         "not a live dashboard",
-                        "24-hour survival",
+                        # The current public mainline correctly distinguishes
+                        # 24-hour SOURCE refetch from unproven RUNTIME survival.
+                        # Require both boundaries, not a stale prose phrase.
+                        "24-hour",
+                        "runtime/restart",
+                        "beyond 24 hours",
                         "not yet proven",
                         "October 20–22",
                         "unknown coverage",
