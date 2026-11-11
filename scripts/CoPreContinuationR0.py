@@ -127,17 +127,29 @@ def selftest():
     }
     import copy
     checks=0
+    # This deliberate false case must fail in both normal and python -O mode.
+    def must(condition, reason):
+        if not condition:
+            raise AssertionError(reason)
+    try:
+        must(False, "INTENTIONAL_NEGATIVE_CONTROL")
+    except AssertionError as exc:
+        must(str(exc) == "INTENTIONAL_NEGATIVE_CONTROL", "NEGATIVE_CONTROL_WRONG_FAILURE")
+    else:
+        raise AssertionError("NEGATIVE_CONTROL_DID_NOT_FAIL")
+    checks+=1
     first=compile_pack(base)
-    assert first["status"]=="PACK_COMPILED_READ_ONLY" and first["sequence"]==1
-    assert digest({k:v for k,v in first.items() if k not in ("pack_sha256","status","footer")})==first["pack_sha256"]
+    if not (first["status"]=="PACK_COMPILED_READ_ONLY" and first["sequence"]==1): raise AssertionError("CoPre R0 selftest invariant 1")
+    if not (digest({k:v for k,v in first.items() if k not in ("pack_sha256","status","footer")})==first["pack_sha256"]): raise AssertionError("CoPre R0 selftest invariant 2")
     checks+=2
-    assert compile_pack(base)==first;checks+=1
+    if not (compile_pack(base)==first): raise AssertionError("CoPre R0 selftest invariant 3")
+    checks+=1
     user_turn=render_continuation_input(first)
-    assert "CoPrePack SHA-256: " + first["pack_sha256"] in user_turn
-    assert "NEXT: " + base["next_deed"] in user_turn
-    assert "Verify/falsify: " + base["verification"] in user_turn
-    assert "Authority: READ_ONLY | Effects: NONE" in user_turn
-    assert render_continuation_input({"status":"HOLD"}) is None
+    if not ("CoPrePack SHA-256: " + first["pack_sha256"] in user_turn): raise AssertionError("CoPre R0 selftest invariant 4")
+    if not ("NEXT: " + base["next_deed"] in user_turn): raise AssertionError("CoPre R0 selftest invariant 5")
+    if not ("Verify/falsify: " + base["verification"] in user_turn): raise AssertionError("CoPre R0 selftest invariant 6")
+    if not ("Authority: READ_ONLY | Effects: NONE" in user_turn): raise AssertionError("CoPre R0 selftest invariant 7")
+    if not (render_continuation_input({"status":"HOLD"}) is None): raise AssertionError("CoPre R0 selftest invariant 8")
     checks+=5
     for changes,reason in [
        ({"material_delta":False},"QUIESCENT"),
@@ -151,16 +163,20 @@ def selftest():
        ({"evidence_refs":[""]},"HOLD"),
     ]:
        o=copy.deepcopy(base);o.update(changes)
-       assert compile_pack(o)["status"]==reason, changes
+       if not (compile_pack(o)["status"]==reason): raise AssertionError(changes)
        checks+=1
-    assert compile_pack(base,first)["status"]=="QUIESCENT";checks+=1
+    if not (compile_pack(base,first)["status"]=="QUIESCENT"): raise AssertionError("CoPre R0 selftest invariant 10")
+    checks+=1
     nexto=copy.deepcopy(base);nexto.update({"source_revision":"sha:two","delta_ref":"delta:two","next_deed":"challenge alternative"})
-    assert compile_pack(nexto,first)["reason"]=="STALE_PREDECESSOR_OR_COLLISION";checks+=1
+    if not (compile_pack(nexto,first)["reason"]=="STALE_PREDECESSOR_OR_COLLISION"): raise AssertionError("CoPre R0 selftest invariant 11")
+    checks+=1
     nexto["expected_previous_pack_sha256"]=first["pack_sha256"]
     second=compile_pack(nexto,first)
-    assert second["sequence"]==2 and second["pack_sha256"]!=first["pack_sha256"] and second["parent_pack_sha256"]==first["pack_sha256"];checks+=1
+    if not (second["sequence"]==2 and second["pack_sha256"]!=first["pack_sha256"] and second["parent_pack_sha256"]==first["pack_sha256"]): raise AssertionError("CoPre R0 selftest invariant 12")
+    checks+=1
     nexto["work_id"]="CoPre.different"
-    assert compile_pack(nexto,first)["reason"]=="WORK_ID_CHANGED";checks+=1
+    if not (compile_pack(nexto,first)["reason"]=="WORK_ID_CHANGED"): raise AssertionError("CoPre R0 selftest invariant 13")
+    checks+=1
     print(json.dumps({"schema":"CoPreR0Selftest","passed":checks,"scope":"SYNTHETIC_ONLY","effects":0,"session_wakes":0},sort_keys=True))
 
 
