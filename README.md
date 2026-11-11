@@ -20,7 +20,7 @@ CoCivium is a public, open research playground for **people, families, makers, a
 | **[Enter an evolving visual world](https://cocivium.github.io/CoAcademy/experience/)** | **[Try a creative character](https://cocivium.github.io/CoAcademy/kitten/)** | **[Explore the source-linked CoOrb](https://cocivium.github.io/CoAcademy/coorb/)** |
 | Explore connections, possibilities, and a visual sense of time. An interactive browser prototype. | A playful creation experiment for curious minds. A prototype, not a child account or hosted social game. | Compare claims, alternatives, and what evidence could change your mind. An experimental research experience. |
 
-**More paths, if they fit your curiosity:** [A one-minute introduction](START_HERE.md) · [Create together](https://cocivium.github.io/CoAcademy/groupbuild/) · [Read the CoCivia book preview](docs/Books/README.md) · [Explore civic questions](https://cocivium.github.io/CoAcademy/civiclens/)
+**More paths, if they fit your curiosity:** [See 10 illustrated highlights](https://cocivium.github.io/CoAcademy/megascroller/#highlights) · [A one-minute introduction](START_HERE.md) · [Create together](https://cocivium.github.io/CoAcademy/groupbuild/) · [Read the CoCivia book preview](docs/Books/README.md) · [Explore civic questions](https://cocivium.github.io/CoAcademy/civiclens/)
 
 ## Why build this?
 
