@@ -34,6 +34,8 @@ on:
       - 'test_cogoall_prior_run_readback_r0.py'
       - 'scripts/CoGoAllUnfinishedCanaryR0.py'
       - 'test_cogoall_unfinished_cross_job_r0.py'
+      - 'scripts/CoGoAllUnfinishedPriorWakeR0.py'
+      - 'test_cogoall_unfinished_prior_wake_r0.py'
   schedule:
     - cron: '17 * * * *'
   workflow_dispatch:
@@ -419,5 +421,52 @@ jobs:
         with:
           name: cogoall-unfinished-readback-${{ github.run_id }}-a${{ github.run_attempt }}
           path: out/cogoall/unfinished-readback.json
+          if-no-files-found: error
+          retention-days: 30
+
+  unfinished-prior-wake:
+    # Distinct workflow run reclaims ONE pinned unfinished WorkID, same provider.
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Checkout source from the exact previous workflow run
+        uses: actions/checkout@v4
+        with:
+          ref: 6ca5f069ca0e0cf7f9ae6985b2e16a28cf579e6f
+          path: out/cogoall/prior-unfinished-source
+          persist-credentials: false
+      - name: Challenge stale, forged and expired prior-work claims
+        run: |
+          python -B -m unittest -v test_cogoall_unfinished_prior_wake_r0
+          python -O -B -m unittest -v test_cogoall_unfinished_prior_wake_r0
+      - name: Fetch exact prior GitHub artifact metadata and unfinished bundle
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          mkdir -p out/cogoall/prior-unfinished-bundle out/cogoall/prior-unfinished-metadata
+          gh api "repos/${GITHUB_REPOSITORY}/actions/artifacts/13896878596" > out/cogoall/prior-unfinished-metadata/manifest.json
+          gh run download 43113671112 --repo "${GITHUB_REPOSITORY}" --name cogoall-unfinished-43113671112-a1 --dir out/cogoall/prior-unfinished-bundle
+      - name: Recover old WorkID once in later CI run using pinned historic source
+        run: |
+          python -B -m scripts.CoGoAllUnfinishedPriorWakeR0 \
+            --root . \
+            --historical-root out/cogoall/prior-unfinished-source \
+            --bundle out/cogoall/prior-unfinished-bundle \
+            --metadata out/cogoall/prior-unfinished-metadata/manifest.json \
+            --stage-readback out/cogoall/prior-unfinished-stage.json \
+            --output out/cogoall/prior-unfinished-readback.json
+      - name: Preserve exact cross-run readback and nonclaims
+        uses: actions/upload-artifact@v4
+        with:
+          name: cogoall-prior-unfinished-readback-${{ github.run_id }}-a${{ github.run_attempt }}
+          path: out/cogoall/prior-unfinished-readback.json
           if-no-files-found: error
           retention-days: 30
