@@ -212,6 +212,14 @@ jobs:
           x=json.load(open('out/copre-seed24h/current.json', encoding='utf-8'))
           print('SEED24H_QUALIFICATION:', x['qualification'])
           print('MAINLINE_CURRENTNESS:', x['mainline']['comparison'])
+          # The historical source can now be rechecked after the actual 24h
+          # boundary. A green job must mean the qualification is real, not
+          # merely that the script printed an explicit HELD classification.
+          expected='VERIFIED_SOURCE_REFETCH_24H_PLUS_NOT_RUNTIME_SURVIVAL'
+          if x['qualification'] != expected:
+              raise SystemExit('HOLD_24H_SOURCE_QUALIFICATION: '+x['qualification'])
+          assert x['state']=='PINNED_SOURCE_MATCH'
+          assert x['sha256']=='58f8c722bfbfc34cac41189c072d2effe4b19dbbe8a37be4f8687344d6b00b9a'
           assert x['receiver_ack'] is False and x['current_seed_synchronized'] is False
           assert x['exactly_once_effect_handoff'] is False and x['coex'] is False
           PY
