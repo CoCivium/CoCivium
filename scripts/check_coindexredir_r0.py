@@ -86,6 +86,18 @@ else:
         if (not isinstance(sources,list) or len(sources)<4
                 or any(not isinstance(p,str) or not (ROOT/p).is_file() for p in sources)):
             errors.append("CoFedGRAILS missing governing source links")
+        # Preserve the exact cross-branch source rather than silently rebasing
+        # the candidate branch or falsely claiming the document exists locally.
+        pinned=[{
+            "url":"https://github.com/CoCivium/CoCivium/blob/ff2acf209d37038dd7404a70366922f21972dbae/docs/Architecture/COOMNIFRONT_TIMEBRAID_R0_20261108.md",
+            "commit_sha":"ff2acf209d37038dd7404a70366922f21972dbae",
+            "blob_sha":"5a0073a241d66606bddaa01e36ba8721f5dd3857",
+            "local_branch_file":False,
+            "readback":"SOURCE_CONTENT_READ_FROM_PINNED_REVISION",
+            "nonclaim":"CROSS_BRANCH_POINTER_NE_INTEGRATED_CODE"
+        }]
+        if fed.get("pinned_cross_revision_sources")!=pinned:
+            errors.append("CoFedGRAILS cross-branch source pin missing or mutated")
         if fed.get("proof_state")!={"peer_authentication":None,
                                     "independent_receiver_ack":None,
                                     "cold_restore":None,
