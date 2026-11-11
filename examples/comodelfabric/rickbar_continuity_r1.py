@@ -265,6 +265,36 @@ class ContinuityStore:
             return "INDETERMINATE" if changed else "NO_CHANGE"
         return self._transaction(write)
 
+    def read_turn(self, conversation_id, turn_id):
+        """Read one exact locally stored turn without retrying its model call.
+
+        Same-database readback is not independent receiver proof or a model
+        result ACK. It can answer whether an interrupted HTTP response was
+        committed, remains pending, or became indeterminate.
+        """
+        cid, tid = _id(conversation_id), _id(turn_id)
+        keys = ("turn_id", "prompt", "response", "status", "epoch",
+                "worker", "receipt_sha256", "created_at", "updated_at",
+                "trigger_kind", "trigger_evidence")
+        with self.lock:
+            exists = self.db.execute(
+                "SELECT 1 FROM conversations WHERE conversation_id=?",
+                (cid,)).fetchone()
+            if not exists:
+                return {"state": "UNKNOWN_CONVERSATION", "conversation_id": cid}
+            row = self.db.execute(
+                "SELECT turn_id,prompt,response,status,epoch,worker,receipt_sha256,"
+                "created_at,updated_at,trigger_kind,trigger_evidence "
+                "FROM turns WHERE conversation_id=? AND turn_id=?",
+                (cid, tid)).fetchone()
+            if row is None:
+                return {"state": "UNKNOWN_TURN",
+                        "conversation_id": cid, "turn_id": tid}
+            return {"state": "TURN_LOCAL_READBACK", "conversation_id": cid,
+                    "turn_id": tid, "turn": dict(zip(keys, row)),
+                    "independent_receiver_ack": False,
+                    "model_resubmitted": False}
+
     def state(self, conversation_id, limit=100):
         cid = _id(conversation_id)
         if type(limit) is not int or not 1 <= limit <= 200:

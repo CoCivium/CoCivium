@@ -40,6 +40,16 @@ Then browse to http://127.0.0.1:8766. This is a local browser prototype, not ins
 
 Record for each attempt: WorkID, ConversationID, TurnID, event time, observer, trigger_kind = USER_TURN / SCHEDULED / EVENT / MANUAL_OPERATOR / UNKNOWN, source revision, model/provider, authorization, output hash, receiver readproof, checkpoint, next wake and limitations. Never infer a cause from an unsourced next-morning status. GitHub commits indicate repository work, not whether a schedule, mobile session or independent agent caused it. For an unavailable source, use UNKNOWN.
 
+## Exact uncertain-turn recovery candidate (2026-11-10)
+
+A lost HTTP response need not mean the model operation was lost. The local continuity store now has a **read-only exact (ConversationID, TurnID) lookup** and a loopback `GET /api/turn/{conversation_id}/{turn_id}` route. The result distinguishes `COMMITTED`, `PENDING`, and `INDETERMINATE` without dispatching the model again. The browser stores an uncertain turn identifier locally and consults that endpoint after re-opening; it does not automatically retry a model operation.
+
+This is same-database readback, **not** independent receiver acceptance or confirmation that an external effect occurred. The change does not touch native rickBar, provider sessions, CoStead, or X2 processes.
+
+A user-supplied November 11 X2 screenshot visually shows CoSpeedo and CoAll/Here on the desktop. It does not authenticate the producer or prove receiver pickup, and Desktop Commander remains unreachable from this tool context. The screenshot contains personal applications and **must not be published**.
+
+**Acceptance:** isolated HTTP tests must prove exact committed-turn recovery, pending and indeterminate states, missing/invalid lookup rejection, and no extra model invocation. Passing CI is still source evidence only; a live host restart, independent receiver, and user-experience review remain open.
+
 ## Model receipt namespace and replay barrier (2026-11-09)
 
 The R1 HTTP adapter now derives its model-output receipt WorkID from **both** ConversationID and TurnID. A bare turn number is only unique *within* a conversation, so using it as a global receipt filename could make two unrelated conversations collide. The derived bounded ID is deterministic and SHA-256-based; it protects the receipt namespace, not privacy or authorization.
