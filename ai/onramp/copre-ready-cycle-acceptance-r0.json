@@ -92,7 +92,7 @@
     {
       "name": "survival_24h",
       "target": ">24h",
-      "observed": "BASELINE_ONLY_2026-11-10T00:36:47Z_NO_ELAPSED_24H",
+      "observed": "HISTORICAL_PINNED_SOURCE_REFETCH_24H_PLUS_PASS__RESTART_AND_EXTERNAL_RECEIVER_HELD",
       "acceptance": "two independently obtained receipts >=24 hours apart for the same recoverable source and successful restart"
     },
     {
@@ -149,7 +149,7 @@
       "status": "NOT_INDEPENDENTLY_VERIFIED"
     }
   ],
-  "next_proof": "One authorized independent reader fetches source-bound CoSeed exact identity and records a useful bounded continuation without user-as-relay. Confirm duration later with a separate >=24h test.",
+  "next_proof": "One independently authorized non-GitHub receiver fetches exact current WorkID, produces its own readback and performs bounded useful continuation after a real interruption without user relay; historical pinned-source refetch over 24h is now separately verified.",
   "nonclaims": [
     "NOT_CANON",
     "NOT_GLOBAL_SESSION_STATE",
@@ -160,7 +160,8 @@
     "NO_MIRROR_PARITY",
     "NO_ALWAYS_ON_WATCHER",
     "NO_SENTIENCE_OR_AGI_INFERENCE",
-    "PUBLIC_SOURCE_NE_PUBLIC_RELEASE_ACROSS_THREE_DOMAINS"
+    "PUBLIC_SOURCE_NE_PUBLIC_RELEASE_ACROSS_THREE_DOMAINS",
+    "HISTORICAL_SOURCE_REFETCH_24H_NE_RUNTIME_SURVIVAL"
   ],
   "acceptance_rail": {
     "governing_issue": 317,
@@ -173,7 +174,7 @@
     "this_object_role": "COMPACT_TARGET_AND_NONCLAIM_PROJECTION_NOT_SEPARATE_GLOBAL_SEED_OR_NEW_WORKSTREAM",
     "human_entry": "CoPre.md",
     "independent_receiver": "HELD_RECEIVER_NOT_ESTABLISHED",
-    "overnight_survival": "UNMEASURED",
+    "overnight_survival": "HISTORICAL_SOURCE_24H_REFETCH_ONLY_NOT_RUNTIME_SURVIVAL",
     "no_new_version_when": "NO_MATERIAL_DELTA",
     "wave_diversity": "VARY_INFORMATION_AXIS_UNLESS_REPLICATION_OR_REGRESSION_CONTROL",
     "observed_baseline": {
@@ -227,6 +228,24 @@
       "separate_schedule_event_verified": false,
       "source": "https://github.com/CoCivium/CoCivium/issues/317#issuecomment-6755815083",
       "next_action": "Reconcile expected vs actual scheduled trigger history; do not infer hourly autonomous operation from a push run."
+    },
+    "historical_pinned_source_24h_refetch": {
+      "state": "VERIFIED_SOURCE_REFETCH_24H_PLUS_NOT_RUNTIME_SURVIVAL",
+      "baseline_run_id": 42729597075,
+      "baseline_observed_at_utc": "2026-11-10T00:36:47.681591+00:00",
+      "verification_run_id": 42934800629,
+      "verification_run_url": "https://github.com/CoCivium/CoCivium/actions/runs/42934800629",
+      "verification_job_id": 130242089198,
+      "verification_observed_at_utc_approx": "2026-11-11T00:53:05Z",
+      "source_commit": "63b41ead8797e5a781699f32bcbc77b78bdbd7af",
+      "source_sha256": "58f8c722bfbfc34cac41189c072d2effe4b19dbbe8a37be4f8687344d6b00b9a",
+      "github_artifact_id": 13817337549,
+      "mainline_comparison": "MAINLINE_DIVERGED_FROM_HISTORICAL_PIN",
+      "failure_domain": "GITHUB_HOSTED_SOURCE_AND_RUNNERS",
+      "receiver_ack": false,
+      "runtime_restart_verified": false,
+      "current_mainline_synchronized": false,
+      "claim_boundary": "EXACT_HISTORICAL_SOURCE_REFETCHED_AFTER_24H_NOT_AUTONOMOUS_24H_RUNTIME_OR_CROSS_PROVIDER_HANDOFF"
     }
   }
 }
