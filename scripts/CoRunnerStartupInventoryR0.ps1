@@ -91,7 +91,54 @@ $tasks = [System.Collections.Generic.List[object]]::new()
 $runEntries = [System.Collections.Generic.List[object]]::new()
 $startupFiles = [System.Collections.Generic.List[object]]::new()
 $processes = [System.Collections.Generic.List[object]]::new()
+$processRoles = [System.Collections.Generic.List[object]]::new()
+$audioServices = [System.Collections.Generic.List[object]]::new()
+$displayDriverModes = [System.Collections.Generic.List[object]]::new()
+$bootUtc = $null
+$uptimeSeconds = $null
 $taskTotal = 0
+try {
+    $osRecord = Get-CimInstance -ClassName Win32_OperatingSystem -ErrorAction Stop
+    $bootDate = ([DateTime]$osRecord.LastBootUpTime).ToUniversalTime()
+    if ($bootDate.Year -lt 2020 -or $bootDate -gt [DateTime]::UtcNow) {
+        $errors.Add('BOOT_TIME_INCONSISTENT')
+    } else {
+        $bootUtc = $bootDate.ToString('o')
+        $uptimeSeconds = [int][Math]::Floor(([DateTime]::UtcNow - $bootDate).TotalSeconds)
+    }
+} catch { $errors.Add('BOOT_TIME_READ_UNAVAILABLE') }
+
+foreach ($serviceName in @('Audiosrv','AudioEndpointBuilder')) {
+    try {
+        $svc = Get-Service -Name $serviceName -ErrorAction Stop
+        $audioServices.Add([pscustomobject]@{
+            service_role = $serviceName
+            status = if ($svc.Status -eq 'Running') { 'RUNNING' } else { 'NOT_RUNNING' }
+            actual_mute_state = 'NOT_OBSERVED'
+        })
+    } catch {
+        $audioServices.Add([pscustomobject]@{
+            service_role = $serviceName
+            status = 'NOT_OBSERVED'
+            actual_mute_state = 'NOT_OBSERVED'
+        })
+        $errors.Add('AUDIO_SERVICE_READ_UNAVAILABLE')
+    }
+}
+try {
+    foreach ($adapter in @(Get-CimInstance -ClassName Win32_VideoController -ErrorAction Stop | Select-Object -First 8)) {
+        $w = [int]$adapter.CurrentHorizontalResolution
+        $h = [int]$adapter.CurrentVerticalResolution
+        if ($w -gt 0 -and $h -gt 0) {
+            $displayDriverModes.Add([pscustomobject]@{
+                width_px = $w
+                height_px = $h
+                evidence = 'VIDEO_DRIVER_REPORTED_NOT_PER_MONITOR_DPI_OR_UI_GEOMETRY'
+            })
+        }
+    }
+} catch { $errors.Add('DISPLAY_DRIVER_READ_UNAVAILABLE') }
+
 try {
     # This only inventories task metadata and action launch flags. It cannot
     # identify the initiating task for a visible popup without a runtime trace.
