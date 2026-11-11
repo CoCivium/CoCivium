@@ -228,6 +228,14 @@ foreach ($kind in @('Startup','CommonStartup')) {
 try {
     foreach ($p in @(Get-CimInstance -ClassName Win32_Process -ErrorAction Stop)) {
         $name = [string]$p.Name
+        $role = Get-ProcessRole $name
+        if ($role -ne 'OTHER' -and $processRoles.Count -lt 80) {
+            $processRoles.Add([pscustomobject]@{
+                process_role = $role
+                process_name = $name
+                evidence = 'PROCESS_NAME_PRESENT_NOT_HEALTH_OR_AUTOSTART_PROOF'
+            })
+        }
         if ($name -notmatch '(?i)^(pwsh|powershell|cmd|pythonw?|wscript|cscript|conhost|coall\w*)\.exe$') {
             continue
         }
@@ -266,9 +274,25 @@ $report = [ordered]@{
     run_entries = @($runEntries.ToArray())
     startup_folder_items = @($startupFiles.ToArray())
     process_candidates = @($processes.ToArray())
+    boot_time_utc = $bootUtc
+    uptime_seconds_at_observation = $uptimeSeconds
+    audio_service_readback = @($audioServices.ToArray())
+    audio_muted_state = 'NOT_OBSERVED'
+    peripheral_utility_process_candidates = @($processRoles.ToArray())
+    display_driver_modes = @($displayDriverModes.ToArray())
+    per_monitor_dpi = 'NOT_OBSERVED'
+    owned_desktop_background = 'NOT_OBSERVED'
+    surface_alignment_and_scale = 'NOT_OBSERVED'
+    post_login_restoration_state = 'NOT_ATTESTED'
+    visible_ui_screenshot_accepted = $false
     observation_errors = @($errors.ToArray())
     nonclaims = @('TASK_EXISTS_NE_AUTOSTART_PROVEN','HIDDEN_FLAG_NE_NO_WINDOW_PROVEN',
         'PROCESS_EXISTS_NE_HEALTHY','BRIDGE_OFFLINE_NE_PC_OFF',
-        'LOCAL_SNAPSHOT_NE_X2_ATTESTATION','NO_RECEIVER_ACK_OR_RUNTIME_REPAIR')
+        'LOCAL_SNAPSHOT_NE_X2_ATTESTATION','NO_RECEIVER_ACK_OR_RUNTIME_REPAIR',
+        'AUDIO_SERVICE_RUNNING_NE_AUDIO_UNMUTED',
+        'MOUSE_PROCESS_PRESENT_NE_MOUSE_MAPPING_READY',
+        'DISPLAY_DRIVER_MODE_NE_PER_MONITOR_DPI_OR_LAYOUT',
+        'BOOT_TIME_NE_POST_LOGIN_RESTORATION',
+        'WALLPAPER_VISIBLE_NE_COCIVIUM_OWNED_SURFACE')
 }
 $report | ConvertTo-Json -Depth 6 -Compress
