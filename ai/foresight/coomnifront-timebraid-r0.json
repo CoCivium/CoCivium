@@ -1,0 +1,203 @@
+{
+  "schema": "cocivium.co_omnifront_timebraid.r0",
+  "status": "PUBLIC_STRATEGY_PROJECTION_NOT_RUNTIME",
+  "as_of": "2026-11-08",
+  "published_as_historical_candidate": "2026-11-10",
+  "stable_work_id": "cocivium:architecture:coomnifront-timebraid:r0",
+  "source_doc": "docs/Architecture/COOMNIFRONT_TIMEBRAID_R0_20261108.md",
+  "no_competing_control_plane": true,
+  "existing_parents": [
+    "docs/Architecture/COALL_PULSEFIELD_COTIME_R0.md",
+    "docs/Architecture/COTIME_DECISION_EVIDENCE_R0.md",
+    "docs/Architecture/COSESSION_SUBSCRIPTIONS_R0.md",
+    "docs/Architecture/COORBWARE_BEYOND_COSOFTWARE_R0_20261024.md",
+    "docs/Architecture/CORELATION_CLOUD_CLUSTER_ORG_BRAID_R0_20261026.md",
+    "docs/Strategy/CIV2_CIV3_BOUNDARY_GAPMAP_R0.md"
+  ],
+  "temporal_forces": [
+    {
+      "id": "prior_push",
+      "label": "Prior push",
+      "epistemic": "OBSERVED_OR_HISTORICAL_WHEN_SOURCE_BOUND",
+      "description": "Evidence, decisions, dissent, failures and obligations constrain current options",
+      "can_authorize_effect": false
+    },
+    {
+      "id": "here_now",
+      "label": "Present decision",
+      "epistemic": "CURRENT_ONLY_WHEN_VERIFIED_FOR_PURPOSE",
+      "description": "Compare actual resources, authority, consent, observation and safe next action",
+      "can_authorize_effect": false
+    },
+    {
+      "id": "attractor_pull",
+      "label": "Future pull",
+      "epistemic": "SCENARIO_OR_PREFERRED_NOT_OBSERVED",
+      "description": "Backcast from preferred outcomes and preregister forecasts and disconfirmers",
+      "can_authorize_effect": false
+    },
+    {
+      "id": "crosswind",
+      "label": "Crosswind",
+      "epistemic": "EXTERNAL_EVIDENCE_OR_UNKNOWN",
+      "description": "Competitors, standards, climate, regulation, societal shifts and shocks",
+      "can_authorize_effect": false
+    },
+    {
+      "id": "feedback",
+      "label": "CoBraid and CoAckRewise feedback",
+      "epistemic": "RECEIPTED_OUTCOME",
+      "description": "Compare preregistered forecast with observed outcome, preserve failures and supersessions",
+      "can_authorize_effect": false
+    }
+  ],
+  "work_object_minimum": [
+    "work_id",
+    "version",
+    "source_ref",
+    "source_digest",
+    "event_at",
+    "observed_at",
+    "recorded_at",
+    "valid_from",
+    "valid_to",
+    "issued_forecast_at",
+    "forecast_horizon",
+    "evidence_class",
+    "authority_ceiling",
+    "privacy_class",
+    "receiver_cursor",
+    "recovery_pointer",
+    "assumptions",
+    "contradictions",
+    "next_proof"
+  ],
+  "observer_lenses": [
+    {
+      "id": "public",
+      "meaning": "Why this matters and what changes",
+      "preferred_view": "plain-language, choice, reversibility, evidence drilldown"
+    },
+    {
+      "id": "board",
+      "meaning": "Benefits, duties, budgets and alternatives",
+      "preferred_view": "objectives, risk, scenarios, dissent, consent"
+    },
+    {
+      "id": "research",
+      "meaning": "What would falsify the claim",
+      "preferred_view": "priors, alternatives, forecasts, counterexamples, independent replication"
+    },
+    {
+      "id": "engineering",
+      "meaning": "Exactly what can execute and recover",
+      "preferred_view": "schema, transport, retry, idempotency, trace, rollback"
+    },
+    {
+      "id": "agent",
+      "meaning": "Allowed task and next safe deed",
+      "preferred_view": "typed packet, source, cursor, lease, authority scope, exact receipt"
+    },
+    {
+      "id": "mobile",
+      "meaning": "One relevant change",
+      "preferred_view": "glance and accessible detail, battery and notification limits"
+    }
+  ],
+  "temporal_epistemic_classes": [
+    "OBSERVED",
+    "INFERRED",
+    "PREDICTED",
+    "PREFERRED",
+    "SCENARIO",
+    "COUNTERFACTUAL",
+    "UNKNOWN"
+  ],
+  "forecast_outcomes": [
+    "HIT",
+    "PARTIAL",
+    "MISS",
+    "UNRESOLVED",
+    "CENSORED",
+    "INVALIDATED_BY_ASSUMPTION_CHANGE"
+  ],
+  "delivery_pipeline": [
+    "AUTHORIZED_CLASSIFY",
+    "DURABLE_SOURCE_CURSOR",
+    "ROLE_SUBSCRIPTION",
+    "LEAST_PRIVILEGE_BRIDGE",
+    "RECEIVER_READBACK",
+    "SEMANTIC_ACCEPTANCE_OR_CHALLENGE",
+    "APPEND_RECEIPT",
+    "BACKFILL_AND_RECOVER"
+  ],
+  "acceptance_gates": [
+    {
+      "id": "same_identity",
+      "required": "same WorkID and compatible evidence, privacy and authority across human and machine projections",
+      "state": "HELD"
+    },
+    {
+      "id": "cross_session_recovery",
+      "required": "fresh receiver reconstructs source and unresolved dissent without origin chat",
+      "state": "HELD"
+    },
+    {
+      "id": "future_calibration",
+      "required": "preregistered forecast with later independent scored outcome",
+      "state": "HELD"
+    },
+    {
+      "id": "federated_readback",
+      "required": "two independently administered receivers, explicit failure and recovery receipts",
+      "state": "HELD"
+    },
+    {
+      "id": "human_value",
+      "required": "blinded first-use comparison of time-to-value, comprehension and reversibility",
+      "state": "HELD"
+    },
+    {
+      "id": "competitive_baseline",
+      "required": "same task compared with existing A2A, CloudEvents, OpenTelemetry or Temporal adapters as relevant",
+      "state": "HELD"
+    }
+  ],
+  "no_claims": [
+    "NOT_GLOBAL_SESSION_SYNC",
+    "NOT_COCIVIUM_RUNTIME",
+    "NOT_X2_OR_IOS_DEPLOYMENT",
+    "NOT_CANON",
+    "NOT_RECEIVER_ACK",
+    "NOT_INDEPENDENT_PUBLIC_UPTAKE",
+    "FUTURE_PULL_NOT_RETROCAUSATION",
+    "PUBLIC_LINK_NOT_EFFECT_AUTHORITY"
+  ],
+  "related_existing_issues": [
+    "https://github.com/CoCivium/CoCivium/issues/317",
+    "https://github.com/CoCivium/CoCivium/issues/367",
+    "https://github.com/CoCivium/CoCivium/issues/369"
+  ],
+  "sources": [
+    {
+      "label": "A2A specification",
+      "url": "https://a2a-protocol.org/v1.0.0/specification"
+    },
+    {
+      "label": "CloudEvents",
+      "url": "https://github.com/cloudevents/spec/blob/main/cloudevents/spec.md"
+    },
+    {
+      "label": "OpenTelemetry semantic conventions",
+      "url": "https://opentelemetry.io/docs/concepts/semantic-conventions/"
+    },
+    {
+      "label": "Temporal workflows",
+      "url": "https://docs.temporal.io/workflows"
+    },
+    {
+      "label": "Apple WidgetKit",
+      "url": "https://developer.apple.com/documentation/widgetkit/keeping-a-widget-up-to-date/"
+    }
+  ]
+}

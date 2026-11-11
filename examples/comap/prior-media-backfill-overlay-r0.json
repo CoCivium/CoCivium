@@ -1,0 +1,187 @@
+{
+  "schema": "CoAll.CoNav.PriorMediaBackfillOverlay.R0",
+  "state": "PUBLIC_SAFE_BOUNDED_BACKFILL_CANDIDATES_NOT_GLOBAL_MEDIA_INGESTION",
+  "work_id": "coal.conav.retro-public-media.r0",
+  "source_graph": {
+    "repository": "CoCivium/CoCivium",
+    "path": "ai/comap-source-projection-r0.json",
+    "git_blob_sha1": "9cc47926d2f61f439db1818702127382f78d693f"
+  },
+  "observation_date_utc": "2026-11-09",
+  "selection_basis": "Five verified public CoCivium media sources not among the eight donors in an earlier bounded private CoMedia inspiration index. Not global absence proof.",
+  "prior_private_custody": "PRIVATE_LIBRARY_DONORS_AND_SIX_CONVERSATION_SCREENSHOTS_NOT_COPIED_OR_NAMED_HERE",
+  "candidates": [
+    {
+      "id": "media:comap-source-weave",
+      "label": "CoMap offline source weave",
+      "source": {
+        "repository": "CoCivium/CoCivium",
+        "path": "examples/comap/source-weave-r0.html",
+        "git_blob_sha1": "4887dbb294ae0c1eda3dffe475d9b1274bdf559c",
+        "readback": "VERIFIED_GITHUB_SOURCE_THIS_TURN"
+      },
+      "media_kind": "HTML_INTERACTIVE",
+      "motifs": [
+        "source-bound relations",
+        "zoom and search",
+        "candidate-edge scratchpad"
+      ],
+      "challenge": "Does a graph edge have evidence, or merely visual proximity?",
+      "candidate_lenses": [
+        "CoMap+",
+        "CoNav+",
+        "CoOrb+"
+      ],
+      "relation_to": "view:CoMap+",
+      "relation_type": "INSPIRATION_CANDIDATE_FOR",
+      "rights": "PUBLIC_SOURCE_READABLE_DERIVATIVE_RIGHTS_NOT_VERIFIED",
+      "privacy": "PUBLIC_METADATA_ONLY",
+      "lifecycle": "PUBLIC_SOURCE_POINTER_LANDED_NOT_RECEIVER_PICKED_UP",
+      "semantic_review": "SELECTED_MOTIFS_AS_HYPOTHESES",
+      "bytes_copied_into_overlay": false,
+      "seed_ref": "coal.conav.retro-public-media.r0",
+      "path_status": "PROPOSED_NOT_EXECUTED",
+      "next_test": "A reader opens one relation and explains the cited source"
+    },
+    {
+      "id": "media:relational-media-diagram",
+      "label": "Relational media diagram",
+      "source": {
+        "repository": "CoCivium/CoCivium",
+        "path": "examples/colensmedia/relational_media_diagram_r0.md",
+        "git_blob_sha1": "476e5eeb6e24e1fae562552ac07dd234748ab8ce",
+        "readback": "VERIFIED_GITHUB_SOURCE_THIS_TURN"
+      },
+      "media_kind": "MARKDOWN_MERMAID",
+      "motifs": [
+        "same WorkID across views",
+        "accessible textual twin",
+        "private-node redaction"
+      ],
+      "challenge": "Does diagram revision reflect the exact source rather than an old view?",
+      "candidate_lenses": [
+        "CoMap+",
+        "CoMedia+",
+        "CoA11y+"
+      ],
+      "relation_to": "view:CoMap+",
+      "relation_type": "INSPIRATION_CANDIDATE_FOR",
+      "rights": "PUBLIC_SOURCE_READABLE_DERIVATIVE_RIGHTS_NOT_VERIFIED",
+      "privacy": "PUBLIC_METADATA_ONLY",
+      "lifecycle": "PUBLIC_SOURCE_POINTER_LANDED_NOT_RECEIVER_PICKED_UP",
+      "semantic_review": "SELECTED_MOTIFS_AS_HYPOTHESES",
+      "bytes_copied_into_overlay": false,
+      "seed_ref": "coal.conav.retro-public-media.r0",
+      "path_status": "PROPOSED_NOT_EXECUTED",
+      "next_test": "Alter one source revision and verify diagram plus text HOLD"
+    },
+    {
+      "id": "media:visual-prior-bridge",
+      "label": "Visual prior bridge",
+      "source": {
+        "repository": "CoCivium/CoCivium",
+        "path": "examples/colensmedia/visual_prior_bridge.html",
+        "git_blob_sha1": "aed071ba013e54320ce3e5b28c4c130a0317ba48",
+        "readback": "VERIFIED_GITHUB_SOURCE_THIS_TURN"
+      },
+      "media_kind": "HTML_INTERACTIVE",
+      "motifs": [
+        "source-to-pattern mapping",
+        "rights-aware visual comparison",
+        "inverse question"
+      ],
+      "challenge": "Has inspiration been confused with authority or derivative permission?",
+      "candidate_lenses": [
+        "CoNav+",
+        "CoVisualPriors+",
+        "CoEv+"
+      ],
+      "relation_to": "view:CoMap+",
+      "relation_type": "INSPIRATION_CANDIDATE_FOR",
+      "rights": "PUBLIC_SOURCE_READABLE_DERIVATIVE_RIGHTS_NOT_VERIFIED",
+      "privacy": "PUBLIC_METADATA_ONLY",
+      "lifecycle": "PUBLIC_SOURCE_POINTER_LANDED_NOT_RECEIVER_PICKED_UP",
+      "semantic_review": "SELECTED_MOTIFS_AS_HYPOTHESES",
+      "bytes_copied_into_overlay": false,
+      "seed_ref": "coal.conav.retro-public-media.r0",
+      "path_status": "PROPOSED_NOT_EXECUTED",
+      "next_test": "Compare one motif and inverse without reusing licensed pixels"
+    },
+    {
+      "id": "media:visual-finder",
+      "label": "Public visual finder",
+      "source": {
+        "repository": "CoCivium/CoCivium",
+        "path": "examples/covisual_finder_r1/index.html",
+        "git_blob_sha1": "2360b7ceea035599a7604e5c54d28b1765952e0d",
+        "readback": "VERIFIED_GITHUB_SOURCE_THIS_TURN"
+      },
+      "media_kind": "HTML_INTERACTIVE",
+      "motifs": [
+        "rights-qualified references",
+        "bounded candidate fan-out",
+        "negative visual priors"
+      ],
+      "challenge": "Are link count and attractiveness disguising weak evidence?",
+      "candidate_lenses": [
+        "CoMap+",
+        "CoMedia+",
+        "CoTurtle+"
+      ],
+      "relation_to": "view:CoMap+",
+      "relation_type": "INSPIRATION_CANDIDATE_FOR",
+      "rights": "PUBLIC_SOURCE_READABLE_DERIVATIVE_RIGHTS_NOT_VERIFIED",
+      "privacy": "PUBLIC_METADATA_ONLY",
+      "lifecycle": "PUBLIC_SOURCE_POINTER_LANDED_NOT_RECEIVER_PICKED_UP",
+      "semantic_review": "SELECTED_MOTIFS_AS_HYPOTHESES",
+      "bytes_copied_into_overlay": false,
+      "seed_ref": "coal.conav.retro-public-media.r0",
+      "path_status": "PROPOSED_NOT_EXECUTED",
+      "next_test": "Challenge one visual reference for rights and evidence"
+    },
+    {
+      "id": "media:context-rail",
+      "label": "Context rail prototype",
+      "source": {
+        "repository": "CoCivium/CoCivium",
+        "path": "examples/conodcothumb/context_rail_r1/index.html",
+        "git_blob_sha1": "e50b11a2825d9548248746c4f7937049ea97caa8",
+        "readback": "VERIFIED_GITHUB_SOURCE_THIS_TURN"
+      },
+      "media_kind": "HTML_INTERACTIVE",
+      "motifs": [
+        "small reversible action vocabulary",
+        "source-aware context",
+        "accessible controls"
+      ],
+      "challenge": "Does a glyph falsely imply runtime control or user consent?",
+      "candidate_lenses": [
+        "CoNav+",
+        "CoBar+",
+        "CoLUE+"
+      ],
+      "relation_to": "view:CoMap+",
+      "relation_type": "INSPIRATION_CANDIDATE_FOR",
+      "rights": "PUBLIC_SOURCE_READABLE_DERIVATIVE_RIGHTS_NOT_VERIFIED",
+      "privacy": "PUBLIC_METADATA_ONLY",
+      "lifecycle": "PUBLIC_SOURCE_POINTER_LANDED_NOT_RECEIVER_PICKED_UP",
+      "semantic_review": "SELECTED_MOTIFS_AS_HYPOTHESES",
+      "bytes_copied_into_overlay": false,
+      "seed_ref": "coal.conav.retro-public-media.r0",
+      "path_status": "PROPOSED_NOT_EXECUTED",
+      "next_test": "Test keyboard and readable text for one reversible glyph"
+    }
+  ],
+  "rights_release": false,
+  "media_bytes_uploaded": false,
+  "renderer_runtime_verified": false,
+  "nonclaims": [
+    "BACKFILL_SAMPLE_NE_ALL_PRIOR_MEDIA",
+    "INSPIRATION_NE_LICENSE",
+    "SOURCE_LINK_NE_MEDIA_CUSTODY",
+    "METADATA_NE_SEMANTIC_INGESTION",
+    "PROJECTION_NE_RECEIVER_ACK",
+    "PUBLIC_SOURCE_NE_X2_INSTALL",
+    "PREVIOUS_PRIVATE_INDEX_NE_PUBLICATION_PERMISSION"
+  ]
+}

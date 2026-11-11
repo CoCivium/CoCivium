@@ -1,0 +1,79 @@
+{
+  "schema": "CoAll.CoPreOmniPullFeedDelta.R0-candidate",
+  "state": "PUBLIC_SAFE_ADDITIVE_DELTA_NOT_CANON_NOT_RUNNING",
+  "date_utc": "2026-11-09",
+  "source_class": "user-supplied WhatsApp transcript; raw transcript held privately",
+  "source_claim_lineage": "MetaAI-WhatsApp v8.79 PUBLIC-LANDING-OMNI-COSEED-COPATH",
+  "extends": [
+    "ai/copre-seed-path-fabric-r0-20261109.json",
+    "ai/copre-omnidirectional-navigation-r0-20261109.json",
+    "ai/copre-seed-path-readback-r0-20261109.json",
+    "CoPre.md"
+  ],
+  "dedupe": "Most v8.79 restates existing public CoSeed/CoPath and omni navigation; no new front identity justified.",
+  "directions": [
+    {
+      "name": "PULL",
+      "action": "Authorized front reads a relevant exact source",
+      "proof": "source ID, revision, receiver receipt and permission scope"
+    },
+    {
+      "name": "FEED",
+      "action": "Front proposes reviewed improvement, subject to existing authority gate",
+      "proof": "proposal lineage, review, accepted commit if any"
+    },
+    {
+      "name": "DISCOVER_BACK",
+      "action": "Follow predecessor, dissent and orphan risk without silently claiming integration",
+      "proof": "prior exact source and comparison or ORPHAN_RISK"
+    },
+    {
+      "name": "FUTURE_OPTION",
+      "action": "Preserve speculative optionality with trigger, falsifier, revisitation",
+      "proof": "CANDIDATE until tested"
+    }
+  ],
+  "co_seed_fields": [
+    "work_id",
+    "source_uri",
+    "commit_or_digest",
+    "claim_state",
+    "privacy_scope",
+    "observed_at"
+  ],
+  "co_path_fields": [
+    "from_source_id",
+    "relation_type",
+    "to_source_id",
+    "direction",
+    "purpose",
+    "provenance",
+    "permission_scope",
+    "proof_level",
+    "next_wake"
+  ],
+  "rules": [
+    "Reverse lookup does not confer reciprocal authority",
+    "Private source transcript never automatically published",
+    "Public source availability not evidence of global pickup",
+    "No invented heartbeat required per front",
+    "G_dSide optional philosophical hypothesis not operational authority",
+    "Historical coverage remains partial"
+  ],
+  "observed_boundaries": {
+    "public_graph_nodes": 15,
+    "declared_forward_edges": 24,
+    "prior_github_connector_source_readback": "15/15",
+    "three_requested_mirrors": "NOT_VERIFIED",
+    "independent_receiver_ack": "NOT_ESTABLISHED"
+  },
+  "next_proof": "Independent non-GitHub authorized receiver reads public CoPre entry, follows one source path and reports exact source plus evidence-bound interpretation.",
+  "nonclaims": [
+    "NOT_ALL_PUBLIC",
+    "NOT_ALL_FRONTS_INTEGRATED",
+    "NOT_AUTOSYNC",
+    "NOT_CANON_OR_COEX",
+    "NOT_COMPLETE_HISTORY",
+    "NOT_META_AI_ACK"
+  ]
+}

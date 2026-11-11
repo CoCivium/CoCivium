@@ -1,0 +1,57 @@
+# What actually got better?
+
+**CoSpeedo NeedleTrails** shows which CoCivium engineering checks passed, which failed, and which still need evidence. **It is not a live dashboard.**
+
+> **Right now:** The exact historical CoPre source was refetched successfully more than 24 hours after its pinned baseline. A working independent receiver, 24-hour **application/runtime** survival, and measured human time saved are **not yet proven**.
+
+## The one-minute answer
+
+**What works:** You can inspect the [R1 historical needle-trail source](needle-trails-r1.html) and the [archived evidence](../../docs/Metrics/COSPEEDO_RECEIPT_CENSUS_R0_20261027.json). The source and chart checks passed in [main-branch CI](https://github.com/CoCivium/CoCivium/actions/runs/42750710011).
+
+**What a browser actually showed:** The source prototype passed [four-screen-size browser QA](https://github.com/CoCivium/CoCivium/actions/runs/42744256246). That test does not establish a deployed CoCivium website or a useful outcome.
+
+**What remains held:** Continuous tracking across devices, independent receiver recovery, and **runtime/restart** survival beyond 24 hours have not been demonstrated. See the [acceptance rail](https://github.com/CoCivium/CoCivium/issues/317).
+
+**What is unknown:** We do not yet have a comparable human outcome baseline for time saved or comprehension. See the [seven-day scorecard](../../docs/Metrics/COSPEEDO_7DAY_SCORECARD_R0_20261026.json).
+
+## The needle trail, without the jargon
+
+These are recorded **test activities**, not people helped or proof of growing usefulness. Passed means a bounded check passed. Held means evidence is missing. Failed means a check failed.
+
+- **2026-10-23:** 38 passed, 16 held, 10 failed.
+- **2026-10-24:** 40 passed, 26 held, 3 failed.
+- **2026-10-25:** 3 passed, 2 held, 0 failed.
+- **2026-10-26:** 3 passed, 3 held, 1 failed.
+
+**October 20–22 have no captured ledger rows.** That is **unknown coverage**, not proof that nothing happened. The four observed dates contain 145 entries in the [exact archived census](../../docs/Metrics/COSPEEDO_RECEIPT_CENSUS_R0_20261027.json). Fewer passed checks on a later day may simply mean fewer checks ran.
+
+## Check newer engineering evidence
+
+The dated needle history above is **not live**. For more recent technical results, GitHub updates these existing workflow run lists as checks execute. They show CI activity, **not** X2 health, independent receiver acceptance or human benefit.
+
+- [CoLoop safety tests](https://github.com/CoCivium/CoCivium/actions/workflows/coloops-safety.yml): versioned recovery, safety and historical-source regressions.
+- [Receiver reconciliation tests](https://github.com/CoCivium/CoCivium/actions/workflows/receiver-reconciliation.yml): bounded source-side reconciliation, **not** external receipt acceptance.
+- [CoMVP first-use canary](https://github.com/CoCivium/CoCivium/actions/workflows/comvp-copre-cli-pilot-r0.yml): isolated newcomer-oriented task tests, **not** a verified X2 rollout.
+- [CoPre Synth/Bio/G_d qualification](https://github.com/CoCivium/CoCivium/actions/workflows/copre-synth-bio-gd-r1.yml): source-side candidate checks, **not** scientific confirmation or canon.
+
+These are **selected fronts**, not a complete or continuously monitored inventory. A red run must remain visible alongside green runs; later fixes do not erase earlier failures.
+
+## What happened while the user was away?
+
+**Historical separately checked scheduled pulse:** On **2026-11-10 at 13:28 UTC**, the existing [CoGoAll unattended proof pulse](https://github.com/CoCivium/CoCivium/actions/runs/42824746546) completed **three GitHub Actions jobs**. A second job read back the first job's exact receipt and log hashes. That is real, bounded machine-run recovery evidence **inside the same GitHub Actions provider**, without a manual copy-and-paste relay.
+
+**Counter-needles remain visible:** An earlier November 10 24-hour check returned **`HELD_LESS_THAN_24H`**. After the actual interval elapsed, the [November 11 source run](https://github.com/CoCivium/CoCivium/actions/runs/42934800629) returned **`VERIFIED_SOURCE_REFETCH_24H_PLUS_NOT_RUNTIME_SURVIVAL`** for the exact historical pinned CoPre file; the current mainline still diverges from that pin. The downstream receipt explicitly says `external_receiver_ack: false`. X2 runtime, independent-host pickup, human benefit, multi-session sync, 24-hour **runtime** continuity, and exactly-once external effects remain unverified. **Three green jobs do not make seven green continuity gates.**
+
+**Evergreen heartbeat, proposed operating rule:** A heartbeat observes and records currentness; *qualified new evidence* may trigger a bounded reversible task. An unchanged state returns **`NO_MATERIAL_DELTA`** and stops. Missed wakes, stale observations, privacy conflicts, failed signatures or absent receiver readproof stay visible as **HELD**, not automatic retries without a budget. Public release, outreach and authority changes still require their separate gates. See the [CoLatch seven-gate contract](../../ai/colatch-ready-cycle-r0-20261110.json) and the [independent receiver acceptance task](https://github.com/CoCivium/CoCivium/issues/317).
+
+This is a **dated pulse receipt**, not an always-running intelligence, a guarantee of scheduled punctuality, or proof of metaphysical purpose. G_dSide belongs to optional philosophical inquiry, not a machine-health or authority claim.
+
+## What would prove a real improvement?
+
+A useful needle should connect **a real intention → a bounded action → a receipt → an independent receiver → an observed human benefit**. The first few links exist in source-side experiments. The full chain, cost comparison and durable restart recovery are not yet verified.
+
+For details, inspect the [R1 plotted HTML prototype](needle-trails-r1.html), the [measurement contract](../../docs/Architecture/COSPEEDO_EXPONENTIAL_PROOF_AND_RECURRENCE_INTERNALIZATION_R0_20261026.md) and the [browser-QA run](https://github.com/CoCivium/CoCivium/actions/runs/42744256246). GitHub may show the HTML *source*, not a hosted application.
+
+**Next proof:** An independently operated receiver recovers the exact work, an uncoached reader understands the status, and recovery is measured across an actual interruption.
+
+*Source snapshot: 11 November 2026. No automatic refresh, external tracking, background microphone/camera capture, service deployment, or independent receipt is claimed.*

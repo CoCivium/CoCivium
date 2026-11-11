@@ -1,0 +1,110 @@
+{
+  "schema": "cocivium.cogolden_braid.front_continuity.r0",
+  "status": "PUBLIC_DRAFT_CONTRACT_NOT_AUTONOMOUS_RUNTIME",
+  "principle": "Preserve every authorized front as a distinct, recoverable contributor; braid shared evidence without collapsing independence or manufacturing agreement.",
+  "front_identity": {
+    "required": [
+      "front_id",
+      "purpose",
+      "owner_or_authorized_agent",
+      "scope",
+      "head_ref",
+      "head_digest",
+      "visibility",
+      "permissions",
+      "updated_at_utc",
+      "recovery_pointer"
+    ],
+    "rule": "A front may be dormant or HELD without being discarded."
+  },
+  "golden_thread": {
+    "meaning": "Source-bound lineage from Seed through Path, experiment, challenge, receipt, projection and recovery.",
+    "required": [
+      "origin_ref",
+      "parent_refs",
+      "transformation",
+      "evidence_refs",
+      "content_digest",
+      "status",
+      "supersedes",
+      "timestamp_utc"
+    ],
+    "rule": "No ungrounded PASS, orphaned claims, or silent clobber."
+  },
+  "braid": {
+    "edge_types": [
+      "contributes_to",
+      "challenges",
+      "depends_on",
+      "reuses",
+      "translates_to",
+      "supersedes",
+      "contradicts",
+      "recovers",
+      "projects_as",
+      "forks_from",
+      "merges_with"
+    ],
+    "rules": [
+      "All front-to-front links are typed and attributable.",
+      "A merge creates a new versioned artifact with explicit parents; it does not erase source branches.",
+      "Contradictions remain visible until independently adjudicated.",
+      "Permission and consent checks precede cross-front sharing.",
+      "Each front can replay its own history without relying on a single conversational memory.",
+      "Cross-front signals are candidate inputs, not automatic authority."
+    ],
+    "anti_capture": "No one front, including the public-facing Orb, may silently become the only custodian or decision maker."
+  },
+  "fray": {
+    "signals": [
+      "missing_source",
+      "stale_head",
+      "digest_mismatch",
+      "unresolved_conflict",
+      "unacknowledged_handoff",
+      "orphaned_artifact",
+      "privacy_hold",
+      "failed_recovery",
+      "duplicate_actuator",
+      "unverified_public_mirror"
+    ],
+    "behavior": "Expose HOLD/FAILED with cause and next trigger, preserve last known good, and avoid claiming a complete braid."
+  },
+  "continuity": {
+    "one_seed": "One discoverable entry pointer per bounded wave, referencing many immutable sources.",
+    "one_orb": "One coherent user-facing projection with text-first fallback.",
+    "one_gauge": "One evidence-linked composite status, with underlying metrics and blockers exposed.",
+    "one_thumb": "One safe reversible next action or explicit no-action state.",
+    "one_time": "UTC receipt time plus source and observation times.",
+    "durability": ">24h independent readback is an acceptance test, not an observed fact.",
+    "handoff": "Independent consumer must fetch, verify and receipt a front head before ACK."
+  },
+  "wave_diversity": "Vary hypotheses, audiences, scales, substrates and challenge methods; preserve identical replication trials when scientifically useful.",
+  "substrates": [
+    "typed_graph",
+    "rich_media",
+    "text_box_diagram",
+    "audio_opt_in",
+    "timeline",
+    "spatial",
+    "cultural_localization",
+    "accessible_text"
+  ],
+  "related_public_contracts": [
+    "docs/Evolution/COOMNI_FRONT_RELATIONS_R0.json",
+    "docs/Evolution/COMEDIA_SEMANTIC_CONNECTABLES_R0.json",
+    "docs/Evolution/COPRE_DRAFT_READY_CYCLE_R0.json",
+    "docs/Evolution/COHOG_ADVERSARIAL_RECIPROCITY_R0.json",
+    "docs/Evolution/COWET_HUMAN_SURFACE_STANDARD_R0.json"
+  ],
+  "tests": [
+    "Two independent fronts ingest the same verified Seed and preserve distinct IDs.",
+    "A challenge remains visible after merge, with source evidence.",
+    "An orphaned source produces CoFray HOLD rather than false PASS.",
+    "A public Orb node can be traced to an immutable source and its permission.",
+    "An independent process reconstructs the braid after >24h.",
+    "A denied private edge never appears in public projections."
+  ],
+  "next": "Build a machine-checkable braid manifest and a second independent reader that emits receipts; do not claim running cross-session federation until tested.",
+  "proof_boundary": "Publishing this draft does not prove cross-front synchronization, persistent workers, 24-hour survival, independent handoff, public website deployment, or universal source recovery."
+}

@@ -24,6 +24,20 @@ node examples/coprecursor/smoke.cjs
 
 The standalone X2 source ran **30/30 PASS** checks after a prior 27/28 first-wave failure exposed unrecognized \`CoMap\` terminology. A separate headless Edge/Puppeteer run completed **13/13 PASS** UI checks after an 11/12 run caught a default-caret-position defect. The original failed receipts remain in separately named X2 CoFarm wave folders, not overwritten. These are bounded tests, not independent human accessibility acceptance.
 
+## CoOwm+ candidate: mouse-to-narrative ownership and loop reduction
+
+**Status:** PUBLIC DESIGN CANDIDATE ONLY. The spelling and intended expansion of `CoOwm+` remain **UNQUALIFIED**; do not assert it is an installed receiver, a canon term, an owner identity, or an autonomous synchronization service.
+
+**Problem:** Repeated chat re-narration occurs when an explicit user-intended mouse or CoThumb gesture does not produce a durable, permission-scoped narrative binding for a later reader. Existing CoPreCursor is browser-local; it neither watches a physical mouse nor delivers session context.
+
+**One bounded proposed event contract:** `work_id`, `source_ref`, `source_digest` (if exact bytes available), `narrative_summary` (only user-approved text, or an opaque approved reference), `intent`, `actor_and_authority`, `scope_and_privacy`, `typed_relations`, `observed_at`, `valid_time`, `receiver`, `consent_and_revoke`, `recovery_pointer`, `receipt`. If provenance/consent is absent, keep a local draft or `HOLD`, not an implicit capture.
+
+**Interaction:** Deliberate elected gesture → show what may be bound → explicit approval → local versioned event with digest and rollback → authorized receiver retrieves exact object → independently attributable pickup/interpretation receipt → a later session recovers narrative **without** asking the human to restate it. A bare mouse click or duration of hover is not consent, content selection, ownership, or proof of intent. Sensitive applications fail closed; preserve native mouse behavior and visible stop.
+
+**Anti-loop acceptance:** (1) Source narrative and approved scope survive a tab restart; (2) a cold receiver reconstructs purpose, prior decisions, open blockers and a next safe deed from only the approved source pointer; (3) duplicate gesture/replay yields one work identity and no double actuation; (4) changed/revoked consent prevents stale pickup; (5) user re-explanation count and time-to-correct-continuation decrease versus the unassisted baseline. Test independent receiver, durability beyond 24 hours and physical mouse integration separately.
+
+**Existing donors, not substitutes:** [CoThumb/CoCopy local capsule](../../docs/UX/COTHUMB_COCOPY_R1.md), [CoContextRail bounded intent](../conodcothumb/context_rail_r1/README.md), and [CoPre ready-cycle acceptance](../../ai/onramp/copre-ready-cycle-acceptance-r0.json). Do not create a competing registry or declare `PICKED_UP` from this documentation change.
+
 ## Source relationships
 
 - [CoRelationalUX+ / CoPredictiveInput+ architecture](../../docs/Architecture/CORELATIONAL_UX_PREDICTIVE_INPUT_R0.md)

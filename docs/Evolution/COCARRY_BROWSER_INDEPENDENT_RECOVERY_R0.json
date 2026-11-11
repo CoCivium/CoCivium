@@ -1,0 +1,46 @@
+{
+  "schema": "cocivium.cocarry.session-recovery.r0",
+  "scope": "public synthetic contract; not a browser extension or live session inventory",
+  "goal": "Recover work without retaining tabs, model context, or a human courier",
+  "session_record": {
+    "work_id": "example-work-001",
+    "front_ids": ["conav-coregroup", "x2-coorb-ux"],
+    "objective": "Demonstrate a versioned browser-independent work handoff",
+    "state": "sleeping",
+    "evidence_refs": ["https://github.com/CoCivium/CoCivium/blob/main/docs/Evolution/FRONTIER_EVIDENCE_INDEX_R0.json"],
+    "source_commit": null,
+    "last_verified_at": null,
+    "next_trigger": {"kind": "new_verified_evidence", "ref": "example-work-001"},
+    "lease": null,
+    "blocked_claims": ["LIVE_SESSION_RECOVERY", "X2_DEPLOYMENT"],
+    "supersedes": [],
+    "custody": "public-synthetic"
+  },
+  "lifecycle": ["discovered", "qualified", "active", "sleeping", "blocked", "completed", "retired"],
+  "invariants": [
+    "Browser tabs are projections, never the durable work store",
+    "An inaccessible chat cannot be represented as recovered",
+    "Discovery must distinguish candidates from independently verified work",
+    "Close-tab must not delete a durable work record",
+    "Every unfinished record retains a trigger or explicit blocker",
+    "Only one fenced writer may commit a conflicting work revision",
+    "Cross-session acknowledgment requires observed receipt, not quoted conversation",
+    "A public manifest must never contain credentials, private mail bodies or chat transcripts without publication authorization",
+    "Content hashes and source URLs identify versions; stale snapshots do not supersede newer evidence"
+  ],
+  "migration_gates": [
+    "Enumerate authorized existing work artifacts without assuming access to every chat",
+    "Deduplicate by stable work identity and evidence lineage, not by title similarity",
+    "Capture unfinished work, blocked claims and next triggers before closing a session",
+    "Read back the persisted record from an independent process",
+    "Reopen work in Firefox or another browser without manual context paste",
+    "Verify the same work ID, receipt lineage and latest accepted version",
+    "Simulate browser crash and worker restart, then verify recovery"
+  ],
+  "browser_policy": {
+    "firefox": "eligible viewing surface; no special authority",
+    "edge": "eligible viewing surface; removal of tab is not a work deletion",
+    "future_cobrowser": "optional implementation; must pass same recovery gates"
+  },
+  "next_qualification": "Implement private work inventory and independent reopen test against actual X2 surfaces"
+}

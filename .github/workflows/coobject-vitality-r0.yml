@@ -2,6 +2,7 @@ name: CoObject Vitality Metabolism R0
 
 permissions:
   contents: read
+  actions: read
 
 on:
   pull_request:
@@ -10,6 +11,14 @@ on:
       - "ai/vitality/**"
       - "scripts/CoObjectVitalityR0.py"
       - "tests/test_coobject_vitality_admission_r0a.py"
+      - "scripts/CoObjectAgencyBridgeR0.py"
+      - "tests/test_coobject_agency_bridge_r0.py"
+      - "scripts/CoObjectAgencyTaskR0.py"
+      - "tests/test_coobject_agency_task_r0.py"
+      - "scripts/CoNarrativeWorkIDR0.py"
+      - "tests/test_conarrative_workid_r0.py"
+      - "docs/Architecture/COOBJECT_AGENTIC_CAPABILITY_CIV3_R0_20261109.md"
+      - "docs/Evolution/COACKREWISE_COOBJECT_CIV3_FRONTIER_R0_20261109.md"
       - ".github/workflows/coobject-vitality-r0.yml"
   push:
     paths:
@@ -17,10 +26,156 @@ on:
       - "ai/vitality/**"
       - "scripts/CoObjectVitalityR0.py"
       - "tests/test_coobject_vitality_admission_r0a.py"
+      - "scripts/CoObjectAgencyBridgeR0.py"
+      - "tests/test_coobject_agency_bridge_r0.py"
+      - "scripts/CoObjectAgencyTaskR0.py"
+      - "tests/test_coobject_agency_task_r0.py"
+      - "scripts/CoNarrativeWorkIDR0.py"
+      - "tests/test_conarrative_workid_r0.py"
+      - "docs/Architecture/COOBJECT_AGENTIC_CAPABILITY_CIV3_R0_20261109.md"
+      - "docs/Evolution/COACKREWISE_COOBJECT_CIV3_FRONTIER_R0_20261109.md"
       - ".github/workflows/coobject-vitality-r0.yml"
 
 jobs:
   vitality:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run bounded vitality canary
+        run: |
+          python -B scripts/CoObjectVitalityR0.py             --fixture ai/vitality/coobject-vitality-fixture-r0.json             --policy ai/vitality/coobject-vitality-policy-r0.json
+      - name: Bind one real checked-in policy to a hypothetical safe work proposal
+        run: |
+          python - <<'PY'
+          import datetime, hashlib, json
+          from pathlib import Path
+          from scripts.CoObjectAgencyBridgeR0 import plan
+          source = Path("ai/vitality/coobject-vitality-policy-r0.json")
+          digest = hashlib.sha256(source.read_bytes()).hexdigest()
+          now = datetime.datetime.now(datetime.timezone.utc).isoformat()
+          obj = {"object_id": "coobject-vitality-policy", "relative_path": str(source),
+                 "expected_sha256": digest, "lifecycle_state": "ACTIVE_WORKING",
+                 "known_debt": ["independent review pending"], "wake_predicates": []}
+          event = {"object_id": obj["object_id"], "kind": "MATERIAL_REVISION",
+                   "observed_at": now, "observed_sha256": digest, "wake_key": None}
+          receipt = plan(".", {"schema": "CoObject.AgencyBridge.R0",
+                               "objects": [obj]}, [event], as_of=now)
+          observed = receipt["objects"][0]
+          assert observed["proposal"] == "REQUEST_SCHEMA_AND_RIGHTS_REVIEW"
+          assert observed["source_sha256"] == digest
+          assert receipt["workers_spawned"] == 0
+          assert not receipt["actual_receiver_pickup"]
+          print(json.dumps({"source": str(source), "sha256": digest,
+                            "proposal": observed["proposal"],
+                            "proof_state": observed["lifecycle_state"],
+                            "event_class": "SYNTHETIC_PRODUCER_ASSERTED_NOT_AUTHENTICATED",
+                            "receipt_sha256": receipt["receipt_sha256"],
+                            "workers_spawned": 0, "receiver_ack": False},
+                           sort_keys=True))
+          PY
+      - name: Exercise source-to-proposal bridge across unlike files and failure cases
+        run: python -B -m unittest discover -s tests -p 'test_coobject_agency_bridge_r0.py' -v
+
+  object-task:
+    name: object-task
+    needs: vitality
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Exercise trusted local worker denial and replay tests
+        run: python -B -m unittest discover -s tests -p 'test_coobject_agency_task_r0.py' -v
+      - name: Produce one actual read-only policy validation receipt
+        run: |
+          python -B scripts/CoObjectAgencyTaskR0.py produce \
+            --root . --receipt out/coobject/task-receipt.json
+      - name: Preserve exact run/attempt WorkID receipt for a distinct CI job
+        uses: actions/upload-artifact@v4
+        with:
+          name: coobject-one-task-${{ github.run_id }}-a${{ github.run_attempt }}
+          path: out/coobject/task-receipt.json
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Test one WorkID after repeated synthetic CoLatch events
+        run: python -B -m unittest discover -s tests -p 'test_conarrative_workid_r0.py' -v
+      - name: Commit exactly one synthetic Narrative-to-WorkID SQLite record
+        run: |
+          python -B scripts/CoNarrativeWorkIDR0.py produce \
+            --db out/conarrative/work.sqlite \
+            --source CoPre.md --source-commit "$GITHUB_SHA" \
+            --report out/conarrative/producer.json
+      - name: Hand off synthetic WorkID for a cold, separate-job reader
+        uses: actions/upload-artifact@v4
+        with:
+          name: conarrative-workid-${{ github.run_id }}-a${{ github.run_attempt }}
+          path: |
+            out/conarrative/work.sqlite
+            out/conarrative/producer.json
+          if-no-files-found: error
+          retention-days: 30
+
+  object-source-reader:
+    name: object-source-reader
+    needs: object-task
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Read run-specific artifact produced by separate worker job
+        uses: actions/download-artifact@v4
+        with:
+          name: coobject-one-task-${{ github.run_id }}-a${{ github.run_attempt }}
+          path: out/coobject/source
+      - name: Independently recompute the pinned policy validator result
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B scripts/CoObjectAgencyTaskR0.py readback \
+            --root . --receipt out/coobject/source/task-receipt.json \
+            | tee out/coobject/readback.log
+      - name: Preserve separate source-job readback result
+        uses: actions/upload-artifact@v4
+        with:
+          name: coobject-one-reader-${{ github.run_id }}-a${{ github.run_attempt }}
+          path: out/coobject/readback.log
+          if-no-files-found: error
+          retention-days: 30
+      - name: Receive synthetic WorkID from the independent CI job
+        uses: actions/download-artifact@v4
+        with:
+          name: conarrative-workid-${{ github.run_id }}-a${{ github.run_attempt }}
+          path: out/conarrative/received
+      - name: Cold verify source, WorkID, narrative, receipt and suppressed duplicates
+        run: |
+          python -B scripts/CoNarrativeWorkIDR0.py verify \
+            --db out/conarrative/received/work.sqlite \
+            --source CoPre.md --source-commit "$GITHUB_SHA" \
+            --report out/conarrative/reader.json
+      - name: Preserve receiver readback as an independent artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: conarrative-reader-${{ github.run_id }}-a${{ github.run_attempt }}
+          path: out/conarrative/reader.json
+          if-no-files-found: error
+          retention-days: 30
+
+  vitality-admission:
+    name: vitality-admission (${{ matrix.python-version }})
     runs-on: ubuntu-latest
     timeout-minutes: 5
     strategy:
@@ -29,11 +184,12 @@ jobs:
         python-version: ["3.11", "3.13"]
     steps:
       - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
       - uses: actions/setup-python@v5
         with:
           python-version: "${{ matrix.python-version }}"
-      - name: Run bounded vitality canary
+      - name: Exercise original and negative synthetic vitality gates
         run: |
           python -B scripts/CoObjectVitalityR0.py --fixture ai/vitality/coobject-vitality-fixture-r0.json --policy ai/vitality/coobject-vitality-policy-r0.json
-      - name: Run active evidence admission regressions
-        run: python -B -m unittest discover -s tests -p test_coobject_vitality_admission_r0a.py -v
+          python -B -m unittest discover -s tests -p 'test_coobject_vitality_admission_r0a.py' -v

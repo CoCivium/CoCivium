@@ -101,5 +101,39 @@ class CoFleetCurrentnessR4BTests(unittest.TestCase):
         self.assertEqual(p["observer"], "CoFleetProjectionCompiler.R4B.v0.1")
 
 
+    def test_distinct_work_same_count_has_distinct_projection_id(self):
+        one = project(ledger={"sessions": [{"session_id": "work-A", "projection": "ACTIVE"}]})
+        two = project(ledger={"sessions": [{"session_id": "work-B", "projection": "ACTIVE"}]})
+        self.assertNotEqual(one["projection_id"], two["projection_id"])
+        self.assertEqual(one["virtual_sessions"]["count"], two["virtual_sessions"]["count"])
+
+    def test_runtime_evidence_change_alters_projection_id(self):
+        one = project(runtime={"currentness": {"state": "STALE", "age_seconds": 3600}})
+        two = project(runtime={"currentness": {"state": "DEGRADED", "age_seconds": 3600}})
+        self.assertNotEqual(one["projection_id"], two["projection_id"])
+
+    def test_identical_input_snapshot_replays_same_projection_id(self):
+        input_ledger = {"sessions": [{"session_id": "same", "projection": "WORKING"}]}
+        self.assertEqual(project(ledger=input_ledger)["projection_id"],
+                         project(ledger=input_ledger)["projection_id"])
+
+    def test_unaged_healthy_label_cannot_certify_currentness(self):
+        p = project(ledger={"sessions": [{"session_id": "A", "projection": "ACTIVE"}]},
+                    runtime={"currentness": {"state": "HEALTHY"}})
+        self.assertEqual(p["currentness"]["state"], "UNKNOWN")
+        self.assertEqual(p["pressure"]["headline"], "UNKNOWN")
+
+    def test_boolean_negative_string_and_infinite_age_not_healthy(self):
+        for invalid in (True, -1, "0", float("inf"), float("nan")):
+            with self.subTest(invalid=invalid):
+                p = project(runtime={"currentness": {"state": "HEALTHY",
+                                                      "age_seconds": invalid}})
+                self.assertEqual(p["currentness"]["state"], "UNKNOWN")
+
+    def test_source_only_active_session_is_not_health_evidence(self):
+        p = project(ledger={"sessions": [{"session_id": "A", "projection": "ACTIVE"}]})
+        self.assertEqual(p["pressure"]["headline"], "UNKNOWN")
+        self.assertEqual(p["coverage"]["global_fleet_census"], "UNPROVEN")
+
 if __name__ == "__main__":
     unittest.main()

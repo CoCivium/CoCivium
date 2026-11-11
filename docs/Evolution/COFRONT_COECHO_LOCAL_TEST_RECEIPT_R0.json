@@ -1,0 +1,32 @@
+{
+  "schema": "cocivium.cofront.coecho.test-receipt.r0",
+  "execution": "local isolated Python 3 unittest; not GitHub Actions; not X2",
+  "source": "cofront_echo.py (93 lines; locally created)",
+  "source_sha256": "35f64d55bd24cea92d172c9ce3bab0418eb7f8fbbd9d43cd6923139fab1be9bf",
+  "source_custody": "local execution environment; source not yet published to repository",
+  "tests_run": 9,
+  "tests_passed": 9,
+  "tests_failed": 0,
+  "cases": [
+    "duplicate_replay",
+    "changed_digest_and_supersession",
+    "out_of_order_observation",
+    "private_projection",
+    "crash_resume",
+    "orphan_dependency",
+    "retraction_preserves_history",
+    "false_pass",
+    "independent_public_restore"
+  ],
+  "limitations": [
+    "synthetic in-memory records",
+    "no file-system crash simulation",
+    "no external reader",
+    "no private source ingestion",
+    "no historical backfill",
+    "no cross-session receiver",
+    "no 24h survival test",
+    "no live browser or X2 test"
+  ],
+  "next_gate": "publish byte-identical tested source, run repository CI, then ingest authorized historical source with independent readback"
+}

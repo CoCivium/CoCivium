@@ -1,0 +1,117 @@
+{
+  "schema": "CoAll.CoSeedCoPathReadbackReceipt.R0",
+  "source_graph": {
+    "path": "ai/copre-seed-path-fabric-r0-20261109.json",
+    "git_blob_sha": "859f15f5736333b43074866d6a72a4b6857be962"
+  },
+  "scope": "Bounded public GitHub paths referenced by graph; no independent-provider, runtime or user-facing website readproof",
+  "checks": {
+    "nodes_declared": 15,
+    "source_paths_retrieved": 15,
+    "source_paths_failed": 0,
+    "unknown_target_relations": 0
+  },
+  "paths": [
+    {
+      "node_id": "copre-entry",
+      "path": "CoPre.md",
+      "git_blob_sha": "4638468cd874fa7d9b1e7dee133343657201a6dc",
+      "status": "RETRIEVED_BY_GITHUB_CONNECTOR"
+    },
+    {
+      "node_id": "bootstrap",
+      "path": "SESSION_BOOTSTRAP.md",
+      "git_blob_sha": "ddaf326239c6cbc92dafb9c9be7b03bbe2e6361a",
+      "status": "RETRIEVED_BY_GITHUB_CONNECTOR"
+    },
+    {
+      "node_id": "ai-index",
+      "path": "ai/index.json",
+      "git_blob_sha": "f9e3f035f4d65c88d3c9c0f5e07486e58a656df1",
+      "status": "RETRIEVED_BY_GITHUB_CONNECTOR"
+    },
+    {
+      "node_id": "copre-package",
+      "path": "docs/CoPreGeneric/Shareable_R0_20261109/manifest.json",
+      "git_blob_sha": "d559ca86e5a918552d0b2eaadb6e556630f65958",
+      "status": "RETRIEVED_BY_GITHUB_CONNECTOR"
+    },
+    {
+      "node_id": "copre-draft",
+      "path": "docs/CoPreGeneric/Shareable_R0_20261109/CoPreGeneric-v1.0-DRAFT.md",
+      "git_blob_sha": "8ce4e8d81ca78209a083fd92d034da3676eaed7c",
+      "status": "RETRIEVED_BY_GITHUB_CONNECTOR"
+    },
+    {
+      "node_id": "ack-rewise",
+      "path": "docs/CoPreGeneric/Shareable_R0_20261109/CoAckRewise-v8.74.md",
+      "git_blob_sha": "7f449f9502649dd21dbe952aa4c51be0ba20b195",
+      "status": "RETRIEVED_BY_GITHUB_CONNECTOR"
+    },
+    {
+      "node_id": "feedloop",
+      "path": "docs/CoPreGeneric/Shareable_R0_20261109/CoFeedLoop-Devs.md",
+      "git_blob_sha": "80a4300f9027623291b85bc261c920fab4d628e4",
+      "status": "RETRIEVED_BY_GITHUB_CONNECTOR"
+    },
+    {
+      "node_id": "mindspace",
+      "path": "docs/CoPreGeneric/Shareable_R0_20261109/CoMindspace-Map.md",
+      "git_blob_sha": "72ffaeac16e408a4eaf3b637ea8b7d0320697ee0",
+      "status": "RETRIEVED_BY_GITHUB_CONNECTOR"
+    },
+    {
+      "node_id": "dual-projection",
+      "path": "docs/Architecture/COPREGENERIC_DUAL_PROJECTION_R0_20261109.md",
+      "git_blob_sha": "90a2b8e487d5a4c885abb880495446dd451a387b",
+      "status": "RETRIEVED_BY_GITHUB_CONNECTOR"
+    },
+    {
+      "node_id": "retro-coverage",
+      "path": "ai/retro-echo-coverage-r0-20261109.json",
+      "git_blob_sha": "332d8046cdaef1522ae4510d3a00f515fae04b7a",
+      "status": "RETRIEVED_BY_GITHUB_CONNECTOR"
+    },
+    {
+      "node_id": "retro-protocol",
+      "path": "docs/Architecture/COFRONT_RETRO_ECHO_NO_ORPHANS_R0_20261109.md",
+      "git_blob_sha": "9323c3a7df3e25cb193be1eba64f48963f4be423",
+      "status": "RETRIEVED_BY_GITHUB_CONNECTOR"
+    },
+    {
+      "node_id": "front-registry",
+      "path": "ai/front-registry.json",
+      "git_blob_sha": "a780f2a3eec21bf3a9c2e97b6a7674e15527ca41",
+      "status": "RETRIEVED_BY_GITHUB_CONNECTOR"
+    },
+    {
+      "node_id": "highlights",
+      "path": "ai/highlight-assets.json",
+      "git_blob_sha": "a6cf0422a2fbf82852de3619a47ea8b8ec3c45de",
+      "status": "RETRIEVED_BY_GITHUB_CONNECTOR"
+    },
+    {
+      "node_id": "mouse-targets",
+      "path": "ai/copre-canonical-routing-r0-20261109.json",
+      "git_blob_sha": "587562aaf4e5be9814e5c07080135c31c9b16939",
+      "status": "RETRIEVED_BY_GITHUB_CONNECTOR"
+    },
+    {
+      "node_id": "seed-path-fabric",
+      "path": "ai/copre-seed-path-fabric-r0-20261109.json",
+      "git_blob_sha": "859f15f5736333b43074866d6a72a4b6857be962",
+      "status": "RETRIEVED_BY_GITHUB_CONNECTOR"
+    }
+  ],
+  "unknown_target_relations": [],
+  "conclusion": "PUBLIC_GITHUB_GRAPH_RETRIEVAL_PASS_ONLY",
+  "next_elected_proof": "Independent authorized non-GitHub receiver fetches CoPre entry and one exact graph-linked document, returns digest+scope+understanding receipt",
+  "nonclaims": [
+    "NO_GLOBAL_COVERAGE",
+    "NO_AUTOMATED_CROSS_FRONT_CONSUMPTION",
+    "NO_INDEPENDENT_RECEIVER_ACK",
+    "NO_COEX_OR_CANON",
+    "NO_SITE_MIRROR_PROOF",
+    "NO_PRIVATE_SOURCE_PROMOTION"
+  ]
+}

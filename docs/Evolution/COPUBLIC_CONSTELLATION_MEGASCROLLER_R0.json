@@ -1,0 +1,37 @@
+{
+  "schema": "cocivium.public-constellation.r0",
+  "status": "design_contract_only",
+  "purpose": "Portable, verifiable, multi-surface public atlas with independent recovery",
+  "source_of_truth": "versioned evidence records and signed or hash-checked manifests, not website HTML",
+  "surfaces": [
+    {"kind":"public_megascroller","role":"navigable, accessible atlas; progressive loading and deep links"},
+    {"kind":"git_repository","role":"source, history, reproducible builds and provenance"},
+    {"kind":"independent_static_mirror","role":"serve same verified release without primary site"},
+    {"kind":"local_archive","role":"offline browse and restore, subject to authorization"},
+    {"kind":"headless_reader","role":"machine-readable manifests, nodes and edges"}
+  ],
+  "fragment_contract": ["stable_id","release_id","content_sha256","media_type","source_refs","relation_refs","custody_scope","license","supersedes","fallback_uri"],
+  "release_manifest": ["release_id","created_at_utc","source_commit","root_digest","artifact_digests","renderer_version","verification_instructions"],
+  "navigation": ["deep_link","nested_map","search","time_travel","compare","filter","keyboard_access","reduced_motion","offline_fallback"],
+  "replication_rules": [
+    "Replicas must be independently retrievable and hash checked",
+    "Copies on one provider or credential boundary do not count as independent failure domains",
+    "Public fragments may link to restricted nodes but must not reveal their content or identifiers",
+    "A fragment carries enough context to find its parent, evidence and fallback without embedding the entire graph",
+    "Rendering failures degrade to plain text and source links",
+    "Replicas report lag and mismatched release IDs explicitly",
+    "Backups require demonstrated restore, not just successful upload",
+    "No automatic publication of private emails, chats, or media without authorization"
+  ],
+  "acceptance_gates": [
+    "Generate one deterministic release from a public evidence graph",
+    "Verify identical manifest digests at two independently hosted endpoints",
+    "Open one nested diagram and follow its source evidence",
+    "Disable primary site and browse the mirror",
+    "Restore a previous release from offline archive",
+    "Detect stale or tampered replica and refuse silent promotion",
+    "Pass accessible keyboard-only and low-bandwidth navigation"
+  ],
+  "next_executable": "Build static, content-addressed atlas from existing public frontier index; test deterministic output before hosting",
+  "limitations": "No website deployment, mirror, backup or restore is claimed by this contract"
+}

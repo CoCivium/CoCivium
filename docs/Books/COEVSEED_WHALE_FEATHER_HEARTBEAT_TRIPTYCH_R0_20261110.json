@@ -1,0 +1,85 @@
+{
+  "schema": "CoCivium.CoEvSeed.StoryMediaTriptych.R0-candidate",
+  "state": "PUBLIC_SAFE_CREATIVE_DRAFT_NOT_CANON_OR_RUNTIME",
+  "date_utc": "2026-11-10",
+  "source": "User-supplied three-scene text: whale / first feather / sticky-channel heartbeat, 2026-11-10T00:56:46Z",
+  "relation": {
+    "book": "docs/Books/README.md",
+    "living_media": "docs/Architecture/COBOOK_LIVING_RICH_MEDIA_SYSTEM_R0_20261025.md",
+    "colatch": "ai/colatch-ready-cycle-r0-20261110.json",
+    "media_registry": "ai/coevo-media-seeds-r0-20261109.json"
+  },
+  "seeds": [
+    {
+      "id": "coevseed.whale.be-versus-do.r0",
+      "working_title": "The Whale Question",
+      "core_question": "Why do you do, when you could simply be?",
+      "narrative": "A fictional whale asks technologically active visitors what their endless doing is for, rather than requesting tools or rescue.",
+      "use": [
+        "CoBook scene",
+        "CoWhale perspective counterpoint",
+        "dialogue / animated short"
+      ],
+      "counterpoint": "Do not generalize that real whales lack intentions, problem-solving or agency; this is a literary perspective.",
+      "visual": "Underwater encounter with suspended movement and a luminous visitor; emphasize mutual regard rather than extraction."
+    },
+    {
+      "id": "coevseed.feather.first-play.r0",
+      "working_title": "The First Feather",
+      "core_question": "Can meaningful connection begin before instruction?",
+      "narrative": "An adult and infant encounter each other through eye contact and play, not hierarchy or a lesson.",
+      "use": [
+        "CoBook image/scene",
+        "CoPlay onboarding",
+        "parent-child relational design"
+      ],
+      "safety": "Respect guardian consent and child privacy. No claim of reading minds or guaranteed interpretation.",
+      "visual": "A delicate feather motif connecting two points of view; no identifiable child without permission."
+    },
+    {
+      "id": "coevseed.heartbeat.channel-intro.r0",
+      "working_title": "The Sticky Channel",
+      "core_question": "How might a brief threshold cue signal attention without demanding prolonged listening?",
+      "narrative": "A brief symbolic heartbeat-like motif introduces a channel, fades away, and yields to the content.",
+      "use": [
+        "CoBook sound storyboard",
+        "CoSong intro research",
+        "ambient channel UX"
+      ],
+      "rules": [
+        "DEFAULT_SILENT",
+        "Only begin audio following deliberate user action; scrolling alone never activates sound",
+        "If explicitly started, fade the intro promptly; cap any optional intro at 120 seconds, not a fixed required runtime",
+        "Offer skip, immediate mute, permanently quiet preference, captions, and volume control",
+        "Avoid claiming literal divine heartbeat or physiological effect",
+        "Avoid unnecessary prolonged/repetitive low-frequency audio, especially with sensory-sensitive users"
+      ],
+      "visual": "A gentle pulse of light decaying into a wider constellation of voices and images."
+    }
+  ],
+  "cross_relations": [
+    {
+      "from": "coevseed.whale.be-versus-do.r0",
+      "to": "coevseed.feather.first-play.r0",
+      "why": "Being and relationship may precede productivity"
+    },
+    {
+      "from": "coevseed.feather.first-play.r0",
+      "to": "coevseed.heartbeat.channel-intro.r0",
+      "why": "Attention and connection through a brief sensory invitation"
+    },
+    {
+      "from": "coevseed.heartbeat.channel-intro.r0",
+      "to": "coevseed.whale.be-versus-do.r0",
+      "why": "A cue that leads into experience instead of becoming the entire experience"
+    }
+  ],
+  "nonclaims": [
+    "FICTION_NOT_WHALE_SCIENCE",
+    "SYMBOLIC_SPIRITUAL_NOT_DIVINE_AUTHORITY",
+    "AUDIO_NOT_IMPLEMENTED",
+    "NO_CHILD_OBSERVATION_OR_PRIVATE_MEDIA_USED",
+    "NO_BOOK_CHAPTER_PUBLISHED"
+  ],
+  "next_proof": "Create one original scene storyboard and one explicitly opt-in audio prototype, then evaluate with humans without pretending imagery proves a working channel."
+}

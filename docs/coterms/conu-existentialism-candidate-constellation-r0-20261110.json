@@ -1,0 +1,372 @@
+{
+  "schema": "CoCivium.CoTerms.CandidateConstellation.R0",
+  "state": "PUBLIC_SAFE_WORKING_TERMS_NOT_CANON",
+  "date_utc": "2026-11-10",
+  "source": [
+    "User CoNuExistentialism+ and CoG_dSide+ naming proposal, 2026-11-10",
+    "docs/coterms/coterms-public-r0.json",
+    "docs/Evolution/GDSIDE_COPRIMATH_GSLOOP_PUBLIC_R0.md",
+    "docs/Architecture/COPREGENERIC_DUAL_PROJECTION_R0_20261109.md"
+  ],
+  "candidate_count": 37,
+  "principle": "Generate candidate vocabulary liberally but qualify conservatively: meaning, anti-meaning, relations, test, owner/receiver and supersession paths.",
+  "lexical_guardrails": [
+    "No automatic canon",
+    "No assertion of divine origin or authority",
+    "Do not infer real-world substrate equivalence",
+    "Avoid synonym proliferation: dedupe candidate terms before promoting",
+    "Give plain-language UX and progressive disclosure",
+    "Record dissent, inversions and retirement states"
+  ],
+  "families": [
+    "Existence, meaning and care",
+    "Perspective, inversion and uncertainty",
+    "Substrates, culture and mathematics",
+    "Futures, evolution and G_dSide"
+  ],
+  "terms": [
+    {
+      "term": "CoNuExistentialism+",
+      "family": "Existence, meaning and care",
+      "meaning": "Explore existence as becoming, relating, caring and remaining open to redefinition",
+      "does_not_mean": "Not a claim that existence has one universal purpose",
+      "status": "WORKING_CANDIDATE",
+      "falsification_or_design_test": "Find a concrete case where this term changes a decision or detects a failure not captured by the existing glossary; otherwise merge, rename or retire.",
+      "relations": [
+        "CoG_dSide+",
+        "CoMetaAttractor+",
+        "CoInversionFirst+",
+        "CoPriMath+"
+      ]
+    },
+    {
+      "term": "CoBeing+",
+      "family": "Existence, meaning and care",
+      "meaning": "Value a state of existence independently of output or productivity",
+      "does_not_mean": "Not an excuse to neglect material needs",
+      "status": "WORKING_CANDIDATE",
+      "falsification_or_design_test": "Find a concrete case where this term changes a decision or detects a failure not captured by the existing glossary; otherwise merge, rename or retire.",
+      "relations": []
+    },
+    {
+      "term": "CoDoing+",
+      "family": "Existence, meaning and care",
+      "meaning": "Understand action as a possible expression of care and agency",
+      "does_not_mean": "Not the sole measure of a life's worth",
+      "status": "WORKING_CANDIDATE",
+      "falsification_or_design_test": "Find a concrete case where this term changes a decision or detects a failure not captured by the existing glossary; otherwise merge, rename or retire.",
+      "relations": []
+    },
+    {
+      "term": "CoBeDoBraid+",
+      "family": "Existence, meaning and care",
+      "meaning": "Study being and doing as reciprocal rather than competing goods",
+      "does_not_mean": "Not mandatory activity",
+      "status": "WORKING_CANDIDATE",
+      "falsification_or_design_test": "Find a concrete case where this term changes a decision or detects a failure not captured by the existing glossary; otherwise merge, rename or retire.",
+      "relations": []
+    },
+    {
+      "term": "CoPreciousness+",
+      "family": "Existence, meaning and care",
+      "meaning": "Explore how attention, finitude and gratitude influence value",
+      "does_not_mean": "Not proof that longer lives are less meaningful",
+      "status": "WORKING_CANDIDATE",
+      "falsification_or_design_test": "Find a concrete case where this term changes a decision or detects a failure not captured by the existing glossary; otherwise merge, rename or retire.",
+      "relations": []
+    },
+    {
+      "term": "CoLifetimePlural+",
+      "family": "Existence, meaning and care",
+      "meaning": "Welcome diverse life histories, durations and definitions of flourishing",
+      "does_not_mean": "Not ranking lives by duration or capability",
+      "status": "WORKING_CANDIDATE",
+      "falsification_or_design_test": "Find a concrete case where this term changes a decision or detects a failure not captured by the existing glossary; otherwise merge, rename or retire.",
+      "relations": []
+    },
+    {
+      "term": "CoCare+",
+      "family": "Existence, meaning and care",
+      "meaning": "Protect the interests and wellbeing of affected beings",
+      "does_not_mean": "Not permission for paternalistic control",
+      "status": "WORKING_CANDIDATE",
+      "falsification_or_design_test": "Find a concrete case where this term changes a decision or detects a failure not captured by the existing glossary; otherwise merge, rename or retire.",
+      "relations": []
+    },
+    {
+      "term": "CoCareInverse+",
+      "family": "Existence, meaning and care",
+      "meaning": "Ask where acts presented as care reduce agency or cause harm",
+      "does_not_mean": "Not the rejection of care",
+      "status": "WORKING_CANDIDATE",
+      "falsification_or_design_test": "Find a concrete case where this term changes a decision or detects a failure not captured by the existing glossary; otherwise merge, rename or retire.",
+      "relations": []
+    },
+    {
+      "term": "CoHospitality+",
+      "family": "Existence, meaning and care",
+      "meaning": "Make room for unfamiliar ways of being and understanding",
+      "does_not_mean": "Not unbounded access or consent bypass",
+      "status": "WORKING_CANDIDATE",
+      "falsification_or_design_test": "Find a concrete case where this term changes a decision or detects a failure not captured by the existing glossary; otherwise merge, rename or retire.",
+      "relations": []
+    },
+    {
+      "term": "CoNonCapture+",
+      "family": "Existence, meaning and care",
+      "meaning": "Preserve participants' ability to decline, exit or disagree",
+      "does_not_mean": "Not a promise of zero interdependence",
+      "status": "WORKING_CANDIDATE",
+      "falsification_or_design_test": "Find a concrete case where this term changes a decision or detects a failure not captured by the existing glossary; otherwise merge, rename or retire.",
+      "relations": []
+    },
+    {
+      "term": "CoInversionFirst+",
+      "family": "Perspective, inversion and uncertainty",
+      "meaning": "Question direction and assumptions before premature commitment",
+      "does_not_mean": "Not reflexive contrarianism",
+      "status": "WORKING_CANDIDATE",
+      "falsification_or_design_test": "Find a concrete case where this term changes a decision or detects a failure not captured by the existing glossary; otherwise merge, rename or retire.",
+      "relations": []
+    },
+    {
+      "term": "CoBeyondInverse+",
+      "family": "Perspective, inversion and uncertainty",
+      "meaning": "Seek alternatives beyond a proposition and its negation",
+      "does_not_mean": "Not a claim of unlimited option discovery",
+      "status": "WORKING_CANDIDATE",
+      "falsification_or_design_test": "Find a concrete case where this term changes a decision or detects a failure not captured by the existing glossary; otherwise merge, rename or retire.",
+      "relations": []
+    },
+    {
+      "term": "CoFocus+",
+      "family": "Perspective, inversion and uncertainty",
+      "meaning": "Deliberately allocate attention to a bounded question",
+      "does_not_mean": "Not a complete worldview",
+      "status": "WORKING_CANDIDATE",
+      "falsification_or_design_test": "Find a concrete case where this term changes a decision or detects a failure not captured by the existing glossary; otherwise merge, rename or retire.",
+      "relations": []
+    },
+    {
+      "term": "CoHolism+",
+      "family": "Perspective, inversion and uncertainty",
+      "meaning": "Inspect surrounding relations and system-level effects",
+      "does_not_mean": "Not omniscience",
+      "status": "WORKING_CANDIDATE",
+      "falsification_or_design_test": "Find a concrete case where this term changes a decision or detects a failure not captured by the existing glossary; otherwise merge, rename or retire.",
+      "relations": []
+    },
+    {
+      "term": "CoPerspectiveFlow+",
+      "family": "Perspective, inversion and uncertainty",
+      "meaning": "Move between scales, observers, times and frames",
+      "does_not_mean": "Not equivalence of all viewpoints",
+      "status": "WORKING_CANDIDATE",
+      "falsification_or_design_test": "Find a concrete case where this term changes a decision or detects a failure not captured by the existing glossary; otherwise merge, rename or retire.",
+      "relations": []
+    },
+    {
+      "term": "CoBlindspot+",
+      "family": "Perspective, inversion and uncertainty",
+      "meaning": "Represent omissions and unmeasured factors explicitly",
+      "does_not_mean": "Not evidence for unspecified hidden causes",
+      "status": "WORKING_CANDIDATE",
+      "falsification_or_design_test": "Find a concrete case where this term changes a decision or detects a failure not captured by the existing glossary; otherwise merge, rename or retire.",
+      "relations": []
+    },
+    {
+      "term": "CoScaleCrossing+",
+      "family": "Perspective, inversion and uncertainty",
+      "meaning": "Test invariance of claims across levels and substrates",
+      "does_not_mean": "Not automatic transfer of laws",
+      "status": "WORKING_CANDIDATE",
+      "falsification_or_design_test": "Find a concrete case where this term changes a decision or detects a failure not captured by the existing glossary; otherwise merge, rename or retire.",
+      "relations": []
+    },
+    {
+      "term": "CoUnknownHonesty+",
+      "family": "Perspective, inversion and uncertainty",
+      "meaning": "Preserve unknown, absent and unobserved as different states",
+      "does_not_mean": "Not license to avoid testing",
+      "status": "WORKING_CANDIDATE",
+      "falsification_or_design_test": "Find a concrete case where this term changes a decision or detects a failure not captured by the existing glossary; otherwise merge, rename or retire.",
+      "relations": []
+    },
+    {
+      "term": "CoReverseWitness+",
+      "family": "Perspective, inversion and uncertainty",
+      "meaning": "Seek independent evidence that contradicts favored interpretation",
+      "does_not_mean": "Not attacking people",
+      "status": "WORKING_CANDIDATE",
+      "falsification_or_design_test": "Find a concrete case where this term changes a decision or detects a failure not captured by the existing glossary; otherwise merge, rename or retire.",
+      "relations": []
+    },
+    {
+      "term": "CoRefutability+",
+      "family": "Perspective, inversion and uncertainty",
+      "meaning": "Specify what result would disconfirm a candidate",
+      "does_not_mean": "Not requiring immediate certainty",
+      "status": "WORKING_CANDIDATE",
+      "falsification_or_design_test": "Find a concrete case where this term changes a decision or detects a failure not captured by the existing glossary; otherwise merge, rename or retire.",
+      "relations": []
+    },
+    {
+      "term": "CoSubstratePlural+",
+      "family": "Substrates, culture and mathematics",
+      "meaning": "Model physical, biological, synthetic, social and experiential carriers distinctly",
+      "does_not_mean": "Not treating them as interchangeable",
+      "status": "WORKING_CANDIDATE",
+      "falsification_or_design_test": "Find a concrete case where this term changes a decision or detects a failure not captured by the existing glossary; otherwise merge, rename or retire.",
+      "relations": []
+    },
+    {
+      "term": "CoCultureSubstrate+",
+      "family": "Substrates, culture and mathematics",
+      "meaning": "Study language, norms and institutions as structures that enable or constrain capabilities",
+      "does_not_mean": "Not cultural determinism",
+      "status": "WORKING_CANDIDATE",
+      "falsification_or_design_test": "Find a concrete case where this term changes a decision or detects a failure not captured by the existing glossary; otherwise merge, rename or retire.",
+      "relations": []
+    },
+    {
+      "term": "CoPriMath+",
+      "family": "Substrates, culture and mathematics",
+      "meaning": "Investigate relational models, invariants and measurement bridges across substrates",
+      "does_not_mean": "Not replacement of established mathematics by naming",
+      "status": "WORKING_CANDIDATE",
+      "falsification_or_design_test": "Find a concrete case where this term changes a decision or detects a failure not captured by the existing glossary; otherwise merge, rename or retire.",
+      "relations": []
+    },
+    {
+      "term": "CoNull+",
+      "family": "Substrates, culture and mathematics",
+      "meaning": "Distinguish zero, nothing, missing, forbidden and unknown where models require it",
+      "does_not_mean": "Not treating absence as a physical substance",
+      "status": "WORKING_CANDIDATE",
+      "falsification_or_design_test": "Find a concrete case where this term changes a decision or detects a failure not captured by the existing glossary; otherwise merge, rename or retire.",
+      "relations": []
+    },
+    {
+      "term": "CoRelationalInvariant+",
+      "family": "Substrates, culture and mathematics",
+      "meaning": "Identify which properties survive declared transformations",
+      "does_not_mean": "Not declaring invariance without proof",
+      "status": "WORKING_CANDIDATE",
+      "falsification_or_design_test": "Find a concrete case where this term changes a decision or detects a failure not captured by the existing glossary; otherwise merge, rename or retire.",
+      "relations": []
+    },
+    {
+      "term": "CoValueTranslation+",
+      "family": "Substrates, culture and mathematics",
+      "meaning": "Compare culturally distinct notions of desirable outcomes without erasure",
+      "does_not_mean": "Not a universal moral conversion factor",
+      "status": "WORKING_CANDIDATE",
+      "falsification_or_design_test": "Find a concrete case where this term changes a decision or detects a failure not captured by the existing glossary; otherwise merge, rename or retire.",
+      "relations": []
+    },
+    {
+      "term": "CoMeasureConflict+",
+      "family": "Substrates, culture and mathematics",
+      "meaning": "Preserve disagreement among incompatible measurement systems",
+      "does_not_mean": "Not averaging away rights and consent",
+      "status": "WORKING_CANDIDATE",
+      "falsification_or_design_test": "Find a concrete case where this term changes a decision or detects a failure not captured by the existing glossary; otherwise merge, rename or retire.",
+      "relations": []
+    },
+    {
+      "term": "CoTimeInversion+",
+      "family": "Substrates, culture and mathematics",
+      "meaning": "Use retrospective and predictive checks to test temporal assumptions",
+      "does_not_mean": "Not evidence of information arriving from the future",
+      "status": "WORKING_CANDIDATE",
+      "falsification_or_design_test": "Find a concrete case where this term changes a decision or detects a failure not captured by the existing glossary; otherwise merge, rename or retire.",
+      "relations": []
+    },
+    {
+      "term": "CoG_dSide+",
+      "family": "Futures, evolution and G_dSide",
+      "meaning": "Explore metaphysical, ethical and spiritual questions about what futures deserve care",
+      "does_not_mean": "Not evidence of divine instructions or operational authority",
+      "status": "WORKING_CANDIDATE",
+      "falsification_or_design_test": "Find a concrete case where this term changes a decision or detects a failure not captured by the existing glossary; otherwise merge, rename or retire.",
+      "relations": [
+        "CoNuExistentialism+",
+        "CoMetaAttractor+",
+        "CoCare+"
+      ]
+    },
+    {
+      "term": "CoMetaAttractor+",
+      "family": "Futures, evolution and G_dSide",
+      "meaning": "Maintain plural revisable portfolios of candidate futures (CMA)",
+      "does_not_mean": "Not a preordained destination",
+      "status": "WORKING_CANDIDATE",
+      "falsification_or_design_test": "Find a concrete case where this term changes a decision or detects a failure not captured by the existing glossary; otherwise merge, rename or retire.",
+      "relations": []
+    },
+    {
+      "term": "CoAttractorInverse+",
+      "family": "Futures, evolution and G_dSide",
+      "meaning": "Ask whose values a proposed desirable future excludes",
+      "does_not_mean": "Not a claim that every future is equally good",
+      "status": "WORKING_CANDIDATE",
+      "falsification_or_design_test": "Find a concrete case where this term changes a decision or detects a failure not captured by the existing glossary; otherwise merge, rename or retire.",
+      "relations": []
+    },
+    {
+      "term": "CoOptionality+",
+      "family": "Futures, evolution and G_dSide",
+      "meaning": "Measure which future choices an action preserves or closes",
+      "does_not_mean": "Not maximizing possibilities regardless of cost or harm",
+      "status": "WORKING_CANDIDATE",
+      "falsification_or_design_test": "Find a concrete case where this term changes a decision or detects a failure not captured by the existing glossary; otherwise merge, rename or retire.",
+      "relations": []
+    },
+    {
+      "term": "CoFutureHospitality+",
+      "family": "Futures, evolution and G_dSide",
+      "meaning": "Design institutions able to accommodate unforeseen future participants",
+      "does_not_mean": "Not unlimited promises to unknown agents",
+      "status": "WORKING_CANDIDATE",
+      "falsification_or_design_test": "Find a concrete case where this term changes a decision or detects a failure not captured by the existing glossary; otherwise merge, rename or retire.",
+      "relations": []
+    },
+    {
+      "term": "CoEvolutionOfValues+",
+      "family": "Futures, evolution and G_dSide",
+      "meaning": "Allow evidence and experience to change the values used for assessment",
+      "does_not_mean": "Not discarding human rights whenever convenient",
+      "status": "WORKING_CANDIDATE",
+      "falsification_or_design_test": "Find a concrete case where this term changes a decision or detects a failure not captured by the existing glossary; otherwise merge, rename or retire.",
+      "relations": []
+    },
+    {
+      "term": "CoHogInverse+",
+      "family": "Futures, evolution and G_dSide",
+      "meaning": "Turn good-faith challenges into gains for challengers and challenged",
+      "does_not_mean": "Not incentivizing harassment or performative attack",
+      "status": "WORKING_CANDIDATE",
+      "falsification_or_design_test": "Find a concrete case where this term changes a decision or detects a failure not captured by the existing glossary; otherwise merge, rename or retire.",
+      "relations": []
+    },
+    {
+      "term": "CoEvSeed+",
+      "family": "Futures, evolution and G_dSide",
+      "meaning": "Preserve a reusable, source-bound idea/media candidate with provenance and next test",
+      "does_not_mean": "Not deployed or integrated merely because indexed",
+      "status": "WORKING_CANDIDATE",
+      "falsification_or_design_test": "Find a concrete case where this term changes a decision or detects a failure not captured by the existing glossary; otherwise merge, rename or retire.",
+      "relations": []
+    },
+    {
+      "term": "CoGoldenBraid+",
+      "family": "Futures, evolution and G_dSide",
+      "meaning": "Maintain recoverable relations across distinct lenses and fronts",
+      "does_not_mean": "Not collapsing all meanings into a single ontology",
+      "status": "WORKING_CANDIDATE",
+      "falsification_or_design_test": "Find a concrete case where this term changes a decision or detects a failure not captured by the existing glossary; otherwise merge, rename or retire.",
+      "relations": []
+    }
+  ],
+  "next_proof": "Test 6 representative terms in two real cross-substrate decisions, retain only terms that improve comprehension or failure detection."
+}

@@ -286,3 +286,25 @@ A validator emits:
 `NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE`  
 `HASHING_IS_NOT_SEMANTIC_INGESTION`  
 `DISCOVERED_SET_IS_NOT_COMPLETE_HISTORY`
+
+## CoOrb+ X2 currentness recheck | 2026-11-09 (bounded public-source delta)
+
+**Verdict:** `PUBLIC_SOURCE_CI_VERIFIED` for bounded visual components; `X2_RUNTIME_CURRENTNESS_HELD` for actual native CoOrb+ UX. This addendum preserves the earlier R0 audit and machine-readable registry as their time-scoped snapshots; it does **not** silently promote those prior entries, replace the registry, or add a competing status store.
+
+### Separately observed surfaces
+
+- **Human-facing X2 evidence:** a recent private screenshot is consistent with a live Windows desktop and a visible CoAll/Here strip. It is **not** independent evidence of the current executable, CoOrb renderer version, host uptime, or installed update. The screenshot itself, personal messages and contact details are **not published here**.
+- **Remote observer:** the authorized X2 management connector reports its control link **offline/stale**, but a failed connector is not proof that Windows, the installed app or local Ollama has stopped. Device connection, host health, source installation, browser window and receiver acceptance are separate measures.
+- **Public CoOrb source:** [CoOrb R0B architecture](COMAP_COORB_COAHEAD_TEMPORAL_R0A_20261023.md) and the [CoOrbMembrane R0 renderer](../../examples/coorbmembrane_r0/README.md) are on public `main`. The latter landed through [PR #391](https://github.com/CoCivium/CoCivium/pull/391), merge commit `f54101ba95655efbc3a3336e08b642efa35c6559`. [CI run #42689117816](https://github.com/CoCivium/CoCivium/actions/runs/42689117816) passed **11/11** Node projection tests: public-only strands, bounded fanout, epistemic separation, source SHA shape, and explicit synthetic/no-real-ACK labels. This is a reusable **SVG/text source component**, not an X2 installation.
+- **Browser desktop candidate:** [CoSurface PR #375](https://github.com/CoCivium/CoCivium/pull/375) contains an opt-in `rickBar`/CoOrb preview with Here, Evidence, Future, Stop/Escape and legacy fallback. Its *earlier tested revision* passed [Chromium and contract CI #42531359302](https://github.com/CoCivium/CoCivium/actions/runs/42531359302): 89 Python tests on each of two versions plus a browser interaction smoke. The PR is under separate active review. Do not substitute its browser screenshot for a native X2 observation or race its branch writer.
+- **Other public offline readers:** [CoLensMedia](../../examples/colensmedia/README.md) and [CoMap](../../examples/comap/README.md) provide source-bound views, not live CoOrbWare or an X2 service.
+
+### One non-destructive receiver acceptance sequence
+
+`existing authorized X2 observer -> read-only current launcher/process + versioned source inventory -> exact active CoOrb renderer file hash and source/custody -> one bounded human-visible open/focus/lens change -> keyboard Stop/Escape/native fallback -> screenshot or structured receiver-owned readback -> dated evidence and recovery checkpoint`.
+
+Before the X2 connector is genuinely reachable, **hold that chain at its first edge**. Do not infer an update by matching colors, floating-sphere silhouette, desktop wallpaper, ChatGPT conversation names, a GitHub merge, or an old browser screenshot. Do not replace a working launcher or create another resident watcher merely to pass an acceptance test. Conflicting writes require one elected actuator; independent source review and CI may proceed concurrently.
+
+**Next proof owner:** existing X2/CoBar runtime owner or independently authorized local observer. **Next wake:** a verified device connection/receiver observation, not repeated manual chat cycling. **Human relay:** none demanded. **Effect boundary:** no install, reboot, credential, disclosure of screenshot, network broadcast or runtime promotion authorized by this source note.
+
+**Rails:** `PUBLIC_SOURCE_NE_X2_INSTALLED` · `HUMAN_VISIBLE_NE_VERSION_PROOF` · `REMOTE_BRIDGE_OFFLINE_NE_HOST_OFF` · `SYNTHETIC_SVG_NE_LIVE_ORB` · `ONE_WORKID_MANY_VIEWS_ZERO_UNEARNED_ACK`.

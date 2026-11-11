@@ -1,0 +1,44 @@
+{
+  "schema": "CoAll.CoPrePublicAvailabilityReceipt.v0.1",
+  "status": "PUBLIC_GITHUB_CONNECTOR_READBACK_ONLY",
+  "observed_utc": "2026-11-09T23:05:35Z",
+  "read_source": "connected GitHub file fetch",
+  "repository": "CoCivium/CoCivium",
+  "entry": "CoPre.md",
+  "anchors_checked": 10,
+  "anchors_fetchable": 10,
+  "anchors_failed": 0,
+  "paths": [
+    "CoPre.md",
+    "SESSION_BOOTSTRAP.md",
+    "ai/index.json",
+    "ai/copre-seed-path-fabric-r0-20261109.json",
+    "ai/copre-seed-path-federation-r0.json",
+    "docs/CoPreGeneric/Shareable_R0_20261109/manifest.json",
+    "docs/CoPreGeneric/PublicDraft_R0_20261109/manifest.json",
+    "ai/retro-echo-coverage-r0-20261109.json",
+    "docs/Architecture/COFRONT_RETRO_ECHO_NO_ORPHANS_R0_20261109.md",
+    "docs/Architecture/COPREGENERIC_DUAL_PROJECTION_R0_20261109.md"
+  ],
+  "source_variant_policy": "KEEP_BOTH_CO_PRE_PACKAGES_DISTINCT__DO_NOT_MERGE_BYTES_OR_ELECT_CANON",
+  "coseed": "CoPre.md -> ai/copre-seed-path-federation-r0.json -> one authorized role-specific package",
+  "copath": "read exact package manifest -> fetch individual source -> compare its SHA-256 -> qualify context and authority -> bounded action -> independent receiver acknowledgment if any",
+  "effects": "READ_ONLY_AUDIT_AND_PUBLIC_RECEIPT",
+  "remaining_gates": [
+    "INDEPENDENT_RECEIVER_EXACT_OBJECT_READPROOF",
+    "QUALIFIED_FRONT_CONSUMPTION_WITH_WORK_ID",
+    "OWNED_SHORT_DOMAIN_ROUTING",
+    "X2_COSTEAD_RUNTIME",
+    "HISTORICAL_CENSUS_COMPLETE",
+    "MULTI_FRONT_SYNCHRONIZATION"
+  ],
+  "nonclaims": [
+    "PUBLIC_READBACK_NE_INDEPENDENT_PICKUP",
+    "PUBLIC_DISCOVERY_NE_FULL_INTEGRATION",
+    "GITHUB_NE_CANON",
+    "NO_PRIVATE_MATERIAL_PUBLISHED",
+    "NO_GLOBAL_AUTOSYNC",
+    "NO_COEX",
+    "NO_AGI_SENTIENCE_PROOF"
+  ]
+}

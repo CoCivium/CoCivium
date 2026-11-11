@@ -1,0 +1,95 @@
+{
+  "schema": "CoAll.RetroEcho.Delta.v0.2-candidate",
+  "status": "PUBLIC_SAFE_SOURCE_RECONCILIATION_NOT_GLOBAL_SYNC",
+  "created_utc": "2026-11-09T22:36:52Z",
+  "source_context": "User-supplied WhatsApp CoPreGeneric conceptual lineage; excerpted ideas only, without publishing private transcripts.",
+  "parent_public_coverage": "ai/retro-echo-coverage-r0-20261109.json",
+  "parent_public_protocol": "docs/Architecture/COFRONT_RETRO_ECHO_NO_ORPHANS_R0_20261109.md",
+  "existing_public_copregeneric": "docs/Architecture/COPREGENERIC_DUAL_PROJECTION_R0_20261109.md",
+  "new_candidate_links": [
+    {
+      "id": "copre-thumb",
+      "relation": "proposal",
+      "claim": "A short mouse/thumb bootstrap pointer retrieves current, authorized, role-filtered CoPreGeneric; avoids copying large prompts.",
+      "acceptance": "Actual URL HTTP readproof plus content-digest and authority/privacy checks",
+      "state": "NOT_PROVEN_ON_PROPOSED_SHORT_DOMAIN"
+    },
+    {
+      "id": "copre-source",
+      "relation": "predecessor_to_successor",
+      "claim": "Verbose CoPreGeneric draft and shorter static thumb have different purposes; neither should overwrite the other's lineage.",
+      "acceptance": "Two exact source objects, documented revision/translation loss, and validated successor policy",
+      "state": "CANDIDATE"
+    },
+    {
+      "id": "cosynth-cobio",
+      "relation": "dual_projection",
+      "claim": "Structured machine-facing contract and accessible human-facing navigation share exact underlying source identity.",
+      "acceptance": "Independent receiver can reconstruct both projections and identify differences",
+      "state": "CANDIDATE"
+    },
+    {
+      "id": "conull-stop",
+      "relation": "null_inversion",
+      "claim": "Pause, unknown, held, silence and absence of evidence have distinct operational types; no automatic heartbeat claim.",
+      "acceptance": "Typed-state tests distinguish idle, unknown, deliberately stopped, failed and missing receiver",
+      "state": "CANDIDATE"
+    },
+    {
+      "id": "coev-spiral",
+      "relation": "fanout_fanin",
+      "claim": "Explore, challenge, merge, preserve and stop by marginal information gain, not by repeating user paste cycles.",
+      "acceptance": "Compare against read-only baseline with proof and human-relay cost metrics",
+      "state": "CANDIDATE"
+    },
+    {
+      "id": "coaudio",
+      "relation": "candidate_media_projection",
+      "claim": "Sound may communicate qualified operational state with accompanying text, source and accessible controls; creative whale analogy is not biological communication.",
+      "acceptance": "User comprehension and accessible mute/fallback evaluation",
+      "state": "EXPLORATORY"
+    },
+    {
+      "id": "retro-gap",
+      "relation": "coverage_gap",
+      "claim": "Historical sources and CoNull-like gaps should be enumerated via bounded authorized roots with negative knowledge preserved.",
+      "acceptance": "Exact source + predecessor/descendant + independent acceptance or ORPHAN_RISK",
+      "state": "PARTIAL"
+    }
+  ],
+  "claimed_but_unverified_destinations": [
+    {
+      "url": "https://github.com/CoCivium/CoPreGeneric",
+      "status": "NOT_FOUND_IN_CONNECTED_REPOSITORY_SEARCH",
+      "authority": "UNVERIFIED"
+    },
+    {
+      "url": "https://CoCivium.org/CoPre",
+      "status": "NOT_INDEPENDENTLY_VERIFIED",
+      "authority": "UNVERIFIED"
+    },
+    {
+      "url": "https://InSeed.com/Stead",
+      "status": "NOT_INDEPENDENTLY_VERIFIED",
+      "authority": "UNVERIFIED"
+    }
+  ],
+  "verified_public_route": {
+    "repository": "CoCivium/CoCivium",
+    "bootstrap": "SESSION_BOOTSTRAP.md",
+    "copregeneric": "docs/Architecture/COPREGENERIC_DUAL_PROJECTION_R0_20261109.md",
+    "retro_protocol": "docs/Architecture/COFRONT_RETRO_ECHO_NO_ORPHANS_R0_20261109.md",
+    "retro_ledger": "ai/retro-echo-coverage-r0-20261109.json"
+  },
+  "nonclaims": [
+    "VERSION_LABELS_IN_CHATS_NOT_GLOBAL_SEED",
+    "PUBLIC_GITHUB_NOT_PRIVATE_CUSTODY",
+    "NO_CHAT_HISTORY_CENSUS",
+    "NO_COEX",
+    "NO_AGI_SENTIENCE_OR_DIVINE_SIGNAL_PROOF",
+    "NO_RECEIVER_ACK",
+    "NO_X2_RUNTIME",
+    "NO_INDEPENDENT_REPLICATION"
+  ],
+  "next_test": "Independently retrieve an older source and reconstruct one predecessor->descendant relation; record any untranslated meaning or orphan risk."
+}

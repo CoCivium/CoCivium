@@ -1,0 +1,131 @@
+{
+  "schema": "cocivium.coomni.front_relations.r0",
+  "status": "public_design_artifact_not_active_federation",
+  "source_contract": "docs/Evolution/COFRONT_SEED_PATH_CONTRACT_R0.json",
+  "source_manifest": "docs/Evolution/COPREGENERIC_SESSION_POINTERS_R0.json",
+  "consumer": "scripts/cofront_public_consumer.py",
+  "workflow": ".github/workflows/cofront-public-consumer.yml",
+  "principle": "Every authorized front may read, derive, critique, propose, and reference outputs of every other front; publication and promotion require independent evidence and explicit permission.",
+  "front_roles": [
+    "research",
+    "theory",
+    "ethics",
+    "governance",
+    "product",
+    "onboarding",
+    "public_surface",
+    "local_runtime",
+    "measurement",
+    "historical_echo",
+    "future_scenarios",
+    "gdside_hypothesis"
+  ],
+  "edge_types": [
+    {
+      "name": "derived_from",
+      "inverse": "supports_derivation_of"
+    },
+    {
+      "name": "challenges",
+      "inverse": "challenged_by"
+    },
+    {
+      "name": "tests",
+      "inverse": "tested_by"
+    },
+    {
+      "name": "supersedes",
+      "inverse": "superseded_by"
+    },
+    {
+      "name": "depends_on",
+      "inverse": "dependency_of"
+    },
+    {
+      "name": "translates_to",
+      "inverse": "translated_from"
+    },
+    {
+      "name": "predicts",
+      "inverse": "predicted_by"
+    },
+    {
+      "name": "contradicts",
+      "inverse": "contradicted_by"
+    },
+    {
+      "name": "recovers",
+      "inverse": "recovered_by"
+    },
+    {
+      "name": "proposes",
+      "inverse": "proposed_by"
+    }
+  ],
+  "edge_record_required": [
+    "edge_id",
+    "from_front",
+    "to_front",
+    "edge_type",
+    "source_uri",
+    "source_digest",
+    "evidence_refs",
+    "claim_scope",
+    "confidence",
+    "custody_scope",
+    "authorization",
+    "observed_at",
+    "valid_from",
+    "status",
+    "supersedes"
+  ],
+  "rules": [
+    "Inverse edges are query projections, not new factual assertions.",
+    "Cycles are permitted but cannot bootstrap unverified claims into verified status.",
+    "Every claim is independently traceable to immutable evidence.",
+    "Speculation cannot promote itself by repeated citation.",
+    "Public projection must omit private or unconsented material.",
+    "A new version preserves prior receipts and explicit supersession.",
+    "A missing dependency causes HOLD, not a fabricated completion.",
+    "Any front may challenge, but only authorized owners may approve protected actions.",
+    "A source appearing in a public repository does not prove its runtime adoption."
+  ],
+  "co_seed": "Each edge and source may become a CoSeed only with scope, provenance, custody and evidence retained.",
+  "co_path": "Discover -> Verify -> Relate -> Challenge -> Test -> Authorize -> Project -> Receipt -> Monitor -> Recover.",
+  "co_time": {
+    "modes": [
+      "chronological_backfill",
+      "dependency_replay",
+      "predictive_retro",
+      "counterfactual",
+      "inversion",
+      "future_watch"
+    ],
+    "rule": "Keep observation time separate from source time and forecast time."
+  },
+  "gdside": {
+    "lane": "explicitly speculative/philosophical",
+    "allowed": "Generate hypotheses, ethical questions, tests, counterexamples and value-oriented design options.",
+    "not_allowed": "Claim divine mandate, empirical proof, sentience, or bypass of consent and evidence gates."
+  },
+  "measurements": [
+    "verified_front_consumers",
+    "edges_with_public_receipts",
+    "unresolved_orphans",
+    "permission_failures",
+    "source_to_view_reversibility",
+    "independent_recovery_success",
+    "forecast_calibration",
+    "test_coverage"
+  ],
+  "acceptance": [
+    "A second independently running front ingests and receipts the same public head.",
+    "Bidirectional graph traversal returns correct inverse types without changing claim status.",
+    "Historical backfill preserves original timestamps and retractions.",
+    "A privacy-restricted edge never enters public projections.",
+    "An independent restart reconstructs the same public head.",
+    "G_dSide hypotheses remain labeled speculative after fan-out and re-import."
+  ],
+  "verified_in_this_commit": "Artifact committed and fetched only; no graph service, runtime subscription, or acceptance-test success claimed.",
+  "next_gate": "Implement typed edge consumer, offline graph tests, CI receipt and independent second-front recovery."
+}

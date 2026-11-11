@@ -336,3 +336,11 @@ For bridges specifically, ordinary users should see actions such as **Share this
 This glossary excludes private paths, raw session records, credentials, internal incident details, and the unreviewed historical CoTerm estate. Public location is not primary custody, and publication does not create canon, runtime authority, or proof that every named product exists.
 
 Machine-readable companion: `coterms-public-r0.json`.
+
+## CoNuExistentialism+ and CoG_dSide+ candidate constellation
+
+[37 working CoTerms candidates](conu-existentialism-candidate-constellation-r0-20261110.json) span meaning/care, perspective/inversion, substrates/culture/mathematics, and futures/G_dSide. Each entry includes an anti-meaning and a proposed falsification/design test. This is a separate exploratory layer, not automatic expansion of the 31-term public pilot or canon.
+
+## Relational meaning / CoNuExistentialism candidate bank
+
+[36 source-bound CoNuExistentialism+ / G_dSide+ relational candidate entries](candidates/conuexistentialism-gdside-relational-candidates-r0-20261110.json) include meanings, anti-meanings, proposed inverses and falsifiable probes. They are **unqualified candidates** and two existing source-bound terms, not a 36-term expansion of this curated public pilot or CoLex canon. The philosophical G_dSide lane carries no theological or runtime authority.

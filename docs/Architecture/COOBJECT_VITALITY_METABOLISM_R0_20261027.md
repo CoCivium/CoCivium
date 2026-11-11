@@ -241,3 +241,16 @@ The canary must also prove:
 `VALIDATION_IS_NOT_ACCEPTANCE`  
 `NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF`  
 `NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE`
+
+
+## CoObject+ typed file-to-agency bridge | 2026-11-09 source increment
+
+See [CoAckRewise frontier](../Evolution/COACKREWISE_COOBJECT_CIV3_FRONTIER_R0_20261109.md). Existing CoObject vitality already had event-driven dispositions but no generic file-to-worker preflight. New [CoObjectAgencyBridgeR0.py](../../scripts/CoObjectAgencyBridgeR0.py) is an incremental deterministic **proposal compiler** feeding the same CoObject state grammar, not a new daemon or universal file interpreter. [31 passing source-level tests](https://github.com/CoCivium/CoCivium/actions/runs/42609204946) cover code, policy, data, documents, images, unknown binaries, transient controls, source hash mismatches, unauthorized instruction fields, path traversal, symlinks, dormancy, quiet, repair-first and fresh CLI output.
+
+**Core choice:** every file class can be **addressable for typed investigation** without making its own bytes, prose or metadata executable. The capability of *proposing a worker* is different from having an authorized worker. An untrusted document or LLM response cannot grant permission to execute commands or send data. The bridge reads bounded exact local bytes and emits proposal metadata; it does not import scripts, evaluate policy, decode images, dispatch models, send messages or write to inspected files.
+
+**Material-change metabolism:** repeats of ordinary `SOURCE_OBSERVED` are quiet. `MATERIAL_REVISION` or a declared `WAKE_OBSERVED` may produce an advisory action; `DEGRADED_REPAIRABLE` routes to diagnostic review before new features. Sources remain `VERIFIED_LOCAL` only, with `NOT_SEMANTICALLY_REVIEWED`, `workers_spawned=0` and `receiver_ack=false`. All event classifications are producer assertions until verified in an independent event substrate.
+
+A real *agentic* successor to this compiler needs an independently qualified capability registry, authenticated event source, content-risk policy, chosen worker/model provenance, scoped least-privilege effect lease, budget, sandbox, stable WorkID, exact outcome/readproof and recovery. Existing CoSessionAutocycle, CoModelFabric, CoStageReview, CoMVP and CoOrbWare own those other contracts. This bridge must not bypass them or become a second central scheduler.
+
+**Rail:** `EVERY_OBJECT_ADDRESSABLE_NE_EVERY_OBJECT_EXECUTABLE | EVENT_NE_PERMISSION | PROPOSAL_NE_AGENT_PICKUP | SOURCE_HASH_NE_MEANING | QUIET_NE_DEAD`.

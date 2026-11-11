@@ -1,0 +1,200 @@
+{
+  "schema": "cocivium.frontier-index.r0",
+  "purpose": "Public coordination pointers, not runtime state or cross-session ACK",
+  "authority": "non-canonical; evidence-linked; challengeable",
+  "promotion_states": [
+    "proposed",
+    "source_committed",
+    "tests_executed",
+    "independently_observed",
+    "released"
+  ],
+  "rules": {
+    "no_inferred_pass": true,
+    "no_self_certified_effect": true,
+    "peer_contribution": "all fronts open to all sessions",
+    "conflict_resolution": "temporary fencing for conflicting writes only",
+    "privacy": "public-safe pointers; no device secrets or personal records",
+    "no_silent_drop": "retain blockers, next gates, and supersession links"
+  },
+  "fronts": [
+    {
+      "id": "receiver-evidence",
+      "status": "tests_executed",
+      "source": "tests/gs_receiver/",
+      "workflow": ".github/workflows/receiver-reconciliation.yml",
+      "next_gate": "obtain authenticated independent X2/CoBar receiver readproof on exact work source; CI pass does not prove live receiver health",
+      "blocked_claims": [
+        "X2_INTEGRATED",
+        "LIVE_RECEIVER_HEALTH"
+      ],
+      "test_receipt": {
+        "run_id": 42689393994,
+        "source_sha": "4a34e3aa22fee6c4aee20a2cd6b8ce12f7801669",
+        "conclusion": "success",
+        "scope": "source-only isolated receiver regression; 34 synthetic tests; no X2 readproof",
+        "artifact_id": 13706132475,
+        "artifact_zip_sha256": "1435567d073c129389c378c3d77c29c26871b030fde4d748d11bf3f205e515be",
+        "source_receipt_url": "https://github.com/CoCivium/CoCivium/actions/runs/42689393994"
+      },
+      "claim_resolutions": [
+        {
+          "claim": "CI_PASS",
+          "evidence_ref": "https://github.com/CoCivium/CoCivium/actions/runs/42689393994",
+          "verifier_ref": "github-actions:isolated-receiver:exit-0:34-tests",
+          "observed_at": "2026-11-09T20:04:26Z"
+        }
+      ]
+    },
+    {
+      "id": "x2-coorb-ux",
+      "status": "proposed",
+      "evidence": "user-supplied desktop screenshot, 2026-11-09; not a build manifest",
+      "next_gate": "read actual X2 build identity and verify receiver-to-CoBar observation",
+      "blocked_claims": [
+        "CURRENT_BUILD",
+        "DEPLOYED_FIX",
+        "RECOVERY_PASS"
+      ]
+    },
+    {
+      "id": "runtime-recovery",
+      "status": "proposed",
+      "next_gate": "prove crash/restart replay against a real durable producer and independent observer",
+      "blocked_claims": [
+        "SURVIVES_24H",
+        "SELF_HEALS"
+      ]
+    },
+    {
+      "id": "conav-coregroup",
+      "status": "proposed",
+      "next_gate": "demonstrate one durable work ID resolved across independent sessions without manual relay",
+      "blocked_claims": [
+        "CROSS_SESSION_SYNC"
+      ]
+    },
+    {
+      "id": "comvp-colockstep",
+      "status": "proposed",
+      "next_gate": "define and execute a usable release gate with rollback and no-regression check",
+      "blocked_claims": [
+        "MVP_QUALIFIED"
+      ]
+    },
+    {
+      "id": "coprimath-gdside",
+      "status": "source_committed",
+      "source": "docs/Evolution/GDSIDE_COPRIMATH_GSLOOP_PUBLIC_R0.md",
+      "next_gate": "run equal-budget candidate-future versus baseline experiments with negative controls",
+      "blocked_claims": [
+        "EMPIRICAL_SUPERIORITY"
+      ]
+    },
+    {
+      "id": "costead-onboarding",
+      "status": "proposed",
+      "next_gate": "observe first-use onboarding and successful recovery on a real device",
+      "blocked_claims": [
+        "ONBOARDING_PASS"
+      ]
+    },
+    {
+      "id": "comap-megascroller",
+      "status": "source_committed",
+      "source": "examples/comap/megascroller-r0.html",
+      "workflow": ".github/workflows/co-living-media-r0.yml",
+      "next_gate": "verify updated HTML source-to-generator CI and first-use navigation; separately prove site/independent mirror readback",
+      "blocked_claims": [
+        "CI_PASS",
+        "FIRST_USE_NAVIGATION_PASS",
+        "PUBLIC_HOST_READBACK",
+        "INDEPENDENT_BACKUP_RESTORE"
+      ],
+      "wave_profile": {
+        "mode": "NAVIGATE",
+        "audience": "FIRST_TIME_READER",
+        "substrate": "OFFLINE_HTML",
+        "horizon": "ONE_SESSION",
+        "hypothesis": "NESTED_ATLAS_REDUCES_FIND_TIME",
+        "counterexample": "NOVICE_CANNOT_FIND_PINNED_SOURCE",
+        "measure": "TIME_TO_FIND_PINNED_SOURCE",
+        "source_blob_sha1": "a6fb0483643201caf5501bc3e8d83fe800335a08",
+        "state": "PROPOSAL_ONLY_NOT_EXECUTED"
+      }
+    },
+    {
+      "id": "colue-outreach",
+      "status": "source_committed",
+      "source": "examples/comail_r0/outreach_stage_gate_r0.py",
+      "workflow": ".github/workflows/co-living-media-r0.yml",
+      "next_gate": "bind actual authorized InSeed mailbox read-only and demonstrate exact draft, thread and consent evidence before separate send authority",
+      "blocked_claims": [
+        "LIVE_MAILBOX_BINDING",
+        "DRAFT_THREAD_READPROOF",
+        "AUTHORIZED_SEND_RECEIPT",
+        "CONSENTED_RECIPIENT_OUTCOME"
+      ],
+      "wave_profile": {
+        "mode": "CHALLENGE",
+        "audience": "AUTHORIZED_OUTREACH_OPERATOR",
+        "substrate": "READONLY_MAILBOX",
+        "horizon": "BEFORE_SEND_DECISION",
+        "hypothesis": "PROVENANCE_GATE_PREVENTS_WRONG_ACCOUNT_SEND",
+        "counterexample": "GATE_ACCEPTS_MISMATCHED_MAILBOX",
+        "measure": "FALSE_SEND_READY_RATE",
+        "source_blob_sha1": "b33ec2f8608250643d7400d964f62224ff78daa0",
+        "state": "PROPOSAL_ONLY_NOT_EXECUTED"
+      }
+    },
+    {
+      "id": "colensmedia-lineage",
+      "status": "source_committed",
+      "source": "examples/colensmedia/relational_media_manifest_r0.py",
+      "workflow": ".github/workflows/co-living-media-r0.yml",
+      "next_gate": "obtain a rights-cleared real media sample and verify cross-format semantic/accessible parity with receiver readback",
+      "blocked_claims": [
+        "REAL_MEDIA_RIGHTS_REVIEW",
+        "SEMANTIC_PARITY_PASS",
+        "INDEPENDENT_MEDIA_RECEIVER",
+        "LIVE_RENDERER_BINDING"
+      ],
+      "wave_profile": {
+        "mode": "FALSIFY",
+        "audience": "MEDIA_EDITOR",
+        "substrate": "SOURCE_GRAPH",
+        "horizon": "AFTER_ONE_RENDER",
+        "hypothesis": "GRAPH_FLAGS_STALE_OR_PRIVATE_DERIVATION",
+        "counterexample": "PRIVATE_SOURCE_LEAKS_IN_PUBLIC_PROJECTION",
+        "measure": "UNDETECTED_PRIVATE_LEAK_COUNT",
+        "source_blob_sha1": "4e2fbe18f10635a037f9e725c8ea5b83aceea86a",
+        "state": "PROPOSAL_ONLY_NOT_EXECUTED"
+      }
+    },
+    {
+      "id": "cobrowser-cocarry",
+      "status": "source_committed",
+      "source": "scripts/CoBrowserCarryProjectionR0.py",
+      "workflow": ".github/workflows/cobrowser-renderer-substitution-r0.yml",
+      "next_gate": "verify private X2 ledger inventory, one Firefox session reopen and original WorkID recovery before touching any Edge tabs",
+      "blocked_claims": [
+        "LIVE_FIREFOX_REOPEN",
+        "PRIVATE_SESSION_CENSUS",
+        "UNSENT_COMPOSER_CUSTODY",
+        "X2_RUNTIME_PICKUP"
+      ],
+      "wave_profile": {
+        "mode": "RECOVER",
+        "audience": "SESSION_OPERATOR",
+        "substrate": "FIREFOX_X2",
+        "horizon": "AFTER_ONE_RESTART",
+        "hypothesis": "ONE_FOREGROUND_PRESERVES_OTHER_WORKIDS",
+        "counterexample": "CLOSING_EDGE_LOSES_UNSENT_TEXT",
+        "measure": "RECOVERABLE_WORKID_RATIO",
+        "source_blob_sha1": "0d08b2091adde7809f503740251c3c9f13a059e3",
+        "state": "PROPOSAL_ONLY_NOT_EXECUTED"
+      }
+    }
+  ],
+  "change_policy": "append evidence and supersession; do not replace unresolved claims with optimistic summaries"
+}

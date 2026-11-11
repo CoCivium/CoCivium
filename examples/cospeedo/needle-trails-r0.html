@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CoSpeedo NeedleTrails | Proof of Better R0</title>
+<style>
+:root{font-family:system-ui,-apple-system,Segoe UI,sans-serif;background:#0d1120;color:#edf3ff;font-size:16px}*{box-sizing:border-box}
+body{margin:0}main{max-width:980px;margin:auto;padding:clamp(18px,4vw,44px)}
+a{color:#8de3ee}a:focus-visible,button:focus-visible{outline:3px solid #fbbf7c;outline-offset:3px}
+header{border-bottom:1px solid #34415b;padding-bottom:22px}.eyebrow{letter-spacing:.13em;color:#8de3ee;text-transform:uppercase;font-size:.76rem}
+h1{font-size:clamp(2.1rem,5vw,3.3rem);line-height:1.08;margin:.3em 0}.subtitle{font-size:1.11rem;max-width:680px;line-height:1.6;color:#c3cee2}
+.notice{margin:22px 0;padding:16px;border-left:4px solid #fca5a5;background:#332530;border-radius:8px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:14px;margin:20px 0}
+.tile{border:1px solid #374763;background:#182238;border-radius:16px;padding:19px;min-height:140px}
+.tile strong{font-size:1.65rem;display:block;margin:8px 0}.tile p{color:#b7c7dd;line-height:1.5}
+small,.meta{color:#a7b8d5}section{margin-top:32px}h2{font-size:1.4rem}
+.timeline{position:relative;margin:22px 0 0 16px;padding-left:27px;border-left:3px solid #466c82}
+.event{position:relative;margin-bottom:22px;padding:17px;border-radius:12px;background:#17243b;border:1px solid #354966}
+.event::before{content:"";position:absolute;left:-36px;top:21px;width:15px;height:15px;border-radius:50%;background:#44d8c6;border:3px solid #0d1120}
+.event.held::before{background:#fbba78}.event h3{margin:0 0 7px;font-size:1.02rem}.event p{margin:.5em 0;color:#c5d1e5;line-height:1.5}
+.tag{font-weight:bold;text-transform:uppercase;font-size:.72rem;letter-spacing:.05em}
+.tag.pass{color:#70e7ca}.tag.held{color:#fbc48c}
+button{border:1px solid #83d6e1;color:#e5faff;background:#15424f;border-radius:8px;padding:11px 14px;cursor:pointer;font:inherit}
+button[aria-pressed="true"]{background:#2d6f72}
+.details{display:none;margin-top:12px;padding-top:12px;border-top:1px solid #3e536c}.details.open{display:block}
+.contrast{background:#2a2037;border-color:#5c456c}
+footer{border-top:1px solid #34415b;margin-top:34px;padding-top:20px;color:#aebed2;line-height:1.6}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation:none!important}}
+</style></head><body><main>
+<header><div class="eyebrow">CoCivium / CoAll · CoSpeedo NeedleTrails · R0</div>
+<h1>What actually got better?</h1>
+<p class="subtitle">A simple trail of evidence. Every green step means a bounded test was verified. Amber means work remains. More commits are not the same as more human benefit.</p></header>
+<div class="notice" role="status"><strong>Proof boundary:</strong> This is a static, source-linked prototype, not live telemetry. Productivity acceleration, an exponential curve, independent external receiver delivery, 24-hour survival and device autonomy are <strong>not yet established</strong>.</div>
+<div class="grid" aria-label="Current evidence">
+<div class="tile"><small>Source available</small><strong>Yes</strong><p>One public CoPre entry. Public source availability is not deployment.</p></div>
+<div class="tile"><small>Machine-to-machine CI handoff</small><strong>Verified*</strong><p>*Two GitHub Actions jobs in the same provider failure domain.</p></div>
+<div class="tile"><small>Real scheduled ticks</small><strong>1 / 9</strong><p>Audit showed eight unobserved ticks. Not evidence of always-on cadence.</p></div>
+<div class="tile"><small>Verified human time saved</small><strong>Unknown</strong><p>We have no comparable baseline or completed human outcome measure.</p></div>
+</div>
+<section aria-labelledby="trail-title"><h2 id="trail-title">Needle trail: engineering steps</h2>
+<p class="meta">These are distinct evidence boundaries, not points on a numerical exponential-growth curve. Dates UTC.</p>
+<div class="timeline">
+<article class="event"><span class="tag pass">Verified bounded source</span><h3>Public CoPre can be fetched</h3><p>November 10, 2026, 00:36. A pinned CoPre source returned HTTP 200 with a recorded SHA-256.</p><a href="https://github.com/CoCivium/CoCivium/actions/runs/42729597075">Inspect source receipt run</a></article>
+<article class="event"><span class="tag pass">Verified CI-scoped handoff</span><h3>One machine job handed evidence to another</h3><p>November 10, 2026, 00:55. The receiver job downloaded a producer artifact and independently checked its hash. Both remained in GitHub Actions.</p><a href="https://github.com/CoCivium/CoCivium/actions/runs/42731889949">Inspect handoff run</a></article>
+<article class="event"><span class="tag pass">Verified repeat CI handoff</span><h3>Cross-job evidence repeated</h3><p>November 10, 2026, 01:11. Another two-job CI run succeeded. It did not prove an external-host receiver.</p><a href="https://github.com/CoCivium/CoCivium/actions/runs/42733970821">Inspect repeat run</a></article>
+<article class="event held"><span class="tag held">Unproven / held</span><h3>Prove independence, durability and actual usefulness</h3><p>Outside-provider receiver and verified useful action; two source observations 24+ hours apart; consented CoThumb actuation; lower human relay burden measured.</p><a href="https://github.com/CoCivium/CoCivium/issues/317">Inspect acceptance rail</a></article>
+</div></section>
+<section aria-labelledby="human"><h2 id="human">The human test</h2><div class="tile contrast"><p>Could someone unfamiliar with CoCivium answer: <strong>What can it do now? Did it work? How much effort did it save? Does it recover tomorrow?</strong></p><p>Until a real task and baseline are measured, the honest answer to the last two is <strong>we do not yet know</strong>.</p>
+<button id="explain" type="button" aria-expanded="false" aria-controls="explain-details">Show how the gauge works</button>
+<div id="explain-details" class="details"><p><strong>Green:</strong> a bounded check has a real receipt. <strong>Amber:</strong> an acceptance requirement is unresolved. <strong>Unknown:</strong> no measured basis; not zero. <strong>Counter-needle:</strong> failures and human effort are presented alongside successful tests. A product-level gain requires receiver-side usefulness, cost and time comparison, and recovery evidence.</p><p><strong>Do not infer an exponential:</strong> a comparable multiday time series, stable units, independent measurement and normalization are required.</p></div></div></section>
+<section><h2>Source and correction trail</h2><p><a href="https://github.com/CoCivium/CoCivium/blob/main/docs/Architecture/COSPEEDO_EXPONENTIAL_PROOF_AND_RECURRENCE_INTERNALIZATION_R0_20261026.md">CoSpeedo measurement contract</a> · <a href="https://github.com/CoCivium/CoCivium/blob/main/docs/Metrics/COSPEEDO_7DAY_SCORECARD_R0_20261026.json">Seven-day scorecard</a> · <a href="https://github.com/CoCivium/CoCivium/issues/317">Live proof gate and corrections</a></p></section>
+<footer>CoGlyphRail · SOURCE → CI RECEIPT → COUNTER-NEEDLE → HUMAN OUTCOME → INDEPENDENT RECEIVER. No live data feed; source-linked snapshot. More artifacts ≠ more usefulness.</footer>
+</main><script>
+const b=document.querySelector("#explain"),d=document.querySelector("#explain-details");
+b.addEventListener("click",()=>{const on=b.getAttribute("aria-expanded")!=="true";b.setAttribute("aria-expanded",String(on));d.classList.toggle("open",on);b.textContent=on?"Hide gauge explanation":"Show how the gauge works";});
+</script></body></html>

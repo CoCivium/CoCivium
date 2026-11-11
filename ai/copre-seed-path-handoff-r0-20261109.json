@@ -1,0 +1,80 @@
+{
+  "schema": "CoAll.CoPreSeedPathHandoff.v0.1-candidate",
+  "state": "PUBLIC_SAFE_SOURCE_RECORD_NOT_RECEIVER_PICKUP_NOT_INTEGRATION_NOT_CANON",
+  "recorded_date": "2026-11-09",
+  "work_id": "copregeneric:handoff:public-seed-path:r0:20261109",
+  "seed": {
+    "id": "copregeneric:seed:public-draft-v1",
+    "type": "CoSeed",
+    "source_repository": "CoCivium/CoCivium",
+    "path": "docs/CoPreGeneric/Shareable_R0_20261109/CoPreGeneric-v1.0-DRAFT.md",
+    "git_blob_sha": "8ce4e8d81ca78209a083fd92d034da3676eaed7c",
+    "url": "https://github.com/CoCivium/CoCivium/blob/main/docs/CoPreGeneric/Shareable_R0_20261109/CoPreGeneric-v1.0-DRAFT.md",
+    "status": "PUBLIC_DRAFT_READABLE_NOT_CANON"
+  },
+  "paths": [
+    {
+      "id": "copregeneric:path:source-to-manifest",
+      "type": "CoPath",
+      "from": "copregeneric:seed:public-draft-v1",
+      "relation": "REGISTERED_IN",
+      "to": "docs/CoPreGeneric/Shareable_R0_20261109/manifest.json",
+      "target_git_blob_sha": "d559ca86e5a918552d0b2eaadb6e556630f65958"
+    },
+    {
+      "id": "copregeneric:path:source-to-routing",
+      "type": "CoPath",
+      "from": "copregeneric:seed:public-draft-v1",
+      "relation": "ROUTING_CANDIDATE",
+      "to": "ai/copre-canonical-routing-r0-20261109.json",
+      "target_git_blob_sha": "587562aaf4e5be9814e5c07080135c31c9b16939"
+    },
+    {
+      "id": "copregeneric:path:source-to-feedback",
+      "type": "CoPath",
+      "from": "copregeneric:seed:public-draft-v1",
+      "relation": "SUPPORTS_FEEDBACK",
+      "to": "docs/CoPreGeneric/Shareable_R0_20261109/CoFeedLoop-Devs.md",
+      "target_git_blob_sha": "80a4300f9027623291b85bc261c920fab4d628e4"
+    },
+    {
+      "id": "copregeneric:path:source-to-mindspace",
+      "type": "CoPath",
+      "from": "copregeneric:seed:public-draft-v1",
+      "relation": "PROPOSES_OBSERVATION",
+      "to": "docs/CoPreGeneric/Shareable_R0_20261109/CoMindspace-Map.md",
+      "target_git_blob_sha": "72ffaeac16e408a4eaf3b637ea8b7d0320697ee0"
+    }
+  ],
+  "intended_mirrors": [
+    {
+      "url": "https://github.com/CoCivium/CoPreGeneric",
+      "status": "NOT_FOUND_IN_CONNECTED_GITHUB_REPOSITORY_LOOKUP"
+    },
+    {
+      "url": "https://CoCivium.org/CoPre",
+      "status": "NOT_VERIFIED"
+    },
+    {
+      "url": "https://InSeed.com/Stead",
+      "status": "NOT_VERIFIED"
+    }
+  ],
+  "verified_boundaries": {
+    "source_readback": "GITHUB_CONNECTOR_FETCH_FILE",
+    "manifest_readback": "GITHUB_CONNECTOR_FETCH_FILE",
+    "receiving_other_front": "NO_READPROOF",
+    "independently_hosted_mirror": "NO_READPROOF",
+    "automated_sync": "NOT_ESTABLISHED",
+    "survival_over_24h": "NOT_ESTABLISHED",
+    "orb_gauge_thumb_time_combined": "NOT_ESTABLISHED"
+  },
+  "next_acceptance": "Independent authorized reader retrieves exact seed and path bundle, returns reader identity, bytes/digest, timestamp and receipt; a second independent host must separately verify mirror bytes before promotion.",
+  "limitations": [
+    "PUBLICATION_IS_NOT_PICKUP",
+    "HASH_IS_NOT_SEMANTIC_INTEGRATION",
+    "DIALOGUE_VERSION_IS_NOT_RUNTIME_VERSION",
+    "NO_GLOBAL_CROSS_SESSION_ACK",
+    "PRIVATE_TRANSCRIPTS_NOT_PUBLISHED"
+  ]
+}

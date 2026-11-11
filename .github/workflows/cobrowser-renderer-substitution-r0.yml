@@ -9,6 +9,8 @@ on:
       - "docs/Architecture/COBROWSER_RENDERER_SUBSTITUTION_R0_20261027.md"
       - "ai/cobrowser-renderer-policy-r0.json"
       - "scripts/CoBrowserRendererSubstitutionR0.py"
+      - "scripts/CoBrowserCarryProjectionR0.py"
+      - "scripts/test_cobrowser_carry_r0.py"
       - "ai/fixtures/cobrowser-renderer-substitution-r0.json"
       - ".github/workflows/cobrowser-renderer-substitution-r0.yml"
   push:
@@ -16,6 +18,8 @@ on:
       - "docs/Architecture/COBROWSER_RENDERER_SUBSTITUTION_R0_20261027.md"
       - "ai/cobrowser-renderer-policy-r0.json"
       - "scripts/CoBrowserRendererSubstitutionR0.py"
+      - "scripts/CoBrowserCarryProjectionR0.py"
+      - "scripts/test_cobrowser_carry_r0.py"
       - "ai/fixtures/cobrowser-renderer-substitution-r0.json"
       - ".github/workflows/cobrowser-renderer-substitution-r0.yml"
 
@@ -34,6 +38,9 @@ jobs:
           python -B scripts/CoBrowserRendererSubstitutionR0.py \
             --fixture ai/fixtures/cobrowser-renderer-substitution-r0.json \
             > /tmp/cobrowser-renderer-r0.json
+
+      - name: Verify CoCarry single-front projection without tab closure
+        run: python -B -m unittest -v scripts/test_cobrowser_carry_r0.py
 
       - name: Validate renderer policy and substitution rails
         run: |

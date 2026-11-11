@@ -1,0 +1,45 @@
+name: Receiver reconciliation regression
+on:
+  push:
+    paths:
+      - 'tests/gs_receiver/**'
+      - '.github/workflows/receiver-reconciliation.yml'
+  pull_request:
+    paths:
+      - 'tests/gs_receiver/**'
+      - '.github/workflows/receiver-reconciliation.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  isolated-receiver:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Required for pinned historical CoPre.md git-object readback
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Execute receiver regression and capture evidence
+        id: tests
+        shell: bash
+        run: |
+          mkdir -p evidence
+          set +e
+          python -m unittest discover -s tests/gs_receiver -p 'test_*.py' -v > evidence/unittest.log 2>&1
+          code=$?
+          set -e
+          cat evidence/unittest.log
+          printf '%s\n' "commit=${GITHUB_SHA}" "run_id=${GITHUB_RUN_ID}" "run_attempt=${GITHUB_RUN_ATTEMPT}" "utc=$(date -u +%Y-%m-%dT%H:%M:%SZ)" "exit_code=${code}" > evidence/receipt.txt
+          cat evidence/receipt.txt
+          exit "$code"
+      - name: Upload execution receipt even on failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: receiver-reconciliation-evidence
+          path: evidence/
+          if-no-files-found: warn
+          retention-days: 30

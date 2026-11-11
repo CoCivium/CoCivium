@@ -1,0 +1,54 @@
+{
+  "schema": "CoGoAll.ScheduledWakePublicReceipt.R0",
+  "observed_at_utc": "2026-11-09T10:25:47.140592+00:00",
+  "source_workflow": "CoGoAll unattended proof pulse",
+  "source_run_url": "https://github.com/CoCivium/CoCivium/actions/runs/42600794101",
+  "source_run_id": 42600794101,
+  "source_run_event": "push",
+  "source_commit": "1243984e685321b288f4c2f9cc3910eabf8d91ae",
+  "source_job_conclusion": "success",
+  "source_artifact_id": 13664924176,
+  "artifact_zip_sha256": "e2ff63bf0c3478ddbda173dfdd0dd16814cad986bce1d423b2285200d65c9a5a",
+  "schedule_audit_sha256": "641debc2df484a58025582753f9efe411b088385d86990eaa404cb7cf0330754",
+  "hash_readback": {
+    "archive_sha256_matches_github_metadata": true,
+    "schedule_audit_sha256_matches_inner_proof_receipt": true,
+    "log_digest_mismatches": 0
+  },
+  "tested_cases": {
+    "schedule_cadence_audit": 14,
+    "conclusion": "success"
+  },
+  "observed_schedule": {
+    "expected_cron": "17 * * * *",
+    "grace_minutes": 60,
+    "lookback_hours": 10,
+    "matured_ticks": 9,
+    "matched_count": 1,
+    "unobserved_count": 8,
+    "matched_run_id": 42552131960,
+    "matched_at": "2026-11-09T02:39:25+00:00",
+    "unobserved_ticks": [
+      "2026-11-09T01:17:00+00:00",
+      "2026-11-09T03:17:00+00:00",
+      "2026-11-09T04:17:00+00:00",
+      "2026-11-09T05:17:00+00:00",
+      "2026-11-09T06:17:00+00:00",
+      "2026-11-09T07:17:00+00:00",
+      "2026-11-09T08:17:00+00:00",
+      "2026-11-09T09:17:00+00:00"
+    ],
+    "next_expected_tick": "2026-11-09T11:17:00+00:00"
+  },
+  "state": "SCHEDULE_TICKS_UNOBSERVED",
+  "falsification_boundary": "An unobserved scheduler event is NOT proof of why the event was not recorded. Both CI and audit source are GitHub, not a distinct failure domain.",
+  "operational_effects": {
+    "source_ci": true,
+    "x2_receiver_ack": false,
+    "native_rickbar_installed": false,
+    "durable_work_recovery_gt24h": false,
+    "multi_provider_handoff": false
+  },
+  "next_event": "A subsequent truly scheduled GitHub event with a run ID and artifact, or an authenticated CoStead/X2 receiver capability readback",
+  "rights": "public source metadata and synthetic test logs only; no private input or secrets"
+}

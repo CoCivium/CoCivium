@@ -1,0 +1,31 @@
+{
+  "schema": "cocivium.copre.session-drain.r0",
+  "status": "public_contract_not_live_service",
+  "objective": "Recover evidence-bearing work from disposable sessions without using the user as courier",
+  "record_required": ["work_id","source_surface","source_ref","source_digest","observed_at","custody_scope","seed_ref","border_state","new_evidence_refs","held_items","next_trigger","drain_state"],
+  "states": ["DISCOVERED","PREFLIGHT","DRAINING","HELD","RECEIPTED","PUBLIC_PROJECTED","RECOVERED","SUPERSEDED"],
+  "deduplication": "source_ref + source_digest + work_id; preserve conflicts as branches, never silently overwrite",
+  "public_projection": {
+    "allow": ["public work ID","public evidence URL","verified commit SHA","redacted unresolved item","source-safe candidate improvement"],
+    "deny": ["private email content","personal messages","credentials","private source identifiers","unconsented attachments"],
+    "rule": "public projections require explicit custody authorization; no default public echo"
+  },
+  "receipt": ["work_id","input_digest","output_digest","effect_boundary","actor","observed_at","independent_verification_ref"],
+  "resume": {
+    "idempotency": "repeat same source version yields same record key and no duplicate publication",
+    "fencing": "one elected writer per conflicting record revision; other workers may independently challenge",
+    "failure": "partial drain remains HELD with last verified checkpoint",
+    "restart": "load durable record, verify hashes, then resume from checkpoint"
+  },
+  "megascroller_projection": ["front_status","public_evidence","nested_map_ref","next_qualified_work","receipt_state"],
+  "acceptance_tests": [
+    "same source replay does not duplicate drain",
+    "different source version preserves both versions and supersession relation",
+    "private draft does not appear in public projection",
+    "stale writer cannot replace newer revision",
+    "crash between checkpoint and publication resumes without double publish",
+    "independent observer distinguishes source commit from receiver ACK",
+    "a public atlas rebuilds from receipts without original chat tab"
+  ],
+  "known_unproven": ["automatic session discovery","cross-provider access","self-draining sessions","live receiver","X2 integration","24-hour persistence","independent mirror restore"]
+}

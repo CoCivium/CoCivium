@@ -260,3 +260,11 @@ When X2 is reachable:
 `BEAUTY_NE_CORRECTNESS`
 `LOGGING_NE_KEEP_EVERYTHING`
 `MANY_PROJECTIONS_NE_MANY_TRUTH_STORES`
+
+## CoAckRewise across recent source threads | 2026-11-09
+
+The new [CoObject → CoOrbWare → CoMVP / Civ2–Civ3 frontier reconciliation](../Evolution/COACKREWISE_COOBJECT_CIV3_FRONTIER_R0_20261109.md) is a bounded, public-safe **REWISE**, not a verbatim transcript, automatic approval, canonical rewrite, global CoReGroup or universal session census. It preserves key accepted intent, improvements, counterexamples, unresolved work and selected evidence links.
+
+An AckRewise event should point to source identity, observed time, affected WorkIDs/prodlets, competing interpretations, revisions, independent receivers if proven, and its next qualified proof. The user's assent is permission to continue authorized bounded work, not evidence that an external AI accepted a message, an app is installed, or every independent session synchronized. The same object retains history through CoMap relations and CoTime projections without treating prediction as observation.
+
+Default CoOrb projection: one **HereNow**, one significant changed relation, one open proof gate, one recovery/next deed; the rest stays available by drill-down. Avoid repeated reformulation of the same request without a material operational delta.

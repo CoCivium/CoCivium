@@ -1,0 +1,40 @@
+{
+  "schema": "cocivium.comap.media-inspiration.r0",
+  "authority": "design contract, not deployed runtime",
+  "principle": "Capture inspiration opportunities without promoting every render into canon",
+  "views": ["atlas_of_atlases", "dependency_graph", "evidence_lineage", "timeline", "outreach_lifecycle", "worker_and_recovery", "spatial_orb"],
+  "graph": {
+    "node_kinds": ["work", "map", "diagram", "render", "claim", "evidence", "draft", "receipt", "hypothesis"],
+    "edge_kinds": ["contains", "depicts", "derived_from", "inspires", "challenges", "supersedes", "depends_on", "projects", "requires_review"],
+    "identity": "stable work ID plus immutable artifact version/digest",
+    "navigation": ["expand", "collapse", "zoom", "filter", "follow_edge", "time_travel", "compare_versions", "open_source"]
+  },
+  "inspiration_pipeline": [
+    "render_observed",
+    "permission_and_provenance_checked",
+    "candidate_extracted",
+    "deduplicated_and_related",
+    "ranked_for_information_gain",
+    "challenged",
+    "experimented",
+    "promoted_or_slept"
+  ],
+  "retention": {
+    "default": "record reference and digest when authorized; do not duplicate all media",
+    "ephemeral": "skip when private, unconsented, redundant, low-value or transient",
+    "candidate": "reversible and non-authoritative",
+    "promotion": "requires evidence and a qualified reviewer or authorized policy",
+    "deletion": "respect retention limits and source permissions"
+  },
+  "cross_media_rule": "A diagram can inspire a test and a test can invalidate a diagram; neither may certify its own evidence",
+  "email_rule": "Evidence changes may mark a draft stale; never auto-send or silently rewrite sent mail",
+  "anti_silo_rule": "Link typed references across permitted boundaries; do not merge private custody into public graph",
+  "minimum_proof": [
+    "one nested map renders from source graph",
+    "one click opens source and preserves identity",
+    "one changed claim marks dependent media stale",
+    "one speculative inspiration remains non-canonical",
+    "one unauthorized media capture is rejected",
+    "one restart restores graph and navigation context"
+  ]
+}

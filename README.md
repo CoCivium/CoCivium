@@ -1,5 +1,7 @@
 # CoCivium ⊂ Trust Together
 
+**CoLocal+ cross-front Seed registry:** [Browse CoSeed / CoPath entries](docs/CoLocal/README.md). A public discovery index, not evidence of automated front pickup or CoAll integration.
+
 **Read CoCivia's AGI Book+**: [Start with the Field Guide to Thinking](docs/Books/README.md), the public-preview reader of the same CoCivia AGI publication family. Eight short draft chapters; static editorial preview, not yet a live-evolving or formally licensed finished edition.
 
 **Bio–Synth Gap Braid v5.4**: [Explore the 11 human–AI cooperation gaps and the three-strand I+ continuity design](docs/Architecture/BIO_SYNTH_GAP_BRAID_V5_4.md). Public design candidate, not an operating-system or consciousness claim.
@@ -30,6 +32,7 @@ CoCivium is an open research project exploring how people and AI tools can work 
 | **Try a device-side experiment** | [Open the browser-first device check](https://cocivium.github.io/CoAcademy/device-first/) |
 | **Challenge or improve the research** | [Open a GitHub issue draft](https://github.com/CoCivium/CoCivium/issues/new) |
 | **Inspect proofs and what remains unproven** | [Read the evidence index](EVERGREEN.md) |
+| **Examine recent AI and First Contact claims** | [Read the source-linked CiAll+ frontier evidence review](docs/Public/COALL_FRONTIER_PUBLIC_EVIDENCE_REVIEW_R0_20261108.md) · Distinguish measured results, counterevidence, research options and unresolved verification. |
 
 **[Enter the Living World: 3D + CoTime](https://cocivium.github.io/CoAcademy/experience/)** · [Human-friendly homepage](https://cocivium.github.io/CoAcademy/) · [60-second introduction](START_HERE.md)
 

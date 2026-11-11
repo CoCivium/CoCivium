@@ -8,12 +8,20 @@ on:
     paths:
       - "docs/Architecture/COBROWSER_COORB_CONTINUITY_R0_20261027.md"
       - "scripts/CoBrowserContinuityR0.py"
+      - "scripts/CoCarryBrowserConsolidationR0.py"
+      - "tests/test_cocarry_browser_consolidation_r0.py"
+      - "docs/Evolution/COCARRY_BROWSER_INDEPENDENT_RECOVERY_R0.json"
+      - "docs/Evolution/FRONTIER_EVIDENCE_INDEX_R0.json"
       - "ai/fixtures/cobrowser-continuity-r0.json"
       - ".github/workflows/cobrowser-continuity-r0.yml"
   push:
     paths:
       - "docs/Architecture/COBROWSER_COORB_CONTINUITY_R0_20261027.md"
       - "scripts/CoBrowserContinuityR0.py"
+      - "scripts/CoCarryBrowserConsolidationR0.py"
+      - "tests/test_cocarry_browser_consolidation_r0.py"
+      - "docs/Evolution/COCARRY_BROWSER_INDEPENDENT_RECOVERY_R0.json"
+      - "docs/Evolution/FRONTIER_EVIDENCE_INDEX_R0.json"
       - "ai/fixtures/cobrowser-continuity-r0.json"
       - ".github/workflows/cobrowser-continuity-r0.yml"
 
@@ -26,6 +34,11 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+
+      - name: Validate published CoCarry synthetic recovery contract
+        run: |
+          python -B scripts/CoCarryBrowserConsolidationR0.py
+          python -B -m unittest discover -s tests -p 'test_cocarry_browser_consolidation_r0.py' -v
 
       - name: Run bounded continuity canary
         run: |

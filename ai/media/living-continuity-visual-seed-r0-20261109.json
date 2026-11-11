@@ -1,0 +1,255 @@
+{
+  "schema": "CoAll.MediaRelationalSeed.R0-candidate",
+  "status": "PUBLIC_SAFE_DESCRIPTION_SOURCE_IMAGE_PRIVATE_CUSTODY",
+  "created_utc": "2026-11-09T23:40:56Z",
+  "source": {
+    "type": "user_supplied_visual_concept",
+    "display_title": "CoCivium / CoAll: A Living Continuity System",
+    "sha256": "7a1fe2bd075cbc03555c4c3c2bc5c8f265006579e381670604fac50a0c20c26d",
+    "bytes": 3175770,
+    "dimensions": [
+      1672,
+      941
+    ],
+    "format": "image/png",
+    "custody": "PRIVATE_COALL_LIBRARY_NOT_PUBLIC_IMAGE_FILE",
+    "license_review": "CREATOR_PERMISSION_AND_MEDIA_RIGHTS_TO_BE_CONFIRMED_BEFORE_PUBLIC_BINARY_REPUBLISHING"
+  },
+  "coordinate_system": "[x,y,width,height] fractions of original image bounds; conceptual hotspots only, not automatically accurate DOM geometry",
+  "elements": [
+    {
+      "id": "hero",
+      "label": "Living Continuity System",
+      "region": [
+        0.035,
+        0.12,
+        0.66,
+        0.49
+      ],
+      "role": "hero",
+      "fronts": [
+        "CoCivium",
+        "CoAll",
+        "CoWow",
+        "CoWet"
+      ],
+      "target": "CoPre.md"
+    },
+    {
+      "id": "futures",
+      "label": "Futures",
+      "region": [
+        0.715,
+        0.13,
+        0.258,
+        0.105
+      ],
+      "role": "navigation",
+      "fronts": [
+        "CoTime",
+        "CoEv",
+        "CoPath"
+      ],
+      "target": "ai/copre-seed-path-fabric-r0-20261109.json"
+    },
+    {
+      "id": "retros",
+      "label": "Retros",
+      "region": [
+        0.715,
+        0.249,
+        0.258,
+        0.105
+      ],
+      "role": "navigation",
+      "fronts": [
+        "CoEcho",
+        "CoTime",
+        "CoFront"
+      ],
+      "target": "ai/retro-echo-coverage-r0-20261109.json"
+    },
+    {
+      "id": "comap",
+      "label": "CoMap",
+      "region": [
+        0.715,
+        0.367,
+        0.258,
+        0.104
+      ],
+      "role": "navigation",
+      "fronts": [
+        "CoMap",
+        "CoNav",
+        "CoPath"
+      ],
+      "target": "ai/copre-omnidirectional-navigation-r0-20261109.json"
+    },
+    {
+      "id": "media",
+      "label": "Media",
+      "region": [
+        0.715,
+        0.484,
+        0.258,
+        0.103
+      ],
+      "role": "navigation",
+      "fronts": [
+        "CoMedia",
+        "CoEvSeed",
+        "CoSource"
+      ],
+      "target": "docs/Design/COHUMAN_RICH_HERO_AND_AUDIO_CONSENT_R0_20261109.md"
+    },
+    {
+      "id": "continuity_map",
+      "label": "Continuity Map",
+      "region": [
+        0.03,
+        0.63,
+        0.31,
+        0.215
+      ],
+      "role": "embedded_diagram",
+      "fronts": [
+        "CoMap",
+        "CoFront",
+        "CoPath"
+      ],
+      "target": "ai/copre-seed-path-fabric-r0-20261109.json"
+    },
+    {
+      "id": "media_lineage",
+      "label": "Media Lineage",
+      "region": [
+        0.36,
+        0.635,
+        0.321,
+        0.158
+      ],
+      "role": "lineage",
+      "fronts": [
+        "CoMedia",
+        "CoSource",
+        "CoEcho"
+      ],
+      "target": "docs/CoPreGeneric/Shareable_R0_20261109/manifest.json"
+    },
+    {
+      "id": "possibility_time",
+      "label": "Across Time & Possibility",
+      "region": [
+        0.695,
+        0.635,
+        0.273,
+        0.157
+      ],
+      "role": "temporal_exploration",
+      "fronts": [
+        "CoTime",
+        "CoEv",
+        "CoEcho"
+      ],
+      "target": "ai/retro-echo-coverage-r0-20261109.json"
+    },
+    {
+      "id": "quiet_audio",
+      "label": "Quiet mode",
+      "region": [
+        0.888,
+        0.023,
+        0.095,
+        0.055
+      ],
+      "role": "audio_preference",
+      "fronts": [
+        "CoAudioFkOff",
+        "CoHumanSurface"
+      ],
+      "target": "docs/Design/COHUMAN_RICH_HERO_AND_AUDIO_CONSENT_R0_20261109.md"
+    },
+    {
+      "id": "scroll_audio",
+      "label": "Scroll to go deeper / audio gradually rises",
+      "region": [
+        0.39,
+        0.819,
+        0.226,
+        0.134
+      ],
+      "role": "unimplemented_interaction_proposal",
+      "fronts": [
+        "CoAudio",
+        "CoAudioFkOff",
+        "CoWet"
+      ],
+      "target": "docs/Design/COHUMAN_RICH_HERO_AND_AUDIO_CONSENT_R0_20261109.md"
+    }
+  ],
+  "relation_model": {
+    "node_types": [
+      "CoWork",
+      "CoSeed",
+      "CoPath",
+      "CoSource",
+      "CoVisual",
+      "CoAudio",
+      "CoVideo",
+      "CoDiagram",
+      "CoCaption",
+      "CoTranslation",
+      "CoCulture",
+      "CoConsent",
+      "CoReceipt",
+      "CoHypothesis"
+    ],
+    "edges": [
+      "DEPICTS",
+      "EXPLAINS",
+      "DERIVED_FROM",
+      "LINKS_TO",
+      "TRANSLATES_TO",
+      "HAS_CAPTION",
+      "HAS_TRANSCRIPT",
+      "HAS_RIGHTS",
+      "PREFERS_QUIET",
+      "CULTURAL_INTERPRETATION_OF",
+      "PREDATES",
+      "CHALLENGES",
+      "SUPERSEDES_WITH_RECEIPT",
+      "EXPLORES_POSSIBILITY"
+    ],
+    "strict_rule": "A beautiful visual resemblance, hyperlink, or same-color node is not proof of identity, semantic equivalence, licensing, receiver pickup, or actual implemented interaction.",
+    "inversion": "Traverse RELATION in reverse only for discovery; do not assume reciprocated evidence or authority."
+  },
+  "interaction_states": {
+    "screenshot": "STATIC_RASTER_IMAGE",
+    "buttons": "PICTURED_NOT_LIVE",
+    "hero_play": "PICTURED_NOT_LIVE",
+    "quiet_mode": "PICTURED_NOT_LIVE",
+    "audio_scroll": "PICTURED_NOT_LIVE_AND_NOT_CONSENT_SAFE_AS_DEFAULT"
+  },
+  "public_candidate": {
+    "medium": "original SVG/HTML successor with source-bound accessible links",
+    "audio": "silent; explicit opt-in needed before scroll-responsive ambient sound",
+    "lightweight": "static text plus alt and reduced-motion equivalent",
+    "status": "NOT_DEPLOYED"
+  },
+  "gaps": [
+    "No verified hosted working page built from screenshot",
+    "No independent media licensing or source layers",
+    "No event telemetry or receiver acceptance",
+    "No culture/audience-tested translations",
+    "No real audio asset, player or preference persistence"
+  ],
+  "nonclaims": [
+    "NO_GLOBAL_FRONT_SYNC",
+    "NO_PUBLIC_ORIGINAL_IMAGE_LANDING",
+    "NO_ACTIVE_HERO_PLAYER",
+    "NO_WORKING_QUIET_TOGGLE",
+    "NO_AUTOMATIC_MEDIA_GENEALOGY",
+    "NO_CANON_COEX_RUNTIME"
+  ]
+}

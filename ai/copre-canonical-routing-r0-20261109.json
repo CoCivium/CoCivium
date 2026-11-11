@@ -1,0 +1,60 @@
+{
+  "schema": "CoAll.CoPreCanonicalRouting.v0.1-candidate",
+  "status": "PUBLIC_SAFE_DESIRED_DESTINATIONS_NOT_THREE_LIVE_MIRRORS",
+  "issued_utc": "2026-11-09T22:42:19Z",
+  "purpose": "CoPreGeneric pointer-first thumb/mouse recovery; same origin work identity across authorized projections",
+  "identity": "copregeneric",
+  "desired_endpoints": [
+    {
+      "role": "git_source",
+      "url": "https://github.com/CoCivium/CoPreGeneric",
+      "state": "NOT_FOUND_IN_CONNECTED_REPOSITORY_SEARCH",
+      "verified": false
+    },
+    {
+      "role": "human_short_entry",
+      "url": "https://CoCivium.org/CoPre",
+      "state": "NOT_VERIFIED_ACCESSIBLE",
+      "verified": false
+    },
+    {
+      "role": "private_gateway_public_projection",
+      "url": "https://InSeed.com/Stead",
+      "state": "NOT_VERIFIED_ACCESSIBLE",
+      "verified": false
+    }
+  ],
+  "existing_readable_source": {
+    "url": "https://github.com/CoCivium/CoCivium/blob/main/docs/Architecture/COPREGENERIC_DUAL_PROJECTION_R0_20261109.md",
+    "role": "EXISTING_PUBLIC_DRAFT_SOURCE_NOT_CLAIMED_CANONICAL",
+    "state": "GITHUB_CONNECTOR_READBACK"
+  },
+  "related_sources": [
+    "SESSION_BOOTSTRAP.md",
+    "ai/index.json",
+    "docs/Architecture/COFRONT_RETRO_ECHO_NO_ORPHANS_R0_20261109.md",
+    "ai/retro-echo-delta-20261109-v2.json"
+  ],
+  "event_semantics": {
+    "mouse": "One stable URL pointer only; never paste full private transcript or issue instructions that silently change scope",
+    "reader": "Fetch, compare exact source identity and digest, identify role/privacy scope, perform only authorized bounded work, produce independent receipt or HELD",
+    "identical_mirrors": "Same hashed payload can be equal across mirrors; HTML projections and gateways may differ, so separately hash shared source bundle, not all rendered pages",
+    "fail_closed": "Unreachable, wrong payload or unverified owner means HELD, not silent redirect",
+    "rollback": "Keep last-known-good pointer and source; do not overwrite current default route without reachability, ownership and rollback tests"
+  },
+  "next_proofs": [
+    "Verify control and publishing access at all three endpoint owners and DNS/TLS.",
+    "Publish a public-safe payload to candidate GitHub source or approved existing repository.",
+    "Provision human short-route and independent CoStead gateway with privacy and security review.",
+    "Read each exact source bundle independently; record byte digest and receiver identity.",
+    "Only then elect a single mouse URL and keep an offline fallback."
+  ],
+  "limitations": [
+    "NO_VERIFIED_CANONICAL_THREE_WAY_SYNC",
+    "NO_X2_MOUSE_REPROGRAM",
+    "NO_COGATEWAY_RUNTIME",
+    "NO_PROVIDER_SESSION_DRAIN",
+    "NO_META_AI_ACK",
+    "NO_PRIVATE_PUBLIC_PROMOTION"
+  ]
+}

@@ -30,6 +30,24 @@ This is a public synthesis of previously reported developments, not an assertion
 
 **Autonomous physical laboratories.** The peer-reviewed *Nature* paper on **AutoDNA** (Nov 4, 2026) reports orchestration of over 20 classes of instruments across more than 11,000 experimental steps, a 3.2-fold improvement in concurrent protocol execution under the studied conditions, and several nucleic-acid workflows. Humans still maintain hardware and replenish materials. This is significant *bounded physical orchestration*, not demonstrated general independent scientific discovery. [Primary publication](https://www.nature.com/articles/s41586-026-11228-6).
 
+### AutoDNA: testable transfer to CoFactory+ and CoOps+
+
+**Primary evidence (2026-11-04):** Wu et al., *Nature*, [doi:10.1038/s41586-026-11228-6](https://doi.org/10.1038/s41586-026-11228-6), report coordination of more than 20 instrument types and over 11,000 laboratory steps, with 3.2-fold faster concurrent execution than the studied sequential comparator. The [author-provided code](https://github.com/IPADS-X/AutoDNA) and [versioned study data](https://doi.org/10.5281/zenodo.20624108) are inspectable. Human maintenance and replenishment were still necessary. The published figure's concurrent/sequential comparison does not, by itself, identify how much benefit is *specifically caused by AI-agent reasoning* rather than scheduling, instrumentation or engineered parallelism.
+
+**Counterhypotheses:** fixed protocol engineering, hardware concurrency, task selection, common-source measurements, and strong infrastructure support may explain some or most reported gains. Independent cross-site replication, long unattended survivorship, source-to-independent-receiver results, and broad portability are not established by publication or released code.
+
+**Bounded non-executed discriminators (rank by independent information gain, not drama):**
+1. **Matched, safe task baselines:** compare agent orchestration with ordinary schedulers and trained operators under equal equipment, time, resource, quality and rights constraints. Report quality-adjusted successful output and cases where the simpler baseline wins.
+2. **Independent reproduction:** use an unaffiliated observer and approved nonclinical test fixture; record which models, code, datasets, instruments and calibration sources are shared.
+3. **Failure and replay:** in an isolated authorized test, evaluate interruption-before/after-commit, stale actuator fencing, duplicate physical action prevention, observable recovery and human touches.
+4. **Portable interfaces:** substitute one supported device/provider while holding task and acceptance criteria constant; inspect least-privilege permission, safe refusal and exact output readback.
+5. **Alternative analysis:** blinded re-scoring and a distinct data pipeline, retaining null, contradictory and failed outcomes instead of only successes.
+6. **Whole-system costs:** measure verified usable outcome per unit time, energy, money, materials, maintenance and operator effort, rather than extrapolating one throughput factor.
+
+**Candidate evidence packet, not a new global ontology:** `work_id | source_doi | source_revision | task_id | permitted_scope | instrument_versions | model_versions | baseline | event_time | observation_time | calibration | counterhypotheses | outcome | resources | failure_replay | evidence_hash | independent_receiver_readproof | nonclaims | next_wake`. Unknown fields stay UNKNOWN. A receiver must verify the *exact effect* independently before promotion.
+
+**Next acceptance gate:** demonstrate one *authorized* intent-to-physical-result workflow with failure/restart and external readproof, using pre-existing CoAll WorkID and custody contracts. This is proposed research transfer only; **no CoCivium lab integration, actual experiment, deployed agent, independent reproduction, or authorized biological operation is claimed**.
+
 **China and global agent interoperability.** At the Nov 4 Wuzhen forum, publicly documented initiatives addressed mutual trust and interoperability of AI agents. The Hong Kong government's [official November 4 account](https://www.info.gov.hk/gia/general/202611/04/P2026110400624.htm) confirms the forum and official participation. Proposed standards, trust mechanisms, and cooperation are **not** proof of adopted technical standards or independently reproduced cross-provider authorization, revocation, and recovery.
 
 **Candidate CoAll discriminator:** Reproduce an independently witnessed transaction across two unrelated systems using portable actor identity, least-privilege consent, revocation, source provenance, failure recovery, and exact receiver readback. Reject evidence that only replays one provider's own test fixture.

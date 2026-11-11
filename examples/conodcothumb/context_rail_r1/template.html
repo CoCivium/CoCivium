@@ -50,7 +50,15 @@ summary{cursor:pointer;font-weight:700;margin-bottom:10px}details p{font-size:.8
 <div class="result" id="result" aria-live="polite"><div class="status" id="state">NOT RUN</div><h3 id="title">Nothing captured</h3><p class="subtle" id="explanation">Select a context and choose Preview. No actual mouse, keyboard or source file is observed.</p><ol id="actions" class="actions"></ol></div>
 <div class="controls"><button id="download" disabled>Download proposal JSON</button></div><p class="small">A local proposal is not authorization, a pasted object, provider contact, a receiver ACK, or a completed CoEx transition.</p>
 </section>
-<section class="panel"><h2>3. CoContext+ scale buffer</h2><div class="row"><div class="glyph">∞</div><div><strong id="count">Addressable only</strong><div class="subtle">Syntactic context combinations, not running processes</div></div></div>
+<section class="panel" aria-labelledby="ownedHeading">
+<h2 id="ownedHeading">3. Recover one work thread</h2>
+<p class="subtle">Synthetic CoPre example only. An explicit button can store one source-bound WorkID in this browser origin and recover it after reopening the page. No real conversation, mouse event or private narrative is captured.</p>
+<div class="result" role="region" aria-label="WorkID recovery status"><div class="status" id="workState" aria-live="polite">NOT CHECKED</div>
+<p id="workNarrative" class="subtle">Preview the Public synthetic Research / What else context, then preserve. Recover and revoke are always deliberate.</p></div>
+<div class="controls"><button id="workPreserve" class="primary" disabled>Preserve synthetic work</button><button id="workRecover">Recover local WorkID</button><button id="workRevoke">Revoke local copy</button></div>
+<p class="small">Browser storage may be unavailable or cleared. An active local record is not an independently verified receiver, a 24-hour service, a live X2 device, or a source-integrity check. Revocation prevents this demo from treating the record as active.</p>
+</section>
+<section class="panel"><h2>4. CoContext+ scale buffer</h2><div class="row"><div class="glyph">∞</div><div><strong id="count">Addressable only</strong><div class="subtle">Syntactic context combinations, not running processes</div></div></div>
 <div class="row"><div class="glyph">⏸</div><div><strong>0 active workers</strong><div class="subtle">No scheduler, auto-input, network, model or always-on agent</div></div></div>
 <blockquote>Question ? → prior ↔ → inversion ¬ → candidate ◇ → test ✓/✕/⏸ → receipt → sleep.</blockquote>
 </section>
@@ -60,10 +68,12 @@ summary{cursor:pointer;font-weight:700;margin-bottom:10px}details p{font-size:.8
 </main>
 <!-- DATA_MARKER -->
 <!-- CORE_MARKER -->
+<!-- WORK_MARKER -->
 <script>
 (function(){'use strict';
 const manifest=JSON.parse(document.getElementById('manifest').textContent);
 const core=window.CoContextRailR1;
+const owned=window.CoOwnedWorkR0;
 const $=id=>document.getElementById(id);
 const label=v=>v.replaceAll('_',' ').replaceAll('G D','G_d').replaceAll('AT RECEIVER','@ Receiver');
 for(const id of ['context','question','relation','lens','time','surface']){
@@ -82,7 +92,18 @@ for(const [g,label] of [['◇','Candidate'],['↔','Inverse'],['¬','Negation'],
  const b=document.createElement('b');b.textContent=g;const t=document.createElement('span');t.textContent=label;x.appendChild(b);x.appendChild(t);$('glyphExamples').appendChild(x);
 }
 $('count').textContent=Number(core.logicalSize(manifest)).toLocaleString('en-CA')+' possibilities';
-let last=null;
+let last=null,lastPacket=null;
+function workStore(){try{return window.localStorage;}catch(_){return null;}}
+function workMessage(state,body){$('workState').textContent=state;$('workNarrative').textContent=body;}
+function eligibleWork(p){
+ return Boolean(p&&p.context==='RESEARCH'&&p.question==='WHAT_ELSE'&&
+  p.privacy==='PUBLIC'&&!p.user_selected&&
+  ['EXPLICIT_RING','KEYBOARD_FALLBACK'].includes(p.gesture)&&
+  p.mode==='GLANCE'&&last&&last.state==='PROPOSED_ONLY'&&
+  $('context').value===p.context&&$('question').value===p.question&&
+  $('privacy').value===p.privacy&&$('gesture').value===p.gesture&&!$('fixture').checked);
+}
+function refreshWorkButton(){$('workPreserve').disabled=!eligibleWork(lastPacket);}
 function preview(mode){
  const ctx=$('context').value;
  const isFile=ctx==='FILE'||ctx==='MEDIA';
@@ -90,7 +111,7 @@ function preview(mode){
   surface:$('surface').value,gesture:$('gesture').value,privacy:$('privacy').value,mode,
   object_kind:isFile?(ctx==='MEDIA'?'MEDIA':'FILE'):'QUESTION',user_selected:$('fixture').checked,
   source_ref:$('fixture').checked?'sha256:'+('0'.repeat(64)):null};
- const res=core.decide(packet,manifest);last={...res,simulator:'OFFLINE_PAGE_NOT_OS_INPUT',manifest_version:manifest.version};
+ const res=core.decide(packet,manifest);last={...res,simulator:'OFFLINE_PAGE_NOT_OS_INPUT',manifest_version:manifest.version};lastPacket=packet;refreshWorkButton();
  $('state').textContent=res.state;$('title').textContent=res.state==='PROPOSED_ONLY'?'Shadow proposal, no execution':res.state==='PASS_THROUGH_NATIVE'?'Normal middle-click stays normal':'No action permitted';
  $('explanation').textContent=res.explanation;
  $('actions').replaceChildren();
@@ -100,7 +121,34 @@ function preview(mode){
 }
 $('preview').addEventListener('click',()=>preview('GLANCE'));
 $('more').addEventListener('click',()=>preview('MORE'));
-$('reset').addEventListener('click',()=>{for(const id of ['context','question','relation','lens','time','surface','privacy','gesture'])$(id).selectedIndex=0;$('context').value='RESEARCH';$('question').value='WHAT_ELSE';$('lens').value='PRACTICAL';$('privacy').value='PUBLIC';$('gesture').value='EXPLICIT_RING';$('fixture').checked=false;last=null;$('state').textContent='NOT RUN';$('title').textContent='Nothing captured';$('explanation').textContent='No device action or file read occurred.';$('actions').replaceChildren();$('download').disabled=true;});
+$('reset').addEventListener('click',()=>{for(const id of ['context','question','relation','lens','time','surface','privacy','gesture'])$(id).selectedIndex=0;$('context').value='RESEARCH';$('question').value='WHAT_ELSE';$('lens').value='PRACTICAL';$('privacy').value='PUBLIC';$('gesture').value='EXPLICIT_RING';$('fixture').checked=false;last=null;lastPacket=null;$('workPreserve').disabled=true;$('state').textContent='NOT RUN';$('title').textContent='Nothing captured';$('explanation').textContent='No device action or file read occurred.';$('actions').replaceChildren();$('download').disabled=true;});
+for(const id of ['context','question','relation','lens','time','surface','privacy','gesture','fixture']){
+ $(id).addEventListener('change',()=>{$('workPreserve').disabled=true;});
+}
+$('workPreserve').addEventListener('click',()=>{
+ if(!eligibleWork(lastPacket)){workMessage('HELD_EXPLICIT_SCOPE','Preview the eligible Public synthetic Research / What else context again.');return;}
+ const result=owned.preserve(workStore(),{context:lastPacket.context,question:lastPacket.question,privacy:lastPacket.privacy,
+  gesture:lastPacket.gesture,fixture:lastPacket.user_selected,preview_state:last.state});
+ const state=result.state;
+ workMessage(state,state==='COMMITTED_BROWSER_LOCAL'?'One synthetic WorkID preserved in browser-origin storage. Click Recover to inspect it.':
+  state==='DUPLICATE_SUPPRESSED'?'Same WorkID already exists. No duplicate committed.':
+  'Local storage or consent boundary is held. No receiver effect occurred.');
+});
+$('workRecover').addEventListener('click',()=>{
+ const r=owned.recover(workStore());
+ workMessage(r.state,r.state==='RECOVERED_BROWSER_LOCAL'?
+  r.summary+' Prior decisions: '+r.decisions.join('; ')+'. Blockers: '+r.blockers.join('; ')+'. Next: '+r.next_safe_deed+
+  ' (This browser did not independently verify the source or deliver a remote receipt.)':
+  r.state==='HELD_REVOKED'?'The local work record was revoked. It cannot be resumed here.':
+  r.state==='EMPTY'?'No local WorkID exists in this browser origin.':
+  'Storage is unavailable or its record conflicts. Nothing is silently overwritten.');
+});
+$('workRevoke').addEventListener('click',()=>{
+ const r=owned.revoke(workStore());workMessage(r.state,
+  r.state==='REVOKED_BROWSER_LOCAL'||r.state==='ALREADY_REVOKED'?
+  'Synthetic record is held as revoked; further preserve/recover cannot silently reactivate it.':
+  'No active authorized local record could be revoked.');
+});
 $('download').addEventListener('click',()=>{
  if(!last||last.state!=='PROPOSED_ONLY')return;
  const data=JSON.stringify({...last,downloaded_at:new Date().toISOString(),outbound_effects:0},null,2)+'\n';

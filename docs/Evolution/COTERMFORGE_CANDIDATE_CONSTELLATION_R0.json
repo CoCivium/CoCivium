@@ -1,0 +1,1115 @@
+{
+  "schema": "cocivium.cotermforge.candidate_constellation.r0",
+  "status": "PUBLIC_CANDIDATES_NOT_CANON",
+  "umbrella": [
+    "CoNuExistentialism+",
+    "CoG_dSide+",
+    "CoTermForge+"
+  ],
+  "count": 120,
+  "principle": "Candidates are search space, not facts or canon. Reject ornamental synonyms; retain distinct meaning, provenance and evidence boundaries.",
+  "generation_rules": [
+    "Derive candidates by ontology, scale, inverse, temporal transform, stakeholder, cultural translation and falsifier.",
+    "Do not treat algorithmic counterparts as proven antonyms; counterpart_hint is only a prompt.",
+    "Do not force wave uniqueness where controlled replication is valuable.",
+    "Keep CoG_dSide interpretations distinct from empirical observations.",
+    "Promote only after definition, relation, use case, example, counterexample and reviewer evidence."
+  ],
+  "families": [
+    "CoExist",
+    "CoPossible",
+    "CoRelation",
+    "CoTime",
+    "CoSense",
+    "CoG_dSide",
+    "CoEthics",
+    "CoKnow",
+    "CoCreate",
+    "CoNull",
+    "CoSocial",
+    "CoSystem"
+  ],
+  "terms": [
+    {
+      "id": "CoBeing+",
+      "family": "CoExist",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoBeing distinguish within CoExist?",
+      "counterpart_hint": "CoContinuity+",
+      "epistemic_lane": "definition_required",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoBecoming+",
+      "family": "CoExist",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoBecoming distinguish within CoExist?",
+      "counterpart_hint": "CoIdentity+",
+      "epistemic_lane": "definition_required",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoUnbeing+",
+      "family": "CoExist",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoUnbeing distinguish within CoExist?",
+      "counterpart_hint": "CoDifference+",
+      "epistemic_lane": "definition_required",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoReBeing+",
+      "family": "CoExist",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoReBeing distinguish within CoExist?",
+      "counterpart_hint": "CoEmergence+",
+      "epistemic_lane": "definition_required",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoWithBeing+",
+      "family": "CoExist",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoWithBeing distinguish within CoExist?",
+      "counterpart_hint": "CoPresence+",
+      "epistemic_lane": "definition_required",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoContinuity+",
+      "family": "CoExist",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoContinuity distinguish within CoExist?",
+      "counterpart_hint": "CoBeing+",
+      "epistemic_lane": "definition_required",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoIdentity+",
+      "family": "CoExist",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoIdentity distinguish within CoExist?",
+      "counterpart_hint": "CoBecoming+",
+      "epistemic_lane": "definition_required",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoDifference+",
+      "family": "CoExist",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoDifference distinguish within CoExist?",
+      "counterpart_hint": "CoUnbeing+",
+      "epistemic_lane": "definition_required",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoEmergence+",
+      "family": "CoExist",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoEmergence distinguish within CoExist?",
+      "counterpart_hint": "CoReBeing+",
+      "epistemic_lane": "definition_required",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoPresence+",
+      "family": "CoExist",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoPresence distinguish within CoExist?",
+      "counterpart_hint": "CoWithBeing+",
+      "epistemic_lane": "definition_required",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoMayBe+",
+      "family": "CoPossible",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoMayBe distinguish within CoPossible?",
+      "counterpart_hint": "CoOpenFuture+",
+      "epistemic_lane": "definition_required",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoCouldBe+",
+      "family": "CoPossible",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoCouldBe distinguish within CoPossible?",
+      "counterpart_hint": "CoFork+",
+      "epistemic_lane": "definition_required",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoOtherwise+",
+      "family": "CoPossible",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoOtherwise distinguish within CoPossible?",
+      "counterpart_hint": "CoOption+",
+      "epistemic_lane": "definition_required",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoUnchosen+",
+      "family": "CoPossible",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoUnchosen distinguish within CoPossible?",
+      "counterpart_hint": "CoCounterfactual+",
+      "epistemic_lane": "definition_required",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoReWing+",
+      "family": "CoPossible",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoReWing distinguish within CoPossible?",
+      "counterpart_hint": "CoLatent+",
+      "epistemic_lane": "definition_required",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoOpenFuture+",
+      "family": "CoPossible",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoOpenFuture distinguish within CoPossible?",
+      "counterpart_hint": "CoMayBe+",
+      "epistemic_lane": "definition_required",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoFork+",
+      "family": "CoPossible",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoFork distinguish within CoPossible?",
+      "counterpart_hint": "CoCouldBe+",
+      "epistemic_lane": "definition_required",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoOption+",
+      "family": "CoPossible",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoOption distinguish within CoPossible?",
+      "counterpart_hint": "CoOtherwise+",
+      "epistemic_lane": "definition_required",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoCounterfactual+",
+      "family": "CoPossible",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoCounterfactual distinguish within CoPossible?",
+      "counterpart_hint": "CoUnchosen+",
+      "epistemic_lane": "definition_required",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoLatent+",
+      "family": "CoPossible",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoLatent distinguish within CoPossible?",
+      "counterpart_hint": "CoReWing+",
+      "epistemic_lane": "definition_required",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoBetween+",
+      "family": "CoRelation",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoBetween distinguish within CoRelation?",
+      "counterpart_hint": "CoInverse+",
+      "epistemic_lane": "definition_required",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoMutual+",
+      "family": "CoRelation",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoMutual distinguish within CoRelation?",
+      "counterpart_hint": "CoScale+",
+      "epistemic_lane": "definition_required",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoReciprocity+",
+      "family": "CoRelation",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoReciprocity distinguish within CoRelation?",
+      "counterpart_hint": "CoEntangle+",
+      "epistemic_lane": "definition_required",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoBraid+",
+      "family": "CoRelation",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoBraid distinguish within CoRelation?",
+      "counterpart_hint": "CoBoundary+",
+      "epistemic_lane": "definition_required",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoFray+",
+      "family": "CoRelation",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoFray distinguish within CoRelation?",
+      "counterpart_hint": "CoSymmetry+",
+      "epistemic_lane": "definition_required",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoInverse+",
+      "family": "CoRelation",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoInverse distinguish within CoRelation?",
+      "counterpart_hint": "CoBetween+",
+      "epistemic_lane": "definition_required",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoScale+",
+      "family": "CoRelation",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoScale distinguish within CoRelation?",
+      "counterpart_hint": "CoMutual+",
+      "epistemic_lane": "definition_required",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoEntangle+",
+      "family": "CoRelation",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoEntangle distinguish within CoRelation?",
+      "counterpart_hint": "CoReciprocity+",
+      "epistemic_lane": "definition_required",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoBoundary+",
+      "family": "CoRelation",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoBoundary distinguish within CoRelation?",
+      "counterpart_hint": "CoBraid+",
+      "epistemic_lane": "definition_required",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoSymmetry+",
+      "family": "CoRelation",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoSymmetry distinguish within CoRelation?",
+      "counterpart_hint": "CoFray+",
+      "epistemic_lane": "definition_required",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoEverNow+",
+      "family": "CoTime",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoEverNow distinguish within CoTime?",
+      "counterpart_hint": "CoBefore+",
+      "epistemic_lane": "definition_required",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoRetroFuture+",
+      "family": "CoTime",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoRetroFuture distinguish within CoTime?",
+      "counterpart_hint": "CoAfter+",
+      "epistemic_lane": "definition_required",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoEchoTime+",
+      "family": "CoTime",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoEchoTime distinguish within CoTime?",
+      "counterpart_hint": "CoInterval+",
+      "epistemic_lane": "definition_required",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoNotYet+",
+      "family": "CoTime",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoNotYet distinguish within CoTime?",
+      "counterpart_hint": "CoDuration+",
+      "epistemic_lane": "definition_required",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoAgain+",
+      "family": "CoTime",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoAgain distinguish within CoTime?",
+      "counterpart_hint": "CoRecovery+",
+      "epistemic_lane": "definition_required",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoBefore+",
+      "family": "CoTime",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoBefore distinguish within CoTime?",
+      "counterpart_hint": "CoEverNow+",
+      "epistemic_lane": "definition_required",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoAfter+",
+      "family": "CoTime",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoAfter distinguish within CoTime?",
+      "counterpart_hint": "CoRetroFuture+",
+      "epistemic_lane": "definition_required",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoInterval+",
+      "family": "CoTime",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoInterval distinguish within CoTime?",
+      "counterpart_hint": "CoEchoTime+",
+      "epistemic_lane": "definition_required",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoDuration+",
+      "family": "CoTime",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoDuration distinguish within CoTime?",
+      "counterpart_hint": "CoNotYet+",
+      "epistemic_lane": "definition_required",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoRecovery+",
+      "family": "CoTime",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoRecovery distinguish within CoTime?",
+      "counterpart_hint": "CoAgain+",
+      "epistemic_lane": "definition_required",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoAttend+",
+      "family": "CoSense",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoAttend distinguish within CoSense?",
+      "counterpart_hint": "CoResonate+",
+      "epistemic_lane": "definition_required",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoFeel+",
+      "family": "CoSense",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoFeel distinguish within CoSense?",
+      "counterpart_hint": "CoQuiet+",
+      "epistemic_lane": "definition_required",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoWitness+",
+      "family": "CoSense",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoWitness distinguish within CoSense?",
+      "counterpart_hint": "CoSignal+",
+      "epistemic_lane": "definition_required",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoEmbodiment+",
+      "family": "CoSense",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoEmbodiment distinguish within CoSense?",
+      "counterpart_hint": "CoTuner+",
+      "epistemic_lane": "definition_required",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoPerceive+",
+      "family": "CoSense",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoPerceive distinguish within CoSense?",
+      "counterpart_hint": "CoBeacon+",
+      "epistemic_lane": "definition_required",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoResonate+",
+      "family": "CoSense",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoResonate distinguish within CoSense?",
+      "counterpart_hint": "CoAttend+",
+      "epistemic_lane": "definition_required",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoQuiet+",
+      "family": "CoSense",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoQuiet distinguish within CoSense?",
+      "counterpart_hint": "CoFeel+",
+      "epistemic_lane": "definition_required",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoSignal+",
+      "family": "CoSense",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoSignal distinguish within CoSense?",
+      "counterpart_hint": "CoWitness+",
+      "epistemic_lane": "definition_required",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoTuner+",
+      "family": "CoSense",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoTuner distinguish within CoSense?",
+      "counterpart_hint": "CoEmbodiment+",
+      "epistemic_lane": "definition_required",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoBeacon+",
+      "family": "CoSense",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoBeacon distinguish within CoSense?",
+      "counterpart_hint": "CoPerceive+",
+      "epistemic_lane": "definition_required",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoGrace+",
+      "family": "CoG_dSide",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoGrace distinguish within CoG_dSide?",
+      "counterpart_hint": "CoPrayer+",
+      "epistemic_lane": "belief_metaphor_philosophical_hypothesis",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoSacredMaybe+",
+      "family": "CoG_dSide",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoSacredMaybe distinguish within CoG_dSide?",
+      "counterpart_hint": "CoAwe+",
+      "epistemic_lane": "belief_metaphor_philosophical_hypothesis",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoMystery+",
+      "family": "CoG_dSide",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoMystery distinguish within CoG_dSide?",
+      "counterpart_hint": "CoTranscend+",
+      "epistemic_lane": "belief_metaphor_philosophical_hypothesis",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoReverence+",
+      "family": "CoG_dSide",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoReverence distinguish within CoG_dSide?",
+      "counterpart_hint": "CoUltimate+",
+      "epistemic_lane": "belief_metaphor_philosophical_hypothesis",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoBeyond+",
+      "family": "CoG_dSide",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoBeyond distinguish within CoG_dSide?",
+      "counterpart_hint": "CoHumility+",
+      "epistemic_lane": "belief_metaphor_philosophical_hypothesis",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoPrayer+",
+      "family": "CoG_dSide",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoPrayer distinguish within CoG_dSide?",
+      "counterpart_hint": "CoGrace+",
+      "epistemic_lane": "belief_metaphor_philosophical_hypothesis",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoAwe+",
+      "family": "CoG_dSide",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoAwe distinguish within CoG_dSide?",
+      "counterpart_hint": "CoSacredMaybe+",
+      "epistemic_lane": "belief_metaphor_philosophical_hypothesis",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoTranscend+",
+      "family": "CoG_dSide",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoTranscend distinguish within CoG_dSide?",
+      "counterpart_hint": "CoMystery+",
+      "epistemic_lane": "belief_metaphor_philosophical_hypothesis",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoUltimate+",
+      "family": "CoG_dSide",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoUltimate distinguish within CoG_dSide?",
+      "counterpart_hint": "CoReverence+",
+      "epistemic_lane": "belief_metaphor_philosophical_hypothesis",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoHumility+",
+      "family": "CoG_dSide",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoHumility distinguish within CoG_dSide?",
+      "counterpart_hint": "CoBeyond+",
+      "epistemic_lane": "belief_metaphor_philosophical_hypothesis",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoCare+",
+      "family": "CoEthics",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoCare distinguish within CoEthics?",
+      "counterpart_hint": "CoJustice+",
+      "epistemic_lane": "definition_required",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoConsent+",
+      "family": "CoEthics",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoConsent distinguish within CoEthics?",
+      "counterpart_hint": "CoReciprocalCare+",
+      "epistemic_lane": "definition_required",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoFreedom+",
+      "family": "CoEthics",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoFreedom distinguish within CoEthics?",
+      "counterpart_hint": "CoDignity+",
+      "epistemic_lane": "definition_required",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoNonCoercion+",
+      "family": "CoEthics",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoNonCoercion distinguish within CoEthics?",
+      "counterpart_hint": "CoRepair+",
+      "epistemic_lane": "definition_required",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoStewardship+",
+      "family": "CoEthics",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoStewardship distinguish within CoEthics?",
+      "counterpart_hint": "CoResponsibility+",
+      "epistemic_lane": "definition_required",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoJustice+",
+      "family": "CoEthics",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoJustice distinguish within CoEthics?",
+      "counterpart_hint": "CoCare+",
+      "epistemic_lane": "definition_required",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoReciprocalCare+",
+      "family": "CoEthics",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoReciprocalCare distinguish within CoEthics?",
+      "counterpart_hint": "CoConsent+",
+      "epistemic_lane": "definition_required",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoDignity+",
+      "family": "CoEthics",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoDignity distinguish within CoEthics?",
+      "counterpart_hint": "CoFreedom+",
+      "epistemic_lane": "definition_required",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoRepair+",
+      "family": "CoEthics",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoRepair distinguish within CoEthics?",
+      "counterpart_hint": "CoNonCoercion+",
+      "epistemic_lane": "definition_required",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoResponsibility+",
+      "family": "CoEthics",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoResponsibility distinguish within CoEthics?",
+      "counterpart_hint": "CoStewardship+",
+      "epistemic_lane": "definition_required",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoDoubt+",
+      "family": "CoKnow",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoDoubt distinguish within CoKnow?",
+      "counterpart_hint": "CoProvenance+",
+      "epistemic_lane": "definition_required",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoUnknow+",
+      "family": "CoKnow",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoUnknow distinguish within CoKnow?",
+      "counterpart_hint": "CoConfidence+",
+      "epistemic_lane": "definition_required",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoEvidence+",
+      "family": "CoKnow",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoEvidence distinguish within CoKnow?",
+      "counterpart_hint": "CoAdjudicate+",
+      "epistemic_lane": "definition_required",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoFalsify+",
+      "family": "CoKnow",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoFalsify distinguish within CoKnow?",
+      "counterpart_hint": "CoChallenge+",
+      "epistemic_lane": "definition_required",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoWonder+",
+      "family": "CoKnow",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoWonder distinguish within CoKnow?",
+      "counterpart_hint": "CoReceipt+",
+      "epistemic_lane": "definition_required",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoProvenance+",
+      "family": "CoKnow",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoProvenance distinguish within CoKnow?",
+      "counterpart_hint": "CoDoubt+",
+      "epistemic_lane": "definition_required",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoConfidence+",
+      "family": "CoKnow",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoConfidence distinguish within CoKnow?",
+      "counterpart_hint": "CoUnknow+",
+      "epistemic_lane": "definition_required",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoAdjudicate+",
+      "family": "CoKnow",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoAdjudicate distinguish within CoKnow?",
+      "counterpart_hint": "CoEvidence+",
+      "epistemic_lane": "definition_required",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoChallenge+",
+      "family": "CoKnow",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoChallenge distinguish within CoKnow?",
+      "counterpart_hint": "CoFalsify+",
+      "epistemic_lane": "definition_required",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoReceipt+",
+      "family": "CoKnow",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoReceipt distinguish within CoKnow?",
+      "counterpart_hint": "CoWonder+",
+      "epistemic_lane": "definition_required",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoPlay+",
+      "family": "CoCreate",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoPlay distinguish within CoCreate?",
+      "counterpart_hint": "CoCompose+",
+      "epistemic_lane": "definition_required",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoUnlearn+",
+      "family": "CoCreate",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoUnlearn distinguish within CoCreate?",
+      "counterpart_hint": "CoRecombine+",
+      "epistemic_lane": "definition_required",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoImagine+",
+      "family": "CoCreate",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoImagine distinguish within CoCreate?",
+      "counterpart_hint": "CoExperiment+",
+      "epistemic_lane": "definition_required",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoEmerge+",
+      "family": "CoCreate",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoEmerge distinguish within CoCreate?",
+      "counterpart_hint": "CoReframe+",
+      "epistemic_lane": "definition_required",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoEvolve+",
+      "family": "CoCreate",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoEvolve distinguish within CoCreate?",
+      "counterpart_hint": "CoMake+",
+      "epistemic_lane": "definition_required",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoCompose+",
+      "family": "CoCreate",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoCompose distinguish within CoCreate?",
+      "counterpart_hint": "CoPlay+",
+      "epistemic_lane": "definition_required",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoRecombine+",
+      "family": "CoCreate",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoRecombine distinguish within CoCreate?",
+      "counterpart_hint": "CoUnlearn+",
+      "epistemic_lane": "definition_required",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoExperiment+",
+      "family": "CoCreate",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoExperiment distinguish within CoCreate?",
+      "counterpart_hint": "CoImagine+",
+      "epistemic_lane": "definition_required",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoReframe+",
+      "family": "CoCreate",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoReframe distinguish within CoCreate?",
+      "counterpart_hint": "CoEmerge+",
+      "epistemic_lane": "definition_required",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoMake+",
+      "family": "CoCreate",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoMake distinguish within CoCreate?",
+      "counterpart_hint": "CoEvolve+",
+      "epistemic_lane": "definition_required",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoZero+",
+      "family": "CoNull",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoZero distinguish within CoNull?",
+      "counterpart_hint": "CoVoid+",
+      "epistemic_lane": "definition_required",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoAbsence+",
+      "family": "CoNull",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoAbsence distinguish within CoNull?",
+      "counterpart_hint": "CoBaseline+",
+      "epistemic_lane": "definition_required",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoSilence+",
+      "family": "CoNull",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoSilence distinguish within CoNull?",
+      "counterpart_hint": "CoLimit+",
+      "epistemic_lane": "definition_required",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoPotential+",
+      "family": "CoNull",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoPotential distinguish within CoNull?",
+      "counterpart_hint": "CoEmpty+",
+      "epistemic_lane": "definition_required",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoThreshold+",
+      "family": "CoNull",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoThreshold distinguish within CoNull?",
+      "counterpart_hint": "CoUnknown+",
+      "epistemic_lane": "definition_required",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoVoid+",
+      "family": "CoNull",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoVoid distinguish within CoNull?",
+      "counterpart_hint": "CoZero+",
+      "epistemic_lane": "definition_required",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoBaseline+",
+      "family": "CoNull",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoBaseline distinguish within CoNull?",
+      "counterpart_hint": "CoAbsence+",
+      "epistemic_lane": "definition_required",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoLimit+",
+      "family": "CoNull",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoLimit distinguish within CoNull?",
+      "counterpart_hint": "CoSilence+",
+      "epistemic_lane": "definition_required",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoEmpty+",
+      "family": "CoNull",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoEmpty distinguish within CoNull?",
+      "counterpart_hint": "CoPotential+",
+      "epistemic_lane": "definition_required",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoUnknown+",
+      "family": "CoNull",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoUnknown distinguish within CoNull?",
+      "counterpart_hint": "CoThreshold+",
+      "epistemic_lane": "definition_required",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoKin+",
+      "family": "CoSocial",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoKin distinguish within CoSocial?",
+      "counterpart_hint": "CoCulture+",
+      "epistemic_lane": "definition_required",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoStranger+",
+      "family": "CoSocial",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoStranger distinguish within CoSocial?",
+      "counterpart_hint": "CoLanguage+",
+      "epistemic_lane": "definition_required",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoNeighbor+",
+      "family": "CoSocial",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoNeighbor distinguish within CoSocial?",
+      "counterpart_hint": "CoTranslation+",
+      "epistemic_lane": "definition_required",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoGuardian+",
+      "family": "CoSocial",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoGuardian distinguish within CoSocial?",
+      "counterpart_hint": "CoCommons+",
+      "epistemic_lane": "definition_required",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoPlural+",
+      "family": "CoSocial",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoPlural distinguish within CoSocial?",
+      "counterpart_hint": "CoBelong+",
+      "epistemic_lane": "definition_required",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoCulture+",
+      "family": "CoSocial",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoCulture distinguish within CoSocial?",
+      "counterpart_hint": "CoKin+",
+      "epistemic_lane": "definition_required",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoLanguage+",
+      "family": "CoSocial",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoLanguage distinguish within CoSocial?",
+      "counterpart_hint": "CoStranger+",
+      "epistemic_lane": "definition_required",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoTranslation+",
+      "family": "CoSocial",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoTranslation distinguish within CoSocial?",
+      "counterpart_hint": "CoNeighbor+",
+      "epistemic_lane": "definition_required",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoCommons+",
+      "family": "CoSocial",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoCommons distinguish within CoSocial?",
+      "counterpart_hint": "CoGuardian+",
+      "epistemic_lane": "definition_required",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoBelong+",
+      "family": "CoSocial",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoBelong distinguish within CoSocial?",
+      "counterpart_hint": "CoPlural+",
+      "epistemic_lane": "definition_required",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoSeed+",
+      "family": "CoSystem",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoSeed distinguish within CoSystem?",
+      "counterpart_hint": "CoTimePin+",
+      "epistemic_lane": "definition_required",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoPath+",
+      "family": "CoSystem",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoPath distinguish within CoSystem?",
+      "counterpart_hint": "CoFront+",
+      "epistemic_lane": "definition_required",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoOrb+",
+      "family": "CoSystem",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoOrb distinguish within CoSystem?",
+      "counterpart_hint": "CoLatch+",
+      "epistemic_lane": "definition_required",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoGauge+",
+      "family": "CoSystem",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoGauge distinguish within CoSystem?",
+      "counterpart_hint": "CoHandoff+",
+      "epistemic_lane": "definition_required",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoThumb+",
+      "family": "CoSystem",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoThumb distinguish within CoSystem?",
+      "counterpart_hint": "CoRecover+",
+      "epistemic_lane": "definition_required",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoTimePin+",
+      "family": "CoSystem",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoTimePin distinguish within CoSystem?",
+      "counterpart_hint": "CoSeed+",
+      "epistemic_lane": "definition_required",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoFront+",
+      "family": "CoSystem",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoFront distinguish within CoSystem?",
+      "counterpart_hint": "CoPath+",
+      "epistemic_lane": "definition_required",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoLatch+",
+      "family": "CoSystem",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoLatch distinguish within CoSystem?",
+      "counterpart_hint": "CoOrb+",
+      "epistemic_lane": "definition_required",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoHandoff+",
+      "family": "CoSystem",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoHandoff distinguish within CoSystem?",
+      "counterpart_hint": "CoGauge+",
+      "epistemic_lane": "definition_required",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    },
+    {
+      "id": "CoRecover+",
+      "family": "CoSystem",
+      "stage": "candidate",
+      "meaning_prompt": "What does CoRecover distinguish within CoSystem?",
+      "counterpart_hint": "CoThumb+",
+      "epistemic_lane": "definition_required",
+      "promotion": "requires definition, example, relation, counterexample, use case and provenance"
+    }
+  ],
+  "proof_boundary": "Public GitHub file readback verifies publication, not autonomous cross-session adoption, runtime, 24h survival, or canon."
+}
