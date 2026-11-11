@@ -50,6 +50,12 @@ The target is **bounded regenerative amplification**, not infinite amplitude.
 `EVIDENCED_SUCCESSOR_NE_RANDOM_CHURN`  
 `SOURCE_CI_NE_RUNTIME_ADOPTION`
 
+### First comparative falsifier: no strategy is universally superior
+
+The [bounded synthetic policy comparison](../../scripts/coevoall_policy_comparison_r0.py) reuses the source-only evaluator above and an [explicit toy fixture](../../ai/fixtures/coevoall_policy_comparison_r0.json). It compares frozen/no-revisions, forced-change-every-event, and evidence-qualified proposal/review under the **same fictional observations and hidden outcomes**. Its [13 negative controls](../../tests/test_coevoall_policy_comparison_r0.py) include a deliberately **underdetected high-gain scenario where forced change wins the toy score**, alongside quiet/noisy and misleading scenarios where frozen wins, and a mixed scenario where qualified review wins. This prevents the test from baking in a preferred universal winner.
+
+All three scores are **counterfactual**, with fictional gain, change cost, observation cost and reviewer confirmation; the "review" is only a boolean fixture, not independent authorization. The simulator **never executes** even the forced policy or changes a real object. The next evidence-gain experiment is to measure true receiver usefulness, exploration strategy, correction and resource cost on authorized work. The evaluator's candidate verdict cannot authorize mutation. `COUNTERFACTUAL_SCORE_NE_REAL_BENEFIT`, `MOCK_REVIEW_NE_AUTHORITY`, `FORCED_WIN_IN_TOY_NE_SAFE_RUNTIME_POLICY`.
+
 ## Dynamics analogy
 
 A recurrent process can persist or grow when one or more of the following are present:

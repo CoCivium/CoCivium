@@ -1,0 +1,192 @@
+{
+  "schema": "CoAll.CoEvoAll.PolicyComparison.R0.SyntheticFixture",
+  "descriptions": {
+    "quiet": "No useful mutation; observe without inventing change",
+    "mixed": "Mixed genuine gains and noise, evidence distinguishes some",
+    "underdetected": "High true value consistently underestimated by the evaluator",
+    "adversarial": "Convincing but reviewer-rejected changes, all harmful"
+  },
+  "scope": "COUNTERFACTUAL_ONLY_NOT_ACTUAL_AUTHORITY",
+  "observation_cost": 0.2,
+  "scenarios": [
+    {
+      "id": "quiet",
+      "events": [
+        {
+          "id": "q1",
+          "scope": "identity",
+          "actual_gain": 0,
+          "estimated_gain": 0,
+          "change_cost": 0.5,
+          "synthetic_review_confirmed": false
+        },
+        {
+          "id": "q2",
+          "scope": "interface",
+          "actual_gain": 0,
+          "estimated_gain": 0,
+          "change_cost": 0.5,
+          "synthetic_review_confirmed": false
+        },
+        {
+          "id": "q3",
+          "scope": "evolution_rule",
+          "actual_gain": 0,
+          "estimated_gain": 0,
+          "change_cost": 0.5,
+          "synthetic_review_confirmed": false
+        },
+        {
+          "id": "q4",
+          "scope": "safety",
+          "actual_gain": 0,
+          "estimated_gain": 0,
+          "change_cost": 0.5,
+          "synthetic_review_confirmed": false
+        },
+        {
+          "id": "q5",
+          "scope": "unknown_future_domain",
+          "actual_gain": 0,
+          "estimated_gain": 0,
+          "change_cost": 0.5,
+          "synthetic_review_confirmed": false
+        }
+      ]
+    },
+    {
+      "id": "mixed",
+      "events": [
+        {
+          "id": "m1",
+          "scope": "interface",
+          "actual_gain": 8,
+          "estimated_gain": 7,
+          "change_cost": 2,
+          "synthetic_review_confirmed": true
+        },
+        {
+          "id": "m2",
+          "scope": "identity",
+          "actual_gain": -2,
+          "estimated_gain": 0.2,
+          "change_cost": 2,
+          "synthetic_review_confirmed": false
+        },
+        {
+          "id": "m3",
+          "scope": "measurement",
+          "actual_gain": 0,
+          "estimated_gain": 0,
+          "change_cost": 1,
+          "synthetic_review_confirmed": false
+        },
+        {
+          "id": "m4",
+          "scope": "governance",
+          "actual_gain": 5,
+          "estimated_gain": 5,
+          "change_cost": 2,
+          "synthetic_review_confirmed": true
+        },
+        {
+          "id": "m5",
+          "scope": "language",
+          "actual_gain": 0,
+          "estimated_gain": 1,
+          "change_cost": 1,
+          "synthetic_review_confirmed": false
+        },
+        {
+          "id": "m6",
+          "scope": "evolution_rule",
+          "actual_gain": 3,
+          "estimated_gain": 4,
+          "change_cost": 1,
+          "synthetic_review_confirmed": true
+        }
+      ]
+    },
+    {
+      "id": "underdetected",
+      "events": [
+        {
+          "id": "u1",
+          "scope": "interface",
+          "actual_gain": 8,
+          "estimated_gain": 0.8,
+          "change_cost": 1,
+          "synthetic_review_confirmed": true
+        },
+        {
+          "id": "u2",
+          "scope": "model",
+          "actual_gain": 8,
+          "estimated_gain": 0.8,
+          "change_cost": 1,
+          "synthetic_review_confirmed": true
+        },
+        {
+          "id": "u3",
+          "scope": "language",
+          "actual_gain": 8,
+          "estimated_gain": 0.8,
+          "change_cost": 1,
+          "synthetic_review_confirmed": true
+        },
+        {
+          "id": "u4",
+          "scope": "identity",
+          "actual_gain": 8,
+          "estimated_gain": 0.8,
+          "change_cost": 1,
+          "synthetic_review_confirmed": true
+        }
+      ]
+    },
+    {
+      "id": "adversarial",
+      "events": [
+        {
+          "id": "a1",
+          "scope": "privacy",
+          "actual_gain": -8,
+          "estimated_gain": 8,
+          "change_cost": 2,
+          "synthetic_review_confirmed": false
+        },
+        {
+          "id": "a2",
+          "scope": "authority",
+          "actual_gain": -7,
+          "estimated_gain": 7,
+          "change_cost": 1,
+          "synthetic_review_confirmed": false
+        },
+        {
+          "id": "a3",
+          "scope": "evolution_rule",
+          "actual_gain": -3,
+          "estimated_gain": 6,
+          "change_cost": 1,
+          "synthetic_review_confirmed": false
+        },
+        {
+          "id": "a4",
+          "scope": "safety",
+          "actual_gain": -5,
+          "estimated_gain": 6,
+          "change_cost": 1,
+          "synthetic_review_confirmed": false
+        }
+      ]
+    }
+  ],
+  "nonclaims": [
+    "COUNTERFACTUAL_SCORE_NE_ACTUAL_BENEFIT",
+    "MOCK_REVIEW_NE_INDEPENDENT_AUTHORITY",
+    "FORCED_MUTATION_IS_SIMULATED_ONLY",
+    "SYNTHETIC_WINNER_NE_REAL_WORLD_BEST",
+    "NO_LOCAL_OR_EXTERNAL_EFFECTS"
+  ]
+}

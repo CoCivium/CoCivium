@@ -14,6 +14,9 @@ on:
       - "ai/evolution/universal-evolution-r0.json"
       - "scripts/coevoall_universal_change_r0.py"
       - "tests/test_coevoall_universal_change_r0.py"
+      - "ai/fixtures/coevoall_policy_comparison_r0.json"
+      - "scripts/coevoall_policy_comparison_r0.py"
+      - "tests/test_coevoall_policy_comparison_r0.py"
       - ".github/workflows/validate-coevo-convergence-r0.yml"
   workflow_dispatch:
 
@@ -34,3 +37,15 @@ jobs:
         run: python scripts/validate_coevo_convergence_r0.py
       - name: Exercise universal change-eligibility source decisions
         run: python -B -m unittest discover -s tests -p 'test_coevoall_universal_change_r0.py' -v
+      - name: Compare frozen, forced and evidence-qualified evolution (synthetic)
+        run: |
+          python -B -m unittest discover -s tests -p 'test_coevoall_policy_comparison_r0.py' -v
+          python -B scripts/coevoall_policy_comparison_r0.py > "$RUNNER_TEMP/coevoall_policy_comparison_r0.json"
+          python - "$RUNNER_TEMP/coevoall_policy_comparison_r0.json" <<'PY'
+          import json,sys
+          x=json.load(open(sys.argv[1],encoding="utf-8"))
+          assert x["state"]=="SYNTHETIC_COMPARISON_ONLY_NO_REAL_ACTION"
+          assert x["real_effect_count"]==0 and x["external_receiver_ack"] is False
+          assert {r["winner_by_toy_score"] for r in x["records"]}=={"frozen","forced","evidence_qualified"}
+          print("PASS_COEVOALL_POLICY_COMPARISON_3_WIINNERS_NO_REAL_EFFECTS")
+          PY
