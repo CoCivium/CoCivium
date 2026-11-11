@@ -111,20 +111,21 @@ class CoFedTurtleInverseTests(unittest.TestCase):
         edges = view()["edges"]
         e = next(e for e in edges
                  if e["from"] == "fed:root" and e["to"] == "system:local")
-        self.assertEqual(e["inverse_evidence"], "REVERSE_NOT_DECLARED")
-        self.assertEqual(e["inverse_required_for_reciprocity"], "DISCOVERED_BY")
+        self.assertEqual(e["formal_inverse_evidence"], "INVERSE_NOT_DECLARED")
+        self.assertEqual(e["formal_inverse_relation"], "DISCOVERED_BY")
+        self.assertEqual(e["reciprocal_discovery_evidence"], "RECIPROCAL_NOT_DECLARED")
 
     def test_19_declared_inversion_still_not_verified(self):
         e = next(e for e in view()["edges"]
                  if e["from"] == "fed:root" and e["to"] == "fed:regional")
-        self.assertEqual(e["inverse_evidence"],
-                         "REVERSE_DECLARED_ONLY_UNVERIFIED")
+        self.assertEqual(e["formal_inverse_evidence"],
+                         "INVERSE_DECLARED_ONLY_UNVERIFIED")
 
     def test_20_explicit_peer_reverse_still_not_consent(self):
         e = next(e for e in view()["edges"]
                  if e["from"] == "fed:root" and e["to"] == "fed:mirror")
-        self.assertEqual(e["inverse_evidence"],
-                         "REVERSE_DECLARED_ONLY_UNVERIFIED")
+        self.assertEqual(e["formal_inverse_evidence"],
+                         "INVERSE_DECLARED_ONLY_UNVERIFIED")
         self.assertFalse(e["trust_granted"])
         self.assertFalse(e["effect_authority_granted"])
 
@@ -132,10 +133,57 @@ class CoFedTurtleInverseTests(unittest.TestCase):
         edges = view()["edges"]
         e = next(e for e in edges
                  if e["from"] == "fed:regional" and e["to"] == "fed:nested")
-        self.assertEqual(e["inverse_required_for_reciprocity"], "MEMBER_OF")
-        self.assertEqual(e["inverse_evidence"],
-                         "REVERSE_DECLARED_ONLY_UNVERIFIED")
+        self.assertEqual(e["formal_inverse_relation"], "MEMBER_OF")
+        self.assertEqual(e["formal_inverse_evidence"],
+                         "INVERSE_DECLARED_ONLY_UNVERIFIED")
         self.assertFalse(e["membership_granted"])
+
+    def test_37_formal_inverse_is_not_mutual_discovery(self):
+        # A discovers B and B says "discovered by A": one logical event
+        # represented in two directions, not two independent observations.
+        e = next(e for e in view()["edges"]
+                 if e["from"] == "fed:root" and e["to"] == "fed:regional")
+        self.assertEqual(e["formal_inverse_evidence"],
+                         "INVERSE_DECLARED_ONLY_UNVERIFIED")
+        self.assertEqual(e["reciprocal_discovery_evidence"],
+                         "RECIPROCAL_NOT_DECLARED")
+
+    def test_38_real_reciprocal_declaration_is_still_not_consent(self):
+        g = mod.fixture()
+        g["nodes"][1]["edges"].append({
+            "to": "fed:root", "relation": "DISCOVERS"})
+        e = next(e for e in view(graph=g)["edges"]
+                 if e["from"] == "fed:root" and e["to"] == "fed:regional")
+        self.assertEqual(e["formal_inverse_evidence"],
+                         "INVERSE_DECLARED_ONLY_UNVERIFIED")
+        self.assertEqual(e["reciprocal_discovery_evidence"],
+                         "RECIPROCAL_DECLARED_ONLY_UNVERIFIED")
+        self.assertFalse(e["membership_granted"])
+        self.assertFalse(e["trust_granted"])
+        self.assertFalse(e["effect_authority_granted"])
+
+    def test_39_reciprocal_claim_can_exist_without_formal_inverse(self):
+        g = mod.fixture()
+        g["nodes"][1]["edges"] = [
+            e for e in g["nodes"][1]["edges"]
+            if not (e["to"] == "fed:root"
+                    and e["relation"] == "DISCOVERED_BY")
+        ]
+        g["nodes"][1]["edges"].append({
+            "to": "fed:root", "relation": "DISCOVERS"})
+        e = next(e for e in view(graph=g)["edges"]
+                 if e["from"] == "fed:root" and e["to"] == "fed:regional")
+        self.assertEqual(e["formal_inverse_evidence"],
+                         "INVERSE_NOT_DECLARED")
+        self.assertEqual(e["reciprocal_discovery_evidence"],
+                         "RECIPROCAL_DECLARED_ONLY_UNVERIFIED")
+
+    def test_40_peer_inverse_does_not_imply_observed_discovery(self):
+        e = next(e for e in view()["edges"]
+                 if e["from"] == "fed:root" and e["to"] == "fed:mirror")
+        self.assertEqual(e["formal_inverse_evidence"],
+                         "INVERSE_DECLARED_ONLY_UNVERIFIED")
+        self.assertEqual(e["reciprocal_discovery_evidence"], "NOT_APPLICABLE")
 
     def test_22_reverse_view_is_scope_relative(self):
         root_view = {x["id"] for x in view(root="fed:root", depth=1)["nodes"]}
