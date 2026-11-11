@@ -22,14 +22,6 @@ on:
       - 'CoPre.md'
       - 'SESSION_BOOTSTRAP.md'
       - 'ai/session-bootstrap.json'
-  pull_request:
-    paths:
-      - '.github/workflows/cogoall-unattended-proof-pulse.yml'
-      - 'scripts/CoReboundIntegrityR0.py'
-      - 'tests/test_corebound_integrity_r0.py'
-      - 'CoPre.md'
-      - 'SESSION_BOOTSTRAP.md'
-      - 'ai/session-bootstrap.json'
   schedule:
     - cron: '17 * * * *'
   workflow_dispatch:
