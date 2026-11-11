@@ -109,7 +109,6 @@
       "state": "SOURCE_AND_SYNTHETIC_SHADOW_ONLY",
       "governing_public_sources": [
         "docs/Architecture/CIV2_FEDERATED_CELL_HOSTING_R0.md",
-        "docs/Architecture/COOMNIFRONT_TIMEBRAID_R0_20261108.md",
         "docs/Architecture/COALL_PULSEFIELD_COTIME_R0.md",
         "docs/Evolution/COFUTUREPULL_GDSIDE_R0.md",
         "docs/CoLocal/CoLocal2601109_CoRelGRAILS_CoSeed_R0.md"
@@ -149,7 +148,17 @@
         "independent_receiver_ack": null,
         "cold_restore": null,
         "live_cross_cell_federation": false
-      }
+      },
+      "pinned_cross_revision_sources": [
+        {
+          "url": "https://github.com/CoCivium/CoCivium/blob/ff2acf209d37038dd7404a70366922f21972dbae/docs/Architecture/COOMNIFRONT_TIMEBRAID_R0_20261108.md",
+          "commit_sha": "ff2acf209d37038dd7404a70366922f21972dbae",
+          "blob_sha": "5a0073a241d66606bddaa01e36ba8721f5dd3857",
+          "local_branch_file": false,
+          "readback": "SOURCE_CONTENT_READ_FROM_PINNED_REVISION",
+          "nonclaim": "CROSS_BRANCH_POINTER_NE_INTEGRATED_CODE"
+        }
+      ]
     }
   }
 }
