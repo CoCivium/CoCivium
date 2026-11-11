@@ -125,7 +125,7 @@ async function prepare(page) {
 
     fs.mkdirSync(path.dirname(output), {recursive:true});
     fs.writeFileSync(path.join(path.dirname(output), 'browser-revoked-record.json'),
-                     JSON.stringify(revoked, null, 2) + '\\n', {flag:'wx'});
+                     JSON.stringify(revoked, null, 2) + '\n', {flag:'wx'});
     fs.writeFileSync(output, JSON.stringify(row, null, 2) + '\n', {flag:'wx'});
     console.log(JSON.stringify({
       schema:'CoAll.CoOwnedWork.ChromiumUIGestureProof.R0',
