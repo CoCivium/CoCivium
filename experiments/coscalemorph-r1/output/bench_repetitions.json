@@ -1,0 +1,50 @@
+{
+  "actual_process_workers_per_parallel_trial": 2,
+  "actual_trillion_workers_spawned": false,
+  "energy_joules": null,
+  "logical_slots": 1000000000000,
+  "matched_digest_sha256": "8664d841a16d5d7cd3e965a908107558d30f7f8d7b0f1a7797d5c52021fd8a03",
+  "measured": {
+    "1": {
+      "all_outputs_match": true,
+      "p50_s": 0.304868,
+      "p95_s": 1.8255,
+      "repetitions": 5,
+      "seconds": [
+        1.8255,
+        0.282295,
+        0.304868,
+        0.539655,
+        0.248497
+      ]
+    },
+    "2": {
+      "all_outputs_match": true,
+      "p50_s": 0.306505,
+      "p95_s": 1.032215,
+      "repetitions": 5,
+      "seconds": [
+        1.023025,
+        0.306505,
+        0.29635,
+        0.230362,
+        1.032215
+      ]
+    }
+  },
+  "memory_peak_bytes": null,
+  "nonclaims": [
+    "FIVE_TRIALS_NE_PRODUCTION_BENCHMARK",
+    "NOT_ENERGY_METERED",
+    "PARALLELISM_NE_USEFUL_GAIN"
+  ],
+  "schema": "CoScaleMorph.RepeatedMultiprocessing/R1",
+  "statistical_significance_established": false,
+  "sustained_scaling_proven": false,
+  "task_count_per_trial": 12,
+  "widths": [
+    1,
+    2
+  ],
+  "work_type": "SYNTHETIC_CPU_SHA256"
+}

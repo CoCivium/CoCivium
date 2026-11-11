@@ -1,0 +1,102 @@
+{
+  "environment": "ISOLATED_LOCAL_CONTAINER",
+  "events": 32,
+  "nonclaims": [
+    "NOT_PRODUCTION",
+    "NOT_MAC_OR_X2_CANARY",
+    "NOT_DISTRIBUTED_LEASE",
+    "NOT_COORBWARE_INSTALL",
+    "NOT_PROVIDER_SESSION_RESTART",
+    "NO_EMAIL_OR_NODES_SENT"
+  ],
+  "parallel_benchmark": {
+    "actual_process_workers_per_parallel_trial": 2,
+    "actual_trillion_workers_spawned": false,
+    "energy_joules": null,
+    "logical_slots": 1000000000000,
+    "matched_digest_sha256": "8664d841a16d5d7cd3e965a908107558d30f7f8d7b0f1a7797d5c52021fd8a03",
+    "measured": {
+      "1": {
+        "all_outputs_match": true,
+        "p50_s": 0.304868,
+        "p95_s": 1.8255,
+        "repetitions": 5,
+        "seconds": [
+          1.8255,
+          0.282295,
+          0.304868,
+          0.539655,
+          0.248497
+        ]
+      },
+      "2": {
+        "all_outputs_match": true,
+        "p50_s": 0.306505,
+        "p95_s": 1.032215,
+        "repetitions": 5,
+        "seconds": [
+          1.023025,
+          0.306505,
+          0.29635,
+          0.230362,
+          1.032215
+        ]
+      }
+    },
+    "memory_peak_bytes": null,
+    "nonclaims": [
+      "FIVE_TRIALS_NE_PRODUCTION_BENCHMARK",
+      "NOT_ENERGY_METERED",
+      "PARALLELISM_NE_USEFUL_GAIN"
+    ],
+    "schema": "CoScaleMorph.RepeatedMultiprocessing/R1",
+    "statistical_significance_established": false,
+    "sustained_scaling_proven": false,
+    "task_count_per_trial": 12,
+    "widths": [
+      1,
+      2
+    ],
+    "work_type": "SYNTHETIC_CPU_SHA256"
+  },
+  "parent_r0_head": "b76d239858ce14833a3dfa4e82322da61aed80a561bc0bfa40108bf8c267604e",
+  "r1_head": "d6de8c6697f6eeb4fbe8d30d77fb7d73478d8ba49d81f994bee24b08d3bb9261",
+  "schema": "CoScaleMorph.ReleaseSummary/R1",
+  "source_sha256": "4eddc49ef5902673fa22af5ef969b60a74bbd3153bd5b493638c00230d963f27",
+  "statuses": {
+    "FAIL": 3,
+    "HOLD": 3,
+    "NOT_RUN": 8,
+    "PASS": 18
+  },
+  "subprocess_recovery": {
+    "completed": 32,
+    "completed_at_kill": 3,
+    "explicit_lock_reclaim": true,
+    "external_effects": 0,
+    "external_model_calls": 0,
+    "kill_nonzero_exit": true,
+    "live_worker_width": 1,
+    "mission_sha256": "6c4d8a0b86b1bc7fb1501a31daf890e20d957d80fd0bd0fdafa7e604077fdf3c",
+    "nonclaims": [
+      "SINGLE_CONTROLLER_NE_DISTRIBUTED_LEASE",
+      "PROCESS_DEATH_REPLAY_NE_MODEL_SESSION_RESTORED",
+      "LOCAL_CHECKPOINT_NE_INDEPENDENT_REMOTE_CUSTODY",
+      "HASH_NE_SIGNATURE_OR_REAL_WORLD_CORRECTNESS",
+      "ONE_RUN_NE_SUSTAINED_RELIABILITY"
+    ],
+    "proof": "ACTUAL_PROCESS_KILL_AND_INDEPENDENT_LOCAL_SUCCESSOR",
+    "real_subprocesses_launched": 3,
+    "receiver_ack": "NOT_OBSERVED",
+    "remote_receivers": 0,
+    "replay_exact_digest": true,
+    "restart_count": 1,
+    "result_digest_sha256": "1bc124cfe58067c69e7e7ce102239fd2c232a8cb06326ddb071a8d8ab28421ce",
+    "schema": "CoScaleMorph.KillRestartCanary/R1",
+    "source_sha256": "4eddc49ef5902673fa22af5ef969b60a74bbd3153bd5b493638c00230d963f27",
+    "stale_lock_blocked_attempt": true,
+    "successor_different_pid": true,
+    "task_count": 32
+  },
+  "tests": 52
+}

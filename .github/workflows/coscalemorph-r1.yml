@@ -1,0 +1,33 @@
+name: CoScaleMorph R1 source recovery canary
+on:
+  pull_request:
+    paths:
+      - 'experiments/coscalemorph-r1/**'
+      - '.github/workflows/coscalemorph-r1.yml'
+  push:
+    branches:
+      - research/coscalemorph-real-restart-r1-20261024
+permissions:
+  contents: read
+jobs:
+  offline-recovery:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify original and successor evidence
+        run: |
+          cd experiments/coscalemorph-r1
+          python3 verify_ledger.py
+          python3 verify_evidence_r1.py
+      - name: Run all source/recovery and negative controls
+        run: |
+          cd experiments/coscalemorph-r1
+          python3 -m unittest discover -s tests -v
+      - name: Actual process kill and independent restart
+        run: |
+          cd experiments/coscalemorph-r1
+          python3 supervisor_canary.py --output output/ci_kill_restart_receipt.json

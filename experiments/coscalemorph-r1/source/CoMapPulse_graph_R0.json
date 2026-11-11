@@ -1,0 +1,38 @@
+{
+  "schema": "CoMapPulseGraph/R0",
+  "snapshot": "2026-10-23",
+  "description": "Bounded public-safe projection derived from identified CoCivium design and test artifacts. Not live telemetry, not universal coverage.",
+  "source_policy": "PUBLIC_ONLY__NO_SECRETS__NO_REMOTE_EFFECT",
+  "nodes": [
+    {"id":"goal","title":"Human-owned continuity","type":"PURPOSE","status":"GOAL","x":132,"y":256,"detail":"Fewer provider-specific tabs without abandoning recoverable evidence, privacy, or explicit consent.","source":null},
+    {"id":"virtual","title":"Virtual sessions","type":"ARCHITECTURE","status":"PROPOSED","x":345,"y":100,"detail":"Durable session identity, many logical projections, few temporary runtime embodiments. Published architectural proposal, not live federation.","source":"https://github.com/CoCivium/CoCivium/blob/main/docs/Architecture/COVIRTUAL_SESSION_MORPHOLOGY_R0.md"},
+    {"id":"provenance","title":"Evidence & lineage","type":"EVIDENCE","status":"DESCRIBED","x":354,"y":258,"detail":"Exact source identity, hashes, uncertainty, and separate proof of local discovery, landing and receiver pickup.","source":"https://github.com/CoCivium/CoCivium/blob/main/docs/Architecture/COLINEAGE_COMPACTOR_R0.md"},
+    {"id":"privacy","title":"Privacy & authority","type":"GATE","status":"REQUIRED","x":351,"y":418,"detail":"Selection does not authorize reading private data or writing elsewhere. A public pointer is not a receiver ACK.","source":"https://github.com/CoCivium/CoCivium/blob/main/docs/Updates/COALL_PUBLIC_PULSE_20261023_R0.md"},
+    {"id":"comap","title":"CoMap relations","type":"VIEW","status":"CANDIDATE","x":580,"y":251,"detail":"One typed relation graph can be projected as a map, quiet surface, evidence trail or portable data capsule.","source":"https://github.com/CoCivium/CoCivium/blob/main/docs/Architecture/CORESOURCE_ATTRACTOR_R0.md"},
+    {"id":"predict","title":"Predictive cursor","type":"PROTOTYPE","status":"PROPOSED","x":790,"y":92,"detail":"Local opt-in text completion rendered after the caret. Suggestions do not become instructions or actions until explicitly accepted.","source":null},
+    {"id":"orb","title":"CoOrb / ambient","type":"VIEW","status":"DESIGN_ONLY","x":830,"y":252,"detail":"A future quiet desktop, wallpaper, CoBar or screensaver may view the same data. Browser preview is not native deployment.","source":null},
+    {"id":"receiver","title":"CoVIA & nodes","type":"RECEIVER","status":"HELD","x":832,"y":423,"detail":"Dedicated CoVIA and node/site delivery routes lack confirmed receiver ACKs for this work. No fan-out is performed.","source":"https://github.com/CoCivium/CoCivium/blob/main/docs/publishing/cogoall-evergreen-receivers-r2.json"},
+    {"id":"models","title":"Models on demand","type":"SUBSTRATE","status":"CANDIDATE","x":602,"y":436,"detail":"Claude, Pi, and local Llama/Ollama are optional execution choices, subject to real availability, permission, cost and independent tests.","source":"https://github.com/CoCivium/CoCivium/blob/main/docs/Operations/COLOCAL_MODEL_WORKER_R3.md"}
+  ],
+  "edges": [
+    {"id":"r01","from":"goal","to":"virtual","relation":"CAN_USE","epistemic":"PROPOSED","ack":"NOT_APPLICABLE","time":"FUTURE","proof":null},
+    {"id":"r02","from":"goal","to":"provenance","relation":"MUST_PRESERVE","epistemic":"DOCUMENTED","ack":"NOT_APPLICABLE","time":"CURRENT_DESIGN","proof":"https://github.com/CoCivium/CoCivium/blob/main/docs/Architecture/COLINEAGE_COMPACTOR_R0.md"},
+    {"id":"r03","from":"goal","to":"privacy","relation":"MUST_RESPECT","epistemic":"DOCUMENTED","ack":"NOT_APPLICABLE","time":"ONGOING","proof":"https://github.com/CoCivium/CoCivium/blob/main/docs/Updates/COALL_PUBLIC_PULSE_20261023_R0.md"},
+    {"id":"r04","from":"virtual","to":"comap","relation":"PROJECT_AS","epistemic":"PROPOSED","ack":"NOT_APPLICABLE","time":"FUTURE","proof":null},
+    {"id":"r05","from":"provenance","to":"comap","relation":"SUPPLIES_EVIDENCE","epistemic":"PROPOSED","ack":"NOT_APPLICABLE","time":"FUTURE","proof":null},
+    {"id":"r06","from":"privacy","to":"comap","relation":"BOUNDS_VIEW","epistemic":"PROPOSED","ack":"NOT_APPLICABLE","time":"FUTURE","proof":null},
+    {"id":"r07","from":"comap","to":"predict","relation":"OFFERS_HINTS","epistemic":"PROPOSED","ack":"NOT_APPLICABLE","time":"FUTURE","proof":null},
+    {"id":"r08","from":"comap","to":"orb","relation":"RENDER_AS","epistemic":"PROPOSED","ack":"NOT_APPLICABLE","time":"FUTURE","proof":null},
+    {"id":"r09","from":"comap","to":"receiver","relation":"PROPOSE_ROUTE","epistemic":"HELD","ack":"NO_RECEIVER_ACK","time":"NOT_DELIVERED","proof":null},
+    {"id":"r10","from":"virtual","to":"models","relation":"MATERIALIZE_IF_JUSTIFIED","epistemic":"PROPOSED","ack":"NOT_APPLICABLE","time":"FUTURE","proof":null},
+    {"id":"r11","from":"models","to":"receiver","relation":"NEEDS_RECEIPT","epistemic":"HELD","ack":"NO_RECEIVER_ACK","time":"NOT_TESTED","proof":null},
+    {"id":"r12","from":"privacy","to":"receiver","relation":"REQUIRES_CONSENT","epistemic":"DOCUMENTED","ack":"NO_RECEIVER_ACK","time":"ONGOING","proof":"https://github.com/CoCivium/CoCivium/blob/main/docs/Updates/COALL_PUBLIC_PULSE_20261023_R0.md"}
+  ],
+  "receivers": [
+    {"id":"github","label":"GitHub public discovery","mode":"PULL","state":"EXISTING_PUBLIC_POINTER","authority":"PUBLIC_READ","endpoint_known":true,"evidence":"https://github.com/CoCivium/CoCivium/blob/main/EVERGREEN.md","ack_ref":null,"notes":"Repository files can be fetched by consenting readers. No specific CoMapPulse R0 receiver uptake is shown."},
+    {"id":"gmail","label":"Gmail / existing relations","mode":"SELECTIVE","state":"HOLD_RECENT_DUPLICATE","authority":"EXPLICIT_THREAD_SCOPE","endpoint_known":true,"evidence":null,"ack_ref":null,"notes":"Recent outreach exists; no new email in this offline prototype."},
+    {"id":"covia","label":"CoVIA dedicated transport","mode":"OPT_IN","state":"HOLD_NO_RECEIVER","authority":"UNVERIFIED","endpoint_known":false,"evidence":null,"ack_ref":null,"notes":"A CoVIA relationship is not a verified delivery mechanism."},
+    {"id":"nodes","label":".nodes / nodes","mode":"SUBSCRIPTION","state":"HOLD_NO_RECEIVER","authority":"UNVERIFIED","endpoint_known":false,"evidence":null,"ack_ref":null,"notes":"No confirmed authorized subscription endpoint or receiver readproof."},
+    {"id":"sites","label":".sites / sites","mode":"SUBSCRIPTION","state":"HOLD_NO_RECEIVER","authority":"UNVERIFIED","endpoint_known":false,"evidence":null,"ack_ref":null,"notes":"No confirmed authorized publication adapter or uptake."}
+  ]
+}
