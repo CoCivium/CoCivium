@@ -80,6 +80,28 @@ class CoAlienMathR0Tests(unittest.TestCase):
     def test_odd_cycle_not_jointly_satisfiable(self):
         self.assertFalse(three_binary_inequalities_globally_satisfiable())
 
+    def test_unrecognized_null_string_fails_closed(self):
+        # Dataclass type hints do not validate runtime JSON/user values.
+        with self.assertRaises(ValueError):
+            QualifiedObservation("X", "duration", "s", None, "ALIEN_PASS")
+
+    def test_raw_null_enum_value_requires_typed_decode(self):
+        with self.assertRaises(ValueError):
+            QualifiedObservation("X", "duration", "s", None, "UNKNOWN")
+
+    def test_complex_zero_is_not_an_observed_real_zero(self):
+        with self.assertRaises(ValueError):
+            QualifiedObservation("X", "duration", "s", 0j, NullKind.OBSERVED_ZERO)
+
+    def test_extreme_likelihood_ratios_remain_finite_and_symmetric(self):
+        # Both are valid finite probabilities; ratio-first log2 would return inf.
+        import math
+        value = likelihood_evidence_bits(1.0, 1e-320)
+        self.assertTrue(math.isfinite(value))
+        self.assertGreater(value, 1000)
+        self.assertAlmostEqual(value, -likelihood_evidence_bits(1e-320, 1.0))
+
+
 
 if __name__ == "__main__":
     unittest.main()
