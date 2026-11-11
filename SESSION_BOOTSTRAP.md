@@ -16,6 +16,8 @@ Start with:
 4. `docs/Launch/COCIVIUM_PUBLIC_PRELAUNCH_R0.md`
 5. relevant machine-readable twins under `schemas/`, `ai/`, and `docs/`
 
+**2026-11-11 public-first commons review:** [Read the CoCommons+ / CoOwm+ advisory](docs/Launch/COCOMMONS_PUBLIC_FIRST_TRANSITION_ADVISORY_20261111.md) or [typed, bounded machine pointer](ai/currentness/cocommons-public-first-20261111.json) only when relevant. Sessions may independently challenge privacy, rights, inclusion and release claims; no automatic delivery/ACK, license change, bulk migration, account mutation or authority is granted by this notice.
+
 ## What GitHub is for
 
 - public-safe currentness;
