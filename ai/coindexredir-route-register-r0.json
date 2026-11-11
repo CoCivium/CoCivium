@@ -58,5 +58,50 @@
     "NO_AUTOMATIC_EVOLUTION_RUNTIME",
     "NO_DESTINATION_HTTPS_READPROOF",
     "NO_HOFSTADTER_DELIVERY"
-  ]
+  ],
+  "best_face_candidate": {
+    "alias": "CoBF+",
+    "meaning": "CoBestFace+: select the best independently qualified, audience-appropriate, source-anchored view; never replace evidence with polish",
+    "state": "SOURCE_CANDIDATE_ONLY_NOT_GLOBAL_OR_DEPLOYED",
+    "canonical_human_source": "START_HERE.md",
+    "canonical_machine_source": "ai/index.json",
+    "canonical_evidence_source": "EVERGREEN.md",
+    "proposed_front_door_route": "/start",
+    "front_types": [
+      "PUBLIC_HUMAN",
+      "PUBLIC_MACHINE",
+      "PRIVATE_OPERATOR",
+      "HEADLESS_WORKER"
+    ],
+    "selection_rules": [
+      "QUALIFIED_LAST_GOOD_GT_UNVERIFIED_NEWEST",
+      "SHARED_EVIDENCE_DIFFERENT_RECEIVER_RELATIVE_PROJECTIONS",
+      "ONE_PURPOSE_ONE_HONEST_STATE_ONE_NEXT_USEFUL_ACTION",
+      "SOURCE_AND_PROOF_AVAILABLE_WITHOUT_UNNECESSARY_CLUTTER",
+      "DISCLOSURE_NE_PUBLISH_PRIVATE_DATA",
+      "NO_UNSOLICITED_FOREGROUND_FOCUS_OR_AUDIO",
+      "ROUTE_STATUS_NE_WEB_DEPLOYMENT",
+      "RECEIVER_ACCEPTANCE_NE_SOURCE_CI",
+      "FOREGROUND_VIEW_OPTIONAL_FOR_HEADLESS_WORKERS",
+      "SOURCE_CURRENTNESS_AND_SAFE_ROLLBACK_REQUIRED"
+    ],
+    "validation_targets": {
+      "human_15s": "Visitor can state purpose and actual maturity without a glossary",
+      "human_60s": "Visitor can try a real working bounded capability or read a clearly marked source demonstration",
+      "machine": "Consumer can retrieve structured currentness, provenance, capability boundaries and exact evidence sources",
+      "operator": "No focus theft; one quiet truthful status and reversible next action",
+      "release": "Source tested, independent receiver readproof, accessibility and privacy gates before promotion"
+    },
+    "proof_state": {
+      "public_host_readproof": null,
+      "independent_first_use": null,
+      "receiver_ack": null,
+      "live_global_binding": false
+    },
+    "nonclaims": [
+      "THIS_MANIFEST_NE_DEPLOYED_COBF",
+      "SOURCE_OR_CI_NE_USER_ACCEPTANCE",
+      "MANY_BRANCHES_NE_MANY_PRODUCTS"
+    ]
+  }
 }
