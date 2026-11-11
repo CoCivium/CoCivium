@@ -1,0 +1,50 @@
+name: CoHighlight Return Gap R0
+
+on:
+  pull_request:
+    paths:
+      - ai/highlight-assets.json
+      - docs/Architecture/COHIGHLIGHT_REGENERATIVE_CANARY_R0_20261026.json
+      - scripts/CoHighlightRenewalGapR0.py
+      - tests/test_cohighlight_renewal_gap_r0.py
+      - .github/workflows/cohighlight-return-gap-r0.yml
+  push:
+    branches: [main]
+    paths:
+      - ai/highlight-assets.json
+      - docs/Architecture/COHIGHLIGHT_REGENERATIVE_CANARY_R0_20261026.json
+      - scripts/CoHighlightRenewalGapR0.py
+      - tests/test_cohighlight_renewal_gap_r0.py
+      - .github/workflows/cohighlight-return-gap-r0.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  highlight-gap:
+    name: Read-only currentness and receiver-binding audit
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Nine bounded tests (including unverified-return negative control)
+        run: python -m unittest discover -s tests -p 'test_cohighlight_renewal_gap_r0.py' -v
+      - name: Produce scoped source-evidence report, never perform effects
+        shell: bash
+        run: |
+          set -euo pipefail
+          python scripts/CoHighlightRenewalGapR0.py > "$RUNNER_TEMP/cohighlight-return-gap-r0.json"
+          python -m json.tool "$RUNNER_TEMP/cohighlight-return-gap-r0.json" > /dev/null
+      - name: Keep the read-only receipt for review
+        uses: actions/upload-artifact@v4
+        with:
+          name: cohighlight-return-gap-r0
+          path: ${{ runner.temp }}/cohighlight-return-gap-r0.json
+          if-no-files-found: error
+          retention-days: 14
