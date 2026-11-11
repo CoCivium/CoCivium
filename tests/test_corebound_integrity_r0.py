@@ -41,6 +41,29 @@ class Tests(unittest.TestCase):
                         ['CoOps+', ['CoSteward'], 'CONTINUITY']]
         }))
 
+        self.write('SESSION_BOOTSTRAP.md', (
+            '## Local staging retirement\\nHOLD_NO_DELETE\\n'
+            'NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF\\n'
+            'NO_LOCAL_DELETE_WITHOUT_AUTHORIZED_EXACT_RESTORE\\n'
+            'SHARED_SOURCE_NE_ALL_SESSIONS_ACK\\n'
+        ))
+        self.write('CoPre.md',
+            '[bootstrap local-staging retirement gate](SESSION_BOOTSTRAP.md#local-staging-retirement)\\n')
+        self.write('ai/session-bootstrap.json', json.dumps({
+            'rules': ['NO_LOCAL_DELETE_WITHOUT_AUTHORIZED_EXACT_RESTORE'],
+            'local_retirement': {
+                'state': 'PUBLIC_BOOTSTRAP_POLICY_ONLY__NOT_DELETION_AUTHORITY',
+                'default_decision': 'HOLD_NO_DELETE',
+                'deletion_authorized': False,
+                'automatic_cleanup_enabled': False,
+                'all_sessions_ack': 'UNKNOWN',
+                'requires_independent_receiver_readproof': True,
+                'human_contract': 'SESSION_BOOTSTRAP.md#local-staging-retirement',
+                'required_gates': corebound.RETIREMENT_GATES,
+                'nonclaims': corebound.RETIREMENT_NONCLAIMS
+            }
+        }))
+
     def write(self, name, content):
         target=self.root/name
         target.parent.mkdir(parents=True,exist_ok=True)
@@ -96,6 +119,63 @@ class Tests(unittest.TestCase):
     def test_boolean_and_missing_lane_metadata_fail_closed(self):
         self.write('ai/evolution-lanes.json',json.dumps({'domains':[['CoOps+', [], 'CONTINUITY']]}))
         self.assertEqual(corebound.audit(self.root)['state'],'SOURCE_CONTINUITY_HOLD')
+
+    def test_local_retirement_policy_valid_source_only(self):
+        result = corebound.audit(self.root)
+        self.assertEqual(result['local_retirement_policy_state'], 'POLICY_SOURCE_VERIFIED_ONLY')
+        self.assertIn('BOOTSTRAP_POLICY_CHECK_NE_DELETION_ENFORCEMENT', result['nonclaims'])
+
+    def test_bootstrap_guard_missing_holds(self):
+        (self.root/'SESSION_BOOTSTRAP.md').write_text('no retirement rule\\n', encoding='utf-8')
+        result = corebound.audit(self.root)
+        self.assertEqual(result['local_retirement_policy_state'], 'HOLD_NO_DELETE')
+        self.assertIn('RETIREMENT_BOOTSTRAP_DOC_GATE_MISSING', result['violations'])
+
+    def test_copre_discovery_pointer_missing_holds(self):
+        self.write('CoPre.md', 'No pointer to retirement gate\\n')
+        result = corebound.audit(self.root)
+        self.assertIn('RETIREMENT_COPRE_DISCOVERY_POINTER_MISSING', result['violations'])
+
+    def test_missing_receiver_gate_fails_closed(self):
+        target = self.root/'ai/session-bootstrap.json'
+        obj = json.loads(target.read_text(encoding='utf-8'))
+        obj['local_retirement']['required_gates'].remove(
+            'INDEPENDENT_RECEIVER_ORIGIN_BOUND_EXACT_READPROOF')
+        target.write_text(json.dumps(obj), encoding='utf-8')
+        result = corebound.audit(self.root)
+        self.assertEqual(result['local_retirement_policy_state'], 'HOLD_NO_DELETE')
+        self.assertTrue(any('INCOMPLETE_LOCAL_RETIREMENT_GATES' in s
+                            for s in result['violations']))
+
+    def test_unauthorized_delete_claim_fails_closed(self):
+        target = self.root/'ai/session-bootstrap.json'
+        obj = json.loads(target.read_text(encoding='utf-8'))
+        obj['local_retirement']['deletion_authorized'] = True
+        target.write_text(json.dumps(obj), encoding='utf-8')
+        result = corebound.audit(self.root)
+        self.assertEqual(result['local_retirement_policy_state'], 'HOLD_NO_DELETE')
+        self.assertTrue(any('UNSAFE_LOCAL_RETIREMENT_FIELD:deletion_authorized' in s
+                            for s in result['violations']))
+
+    def test_automatic_cleanup_claim_fails_closed(self):
+        target = self.root/'ai/session-bootstrap.json'
+        obj = json.loads(target.read_text(encoding='utf-8'))
+        obj['local_retirement']['automatic_cleanup_enabled'] = True
+        target.write_text(json.dumps(obj), encoding='utf-8')
+        self.assertEqual(corebound.audit(self.root)['state'], 'SOURCE_CONTINUITY_HOLD')
+
+    def test_false_global_session_ack_fails_closed(self):
+        target = self.root/'ai/session-bootstrap.json'
+        obj = json.loads(target.read_text(encoding='utf-8'))
+        obj['local_retirement']['all_sessions_ack'] = 'YES_ALL'
+        target.write_text(json.dumps(obj), encoding='utf-8')
+        self.assertEqual(corebound.audit(self.root)['state'], 'SOURCE_CONTINUITY_HOLD')
+
+    def test_missing_machine_policy_fails_closed(self):
+        (self.root/'ai/session-bootstrap.json').unlink()
+        result = corebound.audit(self.root)
+        self.assertIn('ai/session-bootstrap.json', result['missing_local_targets'])
+        self.assertEqual(result['local_retirement_policy_state'], 'HOLD_NO_DELETE')
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)

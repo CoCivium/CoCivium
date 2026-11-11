@@ -19,6 +19,9 @@ on:
       - 'docs/Onramp/AI_ONRAMP_CATCHUP_HUB_20261108.md'
       - 'ai/index.json'
       - 'ai/evolution-lanes.json'
+      - 'CoPre.md'
+      - 'SESSION_BOOTSTRAP.md'
+      - 'ai/session-bootstrap.json'
   schedule:
     - cron: '17 * * * *'
   workflow_dispatch:
