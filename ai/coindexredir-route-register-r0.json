@@ -102,6 +102,54 @@
       "THIS_MANIFEST_NE_DEPLOYED_COBF",
       "SOURCE_OR_CI_NE_USER_ACCEPTANCE",
       "MANY_BRANCHES_NE_MANY_PRODUCTS"
-    ]
+    ],
+    "federation_profile": {
+      "alias": "CoFedGRAILS+",
+      "meaning": "Candidate federation compatibility relation linking CoNodeMesh+/GRAIL+, independently recoverable Civ2+ service cells, CoFuturePull+ advisory futures and CoBF+ receiver projections; not a new crown or OS",
+      "state": "SOURCE_AND_SYNTHETIC_SHADOW_ONLY",
+      "governing_public_sources": [
+        "docs/Architecture/CIV2_FEDERATED_CELL_HOSTING_R0.md",
+        "docs/Architecture/COOMNIFRONT_TIMEBRAID_R0_20261108.md",
+        "docs/Architecture/COALL_PULSEFIELD_COTIME_R0.md",
+        "docs/Evolution/COFUTUREPULL_GDSIDE_R0.md",
+        "docs/CoLocal/CoLocal2601109_CoRelGRAILS_CoSeed_R0.md"
+      ],
+      "bridge": "scripts/CoFedGRAILSShadowBridgeR0.py",
+      "source_tests": "scripts/test_cofedgrails_shadow_bridge_r0.py",
+      "planes": [
+        "EXPERIENCE_PROJECTION",
+        "IDENTITY_CONSENT_TRUST",
+        "SERVICE_CELL_EXECUTION",
+        "DATA_RELATIONS_PROVENANCE",
+        "EVIDENCE_CURRENTNESS_RECOVERY",
+        "OPT_IN_PEERING_FEDERATION"
+      ],
+      "relation_classes": [
+        "PAST_EVIDENCE",
+        "CURRENT_OBSERVATION",
+        "PREFERRED_OR_PREDICTED_FUTURE",
+        "INVERSION_NULL_COUNTERFACTUAL",
+        "INDEPENDENT_CHALLENGE",
+        "RECEIVER_ACCEPTANCE",
+        "SUPERSESSION_ROLLBACK"
+      ],
+      "universal_constraints": [
+        "GLOBAL_DISCOVERY_NE_GLOBAL_AUTHORITY",
+        "SHARED_HASH_NE_RECEIVER_ACK",
+        "FORECAST_NE_CAUSAL_PROOF",
+        "ONE_WORK_ID_MANY_LOCAL_SOVEREIGN_AUTHORITIES",
+        "PRIVATE_NE_PUBLIC_BY_FEDERATION",
+        "SOURCE_CI_NE_FEDERATION_DEPLOYMENT",
+        "NO_FOREGROUND_FOCUS_THEFT",
+        "ONE_ELECTED_ACTUATOR_PER_EFFECT_DOMAIN"
+      ],
+      "epistemic_status": "GRAILS_ACRONYM_UNRESOLVED_DO_NOT_REDEFINE",
+      "proof_state": {
+        "peer_authentication": null,
+        "independent_receiver_ack": null,
+        "cold_restore": null,
+        "live_cross_cell_federation": false
+      }
+    }
   }
 }
