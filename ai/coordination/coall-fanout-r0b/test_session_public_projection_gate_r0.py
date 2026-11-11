@@ -34,7 +34,7 @@ class PublicDerivativeGateTests(unittest.TestCase):
 
     def test_valid_curated_still_requires_independent_review(self):
         x = review_candidate(candidate())
-        self.assertEqual(x["state"], "HOLD_INDEPENDENT_PRIVACY_RIGHTS_CONSENT_REVIEW")
+        self.assertEqual(x["state"], "HOLD_INDEPENDENT_PRIVACY_RIGHTS_CONSENT_REVIEW", x["holds"])
         self.assertFalse(x["publication_authorized"])
         self.assertEqual(x["receiver_ack"], "NOT_ESTABLISHED")
         self.assertEqual(x["cold_restore"], "NOT_TESTED")
