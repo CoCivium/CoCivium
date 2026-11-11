@@ -25,6 +25,7 @@ on:
       - 'scripts/test_cobestface_future_shadow_r0.py'
       - 'scripts/CoFedGRAILSShadowBridgeR0.py'
       - 'scripts/test_cofedgrails_shadow_bridge_r0.py'
+      - 'scripts/check_cospeedo_signedout_reader_r0.py'
       - '.github/workflows/coindexredir-r0.yml'
   workflow_dispatch:
 jobs:
