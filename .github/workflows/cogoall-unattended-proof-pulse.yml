@@ -324,6 +324,12 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - name: Checkout exact original historical policy source
+        uses: actions/checkout@v4
+        with:
+          ref: 8bc2e7adbd88e7a5fcc828ffa3f982614490b773
+          path: out/cogoall/historical-source
+          persist-credentials: false
       - name: Challenge wrong source, metadata, prior run and receipt mutation
         run: python -B -m unittest -v test_cogoall_prior_run_readback_r0
       - name: Fetch exact prior GitHub artifact metadata and completed WorkID
@@ -340,6 +346,7 @@ jobs:
         run: |
           python -B -m scripts.CoGoAllPriorRunReadbackR0 \
             --root . \
+            --historical-root out/cogoall/historical-source \
             --bundle out/cogoall/prior-run-work \
             --prior-readback out/cogoall/prior-run-readback/due-work-readback.json \
             --producer-metadata out/cogoall/prior-metadata/producer.json \

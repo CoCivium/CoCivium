@@ -143,5 +143,58 @@ class PriorRunReadbackTests(unittest.TestCase):
             sut.write_new(out,{"example":"clobber"})
 
 
+
+    def test_historical_checkout_is_required(self):
+        with self.assertRaisesRegex(Held, "HOLD_HISTORICAL_CHECKOUT_REQUIRED"):
+            sut.pinned_historical_source(self.root, None, sut.PIN)
+
+    def test_unrelated_checkout_does_not_gain_historical_authority(self):
+        with TemporaryDirectory() as foreign:
+            with self.assertRaisesRegex(Held, "HOLD_HISTORICAL_OUTSIDE_ROOT"):
+                sut.pinned_historical_source(self.root, Path(foreign), sut.PIN)
+
+    def test_historical_checkout_wrong_commit_is_held(self):
+        old = self.root / "historical"
+        old.mkdir()
+        with patch.object(sut.subprocess, "run", return_value=SimpleNamespace(
+                returncode=0, stdout="0"*40+"\n")):
+            with self.assertRaisesRegex(Held, "HOLD_HISTORICAL_COMMIT_MISMATCH"):
+                sut.pinned_historical_source(self.root, old, sut.PIN)
+
+    def test_historical_evidence_survives_unrelated_current_policy_evolution(self):
+        old = self.root / "historical"
+        for root, policy, fixture in (
+            (self.root, b'{"version":"new"}', b'{"fixture":"new"}'),
+            (old, b'{"version":"old"}', b'{"fixture":"old"}'),
+        ):
+            policy_file, fixture_file = root / sut.POLICY, root / sut.FIXTURE
+            policy_file.parent.mkdir(parents=True, exist_ok=True)
+            fixture_file.parent.mkdir(parents=True, exist_ok=True)
+            policy_file.write_bytes(policy)
+            fixture_file.write_bytes(fixture)
+        pin = {**sut.PIN, "source_commit": "f"*40,
+               "policy_sha256": sut.sha((old / sut.POLICY).read_bytes()),
+               "fixture_sha256": sut.sha((old / sut.FIXTURE).read_bytes())}
+        pin["payload_sha256"] = sut.digest(sut.canonical(
+            sut._payload(pin["policy_sha256"], pin["fixture_sha256"])))
+        with patch.object(sut.subprocess, "run", return_value=SimpleNamespace(
+                returncode=0, stdout="f"*40+"\n")):
+            policy, fixture = sut.pinned_historical_source(self.root, old, pin)
+        self.assertEqual(policy, pin["policy_sha256"])
+        self.assertEqual(fixture, pin["fixture_sha256"])
+        self.assertNotEqual(sut.source_sha(self.root, sut.POLICY), policy)
+        self.assertNotEqual(sut.source_sha(self.root, sut.FIXTURE), fixture)
+
+    def test_historical_file_tamper_cannot_hide_behind_pinned_commit_name(self):
+        old = self.root / "historical"
+        for relative in (sut.POLICY, sut.FIXTURE):
+            file = old / relative
+            file.parent.mkdir(parents=True, exist_ok=True)
+            file.write_bytes(b"tampered")
+        with patch.object(sut.subprocess, "run", return_value=SimpleNamespace(
+                returncode=0, stdout=sut.PIN["source_commit"]+"\n")):
+            with self.assertRaisesRegex(Held, "SOURCE_SHA256_MISMATCH"):
+                sut.pinned_historical_source(self.root, old, sut.PIN)
+
 if __name__=="__main__":
     unittest.main(verbosity=2)

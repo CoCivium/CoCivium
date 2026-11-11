@@ -17,7 +17,7 @@ import re
 import sqlite3
 import subprocess
 
-from scripts.CoObjectAgencyBridgeR0 import Held, require
+from scripts.CoObjectAgencyBridgeR0 import Held, require, verified_bytes
 from scripts.CoObjectAgencyTaskR0 import (
     POLICY, FIXTURE, RECEIPT_SCHEMA, canonical, digest, source_sha,
 )
@@ -110,9 +110,38 @@ def verify_metadata(source: Path, readback: Path, pin: dict) -> dict:
             "archive_metadata": "PINNED_GITHUB_ASSERTION_NOT_LOCAL_ZIP_HASH"}
 
 
+
+def pinned_historical_source(current_root: Path, historical_root: Path | None,
+                             pin: dict) -> tuple[str, str]:
+    """Verify historical inputs at a separate, exact Git checkout.
+
+    Current policy may legitimately evolve. Neither the old receipt nor
+    current source is overwritten to make an earlier prediction look right.
+    """
+    require(historical_root is not None, "HOLD_HISTORICAL_CHECKOUT_REQUIRED")
+    root = current_root.resolve(strict=True)
+    old = Path(historical_root)
+    require(old.is_dir() and not old.is_symlink(), "HOLD_HISTORICAL_CHECKOUT")
+    old = old.resolve(strict=True)
+    require(old != root and old.is_relative_to(root),
+            "HOLD_HISTORICAL_OUTSIDE_ROOT")
+    git = subprocess.run(["git", "rev-parse", "HEAD"], cwd=old,
+                         text=True, capture_output=True, timeout=10,
+                         check=False)
+    require(git.returncode == 0
+            and git.stdout.strip() == pin["source_commit"],
+            "HOLD_HISTORICAL_COMMIT_MISMATCH")
+    _, _, policy = verified_bytes(old, POLICY, pin["policy_sha256"])
+    _, _, fixture = verified_bytes(old, FIXTURE, pin["fixture_sha256"])
+    require(digest(canonical(_payload(policy, fixture)))
+            == pin["payload_sha256"], "HOLD_HISTORICAL_PAYLOAD_MISMATCH")
+    return policy, fixture
+
+
 def reobserve(root: Path, bundle: Path, previous_readback: Path,
               metadata_producer: Path, metadata_receiver: Path,
-              *, ctx: dict, pin: dict, observed_at: datetime) -> dict:
+              *, ctx: dict, pin: dict, observed_at: datetime,
+              historical_root: Path | None = None) -> dict:
     """Verify immutable prior result without enqueue/claim/complete or task dispatch."""
     require(ctx["run_id"] != pin["prior_run"]
             and RUN.fullmatch(ctx["run_id"]) is not None,
@@ -158,10 +187,10 @@ def reobserve(root: Path, bundle: Path, previous_readback: Path,
             and record["product_mvp_qualified"] is False,
             "HOLD_PRIOR_AUTHORITY_INFLATION")
 
-    policy, fixture = source_sha(root, POLICY), source_sha(root, FIXTURE)
-    require(policy == pin["policy_sha256"] and fixture == pin["fixture_sha256"]
-            and pin["payload_sha256"] == digest(canonical(_payload(policy, fixture))),
-            "HOLD_PRIOR_SOURCE_DRIFT")
+    policy, fixture = pinned_historical_source(root, historical_root, pin)
+    # Current-source drift is reported, not treated as historic evidence failure.
+    current_source_drift = (source_sha(root, POLICY) != policy
+                            or source_sha(root, FIXTURE) != fixture)
 
     receipt_bytes = bounded(bundle / "task-receipt.json", MAX_JSON)
     require(sha(receipt_bytes) == pin["receipt_file_sha256"],
@@ -222,6 +251,9 @@ def reobserve(root: Path, bundle: Path, previous_readback: Path,
         "work_id": pin["work_id"], "prior_run_id": pin["prior_run"],
         "current_run_id": ctx["run_id"], "current_source_head": ctx["source_head"],
         "prior_source_commit": pin["source_commit"],
+        "historical_source_checkout_verified": True,
+        "historical_source_scope": "PINNED_GIT_CHECKOUT__SAME_PROVIDER_ONLY",
+        "current_source_drift_from_prior": current_source_drift,
         "prior_checkpoint_sha256": pin["checkpoint_sha256"],
         "prior_receipt_sha256": pin["task_receipt_sha256"],
         "prior_readback_sha256": sha(prior_receiver_raw),
@@ -247,6 +279,7 @@ def write_new(path: Path, data: dict) -> None:
 def main() -> int:
     p = argparse.ArgumentParser()
     p.add_argument("--root", default=".")
+    p.add_argument("--historical-root", required=True)
     p.add_argument("--bundle", required=True)
     p.add_argument("--prior-readback", required=True)
     p.add_argument("--producer-metadata", required=True)
@@ -260,6 +293,7 @@ def main() -> int:
             Path(a.producer_metadata), Path(a.receiver_metadata),
             ctx=context(root, os.environ), pin=PIN,
             observed_at=datetime.now(timezone.utc),
+            historical_root=Path(a.historical_root),
         )
         write_new(Path(a.output), observation)
         print(json.dumps(observation, sort_keys=True))
