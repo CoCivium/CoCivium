@@ -66,7 +66,7 @@ class CoBFFutureShadowR0(unittest.TestCase):
     def test_cross_work_fails(self):
         self.assertIn("CROSS_WORK_OR_AUDIENCE",run([c(work_id="work.other")])["holds"])
     def test_stale_candidate_fails(self):
-        self.assertIn("STALE_OR_FUTURE_DATED_CANDIDATE",run([c(currentness_at=1)])["holds"])
+        self.assertIn("STALE_OR_FUTURE_DATED_CANDIDATE",run([c(currentness_at=1)],max_age_s=100)["holds"])
     def test_future_dated_candidate_fails(self):
         self.assertIn("STALE_OR_FUTURE_DATED_CANDIDATE",run([c(currentness_at=3000)])["holds"])
     def test_stale_baseline_fails(self):
