@@ -17,6 +17,13 @@ KINDS = {
         "established_metric_ref": "CoMx.receiver_pickup_fraction",
     },
     "CoEther": {
+        # Open research umbrella, not a physical substance or an observed bridge.
+        "kind": "OPEN_INTERSTICE_RESEARCH_PLACEHOLDER",
+        "measurement_gate": "TYPE_HYPOTHESIS_AND_TEST_DOMAIN_SPECIFIC_EVIDENCE_BEFORE_MERGER",
+        "established_metric_ref": None,
+    },
+    "CoEther.Transport": {
+        # Measurable transport is one optional descendant, not all of CoEther.
         "kind": "TRANSPORT_QUALITY_UNMEASURED",
         "measurement_gate": "DEFINED_WINDOW_SOURCE_AND_RECEIVER_TIMES_TRANSPORT_LOSS_BASELINE",
         "established_metric_ref": "CoTime.source_age",
@@ -40,6 +47,8 @@ NONCLAIMS = (
     "LOCAL_DISPLAY_NE_RECEIVER_ACK",
     "RESEARCH_LABEL_NE_TELEMETRY",
     "NO_NETWORK_DEVICE_OR_PUBLICATION_EFFECT",
+    "MYTHOS_G_D_RELATION_NE_EMPIRICAL_CAUSE",
+    "CANDIDATE_MERGER_NE_VERIFIED_IDENTITY",
 )
 DISPLAY = {
     "UNKNOWN": "Not yet measured",
@@ -47,6 +56,19 @@ DISPLAY = {
     "NOT_APPLICABLE": "Not applicable (declared, not independently verified)",
     "RESEARCH_CONCEPT": "Research concept; no numeric metric",
 }
+# Keep diverse candidate gaps visible without asserting a common mechanism.
+ETHER_FACETS = (
+    "PHYSICAL_OBSERVATION",
+    "VIRTUAL_REPRESENTATION",
+    "MYTHOS_NARRATIVE",
+    "PHILOSOPHICAL_G_D_INQUIRY",
+    "UNKNOWN_OBSERVER_GAP",
+)
+ETHER_DISPLAY = "Open questions; no empirical bridge established"
+ETHER_REASON = (
+    "Open relational space across physical observations, virtual models, "
+    "mythos and philosophical inquiry; no verified common mechanism."
+)
 
 
 def require(condition, label):
@@ -65,12 +87,13 @@ def validate_placeholder(item):
     require(item["kind"] == spec["kind"], "KIND_MISMATCH")
     state = item["state"]
     require(type(state) is str and state in STATES, "STATE")
-    if slot == "CoAsym":
+    if slot in ("CoAsym", "CoEther"):
         require(state == "RESEARCH_CONCEPT", "CONCEPT_CANNOT_IMPLY_METRIC")
     else:
         require(state in ("UNKNOWN", "AWAITING_EVIDENCE", "NOT_APPLICABLE"),
                 "UNMEASURED_SLOT_CANNOT_IMPLY_MEASUREMENT")
-    require(item["display"] == DISPLAY[state], "DISPLAY_MUST_BE_HONEST")
+    truthful_display = ETHER_DISPLAY if slot == "CoEther" else DISPLAY[state]
+    require(item["display"] == truthful_display, "DISPLAY_MUST_BE_HONEST")
     require(item["value"] is None and item["unit_id"] is None
             and item["observed_at_utc"] is None, "PLACEHOLDER_VALUE_FORBIDDEN")
     require(type(item["evidence_refs"]) is list and not item["evidence_refs"],
@@ -100,15 +123,19 @@ def validate_placeholder(item):
     return deepcopy(item)
 
 
-def new_placeholder(slot, state="UNKNOWN", *, reason=None, wake_condition=None):
+def new_placeholder(slot, state=None, *, reason=None, wake_condition=None):
     require(type(slot) is str and slot in KINDS, "UNKNOWN_SLOT")
+    if state is None:
+        state = "RESEARCH_CONCEPT" if slot in ("CoEther", "CoAsym") else "UNKNOWN"
+    if slot == "CoEther" and state == "RESEARCH_CONCEPT" and reason is None:
+        reason = ETHER_REASON
     spec = KINDS[slot]
     item = {
         "schema": "CoAll.CoMeasure.UXPlaceholder.R0",
         "slot": slot,
         "kind": spec["kind"],
         "state": state,
-        "display": DISPLAY.get(state),
+        "display": ETHER_DISPLAY if slot == "CoEther" else DISPLAY.get(state),
         "reason": reason,
         "wake_condition": wake_condition,
         "value": None,
@@ -130,7 +157,7 @@ def initial_projections():
     return (
         new_placeholder("CoIb", "AWAITING_EVIDENCE",
                         wake_condition="independent_receiver_readback_for_one_WorkID"),
-        new_placeholder("CoEther", "UNKNOWN"),
+        new_placeholder("CoEther"),
         new_placeholder("CoAsym", "RESEARCH_CONCEPT",
                         reason="conceptual optionality, no validated observation procedure"),
     )
