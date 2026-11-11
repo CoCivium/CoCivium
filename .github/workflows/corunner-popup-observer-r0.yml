@@ -3,10 +3,12 @@ on:
   push:
     paths:
       - 'scripts/CoRunnerPopupObserverR0.ps1'
+      - 'scripts/Select-CoDesktopActiveOwnerR0.ps1'
       - '.github/workflows/corunner-popup-observer-r0.yml'
   pull_request:
     paths:
       - 'scripts/CoRunnerPopupObserverR0.ps1'
+      - 'scripts/Select-CoDesktopActiveOwnerR0.ps1'
       - '.github/workflows/corunner-popup-observer-r0.yml'
   workflow_dispatch:
 permissions:
@@ -47,3 +49,18 @@ jobs:
           if (-not (@($r.nonclaims) -contains 'NO_TASK_DISABLED')) { throw 'Missing no-mutation claim' }
           if (-not (@($r.nonclaims) -contains 'NO_PROCESS_TERMINATED')) { throw 'Missing process safety claim' }
           Write-Host 'CoRunner observer schema and privacy-field smoke PASS; Windows test runner only, not X2.'
+      - name: Verify owner election fails closed on an unrelated Windows runner
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $receipt = Join-Path $env:RUNNER_TEMP 'corunner-owner-election-smoke.json'
+          $json = & ./scripts/Select-CoDesktopActiveOwnerR0.ps1 -ReceiptPath $receipt | Out-String
+          $result = $json | ConvertFrom-Json -Depth 12
+          $proof = Get-Content -LiteralPath $receipt -Raw | ConvertFrom-Json -Depth 12
+          if ($proof.schema -ne 'CoAll.CoDesktop.ActiveOwnerElection.R0') { throw 'Schema mismatch' }
+          if ($result.state -ne 'HELD_NOT_QUALIFIED') { throw 'Unrelated CI runner must not elect a CoDesktop owner' }
+          if ($proof.effect_authority -ne 'READ_ONLY') { throw 'Authority mismatch' }
+          if ($null -ne $proof.receiver_ack) { throw 'Receiver acceptance invented' }
+          if (-not (@($proof.nonclaims) -contains 'NO_SIDE_EFFECTS_ON_HOST')) { throw 'Missing safety boundary' }
+          if ($proof.visible_bar_count -ne 0 -or $proof.visible_orb_count -ne 0) { throw 'Unexpected CoDesktop Windows on CI runner' }
+          Write-Host 'CoDesktop owner selector correctly HELD on unrelated Windows runner.'
