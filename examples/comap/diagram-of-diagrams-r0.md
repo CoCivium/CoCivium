@@ -432,7 +432,7 @@ flowchart LR
 
 **Exact source pointers (not copied media):**
 - [CoMap offline source weave](../../examples/comap/source-weave-r0.html) | Git blob `4887dbb294ae0c1eda3dffe475d9b1274bdf559c` | rights and receiver uptake **unverified**
-- [Context rail prototype](../../examples/conodcothumb/context_rail_r1/index.html) | Git blob `e50b11a2825d9548248746c4f7937049ea97caa8` | rights and receiver uptake **unverified**
+- [Context rail prototype](../../examples/conodcothumb/context_rail_r1/index.html) | Git blob `6a079d2a2a6d1be3bc1f9aacd3bb082ba42513c0` | rights and receiver uptake **unverified**
 - [Relational media diagram](../../examples/colensmedia/relational_media_diagram_r0.md) | Git blob `476e5eeb6e24e1fae562552ac07dd234748ab8ce` | rights and receiver uptake **unverified**
 - [Public visual finder](../../examples/covisual_finder_r1/index.html) | Git blob `2360b7ceea035599a7604e5c54d28b1765952e0d` | rights and receiver uptake **unverified**
 - [Visual prior bridge](../../examples/colensmedia/visual_prior_bridge.html) | Git blob `aed071ba013e54320ce3e5b28c4c130a0317ba48` | rights and receiver uptake **unverified**
