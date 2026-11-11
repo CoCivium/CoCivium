@@ -92,5 +92,27 @@ class SyntheticSqliteConvergenceTests(unittest.TestCase):
             self.assertFalse(db.exists())
 
 
+    def test_held_authorization_or_epoch_cannot_create_record(self):
+        with tempfile.TemporaryDirectory() as d:
+            root = Path(d)
+            source = root / "CoPre.md"
+            source.write_bytes(source_bytes())
+            db = root / "synthetic.sqlite3"
+            cases = [
+                (proposal(), None, "HELD_AUTHORIZATION"),
+                (proposal(), {"scope": "PUBLIC_SYNTHETIC_HANDOFF",
+                              "source_ref": SOURCE_REF, "consent_epoch": 2},
+                 "HELD_AUTHORIZATION"),
+                (dict(proposal(), lease_epoch=2), authorization(), "HELD_EPOCH"),
+                (dict(proposal(), consent="REAL_USER_CONSENT"), authorization(),
+                 "HELD_SCOPE"),
+            ]
+            for packet, auth, expected in cases:
+                with self.subTest(expected=expected):
+                    result = inspect_with_source(packet, auth, source)
+                    self.assertEqual(result["state"], expected)
+                    self.assertFalse(db.exists())
+
+
 if __name__ == "__main__":
     unittest.main()
