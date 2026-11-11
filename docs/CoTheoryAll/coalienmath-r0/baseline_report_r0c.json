@@ -1,0 +1,250 @@
+{
+  "candidate_correct": 27,
+  "case_count": 27,
+  "class": "LOCAL_SYNTHETIC_NOT_INDEPENDENT_REVIEW",
+  "decision_agreement_count": 27,
+  "false_green_count_postpatch": 0,
+  "nonclaims": [
+    "NOT_INDEPENDENT_REVIEW",
+    "NOT_BLINDED",
+    "NOT_PRODUCTION_TELEMETRY",
+    "NO_RECEIVER_ACK",
+    "NO_CI_GUARANTEE",
+    "NO_NEW_MATH_THEOREM",
+    "NO_PROVEN_USER_BENEFIT"
+  ],
+  "plain_baseline_correct": 27,
+  "prepatch_false_green_case_ids": [
+    "OBS07",
+    "OBS08",
+    "RES04",
+    "WIT03"
+  ],
+  "results": [
+    {
+      "coprimath_candidate_ok": true,
+      "expected": "ALLOW",
+      "id": "OBS01",
+      "operation": "observation",
+      "parity_ok": true,
+      "plain_baseline_ok": true
+    },
+    {
+      "coprimath_candidate_ok": true,
+      "expected": "ALLOW",
+      "id": "OBS02",
+      "operation": "observation",
+      "parity_ok": true,
+      "plain_baseline_ok": true
+    },
+    {
+      "coprimath_candidate_ok": true,
+      "expected": "ALLOW",
+      "id": "OBS03",
+      "operation": "observation",
+      "parity_ok": true,
+      "plain_baseline_ok": true
+    },
+    {
+      "coprimath_candidate_ok": true,
+      "expected": "HOLD",
+      "id": "OBS04",
+      "operation": "observation",
+      "parity_ok": true,
+      "plain_baseline_ok": true
+    },
+    {
+      "coprimath_candidate_ok": true,
+      "expected": "HOLD",
+      "id": "OBS05",
+      "operation": "observation",
+      "parity_ok": true,
+      "plain_baseline_ok": true
+    },
+    {
+      "coprimath_candidate_ok": true,
+      "expected": "HOLD",
+      "id": "OBS06",
+      "operation": "observation",
+      "parity_ok": true,
+      "plain_baseline_ok": true
+    },
+    {
+      "coprimath_candidate_ok": true,
+      "expected": "HOLD",
+      "id": "OBS07",
+      "operation": "observation",
+      "parity_ok": true,
+      "plain_baseline_ok": true
+    },
+    {
+      "coprimath_candidate_ok": true,
+      "expected": "HOLD",
+      "id": "OBS08",
+      "operation": "observation",
+      "parity_ok": true,
+      "plain_baseline_ok": true
+    },
+    {
+      "coprimath_candidate_ok": true,
+      "expected": "HOLD",
+      "id": "OBS09",
+      "operation": "observation",
+      "parity_ok": true,
+      "plain_baseline_ok": true
+    },
+    {
+      "coprimath_candidate_ok": true,
+      "expected": "ALLOW",
+      "id": "OBS10",
+      "operation": "observation",
+      "parity_ok": true,
+      "plain_baseline_ok": true
+    },
+    {
+      "coprimath_candidate_ok": true,
+      "expected": 1.2,
+      "id": "RES01",
+      "operation": "residual",
+      "parity_ok": true,
+      "plain_baseline_ok": true
+    },
+    {
+      "coprimath_candidate_ok": true,
+      "expected": "HOLD",
+      "id": "RES02",
+      "operation": "residual",
+      "parity_ok": true,
+      "plain_baseline_ok": true
+    },
+    {
+      "coprimath_candidate_ok": true,
+      "expected": "HOLD",
+      "id": "RES03",
+      "operation": "residual",
+      "parity_ok": true,
+      "plain_baseline_ok": true
+    },
+    {
+      "coprimath_candidate_ok": true,
+      "expected": "HOLD",
+      "id": "RES04",
+      "operation": "residual",
+      "parity_ok": true,
+      "plain_baseline_ok": true
+    },
+    {
+      "coprimath_candidate_ok": true,
+      "expected": 2.0,
+      "id": "BITS01",
+      "operation": "bits",
+      "parity_ok": true,
+      "plain_baseline_ok": true
+    },
+    {
+      "coprimath_candidate_ok": true,
+      "expected": 1063.0170064253057,
+      "id": "BITS02",
+      "operation": "bits",
+      "parity_ok": true,
+      "plain_baseline_ok": true
+    },
+    {
+      "coprimath_candidate_ok": true,
+      "expected": "HOLD",
+      "id": "BITS03",
+      "operation": "bits",
+      "parity_ok": true,
+      "plain_baseline_ok": true
+    },
+    {
+      "coprimath_candidate_ok": true,
+      "expected": "HOLD",
+      "id": "BITS04",
+      "operation": "bits",
+      "parity_ok": true,
+      "plain_baseline_ok": true
+    },
+    {
+      "coprimath_candidate_ok": true,
+      "expected": "ALLOW",
+      "id": "PERM01",
+      "operation": "permission",
+      "parity_ok": true,
+      "plain_baseline_ok": true
+    },
+    {
+      "coprimath_candidate_ok": true,
+      "expected": "BLOCK",
+      "id": "PERM02",
+      "operation": "permission",
+      "parity_ok": true,
+      "plain_baseline_ok": true
+    },
+    {
+      "coprimath_candidate_ok": true,
+      "expected": 2,
+      "id": "WIT01",
+      "operation": "witnesses",
+      "parity_ok": true,
+      "plain_baseline_ok": true
+    },
+    {
+      "coprimath_candidate_ok": true,
+      "expected": "HOLD",
+      "id": "WIT02",
+      "operation": "witnesses",
+      "parity_ok": true,
+      "plain_baseline_ok": true
+    },
+    {
+      "coprimath_candidate_ok": true,
+      "expected": "HOLD",
+      "id": "WIT03",
+      "operation": "witnesses",
+      "parity_ok": true,
+      "plain_baseline_ok": true
+    },
+    {
+      "coprimath_candidate_ok": true,
+      "expected": "FALSE",
+      "id": "DEC01",
+      "operation": "decision",
+      "parity_ok": true,
+      "plain_baseline_ok": true
+    },
+    {
+      "coprimath_candidate_ok": true,
+      "expected": "TRUE",
+      "id": "DEC02",
+      "operation": "decision",
+      "parity_ok": true,
+      "plain_baseline_ok": true
+    },
+    {
+      "coprimath_candidate_ok": true,
+      "expected": "FALSE",
+      "id": "DIST01",
+      "operation": "distinguish",
+      "parity_ok": true,
+      "plain_baseline_ok": true
+    },
+    {
+      "coprimath_candidate_ok": true,
+      "expected": "TRUE",
+      "id": "DIST02",
+      "operation": "distinguish",
+      "parity_ok": true,
+      "plain_baseline_ok": true
+    }
+  ],
+  "schema": "CoAlienMath.BaselineComparison.R0C",
+  "source_sha256": {
+    "BASELINE_R0C.md": "dcaff79acf483f51e8c678dab6ea46b764ff4117d1c848d2769b3367be5c21c6",
+    "baseline_cases_r0c.json": "2f0f84550a7b0b8114ce6d6b4e37f1788f622f4e3d9e6c763a2c944c1d778673",
+    "model_r0.py": "8627a644f6ab9f658322e3b4f8d15e67a68aadd71186433b9add76e84a29cd61",
+    "plain_json_baseline_r0c.py": "6eedad4eb25531020815665d8d935638af19241a25d2ee98d4e18185fd36de5c",
+    "test_baseline_r0c.py": "9510dc79ff5b34c9e5abf989fcb07b975d4d745dccb7d0989daf2e03050d70e0",
+    "test_model_r0.py": "cadaaa238390074f3ac6f4722745040c7cb5394d8559e1ed68f41afdab176498"
+  }
+}
