@@ -52,6 +52,8 @@ button:focus-visible,input:focus-visible{outline:3px solid #ffdd86;outline-offse
 const $=id=>document.getElementById(id);
 let conversationId=null,epoch=null,busy=false;
 const key="rickbar-r1-local-conversation";
+const pendingKey="rickbar-r1-pending-turn-pointer";
+function clearPending(){localStorage.removeItem(pendingKey)}
 function message(text){$("state").textContent=text}
 function render(data){
   conversationId=data.conversation_id; epoch=data.epoch;
@@ -91,6 +93,24 @@ async function load(){
       state=await api("/api/conversation/"+encodeURIComponent(created.conversation_id));
     }
     localStorage.setItem(key,state.conversation_id);render(state);
+    const marker=localStorage.getItem(pendingKey);
+    if(marker){
+      try{
+        const pending=JSON.parse(marker);
+        if(pending.conversation_id===state.conversation_id &&
+           typeof pending.turn_id==="string"){
+          const response=await fetch("/api/turn/"+
+              encodeURIComponent(pending.conversation_id)+"/"+
+              encodeURIComponent(pending.turn_id));
+          if(response.status===200){
+            const result=await response.json();
+            const status=result.turn.status;
+            if(status==="COMMITTED")clearPending();
+            else message("Previous turn "+status+". It was NOT resubmitted. Review local history.");
+          }else message("Previous turn cannot be verified. It was NOT resubmitted.");
+        }else clearPending();
+      }catch(e){message("Previous turn recovery unavailable. No automatic resubmission.");}
+    }
   }catch(e){message("Local continuity unavailable: "+e.message);conversationId=null;epoch=null}
   finally{busy=false;$("send").disabled=!conversationId}
 }
@@ -100,10 +120,11 @@ $("chat").addEventListener("submit",async e=>{
   busy=true;$("send").disabled=true;message("Submitting one bounded local turn…");
   // One TurnID per user submission; never automatically resubmit after unknown result.
   const turnId="t-"+crypto.randomUUID().replaceAll("-","");
+  localStorage.setItem(pendingKey,JSON.stringify({conversation_id:conversationId,turn_id:turnId}));
   try{
     const reply=await api("/api/turn",{conversation_id:conversationId,turn_id:turnId,prompt,epoch});
     if(reply.state!=="COMMITTED"&&reply.state!=="REPLAY")message("Unverified or unresolved turn: "+reply.state);
-    else $("prompt").value="";
+    else {$("prompt").value="";clearPending();}
   }catch(e){message("Result uncertain or unavailable: "+e.message+". Reopen to inspect stored state before retry.")}
   finally{
     try{const state=await api("/api/conversation/"+encodeURIComponent(conversationId));render(state)}
@@ -117,6 +138,7 @@ $("new").addEventListener("click",async()=>{
   try{
     const c=await api("/api/conversation",{});
     localStorage.setItem(key,c.conversation_id);
+    clearPending();
     render(await api("/api/conversation/"+encodeURIComponent(c.conversation_id)));
   }catch(e){message("Could not create conversation: "+e.message)}
   finally{busy=false;$("send").disabled=!conversationId}
