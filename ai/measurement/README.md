@@ -6,6 +6,22 @@ CoMeasure+ explores a **typed measurement commons** for people, AIs, agents and 
 
 The [proposed contract](../../docs/Architecture/COALL_MEASUREMENT_R0_CANDIDATE.md) and [machine-readable R0.1.2 registry](registry_r0_1.json) contain **21 unit/semantic variants** and **7 candidate operational metric families**. They distinguish physical dimensions from quantity kinds and separate observed zero from missing, unknown and redacted values. SI, UCUM and QUDT are methodological donors; this work does **not** redefine those standards.
 
+## Honest UX placeholders: CoIb / CoEther / CoAsym (R0 candidate)
+
+The user correctly challenged the original “0 placeholders” slogan. The defensible rule is **zero misleading placeholders**. An empty slot can preserve a legitimate future measurement without pretending it has already been observed.
+
+[ux_placeholder_r0.py](ux_placeholder_r0.py) supplies **three declared, nonnumeric candidate slots**, with [fail-closed tests](../../tests/test_ux_placeholder_r0.py). They do not add a new live status monitor, operating metric or registry. Render them only if a future separately authorized UI chooses a slot; never place invented numbers between CPU and available memory.
+
+- **CoIb**: unmeasured *inter-component handoff/readback*. Display **Awaiting independent evidence** until the same WorkID, exact source and genuine receiver-origin readproof exist. It **references** the already defined `CoMx.receiver_pickup_fraction` but does not claim a measured fraction.
+- **CoEther**: unmeasured *transport quality*. Display **Not yet measured** unless source/receiver time windows, latency or loss sampling, instrumentation and baselines are proven. A fresh local screenshot or a string such as “Signal Clean” is not a transport observation. It references `CoTime.source_age` for compatibility, not to certify transport.
+- **CoAsym**: conceptual research label for alternatives and asymmetric relations. Display **Research concept; no numeric metric**. It needs a falsifiable observation protocol before becoming any quantity.
+
+Placeholders have null value/unit/observation time, no evidence receipts, no authority, and false `receiver_ack`/`measurement_verified` flags. Distinct states are `UNKNOWN`, `AWAITING_EVIDENCE` (requires specific wake condition), `NOT_APPLICABLE` (requires explanation), and `RESEARCH_CONCEPT` (CoAsym only, requires limitation). Both code and tests reject fake numeric zero, forged ACK, fake Clean status, timestamp, extra telemetry, bogus metric linkage and removed nonclaims.
+
+The **Meta AI brainstorm is inspiration, not a source of telemetry, an action directive, evidence of a completed script, or permission to publish a screenshot**. Treat the suggested FixWorld/YouTube actions and “0 min old = sync” claims as unverified proposals. Do not run them from this source note.
+
+**Qualification:** synthetic source/CI only; no X2 native installation, receiver ACK, SI standard, product acceptance, CoEx or deployment. Next, an independent actual receiver-origin measurement and human-tested, calm single-bar status. Any changes to live CoSpeedo require separate authority and receipts.
+
 ## First-use synthetic CoSpeedo example
 
 Run `python ai/measurement/first_use_demo_r0.py` from the repository root to see eight explicit examples of typed measurement admissibility. The [public first-use script](first_use_demo_r0.py) uses only the elected R0.1.2 registry and observation-domain validator, does not access live devices, and writes no data files. It illustrates a synthetic 3-of-4 pickup fraction, two fictitious human interventions and a synthetic useful-delta rate, along with deliberately rejected claims: a fraction above one, zero denominator, wrong time window, fractional human intervention and unknown-as-zero.
