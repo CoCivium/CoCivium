@@ -47,6 +47,14 @@ The **existing** [nested-atlas generator](../../scripts/CoNavNestedAtlasR0.cjs) 
 
 **Redundancy boundary:** Git history gives a recoverable source revision within GitHub. A separate DNS name resolving to the same GitHub bytes is not an independent backup. Independent CoStead or second-provider copy, exact hash readback, and a cold restore need separate evidence; no domain publish, browser X2 adoption, external receiver ACK, or >24-hour service survival is asserted.
 
+## CoHighlights picture-first layer | November 11, 2026
+
+The [source-bound CoMegaScroller](megascroller-r0.html#highlights) now has **ten distinct original inline-SVG conceptual thumbnails** before its technical relation directory, each paired with a plain-language invitation and a verified existing public source path. The labels and set of highlight identities are checked against [the existing ten-entry highlight registry](../../ai/highlight-assets.json); a missing registration makes generation fail closed. Each illustration is concept art, not a product screenshot, scientific visualization, independent discovery or rights-cleared third-party capture. No private images or remote image requests are embedded.
+
+The original 56-node/61-edge source graph, all 63 detailed relation cards, seven retro-media source candidates and earlier Mermaid maps remain unchanged. The generator [CoNavNestedAtlasR0.cjs](../../scripts/CoNavNestedAtlasR0.cjs) owns both the offline HTML and its exact-parity regression tests. HTML remains one self-contained file with strict CSP and a readable text alternative. The candidate does **not** certify external website deployment, search-engine indexing, user enjoyment or independent reader acceptance.
+
+Next proof: open the actual HTML in desktop and narrow mobile browsers, check contrast, scroll and keyboard traversal, and have at least one new nontechnical reader identify an interesting idea and correctly distinguish concept art from implementation. Do not promote generic artistic approval from a CI PASS.
+
 ## CoLocal2601109 | Cross-front CoSeed candidate (2026-11-10)
 
 CoMap has now **read and indexed** the [public CoLocal CoRelGRAILS+ Seed](../../docs/CoLocal/CoLocal2601109_CoRelGRAILS_CoSeed_R0.md) via the [CoLocal discovery registry](../../docs/CoLocal/README.md). This is a typed **documentation/source-reference consumer path**, not an update to the embedded 56-node/61-edge graph, runtime semantic ingestion, all-session synchronization, or CoAll admission.
