@@ -12,6 +12,16 @@ on:
       - 'scripts/CoBestFaceFutureShadowR0.py'
       - 'scripts/test_cobestface_future_shadow_r0.py'
       - '.github/workflows/coindexredir-r0.yml'
+  push:
+    branches:
+      - 'evo/coindexredir-outreach-gate-r0-20261109'
+    paths:
+      - 'ai/coindexredir-route-register-r0.json'
+      - 'docs/Launch/coindexredir_r0/**'
+      - 'scripts/check_coindexredir_r0.py'
+      - 'scripts/CoBestFaceFutureShadowR0.py'
+      - 'scripts/test_cobestface_future_shadow_r0.py'
+      - '.github/workflows/coindexredir-r0.yml'
   workflow_dispatch:
 jobs:
   verify-candidate:
