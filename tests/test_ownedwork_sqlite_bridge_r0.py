@@ -11,7 +11,7 @@ import unittest
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 from CoOwnedWorkSqliteBridgeR0 import (
-    BROWSER_SCHEMA, Held, adapt, node_fixture, run,
+    BROWSER_SCHEMA, Held, adapt, apply_browser_revocation, node_fixture, run,
 )
 from CoNarrativeWorkIDR0 import commit_once, readback, revoke
 
@@ -127,6 +127,87 @@ class SyntheticBridgeR0(unittest.TestCase):
             self.assertEqual(proof["receiver_readback"]["committed_work_ids"], 1)
             with self.assertRaisesRegex(Held, "HELD_OUTPUT_EXISTS_NO_CLOBBER"):
                 run(inp, GATE, SOURCE, JS, out)
+
+
+    def test_exact_browser_origin_revocation_crosses_sqlite_boundary(self):
+        active = self.record()
+        revoked = {**active, "state": "REVOKED"}
+        packet = self.accepted(active)
+        with tempfile.TemporaryDirectory() as d:
+            db = Path(d) / "receiver.sqlite"
+            commit_once(db, packet)
+            proof = apply_browser_revocation(
+                db, active, revoked, self.gate, SOURCE, JS)
+            self.assertEqual(
+                proof["state"],
+                "SYNTHETIC_BROWSER_ORIGIN_REVOCATION_APPLIED_CI_ONLY")
+            self.assertEqual(proof["before"], "COLD_SOURCE_RECONSTRUCTED")
+            self.assertEqual(proof["after"], "HELD_REVOKED")
+            self.assertFalse(proof["receiver_ack"])
+            self.assertFalse(proof["real_human_consent"])
+            self.assertFalse(proof["independent_sender_authentication"])
+            self.assertEqual(
+                readback(db, expected_packet=packet)["state"], "HELD_REVOKED")
+            with self.assertRaisesRegex(Held, "HELD_REVOKED"):
+                commit_once(db, packet)
+            with self.assertRaisesRegex(Held, "HELD_RECEIVER_NOT_ACTIVE_FOR_REVOKE"):
+                apply_browser_revocation(
+                    db, active, revoked, self.gate, SOURCE, JS)
+
+    def test_corrupt_revocation_and_stale_gate_leave_receiver_active(self):
+        active = self.record()
+        revoked = {**active, "state": "REVOKED"}
+        packet = self.accepted(active)
+        with tempfile.TemporaryDirectory() as d:
+            db = Path(d) / "receiver.sqlite"
+            commit_once(db, packet)
+            cases = (
+                {"state": "ACTIVE"},
+                {"commit_sequence": 2},
+                {"receiver_ack": True},
+                {"source_verified_by_browser": True},
+                {"schema": "Other.Record"},
+                {"packet": {**active["packet"], "lease_epoch": 2}},
+                {"packet": {**active["packet"], "source_sha256": "0" * 64}},
+                {"packet": {**active["packet"], "narrative_summary": "forged"}},
+            )
+            for mutation in cases:
+                with self.subTest(mutation=mutation):
+                    forged = {**revoked, **mutation}
+                    with self.assertRaisesRegex(
+                            Held, "HELD_REVOKE_NOT_SAME_BROWSER_RECORD"):
+                        apply_browser_revocation(
+                            db, active, forged, self.gate, SOURCE, JS)
+                    self.assertEqual(
+                        readback(db, expected_packet=packet)["state"],
+                        "COLD_SOURCE_RECONSTRUCTED")
+            for gate_mutation in (
+                    {"consent_epoch": 2}, {"actor": "UNAUTHENTICATED"},
+                    {"permission": "REAL_WRITE"}, {"source_commit": "0"*40}):
+                with self.subTest(gate=gate_mutation):
+                    with self.assertRaises(Held):
+                        apply_browser_revocation(
+                            db, active, revoked,
+                            {**self.gate, **gate_mutation}, SOURCE, JS)
+                    self.assertEqual(
+                        readback(db, expected_packet=packet)["state"],
+                        "COLD_SOURCE_RECONSTRUCTED")
+
+    def test_revoke_from_different_browser_workid_denied(self):
+        active = self.record()
+        revoked = {**active, "state": "REVOKED",
+                   "packet": {**active["packet"], "work_id": "other-work"}}
+        with tempfile.TemporaryDirectory() as d:
+            db = Path(d) / "receiver.sqlite"
+            packet = self.accepted(active)
+            commit_once(db, packet)
+            with self.assertRaisesRegex(
+                    Held, "HELD_REVOKE_NOT_SAME_BROWSER_RECORD"):
+                apply_browser_revocation(
+                    db, active, revoked, self.gate, SOURCE, JS)
+            self.assertEqual(
+                readback(db, expected_packet=packet)["state"],
+                "COLD_SOURCE_RECONSTRUCTED")
 
 
 if __name__ == "__main__":
