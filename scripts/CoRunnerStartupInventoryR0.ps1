@@ -40,16 +40,37 @@ function Get-LaunchHint([string]$Executable, [string]$Arguments) {
     }
 }
 
+function Get-ProcessRole([string]$ProcessName) {
+    # Process-name classes only; no command lines, paths, window titles, tokens or users.
+    $n = $ProcessName.ToLowerInvariant()
+    switch -Regex ($n) {
+        '^(logioptionsplus(_agent|_updater)?|lghub(_agent|_updater)?|logitech\w*|razer\w*|steelseriesgg|icue|corsair\w*)\.exe$' {
+            return 'MOUSE_UTILITY_CANDIDATE'
+        }
+        '^ollama(\w*)?\.exe$' { return 'LOCAL_MODEL_CANDIDATE' }
+        '^(rickbar|cobar|coall|coorb|cospeedo|cocivium)[a-z0-9_-]*\.exe$' { return 'COALL_SURFACE_CANDIDATE' }
+        default { return 'OTHER' }
+    }
+}
+
 if ($SelfTest) {
     $plain = Get-LaunchHint 'pwsh.exe' '-NoProfile -File C:\Private\DO_NOT_OUTPUT.ps1 -Token secret'
     $hidden = Get-LaunchHint 'pwsh.exe' '-NoProfile -WindowStyle Hidden -File x.ps1'
     $py = Get-LaunchHint 'pythonw.exe' 'x.py'
     $safe = Get-SafeLabel 'Unrelated task with private details'
+    $mouseRole = Get-ProcessRole 'logioptionsplus_agent.exe'
+    $localModelRole = Get-ProcessRole 'ollama.exe'
+    $coallRole = Get-ProcessRole 'CoAllDesktop.exe'
+    $ordinaryRole = Get-ProcessRole 'browser.exe'
     if ($plain.window_risk -ne 'POSSIBLE_CONSOLE_WINDOW_UNPROVEN' -or
         $hidden.hidden_window_argument_present -ne $true -or
         $hidden.window_risk -ne 'WINDOW_VISIBILITY_UNPROVEN' -or
         $py.launcher_class -ne 'PYTHONW' -or
-        $safe -notmatch '^other-sha256-[0-9a-f]{16}$') {
+        $safe -notmatch '^other-sha256-[0-9a-f]{16}$' -or
+        $mouseRole -ne 'MOUSE_UTILITY_CANDIDATE' -or
+        $localModelRole -ne 'LOCAL_MODEL_CANDIDATE' -or
+        $coallRole -ne 'COALL_SURFACE_CANDIDATE' -or
+        $ordinaryRole -ne 'OTHER') {
         throw 'SELFTEST_FAILED'
     }
     [pscustomobject]@{
