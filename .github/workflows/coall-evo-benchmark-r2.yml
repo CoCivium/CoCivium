@@ -1,0 +1,49 @@
+name: CoAll Evo Benchmark R2
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '17 */6 * * *'
+
+permissions:
+  contents: read
+
+jobs:
+  bounded-evo:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - name: Run CoStretch regression tests
+        run: python3 -m unittest discover -v -s tests -p 'test*benchmark*evo*.py'
+      - name: Validate benchmark ledger
+        run: python3 scripts/CoBenchmarkEvoCheckR0.py benchmarks/costretch_r1/output/benchmark_evo.jsonl
+      - name: Compile trillion-logical bounded plan
+        run: |
+          python3 scripts/CoStretchBenchmarkPlanR0.py \
+            --logical-start 1000 \
+            --logical-stop 1000000000000 \
+            --concurrency-start 1 \
+            --concurrency-stop 128 \
+            --steps 7 \
+            --repetitions 1 \
+            --wall-time-budget-seconds 300 \
+            --memory-budget-mb 4096 \
+            --cost-budget-microunits 0 > /tmp/coall_r2_plan.json
+      - name: Show bounded plan summary
+        run: python3 -c "import json; p=json.load(open('/tmp/coall_r2_plan.json')); print({'steps':len(p['steps']),'logical_stop':p['steps'][-1]['logical_items'],'concurrency_stop':p['steps'][-1]['concurrency_ceiling'],'execution_performed':p['execution_performed']})"
+      - name: Preserve machine-readable receipt
+        run: |
+          mkdir -p artifacts
+          cp /tmp/coall_r2_plan.json artifacts/coall_r2_plan.json
+          printf '%s\n' '{"schema":"CoAll.EvoBenchmark.R2","status":"PASS","proof_class":"BOUNDED_CI_PLAN_AND_VALIDATION","nonclaims":["NOT_TRILLION_ACTIVE_WORKERS","NOT_UNLIMITED_PHYSICAL_COMPUTE","PLAN_NE_RUNTIME_RESULT"]}' > artifacts/coall_r2_receipt.jsonl
+      - name: Upload receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: coall-evo-benchmark-r2
+          path: artifacts/
