@@ -2,7 +2,7 @@
 
 **CoSpeedo NeedleTrails** shows which CoCivium engineering checks passed, which failed, and which still need evidence. **It is not a live dashboard.**
 
-> **Right now:** Public source and bounded automated checks are available. A working independent receiver, 24-hour survival, and measured human time saved are **not yet proven**.
+> **Right now:** The exact historical CoPre source was refetched successfully more than 24 hours after its pinned baseline. A working independent receiver, 24-hour **application/runtime** survival, and measured human time saved are **not yet proven**.
 
 ## The one-minute answer
 
@@ -10,7 +10,7 @@
 
 **What a browser actually showed:** The source prototype passed [four-screen-size browser QA](https://github.com/CoCivium/CoCivium/actions/runs/42744256246). That test does not establish a deployed CoCivium website or a useful outcome.
 
-**What remains held:** Continuous tracking across devices, independent receiver recovery, and survival beyond 24 hours have not been demonstrated. See the [acceptance rail](https://github.com/CoCivium/CoCivium/issues/317).
+**What remains held:** Continuous tracking across devices, independent receiver recovery, and **runtime/restart** survival beyond 24 hours have not been demonstrated. See the [acceptance rail](https://github.com/CoCivium/CoCivium/issues/317).
 
 **What is unknown:** We do not yet have a comparable human outcome baseline for time saved or comprehension. See the [seven-day scorecard](../../docs/Metrics/COSPEEDO_7DAY_SCORECARD_R0_20261026.json).
 
@@ -38,9 +38,9 @@ These are **selected fronts**, not a complete or continuously monitored inventor
 
 ## What happened while the user was away?
 
-**Last separately checked scheduled pulse:** On **2026-11-10 at 13:28 UTC**, the existing [CoGoAll unattended proof pulse](https://github.com/CoCivium/CoCivium/actions/runs/42824746546) completed **three GitHub Actions jobs**. A second job read back the first job's exact receipt and log hashes. That is real, bounded machine-run recovery evidence **inside the same GitHub Actions provider**, without a manual copy-and-paste relay.
+**Historical separately checked scheduled pulse:** On **2026-11-10 at 13:28 UTC**, the existing [CoGoAll unattended proof pulse](https://github.com/CoCivium/CoCivium/actions/runs/42824746546) completed **three GitHub Actions jobs**. A second job read back the first job's exact receipt and log hashes. That is real, bounded machine-run recovery evidence **inside the same GitHub Actions provider**, without a manual copy-and-paste relay.
 
-**Counter-needles remain visible:** The 24-hour canary returned **`HELD_LESS_THAN_24H`** for its pinned historical CoPre file, and the current mainline differs from that historical pin. The downstream receipt explicitly says `external_receiver_ack: false`, and X2 runtime, independent-host pickup, live human benefit, all-sessions sync, and exactly-once external effects remain unverified. **Three green jobs do not make seven green continuity gates.**
+**Counter-needles remain visible:** An earlier November 10 24-hour check returned **`HELD_LESS_THAN_24H`**. After the actual interval elapsed, the [November 11 source run](https://github.com/CoCivium/CoCivium/actions/runs/42934800629) returned **`VERIFIED_SOURCE_REFETCH_24H_PLUS_NOT_RUNTIME_SURVIVAL`** for the exact historical pinned CoPre file; the current mainline still diverges from that pin. The downstream receipt explicitly says `external_receiver_ack: false`. X2 runtime, independent-host pickup, human benefit, multi-session sync, 24-hour **runtime** continuity, and exactly-once external effects remain unverified. **Three green jobs do not make seven green continuity gates.**
 
 **Evergreen heartbeat, proposed operating rule:** A heartbeat observes and records currentness; *qualified new evidence* may trigger a bounded reversible task. An unchanged state returns **`NO_MATERIAL_DELTA`** and stops. Missed wakes, stale observations, privacy conflicts, failed signatures or absent receiver readproof stay visible as **HELD**, not automatic retries without a budget. Public release, outreach and authority changes still require their separate gates. See the [CoLatch seven-gate contract](../../ai/colatch-ready-cycle-r0-20261110.json) and the [independent receiver acceptance task](https://github.com/CoCivium/CoCivium/issues/317).
 
@@ -54,4 +54,4 @@ For details, inspect the [R1 plotted HTML prototype](needle-trails-r1.html), the
 
 **Next proof:** An independently operated receiver recovers the exact work, an uncoached reader understands the status, and recovery is measured across an actual interruption.
 
-*Source snapshot: 10 November 2026. No automatic refresh, external tracking, background microphone/camera capture, service deployment, or independent receipt is claimed.*
+*Source snapshot: 11 November 2026. No automatic refresh, external tracking, background microphone/camera capture, service deployment, or independent receipt is claimed.*
