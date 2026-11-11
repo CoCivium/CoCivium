@@ -4,6 +4,12 @@ on:
     paths:
       - 'docs/CoTheoryAll/research/coemergence-dhp-r0/pattern_contagion/**'
       - '.github/workflows/copattern-contagion-source-r0.yml'
+  push:
+    branches:
+      - 'research/coemergence-dhp-pattern-20261109-r0'
+    paths:
+      - 'docs/CoTheoryAll/research/coemergence-dhp-r0/pattern_contagion/**'
+      - '.github/workflows/copattern-contagion-source-r0.yml'
   workflow_dispatch:
 jobs:
   check:
