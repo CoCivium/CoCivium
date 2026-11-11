@@ -23,7 +23,7 @@ RISK = (
     re.compile(r"\b(?:\+?\d[\s.-]?){9,14}\d\b"),
     re.compile(r"(?i)\b(?:password|api[_ -]?key|bearer|access[_ -]?token|secret|ssn)\b"),
     re.compile(r"(?i)\b(?:sk-|ghp_|github_pat_|xox[baprs]-)[A-Za-z0-9_-]{4,}"),
-    re.compile(r"(?i)(?:[A-Za-z]:[\\/]|/(?:home|Users|private|mnt)/)"),
+    re.compile(r"(?i)(?:(?<![A-Za-z])[A-Za-z]:[\\/]|/(?:home|Users|private|mnt)/)"),
     re.compile(r"(?i)(?:chatgpt\.com/c/|chat\.openai\.com/c/|file://|localhost)"),
     re.compile(r"<[^>]*>"),
 )
