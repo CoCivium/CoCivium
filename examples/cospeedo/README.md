@@ -63,4 +63,6 @@ A local morning brief accepted a **November 8 heartbeat** as live on November 11
 
 The portable [CoCurrentnessGate R0 source](../../scripts/CoCurrentnessGateR0.py), [15 synthetic regression cases](../../scripts/test_CoCurrentnessGateR0.py), and [CoLocal CoPath entry](../../docs/CoLocal/README.md) make that distinction reusable. A single fresh sample is **HELD** for progress; two qualified, advancing samples can pass the bounded evidence contract. A stale timestamp or missing/mismatched process fails closed. Neither test fixtures nor repository commits prove the actual receiver is repaired, continuously alive, helpful, or integrated into X2.
 
+**New verified source-side result (2026-11-12 UTC):** [GitHub Actions source regression run 43128120567](https://github.com/CoCivium/CoCivium/actions/runs/43128120567) completed with **15/15 synthetic tests passing**. Its [typed CoLocal proof pointer](../../ai/currentness/colocal-cospeedo-currentness-ci-r0-20261112.json) records the source commit, job, evidence artifact and nonclaims. This does **not** mean the receiver was recovered, independently acknowledged, or integrated into the daily brief.
+
 **Next:** qualify a trusted live process probe on X2, then test a versioned successor without altering the scheduled predecessor; preserve negative and positive receipts.
