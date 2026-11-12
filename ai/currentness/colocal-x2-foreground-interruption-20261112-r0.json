@@ -1,0 +1,138 @@
+{
+  "schema": "CoAll.CoLocal.FocusInterruptionIncident.R0",
+  "work_id": "CoLocal2601109_X2_R5_FOCUS_INTERRUPTION_20261112",
+  "observed_date": "2026-11-12",
+  "record_type": "PUBLIC_SAFE_INCIDENT_SEED_NOT_RUNTIME_RECEIPT",
+  "status": "USER_REPORTED_X2_UI_FAILURE__CAUSE_UNVERIFIED",
+  "claim_boundary": {
+    "direct_user_report": [
+      "After reboot X2 required manual CoAll Desktop R5 launch",
+      "Repeated small black console-like windows rapidly flash and may interfere with input focus and pasted text",
+      "Some CoAll UI elements did not persist across reboot",
+      "Remote observer status and actual desktop availability need separation",
+      "Same problem report deliberately submitted to multiple sessions to invite independent perspectives"
+    ],
+    "independently_checked": [
+      "Remote Desktop Commander X2 status: OFFLINE at this turn; last seen approximately 13 hours earlier",
+      "Existing public issue #181 documents native X2 read-only task census from 2026-11-11; this is historical after reboot"
+    ],
+    "not_observed": [
+      "Exact flashing-window process/PID/parent",
+      "A focus-change event tied to any task",
+      "Present X2 scheduled-task or process state after reboot",
+      "Native CoAll Desktop R5 version/source/hash/running status",
+      "Whether Desktop Commander, Task Scheduler, shell helper, model runtime or another utility is responsible"
+    ],
+    "source_refs": [
+      "https://github.com/CoCivium/CoCivium/issues/181#issuecomment-6802150800",
+      "https://github.com/CoCivium/CoCivium/issues/181#issuecomment-6806872591",
+      "https://github.com/CoCivium/CoCivium/blob/main/scripts/CoRunnerStartupInventoryR0.ps1",
+      "https://github.com/CoCivium/CoCivium/blob/main/experiments/costel_r5_r0/README.md"
+    ]
+  },
+  "prior_task_candidates": [
+    {
+      "id": "CoBarCurrentnessProjection2Min",
+      "previously": "ENABLED_READY",
+      "launch_host": "pwsh.exe",
+      "source_date": "2026-11-11",
+      "causal_status": "UNVERIFIED_CANDIDATE"
+    },
+    {
+      "id": "CoCiviumPagesBinding10Min",
+      "previously": "ENABLED_READY",
+      "launch_host": "pwsh.exe",
+      "source_date": "2026-11-11",
+      "causal_status": "UNVERIFIED_CANDIDATE"
+    },
+    {
+      "id": "CoCiviumExeDevMuleResidentTick1Min",
+      "previously": "ENABLED_READY",
+      "launch_host": "wscript.exe",
+      "source_date": "2026-11-11",
+      "causal_status": "UNVERIFIED_CANDIDATE"
+    },
+    {
+      "id": "CoCiviumExeProductShellWatchdog5Min",
+      "previously": "DISABLED",
+      "launch_host": "wscript.exe",
+      "source_date": "2026-11-11",
+      "disposition": "DO_NOT_ENABLE_WITHOUT_OWNER_PROOF"
+    }
+  ],
+  "co_r6_candidate": {
+    "intent": "STOP_UNSOLICITED_FOREGROUND_WINDOWS_PRESERVE_INPUT_AND_AUTO_RESTORE_ONE_ELECTED_SURFACE",
+    "gates": [
+      "DISTINGUISH_BRIDGE_CURRENTNESS_FROM_X2_HOST_AND_GUI",
+      "REUSE_EXISTING_RUNNER_INVENTORY_AND_COLD_OPEN_MODEL",
+      "READ_EXISTING_TASK_HISTORY_AND_PROCESS_ANCESTRY_WITHOUT_NEW_POLLING_DAEMON",
+      "CORRELATE_PROCESS_START_EVENT_TO_WINDOW_CREATION_OR_FOCUS_CHANGE",
+      "CONFIRM_ONE_GUI_STARTUP_OWNER_NO_DUPLICATE_RESPAWN",
+      "RUN_NONDESTRUCTIVE_CANARY_WITH_ROLLBACK_AND_STOP",
+      "VERIFY_ZERO_UNSOLICITED_FOCUS_TRANSFERS_DURING_MEASURED_TYPING_WINDOW",
+      "PROVE_POST_REBOOT_SURFACE_INPUT_AND_RECOVERY_WITH_RECEIVER_READBACK"
+    ],
+    "failure_tests": [
+      "FLASHES_PERSIST_WHEN_GUI_NOT_YET_STARTED__DO_NOT_BLAME_R5_WITHOUT_TRACE",
+      "FLASHES_START_ONLY_AFTER_R5__TRACE_ANCESTRY_BEFORE_CHANGING_TASKS",
+      "SCHEDULED_TASK_LAST_RESULT_ZERO__NOT_EVIDENCE_OF_NO_FOCUS_THEFT",
+      "BRIDGE_OFFLINE__NOT_EVIDENCE_HOST_OFF",
+      "MORE_WATCHERS_CAN_INCREASE_INTERRUPTIONS__NO_AUTOSPAWN",
+      "WINDOW_HIDDEN_SETTING__NOT_PROOF_CONSOLE_WINDOW_NEVER_APPEARS"
+    ],
+    "metrics": {
+      "intrusive_foreground_windows_per_15min": "NOT_MEASURED",
+      "unexpected_focus_changes_per_15min": "NOT_MEASURED",
+      "p95_text_input_latency_ms": "NOT_MEASURED",
+      "time_to_usable_post_boot_sec": "NOT_MEASURED",
+      "native_fallback_succeeds": "NOT_MEASURED",
+      "task_to_effect_receiver_receipt": "UNVERIFIED"
+    },
+    "safety": [
+      "NO_NEW_SCHEDULED_TASK",
+      "NO_BACKGROUND_POLLING",
+      "NO_AUTO_RESTART_OR_TASK_DISABLE",
+      "NO_SYSTEM_CONFIG_WRITES",
+      "NO_PUBLIC_PRIVATE_LOG_EXPORT",
+      "NO_BYPASS_OF_USER_CONSENT_OR_LOCAL_AUTH",
+      "NO_EXPOSED_RAW_COMMAND_LINES",
+      "NO_DELETE_OR_CLOBBER_PRIORS",
+      "NO_ASSUMED_RECEIVER_ACK"
+    ]
+  },
+  "parallel_session_fanin": {
+    "protocol": "INDEPENDENT_PERSPECTIVES_ONE_ELECTED_EFFECT",
+    "review_lanes": [
+      "WINDOW_CAUSAL_TRACE",
+      "TASK_SCHEDULER_AND_LAUNCH_OWNERSHIP",
+      "HUMAN_INPUT_FOCUS_UX",
+      "COCOLDOPEN_RESTART_ACCEPTANCE",
+      "SYNTH_COGNITION_AND_SURFACE_QUALITY_SEPARATE_LANE"
+    ],
+    "contribution_fields": [
+      "reviewer_id",
+      "source_sha_or_ref",
+      "hypothesis",
+      "best_rival",
+      "proposed_discriminating_observation",
+      "authority_scope",
+      "risk",
+      "candidate_delta",
+      "collision_with_prior",
+      "receiver_ack"
+    ],
+    "dedupe_by": "work_id+proposed_effect+target_owner",
+    "cross_session_delivery": "NOT_ATTESTED",
+    "one_actuator_elected": "NOT_ELECTED",
+    "rule": "MULTIPLE_OPINIONS_NE_MULTIPLE_SCHEDULED_RUNNERS"
+  },
+  "next_safe_deed": "On authorized X2 reconnect, one read-only snapshot using existing startup inventory plus already available Task Scheduler operational events and process-owner ancestry; observe focus-change proof before proposing reversible native launcher canary.",
+  "nonclaims": [
+    "LOCAL_IS_NOT_LANDED",
+    "VALIDATION_IS_NOT_ACCEPTANCE",
+    "NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF",
+    "NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE",
+    "HASHING_IS_NOT_SEMANTIC_INGESTION",
+    "DISCOVERED_SET_IS_NOT_COMPLETE_HISTORY"
+  ]
+}
