@@ -65,7 +65,10 @@ try {
 } catch { $script:Warnings.Add('Process inventory unavailable to current user.') }
 $tasks = @()
 try {
-    $registered = @(Get-ScheduledTask -ErrorAction Stop | Select-Object -First $MaxItems)
+    # Traverse bounded source metadata before selecting launcher candidates.
+    # Pre-filter truncation can silently miss CoAll console tasks appearing later.
+    $registered = @(Get-ScheduledTask -ErrorAction Stop | Select-Object -First 1500)
+    if ($registered.Count -ge 1500) { $script:Warnings.Add('SCHEDULED_TASK_SCAN_MAY_BE_TRUNCATED_AT_1500') }
     foreach ($task in $registered) {
         foreach ($action in @($task.Actions)) {
             $exe = BaseName ([string]$action.Execute)
@@ -85,7 +88,12 @@ try {
                 enabled = ([string]$task.State -ne 'Disabled')
                 # Arguments and other private details deliberately excluded.
             }
+            if ($tasks.Count -ge $MaxItems) {
+                $script:Warnings.Add('MATCHED_TASK_CANDIDATES_CAPPED_AT_MAXITEMS')
+                break
+            }
         }
+        if ($tasks.Count -ge $MaxItems) { break }
     }
 } catch { $script:Warnings.Add('Scheduled task inventory unavailable; no changes performed.') }
 $report = [ordered]@{
