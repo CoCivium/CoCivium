@@ -55,3 +55,12 @@ For details, inspect the [R1 plotted HTML prototype](needle-trails-r1.html), the
 **Next proof:** An independently operated receiver recovers the exact work, an uncoached reader understands the status, and recovery is measured across an actual interruption.
 
 *Source snapshot: 11 November 2026. No automatic refresh, external tracking, background microphone/camera capture, service deployment, or independent receipt is claimed.*
+
+
+## November 11 receiver-currentness counterexample and isolated guard
+
+A local morning brief accepted a **November 8 heartbeat** as live on November 11 even though its reported receiver PID no longer existed. A separate X2 canary failed closed and preserved a receipt. The original daily brief producer was **not modified**.
+
+The portable [CoCurrentnessGate R0 source](../../scripts/CoCurrentnessGateR0.py), [15 synthetic regression cases](../../scripts/test_CoCurrentnessGateR0.py), and [CoLocal CoPath entry](../../docs/CoLocal/README.md) make that distinction reusable. A single fresh sample is **HELD** for progress; two qualified, advancing samples can pass the bounded evidence contract. A stale timestamp or missing/mismatched process fails closed. Neither test fixtures nor repository commits prove the actual receiver is repaired, continuously alive, helpful, or integrated into X2.
+
+**Next:** qualify a trusted live process probe on X2, then test a versioned successor without altering the scheduled predecessor; preserve negative and positive receipts.
