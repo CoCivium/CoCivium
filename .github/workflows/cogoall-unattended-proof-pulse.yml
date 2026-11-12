@@ -24,6 +24,8 @@ on:
       - 'ai/session-bootstrap.json'
       - 'tests/test_colocal_role_rebind_r0.py'
       - 'scripts/CoSessionAutoTurnR1.py'
+      - 'scripts/CoSessionDeltaGuardR1.py'
+      - 'tests/test_cosession_delta_guard_r1.py'
       - 'tests/test_cosession_auto_turn_r1.py'
       - 'ai/session-autoturn-public-sources-r1.json'
       - 'scripts/CoLocalRoleRebindR0.py'
@@ -54,6 +56,65 @@ jobs:
           set -euo pipefail
           python -B -m unittest discover -s tests -p 'test_cosession_auto_turn_r1.py' -v
           python -B scripts/CoSessionAutoTurnR1.py --output auto-turn-r1.json
+      - name: Suppress unchanged public WorkIDs using bounded prior successful receipt
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          mkdir -p out/autoturn/prior
+          python -B -m unittest discover -s tests -p 'test_cosession_delta_guard_r1.py' -v
+          gh api -X GET "repos/$GITHUB_REPOSITORY/actions/workflows/cogoall-unattended-proof-pulse.yml/runs?branch=main&status=success&per_page=15" > out/autoturn-candidates.json || printf '%s\n' '{"workflow_runs":[]}' > out/autoturn-candidates.json
+          python - <<'PY'
+          import json,os,pathlib
+          p=pathlib.Path("prior-autoturn-metadata.json")
+          try:
+              runs=json.loads(pathlib.Path("out/autoturn-candidates.json").read_text())["workflow_runs"]
+          except (ValueError,KeyError,TypeError):
+              runs=[]
+          candidates=sorted((r for r in runs if
+              r.get("status")=="completed" and r.get("conclusion")=="success"
+              and r.get("head_branch")=="main" and r.get("id",0)<int(os.environ["GITHUB_RUN_ID"])
+              and r.get("path")==".github/workflows/cogoall-unattended-proof-pulse.yml"),
+              key=lambda x:x["id"],reverse=True)
+          chosen=candidates[0] if candidates else None
+          data={"repository":"CoCivium/CoCivium",
+                "workflow_path":".github/workflows/cogoall-unattended-proof-pulse.yml",
+                "retrieval_state":"UNAVAILABLE",
+                "conclusion":chosen["conclusion"] if chosen else None,
+                "run_id":str(chosen["id"]) if chosen else None,
+                "attempt":str(chosen.get("run_attempt",1)) if chosen else None,
+                "head_sha":chosen.get("head_sha") if chosen else None,
+                "artifact_name":("cogoall-proof-"+str(chosen["id"])+"-"+str(chosen.get("run_attempt",1))) if chosen else None}
+          p.write_text(json.dumps(data,sort_keys=True,indent=2)+"\n")
+          print("PRIOR_LOOKUP:", "ELIGIBLE_CANDIDATE" if chosen else "HOLD_NO_PRIOR")
+          PY
+          prior_id=$(python -c "import json;print(json.load(open('prior-autoturn-metadata.json')).get('run_id') or '')")
+          prior_artifact=$(python -c "import json;print(json.load(open('prior-autoturn-metadata.json')).get('artifact_name') or '')")
+          if [ -n "$prior_id" ]; then
+            if gh run download "$prior_id" --repo "$GITHUB_REPOSITORY" --name "$prior_artifact" --dir out/autoturn/prior >/dev/null 2>&1; then
+              if [ -s out/autoturn/prior/auto-turn-r1.json ]; then
+                cp out/autoturn/prior/auto-turn-r1.json prior-auto-turn-r1.json
+              fi
+            fi
+          fi
+          python - <<'PY'
+          import json,pathlib
+          p=pathlib.Path("prior-autoturn-metadata.json")
+          m=json.loads(p.read_text())
+          f=pathlib.Path("prior-auto-turn-r1.json")
+          if f.is_file():
+              try:
+                  old=json.loads(f.read_text())
+                  run=old["run"]
+                  if run["run_id"]==m["run_id"] and run["attempt"]==m["attempt"] and run["head_sha"]==m["head_sha"]:
+                      m["retrieval_state"]="VERIFIED_SUCCESSFUL_GITHUB_RUN_ARTIFACT"
+              except (KeyError,ValueError,TypeError):
+                  pass
+          p.write_text(json.dumps(m,sort_keys=True,indent=2)+"\n")
+          print("PRIOR_ARTIFACT:",m["retrieval_state"])
+          PY
+          python -B scripts/CoSessionDeltaGuardR1.py --current auto-turn-r1.json --prior prior-auto-turn-r1.json --metadata prior-autoturn-metadata.json --output delta-guard-r1.json
       - name: Verify one-shot durable local source WorkID (no external effect)
         run: python -B -m unittest -v test_local_source_work_cycle_r0
       - name: Execute real public CoPre source with one local durable WorkID
@@ -138,6 +199,9 @@ jobs:
           path: |
             proof-receipt.json
             auto-turn-r1.json
+            delta-guard-r1.json
+            prior-autoturn-metadata.json
+            prior-auto-turn-r1.json
             decision.log
             grace.log
             succession.log
@@ -184,6 +248,29 @@ jobs:
             --check out/cogoall/pulse-source/auto-turn-r1.json \
             --receipt out/cogoall/pulse-receiver/autoturn-readback.json
           python -m json.tool out/cogoall/pulse-receiver/autoturn-readback.json >/dev/null
+      - name: Recompute public source-delta quietness and prior identity in receiver
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          prior=out/cogoall/pulse-source/prior-autoturn-metadata.json
+          state=$(python -c "import json,sys;print(json.load(open(sys.argv[1]))['retrieval_state'])" "$prior")
+          if [ "$state" = "VERIFIED_SUCCESSFUL_GITHUB_RUN_ARTIFACT" ]; then
+            runid=$(python -c "import json,sys;print(json.load(open(sys.argv[1]))['run_id'])" "$prior")
+            gh api -X GET "repos/$GITHUB_REPOSITORY/actions/runs/$runid" > out/cogoall/prior-github-run.json
+            python - <<'PY'
+          import json,pathlib
+          m=json.loads(pathlib.Path("out/cogoall/pulse-source/prior-autoturn-metadata.json").read_text())
+          r=json.loads(pathlib.Path("out/cogoall/prior-github-run.json").read_text())
+          assert r["status"]=="completed" and r["conclusion"]=="success"
+          assert str(r["id"])==m["run_id"] and str(r["run_attempt"])==m["attempt"]
+          assert r["head_sha"]==m["head_sha"] and r["path"]==m["workflow_path"]
+          assert r["head_branch"]=="main"
+          print("PRIOR_SUCCESS_CONFIRMED_FROM_RECEIVER_JOB")
+          PY
+          fi
+          python -B scripts/CoSessionDeltaGuardR1.py --current out/cogoall/pulse-source/auto-turn-r1.json --prior out/cogoall/pulse-source/prior-auto-turn-r1.json --metadata "$prior" --check out/cogoall/pulse-source/delta-guard-r1.json --receipt out/cogoall/pulse-receiver/delta-guard-readback.json
       - name: Upload independently generated CI-scoped readback
         uses: actions/upload-artifact@v4
         with:
