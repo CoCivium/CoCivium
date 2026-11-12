@@ -1,0 +1,156 @@
+{
+  "schema": "CoAll.CoLocal.X2PostContainmentFocusReconciliation.R1",
+  "work_id": "CoLocal2601109_X2_R5_FOCUS_INTERRUPTION_20261112",
+  "date_utc": "2026-11-12",
+  "state": "PARTIAL_NATIVE_CONTAINMENT_VERIFIED__FOCUS_CURE_HELD",
+  "source_predecessor": {
+    "path": "ai/currentness/colocal-x2-foreground-interruption-20261112-r0.json",
+    "source_type": "PRIOR_PUBLIC_INCIDENT_SEED",
+    "overwrite": false
+  },
+  "observations": [
+    {
+      "fact": "X2_REMOTE_COMMAND_BRIDGE_REACHABLE",
+      "method": "Desktop Commander list_devices",
+      "observer": "CoLocal2601109 R1 review",
+      "detail": "Online connector 0.3.3 with about 2-minute recent heartbeat at observation; no inference about native rickBar, Ollama or CoSpeedo."
+    },
+    {
+      "fact": "THREE_PREIDENTIFIED_COCIVIUM_TASKS_DISABLED",
+      "method": "Native Disable-ScheduledTask + second native inspection by independent owner",
+      "evidence_ref": "https://github.com/CoCivium/CoCivium/issues/181#issuecomment-6831974668",
+      "detail": "CoBarCurrentnessProjection2Min, CoCiviumExeDevMuleResidentTick1Min, CoCiviumPagesBinding10Min disabled. Proves scheduled trigger state at that observation, not popup cure."
+    },
+    {
+      "fact": "RESTORATION_FILES_EXIST",
+      "method": "New shell-free remote list_directory, read_file of manifest and get_file_info",
+      "observer": "CoLocal2601109 R1 review",
+      "detail": "Three task XML files and prior-state.jsonl present under the established protected local quarantine directory, with all three expected task refs found. Independent hash/restore test not performed in this review."
+    },
+    {
+      "fact": "CONCURRENT_TOOL_SHELL_LAUNCH_FAMILY",
+      "method": "Bounded remote tool-call history and native process ancestry, prior independent investigator",
+      "evidence_ref": "https://github.com/CoCivium/CoCivium/issues/181#issuecomment-6832127407",
+      "detail": "45 Desktop Commander start_process calls in previous bounded review window; a competing possible launch family, not causality or proof that every command created a visible window."
+    },
+    {
+      "fact": "NESTED_POWERSHELL_NO_WORK_REEVALUATION",
+      "method": "Shell-free source/wake/checkpoint readback by prior investigator",
+      "evidence_ref": "https://github.com/CoCivium/CoCivium/issues/181#issuecomment-6832278078",
+      "detail": "CoSessCont_R0AR_MinuteProjection invokes a secondary PowerShell without inherited hidden-window argument under bounded no-wake re-evaluation. About six-minute repeated no-work checkpoints observed. Actual foreground theft not attributed."
+    },
+    {
+      "fact": "WINDOW_VISIBILITY_AND_SHORT_INTERVAL_FOCUS_OBSERVATIONS",
+      "method": "Read-only one-shot native Windows API sampling by prior investigators",
+      "evidence_refs": [
+        "https://github.com/CoCivium/CoCivium/issues/181#issuecomment-6832317521",
+        "https://github.com/CoCivium/CoCivium/issues/181#issuecomment-6832396572",
+        "https://github.com/CoCivium/CoCivium/issues/181#issuecomment-6832664574"
+      ],
+      "detail": "18-second and 24-second foreground owner snapshots observed WindowsTerminal focus, not a transient pwsh/cmd foreground; separate visibility snapshot saw some visible PowerShell-owned top-level windows not foreground. Short windows are not all-day quiet-UX acceptance."
+    },
+    {
+      "fact": "STALE_COBAR_RECEIVER_STATUS",
+      "method": "Direct remote get_file_info on existing LIVE_STATUS.json",
+      "observer": "CoLocal2601109 R1 review",
+      "detail": "Source status file still last modified 2026-11-08T12:09:23Z at later 2026-11-12 inspection; this source cannot establish present receiver health."
+    },
+    {
+      "fact": "SHELL_CONTAINMENT_BY_CURRENT_REVIEW",
+      "method": "Remote shell-free inspection only",
+      "observer": "CoLocal2601109 R1 review",
+      "detail": "0 start_process, 0 script writes to X2, 0 task toggles, 0 process kills, 0 new local watcher."
+    }
+  ],
+  "current_rails": {
+    "source_and_custody": "PUBLIC_RECONCILIATION_R1_CANDIDATE",
+    "qualified_effects": [
+      "3_SPECIFIC_TASKS_DISABLED_BY_EXISTING_OWNER",
+      "LOCAL_RESTORATION_FILES_READABLE"
+    ],
+    "unverified": [
+      "WHETHER_FOCUS_INTERRUPTION_IS_FIXED",
+      "R5_R6_NATIVE_UX_ACCEPTANCE",
+      "COSTEAD_EXTERNAL_RECEIVER",
+      "OLLAMA_LOCAL_MODEL_CURRENTNESS",
+      "COMPLETE_PROVIDER_INDEPENDENT_SESSION_RECOVERY"
+    ],
+    "incident_owner": "https://github.com/CoCivium/CoCivium/issues/181",
+    "conflicting_writers": "ONLY_EXISTING_OWNER_ELECTED_FOR_FURTHER_TASK_MUTATION",
+    "further_runtime_mutation_authorized": false
+  },
+  "co_glyphrail": [
+    {
+      "step": "OBSERVE",
+      "state": "PARTIAL_PASS",
+      "proof": "Native task state and short focus windows"
+    },
+    {
+      "step": "ATTRIBUTE",
+      "state": "HELD",
+      "proof": "No process to actual disruptive foreground window and input-impact join"
+    },
+    {
+      "step": "CHALLENGE",
+      "state": "IN_PROGRESS",
+      "proof": "Alternatives: task launches, DC shell activity, CoSessCont nested process, ordinary Terminal, other unknown paths"
+    },
+    {
+      "step": "ELECT",
+      "state": "EXISTING_OWNER_ONLY",
+      "proof": "CoDesktop/CoRunner issue 181"
+    },
+    {
+      "step": "CANARY",
+      "state": "HELD",
+      "proof": "No new scheduler/launcher experiment while baseline settles"
+    },
+    {
+      "step": "VERIFY_HUMAN_INPUT",
+      "state": "NOT_ATTESTED",
+      "proof": "No sustained task completion and keyboard/paste interruption receipt"
+    },
+    {
+      "step": "PROMOTE_OR_ROLLBACK",
+      "state": "HELD",
+      "proof": "No R6 qualified release, no automatic task reenables"
+    }
+  ],
+  "next_safe_deed": {
+    "id": "R1_QUIET_INTERVAL_QUALIFICATION",
+    "action": "Use existing owner to assess a bounded quiet interval and user-visible input behavior after the three-task containment with NO optional shell probes; only then choose one cause-targeted reversible remediation, preserving backups and dependent functionality.",
+    "preconditions": [
+      "NOT_INTRUDING_FOREGROUND",
+      "ONE_ELECTED_OWNER",
+      "ONE_EXACT_PROCESS_WINDOW_INPUT_WITNESS_IF_RECURRENCE",
+      "ROLLBACK_EXISTING_BACKUP",
+      "RECEIVER_STATUS_FRESH"
+    ],
+    "measurements_required": [
+      "unexpected_foreground_events_per_15min",
+      "keyboard_paste_interruptions_per_15min",
+      "R5_surface_features_still_present",
+      "CoBar_currentness_impact_of_disabled_tasks",
+      "post_boot_recovery_without_manually_relaunching"
+    ],
+    "operation_status": "NOT_EXECUTED_BY_THIS_ARTIFACT"
+  },
+  "co_between_inversions": [
+    "CONSOLE_PROCESS_EXISTS_NE_VISIBLE_FOCUS_THEFT",
+    "SHORT_QUIET_WINDOW_NE_UI_ACCEPTANCE",
+    "TASK_DISABLED_NE_ROOT_CAUSE_IDENTIFIED",
+    "PUBLIC_RECEIPT_NE_CROSS_SESSION_ACK",
+    "RECENT_REMOTE_BRIDGE_HEARTBEAT_NE_MODEL_RUNTIME",
+    "REMOTE_SHELL_DIAGNOSTICS_MAY_CONTAMINATE_POPUP_BASELINE",
+    "ABSENCE_OF_NEW_WAKE_NE_NO_WORKER_PROCESS_LAUNCH",
+    "RESTORATION_BACKUP_EXISTS_NE_ROLLBACK_TEST_PASSED"
+  ],
+  "nonclaims": [
+    "LOCAL_IS_NOT_LANDED",
+    "VALIDATION_IS_NOT_ACCEPTANCE",
+    "NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF",
+    "NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE",
+    "HASHING_IS_NOT_SEMANTIC_INGESTION",
+    "DISCOVERED_SET_IS_NOT_COMPLETE_HISTORY"
+  ]
+}
