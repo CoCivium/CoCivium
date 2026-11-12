@@ -106,6 +106,12 @@ test("CoMegaScroller reader parity: saved HTML exactly matches three pinned inpu
   assert.equal(rendered,fs.readFileSync(path.join(root,"examples/comap/megascroller-r0.html"),"utf8"));
   assert.match(rendered,/One source spine/);
 });
+test("CoMegaScroller long relation labels wrap without clipping source text",()=>{
+  const rendered=generateMegaScroller(graph,overlay,retro,megaPins);
+  assert.match(rendered,/\\.edges li\\{margin:\\.4rem 0;min-width:0;overflow-wrap:anywhere\\}/);
+  assert.match(rendered,/\\.edges strong\\{overflow-wrap:anywhere\\}/);
+  assert.match(rendered,/PROPOSED_PROJECTION_FAMILY/);
+});
 test("CoMegaScroller includes exactly 10 original vector thumbnails from the registered highlights",()=>{
   const html=generateMegaScroller(graph,overlay,retro,megaPins);
   const registry=graph.nodes.filter(n=>n.kind==="highlight");
