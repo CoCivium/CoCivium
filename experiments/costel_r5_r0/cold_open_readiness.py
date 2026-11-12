@@ -59,6 +59,97 @@ def _display_driver(source: Mapping[str, Any]) -> bool:
     )
 
 
+
+# Invert the desired first-use outcome into finite, inspectable prerequisites.
+# This is a proof-plan, not a runtime supervisor, OS inventory, or permission.
+ARRIVAL_PREREQUISITES: dict[str, tuple[str, ...]] = {
+    "COARRIVAL_USABLE_DESKTOP": (
+        "BOOT_COHORT_QUALIFIED", "INPUT_USABLE", "AUDIO_INTENT_RESPECTED",
+        "DESKTOP_USABLE", "LOCAL_TASK_USABLE", "AUTO_RECOVERY_CONFIRMED",
+    ),
+    "INPUT_USABLE": ("MOUSE_UTILITY_PRESENT", "MOUSE_MAPPING_TESTED"),
+    "AUDIO_INTENT_RESPECTED": ("AUDIO_SERVICES_PRESENT", "AUDIO_CHOICE_TESTED"),
+    "DESKTOP_USABLE": (
+        "VIDEO_MODE_PRESENT", "SCALE_AND_ALIGNMENT_TESTED",
+        "NO_FOREGROUND_FOCUS_THEFT", "COBAR_INTERACTION_TESTED",
+        "AMBIENT_BACKGROUND_PROJECTION_TESTED",
+    ),
+    "LOCAL_TASK_USABLE": ("LOCAL_MODEL_PROCESS_PRESENT", "LOCAL_MODEL_TASK_TESTED"),
+    "AUTO_RECOVERY_CONFIRMED": (
+        "PRESESSION_WAKE_PROVEN", "SAME_BOOT_RECEIVER_READPROOF",
+        "NO_HUMAN_SESSION_CYCLING",
+    ),
+}
+
+
+def trace_inverse_requirements(
+    source_gates: Mapping[str, str],
+    *,
+    graph: Mapping[str, tuple[str, ...]] | None = None,
+    root: str = "COARRIVAL_USABLE_DESKTOP",
+    max_visits: int = 64,
+    max_depth: int = 8,
+) -> dict[str, Any]:
+    """Fail-closed, bounded inverse traversal; never interprets data as authority.
+
+    Explicit leaf evidence states: REPORTED_IN_SNAPSHOT, STALE_SNAPSHOT,
+    UNKNOWN. Even all reported leaves cannot establish human UX acceptance.
+    """
+    selected = graph if graph is not None else ARRIVAL_PREREQUISITES
+    if not isinstance(selected, Mapping) or not isinstance(source_gates, Mapping):
+        raise ValueError("HOLD_INVALID_INVERSE_GRAPH")
+    if type(max_visits) is not int or type(max_depth) is not int or max_visits < 1 or max_depth < 1:
+        raise ValueError("HOLD_INVALID_INVERSE_BUDGET")
+
+    visited = 0
+    leaves: list[dict[str, Any]] = []
+
+    def visit(gate: str, path: tuple[str, ...]) -> None:
+        nonlocal visited
+        if not isinstance(gate, str) or not gate or len(gate) > 100:
+            raise ValueError("HOLD_INVALID_GATE_ID")
+        if gate in path:
+            raise ValueError("HOLD_CYCLIC_REQUIREMENT")
+        if len(path) >= max_depth or visited >= max_visits:
+            raise ValueError("HOLD_INVERSE_BUDGET_EXCEEDED")
+        visited += 1
+        next_path = (*path, gate)
+        children = selected.get(gate)
+        if children is None:
+            state = source_gates.get(gate, "UNKNOWN")
+            if state not in ("REPORTED_IN_SNAPSHOT", "STALE_SNAPSHOT", "UNKNOWN"):
+                raise ValueError("HOLD_UNRECOGNIZED_GATE_EVIDENCE")
+            leaves.append({"gate": gate, "evidence": state, "inverse_path": list(next_path)})
+            return
+        if not isinstance(children, (tuple, list)) or len(children) < 1 or len(children) > 16:
+            raise ValueError("HOLD_INVALID_DEPENDENCIES")
+        for child in children:
+            visit(child, next_path)
+
+    visit(root, ())
+    missing = [entry for entry in leaves if entry["evidence"] != "REPORTED_IN_SNAPSHOT"]
+    return {
+        "root": root,
+        "state": "REVERSE_REQUIREMENTS_ONLY_NOT_X2_RUNTIME_ACCEPTANCE",
+        "visited_nodes": visited,
+        "leaf_count": len(leaves),
+        "inventory_indicated_count": len(leaves) - len(missing),
+        "unverified_count": len(missing),
+        "unverified_dependencies": missing,
+        "all_paths": leaves,
+        "actual_user_acceptance": "NOT_ATTESTED",
+        "first_missing_dependency": missing[0]["gate"] if missing else None,
+        "success_claim": False,
+        "nonclaims": [
+            "RECURSIVE_REQUIREMENT_NE_EXECUTED_RECOVERY",
+            "INVENTORY_INDICATION_NE_FUNCTIONAL_INPUT_OUTPUT",
+            "INVERSE_PATH_NE_AGENT_PERMISSION",
+            "ALL_LEAVES_LISTED_NE_REAL_USER_ACCEPTANCE",
+            "CYCLE_OR_BUDGET_FAILURE_NE_DEFAULT_PASS",
+        ],
+    }
+
+
 def classify(source: Mapping[str, Any], *, at_utc: datetime | None = None) -> dict[str, Any]:
     """Conservative pure decision, reporting only whitelisted observations.
 
@@ -100,6 +191,21 @@ def classify(source: Mapping[str, Any], *, at_utc: datetime | None = None) -> di
         observation_state = "FRESH_BOOT_INVENTORY_ONLY"
         next_probe = "INDEPENDENT_POST_LOGIN_X2_UX_AND_RECEIVER_READBACK"
 
+    # A snapshot can indicate low-level prerequisites, not lived usability.
+    def indicated(condition: bool) -> str:
+        if not condition:
+            return "UNKNOWN"
+        return "REPORTED_IN_SNAPSHOT" if fresh and uptime_qualified else "STALE_SNAPSHOT"
+
+    inverse_gate_evidence = {
+        "BOOT_COHORT_QUALIFIED": indicated(uptime_qualified),
+        "MOUSE_UTILITY_PRESENT": indicated(mouse_present),
+        "AUDIO_SERVICES_PRESENT": indicated(services_running),
+        "VIDEO_MODE_PRESENT": indicated(driver_mode),
+        "LOCAL_MODEL_PROCESS_PRESENT": indicated(local_model_present),
+    }
+    inverse = trace_inverse_requirements(inverse_gate_evidence)
+
     # Machine classes, never assertions that a human is comfortable or audio works.
     report = {
         "schema": RESULT_SCHEMA,
@@ -107,6 +213,7 @@ def classify(source: Mapping[str, Any], *, at_utc: datetime | None = None) -> di
         "source_schema": SOURCE_SCHEMA,
         "source_evidence_class": "PRODUCER_REPORTED_LOCAL_INVENTORY",
         "work_id": "CoDesktopPresence:ColdOpen:R0",
+        "inverse_proof_tree": inverse,
         "observation_state": observation_state,
         "snapshot_fresh": fresh,
         "boot_timestamp_qualified": uptime_qualified,
