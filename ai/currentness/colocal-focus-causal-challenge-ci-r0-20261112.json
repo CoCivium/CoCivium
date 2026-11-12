@@ -1,0 +1,111 @@
+{
+  "schema": "CoAll.CoFocusCausalChallenge.Receipt.R0",
+  "work_id": "CoLocal2601109_R5_FOCUS_CAUSAL_CHALLENGE_20261112",
+  "captured_utc": "2026-11-12T12:33:55Z",
+  "state": "PASS_BOUNDED_SOURCE_AND_CI_ONLY",
+  "source_repo": "CoCivium/CoCivium",
+  "source_head_sha": "004084523f263742814e6f7ba541d16331703603",
+  "source_paths": [
+    {
+      "path": "experiments/costel_r5_r0/focus_causal_challenge.py",
+      "git_blob_sha1": "1d222923a3f42fc5052c9fbe7a5d660f42488a12",
+      "purpose": "PURE_CLASSIFIER"
+    },
+    {
+      "path": "experiments/costel_r5_r0/test_focus_causal_challenge.py",
+      "git_blob_sha1": "22561b1684063c9f7ad4c4e16cc8905f0cf44196",
+      "purpose": "19_SYNTHETIC_NEGATIVE_CONTROLS"
+    },
+    {
+      "path": "scripts/CoRunnerStartupInventoryR0.ps1",
+      "git_blob_sha1": "c921c92ae1b5dbc7365017d1ae4075c3c4d1732d",
+      "purpose": "EXISTING_WINDOWS_READ_ONLY_EVENT_SOURCE_NOT_MODIFIED"
+    }
+  ],
+  "test_receipt": {
+    "run_id": 43218983802,
+    "url": "https://github.com/CoCivium/CoCivium/actions/runs/43218983802",
+    "conclusion": "success",
+    "jobs": [
+      {
+        "id": 131185363988,
+        "name": "windows-startup-readonly",
+        "conclusion": "success",
+        "target": "EPHEMERAL_GITHUB_WINDOWS_NOT_X2"
+      },
+      {
+        "id": 131185364364,
+        "name": "fail-closed-supervisor (3.11)",
+        "conclusion": "success",
+        "suite_tests_reported": 154
+      },
+      {
+        "id": 131185364392,
+        "name": "fail-closed-supervisor (3.13)",
+        "conclusion": "success"
+      },
+      {
+        "id": 131185364477,
+        "name": "handoff-producer",
+        "conclusion": "success"
+      },
+      {
+        "id": 131185459640,
+        "name": "handoff-receiver",
+        "conclusion": "success"
+      }
+    ],
+    "new_test_cases": 19,
+    "execution_domain": "GITHUB_ACTIONS_SAME_PROVIDER",
+    "independent_x2_receiver_ack": false
+  },
+  "scope": {
+    "interface": "EXISTING_CoRunnerStartupInventory_R0_JSON -> PURE_CoFocusCausalChallenge_R0",
+    "input_categories": [
+      "task_scheduler_event_counts",
+      "bounded_event_history",
+      "opaque_task_refs",
+      "startup_snapshot_age"
+    ],
+    "outputs": [
+      "candidate_task_refs",
+      "inversion_counterexamples",
+      "unobserved_causal_chain_links",
+      "next_safe_probe"
+    ],
+    "policy": "NO_RUNTIME_SIDE_EFFECTS",
+    "no_new_daemon": true,
+    "no_new_scheduler": true,
+    "existing_task_touched": false,
+    "existing_r5_changed": false,
+    "public_safe_source_only": true
+  },
+  "evidence_state": {
+    "x2_bridge_at_prior_turn": "OFFLINE_LAST_SEEN_13_HOURS_NOT_HOST_STATUS",
+    "actual_popup_caused_by_named_task": "UNVERIFIED",
+    "window_creation_process_join": "NOT_OBSERVED",
+    "foreground_activation_witness": "NOT_OBSERVED",
+    "keyboard_focus_user_acceptance": "NOT_ATTESTED",
+    "x2_r6_deployment": "NOT_PERFORMED",
+    "costead_durable_receipt": "UNVERIFIED",
+    "cross_session_automatic_pickup": "UNVERIFIED",
+    "coall_canon": "UNVERIFIED"
+  },
+  "inverse_controls": [
+    "TASK_EVENT_NE_VISIBLE_POPUP",
+    "POPUP_WITHOUT_TASK_EVENT_IMPLIES_ALTERNATIVE_OR_UNLOGGED_LAUNCH_PATH",
+    "POPUP_BEFORE_R5_CHALLENGES_R5_AS_NECESSARY_CAUSE",
+    "TEMPORAL_OVERLAP_WITHOUT_PROCESS_WINDOW_JOIN_NE_CAUSALITY",
+    "STALE_HISTORY_NE_ABSENCE_OF_POPUPS",
+    "MORE_WATCHDOGS_NE_GREATER_RESILIENCE"
+  ],
+  "next_qualified_action": "When X2 remote path exists, use current existing read-only inventory once, then correlate a specific task/process with separately observed window/focus event. Do not change startup owner until exact cause and reversible canary are verified.",
+  "nonclaims": [
+    "LOCAL_IS_NOT_LANDED",
+    "VALIDATION_IS_NOT_ACCEPTANCE",
+    "NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF",
+    "NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE",
+    "HASHING_IS_NOT_SEMANTIC_INGESTION",
+    "DISCOVERED_SET_IS_NOT_COMPLETE_HISTORY"
+  ]
+}
