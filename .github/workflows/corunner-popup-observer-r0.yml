@@ -64,3 +64,30 @@ jobs:
           if (-not (@($proof.nonclaims) -contains 'NO_SIDE_EFFECTS_ON_HOST')) { throw 'Missing safety boundary' }
           if ($proof.visible_bar_count -ne 0 -or $proof.visible_orb_count -ne 0) { throw 'Unexpected CoDesktop Windows on CI runner' }
           Write-Host 'CoDesktop owner selector correctly HELD on unrelated Windows runner.'
+      - name: Retain relevant launcher after unrelated task entries (adversarial)
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $global:CoRunnerFixtureTasks = @(
+            1..5 | ForEach-Object {
+              [pscustomobject]@{
+                TaskPath = '\\Synthetic\\'; TaskName = "Unrelated$_"; State = 'Ready'
+                Actions = @([pscustomobject]@{ Execute = 'notepad.exe'; Arguments = '' })
+              }
+            }
+          ) + @(
+            [pscustomobject]@{
+              TaskPath = '\\CoAll\\'; TaskName = 'LateConsoleLauncher'; State = 'Ready'
+              Actions = @([pscustomobject]@{ Execute = 'pwsh.exe'; Arguments = '-NoProfile -NonInteractive -File Synthetic.ps1' })
+            }
+          )
+          function Get-ScheduledTask {
+            [CmdletBinding()] param()
+            return $global:CoRunnerFixtureTasks
+          }
+          $r = (& ./scripts/CoRunnerPopupObserverR0.ps1 -MaxItems 1 | Out-String) | ConvertFrom-Json -Depth 12
+          if (@($r.task_candidates).Count -ne 1 -or $r.task_candidates[0].task_name -ne 'LateConsoleLauncher') {
+            throw 'FALSE_NEGATIVE: Relevant console task was omitted by pre-filter truncation'
+          }
+          if (@($r.task_candidates)[0].PSObject.Properties.Name -contains 'arguments') { throw 'Private arguments emitted' }
+          Write-Host 'Late relevant launcher retained after unrelated entries; synthetic CI only.'
