@@ -1,0 +1,41 @@
+{
+  "archive_entry_sha256": {
+    "manifest.json": "eda81823dd2e2f07401bbe22bb9d43de19c0d1656921d8af55047f89c8a53599",
+    "queue.sqlite": "f54e89033aa68c9c94ce803feb41a1bcd70a71bb3c4ec444ee4a92f69dfeed04"
+  },
+  "costead_receiver_pickup": false,
+  "external_receiver_ack": false,
+  "independent_signed_receiver_identity": false,
+  "new_effect_executed": false,
+  "nonclaims": [
+    "LOCAL_IS_NOT_LANDED",
+    "VALIDATION_IS_NOT_ACCEPTANCE",
+    "NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF",
+    "NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE",
+    "HASHING_IS_NOT_SEMANTIC_INGESTION",
+    "DISCOVERED_SET_IS_NOT_COMPLETE_HISTORY"
+  ],
+  "observed_at_utc": "2026-11-12T00:17:38.281881+00:00",
+  "observer_execution_domain": "OPENAI_CONTAINER_TRANSIENT",
+  "permanent_agent_or_unattended_uptime": false,
+  "physical_elapsed_lease_expiry_verified": false,
+  "queue_completed_at": null,
+  "queue_lease_epoch": 1,
+  "queue_result_sha256": null,
+  "queue_rows": 1,
+  "queue_state": "LEASED_UNFINISHED",
+  "receiver_lifecycle": "VERIFIED_TRANSIENT_BYTES_ONLY",
+  "schema": "CoGoAll.CrossSubstrateArchiveByteReadproof.R0",
+  "source_artifact_id": 13896878596,
+  "source_bytes_independently_fetched": false,
+  "source_commit_in_manifest": "6ca5f069ca0e0cf7f9ae6985b2e16a28cf579e6f",
+  "source_run_id": "43113671112",
+  "source_sha256_in_manifest": "30129e630e73359bbe476d61e21cff4f5e7a8992cd1a79630c001a7de6bf84e4",
+  "source_transport": "GITHUB_CONNECTOR_DOWNLOAD",
+  "sqlite_read_only_quick_check": "ok",
+  "state": "VERIFIED_EXACT_ARCHIVE_BYTES_OFF_GITHUB_RUNNER",
+  "verifier_source_sha256": "6999f56dd4ba7c1f956275c6da7ea69eea9029655bfd4c1942ad9642dc407fee",
+  "work_id": "CoGoAll.Unfinished.43113671112.a1",
+  "x2_receiver_pickup": false,
+  "zip_sha256": "df10aa56be73cb131aa78cecf341dd4b329edabd6f1822711c755335fa9e813e"
+}
