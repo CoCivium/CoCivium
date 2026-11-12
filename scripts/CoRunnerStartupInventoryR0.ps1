@@ -7,9 +7,7 @@ Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
 
 function Get-SafeLabel([string]$Label) {
-    if ($Label -match '(?i)(coall|cocivium|rickbar|cobar|coorb|costead|cofarm|costel|corunner)') {
-        return $Label.Substring(0, [Math]::Min($Label.Length, 100))
-    }
+    # Even CoAll task names may contain private paths, people or tokens.
     $bytes = [System.Text.Encoding]::UTF8.GetBytes($Label)
     $hash = [System.Security.Cryptography.SHA256]::HashData($bytes)
     return 'other-sha256-' + [Convert]::ToHexString($hash).Substring(0, 16).ToLowerInvariant()
@@ -37,6 +35,7 @@ function Get-LaunchHint([string]$Executable, [string]$Arguments) {
         launcher_class = $kind
         hidden_window_argument_present = [bool]$hiddenFlag
         window_risk = $risk
+        console_flash_possible = [bool]$console
     }
 }
 
@@ -53,24 +52,50 @@ function Get-ProcessRole([string]$ProcessName) {
     }
 }
 
+function Get-TaskActionCandidate([string]$TaskName, [string]$ActionName, [string]$InstanceId) {
+    # Opaque scheduler correlation only. No window attribution or raw task details.
+    if ([string]::IsNullOrWhiteSpace($TaskName) -or [string]::IsNullOrWhiteSpace($ActionName)) { return $null }
+    $kind = (Get-LaunchHint $ActionName '').launcher_class
+    if ($kind -notin @('POWERSHELL7','WINDOWS_POWERSHELL','CMD','PYTHON')) { return $null }
+    $taskRef = Get-SafeLabel ($TaskName + '|' + $kind)
+    $instanceRef = if ([string]::IsNullOrWhiteSpace($InstanceId)) { $null } else { Get-SafeLabel ($TaskName + '|' + $InstanceId + '|' + $kind) }
+    return [pscustomobject]@{
+        task_identity = $taskRef
+        launcher_class = $kind
+        task_category = if ($TaskName -match '(?i)(coall|cocivium|rickbar|cobar|coorb|costead|cofarm|costel|corunner|cospeedo)') { 'COALL_RELATED_CANDIDATE' } else { 'UNRELATED_OR_UNKNOWN' }
+        instance_correlation_ref = $instanceRef
+        visible_popup = 'NOT_OBSERVED'
+    }
+}
+
 if ($SelfTest) {
     $plain = Get-LaunchHint 'pwsh.exe' '-NoProfile -File C:\Private\DO_NOT_OUTPUT.ps1 -Token secret'
     $hidden = Get-LaunchHint 'pwsh.exe' '-NoProfile -WindowStyle Hidden -File x.ps1'
     $py = Get-LaunchHint 'pythonw.exe' 'x.py'
     $safe = Get-SafeLabel 'Unrelated task with private details'
+    $safeCoAll = Get-SafeLabel 'CoAll PRIVATE_PERSON_DO_NOT_ECHO'
     $mouseRole = Get-ProcessRole 'logioptionsplus_agent.exe'
     $localModelRole = Get-ProcessRole 'ollama.exe'
     $coallRole = Get-ProcessRole 'CoAllDesktop.exe'
     $ordinaryRole = Get-ProcessRole 'browser.exe'
+    $eventProbe = Get-TaskActionCandidate '\CoAll\PRIVATE_PERSON_DO_NOT_ECHO' 'C:\Program Files\PowerShell\7\pwsh.exe' '{PRIVATE_GUID}'
+    $eventOther = Get-TaskActionCandidate '\Other\Private' 'wscript.exe' '{PRIVATE_GUID}'
     if ($plain.window_risk -ne 'POSSIBLE_CONSOLE_WINDOW_UNPROVEN' -or
         $hidden.hidden_window_argument_present -ne $true -or
         $hidden.window_risk -ne 'WINDOW_VISIBILITY_UNPROVEN' -or
         $py.launcher_class -ne 'PYTHONW' -or
         $safe -notmatch '^other-sha256-[0-9a-f]{16}$' -or
+        $safeCoAll -notmatch '^other-sha256-[0-9a-f]{16}$' -or
+        $hidden.console_flash_possible -ne $true -or
         $mouseRole -ne 'MOUSE_UTILITY_CANDIDATE' -or
         $localModelRole -ne 'LOCAL_MODEL_CANDIDATE' -or
         $coallRole -ne 'COALL_SURFACE_CANDIDATE' -or
-        $ordinaryRole -ne 'OTHER') {
+        $ordinaryRole -ne 'OTHER' -or
+        $eventProbe.launcher_class -ne 'POWERSHELL7' -or
+        $eventProbe.task_category -ne 'COALL_RELATED_CANDIDATE' -or
+        $eventProbe.task_identity -notmatch '^other-sha256-[0-9a-f]{16}$' -or
+        $eventProbe.instance_correlation_ref -notmatch '^other-sha256-[0-9a-f]{16}$' -or
+        $null -ne $eventOther) {
         throw 'SELFTEST_FAILED'
     }
     [pscustomobject]@{
@@ -178,6 +203,106 @@ try {
     }
 } catch { $errors.Add('TASK_READ_UNAVAILABLE') }
 
+
+# One bounded read of existing Scheduler action events (200=start, 201=end).
+# This is NOT a watcher, launcher, logging-policy change or process trace.
+$taskActionHistory = [ordered]@{
+    state = 'NOT_READ'
+    window_minutes = 60
+    max_events = 512
+    events_read = 0
+    truncated = $false
+    candidate_groups = @()
+    actual_visible_popup_source = 'NOT_ATTRIBUTED'
+    actual_focus_theft = 'NOT_OBSERVED'
+    raw_event_xml_task_names_paths_arguments_or_instance_ids_emitted = $false
+}
+try {
+    $nowUtc = [DateTime]::UtcNow
+    $eventRows = @(Get-WinEvent -FilterHashtable @{
+        LogName = 'Microsoft-Windows-TaskScheduler/Operational'
+        Id = @(200,201)
+        StartTime = $nowUtc.AddMinutes(-60).ToLocalTime()
+    } -MaxEvents 512 -ErrorAction Stop)
+    $taskActionHistory.events_read = $eventRows.Count
+    $taskActionHistory.truncated = ($eventRows.Count -ge 512)
+    $candidates = @{}
+    $started = @{}
+    $ended = @{}
+    $parseErrors = 0
+    foreach ($ev in $eventRows) {
+        try {
+            [xml]$xml = $ev.ToXml()
+            $fields = @{}
+            foreach ($node in @($xml.Event.EventData.Data)) {
+                $name = [string]$node.GetAttribute('Name')
+                if ($name -in @('TaskName','ActionName','TaskInstanceId')) {
+                    $fields[$name] = [string]$node.InnerText
+                }
+            }
+            $candidate = Get-TaskActionCandidate ([string]$fields['TaskName']) ([string]$fields['ActionName']) ([string]$fields['TaskInstanceId'])
+            if ($null -eq $candidate) { continue }
+            $key = $candidate.task_identity
+            if (-not $candidates.ContainsKey($key)) {
+                if ($candidates.Count -ge 60) { continue }
+                $candidates[$key] = @{
+                    task_identity = $candidate.task_identity
+                    task_category = $candidate.task_category
+                    launcher_class = $candidate.launcher_class
+                    starts_last_60m = 0
+                    starts_last_15m = 0
+                    starts_previous_15m = 0
+                    paired_actions_le_3s = 0
+                }
+            }
+            $entry = $candidates[$key]
+            $when = ([DateTime]$ev.TimeCreated).ToUniversalTime()
+            if ([int]$ev.Id -eq 200) {
+                $entry.starts_last_60m += 1
+                $ageMinutes = ($nowUtc - $when).TotalMinutes
+                if ($ageMinutes -ge 0 -and $ageMinutes -lt 15) { $entry.starts_last_15m += 1 }
+                if ($ageMinutes -ge 15 -and $ageMinutes -lt 30) { $entry.starts_previous_15m += 1 }
+                if ($null -ne $candidate.instance_correlation_ref) {
+                    $started[$candidate.instance_correlation_ref] = @{ at=$when; task_identity=$key }
+                }
+            } elseif ([int]$ev.Id -eq 201 -and $null -ne $candidate.instance_correlation_ref) {
+                $ended[$candidate.instance_correlation_ref] = $when
+            }
+        } catch { $parseErrors += 1 }
+    }
+    foreach ($inst in @($started.Keys)) {
+        if (-not $ended.ContainsKey($inst)) { continue }
+        $start = $started[$inst]
+        $seconds = ($ended[$inst] - $start.at).TotalSeconds
+        if ($seconds -ge 0 -and $seconds -le 3) {
+            $candidates[$start.task_identity].paired_actions_le_3s += 1
+        }
+    }
+    $ranked = [System.Collections.Generic.List[object]]::new()
+    foreach ($g in @($candidates.Values | Sort-Object -Property @{Expression={$_.starts_last_15m};Descending=$true}, @{Expression={$_.starts_last_60m};Descending=$true} | Select-Object -First 32)) {
+        $ranked.Add([pscustomobject]@{
+            task_identity = $g.task_identity
+            task_category = $g.task_category
+            launcher_class = $g.launcher_class
+            starts_last_60m = $g.starts_last_60m
+            starts_last_15m = $g.starts_last_15m
+            starts_previous_15m = $g.starts_previous_15m
+            paired_actions_le_3s = $g.paired_actions_le_3s
+            last_15m_gt_previous_15m = [bool]($g.starts_last_15m -gt $g.starts_previous_15m)
+            console_flash_possible = $true
+            popup_attributed = $false
+        })
+    }
+    $taskActionHistory.candidate_groups = @($ranked.ToArray())
+    $taskActionHistory.state = if ($taskActionHistory.truncated) { 'PARTIAL_BOUNDED_HISTORY' } else { 'OBSERVED_TASK_ACTION_HISTORY_ONLY' }
+    if ($parseErrors -gt 0) { $errors.Add('TASK_ACTION_HISTORY_PARTIAL_PARSE') }
+    if ($candidates.Count -gt 32) { $errors.Add('TASK_ACTION_CANDIDATES_BOUNDED_AT_32') }
+} catch {
+    # Disabled, empty or inaccessible log is not evidence of zero popups.
+    $taskActionHistory.state = 'UNAVAILABLE_OR_EMPTY_UNQUALIFIED'
+    $errors.Add('TASK_ACTION_HISTORY_UNAVAILABLE_OR_EMPTY')
+}
+
 foreach ($keyPath in @(
     'HKCU:\Software\Microsoft\Windows\CurrentVersion\Run',
     'HKLM:\Software\Microsoft\Windows\CurrentVersion\Run',
@@ -271,6 +396,7 @@ $report = [ordered]@{
     credentials_or_tokens_emitted = $false
     scheduled_task_count_scanned = $taskTotal
     candidate_tasks = @($tasks.ToArray())
+    existing_scheduler_action_history = $taskActionHistory
     run_entries = @($runEntries.ToArray())
     startup_folder_items = @($startupFiles.ToArray())
     process_candidates = @($processes.ToArray())
@@ -293,6 +419,10 @@ $report = [ordered]@{
         'MOUSE_PROCESS_PRESENT_NE_MOUSE_MAPPING_READY',
         'DISPLAY_DRIVER_MODE_NE_PER_MONITOR_DPI_OR_LAYOUT',
         'BOOT_TIME_NE_POST_LOGIN_RESTORATION',
-        'WALLPAPER_VISIBLE_NE_COCIVIUM_OWNED_SURFACE')
+        'WALLPAPER_VISIBLE_NE_COCIVIUM_OWNED_SURFACE',
+        'CONSOLE_HIDDEN_FLAG_NE_NO_INITIAL_FLASH',
+        'SCHEDULER_ACTION_NE_VISIBLE_POPUP_CAUSALITY',
+        'NO_TASK_HISTORY_NE_NO_POPUPS',
+        'ONE_READ_NE_CONTINUOUS_MONITOR')
 }
 $report | ConvertTo-Json -Depth 6 -Compress
