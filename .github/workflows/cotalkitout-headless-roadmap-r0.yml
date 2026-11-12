@@ -6,6 +6,8 @@ on:
       - 'docs/Operations/COTALKITOUT_HEADLESS_AUTONOMY_INDEX_R0.md'
       - 'ai/roadmaps/CoTalkItOut_CausalOps_R0_20261112.csv'
       - 'scripts/verify_cotalkitout_headless_roadmap_r0.py'
+      - 'scripts/CoTalkItOutNextSafePullR0.py'
+      - 'scripts/test_CoTalkItOutNextSafePullR0.py'
       - '.github/workflows/cotalkitout-headless-roadmap-r0.yml'
   push:
     branches:
@@ -14,6 +16,8 @@ on:
       - 'docs/Operations/COTALKITOUT_HEADLESS_AUTONOMY_INDEX_R0.md'
       - 'ai/roadmaps/CoTalkItOut_CausalOps_R0_20261112.csv'
       - 'scripts/verify_cotalkitout_headless_roadmap_r0.py'
+      - 'scripts/CoTalkItOutNextSafePullR0.py'
+      - 'scripts/test_CoTalkItOutNextSafePullR0.py'
       - '.github/workflows/cotalkitout-headless-roadmap-r0.yml'
 
 permissions:
@@ -36,6 +40,13 @@ jobs:
             docs/Operations/COTALKITOUT_HEADLESS_AUTONOMY_INDEX_R0.md
             ai/roadmaps/CoTalkItOut_CausalOps_R0_20261112.csv
             scripts/verify_cotalkitout_headless_roadmap_r0.py
+            scripts/CoTalkItOutNextSafePullR0.py
+            scripts/test_CoTalkItOutNextSafePullR0.py
+            scripts/CoLocalRoleRebindR0.py
+            ai/session-bootstrap.json
+            ai/currentness/colocal-x2-postcontainment-focus-20261112-r1.json
           sparse-checkout-cone-mode: false
       - name: Verify exact immutable public-safe graph and in-memory negative cases
         run: python3 -B scripts/verify_cotalkitout_headless_roadmap_r0.py --selftest
+      - name: Test role-scoped, source-bound, no-dispatch successor pull
+        run: python3 -B scripts/test_CoTalkItOutNextSafePullR0.py
