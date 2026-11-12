@@ -203,6 +203,106 @@ try {
     }
 } catch { $errors.Add('TASK_READ_UNAVAILABLE') }
 
+
+# One bounded read of existing Scheduler action events (200=start, 201=end).
+# This is NOT a watcher, launcher, logging-policy change or process trace.
+$taskActionHistory = [ordered]@{
+    state = 'NOT_READ'
+    window_minutes = 60
+    max_events = 512
+    events_read = 0
+    truncated = $false
+    candidate_groups = @()
+    actual_visible_popup_source = 'NOT_ATTRIBUTED'
+    actual_focus_theft = 'NOT_OBSERVED'
+    raw_event_xml_task_names_paths_arguments_or_instance_ids_emitted = $false
+}
+try {
+    $nowUtc = [DateTime]::UtcNow
+    $eventRows = @(Get-WinEvent -FilterHashtable @{
+        LogName = 'Microsoft-Windows-TaskScheduler/Operational'
+        Id = @(200,201)
+        StartTime = $nowUtc.AddMinutes(-60).ToLocalTime()
+    } -MaxEvents 512 -ErrorAction Stop)
+    $taskActionHistory.events_read = $eventRows.Count
+    $taskActionHistory.truncated = ($eventRows.Count -ge 512)
+    $candidates = @{}
+    $started = @{}
+    $ended = @{}
+    $parseErrors = 0
+    foreach ($ev in $eventRows) {
+        try {
+            [xml]$xml = $ev.ToXml()
+            $fields = @{}
+            foreach ($node in @($xml.Event.EventData.Data)) {
+                $name = [string]$node.GetAttribute('Name')
+                if ($name -in @('TaskName','ActionName','TaskInstanceId')) {
+                    $fields[$name] = [string]$node.InnerText
+                }
+            }
+            $candidate = Get-TaskActionCandidate ([string]$fields['TaskName']) ([string]$fields['ActionName']) ([string]$fields['TaskInstanceId'])
+            if ($null -eq $candidate) { continue }
+            $key = $candidate.task_identity
+            if (-not $candidates.ContainsKey($key)) {
+                if ($candidates.Count -ge 60) { continue }
+                $candidates[$key] = @{
+                    task_identity = $candidate.task_identity
+                    task_category = $candidate.task_category
+                    launcher_class = $candidate.launcher_class
+                    starts_last_60m = 0
+                    starts_last_15m = 0
+                    starts_previous_15m = 0
+                    paired_actions_le_3s = 0
+                }
+            }
+            $entry = $candidates[$key]
+            $when = ([DateTime]$ev.TimeCreated).ToUniversalTime()
+            if ([int]$ev.Id -eq 200) {
+                $entry.starts_last_60m += 1
+                $ageMinutes = ($nowUtc - $when).TotalMinutes
+                if ($ageMinutes -ge 0 -and $ageMinutes -lt 15) { $entry.starts_last_15m += 1 }
+                if ($ageMinutes -ge 15 -and $ageMinutes -lt 30) { $entry.starts_previous_15m += 1 }
+                if ($null -ne $candidate.instance_correlation_ref) {
+                    $started[$candidate.instance_correlation_ref] = @{ at=$when; task_identity=$key }
+                }
+            } elseif ([int]$ev.Id -eq 201 -and $null -ne $candidate.instance_correlation_ref) {
+                $ended[$candidate.instance_correlation_ref] = $when
+            }
+        } catch { $parseErrors += 1 }
+    }
+    foreach ($inst in @($started.Keys)) {
+        if (-not $ended.ContainsKey($inst)) { continue }
+        $start = $started[$inst]
+        $seconds = ($ended[$inst] - $start.at).TotalSeconds
+        if ($seconds -ge 0 -and $seconds -le 3) {
+            $candidates[$start.task_identity].paired_actions_le_3s += 1
+        }
+    }
+    $ranked = [System.Collections.Generic.List[object]]::new()
+    foreach ($g in @($candidates.Values | Sort-Object -Property @{Expression={$_.starts_last_15m};Descending=$true}, @{Expression={$_.starts_last_60m};Descending=$true} | Select-Object -First 32)) {
+        $ranked.Add([pscustomobject]@{
+            task_identity = $g.task_identity
+            task_category = $g.task_category
+            launcher_class = $g.launcher_class
+            starts_last_60m = $g.starts_last_60m
+            starts_last_15m = $g.starts_last_15m
+            starts_previous_15m = $g.starts_previous_15m
+            paired_actions_le_3s = $g.paired_actions_le_3s
+            last_15m_gt_previous_15m = [bool]($g.starts_last_15m -gt $g.starts_previous_15m)
+            console_flash_possible = $true
+            popup_attributed = $false
+        })
+    }
+    $taskActionHistory.candidate_groups = @($ranked.ToArray())
+    $taskActionHistory.state = if ($taskActionHistory.truncated) { 'PARTIAL_BOUNDED_HISTORY' } else { 'OBSERVED_TASK_ACTION_HISTORY_ONLY' }
+    if ($parseErrors -gt 0) { $errors.Add('TASK_ACTION_HISTORY_PARTIAL_PARSE') }
+    if ($candidates.Count -gt 32) { $errors.Add('TASK_ACTION_CANDIDATES_BOUNDED_AT_32') }
+} catch {
+    # Disabled, empty or inaccessible log is not evidence of zero popups.
+    $taskActionHistory.state = 'UNAVAILABLE_OR_EMPTY_UNQUALIFIED'
+    $errors.Add('TASK_ACTION_HISTORY_UNAVAILABLE_OR_EMPTY')
+}
+
 foreach ($keyPath in @(
     'HKCU:\Software\Microsoft\Windows\CurrentVersion\Run',
     'HKLM:\Software\Microsoft\Windows\CurrentVersion\Run',
@@ -296,6 +396,7 @@ $report = [ordered]@{
     credentials_or_tokens_emitted = $false
     scheduled_task_count_scanned = $taskTotal
     candidate_tasks = @($tasks.ToArray())
+    existing_scheduler_action_history = $taskActionHistory
     run_entries = @($runEntries.ToArray())
     startup_folder_items = @($startupFiles.ToArray())
     process_candidates = @($processes.ToArray())
@@ -318,6 +419,10 @@ $report = [ordered]@{
         'MOUSE_PROCESS_PRESENT_NE_MOUSE_MAPPING_READY',
         'DISPLAY_DRIVER_MODE_NE_PER_MONITOR_DPI_OR_LAYOUT',
         'BOOT_TIME_NE_POST_LOGIN_RESTORATION',
-        'WALLPAPER_VISIBLE_NE_COCIVIUM_OWNED_SURFACE')
+        'WALLPAPER_VISIBLE_NE_COCIVIUM_OWNED_SURFACE',
+        'CONSOLE_HIDDEN_FLAG_NE_NO_INITIAL_FLASH',
+        'SCHEDULER_ACTION_NE_VISIBLE_POPUP_CAUSALITY',
+        'NO_TASK_HISTORY_NE_NO_POPUPS',
+        'ONE_READ_NE_CONTINUOUS_MONITOR')
 }
 $report | ConvertTo-Json -Depth 6 -Compress
