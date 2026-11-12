@@ -1,0 +1,64 @@
+name: CoMap CoLocal visible lens R1
+on:
+  push:
+    paths:
+      - 'examples/comap/colocal-source-lens-r1.html'
+      - 'ai/comap-colocal-currentness-projection-r1.json'
+      - 'scripts/test_CoMapCoLocalLensR1.py'
+      - 'scripts/browser_CoMapCoLocalLensR1.py'
+      - '.github/workflows/comap-colocal-visible-lens-r1.yml'
+  pull_request:
+    paths:
+      - 'examples/comap/colocal-source-lens-r1.html'
+      - 'ai/comap-colocal-currentness-projection-r1.json'
+      - 'scripts/test_CoMapCoLocalLensR1.py'
+      - 'scripts/browser_CoMapCoLocalLensR1.py'
+      - '.github/workflows/comap-colocal-visible-lens-r1.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  source-and-browser-acceptance:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify source-pinned overlay and safe HTML
+        shell: bash
+        run: |
+          mkdir -p evidence/comap-colocal-browser-r1
+          set +e
+          python -m unittest discover -s scripts -p 'test_CoMapCoLocalLensR1.py' -v > evidence/source-test.log 2>&1
+          code=$?
+          set -e
+          cat evidence/source-test.log
+          printf '%s\n' "source_commit=$GITHUB_SHA" "run_id=$GITHUB_RUN_ID" "source_exit=$code" "device_runtime=false" "external_receiver_ack=false" > evidence/source-receipt.txt
+          test "$code" -eq 0
+      - name: Install headless browser test dependency
+        shell: bash
+        run: |
+          python -m pip install playwright==1.55.0
+          command -v chromium || command -v google-chrome || python -m playwright install chromium
+      - name: Exercise desktop and mobile offline interface
+        shell: bash
+        env:
+          COLOCAL_BROWSER_EVIDENCE: evidence/comap-colocal-browser-r1
+        run: |
+          set +e
+          python scripts/browser_CoMapCoLocalLensR1.py > evidence/browser.log 2>&1
+          code=$?
+          set -e
+          cat evidence/browser.log
+          printf '%s\n' "browser_exit=$code" "browser_mode=offline" "viewport_desktop=1280x850" "viewport_mobile=390x844" "human_ux_acceptance=false" "x2_runtime=false" > evidence/browser-receipt.txt
+          test "$code" -eq 0
+      - name: Preserve evidence including failed cases
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: comap-colocal-visible-lens-r1
+          path: evidence/
+          if-no-files-found: warn
+          retention-days: 30
