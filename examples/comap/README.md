@@ -55,6 +55,8 @@ The original 56-node/61-edge source graph, all 63 detailed relation cards, seven
 
 Next proof: open the actual HTML in desktop and narrow mobile browsers, check contrast, scroll and keyboard traversal, and have at least one new nontechnical reader identify an interesting idea and correctly distinguish concept art from implementation. Do not promote generic artistic approval from a CI PASS.
 
+**CoLocal source evidence R1:** [Open the versioned 58-node/66-relation graph](../../ai/comap-colocal-currentness-projection-r1.json) or [inspect its source-locked CI result](../../ai/currentness/comap-colocal-source-consumer-ci-r1-20261112.json). This is an opt-in public-source successor; the existing 56/61 offline reader remains unchanged and no live CoOrb/X2 integration is claimed.
+
 ## CoLocal2601109 | Cross-front CoSeed candidate (2026-11-10)
 
 CoMap has now **read and indexed** the [public CoLocal CoRelGRAILS+ Seed](../../docs/CoLocal/CoLocal2601109_CoRelGRAILS_CoSeed_R0.md) via the [CoLocal discovery registry](../../docs/CoLocal/README.md). This is a typed **documentation/source-reference consumer path**, not an update to the embedded 56-node/61-edge graph, runtime semantic ingestion, all-session synchronization, or CoAll admission.
