@@ -1,0 +1,120 @@
+{
+  "schema": "CoAll.CoSessionAutocycle.SourceTurnCIReceipt.R1",
+  "work_id": "CoLocal2601109_CoSessionAutoTurnR1_20261112",
+  "record_date_utc": "2026-11-12",
+  "state": "PASS_SOURCE_BOUNDED_LOGICAL_TURN_AND_CI_JOB_READBACK_ONLY",
+  "purpose": "One machine-owned, source-checked logical WorkID election inside the existing hourly CoGoAll workflow, not provider chat cycling",
+  "runtime_evidence": {
+    "run_id": 43301674513,
+    "event": "push",
+    "commit": "b4687653ab829f90af36bbbc5f4096aee02c720a",
+    "run_url": "https://github.com/CoCivium/CoCivium/actions/runs/43301674513",
+    "conclusion": "success",
+    "jobs": [
+      {
+        "id": 131474182747,
+        "name": "proof",
+        "conclusion": "success"
+      },
+      {
+        "id": 131474183338,
+        "name": "seed24h-qualification",
+        "conclusion": "success"
+      },
+      {
+        "id": 131474304597,
+        "name": "pulse-receiver",
+        "conclusion": "success"
+      }
+    ],
+    "adversarial_tests": 19,
+    "reported_logical_source_contexts": 3,
+    "elected_source_check_work_id": "CoLocal2601109_X2_R5_FOCUS_INTERRUPTION_20261112",
+    "other_source_contexts": [
+      "CoLocal2601109_FrontierExit_R0_20261112",
+      "CoLocal2601109_CoMapVisualLensR1_CI_20261112"
+    ],
+    "same_provider_cross_job_recompute": "PASS",
+    "scheduled_cron_present": "17 * * * *",
+    "new_step_already_observed_via_scheduled_event": false,
+    "private_conversation_history_ingested": false,
+    "actual_chat_tab_rename_or_wake": false,
+    "external_receiver_ack": false,
+    "x2_runtime_effect": false,
+    "public_work_effect": "SOURCE_BYTES_READ_ONLY",
+    "manual_human_relay_required_for_this_run": false,
+    "failed_run_lineage": [
+      {
+        "id": 43301605792,
+        "conclusion": "failure",
+        "reason": "unittest helper method run collided with unittest.TestCase.run",
+        "corrected_by_commit": "b4687653ab829f90af36bbbc5f4096aee02c720a"
+      }
+    ],
+    "artifacts": [
+      {
+        "id": 13980604004,
+        "name": "cogoall-proof-43301674513-1",
+        "digest": "sha256:a7ad842928b39300826794e49e3b09779c897212ff4fd9a48f775bfdf2e550ed",
+        "expires_utc": "2026-12-12T20:34:49Z"
+      },
+      {
+        "id": 13982655002,
+        "name": "cogoall-pulse-readback-43301674513-1",
+        "digest": "sha256:99166d01c0d822703c0200399661a0b48b33c01cf898f6225668e67ca07514b7",
+        "expires_utc": "2026-12-12T20:34:59Z"
+      }
+    ]
+  },
+  "source": {
+    "workset": {
+      "path": "ai/session-autoturn-public-sources-r1.json",
+      "blob_sha1": "0185f96120d8902f67b213ff1cc7c807a35c082b"
+    },
+    "program": {
+      "path": "scripts/CoSessionAutoTurnR1.py",
+      "blob_sha1": "95897ae86376d1bff84fd90f9d7612ae4d44675e"
+    },
+    "tests": {
+      "path": "tests/test_cosession_auto_turn_r1.py",
+      "blob_sha1": "619770b90a0119437f10da797da3c7544209e51a"
+    },
+    "workflow": {
+      "path": ".github/workflows/cogoall-unattended-proof-pulse.yml",
+      "blob_sha1": "618df1a39b2ffe0b3a131da8fa0cbdfed26e4575"
+    },
+    "reused_compiler": {
+      "path": "scripts/CoSessionShadowLedger.py",
+      "blob_sha1": "e2ffa08feb779caa324abc5a1e1a0f783ba1f635"
+    }
+  },
+  "scope_and_metrics": {
+    "new_scheduled_jobs": 0,
+    "new_x2_console_processes": 0,
+    "public_source_workid_rechecks_per_trigger": 1,
+    "actual_interactive_sessions_cycled": 0,
+    "tracked_total_ChatGPT_sessions": null,
+    "parallel_source_contexts": 3,
+    "focus_interruptions_per_15min": null,
+    "human_relay_saved_seconds": null,
+    "prediction_info_gain": null,
+    "next_human_safe_action": "NONE_FOR_THIS_SOURCE_RECHECK",
+    "next_machine_native_gate": "EXISTING_CoDesktop_OWNER_181_MEASURE_QUIET_INPUT_AND_COSPEEDO_RECEIVER_EFFECT"
+  },
+  "next_proof": "Observe at least one later run with event=schedule and a distinct receiver-generated readback, then qualify X2 input/receiver and genuine provider-neutral logical worker recovery separately. Never infer that CI source turns awaken existing provider sessions.",
+  "nonclaims": [
+    "CI_PUSH_EVENT_NE_UNATTENDED_SCHEDULED_WAKE",
+    "SHADOW_LEDGER_NE_ACTUAL_PROVIDER_SESSION_CONTROL",
+    "LOGICAL_SPAWN_NE_NEW_PROVIDER_CHAT",
+    "THREE_SCOPE_ITEMS_NE_GLOBAL_SESSION_CENSUS",
+    "SAME_PROVIDER_RECEIVER_JOB_NE_INDEPENDENT_HOST_PICKUP",
+    "X2_PROCESS_COUNT_ZERO_IN_CI_NE_X2_PROCESS_CENSUS",
+    "UI_PRESENT_NE_USEFUL_WORK_OUTCOME",
+    "LOCAL_IS_NOT_LANDED",
+    "VALIDATION_IS_NOT_ACCEPTANCE",
+    "NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF",
+    "NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE",
+    "HASHING_IS_NOT_SEMANTIC_INGESTION",
+    "DISCOVERED_SET_IS_NOT_COMPLETE_HISTORY"
+  ]
+}
