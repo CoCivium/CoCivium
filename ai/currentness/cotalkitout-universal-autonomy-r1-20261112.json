@@ -1,0 +1,104 @@
+{
+  "schema": "CoAll.CoTalkItOut.UniversalAutonomy.PublicSafeCandidate.R1",
+  "work_id": "CoTalkItOut:UniversalAutonomy:20261112:R1",
+  "observed_date_utc": "2026-11-12",
+  "state": "PUBLIC_SAFE_SOURCE_POINTER_CANDIDATE_NOT_RUNTIME_NOT_CANON",
+  "source_root": "https://github.com/CoCivium/CoCivium/blob/main/SESSION_BOOTSTRAP.md",
+  "subject": "Bounded causal operations to make authorized CoAll work headless, screen-optional, keyboard/mouse-optional and eventually human-optional, while preserving full agency and native fallback.",
+  "edition": "R1",
+  "predecessor": {
+    "edition": "R0",
+    "operation_count": 128,
+    "phase_count": 16
+  },
+  "candidate": {
+    "operation_count": 192,
+    "new_operation_count": 64,
+    "phase_count": 24,
+    "proposed_dependency_edges": 316,
+    "independent_planning_roots": 5,
+    "syntactic_longest_path_steps": 16,
+    "comparison_sources": 17,
+    "metric_contracts": 25,
+    "public_custody_contracts": 12,
+    "relation_candidates": 17
+  },
+  "private_artifact": {
+    "filename": "CoTalkItOut_Universal_Autonomy_R1_20261112.xlsx",
+    "sha256": "b3f4f6223bcdbe292551a06f4e669a8d4c38a001992bf2c67f4b94a2b7f0a64d",
+    "public_contents_released": false,
+    "holder": "AUTHORIZED_PRIVATE_LIBRARY",
+    "receiver_readproof": null
+  },
+  "public_discovery_rule": {
+    "stable_pointer": "ai/currentness/cotalkitout-universal-autonomy-latest.json",
+    "immutable_edition": "ai/currentness/cotalkitout-universal-autonomy-r1-20261112.json",
+    "artifact_identity": "WORK_ID + EDITION + HASH",
+    "effect_writer": "ONE_ELECTED_FENCED_ACTUATOR",
+    "multiple_readers": "AUTHORIZED_READ_ONLY",
+    "private_or_unknown_payload": "NEVER_DEFAULT_PUBLIC",
+    "publication_requires": "SOURCE_BINDING + RIGHTS/PRIVACY_CHECK + APPROPRIATE_AUTHORITY + EXACT_READBACK",
+    "source_landing_ne_pickup": true
+  },
+  "domains": [
+    "X2 quiet first",
+    "truthful source/receiver observation",
+    "one CoAll Desktop owner",
+    "durable WorkIDs",
+    "event wake and duplicate suppression",
+    "local/hosted model substitution",
+    "provider session adapter",
+    "headless executor",
+    "screenless voice UX",
+    "keyboard/mouse optional access",
+    "independent CoStead custody",
+    "absence drills",
+    "recursive bounded improvement",
+    "CoSpeedo/CoNeedle evidence",
+    "native fallback",
+    "consented CoVIA outreach"
+  ],
+  "first_qualified_gate": {
+    "owner": "https://github.com/CoCivium/CoCivium/issues/181",
+    "action": "Only the existing elected owner correlates actual intrusive Windows window to launcher, then proves quiet typing and safe rollback; do not launch another watcher."
+  },
+  "independent_receiver_gate": {
+    "owner": "https://github.com/CoCivium/CoCivium/issues/317",
+    "state": "HELD_UNTIL_RECEIVER_ORIGIN_READPROOF"
+  },
+  "workid_donor": {
+    "url": "https://github.com/CoCivium/CoCivium/pull/449",
+    "state": "DRAFT_SOURCE_AND_SAME_PROVIDER_CI_NOT_LIVE_X2"
+  },
+  "session_turn_donor": {
+    "url": "https://github.com/CoCivium/CoCivium/pull/483",
+    "state": "DRAFT_SOURCE_TESTED_NATIVE_CHAT_UI_UNVERIFIED"
+  },
+  "privacy": {
+    "protected_examples": [
+      "private session contents",
+      "personal messages",
+      "credentials",
+      "financial details",
+      "family data",
+      "private system topology"
+    ],
+    "status": "NOT_INCLUDED_IN_THIS_RECORD"
+  },
+  "no_effects": {
+    "new_scheduler": false,
+    "x2_process_changed": false,
+    "native_chat_title_changed": false,
+    "public_private_payload": false,
+    "subscription_changed": false
+  },
+  "nonclaims": [
+    "SOURCE_CANDIDATE_NE_DEPLOYMENT",
+    "PUBLIC_POINTER_NE_ALL_SESSIONS_ACK",
+    "HASH_NE_INDEPENDENT_RECEIVER",
+    "PLANNING_LONGEST_PATH_NE_PHYSICAL_MINIMUM_CUT",
+    "PUBLIC_SAFE_METADATA_NE_PUBLIC_FULL_ARTIFACT",
+    "REPEATED_COPRE_NE_PERMISSION_TO_PUBLISH_SENSITIVE_DATA",
+    "UNKNOWN_NE_ZERO"
+  ]
+}
