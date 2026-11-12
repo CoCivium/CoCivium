@@ -44,6 +44,23 @@ The result always remains `HOLD_USABLE_DESKTOP_UNPROVEN` until actual, independe
 
 **Next material acceptance:** once X2 is reachable through an authorized receiver, run the existing inventory locally, bind to its exact source/boot timestamp, then test real keyboard focus, mouse mappings, chosen audio state, monitor layout, one local model task, and automatic restoration without asking for a ChatGPT turn. Qualify receiver-origin readproof before promoting any result.
 
+## CoArrival inverse acceptance tree | 2026-11-12
+
+The cold-open classifier now reuses the same read-only snapshot and **walks backward from the desired human result** `COARRIVAL_USABLE_DESKTOP` through bounded, typed prerequisites:
+
+`ARRIVAL -> boot cohort | input mapping | intended audio | scaling/focus/CoBar/background | one useful local task | automatic pre-session restoration`
+
+This is a **dependency-and-uncertainty projection**, not a second monitoring service or acceptance authority. It is explicitly designed to catch failures where Windows services and processes are present but the user-facing experience is broken.
+
+- Known Windows inventory facts may be labelled `REPORTED_IN_SNAPSHOT` only when the same boot epoch and a fresh observation qualify; expired readings are `STALE_SNAPSHOT`, everything else remains `UNKNOWN`.
+- Nested dependencies are traversed with **hard cycle and resource bounds**, preserving the exact inverse path to each missing proof. A shared requirement may occur in sibling branches without being mistaken for a cycle.
+- Missing leaf = `UNKNOWN`, not a fabricated PASS. Even a fully populated *synthetic* tree cannot claim actual human acceptance, native runtime, independent receiver pickup, or authority for autostart.
+- `first_missing_dependency` is an **explanation**, not an instruction to edit Windows. Real `next_safe_probe` stays under the pre-existing cold-open authority and currentness policy.
+- Every branch may be rendered by humans as a short comprehensible gap or by machines as the same typed `inverse_path` array, without duplicating truth stores.
+- New standalone inverse tests: **17** checks for false PASS injection, stale/missing boot, mouse utility missing, audio/DPI/CoBar mismatch, focus, historical paths, cycles, depth/node budgets, unknown/malicious evidence, reused sibling prerequisites, privacy, source immutability, and deterministic zero-effect output.
+
+These tests are pure synthetic code. **No real X2 reboot, input interaction, native desktop renderer, audio endpoint, background/foreground focus or receiver was changed or attested.** Their purpose is to shrink the causal gap so the first authorized X2 proof can test the correct failure modes instead of relying on running-process vanity metrics.
+
 ## Known limitations / next proof
 
 This is an in-memory state-machine fixture. The lease is not persisted, crash-resistant, monotonic-time-based, or distributed. The restart is a modeled *attempt*, not an actual process launch. Receipts are in-memory, not signed or independently delivered. There are no actual Windows integration tests, uptime metrics, command authorization, UI/no-popup tests, uninstall/rollback tests, network changes, or cross-device ACKs. These must be independently qualified before runtime promotion.
