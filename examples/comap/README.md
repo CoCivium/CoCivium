@@ -1,5 +1,8 @@
 # CoMap+ Source Weave R0 | Working offline reader
 
+**Optional CoLocal R1 visual lens:** [Browse two new source documents and five typed relations](colocal-source-lens-r1.html), backed by the [58-node/66-edge candidate graph](../../ai/comap-colocal-currentness-projection-r1.json). This standalone HTML is an offline source lens only: source-side CI has passed, but X2 receiver status, CoStead pickup, live CoOrb deployment and independent human UX acceptance are not proved. The established R0 reader is unchanged.
+
+
 **[Open or save the interactive CoMap+ HTML](source-weave-r0.html)**. GitHub may display HTML markup rather than execute the file; save the single file and open it in a browser. This has **no external requests, telemetry or machine control**. It is a source-registered projection, **not a live semantic bus, all-term crawler, CoAll canon, policy enforcement engine or CoOrb/X2 installation**.
 
 ## What is implemented and tested
