@@ -1,0 +1,92 @@
+{
+  "schema": "CoFrontierIntake.RealModelProvenance.v0.1-candidate",
+  "state": "REAL_PUBLIC_SOURCE_PROVENANCE_RECORDED__NO_MODEL_DOWNLOAD_NO_INFERENCE_NO_ROUTE_CHANGE",
+  "candidate": {
+    "candidate_id": "hf:Qwen/Qwen3-0.6B@c1899de289a04d12100db370d81485cdf75e47ca",
+    "publisher": "Qwen",
+    "repository": "Qwen/Qwen3-0.6B",
+    "registry": "HuggingFace",
+    "revision_sha": "c1899de289a04d12100db370d81485cdf75e47ca",
+    "model_family": "qwen3",
+    "architecture": "Qwen3ForCausalLM",
+    "parameter_count_reported": 751632384,
+    "gated": false,
+    "disabled": false
+  },
+  "source_evidence": {
+    "observed_date_utc": "2026-10-02",
+    "revision_api_url": "https://huggingface.co/api/models/Qwen/Qwen3-0.6B/revision/main",
+    "revision_api_reported_sha": "c1899de289a04d12100db370d81485cdf75e47ca",
+    "revision_tree_url": "https://huggingface.co/Qwen/Qwen3-0.6B/tree/c1899de289a04d12100db370d81485cdf75e47ca",
+    "model_file_url": "https://huggingface.co/Qwen/Qwen3-0.6B/blob/c1899de289a04d12100db370d81485cdf75e47ca/model.safetensors",
+    "tokenizer_file_url": "https://huggingface.co/Qwen/Qwen3-0.6B/blob/c1899de289a04d12100db370d81485cdf75e47ca/tokenizer.json",
+    "license_file_url": "https://huggingface.co/Qwen/Qwen3-0.6B/blob/c1899de289a04d12100db370d81485cdf75e47ca/LICENSE"
+  },
+  "exact_core_artifacts": [
+    {
+      "path": "model.safetensors",
+      "sha256": "f47f71177f32bcd101b7573ec9171e6a57f4f4d31148d38e382306f42996874b",
+      "xet_hash": "6f87d3bff66602a9611e541180dec950a6b6a9068ca274ee43ac8f83550f0223",
+      "hash_source": "HuggingFace pinned-revision file metadata"
+    },
+    {
+      "path": "tokenizer.json",
+      "sha256": "aeb13307a71acd8fe81861d94ad54ab689df773318809eed3cbe794b4492dae4",
+      "xet_hash": "6aec39639a0a2d1ca966356b8c2b8426a484f80ff80731f44fa8482040713bdf",
+      "hash_source": "HuggingFace pinned-revision file metadata"
+    }
+  ],
+  "license_evidence": {
+    "declared_license_id": "apache-2.0",
+    "license_path": "LICENSE",
+    "license_text_identity": "Apache License Version 2.0, January 2004",
+    "license_source_verified": true,
+    "requested_scope_legal_adjudication": "UNPERFORMED",
+    "license_ok_for_runtime_route": false
+  },
+  "runtime_package": {
+    "complete_required_file_hash_manifest": false,
+    "unhashed_or_not_independently_verified_components": [
+      ".gitattributes",
+      "README.md",
+      "config.json",
+      "generation_config.json",
+      "merges.txt",
+      "tokenizer_config.json",
+      "vocab.json"
+    ],
+    "model_downloaded": false,
+    "tokenizer_downloaded": false,
+    "isolated_canary_executed": false,
+    "capability_evaluated": false,
+    "coall_related": false,
+    "routable_for_scope": false
+  },
+  "lifecycle": {
+    "publicly_available": true,
+    "source_revision_verified": true,
+    "core_artifact_hash_metadata_verified": true,
+    "license_source_verified": true,
+    "provenance_state": "PROVENANCE_VERIFIED_FOR_PINNED_CORE_ARTIFACTS",
+    "next_gate": "COMPLETE_RUNTIME_PACKAGE_MANIFEST_AND_LICENSE_SCOPE_REVIEW_BEFORE_ISOLATED_CANARY"
+  },
+  "effects": {
+    "model_downloads": 0,
+    "model_installs": 0,
+    "inference_runs": 0,
+    "runtime_route_changes": 0,
+    "account_changes": 0,
+    "public_effects": 0
+  },
+  "nonclaims": [
+    "CORE_ARTIFACT_HASH_METADATA_NE_FULL_PACKAGE_VERIFICATION",
+    "LICENSE_SOURCE_VERIFIED_NE_LEGAL_SCOPE_ADJUDICATED",
+    "PROVENANCE_VERIFIED_NE_MODEL_SAFE",
+    "PROVENANCE_VERIFIED_NE_CAPABILITY_VALIDATED",
+    "PUBLICLY_AVAILABLE_NE_OFFLINE_READY",
+    "MODEL_AVAILABLE_NE_PROVIDER_EXIT_READY",
+    "NO_MODEL_DOWNLOAD_NE_ISOLATED_CANARY",
+    "VALIDATION_IS_NOT_ACCEPTANCE",
+    "NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE"
+  ]
+}

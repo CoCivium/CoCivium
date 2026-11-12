@@ -1,0 +1,93 @@
+{
+  "schema": "CoFrontierIntake.R0",
+  "state": "SYNTHETIC_ONLY__NO_MODEL_DOWNLOAD__NO_RUNTIME_ADOPTION",
+  "lifecycle": [
+    "RUMOURED",
+    "CREDIBLE_SIGNAL",
+    "ANNOUNCED",
+    "PUBLICLY_AVAILABLE",
+    "PROVENANCE_VERIFIED",
+    "ISOLATED_CANARY",
+    "CAPABILITY_EVALUATED",
+    "COALL_RELATED",
+    "ROUTABLE_FOR_SCOPE"
+  ],
+  "terminal_states": ["REJECTED", "QUARANTINED", "LICENSE_BLOCKED"],
+  "cases": [
+    {
+      "id": "rumour",
+      "stage": "RUMOURED",
+      "hash_verified": false,
+      "license_ok": false,
+      "canary_pass": false,
+      "capability_pass": false,
+      "related": false,
+      "reconstructible": false,
+      "route_scope": null,
+      "expected": "HOLD"
+    },
+    {
+      "id": "hash_mismatch",
+      "stage": "PUBLICLY_AVAILABLE",
+      "hash_verified": false,
+      "license_ok": true,
+      "canary_pass": false,
+      "capability_pass": false,
+      "related": false,
+      "reconstructible": true,
+      "route_scope": null,
+      "expected": "QUARANTINED"
+    },
+    {
+      "id": "license_blocked",
+      "stage": "PROVENANCE_VERIFIED",
+      "hash_verified": true,
+      "license_ok": false,
+      "canary_pass": false,
+      "capability_pass": false,
+      "related": false,
+      "reconstructible": true,
+      "route_scope": null,
+      "expected": "LICENSE_BLOCKED"
+    },
+    {
+      "id": "capable_not_related",
+      "stage": "CAPABILITY_EVALUATED",
+      "hash_verified": true,
+      "license_ok": true,
+      "canary_pass": true,
+      "capability_pass": true,
+      "related": false,
+      "reconstructible": true,
+      "route_scope": null,
+      "expected": "HOLD"
+    },
+    {
+      "id": "bounded_routable",
+      "stage": "ROUTABLE_FOR_SCOPE",
+      "hash_verified": true,
+      "license_ok": true,
+      "canary_pass": true,
+      "capability_pass": true,
+      "related": true,
+      "reconstructible": true,
+      "route_scope": "BOUNDED_PUBLIC_SYNTHETIC_TRANSFORM",
+      "expected": "ROUTABLE_FOR_SCOPE"
+    }
+  ],
+  "negative_controls": [
+    "NEWER_NE_BETTER",
+    "BIGGER_NE_BETTER",
+    "MODEL_NAME_NE_MODEL_IDENTITY",
+    "OPEN_WEIGHTS_NE_OFFLINE_READY",
+    "TWO_MODELS_NE_TWO_FAILURE_DOMAINS",
+    "ROUTABLE_FOR_SCOPE_NE_DEFAULT_ROUTE"
+  ],
+  "effects": {
+    "model_downloads": 0,
+    "model_installs": 0,
+    "runtime_route_changes": 0,
+    "account_changes": 0,
+    "public_effects": 0
+  }
+}
