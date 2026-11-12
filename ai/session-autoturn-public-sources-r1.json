@@ -1,0 +1,64 @@
+{
+  "schema": "CoAll.CoSessionAutocycle.PublicSourceWorkset.R1",
+  "state": "PUBLIC_SAFE_LOGICAL_WORKSET_NO_PROVIDER_SESSION_CONTROL",
+  "updated_utc": "2026-11-12T20:27:44Z",
+  "election_rule": "ONE_EXACT_PUBLIC_SOURCE_VERIFICATION_PER_UNATTENDED_TICK_WITH_OTHER_ROLES_DORMANT",
+  "source_policy": "ONLY_REPO_RELATIVE_PUBLIC_JSON_NO_PRIVATE_ACCOUNT_OR_CHAT_DATA",
+  "work_items": [
+    {
+      "work_id": "CoLocal2601109_X2_R5_FOCUS_INTERRUPTION_20261112",
+      "role": "X2_DESKTOP_RECOVERY",
+      "source_path": "ai/currentness/colocal-x2-postcontainment-focus-20261112-r1.json",
+      "expected_schema": "CoAll.CoLocal.X2PostContainmentFocusReconciliation.R1",
+      "expected_state": "PARTIAL_NATIVE_CONTAINMENT_VERIFIED__FOCUS_CURE_HELD",
+      "priority": 100,
+      "projection": "DEGRADED",
+      "owner": "https://github.com/CoCivium/CoCivium/issues/181",
+      "next_safe_deed": "EXISTING_INCUMBENT_QUALIFIES_REAL_QUIET_INPUT_AND_DEPENDENT_FUNCTION_EFFECTS",
+      "effect_class": "VERIFY_PUBLIC_SOURCE_ONLY",
+      "native_effects_authorized": false,
+      "external_receiver_pickup": false
+    },
+    {
+      "work_id": "CoLocal2601109_FrontierExit_R0_20261112",
+      "role": "PROVIDER_INDEPENDENCE",
+      "source_path": "ai/currentness/colocal-frontier-exit-source-ci-r0-20261112.json",
+      "expected_schema": "CoAll.CoModelFabric.ProviderExitSourceCIReceipt.R0",
+      "expected_state": "PASS_PUBLIC_SOURCE_CI_ONLY",
+      "priority": 60,
+      "projection": "WAITING",
+      "owner": "https://github.com/CoCivium/CoCivium/blob/main/docs/Architecture/COMODELFABRIC_COORB_PROVIDER_ADAPTERS_R0_20261024.md",
+      "next_safe_deed": "PROVE_ONE_LOCAL_LOOPBACK_MODEL_WORKID_AND_INDEPENDENT_RECEIVER_AFTER_AUTHORIZED_X2_PATH",
+      "effect_class": "VERIFY_PUBLIC_SOURCE_ONLY",
+      "native_effects_authorized": false,
+      "external_receiver_pickup": false
+    },
+    {
+      "work_id": "CoLocal2601109_CoMapVisualLensR1_CI_20261112",
+      "role": "COMAP_PUBLIC_SOURCE_UX",
+      "source_path": "ai/currentness/comap-colocal-visible-lens-ci-r1-20261112.json",
+      "expected_schema": "CoAll.CoMap.CoLocalVisibleLensCIReceipt.R1",
+      "expected_state": "PASS_BOUNDED_PUBLIC_SOURCE_AND_BROWSER_QA_ONLY",
+      "priority": 40,
+      "projection": "SUCCESSOR_READY",
+      "owner": "https://github.com/CoCivium/CoCivium/blob/main/examples/comap/README.md",
+      "next_safe_deed": "QUALIFY_BOUNDED_USER_VIEW_WITHOUT_EQUATING_GITHUB_HTML_TO_DEPLOYED_APPLICATION",
+      "effect_class": "VERIFY_PUBLIC_SOURCE_ONLY",
+      "native_effects_authorized": false,
+      "external_receiver_pickup": false
+    }
+  ],
+  "nonclaims": [
+    "WORKSET_NE_GLOBAL_ACTIVE_SESSION_CENSUS",
+    "LOGICAL_PROJECTION_NE_PROVIDER_SESSION_WAKE",
+    "SCHEDULED_CI_NE_LIVE_X2_AUTOMATION",
+    "NO_NATIVE_OR_PROVIDER_EFFECTS_FROM_WORK_ELECTION",
+    "PUBLIC_SOURCE_NE_PRIVATE_CHAT_HISTORY",
+    "LOCAL_IS_NOT_LANDED",
+    "VALIDATION_IS_NOT_ACCEPTANCE",
+    "NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF",
+    "NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE",
+    "HASHING_IS_NOT_SEMANTIC_INGESTION",
+    "DISCOVERED_SET_IS_NOT_COMPLETE_HISTORY"
+  ]
+}
