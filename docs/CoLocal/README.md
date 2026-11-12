@@ -42,6 +42,10 @@ Known historical counterexample: a CoSpeedo morning brief accepted a source stat
 
 ## CoMap R1 | Source-bound consumer proven in CI
 
+**Visible CoMap R1 candidate lens:** [Open the searchable, offline source-bound viewer](../../examples/comap/colocal-source-lens-r1.html). Its source and browser acceptance are tracked by [dedicated CI](https://github.com/CoCivium/CoCivium/actions/workflows/comap-colocal-visible-lens-r1.yml); availability of HTML on GitHub is not deployment of a live site or receiver.
+
+
+
 The [versioned 58-node/66-relation CoMap source successor](../../ai/comap-colocal-currentness-projection-r1.json) adds two public candidate documents and five limited source relations while preserving the 56/61 predecessor. The [pinned generator](../../scripts/CoMapCoLocalConsumerR1.py) and [15 adversarial tests](../../scripts/test_CoMapCoLocalConsumerR1.py) were executed in [GitHub Actions run 43131972116](https://github.com/CoCivium/CoCivium/actions/runs/43131972116); its [typed source-consumer receipt](../../ai/currentness/comap-colocal-source-consumer-ci-r1-20261112.json) records blobs, run/job, fixture count and same-provider proof limits.
 
 **Verified:** exact public source pins, deterministic R1 graph semantics and GitHub Actions tests. **Not verified:** X2 runtime integration, CoStead pickup, independent-host receiver ACK, site deployment, human benefit or CoAll canon. The existing CoMap R0 reader and scheduler remain unchanged. Candidate status is deliberately not authority.
