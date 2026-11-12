@@ -89,6 +89,19 @@ class GateTests(unittest.TestCase):
         sample['probe']['captured_at_utc'] = iso(BASE - timedelta(seconds=45))
         self.assertIn('PROCESS_PROBE_NOT_CURRENT', assess(sample)['reasons'])
 
+    def test_replayed_status_timestamp_cannot_pass_with_only_advanced_sequence(self):
+        # At the exact TTL boundary, individually qualified samples can share
+        # a frozen heartbeat UTC. A fabricated/advanced counter must not
+        # establish evidence of status progress across that same event time.
+        first = fixture(at=BASE - timedelta(minutes=3), seq=15)
+        current = fixture(at=BASE, seq=35)
+        for item in (first, current):
+            item['status']['heartbeat_period_seconds'] = 60
+        current['status']['utc'] = first['status']['utc']
+        out = assess(current, first)
+        self.assertEqual(out['state'], 'FAIL_CLOSED_RECEIVER_CURRENTNESS')
+        self.assertIn('STATUS_TIMESTAMP_NOT_ADVANCING', out['reasons'])
+
     def test_nonadvancing_seq_fails_after_window(self):
         first = fixture(at=BASE - timedelta(minutes=2), seq=15)
         second = fixture(at=BASE, seq=15)
