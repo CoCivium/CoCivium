@@ -1,0 +1,73 @@
+{
+  "schema": "CoAll.CoTalkItOut.PublicationManifest.R1",
+  "identity": "CoTalkItOut_Headless_Screenless_Autonomy_R1_20261112",
+  "record_date": "2026-11-12",
+  "predecessor_name": "CoTalkItOut_Headless_Screenless_Autonomy_R0_20261112.xlsx",
+  "predecessor_sha256": "767e3c957c92f50dde9f01c81bf86baacb96e45cffb58d04f81e510b401d1741",
+  "content_class": "PUBLIC_SAFE_SANITIZED_SPEC",
+  "status": "PUBLICATION_PREFLIGHT_VERIFIED_LOCAL_AWAITING_GIT_COMMIT",
+  "stats": {
+    "r0_ops": 128,
+    "r1_additions": 56,
+    "total_ops": 184,
+    "causal_edges": 240,
+    "cycle_review_edges": 0,
+    "legacy_serial_review_edges": 15,
+    "max_dag_level": 16,
+    "comparables": 15,
+    "metrics": 30,
+    "scenarios": 16,
+    "coterms": 32,
+    "sheets": [
+      "CoHereNow",
+      "Controls",
+      "Operations",
+      "Causal Edges",
+      "CoGlyphRail",
+      "CoGlyphList",
+      "Metrics & Gates",
+      "Scenarios",
+      "Comparables",
+      "Publication & Custody",
+      "CoTerms",
+      "Sources",
+      "Changelog"
+    ]
+  },
+  "files": {
+    "CoTalkItOut_Headless_Screenless_Autonomy_R1_20261112.xlsx": {
+      "sha256": "4ca848b814292d0a0ff1c8bfc2d1193ad0f660f629133794fba3be046a0c10dc",
+      "bytes": 88769
+    },
+    "CoTalkItOut_Headless_Screenless_Autonomy_R1_20261112.csv": {
+      "sha256": "442e4d654d2fcc0b3b553a6039f662122c08179e11638cb0270ff3fae7466494",
+      "bytes": 154659
+    },
+    "CoTalkItOut_Headless_Screenless_Autonomy_R1_20261112_PUBLIC_README.md": {
+      "sha256": "e7f910bacf8ea32dfeb93070b09879405c467c4736e0935f1327ce89f67df37b",
+      "bytes": 2807
+    }
+  },
+  "nonclaims": [
+    "LOCAL_IS_NOT_LANDED",
+    "VALIDATION_IS_NOT_ACCEPTANCE",
+    "NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF",
+    "NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE",
+    "HASHING_IS_NOT_SEMANTIC_INGESTION",
+    "DISCOVERED_SET_IS_NOT_COMPLETE_HISTORY"
+  ],
+  "quality": {
+    "xlsx_zip_valid": true,
+    "sheets": 13,
+    "formula_cells_cached": 193,
+    "preview": "CoTalkItOut_Headless_Screenless_Autonomy_R1_20261112_PREVIEW.png",
+    "private_path_leak_check": "PASS",
+    "dependency_core_dag": "PASS",
+    "manual_review_edges": 15,
+    "live_deployment_claimed": false
+  },
+  "canonical_repo": "CoCivium/CoCivium",
+  "canonical_public_dir": "docs/CoLocal",
+  "predecessor_lifecycle": "EXISTING_PRIVATE_LIBRARY_PRESERVED",
+  "description": "Public-safe sanitized workbook plus same-stem CSV and README. No runtime, receiver, canon or all-session ACK."
+}
