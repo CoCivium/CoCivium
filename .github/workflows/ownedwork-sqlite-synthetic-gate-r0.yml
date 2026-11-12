@@ -5,6 +5,8 @@ on:
   pull_request:
     paths:
       - scripts/CoOwnedWorkSqliteBridgeR0.py
+      - scripts/CoNarrativeWorkIDR0.py
+      - examples/conodcothumb/context_rail_r1/CoOwnedWorkR0.js
       - tests/test_ownedwork_sqlite_bridge_r0.py
       - tests/ownedwork_browser_gesture_r0.cjs
       - tests/fixtures/ownedwork_synthetic_gate_r0.json

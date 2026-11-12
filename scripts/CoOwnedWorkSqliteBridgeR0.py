@@ -21,6 +21,8 @@ from CoNarrativeWorkIDR0 import (
 BROWSER_SCHEMA = "CoAll.CoOwnedWork.BrowserLocal.R0"
 PINNED_COMMIT = "63b41ead8797e5a781699f32bcbc77b78bdbd7af"
 PINNED_SHA256 = "58f8c722bfbfc34cac41189c072d2effe4b19dbbe8a37be4f8687344d6b00b9a"
+JS_DONOR_SHA256 = "2cf5cc23af395c731d1ccbc71fa61e4befb146ad8a5bea74e0642111f57c0f48"
+RECEIVER_SHA256 = "4929bfd7c131733729547213eab668bdbb62644e159acad6a26a910141dcb39f"
 WORK_ID = "CoPre.ReadyCycle.Synthetic.R0"
 SOURCE_REF = "CoCivium/CoCivium:CoPre.md@" + PINNED_COMMIT
 PACKET_FIELDS = frozenset({
@@ -63,10 +65,25 @@ def source_check(source_path):
     return PINNED_SHA256
 
 
+def dependency_check(js_path, receiver_path=None):
+    """Bind the adapter to the exact reviewed donor and receiver bytes."""
+    js_raw = checked_file(js_path, "CoOwnedWorkR0.js")
+    require(hashlib.sha256(js_raw).hexdigest() == JS_DONOR_SHA256,
+            "HELD_JS_DONOR_MISMATCH")
+    receiver = (Path(receiver_path) if receiver_path is not None else
+                Path(__file__).with_name("CoNarrativeWorkIDR0.py"))
+    receiver_raw = checked_file(receiver, "CoNarrativeWorkIDR0.py")
+    require(hashlib.sha256(receiver_raw).hexdigest() == RECEIVER_SHA256,
+            "HELD_SQLITE_RECEIVER_MISMATCH")
+    return {
+        "js_donor_sha256": JS_DONOR_SHA256,
+        "sqlite_receiver_sha256": RECEIVER_SHA256,
+    }
+
+
 def node_fixture(js_path):
     path = Path(js_path)
-    require(path.name == "CoOwnedWorkR0.js" and path.is_file()
-            and not path.is_symlink(), "HELD_JS_FIXTURE_NOT_BOUND")
+    dependency_check(path)
     # Source JS fixture is a co-located reviewed donor, not an external user.
     script = "process.stdout.write(JSON.stringify(require(process.argv[1]).fixture()))"
     proc = subprocess.run(["node", "-e", script, str(path.resolve())],
@@ -176,6 +193,7 @@ def run(record_path, gate_path, source_path, js_path, output_dir):
     record = json.loads(checked_file(record_path, "browser-record.json", 8192))
     gate = json.loads(checked_file(gate_path, "ownedwork_synthetic_gate_r0.json", 8192))
     packet = adapt(record, gate, source_path, js_path)
+    dependencies = dependency_check(js_path)
     out = Path(output_dir)
     require(not out.exists(), "HELD_OUTPUT_EXISTS_NO_CLOBBER")
     out.mkdir(parents=True)
@@ -198,6 +216,7 @@ def run(record_path, gate_path, source_path, js_path, output_dir):
         "browser_record_sha256": digest(record),
         "explicit_gate_sha256": digest(gate),
         "translated_packet_sha256": digest(packet),
+        "dependency_sha256": dependencies,
         "narrative_fields_preserved": True,
         "consent_epoch_origin": "EXPLICIT_CI_SYNTHETIC_GATE_NOT_BROWSER",
         "local_commits": 1, "duplicate_suppressed": 1,

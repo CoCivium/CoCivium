@@ -11,7 +11,8 @@ import unittest
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 from CoOwnedWorkSqliteBridgeR0 import (
-    BROWSER_SCHEMA, Held, adapt, apply_browser_revocation, node_fixture, run,
+    BROWSER_SCHEMA, JS_DONOR_SHA256, RECEIVER_SHA256, Held, adapt,
+    apply_browser_revocation, dependency_check, node_fixture, run,
 )
 from CoNarrativeWorkIDR0 import commit_once, readback, revoke
 
@@ -94,6 +95,23 @@ class SyntheticBridgeR0(unittest.TestCase):
             fake = Path(d) / "CoPre.md"
             fake.write_bytes(SOURCE.read_bytes() + b"\ntampered")
             self.held(source=fake)
+
+    def test_exact_dependency_bytes_and_tamper_are_held(self):
+        self.assertEqual(dependency_check(JS), {
+            "js_donor_sha256": JS_DONOR_SHA256,
+            "sqlite_receiver_sha256": RECEIVER_SHA256,
+        })
+        with tempfile.TemporaryDirectory() as d:
+            root = Path(d)
+            forged_js = root / "CoOwnedWorkR0.js"
+            forged_js.write_bytes(JS.read_bytes() + b"\n// forged")
+            with self.assertRaisesRegex(Held, "HELD_JS_DONOR_MISMATCH"):
+                dependency_check(forged_js)
+            receiver = ROOT / "scripts/CoNarrativeWorkIDR0.py"
+            forged_receiver = root / "CoNarrativeWorkIDR0.py"
+            forged_receiver.write_bytes(receiver.read_bytes() + b"\n# forged")
+            with self.assertRaisesRegex(Held, "HELD_SQLITE_RECEIVER_MISMATCH"):
+                dependency_check(JS, forged_receiver)
 
     def test_duplicate_lost_ack_revocation_and_replay_denial(self):
         packet = self.accepted()
