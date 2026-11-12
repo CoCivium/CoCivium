@@ -124,3 +124,8 @@ The **existing** [CoLiving-media CI](../../.github/workflows/co-living-media-r0.
 **Receiver rule:** Every front may read its relevant public-safe CoSeed and CoPath if an authorized read route exists, but no reading, pickup, integration, CoEx, cross-domain mirror or runtime effect is inferred. Draft PRs remain visible and qualified for review; last-known-good releases and predecessors remain untouched. Public-safe pointers, not private WhatsApp transcripts, drafts, contact IDs, credentials, or machine inventory, are published here.
 
 **Next independent proof:** a separate authorized receiver reads the exact WorkID/edition digest through CoPath, identifies one material delta and returns a verifiable readback/continuation receipt without Rick relaying.
+
+
+## 2026-11-12 | First source-safe logical autocycle proof
+
+A scheduled-capable existing GitHub Actions pulse now includes [CoSessionAutoTurn R1](../../scripts/CoSessionAutoTurnR1.py): [three public CoLocal WorkIDs](../../ai/session-autoturn-public-sources-r1.json) are source-verified, one is elected per run, and a different CI job recomputes the result. [First pushed-source execution PASS](https://github.com/CoCivium/CoCivium/actions/runs/43301674513) with 19 new tests, [typed receipt](../../ai/currentness/cosession-autoturn-source-ci-r1-20261112.json). **This is not interactive chat/session cycling or actual live X2 work.** Schedule-event qualification and provider-neutral receiver operation remain future, independently evidenced gates. No extra X2 terminal or scheduled task.
