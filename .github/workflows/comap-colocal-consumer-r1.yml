@@ -1,0 +1,55 @@
+name: CoMap CoLocal source consumer R1
+on:
+  push:
+    paths:
+      - 'ai/comap-source-projection-r0.json'
+      - 'ai/comap-colocal-currentness-projection-r1.json'
+      - 'ai/currentness/colocal-cospeedo-currentness-ci-r0-20261112.json'
+      - 'docs/CoLocal/CoLocal2601109_CoRelGRAILS_CoSeed_R0.md'
+      - 'scripts/CoMapCoLocalConsumerR1.py'
+      - 'scripts/test_CoMapCoLocalConsumerR1.py'
+      - '.github/workflows/comap-colocal-consumer-r1.yml'
+  pull_request:
+    paths:
+      - 'ai/comap-source-projection-r0.json'
+      - 'ai/comap-colocal-currentness-projection-r1.json'
+      - 'ai/currentness/colocal-cospeedo-currentness-ci-r0-20261112.json'
+      - 'docs/CoLocal/CoLocal2601109_CoRelGRAILS_CoSeed_R0.md'
+      - 'scripts/CoMapCoLocalConsumerR1.py'
+      - 'scripts/test_CoMapCoLocalConsumerR1.py'
+      - '.github/workflows/comap-colocal-consumer-r1.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  reproducible-source-consumer:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check three pinned source objects and versioned 58/66 graph
+        shell: bash
+        run: |
+          mkdir -p evidence
+          set +e
+          python scripts/CoMapCoLocalConsumerR1.py --check > evidence/consumer.log 2>&1
+          check_code=$?
+          python -m unittest discover -s scripts -p 'test_CoMapCoLocalConsumerR1.py' -v > evidence/fixtures.log 2>&1
+          test_code=$?
+          set -e
+          cat evidence/consumer.log
+          cat evidence/fixtures.log
+          printf '%s\n' "commit=$GITHUB_SHA" "run_id=$GITHUB_RUN_ID" "run_attempt=$GITHUB_RUN_ATTEMPT" "source_pins_checked=true" "expected_nodes=58" "expected_edges=66" "external_receiver_ack=false" "x2_runtime_proof=false" "consumer_exit=$check_code" "fixtures_exit=$test_code" > evidence/receipt.txt
+          test "$check_code" -eq 0
+          test "$test_code" -eq 0
+      - name: Preserve source-consumer evidence, even on failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: comap-colocal-source-consumer-r1
+          path: evidence/
+          if-no-files-found: warn
+          retention-days: 30
