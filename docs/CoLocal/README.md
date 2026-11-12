@@ -93,3 +93,10 @@ The [versioned 58-node/66-relation CoMap source successor](../../ai/comap-coloca
 Command from a trusted checked-out public repository: `python scripts/CoLocalRoleRebindR0.py --role X2_DESKTOP_RECOVERY`. This is a source-document rebind, **not** live X2 acceptance, a cross-session notification, private history sync, receiver pickup, or authority to restore disabled tasks. It validates an exact R1 source blob and requires fresh incumbent-owner reconciliation before any effect. Preserve prior CoPre WorkID deduplication rather than invent a second mechanism. For unrelated roles, return `NO_RELEVANT_INCIDENT_CONTENT`.
 
 **Proof gate:** source reader and CI tests may pass while the actual user still experiences flashing windows. R6 usability, current CoSpeedo receiver, independent CoStead recovery and autonomous provider-free session continuation remain separately unverified.
+
+
+## 2026-11-12 | CoContextRail visible WorkID rejoin
+
+**One existing UX, no extra daemon:** the [CoContextRail R1 offline page](../../examples/conodcothumb/context_rail_r1/index.html) has a new optional, role-filtered public CoLocal WorkID panel. The bound [machine bootstrap](../../ai/session-bootstrap.json), [CoLocal incident R1](../../ai/currentness/colocal-x2-postcontainment-focus-20261112-r1.json) and [single incumbent CoDesktop #181](https://github.com/CoCivium/CoCivium/issues/181) remain the underlying sources. An unrelated role reveals no incident content. The original synthetic browser WorkID functions remain unchanged.
+
+[GitHub Actions 43299352415](https://github.com/CoCivium/CoCivium/actions/runs/43299352415) PASSED existing offline build, shadow, browser-profile recovery and 15 added source/authority checks. The role panel was exercised in headless mobile Chromium with no external transport. **Evidence scope:** source-bound, offline browser UX regression; not live X2 UI install, current receiver health, cross-chat delivery, direct keyboard-focus acceptance, independent CoStead pickup or R6 release. No new scheduled worker or PS7 process.
