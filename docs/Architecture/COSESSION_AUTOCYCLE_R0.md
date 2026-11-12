@@ -480,3 +480,12 @@ Candidate relations:
 A failed or stale render therefore becomes useful evidence about the projection chain and UX acceptance, not authority to rewrite the underlying relation merely to make the screen agree.
 
 For close-safe sessions, provider-title mismatch alone does not reopen material work. Record the projection defect, preserve the semantic close relation, and close the embodiment if close safety is otherwise proven.
+
+
+## Source-bound hourly logical turn | 2026-11-12
+
+**R1 source-safe rung:** The [existing hourly CoGoAll proof pulse](../../.github/workflows/cogoall-unattended-proof-pulse.yml) now calls [CoSessionAutoTurnR1](../../scripts/CoSessionAutoTurnR1.py) and reuses the existing `CoSessionShadowLedger` compiler. A [bounded public workset](../../ai/session-autoturn-public-sources-r1.json) provides three explicit CoLocal WorkIDs (X2 focus incident, provider independence, CoMap viewer). The runner verifies all three exact source objects, elects one read-only source check per run, compiles lifecycle/label candidates, and emits a CoSpeedo/CoNeedle evidence-limited projection. A **separate GitHub Actions job recomputes the source turn** rather than accepting the producer's own PASS.
+
+[First exact run and 19 tests](https://github.com/CoCivium/CoCivium/actions/runs/43301674513) passed; [typed proof with earlier failed-run lineage](../../ai/currentness/cosession-autoturn-source-ci-r1-20261112.json) records the scope. **Important:** the first pass was triggered by `push`, not yet an independently observed scheduled trigger of the new step. A future `schedule` run is a separate acceptance gate. This changes no ChatGPT tabs, wakes no live sessions, creates no model/provider workers, imports no private chat histories, and runs no new X2 PS7 processes. The existing hourly job is reused; no new scheduler.
+
+**Inversion:** `N_CHATS_RECEIVING_THE_SAME_PROMPT_NE_N_INDEPENDENT_WORKERS`. One source-backed WorkID election is meaningful even when all visible tabs are dormant, but the current R1 effect remains *public-source verification*, not task execution. R2 must prove cross-run lease/catchup from durable receipts and R3 must prove an authorized model/receiver round-trip before a session may be described as actually self-turning.
