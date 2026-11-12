@@ -1,0 +1,66 @@
+{
+  "schema": "CoAll.CoTalkItOut.ParallelEditionsReconciliation.R0",
+  "date": "2026-11-12",
+  "state": "PARALLEL_R1_VARIANTS_IDENTIFIED_NOT_SUPERSEDED",
+  "purpose": "Make related but independently produced R1 autonomy planning work discoverable without overwriting, claiming semantic equivalence or exposing the private workbook.",
+  "shared_root": "CoTalkItOut headless, screenless, keyboard/mouse-optional, human-absence-resilient CoCivium planning",
+  "variants": [
+    {
+      "id": "CoTalkItOut:UniversalAutonomy:20261112:R1",
+      "naming": "CoTalkItOut_Universal_Autonomy_R1_20261112.xlsx",
+      "source": "ai/currentness/cotalkitout-universal-autonomy-r1-20261112.json",
+      "stable_pointer": "ai/currentness/cotalkitout-universal-autonomy-latest.json",
+      "sha256": "b3f4f6223bcdbe292551a06f4e669a8d4c38a001992bf2c67f4b94a2b7f0a64d",
+      "operation_count": 192,
+      "relationship_edges": 316,
+      "content_class": "PRIVATE_FULL_WORKBOOK_PUBLIC_SAFE_SUMMARY_ONLY",
+      "access": "PRIVATE_LIBRARY_NOT_PUBLICLY_EXPORTED",
+      "public_object": "SUMMARY_ONLY",
+      "receiver_ack": false
+    },
+    {
+      "id": "CoLocal2601109_CoTalkItOut_Headless_Screenless_R1",
+      "naming": "CoTalkItOut_Headless_Screenless_Autonomy_R1_20261112.xlsx",
+      "source": "ai/currentness/cotalkitout-publication-r1-20261112.json",
+      "sha256": "4ca848b814292d0a0ff1c8bfc2d1193ad0f660f629133794fba3be046a0c10dc",
+      "git_blob_sha1": "9821d08c10f8535995a5b2b9790911f73635b1c2",
+      "public_path": "docs/CoLocal/CoTalkItOut_Headless_Screenless_Autonomy_R1_20261112.xlsx",
+      "predecessor": "CoTalkItOut_Headless_Screenless_Autonomy_R0_20261112.xlsx",
+      "predecessor_sha256": "767e3c957c92f50dde9f01c81bf86baacb96e45cffb58d04f81e510b401d1741",
+      "operation_count": 184,
+      "relationship_edges": 240,
+      "content_class": "PUBLIC_SAFE_SANITIZED_SPEC",
+      "access": "PUBLIC_GITHUB_AND_PERSISTENT_LIBRARY",
+      "public_object": "XLSX_CSV_README_MANIFEST",
+      "receiver_ack": false
+    }
+  ],
+  "relations": [
+    {
+      "from": "CoTalkItOut:UniversalAutonomy:20261112:R1",
+      "to": "CoLocal2601109_CoTalkItOut_Headless_Screenless_R1",
+      "type": "PARALLEL_EXPLORATION_SHARED_SUBJECT",
+      "authority": "SOURCE_DISCOVERY_ONLY"
+    },
+    {
+      "from": "CoLocal2601109_CoTalkItOut_Headless_Screenless_R1",
+      "to": "CoTalkItOut:UniversalAutonomy:20261112:R1",
+      "type": "SEMANTIC_DIFF_REQUIRED_BEFORE_MERGE",
+      "authority": "NOT_YET_PERFORMED"
+    }
+  ],
+  "collision_policy": "DISTINGUISH_WORK_ID_PLUS_SOURCE_SHA_NOT_R1_DATE_OR_BASENAME",
+  "election": "NO_COMMON_ACTUATOR_OR_SUPERSESSION_ELECTED",
+  "canonical_claim": "NEITHER_VARIANT_GOVERNS_ALL_OTHER_SESSIONS",
+  "next_safe_deed": "Compare authorized, content-safe task identifiers and dependency semantics between variants, adjudicate additions/challenges and publish an R2 merged public-safe candidate while retaining exact predecessor hashes; never expose private workbook contents without preflight.",
+  "nonclaims": [
+    "SAME_R1_LABEL_NE_SAME_ARTIFACT",
+    "192_NE_184_TASKS_SUPERSESSION",
+    "PRIVATE_SOURCE_POINTER_NE_PUBLIC_BYTES",
+    "PUBLIC_GIT_READBACK_NE_OTHER_SESSION_PICKUP",
+    "NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF",
+    "NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE",
+    "HASHING_IS_NOT_SEMANTIC_INGESTION",
+    "DISCOVERED_SET_IS_NOT_COMPLETE_HISTORY"
+  ]
+}
