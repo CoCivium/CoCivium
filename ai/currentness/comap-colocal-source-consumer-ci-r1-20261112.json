@@ -1,0 +1,81 @@
+{
+  "schema": "CoAll.CoMap.CoLocalSourceConsumerCIReceipt.R1",
+  "work_id": "CoLocal2601109_CoMapR1_SourceConsumerCI_20261112",
+  "observed_utc": "2026-11-12T01:05:07Z",
+  "state": "PASS_PUBLIC_SOURCE_GRAPH_CONSUMER_CI_ONLY",
+  "scope": "GITHUB_ACTIONS_SAME_PROVIDER_SOURCE_PINS_NOT_X2_RUNTIME",
+  "producer": {
+    "repository": "CoCivium/CoCivium",
+    "commit": "6613f776aba601275d20b2e25d3623fb199dc4ae",
+    "workflow": ".github/workflows/comap-colocal-consumer-r1.yml",
+    "script": "scripts/CoMapCoLocalConsumerR1.py",
+    "script_blob_sha1": "b2e9d485ebf9c680b55d8e14296b7413081ca163",
+    "tests": "scripts/test_CoMapCoLocalConsumerR1.py",
+    "tests_blob_sha1": "8b2a9715a6e681c71a713bfb698814d70709f464"
+  },
+  "source_graph": {
+    "previous_path": "ai/comap-source-projection-r0.json",
+    "previous_blob_sha1": "9cc47926d2f61f439db1818702127382f78d693f",
+    "previous_counts": {
+      "nodes": 56,
+      "edges": 61
+    },
+    "successor_path": "ai/comap-colocal-currentness-projection-r1.json",
+    "successor_blob_sha1": "1c9eb9b4c608d2f13dc3d7bc8ec524831d6708a3",
+    "successor_counts": {
+      "nodes": 58,
+      "edges": 66
+    },
+    "overlay": {
+      "new_source_documents": 2,
+      "new_edges": 5
+    },
+    "source_candidate_seed_blob_sha1": "c9c6dd3a4d6074a5a34e3decdbeb56f574d9f200",
+    "source_currentness_receipt_blob_sha1": "b86ec3d7a30a9c1bb6e96c75fd242a3fe8c5cc97"
+  },
+  "execution": {
+    "actor": "GitHub Actions runner, main branch, push",
+    "run_id": 43131972116,
+    "job_id": 130898045815,
+    "url": "https://github.com/CoCivium/CoCivium/actions/runs/43131972116",
+    "conclusion": "success",
+    "source_gate": "PASS_EXACT_SOURCE_PINS_AND_GRAPH_SEMANTICS",
+    "regression_tests_passed": 15,
+    "regression_tests_failed": 0,
+    "evidence_artifact_id": 13906065400,
+    "evidence_artifact_name": "comap-colocal-source-consumer-r1",
+    "evidence_artifact_sha256": "ae0c94ccb965c3e8fa4057d973bc3453298c4713347ba09ad904037de9163a78",
+    "evidence_artifact_expires_utc": "2026-12-12T01:05:07Z",
+    "provider_failure_domain": "GITHUB_ACTIONS_ONLY",
+    "exact_files_retrieved_by_runner": true,
+    "independent_host_receiver_readproof": false
+  },
+  "consumer_disposition": "SOURCE_GRAPH_PROJECTION_VERIFIED_IN_CI_NOT_RUNTIME_INTEGRATED",
+  "candidate_paths": [
+    "CoMap+",
+    "CoLocal+",
+    "CoSpeedo+",
+    "CoNodeMesh+/GRAIL+",
+    "CoAutoEvo+/CoEv+"
+  ],
+  "outstanding": {
+    "x2_command_channel": "OFFLINE_AT_LAST_CHECK",
+    "x2_receiver_currentness": "UNVERIFIED",
+    "offsite_receiver": "UNVERIFIED",
+    "costead_recovery": "UNVERIFIED",
+    "coall_canon": "UNVERIFIED",
+    "public_site_deployment": "UNVERIFIED",
+    "human_outcome": "UNMEASURED"
+  },
+  "next_safe_deed": "When an authorized X2 connection is available, take two source-bound process/heartbeat observations with a qualifying time gap and verify receiver identity, then test a reversible CoSpeedo successor. Preserve R0.",
+  "nonclaims": [
+    "PASS_SOURCE_CONSUMER_CI_NE_X2_REPAIR",
+    "SAME_PROVIDER_READBACK_NE_INDEPENDENT_HOST_PICKUP",
+    "SOURCE_GRAPH_INTEGRATION_NE_COALL_CANON",
+    "PUBLIC_FILE_NE_DEPLOYED_COORB",
+    "HISTORICAL_CI_NE_CURRENT_RECEIVER",
+    "VALIDATION_IS_NOT_ACCEPTANCE",
+    "NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF",
+    "NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE"
+  ]
+}
