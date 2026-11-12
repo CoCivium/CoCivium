@@ -1,0 +1,126 @@
+{
+  "schema": "CoAll.CoSessionAutocycle.FirstScheduledExecutionReceipt.R1",
+  "work_id": "CoLocal2601109_CoSessionAutoTurnR1_20261112",
+  "observed_date_utc": "2026-11-12",
+  "state": "SCHEDULED_SOURCE_VERIFICATION_AND_CROSS_JOB_RECOMPUTE_PASS",
+  "prior_state": "PUSH_ONLY_SOURCE_VERIFICATION_SCHEDULE_UNVERIFIED",
+  "lifecycle": "CI_SOURCE_EXECUTION_VERIFIED_NOT_HOST_RUNTIME_OR_COEX",
+  "execution": {
+    "provider": "GitHub Actions",
+    "repository": "CoCivium/CoCivium",
+    "workflow_path": ".github/workflows/cogoall-unattended-proof-pulse.yml",
+    "run_id": 43304045576,
+    "run_url": "https://github.com/CoCivium/CoCivium/actions/runs/43304045576",
+    "event": "schedule",
+    "created_at_utc": "2026-11-12T20:49:06Z",
+    "conclusion": "success",
+    "head_commit": "6697b1b7d7c46ab024400fa84099fee2e6f821f0",
+    "attempt": 1,
+    "jobs": [
+      {
+        "job_id": 131482486902,
+        "name": "seed24h-qualification",
+        "conclusion": "success"
+      },
+      {
+        "job_id": 131482487429,
+        "name": "proof",
+        "conclusion": "success",
+        "steps": [
+          "Elect and verify one public-only CoSession logical turn",
+          "Suppress unchanged public WorkIDs using bounded prior successful receipt"
+        ],
+        "log_receipts": [
+          "PRIOR_LOOKUP: ELIGIBLE_CANDIDATE",
+          "PRIOR_ARTIFACT: VERIFIED_SUCCESSFUL_GITHUB_RUN_ARTIFACT",
+          "{\"current_run_id\": \"43304045576\", \"state\": \"QUIESCENT_NO_MATERIAL_SOURCE_CHANGE\"}"
+        ]
+      },
+      {
+        "job_id": 131482639285,
+        "name": "pulse-receiver",
+        "conclusion": "success",
+        "steps": [
+          "Recompute public source-delta quietness and prior identity in receiver"
+        ],
+        "log_receipts": [
+          "PRIOR_SUCCESS_CONFIRMED_FROM_RECEIVER_JOB",
+          "{\"current_run_id\": \"43304045576\", \"state\": \"PASS_SAME_PROVIDER_DIFFERENT_JOB_RECOMPUTE\"}"
+        ]
+      }
+    ],
+    "artifacts": [
+      {
+        "name": "cogoall-proof-43304045576-1",
+        "id": 13983985094,
+        "digest": "sha256:124b59611de58597e039b47401523e47b2cdb0fe04a32f46dfacd1cedeb2f8c0"
+      },
+      {
+        "name": "copre-seed24h-recheck-43304045576-a1",
+        "id": 13983445923,
+        "digest": "sha256:19f361b158ac56f022881a4d00e34fab9b635894d7c730f9e4b3cc6dbbeaa7aa"
+      },
+      {
+        "name": "cogoall-pulse-readback-43304045576-1",
+        "id": 13982781987,
+        "digest": "sha256:5d702178d4ad0d27f6b586b8a87adf26611f76203311da9f18a5f09a9e21016b"
+      }
+    ]
+  },
+  "co_here_now": "Existing GitHub scheduled proof pulse ran unattended and suppressed unchanged public WorkID source credit, with second-job verification.",
+  "co_speedo": {
+    "scheduled_source_pulses_proven_in_this_scoped_record": 1,
+    "public_work_contexts_rechecked": 3,
+    "public_source_material_deltas_detected": 0,
+    "repeated_source_work_credited": 0,
+    "separate_same_provider_recomputation": "PASS",
+    "interactive_provider_chats_cycled": 0,
+    "new_x2_shells_started_by_this_workflow": 0,
+    "local_model_workid_round_trips": 0,
+    "independent_costead_receiver_ack": false,
+    "sustained_x2_keyboard_acceptance": null,
+    "human_relay_for_this_run": 0,
+    "measured_human_time_saved_seconds": null
+  },
+  "co_needle": {
+    "completed_gate": "FIRST_SCHEDULED_TRIGGER_OF_EXISTING_SOURCE_DELTA_WORKFLOW",
+    "unresolved_bottleneck": "AUTHORIZED_REAL_LOCAL_MODEL_WORKID_WITH_INDEPENDENT_RECEIVER_READPROOF",
+    "parallel_ux_gate": "CO_DESKTOP_181_SUSTAINED_QUIET_INPUT_WITH_ROLLBACK",
+    "next_safe_deed": "Existing elected CoDesktop owner qualifies X2 quiet-input acceptance; separately run one public-only local loopback model WorkID under authorized local worker, checkpoint it, and obtain a different receiver's exact-object readproof.",
+    "estimated_effort_or_gain": "NOT_MEASURED"
+  },
+  "evidence_boundary": {
+    "actual_scheduler_trigger": "VERIFIED",
+    "source_delta_suppression": "VERIFIED",
+    "same_provider_different_job_recompute": "VERIFIED",
+    "automatic_existing_chat_wake": "NOT_PERFORMED",
+    "local_model_execution": "NOT_PERFORMED",
+    "remote_x2_remediation": "NOT_PERFORMED",
+    "private_custody_export": "NOT_PERFORMED",
+    "offsite_recovery": "NOT_VERIFIED",
+    "coex_acceptance": "NOT_VERIFIED",
+    "independent_receiver_origin": "NOT_VERIFIED"
+  },
+  "related_public_sources": [
+    "ai/currentness/cosession-autoturn-nodelta-qualified-r1-20261112.json",
+    "ai/session-autoturn-public-sources-r1.json",
+    "scripts/CoSessionAutoTurnR1.py",
+    "scripts/CoSessionDeltaGuardR1.py",
+    "docs/Architecture/COSESSION_AUTOCYCLE_R0.md",
+    "https://github.com/CoCivium/CoCivium/issues/181",
+    "https://github.com/CoCivium/CoCivium/issues/317"
+  ],
+  "nonclaims": [
+    "CI_SCHEDULE_NE_CHAT_SESSION_AUTORESTART",
+    "SAME_PROVIDER_CI_RECEIVER_NE_INDEPENDENT_EXTERNAL_RECEIVER",
+    "ZERO_SOURCE_DELTA_NE_NO_PRIVATE_OR_REAL_WORLD_WORK",
+    "CI_JOB_NO_X2_ACTION_NE_X2_HOST_PROCESS_CENSUS",
+    "HISTORICAL_RECEIPT_NE_LIVE_COSPEEDO_STATUS",
+    "LOCAL_IS_NOT_LANDED",
+    "VALIDATION_IS_NOT_ACCEPTANCE",
+    "NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF",
+    "NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE",
+    "HASHING_IS_NOT_SEMANTIC_INGESTION",
+    "DISCOVERED_SET_IS_NOT_COMPLETE_HISTORY"
+  ]
+}
