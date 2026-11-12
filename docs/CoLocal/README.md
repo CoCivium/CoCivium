@@ -26,3 +26,16 @@ Identity, time, source, boundary, relation type, epistemic state, evidence, auth
 
 ## Nonclaims
 LOCAL_IS_NOT_LANDED; VALIDATION_IS_NOT_ACCEPTANCE; NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF; NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE; HASHING_IS_NOT_SEMANTIC_INGESTION; DISCOVERED_SET_IS_NOT_COMPLETE_HISTORY.
+
+
+## CoCurrentnessGate R0 | Public reusable test harness
+
+**[Read the fail-closed evaluator](../../scripts/CoCurrentnessGateR0.py)** · **[Inspect 15 synthetic regression tests](../../scripts/test_CoCurrentnessGateR0.py)** · **[CI workflow](../../.github/workflows/colocal-currentness-r0.yml)**.
+
+This portable, read-only evaluation kernel checks reported heartbeat freshness, separately observed process identity/hash, and progress between two qualified samples. It is available to authorized CoMap/CoSpeedo/CoLocal/CoStead front consumers as a **candidate CoSeed/CoPath**, not automatically adopted runtime policy.
+
+Run `python -m unittest discover -s scripts -p 'test_CoCurrentnessGateR0.py' -v` from the repo root. The authoring environment passed **15/15 isolated synthetic tests**; public workflow execution and independent receiver adoption must be established separately. Inputs must be supplied by an actual trusted process observer for operational use; fixture results cannot establish X2 or other device health.
+
+Known historical counterexample: a CoSpeedo morning brief accepted a source status from November 8 as live on November 11, despite the reported receiver PID being absent. The live X2 source and private machine data are not published here. The source-side gate rejects that class of evidence, but has **not been wired into X2's producer or daily schedule**.
+
+**ExState:** PUBLIC_TEST_SOURCE_LANDED; X2_ACTIVATION_UNVERIFIED; EXTERNAL_RECEIVER_PICKUP_UNVERIFIED. No CoAll canon, public runtime, receiver ACK, independent-host durability, or consent/authority promotion inferred.
