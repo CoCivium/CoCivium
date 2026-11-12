@@ -145,9 +145,30 @@ def compare(current, previous, meta):
             "provider_sessions_cycled":0,
             "nonclaims":NONCLAIMS,
         }
+    # A stable workset binds owner, priority, role and policy. If those
+    # fields change without a workset revision, HOLD instead of fabricating
+    # a public-source delta or granting a new election.
+    for work,row in current_map.items():
+        other=prior_map[work]
+        if ({k:v for k,v in row.items() if k!="sha256"} !=
+            {k:v for k,v in other.items() if k!="sha256"}):
+            return {
+                "schema":SCHEMA,
+                "state":"HOLD_SOURCE_METADATA_DRIFT_WITH_STATIC_WORKSET",
+                "reason":"NON_SOURCE_METADATA_CHANGED_WITHOUT_WORKSET_REBASE",
+                "current_run_id":c["run_id"],
+                "prior_run_id":p["run_id"],
+                "source_delta_count":None,
+                "next_source_workid":None,
+                "verified_useful_work_outcomes":0,
+                "new_machine_effect_authorized":False,
+                "external_receiver_ack":False,
+                "provider_sessions_cycled":0,
+                "nonclaims":NONCLAIMS,
+            }
     changed=[
         row for work,row in current_map.items()
-        if row!=prior_map[work]
+        if row["sha256"]!=prior_map[work]["sha256"]
     ]
     changed.sort(key=lambda x:(-x["priority"],x["work_id"]))
     removed=[]
