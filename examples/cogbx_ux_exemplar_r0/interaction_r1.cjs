@@ -15,6 +15,9 @@ for (const token of [
   'role="status" aria-live="polite"',
   "prefers-reduced-motion",
   "default-src 'none'",
+  'id="machineProof"',
+  'id="textMachineProof"',
+  "Inspect the work behind this view",
 ]) assert(html.includes(token), "missing accessible source contract: " + token);
 
 function cl() {
@@ -40,7 +43,8 @@ function node(id, options={}) {
   };
 }
 const ids=["app","field","mapBtn","textBtn","ambientBtn","threeBtn",
-  "footerMode","draft","ghost","receipt","focusText","acceptBtn","undoBtn","rejectBtn"];
+  "footerMode","draft","ghost","receipt","focusText","acceptBtn","undoBtn","rejectBtn",
+  "machineProof","textMachineProof","humanCurrentness"];
 const nodes=Object.fromEntries(ids.map(id=>[id,node(id)]));
 nodes.draft.value="Sample raw input";
 nodes.ghost.textContent="Candidate: test a recovery path";
@@ -54,6 +58,19 @@ const doc={
 vm.runInNewContext(script[1],{document:doc,console});
 let checks=0;
 function test(label, fn){fn();checks++;console.log("PASS "+label);}
+test("human and text machine readbacks share identical source bytes",()=>{
+  assert.equal(nodes.machineProof.textContent,nodes.textMachineProof.textContent);
+  const record=JSON.parse(nodes.machineProof.textContent);
+  assert.equal(nodes.humanCurrentness.textContent,"fixture only");
+  assert.equal(record.schema,"CoGbx.SurfaceParity.R1");
+  assert.equal(record.work_id,"cogbx:synthetic:one-work");
+  assert.equal(record.evidence_class,"SYNTHETIC_OFFLINE_FIXTURE");
+  assert.equal(record.real_device_observation,"NOT_PERFORMED");
+  assert.equal(record.remote_receiver,"UNKNOWN");
+  assert.equal(record.authority,"LOCAL_REVERSIBLE_INPUT_ONLY");
+  assert.equal(record.external_effects,0);
+  assert.equal(record.provider_calls,0);
+});
 test("initial text unchanged",()=>assert.equal(nodes.draft.value,"Sample raw input"));
 test("default undo disabled",()=>assert.equal(nodes.undoBtn.disabled,true));
 test("select text",()=>{nodes.textBtn.click();assert.equal(nodes.textBtn.attrs["aria-pressed"],"true");assert(nodes.app.classList.contains("textmode"));});
@@ -72,4 +89,12 @@ test("subsequent accept uses current input",()=>{nodes.acceptBtn.click();assert(
 test("reject does not erase accepted input",()=>{const before=nodes.draft.value;nodes.rejectBtn.click();assert.equal(nodes.draft.value,before);});
 test("no-send receipt",()=>assert(nodes.receipt.textContent.includes("SEND 0")));
 test("no-execute receipt",()=>assert(nodes.receipt.textContent.includes("EXECUTE 0")));
+test("switching perspectives and accepting local input cannot mutate evidence",()=>{
+  const before=nodes.machineProof.textContent;
+  nodes.textBtn.click();nodes.ambientBtn.click();nodes.mapBtn.click();
+  nodes.draft.value="fresh editable field";nodes.draft.input();
+  nodes.acceptBtn.click();nodes.rejectBtn.click();
+  assert.equal(nodes.machineProof.textContent,before);
+  assert.equal(nodes.textMachineProof.textContent,before);
+});
 console.log("PASS_COGBX_R1_INTERACTION_DOM_SHIM",checks);

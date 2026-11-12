@@ -14,6 +14,18 @@ Open `index.html` locally in a browser.
 - local predictive shadow with explicit accept/reject;
 - zero network, storage, credential, send or provider effects.
 
+## Frontstage / backstage acceptance candidate (November 12, 2026)
+
+The same offline exemplar now offers **human-first Orb/Map, Text and Ambient views** and an **opt-in inspection drawer** for a typed synthetic work packet. The human sees an understandable purpose, an explicit `UNKNOWN` and the reversible next action. A tool or researcher can read exactly the same work identity, evidence class, authority ceiling, predicted status and external-effect count, without screenshot scraping or a second, independently edited truth store.
+
+- **One synthetic packet:** `CoGbx.SurfaceParity.R1`, `work_id=cogbx:synthetic:one-work`.
+- **Two byte-identical machine readbacks:** right-side disclosure and accessible text mode; both are generated from the same in-page immutable packet without network requests, credential reads or external effects.
+- **The proof drawer is not a hiding place:** uncertainty and `preview only` remain visible outside it. Human experience and machine inspection are complementary perspectives, not a fixed human-versus-AI division.
+- **Interaction regression:** perspective switches and local draft acceptance/rejection cannot mutate the immutable evidence packet.
+- **Boundary:** an in-page demo is not an operating-system-owned desktop, authenticated model state, independent-host pickup, live device health, or reliable recovery after X2 restart. DOM-shim and CI verification cannot certify real-reader delight or screen-reader acceptance.
+
+Next bounded UX test: ask one new nontechnical reader and one authorized machine reader what they infer from the *same work packet*. Compare identity, uncertainty, next action, permission and recovery understanding. If both cannot correctly identify unknown or unauthorized states, improve the projections without rewriting the source.
+
 ## What it does not prove
 
 - deployed CoGbx.org;
