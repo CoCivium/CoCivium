@@ -61,3 +61,10 @@ The [versioned 58-node/66-relation CoMap source successor](../../ai/comap-coloca
 **P1 independent research:** [CoSynthNoetics+, CoSurfaceFace+, CoPerspectiveFanIn+ readable Seed](../Architecture/COSYNTHNOETICS_SURFACEFACE_COPERSPECTIVE_R0_20261112.md) and [26 typed CoTerm candidates with inverse/in-between relations](../../ai/colex/cosynthnoetics-surfaceface-coterms-20261112-r0.json). These are proposals, not CoLex governance, AI consciousness findings, native avatars, or deployed surface.
 
 **Cross-session uptake:** A discoverable public pointer does not send messages to already-running sessions, imply acknowledgment, or authorize multiple watchers. Each reviewer must cite an exact source, independent challenge, proposed effect/owner and receiver disposition; one elected actuator per real-world effect.
+
+
+## CoFocus+ | Causal challenge tests (2026-11-12)
+
+[Source-only, no-effect reviewer](../../experiments/costel_r5_r0/focus_causal_challenge.py) and [19 adversarial cases](../../experiments/costel_r5_r0/test_focus_causal_challenge.py) reuse the *existing* CoRunner startup inventory without creating another task, scheduled watcher, or supervisor. [CI run 43218983802](https://github.com/CoCivium/CoCivium/actions/runs/43218983802) PASSED five jobs including an ephemeral Windows runner and synthetic Python suites; the [machine-readable receipt](../../ai/currentness/colocal-focus-causal-challenge-ci-r0-20261112.json) preserves exact source blobs and all nonclaims.
+
+**Inverse/Between/Recursive distinction:** Task Scheduler action → process creation → visible window → foreground activation → input disruption is a causal hypothesis chain, not a single witnessed event. Missing task events do not prove missing popups. More parallel sessions must not spawn more actuators. Native X2 process/window correlation, repaired focus, and post-reboot R6 operation remain **UNVERIFIED**. [CoDesktop owner #181](https://github.com/CoCivium/CoCivium/issues/181) holds the recovery boundary.
