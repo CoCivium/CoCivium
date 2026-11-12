@@ -18,7 +18,11 @@
     "filename": "CoTalkItOut_Headless_Screenless_Autonomy_R1_20261112.xlsx",
     "scope": "PRIVATE_LIBRARY_WORKING_COPY",
     "public_artifact": "NOT_INCLUDED",
-    "r0_preserved": true
+    "r0_preserved": true,
+    "current_private_edition": "CoTalkItOut_Headless_Screenless_Autonomy_R1a_20261112.xlsx",
+    "current_private_library_path": "/CoAll/CoTalkItOut_Headless_Screenless_Autonomy_R1a_20261112.xlsx",
+    "current_private_sha256": "d7c195df36a7d445d82f965f40b9ca0873ef88ad6a77d2984ead7a4932b7827d",
+    "predecessor_r1_preserved": true
   },
   "graph_audit": {
     "r0_operations": 128,
@@ -56,6 +60,35 @@
     "STABLE_FILENAME_NE_SHARED_WRITE_PERMISSION",
     "PUBLIC_INDEX_NE_PRIVATE_WORKBOOK",
     "CURRENTNESS_POINTER_NE_RECEIVER_PICKUP",
-    "ACTIVITY_NE_USEFUL_RESULT"
-  ]
+    "ACTIVITY_NE_USEFUL_RESULT",
+    "ONE_SCHEDULED_SOURCE_TURN_NE_NATIVE_SESSION_AUTOCYCLE",
+    "ZERO_PUBLIC_SOURCE_DELTA_NE_ZERO_PRIVATE_WORK",
+    "GITHUB_JOB_SUCCESS_NE_ACCEPTED_COSPEEDO_PROGRESS"
+  ],
+  "latest_scoped_execution_evidence": {
+    "state": "FIRST_SCHEDULED_COSESSION_PUBLIC_SOURCE_TURN_VERIFIED",
+    "source_work_id": "CoLocal2601109_CoSessionAutoTurnR1_20261112",
+    "source_receipt_path": "ai/currentness/cosession-autoturn-first-scheduled-r1-20261112.json",
+    "source_receipt_git_blob_sha1": "f257a5266555ae6d9819d99e9c8d4e9e204e9b83",
+    "run_url": "https://github.com/CoCivium/CoCivium/actions/runs/43304045576",
+    "run_id": 43304045576,
+    "event": "schedule",
+    "created_at_utc": "2026-11-12T20:49:06Z",
+    "verified_ci_jobs": 3,
+    "verified_guard_tests": 23,
+    "public_work_contexts_rechecked": 3,
+    "material_public_source_deltas": 0,
+    "human_relay_for_this_run": 0,
+    "scope": "GITHUB_SCHEDULED_SOURCE_CHANGE_FILTER_ONLY",
+    "excluded": [
+      "NATIVE_PROVIDER_CHAT_RESTART",
+      "LOCAL_MODEL_SEMANTIC_WORK",
+      "COSTEAD_ACK",
+      "INDEPENDENT_PROVIDER_RECEIVER",
+      "X2_QUIET_UX",
+      "LIVE_COSPEEDO"
+    ],
+    "natural_recurrence": "ONE_R1_EVENT_VERIFIED_NOT_SUSTAINED_RELIABILITY",
+    "next_bound_proof": "AUTHORIZED_MODEL_WORKID_TO_INDEPENDENT_RECEIVER_READBACK_TO_VISIBLE_ACCEPTED_COSPEEDO"
+  }
 }
