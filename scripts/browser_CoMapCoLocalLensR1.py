@@ -34,7 +34,7 @@ def check(mode, width, height, pw):
     page.locator('button[data-filter="ci"]').click()
     assert '3 of 5' in page.locator('#count').inner_text()
     page.locator('button[data-filter="all"]').click()
-    page.locator('#search').fill('GRAIL')
+    page.locator('#search').fill('CoNodeMesh')
     assert '1 of 5' in page.locator('#count').inner_text()
     page.locator('#reset').click()
     assert page.locator('#relations .relation').count() == 5
