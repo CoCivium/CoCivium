@@ -1,0 +1,43 @@
+name: CoLocal receiver currentness R0
+on:
+  push:
+    paths:
+      - 'scripts/CoCurrentnessGateR0.py'
+      - 'scripts/test_CoCurrentnessGateR0.py'
+      - '.github/workflows/colocal-currentness-r0.yml'
+  pull_request:
+    paths:
+      - 'scripts/CoCurrentnessGateR0.py'
+      - 'scripts/test_CoCurrentnessGateR0.py'
+      - '.github/workflows/colocal-currentness-r0.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  source-regression:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate isolated fail-closed gate
+        shell: bash
+        run: |
+          mkdir -p evidence
+          set +e
+          python -m unittest discover -s scripts -p 'test_CoCurrentnessGateR0.py' -v > evidence/test.log 2>&1
+          code=$?
+          set -e
+          cat evidence/test.log
+          printf '%s\n' "source_sha=$GITHUB_SHA" "run_id=$GITHUB_RUN_ID" "run_attempt=$GITHUB_RUN_ATTEMPT" "fixture_only=true" "x2_runtime_proof=false" "receiver_ack=false" "exit_code=$code" > evidence/receipt.txt
+          test "$code" -eq 0
+      - name: Preserve regression evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: colocal-currentness-r0-source-evidence
+          path: evidence/
+          if-no-files-found: warn
+          retention-days: 30
