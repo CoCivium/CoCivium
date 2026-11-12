@@ -40,16 +40,37 @@ function Get-LaunchHint([string]$Executable, [string]$Arguments) {
     }
 }
 
+function Get-ProcessRole([string]$ProcessName) {
+    # Process-name classes only; no command lines, paths, window titles, tokens or users.
+    $n = $ProcessName.ToLowerInvariant()
+    switch -Regex ($n) {
+        '^(logioptionsplus(_agent|_updater)?|lghub(_agent|_updater)?|logitech\w*|razer\w*|steelseriesgg|icue|corsair\w*)\.exe$' {
+            return 'MOUSE_UTILITY_CANDIDATE'
+        }
+        '^ollama(\w*)?\.exe$' { return 'LOCAL_MODEL_CANDIDATE' }
+        '^(rickbar|cobar|coall|coorb|cospeedo|cocivium)[a-z0-9_-]*\.exe$' { return 'COALL_SURFACE_CANDIDATE' }
+        default { return 'OTHER' }
+    }
+}
+
 if ($SelfTest) {
     $plain = Get-LaunchHint 'pwsh.exe' '-NoProfile -File C:\Private\DO_NOT_OUTPUT.ps1 -Token secret'
     $hidden = Get-LaunchHint 'pwsh.exe' '-NoProfile -WindowStyle Hidden -File x.ps1'
     $py = Get-LaunchHint 'pythonw.exe' 'x.py'
     $safe = Get-SafeLabel 'Unrelated task with private details'
+    $mouseRole = Get-ProcessRole 'logioptionsplus_agent.exe'
+    $localModelRole = Get-ProcessRole 'ollama.exe'
+    $coallRole = Get-ProcessRole 'CoAllDesktop.exe'
+    $ordinaryRole = Get-ProcessRole 'browser.exe'
     if ($plain.window_risk -ne 'POSSIBLE_CONSOLE_WINDOW_UNPROVEN' -or
         $hidden.hidden_window_argument_present -ne $true -or
         $hidden.window_risk -ne 'WINDOW_VISIBILITY_UNPROVEN' -or
         $py.launcher_class -ne 'PYTHONW' -or
-        $safe -notmatch '^other-sha256-[0-9a-f]{16}$') {
+        $safe -notmatch '^other-sha256-[0-9a-f]{16}$' -or
+        $mouseRole -ne 'MOUSE_UTILITY_CANDIDATE' -or
+        $localModelRole -ne 'LOCAL_MODEL_CANDIDATE' -or
+        $coallRole -ne 'COALL_SURFACE_CANDIDATE' -or
+        $ordinaryRole -ne 'OTHER') {
         throw 'SELFTEST_FAILED'
     }
     [pscustomobject]@{
@@ -70,7 +91,54 @@ $tasks = [System.Collections.Generic.List[object]]::new()
 $runEntries = [System.Collections.Generic.List[object]]::new()
 $startupFiles = [System.Collections.Generic.List[object]]::new()
 $processes = [System.Collections.Generic.List[object]]::new()
+$processRoles = [System.Collections.Generic.List[object]]::new()
+$audioServices = [System.Collections.Generic.List[object]]::new()
+$displayDriverModes = [System.Collections.Generic.List[object]]::new()
+$bootUtc = $null
+$uptimeSeconds = $null
 $taskTotal = 0
+try {
+    $osRecord = Get-CimInstance -ClassName Win32_OperatingSystem -ErrorAction Stop
+    $bootDate = ([DateTime]$osRecord.LastBootUpTime).ToUniversalTime()
+    if ($bootDate.Year -lt 2020 -or $bootDate -gt [DateTime]::UtcNow) {
+        $errors.Add('BOOT_TIME_INCONSISTENT')
+    } else {
+        $bootUtc = $bootDate.ToString('o')
+        $uptimeSeconds = [int][Math]::Floor(([DateTime]::UtcNow - $bootDate).TotalSeconds)
+    }
+} catch { $errors.Add('BOOT_TIME_READ_UNAVAILABLE') }
+
+foreach ($serviceName in @('Audiosrv','AudioEndpointBuilder')) {
+    try {
+        $svc = Get-Service -Name $serviceName -ErrorAction Stop
+        $audioServices.Add([pscustomobject]@{
+            service_role = $serviceName
+            status = if ($svc.Status -eq 'Running') { 'RUNNING' } else { 'NOT_RUNNING' }
+            actual_mute_state = 'NOT_OBSERVED'
+        })
+    } catch {
+        $audioServices.Add([pscustomobject]@{
+            service_role = $serviceName
+            status = 'NOT_OBSERVED'
+            actual_mute_state = 'NOT_OBSERVED'
+        })
+        $errors.Add('AUDIO_SERVICE_READ_UNAVAILABLE')
+    }
+}
+try {
+    foreach ($adapter in @(Get-CimInstance -ClassName Win32_VideoController -ErrorAction Stop | Select-Object -First 8)) {
+        $w = [int]$adapter.CurrentHorizontalResolution
+        $h = [int]$adapter.CurrentVerticalResolution
+        if ($w -gt 0 -and $h -gt 0) {
+            $displayDriverModes.Add([pscustomobject]@{
+                width_px = $w
+                height_px = $h
+                evidence = 'VIDEO_DRIVER_REPORTED_NOT_PER_MONITOR_DPI_OR_UI_GEOMETRY'
+            })
+        }
+    }
+} catch { $errors.Add('DISPLAY_DRIVER_READ_UNAVAILABLE') }
+
 try {
     # This only inventories task metadata and action launch flags. It cannot
     # identify the initiating task for a visible popup without a runtime trace.
@@ -160,6 +228,14 @@ foreach ($kind in @('Startup','CommonStartup')) {
 try {
     foreach ($p in @(Get-CimInstance -ClassName Win32_Process -ErrorAction Stop)) {
         $name = [string]$p.Name
+        $role = Get-ProcessRole $name
+        if ($role -ne 'OTHER' -and $processRoles.Count -lt 80) {
+            $processRoles.Add([pscustomobject]@{
+                process_role = $role
+                process_name = $name
+                evidence = 'PROCESS_NAME_PRESENT_NOT_HEALTH_OR_AUTOSTART_PROOF'
+            })
+        }
         if ($name -notmatch '(?i)^(pwsh|powershell|cmd|pythonw?|wscript|cscript|conhost|coall\w*)\.exe$') {
             continue
         }
@@ -198,9 +274,25 @@ $report = [ordered]@{
     run_entries = @($runEntries.ToArray())
     startup_folder_items = @($startupFiles.ToArray())
     process_candidates = @($processes.ToArray())
+    boot_time_utc = $bootUtc
+    uptime_seconds_at_observation = $uptimeSeconds
+    audio_service_readback = @($audioServices.ToArray())
+    audio_muted_state = 'NOT_OBSERVED'
+    peripheral_utility_process_candidates = @($processRoles.ToArray())
+    display_driver_modes = @($displayDriverModes.ToArray())
+    per_monitor_dpi = 'NOT_OBSERVED'
+    owned_desktop_background = 'NOT_OBSERVED'
+    surface_alignment_and_scale = 'NOT_OBSERVED'
+    post_login_restoration_state = 'NOT_ATTESTED'
+    visible_ui_screenshot_accepted = $false
     observation_errors = @($errors.ToArray())
     nonclaims = @('TASK_EXISTS_NE_AUTOSTART_PROVEN','HIDDEN_FLAG_NE_NO_WINDOW_PROVEN',
         'PROCESS_EXISTS_NE_HEALTHY','BRIDGE_OFFLINE_NE_PC_OFF',
-        'LOCAL_SNAPSHOT_NE_X2_ATTESTATION','NO_RECEIVER_ACK_OR_RUNTIME_REPAIR')
+        'LOCAL_SNAPSHOT_NE_X2_ATTESTATION','NO_RECEIVER_ACK_OR_RUNTIME_REPAIR',
+        'AUDIO_SERVICE_RUNNING_NE_AUDIO_UNMUTED',
+        'MOUSE_PROCESS_PRESENT_NE_MOUSE_MAPPING_READY',
+        'DISPLAY_DRIVER_MODE_NE_PER_MONITOR_DPI_OR_LAYOUT',
+        'BOOT_TIME_NE_POST_LOGIN_RESTORATION',
+        'WALLPAPER_VISIBLE_NE_COCIVIUM_OWNED_SURFACE')
 }
 $report | ConvertTo-Json -Depth 6 -Compress
