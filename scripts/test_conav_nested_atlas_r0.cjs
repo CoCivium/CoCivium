@@ -108,8 +108,8 @@ test("CoMegaScroller reader parity: saved HTML exactly matches three pinned inpu
 });
 test("CoMegaScroller long relation labels wrap without clipping source text",()=>{
   const rendered=generateMegaScroller(graph,overlay,retro,megaPins);
-  assert.match(rendered,/\\.edges li\\{margin:\\.4rem 0;min-width:0;overflow-wrap:anywhere\\}/);
-  assert.match(rendered,/\\.edges strong\\{overflow-wrap:anywhere\\}/);
+  assert.match(rendered,/\.edges li\{margin:\.4rem 0;min-width:0;overflow-wrap:anywhere\}/);
+  assert.match(rendered,/\.edges strong\{overflow-wrap:anywhere\}/);
   assert.match(rendered,/PROPOSED_PROJECTION_FAMILY/);
 });
 test("CoMegaScroller includes exactly 10 original vector thumbnails from the registered highlights",()=>{
