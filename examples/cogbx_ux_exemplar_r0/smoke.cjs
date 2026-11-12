@@ -29,6 +29,15 @@ must(/@media \(max-width:600px\)/, "narrow viewport support");
 must(/aria-label="Projection controls"/, "projection control label");
 must(/aria-pressed/, "toggle semantics");
 must(/one durable work object/i, "durable work identity");
+must(/Inspect the work behind this view/, "human-visible backstage access");
+must(/id="machineProof"/, "human proof drawer");
+must(/id="textMachineProof"/, "accessible text proof drawer");
+must(/CoGbx\.SurfaceParity\.R1/, "typed common fixture");
+must(/SYNTHETIC_OFFLINE_FIXTURE/, "synthetic provenance label");
+must(/real_device_observation:\s*"NOT_PERFORMED"/, "no host observation");
+must(/remote_receiver:\s*"UNKNOWN"/, "unproven remote receiver");
+must(/external_effects:\s*0/, "no external effect authority");
+
 must(/Redundancy does not duplicate authority/i, "redundancy boundary");
 
 mustNot(/\bfetch\s*\(/, "fetch");
