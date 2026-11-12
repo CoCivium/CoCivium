@@ -3,10 +3,16 @@ on:
   push:
     paths:
       - 'tests/gs_receiver/**'
+      - 'examples/conodcothumb/context_rail_r1/CoOwnedWorkR0.js'
+      - 'scripts/CoNarrativeWorkIDR0.py'
+      - 'CoPre.md'
       - '.github/workflows/receiver-reconciliation.yml'
   pull_request:
     paths:
       - 'tests/gs_receiver/**'
+      - 'examples/conodcothumb/context_rail_r1/CoOwnedWorkR0.js'
+      - 'scripts/CoNarrativeWorkIDR0.py'
+      - 'CoPre.md'
       - '.github/workflows/receiver-reconciliation.yml'
   workflow_dispatch:
 permissions:
