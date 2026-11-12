@@ -1,0 +1,22 @@
+{
+  "schema": "CoAll.StablePublicWorkPointer.R0",
+  "work_id": "CoTalkItOut:UniversalAutonomy",
+  "current_edition_work_id": "CoTalkItOut:UniversalAutonomy:20261112:R1",
+  "current_public_candidate": "https://github.com/CoCivium/CoCivium/blob/main/ai/currentness/cotalkitout-universal-autonomy-r1-20261112.json",
+  "current_public_candidate_git_blob_sha": "6a7179545a3e63b0f76a788a3a2cf49a1a4f02bb",
+  "observed_date_utc": "2026-11-12",
+  "state": "PUBLIC_SAFE_DISCOVERY_POINTER_ONLY",
+  "purpose": "Many independently authorized readers can locate the same public-safe current edition without manually copying a CoPre; private full workbook remains in authorized custody.",
+  "update_rule": "One elected writer, compare-and-swap on previous pointer blob SHA, explicit supersession, exact readback; never allow many sessions to overwrite simultaneously.",
+  "privacy_rule": "UNKNOWN_OR_PRIVATE_PAYLOAD_NE_PUBLIC; no private conversation, contact, credential or restricted artifact via this pointer.",
+  "receiver_origin_readproof": null,
+  "all_existing_sessions_automatically_notified": false,
+  "runtime_authority": false,
+  "nonclaims": [
+    "PUBLIC_SOURCE_NE_PICKUP",
+    "STABLE_FILENAME_NE_CONTENT_MUTABILITY",
+    "NO_PRIVATE_ARTIFACT_PUBLICATION",
+    "NO_CHATGPT_SIDEBAR_MUTATION",
+    "NO_CANON_OR_COEX"
+  ]
+}
