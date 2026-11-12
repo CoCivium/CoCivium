@@ -37,24 +37,24 @@ class AutoTurnTests(unittest.TestCase):
         transform(data)
         p.write_text(json.dumps(data, indent=2) + "\n", encoding="utf-8")
 
-    def run(self):
+    def turn(self):
         return compile_turn(self.root, NOW, RUN, ATTEMPT, HEAD)
 
     def test_three_source_contexts_qualified(self):
-        r = self.run()
+        r = self.turn()
         self.assertEqual(r["schema"], OUT_SCHEMA)
         self.assertEqual(r["state"], "ONE_SOURCE_WORKID_RECHECKED_AND_LOGICAL_FLEET_PROJECTED")
         self.assertEqual(r["co_speedo"]["qualified_public_source_objects"], 3)
         self.assertEqual(r["co_speedo"]["bounded_logical_work_contexts"], 3)
 
     def test_one_elected_workid_and_two_shadow_only(self):
-        r = self.run()
+        r = self.turn()
         self.assertEqual(r["elected"]["role"], "X2_DESKTOP_RECOVERY")
         self.assertEqual(len(r["other_workids"]), 2)
         self.assertTrue(all(x["state"] == "LOGICAL_SHADOW_NOT_MATERIALIZED" for x in r["other_workids"]))
 
     def test_actual_lifecycle_compiler_reused(self):
-        r = self.run()
+        r = self.turn()
         ledger = r["shadow_ledger"]
         self.assertEqual(ledger["state"], "SHADOW_LEDGER_COMPILED__NO_PROVIDER_MUTATION")
         self.assertEqual(len(ledger["sessions"]), 3)
@@ -62,7 +62,7 @@ class AutoTurnTests(unittest.TestCase):
                          ["SUCCESSOR_READY", "WAITING", "DEGRADED"])
 
     def test_no_provider_or_native_effect(self):
-        r = self.run()
+        r = self.turn()
         self.assertFalse(r["receiver_ack"])
         self.assertFalse(r["external_work_effect_claimed"])
         self.assertEqual(r["elected"]["performed_effect"], "VERIFY_PUBLIC_SOURCE_BYTES_ONLY")
@@ -72,66 +72,66 @@ class AutoTurnTests(unittest.TestCase):
         self.assertTrue(all(x == 0 for x in r["shadow_ledger"]["effects"].values()))
 
     def test_currentness_not_inferred(self):
-        r = self.run()
+        r = self.turn()
         self.assertIsNone(r["co_speedo"]["current_native_x2_worker_count"])
         self.assertIsNone(r["co_speedo"]["current_focus_interruptions_per_minute"])
         self.assertIsNone(r["co_needle"]["predicted_productivity_improvement"])
 
     def test_stable_output_and_no_source_mutation(self):
         before = {p.relative_to(self.root):p.read_bytes() for p in self.root.rglob("*") if p.is_file()}
-        self.assertEqual(self.run(), self.run())
+        self.assertEqual(self.turn(), self.turn())
         after = {p.relative_to(self.root):p.read_bytes() for p in self.root.rglob("*") if p.is_file()}
         self.assertEqual(before, after)
 
     def test_unpinned_source_state_held(self):
         rel=self.items[0]["source_path"]
         self.edit(rel, lambda x:x.update(state="FOCUS_CURED"))
-        with self.assertRaisesRegex(ValueError,"HOLD_SOURCE_IDENTITY_OR_STATE_DRIFT"):self.run()
+        with self.assertRaisesRegex(ValueError,"HOLD_SOURCE_IDENTITY_OR_STATE_DRIFT"):self.turn()
 
     def test_mismatched_workid_held(self):
         rel=self.items[1]["source_path"]
         self.edit(rel, lambda x:x.update(work_id="Different"))
-        with self.assertRaisesRegex(ValueError,"HOLD_SOURCE_IDENTITY_OR_STATE_DRIFT"):self.run()
+        with self.assertRaisesRegex(ValueError,"HOLD_SOURCE_IDENTITY_OR_STATE_DRIFT"):self.turn()
 
     def test_duplicate_workid_held(self):
         self.edit(WORKSET, lambda x:x["work_items"][1].update(work_id=x["work_items"][0]["work_id"]))
-        with self.assertRaisesRegex(ValueError,"HOLD_WORKID_IDENTITY_COLLISION"):self.run()
+        with self.assertRaisesRegex(ValueError,"HOLD_WORKID_IDENTITY_COLLISION"):self.turn()
 
     def test_duplicate_priority_held(self):
         self.edit(WORKSET, lambda x:x["work_items"][1].update(priority=x["work_items"][0]["priority"]))
-        with self.assertRaisesRegex(ValueError,"HOLD_PRIORITY_BOUNDS_OR_COLLISION"):self.run()
+        with self.assertRaisesRegex(ValueError,"HOLD_PRIORITY_BOUNDS_OR_COLLISION"):self.turn()
 
     def test_unknown_authority_held(self):
         self.edit(WORKSET, lambda x:x["work_items"][0].update(native_effects_authorized=True))
-        with self.assertRaisesRegex(ValueError,"HOLD_EFFECT_AUTHORITY"):self.run()
+        with self.assertRaisesRegex(ValueError,"HOLD_EFFECT_AUTHORITY"):self.turn()
 
     def test_illegal_external_receiver_ack_held(self):
         self.edit(WORKSET, lambda x:x["work_items"][0].update(external_receiver_pickup=True))
-        with self.assertRaisesRegex(ValueError,"HOLD_EFFECT_AUTHORITY"):self.run()
+        with self.assertRaisesRegex(ValueError,"HOLD_EFFECT_AUTHORITY"):self.turn()
 
     def test_private_source_escape_held(self):
         self.edit(WORKSET, lambda x:x["work_items"][0].update(source_path="../private-chat.json"))
-        with self.assertRaisesRegex(ValueError,"HOLD_SOURCE_SCOPE_COLLISION"):self.run()
+        with self.assertRaisesRegex(ValueError,"HOLD_SOURCE_SCOPE_COLLISION"):self.turn()
 
     def test_source_file_missing_holds(self):
         (self.root / self.items[0]["source_path"]).unlink()
-        with self.assertRaisesRegex(ValueError,"HOLD_SOURCE_MISSING_OR_LINKED"):self.run()
+        with self.assertRaisesRegex(ValueError,"HOLD_SOURCE_MISSING_OR_LINKED"):self.turn()
 
     def test_future_source_holds(self):
         rel=self.items[1]["source_path"]
         self.edit(rel, lambda x:x.update(observed_utc="2040-11-12T20:28:00Z"))
-        with self.assertRaisesRegex(ValueError,"HOLD_SOURCE_FROM_FUTURE"):self.run()
+        with self.assertRaisesRegex(ValueError,"HOLD_SOURCE_FROM_FUTURE"):self.turn()
 
     def test_owner_redirect_holds(self):
         self.edit(WORKSET, lambda x:x["work_items"][0].update(owner="https://example.net/new-authority"))
-        with self.assertRaisesRegex(ValueError,"HOLD_OWNER_SCOPE"):self.run()
+        with self.assertRaisesRegex(ValueError,"HOLD_OWNER_SCOPE"):self.turn()
 
     def test_evidence_class_inflation_holds(self):
         self.edit(WORKSET, lambda x:x["work_items"][2].update(expected_state="X2_DEPLOYED"))
-        with self.assertRaisesRegex(ValueError,"HOLD_SOURCE_IDENTITY_OR_STATE_DRIFT"):self.run()
+        with self.assertRaisesRegex(ValueError,"HOLD_SOURCE_IDENTITY_OR_STATE_DRIFT"):self.turn()
 
     def test_no_global_chats_or_manual_private_context_exposed(self):
-        s=json.dumps(self.run())
+        s=json.dumps(self.turn())
         for v in ("D:\\CoCivium","C:\\Users\\Owner","@inseed.com","access_token","PRIVATE_CHAT_LOG"):
             self.assertNotIn(v,s)
 
