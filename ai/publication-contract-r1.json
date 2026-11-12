@@ -1,0 +1,74 @@
+{
+  "schema": "CoAll.CoArtifactPublicationContract.R1",
+  "state": "PUBLIC_SOURCE_CANDIDATE_NOT_GOVERNING_COALL_RUNTIME",
+  "intent": "PUBLIC_SAFE_BY_DEFAULT_AFTER_PREFLIGHT__PRIVATE_BY_REQUIREMENT",
+  "scope": [
+    "CoCivium",
+    "CoAll",
+    "CoLocal",
+    "CoTalkItOut",
+    "CoSeed",
+    "CoPath"
+  ],
+  "naming": {
+    "object_identity": "WORK_ID_PLUS_VERSION_PLUS_SOURCE_HASH",
+    "canonical_stem": "family_RN_YYYYMMDD",
+    "same_stem_across_formats": true,
+    "collision_policy": "NEVER_SILENT_OVERWRITE_COMPARE_SHA_NO_CLOBBER_OR_EXPLICIT_SUPERSESSION",
+    "filename_ne_content_identity": true,
+    "compare": "SHA256_EXACT_BYTES+GIT_BLOB_SHA1+SEMANTIC_REVIEW"
+  },
+  "classes": {
+    "PUBLIC_SAFE": "Documentation, synthetic experiments, redacted summaries, source code without embedded secrets, approved public media",
+    "PRIVATE": "Conversations, personal records, private CoStead artifacts, device logs, unpublished partner drafts",
+    "RESTRICTED": "Credentials, family/guardian data, regulated information, secrets, high-risk operational data",
+    "UNKNOWN": "HOLD_NONPUBLIC_UNTIL_CLASSIFIED"
+  },
+  "publication_rail": [
+    "DISCOVER_CANDIDATE",
+    "CLASSIFY_RIGHTS_CONSENT_AND_CONTENT",
+    "REDACT_IF_APPROVED",
+    "PIN_WORKID_VERSION_SHA",
+    "ELECT_CANONICAL_PUBLIC_PATH",
+    "FAIL_CLOSED_ON_COLLISION",
+    "WRITE_GIT_WITH_EXPECTED_HEAD_NO_FORCE",
+    "RETRIEVE_EXACT_OBJECT_AND_COMPARE_HASH",
+    "INDEX_PUBLIC_SAFE_LINK",
+    "SEPARATELY_REQUEST_RECEIVER_READPROOF",
+    "VERIFY_CONSUMER_UX",
+    "PROMOTE_IF_AUTHORIZED"
+  ],
+  "no_auto_public": [
+    "PASSWORDS",
+    "TOKENS",
+    "PRIVATE_CHAT_EXPORTS",
+    "RAW_MACHINE_LOGS",
+    "FAMILY_OR_GUARDIAN_RECORDS",
+    "PERSONAL_HEALTH_AND_FINANCES",
+    "UNPUBLISHED_PRIVATE_PARTNER_CONTENT"
+  ],
+  "private_custody": "ACCESS_CONTROLLED_PRIVATE_RECEIVER_WITH_REDACTED_PUBLIC_POINTER_WHERE_AUTHORIZED",
+  "lifecycle_classes": [
+    "DISCOVERED_LOCAL",
+    "VERIFIED_LOCAL",
+    "LANDED",
+    "PICKED_UP",
+    "INTEGRATED",
+    "COEX"
+  ],
+  "automated_sessions": "PUBLIC_POINTER_IS_DISCOVERY_ONLY_NOT_AUTO_NOTIFICATION_OR_CANON",
+  "owner_election": "MANY_REVIEWERS_ONE_WRITER_AND_INDEPENDENT_READPROOF",
+  "proof_scope": "SOURCE_PUBLICATION_ONLY__NO_SESSION_RUNTIME_CHANGE",
+  "first_instance": {
+    "stem": "CoTalkItOut_Headless_Screenless_Autonomy_R1_20261112",
+    "receipt": "ai/currentness/cotalkitout-publication-r1-20261112.json",
+    "source_sha256": "4ca848b814292d0a0ff1c8bfc2d1193ad0f660f629133794fba3be046a0c10dc"
+  },
+  "next_step": "Implement one reusable preflight validator and source-bound naming lookup; test against redacted and forbidden fixtures, do not auto-upload from private custody.",
+  "nonclaims": [
+    "PUBLIC_BY_DEFAULT_NE_PUBLIC_EVERYTHING",
+    "NAME_NE_CONTENT_HASH",
+    "SOURCE_RECEIPT_NE_RECIPIENT_ACK",
+    "NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE"
+  ]
+}
