@@ -84,3 +84,12 @@ The [versioned 58-node/66-relation CoMap source successor](../../ai/comap-coloca
 **Decision ceiling:** `TASKS_DISABLED_AND_LOCAL_BACKUPS_VISIBLE`; not `FOCUS_CURED`, not `R6_DEPLOYED`, not `CoSpeedo_LIVE`, not `INDEPENDENT_RECEIVER_ACK`. X2 bridge ONLINE with connector 0.3.3 at this inspection; previous LIVE_STATUS.json unchanged since November 8. Multiple active ChatGPT automations already exist; this does **not** add another X2 watcher, local terminal runner or account subscription. One elected owner must qualify an actual interruption-free input interval and downstream function loss before any task restoration/replacement.
 
 **CoFrontierExit connection:** [Provider-independence migration](../Operations/COFRONTIEREXIT_GRACEFUL_PIVOT_R0_20261112.md) remains in source-only readiness. Neither an online remote bridge nor scheduled-task containment qualifies local Ollama or provider-free user continuity.
+
+
+## CoLocal R0 | Role-scoped session rebind
+
+**Purpose:** prevent repeated human paste and cross-session diagnostic interference by routing an authorized X2-focused session through the [existing machine bootstrap](../../ai/session-bootstrap.json), [human bootstrap](../../SESSION_BOOTSTRAP.md), and [single CoDesktop incident owner](https://github.com/CoCivium/CoCivium/issues/181). A [pure, source-bound reentry reader](../../scripts/CoLocalRoleRebindR0.py) returns one CoHereNow/CoNext for relevant roles, and **no incident payload** for unrelated roles. Its [18 adversarial tests](../../tests/test_colocal_role_rebind_r0.py) run in the [existing unattended proof workflow](https://github.com/CoCivium/CoCivium/actions/workflows/cogoall-unattended-proof-pulse.yml), without a new scheduler or X2 process.
+
+Command from a trusted checked-out public repository: `python scripts/CoLocalRoleRebindR0.py --role X2_DESKTOP_RECOVERY`. This is a source-document rebind, **not** live X2 acceptance, a cross-session notification, private history sync, receiver pickup, or authority to restore disabled tasks. It validates an exact R1 source blob and requires fresh incumbent-owner reconciliation before any effect. Preserve prior CoPre WorkID deduplication rather than invent a second mechanism. For unrelated roles, return `NO_RELEVANT_INCIDENT_CONTENT`.
+
+**Proof gate:** source reader and CI tests may pass while the actual user still experiences flashing windows. R6 usability, current CoSpeedo receiver, independent CoStead recovery and autonomous provider-free session continuation remain separately unverified.
