@@ -26,6 +26,24 @@ CI candidate: `.github/workflows/costel-r5-supervisor-r0.yml`, triggered by the 
 - An attempted restart is **not** a verified successful effect.
 - Every modeled decision emits a record.
 
+## CoColdOpen+ | one headless readiness decision (2026-11-12)
+
+**Motivating observed gap:** After the user restarted X2, the remote observer briefly reported Online and then became unresponsive/Offline. Private screenshots exposed disconnected desktop composition, Windows-owned wallpaper, audio returning muted and missing input-utility behavior. A screenshot or bridge status is **not** machine startup attestation. Do not publish user screenshots, infer X2 power state from bridge absence, or burden the user with manually cycling sessions.
+
+A new **pure, no-effect classifier** consumes the exact JSON produced by the existing [read-only CoRunner startup inventory](../../scripts/CoRunnerStartupInventoryR0.ps1). It produces one small human sentence and the matching typed machine result from one source, with no second watcher, account action, process start, Windows task, OS query, network request, storage or wallpaper mutation.
+
+Example on a **separately authorized Windows host with the project source available** (never proof by merely displaying the command):
+
+```powershell
+pwsh -NoProfile -NonInteractive -File scripts/CoRunnerStartupInventoryR0.ps1 | python -B experiments/costel_r5_r0/cold_open_readiness.py
+```
+
+The result always remains `HOLD_USABLE_DESKTOP_UNPROVEN` until actual, independent post-login user-experience and receiver observations are established elsewhere. It distinguishes boot time and snapshot age from a usable desktop, audio services from actual unmute, mouse-process presence from mapped-button functionality, model/process existence from useful work, video-driver dimensions from per-monitor DPI and layout, and desktop background appearance from a CoCivium-owned surface. Never treat a local sample or GitHub CI as an independent X2 restore.
+
+**Contract:** `CoAll.CoColdOpenDecision.R0`, stable `CoDesktopPresence:ColdOpen:R0` identity, no user data echoed, no startup mutations, one `next_safe_probe`. Regression cases cover stale/missing/bogus clocks, false PASS injection, hostile extra fields, privacy and deterministic output. The baseline is **fail-closed** and intentionally does not claim a working X2, a permanent automation or CoEx.
+
+**Next material acceptance:** once X2 is reachable through an authorized receiver, run the existing inventory locally, bind to its exact source/boot timestamp, then test real keyboard focus, mouse mappings, chosen audio state, monitor layout, one local model task, and automatic restoration without asking for a ChatGPT turn. Qualify receiver-origin readproof before promoting any result.
+
 ## Known limitations / next proof
 
 This is an in-memory state-machine fixture. The lease is not persisted, crash-resistant, monotonic-time-based, or distributed. The restart is a modeled *attempt*, not an actual process launch. Receipts are in-memory, not signed or independently delivered. There are no actual Windows integration tests, uptime metrics, command authorization, UI/no-popup tests, uninstall/rollback tests, network changes, or cross-device ACKs. These must be independently qualified before runtime promotion.
