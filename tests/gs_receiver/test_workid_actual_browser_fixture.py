@@ -10,9 +10,9 @@ import tempfile
 import unittest
 from pathlib import Path
 
+from workid_sqlite_adapter import adapt_proposal, commit_proposal
 from CoNarrativeWorkIDR0 import Held, readback, revoke
 from workid_source_pin import EXPECTED_COMMIT, EXPECTED_REF, EXPECTED_SHA256
-from workid_sqlite_adapter import adapt_proposal, commit_proposal
 
 REPO = Path(__file__).resolve().parents[2]
 BROWSER_JS = REPO / "examples/conodcothumb/context_rail_r1/CoOwnedWorkR0.js"
