@@ -1,0 +1,113 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/CoCivium/CoCivium/schemas/coagency-envelope-v0.1.schema.json",
+  "title": "CoAgencyEnvelope R0 candidate",
+  "description": "A source-bound, recursively narrowing effect envelope. Structural validity is not authorization; semantic constraints are enforced by scripts/CoAgencyEnvelopeR0.py.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "envelope_id",
+    "parent_envelope_id",
+    "root_work_id",
+    "participant_id",
+    "source_bindings",
+    "mode",
+    "supervision_topology",
+    "authorization_basis",
+    "authorization_ref",
+    "authority_ceiling",
+    "allowed_actions",
+    "effect_ceiling",
+    "collision_domain",
+    "actuator_id",
+    "lease",
+    "break_glass",
+    "receipts",
+    "nonclaims"
+  ],
+  "properties": {
+    "schema": {"const": "CoAgencyEnvelope.R0"},
+    "envelope_id": {"type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"},
+    "parent_envelope_id": {
+      "oneOf": [
+        {"type": "null"},
+        {"type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"}
+      ]
+    },
+    "root_work_id": {"type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"},
+    "participant_id": {"type": "string", "minLength": 1, "maxLength": 128},
+    "source_bindings": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "participant_canonical_sha256",
+        "participation_canonical_sha256",
+        "standing_authorization_canonical_sha256"
+      ],
+      "properties": {
+        "participant_canonical_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "participation_canonical_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "standing_authorization_canonical_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      }
+    },
+    "mode": {
+      "enum": ["SHADOW", "PROPOSE", "ATTENDED", "DELEGATED", "WITNESSED", "QUIET", "HELD"]
+    },
+    "supervision_topology": {
+      "enum": ["IN_LOOP", "ON_LOOP", "ON_CALL", "AFTER_LOOP", "ABSENT"]
+    },
+    "authorization_basis": {"enum": ["NONE", "STANDING_BOUNDED", "EXPLICIT_CURRENT"]},
+    "authorization_ref": {
+      "oneOf": [
+        {"type": "null"},
+        {"type": "string", "minLength": 1, "maxLength": 512}
+      ]
+    },
+    "authority_ceiling": {"type": "string", "minLength": 1, "maxLength": 256},
+    "allowed_actions": {
+      "type": "array",
+      "maxItems": 32,
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 1, "maxLength": 128}
+    },
+    "effect_ceiling": {
+      "enum": ["OBSERVE_ONLY", "LOCAL_REVERSIBLE", "BOUNDED_SHARED_WRITE", "EFFECT_GATED"]
+    },
+    "collision_domain": {"type": "string", "minLength": 1, "maxLength": 256},
+    "actuator_id": {
+      "oneOf": [
+        {"type": "null"},
+        {"type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"}
+      ]
+    },
+    "lease": {
+      "oneOf": [
+        {"type": "null"},
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["starts_at", "expires_at"],
+          "properties": {
+            "starts_at": {"type": "string", "minLength": 1},
+            "expires_at": {"type": "string", "minLength": 1}
+          }
+        }
+      ]
+    },
+    "break_glass": {"enum": ["OFF", "FREEZE", "RECOVER"]},
+    "receipts": {
+      "type": "array",
+      "maxItems": 32,
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 1, "maxLength": 512}
+    },
+    "nonclaims": {
+      "type": "array",
+      "minItems": 7,
+      "maxItems": 32,
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 1, "maxLength": 128}
+    }
+  }
+}
