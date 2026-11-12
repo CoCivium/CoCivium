@@ -1,0 +1,107 @@
+{
+  "schema": "CoAll.CoMap.CoLocalVisibleLensCIReceipt.R1",
+  "work_id": "CoLocal2601109_CoMapVisualLensR1_CI_20261112",
+  "observed_utc": "2026-11-12T01:13:07Z",
+  "state": "PASS_BOUNDED_PUBLIC_SOURCE_AND_BROWSER_QA_ONLY",
+  "scope": "GITHUB_SOURCE_AND_OFFLINE_CHROMIUM_NOT_DEPLOYED_PUBLIC_APP_OR_X2",
+  "source": {
+    "repository": "CoCivium/CoCivium",
+    "ui_path": "examples/comap/colocal-source-lens-r1.html",
+    "ui_git_blob_sha1": "9dc542bbb31815b630396d76d693c5241f7f7d09",
+    "r1_graph_path": "ai/comap-colocal-currentness-projection-r1.json",
+    "r1_graph_git_blob_sha1": "1c9eb9b4c608d2f13dc3d7bc8ec524831d6708a3",
+    "predecessor_path": "ai/comap-source-projection-r0.json",
+    "predecessor_blob_sha1": "9cc47926d2f61f439db1818702127382f78d693f",
+    "displayed_new_source_nodes": 2,
+    "displayed_new_relations": 5,
+    "complete_source_projection_nodes": 58,
+    "complete_source_projection_relations": 66,
+    "predecessor_nodes": 56,
+    "predecessor_relations": 61
+  },
+  "tests": {
+    "job_id": 130901101370,
+    "run_id": 43132892448,
+    "commit_sha": "c0256167cd65911c93291193d42475a85375b929",
+    "url": "https://github.com/CoCivium/CoCivium/actions/runs/43132892448",
+    "conclusion": "success",
+    "source_unittest_count": 18,
+    "source_unittest_result": "PASS",
+    "source_test_file": "scripts/test_CoMapCoLocalLensR1.py",
+    "browser_test_file": "scripts/browser_CoMapCoLocalLensR1.py",
+    "browser_runner": "CHROMIUM_HEADLESS",
+    "browser_desktop": {
+      "viewport_px": [
+        1280,
+        850
+      ],
+      "relations_visible": 5,
+      "design_filter": "PASS",
+      "ci_filter": "PASS",
+      "search": "PASS",
+      "reset": "PASS",
+      "source_inspection": "PASS",
+      "external_requests": 0,
+      "js_errors": 0,
+      "horizontal_overflow": false
+    },
+    "browser_mobile": {
+      "viewport_px": [
+        390,
+        844
+      ],
+      "relations_visible": 5,
+      "design_filter": "PASS",
+      "ci_filter": "PASS",
+      "search": "PASS",
+      "reset": "PASS",
+      "source_inspection": "PASS",
+      "external_requests": 0,
+      "js_errors": 0,
+      "horizontal_overflow": false
+    },
+    "evidence_artifact_id": 13906665387,
+    "evidence_artifact_name": "comap-colocal-visible-lens-r1",
+    "evidence_artifact_sha256": "1854534244d82b0a397549df074b1aa614b1fa2dc459bb2343b875a54034be08",
+    "evidence_artifact_expires_utc": "2026-12-12T01:13:07Z",
+    "prior_failed_runs": [
+      {
+        "id": 43132707180,
+        "condition": "AMBIGUOUS_DESIGN_TEST_LOCATOR",
+        "disposition": "TEST_SELECTOR_CORRECTED"
+      },
+      {
+        "id": 43132811791,
+        "condition": "GRAIL_SEARCH_MATCHED_MULTIPLE_REAL_ENDPOINTS",
+        "disposition": "UNAMBIGUOUS_SEARCH_FIXTURE"
+      }
+    ],
+    "failure_domain": "GITHUB_ACTIONS_SINGLE_PROVIDER"
+  },
+  "discovery": [
+    "examples/comap/README.md",
+    "docs/CoLocal/README.md"
+  ],
+  "acceptance": {
+    "source_graph_parity": "PASS",
+    "browser_interactions": "PASS_BOUNDED",
+    "screenshots_saved_in_ci_artifact": true,
+    "independent_human_ux_acceptance": false,
+    "x2_runtime_integration": false,
+    "public_domain_deployment": false,
+    "standalone_offline_html_source": true,
+    "coall_canon": false,
+    "independent_receiver_readproof": false
+  },
+  "next_deed": "Independent human-source comprehension test or source-bound live runtime qualification when X2 reconnects; retain predecessor and exact-object acceptance gate.",
+  "nonclaims": [
+    "PUBLIC_GITHUB_HTML_NE_DEPLOYED_WEBAPP",
+    "BROWSER_TEST_NE_HUMAN_ACCEPTANCE",
+    "SOURCE_CI_NE_X2_RECEIVER",
+    "GITHUB_ACTIONS_NE_INDEPENDENT_RECEIVER",
+    "SOURCE_GRAPH_NE_CANON",
+    "NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF",
+    "NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE",
+    "DISCOVERED_SET_IS_NOT_COMPLETE_HISTORY"
+  ]
+}
