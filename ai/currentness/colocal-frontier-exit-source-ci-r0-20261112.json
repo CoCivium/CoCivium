@@ -1,0 +1,71 @@
+{
+  "schema": "CoAll.CoModelFabric.ProviderExitSourceCIReceipt.R0",
+  "work_id": "CoLocal2601109_FrontierExit_R0_20261112",
+  "observed_utc": "2026-11-12T12:53:35Z",
+  "state": "PASS_PUBLIC_SOURCE_CI_ONLY",
+  "scope": "GITHUB_ACTIONS_SYNTHETIC_EVALUATION_NO_PROVIDER_ACCOUNT_OR_X2_ACCESS",
+  "sources": {
+    "repo": "CoCivium/CoCivium",
+    "evaluator": "examples/comodelfabric/provider_exit_readiness_r0.py",
+    "evaluator_git_blob_sha1": "faa66a13c3bc241e7c2f9091ddc9f1729b4ccafd",
+    "test_file": "examples/comodelfabric/test_provider_exit_readiness_r0.py",
+    "test_git_blob_sha1": "a307c751f5d854d7a740788cf2203ff278a1922e",
+    "workflow": ".github/workflows/comodelfabric-ollama.yml",
+    "workflow_git_blob_sha1": "25aa107c4b79f9131b48c11418eba163bd62bd91",
+    "design": "docs/Operations/COFRONTIEREXIT_GRACEFUL_PIVOT_R0_20261112.md",
+    "design_git_blob_sha1": "9136003d14910c99504839ec4e40bded7199b5cb",
+    "source_commit": "708894932297d862154670e8ba287ddf890ab9d9"
+  },
+  "execution": {
+    "provider": "GitHub Actions",
+    "run_id": 43222060738,
+    "run_url": "https://github.com/CoCivium/CoCivium/actions/runs/43222060738",
+    "conclusion": "success",
+    "source_regression_tests_passed": 26,
+    "source_regression_tests_failed": 0,
+    "same_provider_failure_domain": true,
+    "real_local_model_invocation": false,
+    "real_export": false,
+    "real_subscription_change": false
+  },
+  "candidate_front_paths": [
+    "CoModelFabric+",
+    "CoLocal+",
+    "rickBar+",
+    "CoReGroup+",
+    "CoStead+",
+    "CoOps+",
+    "CoInEx+",
+    "CoHP+",
+    "CoHp+",
+    "CoTime+"
+  ],
+  "outstanding": {
+    "x2_remote_bridge": "OFFLINE_AT_LAST_DIRECT_CHECK_NOT_HOST_POWER_STATE",
+    "x2_current_local_model": "NOT_ATTESTED",
+    "x2_native_rickbar_continuity": "NOT_ATTESTED",
+    "costead_receiver_proof": "UNVERIFIED",
+    "actual_chat_export_custody": "NOT_REQUESTED_OR_NOT_VERIFIED",
+    "private_data_coverage": "UNKNOWN",
+    "subscription_retirement": "NOT_AUTHORIZED",
+    "public_app_or_coorb_deployment": "UNVERIFIED",
+    "user_visible_success": "UNMEASURED"
+  },
+  "next_safe_deed": "After authorized X2 rejoin, run one PUBLIC-only local model canary using existing CoLocalModelWorker R3, bind its exact WorkID checkpoint and restore test, then verify a separate receiver readproof. Keep existing R5 and any paid subscription unchanged until their actual successor and private archive are qualified.",
+  "nonclaims": [
+    "SIMULATED_CI_NE_LIVE_MODEL",
+    "ACCOUNT_UI_NE_AUTOMATED_ACCOUNT_ACCESS",
+    "PUBLIC_SOURCE_NE_PRIVATE_ARCHIVE",
+    "MODEL_OUTPUT_NE_WORK_EFFECT",
+    "EXPORT_REQUEST_NE_EXPORT_CUSTODY",
+    "SOURCE_READBACK_NE_INDEPENDENT_RECEIVER_ACK",
+    "REVIEW_READY_NE_BILLING_AUTHORIZATION",
+    "NO_CREDENTIAL_OR_ACCOUNT_ACTION",
+    "LOCAL_IS_NOT_LANDED",
+    "VALIDATION_IS_NOT_ACCEPTANCE",
+    "NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF",
+    "NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE",
+    "HASHING_IS_NOT_SEMANTIC_INGESTION",
+    "DISCOVERED_SET_IS_NOT_COMPLETE_HISTORY"
+  ]
+}
