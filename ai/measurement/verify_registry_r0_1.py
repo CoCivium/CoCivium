@@ -26,6 +26,34 @@ _EXPECTED_DIMS = {
     "event_per_energy":(-2,-1,2,0,0,0,0),
 }
 
+# R0.1.2 approved exact conversion anchors. Deliberately version-locked:
+# a plausible positive factor is not necessarily the correct unit definition.
+# Any expansion/change requires a reviewed schema version and negative controls.
+_EXPECTED_UNIT_ANCHORS = {
+    "m": ("length", "1", "0"),
+    "cm": ("length", "1/100", "0"),
+    "km": ("length", "1000", "0"),
+    "s": ("duration", "1", "0"),
+    "ms": ("duration", "1/1000", "0"),
+    "min": ("duration", "60", "0"),
+    "m_per_s": ("speed", "1", "0"),
+    "km_per_h": ("speed", "5/18", "0"),
+    "K": ("thermodynamic_temperature", "1", "0"),
+    "Cel": ("thermodynamic_temperature", "1", "27315/100"),
+    "delta_K": ("temperature_difference", "1", "0"),
+    "delta_Cel": ("temperature_difference", "1", "0"),
+    "ratio": ("fraction_of_whole", "1", "0"),
+    "percent": ("fraction_of_whole", "1/100", "0"),
+    "count": ("event_count", "1", "0"),
+    "Hz": ("frequency", "1", "0"),
+    "J": ("energy", "1", "0"),
+    "W": ("power", "1", "0"),
+    "1/s": ("event_rate", "1", "0"),
+    "1/J": ("event_per_energy", "1", "0"),
+    "domain_count": ("failure_domain_count", "1", "0"),
+}
+
+
 def require(condition, message):
     """Always run a correctness guard, including when Python uses -O."""
     if not condition:
@@ -68,6 +96,19 @@ def validate_registry(reg):
         off = fraction(u["offset_to_anchor"])
         require(off == (Fraction(27315, 100) if uid == "Cel" else Fraction(0)),
                 (uid, "AFFINE_OFFSET_NOT_PERMITTED"))
+    require(ids == set(_EXPECTED_UNIT_ANCHORS), "UNIT_ANCHOR_ID_SET_MISMATCH")
+    for u in reg["units"]:
+        uid = u["id"]
+        expected_kind, expected_scale, expected_offset = _EXPECTED_UNIT_ANCHORS[uid]
+        require(u["quantity_kind"] == expected_kind,
+                (uid, "UNIT_ANCHOR_KIND_MISMATCH"))
+        # Exact rationals permit harmless representation changes (e.g. 2/200).
+        # This checks definition integrity, not empirical calibration or SI status.
+        require(fraction(u["scale_to_anchor"]) == Fraction(expected_scale),
+                (uid, "UNIT_ANCHOR_SCALE_MISMATCH",
+                 "centimetre" if uid == "cm" else uid))
+        require(fraction(u["offset_to_anchor"]) == Fraction(expected_offset),
+                (uid, "UNIT_ANCHOR_OFFSET_MISMATCH"))
     metrics = reg.get("metric_families")
     require(isinstance(metrics, list), "METRIC_FAMILIES_MISSING")
     units = {u["id"]: u for u in reg["units"]}
