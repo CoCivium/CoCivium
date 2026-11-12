@@ -1,0 +1,69 @@
+{
+  "schema": "CoAll.CoLocal.CurrentnessSourceCIReceipt.R0",
+  "work_id": "CoLocal2601109_CoCurrentnessGateR0_CI_20261112",
+  "observed_utc": "2026-11-12T00:33:23Z",
+  "classification": "PUBLIC_SOURCE_CI_EXECUTION_RECEIPT_NOT_DEVICE_RUNTIME",
+  "state": "PASS_SOURCE_REGRESSION_ONLY",
+  "source": {
+    "repository": "CoCivium/CoCivium",
+    "commit_sha": "995c10c96e91dc8fa7e4e7d26c1de2c3b462046b",
+    "evaluator_path": "scripts/CoCurrentnessGateR0.py",
+    "evaluator_git_blob_sha1": "49089f20a3871a1315f47490d6e237320df0114b",
+    "tests_path": "scripts/test_CoCurrentnessGateR0.py",
+    "tests_git_blob_sha1": "6fa337b57803f4bea58f03dd080ab54f899d19bf"
+  },
+  "execution": {
+    "actor": "GitHub Actions runner, repository main, push event",
+    "workflow": ".github/workflows/colocal-currentness-r0.yml",
+    "run_id": 43128120567,
+    "job_id": 130885274774,
+    "url": "https://github.com/CoCivium/CoCivium/actions/runs/43128120567",
+    "conclusion": "success",
+    "tests_passed": 15,
+    "tests_failed": 0,
+    "tests_kind": "SYNTHETIC_FIXTURE_REGRESSION",
+    "python_version": "3.12.16",
+    "evidence_artifact_id": 13904151326,
+    "evidence_artifact_sha256": "52d4d5ee883eab248f171e0f3535614157e0961ad49d14ac15d7c94c44cb34a5",
+    "evidence_artifact_expires_utc": "2026-12-12T00:33:22Z",
+    "failure_domain": "SINGLE_GITHUB_ACTIONS_PROVIDER"
+  },
+  "independent_review": {
+    "method": "GitHub API fetched workflow jobs, decoded runner logs, and artifact metadata",
+    "reviewer_identity": "This ChatGPT conversation as source reviewer; not a distinct independent infrastructure provider",
+    "observed": "All 15 test names returned ok; final result OK; upload artifact finalized",
+    "independent_receiver_readproof": false
+  },
+  "candidate_co_paths": [
+    "CoLocal+",
+    "CoSpeedo+",
+    "CoInEx+",
+    "CoTime+",
+    "CoMap+",
+    "CoEv+",
+    "CoStead+"
+  ],
+  "gates": {
+    "SOURCE_TESTS": "PASS",
+    "PUBLIC_SOURCE_RETRIEVAL": "PASS",
+    "EXACT_EXTERNAL_RECEIVER_PICKUP": "UNVERIFIED",
+    "X2_COMMAND_CHANNEL": "OFFLINE_AT_LAST_CHECK",
+    "X2_LIVE_RECEIVER": "UNVERIFIED",
+    "PRODUCTION_GENERATOR_ADOPTION": "NOT_PERFORMED",
+    "COFARM_COSTEAD_DESTINATION_CUSTODY": "UNVERIFIED",
+    "COALL_RUNTIME": "UNVERIFIED",
+    "HUMAN_BENEFIT": "UNMEASURED"
+  },
+  "next_safe_deed": "When X2 reconnects, run a two-sample read-only observation and match process start epoch, executable hash, heartbeat advancement, source freshness and a distinct receiver-produced readproof before electing any producer replacement.",
+  "nonclaims": [
+    "SOURCE_CI_SUCCESS_NE_X2_REPAIR",
+    "GITHUB_ARTIFACT_NE_INDEPENDENT_BACKUP",
+    "CI_RECEIPT_NE_EXTERNAL_RECEIVER_ACK",
+    "LOCAL_IS_NOT_LANDED",
+    "VALIDATION_IS_NOT_ACCEPTANCE",
+    "NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF",
+    "NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE",
+    "HASHING_IS_NOT_SEMANTIC_INGESTION",
+    "DISCOVERED_SET_IS_NOT_COMPLETE_HISTORY"
+  ]
+}
