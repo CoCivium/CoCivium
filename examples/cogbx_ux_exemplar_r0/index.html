@@ -74,6 +74,7 @@ a{color:inherit}
 .actions button{flex:1}
 .actions button:disabled{opacity:.55;cursor:not-allowed}
 .notice{font-size:12px;color:var(--muted)}
+.inspect{border-color:#51647a}.inspect summary{cursor:pointer;font-weight:700;color:#e4f0f5}.inspect summary:focus-visible{outline:2px solid #c6d9ea;outline-offset:3px}.machine-proof{margin:12px 0 0;padding:12px;max-height:290px;overflow:auto;white-space:pre-wrap;overflow-wrap:anywhere;background:#091017;border:1px solid #354859;border-radius:10px;color:#c7ebdf;font:12px/1.5 ui-monospace,SFMono-Regular,Consolas,monospace}.inspect-note{font-size:12px;color:var(--muted)}
 .textview{display:none;padding:18px}
 .textview h1{font-size:22px}
 .textview section{max-width:760px;margin:0 auto 22px}
@@ -200,6 +201,12 @@ footer{padding:10px 16px;color:var(--muted);font-size:12px;border-top:1px solid 
         <h3>Why this projection</h3>
         <p id="focusText" role="status" aria-live="polite">One calm surface carries identity, uncertainty, next action and recovery. Deeper evidence stays available without being permanently visible.</p>
       </section>
+
+      <details class="card inspect">
+        <summary>Inspect the work behind this view</summary>
+        <p class="inspect-note">The same source packet drives the machine and accessible text readbacks. This is synthetic offline data, not observed X2 health, a real AI agent, or an authorized external effect.</p>
+        <pre id="machineProof" class="machine-proof" aria-label="Read-only machine state packet"></pre>
+      </details>
     </aside>
 
     <article class="textview" aria-label="Accessible text projection">
@@ -217,6 +224,13 @@ footer{padding:10px 16px;color:var(--muted);font-size:12px;border-top:1px solid 
         <p>Unknown is not zero. A missing or stale embodiment does not erase the work object.</p>
         <h2>Recover</h2>
         <p>Reconstruct from durable identity, evidence pointers, currentness and receipts rather than from the continued existence of a browser tab.</p>
+      </section>
+      <section>
+        <details class="card inspect">
+          <summary>Inspect the exact same read-only source packet</summary>
+          <p class="inspect-note">A synthetic fixture shared with the Orb/Map inspection drawer. Critical uncertainty and permission limits remain visible outside the drawer.</p>
+          <pre id="textMachineProof" class="machine-proof" aria-label="Accessible machine state packet"></pre>
+        </details>
       </section>
     </article>
   </main>
@@ -243,6 +257,26 @@ footer{padding:10px 16px;color:var(--muted);font-size:12px;border-top:1px solid 
   const focusText = document.getElementById("focusText");
   const acceptBtn = document.getElementById("acceptBtn");
   const undoBtn = document.getElementById("undoBtn");
+  // One deliberately synthetic, immutable source packet, rendered in two
+  // embodiments without opening a provider, contacting a service or claiming
+  // remote state. The human UI is useful without knowing this schema.
+  const sourcePacket = Object.freeze({
+    schema: "CoGbx.SurfaceParity.R1",
+    work_id: "cogbx:synthetic:one-work",
+    work_revision: 1,
+    evidence_class: "SYNTHETIC_OFFLINE_FIXTURE",
+    source_pointer: "examples/cogbx_ux_exemplar_r0/index.html",
+    currentness: "FIXTURE_ONLY",
+    real_device_observation: "NOT_PERFORMED",
+    remote_receiver: "UNKNOWN",
+    predicted_next: "CANDIDATE_NOT_OBSERVATION",
+    authority: "LOCAL_REVERSIBLE_INPUT_ONLY",
+    external_effects: 0,
+    provider_calls: 0
+  });
+  const machineReadback = JSON.stringify(sourcePacket, null, 2);
+  document.getElementById("machineProof").textContent = machineReadback;
+  document.getElementById("textMachineProof").textContent = machineReadback;
   const originalGhostText = ghost.textContent;
   let acceptedSnapshot = null;
   const addition = " → compare recovery before materialization";
