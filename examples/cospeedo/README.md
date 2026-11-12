@@ -65,4 +65,6 @@ The portable [CoCurrentnessGate R0 source](../../scripts/CoCurrentnessGateR0.py)
 
 **New verified source-side result (2026-11-12 UTC):** [GitHub Actions source regression run 43128120567](https://github.com/CoCivium/CoCivium/actions/runs/43128120567) completed with **15/15 synthetic tests passing**. Its [typed CoLocal proof pointer](../../ai/currentness/colocal-cospeedo-currentness-ci-r0-20261112.json) records the source commit, job, evidence artifact and nonclaims. This does **not** mean the receiver was recovered, independently acknowledged, or integrated into the daily brief.
 
+**CoMap cross-front source consumption:** The [versioned CoMap R1 source graph](../../ai/comap-colocal-currentness-projection-r1.json) now references this CI evidence as a typed source-side candidate. The [actual R1 consumer CI run](https://github.com/CoCivium/CoCivium/actions/runs/43131972116) passed pinned-source and 15 synthetic checks. This is **source-graph reuse**, not CoSpeedo live receiver pickup or X2 repair.
+
 **Next:** qualify a trusted live process probe on X2, then test a versioned successor without altering the scheduled predecessor; preserve negative and positive receipts.
