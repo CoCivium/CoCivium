@@ -106,6 +106,13 @@ test("CoMegaScroller reader parity: saved HTML exactly matches three pinned inpu
   assert.equal(rendered,fs.readFileSync(path.join(root,"examples/comap/megascroller-r0.html"),"utf8"));
   assert.match(rendered,/One source spine/);
 });
+test("CoMegaScroller metadata and relation cards wrap intrinsically on mobile",()=>{
+  const html=generateMegaScroller(graph,overlay,retro,megaPins);
+  assert.match(html,/\.contents\{[^}]*min-width:0\}/);
+  assert.match(html,/\.card\{[^}]*min-width:0;overflow-wrap:anywhere\}/);
+  assert.match(html,/\.meta\{[^}]*overflow-wrap:anywhere\}/);
+  assert.match(html,/PROPOSED_PROJECTION_FAMILY/);
+});
 test("CoMegaScroller long relation labels wrap without clipping source text",()=>{
   const rendered=generateMegaScroller(graph,overlay,retro,megaPins);
   assert.match(rendered,/\.edges li\{margin:\.4rem 0;min-width:0;overflow-wrap:anywhere\}/);
