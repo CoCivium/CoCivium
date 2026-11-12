@@ -1,0 +1,149 @@
+{
+  "schema": "CoBranchDonorPickup.PR151.R0D.v0.1-candidate",
+  "state": "EXACT_DONOR_MANIFEST_LANDED__HOST_RECEIVER_PICKUP_PENDING__NO_MERGE_NO_CLOSE_NO_CANON",
+  "repository": "CoCivium/CoCivium",
+  "host": {
+    "pr": 150,
+    "branch": "candidate/coall-branchfield-r0-20261003",
+    "role": "CANDIDATE_BRANCH_RELATION_HOST",
+    "receiver_identity": "github-actions:PR150_PR151_DONOR_PICKUP_R0D",
+    "authority": "READ_ONLY_DONOR_PICKUP__NO_MERGE_NO_CLOSE_NO_BRANCH_MUTATION"
+  },
+  "donor": {
+    "pr": 151,
+    "branch": "candidate/coall-bounded-discovery-projection-r0-20261003",
+    "exact_head_sha": "14749870cdeec138679852e8c339c16ab95524b4",
+    "title": "CoAll bounded discovery + projection ecology R0",
+    "relation_to_host": "CANDIDATE_FANIN_TO",
+    "objects": [
+      {
+        "Identity": "pr151:architecture-doc",
+        "Provenance": {
+          "pr": 151,
+          "head_sha": "14749870cdeec138679852e8c339c16ab95524b4",
+          "path": "docs/Architecture/COALL_BOUNDED_DISCOVERY_PROJECTION_R0.md"
+        },
+        "ContentHash": "gitblob-sha1:23a683c95a38a7d219167b9b81883fa33460b454",
+        "LifecycleState": "LANDED_PUBLIC_CANDIDATE_BRANCH",
+        "Authority": "DONOR_CANDIDATE_ONLY",
+        "Owner": "CoCivium/CoCivium#151",
+        "Receiver": "github-actions:PR150_PR151_DONOR_PICKUP_R0D",
+        "Dependencies": [],
+        "CollisionDomain": "coall-branchfield-frontier-convergence",
+        "DuplicateOf": null,
+        "Supersedes": null,
+        "VisibleSurface": "PR151:docs/Architecture/COALL_BOUNDED_DISCOVERY_PROJECTION_R0.md",
+        "ProofGate": "Receiver must read exact donor head and exact git blob, then emit SHA-256 readproof",
+        "NextDeed": "Preserve selected donor deltas on PR150 relation surface without claiming integration",
+        "RetirementCondition": "Exact pickup alone is insufficient; preserve lineage/negative knowledge/wake conditions and prove no unresolved unique proof lane"
+      },
+      {
+        "Identity": "pr151:fixture",
+        "Provenance": {
+          "pr": 151,
+          "head_sha": "14749870cdeec138679852e8c339c16ab95524b4",
+          "path": "fixtures/relations/coall_bounded_discovery_projection_r0.json"
+        },
+        "ContentHash": "gitblob-sha1:0318bda319baeffb30b8e69758e6571d5c59b7f1",
+        "LifecycleState": "LANDED_PUBLIC_CANDIDATE_BRANCH",
+        "Authority": "DONOR_CANDIDATE_ONLY",
+        "Owner": "CoCivium/CoCivium#151",
+        "Receiver": "github-actions:PR150_PR151_DONOR_PICKUP_R0D",
+        "Dependencies": ["pr151:architecture-doc"],
+        "CollisionDomain": "coall-branchfield-frontier-convergence",
+        "DuplicateOf": null,
+        "Supersedes": null,
+        "VisibleSurface": "PR151:fixtures/relations/coall_bounded_discovery_projection_r0.json",
+        "ProofGate": "Receiver must read exact donor head and exact git blob, then emit SHA-256 readproof",
+        "NextDeed": "Verify donor boundary remains no runtime/public effect",
+        "RetirementCondition": "Same as donor architecture object"
+      },
+      {
+        "Identity": "pr151:validator",
+        "Provenance": {
+          "pr": 151,
+          "head_sha": "14749870cdeec138679852e8c339c16ab95524b4",
+          "path": "tools/validate_coall_bounded_discovery_projection_r0.py"
+        },
+        "ContentHash": "gitblob-sha1:321dc3eb907fea29b0f5d89f55a9a9c94a0f3e1a",
+        "LifecycleState": "LANDED_PUBLIC_CANDIDATE_BRANCH",
+        "Authority": "DONOR_CANDIDATE_ONLY",
+        "Owner": "CoCivium/CoCivium#151",
+        "Receiver": "github-actions:PR150_PR151_DONOR_PICKUP_R0D",
+        "Dependencies": ["pr151:fixture"],
+        "CollisionDomain": "coall-branchfield-frontier-convergence",
+        "DuplicateOf": null,
+        "Supersedes": null,
+        "VisibleSurface": "PR151:tools/validate_coall_bounded_discovery_projection_r0.py",
+        "ProofGate": "Receiver must read exact donor head and exact git blob, then emit SHA-256 readproof",
+        "NextDeed": "Retain validation lineage as donor evidence",
+        "RetirementCondition": "Same as donor architecture object"
+      },
+      {
+        "Identity": "pr151:workflow",
+        "Provenance": {
+          "pr": 151,
+          "head_sha": "14749870cdeec138679852e8c339c16ab95524b4",
+          "path": ".github/workflows/coall-bounded-discovery-projection-r0.yml"
+        },
+        "ContentHash": "gitblob-sha1:dabc2ee272394ad893353fd7e68721b8b3f9bf6e",
+        "LifecycleState": "LANDED_PUBLIC_CANDIDATE_BRANCH",
+        "Authority": "DONOR_CANDIDATE_ONLY",
+        "Owner": "CoCivium/CoCivium#151",
+        "Receiver": "github-actions:PR150_PR151_DONOR_PICKUP_R0D",
+        "Dependencies": ["pr151:validator"],
+        "CollisionDomain": "coall-branchfield-frontier-convergence",
+        "DuplicateOf": null,
+        "Supersedes": null,
+        "VisibleSurface": "PR151:.github/workflows/coall-bounded-discovery-projection-r0.yml",
+        "ProofGate": "Receiver must read exact donor head and exact git blob, then emit SHA-256 readproof",
+        "NextDeed": "Retain executable proof lineage without copying donor branch wholesale",
+        "RetirementCondition": "Same as donor architecture object"
+      }
+    ],
+    "selected_donor_deltas": [
+      "POTENTIAL_RELATION_NE_INSTANTIATED_RELATION",
+      "COOMNI_NE_EVERY_RELATION_AT_ONCE",
+      "MOVE_OFF_X2_NE_MOVE_TO_ONE_NEW_ROOT",
+      "CANDIDATE_RECEIVER_NE_OUTREACH_AUTHORITY",
+      "COUNTDOWN_NE_RELEASE_AUTHORITY"
+    ],
+    "negative_knowledge_to_preserve": [
+      "METAPHYSICAL_MODEL_NE_ESTABLISHED_REALITY",
+      "CHEAP_TO_GENERATE_NE_CHEAP_TO_VERIFY",
+      "SUMMONABLE_NE_USEFUL",
+      "BUDGET_NE_MONEY_ONLY",
+      "WALLET_NAME_NE_BALANCE_PROOF"
+    ],
+    "wake_relation_to_preserve": "WAKE_ON_DELTA",
+    "runtime_effect_expected": false,
+    "public_effect_expected": false
+  },
+  "post_pickup_status": {
+    "allowed_claim": "PICKED_UP_BY_PR150_DONOR_RECEIVER",
+    "integration_inferred": false,
+    "branch_retirement_authorized": false,
+    "branch_close_authorized": false,
+    "merge_authorized": false,
+    "canon_inferred": false
+  },
+  "coverage_boundary": [
+    "PR151_CURRENT_HEAD_MUST_EQUAL_MANIFEST_HEAD_AT_RECEIVER_RUN_TIME",
+    "FOUR_PR151_CHANGED_OBJECTS_READ_FROM_EXACT_HEAD",
+    "SELECTED_DONOR_DELTAS_CHECKED_FOR_EXACT_TEXT_PRESENCE",
+    "NEGATIVE_KNOWLEDGE_CHECKED_FOR_EXACT_TEXT_PRESENCE",
+    "DONOR_FIXTURE_RUNTIME_AND_PUBLIC_EFFECT_FLAGS_CHECKED_FALSE",
+    "NO_FULL_SEMANTIC_REVIEW_BEYOND_MANIFESTED_OBJECTS"
+  ],
+  "nonclaims": [
+    "FANIN_RELATION_NE_CONTENT_TRANSFER",
+    "DONOR_MANIFEST_NE_RECEIVER_PICKUP",
+    "PICKUP_NE_INTEGRATION",
+    "PICKUP_NE_BRANCH_RETIREMENT",
+    "RETIREMENT_CANDIDATE_NE_RETIREMENT_AUTHORITY",
+    "BRANCH_CLOSE_NE_HISTORY_ERASURE",
+    "NO_NEWEST_WINS",
+    "VALIDATION_IS_NOT_ACCEPTANCE",
+    "NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE"
+  ]
+}

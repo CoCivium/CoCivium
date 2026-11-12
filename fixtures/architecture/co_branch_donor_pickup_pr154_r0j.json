@@ -1,0 +1,174 @@
+{
+  "schema": "CoBranchDonorPickup.PR154.R0J.v0.1-candidate",
+  "state": "EXACT_DONOR_MANIFEST_LANDED__HOST_RECEIVER_PICKUP_PENDING__NO_MERGE_NO_CLOSE_NO_CANON",
+  "repository": "CoCivium/CoCivium",
+  "host": {
+    "pr": 150,
+    "branch": "candidate/coall-branchfield-r0-20261003",
+    "role": "CANDIDATE_BRANCH_RELATION_HOST",
+    "receiver_identity": "github-actions:PR150_PR154_DONOR_PICKUP_R0J",
+    "authority": "READ_ONLY_DONOR_PICKUP__NO_MERGE_NO_CLOSE_NO_BRANCH_MUTATION"
+  },
+  "donor": {
+    "pr": 154,
+    "branch": "candidate/cogenex-virtualsubstrate-convergespiral-r0-20261004",
+    "exact_head_sha": "b0ad15e850a59b1e24d955e8818561b3e258ef93",
+    "title": "CoGenExIs+ / CoVirtualSubstrate+ / CoConvergeSpiralLoop+ R0",
+    "relation_to_host": "DONATES_GENEXIS_VIRTUAL_SUBSTRATE_SPIRAL_RELATIONS_TO",
+    "objects": [
+      {
+        "Identity": "pr154:workflow",
+        "Provenance": {
+          "pr": 154,
+          "head_sha": "b0ad15e850a59b1e24d955e8818561b3e258ef93",
+          "path": ".github/workflows/cogenex-virtualsubstrate-convergespiral-r0.yml"
+        },
+        "ContentHash": "gitblob-sha1:45a1184d179ceaffc96851651427f353b66bf9f8",
+        "LifecycleState": "LANDED_PUBLIC_CANDIDATE_BRANCH",
+        "Authority": "DONOR_CANDIDATE_ONLY",
+        "Owner": "CoCivium/CoCivium#154",
+        "Receiver": "github-actions:PR150_PR154_DONOR_PICKUP_R0J",
+        "Dependencies": [],
+        "CollisionDomain": "coall-branchfield-frontier-convergence",
+        "DuplicateOf": null,
+        "Supersedes": null,
+        "VisibleSurface": "PR154:.github/workflows/cogenex-virtualsubstrate-convergespiral-r0.yml",
+        "ProofGate": "Receiver must read exact donor head and exact git blob, then emit SHA-256 exact-object readproof",
+        "NextDeed": "Retain executable validation lineage",
+        "RetirementCondition": "Pickup alone is insufficient; preserve lineage, negative knowledge, wake conditions, and prove no unresolved unique proof lane before any close or retirement decision"
+      },
+      {
+        "Identity": "pr154:architecture-doc",
+        "Provenance": {
+          "pr": 154,
+          "head_sha": "b0ad15e850a59b1e24d955e8818561b3e258ef93",
+          "path": "docs/Architecture/COGENEX_VIRTUAL_SUBSTRATE_CONVERGE_SPIRAL_R0.md"
+        },
+        "ContentHash": "gitblob-sha1:3f7b275dc0ce71dbe07eed9e773b68d323f85b83",
+        "LifecycleState": "LANDED_PUBLIC_CANDIDATE_BRANCH",
+        "Authority": "DONOR_CANDIDATE_ONLY",
+        "Owner": "CoCivium/CoCivium#154",
+        "Receiver": "github-actions:PR150_PR154_DONOR_PICKUP_R0J",
+        "Dependencies": [],
+        "CollisionDomain": "coall-branchfield-frontier-convergence",
+        "DuplicateOf": null,
+        "Supersedes": null,
+        "VisibleSurface": "PR154:docs/Architecture/COGENEX_VIRTUAL_SUBSTRATE_CONVERGE_SPIRAL_R0.md",
+        "ProofGate": "Receiver must read exact donor head and exact git blob, then emit SHA-256 exact-object readproof",
+        "NextDeed": "Preserve distinct epistemic-boundedness, glyph, spiral, inventory, and finance rails",
+        "RetirementCondition": "Pickup alone is insufficient; preserve lineage, negative knowledge, wake conditions, and prove no unresolved unique proof lane before any close or retirement decision"
+      },
+      {
+        "Identity": "pr154:fixture",
+        "Provenance": {
+          "pr": 154,
+          "head_sha": "b0ad15e850a59b1e24d955e8818561b3e258ef93",
+          "path": "fixtures/relations/cogenex_virtualsubstrate_convergespiral_r0.json"
+        },
+        "ContentHash": "gitblob-sha1:dd093adc6c6cd84454007384d01cb17fa592e633",
+        "LifecycleState": "LANDED_PUBLIC_CANDIDATE_BRANCH",
+        "Authority": "DONOR_CANDIDATE_ONLY",
+        "Owner": "CoCivium/CoCivium#154",
+        "Receiver": "github-actions:PR150_PR154_DONOR_PICKUP_R0J",
+        "Dependencies": [],
+        "CollisionDomain": "coall-branchfield-frontier-convergence",
+        "DuplicateOf": null,
+        "Supersedes": null,
+        "VisibleSurface": "PR154:fixtures/relations/cogenex_virtualsubstrate_convergespiral_r0.json",
+        "ProofGate": "Receiver must read exact donor head and exact git blob, then emit SHA-256 exact-object readproof",
+        "NextDeed": "Verify effect and epistemic boundaries remain false or unproven",
+        "RetirementCondition": "Pickup alone is insufficient; preserve lineage, negative knowledge, wake conditions, and prove no unresolved unique proof lane before any close or retirement decision"
+      },
+      {
+        "Identity": "pr154:validator",
+        "Provenance": {
+          "pr": 154,
+          "head_sha": "b0ad15e850a59b1e24d955e8818561b3e258ef93",
+          "path": "tools/validate_cogenex_virtualsubstrate_convergespiral_r0.py"
+        },
+        "ContentHash": "gitblob-sha1:95d94d6e71abef53d6f8fdf43439aa1dc592b69f",
+        "LifecycleState": "LANDED_PUBLIC_CANDIDATE_BRANCH",
+        "Authority": "DONOR_CANDIDATE_ONLY",
+        "Owner": "CoCivium/CoCivium#154",
+        "Receiver": "github-actions:PR150_PR154_DONOR_PICKUP_R0J",
+        "Dependencies": [],
+        "CollisionDomain": "coall-branchfield-frontier-convergence",
+        "DuplicateOf": null,
+        "Supersedes": null,
+        "VisibleSurface": "PR154:tools/validate_cogenex_virtualsubstrate_convergespiral_r0.py",
+        "ProofGate": "Receiver must read exact donor head and exact git blob, then emit SHA-256 exact-object readproof",
+        "NextDeed": "Retain unique validator lane",
+        "RetirementCondition": "Pickup alone is insufficient; preserve lineage, negative knowledge, wake conditions, and prove no unresolved unique proof lane before any close or retirement decision"
+      }
+    ],
+    "selected_donor_deltas": [
+      "PREDICTABILITY_NE_DESIRABILITY_OF_TOTAL_FOREKNOWLEDGE",
+      "CLI_NE_PRIMARY_HUMAN_UX",
+      "GLYPH_NE_AUTHORITY",
+      "MORE_DENSE_NE_MORE_USEFUL",
+      "RETURN_WITHOUT_DELTA_NE_REASON_TO_REPEAT",
+      "COOPS_AND_COMYTHOPS_CAN_INTEROPERATE_WITHOUT_COLLAPSE",
+      "INVENTORY_NE_ACTIVE_BACKLOG",
+      "MODELLED_WARCHHEST_NE_VERIFIED_BALANCE"
+    ],
+    "negative_knowledge_to_preserve": [
+      "DEATH_NE_PROVEN_REINTEGRATION",
+      "PRELIFE_NE_PROVEN_STATE",
+      "RECURSION_NE_SENTIENCE",
+      "CONVERGENCE_NE_FINAL_TRUTH",
+      "FORECAST_NE_TRADE",
+      "HIDDEN_IMPLEMENTATION_NE_UNINSPECTABLE_IMPLEMENTATION"
+    ],
+    "unique_proof_lane": "EXECUTABLE_COGENEX_VIRTUALSUBSTRATE_CONVERGESPIRAL_VALIDATOR",
+    "retirement_eligible_now": false
+  },
+  "convergence_relation": {
+    "overlap_with_host": [
+      "BOUNDED_DISCOVERY",
+      "VIRTUAL_CLI",
+      "SUBSTRATE_COMPRESSION",
+      "PAYLOAD_DENSITY",
+      "BUDGET_RELATIONS",
+      "CONVERGENT_LOOPING",
+      "COOPS_COMYTHOPS_TYPED_INTEROP"
+    ],
+    "distinct_pr154": [
+      "EPISTEMIC_BOUNDEDNESS_AS_DISCOVERY_CONDITION_HYPOTHESIS",
+      "SUBSTRATE_GLYPH_BOUNDARY_SEMANTICS",
+      "CONVERGING_SPIRAL_WITH_QUIESCENCE",
+      "LAZY_RELATIONAL_INVENTORY_LIFECYCLE",
+      "MODELLED_WARCHHEST_NE_VERIFIED_BALANCE_FINANCE_RAIL"
+    ],
+    "relation_policy": "RELATE_AND_PICK_UP_EXACT_DONOR_OBJECTS_WITHOUT_WHOLE_BRANCH_COPY_OR_RETIREMENT"
+  },
+  "post_pickup_status": {
+    "allowed_claim": "PICKED_UP_BY_PR150_PR154_DONOR_RECEIVER",
+    "integration_inferred": false,
+    "branch_retirement_authorized": false,
+    "branch_close_authorized": false,
+    "merge_authorized": false,
+    "canon_inferred": false
+  },
+  "coverage_boundary": [
+    "PR154_CURRENT_HEAD_MUST_EQUAL_MANIFEST_HEAD_AT_RECEIVER_RUN_TIME",
+    "FOUR_PR154_CHANGED_OBJECTS_READ_FROM_EXACT_HEAD",
+    "SELECTED_DONOR_DELTAS_CHECKED_FOR_EXACT_TEXT_PRESENCE",
+    "NEGATIVE_KNOWLEDGE_CHECKED_FOR_EXACT_TEXT_PRESENCE",
+    "DONOR_FIXTURE_EFFECT_AND_EPISTEMIC_BOUNDARIES_CHECKED",
+    "NO_FULL_SEMANTIC_REVIEW_BEYOND_MANIFESTED_OBJECTS",
+    "UNIQUE_PROOF_LANE_REMAINS_ACTIVE"
+  ],
+  "nonclaims": [
+    "FANIN_RELATION_NE_CONTENT_TRANSFER",
+    "DONOR_MANIFEST_NE_RECEIVER_PICKUP",
+    "PICKUP_NE_INTEGRATION",
+    "PICKUP_NE_BRANCH_RETIREMENT",
+    "OVERLAP_NE_DUPLICATE",
+    "DISTINCT_DELTA_NE_CANON",
+    "RETIREMENT_CANDIDATE_NE_RETIREMENT_AUTHORITY",
+    "BRANCH_CLOSE_NE_HISTORY_ERASURE",
+    "NO_NEWEST_WINS",
+    "VALIDATION_IS_NOT_ACCEPTANCE",
+    "NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE"
+  ]
+}

@@ -1,0 +1,154 @@
+{
+  "schema": "CoBranchConvergenceDisposition.R0C",
+  "state": "CANDIDATE_DISPOSITION_MAP__NO_MERGE_NO_CLOSE_NO_CANON_NO_RUNTIME_AUTHORITY",
+  "repository": "CoCivium/CoCivium",
+  "host": {
+    "pr": 150,
+    "role": "CANDIDATE_BRANCH_RELATION_HOST",
+    "observed_pre_mutation_head_sha": "c16b3c53b22dd2358ba4b745a4b6be2be952669f",
+    "canon_state": "UNPROVEN",
+    "superseder": false
+  },
+  "members": [
+    {
+      "pr": 146,
+      "head_sha": "707d0d923f1cf77e82f6478295d5df83f7947a97",
+      "title": "CoSneak+ / CoQ&A+ / GTRAIL+ R0: hidden friction and living trace relations",
+      "semantic_review_scope": "PR_BODY_AND_FILE_SURFACE",
+      "disposition": "KEEP_ACTIVE_PROOF_DONOR",
+      "relation_to_host": "DONATES_GUARDRAILS_TO",
+      "retirement_eligible_now": false,
+      "reason": "Q40 changed-contract local recurring-deed proof remains open; branch also carries question metabolism, hidden-friction and failure-domain guardrails.",
+      "donor_deltas": [
+        "DURABLE_QUESTION_NE_PERMANENT_ACTIVE_LOOP",
+        "FAILURE_DOMAIN_LABEL_NE_FAILURE_DOMAIN_PROOF",
+        "LOCAL_ROUTE_NE_PROVIDER_EXIT_COMPLETE",
+        "STRICT_OUTPUT_PASS_NE_SEMANTIC_ACCEPTANCE",
+        "ONE_CHANGED_CONTRACT_ATTEMPT_NE_RETRY_LOOP"
+      ],
+      "next_gate": "RUN_AT_MOST_ONE_CHANGED_CONTRACT_LOCAL_CANARY_THEN_APPLY_EXISTING_SEMANTIC_VERIFIER"
+    },
+    {
+      "pr": 147,
+      "head_sha": "b0d3c233df053763cf55a8abd78966bf08a39a8d",
+      "title": "CoGenEx+ R0: bounded discovery, CoTime, CoExOS, CoStonk and CoBudget relations",
+      "semantic_review_scope": "PR_BODY_AND_FILE_SURFACE",
+      "disposition": "STABLE_SPECIALIZED_DONOR",
+      "relation_to_host": "DONATES_EXECUTION_PROJECTION_POLICY_TO",
+      "retirement_eligible_now": false,
+      "reason": "Distinct virtual-command-surface policy and bounded-discovery theory remain useful specialized evidence even where concepts overlap PR148/150.",
+      "donor_deltas": [
+        "CLI_NE_PRIMARY_UX",
+        "VIRTUAL_NE_NONPHYSICAL",
+        "BREAK_GLASS_NE_DEFAULT",
+        "USER_NE_COMMAND_RELAY",
+        "ROUTED_NE_EXECUTED"
+      ],
+      "next_gate": "RELATE_SPECIALIZED_EXECUTION_PROJECTION_DELTAS_WITHOUT_ERASING_SOURCE_BRANCH"
+    },
+    {
+      "pr": 148,
+      "head_sha": "03b3fd111b31e7f7f16acf6070595b6956bd92d2",
+      "title": "CoBoundedDiscovery+ / Virtual CLI / CoBudget+ R0",
+      "semantic_review_scope": "PR_BODY_AND_FILE_SURFACE",
+      "disposition": "KEEP_SPECIALIZED_UX_DONOR",
+      "relation_to_host": "DONATES_EXECUTABLE_UX_POLICY_TO",
+      "retirement_eligible_now": false,
+      "reason": "Carries executable payload-density, CoConvergeSpiralLoop, CoTrill, inventory and virtual-substrate canaries that should remain addressable as specialized donors.",
+      "donor_deltas": [
+        "PAYLOAD_DENSITY_NE_COMPRESSION_RATIO",
+        "SPIRAL_NE_CIRCULAR_REPETITION",
+        "BLEND_NE_COLLAPSE",
+        "INVENTORY_INCLUSION_NE_LIFECYCLE_PROMOTION",
+        "VISIBLE_TEXT_NE_TOTAL_RELATIONAL_CONTEXT"
+      ],
+      "next_gate": "RELATE_EXECUTABLE_UX_CANARIES_TO_BRANCHFIELD_WITHOUT_COPYING_WHOLE_BRANCH"
+    },
+    {
+      "pr": 149,
+      "head_sha": "77e3feddacbbdf1301ad2c0f4e85808581c94d8b",
+      "title": "CoAllEvo+ R0: CoGenExIs, virtual CLI, substrate density and convergent loops",
+      "semantic_review_scope": "PR_BODY_AND_FILE_SURFACE",
+      "disposition": "SYNTHESIS_DONOR_CANDIDATE",
+      "relation_to_host": "CANDIDATE_FANIN_TO",
+      "retirement_eligible_now": false,
+      "reason": "High-overlap synthesis branch with a compact cross-domain architecture surface; candidate for later retirement only after exact donor manifest, receiver pickup, lineage preservation and wake-condition retention.",
+      "donor_deltas": [
+        "BOUNDED_DISCOVERY_SYNTHESIS",
+        "VIRTUAL_CLI_SYNTHESIS",
+        "SUBSTRATE_DENSITY_SYNTHESIS",
+        "CONVERGENT_LOOP_SYNTHESIS"
+      ],
+      "next_gate": "PRODUCE_EXACT_DONOR_DELTA_MANIFEST_AND_HOST_RECEIVER_READPROOF_BEFORE_ANY_CLOSE_DECISION"
+    },
+    {
+      "pr": 151,
+      "head_sha": "14749870cdeec138679852e8c339c16ab95524b4",
+      "title": "CoAll bounded discovery + projection ecology R0",
+      "semantic_review_scope": "PR_BODY_AND_CORE_ARTIFACT_SURFACE",
+      "disposition": "FANIN_RELATION_ESTABLISHED__RETIREMENT_NOT_YET_PROVEN",
+      "relation_to_host": "CANDIDATE_FANIN_TO",
+      "retirement_eligible_now": false,
+      "reason": "PR150 already records the donor relation and retained deltas, but relation registration is not exact receiver pickup and therefore is insufficient for branch retirement.",
+      "donor_deltas": [
+        "POTENTIAL_RELATION_NE_INSTANTIATED_RELATION",
+        "COOMNI_NE_EVERY_RELATION_AT_ONCE",
+        "MOVE_OFF_X2_NE_MOVE_TO_ONE_NEW_ROOT",
+        "CANDIDATE_RECEIVER_NE_OUTREACH_AUTHORITY",
+        "COUNTDOWN_NE_RELEASE_AUTHORITY"
+      ],
+      "next_gate": "PROVE_EXACT_DONOR_DELTA_PICKUP_BY_HOST_RECEIVER_AND_PRESERVE_LINEAGE_BEFORE_RETIREMENT"
+    }
+  ],
+  "convergence_ladder": [
+    "DISCOVER_BRANCH",
+    "REFRESH_CURRENT_HEAD",
+    "SEMANTICALLY_REVIEW_BOUNDED_SURFACE",
+    "CLASSIFY_OVERLAP_AND_COLLISION_DOMAIN",
+    "RELATE_TO_HOST_OR_KEEP_ISOLATED",
+    "MANIFEST_EXACT_DONOR_DELTAS",
+    "RECEIVER_EXACT_OBJECT_READPROOF",
+    "PRESERVE_LINEAGE_NEGATIVE_KNOWLEDGE_AND_WAKE_CONDITIONS",
+    "ONLY_THEN_CONSIDER_BRANCH_RETIREMENT"
+  ],
+  "retirement_proof_contract": {
+    "requires_exact_donor_manifest": true,
+    "requires_host_receiver_readproof": true,
+    "requires_lineage_pointer": true,
+    "requires_negative_knowledge_preservation": true,
+    "requires_wake_condition_preservation": true,
+    "requires_no_unresolved_unique_proof_lane": true,
+    "close_authorized_by_this_contract": false
+  },
+  "branch_creation_policy": {
+    "relate_before_branch": true,
+    "reuse_existing_compatible_host": true,
+    "new_branch_requires_distinct_collision_domain_or_independent_canary": true,
+    "conceptual_branch_ne_git_branch": true,
+    "branch_count_target": null,
+    "zero_open_branches_is_goal": false
+  },
+  "coverage_boundary": [
+    "PRS_146_147_148_149_151_REVIEWED_FROM_CURRENT_PR_BODY_AND_FILE_SURFACE",
+    "PR150_HOST_CURRENTNESS_OBSERVED_BEFORE_THIS_MUTATION",
+    "NO_FULL_SEMANTIC_REVIEW_OF_EVERY_FILE_IN_DONOR_BRANCHES",
+    "NO_CLOSED_PR_CENSUS",
+    "NO_OTHER_REPOSITORY_CENSUS",
+    "NO_BRANCH_WITHOUT_OPEN_PR_CENSUS"
+  ],
+  "nonclaims": [
+    "DISPOSITION_NE_MERGE",
+    "DISPOSITION_NE_CLOSE",
+    "FANIN_RELATION_NE_CONTENT_TRANSFER",
+    "DONOR_MANIFEST_NE_RECEIVER_PICKUP",
+    "PICKUP_NE_INTEGRATION",
+    "RETIREMENT_CANDIDATE_NE_RETIREMENT_AUTHORITY",
+    "BRANCH_CLOSE_NE_HISTORY_ERASURE",
+    "CONCEPTUAL_BRANCH_NE_GIT_BRANCH",
+    "OPEN_PR_NE_ACTIVE_WORK",
+    "PR_COUNT_NE_PROGRESS",
+    "NO_NEWEST_WINS",
+    "VALIDATION_IS_NOT_ACCEPTANCE",
+    "NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE"
+  ]
+}

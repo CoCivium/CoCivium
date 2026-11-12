@@ -1,0 +1,80 @@
+name: CoCatchUp Delta Surface R0
+
+on:
+  pull_request:
+    paths:
+      - "docs/Architecture/COCATCHUP_DELTA_SURFACE_R0.md"
+      - "fixtures/architecture/cocatchup_delta_surface_r0.json"
+      - "tools/compile_cocatchup_delta_surface_r0.py"
+      - "tools/project_cocatchup_ux_r0.py"
+      - ".github/workflows/cocatchup-delta-surface-r0.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+  pull-requests: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  observe:
+    runs-on: ubuntu-latest
+    outputs:
+      delta_artifact_id: ${{ steps.upload_delta.outputs.artifact-id }}
+      delta_artifact_digest: ${{ steps.upload_delta.outputs.artifact-digest }}
+      delta_artifact_url: ${{ steps.upload_delta.outputs.artifact-url }}
+    steps:
+      - name: Check out exact candidate head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile live currentness delta surface
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python tools/compile_cocatchup_delta_surface_r0.py --output artifacts/cocatchup-delta-surface-r0.json
+      - name: Upload delta surface receipt
+        id: upload_delta
+        uses: actions/upload-artifact@v4
+        with:
+          name: cocatchup-delta-surface-r0
+          path: artifacts/cocatchup-delta-surface-r0.json
+          if-no-files-found: error
+          retention-days: 30
+
+  project:
+    needs: observe
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out exact candidate head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Download exact delta receipt
+        uses: actions/download-artifact@v4
+        with:
+          name: cocatchup-delta-surface-r0
+          path: source-artifact
+      - name: Project quiet currentness UX from exact receipt
+        env:
+          SOURCE_ARTIFACT_ID: ${{ needs.observe.outputs.delta_artifact_id }}
+          SOURCE_ARTIFACT_DIGEST: ${{ needs.observe.outputs.delta_artifact_digest }}
+          SOURCE_ARTIFACT_URL: ${{ needs.observe.outputs.delta_artifact_url }}
+        run: python tools/project_cocatchup_ux_r0.py --input source-artifact/cocatchup-delta-surface-r0.json --output-json artifacts/cocatchup-ux-projection-r0.json --output-html artifacts/index.html
+      - name: Upload UX projection + receiver readproof
+        uses: actions/upload-artifact@v4
+        with:
+          name: cocatchup-ux-projection-r0
+          path: artifacts/
+          if-no-files-found: error
+          retention-days: 30
