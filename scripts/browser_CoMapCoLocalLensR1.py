@@ -29,16 +29,16 @@ def check(mode, width, height, pw):
     assert '5 of 5 new source-typed relations shown' in page.locator('#count').inner_text()
     assert page.locator('#relations .relation').count() == 5
     assert page.locator('#nodes button').count() == 5
-    page.get_by_role('button', name='Design').click()
+    page.locator('button[data-filter="seed"]').click()
     assert '2 of 5' in page.locator('#count').inner_text()
-    page.get_by_role('button', name='Source CI').click()
+    page.locator('button[data-filter="ci"]').click()
     assert '3 of 5' in page.locator('#count').inner_text()
-    page.get_by_role('button', name='All five').click()
+    page.locator('button[data-filter="all"]').click()
     page.locator('#search').fill('GRAIL')
     assert '1 of 5' in page.locator('#count').inner_text()
-    page.get_by_role('button', name='Reset').click()
+    page.locator('#reset').click()
     assert page.locator('#relations .relation').count() == 5
-    page.get_by_role('button', name='CoLocal CoRelGRAILS candidate Seed').click()
+    page.locator('#nodes button').filter(has_text='CoLocal CoRelGRAILS candidate Seed').first.click()
     assert 'PUBLIC_CANDIDATE_NOT_CANON' in page.locator('#detailStatus').inner_text()
     assert '311fd21f2fbfeca1c70af023dc5fcd0c7ff3e539' in page.locator('#detailLinks a').get_attribute('href')
     assert page.get_by_role('link', name='Original interactive R0').count() == 1
