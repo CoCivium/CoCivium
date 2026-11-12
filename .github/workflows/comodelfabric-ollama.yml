@@ -46,3 +46,5 @@ jobs:
         run: python -B examples/comodelfabric/test_rickbar_continuity_r1.py
       - name: Validate R1 local HTTP persistence and boundary tests
         run: python -B examples/comodelfabric/test_rickbar_local_http_r1.py
+      - name: Validate provider-exit privacy, outages, and continuity readiness
+        run: python -B examples/comodelfabric/test_provider_exit_readiness_r0.py
