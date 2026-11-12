@@ -1,0 +1,93 @@
+{
+  "schema": "CoAll.CoSessionAutocycle.NoDeltaQualification.R1",
+  "work_id": "CO-SESSION-RECOVERY",
+  "record_date_utc": "2026-11-12",
+  "state": "PASS_CROSS_RUN_PUBLIC_SOURCE_QUIESCENCE_ONLY",
+  "scope": "GITHUB_ACTIONS_PRIOR_SUCCESSFUL_ARTIFACT_AND_SAME_PROVIDER_SECOND_JOB",
+  "source": {
+    "repo": "CoCivium/CoCivium",
+    "workset_path": "ai/session-autoturn-public-sources-r1.json",
+    "delta_guard_path": "scripts/CoSessionDeltaGuardR1.py",
+    "delta_guard_blob_sha1": "52cb545228f37f288aa08e0a829b4789d7c9d6fb",
+    "test_path": "tests/test_cosession_delta_guard_r1.py",
+    "test_blob_sha1": "93f1799b992468a55d3e7a528b698bfd2cd306fc",
+    "workflow_path": ".github/workflows/cogoall-unattended-proof-pulse.yml",
+    "workflow_blob_sha1": "0a6f166085af334324ff7a28833bcb01b043da3b",
+    "owner": "https://github.com/CoCivium/CoCivium/issues/317",
+    "related_draft_challenge": "https://github.com/CoCivium/CoCivium/pull/483"
+  },
+  "ci": {
+    "run_id": 43303728280,
+    "run_url": "https://github.com/CoCivium/CoCivium/actions/runs/43303728280",
+    "event": "push",
+    "commit_sha": "491075a080ee07200089bb95b06abf4dfecea8dc",
+    "conclusion": "success",
+    "jobs": [
+      {
+        "name": "proof",
+        "id": 131481364888,
+        "conclusion": "success"
+      },
+      {
+        "name": "pulse-receiver",
+        "id": 131481503036,
+        "conclusion": "success"
+      },
+      {
+        "name": "seed24h-qualification",
+        "id": 131481364542,
+        "conclusion": "success"
+      }
+    ],
+    "new_adversarial_tests": 23,
+    "prior_artifact_state": "VERIFIED_SUCCESSFUL_GITHUB_RUN_ARTIFACT",
+    "decision": "QUIESCENT_NO_MATERIAL_SOURCE_CHANGE",
+    "source_change_count": 0,
+    "current_work_contexts": 3,
+    "new_source_work_elected": 0,
+    "receiver_recomputation": "PASS_SAME_PROVIDER_DIFFERENT_JOB_RECOMPUTE",
+    "artifact_digest": {
+      "producer": "sha256:e39a81e0ee970fea22b3bc9a504a88b56689a1eea2eafc6cbe3b05ab4ad04af3",
+      "receiver": "sha256:50dfa484c4564f5375a85b3f03b59d2d31890d69c39eb81ea5bc524878d081de"
+    },
+    "failed_run_lineage": [
+      {
+        "run_id": 43303574164,
+        "classification": "FAIL_REGRESSION_SUITE_BEFORE_TEST_ALIGNMENT",
+        "state": "PRESERVED"
+      },
+      {
+        "run_id": 43303629107,
+        "classification": "FAIL_REGRESSION_SUITE_BEFORE_TEST_ALIGNMENT",
+        "state": "PRESERVED"
+      }
+    ]
+  },
+  "semantic_guard": {
+    "same_workset_and_source_digest": "QUIESCENT",
+    "changed_source_digest": "SEMANTIC_REVIEW_REQUIRED_NOT_NEW_KNOWLEDGE",
+    "changed_workset_or_role_set": "HOLD_REBASE_NOT_NEW_WORK",
+    "changed_owner_priority_role_without_workset": "HOLD_METADATA_DRIFT",
+    "unverified_prior_artifact": "HOLD_NO_VERIFIED_PRIOR",
+    "new_work_effect": "NOT_AUTHORIZED",
+    "private_data_access": "NONE",
+    "x2_process_or_scheduled_task": "NONE",
+    "provider_session_wake": "NONE",
+    "billing_or_credential_effect": "NONE"
+  },
+  "next_safe_deed": "Observe first scheduled-event trigger and source-delta receiver recompute; independently qualify real X2 input quietness and a provider-neutral model WorkID recovery before any runtime-session claim.",
+  "nonclaims": [
+    "CI_PUSH_NE_SCHEDULED_WAKE",
+    "NO_MATERIAL_PUBLIC_SOURCE_CHANGE_NE_NO_PRIVATE_WORK",
+    "SOURCE_BYTE_CHANGE_NE_NEW_KNOWLEDGE",
+    "SAME_PROVIDER_JOB_NE_INDEPENDENT_HOST",
+    "SOURCE_QUIESCENCE_NE_ALL_CHAT_SESSIONS_IDLE",
+    "WORK_ELECTION_NE_WORK_EXECUTION",
+    "NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF",
+    "NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE",
+    "LOCAL_IS_NOT_LANDED",
+    "VALIDATION_IS_NOT_ACCEPTANCE",
+    "HASHING_IS_NOT_SEMANTIC_INGESTION",
+    "DISCOVERED_SET_IS_NOT_COMPLETE_HISTORY"
+  ]
+}
