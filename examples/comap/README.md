@@ -2,6 +2,9 @@
 
 **Optional CoLocal R1 visual lens:** [Browse two new source documents and five typed relations](colocal-source-lens-r1.html), backed by the [58-node/66-edge candidate graph](../../ai/comap-colocal-currentness-projection-r1.json). This standalone HTML is an offline source lens only: source-side CI has passed, but X2 receiver status, CoStead pickup, live CoOrb deployment and independent human UX acceptance are not proved. The established R0 reader is unchanged.
 
+**Verified R1 lens QA:** [18 source tests and desktop/mobile Chromium acceptance](https://github.com/CoCivium/CoCivium/actions/runs/43132892448) passed in GitHub Actions. [Machine-readable evidence and failed-run history](../../ai/currentness/comap-colocal-visible-lens-ci-r1-20261112.json) records the exact UI blob, graph pin, screenshots artifact and nonclaims. These are source/browser proofs, not live CoOrb or X2 receiver proof.
+
+
 
 **[Open or save the interactive CoMap+ HTML](source-weave-r0.html)**. GitHub may display HTML markup rather than execute the file; save the single file and open it in a browser. This has **no external requests, telemetry or machine control**. It is a source-registered projection, **not a live semantic bus, all-term crawler, CoAll canon, policy enforcement engine or CoOrb/X2 installation**.
 
