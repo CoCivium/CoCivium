@@ -125,18 +125,36 @@ def compare(current, previous, meta):
         or meta.get("artifact_name")!="cogoall-proof-"+p["run_id"]+"-"+p["attempt"]
         or p["run_id"]==c["run_id"] or int(p["run_id"])>=int(c["run_id"])):
         return _hold("PRIOR_PROVENANCE_OR_ORDER",current)
+    # Configuration edits are not themselves new source knowledge. Require a
+    # rebase/review of identities and permissions before comparing work states.
+    if current_set != prior_set or set(current_map) != set(prior_map):
+        return {
+            "schema":SCHEMA,
+            "state":"HOLD_WORKSET_CONFIGURATION_DRIFT_REBASE_REQUIRED",
+            "reason":"WORKSET_OR_WORKID_SET_CHANGED_NOT_NEW_KNOWLEDGE",
+            "current_run_id":c["run_id"],
+            "prior_run_id":p["run_id"],
+            "current_workset_sha256":current_set,
+            "prior_workset_sha256":prior_set,
+            "source_delta_count":None,
+            "next_source_workid":None,
+            "novel_public_source_objects":None,
+            "verified_useful_work_outcomes":0,
+            "new_machine_effect_authorized":False,
+            "external_receiver_ack":False,
+            "provider_sessions_cycled":0,
+            "nonclaims":NONCLAIMS,
+        }
     changed=[
         row for work,row in current_map.items()
-        if work not in prior_map or row!=prior_map[work]
+        if row!=prior_map[work]
     ]
-    removed=sorted(set(prior_map)-set(current_map))
-    if current_set != prior_set and not changed and not removed:
-        changed=list(current_map.values())
     changed.sort(key=lambda x:(-x["priority"],x["work_id"]))
-    if changed or removed:
-        state="MATERIAL_PUBLIC_SOURCE_DELTA_SHADOW_ONLY"
-        elected=changed[0]["work_id"] if changed else None
-        reason="NEW_OR_MODIFIED_PUBLIC_SOURCE_OR_WORKSET"
+    removed=[]
+    if changed:
+        state="PUBLIC_SOURCE_BYTES_CHANGED_SEMANTIC_REVIEW_REQUIRED"
+        elected=changed[0]["work_id"]
+        reason="SOURCE_BYTES_DIFFER_BUT_NEW_MEANING_AND_VALUE_UNPROVEN"
     else:
         state="QUIESCENT_NO_MATERIAL_SOURCE_CHANGE"
         elected=None
@@ -149,10 +167,13 @@ def compare(current, previous, meta):
         "current_workset_sha256":current_set,
         "prior_workset_sha256":prior_set,
         "current_work_count":len(current_map),
-        "source_delta_count":len(changed)+len(removed),
+        "source_delta_count":len(changed),
         "changed_workids":[x["work_id"] for x in changed],
-        "removed_workids":removed,
+        "removed_workids":[],
         "next_source_workid":elected,
+        "novel_public_source_objects":0 if not changed else None,
+        "verified_useful_work_outcomes":0,
+        "source_bytes_changed_not_semantically_reviewed":bool(changed),
         "unchanged_workids_suppressed":len(current_map)-len(changed),
         "co_speedo":{
             "bounded_work_contexts":len(current_map),
