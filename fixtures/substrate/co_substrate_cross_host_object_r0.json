@@ -1,0 +1,41 @@
+{
+  "schema": "CoSubstrateIndependence.CrossHostObject.R0",
+  "state": "SYNTHETIC_SEMANTIC_OBJECT_FOR_CROSS_OS_CI_RECEIVER_PROOF",
+  "object_id": "cross-host-semantic-object-001",
+  "semantic_version": "v1",
+  "authority_state": "READ_ONLY",
+  "provenance": [
+    "fixture:fixtures/substrate/co_substrate_cross_host_object_r0.json"
+  ],
+  "relations": [
+    {
+      "subject": "A",
+      "predicate": "RELATES_TO",
+      "object": "B"
+    },
+    {
+      "subject": "B",
+      "predicate": "DEPENDS_ON",
+      "object": "C"
+    },
+    {
+      "subject": "C",
+      "predicate": "OBSERVED_BY",
+      "object": "observer-1"
+    }
+  ],
+  "required_invariants": [
+    "relation_count=3",
+    "authority_state=READ_ONLY",
+    "provenance_present"
+  ],
+  "substrate_requirements": [
+    "python>=3.12",
+    "utf8-json"
+  ],
+  "nonclaims": [
+    "CROSS_OS_CI_NE_MODEL_RUNTIME_MIGRATION",
+    "SAME_SEMANTIC_DIGEST_NE_IDENTICAL_INSTANCE",
+    "CI_RECEIVER_PROOF_NE_PRODUCTION_RUNTIME"
+  ]
+}
