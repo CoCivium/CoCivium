@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """CoLockStep R0: source-pinned, synthetic known-green capability survival.
 
-The previously CI-green CoMeasure source is snapshotted to an isolated temp
+The explicitly pinned CoMeasure candidate source is snapshotted to an isolated temp
 directory. An experimental copy receives one deliberate, invalid centimetre
 scale mutation. A passing FIRST-USE demo is insufficient to promote it if its
 independent registry verifier rejects it. Replaying the untouched baseline
@@ -21,11 +21,14 @@ import tempfile
 BASE = Path(__file__).resolve().parent
 FROZEN_GIT_BLOBS = {
     "registry_r0_1.json": "d66132c8773c825a7944107d32b3827254178bcf",
-    "verify_registry_r0_1.py": "3c8427c20d5d491020b94b5159e6a69589d776ad",
+    "verify_registry_r0_1.py": "53ba92143995fe7a41286dac052baa3ae7e6e2e2",
     "observation_domain_r0.py": "0e85a0bb923bfd7e7c24640d9b0ab773a4b13088",
     "first_use_demo_r0.py": "3a468ddb2fb455b998de5da9453bf191437f9337",
 }
-PINNED_CODE_HEAD = "797872ac91f5b1a19e43d1ccc972a745561337d4"
+# Historical CI-green baseline verifier preserved as prior (not erased by source evolution).
+PRIOR_VERIFIER_GIT_BLOB = "3c8427c20d5d491020b94b5159e6a69589d776ad"
+PRIOR_PINNED_CODE_HEAD = "797872ac91f5b1a19e43d1ccc972a745561337d4"
+PINNED_CODE_HEAD = "f8bf389a70a6bcdbdd4df57642e59b0380b0770d"
 
 
 def require(ok, reason):
