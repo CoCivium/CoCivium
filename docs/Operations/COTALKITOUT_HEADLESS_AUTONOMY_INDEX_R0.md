@@ -31,6 +31,28 @@ Task schema: `work_id, task_id, topo, lane, title, operation, acceptance, depend
 
 **Every task starts NOT_TESTED for real acceptance.** `SOURCE_TESTED_ONLY` is not native deployment, `OBSERVED_GAP` is not causal proof, and `HELD` is not a failed system. A schedule, local intent, sender-outbox entry, Git push or synthetic CI pass does not establish a useful independently accepted effect.
 
+## CoPull+ | One source-bound successor review, not an autonomous actuator
+
+**Read-only role-scoped entrypoint:** [`CoTalkItOutNextSafePullR0.py`](../../scripts/CoTalkItOutNextSafePullR0.py) with [negative controls](../../scripts/test_CoTalkItOutNextSafePullR0.py). It reuses the existing [CoLocal role-rebind contract](../../scripts/CoLocalRoleRebindR0.py) and pinned [post-containment X2 R1 evidence](../../ai/currentness/colocal-x2-postcontainment-focus-20261112-r1.json) for the X2 role instead of inventing a second owner.
+
+On a checkout of **this same exact candidate branch**:
+
+```sh
+python3 -B scripts/CoTalkItOutNextSafePullR0.py --role GENERAL_READ_ONLY
+python3 -B scripts/CoTalkItOutNextSafePullR0.py --role X2_DESKTOP_RECOVERY
+python3 -B scripts/CoTalkItOutNextSafePullR0.py --role VOICE_FIRST
+```
+
+- General role returns **one read-only review candidate** `X01` from the 319-row pinned source, with `dispatch_allowed=false` and `all_sessions_ack=UNKNOWN`.
+- X2 role returns **`HOLD_INCUMBENT_X2_OWNER_REFRESH_REQUIRED`**, binding existing issue [#181](https://github.com/CoCivium/CoCivium/issues/181), which separately records **three task quarantines, not proven focus cure**. A different session must not start X2 diagnostics simply because it found an eligible planning task.
+- Voice role returns **`HOLD_PREREQUISITE_ACCEPTANCE_UNPROVEN`** until actual prerequisite evidence exists. No generic permission to enable a microphone, activate a voice service or open a private device.
+- Unrecognized role, forged X2 rebind, mutated/missing CSV, bad source state and competing execution claims fail closed.
+- The current output is a **snapshot/source-selection result only**. It does not poll, schedule, fetch remote sources, send messages, create chats, bind native sessions, write checkpoints, act on X2 or distribute itself to already-open conversations. Whoever receives it must independently qualify currentness, authority and receiver origin before real-world operation.
+
+**Exact CI:** [Actions #43313327600](https://github.com/CoCivium/CoCivium/actions/runs/43313327600), **12/12 role-pull tests PASS**, with the original public-graph hash, DAG and eight adversarial checks passing. CI does not establish an actual successor adopting the packet or lasting unattended.
+
+**CoInverse test:** `MORE_AVAILABLE_WORK_NE_MORE_EXECUTABLE_WORK | READ_ONLY_REVIEW_NE_AUTHORITY | SHARED_INDEX_NE_DELIVERED_MESSAGE | SOURCE_HEAD_NE_RECEIVER_PERSISTENCE`.
+
 ## CoGlyphRail+ | From present gap to optional operation
 
 `QUIET_X2_OBSERVER -> PROVEN_FOREGROUND_CAUSE -> REVERSIBLE_SINGLE_OWNER_REPAIR -> NATIVE_COLDBOOT -> DURABLE_WORKID -> REAL_LOCAL_WORKER_RESULT -> INDEPENDENT_READBACK -> QUIET_ORCHESTRATION -> OFF_X2_RECEIVER -> VOICE_FIRST -> SCREENLESS_OPTION -> 24H_HUMAN_OPTIONAL_DRILL`
