@@ -28,13 +28,18 @@
     {
       "pr_number": 136,
       "role": "SUBSTRATE_INDEPENDENCE_AND_SESSION_RETIREMENT",
-      "expected_head_sha": "4153c8487222054ba460a3c8b4a0731b087e4209",
+      "expected_head_sha": "3e64447a0b0ff7111fc40a5984f122f603d88b73",
       "expected_draft": true,
       "expected_merged": false,
-      "required_success_run_id": 36950536349,
+      "required_success_run_id": 37429937717,
       "required_doc": {
         "path": "docs/Architecture/COPROVIDER_EXIT_SESSION_RETIREMENT_R0.md",
         "git_blob_sha": "3ceac049bb422ab1b977f454a188932e8de13b7a"
+      },
+      "historical_binding": {
+        "prior_head_sha": "4153c8487222054ba460a3c8b4a0731b087e4209",
+        "prior_success_run_id": 36950536349,
+        "reason": "One-commit workflow-only successor; original retirement policy Git blob unchanged; exact successor CI success."
       }
     },
     {
