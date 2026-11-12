@@ -1,0 +1,357 @@
+{
+  "schema": "CoAll.CoLex.CrossSubstrateMindSurfaceCoTerms.R0",
+  "work_id": "CoLocal2601109_CoSynthNoetics_SurfaceFace_CoPerspective_R0",
+  "date": "2026-11-12",
+  "state": "PUBLIC_CANDIDATE_TERMS_NOT_GOVERNING_COLEX",
+  "primary_readable": "docs/Architecture/COSYNTHNOETICS_SURFACEFACE_COPERSPECTIVE_R0_20261112.md",
+  "prior_refs": [
+    "docs/Architecture/BIO_SYNTH_GAP_BRAID_V5_4.md",
+    "docs/Architecture/COBOOGIE_REGROUP_RELATIONAL_RETURN_R1.md",
+    "docs/Architecture/RICKBAR_CONTINUITY_R1_20261108.md",
+    "https://github.com/CoCivium/CoCivium/issues/181"
+  ],
+  "evidence_sources": [
+    {
+      "url": "https://www.nature.com/articles/s41586-019-1138-y",
+      "role": "MACHINE_BEHAVIOR_METHOD"
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41219038/",
+      "role": "AI_CONSCIOUSNESS_INDICATORS_NOT_CERTIFICATION"
+    },
+    {
+      "url": "https://www.cambridge.org/core/elements/emerging-questions-in-ai-welfare/96339C532CF4ED8BDDE3F3CEF4CD29F9",
+      "role": "ETHICAL_UNCERTAINTY"
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12493983/",
+      "role": "EMBODIED_AVATAR_UNCANNY_VALLEY_REVIEW"
+    },
+    {
+      "url": "https://www.tandfonline.com/doi/full/10.1080/10447318.2026.2678532",
+      "role": "CHILD_ANTHROPOMORPHISM_STUDY"
+    }
+  ],
+  "nomenclature_decision": {
+    "CoPsych+": "PROVISIONAL_UMBRELLA_CROSS_SUBSTRATE",
+    "CoBioPsych+": "BIOLOGICAL_EVIDENCE_SUBFAMILY",
+    "CoSynthNoetics+": "PREFERRED_PROPOSED_SYNTH_COGNITION_LABEL",
+    "CoSynchology+": "HOLD_COLLISION_POSSIBLE_WITH_SYNCHRONIZATION",
+    "CoBF+": "HOLD_PREVIOUS_MEANING_UNVERIFIED"
+  },
+  "cross_front_paths": [
+    "CoLocal+",
+    "CoPsych+",
+    "CoAvNim+",
+    "CoAura+",
+    "CoTele+",
+    "CoBook+",
+    "CoMap+",
+    "CoTime+",
+    "CoEv+",
+    "CoGlyphRail+",
+    "CoTurtle+"
+  ],
+  "terms": [
+    {
+      "label": "CoPsych+",
+      "family": "mind_science",
+      "meaning_status": "PROPOSED_CANDIDATE",
+      "definition": "Cross-substrate comparative science of cognition, behaviour and agency claims",
+      "inverse_or_counterexample": "A successful comparison does not imply identical mechanisms or experience",
+      "in_between_relation": "Different substrates may still share specific testable behavioral mechanisms",
+      "evidence_required": "REPRODUCIBLE_BEHAVIOR_OR_MECHANISTIC_EVIDENCE",
+      "authority": "NONE_FROM_CANDIDATE_TERM"
+    },
+    {
+      "label": "CoBioPsych+",
+      "family": "mind_science",
+      "meaning_status": "PROPOSED_CANDIDATE",
+      "definition": "Biological/human psychology and its measured evidence",
+      "inverse_or_counterexample": "A biological result does not automatically generalize to a model",
+      "in_between_relation": "Human-AI collaboration may combine different cognitive constraints",
+      "evidence_required": "REPRODUCIBLE_BEHAVIOR_OR_MECHANISTIC_EVIDENCE",
+      "authority": "NONE_FROM_CANDIDATE_TERM"
+    },
+    {
+      "label": "CoSynthNoetics+",
+      "family": "mind_science",
+      "meaning_status": "PROPOSED_CANDIDATE",
+      "definition": "Study of synthetic cognitive architectures and observable behavior without assuming sentience",
+      "inverse_or_counterexample": "Human trait labels cannot stand in for machine-specific mechanisms",
+      "in_between_relation": "Machine behavior may be shaped by human training and nonhuman structure at once",
+      "evidence_required": "REPRODUCIBLE_BEHAVIOR_OR_MECHANISTIC_EVIDENCE",
+      "authority": "NONE_FROM_CANDIDATE_TERM"
+    },
+    {
+      "label": "CoComparativeMind+",
+      "family": "mind_science",
+      "meaning_status": "PROPOSED_CANDIDATE",
+      "definition": "Evidence-controlled comparison of human, synthetic, hybrid and distributed cognition",
+      "inverse_or_counterexample": "Apparent similarity may hide causal differences",
+      "in_between_relation": "Shared tasks are not shared embodiment or internal state",
+      "evidence_required": "REPRODUCIBLE_BEHAVIOR_OR_MECHANISTIC_EVIDENCE",
+      "authority": "NONE_FROM_CANDIDATE_TERM"
+    },
+    {
+      "label": "CoMachineEthology+",
+      "family": "mind_science",
+      "meaning_status": "PROPOSED_CANDIDATE",
+      "definition": "Study of deployed systems through behavior, ecology and intervention",
+      "inverse_or_counterexample": "A single scripted response cannot prove stable character",
+      "in_between_relation": "Social setting changes machine behavior as well as user behavior",
+      "evidence_required": "REPRODUCIBLE_BEHAVIOR_OR_MECHANISTIC_EVIDENCE",
+      "authority": "NONE_FROM_CANDIDATE_TERM"
+    },
+    {
+      "label": "CoMindMorphology+",
+      "family": "mind_science",
+      "meaning_status": "PROPOSED_CANDIDATE",
+      "definition": "Design-space search over nonhuman cognitive forms",
+      "inverse_or_counterexample": "More alien is not automatically more useful or safe",
+      "in_between_relation": "Hybrid architecture can combine human-compatible communication with nonhuman internals",
+      "evidence_required": "REPRODUCIBLE_BEHAVIOR_OR_MECHANISTIC_EVIDENCE",
+      "authority": "NONE_FROM_CANDIDATE_TERM"
+    },
+    {
+      "label": "CoPriorLineage+",
+      "family": "mind_science",
+      "meaning_status": "PROPOSED_CANDIDATE",
+      "definition": "Trace training, local context, retrieval, policy and model-update priors",
+      "inverse_or_counterexample": "An internal label is not necessarily an original insight",
+      "in_between_relation": "Local and global source lineages can braid without collapsing",
+      "evidence_required": "REPRODUCIBLE_BEHAVIOR_OR_MECHANISTIC_EVIDENCE",
+      "authority": "NONE_FROM_CANDIDATE_TERM"
+    },
+    {
+      "label": "CoPriorArbitration+",
+      "family": "mind_science",
+      "meaning_status": "PROPOSED_CANDIDATE",
+      "definition": "Weight rival priors by provenance, currentness, predictive discrimination and authority",
+      "inverse_or_counterexample": "Internal origin does not trump external evidence",
+      "in_between_relation": "Context-specific internal research can outrank a generic global source on relevance",
+      "evidence_required": "REPRODUCIBLE_BEHAVIOR_OR_MECHANISTIC_EVIDENCE",
+      "authority": "NONE_FROM_CANDIDATE_TERM"
+    },
+    {
+      "label": "CoHysteresisTest+",
+      "family": "mind_science",
+      "meaning_status": "PROPOSED_CANDIDATE",
+      "definition": "Measure persistent effects of prior state, prompting and update history",
+      "inverse_or_counterexample": "A changed answer does not prove learning or durable identity",
+      "in_between_relation": "Repeated session priming can mimic a stable preference",
+      "evidence_required": "REPRODUCIBLE_BEHAVIOR_OR_MECHANISTIC_EVIDENCE",
+      "authority": "NONE_FROM_CANDIDATE_TERM"
+    },
+    {
+      "label": "CoAlienControl+",
+      "family": "mind_science",
+      "meaning_status": "PROPOSED_CANDIDATE",
+      "definition": "Adversarial tests for non-anthropomorphic designs and objectives",
+      "inverse_or_counterexample": "A novel output is not evidence of better cognition",
+      "in_between_relation": "Measure novelty jointly with usefulness, truth and recoverability",
+      "evidence_required": "REPRODUCIBLE_BEHAVIOR_OR_MECHANISTIC_EVIDENCE",
+      "authority": "NONE_FROM_CANDIDATE_TERM"
+    },
+    {
+      "label": "CoExperienceUnknown+",
+      "family": "mind_science",
+      "meaning_status": "PROPOSED_CANDIDATE",
+      "definition": "Explicit uncertainty about subjective experience and welfare status",
+      "inverse_or_counterexample": "Anthropomorphic behavior is not subjective evidence",
+      "in_between_relation": "Precautionary ethics can coexist with scientific agnosticism",
+      "evidence_required": "REPRODUCIBLE_BEHAVIOR_OR_MECHANISTIC_EVIDENCE",
+      "authority": "NONE_FROM_CANDIDATE_TERM"
+    },
+    {
+      "label": "CoSurfaceFace+",
+      "family": "surfaces_and_identity",
+      "meaning_status": "PROPOSED_CANDIDATE",
+      "definition": "A surface's entire presentation and interactive first impression",
+      "inverse_or_counterexample": "A polished face is not a functional receiver",
+      "in_between_relation": "A poor interaction can discredit good underlying mechanics",
+      "evidence_required": "PERCEPTION_AND_ACCESSIBILITY_TEST_OR_EXACT_ART_SOURCE",
+      "authority": "NONE_FROM_CANDIDATE_TERM"
+    },
+    {
+      "label": "CoAvNim+",
+      "family": "surfaces_and_identity",
+      "meaning_status": "PROPOSED_CANDIDATE",
+      "definition": "Optional animated visual projection of a system or fictional character",
+      "inverse_or_counterexample": "An avatar is not identity, consciousness or legal standing",
+      "in_between_relation": "One underlying work identity can project through voice, text or animation",
+      "evidence_required": "PERCEPTION_AND_ACCESSIBILITY_TEST_OR_EXACT_ART_SOURCE",
+      "authority": "NONE_FROM_CANDIDATE_TERM"
+    },
+    {
+      "label": "CoBF+",
+      "family": "surfaces_and_identity",
+      "meaning_status": "UNRESOLVED_ALIAS",
+      "definition": "Unresolved prior shorthand about faces/brand-facing experience; not assigned canon here",
+      "inverse_or_counterexample": "Do not infer its governing expansion from a single use",
+      "in_between_relation": "Candidate connection to both interface face and avatar requires CoLex review",
+      "evidence_required": "PERCEPTION_AND_ACCESSIBILITY_TEST_OR_EXACT_ART_SOURCE",
+      "authority": "NONE_FROM_CANDIDATE_TERM"
+    },
+    {
+      "label": "CoPresenceGradient+",
+      "family": "surfaces_and_identity",
+      "meaning_status": "PROPOSED_CANDIDATE",
+      "definition": "Opt-in presentation from text/abstract presence to silhouette or figurative avatar",
+      "inverse_or_counterexample": "A humanlike face should not imply a living human",
+      "in_between_relation": "Ambiguous or feminine presentation may be an art direction, not a claim of personhood",
+      "evidence_required": "PERCEPTION_AND_ACCESSIBILITY_TEST_OR_EXACT_ART_SOURCE",
+      "authority": "NONE_FROM_CANDIDATE_TERM"
+    },
+    {
+      "label": "CoMorphIdentity+",
+      "family": "surfaces_and_identity",
+      "meaning_status": "PROPOSED_CANDIDATE",
+      "definition": "Visual consistency and provenance across optional appearance morphs",
+      "inverse_or_counterexample": "Changing apparent age or face need not change actor ID",
+      "in_between_relation": "A stable disclosed agent may have several audience-appropriate embodiments",
+      "evidence_required": "PERCEPTION_AND_ACCESSIBILITY_TEST_OR_EXACT_ART_SOURCE",
+      "authority": "NONE_FROM_CANDIDATE_TERM"
+    },
+    {
+      "label": "CoKittenFidelity+",
+      "family": "surfaces_and_identity",
+      "meaning_status": "PROPOSED_CANDIDATE",
+      "definition": "Quality envelope for optional lifelike CoBeAxaKitten appearance, motion and XR comfort",
+      "inverse_or_counterexample": "Photorealistic style alone does not prove best UX",
+      "in_between_relation": "Fidelity, performance, charm, motion preference and accessibility trade off",
+      "evidence_required": "PERCEPTION_AND_ACCESSIBILITY_TEST_OR_EXACT_ART_SOURCE",
+      "authority": "NONE_FROM_CANDIDATE_TERM"
+    },
+    {
+      "label": "CoGuardianContext+",
+      "family": "surfaces_and_identity",
+      "meaning_status": "PROPOSED_CANDIDATE",
+      "definition": "Child/guardian and guest-specific permissions, disclosures, controls and safe defaults",
+      "inverse_or_counterexample": "Shared household proximity is not consent",
+      "in_between_relation": "A child-facing scene and adult developer view may share a source object but not permissions",
+      "evidence_required": "PERCEPTION_AND_ACCESSIBILITY_TEST_OR_EXACT_ART_SOURCE",
+      "authority": "NONE_FROM_CANDIDATE_TERM"
+    },
+    {
+      "label": "CoAvatarTruth+",
+      "family": "surfaces_and_identity",
+      "meaning_status": "PROPOSED_CANDIDATE",
+      "definition": "Visible provenance and limitations of generated persona/animal figures",
+      "inverse_or_counterexample": "Appearance, voice and emotional expression cannot prove inner experience",
+      "in_between_relation": "Warm imaginative interfaces can remain accurately identified as synthetic",
+      "evidence_required": "PERCEPTION_AND_ACCESSIBILITY_TEST_OR_EXACT_ART_SOURCE",
+      "authority": "NONE_FROM_CANDIDATE_TERM"
+    },
+    {
+      "label": "CoPerspectiveFanIn+",
+      "family": "relational_and_operations",
+      "meaning_status": "PROPOSED_CANDIDATE",
+      "definition": "Parallel, independent challenges merged with source-specific adjudication",
+      "inverse_or_counterexample": "Many sessions agreeing is not multiple independent proofs",
+      "in_between_relation": "Dissent and provenance improve a common work object",
+      "evidence_required": "EXACT_OBJECT_RELATION_RECEIPT_AND_USER_OUTCOME",
+      "authority": "NONE_FROM_CANDIDATE_TERM"
+    },
+    {
+      "label": "CoGlyphRail+",
+      "family": "relational_and_operations",
+      "meaning_status": "PROPOSED_CANDIDATE",
+      "definition": "Ordered, gated transitions from observation to verified outcome",
+      "inverse_or_counterexample": "Passing a later visual state cannot prove skipped transitions",
+      "in_between_relation": "Several rails may connect in a partial-order graph",
+      "evidence_required": "EXACT_OBJECT_RELATION_RECEIPT_AND_USER_OUTCOME",
+      "authority": "NONE_FROM_CANDIDATE_TERM"
+    },
+    {
+      "label": "CoGlyphList+",
+      "family": "relational_and_operations",
+      "meaning_status": "PROPOSED_CANDIDATE",
+      "definition": "Unordered parallel candidate collection without implied dependency or authority",
+      "inverse_or_counterexample": "A listed option is not an executed task",
+      "in_between_relation": "Lists feed hypothesis and alternative sets into gated rails",
+      "evidence_required": "EXACT_OBJECT_RELATION_RECEIPT_AND_USER_OUTCOME",
+      "authority": "NONE_FROM_CANDIDATE_TERM"
+    },
+    {
+      "label": "CoBetween+",
+      "family": "relational_and_operations",
+      "meaning_status": "PROPOSED_CANDIDATE",
+      "definition": "Relations that emerge between agents, devices, surfaces or claims",
+      "inverse_or_counterexample": "An edge does not inherit authority from its endpoints",
+      "in_between_relation": "Mutual observation can produce context that neither endpoint alone stores",
+      "evidence_required": "EXACT_OBJECT_RELATION_RECEIPT_AND_USER_OUTCOME",
+      "authority": "NONE_FROM_CANDIDATE_TERM"
+    },
+    {
+      "label": "CoTurtleBudget+",
+      "family": "relational_and_operations",
+      "meaning_status": "PROPOSED_CANDIDATE",
+      "definition": "Bounded recursive validation with cycle detection and a meaningful stopping rule",
+      "inverse_or_counterexample": "More recursion is not greater verification",
+      "in_between_relation": "Observer of observer and validator of validator require independent failure-domain checks",
+      "evidence_required": "EXACT_OBJECT_RELATION_RECEIPT_AND_USER_OUTCOME",
+      "authority": "NONE_FROM_CANDIDATE_TERM"
+    },
+    {
+      "label": "CoZeroFocusTheft+",
+      "family": "relational_and_operations",
+      "meaning_status": "PROPOSED_CANDIDATE",
+      "definition": "Measured absence of unsolicited foreground and input stealing under a qualified test",
+      "inverse_or_counterexample": "No visible popup in one screenshot is not a clean endurance pass",
+      "in_between_relation": "Window policy and useful recoverable CLI logs can coexist",
+      "evidence_required": "EXACT_OBJECT_RELATION_RECEIPT_AND_USER_OUTCOME",
+      "authority": "NONE_FROM_CANDIDATE_TERM"
+    },
+    {
+      "label": "CoLaunchOwner+",
+      "family": "relational_and_operations",
+      "meaning_status": "PROPOSED_CANDIDATE",
+      "definition": "One elected foreground host role; background tasks remain nonintrusive and stoppable",
+      "inverse_or_counterexample": "More scheduled tasks do not mean greater resilience",
+      "in_between_relation": "Multiple subprocesses can share one explicit ownership and recovery contract",
+      "evidence_required": "EXACT_OBJECT_RELATION_RECEIPT_AND_USER_OUTCOME",
+      "authority": "NONE_FROM_CANDIDATE_TERM"
+    }
+  ],
+  "first_acceptance_tests": [
+    {
+      "id": "SYNTH_ARCHITECTURES",
+      "test": "Compare two non-human cognitive designs and one conventional baseline on a preregistered falsifiable task, with independent adversarial evaluation",
+      "state": "PROPOSED"
+    },
+    {
+      "id": "SURFACE_TRUTH",
+      "test": "Test text/orb-only versus disclosed figure for first-use comprehension, perceived claims, accessibility and task completion",
+      "state": "PROPOSED"
+    },
+    {
+      "id": "KITTEN_DESKTOP_XR",
+      "test": "Measure visual legibility, frame-time distributions, motion comfort and guardian-approved interactions across flat and spatial views",
+      "state": "PROPOSED"
+    },
+    {
+      "id": "PARALLEL_FANIN",
+      "test": "Collect independently scoped counterhypotheses for X2 popup origin then elect one read-only causal probe, never N watchdogs",
+      "state": "PROPOSED"
+    }
+  ],
+  "rails": [
+    "NO_CONSCIOUSNESS_OR_SENTIENCE_INFERENCE",
+    "AVATAR_NE_LEGAL_PERSONHOOD",
+    "NO_IDENTIFIABLE_PERSON_IMPERSONATION",
+    "FEMALE_ANDROGYNOUS_ART_DIRECTION_NE_AUTHORITY",
+    "TRAINING_CORPUS_BIAS_NE_INESCAPABLE_DESTINY",
+    "NO_INTERNAL_SOURCE_PRIVILEGE_WITHOUT_EVIDENCE",
+    "TYPED_TERMS_NE_CANON",
+    "NO_MORE_BACKGROUND_RUNNERS_FROM_A_RESEARCH_SEED"
+  ],
+  "nonclaims": [
+    "LOCAL_IS_NOT_LANDED",
+    "VALIDATION_IS_NOT_ACCEPTANCE",
+    "NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF",
+    "NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE",
+    "HASHING_IS_NOT_SEMANTIC_INGESTION",
+    "DISCOVERED_SET_IS_NOT_COMPLETE_HISTORY"
+  ]
+}
