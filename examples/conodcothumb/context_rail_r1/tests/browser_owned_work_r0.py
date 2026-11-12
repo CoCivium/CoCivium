@@ -64,6 +64,30 @@ def main():
         with sync_playwright() as playwright:
             ctx, page = browse(playwright, profile, html, requests, viewport=viewport)
             try:
+                # Current X2 source rebind remains explicit, offline, and nonexecuting.
+                page.locator("#rebindPanel summary").click()
+                page.locator("#rebindInspect").click()
+                require(page.locator("#rebindState").inner_text() == "NO_RELEVANT_INCIDENT_CONTENT",
+                        "NONMATCHING_ROLE_LEAKED_INCIDENT")
+                require(page.locator("#rebindOwner").is_hidden(), "UNRELATED_ROLE_SHOWED_OWNER_LINK")
+                page.locator("#rebindRole").select_option("X2_DESKTOP_RECOVERY")
+                page.locator("#rebindInspect").click()
+                require(page.locator("#rebindState").inner_text() == "SOURCE_BOUND_REBIND_OWNER_REFRESH_REQUIRED",
+                        "ROLE_SOURCE_REBIND_NOT_QUALIFIED")
+                require("CoHereNow:" in page.locator("#rebindNarrative").inner_text()
+                        and "CoNext:" in page.locator("#rebindNarrative").inner_text(),
+                        "ROLE_REBIND_NO_COMPACT_ACTION")
+                require(page.locator("#rebindOwner").get_attribute("href")
+                        == "https://github.com/CoCivium/CoCivium/issues/181",
+                        "ROLE_REBIND_WRONG_OWNER")
+                require("7350c0bdc3661c6ccbc803df11a16c960da85675"
+                        in page.locator("#rebindIdentity").inner_text(),
+                        "ROLE_REBIND_SOURCE_DIGEST_MISSING")
+                page.locator("#rebindRole").select_option("NONE")
+                page.locator("#rebindInspect").click()
+                require(page.locator("#rebindOwner").is_hidden(),
+                        "ROLE_DESELECTION_KEPT_OWNER_LINK")
+                events.append("ROLE_SOURCE_REBIND_WITHOUT_TRANSPORT")
                 require(page.locator("#workPreserve").is_disabled(), "UNAUTHORIZED_DEFAULT")
                 page.locator("#workRecover").click()
                 require(page.locator("#workState").inner_text() == "EMPTY",
