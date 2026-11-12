@@ -61,6 +61,19 @@ This is a **dependency-and-uncertainty projection**, not a second monitoring ser
 
 These tests are pure synthetic code. **No real X2 reboot, input interaction, native desktop renderer, audio endpoint, background/foreground focus or receiver was changed or attested.** Their purpose is to shrink the causal gap so the first authorized X2 proof can test the correct failure modes instead of relying on running-process vanity metrics.
 
+## X2 invisible PS7-popup attribution candidate | 2026-11-12
+
+**Observed incident:** X2 was rebooted by its user and the CoAll Desktop R5 / CoSpeedo were manually relaunched after recurring brief black consoles disrupted keyboard input. The authorized Remote Desktop Commander X2 bridge is **OFFLINE**; the assistant cannot identify live process ancestry, affect Windows startup or attest recovery. Do not infer from screenshots that every black window is pwsh, Task Scheduler, CoAll or Desktop Commander.
+
+**One bounded extension of the existing inventory** `scripts/CoRunnerStartupInventoryR0.ps1` (no new scheduler/watcher):
+- Read only already-existing `Microsoft-Windows-TaskScheduler/Operational` Event IDs **200 action start** and **201 action completed**, last **60 minutes**, maximum **512 events**. Does not enable logs or persist a trace.
+- Inspect executable *class* only (PowerShell 7, Windows PowerShell, CMD, Python). Hash **all** task identities, including CoAll-named ones, because private names/paths must never leak in exported reports. Hash correlation instance IDs; do not expose raw XML, arguments, executable paths, private user identities or command lines.
+- Rank at most 32 opaque groups by recent starts, comparing last 15 minutes against the preceding 15 and counting paired actions of at most three seconds. These are **plausible launch-frequency candidates**, not proof of a displayed window, focus theft or a particular popup. Missing/disabled logs fail to `UNAVAILABLE_OR_EMPTY_UNQUALIFIED`.
+- A console executable can flash **even with `-WindowStyle Hidden`**, because hiding after launch may not prevent the initial console. The Windows scheduled task `Hidden` flag likewise does not prove the process is invisible. The inventory reports this ambiguity rather than using a hidden flag as a safety PASS.
+- Existing self-test and Windows CI run against an **ephemeral runner**, not X2. Running the inventory manually from a console while typing is impaired would itself be intrusive; **do not ask the user to launch another console**.
+
+**Safe next receiver experiment:** only when a truly authorized, non-focus-stealing X2 execution route returns, take one bounded existing log readback, correlate against actual flashing-window timing via independent OS observer, identify one exact scheduled task/executable, verify ownership and rollback, and change *one* elected launcher under an explicit reversible change receipt. Do not blanket-disable Task Scheduler, kill Desktop Commander, or deploy an additional polling daemon. Requalify input focus, no-popup condition over a measured period and reliable CoAll R5/R6 login recovery afterward.
+
 ## Known limitations / next proof
 
 This is an in-memory state-machine fixture. The lease is not persisted, crash-resistant, monotonic-time-based, or distributed. The restart is a modeled *attempt*, not an actual process launch. Receipts are in-memory, not signed or independently delivered. There are no actual Windows integration tests, uptime metrics, command authorization, UI/no-popup tests, uninstall/rollback tests, network changes, or cross-device ACKs. These must be independently qualified before runtime promotion.
