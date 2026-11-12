@@ -46,22 +46,23 @@ class TestDeltaGuard(unittest.TestCase):
         target=next(x for x in c["sources"] if x["role"]=="COMAP_PUBLIC_SOURCE_UX")
         target["source_sha256"]="e"*64
         r=compare(c,p,m)
-        self.assertEqual(r["state"],"MATERIAL_PUBLIC_SOURCE_DELTA_SHADOW_ONLY")
+        self.assertEqual(r["state"],"PUBLIC_SOURCE_BYTES_CHANGED_SEMANTIC_REVIEW_REQUIRED")
         self.assertEqual(r["next_source_workid"],target["work_id"])
         self.assertEqual(r["source_delta_count"],1)
         self.assertEqual(r["unchanged_workids_suppressed"],2)
 
-    def test_changed_workset_without_source_delta_is_new_configuration(self):
+    def test_changed_workset_without_source_delta_requires_rebase(self):
         c,p,m=inputs()
         c["input"]["sha256"]="f"*64
         r=compare(c,p,m)
-        self.assertEqual(r["state"],"MATERIAL_PUBLIC_SOURCE_DELTA_SHADOW_ONLY")
-        self.assertEqual(r["source_delta_count"],3)
+        self.assertEqual(r["state"],"HOLD_WORKSET_CONFIGURATION_DRIFT_REBASE_REQUIRED")
+        self.assertIsNone(r["source_delta_count"])
+        self.assertIsNone(r["next_source_workid"])
 
     def test_priority_change_counts_as_delta(self):
         c,p,m=inputs()
         c["sources"][1]["priority"] += 1
-        self.assertEqual(compare(c,p,m)["source_delta_count"],1)
+        self.assertEqual(compare(c,p,m)["state"],"HOLD_SOURCE_METADATA_DRIFT_WITH_STATIC_WORKSET")
 
     def test_no_prior_is_held_not_first_run(self):
         c,p,m=inputs()
@@ -137,15 +138,30 @@ class TestDeltaGuard(unittest.TestCase):
         self.assertEqual(compare(c,p,m),compare(c,p,m))
         self.assertEqual((c,p,m),b)
 
-    def test_one_removed_workid_reports_tombstone_no_action(self):
+    def test_one_removed_workid_requires_rebase_not_tombstone_action(self):
         c,p,m=inputs()
         c["sources"].pop()
         c["input"]["work_item_count"]=2
         r=compare(c,p,m)
-        self.assertEqual(r["source_delta_count"],1)
-        self.assertEqual(len(r["removed_workids"]),1)
+        self.assertEqual(r["state"],"HOLD_WORKSET_CONFIGURATION_DRIFT_REBASE_REQUIRED")
+        self.assertIsNone(r["source_delta_count"])
         self.assertIsNone(r["next_source_workid"])
         self.assertFalse(r["new_machine_effect_authorized"])
+
+    def test_changed_source_digest_is_not_proven_new_knowledge(self):
+        c,p,m=inputs()
+        c["sources"][1]["source_sha256"]="d"*64
+        r=compare(c,p,m)
+        self.assertIsNone(r["novel_public_source_objects"])
+        self.assertEqual(r["verified_useful_work_outcomes"],0)
+        self.assertTrue(r["source_bytes_changed_not_semantically_reviewed"])
+
+    def test_metadata_forgery_cannot_elect_work(self):
+        c,p,m=inputs()
+        c["sources"][1]["owner"]="https://github.com/CoCivium/CoCivium/issues/999"
+        r=compare(c,p,m)
+        self.assertEqual(r["state"],"HOLD_SOURCE_METADATA_DRIFT_WITH_STATIC_WORKSET")
+        self.assertIsNone(r["next_source_workid"])
 
     def test_bounded_no_effect_in_all_branches(self):
         c,p,m=inputs()
