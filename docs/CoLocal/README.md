@@ -52,3 +52,12 @@ Known historical counterexample: a CoSpeedo morning brief accepted a source stat
 The [versioned 58-node/66-relation CoMap source successor](../../ai/comap-colocal-currentness-projection-r1.json) adds two public candidate documents and five limited source relations while preserving the 56/61 predecessor. The [pinned generator](../../scripts/CoMapCoLocalConsumerR1.py) and [15 adversarial tests](../../scripts/test_CoMapCoLocalConsumerR1.py) were executed in [GitHub Actions run 43131972116](https://github.com/CoCivium/CoCivium/actions/runs/43131972116); its [typed source-consumer receipt](../../ai/currentness/comap-colocal-source-consumer-ci-r1-20261112.json) records blobs, run/job, fixture count and same-provider proof limits.
 
 **Verified:** exact public source pins, deterministic R1 graph semantics and GitHub Actions tests. **Not verified:** X2 runtime integration, CoStead pickup, independent-host receiver ACK, site deployment, human benefit or CoAll canon. The existing CoMap R0 reader and scheduler remain unchanged. Candidate status is deliberately not authority.
+
+
+## 2026-11-12 | X2 focus disruption and cross-front research
+
+**P0 actual UX failure:** [CoLocal X2 R5 foreground-interruption machine-readable Seed](../../ai/currentness/colocal-x2-foreground-interruption-20261112-r0.json) records the reported post-reboot console flashes and input disruption, prior native task candidates, an explicit unproven-causation boundary, and one no-new-watcher recovery test. The existing [CoDesktop/CoRunner owner #181](https://github.com/CoCivium/CoCivium/issues/181) owns attribution and remediation; **X2 remote bridge offline at observation**, not host status.
+
+**P1 independent research:** [CoSynthNoetics+, CoSurfaceFace+, CoPerspectiveFanIn+ readable Seed](../Architecture/COSYNTHNOETICS_SURFACEFACE_COPERSPECTIVE_R0_20261112.md) and [26 typed CoTerm candidates with inverse/in-between relations](../../ai/colex/cosynthnoetics-surfaceface-coterms-20261112-r0.json). These are proposals, not CoLex governance, AI consciousness findings, native avatars, or deployed surface.
+
+**Cross-session uptake:** A discoverable public pointer does not send messages to already-running sessions, imply acknowledgment, or authorize multiple watchers. Each reviewer must cite an exact source, independent challenge, proposed effect/owner and receiver disposition; one elected actuator per real-world effect.
