@@ -1,0 +1,84 @@
+{
+  "schema": "CoAll.CoTalkItOut.PublicationReadbackReceipt.R1",
+  "work_id": "CoLocal2601109_CoTalkItOut_Headless_Screenless_R1",
+  "observed_date": "2026-11-12",
+  "state": "LANDED_PUBLIC_GIT_WITH_SAME_PROVIDER_READBACK",
+  "version_stem": "CoTalkItOut_Headless_Screenless_Autonomy_R1_20261112",
+  "commit_sha": "52f4ab950e5d3df4a8e4daafa194f9ae0fbae0a6",
+  "source_predecessor": {
+    "filename": "CoTalkItOut_Headless_Screenless_Autonomy_R0_20261112.xlsx",
+    "sha256": "767e3c957c92f50dde",
+    "predecessor_lifecycle": "PRIVATE_LIBRARY_PRESERVED_NOT_PUBLICLY_EXPORTED"
+  },
+  "public_files": [
+    {
+      "name": "CoTalkItOut_Headless_Screenless_Autonomy_R1_20261112.xlsx",
+      "path": "docs/CoLocal/CoTalkItOut_Headless_Screenless_Autonomy_R1_20261112.xlsx",
+      "git_blob_sha1": "9821d08c10f8535995a5b2b9790911f73635b1c2",
+      "sha256": "4ca848b814292d0a0ff1c8bfc2d1193ad0f660f629133794fba3be046a0c10dc",
+      "bytes": 88769
+    },
+    {
+      "name": "CoTalkItOut_Headless_Screenless_Autonomy_R1_20261112.csv",
+      "path": "docs/CoLocal/CoTalkItOut_Headless_Screenless_Autonomy_R1_20261112.csv",
+      "git_blob_sha1": "9109bdd4306f1be3fb8a2df4f687b0a6a4adcb51",
+      "sha256": "442e4d654d2fcc0b3b553a6039f662122c08179e11638cb0270ff3fae7466494",
+      "bytes": 154659
+    },
+    {
+      "name": "CoTalkItOut_Headless_Screenless_Autonomy_R1_20261112_PUBLIC_README.md",
+      "path": "docs/CoLocal/CoTalkItOut_Headless_Screenless_Autonomy_R1_20261112_PUBLIC_README.md",
+      "git_blob_sha1": "a029e03ccebf8663e0f3aaf3d7d308505d4f7438",
+      "sha256": "e7f910bacf8ea32dfeb93070b09879405c467c4736e0935f1327ce89f67df37b",
+      "bytes": 2807
+    },
+    {
+      "name": "CoTalkItOut_Headless_Screenless_Autonomy_R1_20261112_MANIFEST.json",
+      "path": "docs/CoLocal/CoTalkItOut_Headless_Screenless_Autonomy_R1_20261112_MANIFEST.json",
+      "git_blob_sha1": "f8294b0ec23319d0c5e2bc902ca5599976bd82b9",
+      "sha256": "6bf3eade2a9af22ffd2d3e0a24b8c8caf9306f70b6b418100968fb1d3b039384",
+      "bytes": 2478
+    }
+  ],
+  "workbook_coverage": {
+    "operations": 184,
+    "predecessor_operations": 128,
+    "additive_operations": 56,
+    "causal_edges": 240,
+    "inherited_phase_serial_edges_for_review": 15,
+    "dependency_core_dag_max_level": 16,
+    "sheets": 13,
+    "metric_definitions": 30,
+    "fault_scenarios": 16,
+    "comparables": 15,
+    "formula_cells_cached": 193
+  },
+  "publication_preflight": {
+    "public_safe_only": true,
+    "sensitive_local_paths_redacted": true,
+    "no_credentials_or_private_conversation_data_eligible": true,
+    "collision_check_before_commit": "NO_EXISTING_PATHS",
+    "git_reference_update": "FAST_FORWARD_WITH_EXPECTED_SHA",
+    "git_readback_four_blobs": "MATCH"
+  },
+  "lifecycle": {
+    "git_landing": "LANDED_PUBLIC",
+    "same_provider_git_readback": "VERIFIED",
+    "independently_operated_receiver_pickup": "NOT_ATTESTED",
+    "consumer_product_integration": "NOT_ATTESTED",
+    "user_interface_acceptance": "NOT_ATTESTED",
+    "canon_or_runtime": "NOT_ATTESTED",
+    "active_chats_notified": "NOT_ATTESTED"
+  },
+  "next_safe_deed": "Existing CoDesktop owner verifies a genuinely quiet 15-minute keyboard/paste task, then separately qualify local model WorkID and independent CoStead receiver readback.",
+  "nonclaims": [
+    "PUBLIC_SAFE_DEFAULT_REQUIRES_CLASSIFICATION",
+    "GIT_READBACK_NE_OFFSITE_RECEIVER",
+    "FILENAME_EQUALITY_NE_CONTENT_EQUALITY",
+    "PUBLIC_LINK_NE_ALL_SESSION_NOTIFICATION",
+    "NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF",
+    "NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE",
+    "HASHING_IS_NOT_SEMANTIC_INGESTION",
+    "DISCOVERED_SET_IS_NOT_COMPLETE_HISTORY"
+  ]
+}
