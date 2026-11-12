@@ -56,6 +56,6 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: conod-browser-profile-${{ github.run_id }}-a${{ github.run_attempt }}
-          path: out/conod/browser-profile/receipt.json
+          path: out/conod/browser-profile/
           if-no-files-found: warn
           retention-days: 30
