@@ -135,6 +135,19 @@ class AutoTurnTests(unittest.TestCase):
         for v in ("D:\\CoCivium","C:\\Users\\Owner","@inseed.com","access_token","PRIVATE_CHAT_LOG"):
             self.assertNotIn(v,s)
 
+    def test_repeat_source_turn_has_zero_new_work(self):
+        # Two separate run IDs with unchanged byte-verified source objects
+        # must not be credited as discovery or independently useful work.
+        from CoSessionAutoTurnR1 import compare_public_source_turns
+        earlier = self.turn()
+        later = compile_turn(self.root, "2026-11-12T21:30:00Z", "43300000000", "1", HEAD)
+        delta = compare_public_source_turns(earlier, later)
+        self.assertEqual(delta["classification"], "UNCHANGED_PUBLIC_SOURCES_RECHECK")
+        self.assertEqual(delta["source_digests_changed"], 0)
+        self.assertEqual(delta["verified_useful_work_outcomes"], 0)
+        self.assertEqual(delta["novel_public_source_objects"], 0)
+        self.assertFalse(delta["receiver_ack"])
+
     def test_reject_invalid_execution_identifiers(self):
         for run,attempt,head in [("0","1",HEAD),("1","0",HEAD),("1","1","BAD")]:
             with self.assertRaisesRegex(ValueError,"HOLD_"):
