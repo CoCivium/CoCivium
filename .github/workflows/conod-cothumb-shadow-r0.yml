@@ -23,6 +23,8 @@ jobs:
         run: node examples/conodcothumb/CoNodCoThumbPolicyR0.mjs --selftest
       - name: Verify deterministic offline CoContextRail build
         run: python3 examples/conodcothumb/context_rail_r1/build.py --check
+      - name: Verify source-locked CoLocal role rebind within offline ContextRail
+        run: python3 -B -m unittest discover -s examples/conodcothumb/context_rail_r1/tests -p 'test_role_rebind_panel_r0.py' -v
       - name: Exercise existing context rules and opt-in synthetic WorkID recovery
         run: |
           node --test examples/conodcothumb/context_rail_r1/tests/test_context_rail.cjs
