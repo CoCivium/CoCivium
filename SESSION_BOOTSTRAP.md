@@ -54,6 +54,12 @@ If this authorized session's actual work concerns **X2 desktop recovery, CoFocus
 
 **One re-entry objective:** Give the human one current, trustworthy state and one next safe action, not a second bootstrap essay. Existing CoPreGeneric WorkID replay is the deduplication mechanism; this is only a relevant, source-bound safety pointer. `PUBLIC_BOOTSTRAP_NE_LIVE_RECEIVER` · `MANY_READERS_ONE_ELECTED_ACTUATOR` · `RICK_NE_MAILMAN`.
 
+## Optional screenless/keyboardless roadmap | role-scoped public candidate
+
+If this session is working specifically on CoAll's headless, screenless, keyboard/mouse-optional or human-optional routine execution roadmap, read the [WorkID-scoped R1 currentness candidate](ai/currentness/coall-screen-optional-roadmap-current.json) and its pinned public-safe design source, then continue through the existing session writeback and collision rails. The private full workbook is **not** published. This candidate public pointer is not canon, a runtime deployment or automatic pickup by already-open sessions. Unrelated sessions need not ingest this topic.
+
+`PUBLIC_PROJECTION_NE_PRIVATE_PAYLOAD` · `SAME_STABLE_POINTER_NE_SHARED_MUTABLE_FILE` · `MANY_READERS_ONE_ELECTED_MERGER`
+
 ## Session currentness rule
 
 On a meaningful new session, recovery, handoff, or stale-currentness boundary:
