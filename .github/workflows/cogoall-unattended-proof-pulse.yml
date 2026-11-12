@@ -23,6 +23,9 @@ on:
       - 'SESSION_BOOTSTRAP.md'
       - 'ai/session-bootstrap.json'
       - 'tests/test_colocal_role_rebind_r0.py'
+      - 'scripts/CoSessionAutoTurnR1.py'
+      - 'tests/test_cosession_auto_turn_r1.py'
+      - 'ai/session-autoturn-public-sources-r1.json'
       - 'scripts/CoLocalRoleRebindR0.py'
       - 'ai/currentness/colocal-x2-postcontainment-focus-20261112-r1.json'
   schedule:
@@ -45,6 +48,12 @@ jobs:
           python-version: '3.12'
       - name: Check role-scoped CoLocal reentry without an X2 shell
         run: python -B -m unittest discover -s tests -p 'test_colocal_role_rebind_r0.py' -v
+      - name: Elect and verify one public-only CoSession logical turn
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B -m unittest discover -s tests -p 'test_cosession_auto_turn_r1.py' -v
+          python -B scripts/CoSessionAutoTurnR1.py --output auto-turn-r1.json
       - name: Verify one-shot durable local source WorkID (no external effect)
         run: python -B -m unittest -v test_local_source_work_cycle_r0
       - name: Execute real public CoPre source with one local durable WorkID
@@ -128,6 +137,7 @@ jobs:
           name: cogoall-proof-${{ github.run_id }}-${{ github.run_attempt }}
           path: |
             proof-receipt.json
+            auto-turn-r1.json
             decision.log
             grace.log
             succession.log
@@ -168,11 +178,17 @@ jobs:
             --source-dir out/cogoall/pulse-source \
             --receipt out/cogoall/pulse-receiver/readback.json
           python -m json.tool out/cogoall/pulse-receiver/readback.json >/dev/null
+      - name: Recompute one CoSession logical turn in the separate CI receiver job
+        run: |
+          python -B scripts/CoSessionAutoTurnR1.py \
+            --check out/cogoall/pulse-source/auto-turn-r1.json \
+            --receipt out/cogoall/pulse-receiver/autoturn-readback.json
+          python -m json.tool out/cogoall/pulse-receiver/autoturn-readback.json >/dev/null
       - name: Upload independently generated CI-scoped readback
         uses: actions/upload-artifact@v4
         with:
           name: cogoall-pulse-readback-${{ github.run_id }}-${{ github.run_attempt }}
-          path: out/cogoall/pulse-receiver/readback.json
+          path: out/cogoall/pulse-receiver/
           if-no-files-found: error
           retention-days: 30
 
