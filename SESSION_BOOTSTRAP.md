@@ -44,6 +44,16 @@ Start with:
 `PUBLIC_NE_VALIDATED`  
 `DELIVERY_NE_PICKUP`
 
+## CoLocal X2 re-entry safety | role-scoped, November 12, 2026
+
+If this authorized session's actual work concerns **X2 desktop recovery, CoFocus+, CoAll Desktop R5/R6, or local session continuity**, read the [existing CoDesktop/CoRunner owner #181](https://github.com/CoCivium/CoCivium/issues/181) and the [CoLocal post-containment R1 source](ai/currentness/colocal-x2-postcontainment-focus-20261112-r1.json). The [machine-readable role-scoped pointer](ai/session-bootstrap.json) identifies the exact source blob. **Do not apply this incident to unrelated sessions.**
+
+**Last qualified source-level state:** Three selected CoCivium scheduled tasks were disabled by an authorized incumbent and their definitions backed up. Repeated nested PowerShell launching was also found in another task. No verified attribution of all flashing windows, sustained quiet keyboard/paste UX, R6 deployment, or successful receiver restoration has followed from those findings. The incumbent owner must be refreshed before any proposed effect because this source can become stale.
+
+**No second actuator:** Do not start optional X2 `start_process`, PS7, CMD, new scheduled probes, task toggles, process kills or another watcher to answer an already-open incident. Existing shell-free receipts and process inventories can inform a bounded challenge, but even a shell-free read does not prove an incident cure. If independent causal evidence or an approved effect owner is absent, return `HOLD_CAUSE_UNATTRIBUTED`. Generic assent, public links and repeated session prompts are not cross-session pickup receipts. For a new unrelated session, ignore this incident-specific branch.
+
+**One re-entry objective:** Give the human one current, trustworthy state and one next safe action, not a second bootstrap essay. Existing CoPreGeneric WorkID replay is the deduplication mechanism; this is only a relevant, source-bound safety pointer. `PUBLIC_BOOTSTRAP_NE_LIVE_RECEIVER` · `MANY_READERS_ONE_ELECTED_ACTUATOR` · `RICK_NE_MAILMAN`.
+
 ## Session currentness rule
 
 On a meaningful new session, recovery, handoff, or stale-currentness boundary:
