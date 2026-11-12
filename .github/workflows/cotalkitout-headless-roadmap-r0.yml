@@ -1,0 +1,41 @@
+name: CoTalkItOut Headless Autonomy R0 source integrity
+
+on:
+  pull_request:
+    paths:
+      - 'docs/Operations/COTALKITOUT_HEADLESS_AUTONOMY_INDEX_R0.md'
+      - 'ai/roadmaps/CoTalkItOut_CausalOps_R0_20261112.csv'
+      - 'scripts/verify_cotalkitout_headless_roadmap_r0.py'
+      - '.github/workflows/cotalkitout-headless-roadmap-r0.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'docs/Operations/COTALKITOUT_HEADLESS_AUTONOMY_INDEX_R0.md'
+      - 'ai/roadmaps/CoTalkItOut_CausalOps_R0_20261112.csv'
+      - 'scripts/verify_cotalkitout_headless_roadmap_r0.py'
+      - '.github/workflows/cotalkitout-headless-roadmap-r0.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: cotalk-headless-r0-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  source-validation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout exact source without persistent credentials
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+          sparse-checkout: |
+            docs/Operations/COTALKITOUT_HEADLESS_AUTONOMY_INDEX_R0.md
+            ai/roadmaps/CoTalkItOut_CausalOps_R0_20261112.csv
+            scripts/verify_cotalkitout_headless_roadmap_r0.py
+          sparse-checkout-cone-mode: false
+      - name: Verify exact immutable public-safe graph and in-memory negative cases
+        run: python3 -B scripts/verify_cotalkitout_headless_roadmap_r0.py --selftest
