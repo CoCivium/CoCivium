@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CoMap+ CoLocal source lens R1 | CoCivium</title>
+<meta name="description" content="Optional offline CoMap evidence lens: 5 typed new relations, two source documents, and explicit limits of source-side CI. Not live X2 runtime.">
+<style>
+:root{color-scheme:dark;--bg:#07121b;--surface:#112533;--surface2:#162d3a;--border:#315467;--ink:#edf8fe;--muted:#bbccd6;--teal:#7bded4;--violet:#d2b4ff;--gold:#ffdd94;--red:#ffaeab}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 95% -20%,#1c4b58,transparent 55%),var(--bg);color:var(--ink);font:16px/1.5 system-ui,Segoe UI,sans-serif}
+main{max-width:1180px;margin:auto;padding:clamp(14px,3vw,32px)}a{color:var(--teal);overflow-wrap:anywhere}button,input{font:inherit}button,input{color:var(--ink);background:var(--surface2);border:1px solid #688699;border-radius:10px;padding:10px}
+button{cursor:pointer}button:hover{border-color:var(--teal)}:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+nav{display:flex;gap:16px;flex-wrap:wrap;font-size:.92rem}.eyebrow{margin:20px 0 5px;color:var(--teal);font-size:.82rem;letter-spacing:.11em;text-transform:uppercase;font-weight:700}
+h1{font-size:clamp(1.95rem,4.7vw,3.1rem);line-height:1.1;margin:.25rem 0 .8rem}h2{font-size:1.18rem;margin:.2rem 0 14px}h3{font-size:1rem;margin:.5rem 0}
+.lead{color:var(--muted);max-width:810px;margin:0 0 16px}.facts{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0}.fact{border:1px solid var(--border);border-radius:12px;background:var(--surface);padding:8px 13px;min-width:138px}.fact strong{display:block;font-size:1.4rem;font-variant-numeric:tabular-nums}.fact span{color:var(--muted);font-size:.81rem}
+.warning{border-left:3px solid var(--gold);background:#1b272e;padding:12px 15px;border-radius:8px;color:#f6e4b7;font-size:.94rem}
+.controls{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin:20px 0 14px}.controls input{flex:1 1 230px;min-width:160px}.controls label{font-weight:650}.filters{display:flex;gap:6px;flex-wrap:wrap}.filters button[aria-pressed="true"]{background:#24564e;border-color:var(--teal);color:white}
+.columns{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(285px,.85fr);gap:16px;margin:14px 0}
+.card{background:linear-gradient(140deg,#112835,#0d1b27);border:1px solid var(--border);border-radius:16px;padding:17px;min-width:0}
+.nodes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.node{display:block;width:100%;min-height:72px;text-align:left;border-color:var(--border);font-weight:650;line-height:1.26;background:#1a3440}
+.node small{display:block;color:var(--muted);font-size:.73rem;font-weight:450;margin-top:6px;overflow-wrap:anywhere}.node[aria-pressed=true]{border-color:var(--teal);background:#21493f}
+.detail-title{font-weight:750;font-size:1.12rem;margin:0 0 12px}.muted{color:var(--muted)}.mono{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:.76rem;overflow-wrap:anywhere}
+ol{padding-left:1.5rem;margin:0}.relation{margin-bottom:9px;padding:12px 12px 12px 3px;border-bottom:1px solid var(--border)}
+.relation:last-child{border-bottom:none}.edge-button{border:0;background:none;padding:0;text-align:left;color:var(--ink);display:block;width:100%;cursor:pointer}
+.edge-button:focus-visible{outline:2px solid var(--gold)}.edge-label{color:var(--violet);font-weight:700;font-size:.83rem;overflow-wrap:anywhere}.edge-nodes{display:block;font-size:.95rem}.edge-state{color:var(--muted);display:block;font-size:.78rem;overflow-wrap:anywhere}
+#count{color:var(--muted);font-size:.86rem;margin:.5rem 0 1rem}.empty{color:var(--gold)}.source-links{display:flex;flex-wrap:wrap;gap:14px;margin-top:15px}
+footer{color:var(--muted);font-size:.83rem;margin-top:18px;padding-top:14px;border-top:1px solid var(--border)}
+@media(max-width:790px){.columns{grid-template-columns:1fr}.nodes{grid-template-columns:1fr 1fr}}
+@media(max-width:440px){main{padding:13px}.nodes{grid-template-columns:1fr}.fact{flex:1 1 42%;min-width:0}.controls input{flex-basis:100%}nav{gap:11px}}
+</style></head><body>
+<main>
+<nav aria-label="CoMap paths"><a href="README.md">CoMap home</a><a href="source-weave-r0.html">Original interactive R0</a><a href="../../docs/CoLocal/README.md">CoLocal CoPath</a></nav>
+<p class="eyebrow">CoMap+ / CoLocal+ / optional source lens</p><h1>One Seed. Five inspectable relations.</h1>
+<p class="lead">A focused, offline-readable view of what changed between CoMap R0 and the CoLocal evidence successor R1. Browse source-bound design candidates and CI evidence without mistaking either for a living receiver.</p>
+<div class="facts" aria-label="Graph counts"><div class="fact"><strong>56 → 58</strong><span>source objects, full graph</span></div><div class="fact"><strong>61 → 66</strong><span>typed relations, full graph</span></div><div class="fact"><strong>2</strong><span>new public source documents</span></div><div class="fact"><strong>5</strong><span>new relations shown below</span></div></div>
+<p class="warning"><strong>Evidence boundary:</strong> GitHub source CI passed its bounded tests. X2 receiver currentness, independent-host pickup, CoStead recovery, CoAll admission, and deployed CoOrb runtime are <strong>not verified</strong>.</p>
+<div class="controls"><label for="search">Find a relation</label><input id="search" placeholder="Search source, evidence, GRAIL, CoEv…" autocomplete="off" aria-controls="relations">
+<div class="filters" role="group" aria-label="Relation type"><button type="button" data-filter="all" aria-pressed="true">All five</button><button type="button" data-filter="seed" aria-pressed="false">Design</button><button type="button" data-filter="ci" aria-pressed="false">Source CI</button></div><button type="button" id="reset">Reset</button></div>
+<div class="columns"><section class="card" aria-labelledby="nodesHeading"><h2 id="nodesHeading">Relationship endpoints</h2><div id="nodes" class="nodes" role="group" aria-label="Select an object"></div><p class="muted" style="font-size:.82rem">These are the five endpoints of the new relations, not the entire 58-node graph. The original R0 remains available separately.</p></section>
+<section class="card" aria-labelledby="detailHeading"><h2 id="detailHeading">Inspect an object</h2><p id="detailTitle" class="detail-title">Select a source</p><p id="detailStatus" class="muted"></p><p id="detailID" class="mono"></p><div id="detailLinks" class="source-links"></div></section></div>
+<section class="card" aria-labelledby="relationsHeading"><h2 id="relationsHeading">New typed relations</h2><p id="count" role="status" aria-live="polite"></p><ol id="relations"></ol><p id="empty" class="empty" hidden>No relations match this view. Try clearing the search or selecting All five.</p></section>
+<footer>Offline, source-pinned, no external requests or telemetry. Source snapshot: 12 November 2026. This HTML is an optional view, not the live CoMap runtime, a receiver acknowledgment, or evidence of human benefit. <a href="../../ai/comap-colocal-currentness-projection-r1.json">Inspect complete R1 source JSON</a>.</footer>
+</main>
+<script type="application/json" id="evidencePayload">{"schema":"CoAll.CoMap.CoLocalSourceLens.R1","r1_source_blob":"1c9eb9b4c608d2f13dc3d7bc8ec524831d6708a3","base_nodes":56,"base_edges":61,"r1_nodes":58,"r1_edges":66,"display_scope":"FIVE_NEW_RELATIONS_ONLY_NOT_WHOLE_GRAPH","nodeCount":5,"edgeCount":5,"source_ci":"PASS_SOURCE_CI_ONLY_NOT_X2","external_receiver_ack":false,"nodes":[{"id":"view:CoMap+","label":"CoMap+ projection","kind":"map","status":"PROJECTION_CANDIDATE","source":"source:CoMapIssue217","url":null},{"id":"domain:CoAutoEvo+/CoEvo+","label":"CoAutoEvo+/CoEvo+","kind":"domain","status":"CONTROL_PLANE","source":"source:ai/evolution-lanes.json","url":null},{"id":"domain:CoNodeMesh+/GRAIL+","label":"CoNodeMesh+/GRAIL+","kind":"domain","status":"FEDERATED_NODE_CURRENTNESS","source":"source:ai/evolution-lanes.json","url":null},{"id":"doc:docs/CoLocal/CoLocal2601109_CoRelGRAILS_CoSeed_R0.md","label":"CoLocal CoRelGRAILS candidate Seed","kind":"source_document","status":"PUBLIC_CANDIDATE_NOT_CANON","source":"source:CoLocal2601109_CoRelGRAILS_R0","url":"https://github.com/CoCivium/CoCivium/blob/311fd21f2fbfeca1c70af023dc5fcd0c7ff3e539/docs/CoLocal/CoLocal2601109_CoRelGRAILS_CoSeed_R0.md"},{"id":"doc:ai/currentness/colocal-cospeedo-currentness-ci-r0-20261112.json","label":"CoCurrentnessGate R0 CI (15 synthetic tests)","kind":"source_document","status":"PASS_SOURCE_CI_ONLY_NOT_RECEIVER","source":"source:CoLocalCurrentnessCI_R0","url":"https://github.com/CoCivium/CoCivium/blob/1c10b2e3ac63f9ed14a346cd0210323ececfa082/ai/currentness/colocal-cospeedo-currentness-ci-r0-20261112.json"}],"edges":[{"id":"e62","from":"view:CoMap+","to":"doc:docs/CoLocal/CoLocal2601109_CoRelGRAILS_CoSeed_R0.md","relation":"PUBLIC_CANDIDATE_SOURCE_FOR_REVIEW","source":"source:CoLocal2601109_CoRelGRAILS_R0","state":"SOURCE_REFERENCED_NOT_ADOPTED"},{"id":"e63","from":"domain:CoNodeMesh+/GRAIL+","to":"doc:docs/CoLocal/CoLocal2601109_CoRelGRAILS_CoSeed_R0.md","relation":"RELATED_RELATIONAL_DESIGN_CANDIDATE","source":"source:CoLocal2601109_CoRelGRAILS_R0","state":"CONTEXTUAL_LINK"},{"id":"e64","from":"domain:CoAutoEvo+/CoEvo+","to":"doc:ai/currentness/colocal-cospeedo-currentness-ci-r0-20261112.json","relation":"CURRENTNESS_SOURCE_CI_PROOF_REFERENCE","source":"source:CoLocalCurrentnessCI_R0","state":"PASS_SOURCE_CI_ONLY"},{"id":"e65","from":"view:CoMap+","to":"doc:ai/currentness/colocal-cospeedo-currentness-ci-r0-20261112.json","relation":"SOURCE_CI_EVIDENCE_REFERENCE","source":"source:CoLocalCurrentnessCI_R0","state":"PASS_SOURCE_CI_ONLY"},{"id":"e66","from":"doc:docs/CoLocal/CoLocal2601109_CoRelGRAILS_CoSeed_R0.md","to":"doc:ai/currentness/colocal-cospeedo-currentness-ci-r0-20261112.json","relation":"RELATED_COLOCAL_WORKSTREAM","source":"source:CoLocalCurrentnessCI_R0","state":"CONTEXTUAL_LINK_NOT_SEED_VALIDATION"}],"sources":[{"id":"source:CoLocal2601109_CoRelGRAILS_R0","path":"docs/CoLocal/CoLocal2601109_CoRelGRAILS_CoSeed_R0.md","url":"https://github.com/CoCivium/CoCivium/blob/311fd21f2fbfeca1c70af023dc5fcd0c7ff3e539/docs/CoLocal/CoLocal2601109_CoRelGRAILS_CoSeed_R0.md","blob_sha":"c9c6dd3a4d6074a5a34e3decdbeb56f574d9f200","kind":"public_design_candidate"},{"id":"source:CoLocalCurrentnessCI_R0","path":"ai/currentness/colocal-cospeedo-currentness-ci-r0-20261112.json","url":"https://github.com/CoCivium/CoCivium/blob/1c10b2e3ac63f9ed14a346cd0210323ececfa082/ai/currentness/colocal-cospeedo-currentness-ci-r0-20261112.json","blob_sha":"b86ec3d7a30a9c1bb6e96c75fd242a3fe8c5cc97","kind":"verified_source_ci_only"}]}</script>
+<script>
+"use strict";
+const data=JSON.parse(document.getElementById("evidencePayload").textContent);
+const byId=new Map(data.nodes.map(n=>[n.id,n]));
+const el=id=>document.getElementById(id);
+const short=id=>(byId.get(id)||{label:id}).label;
+let selected=data.nodes.find(n=>n.kind==="source_document")?.id||data.nodes[0].id;
+let filter="all";
+function group(e){return e.source==="source:CoLocal2601109_CoRelGRAILS_R0"?"seed":"ci"}
+function inspect(id){
+  const n=byId.get(id);if(!n)return;
+  selected=id;el("detailTitle").textContent=n.label;el("detailStatus").textContent="Evidence class: "+n.status;
+  el("detailID").textContent=n.id;const links=el("detailLinks");links.replaceChildren();
+  if(n.url){const a=document.createElement("a");a.href=n.url;a.target="_blank";a.rel="noopener noreferrer";a.textContent="Open pinned public source";links.append(a)}
+  else{const p=document.createElement("span");p.className="muted";p.textContent="Existing R0 endpoint. See original graph for provenance.";links.append(p)}
+  el("nodes").querySelectorAll("button").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.id===id)));
+}
+function visibleEdges(){
+ const q=el("search").value.trim().toLowerCase();
+ return data.edges.filter(e=>{
+  if(filter!=="all"&&group(e)!==filter)return false;
+  const hay=[e.id,e.relation,e.state,short(e.from),short(e.to)].join(" ").toLowerCase();
+  return !q||hay.includes(q);
+ });
+}
+function draw(){
+ const shown=visibleEdges();const ids=new Set(shown.flatMap(e=>[e.from,e.to]));
+ const box=el("nodes");box.replaceChildren();
+ for(const n of data.nodes){if(!ids.has(n.id))continue;
+  const b=document.createElement("button");b.type="button";b.className="node";b.dataset.id=n.id;b.setAttribute("aria-pressed",String(n.id===selected));
+  b.textContent=n.label;const small=document.createElement("small");small.textContent=n.kind==="source_document"?"Public document · "+n.status:"Existing R0 endpoint";b.append(small);
+  b.addEventListener("click",()=>inspect(n.id));box.append(b);
+ }
+ if(box.children.length&&!ids.has(selected))selected=[...ids][0];
+ if(box.children.length)inspect(selected);
+ const list=el("relations");list.replaceChildren();
+ for(const e of shown){const li=document.createElement("li");li.className="relation";
+  const b=document.createElement("button");b.type="button";b.className="edge-button";
+  const title=document.createElement("span");title.className="edge-label";title.textContent=e.relation;
+  const endpoints=document.createElement("span");endpoints.className="edge-nodes";endpoints.textContent=short(e.from)+" → "+short(e.to);
+  const status=document.createElement("span");status.className="edge-state";status.textContent=e.id+" · "+e.state;
+  b.append(title,endpoints,status);b.addEventListener("click",()=>inspect(e.to));li.append(b);list.append(li);
+ }
+ el("count").textContent=shown.length+" of 5 new source-typed relations shown";
+ el("empty").hidden=shown.length!==0;
+}
+document.querySelectorAll("[data-filter]").forEach(b=>b.addEventListener("click",()=>{
+ filter=b.dataset.filter;document.querySelectorAll("[data-filter]").forEach(x=>x.setAttribute("aria-pressed",String(x===b)));draw();
+}));
+el("search").addEventListener("input",draw);
+el("reset").addEventListener("click",()=>{el("search").value="";filter="all";document.querySelectorAll("[data-filter]").forEach(x=>x.setAttribute("aria-pressed",String(x.dataset.filter==="all")));draw()});
+draw();
+</script></body></html>
