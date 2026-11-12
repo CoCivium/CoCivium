@@ -44,7 +44,7 @@ function node(id, options={}) {
 }
 const ids=["app","field","mapBtn","textBtn","ambientBtn","threeBtn",
   "footerMode","draft","ghost","receipt","focusText","acceptBtn","undoBtn","rejectBtn",
-  "machineProof","textMachineProof"];
+  "machineProof","textMachineProof","humanCurrentness"];
 const nodes=Object.fromEntries(ids.map(id=>[id,node(id)]));
 nodes.draft.value="Sample raw input";
 nodes.ghost.textContent="Candidate: test a recovery path";
@@ -61,6 +61,7 @@ function test(label, fn){fn();checks++;console.log("PASS "+label);}
 test("human and text machine readbacks share identical source bytes",()=>{
   assert.equal(nodes.machineProof.textContent,nodes.textMachineProof.textContent);
   const record=JSON.parse(nodes.machineProof.textContent);
+  assert.equal(nodes.humanCurrentness.textContent,"fixture only");
   assert.equal(record.schema,"CoGbx.SurfaceParity.R1");
   assert.equal(record.work_id,"cogbx:synthetic:one-work");
   assert.equal(record.evidence_class,"SYNTHETIC_OFFLINE_FIXTURE");
