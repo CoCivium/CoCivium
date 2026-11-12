@@ -62,6 +62,25 @@ summary{cursor:pointer;font-weight:700;margin-bottom:10px}details p{font-size:.8
 <div class="row"><div class="glyph">⏸</div><div><strong>0 active workers</strong><div class="subtle">No scheduler, auto-input, network, model or always-on agent</div></div></div>
 <blockquote>Question ? → prior ↔ → inversion ¬ → candidate ◇ → test ✓/✕/⏸ → receipt → sleep.</blockquote>
 </section>
+
+<details class="panel" id="rebindPanel" aria-labelledby="rebindHeading">
+<summary id="rebindHeading">CoHereNow | Rejoin one source-bound X2 work thread</summary>
+<p class="subtle">Optional public source snapshot only, dated November 12, 2026. It does not read other chats, inspect X2, change your desktop, or notify sessions. The current owner must be refreshed before any action.</p>
+<label for="rebindRole">Work role</label>
+<select id="rebindRole"><option value="NONE">Other work (no X2 incident content)</option>
+<option value="X2_DESKTOP_RECOVERY">X2 desktop recovery</option>
+<option value="COLOCAL_SESSION_RECOVERY">CoLocal session recovery</option>
+<option value="COALL_DESKTOP_R5_R6">CoAll Desktop R5 / R6</option>
+<option value="COFOCUS_COPING">CoFocus investigation</option></select>
+<div class="controls"><button id="rebindInspect" type="button">Inspect source-bound state</button></div>
+<div class="result" role="region" aria-label="Source rebind result">
+<div class="status" id="rebindState" aria-live="polite">NOT REQUESTED</div>
+<p class="subtle" id="rebindNarrative">Unrelated work receives no X2 incident content. This is not live recovery or a receiver ACK.</p>
+<p class="small" id="rebindIdentity" hidden></p>
+<a id="rebindOwner" hidden href="https://github.com/CoCivium/CoCivium/issues/181" target="_blank" rel="noopener noreferrer">Open current CoDesktop owner and evidence</a>
+</div>
+<p class="small">CoPreGeneric WorkID and source evidence are separate from any ChatGPT tab. The default is no extra worker, no external network request, and no automatic task effects.</p>
+</details>
 </div>
 </div>
 <footer>FOSS Forever · Working Together Respectfully · Display for effects; wearable optional · No crowns / No coercion / No corruption. This synthetic demonstration does not read your clipboard, real selected files, installed apps, device IDs, passwords or keystrokes.</footer>
@@ -155,6 +174,37 @@ $('download').addEventListener('click',()=>{
  const href=URL.createObjectURL(new Blob([data],{type:'application/json'}));
  const a=document.createElement('a');a.href=href;a.download='CoContextRail_R1_PROPOSAL_ONLY.json';document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(href);
 });
+})();
+</script>
+
+<script type="application/json" id="coRoleRebindSnapshot">{"schema":"CoAll.CoContextRail.RoleRebindProjection.R0","work_id":"CoLocal2601109_X2_R5_FOCUS_INTERRUPTION_20261112","role_topics":["X2_DESKTOP_RECOVERY","COLOCAL_SESSION_RECOVERY","COALL_DESKTOP_R5_R6","COFOCUS_COPING"],"owner":"https://github.com/CoCivium/CoCivium/issues/181","source_path":"ai/currentness/colocal-x2-postcontainment-focus-20261112-r1.json","source_blob_sha1":"7350c0bdc3661c6ccbc803df11a16c960da85675","source_observation_date":"2026-11-12","state":"PUBLIC_SNAPSHOT_OWNER_REFRESH_REQUIRED","operation_authorized":false,"live_x2_currentness_verified":false,"external_receiver_ack":false,"cohere":"Three selected recurring tasks were contained with backups; the overall popup cause and sustained keyboard recovery are unverified.","conext":"Read the current CoDesktop owner and preserve the quiet interval. No duplicate PS7 diagnostics or task changes."}</script>
+<script>
+(function(){'use strict';
+const data=JSON.parse(document.getElementById('coRoleRebindSnapshot').textContent);
+const byId=id=>document.getElementById(id);
+function render(){
+ const role=byId('rebindRole').value;
+ const valid=Array.isArray(data.role_topics)&&data.role_topics.includes(role);
+ byId('rebindIdentity').hidden=!valid;
+ byId('rebindOwner').hidden=!valid;
+ if(!valid){
+  byId('rebindState').textContent='NO_RELEVANT_INCIDENT_CONTENT';
+  byId('rebindNarrative').textContent='This role does not need the X2 source snapshot. No session, device or worker has been contacted.';
+  byId('rebindIdentity').textContent='';
+  return;
+ }
+ if(data.operation_authorized!==false||data.external_receiver_ack!==false||data.live_x2_currentness_verified!==false){
+  byId('rebindState').textContent='HOLD_UNSAFE_PROJECTION';
+  byId('rebindNarrative').textContent='The source projection asserts an unsupported operational effect. Do not act.';
+  byId('rebindIdentity').hidden=true;
+  byId('rebindOwner').hidden=true;
+  return;
+ }
+ byId('rebindState').textContent='SOURCE_BOUND_REBIND_OWNER_REFRESH_REQUIRED';
+ byId('rebindNarrative').textContent='CoHereNow: '+data.cohere+' CoNext: '+data.conext;
+ byId('rebindIdentity').textContent='WorkID: '+data.work_id+' | Source blob: '+data.source_blob_sha1+' | Snapshot: '+data.source_observation_date;
+}
+byId('rebindInspect').addEventListener('click',render);
 })();
 </script>
 </body></html>
