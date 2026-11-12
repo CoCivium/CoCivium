@@ -65,7 +65,7 @@ a{color:inherit}
 .kv span:nth-child(even){color:var(--accent)}
 .paths{display:grid;grid-template-columns:repeat(2,1fr);gap:6px}
 .path{border:1px solid var(--line);border-radius:10px;padding:8px;font-size:12px}
-.path b{display:block}.ok{color:var(--ok)}.held{color:var(--warn)}
+.path b{display:block}.ok{color:var(--ok)}.held{color:var(--warn)}.candidate{color:var(--muted)}
 .predict{display:grid;gap:8px}
 .inputwrap{position:relative}
 .inputwrap input{width:100%;padding:10px;border-radius:10px;border:1px solid var(--line);background:#0b1016;color:var(--text)}
@@ -164,19 +164,19 @@ footer{padding:10px 16px;color:var(--muted);font-size:12px;border-top:1px solid 
       <section class="card">
         <h2>CoHereNow</h2>
         <div class="kv">
-          <span>currentness</span><span>local current</span>
+          <span>currentness</span><span id="humanCurrentness">fixture only</span>
           <span>authority</span><span>preview only</span>
-          <span>recovery</span><span>available</span>
-          <span>crown risk</span><span>low</span>
+          <span>recovery</span><span>candidate only</span>
+          <span>crown risk</span><span>not assessed</span>
         </div>
       </section>
 
       <section class="card">
         <h3>Independent paths</h3>
         <div class="paths">
-          <div class="path"><b class="ok">LOCAL</b>typed recovery</div>
-          <div class="path"><b class="ok">WEB</b>replaceable renderer</div>
-          <div class="path"><b class="ok">PEER</b>federated candidate</div>
+          <div class="path"><b class="candidate">LOCAL</b>typed recovery candidate</div>
+          <div class="path"><b class="candidate">WEB</b>replaceable renderer</div>
+          <div class="path"><b class="candidate">PEER</b>federated candidate</div>
           <div class="path"><b class="held">MODEL</b>provider optional</div>
         </div>
         <p class="notice">Redundancy does not duplicate authority.</p>
@@ -217,7 +217,7 @@ footer{padding:10px 16px;color:var(--muted);font-size:12px;border-top:1px solid 
       </section>
       <section>
         <h2>Current</h2>
-        <p>A synthetic durable work object is current locally. One remote embodiment is explicitly unknown. No external action is authorized.</p>
+        <p>This is a synthetic illustration of a work object, not live local state. One remote embodiment remains explicitly unknown. No external action is authorized.</p>
         <h2>Next</h2>
         <p>Preview one reversible action, compare its evidence and recovery path, then explicitly accept or reject it.</p>
         <h2>Unknown</h2>
@@ -275,6 +275,7 @@ footer{padding:10px 16px;color:var(--muted);font-size:12px;border-top:1px solid 
     provider_calls: 0
   });
   const machineReadback = JSON.stringify(sourcePacket, null, 2);
+  document.getElementById("humanCurrentness").textContent = "fixture only";
   document.getElementById("machineProof").textContent = machineReadback;
   document.getElementById("textMachineProof").textContent = machineReadback;
   const originalGhostText = ghost.textContent;
