@@ -7,9 +7,8 @@ Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
 
 function Get-SafeLabel([string]$Label) {
-    if ($Label -match '(?i)(coall|cocivium|rickbar|cobar|coorb|costead|cofarm|costel|corunner)') {
-        return $Label.Substring(0, [Math]::Min($Label.Length, 100))
-    }
+    # CoAll task names can contain private user names or paths too.
+    # Hash all untrusted identities; label relatedness separately.
     $bytes = [System.Text.Encoding]::UTF8.GetBytes($Label)
     $hash = [System.Security.Cryptography.SHA256]::HashData($bytes)
     return 'other-sha256-' + [Convert]::ToHexString($hash).Substring(0, 16).ToLowerInvariant()
@@ -37,6 +36,7 @@ function Get-LaunchHint([string]$Executable, [string]$Arguments) {
         launcher_class = $kind
         hidden_window_argument_present = [bool]$hiddenFlag
         window_risk = $risk
+        console_flash_possible = [bool]$console
     }
 }
 
@@ -58,6 +58,7 @@ if ($SelfTest) {
     $hidden = Get-LaunchHint 'pwsh.exe' '-NoProfile -WindowStyle Hidden -File x.ps1'
     $py = Get-LaunchHint 'pythonw.exe' 'x.py'
     $safe = Get-SafeLabel 'Unrelated task with private details'
+    $safeCoAll = Get-SafeLabel 'CoAll PRIVATE_PERSON_DO_NOT_ECHO'
     $mouseRole = Get-ProcessRole 'logioptionsplus_agent.exe'
     $localModelRole = Get-ProcessRole 'ollama.exe'
     $coallRole = Get-ProcessRole 'CoAllDesktop.exe'
@@ -67,6 +68,8 @@ if ($SelfTest) {
         $hidden.window_risk -ne 'WINDOW_VISIBILITY_UNPROVEN' -or
         $py.launcher_class -ne 'PYTHONW' -or
         $safe -notmatch '^other-sha256-[0-9a-f]{16}$' -or
+        $safeCoAll -notmatch '^other-sha256-[0-9a-f]{16}$' -or
+        $hidden.console_flash_possible -ne $true -or
         $mouseRole -ne 'MOUSE_UTILITY_CANDIDATE' -or
         $localModelRole -ne 'LOCAL_MODEL_CANDIDATE' -or
         $coallRole -ne 'COALL_SURFACE_CANDIDATE' -or
