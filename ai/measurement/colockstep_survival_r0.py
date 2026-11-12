@@ -133,9 +133,29 @@ def run_survival():
             initial_verify = check_verifier(qualified, optimized)
             receipt_sha_before = sha256(qualified / "registry_test_receipt_r0.json")
 
-            # Partial green is deliberately inadequate: first-use tests do
-            # not exercise centimetre conversion, but verifier must reject.
-            candidate_demo = check_demo(successor, optimized, corrupt_sha)
+            # A stricter source verifier can cause first-use to fail early;
+            # that is an improvement, not baseline damage. Never bless a
+            # random demo crash: require explicit unit-anchor rejection.
+            demo_process = run_python(successor, "first_use_demo_r0.py", optimized)
+            require(demo_process.returncode in (0, 2),
+                    "CANDIDATE_DEMO_UNEXPECTED_EXIT_" + mode)
+            try:
+                candidate_demo = json.loads(demo_process.stdout)
+            except json.JSONDecodeError as exc:
+                raise RuntimeError("HOLD_COLOCKSTEP_R0: CANDIDATE_DEMO_UNREADABLE") from exc
+            require(candidate_demo.get("scope") == "SYNTHETIC_DOMAIN_DEMO_ONLY"
+                    and candidate_demo.get("registry_sha256") == corrupt_sha,
+                    "CANDIDATE_DEMO_SOURCE_OR_SCOPE")
+            demo_partially_green = (
+                demo_process.returncode == 0 and
+                candidate_demo.get("passed") == candidate_demo.get("total") == 8)
+            if not demo_partially_green:
+                require(demo_process.returncode == 2 and
+                        candidate_demo.get("passed", 8) < candidate_demo.get("total", 0) == 8,
+                        "CANDIDATE_DEMO_NOT_EXPLICITLY_FAILED_" + mode)
+                require(any("UNIT_ANCHOR_SCALE_MISMATCH" in case.get("observed", "")
+                            for case in candidate_demo.get("cases", [])),
+                        "CANDIDATE_DEMO_FAILED_FOR_UNRELATED_REASON_" + mode)
             failed_verifier = run_python(successor, "verify_registry_r0_1.py",
                                          optimized)
             require(failed_verifier.returncode != 0,
@@ -159,7 +179,8 @@ def run_survival():
             outcomes.append({
                 "mode": mode, "baseline_demo_passed_before_and_after": 8,
                 "baseline_registry_asserted_cases_before_and_after": 35,
-                "candidate_demo_partial_green": candidate_demo["passed"] == 8,
+                "candidate_demo_partial_green": demo_partially_green,
+                "candidate_demo_rejected_early_for_anchor_mismatch": not demo_partially_green,
                 "candidate_verifier_rejected": True,
                 "candidate_success_receipt_written": False,
                 "baseline_receipt_unchanged": True,
