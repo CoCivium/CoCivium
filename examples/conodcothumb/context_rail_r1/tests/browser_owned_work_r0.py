@@ -83,6 +83,11 @@ def main():
                 require("7350c0bdc3661c6ccbc803df11a16c960da85675"
                         in page.locator("#rebindIdentity").inner_text(),
                         "ROLE_REBIND_SOURCE_DIGEST_MISSING")
+                # Public-only screenshot in existing GitHub Actions artifact.
+                capture = pathlib.Path("out/conod/browser-profile")
+                capture.mkdir(parents=True, exist_ok=True)
+                page.screenshot(path=str(capture / "colocal-role-rebind-mobile.png"),
+                                full_page=True)
                 page.locator("#rebindRole").select_option("NONE")
                 page.locator("#rebindInspect").click()
                 require(page.locator("#rebindOwner").is_hidden(),
@@ -169,6 +174,28 @@ def main():
                 require(page.locator("#workState").inner_text() == "HELD_REVOKED",
                         "REVOKED_RECORD_REWRITTEN")
                 events.append("REVOKE_SURVIVES_SECOND_RESTART")
+            finally:
+                ctx.close()
+
+            # A second, real desktop viewport in the same isolated, network-blocked
+            # Chromium test. The source snapshot must not pretend to be X2 live.
+            desktop_viewport = {"width": 1280, "height": 850}
+            ctx, page = browse(playwright, profile, html, requests, viewport=desktop_viewport)
+            try:
+                page.locator("#rebindPanel summary").click()
+                page.select_option("#rebindRole", "COALL_DESKTOP_R5_R6")
+                page.locator("#rebindInspect").click()
+                require(page.locator("#rebindState").inner_text()
+                        == "SOURCE_BOUND_REBIND_OWNER_REFRESH_REQUIRED",
+                        "DESKTOP_SOURCE_REBIND_NOT_QUALIFIED")
+                require(page.locator("#rebindOwner").is_visible(),
+                        "DESKTOP_OWNER_LINK_MISSING")
+                require(not page.evaluate(
+                    "document.documentElement.scrollWidth > window.innerWidth + 1"),
+                    "DESKTOP_HORIZONTAL_OVERFLOW")
+                page.screenshot(path="out/conod/browser-profile/colocal-role-rebind-desktop.png",
+                                full_page=True)
+                events.append("DESKTOP_ROLE_REBIND_BOUNDED_BROWSER")
             finally:
                 ctx.close()
 
