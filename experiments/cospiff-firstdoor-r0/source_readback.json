@@ -1,0 +1,56 @@
+{
+  "schema": "CoSpiff.GitHubConnectorReadback.R0",
+  "observed_date": "2026-10-24",
+  "http_hosted_reachability": "NOT_RUN",
+  "independent_users": "NOT_MEASURED",
+  "connector_readback_only": true,
+  "observations": [
+    {
+      "id": "one-task",
+      "locator": "https://github.com/CoCivium/CoCivium/blob/main/docs/Onramp/COCIVIA_FIRST_USE_R0.md",
+      "observed_blob": "f18aec48eaa02fc15cdfb66a1b025460d57e02ff",
+      "method": "GitHub connector fetch_file",
+      "matched_pinned_registry_blob": true
+    },
+    {
+      "id": "words",
+      "locator": "https://github.com/CoCivium/CoCivium/blob/main/examples/coprecursor/index.html",
+      "observed_blob": "773e9de7aa7c6b03bf0bc75eddb7ca0a0c8dd101",
+      "method": "GitHub connector fetch_file",
+      "matched_pinned_registry_blob": true
+    },
+    {
+      "id": "civic",
+      "locator": "https://github.com/CoCivium/CoAcademy/blob/master/docs/civiclens/index.html",
+      "observed_blob": "98e152b7cd589fd69332cc935af994d68fc18616",
+      "method": "GitHub connector fetch_file",
+      "matched_pinned_registry_blob": true
+    },
+    {
+      "id": "relationships",
+      "locator": "https://github.com/CoCivium/CoAcademy/blob/master/docs/coorb/index.html",
+      "observed_blob": "634adc3ae92e5aba9671427ca56a78a1a72d05f9",
+      "method": "GitHub connector fetch_file",
+      "matched_pinned_registry_blob": true
+    },
+    {
+      "id": "play",
+      "locator": "https://github.com/CoCivium/CoAcademy/blob/master/docs/coplay/votes-for-sale/index.html",
+      "observed_blob": "ccbbfdb381144e5f2f6805921da5e33f9389413e",
+      "method": "GitHub connector fetch_file",
+      "matched_pinned_registry_blob": true
+    },
+    {
+      "id": "build",
+      "locator": "https://github.com/CoCivium/CoCivium/blob/main/examples/coattractorpull/index.html",
+      "observed_blob": "b0ab26ebc2b2ec7cf6e4ab601798d34c1cb66349",
+      "method": "GitHub connector fetch_file",
+      "matched_pinned_registry_blob": true
+    }
+  ],
+  "nonclaims": [
+    "BLOB_READBACK_NE_HTTP_UPTIME",
+    "SOURCE_REACHABLE_NE_FIRST_USE_SUCCESS",
+    "CONNECTED_METRICOOL_NO_COCIVIUM_WEB_AUDIENCE_COVERAGE"
+  ]
+}

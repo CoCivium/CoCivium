@@ -1,0 +1,29 @@
+name: CoSpiff FirstDoor R0 checks
+on:
+  push:
+    branches:
+      - research/cospiff-firstdoor-r0-20261024
+  pull_request:
+    paths:
+      - 'experiments/cospiff-firstdoor-r0/**'
+      - '.github/workflows/cospiff-firstdoor-r0.yml'
+permissions:
+  contents: read
+jobs:
+  offline-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Reproduce source-only first-door and benchmark
+        working-directory: experiments/cospiff-firstdoor-r0
+        run: |
+          python3 -m unittest discover -s tests -v
+          python3 build.py
+          python3 cospiff.py
+          python3 -c "from cospiff import verify_ledger, ROOT; assert verify_ledger(ROOT/'output/benchmark_evo.jsonl',(ROOT/'output/HEAD.sha256').read_text().strip())==27"
+      - name: Verify generated artifacts unchanged
+        run: git diff --exit-code -- experiments/cospiff-firstdoor-r0/CoSpiff_FirstDoor.html experiments/cospiff-firstdoor-r0/output/benchmark_evo.jsonl experiments/cospiff-firstdoor-r0/output/HEAD.sha256 experiments/cospiff-firstdoor-r0/output/summary.json

@@ -1,0 +1,17 @@
+{
+  "schema": "CoSpiff.FirstDoorReadback.R0",
+  "observed_date": "2026-10-24",
+  "source_registry": "https://github.com/CoCivium/CoCivium/blob/main/ai/onramp/specialist-entrypoints-r0.json",
+  "method": "Six individually retrieved GitHub connector source blobs compared with the six pinned Git blob SHA-1 IDs on the current registry. Not public website uptime, visitor engagement, or independent reading.",
+  "status": "GITHUB_SOURCE_READBACK_ONLY",
+  "default_route": "one-task",
+  "routes": [
+    {"id":"one-task","label":"Start with one thing","audience":"Anyone with one task","first_action":"Describe one thing to improve","repository":"CoCivium/CoCivium","branch":"main","path":"docs/Onramp/COCIVIA_FIRST_USE_R0.md","git_blob":"f18aec48eaa02fc15cdfb66a1b025460d57e02ff","category":"GUIDE","role_required":false,"authority":"NONE","source_only":true,"source_url":"https://github.com/CoCivium/CoCivium/blob/main/docs/Onramp/COCIVIA_FIRST_USE_R0.md"},
+    {"id":"words","label":"Improve a draft","audience":"People editing words","first_action":"Try preview, accept, and undo in a local demo","repository":"CoCivium/CoCivium","branch":"main","path":"examples/coprecursor/index.html","git_blob":"773e9de7aa7c6b03bf0bc75eddb7ca0a0c8dd101","category":"OFFLINE_FILE_SOURCE","role_required":false,"authority":"NONE","source_only":true,"source_url":"https://github.com/CoCivium/CoCivium/blob/main/examples/coprecursor/index.html"},
+    {"id":"civic","label":"Check a civic claim","audience":"People learning source literacy","first_action":"Inspect a source-linked civic question","repository":"CoCivium/CoAcademy","branch":"master","path":"docs/civiclens/index.html","git_blob":"98e152b7cd589fd69332cc935af994d68fc18616","category":"EXHIBIT_SOURCE","role_required":false,"authority":"NONE","source_only":true,"source_url":"https://github.com/CoCivium/CoAcademy/blob/master/docs/civiclens/index.html"},
+    {"id":"relationships","label":"Explore relationships","audience":"People who think visually","first_action":"Inspect a sourced link and an explicitly unknown one","repository":"CoCivium/CoAcademy","branch":"master","path":"docs/coorb/index.html","git_blob":"634adc3ae92e5aba9671427ca56a78a1a72d05f9","category":"EXHIBIT_SOURCE","role_required":false,"authority":"NONE","source_only":true,"source_url":"https://github.com/CoCivium/CoAcademy/blob/master/docs/coorb/index.html"},
+    {"id":"play","label":"Learn through satire","audience":"People who learn by play","first_action":"Distinguish explicit fiction from real evidence","repository":"CoCivium/CoAcademy","branch":"master","path":"docs/coplay/votes-for-sale/index.html","git_blob":"ccbbfdb381144e5f2f6805921da5e33f9389413e","category":"FICTION_SOURCE","role_required":false,"authority":"NONE","source_only":true,"source_url":"https://github.com/CoCivium/CoAcademy/blob/master/docs/coplay/votes-for-sale/index.html"},
+    {"id":"build","label":"Find building resources","audience":"Builders and testers","first_action":"Inspect a bounded public evidence capsule","repository":"CoCivium/CoCivium","branch":"main","path":"examples/coattractorpull/index.html","git_blob":"b0ab26ebc2b2ec7cf6e4ab601798d34c1cb66349","category":"OFFLINE_FILE_SOURCE","role_required":false,"authority":"NONE","source_only":true,"source_url":"https://github.com/CoCivium/CoCivium/blob/main/examples/coattractorpull/index.html"}
+  ],
+  "nonclaims":["NO_LIVE_CUSTOM_DOMAIN_PROOF","GITHUB_BLOB_NE_VISITOR_SUCCESS","ROUTE_NE_RUNNING_APP","ALIAS_NE_DNS","PERSONA_NE_AUTHORITY","DRAFT_NE_DEPLOYED","UNKNOWN_AUDIENCE_NE_ZERO_AUDIENCE"]
+}
