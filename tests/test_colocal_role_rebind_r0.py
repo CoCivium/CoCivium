@@ -170,6 +170,75 @@ class TestCoLocalRoleRebind(unittest.TestCase):
         r = review_observation(self.root, "X2_DESKTOP_RECOVERY", rel)
         self.assertEqual(r["reason"], "HOLD_UNQUALIFIED_OBSERVER_OR_EVIDENCE")
 
+    def test_needle_known_sibling_fork_holds_without_new_election(self):
+        from scripts.CoNeedleObservationAdmissionR0 import review_observation
+        import hashlib
+        p1, raw = self._needle_candidate("fork-root.json")
+        parent_hash = hashlib.sha256(raw.read_bytes()).hexdigest()
+        p2, _ = self._needle_candidate(
+            "fork-left.json", revision=2,
+            previous_observation_sha256=parent_hash,
+            observed_at_utc="2026-11-13T14:01:00Z")
+        p2_other, _ = self._needle_candidate(
+            "fork-right.json", revision=2,
+            previous_observation_sha256=parent_hash,
+            observed_at_utc="2026-11-13T14:02:00Z",
+            observation_kind="RECEIVER_GAP")
+        result = review_observation(
+            self.root, "X2_DESKTOP_RECOVERY", p2, p1, [p2_other])
+        self.assertEqual(result["reason"], "HOLD_SAME_REVISION_FORK_REQUIRES_OWNER")
+        self.assertEqual(result["competing_sources_checked"], 1)
+        self.assertFalse(result["branch_elected"])
+        self.assertFalse(result["runtime_accepted"])
+        self.assertFalse(result["complete_fork_census_proven"])
+
+    def test_needle_identical_sibling_bytes_are_duplicate_not_unique(self):
+        from scripts.CoNeedleObservationAdmissionR0 import review_observation
+        p1, raw = self._needle_candidate("equal-a.json")
+        twin, twin_file = self._needle_candidate("equal-b.json")
+        self.assertEqual(raw.read_bytes(), twin_file.read_bytes())
+        result = review_observation(
+            self.root, "X2_DESKTOP_RECOVERY", p1, competing_paths=[twin])
+        self.assertEqual(result["state"],
+                         "SOURCE_PIN_OK__OBSERVATION_CANDIDATE_REQUIRES_REVIEW")
+        self.assertEqual(result["competing_sources_checked"], 1)
+        self.assertFalse(result["complete_fork_census_proven"])
+        self.assertFalse(result["observation_authority_verified"])
+
+    def test_needle_no_sibling_scan_cannot_claim_unique_history(self):
+        from scripts.CoNeedleObservationAdmissionR0 import review_observation
+        p1, _ = self._needle_candidate("unscanned.json")
+        result = review_observation(self.root, "X2_DESKTOP_RECOVERY", p1)
+        self.assertEqual(result["competing_sources_checked"], 0)
+        self.assertFalse(result["complete_fork_census_proven"])
+        self.assertFalse(result["branch_elected"])
+
+    def test_needle_ambiguous_sibling_input_fails_closed(self):
+        from scripts.CoNeedleObservationAdmissionR0 import review_observation
+        p1, _ = self._needle_candidate("ambig.json")
+        self.assertEqual(
+            review_observation(self.root, "X2_DESKTOP_RECOVERY",
+                               p1, competing_paths=[p1])["reason"],
+            "HOLD_DUPLICATE_COMPARISON_PATH")
+        self.assertEqual(
+            review_observation(self.root, "X2_DESKTOP_RECOVERY",
+                               p1, competing_paths=["not-found.json"])["reason"],
+            "HOLD_UNSAFE_OBSERVATION_PATH")
+        self.assertEqual(
+            review_observation(self.root, "X2_DESKTOP_RECOVERY",
+                               p1, competing_paths=["bad"] * 9)["reason"],
+            "HOLD_UNBOUNDED_OR_MALFORMED_SIBLING_SCOPE")
+
+    def test_needle_competing_workid_not_silently_adopted(self):
+        from scripts.CoNeedleObservationAdmissionR0 import review_observation
+        p1, _ = self._needle_candidate("candidate-a.json")
+        sibling, _ = self._needle_candidate(
+            "candidate-b.json", work_id="unrelated_workid")
+        result = review_observation(
+            self.root, "X2_DESKTOP_RECOVERY", p1, competing_paths=[sibling])
+        self.assertEqual(result["reason"], "HOLD_POLICY_PIN_OR_IDENTITY_DRIFT")
+        self.assertFalse(result["observation_receiver_ack"])
+
     def test_needle_new_observation_preserves_immutable_policy_bytes(self):
         from scripts.CoNeedleObservationAdmissionR0 import review_observation
         originals = {p.relative_to(self.root): p.read_bytes()
