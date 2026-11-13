@@ -22,6 +22,10 @@ on:
       - 'CoPre.md'
       - 'SESSION_BOOTSTRAP.md'
       - 'ai/session-bootstrap.json'
+      - 'scripts/CoGoAllWakeAdmissionR0.py'
+      - 'test_cogoall_wake_admission_r0.py'
+      - 'scripts/CoGoAllWakeAdmissionJournalR0.py'
+      - 'test_cogoall_wake_admission_journal_r0.py'
   pull_request:
     branches: [main]
     paths:
@@ -32,6 +36,8 @@ on:
       - 'test_cogoall_due_work_source_canary_r0.py'
       - 'scripts/CoGoAllWakeAdmissionR0.py'
       - 'test_cogoall_wake_admission_r0.py'
+      - 'scripts/CoGoAllWakeAdmissionJournalR0.py'
+      - 'test_cogoall_wake_admission_journal_r0.py'
       - 'scripts/CoGoAllPriorRunReadbackR0.py'
       - 'test_cogoall_prior_run_readback_r0.py'
       - 'scripts/CoGoAllUnfinishedCanaryR0.py'
