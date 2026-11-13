@@ -44,8 +44,15 @@ def _hold(reason: str, wid=None) -> dict:
 
 
 def _source_attested(root: Path, event: dict) -> None:
-    path = root / event["source_path"]
-    if path.is_symlink() or not path.is_file() or not path.resolve().is_relative_to(root):
+    # Verify *every* path component; a directory symlink can redirect a
+    # non-symlink leaf to unrelated bytes inside the same working tree.
+    cursor = root
+    for part in Path(event["source_path"]).parts:
+        cursor = cursor / part
+        if cursor.is_symlink():
+            raise ValueError("HOLD_SOURCE_PATH_OR_SYMLINK")
+    path = cursor
+    if not path.is_file() or not path.resolve().is_relative_to(root):
         raise ValueError("HOLD_SOURCE_PATH_OR_SYMLINK")
     size = path.stat().st_size
     if not 0 < size <= MAX_SOURCE_BYTES:
@@ -70,6 +77,18 @@ def _source_attested(root: Path, event: dict) -> None:
         raise ValueError("HOLD_HEAD_UNAVAILABLE") from exc
     if head.returncode != 0 or head.stdout.strip() != event["source_revision"]:
         raise ValueError("HOLD_CHECKOUT_REVISION_DRIFT")
+    # HEAD equality alone is not evidence that this *file* belongs to HEAD:
+    # the worktree could contain rebased, untracked or replaced bytes. Read
+    # the exact tracked object at that revision, without a shell or writes.
+    try:
+        object_at_head = subprocess.run(
+            ["git", "show", "HEAD:" + event["source_path"]],
+            cwd=root, capture_output=True, timeout=8, check=False,
+        )
+    except (OSError, subprocess.TimeoutExpired) as exc:
+        raise ValueError("HOLD_SOURCE_AT_HEAD_UNAVAILABLE") from exc
+    if object_at_head.returncode != 0 or object_at_head.stdout != raw:
+        raise ValueError("HOLD_SOURCE_NOT_AT_CHECKOUT_HEAD")
 
 
 def _queue_path(root: Path) -> Path:
