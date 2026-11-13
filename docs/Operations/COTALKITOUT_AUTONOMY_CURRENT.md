@@ -52,6 +52,26 @@ The correct shared interface is **one stable public index path with a versioned,
 - `MANY_READERS_ONE_ELECTED_ACTUATOR`.
 - Stop recursion at `SOURCE -> WORKID -> FENCED ACTOR -> VERIFIED RECEIVER EFFECT -> QUIET`, or record why the edge is held.
 
+## 2026-11-13 build-order election: capability before breadth
+
+**Source-bound priority correction; not a new controller, deployed cycle, governance change, or claim of 99% local task coverage.** Reuse the existing WorkID/CoOwnedWork #450, single fenced queue, #317 receiver, #181/#453 native CoBar, CoModelFabric adapter, and CoFrontierExit gates. The earlier R1 mandatory dependency graph is not replaced by a new graph.
+
+**Critical sequence**: `DURABLE_WORKID -> ONE_QUIET_LOCAL_DEED -> EXACT_SOURCE_AND_EFFECT_RECEIPT -> INDEPENDENT_RECEIVER_READBACK -> COBAR_VISIBLE_RESULT_AND_STOP -> COLD_RESTORE -> MEASURED_AUTOCYCLE`. Admit work in that order; a step with missing proof remains HOLD. Existing open-source or deterministic systems are preferred over new model-generated orchestration when sufficient.
+
+**What moves earlier**: source preservation and exact recovery, deterministic verification, the existing local Ollama route on one harmless useful task, R6 input/result/Stop without focus theft, a single elected actuator, and a quiet scheduled/event wake with exactly-once effects. Measure user effort, wall-clock completion, quality, unattended useful tasks, recovery success and resource cost.
+
+**What moves later**: more model instances, large virtual fleets, additional product/theme engines, new schedulers/watchers, hosted private-history ingestion, mass migration and autonomous provider chat deletion. RepoZipper [draft PR #493](https://github.com/CoCivium/CoCivium/pull/493) is a source-tested synthetic onramp; preserve it, but do not make it a prerequisite for the first local WorkID cycle.
+
+**99% local-first is an elective target, not a verified adoption rate.** Reserve a measured, explicitly authorized frontier-model challenge lane when local quality or safety is insufficient. Distinguish FOSS runtime code from model-weight licenses; qualify each model's actual license and permissions. Model count, task count and GitHub commits are not independence or useful effect.
+
+**Evidence already observed, bounded**: the Nov. 11 X2 `CO_SESSION_RECOVERY_X2_LOCAL_MODEL_SUBSTITUTION_RECEIPT_R0_20261111.json` reports 4/4 local Ollama HOLD-decision probes with qwen3:4b and gemma3:12b, no provider calls or actual session recovery. The Nov. 13 CoDesktop R6 renderer status reported a visible dock but `engine_state=COLD` and `receiver_ack=NOT_ESTABLISHED`. An attempted live model inventory on Nov. 13 suffered PowerShell quoting errors, so its empty model list is **INVALID_PROBE**, not evidence of absent models. These facts do not prove unattended inference, model-lineage independence, or CoBar acceptance.
+
+**CoInversions and CoTurtles**: optimize *human relay removed per independently useful recovered effect*, not number of sessions. Keep healthy workers dormant; run exact tasks with deterministic code; minimize the number of effect writers; challenge one loop before recursively creating another; stop recursion when measured benefit fails to exceed cost/complexity. An independent second execution domain is still required before claiming X2 can disappear.
+
+**Human scope**: routine preparation, source tests and reversible read-only canaries need no manual relay. Retain person-specific gates for deletion, privacy expansion, credentials, spending, public publication and authority. User absence must fail closed, not deadlock harmless research or fabricate consent.
+
+**Next elected deed**: resume or elect **one existing** harmless WorkID through the current fenced queue, execute a deterministic or local-model task, preserve an exact receipt and independently read back the result without creating another daemon or stealing focus. Do not escalate to high parallelism until that path has a measured restart/Stop result.
+
 ## Next proof and nonclaims
 
 **Next:** One overdue, harmless WorkID, resumed by an already qualified worker after a missed wake, with duplicate suppression and separately generated receiver proof. **No new scheduler, no console process, no subscriber account mutation, no private publication.**
