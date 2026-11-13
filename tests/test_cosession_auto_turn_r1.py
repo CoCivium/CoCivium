@@ -168,6 +168,30 @@ class AutoTurnTests(unittest.TestCase):
         self.assertEqual(delta["classification"], "SAME_RUN_REPLAY_NOT_NEW_EVIDENCE")
         self.assertEqual(delta["verified_useful_work_outcomes"], 0)
 
+    def test_same_run_changed_source_is_conflict_not_quiet_replay(self):
+        # The same run identity cannot hide a changed source behind the
+        # SAME_RUN_REPLAY_NOT_NEW_EVIDENCE label. A changed source must be
+        # reviewed, even when the purported execution ID is unchanged.
+        from CoSessionAutoTurnR1 import compare_public_source_turns
+        earlier = self.turn()
+        rel = self.items[1]["source_path"]
+        self.edit(rel, lambda x: x["nonclaims"].append(
+            "CHANGED_SOURCE_WITH_REUSED_RUN_ID"))
+        later = compile_turn(self.root, "2026-11-12T21:30:00Z", RUN, ATTEMPT, HEAD)
+        with self.assertRaisesRegex(ValueError,
+                                    "HOLD_DELTA_SAME_RUN_SOURCE_DRIFT"):
+            compare_public_source_turns(earlier, later)
+
+    def test_same_run_changed_head_is_conflict_not_quiet_replay(self):
+        # A supposedly identical run cannot silently acquire a new Git head.
+        from CoSessionAutoTurnR1 import compare_public_source_turns
+        earlier = self.turn()
+        later = copy.deepcopy(earlier)
+        later["run"]["head_sha"] = "b" * 40
+        with self.assertRaisesRegex(ValueError,
+                                    "HOLD_DELTA_SAME_RUN_HEAD_DRIFT"):
+            compare_public_source_turns(earlier, later)
+
     def test_changed_workset_requires_rebase_not_false_delta(self):
         from CoSessionAutoTurnR1 import compare_public_source_turns
         earlier = self.turn()
