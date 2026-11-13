@@ -6,7 +6,25 @@
 
 **Your default first step:** [Bring one thing you want to improve](docs/Onramp/COCIVIA_FIRST_USE_R0.md). This is a simple intake guide, not a claim that a separate CoCivia service or local installer is running.
 
-**One thing to try:** [CoPreCursor+](examples/coprecursor/README.md) is an offline browser demonstration. Download its [single HTML file](examples/coprecursor/index.html), open it locally, and try **Preview next → Accept → Undo** using the built-in fictional example. This is a local, rule-based suggestion, not a working AI provider, background agent, or message-sending service. You do not need an account or private data to inspect it.
+**Try something useful here in 60 seconds. No account, download, or AI service needed.**
+
+A project assistant announces: **"The work is safe. We passed 19 automated tests."** But the tests used synthetic data, and nobody on a separate computer has successfully restored the actual work.
+
+**Which update would you trust enough to act on?**
+
+- **A:** "Recovery is fully proven; the project is safe on every device."
+- **B:** "The test cases passed. Restoring real work on another machine remains unverified."
+
+<details>
+<summary>Check the answer and get a reusable decision rule</summary>
+
+**B.** The tests are evidence about their tested conditions, not proof of an independent restoration. Before relying on the work, ask for **one receiver-produced readback and a successful useful action** in the actual recovery environment.
+
+**Takeaway:** *What was tested? What really happened? What remains unknown?* Use those three questions when evaluating any AI or software progress report. The example is fictional; this page does not inspect your work, record your answer, or run an AI.
+
+</details>
+
+**Want to test an interactive suggestion instead?** [CoPreCursor+](examples/coprecursor/README.md) is an optional offline browser demonstration. It currently requires saving its [single HTML file](examples/coprecursor/index.html) and opening it locally. Try **Preview next → Accept → Undo** with the fictional sample. It is rule-based, not a live AI provider, background agent, or message-sending service. No account or private data is required.
 
 **One thing to challenge:** Could a first-time visitor understand what the suggestion means and recover their original words? The test should take less than five minutes. A confusing step, missing proof, accessibility problem or useful criticism is valuable feedback.
 
