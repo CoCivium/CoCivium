@@ -33,6 +33,23 @@
       "access": "PUBLIC_GITHUB_AND_PERSISTENT_LIBRARY",
       "public_object": "XLSX_CSV_README_MANIFEST",
       "receiver_ack": false
+    },
+    {
+      "id": "CoTalkItOut:CausalAtlas:20261112:R0",
+      "naming": "CoTalkItOut_Headless_Screenless_CausalAtlas_R0_20261112.xlsx",
+      "canonical_stem": "CoTalkItOut_Headless_Screenless_CausalAtlas_R0_20261112",
+      "source": "PRIVATE_LIBRARY_EXACT_SOURCE_RECORDED; THIS_PUBLIC_REGISTRY_IS_METADATA_ONLY",
+      "sha256": "04600210d9e7dd7cb0dc02a234d6dc3ba255d81f645a8e3d541239cb438d344e",
+      "operation_count": 339,
+      "csv_name": "CoTalkItOut_Headless_Screenless_CausalAtlas_R0_20261112.csv",
+      "csv_sha256": "2683c802e035b927b7c99d52d80336df863698856b999f80643834ff653380b8",
+      "csv_rows": 339,
+      "csv_columns": 26,
+      "collision": "AN_EARLIER_319_ROW_14_COLUMN_CSV_HAS_THE_NONCANONICAL_BASENAME_CoTalkItOut_CausalOps_R0_20261112.csv; DISTINCT_BYTES_NOT_SUPERSEDED",
+      "content_class": "PRIVATE_FULL_WORKBOOK_PUBLIC_SAFE_HASH_AND_COUNTS_ONLY",
+      "access": "PRIVATE_LIBRARY_NOT_PUBLICLY_EXPORTED",
+      "public_object": "METADATA_ONLY",
+      "receiver_ack": false
     }
   ],
   "relations": [
@@ -47,12 +64,24 @@
       "to": "CoTalkItOut:UniversalAutonomy:20261112:R1",
       "type": "SEMANTIC_DIFF_REQUIRED_BEFORE_MERGE",
       "authority": "NOT_YET_PERFORMED"
+    },
+    {
+      "from": "CoTalkItOut:CausalAtlas:20261112:R0",
+      "to": "CoTalkItOut:UniversalAutonomy:20261112:R1",
+      "type": "PARALLEL_CANDIDATE_SEMANTIC_DIFF_REQUIRED",
+      "authority": "SOURCE_DISCOVERY_ONLY"
+    },
+    {
+      "from": "CoTalkItOut:CausalAtlas:20261112:R0",
+      "to": "CoLocal2601109_CoTalkItOut_Headless_Screenless_R1",
+      "type": "PARALLEL_CANDIDATE_SEMANTIC_DIFF_REQUIRED",
+      "authority": "SOURCE_DISCOVERY_ONLY"
     }
   ],
   "collision_policy": "DISTINGUISH_WORK_ID_PLUS_SOURCE_SHA_NOT_R1_DATE_OR_BASENAME",
   "election": "NO_COMMON_ACTUATOR_OR_SUPERSESSION_ELECTED",
   "canonical_claim": "NEITHER_VARIANT_GOVERNS_ALL_OTHER_SESSIONS",
-  "next_safe_deed": "Compare authorized, content-safe task identifiers and dependency semantics between variants, adjudicate additions/challenges and publish an R2 merged public-safe candidate while retaining exact predecessor hashes; never expose private workbook contents without preflight.",
+  "next_safe_deed": "Compare the three candidate editions by exact WorkID/operation IDs and dependency semantics; preserve private data, verify published derivation and elect a public-safe R2 only after authorized review; no overwrite or global session broadcast.",
   "nonclaims": [
     "SAME_R1_LABEL_NE_SAME_ARTIFACT",
     "192_NE_184_TASKS_SUPERSESSION",
@@ -61,6 +90,9 @@
     "NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF",
     "NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE",
     "HASHING_IS_NOT_SEMANTIC_INGESTION",
-    "DISCOVERED_SET_IS_NOT_COMPLETE_HISTORY"
+    "DISCOVERED_SET_IS_NOT_COMPLETE_HISTORY",
+    "SAME_FILENAME_NE_SAME_CONTENT",
+    "PRIVATE_WORKBOOK_HASH_IN_PUBLIC_INDEX_NE_PUBLIC_WORKBOOK_BYTES",
+    "THIRD_VARIANT_REGISTERED_NE_CANON_OR_CROSS_CHAT_ACK"
   ]
 }
