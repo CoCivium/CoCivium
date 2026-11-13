@@ -57,6 +57,11 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - name: Challenge wake admission on review-branch push only (not the scheduled carrier)
+        if: github.event_name == 'push' && github.ref != 'refs/heads/main'
+        run: |
+          python -B -m unittest -v test_cogoall_wake_admission_r0
+          python -O -B -m unittest -v test_cogoall_wake_admission_r0
       - name: Verify one-shot durable local source WorkID (no external effect)
         run: python -B -m unittest -v test_local_source_work_cycle_r0
       - name: Execute real public CoPre source with one local durable WorkID
