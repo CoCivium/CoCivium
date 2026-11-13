@@ -72,6 +72,18 @@ The correct shared interface is **one stable public index path with a versioned,
 
 **Next elected deed**: resume or elect **one existing** harmless WorkID through the current fenced queue, execute a deterministic or local-model task, preserve an exact receipt and independently read back the result without creating another daemon or stealing focus. Do not escalate to high parallelism until that path has a measured restart/Stop result.
 
+## 2026-11-13 clarification: high-yield bounded ambition, not atomic minimalism
+
+The preceding single-WorkID trial is a **qualification gate**, not an organizational ceiling, small-task-only policy or instruction to defer all ambitious parallel research. **CoEutomation+** means automated reliable work ownership and lifecycle, not continual dependence on a ChatGPT tab or a person relaying prompts. **CoLazy+** means avoiding *waste* through reuse, caching, sleep and better algorithms, not reducing the magnitude of outcomes. **CoLeasty+** applies to manual labour, coercion, blast radius, unverified assertions and needless resource consumption, not to the value of opportunities attempted. **Atomicity** applies to shared-state commits/effect boundaries, not idea size or total development scale.
+
+**Election:** maximize `EXPECTED_VERIFIABLE_VALUE / (HUMAN_RELAY + RISK + TIME + COST)` with explicit downside and confidence fields; retain independent meaningful objectives rather than letting this ratio become a universal rank. Admit independent read-only research, source reviews, proof construction and local-model challenges **in parallel** within measured budgets. Serialize *only* true shared-mutation and consequential-effect collision domains, fenced by WorkID, currentness and authority. Preserve minority findings and negative tests through a bounded fan-in; no new always-on watcher or worker is inferred by writing this rule.
+
+**First qualifying proof:** exercise the existing bounded WorkID queue in one local, useful, interruption-tolerant cycle with real result and readback. When qualified, this is reusable as a **parallelizable production primitive** across CoGuardian, CoBar, RepoZipper and other preexisting modules, rather than a reason to delay all useful development until a mythical total framework exists.
+
+**Inversions/turtles:** challenge the need for a model (deterministic code may suffice), need for a worker (reuse a receipt), need for a new component (wrap upstream), need for a new schedule (wake on an existing event), and need for user approval (only genuine authority gates). Each recursion has evidence gain, resource ceiling, stopping condition and exact predecessor, so more recursion never means unlimited autonomous effects.
+
+**Nonclaims:** no 99% local task-completion measurement, autonomous session takeover, second-host failover, independent CoStead ACK or deployed CoBar intelligence is established by this clarification.
+
 ## Next proof and nonclaims
 
 **Next:** One overdue, harmless WorkID, resumed by an already qualified worker after a missed wake, with duplicate suppression and separately generated receiver proof. **No new scheduler, no console process, no subscriber account mutation, no private publication.**
