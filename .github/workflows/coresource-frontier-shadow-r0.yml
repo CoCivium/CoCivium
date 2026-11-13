@@ -1,0 +1,41 @@
+name: CoResourceFrontier R0 pure shadow planner and Windows census
+on:
+  push:
+    paths:
+      - 'examples/coresource_frontier_shadow_r0/**'
+      - '.github/workflows/coresource-frontier-shadow-r0.yml'
+  pull_request:
+    paths:
+      - 'examples/coresource_frontier_shadow_r0/**'
+      - '.github/workflows/coresource-frontier-shadow-r0.yml'
+permissions:
+  contents: read
+jobs:
+  policy-fixtures:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: 60 deterministic finite resource allocation cases
+        run: |
+          cd examples/coresource_frontier_shadow_r0
+          python -m unittest -v test_resource_mesh_r0
+          python resource_mesh_r0.py < fixture.json > /dev/null
+  windows-read-only-census:
+    runs-on: windows-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Windows PowerShell 7 read-only smoke; no snapshot published
+        shell: pwsh
+        run: |
+          $s = & ./examples/coresource_frontier_shadow_r0/read_only_windows_census_r0.ps1 | ConvertFrom-Json
+          if ($s.schema -ne 'CoAll.CoResourceFrontier.WindowsReadOnlyCensus.R0') { throw 'BAD_CENSUS_SCHEMA' }
+          if ($s.effects.device_changes -ne 0 -or $s.effects.startup_changes -ne 0 -or $s.effects.processes_terminated -ne 0) { throw 'UNEXPECTED_CENSUS_EFFECT' }
+          if ($s.sample_kind -notmatch 'ONE_INSTANT') { throw 'MISLABELLED_CENSUS' }
+          if ($s.process_count -lt 1) { throw 'NO_PROCESS_REPORT' }
+          # No private process names/paths printed into public CI logs.
+          Write-Output 'WINDOWS_READ_ONLY_CENSUS_SCHEMA_AND_NO_EFFECTS_PASS'
