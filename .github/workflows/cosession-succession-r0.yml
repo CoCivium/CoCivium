@@ -1,0 +1,27 @@
+name: CoSession Succession Gate R0
+permissions:
+  contents: read
+
+on:
+  pull_request:
+    paths:
+      - "scripts/CoSessionSuccessionGateR0.py"
+      - "tests/test_cosession_succession_gate_r0.py"
+      - ".github/workflows/cosession-succession-r0.yml"
+  push:
+    paths:
+      - "scripts/CoSessionSuccessionGateR0.py"
+      - "tests/test_cosession_succession_gate_r0.py"
+      - ".github/workflows/cosession-succession-r0.yml"
+
+jobs:
+  fail-closed-succession:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run no-provider-effect succession regression
+        run: python -B -m unittest discover -s tests -p "test_cosession_succession_gate_r0.py" -v
