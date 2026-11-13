@@ -119,8 +119,19 @@
         "hypothesis": "NESTED_ATLAS_REDUCES_FIND_TIME",
         "counterexample": "NOVICE_CANNOT_FIND_PINNED_SOURCE",
         "measure": "TIME_TO_FIND_PINNED_SOURCE",
-        "source_blob_sha1": "a6fb0483643201caf5501bc3e8d83fe800335a08",
+        "source_blob_sha1": "d2f27d07da5cfbfaea47a9da10ff2ab9a5ab3d13",
         "state": "PROPOSAL_ONLY_NOT_EXECUTED"
+      },
+      "source_revision_lineage": {
+        "prior_git_blob_sha1": "a6fb0483643201caf5501bc3e8d83fe800335a08",
+        "current_git_blob_sha1": "d2f27d07da5cfbfaea47a9da10ff2ab9a5ab3d13",
+        "evidence_basis": "GITHUB_EXACT_BLOB_READBACK_2026-11-13",
+        "change_note": "PUBLIC_MEGASCROLLER_SOURCE_CHANGED_WITH_ADDITIONAL_MEDIA_AND_RESPONSIVE_PRESENTATION; NO_SEMANTIC_OR_HUMAN_ACCEPTANCE_INFERRED",
+        "semantic_acceptance": "NOT_ESTABLISHED",
+        "external_receiver_pickup": "NOT_ESTABLISHED",
+        "runtime_or_public_release": "NOT_CLAIMED",
+        "supersession_scope": "INDEX_POINTER_TO_CURRENT_VERSION_ONLY",
+        "historical_object_retained": true
       }
     },
     {
@@ -191,8 +202,19 @@
         "hypothesis": "ONE_FOREGROUND_PRESERVES_OTHER_WORKIDS",
         "counterexample": "CLOSING_EDGE_LOSES_UNSENT_TEXT",
         "measure": "RECOVERABLE_WORKID_RATIO",
-        "source_blob_sha1": "0d08b2091adde7809f503740251c3c9f13a059e3",
+        "source_blob_sha1": "016a69e341137c79ea2be74319854fe3b5033cb3",
         "state": "PROPOSAL_ONLY_NOT_EXECUTED"
+      },
+      "source_revision_lineage": {
+        "prior_git_blob_sha1": "0d08b2091adde7809f503740251c3c9f13a059e3",
+        "current_git_blob_sha1": "016a69e341137c79ea2be74319854fe3b5033cb3",
+        "evidence_basis": "GITHUB_EXACT_BLOB_READBACK_AND_COBROWSER_CI_RUN_43502493116",
+        "change_note": "COLUE_EXIT_LENS_AND_THREE_NEGATIVE_CONTROL_TESTS_ADDED_ON_DRAFT_PR_490; NO_PROVIDER_DELETE_OR_RUNTIME_CLAIM",
+        "semantic_acceptance": "NOT_ESTABLISHED",
+        "external_receiver_pickup": "NOT_ESTABLISHED",
+        "runtime_or_public_release": "NOT_CLAIMED",
+        "supersession_scope": "INDEX_POINTER_TO_CURRENT_VERSION_ONLY",
+        "historical_object_retained": true
       }
     }
   ],

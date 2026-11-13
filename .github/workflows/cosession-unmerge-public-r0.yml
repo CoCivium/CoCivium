@@ -1,0 +1,29 @@
+name: CoSession CoUnmerge Public Donor R0
+permissions:
+  contents: read
+
+on:
+  pull_request:
+    paths:
+      - "ai/convergence/cosession-unmerge-public-donors-r0.json"
+      - "scripts/CoSessionUnmergePublicDonorsR0.py"
+      - "tests/test_cosession_unmerge_public_donors_r0.py"
+      - ".github/workflows/cosession-unmerge-public-r0.yml"
+  push:
+    paths:
+      - "ai/convergence/cosession-unmerge-public-donors-r0.json"
+      - "scripts/CoSessionUnmergePublicDonorsR0.py"
+      - "tests/test_cosession_unmerge_public_donors_r0.py"
+      - ".github/workflows/cosession-unmerge-public-r0.yml"
+
+jobs:
+  public-git-donor-roundtrip:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Verify three-source public Git roundtrip and negative controls
+        run: python -B -m unittest discover -s tests -p "test_cosession_unmerge_public_donors_r0.py" -v
