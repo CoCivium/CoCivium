@@ -128,20 +128,28 @@ def admit(root: str | Path, event: dict, now: datetime) -> dict:
         ).hexdigest()
         queue = DueWorkQueue(str(db))
         try:
-            other = queue.db.execute(
-                "SELECT work_id FROM work WHERE work_id!=? LIMIT 1", (wid,)
-            ).fetchone()
-            if other:
-                raise ValueError("HOLD_FOREIGN_WORK_IN_SINGLE_OWNER_QUEUE")
-            decision = queue.enqueue(wid, event["source_revision"], payload, due_at)
-            if decision == "CONFLICT":
-                raise ValueError("HOLD_SAME_WORKID_DIFFERENT_WAKE_OR_SOURCE")
-            row = queue.db.execute(
-                "SELECT work_id,source_revision,payload_sha256,due_at,state,epoch "
-                "FROM work WHERE work_id=?", (wid,)
-            ).fetchone()
-            if row is None or row[:4] != (wid, event["source_revision"], payload, due_at):
-                raise ValueError("HOLD_DURABLE_QUEUE_READBACK_DIFFERENCE")
+            # One IMMEDIATE SQLite transaction covers both the foreign-owner
+            # check and create-only insert. Separate transactions let competing
+            # WorkIDs both observe an empty queue and enter simultaneously.
+            with queue.db:
+                queue.db.execute("BEGIN IMMEDIATE")
+                other = queue.db.execute(
+                    "SELECT work_id FROM work WHERE work_id!=? LIMIT 1", (wid,)
+                ).fetchone()
+                if other:
+                    raise ValueError("HOLD_FOREIGN_WORK_IN_SINGLE_OWNER_QUEUE")
+                inserted = queue.db.execute(
+                    "INSERT INTO work(work_id,source_revision,payload_sha256,due_at) "
+                    "VALUES(?,?,?,?) ON CONFLICT(work_id) DO NOTHING",
+                    (wid, event["source_revision"], payload, due_at),
+                ).rowcount
+                row = queue.db.execute(
+                    "SELECT work_id,source_revision,payload_sha256,due_at,state,epoch "
+                    "FROM work WHERE work_id=?", (wid,)
+                ).fetchone()
+                if row is None or row[:4] != (wid, event["source_revision"], payload, due_at):
+                    raise ValueError("HOLD_SAME_WORKID_DIFFERENT_WAKE_OR_SOURCE")
+                decision = "ENQUEUED" if inserted == 1 else "REPLAY"
             return {
                 "schema": "CoGoAll.WakeAdmissionJournal.R0",
                 "state": ("ADMITTED_LOCAL_ONLY_WAITING_FOR_WORKER"
