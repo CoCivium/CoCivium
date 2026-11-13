@@ -118,7 +118,8 @@ def _decode(raw: bytes, pin: dict) -> tuple[dict, datetime]:
 
 
 def review_observation(root: Path, role: str, candidate_path: str,
-                       prior_path: str | None = None) -> dict:
+                       prior_path: str | None = None,
+                       competing_paths: list[str] | None = None) -> dict:
     """Never writes. A syntactically valid chain is still unreviewed evidence."""
     result = {
         "schema": "CoAll.CoNeedle.SourceObservationReview.R0",
@@ -134,6 +135,9 @@ def review_observation(root: Path, role: str, candidate_path: str,
         "operation_performed": False,
         "x2_shell_started": False,
         "needs_owner_semantic_review": True,
+        "competing_sources_checked": 0,
+        "complete_fork_census_proven": False,
+        "branch_elected": False,
     }
     try:
         root = Path(root)
@@ -158,6 +162,23 @@ def review_observation(root: Path, role: str, candidate_path: str,
                 _fail("PREDECESSOR_DIGEST_OR_REVISION_MISMATCH")
             if current_time <= previous_time:
                 _fail("NONMONOTONIC_OBSERVATION_TIME")
+        # This is a bounded *caller-supplied* sibling challenge, never a
+        # complete history scan. A missing sibling cannot establish uniqueness.
+        if competing_paths is not None:
+            if (type(competing_paths) is not list or len(competing_paths) > 8
+                    or any(not isinstance(x, str) for x in competing_paths)):
+                _fail("UNBOUNDED_OR_MALFORMED_SIBLING_SCOPE")
+            paths_seen = {candidate_path}
+            for sibling_path in competing_paths:
+                if sibling_path in paths_seen:
+                    _fail("DUPLICATE_COMPARISON_PATH")
+                paths_seen.add(sibling_path)
+                sibling_raw = _read(root, sibling_path)
+                sibling, _ = _decode(sibling_raw, pin)
+                result["competing_sources_checked"] += 1
+                if (sibling["revision"] == current["revision"]
+                        and sibling_raw != current_raw):
+                    _fail("SAME_REVISION_FORK_REQUIRES_OWNER")
         result.update({
             "state": "SOURCE_PIN_OK__OBSERVATION_CANDIDATE_REQUIRES_REVIEW",
             "reason": None,
@@ -173,6 +194,8 @@ def review_observation(root: Path, role: str, candidate_path: str,
                 "IMMUTABLE_PIN_NE_MUTABLE_OBSERVATION",
                 "CLAIMED_EVIDENCE_REF_NE_AUTHENTICATED_WITNESS",
                 "CHAIN_SYNTAX_NE_ACCEPTED_OBSERVATION",
+                "BOUNDED_SIBLING_CHECK_NE_COMPLETE_FORK_CENSUS",
+                "MISSING_FORK_WITNESS_NE_UNIQUE_HISTORY",
                 "SOURCE_REVIEW_NE_RUNTIME_OR_RECEIVER_ACK",
                 "NO_PUBLICATION_OR_TASK_MUTATION",
             ],
