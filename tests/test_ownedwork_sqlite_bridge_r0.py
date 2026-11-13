@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 """Offline, synthetic-only tests for the real browser packet -> SQLite adapter."""
 import copy
+from concurrent.futures import ThreadPoolExecutor
+from threading import Barrier
 import json
 import os
 from pathlib import Path
@@ -14,7 +16,7 @@ from CoOwnedWorkSqliteBridgeR0 import (
     BROWSER_SCHEMA, JS_DONOR_SHA256, RECEIVER_SHA256, Held, adapt,
     apply_browser_revocation, dependency_check, node_fixture, run,
 )
-from CoNarrativeWorkIDR0 import commit_once, readback, revoke
+from CoNarrativeWorkIDR0 import commit_once, connect, readback, revoke
 
 JS = ROOT / "examples/conodcothumb/context_rail_r1/CoOwnedWorkR0.js"
 GATE = ROOT / "tests/fixtures/ownedwork_synthetic_gate_r0.json"
@@ -226,6 +228,83 @@ class SyntheticBridgeR0(unittest.TestCase):
             self.assertEqual(
                 readback(db, expected_packet=packet)["state"],
                 "COLD_SOURCE_RECONSTRUCTED")
+
+
+    def test_two_read_only_viewers_do_not_change_durable_work(self):
+        """Two simulated viewers are safe only because they never request a write."""
+        packet = self.accepted()
+        with tempfile.TemporaryDirectory() as d:
+            db = Path(d) / "receiver.sqlite"
+            first = commit_once(db, packet)
+            self.assertEqual(first["new_commits"], 1)
+            before = db.read_bytes()
+            views = [readback(db, expected_packet=packet, source_path=SOURCE)
+                     for _ in range(2)]
+            self.assertEqual(views[0], views[1])
+            self.assertEqual(views[0]["state"], "COLD_SOURCE_RECONSTRUCTED")
+            self.assertFalse(views[0]["external_receiver_ack"])
+            self.assertEqual(db.read_bytes(), before)
+
+    def test_competing_same_packet_clients_are_deduped_not_authenticated(self):
+        """Concurrent inserts are idempotent; neither caller identity is authenticated."""
+        packet = self.accepted()
+        with tempfile.TemporaryDirectory() as d:
+            db = Path(d) / "receiver.sqlite"
+            conn = connect(db)
+            conn.close()
+            barrier = Barrier(2)
+
+            def write_from_simulated_client():
+                barrier.wait(timeout=5)
+                return commit_once(db, packet)
+
+            with ThreadPoolExecutor(max_workers=2) as executor:
+                futures = [executor.submit(write_from_simulated_client)
+                           for _ in range(2)]
+                results = [f.result(timeout=12) for f in futures]
+            self.assertEqual(sorted(r["new_commits"] for r in results), [0, 1])
+            self.assertEqual(sorted(r["duplicate"] for r in results), [False, True])
+            for result in results:
+                self.assertFalse(result["receipt"]["receiver_ack"])
+                self.assertEqual(result["receipt"]["authority"], "SYNTHETIC_ONLY")
+            cold = readback(db, expected_packet=packet, source_path=SOURCE)
+            self.assertEqual(cold["committed_work_ids"], 1)
+            self.assertFalse(cold["external_receiver_ack"])
+
+    def test_divergent_simultaneous_clients_hold_losing_content(self):
+        """First valid insert wins; conflicting same-WorkID content cannot clobber it."""
+        original = self.accepted()
+        divergent = copy.deepcopy(original)
+        divergent["narrative_summary"] = (
+            "Alternate synthetic narrative from another untrusted viewer.")
+        with tempfile.TemporaryDirectory() as d:
+            db = Path(d) / "receiver.sqlite"
+            conn = connect(db)
+            conn.close()
+            barrier = Barrier(2)
+
+            def attempt(packet):
+                barrier.wait(timeout=5)
+                try:
+                    return {"result": commit_once(db, packet), "held": None}
+                except Held as exc:
+                    return {"result": None, "held": str(exc)}
+
+            with ThreadPoolExecutor(max_workers=2) as executor:
+                futures = [executor.submit(attempt, packet)
+                           for packet in (original, divergent)]
+                outcomes = [f.result(timeout=12) for f in futures]
+            winners = [x["result"] for x in outcomes if x["result"] is not None]
+            holds = [x["held"] for x in outcomes if x["held"] is not None]
+            self.assertEqual(len(winners), 1)
+            self.assertEqual(winners[0]["new_commits"], 1)
+            self.assertEqual(holds, ["WORK_ID_REVISION_CONFLICT"])
+            cold = readback(db, source_path=SOURCE)
+            self.assertIn(cold["narrative_summary"],
+                          (original["narrative_summary"],
+                           divergent["narrative_summary"]))
+            self.assertEqual(cold["committed_work_ids"], 1)
+            self.assertFalse(cold["external_receiver_ack"])
 
 
 if __name__ == "__main__":
