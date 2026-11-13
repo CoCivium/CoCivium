@@ -7,6 +7,12 @@ on:
     paths:
       - "examples/repozipper/ai_history_intake_r0.py"
       - "examples/repozipper/test_ai_history_intake_r0.py"
+      - "examples/repozipper/protect_ai_history_preview_r0.html"
+      - "examples/repozipper/test_protect_ai_history_preview_r0.py"
+      - "examples/repozipper/test_protect_ai_history_preview_r0.cjs"
+      - "examples/repozipper/protect_ai_history_preview_r0.html"
+      - "examples/repozipper/test_protect_ai_history_preview_r0.py"
+      - "examples/repozipper/test_protect_ai_history_preview_r0.cjs"
       - ".github/workflows/repozipper-ai-history-intake-r0.yml"
   push:
     paths:
