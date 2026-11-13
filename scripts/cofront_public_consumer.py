@@ -31,6 +31,7 @@ def verify_autonomy_publication(fetch):
         receipt.get("schema") != "CoAll.CoTalkItOut.PublicationReadbackReceipt.R1" or
         receipt.get("state") != "LANDED_PUBLIC_GIT_WITH_SAME_PROVIDER_READBACK" or
         receipt.get("version_stem") != AUTONOMY_STEM or
+        receipt.get("work_id") != "CoLocal2601109_CoTalkItOut_Headless_Screenless_R1" or
         receipt.get("publication_preflight", {}).get("public_safe_only") is not True or
         receipt.get("lifecycle", {}).get("git_landing") != "LANDED_PUBLIC" or
         receipt.get("lifecycle", {}).get("independently_operated_receiver_pickup") != "NOT_ATTESTED"):
