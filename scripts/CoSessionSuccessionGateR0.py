@@ -40,12 +40,25 @@ def valid_actor_id(value: object) -> bool:
             and all(c.isascii() and (c.isalnum() or c in "._:-") for c in value))
 
 
+def valid_source_ref(value: object) -> bool:
+    """Bounded printable source locator; does not authenticate origin or bytes."""
+    return (type(value) is str and 1 <= len(value) <= 1024
+            and value.strip() == value
+            and all(ch.isprintable() and ch != "\\x7f" for ch in value)
+            and not value.lower().startswith(("javascript:", "data:", "vbscript:")))
+
+
+def valid_lineage_id(value: object) -> bool:
+    """An identity label, not a source of authorization."""
+    return valid_actor_id(value)
+
+
 def evaluate(payload: dict) -> dict:
     if not isinstance(payload, dict) or payload.get("schema") != SCHEMA:
         raise ValueError("HOLD_SCHEMA")
     shared = payload.get("work_id")
     records = payload.get("sources")
-    if not isinstance(shared, str) or not shared or not isinstance(records, list) or not 2 <= len(records) <= 8:
+    if not valid_lineage_id(shared) or not isinstance(records, list) or not 2 <= len(records) <= 8:
         raise ValueError("HOLD_SCOPE")
     seen_ids, seen_refs = set(), set()
     reasons, contributions, dissent, obligations = set(), set(), set(), set()
@@ -54,9 +67,9 @@ def evaluate(payload: dict) -> dict:
         if not isinstance(r, dict):
             raise ValueError("HOLD_SOURCE_SHAPE")
         sid, ref, sha = r.get("session_id"), r.get("source_ref"), r.get("source_sha256")
-        if not isinstance(sid, str) or not sid or sid in seen_ids:
+        if not valid_lineage_id(sid) or sid in seen_ids:
             raise ValueError("HOLD_SOURCE_IDENTITY")
-        if not isinstance(ref, str) or not ref or ref in seen_refs:
+        if not valid_source_ref(ref) or ref in seen_refs:
             raise ValueError("HOLD_SOURCE_REF")
         if not isinstance(sha, str) or len(sha) != 64 or any(c not in "0123456789abcdef" for c in sha):
             raise ValueError("HOLD_SOURCE_HASH")
@@ -70,7 +83,7 @@ def evaluate(payload: dict) -> dict:
             reasons.add("AUTHORITY_MISMATCH")
         for field in ("contribution_ids", "dissent_ids", "unresolved_obligations"):
             v = r.get(field)
-            if not isinstance(v, list) or any(not isinstance(x, str) or not x for x in v):
+            if not isinstance(v, list) or any(not valid_lineage_id(x) for x in v):
                 raise ValueError("HOLD_" + field.upper())
         contributions.update(r["contribution_ids"])
         dissent.update(r["dissent_ids"])
@@ -99,7 +112,8 @@ def evaluate(payload: dict) -> dict:
         reasons.add("MISSING_OR_CHANGED_SOURCE_DIGEST")
     for key, original in (("contribution_ids", contributions), ("dissent_ids", dissent), ("accepted_obligations", obligations)):
         value = successor.get(key)
-        if not isinstance(value, list) or set(value) != original or len(value) != len(set(value)):
+        if (not isinstance(value, list) or any(not valid_lineage_id(x) for x in value)
+                or len(value) != len(set(value)) or set(value) != original):
             reasons.add("SUCCESSOR_" + key.upper() + "_LOSS")
     if successor.get("receiver_readproof") is not True:
         reasons.add("RECEIVER_READPROOF_NOT_DECLARED")
