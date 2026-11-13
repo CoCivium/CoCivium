@@ -78,6 +78,91 @@ def sha(b):
     return hashlib.sha256(b).hexdigest()
 
 
+def compare_public_source_turns(previous: dict, current: dict) -> dict:
+    """Advisory source-byte comparison; no authority or useful-work inference.
+
+    Caller-provided receipts are not authenticated external ACKs or independent
+    receiver observations. They must never be used to actuate, skip due work,
+    or qualify real-world change without separately verified provenance.
+    """
+    def index(obj: dict) -> dict:
+        hold(isinstance(obj, dict) and obj.get("schema") == OUT_SCHEMA
+             and obj.get("state") ==
+             "ONE_SOURCE_WORKID_RECHECKED_AND_LOGICAL_FLEET_PROJECTED",
+             "DELTA_TURN_SCHEMA")
+        hold(obj.get("receiver_ack") is False and
+             obj.get("external_work_effect_claimed") is False,
+             "DELTA_EFFECT_AUTHORITY")
+        run = obj.get("run")
+        hold(isinstance(run, dict) and
+             isinstance(run.get("run_id"), str) and
+             re.fullmatch(r"[1-9][0-9]*", run["run_id"]) and
+             isinstance(run.get("head_sha"), str) and
+             _SHA.fullmatch(run["head_sha"]), "DELTA_RUN_IDENTITY")
+        inp = obj.get("input")
+        sources = obj.get("sources")
+        hold(isinstance(inp, dict) and inp.get("path") == WORKSET
+             and isinstance(inp.get("sha256"), str)
+             and re.fullmatch(r"[0-9a-f]{64}", inp["sha256"])
+             and isinstance(sources, list)
+             and len(sources) == inp.get("work_item_count")
+             and 1 <= len(sources) <= 8, "DELTA_INPUT_SHAPE")
+        found = {}
+        for source in sources:
+            hold(isinstance(source, dict) and
+                 isinstance(source.get("work_id"), str) and
+                 bool(_ID.fullmatch(source["work_id"])) and
+                 isinstance(source.get("source_path"), str) and
+                 source["source_path"].startswith("ai/currentness/") and
+                 isinstance(source.get("source_sha256"), str) and
+                 re.fullmatch(r"[0-9a-f]{64}", source["source_sha256"]),
+                 "DELTA_SOURCE_SHAPE")
+            key = source["work_id"]
+            hold(key not in found, "DELTA_DUPLICATE_WORKID")
+            found[key] = (source["source_path"], source["source_sha256"])
+        return found
+
+    earlier = index(previous)
+    later = index(current)
+    hold(previous["input"]["sha256"] == current["input"]["sha256"]
+         and set(earlier) == set(later)
+         and all(earlier[key][0] == later[key][0] for key in earlier),
+         "DELTA_WORKSET_IDENTITY_DRIFT")
+    # A retry of the same run is not an independent execution.
+    repeated_run = previous["run"]["run_id"] == current["run"]["run_id"]
+    changed = sum(earlier[key][1] != later[key][1] for key in earlier)
+    # A reused run ID is not proof of a valid replay. Detect conflicting
+    # immutable source/head evidence before returning the quiet classification.
+    if repeated_run:
+        hold(previous["run"]["head_sha"] == current["run"]["head_sha"],
+             "DELTA_SAME_RUN_HEAD_DRIFT")
+        hold(changed == 0, "DELTA_SAME_RUN_SOURCE_DRIFT")
+    classification = ("SAME_RUN_REPLAY_NOT_NEW_EVIDENCE" if repeated_run
+                      else "UNCHANGED_PUBLIC_SOURCES_RECHECK" if changed == 0
+                      else "PUBLIC_SOURCE_DIGEST_CHANGE_REQUIRES_SEMANTIC_REVIEW")
+    return {
+        "schema": "CoAll.CoSessionAutocycle.SourceDeltaAdvisory.R1",
+        "classification": classification,
+        "source_digests_changed": changed,
+        "source_digests_unchanged": len(earlier) - changed,
+        "novel_public_source_objects": 0 if changed == 0 else None,
+        "verified_useful_work_outcomes": 0,
+        "receiver_ack": False,
+        "gain_estimate": None,
+        "prior_receipt_authenticated": False,
+        "purpose": "ADVISORY_SELF_REPORTED_SOURCE_COMPARISON_ONLY",
+        "nonclaims": [
+            "SOURCE_DIGEST_CHANGE_NE_NEW_KNOWLEDGE",
+            "REPEATED_CI_NE_USEFUL_USER_WORK",
+            "SELF_REPORTED_CI_RECEIPTS_NE_EXTERNAL_RECEIVER_PROOF",
+            "ADVISORY_NE_AUTHORIZED_ELECTION_OR_EFFECT",
+            "NO_PROVIDER_SESSION_CYCLING",
+            "NO_X2_RUNTIME_EFFECTS",
+            "VALIDATION_IS_NOT_ACCEPTANCE",
+        ],
+    }
+
+
 def compile_turn(root: Path, observed_at: str, run_id: str, attempt: str, head: str):
     root = Path(root)
     when = timestamp(observed_at)
