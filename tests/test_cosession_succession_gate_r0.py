@@ -120,6 +120,30 @@ class SessionSuccessionTests(unittest.TestCase):
         self.f["sources"][2]["work_id"] = "another-work"
         self.check_hold("WORK_ID_COLLISION")
 
+    def test_missing_producer_identity_holds(self):
+        del self.f["successor"]["producer_id"]
+        self.check_hold("PRODUCER_IDENTITY_INVALID")
+
+    def test_empty_producer_identity_holds(self):
+        self.f["successor"]["producer_id"] = " "
+        self.check_hold("PRODUCER_IDENTITY_INVALID")
+
+    def test_nonstring_producer_identity_holds(self):
+        self.f["successor"]["producer_id"] = {"claimed": "fixture-producer"}
+        self.check_hold("PRODUCER_IDENTITY_INVALID")
+
+    def test_nonstring_verifier_identity_holds(self):
+        self.f["successor"]["verifier_id"] = ["fixture-verifier"]
+        self.check_hold("VERIFIER_IDENTITY_INVALID")
+
+    def test_control_character_verifier_identity_holds(self):
+        self.f["successor"]["verifier_id"] = "fixture-verifier\ninjected"
+        self.check_hold("VERIFIER_IDENTITY_INVALID")
+
+    def test_overlong_verifier_identity_holds(self):
+        self.f["successor"]["verifier_id"] = "v" * 129
+        self.check_hold("VERIFIER_IDENTITY_INVALID")
+
     def test_replay_is_deterministic(self):
         self.assertEqual(evaluate(self.f), evaluate(copy.deepcopy(self.f)))
 
