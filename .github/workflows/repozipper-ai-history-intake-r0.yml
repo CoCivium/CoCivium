@@ -1,0 +1,27 @@
+name: RepoZipper AI History Intake R0
+permissions:
+  contents: read
+
+on:
+  pull_request:
+    paths:
+      - "examples/repozipper/ai_history_intake_r0.py"
+      - "examples/repozipper/test_ai_history_intake_r0.py"
+      - ".github/workflows/repozipper-ai-history-intake-r0.yml"
+  push:
+    paths:
+      - "examples/repozipper/ai_history_intake_r0.py"
+      - "examples/repozipper/test_ai_history_intake_r0.py"
+      - ".github/workflows/repozipper-ai-history-intake-r0.yml"
+
+jobs:
+  synthetic-offline-intake:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Test bounded no-network ChatGPT export ZIP inspection and privacy
+        run: python -B -m unittest discover -s examples/repozipper -p "test_ai_history_intake_r0.py" -v
