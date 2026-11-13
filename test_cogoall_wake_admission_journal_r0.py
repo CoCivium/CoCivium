@@ -137,7 +137,7 @@ class JournalTests(unittest.TestCase):
     def test_rebound_worktree_bytes_not_in_git_head_held(self):
         # Same claimed checkout SHA and freshly rebound local hash must NOT
         # qualify modified/untracked source bytes absent from pinned Git HEAD.
-        self.path.write_bytes(b'{"kind":"PUBLIC_SYNTHETIC","value":2}\\n')
+        self.path.write_bytes(b'{"kind":"PUBLIC_SYNTHETIC","value":2}')
         self.event["source_sha256"] = sha(self.path.read_bytes())
         result = admit(self.root, self.event, NOW)
         self.assertEqual(result["reason"], "HOLD_SOURCE_NOT_AT_CHECKOUT_HEAD")
