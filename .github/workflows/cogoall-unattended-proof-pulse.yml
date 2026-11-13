@@ -30,6 +30,8 @@ on:
       - 'test_progress_receipt_gate_r0.py'
       - 'scripts/CoGoAllDueWorkSourceCanaryR0.py'
       - 'test_cogoall_due_work_source_canary_r0.py'
+      - 'scripts/CoGoAllWakeAdmissionR0.py'
+      - 'test_cogoall_wake_admission_r0.py'
       - 'scripts/CoGoAllPriorRunReadbackR0.py'
       - 'test_cogoall_prior_run_readback_r0.py'
       - 'scripts/CoGoAllUnfinishedCanaryR0.py'
@@ -273,6 +275,10 @@ jobs:
           python -O -B -m unittest -v test_progress_receipt_gate_r0
       - name: Challenge the source-bound due-work and receipt contract
         run: python -B -m unittest -v test_cogoall_due_work_source_canary_r0
+      - name: Qualify event-to-wake review, without dispatch or new clock
+        run: |
+          python -B -m unittest -v test_cogoall_wake_admission_r0
+          python -O -B -m unittest -v test_cogoall_wake_admission_r0
       - name: Claim and execute one bounded read-only source WorkID
         run: |
           python -B -m scripts.CoGoAllDueWorkSourceCanaryR0 produce \
