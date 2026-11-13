@@ -151,6 +151,25 @@ class TestCoLocalRoleRebind(unittest.TestCase):
         path.write_text(json.dumps(value, sort_keys=True) + "\n", encoding="utf-8")
         return rel, path
 
+    def test_needle_symlinked_observation_is_held(self):
+        from scripts.CoNeedleObservationAdmissionR0 import review_observation
+        rel, original = self._needle_candidate("source.json")
+        linkrel = "ai/observations/colocal/alias.json"
+        link = self.root / linkrel
+        try:
+            link.symlink_to(original)
+        except (OSError, NotImplementedError):
+            self.skipTest("symlink unsupported")
+        self.assertEqual(
+            review_observation(self.root, "X2_DESKTOP_RECOVERY", linkrel)["reason"],
+            "HOLD_MISSING_OR_LINKED_OBSERVATION")
+
+    def test_needle_invalid_kind_type_is_held(self):
+        from scripts.CoNeedleObservationAdmissionR0 import review_observation
+        rel, _ = self._needle_candidate(observation_kind=["CLAIMED_REAL_EFFECT"])
+        r = review_observation(self.root, "X2_DESKTOP_RECOVERY", rel)
+        self.assertEqual(r["reason"], "HOLD_UNQUALIFIED_OBSERVER_OR_EVIDENCE")
+
     def test_needle_new_observation_preserves_immutable_policy_bytes(self):
         from scripts.CoNeedleObservationAdmissionR0 import review_observation
         originals = {p.relative_to(self.root): p.read_bytes()
