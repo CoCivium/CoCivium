@@ -131,6 +131,12 @@ def compare_public_source_turns(previous: dict, current: dict) -> dict:
     # A retry of the same run is not an independent execution.
     repeated_run = previous["run"]["run_id"] == current["run"]["run_id"]
     changed = sum(earlier[key][1] != later[key][1] for key in earlier)
+    # A reused run ID is not proof of a valid replay. Detect conflicting
+    # immutable source/head evidence before returning the quiet classification.
+    if repeated_run:
+        hold(previous["run"]["head_sha"] == current["run"]["head_sha"],
+             "DELTA_SAME_RUN_HEAD_DRIFT")
+        hold(changed == 0, "DELTA_SAME_RUN_SOURCE_DRIFT")
     classification = ("SAME_RUN_REPLAY_NOT_NEW_EVIDENCE" if repeated_run
                       else "UNCHANGED_PUBLIC_SOURCES_RECHECK" if changed == 0
                       else "PUBLIC_SOURCE_DIGEST_CHANGE_REQUIRES_SEMANTIC_REVIEW")
