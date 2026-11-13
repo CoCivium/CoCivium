@@ -30,6 +30,18 @@ This extends [RepoZipper / CoPlatformHelper R0](COPLATFORM_HELPER_ECOLOGY_REPOZI
 - File paths and raw conversation text must never appear in routine stdout/release artifacts. **Never commit a real export, secret key, local SQLite DB, or private receipt to GitHub.**
 - Results are structural evidence of export contents only: **not** full provider account census, semantic ingestion, independent backup, receiver ACK, or delete-safe.
 
+## One-minute synthetic first-use preview
+
+**Source:** [Protect your AI history offline HTML](../../examples/repozipper/protect_ai_history_preview_r0.html). This is a self-contained, offline page with a restrictive CSP, zero real file or provider account access, and no runtime dependencies. Open the HTML from a trusted local copy to interact with it; a GitHub source view is not the running UX.
+
+**Single CTA:** `Try the sample` -> count three invented conversations and seven invented message nodes -> display honest inventory/backup status -> optionally download one visibly synthetic JSON example report -> `Start again`. Keyboard/focus and live-status hooks, reduced-motion CSS, and plain source visibility are present. **No real ZIP file-picker exists in this preview.** It does not run the actual export importer.
+
+**Current tests:** `python -B -m unittest discover -s examples/repozipper -p "test_*_r0.py" -v`; `node examples/repozipper/test_protect_ai_history_preview_r0.cjs` (tests exact embedded model from HTML, not a replica). GitHub Actions run [43510543996](https://github.com/CoCivium/CoCivium/actions/runs/43510543996) passed at PR #493 head `40b3ff1b05d1c1abdd15b047aec4e67b5ed151eb` before this documentation append. Future commits must be verified at their own head.
+
+**Human acceptance gates:** a newcomer independently opens the page offline, understands the example is not their data, completes the single action, finds Reset and Stop/exit without confusion, and can explain why an inventory is not a verified backup. Screen-reader and real small-screen testing remain unobserved. Production safety and wide release remain HOLD.
+
+**Perimeter Institute reviewer note:** There is no verified institutional review appointment or endorsement. These public source links permit voluntary evaluation of one bounded artifact and its tests, without implying live production, uploaded private data, or expert acceptance.
+
 ## Uncertainties / next qualification
 
 1. Actual OpenAI/ChatGPT export schema, huge ZIP size and all attachments unknown. R0 is tested on synthetic `conversations.json` arrays; another export format requires a separately qualified adapter.
