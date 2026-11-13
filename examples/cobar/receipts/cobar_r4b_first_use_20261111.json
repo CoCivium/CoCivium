@@ -1,0 +1,78 @@
+{
+  "schema": "CoBar.LocalIO.FirstUse.R4b.R0",
+  "observed_at_utc": "2026-11-11T19:40:10.050Z",
+  "source_sha256": "D56DF449DF491EC38F0D9B963B1B3D93DBC04FAEB7E1B3C8679462E3B39A2B72",
+  "predecessor_sha256": "FFFADD8CFC199C749925ACA74396B76CA33EA80B197CC38F030AB2771DA4694A",
+  "mode": "X2_ISOLATED_HEADLESS_EDGE_LOCAL_FILE",
+  "work_id": "CO-SESSION-RECOVERY::LOCAL-SYNTHETIC-R0",
+  "cases": [
+    {
+      "width": 320,
+      "pass": true,
+      "checks": {
+        "initial_empty": true,
+        "no_implicit_consent": true,
+        "stored_first_result": true,
+        "retry_is_idempotent": true,
+        "reload_recovers": true,
+        "conflicting_work_held": true,
+        "stop_revokes": true,
+        "revoked_persists": true,
+        "revoked_retry_held": true,
+        "tampering_held": true,
+        "no_script_errors": true
+      },
+      "errors": []
+    },
+    {
+      "width": 390,
+      "pass": true,
+      "checks": {
+        "initial_empty": true,
+        "no_implicit_consent": true,
+        "stored_first_result": true,
+        "retry_is_idempotent": true,
+        "reload_recovers": true,
+        "conflicting_work_held": true,
+        "stop_revokes": true,
+        "revoked_persists": true,
+        "revoked_retry_held": true,
+        "tampering_held": true,
+        "no_script_errors": true
+      },
+      "errors": []
+    },
+    {
+      "width": 1280,
+      "pass": true,
+      "checks": {
+        "initial_empty": true,
+        "no_implicit_consent": true,
+        "stored_first_result": true,
+        "retry_is_idempotent": true,
+        "reload_recovers": true,
+        "conflicting_work_held": true,
+        "stop_revokes": true,
+        "revoked_persists": true,
+        "revoked_retry_held": true,
+        "tampering_held": true,
+        "no_script_errors": true
+      },
+      "errors": []
+    }
+  ],
+  "external_requests": [],
+  "pass": true,
+  "lifecycle": "VERIFIED_LOCAL_BROWSER_IO_ONLY",
+  "independent_receiver_ack": "UNPROVEN",
+  "human_acceptance": "NOT_TESTED",
+  "persistent_cross_host_custody": "NOT_TESTED",
+  "no_source_mutation": true,
+  "nonclaims": [
+    "LOCALSTORAGE_NE_DURABLE_OFFHOST_CUSTODY",
+    "BROWSER_WORKID_NE_EXTERNAL_RECEIVER_ACK",
+    "SYNTHETIC_CONSENT_NE_HUMAN_ACCEPTANCE",
+    "NO_NAS_NATIVE_ACK",
+    "NO_PUBLIC_RELEASE_OR_COEX"
+  ]
+}
