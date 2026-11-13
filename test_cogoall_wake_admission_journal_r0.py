@@ -33,6 +33,7 @@ class JournalTests(unittest.TestCase):
         p.parent.mkdir(parents=True)
         p.write_bytes(b'{"kind":"PUBLIC_SYNTHETIC","value":1}\n')
         self.path = p
+        self.pinned_source_bytes = p.read_bytes()  # Synthetic committed object fixture.
         self.event = {
             "schema": SCHEMA,
             "event_id": "source-delta-01",
@@ -54,8 +55,14 @@ class JournalTests(unittest.TestCase):
             "stop_condition": "STOP_ON_HOLD_OR_NO_DELTA",
             "claimed_external_ack": False,
         }
+        def fake_git_command(args, **kwargs):
+            if args == ["git", "rev-parse", "HEAD"]:
+                return SimpleNamespace(returncode=0, stdout=HEAD+"\n")
+            if args == ["git", "show", "HEAD:" + PATH]:
+                return SimpleNamespace(returncode=0, stdout=self.pinned_source_bytes)
+            return SimpleNamespace(returncode=1, stdout=b"")
         self.head = patch("scripts.CoGoAllWakeAdmissionJournalR0.subprocess.run",
-                          return_value=SimpleNamespace(returncode=0,stdout=HEAD+"\n"))
+                          side_effect=fake_git_command)
         self.head.start()
         self.addCleanup(self.head.stop)
 
@@ -126,6 +133,31 @@ class JournalTests(unittest.TestCase):
         self.event["source_sha256"]=sha(self.path.read_bytes())
         result=admit(self.root,self.event,NOW)
         self.assertEqual(result["reason"],"HOLD_SOURCE_NOT_JSON")
+
+    def test_rebound_worktree_bytes_not_in_git_head_held(self):
+        # Same claimed checkout SHA and freshly rebound local hash must NOT
+        # qualify modified/untracked source bytes absent from pinned Git HEAD.
+        self.path.write_bytes(b'{"kind":"PUBLIC_SYNTHETIC","value":2}\\n')
+        self.event["source_sha256"] = sha(self.path.read_bytes())
+        result = admit(self.root, self.event, NOW)
+        self.assertEqual(result["reason"], "HOLD_SOURCE_NOT_AT_CHECKOUT_HEAD")
+        self.assertFalse(result["queue_admitted"])
+
+    def test_symlinked_parent_within_repo_fails_closed(self):
+        # Resolving the final path within root is insufficient. A symlinked
+        # parent allows quietly retargeting a source without changing its name.
+        target = self.root / "untracked" / "currentness"
+        target.mkdir(parents=True)
+        (target / self.path.name).write_bytes(self.path.read_bytes())
+        self.path.unlink()
+        self.path.parent.rmdir()
+        try:
+            self.path.parent.symlink_to(target, target_is_directory=True)
+        except (OSError, NotImplementedError):
+            self.skipTest("symlink not supported")
+        result = admit(self.root, self.event, NOW)
+        self.assertEqual(result["reason"], "HOLD_SOURCE_PATH_OR_SYMLINK")
+        self.assertFalse(result["queue_admitted"])
 
     def test_no_delta_no_db_created(self):
         result=admit(self.root,{**self.event,"materiality":"NO_MATERIAL_DELTA"},NOW)
