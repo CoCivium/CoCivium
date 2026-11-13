@@ -297,6 +297,53 @@ class TestCoLocalRoleRebind(unittest.TestCase):
         self.assertEqual(review_observation(self.root, "X2_DESKTOP_RECOVERY", p2)["reason"],
                          "HOLD_PRIOR_REQUIRED")
 
+    def test_needle_obviously_future_issuer_time_held(self):
+        from scripts.CoNeedleObservationAdmissionR0 import review_observation
+        rel, _ = self._needle_candidate(
+            "future-2099.json", observed_at_utc="2099-01-01T00:00:00Z")
+        r = review_observation(self.root, "X2_DESKTOP_RECOVERY", rel)
+        self.assertEqual(r["reason"],
+                         "HOLD_OBSERVATION_FUTURE_VS_UNATTESTED_REVIEW_CLOCK")
+        self.assertTrue(r["local_clock_future_sanity_checked"])
+        self.assertFalse(r["trusted_time_attested"])
+        self.assertFalse(r["observation_authority_verified"])
+        self.assertFalse(r["runtime_accepted"])
+
+    def test_needle_future_second_revision_held_before_admission(self):
+        from scripts.CoNeedleObservationAdmissionR0 import review_observation
+        import hashlib
+        previous, raw = self._needle_candidate("previous.json")
+        newer, _ = self._needle_candidate(
+            "future-rev2.json", revision=2,
+            observed_at_utc="2099-01-01T00:00:00Z",
+            previous_observation_sha256=hashlib.sha256(raw.read_bytes()).hexdigest())
+        r = review_observation(self.root, "X2_DESKTOP_RECOVERY", newer, previous)
+        self.assertEqual(r["reason"],
+                         "HOLD_OBSERVATION_FUTURE_VS_UNATTESTED_REVIEW_CLOCK")
+        self.assertFalse(r["receiver_origin_readproof"] if "receiver_origin_readproof" in r else
+                         r["observation_receiver_ack"])
+        self.assertFalse(r["branch_elected"])
+
+    def test_needle_normal_timestamp_still_requires_owner_review(self):
+        from scripts.CoNeedleObservationAdmissionR0 import review_observation
+        rel, _ = self._needle_candidate("ordinary-claim.json")
+        r = review_observation(self.root, "X2_DESKTOP_RECOVERY", rel)
+        self.assertEqual(r["state"],
+                         "SOURCE_PIN_OK__OBSERVATION_CANDIDATE_REQUIRES_REVIEW")
+        self.assertTrue(r["local_clock_future_sanity_checked"])
+        self.assertFalse(r["trusted_time_attested"])
+        self.assertFalse(r["observation_authority_verified"])
+        self.assertFalse(r["receiver_origin_readproof"])
+        self.assertFalse(r["runtime_accepted"])
+
+    def test_needle_forged_time_attestation_field_rejected(self):
+        from scripts.CoNeedleObservationAdmissionR0 import review_observation
+        rel, _ = self._needle_candidate(
+            "fake-time-attestation.json", trusted_time_attested=True)
+        r = review_observation(self.root, "X2_DESKTOP_RECOVERY", rel)
+        self.assertEqual(r["reason"], "HOLD_OBSERVATION_SCHEMA")
+        self.assertFalse(r["observation_authority_verified"])
+
     def test_needle_nonmonotonic_time_is_held(self):
         from scripts.CoNeedleObservationAdmissionR0 import review_observation
         import hashlib
