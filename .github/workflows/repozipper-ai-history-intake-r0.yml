@@ -23,5 +23,5 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Test bounded no-network ChatGPT export ZIP inspection and privacy
-        run: python -B -m unittest discover -s examples/repozipper -p "test_ai_history_intake_r0.py" -v
+      - name: Test bounded no-network intake and eight theme guards
+        run: python -B -m unittest discover -s examples/repozipper -p "test_*_r0.py" -v
