@@ -1,0 +1,32 @@
+name: RepoZipper AI History Intake R0
+permissions:
+  contents: read
+
+on:
+  pull_request:
+    paths:
+      - "examples/repozipper/**"
+      - "ai/product/repozipper-ai-history-theme-projections-r0.json"
+      - ".github/workflows/repozipper-ai-history-intake-r0.yml"
+  push:
+    paths:
+      - "examples/repozipper/**"
+      - "ai/product/repozipper-ai-history-theme-projections-r0.json"
+      - ".github/workflows/repozipper-ai-history-intake-r0.yml"
+
+jobs:
+  offline-first-use-and-intake:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Verify synthetic ZIP intake, themes and HTML safety
+        run: python -B -m unittest discover -s examples/repozipper -p "test_*_r0.py" -v
+      - name: Execute exact inline preview model with negative controls
+        run: node examples/repozipper/test_protect_ai_history_preview_r0.cjs
