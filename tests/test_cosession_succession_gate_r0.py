@@ -166,7 +166,7 @@ class SessionSuccessionTests(unittest.TestCase):
 
     def test_control_character_source_session_id_is_rejected(self):
         original = self.f["sources"][0]["session_id"]
-        changed = "fixture-session-0\\nforged"
+        changed = "fixture-session-0" + chr(10) + "forged"
         self.f["sources"][0]["session_id"] = changed
         digests = self.f["successor"]["source_digests"]
         digests[changed] = digests.pop(original)
@@ -188,7 +188,7 @@ class SessionSuccessionTests(unittest.TestCase):
             evaluate(self.f)
 
     def test_control_character_source_ref_is_rejected(self):
-        self.f["sources"][0]["source_ref"] = "public-synthetic-source\\nforged"
+        self.f["sources"][0]["source_ref"] = "public-synthetic-source" + chr(10) + "forged"
         with self.assertRaisesRegex(ValueError, "HOLD_SOURCE_REF"):
             evaluate(self.f)
 
