@@ -9,7 +9,7 @@ published, or treated as an independently acknowledged receiver effect here.
 """
 from __future__ import annotations
 
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 import hashlib
 import json
 from pathlib import Path
@@ -138,6 +138,8 @@ def review_observation(root: Path, role: str, candidate_path: str,
         "competing_sources_checked": 0,
         "complete_fork_census_proven": False,
         "branch_elected": False,
+        "local_clock_future_sanity_checked": False,
+        "trusted_time_attested": False,
     }
     try:
         root = Path(root)
@@ -148,6 +150,13 @@ def review_observation(root: Path, role: str, candidate_path: str,
         result["source_pin_verified"] = True
         current_raw = _read(root, candidate_path)
         current, current_time = _decode(current_raw, pin)
+        # This only rejects obviously future-dated candidate claims relative
+        # to the review worker's local clock. It is NOT trusted time
+        # attestation, observer provenance, or observation admission.
+        review_clock = datetime.now(timezone.utc)
+        result["local_clock_future_sanity_checked"] = True
+        if current_time > review_clock + timedelta(minutes=5):
+            _fail("OBSERVATION_FUTURE_VS_UNATTESTED_REVIEW_CLOCK")
         if current["revision"] == 1:
             if prior_path is not None or current["previous_observation_sha256"] is not None:
                 _fail("FIRST_REVISION_WITH_PREDECESSOR")
@@ -194,6 +203,7 @@ def review_observation(root: Path, role: str, candidate_path: str,
                 "IMMUTABLE_PIN_NE_MUTABLE_OBSERVATION",
                 "CLAIMED_EVIDENCE_REF_NE_AUTHENTICATED_WITNESS",
                 "CHAIN_SYNTAX_NE_ACCEPTED_OBSERVATION",
+                "LOCAL_WALL_CLOCK_SANITY_NE_TRUSTED_TIME_OR_SOURCE_FRESHNESS",
                 "BOUNDED_SIBLING_CHECK_NE_COMPLETE_FORK_CENSUS",
                 "MISSING_FORK_WITNESS_NE_UNIQUE_HISTORY",
                 "SOURCE_REVIEW_NE_RUNTIME_OR_RECEIVER_ACK",
