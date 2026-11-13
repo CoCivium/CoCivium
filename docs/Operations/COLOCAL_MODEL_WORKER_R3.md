@@ -58,3 +58,11 @@ When the X2 direct machine route returns:
 `MODEL_OUTPUT_NE_TRUTH`  
 `MODEL_OUTPUT_NE_EFFECT_PERMISSION`  
 `CANDIDATE_OUTPUT_NE_PICKUP`
+
+## 2026-11-13 | X2 live endpoint readiness probe
+
+**New read-only native evidence:** X2's authorized remote bridge was online. Shell-free file metadata found an existing Ollama executable and model manifest directories. A shell-free HTTP GET to the documented loopback endpoint (`http://127.0.0.1:11434/api/tags`) returned **`ECONNREFUSED`**. No `ollama` process was present in the contemporaneous bounded process inventory. No process was started, no scheduled task toggled, and no Desktop Commander terminal session opened.
+
+**State:** `OLLAMA_INSTALLED_AND_MANIFESTS_PRESENT__LOOPBACK_SERVER_UNAVAILABLE_AT_OBSERVATION`; R3's actual X2 model canary remains **NOT RUN**. This direct probe narrows the blocker but does not prove an installation problem, a specific root cause, the absence of other endpoints, or an acceptable UI.
+
+[Public-safe typed observation bundled with a separate CoFront receiver proof](../../ai/currentness/cotalkitout-cofront-byte-receiver-r0-20261113.json). The next safe action is an authorized, **non-foreground** service recovery using an existing elected owner and rollback path, followed by a single public-only R3 WorkID canary. No additional PS7 popup-producing runner should be introduced while the [CoDesktop focus incident #181](https://github.com/CoCivium/CoCivium/issues/181) remains unresolved.
