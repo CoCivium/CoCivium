@@ -1,0 +1,22 @@
+{
+  "schema": "CoGoldenBraidSurfaceInventory/R0",
+  "coverage": "ONLY_ROUTES_IN_THIS_OFFLINE_TEST_AND_EXPLICITLY_KNOWN_HOLDS",
+  "verified_now": [
+    {"id": "local-alpha", "type": "local_process", "authority": "SYNTHETIC_PUBLIC_TEST_ONLY", "effect": "WRITE_LOCAL_DELIVERY_AND_RECEIVER_ACK", "failure_domain": "SAME_LOCAL_HOST_AND_FILESYSTEM"},
+    {"id": "local-beta", "type": "local_process", "authority": "SYNTHETIC_PUBLIC_TEST_ONLY", "effect": "WRITE_LOCAL_DELIVERY_AND_RECEIVER_ACK", "failure_domain": "SAME_LOCAL_HOST_AND_FILESYSTEM"}
+  ],
+  "bounded_existing_priors": [
+    {"name": "CoPulse two-receiver R0B", "source": "https://github.com/CoCivium/CoCivium/blob/main/docs/Operations/COPULSE_TWO_RECEIVER_R0B.md", "state": "DOCUMENTED_LOCAL_SYNTHETIC_PROOF_NOT_REPLAYED_HERE"},
+    {"name": "CoPulse per-receiver ACK R0C", "source": "https://github.com/CoCivium/CoCivium/blob/main/docs/Operations/COPULSE_ACK_BACKFILL_R0C.md", "state": "DOCUMENTED_LOCAL_SYNTHETIC_PROOF_NOT_REPLAYED_HERE"}
+  ],
+  "held_or_unverified": [
+    {"id": "github-repository", "status": "SOURCE_PUBLICATION_AND_READBACK_ONLY_NOT_RECEIVER_INTEGRATION"},
+    {"id": "gmail", "status": "NO_SYNTHETIC_EMAIL_SENT"},
+    {"id": "covia", "status": "NO_VERIFIED_RECEIVER_ADAPTER_OR_ACK"},
+    {"id": "external_nodes_and_sites", "status": "NO_VERIFIED_RECEIVER_OR_ROUTE"},
+    {"id": "x2", "status": "CURRENT_REMOTE_OBSERVER_OFFLINE"},
+    {"id": "cogbx.org", "status": "DOMAIN_ROLE_PLANNED_NOT_VERIFIED_HOSTED_LANDING"},
+    {"id": "claude_pi_ollama", "status": "NO_MODEL_CALLS_OR_PROVIDER_ADAPTERS"}
+  ],
+  "nonclaims": ["NO_GLOBAL_SYNC", "NO_EXTERNAL_RECIPIENT_PICKUP", "NO_INDEPENDENT_FAILURE_DOMAIN", "NO_DEPLOYED_COGBX_SITE", "NO_RUNNING_COORBWARE", "NO_AUTONOMOUS_ALWAYS_ON_FLEET"]
+}
