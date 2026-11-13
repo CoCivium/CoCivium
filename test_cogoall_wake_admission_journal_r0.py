@@ -183,6 +183,29 @@ class JournalTests(unittest.TestCase):
         self.assertEqual(result["source_attestation"],
                          "CHECKOUT_HEAD_AND_EXACT_LOCAL_FILE_SHA256")
 
+    def test_concurrent_different_workids_have_one_single_owner_winner(self):
+        # Distinct candidates racing through separate SQLite connections must
+        # not both become residents of the single-owner admission journal.
+        from concurrent.futures import ThreadPoolExecutor
+        from threading import Barrier
+        barrier = Barrier(2)
+        def try_admit(suffix):
+            event = {**self.event, "event_id": "source-delta-" + suffix,
+                     "work_id": "CoAll.Work.SourceReview." + suffix}
+            barrier.wait(timeout=4)
+            return admit(self.root, event, NOW)
+        with ThreadPoolExecutor(max_workers=2) as pool:
+            first, second = list(pool.map(try_admit, ("one", "two")))
+        states = {first["state"], second["state"]}
+        self.assertEqual(states, {"ADMITTED_LOCAL_ONLY_WAITING_FOR_WORKER",
+                                  "HOLD_LOCAL_WAKE_ADMISSION"})
+        self.assertEqual(
+            {first.get("reason"), second.get("reason")} - {None},
+            {"HOLD_FOREIGN_WORK_IN_SINGLE_OWNER_QUEUE"})
+        db = self.root/"out"/"cogoall"/"wake-admission-r0.sqlite"
+        with sqlite3.connect(db) as sql:
+            self.assertEqual(sql.execute("SELECT COUNT(*) FROM work").fetchone()[0], 1)
+
     def test_invalid_lease_not_silently_repaired(self):
         admit(self.root,self.event,NOW)
         db=self.root/"out"/"cogoall"/"wake-admission-r0.sqlite"
