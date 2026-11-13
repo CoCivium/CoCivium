@@ -1,0 +1,117 @@
+{
+  "schema": "CoCivium.CoPreGeneric.ColdSuccessorPacket.R0",
+  "state": "SOURCE_CANDIDATE__RECEIVER_NOT_ACKED",
+  "purpose": "A cold authorized successor can start from one immutable GitHub source pointer and choose a distinct bounded next proof without user paste or invented activity.",
+  "created_from": "2026-11-10 session; human-requested CoLatch and opportunistic de-dependency",
+  "source": {
+    "repository": "CoCivium/CoCivium",
+    "commit_sha": "4dd38a8db2c2b95f6ccf88dbaac1700deff33cd4",
+    "branch": "candidate/cosurface-stitched-orb-nav-r0-20261108",
+    "pr": 375,
+    "asset_index": "examples/cosurface_stitched_r0/COPRE_SHAREABLE_ASSET_INDEX_R0.md",
+    "readback_context": "GitHub candidate checked; branch can move; pin the SHA"
+  },
+  "owners": {
+    "source": "GitHub PR #375",
+    "surface": "GitHub issue #178",
+    "handoff": "GitHub issue #317"
+  },
+  "targets": [
+    {
+      "uri": "https://github.com/CoCivium/CoPreGeneric",
+      "status": "NOT_QUALIFIED_404_OR_INACCESSIBLE",
+      "sha256": null,
+      "receiver_ack": null
+    },
+    {
+      "uri": "https://CoCivium.org/CoPre",
+      "status": "NOT_QUALIFIED",
+      "sha256": null,
+      "receiver_ack": null
+    },
+    {
+      "uri": "https://InSeed.com/Stead",
+      "status": "NOT_QUALIFIED",
+      "sha256": null,
+      "receiver_ack": null
+    }
+  ],
+  "receiver": {
+    "actor_id": null,
+    "independent_fetch": false,
+    "verified_sha256": null,
+    "durable_ack_uri": null,
+    "recovery_after_restart": false
+  },
+  "seed_survival": {
+    "observed_hours": null,
+    "verified_over_24h": false
+  },
+  "system_owned_sync": {
+    "scheduler_proof": null,
+    "observed_run": false,
+    "human_relay_count": null
+  },
+  "roles": [
+    {
+      "lane": "SURFACE",
+      "objective": "One user-facing calibrated CoSpeedo needle and explicit CoEyes Look/Stop interaction",
+      "evidence_owner": "issue #178",
+      "constraints": [
+        "NO_HIDDEN_CAPTURE",
+        "NO_DUPLICATE_MOUSE_CONTROLLER"
+      ]
+    },
+    {
+      "lane": "RECEIVER",
+      "objective": "Independent exact object fetch and receiver-owned ACK/restart proof",
+      "evidence_owner": "issue #317",
+      "constraints": [
+        "NO_SELF_DECLARED_ACK",
+        "NO_FAKE_24H"
+      ]
+    },
+    {
+      "lane": "PUBLIC_MIRRORS",
+      "objective": "Authorized target control, independent HTTP readback and SHA256 parity",
+      "evidence_owner": "PR #375",
+      "constraints": [
+        "NO_UNAUTHORIZED_DNS_OR_PUBLIC_DEPLOY",
+        "NO_PRIVATE_SOURCE_LEAK"
+      ]
+    },
+    {
+      "lane": "RECIPROCAL_CHALLENGE",
+      "objective": "Independent falsifier and alternate context review of a selected result",
+      "evidence_owner": "PR #375",
+      "constraints": [
+        "NO_CHILD_LABOUR_OR_INFERRED_CONSENT",
+        "PRESERVE_DISSENT"
+      ]
+    }
+  ],
+  "selection": {
+    "policy": "max expected verified human benefit and uncertainty reduction within authority, receiver capacity, privacy and resource bounds",
+    "diversity": "different testable uncertainty rather than novelty for its own sake",
+    "fan_out": "may be proposed, not assumed running",
+    "fan_in": "exact source/receiver evidence; no overwritten lineage",
+    "stop": "halt side effects at authority/privacy/collision gates; preserve source"
+  },
+  "fresh_start": [
+    "Fetch pinned source commit and asset index",
+    "Compare current PR head; do not mistake changed branch for pinned payload",
+    "Read issues #178 and #317; dedupe already completed work",
+    "Select one material unproven transition and execute only with actual capability/authority",
+    "Record target-specific proof and failures; leave unknown null"
+  ],
+  "nonclaims": [
+    "SOURCE_IS_NOT_PICKUP",
+    "GITHUB_CI_IS_NOT_DEVICE_RUNTIME",
+    "LOCAL_UI_VISIBLE_IS_NOT_REMOTE_BRIDGE_REACHABLE",
+    "NO_THREE_MIRROR_PARITY",
+    "NO_24H_SEED_SURVIVAL",
+    "NO_AUTONOMOUS_MULTI_SESSION_FEDERATION",
+    "NO_COEX_CANON_OR_RUNTIME",
+    "UNKNOWN_NE_ZERO"
+  ]
+}

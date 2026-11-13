@@ -1,0 +1,43 @@
+{
+  "schema": "CoAll.PublicSeedPointer.R0",
+  "work_id": "coall-cosurface-source-20261109",
+  "authority": "PUBLIC_READ_ONLY_SOURCE_DISCOVERY",
+  "source": {
+    "repository": "CoCivium/CoCivium",
+    "branch": "candidate/cosurface-stitched-orb-nav-r0-20261108",
+    "pull_request": "https://github.com/CoCivium/CoCivium/pull/375",
+    "state": "DRAFT_CANDIDATE_NOT_MAIN"
+  },
+  "surfaces": [
+    {
+      "id": "megascroller",
+      "path": "examples/cosurface_stitched_r0/megascroller_r0.html",
+      "git_blob_sha1": "046befbbaed6cd61fc89b10b7c462fc873d05094",
+      "purpose": "PUBLIC_READ_ONLY_PRESENTATION"
+    },
+    {
+      "id": "wave_policy",
+      "path": "examples/cosurface_stitched_r0/wave_diversity_r0.py",
+      "git_blob_sha1": "2f816dd6f57147c999077d411f2b84351dbb0c3b",
+      "purpose": "SYNTHETIC_SELECTION_CONTRACT"
+    },
+    {
+      "id": "media_graph",
+      "path": "examples/cosurface_stitched_r0/media_relation_graph_r0.py",
+      "git_blob_sha1": "a3c56b0c3bfd739f88cf819c5857ddd22be9ee7f",
+      "purpose": "TYPED_RELATIONS_CANDIDATE"
+    }
+  ],
+  "proposed_receivers": [
+    "AUTHORIZED_X2_RECEIVER",
+    "EXTERNAL_PROVIDER_ADAPTER"
+  ],
+  "receiver_acceptance": "NOT_PROVEN",
+  "operational_sync": "NOT_PROVEN",
+  "durable_host_survival_24h": "NOT_PROVEN",
+  "coex_canon_runtime": "NOT_PROVEN",
+  "next_eligible_action": "INDEPENDENT_READ_ONLY_FETCH_AND_EXACT_BLOB_COMPARISON",
+  "public_private_boundary": "NO_PRIVATE_MESSAGE_TEXT_NO_RECIPIENT_IDENTITIES",
+  "dedupe_rule": "REPEATED_INPUT_IS_OBSERVATION_NOT_NEW_WORKID",
+  "notes": "A GitHub branch URL is source access, not a release, mirror, or autonomous pickup."
+}

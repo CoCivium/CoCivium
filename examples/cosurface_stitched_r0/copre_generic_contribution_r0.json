@@ -1,0 +1,160 @@
+{
+  "schema": "CoPreGeneric.ContributionIndex.R0",
+  "artifact_id": "copre-generic-cocivium-contribution-r0",
+  "scope": "PUBLIC_SAFE_CANDIDATE",
+  "source_repo": "CoCivium/CoCivium",
+  "source_branch": "candidate/cosurface-stitched-orb-nav-r0-20261108",
+  "claims": {
+    "public_candidate_landed": true,
+    "merged_main": false,
+    "meta_ai_readback": false,
+    "x2_runtime": false,
+    "cross_provider_sync": false,
+    "governing_canon": false,
+    "agi_or_awareness_proven": false
+  },
+  "human_projection": "COPRE_GENERIC_CONTRIBUTION_R0.md",
+  "co_pre": "COPRE_THUMB_R1.md",
+  "machine_dimensions": [
+    "work_id",
+    "source_revision",
+    "source_hash",
+    "privacy_scope",
+    "authority",
+    "receiver_readback",
+    "claim_type",
+    "evidence_ref",
+    "next_wake"
+  ],
+  "fronts": [
+    {
+      "id": "coevo",
+      "kind": "source",
+      "ref": "docs/Evolution/COALL_GITHUB_EVOLUTION_FABRIC_R0.md",
+      "repo_ref": "main",
+      "blob_sha": "7e374f9a1b5db17863b977740ab21e51d03cdf8d",
+      "qualification": "FILE_READBACK"
+    },
+    {
+      "id": "coevo_schema",
+      "kind": "schema",
+      "ref": "schemas/coevo-delta-v0.1.schema.json",
+      "repo_ref": "main",
+      "blob_sha": "5aa1bfc62a47492f41b422331d51dbfcccc831c4",
+      "qualification": "FILE_READBACK"
+    },
+    {
+      "id": "thumb",
+      "kind": "prompt",
+      "ref": "examples/cosurface_stitched_r0/COPRE_THUMB_R1.md",
+      "repo_ref": "candidate/cosurface-stitched-orb-nav-r0-20261108",
+      "blob_sha": "cf5ee612bea97c6880fa9fb18911448a08a3defe",
+      "qualification": "FILE_READBACK"
+    },
+    {
+      "id": "copre_intake",
+      "kind": "code",
+      "ref": "examples/cosurface_stitched_r0/copre_drain_intake_r0.py",
+      "repo_ref": "candidate/cosurface-stitched-orb-nav-r0-20261108",
+      "blob_sha": "d271dcba5bfdc8c10e01cb2731bf0cc714805082",
+      "qualification": "FILE_READBACK"
+    },
+    {
+      "id": "media_graph",
+      "kind": "code",
+      "ref": "examples/cosurface_stitched_r0/media_relation_graph_r0.py",
+      "repo_ref": "candidate/cosurface-stitched-orb-nav-r0-20261108",
+      "blob_sha": "a3c56b0c3bfd739f88cf819c5857ddd22be9ee7f",
+      "qualification": "FILE_READBACK"
+    },
+    {
+      "id": "nested_nav",
+      "kind": "code",
+      "ref": "examples/cosurface_stitched_r0/nested_nav_r0.py",
+      "repo_ref": "candidate/cosurface-stitched-orb-nav-r0-20261108",
+      "blob_sha": "16e9ccdbada7fc39a7067d81d3cf13b35b65c3ee",
+      "qualification": "FILE_READBACK"
+    },
+    {
+      "id": "megascroller",
+      "kind": "html",
+      "ref": "examples/cosurface_stitched_r0/megascroller_r0.html",
+      "repo_ref": "candidate/cosurface-stitched-orb-nav-r0-20261108",
+      "blob_sha": "046befbbaed6cd61fc89b10b7c462fc873d05094",
+      "qualification": "FILE_READBACK"
+    },
+    {
+      "id": "supervisor",
+      "kind": "pr",
+      "uri": "https://github.com/CoCivium/CoCivium/pull/374",
+      "qualification": "MERGED_SOURCE_NOT_RUNTIME"
+    },
+    {
+      "id": "cosurface",
+      "kind": "pr",
+      "uri": "https://github.com/CoCivium/CoCivium/pull/375",
+      "qualification": "OPEN_DRAFT"
+    },
+    {
+      "id": "theory",
+      "kind": "issue",
+      "uri": "https://github.com/CoCivium/CoCivium/issues/179",
+      "qualification": "HYPOTHESIS"
+    },
+    {
+      "id": "gdside",
+      "kind": "pr",
+      "uri": "https://github.com/CoCivium/CoCivium/pull/380",
+      "qualification": "MODEL_CANDIDATE"
+    },
+    {
+      "id": "fan_in",
+      "kind": "issue",
+      "uri": "https://github.com/CoCivium/CoCivium/issues/317",
+      "qualification": "COORDINATION_NOT_RECEIVER_ACK"
+    },
+    {
+      "id": "outreach",
+      "kind": "issue",
+      "uri": "https://github.com/CoCivium/CoCivium/issues/225",
+      "qualification": "STAGE_CONTRACT_NOT_DELIVERY"
+    }
+  ],
+  "surface_contract": {
+    "synth_facing": [
+      "typed_relations",
+      "source_hashes",
+      "schemas",
+      "evidence",
+      "uncertainty",
+      "permissions",
+      "cost",
+      "next_actions"
+    ],
+    "bio_facing": [
+      "coherenow",
+      "legible_graph",
+      "explanation",
+      "accessible_navigation",
+      "evidence_drilldown",
+      "consent"
+    ],
+    "shared_source_graph": true,
+    "distinct_presentations": true
+  },
+  "research_lanes": [
+    "COSYNTHVERSE_HYPOTHESIS",
+    "COBIOVERSE_UX",
+    "CMA_MODEL_CANDIDATE",
+    "G_DSIDE_HYPOTHESIS",
+    "COAGI_NOT_PROVEN"
+  ],
+  "required_nonclaims": [
+    "LOCAL_IS_NOT_LANDED",
+    "VALIDATION_IS_NOT_ACCEPTANCE",
+    "NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF",
+    "NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE",
+    "HASHING_IS_NOT_SEMANTIC_INGESTION",
+    "DISCOVERED_SET_IS_NOT_COMPLETE_HISTORY"
+  ]
+}

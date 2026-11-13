@@ -1,0 +1,96 @@
+name: CoSurface R0 static navigation contracts
+on:
+  pull_request:
+    paths:
+      - 'examples/cosurface_stitched_r0/**'
+      - '.github/workflows/cosurface-stitched-r0.yml'
+  push:
+    paths:
+      - 'examples/cosurface_stitched_r0/**'
+      - '.github/workflows/cosurface-stitched-r0.yml'
+permissions:
+  contents: read
+jobs:
+  static-contracts:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11', '3.13']
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Run stitched UX fail-closed static checks
+        run: python -B -m unittest discover -s examples/cosurface_stitched_r0 -p 'test_*.py' -v
+      - name: Verify exact PUBLIC source landing by HTTPS readback
+        if: matrix.python-version == '3.13'
+        env:
+          SOURCE_REVISION: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          SOURCE_PATH=examples/cosurface_stitched_r0/receiver_truth_r0.py
+          EXPECTED_SHA=$(sha256sum "$SOURCE_PATH" | cut -d ' ' -f1)
+          python -B examples/cosurface_stitched_r0/receiver_truth_r0.py \
+            --repo CoCivium/CoCivium \
+            --commit "$SOURCE_REVISION" \
+            --path "$SOURCE_PATH" \
+            --sha256 "$EXPECTED_SHA"
+      - name: Build portable read-only preview bundle
+        if: matrix.python-version == '3.13'
+        run: |
+          mkdir -p dist/cosurface-preview-r0
+          cp examples/cosurface_stitched_r0/index.html examples/cosurface_stitched_r0/preview.ps1 dist/cosurface-preview-r0/
+          cd dist/cosurface-preview-r0
+          sha256sum index.html preview.ps1 > SHA256SUMS.txt
+          cd ..
+          zip -qr cosurface-preview-r0.zip cosurface-preview-r0
+      - name: Attach portable preview artifact
+        if: matrix.python-version == '3.13'
+        uses: actions/upload-artifact@v4
+        with:
+          name: cosurface-preview-r0
+          path: dist/cosurface-preview-r0.zip
+          if-no-files-found: error
+          retention-days: 7
+  browser-interactions:
+    runs-on: ubuntu-latest
+    container: mcr.microsoft.com/playwright:v1.56.1-noble
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install isolated browser test dependency
+        run: npm install --no-save --no-package-lock playwright@1.56.1
+      - name: Exercise actual browser interactions
+        run: node examples/cosurface_stitched_r0/browser_smoke.cjs
+      - name: Attach browser visual evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cosurface-chromium-evidence
+          path: examples/cosurface_stitched_r0/evidence/*.png
+          if-no-files-found: warn
+          retention-days: 7
+  ollama-loopback-contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Confirm PowerShell 7 runtime
+        run: pwsh -NoProfile -Command '$PSVersionTable.PSVersion.ToString()'
+      - name: Test PS7 observation to rickBar projection with fake Ollama
+        working-directory: examples/cosurface_stitched_r0
+        run: python -B -m unittest -v ollama_integration_probe
