@@ -1,0 +1,91 @@
+{
+  "schema": "CoAll.CoLocal.CrossHostPublicSourceReadproof.R0",
+  "work_id": "CoLocal2601109_X2_R5_FOCUS_INTERRUPTION_20261112",
+  "date_utc": "2026-11-13",
+  "state": "X2_REMOTE_PUBLIC_SOURCE_READBACK_MATCH_AFTER_TOOL_WRAPPER_NORMALIZATION",
+  "public_origin": "CoCivium/CoCivium:main",
+  "receiver": {
+    "device_label": "X2",
+    "channel": "Remote Desktop Commander v0.3.3",
+    "device_id": "d34e8ce2-8f4e-4e18-a5c0-d4dcc629ebf2",
+    "transport": "HTTPS_PUBLIC_RAW_GITHUB",
+    "read_tool": "read_file(isUrl=true)",
+    "read_only": true,
+    "remote_terminal_commands_launched": 0,
+    "remote_file_writes": 0,
+    "scheduled_task_mutations": 0,
+    "provider_chat_actions": 0,
+    "private_data_sent": false,
+    "exact_raw_transport_bytes_hashed": false,
+    "tool_wrapper_normalization": "REMOVE_ONE_EXTRA_TRAILING_NEWLINE_AND_OUT_OF_BAND_EXECUTED_ON_DEVICE_LINE"
+  },
+  "objects": [
+    {
+      "path": "ai/session-bootstrap.json",
+      "github_blob_sha1": "aa2b8163a773e570f2249066e7ccc8e899e103ff",
+      "github_text_characters": 14866,
+      "remote_display_text_characters_before_wrapper_normalization": 14867,
+      "normalized_text_exact_match": true,
+      "parsed_json_equal": true,
+      "state": "PUBLIC_CURRENTNESS_BOOTSTRAP__NOT_GLOBAL_SESSION_PICKUP_PROOF",
+      "incident_source_pin_git_blob_sha1": "7350c0bdc3661c6ccbc803df11a16c960da85675"
+    },
+    {
+      "path": "ai/currentness/colocal-x2-postcontainment-focus-20261112-r1.json",
+      "github_blob_sha1": "7350c0bdc3661c6ccbc803df11a16c960da85675",
+      "github_text_characters": 7346,
+      "remote_display_text_characters_before_wrapper_normalization": 7347,
+      "normalized_text_exact_match": true,
+      "parsed_json_equal": true,
+      "state": "PARTIAL_NATIVE_CONTAINMENT_VERIFIED__FOCUS_CURE_HELD",
+      "work_id": "CoLocal2601109_X2_R5_FOCUS_INTERRUPTION_20261112",
+      "incident_owner": "https://github.com/CoCivium/CoCivium/issues/181"
+    },
+    {
+      "path": "ai/currentness/cotalkitout-cofront-byte-receiver-r0-20261113.json",
+      "github_blob_sha1": "96562343848cba29ed7ff9b7fec198311a5eeeaf",
+      "github_text_characters": 3545,
+      "remote_display_text_characters_before_wrapper_normalization": 3546,
+      "normalized_text_equal_after_trailing_newline_removal": true,
+      "parsed_work_id": "CoLocal2601109_CoTalkItOut_Headless_Screenless_R1",
+      "state": "PICKED_UP_BY_GITHUB_CoFront_PUBLIC_CONSUMER_ONLY"
+    }
+  ],
+  "relational_results": {
+    "cross_host_access": "PASS_X2_PUBLIC_HTTPS_READ",
+    "source_text_identity": "PASS_NORMALIZED_EXACT_TEXT",
+    "role_specific_rebind_identity": "PASS_PIN_TO_EXACT_INCIDENT_BLOB",
+    "receiver_origin": "X2_REMOTE_BRIDGE_PUBLIC_READ_CHANNEL",
+    "receiver_durable_write": "NOT_PERFORMED",
+    "independent_receiver_from_github_provider": "YES_REMOTE_DEVICE_X2_BUT_CONTROLLER_ORIGIN_CHAT_SESSION",
+    "independent_power_domain_cold_restart": "NOT_PROVEN",
+    "receiver_readproof_after_reboot": "NOT_PROVEN",
+    "private_runtime_state_recovery": "NOT_PROVEN",
+    "provider_session_auto_turnover": "NOT_PERFORMED",
+    "native_app_consumption": "NOT_PROVEN",
+    "local_model_execution": "NOT_PERFORMED",
+    "end_user_ux_acceptance": "UNVERIFIED",
+    "coex_or_canon": "NOT_PROVEN"
+  },
+  "prior_roadblock": {
+    "local_model_executable_and_manifest": "PRESENT_AT_PREVIOUS_SHELL_FREE_INSPECTION",
+    "loopback_ollama_api_tags": "ECONNREFUSED_AT_PREVIOUS_INSPECTION",
+    "current_loopback_service_health": "NOT_RECHECKED_IN_THIS_READBACK",
+    "x2_foreground_focus_issue": "UNRESOLVED_EXISTING_OWNER_181"
+  },
+  "next_safe_deed": "An existing authorized X2 receiver should make its own durable WorkID checkpoint after retrieving the pinned public source, and prove recovery independently after a safe non-disruptive restart. Separately, elect a no-foreground local-model service restoration under existing CoDesktop authority; do not start a competing PS7 watcher.",
+  "nonclaims": [
+    "TOOL_RETURNED_TEXT_NE_UNMODIFIED_RAW_HTTP_BYTES",
+    "PUBLIC_WORKID_SOURCE_RETRIEVAL_NE_ACTUAL_WORK_EXECUTION",
+    "REMOTE_BRIDGE_READ_NE_INDEPENDENT_COLD_RESTORE",
+    "X2_SOURCE_READ_NE_COSTEAD_PICKUP",
+    "REMOTE_TOOL_ACK_NE_AUTONOMOUS_LOCAL_DAEMON",
+    "SOURCE_GIT_BLOB_ID_NE_RUNTIME_OR_CANON",
+    "LOCAL_IS_NOT_LANDED",
+    "VALIDATION_IS_NOT_ACCEPTANCE",
+    "NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF",
+    "NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE",
+    "HASHING_IS_NOT_SEMANTIC_INGESTION",
+    "DISCOVERED_SET_IS_NOT_COMPLETE_HISTORY"
+  ]
+}
