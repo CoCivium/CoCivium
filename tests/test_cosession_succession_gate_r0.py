@@ -148,5 +148,74 @@ class SessionSuccessionTests(unittest.TestCase):
         self.assertEqual(evaluate(self.f), evaluate(copy.deepcopy(self.f)))
 
 
+    def test_whitespace_only_workid_is_not_a_valid_shadow(self):
+        self.f["work_id"] = "  "
+        for record in self.f["sources"]:
+            record["work_id"] = "  "
+        self.f["successor"]["work_id"] = "  "
+        with self.assertRaisesRegex(ValueError, "HOLD_SCOPE"):
+            evaluate(self.f)
+
+    def test_whitespace_only_source_session_id_is_rejected(self):
+        original = self.f["sources"][0]["session_id"]
+        self.f["sources"][0]["session_id"] = "  "
+        digests = self.f["successor"]["source_digests"]
+        digests["  "] = digests.pop(original)
+        with self.assertRaisesRegex(ValueError, "HOLD_SOURCE_IDENTITY"):
+            evaluate(self.f)
+
+    def test_control_character_source_session_id_is_rejected(self):
+        original = self.f["sources"][0]["session_id"]
+        changed = "fixture-session-0\\nforged"
+        self.f["sources"][0]["session_id"] = changed
+        digests = self.f["successor"]["source_digests"]
+        digests[changed] = digests.pop(original)
+        with self.assertRaisesRegex(ValueError, "HOLD_SOURCE_IDENTITY"):
+            evaluate(self.f)
+
+    def test_overlong_source_session_id_is_rejected(self):
+        original = self.f["sources"][0]["session_id"]
+        changed = "x" * 129
+        self.f["sources"][0]["session_id"] = changed
+        digests = self.f["successor"]["source_digests"]
+        digests[changed] = digests.pop(original)
+        with self.assertRaisesRegex(ValueError, "HOLD_SOURCE_IDENTITY"):
+            evaluate(self.f)
+
+    def test_whitespace_only_source_ref_is_rejected(self):
+        self.f["sources"][0]["source_ref"] = "  "
+        with self.assertRaisesRegex(ValueError, "HOLD_SOURCE_REF"):
+            evaluate(self.f)
+
+    def test_control_character_source_ref_is_rejected(self):
+        self.f["sources"][0]["source_ref"] = "public-synthetic-source\\nforged"
+        with self.assertRaisesRegex(ValueError, "HOLD_SOURCE_REF"):
+            evaluate(self.f)
+
+    def test_overlong_source_ref_is_rejected(self):
+        self.f["sources"][0]["source_ref"] = "x" * 1025
+        with self.assertRaisesRegex(ValueError, "HOLD_SOURCE_REF"):
+            evaluate(self.f)
+
+    def test_executable_url_scheme_is_not_an_evidence_source(self):
+        self.f["sources"][0]["source_ref"] = "javascript:alert(1)"
+        with self.assertRaisesRegex(ValueError, "HOLD_SOURCE_REF"):
+            evaluate(self.f)
+
+    def test_dissent_placeholder_whitespace_is_not_preserved_dissent(self):
+        self.f["sources"][0]["dissent_ids"][0] = "  "
+        self.f["successor"]["dissent_ids"][0] = "  "
+        with self.assertRaisesRegex(ValueError, "HOLD_DISSENT_IDS"):
+            evaluate(self.f)
+
+    def test_successor_unhashable_obligation_fails_closed(self):
+        self.f["successor"]["accepted_obligations"] = [{"unqualified":"obligation"}]
+        self.check_hold("SUCCESSOR_ACCEPTED_OBLIGATIONS_LOSS")
+
+    def test_successor_nondict_unhashable_contribution_fails_closed(self):
+        self.f["successor"]["contribution_ids"] = [["unique-0"]]
+        self.check_hold("SUCCESSOR_CONTRIBUTION_IDS_LOSS")
+
+
 if __name__ == "__main__":
     unittest.main()
