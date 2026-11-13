@@ -55,8 +55,13 @@ def _read(root: Path, rel: str) -> bytes:
             or ".." in rel.split("/") or "//" in rel):
         _fail("UNSAFE_OBSERVATION_PATH")
     base = root.resolve()
-    path = (base / rel).resolve()
-    if not path.is_relative_to(base) or not path.is_file() or path.is_symlink():
+    cursor = base
+    for component in Path(rel).parts:
+        cursor = cursor / component
+        if cursor.is_symlink():
+            _fail("MISSING_OR_LINKED_OBSERVATION")
+    path = cursor.resolve()
+    if not path.is_relative_to(base) or not path.is_file():
         _fail("MISSING_OR_LINKED_OBSERVATION")
     if not 0 < path.stat().st_size <= 8192:
         _fail("OBSERVATION_SIZE")
@@ -86,6 +91,7 @@ def _decode(raw: bytes, pin: dict) -> tuple[dict, datetime]:
             or not OBSERVER.fullmatch(obj["observer_claim"])
             or not isinstance(obj["evidence_ref"], str)
             or not EVIDENCE.fullmatch(obj["evidence_ref"])
+            or not isinstance(obj["observation_kind"], str)
             or obj["observation_kind"] not in KINDS):
         _fail("UNQUALIFIED_OBSERVER_OR_EVIDENCE")
     if (obj["authorization"] != "READ_ONLY_PROPOSAL"
