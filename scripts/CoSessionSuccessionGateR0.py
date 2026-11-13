@@ -34,6 +34,12 @@ def digest(record: dict) -> str:
     return hashlib.sha256(json.dumps(record, sort_keys=True, separators=(",", ":")).encode("utf-8")).hexdigest()
 
 
+def valid_actor_id(value: object) -> bool:
+    """Bounded, printable, unambiguous claimed actor label; not authentication."""
+    return (type(value) is str and 1 <= len(value) <= 128
+            and all(c.isascii() and (c.isalnum() or c in "._:-") for c in value))
+
+
 def evaluate(payload: dict) -> dict:
     if not isinstance(payload, dict) or payload.get("schema") != SCHEMA:
         raise ValueError("HOLD_SCHEMA")
@@ -77,7 +83,16 @@ def evaluate(payload: dict) -> dict:
         reasons.add("SUCCESSOR_WORK_ID_MISMATCH")
     if successor.get("privacy_class") != "PUBLIC_SYNTHETIC" or successor.get("authority_ceiling") != "NO_EFFECTS":
         reasons.add("SUCCESSOR_SCOPE_MISMATCH")
-    if successor.get("producer_id") == successor.get("verifier_id") or not successor.get("verifier_id"):
+    # These labels remain claims, NOT independent receiver authentication.
+    # Malformed or missing claimed identities may not qualify even a shadow front.
+    producer_id = successor.get("producer_id")
+    verifier_id = successor.get("verifier_id")
+    if not valid_actor_id(producer_id):
+        reasons.add("PRODUCER_IDENTITY_INVALID")
+    if not valid_actor_id(verifier_id):
+        reasons.add("VERIFIER_IDENTITY_INVALID")
+    if (valid_actor_id(producer_id) and valid_actor_id(verifier_id)
+            and producer_id == verifier_id):
         reasons.add("VERIFIER_NOT_DISTINCT")
     claimed = successor.get("source_digests")
     if not isinstance(claimed, dict) or claimed != {x["session_id"]: x["source_sha256"] for x in sources}:
