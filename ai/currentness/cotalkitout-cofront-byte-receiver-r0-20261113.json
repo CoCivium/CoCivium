@@ -1,0 +1,82 @@
+{
+  "schema": "CoAll.CoTalkItOut.CoFrontByteReceiverReadproof.R0",
+  "work_id": "CoLocal2601109_CoTalkItOut_Headless_Screenless_R1",
+  "record_date_utc": "2026-11-13",
+  "state": "PICKED_UP_BY_GITHUB_CoFront_PUBLIC_CONSUMER_ONLY",
+  "publication_receipt": "ai/currentness/cotalkitout-publication-r1-20261112.json",
+  "publication_commit": "52f4ab950e5d3df4a8e4daafa194f9ae0fbae0a6",
+  "receiver": {
+    "identity": "CoFront_GitHub_Actions_PUBLIC_CONSUMER",
+    "run_id": 43438385809,
+    "run_url": "https://github.com/CoCivium/CoCivium/actions/runs/43438385809",
+    "run_head": "9ea770da58ee39a1a4155f36502d698093e7c77f",
+    "trigger": "push",
+    "job_id": 131929315161,
+    "conclusion": "success",
+    "adversarial_tests": 14,
+    "artifact_name": "cofront-public-readback",
+    "artifact_id": 14044545985,
+    "artifact_zip_sha256": "4c57ebd635202c9f6b012a196d32b511f03edcd8c61bac93d708687d061fb53e",
+    "artifact_member": "cofront-public-readback.json",
+    "artifact_member_sha256": "e6795715fd75d571da375a75632368985d46106249ad9b36966eb05cabcfc2ae",
+    "artifact_member_bytes": 5553,
+    "receiver_status": "PUBLIC_SOURCE_IDENTITY_READBACK_ONLY",
+    "passed": true,
+    "assets": [
+      {
+        "path": "docs/CoLocal/CoTalkItOut_Headless_Screenless_Autonomy_R1_20261112.xlsx",
+        "bytes": 88769,
+        "sha256": "4ca848b814292d0a0ff1c8bfc2d1193ad0f660f629133794fba3be046a0c10dc",
+        "matched": true
+      },
+      {
+        "path": "docs/CoLocal/CoTalkItOut_Headless_Screenless_Autonomy_R1_20261112.csv",
+        "bytes": 154659,
+        "sha256": "442e4d654d2fcc0b3b553a6039f662122c08179e11638cb0270ff3fae7466494",
+        "matched": true
+      },
+      {
+        "path": "docs/CoLocal/CoTalkItOut_Headless_Screenless_Autonomy_R1_20261112_PUBLIC_README.md",
+        "bytes": 2807,
+        "sha256": "e7f910bacf8ea32dfeb93070b09879405c467c4736e0935f1327ce89f67df37b",
+        "matched": true
+      },
+      {
+        "path": "docs/CoLocal/CoTalkItOut_Headless_Screenless_Autonomy_R1_20261112_MANIFEST.json",
+        "bytes": 2478,
+        "sha256": "6bf3eade2a9af22ffd2d3e0a24b8c8caf9306f70b6b418100968fb1d3b039384",
+        "matched": true
+      }
+    ],
+    "same_provider_as_origin": true,
+    "independently_operated_costead_receiver_ack": false,
+    "semantic_workbook_adoption": false,
+    "coex_or_canon": false
+  },
+  "parallel_local_probe": {
+    "device_label": "X2",
+    "method": "SHELL_FREE_REMOTE_READS_ONLY",
+    "ollama_executable_present": true,
+    "model_manifest_directories_present": true,
+    "running_ollama_process_seen": false,
+    "loopback_http_get": "http://127.0.0.1:11434/api/tags",
+    "loopback_result": "ECONNREFUSED",
+    "live_model_canary_run": false,
+    "model_endpoint_usable": false,
+    "x2_machine_modified": false
+  },
+  "next_safe_deed": "Existing elected machine owner qualifies a no-foreground Ollama service and then one PUBLIC-only local-model WorkID to an independently reading receiver. Keep CoDesktop focus remediation under issue #181.",
+  "nonclaims": [
+    "BYTE_READBACK_NE_SEMANTIC_INGESTION",
+    "SAME_PROVIDER_RECEIVER_NE_INDEPENDENT_POWER_DOMAIN",
+    "OLLAMA_MANIFEST_NE_RUNNING_MODEL",
+    "HISTORICAL_X2_SNAPSHOT_NE_CONTINUOUS_RUNTIME",
+    "PUBLIC_SOURCE_NE_ALL_CHAT_SESSIONS_NOTIFIED",
+    "LOCAL_IS_NOT_LANDED",
+    "VALIDATION_IS_NOT_ACCEPTANCE",
+    "NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF",
+    "NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE",
+    "HASHING_IS_NOT_SEMANTIC_INGESTION",
+    "DISCOVERED_SET_IS_NOT_COMPLETE_HISTORY"
+  ]
+}
