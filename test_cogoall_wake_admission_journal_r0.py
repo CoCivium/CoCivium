@@ -188,6 +188,13 @@ class JournalTests(unittest.TestCase):
         # not both become residents of the single-owner admission journal.
         from concurrent.futures import ThreadPoolExecutor
         from threading import Barrier
+        from examples.cotalkitout.due_work_catchup_r0 import DueWorkQueue
+        # Isolate the claim-level race from unrelated first-open SQLite WAL
+        # schema initialization. Both contenders still race from an EMPTY queue.
+        db = self.root/"out"/"cogoall"/"wake-admission-r0.sqlite"
+        db.parent.mkdir(parents=True, exist_ok=True)
+        boot = DueWorkQueue(str(db))
+        boot.close()
         barrier = Barrier(2)
         def try_admit(suffix):
             event = {**self.event, "event_id": "source-delta-" + suffix,
