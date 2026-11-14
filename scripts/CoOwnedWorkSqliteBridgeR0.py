@@ -6,16 +6,20 @@ authorize an external effect, or claim a production receiver.
 """
 from __future__ import annotations
 import argparse
-import hashlib
 import json
 import os
+import re
+import secrets
+import sqlite3
+import time
+import hashlib
 from pathlib import Path
 import subprocess
 import sys
 
 from CoNarrativeWorkIDR0 import (
-    SCHEMA as RECEIVER_SCHEMA, Held, canonical, commit_once, digest,
-    readback, revoke, validate,
+    SCHEMA as RECEIVER_SCHEMA, Held, canonical, commit_once, connect, digest,
+    readback, validate,
 )
 
 BROWSER_SCHEMA = "CoAll.CoOwnedWork.BrowserLocal.R0"
@@ -140,8 +144,107 @@ def adapt(record, gate, source_path, js_path):
 
 
 
+GRANT_TABLE = "receiver_revocation_grants"
+GRANT_SCOPE = "REVOKE_SYNTHETIC_WORKID"
+ACTOR_ID = re.compile(r"^[A-Za-z0-9:_-]{1,80}$")
+
+
+def issue_receiver_revocation_grant(db_path, packet, actor_id, ttl_seconds=300):
+    """Privileged receiver-side test fixture. Never expose this to clients.
+
+    Stores only a digest of a fresh random one-use bearer token in the same
+    SQLite file as the work record. This does NOT enforce process isolation:
+    a caller able to invoke this issuer or write the DB is already privileged.
+    """
+    packet_sha = validate(packet)
+    require(isinstance(actor_id, str) and ACTOR_ID.fullmatch(actor_id),
+            "HELD_INVALID_GRANT_ACTOR")
+    require(type(ttl_seconds) is int and 1 <= ttl_seconds <= 3600,
+            "HELD_INVALID_GRANT_TTL")
+    conn = connect(db_path)
+    try:
+        conn.execute("BEGIN IMMEDIATE")
+        row = conn.execute(
+            "SELECT * FROM work WHERE work_id=?", (packet["work_id"],)).fetchone()
+        require(row is not None and row["packet_sha256"] == packet_sha and
+                row["state"] == "ACTIVE" and
+                row["lease_epoch"] == packet["lease_epoch"],
+                "HELD_GRANT_SOURCE_OR_EPOCH")
+        conn.execute(
+            "CREATE TABLE IF NOT EXISTS receiver_revocation_grants ("
+            "token_sha256 TEXT PRIMARY KEY, actor_id TEXT NOT NULL,"
+            "packet_sha256 TEXT NOT NULL, lease_epoch INTEGER NOT NULL,"
+            "scope TEXT NOT NULL, expires_at INTEGER NOT NULL,"
+            "used INTEGER NOT NULL DEFAULT 0)")
+        token = secrets.token_urlsafe(32)
+        token_sha = hashlib.sha256(token.encode("ascii")).hexdigest()
+        conn.execute(
+            "INSERT INTO receiver_revocation_grants VALUES (?,?,?,?,?,?,0)",
+            (token_sha, actor_id, packet_sha, packet["lease_epoch"],
+             GRANT_SCOPE, int(time.time()) + ttl_seconds))
+        conn.commit()
+        return token
+    except (ValueError, sqlite3.Error):
+        conn.rollback()
+        raise
+    finally:
+        conn.close()
+
+
+def revoke_with_receiver_grant(db_path, packet, *, actor_id=None,
+                               grant_token=None):
+    """Atomic synthetic grant consumption + revoke; no public gate is authority.
+
+    Caller must not be able to issue grants or write SQLite directly. That
+    separate process/OS permission boundary is NOT established by this code.
+    """
+    packet_sha = validate(packet)
+    require(isinstance(actor_id, str) and ACTOR_ID.fullmatch(actor_id) and
+            isinstance(grant_token, str) and
+            20 <= len(grant_token) <= 128,
+            "HELD_UNAUTHENTICATED_REVOCATION")
+    token_sha = hashlib.sha256(grant_token.encode("utf-8")).hexdigest()
+    conn = connect(db_path)
+    try:
+        conn.execute("BEGIN IMMEDIATE")
+        exists = conn.execute(
+            "SELECT name FROM sqlite_master WHERE type='table' AND name=?",
+            (GRANT_TABLE,)).fetchone()
+        require(exists is not None, "HELD_UNAUTHENTICATED_REVOCATION")
+        grant = conn.execute(
+            "SELECT * FROM receiver_revocation_grants WHERE token_sha256=?",
+            (token_sha,)).fetchone()
+        require(grant is not None, "HELD_UNAUTHENTICATED_REVOCATION")
+        require(grant["used"] == 0, "HELD_GRANT_REPLAY")
+        require(grant["actor_id"] == actor_id, "HELD_UNAUTHORIZED_ACTOR")
+        require(grant["packet_sha256"] == packet_sha and
+                grant["lease_epoch"] == packet["lease_epoch"] and
+                grant["scope"] == GRANT_SCOPE, "HELD_GRANT_SCOPE_OR_EPOCH")
+        require(grant["expires_at"] > int(time.time()), "HELD_GRANT_EXPIRED")
+        row = conn.execute(
+            "SELECT * FROM work WHERE work_id=?", (packet["work_id"],)).fetchone()
+        require(row is not None and row["packet_sha256"] == packet_sha,
+                "REVOKE_SOURCE_MISMATCH")
+        require(row["state"] == "ACTIVE" and
+                row["lease_epoch"] == packet["lease_epoch"],
+                "REVOKE_STALE_LEASE")
+        conn.execute(
+            "UPDATE work SET state='REVOKED',lease_epoch=? WHERE work_id=?",
+            (packet["lease_epoch"] + 1, packet["work_id"]))
+        conn.execute(
+            "UPDATE receiver_revocation_grants SET used=1 "
+            "WHERE token_sha256=?", (token_sha,))
+        conn.commit()
+    except (ValueError, sqlite3.Error):
+        conn.rollback()
+        raise
+    finally:
+        conn.close()
+
+
 def apply_browser_revocation(db_path, active_record, revoked_record,
-                             gate, source_path, js_path):
+                             gate, source_path, js_path, *,
+                             actor_id=None, grant_token=None):
     """Synthetic cross-job revocation of the exact browser-origin WorkID.
 
     Validates record identity and epoch before touching SQLite. Caller-supplied
@@ -160,7 +263,8 @@ def apply_browser_revocation(db_path, active_record, revoked_record,
             and original["committed_work_ids"] == 1
             and original["external_receiver_ack"] is False,
             "HELD_RECEIVER_NOT_ACTIVE_FOR_REVOKE")
-    revoke(db_path, packet, expected_lease=packet["lease_epoch"])
+    revoke_with_receiver_grant(
+        db_path, packet, actor_id=actor_id, grant_token=grant_token)
     observed = readback(db_path, expected_packet=packet,
                         source_path=source_path)
     require(observed["state"] == "HELD_REVOKED"
@@ -178,10 +282,14 @@ def apply_browser_revocation(db_path, active_record, revoked_record,
         "before": original["state"], "after": observed["state"],
         "receiver_ack": False, "real_human_consent": False,
         "independent_sender_authentication": False,
+        "synthetic_receiver_grant_enforced": True,
+        "one_use_receiver_grant_consumed": True,
         "cross_provider_delivery": False, "external_effects": 0,
         "nonclaims": [
             "CI_SIMULATED_UI_REVOCATION_NOT_REAL_HUMAN_CONSENT",
             "SOURCE_ORIGIN_BYTES_NOT_AUTHENTICATED_SIGNED_EVENT",
+            "GRANT_ISSUER_NOT_ISOLATED_FROM_CALLER_IN_CI",
+            "NO_PRODUCTION_PROCESS_OR_OS_PERMISSION_BOUNDARY",
             "SAME_GITHUB_FAILURE_DOMAIN",
             "EPHEMERAL_SQLITE_NOT_PRODUCTION_RECEIVER",
             "NO_24H_SURVIVAL", "NOT_CANON", "NOT_COEX"
