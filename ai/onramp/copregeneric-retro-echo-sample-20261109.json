@@ -1,0 +1,103 @@
+{
+  "schema": "CoAll.CoPreGeneric.RetroEchoSample.R0",
+  "state": "PUBLIC_SAFE_BOUNDED_HISTORICAL_POINTER_SAMPLE_NOT_CENSUS",
+  "work_id": "CoAll.CoPreGeneric.CrossAudience.20261109",
+  "as_of": "2026-11-09",
+  "repo": "CoCivium/CoCivium",
+  "coverage": {
+    "method": "FIVE_SELECTED_PUBLIC_SOURCES_CHRONOLOGICAL_AND_REVERSE_LINEAGE",
+    "scan_roots": [
+      "SELECTED_EXACT_GITHUB_PATHS"
+    ],
+    "discovered_front_count": 5,
+    "unscanned_sources": "UNKNOWN",
+    "private_sources": "NOT_INSPECTED",
+    "complete_history": false
+  },
+  "candidates": [
+    {
+      "id": "echo:20260324:coevo",
+      "event_at": "2026-03-24",
+      "source_path": "docs/CoEvo/CoEvo_Megascroller_v0__2026-03-24.md",
+      "source_blob": "c8ea202c15456039acc88adbfd192430faaea4ed",
+      "role": "HISTORICAL_WITNESS",
+      "meaning": "Bounded narrative synthesis of CoEvo with original COEX_VERIFIED text retained as a historical claim; no contemporary CoEx independently inferred",
+      "links": [
+        "echo:20261019:megascroller"
+      ]
+    },
+    {
+      "id": "echo:20261019:megascroller",
+      "event_at": "2026-10-19",
+      "source_path": "docs/Public/Snapshots/2026-10-19_CoMegaScroller_CC_CoTheoryAll_R0.md",
+      "source_blob": null,
+      "role": "HISTORICAL_PUBLIC_SNAPSHOT",
+      "meaning": "Dated public-safe CC and CoTheoryAll snapshot; not full CC disclosure, not live page runtime",
+      "links": [
+        "echo:20261109:copregeneric"
+      ]
+    },
+    {
+      "id": "echo:20261025:evo",
+      "event_at": "2026-10-25",
+      "source_path": "docs/Architecture/COEVO_ELIGIBILITY_PRESERVATION_R0_20261025.md",
+      "source_blob": null,
+      "role": "PRESERVATION_POLICY_CANDIDATE",
+      "meaning": "Frozen witnesses, versioned state, projection and hypothesis require distinct preservation",
+      "links": [
+        "echo:20261109:copregeneric"
+      ]
+    },
+    {
+      "id": "echo:20261027:vitality",
+      "event_at": "2026-10-27",
+      "source_path": "docs/Architecture/COOBJECT_VITALITY_METABOLISM_R0_20261027.md",
+      "source_blob": null,
+      "role": "LIFECYCLE_POLICY_CANDIDATE",
+      "meaning": "Dormant with wake is not dead; heartbeat only on material delta",
+      "links": [
+        "echo:20261109:copregeneric"
+      ]
+    },
+    {
+      "id": "echo:20261109:copregeneric",
+      "event_at": "2026-11-09",
+      "source_path": "ai/onramp/copregeneric-session-delta-20261109.json",
+      "source_blob": "c2111c00aa6229978da6686409663effb379fd11",
+      "role": "RECENT_CANDIDATE_BRANCH_NOT_MERGED",
+      "meaning": "Eight linked public deltas for machine/human audience and CoPreGeneric; no cross-provider readproof",
+      "links": []
+    }
+  ],
+  "transitions": {
+    "discover": "EXACT_SOURCE_POINTER",
+    "verified_bytes": "ONLY_WHEN_SOURCE_BLOB_BOUND",
+    "landed": "SOURCE_ON_GITHUB_WHERE_PATH_EXISTS",
+    "picked_up": "UNPROVEN",
+    "integrated": "UNPROVEN",
+    "coex": "UNPROVEN"
+  },
+  "unresolved": [
+    {
+      "kind": "UNKNOWN_HISTORICAL_COVERAGE",
+      "reason": "No complete source inventory across all provider chats, X2 and CoStead",
+      "next": "AUTHORIZED_BOUNDED_ROOT_BY_ROOT_CENSUS"
+    },
+    {
+      "kind": "INDEPENDENT_RECEIVER",
+      "reason": "Public URL is pull pointer, not provider ACK",
+      "next": "EXACT_OBJECT_REMOTE_READBACK"
+    }
+  ],
+  "nonclaims": [
+    "POINTER_NE_CANON",
+    "SOURCE_BLOB_NE_CURRENTNESS",
+    "OLD_COEX_LABEL_NE_CURRENT_COEX_PROOF",
+    "FIVE_SAMPLES_NE_FULL_HISTORY",
+    "CHRONOLOGY_NE_CAUSALITY",
+    "REVERSE_LINK_NE_SUPERSESSION",
+    "UNKNOWN_NE_ABSENT",
+    "PRIVATE_NE_PUBLIC",
+    "PUBLISHED_NE_RECEIVER_PICKUP"
+  ]
+}
