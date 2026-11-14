@@ -1,0 +1,194 @@
+name: CoUptake R0 - public source admission proof
+
+on:
+  pull_request:
+    paths:
+      - 'ai/uptake/**'
+      - 'tools/couptake_r0/**'
+      - 'tests/test_couptake_r0.py'
+      - 'tests/test_couptake_portable_r01.py'
+      - 'tests/test_couptake_cold_receiver_r02.py'
+      - '.github/workflows/couptake-r0.yml'
+      - 'docs/AI_DISCOVERY_POLICY.md'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact-public-source-preflight:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - name: Checkout source candidate without secrets
+        uses: actions/checkout@v4
+      - name: Set Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run source, tamper, privacy, path and training refusal tests
+        run: python -m unittest discover -s tests -p 'test_couptake_r0.py' -v
+      - name: Verify portable source packet, supersession, replay and fake-ACK refusals
+        run: python -m unittest discover -s tests -p 'test_couptake_portable_r01.py' -v
+      - name: Isolate a fresh Python receiver subprocess from the CoCivium repo
+        run: python -m unittest discover -s tests -p 'test_couptake_cold_receiver_r02.py' -v
+      - name: Bind exactly four public source objects locally
+        shell: bash
+        run: |
+          set -eu
+          mkdir -p couptake-proof
+          python tools/couptake_r0/uptake.py \
+            --source-id discovery_policy \
+            --source-id ai_ia_onramp \
+            --source-id session_bootstrap \
+            --source-id provider_fabric > couptake-proof/local-source-readback.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path("couptake-proof/local-source-readback.json")
+          d=json.loads(p.read_text())
+          assert d["source_count"]==4 and d["local_bound"]==4 and d["held"]==0
+          assert d["effect_boundary"]=="LOCAL_SOURCE_BIND_ONLY"
+          assert d["independent_receiver_ack"]=="NOT_OBSERVED"
+          assert d["model_weight_change"]=="NOT_PERFORMED"
+          assert d["persistent_memory_write"]=="NOT_PERFORMED"
+          print("COUPTAKE_LOCAL_4_OF_4_SOURCE_BOUND_NE_AI_PROVIDER_INGESTION")
+          PY
+      - name: Prove training intent remains held even with good public bytes
+        shell: bash
+        run: |
+          set -eu
+          if python tools/couptake_r0/uptake.py \
+                --source-id ai_ia_onramp \
+                --intent train_candidate > couptake-proof/held-training.json; then
+            echo "ERROR_WEIGHT_TRAINING_MUST_NOT_PASS"
+            exit 1
+          fi
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          d=json.loads(Path("couptake-proof/held-training.json").read_text())
+          assert d["intent_result"]=="HELD_NO_WEIGHT_TRAINING_RIGHTS_CAPABILITY_OR_RUN"
+          assert d["model_weight_change"]=="NOT_PERFORMED"
+          print("TRAINING_HELD_RIGHTS_AND_CAPABILITY_NOT_PROVED")
+          PY
+      - name: Create an offline packet and a separately written unsigned test pin
+        shell: bash
+        run: |
+          set -eu
+          python tools/couptake_r0/portable.py pack \
+            --source-id ai_ia_onramp \
+            --output couptake-proof/public-onramp-packet.json > couptake-proof/packet-build-receipt.json
+          python tools/couptake_r0/portable.py pin-demo \
+            --packet couptake-proof/public-onramp-packet.json \
+            --output couptake-proof/synthetic-receiver-pin.json > couptake-proof/pin-build-receipt.json
+          python tools/couptake_r0/portable.py verify \
+            --packet couptake-proof/public-onramp-packet.json \
+            --receiver-policy couptake-proof/synthetic-receiver-pin.json > couptake-proof/portable-verification-receipt.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          d=json.loads(Path("couptake-proof/portable-verification-receipt.json").read_text())
+          assert d["effect_boundary"]=="LOCAL_PACKET_PIN_MATCH_ONLY"
+          assert d["matched"]==1 and d["held"]==0
+          assert d["issuer_signature_validated"] is False
+          assert d["independent_cold_restore"]=="NOT_OBSERVED"
+          assert d["external_receiver_ack"]=="NOT_OBSERVED"
+          print("PORTABLE_PACKET_LOCAL_PIN_MATCH_NE_INDEPENDENT_RECEIVER")
+          PY
+      - name: Verify copied portable packet with a genuinely detached Python interpreter
+        shell: bash
+        run: |
+          set -eu
+          DETACHED="$RUNNER_TEMP/couptake-detached-r02"
+          mkdir -p "$DETACHED"
+          cp tools/couptake_r0/receiver_standalone.py "$DETACHED/receiver_standalone.py"
+          cp couptake-proof/public-onramp-packet.json "$DETACHED/packet.json"
+          cp couptake-proof/synthetic-receiver-pin.json "$DETACHED/pin.json"
+          (
+            cd "$DETACHED"
+            PYTHONPATH=/invalid/python/import/path python -I -S receiver_standalone.py \
+              --packet packet.json \
+              --receiver-pin pin.json
+          ) > couptake-proof/detached-local-receiver.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          result=json.loads(Path("couptake-proof/detached-local-receiver.json").read_text())
+          assert result["effect_boundary"]=="LOCAL_PIN_MATCH_ONLY", result
+          assert result["matched"]==1 and result["held"]==0
+          assert result["issuer_signature_validated"] is False
+          assert result["external_agent_ack"]=="NOT_OBSERVED"
+          assert result["off_provider_cold_restore"]=="NOT_OBSERVED"
+          assert result["persistent_memory_write"]=="NOT_PERFORMED"
+          print("DETACHED_PYTHON_PACKET_READBACK_NO_REPO_IMPORT_NE_EXTERNAL_OPERATOR")
+          PY
+      - name: Demonstrate synthetic revision, stale rejection and old-policy vulnerability
+        shell: bash
+        run: |
+          set -eu
+          python - <<'PY'
+          import json, sys, tempfile
+          from pathlib import Path
+          sys.path.insert(0,str(Path("tools/couptake_r0").resolve()))
+          import portable as p
+          from uptake import git_blob_sha
+          with tempfile.TemporaryDirectory() as tmp:
+              root=Path(tmp)
+              (root/"ai").mkdir()
+              source=root/"ai"/"synthetic.txt"
+              source.write_text("Synthetic first edition: no private data.\n")
+              manifest={"schema":"CoAll.UptakeBridge.Manifest.R0-candidate",
+                        "reference_test":{"mutation_authority":"NONE"},
+                        "sources":[{"id":"synthetic","path":"ai/synthetic.txt",
+                          "git_blob_sha":git_blob_sha(source.read_bytes()),
+                          "visibility":"PUBLIC_SAFE","epistemic":"PUBLIC_POLICY",
+                          "license_review":"REQUIRED_FOR_REUSE_OR_TRAINING"}]}
+              old=p.build_packet(root,manifest,["synthetic"])
+              policy1=p.test_only_receiver_pin(old,generation=1)
+              source.write_text("Synthetic second edition: corrects the first.\n")
+              manifest["sources"][0]["git_blob_sha"]=git_blob_sha(source.read_bytes())
+              fresh=p.build_packet(root,manifest,["synthetic"])
+              policy2=p.simulate_supersession(policy1,fresh)
+              stale=p.verify_against_receiver_pin(old,policy2,minimum_generation=2)
+              current=p.verify_against_receiver_pin(fresh,policy2,minimum_generation=2)
+              rollback=p.verify_against_receiver_pin(old,policy1,minimum_generation=2)
+              unknown=p.verify_against_receiver_pin(old,policy1,minimum_generation=1)
+              assert stale["checks"][0]["reason"]=="REVOKED_OR_SUPERSEDED_OBJECT"
+              assert current["effect_boundary"]=="LOCAL_PACKET_PIN_MATCH_ONLY"
+              assert rollback["reason"]=="POLICY_ROLLBACK_OR_STALE"
+              assert unknown["effect_boundary"]=="LOCAL_PACKET_PIN_MATCH_ONLY"
+              result={"schema":"CoAll.UptakeBridge.SyntheticCorrectionReceipt.R0.1",
+                  "effect_boundary":"LOCAL_SIMULATION_NE_EXTERNAL_REVOCATION",
+                  "new_policy_generation":policy2["generation"],
+                  "old_source_rejected_when_new_policy_known":True,
+                  "new_source_locally_accepted":True,
+                  "known_generation_blocks_policy_rollback":True,
+                  "disconnected_stale_policy_still_accepts_old":True,
+                  "external_ack":"NOT_OBSERVED",
+                  "independent_cold_restore":"NOT_OBSERVED",
+                  "issuer_signature_verified":False,
+                  "model_weight_unlearning":"NOT_PERFORMED"}
+              Path("couptake-proof/synthetic-correction-receipt.json").write_text(
+                  json.dumps(result,indent=2,sort_keys=True)+"\n")
+              print("SYNTHETIC_SUPERSESSION_BLOCKS_OLD_WHEN_POLICY_CURRENT")
+              print("STALE_RECEIVER_CANNOT_KNOW_CORRECTION_NOT_GUARANTEED")
+          PY
+      - name: Preserve narrow synthetic receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: couptake-r0-public-local-proof
+          path: couptake-proof/*.json
+          if-no-files-found: warn
+          retention-days: 7
+      - name: State execution effect ceiling
+        if: success()
+        run: |
+          echo "PUBLIC_SOURCE_LOCAL_READBACK_NE_INDEPENDENT_AGENT_UPTAKE"
+          echo "NO_WEIGHTS_CHANGED_NO_EXTERNAL_PROVIDER_CONTACT_NO_MEMORY_STORED"
+          echo "A_COPY_OR_GITHUB_ACTION_NE_INDEPENDENT_FAILURE_DOMAIN"
+          echo "NO_MODEL_ENDORSEMENT_OR_COALL_ALIGNMENT_GUARANTEE"
+          echo "LOCAL_PACKET_RECOVERY_NE_EXTERNAL_COLD_RESTORE"
+          echo "SYNTHETIC_CORRECTION_NE_GLOBAL_MODEL_UNLEARNING"
+          echo "ISOLATED_PYTHON_PROCESS_NE_INDEPENDENT_OPERATOR_OR_OFF_PROVIDER_CUSTODY"
