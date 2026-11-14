@@ -94,6 +94,8 @@ def compile_ledger(source: Any, source_ref: str, source_sha256: str) -> dict[str
 
     rows: list[dict[str, Any]] = []
     signals: list[dict[str, Any]] = []
+    seen_observations: dict[tuple[str, str, str], str] = {}
+    duplicate_observation_count = 0
 
     for idx, obs in enumerate(observations):
         if not isinstance(obs, dict):
@@ -102,6 +104,19 @@ def compile_ledger(source: Any, source_ref: str, source_sha256: str) -> dict[str
                     "evidence_state","authority_ceiling","currentness"):
             if not obs.get(req):
                 raise ValueError(f"observation[{idx}] missing {req}")
+
+        # Exact event replay is not a new session or a new signal. A changed
+        # payload at the same observer/session/time identity is a conflict.
+        # Preserve conflicting evidence rather than silently electing a winner.
+        event_key = (str(obs["session_id"]), str(obs["observed_at"]), str(obs["observer"]))
+        event_payload = json.dumps(obs, sort_keys=True, separators=(",", ":"), ensure_ascii=True)
+        prior_payload = seen_observations.get(event_key)
+        if prior_payload is not None:
+            if event_payload != prior_payload:
+                raise ValueError(f"observation[{idx}] conflicting same-identity event")
+            duplicate_observation_count += 1
+            continue
+        seen_observations[event_key] = event_payload
 
         projection, basis = project(obs)
         candidate = label_for(obs, projection)
@@ -167,6 +182,8 @@ def compile_ledger(source: Any, source_ref: str, source_sha256: str) -> dict[str
         "state":"SHADOW_LEDGER_COMPILED__NO_PROVIDER_MUTATION",
         "coverage":{
             "observation_count":len(rows),
+            "supplied_observation_count":len(observations),
+            "exact_duplicate_observations_suppressed":duplicate_observation_count,
             "global_active_session_census":"UNPROVEN",
             "source_ref":source_ref,
             "source_sha256":source_sha256
