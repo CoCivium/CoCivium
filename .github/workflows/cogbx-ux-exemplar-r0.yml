@@ -56,3 +56,12 @@ jobs:
           assert "Not deployed to CoGbx.org" in readme
           print("PASS_COGBX_UX_SOURCE_BOUNDARIES_R0")
           PY
+
+  wpf-bulk:
+    runs-on: windows-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Qualify owned WPF text insertion without showing a window
+        shell: pwsh
+        run: pwsh -STA -NoProfile -NonInteractive -File examples/cobar/Test-CoCopyWpfBulkInputR0.ps1
