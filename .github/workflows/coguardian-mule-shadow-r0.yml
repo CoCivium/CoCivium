@@ -1,0 +1,62 @@
+name: CoGuardian Mule shadow native candidate
+on:
+  push:
+    paths:
+      - 'experiments/coguardian_mule_tray_r0/**'
+      - '.github/workflows/coguardian-mule-shadow-r0.yml'
+  pull_request:
+    paths:
+      - 'experiments/coguardian_mule_tray_r0/**'
+      - '.github/workflows/coguardian-mule-shadow-r0.yml'
+permissions:
+  contents: read
+jobs:
+  pure-source-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+      - name: Fail-closed model tests, no native icon launched
+        run: dotnet run --project experiments/coguardian_mule_tray_r0/tests/CoGuardianMule.ContractTests.csproj -c Release
+  windows-compile-only:
+    runs-on: windows-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+      - name: Build real WinForms WinExe without execution
+        run: dotnet build experiments/coguardian_mule_tray_r0/CoGuardianMule.Shadow.csproj -c Release
+      - name: Publish unsigned, uninstalled candidate
+        run: |
+          dotnet publish experiments/coguardian_mule_tray_r0/CoGuardianMule.Shadow.csproj -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true -p:PublishTrimmed=false -o out/mule
+      - name: Hash candidate and label its limitation
+        shell: pwsh
+        run: |
+          $exe = Get-ChildItem 'out/mule' -Filter '*.exe' | Select-Object -First 1
+          if (-not $exe) { throw 'HOLD_NO_NATIVE_CANDIDATE_EXE' }
+          $receipt = @{
+            status = 'UNINSTALLED_UNSIGNED_SOURCE_CANDIDATE'
+            binary_sha256 = (Get-FileHash $exe.FullName -Algorithm SHA256).Hash.ToLowerInvariant()
+            receiver_ack = $false
+            native_tray_first_use_accepted = $false
+            independent_worker = $false
+            scheduler_created = $false
+            startup_changed = $false
+            effect = 'NONE'
+          }
+          $receipt | ConvertTo-Json | Set-Content 'out/mule/build-receipt.json' -Encoding UTF8
+      - uses: actions/upload-artifact@v4
+        with:
+          name: coguardian-mule-shadow-win-x64-unsigned
+          path: out/mule/
+          if-no-files-found: error
+          retention-days: 3
