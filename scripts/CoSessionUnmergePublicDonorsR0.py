@@ -45,9 +45,13 @@ def read_donor(root: Path, item: dict) -> tuple[bytes, dict]:
             rel.endswith(".json") and "\\" not in rel and ".." not in Path(rel).parts,
             "SOURCE_SCOPE")
     base = root.resolve()
-    path = (base / rel).resolve()
-    require(path.is_relative_to(base) and path.is_file() and not path.is_symlink(),
-            "MISSING_SOURCE")
+    # Check each *unresolved* component first; resolve() alone erases aliases.
+    candidate = base
+    for segment in Path(rel).parts:
+        candidate = candidate / segment
+        require(not candidate.is_symlink(), "SYMLINK_SOURCE")
+    path = candidate.resolve()
+    require(path.is_relative_to(base) and path.is_file(), "MISSING_SOURCE")
     source = path.read_bytes()
     require(0 < len(source) <= 100000, "SOURCE_SIZE")
     sha = item.get("git_blob_sha")
