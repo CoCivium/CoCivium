@@ -32,6 +32,8 @@ jobs:
         run: node examples/cogbx_ux_exemplar_r0/interaction_r1.cjs
       - name: Check CoBar R4b exact-source synthetic local interaction
         run: node examples/cobar/interaction_r4b.cjs
+      - name: Check CoCopy/CoBar fast bulk-insert adversarial contract
+        run: node examples/cobar/test_copaste_bulk_r0.cjs
       - name: Check source boundaries
         run: |
           python - <<'PY'
