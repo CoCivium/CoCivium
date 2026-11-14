@@ -1,0 +1,39 @@
+{
+  "schema": "CoAll.CoRunner.ForegroundAdmission.R0",
+  "status": "SOURCE_CANDIDATE_NOT_INSTALLED",
+  "source_issue": "https://github.com/CoCivium/CoCivium/issues/181",
+  "guard_scope": "EXPLICITLY_REGISTERED_ENTRYPOINTS_ONLY",
+  "entries": [
+    {
+      "module_id": "CoThumbCoCopyR1",
+      "source": "scripts/CoThumbCoCopyR1.ps1",
+      "runtime": "pwsh",
+      "visibility": "SURFACE",
+      "allowed_triggers": [
+        "USER_GESTURE"
+      ],
+      "qualification": "CANDIDATE_SOURCE_ONLY",
+      "launch_args": [
+        "-NoProfile",
+        "-STA",
+        "-File",
+        "scripts/CoThumbCoCopyR1.ps1",
+        "-Mode",
+        "UI"
+      ],
+      "max_live_instances": 1,
+      "restart_policy": "NONE",
+      "foreground_ownership": "USER_INVOCATION_ONLY",
+      "user_exit": "Close the visible CoThumb panel; stop ongoing local job only after its explicit confirmation",
+      "current_proof": "SOURCE_AND_SYNTHETIC_CI_ONLY",
+      "x2_installation": "UNPROVEN"
+    }
+  ],
+  "nonclaims": [
+    "REGISTERED_NE_INSTALLED",
+    "SOURCE_POLICY_PASS_NE_FOREGROUND_FOCUS_PROOF",
+    "MANUAL_UI_NE_BACKGROUND_RUNNER",
+    "NO_OS_HOOK_INSTALLED",
+    "NO_TASK_SCHEDULER_MUTATION"
+  ]
+}
