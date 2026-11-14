@@ -42,8 +42,6 @@ class Candidate:
         if any(type(v) not in (float, int) or not -1e9 < v < 1e9
                for v in self.outcomes.values()):
             raise ValueError("INVALID_FINITE_METRIC")
-        if type(self.rights_violation) is not bool:
-            raise ValueError("RIGHTS_STATUS_EXPLICIT_BOOL_REQUIRED")
         if (set(self.metric_contracts) != set(METRICS) or
             any(not isinstance(v, str) or not v.strip()
                 for v in self.metric_contracts.values())):
@@ -53,6 +51,8 @@ class Candidate:
             not isinstance(self.rights_context, str) or
             not self.rights_context.strip()):
             raise ValueError("SITUATED_SCOPE_REQUIRED")
+        if type(self.rights_violation) is not bool:
+            raise ValueError("RIGHTS_STATUS_EXPLICIT_BOOL_REQUIRED")
         # Strings are synthetic provenance pointers, NOT authenticated grants.
         # An appropriated symbol with intact wording can still transfer power,
         # benefit, and refusal rights. Missing provenance must HOLD.
