@@ -89,6 +89,42 @@ class UnmergePublicDonorTests(unittest.TestCase):
         with self.assertRaisesRegex(Hold, "HOLD_REHYDRATION_DIGEST"):
             unmerge_rehydrate(ROOT, fixture)
 
+    def test_forged_close_safe_rejected(self):
+        fixture = copy.deepcopy(self.projection)
+        fixture["close_safe"] = True
+        with self.assertRaisesRegex(Hold, "HOLD_PROJECTION_EFFECT_GATE"):
+            unmerge_rehydrate(ROOT, fixture)
+
+    def test_forged_effect_rejected(self):
+        fixture = copy.deepcopy(self.projection)
+        fixture["effects"]["provider_sessions_deleted"] = 1
+        with self.assertRaisesRegex(Hold, "HOLD_PROJECTION_EFFECT_GATE"):
+            unmerge_rehydrate(ROOT, fixture)
+
+    def test_dissent_erasure_rejected(self):
+        fixture = copy.deepcopy(self.projection)
+        fixture["dissent"] = []
+        with self.assertRaisesRegex(Hold, "HOLD_DISSENT_LEDGER_CHANGED"):
+            unmerge_rehydrate(ROOT, fixture)
+
+    def test_duplicate_source_in_projection_rejected(self):
+        fixture = copy.deepcopy(self.projection)
+        fixture["records"][2] = copy.deepcopy(fixture["records"][0])
+        with self.assertRaisesRegex(Hold, "HOLD_PROJECTION_DUPLICATE_DONOR"):
+            unmerge_rehydrate(ROOT, fixture)
+
+    def test_forged_success_state_rejected(self):
+        fixture = copy.deepcopy(self.projection)
+        fixture["state"] = "PROVIDER_SESSIONS_RECOVERED"
+        with self.assertRaisesRegex(Hold, "HOLD_PROJECTION_STATE"):
+            unmerge_rehydrate(ROOT, fixture)
+
+    def test_evidence_class_tamper_rejected(self):
+        fixture = copy.deepcopy(self.projection)
+        fixture["records"][0]["epistemic_class"] = "PROVEN"
+        with self.assertRaisesRegex(Hold, "HOLD_EVIDENCE_CLASS_CHANGED"):
+            unmerge_rehydrate(ROOT, fixture)
+
     def test_missing_source_rejected(self):
         fixture = copy.deepcopy(self.manifest)
         fixture["records"][0]["path"] = "ai/evolution-deltas/MISSING_SOURCE.json"
