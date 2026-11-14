@@ -1,0 +1,132 @@
+#!/usr/bin/env python3
+"""Bounded off-network Chromium acceptance for the static federation UI."""
+from pathlib import Path
+import json
+import shutil
+from playwright.sync_api import sync_playwright
+
+ROOT=Path(__file__).resolve().parent
+content=(ROOT/'index.html').read_text(encoding='utf-8')
+results=[]
+def check(ok,label):
+    results.append({'name':label,'outcome':'PASS' if ok else 'FAIL'})
+    if not ok:raise AssertionError(label)
+with sync_playwright() as p:
+    executable=shutil.which('chromium') or shutil.which('google-chrome') or shutil.which('chromium-browser')
+    if not executable:
+        candidate=Path(p.chromium.executable_path)
+        if not candidate.is_file():
+            raise RuntimeError('HELD_NO_LOCAL_CHROMIUM_OR_CHROME_EXECUTABLE')
+        executable=str(candidate)
+    browser=p.chromium.launch(headless=True,executable_path=executable,args=['--no-sandbox','--disable-dev-shm-usage'])
+    for width,height,label in [(1280,840,'desktop'),(390,844,'mobile')]:
+        page=browser.new_page(viewport={'width':width,'height':height},device_scale_factor=1,reduced_motion='reduce')
+        errors=[];network=[]
+        page.on('pageerror',lambda error:errors.append(str(error)))
+        page.on('request',lambda request:network.append(request.url))
+        page.set_content(content,wait_until='load')
+        page.screenshot(path=str(ROOT/('preview_'+label+'.png')),full_page=True)
+        # A real browser must expose both routes as links, never confuse the published post with the draft.
+        shortcut=page.get_by_role('link',name='Compare a published article with the draft chapter')
+        check(shortcut.count()==1 and shortcut.get_attribute('href')=='#edge-in-heading',label+'_first_screen_shortcut')
+        cta_bounds=shortcut.bounding_box()
+        check(bool(cta_bounds) and cta_bounds['y']>=0 and cta_bounds['y']<height and shortcut.is_visible(),label+'_shortcut_above_fold')
+        bridge=page.locator('#edge-in-heading')
+        check(bridge.count()==1 and bridge.is_visible(),label+'_reader_bridge_visible')
+        live=page.get_by_role('link',name='Read the existing public article')
+        draft=page.get_by_role('link',name='Read the pinned chapter draft')
+        check(live.count()==1 and live.get_attribute('href')=='https://rickpublic.substack.com/p/does-ai-make-the-stock-market-obsolete',label+'_browser_bridge_live_link')
+        check(draft.count()==1 and draft.get_attribute('href')=='https://github.com/CoCivium/CoCivium/blob/1487b330d35ddec03f32000e6846dd3b35ed774a/docs/books/great-refact-r0/01-your-product-is-still-here.md',label+'_browser_bridge_draft_link')
+        check('not a published Substack article' in page.locator('#edge-in-heading').locator('xpath=..').inner_text(),label+'_draft_state_explained')
+        check(all(x.get_attribute('target')=='_blank' and {'noopener','noreferrer'}.issubset(set((x.get_attribute('rel') or '').split())) for x in [live,draft]),label+'_outbound_link_isolation')
+        bridge.scroll_into_view_if_needed()
+        bounds=bridge.bounding_box()
+        check(bool(bounds) and bounds['x']>=0 and bounds['x']+bounds['width']<=width+1,label+'_bridge_in_viewport')
+        check(page.get_by_role('link',name='Read the existing public article').is_visible() and draft.is_visible(),label+'_bridge_links_render')
+        palette=page.evaluate("""() => {
+          const bg=(selector)=>getComputedStyle(document.querySelector(selector)).backgroundImage;
+          return {sidebar:bg('.aside'),giggle:bg('.giggle'),bridge:bg('.public-bridge'),cycle:bg('.pulse-highlight'),article:bg('#article'),body:bg('body')};
+        }""")
+        check('rgb(21, 56, 46)' in palette['sidebar'] and 'rgb(15, 37, 35)' in palette['sidebar'],label+'_forest_sidebar_computed')
+        check('rgb(23, 55, 47)' in palette['giggle'],label+'_forest_giggle_computed')
+        check('rgb(20, 47, 41)' in palette['bridge'],label+'_forest_public_bridge_computed')
+        check('rgb(23, 56, 47)' in palette['cycle'],label+'_forest_cyclic_highlight_computed')
+        check('rgb(35, 69, 56)' in palette['body'],label+'_forest_glow_computed')
+        check('rgb(19, 28, 43)' in palette['article'],label+'_ordinary_article_remains_navy')
+        page.emulate_media(contrast='more')
+        border=page.locator('.public-bridge').evaluate("(el) => getComputedStyle(el).borderTopWidth")
+        check(border=='2px',label+'_high_contrast_forest_border')
+        check(page.locator('.pulse-highlight').evaluate("(el) => getComputedStyle(el).borderTopWidth")=='2px',label+'_high_contrast_cyclic_highlight')
+        page.emulate_media(contrast='no-preference')
+        cycle=page.locator('#cyclic-details')
+        check(page.locator('#cyclic-heading').is_visible(),label+'_living_cycle_highlight_exists')
+        check(cycle.get_attribute('open') is None,label+'_cycle_detail_off_by_default')
+        check(not cycle.locator('.cluster').first.is_visible(),label+'_cycle_cards_hidden_by_default')
+        check(page.locator('.pulse-highlight .cluster').count()==4,label+'_four_bounded_cycle_examples')
+        cycle.locator('summary').click()
+        check(cycle.get_attribute('open') is not None,label+'_cycle_detail_opt_in')
+        check(cycle.locator('.cluster').first.is_visible(),label+'_cycle_cards_visible_when_requested')
+        check('G_d remains a philosophical' in cycle.inner_text(),label+'_gd_not_physics_in_research_card')
+        check('What independent improvement survived the cycle?' in cycle.inner_text(),label+'_cycle_counterquestion_visible')
+        check(page.locator('#article .claim').count()==6,label+'_cyclic_highlight_no_claim_drift')
+        cycle.locator('summary').click()
+        check(cycle.get_attribute('open') is None,label+'_cycle_detail_opt_out')
+        check(page.locator('.route-btn').count()==6,label+'_six_routes')
+        check('You were never supposed' in page.locator('#route-head').inner_text(),label+'_initial_view')
+        check(page.locator('.claim').count()==6,label+'_same_claim_kernel')
+        check(page.locator('#edition-note').inner_text().startswith('r0.2'),label+'_initial_current_edition')
+        giggle=page.locator('#giggle-toggle')
+        giggle_panel=page.locator('#giggle-panel')
+        check(giggle.get_attribute('aria-pressed')=='false',label+'_giggle_off_by_default')
+        check(giggle_panel.is_hidden(),label+'_giggle_not_forced_on_reader')
+        giggle.click()
+        check(giggle.get_attribute('aria-pressed')=='true',label+'_giggle_explicit_opt_in')
+        check(giggle_panel.is_visible(),label+'_giggle_visible_when_requested')
+        check('Chief Copy-and-Paste Officer' in page.locator('#giggle-quip').inner_text(),label+'_giggle_typed_quip')
+        check('Pinned C01' in page.locator('#giggle-source').inner_text(),label+'_giggle_source_identity')
+        check(page.locator('.claim').count()==6,label+'_giggle_leaves_claims_intact')
+        page.get_by_role('button',name='Developer').click()
+        check('bridge between two APIs' in page.locator('#giggle-quip').inner_text(),label+'_giggle_follows_reader_choice')
+        check('Pinned C03' in page.locator('#giggle-source').inner_text(),label+'_giggle_switches_typed_source')
+        giggle.click()
+        check(giggle_panel.is_hidden(),label+'_giggle_opt_out_restores_plain')
+        check(giggle.get_attribute('aria-pressed')=='false',label+'_giggle_restores_plain_state')
+        check('Compose one capability' in page.locator('#route-head').inner_text(),label+'_switch_reader')
+        check(page.locator('.claim').count()==6,label+'_claims_preserved_after_switch')
+        check(page.locator('.route-btn[aria-pressed="true"]').count()==1,label+'_selection_visible')
+        page.locator('#edition-old').click()
+        check(page.locator('#edition-note').inner_text().startswith('r0.1'),label+'_recover_predecessor')
+        page.locator('#edition-current').click()
+        check(page.locator('#edition-note').inner_text().startswith('r0.2'),label+'_recover_successor')
+        page.locator('#decode').click()
+        decoded=json.loads(page.locator('#descriptor-output').inner_text())
+        check(len(decoded['axes'])==12,label+'_lazy_trillion_address')
+        check(decoded['posts_created']==0 and decoded['workers_started']==0,label+'_zero_execution')
+        page.locator('#descriptor-number').fill('bad')
+        page.locator('#decode').click()
+        check('HELD:' in page.locator('#descriptor-output').inner_text(),label+'_bad_descriptor_rejected')
+        page.locator('#challenge-text').fill('How would we measure rollback success on a non-demo product?')
+        page.locator('#prepare-challenge').click()
+        challenge=json.loads(page.locator('#challenge-output').inner_text())
+        check(challenge['state']=='UNSENT_LOCAL_PROPOSAL',label+'_local_challenge_only')
+        check(challenge['external_send_count']==0,label+'_no_auto_send')
+        check(challenge['source_blob']=='9202ab5a8d0bfef509922c8c047363ea7a346ce2',label+'_pinned_source')
+        measure=page.evaluate("""() => ({
+          viewport: innerWidth,
+          scroll: document.documentElement.scrollWidth,
+          offenders: [...document.querySelectorAll('body *')].filter(el => {
+            const r=el.getBoundingClientRect();
+            return r.width > 0 && r.right > innerWidth + 1;
+          }).slice(0,8).map(el => ({tag:el.tagName,id:el.id,className:String(el.className||'').slice(0,80),right:Math.round(el.getBoundingClientRect().right)}))
+        })""")
+        if measure['scroll']>measure['viewport']+1:
+            print('MOBILE_OR_DESKTOP_OVERFLOW_DIAGNOSTIC '+label+' '+json.dumps(measure))
+        check(measure['scroll']<=measure['viewport']+1,label+'_no_horizontal_overflow')
+        check(not errors,label+'_zero_js_errors')
+        check(not network,label+'_zero_http_requests')
+        page.screenshot(path=str(ROOT/('qa_'+label+'.png')),full_page=True)
+        page.close()
+    browser.close()
+report={'schema':'CoAll.PublicationFederation.BrowserQA.R0','method':'Chromium page.set_content exact generated source, not hosted URL or end-user acceptance','checks':results,'pass':sum(r['outcome']=='PASS' for r in results),'fail':sum(r['outcome']=='FAIL' for r in results),'public_network_requests':0,'private_source_ingestion':0,'nonclaims':['BROWSER_SMOKE_NE_HUMAN_COMPREHENSION','FILE_RENDER_NE_HOSTED_WEBSITE','SYNTHETIC_VERSION_NE_PUBLICATION_HISTORY','NO_SUBSTACK_POSTING']}
+(ROOT/'browser_qa_receipt.json').write_text(json.dumps(report,indent=2)+'\n')
+print(json.dumps({'pass':report['pass'],'fail':report['fail'],'method':report['method']},indent=2))
