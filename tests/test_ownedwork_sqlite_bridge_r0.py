@@ -307,5 +307,47 @@ class SyntheticBridgeR0(unittest.TestCase):
             self.assertFalse(cold["external_receiver_ack"])
 
 
+    def test_public_synthetic_gate_can_revoke_without_sender_authentication(self):
+        """Characterize the current privilege boundary; this is NOT remote access."""
+        active = self.record()
+        revoked = {**active, "state": "REVOKED"}
+        packet = self.accepted(active)
+        with tempfile.TemporaryDirectory() as d:
+            db = Path(d) / "receiver.sqlite"
+            commit_once(db, packet)
+            # The untrusted caller has only a copy of the public synthetic
+            # fixture and exact browser record, not a separately verified
+            # actor credential. Local DB/function access is assumed.
+            copied_public_gate = copy.deepcopy(self.gate)
+            proof = apply_browser_revocation(
+                db, active, revoked, copied_public_gate, SOURCE, JS)
+            self.assertFalse(proof["independent_sender_authentication"])
+            self.assertFalse(proof["real_human_consent"])
+            self.assertFalse(proof["receiver_ack"])
+            self.assertEqual(proof["after"], "HELD_REVOKED")
+            self.assertEqual(
+                readback(db, expected_packet=packet)["state"], "HELD_REVOKED")
+
+    @unittest.expectedFailure
+    def test_desired_independent_sender_authentication_must_prevent_revoke(self):
+        """EXPECTED RED: copied public fixture must not grant revoke authority.
+
+        Remove expectedFailure ONLY after a receiver-owned permission check
+        makes this exact synthetic attack HOLD without changing the DB.
+        """
+        active = self.record()
+        revoked = {**active, "state": "REVOKED"}
+        packet = self.accepted(active)
+        with tempfile.TemporaryDirectory() as d:
+            db = Path(d) / "receiver.sqlite"
+            commit_once(db, packet)
+            with self.assertRaisesRegex(Held, "HELD_UNAUTHENTICATED_REVOCATION"):
+                apply_browser_revocation(
+                    db, active, revoked, copy.deepcopy(self.gate), SOURCE, JS)
+            self.assertEqual(
+                readback(db, expected_packet=packet)["state"],
+                "COLD_SOURCE_RECONSTRUCTED")
+
+
 if __name__ == "__main__":
     unittest.main()
