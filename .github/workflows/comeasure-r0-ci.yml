@@ -1,0 +1,117 @@
+name: CoMeasure R0 typed units CI
+
+on:
+  pull_request:
+    paths:
+      - 'ai/measurement/registry_r0_1.json'
+      - 'ai/measurement/verify_registry_r0_1.py'
+      - 'ai/measurement/counits_v6_7_alias_crosswalk.json'
+      - 'tests/test_counits_v6_7_crosswalk.py'
+      - 'ai/measurement/copredict_drift_r0.py'
+      - 'ai/measurement/copredict_drift_fixture_r0.json'
+      - 'tests/test_copredict_drift_r0.py'
+      - 'tests/test_comeasure_optimized_failclosed_r0.py'
+      - 'tests/test_comeasure_unit_anchor_r0.py'
+      - 'ai/measurement/observation_domain_r0.py'
+      - 'ai/measurement/ux_placeholder_r0.py'
+      - 'ai/measurement/first_use_demo_r0.py'
+      - 'ai/measurement/README.md'
+      - 'ai/measurement/colockstep_survival_r0.py'
+      - 'tests/test_colockstep_browser_r0.py'
+      - 'examples/codemow/truth-gate-r1.html'
+      - 'tests/test_observation_domain_r0.py'
+      - 'tests/test_ux_placeholder_r0.py'
+      - 'docs/Architecture/COALL_MEASUREMENT_R0_CANDIDATE.md'
+      - '.github/workflows/comeasure-r0-ci.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  exact-unit-and-conull-guards:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify conversions, semantic kind boundaries and null states
+        run: python ai/measurement/verify_registry_r0_1.py
+      - name: Verify optimized interpreter cannot bypass the registry guards
+        run: python -O ai/measurement/verify_registry_r0_1.py
+      - name: Verify idempotent receipt readback (no overwrite)
+        run: python ai/measurement/verify_registry_r0_1.py
+      - name: Check CoUnits v6.7 proposed aliases and independent-ACK gates
+        run: python -m unittest discover -s tests -p 'test_counits_v6_7_crosswalk.py' -v
+      - name: Challenge local FIFO versus global meaning with synthetic CoPredict tests
+        run: python -m unittest discover -s tests -p 'test_copredict_drift_r0.py' -v
+      - name: Challenge exact registry with optimized mode and mutation canaries
+        run: python -m unittest discover -s tests -p 'test_comeasure_optimized_failclosed_r0.py' -v
+      - name: Enforce exact unit anchors against real registry under both modes
+        run: |
+          python -m unittest discover -s tests -p 'test_comeasure_unit_anchor_r0.py' -v
+          python -O -m unittest discover -s tests -p 'test_comeasure_unit_anchor_r0.py' -v
+      - name: Validate observation-domain safety under both Python modes
+        run: |
+          python -m unittest discover -s tests -p 'test_observation_domain_r0.py' -v
+          python -O -m unittest discover -s tests -p 'test_observation_domain_r0.py' -v
+      - name: Reject fake CoIb and CoEther measurements in ordinary and optimized Python
+        run: |
+          python -B -m unittest discover -s tests -p 'test_ux_placeholder_r0.py' -v
+          python -O -B -m unittest discover -s tests -p 'test_ux_placeholder_r0.py' -v
+      - name: Demonstrate synthetic first use under both interpreter modes
+        run: |
+          python ai/measurement/first_use_demo_r0.py
+          python -O ai/measurement/first_use_demo_r0.py
+      - name: Demonstrate CoLockStep source-pinned baseline survival across broken successor
+        run: |
+          python -B ai/measurement/colockstep_survival_r0.py
+          python -O -B ai/measurement/colockstep_survival_r0.py
+      - name: Check scope and result counters
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          base=Path('ai/measurement')
+          registry=json.loads((base/'registry_r0_1.json').read_text())
+          result=json.loads((base/'registry_test_receipt_r0.json').read_text())
+          assert registry['version']=='0.1.2'
+          assert len(registry['units'])==21
+          assert len(registry['metric_families'])==7
+          assert result['state']=='PASS_FOR_SCOPE'
+          assert result['conversion_tests_passed']==11
+          assert result['invalid_conversions_rejected']==7
+          assert result['null_states_passed']==6
+          assert result['measured_values_passed']==3
+          assert result['null_misrepresentations_rejected']==8
+          assert result['total_asserted_cases']==35
+          assert all(v==0 for v in result['effects'].values())
+          assert 'NOT_CROSS_SESSION_ADOPTED' in result['nonclaims']
+          print('PASS_COMEASURE_R0_35_SCOPED_ASSERTIONS__NO_EFFECTS')
+          PY
+
+  public-browser-survival-canary:
+    # Playwright 1.56 lacks support for ubuntu-26.04 in ubuntu-latest.
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install browser harness; use available system Chrome first
+        run: |
+          python -m pip install 'playwright==1.56.0'
+          if command -v google-chrome >/dev/null 2>&1 ||
+             command -v google-chrome-stable >/dev/null 2>&1 ||
+             command -v chromium >/dev/null 2>&1 ||
+             command -v chromium-browser >/dev/null 2>&1; then
+            echo "Using runner browser; no apt dependency install"
+          else
+            echo "No runner browser; install scoped Chromium without apt packages"
+            python -m playwright install chromium
+          fi
+      - name: Confirm public browser baseline survives a failed experimental successor
+        run: python -m unittest discover -s tests -p 'test_colockstep_browser_r0.py' -v
