@@ -22,13 +22,13 @@ test('one bulk operation, no send or keystrokes',()=>{
   assert.equal(r.state,'INSERTED_VERIFIED_TEXT_VALUE');assert.equal(a.field.value,'abc');
   assert.equal(a.calls,1);assert.equal(a.sends,0);assert.equal(a.keys,0);
 });
-test('CRLF and Unicode kept exact',()=>{
+test('CRLF normalization explicit, Unicode retained',()=>{
   const a=own(),e=createCoPasteR0();const s='first\r\nsecond\nthird\u0301 🌍 𝄞';
-  assert.equal(perform(e,a,s).state,'INSERTED_VERIFIED_TEXT_VALUE');assert.equal(a.field.value,s);
+  const result=perform(e,a,s);assert.equal(result.state,'INSERTED_VERIFIED_TEXT_VALUE');assert.equal(result.normalized,true);assert.equal(a.field.value,s.replace(/\r\n?/g,'\n'));
 });
 test('100k code unit multiline inserted in one call',()=>{
   const a=own(),e=createCoPasteR0();const s=('line\r\n🌍').repeat(12000);
-  assert.equal(perform(e,a,s).state,'INSERTED_VERIFIED_TEXT_VALUE');assert.equal(a.field.value,s);
+  assert.equal(perform(e,a,s).state,'INSERTED_VERIFIED_TEXT_VALUE');assert.equal(a.field.value,s.replace(/\r\n?/g,'\n'));
   assert.equal(a.calls,1);
 });
 test('requires granted authority',()=>{
@@ -98,5 +98,21 @@ test('input and clipboard do not leak to external endpoints',()=>{
   const a=own(),e=createCoPasteR0();const r=perform(e,a,'sensitive synthetic');
   assert.equal(r.sent,false);assert(!('payload' in r));assert.equal(a.sends,0);assert.equal(a.keys,0);
 });
-assert.equal(passed,20);
+test('ambiguous partial insertion remains fenced on retry',()=>{
+  const a=own(),e=createCoPasteR0();a.field.setRangeText=function(text){this.value=text.slice(0,1)};
+  assert.equal(perform(e,a,'many').state,'HELD_READBACK_MISMATCH');
+  assert.equal(perform(e,a,'many').state,'HELD_AMBIGUOUS_PREVIOUS_INSERT');
+  assert.equal(a.field.value,'m');
+});
+test('exception path also prevents blind retry',()=>{
+  const a=own(),e=createCoPasteR0();a.field.setRangeText=()=>{throw Error('fault')};
+  assert.equal(perform(e,a).state,'FAILED_INSERT_EXCEPTION');
+  assert.equal(perform(e,a).state,'HELD_AMBIGUOUS_PREVIOUS_INSERT');
+});
+test('single-line field refuses newline payload',()=>{
+  const a=own(),e=createCoPasteR0();a.field.tagName='INPUT';a.field.type='text';
+  assert.equal(perform(e,a,'line\r\nnext').state,'HELD_SINGLELINE_INPUT_NEWLINE');
+  assert.equal(a.calls,0);
+});
+assert.equal(passed,23);
 console.log('PASS_COPASTE_BULK_R0_CONTRACT tests='+passed+' external_sends=0 clipboard_mutations=0 receiver_ack=UNPROVEN');
