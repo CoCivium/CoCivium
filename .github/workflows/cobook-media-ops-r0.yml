@@ -1,0 +1,57 @@
+name: CoBook media-ops reference guard R0
+on:
+  pull_request:
+    paths:
+      - 'ai/cobook-media-ops-r0.json'
+      - 'scripts/check_cobook_media_ops_r0.py'
+      - 'scripts/check_cobook_origin_scene_r0.py'
+      - 'scripts/check_cobook_promise_scene_r0.py'
+      - 'scripts/check_cobook_coqa_causal_braid_r0.py'
+      - 'docs/Books/**'
+      - 'examples/colensmedia/README.md'
+      - 'examples/comap/diagram-of-diagrams-r0.md'
+      - '.github/workflows/cobook-media-ops-r0.yml'
+  workflow_dispatch:
+jobs:
+  reference-integrity:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python3 scripts/check_cobook_media_ops_r0.py
+      - name: Verify CoQA causal braid with synthetic no-input, parallel review and release gates
+        run: python3 scripts/check_cobook_coqa_causal_braid_r0.py
+      - name: Install pinned browser QA
+        run: |
+          python3 -m pip install playwright==1.55.0
+          if command -v google-chrome >/dev/null 2>&1; then
+            echo "COBOOK_CHROME_PATH=$(command -v google-chrome)" >> "$GITHUB_ENV"
+          elif command -v chromium >/dev/null 2>&1; then
+            echo "COBOOK_CHROME_PATH=$(command -v chromium)" >> "$GITHUB_ENV"
+          else
+            python3 -m playwright install --with-deps chromium
+          fi
+      - name: Verify interactive origin myth in mobile and desktop Chromium
+        run: python3 scripts/check_cobook_origin_scene_r0.py
+      - name: Verify parent-child river-promise scene in mobile and desktop Chromium
+        run: python3 scripts/check_cobook_promise_scene_r0.py
+      - name: Retain parent-child scene browser proof
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cobook-parent-child-promise-r0
+          path: artifacts/cobook-promise-scene-r0/
+          if-no-files-found: ignore
+          retention-days: 7
+      - name: Retain local candidate browser QA screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cobook-beetle-origin-reader-r0
+          path: artifacts/cobook-origin-scene-r0/
+          if-no-files-found: ignore
+          retention-days: 7

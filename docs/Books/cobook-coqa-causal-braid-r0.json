@@ -1,0 +1,175 @@
+{
+  "schema": "CoBook.CoQA.CausalBraid.R0-candidate",
+  "state": "DRAFT_GRAPH_NOT_AUTONOMOUS_EXECUTION",
+  "work_id": "cobook:coqa:question-to-scene:r0",
+  "source_question_id": "coqa:book:voluntary-question-001",
+  "source_question_location": "conversation-only; never auto-export private reply",
+  "source_answer_ref": null,
+  "source_answer_state": "AWAITING_VOLUNTARY_ANSWER",
+  "consent_to_adapt": "UNKNOWN",
+  "publication_approval": false,
+  "independent_reader_receipt": null,
+  "receiver_ack_ref": null,
+  "active_writer": "book_editor",
+  "purpose": "One candidate scene based on a voluntary answer with parallel read-only challenges and explicit fan-in",
+  "lineage": [
+    "docs/Books/COBOOK_COQA_QUESTION_TO_SCENE_LENS_R0_20261110.md",
+    "docs/Architecture/COQA_QUESTION_COMMONS_R0.md",
+    "docs/Architecture/COOMNIDIRECTIONAL_SEED_PATH_FABRIC_R0_20261109.md"
+  ],
+  "execution_rules": {
+    "all_effects": "PLAN_ONLY_NO_AUTOMATIC_EXECUTION",
+    "max_parallel_readers": 3,
+    "single_elected_writer": true,
+    "on_no_material_delta": "NO_MATERIAL_DELTA",
+    "fail_closed_on_unknown_permission": true,
+    "no_unverified_receiver_ack": true,
+    "no_public_release_without_separate_human_gate": true,
+    "repeat_regression_tests_allowed": true,
+    "novel_research_waves_are_not_required_for_safety_tests": true
+  },
+  "nodes": [
+    {
+      "id": "voluntary_answer",
+      "depends_on": [],
+      "kind": "human_input",
+      "effect": "NONE",
+      "actor": "human",
+      "gate": "voluntary_answer_present"
+    },
+    {
+      "id": "source_attribution",
+      "depends_on": [
+        "voluntary_answer"
+      ],
+      "kind": "serial_write",
+      "effect": "PRIVATE_CANDIDATE",
+      "actor": "book_editor",
+      "gate": "consent_to_adapt"
+    },
+    {
+      "id": "tension_extract",
+      "depends_on": [
+        "source_attribution"
+      ],
+      "kind": "serial_write",
+      "effect": "PRIVATE_CANDIDATE",
+      "actor": "book_editor",
+      "gate": "true"
+    },
+    {
+      "id": "counter_question_review",
+      "depends_on": [
+        "tension_extract"
+      ],
+      "kind": "parallel_read",
+      "effect": "NONE",
+      "actor": "reviewer",
+      "gate": "true"
+    },
+    {
+      "id": "source_challenge",
+      "depends_on": [
+        "tension_extract"
+      ],
+      "kind": "parallel_read",
+      "effect": "NONE",
+      "actor": "reviewer",
+      "gate": "true"
+    },
+    {
+      "id": "privacy_rights_preflight",
+      "depends_on": [
+        "tension_extract"
+      ],
+      "kind": "parallel_read",
+      "effect": "NONE",
+      "actor": "reviewer",
+      "gate": "true"
+    },
+    {
+      "id": "scene_draft",
+      "depends_on": [
+        "counter_question_review",
+        "source_challenge",
+        "privacy_rights_preflight"
+      ],
+      "kind": "serial_write",
+      "effect": "PRIVATE_CANDIDATE",
+      "actor": "book_editor",
+      "gate": "consent_to_adapt"
+    },
+    {
+      "id": "child_agency_audit",
+      "depends_on": [
+        "scene_draft"
+      ],
+      "kind": "parallel_read",
+      "effect": "NONE",
+      "actor": "reviewer",
+      "gate": "true"
+    },
+    {
+      "id": "evidence_audit",
+      "depends_on": [
+        "scene_draft"
+      ],
+      "kind": "parallel_read",
+      "effect": "NONE",
+      "actor": "reviewer",
+      "gate": "true"
+    },
+    {
+      "id": "accessible_reader_audit",
+      "depends_on": [
+        "scene_draft"
+      ],
+      "kind": "parallel_read",
+      "effect": "NONE",
+      "actor": "reviewer",
+      "gate": "true"
+    },
+    {
+      "id": "review_fan_in",
+      "depends_on": [
+        "child_agency_audit",
+        "evidence_audit",
+        "accessible_reader_audit"
+      ],
+      "kind": "serial_write",
+      "effect": "PRIVATE_CANDIDATE",
+      "actor": "book_editor",
+      "gate": "review_passed"
+    },
+    {
+      "id": "uncoached_reader_feedback",
+      "depends_on": [
+        "review_fan_in"
+      ],
+      "kind": "human_review",
+      "effect": "NONE",
+      "actor": "human",
+      "gate": "independent_reader_receipt"
+    },
+    {
+      "id": "publication_gate",
+      "depends_on": [
+        "uncoached_reader_feedback"
+      ],
+      "kind": "external_effect",
+      "effect": "PUBLIC_RELEASE",
+      "actor": "human",
+      "gate": "release_approved_with_receipts"
+    }
+  ],
+  "nonclaims": [
+    "NOT_AN_AUTONOMOUS_AGENT_OR_SCHEDULER",
+    "NO_VOLUNTARY_ANSWER_RECEIVED_FOR_THIS_PROMPT",
+    "NO_PRIVATE_ANSWER_IMPORTED",
+    "NO_ADAPTATION_PERMISSION_INFERRED_FROM_AGREEMENT_ALL",
+    "NO_PUBLICATION_AUTHORIZED",
+    "NO_INDEPENDENT_READER_UPTAKE",
+    "NO_EXTERNAL_RECEIVER_ACK",
+    "NO_CROSS_SESSION_SYNCHRONIZATION_OR_24H_PROOF"
+  ]
+}
