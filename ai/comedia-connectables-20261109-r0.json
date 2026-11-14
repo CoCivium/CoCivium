@@ -1,0 +1,262 @@
+{
+  "schema": "CoAll.CoMediaSemanticConnectables.v0.1-candidate",
+  "status": "PUBLIC_SAFE_DESIGN_REFERENCE_NOT_PUBLISHED_IMAGE_OR_LIVE_RUNTIME",
+  "date": "2026-11-09",
+  "reference": {
+    "media_id": "user-provided:cocivium-living-continuity-system:20261109",
+    "filename": "CoCivium_ A Living Continuity System.png",
+    "sha256": "4521a6697f1e606d5ab1299cda83fc4dcc63ed33d890b04460aecdd1c974b31f",
+    "dimensions": [
+      1672,
+      941
+    ],
+    "custody": "USER_UPLOADED_CONVERSATION_IMAGE_NOT_IN_PUBLIC_REPOSITORY",
+    "rights": "UNKNOWN_DO_NOT_PUBLISH_BYTES_WITHOUT_REVIEW",
+    "observed_description": "A luminous dark-themed landing page with central Orb, looping ribbons, Futures, Retros, CoMap, Media, continuity map, media lineage, across-time and possibility cards; audio indicator and Quiet mode control."
+  },
+  "fronts": [
+    {
+      "id": "cobook",
+      "name": "CoBookCiv2+",
+      "visible_contribution": "hero+living chapter entry",
+      "not_proven": "actual chapters and linked navigation"
+    },
+    {
+      "id": "coorb",
+      "name": "CoOrb+/CoBar+",
+      "visible_contribution": "central spherical hub and persistent rail",
+      "not_proven": "real UI/runtime"
+    },
+    {
+      "id": "comap",
+      "name": "CoMap+/CoNav+",
+      "visible_contribution": "constellation and traversal motif",
+      "not_proven": "typed graph, zoom, links"
+    },
+    {
+      "id": "coecho",
+      "name": "CoFront+/CoEcho+",
+      "visible_contribution": "Futures/Retros two-way entrances",
+      "not_proven": "historical source coverage"
+    },
+    {
+      "id": "cotime",
+      "name": "CoTime+",
+      "visible_contribution": "across-time possibility card",
+      "not_proven": "temporal metadata and tests"
+    },
+    {
+      "id": "comedia",
+      "name": "CoMedia+",
+      "visible_contribution": "media-lineage frames",
+      "not_proven": "provenance and media renditions"
+    },
+    {
+      "id": "cowet",
+      "name": "CoWet+/CoWow+",
+      "visible_contribution": "hero richness, coherent design",
+      "not_proven": "responsive accessible user testing"
+    },
+    {
+      "id": "coaudio",
+      "name": "CoAudioFkOff+",
+      "visible_contribution": "audio indicator and quiet mode",
+      "not_proven": "opt-in-only playback, mute"
+    },
+    {
+      "id": "coseed",
+      "name": "CoSeed+/CoPath+",
+      "visible_contribution": "routes through interconnected concepts",
+      "not_proven": "exact IDs, navigable links"
+    },
+    {
+      "id": "coregroup",
+      "name": "CoReGroup+/CoProof+",
+      "visible_contribution": "single coherent entrance",
+      "not_proven": "receiver/readproof, integration"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "seed:continuity",
+      "type": "concept",
+      "label": "Living continuity"
+    },
+    {
+      "id": "view:hero",
+      "type": "projection",
+      "label": "Hero entrance"
+    },
+    {
+      "id": "view:map",
+      "type": "projection",
+      "label": "CoMap"
+    },
+    {
+      "id": "view:media",
+      "type": "projection",
+      "label": "Media lineage"
+    },
+    {
+      "id": "view:futures",
+      "type": "projection",
+      "label": "Futures"
+    },
+    {
+      "id": "view:retros",
+      "type": "projection",
+      "label": "Retros"
+    },
+    {
+      "id": "modality:graphic",
+      "type": "substrate",
+      "label": "Illustration/SVG"
+    },
+    {
+      "id": "modality:audio",
+      "type": "substrate",
+      "label": "Optional audio"
+    },
+    {
+      "id": "modality:diagram",
+      "type": "substrate",
+      "label": "Boxes/lines/text graph"
+    },
+    {
+      "id": "modality:story",
+      "type": "substrate",
+      "label": "Narrative"
+    },
+    {
+      "id": "modality:machine",
+      "type": "substrate",
+      "label": "Typed manifest"
+    },
+    {
+      "id": "culture:interpretation",
+      "type": "interpretive_lens",
+      "label": "Cultural interpretation"
+    },
+    {
+      "id": "hypothesis:gdside",
+      "type": "speculative_lens",
+      "label": "G_dSide speculative interpretation"
+    }
+  ],
+  "relations": [
+    {
+      "from": "seed:continuity",
+      "type": "HAS_VIEW",
+      "to": "view:hero",
+      "status": "PROPOSED_SEMANTIC_RELATION_NOT_RUNTIME_LINK"
+    },
+    {
+      "from": "seed:continuity",
+      "type": "HAS_VIEW",
+      "to": "view:map",
+      "status": "PROPOSED_SEMANTIC_RELATION_NOT_RUNTIME_LINK"
+    },
+    {
+      "from": "seed:continuity",
+      "type": "HAS_VIEW",
+      "to": "view:media",
+      "status": "PROPOSED_SEMANTIC_RELATION_NOT_RUNTIME_LINK"
+    },
+    {
+      "from": "seed:continuity",
+      "type": "HAS_TIME_LENS",
+      "to": "view:futures",
+      "status": "PROPOSED_SEMANTIC_RELATION_NOT_RUNTIME_LINK"
+    },
+    {
+      "from": "seed:continuity",
+      "type": "HAS_TIME_LENS",
+      "to": "view:retros",
+      "status": "PROPOSED_SEMANTIC_RELATION_NOT_RUNTIME_LINK"
+    },
+    {
+      "from": "view:hero",
+      "type": "USES_SUBSTRATE",
+      "to": "modality:graphic",
+      "status": "PROPOSED_SEMANTIC_RELATION_NOT_RUNTIME_LINK"
+    },
+    {
+      "from": "view:map",
+      "type": "USES_SUBSTRATE",
+      "to": "modality:diagram",
+      "status": "PROPOSED_SEMANTIC_RELATION_NOT_RUNTIME_LINK"
+    },
+    {
+      "from": "view:media",
+      "type": "MAY_USE_SUBSTRATE",
+      "to": "modality:audio",
+      "status": "PROPOSED_SEMANTIC_RELATION_NOT_RUNTIME_LINK"
+    },
+    {
+      "from": "view:media",
+      "type": "MAY_USE_SUBSTRATE",
+      "to": "modality:story",
+      "status": "PROPOSED_SEMANTIC_RELATION_NOT_RUNTIME_LINK"
+    },
+    {
+      "from": "seed:continuity",
+      "type": "HAS_MACHINE_TWIN",
+      "to": "modality:machine",
+      "status": "PROPOSED_SEMANTIC_RELATION_NOT_RUNTIME_LINK"
+    },
+    {
+      "from": "modality:story",
+      "type": "MAY_BE_INTERPRETED_IN",
+      "to": "culture:interpretation",
+      "status": "PROPOSED_SEMANTIC_RELATION_NOT_RUNTIME_LINK"
+    },
+    {
+      "from": "culture:interpretation",
+      "type": "MAY_EXPLORE",
+      "to": "hypothesis:gdside",
+      "status": "PROPOSED_SEMANTIC_RELATION_NOT_RUNTIME_LINK"
+    }
+  ],
+  "media_binding_contract": {
+    "identity": "stable source/artifact ID separate from pixels, waveform, text and display position",
+    "semantic_twin": [
+      "caption",
+      "transcript or text equivalent",
+      "scene/segment timestamps",
+      "concept and claim IDs",
+      "alt text/audio description",
+      "source/version/digest"
+    ],
+    "typed_links": [
+      "ILLUSTRATES",
+      "NARRATES",
+      "TRANSLATES",
+      "CHALLENGES",
+      "DERIVED_FROM",
+      "CITES",
+      "REPLACES_WITH_PROVENANCE",
+      "CONTINUES",
+      "HAS_ACCESSIBLE_TWIN"
+    ],
+    "cultural_lenses": "Cultural traditions and metaphorical models are explicitly attributed and consent/rights scoped. No universal translation or equivalence inferred.",
+    "epistemic_boundary": "G_dSide is SYMBOLIC_OR_SPECULATIVE, not scientific finding, divine endorsement or agent authority."
+  },
+  "release_gates": [
+    "rights review before any bytes of supplied user image are published",
+    "static accessible reader before visual overlay",
+    "no audio before explicit opt-in",
+    "working reverse link from a visual to stable source ID and back",
+    "independent external reader exact-object proof",
+    "mobile/reduced-motion/keyboard test",
+    "no hidden claims of all-front or three-mirror synchronization"
+  ],
+  "not_claimed": [
+    "IMAGE_PUBLICLY_PUBLISHED",
+    "IMAGE_RIGHTS_CLEARED",
+    "IMAGE_IS_WORKING_PRODUCT",
+    "CROSS_FRONT_INTEGRATION",
+    "AUTOSYNC",
+    "INDEPENDENT_RECEIVER_ACK",
+    "COEX"
+  ]
+}
