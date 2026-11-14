@@ -181,6 +181,65 @@ jobs:
           path: out/ownedwork-sqlite-r0/
           retention-days: 30
           if-no-files-found: error
+      - name: Export two public synthetic WorkID proposals after abrupt writer exit
+        run: |
+          python3 -B - <<'PY'
+          import hashlib,json,subprocess,sys
+          from pathlib import Path
+          sys.path.insert(0,'scripts')
+          sys.path.insert(0,'tests')
+          from CoNarrativeWorkIDR0 import source_packet,canonical,digest,connect
+          from test_workid_proposal_escrow_r0 import cold_read
+          pin='63b41ead8797e5a781699f32bcbc77b78bdbd7af'
+          source=Path('/tmp/CoPre.md')
+          source_sha=hashlib.sha256(source.read_bytes()).hexdigest()
+          assert source_sha=='58f8c722bfbfc34cac41189c072d2effe4b19dbbe8a37be4f8687344d6b00b9a'
+          root=Path('out/ownedwork-escrow-r0')
+          root.mkdir(parents=True,exist_ok=False)
+          base=source_packet(source,pin)
+          left={**base,'next_safe_deed':'PUBLIC SYNTHETIC fork A: preserve source and permission.'}
+          right={**base,'next_safe_deed':'PUBLIC SYNTHETIC fork B: preserve alternatives before election.'}
+          assert digest(left)!=digest(right)
+          db=root/'escrow.sqlite'
+          for name,packet in [('left',left),('right',right)]:
+              candidate=root/(name+'.json')
+              candidate.write_text(canonical(packet)+'\n',encoding='utf-8')
+              p=subprocess.run([sys.executable,'-B','tests/test_workid_proposal_escrow_r0.py',
+                  'child','commit_and_crash_'+name,str(db),str(candidate)],
+                  capture_output=True,timeout=15,check=False)
+              assert p.returncode==82 and p.stdout==b'',(name,p.returncode,p.stderr)
+          recovered=cold_read(db)
+          assert len(recovered)==2 and {x['proposal_id'] for x in recovered}=={'left','right'}
+          assert all(x['state']=='PRESERVED_NOT_ELECTED' and x['receiver_ack'] is False for x in recovered)
+          conn=connect(db,readonly=True)
+          try:
+              assert conn.execute('SELECT COUNT(*) FROM work').fetchone()[0]==0
+          finally:
+              conn.close()
+          h=lambda data:hashlib.sha256(data).hexdigest()
+          manifest={
+              'schema':'CoAll.CoOwnedWork.TwoProposalEscrowCrossJobR0',
+              'state':'SYNTHETIC_TWO_CHILD_EXITS_ESCROWED_BEFORE_ELECTION',
+              'work_id':base['work_id'],'source_ref':base['source_ref'],
+              'source_sha256':source_sha,'db_sha256':h(db.read_bytes()),
+              'left_packet_sha256':digest(left),'right_packet_sha256':digest(right),
+              'left_file_sha256':h((root/'left.json').read_bytes()),
+              'right_file_sha256':h((root/'right.json').read_bytes()),
+              'forced_exit_codes':[82,82],'proposals_preserved':2,'elected_writers':0,
+              'sender_authenticated':False,'external_receiver_ack':False,
+              'independent_receiver':False,'real_session_ingest':False,
+              'same_github_failure_domain':True
+          }
+          with (root/'manifest.json').open('x',encoding='utf-8') as out:
+              out.write(json.dumps(manifest,sort_keys=True,indent=2)+'\n')
+          print(json.dumps(manifest,sort_keys=True))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ownedwork-two-proposal-escrow-r0
+          path: out/ownedwork-escrow-r0/
+          retention-days: 30
+          if-no-files-found: error
   cold-reader:
     needs: sqlite-receiver
     runs-on: ubuntu-latest
@@ -266,6 +325,102 @@ jobs:
           out=Path('out/ownedwork-sqlite-cold')
           out.mkdir(parents=True,exist_ok=True)
           (out/'cold-receiver.json').write_text(json.dumps(receipt,sort_keys=True,indent=2)+'\n')
+          print(json.dumps(receipt,sort_keys=True))
+          PY
+      - uses: actions/download-artifact@v4
+        with:
+          name: ownedwork-two-proposal-escrow-r0
+          path: /tmp/escrow-two-input
+      - name: Cold separate-job read of both proposals before test-only writer election
+        run: |
+          python3 -B - <<'PY'
+          import hashlib,json,sys
+          from pathlib import Path
+          sys.path.insert(0,'scripts')
+          sys.path.insert(0,'tests')
+          from CoNarrativeWorkIDR0 import Held,canonical,digest,source_packet,connect,commit_once,readback
+          from test_workid_proposal_escrow_r0 import cold_read
+          root=Path('/tmp/escrow-two-input')
+          names=sorted(p.name for p in root.iterdir())
+          assert names==['escrow.sqlite','left.json','manifest.json','right.json'],names
+          h=lambda raw:hashlib.sha256(raw).hexdigest()
+          def strict(p):
+              def pairs(entries):
+                  result={}
+                  for key,value in entries:
+                      if key in result: raise AssertionError('HELD_DUPLICATE_JSON_KEY')
+                      result[key]=value
+                  return result
+              return json.loads(p.read_text(encoding='utf-8'),object_pairs_hook=pairs,
+                                parse_constant=lambda name: (_ for _ in ()).throw(
+                                    AssertionError('HELD_NONFINITE_JSON')))
+          manifest=strict(root/'manifest.json')
+          assert manifest['schema']=='CoAll.CoOwnedWork.TwoProposalEscrowCrossJobR0'
+          assert manifest['state']=='SYNTHETIC_TWO_CHILD_EXITS_ESCROWED_BEFORE_ELECTION'
+          assert manifest['proposals_preserved']==2 and manifest['elected_writers']==0
+          assert manifest['forced_exit_codes']==[82,82]
+          assert manifest['sender_authenticated'] is False and manifest['external_receiver_ack'] is False
+          assert manifest['same_github_failure_domain'] is True
+          pin='63b41ead8797e5a781699f32bcbc77b78bdbd7af'
+          source=Path('/tmp/CoPre.md')
+          source_sha=h(source.read_bytes())
+          assert source_sha=='58f8c722bfbfc34cac41189c072d2effe4b19dbbe8a37be4f8687344d6b00b9a'
+          expected=source_packet(source,pin)
+          assert manifest['source_ref']==expected['source_ref']
+          assert manifest['source_sha256']==source_sha
+          db=root/'escrow.sqlite'
+          assert h(db.read_bytes())==manifest['db_sha256']
+          left,right=strict(root/'left.json'),strict(root/'right.json')
+          for name,p in [('left',left),('right',right)]:
+              assert h((root/(name+'.json')).read_bytes())==manifest[name+'_file_sha256']
+              assert digest(p)==manifest[name+'_packet_sha256']
+              assert {k:v for k,v in p.items() if k!='next_safe_deed'}=={
+                    k:v for k,v in expected.items() if k!='next_safe_deed'}
+              assert p['next_safe_deed'].startswith('PUBLIC SYNTHETIC fork ')
+          before=cold_read(db)
+          assert len(before)==2 and [x['proposal_id'] for x in before]==['left','right']
+          assert [x['next_safe_deed'] for x in before]==[
+              left['next_safe_deed'],right['next_safe_deed']]
+          conn=connect(db,readonly=True)
+          try: assert conn.execute('SELECT COUNT(*) FROM work').fetchone()[0]==0
+          finally: conn.close()
+          elected=commit_once(db,left)
+          assert elected['new_commits']==1 and elected['duplicate'] is False
+          conflict=None
+          try: commit_once(db,right)
+          except Held as err: conflict=str(err)
+          assert conflict=='WORK_ID_REVISION_CONFLICT',conflict
+          after=cold_read(db)
+          assert after==before,'HELD_LOSING_FORK_LOST_AFTER_ELECTION'
+          observation=readback(db,expected_packet=left,source_path=source)
+          assert observation['committed_work_ids']==1
+          assert observation['state']=='COLD_SOURCE_RECONSTRUCTED'
+          assert observation['external_receiver_ack'] is False
+          out=Path('out/ownedwork-sqlite-cold')
+          out.mkdir(parents=True,exist_ok=True)
+          receipt={
+              'schema':'CoAll.CoOwnedWork.TwoProposalColdJobReadproofR0',
+              'state':'TWO_ESCROWED_PROPOSALS_SURVIVE_CROSS_JOB_ELECTION',
+              'work_id':manifest['work_id'],
+              'producer_db_sha256':manifest['db_sha256'],
+              'source_sha256':source_sha,
+              'source_ref':manifest['source_ref'],
+              'proposal_ids':['left','right'],
+              'preserved_after_writer_deaths':2,'preserved_after_election':2,
+              'elected_work_ids':1,'divergent_second_writer':'HELD_WORK_ID_REVISION_CONFLICT',
+              'loss_of_losing_proposal':False,
+              'external_receiver_ack':False,
+              'sender_authenticated':False,
+              'independent_host':False,
+              'same_github_failure_domain':True,
+              'real_provider_ingest':False,'real_human_consent':False,
+              'survival_over_24h':False,
+              'nonclaims':['CI_ARTIFACT_TRANSFER_NOT_INDEPENDENT_RECEIVER_ACK',
+                  'SYNTHETIC_ELECTION_NOT_REAL_ACTOR_AUTHORIZATION',
+                  'SAME_GITHUB_FAILURE_DOMAIN','NOT_COEX','NOT_CANON']
+          }
+          with (out/'escrow-crossjob-cold-reader.json').open('x',encoding='utf-8') as fp:
+              fp.write(json.dumps(receipt,sort_keys=True,indent=2)+'\n')
           print(json.dumps(receipt,sort_keys=True))
           PY
       - uses: actions/upload-artifact@v4
