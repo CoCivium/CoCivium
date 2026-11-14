@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CoBar / CoCopy | Owned Bulk-Insert Canary R0</title>
+<style>
+:root{color-scheme:dark;--ink:#e9f5f7;--muted:#bed2d8;--edge:#42616a;--ok:#90ddc5}
+*{box-sizing:border-box}body{margin:0;background:#091821;color:var(--ink);font:16px/1.5 system-ui,sans-serif}
+main{max-width:830px;margin:0 auto;padding:20px}
+h1{font-size:clamp(1.4rem,4vw,2rem);margin:0 0 8px}
+small,p{color:var(--muted)}
+section{background:#132a34;border:1px solid var(--edge);border-radius:15px;padding:18px;margin:15px 0}
+textarea{display:block;width:100%;min-height:145px;resize:vertical;background:#07151c;color:var(--ink);border:2px solid #56858e;border-radius:9px;padding:12px;font:inherit;white-space:pre-wrap}
+button{min-height:44px;padding:10px 15px;background:#224d51;color:var(--ink);border:1px solid #82cabe;border-radius:9px;font:inherit;font-weight:700;cursor:pointer}
+button:focus-visible,textarea:focus-visible,input:focus-visible{outline:3px solid var(--ok);outline-offset:3px}
+.controls{display:flex;flex-wrap:wrap;gap:12px;margin-top:14px}
+label{display:block;margin:12px 0}
+label input{width:20px;height:20px;vertical-align:middle}
+output{display:block;font-weight:700;color:var(--ok);overflow-wrap:anywhere}
+pre{border:1px solid var(--edge);border-radius:8px;padding:12px;white-space:pre-wrap;overflow-wrap:anywhere;min-height:52px}
+#outside{border:1px dashed var(--edge);padding:10px;border-radius:8px}
+</style>
+</head>
+<body>
+<main>
+  <p>CoBar / CoCopy / isolated first-use</p>
+  <h1>Paste the complete text once. Do not send it.</h1>
+  <p>Private synthetic browser canary only. No network calls, provider chats, clipboard access, persistent storage or background runner. This is not installed CoBar.</p>
+  <section aria-label="Owned test editor">
+    <label><input id="test-consent" type="checkbox"> Allow one synthetic local-field test</label>
+    <label for="owned-editor">Owned test editor</label>
+    <textarea id="owned-editor" data-copaste-owned="true" spellcheck="false" aria-describedby="state-text"></textarea>
+    <div class="controls">
+      <button id="insert" type="button">Insert full test text</button>
+      <button id="undo" type="button">Undo exact insert</button>
+    </div>
+    <p role="status" aria-live="polite" aria-atomic="true" id="state-text">EMPTY</p>
+    <output id="event-count">Input events: 0</output>
+  </section>
+  <section aria-label="Visible result">
+    <h2>Visible readback</h2>
+    <pre id="preview" aria-live="polite">(nothing inserted)</pre>
+    <p id="readback-length">Characters: 0</p>
+    <p id="outside" tabindex="0">Separate focus target for interruption tests</p>
+  </section>
+  <div id="proof" data-proof="NOT_RUN" hidden></div>
+</main>
+<script src="copaste_bulk_r0.cjs"></script>
+<script>
+(function(){
+  'use strict';
+  const editor=document.getElementById('owned-editor'),state=document.getElementById('state-text');
+  const consent=document.getElementById('test-consent'),preview=document.getElementById('preview');
+  const outside=document.getElementById('outside');
+  const paste=createCoPasteR0(),requestId='CoCopy.OwnedField.Test.R0';
+  const payload='First line\r\nSecond line\nUnicode 🌍 𝄞';
+  let inputEvents=0;
+  function show(stateText){
+    state.textContent=stateText;
+    preview.textContent=editor.value || '(nothing inserted)';
+    document.getElementById('readback-length').textContent='Characters: '+editor.value.length;
+  }
+  editor.addEventListener('input',()=>{
+    inputEvents++;
+    document.getElementById('event-count').textContent='Input events: '+inputEvents;
+    show(state.textContent);
+  });
+  function insert(){
+    if(!consent.checked){show('HELD_LOCAL_TEST_CONSENT');return 'HELD_LOCAL_TEST_CONSENT';}
+    // This focus change is scoped to a user's explicit click on this test page.
+    editor.focus();
+    const answer=paste.insert({target:editor,expectedTargetId:'owned-editor',
+      requestId,payload,authorized:true,expectedValue:editor.value});
+    show(answer.state);
+    return answer.state;
+  }
+  function undo(){
+    if(!consent.checked){show('HELD_LOCAL_TEST_CONSENT');return 'HELD_LOCAL_TEST_CONSENT';}
+    editor.focus();
+    const result=paste.undo({target:editor,expectedTargetId:'owned-editor',requestId,authorized:true});
+    show(result.state);
+    return result.state;
+  }
+  document.getElementById('insert').addEventListener('click',insert);
+  document.getElementById('undo').addEventListener('click',undo);
+  // Explicit synthetic test mode, never performs actual provider action.
+  if(new URLSearchParams(location.search).get('canary')==='1'){
+    const cases=[],check=(name,pass)=>cases.push({name,pass:!!pass});
+    check('starts_empty',editor.value===''&&state.textContent==='EMPTY');
+    check('consent_holds',insert()==='HELD_LOCAL_TEST_CONSENT'&&editor.value==='');
+    consent.checked=true;
+    check('first_insert_verified',insert()==='INSERTED_VERIFIED_TEXT_VALUE');
+    check('normalized_multiline_visible',editor.value===payload.replace(/\r\n?/g,'\n'));
+    check('preview_equals_real_editor_value',preview.textContent===editor.value);
+    check('one_app_input_event',inputEvents===1);
+    check('duplicate_suppressed',insert()==='DUPLICATE_SUPPRESSED'&&inputEvents===1);
+    outside.focus();
+    const blocked=paste.insert({target:editor,expectedTargetId:'owned-editor',
+      requestId:'CoCopy.Focus.Stolen.R0',payload:'wrong',authorized:true,expectedValue:editor.value});
+    check('stolen_focus_held',blocked.state==='HELD_FOCUS_CHANGED'&&!editor.value.includes('wrong'));
+    editor.focus();
+    editor.value+=' human change';
+    check('undo_respects_human_edits',undo()==='HELD_DESTINATION_CHANGED'&&editor.value.endsWith(' human change'));
+    const result={checks:cases,stats:{events:inputEvents,raw_length:payload.length,
+      visible_length:editor.value.length,send_count:0,clipboard_mutations:0}};
+    document.getElementById('proof').setAttribute('data-proof',btoa(JSON.stringify(result)));
+  }
+})();
+</script>
+</body>
+</html>
