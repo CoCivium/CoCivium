@@ -1,0 +1,137 @@
+name: CoPrivMin and CoAthene CoLens, CoEntour, Anywhere R0 checks
+on:
+  push:
+    branches:
+      - candidate/coprivmin-public-existence-r0-20261107
+    paths:
+      - 'docs/Governance/COPRIVMIN_PUBLIC_PROJECTION_R0_20261107.md'
+      - 'docs/Public/COATHENE_WHY_HAVE_SCHOOLS_R0_20261107.md'
+      - 'scripts/CoPrivMinPublicProjectionR0.py'
+      - 'tests/test_coprivmin_public_r0.py'
+      - 'tests/test_coathene_anywhere_r0.py'
+      - 'tests/test_coathene_copet_r0.py'
+      - 'tests/test_coathene_coentour_r0.py'
+      - 'tests/test_coathene_colens_r0.py'
+      - 'tests/test_coathene_anywhere_r0.test.js'
+      - 'tests/test_coathene_copet_r0.test.js'
+      - 'tests/test_coathene_coentour_r0.test.js'
+      - 'tests/test_coathene_colens_r0.test.js'
+      - 'tests/coathene_browser_acceptance_r0.cjs'
+      - 'examples/coathene_anywhere_r0/**'
+      - 'examples/coathene_copet_r0/**'
+      - 'docs/Architecture/COATHENE_COPASSPORT_LOGINLESS_CONTINUITY_R0_20261107.md'
+      - 'docs/Architecture/COATHENE_COENTOUR_COSMETIC_ROUTE_R0_20261107.md'
+      - 'docs/Architecture/COATHENE_COLENS_PRESENTATION_DIAL_R0_20261107.md'
+      - 'docs/Public/COATHENE_EVIDENCE_FIRST_CLAIMS_R0_20261107.md'
+      - '.github/workflows/coprivmin-public-r0.yml'
+  pull_request:
+    paths:
+      - 'docs/Governance/COPRIVMIN_PUBLIC_PROJECTION_R0_20261107.md'
+      - 'docs/Public/COATHENE_WHY_HAVE_SCHOOLS_R0_20261107.md'
+      - 'scripts/CoPrivMinPublicProjectionR0.py'
+      - 'tests/test_coprivmin_public_r0.py'
+      - 'tests/test_coathene_anywhere_r0.py'
+      - 'tests/test_coathene_copet_r0.py'
+      - 'tests/test_coathene_coentour_r0.py'
+      - 'tests/test_coathene_colens_r0.py'
+      - 'tests/test_coathene_anywhere_r0.test.js'
+      - 'tests/test_coathene_copet_r0.test.js'
+      - 'tests/test_coathene_coentour_r0.test.js'
+      - 'tests/test_coathene_colens_r0.test.js'
+      - 'tests/coathene_browser_acceptance_r0.cjs'
+      - 'examples/coathene_anywhere_r0/**'
+      - 'examples/coathene_copet_r0/**'
+      - 'docs/Architecture/COATHENE_COPASSPORT_LOGINLESS_CONTINUITY_R0_20261107.md'
+      - 'docs/Architecture/COATHENE_COENTOUR_COSMETIC_ROUTE_R0_20261107.md'
+      - 'docs/Architecture/COATHENE_COLENS_PRESENTATION_DIAL_R0_20261107.md'
+      - '.github/workflows/coprivmin-public-r0.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  static-projection:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout candidate branch
+        uses: actions/checkout@v4
+      - name: Python for synthetic no-release tests
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Test private-field omission and release hold
+        run: python -m unittest discover -s tests -p 'test_coprivmin_public_r0.py' -v
+      - name: Check CoAthene public-safe source, one-front and programme boundaries
+        run: python -m unittest discover -s tests -p 'test_coathene_anywhere_r0.py' -v
+      - name: Node for offline pure engine tests
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Execute exact embedded planner across solo/group/mentor/institution cases
+        run: node --test tests/test_coathene_anywhere_r0.test.js
+      - name: Check CoPet source, guardian boundaries and loginless terminology
+        run: python -m unittest discover -s tests -p 'test_coathene_copet_r0.py' -v
+      - name: Execute CoPet's exact embedded teachable-agent engine
+        run: node --test tests/test_coathene_copet_r0.test.js
+      - name: Check CoEntour cosmetic route source and child-safe visual status
+        run: python -m unittest discover -s tests -p 'test_coathene_coentour_r0.py' -v
+      - name: Execute exact CoEntour embedded gear and suggestion engine
+        run: node --test tests/test_coathene_coentour_r0.test.js
+      - name: Check CoLens toddler safety, source twins and four chosen presentation modes
+        run: python -m unittest discover -s tests -p 'test_coathene_colens_r0.py' -v
+      - name: Exercise 64 CoLens mode/focus/subject combinations from exact HTML engine
+        run: node --test tests/test_coathene_colens_r0.test.js
+      - name: State exact limited proof ceiling
+        run: |
+          echo "PASS_STATIC_NE_PRIVACY_CERTIFICATION"
+          echo "PUBLIC_BRANCH_NE_MERGED_MAIN"
+          echo "CANDIDATE_NE_AUTOPUBLISH"
+          echo "NO_PRIVATE_FIELDS_NO_CHILD_DATA_NO_REAL_USERS"
+          echo "OFFLINE_PLAN_TEST_NE_LIVE_SCHOOL_OR_GROUP"
+          echo "SOURCE_PR_NE_HOSTED_WEBSITE_OR_X2_RUNTIME"
+          echo "COPET_IN_MEMORY_NE_CHILD_ID_OR_DURABLE_PASSPORT"
+          echo "BIOMETRIC_LOCAL_UNLOCK_NE_RECOVERY_OR_GUARDIAN_PROOF"
+          echo "COENTOUR_COSMETIC_NE_CHILD_PROFILE_OR_VERIFIED_BADGE"
+          echo "COLENS_TODDLER_OFFSCREEN_NE_AGE_VERIFICATION_OR_ONLINE_SCHOOL"
+          echo "COLENS_SOURCE_TEST_NE_CHILD_EDUCATOR_PILOT"
+
+  browser-acceptance:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout public source candidate
+        uses: actions/checkout@v4
+      - name: Use Node for headless Chromium UI check
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install small browser-driver dependency
+        run: npm install --no-save --package-lock=false playwright-core@1.56.1
+      - name: Find or install local headless browser
+        shell: bash
+        run: |
+          set -eu
+          if command -v google-chrome >/dev/null 2>&1 || command -v chromium >/dev/null 2>&1; then
+            echo "PREINSTALLED_CHROMIUM_BROWSER_FOUND"
+          else
+            npx --yes playwright@1.56.1 install chromium
+          fi
+      - name: Exercise actual CoPet and Anywhere UI at desktop and phone widths
+        run: node tests/coathene_browser_acceptance_r0.cjs
+      - name: Preserve synthetic browser QA receipt and screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: coathene-r0-browser-proof
+          path: coathene-browser-proof/
+          if-no-files-found: warn
+          retention-days: 7
+      - name: Declare bounded UX proof
+        if: success()
+        run: |
+          echo "CHROMIUM_DESKTOP_MOBILE_UI_PASS_NE_EDUCATOR_OR_CHILD_VALIDATION"
+          echo "FILE_BROWSER_PROOF_NE_PUBLIC_HOSTED_SITE"
+          echo "NO_CHILD_DATA_NE_REAL_IDENTITY_OR_PASSPORT"
