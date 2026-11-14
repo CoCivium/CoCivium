@@ -31,13 +31,13 @@ function runInBrowser() {
     payload,expectedValue:field.value,authorized:true});
   check('retry_does_not_duplicate',retry.state==='DUPLICATE_SUPPRESSED'&&nativeCalls===1);
   check('first_input_event_dispatched_once',inputEvents===1);
-  const long=('data\\r\\n🌍').repeat(10000);
+  const long=('data\r\n🌍').repeat(10000);
   const longBefore=performance.now();
   const second=engine.insert({target:field,expectedTargetId:'owned-input',
     requestId:'native-browser-test-long',payload:long,expectedValue:field.value,authorized:true});
   const largeElapsed=performance.now()-longBefore;
   check('long_multiline_bulk_native_one_call',second.state==='INSERTED_VERIFIED_TEXT_VALUE'&&nativeCalls===2);
-  check('long_multiline_semantics_preserved',field.value.endsWith(long.replace(/\\r\\n?/g,'\\n')));
+  check('long_multiline_semantics_preserved',field.value.endsWith(long.replace(/\r\n?/g,'\n')));
   check('second_input_event_dispatched_once',inputEvents===2);
   check('focus_remained_on_owned_field',document.activeElement===field);
   const obs={insertion_calls:nativeCalls,input_events:inputEvents,elapsed_ms:elapsed,large_elapsed_ms:largeElapsed,
