@@ -200,5 +200,50 @@ class GraphTests(unittest.TestCase):
 
 
 
+    def test_30_retro_public_candidate_is_not_auto_ingested(self):
+        item = {"id":"old:diagram", "kind":"DIAGRAM", "sha256":media.sha(b"prior"),
+                "visibility":"PUBLIC", "source_ref":"public:fixture",
+                "rights_status":"CLEARED_FOR_INDEX"}
+        report=media.classify_retro_media([item],self.base)
+        self.assertEqual(report["candidates"][0]["state"],
+                         "POINTER_CANDIDATE_NOT_SEMANTICALLY_REVIEWED")
+        self.assertIn("NO_COSEED_COPATH_PROMOTION",report["nonclaims"])
+        self.assertEqual(len(self.base["assets"]),7)
+
+    def test_31_retro_hash_match_does_not_merge(self):
+        existing=self.base["assets"][1]
+        item={"id":"old:variant", "kind":"DIAGRAM","sha256":existing["sha256"],
+              "visibility":"PUBLIC","source_ref":"public:fixture",
+              "rights_status":"CLEARED_FOR_INDEX"}
+        report=media.classify_retro_media([item],self.base)
+        self.assertEqual(report["candidates"][0]["state"],
+                         "MATCHING_BYTES_REVIEW_LINEAGE_NOT_AUTOMATIC_DUPLICATE")
+
+    def test_32_retro_rights_missing_held(self):
+        item={"id":"old:art", "kind":"DIAGRAM", "sha256":media.sha(b"art"),
+              "visibility":"PUBLIC","source_ref":"public:fixture"}
+        report=media.classify_retro_media([item],self.base)
+        self.assertEqual(report["candidates"][0]["state"],"HOLD_RIGHTS_REVIEW")
+
+    def test_33_retro_private_metadata_redacted(self):
+        item={"id":"secret:photo", "kind":"DIAGRAM",
+              "sha256":media.sha(b"sensitive-private-photo"),
+              "visibility":"PRIVATE","source_ref":"private:never_publish"}
+        report=media.classify_retro_media([item],self.base)
+        visible=json.dumps(report)
+        for forbidden in ("secret:photo","private:never_publish",item["sha256"]):
+            self.assertNotIn(forbidden,visible)
+        self.assertEqual(report["candidates"][0]["state"],
+                         "PRIVATE_CUSTODY_REQUIRED")
+
+    def test_34_retro_invalid_and_overbudget_fail_closed(self):
+        item={"id":"invalid id", "kind":"DIAGRAM", "sha256":media.sha(b"a"),
+              "visibility":"PUBLIC","source_ref":"public:fixture"}
+        with self.assertRaisesRegex(ValueError,"INVALID_RETRO_POINTER"):
+            media.classify_retro_media([item],self.base)
+        with self.assertRaisesRegex(ValueError,"RETRO_CANDIDATE_BUDGET"):
+            media.classify_retro_media([{}]*101,self.base)
+
+
 if __name__=='__main__':
     unittest.main(verbosity=2)

@@ -157,6 +157,66 @@ def audit(manifest):
     }
 
 
+
+def classify_retro_media(candidates, manifest):
+    """Classify bounded previously uncatalogued media pointers, without ingesting bytes.
+
+    This is a SOURCE-ONLY metadata triage. No crawling, copying, publication,
+    rights decision, semantic interpretation, or receiver ACK occurs.
+    Private candidates are deliberately redacted in this PUBLIC projection.
+    """
+    audit(manifest)
+    if not isinstance(candidates, list) or len(candidates) > 100:
+        raise ValueError("RETRO_CANDIDATE_BUDGET")
+    existing_hashes = {a["sha256"] for a in manifest["assets"]}
+    existing_ids = {a["id"] for a in manifest["assets"]}
+    output = []
+    seen = set()
+    for item in candidates:
+        if not isinstance(item, dict):
+            raise ValueError("INVALID_RETRO_POINTER")
+        ident = item.get("id")
+        digest = item.get("sha256")
+        kind = item.get("kind")
+        visibility = item.get("visibility")
+        if (not isinstance(ident, str) or not SAFE_ID.fullmatch(ident)
+                or not isinstance(digest, str) or not SHA.fullmatch(digest)
+                or kind not in KINDS or visibility not in ("PUBLIC", "PRIVATE")):
+            raise ValueError("INVALID_RETRO_POINTER")
+        if ident in seen:
+            raise ValueError("DUPLICATE_RETRO_ID")
+        seen.add(ident)
+        if visibility == "PRIVATE":
+            # No identifying metadata or private source digest escapes this public report.
+            output.append({"state": "PRIVATE_CUSTODY_REQUIRED",
+                           "next": "QUALIFY_IN_AUTHORIZED_PRIVATE_RECEIVER"})
+            continue
+        source_ref = item.get("source_ref")
+        if not isinstance(source_ref, str) or not source_ref.strip():
+            raise ValueError("PUBLIC_RETRO_SOURCE_REQUIRED")
+        if ident in existing_ids:
+            state = "KNOWN_ASSET_ID_RECHECK_VERSION"
+        elif digest in existing_hashes:
+            state = "MATCHING_BYTES_REVIEW_LINEAGE_NOT_AUTOMATIC_DUPLICATE"
+        elif item.get("rights_status") != "CLEARED_FOR_INDEX":
+            state = "HOLD_RIGHTS_REVIEW"
+        else:
+            state = "POINTER_CANDIDATE_NOT_SEMANTICALLY_REVIEWED"
+        output.append({"id": ident, "state": state,
+                       "source_ref": source_ref, "candidate_kind": kind,
+                       "next": "REVIEW_SOURCE_RELATION_AND_CONSENT"})
+    return {"schema": "CoAll.RetroMediaCandidateAudit.R0",
+            "coverage": "SUPPLIED_BOUNDED_METADATA_ONLY",
+            "count": len(output), "candidates": output,
+            "nonclaims": ["NOT_COMPLETE_HISTORY", "NO_MEDIA_BYTES_INGESTED",
+                          "HASH_MATCH_NE_SEMANTIC_DUPLICATE",
+                          "POINTER_NE_INSPIRATION_APPROVAL",
+                          "NO_PRIVATE_METADATA_PUBLICATION",
+                          "NO_COSEED_COPATH_PROMOTION",
+                          "NO_RECEIVER_READPROOF"]}
+
+
+
 def render_markdown(manifest):
     """A deterministic graph and accessible textual twin from the SAME manifest."""
     report = audit(manifest)
