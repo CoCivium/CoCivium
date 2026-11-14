@@ -48,7 +48,7 @@ def project(obs: dict[str, Any]) -> tuple[str, str]:
     if boolish(obs.get("superseded")):
         return "SUPERSEDED", "SUPERSEDED_TRUE"
     explicit = obs.get("projection")
-    if explicit in {"CLOSE_SAFE", "SUCCESSOR_READY"} and currentness not in {"CURRENT", "FRESH"}:
+    if isinstance(explicit, str) and explicit in {"CLOSE_SAFE", "SUCCESSOR_READY"} and currentness not in {"CURRENT", "FRESH"}:
         return "DEGRADED", "CURRENTNESS_UNQUALIFIED_FOR_CLOSE_OR_SUCCESSION"
     if isinstance(explicit, str) and explicit in PROJECTIONS:
         return explicit, "EXPLICIT_SOURCE_PROJECTION"
