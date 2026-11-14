@@ -11,6 +11,8 @@ on:
       - "scripts/CoBrowserRendererSubstitutionR0.py"
       - "scripts/CoBrowserCarryProjectionR0.py"
       - "scripts/test_cobrowser_carry_r0.py"
+      - "scripts/CoFrontEchoCoverageR0.py"
+      - "scripts/test_CoFrontEchoCoverageR0.py"
       - "ai/fixtures/cobrowser-renderer-substitution-r0.json"
       - ".github/workflows/cobrowser-renderer-substitution-r0.yml"
   push:
@@ -20,6 +22,8 @@ on:
       - "scripts/CoBrowserRendererSubstitutionR0.py"
       - "scripts/CoBrowserCarryProjectionR0.py"
       - "scripts/test_cobrowser_carry_r0.py"
+      - "scripts/CoFrontEchoCoverageR0.py"
+      - "scripts/test_CoFrontEchoCoverageR0.py"
       - "ai/fixtures/cobrowser-renderer-substitution-r0.json"
       - ".github/workflows/cobrowser-renderer-substitution-r0.yml"
 
@@ -41,6 +45,9 @@ jobs:
 
       - name: Verify CoCarry single-front projection without tab closure
         run: python -B -m unittest -v scripts/test_cobrowser_carry_r0.py
+
+      - name: Validate scoped historical CoFront CoEcho recovery and private exclusion
+        run: python -B -m unittest -v scripts/test_CoFrontEchoCoverageR0.py
 
       - name: Validate renderer policy and substitution rails
         run: |
