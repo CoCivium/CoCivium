@@ -1,0 +1,47 @@
+{
+  "schema": "CoAll.UniversalEvolution.R0.Candidate",
+  "scope": "EVERY_COMPONENT_AND_META_RULE_WITH_VALID_ID",
+  "permanent_exempt_scopes": [],
+  "temporal_recheck_eligible": true,
+  "observation_can_advance_without_mutation": true,
+  "effect_authority": "NONE_IN_THIS_SYNTHETIC_EVALUATOR",
+  "history_policy": "APPEND_ONLY_PREDECESSOR_AND_EXPLICIT_SUPERSESSION",
+  "review_sensitive_domain_examples": [
+    "authority",
+    "safety",
+    "privacy",
+    "consent",
+    "deletion",
+    "identity",
+    "governance",
+    "proof",
+    "evolution_rule"
+  ],
+  "domains_are_open_world": true,
+  "decision_states": [
+    "OBSERVATION_REFRESH_ONLY",
+    "NO_MATERIAL_DELTA",
+    "CANDIDATE_FOR_INDEPENDENT_REVIEW",
+    "HOLD"
+  ],
+  "comparison_metrics": [
+    "verified_useful_gain",
+    "correction_latency",
+    "regression_rate",
+    "rollback_success",
+    "duplicate_suppression",
+    "resource_cost",
+    "human_relay_reduction",
+    "independent_receiver_value"
+  ],
+  "nonclaims": [
+    "NO_MATERIAL_DELTA_NE_PERMANENT_FREEZE",
+    "SCHEMA_VALID_NE_AUTHORIZED_CHANGE",
+    "PROMPT_REPEAT_NE_NEW_WORK",
+    "POLICY_CANDIDATE_NE_RUNTIME",
+    "HISTORICAL_RECEIPT_NE_MUTABLE_HISTORY",
+    "NO_DELETION_AUTHORITY"
+  ],
+  "source": "docs/Architecture/COAMPLIFICATORY_CYCLIC_REGENERATION_R0_20261026.md",
+  "observed_date": "2026-11-11"
+}

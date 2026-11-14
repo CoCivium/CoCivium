@@ -27,6 +27,35 @@ CORRECTION_CAPACITY > ERROR_AMPLIFICATION
 
 The target is **bounded regenerative amplification**, not infinite amplitude.
 
+## Universal CoEvoAll+ eligibility | constant change at every level
+
+**User-elected direction (2026-11-11):** everything is *change-eligible*, including identity, safety rules, authority, governance, measures, proofs, models, interfaces, substrates, relations, and **this evolution rule itself**. Nothing receives a permanent exemption from challenge or succession. This is a **candidate architecture**, not evidence that a global process, worker or session has adopted it.
+
+**Change has more than one clock.** At each bounded observation, even an unchanged payload acquires a new temporal relation (age, source currentness, contradiction availability, receiver state, measured environment and next-wake conditions). A recheck may therefore produce `OBSERVATION_REFRESH_ONLY` without rewriting the object or claiming an improvement. A material proposal may yield `CANDIDATE_FOR_INDEPENDENT_REVIEW`. An unauthorized or unsafe proposal must `HOLD`. `NO_MATERIAL_DELTA` is productive quiescence, **not a permanent freeze**.
+
+**No permanent exception does not mean no gate.** Rules about privacy, deletion, consent, provenance, safety or authority may themselves be challenged and superseded by a qualified successor, but a **self-proposed** rule change is not permission to change its own approval threshold, delete evidence, bypass independent review or create effects. The older revision remains a verifiable predecessor. Approval must be independently authorized at the transition, not fabricated by a new prompt or self-referential policy. A proposed model of the future does not rewrite its own history.
+
+**CoHysterIs+** (distinct, provisional spelling): the ongoing, revisable answer to *what is this object/system across transformations?* Identify continuity by an explicit predecessor/successor/fork/merge relation, provenance, temporal scope and recovery path rather than assuming a fixed name, fixed body, or unchanged rules. `IDENTITY_CONTINUITY_NE_UNCHANGED_CONTENT`. Preserve open identity questions as questions; do not infer the same actor from a shared label.
+
+**CoHysteresis+** continues to preserve successfully qualified state and reduce noisy oscillation. Together the two ideas yield a tension rather than a contradiction: **everything may evolve; each transition remains accountable**. A durable receipt is an exact historical object and is not overwritten; what may evolve is its interpretation, superseding evidence, schema and receiver policy with linked successors. `EVERYTHING_CHANGE_ELIGIBLE_NE_EVERYTHING_MUTATE_EVERY_TICK`.
+
+**Test instead of chanting:** compare (a) frozen scope exclusions, (b) forced novelty on every tick and (c) bounded observation with evidence-driven successor proposals. Measure time-to-useful-effect, correction latency, regression rate, rollback success, duplicates, resource burn, verified independent receiver value and reduced human relay. Report negative results. No benefit is earned by increasing change count or invented ontology terms.
+
+**Bounded proof candidate:** [synthetic universal-change evaluator](../../scripts/coevoall_universal_change_r0.py), [typed policy](../../ai/evolution/universal-evolution-r0.json), and [negative tests](../../tests/test_coevoall_universal_change_r0.py) share the existing CoEvo convergence CI. These demonstrate source/decision consistency only. They do not mutate an object, change actual safety authority, synchronize other sessions, or prove universal runtime evolution.
+
+`NO_PERMANENT_CHANGE_EXEMPTIONS`  
+`OBSERVATION_DELTA_NE_MUTATION`  
+`SELF_AMENDMENT_NE_SELF_AUTHORIZATION`  
+`HISTORICAL_RECEIPT_NE_MUTABLE_HISTORY`  
+`EVIDENCED_SUCCESSOR_NE_RANDOM_CHURN`  
+`SOURCE_CI_NE_RUNTIME_ADOPTION`
+
+### First comparative falsifier: no strategy is universally superior
+
+The [bounded synthetic policy comparison](../../scripts/coevoall_policy_comparison_r0.py) reuses the source-only evaluator above and an [explicit toy fixture](../../ai/fixtures/coevoall_policy_comparison_r0.json). It compares frozen/no-revisions, forced-change-every-event, and evidence-qualified proposal/review under the **same fictional observations and hidden outcomes**. Its [13 negative controls](../../tests/test_coevoall_policy_comparison_r0.py) include a deliberately **underdetected high-gain scenario where forced change wins the toy score**, alongside quiet/noisy and misleading scenarios where frozen wins, and a mixed scenario where qualified review wins. This prevents the test from baking in a preferred universal winner.
+
+All three scores are **counterfactual**, with fictional gain, change cost, observation cost and reviewer confirmation; the "review" is only a boolean fixture, not independent authorization. The simulator **never executes** even the forced policy or changes a real object. The next evidence-gain experiment is to measure true receiver usefulness, exploration strategy, correction and resource cost on authorized work. The evaluator's candidate verdict cannot authorize mutation. `COUNTERFACTUAL_SCORE_NE_REAL_BENEFIT`, `MOCK_REVIEW_NE_AUTHORITY`, `FORCED_WIN_IN_TOY_NE_SAFE_RUNTIME_POLICY`.
+
 ## Dynamics analogy
 
 A recurrent process can persist or grow when one or more of the following are present:
@@ -70,6 +99,9 @@ Prevent unlimited growth once capacity, trust, evidence, attention, or safety li
 
 ### CoHysteresis+
 Retain useful state across temporary drops so a cycle need not restart from zero.
+
+### CoHysterIs+ (candidate)
+Keep the meaning, membership and lineage of an evolving entity open to explicit, evidenced revision. A changing identity is not automatically a broken continuity, and sharing a label is not proof of the same identity. See universal CoEvoAll+ eligibility above.
 
 ### CoMemorySeed+
 Preserve compact recipes, proofs, failures, motifs, and lineage that can regenerate a cycle later.
