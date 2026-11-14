@@ -1,0 +1,62 @@
+{
+  "schema": "CoAll.CoFedCoDura.PlacementGateQualification.R0",
+  "observed_at": "2026-11-14",
+  "work_id": "CoFed.CoDura.PublicationPlacement.20261114.R0",
+  "incumbent_owner": "https://github.com/CoCivium/CoCivium/issues/317",
+  "review": "https://github.com/CoCivium/CoCivium/pull/495",
+  "implementation": "scripts/cofed_codura_preflight_r0.py",
+  "implementation_git_blob_sha1": "84b150cf341d3690044a74ef16a5c25da8922b4e",
+  "implementation_sha256": "e0bdf2a4089694c7fe42457fa913774ef3f3585e73d125455c705b9c6a1bc3a9",
+  "tests": "tests/test_cofed_codura_preflight_r0.py",
+  "tests_git_blob_sha1": "c2f244438a089bb33414a2f96cd676de8b32f920",
+  "tests_sha256": "ccab174b54604beb65125869afcfff928a308d329f0be68e5b093c26f830024b",
+  "execution": {
+    "environment": "isolated Python 3.13.5 container, synthetic data",
+    "command": "python3 -m unittest discover -s tests -p test_cofed_codura_preflight_r0.py",
+    "tests_total": 50,
+    "tests_passed": 50,
+    "first_run": "46/46 PASS",
+    "adversarial_iteration": "49/50 initially, malformed asset ID revealed TypeError; corrected to fail-closed HOLD; reran 50/50 PASS",
+    "tests_reconstructed_repository_layout": true,
+    "verified_repo_blobs_equal_tested_container_files": true,
+    "source_scan": "2 exact files hashed, no duplicates, no semantic coverage claimed by mechanical scanner",
+    "no_network_or_publishing_actions_by_tested_program": true
+  },
+  "constraints": [
+    "only explicit source file and policy packet are read",
+    "reports HOLD on missing source/hash, rights, independent copy descriptors, restore proof, or receiver identity",
+    "conservatively requires all seven named failure-domain axes differ; this may HOLD legitimate cases until an independent adjudication model is available",
+    "packet evidence is self-reported metadata; this script does not authenticate external signatures, custody receipts, independent administrators or runtime receiver",
+    "even fully populated packet is EVIDENCE_FIELDS_READY__EXTERNAL_AUTHENTICATION_PENDING, never DURABLE",
+    "publication_authorized, durable_claim_accepted, receiver_claim_accepted remain false for every result",
+    "rights and public distribution require separate approval; no automatic license transition",
+    "test fixtures are wholly synthetic and do not represent the real RickPublic/Substack publication or private editorial files"
+  ],
+  "exact_accepted_scope": "CODE_SOURCE_AND_SYNTHETIC_TESTS_IN_DRAFT_PR_ONLY",
+  "effect_boundary": {
+    "branch_source_additions_only": 3,
+    "live_storage_mutations": 0,
+    "real_article_copies": 0,
+    "provider_publications": 0,
+    "deletion_actions": 0,
+    "new_schedulers": 0,
+    "credential_mutations": 0,
+    "installed_CoOS_enforcement": 0,
+    "independent_receiver_origin_proofs": 0
+  },
+  "lifecycle": "VERIFIED_TEST_SOURCE_ON_REVIEW_BRANCH__NOT_REAL_ARTICLE_CUSTODY_OR_ADOPTED_RUNTIME",
+  "next_deed": "Existing #317 owner: one rights-safe published source exact-object/asset package, independently controlled destination, primary-provider and X2-unavailable cold restore, receiver-origin readproof. HOLD if unavailable.",
+  "nonclaims": [
+    "LOCAL_IS_NOT_LANDED",
+    "VALIDATION_IS_NOT_ACCEPTANCE",
+    "GITHUB_SOURCE_NE_INDEPENDENT_CUSTODY",
+    "NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF",
+    "NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE",
+    "HASHING_IS_NOT_SEMANTIC_INGESTION",
+    "DISCOVERED_SET_IS_NOT_COMPLETE_HISTORY",
+    "AUTOMATED_TEST_NE_ARTICLE_DURABILITY",
+    "CODE_CONTRACT_NE_STORAGE_DEPLOYMENT",
+    "RICK_NE_MAILMAN"
+  ],
+  "rick_action": "NONE"
+}
