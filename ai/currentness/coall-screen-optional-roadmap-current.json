@@ -1,0 +1,94 @@
+{
+  "schema": "CoAll.PublicSafeRoadmapPointer.R1_CANDIDATE",
+  "work_id": "coall:screen-optional-autonomy:20261112:r1",
+  "state": "PUBLIC_SAFE_CANDIDATE_IN_PUBLIC_REPO_BRANCH__NOT_CANON__NOT_RUNTIME__NOT_PUBLIC_RELEASE_APPROVAL",
+  "visibility": "PUBLIC_SAFE_DESIGN_METADATA_ONLY",
+  "observed_date_utc": "2026-11-12",
+  "canonical_discovery_existing": [
+    "SESSION_BOOTSTRAP.md",
+    "ai/session-bootstrap.json"
+  ],
+  "topic_scoped_stable_path": "ai/currentness/coall-screen-optional-roadmap-current.json",
+  "immutable_source": {
+    "path": "docs/Architecture/COALL_SCREEN_OPTIONAL_AUTONOMY_ROADMAP_R1_20261112.md",
+    "git_blob_sha1": "ecf1821f2ec6573d77baafe6a802eb5b39a6fe2c",
+    "commit": "ed39c6be546843440ede0514fa55672efd8f76d4"
+  },
+  "workbook": {
+    "filename": "CoTalkItOut_Headless_Screenless_Autonomy_R1_20261112.xlsx",
+    "scope": "PRIVATE_LIBRARY_WORKING_COPY",
+    "public_artifact": "NOT_INCLUDED",
+    "r0_preserved": true,
+    "current_private_edition": "CoTalkItOut_Headless_Screenless_Autonomy_R1a_20261112.xlsx",
+    "current_private_library_path": "/CoAll/CoTalkItOut_Headless_Screenless_Autonomy_R1a_20261112.xlsx",
+    "current_private_sha256": "d7c195df36a7d445d82f965f40b9ca0873ef88ad6a77d2984ead7a4932b7827d",
+    "predecessor_r1_preserved": true
+  },
+  "graph_audit": {
+    "r0_operations": 128,
+    "r0_edges": 139,
+    "r0_scc_count": 1,
+    "r0_largest_scc_members": 41,
+    "r0_governance_feedback_edges": 5,
+    "r1_operations": 144,
+    "r1_hard_dependency_edges": 243,
+    "r1_scc_count": 0,
+    "r1_parallel_roots": 6
+  },
+  "program_admission": {
+    "effect_ceiling": "PUBLIC_SAFE_SOURCE_CANDIDATE_ONLY",
+    "no_x2_task_or_process_launch": true,
+    "no_new_scheduler": true,
+    "no_external_message": true,
+    "no_provider_subscription_or_account_mutation": true,
+    "no_private_information_released": true,
+    "review_before_main": true
+  },
+  "work_completion": {
+    "human_first_use": "NOT_RUN",
+    "current_x2_quietness": "NOT_PROVEN",
+    "runtime_or_receiver_ack": "NOT_OBSERVED",
+    "provider_independent_schedule": "NOT_PROVEN"
+  },
+  "read_rule": "AUTHORIZED_ROLE_RELEVANT_FETCH_WITH_SOURCE_PIN__NO_AUTOMATIC_DELIVERY_TO_OLD_CHATS",
+  "write_rule": "PER_WORKID_IMMUTABLE_DELTA_AND_COMPARE_AND_SWAP_ELECTED_MERGE__NOT_MANY_WRITERS_ONE_FILENAME",
+  "no_clobber": true,
+  "private_payloads_held": true,
+  "nonclaims": [
+    "PUBLIC_BRANCH_NE_CANON",
+    "SOURCE_READBACK_NE_PUBLIC_RELEASE_APPROVAL",
+    "STABLE_FILENAME_NE_SHARED_WRITE_PERMISSION",
+    "PUBLIC_INDEX_NE_PRIVATE_WORKBOOK",
+    "CURRENTNESS_POINTER_NE_RECEIVER_PICKUP",
+    "ACTIVITY_NE_USEFUL_RESULT",
+    "ONE_SCHEDULED_SOURCE_TURN_NE_NATIVE_SESSION_AUTOCYCLE",
+    "ZERO_PUBLIC_SOURCE_DELTA_NE_ZERO_PRIVATE_WORK",
+    "GITHUB_JOB_SUCCESS_NE_ACCEPTED_COSPEEDO_PROGRESS"
+  ],
+  "latest_scoped_execution_evidence": {
+    "state": "FIRST_SCHEDULED_COSESSION_PUBLIC_SOURCE_TURN_VERIFIED",
+    "source_work_id": "CoLocal2601109_CoSessionAutoTurnR1_20261112",
+    "source_receipt_path": "ai/currentness/cosession-autoturn-first-scheduled-r1-20261112.json",
+    "source_receipt_git_blob_sha1": "f257a5266555ae6d9819d99e9c8d4e9e204e9b83",
+    "run_url": "https://github.com/CoCivium/CoCivium/actions/runs/43304045576",
+    "run_id": 43304045576,
+    "event": "schedule",
+    "created_at_utc": "2026-11-12T20:49:06Z",
+    "verified_ci_jobs": 3,
+    "verified_guard_tests": 23,
+    "public_work_contexts_rechecked": 3,
+    "material_public_source_deltas": 0,
+    "human_relay_for_this_run": 0,
+    "scope": "GITHUB_SCHEDULED_SOURCE_CHANGE_FILTER_ONLY",
+    "excluded": [
+      "NATIVE_PROVIDER_CHAT_RESTART",
+      "LOCAL_MODEL_SEMANTIC_WORK",
+      "COSTEAD_ACK",
+      "INDEPENDENT_PROVIDER_RECEIVER",
+      "X2_QUIET_UX",
+      "LIVE_COSPEEDO"
+    ],
+    "natural_recurrence": "ONE_R1_EVENT_VERIFIED_NOT_SUSTAINED_RELIABILITY",
+    "next_bound_proof": "AUTHORIZED_MODEL_WORKID_TO_INDEPENDENT_RECEIVER_READBACK_TO_VISIBLE_ACCEPTED_COSPEEDO"
+  }
+}
