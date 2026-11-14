@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CoGlyphRail R0 | Learn through doing, without hidden effects</title>
+<style>
+:root{color-scheme:dark;--ink:#f0f6fa;--muted:#bac9da;--surface:#142339;--line:#557187;--accent:#79e2ce;--warn:#ffcf95}
+*{box-sizing:border-box}
+body{font:1.05rem/1.55 system-ui,-apple-system,Segoe UI,sans-serif;color:var(--ink);background:#0b1421;margin:0}
+main{max-width:850px;margin:0 auto;padding:clamp(1rem,4vw,2rem) 1rem 10rem}
+h1{font-size:clamp(1.7rem,4.5vw,2.8rem);line-height:1.18}
+.meta{font-size:.83rem;letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}
+p{max-width:70ch}.muted{color:var(--muted)}
+.controls{display:flex;gap:1rem;align-items:end;flex-wrap:wrap}
+label{display:grid;gap:.2rem;font-weight:650;font-size:.95rem}
+select,button{font:inherit;color:var(--ink);background:#1e3650;border:1px solid var(--line);border-radius:9px;padding:.48rem .65rem;cursor:pointer}
+button:focus-visible,select:focus-visible,a:focus-visible{outline:3px solid var(--warn);outline-offset:3px}
+a{color:var(--accent)}
+.card{background:var(--surface);border:1px solid var(--line);padding:1.25rem;border-radius:14px;margin:1rem 0}
+.alert{border-left:4px solid var(--warn)}
+strong.term{color:var(--accent)}
+.rail{position:sticky;bottom:0;display:flex;flex-wrap:wrap;gap:.35rem;padding:.7rem;background:#0e2033;border:1px solid var(--line);border-radius:12px;box-shadow:0 -2px 20px #0007}
+.glyph-button{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:64px;min-width:74px;flex:1;gap:.1rem}
+.glyph-button[aria-pressed="true"]{outline:2px solid var(--accent);background:#214859}
+.glyph{font-size:1.55rem;line-height:1.15;font-weight:700}
+.glyph-label{font-size:.79rem}
+body[data-density="plain"] .glyph{display:none}
+body[data-density="glyph"] .glyph-label{display:none}
+body[data-density="glyph"] .glyph-button{min-width:52px}
+details{margin-top:1rem;padding:.8rem;border:1px solid var(--line);border-radius:8px}
+summary{cursor:pointer;font-weight:650}
+.hidden{display:none}
+@media(max-width:480px){.rail{gap:.15rem}.glyph-button{min-width:30%;min-height:54px}main{padding-bottom:13rem}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+</style>
+</head>
+<body data-density="mixed"><main>
+<p class="meta">CoGlyphRail+ × CI+ × CoBoogie+ × CoRegroup+ | static, no-effect teaching prototype</p>
+<h1>Learn the language while checking what changed</h1>
+<p>One task: a synthetic CoIngest allocation source changed. Explore what the system should <em>observe</em>, <em>check</em>, <em>reconcile</em>, <em>preview</em>, and <em>hold</em>. This page neither operates devices nor sends your choices anywhere.</p>
+<div class="controls">
+<label for="density">Presentation / learning mode<select id="density"><option value="plain">Plain words</option><option value="mixed" selected>Glyph + words</option><option value="glyph">Glyph-first (details retain words)</option></select></label>
+<label for="language">Language / langue<select id="language"><option value="en">English</option><option value="fr">Français</option></select></label>
+</div>
+<section class="card alert" aria-label="Simulation source boundary">
+<strong>ExState: simulated example, not deployed</strong>
+<p>The same stable source object can have different language and density views. A new label or glyph cannot change the source identity, permission or evidence.</p>
+</section>
+<section class="card" id="meaning" aria-live="polite" aria-atomic="true">
+<p class="meta" id="kind">OBSERVATION</p>
+<h2><span id="selected-glyph">◎</span> <strong class="term" id="term">CoHereNow</strong>: <span id="name">Current state</span></h2>
+<p id="explanation">What the evidence currently supports.</p>
+<p><strong>Does not mean:</strong> <span id="anti">Not proof that every device, reader, or receiver agrees.</span></p>
+<p class="muted" id="scope">READ_ONLY_PREVIEW · No actions are executed here.</p>
+</section>
+<details><summary>What does CoVibeTru+ mean here?</summary>
+<p>CoVibeTru+ is treated as an exploratory cultural expression for how meaning feels and travels through words, visuals, gestures and context. It does not have a verified, fixed dictionary definition in this prototype. The stable operational meanings come from the linked source contracts; users are free to challenge or reject a term.</p></details>
+<details><summary>Learn from my disagreement / challenge the rail</summary><p>Does this glyph look misleading, mean something else in your language, or hide an important permission? The expected response is a source-bound correction candidate, not a forced teaching score. No response is collected or sent from this static page.</p></details>
+<p class="muted">The rail below is contextual and optional. Its controls are inspect-only; no telemetry, account, microphone, sensor access, model training or OS interception. A real product would require accessibility and first-reader testing.</p>
+<nav id="rail" class="rail" aria-label="CoGlyphRail learning and status"></nav>
+<footer class="muted"><p>Source parents: <a href="../../docs/coterms/README.md">CoTerms</a>, <a href="../../docs/Architecture/COBOOGIE_REGROUP_RELATIONAL_RETURN_R1.md">CoBoogie / CoRegroup</a>, <a href="../../docs/broadcasts/COEVOALL_EVERGREEN_BLAST__20261023.md">CoGlyphRail candidate grammar</a>. Translation is an editorial candidate, not independently tested.</p></footer>
+</main>
+<script id="rail-contract" type="application/json">{
+  "schema": "CoAll.CoGlyphRail.ReciprocalCIxBoogiexRegroup.R0-CANDIDATE",
+  "state": "STATIC_PRIVATE_DRAFT_PUBLIC_SAFE_SIMULATION_NO_RUNTIME",
+  "seed_id": "COINGEST_SCARCITY_R0_GLYPHBRIDGE",
+  "source_refs": [
+    "docs/Architecture/COBOOGIE_REGROUP_RELATIONAL_RETURN_R1.md",
+    "docs/coterms/README.md",
+    "docs/broadcasts/COEVOALL_EVERGREEN_BLAST__20261023.md",
+    "docs/session_backchannel/evolution/CoAwareness_CI_Ops_Predictive_Braid_20261017_R0.json"
+  ],
+  "languages": [
+    "en",
+    "fr"
+  ],
+  "default_language": "en",
+  "modes": [
+    "plain",
+    "mixed",
+    "glyph"
+  ],
+  "default_mode": "mixed",
+  "one_authority_ceiling": "READ_ONLY_PREVIEW",
+  "no_auto_telemetry": true,
+  "terms": [
+    {
+      "id": "observe",
+      "glyph": "◎",
+      "term": "CoHereNow",
+      "source": "docs/coterms/README.md",
+      "role": "CURRENT_STATE",
+      "kind": "OBSERVATION",
+      "name": {
+        "en": "Current state",
+        "fr": "État actuel"
+      },
+      "meaning": {
+        "en": "What the evidence currently supports.",
+        "fr": "Ce que les preuves permettent d'affirmer actuellement."
+      },
+      "not": {
+        "en": "Not proof that every device, reader, or receiver agrees.",
+        "fr": "Pas une preuve que chaque appareil ou destinataire est synchronisé."
+      }
+    },
+    {
+      "id": "boogie",
+      "glyph": "Δ",
+      "term": "CoBoogie+",
+      "source": "docs/Architecture/COBOOGIE_REGROUP_RELATIONAL_RETURN_R1.md",
+      "role": "MATERIAL_CHANGE",
+      "kind": "TRIGGER",
+      "name": {
+        "en": "What changed?",
+        "fr": "Qu'est-ce qui a changé ?"
+      },
+      "meaning": {
+        "en": "Detect a material change or drift before deciding what to do.",
+        "fr": "Détecter un changement important avant de décider quoi faire."
+      },
+      "not": {
+        "en": "Not a blind rescan, alarm, or an instruction to act.",
+        "fr": "Ni balayage aveugle, ni alarme, ni ordre d'agir."
+      }
+    },
+    {
+      "id": "regroup",
+      "glyph": "↻",
+      "term": "CoRegroup+",
+      "source": "docs/Architecture/COBOOGIE_REGROUP_RELATIONAL_RETURN_R1.md",
+      "role": "RECONCILE",
+      "kind": "DISPOSITION",
+      "name": {
+        "en": "Reconcile",
+        "fr": "Réconcilier"
+      },
+      "meaning": {
+        "en": "Recover the relevant prior state, preserve disagreement, and elect a bounded next step.",
+        "fr": "Retrouver l'état antérieur pertinent, préserver les désaccords et choisir une étape limitée."
+      },
+      "not": {
+        "en": "Not newest-wins or an automatic change of authority.",
+        "fr": "Ni priorité automatique au plus récent, ni changement d'autorité."
+      }
+    },
+    {
+      "id": "ci",
+      "glyph": "✓",
+      "term": "CI+",
+      "source": "docs/session_backchannel/evolution/CoAwareness_CI_Ops_Predictive_Braid_20261017_R0.json",
+      "role": "TEST_AND_CURRENTNESS",
+      "kind": "CHECK",
+      "name": {
+        "en": "Check",
+        "fr": "Vérifier"
+      },
+      "meaning": {
+        "en": "Run bounded continuous-integration tests and currentness checks as distinct checks.",
+        "fr": "Exécuter des tests d'intégration continue et des vérifications d'actualité distincts."
+      },
+      "not": {
+        "en": "A passing check is not scientific truth, product acceptance, or authority.",
+        "fr": "Un test réussi n'établit ni vérité scientifique, ni adoption, ni autorité."
+      }
+    },
+    {
+      "id": "deed",
+      "glyph": "→",
+      "term": "CoDeed",
+      "source": "docs/coterms/README.md",
+      "role": "BOUND_ACTION",
+      "kind": "PREVIEW_ONLY",
+      "name": {
+        "en": "Next action",
+        "fr": "Action suivante"
+      },
+      "meaning": {
+        "en": "Preview an authorized bounded action, including effects and rollback.",
+        "fr": "Prévisualiser une action limitée et autorisée, ses effets et son annulation."
+      },
+      "not": {
+        "en": "Selecting this educational glyph executes nothing.",
+        "fr": "Choisir ce glyphe pédagogique n'exécute rien."
+      }
+    },
+    {
+      "id": "hold",
+      "glyph": "⏸",
+      "term": "ExState",
+      "source": "docs/coterms/README.md",
+      "role": "EXPLICIT_BOUNDARY",
+      "kind": "HOLD",
+      "name": {
+        "en": "Unknown or held",
+        "fr": "Inconnu ou suspendu"
+      },
+      "meaning": {
+        "en": "Show what remains unknown, blocked, contested, or unverified.",
+        "fr": "Afficher ce qui reste inconnu, bloqué, contesté ou non vérifié."
+      },
+      "not": {
+        "en": "A held state is not automatically a failure.",
+        "fr": "Un état suspendu n'est pas nécessairement un échec."
+      }
+    }
+  ],
+  "nonclaims": [
+    "GLYPH_NE_AUTHORITY",
+    "GLYPH_RAIL_PREVIEW_NE_DEVICE_BINDING",
+    "TRANSLATION_NE_SEMANTIC_EQUIVALENCE_PROOF",
+    "CI_PASS_NE_TRUTH",
+    "DENSITY_NE_COGNITIVE_GAIN",
+    "TERM_EXPOSURE_NE_LEARNING_PROOF",
+    "VISUAL_UX_NE_HUMAN_ACCEPTANCE",
+    "CO_VIBE_TRU_NE_SETTLED_LEXICON_ENTRY",
+    "SCRIPT_NE_RUNTIME"
+  ],
+  "interaction_edge": "NO_ACTION_EXECUTION"
+}</script>
+<script>
+"use strict";
+const cfg=JSON.parse(document.getElementById("rail-contract").textContent);
+const density=document.getElementById("density");
+const language=document.getElementById("language");
+const rail=document.getElementById("rail");
+let selected=cfg.terms[0].id;
+function displayTerm(t){
+  const lang=language.value in t.name ? language.value : "en";
+  document.getElementById("selected-glyph").textContent=t.glyph;
+  document.getElementById("term").textContent=t.term;
+  document.getElementById("name").textContent=t.name[lang];
+  document.getElementById("kind").textContent=t.kind+" · "+t.role;
+  document.getElementById("explanation").textContent=t.meaning[lang];
+  document.getElementById("anti").textContent=t.not[lang];
+  document.getElementById("scope").textContent=cfg.one_authority_ceiling+" · NO EXECUTION · source: "+t.source;
+  for(const b of rail.querySelectorAll("button"))b.setAttribute("aria-pressed",String(b.dataset.id===selected));
+}
+function renderRail(){
+  rail.replaceChildren();
+  const lang=language.value;
+  for(const t of cfg.terms){
+    const b=document.createElement("button");
+    b.type="button";b.className="glyph-button";b.dataset.id=t.id;
+    b.setAttribute("aria-label",t.term+" — "+t.name[lang]+" — inspect only");
+    b.title=t.term+" : "+t.name[lang];
+    const g=document.createElement("span");g.className="glyph";g.setAttribute("aria-hidden","true");g.textContent=t.glyph;
+    const label=document.createElement("span");label.className="glyph-label";label.textContent=t.term+" · "+t.name[lang];
+    b.append(g,label);
+    b.addEventListener("click",()=>{selected=t.id;displayTerm(t);});
+    rail.append(b);
+  }
+  displayTerm(cfg.terms.find(t=>t.id===selected)||cfg.terms[0]);
+}
+density.addEventListener("change",()=>{document.body.dataset.density=density.value;});
+language.addEventListener("change",()=>{renderRail();});
+renderRail();
+</script>
+</body></html>

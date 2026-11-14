@@ -1,0 +1,40 @@
+name: CoIngest scarcity + reciprocal CoGlyphRail CI R0
+on:
+  pull_request:
+    paths:
+      - 'examples/coingest_scarcity_r0/**'
+      - '.github/workflows/coingest-scarcity-r0.yml'
+permissions:
+  contents: read
+jobs:
+  synthetic-allocator:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Deterministic positive and adversarial fixtures
+        run: python -m unittest discover -s examples/coingest_scarcity_r0 -p 'test_*.py' -v
+      - name: Capture bounded choice vs first-fit
+        run: |
+          python examples/coingest_scarcity_r0/allocator.py \
+            --fixture examples/coingest_scarcity_r0/fixture.json \
+            --output coingest-scarcity-synthetic-receipt.json
+      - name: Capture budget-needle forecast comparison
+        run: |
+          python examples/coingest_scarcity_r0/budget_needles_r0.py \
+            --fixture examples/coingest_scarcity_r0/fixture.json \
+            --output coingest-budget-needles-synthetic-receipt.json
+      - name: Short-retention, no-authority CI receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: coingest-scarcity-synthetic-${{ github.run_id }}
+          path: |
+            coingest-scarcity-synthetic-receipt.json
+            coingest-budget-needles-synthetic-receipt.json
+          if-no-files-found: error
+          retention-days: 7
