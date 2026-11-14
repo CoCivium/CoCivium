@@ -1,0 +1,280 @@
+{
+  "schema": "CoAll.CoPatternContagion.TermCandidateRegistry.R0",
+  "work_id": "COPATTERN_CONTAGION_MULTIDIRECTIONAL_R0_20261110",
+  "state": "CANDIDATES_ONLY__NO_COLEX_CANON_OR_RUNTIME_ADOPTION",
+  "first_class_parent": "CoWaveRelation+ existing candidate architecture",
+  "families": [
+    "SPREAD_TOPOLOGY",
+    "TEMPORAL_INFERENCE",
+    "INTEGRITY_ANTICONTAGION",
+    "VALUE_PACING",
+    "CROSS_SUBSTRATE_SERENDIPITY"
+  ],
+  "sources": {
+    "wave_relation": "docs/Architecture/COBOOGIE_REGROUP_RELATIONAL_RETURN_R1.md",
+    "speedo": "docs/Architecture/COSPEEDO_EXPONENTIAL_PROOF_AND_RECURRENCE_INTERNALIZATION_R0_20261026.md",
+    "oomph": "docs/Operations/COPARTICIPANT_EDGE_EVOLUTION_R0.md",
+    "time": "docs/Architecture/COQA_QUESTION_COMMONS_R0.md",
+    "object": "docs/Architecture/COOBJECT_VITALITY_METABOLISM_R0_20261027.md",
+    "ovp": "https://github.com/CoCivium/CoCivium/pull/446"
+  },
+  "candidates": [
+    {
+      "id": "PC-01",
+      "label": "CoPatternContagion+",
+      "subfamily": "SPREAD_TOPOLOGY",
+      "existing_owner_to_check": "WaveRelation",
+      "working_definition": "Candidate copying/adoption over explicitly typed edges; popularity does not imply benefit",
+      "discriminator_or_falsifier": "Compare to ordinary threshold/diffusion models with held-out diffusion traces",
+      "status": "CANDIDATE_DEFINITION_REQUIRED",
+      "authority": "NONE_FROM_NAME",
+      "colex_collision_checked": false
+    },
+    {
+      "id": "PC-02",
+      "label": "CoExposurePath+",
+      "subfamily": "SPREAD_TOPOLOGY",
+      "existing_owner_to_check": "WaveRelation",
+      "working_definition": "A typed eligible directed route through which an object might be encountered",
+      "discriminator_or_falsifier": "Block/unblock edge and check receiver boundary",
+      "status": "CANDIDATE_DEFINITION_REQUIRED",
+      "authority": "NONE_FROM_NAME",
+      "colex_collision_checked": false
+    },
+    {
+      "id": "PC-03",
+      "label": "CoCascade+",
+      "subfamily": "SPREAD_TOPOLOGY",
+      "existing_owner_to_check": "WaveRelation",
+      "working_definition": "Sequential secondary exposures from an upstream pattern",
+      "discriminator_or_falsifier": "Trace multi-hop provenance; reject double-counted source families",
+      "status": "CANDIDATE_DEFINITION_REQUIRED",
+      "authority": "NONE_FROM_NAME",
+      "colex_collision_checked": false
+    },
+    {
+      "id": "PC-04",
+      "label": "CoDampen+",
+      "subfamily": "SPREAD_TOPOLOGY",
+      "existing_owner_to_check": "WaveRelation",
+      "working_definition": "Bound or suppress repeated low-value spread without deleting source history",
+      "discriminator_or_falsifier": "Negative case: suppression hides correction",
+      "status": "CANDIDATE_DEFINITION_REQUIRED",
+      "authority": "NONE_FROM_NAME",
+      "colex_collision_checked": false
+    },
+    {
+      "id": "PC-05",
+      "label": "CoSourceFamily+",
+      "subfamily": "SPREAD_TOPOLOGY",
+      "existing_owner_to_check": "CoEvidence",
+      "working_definition": "Common upstream evidence origin distinct from copy count",
+      "discriminator_or_falsifier": "Multiple copies of same origin count as one family",
+      "status": "CANDIDATE_DEFINITION_REQUIRED",
+      "authority": "NONE_FROM_NAME",
+      "colex_collision_checked": false
+    },
+    {
+      "id": "PC-06",
+      "label": "CoForeTrace+",
+      "subfamily": "TEMPORAL_INFERENCE",
+      "existing_owner_to_check": "CoTime",
+      "working_definition": "Prospective model trajectory with explicit horizon, uncertainty and baseline",
+      "discriminator_or_falsifier": "Prospective scoring; model allowed to lose to naive baseline",
+      "status": "CANDIDATE_DEFINITION_REQUIRED",
+      "authority": "NONE_FROM_NAME",
+      "colex_collision_checked": false
+    },
+    {
+      "id": "PC-07",
+      "label": "CoRetroTrace+",
+      "subfamily": "TEMPORAL_INFERENCE",
+      "existing_owner_to_check": "CoTime",
+      "working_definition": "Possible backward provenance candidates in a directed graph",
+      "discriminator_or_falsifier": "Candidate upstream sources are not verified causes",
+      "status": "CANDIDATE_DEFINITION_REQUIRED",
+      "authority": "NONE_FROM_NAME",
+      "colex_collision_checked": false
+    },
+    {
+      "id": "PC-08",
+      "label": "CoBackcast+",
+      "subfamily": "TEMPORAL_INFERENCE",
+      "existing_owner_to_check": "CoTime",
+      "working_definition": "Work backward from a desired outcome to possible current prerequisites",
+      "discriminator_or_falsifier": "Not retrocausation; respect rights and effect gate",
+      "status": "CANDIDATE_DEFINITION_REQUIRED",
+      "authority": "NONE_FROM_NAME",
+      "colex_collision_checked": false
+    },
+    {
+      "id": "PC-09",
+      "label": "CoBranchCounterfactual+",
+      "subfamily": "TEMPORAL_INFERENCE",
+      "existing_owner_to_check": "CoTheoryAll",
+      "working_definition": "Model-dependent alternative when a route/assumption differs",
+      "discriminator_or_falsifier": "Causal claim remains null without identification",
+      "status": "CANDIDATE_DEFINITION_REQUIRED",
+      "authority": "NONE_FROM_NAME",
+      "colex_collision_checked": false
+    },
+    {
+      "id": "PC-10",
+      "label": "CoTimeSkewCheck+",
+      "subfamily": "TEMPORAL_INFERENCE",
+      "existing_owner_to_check": "CoTime",
+      "working_definition": "Separate source/observed/prediction/validity time and skew",
+      "discriminator_or_falsifier": "Reject ambiguous clock substitutions",
+      "status": "CANDIDATE_DEFINITION_REQUIRED",
+      "authority": "NONE_FROM_NAME",
+      "colex_collision_checked": false
+    },
+    {
+      "id": "PC-11",
+      "label": "CoErrorCascade+",
+      "subfamily": "INTEGRITY_ANTICONTAGION",
+      "existing_owner_to_check": "CoChallenge",
+      "working_definition": "Propagation of an invalid assumption through apparently independent downstream nodes",
+      "discriminator_or_falsifier": "Independent falsifier reveals inherited fault",
+      "status": "CANDIDATE_DEFINITION_REQUIRED",
+      "authority": "NONE_FROM_NAME",
+      "colex_collision_checked": false
+    },
+    {
+      "id": "PC-12",
+      "label": "CoCounterSpread+",
+      "subfamily": "INTEGRITY_ANTICONTAGION",
+      "existing_owner_to_check": "CoChallenge",
+      "working_definition": "Propagation of corrections/dissent with source and timing",
+      "discriminator_or_falsifier": "Dissent must survive fan-in",
+      "status": "CANDIDATE_DEFINITION_REQUIRED",
+      "authority": "NONE_FROM_NAME",
+      "colex_collision_checked": false
+    },
+    {
+      "id": "PC-13",
+      "label": "CoQuarantineEdge+",
+      "subfamily": "INTEGRITY_ANTICONTAGION",
+      "existing_owner_to_check": "CoObject",
+      "working_definition": "Explicitly bounded non-effect / review-only relation where evidence or rights fail",
+      "discriminator_or_falsifier": "Disallowed receiver remains unmodified",
+      "status": "CANDIDATE_DEFINITION_REQUIRED",
+      "authority": "NONE_FROM_NAME",
+      "colex_collision_checked": false
+    },
+    {
+      "id": "PC-14",
+      "label": "CoReseedDormancy+",
+      "subfamily": "INTEGRITY_ANTICONTAGION",
+      "existing_owner_to_check": "CoObject",
+      "working_definition": "Dormant pattern with evidence-triggered requalification rather than always-on broadcast",
+      "discriminator_or_falsifier": "No wake on repeated stale content",
+      "status": "CANDIDATE_DEFINITION_REQUIRED",
+      "authority": "NONE_FROM_NAME",
+      "colex_collision_checked": false
+    },
+    {
+      "id": "PC-15",
+      "label": "CoContagionGauge+",
+      "subfamily": "VALUE_PACING",
+      "existing_owner_to_check": "CoSpeedo",
+      "working_definition": "Separate activity, independent proof, useful effects, error and cost trails",
+      "discriminator_or_falsifier": "Null benefit must not become 0 or green",
+      "status": "CANDIDATE_DEFINITION_REQUIRED",
+      "authority": "NONE_FROM_NAME",
+      "colex_collision_checked": false
+    },
+    {
+      "id": "PC-16",
+      "label": "CoSpreadPressure+",
+      "subfamily": "VALUE_PACING",
+      "existing_owner_to_check": "CoOomph",
+      "working_definition": "Receiver/load pressure and attention cost associated with spread",
+      "discriminator_or_falsifier": "Pace instead of turbo on weak evidence",
+      "status": "CANDIDATE_DEFINITION_REQUIRED",
+      "authority": "NONE_FROM_NAME",
+      "colex_collision_checked": false
+    },
+    {
+      "id": "PC-17",
+      "label": "CoContagionBrake+",
+      "subfamily": "VALUE_PACING",
+      "existing_owner_to_check": "CoGrace",
+      "working_definition": "Stop/rollback/repair when proof, privacy or capacity fail",
+      "discriminator_or_falsifier": "No unauthorized effect from source document",
+      "status": "CANDIDATE_DEFINITION_REQUIRED",
+      "authority": "NONE_FROM_NAME",
+      "colex_collision_checked": false
+    },
+    {
+      "id": "PC-18",
+      "label": "CoCrossSubstrateLoss+",
+      "subfamily": "CROSS_SUBSTRATE_SERENDIPITY",
+      "existing_owner_to_check": "CoPriMath",
+      "working_definition": "Loss ledger when a source is translated into another medium/discipline",
+      "discriminator_or_falsifier": "Detect mismatched meaning/authority after translation",
+      "status": "CANDIDATE_DEFINITION_REQUIRED",
+      "authority": "NONE_FROM_NAME",
+      "colex_collision_checked": false
+    },
+    {
+      "id": "PC-19",
+      "label": "CoPatternSeren+",
+      "subfamily": "CROSS_SUBSTRATE_SERENDIPITY",
+      "existing_owner_to_check": "CoSeren",
+      "working_definition": "Unexpected adjacency generates a challenged question, not a proven relationship",
+      "discriminator_or_falsifier": "Baseline random questions versus blind reviewer utility",
+      "status": "CANDIDATE_DEFINITION_REQUIRED",
+      "authority": "NONE_FROM_NAME",
+      "colex_collision_checked": false
+    },
+    {
+      "id": "PC-20",
+      "label": "CoOVPPropagationClosure+",
+      "subfamily": "CROSS_SUBSTRATE_SERENDIPITY",
+      "existing_owner_to_check": "CoObject/OVP",
+      "working_definition": "Package a bounded full-task context and successor trail rather than a broken isolated excerpt",
+      "discriminator_or_falsifier": "Cold reconstruction check and required role coverage",
+      "status": "CANDIDATE_DEFINITION_REQUIRED",
+      "authority": "NONE_FROM_NAME",
+      "colex_collision_checked": false
+    },
+    {
+      "id": "PC-21",
+      "label": "CoTume+",
+      "subfamily": "UNRESOLVED_ALIAS",
+      "existing_owner_to_check": "UNRESOLVED",
+      "working_definition": "User-proposed spelling; possible temporal/tuning relation; no established semantic definition found",
+      "discriminator_or_falsifier": "Must recover intended meaning and check CoLex collisions before mapping",
+      "status": "CANDIDATE_DEFINITION_REQUIRED",
+      "authority": "NONE_FROM_NAME",
+      "colex_collision_checked": false
+    }
+  ],
+  "reserved_aliases": [
+    {
+      "name": "CoTume+",
+      "state": "UNRESOLVED",
+      "not_auto_normalized_to": [
+        "CoTime+",
+        "CoTune+"
+      ]
+    }
+  ],
+  "cross_surface_targets": {
+    "CoSpeedo+": "Read-only event/data adapter candidate; separately report activity, independent source families, verified benefit, counter-needle and time; never substitute simulation for a live feed",
+    "CoOomph+": "Pacing advice only until independent evidence/rights/budget; no automated acceleration",
+    "CoObject+/OVP+": "Preserve work-id, object rights, closure, lineage, reconstruction and selected head; no global eager graph broadcast",
+    "CoPriMath+": "Typed candidate edges and temporal relations; no source ontology or causality promotion",
+    "CoTime+": "Source, observation, validity, forecast and event times never silently collapsed",
+    "CoQuestionCommons+": "Version candidate questions, rivals, counterexamples and next discriminating tests"
+  },
+  "nonclaims": [
+    "NOT_LIVE_SPEEDO",
+    "NOT_REAL_PREDICTION",
+    "NOT_CONSENT_TO_PROPAGATE",
+    "NOT_INDEPENDENT_RECEIVER_PROOF",
+    "NOT_ACTUAL_G_D_SIGNAL",
+    "NOT_NEW_FOUNDATIONAL_MATHEMATICS"
+  ]
+}

@@ -1,0 +1,531 @@
+{
+  "benchmarks": {
+    "baseline": "well-sourced Markdown with same claim fields and reference pointers",
+    "enhanced": "schema-checked JSON research cards plus Markdown projection",
+    "human_receiver_comparison": "NOT_RUN",
+    "machine_test_only": "FINITE_LOCAL_FIXTURE",
+    "research_quality_comparison": "NOT_RUN"
+  },
+  "card_count": 12,
+  "cards": [
+    {
+      "authority_ceiling": "RESEARCH_ONLY_NO_EXTERNAL_EFFECT",
+      "baseline": "Well-sourced introductory psychology and ordinary measurement model.",
+      "credential_issued": false,
+      "discriminator_or_challenge": "Specify shared stimulus, record observer variation and interventions; reserve ontology as a separate question.",
+      "epistemic_type": "EMPIRICAL_MODELING_HYPOTHESIS",
+      "failure_or_stop_condition": "No prediction or explanation beyond ordinary observation models.",
+      "id": "DHP-EM-001",
+      "lane": "CoTheoryAll",
+      "next_wake": "independent_source_review_or_bounded_test_result",
+      "nonclaim": "Observer-relative does not establish world-as-illusion.",
+      "potential_receiver_benefit": "Prevent model-to-reality conflation.",
+      "proposal": "A model can be observer-conditioned without the external world being unreal.",
+      "review_state": "INDEPENDENT_REVIEW_NOT_DONE",
+      "source_gaps": "Public pointers are research framing, not claim proof.",
+      "source_refs": [
+        "cotheory",
+        "costrawbe"
+      ],
+      "status": "RESEARCH_CANDIDATE_NOT_VALIDATED",
+      "strongest_rival": "Strictly world-independent perceptions or metaphysical idealism.",
+      "title": "Reality, observer, and model are different"
+    },
+    {
+      "authority_ceiling": "RESEARCH_ONLY_NO_EXTERNAL_EFFECT",
+      "baseline": "Two distinct observers in a shared communication network.",
+      "credential_issued": false,
+      "discriminator_or_challenge": "Construct a two-observer countermodel where connectedness holds and distinctness also holds; open individualism requires a separate identity argument.",
+      "epistemic_type": "LOGICAL_NON_ENTAILMENT",
+      "failure_or_stop_condition": "Countermodel impossible under explicit defensible identity axioms; otherwise maintain both branches.",
+      "id": "DHP-EM-002",
+      "lane": "CoTheoryAll",
+      "next_wake": "independent_source_review_or_bounded_test_result",
+      "nonclaim": "No accepted empirical discriminator for shared self is claimed.",
+      "potential_receiver_benefit": "Separate empathy from identity speculation.",
+      "proposal": "Entities can be connected by shared relations yet remain numerically distinct.",
+      "review_state": "INDEPENDENT_REVIEW_NOT_DONE",
+      "source_gaps": "Public pointers are research framing, not claim proof.",
+      "source_refs": [
+        "cotheory"
+      ],
+      "status": "RESEARCH_CANDIDATE_NOT_VALIDATED",
+      "strongest_rival": "Open individualism positing a single underlying subject.",
+      "title": "Universal relatedness does not imply one personal identity"
+    },
+    {
+      "authority_ceiling": "RESEARCH_ONLY_NO_EXTERNAL_EFFECT",
+      "baseline": "Compare an impersonal pantheistic model with an agentive model.",
+      "credential_issued": false,
+      "discriminator_or_challenge": "Write interpretations in which God=U is true and Wants(God,x) is undefined/false; demand independent premises for intention.",
+      "epistemic_type": "LOGICAL_NON_ENTAILMENT",
+      "failure_or_stop_condition": "Independent persuasive agentive premises are supplied and reviewed.",
+      "id": "DHP-EM-003",
+      "lane": "CoGodstuff",
+      "next_wake": "independent_source_review_or_bounded_test_result",
+      "nonclaim": "No revelation or instruction from God has been observed.",
+      "potential_receiver_benefit": "Explore spirituality without inventing commands.",
+      "proposal": "A stipulated equation God := Universe says nothing alone about what the totality wants.",
+      "review_state": "INDEPENDENT_REVIEW_NOT_DONE",
+      "source_gaps": "Some underlying donor evidence is private; independent public source verification pending.",
+      "source_refs": [],
+      "status": "RESEARCH_CANDIDATE_NOT_VALIDATED",
+      "strongest_rival": "Personal/intentional deity with independent purpose-bearing claims.",
+      "title": "God-as-totality does not logically imply divine intention"
+    },
+    {
+      "authority_ceiling": "RESEARCH_ONLY_NO_EXTERNAL_EFFECT",
+      "baseline": "Condition on an observer being able to report a history; compare unconditional and conditional likelihoods.",
+      "credential_issued": false,
+      "discriminator_or_challenge": "Build a finite sample-space toy that shows observer selection and discuss limits of extrapolating to cosmology.",
+      "epistemic_type": "PHILOSOPHICAL_AND_STATISTICAL_QUESTION",
+      "failure_or_stop_condition": "A selected model provides distinct prior predictions and supported evidence.",
+      "id": "DHP-EM-004",
+      "lane": "CoTheoryAll",
+      "next_wake": "independent_source_review_or_bounded_test_result",
+      "nonclaim": "A toy selection effect does not disprove a deity.",
+      "potential_receiver_benefit": "Reduce hindsight teleology.",
+      "proposal": "A strikingly improbable personal history alone does not prove a guided pathway.",
+      "review_state": "INDEPENDENT_REVIEW_NOT_DONE",
+      "source_gaps": "Some underlying donor evidence is private; independent public source verification pending.",
+      "source_refs": [],
+      "status": "RESEARCH_CANDIDATE_NOT_VALIDATED",
+      "strongest_rival": "Intentional selection of a particular outcome.",
+      "title": "Contingency and observer-selection"
+    },
+    {
+      "authority_ceiling": "RESEARCH_ONLY_NO_EXTERNAL_EFFECT",
+      "baseline": "Strong Markdown table with explicit four-value definitions and source links.",
+      "credential_issued": false,
+      "discriminator_or_challenge": "Feed renderer malformed status mappings; require loss logging and rejection for status upgrades; compare Markdown + automation.",
+      "epistemic_type": "SOFTWARE_INVARIANT",
+      "failure_or_stop_condition": "Baseline is clearer or lower cost at equal accuracy.",
+      "id": "DHP-EM-005",
+      "lane": "CoPriMath",
+      "next_wake": "independent_source_review_or_bounded_test_result",
+      "nonclaim": "A typed field is not a new mathematical foundation.",
+      "potential_receiver_benefit": "Avoid fictional certainty in CoNull and CoTime.",
+      "proposal": "A typed evidence system can prevent UNKNOWN, NOT_OBSERVED, ABSENT, and MEASURED_ZERO from being silently exchanged.",
+      "review_state": "INDEPENDENT_REVIEW_NOT_DONE",
+      "source_gaps": "Some underlying donor evidence is private; independent public source verification pending.",
+      "source_refs": [],
+      "status": "RESEARCH_CANDIDATE_NOT_VALIDATED",
+      "strongest_rival": "A carefully designed plain-text evidence table already suffices.",
+      "title": "Typed nothing, unknown, absence and zero"
+    },
+    {
+      "authority_ceiling": "RESEARCH_ONLY_NO_EXTERNAL_EFFECT",
+      "baseline": "Well-structured Markdown plus exact Git history and source links.",
+      "credential_issued": false,
+      "discriminator_or_challenge": "Render then decode the identifier and type; inject missing provenance and record which transformations fail.",
+      "epistemic_type": "SOFTWARE_INVARIANT",
+      "failure_or_stop_condition": "Reference baseline matches reliability at lower burden.",
+      "id": "DHP-EM-006",
+      "lane": "CoPriMath",
+      "next_wake": "independent_source_review_or_bounded_test_result",
+      "nonclaim": "Projections are not proof of ontology.",
+      "potential_receiver_benefit": "Cross-surface reconstructibility and auditability.",
+      "proposal": "A claim ID, evidence type, and revision can remain referentially stable across text and graph views.",
+      "review_state": "INDEPENDENT_REVIEW_NOT_DONE",
+      "source_gaps": "Public pointers are research framing, not claim proof.",
+      "source_refs": [
+        "cotheory"
+      ],
+      "status": "RESEARCH_CANDIDATE_NOT_VALIDATED",
+      "strongest_rival": "Existing W3C PROV / standard linked documents or version control suffice.",
+      "title": "Hypothesis identity survives view changes"
+    },
+    {
+      "authority_ceiling": "RESEARCH_ONLY_NO_EXTERNAL_EFFECT",
+      "baseline": "Equal-budget strong plain-text brainstorming with separate expert-informed source summaries.",
+      "credential_issued": false,
+      "discriminator_or_challenge": "Preregister novelty, falsifiability and utility rubrics; blind judges to origin; include negative controls and cost.",
+      "epistemic_type": "EMPIRICAL_RESEARCH_PROTOCOL",
+      "failure_or_stop_condition": "No gain after accounting for reviewer agreement, effort and confounds.",
+      "id": "DHP-EM-007",
+      "lane": "CoEmergence",
+      "next_wake": "independent_source_review_or_bounded_test_result",
+      "nonclaim": "Emergence is not yet a measured novelty mechanism.",
+      "potential_receiver_benefit": "Improve useful research question generation rather than asset count.",
+      "proposal": "Cross-domain synthesis may yield useful, independently challengeable questions not proposed by source strands alone.",
+      "review_state": "INDEPENDENT_REVIEW_NOT_DONE",
+      "source_gaps": "Public pointers are research framing, not claim proof.",
+      "source_refs": [
+        "cotheory"
+      ],
+      "status": "RESEARCH_CANDIDATE_NOT_VALIDATED",
+      "strongest_rival": "Concatenation, generic prompting or random association yields similar quality.",
+      "title": "Emergent insight requires more than recombination count"
+    },
+    {
+      "authority_ceiling": "RESEARCH_ONLY_NO_EXTERNAL_EFFECT",
+      "baseline": "A conventional model comparison table with versioned links.",
+      "credential_issued": false,
+      "discriminator_or_challenge": "Inject cycles, stale references and competing claims; ensure termination, no implicit merge, and exact version retention.",
+      "epistemic_type": "SOFTWARE_INVARIANT",
+      "failure_or_stop_condition": "Braid loses information or consumes substantially more work than baseline.",
+      "id": "DHP-EM-008",
+      "lane": "CoGoldenBraid",
+      "next_wake": "independent_source_review_or_bounded_test_result",
+      "nonclaim": "No proof of operational superiority or runtime self-coordination.",
+      "potential_receiver_benefit": "Retain minority views and preserve alternative futures.",
+      "proposal": "A typed, bounded braid can retain incompatible models with context, uncertainty and lineage.",
+      "review_state": "INDEPENDENT_REVIEW_NOT_DONE",
+      "source_gaps": "Public pointers are research framing, not claim proof.",
+      "source_refs": [
+        "goldenbraid",
+        "wisdom"
+      ],
+      "status": "RESEARCH_CANDIDATE_NOT_VALIDATED",
+      "strongest_rival": "Simple indexed Markdown notes and a standard knowledge graph provide equivalent value.",
+      "title": "Golden braid preserves rivals instead of averaging them"
+    },
+    {
+      "authority_ceiling": "RESEARCH_ONLY_NO_EXTERNAL_EFFECT",
+      "baseline": "Supply-only, demand-only, combined, and random policies under matched budgets.",
+      "credential_issued": false,
+      "discriminator_or_challenge": "Create synthetic decision records, preregister axes and report Pareto incomparability, harms, cost and no-gain cases.",
+      "epistemic_type": "NORMATIVE_RESEARCH_PROTOCOL",
+      "failure_or_stop_condition": "Alternative methods dominate or rights/consent costs outweigh benefits.",
+      "id": "DHP-EM-009",
+      "lane": "G_dSide",
+      "next_wake": "independent_source_review_or_bounded_test_result",
+      "nonclaim": "G_dSide is not a detected spiritual force or an authority source.",
+      "potential_receiver_benefit": "Represent interests of future and unrepresented stakeholders.",
+      "proposal": "Compare plural candidate futures against demand/supply baselines using agency, wellbeing, rights and reversibility.",
+      "review_state": "INDEPENDENT_REVIEW_NOT_DONE",
+      "source_gaps": "Public pointers are research framing, not claim proof.",
+      "source_refs": [
+        "goldenbraid"
+      ],
+      "status": "RESEARCH_CANDIDATE_NOT_VALIDATED",
+      "strongest_rival": "Demand/supply or a simple hybrid can outperform G_dSide proposals.",
+      "title": "G_dSide as revisable value inquiry, not divine command"
+    },
+    {
+      "authority_ceiling": "RESEARCH_ONLY_NO_EXTERNAL_EFFECT",
+      "baseline": "A citation-backed research page without a new designation.",
+      "credential_issued": false,
+      "discriminator_or_challenge": "Compare reviewer comprehension and attribution errors; require independent issuer, consent and policy before any recognition scheme.",
+      "epistemic_type": "INSTITUTIONAL_DESIGN_NORM",
+      "failure_or_stop_condition": "Dossier confuses readers about qualifications or lacks added utility.",
+      "id": "DHP-EM-010",
+      "lane": "CoDhP",
+      "next_wake": "independent_source_review_or_bounded_test_result",
+      "nonclaim": "Zero DhP awards, endorsements, nominations or doctorate equivalences asserted.",
+      "potential_receiver_benefit": "Clearer attribution and constructive criticism.",
+      "proposal": "A public-safe, challengeable research dossier can document work without conferring any title.",
+      "review_state": "INDEPENDENT_REVIEW_NOT_DONE",
+      "source_gaps": "Some underlying donor evidence is private; independent public source verification pending.",
+      "source_refs": [],
+      "status": "RESEARCH_CANDIDATE_NOT_VALIDATED",
+      "strongest_rival": "Conventional research portfolio, ORCID, institutional repositories and peer review already cover the need.",
+      "title": "DhP research dossiers are not credentials"
+    },
+    {
+      "authority_ceiling": "RESEARCH_ONLY_NO_EXTERNAL_EFFECT",
+      "baseline": "Strong plain-text protocol that names prior work, claims, countercases and data.",
+      "credential_issued": false,
+      "discriminator_or_challenge": "Give independent readers equal tasks in random order; compare correct inference, time, accessibility and refusal/exit friction.",
+      "epistemic_type": "RESEARCH_PROTOCOL",
+      "failure_or_stop_condition": "No benefit or greater misunderstanding than baseline.",
+      "id": "DHP-EM-011",
+      "lane": "CoDhP",
+      "next_wake": "independent_source_review_or_bounded_test_result",
+      "nonclaim": "The number of cards is not the number of scholars or PhDs.",
+      "potential_receiver_benefit": "Auditable contribution without credential inflation.",
+      "proposal": "Finite research cards with source, alternative, testability and loss labels may lower effort to independently evaluate a proposal.",
+      "review_state": "INDEPENDENT_REVIEW_NOT_DONE",
+      "source_gaps": "Some underlying donor evidence is private; independent public source verification pending.",
+      "source_refs": [],
+      "status": "RESEARCH_CANDIDATE_NOT_VALIDATED",
+      "strongest_rival": "A well-written ordinary scholarly abstract and registered protocol already suffice.",
+      "title": "Open research cards, not an invented cohort"
+    },
+    {
+      "authority_ceiling": "RESEARCH_ONLY_NO_EXTERNAL_EFFECT",
+      "baseline": "Equal-length academically responsible prose with source, alternative and caveats.",
+      "credential_issued": false,
+      "discriminator_or_challenge": "Randomize reader exposure with opt-in consent; test comprehension, trust calibration, correction and return interest.",
+      "epistemic_type": "HUMAN_UX_HYPOTHESIS",
+      "failure_or_stop_condition": "Provocation reduces accuracy, excludes readers or attracts unearned confidence.",
+      "id": "DHP-EM-012",
+      "lane": "CoStrawBe",
+      "next_wake": "independent_source_review_or_bounded_test_result",
+      "nonclaim": "Memorability does not establish scientific validity.",
+      "potential_receiver_benefit": "More informed, willing participation without persuasion tricks.",
+      "proposal": "A provocative public front door may invite inquiry if alternatives and limitations remain one click away.",
+      "review_state": "INDEPENDENT_REVIEW_NOT_DONE",
+      "source_gaps": "Public pointers are research framing, not claim proof.",
+      "source_refs": [
+        "costrawbe",
+        "cotheory"
+      ],
+      "status": "RESEARCH_CANDIDATE_NOT_VALIDATED",
+      "strongest_rival": "A conventional clear, neutral summary is more comprehensible and trustworthy.",
+      "title": "CoStrawBe first contact should expose disagreement"
+    }
+  ],
+  "coemergence_definition": "Candidate generative synthesis across source disciplines that yields a specified, independently challengeable additional output. Operational effectiveness unproven.",
+  "date_local": "2026-11-09",
+  "dhp_boundary": "DhP is a proposed noncredential research/recognition concept. No institution has awarded or endorsed it; this public-safe packet creates no nominees or recipients.",
+  "epistemic_rules": [
+    "METAPHYSICS_NE_SCIENTIFIC_PROOF",
+    "RELATION_NE_IDENTITY",
+    "GOD_EQUALS_ALL_NE_DIVINE_WANT",
+    "PROJECTION_NE_ONTOLOGY",
+    "DHPCANDIDATE_NE_CREDENTIAL",
+    "IDEA_COUNT_NE_USEFUL_GAIN",
+    "SOURCE_PROOF_NE_RECEIVER_ACK",
+    "G_DSIDE_NE_AUTHORITY",
+    "PUBLIC_DRAFT_NE_PUBLISHED",
+    "NO_PRIVATE_SOURCE_TEXT_IN_PUBLIC_VARIANT"
+  ],
+  "proof_boundary": {
+    "credentials_issued": 0,
+    "draft_only": true,
+    "independent_review": false,
+    "merged_to_main": false,
+    "site_deployed": false
+  },
+  "public_prior_art_caveat": "Research ideas may duplicate extant scientific and philosophical work. Formal novelty, academic correctness, and utility are not established.",
+  "relation_count": 20,
+  "relations": [
+    {
+      "authority": "NONE",
+      "from": "DHP-EM-001",
+      "relation_type": "DISTINGUISHES_FROM",
+      "source_refs": [
+        "r1"
+      ],
+      "status": "PROPOSED_TYPED_RELATION_NOT_OBSERVED_CAUSALITY",
+      "to": "DHP-EM-002"
+    },
+    {
+      "authority": "NONE",
+      "from": "DHP-EM-001",
+      "relation_type": "CHALLENGES_OVERREACH_IN",
+      "source_refs": [
+        "r1"
+      ],
+      "status": "PROPOSED_TYPED_RELATION_NOT_OBSERVED_CAUSALITY",
+      "to": "DHP-EM-012"
+    },
+    {
+      "authority": "NONE",
+      "from": "DHP-EM-002",
+      "relation_type": "LIMITS_INFERENCE_FROM",
+      "source_refs": [
+        "r1"
+      ],
+      "status": "PROPOSED_TYPED_RELATION_NOT_OBSERVED_CAUSALITY",
+      "to": "DHP-EM-001"
+    },
+    {
+      "authority": "NONE",
+      "from": "DHP-EM-003",
+      "relation_type": "REQUIRES_SEPARATE_PREMISES_FROM",
+      "source_refs": [
+        "r1"
+      ],
+      "status": "PROPOSED_TYPED_RELATION_NOT_OBSERVED_CAUSALITY",
+      "to": "DHP-EM-009"
+    },
+    {
+      "authority": "NONE",
+      "from": "DHP-EM-004",
+      "relation_type": "SUPPLIES_NEGATIVE_CONTROL_TO",
+      "source_refs": [
+        "r1"
+      ],
+      "status": "PROPOSED_TYPED_RELATION_NOT_OBSERVED_CAUSALITY",
+      "to": "DHP-EM-003"
+    },
+    {
+      "authority": "NONE",
+      "from": "DHP-EM-005",
+      "relation_type": "CONSTRAINS_STATUS_LANGUAGE_IN",
+      "source_refs": [
+        "r1"
+      ],
+      "status": "PROPOSED_TYPED_RELATION_NOT_OBSERVED_CAUSALITY",
+      "to": "DHP-EM-006"
+    },
+    {
+      "authority": "NONE",
+      "from": "DHP-EM-006",
+      "relation_type": "SUPPORTS_SOURCE_PRESERVATION_FOR",
+      "source_refs": [
+        "r1"
+      ],
+      "status": "PROPOSED_TYPED_RELATION_NOT_OBSERVED_CAUSALITY",
+      "to": "DHP-EM-007"
+    },
+    {
+      "authority": "NONE",
+      "from": "DHP-EM-007",
+      "relation_type": "COMPARES_WITH",
+      "source_refs": [
+        "r1"
+      ],
+      "status": "PROPOSED_TYPED_RELATION_NOT_OBSERVED_CAUSALITY",
+      "to": "DHP-EM-008"
+    },
+    {
+      "authority": "NONE",
+      "from": "DHP-EM-008",
+      "relation_type": "PRESERVES_RIVAL_MODELS_FOR",
+      "source_refs": [
+        "r1"
+      ],
+      "status": "PROPOSED_TYPED_RELATION_NOT_OBSERVED_CAUSALITY",
+      "to": "DHP-EM-003"
+    },
+    {
+      "authority": "NONE",
+      "from": "DHP-EM-008",
+      "relation_type": "PRESERVES_RIVAL_MODELS_FOR",
+      "source_refs": [
+        "r1"
+      ],
+      "status": "PROPOSED_TYPED_RELATION_NOT_OBSERVED_CAUSALITY",
+      "to": "DHP-EM-009"
+    },
+    {
+      "authority": "NONE",
+      "from": "DHP-EM-009",
+      "relation_type": "DOES_NOT_DERIVE_AUTHORITY_FROM",
+      "source_refs": [
+        "r1"
+      ],
+      "status": "PROPOSED_TYPED_RELATION_NOT_OBSERVED_CAUSALITY",
+      "to": "DHP-EM-003"
+    },
+    {
+      "authority": "NONE",
+      "from": "DHP-EM-010",
+      "relation_type": "ESTABLISHES_NONCREDENTIAL_RAIL_FOR",
+      "source_refs": [
+        "r1"
+      ],
+      "status": "PROPOSED_TYPED_RELATION_NOT_OBSERVED_CAUSALITY",
+      "to": "DHP-EM-011"
+    },
+    {
+      "authority": "NONE",
+      "from": "DHP-EM-011",
+      "relation_type": "CAN_COMPARE_RECEIVER_BENEFIT_WITH",
+      "source_refs": [
+        "r1"
+      ],
+      "status": "PROPOSED_TYPED_RELATION_NOT_OBSERVED_CAUSALITY",
+      "to": "DHP-EM-012"
+    },
+    {
+      "authority": "NONE",
+      "from": "DHP-EM-012",
+      "relation_type": "NEEDS_CHALLENGE_PATH_FROM",
+      "source_refs": [
+        "r1"
+      ],
+      "status": "PROPOSED_TYPED_RELATION_NOT_OBSERVED_CAUSALITY",
+      "to": "DHP-EM-008"
+    },
+    {
+      "authority": "NONE",
+      "from": "DHP-EM-005",
+      "relation_type": "PREVENTS_FALSE_CERTAINTY_IN",
+      "source_refs": [
+        "r1"
+      ],
+      "status": "PROPOSED_TYPED_RELATION_NOT_OBSERVED_CAUSALITY",
+      "to": "DHP-EM-003"
+    },
+    {
+      "authority": "NONE",
+      "from": "DHP-EM-007",
+      "relation_type": "COULD_GENERATE_CANDIDATE_QUESTIONS_FOR",
+      "source_refs": [
+        "r1"
+      ],
+      "status": "PROPOSED_TYPED_RELATION_NOT_OBSERVED_CAUSALITY",
+      "to": "DHP-EM-011"
+    },
+    {
+      "authority": "NONE",
+      "from": "DHP-EM-004",
+      "relation_type": "NEEDS_CONDITIONAL_PROBABILITY_CAUTION_FROM",
+      "source_refs": [
+        "r1"
+      ],
+      "status": "PROPOSED_TYPED_RELATION_NOT_OBSERVED_CAUSALITY",
+      "to": "DHP-EM-001"
+    },
+    {
+      "authority": "NONE",
+      "from": "DHP-EM-010",
+      "relation_type": "CAN_PRESENT_UNCREDENTIALED_WORK_FROM",
+      "source_refs": [
+        "r1"
+      ],
+      "status": "PROPOSED_TYPED_RELATION_NOT_OBSERVED_CAUSALITY",
+      "to": "DHP-EM-007"
+    },
+    {
+      "authority": "NONE",
+      "from": "DHP-EM-006",
+      "relation_type": "APPLIES_TO_PROJECTIONS_OF",
+      "source_refs": [
+        "r1"
+      ],
+      "status": "PROPOSED_TYPED_RELATION_NOT_OBSERVED_CAUSALITY",
+      "to": "DHP-EM-012"
+    },
+    {
+      "authority": "NONE",
+      "from": "DHP-EM-009",
+      "relation_type": "NEEDS_RIGHTS_AND_CONSENT_GATES_FROM",
+      "source_refs": [
+        "r1"
+      ],
+      "status": "PROPOSED_TYPED_RELATION_NOT_OBSERVED_CAUSALITY",
+      "to": "DHP-EM-010"
+    }
+  ],
+  "schema": "CoEmergence.CoDhP.EvidenceFirstResearchBatch.R0",
+  "scope": "12 bounded research questions derived from CoTheoryAll and DhP research lane; no claimed new universal ontology",
+  "source_catalog": [
+    {
+      "availability": "PUBLIC_EXISTING_RESEARCH_SOURCE",
+      "key": "cotheory",
+      "reference": "https://github.com/CoCivium/CoCivium/blob/main/docs/Public/CoTheoryAll_Substack_Draft_2026-10-06.md"
+    },
+    {
+      "availability": "PUBLIC_EXISTING_RESEARCH_SOURCE",
+      "key": "costrawbe",
+      "reference": "https://github.com/CoCivium/CoCivium/blob/main/docs/CoTheoryAll/costrawbe-r0/README.md"
+    },
+    {
+      "availability": "PUBLIC_EXISTING_RESEARCH_SOURCE",
+      "key": "goldenbraid",
+      "reference": "https://github.com/CoCivium/CoCivium/blob/main/docs/Evolution/GDSIDE_COPRIMATH_GSLOOP_PUBLIC_R0.md"
+    },
+    {
+      "availability": "PUBLIC_EXISTING_RESEARCH_SOURCE",
+      "key": "wisdom",
+      "reference": "https://github.com/CoCivium/CoCivium/blob/main/docs/Architecture/COWISDOM_GOLDEN_BRAID_COORB_R0_20261027.md"
+    },
+    {
+      "availability": "PUBLIC_EXISTING_RESEARCH_SOURCE",
+      "key": "quantum",
+      "reference": "https://github.com/CoCivium/CoCivium/blob/main/docs/CoTheoryAll/costrawbe-r0/cotheoryall.json"
+    },
+    {
+      "availability": "PUBLIC_EXISTING_RESEARCH_SOURCE",
+      "key": "termforge",
+      "reference": "https://github.com/CoCivium/CoCivium/blob/main/docs/Evolution/COTERMFORGE_CANDIDATE_CONSTELLATION_R0.json"
+    }
+  ],
+  "status": "PUBLIC_SAFE_DRAFT_CANDIDATE_NOT_MERGED_NOT_DEPLOYED_NOT_CANON",
+  "work_id": "COEMERGENCE_DHP_GOLDENBRAID_RESEARCH_PACKET_R0_20261109"
+}

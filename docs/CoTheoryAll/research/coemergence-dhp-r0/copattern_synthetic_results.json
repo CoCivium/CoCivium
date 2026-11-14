@@ -1,0 +1,167 @@
+{
+  "checks": {
+    "all_cards_non_conferring": true,
+    "card_count_six": true,
+    "co_tume_unresolved": true,
+    "coin_loses_on_constant_one": true,
+    "future_suffix_cannot_change_historic_forecasts": true,
+    "ids_unique": true,
+    "last_beats_recent_on_regime_flip": true,
+    "no_effects": true,
+    "no_untyped_relation": true,
+    "recent_does_not_beat_coin_on_alternation": true,
+    "relations_targets_exist": true,
+    "relations_ten": true
+  },
+  "methods": [
+    "coin",
+    "last",
+    "majority",
+    "recent"
+  ],
+  "not_claimed": [
+    "external validity",
+    "causal structure",
+    "real-world forecast improvement",
+    "CoTume+ definition",
+    "divine or cosmic desire",
+    "credential"
+  ],
+  "scenarios": {
+    "alternation": {
+      "coin": {
+        "accuracy": 0.5,
+        "brier": 0.25,
+        "logloss": 0.693147,
+        "trials": 50
+      },
+      "last": {
+        "accuracy": 0.0,
+        "brier": 0.81,
+        "logloss": 2.302585,
+        "trials": 50
+      },
+      "majority": {
+        "accuracy": 0.0,
+        "brier": 0.258373,
+        "logloss": 0.709905,
+        "trials": 50
+      },
+      "recent": {
+        "accuracy": 0.5,
+        "brier": 0.25,
+        "logloss": 0.693147,
+        "trials": 50
+      }
+    },
+    "constant_one": {
+      "coin": {
+        "accuracy": 1.0,
+        "brier": 0.25,
+        "logloss": 0.693147,
+        "trials": 50
+      },
+      "last": {
+        "accuracy": 1.0,
+        "brier": 0.01,
+        "logloss": 0.105361,
+        "trials": 50
+      },
+      "majority": {
+        "accuracy": 1.0,
+        "brier": 0.001413,
+        "logloss": 0.03426,
+        "trials": 50
+      },
+      "recent": {
+        "accuracy": 1.0,
+        "brier": 0.01,
+        "logloss": 0.105361,
+        "trials": 50
+      }
+    },
+    "mean_reverting_pairs": {
+      "coin": {
+        "accuracy": 0.5,
+        "brier": 0.25,
+        "logloss": 0.693147,
+        "trials": 50
+      },
+      "last": {
+        "accuracy": 0.5,
+        "brier": 0.41,
+        "logloss": 1.203973,
+        "trials": 50
+      },
+      "majority": {
+        "accuracy": 0.26,
+        "brier": 0.258373,
+        "logloss": 0.709905,
+        "trials": 50
+      },
+      "recent": {
+        "accuracy": 0.5,
+        "brier": 0.25,
+        "logloss": 0.693147,
+        "trials": 50
+      }
+    },
+    "regime_flip": {
+      "coin": {
+        "accuracy": 0.6,
+        "brier": 0.25,
+        "logloss": 0.693147,
+        "trials": 50
+      },
+      "last": {
+        "accuracy": 0.98,
+        "brier": 0.026,
+        "logloss": 0.149305,
+        "trials": 50
+      },
+      "majority": {
+        "accuracy": 0.4,
+        "brier": 0.298697,
+        "logloss": 0.820494,
+        "trials": 50
+      },
+      "recent": {
+        "accuracy": 0.92,
+        "brier": 0.0652,
+        "logloss": 0.244824,
+        "trials": 50
+      }
+    },
+    "unpredictable_fixed_seed": {
+      "coin": {
+        "accuracy": 0.5,
+        "brier": 0.25,
+        "logloss": 0.693147,
+        "trials": 50
+      },
+      "last": {
+        "accuracy": 0.46,
+        "brier": 0.442,
+        "logloss": 1.291862,
+        "trials": 50
+      },
+      "majority": {
+        "accuracy": 0.5,
+        "brier": 0.270771,
+        "logloss": 0.73845,
+        "trials": 50
+      },
+      "recent": {
+        "accuracy": 0.46,
+        "brier": 0.2776,
+        "logloss": 0.750865,
+        "trials": 50
+      }
+    }
+  },
+  "schema": "CoCivium.CoPatternSyntheticForecastFixture.R0",
+  "state": "SOURCE_LEVEL_ONLY__NO_REAL_PROSPECTIVE_HUMAN_TEST",
+  "structural_pass": true,
+  "target": "next binary event with fixed one-step horizon",
+  "warmup": 10
+}

@@ -1,0 +1,325 @@
+{
+  "alias_note": "CoTume+ remains unresolved. Do not silently equate it with CoTime+.",
+  "card_count": 8,
+  "cards": [
+    {
+      "claim_status": "CANDIDATE_NOT_VALIDATED",
+      "credentials_issued": 0,
+      "discriminator_or_test": "Reject a purported delta if units/denominators/scopes differ; measure reconstruction accuracy and time.",
+      "effect_authority": "NONE",
+      "epistemic_class": "FORMALIZATION_AND_DATA_QUALITY",
+      "evidence_level": "SYNTHETIC_ONLY_IF_EXECUTED",
+      "external_publication": "DRAFT_BRANCH_ONLY_PENDING_REVIEW",
+      "human_review": "NOT_DONE",
+      "id": "DHP-EM-019",
+      "nonclaim": "No universal numerical delta between ethics and physics; incomparable dimensions remain incomparable.",
+      "proposal": "Delta is meaningful only across comparable units, populations, time windows and measurement definitions.",
+      "strong_legacy_baseline": "A trusted plain-text change log with explicitly named denominator and version.",
+      "title": "CoDeltaBasis+"
+    },
+    {
+      "claim_status": "CANDIDATE_NOT_VALIDATED",
+      "credentials_issued": 0,
+      "discriminator_or_test": "Reject the claim P(X|Y) = P(Y|X); require evidence of reversibility before reversing causal arrows.",
+      "effect_authority": "NONE",
+      "epistemic_class": "LOGIC_AND_CAUSAL_DISCIPLINE",
+      "evidence_level": "SYNTHETIC_ONLY_IF_EXECUTED",
+      "external_publication": "DRAFT_BRANCH_ONLY_PENDING_REVIEW",
+      "human_review": "NOT_DONE",
+      "id": "DHP-EM-020",
+      "nonclaim": "Statistical association does not establish causal effect; inverse model does not imply an inverse physical process.",
+      "proposal": "Use different type tags for inverse conditional, logical converse, temporal replay, counterfactual intervention, backcasting and symmetry; none implies another.",
+      "strong_legacy_baseline": "Ordinary logic/causal inference notation and clearly annotated Markdown.",
+      "title": "CoInverseType+"
+    },
+    {
+      "claim_status": "CANDIDATE_NOT_VALIDATED",
+      "credentials_issued": 0,
+      "discriminator_or_test": "Verify named direction/scope/observer and freeze information cutoff per view; compare view comprehension to ordinary dashboard.",
+      "effect_authority": "NONE",
+      "epistemic_class": "REPRESENTATION_AND_INTEROPERABILITY",
+      "evidence_level": "SYNTHETIC_ONLY_IF_EXECUTED",
+      "external_publication": "DRAFT_BRANCH_ONLY_PENDING_REVIEW",
+      "human_review": "NOT_DONE",
+      "id": "DHP-EM-021",
+      "nonclaim": "Views may disagree and may be non-equivalent, non-composable or not predictive.",
+      "proposal": "A forecast packet may encode directional lenses: future forecast, past explanation, counterfactual, local-to-global, global-to-local, cross-domain and inside/outside CoAll.",
+      "strong_legacy_baseline": "Existing multidimensional data cubes, causal DAGs and time-series dashboards.",
+      "title": "CoDirectionAtlas+"
+    },
+    {
+      "claim_status": "CANDIDATE_NOT_VALIDATED",
+      "credentials_issued": 0,
+      "discriminator_or_test": "Supply the finite two-period example in the executable fixture; require aggregated and group-wise comparisons and a fixed-mix counterfactual.",
+      "effect_authority": "NONE",
+      "epistemic_class": "MATHEMATICAL_COUNTEREXAMPLE",
+      "evidence_level": "SYNTHETIC_ONLY_IF_EXECUTED",
+      "external_publication": "DRAFT_BRANCH_ONLY_PENDING_REVIEW",
+      "human_review": "NOT_DONE",
+      "id": "DHP-EM-022",
+      "nonclaim": "The synthetic example says nothing about real-world causality or prevalence.",
+      "proposal": "Aggregate trends can oppose all within-group trends when population composition changes (Simpson-style reversal).",
+      "strong_legacy_baseline": "Simple spreadsheet grouped counts with matched rates and denominators.",
+      "title": "CoScaleInversion+"
+    },
+    {
+      "claim_status": "CANDIDATE_NOT_VALIDATED",
+      "credentials_issued": 0,
+      "discriminator_or_test": "Prohibit any input observed after issuance for forecasts; keep revised historical knowledge separate; compare future-only error and planning feasibility.",
+      "effect_authority": "NONE",
+      "epistemic_class": "TEMPORAL_EVALUATION",
+      "evidence_level": "SYNTHETIC_ONLY_IF_EXECUTED",
+      "external_publication": "DRAFT_BRANCH_ONLY_PENDING_REVIEW",
+      "human_review": "NOT_DONE",
+      "id": "DHP-EM-023",
+      "nonclaim": "Reconstructing the past after seeing outcomes does not establish foresight.",
+      "proposal": "A forecast, a retrodiction and a backcast are different tasks with different evidence-cutoff and success criteria.",
+      "strong_legacy_baseline": "Ordinary version-controlled prequential evaluation, historical control series and explicit goal-seeking planning.",
+      "title": "CoRetroPredict+"
+    },
+    {
+      "claim_status": "CANDIDATE_NOT_VALIDATED",
+      "credentials_issued": 0,
+      "discriminator_or_test": "Require pre-registered source-to-target mapping; evaluate on unseen target domain; report mapping losses and group harms.",
+      "effect_authority": "NONE",
+      "epistemic_class": "TRANSFER_AND_EXTERNAL_VALIDITY",
+      "evidence_level": "SYNTHETIC_ONLY_IF_EXECUTED",
+      "external_publication": "DRAFT_BRANCH_ONLY_PENDING_REVIEW",
+      "human_review": "NOT_DONE",
+      "id": "DHP-EM-024",
+      "nonclaim": "Global validity is not inferred from local success; CoAll graph inclusion grants no authority over outside systems.",
+      "proposal": "Local, global, inside-CoAll and outside-CoAll transfers require explicit invariants, boundary conditions and target-domain holdouts.",
+      "strong_legacy_baseline": "Standard stratified analysis and domain adaptation with a well-maintained comparison table.",
+      "title": "CoContextTransfer+"
+    },
+    {
+      "claim_status": "CANDIDATE_NOT_VALIDATED",
+      "credentials_issued": 0,
+      "discriminator_or_test": "Small synthetic target-feasibility example plus a hard-gated rights scenario; compare human decision quality and effort to simple baseline.",
+      "effect_authority": "NONE",
+      "epistemic_class": "NORMATIVE_DECISION_RESEARCH",
+      "evidence_level": "SYNTHETIC_ONLY_IF_EXECUTED",
+      "external_publication": "DRAFT_BRANCH_ONLY_PENDING_REVIEW",
+      "human_review": "NOT_DONE",
+      "id": "DHP-EM-025",
+      "nonclaim": "A G_dSide framing is a revisable value lens, not a measurable divine command or automatic action authority.",
+      "proposal": "Select robust, consent-respecting actions from multiple feasible futures; preserve incomparable good options rather than crown a scalar winner.",
+      "strong_legacy_baseline": "A strong ordinary decision table of cost, harm, reversibility, alternative, and explicit stakeholder constraints.",
+      "title": "CoStrategicPareto+"
+    },
+    {
+      "claim_status": "CANDIDATE_NOT_VALIDATED",
+      "credentials_issued": 0,
+      "discriminator_or_test": "Inject duplicated reports, synthetic feedback loops and later contradictory evidence; verify confidence cannot rise from repetition alone.",
+      "effect_authority": "NONE",
+      "epistemic_class": "ROBUSTNESS_AND_ADVERSARIAL_TESTING",
+      "evidence_level": "SYNTHETIC_ONLY_IF_EXECUTED",
+      "external_publication": "DRAFT_BRANCH_ONLY_PENDING_REVIEW",
+      "human_review": "NOT_DONE",
+      "id": "DHP-EM-026",
+      "nonclaim": "No claim that recursively braided output improves truth, forecasting, or returns by itself.",
+      "proposal": "Reinforcing a repeated pattern without independent evidence can amplify error; each boost needs a dissent, negative-control and expiration path.",
+      "strong_legacy_baseline": "Append-only contradiction ledger and automated expiry using off-the-shelf version control.",
+      "title": "CoEchoDamp+"
+    }
+  ],
+  "hard_gates": [
+    "consent",
+    "rights",
+    "no_credentials",
+    "no_external_effects",
+    "no_quantum_or_divine_authority",
+    "future_data_cutoff",
+    "source_provenance",
+    "counterexamples"
+  ],
+  "independent_review": "NOT_DONE",
+  "novelty": "NOT_ESTABLISHED",
+  "predecessor_work_ids": [
+    "COEMERGENCE_DHP_GOLDENBRAID_RESEARCH_PACKET_R0_20261109",
+    "COPATTERN_PAYFORWARD_COTIME_COPREDICTION_DHP_ADDENDUM_R0_20261109"
+  ],
+  "real_world_prediction_accuracy": "NOT_MEASURED",
+  "relation_count": 17,
+  "relations": [
+    {
+      "authority": "NONE",
+      "from": "DHP-EM-019",
+      "source": "CURRENT_CONVERSATION_AND_DOCUMENTED_PREDECESSORS",
+      "status": "CANDIDATE_RELATION_NOT_CAUSAL_PROOF",
+      "to": "DHP-EM-021",
+      "type": "SUPPLIES_TYPED_DELTA_TO"
+    },
+    {
+      "authority": "NONE",
+      "from": "DHP-EM-019",
+      "source": "CURRENT_CONVERSATION_AND_DOCUMENTED_PREDECESSORS",
+      "status": "CANDIDATE_RELATION_NOT_CAUSAL_PROOF",
+      "to": "DHP-EM-025",
+      "type": "PREVENTS_UNIT_CONFUSION_FOR"
+    },
+    {
+      "authority": "NONE",
+      "from": "DHP-EM-020",
+      "source": "CURRENT_CONVERSATION_AND_DOCUMENTED_PREDECESSORS",
+      "status": "CANDIDATE_RELATION_NOT_CAUSAL_PROOF",
+      "to": "DHP-EM-021",
+      "type": "CHALLENGES_REVERSAL_ASSUMPTION_IN"
+    },
+    {
+      "authority": "NONE",
+      "from": "DHP-EM-020",
+      "source": "CURRENT_CONVERSATION_AND_DOCUMENTED_PREDECESSORS",
+      "status": "CANDIDATE_RELATION_NOT_CAUSAL_PROOF",
+      "to": "DHP-EM-023",
+      "type": "FORBIDS_UNSUPPORTED_INVERSE_IN"
+    },
+    {
+      "authority": "NONE",
+      "from": "DHP-EM-022",
+      "source": "CURRENT_CONVERSATION_AND_DOCUMENTED_PREDECESSORS",
+      "status": "CANDIDATE_RELATION_NOT_CAUSAL_PROOF",
+      "to": "DHP-EM-024",
+      "type": "COUNTEREXAMPLE_FOR"
+    },
+    {
+      "authority": "NONE",
+      "from": "DHP-EM-022",
+      "source": "CURRENT_CONVERSATION_AND_DOCUMENTED_PREDECESSORS",
+      "status": "CANDIDATE_RELATION_NOT_CAUSAL_PROOF",
+      "to": "DHP-EM-021",
+      "type": "MUST_BE_REPORTED_TO"
+    },
+    {
+      "authority": "NONE",
+      "from": "DHP-EM-023",
+      "source": "CURRENT_CONVERSATION_AND_DOCUMENTED_PREDECESSORS",
+      "status": "CANDIDATE_RELATION_NOT_CAUSAL_PROOF",
+      "to": "DHP-EM-014",
+      "type": "REQUIRES_TIME_CUTOFF_FROM"
+    },
+    {
+      "authority": "NONE",
+      "from": "DHP-EM-023",
+      "source": "CURRENT_CONVERSATION_AND_DOCUMENTED_PREDECESSORS",
+      "status": "CANDIDATE_RELATION_NOT_CAUSAL_PROOF",
+      "to": "DHP-EM-015",
+      "type": "REQUIRES_FORWARD_TESTS_FROM"
+    },
+    {
+      "authority": "NONE",
+      "from": "DHP-EM-024",
+      "source": "CURRENT_CONVERSATION_AND_DOCUMENTED_PREDECESSORS",
+      "status": "CANDIDATE_RELATION_NOT_CAUSAL_PROOF",
+      "to": "DHP-EM-018",
+      "type": "CHALLENGES_CROSS_CONTEXT_TRANSFER_OF"
+    },
+    {
+      "authority": "NONE",
+      "from": "DHP-EM-025",
+      "source": "CURRENT_CONVERSATION_AND_DOCUMENTED_PREDECESSORS",
+      "status": "CANDIDATE_RELATION_NOT_CAUSAL_PROOF",
+      "to": "DHP-EM-017",
+      "type": "USES_PLURAL_FUTURES_FROM"
+    },
+    {
+      "authority": "NONE",
+      "from": "DHP-EM-025",
+      "source": "CURRENT_CONVERSATION_AND_DOCUMENTED_PREDECESSORS",
+      "status": "CANDIDATE_RELATION_NOT_CAUSAL_PROOF",
+      "to": "DHP-EM-026",
+      "type": "REQUIRES_DISSENT_FROM"
+    },
+    {
+      "authority": "NONE",
+      "from": "DHP-EM-026",
+      "source": "CURRENT_CONVERSATION_AND_DOCUMENTED_PREDECESSORS",
+      "status": "CANDIDATE_RELATION_NOT_CAUSAL_PROOF",
+      "to": "DHP-EM-016",
+      "type": "EXTENDS_ERROR_GUARD_OF"
+    },
+    {
+      "authority": "NONE",
+      "from": "DHP-EM-021",
+      "source": "CURRENT_CONVERSATION_AND_DOCUMENTED_PREDECESSORS",
+      "status": "CANDIDATE_RELATION_NOT_CAUSAL_PROOF",
+      "to": "CoMap+",
+      "type": "CAN_PROJECT_ON"
+    },
+    {
+      "authority": "NONE",
+      "from": "DHP-EM-021",
+      "source": "CURRENT_CONVERSATION_AND_DOCUMENTED_PREDECESSORS",
+      "status": "CANDIDATE_RELATION_NOT_CAUSAL_PROOF",
+      "to": "CoOrb+",
+      "type": "CAN_PROJECT_ON"
+    },
+    {
+      "authority": "NONE",
+      "from": "DHP-EM-025",
+      "source": "CURRENT_CONVERSATION_AND_DOCUMENTED_PREDECESSORS",
+      "status": "CANDIDATE_RELATION_NOT_CAUSAL_PROOF",
+      "to": "CoG_dSide+",
+      "type": "MUST_KEEP_AUTHORITY_SEPARATE_FROM"
+    },
+    {
+      "authority": "NONE",
+      "from": "DHP-EM-024",
+      "source": "CURRENT_CONVERSATION_AND_DOCUMENTED_PREDECESSORS",
+      "status": "CANDIDATE_RELATION_NOT_CAUSAL_PROOF",
+      "to": "CoAll+",
+      "type": "CROSSES_WITH_PROVENANCE_ONLY"
+    },
+    {
+      "authority": "NONE",
+      "from": "DHP-EM-020",
+      "source": "CURRENT_CONVERSATION_AND_DOCUMENTED_PREDECESSORS",
+      "status": "CANDIDATE_RELATION_NOT_CAUSAL_PROOF",
+      "to": "CoPriMath+",
+      "type": "REQUIRES_TYPED_RELATIONS_FROM"
+    }
+  ],
+  "schema": "CoEmergence.CoDhP.CoDirectionalDeltaInversionMultiscale.R0",
+  "scope_axes": {
+    "boundary": [
+      "inside_CoAll_graph",
+      "outside_CoAll_graph",
+      "hybrid_interoperability"
+    ],
+    "logic": [
+      "association",
+      "converse",
+      "counterfactual",
+      "causal_intervention",
+      "mathematical_inverse"
+    ],
+    "scale": [
+      "person",
+      "local",
+      "regional",
+      "global",
+      "cross_scale"
+    ],
+    "strategic": [
+      "SupplySide",
+      "DemandSide",
+      "G_dSide_candidate_futures",
+      "hybrid_pareto"
+    ],
+    "time": [
+      "retrodiction",
+      "observed_now",
+      "future_prediction",
+      "backcasting"
+    ]
+  },
+  "source_catalog": {
+    "coemergence": "COEMERGENCE_DHP_GOLDENBRAID_RESEARCH_PACKET_R0_20261109_PUBLIC_CARDS.json",
+    "copattern": "COPATTERN_PAYFORWARD_COTIME_COPREDICTION_DHP_ADDENDUM_R0_20261109_PUBLIC_CARDS.json",
+    "cotheory": "COTHEORYALL_GOLDENBRAID_HYBRID_COSTRAWBE_R1_20261109.json",
+    "dhp": "02_DHP_RESEARCH_COMPANION.md (private Library source)",
+    "goldenbraid": "https://github.com/CoCivium/CoCivium/blob/main/docs/Evolution/GDSIDE_COPRIMATH_GSLOOP_PUBLIC_R0.md"
+  },
+  "status": "PUBLIC_SAFE_DRAFT_NOT_VALIDATED_NOT_CANON_NOT_RUNTIME",
+  "work_id": "CODIRECTIONAL_DELTA_INVERSION_MULTISCALE_DHP_R0_20261109"
+}

@@ -1,0 +1,32 @@
+{
+  "checks": {
+    "aggregate_local_reversal_detected": true,
+    "conditionals_not_symmetric": true,
+    "cutoff_valid": true,
+    "guard_preferred_and_rights_gate": true,
+    "reject_future_leakage": true,
+    "reject_scope_mismatch": true,
+    "reject_unit_mismatch": true,
+    "typed_delta_valid": true
+  },
+  "fixture": "SYNTHETIC_ONLY",
+  "limitations": [
+    "No human study",
+    "No real forecasting",
+    "No external receiver qualification",
+    "No new physical or mathematical law"
+  ],
+  "passed": 8,
+  "policy": {
+    "causality_proven": false,
+    "credentials_issued": 0,
+    "external_effects": 0,
+    "forecast_superiority_proven": false
+  },
+  "scale_counterexample": {
+    "fixed_mix_counterfactual": 0.4,
+    "pooled_new": 0.6666666666666666,
+    "pooled_old": 0.5
+  },
+  "total": 8
+}
