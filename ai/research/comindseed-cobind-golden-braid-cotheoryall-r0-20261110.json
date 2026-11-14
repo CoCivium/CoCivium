@@ -1,0 +1,200 @@
+{
+  "schema": "CoAll.CoMindSeed.CoBindRouting.R0-candidate",
+  "status": "PUBLIC_SAFE_RESEARCH_AND_ROUTING_CANDIDATE_NOT_CANON_NOT_RUNTIME",
+  "work_id": "coall:research:comindseed:binding-lenses:r0",
+  "origin": "2026-11-10 CoMindSeed conceptual exploration; private conversation text not copied",
+  "purpose": "Reconcile relational boundary, observer, inversion, null, consciousness and all-time-direction proposals with existing Golden Braid, CoTheoryAll, CoTime and CoEvo provenance, without a second truth store.",
+  "anchors": [
+    {
+      "path": "ai/continuity-golden-braid-bridge-r0-20261109.json",
+      "github_blob_sha": "779ec9b0dc0e7456d0a182548d4ccb600109b1de",
+      "role": "braid_relation_index"
+    },
+    {
+      "path": "docs/CoTheoryAll/costrawbe-r0/README.md",
+      "github_blob_sha": "21da563a35106896c3029ea8f2cc4fd30cfa31c3",
+      "role": "competing_hypotheses"
+    },
+    {
+      "path": "docs/Architecture/COALL_PULSEFIELD_COTIME_R0.md",
+      "github_blob_sha": "af881fd2eebdd249c16c279a46003bd3836b96cf",
+      "role": "multitemporal_events"
+    },
+    {
+      "path": "ai/retro-echo-coverage-r0-20261109.json",
+      "github_blob_sha": "332d8046cdaef1522ae4510d3a00f515fae04b7a",
+      "role": "past_coverage_and_unknowns"
+    },
+    {
+      "path": "docs/Architecture/COORBWARE_NONPRIVILEGED_INVERSION_SUPERFRAME_R0_20261026.md",
+      "github_blob_sha": "de80d5b9a7e3ec3948aaacd18e9ca5c53e5867c1",
+      "role": "inverse_null_else_grammar"
+    },
+    {
+      "path": "docs/Architecture/COEVO_ELIGIBILITY_PRESERVATION_R0_20261025.md",
+      "github_blob_sha": "312c935d4a36d1ad174512b439039aa8bbfececc",
+      "role": "evolution_preservation_classes"
+    }
+  ],
+  "concepts": [
+    {
+      "id": "mindseed-distinguishability",
+      "class": "PHILOSOPHICAL_CANDIDATE",
+      "claim": "If two world descriptions give identical admissible observations, their distinction is not empirically established by those observations.",
+      "challenge": "Specify a discriminating observation or prove equivalence only under a stated model."
+    },
+    {
+      "id": "all-null-inverse-gd",
+      "class": "INTERPRETIVE",
+      "claim": "All, Nothing, their inversions and G_d may be explored as perspectives; literal identity is not a physical result.",
+      "challenge": "Define the transformation and ask what remains invariant without making every assertion vacuously true."
+    },
+    {
+      "id": "boundary-quantum",
+      "class": "EMPIRICAL_HYPOTHESIS",
+      "claim": "A proposed nonquantum substrate might yield quantum-like observations under boundary-dependent projections.",
+      "challenge": "State dynamics and predict interference and Bell-type correlations without ad hoc measurement dependence; compare with ordinary quantum models."
+    },
+    {
+      "id": "functional-observer",
+      "class": "FUNCTIONAL_HYPOTHESIS",
+      "claim": "Bounded systems may perform distinction, integration, memory, adaptation and self-modeling in different degrees.",
+      "challenge": "Perturb internal causal organization and evaluate preregistered task outcomes against matched controls."
+    },
+    {
+      "id": "conscious-experience",
+      "class": "UNRESOLVED_PHENOMENAL_HYPOTHESIS",
+      "claim": "Functional observation and boundary regulation alone do not demonstrate subjective experience.",
+      "challenge": "Compare rival consciousness theories and independent evidence standards; prohibit a subjective-experience PASS based on router output."
+    }
+  ],
+  "placement_rules": [
+    {
+      "claim_class": "OBSERVED",
+      "primary_anchor": "SOURCE_WITNESS",
+      "rule": "Exact source, event and observation evidence; never silently rewrite original witness."
+    },
+    {
+      "claim_class": "HYPOTHESIS",
+      "primary_anchor": "HYPOTHESIS_BRANCH",
+      "rule": "Retain alternatives, assumptions, falsifier or discriminating question and source provenance."
+    },
+    {
+      "claim_class": "INTERPRETIVE",
+      "primary_anchor": "INTERPRETATION_BRANCH",
+      "rule": "Preserve as symbolic/philosophical interpretation, without empirical, causal or authorization claims."
+    },
+    {
+      "claim_class": "PREDICTED",
+      "primary_anchor": "FORECAST_BRANCH",
+      "rule": "Freeze issued_at, assumptions and prediction; later observation calibrates as a different event."
+    },
+    {
+      "claim_class": "COUNTERFACTUAL",
+      "primary_anchor": "SCENARIO_BRANCH",
+      "rule": "Retrospective what-if never changes event_at or a source witness."
+    },
+    {
+      "claim_class": "UNKNOWN",
+      "primary_anchor": "UNKNOWN_REGISTER",
+      "rule": "Missing/unseen/withheld/absent remain different; no forced false or zero."
+    }
+  ],
+  "cross_front_routes": [
+    {
+      "from": "CoMindSeed",
+      "to": "CoTheoryAll+",
+      "type": "PROPOSES_TESTABLE_AND_INTERPRETIVE_MODELS",
+      "authority": "NONE"
+    },
+    {
+      "from": "CoMindSeed",
+      "to": "GoldenBraid",
+      "type": "PROPOSES_TYPED_STRAND",
+      "authority": "NONE"
+    },
+    {
+      "from": "CoMindSeed",
+      "to": "CoOrbWare+",
+      "type": "REQUESTS_RECEIVER_RELATIVE_PROJECTION",
+      "authority": "NONE"
+    },
+    {
+      "from": "CoMindSeed",
+      "to": "CoTime+",
+      "type": "USES_SEPARATE_EVENT_OBSERVATION_RECORD_VALID_ISSUED_CLOCKS",
+      "authority": "NONE"
+    },
+    {
+      "from": "CoMindSeed",
+      "to": "CoNull+",
+      "type": "PRESERVES_MISSINGNESS_AND_CONTRADICTION",
+      "authority": "NONE"
+    },
+    {
+      "from": "CoMindSeed",
+      "to": "CoEvoAll+",
+      "type": "ELIGIBLE_FOR_CHALLENGE_NOT_AUTO_MUTATION",
+      "authority": "NONE"
+    },
+    {
+      "from": "CoMindSeed",
+      "to": "CoConscious+",
+      "type": "CONSCIOUSNESS_HYPOTHESIS_NOT_SENTIENCE_DETECTION",
+      "authority": "NONE"
+    }
+  ],
+  "binding_algorithm": {
+    "implementation": "scripts/CoBindCandidateRouterR0.py",
+    "hard_gates": [
+      "work identity matches and source provenance is appropriate",
+      "receiver and confidentiality match",
+      "epistemic and temporal class route only to compatible primary anchor",
+      "source event timestamp and forecast issuance remain frozen",
+      "inverse lookup cannot imply reciprocal causal power",
+      "no writes, publishing, worker execution or authority inferred"
+    ],
+    "ranking": "Among hard-gate-qualified anchors, maximize integer provenance+meaning+time+recovery+receiver fit minus risk and cost, only as a candidate proposal; no universal optimality or automatic promotion.",
+    "rebind_triggers": [
+      "new independently qualified evidence",
+      "actual source or dependency change",
+      "authorized receiver/context change",
+      "expired validity or consent",
+      "material counterexample or falsifier",
+      "observed regression or recovery failure"
+    ],
+    "non_triggers": [
+      "repetition of the same user assent",
+      "an attractive new name",
+      "a reverse navigation edge",
+      "a forecast becoming narratively plausible"
+    ]
+  },
+  "time_directions": {
+    "retro": "DISCOVER_PAST_SOURCE_LATER_WITHOUT_REWRITING_EVENT_TIME",
+    "current": "PIN_KNOWN_GOOD_AND_OBSERVATION_TIME",
+    "future": "BRANCH_SCENARIOS_ISSUED_NOW_AND_CALIBRATE_LATER",
+    "inverse": "REVERSE_LOOKUP_NOT_CAUSAL_TIME_TRAVEL",
+    "cross_scale": "REVALIDATE_AUTHORITY_AND_UNITS_EACH_SCALE",
+    "unknown": "UNSCANNED_NOT_ABSENT"
+  },
+  "acceptance": [
+    "Run standard-library fixture tests with competing authorized and unauthorized anchors.",
+    "Read back exact branch bytes and commit SHA before declaring source landed.",
+    "Independent reviewer reproduces one past->current->possible-future trace with inverse lookup and reports which interpretation survived.",
+    "Observed facts, hypothetical quantum substrate, interpretive G_d and consciousness claims remain separate.",
+    "No user-facing MVP or receiver ACK until real client acceptance and restart/rollback tests."
+  ],
+  "nonclaims": [
+    "NOT_A_UNIVERSAL_CONSCIOUSNESS_DEFINITION",
+    "NO_PHYSICS_DISCOVERY",
+    "NO_QUANTUM_OR_GD_PROOF",
+    "NO_REVERSE_CAUSATION",
+    "NO_PRIVACY_SCOPE_EXPANSION",
+    "NO_AUTO_BIND_AUTHORITY",
+    "NO_GLOBAL_SYNC",
+    "NO_COEX",
+    "NO_CANON",
+    "NO_NATIVE_RUNTIME"
+  ]
+}

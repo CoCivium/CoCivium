@@ -1,0 +1,82 @@
+name: CoMindSeed CoBind R0 candidate verification
+
+on:
+  pull_request:
+    paths:
+      - 'ai/research/comindseed-cobind-golden-braid-cotheoryall-r0-20261110.json'
+      - 'docs/Architecture/COMINDSEED_COBIND_GOLDEN_BRAID_R0_20261110.md'
+      - 'scripts/CoBindCandidateRouterR0.py'
+      - 'tests/test_cobind_candidate_router_r0.py'
+      - 'tests/test_cobind_orb_fixtures_r0.py'
+      - 'examples/cobind/cobind-golden-braid-orb-r0.html'
+      - 'scripts/CoBindBrowserSmokeR0.py'
+      - '.github/workflows/comindseed-cobind-r0.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'ai/research/comindseed-cobind-golden-braid-cotheoryall-r0-20261110.json'
+      - 'docs/Architecture/COMINDSEED_COBIND_GOLDEN_BRAID_R0_20261110.md'
+      - 'scripts/CoBindCandidateRouterR0.py'
+      - 'tests/test_cobind_candidate_router_r0.py'
+      - 'tests/test_cobind_orb_fixtures_r0.py'
+      - 'examples/cobind/cobind-golden-braid-orb-r0.html'
+      - 'scripts/CoBindBrowserSmokeR0.py'
+      - '.github/workflows/comindseed-cobind-r0.yml'
+
+# Keep just the newest candidate run for this PR or main branch.
+# Do not multiply full Chromium runs for every incremental commit.
+concurrency:
+  group: cobind-r0-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  candidate-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout exact source, no persistent credentials
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+      - name: Compile and run 26 bounded synthetic tests
+        run: |
+          python3 -m py_compile scripts/CoBindCandidateRouterR0.py tests/test_cobind_candidate_router_r0.py
+          python3 -m unittest discover -s tests -p 'test_cobind_candidate_router_r0.py' -v
+      - name: Verify ten offline Orb scenarios against the actual Python router
+        run: |
+          python3 -m unittest discover -s tests -p 'test_cobind_orb_fixtures_r0.py' -v
+      - name: Check offline CoBind Orb in desktop and mobile Chromium
+        run: |
+          python3 scripts/CoBindBrowserSmokeR0.py --output-dir cobind-browser-smoke
+      - name: Upload browser source proof and screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cobind-browser-smoke
+          path: cobind-browser-smoke/
+          if-no-files-found: ignore
+          retention-days: 30
+      - name: Validate public source anchors and nonclaim boundaries
+        run: |
+          python3 - <<'PY'
+          import json
+          import subprocess
+          from pathlib import Path
+
+          p = Path('ai/research/comindseed-cobind-golden-braid-cotheoryall-r0-20261110.json')
+          d = json.loads(p.read_text(encoding='utf-8'))
+          assert d['schema'] == 'CoAll.CoMindSeed.CoBindRouting.R0-candidate'
+          assert 'NOT_CANON' in d['status'] and 'NOT_RUNTIME' in d['status']
+          assert len(d['anchors']) >= 6
+          for anchor in d['anchors']:
+              path = anchor['path']
+              assert Path(path).is_file(), path
+              got = subprocess.check_output(['git', 'hash-object', '--', path], text=True).strip()
+              assert got == anchor['github_blob_sha'], (path, got, anchor['github_blob_sha'])
+          assert 'NO_COEX' in d['nonclaims'] and 'NO_CANON' in d['nonclaims']
+          print('PASS: source references have exact Git blob match; no runtime or receiver proof inferred')
+          PY
