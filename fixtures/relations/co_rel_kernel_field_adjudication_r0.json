@@ -1,0 +1,102 @@
+{
+  "schema": "CoRelKernelField.Adjudication.v0.1-candidate",
+  "state": "CANDIDATE_COLLISION_ADJUDICATION__NO_CANON_NO_RUNTIME_NO_MERGE_AUTHORITY",
+  "source_collision_matrix": {
+    "path": "fixtures/relations/co_rel_kernel_field_collision_r0.json",
+    "git_blob_sha": "d356c7a2f93f31fc5c23970d6a961345af0fd5e9",
+    "semantic_sha256": "FED773B1A91B4C655F576CA71BBDA10389271A5290EF163E6C245D9075247ACB",
+    "corel_kernel_head": "ca7416263ef648e537a2ce8e7eebd8a109105f19",
+    "corelation_field_frozen_head": "95db06101b16954a90468c5ef4f1b4e78a3195a5"
+  },
+  "decisions": [
+    {
+      "decision_id": "D01_CAUSAL_STATUS_LAYERING",
+      "collision_case_id": "C02_CAUSAL_STATUS_VOCABULARY",
+      "status": "LAYERED_POLICY_RESOLVED",
+      "ownership": {
+        "kernel": "COARSE_SOURCE_CLAIM",
+        "field": "RICH_PROFILE_INTERPRETATION",
+        "mapping_owner": "TRANSLATION_ADAPTER"
+      },
+      "rules": [
+        {
+          "kernel_status": "causal",
+          "field_default": "CAUSAL_CANDIDATE",
+          "upgrade_rule": "CAUSAL_SUPPORTED_REQUIRES_FIELD_SIDE_SUPPORTED_CAUSAL_CRITERIA_AND_MUST_NOT_BE_INFERRED_FROM_KERNEL_STATUS_ALONE"
+        },
+        {
+          "kernel_status": "possibly_causal",
+          "field_default": "CAUSAL_CANDIDATE",
+          "upgrade_rule": "NONE"
+        },
+        {
+          "kernel_status": "non_causal",
+          "field_default": "NONCAUSAL",
+          "upgrade_rule": "PRESERVE_SOURCE_PROVENANCE_AND_EPISTEMIC_CLASS__DO_NOT_INFER_ACAUSAL_INFLUENCE"
+        },
+        {
+          "kernel_status": "unknown",
+          "field_default": "UNKNOWN_CAUSAL_STATUS",
+          "upgrade_rule": "CAUSALITY_NOT_APPLICABLE_MUST_BE_DECIDED_BY_FIELD_RELATION_FAMILY_OR_EXPLICIT_PROFILE_RULE"
+        },
+        {
+          "kernel_status": "mixed",
+          "field_default": null,
+          "upgrade_rule": "NO_SINGLE_VALUE__PRESERVE_SOURCE_STATUS_AND_REQUIRE_EXPLICIT_MULTI_RELATION_OR_EXTENSION_REPRESENTATION"
+        }
+      ],
+      "rails": [
+        "KERNEL_CAUSAL_STATUS_NE_FIELD_CAUSAL_STATUS",
+        "CAUSAL_NE_CAUSAL_SUPPORTED_BY_TRANSLATION",
+        "UNKNOWN_NE_CAUSALITY_NOT_APPLICABLE",
+        "MIXED_NE_FORCED_SINGLE_FIELD_VALUE",
+        "NONCAUSAL_NE_ACAUSAL_INFLUENCE",
+        "MAPPING_NE_EQUIVALENCE"
+      ]
+    },
+    {
+      "decision_id": "D02_ABSENCE_DUAL_LAYERING",
+      "collision_case_id": "C03_NEGATIVE_SPACE_ABSENCE",
+      "status": "LAYERED_POLICY_RESOLVED",
+      "ownership": {
+        "kernel": "ABSENCE_CLAIM_OR_OBSERVATION_PREDICATE",
+        "field": "TYPED_ABSENCE_PARTICIPANT_WHEN_RELATIONALLY_NEEDED",
+        "mapping_owner": "TRANSLATION_ADAPTER"
+      },
+      "rules": [
+        "DO_NOT_REIFY_EVERY_ABSENCE_PREDICATE_INTO_A_STANDALONE_FIELD_RELATUM",
+        "WHEN_AN_ABSENCE_MUST_PARTICIPATE_IN_OTHER_FIELD_RELATIONS_CREATE_A_PROJECTION_SCOPED_ABSENCE_RELATUM_WITH_EXACT_SOURCE_PROVENANCE",
+        "PROJECTION_SCOPED_ABSENCE_IDENTITY_MUST_NOT_BE_TREATED_AS_PROOF_OF_AN_INDEPENDENT_ENTITY",
+        "PRESERVE_SCOPE_OBSERVER_TIME_AND_EXPECTATION_CONTEXT_WHEN_AVAILABLE",
+        "PRESERVE_ABSENCE_NE_NONEXISTENCE_AND_NO_EVIDENCE_NE_EVIDENCE_OF_ABSENCE"
+      ],
+      "rails": [
+        "ABSENCE_PREDICATE_NE_ABSENCE_RELATUM",
+        "ABSENCE_RELATUM_NE_INDEPENDENT_ENTITY_CLAIM",
+        "DUAL_REPRESENTATION_NE_DUPLICATE_TRUTH",
+        "ABSENCE_NE_NONEXISTENCE",
+        "NO_EVIDENCE_NE_EVIDENCE_OF_ABSENCE",
+        "PROJECTION_RELATUM_NE_SOURCE_ENTITY"
+      ]
+    }
+  ],
+  "result": {
+    "ownership_unresolved_before": 2,
+    "ownership_unresolved_after": 0,
+    "semantic_non_equivalence_remaining": true,
+    "schema_mutation_required_now": false,
+    "candidate_layering": {
+      "kernel": "MINIMAL_RELATION_ATOM_PLUS_OBSERVER_TIME_REVISION_CONFLICT_RESOLUTION",
+      "field": "FIELD_PROFILE_TYPING_NEGATIVE_SPACE_PROJECTION_TRANSFORM_ADAPTERS",
+      "adapter": "LOSS_DECLARED_PARTIAL_TRANSLATION_BETWEEN_THE_TWO"
+    }
+  },
+  "nonclaims": [
+    "ADJUDICATION_NE_CANON",
+    "ADJUDICATION_NE_SCHEMA_MERGE",
+    "ADJUDICATION_NE_RUNTIME_INTEGRATION",
+    "OWNERSHIP_POLICY_RESOLVED_NE_SEMANTIC_EQUIVALENCE",
+    "TRANSLATION_RULE_NE_TRUTH",
+    "COLLISION_RESOLUTION_NE_MERGE_AUTHORITY"
+  ]
+}

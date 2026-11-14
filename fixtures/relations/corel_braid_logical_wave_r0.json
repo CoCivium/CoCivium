@@ -1,0 +1,183 @@
+{
+  "schema": "CoRel.CoBraid.LogicalReviewWave.R0",
+  "scope": "SYNTHETIC_PUBLIC_ONLY",
+  "max_parallel": 3,
+  "work": [
+    {
+      "work_id": "source-orientation",
+      "state": "VERIFIED_SOURCE",
+      "work_class": "READ_ONLY",
+      "collision_domain": "source",
+      "source_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "receipt_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+    },
+    {
+      "work_id": "braid-challenge",
+      "state": "OPEN",
+      "work_class": "READ_ONLY",
+      "collision_domain": "epistemic",
+      "source_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+      "receipt_sha256": null
+    },
+    {
+      "work_id": "speedo-review",
+      "state": "OPEN",
+      "work_class": "READ_ONLY",
+      "collision_domain": "visual",
+      "source_sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+      "receipt_sha256": null
+    },
+    {
+      "work_id": "x2-launcher-triage",
+      "state": "OPEN",
+      "work_class": "READ_ONLY",
+      "collision_domain": "x2",
+      "source_sha256": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+      "receipt_sha256": null
+    },
+    {
+      "work_id": "quiet-boot-effect",
+      "state": "OPEN",
+      "work_class": "EFFECT_GATED",
+      "collision_domain": "x2",
+      "source_sha256": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+      "receipt_sha256": null
+    },
+    {
+      "work_id": "braid-fanin-review",
+      "state": "OPEN",
+      "work_class": "READ_ONLY",
+      "collision_domain": "braid",
+      "source_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+      "receipt_sha256": null
+    },
+    {
+      "work_id": "historical-unknown",
+      "state": "HELD",
+      "work_class": "READ_ONLY",
+      "collision_domain": "historic",
+      "source_sha256": null,
+      "receipt_sha256": null
+    },
+    {
+      "work_id": "blocked-descendant",
+      "state": "OPEN",
+      "work_class": "READ_ONLY",
+      "collision_domain": "historic",
+      "source_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+      "receipt_sha256": null
+    }
+  ],
+  "relations": [
+    {
+      "rel_id": "dep-1",
+      "subject": "braid-challenge",
+      "predicate": "REVIEW_DEPENDS_ON",
+      "object": "source-orientation",
+      "causal_status": "unknown",
+      "provenance": [
+        "synthetic:causal-braid"
+      ]
+    },
+    {
+      "rel_id": "dep-2",
+      "subject": "speedo-review",
+      "predicate": "REVIEW_DEPENDS_ON",
+      "object": "source-orientation",
+      "causal_status": "unknown",
+      "provenance": [
+        "synthetic:causal-braid"
+      ]
+    },
+    {
+      "rel_id": "dep-3",
+      "subject": "x2-launcher-triage",
+      "predicate": "REVIEW_DEPENDS_ON",
+      "object": "source-orientation",
+      "causal_status": "unknown",
+      "provenance": [
+        "synthetic:causal-braid"
+      ]
+    },
+    {
+      "rel_id": "dep-4",
+      "subject": "quiet-boot-effect",
+      "predicate": "REVIEW_DEPENDS_ON",
+      "object": "x2-launcher-triage",
+      "causal_status": "unknown",
+      "provenance": [
+        "synthetic:causal-braid"
+      ]
+    },
+    {
+      "rel_id": "dep-5",
+      "subject": "braid-fanin-review",
+      "predicate": "REVIEW_DEPENDS_ON",
+      "object": "braid-challenge",
+      "causal_status": "unknown",
+      "provenance": [
+        "synthetic:causal-braid"
+      ]
+    },
+    {
+      "rel_id": "dep-6",
+      "subject": "braid-fanin-review",
+      "predicate": "REVIEW_DEPENDS_ON",
+      "object": "speedo-review",
+      "causal_status": "unknown",
+      "provenance": [
+        "synthetic:causal-braid"
+      ]
+    },
+    {
+      "rel_id": "dep-7",
+      "subject": "braid-fanin-review",
+      "predicate": "REVIEW_DEPENDS_ON",
+      "object": "x2-launcher-triage",
+      "causal_status": "unknown",
+      "provenance": [
+        "synthetic:causal-braid"
+      ]
+    },
+    {
+      "rel_id": "dep-8",
+      "subject": "blocked-descendant",
+      "predicate": "REVIEW_DEPENDS_ON",
+      "object": "historical-unknown",
+      "causal_status": "unknown",
+      "provenance": [
+        "synthetic:causal-braid"
+      ]
+    },
+    {
+      "rel_id": "narrative-1",
+      "subject": "speedo-review",
+      "predicate": "CAUSES",
+      "object": "quiet-boot-effect",
+      "causal_status": "possibly_causal",
+      "provenance": [
+        "synthetic:causal-braid"
+      ]
+    },
+    {
+      "rel_id": "narrative-2",
+      "subject": "braid-challenge",
+      "predicate": "INVERTS",
+      "object": "speedo-review",
+      "causal_status": "non_causal",
+      "provenance": [
+        "synthetic:causal-braid"
+      ]
+    },
+    {
+      "rel_id": "narrative-3",
+      "subject": "historical-unknown",
+      "predicate": "CHALLENGES",
+      "object": "source-orientation",
+      "causal_status": "unknown",
+      "provenance": [
+        "synthetic:causal-braid"
+      ]
+    }
+  ]
+}
