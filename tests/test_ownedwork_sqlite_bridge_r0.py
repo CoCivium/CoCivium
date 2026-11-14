@@ -379,5 +379,47 @@ class SyntheticBridgeR0(unittest.TestCase):
                     db, packet, actor_id=actor, grant_token=token)
 
 
+    def test_concurrent_single_grant_only_one_revoke(self):
+        """Two synchronized clients cannot both consume one synthetic grant."""
+        packet = self.accepted()
+        with tempfile.TemporaryDirectory() as d:
+            db = Path(d) / "receiver.sqlite"
+            commit_once(db, packet)
+            actor = "CI_RECEIVER_SYNTHETIC_ACTOR"
+            token = issue_receiver_revocation_grant(db, packet, actor)
+            barrier = Barrier(2)
+
+            def attempt():
+                barrier.wait(timeout=5)
+                try:
+                    revoke_with_receiver_grant(
+                        db, packet, actor_id=actor, grant_token=token)
+                    return "REVOKED"
+                except Held as exc:
+                    return str(exc)
+
+            with ThreadPoolExecutor(max_workers=2) as executor:
+                futures = [executor.submit(attempt) for _ in range(2)]
+                results = sorted(f.result(timeout=12) for f in futures)
+            self.assertEqual(results, ["HELD_GRANT_REPLAY", "REVOKED"])
+            self.assertEqual(
+                readback(db, expected_packet=packet)["state"], "HELD_REVOKED")
+
+    def test_privileged_raw_receiver_revoke_remains_outside_grant_gate(self):
+        """Fail-open deployment risk: DB writers bypass this adapter's grant.
+
+        This is an explicit negative boundary proof, not a production PASS.
+        Actual untrusted clients must have neither raw revoke API access nor
+        direct SQLite write access; CI does not enforce that separation.
+        """
+        packet = self.accepted()
+        with tempfile.TemporaryDirectory() as d:
+            db = Path(d) / "receiver.sqlite"
+            commit_once(db, packet)
+            revoke(db, packet)
+            self.assertEqual(
+                readback(db, expected_packet=packet)["state"], "HELD_REVOKED")
+
+
 if __name__ == "__main__":
     unittest.main()
