@@ -131,6 +131,26 @@ class UnmergePublicDonorTests(unittest.TestCase):
         with self.assertRaisesRegex(Hold, "HOLD_MISSING_SOURCE"):
             compile_projection(ROOT, fixture)
 
+    def test_in_root_symlink_donor_is_rejected_even_when_hash_matches(self):
+        # Content hashes do not turn a symlink alias into a direct donor path.
+        # Checking is_symlink() only after resolve() silently loses link identity.
+        with tempfile.TemporaryDirectory() as d:
+            root = Path(d)
+            for item in self.manifest["records"]:
+                target = root / item["path"]
+                target.parent.mkdir(parents=True, exist_ok=True)
+                shutil.copyfile(ROOT / item["path"], target)
+            original = Path(self.manifest["records"][0]["path"])
+            alias = root / original.parent / "SYMLINK_DONOR.json"
+            try:
+                alias.symlink_to(original.name)
+            except (OSError, NotImplementedError):
+                self.skipTest("symlink unavailable")
+            fixture = copy.deepcopy(self.manifest)
+            fixture["records"][0]["path"] = (original.parent / alias.name).as_posix()
+            with self.assertRaisesRegex(Hold, "HOLD_SYMLINK_SOURCE"):
+                compile_projection(root, fixture)
+
     def test_out_of_scope_source_rejected(self):
         fixture = copy.deepcopy(self.manifest)
         fixture["records"][0]["path"] = "docs/Architecture/COSESSION_AUTOCYCLE_R0.md"
