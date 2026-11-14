@@ -79,6 +79,12 @@ internal static class ContractTests
         Check("unbounded_json_holds", MuleObservation.Read(
               new string(' ', 9000), Now).Code == "HOLD_SOURCE_UNBOUND_OR_OVERSIZE");
 
+        // Exact string observed in the already-running native Python canary's
+        // MUTEX_NAME; no second GUI instance or native tray is created here.
+        Check("shared_tray_mutex_compatibility",
+              MuleObservation.ShadowTrayMutexName ==
+              @"Local\CoCivium.CoGuardianMule.ShadowR0.OneOwner");
+
         Check("invisible_effects_always_false",
               !MuleObservation.Read(Valid(), Now).ReceiverAuthenticated &&
               !MuleObservation.Read(Valid(), Now).RealWorkCompleted);
