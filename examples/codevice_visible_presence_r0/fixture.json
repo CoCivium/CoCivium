@@ -1,0 +1,142 @@
+{
+  "as_of": "2026-11-03T22:10:00+00:00",
+  "cameras": [
+    {
+      "capabilities": {
+        "low_glare_light": true,
+        "ptz": true,
+        "verified": true
+      },
+      "event": "PERSON",
+      "event_at": "2026-11-03T22:10:00+00:00",
+      "last_ack_at": null,
+      "link": "OBSERVED_REACHABLE",
+      "name": "Demo Camera A",
+      "night": true,
+      "observed_at": "2026-11-03T22:10:00+00:00",
+      "privacy": "LOCAL_ONLY",
+      "source": "SYNTHETIC_HA_EVENT"
+    },
+    {
+      "capabilities": {
+        "low_glare_light": false,
+        "ptz": false,
+        "verified": false
+      },
+      "event": "NONE",
+      "event_at": null,
+      "last_ack_at": null,
+      "link": "OBSERVED_REACHABLE",
+      "name": "Demo Camera B",
+      "night": false,
+      "observed_at": "2026-11-03T22:10:00+00:00",
+      "privacy": "LOCAL_ONLY",
+      "source": "SYNTHETIC_HEALTH_POLL"
+    },
+    {
+      "capabilities": {
+        "low_glare_light": false,
+        "ptz": false,
+        "verified": false
+      },
+      "event": "MOTION",
+      "event_at": "2026-11-03T22:08:59+00:00",
+      "last_ack_at": null,
+      "link": "OBSERVED_REACHABLE",
+      "name": "Demo Camera C",
+      "night": false,
+      "observed_at": "2026-11-03T22:08:59+00:00",
+      "privacy": "LOCAL_ONLY",
+      "source": "SYNTHETIC_HA_EVENT"
+    },
+    {
+      "capabilities": {
+        "low_glare_light": false,
+        "ptz": false,
+        "verified": false
+      },
+      "event": "NONE",
+      "event_at": null,
+      "last_ack_at": null,
+      "link": "UNKNOWN",
+      "name": "Demo Camera D",
+      "night": false,
+      "observed_at": null,
+      "privacy": "LOCAL_ONLY",
+      "source": "NONE"
+    },
+    {
+      "capabilities": {
+        "low_glare_light": false,
+        "ptz": false,
+        "verified": false
+      },
+      "event": "NONE",
+      "event_at": null,
+      "last_ack_at": null,
+      "link": "UNKNOWN",
+      "name": "Demo Camera E",
+      "night": false,
+      "observed_at": null,
+      "privacy": "LOCAL_ONLY",
+      "source": "NONE"
+    },
+    {
+      "capabilities": {
+        "low_glare_light": false,
+        "ptz": false,
+        "verified": false
+      },
+      "event": "NONE",
+      "event_at": null,
+      "last_ack_at": null,
+      "link": "UNKNOWN",
+      "name": "Demo Camera F",
+      "night": false,
+      "observed_at": null,
+      "privacy": "LOCAL_ONLY",
+      "source": "NONE"
+    },
+    {
+      "capabilities": {
+        "low_glare_light": false,
+        "ptz": false,
+        "verified": false
+      },
+      "event": "NONE",
+      "event_at": null,
+      "last_ack_at": null,
+      "link": "UNKNOWN",
+      "name": "Demo Camera G",
+      "night": false,
+      "observed_at": null,
+      "privacy": "LOCAL_ONLY",
+      "source": "NONE"
+    },
+    {
+      "capabilities": {
+        "low_glare_light": false,
+        "ptz": false,
+        "verified": false
+      },
+      "event": "NONE",
+      "event_at": null,
+      "last_ack_at": null,
+      "link": "UNKNOWN",
+      "name": "Demo Camera H",
+      "night": false,
+      "observed_at": null,
+      "privacy": "LOCAL_ONLY",
+      "source": "NONE"
+    }
+  ],
+  "inventory_scope": "EIGHT_SYNTHETIC_CAMERAS_UNBOUND_TO_DEVICES",
+  "policy": {
+    "acknowledgement_seconds": 4,
+    "cooldown_seconds": 45,
+    "fresh_seconds": 60,
+    "hardware_effects": false,
+    "no_network": true
+  },
+  "schema": "CoDeviceVisiblePresence.SyntheticObserver.R0"
+}
