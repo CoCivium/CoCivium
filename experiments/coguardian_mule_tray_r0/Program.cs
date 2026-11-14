@@ -11,9 +11,10 @@ internal static class Program
     [STAThread]
     private static void Main()
     {
-        // One tray instance per Windows logon session. This is NOT a distributed
-        // cross-origin pre-effect lease for any CoBar/CoGuardian operation.
-        using var mutex = new Mutex(true, @"Local\CoCivium.CoGuardianMuleShadow.R0",
+        // Reuse the bounded Python SHADOW canary's exact Windows session mutex.
+        // Suppresses a second tray of either implementation while one holds it.
+        // This is NOT a distributed cross-origin pre-effect authority lease.
+        using var mutex = new Mutex(true, MuleObservation.ShadowTrayMutexName,
                                     out bool isFirstInstance);
         if (!isFirstInstance)
             return;
