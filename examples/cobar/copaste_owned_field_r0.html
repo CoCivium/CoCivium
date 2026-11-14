@@ -102,6 +102,7 @@ pre{border:1px solid var(--edge);border-radius:8px;padding:12px;white-space:pre-
     editor.focus();
     editor.value+=' human change';
     check('undo_respects_human_edits',undo()==='HELD_DESTINATION_CHANGED'&&editor.value.endsWith(' human change'));
+    check('no_submit_control_or_network_adapter',!document.querySelector('button[type="submit"]')&&!document.querySelector('form')&&inputEvents===1);
     const result={checks:cases,stats:{events:inputEvents,raw_length:payload.length,
       visible_length:editor.value.length,send_count:0,clipboard_mutations:0}};
     document.getElementById('proof').setAttribute('data-proof',btoa(JSON.stringify(result)));
