@@ -1,0 +1,124 @@
+{
+  "schema": "CoExitGatePlanner.R0",
+  "state": "CANDIDATE_EXIT_GATE_PLANNER__NO_DESTRUCTIVE_EFFECTS",
+  "satisfied_gate_count": 4,
+  "unsatisfied_gate_count": 9,
+  "capabilities_now": {
+    "github_only": true,
+    "live_local_or_node_route": false,
+    "independent_failure_domain": false,
+    "provider_account_census": false,
+    "human_account_owner_action": false
+  },
+  "gates": [
+    {
+      "id": "UNIQUE_STATE_CENSUS_COMPLETE",
+      "satisfied": false,
+      "requires": [
+        "PROVIDER_ACCOUNT_CENSUS"
+      ],
+      "github_only_closable": false
+    },
+    {
+      "id": "INDEPENDENT_BOOTSTRAP_PROVEN",
+      "satisfied": true,
+      "requires": [],
+      "github_only_closable": true
+    },
+    {
+      "id": "PRIVATE_OFFSITE_CUSTODY_PROVEN",
+      "satisfied": false,
+      "requires": [
+        "INDEPENDENT_FAILURE_DOMAIN"
+      ],
+      "github_only_closable": false
+    },
+    {
+      "id": "PUBLIC_BOOTSTRAP_ALTERNATE_PROVEN",
+      "satisfied": false,
+      "requires": [
+        "INDEPENDENT_FAILURE_DOMAIN"
+      ],
+      "github_only_closable": false
+    },
+    {
+      "id": "RECEIVER_PICKUP_PROVEN",
+      "satisfied": true,
+      "requires": [],
+      "github_only_closable": true
+    },
+    {
+      "id": "CREDENTIAL_INDEPENDENCE_PROVEN",
+      "satisfied": false,
+      "requires": [
+        "HUMAN_AUTHORITY_OR_ACCOUNT_OWNER",
+        "MULTI_SURFACE_COMPOSITE"
+      ],
+      "github_only_closable": false
+    },
+    {
+      "id": "FAILURE_DOMAIN_DIVERSITY_PROVEN",
+      "satisfied": false,
+      "requires": [
+        "INDEPENDENT_FAILURE_DOMAIN"
+      ],
+      "github_only_closable": false
+    },
+    {
+      "id": "HUMAN_RECOVERY_PROVEN",
+      "satisfied": true,
+      "requires": [],
+      "github_only_closable": true
+    },
+    {
+      "id": "REVOCATION_AND_BILLING_MAP_COMPLETE",
+      "satisfied": false,
+      "requires": [
+        "HUMAN_AUTHORITY_OR_ACCOUNT_OWNER",
+        "PROVIDER_ACCOUNT_CENSUS"
+      ],
+      "github_only_closable": false
+    },
+    {
+      "id": "EXCEPTION_REGISTER_ACCEPTED",
+      "satisfied": true,
+      "requires": [],
+      "github_only_closable": true
+    },
+    {
+      "id": "PROVIDER_INDEPENDENT_REASONING_ROUTE_PROVEN",
+      "satisfied": false,
+      "requires": [
+        "LIVE_LOCAL_OR_NODE_ROUTE"
+      ],
+      "github_only_closable": false
+    },
+    {
+      "id": "PRIMARY_GIT_HOST_NOT_REQUIRED_PROVEN",
+      "satisfied": false,
+      "requires": [
+        "INDEPENDENT_FAILURE_DOMAIN"
+      ],
+      "github_only_closable": false
+    },
+    {
+      "id": "PRIMARY_LOCAL_SITE_NOT_REQUIRED_PROVEN",
+      "satisfied": false,
+      "requires": [
+        "INDEPENDENT_FAILURE_DOMAIN",
+        "LIVE_LOCAL_OR_NODE_ROUTE"
+      ],
+      "github_only_closable": false
+    }
+  ],
+  "expected": {
+    "github_only_unsatisfied_closable_count": 0,
+    "elected_next": "HOLD_FOR_INDEPENDENT_ROUTE_OR_ACCOUNT_CENSUS",
+    "destructive_authority": false
+  },
+  "wake_conditions": [
+    "LIVE_NON_PROVIDER_ROUTE_AVAILABLE",
+    "ACCOUNT_OR_SESSION_CENSUS_ROUTE_AVAILABLE",
+    "INDEPENDENT_OFFSITE_OR_SECOND_HOST_ROUTE_AVAILABLE"
+  ]
+}

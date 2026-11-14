@@ -1,0 +1,122 @@
+{
+  "schema": "CoDependencyCensusTripleLoss.R0",
+  "state": "DOCUMENTED_DEPENDENCY_CENSUS__NO_LIVE_INFRASTRUCTURE_CLAIM",
+  "scenarios": [
+    "PROVIDER_CHAT_LOSS",
+    "X2_LOCAL_SITE_LOSS",
+    "GITHUB_LOSS"
+  ],
+  "capabilities": [
+    {
+      "id": "INTERACTIVE_REASONING",
+      "provider": "DEGRADED",
+      "x2": "AVAILABLE",
+      "github": "AVAILABLE",
+      "independent_proven": false,
+      "critical": false,
+      "disposition": "GAP"
+    },
+    {
+      "id": "PUBLIC_BOOTSTRAP",
+      "provider": "AVAILABLE",
+      "x2": "AVAILABLE",
+      "github": "LOST",
+      "independent_proven": false,
+      "critical": true,
+      "disposition": "GAP"
+    },
+    {
+      "id": "PUBLIC_SOURCE_LINEAGE",
+      "provider": "AVAILABLE",
+      "x2": "AVAILABLE",
+      "github": "LOST",
+      "independent_proven": false,
+      "critical": true,
+      "disposition": "GAP"
+    },
+    {
+      "id": "PRIVATE_DURABLE_CUSTODY",
+      "provider": "AVAILABLE",
+      "x2": "LOST_OR_UNKNOWN",
+      "github": "AVAILABLE",
+      "independent_proven": false,
+      "critical": true,
+      "disposition": "GAP"
+    },
+    {
+      "id": "LOCAL_DETERMINISTIC_EXECUTION",
+      "provider": "AVAILABLE",
+      "x2": "LOST",
+      "github": "AVAILABLE",
+      "independent_proven": true,
+      "critical": false,
+      "disposition": "DEGRADED"
+    },
+    {
+      "id": "LOCAL_OPEN_MODEL_EXECUTION",
+      "provider": "AVAILABLE",
+      "x2": "LOST",
+      "github": "AVAILABLE",
+      "independent_proven": false,
+      "critical": false,
+      "disposition": "UNPROVEN"
+    },
+    {
+      "id": "HUMAN_READABLE_RECOVERY",
+      "provider": "AVAILABLE",
+      "x2": "DEGRADED",
+      "github": "DEGRADED",
+      "independent_proven": false,
+      "critical": true,
+      "disposition": "GAP"
+    },
+    {
+      "id": "AUTHORITY_AND_SEMANTIC_DOCTRINE",
+      "provider": "AVAILABLE",
+      "x2": "AVAILABLE",
+      "github": "DEGRADED",
+      "independent_proven": false,
+      "critical": true,
+      "disposition": "GAP"
+    },
+    {
+      "id": "COBAR_RICKBAR_UX",
+      "provider": "AVAILABLE",
+      "x2": "DEGRADED",
+      "github": "AVAILABLE",
+      "independent_proven": false,
+      "critical": false,
+      "disposition": "NONCRITICAL"
+    },
+    {
+      "id": "PROVIDER_SESSION_HISTORY",
+      "provider": "LOST",
+      "x2": "AVAILABLE",
+      "github": "AVAILABLE",
+      "independent_proven": false,
+      "critical": false,
+      "disposition": "NONCRITICAL"
+    }
+  ],
+  "priority_gaps": [
+    "INDEPENDENT_PUBLIC_BOOTSTRAP_MIRROR",
+    "PROVEN_PRIVATE_OFFSITE_CUSTODY",
+    "PROVIDER_INDEPENDENT_REASONING_ROUTE",
+    "HUMAN_READABLE_OFFLINE_RECOVERY_PACKET",
+    "SECOND_SOURCE_PROVENANCE_HOST_OR_EXPORT"
+  ],
+  "destructive_effects": false,
+  "live_x2_census_claimed": false,
+  "live_account_census_claimed": false,
+  "current_offsite_custody_claimed": false,
+  "rails": [
+    "DOCUMENTED_DEPENDENCY_NE_LIVE_DEPENDENCY_PROOF",
+    "PROVIDER_SESSION_NE_CONTROL_PLANE",
+    "GITHUB_NE_CUSTODY_ROOT",
+    "LOCAL_DEVICE_NE_CUSTODY_ROOT",
+    "CAPABILITY_DEGRADATION_NE_CONTINUITY_FAILURE",
+    "RECOVERY_KERNEL_NE_FULL_PROJECT_COPY",
+    "COPY_COUNT_NE_FAILURE_DOMAIN_COUNT",
+    "VALIDATION_IS_NOT_ACCEPTANCE"
+  ]
+}

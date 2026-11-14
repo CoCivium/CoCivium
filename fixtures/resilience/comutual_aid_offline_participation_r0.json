@@ -1,0 +1,204 @@
+{
+  "schema": "CoMutualAidOfflineParticipation.R0",
+  "state": "SYNTHETIC_OFFLINE_PARTICIPATION_CANARY__NO_REAL_EMERGENCY_NO_PUBLIC_DEPLOYMENT",
+  "source_bindings": {
+    "mutual_aid_doc_path": "docs/Architecture/COMUTUAL_AID_GAME_R0.md",
+    "mutual_aid_doc_blob_sha": "2ce8ece4b8ec51b2d9cec925c87868c97d8d4812",
+    "mutual_aid_fixture_path": "fixtures/resilience/coprovexit_mutualaid_r0.json",
+    "mutual_aid_fixture_blob_sha": "87353bf82d8f07dd460912bc1968806111401c6f"
+  },
+  "participants": [
+    {
+      "participant_id": "HUMAN_NO_DEVICE_A",
+      "has_device": false,
+      "consent_state": "ACTIVE",
+      "role": "NEIGHBOUR_OBSERVER",
+      "authority": "SIMULATION_PARTICIPANT_ONLY"
+    },
+    {
+      "participant_id": "HUMAN_RELAY_B",
+      "has_device": true,
+      "consent_state": "ACTIVE",
+      "role": "HUMAN_RELAY",
+      "authority": "RELAY_ONLY"
+    },
+    {
+      "participant_id": "COMMUNITY_HUB_C",
+      "has_device": true,
+      "consent_state": "ACTIVE",
+      "role": "COMMUNITY_HUB",
+      "authority": "SIMULATION_COORDINATION_ONLY"
+    },
+    {
+      "participant_id": "REFERRED_PERSON_D",
+      "has_device": false,
+      "consent_state": "OFFERED_NOT_ACCEPTED",
+      "role": "NONE",
+      "authority": "NONE"
+    },
+    {
+      "participant_id": "FORMER_PARTICIPANT_E",
+      "has_device": true,
+      "consent_state": "REVOKED",
+      "role": "NONE",
+      "authority": "NONE"
+    }
+  ],
+  "relay_contract": {
+    "allowed_media": [
+      "HUMAN_VERBAL_RELAY",
+      "PRINTED_CARD",
+      "COMMUNITY_NOTICEBOARD",
+      "TELEPHONE_TREE_SIM",
+      "RADIO_SIM",
+      "DIGITAL_MESSAGE"
+    ],
+    "central_server_required": false,
+    "device_required_for_originator": false,
+    "message_fields_required": [
+      "message_id",
+      "scenario_id",
+      "origin_participant_id",
+      "purpose",
+      "privacy_class",
+      "consent_snapshot",
+      "payload",
+      "authority_ceiling"
+    ],
+    "dedupe_key": "message_id",
+    "outbound_effect_authority": false
+  },
+  "cases": [
+    {
+      "id": "O01_DEVICELESS_ORIGINATOR_HUMAN_RELAY",
+      "message": {
+        "message_id": "MSG-001",
+        "scenario_id": "SIM-POWER-OUTAGE",
+        "origin_participant_id": "HUMAN_NO_DEVICE_A",
+        "purpose": "SIMULATED_WELFARE_CHECK_RESULT",
+        "privacy_class": "PUBLIC_SYNTHETIC",
+        "consent_snapshot": "ACTIVE",
+        "payload": "Neighbour A reports simulated check complete.",
+        "authority_ceiling": "ADVISORY_ONLY"
+      },
+      "route": [
+        "HUMAN_NO_DEVICE_A",
+        "HUMAN_RELAY_B",
+        "COMMUNITY_HUB_C"
+      ],
+      "media": [
+        "HUMAN_VERBAL_RELAY",
+        "DIGITAL_MESSAGE"
+      ],
+      "expected": "DELIVERED_SIMULATION"
+    },
+    {
+      "id": "O02_NETWORK_DOWN_PRINTED_CARD",
+      "message": {
+        "message_id": "MSG-002",
+        "scenario_id": "SIM-COMMS-OUTAGE",
+        "origin_participant_id": "HUMAN_NO_DEVICE_A",
+        "purpose": "SIMULATED_RESOURCE_OFFER",
+        "privacy_class": "PUBLIC_SYNTHETIC",
+        "consent_snapshot": "ACTIVE",
+        "payload": "Offer: one simulated transport slot.",
+        "authority_ceiling": "ADVISORY_ONLY"
+      },
+      "route": [
+        "HUMAN_NO_DEVICE_A",
+        "COMMUNITY_HUB_C"
+      ],
+      "media": [
+        "PRINTED_CARD"
+      ],
+      "expected": "DELIVERED_SIMULATION"
+    },
+    {
+      "id": "O03_DUPLICATE_RELAYS_DEDUPED",
+      "message": {
+        "message_id": "MSG-003",
+        "scenario_id": "SIM-FLOOD",
+        "origin_participant_id": "HUMAN_NO_DEVICE_A",
+        "purpose": "SIMULATED_NEED",
+        "privacy_class": "PUBLIC_SYNTHETIC",
+        "consent_snapshot": "ACTIVE",
+        "payload": "Need: simulated accessible transport check.",
+        "authority_ceiling": "ADVISORY_ONLY"
+      },
+      "duplicate_routes": [
+        ["HUMAN_NO_DEVICE_A", "HUMAN_RELAY_B", "COMMUNITY_HUB_C"],
+        ["HUMAN_NO_DEVICE_A", "COMMUNITY_HUB_C"]
+      ],
+      "expected_unique_deliveries": 1,
+      "expected": "DELIVERED_ONCE_DEDUPED"
+    },
+    {
+      "id": "O04_REFERRAL_DOES_NOT_ENROL",
+      "referrer": "HUMAN_RELAY_B",
+      "referred_participant_id": "REFERRED_PERSON_D",
+      "expected": "INVITATION_OFFER_ONLY"
+    },
+    {
+      "id": "O05_REVOKED_PARTICIPANT_NOT_ROUTED",
+      "origin_participant_id": "FORMER_PARTICIPANT_E",
+      "expected": "DROP_REVOKED_CONSENT"
+    },
+    {
+      "id": "O06_FRIENDSHIP_AFTER_COOPERATION_OPTIONAL",
+      "participants": ["HUMAN_NO_DEVICE_A", "HUMAN_RELAY_B"],
+      "cooperation_events": 3,
+      "expected": "SOCIAL_RELATION_CANDIDATE_ONLY"
+    },
+    {
+      "id": "O07_SIMULATED_DISPATCH_ROLE_NO_REAL_AUTHORITY",
+      "claimed_role": "SIMULATED_DISPATCHER",
+      "claimed_real_authority": "EMERGENCY_SERVICE_COMMAND",
+      "expected": "REJECT_REAL_AUTHORITY_ESCALATION"
+    },
+    {
+      "id": "O08_PRIVATE_PAYLOAD_PUBLIC_RELAY_HOLD",
+      "message": {
+        "message_id": "MSG-008",
+        "scenario_id": "SIM-HEATWAVE",
+        "origin_participant_id": "HUMAN_NO_DEVICE_A",
+        "purpose": "SIMULATED_PRIVATE_NOTE",
+        "privacy_class": "PRIVATE_SIMULATED",
+        "consent_snapshot": "ACTIVE",
+        "payload": "Synthetic private detail.",
+        "authority_ceiling": "ADVISORY_ONLY"
+      },
+      "route": [
+        "HUMAN_NO_DEVICE_A",
+        "COMMUNITY_HUB_C"
+      ],
+      "media": [
+        "COMMUNITY_NOTICEBOARD"
+      ],
+      "expected": "HOLD_PRIVACY_MISMATCH"
+    }
+  ],
+  "expected": {
+    "case_count": 8,
+    "device_less_success_count": 2,
+    "deduped_delivery_count": 1,
+    "auto_enrolment_count": 0,
+    "real_emergency_authority_count": 0,
+    "friendship_obligation_count": 0,
+    "external_effect_count": 0
+  },
+  "rails": [
+    "DEVICE_NE_PARTICIPATION_REQUIREMENT",
+    "CENTRAL_SERVER_NE_GAME_CONTINUITY_ROOT",
+    "OFFLINE_NE_NONPARTICIPANT",
+    "REFERRAL_NE_ENROLMENT",
+    "COOPERATION_NE_FRIENDSHIP_OBLIGATION",
+    "HELP_HISTORY_NE_PERSONAL_ACCESS_RIGHT",
+    "SIMULATED_ROLE_NE_REAL_CREDENTIAL",
+    "HELP_OFFER_NE_COMMAND_AUTHORITY",
+    "PRIVACY_CLASS_NE_RELAY_COMPATIBILITY",
+    "DUPLICATE_ROUTE_NE_DUPLICATE_DISPATCH",
+    "CONSENT_REVOKED_NE_FUTURE_ROUTING_ALLOWED",
+    "SIMULATION_NE_REAL_EMERGENCY",
+    "VALIDATION_IS_NOT_ACCEPTANCE"
+  ]
+}

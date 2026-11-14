@@ -1,0 +1,64 @@
+{
+  "schema": "CoProviderExitMutualAid.R0",
+  "provider_exit": {
+    "required_gates": [
+      "UNIQUE_STATE_CENSUS",
+      "INDEPENDENT_BOOTSTRAP",
+      "PRIVATE_CUSTODY",
+      "PUBLIC_BOOTSTRAP",
+      "RECEIVER_PICKUP",
+      "CREDENTIAL_INDEPENDENCE",
+      "FAILURE_DOMAIN_DIVERSITY",
+      "HUMAN_ACCESS_FALLBACK",
+      "REVOCATION_MAP",
+      "EXCEPTION_REGISTER"
+    ],
+    "current_exit_authority": false,
+    "account_deletion_allowed": false,
+    "provider_tab_closure_allowed": false,
+    "no_ups_policy": "ASSUME_ABRUPT_POWER_LOSS",
+    "minimum_critical_failure_domains": 2
+  },
+  "failure_domain_cases": [
+    {
+      "id": "FD1",
+      "independent_domains": 1,
+      "expected_resilient": false
+    },
+    {
+      "id": "FD2",
+      "independent_domains": 2,
+      "expected_resilient": true
+    },
+    {
+      "id": "FD3",
+      "independent_domains": 1,
+      "expected_resilient": false
+    },
+    {
+      "id": "FD4",
+      "independent_domains": 3,
+      "expected_resilient": true
+    }
+  ],
+  "mutual_aid": {
+    "simulation_only": true,
+    "real_emergency_command": false,
+    "device_required": false,
+    "central_server_required": false,
+    "friendship_obligation": false,
+    "human_worth_scoring": false,
+    "real_service_supersession": false
+  },
+  "rails": [
+    "DRAINED_NE_DELETE_SAFE",
+    "COPY_COUNT_NE_FAILURE_DOMAIN_COUNT",
+    "NO_UPS_REQUIRES_CRASH_TOLERANCE",
+    "ACCOUNT_RETIREMENT_REQUIRES_EXPLICIT_AUTHORITY",
+    "SIMULATION_NE_REAL_EMERGENCY",
+    "DEVICE_NE_PARTICIPATION_REQUIREMENT",
+    "COOPERATION_NE_FRIENDSHIP_OBLIGATION",
+    "CENTRAL_SERVER_NE_GAME_CONTINUITY_ROOT",
+    "VALIDATION_IS_NOT_ACCEPTANCE"
+  ]
+}

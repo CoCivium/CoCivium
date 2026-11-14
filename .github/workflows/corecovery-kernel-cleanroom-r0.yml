@@ -1,0 +1,105 @@
+name: CoRecovery Kernel Clean Room R0
+
+on:
+  pull_request:
+    paths:
+      - "docs/Architecture/CORECOVERY_KERNEL_CLEANROOM_R0.md"
+      - "fixtures/resilience/corecovery_kernel_cleanroom_r0.json"
+      - "tools/build_corecovery_kernel_cleanroom_r0.py"
+      - "tools/verify_corecovery_kernel_cleanroom_r0.py"
+      - "tools/fanin_corecovery_kernel_cleanroom_r0.py"
+      - ".github/workflows/corecovery-kernel-cleanroom-r0.yml"
+      - "docs/Architecture/COPROVIDER_EXIT_RESILIENCE_R0.md"
+      - "docs/Architecture/COEXIT_RIGHTS_DATA_ERASURE_R0.md"
+      - "docs/Architecture/CODEPENDENCY_CENSUS_TRIPLE_LOSS_R0.md"
+      - "docs/Architecture/CORECOVERY_KERNEL_R0.md"
+      - "fixtures/resilience/coprovexit_mutualaid_r0.json"
+      - "fixtures/resilience/coexit_rights_data_erasure_r0.json"
+      - "fixtures/resilience/codependency_census_triple_loss_r0.json"
+      - "fixtures/resilience/corecovery_kernel_r0.json"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out exact candidate head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 1
+      - name: Use Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Build self-contained recovery packet
+        run: python tools/build_corecovery_kernel_cleanroom_r0.py --output artifacts/recovery-kernel-packet-r0
+      - name: Upload recovery packet
+        uses: actions/upload-artifact@v4
+        with:
+          name: corecovery-kernel-packet-r0
+          path: artifacts/recovery-kernel-packet-r0
+          if-no-files-found: error
+          retention-days: 30
+
+  reader:
+    needs: build
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-14]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Use Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Download packet only
+        uses: actions/download-artifact@v4
+        with:
+          name: corecovery-kernel-packet-r0
+          path: packet
+      - name: Reconstruct orientation without repository checkout
+        run: python packet/verify.py packet --output readproof.json
+      - name: Upload receiver readproof
+        uses: actions/upload-artifact@v4
+        with:
+          name: corecovery-cleanroom-readproof-${{ matrix.os }}
+          path: readproof.json
+          if-no-files-found: error
+          retention-days: 30
+
+  fanin:
+    needs: reader
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out exact candidate head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 1
+      - name: Use Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Download clean-room readproofs
+        uses: actions/download-artifact@v4
+        with:
+          pattern: corecovery-cleanroom-readproof-*
+          path: readproofs
+      - name: Fan in distinct reader evidence
+        run: python tools/fanin_corecovery_kernel_cleanroom_r0.py --input-root readproofs --output artifacts/corecovery-cleanroom-fanin-r0.json
+      - name: Upload fan-in receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: corecovery-cleanroom-fanin-r0
+          path: artifacts/corecovery-cleanroom-fanin-r0.json
+          if-no-files-found: error
+          retention-days: 30
