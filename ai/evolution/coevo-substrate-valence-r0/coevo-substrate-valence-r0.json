@@ -1,0 +1,203 @@
+{
+  "schema": "CoCivium.CoEvoAll.SubstrateValence.R0.candidate",
+  "observed_date": "2026-11-04",
+  "state": "DRAFT_REVIEW_ONLY__NOT_A_RUNTIME_OR_CANON",
+  "work_id": "COEVO-SUBSTRATE-VALENCE-246-R0",
+  "source_governance": [
+    "https://github.com/CoCivium/CoCivium/issues/246",
+    "https://github.com/CoCivium/CoCivium/issues/317",
+    "https://github.com/CoCivium/CoCivium/issues/178",
+    "https://github.com/CoCivium/CoCivium/issues/181"
+  ],
+  "taxonomy": "Twelve overlapping comparison lenses, non-exhaustive and not twelve active engines",
+  "lenses": [
+    {
+      "id": "bio",
+      "label": "Biology / organisms",
+      "limit": "chirality and sequence; experiments require actual biological evidence",
+      "eligibility": "MATERIAL_WAKE_ONLY",
+      "runtime": "NOT_VERIFIED",
+      "receiver_benefit": "NOT_MEASURED",
+      "media": "OPTIONAL_PROJECTION"
+    },
+    {
+      "id": "chem",
+      "label": "Chemistry / materials",
+      "limit": "molecular mirror/enantio relations; stereochemistry not operational undo",
+      "eligibility": "MATERIAL_WAKE_ONLY",
+      "runtime": "NOT_VERIFIED",
+      "receiver_benefit": "NOT_MEASURED",
+      "media": "OPTIONAL_PROJECTION"
+    },
+    {
+      "id": "physical",
+      "label": "Physical / device / world",
+      "limit": "timestamped machine telemetry; offline observer is not powered-off host",
+      "eligibility": "MATERIAL_WAKE_ONLY",
+      "runtime": "NOT_VERIFIED",
+      "receiver_benefit": "NOT_MEASURED",
+      "media": "OPTIONAL_PROJECTION"
+    },
+    {
+      "id": "digital",
+      "label": "Digital / software / CI",
+      "limit": "exact revisions, tests, build, failure propagation, receiver readproof",
+      "eligibility": "MATERIAL_WAKE_ONLY",
+      "runtime": "NOT_VERIFIED",
+      "receiver_benefit": "NOT_MEASURED",
+      "media": "OPTIONAL_PROJECTION"
+    },
+    {
+      "id": "language",
+      "label": "Natural / code / math / music / visual / social languages",
+      "limit": "translation with declared grammar, ambiguity and loss",
+      "eligibility": "MATERIAL_WAKE_ONLY",
+      "runtime": "NOT_VERIFIED",
+      "receiver_benefit": "NOT_MEASURED",
+      "media": "OPTIONAL_PROJECTION"
+    },
+    {
+      "id": "mind",
+      "label": "Cognitive / memory / model context",
+      "limit": "source-addressable reconstruction; no inferred sentience",
+      "eligibility": "MATERIAL_WAKE_ONLY",
+      "runtime": "NOT_VERIFIED",
+      "receiver_benefit": "NOT_MEASURED",
+      "media": "OPTIONAL_PROJECTION"
+    },
+    {
+      "id": "social",
+      "label": "Social / organizations / institutions",
+      "limit": "roles, consent, reciprocity, non-inferred appointments",
+      "eligibility": "MATERIAL_WAKE_ONLY",
+      "runtime": "NOT_VERIFIED",
+      "receiver_benefit": "NOT_MEASURED",
+      "media": "OPTIONAL_PROJECTION"
+    },
+    {
+      "id": "visual",
+      "label": "Images / diagrams / spatial UI",
+      "limit": "CoOrb, CoMap and CoBar project one typed source state",
+      "eligibility": "MATERIAL_WAKE_ONLY",
+      "runtime": "NOT_VERIFIED",
+      "receiver_benefit": "NOT_MEASURED",
+      "media": "OPTIONAL_PROJECTION"
+    },
+    {
+      "id": "audio",
+      "label": "Audio / voice / music / silence",
+      "limit": "caption, quiet mode and consent; left/right stereo is not chirality",
+      "eligibility": "MATERIAL_WAKE_ONLY",
+      "runtime": "NOT_VERIFIED",
+      "receiver_benefit": "NOT_MEASURED",
+      "media": "OPTIONAL_PROJECTION"
+    },
+    {
+      "id": "time",
+      "label": "History / present / future",
+      "limit": "immutable originals, currentness and forecast marked as forecast",
+      "eligibility": "MATERIAL_WAKE_ONLY",
+      "runtime": "NOT_VERIFIED",
+      "receiver_benefit": "NOT_MEASURED",
+      "media": "OPTIONAL_PROJECTION"
+    },
+    {
+      "id": "energy",
+      "label": "Energy / computation / attention",
+      "limit": "finite leases and outcome per cost, not perpetual work",
+      "eligibility": "MATERIAL_WAKE_ONLY",
+      "runtime": "NOT_VERIFIED",
+      "receiver_benefit": "NOT_MEASURED",
+      "media": "OPTIONAL_PROJECTION"
+    },
+    {
+      "id": "symbolic",
+      "label": "Cultural / ethical / spiritual lenses",
+      "limit": "participant-authored meanings, not physical proof or authority",
+      "eligibility": "MATERIAL_WAKE_ONLY",
+      "runtime": "NOT_VERIFIED",
+      "receiver_benefit": "NOT_MEASURED",
+      "media": "OPTIONAL_PROJECTION"
+    }
+  ],
+  "primitives": {
+    "CoNAGI": {
+      "role": "Challenge unsafe or net-negative candidate; keep reason and counterevidence",
+      "not": "automatic permanent ban or blind -1 valence"
+    },
+    "CoInvx": {
+      "role": "Type-check converse, negation, mirror, backtrace, true inverse, compensation, alternative",
+      "not": "auto-flipping signs or claiming lossy transforms invertible"
+    },
+    "CoNunChuck": {
+      "role": "Typed two-endpoint edge with provenance, predicate and optional reverse traversal",
+      "not": "guaranteed +2 utility or default actuator"
+    },
+    "CoHandedness": {
+      "role": "Explicit orientation in a scoped coordinate, syntax or stereochemical convention",
+      "not": "equating R/S, L/D, stereo channels, motor handedness or left/right brain"
+    },
+    "CoSeedCloud": {
+      "role": "Lazy discoverable adjacent candidate graph, only materializing elected tasks",
+      "not": "always-on arbitrary fan-out, self-replicating agents or unbounded expense"
+    },
+    "CoValence": {
+      "role": "Context- and receiver-relative compatibility hypothesis with measured evidence",
+      "not": "physical chemical valence, fixed +/− values or authority grant"
+    },
+    "GluKeyEek": {
+      "role": "Candidate glue/key/backtrace from source RAW to tested reusable relation",
+      "not": "formal inverse of lossy RAW, replacement of original or disclosure right"
+    }
+  },
+  "operation_policy": {
+    "default": "CANDIDATE_ONLY",
+    "eligible_route": "SUBSCRIBED_AUTHORIZED_RECEIVERS_ONLY",
+    "raw_original": "IMMUTABLE_PRESERVE_AND_PERMISSION_CHECK",
+    "improvement": "INDEPENDENT_RECEIVER_EFFECT_PER_COST",
+    "propagation": "NEW_VERSION_AND_ANNOTATION__NEVER_REWRITE_HISTORY",
+    "review": "INDEPENDENT_CHALLENGE_AND_NEGATIVE_CONTROL",
+    "scaling": "LAZY_ADDRESSABILITY__BOUNDED_MATERIALIZATION",
+    "claims": [
+      "PROPOSED",
+      "TESTED_SYNTHETIC",
+      "LANDED_SOURCE",
+      "PICKED_UP_RECEIPT",
+      "OBSERVED_USEFUL_EFFECT"
+    ],
+    "forbidden": [
+      "GLOBAL_BROADCAST_ASSUMED",
+      "EFFECTS_FROM_SIGN",
+      "ASSUMED_BIO_MECHANISM",
+      "SELF_GRANTED_AUTHORITY",
+      "AUTOMATIC_CREDENTIAL_TOKENS",
+      "REWRITE_PAST",
+      "CLAIM_X2_RUNTIME"
+    ]
+  },
+  "human_burden_targets": [
+    "repeat_intent",
+    "carry_context",
+    "manual_file_relay",
+    "manual_session_keepalive",
+    "duplicate_startup",
+    "blind_status_audit",
+    "unnecessary_permission_reask",
+    "manual_restart_on_routine_failure"
+  ],
+  "owner_boundaries": {
+    "CoNexus": "eligible relation match, no invented delivery",
+    "CoOrb": "receiver-specific views, not additional truth store",
+    "CoTurtle": "bounded challenges, aggregate budget and stop",
+    "CoOmniPie": "independent comparisons and holdouts, not cherry-picked samples",
+    "CoEvoAll": "measure, select, retain/revert, sleep/wake"
+  },
+  "nonclaims": [
+    "A draft branch is not a public release or a receiver ACK",
+    "No proof all twelve lenses are active",
+    "No X2/CoStead materialization",
+    "No universal broadcasting or historical rewriting",
+    "Rich media is an optional encoding, not the underlying physical substrate",
+    "No discovery of chemical/biological chirality mechanisms or AI consciousness"
+  ]
+}
