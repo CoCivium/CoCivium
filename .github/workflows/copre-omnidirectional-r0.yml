@@ -1,0 +1,157 @@
+name: CoPre public graph omni-navigation candidate
+on:
+  schedule:
+    # Scheduled events run only from the default branch after reviewed merge.
+    - cron: '17 */6 * * *'
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'scripts/copre_path_query_r0.py'
+      - 'scripts/test_copre_path_query_r0.py'
+      - 'scripts/copre_public_readback_r0.py'
+      - 'scripts/test_copre_public_readback_r0.py'
+      - 'scripts/copre_seed_24h_canary_r0.py'
+      - 'scripts/copre_cold_handoff_r0.py'
+      - 'scripts/test_copre_cold_handoff_r0.py'
+      - 'scripts/copre_optional_ingress_r0.py'
+      - 'scripts/test_copre_optional_ingress_r0.py'
+      - 'docs/CoPreGeneric/Shareable_R0_20261109/CoPreGeneric-v1.0-DRAFT.md'
+      - 'scripts/test_copre_seed_24h_canary_r0.py'
+      - 'scripts/copre_handoff_fence_sim_r0.py'
+      - 'scripts/test_copre_handoff_fence_sim_r0.py'
+      - 'ai/copre-seed-path-fabric-r0-20261109.json'
+      - '.github/workflows/copre-omnidirectional-r0.yml'
+  push:
+    paths:
+      - 'scripts/copre_path_query_r0.py'
+      - 'scripts/test_copre_path_query_r0.py'
+      - 'scripts/copre_public_readback_r0.py'
+      - 'scripts/test_copre_public_readback_r0.py'
+      - 'scripts/copre_seed_24h_canary_r0.py'
+      - 'scripts/copre_cold_handoff_r0.py'
+      - 'scripts/test_copre_cold_handoff_r0.py'
+      - 'scripts/copre_optional_ingress_r0.py'
+      - 'scripts/test_copre_optional_ingress_r0.py'
+      - 'docs/CoPreGeneric/Shareable_R0_20261109/CoPreGeneric-v1.0-DRAFT.md'
+      - 'scripts/test_copre_seed_24h_canary_r0.py'
+      - 'ai/copre-seed-path-fabric-r0-20261109.json'
+      - '.github/workflows/copre-omnidirectional-r0.yml'
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: copre-public-readonly-survival
+  cancel-in-progress: false
+jobs:
+  public-graph-navigation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Read-only bidirectional source graph regression
+        run: python -B scripts/test_copre_path_query_r0.py -v
+      - name: Cross-run survival evidence negative controls
+        run: python -B scripts/test_copre_seed_24h_canary_r0.py -v
+      - name: Simulated exactly-once local handoff and stale-writer negative controls
+        run: python -B scripts/test_copre_handoff_fence_sim_r0.py -v
+      - name: Mirror readback negative controls
+        run: python -B scripts/test_copre_public_readback_r0.py -v
+      - name: Test bounded public packet, cold replay and false-ACK controls
+        run: python -B scripts/test_copre_cold_handoff_r0.py -v
+      - name: Test CoPre optional ingress with no mandatory rant and real stop/correction holds
+        run: python -B scripts/test_copre_optional_ingress_r0.py -v
+      - name: Run pinned public-source and proposed mirror readback (evidence only)
+        run: python -B scripts/copre_public_readback_r0.py --output /tmp/copre-mirror-readback.json
+      - name: Print bounded mirror status (no secrets)
+        run: cat /tmp/copre-mirror-readback.json
+      - name: Upload mirror evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: copre-readonly-mirror-evidence
+          path: /tmp/copre-mirror-readback.json
+          retention-days: 30
+      - name: Recover qualified prior observation if an older run exists
+        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p /tmp/copre-canary-prior
+          for run in $(gh api "repos/${{ github.repository }}/actions/workflows/copre-omnidirectional-r0.yml/runs?status=success&per_page=60" --jq '.workflow_runs[] | select((now - (.created_at | fromdateiso8601)) >= 86400) | .id'); do
+            if gh run download "$run" --repo "${{ github.repository }}" --name copre-seed24h-observation --dir /tmp/copre-canary-prior 2>/dev/null; then
+              break
+            fi
+          done
+          if [ -f /tmp/copre-canary-prior/copre-seed24h-observation.json ]; then
+            cp /tmp/copre-canary-prior/copre-seed24h-observation.json /tmp/copre-prior.json
+          fi
+      - name: Probe pinned CoPre Seed and qualify only with distinct 24h prior observation
+        run: python -B scripts/copre_seed_24h_canary_r0.py --output /tmp/copre-seed24h-observation.json --prior /tmp/copre-prior.json
+      - name: Print bounded survival verdict
+        if: always()
+        run: |
+          if [ -f /tmp/copre-seed24h-observation.json ]; then cat /tmp/copre-seed24h-observation.json; fi
+      - name: Preserve survival evidence for later independent-run comparisons
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: copre-seed24h-observation
+          path: /tmp/copre-seed24h-observation.json
+          retention-days: 30
+          if-no-files-found: warn
+      - name: Machine query must never claim independent receiver ACK
+        run: |
+          python -B scripts/copre_path_query_r0.py copre-entry copre-package --direction both > /tmp/path.json
+          python -c 'import json; a=json.load(open("/tmp/path.json")); assert a["recipient_ack"] is False and a["authority_granted"] is False and a["integration"] is False'
+
+      - name: Checkout exact source commit for cold handoff packet
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - name: Prepare public-only cold handoff packet
+        env:
+          SOURCE_COMMIT: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          python -B scripts/copre_cold_handoff_r0.py emit --source-root . --output /tmp/copre-cold-packet --commit "$SOURCE_COMMIT"
+      - name: Transfer exact source packet to a new isolated job
+        uses: actions/upload-artifact@v4
+        with:
+          name: copre-cold-readback-packet
+          path: /tmp/copre-cold-packet/
+          if-no-files-found: error
+          retention-days: 7
+  public-cold-recovery:
+    needs: public-graph-navigation
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - name: Check out verifier only at source commit
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Download source capsule from preceding job
+        uses: actions/download-artifact@v4
+        with:
+          name: copre-cold-readback-packet
+          path: /tmp/copre-cold-received/
+      - name: Independently re-fetch public immutable source and validate work pointer
+        env:
+          COLD_READER: actions-${{ github.run_id }}-${{ github.run_attempt }}-fresh-job
+        run: |
+          python -B scripts/copre_cold_handoff_r0.py accept --packet /tmp/copre-cold-received --receipt /tmp/copre-cold-readback.json --reader "$COLD_READER"
+      - name: Print qualified bounded receipt without private content
+        run: |
+          python -c 'import json; r=json.load(open("/tmp/copre-cold-readback.json")); assert r["state"]=="CI_SEPARATE_JOB_COLD_SOURCE_READBACK_ONLY" and not r["independent_external_receiver_ack"] and not r["co_stead_pickup"] and not r["survived_24h"] and r["effect_count"]==0'
+          cat /tmp/copre-cold-readback.json
+      - name: Preserve isolated cold-readback evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: copre-cold-readback-receipt
+          path: /tmp/copre-cold-readback.json
+          if-no-files-found: error
+          retention-days: 14
