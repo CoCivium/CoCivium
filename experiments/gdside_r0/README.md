@@ -98,3 +98,46 @@ Source anchors: [CoOrbWare nonprivileged inversion](../../docs/Architecture/COOR
 The declared rights-context/no-action fixture now exists in this draft. Next: have an independent reviewer challenge the fixture's artificial outcomes, verify any actual rights/benefit claims through affected parties, and test a held-out ordinary-cause/null baseline. No second ontology, watcher, evaluator service or public rollout.
 
 Source anchors: [CoOntPrinciple](../../docs/Architecture/COONTPRINCIPLE_EVOLVING_MEANING_R0_20261101.md), [CoSubstrateField](../../docs/Architecture/COSUBSTRATE_FIELD_R0.md), [CoFuturePull](../../docs/Evolution/COFUTUREPULL_GDSIDE_R0.md), [G_dSide/CoPriMath](../../docs/Evolution/GDSIDE_COPRIMATH_GSLOOP_PUBLIC_R0.md).
+
+## R0C: Are real things defined by the between, rather than quantum matter?
+
+**Decision: do not assert either exclusive foundation.** For Civ2+/CoAll *coordination software*, the useful **operational unit** is often a situated interaction or a possible transition with identity, participants, boundaries, physical realization where relevant, evidence, rights and outcomes. This does **not** prove that every physically real entity is reducible to relations, that relata disappear, that quantum mechanics is inapplicable, or that a metaphorical nonmaterial carrier exists. It is a design preference for interoperable work records, not a discovery in physics or a compulsory metaphysics.
+
+Prior retained lenses: [CoOntPrinciple](../../docs/Architecture/COONTPRINCIPLE_EVOLVING_MEANING_R0_20261101.md) (contextual meaning), [CoSubstrateField](../../docs/Architecture/COSUBSTRATE_FIELD_R0.md) (physical and digital implementation classes), [CoInterstice/CoInversion](../../docs/Architecture/COINTERSTICE_COINVERSION_COGLYPH_INPUT_FABRIC_R0_20261024.md) (spaces between observed events), [CoFuturePull](../../docs/Evolution/COFUTUREPULL_GDSIDE_R0.md) (revisable candidate futures). None is superseded by this amendment.
+
+### Eight concurrent lenses on one WorkID
+
+1. **Relata:** participants, artifacts, institutions, bodies, devices or other addressable entities, with explicit identification confidence. A relation need not erase its endpoints.
+2. **Interaction:** a typed, directed/undirected, scoped relation; observed or proposed, not self-authenticating.
+3. **Event / change:** a time-bounded occurrence or transition, with a before/after contract and uncertain causal attribution.
+4. **Interstice:** a bounded interval, boundary, silence, absence, delay, gap, or unchosen alternative. `NOT_OBSERVED` is not `EXPLICITLY_ABSENT` or consent.
+5. **Material realization:** physical systems, biological substrates, classical/quantum devices, energy and instruments where causal or performance claims actually require them. `ABSTRACTION_NE_NEW_PHYSICS`.
+6. **Situated meaning/value:** observer, affected population, interpretive tradition, disputed rights, benefit, refusal and translation losses.
+7. **Evidence:** source bytes, conditions of observation, measurement units, calibration, uncertainty, falsifiers, and competing interpretations.
+8. **Authority / receiver effect:** who may act, exact WorkID and version, revocation, no-action, result, accepted receiver evidence, recoverability.
+
+These are **overlapping projections**, not eight new ontological strata or a mandatory global dictionary. Some domains use only a subset, and new categories must be justified by discrimination or operational advantage. Ontic structural realism, process philosophy and entity-centered models are competing philosophical viewpoints, not a consensus that relational structure alone proves existence (see [SEP structural realism](https://plato.stanford.edu/entries/structural-realism/) and [SEP process philosophy](https://plato.stanford.edu/entries/process-philosophy/)).
+
+### Discriminating failure / inverse cases
+
+- Same object IDs and the same `flourishing` score, but different evidence-generating conditions or physical substrate assumptions: **HOLD comparison** until an applicability contract matches and, for actual claims, is independently supported.
+- Same cultural label, changed affected-party rights, benefit recipient or refusal: **HOLD**, notwithstanding identical graph topology.
+- Same relation text, different temporal direction or provenance: do not presume identical cause, consent or effect.
+- Different labels / hardware substrates under the *same declared synthetic* operational contract: may compare **only for that stated fixture**, not infer a single material ontology or cross-substrate performance parity.
+- Pauses, silences, empty intervals and failures to receive a reply: may be recorded as interstices, but are **not** intention, rejection, a supernatural signal or a permission grant.
+- The absence of physical observations does not prove a nonphysical mechanism; conversely social obligations, promises and experiences can matter without a novel force.
+- A rejected schema mutation or unauthorized receiver write must not destroy a separately held pending-work draft.
+- A recursively challenged interpretation must have a finite budget and preserve dissent and `UNKNOWN` after stopping.
+
+### Concrete source-only correction in this draft
+
+`model.Candidate` now requires an **applicability_contract** in addition to metric contracts, affected-scope and rights context. `same_comparison_contract` refuses comparisons when declared evidence regimes differ; `synthetic_candidate` uses one explicitly unverified *toy* applicability reference. Three new negative cases challenge incompatible applicability, missing applicability, and unchanged labels under changed temporal/transition conditions. This is **syntactic structural gating only**, not an authenticated scientific validation, causal proof, or transfer license.
+
+### CoOrb/CoOrbWare and six-layer CoAckRewised UX
+
+Project **one original WorkID/evidence spine** through object, interaction, interstice, physical realization and future-option lenses. Keep a visible lineage/delta/unknown marker when switching; do not clone the WorkID or silently promote hypotheses. The six diagnostic layers in the current user-supplied surface (X2/OS, browser, chat interface, provider services, model, CoWorkObject) are **failure-boundary layers**, not ontological claims. CoWorkObject portability can be tested independently of whether a provider's browser UI is responsive.
+
+**Next product acceptance:** a bounded first-use CoOrb/RickBar comparison of the *same* synthetic WorkID rendered in object-first, relation-first and interstice-first views; source identity, evidence status, rights and receiver state must round-trip unchanged. A real user should reach one useful action without the original chat tab, with screen-reader-readable labels. Time-to-useful-action, visual comprehension, interruption cost, and independently verified receiver effect are the measurable outcomes; all are **UNTESTED for this note**.
+
+`RELATION_FIRST_COORDINATION_NE_RELATIONS_ONLY_PHYSICS` · `INBETWEEN_NE_VOID_OR_INTENT` · `SUBSTRATE_AGNOSTIC_INTERFACE_NE_NONQUANTUM_UNIVERSE` · `SAME_GRAPH_NE_SAME_RIGHTS` · `WORKID_PORTABILITY_NE_RECEIVER_ACK` · `MODEL_SUCCESS_NE_COBAR_DEPLOYED`.
+
