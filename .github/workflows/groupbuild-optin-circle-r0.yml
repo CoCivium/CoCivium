@@ -1,0 +1,36 @@
+name: GroupBuild opt-in circle R0
+permissions:
+  contents: read
+on:
+  push:
+    paths:
+      - "examples/groupbuild_optin_circle_r0/**"
+      - ".github/workflows/groupbuild-optin-circle-r0.yml"
+  pull_request:
+    paths:
+      - "examples/groupbuild_optin_circle_r0/**"
+      - ".github/workflows/groupbuild-optin-circle-r0.yml"
+jobs:
+  simulated-only:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run opt-in matching tests
+        working-directory: examples/groupbuild_optin_circle_r0
+        run: |
+          python3 -B -m unittest -q test_groupbuild.py
+          python3 -B groupbuild_club.py --fixture fixture.json > /tmp/groupbuild-report.json
+          python3 - <<'PY2'
+          import json
+          from pathlib import Path
+          r=json.loads(Path('/tmp/groupbuild-report.json').read_text())
+          assert r['real_members']==0 and r['external_effects']==0
+          assert r['sent']==0 and r['staffed_reviewers']==0
+          assert r['ready_for_review']==1
+          assert all(x['intro_sent'] is False and x['identities_revealed'] is False for x in r['pairs'])
+          print('GROUPBUILD_SYNTHETIC_ZERO_EFFECT_PASS')
+          PY2
