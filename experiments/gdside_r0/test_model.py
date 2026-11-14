@@ -107,5 +107,24 @@ class TestCandidate(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "SITUATED_SCOPE_REQUIRED"):
             frontier([no_scope])
 
+    def test_no_action_wins_when_declared_rights_veto_changes_frontier(self):
+        # Held-out toy vectors, not observations or authenticated permissions.
+        no_action = synthetic_candidate("no_action", (2,2,2,2,3,3))
+        preferred = synthetic_candidate("gdside", (9,9,9,9,1,1))
+        self.assertEqual(frontier([no_action, preferred]), ["gdside"])
+        vetoed = replace(preferred, rights_violation=True)
+        self.assertEqual(frontier([no_action, vetoed]), ["no_action"])
+        # A changed rights contract cannot be silently compared either.
+        drifted = replace(preferred, rights_context="fixture:changed-rights")
+        with self.assertRaisesRegex(ValueError, "INCOMMENSURABLE_CONTEXT"):
+            frontier([no_action, drifted])
+
+    def test_unknown_outcome_is_not_silently_zero_filled(self):
+        baseline = synthetic_candidate("baseline", (1,1,1,1,1,1))
+        missing = replace(baseline, outcomes={**baseline.outcomes,
+                                              "knowledge": None})
+        with self.assertRaisesRegex(ValueError, "INVALID_FINITE_METRIC"):
+            frontier([missing])
+
 if __name__=="__main__":
     unittest.main()
