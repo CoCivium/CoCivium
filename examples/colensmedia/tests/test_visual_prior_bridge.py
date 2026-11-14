@@ -98,5 +98,19 @@ class TestVisualSourceBridge(unittest.TestCase):
         self.assertNotIn('primary_declaration_text',self.proj['source_provenance'])
         self.assertIn('data.source_provenance.source_status',self.html)
 
+    def test_62_retro_is_opt_in_and_default_modern(self):
+        self.assertIn('data-visual-theme="modern" aria-pressed="true"',self.html)
+        self.assertIn('data-visual-theme="retro" aria-pressed="false"',self.html)
+        self.assertIn("let visualTheme='modern'",self.html)
+    def test_63_retro_has_no_new_source_or_authority(self):
+        self.assertEqual(self.proj['authority'],'NONE')
+        self.assertEqual(len(self.proj['nodes']),9)
+        self.assertIn('rings and colours are decorative',self.html.lower())
+        self.assertIn('no live signals',self.html)
+    def test_64_retro_preserves_three_projections(self):
+        self.assertEqual(self.proj['views'],['Map','Orb','Text'])
+        self.assertIn("data-view=\"Text\"",self.html)
+        self.assertIn('class:\'retro-ring',self.html)
+
 
 if __name__=='__main__': unittest.main()
