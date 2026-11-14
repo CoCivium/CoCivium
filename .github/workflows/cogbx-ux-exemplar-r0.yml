@@ -36,6 +36,8 @@ jobs:
         run: node examples/cobar/test_copaste_bulk_r0.cjs
       - name: Check CoCopy/CoPaste real headless Chrome DOM insertion
         run: node examples/cobar/test_copaste_browser_r0.cjs
+      - name: Verify CoCopy owned-field product canary in headless Chrome
+        run: node examples/cobar/test_copaste_owned_field_browser_r0.cjs
       - name: Check source boundaries
         run: |
           python - <<'PY'
