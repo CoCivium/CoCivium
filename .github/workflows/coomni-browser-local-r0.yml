@@ -1,0 +1,26 @@
+name: CoOmni browser-local R0 synthetic source checks
+
+on:
+  pull_request:
+    paths:
+      - "examples/cohandoff_r0/**"
+      - ".github/workflows/coomni-browser-local-r0.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  inline-source-smoke:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - name: Checkout exact PR candidate
+        uses: actions/checkout@v4
+      - name: Use Node 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Check test harness JavaScript syntax
+        run: node --check examples/cohandoff_r0/smoke.cjs
+      - name: Run synthetic source-level sender/receiver tests
+        run: node examples/cohandoff_r0/smoke.cjs
