@@ -1,0 +1,24 @@
+{
+  "schema": "CoAll.CoEyes.RealityAndOpportunity.R0.SYNTHETIC",
+  "as_of": "2026-11-08T12:50:00Z",
+  "remote_route": "OFFLINE",
+  "surface": {
+    "visual": {
+      "kind": "STATIC_WALLPAPER",
+      "observer_id": "synthetic-human-report",
+      "observed_at": "2026-11-08T12:50:00Z",
+      "contains_text": "CoBar",
+      "motion": false
+    }
+  },
+  "events": [
+    {
+      "event_id": "user-report-01",
+      "kind": "FOREGROUND_CONSOLE_INTRUSION",
+      "source_type": "USER_REPORT",
+      "owner_ref": "",
+      "ownership": "UNKNOWN",
+      "observed_at": "2026-11-08T12:50:00Z"
+    }
+  ]
+}
