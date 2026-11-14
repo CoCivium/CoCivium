@@ -102,29 +102,56 @@ def compile_projection(root: Path, fixture: dict) -> dict:
 
 
 def unmerge_rehydrate(root: Path, projection: dict) -> dict:
-    """Recover ORIGINAL bytes from immutable source pointers; reject corruption."""
+    """Recover ORIGINAL bytes from immutable pointers, rejecting forged success."""
+    require(isinstance(projection, dict), "PROJECTION_TYPE")
     require(projection.get("schema") == "CoSession.UnmergePublicProjection.R0",
             "PROJECTION_SCHEMA")
+    require(projection.get("state") == "THREE_REAL_PUBLIC_DONOR_OBJECTS_INDEXED__NO_PROVIDER_EFFECTS",
+            "PROJECTION_STATE")
+    require(projection.get("effects") == NO_EFFECTS and
+            projection.get("close_safe") is False and
+            projection.get("delete_safe") is False, "PROJECTION_EFFECT_GATE")
+    require(projection.get("nonclaims") == NONCLAIMS, "PROJECTION_NONCLAIMS")
+    require(projection.get("coverage") == {
+        "source_records": 3, "distinct_source_defined_session_ids": 3,
+        "provider_chat_census": "UNPROVEN"}, "PROJECTION_COVERAGE")
     records = projection.get("records")
     require(isinstance(records, list) and len(records) == 3, "PROJECTION_SCOPE")
     recovered = []
+    recovered_dissent = []
+    seen_ids, seen_paths, seen_deltas = set(), set(), set()
     for record in records:
+        require(isinstance(record, dict), "PROJECTION_ROW_TYPE")
+        sid, rel, delta = record.get("session_id"), record.get("source_path"), record.get("delta_id")
+        require(sid not in seen_ids and rel not in seen_paths and delta not in seen_deltas,
+                "PROJECTION_DUPLICATE_DONOR")
+        seen_ids.add(sid)
+        seen_paths.add(rel)
+        seen_deltas.add(delta)
+        require(record.get("source_disposition") == "PRESERVED_NOT_SUPERSEDED",
+                "SOURCE_DISPOSITION_CHANGED")
         blob, source = read_donor(root, {
-            "path": record.get("source_path"),
-            "session_id": record.get("session_id"),
+            "path": rel,
+            "session_id": sid,
             "git_blob_sha": record.get("source_git_blob_sha"),
         })
         require(hashlib.sha256(blob).hexdigest() == record.get("source_sha256"),
                 "REHYDRATION_DIGEST")
+        require(record.get("bytes") == len(blob), "SOURCE_SIZE_CHANGED")
+        require(delta == source.get("delta_id"), "SOURCE_DELTA_CHANGED")
+        require(record.get("epistemic_class") == source.get("epistemic_class"),
+                "EVIDENCE_CLASS_CHANGED")
         require({k: source[k] for k in FIELDS} == record.get("selected_fields"),
                 "SELECTED_FIELDS_CHANGED")
+        recovered_dissent.extend(source["contradictions"])
         recovered.append({
-            "session_id": record["session_id"],
-            "delta_id": record["delta_id"],
+            "session_id": sid,
+            "delta_id": delta,
             "source_sha256": hashlib.sha256(blob).hexdigest(),
             "source_bytes_recovered": len(blob),
             "status": "EXACT_SOURCE_BYTES_RECOVERABLE_FROM_GIT",
         })
+    require(projection.get("dissent") == recovered_dissent, "DISSENT_LEDGER_CHANGED")
     return {
         "state": "PASS_THREE_PUBLIC_GIT_DONOR_ROUNDTRIP__NO_SESSION_CLOSE",
         "recovered": recovered, "effects": dict(NO_EFFECTS),
