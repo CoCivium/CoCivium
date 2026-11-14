@@ -23,7 +23,7 @@ jobs:
           python-version: '3.12'
       - name: Run rights, Pareto, and negative-control tests
         working-directory: experiments/gdside_r0
-        run: python -B -m unittest -v test_model
+        run: python -B -m unittest discover -p 'test_*.py' -v
       - name: Emit synthetic results; not economic validation
         working-directory: experiments/gdside_r0
         run: python -B model.py
