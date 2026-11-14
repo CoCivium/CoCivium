@@ -1,0 +1,30 @@
+test_both_copies_loss_is_hold (test_coobject_capsule_r0.CapsuleTests.test_both_copies_loss_is_hold) ... ok
+test_both_copy_tamper_is_hold (test_coobject_capsule_r0.CapsuleTests.test_both_copy_tamper_is_hold) ... ok
+test_both_source_capsule_and_manifest (test_coobject_capsule_r0.CapsuleTests.test_both_source_capsule_and_manifest) ... ok
+test_changed_privacy_fails (test_coobject_capsule_r0.CapsuleTests.test_changed_privacy_fails) ... ok
+test_check_cli_reports_real_status (test_coobject_capsule_r0.CapsuleTests.test_check_cli_reports_real_status) ... ok
+test_digest_change_does_not_greenwash (test_coobject_capsule_r0.CapsuleTests.test_digest_change_does_not_greenwash) ... ok
+test_empty_source_is_valid (test_coobject_capsule_r0.CapsuleTests.test_empty_source_is_valid) ... ok
+test_failed_check_cli_exit_nonzero (test_coobject_capsule_r0.CapsuleTests.test_failed_check_cli_exit_nonzero) ... ok
+test_hash_match (test_coobject_capsule_r0.CapsuleTests.test_hash_match) ... ok
+test_no_executable_authority (test_coobject_capsule_r0.CapsuleTests.test_no_executable_authority) ... ok
+test_no_path_traversal (test_coobject_capsule_r0.CapsuleTests.test_no_path_traversal) ... ok
+test_no_receiver_ack_or_authentication_claim (test_coobject_capsule_r0.CapsuleTests.test_no_receiver_ack_or_authentication_claim) ... ok
+test_one_replica_corruption_graceful_degradation (test_coobject_capsule_r0.CapsuleTests.test_one_replica_corruption_graceful_degradation) ... ok
+test_one_replica_loss_graceful_degradation (test_coobject_capsule_r0.CapsuleTests.test_one_replica_loss_graceful_degradation) ... ok
+test_pack_both_copies_ready (test_coobject_capsule_r0.CapsuleTests.test_pack_both_copies_ready) ... ok
+test_reject_oversize (test_coobject_capsule_r0.CapsuleTests.test_reject_oversize) ... ok
+test_reject_pack_into_existing (test_coobject_capsule_r0.CapsuleTests.test_reject_pack_into_existing) ... ok
+test_reject_payload_symlink (test_coobject_capsule_r0.CapsuleTests.test_reject_payload_symlink) ... ok
+test_reject_symlink_source (test_coobject_capsule_r0.CapsuleTests.test_reject_symlink_source) ... ok
+test_restore_after_primary_loss (test_coobject_capsule_r0.CapsuleTests.test_restore_after_primary_loss) ... ok
+test_restore_never_clobbers (test_coobject_capsule_r0.CapsuleTests.test_restore_never_clobbers) ... ok
+test_seren_deterministic (test_coobject_capsule_r0.CapsuleTests.test_seren_deterministic) ... ok
+test_seren_same_object_hold (test_coobject_capsule_r0.CapsuleTests.test_seren_same_object_hold) ... ok
+test_seren_unverified_source_hold (test_coobject_capsule_r0.CapsuleTests.test_seren_unverified_source_hold) ... ok
+test_unknown_authority_fails (test_coobject_capsule_r0.CapsuleTests.test_unknown_authority_fails) ... ok
+
+----------------------------------------------------------------------
+Ran 25 tests in 0.042s
+
+OK
