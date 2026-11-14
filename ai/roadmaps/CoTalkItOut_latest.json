@@ -1,0 +1,16 @@
+{
+  "schema": "CoAll.CoTalkItOut.PublicAliasCandidate.R0",
+  "logical_name": "CoTalkItOut_latest.json",
+  "status": "DRAFT_BRANCH_ONLY_NOT_MAINLINE",
+  "points_to": "ai/roadmaps/cotalkitout-human-optional-r0-20261112.json",
+  "effective_revision": "2026-11-12/R0",
+  "authority": "PROPOSED_SINGLE_ELECTED_PUBLISHER_WITH_COMPARE_AND_SWAP_AND_PRIVACY_REVIEW",
+  "no_claims": [
+    "NOT_AUTO_SYNC",
+    "NOT_RUNTIME",
+    "NOT_GLOBAL_CANON",
+    "NOT_RECEIVER_PICKUP",
+    "NOT_PRIVATE_FULL_WORKBOOK"
+  ],
+  "revision_policy": "One stable pointer, append-only immutable editions, explicit supersession, collision checks, independent readback."
+}
