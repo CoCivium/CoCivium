@@ -8,13 +8,16 @@ import os
 from pathlib import Path
 import sys
 import tempfile
+import time
 import unittest
+from unittest.mock import patch
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 from CoOwnedWorkSqliteBridgeR0 import (
     BROWSER_SCHEMA, JS_DONOR_SHA256, RECEIVER_SHA256, Held, adapt,
-    apply_browser_revocation, dependency_check, node_fixture, run,
+    apply_browser_revocation, dependency_check, issue_receiver_revocation_grant,
+    node_fixture, revoke_with_receiver_grant, run,
 )
 from CoNarrativeWorkIDR0 import commit_once, connect, readback, revoke
 
@@ -156,8 +159,13 @@ class SyntheticBridgeR0(unittest.TestCase):
         with tempfile.TemporaryDirectory() as d:
             db = Path(d) / "receiver.sqlite"
             commit_once(db, packet)
+            actor = "CI_RECEIVER_SYNTHETIC_ACTOR"
+            token = issue_receiver_revocation_grant(db, packet, actor)
             proof = apply_browser_revocation(
-                db, active, revoked, self.gate, SOURCE, JS)
+                db, active, revoked, self.gate, SOURCE, JS,
+                actor_id=actor, grant_token=token)
+            self.assertTrue(proof["synthetic_receiver_grant_enforced"])
+            self.assertTrue(proof["one_use_receiver_grant_consumed"])
             self.assertEqual(
                 proof["state"],
                 "SYNTHETIC_BROWSER_ORIGIN_REVOCATION_APPLIED_CI_ONLY")
@@ -307,34 +315,8 @@ class SyntheticBridgeR0(unittest.TestCase):
             self.assertFalse(cold["external_receiver_ack"])
 
 
-    def test_public_synthetic_gate_can_revoke_without_sender_authentication(self):
-        """Characterize the current privilege boundary; this is NOT remote access."""
-        active = self.record()
-        revoked = {**active, "state": "REVOKED"}
-        packet = self.accepted(active)
-        with tempfile.TemporaryDirectory() as d:
-            db = Path(d) / "receiver.sqlite"
-            commit_once(db, packet)
-            # The untrusted caller has only a copy of the public synthetic
-            # fixture and exact browser record, not a separately verified
-            # actor credential. Local DB/function access is assumed.
-            copied_public_gate = copy.deepcopy(self.gate)
-            proof = apply_browser_revocation(
-                db, active, revoked, copied_public_gate, SOURCE, JS)
-            self.assertFalse(proof["independent_sender_authentication"])
-            self.assertFalse(proof["real_human_consent"])
-            self.assertFalse(proof["receiver_ack"])
-            self.assertEqual(proof["after"], "HELD_REVOKED")
-            self.assertEqual(
-                readback(db, expected_packet=packet)["state"], "HELD_REVOKED")
-
-    @unittest.expectedFailure
-    def test_desired_independent_sender_authentication_must_prevent_revoke(self):
-        """EXPECTED RED: copied public fixture must not grant revoke authority.
-
-        Remove expectedFailure ONLY after a receiver-owned permission check
-        makes this exact synthetic attack HOLD without changing the DB.
-        """
+    def test_public_synthetic_gate_cannot_revoke_without_receiver_grant(self):
+        """A copied public browser fixture no longer grants local API revocation."""
         active = self.record()
         revoked = {**active, "state": "REVOKED"}
         packet = self.accepted(active)
@@ -347,6 +329,54 @@ class SyntheticBridgeR0(unittest.TestCase):
             self.assertEqual(
                 readback(db, expected_packet=packet)["state"],
                 "COLD_SOURCE_RECONSTRUCTED")
+
+    def test_forged_token_with_copied_public_gate_cannot_revoke(self):
+        """Previously expected RED: a made-up token must HOLD before mutation."""
+        active = self.record()
+        revoked = {**active, "state": "REVOKED"}
+        packet = self.accepted(active)
+        with tempfile.TemporaryDirectory() as d:
+            db = Path(d) / "receiver.sqlite"
+            commit_once(db, packet)
+            with self.assertRaisesRegex(Held, "HELD_UNAUTHENTICATED_REVOCATION"):
+                apply_browser_revocation(
+                    db, active, revoked, copy.deepcopy(self.gate), SOURCE, JS,
+                    actor_id="UNTRUSTED_SIMULATED_ACTOR", grant_token="A" * 43)
+            self.assertEqual(
+                readback(db, expected_packet=packet)["state"],
+                "COLD_SOURCE_RECONSTRUCTED")
+
+    def test_receiver_grant_actor_expiry_scope_and_replay(self):
+        """One receiver-issued token is actor/packet-bound, expiring, one-use."""
+        packet = self.accepted()
+        with tempfile.TemporaryDirectory() as d:
+            db = Path(d) / "receiver.sqlite"
+            commit_once(db, packet)
+            actor = "CI_RECEIVER_SYNTHETIC_ACTOR"
+            token = issue_receiver_revocation_grant(db, packet, actor, 300)
+            with self.assertRaisesRegex(Held, "HELD_UNAUTHORIZED_ACTOR"):
+                revoke_with_receiver_grant(
+                    db, packet, actor_id="OTHER_ACTOR", grant_token=token)
+            changed = copy.deepcopy(packet)
+            changed["narrative_summary"] += " changed"
+            with self.assertRaisesRegex(Held, "HELD_GRANT_SCOPE_OR_EPOCH"):
+                revoke_with_receiver_grant(
+                    db, changed, actor_id=actor, grant_token=token)
+            with patch("CoOwnedWorkSqliteBridgeR0.time.time",
+                       return_value=time.time() + 7200):
+                with self.assertRaisesRegex(Held, "HELD_GRANT_EXPIRED"):
+                    revoke_with_receiver_grant(
+                        db, packet, actor_id=actor, grant_token=token)
+            self.assertEqual(
+                readback(db, expected_packet=packet)["state"],
+                "COLD_SOURCE_RECONSTRUCTED")
+            revoke_with_receiver_grant(
+                db, packet, actor_id=actor, grant_token=token)
+            self.assertEqual(
+                readback(db, expected_packet=packet)["state"], "HELD_REVOKED")
+            with self.assertRaisesRegex(Held, "HELD_GRANT_REPLAY"):
+                revoke_with_receiver_grant(
+                    db, packet, actor_id=actor, grant_token=token)
 
 
 if __name__ == "__main__":
