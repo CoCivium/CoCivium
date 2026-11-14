@@ -20,6 +20,7 @@ SYNTHETIC_METRIC_CONTRACTS = {
 }
 SYNTHETIC_AFFECTED_SCOPE = "fixture:one-affected-population"
 SYNTHETIC_RIGHTS_CONTEXT = "fixture:no-real-world-rights-granted"
+SYNTHETIC_APPLICABILITY = "fixture:toy-outcomes:substrate-unverified:v1"
 
 @dataclass(frozen=True)
 class Candidate:
@@ -31,6 +32,9 @@ class Candidate:
     metric_contracts: Mapping[str, str] = field(default_factory=dict)
     affected_scope: str = ""
     rights_context: str = ""
+    # Applicability of the prediction/measurement to this context and medium.
+    # A shared label or matched outcome vector cannot establish substrate transfer.
+    applicability_contract: str = ""
     cultural_transfer: bool = False
     source_community_ref: str = ""
     consent_ref: str = ""
@@ -51,6 +55,9 @@ class Candidate:
             not isinstance(self.rights_context, str) or
             not self.rights_context.strip()):
             raise ValueError("SITUATED_SCOPE_REQUIRED")
+        if (not isinstance(self.applicability_contract, str) or
+            not self.applicability_contract.strip()):
+            raise ValueError("APPLICABILITY_CONTRACT_REQUIRED")
         if type(self.rights_violation) is not bool:
             raise ValueError("RIGHTS_STATUS_EXPLICIT_BOOL_REQUIRED")
         # Strings are synthetic provenance pointers, NOT authenticated grants.
@@ -69,7 +76,8 @@ class Candidate:
 def same_comparison_contract(left: Candidate, right: Candidate) -> bool:
     return (left.metric_contracts == right.metric_contracts and
             left.affected_scope == right.affected_scope and
-            left.rights_context == right.rights_context)
+            left.rights_context == right.rights_context and
+            left.applicability_contract == right.applicability_contract)
 
 
 def dominates(left: Candidate, right: Candidate) -> bool:
@@ -120,6 +128,7 @@ def synthetic_candidate(name: str, values: tuple[float, ...], **kwargs) -> Candi
         metric_contracts=dict(SYNTHETIC_METRIC_CONTRACTS),
         affected_scope=SYNTHETIC_AFFECTED_SCOPE,
         rights_context=SYNTHETIC_RIGHTS_CONTEXT,
+        applicability_contract=SYNTHETIC_APPLICABILITY,
         **kwargs,
     )
 
