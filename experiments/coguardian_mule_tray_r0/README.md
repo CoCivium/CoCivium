@@ -9,7 +9,7 @@ The tray displays a truthful `HOLD_SOURCE_UNBOUND` until an authorized owner pla
 ## Candidate first-use contract
 
 - The app runs only when voluntarily launched in a Windows user session. It has no scheduler, service registration, Run key, task, X2 file mutation, native CoBar activation, provider-session control or model invocation.
-- One per-session Windows named mutex suppresses **duplicate launches of this same shadow app**. This is **not** cross-origin effect fencing of CoBar R5/R6/R8, another mule build, or provider sessions.
+- One per-session Windows named mutex uses the **same exact name as the bounded X2 Python SHADOW canary** (`Local\\CoCivium.CoGuardianMule.ShadowR0.OneOwner`), so either shadow implementation must decline a second tray instance in the same logon session when the other holds it. This is source-level compatibility, **not** a live cross-implementation test, an authenticated cross-origin effect lease, or authority over CoBar R5/R6/R8, provider sessions or other mule builds.
 - The only actions are `Refresh local evidence (read-only)` and `Stop tray shadow (no WorkID changes)`. Stopping never closes a chat, kills R5/R6/R8, revokes a live task or changes accounts.
 - The icon is deliberately a system information glyph, **not green**, and the menu always says receiver ACK **UNPROVEN**. No fake status bars or "100% autonomous" labels.
 - Its trust ceiling is a local read-only display. It does not authenticate evidence publishers, verify source hashes, lease any effect, or independently recover work.
