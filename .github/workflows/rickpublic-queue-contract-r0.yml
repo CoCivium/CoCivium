@@ -1,0 +1,21 @@
+name: RickPublic draft queue contract
+on:
+  pull_request:
+    paths:
+      - 'docs/publishing/series/rickpublic_substack_seed_v1/**'
+      - '.github/workflows/rickpublic-queue-contract-r0.yml'
+permissions:
+  contents: read
+jobs:
+  validate-queue:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Fail-closed synthetic guard tests
+        run: node docs/publishing/series/rickpublic_substack_seed_v1/scripts/validate_queue.cjs --selftest
+      - name: Verify actual queue and manuscript identity (no publishing)
+        run: node docs/publishing/series/rickpublic_substack_seed_v1/scripts/validate_queue.cjs
