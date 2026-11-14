@@ -12,6 +12,7 @@ on:
       - tests/test_ownedwork_receiver_os_boundary_r0.py
       - tests/test_cofork_portable_reconcile_r0.py
       - tests/cosession/test_abrupt_death_r0.py
+      - tests/test_workid_proposal_escrow_r0.py
       - scripts/CoForkPortableReconcileR0.py
       - tests/ownedwork_browser_gesture_r0.cjs
       - tests/fixtures/ownedwork_synthetic_gate_r0.json
@@ -127,6 +128,8 @@ jobs:
         run: |
           sudo -n -u nobody id -u
           python3 -B -m unittest discover -s tests -p 'test_ownedwork_receiver_os_boundary_r0.py' -v
+      - name: Preserve both competing synthetic WorkID proposals before election
+        run: python3 -B -m unittest discover -s tests -p 'test_workid_proposal_escrow_r0.py' -v
       - name: Verify six abrupt-session-death boundaries without a final-turn hook
         run: |
           set -o pipefail
