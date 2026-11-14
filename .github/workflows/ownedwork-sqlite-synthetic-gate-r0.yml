@@ -156,7 +156,8 @@ jobs:
           sys.path.insert(0,'scripts')
           from CoNarrativeWorkIDR0 import Held,commit_once,readback
           from CoOwnedWorkSqliteBridgeR0 import (
-              PINNED_SHA256,WORK_ID,source_check,apply_browser_revocation)
+              PINNED_SHA256,WORK_ID,source_check,apply_browser_revocation,
+              issue_receiver_revocation_grant)
           root=Path('/tmp/sqlite-input')
           names=sorted(p.name for p in root.iterdir())
           assert names==['receiver-observation.json','receiver.sqlite','translated-packet.json'],names
@@ -178,9 +179,15 @@ jobs:
           revoked=json.loads((origin/'browser-revoked-record.json').read_text(encoding='utf-8'))
           with open('tests/fixtures/ownedwork_synthetic_gate_r0.json',encoding='utf-8') as fp:
               gate=json.load(fp)
+          # Receiver-side synthetic grant issuance: NOT a separate trust domain.
+          actor='CI_RECEIVER_SYNTHETIC_ACTOR'
+          token=issue_receiver_revocation_grant(db,packet,actor,ttl_seconds=300)
           revocation=apply_browser_revocation(
               db,active,revoked,gate,'/tmp/CoPre.md',
-              'examples/conodcothumb/context_rail_r1/CoOwnedWorkR0.js')
+              'examples/conodcothumb/context_rail_r1/CoOwnedWorkR0.js',
+              actor_id=actor,grant_token=token)
+          assert revocation['synthetic_receiver_grant_enforced'] is True
+          assert revocation['one_use_receiver_grant_consumed'] is True
           assert revocation['before']=='COLD_SOURCE_RECONSTRUCTED'
           assert revocation['after']=='HELD_REVOKED'
           assert revocation['receiver_ack'] is False
