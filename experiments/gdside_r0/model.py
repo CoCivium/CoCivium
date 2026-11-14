@@ -25,7 +25,8 @@ SYNTHETIC_RIGHTS_CONTEXT = "fixture:no-real-world-rights-granted"
 class Candidate:
     name: str
     outcomes: Mapping[str, float]
-    rights_violation: bool = False
+    # Unknown rights status is not the same as an explicitly declared no-veto.
+    rights_violation: bool | None = None
     # A shared word or metric label is not a shared measurement contract.
     metric_contracts: Mapping[str, str] = field(default_factory=dict)
     affected_scope: str = ""
@@ -38,9 +39,11 @@ class Candidate:
     def validate(self) -> None:
         if set(self.outcomes) != set(METRICS):
             raise ValueError("METRIC_SCHEMA_MISMATCH")
-        if any(not isinstance(v, (float, int)) or not -1e9 < v < 1e9
+        if any(type(v) not in (float, int) or not -1e9 < v < 1e9
                for v in self.outcomes.values()):
             raise ValueError("INVALID_FINITE_METRIC")
+        if type(self.rights_violation) is not bool:
+            raise ValueError("RIGHTS_STATUS_EXPLICIT_BOOL_REQUIRED")
         if (set(self.metric_contracts) != set(METRICS) or
             any(not isinstance(v, str) or not v.strip()
                 for v in self.metric_contracts.values())):
@@ -108,8 +111,12 @@ def synthetic_candidate(name: str, values: tuple[float, ...], **kwargs) -> Candi
     """Explicit shared fixture contract; no real permissions or observations."""
     if len(values) != len(METRICS):
         raise ValueError("SYNTHETIC_VECTOR_LENGTH_MISMATCH")
+    # This helper alone declares a synthetic no-veto fixture. It is never
+    # evidence of consent or an independently authenticated rights review.
+    declared_rights = kwargs.pop("rights_violation", False)
     return Candidate(
         name, dict(zip(METRICS, values)),
+        rights_violation=declared_rights,
         metric_contracts=dict(SYNTHETIC_METRIC_CONTRACTS),
         affected_scope=SYNTHETIC_AFFECTED_SCOPE,
         rights_context=SYNTHETIC_RIGHTS_CONTEXT,
