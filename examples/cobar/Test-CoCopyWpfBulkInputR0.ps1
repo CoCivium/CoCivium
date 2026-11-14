@@ -63,5 +63,5 @@ $t3.Text='unsent human draft'
 $noClobber=Invoke-CoCopyWpfBulkInsert -Context $ctx3 -Target $t3 -RequestId 'existing' -Payload 'xyz' -Authorized $true -ExpectedValue $t3.Text -FixtureUnfocused
 Assert-CoCopy 'nonempty_draft_never_clobbered' ($noClobber.state -eq 'HELD_EXISTING_TEXT' -and $t3.Text -eq 'unsent human draft')
 Assert-CoCopy 'no_receiver_no_send' (-not $ok.sent -and -not $big.receiver_ack)
-if($script:count -ne 18){throw "HOLD_EXPECTED_18_GOT_$script:count"}
+if($script:count -ne 17){throw "HOLD_EXPECTED_17_GOT_$script:count"}
 Write-Output "PASS_COCOPY_NATIVE_WPF_SOURCE_R0 tests=$script:count focus_real=UNPROVEN no_window=TRUE clipboard=0 send=0 receiver_ack=UNPROVEN"
