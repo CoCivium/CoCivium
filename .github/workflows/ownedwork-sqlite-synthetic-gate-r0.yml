@@ -8,6 +8,8 @@ on:
       - scripts/CoNarrativeWorkIDR0.py
       - examples/conodcothumb/context_rail_r1/CoOwnedWorkR0.js
       - tests/test_ownedwork_sqlite_bridge_r0.py
+      - tests/ownedwork_receiver_socket_canary_r0.py
+      - tests/test_ownedwork_receiver_os_boundary_r0.py
       - tests/ownedwork_browser_gesture_r0.cjs
       - tests/fixtures/ownedwork_synthetic_gate_r0.json
       - .github/workflows/ownedwork-sqlite-synthetic-gate-r0.yml
@@ -113,6 +115,13 @@ jobs:
         env:
           COPRE_PINNED_SOURCE: /tmp/CoPre.md
         run: python3 -B -m unittest discover -s tests -p 'test_ownedwork_sqlite_bridge_r0.py' -v
+      - name: CI-only distinct-UID receiver socket, restart and pending-work test
+        env:
+          COPRE_PINNED_SOURCE: /tmp/CoPre.md
+          COOWNEDWORK_OS_BOUNDARY_CI: '1'
+        run: |
+          sudo -n -u nobody id -u
+          python3 -B -m unittest discover -s tests -p 'test_ownedwork_receiver_os_boundary_r0.py' -v
       - name: Commit one local synthetic WorkID and read back
         run: |
           python3 -B scripts/CoOwnedWorkSqliteBridgeR0.py \
