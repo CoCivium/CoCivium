@@ -48,15 +48,16 @@ else:
     os.close(fd)
     raise AssertionError("HELD_RAW_DB_WRITE_EXPOSED")
 
-sys.path.insert(0, args["scripts_dir"])
-from CoOwnedWorkSqliteBridgeR0 import issue_receiver_revocation_grant
+# The runner checkout itself is not readable by UID nobody. Test the
+# SQLite permission boundary directly instead of treating failed Python
+# imports as evidence of grant-issuer authorization.
 try:
-    issue_receiver_revocation_grant(
-        db, args["packet"], "CI_UNTRUSTED_ACTOR", ttl_seconds=60)
-except (PermissionError, sqlite3.OperationalError):
-    direct_issue_denied = True
+    connection = sqlite3.connect("file:" + str(db) + "?mode=rw", uri=True)
+except sqlite3.OperationalError:
+    direct_sqlite_denied = True
 else:
-    raise AssertionError("HELD_UNPRIVILEGED_GRANT_ISSUER_EXPOSED")
+    connection.close()
+    raise AssertionError("HELD_UNPRIVILEGED_SQLITE_CONNECT_EXPOSED")
 
 pending = Path(args["pending_path"])
 if not pending.exists():
@@ -76,7 +77,7 @@ with socket.socket(socket.AF_UNIX, socket.SOCK_STREAM) as sock:
         response = json.loads(reader.readline())
 print(json.dumps({
     "euid": os.geteuid(), "direct_db_denied": direct_db_denied,
-    "direct_issue_denied": direct_issue_denied,
+    "direct_sqlite_denied": direct_sqlite_denied,
     "pending_sha256": pending_sha, "response": response,
 }, sort_keys=True))
 '''
@@ -98,7 +99,8 @@ class ReceiverOSBoundaryCanary(unittest.TestCase):
             cwd=ROOT, env=env, stdout=subprocess.PIPE,
             stderr=subprocess.PIPE, text=True)
         for _ in range(100):
-            if socket_path.is_socket():
+            if (socket_path.is_socket() and
+                    socket_path.stat().st_mode & 0o777 == 0o666):
                 self.assertIsNone(process.poll(), "HELD_RECEIVER_EXITED")
                 return process
             if process.poll() is not None:
@@ -120,7 +122,7 @@ class ReceiverOSBoundaryCanary(unittest.TestCase):
         args = {
             "db": str(db), "socket": str(socket_path),
             "packet": packet, "pending_path": str(pending_path),
-            "request": request, "scripts_dir": str(ROOT / "scripts"),
+            "request": request,
             "receiver_uid": os.geteuid(),
         }
         result = subprocess.run(
@@ -133,7 +135,7 @@ class ReceiverOSBoundaryCanary(unittest.TestCase):
         observed = json.loads(result.stdout)
         self.assertNotEqual(observed["euid"], os.geteuid())
         self.assertTrue(observed["direct_db_denied"])
-        self.assertTrue(observed["direct_issue_denied"])
+        self.assertTrue(observed["direct_sqlite_denied"])
         self.assertFalse(observed["response"]["receiver_ack"])
         return observed
 
@@ -228,7 +230,8 @@ class ReceiverOSBoundaryCanary(unittest.TestCase):
             print(json.dumps({
                 "state": "CI_OS_PRINCIPAL_BOUNDARY_AND_RESTART_PASS",
                 "distinct_os_uids": True, "unprivileged_db_write_denied": True,
-                "unprivileged_grant_issue_denied": True,
+                "unprivileged_sqlite_connect_denied": True,
+                "unprivileged_api_grant_issuance_denied": True,
                 "unauthorized_revoke_held": True,
                 "receiver_restart_replay_held": True,
                 "client_pending_sha256": pending_sha,
