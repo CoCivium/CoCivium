@@ -1,0 +1,70 @@
+{
+  "schema": "CoAll.MeasureCommons.SyntheticObservations.R0",
+  "status": "SYNTHETIC_ONLY__NO_REAL_RECEIVER_EFFECT",
+  "purpose": "Demonstrate typed ratio with matching window and scope, not operational performance data",
+  "numerator": {
+    "measure_id": "comeasure.ops.human_time.r0",
+    "unit_id": "human_min",
+    "status": "OBSERVED",
+    "value": "20",
+    "scope_id": "synthetic:publisher-onboarding",
+    "window_id": "synthetic:2026-11-07/sample-window",
+    "observer": "synthetic:offline-fixture",
+    "method_revision": "r0",
+    "evidence_ref": "fixture:human-participation",
+    "epistemic": "SYNTHETIC",
+    "uncertainty_state": "NOT_ESTIMATED"
+  },
+  "denominator": {
+    "measure_id": "comeasure.ops.verified_effects.r0",
+    "unit_id": "verified_effect",
+    "status": "OBSERVED",
+    "value": "3",
+    "scope_id": "synthetic:publisher-onboarding",
+    "window_id": "synthetic:2026-11-07/sample-window",
+    "observer": "synthetic:offline-fixture",
+    "method_revision": "r0",
+    "evidence_ref": "fixture:qualified-effects",
+    "epistemic": "SYNTHETIC",
+    "uncertainty_state": "NOT_ESTIMATED"
+  },
+  "expected_result": {
+    "derived_id": "human_seconds_per_verified_effect",
+    "value": "400",
+    "unit_label": "human_s/verified_effect"
+  },
+  "optional_recovery_fixture": {
+    "numerator": {
+      "measure_id": "comeasure.ops.recovery_success.r0",
+      "unit_id": "restore_success",
+      "status": "OBSERVED",
+      "value": "8",
+      "scope_id": "synthetic:publisher-onboarding",
+      "window_id": "synthetic:2026-11-07/sample-window",
+      "observer": "synthetic:offline-fixture",
+      "method_revision": "r0",
+      "evidence_ref": "fixture:cold-recovery-successes",
+      "epistemic": "SYNTHETIC",
+      "uncertainty_state": "NOT_ESTIMATED"
+    },
+    "denominator": {
+      "measure_id": "comeasure.ops.recovery_trial.r0",
+      "unit_id": "restore_trial",
+      "status": "OBSERVED",
+      "value": "10",
+      "scope_id": "synthetic:publisher-onboarding",
+      "window_id": "synthetic:2026-11-07/sample-window",
+      "observer": "synthetic:offline-fixture",
+      "method_revision": "r0",
+      "evidence_ref": "fixture:cold-recovery-trials",
+      "epistemic": "SYNTHETIC",
+      "uncertainty_state": "NOT_ESTIMATED"
+    },
+    "expected": "0.8"
+  },
+  "nonclaims": [
+    "NO_REAL_LIVE_MEASUREMENT",
+    "SYNTHETIC_EFFECT_COUNT_NE_INDEPENDENT_RECEIVER_ACK",
+    "NUMERIC_RATIO_NE_TRUTH_OF_INPUTS"
+  ]
+}
