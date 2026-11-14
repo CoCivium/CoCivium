@@ -15,6 +15,9 @@ public sealed record MuleState(string Code, string WorkId, bool SourceFresh)
 public static class MuleObservation
 {
     public const string Schema = "CoGuardian.Mule.Observation.R0";
+    // Local, user-session-only duplicate suppression shared with the bounded Python
+    // CoGuardian Mule SHADOW canary. NOT a credential, authorization or effect lease.
+    public const string ShadowTrayMutexName = @"Local\CoCivium.CoGuardianMule.ShadowR0.OneOwner";
     private static readonly Regex WorkIdShape =
         new(@"^[a-zA-Z0-9._:-]{1,128}$", RegexOptions.CultureInvariant);
     private static readonly Regex UtcShape =
