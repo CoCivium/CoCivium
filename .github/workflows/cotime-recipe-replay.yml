@@ -1,0 +1,20 @@
+name: CoTime recipe replay synthetic tests
+on:
+  pull_request:
+    paths:
+      - "examples/cotime_recipe_r0/**"
+      - ".github/workflows/cotime-recipe-replay.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  replay:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run synthetic deterministic replay tests
+        run: python examples/cotime_recipe_r0/test_recipe_replay.py
