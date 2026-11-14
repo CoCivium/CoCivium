@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="referrer" content="no-referrer"><title>CoMapCursor R0 | one field, many views</title>
+<style>
+:root{color-scheme:dark;font-family:system-ui,Segoe UI,sans-serif;background:#091722;color:#ecf4fa}
+*{box-sizing:border-box}body{margin:0}main{max-width:1160px;margin:auto;padding:1.25rem}
+h1{font-size:1.6rem;margin:.4rem 0}h2{font-size:1.1rem;margin:0 0 .7rem}
+p{line-height:1.45}.muted{color:#b7cad9;font-size:.92rem}
+header,.toolbar,.controls{display:flex;flex-wrap:wrap;align-items:center;gap:.65rem}
+header{justify-content:space-between} .card{background:#112633;border:1px solid #365363;border-radius:14px;padding:1.1rem;margin:1rem 0}
+button{border:1px solid #7795a6;background:#1a3949;color:inherit;padding:.55rem .85rem;border-radius:8px;cursor:pointer}
+button:focus-visible,textarea:focus-visible{outline:3px solid #a5dafe;outline-offset:3px}
+button[aria-pressed="true"]{background:#376781}button:disabled{opacity:.5;cursor:not-allowed}
+.grid{display:grid;grid-template-columns:minmax(0,2fr) minmax(240px,1fr);gap:1rem}
+#scene{width:100%;height:auto;display:block;background:radial-gradient(ellipse at center,#193948,#07131c);border-radius:10px}
+.relation{stroke:#8cb4c7;stroke-width:2.4;opacity:.85}.relation.forecast{stroke-dasharray:7 7;stroke:#dbb979}
+.relation.candidate{stroke-dasharray:3 8;stroke:#b9a6ce}
+.node circle{fill:#143442;stroke:#9db9c8;stroke-width:2}
+.node.predicted circle{stroke:#dbb979;stroke-dasharray:6 5}
+.node.candidate circle{stroke:#b9a6ce;stroke-dasharray:2 6}
+.node.active circle{stroke:#80efff;stroke-width:4}
+.node{cursor:pointer}.node-label{font-size:15px;fill:#fff;pointer-events:none}
+textarea{width:100%;min-height:95px;resize:vertical;background:#091b25;color:#f3f7fa;border:1px solid #648398;border-radius:8px;padding:.8rem;font:inherit}
+#hint{min-height:2.5rem;color:#e8c98c}#ack{font-weight:600}input[type=range]{width:100%;accent-color:#a2d9ec}
+footer{font-size:.9rem;color:#c4d8e4;padding-bottom:1rem}
+@media(max-width:760px){.grid{grid-template-columns:1fr}main{padding:.8rem}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head><body><main>
+<header><div><div class="muted">CoEvoAll+ · CoMapCursor R0</div><h1>One relational source, multiple views</h1></div><span class="muted">SYNTHETIC • OFFLINE • NO LOGIN</span></header>
+<section class="card" aria-labelledby="view-heading"><h2 id="view-heading">CoMap / CoOrb / Trails / Ambient</h2>
+<div class="toolbar" role="group" aria-label="Projection type">
+<button data-view="map" aria-pressed="true">CoMap</button><button data-view="orb" aria-pressed="false">CoOrb</button>
+<button data-view="trails" aria-pressed="false">Trails</button><button data-view="ambient" aria-pressed="false">Ambient preview</button>
+</div>
+<div class="grid"><div><svg id="scene" viewBox="0 0 1000 550" role="img" aria-label="Synthetic relational graph"></svg></div>
+<aside><h2>Here now</h2><p id="current" aria-live="polite"></p><h2>Selected relation</h2><p id="inspect"></p>
+<p class="muted">Solid: synthetic. Dashed: forecast/candidate. All nodes are synthetic, even those labeled receiver or model.</p></aside></div>
+<p id="status" class="muted" aria-live="polite"></p>
+<div class="controls"><label for="time"><strong>CoTime cursor</strong></label><input type="range" id="time" min="0" max="6" step="1" value="6" aria-label="Synthetic timeline event cursor"></div>
+<p id="timetext" class="muted"></p>
+</section>
+<section class="card"><h2>CoInput+ | Predict beyond the cursor</h2>
+<label for="draft" class="muted">Local scratchpad. Type “Compare”, “Map”, “Show” or “Review”. Move the caret to test middle-of-text prediction.</label>
+<textarea id="draft" spellcheck="false" maxlength="4000" autocomplete="off" placeholder="Compare" aria-describedby="hint"></textarea>
+<p id="hint" aria-live="polite"></p>
+<div class="controls"><button id="accept" disabled>Accept suggestion into local text</button>
+<button id="export">Export bounded checkpoint JSON</button><button id="reset">Reset demonstration</button></div>
+<p id="ack" aria-live="polite">CoAckRAW: NONE. Receiver ACK: UNPROVEN.</p>
+<p class="muted">Suggestions never submit, run tools, call a model, or grant permissions. The export is an explicit local download only. No input leaves the browser.</p>
+</section>
+<footer>Public-safe R0 experiment; no live CoOrbWare, wallpaper modification, service monitoring, camera/microphone access, global session sync, cost savings or provider exit claimed. No external scripts or analytics.</footer>
+</main><script type="module" src="./app.mjs"></script></body></html>
