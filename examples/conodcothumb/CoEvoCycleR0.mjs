@@ -61,6 +61,8 @@ async function run(){
  await check('explicit_r0_local_payload','node',['--test',r0]);
  await check('r1_chunked_file_recovery_and_tamper','node',['--test',r1],{env:{CO_THUMB_LARGE_TEST:includeLarge?'1':'0'}});
  await check('deterministic_route_election','node',['--test',selector]);
+ await check('front_diversity_urgent_repair_and_no_fake_execution','node',
+   ['--test',join(root,'examples/conodcothumb/CoWavePortfolioR0.test.mjs')]);
  const pytest=join(root,'benchmarks/costretch_r1/tests/test_costretch.py');
  try {await access(pytest);await check('costretch_prior_benchmark_regression','python3',
    ['-m','unittest','discover','-v','-s','benchmarks/costretch_r1/tests']);}
