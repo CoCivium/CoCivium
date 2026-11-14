@@ -1,0 +1,435 @@
+name: CoRun R0 bounded source proof
+
+on:
+  pull_request:
+    paths:
+      - 'examples/corun_r0/**'
+      - '.github/workflows/corun-r0-source-proof.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Run bounded offline tests
+        run: python -B -m unittest discover -s examples/corun_r0 -p 'test_*.py' -v
+      - name: Replay exact historical CoFlow donor with Git-blob pin
+        run: |
+          python -B examples/corun_r0/corun.py \
+            --input ai/flow/coflow-anchor-delta-sample12-r1.json \
+            --expected-git-blob 3550b9c75e732c65ab3580494dd38f18b28f8c18 \
+            --workers 4 \
+            --out "$RUNNER_TEMP/corun-real"
+      - name: Replay synthetic serial and parallel arms
+        run: |
+          python -B examples/corun_r0/corun.py \
+            --input examples/corun_r0/fixture.json \
+            --workers 4 \
+            --out "$RUNNER_TEMP/corun-zero"
+          python -B examples/corun_r0/corun.py \
+            --input examples/corun_r0/fixture.json \
+            --workers 4 \
+            --simulated-io-ms 25 \
+            --out "$RUNNER_TEMP/corun-delay"
+      - name: Differential oracle versus DAG on exact historical and synthetic input
+        run: |
+          python -B examples/corun_r0/reference_compare.py \
+            --input ai/flow/coflow-anchor-delta-sample12-r1.json \
+            --expected-git-blob 3550b9c75e732c65ab3580494dd38f18b28f8c18 \
+            --workers 4 --trials 7 \
+            --out "$RUNNER_TEMP/corun-reference-real"
+          python -B examples/corun_r0/reference_compare.py \
+            --input examples/corun_r0/fixture.json \
+            --workers 4 --trials 7 \
+            --out "$RUNNER_TEMP/corun-reference-synthetic"
+      - name: Verify runset hashes, boundedness, counterevidence and nonclaims
+        shell: bash
+        run: |
+          python - <<'PY'
+          import hashlib
+          import json
+          import os
+          from pathlib import Path
+          root = Path(os.environ["RUNNER_TEMP"])
+          for name in ("corun-real", "corun-zero", "corun-delay"):
+              runset_path = root / name / "runset.json"
+              receipt_path = root / name / "receipt.json"
+              runset = json.loads(runset_path.read_text())
+              receipt = json.loads(receipt_path.read_text())
+              assert hashlib.sha256(runset_path.read_bytes()).hexdigest() == receipt["runset_sha256"]
+              assert runset["outputs_equal"] is True
+              assert runset["comparison"]["human_time_saved"] is None
+              assert runset["comparison"]["independent_receiver_value"] == "UNKNOWN"
+              assert runset["comparison"]["production_promotion"] == "HELD"
+              assert runset["arms"]["A_SERIAL"]["nodes_completed"] == runset["arms"]["B_BOUNDED_PARALLEL"]["nodes_completed"]
+              assert runset["arms"]["B_BOUNDED_PARALLEL"]["peak_active"] <= 4
+              assert "TWO_ARMS_ONE_IMPLEMENTATION_NE_INDEPENDENT_REPLICATION" in runset["nonclaims"]
+              if name == "corun-real":
+                  assert runset["source"]["git_blob_sha1"] == "3550b9c75e732c65ab3580494dd38f18b28f8c18"
+                  assert runset["deliverable"]["audit"]["historical_sample_only"] is True
+              print(name, "PASS_EXACT_SHA_SCOPE_ONLY", runset["comparison"]["observed_latency_winner"])
+          PY
+      - name: Verify differential equality and exact receipts without promotion
+        shell: bash
+        run: |
+          python - <<'PY'
+          import hashlib, json, os
+          from pathlib import Path
+          root = Path(os.environ["RUNNER_TEMP"])
+          for name in ("corun-reference-real", "corun-reference-synthetic"):
+              base = root / name
+              raw = (base / "reference-compare.json").read_bytes()
+              evidence = json.loads(raw)
+              receipt = json.loads((base / "reference-compare.receipt.json").read_text())
+              assert receipt["report_sha256"] == hashlib.sha256(raw).hexdigest()
+              assert evidence["output_equal_every_trial"] is True
+              assert evidence["trials"] == 7
+              assert evidence["product_promotion"] == "HELD"
+              assert evidence["external_effects"] == "NONE"
+              assert "SAME_SOURCE_AND_SPEC__NOT_INDEPENDENT_EVIDENCE" in evidence["measurement_limitations"]
+              assert "LEGACY_PRODUCT_BASELINE_NOT_MEASURED" in evidence["measurement_limitations"]
+              assert "HUMAN_ACTIVE_MINUTES_NOT_MEASURED" in evidence["measurement_limitations"]
+              assert len(evidence["arms"]["A_DIRECT_REFERENCE"]["elapsed_ns"]) == 7
+              assert len(evidence["arms"]["B_CORUN_DAG"]["elapsed_ns"]) == 7
+              assert receipt["independent_facts"] is False
+              if name == "corun-reference-real":
+                  assert evidence["source"]["git_blob_sha1"] == "3550b9c75e732c65ab3580494dd38f18b28f8c18"
+              print(name, "PASS_DIFFERENTIAL_SEMANTICS_ONLY")
+          PY
+      - name: Check CoLockStep source island and safe MVP nonpromotion
+        run: |
+          python -B examples/corun_r0/colockstep.py \
+            --manifest examples/corun_r0/colockstep_fixture.json \
+            --repo-root . \
+            --out "$RUNNER_TEMP/colockstep"
+      - name: Verify CoLockStep receipts and protected source baseline
+        shell: bash
+        run: |
+          python - <<'PY'
+          import hashlib, json, os
+          from pathlib import Path
+          p = Path(os.environ["RUNNER_TEMP"]) / "colockstep"
+          raw = (p / "colockstep.json").read_bytes()
+          result = json.loads(raw)
+          receipt = json.loads((p / "receipt.json").read_text())
+          assert hashlib.sha256(raw).hexdigest() == receipt["report_sha256"]
+          assert result["result"] == "SOURCE_COHERENT__NOT_MVP"
+          assert result["candidate_source_compatible"] is True
+          assert result["previous_baseline_preserved"] is True
+          assert result["baseline_source_verified"] is True
+          assert len(result["baseline_source_evidence"]) == 2
+          assert len(result["candidate_source_evidence"]) == 3
+          assert result["qualified_mvp"] is False
+          assert result["claimed_receiver_readproof_accepted"] is False
+          assert result["runtime_activation"] == "NOT_ATTEMPTED"
+          assert result["release_actuator"] == "NONE"
+          print("CoLockStep SOURCE_COHERENT__NOT_MVP PASS")
+          PY
+      - name: Preserve run-scoped evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: corun-r0-scoped-proof
+          path: |
+            ${{ runner.temp }}/corun-real/*.json
+            ${{ runner.temp }}/corun-zero/*.json
+            ${{ runner.temp }}/corun-delay/*.json
+            ${{ runner.temp }}/corun-reference-real/*.json
+            ${{ runner.temp }}/corun-reference-synthetic/*.json
+            ${{ runner.temp }}/colockstep/*.json
+          if-no-files-found: warn
+          retention-days: 14
+
+  browser_plateau:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Install scoped browser harness
+        run: |
+          python -m pip install playwright==1.56.0
+          python -m playwright install --with-deps chromium
+      - name: Replay preserved browser baselines and detect rejected mutant
+        run: |
+          python -B examples/corun_r0/browser_plateau.py \
+            --repo-root . \
+            --out "$RUNNER_TEMP/codemow-browser"
+      - name: Verify browser receipts and nonpromotion gates
+        run: |
+          python - <<'PY'
+          import hashlib, json, os
+          from pathlib import Path
+          root = Path(os.environ["RUNNER_TEMP"]) / "codemow-browser"
+          raw = (root / "browser-plateau.json").read_bytes()
+          report = json.loads(raw)
+          receipt = json.loads((root / "receipt.json").read_text())
+          assert receipt["report_sha256"] == hashlib.sha256(raw).hexdigest()
+          assert report["passed"] == report["total"] and report["total"] >= 14
+          assert report["bad_candidate"]["unsafe_success_reproduced"] is True
+          assert report["bad_candidate"]["decision"] == "REJECT_AND_RETAIN_R1"
+          assert report["preserved_originals"] is True
+          assert report["qualified_mvp"] is False
+          assert report["independent_user_accepted"] == "UNKNOWN"
+          assert report["external_effects"] == "NONE"
+          assert receipt["qualified_mvp"] is False
+          print("PASS_SCOPED_BROWSER_TEST_NOT_MVP", report["total"])
+          PY
+      - name: Replay CoPreCursor first task with consent, undo and reset
+        run: |
+          python -B examples/corun_r0/coprecursor_first_task.py \
+            --repo-root . \
+            --out "$RUNNER_TEMP/coprecursor-first-task"
+      - name: Verify CoPreCursor first-task receipt without MVP promotion
+        run: |
+          python - <<'PY'
+          import hashlib, json, os
+          from pathlib import Path
+          root = Path(os.environ["RUNNER_TEMP"]) / "coprecursor-first-task"
+          raw = (root / "first-task.json").read_bytes()
+          proof = json.loads(raw)
+          receipt = json.loads((root / "receipt.json").read_text())
+          assert hashlib.sha256(raw).hexdigest() == receipt["report_sha256"]
+          assert proof["passed"] == proof["total"] and proof["total"] >= 15
+          assert proof["protected_source"]["git_blob_sha1"] == "773e9de7aa7c6b03bf0bc75eddb7ca0a0c8dd101"
+          assert proof["independent_human_acceptance"] == "UNTESTED"
+          assert proof["persistent_recovery"] == "NOT_IMPLEMENTED_BY_THIS_DEMO"
+          assert proof["authorized_product_switch"] is False
+          assert proof["mvp_qualified"] is False
+          assert proof["network_effects"] == 0
+          assert receipt["mvp_qualified"] is False
+          print("PASS_AUTOMATED_FIRST_USE_NOT_HUMAN_MVP", proof["total"])
+          PY
+      - name: Verify R0 keyboard regression and protected R1 candidate
+        run: |
+          python -B examples/corun_r0/test_keyboard_caret_browser.py \
+            --repo-root . \
+            --out "$RUNNER_TEMP/coprecursor-keyboard"
+      - name: Check exact keyboard regression receipt and nonpromotion
+        run: |
+          python - <<'PY'
+          import hashlib, json, os
+          from pathlib import Path
+          root = Path(os.environ["RUNNER_TEMP"]) / "coprecursor-keyboard"
+          raw = (root / "keyboard-caret.json").read_bytes()
+          report = json.loads(raw)
+          receipt = json.loads((root / "receipt.json").read_text())
+          assert hashlib.sha256(raw).hexdigest() == receipt["report_sha256"]
+          assert report["expected_baseline_failures"] == ["mid_caret_exact", "not_appended"]
+          assert report["candidate"]["total"] == report["candidate"]["passed"] == 17
+          assert report["baseline"]["passed"] == 15
+          assert report["source"]["baseline"]["git_blob_sha1"] == "773e9de7aa7c6b03bf0bc75eddb7ca0a0c8dd101"
+          assert report["source"]["candidate"]["git_blob_sha1"] == "9daba0043b74eee129e78b1eaaad0c44e4005640"
+          assert report["qualification"] == "PASS_REGRESSION_CHALLENGE_ONLY"
+          assert report["production_switch"] is False
+          assert report["mvp_qualified"] is False
+          assert report["independent_human_acceptance"] is False
+          print("PASS_KEYBOARD_REGRESSION_R0_FAIL_R1_CANDIDATE_PASS")
+          PY
+      - name: Archive browser-scoped proof
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: corun-r0-codemow-browser-proof
+          path: |
+            ${{ runner.temp }}/codemow-browser/*.json
+            ${{ runner.temp }}/coprecursor-first-task/*.json
+            ${{ runner.temp }}/coprecursor-keyboard/*.json
+          if-no-files-found: warn
+          retention-days: 14
+
+
+  handoff_producer:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 4
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Package immutable CoPreCursor source and handoff script
+        run: |
+          mkdir -p "$RUNNER_TEMP/coprecursor-handoff"
+          python -B examples/corun_r0/first_use_capsule.py \
+            --repo-root . \
+            --out "$RUNNER_TEMP/coprecursor-handoff/capsule.zip"
+          cp examples/corun_r0/first_use_receiver.py \
+            "$RUNNER_TEMP/coprecursor-handoff/first_use_receiver.py"
+      - name: Verify exact producer source, receiver script and receipt
+        run: |
+          python - <<'PY'
+          import hashlib, json, os
+          from pathlib import Path
+          base = Path(os.environ["RUNNER_TEMP"]) / "coprecursor-handoff"
+          bundle = (base / "capsule.zip").read_bytes()
+          source = (base / "first_use_receiver.py").read_bytes()
+          rec = json.loads((base / "capsule.zip.receipt.json").read_text())
+          def gitblob(data):
+              return hashlib.sha1(b"blob " + str(len(data)).encode()
+                                  + b"\x00" + data).hexdigest()
+          assert gitblob(source) == "58bb0dbfafcb0a64e4b70ee273b6453aae6a6c03"
+          assert hashlib.sha256(bundle).hexdigest() == rec["capsule_sha256"]
+          assert rec["source_blob_sha1"] == "773e9de7aa7c6b03bf0bc75eddb7ca0a0c8dd101"
+          assert rec["result"] == "PACKAGE_CREATED_NOT_LANDED"
+          assert rec["receiver_ack"] is False
+          assert rec["coex"] is False
+          assert rec["qualified_mvp"] is False
+          print("PASS_PINNED_EPHEMERAL_PRODUCER_NO_LANDING")
+          PY
+      - name: Handoff to fresh runner with exact artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: coprecursor-ephemeral-transport
+          path: ${{ runner.temp }}/coprecursor-handoff/*
+          if-no-files-found: error
+          retention-days: 7
+
+  handoff_receiver:
+    needs: handoff_producer
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    permissions:
+      contents: read
+    steps:
+      # Intentionally no actions/checkout. Only download the producer capsule.
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Download producer capsule without repository checkout
+        uses: actions/download-artifact@v4
+        with:
+          name: coprecursor-ephemeral-transport
+          path: ${{ runner.temp }}/coprecursor-inbox
+      - name: Verify pinned execution script from received bytes
+        run: |
+          python - <<'PY'
+          import hashlib, os
+          from pathlib import Path
+          p = Path(os.environ["RUNNER_TEMP"]) / "coprecursor-inbox"
+          raw = (p / "first_use_receiver.py").read_bytes()
+          h = hashlib.sha1(b"blob " + str(len(raw)).encode()
+                           + b"\x00" + raw).hexdigest()
+          assert h == "58bb0dbfafcb0a64e4b70ee273b6453aae6a6c03"
+          assert sorted(item.name for item in p.iterdir()) == [
+              "capsule.zip", "capsule.zip.receipt.json", "first_use_receiver.py"
+          ]
+          print("PASS_PINNED_EXECUTION_SCRIPT_NO_REPO_CHECKOUT")
+          PY
+      - name: Install scoped Chromium for isolated receiver
+        run: |
+          python -m pip install playwright==1.56.0
+          python -m playwright install --with-deps chromium
+      - name: Prove exact-object readback and replay synthetic first use
+        run: |
+          python -B "$RUNNER_TEMP/coprecursor-inbox/first_use_receiver.py" \
+            --capsule "$RUNNER_TEMP/coprecursor-inbox/capsule.zip" \
+            --producer-receipt "$RUNNER_TEMP/coprecursor-inbox/capsule.zip.receipt.json" \
+            --out "$RUNNER_TEMP/coprecursor-receiver"
+      - name: Verify receipt and explicit nonpromotion boundaries
+        run: |
+          python - <<'PY'
+          import hashlib, json, os
+          from pathlib import Path
+          base = Path(os.environ["RUNNER_TEMP"]) / "coprecursor-receiver"
+          raw = (base / "receiver-readback.json").read_bytes()
+          result = json.loads(raw)
+          receipt = json.loads((base / "receipt.json").read_text())
+          assert hashlib.sha256(raw).hexdigest() == receipt["report_sha256"]
+          assert result["passed"] == result["total"] and result["total"] >= 21
+          assert result["source_blob_sha1"] == "773e9de7aa7c6b03bf0bc75eddb7ca0a0c8dd101"
+          assert result["receiver_readback"] == "EXACT_BUNDLE_AND_SOURCE_BYTES"
+          assert result["behavioral_replay"] == "PASS_AUTOMATED_SYNTHETIC_TASK"
+          assert result["receiver_type"] == "ISOLATED_GITHUB_ACTIONS_JOB_NO_REPOSITORY_CHECKOUT"
+          assert result["cross_provider"] is False
+          assert result["durable_destination"] is False
+          assert result["human_acceptance"] == "NOT_TESTED"
+          assert result["qualified_mvp"] is False
+          assert result["no_external_effects"] is True
+          assert receipt["result"] == "PASS_ISOLATED_SAME_PROVIDER_JOB_ONLY"
+          assert receipt["durable_custody"] is False
+          assert receipt["human_acceptance"] is False
+          print("PASS_CROSS_RUNNER_READBACK_SCOPE_ONLY", result["total"])
+          PY
+      - name: Preserve exact receiver evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: coprecursor-ephemeral-readback-proof
+          path: ${{ runner.temp }}/coprecursor-receiver/*.json
+          if-no-files-found: warn
+          retention-days: 7
+
+
+  handoff_relation_audit:
+    needs: [handoff_producer, handoff_receiver]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 4
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Download both scoped receipt families
+        uses: actions/download-artifact@v4
+        with:
+          pattern: coprecursor-ephemeral-*
+          path: ${{ runner.temp }}/cap-receipts
+          merge-multiple: false
+      - name: Verify cross-job relations and seven adversarial controls
+        run: |
+          python -B examples/corun_r0/handoff_relation_audit.py \
+            --capsule "$RUNNER_TEMP/cap-receipts/coprecursor-ephemeral-transport/capsule.zip" \
+            --producer-receipt "$RUNNER_TEMP/cap-receipts/coprecursor-ephemeral-transport/capsule.zip.receipt.json" \
+            --receiver-report "$RUNNER_TEMP/cap-receipts/coprecursor-ephemeral-readback-proof/receiver-readback.json" \
+            --receiver-receipt "$RUNNER_TEMP/cap-receipts/coprecursor-ephemeral-readback-proof/receipt.json" \
+            --out "$RUNNER_TEMP/handoff-relations"
+      - name: Verify graph receipts, no false provider independence or promotion
+        run: |
+          python - <<'PY'
+          import hashlib, json, os
+          from pathlib import Path
+          d = Path(os.environ["RUNNER_TEMP"]) / "handoff-relations"
+          raw = (d / "relations.json").read_bytes()
+          graph = json.loads(raw)
+          receipt = json.loads((d / "receipt.json").read_text())
+          assert hashlib.sha256(raw).hexdigest() == receipt["report_sha256"]
+          assert graph["result"] == "VERIFIED_SAME_PROVIDER_CI_GRAPH_ONLY"
+          assert graph["graph_validation"]["pass"] is True
+          assert graph["graph_validation"]["false_independent_origin"] == 0
+          assert graph["all_negative_controls_rejected"] is True
+          assert len(graph["negative_controls"]) == 7
+          assert len(graph["relations"]) == 7
+          assert graph["lifecycle_evidence"]["LANDED"] is False
+          assert graph["lifecycle_evidence"]["PICKED_UP_BY_DURABLE_RECEIVER"] is False
+          assert graph["lifecycle_evidence"]["INTEGRATED"] is False
+          assert graph["lifecycle_evidence"]["COEX"] is False
+          assert graph["ux_summary"]["state"] == "UX_ACCEPTANCE_UNPROVEN"
+          assert graph["option_set"]["execution_authority"] == "NONE"
+          assert receipt["mvp_qualified"] is False
+          assert receipt["durable_custody"] is False
+          assert receipt["independent_source_validation"] is False
+          print("PASS_GRAPH_OF_EVIDENCE_WITHOUT_CUSTODY_PROMOTION")
+          PY
+      - name: Preserve scoped relational audit
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: coprecursor-handoff-relations-proof
+          path: ${{ runner.temp }}/handoff-relations/*.json
+          if-no-files-found: warn
+          retention-days: 7

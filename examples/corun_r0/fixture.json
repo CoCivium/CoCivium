@@ -1,0 +1,21 @@
+{
+  "schema": "CoCivium.CoFlowAnchorDeltaRetrospective.R1",
+  "state": "SYNTHETIC_TEST_FIXTURE_NOT_REAL_LEDGER",
+  "sample_design": {
+    "selection_bias": "SYNTHETIC_PURPOSIVE_FIXTURE_NO_REAL_WORLD_VALIDITY"
+  },
+  "cases": [
+    {"id":"W01","stratum":"WORKED_SCOPED","record_id":"synthetic:W01","ledger_status":"PASS","observed_at":"SYNTHETIC","epistemic_boundary":"Scoped test, no receiver","release_test":"independent first use","paired_case_id":"F01"},
+    {"id":"W02","stratum":"WORKED_SCOPED","record_id":"synthetic:W02","ledger_status":"PASS","observed_at":"SYNTHETIC","epistemic_boundary":"Scoped test, no receiver","release_test":"replay on fresh receiver","paired_case_id":"F02"},
+    {"id":"W03","stratum":"WORKED_SCOPED","record_id":"synthetic:W03","ledger_status":"PASS","observed_at":"SYNTHETIC","epistemic_boundary":"Scoped test, no receiver","release_test":"replay with changed provider","paired_case_id":null},
+    {"id":"W04","stratum":"WORKED_SCOPED","record_id":"synthetic:W04","ledger_status":"PASS","observed_at":"SYNTHETIC","epistemic_boundary":"Scoped test, no receiver","release_test":"end-user completion","paired_case_id":null},
+    {"id":"P01","stratum":"PARTIAL_OR_BLOCKED","record_id":"synthetic:P01","ledger_status":"HELD","observed_at":"SYNTHETIC","epistemic_boundary":"Receiver unavailable","release_test":"receiver readproof","paired_case_id":null},
+    {"id":"P02","stratum":"PARTIAL_OR_BLOCKED","record_id":"synthetic:P02","ledger_status":"HELD","observed_at":"SYNTHETIC","epistemic_boundary":"Permission missing","release_test":"consent-qualified readback","paired_case_id":null},
+    {"id":"P03","stratum":"PARTIAL_OR_BLOCKED","record_id":"synthetic:P03","ledger_status":"PASS","observed_at":"SYNTHETIC","epistemic_boundary":"Only scoped source check passed","release_test":"cold restore","paired_case_id":null},
+    {"id":"P04","stratum":"PARTIAL_OR_BLOCKED","record_id":"synthetic:P04","ledger_status":"PASS","observed_at":"SYNTHETIC","epistemic_boundary":"Only local browser passed","release_test":"independent hosted test","paired_case_id":null},
+    {"id":"F01","stratum":"FAILED_HISTORICAL_REPAIRED","record_id":"synthetic:F01","ledger_status":"FAIL","observed_at":"SYNTHETIC","epistemic_boundary":"Failure later repaired","release_test":"negative regression fixture","paired_case_id":"W01"},
+    {"id":"F02","stratum":"FAILED_HISTORICAL_REPAIRED","record_id":"synthetic:F02","ledger_status":"FAIL","observed_at":"SYNTHETIC","epistemic_boundary":"Failure later repaired","release_test":"malformed input test","paired_case_id":"W02"},
+    {"id":"F03","stratum":"FAILED_HISTORICAL_REPAIRED","record_id":"synthetic:F03","ledger_status":"FAIL","observed_at":"SYNTHETIC","epistemic_boundary":"Failure later repaired","release_test":"privacy regression fixture","paired_case_id":null},
+    {"id":"F04","stratum":"FAILED_STILL_OBSERVED","record_id":"synthetic:F04","ledger_status":"FAIL","observed_at":"SYNTHETIC","epistemic_boundary":"Failure still open","release_test":"independent route readproof","paired_case_id":null}
+  ]
+}

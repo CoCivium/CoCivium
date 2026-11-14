@@ -1,0 +1,63 @@
+{
+  "schema": "CoCivium.CoRunPlus.LocalProof.R0",
+  "observed_at_utc": "2026-11-09T09:33:56Z",
+  "environment": "bounded isolated container; Python 3.13.5; 12 wholly synthetic prior cases; no network",
+  "status": "PASS_LOCAL_SYNTHETIC_AB_WITH_PRIOR_FAIL_RESOLVED",
+  "source_fixture": {
+    "path": "examples/corun_r0/fixture.json",
+    "sha256": "330b352419f343ca755507327ecb8989d5c207a89fa5a80347c88d1ca5569840",
+    "git_blob_sha1": "7ceb96a3c3e3c7dd882d56aa2158659ac64caf26"
+  },
+  "code_before_readme": {
+    "corun_py_sha256": "e8dae9829851c99485baf1160c13dd173fb94b2acf71bef64f848b8568a2362f",
+    "test_corun_py_sha256": "74dd3e92181e0c19b959043718fbafdc3921a9f27d5f31c33be0bf39cda0655e"
+  },
+  "test_count": 18,
+  "test_passed": 18,
+  "test_failed": 0,
+  "initial_fail": {
+    "state": "FAIL_RESOLVED",
+    "cause": "deliverable DAG dependencies omitted source, causing KeyError: source; 7 tests failed in initial run",
+    "repair": "deliverable now depends on source plus aggregate plus challenge",
+    "verification": "18/18 unit tests PASS after correction; no original failure erased"
+  },
+  "runs": [
+    {
+      "scenario": "NO_INJECTED_DELAY",
+      "classification": "LOCAL_STRUCTURAL_PROBE",
+      "A_wall_ns": 1562917,
+      "B_wall_ns": 1587284,
+      "A_result": "FASTER_BY_THIS_LOCAL_MEASUREMENT",
+      "completed_nodes_each": 18,
+      "outputs_equal": true,
+      "report_sha256": "5275ce42091db2d53d6d2c23175b73bb1d987d68b986eb9cec9bce37ba5147ac",
+      "receipt_sha256": "43e5edbb9d82b0caaadd6566812cd675074b3c7d2e1968278514d6b3d151bcc4"
+    },
+    {
+      "scenario": "SYNTHETIC_25_MS_WAIT_PER_TASK",
+      "classification": "SYNTHETIC_DELAY_CONTROL",
+      "A_wall_ns": 456473554,
+      "B_wall_ns": 203298870,
+      "B_result": "FASTER_ON_SYNTHETIC_WAIT",
+      "completed_nodes_each": 18,
+      "outputs_equal": true,
+      "report_sha256": "39dedafbf58471365781e381dd95c1da5613bedd52cf16348dd6a748596a142d",
+      "receipt_sha256": "9cfdcbb57a39c20a0d15380aa0f6e16b11b86728e791578d2cc0d02099bbeaa0"
+    }
+  ],
+  "source_real_cases_executed": false,
+  "source_real_case_pin": "3550b9c75e732c65ab3580494dd38f18b28f8c18",
+  "independent_reviewer": "UNKNOWN",
+  "receiver_readproof": "UNKNOWN",
+  "human_active_minutes": null,
+  "external_effects_in_local_test": "NONE",
+  "product_promotion": "HELD",
+  "nonclaims": [
+    "NO_NEW_SCHEDULER",
+    "NO_HOST_DEVICE_RUNTIME",
+    "NO_REAL_AGENT_OR_PARALLEL_MODEL_SWARM",
+    "NO_REAL_WORLD_PRODUCTIVITY_ADVANTAGE_ESTABLISHED",
+    "NO_REPOSITORY_CI_EVIDENCE_AT_ORIGINATION",
+    "NO_CANON_OR_MERGE_CLAIM"
+  ]
+}
