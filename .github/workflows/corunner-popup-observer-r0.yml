@@ -1,0 +1,93 @@
+name: CoRunner popup observer smoke
+on:
+  push:
+    paths:
+      - 'scripts/CoRunnerPopupObserverR0.ps1'
+      - 'scripts/Select-CoDesktopActiveOwnerR0.ps1'
+      - '.github/workflows/corunner-popup-observer-r0.yml'
+  pull_request:
+    paths:
+      - 'scripts/CoRunnerPopupObserverR0.ps1'
+      - 'scripts/Select-CoDesktopActiveOwnerR0.ps1'
+      - '.github/workflows/corunner-popup-observer-r0.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  windows-readonly-smoke:
+    runs-on: windows-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Observe local ephemeral Windows runner and validate JSON contract
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $raw = & ./scripts/CoRunnerPopupObserverR0.ps1 -MaxItems 20 | Out-String
+          $r = $raw | ConvertFrom-Json -Depth 12
+          if ($r.schema -ne 'CoRunner.PopupOriginObservation.R0') { throw 'Invalid schema' }
+          if ($r.scope -ne 'LOCAL_READ_ONLY_SAMPLE_NOT_COMPLETE_RUNNER_CENSUS') { throw 'Invalid scope' }
+          if (-not $r.observed_utc) { throw 'Missing observation timestamp' }
+          if (-not $r.foreground_sample) { throw 'Missing foreground PID sample' }
+          if ($r.foreground_sample.reliability -notin @('UNKNOWN','ONE_INSTANT_NOT_POPUP_ATTRIBUTION')) { throw 'Invalid foreground uncertainty' }
+          if ($r.foreground_sample.PSObject.Properties.Name -contains 'window_title') { throw 'Foreground window title leaked' }
+          if (-not (@($r.nonclaims) -contains 'FOREGROUND_SAMPLE_NE_POPUP_CAUSATION')) { throw 'Missing causal uncertainty claim' }
+          if (-not $r.foreground_sample) { throw 'Missing foreground sample' }
+          if (-not $r.foreground_sample.sampled_utc) { throw 'Missing foreground sample timestamp' }
+          if ($r.foreground_sample.reliability -notin @('UNKNOWN','ONE_INSTANT_NOT_POPUP_ATTRIBUTION')) { throw 'Invalid foreground reliability' }
+          if ($r.foreground_sample.PSObject.Properties.Name -contains 'window_title') { throw 'Window title must not be captured' }
+          if ($r.foreground_sample.PSObject.Properties.Name -contains 'hwnd') { throw 'Raw window handle must not be exported' }
+          if (-not (@($r.nonclaims) -contains 'FOREGROUND_SAMPLE_NE_POPUP_CAUSATION')) { throw 'Missing causation boundary' }
+          if ($r.sampled_processes -gt 20) { throw 'Unbounded process sample' }
+          if ($r.sampled_power_related_tasks -gt 200) { throw 'Unexpected task sample' }
+          foreach ($p in @($r.processes)) {
+            if (-not $p.executable -or $p.PSObject.Properties.Name -contains 'command_line') { throw 'Unexpected process content' }
+          }
+          foreach ($t in @($r.task_candidates)) {
+            if ($t.PSObject.Properties.Name -contains 'arguments') { throw 'Private arguments leaked' }
+          }
+          if (-not (@($r.nonclaims) -contains 'NO_TASK_DISABLED')) { throw 'Missing no-mutation claim' }
+          if (-not (@($r.nonclaims) -contains 'NO_PROCESS_TERMINATED')) { throw 'Missing process safety claim' }
+          Write-Host 'CoRunner observer schema and privacy-field smoke PASS; Windows test runner only, not X2.'
+      - name: Verify owner election fails closed on an unrelated Windows runner
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $receipt = Join-Path $env:RUNNER_TEMP 'corunner-owner-election-smoke.json'
+          $json = & ./scripts/Select-CoDesktopActiveOwnerR0.ps1 -ReceiptPath $receipt | Out-String
+          $result = $json | ConvertFrom-Json -Depth 12
+          $proof = Get-Content -LiteralPath $receipt -Raw | ConvertFrom-Json -Depth 12
+          if ($proof.schema -ne 'CoAll.CoDesktop.ActiveOwnerElection.R0') { throw 'Schema mismatch' }
+          if ($result.state -ne 'HELD_NOT_QUALIFIED') { throw 'Unrelated CI runner must not elect a CoDesktop owner' }
+          if ($proof.effect_authority -ne 'READ_ONLY') { throw 'Authority mismatch' }
+          if ($null -ne $proof.receiver_ack) { throw 'Receiver acceptance invented' }
+          if (-not (@($proof.nonclaims) -contains 'NO_SIDE_EFFECTS_ON_HOST')) { throw 'Missing safety boundary' }
+          if ($proof.visible_bar_count -ne 0 -or $proof.visible_orb_count -ne 0) { throw 'Unexpected CoDesktop Windows on CI runner' }
+          Write-Host 'CoDesktop owner selector correctly HELD on unrelated Windows runner.'
+      - name: Retain relevant launcher after unrelated task entries (adversarial)
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $global:CoRunnerFixtureTasks = @(
+            1..5 | ForEach-Object {
+              [pscustomobject]@{
+                TaskPath = '\\Synthetic\\'; TaskName = "Unrelated$_"; State = 'Ready'
+                Actions = @([pscustomobject]@{ Execute = 'notepad.exe'; Arguments = '' })
+              }
+            }
+          ) + @(
+            [pscustomobject]@{
+              TaskPath = '\\CoAll\\'; TaskName = 'LateConsoleLauncher'; State = 'Ready'
+              Actions = @([pscustomobject]@{ Execute = 'pwsh.exe'; Arguments = '-NoProfile -NonInteractive -File Synthetic.ps1' })
+            }
+          )
+          function Get-ScheduledTask {
+            [CmdletBinding()] param()
+            return $global:CoRunnerFixtureTasks
+          }
+          $r = (& ./scripts/CoRunnerPopupObserverR0.ps1 -MaxItems 1 | Out-String) | ConvertFrom-Json -Depth 12
+          if (@($r.task_candidates).Count -ne 1 -or $r.task_candidates[0].task_name -ne 'LateConsoleLauncher') {
+            throw 'FALSE_NEGATIVE: Relevant console task was omitted by pre-filter truncation'
+          }
+          if (@($r.task_candidates)[0].PSObject.Properties.Name -contains 'arguments') { throw 'Private arguments emitted' }
+          Write-Host 'Late relevant launcher retained after unrelated entries; synthetic CI only.'
