@@ -8,12 +8,14 @@ on:
     paths:
       - "ai/coordination/coall-fanout-r0/**"
       - "scripts/CoAllFanoutR0.py"
+      - "ai/coordination/coall-fanout-r0/test_runtime_boundary.py"
       - "docs/Architecture/COALL_COORDINATION_FANOUT_RECOVERY_R0_20261027.md"
       - ".github/workflows/coall-fanout-recovery-r0.yml"
   push:
     paths:
       - "ai/coordination/coall-fanout-r0/**"
       - "scripts/CoAllFanoutR0.py"
+      - "ai/coordination/coall-fanout-r0/test_runtime_boundary.py"
       - "docs/Architecture/COALL_COORDINATION_FANOUT_RECOVERY_R0_20261027.md"
       - ".github/workflows/coall-fanout-recovery-r0.yml"
 
@@ -26,6 +28,11 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+
+      - name: Verify task-scoped runtime path and reset containment
+        env:
+          PYTHONPATH: scripts
+        run: python -B -m unittest discover -s ai/coordination/coall-fanout-r0 -p 'test_runtime_boundary.py' -v
 
       - name: Initialize bounded synthetic runtime
         run: |
