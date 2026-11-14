@@ -119,6 +119,42 @@ class TestCandidate(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "INCOMMENSURABLE_CONTEXT"):
             frontier([no_action, drifted])
 
+    def test_unknown_or_malformed_rights_never_defaults_to_permitted(self):
+        # Structural rights are declarations, not real-world verified consent.
+        # Even a zero/false-like substitute cannot become permission.
+        declared = synthetic_candidate("gdside", (9,9,9,9,1,1))
+        self.assertIs(declared.rights_violation, False)
+        for value in (None, 0, 1, "false", "", (), [], {}):
+            with self.subTest(untrusted_rights=repr(value)):
+                with self.assertRaisesRegex(
+                    ValueError, "RIGHTS_STATUS_EXPLICIT_BOOL_REQUIRED"
+                ):
+                    frontier([replace(declared, rights_violation=value)])
+        self.assertEqual(frontier([declared]), ["gdside"])
+        self.assertEqual(
+            frontier([replace(declared, rights_violation=True)]), []
+        )
+
+    def test_direct_candidate_without_declared_rights_is_held(self):
+        base = synthetic_candidate("same-name-same-metrics", (8,8,8,8,2,2))
+        direct = Candidate(
+            name=base.name, outcomes=base.outcomes,
+            metric_contracts=base.metric_contracts,
+            affected_scope=base.affected_scope,
+            rights_context=base.rights_context,
+        )
+        with self.assertRaisesRegex(
+            ValueError, "RIGHTS_STATUS_EXPLICIT_BOOL_REQUIRED"
+        ):
+            frontier([direct])
+
+    def test_boolean_score_cannot_masquerade_as_measured_outcome(self):
+        base = synthetic_candidate("gdside", (5,5,5,5,5,5))
+        outcome = dict(base.outcomes)
+        outcome["flourishing"] = True
+        with self.assertRaisesRegex(ValueError, "INVALID_FINITE_METRIC"):
+            frontier([replace(base, outcomes=outcome)])
+
     def test_unknown_outcome_is_not_silently_zero_filled(self):
         baseline = synthetic_candidate("baseline", (1,1,1,1,1,1))
         missing = replace(baseline, outcomes={**baseline.outcomes,
