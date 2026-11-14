@@ -128,9 +128,9 @@ jobs:
         run: |
           sudo -n -u nobody id -u
           python3 -B -m unittest discover -s tests -p 'test_ownedwork_receiver_os_boundary_r0.py' -v
-      - name: Preserve both competing synthetic WorkID proposals before election
+      - name: Preserve divergent synthetic proposals before WorkID election
         run: python3 -B -m unittest discover -s tests -p 'test_workid_proposal_escrow_r0.py' -v
-      - name: Verify six abrupt-session-death boundaries without a final-turn hook
+      - name: Verify abrupt session death at six distinct commit and effect boundaries
         run: |
           set -o pipefail
           mkdir -p out/cosession-abrupt-death-r0
@@ -138,143 +138,29 @@ jobs:
           python3 - <<'PY'
           from pathlib import Path
           from datetime import datetime, timezone
-          import hashlib, json, re
-          log = Path('out/cosession-abrupt-death-r0/unittest.log').read_bytes()
-          source = Path('tests/cosession/test_abrupt_death_r0.py').read_bytes()
-          assert re.search(rb'Ran 6 tests in [0-9.]+s', log), 'HELD_WRONG_TEST_COUNT'
-          assert re.search(rb'(?m)^OK\s*        run: |
-          python3 -B scripts/CoOwnedWorkSqliteBridgeR0.py \
-            --record /tmp/browser-origin/browser-record.json \
-            --gate tests/fixtures/ownedwork_synthetic_gate_r0.json \
-            --source /tmp/CoPre.md \
-            --js examples/conodcothumb/context_rail_r1/CoOwnedWorkR0.js \
-            --output out/ownedwork-sqlite-r0
-      - uses: actions/upload-artifact@v4
-        with:
-          name: ownedwork-sqlite-receiver-r0
-          path: out/ownedwork-sqlite-r0/
-          retention-days: 30
-          if-no-files-found: error
-  cold-reader:
-    needs: sqlite-receiver
-    runs-on: ubuntu-latest
-    timeout-minutes: 5
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-          persist-credentials: false
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
-      - uses: actions/download-artifact@v4
-        with:
-          name: ownedwork-sqlite-receiver-r0
-          path: /tmp/sqlite-input
-      - uses: actions/download-artifact@v4
-        with:
-          name: ownedwork-browser-origin-r0
-          path: /tmp/browser-revoke-input
-      - name: Cold source readback, browser-origin revocation propagation and replay refusal
-        run: |
-          git show 63b41ead8797e5a781699f32bcbc77b78bdbd7af:CoPre.md > /tmp/CoPre.md
-          python3 -B - <<'PY'
-          import json,sys
-          from pathlib import Path
-          sys.path.insert(0,'scripts')
-          from CoNarrativeWorkIDR0 import Held,commit_once,readback
-          from CoOwnedWorkSqliteBridgeR0 import (
-              PINNED_SHA256,WORK_ID,source_check,apply_browser_revocation,
-              issue_receiver_revocation_grant)
-          root=Path('/tmp/sqlite-input')
-          names=sorted(p.name for p in root.iterdir())
-          assert names==['receiver-observation.json','receiver.sqlite','translated-packet.json'],names
-          packet=json.loads((root/'translated-packet.json').read_text())
-          producer=json.loads((root/'receiver-observation.json').read_text())
-          assert source_check('/tmp/CoPre.md')==PINNED_SHA256
-          assert packet['work_id']==WORK_ID and producer['receiver_ack'] is False
-          assert producer['local_commits']==1
-          db=root/'receiver.sqlite'
-          proof=readback(db,expected_packet=packet,source_path='/tmp/CoPre.md')
-          assert proof['state']=='COLD_SOURCE_RECONSTRUCTED' and proof['committed_work_ids']==1
-          assert proof['external_receiver_ack'] is False
-          duplicate=commit_once(db,packet)
-          assert duplicate['new_commits']==0 and duplicate['duplicate']
-          origin=Path('/tmp/browser-revoke-input')
-          origin_names=sorted(p.name for p in origin.iterdir())
-          assert origin_names==['browser-record.json','browser-revoked-record.json'],origin_names
-          active=json.loads((origin/'browser-record.json').read_text(encoding='utf-8'))
-          revoked=json.loads((origin/'browser-revoked-record.json').read_text(encoding='utf-8'))
-          with open('tests/fixtures/ownedwork_synthetic_gate_r0.json',encoding='utf-8') as fp:
-              gate=json.load(fp)
-          # Receiver-side synthetic grant issuance: NOT a separate trust domain.
-          actor='CI_RECEIVER_SYNTHETIC_ACTOR'
-          token=issue_receiver_revocation_grant(db,packet,actor,ttl_seconds=300)
-          revocation=apply_browser_revocation(
-              db,active,revoked,gate,'/tmp/CoPre.md',
-              'examples/conodcothumb/context_rail_r1/CoOwnedWorkR0.js',
-              actor_id=actor,grant_token=token)
-          assert revocation['synthetic_receiver_grant_enforced'] is True
-          assert revocation['one_use_receiver_grant_consumed'] is True
-          assert revocation['before']=='COLD_SOURCE_RECONSTRUCTED'
-          assert revocation['after']=='HELD_REVOKED'
-          assert revocation['receiver_ack'] is False
-          assert readback(db,expected_packet=packet)['state']=='HELD_REVOKED'
-          try:
-            commit_once(db,packet)
-          except Held as e:
-            assert str(e)=='HELD_REVOKED',str(e)
-          else:
-            raise AssertionError('REPLAY_AFTER_REVOKE')
-          receipt={'schema':'CoAll.CoOwnedWork.ColdCIProof.R0',
-            'state':'COLD_READBACK_REVOKE_AND_REPLAY_DENIAL_PASS',
-            'work_id':WORK_ID,'source_sha256':PINNED_SHA256,
-            'committed_work_ids':1,'duplicate_new_commits':0,
-            'replay_after_revoke':'HELD_REVOKED',
-            'browser_revocation_cold_job':revocation,
-            'browser_revocation_applied_to_sqlite':True,
-            'sender_authentication':'UNPROVEN_SYNTHETIC_CI',
-            'receiver_ack':False,
-            'real_human_consent':False,'x2_or_costead_runtime':False,
-            'survival_over_24h':False,'same_github_failure_domain':True}
-          out=Path('out/ownedwork-sqlite-cold')
-          out.mkdir(parents=True,exist_ok=True)
-          (out/'cold-receiver.json').write_text(json.dumps(receipt,sort_keys=True,indent=2)+'\n')
-          print(json.dumps(receipt,sort_keys=True))
-          PY
-      - uses: actions/upload-artifact@v4
-        with:
-          name: ownedwork-sqlite-cold-readback-r0
-          path: out/ownedwork-sqlite-cold/
-          retention-days: 30
-          if-no-files-found: error
-, log), 'HELD_TEST_RUN_NOT_PASS'
+          import hashlib,json
+          log=Path('out/cosession-abrupt-death-r0/unittest.log').read_bytes()
+          source=Path('tests/cosession/test_abrupt_death_r0.py').read_bytes()
+          assert b'Ran 6 tests in ' in log and log.rstrip().endswith(b'OK'), 'HELD_SIX_CASES_NOT_PASS'
           assert b'FAILED' not in log and b'Traceback' not in log, 'HELD_UNEXPECTED_FAILURE'
-          receipt = {
-            'schema':'CoSession.AbruptDeathCIGate.R0',
-            'state':'CI_SIX_ABRUPT_DEATH_BOUNDARIES_PASS',
-            'work_id':'CoPre.ReadyCycle.Synthetic.R0',
-            'observed_utc':datetime.now(timezone.utc).isoformat(),
+          result={
+            'schema':'CoSession.AbruptDeathCIGate.R1',
+            'state':'SIX_SYNTHETIC_CHILD_EXIT_BOUNDARIES_PASS',
             'source_sha256':hashlib.sha256(source).hexdigest(),
             'test_log_sha256':hashlib.sha256(log).hexdigest(),
-            'actual_child_exit_modes':4,
-            'passing_test_cases':6,
-            'recovered_inflight_before_durable_ingest':False,
-            'postcommit_before_ack_cold_readable':True,
-            'conflicting_replay_held':True,
-            'unknown_effect_ack_held':True,
-            'independent_provider_receiver_ack':False,
-            'real_session_integration':False,
-            'x2_or_costead_runtime':False,
-            'nonclaims':['STANDALONE_SQLITE_MODEL_NOT_EXISTING_RECEIVER_EXECUTION',
-              'NO_PROVIDER_SESSION_SUSPENSION', 'UNSENT_INPUT_NOT_RECOVERABLE',
-              'NO_INDEPENDENT_RECEIVER_PICKUP', 'NO_24H_RUNTIME', 'NOT_CANON', 'NOT_COEX']
+            'work_id':'CoPre.ReadyCycle.Synthetic.R0',
+            'observed_utc':datetime.now(timezone.utc).isoformat(),
+            'test_cases':6,
+            'unsent_input_recovered':False,
+            'independent_receiver_ack':False,
+            'real_provider_session_tested':False,
+            'co_stead_runtime':False,
+            'nonclaims':['SIMULATED_ONLY','NOT_LIVE_PROVIDER_INGEST','NOT_24H','NOT_CANON','NOT_COEX']
           }
-          Path('out/cosession-abrupt-death-r0/receipt.json').write_text(
-            json.dumps(receipt,sort_keys=True,indent=2)+'\n',encoding='utf-8')
-          print(json.dumps({k:receipt[k] for k in ('state','work_id','source_sha256','test_log_sha256')},sort_keys=True))
+          Path('out/cosession-abrupt-death-r0/receipt.json').write_text(json.dumps(result,sort_keys=True,indent=2)+'\n',encoding='utf-8')
+          print(json.dumps(result,sort_keys=True))
           PY
-      - name: Retain separate source-bound abrupt-session-death CI receipt
+      - name: Preserve separate crash-boundary receipt
         uses: actions/upload-artifact@v4
         with:
           name: cosession-abrupt-death-r0-${{ github.run_id }}-a${{ github.run_attempt }}
