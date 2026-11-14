@@ -76,3 +76,16 @@ The next independent gate is a **real human first-use** and, separately, an **au
 **Rails:** `LOCAL_IS_NOT_LANDED`; `VALIDATION_IS_NOT_ACCEPTANCE`; `NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF`; `NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE`; `HOLD_NO_DELETE`.
 
 No local predecessors were deleted or authorized for retirement by publication.
+
+## CoCopy / CoPaste bulk insertion R0 | additive source-only candidate (2026-11-14)
+
+User-observed UX: simulated character-by-character typing and slowly replayed paste are vulnerable to focus interruption. Paste preparation, text insertion, visible readback, and message submission must be separate actions.
+
+- [Scoped shared bulk-field source](copaste_bulk_r0.cjs) and [20 synthetic negative checks](test_copaste_bulk_r0.cjs) are additive to this R4b **draft**. They do not change the exact hash-pinned original R4b HTML, its 33/33 Edge receipt, local demo WorkID, or any installed CoBar.
+- `createCoPasteR0().insert()` requires explicit `authorized=true`, dedicated owned text field (`data-copaste-owned="true"`), exact target ID, current focus, exact prestate, scoped request ID, bounded payload, safe selection, and a synchronous destination-value readback.
+- Uses **one `setRangeText` call** for the complete payload, preserves actual CRLF/LF and Unicode, and does **not** call `type`, `keydown`, `Ctrl+V`, `submit`, clipboard APIs, network APIs, or external receivers.
+- Same request ID and same payload is suppressed without re-insertion; conflicting replay, changed target, changed destination, wrong focus, unsupported/sensitive fields, oversized content and unverifiable partial writes HOLD. Undo is possible only when destination still exactly equals the committed local text value.
+- Run `node examples/cobar/test_copaste_bulk_r0.cjs` in the **existing** CoGbx UX CI. Tests use a synthetic field implementation, **not** a real browser, Windows HID stack, ChatGPT input, or clipboard. Application state/event synchronization, editor-specific normalization and pixel-level CoEyes verification are next acceptance gates. Do not infer near-zero latency from a synchronous fake field.
+- CoCopy retains provenance and typed `COPIED`/`PASTED` events; this R0 adapter produces only a private, ephemeral return state and deliberately does **not** persist personal input, claim `PASTED` at a third-party destination, or submit anything. A real native CoBar/editor adapter must separately establish a receiver-origin readproof.
+
+`COPY_NE_PASTE` · `INSERT_NE_SEND` · `READBACK_VALUE_NE_PIXEL_VISIBILITY` · `SYNTHETIC_TEST_NE_LIVE_CLIPBOARD` · `NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF`.
