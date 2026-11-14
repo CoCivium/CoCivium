@@ -4,6 +4,8 @@ on:
   pull_request:
     paths:
       - "scripts/CoLogicalSpawnPlanner.py"
+      - "scripts/CoRelBraidFrontierR0.py"
+      - "tests/test_corel_braid_frontier_r0.py"
       - "tests/test_logical_spawn_*.py"
       - "schemas/coevo-delta-v0.1.schema.json"
       - "schemas/cospawn-contract-v0.1.schema.json"
@@ -22,6 +24,8 @@ on:
   push:
     paths:
       - "scripts/CoLogicalSpawnPlanner.py"
+      - "scripts/CoRelBraidFrontierR0.py"
+      - "tests/test_corel_braid_frontier_r0.py"
       - "tests/test_logical_spawn_*.py"
       - "schemas/coevo-delta-v0.1.schema.json"
       - "schemas/cospawn-contract-v0.1.schema.json"
@@ -45,5 +49,7 @@ jobs:
         run: python scripts/CoLogicalSpawnPlannerWaitlessCanaryR2B.py
       - name: Preserve claim identity and hold malformed or ambiguous inputs
         run: python -m unittest discover -s tests -p 'test_logical_spawn_*.py' -v
+      - name: Prove bounded CoRel/CoBraid causal frontier without materialization
+        run: python -B -m unittest discover -s tests -p "test_corel_braid_frontier_r0.py" -v
       - name: Prove shadow work is visible but not a human blocker
         run: python scripts/CoFleetProjectionCompilerR4A.py --selftest
