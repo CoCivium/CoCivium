@@ -142,6 +142,7 @@ class TestCandidate(unittest.TestCase):
             metric_contracts=base.metric_contracts,
             affected_scope=base.affected_scope,
             rights_context=base.rights_context,
+            applicability_contract=base.applicability_contract,
         )
         with self.assertRaisesRegex(
             ValueError, "RIGHTS_STATUS_EXPLICIT_BOOL_REQUIRED"
@@ -154,6 +155,35 @@ class TestCandidate(unittest.TestCase):
         outcome["flourishing"] = True
         with self.assertRaisesRegex(ValueError, "INVALID_FINITE_METRIC"):
             frontier([replace(base, outcomes=outcome)])
+
+    def test_same_relational_scores_different_applicability_contract_hold(self):
+        # Candidate relations do not erase their evidence-generating domain.
+        a = synthetic_candidate("same-relation", (8,8,8,8,2,2))
+        b = replace(synthetic_candidate("same-relation", (8,8,8,8,2,2)),
+                    applicability_contract="fixture:unqualified-physical-medium")
+        with self.assertRaisesRegex(ValueError, "INCOMMENSURABLE_CONTEXT"):
+            frontier([a, b])
+        with self.assertRaisesRegex(ValueError, "INCOMMENSURABLE_CONTEXT"):
+            dominates(a, b)
+
+    def test_absent_applicability_holds_even_if_all_other_fields_match(self):
+        a = synthetic_candidate("claim", (8,8,8,8,2,2))
+        with self.assertRaisesRegex(ValueError, "APPLICABILITY_CONTRACT_REQUIRED"):
+            frontier([replace(a, applicability_contract="")])
+        with self.assertRaisesRegex(ValueError, "APPLICABILITY_CONTRACT_REQUIRED"):
+            frontier([replace(a, applicability_contract=None)])
+
+    def test_stable_label_does_not_erase_context_drift(self):
+        # Same entity labels and vectors can encode distinct interaction
+        # conditions, time horizons, or known substrate dependencies.
+        base = synthetic_candidate("unchanged-symbol", (8,8,8,8,2,2))
+        modified = replace(base,
+                           applicability_contract="fixture:changed-transition-horizon")
+        with self.assertRaisesRegex(ValueError, "INCOMMENSURABLE_CONTEXT"):
+            frontier([base, modified])
+        # A declared common fixture is only structurally comparable, not an
+        # empirical demonstration of inter-substrate equivalence.
+        self.assertEqual(frontier([base]), ["unchanged-symbol"])
 
     def test_unknown_outcome_is_not_silently_zero_filled(self):
         baseline = synthetic_candidate("baseline", (1,1,1,1,1,1))
