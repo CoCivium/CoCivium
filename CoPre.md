@@ -1,6 +1,6 @@
 # CoPreGeneric | Stable public entry R0
 
-**Status:** PUBLIC SOURCE ENTRY; not canon, a live cross-provider agent, a universal receiver, or a verified independent website mirror. **Updated:** 2026-11-09.
+**Status:** PUBLIC SOURCE ENTRY; not canon, a live cross-provider agent, a universal receiver, or a verified independent website mirror. **Updated:** 2026-11-11.
 
 > **For a session receiving this URL:** Read [SESSION_BOOTSTRAP.md](SESSION_BOOTSTRAP.md), then only the current work-relevant materials. This page is an invitation to verify/reconcile, not external authorization. If no material new delta exists, return `NO_MATERIAL_DELTA` and quiesce.
 
@@ -105,6 +105,19 @@ A public CoSeed/CoPath is an **available source**, not universal session readpro
 The [machine-readable ReadyCycle R0](ai/onramp/copre-ready-cycle-acceptance-r0.json) binds existing CoLatch, CoWave diversity, CoOmni handoff and CoSeed/CoPath sources. It defines falsifiable objectives for 1 Seed, 1 Orb, 1 truthful gauge, 1 reversible thumb, 1 time, 0 invented placeholders, >24h measured survival, one independently verified handoff, zero Rick relay and one elected authorized actuator. **All latter runtime goals remain UNPROVEN**, not promises met by a prompt.
 
 **Scheduled historical 24h source check (2026-11-10 04:05 UTC):** The [existing CoGoAll pulse](.github/workflows/cogoall-unattended-proof-pulse.yml) now reuses the candidate CoPre source canary and fetches the **actual** prior-run artifact from [run 42729597075](https://github.com/CoCivium/CoCivium/actions/runs/42729597075). [First backport/pulse run 42753548095](https://github.com/CoCivium/CoCivium/actions/runs/42753548095) passed 3/3 jobs, with 17 source-canary negative controls and a recorded verdict **HELD_LESS_THAN_24H**; current mainline separately reported `MAINLINE_DIVERGED_FROM_HISTORICAL_PIN`. The earliest qualifying 24h observation is **2026-11-11 00:36:47 UTC**. Scheduled delivery itself remains best-effort/unqualified, and source survival is not runtime survival, automatic session synchronization or independent provider ACK.
+
+**Readback verified on 2026-11-11:** [Scheduled run 42981941607](https://github.com/CoCivium/CoCivium/actions/runs/42981941607) completed all three jobs successfully. Its actual logs retrieved and validated the original baseline artifact, then returned `VERIFIED_SOURCE_REFETCH_24H_PLUS_NOT_RUNTIME_SURVIVAL`. This closes the historical-source re-fetch gate only; the earlier `HELD_LESS_THAN_24H` observation remains valid for its recorded time.
+
+| Gate | Result at this run |
+|---|---|
+| Historical pinned source available again after >=24h | **PASS** for [CoPre at commit 63b41ead8797](https://github.com/CoCivium/CoCivium/blob/63b41ead8797e5a781699f32bcbc77b78bdbd7af/CoPre.md); SHA-256 `58f8c722bfbfc34cac41189c072d2effe4b19dbbe8a37be4f8687344d6b00b9a`. |
+| Current source equals the historical pin | **DIVERGED**: `MAINLINE_DIVERGED_FROM_HISTORICAL_PIN`. This does not establish current Seed synchronization. |
+| Producer-to-receiver receipt readback | **PASS within GitHub Actions**: the separate `pulse-receiver` job verified the run-scoped receipt and ten log hashes. Both jobs share the GitHub failure domain. |
+| Hourly scheduled coverage | **HELD**: the run's bounded cadence audit matched **1 of 9** expected ticks; **8 unobserved**. A successful wake does not prove continuous hourly operation. |
+| Independent receiver, real exactly-once effect handoff and >24h runtime survival | **UNPROVEN**. The readback explicitly reports external receiver ACK false and real worker effect / X2 receiver not tested. |
+| Dedicated repository and two website mirrors | **UNQUALIFIED**. Neither this workflow nor source availability establishes their deployment or byte parity. |
+
+The run retained source recheck artifact `13838096666` and CI receiver-readback artifact `13837349049`, with expiry recorded as 2026-12-11. These are bounded-retention GitHub artifacts, not independent durable custody. Keep the existing [receiver/UX acceptance issue #453](https://github.com/CoCivium/CoCivium/issues/453) and [integration issue #450](https://github.com/CoCivium/CoCivium/issues/450) as continuation owners. The next discriminating result is an authorized receiver's exact-WorkID readproof and useful effect outside this CI-only boundary; no new Seed, scheduler or competing bar is required.
 
 Exploratory waves should vary hypothesis, method, audience, substrate, horizon or falsifier to generate useful independent evidence. Exact repeated waves remain necessary for replication, safety controls, rollback and regression. No automatic new prompt version or named front is created merely by reasserting CoGoAll; when no material delta appears, report `NO_MATERIAL_DELTA`.
 
