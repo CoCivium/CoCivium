@@ -34,6 +34,8 @@ jobs:
         run: node examples/cobar/interaction_r4b.cjs
       - name: Check CoCopy/CoBar fast bulk-insert adversarial contract
         run: node examples/cobar/test_copaste_bulk_r0.cjs
+      - name: Check CoCopy/CoPaste real headless Chrome DOM insertion
+        run: node examples/cobar/test_copaste_browser_r0.cjs
       - name: Check source boundaries
         run: |
           python - <<'PY'
