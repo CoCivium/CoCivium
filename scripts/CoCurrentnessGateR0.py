@@ -107,6 +107,11 @@ def assess(current, previous=None):
                 state = 'FAIL_CLOSED_RECEIVER_CURRENTNESS'
             elif prior_pid != current_pid or prior_start != current_start:
                 state = 'HELD_PROCESS_EPOCH_CHANGED'
+            elif when(current['status']['utc']) <= when(previous['status']['utc']):
+                # Counter increments alone cannot establish a new heartbeat
+                # event if the reported event timestamp is frozen or reversed.
+                faults.append('STATUS_TIMESTAMP_NOT_ADVANCING')
+                state = 'FAIL_CLOSED_RECEIVER_CURRENTNESS'
             elif elapsed < max(60.0, 3 * period):
                 state = 'HELD_WINDOW_TOO_SHORT'
             elif current['status']['heartbeat_seq'] <= previous['status']['heartbeat_seq']:
