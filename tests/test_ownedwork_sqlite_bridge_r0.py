@@ -80,6 +80,33 @@ class SyntheticBridgeR0(unittest.TestCase):
             with self.subTest(field=name):
                 self.held(record=rec)
 
+    def test_coping_copyblock_fields_cannot_elevate_ownedwork(self):
+        """Foreign CopyBlock fetch/write fields are never WorkID authority.
+
+        This deliberately invokes only the existing strict adapter. It does
+        not invoke the live X2 CoPing fetch bridge or send any packet.
+        """
+        for extra in (
+                {"artifacts": [{"expected_filename": "inert.txt",
+                                "fetch_urls": ["SYNTHETIC_NON_URL"],
+                                "stage_targets": ["SYNTHETIC_NO_PATH"]}]},
+                {"fetch_urls": ["SYNTHETIC_NON_URL"]},
+                {"stage_targets": ["SYNTHETIC_NO_PATH"]},
+                {"execute_policy": "NEVER"}):
+            with self.subTest(extra=list(extra)):
+                record = self.record()
+                record["packet"].update(extra)
+                with self.assertRaisesRegex(
+                        Held, "HELD_BROWSER_PACKET_SCHEMA"):
+                    self.accepted(record=record)
+        gate = {**self.gate, "stage_targets": ["SYNTHETIC_NO_PATH"]}
+        with self.assertRaisesRegex(Held, "HELD_EXPLICIT_GATE_MISSING"):
+            self.accepted(gate=gate)
+        record = self.record()
+        record["stage_targets"] = ["SYNTHETIC_NO_PATH"]
+        with self.assertRaisesRegex(Held, "HELD_BROWSER_RECORD_SCHEMA"):
+            self.accepted(record=record)
+
     def test_silent_narrative_rewrite_is_held(self):
         for field in ("narrative_summary", "prior_decisions",
                       "open_blockers", "next_safe_deed"):
