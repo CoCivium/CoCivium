@@ -9,6 +9,7 @@ on:
       - 'examples/cotalkitout/due_work_catchup_r0.py'
       - '.github/workflows/colocalworkid-portable-replay-r0.yml'
   push:
+    branches: ['main']
     paths:
       - 'examples/colocalworkid/**'
       - 'examples/cotalkitout/due_work_catchup_r0.py'
