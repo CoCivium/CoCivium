@@ -1,7 +1,24 @@
 """Negative controls for speculative G_dSide comparison."""
 import unittest
 from dataclasses import replace
-from model import Candidate, METRICS, SCENARIOS, dominates, frontier, interaction, synthetic_candidate
+from model import (Candidate, InteractionObservation, METRICS, SCENARIOS,
+                   dominates, frontier, interaction, synthetic_candidate)
+
+def sample(value, **overrides):
+    """Declared synthetic unit, population, rights, applicability and horizon."""
+    kwargs = {
+        "value": value,
+        "metric_contract": "fixture:flourishing:unitless-index:v1",
+        "affected_scope": "fixture:one-affected-population",
+        "rights_context": "fixture:no-real-world-rights-granted",
+        "applicability_contract": "fixture:toy-counterfactuals:v1",
+        "horizon": "fixture:week-1",
+        "source_ref": "fixture:four-worlds",
+        "rights_violation": False,
+    }
+    kwargs.update(overrides)
+    return InteractionObservation(**kwargs)
+
 
 class TestCandidate(unittest.TestCase):
     def test_future_scenario_can_win(self):
@@ -30,11 +47,77 @@ class TestCandidate(unittest.TestCase):
 
     def test_interaction_positive_negative(self):
         base=frozenset()
-        v={base:0, frozenset({"a"}):3, frozenset({"b"}):2,
-           frozenset({"a","b"}):7}
+        v={base:sample(0), frozenset({"a"}):sample(3),
+           frozenset({"b"}):sample(2), frozenset({"a","b"}):sample(7)}
         self.assertEqual(interaction(v,base,"a","b"),2)
-        v[frozenset({"a","b"})]=4
+        v[frozenset({"a","b"})]=sample(4)
         self.assertEqual(interaction(v,base,"a","b"),-1)
+
+    def test_interaction_mismatched_units_hold(self):
+        base=frozenset()
+        v={base:sample(0), frozenset({"a"}):sample(3),
+           frozenset({"b"}):sample(2), frozenset({"a","b"}):
+               sample(7, metric_contract="fixture:cost:kilograms")}
+        with self.assertRaisesRegex(ValueError, "INCOMMENSURABLE_INTERACTION"):
+            interaction(v,base,"a","b")
+
+    def test_interaction_scope_rights_applicability_and_time_drift_hold(self):
+        base=frozenset()
+        same={base:sample(0), frozenset({"a"}):sample(3),
+              frozenset({"b"}):sample(2), frozenset({"a","b"}):sample(7)}
+        for field, changed in (
+            ("affected_scope", "fixture:another-community"),
+            ("rights_context", "fixture:changed-rights"),
+            ("applicability_contract", "fixture:changed-substrate"),
+            ("horizon", "fixture:week-2"),
+        ):
+            with self.subTest(changed_context=field):
+                v=dict(same)
+                v[frozenset({"a","b"})]=replace(v[frozenset({"a","b"})],
+                                                   **{field:changed})
+                with self.assertRaisesRegex(ValueError, "INCOMMENSURABLE_INTERACTION"):
+                    interaction(v,base,"a","b")
+
+    def test_interaction_missing_counterfactual_is_not_zero(self):
+        base=frozenset()
+        v={base:sample(0), frozenset({"a"}):sample(3),
+           frozenset({"a","b"}):sample(7)}
+        with self.assertRaisesRegex(ValueError, "INTERACTION_COUNTERFACTUAL_REQUIRED"):
+            interaction(v,base,"a","b")
+
+    def test_interaction_nonfinite_boolean_or_non_numeric_rejected(self):
+        base=frozenset()
+        valid={base:sample(0), frozenset({"a"}):sample(3),
+               frozenset({"b"}):sample(2), frozenset({"a","b"}):sample(7)}
+        for invalid in (True, float("nan"), float("inf"), "7", None):
+            with self.subTest(invalid_value=repr(invalid)):
+                v=dict(valid)
+                v[frozenset({"a","b"})]=sample(invalid)
+                with self.assertRaisesRegex(ValueError, "INVALID_INTERACTION_VALUE"):
+                    interaction(v,base,"a","b")
+
+    def test_interaction_rights_unknown_or_veto_hold(self):
+        base=frozenset()
+        valid={base:sample(0), frozenset({"a"}):sample(3),
+               frozenset({"b"}):sample(2), frozenset({"a","b"}):sample(7)}
+        for invalid,err in ((None, "INTERACTION_RIGHTS_STATUS_REQUIRED"),
+                            (True, "INTERACTION_RIGHTS_VETO")):
+            with self.subTest(rights_status=invalid):
+                v=dict(valid)
+                v[frozenset({"b"})]=sample(2,rights_violation=invalid)
+                with self.assertRaisesRegex(ValueError, err):
+                    interaction(v,base,"a","b")
+
+    def test_interaction_no_raw_scalar_or_missing_provenance(self):
+        base=frozenset()
+        raw={base:0, frozenset({"a"}):3,
+             frozenset({"b"}):2, frozenset({"a","b"}):7}
+        with self.assertRaisesRegex(ValueError, "INTERACTION_OBSERVATION_REQUIRED"):
+            interaction(raw,base,"a","b")
+        wrapped={key:sample(value) for key,value in raw.items()}
+        wrapped[base]=sample(0,source_ref="")
+        with self.assertRaisesRegex(ValueError, "INTERACTION_CONTEXT_REQUIRED"):
+            interaction(wrapped,base,"a","b")
 
     def test_duplicate_intervention_rejected(self):
         with self.assertRaises(ValueError):
