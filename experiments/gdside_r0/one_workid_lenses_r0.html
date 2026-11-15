@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="dark">
+<meta name="referrer" content="no-referrer">
+<title>G_dSide | One WorkID, four honest lenses</title>
+<style>
+:root{color-scheme:dark;--bg:#10121b;--panel:#1b1e2b;--ink:#f4f1fb;--muted:#bfc0d0;--line:#464458;--magenta:#f297d9;--teal:#8ce3d1;--coral:#efaca8}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(ellipse at 80% -10%,#342341 0,transparent 43%),radial-gradient(ellipse at -10% 75%,#16383b 0,transparent 43%),var(--bg);color:var(--ink);font:16px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+main{max-width:980px;margin:auto;padding:clamp(18px,4vw,52px)}
+p{margin:.6rem 0 1rem}
+a{color:var(--teal)}
+.eyebrow{text-transform:uppercase;letter-spacing:.11em;font-size:.76rem;color:var(--teal);font-weight:750}
+h1{font-size:clamp(2rem,5vw,3.6rem);line-height:1.07;max-width:720px;margin:.4rem 0 1rem}
+h2{font-size:1.33rem;margin:0 0 .6rem}
+.lede,.muted{color:var(--muted)}
+.work{border:1px solid var(--line);border-radius:20px;background:rgba(27,30,43,.88);padding:clamp(16px,3vw,27px);margin:22px 0}
+.identity{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.orb{width:88px;height:88px;flex:none;border-radius:50%;background:radial-gradient(circle at 35% 29%,#f4d3ec 0,#bb8fe3 24%,#7957ae 53%,#253640 80%);box-shadow:0 0 0 5px #4e3f6266,0 0 32px #ae87cf44}
+.small{font-size:.8rem}
+.code{font:0.87rem/1.5 ui-monospace,Consolas,monospace;overflow-wrap:anywhere}
+.stage{display:inline-block;color:var(--teal);border:1px solid #547d77;background:#24413d;padding:4px 9px;border-radius:99px;font-weight:700;font-size:.83rem}
+.gauge{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin-top:17px}
+.gauge span{padding:9px 6px;text-align:center;font-size:.75rem;border:1px solid var(--line);border-radius:8px;color:var(--muted)}
+.gauge span:first-child{border-color:#528e87;background:#1d4641;color:#cdf6ed}
+.bar{display:flex;gap:9px;flex-wrap:wrap;margin:14px 0}
+button,select{font:inherit;background:#252a39;color:var(--ink);border:1px solid #68637c;border-radius:9px;min-height:45px;padding:9px 14px}
+button{cursor:pointer}
+button[aria-pressed="true"]{background:#4b3857;border-color:var(--magenta);color:white}
+button:focus-visible,select:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid var(--teal);outline-offset:3px}
+.section{display:grid;grid-template-columns:minmax(0,1fr);gap:14px}
+label{display:block;font-size:.88rem;font-weight:700;color:var(--muted);margin-bottom:6px}
+.card{border-radius:17px;border:1px solid var(--line);background:var(--panel);padding:23px;min-height:240px}
+ul{margin:9px 0 0;padding-left:23px}
+li{margin:7px 0}
+#frontier{color:var(--teal);font-weight:750}
+#pause{border-color:var(--coral)}
+#pause[aria-pressed="true"]{background:#633c44}
+.evidence{border-top:1px solid var(--line);margin-top:20px;padding-top:14px}
+summary{cursor:pointer;font-weight:700}
+dl{display:grid;grid-template-columns:minmax(120px,1fr) 2fr;gap:6px 12px;font-size:.88rem}
+dt{color:var(--muted)}dd{margin:0;overflow-wrap:anywhere}
+footer{color:var(--muted);font-size:.8rem;margin:20px 0}
+@media(min-width:650px){.section{grid-template-columns:minmax(0,2fr) minmax(230px,1fr)}}
+@media(max-width:420px){.gauge{grid-template-columns:1fr}.orb{width:62px;height:62px}dl{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+</style>
+</head>
+<body>
+<main>
+<div class="eyebrow">CoHereNow / one source-bound WorkID</div>
+<h1>Four lenses. One accountable state.</h1>
+<p class="lede">A read-only, synthetic G_dSide candidate. Explore what is known, what is unknown, and where a simpler model wins. This page cannot send or authorize work.</p>
+<section class="work" aria-label="Work status">
+  <div class="identity">
+    <div class="orb" role="img" aria-label="Decorative synthetic CoOrb; not a live health signal"></div>
+    <div>
+      <div class="small muted">The one WorkID</div>
+      <strong class="code" id="workid">GDSIDE-5LANE-R0</strong>
+      <div><span class="stage" id="truth" role="status">SYNTHETIC MODEL ONLY</span></div>
+    </div>
+  </div>
+  <div class="gauge" aria-label="Evidence gate, not a measured performance score">
+    <span>Source model: pinned</span><span>Independent receiver: not verified</span><span>Real human UX: not tested</span>
+  </div>
+  <p class="small muted" id="time">Fixture snapshot: 2026-11-15 UTC. Static source timestamp, not a heartbeat.</p>
+</section>
+<div class="bar" role="group" aria-label="Four perspectives over one WorkID">
+  <button type="button" data-lens="object" aria-pressed="true" aria-controls="lens-panel">Object</button>
+  <button type="button" data-lens="relation" aria-pressed="false" aria-controls="lens-panel">Relations</button>
+  <button type="button" data-lens="interstice" aria-pressed="false" aria-controls="lens-panel">In-between</button>
+  <button type="button" data-lens="future" aria-pressed="false" aria-controls="lens-panel">Future</button>
+</div>
+<div class="section">
+  <section class="card" id="lens-panel" aria-live="polite">
+    <h2 id="lens-title">Object lens</h2>
+    <p id="lens-description"></p>
+    <ul id="lens-facts"></ul>
+  </section>
+  <aside class="card">
+    <label for="scenario">Synthetic benchmark case</label>
+    <select id="scenario">
+      <option value="future_benefit">Future benefit: G_dSide wins</option>
+      <option value="backcast_overfit">Overfit: supply wins</option>
+      <option value="rights_veto">Rights veto: supply wins</option>
+    </select>
+    <p class="small muted">Pareto result from the declared toy outcomes. No real-world forecast or consent.</p>
+    <div class="small muted">Non-dominated candidate(s)</div>
+    <p id="frontier" role="status"></p>
+    <div class="small muted" id="reason"></div>
+    <div class="bar"><button type="button" id="pause" aria-pressed="false" aria-controls="lens-panel">Pause preview</button></div>
+    <p class="small muted" id="local-state" role="status">Preview only. No external effects.</p>
+  </aside>
+</div>
+<details class="evidence" id="evidence">
+  <summary>Evidence and limitations</summary>
+  <dl>
+    <dt>Source</dt><dd id="source" class="code">experiments/gdside_r0/model.py</dd>
+    <dt>Pinned Git blob</dt><dd id="source-blob" class="code">eb6b2e0e472d94f612999d44c92c5a055e9eabf7</dd>
+    <dt>Source contract</dt><dd><a href="https://github.com/CoCivium/CoCivium/issues/378" rel="noreferrer">G_dSide issue #378</a></dd>
+    <dt>Rights</dt><dd id="rights">Toy rights status is declared, not independently authorized.</dd>
+    <dt>Receiver ACK</dt><dd id="receiver">NONE / UNVERIFIED</dd>
+    <dt>Unknown</dt><dd>UNKNOWN, NOT_OBSERVED, WITHHELD, and EXPLICITLY_ABSENT are distinct states.</dd>
+    <dt>Scope</dt><dd id="scope">PUBLIC_SYNTHETIC_ONLY / EFFECT_AUTHORITY_NONE / NO_SESSION_SYNC</dd>
+  </dl>
+</details>
+<footer>Switching perspectives changes presentation only. It never changes the WorkID, source hash, rights, or receiver status. The static snapshot remains recoverable without this browser's storage, but not without a durable source.</footer>
+</main>
+<script>
+'use strict';
+(() => {
+  const FIXTURE = Object.freeze({
+    work_id: 'GDSIDE-5LANE-R0',
+    rights: 'Toy rights status is declared, not independently authorized.',
+    receiver: 'NONE / UNVERIFIED',
+    scope: 'PUBLIC_SYNTHETIC_ONLY / EFFECT_AUTHORITY_NONE / NO_SESSION_SYNC',
+    source_blob: 'eb6b2e0e472d94f612999d44c92c5a055e9eabf7'
+  });
+  const cases = Object.freeze({
+    future_benefit: {pareto:['gdside'], why:'Under the stipulated toy values, G_dSide dominates. This proves no future outcome.'},
+    backcast_overfit: {pareto:['supply'], why:'The supply-only baseline outperforms the stipulated G_dSide vector. Record the loss.'},
+    rights_veto: {pareto:['supply'], why:'The higher-scoring G_dSide candidate is excluded by a declared synthetic rights veto.'}
+  });
+  const lenses = Object.freeze({
+    object: ['Object lens','A stable WorkID and source anchor, not a claim that this browser owns durable real-world work.',
+      ['One declared synthetic WorkID','No duplicate object when a perspective changes','The source blob stays pinned across reloads']],
+    relation: ['Relation lens','Supply, Demand, and G_dSide are competing perspectives over the same source-bound experiment.',
+      ['Supply: capabilities and costs','Demand: expressed and unmet needs','G_dSide: plural and revisable future benefits, including unvoiced interests']],
+    interstice: ['In-between lens','Absence of an observation is not absence of an interest, refusal, or permission.',
+      ['UNKNOWN: evidence does not settle the question','NOT_OBSERVED: no observation in a declared window','WITHHELD: no implied right to disclose or act','EXPLICITLY_ABSENT: requires affirmative evidence']],
+    future: ['Future lens','Compare alternatives using the same toy measurement contract. Hold incommensurable rights or affected-population contexts.',
+      ['Pareto alternatives remain when no candidate dominates','A rights veto overrides an attractive numeric outcome','A G_dSide loss is retained, never hidden or retuned']]
+  });
+  const el = id => document.getElementById(id);
+  let current = 'object', paused = false;
+  function render() {
+    const fixture = cases[el('scenario').value];
+    if (!fixture) throw Error('HOLD_UNKNOWN_SCENARIO');
+    el('workid').textContent = FIXTURE.work_id;
+    el('rights').textContent = FIXTURE.rights;
+    el('receiver').textContent = FIXTURE.receiver;
+    el('scope').textContent = FIXTURE.scope;
+    el('source-blob').textContent = FIXTURE.source_blob;
+    el('frontier').textContent = fixture.pareto.join(', ');
+    el('reason').textContent = fixture.why;
+    el('lens-panel').hidden = paused;
+    const info = lenses[current];
+    el('lens-title').textContent = info[0];
+    el('lens-description').textContent = info[1];
+    el('lens-facts').replaceChildren(...info[2].map(point => {
+      const li = document.createElement('li'); li.textContent = point; return li;
+    }));
+    for (const b of document.querySelectorAll('button[data-lens]')) {
+      b.setAttribute('aria-pressed', String(b.dataset.lens === current));
+    }
+    el('pause').setAttribute('aria-pressed', String(paused));
+    el('pause').textContent = paused ? 'Resume preview' : 'Pause preview';
+    el('local-state').textContent = paused ? 'LOCAL_VIEW_PAUSED. No source or receiver mutation.' : 'Preview only. No external effects.';
+  }
+  for (const b of document.querySelectorAll('button[data-lens]')) {
+    b.addEventListener('click', () => { current = b.dataset.lens; render(); });
+  }
+  el('scenario').addEventListener('change', render);
+  el('pause').addEventListener('click', () => { paused = !paused; render(); });
+  render();
+})();
+</script>
+</body>
+</html>
