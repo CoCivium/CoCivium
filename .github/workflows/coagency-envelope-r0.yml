@@ -1,0 +1,49 @@
+name: CoAgency Envelope R0
+
+permissions:
+  contents: read
+
+on:
+  pull_request:
+    paths:
+      - "schemas/coagency-envelope-v0.1.schema.json"
+      - "schemas/conode-participation-v0.1.schema.json"
+      - "schemas/coparticipant-principal-v0.1.schema.json"
+      - "ai/currentness/standing-authorization-latch-r2-20261025.json"
+      - "scripts/CoAgencyEnvelopeR0.py"
+      - "tests/test_coagency_envelope_r0.py"
+      - "docs/Architecture/COAGENCY_ENVELOPE_R0_20261111.md"
+      - ".github/workflows/coagency-envelope-r0.yml"
+  push:
+    paths:
+      - "schemas/coagency-envelope-v0.1.schema.json"
+      - "schemas/conode-participation-v0.1.schema.json"
+      - "schemas/coparticipant-principal-v0.1.schema.json"
+      - "ai/currentness/standing-authorization-latch-r2-20261025.json"
+      - "scripts/CoAgencyEnvelopeR0.py"
+      - "tests/test_coagency_envelope_r0.py"
+      - "docs/Architecture/COAGENCY_ENVELOPE_R0_20261111.md"
+      - ".github/workflows/coagency-envelope-r0.yml"
+
+jobs:
+  static-composition:
+    name: static-composition (Python ${{ matrix.python-version }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.11", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "${{ matrix.python-version }}"
+      - name: Parse candidate schema and compile validator
+        run: |
+          python -m json.tool schemas/coagency-envelope-v0.1.schema.json >/dev/null
+          python -m py_compile scripts/CoAgencyEnvelopeR0.py tests/test_coagency_envelope_r0.py
+      - name: Exercise inversions, in-between states and recursive turtle rails
+        run: python -B -m unittest discover -s tests -p 'test_coagency_envelope_r0.py' -v
