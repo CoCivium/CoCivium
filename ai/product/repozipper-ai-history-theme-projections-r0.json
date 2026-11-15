@@ -1,0 +1,167 @@
+{
+  "schema": "CoAll.RepoZipper.ThemeFronts.R0",
+  "state": "SOURCE_TEST_CANDIDATE__NOT_DEPLOYED_OR_PUBLIC_SERVICE",
+  "source_contract": "docs/Product/REPOZIPPER_GUARDIAN_AI_HISTORY_ONRAMP_R0_20261113.md",
+  "engine_path": "examples/repozipper/ai_history_intake_r0.py",
+  "engine_modes": [
+    "inspect",
+    "census"
+  ],
+  "default_mode": "inspect",
+  "default_intake": "USER_SELECTED_LOCAL_ZIP_ONLY",
+  "default_working_root": "Downloads/CoTemp (temporary workspace only; never a durable backup claim)",
+  "controls": {
+    "network_access": false,
+    "provider_credentials": false,
+    "provider_chat_deletion": false,
+    "account_creation": false,
+    "auto_upload": false,
+    "auto_provider_sync": false,
+    "auto_share_private_data": false,
+    "auto_scheduler_creation": false,
+    "source_transcript_publication": false
+  },
+  "evidence_boundaries": [
+    "EXPORT_NE_COMPLETE_ACCOUNT",
+    "ZIP_NE_INDEPENDENT_BACKUP",
+    "HASH_NE_RESTORED_WORK",
+    "THEME_NE_NEW_AUTHORITY",
+    "SYNTHETIC_CI_NE_LIVE_EXPERIENCE",
+    "FRONT_NE_NEW_ENGINE",
+    "COEV_FEEDBACK_NE_AUTOMATIC_ADOPTION"
+  ],
+  "allowed_claims": [
+    "LOCAL_ZIP_INSPECTION_SOURCE_TESTED",
+    "SUPPORTED_FORMAT_STRUCTURAL_CENSUS_SOURCE_TESTED"
+  ],
+  "prohibited_claims": [
+    "AUTOMATIC_ALL_PROVIDER_BACKUP",
+    "ALWAYS_ON_AUTOMATION_READY",
+    "PUBLIC_SERVICE_AVAILABLE",
+    "PRODUCTION_SECURITY_AUDITED",
+    "CLOUD_ENCRYPTED_BACKUP",
+    "CROSS_PROVIDER_HISTORY_SEMANTICALLY_RECOVERED",
+    "DELETION_SAFE",
+    "RECEIVER_ACCEPTED"
+  ],
+  "feedback_contract": {
+    "trigger": "EXPLICIT_OPT_IN_OR_PUBLIC_SYNTHETIC_BENCHMARK_ONLY",
+    "private_data_policy": "NEVER_ECHO_EXPORT_CONTENT_OR_PRIVATE_IDENTIFIERS_IN_SHARED_FEEDBACK",
+    "event_fields": [
+      "theme_id",
+      "engine_version",
+      "source_digest_or_test_fixture_ref",
+      "measure",
+      "baseline",
+      "candidate",
+      "sample_count",
+      "counterexample",
+      "privacy_scope",
+      "status",
+      "reviewer",
+      "supersession_ref"
+    ],
+    "transformation": "THEME_EVENT_TO_SHARED_CANDIDATE_TO_NEGATIVE_TEST_TO_REVIEW_TO_VERSIONED_UPDATE",
+    "cross_theme_promotion": "REQUIRES_INDEPENDENT_TEST_AND_NO_PRIVACY_OR_AUTHORITY_EXPANSION",
+    "revert": "PRESERVE_LAST_KNOWN_GOOD_AND_PREDECESSOR_RECEIPTS",
+    "bounded_recursion": "STOP_IF_NO_MEASURED_USER_BENEFIT_OR_INFORMATION_GAIN"
+  },
+  "theme_profiles": [
+    {
+      "id": "protect",
+      "name": "Protect my AI history",
+      "persona": "General user",
+      "primary_benefit": "Understand which exported history exists before protecting it",
+      "first_action": "Inspect a local export",
+      "mode": "inspect",
+      "visible_proof": "Archive SHA-256 and supported-format identification",
+      "next_locked": "Independent backup with cold restore",
+      "metric": "time_to_first_verified_inspection",
+      "strategy_leg": "trust_and_recovery"
+    },
+    {
+      "id": "find",
+      "name": "Find my past work",
+      "persona": "Researcher",
+      "primary_benefit": "Assess which conversations can be indexed",
+      "first_action": "Count IDs in a supported export",
+      "mode": "census",
+      "visible_proof": "Export-covered ID count with unknown-account warning",
+      "next_locked": "Private semantic search and provenance-aware synthesis",
+      "metric": "indexed_id_coverage",
+      "strategy_leg": "research_continuity"
+    },
+    {
+      "id": "continue",
+      "name": "Continue my projects",
+      "persona": "Long-term AI worker",
+      "primary_benefit": "Establish source inventory for a later WorkID handover",
+      "first_action": "Count IDs in a supported export",
+      "mode": "census",
+      "visible_proof": "Read-only structural source census",
+      "next_locked": "Rehydrate unresolved obligations and prove live successor",
+      "metric": "recovered_workid_ratio",
+      "strategy_leg": "session_resilience"
+    },
+    {
+      "id": "freedom",
+      "name": "Move between AI services",
+      "persona": "Provider-switching user",
+      "primary_benefit": "Know what is portable before choosing a new provider",
+      "first_action": "Inspect a local export",
+      "mode": "inspect",
+      "visible_proof": "Versioned export-source digest",
+      "next_locked": "Cross-provider semantic import, recovery and exit verification",
+      "metric": "independent_restoration_success",
+      "strategy_leg": "portability_and_autonomy"
+    },
+    {
+      "id": "family",
+      "name": "Protect family learning",
+      "persona": "Family or educator",
+      "primary_benefit": "Avoid handing learning data to a new service",
+      "first_action": "Inspect an authorized local export",
+      "mode": "inspect",
+      "visible_proof": "Local-only member inventory, not content disclosure",
+      "next_locked": "Consent-aware household access and sharing",
+      "metric": "consent_error_rate",
+      "strategy_leg": "privacy_and_care"
+    },
+    {
+      "id": "teams",
+      "name": "Keep team knowledge portable",
+      "persona": "Organization",
+      "primary_benefit": "Determine export coverage under actual rights and permissions",
+      "first_action": "Inspect an authorized local export",
+      "mode": "inspect",
+      "visible_proof": "Source digest, format and scope warning",
+      "next_locked": "Role-scoped collaborative restore and legal retention checks",
+      "metric": "authorized_record_recovery",
+      "strategy_leg": "interoperability_and_governance"
+    },
+    {
+      "id": "create",
+      "name": "Preserve creative projects",
+      "persona": "Maker or author",
+      "primary_benefit": "Retain provenance of original work before reuse",
+      "first_action": "Count IDs in a supported export",
+      "mode": "census",
+      "visible_proof": "Structural coverage before selecting material",
+      "next_locked": "Rights-aware project and media lineage extraction",
+      "metric": "source_attribution_completeness",
+      "strategy_leg": "creation_and_reuse"
+    },
+    {
+      "id": "open",
+      "name": "Own and inspect the tools",
+      "persona": "Developer or open-source contributor",
+      "primary_benefit": "Run a no-account offline parser and inspect its source",
+      "first_action": "Inspect a local export",
+      "mode": "inspect",
+      "visible_proof": "Reproducible source hash and format gate",
+      "next_locked": "Additional provider adapters and verified portable snapshots",
+      "metric": "reproducible_cross_host_runs",
+      "strategy_leg": "foss_and_replaceability"
+    }
+  ]
+}

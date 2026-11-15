@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; connect-src 'none'; img-src 'none'; media-src 'none'; font-src 'none'; form-action 'none'; object-src 'none'; base-uri 'none'">
+  <title>Protect your AI history | RepoZipper+ Preview</title>
+  <meta name="description" content="A fully offline, synthetic-only first-use demonstration of private AI-history portability.">
+  <style>
+    :root {
+      color-scheme:dark;
+      --background:#08111e;--panel:#112133;--panel2:#152a3d;--edge:#35526a;
+      --text:#f1f7ff;--muted:#b7cbdf;--accent:#64e2d1;--violet:#c5b6ff;
+      --amber:#f3d59a;--radius:18px;
+      font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:radial-gradient(ellipse at top right,#19344c 0,#08111e 46%,#070e19 100%);color:var(--text);line-height:1.55}
+    a{color:var(--accent)}
+    :focus-visible{outline:3px solid var(--amber);outline-offset:4px}
+    .shell{max-width:1060px;margin:0 auto;padding:28px 24px 68px}
+    header{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;border-bottom:1px solid var(--edge);padding-bottom:20px}
+    .brand{font-weight:750;letter-spacing:.01em;font-size:1.05rem}.brand span{color:var(--accent)}
+    .tag{border:1px solid #55788b;color:var(--muted);font-size:.78rem;line-height:1.4;border-radius:99px;padding:7px 12px;font-weight:650}
+    .hero{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(285px,.8fr);gap:32px;margin:68px 0 38px;align-items:center}
+    .eyebrow{font-size:.76rem;text-transform:uppercase;letter-spacing:.14em;color:var(--accent);font-weight:750}
+    h1{font-size:clamp(2.35rem,5.4vw,4.3rem);line-height:1.08;letter-spacing:-.055em;margin:16px 0 22px;max-width:690px}
+    h1 em{color:var(--accent);font-style:normal}
+    .lead{font-size:1.08rem;max-width:610px;color:#d1e1ee;margin:0 0 26px}
+    .buttonrow{display:flex;gap:11px;align-items:center;flex-wrap:wrap}
+    button{font:inherit;font-weight:730;border:1px solid transparent;border-radius:12px;min-height:46px;padding:10px 20px;cursor:pointer}
+    button.primary{background:var(--accent);color:#07212b}
+    button.primary:hover{background:#b0fff2}
+    button.secondary{border-color:#68899d;color:var(--text);background:#15283b}
+    button.secondary:hover{background:#213b52}
+    button:disabled{cursor:not-allowed;opacity:.5}
+    .explain{margin:15px 0 0;color:var(--muted);font-size:.86rem}
+    .visual{border-radius:24px;border:1px solid #46687e;background:linear-gradient(148deg,#203c53,#101e31 70%);padding:22px;box-shadow:0 28px 60px #0007}
+    .visualheader{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:18px}
+    .tiny{font-size:.74rem;color:var(--muted)}
+    .lights{display:flex;gap:6px}.lights i{width:9px;height:9px;border-radius:50%;background:#648396}.lights i:first-child{background:var(--accent)}
+    .folder{padding:15px;border:1px solid #527489;background:#102638;border-radius:13px}
+    .foldername{font-size:.89rem;font-weight:700;overflow-wrap:anywhere}
+    .folderdetail{font-size:.79rem;color:var(--muted);margin-top:7px}
+    .vline{width:2px;height:27px;background:linear-gradient(var(--accent),var(--violet));margin:0 auto}
+    .stamp{border:1px solid #695f93;border-radius:13px;background:#212742;padding:14px;text-align:center;color:#e2d8ff;font-size:.86rem;font-weight:650}
+    .safeflags{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:20px}
+    .flag{font-size:.77rem;color:#c4deed;padding:9px 10px;background:#19364b;border:1px solid #466b80;border-radius:9px}
+    .section{background:linear-gradient(150deg,#14283b,#101d2c);border:1px solid var(--edge);border-radius:var(--radius);padding:28px;margin-top:24px}
+    .section h2{font-size:1.45rem;margin:0 0 10px;letter-spacing:-.025em}
+    .section p{color:var(--muted)}
+    .step{display:flex;align-items:center;gap:14px}
+    .stepnum{display:grid;place-items:center;height:37px;width:37px;background:#183f4a;border:1px solid var(--accent);border-radius:50%;color:var(--accent);font-weight:800;flex:none}
+    .step p{margin:0}
+    .result{margin-top:20px;padding-top:22px;border-top:1px solid var(--edge)}
+    .metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:16px 0}
+    .metric{border:1px solid #4c7284;border-radius:12px;background:#142d40;padding:16px}
+    .metric strong{display:block;font-size:2.05rem;line-height:1.2;letter-spacing:-.04em;color:var(--accent)}
+    .metric small{display:block;color:var(--muted);margin-top:6px}
+    .status{border-left:3px solid var(--amber);background:#292a31;color:#f6e5ba;padding:13px 16px;border-radius:0 9px 9px 0;margin:17px 0}
+    .dataTable{overflow-x:auto;margin-top:20px}
+    table{border-collapse:collapse;width:100%;text-align:left;font-size:.92rem}
+    th,td{padding:12px 10px;border-bottom:1px solid var(--edge)}
+    th{color:#e8f6ff;font-weight:700}td{color:var(--muted)}
+    .locked{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:18px}
+    .locked>div{border-radius:12px;border:1px solid #455567;padding:15px;background:#172436}
+    .locked strong{display:block;font-size:.92rem}.locked p{font-size:.81rem;margin:6px 0 0}
+    .label{display:inline-block;font-size:.68rem;font-weight:760;color:var(--amber);margin-bottom:7px;letter-spacing:.06em;text-transform:uppercase}
+    details{margin-top:18px;background:#0d1c2c;padding:16px;border-radius:12px;border:1px solid var(--edge)}
+    summary{cursor:pointer;font-weight:700}
+    .detailgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 18px;margin-top:13px}
+    .detailgrid div{font-size:.86rem;color:var(--muted)}
+    code{color:#d5c7ff;overflow-wrap:anywhere}
+    footer{color:var(--muted);font-size:.8rem;margin-top:34px}
+    [hidden]{display:none!important}
+    @media(max-width:790px){.hero{grid-template-columns:1fr;margin-top:44px}.visual{max-width:550px}.locked{grid-template-columns:1fr}.metrics{grid-template-columns:1fr 1fr}.detailgrid{grid-template-columns:1fr}}
+    @media(max-width:480px){.shell{padding:16px 14px 42px}.section{padding:20px}.metrics{grid-template-columns:1fr}.safeflags{grid-template-columns:1fr}button{width:100%}.buttonrow{width:100%}}
+    @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
+    @media(forced-colors:active){.stamp,.folder,.status,.flag,.metric{border:1px solid CanvasText}}
+  </style>
+</head>
+<body>
+<div class="shell">
+  <header>
+    <div class="brand">RepoZipper<span>+</span> <span aria-hidden="true">/</span> CoGuardian<span>+</span></div>
+    <div class="tag">Offline preview · Synthetic data only</div>
+  </header>
+
+  <main>
+    <div class="hero">
+      <section aria-labelledby="hero-heading">
+        <div class="eyebrow">Bring your history. Keep your choices.</div>
+        <h1 id="hero-heading">Protect your <em>AI history.</em></h1>
+        <p class="lead">Years of ideas shouldn't vanish with an account, a tab, or a change of AI provider. Explore what a private, portable inventory could look like.</p>
+        <div class="buttonrow">
+          <button id="try-sample" type="button" class="primary">Try the sample</button>
+          <button id="reset-sample" type="button" class="secondary" hidden>Start again</button>
+        </div>
+        <p class="explain">No sign-up. No network calls. No real files are opened. The demonstration runs in this page.</p>
+      </section>
+
+      <div class="visual" role="img" aria-label="Diagram: a synthetic AI export becomes an inspectable inventory. A verified independent backup is not part of this preview.">
+        <div class="visualheader"><span class="tiny">A safer first step</span><span class="lights" aria-hidden="true"><i></i><i></i><i></i></span></div>
+        <div class="folder">
+          <div class="foldername">sample-conversations.json</div>
+          <div class="folderdetail">Synthetic example · No private account data</div>
+        </div>
+        <div class="vline" aria-hidden="true"></div>
+        <div class="stamp">Understand what the sample contains</div>
+        <div class="safeflags">
+          <div class="flag">Local-first</div>
+          <div class="flag">No login</div>
+          <div class="flag">No uploads</div>
+          <div class="flag">No deletion</div>
+        </div>
+      </div>
+    </div>
+
+    <section class="section" aria-labelledby="demo-title">
+      <div class="step"><span class="stepnum" aria-hidden="true">1</span><div><h2 id="demo-title">Start with a safe example</h2><p>Use the button above to inspect three invented conversations. This preview deliberately has no file picker.</p></div></div>
+      <p id="announcement" role="status" aria-live="polite">Ready to inspect a synthetic example. Nothing has been uploaded or saved.</p>
+      <div id="results" class="result" hidden>
+        <h2 tabindex="-1" id="results-title">Your sample inventory</h2>
+        <p>These numbers come from the built-in demonstration, not your ChatGPT account.</p>
+        <div class="metrics">
+          <div class="metric"><strong id="conversation-count">0</strong><small>Sample conversations</small></div>
+          <div class="metric"><strong id="message-count">0</strong><small>Sample message nodes</small></div>
+          <div class="metric"><strong>0</strong><small>Real files accessed</small></div>
+        </div>
+        <div class="status" role="note"><strong>Important:</strong> This is an inventory preview, not a backup. No provider data was recovered, no independent copy was created and nothing is qualified for deletion.</div>
+        <div class="dataTable">
+          <table>
+            <caption class="tiny" style="text-align:left;margin-bottom:7px">Invented records included for illustration</caption>
+            <thead><tr><th scope="col">Example record</th><th scope="col">Message nodes</th><th scope="col">Status</th></tr></thead>
+            <tbody id="sample-rows"></tbody>
+          </table>
+        </div>
+        <div class="buttonrow" style="margin-top:20px">
+          <button id="sample-report" class="secondary" type="button">Download example report</button>
+        </div>
+        <p class="explain">The downloaded example report is labeled SYNTHETIC. It contains no real account identifiers or conversation content.</p>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="more-title">
+      <div class="step"><span class="stepnum" aria-hidden="true">2</span><div><h2 id="more-title">Choose what matters later</h2><p>Optional capabilities share a common engine and evidence rules. They are not implemented in this preview.</p></div></div>
+      <div class="locked">
+        <div><span class="label">Planned · not available</span><strong>Verify a real backup</strong><p>Protect an independent copy and prove it can be restored.</p></div>
+        <div><span class="label">Planned · not available</span><strong>Find your past work</strong><p>Search locally while retaining source references and privacy.</p></div>
+        <div><span class="label">Planned · not available</span><strong>Continue with another AI</strong><p>Move selected, consented work without losing its lineage.</p></div>
+      </div>
+      <details>
+        <summary>What this preview can and cannot prove</summary>
+        <div class="detailgrid">
+          <div><strong>Demonstrates:</strong> a one-step accessible first-use journey, a deterministic synthetic inventory, a downloadable example receipt.</div>
+          <div><strong>Does not demonstrate:</strong> real ZIP ingestion, complete account recovery, encrypted custody, an independent restore, autonomous backup or provider deletion.</div>
+          <div><strong>Storage:</strong> sample data is embedded in this page and processed in memory. No local database is created.</div>
+          <div><strong>Network:</strong> a restrictive content-security policy blocks connections. No external libraries, tracking pixels, cookies or third-party scripts.</div>
+        </div>
+      </details>
+    </section>
+  </main>
+
+  <footer>
+    RepoZipper+ / CoGuardian+ R0 · Source-review prototype · No account required · No real provider integration · Nothing is backed up by this page.
+  </footer>
+</div>
+<script id="repozipper-preview-logic">
+"use strict";
+/* BEGIN_MODEL */
+const SYNTHETIC_FIXTURE = Object.freeze([
+  {id:"sample-001",label:"Research notebook",messages:[{role:"user"},{role:"assistant"},{role:"user"}]},
+  {id:"sample-002",label:"Creative project",messages:[{role:"user"},{role:"assistant"}]},
+  {id:"sample-003",label:"Decision notes",messages:[{role:"user"},{role:"assistant"}]}
+]);
+function inspectSynthetic(records) {
+  if (!Array.isArray(records) || records.length === 0) throw new Error("Unsupported sample");
+  const ids = new Set();
+  const rows = [];
+  let messages = 0;
+  for (const item of records) {
+    if (!item || typeof item.id !== "string" || !item.id || ids.has(item.id) ||
+        typeof item.label !== "string" || !Array.isArray(item.messages)) {
+      throw new Error("Invalid or duplicate sample source");
+    }
+    ids.add(item.id);
+    if (!item.messages.every(x => x && (x.role === "user" || x.role === "assistant"))) {
+      throw new Error("Invalid sample message");
+    }
+    messages += item.messages.length;
+    rows.push({label:item.label,nodes:item.messages.length,status:"Synthetic"});
+  }
+  return Object.freeze({
+    schema:"RepoZipper.FirstUsePreview.R0",
+    evidence_class:"SYNTHETIC_ONLY",
+    conversation_count:ids.size,
+    message_node_count:messages,
+    real_files_read:0,
+    uploaded_bytes:0,
+    provider_sessions_modified:0,
+    independent_backup_verified:false,
+    delete_safe:false,
+    scope:"Built-in invented records; NOT provider account coverage",
+    records:rows
+  });
+}
+/* END_MODEL */
+if (typeof module !== "undefined" && module.exports) {
+  module.exports = {inspectSynthetic, SYNTHETIC_FIXTURE};
+}
+if (typeof document !== "undefined") {
+  const button = document.getElementById("try-sample");
+  const reset = document.getElementById("reset-sample");
+  const result = document.getElementById("results");
+  const announce = document.getElementById("announcement");
+  const rows = document.getElementById("sample-rows");
+  const download = document.getElementById("sample-report");
+  let latest = null;
+  button.addEventListener("click", () => {
+    try {
+      latest = inspectSynthetic(SYNTHETIC_FIXTURE);
+      document.getElementById("conversation-count").textContent = String(latest.conversation_count);
+      document.getElementById("message-count").textContent = String(latest.message_node_count);
+      rows.replaceChildren();
+      for (const row of latest.records) {
+        const tr = document.createElement("tr");
+        for (const value of [row.label,String(row.nodes),row.status]) {
+          const cell = document.createElement("td");
+          cell.textContent = value;
+          tr.appendChild(cell);
+        }
+        rows.appendChild(tr);
+      }
+      result.hidden = false;
+      button.hidden = true;
+      reset.hidden = false;
+      announce.textContent = "Sample inspected: three invented conversations, seven message nodes, zero real files accessed.";
+      document.getElementById("results-title").focus();
+    } catch (err) {
+      announce.textContent = "Sample inspection unavailable. No files or accounts were changed.";
+    }
+  });
+  reset.addEventListener("click", () => {
+    latest = null;
+    result.hidden = true;
+    rows.replaceChildren();
+    button.hidden = false;
+    reset.hidden = true;
+    announce.textContent = "Ready to inspect a synthetic example. Nothing has been uploaded or saved.";
+    button.focus();
+  });
+  download.addEventListener("click", () => {
+    if (!latest) return;
+    const report = JSON.stringify(latest,null,2) + "\n";
+    const blob = new Blob([report],{type:"application/json"});
+    const address = URL.createObjectURL(blob);
+    const anchor = document.createElement("a");
+    anchor.href = address;
+    anchor.download = "repozipper-synthetic-preview-report.json";
+    anchor.hidden = true;
+    document.body.appendChild(anchor);
+    anchor.click();
+    anchor.remove();
+    setTimeout(() => URL.revokeObjectURL(address),1000);
+    announce.textContent = "An example-only report was prepared for download. This is not a backup.";
+  });
+}
+</script>
+</body>
+</html>
