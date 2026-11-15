@@ -1,0 +1,30 @@
+name: CoTalkItOut walk-away projection R0
+
+permissions:
+  contents: read
+
+on:
+  pull_request:
+    paths:
+      - 'examples/cotalkitout/walkaway_projection_r0.py'
+      - 'examples/cotalkitout/test_walkaway_projection_r0.py'
+      - '.github/workflows/cotalkitout-walkaway-projection-r0.yml'
+  push:
+    paths:
+      - 'examples/cotalkitout/walkaway_projection_r0.py'
+      - 'examples/cotalkitout/test_walkaway_projection_r0.py'
+      - '.github/workflows/cotalkitout-walkaway-projection-r0.yml'
+
+jobs:
+  synthetic-proof-only:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify fail-closed walk-away readiness and no filesystem side effects
+        run: python -B examples/cotalkitout/test_walkaway_projection_r0.py -v
+      - name: Print truth-bounded example status (no private data)
+        run: python -B examples/cotalkitout/walkaway_projection_r0.py

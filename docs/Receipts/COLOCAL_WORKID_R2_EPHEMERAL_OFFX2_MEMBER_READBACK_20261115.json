@@ -1,0 +1,43 @@
+{
+  "archive_sha256_claim_from_x2": "549e56006f4f82f3ca3547e899a692e7972c239f36d854ee395c40b23cde5e3c",
+  "exact_members_checked": [
+    {
+      "name": "source_fixture.json",
+      "sha256": "6741477bc537a521b5bb875703112cfb88b481c643c3255309bb0b65adc70ee8",
+      "size": 277
+    },
+    {
+      "name": "verified_result.json",
+      "sha256": "f16477f10399828a5bda52c294e62b8950bca9ab03dea73eb7288dad02bc83af",
+      "size": 529
+    },
+    {
+      "name": "producer_receipt.json",
+      "sha256": "caf1c25fafb44f0c13f20321df8f4b698c82e1e4c223c702a25000e8e469b415",
+      "size": 1033
+    }
+  ],
+  "external_effects": 0,
+  "fresh_process_full_workid_replay_proven": false,
+  "independent_costead_receiver_ack": false,
+  "model_calls": 0,
+  "native_cobar_acceptance_proven": false,
+  "nonclaims": [
+    "EXACT_MEMBER_READBACK_NE_EXACT_ZIP_COLD_RESTORE",
+    "EPHEMERAL_TEST_RUNNER_NE_DURABLE_RECEIVER",
+    "BASE64_RELAY_NE_AUTONOMOUS_HANDOFF",
+    "PRODUCER_READ_NE_COSTEAD_NATIVE_ACK",
+    "NO_COEX_CANON_RUNTIME_OR_PUBLIC_RELEASE"
+  ],
+  "origin": "X2 SMB-client staged capsule member bytes, exported as base64 through an authorized remote tool",
+  "original_queue_sqlite_transferred": false,
+  "original_zip_bytes_transferred": false,
+  "provider_calls": 0,
+  "receiver_authority": "TEST_RUNNER_ONLY_NOT_COSTEAD_NATIVE",
+  "schema": "CoAll.CoLocalFirstWorkID.OffX2ExactMemberReadback.R0",
+  "state": "PASS_EPHEMERAL_OFF_X2_EXACT_MEMBER_READBACK",
+  "unattended_wake_proven": false,
+  "verifier": "isolated ChatGPT execution container, separate from X2",
+  "work_id": "CoLocalFirstWorkID_20261114_R2",
+  "x2_down_recovery_proven": false
+}
