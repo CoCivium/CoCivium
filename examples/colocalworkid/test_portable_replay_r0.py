@@ -69,7 +69,30 @@ def replay(target):
     expected_receipt={"work_id":WORK,"result_sha256":filehash(r),
                       "model_calls":0,"receiver_ack":False}
     verify((target/"receipt.json").read_bytes()==data(expected_receipt),"RECEIPT")
-    q=DueWorkQueue(str(target/"queue.sqlite3"))
+    # A successful local replay is not valid if the restored queue also holds
+    # unknown future work, hidden completed work, or a forged prior lease owner.
+    # Read before opening the writable queue; fail closed on a changed workset.
+    dbfile=target/"queue.sqlite3"
+    verify(dbfile.is_file() and not dbfile.is_symlink(),"DB_PATH")
+    try:
+        with sqlite3.connect(dbfile.resolve().as_uri()+"?mode=ro",uri=True) as reader:
+            verify(reader.execute("PRAGMA integrity_check").fetchone()==("ok",),
+                   "DB_INTEGRITY")
+            objects=reader.execute(
+                "SELECT type,name FROM sqlite_master WHERE type!='index' ORDER BY type,name"
+            ).fetchall()
+            verify(objects==[("table","work")],"DB_SCHEMA")
+            actual=reader.execute(
+                "SELECT work_id,source_revision,payload_sha256,due_at,state,"
+                "epoch,owner,lease_until,result_sha256,completed_at "
+                "FROM work ORDER BY work_id"
+            ).fetchall()
+            expected=[(WORK,"SYNTHETIC_R0",filehash(s),DUE,"DONE",1,
+                       "SYNTHETIC",DUE+301,filehash(r),DUE+2)]
+            verify(actual==expected,"UNEXPECTED_WORKSET")
+    except sqlite3.DatabaseError as exc:
+        raise ValueError("HOLD_DB_UNREADABLE") from exc
+    q=DueWorkQueue(str(dbfile))
     try:
         verify(q.enqueue(WORK,"SYNTHETIC_R0",filehash(s),DUE)=="REPLAY","IDENTITY")
         verify(q.claim_due(now=DUE+500,owner="RECOVER",limit=1)==[],"DUPLICATE")
@@ -128,6 +151,52 @@ class Tests(unittest.TestCase):
         receipt=json.loads(r.read_bytes());receipt["result_sha256"]=filehash(d)
         r.write_bytes(data(receipt))
         with self.assertRaisesRegex(ValueError,"HOLD_GUARD"):replay(self.target)
+
+    def test_hidden_future_workid_is_not_passed_as_clean_replay(self):
+        restore(self.archive,self.pin,self.target)
+        q=DueWorkQueue(str(self.target/"queue.sqlite3"))
+        try:
+            self.assertEqual(q.enqueue("hidden-future","SYNTHETIC_R0",
+                                       "0"*64,DUE+100000),"ENQUEUED")
+        finally:q.close()
+        with self.assertRaisesRegex(ValueError,"HOLD_UNEXPECTED_WORKSET"):
+            replay(self.target)
+
+    def test_hidden_completed_workid_is_not_passed_as_clean_replay(self):
+        restore(self.archive,self.pin,self.target)
+        q=DueWorkQueue(str(self.target/"queue.sqlite3"))
+        try:
+            self.assertEqual(q.enqueue("hidden-done","SYNTHETIC_R0",
+                                       "0"*64,DUE),"ENQUEUED")
+            claim=q.claim_due(now=DUE+1,owner="UNRELATED",limit=1)
+            self.assertEqual(len(claim),1)
+            self.assertEqual(q.complete(claim[0],result_sha256="f"*64,
+                                        now=DUE+2),"COMMITTED_LOCAL_ONLY")
+        finally:q.close()
+        with self.assertRaisesRegex(ValueError,"HOLD_UNEXPECTED_WORKSET"):
+            replay(self.target)
+
+    def test_changed_lease_owner_cannot_hide_behind_result_hash(self):
+        restore(self.archive,self.pin,self.target)
+        q=DueWorkQueue(str(self.target/"queue.sqlite3"))
+        try:
+            q.db.execute("UPDATE work SET owner=? WHERE work_id=?",
+                         ("UNQUALIFIED",WORK))
+            q.db.commit()
+        finally:q.close()
+        with self.assertRaisesRegex(ValueError,"HOLD_UNEXPECTED_WORKSET"):
+            replay(self.target)
+
+    def test_injected_sqlite_trigger_is_held(self):
+        restore(self.archive,self.pin,self.target)
+        q=DueWorkQueue(str(self.target/"queue.sqlite3"))
+        try:
+            q.db.execute("CREATE TRIGGER injected BEFORE INSERT ON work "
+                         "BEGIN SELECT 1; END")
+            q.db.commit()
+        finally:q.close()
+        with self.assertRaisesRegex(ValueError,"HOLD_DB_SCHEMA"):
+            replay(self.target)
 
     def test_collision_held(self):
         restore(self.archive,self.pin,self.target)
