@@ -125,6 +125,58 @@ Qualify a **bounded, preauthorized, safe unattended pilot** only after all lower
 
 **Next elected proof**: existing #317 independent receiver-origin readback for one exact source/result object, or a real CoBar input/result/Stop canary if receiver access remains unavailable, without new startup owners or manual user relay. Preserve an exact successor pointer, nonclaims and no-clobber history.
 
+## 2026-11-15 expanded pattern lenses | candidate search, not a second control plane
+
+**Status:** Additional review lenses over the R1 CoTalkItOut graph and existing CoDoodle/CoNex typed transformations; not new deployed workers or a new ontology. Preserve original operation IDs, graph edges, owner issues, test provenance and independent dissent. Source-only spec [CoDoodle/CoNex R1](../../examples/codoodle_conex_r1/README.md) already distinguishes `ELSE / NOT / INVERSE / COMPLEMENT / NULL / COUNTERFACTUAL / OUTSIDE`. Its combinatorial count is **syntactic candidate space**, not proven utility or true knowledge. [Federated Cell Hosting R0](../Architecture/CIV2_FEDERATED_CELL_HOSTING_R0.md) already establishes local-survivable service cells, replaceable providers and no indispensable global control plane.
+
+### CoGlyphList | additional lenses, existing owner, discriminating proof
+
+| Lens / CoElse candidate | Existing owner or reusable capability | Inversion to test | Falsifier / meaningful measured gain |
+| --- | --- | --- | --- |
+| **Subtract an entire dependency** | CoFrontierExit; CoModelFabric | No model, no GitHub, no provider session, no always-on coordinator | Same useful result is lost, or maintenance/cost rises |
+| **Replace an actor with a deterministic function** | CoOwnedWork; CoGuardian | No AI for checksums, duplicate suppression, policy checks, event routing | Lower correctness, traceability or task completion |
+| **Make the request unnecessary** | CoBar UX; CoEutomation | Predict/resume authorized eligible work without requesting another user prompt | Unwanted wake, hidden effect, stale task or wasted compute |
+| **Move work across failure domains** | CoStead; federated cells; receiver #317 | X2 absent, no cloud, network partition, receiver independent | No receiver-origin cold readback, hidden central key dependency |
+| **Move the same work across interfaces** | CoBar/CoOrb; first-use R0 | Text, native UI, screen reader, optional voice/headless all refer to same WorkID | Divergent authority, state, Stop or accessibility outcomes |
+| **Swap direction of trust** | CoGuardian; CoEBE; RepoZipper | User can verify provider, import without account, export without our cooperation | Provider-only key, proprietary lock-in, unverifiable restore |
+| **Swap producer and receiver** | Custody contract; #317 | Receiver proves exact acquisition, rather than producer asserting send | Receipt is self-signed by sender or lacks exact object proof |
+| **Reduce active workers while increasing throughput** | CoModelFabric; single fenced queue | Event wake, dormant workers, leases, deterministic fast path | More missed eligible work, worse latency or higher cost |
+| **Preserve disagreement and minority failure cases** | CoOomph fan-in; CoReGroup | Diverse independent challenge instead of vote or homogeneous ensemble | Collapsed evidence, correlated sources, unrepeatable success |
+| **Degrade safely rather than stop everything** | Federated cells; CoGuardian; CoBar | When model/network/NAS down, allow safe offline read-only utilities | Stale output masquerading as live or privacy/rights violation |
+| **Make evolution reversible and eventually self-retiring** | CoEv; CoLUE; CoFrontierExit | Roll back or remove a module after better one subsumes it | No predecessor preservation, rollback failure, user functionality lost |
+| **Measure value to the human, not system activity** | CoUXCompare; CoSpeedo; First Use | Fewer prompts, less relay, more receiver-accepted results | Higher commits/model calls but poorer task success or greater burden |
+| **Treat null/no-action as a first-class correct result** | CoGuardian policy; fenced effects | Bounded HOLD or quiet idling is safer than auto-action | Legitimate harmless work blocked forever, or undeclared external action |
+| **Transfer good patterns across themes without cloning data** | RepoZipper PR #493; CoModule | Reuse tested kernel across backup/research/family/team fronts | Permission changes, inconsistent exits, accidental private sharing |
+| **Challenge a constraint rather than optimize within it** | CoDoodle/CoNex typed OUTSIDE and COUNTERFACTUAL | Question why a backend, UI, provider, schedule, model, screen or human relay is required | Counterfactual breaks user consent, quality, reliability or cost ceiling |
+| **Explore broad ethical/civilizational externalities** | G_d interpretive lane; Civ2+ | Affected people and communities challenge outcome, opt out or reverse it | Fabricated moral authority, metaphysical certainty, coercion |
+
+### Relation operators / CoZElse-style use
+
+Start from an evidenced WorkID or real user outcome, then apply one or more **bounded and typed** existing operators:
+
+`ALTERNATE -> NEGATE -> INVERT -> COMPLEMENT -> NULL BASELINE -> COUNTERFACTUAL -> OUTSIDE REVIEW`.
+
+Additional *questions*, not new schema operators, include: Who owns this action? Who loses? What if the helper disappears? What if the provider changes? Can the process be entirely removed? Can the result be verified by the receiving human? Can an underrepresented participant contest it? How does the answer change at a different time, scale, device or legal jurisdiction?
+
+A *candidate* becomes admitted work only with explicit `predecessor_ref, WorkID, original_state, desired_receiver_effect, evidence_type, existing_owner, collision_domain, authority, bounded_cost, falsifier, rollback, success_metric`. No candidate may broaden permissions just by combining lenses. Preserve `CoDoodle` scores as heuristic search rankings, not prediction or governance authority.
+
+### CoTurtle / CoFanIn experiment: paired-failure drill
+
+Test not only one missing dependency but **paired failures** that reveal correlated fragility:
+
+1. **X2 + provider chat absent:** can an independently operated host restore the exact authorized WorkID and complete a safe task?
+2. **NAS + network absent:** can an offline cell continue bounded read-only useful work and clearly disclose degraded freshness?
+3. **Model output wrong + duplicate wake:** does the deterministic guardian hold the effect and fenced queue reject double actuation?
+4. **UI unavailable + accessibility requirement:** can a user stop or inspect the same work via a typed accessible alternative?
+5. **Consent withdrawn + queued action:** is the permission rechecked before any external effect?
+6. **New candidate + known-good predecessor:** can regression rollback restore the prior useful service without data loss?
+
+A candidate must show **incremental information or human value** against a `NULL` baseline and at least one adversarial or outside-review case. Allocate higher experimental priority to cuts in *shared* failure domains and reductions in human relay. Bound recursion by budget, source freshness, receiver comprehension and recovery, not by a fixed minimal ambition. If a recursion adds work but no useful outcome, stop or retire that layer.
+
+**Current proof boundary**: PR #496 establishes clean synthetic independent-runner replay only. On 2026-11-15, X2 and its CoStead-mounted SMB share were reachable, but a probe of CoStead TCP port 22 failed; this does **not** establish all receiver protocols are unavailable, only that this route cannot prove receiver-origin restoration. No exact X2 object has been recovered off-host through that port. Do not claim the above paired-failure drills ran.
+
+**Elected next proof remains unchanged:** acquire a native receiver-origin exact-object readback for #317, without creating a second scheduler, touching private provider data or changing CoBar startup ownership.
+
 ## Next proof and nonclaims
 
 **Next:** One overdue, harmless WorkID, resumed by an already qualified worker after a missed wake, with duplicate suppression and separately generated receiver proof. **No new scheduler, no console process, no subscriber account mutation, no private publication.**
