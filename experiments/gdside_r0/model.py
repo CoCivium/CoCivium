@@ -131,8 +131,22 @@ class InteractionObservation:
             raise ValueError("INTERACTION_RIGHTS_STATUS_REQUIRED")
 
 
+@dataclass(frozen=True)
+class InteractionResult:
+    """Derived scalar with unchanged unit/context, not an action or new observation."""
+    value: float
+    metric_contract: str
+    affected_scope: str
+    rights_context: str
+    applicability_contract: str
+    horizon: str
+    source_refs: tuple[str, ...]
+    epistemic_state: str = "SYNTHETIC_DERIVED_ONLY"
+    effect_authority: str = "NONE"
+
+
 def interaction(values: Mapping[frozenset[str], InteractionObservation],
-                base: frozenset[str], a: str, b: str) -> float:
+                base: frozenset[str], a: str, b: str) -> InteractionResult:
     """Synthetic pair-synergy, only for four comparable and source-declared values.
 
     A relational interaction has the same units as the measured scalar.
@@ -161,7 +175,16 @@ def interaction(values: Mapping[frozenset[str], InteractionObservation],
     if len(contexts) != 1:
         raise ValueError("INCOMMENSURABLE_INTERACTION")
     v0, va, vb, vab = (sample.value for sample in samples)
-    return vab - va - vb + v0
+    exemplar = samples[0]
+    return InteractionResult(
+        value=vab - va - vb + v0,
+        metric_contract=exemplar.metric_contract,
+        affected_scope=exemplar.affected_scope,
+        rights_context=exemplar.rights_context,
+        applicability_contract=exemplar.applicability_contract,
+        horizon=exemplar.horizon,
+        source_refs=tuple(sample.source_ref for sample in samples),
+    )
 
 def synthetic_candidate(name: str, values: tuple[float, ...], **kwargs) -> Candidate:
     """Explicit shared fixture contract; no real permissions or observations."""
