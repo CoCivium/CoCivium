@@ -1,0 +1,229 @@
+"""G_dSide R0: falsifiable multi-objective comparison, NOT a value oracle.
+
+Synthetic scenarios only. Inputs are declared outcome vectors; no cosmology,
+religious premise, market facts, causal identification or governance authority.
+"""
+from __future__ import annotations
+
+from dataclasses import dataclass, field
+from typing import Mapping
+
+METRICS = ("flourishing", "resilience", "knowledge", "optionality", "cost", "harm")
+HIGHER_IS_BETTER = ("flourishing", "resilience", "knowledge", "optionality")
+LOWER_IS_BETTER = ("cost", "harm")
+
+# These are deliberately synthetic and NOT evidence of real cultural consent,
+# universal units, cross-community equivalence, or future causation.
+SYNTHETIC_METRIC_CONTRACTS = {
+    metric: f"fixture:gdside-r0:{metric}:unitless-index:v1"
+    for metric in METRICS
+}
+SYNTHETIC_AFFECTED_SCOPE = "fixture:one-affected-population"
+SYNTHETIC_RIGHTS_CONTEXT = "fixture:no-real-world-rights-granted"
+SYNTHETIC_APPLICABILITY = "fixture:toy-outcomes:substrate-unverified:v1"
+
+@dataclass(frozen=True)
+class Candidate:
+    name: str
+    outcomes: Mapping[str, float]
+    # Unknown rights status is not the same as an explicitly declared no-veto.
+    rights_violation: bool | None = None
+    # A shared word or metric label is not a shared measurement contract.
+    metric_contracts: Mapping[str, str] = field(default_factory=dict)
+    affected_scope: str = ""
+    rights_context: str = ""
+    # Applicability of the prediction/measurement to this context and medium.
+    # A shared label or matched outcome vector cannot establish substrate transfer.
+    applicability_contract: str = ""
+    cultural_transfer: bool = False
+    source_community_ref: str = ""
+    consent_ref: str = ""
+    benefit_return_ref: str = ""
+
+    def validate(self) -> None:
+        if set(self.outcomes) != set(METRICS):
+            raise ValueError("METRIC_SCHEMA_MISMATCH")
+        if any(type(v) not in (float, int) or not -1e9 < v < 1e9
+               for v in self.outcomes.values()):
+            raise ValueError("INVALID_FINITE_METRIC")
+        if (set(self.metric_contracts) != set(METRICS) or
+            any(not isinstance(v, str) or not v.strip()
+                for v in self.metric_contracts.values())):
+            raise ValueError("METRIC_CONTRACT_REQUIRED")
+        if (not isinstance(self.affected_scope, str) or
+            not self.affected_scope.strip() or
+            not isinstance(self.rights_context, str) or
+            not self.rights_context.strip()):
+            raise ValueError("SITUATED_SCOPE_REQUIRED")
+        if (not isinstance(self.applicability_contract, str) or
+            not self.applicability_contract.strip()):
+            raise ValueError("APPLICABILITY_CONTRACT_REQUIRED")
+        if type(self.rights_violation) is not bool:
+            raise ValueError("RIGHTS_STATUS_EXPLICIT_BOOL_REQUIRED")
+        # Strings are synthetic provenance pointers, NOT authenticated grants.
+        # An appropriated symbol with intact wording can still transfer power,
+        # benefit, and refusal rights. Missing provenance must HOLD.
+        if not isinstance(self.cultural_transfer, bool):
+            raise ValueError("CULTURAL_TRANSFER_CLASS_REQUIRED")
+        if self.cultural_transfer and any(
+            not isinstance(ref, str) or not ref.strip()
+            for ref in (self.source_community_ref, self.consent_ref,
+                        self.benefit_return_ref)
+        ):
+            raise ValueError("CULTURAL_TRANSFER_PROVENANCE_REQUIRED")
+
+
+def same_comparison_contract(left: Candidate, right: Candidate) -> bool:
+    return (left.metric_contracts == right.metric_contracts and
+            left.affected_scope == right.affected_scope and
+            left.rights_context == right.rights_context and
+            left.applicability_contract == right.applicability_contract)
+
+
+def dominates(left: Candidate, right: Candidate) -> bool:
+    """Strict Pareto dominance only within one declared situated contract."""
+    left.validate()
+    right.validate()
+    if left.rights_violation or right.rights_violation:
+        raise ValueError("RIGHTS_GATED_BEFORE_COMPARISON")
+    if not same_comparison_contract(left, right):
+        raise ValueError("INCOMMENSURABLE_CONTEXT")
+    weak = all(left.outcomes[m] >= right.outcomes[m] for m in HIGHER_IS_BETTER)
+    weak &= all(left.outcomes[m] <= right.outcomes[m] for m in LOWER_IS_BETTER)
+    strict = any(left.outcomes[m] > right.outcomes[m] for m in HIGHER_IS_BETTER)
+    strict |= any(left.outcomes[m] < right.outcomes[m] for m in LOWER_IS_BETTER)
+    return bool(weak and strict)
+
+
+def frontier(candidates: list[Candidate]) -> list[str]:
+    """Do not silently combine community/rights/measurement contexts."""
+    for candidate in candidates:
+        candidate.validate()
+    valid = [c for c in candidates if not c.rights_violation]
+    if valid and any(not same_comparison_contract(valid[0], c)
+                     for c in valid[1:]):
+        raise ValueError("INCOMMENSURABLE_CONTEXT")
+    return sorted(c.name for c in valid
+                  if not any(dominates(d, c) for d in valid if d is not c))
+
+
+@dataclass(frozen=True)
+class InteractionObservation:
+    """One declared synthetic counterfactual, not an authenticated measurement."""
+    value: float
+    metric_contract: str
+    affected_scope: str
+    rights_context: str
+    applicability_contract: str
+    horizon: str
+    source_ref: str
+    rights_violation: bool | None = None
+
+    def validate(self) -> None:
+        if type(self.value) not in (float, int) or not -1e9 < self.value < 1e9:
+            raise ValueError("INVALID_INTERACTION_VALUE")
+        if any(type(s) is not str or not s.strip() for s in (
+                self.metric_contract, self.affected_scope,
+                self.rights_context, self.applicability_contract,
+                self.horizon, self.source_ref)):
+            raise ValueError("INTERACTION_CONTEXT_REQUIRED")
+        if type(self.rights_violation) is not bool:
+            raise ValueError("INTERACTION_RIGHTS_STATUS_REQUIRED")
+
+
+@dataclass(frozen=True)
+class InteractionResult:
+    """Derived scalar with unchanged unit/context, not an action or new observation."""
+    value: float
+    metric_contract: str
+    affected_scope: str
+    rights_context: str
+    applicability_contract: str
+    horizon: str
+    source_refs: tuple[str, ...]
+    epistemic_state: str = "SYNTHETIC_DERIVED_ONLY"
+    effect_authority: str = "NONE"
+
+
+def interaction(values: Mapping[frozenset[str], InteractionObservation],
+                base: frozenset[str], a: str, b: str) -> InteractionResult:
+    """Synthetic pair-synergy, only for four comparable and source-declared values.
+
+    A relational interaction has the same units as the measured scalar.
+    It never inherits authority from the G_dSide hypothesis or a label.
+    """
+    if (type(base) is not frozenset or
+        type(a) is not str or not a.strip() or
+        type(b) is not str or not b.strip() or
+        a == b or a in base or b in base):
+        raise ValueError("INVALID_DISTINCT_INTERVENTIONS")
+    keys = (base, base | {a}, base | {b}, base | {a, b})
+    if any(key not in values for key in keys):
+        raise ValueError("INTERACTION_COUNTERFACTUAL_REQUIRED")
+    samples = [values[key] for key in keys]
+    if any(type(sample) is not InteractionObservation for sample in samples):
+        raise ValueError("INTERACTION_OBSERVATION_REQUIRED")
+    for sample in samples:
+        sample.validate()
+        if sample.rights_violation:
+            raise ValueError("INTERACTION_RIGHTS_VETO")
+    contexts = {
+        (sample.metric_contract, sample.affected_scope,
+         sample.rights_context, sample.applicability_contract,
+         sample.horizon) for sample in samples
+    }
+    if len(contexts) != 1:
+        raise ValueError("INCOMMENSURABLE_INTERACTION")
+    v0, va, vb, vab = (sample.value for sample in samples)
+    exemplar = samples[0]
+    return InteractionResult(
+        value=vab - va - vb + v0,
+        metric_contract=exemplar.metric_contract,
+        affected_scope=exemplar.affected_scope,
+        rights_context=exemplar.rights_context,
+        applicability_contract=exemplar.applicability_contract,
+        horizon=exemplar.horizon,
+        source_refs=tuple(sample.source_ref for sample in samples),
+    )
+
+def synthetic_candidate(name: str, values: tuple[float, ...], **kwargs) -> Candidate:
+    """Explicit shared fixture contract; no real permissions or observations."""
+    if len(values) != len(METRICS):
+        raise ValueError("SYNTHETIC_VECTOR_LENGTH_MISMATCH")
+    # This helper alone declares a synthetic no-veto fixture. It is never
+    # evidence of consent or an independently authenticated rights review.
+    declared_rights = kwargs.pop("rights_violation", False)
+    return Candidate(
+        name, dict(zip(METRICS, values)),
+        rights_violation=declared_rights,
+        metric_contracts=dict(SYNTHETIC_METRIC_CONTRACTS),
+        affected_scope=SYNTHETIC_AFFECTED_SCOPE,
+        rights_context=SYNTHETIC_RIGHTS_CONTEXT,
+        applicability_contract=SYNTHETIC_APPLICABILITY,
+        **kwargs,
+    )
+
+
+SCENARIOS = {
+    "future_benefit": [
+        synthetic_candidate("supply", (5,4,4,4,5,3)),
+        synthetic_candidate("demand", (6,5,4,5,5,2)),
+        synthetic_candidate("gdside", (8,7,6,8,4,1)),
+    ],
+    "backcast_overfit": [
+        synthetic_candidate("supply", (7,7,6,7,3,1)),
+        synthetic_candidate("demand", (5,5,6,5,5,3)),
+        synthetic_candidate("gdside", (4,3,4,3,6,4)),
+    ],
+    "rights_veto": [
+        synthetic_candidate("supply", (4,4,4,4,3,2)),
+        synthetic_candidate("gdside", (10,10,10,10,1,0),
+                            rights_violation=True),
+    ],
+}
+
+if __name__ == "__main__":
+    import json
+    print(json.dumps({"epistemic_class": "SYNTHETIC", "not_runtime": True,
+                      "pareto_frontiers": {key: frontier(value) for key, value in SCENARIOS.items()}},
+                     sort_keys=True, indent=2))
