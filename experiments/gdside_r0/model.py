@@ -107,13 +107,61 @@ def frontier(candidates: list[Candidate]) -> list[str]:
                   if not any(dominates(d, c) for d in valid if d is not c))
 
 
-def interaction(values: Mapping[frozenset[str], float],
+@dataclass(frozen=True)
+class InteractionObservation:
+    """One declared synthetic counterfactual, not an authenticated measurement."""
+    value: float
+    metric_contract: str
+    affected_scope: str
+    rights_context: str
+    applicability_contract: str
+    horizon: str
+    source_ref: str
+    rights_violation: bool | None = None
+
+    def validate(self) -> None:
+        if type(self.value) not in (float, int) or not -1e9 < self.value < 1e9:
+            raise ValueError("INVALID_INTERACTION_VALUE")
+        if any(type(s) is not str or not s.strip() for s in (
+                self.metric_contract, self.affected_scope,
+                self.rights_context, self.applicability_contract,
+                self.horizon, self.source_ref)):
+            raise ValueError("INTERACTION_CONTEXT_REQUIRED")
+        if type(self.rights_violation) is not bool:
+            raise ValueError("INTERACTION_RIGHTS_STATUS_REQUIRED")
+
+
+def interaction(values: Mapping[frozenset[str], InteractionObservation],
                 base: frozenset[str], a: str, b: str) -> float:
-    """Pair synergy is relative to the supplied value model."""
-    if a == b or a in base or b in base:
+    """Synthetic pair-synergy, only for four comparable and source-declared values.
+
+    A relational interaction has the same units as the measured scalar.
+    It never inherits authority from the G_dSide hypothesis or a label.
+    """
+    if (type(base) is not frozenset or
+        type(a) is not str or not a.strip() or
+        type(b) is not str or not b.strip() or
+        a == b or a in base or b in base):
         raise ValueError("INVALID_DISTINCT_INTERVENTIONS")
-    return (values[base | {a,b}] - values[base | {a}]
-            - values[base | {b}] + values[base])
+    keys = (base, base | {a}, base | {b}, base | {a, b})
+    if any(key not in values for key in keys):
+        raise ValueError("INTERACTION_COUNTERFACTUAL_REQUIRED")
+    samples = [values[key] for key in keys]
+    if any(type(sample) is not InteractionObservation for sample in samples):
+        raise ValueError("INTERACTION_OBSERVATION_REQUIRED")
+    for sample in samples:
+        sample.validate()
+        if sample.rights_violation:
+            raise ValueError("INTERACTION_RIGHTS_VETO")
+    contexts = {
+        (sample.metric_contract, sample.affected_scope,
+         sample.rights_context, sample.applicability_contract,
+         sample.horizon) for sample in samples
+    }
+    if len(contexts) != 1:
+        raise ValueError("INCOMMENSURABLE_INTERACTION")
+    v0, va, vb, vab = (sample.value for sample in samples)
+    return vab - va - vb + v0
 
 def synthetic_candidate(name: str, values: tuple[float, ...], **kwargs) -> Candidate:
     """Explicit shared fixture contract; no real permissions or observations."""
