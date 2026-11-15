@@ -91,6 +91,18 @@ The existing `model.py` Pareto comparator previously accepted the same six metri
 
 Source anchors: [CoOrbWare nonprivileged inversion](../../docs/Architecture/COORBWARE_NONPRIVILEGED_INVERSION_SUPERFRAME_R0_20261026.md), [CoInterstice](../../docs/Architecture/COINTERSTICE_OBSERVER_PERTURBATION_MEDIA_FABRIC_R0_20261026.md), [CoFractal energetic metabolism](../../docs/Architecture/COFRACTAL_ENERGETIC_METABOLISM_SUPERFRAME_R0_20261027.md).
 
+## R0D: In-between interaction is a typed derived result (2026-11-15 UTC)
+
+The four-term pair-interaction operator `I(A,B)=V(A+B)-V(A)-V(B)+V(empty)` is meaningful only if all four counterfactual observations share one explicitly declared measurement contract, affected population, rights context, applicability regime and horizon. It is *not* an identified causal effect merely because the arithmetic works.
+
+`model.InteractionObservation` requires a finite non-boolean scalar, source pointer, all five comparison-context fields and an explicit rights-veto status. A missing counterfactual is HOLD, not zero. Mismatched contexts are `INCOMMENSURABLE_INTERACTION`; unknown rights or an explicit veto cannot be bypassed by an attractive result. A shared synthetic source pointer is not proof of authentic consent or independently observed outcomes.
+
+`interaction` returns an immutable `InteractionResult` carrying the original unit, scope, rights context, applicability, horizon and all four source references, with `epistemic_state=SYNTHETIC_DERIVED_ONLY` and `effect_authority=NONE`. The result **cannot automatically feed the same operator as a new observation**. An additional observation/provenance contract would be required for a recursive turtle, which prevents derived numerics from silently self-certifying.
+
+Six negative-control families plus one recursive-derived-output test extend the existing stdlib CI on the elected draft PR #379. This closes a **source-only mathematical composition gap**. It is not a new unit registry, empirical benchmark, G_dSide authority, CoStead receiver, universal UX runtime, or real-world consent proof.
+
+`SAME_NUMBER_NE_SAME_UNIT | DERIVED_NE_OBSERVED | RIGHTS_POINTER_NE_PERMISSION | INBETWEEN_RELATION_NE_EXTERNAL_EFFECT | RECURSION_NE_ACTUATION`.
+
 ## Nonclaims and next discriminator
 
 `MEANING_NE_TRANSPORT_ROOT` · `RELATION_GRAPH_NE_VALUE_NEUTRAL` · `SHARED_METRIC_NAME_NE_SHARED_MEASURE` · `SYMBOL_PRESERVED_NE_RIGHTS_PRESERVED` · `SOURCE_POINTER_NE_CONSENT` · `PULL_MODEL_NE_EXTERNAL_CAUSATION` · `CULTURAL_DIFFERENCE_NE_DEFECT` · `NONTRANSLATABLE_NE_MEANINGLESS` · `MODEL_OUTPUT_NE_RECEIVER_EFFECT`.
