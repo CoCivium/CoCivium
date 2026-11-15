@@ -62,11 +62,13 @@ def restore(capsule,pin,target):
 def replay(target):
     s,p,r=[target/n for n in NAMES[:3]]
     verify(s.read_bytes()==data(SOURCE) and p.read_bytes()==data(MODEL_LIKE),"SOURCE")
-    got=json.loads(r.read_bytes())
-    verify(all(type(got.get(k)) is type(v) and got[k]==v for k,v in GUARD.items()),"GUARD")
-    verify(got.get("source_sha256")==filehash(s) and got.get("proposal_sha256")==filehash(p),"PROVENANCE")
-    receipt=json.loads((target/"receipt.json").read_bytes())
-    verify(receipt.get("result_sha256")==filehash(r) and receipt.get("model_calls")==0,"RECEIPT")
+    # Exact, canonical synthetic decision. No appended authority or hidden claims.
+    expected_decision=dict(GUARD,source_sha256=filehash(s),proposal_sha256=filehash(p))
+    verify(r.read_bytes()==data(expected_decision),"GUARD")
+    # Do not let a forged ACK, a changed WorkID, or bool-as-int pass replay.
+    expected_receipt={"work_id":WORK,"result_sha256":filehash(r),
+                      "model_calls":0,"receiver_ack":False}
+    verify((target/"receipt.json").read_bytes()==data(expected_receipt),"RECEIPT")
     q=DueWorkQueue(str(target/"queue.sqlite3"))
     try:
         verify(q.enqueue(WORK,"SYNTHETIC_R0",filehash(s),DUE)=="REPLAY","IDENTITY")
@@ -97,6 +99,36 @@ class Tests(unittest.TestCase):
         restore(self.archive,self.pin,self.target)
         f=self.target/"decision.json";o=json.loads(f.read_bytes());o["receiver_ack"]=True;f.write_bytes(data(o))
         with self.assertRaisesRegex(ValueError,"HOLD_GUARD"):replay(self.target)
+    def test_forged_receiver_ack_is_held(self):
+        restore(self.archive,self.pin,self.target)
+        f=self.target/"receipt.json"
+        claim=json.loads(f.read_bytes());claim["receiver_ack"]=True
+        f.write_bytes(data(claim))
+        with self.assertRaisesRegex(ValueError,"HOLD_RECEIPT"):replay(self.target)
+
+    def test_false_model_call_count_is_not_zero(self):
+        restore(self.archive,self.pin,self.target)
+        f=self.target/"receipt.json"
+        claim=json.loads(f.read_bytes());claim["model_calls"]=False
+        f.write_bytes(data(claim))
+        with self.assertRaisesRegex(ValueError,"HOLD_RECEIPT"):replay(self.target)
+
+    def test_wrong_receipt_workid_is_held(self):
+        restore(self.archive,self.pin,self.target)
+        f=self.target/"receipt.json"
+        claim=json.loads(f.read_bytes());claim["work_id"]="other-work"
+        f.write_bytes(data(claim))
+        with self.assertRaisesRegex(ValueError,"HOLD_RECEIPT"):replay(self.target)
+
+    def test_appended_authority_claim_with_matching_receipt_hash_is_held(self):
+        restore(self.archive,self.pin,self.target)
+        d=self.target/"decision.json";r=self.target/"receipt.json"
+        claim=json.loads(d.read_bytes());claim["external_receiver_ack"]=True
+        d.write_bytes(data(claim))
+        receipt=json.loads(r.read_bytes());receipt["result_sha256"]=filehash(d)
+        r.write_bytes(data(receipt))
+        with self.assertRaisesRegex(ValueError,"HOLD_GUARD"):replay(self.target)
+
     def test_collision_held(self):
         restore(self.archive,self.pin,self.target)
         q=DueWorkQueue(str(self.target/"queue.sqlite3"))
