@@ -1,8 +1,9 @@
 """Negative controls for speculative G_dSide comparison."""
 import unittest
 from dataclasses import replace
-from model import (Candidate, InteractionObservation, METRICS, SCENARIOS,
-                   dominates, frontier, interaction, synthetic_candidate)
+from model import (Candidate, InteractionObservation, InteractionResult,
+                   METRICS, SCENARIOS, dominates, frontier, interaction,
+                   synthetic_candidate)
 
 def sample(value, **overrides):
     """Declared synthetic unit, population, rights, applicability and horizon."""
@@ -49,9 +50,16 @@ class TestCandidate(unittest.TestCase):
         base=frozenset()
         v={base:sample(0), frozenset({"a"}):sample(3),
            frozenset({"b"}):sample(2), frozenset({"a","b"}):sample(7)}
-        self.assertEqual(interaction(v,base,"a","b"),2)
+        r=interaction(v,base,"a","b")
+        self.assertIsInstance(r, InteractionResult)
+        self.assertEqual(r.value,2)
+        self.assertEqual(r.metric_contract, "fixture:flourishing:unitless-index:v1")
+        self.assertEqual(r.horizon, "fixture:week-1")
+        self.assertEqual(len(r.source_refs),4)
+        self.assertEqual(r.epistemic_state,"SYNTHETIC_DERIVED_ONLY")
+        self.assertEqual(r.effect_authority,"NONE")
         v[frozenset({"a","b"})]=sample(4)
-        self.assertEqual(interaction(v,base,"a","b"),-1)
+        self.assertEqual(interaction(v,base,"a","b").value,-1)
 
     def test_interaction_mismatched_units_hold(self):
         base=frozenset()
@@ -77,6 +85,16 @@ class TestCandidate(unittest.TestCase):
                                                    **{field:changed})
                 with self.assertRaisesRegex(ValueError, "INCOMMENSURABLE_INTERACTION"):
                     interaction(v,base,"a","b")
+
+    def test_interaction_nested_derived_turtle_needs_new_observation_contract(self):
+        base=frozenset()
+        v={base:sample(0), frozenset({"a"}):sample(3),
+           frozenset({"b"}):sample(2), frozenset({"a","b"}):sample(7)}
+        derived=interaction(v,base,"a","b")
+        # Recursive numerical availability does not make a new measurement.
+        v[frozenset({"a","b"})]=derived
+        with self.assertRaisesRegex(ValueError, "INTERACTION_OBSERVATION_REQUIRED"):
+            interaction(v,base,"a","b")
 
     def test_interaction_missing_counterfactual_is_not_zero(self):
         base=frozenset()
