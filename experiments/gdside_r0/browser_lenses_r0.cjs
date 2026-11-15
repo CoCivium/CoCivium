@@ -64,10 +64,10 @@ async function run(){
     page.on('pageerror',e=>errors.push('JS_ERROR:'+e.message));
     await page.goto(url,{waitUntil:'load'});
     check(await page.locator('#workid').innerText(),'GDSIDE-5LANE-R0','identity');
-    check(await page.locator('#source-blob').innerText(),expectedBlob,'exact model source pin');
+    check(await page.locator('#source-blob').textContent(),expectedBlob,'exact model source pin');
     check(await page.locator('#truth').innerText(),'SYNTHETIC MODEL ONLY','truth label');
-    check(await page.locator('#receiver').innerText(),'NONE / UNVERIFIED','ACK not invented');
-    check(await page.locator('#scope').innerText(),'PUBLIC_SYNTHETIC_ONLY / EFFECT_AUTHORITY_NONE / NO_SESSION_SYNC','scope ceiling');
+    check(await page.locator('#receiver').textContent(),'NONE / UNVERIFIED','ACK not invented');
+    check(await page.locator('#scope').textContent(),'PUBLIC_SYNTHETIC_ONLY / EFFECT_AUTHORITY_NONE / NO_SESSION_SYNC','scope ceiling');
     check(await page.locator('#time').innerText(),'Fixture snapshot: 2026-11-15 UTC. Static source timestamp, not a heartbeat.','time is not live');
 
     for(const [name,title] of Object.entries({
@@ -78,7 +78,7 @@ async function run(){
       check(await page.locator('#lens-title').innerText(),title,name+' title');
       check(await page.locator('button[data-lens][aria-pressed=true]').count(),1,name+' one lens active');
       check(await page.locator('#workid').innerText(),'GDSIDE-5LANE-R0',name+' unchanged WorkID');
-      check(await page.locator('#receiver').innerText(),'NONE / UNVERIFIED',name+' receiver untouched');
+      check(await page.locator('#receiver').textContent(),'NONE / UNVERIFIED',name+' receiver untouched');
     }
     await page.getByRole('button',{name:'In-between'}).click();
     const facts=await page.locator('#lens-facts').innerText();
@@ -96,16 +96,16 @@ async function run(){
     await page.getByRole('button',{name:'Pause preview'}).click();
     check(await page.locator('#lens-panel').isHidden(),true,'pause locally hides projection');
     check(await page.locator('#pause').getAttribute('aria-pressed'),'true','reversible thumb state');
-    check(await page.locator('#receiver').innerText(),'NONE / UNVERIFIED','pause cannot invent ACK');
+    check(await page.locator('#receiver').textContent(),'NONE / UNVERIFIED','pause cannot invent ACK');
     await page.getByRole('button',{name:'Resume preview'}).click();
     check(await page.locator('#lens-panel').isVisible(),true,'resume locally restores');
     check(await page.locator('#pause').getAttribute('aria-pressed'),'false','thumb reset');
     await page.locator('#evidence summary').click();
-    check(await page.locator('#rights').innerText(),'Toy rights status is declared, not independently authorized.','rights truth');
+    check(await page.locator('#rights').textContent(),'Toy rights status is declared, not independently authorized.','rights truth');
 
     await page.reload({waitUntil:'load'});
     check(await page.locator('#workid').innerText(),'GDSIDE-5LANE-R0','reload without browser-persistent WorkID');
-    check(await page.locator('#receiver').innerText(),'NONE / UNVERIFIED','reload does not upgrade ACK');
+    check(await page.locator('#receiver').textContent(),'NONE / UNVERIFIED','reload does not upgrade ACK');
     check(await page.evaluate(()=>localStorage.length),0,'not storage as truth root');
     await context.close();
     const fresh=await browser.newContext({viewport:{width:390,height:780},isMobile:true,hasTouch:true});
@@ -118,7 +118,7 @@ async function run(){
     await page2.goto(url,{waitUntil:'load'});
     check(await page2.locator('#workid').innerText(),'GDSIDE-5LANE-R0','new context source reentry');
     check(await page2.locator('#truth').innerText(),'SYNTHETIC MODEL ONLY','new context truth');
-    check(await page2.locator('#receiver').innerText(),'NONE / UNVERIFIED','new context no ACK');
+    check(await page2.locator('#receiver').textContent(),'NONE / UNVERIFIED','new context no ACK');
     check(await page2.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true,'mobile viewport no horizontal overflow');
     await page2.getByRole('button',{name:'Relations'}).click();
     check(await page2.locator('#lens-title').innerText(),'Relation lens','mobile lens interaction');
