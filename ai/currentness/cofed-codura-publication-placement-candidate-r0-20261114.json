@@ -1,0 +1,308 @@
+{
+  "schema": "CoAll.CoFedCoDura.PublicationPlacementContract.R0",
+  "work_id": "CoFed.CoDura.PublicationPlacement.20261114.R0",
+  "state": "PUBLIC_SAFE_POLICY_CANDIDATE__NOT_ADOPTED__NO_STORAGE_MIGRATION__NO_PUBLISHING_EFFECT",
+  "observed_date": "2026-11-14",
+  "elected_owner": "CoCivium/CoCivium#317",
+  "related_existing_review": "CoCivium/CoCivium#272",
+  "target_objects": [
+    "existing_public_articles",
+    "historical_editions",
+    "ongoing_drafts",
+    "private_or_embargoed_editorial_sources",
+    "public_media_assets",
+    "source_references",
+    "rights_and_contributor_records",
+    "reader_corrections_where_CONSENTED"
+  ],
+  "problem": "Local persistence, public rendering, GitHub source access, mirroring, and same-provider CI reads have been used as evidence for some properties but are not independently proven cold survivability. Require placement/recovery gates at source creation and before publication, not only at deletion.",
+  "prior_contracts": [
+    "SESSION_BOOTSTRAP.md",
+    "docs/Architecture/CIV2_FEDERATED_CELL_HOSTING_R0.md",
+    "docs/Architecture/ENCRYPTED_STAGING_PUBLIC_MIRROR_R0.md",
+    "docs/Architecture/COPUBLICATION_FEDERATION_RECEIVER_INTEREST_R0_20261025.md",
+    "docs/Architecture/COLIVING_DESTINATION_FABRIC_R0_20261026.md",
+    "docs/Architecture/COFREE_EVOLVING_PUBLICATION_COMMONS_R0_20261026.md",
+    "docs/Architecture/COPUBLICATION_METABOLISM_R0_20261025.md",
+    "docs/Launch/COCOMMONS_PUBLIC_FIRST_TRANSITION_ADVISORY_20261111.md",
+    "docs/publishing/series/rickpublic_substack_seed_v1/queue.json"
+  ],
+  "typed_relations": {
+    "CoFed+": "An authorized relation among eligible custodians, administrators and failure domains. Discovery or copying does not imply federation of trust or consent.",
+    "CoDura+": "Evidence-qualified survival of exact editions through declared failures, including independent restore of source bytes and rights metadata. A named destination does not confer durability.",
+    "CoOwm+_Commons_20261111": "Shared-stewardship research direction; no legal ownership or license transfer by name or advisory.",
+    "CoOwm+_GestureCandidate": "Deliberate narrative-to-WorkID ownership/continuity gesture. Spelling/semantic identity unresolved. Not silently identical to commons stewardship.",
+    "CoCiv+": "Candidate civic governance relation: participation and voluntary contribution are distinct from author permission, copyright and publication authority.",
+    "CoOS+_candidate": "Candidate OS/storage enforcement adapter, not an asserted implemented kernel or service.",
+    "CoStax+_candidate": "Candidate storage/service layer mapping; individual copies and stacks do not establish independent recovery.",
+    "CoPublication+": "Versioned editorial lineage with source identity, history, rights and reader correction, not a storage substitute.",
+    "CoCoCopy+": "Source-linked continuity and revision event projection, not full source custody."
+  },
+  "object_contract": {
+    "required": [
+      "object_id",
+      "work_id",
+      "edition_id",
+      "source_version_or_hash",
+      "source_bytes_or_authorized_reconstruction_recipe",
+      "source_authorship_provenance",
+      "rights_and_license_scope",
+      "privacy_and_consent_class",
+      "retention_and_retirement_conditions",
+      "content_type_and_dependencies",
+      "assets_and_citation_manifest",
+      "authoritative_editorial_state",
+      "source_owner_or_steward",
+      "custody_records[]",
+      "independent_failure_domain_evidence[]",
+      "recovery_proofs[]",
+      "currentness",
+      "receiver_eligible_rights",
+      "publication_projections[]",
+      "predecessor_successor_graph",
+      "correction_and_retraction_path"
+    ],
+    "custody_record_fields": [
+      "copy_id",
+      "exact_object_digest",
+      "storage_role",
+      "custodian_identity",
+      "operator",
+      "provider",
+      "account",
+      "site",
+      "power",
+      "credential_domain",
+      "key_custodian",
+      "source_locator_private_or_public",
+      "hash_readback",
+      "receipt_ref",
+      "observed_at",
+      "validity",
+      "replica_policy",
+      "independence_proof_ref"
+    ],
+    "recovery_proof_fields": [
+      "work_id",
+      "edition_id",
+      "offline_primary_tested",
+      "original_provider_unavailable",
+      "original_device_unavailable",
+      "key_recovery_without_primary",
+      "restored_bytes_hash",
+      "restored_assets_hashes",
+      "restored_metadata_rights",
+      "receiver_origin",
+      "signed_or_source_bound_receipt",
+      "fencing_and_no_duplicate_effect",
+      "recovery_time",
+      "human_touch_count",
+      "limitations"
+    ]
+  },
+  "classes": {
+    "UNKNOWN": {
+      "landing": "PRIVATE_ENCRYPTED_STAGING",
+      "public_effect": "HOLD_CLASSIFICATION",
+      "require": "No public projection, license or retention inferred"
+    },
+    "RESTRICTED": {
+      "landing": "AUTHORIZED_RESTRICTED_STORE_PLUS_INDEPENDENT_ENCRYPTED_RECOVERY_WHERE_PERMITTED",
+      "public_effect": "HOLD_UNLESS_SPECIFIC_RIGHTS_PRIVACY_APPROVAL"
+    },
+    "PRIVATE": {
+      "landing": "PRIVATE_ENCRYPTED_CONTROLLED_SOURCE_PLUS_INDEPENDENT_OFFSITE_COPY",
+      "public_effect": "ONLY_REVIEWED_RIGHTS_SAFE_DERIVATIVES"
+    },
+    "PUBLIC_SAFE": {
+      "landing": "VERSIONED_SOURCE_PLUS_INDEPENDENT_RECOVERABLE_COPY",
+      "public_effect": "SEPARATE_PUBLICATION_AUTHORITY_AND_PROVIDER_RECEIPT"
+    }
+  },
+  "article_lifecycle": {
+    "historical": [
+      "SOURCE_AT_OBSERVATION",
+      "PUBLISHED_EDITION",
+      "CORRECTION",
+      "SUPERSESSION",
+      "RETRACTION",
+      "TOMBSTONE_OR_REDIRECT",
+      "COLD_RECOVERABLE_ARCHIVE"
+    ],
+    "draft": [
+      "SOURCE_BOUNDED",
+      "RIGHTS_CLASSIFIED",
+      "REVIEWED",
+      "APPROVED_FOR_CHANNEL",
+      "PROJECTION_PREPARED",
+      "PROVIDER_ACCEPTED",
+      "INDEPENDENT_PAGE_READBACK",
+      "READER_RESPONSE_IF_CONSENTED"
+    ],
+    "nonimplications": [
+      "PUBLIC_LINK_NE_SOURCE_BACKUP",
+      "SUBSTACK_NE_SOURCE_OF_TRUTH",
+      "GITHUB_NE_SOLE_CUSTODY_ROOT",
+      "ARTICLE_VISIBLE_NE_DELIVERED",
+      "SCHEDULED_NE_PUBLISHED",
+      "ISSUE_COMMENT_NE_RECEIVER_PICKUP",
+      "OLD_VERSION_NE_CURRENT",
+      "RIGHTS_CLEAR_NE_AUTHOR_CONSENT_FOR_EVERY_PROJECTION"
+    ]
+  },
+  "preflight_gates": [
+    {
+      "gate": "SOURCE_IDENTITY",
+      "require": [
+        "stable_work_id",
+        "exact_bytes_digest_or_explicit_absence",
+        "source_history"
+      ],
+      "if_missing": "HOLD_UNVERIFIED_SOURCE"
+    },
+    {
+      "gate": "RIGHTS_PRIVACY",
+      "require": [
+        "author_or_rightsholder_scope",
+        "contributor_credits",
+        "license_and_exceptions",
+        "consent_and_retention"
+      ],
+      "if_missing": "HOLD_RIGHTS"
+    },
+    {
+      "gate": "COPY_AND_READBACK",
+      "require": [
+        "at_least_two_eligible_custody_records",
+        "exact_hash_readback_per_copy"
+      ],
+      "if_missing": "HOLD_LOCAL_OR_SINGLE_COPY"
+    },
+    {
+      "gate": "FAILURE_DOMAIN",
+      "require": [
+        "document_distinct_provider_account_site_power_credentials_and_key_custodians_where_applicable",
+        "common_mode_challenge",
+        "independence_witness"
+      ],
+      "if_missing": "HOLD_COMMON_MODE"
+    },
+    {
+      "gate": "COLD_RESTORE",
+      "require": [
+        "primary_source_unavailable_test",
+        "exact_edition_and_assets_recovered",
+        "receiver_origin_readproof"
+      ],
+      "if_missing": "HOLD_DURABILITY_UNPROVEN"
+    },
+    {
+      "gate": "PUBLICATION",
+      "require": [
+        "independent_rights_safe_effect_authorization",
+        "actual_destination_receipt",
+        "independent_URL_readback_if_public"
+      ],
+      "if_missing": "DO_NOT_CLAIM_PUBLISHED"
+    },
+    {
+      "gate": "RETIREMENT",
+      "require": [
+        "all_dependent_source_and_edition_refs",
+        "retention_legal_and_contributor_holds_clear",
+        "cold_restore_pass",
+        "object_scoped_delete_approval",
+        "rollback_plan"
+      ],
+      "if_missing": "HOLD_NO_DELETE"
+    }
+  ],
+  "inverted_failure_tests": [
+    "X2 lost and CoStead reachable only from X2 -> not independent recovery",
+    "NAS and X2 share power/keys/admin or one site -> copies exist but federation independent claim held",
+    "Two different cloud brands share one SSO/credential or billing account -> common-mode candidate",
+    "GitHub removed and Substack post remains -> published projection may lack exact source/asset/edit history",
+    "Substack deleted and GitHub markdown survives -> published format, comments, subscriber consent and old reader URLs may be lost",
+    "GitHub repo readable but only at moving main ref -> not immutable edition preservation",
+    "Public article corrected and original overwritten -> historic citation cannot be reproduced",
+    "Same article listed twice under distinct titles -> two labels not two independent works",
+    "Mirror updates stale or wrong article/rights -> replication can amplify corruption",
+    "CC0/CC license assumed from public access -> rights falsely promoted",
+    "Private unclassified draft auto-mirrored to commons -> privacy and rights breach",
+    "Independent copy exists but restore credentials stored solely on X2 -> no device-independent restore",
+    "No matching archive entry -> may mean missing inventory, not source absent",
+    "A successful checksum but failed image/license/alt-text restoration -> incomplete edition recovery",
+    "CoOwm shared-stewardship and CoOwm gesture labels merged -> false consent/authority inheritance"
+  ],
+  "bounded_turtle_review": {
+    "depth_cap": 3,
+    "sequence": [
+      "source_artifact",
+      "custody_manifest_and_keys",
+      "recovery_bootstrap_and_independent_authority"
+    ],
+    "stop_rule": "Stop only at a tested independent trust/recovery root or HOLD with explicit missing evidence; do not recursively spawn storage authorities or checks without added information.",
+    "branching": "maximum_5_distinct_counterhypotheses_per_elected_object",
+    "next_deed": "Prove cold restore for one existing PUBLIC_SAFE article edition, excluding the publisher/GitHub and originating device, then compare exact text, assets, rights record and published references."
+  },
+  "current_public_candidate_inventory": [
+    {
+      "article": "The Meaning of Lif",
+      "source": "docs/publishing/series/rickpublic_substack_seed_v1/articles/01__The_Meaning_of_Lif.md",
+      "source_git_blob_sha1": "f45424565e0a98105567c97d902afcd20586818b",
+      "observed_public_source": "GITHUB_READBACK",
+      "article_source_sha256": "NOT_COMPUTED_IN_THIS_PASS",
+      "queue": "docs/publishing/series/rickpublic_substack_seed_v1/queue.json",
+      "queue_state": "draft_ready",
+      "approved_to_publish": false,
+      "source_custody_state": "PUBLIC_GIT_SOURCE_OBSERVED__INDEPENDENT_FAILURE_DOMAIN_RESTORE_UNKNOWN",
+      "rights_audit": "NOT_VERIFIED",
+      "destination_substack_post": "NOT_PROVEN",
+      "next_evidence": "One qualified rights-safe exact edition package plus off-provider/off-device cold restore; do not post"
+    },
+    {
+      "article": "Your Product Is About to Become a Parts Bin",
+      "source": "docs/Receipts/COPUBLIC_GREAT_REFACT_RICKPUBLIC_SCREENSHOT_RECEIPT_R0_20261026.md",
+      "observed_public_source": "HUMAN_VISIBLE_SCREENSHOT_2026_10_26",
+      "exact_article_bytes": "NOT_YET_BOUND",
+      "canonical_post_url": "UNKNOWN_IN_CHECKED_RECEIPT",
+      "independent_public_readback": "NOT_PROVEN_IN_CHECKED_RECEIPT",
+      "source_custody_state": "HOLD_ORIGINAL_SOURCE_AND_URL_DISCOVERY",
+      "next_evidence": "Verify exact current article link and source edition; then obtain independent authorized recovery"
+    }
+  ],
+  "success_measures": [
+    "verified_cold_recoveries_per_qualified_article",
+    "unrecoverable_exact_editions_count",
+    "time_to_restore_without_primary_provider",
+    "human_relay_minutes_per_recovery",
+    "rights_violations_or_unapproved_exposures",
+    "shared_failure_domains_discovered",
+    "published_vs_verified_source_gaps",
+    "historic_correction_and_predecessor_recoverability"
+  ],
+  "effect_boundary": {
+    "source_candidate_only": true,
+    "live_storage_mutations": 0,
+    "private_uploads": 0,
+    "substack_posts": 0,
+    "article_deletions": 0,
+    "license_changes": 0,
+    "scheduled_tasks_created": 0,
+    "receiver_ack_claims": 0,
+    "completed_cold_restores_claimed": 0
+  },
+  "acceptance": "This JSON is a preflight candidate. Textual proof pointers are not cryptographically verified by its presence. Incumbent #317 must run an exact source-bound two-independent-domain canary before declaring any real article FEDERATED_DURABLE.",
+  "nonclaims": [
+    "LOCAL_IS_NOT_LANDED",
+    "BACKUP_NE_REAL_UNTIL_RESTORE_PROOF",
+    "COPIES_NE_FAILURE_DOMAIN_DIVERSITY",
+    "SAME_PROVIDER_JOB_NE_INDEPENDENT_RECEIVER",
+    "SAVED_GITHUB_JSON_NE_ADOPTED_POLICY",
+    "PUBLIC_SAFE_NE_LICENSE_TRANSFER",
+    "CoOwm_CANDIDATE_NE_RIGHTSHOLDER_WAIVER",
+    "REPLICA_NE_CANON",
+    "COEX_NE_INTEGRATION_OR_RUNTIME",
+    "NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF"
+  ]
+}
