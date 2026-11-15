@@ -29,6 +29,32 @@ class CarryTests(unittest.TestCase):
         self.assertEqual(r["focus"]["status"], "PROPOSED_NOT_REOPENED_OR_PICKED_UP")
         self.assertTrue(all(v == 0 for v in r["effects"].values()))
 
+    def test_colue_exit_lens_does_not_conflate_labels_with_deletion(self):
+        r = evaluate(fixture(1001), "synthetic-0003")
+        exit_view = r["colue_exit_lens"]
+        self.assertEqual(exit_view["observed_ledger_rows"], 1001)
+        self.assertIsNone(exit_view["account_conversation_count"])
+        self.assertEqual(exit_view["account_census_state"], "UNKNOWN_NOT_ENUMERATED")
+        self.assertEqual(exit_view["close_safe_label_candidates_not_delete_authority"], 101)
+        self.assertEqual(exit_view["provider_deleted_this_run"], 0)
+        self.assertEqual(exit_view["verified_sidebar_removals_this_run"], 0)
+        self.assertFalse(exit_view["archive_required_before_delete"])
+        self.assertTrue(all(v == 0 for v in r["effects"].values()))
+
+    def test_colue_close_safe_label_remains_unqualified_for_delete(self):
+        data = fixture(2)
+        data["sessions"][0]["projection"] = "CLOSE_SAFE"
+        data["sessions"][0]["close_safety"] = "PROVEN_TRUE"
+        r = evaluate(data, "synthetic-0000")
+        self.assertEqual(r["colue_exit_lens"]["close_safe_label_candidates_not_delete_authority"], 1)
+        self.assertEqual(r["colue_exit_lens"]["verified_sidebar_removals_this_run"], 0)
+        self.assertEqual(r["effects"]["provider_sessions_deleted"], 0)
+
+    def test_colue_unknown_inventory_is_not_zero(self):
+        r = evaluate(fixture(1), "synthetic-0000")
+        self.assertIsNone(r["colue_exit_lens"]["account_conversation_count"])
+        self.assertNotEqual(r["colue_exit_lens"]["account_conversation_count"], 0)
+
     def test_source_labels_do_not_authorize_tab_closing(self):
         r = evaluate(fixture(10), "synthetic-0000")
         self.assertEqual(r["effects"]["tabs_closed"], 0)

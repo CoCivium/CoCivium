@@ -50,6 +50,14 @@ def evaluate(ledger, focus_id):
     # A provider's close-safe label is not independent recovery evidence.
     # Never automatically retire an off-screen tab from a source-only ledger.
     digest = hashlib.sha256(canonical(ledger).encode("ascii")).hexdigest()
+    # CoLUE is a truthful user-facing lens, not a provider controller.
+    # A ledger 'CLOSE_SAFE' label, even marked PROVEN_TRUE, cannot prove
+    # export completeness, receiver recovery, delete authority, or UI removal.
+    close_label_candidates = sum(
+        row.get("projection") == "CLOSE_SAFE" or
+        row.get("close_safety") == "PROVEN_TRUE"
+        for row in rows
+    )
     return {
         "schema": "CoCarry.BrowserFrontProjection.R0",
         "state": "PRIVATE_SOURCE_PROJECTION_NOT_BROWSER_RUNTIME",
@@ -69,6 +77,20 @@ def evaluate(ledger, focus_id):
             "work_identity": "UNBOUND_UNLESS_SEPARATELY_EVIDENCED",
             "unsent_input_custody": "UNKNOWN_NOT_CAPTURED",
             "checkpoint_readproof": "NOT_OBSERVED",
+        },
+        "colue_exit_lens": {
+            "state": "CANDIDATE_VIEW__NO_PROVIDER_DELETE_OR_ARCHIVE",
+            "observed_ledger_rows": len(rows),
+            "account_conversation_count": None,
+            "account_census_state": "UNKNOWN_NOT_ENUMERATED",
+            "close_safe_label_candidates_not_delete_authority": close_label_candidates,
+            "provider_deleted_this_run": 0,
+            "verified_sidebar_removals_this_run": 0,
+            "archive_required_before_delete": False,
+            "soft_quarantine": "PROPOSED_WORK_ADMISSION_CONTROL_NOT_PROVIDER_TAB_ACTION",
+            "direct_delete_gate": "EXACT_PROVIDER_ID_PLUS_EXPORT_AND_INDEPENDENT_RESTORE_PLUS_OBJECT_SPECIFIC_APPROVAL",
+            "user_next_deed": "REVIEW_EXACT_SESSION_RECOVERY_AND_DELETE_SCOPE_NOT_LEDGER_LABEL",
+            "privacy": "AGGREGATES_ONLY_NO_TITLE_URL_OR_MESSAGE_CONTENT",
         },
         "edge_fallback": "PRESERVE_EXISTING_PROFILE_AND_TABS_UNTIL_RECOVERY_PROVED",
         "effects": {

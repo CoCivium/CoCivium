@@ -1,0 +1,150 @@
+name: CoSession Succession Gate R0
+permissions:
+  contents: read
+
+on:
+  pull_request:
+    paths:
+      - "scripts/CoSessionSuccessionGateR0.py"
+      - "tests/test_cosession_succession_gate_r0.py"
+      - ".github/workflows/cosession-succession-r0.yml"
+  push:
+    paths:
+      - "scripts/CoSessionSuccessionGateR0.py"
+      - "tests/test_cosession_succession_gate_r0.py"
+      - ".github/workflows/cosession-succession-r0.yml"
+
+jobs:
+  fail-closed-succession:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run no-provider-effect succession regression
+        run: python -B -m unittest discover -s tests -p "test_cosession_succession_gate_r0.py" -v
+      - name: Produce source-bound synthetic successor packet
+        if: github.event_name == 'push' && github.ref == 'refs/heads/coevo/session-git-lifecycle-crosswalk-20261113-r0'
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import hashlib, json, os, pathlib, sys
+          code=pathlib.Path('scripts/CoSessionSuccessionGateR0.py').read_bytes()
+          blob=hashlib.sha1(b'blob '+str(len(code)).encode()+b'\x00'+code).hexdigest()
+          assert blob=='2bed01f981fc6662fec26c30e5fe4d6492a5b13e','HOLD_SOURCE_DRIFT'
+          sys.path[:0]=['scripts','tests']
+          from CoSessionSuccessionGateR0 import evaluate
+          from test_cosession_succession_gate_r0 import make_fixture
+          fixture=make_fixture()
+          result=evaluate(fixture)
+          assert result['state']=='SHADOW_CANDIDATE__INDEPENDENT_RECEIVER_UNVERIFIED'
+          assert not result['close_safe'] and not result['delete_safe']
+          out=pathlib.Path('out/succession-packet');out.mkdir(parents=True)
+          def save(name, data):
+              raw=(json.dumps(data,sort_keys=True,separators=(',',':'))+'\n').encode()
+              (out/name).write_bytes(raw)
+              return hashlib.sha256(raw).hexdigest()
+          (out/'gate.py').write_bytes(code)
+          hashes={'gate.py':hashlib.sha256(code).hexdigest(),
+                  'fixture.json':save('fixture.json',fixture),
+                  'projection.json':save('projection.json',result)}
+          save('manifest.json',{'schema':'CoSession.HostedPacket.R0','work_id':'synthetic:evo-front',
+              'source_commit':os.environ['GITHUB_SHA'],'run_id':os.environ['GITHUB_RUN_ID'],
+              'producer_job':os.environ['GITHUB_JOB'],'gate_blob':blob,
+              'hashes':hashes,'external_effects':0,'independent_receiver_ack':False})
+          print('COSESSION_PACKET_PREPARED=synthetic:evo-front')
+          PY
+      - name: Upload synthetic packet
+        if: github.event_name == 'push' && github.ref == 'refs/heads/coevo/session-git-lifecycle-crosswalk-20261113-r0'
+        uses: actions/upload-artifact@v4
+        with:
+          name: cosession-fanin-${{ github.run_id }}-${{ github.run_attempt }}
+          path: out/succession-packet/
+          if-no-files-found: error
+          retention-days: 7
+
+  source-independent-receiver:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/coevo/session-git-lifecycle-crosswalk-20261113-r0'
+    needs: fail-closed-succession
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Download exact run packet, no checkout
+        uses: actions/download-artifact@v4
+        with:
+          name: cosession-fanin-${{ github.run_id }}-${{ github.run_attempt }}
+          path: received/
+      - name: Verify pinned executable, replay full successor and negative controls
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import copy, hashlib, importlib.util, json, os, pathlib
+          d=pathlib.Path('received')
+          files={p.name for p in d.iterdir()}
+          assert files=={'gate.py','fixture.json','projection.json','manifest.json'},'HOLD_FILE_SET'
+          for p in d.iterdir():
+              assert p.is_file() and not p.is_symlink() and 0<p.stat().st_size<65536,'HOLD_FILE_SCOPE'
+          m=json.loads((d/'manifest.json').read_bytes())
+          assert set(m)=={'schema','work_id','source_commit','run_id','producer_job',
+                          'gate_blob','hashes','external_effects','independent_receiver_ack'}
+          assert m['schema']=='CoSession.HostedPacket.R0' and m['work_id']=='synthetic:evo-front'
+          assert m['source_commit']==os.environ['GITHUB_SHA'] and m['run_id']==os.environ['GITHUB_RUN_ID']
+          assert m['producer_job']=='fail-closed-succession' and os.environ['GITHUB_JOB']=='source-independent-receiver'
+          assert m['external_effects']==0 and m['independent_receiver_ack'] is False
+          assert set(m['hashes'])==files-{'manifest.json'}
+          for name,checksum in m['hashes'].items():
+              assert hashlib.sha256((d/name).read_bytes()).hexdigest()==checksum,'HOLD_MEMBER_HASH_'+name
+          code=(d/'gate.py').read_bytes()
+          blob=hashlib.sha1(b'blob '+str(len(code)).encode()+b'\x00'+code).hexdigest()
+          assert blob==m['gate_blob']=='2bed01f981fc6662fec26c30e5fe4d6492a5b13e','HOLD_CODE_AUTHORITY'
+          spec=importlib.util.spec_from_file_location('scoped_gate',d/'gate.py')
+          gate=importlib.util.module_from_spec(spec);spec.loader.exec_module(gate)
+          fixture=json.loads((d/'fixture.json').read_bytes())
+          projection=json.loads((d/'projection.json').read_bytes())
+          result=gate.evaluate(fixture)
+          assert result==projection and result['state']=='SHADOW_CANDIDATE__INDEPENDENT_RECEIVER_UNVERIFIED'
+          assert result['coverage']['observed_source_count']==3
+          assert result['receiver_proof']=='SYNTHETIC_SHAPE_ONLY_NOT_INDEPENDENT'
+          assert not result['close_safe'] and not result['delete_safe']
+          assert all(x==0 for x in result['effects'].values())
+          mutations=[
+              ('missing-producer', lambda x:x['successor'].pop('producer_id')),
+              ('same-actor',lambda x:x['successor'].update(verifier_id='fixture-producer')),
+              ('lost-dissent',lambda x:x['successor']['dissent_ids'].remove('contrary-1')),
+              ('private-source',lambda x:x['sources'][0].update(privacy_class='PRIVATE')),
+              ('changed-source',lambda x:x['sources'][0].update(source_sha256='f'*64)),
+              ('effect-authority',lambda x:x['successor'].update(authority_ceiling='SEND_EMAIL')),
+              ('no-readproof',lambda x:x['successor'].update(receiver_readproof=False)),
+          ]
+          rejected=[]
+          for label,mutation in mutations:
+              altered=copy.deepcopy(fixture);mutation(altered)
+              outcome=gate.evaluate(altered)
+              assert outcome['state']=='HELD__SOURCE_OR_SUCCESSOR_GAP',label
+              assert not outcome['close_safe'] and not outcome['delete_safe']
+              assert all(v==0 for v in outcome['effects'].values())
+              rejected.append(label)
+          out=pathlib.Path('out/succession-receiver');out.mkdir(parents=True)
+          readback={'schema':'CoSession.HostedReadback.R0','work_id':m['work_id'],
+             'commit':m['source_commit'],'gate_blob':blob,
+             'manifest_sha256':hashlib.sha256((d/'manifest.json').read_bytes()).hexdigest(),
+             'producer_job':m['producer_job'],'receiver_job':os.environ['GITHUB_JOB'],
+             'recomputed_exact':True,'source_count':3,'rejected_controls':rejected,
+             'state':'HOSTED_DIFFERENT_JOB_SYNTHETIC_READBACK',
+             'same_provider_failure_domain':True,'independent_provider_ack':False,
+             'session_close_count':0,'effects':0}
+          (out/'readback.json').write_text(json.dumps(readback,sort_keys=True,indent=2)+'\n')
+          print('COSESSION_HOSTED_SYNTHETIC_RECEIVER_PASS='+m['work_id'])
+          print('COSESSION_NEGATIVES_REJECTED='+str(len(rejected)))
+          PY
+      - name: Upload receiver-origin readback
+        uses: actions/upload-artifact@v4
+        with:
+          name: cosession-fanin-readback-${{ github.run_id }}-${{ github.run_attempt }}
+          path: out/succession-receiver/
+          if-no-files-found: error
+          retention-days: 7
