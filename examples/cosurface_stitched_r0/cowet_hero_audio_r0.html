@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark light">
+<title>CoWet+ | Human Surface Experiment R0</title>
+<style>
+:root{--bg:#090d18;--text:#f4f5ff;--muted:#b9bcd3;--line:#49436c;--pink:#ff73bc;--teal:#70f4d4;--surface:#191b30}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font:17px/1.55 system-ui,-apple-system,Segoe UI,sans-serif}a{color:var(--teal)}
+header{display:flex;align-items:center;justify-content:space-between;padding:1rem max(1.5rem,4vw);border-bottom:1px solid var(--line)}header strong{letter-spacing:.08em}
+main{max-width:1120px;margin:auto;padding:1.5rem}button{font:inherit;color:inherit;background:var(--surface);border:1px solid #8b7ebb;border-radius:999px;padding:.55rem 1.1rem;cursor:pointer}button:focus-visible,a:focus-visible{outline:3px solid var(--teal);outline-offset:4px}
+button[aria-pressed="true"]{border-color:var(--teal);color:var(--teal)}.hero{position:relative;overflow:hidden;min-height:570px;border:1px solid #5c5078;border-radius:26px;background:radial-gradient(circle at 70% 36%,#292251 0,transparent 56%),linear-gradient(145deg,#141525,#090d18)}
+.hero-inner{position:relative;z-index:1;max-width:600px;padding:clamp(1.5rem,5vw,4rem)}
+.eyebrow{text-transform:uppercase;letter-spacing:.22em;color:var(--teal);font-size:.77rem;font-weight:bold}h1{font-size:clamp(2.6rem,7vw,5.5rem);line-height:.99;letter-spacing:-.07em;margin:1.1rem 0}h1 em{color:var(--pink);font-style:normal}p{max-width:55ch;color:var(--muted)}.actions{display:flex;gap:.75rem;flex-wrap:wrap;margin-top:2rem}
+.primary{background:var(--teal);color:#07101c;font-weight:800;border-color:var(--teal)}
+.orbit{position:absolute;right:-11%;top:-12%;height:125%;width:70%;opacity:.9;pointer-events:none}.orbit .spin{transform-origin:50% 50%;animation:rotate 54s linear infinite}.orbit .spin2{transform-origin:50% 50%;animation:rotate 78s linear infinite reverse}
+@keyframes rotate{to{transform:rotate(360deg)}}.controls{display:flex;gap:.6rem;align-items:center;flex-wrap:wrap;margin:1rem 0;padding:.9rem;border-radius:18px;background:var(--surface)}.controls small{color:var(--muted)}.controls output{font-size:.8rem;color:var(--teal)}.status{flex:1;min-width:120px}
+article{padding:5rem 1rem;border-bottom:1px solid var(--line)}article h2{font-size:clamp(1.8rem,4vw,3.1rem);letter-spacing:-.04em;line-height:1.1} .features{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1rem}.feature{border:1px solid var(--line);padding:1.3rem;border-radius:20px;background:#111628}.feature strong{color:var(--teal)}
+.dry .orbit{display:none}.dry .hero{min-height:auto;background:var(--bg)}.dry .hero-inner{padding:1.5rem}.dry .hero h1{font-size:2rem}.dry article{padding:2rem 0}.dry *{animation:none!important}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+@media(max-width:720px){.orbit{opacity:.34;right:-45%;width:110%}}
+</style></head><body>
+<header><strong>CoCivium / CoWet+</strong><button id="dry" aria-pressed="false">CoDry view</button></header>
+<main>
+<section class="hero" aria-labelledby="hero-head">
+<svg class="orbit" viewBox="0 0 650 650" role="img" aria-label="Abstract relational orbit with concentric paths, source nodes and a bright central seed">
+<defs><radialGradient id="g"><stop stop-color="#e7d7ff"/><stop offset=".25" stop-color="#ff7dc9"/><stop offset="1" stop-color="#ff7dc9" stop-opacity="0"/></radialGradient></defs>
+<g fill="none" stroke-width="1.6" class="spin">
+<ellipse cx="325" cy="325" rx="230" ry="92" stroke="#ff73bc" transform="rotate(32 325 325)"/>
+<ellipse cx="325" cy="325" rx="230" ry="92" stroke="#70f4d4" transform="rotate(88 325 325)"/>
+<ellipse cx="325" cy="325" rx="235" ry="102" stroke="#b3a0ff" transform="rotate(146 325 325)"/></g>
+<g class="spin2" fill="none" stroke="#756eae" opacity=".7"><circle cx="325" cy="325" r="240" stroke-dasharray="3 12"/><circle cx="325" cy="325" r="165"/></g>
+<circle cx="325" cy="325" r="86" fill="url(#g)"/><circle cx="325" cy="325" r="19" fill="#f8e4ff"/>
+<g fill="#70f4d4"><circle cx="113" cy="214" r="7"/><circle cx="514" cy="460" r="11"/></g>
+<g fill="#ff73bc"><circle cx="164" cy="493" r="10"/><circle cx="521" cy="195" r="6"/></g>
+</svg>
+<div class="hero-inner"><div class="eyebrow">CoSeed • CoPath • CoTime</div><h1>Less <em>dry.</em><br>More alive<br>to possibility.</h1>
+<p>An experimental human surface for exploring relationships. The evidence stays visible. The wonder becomes optional, not compulsory.</p>
+<div class="actions"><a class="primary" href="#explore" style="text-decoration:none;border-radius:999px;padding:.65rem 1.3rem">Explore the graph</a><a href="#about" style="align-self:center">Read the proof boundary</a></div>
+</div></section>
+<div class="controls" aria-label="Audio and preference controls"><button id="enable" aria-pressed="false">Enable quiet ambience</button><button id="silence">Silence this surface</button>
+<label for="volume">Volume cap <input id="volume" type="range" min="0" max="12" value="7" aria-label="Maximum ambience volume in percent"></label>
+<output id="state" class="status" role="status" aria-live="polite">Silent by default. Scrolling never starts audio.</output></div>
+<article id="explore"><div class="eyebrow">CoMap / CoNav</div><h2>Start at any node. Discover both directions.</h2><div class="features">
+<div class="feature"><strong>CoSeed</strong><p>Recover the exact source and its evidence without inventing an authoritative answer.</p></div>
+<div class="feature"><strong>CoPath</strong><p>Traverse dependencies, incoming references, historical echoes and proposed experiments.</p></div>
+<div class="feature"><strong>CoChallenge</strong><p>Find a mistake. Turn it into a test, a correction and an improvement others can reuse.</p></div></div></article>
+<article id="about"><div class="eyebrow">CoTru / CoDry</div><h2>The glow is a presentation. Not a proof.</h2><p>This is a standalone prototype. It does not fetch the real CoSeed registry, play copyrighted audio, operate an autonomous receiver, or prove a deployed product. You can always switch to CoDry. Audio requires a deliberate click, and the Silence button wins over scroll events and future reloads in this browser.</p>
+<p><a href="COPRE_SHAREABLE_ASSET_INDEX_R0.md">Current candidate source index</a> · <a href="COWET_HUMAN_SURFACE_RULE_R0.md">Human-surface rule</a></p></article>
+</main>
+<script>
+(()=>{"use strict";
+const $=id=>document.getElementById(id);
+const state=$("state");let ctx=null,master=null,osc=null,osc2=null,enabled=false,silenced=false;
+let dry=false;const key="cowet-r0-silence";
+try{silenced=localStorage.getItem(key)==="true"}catch(e){}
+function write(msg){state.textContent=msg;}
+function stop(){enabled=false;$("enable").setAttribute("aria-pressed","false");if(master&&ctx){master.gain.setTargetAtTime(0,ctx.currentTime,.07);}if(ctx){ctx.close().catch(()=>{});}ctx=null;master=null;osc=null;osc2=null;}
+function setSilence(v){silenced=v;try{localStorage.setItem(key,String(v));}catch(e){}if(v){stop();write("Silenced. Click Enable only if you wish to opt back in.");}else{write("Silence cleared. Still silent until you enable ambience.");}}
+function updateVolume(){if(!ctx||!master||!enabled||silenced)return;
+ const max=Number($("volume").value)/100;const maxScroll=Math.max(1,document.documentElement.scrollHeight-innerHeight);
+ const progress=Math.min(1,Math.max(0,scrollY/maxScroll));
+ const gain=max*(.12+.65*progress);
+ master.gain.setTargetAtTime(gain,ctx.currentTime,.45);
+}
+$("enable").addEventListener("click",async()=>{
+ if(enabled){stop();write("Ambience stopped.");return;}
+ if(silenced)setSilence(false);
+ const A=window.AudioContext||window.webkitAudioContext;
+ if(!A){write("Web Audio unavailable. Visual experience remains functional.");return;}
+ try{ctx=new A();master=ctx.createGain();master.gain.value=0;master.connect(ctx.destination);
+ const mix=ctx.createGain();mix.gain.value=.12;mix.connect(master);
+ osc=ctx.createOscillator();osc.type="sine";osc.frequency.value=110;osc.connect(mix);osc.start();
+ osc2=ctx.createOscillator();osc2.type="sine";osc2.frequency.value=164.81;osc2.connect(mix);osc2.start();
+ await ctx.resume();enabled=true;$("enable").setAttribute("aria-pressed","true");write("Quiet ambience enabled. Scroll can gently change level.");updateVolume();
+ }catch(e){stop();write("Audio unavailable or blocked. Remains silent.");}
+});
+$("silence").addEventListener("click",()=>setSilence(true));
+$("volume").addEventListener("input",updateVolume);
+$("dry").addEventListener("click",()=>{dry=!dry;document.body.classList.toggle("dry",dry);$("dry").setAttribute("aria-pressed",String(dry));if(dry){stop();write("CoDry selected. Audio stopped.");}});
+window.addEventListener("scroll",()=>{if(enabled&&!silenced)updateVolume();},{passive:true});
+document.addEventListener("visibilitychange",()=>{if(document.hidden&&enabled){stop();write("Audio stopped because this tab became hidden.");}});
+if(silenced)write("Silenced preference remembered on this surface.");
+})();
+</script></body></html>

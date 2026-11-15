@@ -1,0 +1,204 @@
+{
+  "schema": "CoAll.SeedPathDiscovery.R0",
+  "release_class": "PUBLIC_CANDIDATE_DISCOVERY",
+  "as_of": "2026-11-09",
+  "root": {
+    "repository": "CoCivium/CoCivium",
+    "branch": "candidate/cosurface-stitched-orb-nav-r0-20261108",
+    "pr": 375,
+    "public_access_expected": true,
+    "receiver_readback": "NOT_PROVEN",
+    "cross_front_integration": "NOT_PROVEN",
+    "coex": "NOT_PROVEN"
+  },
+  "contract": {
+    "seed": "an immutable or revision-identified source artifact with known scope and evidence",
+    "path": "a typed, reversible navigation or qualified action route from a source seed to another artifact or front",
+    "public_projection": "privacy-cleared, explanatory read view; not canonical authority by mere publication",
+    "use_rule": "resolve exact source revision; compare hashes; check privacy and authority; emit exact receiver-side readproof before PICKED_UP",
+    "nonclaims": [
+      "LOCAL_IS_NOT_LANDED",
+      "VALIDATION_IS_NOT_ACCEPTANCE",
+      "NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF",
+      "NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE",
+      "HASHING_IS_NOT_SEMANTIC_INGESTION",
+      "DISCOVERED_SET_IS_NOT_COMPLETE_HISTORY"
+    ]
+  },
+  "seeds": [
+    {
+      "id": "copre-bundle",
+      "front": "CoPreGeneric",
+      "type": "document",
+      "path": "examples/cosurface_stitched_r0/copre_shareable_r0/CoPreGeneric-ShareableBundle-R0.md",
+      "blob_sha": "b4745c2df3844ad9d9ffc2a11f53bd9b4de28fcd",
+      "stage": "SOURCE_LANDED_CANDIDATE",
+      "privacy": "PUBLIC"
+    },
+    {
+      "id": "copre-machine",
+      "front": "CoSynthVerse",
+      "type": "machine_index",
+      "path": "examples/cosurface_stitched_r0/copre_generic_contribution_r0.json",
+      "blob_sha": "1187a49336b9e818e462a8f75527781ce975bc57",
+      "stage": "SOURCE_LANDED_CANDIDATE",
+      "privacy": "PUBLIC"
+    },
+    {
+      "id": "copre-thumb",
+      "front": "CoMouse",
+      "type": "instruction",
+      "path": "examples/cosurface_stitched_r0/COPRE_THUMB_R1.md",
+      "blob_sha": "cf5ee612bea97c6880fa9fb18911448a08a3defe",
+      "stage": "SOURCE_LANDED_CANDIDATE",
+      "privacy": "PUBLIC"
+    },
+    {
+      "id": "comap-nested",
+      "front": "CoMap",
+      "type": "code",
+      "path": "examples/cosurface_stitched_r0/nested_nav_r0.py",
+      "blob_sha": "16e9ccdbada7fc39a7067d81d3cf13b35b65c3ee",
+      "stage": "SOURCE_LANDED_CANDIDATE",
+      "privacy": "PUBLIC"
+    },
+    {
+      "id": "comedia-rels",
+      "front": "CoMedia",
+      "type": "code",
+      "path": "examples/cosurface_stitched_r0/media_relation_graph_r0.py",
+      "blob_sha": "a3c56b0c3bfd739f88cf819c5857ddd22be9ee7f",
+      "stage": "SOURCE_LANDED_CANDIDATE",
+      "privacy": "PUBLIC"
+    },
+    {
+      "id": "coevo-retro",
+      "front": "CoEcho",
+      "type": "code",
+      "path": "examples/cosurface_stitched_r0/retro_front_echo_r0.py",
+      "blob_sha": "d01de5e119017898bec3e537ff7bb1bd52e132b0",
+      "stage": "SOURCE_LANDED_CANDIDATE",
+      "privacy": "PUBLIC"
+    },
+    {
+      "id": "historical-six",
+      "front": "CoTime",
+      "type": "data",
+      "path": "examples/cosurface_stitched_r0/public_front_chronology_sample_r0.json",
+      "blob_sha": "d4b18939676953a83a9e97cd522922b70b6962fc",
+      "stage": "SOURCE_LANDED_CANDIDATE",
+      "privacy": "PUBLIC"
+    },
+    {
+      "id": "megascroller",
+      "front": "CoBioVerse",
+      "type": "html",
+      "path": "examples/cosurface_stitched_r0/megascroller_r0.html",
+      "blob_sha": "046befbbaed6cd61fc89b10b7c462fc873d05094",
+      "stage": "SOURCE_LANDED_CANDIDATE",
+      "privacy": "PUBLIC"
+    },
+    {
+      "id": "copre-route",
+      "front": "CoGateway",
+      "type": "data",
+      "path": "examples/cosurface_stitched_r0/copre_route_forklift_r0.json",
+      "blob_sha": "89e3079b9be669d0aaa4267203744dcc0f9457aa",
+      "stage": "SOURCE_LANDED_CANDIDATE",
+      "privacy": "PUBLIC"
+    }
+  ],
+  "paths": [
+    {
+      "id": "parse-copre",
+      "from": "copre-bundle",
+      "to": "copre-machine",
+      "predicate": "HAS_MACHINE_COMPANION",
+      "status": "CANDIDATE_ROUTE_NOT_RECEIVER_TESTED"
+    },
+    {
+      "id": "prompt-to-intake",
+      "from": "copre-thumb",
+      "to": "copre-bundle",
+      "predicate": "POINTS_TO_CURRENT_SHAREABLE_CONTEXT",
+      "status": "CANDIDATE_ROUTE_NOT_RECEIVER_TESTED"
+    },
+    {
+      "id": "history-to-navigation",
+      "from": "historical-six",
+      "to": "comap-nested",
+      "predicate": "NAVIGABLE_WITH",
+      "status": "POTENTIAL_NOT_RUNTIME_TESTED"
+    },
+    {
+      "id": "history-to-retro",
+      "from": "historical-six",
+      "to": "coevo-retro",
+      "predicate": "RECONCILE_WITH",
+      "status": "POTENTIAL_NOT_RUNTIME_TESTED"
+    },
+    {
+      "id": "graph-to-visual",
+      "from": "comedia-rels",
+      "to": "megascroller",
+      "predicate": "MAY_PROJECT_TO",
+      "status": "POTENTIAL_NOT_RUNTIME_TESTED"
+    },
+    {
+      "id": "gateway-to-thumb",
+      "from": "copre-route",
+      "to": "copre-thumb",
+      "predicate": "QUALIFY_BEFORE_MOUSE_CONFIGURATION",
+      "status": "BLOCKED_GATEWAY_NOT_VERIFIED"
+    },
+    {
+      "id": "bundle-to-bio",
+      "from": "copre-bundle",
+      "to": "megascroller",
+      "predicate": "RENDER_AS_HUMAN_VIEW",
+      "status": "POTENTIAL_NOT_RUNTIME_TESTED"
+    }
+  ],
+  "front_wake": [
+    {
+      "front": "CoLUE",
+      "status": "OPEN",
+      "source": "https://github.com/CoCivium/CoCivium/issues/225",
+      "next": "obtain consent-bound provider receipts; do not auto-send"
+    },
+    {
+      "front": "CoOrb/X2",
+      "status": "OPEN",
+      "source": "https://github.com/CoCivium/CoCivium/issues/178",
+      "next": "independent receiver, then real X2 readback"
+    },
+    {
+      "front": "CoTheoryAll",
+      "status": "HYPOTHESIS_LANE",
+      "source": "https://github.com/CoCivium/CoCivium/issues/179",
+      "next": "discriminating experiments; do not infer AGI/G_d"
+    },
+    {
+      "front": "Historical replay",
+      "status": "INCOMPLETE",
+      "source": "https://github.com/CoCivium/CoCivium/issues/221",
+      "next": "bounded old-source scan, privately scoped"
+    },
+    {
+      "front": "Fan-in",
+      "status": "UNVERIFIED",
+      "source": "https://github.com/CoCivium/CoCivium/issues/317",
+      "next": "cross-provider independent pickup receipt"
+    },
+    {
+      "front": "CoMeasure",
+      "status": "PROPOSAL",
+      "source": "https://github.com/CoCivium/CoCivium/issues/367",
+      "next": "typed measurable units and proof thresholds"
+    }
+  ],
+  "unknown_history": true,
+  "privacy_gate": "PUBLIC_SAFE_ONLY",
+  "mouse_gateway": "INTENDED_NOT_DEPLOYED",
+  "canonical_approval": "NOT_PROVEN"
+}

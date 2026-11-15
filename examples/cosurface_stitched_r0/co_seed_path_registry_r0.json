@@ -1,0 +1,239 @@
+{
+  "schema": "CoAll.CoSeedCoPath.DiscoveryR0",
+  "revision": "r0-20261109",
+  "scope": "PUBLIC_SOURCE_CANDIDATE",
+  "source_repo": "CoCivium/CoCivium",
+  "source_branch": "candidate/cosurface-stitched-orb-nav-r0-20261108",
+  "version_policy": "branch mutable; pin commit for immutable reuse; blob SHA-1 is source object identity not SHA-256 payload",
+  "proven_receivers": [],
+  "proof_boundaries": {
+    "source_files_readback": true,
+    "latest_asset_ci_passed": true,
+    "merged_main": false,
+    "live_website_verified": false,
+    "independent_receiver_pickup": false,
+    "semantic_integration": false,
+    "all_history_covered": false
+  },
+  "nodes": [
+    {
+      "id": "copre",
+      "front": "CoPreGeneric",
+      "kind": "co_seed",
+      "path": "examples/cosurface_stitched_r0/CoPreGeneric-v1.0-DRAFT.md",
+      "git_blob_sha1": "670d24137b0c7926d09fb5b7582396f7a2335d2b",
+      "scope": "PUBLIC",
+      "status": "LANDED_SOURCE_CANDIDATE",
+      "consumer_role": "instruction_discovery"
+    },
+    {
+      "id": "copre_machine",
+      "front": "CoSynthVerse",
+      "kind": "co_seed_index",
+      "path": "examples/cosurface_stitched_r0/copre_generic_contribution_r0.json",
+      "git_blob_sha1": "1187a49336b9e818e462a8f75527781ce975bc57",
+      "scope": "PUBLIC",
+      "status": "LANDED_SOURCE_CANDIDATE",
+      "consumer_role": "machine_structured_lookup"
+    },
+    {
+      "id": "thumb",
+      "front": "CoMouse",
+      "kind": "co_path",
+      "path": "examples/cosurface_stitched_r0/COPRE_THUMB_R1.md",
+      "git_blob_sha1": "cf5ee612bea97c6880fa9fb18911448a08a3defe",
+      "scope": "PUBLIC",
+      "status": "LANDED_SOURCE_CANDIDATE",
+      "consumer_role": "legacy_manual_recovery"
+    },
+    {
+      "id": "ack",
+      "front": "CoAckRewise",
+      "kind": "co_seed",
+      "path": "examples/cosurface_stitched_r0/CoAckRewise-v8.74.md",
+      "git_blob_sha1": "2b02fa39e44e4d4f10595b270a7cfd4bc84e981b",
+      "scope": "PUBLIC",
+      "status": "LANDED_SOURCE_CANDIDATE",
+      "consumer_role": "correction_evolution"
+    },
+    {
+      "id": "feedback",
+      "front": "CoFeedLoop",
+      "kind": "co_seed",
+      "path": "examples/cosurface_stitched_r0/CoFeedLoop-Devs.md",
+      "git_blob_sha1": "cc0c4aa6433db261abe7985b083ea229f95ea74f",
+      "scope": "PUBLIC",
+      "status": "LANDED_SOURCE_CANDIDATE",
+      "consumer_role": "developer_review"
+    },
+    {
+      "id": "mindspace",
+      "front": "CoMindspace",
+      "kind": "co_path",
+      "path": "examples/cosurface_stitched_r0/CoMindspace-Map.md",
+      "git_blob_sha1": "05a1ee49d83f9f15471ac81d23d877f8d79140f2",
+      "scope": "PUBLIC",
+      "status": "LANDED_SOURCE_CANDIDATE",
+      "consumer_role": "instantiation_observation"
+    },
+    {
+      "id": "megascroller",
+      "front": "CoBioVerse",
+      "kind": "co_path",
+      "path": "examples/cosurface_stitched_r0/megascroller_r0.html",
+      "git_blob_sha1": "046befbbaed6cd61fc89b10b7c462fc873d05094",
+      "scope": "PUBLIC",
+      "status": "LANDED_SOURCE_CANDIDATE",
+      "consumer_role": "human_narrative_navigation"
+    },
+    {
+      "id": "retro",
+      "front": "CoFrontCoEcho",
+      "kind": "co_path",
+      "path": "examples/cosurface_stitched_r0/retro_front_echo_r0.py",
+      "git_blob_sha1": "d01de5e119017898bec3e537ff7bb1bd52e132b0",
+      "scope": "PUBLIC",
+      "status": "LANDED_SOURCE_CANDIDATE",
+      "consumer_role": "historical_replay"
+    },
+    {
+      "id": "chronology",
+      "front": "CoTime",
+      "kind": "co_seed_index",
+      "path": "examples/cosurface_stitched_r0/public_front_chronology_sample_r0.json",
+      "git_blob_sha1": "d4b18939676953a83a9e97cd522922b70b6962fc",
+      "scope": "PUBLIC",
+      "status": "LANDED_SOURCE_CANDIDATE",
+      "consumer_role": "source_ordered_navigation"
+    },
+    {
+      "id": "nav",
+      "front": "CoMapCoNav",
+      "kind": "co_path",
+      "path": "examples/cosurface_stitched_r0/nested_nav_r0.py",
+      "git_blob_sha1": "16e9ccdbada7fc39a7067d81d3cf13b35b65c3ee",
+      "scope": "PUBLIC",
+      "status": "LANDED_SOURCE_CANDIDATE",
+      "consumer_role": "nested_projection"
+    },
+    {
+      "id": "outreach",
+      "front": "CoLUE",
+      "kind": "co_path",
+      "path": "examples/cosurface_stitched_r0/test_colue_outreach_lifecycle.py",
+      "git_blob_sha1": "33765896f95a52ac100b212c490ca9f1b56f7423",
+      "scope": "PUBLIC",
+      "status": "LANDED_SOURCE_CANDIDATE",
+      "consumer_role": "outreach_state_contract"
+    },
+    {
+      "id": "wave",
+      "front": "CoWave",
+      "kind": "co_path",
+      "path": "examples/cosurface_stitched_r0/wave_diversity_r0.py",
+      "git_blob_sha1": "2f816dd6f57147c999077d411f2b84351dbb0c3b",
+      "scope": "PUBLIC",
+      "status": "LANDED_SOURCE_CANDIDATE",
+      "consumer_role": "bounded_portfolio_election"
+    }
+  ],
+  "edges": [
+    {
+      "from": "copre",
+      "to": "copre_machine",
+      "predicate": "MACHINE_PROJECTION"
+    },
+    {
+      "from": "copre",
+      "to": "megascroller",
+      "predicate": "HUMAN_PROJECTION"
+    },
+    {
+      "from": "copre",
+      "to": "thumb",
+      "predicate": "LEGACY_DISCOVERY"
+    },
+    {
+      "from": "copre",
+      "to": "ack",
+      "predicate": "CORRECTION_COMPANION"
+    },
+    {
+      "from": "ack",
+      "to": "feedback",
+      "predicate": "DEVELOPER_FEEDBACK"
+    },
+    {
+      "from": "ack",
+      "to": "mindspace",
+      "predicate": "OBSERVATION_CONTRACT"
+    },
+    {
+      "from": "retro",
+      "to": "chronology",
+      "predicate": "SOURCE_CHRONOLOGY"
+    },
+    {
+      "from": "chronology",
+      "to": "nav",
+      "predicate": "NAVIGATION_INPUT"
+    },
+    {
+      "from": "copre",
+      "to": "outreach",
+      "predicate": "AUTHORITY_GUARD"
+    },
+    {
+      "from": "copre",
+      "to": "wave",
+      "predicate": "ELECTION_POLICY"
+    },
+    {
+      "from": "retro",
+      "to": "copre",
+      "predicate": "HISTORICAL_CONTRIBUTION"
+    }
+  ],
+  "fronts_held": [
+    {
+      "front": "CoStead",
+      "reason": "AUTHORIZED_REAL_RECEIVER_NOT_VERIFIED"
+    },
+    {
+      "front": "X2",
+      "reason": "LIVE_INSTALLATION_AND_EXACT_READBACK_NOT_VERIFIED"
+    },
+    {
+      "front": "MetaAI",
+      "reason": "NO_INDEPENDENT_SESSION_FETCH_ACK"
+    },
+    {
+      "front": "canonical_websites",
+      "reason": "LIVE_ENDPOINT_SHA256_AND_PRIVACY_SCOPE_NOT_VERIFIED"
+    },
+    {
+      "front": "private_historical_sessions",
+      "reason": "NO_COMPLETE_AUTHORIZED_INVENTORY"
+    },
+    {
+      "front": "CC_CoTheoryAll_canon",
+      "reason": "CURRENT_GOVERNING_REVISION_NOT_VERIFIED"
+    }
+  ],
+  "co_path_for_receiver": [
+    "resolve exact repository and branch commit",
+    "verify named path and Git object SHA-1 or independent SHA-256",
+    "check scope authority and fresh revision",
+    "read and preserve relevant unique prior with source pointer",
+    "emit candidate delta and receiver-owned exact digest ACK",
+    "keep HOLD unless explicit adoption evidence exists"
+  ],
+  "required_nonclaims": [
+    "LOCAL_IS_NOT_LANDED",
+    "VALIDATION_IS_NOT_ACCEPTANCE",
+    "NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF",
+    "NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE",
+    "HASHING_IS_NOT_SEMANTIC_INGESTION",
+    "DISCOVERED_SET_IS_NOT_COMPLETE_HISTORY"
+  ]
+}

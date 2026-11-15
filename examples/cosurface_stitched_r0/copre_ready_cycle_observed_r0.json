@@ -1,0 +1,61 @@
+{
+  "schema": "CoPreGeneric.ReadinessEvidence.R0",
+  "observed_at_utc": "2026-11-09T23:25:47Z",
+  "candidate_source": {
+    "repo": "CoCivium/CoCivium",
+    "commit_sha": "22bf5739d7ff2e83cbb754d2b3146ff0edd1fcb8",
+    "readback": true,
+    "visibility": "PUBLIC",
+    "draft_pr": 375,
+    "ci_run_id": 42719357948,
+    "ci_conclusion": "success"
+  },
+  "targets": {
+    "github.com/CoCivium/CoPreGeneric": {
+      "owner_authorized": false,
+      "independent_fetch": false,
+      "privacy_review": false,
+      "http_success": false,
+      "sha256": null,
+      "observation": "GitHub get_repo returned 404; not found or inaccessible"
+    },
+    "CoCivium.org/CoPre": {
+      "owner_authorized": false,
+      "independent_fetch": false,
+      "privacy_review": false,
+      "http_success": false,
+      "sha256": null,
+      "observation": "Website fetch cache miss, unable to verify endpoint"
+    },
+    "InSeed.com/Stead": {
+      "owner_authorized": false,
+      "independent_fetch": false,
+      "privacy_review": false,
+      "http_success": false,
+      "sha256": null,
+      "observation": "Website fetch cache miss, unable to verify endpoint"
+    }
+  },
+  "receiver": {
+    "independent_actor": false,
+    "exact_digest_match": false,
+    "durable_ack": false,
+    "recovery_after_restart": false
+  },
+  "seed_survival": {
+    "verified_hours": 0
+  },
+  "system_automation": {
+    "system_owned": false,
+    "human_interventions": null,
+    "observed_run": false
+  },
+  "nonclaims": [
+    "NOT_COEX",
+    "NOT_CANON",
+    "NOT_RUNTIME",
+    "NOT_THREE_WAY_MIRROR",
+    "NOT_PROVIDER_SYNC"
+  ],
+  "source_boundary": "Observed candidate source and CI are verified; all missing checks remain missing, not failed capabilities"
+}

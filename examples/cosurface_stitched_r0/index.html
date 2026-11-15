@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CoSurface R0 | Stitched Desktop Candidate</title>
+<style>
+:root{color-scheme:dark;--bg:#080b13;--surface:#111827;--border:#35425b;--fg:#e8f0ff;--muted:#a6b6d0;--accent:#8bdaf4}
+*{box-sizing:border-box}body{margin:0;background:#003a3a;color:var(--fg);font:15px system-ui,sans-serif;min-height:100vh}body.workspace-open{background:radial-gradient(ellipse at 50% -30%,#284064,var(--bg) 60%)}
+header{padding:16px 24px;display:none;gap:12px;align-items:center;border-bottom:1px solid var(--border);flex-wrap:wrap}.workspace-open header{display:flex}
+header strong{letter-spacing:.04em} .status{font-size:12px;color:var(--muted);margin-left:auto}
+main{max-width:1500px;margin:auto;padding:18px;min-height:calc(100vh - 126px)}main[hidden]{display:none}
+.surface{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:10px;grid-auto-flow:dense}
+.tile{border:1px solid var(--border);border-radius:12px;padding:16px;background:linear-gradient(145deg,#152139,#0d1423);min-height:145px;overflow:auto}
+.tile h2{font-size:15px;margin:0 0 12px}.tile p{color:var(--muted);line-height:1.5;margin:4px 0}
+.tile[data-span="6"]{grid-column:span 6}.tile[data-span="4"]{grid-column:span 4}.tile[data-span="8"]{grid-column:span 8}
+button,select{font:inherit;color:var(--fg);background:#20334e;border:1px solid #516383;border-radius:8px;padding:8px 12px;cursor:pointer}
+button:hover,button:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+button[aria-pressed="true"]{background:#335e72}
+#orb{position:fixed;bottom:45px;right:18px;z-index:20;width:58px;height:58px;border-radius:50%;border:2px solid #b6ecff;background:radial-gradient(circle at 30% 25%,#ddf5ff,#5b84c0 38%,#25266a 76%,#11112f);box-shadow:0 0 24px #5b84c0aa;color:#091327;font-size:13px;font-weight:800}
+#orb-panel{position:fixed;z-index:19;right:18px;bottom:80px;width:min(620px,calc(100vw - 36px));max-height:calc(100vh - 120px);overflow:auto;background:#10192ceF;border:1px solid #729cb6;border-radius:22px;padding:20px;box-shadow:0 14px 60px #0009}
+#orb-panel[hidden],#legacy[hidden]{display:none}
+#legacy{position:fixed;right:18px;bottom:80px;z-index:25;min-width:240px;padding:12px;background:#172238;border:1px solid #8299af;border-radius:10px;box-shadow:0 10px 36px #000b}
+#legacy button{display:block;width:100%;margin:3px 0;text-align:left}
+nav{display:flex;gap:8px;flex-wrap:wrap}footer{padding:12px 24px;border-top:1px solid var(--border);color:var(--muted);font-size:12px;display:none}.workspace-open footer{display:block}#r5-rail{position:fixed;bottom:0;left:0;right:0;z-index:18;display:flex;align-items:center;gap:8px;min-height:44px;background:#092236;color:#dbedff;border-top:1px solid #376078;padding:5px 84px 5px 12px;font-size:14px}#r5-rail button{font-size:14px;padding:7px 11px;min-height:38px}#r5-rail .rail-state{margin-left:auto;white-space:nowrap;color:#c0d0da}#r5-rail .rail-name{color:#8de9d7}#r5-rail .rail-warning{color:#eac57a}#r5-rail button[disabled]{opacity:.6;cursor:not-allowed}.tile[hidden]{display:none}#orb{bottom:var(--orb-clearance,52px)}#orb-panel,#legacy{bottom:calc(var(--orb-clearance,52px) + 64px)}#orb-panel{max-height:calc(100vh - var(--orb-clearance,52px) - 84px)}@media(max-width:600px){#r5-rail{flex-wrap:wrap;padding-right:10px;padding-bottom:9px}#r5-rail .rail-state{margin-left:0;width:100%}}
+small,.muted{color:var(--muted)}#orb-panel h2{margin-top:0}
+.signal-panel{border-left:3px solid #79adc4;padding:2px 12px;background:#0a1524;border-radius:4px}.signal-panel p{margin:5px 0}.signal-panel strong{color:#e8f0ff}#signal-source{font-size:12px}
+@media(max-width:750px){.tile[data-span]{grid-column:span 12}header{padding:12px}main{padding:9px}.tile{min-height:110px}}
+@media(prefers-reduced-motion:no-preference){#orb{transition:transform .15s ease}#orb:hover{transform:scale(1.08)}}
+
+/* CoOrb membrane is an evidence-state projection; unknown is intentionally neutral. */
+#orb[data-membrane-state="unknown"]{border-style:dashed;box-shadow:0 0 0 4px #9fb4c044}
+#orb[data-membrane-state="verified"]{border-style:solid}
+#orb[data-membrane-state="predicted"]{border-style:dotted}
+#membrane-truth{margin:12px 0;padding:10px;border:1px solid var(--border);border-radius:9px;background:#0c1a29;font-size:13px}
+#membrane-truth p{margin:4px 0;line-height:1.5}
+</style>
+</head>
+<body>
+<header><strong>CoSurface+ / Stitched Desktop R0</strong><span class="muted">Local demonstration, no device controls</span><span class="status">EVIDENCE: SYNTHETIC · X2: UNKNOWN</span></header>
+<main id="workspace" hidden>
+<div class="surface" id="surface">
+<section class="tile" data-span="8" id="here"><h2>CoHereNow</h2><p>Public-safe browser preview. This is not X2 installation evidence.</p><p>Only views with actual information are shown. No connected sensors, agents, messages or control endpoints.</p></section>
+<section class="tile" data-span="4" id="evidence">
+<h2>CoTruth+ | Separate host from connection</h2>
+<p>One failed monitoring route is not a failed machine. Signals retain independent origins and uncertainty.</p>
+<div aria-live="polite" aria-atomic="true" id="signal-panel" class="signal-panel">
+<p id="host-signal"><strong>HOST</strong> · UNKNOWN</p>
+<p id="link-signal"><strong>REMOTE CONTROL LINK</strong> · UNKNOWN</p>
+<p id="ux-signal"><strong>VISIBLE UX</strong> · UNKNOWN</p>
+</div>
+<p id="signal-source">No live telemetry connected; all fields UNKNOWN.</p>
+<button id="show-signal-case" type="button">Show disconnected-link example</button>
+<button id="reset-signals" type="button">Reset</button>
+<p><small>DEMO only. A human report and a tool status can coexist without one rewriting the other. Neither supplies independent desktop-render proof.</small></p>
+</section>
+
+
+
+<section class="tile" data-span="6" id="future"><h2>Future directions · CMA candidate</h2><p>What should become more possible without narrowing anyone's freedom?</p><p>Proposed priorities: human flourishing · verified truth · ecological resilience · future optionality.</p><p><strong>Research hypothesis, not a divine instruction, user mandate or measured outcome.</strong></p><p>Rights, consent, recovery and Stop remain hard boundaries. Alternative futures and dissent stay visible.</p><p class="muted">See Evidence for the distinction between proposal, test and verified effect.</p></section>
+
+
+</div>
+</main>
+<div id="r5-rail" role="toolbar" aria-label="rickBar: CoAll desktop navigation, synthetic demonstration"><strong class="rail-name">CoAll / Here</strong><button id="rail-workspace" type="button" aria-controls="workspace" aria-expanded="false">Open workspace</button><button id="rail-map" type="button" disabled title="CoMap has no authenticated data source in this preview">CoMap unavailable</button><button id="rail-evidence" type="button">Evidence</button><button id="rail-stop" type="button">Hide workspace</button><span class="rail-state">LOCAL DEMO · <span class="rail-warning">NO LIVE EFFECT</span></span></div>
+<aside id="orb-panel" role="dialog" aria-label="CoOrb expanded navigation" hidden>
+<h2>CoOrb+ <small>expandable presence</small></h2>
+<p>Accessible zoom from quiet glance to full screen. Hover is preview-only; click toggles, Escape closes. Right click opens the familiar menu.</p>
+<nav id="orbnav"></nav><div id="membrane-truth" role="status" aria-live="polite">
+<p><strong>Membrane contract:</strong> <span id="orb-contract-version">CoOrb.Membrane.R0</span></p>
+<p><strong>Source:</strong> <span id="orb-evidence-source">UNBOUND</span> · <strong>Receiver:</strong> <span id="orb-receiver-version">UNBOUND</span></p>
+<p><strong>Present:</strong> <span id="orb-present-state">UNKNOWN</span> · <strong>Future:</strong> <span id="orb-future-state">UNQUALIFIED</span> · <strong>Past:</strong> <span id="orb-past-state">NO READBACK</span></p>
+<p class="muted">Dashed membrane = unknown. Prediction requires source, horizon and uncertainty; it never means verified effect. No live feed is attached.</p>
+</div><p class="muted">Synthetic navigation only. No privileges, OS replacement or autonomous service.</p>
+<label for="size">Orb projection: </label><select id="size"><option value="glance">Glance</option><option value="large">Large</option><option value="fullscreen">Full viewport</option></select>
+<button id="close">Close</button>
+</aside>
+<div id="legacy" role="menu" aria-label="Legacy navigation" hidden></div>
+<button id="orb" aria-label="Open CoOrb; right click for legacy menu" aria-expanded="false" aria-controls="orb-panel" aria-haspopup="dialog" data-membrane-state="unknown">CoOrb</button>
+<footer>Prototype only · Not installed on X2 · Native desktop compatibility is a release gate · Keyboard: Tab / Enter / Escape</footer>
+<script>
+"use strict";
+// Layout only: keep the one Orb above whatever height the native-like rail
+// takes at this viewport and text zoom. No agent polling, device observation,
+// or installation claim is implied by this ResizeObserver.
+const coallRail=document.getElementById("r5-rail");
+function syncOrbRailClearance(){
+  document.documentElement.style.setProperty(
+    "--orb-clearance", String(Math.ceil(coallRail.getBoundingClientRect().height)+8)+"px");
+}
+syncOrbRailClearance();
+if (typeof ResizeObserver!=="undefined") {
+  const railGeometryObserver=new ResizeObserver(syncOrbRailClearance);
+  railGeometryObserver.observe(coallRail);
+}
+// No source is allowed to infer host state from remote transport state.
+const signalCases=Object.freeze({
+  unknown:{host:"UNKNOWN",link:"UNKNOWN",ux:"UNKNOWN",source:"No live telemetry connected; all fields UNKNOWN."},
+  demonstration:{host:"REPORTED RUNNING",link:"UNREACHABLE",ux:"UNKNOWN",source:"SYNTHETIC EXAMPLE: participant report + remote connector failure. No host power inference; no live connection."}
+});
+function renderSignalCase(kind){
+  const evidence=signalCases[kind]||signalCases.unknown;
+  document.getElementById("host-signal").textContent="HOST · "+evidence.host;
+  document.getElementById("link-signal").textContent="REMOTE CONTROL LINK · "+evidence.link;
+  document.getElementById("ux-signal").textContent="VISIBLE UX · "+evidence.ux;
+  document.getElementById("signal-source").textContent=evidence.source;
+}
+document.getElementById("show-signal-case").addEventListener("click",()=>renderSignalCase("demonstration"));
+document.getElementById("reset-signals").addEventListener("click",()=>renderSignalCase("unknown"));
+renderSignalCase("unknown");
+// Public preview never manufactures a live signal or infers source identity from a version string.
+const orbMembrane=Object.freeze({contractVersion:"CoOrb.Membrane.R0",source:"UNBOUND",receiver:"UNBOUND",present:"UNKNOWN",future:"UNQUALIFIED",past:"NO READBACK",evidenceState:"unknown"});
+document.getElementById("orb-contract-version").textContent=orbMembrane.contractVersion;
+document.getElementById("orb-evidence-source").textContent=orbMembrane.source;
+document.getElementById("orb-receiver-version").textContent=orbMembrane.receiver;
+document.getElementById("orb-present-state").textContent=orbMembrane.present;
+document.getElementById("orb-future-state").textContent=orbMembrane.future;
+document.getElementById("orb-past-state").textContent=orbMembrane.past;
+document.getElementById("orb").dataset.membraneState=orbMembrane.evidenceState;
+const routes=[["Here","here"],["Evidence","evidence"],["Future","future"]];
+const orb=document.getElementById("orb"),panel=document.getElementById("orb-panel"),legacy=document.getElementById("legacy");
+let hoverTimer=null,openedByHover=false;
+function openWorkspace(show){document.body.classList.toggle("workspace-open",show);document.getElementById("workspace").hidden=!show;document.getElementById("rail-workspace").setAttribute("aria-expanded",String(show));}function navigate(id){openWorkspace(true);document.getElementById(id).scrollIntoView({behavior:"instant",block:"center"});document.getElementById(id).focus?.();hideMenu();hidePanel();}
+function hideMenu(){legacy.hidden=true;}
+function hidePanel(){panel.hidden=true;orb.setAttribute("aria-expanded","false");openedByHover=false;}
+function showPanel(hover){hideMenu();panel.hidden=false;openedByHover=hover;orb.setAttribute("aria-expanded","true");}
+function navButton(label,id){const b=document.createElement("button");b.textContent=label;b.addEventListener("click",()=>navigate(id));return b;}
+for(const [label,id] of routes){document.getElementById("orbnav").append(navButton(label,id));legacy.append(navButton(label,id));}
+document.getElementById("rail-workspace").addEventListener("click",()=>openWorkspace(document.getElementById("workspace").hidden));document.getElementById("rail-evidence").addEventListener("click",()=>navigate("evidence"));document.getElementById("rail-stop").addEventListener("click",()=>{openWorkspace(false);hidePanel();hideMenu();document.getElementById("rail-workspace").focus();});orb.addEventListener("click",()=>panel.hidden?showPanel(false):hidePanel());
+orb.addEventListener("contextmenu",event=>{event.preventDefault();hidePanel();legacy.hidden=false;legacy.querySelector("button")?.focus();});
+orb.addEventListener("pointerenter",event=>{if(event.pointerType==="mouse"){hoverTimer=setTimeout(()=>{if(panel.hidden)showPanel(true);},650);}});
+orb.addEventListener("pointerleave",()=>{clearTimeout(hoverTimer);});
+panel.addEventListener("pointerleave",()=>{if(openedByHover)hidePanel();});
+document.addEventListener("keydown",e=>{if(e.key==="Escape"){hidePanel();hideMenu();orb.focus();}});
+document.addEventListener("pointerdown",e=>{if(!legacy.contains(e.target)&&e.target!==orb)hideMenu();});
+document.getElementById("close").addEventListener("click",()=>{hidePanel();orb.focus();});
+document.getElementById("size").addEventListener("change",e=>{const s=e.target.value;panel.style.width=s==="fullscreen"?"calc(100vw - 36px)":s==="large"?"min(950px,calc(100vw - 36px))":"";panel.style.height=s==="fullscreen"?"calc(100vh - 110px)":"";});
+
+</script>
+</body></html>

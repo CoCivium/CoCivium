@@ -1,0 +1,193 @@
+{
+  "schema": "CoAll.CoMediaGraph.R0",
+  "status": "PUBLIC_SAFE_SYNTHETIC_EXAMPLE",
+  "source_anchor": {
+    "seed_id": "copre",
+    "registry": "co_seed_path_registry_r0.json",
+    "source_path": "CoPreGeneric-v1.0-DRAFT.md",
+    "scope": "PUBLIC",
+    "verified_source_sha1": "670d24137b0c7926d09fb5b7582396f7a2335d2b"
+  },
+  "description": "Evidence-linked projections and interpretive relations; medium-specific content is NOT automatically semantically equivalent",
+  "units": [
+    {
+      "id": "source",
+      "kind": "source",
+      "media_type": "text/markdown",
+      "source_ref": "copre",
+      "locator": {
+        "type": "document",
+        "path": "CoPreGeneric-v1.0-DRAFT.md"
+      },
+      "status": "SOURCE_POINTER"
+    },
+    {
+      "id": "diagram",
+      "kind": "projection",
+      "media_type": "application/vnd.cocivium.boxline+json",
+      "source_ref": "copre",
+      "locator": {
+        "type": "node",
+        "node_id": "copre"
+      },
+      "status": "DESIGN_ONLY"
+    },
+    {
+      "id": "hero",
+      "kind": "projection",
+      "media_type": "text/html+svg",
+      "source_ref": "copre",
+      "locator": {
+        "type": "file",
+        "path": "cowet_hero_audio_r0.html",
+        "fragment": "hero-head"
+      },
+      "status": "SOURCE_LANDED_CANDIDATE"
+    },
+    {
+      "id": "audio",
+      "kind": "interpretation",
+      "media_type": "audio/synthesized",
+      "source_ref": "copre",
+      "locator": {
+        "type": "time",
+        "start_ms": 0,
+        "end_ms": 15000
+      },
+      "status": "ILLUSTRATIVE_ANCHOR_ONLY",
+      "consent": "EXPLICIT_OPT_IN",
+      "asset_digest_sha256": null
+    },
+    {
+      "id": "film",
+      "kind": "projection",
+      "media_type": "video/mp4",
+      "source_ref": "copre",
+      "locator": {
+        "type": "time",
+        "start_ms": 2000,
+        "end_ms": 5000
+      },
+      "status": "NOT_CREATED",
+      "asset_digest_sha256": null
+    },
+    {
+      "id": "history",
+      "kind": "historical_pointer",
+      "media_type": "application/json",
+      "source_ref": "copre",
+      "locator": {
+        "type": "file",
+        "path": "public_front_chronology_sample_r0.json"
+      },
+      "status": "SOURCE_LANDED_CANDIDATE"
+    },
+    {
+      "id": "culture",
+      "kind": "culturally_situated_interpretation",
+      "media_type": "text/plain",
+      "source_ref": "copre",
+      "locator": {
+        "type": "quote",
+        "start": 0,
+        "end": 47
+      },
+      "status": "HYPOTHESIS",
+      "community_ref": null,
+      "consent_or_license": "NOT_ESTABLISHED",
+      "reviewers": []
+    }
+  ],
+  "relations": [
+    {
+      "from": "source",
+      "to": "diagram",
+      "predicate": "PROPOSES_VIEW",
+      "direction": "DIRECTED",
+      "confidence": "CONCEPTUAL",
+      "evidence": "DESIGN_CONTRACT"
+    },
+    {
+      "from": "source",
+      "to": "hero",
+      "predicate": "HAS_HUMAN_FACING_DEMO",
+      "direction": "DIRECTED",
+      "confidence": "SOURCE_LINK",
+      "evidence": "GITHUB_READBACK"
+    },
+    {
+      "from": "hero",
+      "to": "audio",
+      "predicate": "CONTAINS_OPTIONAL_SYNTHESIS_DESIGN",
+      "direction": "DIRECTED",
+      "confidence": "DESIGN_ONLY",
+      "evidence": "SOURCE_REFERENCE"
+    },
+    {
+      "from": "source",
+      "to": "history",
+      "predicate": "HAS_RELATED_HISTORICAL_SAMPLE",
+      "direction": "DIRECTED",
+      "confidence": "SOURCE_LINK",
+      "evidence": "GITHUB_READBACK"
+    },
+    {
+      "from": "source",
+      "to": "film",
+      "predicate": "COULD_BE_RENDERED_AS",
+      "direction": "DIRECTED",
+      "confidence": "SPECULATIVE",
+      "evidence": null
+    },
+    {
+      "from": "source",
+      "to": "culture",
+      "predicate": "COULD_BE_INTERPRETED_AS",
+      "direction": "DIRECTED",
+      "confidence": "SPECULATIVE",
+      "evidence": null
+    }
+  ],
+  "constraints": {
+    "incoming_reference_not_reverse_fact": true,
+    "public_media_only_when_rights_proven": true,
+    "cultural_claims_need_community_context": true,
+    "projection_not_source_of_truth": true,
+    "rich_media_survival_and_accessibility_required": true,
+    "alt_text_and_transcript_when_applicable": true,
+    "no_autoplay_audio": true,
+    "no_hidden_tracker": true,
+    "no_private_chats": true,
+    "g_dside_symbolic_hypothesis_only": true,
+    "no_fake_receiver_ack": true
+  },
+  "evolution": {
+    "propose_fields": [
+      "source_ref",
+      "work_id",
+      "medium",
+      "anchor",
+      "claim",
+      "evidence",
+      "independent_challenge",
+      "review_state",
+      "stakeholder_effect",
+      "rollback"
+    ],
+    "auto_promote": false
+  },
+  "known_gaps": [
+    "NO_MEDIA_ASSET_DIGEST_FOR_AUDIO_OR_FILM",
+    "NO_CULTURAL_COMMUNITY_REVIEW",
+    "NO_AUTONOMOUS_CROSS_SURF_RECEIVER",
+    "NO_SITE_DEPLOYMENT",
+    "NO_COMPLETE_HISTORICAL_COVERAGE"
+  ],
+  "nonclaims": [
+    "SCHEMA_IS_NOT_DEPLOYMENT",
+    "POINTER_IS_NOT_RENDERED_MEDIA",
+    "RELATION_IS_NOT_SEMANTIC_EQUIVALENCE",
+    "HYPOTHESIS_IS_NOT_EVIDENCE",
+    "NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE"
+  ]
+}

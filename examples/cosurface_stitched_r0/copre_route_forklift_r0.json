@@ -1,0 +1,62 @@
+{
+  "schema": "CoPreGeneric.RouteAndForklift.R0",
+  "state": "PUBLIC_CANDIDATE_NOT_DEPLOYED",
+  "decision_source": "2026-11-09 user-provided Meta AI chat: three intended owned URLs and mouse points to a stable route",
+  "pointer_policy": {
+    "mouse_paste_target": "https://CoCivium.org/CoPre",
+    "pointer_is_not_authorization": true,
+    "mouse_hardware_configuration_verified": false,
+    "web_readback_verified": false,
+    "remote_receiver_verified": false
+  },
+  "intended_routes": [
+    {
+      "role": "github_dedicated_source",
+      "url": "https://github.com/CoCivium/CoPreGeneric",
+      "verification": "NOT_FOUND_IN_CONNECTED_ORG_SEARCH",
+      "identical_content_proven": false
+    },
+    {
+      "role": "primary_easy_gateway",
+      "url": "https://CoCivium.org/CoPre",
+      "verification": "FETCH_UNAVAILABLE_NOT_VALIDATED",
+      "identical_content_proven": false
+    },
+    {
+      "role": "stead_gateway",
+      "url": "https://InSeed.com/Stead",
+      "verification": "FETCH_UNAVAILABLE_NOT_VALIDATED",
+      "identical_content_proven": false
+    }
+  ],
+  "verified_candidate": {
+    "repo": "CoCivium/CoCivium",
+    "branch": "candidate/cosurface-stitched-orb-nav-r0-20261108",
+    "path": "examples/cosurface_stitched_r0/COPRE_GENERIC_CONTRIBUTION_R0.md",
+    "source_blob_sha": "e8efddcff455273cc8bd579f30e1a35f6bdf36bc",
+    "path_machine": "examples/cosurface_stitched_r0/copre_generic_contribution_r0.json",
+    "source_blob_machine_sha": "1187a49336b9e818e462a8f75527781ce975bc57",
+    "source_claim": "GITHUB_BRANCH_SOURCE_LANDED_NOT_CANON"
+  },
+  "recoverability": {
+    "eligible_public_projection": true,
+    "retro_front_sample": "examples/cosurface_stitched_r0/public_front_chronology_sample_r0.json",
+    "retro_front_coverage": "SIX_PUBLIC_ISSUES_ONLY",
+    "source_of_historical_claims": "BOUNDED_POINTERS_NOT_COMPLETE_HISTORY",
+    "private_transcript_publication_authorized": false,
+    "left_behind": [
+      "unscanned earlier session history",
+      "CoFarm/NAS/X2 unseen data",
+      "unverified GitHub dedicated repo",
+      "unverified CoCivium /CoPre route",
+      "unverified InSeed /Stead route"
+    ],
+    "nonclaims": [
+      "URL_PROPOSAL_NOT_WEB_DEPLOYMENT",
+      "GITHUB_SOURCE_NOT_RECEIVER_PICKUP",
+      "NO_MIRROR_HASH_EQUALITY_PROVEN",
+      "DISCOVERED_SET_IS_NOT_COMPLETE_HISTORY"
+    ]
+  },
+  "next_proof": "Implement one owned route to exact hashed release artifact, fetch independently, confirm status and checksum, only then reconfigure mouse pointer."
+}
