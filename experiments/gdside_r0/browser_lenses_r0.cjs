@@ -16,7 +16,7 @@ const html=fs.readFileSync(htmlPath);
 const model=fs.readFileSync(modelPath);
 const sha256=b=>crypto.createHash('sha256').update(b).digest('hex');
 const gitBlob=b=>crypto.createHash('sha1').update(Buffer.from('blob '+b.length+'\0')).update(b).digest('hex');
-const expectedBlob='eb6b2e0e472d94f612999d44c92c5a055e9eabf7';
+const expectedBlob='d57799f1c22209c12ca98101384ebf480f48920c';
 assert.equal(gitBlob(model),expectedBlob,'HOLD_PINNED_MODEL_CHANGED');
 const python=JSON.parse(execFileSync('python3',['-B','model.py'],{cwd:root,encoding:'utf8',timeout:12000}));
 assert.equal(python.epistemic_class,'SYNTHETIC');
