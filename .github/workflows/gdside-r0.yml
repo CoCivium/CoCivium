@@ -27,3 +27,23 @@ jobs:
       - name: Emit synthetic results; not economic validation
         working-directory: experiments/gdside_r0
         run: python -B model.py
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: One-WorkID G_dSide lens, real Chromium UI and cold browser reentry
+        working-directory: experiments/gdside_r0
+        run: |
+          set -e
+          if ! command -v google-chrome >/dev/null && ! command -v google-chrome-stable >/dev/null; then
+            echo 'HELD_CHROMIUM_NOT_AVAILABLE'
+            exit 1
+          fi
+          npm install --no-save --package-lock=false --ignore-scripts --no-audit --no-fund playwright-core@1.56.0
+          node browser_lenses_r0.cjs
+      - name: Retain source-bound synthetic CoOrb perspective readproof
+        uses: actions/upload-artifact@v4
+        with:
+          name: gdside-one-workid-lens-r0
+          path: experiments/gdside_r0/out/gdside-lens-r0/browser-readproof.json
+          if-no-files-found: error
+          retention-days: 30
