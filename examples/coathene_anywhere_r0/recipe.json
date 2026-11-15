@@ -1,0 +1,255 @@
+{
+  "schema": "CoAthene.AnywhereSessionRecipe.R0-candidate",
+  "date": "2026-11-07",
+  "state": "PUBLIC_BRANCH_CANDIDATE_NOT_SCHOOL_NOT_LIVE_CLASSROOM_NOT_DEPLOYED",
+  "position": "The learning question is central. A physical place, institutional affiliation, participant group, live facilitator and credential are separately optional or gated capabilities, never mandatory merely to browse a free public lesson.",
+  "reuse": [
+    {
+      "source": "CoCivium/CoCivium/docs/Architecture/GROUPBUILD_COTEAMING_COPAYBACK_R0_20261101.md",
+      "role": "Existing GroupBuild commons/managed doorway, consented multi-contributor work kernel; do not mint separate social accounts."
+    },
+    {
+      "source": "CoCivium/CoCivium/docs/Business/CoAthene_RoamLab_R0/README.md",
+      "role": "Standalone-first, sidecar, CoAll-optional learning and mobile place; transport is separate."
+    },
+    {
+      "source": "CoCivium/CoCivium/docs/Business/CoAthene_RoamLab_R0/modules/WatershedExplorer_R0/MODULE.json",
+      "role": "Existing real subject lesson candidate, no-headset path and safeguarding priority."
+    },
+    {
+      "source": "CoCivium/CoCivium/docs/Architecture/COVIRTUAL_SESSION_MORPHOLOGY_R0.md",
+      "role": "Virtual session identity is not one live tab or constant provider process."
+    },
+    {
+      "source": "CoCivium/CoCivium/docs/Public/COATHENE_WHY_HAVE_SCHOOLS_R0_20261107.md",
+      "role": "Human-purpose first, content and thinking interdependent; no school status."
+    }
+  ],
+  "modes": [
+    {
+      "id": "solo",
+      "title": "Solo Instabuild",
+      "description": "Individual local activity, no membership or timetable",
+      "requiresHumanInstitution": false,
+      "requiresOnline": false
+    },
+    {
+      "id": "group",
+      "title": "Groupbuild kit",
+      "description": "Optional cooperative plan and rotating roles, not a room or invitation",
+      "requiresHumanInstitution": false,
+      "requiresOnline": false
+    },
+    {
+      "id": "mentor",
+      "title": "Mentored learning plan",
+      "description": "Requires a separately arranged real consenting and appropriately qualified mentor",
+      "requiresHumanInstitution": false,
+      "requiresOnline": false
+    },
+    {
+      "id": "institution",
+      "title": "Institution-supported plan",
+      "description": "Requires separately authorized institution, staff and applicable curriculum/attendance rules",
+      "requiresHumanInstitution": true,
+      "requiresOnline": false
+    }
+  ],
+  "placeOptions": [
+    {
+      "id": "anywhere",
+      "label": "Wherever I am",
+      "physicalRequired": false,
+      "networkRequired": false
+    },
+    {
+      "id": "offline",
+      "label": "Fully offline / print",
+      "physicalRequired": false,
+      "networkRequired": false
+    },
+    {
+      "id": "remote",
+      "label": "Online when available",
+      "physicalRequired": false,
+      "networkRequired": false
+    },
+    {
+      "id": "local",
+      "label": "Library / classroom / community",
+      "physicalRequired": true,
+      "networkRequired": false
+    },
+    {
+      "id": "mixed",
+      "label": "Mix physical and digital",
+      "physicalRequired": false,
+      "networkRequired": false
+    }
+  ],
+  "audiences": [
+    {
+      "id": "adult",
+      "label": "Adult / self-directed",
+      "child": false,
+      "adultFacilitatorRequired": false
+    },
+    {
+      "id": "youth",
+      "label": "Youth with responsible adult",
+      "child": true,
+      "adultFacilitatorRequired": true
+    }
+  ],
+  "groupRoles": [
+    "Questioner",
+    "Evidence checker",
+    "Counterexample finder",
+    "Builder / explainer"
+  ],
+  "learningLoop": [
+    "ASK",
+    "DOMAIN_FACT",
+    "PREDICT",
+    "TRY_SAFELY",
+    "CHALLENGE",
+    "REVISE",
+    "TRANSFER",
+    "STOP_OR_CONTINUE"
+  ],
+  "scenarios": [
+    {
+      "id": "runoff",
+      "title": "Where does the rain go?",
+      "subject": "Watershed science and local infrastructure",
+      "question": "How might paving change where rainwater goes?",
+      "coWay": "DISCERN",
+      "age": "ALL_WITH_QUALIFIED_FACILITATION_FOR_MINORS",
+      "knowledge": "Some rain infiltrates soil, some evaporates, and some runs over the surface. Surface cover, slope, soil, rainfall intensity and drainage alter the outcome.",
+      "prediction": [
+        "More paved surface often means more runoff",
+        "Less paved surface always means more runoff",
+        "A model proves the local flood outcome"
+      ],
+      "correct": 0,
+      "challenge": "A grassy surface can also shed runoff if soil is saturated or rainfall is intense. Never assume one variable alone determines a real flood.",
+      "activity": "Use two equal, safely measured small water samples over contrasting surfaces or compare simple paper diagrams. Record observations as model-only and name a measurement you still need.",
+      "transfer": "Apply the same observation-versus-model distinction to a street drain, rain garden or different land surface.",
+      "source": "https://github.com/CoCivium/CoCivium/blob/main/docs/Business/CoAthene_RoamLab_R0/modules/WatershedExplorer_R0/README.md",
+      "sourceLabel": "Existing CoAthene Watershed Explorer lesson donor",
+      "safety": "Do not pour water near electronics. Indoor dry/paper alternative is valid. An adult supervises practical activities with minors."
+    },
+    {
+      "id": "mirror",
+      "title": "When is a mirror not equivalent?",
+      "subject": "Digital literacy and careful analogy",
+      "question": "Does mirroring an interface also reverse who is allowed to use it?",
+      "coWay": "CHALLENGE",
+      "age": "ALL_WITH_QUALIFIED_FACILITATION_FOR_MINORS",
+      "knowledge": "A reflected icon or screen layout changes its visual appearance. Authentication and permissions are separately governed by software rules and authorizations.",
+      "prediction": [
+        "Mirrored icons grant mirrored access permissions",
+        "Mirrored icons do not by themselves grant new permissions",
+        "A useful visual analogy must always imply identical physical mechanisms"
+      ],
+      "correct": 1,
+      "challenge": "The *question* of symmetry can be reused across subjects, but a software access rule is not a physical parity operator in particle physics.",
+      "activity": "Draw two mirror-image door symbols. List what changed visibly and what did not change about who has permission to enter. Avoid real accounts and credentials.",
+      "transfer": "Use the same distinction between appearance and authorization when critiquing a copycat website or a changed app layout.",
+      "source": "https://github.com/CoCivium/CoCivium/blob/main/docs/Architecture/COVIRTUAL_SESSION_MORPHOLOGY_R0.md",
+      "sourceLabel": "Public source on virtual projections versus identity",
+      "safety": "Use only fictional screen mock-ups. Do not test other people's accounts, devices or security controls."
+    },
+    {
+      "id": "commons",
+      "title": "What makes a shared space work?",
+      "subject": "Civic design, collaboration and responsible decisions",
+      "question": "How could a community improve a shared public place for more people?",
+      "coWay": "JUDGE",
+      "age": "ALL_WITH_QUALIFIED_FACILITATION_FOR_MINORS",
+      "knowledge": "Different participants may value accessibility, shade, safety, cost, quiet, nature and maintenance differently. A plan needs factual site knowledge, legitimate authority and fair opportunity to disagree.",
+      "prediction": [
+        "The first popular proposal is always fair",
+        "A single AI ranking can authorize a public change",
+        "A good proposal should name who is affected and allow challenge"
+      ],
+      "correct": 2,
+      "challenge": "A design that seems best for one group may obstruct another. A fictional planning exercise does not confer permission to modify public property.",
+      "activity": "Sketch three original proposals for a fictional park, note benefits and trade-offs, then describe a fair feedback route, including non-digital participation.",
+      "transfer": "Carry the same trade-off and consent checks into a classroom, club or shared digital community.",
+      "source": "https://github.com/CoCivium/CoCivium/blob/main/docs/Architecture/GROUPBUILD_COTEAMING_COPAYBACK_R0_20261101.md",
+      "sourceLabel": "Existing voluntary GroupBuild+ donor",
+      "safety": "Use fictional places and roles. Do not collect real neighbours' personal data or represent the exercise as a council decision."
+    }
+  ],
+  "limits": {
+    "clientRuntime": "SELF_CONTAINED_STATIC_HTML_NO_SERVER_OR_DATA_STORAGE",
+    "realTimeSync": "NOT_PRESENT",
+    "sessionPersistence": "NONE",
+    "userProfiling": "NONE",
+    "autoMessaging": "NONE",
+    "learnerAccounts": "NONE",
+    "recording": "NONE",
+    "accreditation": "NOT_CLAIMED",
+    "onlineSchool": "NOT_OPERATED",
+    "publicSite": "NOT_DEPLOYED",
+    "originStatus": "SOURCE_VISIBLE_ON_PUBLIC_DRAFT_BRANCH_ONLY",
+    "groupConsent": "A generated plan is not permission for any participant or school; real invitations/mentor engagements happen separately under actual authorization.",
+    "minorSafety": "Youth paths always require real responsible adult oversight; no public child profiles, scoring, accounts or peer chat.",
+    "noDeviceRequirement": "No headset, AI, cloud, app install, fixed building, Clan or institutional identity is necessary to read the original public activity.",
+    "sourceLimit": "References are original source pointers; mutable and not independent learner-efficacy evidence."
+  },
+  "lifecycle": [
+    "CHOOSE_QUESTION",
+    "CHOOSE_MODE_AND_PLACE",
+    "INSTANTIATE_LOCAL_PLAN",
+    "CHECK_LIMITS_AND_SUPERVISION",
+    "RUN_BOUNDED_ACTIVITY",
+    "REVIEW_PREDICTION_AND_COUNTEREXAMPLE",
+    "EXPLAIN_IN_PLAIN_LANGUAGE",
+    "PRINT_IF_CHOSEN",
+    "DISCARD_ON_CLOSE"
+  ],
+  "externalEvidence": [
+    {
+      "url": "https://www.uil.unesco.org/en/unesco-institute/mandate/lifelong-learning",
+      "role": "UNESCO lifelong learning across all spaces and modalities"
+    },
+    {
+      "url": "https://www.ontario.ca/document/ontario-schools-kindergarten-grade-12-policy-and-program-requirements/online-and-remote-learning",
+      "role": "Ontario online K-12 courses can be location-separated yet teacher-led"
+    },
+    {
+      "url": "https://www.ontario.ca/page/private-schools-notice-intention-operate-private-school",
+      "role": "Ontario online and private-school obligations require independent qualification"
+    }
+  ],
+  "successMetrics": [
+    "configuration_to_usable_plan_seconds",
+    "plan_comprehension_by_independent_adult",
+    "domain_question_accuracy",
+    "counterexample_identification",
+    "accessible_no_network_completion",
+    "participant_consent_comprehension",
+    "adult_facilitator_readiness",
+    "no_forced_account_or_place"
+  ],
+  "antiMetrics": [
+    "time_on_screen",
+    "forced_membership",
+    "unverified_school_enrolments",
+    "fake_group_presence",
+    "click_count_as_learning"
+  ],
+  "nonclaims": [
+    "LESSON_NE_LICENSED_SCHOOL",
+    "VIRTUAL_ROOM_NE_ONLINE_SCHOOL",
+    "NO_FIXED_BUILDING_NE_NO_CHILD_SAFETY",
+    "GROUP_PLAN_NE_PARTICIPANT_CONSENT",
+    "INSTA_PLAN_NE_EDUCATIONAL_EFFICACY",
+    "NO_ACCOUNT_NE_AUTOMATIC_SOCIAL_SYNC",
+    "SOURCE_PR_NE_DEPLOYED_SITE",
+    "ANYWHERE_NE_OPTIONAL_ATTENDANCE_LAW",
+    "GROUPBUILD_REUSE_NE_NEW_GROUPBUILD_ENTITY"
+  ]
+}
