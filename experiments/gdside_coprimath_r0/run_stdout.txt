@@ -1,0 +1,53 @@
+{
+  "status": "SYNTHETIC_COMPLETE",
+  "seeds": 80,
+  "steps": 36,
+  "summary_sha256": "167223e85b5c817cc412a9ea3e43cb060b0954d4e763885f8d60168d9caa4bad",
+  "summary": {
+    "demand": {
+      "min_group_satisfaction": 0.47758,
+      "mean_satisfaction": 0.76255,
+      "mean_step_min": 0.47758,
+      "mean_output": 149.79651,
+      "final_ecological_stock": 812.50987,
+      "rights_violations": 23.4875,
+      "depletion_steps": 0
+    },
+    "supply": {
+      "min_group_satisfaction": 0.49922,
+      "mean_satisfaction": 0.73907,
+      "mean_step_min": 0.43823,
+      "mean_output": 154.60392,
+      "final_ecological_stock": 812.50987,
+      "rights_violations": 31.7125,
+      "depletion_steps": 0
+    },
+    "hybrid": {
+      "min_group_satisfaction": 0.75427,
+      "mean_satisfaction": 0.82138,
+      "mean_step_min": 0.72126,
+      "mean_output": 141.26516,
+      "final_ecological_stock": 894.89877,
+      "rights_violations": 0.15,
+      "depletion_steps": 0
+    },
+    "gdside": {
+      "min_group_satisfaction": 0.79163,
+      "mean_satisfaction": 0.79163,
+      "mean_step_min": 0.79163,
+      "mean_output": 133.67071,
+      "final_ecological_stock": 986.30995,
+      "rights_violations": 0,
+      "depletion_steps": 0
+    },
+    "random": {
+      "min_group_satisfaction": 0.66718,
+      "mean_satisfaction": 0.7159,
+      "mean_step_min": 0.31977,
+      "mean_output": 141.73398,
+      "final_ecological_stock": 812.50987,
+      "rights_violations": 37.9375,
+      "depletion_steps": 0
+    }
+  }
+}

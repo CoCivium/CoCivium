@@ -1,0 +1,20 @@
+test_guardrails (test_mnemonics.TestMnemonicRegistry.test_guardrails) ... ok
+test_registry_unique (test_mnemonics.TestMnemonicRegistry.test_registry_unique) ... ok
+test_spelling (test_mnemonics.TestMnemonicRegistry.test_spelling) ... ok
+test_all_policies_present (test_simulate.Tests.test_all_policies_present) ... ok
+test_allocation_budget_bound (test_simulate.Tests.test_allocation_budget_bound) ... ok
+test_common_exogenous_shocks (test_simulate.Tests.test_common_exogenous_shocks) ... ok
+test_deterministic_summary (test_simulate.Tests.test_deterministic_summary) ... ok
+test_different_shocks (test_simulate.Tests.test_different_shocks) ... ok
+test_gdside_not_marked_winner (test_simulate.Tests.test_gdside_not_marked_winner) ... ok
+test_identical_seeds_reproducible (test_simulate.Tests.test_identical_seeds_reproducible) ... ok
+test_metrics_satisfaction_bounded (test_simulate.Tests.test_metrics_satisfaction_bounded) ... ok
+test_min_ratio_equalizer (test_simulate.Tests.test_min_ratio_equalizer) ... ok
+test_no_negative_extraction (test_simulate.Tests.test_no_negative_extraction) ... ok
+test_rights_violation_integer (test_simulate.Tests.test_rights_violation_integer) ... ok
+test_stock_nonnegative (test_simulate.Tests.test_stock_nonnegative) ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.062s
+
+OK
