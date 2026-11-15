@@ -177,6 +177,12 @@ A candidate must show **incremental information or human value** against a `NULL
 
 **Elected next proof remains unchanged:** acquire a native receiver-origin exact-object readback for #317, without creating a second scheduler, touching private provider data or changing CoBar startup ownership.
 
+## 2026-11-15 CoGlyph readiness projection (synthetic-only)
+
+The source-only [CoTalkItOut walk-away projector](../../examples/cotalkitout/walkaway_projection_r0.py), [negative tests](../../examples/cotalkitout/test_walkaway_projection_r0.py), and [CI workflow](../../.github/workflows/cotalkitout-walkaway-projection-r0.yml) provide a **read-only view**, not another controller, scheduler, observer, provider connection, independent receiver or CoBar installation. Invoke `python -B examples/cotalkitout/walkaway_projection_r0.py` for a historical synthetic/local-evidence description. Optional `--input <public-safe-evidence.json>` must conform to `CoAll.CoTalkItOut.WalkAwayEvidence.R0`; malformed, missing or cross-promoted evidence is HOLD. The default output is JSON with a compact `cobar` projection and one next safe action, currently #317 receiver-origin exact-object readback.
+
+**Boundaries:** a supplied source reference is an *observation description*, not proof that the projector authenticated it. Even self-reported claims covering all six gates remain HELD pending external verification. The projector never produces `READY`, receiver ACK, canon, deployment or autonomy certification, and does not create or modify files. CI on this module verifies policy/output behavior only. Any future actual qualification requires a separate, trusted verifier able to inspect original exact sources, independently received artifacts, user acceptance and authority.
+
 ## Next proof and nonclaims
 
 **Next:** One overdue, harmless WorkID, resumed by an already qualified worker after a missed wake, with duplicate suppression and separately generated receiver proof. **No new scheduler, no console process, no subscriber account mutation, no private publication.**
