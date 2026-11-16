@@ -62,6 +62,17 @@ internal static class ContractTests
               Valid(workId: "../private"), Now).Code == "HOLD_WORKID");
         Check("overlong_workid_holds", MuleObservation.Read(
               Valid(workId: new string('a', 129)), Now).Code == "HOLD_WORKID");
+        // WorkID identity must match the entire string, not the position before
+        // a trailing newline (the default meaning of the .NET $ regex anchor).
+        Check("trailing_newline_workid_holds", MuleObservation.Read(
+              Valid(workId: "synthetic:mule-check\n"), Now).Code == "HOLD_WORKID");
+        Check("trailing_crlf_workid_holds", MuleObservation.Read(
+              Valid(workId: "synthetic:mule-check\r\n"), Now).Code == "HOLD_WORKID");
+        Check("exact_128_character_workid_accepted_as_source_only",
+              MuleObservation.Read(Valid(workId: new string('a', 128)), Now).Code ==
+              "SOURCE_FRESH__RECEIVER_UNVERIFIED");
+        Check("exact_128_plus_newline_workid_holds", MuleObservation.Read(
+              Valid(workId: new string('a', 128) + "\n"), Now).Code == "HOLD_WORKID");
         Check("ttl_out_of_range_holds", MuleObservation.Read(
               Valid(ttl: 99999), Now).Code == "HOLD_TTL");
         Check("invalid_clock_holds", MuleObservation.Read(
