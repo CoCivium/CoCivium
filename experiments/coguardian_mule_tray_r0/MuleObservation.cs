@@ -19,7 +19,7 @@ public static class MuleObservation
     // CoGuardian Mule SHADOW canary. NOT a credential, authorization or effect lease.
     public const string ShadowTrayMutexName = @"Local\CoCivium.CoGuardianMule.ShadowR0.OneOwner";
     private static readonly Regex WorkIdShape =
-        new(@"^[a-zA-Z0-9._:-]{1,128}$", RegexOptions.CultureInvariant);
+        new(@"\A[a-zA-Z0-9._:-]{1,128}\z", RegexOptions.CultureInvariant);
     private static readonly Regex UtcShape =
         new(@"^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?Z$", RegexOptions.CultureInvariant);
     private static readonly HashSet<string> Fields = new(StringComparer.Ordinal)
