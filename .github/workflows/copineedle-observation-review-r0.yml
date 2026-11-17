@@ -1,0 +1,141 @@
+name: CoNeedle R0 source-only PR admission challenge
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'scripts/CoNeedleObservationAdmissionR0.py'
+      - 'scripts/CoLocalRoleRebindR0.py'
+      - 'tests/test_colocal_role_rebind_r0.py'
+      - '.github/workflows/copineedle-observation-review-r0.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: copineedle-observation-review-pr489
+  cancel-in-progress: true
+
+jobs:
+  candidate-source-regression:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - name: Checkout only exact Python and frozen policy input
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          sparse-checkout: |
+            scripts/CoNeedleObservationAdmissionR0.py
+            scripts/CoLocalRoleRebindR0.py
+            tests/test_colocal_role_rebind_r0.py
+            ai/session-bootstrap.json
+            ai/currentness/colocal-x2-postcontainment-focus-20261112-r1.json
+          sparse-checkout-cone-mode: false
+      - name: Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run 39 existing CoLocal/CoNeedle tests on exact source
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p copineedle-private-qa
+          python -B -m unittest discover -s tests -p 'test_colocal_role_rebind_r0.py' -v > copineedle-private-qa/tests.log 2>&1 || {
+            cat copineedle-private-qa/tests.log
+            exit 1
+          }
+          cat copineedle-private-qa/tests.log
+          python - <<'PY'
+          import hashlib,json,pathlib,re
+          d=pathlib.Path("copineedle-private-qa")
+          log=(d/"tests.log").read_text(encoding="utf8")
+          m=re.search(r"Ran (\d+) tests in",log)
+          assert m and int(m.group(1))==39 and re.search(r"(?m)^OK$",log), "TEST_COUNT_OR_RESULT_MISMATCH"
+          tests=[
+            "test_needle_obviously_future_issuer_time_held",
+            "test_needle_future_second_revision_held_before_admission",
+            "test_needle_normal_timestamp_still_requires_owner_review",
+            "test_needle_forged_time_attestation_field_rejected",
+          ]
+          for t in tests:
+            assert t in log and re.search(rf"(?m)^{t} .* \.\.\. ok$",log), "MISSING_NEW_CASE:"+t
+          paths={
+            "guard":"scripts/CoNeedleObservationAdmissionR0.py",
+            "tests":"tests/test_colocal_role_rebind_r0.py",
+            "role":"scripts/CoLocalRoleRebindR0.py",
+            "bootstrap":"ai/session-bootstrap.json",
+            "frozen_incident":"ai/currentness/colocal-x2-postcontainment-focus-20261112-r1.json",
+          }
+          blob=lambda b:hashlib.sha1(b"blob "+str(len(b)).encode()+b"\0"+b).hexdigest()
+          got={name:blob(pathlib.Path(p).read_bytes()) for name,p in paths.items()}
+          expected={
+            "guard":"b5660f3b168a111c077c65b6bac1ad4e9699aef9",
+            "tests":"2de10c1d60c2a5f5fdb8057a82ac56df89aaaa3a",
+            "role":"e415a8e45e9625eb195525085c2817fdcf312cef",
+            "bootstrap":"aa2b8163a773e570f2249066e7ccc8e899e103ff",
+            "frozen_incident":"7350c0bdc3661c6ccbc803df11a16c960da85675",
+          }
+          assert got==expected, "SOURCE_PIN_DRIFT"
+          out={
+            "schema":"CoAll.CoNeedle.R0.PRSourceRegressionReceipt",
+            "state":"PASS_SOURCE_ONLY",
+            "total_cases":39,
+            "negative_future_cases":tests,
+            "source_blobs":got,
+            "source_pin_untouched":True,
+            "trusted_time_attested":False,
+            "observer_authenticated":False,
+            "receiver_acknowledged":False,
+            "observation_admitted":False,
+            "runtime_promoted":False,
+            "x2_process_started":False,
+            "test_log_sha256":hashlib.sha256(log.encode()).hexdigest(),
+            "nonclaims":["CI_GREEN_NE_PRODUCTION_ACCEPTANCE",
+                         "LOCAL_WALL_CLOCK_FILTER_NE_TRUSTED_TIME",
+                         "TEST_FIXTURE_NE_REAL_OBSERVATION",
+                         "GITHUB_SAME_PROVIDER_NE_EXTERNAL_RECEIVER"]
+          }
+          (d/"receipt.json").write_text(json.dumps(out,indent=2)+"\n",encoding="utf8")
+          print("PASS_39_COPIN_CoNEEDLE_SOURCE_TESTS_NO_ADMISSION")
+          PY
+      - name: Preserve test receipt and bounded log
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: copineedle-r0-source-only-private
+          path: copineedle-private-qa/
+          if-no-files-found: warn
+          retention-days: 3
+
+  separate-receipt-receiver:
+    needs: [candidate-source-regression]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 3
+    steps:
+      # No repository checkout or additional credentials.
+      - name: Read only producer-owned receipt/log artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: copineedle-r0-source-only-private
+          path: readback/
+      - name: Recompute test-log digest and reject false authority flags
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import hashlib,json,pathlib,re
+          p=pathlib.Path("readback")
+          receipt=json.loads((p/"receipt.json").read_text("utf8"))
+          log=(p/"tests.log").read_bytes()
+          assert receipt["schema"]=="CoAll.CoNeedle.R0.PRSourceRegressionReceipt"
+          assert receipt["state"]=="PASS_SOURCE_ONLY" and receipt["total_cases"]==39
+          assert hashlib.sha256(log).hexdigest()==receipt["test_log_sha256"]
+          assert receipt["source_blobs"]["frozen_incident"]=="7350c0bdc3661c6ccbc803df11a16c960da85675"
+          assert receipt["source_blobs"]["guard"]=="b5660f3b168a111c077c65b6bac1ad4e9699aef9"
+          for field in ("trusted_time_attested","observer_authenticated","receiver_acknowledged",
+                        "observation_admitted","runtime_promoted","x2_process_started"):
+            assert receipt[field] is False, "FALSE_EFFECT_OR_AUTHORITY_CLAIM:"+field
+          assert len(receipt["negative_future_cases"])==4
+          assert re.search(rb"Ran 39 tests in",log) and re.search(rb"(?m)^OK$",log)
+          print("PASS_SEPARATE_COPIN_CoNEEDLE_READBACK_39_39_NO_AUTHORITY")
+          PY
