@@ -37,16 +37,21 @@ def boolish(v: Any) -> bool:
 
 
 def project(obs: dict[str, Any]) -> tuple[str, str]:
-    explicit = obs.get("projection")
-    if isinstance(explicit, str) and explicit in PROJECTIONS:
-        return explicit, "EXPLICIT_SOURCE_PROJECTION"
-
-    if boolish(obs.get("superseded")):
-        return "SUPERSEDED", "SUPERSEDED_TRUE"
+    # A session may disappear without warning. Source-declared recovery or
+    # stale evidence must win over an older optimistic projection label.
+    # These are only caller observations, NOT proof of actual session death.
     if boolish(obs.get("recovery_required")):
         return "RECOVERY", "RECOVERY_REQUIRED_TRUE"
-    if str(obs.get("currentness","")).upper() in {"DEGRADED","STALE","UNKNOWN_STALE"}:
+    currentness = str(obs.get("currentness", "")).upper()
+    if currentness in {"DEGRADED", "STALE", "UNKNOWN_STALE"}:
         return "DEGRADED", "CURRENTNESS_DEGRADED"
+    if boolish(obs.get("superseded")):
+        return "SUPERSEDED", "SUPERSEDED_TRUE"
+    explicit = obs.get("projection")
+    if isinstance(explicit, str) and explicit in {"CLOSE_SAFE", "SUCCESSOR_READY"} and currentness not in {"CURRENT", "FRESH"}:
+        return "DEGRADED", "CURRENTNESS_UNQUALIFIED_FOR_CLOSE_OR_SUCCESSION"
+    if isinstance(explicit, str) and explicit in PROJECTIONS:
+        return explicit, "EXPLICIT_SOURCE_PROJECTION"
     if boolish(obs.get("tab_close_safe")):
         return "CLOSE_SAFE", "TAB_CLOSE_SAFE_TRUE"
     if boolish(obs.get("successor_ready")):
@@ -94,6 +99,8 @@ def compile_ledger(source: Any, source_ref: str, source_sha256: str) -> dict[str
 
     rows: list[dict[str, Any]] = []
     signals: list[dict[str, Any]] = []
+    seen_exact: set[str] = set()
+    exact_repeats = 0
 
     for idx, obs in enumerate(observations):
         if not isinstance(obs, dict):
@@ -102,6 +109,15 @@ def compile_ledger(source: Any, source_ref: str, source_sha256: str) -> dict[str
                     "evidence_state","authority_ceiling","currentness"):
             if not obs.get(req):
                 raise ValueError(f"observation[{idx}] missing {req}")
+
+        # Repeated exact source observations are one logical observation, not
+        # a new session, activity proof or a new provider effect. Keep the
+        # first source pointer; retain the repeat count in coverage.
+        exact_key = json.dumps(obs, sort_keys=True, ensure_ascii=True, separators=(",", ":"))
+        if exact_key in seen_exact:
+            exact_repeats += 1
+            continue
+        seen_exact.add(exact_key)
 
         projection, basis = project(obs)
         candidate = label_for(obs, projection)
@@ -120,7 +136,7 @@ def compile_ledger(source: Any, source_ref: str, source_sha256: str) -> dict[str
             "evidence_state": obs["evidence_state"],
             "authority_ceiling": obs["authority_ceiling"],
             "currentness": obs["currentness"],
-            "close_safety": "PROVEN_TRUE" if boolish(obs.get("tab_close_safe")) else str(obs.get("close_safety") or "UNPROVEN"),
+            "close_safety": "HELD_RECOVERY_OR_STALE" if projection in {"RECOVERY", "DEGRADED"} else ("SOURCE_ASSERTED_TRUE_UNVERIFIED" if boolish(obs.get("tab_close_safe")) else str(obs.get("close_safety") or "UNPROVEN")),
             "successor_state": obs.get("successor_state"),
             "wake_conditions": list(obs.get("wake_conditions") or []),
             "candidate_label": candidate,
@@ -130,7 +146,9 @@ def compile_ledger(source: Any, source_ref: str, source_sha256: str) -> dict[str
                 "LIFECYCLE_LABEL_NE_LIFECYCLE_TRUTH",
                 "AUTO_LABEL_SIGNAL_NE_PROVIDER_UI_MUTATION",
                 "SESSION_STATE_NE_WORK_STATE_NE_EVIDENCE_STATE",
-                "NO_PROVIDER_SESSION_MUTATION"
+                "NO_PROVIDER_SESSION_MUTATION",
+                "SESSION_SILENCE_NE_PROVEN_DEATH",
+                "STALE_OR_RECOVERY_NE_CLOSE_SAFE"
             ]
         }
         rows.append(row)
@@ -167,6 +185,8 @@ def compile_ledger(source: Any, source_ref: str, source_sha256: str) -> dict[str
         "state":"SHADOW_LEDGER_COMPILED__NO_PROVIDER_MUTATION",
         "coverage":{
             "observation_count":len(rows),
+            "input_observation_count":len(observations),
+            "exact_repeat_count":exact_repeats,
             "global_active_session_census":"UNPROVEN",
             "source_ref":source_ref,
             "source_sha256":source_sha256
@@ -186,6 +206,7 @@ def compile_ledger(source: Any, source_ref: str, source_sha256: str) -> dict[str
             "LIFECYCLE_LABEL_NE_LIFECYCLE_TRUTH",
             "DELIVERY_NE_PICKUP",
             "NO_GLOBAL_ACTIVE_SESSION_CENSUS",
+            "DUPLICATE_SOURCE_INPUT_NE_INDEPENDENT_ACK",
             "NO_PROVIDER_SESSION_MUTATION"
         ]
     }
