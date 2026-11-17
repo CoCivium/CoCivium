@@ -3,6 +3,8 @@
 import copy
 import json
 import unittest
+from pathlib import Path
+from tempfile import TemporaryDirectory
 from CoMapCoLocalConsumerR1 import build_projection, blob_sha1, validate_ci, SEED_NODE, CI_NODE, safe_read
 
 
@@ -88,6 +90,42 @@ class TestConsumer(unittest.TestCase):
     def test_bad_blob_holds(self):
         with self.assertRaises((ValueError,FileNotFoundError)):
             safe_read('/tmp','definitely_nonexistent_file','0'*40)
+
+    def test_direct_pinned_source_still_readable(self):
+        with TemporaryDirectory() as d:
+            root = Path(d)
+            (root/'records').mkdir()
+            data = b'{"schema":"CoMap.Sample"}\\n'
+            (root/'records'/'original.json').write_bytes(data)
+            self.assertEqual(safe_read(root,'records/original.json',blob_sha1(data)),data)
+
+    def test_in_root_file_symlink_is_not_direct_source_even_when_hash_matches(self):
+        with TemporaryDirectory() as d:
+            root = Path(d)
+            (root/'records').mkdir()
+            data = b'{"schema":"CoMap.Sample"}\\n'
+            (root/'records'/'original.json').write_bytes(data)
+            link = root/'records'/'alias.json'
+            try:
+                link.symlink_to('original.json')
+            except (OSError,NotImplementedError):
+                self.skipTest('symlink creation not available')
+            with self.assertRaisesRegex(ValueError,'HOLD_SOURCE_SYMLINK'):
+                safe_read(root,'records/alias.json',blob_sha1(data))
+
+    def test_in_root_directory_symlink_is_not_direct_source_even_when_hash_matches(self):
+        with TemporaryDirectory() as d:
+            root = Path(d)
+            (root/'records').mkdir()
+            data = b'{"schema":"CoMap.Sample"}\\n'
+            (root/'records'/'original.json').write_bytes(data)
+            link = root/'alias_records'
+            try:
+                link.symlink_to('records',target_is_directory=True)
+            except (OSError,NotImplementedError):
+                self.skipTest('symlink creation not available')
+            with self.assertRaisesRegex(ValueError,'HOLD_SOURCE_SYMLINK'):
+                safe_read(root,'alias_records/original.json',blob_sha1(data))
 
 
 if __name__=='__main__':unittest.main()
