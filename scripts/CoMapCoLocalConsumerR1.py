@@ -34,8 +34,19 @@ def blob_sha1(data):
 
 
 def safe_read(root, relative, expected_hash):
-    p = (Path(root) / relative).resolve()
-    if not p.is_relative_to(Path(root).resolve()):
+    base = Path(root).resolve()
+    rel = Path(relative)
+    if rel.is_absolute() or not rel.parts or '..' in rel.parts:
+        raise ValueError('HOLD_UNSAFE_SOURCE_PATH')
+    # Resolve only AFTER checking each supplied component.  Resolving first
+    # erases the symlink alias even when its target bytes hash correctly.
+    candidate = base
+    for part in rel.parts:
+        candidate = candidate / part
+        if candidate.is_symlink():
+            raise ValueError('HOLD_SOURCE_SYMLINK')
+    p = candidate.resolve()
+    if not p.is_relative_to(base):
         raise ValueError('HOLD_UNSAFE_SOURCE_PATH')
     b = p.read_bytes()
     if blob_sha1(b) != expected_hash:
