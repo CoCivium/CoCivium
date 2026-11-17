@@ -1,0 +1,135 @@
+{
+  "schema": "CoAll.CoTalkItOut.PublicCrosswalkIndex.R0",
+  "id": "cotalkitout-20261112-r0",
+  "scope": "Public-safe summary only; the separate 190-step working spreadsheet retains private source pointers.",
+  "state": "PUBLIC_BRANCH_DRAFT_CANDIDATE_NOT_MERGED",
+  "date": "2026-11-12",
+  "parent": "Existing CoHP/CoPlan mandate (not replaced)",
+  "counts": {
+    "causal_steps": 190,
+    "milestones": 16,
+    "measure_definitions": 40,
+    "inversion_candidates": 50,
+    "fault_tests": 30,
+    "compared_sources": 15
+  },
+  "steps_by_evidence": {
+    "scoped_proof": 8,
+    "partial": 39,
+    "held": 63,
+    "planned": 80
+  },
+  "gates": [
+    {
+      "id": "M00",
+      "goal": "Source-bound baseline",
+      "evidence": "PARTIAL"
+    },
+    {
+      "id": "M01",
+      "goal": "Durable WorkID",
+      "evidence": "PARTIAL"
+    },
+    {
+      "id": "M02",
+      "goal": "Quiet wake",
+      "evidence": "HELD"
+    },
+    {
+      "id": "M03",
+      "goal": "Cloud successor",
+      "evidence": "PROVEN_SCOPE"
+    },
+    {
+      "id": "M04",
+      "goal": "NAS storage landed",
+      "evidence": "PROVEN_SCOPE"
+    },
+    {
+      "id": "M05",
+      "goal": "Independent receiver pickup",
+      "evidence": "HELD"
+    },
+    {
+      "id": "M06",
+      "goal": "Local model continuity",
+      "evidence": "HELD"
+    },
+    {
+      "id": "M07",
+      "goal": "Native CoBar I/O",
+      "evidence": "HELD"
+    },
+    {
+      "id": "M08",
+      "goal": "Native receiver display",
+      "evidence": "HELD"
+    },
+    {
+      "id": "M09",
+      "goal": "Headless worker survival",
+      "evidence": "HELD"
+    },
+    {
+      "id": "M10",
+      "goal": "Screenless task",
+      "evidence": "HELD"
+    },
+    {
+      "id": "M11",
+      "goal": "Keyboardless/mouseless parity",
+      "evidence": "HELD"
+    },
+    {
+      "id": "M12",
+      "goal": "Human-optional 24h",
+      "evidence": "HELD"
+    },
+    {
+      "id": "M13",
+      "goal": "Provider independent recovery",
+      "evidence": "HELD"
+    },
+    {
+      "id": "M14",
+      "goal": "Public-safe discovery",
+      "evidence": "HELD"
+    },
+    {
+      "id": "M15",
+      "goal": "Human first-use/Stop",
+      "evidence": "HELD"
+    }
+  ],
+  "modes": {
+    "headless": "Execute and recover with no foreground window, with audit and Stop.",
+    "screenless": "Complete an authorized safe task without sight of a screen.",
+    "keyboardless": "Complete work through alternate input while preserving keyboard fallback.",
+    "mouseless": "Complete navigation and Stop without a mouse; retain accessible fallback."
+  },
+  "naming": {
+    "immutable_revision": "ai/roadmaps/cotalkitout-human-optional-r0-20261112.json",
+    "stable_alias_proposal": "ai/roadmaps/CoTalkItOut_latest.json",
+    "update_semantics": "Immutable candidate editions; elected compare-and-swap publisher; no last-writer-wins clobber.",
+    "privacy": "No raw chat, draft, family, credentials, private paths or private receipt bytes in public artifact."
+  },
+  "last_scoped_proof": "One cross-run GitHub Actions successor was proven for a single 21-receipt WorkID. A separate NAS mapped-share storage transfer was read back; NAS-native pickup not verified.",
+  "next_safe_gate": "An independently authorized receiver validates the exact WorkID and emits a receiver-origin proof without user relay.",
+  "donor_sources": [
+    "https://github.com/CoCivium/CoCivium/blob/main/docs/Operations/COGOALL_OUTSTANDING_REGISTER_20261108.md",
+    "https://github.com/CoCivium/CoCivium/blob/main/docs/Operations/COFRONTIEREXIT_GRACEFUL_PIVOT_R0_20261112.md",
+    "https://github.com/CoCivium/CoCivium/blob/main/docs/Architecture/COOMNIDIRECTIONAL_SEED_PATH_FABRIC_R0_20261109.md",
+    "https://docs.temporal.io/tasks",
+    "https://github.com/langchain-ai/docs/blob/main/src/oss/langgraph/interrupts.mdx",
+    "https://docs.n8n.io/deploy/host-n8n/configure-n8n/scaling/enable-queue-mode",
+    "https://www.home-assistant.io/voice_control/",
+    "https://opentelemetry.io/docs/specs/semconv/"
+  ],
+  "nonclaims": [
+    "NOT_FULL_PRIVATE_WORKBOOK",
+    "PUBLIC_DRAFT_NE_MAINLINE",
+    "PUBLIC_SOURCE_NE_REMOTE_RECEIVER_ACK",
+    "NAS_MAPPED_SHARE_NE_NAS_NATIVE_PICKUP",
+    "NO_COEX_CANON_RUNTIME_OR_AUTONOMOUS_CHATGPT_TURNOVER"
+  ]
+}
