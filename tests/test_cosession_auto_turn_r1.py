@@ -135,6 +135,86 @@ class AutoTurnTests(unittest.TestCase):
         for v in ("D:\\CoCivium","C:\\Users\\Owner","@inseed.com","access_token","PRIVATE_CHAT_LOG"):
             self.assertNotIn(v,s)
 
+    def test_repeat_source_turn_has_zero_new_work(self):
+        # Two separate run IDs with unchanged byte-verified source objects
+        # must not be credited as discovery or independently useful work.
+        from CoSessionAutoTurnR1 import compare_public_source_turns
+        earlier = self.turn()
+        later = compile_turn(self.root, "2026-11-12T21:30:00Z", "43300000000", "1", HEAD)
+        delta = compare_public_source_turns(earlier, later)
+        self.assertEqual(delta["classification"], "UNCHANGED_PUBLIC_SOURCES_RECHECK")
+        self.assertEqual(delta["source_digests_changed"], 0)
+        self.assertEqual(delta["verified_useful_work_outcomes"], 0)
+        self.assertEqual(delta["novel_public_source_objects"], 0)
+        self.assertFalse(delta["receiver_ack"])
+
+    def test_changed_public_source_does_not_infer_useful_work(self):
+        from CoSessionAutoTurnR1 import compare_public_source_turns
+        earlier = self.turn()
+        rel = self.items[1]["source_path"]
+        self.edit(rel, lambda x: x["nonclaims"].append("SOURCE_REVIEW_CHANGE_ONLY"))
+        later = compile_turn(self.root, "2026-11-12T21:30:00Z", "43300000000", "1", HEAD)
+        delta = compare_public_source_turns(earlier, later)
+        self.assertEqual(delta["classification"],
+                         "PUBLIC_SOURCE_DIGEST_CHANGE_REQUIRES_SEMANTIC_REVIEW")
+        self.assertEqual(delta["source_digests_changed"], 1)
+        self.assertEqual(delta["verified_useful_work_outcomes"], 0)
+        self.assertIsNone(delta["novel_public_source_objects"])
+
+    def test_same_run_replay_not_an_independent_execution(self):
+        from CoSessionAutoTurnR1 import compare_public_source_turns
+        earlier = self.turn()
+        delta = compare_public_source_turns(earlier, earlier)
+        self.assertEqual(delta["classification"], "SAME_RUN_REPLAY_NOT_NEW_EVIDENCE")
+        self.assertEqual(delta["verified_useful_work_outcomes"], 0)
+
+    def test_same_run_changed_source_is_conflict_not_quiet_replay(self):
+        # The same run identity cannot hide a changed source behind the
+        # SAME_RUN_REPLAY_NOT_NEW_EVIDENCE label. A changed source must be
+        # reviewed, even when the purported execution ID is unchanged.
+        from CoSessionAutoTurnR1 import compare_public_source_turns
+        earlier = self.turn()
+        rel = self.items[1]["source_path"]
+        self.edit(rel, lambda x: x["nonclaims"].append(
+            "CHANGED_SOURCE_WITH_REUSED_RUN_ID"))
+        later = compile_turn(self.root, "2026-11-12T21:30:00Z", RUN, ATTEMPT, HEAD)
+        with self.assertRaisesRegex(ValueError,
+                                    "HOLD_DELTA_SAME_RUN_SOURCE_DRIFT"):
+            compare_public_source_turns(earlier, later)
+
+    def test_same_run_changed_head_is_conflict_not_quiet_replay(self):
+        # A supposedly identical run cannot silently acquire a new Git head.
+        from CoSessionAutoTurnR1 import compare_public_source_turns
+        earlier = self.turn()
+        later = copy.deepcopy(earlier)
+        later["run"]["head_sha"] = "b" * 40
+        with self.assertRaisesRegex(ValueError,
+                                    "HOLD_DELTA_SAME_RUN_HEAD_DRIFT"):
+            compare_public_source_turns(earlier, later)
+
+    def test_changed_workset_requires_rebase_not_false_delta(self):
+        from CoSessionAutoTurnR1 import compare_public_source_turns
+        earlier = self.turn()
+        self.edit(WORKSET, lambda x: x["work_items"][2].update(
+            next_safe_deed="ANOTHER_PUBLIC_READ_ONLY_PROPOSAL"))
+        later = compile_turn(self.root, "2026-11-12T21:30:00Z", "43300000000", "1", HEAD)
+        with self.assertRaisesRegex(ValueError, "HOLD_DELTA_WORKSET_IDENTITY_DRIFT"):
+            compare_public_source_turns(earlier, later)
+
+    def test_source_delta_rejects_forged_effect_ack(self):
+        from CoSessionAutoTurnR1 import compare_public_source_turns
+        earlier = self.turn()
+        earlier["receiver_ack"] = True
+        with self.assertRaisesRegex(ValueError, "HOLD_DELTA_EFFECT_AUTHORITY"):
+            compare_public_source_turns(earlier, self.turn())
+
+    def test_source_delta_rejects_corrupt_digest(self):
+        from CoSessionAutoTurnR1 import compare_public_source_turns
+        earlier = self.turn()
+        earlier["sources"][0]["source_sha256"] = "not-a-digest"
+        with self.assertRaisesRegex(ValueError, "HOLD_DELTA_SOURCE_SHAPE"):
+            compare_public_source_turns(earlier, self.turn())
+
     def test_reject_invalid_execution_identifiers(self):
         for run,attempt,head in [("0","1",HEAD),("1","0",HEAD),("1","1","BAD")]:
             with self.assertRaisesRegex(ValueError,"HOLD_"):
