@@ -1,0 +1,1401 @@
+{
+  "schema": "CoCivium.CoTerms.MultiFrontCandidates.R0",
+  "status": "UNREGISTERED_CANDIDATE_CONSTELLATION_NOT_CANON",
+  "observed_date_utc": "2026-11-11",
+  "source_prompt_scope": "User requested many additional CoTerm candidates spanning resilience, benefits, substrates, media, CoVIA, evolution and speculative relations",
+  "count": 150,
+  "family_count": 15,
+  "exact_name_collision_check": {
+    "scope": "FOUR_PUBLIC_SOURCES_ONLY_NOT_GLOBAL_COLEX",
+    "baseline": [
+      {
+        "path": "docs/coterms/coterms-public-r0.json",
+        "blob_sha1": "d5cbe7643583d6d95ac00c0b3cbfe759084bef03",
+        "record_count": 31
+      },
+      {
+        "path": "docs/Evolution/COTERMFORGE_CANDIDATE_CONSTELLATION_R0.json",
+        "blob_sha1": "409d2a9bc60d521d38e8b32c2ad88cc6422cdd2b",
+        "record_count": 120
+      },
+      {
+        "path": "docs/coterms/conu-existentialism-candidate-constellation-r0-20261110.json",
+        "blob_sha1": "89cb6e7e196f7b0617f8dc39483baf905f629fc4",
+        "record_count": 37
+      },
+      {
+        "path": "docs/coterms/candidates/conuexistentialism-gdside-relational-candidates-r0-20261110.json",
+        "blob_sha1": "4a8c797ffb2f1a889100a37e30fa834954135559",
+        "record_count": 36
+      }
+    ],
+    "checked_total_records": 224,
+    "candidate_internal_duplicates": 0,
+    "exact_name_collisions": 0,
+    "semantic_equivalence": "NOT_ASSESSED"
+  },
+  "promotion_rule": "Separate human and CoLex review must establish distinctness, use case, counterexample, source and receiver benefit before registration. Similarity requires merge/alias/retirement, not automatic new global names.",
+  "relation_to_existing": "Extends CoTermForge and CoZillion grammar as an append-only candidate set; does not replace public glossary or preexisting CoHysteresis/CoHysterIs terms.",
+  "nonclaims": [
+    "CANDIDATE_NE_COTERM",
+    "EXACT_NAME_NOVELTY_NE_SEMANTIC_NOVELTY",
+    "PUBLIC_PR_NE_CANON",
+    "SOURCE_RECORD_NE_RECEIVER_ACK",
+    "HYPOTHESIS_NE_EVIDENCE",
+    "SYMBOLIC_LANE_NE_PHYSICAL_OR_SPIRITUAL_AUTHORITY",
+    "NO_RUNTIME_ADOPTION_OR_GLOBAL_SESSION_SYNC",
+    "NO_DELETION_OR_OUTREACH_AUTHORITY"
+  ],
+  "entries": [
+    {
+      "term": "CoCutsetWeave+",
+      "family": "Resilience/cut sets",
+      "meaning": "Minimal dependencies for one outcome",
+      "probe": "Disable each required edge and observe failure",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoToeNailRisk+",
+      "family": "Resilience/cut sets",
+      "meaning": "Many links resting on few proven supports",
+      "probe": "Compare graph size with independent surviving routes",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoFailureCommons+",
+      "family": "Resilience/cut sets",
+      "meaning": "Services sharing one failure domain",
+      "probe": "Remove one provider and inspect all affected services",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoCriticalJoint+",
+      "family": "Resilience/cut sets",
+      "meaning": "A transition supporting multiple workflows",
+      "probe": "Fail a common transition in a synthetic graph",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoMinSurvivor+",
+      "family": "Resilience/cut sets",
+      "meaning": "Least component set completing one useful task",
+      "probe": "Rebuild on a clean isolated host",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoDependencyShadow+",
+      "family": "Resilience/cut sets",
+      "meaning": "Assumed dependencies lacking execution traces",
+      "probe": "Compare design edges against observed traces",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoCommonCauseMap+",
+      "family": "Resilience/cut sets",
+      "meaning": "Shared DNS vendor power or credential exposure",
+      "probe": "Group apparently independent routes by root cause",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoGracefulIsland+",
+      "family": "Resilience/cut sets",
+      "meaning": "Useful service isolated from central coordination",
+      "probe": "Complete a task with upstream disabled",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoPathIndependence+",
+      "family": "Resilience/cut sets",
+      "meaning": "Truly divergent recovery paths",
+      "probe": "Inspect shared roots then isolate the primary",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoFailoverFalsifier+",
+      "family": "Resilience/cut sets",
+      "meaning": "Experiment that can refute failover claims",
+      "probe": "Deny primary source and demand cold recovery",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoReceiptChainGap+",
+      "family": "Custody/recovery",
+      "meaning": "Missing evidence predecessor or mismatched link",
+      "probe": "Inject absent predecessor and require HOLD",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoReceiverOrigin+",
+      "family": "Custody/recovery",
+      "meaning": "Actual reader identity bound to exact readproof",
+      "probe": "Separate NAS-native reading from client SMB access",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoExactPickup+",
+      "family": "Custody/recovery",
+      "meaning": "Receiver attestation for exact object digest",
+      "probe": "Offer wrong bytes and verify rejection",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoColdStartWitness+",
+      "family": "Custody/recovery",
+      "meaning": "Blank receiver reconstructs without original process",
+      "probe": "Restore WorkID on a new isolated host",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoRehydratePath+",
+      "family": "Custody/recovery",
+      "meaning": "Smallest proven route from seed to usable state",
+      "probe": "Rebuild with optional context missing",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoRetentionLease+",
+      "family": "Custody/recovery",
+      "meaning": "Time-bounded obligation to preserve source custody",
+      "probe": "Try early retirement with dependent WorkID",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoCustodyVacuum+",
+      "family": "Custody/recovery",
+      "meaning": "Work stranded on sole disposable substrate",
+      "probe": "Count independently recoverable copies",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoSourceExistence+",
+      "family": "Custody/recovery",
+      "meaning": "Object existence beyond syntactically valid identifier",
+      "probe": "Reject well-formed nonexistent Git commit",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoRevocationCarry+",
+      "family": "Custody/recovery",
+      "meaning": "Stop persists through interruptions and retries",
+      "probe": "Replay revoked WorkID across a restart",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoCheckpointHandoff+",
+      "family": "Custody/recovery",
+      "meaning": "Successor resumes from immutable checkpoint",
+      "probe": "Cold-replay and compare source and effect digests",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoAgentDiversityYield+",
+      "family": "Parallel reasoning",
+      "meaning": "Validated novelty from distinct reasoning methods",
+      "probe": "Compare diverse and homogeneous teams at equal cost",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoEchoCollapse+",
+      "family": "Parallel reasoning",
+      "meaning": "Suppress exact echoes without inventing discovery",
+      "probe": "Reduce eighteen identical outputs to one hash",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoCriticIndependence+",
+      "family": "Parallel reasoning",
+      "meaning": "Detect critics sharing mistaken priors",
+      "probe": "Inject a misleading shared source",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoMinorityHypothesis+",
+      "family": "Parallel reasoning",
+      "meaning": "Preserve testable dissent through a merger",
+      "probe": "Seed correct minority counterexample",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoModelErrorCorrelation+",
+      "family": "Parallel reasoning",
+      "meaning": "Overlap among model mistakes",
+      "probe": "Score the same verified task set across models",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoSingleActuatorFence+",
+      "family": "Parallel reasoning",
+      "meaning": "One elected effect writer among many proposals",
+      "probe": "Race candidates with scoped fencing",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoCrossMethodWeave+",
+      "family": "Parallel reasoning",
+      "meaning": "Combine methods without evidence-class inflation",
+      "probe": "Merge formal and observational inputs with loss ledger",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoFanoutThreshold+",
+      "family": "Parallel reasoning",
+      "meaning": "Point where an additional worker loses net value",
+      "probe": "Sweep cohort size against accepted outcomes",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoInferenceBudgetFlow+",
+      "family": "Parallel reasoning",
+      "meaning": "Allocate compute according to bounded information value",
+      "probe": "Reallocate tokens and compare validated closures",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoParallelGainCurve+",
+      "family": "Parallel reasoning",
+      "meaning": "Useful outcome speedup against worker count",
+      "probe": "Compare cohorts at equal cost and quality",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoQueuePressure+",
+      "family": "Queues/resources",
+      "meaning": "Candidate arrival burden relative to reviewer capacity",
+      "probe": "Increase arrival rate and inspect backlog",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoReviewDebt+",
+      "family": "Queues/resources",
+      "meaning": "Claims created but not yet verified",
+      "probe": "Age pending reviews and estimate correction cost",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoFloodgateBand+",
+      "family": "Queues/resources",
+      "meaning": "Separate throttle and expand thresholds",
+      "probe": "Vary capacity near boundary and count oscillations",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoMergeWaitAge+",
+      "family": "Queues/resources",
+      "meaning": "Receipt-based waiting age before adjudication",
+      "probe": "Measure median and tail queue delay",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoCapacityTruth+",
+      "family": "Queues/resources",
+      "meaning": "Observed throughput rather than advertised capacity",
+      "probe": "Demand sustained receiver-origin receipts",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoSaturationPoint+",
+      "family": "Queues/resources",
+      "meaning": "Where new proposals stop increasing verified value",
+      "probe": "Sweep input rate and find marginal zero",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoBacklogHalfLife+",
+      "family": "Queues/resources",
+      "meaning": "Time for queued work to halve with no new arrivals",
+      "probe": "Pause generation and time half-drain",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoResourceShedding+",
+      "family": "Queues/resources",
+      "meaning": "Drop optional compute before essential work",
+      "probe": "Inject load and test tiered degradation",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoValuePerToken+",
+      "family": "Queues/resources",
+      "meaning": "Receiver usefulness per inference budget",
+      "probe": "Fix quality and compare accepted results per token",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoUnearnedThroughput+",
+      "family": "Queues/resources",
+      "meaning": "Generated artifacts mistaken for completed tasks",
+      "probe": "Count generated versus independently received results",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoUsefulClosureRate+",
+      "family": "CoPriMath/measurement",
+      "meaning": "Verified useful task closures per interval",
+      "probe": "Audit closure timestamps and receiver receipts",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoOomphElasticity+",
+      "family": "CoPriMath/measurement",
+      "meaning": "Outcome responsiveness to resource growth",
+      "probe": "Compare proportional verified gain and spending",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoSpeedoVector+",
+      "family": "CoPriMath/measurement",
+      "meaning": "Separate quality reliability burden and throughput gauges",
+      "probe": "Test user interpretation of each dimension",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoMeasureDenominator+",
+      "family": "CoPriMath/measurement",
+      "meaning": "Explicit denominator and time window for every rate",
+      "probe": "Change denominator and require test failure",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoNullCalibration+",
+      "family": "CoPriMath/measurement",
+      "meaning": "Prevent missing data from showing healthy state",
+      "probe": "Feed stale and empty observations",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoProofTimeDebt+",
+      "family": "CoPriMath/measurement",
+      "meaning": "Delay from claim to external qualification",
+      "probe": "Compare claim and receiver receipt times",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoConfidenceDecayCurve+",
+      "family": "CoPriMath/measurement",
+      "meaning": "Trust calibration as evidence ages",
+      "probe": "Replay outcomes at different evidence ages",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoPriMathBridge+",
+      "family": "CoPriMath/measurement",
+      "meaning": "Explicit assumptions connecting unlike units",
+      "probe": "Attempt unjustified cost-benefit conversion and HOLD",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoUnitLossLedger+",
+      "family": "CoPriMath/measurement",
+      "meaning": "Information lost by scalar projections",
+      "probe": "Compare original vector with summary",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoCounterfactualGauge+",
+      "family": "CoPriMath/measurement",
+      "meaning": "Keep simulated metrics separate from observed data",
+      "probe": "Display same number with different evidence classes",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoFirstTaskSpan+",
+      "family": "Visible UX",
+      "meaning": "From opening to first completed useful task",
+      "probe": "Time novice task and count prompts",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoRailOcclusion+",
+      "family": "Visible UX",
+      "meaning": "Persistent rail blocking clickable UI",
+      "probe": "Hit-test Run and Stop at small viewports",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoStopPersistence+",
+      "family": "Visible UX",
+      "meaning": "Revocation persists after reload",
+      "probe": "Replay revoked WorkID with no effect",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoConsentHitTarget+",
+      "family": "Visible UX",
+      "meaning": "Consent operable via mouse keyboard and accessibility tools",
+      "probe": "Test controls across devices and inputs",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoTabIndependence+",
+      "family": "Visible UX",
+      "meaning": "Work survives origin tab closure",
+      "probe": "Close tab and cold-recover identity",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoQuietStatus+",
+      "family": "Visible UX",
+      "meaning": "Clear state without noisy dashboard",
+      "probe": "Compare comprehension against busy layout",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoInterfaceSupersession+",
+      "family": "Visible UX",
+      "meaning": "Demonstrated better interface before retirement",
+      "probe": "Match-task compare old and candidate UI",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoResumeCognitiveLoad+",
+      "family": "Visible UX",
+      "meaning": "Mental work to resume after interruption",
+      "probe": "Interrupt task and count explanations needed",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoAccessibilityBreak+",
+      "family": "Visible UX",
+      "meaning": "Hidden exclusion of constrained-input users",
+      "probe": "Test keyboard and low-vision task completion",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoActionVisibility+",
+      "family": "Visible UX",
+      "meaning": "User knows effects before a click",
+      "probe": "Ask participant to predict control consequences",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoDignityMargin+",
+      "family": "Human benefit",
+      "meaning": "Meaningful ability to decline under optimization",
+      "probe": "Test least powerful participant opt-out",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoDifferenceWelcome+",
+      "family": "Human benefit",
+      "meaning": "Inclusion without forced normalization",
+      "probe": "Compare voluntary participation across abilities",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoCareWithoutCapture+",
+      "family": "Human benefit",
+      "meaning": "Help without compulsory tracking or dependence",
+      "probe": "Revoke data permission and exit",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoContributionCredit+",
+      "family": "Human benefit",
+      "meaning": "Attributable credit through forks and recombinations",
+      "probe": "Reconstruct contributors after derived work",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoHumanWakeCost+",
+      "family": "Human benefit",
+      "meaning": "Human prompting and interruptions demanded per result",
+      "probe": "Count real manual wake actions",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoInvisibleLaborSignal+",
+      "family": "Human benefit",
+      "meaning": "Maintenance and support absent from output counts",
+      "probe": "Report repair hours with product totals",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoChoiceSpace+",
+      "family": "Human benefit",
+      "meaning": "Meaningful reversible options preserved for people",
+      "probe": "Compare available choices before and after automation",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoRepairInvitation+",
+      "family": "Human benefit",
+      "meaning": "Accessible non-punitive correction path",
+      "probe": "Compare voluntary bug reports after language change",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoFamilyConsentBoundary+",
+      "family": "Human benefit",
+      "meaning": "Separate guardian and individual permission scope",
+      "probe": "Revoke sharing while keeping private work",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoReliefVerified+",
+      "family": "Human benefit",
+      "meaning": "Measured reduction in human burden",
+      "probe": "Compare manual minutes before and after",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoRecipientContext+",
+      "family": "CoVIA/outreach",
+      "meaning": "Reason for contact bound to recipient relationship",
+      "probe": "Swap addressee and require contextual HOLD",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoReputationEvidence+",
+      "family": "CoVIA/outreach",
+      "meaning": "Scoped attribution behind reputation claims",
+      "probe": "Trace praise to verifiable action or mark opinion",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoNoBlastByDefault+",
+      "family": "CoVIA/outreach",
+      "meaning": "No automatic mass send from exploratory draft",
+      "probe": "Attempt bulk send without consent",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoOutreachConsentTrace+",
+      "family": "CoVIA/outreach",
+      "meaning": "Per-recipient permission for intended channel",
+      "probe": "Reuse permission on another channel and HOLD",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoMessageRecovery+",
+      "family": "CoVIA/outreach",
+      "meaning": "Distinct draft sent delivery reply states",
+      "probe": "Retry sent draft without duplicate message",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoTrustReversibility+",
+      "family": "CoVIA/outreach",
+      "meaning": "Retractable correction and exit path in relationships",
+      "probe": "Exercise one visible retraction",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoReplyMeaning+",
+      "family": "CoVIA/outreach",
+      "meaning": "Reply distinct from agreement or acknowledgment",
+      "probe": "Classify neutral response without assent",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoAudienceBenefitCheck+",
+      "family": "CoVIA/outreach",
+      "meaning": "Receiver value required before outreach",
+      "probe": "Test message relevance and consent",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoIntroductionScope+",
+      "family": "CoVIA/outreach",
+      "meaning": "Limits on reusing social introductions",
+      "probe": "Try expansion to unrelated third party",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoRetractableInvite+",
+      "family": "CoVIA/outreach",
+      "meaning": "Invites with credible decline and repair path",
+      "probe": "Decline and verify solicitation ends",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoVisualProofLineage+",
+      "family": "Beauty/media",
+      "meaning": "Diagrams bound to data and source-time",
+      "probe": "Change source and detect stale visual",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoBeautyWithEvidence+",
+      "family": "Beauty/media",
+      "meaning": "Aesthetics without fake proof confidence",
+      "probe": "Compare trust calibration with decorative green",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoMediaAccessibility+",
+      "family": "Beauty/media",
+      "meaning": "Captions contrast and text alternatives as asset quality",
+      "probe": "Test muted and screen-reader comprehension",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoStoryboardFalsifier+",
+      "family": "Beauty/media",
+      "meaning": "Visual narrative exposes missing causal step",
+      "probe": "Ask critic to find impossible frame",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoImageSourceCustody+",
+      "family": "Beauty/media",
+      "meaning": "Image rights and edit provenance",
+      "probe": "Trace transformation to licensed origin",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoVideoEffectReceipt+",
+      "family": "Beauty/media",
+      "meaning": "Export evidence separated from audience results",
+      "probe": "Compare render receipt and viewer comprehension",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoNarrativeBiasCheck+",
+      "family": "Beauty/media",
+      "meaning": "Stories disclose missing and selective evidence",
+      "probe": "Compare script against full evidence ledger",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoGraphicBraid+",
+      "family": "Beauty/media",
+      "meaning": "Graph time uncertainty and user action in one view",
+      "probe": "Test interpretation of unknown edge",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoAudioConsentSpan+",
+      "family": "Beauty/media",
+      "meaning": "Time-scoped participant audio permissions",
+      "probe": "Withdraw permission mid-session",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoEmotionalComprehension+",
+      "family": "Beauty/media",
+      "meaning": "Understand meaning without coercive engagement",
+      "probe": "Measure voluntary recall not clicks",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoNodeRoleProof+",
+      "family": "Nodes/substrates",
+      "meaning": "Observed node capability rather than advertised role",
+      "probe": "Disconnect node and inspect lost function",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoSiteMirrorTruth+",
+      "family": "Nodes/substrates",
+      "meaning": "Independent host replica versus mere mirror link",
+      "probe": "Deny primary and fetch alternate digest",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoRadioFallback+",
+      "family": "Nodes/substrates",
+      "meaning": "Authorized communications after radio path failure",
+      "probe": "Disconnect preferred link and test fallback",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoDeviceCapabilityProof+",
+      "family": "Nodes/substrates",
+      "meaning": "Device-origin permitted command and response",
+      "probe": "Execute one reversible device canary",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoOfflineCellScore+",
+      "family": "Nodes/substrates",
+      "meaning": "Useful tasks surviving loss of upstream services",
+      "probe": "Isolate cell and run fixed task set",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoSurfaceRepairLoop+",
+      "family": "Nodes/substrates",
+      "meaning": "UI failure openly repaired without concealed action",
+      "probe": "Force error and verify state recovery",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoSubnetIsolationMap+",
+      "family": "Nodes/substrates",
+      "meaning": "Shared router boundary among purportedly separate nodes",
+      "probe": "Fail common router in simulation",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoLocalCloudHandoff+",
+      "family": "Nodes/substrates",
+      "meaning": "WorkID survives execution substrate transition",
+      "probe": "Interrupt cloud handoff and retry idempotently",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoHardwareWitness+",
+      "family": "Nodes/substrates",
+      "meaning": "Host-origin check on device and process liveness",
+      "probe": "Compare displayed health with host process",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoBatteryRunwayProof+",
+      "family": "Nodes/substrates",
+      "meaning": "Measured energy-backed survivability",
+      "probe": "Run bounded load under safe power test",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoChangeEligibility+",
+      "family": "Evolution/metaevolution",
+      "meaning": "All rules open to evidenced successor proposals",
+      "probe": "Challenge a formerly fixed rule safely",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoEvoMetaProbe+",
+      "family": "Evolution/metaevolution",
+      "meaning": "Test the selector deciding which changes deserve tests",
+      "probe": "Seed underestimated high-value candidate",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoSelectionDrift+",
+      "family": "Evolution/metaevolution",
+      "meaning": "Selector changes without new supporting evidence",
+      "probe": "Replay identical inputs under revised chooser",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoNoveltyTax+",
+      "family": "Evolution/metaevolution",
+      "meaning": "Human and maintenance cost of new vocabulary",
+      "probe": "Measure user tasks with and without extra labels",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoStableInvariantChallenge+",
+      "family": "Evolution/metaevolution",
+      "meaning": "Question stable rule without bypassing it",
+      "probe": "Stage counterexample under current approvals",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoVersionedTruth+",
+      "family": "Evolution/metaevolution",
+      "meaning": "Preserve scope and lineage as claims evolve",
+      "probe": "Display justified predecessor and successor",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoChangeReversal+",
+      "family": "Evolution/metaevolution",
+      "meaning": "Demonstrate rollback of proposed improvement",
+      "probe": "Restore exact earlier source after canary",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoDiscoveryGap+",
+      "family": "Evolution/metaevolution",
+      "meaning": "Missed value from overly restrictive exploration",
+      "probe": "Seed positive low-confidence options",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoUnexpectedGain+",
+      "family": "Evolution/metaevolution",
+      "meaning": "Replicable useful surprise outside original objective",
+      "probe": "Challenge outlier finding independently",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoMethodMutation+",
+      "family": "Evolution/metaevolution",
+      "meaning": "Evolution of term generator and tests themselves",
+      "probe": "Compare distinctness and comprehension",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoFutureBranchReceipt+",
+      "family": "Time/futures",
+      "meaning": "Assumptions and provenance of conditional future",
+      "probe": "Change assumption and update descendants",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoTimeWindowTrust+",
+      "family": "Time/futures",
+      "meaning": "Trust bounded by supported evidence interval",
+      "probe": "Expire evidence and require stale status",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoUnknownExpiry+",
+      "family": "Time/futures",
+      "meaning": "Unknown remains unknown without new observation",
+      "probe": "Advance clock without evidence",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoWakeByEvidence+",
+      "family": "Time/futures",
+      "meaning": "Dormant work resumes on delta not repeated words",
+      "probe": "Change digest and suppress duplicate wake",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoTemporalCutset+",
+      "family": "Time/futures",
+      "meaning": "Time-critical dependency affecting later recovery",
+      "probe": "Delay expiry or retention in simulation",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoForecastCalibration+",
+      "family": "Time/futures",
+      "meaning": "Score predictions against actual observed outcomes",
+      "probe": "Evaluate preregistered forecast sequence",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoDelayHarm+",
+      "family": "Time/futures",
+      "meaning": "Tradeoff between waiting and premature action",
+      "probe": "Compare safe delay to known deadline",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoDeferredChoice+",
+      "family": "Time/futures",
+      "meaning": "Future option retained without pretending selection",
+      "probe": "Exercise later only with fresh consent",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoPastDecisionReplay+",
+      "family": "Time/futures",
+      "meaning": "Reconstruct past choice under then-current knowledge",
+      "probe": "Replay without importing later outcomes",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoExpiryAwareStatus+",
+      "family": "Time/futures",
+      "meaning": "Evidence age visible on status surface",
+      "probe": "Age receipt until displayed state changes",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoSenseSplit+",
+      "family": "CoLex/meaning",
+      "meaning": "Separate incompatible senses sharing a label",
+      "probe": "Compare real user meaning contracts",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoAliasCollision+",
+      "family": "CoLex/meaning",
+      "meaning": "Similar names with incompatible concept identities",
+      "probe": "Inject duplicate name under new authority scope",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoTranslationDebt+",
+      "family": "CoLex/meaning",
+      "meaning": "Unaccounted loss crossing language and media",
+      "probe": "Back-translate and inspect obligations",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoRelationTypeProof+",
+      "family": "CoLex/meaning",
+      "meaning": "Typed edge evidence resists causality inflation",
+      "probe": "Feed analogy to causal consumer",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoTermPromotionBudget+",
+      "family": "CoLex/meaning",
+      "meaning": "Require benefit before expanding active lexicon",
+      "probe": "Compare decisions with versus without new name",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoContextMeaning+",
+      "family": "CoLex/meaning",
+      "meaning": "Sense bound to culture purpose and time",
+      "probe": "Check two conflicting regional definitions",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoSemanticCousins+",
+      "family": "CoLex/meaning",
+      "meaning": "Relate close but non-identical meanings",
+      "probe": "Find condition on which cousins differ",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoCountermeaning+",
+      "family": "CoLex/meaning",
+      "meaning": "Explicit anti-meaning blocks dangerous interpretation",
+      "probe": "Challenge reader with one invalid application",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoTermRetireTrail+",
+      "family": "CoLex/meaning",
+      "meaning": "Lineage preserved through term retirement",
+      "probe": "Resolve old pointer after rename",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoDisagreementBridge+",
+      "family": "CoLex/meaning",
+      "meaning": "Joint bounded task despite contested senses",
+      "probe": "Agree narrow contract without erasing dissent",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoEtherHypothesis+",
+      "family": "Speculative/testable",
+      "meaning": "Make CoEther imagery a falsifiable hypothesis",
+      "probe": "Preregister measurements and negative controls",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "SPECULATIVE_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoAuraBoundaryTest+",
+      "family": "Speculative/testable",
+      "meaning": "Separate subjective atmosphere from measured sensors",
+      "probe": "Compare ratings with sensed data",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "SPECULATIVE_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoTeleClaimFalsifier+",
+      "family": "Speculative/testable",
+      "meaning": "Blinded test of claimed nonordinary communication",
+      "probe": "Randomize targets and report all misses",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "SPECULATIVE_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoMythToExperiment+",
+      "family": "Speculative/testable",
+      "meaning": "Turn symbolic narrative into testable design idea",
+      "probe": "Declare result that changes a decision",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "SPECULATIVE_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoGdSideNonclaim+",
+      "family": "Speculative/testable",
+      "meaning": "Theological symbolism not empirical authority",
+      "probe": "Block symbolic claim used as physical proof",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "SPECULATIVE_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoWonderWithoutProof+",
+      "family": "Speculative/testable",
+      "meaning": "Wonder stays distinct from verified mechanism",
+      "probe": "Ask readers to classify evidence class",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "SPECULATIVE_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoOutlierRecheck+",
+      "family": "Speculative/testable",
+      "meaning": "Replicate anomalies without selective reporting",
+      "probe": "Use blinded repeat trials",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "SPECULATIVE_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoInversionGenerator+",
+      "family": "Speculative/testable",
+      "meaning": "Reverse assumptions to generate discriminating tests",
+      "probe": "Compare predictions under reversed premise",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "SPECULATIVE_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoUnknownMechanism+",
+      "family": "Speculative/testable",
+      "meaning": "Repeatable effect not yet explained causally",
+      "probe": "Separate reproducibility from mechanism",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "SPECULATIVE_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoStrangeButTestable+",
+      "family": "Speculative/testable",
+      "meaning": "Prefer unusual clear tests to vague familiar stories",
+      "probe": "Rank by discriminating prediction quality",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "SPECULATIVE_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoLegitimacyCutset+",
+      "family": "Governance/rights",
+      "meaning": "Minimum missing permission preventing effect",
+      "probe": "Remove one required authorization",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoAuthoritySplitBrain+",
+      "family": "Governance/rights",
+      "meaning": "Competing claims to one exclusive effect writer",
+      "probe": "Race writers with fencing",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoConsentEpoch+",
+      "family": "Governance/rights",
+      "meaning": "Revoked consent cannot be replayed later",
+      "probe": "Replay an old grant after revoke",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoPublicReleaseFence+",
+      "family": "Governance/rights",
+      "meaning": "Review candidate separate from publication",
+      "probe": "Ensure test cannot create live endpoint",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoRightsMigrationGuard+",
+      "family": "Governance/rights",
+      "meaning": "Contributor rights not silently reassigned",
+      "probe": "Rename volunteer as commercial and HOLD",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoCommonsExitPath+",
+      "family": "Governance/rights",
+      "meaning": "Right to withdraw and retain unrelated rights",
+      "probe": "Exercise portable opt-out",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoGovernanceMinority+",
+      "family": "Governance/rights",
+      "meaning": "Preserve affected dissent in group decisions",
+      "probe": "Inspect objection handling in mock vote",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoAuditExhaustion+",
+      "family": "Governance/rights",
+      "meaning": "Critical review capacity overwhelmed by proposals",
+      "probe": "Increase arrivals and measure unchecked work",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoScalableAccountability+",
+      "family": "Governance/rights",
+      "meaning": "Delegated work retains attributable authority",
+      "probe": "Trace one effect through roles",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    },
+    {
+      "term": "CoRevocableMandate+",
+      "family": "Governance/rights",
+      "meaning": "Delegated action rights expire and revoke",
+      "probe": "Attempt action after mandate withdrawal",
+      "status": "UNREGISTERED_CANDIDATE",
+      "epistemic_lane": "DESIGN_HYPOTHESIS",
+      "does_not_mean": "Not proof of live function, canon, receiver acceptance or authority."
+    }
+  ]
+}
