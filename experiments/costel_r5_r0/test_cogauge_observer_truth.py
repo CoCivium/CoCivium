@@ -3,6 +3,7 @@
 Pure synthetic contract. Matching caller-provided strings are unverified
 receipt claims, not independent receiver-origin evidence or useful results.
 """
+import math
 import unittest
 from dataclasses import dataclass
 
@@ -21,8 +22,20 @@ class Evidence:
     tested_runtime_seconds: float = 0.0
 
 
+def _valid_seconds(value, *, positive=False):
+    """Accept only finite numeric durations; fail closed on corrupt feed ages."""
+    if type(value) not in (int, float):
+        return False
+    try:
+        return math.isfinite(value) and (value > 0 if positive else value >= 0)
+    except OverflowError:
+        return False
+
+
 def projection(e: Evidence, freshness_ttl=30.0):
-    if e.sample_age_seconds is None or e.sample_age_seconds < 0:
+    if not _valid_seconds(e.sample_age_seconds) or not _valid_seconds(
+        freshness_ttl, positive=True
+    ):
         observer = "UNKNOWN"
     elif e.sample_age_seconds > freshness_ttl:
         observer = "STALE"
@@ -67,6 +80,61 @@ class HonestProjectionTests(unittest.TestCase):
 
     def test_unknown_sample_not_running(self):
         self.assertEqual(projection(Evidence())["observer"], "UNKNOWN")
+
+    def test_nonfinite_and_malformed_sample_age_fail_closed(self):
+        # NaN previously skipped both < 0 and > ttl comparisons,
+        # incorrectly promoting an invalid sample age to FRESH_LOCAL_SAMPLE.
+        values = (
+            ("nan", float("nan")),
+            ("positive_infinity", float("inf")),
+            ("negative_infinity", float("-inf")),
+            ("negative_age", -1.0),
+            ("bool_not_seconds", True),
+            ("string_not_seconds", "7"),
+            ("huge_integer", 10**1000),
+        )
+        for label, age in values:
+            with self.subTest(value=label):
+                result = projection(Evidence(sample_age_seconds=age, source_status="RUNNING"))
+                self.assertEqual(result["observer"], "UNKNOWN")
+                self.assertFalse(result["display_green_effect"])
+
+    def test_invalid_freshness_policy_fails_closed(self):
+        values = (
+            ("nan", float("nan")),
+            ("positive_infinity", float("inf")),
+            ("negative_infinity", float("-inf")),
+            ("negative", -1.0),
+            ("zero", 0),
+            ("boolean", True),
+            ("string", "30"),
+            ("huge_integer", 10**1000),
+        )
+        for label, ttl in values:
+            with self.subTest(policy=label):
+                result = projection(Evidence(sample_age_seconds=3), freshness_ttl=ttl)
+                self.assertEqual(result["observer"], "UNKNOWN")
+                self.assertFalse(result["display_green_effect"])
+
+    def test_valid_freshness_threshold_boundary(self):
+        self.assertEqual(projection(Evidence(sample_age_seconds=30), freshness_ttl=30)["observer"],
+                         "FRESH_LOCAL_SAMPLE")
+        self.assertEqual(projection(Evidence(sample_age_seconds=30.01), freshness_ttl=30)["observer"],
+                         "STALE")
+        self.assertEqual(projection(Evidence(sample_age_seconds=0), freshness_ttl=30)["observer"],
+                         "FRESH_LOCAL_SAMPLE")
+
+    def test_invalid_age_cannot_become_ack_even_with_claimed_receiver(self):
+        spoof = Evidence(
+            sample_age_seconds=float("nan"), source_status="RUNNING",
+            work_id="w1", source_hash="s", producer_receipt_hash="p",
+            receiver_identity="claimed_receiver", receiver_readback_hash="p",
+            receiver_fresh=True, work_effect_verified=True
+        )
+        result = projection(spoof)
+        self.assertEqual(result["observer"], "UNKNOWN")
+        self.assertEqual(result["receiver_independence"], "NOT_PROVEN")
+        self.assertFalse(result["display_green_effect"])
 
     def test_standby_false_green_regression(self):
         for status in ("STANDBY", "RELEASE_PASS", "STOPPED"):
