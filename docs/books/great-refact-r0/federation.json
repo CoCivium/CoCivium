@@ -1,0 +1,127 @@
+{
+  "schema": "CoCivium.CoBook.ReaderFederation.Candidate.R0",
+  "date": "2026-10-25",
+  "state": "SPECIMEN_NOT_SUBSTACK_CONFIGURATION_NOT_SENT",
+  "publication": "RickPublic",
+  "homepage": "https://rickpublic.substack.com/",
+  "strategy": "ONE_PUBLICATION_FIRST_THREE_OPT_IN_SECTIONS_LATER_MORE_ONLY_ON_DEMAND",
+  "reader_selection": "SELF_SELECTED_INTEREST_NOT_SENSITIVE_TRAIT_INFERENCE",
+  "sections": [
+    {
+      "name": "Everyday Futures",
+      "task": "One useful, plain-language first experience",
+      "audience": "Readers choosing ordinary technology and life questions",
+      "active": "CANDIDATE",
+      "default_subscribe": false
+    },
+    {
+      "name": "Tools & Builders",
+      "task": "Open examples, interoperability tests and code",
+      "audience": "Readers choosing implementation details",
+      "active": "CANDIDATE",
+      "default_subscribe": false
+    },
+    {
+      "name": "Evidence & Dissent",
+      "task": "Sources, competing explanations and failures",
+      "audience": "Readers choosing scientific or civic evidence",
+      "active": "CANDIDATE",
+      "default_subscribe": false
+    },
+    {
+      "name": "Stories & Meaning",
+      "task": "Explicit fiction, philosophy and optional spirituality",
+      "audience": "Readers who deliberately opt into creative interpretation",
+      "active": "DEFERRED",
+      "default_subscribe": false
+    },
+    {
+      "name": "Classroom & Giftware",
+      "task": "Accessible learning kits and free examples",
+      "audience": "Readers choosing educational formats",
+      "active": "DEFERRED",
+      "default_subscribe": false
+    },
+    {
+      "name": "Research & Review",
+      "task": "Technical critiques and scholarly questions",
+      "audience": "Readers choosing research depth",
+      "active": "DEFERRED",
+      "default_subscribe": false
+    }
+  ],
+  "grammar": [
+    {
+      "id": "chapters",
+      "size": 24
+    },
+    {
+      "id": "reader_tasks",
+      "size": 20
+    },
+    {
+      "id": "domains",
+      "size": 12
+    },
+    {
+      "id": "lenses",
+      "size": 10
+    },
+    {
+      "id": "formats",
+      "size": 9
+    },
+    {
+      "id": "languages",
+      "size": 40
+    },
+    {
+      "id": "difficulty_modes",
+      "size": 8
+    },
+    {
+      "id": "temporal_modes",
+      "size": 7
+    },
+    {
+      "id": "challenge_postures",
+      "size": 15
+    },
+    {
+      "id": "placements",
+      "size": 12
+    },
+    {
+      "id": "access_modes",
+      "size": 4
+    },
+    {
+      "id": "end_actions",
+      "size": 6
+    }
+  ],
+  "syntactic_combinations": 5016453120000,
+  "materialized_examples": 1000,
+  "publishing_limit_per_wave": 1,
+  "subscriber_contact": "NO_SEND_WITHOUT_APPROVAL_AND_CURRENT_PROVIDER_RECEIPT",
+  "editorial_defaults": {
+    "no_tracking": true,
+    "no_dark_patterns": true,
+    "no_fear_of_missing_out": true,
+    "no_auto_enrollment_in_new_sections": true,
+    "no_inference_from_religion_or_politics": true,
+    "private_library_no_auto_publication": true,
+    "preserve_edition_snapshots": true,
+    "historical_links_durable": true,
+    "genuine_time_sensitive_offers_clearly_labelled": true,
+    "source_hygiene": "OWNER_VERIFIED_RIGHTS_AND_PROVENANCE",
+    "public_outreach": "ONE_CONSENTING_READER_CANARY_AFTER_SAFE_LANDING"
+  },
+  "next_proof": "One safe source-pinned, independent first reader of the pilot chapter; report comprehension, task value, privacy and optional section choice.",
+  "nonclaims": [
+    "TRILLION_DESCRIPTORS_NE_TRILLION_READERS",
+    "CANDIDATE_SECTION_NE_CREATED_SUBSTACK_SECTION",
+    "POST_SOURCE_NE_PUBLICATION",
+    "RECOMMENDATION_NE_INDEPENDENT_ENDORSEMENT"
+  ]
+}

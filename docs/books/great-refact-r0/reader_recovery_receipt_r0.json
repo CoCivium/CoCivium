@@ -1,0 +1,38 @@
+{
+  "schema": "CoCivium.CoBook.ReaderRecovery.Receipt.R0",
+  "observed_on": "2026-10-25",
+  "source_archive": "CoBook_The_Great_ReFact_R0.zip",
+  "source_archive_sha256": "dac343282ba34739446dbf426f677d08f7b4a57b0d6c987c914880709370d385",
+  "zip_integrity": "PASS",
+  "manifest_entries_verified": 19,
+  "source_chapter_blob": "21bb508b5b0fe9e34011590539993e14d4325edc",
+  "source_federation_blob": "64ecef1f9c8c4230333f6ea303c45cf802307ba0",
+  "reader_sha256": "c529bc2c628059b97d0101716f259926718fc8ccc8aab241bc89c0e52a65d2a0",
+  "reader_git_blob": "cc43b8d5f11ebf03e563ef48139846dfc6f386ff",
+  "reader_bytes": 19160,
+  "source_tests": {
+    "result": "PASS",
+    "count": 45
+  },
+  "isolated_chromium": {
+    "result": "PASS",
+    "desktop": "1366x950",
+    "mobile": "390x844",
+    "lenses": 4,
+    "no_network": true,
+    "no_js_errors": true,
+    "no_horizontal_overflow": true
+  },
+  "draft_branch_only": true,
+  "substack_published": false,
+  "independent_reader_accepted": false,
+  "private_archive_not_reproduced": true,
+  "unmerged_r1_r2_sources": "DISTINCT_CANDIDATE_LINEAGES",
+  "nonclaims": [
+    "GIT_SOURCE_NE_PUBLIC_SITE",
+    "LIBRARY_ARCHIVE_NE_COSTEAD_LANDING",
+    "BROWSER_PASS_NE_HUMAN_ACCEPTANCE",
+    "PUBLISHING_REQUIRES_EDITORIAL_RIGHTS_APPROVAL",
+    "NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF"
+  ]
+}
