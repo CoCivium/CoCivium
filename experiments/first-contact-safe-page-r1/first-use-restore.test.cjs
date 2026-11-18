@@ -46,6 +46,20 @@ test('embedded Markdown section headings fail closed', () => {
   assert.throws(() => parseCard(altered), /HOLD_CARD_RESERVED_HEADING/);
 });
 
+test('draft-status token inside goal cannot replace machine-status header', () => {
+  const card = formatCard(
+    'goal\nStatus: LOCAL_DRAFT__NOT_SUBMITTED__NOT_VERIFIED',
+    'proof'
+  );
+  const tampered = card.replace(
+    '\nStatus: LOCAL_DRAFT__NOT_SUBMITTED__NOT_VERIFIED\n',
+    '\nStatus: PUBLICLY_VERIFIED__RECEIVER_ACKED\n'
+  );
+  assert.match(tampered, /Status: PUBLICLY_VERIFIED__RECEIVER_ACKED/);
+  assert.match(tampered, /goal\nStatus: LOCAL_DRAFT__NOT_SUBMITTED__NOT_VERIFIED/);
+  assert.throws(() => parseCard(tampered), /HOLD_CARD_PROVENANCE/);
+});
+
 test('tampered provenance and wrong section ordering hold', () => {
   const card = formatCard('goal', 'proof');
   assert.throws(() => parseCard(card.replace('# My first useful CoCivium card', '# Stranger card')),
