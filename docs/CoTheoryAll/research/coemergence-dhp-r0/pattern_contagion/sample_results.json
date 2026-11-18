@@ -1,0 +1,96 @@
+{
+  "backcast": {
+    "candidate_upstream": [
+      "oomph",
+      "pattern",
+      "question",
+      "speedo"
+    ],
+    "causality_established": false,
+    "mode": "POSSIBLE_UPSTREAM_LEVERS_NOT_EFFECT_PROMISES",
+    "retrocausality_claim": false,
+    "target": "receiver"
+  },
+  "backtrace": {
+    "candidate_upstream": [
+      "pattern",
+      "question"
+    ],
+    "causality_established": false,
+    "mode": "POSSIBLE_ANCESTORS_NOT_CAUSES",
+    "retrocausality_claim": false,
+    "target": "speedo"
+  },
+  "coobject_relation": "CANDIDATE_EDGES_ONLY__NO_SOURCE_OR_PERMISSION_REWRITE",
+  "cotume_relation": "UNRESOLVED_ALIAS_CANDIDATE__DO_NOT_NORMALIZE",
+  "counterfactual": {
+    "delta_synthetic_active": -1,
+    "mode": "STRUCTURAL_COUNTERFACTUAL_SYNTHETIC_ONLY",
+    "real_world_causal_effect": null,
+    "reference_synthetic_active": 4,
+    "removed_edges_synthetic_active": 3
+  },
+  "forward": {
+    "active": [
+      "oomph",
+      "pattern",
+      "question",
+      "speedo"
+    ],
+    "independent_receiver_ack_count": null,
+    "mode": "SYNTHETIC_FORWARD_PROJECTION_NOT_FORECAST",
+    "observed_real_world_transmission": false,
+    "synthetic_adoption_count": 4,
+    "trail": [
+      {
+        "cumulative_active": 1,
+        "newly_active": [
+          "question"
+        ],
+        "tick": 0
+      },
+      {
+        "cumulative_active": 2,
+        "newly_active": [
+          "pattern"
+        ],
+        "tick": 1
+      },
+      {
+        "cumulative_active": 4,
+        "newly_active": [
+          "oomph",
+          "speedo"
+        ],
+        "tick": 2
+      },
+      {
+        "cumulative_active": 4,
+        "newly_active": [],
+        "tick": 3
+      },
+      {
+        "cumulative_active": 4,
+        "newly_active": [],
+        "tick": 4
+      }
+    ],
+    "verified_benefit_count": null
+  },
+  "oomph_projection": {
+    "automatic_acceleration": false,
+    "pace_advice": "HOLD_EFFECTS_RESEARCH_ONLY",
+    "source_reason": "NO_VERIFIED_RECEIVER_BENEFIT_OR_EFFECT_AUTHORITY"
+  },
+  "schema": "CoAll.PatternContagion.SyntheticEvidence.R0",
+  "speedo_projection": {
+    "activity_needle": 4,
+    "benefit_needle": null,
+    "counterneedle": "SYNTHETIC_ONLY_CORRELATED_TRANSMISSION_AND_COST_NOT_MEASURED",
+    "independent_proof_needle": null,
+    "status": "NOT_LIVE_TELEMETRY",
+    "time_basis": "SIMULATION_TICK_NOT_WALL_CLOCK"
+  },
+  "state": "SOURCE_ONLY_SYNTHETIC_NO_RECEIVER_NO_RUNTIME_NO_AUTHORITIES",
+  "work_id": "CoPatternContagion.20261110.R0"
+}

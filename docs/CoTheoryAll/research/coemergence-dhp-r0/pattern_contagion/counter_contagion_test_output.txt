@@ -1,0 +1,34 @@
+test_barred_node_cannot_receive_claim_or_notice (test_counter_contagion_r0.CounterContagionR0.test_barred_node_cannot_receive_claim_or_notice) ... ok
+test_boolean_start_rejected (test_counter_contagion_r0.CounterContagionR0.test_boolean_start_rejected) ... ok
+test_claim_history_remains (test_counter_contagion_r0.CounterContagionR0.test_claim_history_remains) ... ok
+test_cli_roundtrip (test_counter_contagion_r0.CounterContagionR0.test_cli_roundtrip) ... ok
+test_correction_off_baseline (test_counter_contagion_r0.CounterContagionR0.test_correction_off_baseline) ... ok
+test_corrupted_rights_rejected (test_counter_contagion_r0.CounterContagionR0.test_corrupted_rights_rejected) ... ok
+test_cross_graph_node_drift_rejected (test_counter_contagion_r0.CounterContagionR0.test_cross_graph_node_drift_rejected) ... ok
+test_deterministic (test_counter_contagion_r0.CounterContagionR0.test_deterministic) ... ok
+test_disallowed_critic_seed_rejected (test_counter_contagion_r0.CounterContagionR0.test_disallowed_critic_seed_rejected) ... ok
+test_duplicate_copy_rejected (test_counter_contagion_r0.CounterContagionR0.test_duplicate_copy_rejected) ... ok
+test_effect_class_rejected (test_counter_contagion_r0.CounterContagionR0.test_effect_class_rejected) ... ok
+test_false_truth_input_rejected (test_counter_contagion_r0.CounterContagionR0.test_false_truth_input_rejected) ... ok
+test_fixture_binds (test_counter_contagion_r0.CounterContagionR0.test_fixture_binds) ... ok
+test_graph_order_independent (test_counter_contagion_r0.CounterContagionR0.test_graph_order_independent) ... ok
+test_late_start_over_horizon_rejected (test_counter_contagion_r0.CounterContagionR0.test_late_start_over_horizon_rejected) ... ok
+test_nested_effect_rejected (test_counter_contagion_r0.CounterContagionR0.test_nested_effect_rejected) ... ok
+test_no_auto_oomph_effect (test_counter_contagion_r0.CounterContagionR0.test_no_auto_oomph_effect) ... ok
+test_no_automatic_spread_when_correction_edges_removed (test_counter_contagion_r0.CounterContagionR0.test_no_automatic_spread_when_correction_edges_removed) ... ok
+test_no_claim_reach_when_blocked_receiver (test_counter_contagion_r0.CounterContagionR0.test_no_claim_reach_when_blocked_receiver) ... ok
+test_no_retroactive_activity (test_counter_contagion_r0.CounterContagionR0.test_no_retroactive_activity) ... ok
+test_pretend_causal_edge_rejected (test_counter_contagion_r0.CounterContagionR0.test_pretend_causal_edge_rejected) ... ok
+test_receiver_lag (test_counter_contagion_r0.CounterContagionR0.test_receiver_lag) ... ok
+test_shared_origin_not_independent_correction (test_counter_contagion_r0.CounterContagionR0.test_shared_origin_not_independent_correction) ... ok
+test_source_copy_ne_independence (test_counter_contagion_r0.CounterContagionR0.test_source_copy_ne_independence) ... ok
+test_three_baselines (test_counter_contagion_r0.CounterContagionR0.test_three_baselines) ... ok
+test_unknown_benefit_and_ack (test_counter_contagion_r0.CounterContagionR0.test_unknown_benefit_and_ack) ... ok
+test_unknown_graph_effect_field_rejected (test_counter_contagion_r0.CounterContagionR0.test_unknown_graph_effect_field_rejected) ... ok
+test_unknown_top_level_effect_field_rejected (test_counter_contagion_r0.CounterContagionR0.test_unknown_top_level_effect_field_rejected) ... ok
+test_wrong_source_type_rejected (test_counter_contagion_r0.CounterContagionR0.test_wrong_source_type_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 29 tests in 0.640s
+
+OK

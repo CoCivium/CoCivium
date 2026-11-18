@@ -1,0 +1,280 @@
+{
+  "cards": [
+    {
+      "authority": "NONE",
+      "id": "DHP-EM-027",
+      "issuer": null,
+      "measured_benefit": null,
+      "question_or_claim": "High success rates may conceal harms, inequity and lost options.",
+      "requires_receiver_review": true,
+      "status": "PROPOSED",
+      "test_or_challenge": "Compare with strong multiobjective decision worksheet, actual receiver outcomes; fail if no net advantage.",
+      "theme": "WORKS_NE_BETTER",
+      "type": "RESEARCH_QUESTION_NOT_VERIFIED"
+    },
+    {
+      "authority": "NONE",
+      "id": "DHP-EM-028",
+      "issuer": null,
+      "measured_benefit": null,
+      "question_or_claim": "Incomparable outcome vectors should remain undecided.",
+      "requires_receiver_review": true,
+      "status": "PROPOSED",
+      "test_or_challenge": "Counterexample where a high proxy score worsens harm; do not auto-rank.",
+      "theme": "PARETO_VS_SCALAR",
+      "type": "RESEARCH_QUESTION_NOT_VERIFIED"
+    },
+    {
+      "authority": "NONE",
+      "id": "DHP-EM-029",
+      "issuer": null,
+      "measured_benefit": null,
+      "question_or_claim": "Bounded challenge/weird reserve may improve discovery.",
+      "requires_receiver_review": true,
+      "status": "PROPOSED",
+      "test_or_challenge": "Equal budget comparison to CoExperimentSelector, random control and strong baseline.",
+      "theme": "EXPLORATION_RESERVE",
+      "type": "RESEARCH_QUESTION_NOT_VERIFIED"
+    },
+    {
+      "authority": "NONE",
+      "id": "DHP-EM-030",
+      "issuer": null,
+      "measured_benefit": null,
+      "question_or_claim": "Seeded variation can expose blind spots but may add only noise.",
+      "requires_receiver_review": true,
+      "status": "PROPOSED",
+      "test_or_challenge": "Pre-register seed/sampling frame; compare information gain per cost including null results.",
+      "theme": "RANDOM_PERTURBATIONS",
+      "type": "RESEARCH_QUESTION_NOT_VERIFIED"
+    },
+    {
+      "authority": "NONE",
+      "id": "DHP-EM-031",
+      "issuer": null,
+      "measured_benefit": null,
+      "question_or_claim": "Optimizing proxy measures can degrade target outcomes.",
+      "requires_receiver_review": true,
+      "status": "PROPOSED",
+      "test_or_challenge": "Frozen holdout with proxy-vs-target decoupling and hidden reward feedback.",
+      "theme": "GOODHART_GUARD",
+      "type": "RESEARCH_QUESTION_NOT_VERIFIED"
+    },
+    {
+      "authority": "NONE",
+      "id": "DHP-EM-032",
+      "issuer": null,
+      "measured_benefit": null,
+      "question_or_claim": "Previously successful patterns can fail under drift.",
+      "requires_receiver_review": true,
+      "status": "PROPOSED",
+      "test_or_challenge": "Time-split tests and retained negative versions; if drift fails detection mark held.",
+      "theme": "RETIRE_STALE_PATTERNS",
+      "type": "RESEARCH_QUESTION_NOT_VERIFIED"
+    },
+    {
+      "authority": "NONE",
+      "id": "DHP-EM-033",
+      "issuer": null,
+      "measured_benefit": null,
+      "question_or_claim": "Value of reversibility and untried futures is not captured by current success.",
+      "requires_receiver_review": true,
+      "status": "PROPOSED",
+      "test_or_challenge": "Compare choice-set retention and regret under changed future constraints.",
+      "theme": "OPTIONALITY",
+      "type": "RESEARCH_QUESTION_NOT_VERIFIED"
+    },
+    {
+      "authority": "NONE",
+      "id": "DHP-EM-034",
+      "issuer": null,
+      "measured_benefit": null,
+      "question_or_claim": "Effects on nonparticipants and future stakeholders are absent from expressed demand.",
+      "requires_receiver_review": true,
+      "status": "PROPOSED",
+      "test_or_challenge": "Compare plural G_dSide candidate futures with supply/demand hybrid; require consent and harms.",
+      "theme": "MISSING_DEMAND",
+      "type": "RESEARCH_QUESTION_NOT_VERIFIED"
+    }
+  ],
+  "next": "DRAFT_PR_ADVERSARIAL_REVIEW_THEN_EQUAL_BUDGET_INDEPENDENT_BENCHMARK",
+  "not_claims": [
+    "PROVEN_SUPERIORITY",
+    "AUTONOMOUS_RUNTIME",
+    "DIVINE_WILL_DETECTED",
+    "ACADEMIC_CREDENTIAL_ISSUED",
+    "GLOBAL_SESSION_SYNCHRONIZATION"
+  ],
+  "rails": [
+    "WORKS_NE_BETTER",
+    "RANDOM_NE_GOOD",
+    "PARETO_NE_TRUTH",
+    "METRIC_NE_VALUE",
+    "VARIATION_NE_EXPERIMENT",
+    "SOURCE_LEVEL_TEST_NE_EVIDENCE_OF_REAL_WORLD_BENEFIT",
+    "RESEARCH_AGENDA_NE_DHP_CREDENTIAL",
+    "G_D_SIDE_NE_DIVINE_INSTRUCTION"
+  ],
+  "relations": [
+    {
+      "authority": "NONE",
+      "class": "CANDIDATE_TYPED_EDGE",
+      "evidence_class": "DESIGN_PROPOSAL",
+      "object": "CoBetter+",
+      "predicate": "IS_NOT_SUFFICIENT_FOR",
+      "subject": "CoWorks+"
+    },
+    {
+      "authority": "NONE",
+      "class": "CANDIDATE_TYPED_EDGE",
+      "evidence_class": "DESIGN_PROPOSAL",
+      "object": "HardRightsConsentRails+",
+      "predicate": "REQUIRES",
+      "subject": "CoBetter+"
+    },
+    {
+      "authority": "NONE",
+      "class": "CANDIDATE_TYPED_EDGE",
+      "evidence_class": "DESIGN_PROPOSAL",
+      "object": "CoCounterfactualBaseline+",
+      "predicate": "REQUIRES",
+      "subject": "CoBetter+"
+    },
+    {
+      "authority": "NONE",
+      "class": "CANDIDATE_TYPED_EDGE",
+      "evidence_class": "DESIGN_PROPOSAL",
+      "object": "CoUncertainty+",
+      "predicate": "REQUIRES",
+      "subject": "CoBetter+"
+    },
+    {
+      "authority": "NONE",
+      "class": "CANDIDATE_TYPED_EDGE",
+      "evidence_class": "DESIGN_PROPOSAL",
+      "object": "CoCounterPattern+",
+      "predicate": "CHALLENGED_BY",
+      "subject": "CoPatternGain+"
+    },
+    {
+      "authority": "NONE",
+      "class": "CANDIDATE_TYPED_EDGE",
+      "evidence_class": "DESIGN_PROPOSAL",
+      "object": "CoSeededExploration+",
+      "predicate": "SAMPLED_BY",
+      "subject": "CoVariation+"
+    },
+    {
+      "authority": "NONE",
+      "class": "CANDIDATE_TYPED_EDGE",
+      "evidence_class": "DESIGN_PROPOSAL",
+      "object": "CoExperimentSelector+",
+      "predicate": "COMPARED_WITH",
+      "subject": "CoRandomControl+"
+    },
+    {
+      "authority": "NONE",
+      "class": "CANDIDATE_TYPED_EDGE",
+      "evidence_class": "DESIGN_PROPOSAL",
+      "object": "EligibleMinorityHypotheses+",
+      "predicate": "PROTECTS",
+      "subject": "CoDissentReserve+"
+    },
+    {
+      "authority": "NONE",
+      "class": "CANDIDATE_TYPED_EDGE",
+      "evidence_class": "DESIGN_PROPOSAL",
+      "object": "MissingVsZeroVsUnobservedVsRefuted+",
+      "predicate": "TYPES",
+      "subject": "CoNull+"
+    },
+    {
+      "authority": "NONE",
+      "class": "CANDIDATE_TYPED_EDGE",
+      "evidence_class": "DESIGN_PROPOSAL",
+      "object": "ComparableUnitsAndTimeCutoffs+",
+      "predicate": "REQUIRES",
+      "subject": "CoDirectionalDelta+"
+    },
+    {
+      "authority": "NONE",
+      "class": "CANDIDATE_TYPED_EDGE",
+      "evidence_class": "DESIGN_PROPOSAL",
+      "object": "TransferProofAndFailureLedger+",
+      "predicate": "REQUIRES",
+      "subject": "CoPayForward+"
+    },
+    {
+      "authority": "NONE",
+      "class": "CANDIDATE_TYPED_EDGE",
+      "evidence_class": "DESIGN_PROPOSAL",
+      "object": "PluralRevisableFutures+",
+      "predicate": "PROPOSES",
+      "subject": "G_dSide+"
+    },
+    {
+      "authority": "NONE",
+      "class": "CANDIDATE_TYPED_EDGE",
+      "evidence_class": "DESIGN_PROPOSAL",
+      "object": "OrdinaryRecombination+",
+      "predicate": "CAN_BE_CHALLENGED_BY",
+      "subject": "CoEmergence+"
+    },
+    {
+      "authority": "NONE",
+      "class": "CANDIDATE_TYPED_EDGE",
+      "evidence_class": "DESIGN_PROPOSAL",
+      "object": "ReviewableResearchArtifacts+",
+      "predicate": "FEEDS",
+      "subject": "CoDhP+"
+    },
+    {
+      "authority": "NONE",
+      "class": "CANDIDATE_TYPED_EDGE",
+      "evidence_class": "DESIGN_PROPOSAL",
+      "object": "AcademicCredential+",
+      "predicate": "DOES_NOT_CONFER",
+      "subject": "CoDhP+"
+    }
+  ],
+  "research_status": "PUBLIC_SAFE_REVIEW_CANDIDATE_NOT_CANON_NOT_RUNTIME",
+  "reuse": [
+    {
+      "title": "COEXPERIMENT_SELECTOR_R0.md",
+      "url": "https://github.com/CoCivium/CoCivium/blob/main/docs/Architecture/COEXPERIMENT_SELECTOR_R0.md"
+    },
+    {
+      "title": "GDSIDE_COPRIMATH_GSLOOP_PUBLIC_R0.md",
+      "url": "https://github.com/CoCivium/CoCivium/blob/main/docs/Evolution/GDSIDE_COPRIMATH_GSLOOP_PUBLIC_R0.md"
+    },
+    {
+      "title": "CoTheoryAll_Substack_Draft_2026-10-06.md",
+      "url": "https://github.com/CoCivium/CoCivium/blob/main/docs/Public/CoTheoryAll_Substack_Draft_2026-10-06.md"
+    }
+  ],
+  "selector_fixture": {
+    "baseline": "NO_CHANGE",
+    "contrast": "STRONG_EXISTING_SELECTOR_UNRUN",
+    "effect_authority": "NONE",
+    "primary_class": "SYNTHETIC_SOFTWARE_CHECK_ONLY",
+    "program": "cobetter_variation_fixture_r0.py",
+    "randomness": {
+      "algorithm": "python_random.Random",
+      "budget": 3,
+      "distribution": "uniform_per_lane_from_frozen_sorted_candidates",
+      "sampling_frame": "eligible_candidates_by_lane",
+      "seed": 13
+    },
+    "results": "cobetter_variation_synthetic_selection.json",
+    "tests": "cobetter_variation_test_output.txt",
+    "unresolved": [
+      "independent_reviewer",
+      "future_only_test",
+      "measured_real_benefit",
+      "execution_receiver",
+      "comparative_benchmark"
+    ]
+  },
+  "version": "0.1-draft",
+  "work_id": "COBETTER_VARIATION_INVERSION_R0_20261109"
+}

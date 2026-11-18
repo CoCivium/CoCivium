@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="dark">
+<title>CoUniStax | Pattern Transfer Lab R0</title>
+<style>
+:root{font-family:system-ui,-apple-system,Segoe UI,Arial,sans-serif;color-scheme:dark;background:#0c1222;color:#f1f5fc;--panel:#182437;--border:#41536f;--dim:#c4d0e2;--mint:#85ead2;--amber:#ffce8a}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(ellipse at 100% 0%,#223953 0%,#0c1222 60%);line-height:1.55}
+main{max-width:920px;margin:0 auto;padding:clamp(16px,3vw,36px) 18px 64px}
+header{border-bottom:1px solid var(--border);padding-bottom:18px}
+.eyebrow{text-transform:uppercase;letter-spacing:.14em;font-weight:750;color:var(--mint);font-size:.76rem}
+h1{font-size:clamp(1.9rem,5vw,3rem);line-height:1.1;margin:8px 0 14px}
+h2{font-size:1.35rem;margin:0 0 9px}
+h3{font-size:1.07rem;margin:0}
+p{margin:10px 0}
+.lead{font-size:1.13rem;color:var(--dim);max-width:720px}
+.notice{border:1px solid #806c51;background:#302b31;border-radius:12px;padding:15px;margin:20px 0}
+.panel{background:var(--panel);border:1px solid var(--border);padding:clamp(18px,3vw,26px);border-radius:16px;margin:18px 0}
+.case{min-height:310px}
+.progress{color:var(--mint);font-weight:750;letter-spacing:.03em}
+.claim{font-size:1.13rem;font-weight:680;margin:19px 0}
+.facts{background:#101b2c;border-left:3px solid var(--mint);border-radius:8px;padding:16px 18px}
+.facts p{margin:0}
+.facts dl{margin:0}
+.facts dt{font-weight:740;color:var(--mint);margin-top:10px}
+.facts dt:first-child{margin-top:0}
+.facts dd{margin:3px 0 0}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px}
+button{background:#244b60;border:1px solid #83d7df;border-radius:10px;color:#f3fcff;padding:13px 17px;min-height:46px;font:inherit;font-weight:650;cursor:pointer}
+button:focus-visible,a:focus-visible{outline:3px solid var(--amber);outline-offset:3px}
+button:hover:not(:disabled){background:#315f72}
+button:disabled{opacity:.48;cursor:default}
+button.secondary{background:#322e43;border-color:#8e84bb}
+button[hidden],[hidden]{display:none!important}
+small,.minor{color:var(--dim)}
+#choiceStatus{min-height:30px;color:var(--dim);margin-top:12px}
+#result ul{padding-left:24px}
+#result li{margin:12px 0}
+#receipt{white-space:pre-wrap;overflow-wrap:anywhere;background:#0d1727;border:1px solid var(--border);padding:15px;font-size:.86rem;border-radius:10px}
+footer{margin-top:22px;border-top:1px solid var(--border);padding-top:18px;color:var(--dim);font-size:.9rem}
+a{color:var(--mint)}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation:none!important}}
+</style>
+</head>
+<body>
+<main>
+<header>
+<div class="eyebrow">CoCivium · CoUniStax+ · CoTheoryAll+ · R0</div>
+<h1>When is a familiar pattern a useful idea, not a false conclusion?</h1>
+<p class="lead">Six short thought experiments. Decide whether each proposed transfer is supported <em>at the limited scope stated</em>. Same appearance does not establish the same mechanism.</p>
+</header>
+<div class="notice"><strong>Synthetic comparison, not scientific validation.</strong> Your presentation format is assigned locally. Both formats contain the same facts and questions. No account, tracking, network requests, microphone, clipboard access, downloads or automatic reporting. This page is a source-level research prototype, not a deployed service or proof of independent participants.</div>
+<section id="quiz" class="panel case" aria-labelledby="caseTitle">
+<div class="progress" id="progress" role="status" aria-live="polite">Case 1 of 6</div>
+<h2 id="caseTitle">Comparing two systems</h2>
+<div class="facts" id="facts"></div>
+<p class="claim" id="claim"></p>
+<p class="minor">Is that particular proposed transfer justified as written?</p>
+<div class="actions" aria-label="Choose one answer">
+<button id="yes" type="button">Supported</button>
+<button id="no" type="button" class="secondary">Not supported</button>
+<button id="next" type="button" hidden>Next case</button>
+</div>
+<div id="choiceStatus" role="status" aria-live="polite"></div>
+</section>
+<section class="panel" id="result" hidden aria-labelledby="resultTitle">
+<h2 id="resultTitle">Local comparison receipt</h2>
+<p id="summary" role="status"></p>
+<p class="minor">This is a synthetic answer-key score, not empirical evidence that one representation improves real decisions. No responses have been sent to anyone.</p>
+<ul id="review"></ul>
+<div class="actions">
+<button id="showReceipt" type="button" class="secondary" aria-expanded="false" aria-controls="receipt">Show optional local JSON receipt</button>
+<button id="reset" type="button">Start fresh, new presentation assignment</button>
+</div>
+<pre id="receipt" hidden aria-label="Local receipt"></pre>
+</section>
+<footer>
+<p>Test question: does a structured pattern/boundary view improve discrimination versus equally informative ordinary prose? A fair independent comparison would require consenting participants, randomized assignment, preregistered scoring, correction-error measures and analysis of false positives and time. This page cannot collect those outcomes.</p>
+<p><a href="https://github.com/CoCivium/CoCivium/pull/445">Source and challenge trail</a> · <a href="https://github.com/CoCivium/CoCivium/blob/main/docs/CoEvo/CoEvoTheory_v0__2026-03-24.md">Prior evolution theory</a>. CoGlyphRail: PATTERN → ANALOGY → LOSS → CHALLENGE → TEST. No claims of universal physics, consciousness, independent reader adoption, or CoAll runtime deployment.</p>
+</footer>
+</main>
+<script>
+"use strict";
+/* No network, storage, clipboard, audio, automatic downloads or document focus calls. */
+/* Synthetic key values mean the restricted claim is logically licensed by the supplied facts. */
+const cases = Object.freeze([
+ {id:"feedback", title:"Two feedback loops", shared:"A greenhouse controller and a server autoscaler both observe deviation, adjust a bounded output and observe again.", mechanisms:"One controls ventilation and temperature; the other controls compute capacity and requests.", boundary:"Their delays and gains differ, and neither has been tested using the other's tuning.", claim:"Test a bounded feedback-loop design principle in both, without copying their exact tuning.", yes:true, why:"A cautious design hypothesis is reasonable. Identical tuning or outcomes would not be justified."},
+ {id:"selection", title:"Two selection processes", shared:"Biological evolution and software releases both involve variants that are selected.", mechanisms:"One changes inherited traits over biological generations; the other uses deliberately chosen engineering tests and releases.", boundary:"The two systems have no shared fitness unit or calibrated prediction link.", claim:"Use software release fitness scores to predict biological reproductive success.", yes:false, why:"A shared word does not transfer a quantitative biological mechanism or fitness unit."},
+ {id:"sources", title:"The echo chamber", shared:"Four online posts repeat a purported observation from a single unsigned memo.", mechanisms:"Three posts cite the same memo, and the fourth quotes one of the three posts.", boundary:"No post includes independent firsthand observation or an independently checkable dataset.", claim:"Count the four posts as four independent confirmations.", yes:false, why:"Copies from one origin remain one unverified source family, not four independent confirmations."},
+ {id:"digests", title:"Two integrity checks", shared:"An archived file restore and an ordinary data transfer can both encounter accidental byte changes.", mechanisms:"Both systems can compute a digest of the exact file bytes before and after copying.", boundary:"Matching digests check the chosen bytes, not overall dataset completeness or semantic correctness.", claim:"Compare exact-file digests in both workflows as a limited integrity check, without calling it full recovery.", yes:true, why:"This narrower technique transfers; the larger end-to-end recovery claim remains unsupported."},
+ {id:"retries", title:"Two timeouts", shared:"A read-only page fetch and a payment commit can both time out before a response arrives.", mechanisms:"Repeating the read has no write-side effect; a timed-out payment may already have committed.", boundary:"The payment side has no idempotency key or settlement-state check.", claim:"Retry both operations identically and immediately without any further safeguard.", yes:false, why:"An unsafe duplicate payment is possible. A read-side retry rule cannot be copied without write safety."},
+ {id:"challenges", title:"Two types of review", shared:"A research summary and a software change proposal can both contain unjustified statements.", mechanisms:"The summary can cite documents; the change can cite code revisions and tests.", boundary:"Neither source links nor tests guarantee correctness; disagreements and missing evidence can remain.", claim:"Test source-linked independent challenge checklists in both fields, while leaving truth unproven.", yes:true, why:"A review technique can transfer as a hypothesis without assuming the claims or evidence become true."}
+]);
+const labels = Object.freeze([["Shared feature","shared"],["Mechanisms","mechanisms"],["Boundary","boundary"]]);
+const q = id => document.getElementById(id);
+let arm="", idx=0, answers=[], started=0, awaitingNext=false;
+function pickArm(){
+  const forced = new URLSearchParams(location.search).get("arm");
+  if(forced==="ordinary" || forced==="structured") return forced;  // CI fixture override only.
+  let n;
+  try { const bytes=new Uint32Array(1); crypto.getRandomValues(bytes); n=bytes[0]; }
+  catch { n=Math.floor(Math.random()*4294967296); }
+  return n%2 ? "structured" : "ordinary";
+}
+function add(tag,text,parent){
+  const n=document.createElement(tag); n.textContent=text; parent.appendChild(n);return n;
+}
+function render(){
+  const item=cases[idx]; q("progress").textContent="Case "+(idx+1)+" of "+cases.length;
+  q("caseTitle").textContent=item.title; q("claim").textContent=item.claim;
+  const host=q("facts"); host.replaceChildren();
+  if(arm==="ordinary"){
+    add("p",labels.map(([label,key])=>label+": "+item[key]).join(" "),host);
+  }else{
+    const dl=add("dl","",host);
+    labels.forEach(([label,key])=>{add("dt",label,dl);add("dd",item[key],dl);});
+  }
+  q("yes").disabled=false; q("no").disabled=false;
+  q("next").hidden=true; awaitingNext=false;
+  q("choiceStatus").textContent="";started=performance.now();
+}
+function record(value){
+  if(awaitingNext || idx>=cases.length)return;
+  awaitingNext=true;
+  const item=cases[idx];const ms=Math.max(0,Math.round(performance.now()-started));
+  answers.push({case_id:item.id,choice:value?"SUPPORTED":"NOT_SUPPORTED",
+                answer_key_correct:value===item.yes,elapsed_ms:ms});
+  q("yes").disabled=true;q("no").disabled=true;
+  q("next").hidden=false;q("next").textContent=idx+1===cases.length?"View local results":"Next case";
+  q("choiceStatus").textContent="Recorded. Explanations appear after all cases.";
+}
+function finish(){
+  q("quiz").hidden=true;q("result").hidden=false;
+  const correct=answers.filter(a=>a.answer_key_correct).length;
+  const ms=answers.reduce((total,a)=>total+a.elapsed_ms,0);
+  q("summary").textContent=correct+" of "+cases.length+" keyed decisions correct; "+Math.round(ms/1000)+" seconds of answer time. Presentation: "+(arm==="ordinary"?"ordinary prose":"structured pattern/boundary");
+  const list=q("review");list.replaceChildren();
+  cases.forEach((item,i)=>{
+    const li=add("li",item.title+": "+(answers[i].answer_key_correct?"matches synthetic key":"differs from synthetic key")+". "+item.why,list);
+    li.setAttribute("data-case-id",item.id);
+  });
+  q("showReceipt").setAttribute("aria-expanded","false");q("receipt").hidden=true;
+  q("receipt").textContent=JSON.stringify({
+    schema:"CoUniStax.LocalPairLabReceipt.R0",
+    work_id:"CoUniStax.PairLab.R0",
+    evidence:"SYNTHETIC_SELF_ASSESSMENT_NOT_RECEIVER_PROOF",
+    assignment:arm,scored_correct:correct,scored_total:cases.length,
+    answer_time_ms:ms,answers:answers,
+    source_publication:"DRAFT_BRANCH_ONLY",stored:false,transmitted:false,
+    independent_receiver_ack:false,real_world_transfer_validated:false
+  },null,2);
+}
+function start(){
+  arm=pickArm();idx=0;answers=[];awaitingNext=false;
+  q("quiz").hidden=false;q("result").hidden=true;render();
+}
+q("yes").addEventListener("click",()=>record(true));
+q("no").addEventListener("click",()=>record(false));
+q("next").addEventListener("click",()=>{
+ if(!awaitingNext)return;
+ idx++;
+ if(idx===cases.length)finish();else render();
+});
+q("showReceipt").addEventListener("click",()=>{
+ const show=q("receipt").hidden; q("receipt").hidden=!show;
+ q("showReceipt").setAttribute("aria-expanded",String(show));
+ q("showReceipt").textContent=show?"Hide local JSON receipt":"Show optional local JSON receipt";
+});
+q("reset").addEventListener("click",start);
+start();
+</script>
+</body>
+</html>

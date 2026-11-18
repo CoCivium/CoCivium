@@ -1,0 +1,266 @@
+{
+  "baseline_without_correction": {
+    "claim_exposure_ids": [
+      "hub",
+      "mirror_a",
+      "mirror_b",
+      "origin",
+      "receiver"
+    ],
+    "correction_notice_ids": [],
+    "correction_receiver_acknowledged": null,
+    "correction_start_tick": null,
+    "correction_truth_independently_verified": null,
+    "exposed_with_notice_at_horizon": [],
+    "exposed_without_notice_at_horizon": [
+      "hub",
+      "mirror_a",
+      "mirror_b",
+      "origin",
+      "receiver"
+    ],
+    "historical_exposures_retained": true,
+    "horizon": 6,
+    "kind": "SIMULATED_NOTICE_REACH_NOT_ACCEPTANCE",
+    "real_world_harm_reduced": null,
+    "receiver_correction_notice_tick": null,
+    "receiver_exposure_tick": 3,
+    "receiver_notice_lag_ticks": null,
+    "series": [
+      {
+        "cumulative_synthetic_correction_notices": 0,
+        "cumulative_unverified_exposures": 1,
+        "exposures_without_correction_notice": 1,
+        "tick": 0
+      },
+      {
+        "cumulative_synthetic_correction_notices": 0,
+        "cumulative_unverified_exposures": 2,
+        "exposures_without_correction_notice": 2,
+        "tick": 1
+      },
+      {
+        "cumulative_synthetic_correction_notices": 0,
+        "cumulative_unverified_exposures": 4,
+        "exposures_without_correction_notice": 4,
+        "tick": 2
+      },
+      {
+        "cumulative_synthetic_correction_notices": 0,
+        "cumulative_unverified_exposures": 5,
+        "exposures_without_correction_notice": 5,
+        "tick": 3
+      },
+      {
+        "cumulative_synthetic_correction_notices": 0,
+        "cumulative_unverified_exposures": 5,
+        "exposures_without_correction_notice": 5,
+        "tick": 4
+      },
+      {
+        "cumulative_synthetic_correction_notices": 0,
+        "cumulative_unverified_exposures": 5,
+        "exposures_without_correction_notice": 5,
+        "tick": 5
+      },
+      {
+        "cumulative_synthetic_correction_notices": 0,
+        "cumulative_unverified_exposures": 5,
+        "exposures_without_correction_notice": 5,
+        "tick": 6
+      }
+    ],
+    "uncorrected_exposure_ticks": 27
+  },
+  "distinct_source_families": 1,
+  "early_correction": {
+    "claim_exposure_ids": [
+      "hub",
+      "mirror_a",
+      "mirror_b",
+      "origin",
+      "receiver"
+    ],
+    "correction_notice_ids": [
+      "critic",
+      "hub",
+      "mirror_a",
+      "mirror_b",
+      "origin",
+      "receiver"
+    ],
+    "correction_receiver_acknowledged": null,
+    "correction_start_tick": 0,
+    "correction_truth_independently_verified": null,
+    "exposed_with_notice_at_horizon": [
+      "hub",
+      "mirror_a",
+      "mirror_b",
+      "origin",
+      "receiver"
+    ],
+    "exposed_without_notice_at_horizon": [],
+    "historical_exposures_retained": true,
+    "horizon": 6,
+    "kind": "SIMULATED_NOTICE_REACH_NOT_ACCEPTANCE",
+    "real_world_harm_reduced": null,
+    "receiver_correction_notice_tick": 3,
+    "receiver_exposure_tick": 3,
+    "receiver_notice_lag_ticks": 0,
+    "series": [
+      {
+        "cumulative_synthetic_correction_notices": 1,
+        "cumulative_unverified_exposures": 1,
+        "exposures_without_correction_notice": 1,
+        "tick": 0
+      },
+      {
+        "cumulative_synthetic_correction_notices": 2,
+        "cumulative_unverified_exposures": 2,
+        "exposures_without_correction_notice": 1,
+        "tick": 1
+      },
+      {
+        "cumulative_synthetic_correction_notices": 5,
+        "cumulative_unverified_exposures": 4,
+        "exposures_without_correction_notice": 0,
+        "tick": 2
+      },
+      {
+        "cumulative_synthetic_correction_notices": 6,
+        "cumulative_unverified_exposures": 5,
+        "exposures_without_correction_notice": 0,
+        "tick": 3
+      },
+      {
+        "cumulative_synthetic_correction_notices": 6,
+        "cumulative_unverified_exposures": 5,
+        "exposures_without_correction_notice": 0,
+        "tick": 4
+      },
+      {
+        "cumulative_synthetic_correction_notices": 6,
+        "cumulative_unverified_exposures": 5,
+        "exposures_without_correction_notice": 0,
+        "tick": 5
+      },
+      {
+        "cumulative_synthetic_correction_notices": 6,
+        "cumulative_unverified_exposures": 5,
+        "exposures_without_correction_notice": 0,
+        "tick": 6
+      }
+    ],
+    "uncorrected_exposure_ticks": 2
+  },
+  "independent_source_verification": null,
+  "nonclaims": [
+    "SOURCE_COPIES_NE_INDEPENDENT_CONFIRMATION",
+    "CORRECTION_NOTICE_NE_TRUTH_OR_ACCEPTANCE",
+    "BACKWARD_QUERY_NE_RETROCAUSALITY",
+    "SYNTHETIC_TICK_NE_REAL_TIME",
+    "DIFFUSION_DELTA_NE_REAL_WORLD_CAUSAL_EFFECT",
+    "TRIAL_PASS_NE_COALL_RUNTIME_OR_COEX"
+  ],
+  "oomph_shadow_projection": {
+    "automatic_acceleration": false,
+    "effect_class": "NONE",
+    "reason": "NO_RECEIVER_BENEFIT_OR_EFFECT_AUTHORITY"
+  },
+  "scheduled_correction": {
+    "claim_exposure_ids": [
+      "hub",
+      "mirror_a",
+      "mirror_b",
+      "origin",
+      "receiver"
+    ],
+    "correction_notice_ids": [
+      "critic",
+      "hub",
+      "mirror_a",
+      "mirror_b",
+      "origin",
+      "receiver"
+    ],
+    "correction_receiver_acknowledged": null,
+    "correction_start_tick": 2,
+    "correction_truth_independently_verified": null,
+    "exposed_with_notice_at_horizon": [
+      "hub",
+      "mirror_a",
+      "mirror_b",
+      "origin",
+      "receiver"
+    ],
+    "exposed_without_notice_at_horizon": [],
+    "historical_exposures_retained": true,
+    "horizon": 6,
+    "kind": "SIMULATED_NOTICE_REACH_NOT_ACCEPTANCE",
+    "real_world_harm_reduced": null,
+    "receiver_correction_notice_tick": 5,
+    "receiver_exposure_tick": 3,
+    "receiver_notice_lag_ticks": 2,
+    "series": [
+      {
+        "cumulative_synthetic_correction_notices": 0,
+        "cumulative_unverified_exposures": 1,
+        "exposures_without_correction_notice": 1,
+        "tick": 0
+      },
+      {
+        "cumulative_synthetic_correction_notices": 0,
+        "cumulative_unverified_exposures": 2,
+        "exposures_without_correction_notice": 2,
+        "tick": 1
+      },
+      {
+        "cumulative_synthetic_correction_notices": 1,
+        "cumulative_unverified_exposures": 4,
+        "exposures_without_correction_notice": 4,
+        "tick": 2
+      },
+      {
+        "cumulative_synthetic_correction_notices": 2,
+        "cumulative_unverified_exposures": 5,
+        "exposures_without_correction_notice": 4,
+        "tick": 3
+      },
+      {
+        "cumulative_synthetic_correction_notices": 5,
+        "cumulative_unverified_exposures": 5,
+        "exposures_without_correction_notice": 1,
+        "tick": 4
+      },
+      {
+        "cumulative_synthetic_correction_notices": 6,
+        "cumulative_unverified_exposures": 5,
+        "exposures_without_correction_notice": 0,
+        "tick": 5
+      },
+      {
+        "cumulative_synthetic_correction_notices": 6,
+        "cumulative_unverified_exposures": 5,
+        "exposures_without_correction_notice": 0,
+        "tick": 6
+      }
+    ],
+    "uncorrected_exposure_ticks": 12
+  },
+  "schema": "CoAll.CounterContagion.SyntheticEvidence.R0",
+  "source_copies": 3,
+  "speedo_shadow_projection": {
+    "activity_series_kind": "SYNTHETIC_ONLY",
+    "actual_correction_accuracy": null,
+    "comparison": "SEE_THREE_SCENARIOS_AND_UNCORRECTED_EXPOSURE_TICKS",
+    "copy_count": 3,
+    "current_runtime_health": null,
+    "independent_receiver_readproof": null,
+    "source_family_count": 1,
+    "verified_receiver_benefit": null
+  },
+  "state": "TESTED_SYNTHETIC_SOURCE_ONLY__NO_REAL_TRANSMISSION_OR_RECEIVER",
+  "synthetic_early_versus_scheduled_delta_uncorrected_ticks": -10,
+  "time_basis": "SIMULATION_TICKS_ONLY_NOT_COTIME_UTC",
+  "version": "0.1"
+}
