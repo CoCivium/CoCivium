@@ -1,0 +1,267 @@
+{
+  "schema": "CoSessionMesh.WorkQueue.R0",
+  "status": "CANDIDATE_NOT_DISPATCHED",
+  "updated_utc": "2026-11-18T17:52:47Z",
+  "worker_state": "UNOBSERVED_FROM_CLAUDE",
+  "global_rules": [
+    "CoOptimax+ v8",
+    "Substantial jobs; atomic steps inside jobs",
+    "Read actual source and current branch before writes",
+    "Only assigned isolated candidate branches and paths",
+    "One immutable receipt per completed job",
+    "Checkpoint output before session interruption",
+    "Auto-next only within actual session/tool authority",
+    "No publication, merge, DNS, credentials, payments or shared master mutation",
+    "HOLD only blocked transition; continue unrelated safe work",
+    "No ACK or custody claim without readback"
+  ],
+  "workers": [
+    {
+      "worker_id": "W01",
+      "outcome": "CoCivium front-door navigation and accessibility",
+      "namespace": "cosites/cocivium",
+      "minimum_cycle_jobs": 3,
+      "job_sequence": [
+        "Inspect exact sources and record input revisions",
+        "Implement substantial isolated candidate with tests and receipt",
+        "Independent falsification, fix and successor checkpoint"
+      ],
+      "required_landing_fields": [
+        "worker_id",
+        "session_instance_id",
+        "cycle_id",
+        "job_id",
+        "source_ref",
+        "output_ref",
+        "sha256",
+        "tests",
+        "disposition",
+        "next_job_or_hold"
+      ],
+      "status": "UNOBSERVED_NOT_ACKNOWLEDGED"
+    },
+    {
+      "worker_id": "W02",
+      "outcome": "InSeed source-writer quarantine proposal and source-safe candidate tests",
+      "namespace": "inseed",
+      "minimum_cycle_jobs": 3,
+      "job_sequence": [
+        "Inspect exact sources and record input revisions",
+        "Implement substantial isolated candidate with tests and receipt",
+        "Independent falsification, fix and successor checkpoint"
+      ],
+      "required_landing_fields": [
+        "worker_id",
+        "session_instance_id",
+        "cycle_id",
+        "job_id",
+        "source_ref",
+        "output_ref",
+        "sha256",
+        "tests",
+        "disposition",
+        "next_job_or_hold"
+      ],
+      "status": "UNOBSERVED_NOT_ACKNOWLEDGED"
+    },
+    {
+      "worker_id": "W03",
+      "outcome": "CoPolitic tested PR baseline plus research reconciliation",
+      "namespace": "copolitic",
+      "minimum_cycle_jobs": 3,
+      "job_sequence": [
+        "Inspect exact sources and record input revisions",
+        "Implement substantial isolated candidate with tests and receipt",
+        "Independent falsification, fix and successor checkpoint"
+      ],
+      "required_landing_fields": [
+        "worker_id",
+        "session_instance_id",
+        "cycle_id",
+        "job_id",
+        "source_ref",
+        "output_ref",
+        "sha256",
+        "tests",
+        "disposition",
+        "next_job_or_hold"
+      ],
+      "status": "UNOBSERVED_NOT_ACKNOWLEDGED"
+    },
+    {
+      "worker_id": "W04",
+      "outcome": "40-domain registry evidence and collision classification",
+      "namespace": "domains",
+      "minimum_cycle_jobs": 3,
+      "job_sequence": [
+        "Inspect exact sources and record input revisions",
+        "Implement substantial isolated candidate with tests and receipt",
+        "Independent falsification, fix and successor checkpoint"
+      ],
+      "required_landing_fields": [
+        "worker_id",
+        "session_instance_id",
+        "cycle_id",
+        "job_id",
+        "source_ref",
+        "output_ref",
+        "sha256",
+        "tests",
+        "disposition",
+        "next_job_or_hold"
+      ],
+      "status": "UNOBSERVED_NOT_ACKNOWLEDGED"
+    },
+    {
+      "worker_id": "W05",
+      "outcome": "Accessible MegaScroller progressive disclosure prototype",
+      "namespace": "ux",
+      "minimum_cycle_jobs": 3,
+      "job_sequence": [
+        "Inspect exact sources and record input revisions",
+        "Implement substantial isolated candidate with tests and receipt",
+        "Independent falsification, fix and successor checkpoint"
+      ],
+      "required_landing_fields": [
+        "worker_id",
+        "session_instance_id",
+        "cycle_id",
+        "job_id",
+        "source_ref",
+        "output_ref",
+        "sha256",
+        "tests",
+        "disposition",
+        "next_job_or_hold"
+      ],
+      "status": "UNOBSERVED_NOT_ACKNOWLEDGED"
+    },
+    {
+      "worker_id": "W06",
+      "outcome": "CoTheoryAll falsifiable hypotheses and counterexamples",
+      "namespace": "theory",
+      "minimum_cycle_jobs": 3,
+      "job_sequence": [
+        "Inspect exact sources and record input revisions",
+        "Implement substantial isolated candidate with tests and receipt",
+        "Independent falsification, fix and successor checkpoint"
+      ],
+      "required_landing_fields": [
+        "worker_id",
+        "session_instance_id",
+        "cycle_id",
+        "job_id",
+        "source_ref",
+        "output_ref",
+        "sha256",
+        "tests",
+        "disposition",
+        "next_job_or_hold"
+      ],
+      "status": "UNOBSERVED_NOT_ACKNOWLEDGED"
+    },
+    {
+      "worker_id": "W07",
+      "outcome": "Local dispatcher crash/restart/elected actuator tests",
+      "namespace": "loop",
+      "minimum_cycle_jobs": 3,
+      "job_sequence": [
+        "Inspect exact sources and record input revisions",
+        "Implement substantial isolated candidate with tests and receipt",
+        "Independent falsification, fix and successor checkpoint"
+      ],
+      "required_landing_fields": [
+        "worker_id",
+        "session_instance_id",
+        "cycle_id",
+        "job_id",
+        "source_ref",
+        "output_ref",
+        "sha256",
+        "tests",
+        "disposition",
+        "next_job_or_hold"
+      ],
+      "status": "UNOBSERVED_NOT_ACKNOWLEDGED"
+    },
+    {
+      "worker_id": "W08",
+      "outcome": "Exact-object custody receiver and readback tests",
+      "namespace": "custody",
+      "minimum_cycle_jobs": 3,
+      "job_sequence": [
+        "Inspect exact sources and record input revisions",
+        "Implement substantial isolated candidate with tests and receipt",
+        "Independent falsification, fix and successor checkpoint"
+      ],
+      "required_landing_fields": [
+        "worker_id",
+        "session_instance_id",
+        "cycle_id",
+        "job_id",
+        "source_ref",
+        "output_ref",
+        "sha256",
+        "tests",
+        "disposition",
+        "next_job_or_hold"
+      ],
+      "status": "UNOBSERVED_NOT_ACKNOWLEDGED"
+    },
+    {
+      "worker_id": "W09",
+      "outcome": "CoGuardian authority map and adversarial gate tests",
+      "namespace": "guardian",
+      "minimum_cycle_jobs": 3,
+      "job_sequence": [
+        "Inspect exact sources and record input revisions",
+        "Implement substantial isolated candidate with tests and receipt",
+        "Independent falsification, fix and successor checkpoint"
+      ],
+      "required_landing_fields": [
+        "worker_id",
+        "session_instance_id",
+        "cycle_id",
+        "job_id",
+        "source_ref",
+        "output_ref",
+        "sha256",
+        "tests",
+        "disposition",
+        "next_job_or_hold"
+      ],
+      "status": "UNOBSERVED_NOT_ACKNOWLEDGED"
+    },
+    {
+      "worker_id": "W10",
+      "outcome": "CoFanIn worker envelope validator, dedup and minority objections",
+      "namespace": "fanin",
+      "minimum_cycle_jobs": 3,
+      "job_sequence": [
+        "Inspect exact sources and record input revisions",
+        "Implement substantial isolated candidate with tests and receipt",
+        "Independent falsification, fix and successor checkpoint"
+      ],
+      "required_landing_fields": [
+        "worker_id",
+        "session_instance_id",
+        "cycle_id",
+        "job_id",
+        "source_ref",
+        "output_ref",
+        "sha256",
+        "tests",
+        "disposition",
+        "next_job_or_hold"
+      ],
+      "status": "UNOBSERVED_NOT_ACKNOWLEDGED"
+    }
+  ],
+  "nonclaims": [
+    "NOT_CLAUDE_DELIVERED",
+    "NOT_WORKER_ACKNOWLEDGED",
+    "NOT_SCHEDULER",
+    "NOT_COEX",
+    "NOT_PUBLIC"
+  ]
+}
