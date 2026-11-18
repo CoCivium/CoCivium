@@ -1,0 +1,55 @@
+{
+  "all_front_sync_verified": false,
+  "date_utc": "2026-11-10",
+  "external_receiver_verified": false,
+  "files": [
+    {
+      "bytes": 6941,
+      "name": "README.md",
+      "sha256": "7c70bd5c16b65b31fb302887d52d3efede03463b137e7257eee7d4f14ede9173"
+    },
+    {
+      "bytes": 9450,
+      "name": "coobject_capsule_r0.py",
+      "sha256": "93d703dc120971b27755306ef24ede3ebb6ce01d12b83b6b31bb70b0833a2221"
+    },
+    {
+      "bytes": 6903,
+      "name": "test_coobject_capsule_r0.py",
+      "sha256": "1881cb5775fc07b943b97648279bc863ddc2dc603f6bdf696ededefaca26ecff"
+    },
+    {
+      "bytes": 2848,
+      "name": "demo_coobject_capsule_r0.py",
+      "sha256": "4525b9258295ab78c3d57ff5e8aa0898d564039230da2768a5eaa58caff4c550"
+    },
+    {
+      "bytes": 846,
+      "name": "demo_result.json",
+      "sha256": "3369bcee43384c1eb14fd6b4156f7a4a9274ad26a185cf8f7bf89de84defed22"
+    },
+    {
+      "bytes": 2826,
+      "name": "test_output.txt",
+      "sha256": "aac097fd9b892d5a69f1eb015728df93d78866602a873a9d39104588340fb442"
+    },
+    {
+      "bytes": 875,
+      "name": "ovp_capsule_ci_r0.yml",
+      "sha256": "27f685d2ba04eb1a99ac2ae048d29d4c08ec555d2224377ee8d6a13e200a73dd"
+    }
+  ],
+  "independent_fault_domains_verified": false,
+  "model": "SOURCE_ONLY_FILE_RECOVERY_AND_SEEDED_HYPOTHESIS_EDGE",
+  "ovp_test_count": 18,
+  "primary_test_count": 25,
+  "qualifications": [
+    "local_same_machine_two_copies_only",
+    "origin_unauthenticated",
+    "no_executable_authority",
+    "python_stdlib_required",
+    "no_off_host_recovery"
+  ],
+  "schema": "CoCivium.CoObject.OfflineCapsule.SourceReceipt.R0",
+  "status": "SYNTHETIC_LOCAL_TESTED__NO_RECEIVER_OR_DEPLOYMENT_PROOF"
+}

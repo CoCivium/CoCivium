@@ -1,0 +1,42 @@
+{
+  "closure_class": "SOURCE_BOUND_CLOSURE",
+  "dependency_count": 11,
+  "errors": [],
+  "holds": [
+    "AWAITING_INDEPENDENT_RECEIVER_PROOF",
+    "LAST_KNOWN_GOOD_HEAD_UNKNOWN"
+  ],
+  "live_effect_authorized": false,
+  "node_count": 9,
+  "notes": [
+    "NO_EXTERNAL_EFFECT_AUTHORIZED",
+    "REAL_C3_C4_C5_REQUIRE_INDEPENDENT_OBSERVATION",
+    "SOURCE_PINS_NOT_VERIFIED_AGAINST_REAL_BYTES",
+    "SOURCE_STRUCTURE_ONLY_NOT_INSTALLED_APP"
+  ],
+  "real_product_class": "AWAITING_INDEPENDENT_RECEIVER_PROOF",
+  "receiver_proof_verified": false,
+  "required_roles_present": [
+    "entry",
+    "permission",
+    "receipt",
+    "recovery",
+    "return",
+    "state",
+    "view",
+    "worker"
+  ],
+  "roles_present": [
+    "enhancement",
+    "entry",
+    "permission",
+    "receipt",
+    "recovery",
+    "return",
+    "state",
+    "view",
+    "worker"
+  ],
+  "schema": "CoAll.OVP.ClosureResult.R0",
+  "source_scope_only": true
+}

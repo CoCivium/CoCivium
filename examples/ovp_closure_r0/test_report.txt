@@ -1,0 +1,23 @@
+test_bad_digest_format_fails (test_ovp_validate_r0.TestOVPContract.test_bad_digest_format_fails) ... ok
+test_critical_stale_fails (test_ovp_validate_r0.TestOVPContract.test_critical_stale_fails) ... ok
+test_cycle_fails (test_ovp_validate_r0.TestOVPContract.test_cycle_fails) ... ok
+test_determinism_under_node_reorder (test_ovp_validate_r0.TestOVPContract.test_determinism_under_node_reorder) ... ok
+test_duplicate_identity_fails (test_ovp_validate_r0.TestOVPContract.test_duplicate_identity_fails) ... ok
+test_effect_authority_not_inferred (test_ovp_validate_r0.TestOVPContract.test_effect_authority_not_inferred) ... ok
+test_missing_dependency_fails (test_ovp_validate_r0.TestOVPContract.test_missing_dependency_fails) ... ok
+test_missing_mandatory_role (test_ovp_validate_r0.TestOVPContract.test_missing_mandatory_role) ... ok
+test_native_exit_mandatory (test_ovp_validate_r0.TestOVPContract.test_native_exit_mandatory) ... ok
+test_optional_stale_degrades_with_fallback (test_ovp_validate_r0.TestOVPContract.test_optional_stale_degrades_with_fallback) ... ok
+test_optional_stale_missing_fallback_blocks (test_ovp_validate_r0.TestOVPContract.test_optional_stale_missing_fallback_blocks) ... ok
+test_required_role_disconnected (test_ovp_validate_r0.TestOVPContract.test_required_role_disconnected) ... ok
+test_source_metadata_cannot_mint_authority (test_ovp_validate_r0.TestOVPContract.test_source_metadata_cannot_mint_authority) ... ok
+test_text_fallback_mandatory (test_ovp_validate_r0.TestOVPContract.test_text_fallback_mandatory) ... ok
+test_unknown_schema_fails (test_ovp_validate_r0.TestOVPContract.test_unknown_schema_fails) ... ok
+test_untrusted_receiver_ack_does_not_verify (test_ovp_validate_r0.TestOVPContract.test_untrusted_receiver_ack_does_not_verify) ... ok
+test_valid_source_closure_not_receiver (test_ovp_validate_r0.TestOVPContract.test_valid_source_closure_not_receiver) ... ok
+test_version_mismatch_fails (test_ovp_validate_r0.TestOVPContract.test_version_mismatch_fails) ... ok
+
+----------------------------------------------------------------------
+Ran 18 tests in 0.002s
+
+OK

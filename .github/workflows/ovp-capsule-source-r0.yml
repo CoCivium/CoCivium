@@ -1,0 +1,161 @@
+name: CoObject OVP capsule source tests R0
+on:
+  pull_request:
+    paths:
+      - 'examples/ovp_closure_r0/**'
+      - 'examples/coobject_capsule_r0/**'
+      - '.github/workflows/ovp-capsule-source-r0.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  test-source-only:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: OVP synthetic source closure checks
+        run: python3 -m unittest discover -s examples/ovp_closure_r0 -p 'test_*.py' -v
+      - name: CoObject offline capsule checks
+        run: python3 -m unittest discover -s examples/coobject_capsule_r0 -p 'test_*.py' -v
+      - name: Fresh-process offline capsule demonstration
+        run: python3 examples/coobject_capsule_r0/demo_coobject_capsule_r0.py
+
+  crossjob-producer:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Test strict cross-job handoff schema and negative cases
+        run: python3 -m unittest discover -s examples/coobject_capsule_r0 -p 'test_cross_job_handoff_r0.py' -v
+      - name: Prepare public-synthetic CoObject capsule
+        run: python3 examples/coobject_capsule_r0/cross_job_handoff_r0.py produce "$RUNNER_TEMP/coobject_handoff"
+      - name: Upload only the bounded capsule and producer envelope
+        uses: actions/upload-artifact@v4
+        with:
+          name: coobject-synthetic-handoff-r0
+          path: ${{ runner.temp }}/coobject_handoff/
+          retention-days: 7
+          if-no-files-found: error
+  crossjob-receiver:
+    needs: [crossjob-producer]
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Download producer capsule into a distinct runner job
+        uses: actions/download-artifact@v4
+        with:
+          name: coobject-synthetic-handoff-r0
+          path: ${{ runner.temp }}/coobject_receiver_in
+      - name: Verify exact source and reconstruct after deliberate local copy loss
+        run: |
+          mkdir -p "$RUNNER_TEMP/coobject_readback"
+          python3 examples/coobject_capsule_r0/cross_job_handoff_r0.py consume "$RUNNER_TEMP/coobject_receiver_in" --receipt "$RUNNER_TEMP/coobject_readback/receipt.json"
+          python3 -m json.tool "$RUNNER_TEMP/coobject_readback/receipt.json" > /dev/null
+      - name: Preserve synthetic readback, not a user acceptance credential
+        uses: actions/upload-artifact@v4
+        with:
+          name: coobject-synthetic-readback-r0
+          path: ${{ runner.temp }}/coobject_readback/receipt.json
+          retention-days: 7
+          if-no-files-found: error
+
+  crossjob-witness:
+    needs: [crossjob-producer, crossjob-receiver]
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Adversarial independent witness source tests
+        run: python3 -m unittest discover -s examples/coobject_capsule_r0 -p 'test_cross_job_witness_r0.py' -v
+      - name: Retrieve producer artifact to third independent runner job
+        uses: actions/download-artifact@v4
+        with:
+          name: coobject-synthetic-handoff-r0
+          path: ${{ runner.temp }}/witness_producer
+      - name: Retrieve receiver readback separately
+        uses: actions/download-artifact@v4
+        with:
+          name: coobject-synthetic-readback-r0
+          path: ${{ runner.temp }}/witness_receiver
+      - name: Independently check producer exact bytes, receiver claims, and source baseline
+        run: |
+          mkdir -p "$RUNNER_TEMP/witness_result"
+          python3 examples/coobject_capsule_r0/cross_job_witness_r0.py "$RUNNER_TEMP/witness_producer" "$RUNNER_TEMP/witness_receiver" --report "$RUNNER_TEMP/witness_result/witness.json"
+          python3 -m json.tool "$RUNNER_TEMP/witness_result/witness.json" > /dev/null
+      - name: Preserve scoped third-job witness receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: coobject-synthetic-third-job-witness-r0
+          path: ${{ runner.temp }}/witness_result/witness.json
+          retention-days: 7
+          if-no-files-found: error
+  portable-browser-receiver:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install pinned browser UI test driver
+        run: python3 -m pip install --disable-pip-version-check playwright==1.56.0
+      - name: Chromium native WebCrypto exact-file E2E test
+        env:
+          COOBJECT_BROWSER_MODE: native
+        run: python3 examples/coobject_capsule_r0/portable_browser_r0/test_browser.py
+      - name: Chromium race-fenced package and restore regression
+        run: python3 examples/coobject_capsule_r0/portable_browser_r0/test_async_fence.py
+      - name: Preserve synthetic browser QA and mobile/desktop screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: coobject-portable-browser-qa-r0
+          path: |
+            examples/coobject_capsule_r0/portable_browser_r0/browser_qa.json
+            examples/coobject_capsule_r0/portable_browser_r0/desktop_portable_qa.png
+            examples/coobject_capsule_r0/portable_browser_r0/mobile_portable_qa.png
+          retention-days: 7
+          if-no-files-found: warn
+
+  portable-browser-firefox:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 14
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install pinned UI test driver
+        run: python3 -m pip install --disable-pip-version-check playwright==1.56.0
+      - name: Install Firefox and required runner dependencies
+        run: python3 -m playwright install --with-deps firefox
+      - name: Firefox native WebCrypto exact-file receiver test
+        env:
+          COOBJECT_BROWSER_MODE: native
+          COOBJECT_BROWSER_ENGINE: firefox
+        run: python3 examples/coobject_capsule_r0/portable_browser_r0/test_browser.py
+      - name: Preserve source-only Firefox evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: coobject-portable-firefox-qa-r0
+          path: |
+            examples/coobject_capsule_r0/portable_browser_r0/browser_qa.json
+            examples/coobject_capsule_r0/portable_browser_r0/desktop_portable_qa.png
+            examples/coobject_capsule_r0/portable_browser_r0/mobile_portable_qa.png
+          retention-days: 7
+          if-no-files-found: warn
