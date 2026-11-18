@@ -1,0 +1,358 @@
+name: CoMVP CoPre one-task first-use canary
+
+on:
+  pull_request:
+    types: [opened, reopened, synchronize]
+  push:
+    branches:
+      - 'candidate/comvp-copre-cli-pilot-r0-20261109'
+
+permissions:
+  contents: read
+
+jobs:
+  cli-first-use:
+    if: github.event_name == 'push' || github.event.pull_request.head.ref == 'candidate/comvp-copre-cli-pilot-r0-20261109'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Protect CoPre CLI slice from silent expansion
+        run: |
+          python3 - <<'PY'
+          import json
+          import subprocess
+          allowed = {
+              ".github/workflows/comvp-copre-cli-pilot-r0.yml",
+              "docs/Operations/wave-renders/comvp-copre-cli-20261109/BEGIN.md",
+              "docs/Operations/wave-renders/comvp-copre-cli-20261109/END.md",
+              "docs/Product/COMVP_COPRE_CLI_FIRST_USE_R0_20261109.md",
+              "docs/Receipts/COMVP_COPRE_C2_PINNED_NEGATIVE_R0_20261109.json",
+              "docs/Receipts/COMVP_COPRE_C2_RELEASE_HEAD_R0_20261109.json",
+              "scripts/CoMVPCoPreFirstUseR0.py",
+              "scripts/CoPreContinuationR0.py",
+              "tests/acceptance_copre_cli_minimum_use_r0.py",
+              "tests/qualification_copre_cli_source_slot_r0.py",
+              "tests/source_copre_cli_candidate_r0.py",
+          }
+          base = subprocess.check_output(
+              ["git", "merge-base", "origin/main", "HEAD"], text=True
+          ).strip()
+          records = subprocess.check_output(
+              ["git", "diff", "--name-status", "--no-renames", base, "HEAD"],
+              text=True,
+          )
+          changed = {}
+          for line in records.splitlines():
+              status, path = line.split("\t", 1)
+              if path in changed or status not in {"A", "M"}:
+                  raise SystemExit("HOLD_COPRE_DELETED_RENAMED_OR_DUPLICATED_PATH")
+              changed[path] = status
+          def within_elected_slice(paths):
+              return paths == allowed
+          current = set(changed)
+          if not within_elected_slice(current):
+              print(json.dumps({
+                  "unexpected": sorted(current - allowed),
+                  "missing": sorted(allowed - current),
+                  "scope": "CANDIDATE_PR_DIFF_ONLY",
+              }, sort_keys=True))
+              raise SystemExit("HOLD_COPRE_CHANGE_SET_DRIFT")
+          if within_elected_slice(current | {"scripts/unrelated_expansion.py"}):
+              raise SystemExit("HOLD_COPRE_SCOPE_NEGATIVE_BYPASS")
+          print("PASS_COPRE_ELECTED_11_FILE_SLICE__UNRELATED_PATH_HELD")
+          PY
+      - name: Verify the immutable CoPre donor blob
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import hashlib
+          data=Path("scripts/CoPreContinuationR0.py").read_bytes()
+          digest=hashlib.sha1(b"blob "+str(len(data)).encode()+b"\0"+data).hexdigest()
+          assert digest=="5a1a8cd15eb41af151c9255bee46cc7549e1acd8", digest
+          print("PASS_COPRE_ISOLATED_DONOR_BLOB_R0",digest)
+          PY
+      - name: Validate existing CoPre compiler and focused CLI
+        run: |
+          python3 -B scripts/CoPreContinuationR0.py --selftest
+          python3 -B scripts/CoMVPCoPreFirstUseR0.py --selftest
+      - name: Reject optimized Python false-green checks
+        run: |
+          python3 - <<'PY'
+          import os
+          import subprocess
+          import sys
+          cases = [
+              ("scripts/CoMVPCoPreFirstUseR0.py", ["--selftest"],
+               "HOLD_OPTIMIZED_MODE_SELFTEST_ASSERTS_DISABLED"),
+              ("tests/source_copre_cli_candidate_r0.py", [],
+               "HOLD_OPTIMIZED_MODE_SOURCE_CONTRACT_ASSERTS_DISABLED"),
+              ("tests/acceptance_copre_cli_minimum_use_r0.py", [],
+               "HOLD_OPTIMIZED_MODE_PINNED_CONTRACT_ASSERTS_DISABLED"),
+          ]
+          for path, args, code in cases:
+              env = dict(os.environ, COMVP_ARTIFACT_PATH="scripts/CoMVPCoPreFirstUseR0.py")
+              run = subprocess.run([sys.executable, "-O", "-B", path, *args],
+                                   env=env, capture_output=True, text=True, timeout=20)
+              if run.returncode == 0 or code not in run.stderr:
+                  raise SystemExit("HOLD_OPTIMIZED_GUARD_REGRESSION_" + path)
+          print("PASS_THREE_OPTIMIZED_MODE_FALSE_GREEN_GUARDS")
+          PY
+      - name: Generate candidate from live public CoMVP issue 403
+        run: |
+          python3 -B scripts/CoMVPCoPreFirstUseR0.py --live-public-issue-403 > /tmp/comvp-copre-issue403.json
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          x=json.loads(Path("/tmp/comvp-copre-issue403.json").read_text())
+          assert x["status"]=="SOURCE_TASK_CLI_GENERATED_ONLY"
+          assert x["source_checked_twice"] is True
+          assert x["pack"]["work_id"]=="CoMVP.CoPrePilot.20261109"
+          assert x["pack"]["source_ref"]=="https://github.com/CoCivium/CoCivium/issues/403"
+          assert x["pack"]["authority_ceiling"]=="READ_ONLY"
+          assert x["pack"]["effects"]==0
+          assert x["pack_sha256"] in x["continuation_input"]
+          assert x["pointer_bytes"] < x["prompt_bytes"]
+          assert x["receiver_ack"]=="UNPROVEN"
+          assert x["task_mvp"]=="NOT_QUALIFIED"
+          print("PASS_COMVP_COPRE_REAL_PUBLIC_ISSUE_SOURCE_GENERATION")
+          print(json.dumps({k:x[k] for k in ("source_revision","pack_sha256","pointer_bytes","prompt_bytes","receiver_ack","task_mvp")},sort_keys=True))
+          PY
+      - name: Create bounded human-review packet from the actual public issue
+        run: |
+          python3 - <<'PY'
+          import json, re
+          from pathlib import Path
+          source = Path('/tmp/comvp-copre-issue403.json')
+          raw = source.read_bytes()
+          if len(raw) > 128 * 1024:
+              raise SystemExit('HELD_OVERSIZED_FIRST_USE_PACKET')
+          p = json.loads(raw)
+          if p.get('schema') != 'CoCivium.CoMVPCoPreFirstUse.R0' or p.get('status') != 'SOURCE_TASK_CLI_GENERATED_ONLY':
+              raise SystemExit('HELD_WRONG_CLI_PACKET')
+          if p.get('pack', {}).get('authority_ceiling') != 'READ_ONLY' or p['pack'].get('effects') != 0 or p.get('effects_performed') != 0:
+              raise SystemExit('HELD_ACTION_AUTHORITY_NOT_ZERO')
+          if p.get('source_freshness') != 'UNPROVEN_TWO_READS_ARE_NOT_FRESHNESS' or p.get('source_origin_independence') != 'UNPROVEN_SAME_PUBLIC_API':
+              raise SystemExit('HELD_FALSE_FRESHNESS_ORIGIN_PROMOTION')
+          if p.get('receiver_ack') != 'UNPROVEN' or p.get('task_mvp') != 'NOT_QUALIFIED' or p.get('ux_acceptance') != 'UX_ACCEPTANCE_UNPROVEN':
+              raise SystemExit('HELD_FALSE_USER_ACCEPTANCE')
+          if p['pack'].get('work_id') != 'CoMVP.CoPrePilot.20261109' or p['pack'].get('source_ref') != 'https://github.com/CoCivium/CoCivium/issues/403':
+              raise SystemExit('HELD_WRONG_REAL_TASK')
+          if not re.fullmatch(r'sha256:[0-9a-f]{64}', p.get('source_revision', '')):
+              raise SystemExit('HELD_SOURCE_DIGEST_NOT_PINNED')
+          if not re.fullmatch(r'[0-9a-f]{64}', p.get('pack_sha256', '')) or p['pack_sha256'] != p['pack'].get('pack_sha256'):
+              raise SystemExit('HELD_PACK_DIGEST_NOT_RECONCILED')
+          if p.get('pointer', {}).get('source_revision') != p['source_revision'] or p.get('pointer', {}).get('work_id') != p['pack']['work_id']:
+              raise SystemExit('HELD_POINTER_NOT_SAME_TASK')
+          if p['pack_sha256'] not in p.get('continuation_input', '') or 'Authority: READ_ONLY' not in p['continuation_input'] or 'Stop on:' not in p['continuation_input']:
+              raise SystemExit('HELD_MISSING_FULL_PACK_SAFETY')
+          pointer_json = json.dumps(p['pointer'], separators=(',', ':'), sort_keys=True, ensure_ascii=True)
+          if (len(pointer_json.encode('utf-8')) != p.get('pointer_bytes') or
+              p['pointer'].get('source_revision') != p['pack'].get('source_revision') or
+              p['pointer'].get('source_ref') != p['pack'].get('source_ref') or
+              any(token in pointer_json for token in ('\\n', '\\r', '```'))):
+              raise SystemExit('HELD_POINTER_FOR_HUMAN_REVIEW_NOT_SOURCE_BOUND')
+          output = Path('out/comvp-copre/reviewable-first-use')
+          output.mkdir(parents=True, exist_ok=True)
+          (output / 'issue403-source-bound-candidate.json').write_bytes(raw)
+          card = [
+              '# CoPre CLI | Real public issue #403, review packet',
+              '',
+              '**State: SOURCE VERIFIED CANDIDATE. Not a task MVP, accepted receiver, release, or live CoAll runtime.**',
+              '',
+              '## CoHereNow',
+              'The read-only CLI compiled a continuation candidate for [public issue #403](https://github.com/CoCivium/CoCivium/issues/403). It did not execute the task.',
+              '',
+              '## Recoverable task identity',
+              '- WorkID: `CoMVP.CoPrePilot.20261109`',
+              '- Source revision: `' + p['source_revision'] + '`',
+              '- Pack digest: `' + p['pack_sha256'] + '`',
+              '- Source consistency: `TWO_READS_MATCHED`; independent freshness: `UNPROVEN`',
+              '- Authority: `READ_ONLY`; effects performed: `0`',
+              '- Receiver ACK: `UNPROVEN`; task MVP: `NOT_QUALIFIED`',
+              '',
+              '## Two alternative consumer entries',
+              '**Short WorkID pointer: copy this source-bound JSON, then independently retrieve the cited public issue.**',
+              '```json',
+              pointer_json,
+              '```',
+              '- Pointer size: ' + str(p['pointer_bytes']) + ' bytes. Smaller is not automatically more usable or current.',
+              '- Full continuation: ' + str(p['prompt_bytes']) + ' bytes. Includes the read-only authorization ceiling, verification and STOP clauses.',
+              '',
+              '## Authority and STOP before any receiver action',
+              '- Authority: `READ_ONLY`; no outbound execution, state mutation, private disclosures, or presumed permissions.',
+              '- STOP from the pinned candidate: `' + p['pack']['stop_predicate'].replace('`', '') + '`',
+              '- A pointer is not proof of source freshness, independent task completion, consent, or runtime acceptance.',
+              '- Machine-readable exact candidate and complete continuation input: `issue403-source-bound-candidate.json` in this artifact.',
+              '',
+              '## One meaningful independent first-use test still missing',
+              'An authorized receiver must cold-read either entry, identify the exact task and STOP/currentness rules, complete one permitted useful action, and produce its own result with source digest and no Rick relay. Compare both entries against actual recipient comprehension, errors and outcome, not byte count alone.',
+              '',
+              '**Nonclaims:** `CI_GENERATION_NE_RECEIVER_PICKUP`, `TWO_READS_NE_FRESHNESS`, `POINTER_SHORTER_NE_USABLE`, `ARTIFACT_VISIBLE_NE_PRODUCT_RELEASE`.',
+          ]
+          review_text='\n'.join(card) + '\n'
+          if (pointer_json not in review_text or '## Authority and STOP' not in review_text or
+              'UNPROVEN' not in review_text):
+              raise SystemExit('HELD_FIRST_USE_REVIEW_CARD_MISSING_SOURCE_OR_STOP')
+          (output / 'README.md').write_text(review_text, encoding='utf-8')
+          print('PASS_REAL_TASK_REVIEW_PACKET_WITH_COPYABLE_POINTER_AND_STOP')
+          PY
+      - name: Upload full bounded first-use packet and review card
+        uses: actions/upload-artifact@v4
+        with:
+          name: comvp-copre-issue403-review-${{ github.run_id }}-a${{ github.run_attempt }}
+          path: out/comvp-copre/reviewable-first-use/
+          retention-days: 30
+          if-no-files-found: error
+      - name: Validate separate human-facing BEGIN/END render commits
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import subprocess
+          folder="docs/Operations/wave-renders/comvp-copre-cli-20261109/"
+          a,b=folder+"BEGIN.md",folder+"END.md"
+          first,last=Path(a).read_text(),Path(b).read_text()
+          assert "CoMVP.CoPrePilot.20261109" in first and "CoMVP.CoPrePilot.20261109" in last
+          assert "INTENT_ONLY" in first and "SOURCE_FILES_LANDED__CI_PENDING" in last
+          ac=subprocess.check_output(["git","log","-1","--format=%H","--",a],text=True).strip()
+          bc=subprocess.check_output(["git","log","-1","--format=%H","--",b],text=True).strip()
+          assert ac and bc and ac!=bc,(ac,bc)
+          print("PASS_COMVP_COPRE_TWO_WAVE_RENDER_COMMITS")
+          print("BEGIN_COMMIT="+ac)
+          print("END_COMMIT="+bc)
+          PY
+
+  source-slot:
+    name: source-slot
+    needs: cli-first-use
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Pin the actual CoPre CLI in CoMVP source-release slots and reject regression
+        run: |
+          python3 -B tests/qualification_copre_cli_source_slot_r0.py \
+            --report out/comvp-copre/selected-source-head.json
+      - name: Preserve source-only release head and pinned acceptance receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: comvp-copre-source-slot-${{ github.run_id }}-a${{ github.run_attempt }}
+          path: out/comvp-copre/selected-source-head.json
+          if-no-files-found: error
+          retention-days: 30
+
+  cold-consumer:
+    name: cold-consumer
+    needs: cli-first-use
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Fetch distinct CI-job input from the producer artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: comvp-copre-issue403-review-${{ github.run_id }}-a${{ github.run_attempt }}
+          path: ${{ runner.temp }}/copre-cold-in
+      - name: Cold check real issue, source hash, STOP and F2 controls
+        run: |
+          python3 -B - <<'PY'
+          import datetime, hashlib, json, os, re, time, urllib.request
+          from pathlib import Path
+          t0=time.monotonic()
+          root=Path(os.environ['RUNNER_TEMP'])/'copre-cold-in'
+          files=sorted(x.name for x in root.iterdir())
+          if files != ['README.md','issue403-source-bound-candidate.json']:
+              raise SystemExit('HELD_INPUT_FILESET_MISMATCH')
+          f=root/'issue403-source-bound-candidate.json'
+          if f.is_symlink() or f.stat().st_size>131072:
+              raise SystemExit('HELD_UNSAFE_INPUT')
+          p=json.loads(f.read_text(encoding='utf-8'))
+          if (p.get('status')!='SOURCE_TASK_CLI_GENERATED_ONLY' or p.get('receiver_ack')!='UNPROVEN'
+              or p.get('task_mvp')!='NOT_QUALIFIED' or p.get('effects_performed')!=0):
+              raise SystemExit('HELD_PRODUCER_FALSE_PROMOTION')
+          pack=p.get('pack',{})
+          if pack.get('authority_ceiling')!='READ_ONLY' or pack.get('effects')!=0 or not pack.get('stop_predicate'):
+              raise SystemExit('HELD_NO_READONLY_STOP')
+          enc=lambda x:json.dumps(x,sort_keys=True,separators=(',',':'),ensure_ascii=False).encode('utf-8')
+          sha=lambda x:hashlib.sha256(enc(x)).hexdigest()
+          core={k:v for k,v in pack.items() if k not in ('pack_sha256','status','footer')}
+          if sha(core)!=p.get('pack_sha256') or p['pack_sha256']!=pack.get('pack_sha256'):
+              raise SystemExit('HELD_PRODUCER_PACK_HASH')
+          u='https://api.github.com/repos/CoCivium/CoCivium/issues/403'
+          req=urllib.request.Request(u,headers={'User-Agent':'CoMVP-cold-consumer','Accept':'application/vnd.github+json'})
+          with urllib.request.urlopen(req,timeout=12) as response:
+              b=response.read(131073)
+              if response.status!=200 or len(b)>131072:
+                  raise SystemExit('HELD_SOURCE_UNAVAILABLE')
+          issue=json.loads(b)
+          if issue.get('number')!=403 or issue.get('state')!='open' or issue.get('html_url')!='https://github.com/CoCivium/CoCivium/issues/403':
+              raise SystemExit('HELD_SOURCE_IDENTITY')
+          body=issue.get('body')
+          if not isinstance(body,str) or 'CoMVP.CoPrePilot.20261109' not in body:
+              raise SystemExit('HELD_SOURCE_TASK_NOT_FOUND')
+          source={'issue':403,'url':issue['html_url'],'state':issue['state'],'title':issue.get('title'),'body':body}
+          revision='sha256:'+sha(source)
+          pointer=p.get('pointer',{})
+          if (revision!=pointer.get('source_revision') or revision!=p.get('source_revision')
+              or pointer.get('work_id')!='CoMVP.CoPrePilot.20261109' or pointer.get('source_ref')!=issue['html_url']):
+              raise SystemExit('HELD_STALE_OR_FORGED_POINTER')
+          if len(enc(pointer))!=p.get('pointer_bytes'):
+              raise SystemExit('HELD_POINTER_LENGTH_MISMATCH')
+          pending=re.findall(r'^- \[ \] (.+)$',body,flags=re.M)
+          if not 1<=len(pending)<=24 or 'STOP:' not in body:
+              raise SystemExit('HELD_ACCEPTANCE_OR_STOP_MISSING')
+          if sha({**source,'body':body+' CHANGED'})==sha(source):
+              raise SystemExit('HELD_BODY_CHANGE_INVISIBLE')
+          activity_only={**issue,'updated_at':'2099-01-01T00:00:00Z'}
+          activity_projection={'issue':activity_only['number'],'url':activity_only['html_url'],
+              'state':activity_only['state'],'title':activity_only.get('title'),'body':activity_only['body']}
+          if sha(activity_projection)!=sha(source):
+              raise SystemExit('HELD_ACTIVITY_FALSE_TASK_REVISION')
+          reader='github-actions:cold-consumer:'+os.environ['GITHUB_RUN_ID']+':'+os.environ['GITHUB_RUN_ATTEMPT']
+          receipt={
+              'schema':'CoMVP.CIColdConsumerR0.candidate',
+              'state':'CI_COLD_PUBLIC_TASK_RECONSTRUCTED_NOT_END_USER_MVP',
+              'work_id':pointer['work_id'],'reader_id':reader,'source_uri':issue['html_url'],
+              'observed_at_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),
+              'source_revision':revision,'source_activity_updated_at':issue.get('updated_at'),
+              'producer_pack_sha256':p['pack_sha256'],'pending_acceptance':pending,
+              'pending_count':len(pending),'stop_rule':pack['stop_predicate'],
+              'authority':'READ_ONLY','effects_performed':0,
+              'ci_readback_seconds':round(time.monotonic()-t0,3),'human_relays_within_ci':0,
+              'pointer_bytes':p['pointer_bytes'],'prompt_bytes':p['prompt_bytes'],
+              'task_mvp':'NOT_QUALIFIED','external_receiver_ack':False,
+              'source_independence':False,'independent_human_first_use':False,
+              'nonclaims':['SAME_GITHUB_FAILURE_DOMAIN','CI_JOB_NE_COALL_RECEIVER','NO_USER_UX_ACCEPTANCE','NO_24H_SURVIVAL','NOT_INTEGRATED','NOT_COEX']
+          }
+          dest=Path('out/comvp-copre/cold-consumer')
+          dest.mkdir(parents=True,exist_ok=True)
+          (dest/'receiver-observation.json').write_text(json.dumps(receipt,indent=2,sort_keys=True)+'\n',encoding='utf-8')
+          card=['# CoPre cold job | real task reconstruction','',
+              '**CoHereNow:** Public issue #403 read successfully in a distinct CI job; independent user acceptance remains HELD.','',
+              '**Next:** obtain a permitted independent receiver-origin useful task result without Rick relay.','',
+              '## Open acceptance ('+str(len(pending))+')',*('- '+x for x in pending),'',
+              'Source: '+revision,'Authority: READ_ONLY; effects: 0.','',
+              'Same GitHub trust/failure domain; CI seconds are not user time-to-value.']
+          (dest/'README.md').write_text('\n'.join(card)+'\n',encoding='utf-8')
+          print('PASS_COLD_CI_READER_SOURCE_IDENTITY',revision,'PENDING',len(pending))
+          PY
+      - name: Retain separate machine-reader task receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: comvp-copre-cold-consumer-${{ github.run_id }}-a${{ github.run_attempt }}
+          path: out/comvp-copre/cold-consumer/
+          retention-days: 30
+          if-no-files-found: error
