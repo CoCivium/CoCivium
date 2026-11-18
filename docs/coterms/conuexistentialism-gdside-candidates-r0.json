@@ -1,0 +1,494 @@
+{
+  "schema": "CoCivium.CoTerms.CandidateFrontier.v0.1",
+  "date": "2026-11-09",
+  "state": "DRAFT_CANDIDATES_NOT_CANON_NOT_RUNTIME",
+  "source_principles": [
+    "docs/coterms/README.md",
+    "docs/coterms/coterms-public-r0.json",
+    "docs/Architecture/COONTPRINCIPLE_EVOLVING_MEANING_R0_20261101.md"
+  ],
+  "human_surface_rule": "Lead with consequence and understandable examples; progressive disclosure of CoTerms; define at first use",
+  "epistemic_rule": "METAPHOR_NE_MECHANISM; RELATION_NE_CAUSATION; UNKNOWN_NE_EVIDENCE; PERSONAL_FEELING_NE_EXTERNAL_PROOF",
+  "promotion_rule": "Preserve term identity, sense, anti-meaning, source and predecessor; review collisions, cultural borrowing, consent and test result before public glossary promotion",
+  "candidate_count": 36,
+  "terms": [
+    {
+      "id": "conu-r0-001",
+      "term": "CoNuExistentialism+",
+      "category": "framework",
+      "meaning": "A candidate inquiry into how identity, meaning, possibility and responsibility emerge and change across living and artificial contexts.",
+      "anti_meaning": "Not a new proven theory of consciousness, existence or metaphysics.",
+      "related": [
+        "CoBeing+",
+        "CoBecoming+",
+        "CoChoice+"
+      ],
+      "semantic_status": "WORKING_NAME_CANDIDATE",
+      "epistemic_class": "DESIGN_HYPOTHESIS"
+    },
+    {
+      "id": "conu-r0-002",
+      "term": "CoBeing+",
+      "category": "ontology",
+      "meaning": "Tracks what it means for an entity, relation or process to be considered present under a stated scope.",
+      "anti_meaning": "Not proof of subjective experience.",
+      "related": [
+        "CoNuExistentialism+",
+        "CoPresence+"
+      ],
+      "semantic_status": "WORKING_NAME_CANDIDATE",
+      "epistemic_class": "DESIGN_HYPOTHESIS"
+    },
+    {
+      "id": "conu-r0-003",
+      "term": "CoBecoming+",
+      "category": "temporal",
+      "meaning": "Tracks transitions among states, interpretations and opportunities with preserved predecessors.",
+      "anti_meaning": "Change alone does not prove improvement.",
+      "related": [
+        "CoTime+",
+        "CoEvo+"
+      ],
+      "semantic_status": "WORKING_NAME_CANDIDATE",
+      "epistemic_class": "DESIGN_HYPOTHESIS"
+    },
+    {
+      "id": "conu-r0-004",
+      "term": "CoPossible+",
+      "category": "modal",
+      "meaning": "Records feasible, imagined and formally allowed possibilities as distinct types.",
+      "anti_meaning": "Imagined does not imply physically realizable.",
+      "related": [
+        "CoCounterfactual+",
+        "CoChoice+"
+      ],
+      "semantic_status": "WORKING_NAME_CANDIDATE",
+      "epistemic_class": "DESIGN_HYPOTHESIS"
+    },
+    {
+      "id": "conu-r0-005",
+      "term": "CoOtherwise+",
+      "category": "inversion",
+      "meaning": "Preserves serious alternatives that were not chosen.",
+      "anti_meaning": "Not a claim that all options are equally viable.",
+      "related": [
+        "CoChoice+",
+        "CoInverse+"
+      ],
+      "semantic_status": "WORKING_NAME_CANDIDATE",
+      "epistemic_class": "DESIGN_HYPOTHESIS"
+    },
+    {
+      "id": "conu-r0-006",
+      "term": "CoChoice+",
+      "category": "agency",
+      "meaning": "Documents who may choose, under what consent and what reversal rights.",
+      "anti_meaning": "Does not attribute human autonomy to software.",
+      "related": [
+        "CoConsent+",
+        "CoOtherwise+"
+      ],
+      "semantic_status": "WORKING_NAME_CANDIDATE",
+      "epistemic_class": "DESIGN_HYPOTHESIS"
+    },
+    {
+      "id": "conu-r0-007",
+      "term": "CoAgencyBoundary+",
+      "category": "governance",
+      "meaning": "Separates recommendation, automated action, human authorization and real-world effect.",
+      "anti_meaning": "A design intention is not delegated authority.",
+      "related": [
+        "CoChoice+",
+        "CoProof+"
+      ],
+      "semantic_status": "WORKING_NAME_CANDIDATE",
+      "epistemic_class": "DESIGN_HYPOTHESIS"
+    },
+    {
+      "id": "conu-r0-008",
+      "term": "CoWonder+",
+      "category": "human-experience",
+      "meaning": "Supports curiosity and open-ended exploration through accessible presentations.",
+      "anti_meaning": "Not an engagement-maximization or manipulation target.",
+      "related": [
+        "CoFeel+",
+        "CoBook+"
+      ],
+      "semantic_status": "WORKING_NAME_CANDIDATE",
+      "epistemic_class": "DESIGN_HYPOTHESIS"
+    },
+    {
+      "id": "conu-r0-009",
+      "term": "CoUnlearn+",
+      "category": "learning",
+      "meaning": "Tests whether revising an assumption opens better hypotheses without discarding useful knowledge.",
+      "anti_meaning": "Not a demand to reject expertise or safeguards.",
+      "related": [
+        "CoWonder+",
+        "CoCounterexample+"
+      ],
+      "semantic_status": "WORKING_NAME_CANDIDATE",
+      "epistemic_class": "DESIGN_HYPOTHESIS"
+    },
+    {
+      "id": "conu-r0-010",
+      "term": "CoRegrow+",
+      "category": "story",
+      "meaning": "Uses the regrowing-wings metaphor for recoverable curiosity and creative freedom while alive.",
+      "anti_meaning": "Not a physical, spiritual or medical assertion.",
+      "related": [
+        "CoUnlearn+",
+        "CoBook+"
+      ],
+      "semantic_status": "WORKING_NAME_CANDIDATE",
+      "epistemic_class": "DESIGN_HYPOTHESIS"
+    },
+    {
+      "id": "conu-r0-011",
+      "term": "CoFeel+",
+      "category": "human-experience",
+      "meaning": "Treats voluntary reported feeling as one input alongside comprehension, autonomy and evidence.",
+      "anti_meaning": "Clicks or dwell time are not direct measures of emotion.",
+      "related": [
+        "CoWonder+",
+        "CoConsent+"
+      ],
+      "semantic_status": "WORKING_NAME_CANDIDATE",
+      "epistemic_class": "DESIGN_HYPOTHESIS"
+    },
+    {
+      "id": "conu-r0-012",
+      "term": "CoSenseBridge+",
+      "category": "media",
+      "meaning": "Maps a source pattern into visual, sonic, tactile and textual expressions with declared losses.",
+      "anti_meaning": "Not perfect translation between senses.",
+      "related": [
+        "CoGoldenBrail+",
+        "CoSong+"
+      ],
+      "semantic_status": "WORKING_NAME_CANDIDATE",
+      "epistemic_class": "DESIGN_HYPOTHESIS"
+    },
+    {
+      "id": "conu-r0-013",
+      "term": "CoGoldenBrail+",
+      "category": "media",
+      "meaning": "Candidate tactile/Braille lane linked to the Golden Braid by typed semantic identity.",
+      "anti_meaning": "Not a functioning Braille display or a substitute for standards.",
+      "related": [
+        "CoSenseBridge+",
+        "CoBraid+"
+      ],
+      "semantic_status": "WORKING_NAME_CANDIDATE",
+      "epistemic_class": "DESIGN_HYPOTHESIS"
+    },
+    {
+      "id": "conu-r0-014",
+      "term": "CoRhythmSeed+",
+      "category": "signal",
+      "meaning": "A small, controlled pulse or event pattern used as a reproducible test motif.",
+      "anti_meaning": "Not a detected alien, whale or divine signal.",
+      "related": [
+        "CoSong+",
+        "CoNoise+"
+      ],
+      "semantic_status": "WORKING_NAME_CANDIDATE",
+      "epistemic_class": "DESIGN_HYPOTHESIS"
+    },
+    {
+      "id": "conu-r0-015",
+      "term": "CoTunerChoice+",
+      "category": "interface",
+      "meaning": "Lets a visitor explicitly navigate interpretations or channels with reversible controls.",
+      "anti_meaning": "The interface does not infer private mental state without consent.",
+      "related": [
+        "CoFeel+",
+        "CoRhythmSeed+"
+      ],
+      "semantic_status": "WORKING_NAME_CANDIDATE",
+      "epistemic_class": "DESIGN_HYPOTHESIS"
+    },
+    {
+      "id": "conu-r0-016",
+      "term": "CoResonanceReport+",
+      "category": "measurement",
+      "meaning": "Records a participant's optional description of a pattern's personal significance.",
+      "anti_meaning": "Personal meaning does not establish external message origin.",
+      "related": [
+        "CoFeel+",
+        "CoProof+"
+      ],
+      "semantic_status": "WORKING_NAME_CANDIDATE",
+      "epistemic_class": "DESIGN_HYPOTHESIS"
+    },
+    {
+      "id": "conu-r0-017",
+      "term": "CoQuiet+",
+      "category": "ethics",
+      "meaning": "Budgets privacy, disruption, sensory intensity, network load and unwanted attention.",
+      "anti_meaning": "Undetectable emissions are not permitted by being quiet.",
+      "related": [
+        "CoConsent+",
+        "CoChannel+"
+      ],
+      "semantic_status": "WORKING_NAME_CANDIDATE",
+      "epistemic_class": "DESIGN_HYPOTHESIS"
+    },
+    {
+      "id": "conu-r0-018",
+      "term": "CoChannel+",
+      "category": "network",
+      "meaning": "Describes authorized logical streams over permitted communications and their measured delivery.",
+      "anti_meaning": "Not covert use of carrier RF spectrum.",
+      "related": [
+        "CoQuiet+",
+        "CoProof+"
+      ],
+      "semantic_status": "WORKING_NAME_CANDIDATE",
+      "epistemic_class": "DESIGN_HYPOTHESIS"
+    },
+    {
+      "id": "conu-r0-019",
+      "term": "CoNoiseWitness+",
+      "category": "science",
+      "meaning": "Records noise, false detections and competing explanations beside an observed pattern.",
+      "anti_meaning": "An anomaly is not evidence of an intelligent sender by itself.",
+      "related": [
+        "CoCounterexample+",
+        "CoProof+"
+      ],
+      "semantic_status": "WORKING_NAME_CANDIDATE",
+      "epistemic_class": "DESIGN_HYPOTHESIS"
+    },
+    {
+      "id": "conu-r0-020",
+      "term": "CoFalseSignal+",
+      "category": "science",
+      "meaning": "Catalogues convincing-seeming patterns produced by chance, bias or instrumentation.",
+      "anti_meaning": "Not a dismissal of all unusual reports.",
+      "related": [
+        "CoNoiseWitness+",
+        "CoInverse+"
+      ],
+      "semantic_status": "WORKING_NAME_CANDIDATE",
+      "epistemic_class": "DESIGN_HYPOTHESIS"
+    },
+    {
+      "id": "conu-r0-021",
+      "term": "CoOtherMind+",
+      "category": "epistemology",
+      "meaning": "Asks what can legitimately be inferred about another mind from observable interaction.",
+      "anti_meaning": "Not a consciousness detector.",
+      "related": [
+        "CoBeing+",
+        "CoAnalogyLimit+"
+      ],
+      "semantic_status": "WORKING_NAME_CANDIDATE",
+      "epistemic_class": "DESIGN_HYPOTHESIS"
+    },
+    {
+      "id": "conu-r0-022",
+      "term": "CoAnalogyLimit+",
+      "category": "semantics",
+      "meaning": "Documents where a metaphor or cross-domain mapping becomes misleading.",
+      "anti_meaning": "Not a prohibition on metaphor or art.",
+      "related": [
+        "CoCounterexample+",
+        "CoGoldenBraid+"
+      ],
+      "semantic_status": "WORKING_NAME_CANDIDATE",
+      "epistemic_class": "DESIGN_HYPOTHESIS"
+    },
+    {
+      "id": "conu-r0-023",
+      "term": "CoCounterexample+",
+      "category": "method",
+      "meaning": "A deliberate test case designed to refute or bound a proposed claim.",
+      "anti_meaning": "Not a negative verdict without a valid test.",
+      "related": [
+        "CoProof+",
+        "CoInverse+"
+      ],
+      "semantic_status": "WORKING_NAME_CANDIDATE",
+      "epistemic_class": "DESIGN_HYPOTHESIS"
+    },
+    {
+      "id": "conu-r0-024",
+      "term": "CoG_dSide+",
+      "category": "philosophy",
+      "meaning": "Keeps theological, sacred, transcendent and speculative interpretations visibly distinct from empirical claims.",
+      "anti_meaning": "Not proof of divine communication, mandate or intervention.",
+      "related": [
+        "CoUnknown+",
+        "CoHumility+"
+      ],
+      "semantic_status": "WORKING_NAME_CANDIDATE",
+      "epistemic_class": "PHILOSOPHICAL_SYMBOLIC"
+    },
+    {
+      "id": "conu-r0-025",
+      "term": "CoSacredQuestion+",
+      "category": "philosophy",
+      "meaning": "Records meaningful questions of spiritual value without pretending they are experimentally settled.",
+      "anti_meaning": "Not an institutionally authorized doctrine.",
+      "related": [
+        "CoG_dSide+",
+        "CoChoice+"
+      ],
+      "semantic_status": "WORKING_NAME_CANDIDATE",
+      "epistemic_class": "PHILOSOPHICAL_SYMBOLIC"
+    },
+    {
+      "id": "conu-r0-026",
+      "term": "CoTranscendenceMetaphor+",
+      "category": "philosophy",
+      "meaning": "Provides an explicitly symbolic lens for beyond-self experience and imagination.",
+      "anti_meaning": "Not a physical signal channel.",
+      "related": [
+        "CoG_dSide+",
+        "CoSenseBridge+"
+      ],
+      "semantic_status": "WORKING_NAME_CANDIDATE",
+      "epistemic_class": "PHILOSOPHICAL_SYMBOLIC"
+    },
+    {
+      "id": "conu-r0-027",
+      "term": "CoGrace+",
+      "category": "ethics",
+      "meaning": "Names voluntary generosity, forgiveness or unearned kindness as a design consideration.",
+      "anti_meaning": "Not a measurable divine intervention.",
+      "related": [
+        "CoHumility+",
+        "CoConsent+"
+      ],
+      "semantic_status": "WORKING_NAME_CANDIDATE",
+      "epistemic_class": "DESIGN_HYPOTHESIS"
+    },
+    {
+      "id": "conu-r0-028",
+      "term": "CoHumility+",
+      "category": "epistemology",
+      "meaning": "Makes uncertainty, error, attribution and correction visible to participants.",
+      "anti_meaning": "Not feigned neutrality or refusal to evaluate evidence.",
+      "related": [
+        "CoProof+",
+        "CoG_dSide+"
+      ],
+      "semantic_status": "WORKING_NAME_CANDIDATE",
+      "epistemic_class": "DESIGN_HYPOTHESIS"
+    },
+    {
+      "id": "conu-r0-029",
+      "term": "CoUnknown+",
+      "category": "epistemology",
+      "meaning": "Tracks what remains unknown and which observation could narrow uncertainty.",
+      "anti_meaning": "Not permission to fill unknowns with a favored story.",
+      "related": [
+        "CoNoiseWitness+",
+        "CoHumility+"
+      ],
+      "semantic_status": "WORKING_NAME_CANDIDATE",
+      "epistemic_class": "DESIGN_HYPOTHESIS"
+    },
+    {
+      "id": "conu-r0-030",
+      "term": "CoMystery+",
+      "category": "story",
+      "meaning": "Supports aesthetic mystery and wonder while allowing a reader to reach explicit evidence.",
+      "anti_meaning": "Not concealment of material limitations.",
+      "related": [
+        "CoWonder+",
+        "CoProof+"
+      ],
+      "semantic_status": "WORKING_NAME_CANDIDATE",
+      "epistemic_class": "DESIGN_HYPOTHESIS"
+    },
+    {
+      "id": "conu-r0-031",
+      "term": "CoTimeWitness+",
+      "category": "temporal",
+      "meaning": "Distinguishes observed event time, recorded time, publication time and forecast horizon.",
+      "anti_meaning": "Not proof that the system experiences or controls time.",
+      "related": [
+        "CoTime+",
+        "CoProof+"
+      ],
+      "semantic_status": "WORKING_NAME_CANDIDATE",
+      "epistemic_class": "DESIGN_HYPOTHESIS"
+    },
+    {
+      "id": "conu-r0-032",
+      "term": "CoEchoPast+",
+      "category": "continuity",
+      "meaning": "Connects current work to source-bound predecessors, unresolved alternatives and disagreements.",
+      "anti_meaning": "Not a fabricated memory of unseen sessions.",
+      "related": [
+        "CoTimeWitness+",
+        "CoBraid+"
+      ],
+      "semantic_status": "WORKING_NAME_CANDIDATE",
+      "epistemic_class": "DESIGN_HYPOTHESIS"
+    },
+    {
+      "id": "conu-r0-033",
+      "term": "CoFutureFork+",
+      "category": "scenario",
+      "meaning": "Presents multiple conditional futures with dates, assumptions and falsification criteria.",
+      "anti_meaning": "Not prophecy or deployed future state.",
+      "related": [
+        "CoPossible+",
+        "CoTimeWitness+"
+      ],
+      "semantic_status": "WORKING_NAME_CANDIDATE",
+      "epistemic_class": "DESIGN_HYPOTHESIS"
+    },
+    {
+      "id": "conu-r0-034",
+      "term": "CoIndexRedir+",
+      "category": "publication",
+      "meaning": "Proposes stable public paths that promote only qualified versioned destinations and preserve snapshots.",
+      "anti_meaning": "A route manifest is not a live redirect service.",
+      "related": [
+        "CoProof+",
+        "CoTimeWitness+"
+      ],
+      "semantic_status": "WORKING_NAME_CANDIDATE",
+      "epistemic_class": "DESIGN_HYPOTHESIS"
+    },
+    {
+      "id": "conu-r0-035",
+      "term": "CoReaderJourney+",
+      "category": "experience",
+      "meaning": "A source-bound route through story, demonstration, challenge and reversible return.",
+      "anti_meaning": "Not a proven visitor experience without independent tests.",
+      "related": [
+        "CoBook+",
+        "CoFeel+"
+      ],
+      "semantic_status": "WORKING_NAME_CANDIDATE",
+      "epistemic_class": "DESIGN_HYPOTHESIS"
+    },
+    {
+      "id": "conu-r0-036",
+      "term": "CoCoAuthorConsent+",
+      "category": "collaboration",
+      "meaning": "Tracks invitation, acceptance, credit, editorial independence and permission to publish.",
+      "anti_meaning": "An invitation is not a coauthorship agreement.",
+      "related": [
+        "CoChoice+",
+        "CoConsent+"
+      ],
+      "semantic_status": "WORKING_NAME_CANDIDATE",
+      "epistemic_class": "DESIGN_HYPOTHESIS"
+    }
+  ],
+  "next_proof": "Exercise 3 cross-sensory patterns with independent reconstruction tests; publish a kid-friendly two-panel story, sober skeptical interpretation and accessible return-to-source",
+  "nonclaims": [
+    "NO_CANON",
+    "NO_AI_SENTIENCE_PROVEN",
+    "NO_ET_CONTACT",
+    "NO_DIVINE_CONTACT",
+    "NO_AUTONOMOUS_GLOBAL_SYNC",
+    "NO_PUBLIC_SITE_RELEASE"
+  ]
+}
