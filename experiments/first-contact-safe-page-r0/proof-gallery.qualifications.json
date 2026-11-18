@@ -1,0 +1,52 @@
+{
+  "schema": "CoCivium.CoLivingHighlight.PublicSafeGalleryReviewReceipt.R0",
+  "observed_at_utc": "2026-10-24T19:50:46Z",
+  "state": "PASS_BOUNDED_LOCAL_QA__DRAFT_SOURCE_READBACK__FIREWORKS_HELD",
+  "scope": "isolated local content + sanitized public GitHub draft branch, no actual site or recipient acceptance",
+  "asset_source_count": 9,
+  "tests": {
+    "unit_and_negative": {
+      "pass": 28,
+      "fail": 0
+    },
+    "chromium_gallery": {
+      "pass": 38,
+      "fail": 0
+    },
+    "chromium_first_use_link": {
+      "pass": 14,
+      "fail": 0
+    }
+  },
+  "draft_branch_readback": {
+    "gallery_html_git_blob": "978016af7d39324f64d44b951ad54918ed2c58c2",
+    "gallery_json_git_blob": "3d66fa888335de9f9cf0cf65ac4b5eb274d38e40",
+    "first_contact_index_git_blob": "9c74dbb1656a537632a883743f72acd198f22278"
+  },
+  "local_custody_scan": {
+    "scoped_files_hashed": 43,
+    "images": 9,
+    "binaries": 19,
+    "text": 15,
+    "semantic_ingestion": 0,
+    "lifecycle_ceiling": "VERIFIED_LOCAL"
+  },
+  "held": [
+    "APEX_DOMAIN_HTTP_404_OBSERVED",
+    "WWW_LEGACY_METADATA_PRIVACY_REVIEW",
+    "RIGHTS_ACROSS_REPOS",
+    "HUMAN_FIRST_USE",
+    "INDEPENDENT_OFF_PROVIDER_RESTORE",
+    "EXTERNAL_OUTREACH",
+    "X2_INPUT_AND_DEVICE_RUNTIME"
+  ],
+  "next_proof": "Site owner privately reviews legacy metadata routing and rollback, then independently qualifies apex and www, then invites one consenting novice to the first task.",
+  "nonclaims": [
+    "DRAFT_SOURCE_NE_DEPLOYMENT",
+    "SOURCE_NE_RUNTIME",
+    "LOCAL_HASH_NE_SEMANTIC_INGESTION",
+    "PUBLIC_LINK_NE_RECEIVER_ACK",
+    "CULTURAL_INTERPRETATION_NE_EMPIRICAL_PHYSICS",
+    "NO_AUTOMATED_OUTREACH_OR_SITE_MUTATION"
+  ]
+}

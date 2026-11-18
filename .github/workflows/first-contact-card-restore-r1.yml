@@ -1,0 +1,26 @@
+name: CoCivium first-contact local-card recovery R1
+on:
+  pull_request:
+    paths:
+      - 'experiments/first-contact-safe-page-r1/index.html'
+      - 'experiments/first-contact-safe-page-r1/first-use.js'
+      - 'experiments/first-contact-safe-page-r1/first-use-restore.test.cjs'
+      - '.github/workflows/first-contact-card-restore-r1.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  card-restore-source-only:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate local card roundtrip and no-clobber gates
+        run: node --test experiments/first-contact-safe-page-r1/first-use-restore.test.cjs
