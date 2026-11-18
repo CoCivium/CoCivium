@@ -140,7 +140,7 @@ class TypedReceiptGateTests(unittest.TestCase):
         self.assertEqual(out["typed_candidates_unconflicted"], 0)
         self.assertEqual(out["source_observations"][-1]["state"], "HOLD_RECEIPT_IDENTITY_COLLISION")
 
-    def test_distinct_receipts_keep_lineage_no_master(self):
+    def test_distinct_receipts_same_effect_hold_without_erasing_lineage(self):
         _, source, receipt = fixture()
         receipt2 = dict(receipt, receipt_id="synthetic:receipt:2")
         rows = []
@@ -148,10 +148,30 @@ class TypedReceiptGateTests(unittest.TestCase):
             raw = json.dumps(r, sort_keys=True).encode()
             rows.append((source, raw, digest(raw)))
         out = batch_preflight(rows)
-        self.assertEqual(out["typed_candidates_unconflicted"], 2)
+        self.assertEqual(len(out["source_observations"]), 2)
+        self.assertEqual(out["effect_collision_groups"], 1)
+        self.assertEqual(out["typed_candidates_unconflicted"], 0)
+        self.assertTrue(all(
+            r["state"] == "HOLD_UNADJUDICATED_EFFECT_MULTI_RECEIPT"
+            for r in out["source_observations"]))
         self.assertEqual(out["qualified_receipts"], 0)
         self.assertEqual(out["receiver_origin_acks"], 0)
+        self.assertEqual(out["elected_masters"], 0)
         self.assertEqual(out["external_effects"], 0)
+
+    def test_different_effect_ids_remain_two_review_candidates(self):
+        _, source, receipt = fixture()
+        receipt2 = dict(receipt, receipt_id="synthetic:receipt:2",
+                        effect_id="synthetic:effect:2")
+        rows = []
+        for r in (receipt, receipt2):
+            raw = json.dumps(r, sort_keys=True).encode()
+            rows.append((source, raw, digest(raw)))
+        out = batch_preflight(rows)
+        self.assertEqual(out["effect_collision_groups"], 0)
+        self.assertEqual(out["typed_candidates_unconflicted"], 2)
+        self.assertEqual(out["elected_masters"], 0)
+        self.assertEqual(out["fanout"], "HOLD")
 
 
 if __name__ == "__main__":
