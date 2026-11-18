@@ -1,0 +1,134 @@
+{
+  "all_pass": true,
+  "groups": {
+    "hb": {
+      "all_pass": true,
+      "finished_utc": "2026-11-18T17:42:52Z",
+      "results": [
+        {
+          "PASS": true,
+          "bound_s": 1.0,
+          "heartbeats": 121,
+          "id": "H1",
+          "max_gap_s": 0.505,
+          "seconds": 60,
+          "seq_contiguous": true
+        },
+        {
+          "PASS": true,
+          "bound_s": 2.0,
+          "id": "H2",
+          "max_detect_s": 1.495,
+          "trials": 10
+        },
+        {
+          "PASS": true,
+          "declared_sleeps": 7,
+          "false_stale": 0,
+          "id": "H3",
+          "polls": 592,
+          "seconds": 30
+        },
+        {
+          "PASS": true,
+          "clock_step_result": "CLOCK_STEP",
+          "id": "H4",
+          "lease_extended_on_step": false,
+          "max_skew_s": 0.048,
+          "note": "observer shares the host clock, so skew bound is weak here; clock-step path is the real check",
+          "samples": 21
+        }
+      ],
+      "started_utc": "2026-11-18T17:40:45Z"
+    },
+    "idem": {
+      "all_pass": true,
+      "finished_utc": "2026-11-18T17:40:44Z",
+      "results": [
+        {
+          "PASS": true,
+          "deliveries": 1,
+          "final_state": "VERIFIED",
+          "id": "I1",
+          "outcomes": [
+            "ALREADY_VERIFIED",
+            "APPLIED_NEW"
+          ],
+          "runs": 10
+        },
+        {
+          "PASS": true,
+          "failure_detail": [],
+          "failures": 0,
+          "id": "I2",
+          "note": "kill injected via os._exit(9) at each protocol step, then recovery tick by new holder",
+          "trials": 80
+        },
+        {
+          "PASS": true,
+          "deliveries_k1": 1,
+          "deliveries_k2": 1,
+          "id": "I3",
+          "keys_distinct": true
+        },
+        {
+          "PASS": true,
+          "id": "I4",
+          "loser_conflict_or_already": 50,
+          "max_deliveries_per_key": 1,
+          "note": "lease bypassed (fence=False); INTENT primary key is the only guard",
+          "trials": 50
+        }
+      ],
+      "started_utc": "2026-11-18T17:40:42Z"
+    },
+    "lease": {
+      "all_pass": true,
+      "finished_utc": "2026-11-18T17:49:26Z",
+      "results": [
+        {
+          "PASS": true,
+          "contenders": 8,
+          "final_epoch": 1000,
+          "id": "L1",
+          "max_winners_in_a_round": 1,
+          "rounds": 1000,
+          "rounds_with_exactly_one_winner": 1000
+        },
+        {
+          "PASS": true,
+          "bound_s": 4.0,
+          "epoch_plus_one": 50,
+          "id": "L2",
+          "max_takeover_s": 3.053,
+          "mean_takeover_s": 2.589,
+          "trials": 50
+        },
+        {
+          "PASS": true,
+          "id": "L3",
+          "stale_holder_exit_LEASE_LOST": 20,
+          "stale_writes_after_takeover": 0,
+          "takeover_blocked_by_stopped_txn": 0,
+          "trials": 20
+        },
+        {
+          "PASS": true,
+          "forged_future_epoch": "FENCED",
+          "forged_same_epoch": "FENCED",
+          "id": "L4",
+          "row_diff": 0
+        }
+      ],
+      "started_utc": "2026-11-18T17:42:57Z"
+    }
+  },
+  "host": "Claude cloud sandbox (Linux); NOT the steward machine",
+  "params": {
+    "H": 0.5,
+    "L": 3.0,
+    "R": 1.0,
+    "scaled": true
+  },
+  "python": "3.13.18"
+}
