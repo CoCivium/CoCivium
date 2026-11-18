@@ -1,0 +1,98 @@
+{
+  "schema": "CoCivium.CoLockStep.SourceIsland.R0",
+  "work_id": "corun.coLockStep.sourceIsland.20261109",
+  "purpose": "Prove a source-coherent candidate can be evaluated without claiming that either source snapshot is a usable MVP.",
+  "baseline": {
+    "release_id": "CORUN_R0_SOURCE_BASELINE_NOT_SERVING",
+    "scope": "SOURCE_ONLY_NOT_SERVING",
+    "components": [
+      {
+        "id": "dag-runner",
+        "path": "examples/corun_r0/corun.py",
+        "git_blob_sha1": "48258c59cc37955b2aeb6e4dffdc877110ae79f8",
+        "effect_scope": "READ_ONLY_LOCAL",
+        "provides": {
+          "case-audit": 1
+        }
+      },
+      {
+        "id": "reference-oracle",
+        "path": "examples/corun_r0/reference_oracle.py",
+        "git_blob_sha1": "0c68f6ac5761efc8fe178a0f4187f3b8718316b1",
+        "effect_scope": "READ_ONLY_LOCAL",
+        "provides": {
+          "direct-reference": 1
+        }
+      }
+    ],
+    "dependencies": [],
+    "historical_fail_ids": [
+      "R0_DAG_MISSING_SOURCE_RESOLVED",
+      "COFLOW_F01",
+      "COFLOW_F02",
+      "COFLOW_F03",
+      "COFLOW_F04"
+    ]
+  },
+  "candidate": {
+    "release_id": "CORUN_R0_PLUS_DIFF_CHECK_NOT_SERVING",
+    "scope": "SOURCE_ONLY_NOT_SERVING",
+    "components": [
+      {
+        "id": "dag-runner",
+        "path": "examples/corun_r0/corun.py",
+        "git_blob_sha1": "48258c59cc37955b2aeb6e4dffdc877110ae79f8",
+        "effect_scope": "READ_ONLY_LOCAL",
+        "provides": {
+          "case-audit": 1
+        }
+      },
+      {
+        "id": "reference-oracle",
+        "path": "examples/corun_r0/reference_oracle.py",
+        "git_blob_sha1": "0c68f6ac5761efc8fe178a0f4187f3b8718316b1",
+        "effect_scope": "READ_ONLY_LOCAL",
+        "provides": {
+          "direct-reference": 1
+        }
+      },
+      {
+        "id": "differential-check",
+        "path": "examples/corun_r0/reference_compare.py",
+        "git_blob_sha1": "bc94a3be3dd28c012bc7d086f7c69ac354fb8220",
+        "effect_scope": "READ_ONLY_LOCAL",
+        "provides": {
+          "compare-report": 1
+        }
+      }
+    ],
+    "dependencies": [
+      {
+        "consumer": "differential-check",
+        "provider": "dag-runner",
+        "interface": "case-audit",
+        "major": 1
+      },
+      {
+        "consumer": "differential-check",
+        "provider": "reference-oracle",
+        "interface": "direct-reference",
+        "major": 1
+      }
+    ],
+    "historical_fail_ids": [
+      "R0_DAG_MISSING_SOURCE_RESOLVED",
+      "COFLOW_F01",
+      "COFLOW_F02",
+      "COFLOW_F03",
+      "COFLOW_F04"
+    ]
+  },
+  "nonclaims": [
+    "BASELINE_IS_NOT_DEPLOYED_MVP",
+    "SOURCE_COHERENCE_NE_MVP",
+    "DIFFERENT_CODE_NE_INDEPENDENT_SOURCE",
+    "NO_AUTOMATIC_RELEASE_ACTUATOR",
+    "PR_NE_CANON"
+  ]
+}
