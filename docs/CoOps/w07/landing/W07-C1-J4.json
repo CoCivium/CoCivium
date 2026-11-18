@@ -1,0 +1,43 @@
+{
+  "attempt_id": "1",
+  "authority_ref_or_null": null,
+  "claimed_actor": "Claude (Opus 5.5) as W07; claim only, unsigned",
+  "collision_scope": "docs/CoOps/w07/",
+  "cycle_id": "W07-C1",
+  "dependency_ids": [
+    "W07-C1-J3"
+  ],
+  "disposition": "PREPARED",
+  "envelope_sha256": "8be29924d1d0b9663e4fe9526fc5494418366633c820b29905b0b516af27a2ce",
+  "evidence": [],
+  "hold_reason_or_null": "LANDING_HOLD: no authenticated write transport (git proxy 403: repo not in session's authorized set)",
+  "idempotency_key": "bfb41bb09b8ea0d71a2fb5c39f142b36dd7c8a2adce773b16eecaf453c2692dc",
+  "input_refs": [
+    {
+      "sha256_or_commit": "ec169cffeba65e5d1bc5c4a84b3efd4d20ad03868d2e74898e7395fed33673e7",
+      "uri": "CoCivium/CoCivium@a07f1544f83ccf13fad224328558fe77a176223b:docs/CoOps/COCLAUDE_TEN_CONTEXT_DISPATCH_R0.md"
+    }
+  ],
+  "job_id": "W07-C1-J4",
+  "kind": "candidate_artifact",
+  "object_id": "sha256:fe0a15e8429394e9a2f7f67bd2f1c231a8427724af8191eb6344dc2eecd77b4f",
+  "output_refs": [
+    {
+      "sha256": "bc3a89c0ba6df8d08c752f3403e949805b1444423dc5419f0d7d74ad1acee27b",
+      "uri": "CoCivium/CoCivium@claude/w07-loop-20261118:docs/CoOps/w07/W07_C1_J3J4_RESULTS_R0.json"
+    }
+  ],
+  "privacy_class": "public-safe",
+  "produced_utc": "2026-11-18T20:30:59Z",
+  "reviewer_ids": [],
+  "schema_version": "CoLanding.Envelope.R0(candidate)",
+  "session_instance_id": "w07-si-43d985bc720b4b4f",
+  "successor_job_ids": [
+    "W07-C2-J3"
+  ],
+  "tests": [
+    "L2 prod x5 max 89.549 s <= 120 PASS",
+    "H2 prod x3 max 88.951 s <= 120 PASS"
+  ],
+  "worker_id": "W07"
+}

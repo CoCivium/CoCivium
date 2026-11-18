@@ -1,0 +1,330 @@
+{
+  "all_pass": true,
+  "harness": "w07_coloop_ref.py (post-J3 fixes)",
+  "harness_defects_found_and_fixed": [
+    {
+      "defect": "L2 hard-coded 30 s queue wait < lease L at production timing -> crash",
+      "fix": "timeout = 2L+R+30",
+      "id": "D1"
+    },
+    {
+      "defect": "H2/L5 'not detected' sentinel 99 s; at production bound 120 s a non-detection reported PASS (observed: H2 prod run 1 false PASS)",
+      "fix": "sentinel = inf; explicit detected count; per-trial bound check",
+      "id": "D2"
+    },
+    {
+      "defect": "R0 lease liveness: holder frozen inside BEGIN IMMEDIATE blocks all writers (L5_baseline)",
+      "fix": "bounded busy timeout + STALE_LOCK detection; HOLD or single SIGKILL of recorded holder_pid",
+      "id": "D3"
+    },
+    {
+      "defect": "tick did not release lease on clean exit (every other tick wasted); T1 crash plan silently skipped one crash",
+      "fix": "clean release; crash re-armed until fired; T2 checks window non-overlap",
+      "id": "D4"
+    }
+  ],
+  "host": "Claude cloud sandbox (Linux); NOT the steward machine",
+  "production_timing": {
+    "H2": {
+      "finished_utc": "2026-11-18T20:21:51Z",
+      "params": {
+        "H": 30.0,
+        "L": 90.0,
+        "R": 30.0,
+        "scaled": false
+      },
+      "result": {
+        "PASS": true,
+        "bound_s": 120.0,
+        "detected": 3,
+        "id": "H2",
+        "max_detect_s": 88.951,
+        "trials": 3
+      },
+      "started_utc": "2026-11-18T20:17:21Z"
+    },
+    "L2": {
+      "finished_utc": "2026-11-18T20:24:52Z",
+      "params": {
+        "H": 30.0,
+        "L": 90.0,
+        "R": 30.0,
+        "scaled": false
+      },
+      "result": {
+        "PASS": true,
+        "bound_s": 120.0,
+        "epoch_plus_one": 5,
+        "id": "L2",
+        "max_takeover_s": 89.549,
+        "mean_takeover_s": 89.254,
+        "trials": 5
+      },
+      "started_utc": "2026-11-18T20:17:21Z"
+    }
+  },
+  "regression_scaled": {
+    "falsify": {
+      "all_pass": true,
+      "finished_utc": "2026-11-18T20:29:50Z",
+      "params": {
+        "H": 0.5,
+        "L": 3.0,
+        "R": 1.0,
+        "scaled": true
+      },
+      "python": "3.13.18",
+      "results": [
+        {
+          "PASS": true,
+          "expectation": "R0 takeover blocked (falsifies R0 liveness)",
+          "id": "L5_baseline",
+          "outcome": "OperationalError: database is locked",
+          "r0_liveness_falsified": true,
+          "waited_s": 6.013
+        },
+        {
+          "PASS": true,
+          "break_policy": {
+            "bound_s": 5.0,
+            "max_latency_s": 4.419,
+            "passed": 10,
+            "trials": 10,
+            "uncommitted_stale_rows_visible": 0
+          },
+          "finding": "A holder frozen inside BEGIN IMMEDIATE blocks every writer indefinitely; the R0 harness's 30 s busy timeout + lease-only takeover cannot make progress. Fix: bounded busy timeout, STALE_LOCK detection, then HOLD or a single kill of the recorded holder_pid.",
+          "hold_policy": {
+            "bound_s": 5.0,
+            "max_latency_s": 4.323,
+            "passed": 10,
+            "trials": 10
+          },
+          "id": "L5"
+        }
+      ],
+      "started_utc": "2026-11-18T20:27:44Z"
+    },
+    "hb": {
+      "all_pass": true,
+      "finished_utc": "2026-11-18T20:27:44Z",
+      "params": {
+        "H": 0.5,
+        "L": 3.0,
+        "R": 1.0,
+        "scaled": true
+      },
+      "python": "3.13.18",
+      "results": [
+        {
+          "PASS": true,
+          "bound_s": 1.0,
+          "heartbeats": 121,
+          "id": "H1",
+          "max_gap_s": 0.506,
+          "seconds": 60,
+          "seq_contiguous": true
+        },
+        {
+          "PASS": true,
+          "bound_s": 2.0,
+          "detected": 10,
+          "id": "H2",
+          "max_detect_s": 1.387,
+          "trials": 10
+        },
+        {
+          "PASS": true,
+          "declared_sleeps": 8,
+          "false_stale": 0,
+          "id": "H3",
+          "polls": 594,
+          "seconds": 30
+        },
+        {
+          "PASS": true,
+          "clock_step_result": "CLOCK_STEP",
+          "id": "H4",
+          "lease_extended_on_step": false,
+          "max_skew_s": 0.049,
+          "note": "observer shares the host clock, so skew bound is weak here; clock-step path is the real check",
+          "samples": 21
+        }
+      ],
+      "started_utc": "2026-11-18T20:25:38Z"
+    },
+    "idem": {
+      "all_pass": true,
+      "finished_utc": "2026-11-18T20:25:38Z",
+      "params": {
+        "H": 0.5,
+        "L": 3.0,
+        "R": 1.0,
+        "scaled": true
+      },
+      "python": "3.13.18",
+      "results": [
+        {
+          "PASS": true,
+          "deliveries": 1,
+          "final_state": "VERIFIED",
+          "id": "I1",
+          "outcomes": [
+            "ALREADY_VERIFIED",
+            "APPLIED_NEW"
+          ],
+          "runs": 10
+        },
+        {
+          "PASS": true,
+          "failure_detail": [],
+          "failures": 0,
+          "id": "I2",
+          "note": "kill injected via os._exit(9) at each protocol step, then recovery tick by new holder",
+          "trials": 80
+        },
+        {
+          "PASS": true,
+          "deliveries_k1": 1,
+          "deliveries_k2": 1,
+          "id": "I3",
+          "keys_distinct": true
+        },
+        {
+          "PASS": true,
+          "id": "I4",
+          "loser_conflict_or_already": 50,
+          "max_deliveries_per_key": 1,
+          "note": "lease bypassed (fence=False); INTENT primary key is the only guard",
+          "trials": 50
+        }
+      ],
+      "started_utc": "2026-11-18T20:25:37Z"
+    },
+    "lease": {
+      "all_pass": true,
+      "finished_utc": "2026-11-18T20:25:37Z",
+      "params": {
+        "H": 0.5,
+        "L": 3.0,
+        "R": 1.0,
+        "scaled": true
+      },
+      "python": "3.13.18",
+      "results": [
+        {
+          "PASS": true,
+          "contenders": 8,
+          "final_epoch": 1000,
+          "id": "L1",
+          "max_winners_in_a_round": 1,
+          "rounds": 1000,
+          "rounds_with_exactly_one_winner": 1000
+        },
+        {
+          "PASS": true,
+          "bound_s": 4.0,
+          "epoch_plus_one": 50,
+          "id": "L2",
+          "max_takeover_s": 3.03,
+          "mean_takeover_s": 2.624,
+          "trials": 50
+        },
+        {
+          "PASS": true,
+          "id": "L3",
+          "stale_holder_exit_LEASE_LOST": 20,
+          "stale_writes_after_takeover": 0,
+          "takeover_blocked_by_stopped_txn": 0,
+          "trials": 20
+        },
+        {
+          "PASS": true,
+          "forged_future_epoch": "FENCED",
+          "forged_same_epoch": "FENCED",
+          "id": "L4",
+          "row_diff": 0
+        },
+        {
+          "PASS": true,
+          "break_policy": {
+            "bound_s": 5.0,
+            "max_latency_s": 4.423,
+            "passed": 10,
+            "trials": 10,
+            "uncommitted_stale_rows_visible": 0
+          },
+          "finding": "A holder frozen inside BEGIN IMMEDIATE blocks every writer indefinitely; the R0 harness's 30 s busy timeout + lease-only takeover cannot make progress. Fix: bounded busy timeout, STALE_LOCK detection, then HOLD or a single kill of the recorded holder_pid.",
+          "hold_policy": {
+            "bound_s": 5.0,
+            "max_latency_s": 4.322,
+            "passed": 10,
+            "trials": 10
+          },
+          "id": "L5"
+        }
+      ],
+      "started_utc": "2026-11-18T20:17:21Z"
+    }
+  },
+  "tick_process_restart": {
+    "all_pass": true,
+    "params": {
+      "COLOOP_L": 2,
+      "COLOOP_R": 1,
+      "scaled": true
+    },
+    "results": [
+      {
+        "PASS": true,
+        "crashes_fired": [
+          "after_intent",
+          "after_effect"
+        ],
+        "exit_codes": [
+          9,
+          3,
+          9,
+          3,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "id": "T1_catchup_crash",
+        "verify": {
+          "chain_ok": true,
+          "deliveries": 5,
+          "duplicate_keys": 0,
+          "overdue_pending": 0,
+          "receipts": 12
+        }
+      },
+      {
+        "PASS": true,
+        "epochs": 78,
+        "id": "T2_concurrent_ticks",
+        "rounds": 20,
+        "ticks_held": 2,
+        "ticks_ok": 78,
+        "ticks_per_round": 4,
+        "verify": {
+          "chain_ok": true,
+          "deliveries": 1,
+          "duplicate_keys": 0,
+          "overdue_pending": 0,
+          "receipts": 78
+        },
+        "window_overlaps": 0
+      }
+    ],
+    "utc": "2026-11-18T20:20:57Z"
+  }
+}

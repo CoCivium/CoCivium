@@ -6,15 +6,15 @@ Installs nothing, schedules nothing, touches no network, performs no real extern
 Timing is parameter-SCALED (L=3s, R=1s, H=0.5s) versus the design (L=90s, R=30s, H=30s);
 bounds scale identically (takeover <= L+R, stale <= 4H, gap <= 2H).
 
-usage: python3 -I w07_coloop_ref.py {lease|idem|hb|all} --out results.json
+usage: python3 -I w07_coloop_ref.py {lease|idem|hb|falsify|prod|all} --out results.json
 """
 from __future__ import annotations
 import argparse, hashlib, json, multiprocessing as mp, os, random, signal, sqlite3, sys, tempfile, time
 
-L, R, H = 3.0, 1.0, 0.5
+L, R, H = (float(os.environ.get(k, d)) for k, d in (("W07_L", 3.0), ("W07_R", 1.0), ("W07_H", 0.5)))
 SCHEMA = """
 CREATE TABLE IF NOT EXISTS actuator_lease(name TEXT PRIMARY KEY, holder_id TEXT, epoch INTEGER NOT NULL,
-  lease_until REAL NOT NULL, renewed_at REAL);
+  lease_until REAL NOT NULL, renewed_at REAL, holder_pid INTEGER);
 CREATE TABLE IF NOT EXISTS heartbeat(holder_id TEXT, epoch INTEGER, seq INTEGER, wall_ts REAL, phase TEXT,
   next_trigger REAL, PRIMARY KEY(holder_id, epoch, seq));
 CREATE TABLE IF NOT EXISTS effect(idem_key TEXT PRIMARY KEY, work_id TEXT, epoch INTEGER,
@@ -24,22 +24,22 @@ CREATE TABLE IF NOT EXISTS event(ts REAL, kind TEXT, detail TEXT);
 RECV = "CREATE TABLE IF NOT EXISTS delivery(idem_key TEXT, ts REAL, pid INTEGER);"
 
 
-def connect(path):
-    c = sqlite3.connect(path, timeout=30, isolation_level=None)
+def connect(path, timeout=30.0):
+    c = sqlite3.connect(path, timeout=timeout, isolation_level=None)
     c.execute("PRAGMA journal_mode=WAL"); c.execute("PRAGMA synchronous=FULL")
     return c
 
 
 def init(db, recv):
     c = connect(db); c.executescript(SCHEMA)
-    c.execute("INSERT OR IGNORE INTO actuator_lease VALUES('coloop',NULL,0,0,NULL)"); c.close()
+    c.execute("INSERT OR IGNORE INTO actuator_lease VALUES('coloop',NULL,0,0,NULL,NULL)"); c.close()
     r = connect(recv); r.executescript(RECV); r.close()
 
 
 def acquire(c, holder, now, ttl=L):
     c.execute("BEGIN IMMEDIATE")
-    cur = c.execute("""UPDATE actuator_lease SET holder_id=?,epoch=epoch+1,lease_until=?,renewed_at=?
-                       WHERE name='coloop' AND lease_until<=?""", (holder, now + ttl, now, now))
+    cur = c.execute("""UPDATE actuator_lease SET holder_id=?,epoch=epoch+1,lease_until=?,renewed_at=?,holder_pid=?
+                       WHERE name='coloop' AND lease_until<=?""", (holder, now + ttl, now, os.getpid(), now))
     ep = c.execute("SELECT epoch FROM actuator_lease").fetchone()[0] if cur.rowcount == 1 else None
     c.execute("COMMIT"); return ep
 
@@ -192,7 +192,7 @@ def test_L2(trials=50):
         wait_for(lambda: lease_state(db)[0] == "A", 5); ep0 = lease_state(db)[1]
         q = mp.Queue(); b = mp.Process(target=_contender, args=(db, q)); b.start()
         time.sleep(random.uniform(0, 2)); tk = time.time(); os.kill(a.pid, signal.SIGKILL); a.join()
-        t_acq, ep = q.get(timeout=30); b.join()
+        t_acq, ep = q.get(timeout=2 * L + R + 30); b.join()
         deltas.append(t_acq - tk); ep_ok += (ep == ep0 + 1)
     ok = max(deltas) <= L + R and ep_ok == trials
     return dict(id="L2", trials=trials, bound_s=L + R, max_takeover_s=round(max(deltas), 3),
@@ -230,6 +230,94 @@ def test_L4():
     after = c.execute("SELECT count(*) FROM effect").fetchone()[0]; c.close(); a.kill(); a.join()
     return dict(id="L4", forged_same_epoch=r1, forged_future_epoch=r2, row_diff=after - before,
                 PASS=(r1 == r2 == "FENCED" and after == before))
+
+
+# ---- L5 (J3 falsification): holder frozen INSIDE a write transaction ----
+def _stuck_holder(db):
+    c = connect(db); ep = acquire(c, "A", time.time())
+    for seq in range(3):
+        hb(c, "A", ep, seq, "RUN"); time.sleep(H)
+    c.execute("BEGIN IMMEDIATE")                       # holds the SQLite write lock
+    c.execute("INSERT INTO heartbeat VALUES('A',?,99,?,'RUN',NULL)", (ep, time.time()))
+    os.kill(os.getpid(), signal.SIGSTOP)               # frozen before COMMIT
+    c.execute("COMMIT")
+
+
+def acquire_or_break(db, holder, break_policy, q):
+    """Contender with bounded busy timeout. STALE_LOCK = lease expired AND write lock held >= L.
+    break_policy=True: SIGKILL the recorded holder_pid once (its open txn rolls back), then retry.
+    break_policy=False: report STALE_LOCK and HOLD (no takeover)."""
+    c = connect(db, timeout=min(R, 1.0)); first_lock = None; events = []; broke = False
+    while True:
+        now = time.time()
+        try:
+            ep = acquire(c, holder, now)
+            if ep is not None:
+                q.put(dict(t=time.time(), ep=ep, events=events)); return
+            first_lock = None
+        except sqlite3.OperationalError as e:
+            if "locked" not in str(e): raise
+            try: c.execute("ROLLBACK")
+            except sqlite3.OperationalError: pass
+            now = time.time(); first_lock = first_lock or now
+            hid, _ep, lu, pid = c.execute("SELECT holder_id,epoch,lease_until,holder_pid FROM actuator_lease").fetchone()
+            if lu <= now and now - first_lock >= L:
+                if not events: events.append(dict(kind="STALE_LOCK", t=now, holder_pid=pid))
+                if not break_policy:
+                    q.put(dict(t=None, events=events)); return
+                if not broke:
+                    os.kill(pid, signal.SIGKILL); broke = True; events.append(dict(kind="BREAK_KILL", t=time.time(), pid=pid))
+        time.sleep(0.1)
+
+
+def _proc_state(pid):
+    try:
+        return open(f"/proc/{pid}/stat").read().rsplit(")", 1)[1].split()[0]
+    except OSError:
+        return None
+
+
+def test_L5(trials=10):
+    bound = L + R + 1.0; out = {}
+    for policy in (False, True):
+        lat, ok_n, stale_rows = [], 0, 0
+        for _ in range(trials):
+            db, _ = fresh(); a = mp.Process(target=_stuck_holder, args=(db,)); a.start()
+            wait_for(lambda: _proc_state(a.pid) == "T", 10, step=0.01); t_stop = time.time(); ep0 = lease_state(db)[1]
+            q = mp.Queue(); b = mp.Process(target=acquire_or_break, args=(db, "B", policy, q)); b.start()
+            res = q.get(timeout=4 * L + 20); b.join()
+            if policy:
+                d = res["t"] - t_stop; a.join(5)
+                c = connect(db); stale_rows += c.execute("SELECT count(*) FROM heartbeat WHERE holder_id='A' AND seq=99").fetchone()[0]; c.close()
+                ok = res["ep"] == ep0 + 1 and a.exitcode == -9 and d <= bound
+            else:
+                d = res["events"][0]["t"] - t_stop if res["events"] else float("inf")
+                ok = res["t"] is None and lease_state(db)[0] == "A" and d <= bound
+                os.kill(a.pid, signal.SIGKILL); a.join()
+            lat.append(d); ok_n += ok
+        key = "break_policy" if policy else "hold_policy"
+        out[key] = dict(trials=trials, passed=ok_n, max_latency_s=round(max(lat), 3), bound_s=bound,
+                        **({"uncommitted_stale_rows_visible": stale_rows} if policy else {}))
+    out["finding"] = ("A holder frozen inside BEGIN IMMEDIATE blocks every writer indefinitely; the R0 harness's "
+                      "30 s busy timeout + lease-only takeover cannot make progress. Fix: bounded busy timeout, "
+                      "STALE_LOCK detection, then HOLD or a single kill of the recorded holder_pid.")
+    ok = all(out[k]["passed"] == trials for k in ("hold_policy", "break_policy")) and out["break_policy"]["uncommitted_stale_rows_visible"] == 0
+    return dict(id="L5", **out, PASS=ok)
+
+
+def test_L5_baseline():
+    """Falsifier: R0 behavior (plain acquire, 30 s busy timeout) against a holder frozen in-transaction."""
+    db, _ = fresh(); a = mp.Process(target=_stuck_holder, args=(db,)); a.start()
+    wait_for(lambda: _proc_state(a.pid) == "T", 10, step=0.01); t0 = time.time()
+    c = connect(db, timeout=2 * L)
+    try:
+        r = acquire(c, "B", time.time()); outcome = f"acquired epoch {r}" if r else "not acquired"
+    except sqlite3.OperationalError as e:
+        outcome = f"OperationalError: {e}"
+    waited = time.time() - t0; os.kill(a.pid, signal.SIGKILL); a.join()
+    blocked = outcome.startswith("OperationalError")
+    return dict(id="L5_baseline", expectation="R0 takeover blocked (falsifies R0 liveness)", waited_s=round(waited, 3),
+                outcome=outcome, r0_liveness_falsified=blocked, PASS=blocked)
 
 
 # ---------------- T-IDEM ----------------
@@ -321,9 +409,9 @@ def test_H2(trials=10):
         db, _ = fresh(); a = mp.Process(target=actuator, args=(db, "A")); a.start()
         wait_for(lambda: lease_state(db)[0] == "A", 5); time.sleep(random.uniform(0.5, 2))
         os.kill(a.pid, signal.SIGSTOP); ts = time.time()
-        t = wait_for(lambda: time.time() if stale(db, time.time()) else None, 10, step=0.02)
-        lat.append((t - ts) if t else 99); os.kill(a.pid, signal.SIGKILL); a.join()
-    return dict(id="H2", trials=trials, bound_s=4 * H, max_detect_s=round(max(lat), 3), PASS=max(lat) <= 4 * H)
+        t = wait_for(lambda: time.time() if stale(db, time.time()) else None, 4 * H + 30, step=0.02)
+        lat.append((t - ts) if t else float("inf")); os.kill(a.pid, signal.SIGKILL); a.join()
+    return dict(id="H2", trials=trials, bound_s=4 * H, max_detect_s=(round(max(lat), 3) if max(lat) != float("inf") else "NOT_DETECTED"), detected=sum(x != float("inf") for x in lat), PASS=all(x <= 4 * H for x in lat))
 
 
 def test_H3(seconds=30):
@@ -355,13 +443,15 @@ def test_H4():
                 clock_step_result=step, lease_extended_on_step=lu_after != lu_before, PASS=ok)
 
 
-GROUPS = {"lease": [test_L1, test_L2, test_L3, test_L4], "idem": [test_I1, test_I2, test_I3, test_I4],
+GROUPS = {"lease": [test_L1, test_L2, test_L3, test_L4, test_L5],
+          "falsify": [test_L5_baseline, test_L5],
+          "prod": [test_L2, test_H2], "idem": [test_I1, test_I2, test_I3, test_I4],
           "hb": [test_H1, test_H2, test_H3, test_H4]}
 
 if __name__ == "__main__":
     ap = argparse.ArgumentParser(); ap.add_argument("group", choices=[*GROUPS, "all"]); ap.add_argument("--out", required=True)
     a = ap.parse_args(); mp.set_start_method("fork")
-    tests = [t for g in (GROUPS if a.group == "all" else [a.group]) for t in GROUPS[g]]
+    tests = [t for g in ([g for g in GROUPS if g not in ("falsify", "prod")] if a.group == "all" else [a.group]) for t in GROUPS[g]]
     out = dict(params=dict(L=L, R=R, H=H, scaled=True), python=sys.version.split()[0], started_utc=time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()), results=[])
     for t in tests:
         r = t(); out["results"].append(r); print(json.dumps(r), flush=True)

@@ -1,0 +1,53 @@
+{
+  "attempt_id": "1",
+  "authority_ref_or_null": null,
+  "claimed_actor": "Claude (Opus 5.5) as W07; claim only, unsigned",
+  "collision_scope": "docs/CoOps/w07/",
+  "cycle_id": "W07-C2",
+  "dependency_ids": [
+    "W07-C1-J3"
+  ],
+  "disposition": "PREPARED",
+  "envelope_sha256": "2cc02513affbe4845313f69babbce04744fa527bc06caa5730f87d359b97591d",
+  "evidence": [],
+  "hold_reason_or_null": "LANDING_HOLD: no authenticated write transport (git proxy 403: repo not in session's authorized set)",
+  "idempotency_key": "b65ffdf0ff5101e5cea1f1eb84fa67a041164f11023c2fbdaebad3567bd8c4d3",
+  "input_refs": [
+    {
+      "sha256_or_commit": "ec169cffeba65e5d1bc5c4a84b3efd4d20ad03868d2e74898e7395fed33673e7",
+      "uri": "CoCivium/CoCivium@a07f1544f83ccf13fad224328558fe77a176223b:docs/CoOps/COCLAUDE_TEN_CONTEXT_DISPATCH_R0.md"
+    }
+  ],
+  "job_id": "W07-C2-J1",
+  "kind": "candidate_artifact",
+  "object_id": "sha256:d9bf1ae82443dd3c949eabd383413fe6b711126f8fcffdc236533164013a5f11",
+  "output_refs": [
+    {
+      "sha256": "2dfca63a8391699c7e5e0ebf1a3fad060e29ba2d91c0cd35e0f6d3180acf4af0",
+      "uri": "CoCivium/CoCivium@claude/w07-loop-20261118:docs/CoOps/w07/coloop_tick.py"
+    },
+    {
+      "sha256": "f3eda72622e2fa6a144ad663b4e8439f4e207224006ee6b2353c0594c313e543",
+      "uri": "CoCivium/CoCivium@claude/w07-loop-20261118:docs/CoOps/w07/test_coloop_tick.py"
+    },
+    {
+      "sha256": "3c568657a76dcb12e64f10e03888807289f93f6e162c94153e21c6e1a63a9a76",
+      "uri": "CoCivium/CoCivium@claude/w07-loop-20261118:docs/CoOps/w07/CoLoopTick.TaskScheduler.TEMPLATE.xml"
+    }
+  ],
+  "privacy_class": "public-safe",
+  "produced_utc": "2026-11-18T20:30:59Z",
+  "reviewer_ids": [],
+  "schema_version": "CoLanding.Envelope.R0(candidate)",
+  "session_instance_id": "w07-si-43d985bc720b4b4f",
+  "successor_job_ids": [
+    "W07-C2-J5",
+    "W07-C2-J6"
+  ],
+  "tests": [
+    "T1 catch-up with 2 crashes exactly-once PASS",
+    "T2 20x4 concurrent ticks 0 overlaps PASS",
+    "XML well-formed; NOT registered"
+  ],
+  "worker_id": "W07"
+}

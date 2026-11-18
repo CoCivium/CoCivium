@@ -1,0 +1,62 @@
+{
+  "attempt_id": "1",
+  "authority_ref_or_null": null,
+  "claimed_actor": "Claude (Opus 5.5) as W07; claim only, unsigned",
+  "collision_scope": "docs/CoOps/w07/",
+  "cycle_id": "W07-C1",
+  "dependency_ids": [
+    "W07-C1-J2"
+  ],
+  "disposition": "PREPARED",
+  "envelope_sha256": "caf100115605e46918f1d2841f02b756d6d3cf69fd1cadd887cf6b6979ecf3cd",
+  "evidence": [],
+  "hold_reason_or_null": "LANDING_HOLD: no authenticated write transport (git proxy 403: repo not in session's authorized set)",
+  "idempotency_key": "ba8762b92f5d107cd29906aa10286992b4cfb11170e34c29c9809769d337d158",
+  "input_refs": [
+    {
+      "sha256_or_commit": "ec169cffeba65e5d1bc5c4a84b3efd4d20ad03868d2e74898e7395fed33673e7",
+      "uri": "CoCivium/CoCivium@a07f1544f83ccf13fad224328558fe77a176223b:docs/CoOps/COCLAUDE_TEN_CONTEXT_DISPATCH_R0.md"
+    },
+    {
+      "sha256_or_commit": "1d0964637c68b49ef4274c5e48d034e148f1897a",
+      "uri": "CoCivium/InSeed"
+    },
+    {
+      "sha256_or_commit": "2f8b5d2cb0d3dccc13651344315de52b0fe7e06c",
+      "uri": "CoCivium/CoCivium@candidate/copre-cof2b-release-rail-20261118"
+    }
+  ],
+  "job_id": "W07-C1-J3",
+  "kind": "candidate_artifact",
+  "object_id": "sha256:ea7aa4a0f5d0ec22bf7f549a9e7f2df43d9f330ebefaa0d4463b647951d59f75",
+  "output_refs": [
+    {
+      "sha256": "40cd9660c4b46472476eee0a86b8b1a46a1db1b3c946ab1af30cd6445700e0d3",
+      "uri": "CoCivium/CoCivium@claude/w07-loop-20261118:docs/CoOps/w07/w07_coloop_ref.py"
+    },
+    {
+      "sha256": "6e5af4f14ec4f1064db57c6c96a0608cb5963a1e2b9c9214d9f0fe4dde379853",
+      "uri": "CoCivium/CoCivium@claude/w07-loop-20261118:docs/CoOps/w07/W07_C1_J3J4_RESULTS_R0.md"
+    },
+    {
+      "sha256": "bc3a89c0ba6df8d08c752f3403e949805b1444423dc5419f0d7d74ad1acee27b",
+      "uri": "CoCivium/CoCivium@claude/w07-loop-20261118:docs/CoOps/w07/W07_C1_J3J4_RESULTS_R0.json"
+    }
+  ],
+  "privacy_class": "public-safe",
+  "produced_utc": "2026-11-18T20:30:59Z",
+  "reviewer_ids": [],
+  "schema_version": "CoLanding.Envelope.R0(candidate)",
+  "session_instance_id": "w07-si-43d985bc720b4b4f",
+  "successor_job_ids": [
+    "W07-C1-J4",
+    "W07-C2-J6"
+  ],
+  "tests": [
+    "L5_baseline falsified R0 liveness",
+    "L5 hold+break 20/20 PASS",
+    "regression 12/12 + L5 PASS",
+    "defects D1-D4 recorded"
+  ],
+  "worker_id": "W07"
+}

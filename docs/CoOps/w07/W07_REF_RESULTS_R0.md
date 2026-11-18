@@ -1,5 +1,7 @@
 # W07 — reference harness results (R0)
 
+> **Status (C1-J3):** these scaled results remain valid. The harness itself is superseded: see `W07_C1_J3J4_RESULTS_R0.md` for defects D1–D4 and the L5 frozen-transaction falsifier. Kept unchanged below as history.
+
 - Harness: `docs/CoOps/w07/w07_coloop_ref.py`, sha256 `e8d826ca26db6999790056f595fd41c5a04b4d3000194b8b806594722ed34562`
 - Raw results: `docs/CoOps/w07/W07_REF_RESULTS_R0.json`, sha256 `7792155984a6e15ae27381fc1cc231162b05e68fc63f5221a4290365b2c8517c`
 - Host: Claude cloud sandbox (Linux 6.18, Python 3). This is **not the steward machine**.

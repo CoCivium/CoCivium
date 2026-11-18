@@ -1,0 +1,59 @@
+{
+  "attempt_id": "1",
+  "authority_ref_or_null": null,
+  "claimed_actor": "Claude (Opus 5.5) as W07; claim only, unsigned",
+  "collision_scope": "docs/CoOps/w07/",
+  "cycle_id": "W07-C1",
+  "dependency_ids": [
+    "W07-C1-J1",
+    "W07-C1-J2",
+    "W07-C1-J3",
+    "W07-C1-J4",
+    "W07-C2-J1"
+  ],
+  "disposition": "PREPARED",
+  "envelope_sha256": "8733e0f0082901eb126804277ff84346c19e7d7484fffab6146b248b9c20e216",
+  "evidence": [],
+  "hold_reason_or_null": "LANDING_HOLD: no authenticated write transport (git proxy 403: repo not in session's authorized set)",
+  "idempotency_key": "0e30286cddb184452cecca6ab6cc753cd503b73436f1093b284015e4b3b74558",
+  "input_refs": [
+    {
+      "sha256_or_commit": "ec169cffeba65e5d1bc5c4a84b3efd4d20ad03868d2e74898e7395fed33673e7",
+      "uri": "CoCivium/CoCivium@a07f1544f83ccf13fad224328558fe77a176223b:docs/CoOps/COCLAUDE_TEN_CONTEXT_DISPATCH_R0.md"
+    },
+    {
+      "sha256_or_commit": "1d0964637c68b49ef4274c5e48d034e148f1897a",
+      "uri": "CoCivium/InSeed"
+    },
+    {
+      "sha256_or_commit": "2f8b5d2cb0d3dccc13651344315de52b0fe7e06c",
+      "uri": "CoCivium/CoCivium@candidate/copre-cof2b-release-rail-20261118"
+    }
+  ],
+  "job_id": "W07-C1-J5",
+  "kind": "candidate_artifact",
+  "object_id": "sha256:e0cac0f7a10eb7821aeaf1753dc48839da8dfc4d803c104026236456a20e7c09",
+  "output_refs": [
+    {
+      "sha256": "da44064f2bbfd876274b24af69db1b7a990a47d185aaca6050a2fb00406ae19d",
+      "uri": "CoCivium/CoCivium@claude/w07-loop-20261118:docs/CoOps/w07/W07_RESTART_MANIFEST_R0.md"
+    },
+    {
+      "sha256": "b9f567cfeeee1f21f3e169f661c07af5efc20433f2d17e85b486e4abf1de9203",
+      "uri": "CoCivium/CoCivium@claude/w07-loop-20261118:docs/CoOps/w07/w07_landing.py"
+    }
+  ],
+  "privacy_class": "public-safe",
+  "produced_utc": "2026-11-18T20:30:59Z",
+  "reviewer_ids": [],
+  "schema_version": "CoLanding.Envelope.R0(candidate)",
+  "session_instance_id": "w07-si-43d985bc720b4b4f",
+  "successor_job_ids": [
+    "W07-C2-J3",
+    "W07-C2-J6"
+  ],
+  "tests": [
+    "w07_landing.py verify exit 0"
+  ],
+  "worker_id": "W07"
+}
