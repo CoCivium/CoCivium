@@ -124,6 +124,7 @@ def batch_preflight(items):
     seen = {}
     observations = []
     collisions = set()
+    effect_receipt_identities = {}
     for source_bytes, receipt_bytes, pin in items:
         try:
             candidate = preflight(source_bytes, receipt_bytes, pin)
@@ -132,6 +133,10 @@ def batch_preflight(items):
                                  if type(receipt_bytes) is bytes else None})
             continue
         key = tuple(candidate["identity_key"])
+        # A distinct receipt or issuer for an identical WorkID/effect/epoch
+        # is different evidence, not independently approved extra effect.
+        effect_key = (key[0], key[1], key[4])
+        effect_receipt_identities.setdefault(effect_key, set()).add((key[2], key[3]))
         prior = seen.get(key)
         if prior is None:
             seen[key] = candidate
@@ -144,15 +149,33 @@ def batch_preflight(items):
             state = "HOLD_RECEIPT_IDENTITY_COLLISION"
         observations.append({"state": state, "identity_key": list(key),
                              "receipt_sha256": candidate["receipt_sha256"]})
+    # Final adjudication is order-independent: late receipts can downgrade
+    # earlier candidates. Preserve original arrival states for audit.
+    effect_collisions = {
+        effect_key for effect_key, receipts in effect_receipt_identities.items()
+        if len(receipts) > 1
+    }
+    for observation in observations:
+        identity_key = observation.get("identity_key")
+        if identity_key is None:
+            continue
+        if (identity_key[0], identity_key[1], identity_key[4]) in effect_collisions:
+            observation["pre_effect_review_state"] = observation["state"]
+            observation["state"] = "HOLD_UNADJUDICATED_EFFECT_MULTI_RECEIPT"
     return {
         "source_observations": observations,
-        "typed_candidates_unconflicted": sum(key not in collisions for key in seen),
+        "typed_candidates_unconflicted": sum(
+            key not in collisions and (key[0], key[1], key[4]) not in effect_collisions
+            for key in seen
+        ),
         "collision_groups": len(collisions),
+        "effect_collision_groups": len(effect_collisions),
         "qualified_receipts": 0,
         "receiver_origin_acks": 0,
         "elected_masters": 0,
         "fanout": "HOLD",
         "external_effects": 0,
         "nonclaims": ["TYPED_NE_AUTHENTICATED", "EXACT_REPLAY_NE_INDEPENDENT_RECEIPT",
-                      "REVIEW_NE_ADMISSION", "SOURCE_HASH_NE_RECEIVER_ACK"],
+                      "REVIEW_NE_ADMISSION", "SOURCE_HASH_NE_RECEIVER_ACK",
+                      "MULTI_RECEIPT_SAME_EFFECT_NE_QUORUM_OR_MASTER"],
     }
