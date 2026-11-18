@@ -53,7 +53,7 @@
     }
     // Source status is machine-owned header state, not a token that can
     // be supplied later in user text to counterfeit a receiver ACK.
-    var expectedHeader = [TITLE, '', STATUS, '', '## Goal'].join('\n') + '\n';
+    var expectedHeader = [TITLE, '', STATUS, ''].join('\n') + '\n';
     if (!normalized.startsWith(expectedHeader) ||
         !(normalized.trimEnd().endsWith(SOURCE_R0) ||
           normalized.trimEnd().endsWith(SOURCE_R1))) {
