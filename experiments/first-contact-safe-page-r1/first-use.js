@@ -51,8 +51,10 @@
     if (normalized.indexOf('\r') !== -1) {
       fail('HOLD_CARD_LINE_ENDING');
     }
-    if (!normalized.startsWith(TITLE + '\n') ||
-        normalized.indexOf('\n' + STATUS + '\n') === -1 ||
+    // Source status is machine-owned header state, not a token that can
+    // be supplied later in user text to counterfeit a receiver ACK.
+    var expectedHeader = [TITLE, '', STATUS, '', '## Goal'].join('\n') + '\n';
+    if (!normalized.startsWith(expectedHeader) ||
         !(normalized.trimEnd().endsWith(SOURCE_R0) ||
           normalized.trimEnd().endsWith(SOURCE_R1))) {
       fail('HOLD_CARD_PROVENANCE');
