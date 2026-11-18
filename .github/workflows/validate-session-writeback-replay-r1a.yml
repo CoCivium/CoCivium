@@ -13,6 +13,8 @@ on:
       - 'ai/currentness/session-writeback-r1.json'
       - 'scripts/CoOomphFanInSaturationR0.py'
       - 'tests/test_cooomph_fanin_saturation_r0.py'
+      - 'scripts/CoSessionTypedReceiptPreflightR0.py'
+      - 'tests/test_cosession_typed_receipt_preflight_r0.py'
       - 'docs/Architecture/COSPEEDO_EXPONENTIAL_PROOF_AND_RECURRENCE_INTERNALIZATION_R0_20261026.md'
       - '.github/workflows/validate-session-writeback-replay-r1a.yml'
 
@@ -27,6 +29,10 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+
+      - name: Typed source/receipt candidate preflight, all external gates held
+        shell: bash
+        run: python -B -m unittest discover -s tests -p 'test_cosession_typed_receipt_preflight_r0.py' -v
 
       - name: Bounded CoOomph existing fan-in scaling canary
         shell: bash
