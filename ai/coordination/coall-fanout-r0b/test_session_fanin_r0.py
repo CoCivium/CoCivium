@@ -2,13 +2,14 @@
 from __future__ import annotations
 
 import copy
+import hashlib
 import json
 import sys
 import unittest
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[3] / "scripts"))
-from CoAllSessionFanInR0 import reconcile_sources, reconcile_receipt_blobs
+from CoAllSessionFanInR0 import reconcile_sources, reconcile_receipt_blobs, review_relational_source_blob
 
 
 def row(session, work, sha="a"*64, *, state="OBSERVED", delta=True):
@@ -228,6 +229,93 @@ class ReceiptFanIn30R0(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "HOLD_RECEIPT_BYTES_OR_SIZE"):
             reconcile_receipt_blobs([b"x" * 4097])
 
+
+
+
+def typed_source_sample():
+    return dict(delta_id='fictional-1', source_session='fixture-a',
+                created_at='2026-11-18T01:00:00Z', target_domains=['CoLex'],
+                operations=[dict(op='LINK', subject='A', relation='suggests', object='B')],
+                authority_ceiling='CANDIDATE_ONLY', public_safety='PUBLIC_SAFE',
+                nonclaims=['NOT_CANON'], next_gate='FANIN_REVIEW')
+
+
+def review_typed_case(d):
+    raw = json.dumps(d, sort_keys=True).encode()
+    return review_relational_source_blob(raw, hashlib.sha256(raw).hexdigest())
+
+
+class TypedSourcePreflightR0(unittest.TestCase):
+    def test_valid_never_admits(self):
+        x = review_typed_case(typed_source_sample())
+        self.assertTrue(x['typed_source_preflight_pass'])
+        self.assertEqual(x['state'], 'HOLD_INDEPENDENT_AUTHORITY_AND_RECEIVER')
+        self.assertFalse(x['publication_authorized'])
+        self.assertEqual(x['effect_count'], 0)
+
+    def test_null_fields(self):
+        d = typed_source_sample()
+        d.update(source_session=None, created_at=None, nonclaims=None, next_gate=None)
+        x = review_typed_case(d)
+        self.assertEqual(x['state'], 'HOLD_UNQUALIFIED_INPUT')
+        self.assertIn('HOLD_TYPED_IDENTITY', x['holds'])
+
+    def test_wrong_types(self):
+        d = typed_source_sample()
+        d.update(delta_id=0, target_domains=[True], nonclaims=7)
+        x = review_typed_case(d)
+        self.assertIn('HOLD_TYPED_IDENTITY', x['holds'])
+        self.assertIn('HOLD_TARGET_DOMAINS', x['holds'])
+
+    def test_unapproved_authority(self):
+        d = typed_source_sample()
+        d['authority_ceiling'] = {'delete': True}
+        self.assertIn('HOLD_AUTHORITY_CEILING', review_typed_case(d)['holds'])
+
+    def test_mismatched_digest(self):
+        raw = json.dumps(typed_source_sample()).encode()
+        x = review_relational_source_blob(raw, '0' * 64)
+        self.assertIn('HOLD_SOURCE_DIGEST_BINDING', x['holds'])
+
+    def test_duplicate_json_key(self):
+        raw = b'{"delta_id":"x","delta_id":"x"}'
+        x = review_relational_source_blob(raw, hashlib.sha256(raw).hexdigest())
+        self.assertIn('HOLD_INVALID_OR_DUPLICATE_JSON', x['holds'])
+
+    def test_private_chat_extra_field(self):
+        d = typed_source_sample()
+        d['messages'] = [{'content': 'private'}]
+        x = review_typed_case(d)
+        self.assertIn('HOLD_DELTA_FIELDS', x['holds'])
+        self.assertNotIn('private', str(x))
+
+    def test_bad_time(self):
+        d = typed_source_sample()
+        d['created_at'] = -100
+        self.assertIn('HOLD_CREATED_AT', review_typed_case(d)['holds'])
+
+    def test_two_items_held(self):
+        d = {'deltas': [typed_source_sample(), copy.deepcopy(typed_source_sample())]}
+        self.assertIn('HOLD_NOT_SINGLE_DELTA', review_typed_case(d)['holds'])
+
+    def test_bad_operation(self):
+        d = typed_source_sample()
+        d['operations'][0]['op'] = 'DELETE'
+        self.assertIn('HOLD_OPERATIONS', review_typed_case(d)['holds'])
+
+    def test_unknown_safety_no_effect(self):
+        d = typed_source_sample()
+        d['public_safety'] = {'a': 1}
+        x = review_typed_case(d)
+        self.assertIn('HOLD_PUBLIC_SAFETY', x['holds'])
+        self.assertEqual(x['effect_count'], 0)
+
+    def test_valid_private_still_no_public(self):
+        d = typed_source_sample()
+        d['public_safety'] = 'PRIVATE_ONLY'
+        x = review_typed_case(d)
+        self.assertTrue(x['typed_source_preflight_pass'])
+        self.assertFalse(x['publication_authorized'])
 
 if __name__=="__main__":
     unittest.main()
