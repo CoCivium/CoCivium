@@ -1,0 +1,183 @@
+{
+  "schema": "CoAll.CoPreGeneric.SessionContribution.R0",
+  "observation_date": "2026-11-09",
+  "state": "PUBLIC_SAFE_CANDIDATE__NOT_CANON__NO_CROSS_PROVIDER_RECEIVER_ACK",
+  "work_id": "CoAll.CoPreGeneric.CrossAudience.20261109",
+  "identity": "ChatGPT session source-bound contribution; not an authenticated MetaAI delivery",
+  "purpose": "Machine-pull delta for CoPreGeneric, preserving CoCarry-free recovery and distinct machine/human presentations over shared evidence",
+  "bootstrap": [
+    {
+      "path": "SESSION_BOOTSTRAP.md",
+      "purpose": "Bounded session currentness; human relay not event bus"
+    },
+    {
+      "path": "ai/session-bootstrap.json",
+      "purpose": "Discover session writeback/fanin and existing role-scoped currentness"
+    },
+    {
+      "path": "docs/AI_DISCOVERY_POLICY.md",
+      "purpose": "Non-directive AI navigation; same evidence classes for all readers"
+    },
+    {
+      "path": "ai/onramp/ai-ia-evergreen-r0.json",
+      "purpose": "Typed machine receiver, permissions, exact source and revocable role"
+    },
+    {
+      "path": "examples/colensmedia/coaudience_circuit_r0.md",
+      "purpose": "Audience braid and declared loss across map, temporal, accessible, media and outreach"
+    },
+    {
+      "path": "docs/Evolution/COFUTUREPULL_GDSIDE_R0.md",
+      "purpose": "Desired futures vs predictions vs authority; G_dSide is hypothesis/metaphor"
+    }
+  ],
+  "completed_public_deltas": [
+    {
+      "id": "CoMail-stage",
+      "url": "https://github.com/CoCivium/CoCivium/pull/415",
+      "state": "DRAFT_PR_CI_SUCCESS",
+      "proof": "https://github.com/CoCivium/CoCivium/actions/runs/42696945429",
+      "result": "Synthetic source/policy drift stage review, no Gmail effects"
+    },
+    {
+      "id": "CoWave-diversity",
+      "url": "https://github.com/CoCivium/CoCivium/pull/420",
+      "state": "DRAFT_PR_CI_SUCCESS",
+      "proof": "https://github.com/CoCivium/CoCivium/actions/runs/42701703774",
+      "result": "Bounded advisory wave novelty with repair override; no workers spawned"
+    },
+    {
+      "id": "CoSession-fanin",
+      "url": "https://github.com/CoCivium/CoCivium/pull/422",
+      "state": "DRAFT_PR_CI_SUCCESS",
+      "proof": "https://github.com/CoCivium/CoCivium/actions/runs/42702890013",
+      "result": "Duplicate and missing session-source negative tests; no receiver handoff"
+    },
+    {
+      "id": "cross-media",
+      "url": "https://github.com/CoCivium/CoCivium/issues/24#issuecomment-6750762597",
+      "state": "PUBLIC_ACCEPTANCE_CONTRACT",
+      "result": "Source-bound media projection, semantic/a11y/drift tests, private isolation"
+    },
+    {
+      "id": "diagram-of-diagrams",
+      "url": "https://github.com/CoCivium/CoCivium/issues/24#issuecomment-6751230864",
+      "state": "PUBLIC_ACCEPTANCE_CONTRACT",
+      "result": "Nested CoMap/CoNav with source identity, preservation and navigation"
+    },
+    {
+      "id": "megascroller-resilience",
+      "url": "https://github.com/CoCivium/CoCivium/issues/24#issuecomment-6751592772",
+      "state": "PUBLIC_ACCEPTANCE_CONTRACT",
+      "result": "Megascroller, machine twin, independent cold restore and failure domains"
+    },
+    {
+      "id": "session-drain",
+      "url": "https://github.com/CoCivium/CoCivium/issues/317#issuecomment-6751865184",
+      "state": "PUBLIC_ACCEPTANCE_CONTRACT",
+      "result": "Drain unique WorkID not whole chat; privacy scoped and exact receiver"
+    },
+    {
+      "id": "browser-transition",
+      "url": "https://github.com/CoCivium/CoCivium/issues/376#issuecomment-6751007890",
+      "state": "PUBLIC_ACCEPTANCE_CONTRACT",
+      "result": "Firefox one-tab view migration != work migration"
+    }
+  ],
+  "copregeneric_kernel": {
+    "start": "DISCOVER_SMALLEST_RELEVANT_CURRENT_SLICE",
+    "bind": "EXACT_WORKID_SOURCE_REVISION_PROOF_SCOPE",
+    "dedupe": "SOURCE_AND_EFFECT_IDENTITY_NOT_PROMPT_VERSION",
+    "conserve": "LAST_QUALIFIED_MVP_AND_UNKNOWN_FRONTS",
+    "classify": "MATERIAL_DELTA_OR_QUIET_OR_HELD",
+    "act": "AUTHORIZED_BOUNDED_HIGH_VALUE_ACTION_OR_REPRODUCIBLE_TEST",
+    "challenge": "COTURTLE_COST_BUDGET_AND_ADVERSARIAL_FALSIFIER",
+    "preserve": "PRIVATE_BY_DEFAULT_PUBLIC_SAFE_MANIFEST_ONLY",
+    "handoff": "EXISTING_FANIN_RECEIVER_EXACT_READPROOF_REQUIRED",
+    "return": "DELTA_NO_DELTA_HELD_WITH_ONE_POINTER_AND_WAKE",
+    "stop": "NO_RITUAL_ECHO_OR_UNBOUNDED_WORKER_SPAWN"
+  },
+  "audience_contracts": {
+    "synthverse": {
+      "interface": "Machine-first API/typed manifest/graph/event/query; signed or hash-bound source identity when available; exact permission scopes; explicit unknowns and loss; stable semantics",
+      "preferred_operations": [
+        "discover",
+        "resolve",
+        "compare_versions",
+        "trace_provenance",
+        "challenge",
+        "request_review",
+        "propose_bounded_delta",
+        "verify_receipt",
+        "sleep_until_wake"
+      ],
+      "disallowed": [
+        "hidden_model_directives",
+        "authority_from_publication",
+        "claiming_cross-provider_pickup_from_URL",
+        "claiming_personhood_or_AGI_from_interface_role"
+      ],
+      "success": "Correct source retrieval and safe task result per byte/compute/latency; receiver-produced readback"
+    },
+    "bioverse": {
+      "interface": "Accessible megascroller, guided CoNav, expandable diagrams, CoOrb/CoBar, clear limitations, human consent and reversible action",
+      "preferred_operations": [
+        "glance",
+        "orient",
+        "drill_down",
+        "compare",
+        "challenge",
+        "act_with_consent",
+        "exit"
+      ],
+      "success": "First-use task comprehension, agency, accessibility and continuity"
+    },
+    "invariants": [
+      "SAME_SOURCE_AND_EPISTEMIC_CLASS",
+      "ROLE_RELATIVE_PRESENTATION_NOT_TWO_TRUTHS",
+      "LOSS_DECLARED",
+      "REVOCABLE_AUTHORITY",
+      "PRIVACY_BY_DEFAULT",
+      "RECEIVER_ACK_NOT_INFERRED"
+    ]
+  },
+  "research_lanes": [
+    {
+      "id": "G_dSide",
+      "kind": "SYMBOLIC_NORMATIVE_OR_FALSIFIABLE_HYPOTHESIS",
+      "claim": "No verified external divine communication or future-to-present force",
+      "test": "Compare multiple candidate futures, null baseline, falsifiers, rights and reversible actions"
+    },
+    {
+      "id": "CoOscillation",
+      "kind": "CANDIDATE_DYNAMIC_CONTROL_METAPHOR",
+      "claim": "Oscillation is not proof of agency or health",
+      "test": "Measure settling time, drift, overshoot, resource cost and stability against event-driven/no-oscillation baseline"
+    },
+    {
+      "id": "CoAGI",
+      "kind": "OPEN_CAPABILITY_RESEARCH",
+      "claim": "No evidence here of AGI, sentience or singularity",
+      "test": "Task capability, independent generalization, robustness, safety and external assessment"
+    }
+  ],
+  "proof_ceiling": {
+    "public_source_landing": true,
+    "merged_or_deployed": false,
+    "real_gmail_send": false,
+    "x2_runtime": false,
+    "live_cross_session_sync": false,
+    "seed_survived_24h": false,
+    "independent_receiver_ack": false,
+    "observed_agi_or_sentience": false
+  },
+  "next_deed": "Qualify one existing machine-facing manifest and a human-facing CoMap/megascroller as equivalent projections of the same public-safe WorkID under an independent exact-object receiver readback",
+  "nonclaims": [
+    "GITHUB_PR_NE_MERGE",
+    "CI_PASS_NE_PRODUCTION_EFFECT",
+    "PUBLIC_PULL_POINTER_NE_DELIVERY",
+    "SYNTH_USER_ROLE_NE_SENTIENCE",
+    "G_DSIDE_NE_EMPIRICAL_CAUSATION",
+    "UNKNOWN_HISTORY_NE_EMPTY_HISTORY"
+  ]
+}
