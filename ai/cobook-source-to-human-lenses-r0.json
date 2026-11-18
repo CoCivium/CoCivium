@@ -1,0 +1,77 @@
+{
+  "schema": "CoBook.SourceToHumanLenses.R0.v0.1",
+  "state": "DRAFT_PR_SOURCE_BOUND_NOT_CANON_OR_RUNTIME",
+  "created_utc": "2026-11-10",
+  "reader_source": "docs/Books/CoBook_Origin_Beetle_Cartographer_Interactive_R0.html",
+  "story_identity": "cobook.origin.beetle-cartographer.r0",
+  "purpose": "Four optional post-scene plain-language projections of source-bound CoAll families, retaining technical sources, claims, nonclaims, and projection losses; no injected interlude before character needs it.",
+  "projection_policy": {
+    "single_source_spine": true,
+    "opt_in_after_story": true,
+    "mode": "OPTIONAL_DETAILS_TEXT_AND_LINKS",
+    "no_auto_audio_or_tracking": true,
+    "prior_text_remains_unchanged": true,
+    "distinguishing_rules": [
+      "SOURCE_REGISTRY_NE_VERIFIED_OUTCOME",
+      "HYPOTHESIS_NE_DISCOVERY",
+      "METAPHOR_NE_EQUIVALENCE",
+      "RIGHTS_AND_CHILD_PRIVACY_BOUND",
+      "NEW_PROJECTION_NE_NEW_CANON"
+    ]
+  },
+  "lenses": [
+    {
+      "id": "comap",
+      "source_path": "ai/comap-source-projection-r0.json",
+      "git_blob_sha": "9cc47926d2f61f439db1818702127382f78d693f",
+      "kind": "SOURCE_REGISTERED_GRAPH_SNAPSHOT",
+      "technical_fact": "CoMap R0 registers 56 objects and 61 typed relations from bounded public registries.",
+      "plain_language": "A map can show the paths someone recorded without containing every road that exists.",
+      "narrative_need": "The Cartographer opens a map after choosing a route.",
+      "evidence_limit": "Registered relations are not proof of universal coverage, equivalence, live sync, or authority.",
+      "projection_loss": "The short analogy omits exact object IDs, edge types, source timestamps, and registered coverage boundaries."
+    },
+    {
+      "id": "cotheoryall",
+      "source_path": "docs/CoTheoryAll/costrawbe-r0/README.md",
+      "git_blob_sha": "21da563a35106896c3029ea8f2cc4fd30cfa31c3",
+      "kind": "SCIENTIFIC_PHILOSOPHICAL_HYPOTHESIS_CANDIDATE",
+      "technical_fact": "CoTheoryAll's R0 explores whether quantum structure is fundamental or an observer-relative projection of deeper relations.",
+      "plain_language": "What if the way we look at the world changes the picture we make of it?",
+      "narrative_need": "A missing part of the map invites a question about descriptions and reality.",
+      "evidence_limit": "A fictional question is not scientific confirmation that reality is non-quantum.",
+      "projection_loss": "This ordinary-language question drops mathematical definitions, competing models, controls, and falsifying predictions."
+    },
+    {
+      "id": "coglukey",
+      "source_path": "docs/Strategy/COGLUKEY_CAREERS_IMPROVEMENT_CLUBS_R0_20261027.md",
+      "git_blob_sha": "c4edd0facee3cc5934a2d074953ba559804fffa6",
+      "kind": "DURABLE_STEWARDSHIP_ARCHITECTURE_CANDIDATE",
+      "technical_fact": "CoGlukey careers propose durable identity, bounded budgets, sleep on no meaningful change, and reawakening on material need.",
+      "plain_language": "A good helper keeps a doorway usable and can rest until someone needs another repair.",
+      "narrative_need": "The Beetle is learning to be an available adviser rather than the owner of the route.",
+      "evidence_limit": "This is a proposed stewardship relation, not an operating improvement club or autonomous worker.",
+      "projection_loss": "The metaphor drops qualification, budget, election, receiver, and recovery contracts."
+    },
+    {
+      "id": "highlights",
+      "source_path": "ai/highlight-assets.json",
+      "git_blob_sha": "a6cf0422a2fbf82852de3619a47ea8b8ec3c45de",
+      "kind": "PUBLIC_CANDIDATE_HIGHLIGHT_REGISTER",
+      "technical_fact": "The source registry lists 10 highlighted assets with different readiness states and explicit no-canon rails.",
+      "plain_language": "Ten named curiosities can be worth exploring without being ten proven treasures.",
+      "narrative_need": "The map makes some places visible but does not declare every bright mark trustworthy.",
+      "evidence_limit": "A source highlight is not validated, adopted, public-release-ready, or necessarily central to the reader.",
+      "projection_loss": "The analogy suppresses detailed per-asset status, currentness, and privacy rules."
+    }
+  ],
+  "deferred_topic_rail": "Whale, God, CoStairHeaven, alien minds and other motifs are optional elsewhere. Do not introduce them here as competing standalone plots.",
+  "nonclaims": [
+    "NOT_BOOK_PUBLICATION",
+    "NOT_LIVE_READER_OR_GLOBAL_SOURCE_SYNC",
+    "NOT_ESTABLISHED_QUANTUM_THEORY",
+    "NOT_INDEPENDENT_RECEIVER_PICKUP",
+    "NOT_CHILD_BIOGRAPHY_OR_CHILD_AUTHORSHIP",
+    "NOT_EVIDENCE_OF_HUMAN_COMPREHENSION"
+  ]
+}

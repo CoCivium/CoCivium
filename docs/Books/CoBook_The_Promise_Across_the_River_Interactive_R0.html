@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="A parent and child test whether a promise survives paper, a digital copy and an optional consent-based handoff. Original fictional CoBook candidate.">
+<title>The Promise Across the River | CoCivia's Field Guide to Thinking</title>
+<style>
+:root{color-scheme:dark;--bg:#091521;--ink:#eff8f6;--muted:#c1d5dc;--line:#647a8b;--panel:#152838;--teal:#9af0d9;--violet:#e0c9ff;--amber:#f9ddaa;--fail:#f2bcb9;font:18px/1.66 system-ui,-apple-system,Segoe UI,sans-serif}
+*{box-sizing:border-box}body{margin:0;background:linear-gradient(160deg,#0e2936,#111b30 48%,#0a1520);color:var(--ink)}
+a{color:var(--teal)}a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var(--amber);outline-offset:3px}
+.skip{position:absolute;left:-9999px;top:0}.skip:focus{left:.75rem;top:.75rem;z-index:3;background:white;color:#091521;padding:.6rem}
+.wrap{max-width:1000px;margin:auto;padding:1.2rem clamp(1rem,4vw,2.75rem) 3rem}
+header{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;align-items:center;border-bottom:1px solid var(--line);padding-bottom:1rem;font-size:.86rem}
+.brand{font-weight:800;color:var(--teal)}.draft{border:1px solid var(--line);padding:.2rem .6rem;border-radius:1rem}
+.hero{display:grid;grid-template-columns:1.15fr 1fr;align-items:center;gap:2rem;padding:2rem 0 1.5rem}
+.eyebrow{text-transform:uppercase;letter-spacing:.12em;font-size:.75rem;color:var(--teal);font-weight:800}
+h1{font:500 clamp(2.55rem,5.8vw,5.1rem)/1.08 Georgia,serif;letter-spacing:-.035em;margin:.4rem 0}
+.lead{font-size:1.15rem;max-width:34ch;color:var(--muted)}
+.hero svg{display:block;width:100%;height:auto;max-height:335px}
+article{max-width:76ch;margin:auto}
+.scene{border:1px solid var(--line);border-radius:20px;background:var(--panel);padding:clamp(1rem,3vw,2rem)}
+.scene h2,.choices h2{font:500 clamp(1.7rem,4vw,2.35rem)/1.2 Georgia,serif;margin:.4rem 0 1.2rem}
+.scene p{margin:.65rem 0 1rem}.who{color:var(--teal);font-weight:750;font-size:.82rem;letter-spacing:.05em;text-transform:uppercase}
+.speech{border-left:3px solid var(--teal);padding-left:1rem}
+.choices{padding:2rem 0}
+.group{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.7rem;margin:1.2rem 0}
+button{border:1px solid #96b9b9;min-height:4rem;border-radius:12px;background:#1a3548;color:var(--ink);cursor:pointer;padding:.7rem 1rem;font:650 1rem/1.35 system-ui,sans-serif}
+button[aria-pressed=true]{background:#303759;border-color:var(--violet);box-shadow:inset 0 0 0 1px var(--violet)}
+#result{border:1px solid #8597ae;border-radius:14px;padding:1rem 1.3rem;background:#182b3f;min-height:11rem}
+#result h3{font:500 1.5rem Georgia,serif;color:var(--violet);margin:.35rem 0}
+#result strong{color:var(--amber)}
+#result p{margin:.5rem 0 1rem}
+.outro{border-left:3px solid var(--teal);padding-left:1rem;margin:1rem 0 2rem}
+details{border:1px solid var(--line);border-radius:12px;margin:1rem auto;padding:1rem 1.2rem;background:#132737}
+details summary{font-weight:750;cursor:pointer;color:var(--teal)}
+details h3{font-size:1.1rem;margin:1rem 0 .3rem}
+details p{margin:.45rem 0 .8rem}
+.small{font-size:.88rem;color:var(--muted)}
+footer{margin-top:2.5rem;border-top:1px solid var(--line);padding-top:1.1rem;color:var(--muted);font-size:.86rem}
+@media(max-width:730px){.hero{display:block}.hero svg{max-width:500px;margin:1rem auto}.group{grid-template-columns:1fr}button{text-align:left}}
+@media print{body{color:#111;background:white}.scene,details,#result{background:white;color:#111;border-color:#444}.group{display:none}.who,.brand,summary{color:#111}header{color:#111}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation:none!important}}
+</style>
+</head>
+<body>
+<a class="skip" href="#story">Skip illustration and read the story</a>
+<div class="wrap">
+<header><span class="brand">CoCivia · A Field Guide to Thinking Together</span><span class="draft">Fictional chapter candidate · not a published edition</span></header>
+<main>
+<section class="hero" aria-labelledby="heading">
+<div>
+<p class="eyebrow">A near-future history that hasn't happened</p>
+<h1 id="heading">The Promise Across the River</h1>
+<p class="lead">A parent, a child, one missing lamp and a record that refuses to admit what it doesn't know.</p>
+<p class="small">Read the story without interacting. The experiment afterward is optional. No login, audio, tracking or outside connection.</p>
+</div>
+<svg role="img" aria-labelledby="river-title river-desc" viewBox="0 0 560 340">
+<title id="river-title">Two figures and three ways across a river</title>
+<desc id="river-desc">A taller and a smaller featureless figure stand beside a curved river. A paper note, a small digital tile and a narrow footbridge are pictured as separate possibilities; neither figure has sex-specific features.</desc>
+<defs><linearGradient id="river" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#6ce8d5"/><stop offset="1" stop-color="#776fe1"/></linearGradient></defs>
+<path d="M0 150Q115 90 215 160T560 144L560 265Q420 330 309 247T0 278Z" fill="url(#river)" opacity=".6"/>
+<path d="M0 186Q115 125 215 194T560 178" stroke="#e0fffc" stroke-width="3" opacity=".62" fill="none"/>
+<path d="M45 270L425 67" stroke="#ffe2b7" stroke-width="18" stroke-linecap="round" opacity=".8"/>
+<path d="M45 270L425 67" stroke="#6b4b38" stroke-width="2" stroke-dasharray="16 13" stroke-linecap="round"/>
+<g fill="#e8dfff" stroke="#f6ebfd" stroke-width="2"><circle cx="75" cy="238" r="18"/><path d="M60 257H90L101 306H49Z"/></g>
+<g fill="#ffe6bd" stroke="#ffe6bd" stroke-width="2"><circle cx="125" cy="254" r="12"/><path d="M115 270H135L141 305H109Z"/></g>
+<rect x="318" y="22" width="57" height="48" rx="6" fill="#fff0d8" stroke="#b9a583" stroke-width="3" transform="rotate(9 346 47)"/>
+<path d="M331 43H358M333 52H353" stroke="#877965" stroke-width="3"/>
+<rect x="399" y="191" width="65" height="50" rx="8" fill="#1a3348" stroke="#89e9d7" stroke-width="4"/>
+<path d="M409 209H453M409 218H447" stroke="#c6f5f2" stroke-width="3"/>
+<circle cx="430" cy="229" r="3" fill="#b9cbff"/>
+</svg>
+</section>
+<article>
+<section class="scene" id="story" aria-labelledby="sceneheading">
+<h2 id="sceneheading">An exceptionally dry copy</h2>
+<p>Years later, the city would call this the beginning of its Civic Bridge Era. At the time, nobody called it anything. The river was rising, the footbridge was closed, and a lantern had gone missing.</p>
+<p>The Parent carried a paper promise in a coat pocket. The Child carried a question, which was harder to keep dry.</p>
+<div class="speech">
+<p><span class="who">Parent</span> We said we'd bring the lantern to the far bank before nightfall.</p>
+<p><span class="who">Child</span> Who did we say that to?</p>
+<p><span class="who">Parent</span> I put it in the town ledger. Everyone can see the ledger.</p>
+<p><span class="who">Child</span> Everyone who can reach it. Did anyone on the far bank ask for a lantern?</p>
+</div>
+<p>The Parent stopped beneath the shelter of a closed tea stall. A small machine on the counter announced that the promise was backed up in three places. Its records were unusually cheerful for something with no opinion about rain.</p>
+<div class="speech">
+<p><span class="who">Parent</span> The copy is exact. We can even check that the words weren't changed.</p>
+<p><span class="who">Child</span> Does the copy know whether the person wants us to come?</p>
+<p><span class="who">Parent</span> No.</p>
+<p><span class="who">Child</span> Then we have copied a promise without finding out whether it helps.</p>
+</div>
+<p>Across the water, one window flashed a small light twice. Nobody could tell whether it was a greeting, a warning or a reflection of the storm.</p>
+<p>For the first time that afternoon, the Parent looked less interested in preserving the original plan than in discovering what was true.</p>
+</section>
+<section class="choices" aria-labelledby="choices-heading">
+<h2 id="choices-heading">Three ways to carry a promise</h2>
+<p>Choose a method. This is a <strong>fictional thought experiment</strong>, not a real communication service. There is no scored winner. Each route preserves something and misses something else.</p>
+<div class="group" role="group" aria-label="Choose how the fictional promise is handled">
+<button type="button" data-choice="paper" aria-pressed="true">1 · Paper and presence</button>
+<button type="button" data-choice="digital" aria-pressed="false">2 · The exact digital copy</button>
+<button type="button" data-choice="hybrid" aria-pressed="false">3 · Ask, then coordinate</button>
+</div>
+<div id="result" role="status" aria-live="polite" aria-atomic="true">
+<h3 id="result-title">Paper survives differently</h3>
+<p id="result-text">The Parent folds the ledger page inside the coat. The words can travel without a network, but not across a closed bridge. The intended recipient has not been asked.</p>
+<p><strong id="result-state">HELD: receiver intent unknown</strong></p>
+<p class="small" id="result-question">What did the paper preserve, and what did it fail to establish?</p>
+</div>
+</section>
+<div class="outro">
+<p><span class="who">Child</span> Maybe our mistake was thinking that remembering a promise was the same thing as keeping it.</p>
+<p><span class="who">Parent</span> And what should we write in the history book?</p>
+<p><span class="who">Child</span> That on this day, the river did not care how many copies we made.</p>
+<p>The Parent laughed. History, it turned out, could be unhelpfully accurate.</p>
+</div>
+<details id="paths">
+<summary>Read all three paths without using the buttons</summary>
+<h3>Paper and presence</h3><p>The page survives rain beneath a coat, but the closed bridge blocks delivery. The intended person has not accepted the plan. <strong>HELD: receiver intent unknown.</strong></p>
+<h3>The exact digital copy</h3><p>Three copies match the same words. That proves only a bounded comparison of fictional records, not that the intended person saw the message or approved the plan. <strong>HELD: readback missing.</strong></p>
+<h3>Ask, then coordinate</h3><p>The Parent uses an agreed, fictional signal route to ask whether help is wanted. The distant person answers: “Not the lantern. Please warn the bridge repair crew about the loose handrail.” They record the request, leaving action to an authorized team. <strong>REQUEST RECEIVED: action still unverified.</strong></p>
+</details>
+<details id="evidence">
+<summary>What is fiction, what is a real idea, and what is unproven?</summary>
+<p><strong>FICTION:</strong> The city, river, window signal, characters, scene and three outcomes are invented. “Civic Bridge Era” is fictional near-future history, not a reported event or a prediction that Civ2+ is already mature.</p>
+<p><strong>EXPLANATION:</strong> A preserved message, a matching copy, consent, a receiver's acknowledgment and a completed helpful effect are different claims. Paper, digital storage and human–machine cooperation have distinct failure modes; hybrids are not automatically superior.</p>
+<p><strong>EXISTING TECHNICAL SOURCES:</strong> <a href="../../CoPre.md">CoPre public-source and receiver boundaries</a>, <a href="../../docs/Strategy/CIV2_CIV3_BOUNDARY_GAPMAP_R0.md">Civ2+ / Civ3+ proposed boundaries</a>, <a href="../../docs/CoTheoryAll/costrawbe-r0/README.md">CoTheoryAll challengeable hypotheses</a>, and <a href="../../ai/highlight-assets.json">CC public-safe highlight index</a>. These links identify existing source proposals, not evidence that this story occurred.</p>
+<p><strong>NOT VERIFIED:</strong> No physical receiver was contacted; no X2, cross-provider sync, external acknowledgment, child participation, live CoGame, or deployed book is asserted. Independent reader comprehension and editorial review are pending.</p>
+<p><strong>CONSENT:</strong> The child and parent are invented and unidentified. The story is not a biography. No participant must agree to share, sign in, believe a theory or remain with this interface. Choosing a path changes this page only.</p>
+</details>
+</article>
+</main>
+<footer><p>CoBook+ · chapter candidate R0 · original fictional draft · 2026-11-10. Prior eight-chapter Field Guide and Beetle origin remain unchanged. No analytics, audio, external fetches, cookies, storage, camera, microphone or account requirement.</p><p><a href="README.md">Book family and status</a> · <a href="COBOOK_PARENT_CHILD_CIV2_CIV3_CONSTELLATION_R0_20261110.md">Editorial constellation</a></p></footer>
+</div>
+<script>
+(function(){
+"use strict";
+const routes={
+paper:{title:"Paper survives differently",text:"The Parent folds the ledger page inside the coat. The words can travel without a network, but not across a closed bridge. The intended recipient has not been asked.",state:"HELD: receiver intent unknown",question:"What did the paper preserve, and what did it fail to establish?"},
+digital:{title:"A perfect copy is not a delivery",text:"All three stored versions contain the same words. The machine can compare what it has, but cannot claim the far bank read or approved them. A checksum is a check on bytes, not on understanding.",state:"HELD: readback missing",question:"Who could confirm that the intended person actually received the message?"},
+hybrid:{title:"The question changes the mission",text:"The Parent uses an agreed fictional signal route and asks before traveling. A reply comes: not the lantern; please warn the repair crew about the loose handrail. They preserve the new request. The repair itself is still unverified.",state:"REQUEST RECEIVED: action still unverified",question:"When should a copied plan yield to a recipient's actual needs?"}
+};
+const buttons=Array.from(document.querySelectorAll("button[data-choice]"));
+buttons.forEach(function(button){
+button.addEventListener("click",function(){
+const id=button.getAttribute("data-choice");
+const route=routes[id];
+if(!route)return;
+buttons.forEach(function(other){other.setAttribute("aria-pressed",String(other===button));});
+document.getElementById("result-title").textContent=route.title;
+document.getElementById("result-text").textContent=route.text;
+document.getElementById("result-state").textContent=route.state;
+document.getElementById("result-question").textContent=route.question;
+});
+});
+})();
+</script>
+</body>
+</html>

@@ -8,6 +8,24 @@
 
 GitHub may display the HTML as source; save the standalone HTML and open it in a browser for reader controls. The preview currently has eight original short draft chapters and is **static**, not an independently updating website or finished book.
 
+## Parent–child Civ2+/Civ3+ adventure | proposed next reader edition
+
+[Editorial constellation R0: a sex-unspecified child, reciprocal parent–child exploration, analogue ⇄ digital ⇄ hybrid, optional CME/CC/CoTheoryAll/CoGame and the distinct Godspawn bridge](COBOOK_PARENT_CHILD_CIV2_CIV3_CONSTELLATION_R0_20261110.md).
+
+**Draft editorial direction, not a rewrite of the existing eight-chapter public R0.** Keep Godspawn a separate novel, preserve the child's unspecified sex in this book, and treat imminent Civ2+ history as a literary device and Civ3+ as uncertain, not as a forecast. G_dSide remains an optional philosophical theme; no forced ideology, recruitment or unverified product claims.
+
+### The first parent–child experiment (draft, local HTML)
+
+[Read *The Promise Across the River*: parent and child test paper, an exact digital copy and a consent-first hybrid handoff](CoBook_The_Promise_Across_the_River_Interactive_R0.html).
+
+This original, fictional chapter candidate is a distinct experiment beside [the existing Beetle origin vignette](CoBook_Origin_Beetle_Cartographer_Interactive_R0.html), not a replacement for the eight-chapter preview. A reader may simply read the story; the three keyboard-operable routes and the fiction/evidence disclosure are optional. The child's sex is not disclosed. **No independent human acceptance or public-site deployment is claimed.**
+
+### CoQ&A+ as the story's voluntary question engine (draft)
+
+[Question-to-scene lens R0](COBOOK_COQA_QUESTION_TO_SCENE_LENS_R0_20261110.md) connects one freely answered profound question to an independently challenging parent–child scene, with provenance, privacy, epistemic labels, reader agency and uncoached acceptance. It does **not** publish private answers, reproduce third-party WhatsApp text or create a second CoQA source of truth.
+
+The [CoRel+/CoBraid+ causal plan](cobook-coqa-causal-braid-r0.json) defines which steps must be sequential, which three independent read-only checks can share a bounded parallel batch, and where missing consent or reader evidence stops the chain. The [synthetic gate check](../../scripts/check_cobook_coqa_causal_braid_r0.py) tests the plan; it does not execute private interviews or public release.
+
 ## Publication lineage and other media
 
 | Relation | Role | Status |
