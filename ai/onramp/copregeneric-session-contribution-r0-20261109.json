@@ -1,0 +1,129 @@
+{
+  "schema": "CoAll.CoPreGeneric.SessionContribution.R0",
+  "state": "PUBLIC_SAFE_REVIEW_CANDIDATE_NOT_CANON_OR_RUNTIME",
+  "observed_date": "2026-11-09",
+  "work_id": "CoAll.CoPreGeneric.SessionContribution.20261109",
+  "kind": "SOURCE_BOUND_DIFFERENTIAL_HANDOFF",
+  "human_twin": "docs/Onramp/COPREGENERIC_SESSION_CONTRIBUTION_R0_20261109.md",
+  "bootstrap": {
+    "public": "SESSION_BOOTSTRAP.md",
+    "machine": "ai/session-bootstrap.json",
+    "session_writeback": "docs/Evolution/COSESSION_WRITEBACK_FANIN_R1.md"
+  },
+  "sources": [
+    {
+      "name": "CoMap",
+      "path": "examples/comap/README.md",
+      "machine_path": "ai/comap-source-projection-r0.json",
+      "status": "SOURCE_PROJECTION_NOT_X2_RUNTIME"
+    },
+    {
+      "name": "CoMedia",
+      "path": "docs/Architecture/COMEDIA_INSPIRATION_CORPUS_R0_20261025.md",
+      "status": "PUBLIC_DESIGN_NOT_UNIVERSAL_CAPTURE"
+    },
+    {
+      "name": "CoMail",
+      "url": "https://github.com/CoCivium/CoCivium/pull/415",
+      "ci": "https://github.com/CoCivium/CoCivium/actions/runs/42696945429",
+      "status": "DRAFT_PR_CI_SUCCESS_NO_EMAIL_SENT"
+    },
+    {
+      "name": "CoWave",
+      "url": "https://github.com/CoCivium/CoCivium/pull/420",
+      "ci": "https://github.com/CoCivium/CoCivium/actions/runs/42701703774",
+      "status": "DRAFT_PR_CI_SUCCESS_NO_WORKER_DEPLOYMENT"
+    },
+    {
+      "name": "CoSessionFanIn",
+      "url": "https://github.com/CoCivium/CoCivium/pull/422",
+      "ci": "https://github.com/CoCivium/CoCivium/actions/runs/42702890013",
+      "status": "DRAFT_PR_CI_SUCCESS_NO_RECEIVER_ACK"
+    },
+    {
+      "name": "CoSpiffSurvival",
+      "path": "docs/Strategy/COSPIFF_FIREWORKS_SURVIVABILITY_R1.md",
+      "status": "OFF_PROVIDER_RESTORE_NOT_PROVEN"
+    },
+    {
+      "name": "CCandCoTheoryAll",
+      "path": "docs/Public/Snapshots/2026-10-19_CoMegaScroller_CC_CoTheoryAll_R0.md",
+      "status": "DATED_PUBLIC_RESEARCH_SNAPSHOT_NOT_FULL_CC_RELEASE"
+    }
+  ],
+  "surfaces": {
+    "machine": {
+      "name": "CoSynthVerse+",
+      "status": "DESIGN_CANDIDATE",
+      "requires": [
+        "work_id",
+        "source_revision",
+        "evidence_class",
+        "rights_privacy",
+        "authority_ceiling",
+        "typed_relations",
+        "temporal_validity",
+        "projection_loss",
+        "receipts",
+        "wake_predicate"
+      ]
+    },
+    "human": {
+      "name": "CoBioVerse+",
+      "status": "DESIGN_CANDIDATE",
+      "requires": [
+        "task_first",
+        "accessible_navigation",
+        "understandable_consent",
+        "correction_and_exit",
+        "history",
+        "uncertainty",
+        "source_evidence"
+      ]
+    },
+    "invariants": [
+      "ONE_EVIDENCE_SPINE_MANY_PROJECTIONS",
+      "DIFFERENT_NATIVE_VIEWS_NOT_DIFFERENT_TRUTHS",
+      "NO_UNQUALIFIED_SEMANTIC_EQUIVALENCE",
+      "BRIDGE_NE_AUTHORIZATION"
+    ]
+  },
+  "hypothesis_lanes": [
+    {
+      "name": "G_dSide+",
+      "status": "SYMBOLIC_PHILOSOPHICAL_OR_TESTABLE_HYPOTHESIS",
+      "evidence_for_external_agency": "NOT_ESTABLISHED"
+    },
+    {
+      "name": "CoAGI+",
+      "status": "EXPLORATORY_ARCHITECTURE_NO_VERIFIED_AGI_ACHIEVEMENT",
+      "evidence_for_sentience": "NOT_ESTABLISHED"
+    },
+    {
+      "name": "CoOscillation+",
+      "status": "CANDIDATE_MEASURABLE_FEEDBACK_LOOP",
+      "require": "observable period sampling methods counterexamples forecasting falsifiers"
+    }
+  ],
+  "receiver_contract": [
+    "CURRENT_WORK_ID_SOURCE_SCOPE",
+    "DELTA_OR_QUIET",
+    "CHALLENGE_FALSIFIER",
+    "REAL_EFFECT_BOUNDARY",
+    "DURABLE_POINTER_RECEIVER_WAKE"
+  ],
+  "rails": [
+    "PUBLIC_PULL_NE_ACTUAL_DELIVERY",
+    "MODEL_MEMORY_NE_CANON",
+    "HYPOTHESIS_NE_EVIDENCE",
+    "AUTHORITY_NE_CAPABILITY",
+    "PRIVATE_NE_PUBLIC",
+    "NO_NEWEST_WINS"
+  ],
+  "effect": "NONE",
+  "receiver_ack": "NOT_ESTABLISHED",
+  "x2_runtime": "NOT_VERIFIED",
+  "global_session_sync": "NOT_VERIFIED",
+  "seed_survival_over_24h": "NOT_VERIFIED",
+  "next_deed": "REVIEW_VS_EXISTING_COPREGENERIC_SOURCE_THEN_ONE_AUTHORIZED_SYNTH_RECEIVER_EXACT_READBACK"
+}
