@@ -1,72 +1,94 @@
 {
   "schema": "CoAll.HighlightRegistry.v0.1-candidate",
-  "state": "PUBLIC_CANDIDATE_HIGHLIGHTS__NOT_CANON_NOT_RELEASE_READINESS",
-  "updated_utc": "2026-09-23T11:00:41Z",
+  "state": "PUBLIC_CANDIDATE_HIGHLIGHTS_WITH_SOURCE_LINKS__NOT_CANON_NOT_RELEASE_READINESS",
+  "updated_utc": "2026-11-08T20:14:00Z",
   "assets": [
     {
       "id": "CognocartaConsenti",
       "name": "Cognocarta Consenti / constitutional consent lineage",
       "status": "CANDIDATE_HIGHLIGHT",
-      "readiness": "REQUIRES_CURRENT_PUBLIC_BINDING"
+      "readiness": "REQUIRES_CURRENT_PUBLIC_BINDING",
+      "source_url": "https://github.com/CoCivium/CoCivium/blob/main/README.md",
+      "link_kind": "GENERAL_DISCOVERY_NE_SPECIFIC_ASSET_PROOF"
     },
     {
       "id": "CoTheoryAll",
       "name": "CoTheoryAll+",
       "status": "CANDIDATE_HIGHLIGHT",
-      "readiness": "HYPOTHESIS_FRAMEWORK_NOT_ESTABLISHED_SCIENCE"
+      "readiness": "HYPOTHESIS_FRAMEWORK_NOT_ESTABLISHED_SCIENCE",
+      "source_url": "https://github.com/CoCivium/CoCivium/blob/main/docs/Architecture/BIO_SYNTH_GAP_BRAID_V5_4.md",
+      "link_kind": "PUBLIC_SOURCE_POINTER_NOT_RELEASE_PROOF"
     },
     {
       "id": "CoCivia",
       "name": "CoCivia disclosed composite front",
       "status": "CANDIDATE_HIGHLIGHT",
-      "readiness": "PUBLIC_IDENTITY_RECORD_LANDED"
+      "readiness": "PUBLIC_IDENTITY_RECORD_LANDED",
+      "source_url": "https://github.com/CoCivium/CoCivium/blob/main/docs/Onramp/COCIVIA_FIRST_USE_R0.md",
+      "link_kind": "PUBLIC_SOURCE_POINTER_NOT_RELEASE_PROOF"
     },
     {
       "id": "RickBar",
-      "name": "RickBar / CoDesktop+",
+      "name": "rickBar / CoDesktop+",
       "status": "CANDIDATE_HIGHLIGHT",
-      "readiness": "VISIBLE_NATIVE_CANARY_PROVEN_PRODUCT_NOT_FINISHED"
+      "readiness": "VISIBLE_NATIVE_CANARY_PROVEN_PRODUCT_NOT_FINISHED",
+      "source_url": "https://github.com/CoCivium/CoCivium/pull/375",
+      "link_kind": "PUBLIC_SOURCE_POINTER_NOT_RELEASE_PROOF"
     },
     {
       "id": "CoVirtualSession",
       "name": "CoVirtualSession+ / session morphology",
       "status": "CANDIDATE_HIGHLIGHT",
-      "readiness": "ARCHITECTURE_LANDED_RUNTIME_PARTIAL"
+      "readiness": "ARCHITECTURE_LANDED_RUNTIME_PARTIAL",
+      "source_url": "https://github.com/CoCivium/CoCivium/blob/main/docs/Architecture/COVIRTUAL_SESSION_MORPHOLOGY_R0.md",
+      "link_kind": "PUBLIC_SOURCE_POINTER_NOT_RELEASE_PROOF"
     },
     {
       "id": "CoNodeMesh",
       "name": "CoNodeMesh+ / GRAIL+ federation",
       "status": "CANDIDATE_HIGHLIGHT",
-      "readiness": "ARCHITECTURE_CANDIDATE_PRIOR_GRAIL_RECOVERY_REQUIRED"
+      "readiness": "ARCHITECTURE_CANDIDATE_PRIOR_GRAIL_RECOVERY_REQUIRED",
+      "source_url": "https://github.com/CoCivium/CoCivium/blob/main/docs/Architecture/CIV2_FEDERATED_CELL_HOSTING_R0.md",
+      "link_kind": "PUBLIC_SOURCE_POINTER_NOT_RELEASE_PROOF"
     },
     {
       "id": "CoPriMath",
       "name": "CoPriMath+",
       "status": "CANDIDATE_HIGHLIGHT",
-      "readiness": "FORMAL_PROJECTION_FAMILY"
+      "readiness": "FORMAL_PROJECTION_FAMILY",
+      "source_url": "https://github.com/CoCivium/CoCivium/pull/365",
+      "link_kind": "PUBLIC_SOURCE_POINTER_NOT_RELEASE_PROOF"
     },
     {
       "id": "CoGibberTru",
       "name": "CoGibberTru+",
       "status": "CANDIDATE_HIGHLIGHT",
-      "readiness": "COMPRESSED_REVERSIBLE_REPRESENTATION_FAMILY"
+      "readiness": "COMPRESSED_REVERSIBLE_REPRESENTATION_FAMILY",
+      "source_url": "https://github.com/CoCivium/CoCivium/blob/main/README.md",
+      "link_kind": "GENERAL_DISCOVERY_NE_SPECIFIC_ASSET_PROOF"
     },
     {
       "id": "CoSalute",
       "name": "The CoCivium Salute",
       "status": "PUBLIC_HIGHLIGHT",
-      "readiness": "PUBLIC_POETIC_PROJECTION"
+      "readiness": "PUBLIC_POETIC_PROJECTION",
+      "source_url": "https://github.com/CoCivium/CoCivium/blob/main/PRELAUNCH.md",
+      "link_kind": "GENERAL_DISCOVERY_NE_SPECIFIC_ASSET_PROOF"
     },
     {
       "id": "CoAllPulseField",
       "name": "CoAllPulseField+ / CoTime+ currentness",
       "status": "CANDIDATE_HIGHLIGHT",
-      "readiness": "ARCHITECTURE_CANDIDATE_NO_GLOBAL_LIVE_BUS_CLAIM"
+      "readiness": "ARCHITECTURE_CANDIDATE_NO_GLOBAL_LIVE_BUS_CLAIM",
+      "source_url": "https://github.com/CoCivium/CoCivium/blob/main/docs/Architecture/COSESSION_AUTOCYCLE_R0.md",
+      "link_kind": "PUBLIC_SOURCE_POINTER_NOT_RELEASE_PROOF"
     }
   ],
   "rails": [
     "HIGHLIGHT_NE_CANON",
     "PUBLIC_NE_VALIDATED",
-    "VISIBLE_NE_RELEASE_READY"
-  ]
+    "VISIBLE_NE_RELEASE_READY",
+    "SOURCE_LINK_NE_VERIFIED_PRODUCT"
+  ],
+  "onramp_hub": "docs/Onramp/COGOALL_AI_ONRAMP_HUB_R1_20261108.md"
 }

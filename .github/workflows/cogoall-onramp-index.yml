@@ -1,0 +1,111 @@
+name: CoGoAll AI Onramp public index
+on:
+  push:
+    branches:
+      - 'candidate/cogoall-board-ops-120-r0-20261108'
+    paths:
+      - 'docs/Onramp/COGOALL_AI_ONRAMP_HUB_R1_20261108.md'
+      - 'scripts/build_public_onramp_index.py'
+      - 'test_public_onramp_index.py'
+      - 'scripts/CoTalkItOutR0.py'
+      - 'test_cotalkitout_r0.py'
+      - 'scripts/CoSessionGraceRecoveryR0.py'
+      - 'test_cosession_grace_recovery_r0.py'
+      - 'scripts/CoGraceTalkBridgeR0.py'
+      - 'test_cograce_talk_bridge_r0.py'
+      - 'scripts/CoOrbMembraneTemporalR0.py'
+      - 'test_coorb_membrane_temporal_r0.py'
+      - '.github/workflows/cogoall-onramp-index.yml'
+  pull_request:
+    paths:
+      - 'docs/Onramp/COGOALL_AI_ONRAMP_HUB_R1_20261108.md'
+      - 'scripts/build_public_onramp_index.py'
+      - 'test_public_onramp_index.py'
+      - 'scripts/CoTalkItOutR0.py'
+      - 'test_cotalkitout_r0.py'
+      - 'scripts/CoSessionGraceRecoveryR0.py'
+      - 'test_cosession_grace_recovery_r0.py'
+      - 'scripts/CoGraceTalkBridgeR0.py'
+      - 'test_cograce_talk_bridge_r0.py'
+      - 'scripts/CoOrbMembraneTemporalR0.py'
+      - 'test_coorb_membrane_temporal_r0.py'
+      - '.github/workflows/cogoall-onramp-index.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  source-contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Offline proof and negative tests
+        run: python -B -m unittest -v test_public_onramp_index
+      - name: CoTalkItOut peer-decision and adversarial tests
+        run: python -B -m unittest -v test_cotalkitout_r0
+      - name: CoGrace session recovery safety tests
+        run: python -B -m unittest -v test_cosession_grace_recovery_r0
+      - name: CoGrace plus CoTalkItOut shadow integration tests
+        run: python -B -m unittest -v test_cograce_talk_bridge_r0
+      - name: CoOrb temporal membrane version and forecast gates
+        run: python -B -m unittest -v test_coorb_membrane_temporal_r0
+      - name: Enumerate 1000 public real GitHub source pages
+        run: python -B scripts/build_public_onramp_index.py --output-dir "$RUNNER_TEMP/cogoall-index" --minimum-pages 1000
+      - name: Publish catalog and receipts as CI artifact
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cogoall-public-onramp-1000-pages
+          path: ${{ runner.temp }}/cogoall-index/
+          if-no-files-found: error
+          retention-days: 30
+
+  publish-proposal-catalog:
+    needs: source-contract
+    if: github.event_name == 'push' && github.ref == 'refs/heads/candidate/cogoall-board-ops-120-r0-20261108'
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: candidate/cogoall-board-ops-120-r0-20261108
+          persist-credentials: true
+      - uses: actions/download-artifact@v4
+        with:
+          name: cogoall-public-onramp-1000-pages
+          path: generated/onramp/
+      - name: Independently validate catalog size and exact digest before committing
+        run: |
+          python - <<'PY'
+          import hashlib, json
+          from pathlib import Path
+          p=Path('generated/onramp')
+          r=json.loads((p/'receipt.json').read_text())
+          data=(p/'public-pages.jsonl').read_bytes()
+          md=(p/'public-pages.md').read_bytes()
+          rows=[json.loads(x) for x in data.splitlines() if x]
+          assert r['count']==len(rows) and len(rows)>=1000, 'BAD_COUNT_HOLD'
+          assert hashlib.sha256(data).hexdigest()==r['jsonl_sha256'], 'BAD_JSONL_DIGEST_HOLD'
+          assert hashlib.sha256(md).hexdigest()==r['markdown_sha256'], 'BAD_MD_DIGEST_HOLD'
+          assert all(x['repository'].startswith('CoCivium/') for x in rows), 'BAD_REPO_HOLD'
+          assert len({x['url'] for x in rows})==len(rows), 'DUPLICATE_HOLD'
+          print('PUBLIC_SOURCE_CATALOG_VERIFIED',len(rows))
+          PY
+      - name: Commit versioned public catalog to candidate branch
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- generated/onramp/public-pages.md generated/onramp/public-pages.jsonl generated/onramp/receipt.json
+          if git diff --cached --quiet; then
+            echo 'NO_MATERIAL_CHANGE'
+          else
+            git commit -m 'onramp: persist verified source-pinned public page catalog'
+            git push origin HEAD:refs/heads/candidate/cogoall-board-ops-120-r0-20261108
+          fi
