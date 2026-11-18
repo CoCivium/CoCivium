@@ -14,7 +14,7 @@ import argparse, hashlib, json, multiprocessing as mp, os, random, signal, sqlit
 L, R, H = (float(os.environ.get(k, d)) for k, d in (("W07_L", 3.0), ("W07_R", 1.0), ("W07_H", 0.5)))
 SCHEMA = """
 CREATE TABLE IF NOT EXISTS actuator_lease(name TEXT PRIMARY KEY, holder_id TEXT, epoch INTEGER NOT NULL,
-  lease_until REAL NOT NULL, renewed_at REAL, holder_pid INTEGER);
+  lease_until REAL NOT NULL, renewed_at REAL, holder_pid INTEGER, holder_start TEXT);
 CREATE TABLE IF NOT EXISTS heartbeat(holder_id TEXT, epoch INTEGER, seq INTEGER, wall_ts REAL, phase TEXT,
   next_trigger REAL, PRIMARY KEY(holder_id, epoch, seq));
 CREATE TABLE IF NOT EXISTS effect(idem_key TEXT PRIMARY KEY, work_id TEXT, epoch INTEGER,
@@ -32,14 +32,22 @@ def connect(path, timeout=30.0):
 
 def init(db, recv):
     c = connect(db); c.executescript(SCHEMA)
-    c.execute("INSERT OR IGNORE INTO actuator_lease VALUES('coloop',NULL,0,0,NULL,NULL)"); c.close()
+    c.execute("INSERT OR IGNORE INTO actuator_lease VALUES('coloop',NULL,0,0,NULL,NULL,NULL)"); c.close()
     r = connect(recv); r.executescript(RECV); r.close()
+
+
+def proc_start(pid):
+    """Process start time (clock ticks since boot, /proc/<pid>/stat field 22); None if gone. Guards against pid reuse."""
+    try:
+        return open(f"/proc/{pid}/stat").read().rsplit(")", 1)[1].split()[19]
+    except (OSError, IndexError):
+        return None
 
 
 def acquire(c, holder, now, ttl=L):
     c.execute("BEGIN IMMEDIATE")
-    cur = c.execute("""UPDATE actuator_lease SET holder_id=?,epoch=epoch+1,lease_until=?,renewed_at=?,holder_pid=?
-                       WHERE name='coloop' AND lease_until<=?""", (holder, now + ttl, now, os.getpid(), now))
+    cur = c.execute("""UPDATE actuator_lease SET holder_id=?,epoch=epoch+1,lease_until=?,renewed_at=?,holder_pid=?,holder_start=?
+                       WHERE name='coloop' AND lease_until<=?""", (holder, now + ttl, now, os.getpid(), proc_start(os.getpid()), now))
     ep = c.execute("SELECT epoch FROM actuator_lease").fetchone()[0] if cur.rowcount == 1 else None
     c.execute("COMMIT"); return ep
 
@@ -233,8 +241,10 @@ def test_L4():
 
 
 # ---- L5 (J3 falsification): holder frozen INSIDE a write transaction ----
-def _stuck_holder(db):
+def _stuck_holder(db, forge_start=False):
     c = connect(db); ep = acquire(c, "A", time.time())
+    if forge_start:                                    # simulate pid reuse: recorded start time no longer matches
+        c.execute("UPDATE actuator_lease SET holder_start='forged'")
     for seq in range(3):
         hb(c, "A", ep, seq, "RUN"); time.sleep(H)
     c.execute("BEGIN IMMEDIATE")                       # holds the SQLite write lock
@@ -260,12 +270,16 @@ def acquire_or_break(db, holder, break_policy, q):
             try: c.execute("ROLLBACK")
             except sqlite3.OperationalError: pass
             now = time.time(); first_lock = first_lock or now
-            hid, _ep, lu, pid = c.execute("SELECT holder_id,epoch,lease_until,holder_pid FROM actuator_lease").fetchone()
+            hid, _ep, lu, pid, pstart = c.execute(
+                "SELECT holder_id,epoch,lease_until,holder_pid,holder_start FROM actuator_lease").fetchone()
             if lu <= now and now - first_lock >= L:
                 if not events: events.append(dict(kind="STALE_LOCK", t=now, holder_pid=pid))
                 if not break_policy:
                     q.put(dict(t=None, events=events)); return
                 if not broke:
+                    if pstart is None or proc_start(pid) != pstart:      # pid gone or reused: never kill
+                        events.append(dict(kind="STALE_LOCK_UNVERIFIED", t=time.time(), pid=pid))
+                        q.put(dict(t=None, events=events)); return
                     os.kill(pid, signal.SIGKILL); broke = True; events.append(dict(kind="BREAK_KILL", t=time.time(), pid=pid))
         time.sleep(0.1)
 
@@ -303,6 +317,45 @@ def test_L5(trials=10):
                       "STALE_LOCK detection, then HOLD or a single kill of the recorded holder_pid.")
     ok = all(out[k]["passed"] == trials for k in ("hold_policy", "break_policy")) and out["break_policy"]["uncommitted_stale_rows_visible"] == 0
     return dict(id="L5", **out, PASS=ok)
+
+
+def test_L6(trials=5):
+    """C2-J6: break policy must refuse to kill when the recorded holder start time does not match (pid reuse)."""
+    ok_n, kills = 0, 0
+    for _ in range(trials):
+        db, _ = fresh(); a = mp.Process(target=_stuck_holder, args=(db, True)); a.start()
+        wait_for(lambda: _proc_state(a.pid) == "T", 10, step=0.01)
+        q = mp.Queue(); b = mp.Process(target=acquire_or_break, args=(db, "B", True, q)); b.start()
+        res = q.get(timeout=4 * L + 20); b.join()
+        kinds = [e["kind"] for e in res["events"]]; alive = _proc_state(a.pid) == "T"
+        kills += "BREAK_KILL" in kinds
+        ok_n += res["t"] is None and "STALE_LOCK_UNVERIFIED" in kinds and "BREAK_KILL" not in kinds and alive
+        os.kill(a.pid, signal.SIGKILL); a.join()
+    return dict(id="L6_pid_reuse_guard", trials=trials, passed=ok_n, kills=kills, PASS=ok_n == trials and kills == 0)
+
+
+def _jumped_contender(db, q):
+    c = connect(db); now = time.time() + L + 1          # this process's clock jumped forward past the lease
+    q.put((time.time(), acquire(c, "B", now)))
+
+
+def test_L7(trials=10):
+    """C2-J6: a forward wall-clock jump in a contender causes premature takeover. Safety requirement: the live
+    original holder is fenced (0 writes after takeover, exits LEASE_LOST)."""
+    ok_n, stale_writes, premature = 0, 0, 0
+    for _ in range(trials):
+        db, _ = fresh(); a = mp.Process(target=actuator, args=(db, "A")); a.start()
+        wait_for(lambda: lease_state(db)[0] == "A", 5); epA = lease_state(db)[1]; time.sleep(random.uniform(0.2, 1.0))
+        q = mp.Queue(); b = mp.Process(target=_jumped_contender, args=(db, q)); b.start(); t_take, epB = q.get(timeout=30); b.join()
+        premature += epB is not None
+        a.join(R + H + 5); code = a.exitcode
+        if code is None: a.kill(); a.join()
+        c = connect(db)
+        n = c.execute("SELECT count(*) FROM heartbeat WHERE holder_id='A' AND epoch=? AND wall_ts>?", (epA, t_take)).fetchone()[0]; c.close()
+        stale_writes += n; ok_n += epB == epA + 1 and code == 3 and n == 0
+    return dict(id="L7_forward_clock_jump", trials=trials, premature_takeovers=premature, stale_writes_after_takeover=stale_writes,
+                passed=ok_n, note="liveness cost: a forward jump forces an early takeover; safety (fencing) must hold",
+                PASS=ok_n == trials and stale_writes == 0)
 
 
 def test_L5_baseline():
@@ -444,7 +497,7 @@ def test_H4():
 
 
 GROUPS = {"lease": [test_L1, test_L2, test_L3, test_L4, test_L5],
-          "falsify": [test_L5_baseline, test_L5],
+          "falsify": [test_L5_baseline, test_L5, test_L6, test_L7],
           "prod": [test_L2, test_H2], "idem": [test_I1, test_I2, test_I3, test_I4],
           "hb": [test_H1, test_H2, test_H3, test_H4]}
 

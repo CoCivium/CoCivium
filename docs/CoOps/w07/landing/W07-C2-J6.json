@@ -1,0 +1,52 @@
+{
+  "attempt_id": "1",
+  "authority_ref_or_null": null,
+  "claimed_actor": "Claude (Opus 5.5) as W07; claim only, unsigned",
+  "collision_scope": "docs/CoOps/w07/",
+  "cycle_id": "W07-C2",
+  "dependency_ids": [
+    "W07-C1-J3"
+  ],
+  "disposition": "PREPARED",
+  "envelope_sha256": "dac9813e845c21c55348a741a4c78db3680983c833e5ee59a1ebbcd520390607",
+  "evidence": [],
+  "hold_reason_or_null": "LANDING_HOLD: no authenticated write transport (git proxy 403: repo not in session's authorized set)",
+  "idempotency_key": "6cef4f796a80148347e11ed6692b388537929724fe9ecd1e5209cdac2299888b",
+  "input_refs": [
+    {
+      "sha256_or_commit": "ec169cffeba65e5d1bc5c4a84b3efd4d20ad03868d2e74898e7395fed33673e7",
+      "uri": "CoCivium/CoCivium@a07f1544f83ccf13fad224328558fe77a176223b:docs/CoOps/COCLAUDE_TEN_CONTEXT_DISPATCH_R0.md"
+    }
+  ],
+  "job_id": "W07-C2-J6",
+  "kind": "candidate_artifact",
+  "object_id": "sha256:177749f468f3d3beee79dcfa203be6728c4a26edbf15c81bcf3fea681b50c4e8",
+  "output_refs": [
+    {
+      "sha256": "e73846dbdaf46e909de31247a8ca189ed2b2ff3a0a9911b22ea0af255b26e7b6",
+      "uri": "CoCivium/CoCivium@claude/w07-loop-20261118:docs/CoOps/w07/w07_coloop_ref.py"
+    },
+    {
+      "sha256": "59920397e9c2b0ebaff0c5eb4b272093e3c61c44a79fe66e3dc8e90ce3a355d9",
+      "uri": "CoCivium/CoCivium@claude/w07-loop-20261118:docs/CoOps/w07/W07_C2_J6_RESULTS_R0.json"
+    },
+    {
+      "sha256": "2b53ad88060e4a1627f5300caed45d3843790873dbd9dd514757a9a93b6c07a1",
+      "uri": "CoCivium/CoCivium@claude/w07-loop-20261118:docs/CoOps/w07/W07_C1_J3J4_RESULTS_R0.md"
+    }
+  ],
+  "privacy_class": "public-safe",
+  "produced_utc": "2026-11-18T20:44:05Z",
+  "reviewer_ids": [],
+  "schema_version": "CoLanding.Envelope.R0(candidate)",
+  "session_instance_id": "w07-si-43d985bc720b4b4f",
+  "successor_job_ids": [
+    "W07-C2-J7"
+  ],
+  "tests": [
+    "L6 pid-reuse guard 5/5 no kill PASS",
+    "L7 forward clock jump 10/10 fenced PASS",
+    "regression 13/13 PASS"
+  ],
+  "worker_id": "W07"
+}

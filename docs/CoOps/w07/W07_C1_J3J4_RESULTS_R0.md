@@ -27,3 +27,12 @@ Raw: `W07_C1_J3J4_RESULTS_R0.json`. Host: Claude cloud sandbox (Linux). **Not th
 - **Power loss.** WAL with `synchronous=FULL` should survive power loss, but only the reboot ladder (§4.4 of the design) on real hardware can show it.
 - **Break policy.** Killing `holder_pid` assumes the pid has not been reused. Production should check the process start time against the lease row before killing.
 - **Independence.** Every check was written and run by W07 alone. They count as one lineage, not three independent checks.
+
+## C2-J6 addendum (`W07_C2_J6_RESULTS_R0.json`)
+| Test | Measured | Result |
+|---|---|---|
+| L6 pid-reuse guard ×5 | The recorded holder start time is forged. The break policy reports `STALE_LOCK_UNVERIFIED` and HOLDs; 0 kills; the frozen holder is left untouched. | PASS |
+| L7 forward clock jump ×10 | A contender whose clock jumped forward took over early in 10/10 trials. That is the expected **liveness cost**. The live original holder was fenced every time: 0 writes after takeover, and it exited LEASE_LOST. | PASS |
+| Regression L1–L5, I1–I4, H1–H4 after the schema change | 13/13, with the three groups run concurrently | PASS |
+
+The pid guard reads `/proc/<pid>/stat`. On Windows it returns None, so the break policy safely degrades to HOLD and never kills. A Windows start-time source (WMI `CreationDate`) is successor C2-J7.

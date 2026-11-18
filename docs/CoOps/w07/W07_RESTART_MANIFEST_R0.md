@@ -16,6 +16,7 @@ Prove or falsify the CoLoop+ elected-actuator, idempotency, heartbeat and reboot
 | W07-C1-J3 falsify + fix | L5 frozen-in-transaction test plus fix; defects D1–D4; `W07_C1_J3J4_RESULTS_R0.{md,json}` | DONE (this commit) |
 | W07-C1-J4 production-timing spot runs | L2 ×5 and H2 ×3 at L=90/R=30/H=30 | DONE (this commit) |
 | W07-C1-J5 landing package | this manifest, `w07_landing.py`, `landing/*.json`, bundle | DONE locally; landing HOLD |
+| W07-C2-J6 pid guard + clock jump | `w07_coloop_ref.py` (L6, L7), `W07_C2_J6_RESULTS_R0.json` | DONE (this commit) |
 | W07-C2-J1 tick + scheduler template | `coloop_tick.py`, `test_coloop_tick.py`, `CoLoopTick.TaskScheduler.TEMPLATE.xml` | DONE (this commit); template NOT registered |
 
 ## Restart instructions
@@ -44,7 +45,7 @@ Prove or falsify the CoLoop+ elected-actuator, idempotency, heartbeat and reboot
 - No other file in the repo working tree, and nothing in the InSeed clone, changed in that window. Every W07 file still matches its recorded hash.
 
 ## Successor backlog (dependency-aware)
-1. **W07-C2-J6 break-policy hardening (eligible now, no gate):** guard `holder_pid` against pid reuse by matching the process start time against the lease row, and add a forward wall-clock-jump test for a live holder.
+1. **W07-C2-J7 Windows parity (eligible now, no gate):** provide a Windows process start-time source (WMI `CreationDate`) for the pid guard, plus a Windows `boot_id` self-test inside `coloop_tick.py`. Verifying it needs a Windows runner or X2 (C2-J4).
 2. **W07-C2-J2 L5 policy decision (needs steward):** choose HOLD or single-kill for STALE_LOCK in production; single-kill needs authority to terminate the orchestrator's own process.
 3. **W07-C2-J3 independent rerun (needs a reviewer of different lineage):** a non-Claude worker or human reruns `lease|idem|hb|falsify` from the landed commit and posts the hashes.
 4. **W07-C2-J4 X2 read-only inspection plus integration with `dispatcher_r1.py` (needs local shell on X2).**
