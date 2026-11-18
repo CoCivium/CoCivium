@@ -1,0 +1,59 @@
+{
+  "schema": "CoPreGeneric.PublicAssetPack.R0",
+  "status": "PUBLIC_SOURCE_DRAFT_ON_REVIEW_BRANCH_NOT_RELEASE_OR_MIRRORED",
+  "observed_date": "2026-11-09",
+  "source_basis": "Public-safe editorial synthesis of user-supplied, private-provider exchange; no raw transcript or source file hash published",
+  "upstream": [
+    "SESSION_BOOTSTRAP.md",
+    "ai/index.json",
+    "ai/onramp/copre-generic-session-contribution-r0.json"
+  ],
+  "files": [
+    {
+      "path": "docs/Onramp/CoPreGenericR0/CoPreGeneric-v1.0-DRAFT.md",
+      "role": "generic recovery instructions"
+    },
+    {
+      "path": "docs/Onramp/CoPreGenericR0/CoAckRewise-v8.74-SOURCE-SAFE.md",
+      "role": "historical correction and source boundary"
+    },
+    {
+      "path": "docs/Onramp/CoPreGenericR0/CoFeedLoop-Devs-R0.md",
+      "role": "developer triage candidates and proof gaps"
+    },
+    {
+      "path": "docs/Onramp/CoPreGenericR0/CoMindspace-Map-R0.md",
+      "role": "observable model-session telemetry proposal"
+    }
+  ],
+  "target_urls": [
+    {
+      "url": "https://github.com/CoCivium/CoPreGeneric",
+      "state": "UNVERIFIED"
+    },
+    {
+      "url": "https://CoCivium.org/CoPre",
+      "state": "UNVERIFIED"
+    },
+    {
+      "url": "https://InSeed.com/Stead",
+      "state": "UNVERIFIED"
+    }
+  ],
+  "acceptance": {
+    "source": "Exact bytes committed and fetched from public GitHub PR branch",
+    "release": "Human/privacy and source qualification review, then merge or stable release designation",
+    "mirror": "Independent administered domains fetch and hash exact edition",
+    "pickup": "Authorized separate receiver exact-object readproof",
+    "runtime": "Separate X2 / CoStead qualified live execution and >24h continuity test"
+  },
+  "nonclaims": [
+    "PRIVATE_TRANSCRIPT_NE_PUBLICATION",
+    "DRAFT_PR_NE_MERGED_RELEASE",
+    "PUBLIC_COMMIT_NE_MIRROR",
+    "URL_NE_EXACT_BYTE_READPROOF",
+    "MODEL_OUTPUT_NE_HIDDEN_MIND_ACCESS",
+    "RIGHTS_CLEARED_SOURCE_NE_ALL_SOURCE_RIGHTS",
+    "NO_INDEPENDENT_RECEIVER_ACK"
+  ]
+}
