@@ -74,7 +74,8 @@ async function main() {
       const src = fs.readFileSync(f);
       const blob = gitBlobSha1(src);
       assert(blob === spec.blob, "HOLD_SOURCE_BLOB_DRIFT:" + spec.id + ":" + blob);
-      const candidate = { id: spec.id, repo: spec.repo, checked_out_commit: spec.commit,
+      const candidate = { id: spec.id, repo: spec.repo, source_ancestor_commit: spec.commit,
+        checked_out_commit: spec.id === "cocivium" ? (process.env.GITHUB_SHA || "UNKNOWN") : spec.commit,
         path: spec.file, source_git_blob_sha1: blob, source_sha256: sha256(src),
         views: [], status: "PENDING" };
       receipt.candidates.push(candidate);
