@@ -1,0 +1,60 @@
+name: CoSites three flagship pinned browser QA R0
+# CI source/render only. Not site deployment, DNS change or X2 machine control.
+on:
+  push:
+    paths:
+      - "cosites261118-preview/cocivium-home-r1/**"
+      - "cosites261118-preview/three_flagship_browser_first_use_r0.cjs"
+      - ".github/workflows/cosites-three-flagship-browser-r0.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  three-flagship-browser-evidence:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Checkout existing CoCivium R1, without persisted credentials
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Checkout pinned existing InSeed PR1, read-only
+        uses: actions/checkout@v4
+        with:
+          repository: CoCivium/InSeed
+          ref: dc03e8865a90de6d26bf03bc64061319b1cf7fbd
+          persist-credentials: false
+          path: site_sources/inseed
+
+      - name: Checkout pinned existing CoPolitic PR1, read-only
+        uses: actions/checkout@v4
+        with:
+          repository: CoCivium/CoPolitic-site
+          ref: 218b43f773b5f02e63739a0438d88ff6890f6166
+          persist-credentials: false
+          path: site_sources/copolitic
+
+      - name: Install bounded browser test dependency
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Exercise 3 x 3 viewport matrix in local Chromium without network
+        run: |
+          set -euo pipefail
+          command -v google-chrome || command -v google-chrome-stable || command -v chromium
+          npm install --no-save --package-lock=false --ignore-scripts --no-audit --no-fund playwright-core@1.56.0
+          node --check cosites261118-preview/three_flagship_browser_first_use_r0.cjs
+          node cosites261118-preview/three_flagship_browser_first_use_r0.cjs
+
+      - name: Preserve exact receipts and reviewer screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cosites-pinned-three-flagship-browser-${{ github.run_id }}-a${{ github.run_attempt }}
+          path: out/cosites261119-three-flagship-first-use-r0/
+          if-no-files-found: warn
+          retention-days: 14
