@@ -1,0 +1,71 @@
+{
+  "schema": "CoWalkAway.CoPre92.CoStel.BridgeIndependentRecovery.SourceAcceptance.R0",
+  "state": "SOURCE_TESTED_AND_CI_VERIFIED_NOT_X2_RUNTIME",
+  "source_owner": "CoStel R5 under existing CoCivium CoPre candidate rail",
+  "source_commit_before_receipt": "fdf8741db76aa77106e2c2861fad9551fe4fc4af",
+  "source_files": [
+    {
+      "path": "experiments/costel_r5_r0/bridge_recovery_cohort_r0.py",
+      "sha256": "4dc9cb6062f14ef467f2545e09fec6594608ffc294167a767eea93ab308c3ebd",
+      "git_blob_sha1": "b24272657434470441010a9f4df4843e5cf688c0"
+    },
+    {
+      "path": "experiments/costel_r5_r0/test_bridge_recovery_cohort_r0.py",
+      "sha256": "f75cf4d7e61d71c4de1f57e6c738a9365f6498bcb757dbeb48e71281e8ef084d",
+      "git_blob_sha1": "510decd4520d2fc7952e5e880164c7678970e048"
+    }
+  ],
+  "local_runner": {
+    "environment": "isolated_container_not_X2",
+    "python": "3.13.5",
+    "tests": 27,
+    "normal": "PASS",
+    "optimized": "PASS"
+  },
+  "ci": {
+    "provider": "GitHub Actions",
+    "run_id": 44624946047,
+    "head_sha": "fdf8741db76aa77106e2c2861fad9551fe4fc4af",
+    "result": "SUCCESS",
+    "jobs": [
+      "fail-closed-supervisor (3.11)",
+      "fail-closed-supervisor (3.13)",
+      "windows-startup-readonly",
+      "handoff-producer",
+      "handoff-receiver"
+    ],
+    "artifact_claims": [
+      {
+        "name": "costel-handoff-source",
+        "artifact_zip_sha256": "c1ed40e1015098ddf955f5764fce32358f9785bd43ec4674ad30dc08fc11eb7b"
+      },
+      {
+        "name": "costel-handoff-receiver-proof",
+        "artifact_zip_sha256": "eec61f7952a185aefe2456a95513805cc5b0d1f4edc3dad9fa690ec1a5cb3e73"
+      }
+    ],
+    "ci_scope": "TWO_DIFFERENT_JOBS_SAME_GITHUB_PROVIDER_NOT_THREE_INDEPENDENT_ROOTS"
+  },
+  "verification_boundaries": {
+    "private_x2_postboot_data_in_public_source": false,
+    "x2_last_run_time_missing": true,
+    "remote_desktop_commander_offline_does_not_mean_x2_offline": true,
+    "task_ready_and_last_result_zero_do_not_prove_postboot_automatic_execution": true,
+    "daemon_or_network_listener_added": false,
+    "task_or_registry_mutation": false,
+    "cloud_issued_command_authority": false,
+    "state": "READ_ONLY_SHADOW_CANDIDATE"
+  },
+  "highest_value_next_work": "Read actual postboot native-task LastRunTime and a same-boot WorkID/effect receipt through the incumbent authorized machine receiver. Compare host and observer failure domains; test parent-process outage and independent local route without any competing new master.",
+  "public_release": "HOLD",
+  "nonclaims": [
+    "LOCAL_IS_NOT_LANDED",
+    "VALIDATION_IS_NOT_ACCEPTANCE",
+    "NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF",
+    "NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE",
+    "NO_REAL_X2_REBOOT_RECOVERY_ACCEPTANCE",
+    "NO_X2_BRIDGE_DEPLOYMENT",
+    "NO_3IND",
+    "NO_PHANTOM_ACK"
+  ]
+}
