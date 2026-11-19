@@ -1,0 +1,44 @@
+name: CoSites six-root privacy and first-use boundary R0
+# One bounded public-root observation. No cron, no secrets, no deployment.
+on:
+  push:
+    paths:
+      - "cosites261118-preview/host_root_privacy_probe_r0.py"
+      - ".github/workflows/cosites-live-root-privacy-r0.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  bounded-public-root-observation:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 6
+    steps:
+      - name: Checkout exact candidate source without stored credentials
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Use Python standard library
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Verify fail-closed redaction and root scope offline
+        run: python -B cosites261118-preview/host_root_privacy_probe_r0.py --self-test
+
+      - name: Read approved six public roots only, never shards or private paths
+        run: |
+          python -B cosites261118-preview/host_root_privacy_probe_r0.py \
+            --output out/cosites261119-live-root-r0.json
+          python -m json.tool out/cosites261119-live-root-r0.json >/dev/null
+
+      - name: Retain safe classifications without raw page content
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cosites-live-root-observation-${{ github.run_id }}-a${{ github.run_attempt }}
+          path: out/cosites261119-live-root-r0.json
+          if-no-files-found: warn
+          retention-days: 14
