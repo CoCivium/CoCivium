@@ -1,0 +1,106 @@
+{
+  "schema": "CoSites.CoPre92.ThreeFlagship.FirstUseBrowserCI.Receipt.R0",
+  "state": "PASS_PINNED_SOURCE_BROWSER_PROBES_3_SITES__NOT_HOST_OR_USER_ACCEPTANCE",
+  "observed_date_utc": "2026-11-19",
+  "authority": "PUBLIC_SAFE_CANDIDATE_SOURCE_QA_ONLY_NO_RELEASE_OR_RUNTIME",
+  "ci": {
+    "provider": "GitHub Actions",
+    "workflow": "CoSites three flagship pinned browser QA R0",
+    "run_id": 44626497766,
+    "head_commit": "70c231ec70f78de585c9d89f0daf1c19e58bda7f",
+    "status": "completed",
+    "conclusion": "success",
+    "run_url": "https://github.com/CoCivium/CoCivium/actions/runs/44626497766",
+    "artifact_id": 14579197542,
+    "artifact_zip_sha256": "c9649feb6d16dff592f3dec0e138f42bc363afe559ed623166155d0717897964",
+    "in_zip_receipt_sha256": "e3a85ff170e699d4210cfd155c9fd4c3590c2a769ddee7b23e43059169c3dab0",
+    "artifact_contains": [
+      "source_browser_receipt.json",
+      "cocivium-mobile390.png",
+      "cocivium-desktop1365.png",
+      "inseed-mobile390.png",
+      "inseed-desktop1365.png",
+      "copolitic-mobile390.png",
+      "copolitic-desktop1365.png"
+    ],
+    "artifact_expires_utc": "2026-12-03T22:13:50Z",
+    "checked_out_via": "three independent repositories/commit content sources, but one GitHub provider and CI runner"
+  },
+  "probes": {
+    "viewports": [
+      320,
+      390,
+      1365
+    ],
+    "per_site_count": 3,
+    "total": 9,
+    "result": "9_PASS_0_FAIL",
+    "html_h1": 1,
+    "broken_internal_anchors_total": 0,
+    "horizontal_overflow_px_each": 0,
+    "script_or_form_controls_each": 0,
+    "browser_network_requests_from_page_each": 0,
+    "navigation_anchor_click_per_viewport": "PASS",
+    "screenshots": "SIX_CAPTURED_AND_VISUALLY_INSPECTED",
+    "caveats": [
+      "SCREENSHOT_PREVIEW_NE_LIVE_SITE",
+      "CI_WORKER_NE_HUMAN_VISITOR",
+      "THREE_SOURCE_REPOS_NE_THREE_INDEPENDENT_OBSERVATION_ROOTS"
+    ]
+  },
+  "candidates": [
+    {
+      "site": "CoCivium",
+      "source": "cosites261118-preview/cocivium-home-r1/index.html",
+      "repo": "CoCivium/CoCivium",
+      "blob": "ce97f53e7c28791319f7bca369c26fcac3ba7f36",
+      "sha256": "3233859425b0c7afbc91ede519ef098635573c9942d07e2a64bd16d794cc807e",
+      "screenshots_sha256": [
+        "ca074b38ead309bef2f282bedb91c3b9e26db055c985c3b9af39c2b66cc216f4",
+        "b1c6ba413b3034cb200df4436c951b1d6b75dee93430b32b83eae8b8396ec21c"
+      ],
+      "status": "SOURCE_RENDER_PASS_NOT_PUBLIC_DEPLOYED",
+      "hold": "Privacy review and CoCivium competing R12 owner decision"
+    },
+    {
+      "site": "InSeed",
+      "source": "index.html",
+      "repo": "CoCivium/InSeed",
+      "commit": "dc03e8865a90de6d26bf03bc64061319b1cf7fbd",
+      "blob": "0effb59c4a4e830f2ce5297998df496786d49f32",
+      "sha256": "7a0cf90063eefefc4f3e1284671330e0afefbfafb06705ca8056a43422800002",
+      "screenshots_sha256": [
+        "dd546f798de590c682d76de05265d037dbb9230c7a65c2b421dbdbd836ea4e6c",
+        "f7951513dfe955a57f89ac8e48802ffa2586d4d6ca387733eed46f967566b0ed"
+      ],
+      "status": "SOURCE_RENDER_PASS_NOT_PUBLIC_DEPLOYED",
+      "hold": "Commercial/owner contact authority and hosted first-use"
+    },
+    {
+      "site": "CoPolitic",
+      "source": "index.html",
+      "repo": "CoCivium/CoPolitic-site",
+      "commit": "218b43f773b5f02e63739a0438d88ff6890f6166",
+      "blob": "1ae823ad0072cb310c2f30f7cb464c05b375a43f",
+      "sha256": "43fd95107e3147e3835dbc2a2a2b84c704e91dfb951c23df40f6548fa5c452ea",
+      "screenshots_sha256": [
+        "d996e6196bb874ecef8022e8a89935afdfd5dafb0730b9765907dfc79fc62ab8",
+        "b00d1989dfe35ff641a50d4b9e6a1684c52812deaa777e9e8719a87e64b9541e"
+      ],
+      "status": "SOURCE_RENDER_PASS_NOT_PUBLIC_DEPLOYED",
+      "hold": "CoPolitic hosted root, privacy, legitimacy and independent human acceptance"
+    }
+  ],
+  "next": "Use exact source/render receipts to elect one owner candidate per flagship, then require independent host GET/log/screenshot/function test, privacy review, and voluntary real-person comprehension before any domain publication. In parallel recover X2 machine-owned WorkID receipt path under existing R20 supervisor; no new startup master.",
+  "nonclaims": [
+    "NO_PUBLIC_RELEASE",
+    "NO_EXTERNAL_HOST_ACCEPTANCE",
+    "NO_HUMAN_FIRST_USE_ACCEPTANCE",
+    "NO_THREE_INDEPENDENT_ROOTS",
+    "NO_X2_RUNTIME",
+    "NO_COEX_OR_CANON",
+    "NO_PHANTOM_ACK",
+    "LOCAL_IS_NOT_LANDED",
+    "VALIDATION_IS_NOT_ACCEPTANCE"
+  ]
+}
