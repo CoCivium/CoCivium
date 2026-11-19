@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>CoCivium | A civic experiment in cooperative intelligence</title>
+<style>
+body{margin:0;background:#101b2b;color:#f0f5fb;font:18px/1.6 system-ui,sans-serif}
+main{max-width:900px;margin:auto;padding:42px 24px 90px}
+a{color:#9cdeef}a:focus-visible{outline:3px solid #e6c06e;outline-offset:2px}
+h1{font-size:clamp(2.5rem,6vw,4.2rem);line-height:1.07}
+section{padding:20px 0;border-top:1px solid #44566b}
+aside{padding:16px 22px;background:#1d3044;border-left:4px solid #e6c06e}
+small{color:#c1d0dc}
+nav ul,.doors{padding-left:1.2em}
+.doors li{margin:.5em 0}
+.cta{display:inline-block;margin-top:8px;padding:10px 18px;border:2px solid #9cdeef;border-radius:6px;text-decoration:none;font-weight:600}
+.skip{position:absolute;left:-999px}.skip:focus{left:12px;top:12px;background:#101b2b;padding:8px}
+</style>
+</head>
+<body>
+<a class="skip" href="#explore">Skip to where to start</a>
+<main>
+<small id="status">COCIVIUM · EARLY SITE CANDIDATE · NOT PUBLICLY DEPLOYED</small>
+<h1>Better decisions through cooperative intelligence.</h1>
+<p>CoCivium explores how people, institutions and synthetic systems can cooperate while preserving evidence, accountability, disagreement and human agency.</p>
+<p><a class="cta" href="#explore">Explore the idea</a></p>
+
+<aside><strong>What exists today?</strong> This is a working editorial candidate. Its claims, governance and technical capabilities are under development. It does not assert a deployed CoCivium runtime, independent certification or operational public intake. Every link below opens public source files on GitHub, pinned to a specific commit, not a live service.</aside>
+
+<nav aria-label="On this page"><ul>
+<li><a href="#explore">Where to start</a></li>
+<li><a href="#evolves">How the work evolves</a></li>
+<li><a href="#testing">What we are testing</a></li>
+<li><a href="#related">Related work</a></li>
+<li><a href="#critique">Read critically</a></li>
+</ul></nav>
+
+<section id="explore">
+<h2>Explore the idea</h2>
+<p>Start with a real question. Map alternatives, identify assumptions, compare evidence and record why a conclusion was reached. Treat disagreement as a useful signal rather than an inconvenience.</p>
+<p>Three ways in, each under five minutes:</p>
+<ul class="doors">
+<li><strong>Get oriented:</strong> <a href="https://github.com/CoCivium/CoCivium/blob/a07f1544f83ccf13fad224328558fe77a176223b/START_HERE.md">CoCivium, start here in 60 seconds</a>. What the project is and one first step.</li>
+<li><strong>Bring a question:</strong> <a href="https://github.com/CoCivium/CoCivium/blob/a07f1544f83ccf13fad224328558fe77a176223b/docs/Onramp/COCIVIA_FIRST_USE_R0.md">First-use guide</a>. A simple guide for one thing you want to improve, not a running intake service.</li>
+<li><strong>Try something offline:</strong> <a href="https://github.com/CoCivium/CoCivium/blob/a07f1544f83ccf13fad224328558fe77a176223b/examples/coprecursor/README.md">CoPreCursor+ demonstration</a>, with its <a href="https://github.com/CoCivium/CoCivium/blob/a07f1544f83ccf13fad224328558fe77a176223b/examples/coprecursor/index.html">single HTML file</a> to download and open locally. A rule-based example with fictional text, no AI provider and no account.</li>
+</ul>
+</section>
+
+<section id="evolves">
+<h2>How the work evolves</h2>
+<p><strong>Front to back:</strong> readable experiences invite thoughtful criticism. <strong>Back to front:</strong> evidence, architecture and tests inform what becomes visible. Each revision should show what changed and why.</p>
+<p>The whole project is open: <a href="https://github.com/CoCivium/CoCivium/blob/a07f1544f83ccf13fad224328558fe77a176223b/README.md">CoCivium repository README</a>.</p>
+</section>
+
+<section id="testing">
+<h2>What we are testing</h2>
+<p>Can independent challenges and source-linked decisions improve comprehension, trust calibration and decision quality? Can feedback loops help without manipulating participants? These are hypotheses, not proven outcomes.</p>
+<p>Two public civic-education experiments in the CoAcademy repository show the approach in practice:</p>
+<ul class="doors">
+<li><a href="https://github.com/CoCivium/CoAcademy/blob/615b0e99ad4fb9ad2f126d71be0d57da82f98937/docs/relay/README.md">CoRelay R0</a>: a voluntary research and feedback onramp. <a href="https://github.com/CoCivium/CoAcademy/blob/615b0e99ad4fb9ad2f126d71be0d57da82f98937/docs/relay/index.html">Page source</a>.</li>
+<li><a href="https://github.com/CoCivium/CoAcademy/blob/615b0e99ad4fb9ad2f126d71be0d57da82f98937/docs/civic-integrity/index.html">Civic Integrity Support R0</a>: nonpartisan election-information literacy. Read the <a href="https://github.com/CoCivium/CoAcademy/blob/615b0e99ad4fb9ad2f126d71be0d57da82f98937/docs/civic-integrity/BRIEF_FOR_REVIEWERS_R0.md">reviewer brief</a> and the <a href="https://github.com/CoCivium/CoAcademy/blob/615b0e99ad4fb9ad2f126d71be0d57da82f98937/docs/civic-integrity/POST_ELECTION_CONTINUITY_R0.md">evidence protocol</a>.</li>
+</ul>
+</section>
+
+<section id="related">
+<h2>Related work</h2>
+<p>Proposed companion fronts. Each link is a public source repository, not a verified working service or domain:</p>
+<ul class="doors">
+<li><a href="https://github.com/CoCivium/InSeed/blob/1d0964637c68b49ef4274c5e48d034e148f1897a/README.md">InSeed</a>: institutional delivery (early work in progress).</li>
+<li><a href="https://github.com/CoCivium/CoPolitic-site/blob/0fb29d921fb95b1d2aad055dbac792d0139086a1/README.md">CoPolitic</a>: governance and public-policy research pointer.</li>
+<li>CoAll: relational architecture (no public link yet).</li>
+</ul>
+</section>
+
+<section id="critique">
+<h2>Read critically</h2>
+<p>Ask which claims are measured, which are speculative, what evidence could overturn them, and who is authorized to act. Feedback collection and contact endpoints are not yet represented as active.</p>
+<p>How contributions are handled: <a href="https://github.com/CoCivium/CoCivium/blob/a07f1544f83ccf13fad224328558fe77a176223b/CONTRIBUTING.md">contributing guide</a> and <a href="https://github.com/CoCivium/CoCivium/blob/a07f1544f83ccf13fad224328558fe77a176223b/SECURITY.md">security policy</a>.</p>
+</section>
+
+<footer><small>Candidate W01, derived from R0. Not publicly deployed. No visitor submission service, independent review or governance certification claimed. <a href="#status">Back to top</a></small></footer>
+</main>
+</body>
+</html>
