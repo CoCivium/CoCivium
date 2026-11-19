@@ -1,0 +1,59 @@
+{
+  "schema": "CoCivium.CoWaveSeal.IntakeVerification.R0",
+  "observed_date": "2026-11-19",
+  "scope": "W01 source-only review branch; not main, not deployed",
+  "worker": "W01",
+  "source": {
+    "kind": "conversation_uploaded_html",
+    "filename": "index (5).html",
+    "source_sha256": "c5b901523232275aeeaaaab63f78b6cc601f86e15c2a312b6a91679fe639c4dc",
+    "source_size_bytes": 6564
+  },
+  "remote": {
+    "repository": "CoCivium/CoCivium",
+    "branch": "claude/w01-intake-r0-20261119",
+    "path": "cosites261118-preview/cocivium-home-w01/index.html",
+    "commit_sha": "1802e10ffc9cd3422ae4a0871bb1d2aca2b91c67",
+    "git_blob_sha1": "492d61e21e3f26252102fdd0c2b33ecd5f70fda2",
+    "text_readback_match": true,
+    "receiver_identity": "GitHub contents API via connected account",
+    "reviewer_identity": null
+  },
+  "local_followup": {
+    "candidate": "W01 C3 from 4-commit patch 'w01 (2).patch'",
+    "sha256_index": "4c26b22c5ea6f19a04cf13a54a495a3b06108f76bb8e2372001da2afc9833137",
+    "sha256_test_w01": "a5f6f5031b8eae71cdfc8ed1a1b61cf4f916623e9398a3e6b7367fa25a5dc9ad",
+    "tests": {
+      "stdlib_total": 14,
+      "stdlib_pass": 12,
+      "stdlib_skipped": 2,
+      "chromium_browser_pass": 7,
+      "browser_method": "safe in-memory page.set_content; original file:// test blocked in container"
+    },
+    "status": "VERIFIED_LOCAL_ONLY_NOT_ON_GITHUB"
+  },
+  "ci": {
+    "combined_statuses": [],
+    "pr_triggered_workflow_runs": [],
+    "state": "NO_CI_EVIDENCE"
+  },
+  "claims": {
+    "source_visible_on_review_branch": true,
+    "independent_review": false,
+    "pr_opened": false,
+    "merged": false,
+    "public_website_deployed": false,
+    "coex": false,
+    "runtime": false,
+    "other_workers_ack": false
+  },
+  "next_gate": "Independent validation of C3 and authenticated transport of complete source; CI and release remain HOLD",
+  "nonclaims": [
+    "LOCAL_IS_NOT_LANDED",
+    "VALIDATION_IS_NOT_ACCEPTANCE",
+    "NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF",
+    "NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE",
+    "HASHING_IS_NOT_SEMANTIC_INGESTION",
+    "DISCOVERED_SET_IS_NOT_COMPLETE_HISTORY"
+  ]
+}
