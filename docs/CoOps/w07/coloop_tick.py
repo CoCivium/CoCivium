@@ -28,16 +28,21 @@ CREATE TABLE IF NOT EXISTS receipt(n INTEGER PRIMARY KEY, sha256 TEXT, prev_sha2
 
 
 def boot_id():
+    """Stable per-boot token. Linux: kernel boot_id. Windows (C2-J7, NOT yet run on Windows): boot time derived
+    from GetTickCount64, rounded to 60 s. The rounding can flap if the wall clock is stepped near a boundary, so
+    the reboot ladder must confirm boots from the OS event log (design §4.4) rather than trust this alone."""
     try:
         return open("/proc/sys/kernel/random/boot_id").read().strip()
-    except OSError:                                   # Windows: last boot time stands in for boot id
+    except OSError:
+        pass
+    if os.name == "nt":
         try:
-            import subprocess
-            return subprocess.run(["powershell", "-NoProfile", "-Command",
-                                   "(Get-CimInstance Win32_OperatingSystem).LastBootUpTime.ToString('o')"],
-                                  capture_output=True, text=True, timeout=20).stdout.strip() or "unknown"
-        except Exception:
-            return "unknown"
+            import ctypes
+            k32 = ctypes.WinDLL("kernel32"); k32.GetTickCount64.restype = ctypes.c_ulonglong
+            return "win-boot:" + str(int(round((time.time() - k32.GetTickCount64() / 1000.0) / 60.0) * 60))
+        except (OSError, AttributeError):
+            pass
+    return "unknown"
 
 
 def db(state):

@@ -1,0 +1,177 @@
+{
+  "all_pass_linux": true,
+  "falsify_regression": {
+    "all_pass": true,
+    "finished_utc": "2026-11-18T20:50:41Z",
+    "params": {
+      "H": 0.5,
+      "L": 3.0,
+      "R": 1.0,
+      "scaled": true
+    },
+    "python": "3.13.18",
+    "results": [
+      {
+        "PASS": true,
+        "expectation": "R0 takeover blocked (falsifies R0 liveness)",
+        "id": "L5_baseline",
+        "outcome": "OperationalError: database is locked",
+        "r0_liveness_falsified": true,
+        "waited_s": 6.011
+      },
+      {
+        "PASS": true,
+        "break_policy": {
+          "bound_s": 5.0,
+          "max_latency_s": 4.418,
+          "passed": 10,
+          "trials": 10,
+          "uncommitted_stale_rows_visible": 0
+        },
+        "finding": "A holder frozen inside BEGIN IMMEDIATE blocks every writer indefinitely; the R0 harness's 30 s busy timeout + lease-only takeover cannot make progress. Fix: bounded busy timeout, STALE_LOCK detection, then HOLD or a single kill of the recorded holder_pid.",
+        "hold_policy": {
+          "bound_s": 5.0,
+          "max_latency_s": 4.328,
+          "passed": 10,
+          "trials": 10
+        },
+        "id": "L5"
+      },
+      {
+        "PASS": true,
+        "id": "L6_pid_reuse_guard",
+        "kills": 0,
+        "passed": 5,
+        "trials": 5
+      },
+      {
+        "PASS": true,
+        "id": "L7_forward_clock_jump",
+        "note": "liveness cost: a forward jump forces an early takeover; safety (fencing) must hold",
+        "passed": 10,
+        "premature_takeovers": 10,
+        "stale_writes_after_takeover": 0,
+        "trials": 10
+      }
+    ],
+    "started_utc": "2026-11-18T20:47:59Z"
+  },
+  "host": "Claude cloud sandbox (Linux); Windows path NOT executed (no Windows runtime available)",
+  "job_id": "W07-C2-J7",
+  "known_limits": [
+    "GetExitCodeProcess cannot distinguish STILL_ACTIVE from a real exit code 259; such a process would be treated as alive",
+    "Windows boot_id rounds boot time to 60 s and can flap on a wall-clock step near a boundary; the reboot ladder confirms boots from the OS event log"
+  ],
+  "selftest_linux": {
+    "all_pass": true,
+    "os_name": "posix",
+    "platform": "Linux-6.18.44-fc-v595-x86_64-with-glibc2.39",
+    "python": "3.13.18",
+    "results": [
+      {
+        "PASS": true,
+        "id": "P1_self_token",
+        "stable": true,
+        "token_present": true
+      },
+      {
+        "PASS": true,
+        "changed_after_exit": true,
+        "differs_from_self": true,
+        "gone_after_exit": true,
+        "id": "P2_child_token",
+        "live_present": true
+      },
+      {
+        "PASS": true,
+        "id": "P3_boot_id",
+        "known": true,
+        "stable": true
+      },
+      {
+        "PASS": true,
+        "exit_codes": [
+          0,
+          0,
+          0
+        ],
+        "id": "P4_tick_end_to_end",
+        "verify": {
+          "chain_ok": true,
+          "deliveries": 1,
+          "duplicate_keys": 0,
+          "overdue_pending": 0,
+          "receipts": 1
+        }
+      },
+      {
+        "PASS": true,
+        "id": "P5_break_policy_mode",
+        "mode": "KILL_ALLOWED_WITH_GUARD"
+      }
+    ],
+    "utc": "2026-11-18T20:47:59Z"
+  },
+  "tick_regression": {
+    "all_pass": true,
+    "params": {
+      "COLOOP_L": 2,
+      "COLOOP_R": 1,
+      "scaled": true
+    },
+    "results": [
+      {
+        "PASS": true,
+        "crashes_fired": [
+          "after_intent",
+          "after_effect"
+        ],
+        "exit_codes": [
+          9,
+          3,
+          9,
+          3,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "id": "T1_catchup_crash",
+        "verify": {
+          "chain_ok": true,
+          "deliveries": 5,
+          "duplicate_keys": 0,
+          "overdue_pending": 0,
+          "receipts": 12
+        }
+      },
+      {
+        "PASS": true,
+        "epochs": 80,
+        "id": "T2_concurrent_ticks",
+        "rounds": 20,
+        "ticks_held": 0,
+        "ticks_ok": 80,
+        "ticks_per_round": 4,
+        "verify": {
+          "chain_ok": true,
+          "deliveries": 1,
+          "duplicate_keys": 0,
+          "overdue_pending": 0,
+          "receipts": 80
+        },
+        "window_overlaps": 0
+      }
+    ],
+    "utc": "2026-11-18T20:48:18Z"
+  },
+  "windows_status": "NOT_RUN: run `python -I w07_platform_selftest.py --out selftest_windows.json` on a Windows host; P1-P4 must PASS"
+}

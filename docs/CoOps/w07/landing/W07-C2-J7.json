@@ -1,0 +1,58 @@
+{
+  "attempt_id": "1",
+  "authority_ref_or_null": null,
+  "claimed_actor": "Claude (Opus 5.5) as W07; claim only, unsigned",
+  "collision_scope": "docs/CoOps/w07/",
+  "cycle_id": "W07-C2",
+  "dependency_ids": [
+    "W07-C2-J6",
+    "W07-C2-J1"
+  ],
+  "disposition": "PREPARED",
+  "envelope_sha256": "435189b9a893595a4b4eb7ee24ed7629c90f66bad3b7fc6854886779686a6cb7",
+  "evidence": [],
+  "hold_reason_or_null": "LANDING_HOLD: no authenticated write transport (git proxy 403: repo not in session's authorized set)",
+  "idempotency_key": "66bd2605228517fabdaffa90aeff5dd356afc45c9e7c2666edf1b0b61f5fab5f",
+  "input_refs": [
+    {
+      "sha256_or_commit": "ec169cffeba65e5d1bc5c4a84b3efd4d20ad03868d2e74898e7395fed33673e7",
+      "uri": "CoCivium/CoCivium@a07f1544f83ccf13fad224328558fe77a176223b:docs/CoOps/COCLAUDE_TEN_CONTEXT_DISPATCH_R0.md"
+    }
+  ],
+  "job_id": "W07-C2-J7",
+  "kind": "candidate_artifact",
+  "object_id": "sha256:67fe115cfe2d7ba11e3286039c097f0d33cc99acec4343d59bb8fc2141a9df3a",
+  "output_refs": [
+    {
+      "sha256": "bee147b091f06909a8829a7869e75a76924bd5f9f88d898a7f1a773063de4d85",
+      "uri": "CoCivium/CoCivium@claude/w07-loop-20261118:docs/CoOps/w07/w07_coloop_ref.py"
+    },
+    {
+      "sha256": "9645d3db610f678d4f9cf50fd4bbd5d9491c5da65198f275abaee9e1fb1a1166",
+      "uri": "CoCivium/CoCivium@claude/w07-loop-20261118:docs/CoOps/w07/coloop_tick.py"
+    },
+    {
+      "sha256": "95a62ec301c90d9e29e5e5895370f186a298807f0021eaa2f9c5f0fe3c881089",
+      "uri": "CoCivium/CoCivium@claude/w07-loop-20261118:docs/CoOps/w07/w07_platform_selftest.py"
+    },
+    {
+      "sha256": "d5c517fa08bb9c3e7deaa139f1d9c331e4f3316b6ad1b34868693d5ac248c754",
+      "uri": "CoCivium/CoCivium@claude/w07-loop-20261118:docs/CoOps/w07/W07_C2_J7_RESULTS_R0.json"
+    }
+  ],
+  "privacy_class": "public-safe",
+  "produced_utc": "2026-11-19T21:37:27Z",
+  "reviewer_ids": [],
+  "schema_version": "CoLanding.Envelope.R0(candidate)",
+  "session_instance_id": "w07-si-43d985bc720b4b4f",
+  "successor_job_ids": [
+    "W07-C2-J8"
+  ],
+  "tests": [
+    "selftest P1-P5 Linux PASS",
+    "falsify L5-L7 regression PASS",
+    "tick T1-T2 regression PASS",
+    "Windows NOT_RUN"
+  ],
+  "worker_id": "W07"
+}

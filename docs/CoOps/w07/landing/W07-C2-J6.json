@@ -8,10 +8,10 @@
     "W07-C1-J3"
   ],
   "disposition": "PREPARED",
-  "envelope_sha256": "dac9813e845c21c55348a741a4c78db3680983c833e5ee59a1ebbcd520390607",
+  "envelope_sha256": "0a2be40b40ac95c9e44309d1e03afe6acbd9adf066bdb9101df822dcdbd5d243",
   "evidence": [],
   "hold_reason_or_null": "LANDING_HOLD: no authenticated write transport (git proxy 403: repo not in session's authorized set)",
-  "idempotency_key": "6cef4f796a80148347e11ed6692b388537929724fe9ecd1e5209cdac2299888b",
+  "idempotency_key": "a422e39fd31f34189fba16915c9fd4ec1e2cec59c5c0ff63db1bf65c084cbb7a",
   "input_refs": [
     {
       "sha256_or_commit": "ec169cffeba65e5d1bc5c4a84b3efd4d20ad03868d2e74898e7395fed33673e7",
@@ -20,10 +20,10 @@
   ],
   "job_id": "W07-C2-J6",
   "kind": "candidate_artifact",
-  "object_id": "sha256:177749f468f3d3beee79dcfa203be6728c4a26edbf15c81bcf3fea681b50c4e8",
+  "object_id": "sha256:9365ca8dfbedda2b75641b4ffa6928ce9ad10fa9e29a93356db4438184a888c0",
   "output_refs": [
     {
-      "sha256": "e73846dbdaf46e909de31247a8ca189ed2b2ff3a0a9911b22ea0af255b26e7b6",
+      "sha256": "bee147b091f06909a8829a7869e75a76924bd5f9f88d898a7f1a773063de4d85",
       "uri": "CoCivium/CoCivium@claude/w07-loop-20261118:docs/CoOps/w07/w07_coloop_ref.py"
     },
     {
@@ -31,12 +31,12 @@
       "uri": "CoCivium/CoCivium@claude/w07-loop-20261118:docs/CoOps/w07/W07_C2_J6_RESULTS_R0.json"
     },
     {
-      "sha256": "2b53ad88060e4a1627f5300caed45d3843790873dbd9dd514757a9a93b6c07a1",
+      "sha256": "647f3ff3dce5f3eb3d5a891326367eb843fadec1e003d28a2f164e2bc40bc17e",
       "uri": "CoCivium/CoCivium@claude/w07-loop-20261118:docs/CoOps/w07/W07_C1_J3J4_RESULTS_R0.md"
     }
   ],
   "privacy_class": "public-safe",
-  "produced_utc": "2026-11-18T20:44:05Z",
+  "produced_utc": "2026-11-19T21:37:27Z",
   "reviewer_ids": [],
   "schema_version": "CoLanding.Envelope.R0(candidate)",
   "session_instance_id": "w07-si-43d985bc720b4b4f",

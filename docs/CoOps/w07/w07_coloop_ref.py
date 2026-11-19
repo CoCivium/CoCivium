@@ -37,7 +37,30 @@ def init(db, recv):
 
 
 def proc_start(pid):
-    """Process start time (clock ticks since boot, /proc/<pid>/stat field 22); None if gone. Guards against pid reuse."""
+    """Opaque process start-time token used to guard against pid reuse; None if the process is gone or unknowable.
+    Linux: /proc/<pid>/stat field 22 (clock ticks since boot). Windows: GetProcessTimes creation FILETIME (C2-J7,
+    NOT yet run on Windows). Other OSes: None, so the break policy degrades to HOLD and never kills."""
+    if os.name == "nt":
+        try:
+            import ctypes
+            from ctypes import wintypes
+            k32 = ctypes.WinDLL("kernel32", use_last_error=True)
+            k32.OpenProcess.restype = wintypes.HANDLE
+            h = k32.OpenProcess(0x1000, False, int(pid))          # PROCESS_QUERY_LIMITED_INFORMATION
+            if not h:
+                return None
+            try:
+                ft = [wintypes.FILETIME() for _ in range(4)]
+                if not k32.GetProcessTimes(h, *[ctypes.byref(x) for x in ft]):
+                    return None
+                code = wintypes.DWORD()                           # exited processes keep times; treat as gone
+                if k32.GetExitCodeProcess(h, ctypes.byref(code)) and code.value != 259:   # 259 = STILL_ACTIVE
+                    return None
+                return f"win:{(ft[0].dwHighDateTime << 32) | ft[0].dwLowDateTime}"
+            finally:
+                k32.CloseHandle(h)
+        except (OSError, AttributeError):
+            return None
     try:
         return open(f"/proc/{pid}/stat").read().rsplit(")", 1)[1].split()[19]
     except (OSError, IndexError):

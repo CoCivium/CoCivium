@@ -36,3 +36,9 @@ Raw: `W07_C1_J3J4_RESULTS_R0.json`. Host: Claude cloud sandbox (Linux). **Not th
 | Regression L1–L5, I1–I4, H1–H4 after the schema change | 13/13, with the three groups run concurrently | PASS |
 
 The pid guard reads `/proc/<pid>/stat`. On Windows it returns None, so the break policy safely degrades to HOLD and never kills. A Windows start-time source (WMI `CreationDate`) is successor C2-J7.
+
+## C2-J7 addendum (`W07_C2_J7_RESULTS_R0.json`): Windows parity, **NOT run on Windows**
+- `proc_start` on Windows uses `GetProcessTimes`, the creation FILETIME, through ctypes. `coloop_tick.boot_id` on Windows derives from `GetTickCount64`. The tick no longer spawns PowerShell on every run.
+- New `w07_platform_selftest.py`, P1–P5: on Linux every check passes, the guard is in KILL_ALLOWED_WITH_GUARD mode, and the tick end-to-end produced 1 delivery with a valid chain. The regression after the change also passes: L5–L7 and T1–T2.
+- **Gate:** someone must run the self-test on a Windows host. Until P1–P4 pass there, Windows runs in HOLD_ONLY mode, meaning the break policy never kills.
+- Known limits: a process that genuinely exits with code 259 looks alive. The Windows boot id can flap if the clock is stepped near a 60 s boundary, so the reboot ladder uses the OS event log for boot confirmation.
