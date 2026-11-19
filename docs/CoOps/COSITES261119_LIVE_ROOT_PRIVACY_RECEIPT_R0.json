@@ -1,0 +1,103 @@
+{
+  "schema": "CoSites.ThreeFlagship.LiveRootPrivacyBoundedReceipt.R0",
+  "work_id": "CoSites261119:SixRootPublicHostEvidence:R0",
+  "state": "LIVE_ROOTS_OBSERVED_WITH_HOLDS__RELEASE_PRIVACY_FIRST_USE_UNPROVEN",
+  "observed_utc": "2026-11-19T22:21:44.597698+00:00",
+  "source_authority": "READ_ONLY_PUBLIC_HTTP_CANDIDATE__NO_DOMAIN_OR_PUBLICATION_MUTATION",
+  "evidence": {
+    "ci_run_id": 44627872957,
+    "ci_url": "https://github.com/CoCivium/CoCivium/actions/runs/44627872957",
+    "ci_source_commit": "16122ab38433d328139288d6ee4346485d30d901",
+    "workflow": "CoSites six-root privacy and first-use boundary R0",
+    "outcome": "COMPLETED_SUCCESS_WHILE_DOMAIN_RELEASE_HELD",
+    "safe_probe_file": "cosites261118-preview/host_root_privacy_probe_r0.py",
+    "safe_probe_git_blob_sha1": "f0dc5e1e35d2a81e48a6723bc29f71acb4625a99",
+    "artifact_id": 14580371522,
+    "artifact_zip_sha256": "7f0b4fe36067b128788385d55253a8ab9cee61a827eb04869c38ccf3f13af344",
+    "receipt_json_sha256": "27deafa830e9396ff7fd4e6d675cb5097aefa77903631091df52d9aa4bce0554",
+    "artifact_expires_utc": "2026-12-03T22:21:44Z",
+    "scope": "ONE_EPHEMERAL_GITHUB_RUNNER__SIX_HTTPS_ROOTS__NO_REDIRECT_FOLLOW__NO_RAW_BODY_EXPORT__NO_SHARD_TRAVERSAL__NO_AUTHORIZATION_TO_RELEASE",
+    "independent_roots": 1
+  },
+  "results": [
+    {
+      "site": "CoCivium",
+      "host_role": "apex",
+      "http_status": 404,
+      "state": "HOLD_ROOT_HTTP404",
+      "body_sha256": null
+    },
+    {
+      "site": "CoCivium",
+      "host_role": "www",
+      "http_status": 200,
+      "state": "HOLD_EXISTING_PUBLIC_TECHNICAL_INDEX_REQUIRES_PRIVATE_SECURITY_REVIEW",
+      "body_sha256": "31220ed1eb58ce699e0f0ae7bfc8a9b439edf0b187db9a0301f2d6bb2d2c702a",
+      "privacy_flags": [
+        "LOCAL_WINDOWS_PATH_ON_PUBLIC_ROOT",
+        "PUBLIC_PAGE_CLAIMS_NOT_PUBLIC_HOSTED",
+        "PUBLISHED_TECHNICAL_INDEX"
+      ],
+      "body_bytes": 91200
+    },
+    {
+      "site": "InSeed",
+      "host_role": "apex",
+      "http_status": 200,
+      "state": "HOLD_USABLE_FIRST_USE_UNVERIFIED",
+      "body_sha256": "840db7d974c975ae95b0b775bdb1cd9cd0b51d30ce1c36c40b2c115d21371bd3",
+      "flags": [
+        "TOO_LITTLE_VISIBLE_EXPLANATION_FOR_FIRST_USE",
+        "FORMS_OR_SCRIPTS_REQUIRE_SEPARATE_SCOPE_REVIEW"
+      ],
+      "body_bytes": 2053
+    },
+    {
+      "site": "InSeed",
+      "host_role": "www",
+      "http_status": 301,
+      "state": "HOLD_REDIRECT_NOT_FOLLOWED",
+      "redirect_target_class": "APPROVED_HOST_ROOT_REDIRECT_NOT_FOLLOWED"
+    },
+    {
+      "site": "CoPolitic",
+      "host_role": "apex",
+      "http_status": 404,
+      "state": "HOLD_ROOT_HTTP404"
+    },
+    {
+      "site": "CoPolitic",
+      "host_role": "www",
+      "http_status": null,
+      "state": "HOLD_NETWORK_OR_TLS_UNAVAILABLE"
+    }
+  ],
+  "release_decision": "HOLD__NO_REPLACEMENT_LIVE_HOST_PUBLICATION",
+  "source_browser_prior": {
+    "ci_run_id": 44626497766,
+    "result": "PASS_9_OF_9_PINNED_SOURCE_CHROMIUM_PROBES",
+    "candidate_sha_bindings_in": "docs/CoOps/COSITES261119_THREE_FLAGSHIP_BROWSER_RECEIPT_R0.json",
+    "scope": "SOURCE_BROWSER_ONLY_NE_HOSTED_FIRST_USE_OR_PRIVACY"
+  },
+  "risks": {
+    "public_www_legacy_index": "NEEDS_PRIVATE_AUTHORIZED_REVIEW_BEFORE_ANY_PROMOTION_OR_PROMOTION_CLAIM",
+    "technical_index_public_contents": "NOT_TRAVERSED",
+    "raw_html_or_path_details_in_this_receipt": false,
+    "dns_ownership_tls_headers": "NOT_ATTESTED_BY_THESE_ROOT_GETS",
+    "real_human_first_use": "NOT_ATTESTED",
+    "three_independent_host_vantages": "NOT_ATTESTED"
+  },
+  "next_safe_deed": "One authorized existing site/domain owner must privately inspect exposure scope for the current CoCivium www technical index, validate origin/DNS/TLS and rollback. Independently continue approved candidate-site source QA. After privacy clearance and source election, test a controlled hosted preview with exact URL, log, screenshot, functional use and independent reviewer, then seek public release authority.",
+  "nonclaims": [
+    "LOCAL_IS_NOT_LANDED",
+    "VALIDATION_IS_NOT_ACCEPTANCE",
+    "NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF",
+    "NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE",
+    "HASHING_IS_NOT_SEMANTIC_INGESTION",
+    "DISCOVERED_SET_IS_NOT_COMPLETE_HISTORY",
+    "ONE_VANTAGE_NOT_THREE_INDEPENDENT_ROOTS",
+    "NO_PUBLIC_RUNTIME_OR_RELEASE",
+    "NO_X2_RECEIVER_ACK",
+    "NO_PHANTOM_ACK"
+  ]
+}
