@@ -1,0 +1,150 @@
+{
+  "schema": "CoSites.CoPre92.ThreeFlagshipSourceArbitration.R0",
+  "state": "PUBLIC_SAFE_SOURCE_EVIDENCE_ONLY_NO_RELEASE_ELECTION",
+  "scope": "Five existing candidate HTML sources, their exact Git blobs, bounded internal-anchor checks, and existing CI records; not hosted-domain acceptance.",
+  "start_head": "a3dd24fb22dcb708b96b1fa113b982621a55524a",
+  "report_context": "2026-11-19",
+  "methodology": {
+    "tests": [
+      "source readback at exact public GitHub branch",
+      "exact HTML source blob ID",
+      "presence of one h1, viewport, language and nav",
+      "internal #href IDs resolved",
+      "forms and scripts counted",
+      "referenced repository file readback where available",
+      "existing GitHub Actions run conclusion separately verified"
+    ],
+    "limits": [
+      "Regex source inspection is not browser QA",
+      "CI of one GitHub runner is not three independent roots",
+      "candidate branch is not website deployment",
+      "review variants remain preserved, not silently retired"
+    ]
+  },
+  "contenders": [
+    {
+      "site": "CoCivium",
+      "variant": "R1",
+      "repository": "CoCivium/CoCivium",
+      "ref": "candidate/copre-cof2b-release-rail-20261118",
+      "path": "cosites261118-preview/cocivium-home-r1/index.html",
+      "blob_sha1": "ce97f53e7c28791319f7bca369c26fcac3ba7f36",
+      "html_characters": 4307,
+      "internal_anchors": 6,
+      "broken_local_anchors": 0,
+      "noindex": true,
+      "forms": 0,
+      "scripts": 0,
+      "ci_browser": "UNVERIFIED",
+      "status": "CANDIDATE_SOURCE_VERIFIED",
+      "hold": "CoInfra current public index differs; locally tested R12 exists as competing candidate; privacy and source election unqualified"
+    },
+    {
+      "site": "InSeed",
+      "variant": "PR1",
+      "repository": "CoCivium/InSeed",
+      "ref": "candidate/inseed-human-first-site-r0-20261117",
+      "path": "index.html",
+      "blob_sha1": "0effb59c4a4e830f2ce5297998df496786d49f32",
+      "html_characters": 16346,
+      "internal_anchors": 9,
+      "broken_local_anchors": 0,
+      "noindex": false,
+      "forms": 0,
+      "scripts": 0,
+      "ci_source_run_id": 44392413829,
+      "ci_source_result": "SUCCESS",
+      "ci_browser": "UNVERIFIED",
+      "status": "BASELINE_FOR_REVIEW_NOT_ELECTED_FOR_RELEASE",
+      "hold": "Published contact address/mailto response unverified; commercial authority, privacy and first-use host QA remain separate"
+    },
+    {
+      "site": "InSeed",
+      "variant": "PR2",
+      "repository": "CoCivium/InSeed",
+      "ref": "review/inseed-human-first-r0-20261117",
+      "path": "index.html",
+      "blob_sha1": "ed5dd73cde75515c76e66e29bea1c764d6759362",
+      "html_characters": 8644,
+      "internal_anchors": 10,
+      "broken_local_anchors": 0,
+      "noindex": true,
+      "forms": 0,
+      "scripts": 0,
+      "ci_review_run_id": 44366471277,
+      "ci_review_result": "FAILURE",
+      "ci_review_failure_scope": "Existing CoAll CI shell echo step failed; not proof that candidate HTML was rendered or invalid",
+      "status": "PRESERVED_REVIEW_ALTERNATIVE"
+    },
+    {
+      "site": "CoPolitic",
+      "variant": "PR1",
+      "repository": "CoCivium/CoPolitic-site",
+      "ref": "candidate/copolitic-first-use-source-site-r0-20261110",
+      "path": "index.html",
+      "blob_sha1": "1ae823ad0072cb310c2f30f7cb464c05b375a43f",
+      "html_characters": 12545,
+      "internal_anchors": 7,
+      "broken_local_anchors": 0,
+      "noindex": false,
+      "forms": 0,
+      "scripts": 0,
+      "local_relative_files": [
+        "ai/index.json",
+        "llms.txt"
+      ],
+      "both_relative_files_sha_readback": true,
+      "ci_run_id": 44366797081,
+      "ci_jobs": [
+        "static-human-machine-parity",
+        "browser-first-use"
+      ],
+      "ci_result": "SUCCESS",
+      "browser_artifact_sha256": "f86783630ed6ded5fe11ac1542ae38f2495e7de8bc8489fac4b3dd7cfef2e94b",
+      "status": "BASELINE_FOR_REVIEW_NOT_ELECTED_FOR_RELEASE",
+      "hold": "Published root deployment, policy-source rights and independent user acceptance unverified"
+    },
+    {
+      "site": "CoPolitic",
+      "variant": "PR2",
+      "repository": "CoCivium/CoPolitic-site",
+      "ref": "review/copol-human-first-r0-20261117",
+      "path": "index.html",
+      "blob_sha1": "f9033cdef1389a775a481bba1ef94c5b8b4eb8d0",
+      "html_characters": 9482,
+      "internal_anchors": 11,
+      "broken_local_anchors": 0,
+      "noindex": true,
+      "forms": 0,
+      "scripts": 0,
+      "ci_browser": "UNVERIFIED",
+      "status": "PRESERVED_REVIEW_ALTERNATIVE"
+    }
+  ],
+  "crosschecks": {
+    "source_readback_references": [
+      "CoCivium Golden Braid source",
+      "InSeed START_HERE.md",
+      "CoCivium commons-commercial separation source",
+      "CoPolitic ai/index.json and llms.txt",
+      "CoAcademy civic-integrity index, election-money example, post-election continuity, relay"
+    ],
+    "coPolitic_main_html_root": "NOT_PRESENT_AT_GITHUB_MAIN_SOURCE_CHECK",
+    "inseed_main_index": "PRESENT_BUT_SOURCE_DIFFERS_FROM_REVIEW_CANDIDATES",
+    "independent_host_http_testing_in_this_job": "NOT_PERFORMED",
+    "external_receiver_acceptance": "NONE",
+    "all_five_sources_local_anchors_broken": 0
+  },
+  "elected_next_deed": "On existing site-source owner, reuse CoCivium R1/R12 comparison, InSeed PR1, CoPolitic PR1, and candidate CI evidence to run real 390px/1365px human-first tests and preview-host exact GET before any publisher/merge decision. Authenticated privacy and hosting scope remain required; do not assume these drafts are public production.",
+  "publication": "HOLD_ALL_THREE",
+  "no_40_site_maturity_claim": true,
+  "nonclaims": [
+    "NO_SOURCE_ELECTION_IS_RELEASE_AUTHORITY",
+    "NO_PUBLIC_SITE_MUTATIONS",
+    "NO_CLOUDFLARE_ACCESS_ASSUMED",
+    "NO_HUMAN_USER_ACCEPTANCE",
+    "NO_THREE_INDEPENDENT_ROOTS",
+    "NO_COEX",
+    "NO_PHANTOM_ACK"
+  ]
+}
