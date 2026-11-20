@@ -65,3 +65,6 @@ jobs:
       - name: Qualify owned WPF text insertion without showing a window
         shell: pwsh
         run: pwsh -STA -NoProfile -NonInteractive -File examples/cobar/Test-CoCopyWpfBulkInputR0.ps1
+      - name: Prove read-only CoBar native WorkID view holds false authority
+        shell: pwsh
+        run: pwsh -STA -NoProfile -NonInteractive -File examples/cobar/Test-CoBarWorkIDWindowR0.ps1
