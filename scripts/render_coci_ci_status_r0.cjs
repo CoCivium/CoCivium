@@ -22,7 +22,7 @@ function validate(r,env){
  if(env.GITHUB_RUN_ID)assert.equal(String(r.github_run_id),String(env.GITHUB_RUN_ID),"HOLD_WRONG_RUN");
  assert.equal(r.source_job,"source-parity","HOLD_SOURCE_JOB");
  assert.equal(r.receiving_job,"artifact-readback","HOLD_READER_JOB");
- for(const [key,count] of [["source",11],["process_recovery",17],["concurrent_fencing",16],["negative_controls",10]])
+ for(const [key,count] of [["source",11],["process_recovery",17],["concurrent_fencing",16],["session_residue",20],["negative_controls",12]])
    assert.equal(r.tests?.[key],count,"HOLD_"+key);
  const b=r.receiver_boundary;
  assert.equal(b?.distinct_github_actions_job,true,"HOLD_NOT_SEPARATE_JOB");
@@ -44,8 +44,8 @@ function construct(r,bytes,env){
   source_commit:r.source_commit,
   github_run_id:String(r.github_run_id),
   readback_receipt_sha256:digest(bytes),
-  headline:"CI source and same-host recovery passed; independent receiver is unverified.",
-  verified:{source:11,process_replay:17,same_host_concurrency:16,same_provider_tamper:10,
+  headline:"CI source, recovery and noncycling residue guards passed; independent receiver unverified.",
+  verified:{source:11,process_replay:17,same_host_concurrency:16,noncycling_residue:20,same_provider_tamper:12,
     cross_job_readback:"PASS_WITHIN_GITHUB"},
   holds:{separate_powered_receiver:"NOT_VERIFIED",physical_cold_recovery:"NOT_VERIFIED",
     X2_CoStead:"NOT_VERIFIED",human_UX:"NOT_VERIFIED",browser:"NOT_PROVED_BY_RECEIPT",
@@ -69,7 +69,7 @@ function render(p){
   "",
   "**Source and synthetic recovery PASS. Independent receiver HOLD.**",
   "",
-  "11 source, 17 replay, 16 same-host concurrency and 10 artifact tamper checks passed.",
+  "11 source, 17 replay, 16 same-host concurrency, 20 noncycling residue and 12 artifact tamper checks passed.",
   "The two CI jobs share GitHub. No separate powered CoStead/X2 receiver is evidenced.",
   "",
   "**Next safe action:** "+p.next_safe_action,
@@ -80,6 +80,7 @@ function render(p){
   "",
   "- Separate powered receiver, physical cold recovery and X2/CoStead: UNVERIFIED.",
   "- Browser accessibility and independent reader acceptance: UNVERIFIED.",
+  "- Logical noncycling checkpoint tested; provider chat not archived or closed by CI.",
   "- No CoEx, canon, production runtime or public domain effect.",
   "- One existing event-triggered CI workflow; no new watcher or Rick handoff.",
   "",
