@@ -1,0 +1,30 @@
+{
+  "effects": {
+    "deployment": 0,
+    "device_changes": 0,
+    "external_sends": 0,
+    "new_schedulers": 0
+  },
+  "lifecycle": "VERIFIED_MODEL_WORKSPACE_ONLY",
+  "next": "Independent cold test on authorized isolated receiver; do not enable any production dispatcher",
+  "nonclaims": [
+    "NOT_NATIVE_X2_EXECUTION",
+    "NOT_REBOOT_SURVIVAL",
+    "NOT_INDEPENDENT_RECEIVER_READPROOF",
+    "NOT_ELECTED_RUNTIME_ACTUATOR",
+    "NOT_PUBLIC_RELEASE",
+    "NO_CANON_OR_COEX_INFERENCE"
+  ],
+  "result": "PASS_MODEL_WORKSPACE_SYNTHETIC",
+  "schema": "CoCivium.CoWalkAway.W07.ModelWorkspaceCanaryReceipt.R0",
+  "source_file": "fenced_actuator_r0.py",
+  "source_lineage": [
+    "CoCivium/CoCivium:docs/CoOps/COWALKAWAY261118_RECOVERY_BOOTCARD_R0.md@candidate/copre-cof2b-release-rail-20261118",
+    "CoCivium/CoCivium:docs/CoOps/COCLAUDE_WORK_QUEUE_R0.json@candidate/copre-cof2b-release-rail-20261118"
+  ],
+  "source_sha256": "30e1cd81bd8e05d911858467505204922519d064f2dd6616a310b7affae070b9",
+  "test_command": "python -B fenced_actuator_r0.py --self-test",
+  "test_output_sha256": "6af7d00502d896c75b6edd77cbde489c7da4c6d0c1244edd3162f5c8f8f95ccb",
+  "tests_run": 16,
+  "work_id": "CoWalkAway.W07.FencedActuatorReplay.20261120.R0"
+}
