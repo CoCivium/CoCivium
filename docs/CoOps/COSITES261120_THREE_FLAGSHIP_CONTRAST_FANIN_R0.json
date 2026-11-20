@@ -1,0 +1,135 @@
+{
+  "schema": "CoSites.CoPre93.ThreeFlagship.ContrastCandidateEvidenceFanIn.R0",
+  "work_id": "CoSites:CoPre93:ThreeFlagship:SourceAccessibilityFanIn:20261120:R0",
+  "state": "THREE_PINNED_SOURCES_AUTOMATED_CONTRAST_CLEAR__HOST_PUBLIC_HUMAN_HOLD",
+  "observed_date_utc": "2026-11-20",
+  "actor_scope": "GitHub source and CI read-only evidence aggregation; not source election, merge, deployment, or acceptance",
+  "coverage": {
+    "sites": 3,
+    "exact_source_blobs_rechecked": 3,
+    "validated_same_provider_ci_runs": 3,
+    "failed_confirmed_wcag_a_aa_checks": 0,
+    "inconclusive_color_contrast_elements_across_six_viewports": 0,
+    "human_acceptance_tests": 0,
+    "independent_external_authority_roots": 0,
+    "nonpublic_or_live_host_checks_in_this_job": 0
+  },
+  "source_candidates": [
+    {
+      "site": "CoCivium",
+      "repo": "CoCivium/CoCivium",
+      "branch": "candidate/copre-cof2b-release-rail-20261118",
+      "source_file": "cosites261118-preview/cocivium-home-r1/index.html",
+      "git_blob_sha1": "ce97f53e7c28791319f7bca369c26fcac3ba7f36",
+      "source_review_state": "R1 source-only baseline; competing R12 owner election pending",
+      "source_receipt_file": "docs/CoOps/COSITES261120_A11Y_ACCESSIBILITY_CI_RECEIPT_R0.json",
+      "source_receipt_git_blob_sha1": "07984e2883c8ab1530f6d79f55322a23010aecca",
+      "ci_run_id": 44647186047,
+      "ci_run_url": "https://github.com/CoCivium/CoCivium/actions/runs/44647186047",
+      "ci_status": "success",
+      "viewports": [
+        {
+          "width": 390,
+          "confirmed_violations": 0,
+          "incomplete_rules": 0
+        },
+        {
+          "width": 1365,
+          "confirmed_violations": 0,
+          "incomplete_rules": 0
+        }
+      ],
+      "release_gate": "HOLD__CURRENT_WWW_TECHNICAL_INDEX_PRIVATE_SECURITY_REVIEW_AND_DOMAIN_OWNER"
+    },
+    {
+      "site": "InSeed",
+      "repo": "CoCivium/InSeed",
+      "branch": "candidate/inseed-contrast-stable-r0-20261120",
+      "source_file": "index.html",
+      "git_blob_sha1": "94df1e4233ff9093d5044d723ae833b4885d8c7a",
+      "source_review_state": "Isolated contrast candidate, original PR1 unchanged",
+      "source_receipt_file": "docs/qa/INSEED_CONTRAST_STABLE_CANDIDATE_RECEIPT_R0_20261120.json",
+      "source_receipt_git_blob_sha1": "51f249774d9cf806c5d4b12e9e5e84881378ad09",
+      "ci_run_id": 44649277353,
+      "ci_run_url": "https://github.com/CoCivium/InSeed/actions/runs/44649277353",
+      "ci_status": "success",
+      "viewports": [
+        {
+          "width": 390,
+          "confirmed_violations": 0,
+          "incomplete_rules": 0
+        },
+        {
+          "width": 1365,
+          "confirmed_violations": 0,
+          "incomplete_rules": 0
+        }
+      ],
+      "source_regression_tests": 16,
+      "release_gate": "HOLD__HOSTED_FIRST_USE_COMMERCIAL_SCOPE_ACCESSIBILITY_AND_PRIVACY"
+    },
+    {
+      "site": "CoPolitic",
+      "repo": "CoCivium/CoPolitic-site",
+      "branch": "candidate/copolitic-contrast-stable-r0-20261120",
+      "source_file": "index.html",
+      "git_blob_sha1": "a6ef70f8bd8413175e0bf5af334ba2c725c6acbb",
+      "source_review_state": "Isolated candidate, decorative symbol removed and machine source pointers re-bound; original PR1 unchanged",
+      "source_receipt_file": "docs/qa/COPOLITIC_CONTRAST_STABLE_CANDIDATE_RECEIPT_R0_20261120.json",
+      "source_receipt_git_blob_sha1": "a326d1c288e98ae7116fcdb36b65ba98141ee616",
+      "ci_run_id": 44650151182,
+      "ci_run_url": "https://github.com/CoCivium/CoPolitic-site/actions/runs/44650151182",
+      "ci_status": "success",
+      "viewports": [
+        {
+          "width": 390,
+          "confirmed_violations": 0,
+          "incomplete_rules": 0
+        },
+        {
+          "width": 1365,
+          "confirmed_violations": 0,
+          "incomplete_rules": 0
+        }
+      ],
+      "source_regression_tests": 24,
+      "source_browser_first_use_ci_run_id": 44650086978,
+      "release_gate": "HOLD__LIVE_DOMAIN_ROOT_AND_EXTERNAL_HUMAN_FIRST_USE"
+    }
+  ],
+  "source_fanin_validation": {
+    "exact_git_sha_of_HTML_bound_to_each_existing_source_receipt": true,
+    "all_ci_results_completed_success": true,
+    "all_scopes_source_browser_not_hosted": true,
+    "same_provider_github_ci_not_three_independent_roots": true,
+    "owner_elected_site_release": false,
+    "actual_runtime_or_local_receiver_pickup": false,
+    "human_accessibility_acceptance": false,
+    "no_production_site_mutations": true
+  },
+  "external_host_last_observation": {
+    "reference": "docs/CoOps/COSITES261119_LIVE_ROOT_PRIVACY_RECEIPT_R0.json",
+    "ci_run_id": 44627872957,
+    "date_utc": "2026-11-19",
+    "state": "PREVIOUS_OBSERVATION_NOT_RECHECKED_NOW",
+    "CoCivium": "www technical index metadata risk, apex 404; private security assessment required",
+    "InSeed": "apex reachable but first-use insufficient; www redirected without follow",
+    "CoPolitic": "apex 404, www network/TLS unqualified"
+  },
+  "next_substantial_job": "Existing authorized domain/site owners to privately resolve CoCivium technical-index exposure, independently review updated source UX with real humans and assistive technologies, then run exact hosted-preview URL+hosting log+screenshot+functional test before any publishing decision; do not create a new publisher.",
+  "CoWalkAway_X2_boundary": "Still lacks machine-origin post-reboot WorkID receiver readproof; not inferred from GitHub source QA.",
+  "nonclaims": [
+    "LOCAL_IS_NOT_LANDED",
+    "VALIDATION_IS_NOT_ACCEPTANCE",
+    "NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF",
+    "NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE",
+    "HASHING_IS_NOT_SEMANTIC_INGESTION",
+    "DISCOVERED_SET_IS_NOT_COMPLETE_HISTORY",
+    "ZERO_AUTOMATED_AXE_VIOLATIONS_IS_NOT_HUMAN_ACCESSIBILITY_ACCEPTANCE",
+    "THREE_GITHUB_REPOS_NOT_THREE_INDEPENDENT_ROOTS",
+    "NOT_HOSTED_DOMAIN_PROOF",
+    "NO_SOURCE_ELECTION_OR_RELEASE",
+    "NO_X2_ACK",
+    "NO_PHANTOM_ACK"
+  ]
+}
