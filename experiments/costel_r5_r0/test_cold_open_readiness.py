@@ -164,7 +164,7 @@ class ColdOpenTests(unittest.TestCase):
 
     def test_bad_boot_cohort_never_reports_flat_health(self):
         q = fixture()
-        q["uptime_seconds_at_observation"] = 42
+        q["uptime_seconds_at_observation"] = 9999  # outside the 300-second drift tolerance
         r = classify(q, at_utc=NOW)
         self.assertTrue(r["snapshot_fresh"])
         self.assertFalse(r["boot_timestamp_qualified"])
