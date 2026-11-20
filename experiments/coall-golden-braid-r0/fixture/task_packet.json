@@ -1,0 +1,40 @@
+{
+  "schema": "CoAllTaskPacket/R0",
+  "task_id": "COALL-317-LOCAL-SYNTHETIC-001",
+  "created_utc": "2026-10-27T00:00:00Z",
+  "source": {
+    "repository": "CoCivium/CoCivium",
+    "path": "docs/Architecture/COCIVIA_SHARED_EVOLUTION_HUB_R0_20261026.md",
+    "git_blob": "3bc1785a8381d607ae69804c587a191385d41429",
+    "issue": "https://github.com/CoCivium/CoCivium/issues/317"
+  },
+  "intent": "Verify synthetic golden-learning handoff to two local test receivers",
+  "scope": {
+    "classification": "SYNTHETIC_PUBLIC_TEST_ONLY",
+    "permission": "LOCAL_FILE_RECEIVERS_ONLY",
+    "authorized_receivers": ["alpha", "beta"],
+    "external_effects_authorized": false,
+    "revocable": true
+  },
+  "owner": "LOCAL_TEST_SUPERVISOR_NOT_A_REAL_PERSON",
+  "next_action": "Deliver to alpha and beta, recover beta once, verify by fresh reader",
+  "acceptance_criteria": [
+    "Two distinct local receiver processes write independent destination receipts",
+    "One injected failure remains pending until retry",
+    "Completed work is not duplicated on retry",
+    "A new process verifies both receivers and the journal",
+    "Revocation and tampering fail closed"
+  ],
+  "status": "SYNTHETIC_TEST_PACKET",
+  "insights": [
+    {
+      "id": "insight-1",
+      "text": "A useful learning should preserve its source and explicit uncertainty",
+      "epistemic_state": "PROPOSAL_NOT_VALIDATED",
+      "source_ref": "CoCivium/CoCivium#317",
+      "alternatives": ["Save a free-form note without automated routing"],
+      "next_test": "Measure whether the receiver can reconstruct attribution and uncertainty",
+      "privacy": "PUBLIC_SYNTHETIC"
+    }
+  ]
+}
