@@ -1,10 +1,21 @@
-name: CoCivium first-contact local-card recovery R1
+name: CoCivium first-contact local-card and gallery source R1
 on:
+  push:
+    branches:
+      - 'candidate/first-contact-gallery-pinned-r0-20261120'
+    paths:
+      - 'experiments/first-contact-safe-page-r1/proof-gallery.html'
+      - 'experiments/first-contact-safe-page-r1/proof-gallery.json'
+      - 'experiments/first-contact-safe-page-r1/test_proof_gallery_pins_r0.py'
+      - '.github/workflows/first-contact-card-restore-r1.yml'
   pull_request:
     paths:
       - 'experiments/first-contact-safe-page-r1/index.html'
       - 'experiments/first-contact-safe-page-r1/first-use.js'
       - 'experiments/first-contact-safe-page-r1/first-use-restore.test.cjs'
+      - 'experiments/first-contact-safe-page-r1/proof-gallery.html'
+      - 'experiments/first-contact-safe-page-r1/proof-gallery.json'
+      - 'experiments/first-contact-safe-page-r1/test_proof_gallery_pins_r0.py'
       - '.github/workflows/first-contact-card-restore-r1.yml'
   workflow_dispatch:
 
@@ -24,3 +35,13 @@ jobs:
           node-version: '22'
       - name: Validate local card roundtrip and no-clobber gates
         run: node --test experiments/first-contact-safe-page-r1/first-use-restore.test.cjs
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Falsify source/gallery mismatch and forged historical pins
+        run: python -B -m unittest discover -s experiments/first-contact-safe-page-r1 -p 'test_proof_gallery_pins_r0.py' -v
+
+      - name: Read exact nine public snapshot source bytes, no secrets or updates
+        run: python -B experiments/first-contact-safe-page-r1/test_proof_gallery_pins_r0.py --remote-verify
