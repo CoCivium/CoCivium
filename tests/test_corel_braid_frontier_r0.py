@@ -53,14 +53,14 @@ class Tests(unittest.TestCase):
         # Golden Braid: divergent challenges survive an unrelated held strand.
         # Only a logical read-only selection; no worker or permission is created.
         x=payload()
-        x["max_parallel"]=4
+        x["max_parallel"]=5
         x["tasks"][1]["state"]="HELD"  # independent source strand blocked
         x["tasks"].append(task("future",["seed"],domain="future",priority=3))
         x["tasks"].append(task("competing",["seed"],domain="challenge",priority=4))
         z=mod.compile_frontier(x)
         self.assertEqual(
             [t["id"] for t in z["logical_parallel_frontier"]],
-            ["challenge","media","future"],
+            ["challenge","media","future","other"],
         )
         self.assertIn(
             "TASK_HELD",
