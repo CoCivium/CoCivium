@@ -70,7 +70,7 @@ jobs:
       - name: Fetch redacted observer receipt from distinct job
         uses: actions/download-artifact@v4
         with:
-          name: cosites-live-root-observation-\${{ github.run_id }}-a\${{ github.run_attempt }}
+          name: cosites-live-root-observation-${{ github.run_id }}-a${{ github.run_attempt }}
           path: out/cosites261119-join/
 
       - name: Gate actual six-root readiness, fail closed on public index or unknowns
@@ -84,7 +84,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: cosites-frontdoor-hold-\${{ github.run_id }}-a\${{ github.run_attempt }}
+          name: cosites-frontdoor-hold-${{ github.run_id }}-a${{ github.run_attempt }}
           path: out/cosites261119-join/readiness_hold.json
           if-no-files-found: warn
           retention-days: 14
