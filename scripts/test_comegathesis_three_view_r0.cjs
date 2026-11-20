@@ -80,6 +80,21 @@ test("Federation sidecar adds valid distinct, non-promoted nodes and edges", () 
   assert.equal(delta.nodes.length, 32);
   assert.equal(delta.edges.length, 62);
 });
+test("Mutation negatives fail closed on collisions, dangling edges and missing evidence", () => {
+  const clone = x => JSON.parse(JSON.stringify(x));
+  const duplicate = clone(delta);
+  duplicate.nodes.push(clone(duplicate.nodes[0]));
+  assert.throws(() => verifyGraph(duplicate, new Set(base.nodes.map(x => x.id))), /duplicate node/);
+  const dangling = clone(delta);
+  dangling.edges[0].to = "nonexistent:epistemic:node";
+  assert.throws(() => verifyGraph(dangling, new Set(base.nodes.map(x => x.id))), /unknown to/);
+  const missingGate = clone(delta);
+  missingGate.edges[0].gate = null;
+  assert.throws(() => verifyGraph(missingGate, new Set(base.nodes.map(x => x.id))), /missing relation proof fields/);
+  const staleSource = clone(base);
+  staleSource.nodes[0].source = null;
+  assert.throws(() => verifyGraph(staleSource), /node missing source/);
+});
 test("ET horizon stays voluntary and afterlife claims remain unverified", () => {
   const myth = fs.readFileSync(path.join(root, "docs/CoTheoryAll/candidates/COMYTHOS_COSEEDUNIFY_COFED_COIGC_R0_20261120.md"), "utf8");
   for (const term of ["CoETSharedHorizon+", "CoShroud+", "DEATH_NE_REQUIRED_JOURNEY", "SHARED_HORIZON_NE_SHARED_BELIEF"]) {
