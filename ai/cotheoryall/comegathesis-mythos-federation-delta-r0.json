@@ -17,12 +17,12 @@
     "docs/Evolution/COALL_GITHUB_EVOLUTION_FABRIC_R0.md": "7e374f9a1b5db17863b977740ab21e51d03cdf8"
   },
   "totals": {
-    "new_nodes": 25,
-    "new_edges": 43,
+    "new_nodes": 32,
+    "new_edges": 62,
     "base_nodes": 32,
     "base_edges": 48,
-    "combined_if_applied_nodes": 57,
-    "combined_if_applied_edges": 91
+    "combined_if_applied_nodes": 64,
+    "combined_if_applied_edges": 110
   },
   "nodes": [
     {
@@ -198,6 +198,55 @@
       "label": "Nonhuman-interest trustee",
       "kind": "proposed_role",
       "epistemic": "not_direct_consent_or_entitlement",
+      "source": "docs/CoTheoryAll/candidates/COMYTHOS_COSEEDUNIFY_COFED_COIGC_R0_20261120.md"
+    },
+    {
+      "id": "etshared",
+      "label": "CoETSharedHorizon+",
+      "kind": "inclusion_story_horizon",
+      "epistemic": "OPTIONAL_ET_SCENARIO_NOT_EVIDENCE",
+      "source": "docs/CoTheoryAll/candidates/COMYTHOS_COSEEDUNIFY_COFED_COIGC_R0_20261120.md"
+    },
+    {
+      "id": "invitehome",
+      "label": "CoInvitationHome+",
+      "kind": "mythic_noncoercive_welcome",
+      "epistemic": "MYTHIC_CANDIDATE",
+      "source": "docs/CoTheoryAll/candidates/COMYTHOS_COSEEDUNIFY_COFED_COIGC_R0_20261120.md"
+    },
+    {
+      "id": "shroud",
+      "label": "CoShroud+",
+      "kind": "epistemic_limit_metaphor",
+      "epistemic": "UNRESOLVED_PROPOSED_METAPHOR",
+      "source": "docs/CoTheoryAll/candidates/COMYTHOS_COSEEDUNIFY_COFED_COIGC_R0_20261120.md"
+    },
+    {
+      "id": "earthhome",
+      "label": "CoEarthHome+",
+      "kind": "earth_ecology",
+      "epistemic": "OBSERVED_PHYSICAL_HOME_AND_CIVIC_VALUE",
+      "source": "docs/CoTheoryAll/candidates/COMYTHOS_COSEEDUNIFY_COFED_COIGC_R0_20261120.md"
+    },
+    {
+      "id": "beyondhome",
+      "label": "CoBeyondHome+",
+      "kind": "post_life_metaphysical_home",
+      "epistemic": "UNVERIFIED_SPIRITUAL_HYPOTHESIS",
+      "source": "docs/CoTheoryAll/candidates/COMYTHOS_COSEEDUNIFY_COFED_COIGC_R0_20261120.md"
+    },
+    {
+      "id": "epistemic",
+      "label": "Limits of perception and memory",
+      "kind": "philosophy_of_knowledge",
+      "epistemic": "OBSERVABLE_LIMITS_NOT_MAGIC_VEIL",
+      "source": "docs/CoTheoryAll/candidates/COMYTHOS_COSEEDUNIFY_COFED_COIGC_R0_20261120.md"
+    },
+    {
+      "id": "contactgate",
+      "label": "Real first-contact response gate",
+      "kind": "conditional_governance",
+      "epistemic": "REQUIRES_INDEPENDENT_ET_PROOF_AND_LEGITIMATE_AUTHORITY",
       "source": "docs/CoTheoryAll/candidates/COMYTHOS_COSEEDUNIFY_COFED_COIGC_R0_20261120.md"
     }
   ],
@@ -502,6 +551,139 @@
       "to": "cofed",
       "source": "docs/CoTheoryAll/candidates/COMYTHOS_COSEEDUNIFY_COFED_COIGC_R0_20261120.md",
       "gate": "no forced sameness"
+    },
+    {
+      "from": "etshared",
+      "type": "MAY_MOTIVATE_OPTIONALLY",
+      "to": "seedunify",
+      "source": "docs/CoTheoryAll/candidates/COMYTHOS_COSEEDUNIFY_COFED_COIGC_R0_20261120.md",
+      "gate": "nonbeliever has equal access"
+    },
+    {
+      "from": "etshared",
+      "type": "DOES_NOT_ESTABLISH",
+      "to": "et",
+      "source": "docs/CoTheoryAll/candidates/COMYTHOS_COSEEDUNIFY_COFED_COIGC_R0_20261120.md",
+      "gate": "ET existence and arrival unproven"
+    },
+    {
+      "from": "etshared",
+      "type": "MUST_INCLUDE_VOLUNTARILY",
+      "to": "localpolities",
+      "source": "docs/CoTheoryAll/candidates/COMYTHOS_COSEEDUNIFY_COFED_COIGC_R0_20261120.md",
+      "gate": "subgroups can refuse"
+    },
+    {
+      "from": "etshared",
+      "type": "CONCEPTUALLY_DISTINCT_FROM",
+      "to": "firstcontact",
+      "source": "docs/CoTheoryAll/candidates/COMYTHOS_COSEEDUNIFY_COFED_COIGC_R0_20261120.md",
+      "gate": "no real message or detection"
+    },
+    {
+      "from": "invitehome",
+      "type": "MYTHIC_STORY_OF",
+      "to": "comythos",
+      "source": "docs/CoTheoryAll/candidates/COMYTHOS_COSEEDUNIFY_COFED_COIGC_R0_20261120.md",
+      "gate": "narrative not fact"
+    },
+    {
+      "from": "invitehome",
+      "type": "PRIORITIZES_PRESENT_CARE_OF",
+      "to": "earthhome",
+      "source": "docs/CoTheoryAll/candidates/COMYTHOS_COSEEDUNIFY_COFED_COIGC_R0_20261120.md",
+      "gate": "earthly care over fictional travel"
+    },
+    {
+      "from": "invitehome",
+      "type": "REQUIRES",
+      "to": "refusal",
+      "source": "docs/CoTheoryAll/candidates/COMYTHOS_COSEEDUNIFY_COFED_COIGC_R0_20261120.md",
+      "gate": "invitation not coercion"
+    },
+    {
+      "from": "invitehome",
+      "type": "MAY_SYMBOLIZE",
+      "to": "beyondhome",
+      "source": "docs/CoTheoryAll/candidates/COMYTHOS_COSEEDUNIFY_COFED_COIGC_R0_20261120.md",
+      "gate": "optional theology not promised afterlife"
+    },
+    {
+      "from": "shroud",
+      "type": "METAPHOR_FOR",
+      "to": "epistemic",
+      "source": "docs/CoTheoryAll/candidates/COMYTHOS_COSEEDUNIFY_COFED_COIGC_R0_20261120.md",
+      "gate": "no physical veil claimed"
+    },
+    {
+      "from": "shroud",
+      "type": "DOES_NOT_PROVE",
+      "to": "beyondhome",
+      "source": "docs/CoTheoryAll/candidates/COMYTHOS_COSEEDUNIFY_COFED_COIGC_R0_20261120.md",
+      "gate": "life-after-death unverified"
+    },
+    {
+      "from": "earthhome",
+      "type": "SUPPORTS",
+      "to": "earth",
+      "source": "docs/CoTheoryAll/candidates/COMYTHOS_COSEEDUNIFY_COFED_COIGC_R0_20261120.md",
+      "gate": "actual terrestrial cooperation"
+    },
+    {
+      "from": "earthhome",
+      "type": "SHARES_HABITAT_WITH",
+      "to": "ecobiosphere",
+      "source": "docs/CoTheoryAll/candidates/COMYTHOS_COSEEDUNIFY_COFED_COIGC_R0_20261120.md",
+      "gate": "ecological stewardship"
+    },
+    {
+      "from": "beyondhome",
+      "type": "NOT_CONFIRMED_BY",
+      "to": "et",
+      "source": "docs/CoTheoryAll/candidates/COMYTHOS_COSEEDUNIFY_COFED_COIGC_R0_20261120.md",
+      "gate": "ET contact would not imply post-life destination"
+    },
+    {
+      "from": "beyondhome",
+      "type": "ALTERNATIVE_WORLDVIEW_WITHIN",
+      "to": "cosacred",
+      "source": "docs/CoTheoryAll/candidates/COMYTHOS_COSEEDUNIFY_COFED_COIGC_R0_20261120.md",
+      "gate": "not mandatory belief"
+    },
+    {
+      "from": "contactgate",
+      "type": "REQUIRES_VERIFIED_PRECONDITION",
+      "to": "firstcontact",
+      "source": "docs/CoTheoryAll/candidates/COMYTHOS_COSEEDUNIFY_COFED_COIGC_R0_20261120.md",
+      "gate": "legitimate international consultation"
+    },
+    {
+      "from": "contactgate",
+      "type": "REQUIRES_AUTHORITY_BOUNDARY",
+      "to": "guardian",
+      "source": "docs/CoTheoryAll/candidates/COMYTHOS_COSEEDUNIFY_COFED_COIGC_R0_20261120.md",
+      "gate": "no unilateral reply"
+    },
+    {
+      "from": "silent",
+      "type": "STILL_COMPATIBLE_WITH",
+      "to": "earthhome",
+      "source": "docs/CoTheoryAll/candidates/COMYTHOS_COSEEDUNIFY_COFED_COIGC_R0_20261120.md",
+      "gate": "no-contact scenario still valuable"
+    },
+    {
+      "from": "etreplica",
+      "type": "CAN_SUPPORT_FICTION_ONLY_FOR",
+      "to": "invitehome",
+      "source": "docs/CoTheoryAll/candidates/COMYTHOS_COSEEDUNIFY_COFED_COIGC_R0_20261120.md",
+      "gate": "simulated ET not endorsement"
+    },
+    {
+      "from": "invitehome",
+      "type": "MUST_NOT_CONFER_SEAT_IN",
+      "to": "igc",
+      "source": "docs/CoTheoryAll/candidates/COMYTHOS_COSEEDUNIFY_COFED_COIGC_R0_20261120.md",
+      "gate": "no existing council or mandate"
     }
   ],
   "challenger_tasks": [
@@ -509,10 +691,13 @@
     "Check CoSeedUnifiy/CoSeedUnify alias lineage and whether CoStax is a distinct concept",
     "Challenge common planetary identity against subgroup distinctiveness and coercion",
     "Assess ecological and nonhuman-interest representation without fictional consent",
-    "Build no public outreach or ET transmission from this draft"
+    "Build no public outreach or ET transmission from this draft",
+    "Check that ET is an optional shared horizon and never a loyalty or belief test",
+    "Check death/return-home language is never a claim that death is desirable or necessary",
+    "Check unknown ET motives and alleged abduction reports are never treated as established extraterrestrial facts"
   ],
   "acceptance": {
-    "github_source_readback": "PENDING_VERIFICATION",
+    "github_source_readback": "PENDING_THIS_UPDATE",
     "integrated_into_base_graph": "NO",
     "receiver_ack": "UNVERIFIED",
     "human_usefulness": "NOT_TESTED",
@@ -528,6 +713,10 @@
     "CMA_IS_NOT_AUTHORITY",
     "PUBLIC_SOURCE_IS_NOT_CANON",
     "NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF",
-    "DISCOVERED_SET_IS_NOT_COMPLETE_HISTORY"
+    "DISCOVERED_SET_IS_NOT_COMPLETE_HISTORY",
+    "ET_HORIZON_NOT_ET_ARRIVAL",
+    "SHROUD_METAPHOR_NOT_PROVEN_VEIL",
+    "BEYOND_HOME_NOT_VERIFIED_AFTERLIFE",
+    "UNITE_BY_CHOICE_NOT_BY_COERCION"
   ]
 }
