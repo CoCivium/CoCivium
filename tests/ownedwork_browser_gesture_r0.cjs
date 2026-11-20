@@ -83,6 +83,31 @@ async function prepare(page) {
     const after = await page.evaluate(key => JSON.parse(window.localStorage.getItem(key)), storageKey);
     assert.deepEqual(after, row, 'duplicate must not mutate a preserved work object');
 
+    // A fresh browser context has no cross-session CoNod/WorkID pickup.
+    // An explicit synthetic record copy can restore a local view, but
+    // still cannot claim receiver acceptance or create another effect.
+    const isolatedContext = await browser.newContext();
+    const isolated = await isolatedContext.newPage();
+    await isolated.goto(address, { waitUntil:'load' });
+    assert.equal(await isolated.evaluate(key => window.localStorage.getItem(key), storageKey),
+                 null, 'new context must not inherit a WorkID or ACK');
+    await isolated.locator('#workRecover').click();
+    assert.equal((await isolated.locator('#workState').innerText()).trim(), 'EMPTY');
+    await isolated.evaluate(({key, json}) => window.localStorage.setItem(key, json),
+                            {key:storageKey, json:JSON.stringify(row)});
+    await isolated.reload({waitUntil:'load'});
+    await isolated.locator('#workRecover').click();
+    assert.equal((await isolated.locator('#workState').innerText()).trim(),
+                 'RECOVERED_BROWSER_LOCAL');
+    const explicitCopy = await isolated.evaluate(key =>
+      JSON.parse(window.localStorage.getItem(key)), storageKey);
+    assert.deepEqual(explicitCopy, row,
+                     'explicit transferred bytes must preserve exact WorkID content');
+    assert.equal(explicitCopy.receiver_ack, false,
+                 'copying session state is not independently authorized pickup');
+    assert.equal(explicitCopy.source_verified_by_browser, false);
+    await isolatedContext.close();
+
     // A second, disjoint browser context exercises explicit local revocation.
     // Its revoked record is deliberately NOT used as a receiver input.
     const negativeContext = await browser.newContext();
