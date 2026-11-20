@@ -49,16 +49,29 @@ def delta_map(payload):
     return out
 
 def index_bindings(bindings):
+    # Reject conflicting receiver identities, never elect last-wins by input
+    # order. This is fail-closed candidate preparation, not origin authority.
     repo = {}
     for b in bindings.get("repository_receivers", []) or []:
-        if not isinstance(b, dict) or not b.get("receiver_repo"):
+        if not isinstance(b, dict) or not isinstance(b.get("receiver_repo"), str) or not b["receiver_repo"]:
             continue
-        repo[b["receiver_repo"]] = b
+        receiver = b["receiver_repo"]
+        if receiver in repo:
+            raise ValueError("DUPLICATE_REPOSITORY_RECEIVER_BINDING_HOLD:" + receiver)
+        repo[receiver] = b
     sessions = {}
+    seen_instances = set()
     for b in bindings.get("session_receivers", []) or []:
-        if not isinstance(b, dict) or not b.get("profile_id") or not b.get("instance_id"):
+        if not isinstance(b, dict):
             continue
-        sessions.setdefault(b["profile_id"], []).append(b)
+        profile, instance = b.get("profile_id"), b.get("instance_id")
+        if not isinstance(profile, str) or not profile or not isinstance(instance, str) or not instance:
+            continue
+        key = (profile, instance)
+        if key in seen_instances:
+            raise ValueError("DUPLICATE_SESSION_INSTANCE_BINDING_HOLD:" + profile)
+        seen_instances.add(key)
+        sessions.setdefault(profile, []).append(b)
     for p in sessions:
         sessions[p] = sorted(sessions[p], key=lambda x: x["instance_id"])
     return repo, sessions
@@ -81,6 +94,12 @@ def compile_packets(plan, coevo_payload, bindings):
         delta = deltas.get(did)
         binding = repo_bindings.get(receiver)
         reasons = []
+        # A held/unknown route cannot be cleared by deleting its mutable
+        # holds list. Do not treat a CANDIDATE label as issuer authority.
+        if route.get("route_state") not in (
+                "CANDIDATE_ROUTE_CURRENTNESS_BOUND",
+                "CANDIDATE_ROUTE_REQUIRES_TARGET_CURRENTNESS"):
+            reasons.append("ROUTE_STATE_NOT_CANDIDATE_HOLD")
         if delta is None:
             reasons.append("SOURCE_DELTA_MISSING")
         if did in source_bad:

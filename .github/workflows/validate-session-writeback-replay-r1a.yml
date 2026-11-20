@@ -11,6 +11,14 @@ on:
       - 'docs/Operations/fixtures/cosession-to-coevo-r0-input.json'
       - 'docs/Operations/fixtures/cosession-relational-fanin-r0-input.json'
       - 'ai/currentness/session-writeback-r1.json'
+      - 'scripts/CoOomphFanInSaturationR0.py'
+      - 'tests/test_cooomph_fanin_saturation_r0.py'
+      - 'scripts/CoSessionTypedReceiptPreflightR0.py'
+      - 'tests/test_cosession_typed_receipt_preflight_r0.py'
+      - 'scripts/CoSessionReceiptIngressShadowR0.py'
+      - 'tests/test_cosession_receipt_ingress_shadow_r0.py'
+      - 'tests/copre93_packet_native_negative_controls_r0.py'
+      - 'docs/Architecture/COSPEEDO_EXPONENTIAL_PROOF_AND_RECURRENCE_INTERNALIZATION_R0_20261026.md'
       - '.github/workflows/validate-session-writeback-replay-r1a.yml'
 
 permissions:
@@ -24,6 +32,56 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+
+      - name: Typed source/receipt candidate preflight, all external gates held
+        shell: bash
+        run: python -B -m unittest discover -s tests -p 'test_cosession_typed_receipt_preflight_r0.py' -v
+
+      - name: Source-role and effect-identity shadow ingress acceptance holds
+        shell: bash
+        run: python -B -m unittest discover -s tests -p 'test_cosession_receipt_ingress_shadow_r0.py' -v
+
+      - name: Bounded CoOomph existing fan-in scaling canary
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B -m unittest discover -s tests -p 'test_cooomph_fanin_saturation_r0.py' -v
+          python -B scripts/CoOomphFanInSaturationR0.py > "$RUNNER_TEMP/cooomph-fanin.json"
+          python - "$RUNNER_TEMP/cooomph-fanin.json" <<'PY'
+          import json,sys
+          report=json.load(open(sys.argv[1],encoding='utf8'))
+          assert report['state']=='SYNTHETIC_COMPILER_COUNTS_AND_RUNNER_TIME_ONLY'
+          assert report['real_workers_started']==0 and report['real_effects']==0
+          assert report['external_receiver_ack'] is False
+          rows={(x['logical_proposals'],x['mode']):x for x in report['rows']}
+          assert len(rows)==20
+          assert rows[(18,'echo')]['unique_operation_candidates']==1
+          assert rows[(18,'diverse')]['unique_operation_candidates']==18
+          assert rows[(256,'pool32')]['unique_operation_candidates']==32
+          assert rows[(256,'collision4')]['collision_review_groups']==1
+          assert rows[(256,'private')]['eligible_unique_review_candidates']==0
+          print('PASS_COOOMPH_FANIN_SATURATION__SYNTHETIC_ONLY')
+          PY
+
+      - name: Packet native negative controls (STRICT review candidate)
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B tests/copre93_packet_native_negative_controls_r0.py \
+            --target scripts/CoEvoReceiverPacketCompiler.py \
+            --expected-git-blob 5a70fe94784442b627ec0fa9f118cacd4409925b \
+            --strict > "$RUNNER_TEMP/packet-native-negative.json"
+          cat "$RUNNER_TEMP/packet-native-negative.json"
+          python - "$RUNNER_TEMP/packet-native-negative.json" <<'PY'
+          import json, sys
+          with open(sys.argv[1], encoding="utf-8") as stream:
+              result=json.load(stream)
+          assert result["mode"]=="STRICT"
+          assert result["contracts_passed"]==5 and result["contracts_failed"]==0, result
+          assert result["state"]=="CONTRACT_PASS_REVIEW_ONLY"
+          assert all(v==0 for v in result["effects"].values())
+          print("PASS_PACKET_NEGATIVE_CONTROLS__REVIEW_ONLY__NO_RECEIVER_ACK")
+          PY
 
       - name: Replay current-main session write-back fixtures
         shell: bash
