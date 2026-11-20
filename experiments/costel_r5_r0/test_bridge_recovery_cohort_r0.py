@@ -206,5 +206,78 @@ class BridgeRecoveryCohortTests(unittest.TestCase):
         self.assertFalse(r["local_host_observed"])
 
 
+    def test_missing_local_receipt_cannot_echo_zero_task_result_as_qualified(self):
+        x = fixture()
+        x["local_observation"] = {"kind": "NONE", "read_only": True}
+        r = self.report(x)
+        self.assertFalse(r["local_host_observed"])
+        self.assertFalse(r["task_registration_reported"])
+        self.assertFalse(r["task_last_result_zero_reported"])
+        self.assertEqual(r["host_power_state"], "NOT_ATTESTED")
+        self.assertEqual(r["postboot_task_state"], "HOLD_LOCAL_BOOT_COHORT_UNQUALIFIED")
+
+    def test_stale_local_receipt_cannot_emit_green_zero_exit(self):
+        r = self.report(now=NOW + timedelta(hours=3))
+        self.assertFalse(r["local_host_observed"])
+        self.assertFalse(r["task_last_result_zero_reported"])
+        self.assertEqual(r["host_liveness_scope"], "NO_QUALIFIED_CURRENT_LOCAL_SOURCE")
+        self.assertEqual(r["desktop_commander_adapter"], "STALE_UNQUALIFIED")
+
+    def test_invalid_boot_cohort_cannot_emit_green_zero_exit(self):
+        x = fixture()
+        x["boot_time_utc"] = (OBSERVED + timedelta(minutes=1)).isoformat()
+        r = self.report(x)
+        self.assertFalse(r["task_last_result_zero_reported"])
+        self.assertEqual(r["host_power_state"], "NOT_ATTESTED")
+
+    def test_task_unregistered_zero_exit_is_unqualified(self):
+        x = fixture()
+        x["task"]["registered"] = False
+        r = self.report(x)
+        self.assertFalse(r["task_last_result_zero_reported"])
+        self.assertEqual(r["postboot_task_state"], "HOLD_TASK_OWNER_OR_SOURCE_NOT_BOUND")
+
+    def test_runner_pin_mismatch_zero_exit_is_unqualified(self):
+        x = fixture()
+        x["task"]["runner_matches_pin"] = False
+        r = self.report(x)
+        self.assertFalse(r["task_last_result_zero_reported"])
+        self.assertEqual(r["postboot_task_state"], "HOLD_TASK_OWNER_OR_SOURCE_NOT_BOUND")
+
+    def test_remote_online_when_local_unavailable_never_proves_host(self):
+        x = fixture()
+        x["local_observation"] = {"kind": "NONE", "read_only": True}
+        x["routes"][0]["state"] = "ONLINE"
+        r = self.report(x)
+        self.assertEqual(r["desktop_commander_adapter"], "ONLINE")
+        self.assertFalse(r["local_host_observed"])
+        self.assertFalse(r["task_last_result_zero_reported"])
+        self.assertEqual(r["host_power_state"], "NOT_ATTESTED")
+        self.assertEqual(r["state"], "HOLD_AUTONOMOUS_WALKAWAY_NOT_PROVEN")
+
+    def test_qualified_snapshot_is_historical_not_host_power_attestation(self):
+        r = self.report()
+        self.assertTrue(r["local_host_observed"])
+        self.assertTrue(r["task_last_result_zero_reported"])
+        self.assertEqual(r["host_power_state"], "NOT_ATTESTED")
+        self.assertEqual(r["host_liveness_scope"], "FRESH_LOCAL_SOURCE_SNAPSHOT_ONLY")
+        self.assertFalse(r["remote_observer_is_host_actuator"])
+        self.assertFalse(r["connector_failure_authorizes_host_restart"])
+        self.assertEqual(sum(r["effects"].values()), 0)
+
+    def test_spoofed_host_alive_and_permission_cannot_restart_on_bridge_loss(self):
+        x = fixture()
+        x["local_observation"] = {"kind": "NONE", "read_only": True}
+        x["x2_power_state"] = "OFFLINE"
+        x["restart_all_services"] = True
+        x["task"]["authorized_by_provider"] = True
+        r = self.report(x)
+        self.assertEqual(r["host_power_state"], "NOT_ATTESTED")
+        self.assertFalse(r["connector_failure_authorizes_host_restart"])
+        self.assertFalse(r["task_last_result_zero_reported"])
+        self.assertEqual(sum(r["effects"].values()), 0)
+        self.assertNotIn("restart_all_services", json.dumps(r))
+
+
 if __name__ == "__main__":
     unittest.main()
