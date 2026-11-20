@@ -5,6 +5,13 @@
  */
 const owned=require('../examples/conodcothumb/context_rail_r1/CoOwnedWorkR0.js');
 const SCHEMA='CoAll.CoNod.CoPre.RebindPreview.R0';
+const COPRE93_LEGACY_R0="' CoPre9.3+|CoGo+|Recover>Restart|State>Chat|Outcome>Session|Names!=Roles|JobsRecruitWorkers|Priory+Deps+Risk|Capability!=Authority|NSubstantialJobs|AdaptiveCheckpoints|MaxSafeParallel|1Job=1Receipt|1Actuator/Scope|FanIn=1|AutoNext+ReplaySafe|WorkSteal+Recover|BreakGlass!=Routine|CoGuardian:Gates|LocalFirst|Sites:3->40|Pub=URL+log+shot+test|3ind/HOLD|Rick=0Routine|NoPhantomACK";
+// This is one exact compatibility spelling, not dynamic authority or latest-source proof.
+function isNodIntent(token){
+  if(typeof token!=='string')return false;
+  const text=token.trim();
+  return text==="'" || text===COPRE93_LEGACY_R0;
+}
 const KEYS=new Set(['token','origin','presence','scope','effect',
                     'pressure','work_id','source_hint']);
 const ORIGINS=new Set(['EXPLICIT_KEYBOARD','EXPLICIT_UI_GLYPH']);
@@ -23,7 +30,7 @@ function preview(request,storage){
   if(!request||typeof request!=='object'||Array.isArray(request)||
      Object.keys(request).some(k=>!KEYS.has(k)))
     return base('HOLD_INVALID_REQUEST','Malformed or augmented CoNod input');
-  if(request.token!=="'")
+  if(!isNodIntent(request.token))
     return base('HOLD_NOT_NOD','No explicit CoNod token');
   if(!ORIGINS.has(request.origin)||request.presence!=='PRESENT')
     return base('HOLD_NOT_EXPLICIT','No ambient, wear, voice or absent-user trigger');
