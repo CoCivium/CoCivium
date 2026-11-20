@@ -39,7 +39,7 @@ async function main() {
     observed_utc:new Date().toISOString(),
     scan_tags:TAGS, viewports:[],
     bounds:{chrome_headless:true, browser_http_requests_permitted:0, public_site_mutations:0,
-      no_raw_page_html_export:true, no_dom_node_text_or_selector_export:true,
+      no_raw_page_html_export:true, no_dom_node_text_or_full_selector_export:true,css_class_and_tag_hints_for_color_contrast_only:true,
       no_credentials_or_storage_access:true, synthetic_not_user_acceptance:true},
     nonclaims:["AUTOMATED_A11Y_SCAN_IS_NOT_HUMAN_ACCEPTANCE","CANDIDATE_NE_PUBLIC_SITE",
       "SINGLE_CI_PROVIDER_NE_3IND","NO_PUBLIC_DEPLOYMENT","NO_COEX","NO_PHANTOM_ACK"]
@@ -76,11 +76,20 @@ async function main() {
         const summary=result.violations.map(x=>({id:x.id,impact:x.impact||"unknown",
           affected_node_count:x.nodes.length, tags:x.tags.filter(t=>TAGS.includes(t)).sort()}));
         violations += summary.length;
-        // Rule IDs only: no HTML, node selectors, messages, markup, or target text.
+        // Diagnostic hints are limited to public CSS class tokens and HTML tag.
+        // Never emit full selectors, node IDs, DOM text/HTML, target URLs or message strings.
+        const hint = node => {
+          const tag = /^<([a-z][a-z0-9-]{0,20})[\\s>]/i.exec(node.html||"")?.[1]||"unknown";
+          const target = Array.isArray(node.target) && typeof node.target[0]==="string" ? node.target[0] : "";
+          const classes = Array.from(target.matchAll(/\\.([a-z][a-z0-9_-]{0,35})(?=[^a-z0-9_-]|$)/gi),
+            m=>m[1]).slice(-4);
+          return {tag:tag.toLowerCase(),css_class_tokens:classes};
+        };
         const incompleteRules = result.incomplete.map(x => ({
           id: /^[a-z0-9_-]{1,80}$/.test(x.id) ? x.id : "UNRECOGNIZED_RULE_ID",
           impact: ["minor","moderate","serious","critical"].includes(x.impact) ? x.impact : "unknown",
-          affected_node_count: x.nodes.length
+          affected_node_count: x.nodes.length,
+          diagnostic_hints: x.id === "color-contrast" ? x.nodes.slice(0,16).map(hint) : []
         })).sort((a,b)=>a.id.localeCompare(b.id));
         report.viewports.push({viewport:viewport.id,width:viewport.width,height:viewport.height,
           violations:summary, rule_violation_count:summary.length,
