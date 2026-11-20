@@ -24,7 +24,9 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Run synthetic capsule cold replay and fail-closed tests
+      - name: Run completed synthetic WorkID capsule replay and tamper tests
         run: python -B examples/colocalworkid/test_portable_replay_r0.py -v
+      - name: Recover unfinished synthetic WorkID across fresh processes with fencing
+        run: python -B examples/colocalworkid/test_interrupted_cold_resume_r1.py -v
       - name: Verify hard-exit worker recovery and single-writer fencing
         run: python -B examples/colocalworkid/test_worker_recovery_r0.py -v
