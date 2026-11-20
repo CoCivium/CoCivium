@@ -1,0 +1,62 @@
+{
+  "schema": "CoCivium.CoNod.RebindIntent.R0",
+  "work_id": "CoNod.CoPre93.ShortAlias.Rebind.20261120.R0",
+  "state": "CANDIDATE_SOURCE_ONLY_NOT_GOVERNING",
+  "goal": "A bare apostrophe requests context-qualified CoPre rebind and a safe next deed without copying a long prompt or granting authority.",
+  "alias": "'",
+  "explicit_alias": "CoNod",
+  "syntax": "Only the entire, deliberately submitted message is a trigger. Never treat an apostrophe embedded in prose, code, a private field or a provider transcript as a trigger. Longer explicit user text retains its meaning.",
+  "user_rail_label": "CoPre9.3+ (user-proposed in current conversation; not a certified source version)",
+  "public_source_roots": [
+    {
+      "path": "CoPre.md",
+      "git_blob_sha1": "7a1d9c2eada9432115a423bcb621793f474a4d28"
+    },
+    {
+      "path": "SESSION_BOOTSTRAP.md",
+      "git_blob_sha1": "8d717e9ca14ef8c92bc102da63aaadaece8afbeb"
+    },
+    {
+      "path": "examples/conodcothumb/CoNodCoThumbPolicyR0.mjs",
+      "git_blob_sha1": "5651f1d0dfad829c401f038ae021a555a919319e"
+    },
+    {
+      "path": "ai/session-bootstrap.json",
+      "git_blob_sha1": "aa2b8163a773e570f2249066e7ccc8e899e103ff"
+    }
+  ],
+  "resolution": {
+    "max_source_age_seconds_for_readiness": 86400,
+    "source_verification": "Actual receiver must fetch and compare exact Git blobs; a manifest claim is not fetch or independent pickup proof",
+    "conflict": "HOLD_ON_SOURCE_MISMATCH_OR_AMBIGUOUS_SUPERSESSION",
+    "fallback": "When offline, last-qualified cached source permits read-only orientation only; consequential effects HOLD until source and authority requalification",
+    "role_relative": true,
+    "one_work_id": true,
+    "no_newest_wins": true,
+    "dont_ingest_everything": true
+  },
+  "safe_rebind_sequence": [
+    "RECEIVE_EXACT_USER_INVOCATION",
+    "BIND_ACTUAL_ROLE_AND_WORKID",
+    "RETRIEVE_AND_VERIFY_RELEVANT_PINNED_PUBLIC_SOURCE",
+    "CHECK_PRIVATE_RIGHTS_AND_CURRENTNESS_SEPARATELY",
+    "RECONCILE_PRIORS_AND_SUPERSESSION",
+    "ELECT_ONE_SAFE_BOUNDED_DEED_OR_QUIESCE",
+    "ONE_JOB_ONE_SOURCE_LINKED_RECEIPT",
+    "RECEIVER_READBACK_SEPARATELY_OR_HOLD"
+  ],
+  "default_authority": "NONE_FROM_ALIAS",
+  "effect_gate": "CAPABILITY_NE_AUTHORITY__NO_CROSS_SESSION_COMMAND__NO_PUBLIC_OR_IRREVERSIBLE_EFFECT_BY_ALIAS",
+  "quiescence": "NO_MATERIAL_DELTA_THEN_SLEEP_WITH_WAKE_PREDICATE",
+  "nonclaims": [
+    "ALIAS_NE_EXECUTION",
+    "ALIAS_NE_AUTO_PERMISSION",
+    "LATEST_NE_UNPINNED_MAIN",
+    "ONE_PROVIDER_READ_NE_INDEPENDENT_RECEIVER_ACK",
+    "GITHUB_SOURCE_NE_COVault_OR_COEX",
+    "NOT_NATIVE_MOUSE_OR_KEYBOARD_BINDING",
+    "NOT_AUTO_WORKER_SCHEDULER",
+    "NOT_PUBLIC_RELEASE",
+    "NO_CANON_OR_RUNTIME_INFERENCE"
+  ]
+}
