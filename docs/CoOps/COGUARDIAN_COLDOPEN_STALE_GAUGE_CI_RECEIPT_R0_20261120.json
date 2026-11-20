@@ -1,0 +1,86 @@
+{
+  "schema": "CoCivium.CoGuardian.CoStel.ColdOpenFlatGaugeFreshness.CIReceipt.R0",
+  "work_id": "CoGuardian:CoStel:ColdOpenFlatGaugeFreshness:20261120:R0",
+  "state": "SOURCE_TESTED_CI_SUCCESS__X2_GAUGE_CONSUMER_HOLD",
+  "observed_date_utc": "2026-11-20",
+  "relationship": {
+    "existing_supervision_owner": "https://github.com/CoCivium/CoSteward/issues/40",
+    "existing_x2_ux_incident": "https://github.com/CoCivium/CoShareHub/issues/56",
+    "paired_bridge_receipt": "docs/CoOps/COGUARDIAN_X2_OBSERVER_HOST_SPLIT_CI_RECEIPT_R0_20261120.json",
+    "reused_fixture": "CoStel R5 synthetic supervisor contract",
+    "new_watcher_count": 0,
+    "no_device_authority_change": true
+  },
+  "defect_and_fix": {
+    "defect": "Flat status outputs reported audio services, mouse utility, CoAll surface, model or display as present/running even when the input inventory had expired or its boot cohort was not qualified. Inverse proof tree was already freshness-aware, but flat gauge outputs were not.",
+    "resolution": "Use one qualified_snapshot=fresh AND uptime_qualified gate for flat status fields as well as inverse source evidence, preserving narrow observed labels only for source-currentness qualified snapshots.",
+    "source_path": "experiments/costel_r5_r0/cold_open_readiness.py",
+    "source_git_blob_sha1": "7a764e7e6e0c2142c3cbe046784708fa593c895c",
+    "test_path": "experiments/costel_r5_r0/test_cold_open_readiness.py",
+    "test_git_blob_sha1": "3d8d6592f6bd5246b51c3deef794ea03a5ff7a25",
+    "added_negative_controls": 5,
+    "affected_flat_fields": [
+      "audio_services",
+      "mouse_software",
+      "local_model",
+      "coall_surface",
+      "display_driver_mode"
+    ],
+    "unqualified_nonabsent_value": "STALE_OR_UNQUALIFIED_SNAPSHOT",
+    "meaningful_ux_claim": "HOLD_USABLE_DESKTOP_UNPROVEN"
+  },
+  "validation": {
+    "CI_provider": "GitHub Actions",
+    "workflow": "CoStel R5 synthetic supervisor contract",
+    "final_run_id": 44652186979,
+    "final_run_url": "https://github.com/CoCivium/CoCivium/actions/runs/44652186979",
+    "final_source_commit": "909743c7a8a04efc15b86fa3cf230343e98dcb81",
+    "final_conclusion": "success",
+    "python_3_11_regular": "214_PASS",
+    "python_3_11_optimized": "214_PASS",
+    "python_3_13_regular": "214_PASS",
+    "python_3_13_optimized": "214_PASS",
+    "jobs": [
+      "fail-closed-supervisor (3.11)",
+      "fail-closed-supervisor (3.13)",
+      "windows-startup-readonly",
+      "handoff-producer",
+      "handoff-receiver"
+    ],
+    "CI_source_artifact_sha256": "59b021d8d9767926d5231f5b90565875d7ee6f5bc55e31c3281627a4355af1bd",
+    "CI_receiver_artifact_sha256": "41ffaeb1a18fd02b84472417c7cb9f810fd1c6877ad03079cf7bd9f33075f598",
+    "intermediate_failed_run": {
+      "id": 44652112707,
+      "outcome": "FAILED_EXPECTED_AUDIT_PRESERVED",
+      "cause": "A negative test supplied 258s simulated uptime discrepancy inside the pre-existing 300s tolerance, so the expected failure condition was not met",
+      "fix": "Fixture changed to 9999s discrepancy, outside tolerance; no production threshold was modified",
+      "final_test_readback": "PASS_214_PER_MODE"
+    },
+    "independent_witnesses": 1,
+    "scope": "Synthetic public-source CI and ephemeral Windows runner, not real X2"
+  },
+  "effect_boundary": {
+    "X2_process_restarts": 0,
+    "X2_registry_and_startup_changes": 0,
+    "X2_task_mutations": 0,
+    "new_native_receivers": 0,
+    "live_CoBar_projection_updates": 0,
+    "public_release_changes": 0,
+    "receiver_ack": "NONE_X2"
+  },
+  "next_highest_value_deed": "Once existing authenticated X2 or CoStead receiver requalifies, obtain a fresh source-pinned native inventory and compare the old/new CoBar/CoSpeedo gauge projection with exact time/boot, one real WorkID and receiver-origin readproof; do not infer service failure or restart anything merely because Desktop Commander is disconnected.",
+  "nonclaims": [
+    "BRIDGE_OFFLINE_NE_HOST_OFF",
+    "STALE_SNAPSHOT_NE_RUNNING_SERVICE",
+    "FLAT_GAUGE_NE_HOST_LIVENESS",
+    "CI_NE_X2_RUNTIME",
+    "LOCAL_IS_NOT_LANDED",
+    "VALIDATION_IS_NOT_ACCEPTANCE",
+    "NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF",
+    "NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE",
+    "HASHING_IS_NOT_SEMANTIC_INGESTION",
+    "DISCOVERED_SET_IS_NOT_COMPLETE_HISTORY",
+    "NO_THREE_INDEPENDENT_ROOTS",
+    "NO_PHANTOM_ACK"
+  ]
+}
