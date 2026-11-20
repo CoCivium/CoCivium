@@ -20,6 +20,18 @@ These establish a same-host SQLite/epoch prototype and pure provider-exit decisi
 9. Negative canaries: corrupt checkpoint, revoke authority, receiver unavailable; fail closed without blocking unrelated WorkIDs.
 10. Record model identity, license, host, wall-clock cost, result quality and independent failure-domain limits.
 
+## CoIA+ successor-neutral substitution canary
+This is an extension of the same WorkID test, not a new scheduler, identity hierarchy or claim that IA is a settled technical category.
+- Define the worker contract by capabilities, input/output schema, evidence interface and scoped authority, not labels AI, IA, successor IA, human or hybrid.
+- Replace the first qualified worker with a distinct qualified successor implementation at a new fenced epoch. Retain the same WorkID, idempotency key and effect scope.
+- Record worker implementation, model/provider, qualifications, lineage and independence limits. Do not count multiple personas of the same model as independent witnesses.
+- Verify successor readback of the original checkpoint and authority ceiling. Reject stale-epoch actions and any attempted self-extension of authority.
+- Require comparable result quality and an exact receiver-confirmed outcome. A successor's claim of superiority is not acceptance evidence.
+- Negative canaries: incompatible schema, lower qualification, withdrawn lease, corrupted checkpoint, unknown worker provenance. HOLD only affected work.
+- No assumption of consciousness, personhood or transfer of personality; continuity belongs to the work record.
+- CoPre macro variant `Priority=ValRisk` is observed, but its formula is not defined here. Preserve the earlier explicit Value+Urgency+Deps+Risk factors pending an authoritative scoring definition; do not silently replace the scheduler.
+- PASS requires an actual witnessed cross-implementation recovery. This document alone is NOT_EXECUTED.
+
 ## PASS requirements
 - WorkID survives worker death and process restart.
 - One elected actuator per collision scope, stale epoch fenced.
