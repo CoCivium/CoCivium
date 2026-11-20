@@ -17,6 +17,7 @@ on:
       - 'tests/test_cosession_typed_receipt_preflight_r0.py'
       - 'scripts/CoSessionReceiptIngressShadowR0.py'
       - 'tests/test_cosession_receipt_ingress_shadow_r0.py'
+      - 'tests/copre93_packet_native_negative_controls_r0.py'
       - 'docs/Architecture/COSPEEDO_EXPONENTIAL_PROOF_AND_RECURRENCE_INTERNALIZATION_R0_20261026.md'
       - '.github/workflows/validate-session-writeback-replay-r1a.yml'
 
@@ -60,6 +61,25 @@ jobs:
           assert rows[(256,'collision4')]['collision_review_groups']==1
           assert rows[(256,'private')]['eligible_unique_review_candidates']==0
           print('PASS_COOOMPH_FANIN_SATURATION__SYNTHETIC_ONLY')
+          PY
+
+      - name: Packet native negative controls (EXPECTED unsafe source baseline)
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B tests/copre93_packet_native_negative_controls_r0.py \
+            --target scripts/CoEvoReceiverPacketCompiler.py \
+            --expected-git-blob 208e3db1ea6b25df68568bb2e3f770d3b8fe0b7a \
+            > "$RUNNER_TEMP/packet-native-negative.json"
+          cat "$RUNNER_TEMP/packet-native-negative.json"
+          python - "$RUNNER_TEMP/packet-native-negative.json" <<'PY'
+          import json, sys
+          result=json.load(open(sys.argv[1], encoding="utf-8"))
+          assert result["mode"]=="REPORT_ONLY"
+          assert result["contracts_passed"]==1 and result["contracts_failed"]==4, result
+          assert result["state"]=="CONTRACT_FAIL_REVIEW_REQUIRED"
+          assert all(v==0 for v in result["effects"].values())
+          print("EXPECTED_UNSAFE_SOURCE_BASELINE_REPRODUCED__NOT_SECURITY_PASS")
           PY
 
       - name: Replay current-main session write-back fixtures
