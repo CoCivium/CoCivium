@@ -6,11 +6,13 @@ const NO_EXTERNAL_EFFECTS = Object.freeze({device:0, network:0, send:0, clipboar
 const FIELDS = new Set(['event_id','work_id','operation','privacy','observed_ms','expires_ms']);
 const OPERATION = 'REFRESH_LOCAL_STATUS';
 function goodId(x){ return typeof x==='string' && /^[A-Za-z0-9][A-Za-z0-9_.:-]{0,63}$/.test(x); }
-function createHarness({now_ms=1000,budget=1,receiver_ready=true}={}) {
+function createHarness({now_ms=1000,budget=1,receiver_ready=true,
+  session_state='ACTIVE', wake_binding=null}={}) {
   if (!Number.isSafeInteger(now_ms)||now_ms<0||!Number.isInteger(budget)||budget<0||budget>100)
     throw Error('INVALID_FIXTURE');
+  if (!['ACTIVE','CLOSE_SAFE'].includes(session_state)) throw Error('INVALID_LIFECYCLE');
   let remaining=budget, count=0;
-  const completed=new Map();
+  const completed=new Map(), wakePreviews=new Map();
   function receipt(state,reason,work_id=null,extra={}){
     return Object.freeze({schema:SCHEMA,state,reason,work_id,local_refresh_count:count,
       external_effects:{...NO_EXTERNAL_EFFECTS},receiver_readproof:'NOT_TESTED',
@@ -30,6 +32,28 @@ function createHarness({now_ms=1000,budget=1,receiver_ready=true}={}) {
         event.observed_ms>now_ms||now_ms>event.expires_ms||
         event.expires_ms-event.observed_ms>60000)
       return receipt('HELD','STALE_FUTURE_OR_UNBOUNDED',work_id);
+    // A close-safe session cannot be reopened by a generic nod/ping.
+    // Only a separate, exact WorkID-bound synthetic wake fixture may suggest
+    // successor review. Even then this is NOT a worker launch or authority grant.
+    if (session_state==='CLOSE_SAFE') {
+      const w=wake_binding;
+      const qualified=w && typeof w==='object' && !Array.isArray(w) &&
+        Object.keys(w).length===4 &&
+        w.work_id===work_id &&
+        w.predicate==='RECOVERY_ROUTE_AVAILABLE' &&
+        w.evidence_class==='SYNTHETIC_BOUND_WAKE_FIXTURE' &&
+        typeof w.source_sha256==='string' && /^[a-f0-9]{64}$/.test(w.source_sha256);
+      if (!qualified) return receipt('QUIESCENT','GENERIC_PING_NE_WAKE_PREDICATE',work_id,
+        {worker_spawned:false,provider_session_opened:false});
+      const wakeKey=work_id+'|'+w.predicate+'|'+w.source_sha256;
+      if (wakePreviews.has(wakeKey)) return receipt('DEDUPED_WAKE_PREVIEW',
+        'SAME_BOUND_WAKE_ALREADY_PREVIEWED',work_id,
+        {first_event_id:wakePreviews.get(wakeKey),worker_spawned:false});
+      wakePreviews.set(wakeKey,event.event_id);
+      return receipt('SHADOW_WAKE_PREVIEW_ONLY','BOUND_MATERIAL_RECOVERY_ROUTE_CANDIDATE',
+        work_id,{wake_predicate:w.predicate,source_sha256:w.source_sha256,
+          worker_spawned:false,provider_session_opened:false});
+    }
     const key=work_id+'|'+event.operation;
     if (completed.has(key)) return receipt('DEDUPED','ONE_OPERATION_ALREADY_EXECUTED',work_id,
       {first_event_id:completed.get(key)});
@@ -42,7 +66,8 @@ function createHarness({now_ms=1000,budget=1,receiver_ready=true}={}) {
   const fromButton=event=>invoke('BUTTON',event);
   const fromCoBEvent=event=>invoke('COB_EVENT',event);
   const snapshot=()=>Object.freeze({local_refresh_count:count,remaining,
-    unique_operations:completed.size,external_effects:{...NO_EXTERNAL_EFFECTS}});
+    unique_operations:completed.size,wake_previews:wakePreviews.size,
+    external_effects:{...NO_EXTERNAL_EFFECTS}});
   return Object.freeze({fromButton,fromCoBEvent,snapshot});
 }
 module.exports={SCHEMA,NO_EXTERNAL_EFFECTS,createHarness};
