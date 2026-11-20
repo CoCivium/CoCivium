@@ -1,0 +1,74 @@
+{
+  "schema": "CoLocalWorkIDCleanRunnerRecoveryReadproofR0",
+  "work_id": "CoPre9.3:CoLocalWorkID:20261120:CI-recovery-readproof",
+  "observed_date_utc": "2026-11-20",
+  "purpose": "Recover existing portable local-worker substrate rather than create a competing implementation",
+  "source": {
+    "repository": "CoCivium/CoCivium",
+    "pull_request": 496,
+    "pull_request_url": "https://github.com/CoCivium/CoCivium/pull/496",
+    "head_commit": "53d50270c61c2244ea54918e317291819acf2ba9",
+    "workflow_run_id": 43739241898,
+    "workflow_run_url": "https://github.com/CoCivium/CoCivium/actions/runs/43739241898",
+    "job_id": 132888532430,
+    "job_url": "https://github.com/CoCivium/CoCivium/actions/runs/43739241898/job/132888532430",
+    "workflow_name": "CoLocalWorkID portable synthetic replay R0",
+    "job_name": "clean-runner-synthetic-replay",
+    "run_created_at": "2026-11-15T17:06:41Z"
+  },
+  "observed": {
+    "run_event": "pull_request",
+    "run_status": "completed",
+    "run_conclusion": "success",
+    "test_command": "python -B examples/colocalworkid/test_portable_replay_r0.py -v",
+    "tests_ran": 13,
+    "tests_passed": 13,
+    "tests_failed": 0,
+    "log_last_summary": "Ran 13 tests in 0.222s; OK",
+    "python_version": "3.12.16",
+    "examples": [
+      "fresh-process-and-replay",
+      "no-clobber",
+      "collision-held",
+      "bad-archive-hash",
+      "forged-receiver-ack-held",
+      "tampered-decision-held",
+      "lease-owner-change-held"
+    ]
+  },
+  "identity_and_authority": {
+    "state": "SYNTHETIC_CLEAN_RUNNER_PROOF_ONLY",
+    "actor": "GitHub Actions ephemeral runner",
+    "x2_remote": "OFFLINE_LAST_SEEN_ABOUT_48_HOURS",
+    "costead_receiver": "NOT_VERIFIED",
+    "independent_receiver_ack": false,
+    "master_ledger_acceptance": false,
+    "production_runtime": false,
+    "coex": false,
+    "one_actuator_per_mutation_surface": true
+  },
+  "did": [
+    "Recovered existing candidate PR 496 instead of duplicating local worker framework",
+    "Read exact GitHub CI check-run, workflow-run metadata, and job logs",
+    "Bounded scope to 13 synthetic portable tests and classified unproven runtime effects"
+  ],
+  "not": [
+    "No X2 runtime execution or wake-up",
+    "No CoStead receiver readproof",
+    "No scheduled continuity or autonomous worker proof",
+    "No merge, deployment, production or DNS mutation",
+    "No 3-independent-reviewer signoff",
+    "No master-ledger admission"
+  ],
+  "next_single_job": "When authorized worker host/receiver exists, replay pinned synthetic capsule on X2 or CoStead and obtain exact receiver-produced acknowledgment, with one elected actuator; otherwise HOLD_RUNTIME",
+  "rollback": "Additive evidence file on isolated branch; production main untouched",
+  "status": "CLEAN_RUNNER_SYNTHETIC_13_OF_13_PASS_RUNTIME_HOLD",
+  "nonclaims": [
+    "LOCAL_IS_NOT_LANDED",
+    "VALIDATION_IS_NOT_ACCEPTANCE",
+    "NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF",
+    "NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE",
+    "HASHING_IS_NOT_SEMANTIC_INGESTION",
+    "DISCOVERED_SET_IS_NOT_COMPLETE_HISTORY"
+  ]
+}
