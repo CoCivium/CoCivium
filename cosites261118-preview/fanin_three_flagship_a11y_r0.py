@@ -31,7 +31,7 @@ def fanin(rows: list[dict], expected_commit: str) -> dict:
             problems.append("NON_OBJECT_RECEIPT")
             continue
         name = row.get("site")
-        if name not in EXPECTED:
+        if type(name) is not str or name not in EXPECTED:
             problems.append("UNEXPECTED_SITE")
             continue
         if name in found:
@@ -45,8 +45,15 @@ def fanin(rows: list[dict], expected_commit: str) -> dict:
             "PASS_AUTOMATED_A11Y_NO_DETECTED_VIOLATIONS_NOT_HUMAN_ACCEPTED",
             "HOLD_AUTOMATED_A11Y_VIOLATIONS", "HOLD_AUDIT_ERROR"):
             problems.append("INVALID_STATE:" + name)
-        views = row.get("viewports", [])
-        if not isinstance(views, list) or {x.get("viewport") for x in views if isinstance(x, dict)} != VIEWPORTS or len(views) != 2:
+        # An incomplete axe result is an unresolved rule, not an automated PASS.
+        # Fail closed on missing/malformed counts instead of treating them as zero.
+        views = row.get("viewports")
+        if not isinstance(views, list):
+            views = []
+            problems.append("MISSING_VIEWPORTS:" + name)
+        names = [x.get("viewport") for x in views if isinstance(x, dict)]
+        if (len(views) != 2 or len(names) != 2 or
+                any(type(v) is not str for v in names) or set(names) != VIEWPORTS):
             problems.append("MISSING_VIEWPORTS:" + name)
         vcount = 0
         incomplete = 0
@@ -54,8 +61,25 @@ def fanin(rows: list[dict], expected_commit: str) -> dict:
             if not isinstance(x, dict) or not isinstance(x.get("violations"), list):
                 problems.append("MALFORMED_RULE_RESULT:" + name)
                 continue
-            vcount += len(x["violations"])
-            incomplete += x.get("incomplete_rule_count", 0)
+            rules = x["violations"]
+            vcount += len(rules)
+            reported_count = x.get("rule_violation_count")
+            if reported_count is not None and (
+                    type(reported_count) is not int or reported_count != len(rules)):
+                problems.append("RULE_COUNT_MISMATCH:" + name)
+            count = x.get("incomplete_rule_count")
+            if type(count) is not int or count < 0:
+                problems.append("INVALID_INCOMPLETE_RULE_COUNT:" + name)
+                continue
+            incomplete += count
+            # Older source receipts have only the count; new scanner receipts
+            # include a redacted, rule-ID-only list which must match it.
+            if "incomplete_rules" in x and (
+                    not isinstance(x["incomplete_rules"], list) or
+                    len(x["incomplete_rules"]) != count):
+                problems.append("INCOMPLETE_RULE_DETAIL_MISMATCH:" + name)
+        if incomplete:
+            problems.append("INCOMPLETE_A11Y_RULES:" + name)
         if row.get("state") != "PASS_AUTOMATED_A11Y_NO_DETECTED_VIOLATIONS_NOT_HUMAN_ACCEPTED" or vcount:
             problems.append("ACCESSIBILITY_REVIEW_REQUIRED:" + name)
         summary.append({"site": name, "automated_violation_rules": vcount,

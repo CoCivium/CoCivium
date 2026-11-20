@@ -29,6 +29,46 @@ class TestFanIn(unittest.TestCase):
  def test_wrong_state(self):
   a=[mk(x) for x in EXPECTED];a[0]["state"]="PASS_FULL_PUBLIC_ACCEPTANCE"
   self.assertIn("INVALID_STATE:cocivium",fanin(a,COMMIT)["problems"])
+ def test_incomplete_rule_is_review_hold_not_source_pass(self):
+  a=[mk(x) for x in EXPECTED]
+  a[1]["viewports"][0]["incomplete_rule_count"]=1
+  a[1]["viewports"][0]["incomplete_rules"]=[{"id":"color-contrast"}]
+  r=fanin(a,COMMIT)
+  self.assertEqual(r["state"],"HOLD_ACCESSIBILITY_REVIEW")
+  self.assertIn("INCOMPLETE_A11Y_RULES:inseed",r["problems"])
+  self.assertEqual(r["candidate_sites"][2]["incomplete_rule_count"],1)
+ def test_malformed_incomplete_counts_hold_without_crashing(self):
+  for bad in (None,True,-1,1.5,"1",[],{}):
+   with self.subTest(bad=repr(bad)):
+    a=[mk(x) for x in EXPECTED];a[1]["viewports"][1]["incomplete_rule_count"]=bad
+    r=fanin(a,COMMIT)
+    self.assertIn("INVALID_INCOMPLETE_RULE_COUNT:inseed",r["problems"])
+    self.assertEqual(r["state"],"HOLD_ACCESSIBILITY_REVIEW")
+ def test_absent_incomplete_count_is_not_zero(self):
+  a=[mk(x) for x in EXPECTED];del a[1]["viewports"][0]["incomplete_rule_count"]
+  self.assertIn("INVALID_INCOMPLETE_RULE_COUNT:inseed",fanin(a,COMMIT)["problems"])
+ def test_incomplete_rule_list_must_match_its_count(self):
+  a=[mk(x) for x in EXPECTED];a[1]["viewports"][0]["incomplete_rules"]=[{"id":"color-contrast"}]
+  self.assertIn("INCOMPLETE_RULE_DETAIL_MISMATCH:inseed",fanin(a,COMMIT)["problems"])
+  a[1]["viewports"][0]["incomplete_rules"]="not-a-list"
+  self.assertIn("INCOMPLETE_RULE_DETAIL_MISMATCH:inseed",fanin(a,COMMIT)["problems"])
+ def test_malformed_viewport_data_holds_without_batch_crash(self):
+  for bad in (None,{"viewport":"mobile390"},[{"viewport":[],"violations":[],"incomplete_rule_count":0},{"viewport":"desktop1365","violations":[],"incomplete_rule_count":0}],[None,{"viewport":"desktop1365","violations":[],"incomplete_rule_count":0}]):
+   with self.subTest(bad=repr(bad)):
+    a=[mk(x) for x in EXPECTED];a[1]["viewports"]=bad
+    r=fanin(a,COMMIT)
+    self.assertIn("MISSING_VIEWPORTS:inseed",r["problems"])
+ def test_forged_reported_violation_count_holds(self):
+  a=[mk(x) for x in EXPECTED];a[1]["viewports"][0]["rule_violation_count"]=1
+  self.assertIn("RULE_COUNT_MISMATCH:inseed",fanin(a,COMMIT)["problems"])
+  a[1]["viewports"][0]["rule_violation_count"]=True
+  self.assertIn("RULE_COUNT_MISMATCH:inseed",fanin(a,COMMIT)["problems"])
+ def test_unhashable_site_id_does_not_crash_cohort(self):
+  a=[mk(x) for x in EXPECTED]
+  a.append({"site":["invalid"]})
+  r=fanin(a,COMMIT)
+  self.assertIn("UNEXPECTED_SITE",r["problems"])
+  self.assertEqual(len(r["candidate_sites"]),3)
  def test_unknown_site(self):
   a=[mk(x) for x in EXPECTED];a.append({"site":"unknown"})
   self.assertIn("UNEXPECTED_SITE",fanin(a,COMMIT)["problems"])
