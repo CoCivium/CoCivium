@@ -1,0 +1,109 @@
+{
+  "schema": "CoCivium.CoGuardian.CoStel.ObserverHostSplit.CandidateCIReceipt.R0",
+  "work_id": "CoGuardian:ObserverHostSplit:FalseOffline:CoPre93:20261120:R0",
+  "state": "SOURCE_AND_NEGATIVE_CONTROL_CI_VERIFIED__X2_RUNTIME_HOLD",
+  "authority": "PUBLIC_SAFE_SOURCE_TEST_ONLY_NO_NEW_DEVICE_RECEIVER",
+  "date_utc": "2026-11-20",
+  "issue_ownership": {
+    "supervision": "https://github.com/CoCivium/CoSteward/issues/40",
+    "popup_incident": "https://github.com/CoCivium/CoShareHub/issues/56",
+    "cross_surface_delivery": "https://github.com/CoCivium/CoCivium/issues/317",
+    "notes": "Issue #317 is a cross-surface receipt/fanout owner, not evidence that X2 is powered off or the owner of local service liveness"
+  },
+  "prior_counterexample": {
+    "remote_connector_status": "OFFLINE_REPORTED_FROM_REMOTE_REGISTRY",
+    "local_host_state": "NOT_ATTESTED_BY_CONNECTOR",
+    "coall_surface_health": "UNQUALIFIED",
+    "x2_restart_authority": "NONE_GRANTED",
+    "harm": "Previous task_last_result_zero_reported could be true even if local source was missing/stale or runner not source-pinned; a consuming status panel could mistake it for qualified health"
+  },
+  "correction": {
+    "module": "experiments/costel_r5_r0/bridge_recovery_cohort_r0.py",
+    "module_git_blob_sha1": "cc533304aa72bc9624cb11c7c3cdf5e26a8866f5",
+    "tests": "experiments/costel_r5_r0/test_bridge_recovery_cohort_r0.py",
+    "tests_git_blob_sha1": "ada3f36d5a00c2956343c9a223aa3658f55583da",
+    "source_contract": "experiments/costel_r5_r0/README.md",
+    "source_contract_git_blob_sha1": "17b2fa7774812d2964e3fb0f54071356cf0422c2",
+    "fields": {
+      "task_last_result_zero_reported": "True only after fresh qualified local boot sample, registered task, exact runner pin, reported zero exit",
+      "host_power_state": "NOT_ATTESTED",
+      "host_liveness_scope": "FRESH_LOCAL_SOURCE_SNAPSHOT_ONLY or NO_QUALIFIED_CURRENT_LOCAL_SOURCE",
+      "remote_observer_is_host_actuator": false,
+      "connector_failure_authorizes_host_restart": false
+    },
+    "added_negative_controls": 8,
+    "result_count_per_mode": 209,
+    "cases": [
+      "missing local source",
+      "stale local source",
+      "future/reversed boot cohort",
+      "unregistered task",
+      "wrong task runner pin",
+      "remote online but local unavailable",
+      "qualified local observation is snapshot only, not power status",
+      "spoofed restart authority and offline claims produce no effect"
+    ]
+  },
+  "ci": {
+    "provider": "GitHub Actions",
+    "run_id": 44651881868,
+    "url": "https://github.com/CoCivium/CoCivium/actions/runs/44651881868",
+    "source_commit": "ab37274eab955f7be3ceaa4105c633d2ca3f35f8",
+    "conclusion": "success",
+    "jobs": [
+      "fail-closed-supervisor (3.11)",
+      "fail-closed-supervisor (3.13)",
+      "windows-startup-readonly",
+      "handoff-producer",
+      "handoff-receiver"
+    ],
+    "python_3_11_normal": "209_PASS",
+    "python_3_11_optimized": "209_PASS",
+    "python_3_13_normal": "209_PASS",
+    "python_3_13_optimized": "209_PASS",
+    "synthetic_artifacts": [
+      {
+        "name": "costel-handoff-source",
+        "zip_sha256": "f0719201a161e2f8d10f2b96473d116686730a6f10d131684c3a3701a5924ae4"
+      },
+      {
+        "name": "costel-handoff-receiver-proof",
+        "zip_sha256": "3c6a380573abfd439ad36621fd59e2e2dcd403dd1013bc761dbf853505416208"
+      }
+    ],
+    "independence": "TWO_PYTHON_VERSIONS_AND_SEPARATE_CI_JOBS_SAME_GITHUB_TRUST_ROOT_NOT_3IND",
+    "windows_job_scope": "EPHEMERAL_GITHUB_RUNNER_NOT_X2"
+  },
+  "effect_boundary": {
+    "native_x2_process_start": 0,
+    "native_x2_startup_changes": 0,
+    "native_x2_receiver_ack": 0,
+    "domain_or_publication_changes": 0,
+    "new_privileged_watchers": 0,
+    "source_artifact_committed": true
+  },
+  "held": [
+    "X2 native receiver currently unavailable from this connector",
+    "actual X2 host and local supervisor health need a fresh independent, authorized machine-origin observation",
+    "CoBar UI must consume this field strictly without synthesizing green host or task status",
+    "same-boot WorkID useful effect and exact receiver readback still untested",
+    "post-reboot unattended recovery still untested"
+  ],
+  "next_deed": "Bind the corrected source classifier to the incumbent approved consumer on its next authorized receiver cycle; independently validate local WorkID, boot cohort, version, source SHA and effect receipt. Until that receiver exists, do not issue automatic restart or claim X2 offline based only on the Desktop Commander device registry.",
+  "nonclaims": [
+    "BRIDGE_OFFLINE_NE_HOST_OFF",
+    "TASK_LAST_RESULT_ZERO_NE_USEFUL_WORK",
+    "SOURCE_IS_NOT_RUNTIME",
+    "LOCAL_IS_NOT_LANDED",
+    "VALIDATION_IS_NOT_ACCEPTANCE",
+    "NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF",
+    "NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE",
+    "HASHING_IS_NOT_SEMANTIC_INGESTION",
+    "DISCOVERED_SET_IS_NOT_COMPLETE_HISTORY",
+    "NO_THREE_INDEPENDENT_ROOTS",
+    "NO_X2_REBOOT_RECOVERY_ACCEPTANCE",
+    "NO_X2_AGENT_INSTALL_OR_NEW_STARTUP_CONTROLLER",
+    "NO_COEX",
+    "NO_PHANTOM_ACK"
+  ]
+}
