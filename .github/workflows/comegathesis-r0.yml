@@ -1,0 +1,22 @@
+name: CoMegaThesis R0 source parity
+on:
+  pull_request:
+    paths:
+      - "docs/CoTheoryAll/candidates/**"
+      - "ai/cotheoryall/**"
+      - "scripts/test_comegathesis_three_view_r0.cjs"
+      - ".github/workflows/comegathesis-r0.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  source-parity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Three-view epistemic and relation parity (source-only)
+        run: node scripts/test_comegathesis_three_view_r0.cjs
