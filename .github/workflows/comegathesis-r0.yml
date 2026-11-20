@@ -8,6 +8,7 @@ on:
       - "ai/cotheoryall/**"
       - "scripts/test_comegathesis_*"
       - "scripts/test_coworkid_process_replay_r0.cjs"
+      - "scripts/test_coci_artifact_readback_r0.cjs"
       - ".github/workflows/comegathesis-r0.yml"
   pull_request:
     paths:
@@ -15,6 +16,7 @@ on:
       - "ai/cotheoryall/**"
       - "scripts/test_comegathesis_*"
       - "scripts/test_coworkid_process_replay_r0.cjs"
+      - "scripts/test_coci_artifact_readback_r0.cjs"
       - ".github/workflows/comegathesis-r0.yml"
   workflow_dispatch:
     inputs:
@@ -70,6 +72,37 @@ jobs:
         with:
           name: comegathesis-source-proof-${{ github.run_id }}
           path: artifacts/comegathesis-r0/
+          if-no-files-found: warn
+          retention-days: 30
+  artifact-readback:
+    name: Separate CI job exact-artifact readback (same provider, no runtime claim)
+    needs: source-parity
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Retrieve source-job proof archive into separate CI job
+        uses: actions/download-artifact@v4
+        with:
+          name: comegathesis-source-proof-${{ github.run_id }}
+          path: artifacts/comegathesis-r0/
+      - name: Verify exact source manifest, run revision, logs, and eight negative controls
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p artifacts/comegathesis-readback-r0
+          node --check scripts/test_coci_artifact_readback_r0.cjs
+          node scripts/test_coci_artifact_readback_r0.cjs artifacts/comegathesis-r0 artifacts/comegathesis-readback-r0 2>&1 | tee artifacts/comegathesis-readback-r0/readback-tests.log
+          echo "CI artifact readback is GitHub-job-scoped, not an independent CoStead/X2 receiver." >> "$GITHUB_STEP_SUMMARY"
+      - name: Retain receiving-job receipt and test evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: coci-artifact-readback-proof-${{ github.run_id }}
+          path: artifacts/comegathesis-readback-r0/
           if-no-files-found: warn
           retention-days: 30
   browser-smoke:
