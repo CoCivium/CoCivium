@@ -10,6 +10,7 @@ on:
       - "scripts/test_coworkid_process_replay_r0.cjs"
       - "scripts/test_coworkid_concurrent_fencing_r0.cjs"
       - "scripts/test_coci_artifact_readback_r0.cjs"
+      - "scripts/render_coci_ci_status_r0.cjs"
       - ".github/workflows/comegathesis-r0.yml"
   pull_request:
     paths:
@@ -19,6 +20,7 @@ on:
       - "scripts/test_coworkid_process_replay_r0.cjs"
       - "scripts/test_coworkid_concurrent_fencing_r0.cjs"
       - "scripts/test_coci_artifact_readback_r0.cjs"
+      - "scripts/render_coci_ci_status_r0.cjs"
       - ".github/workflows/comegathesis-r0.yml"
   workflow_dispatch:
     inputs:
@@ -107,6 +109,14 @@ jobs:
           node --check scripts/test_coci_artifact_readback_r0.cjs
           node scripts/test_coci_artifact_readback_r0.cjs artifacts/comegathesis-r0 artifacts/comegathesis-readback-r0 2>&1 | tee artifacts/comegathesis-readback-r0/readback-tests.log
           echo "CI artifact readback is GitHub-job-scoped, not an independent CoStead/X2 receiver." >> "$GITHUB_STEP_SUMMARY"
+      - name: CoHereNow scope-bound proof front door (read-only)
+        shell: bash
+        run: |
+          set -euo pipefail
+          node --check scripts/render_coci_ci_status_r0.cjs
+          node scripts/render_coci_ci_status_r0.cjs artifacts/comegathesis-readback-r0/coci-artifact-readback-receipt.json --self-test | tee artifacts/comegathesis-readback-r0/frontdoor-negative-tests.log
+          node scripts/render_coci_ci_status_r0.cjs artifacts/comegathesis-readback-r0/coci-artifact-readback-receipt.json artifacts/comegathesis-readback-r0/cohere-ci-status.json artifacts/comegathesis-readback-r0/cohere-ci-status.md
+          sha256sum artifacts/comegathesis-readback-r0/cohere-ci-status.json artifacts/comegathesis-readback-r0/cohere-ci-status.md > artifacts/comegathesis-readback-r0/cohere-ci-status.sha256
       - name: Retain receiving-job receipt and test evidence
         if: always()
         uses: actions/upload-artifact@v4
