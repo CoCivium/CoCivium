@@ -7,7 +7,7 @@ import copy
 import json
 import unittest
 
-from public_frontdoor_release_gate_r0 import evaluate, OUTPUT_SCHEMA, INPUT_SCHEMA, ROOTS
+from public_frontdoor_release_gate_r0 import (evaluate, evaluate_legacy_origin_boundary, LEGACY_ORIGIN_SCHEMA, LEGACY_SURFACES, OUTPUT_SCHEMA, INPUT_SCHEMA, ROOTS)
 
 NOW = datetime(2026, 11, 20, 1, 15, 0, tzinfo=timezone.utc)
 SHA = "a" * 64
@@ -49,7 +49,9 @@ class HoldGateTests(unittest.TestCase):
     def test_clean_synthetic_six_root_structure_is_not_release_authority(self):
         r = self.report()
         self.assertEqual(r["schema"], OUTPUT_SCHEMA)
-        self.assertEqual(r["state"], "STRUCTURAL_SIX_ROOT_CANDIDATE_NOT_RELEASED")
+        self.assertEqual(r["state"], "HOLD_PUBLIC_FRONTDOOR_READINESS")
+        self.assertIn("HOLD_ORIGIN_EVIDENCE_MISSING_OR_INVALID", r["hold_reason_codes"])
+        self.assertFalse(r["legacy_origin_boundary"]["legacy_containment_confirmed"])
         self.assertEqual(len(r["root_results"]), 6)
         self.assertEqual(r["release_authorized"], False)
         self.assertEqual(r["security_owner_acceptance"], "NOT_ATTESTED")
@@ -171,6 +173,73 @@ class HoldGateTests(unittest.TestCase):
     def test_missing_or_malformed_source_fails_closed(self):
         self.assertIn("HOLD_SOURCE_SCHEMA", self.report({})["hold_reason_codes"])
         self.assertIn("HOLD_SOURCE_SCHEMA", self.report([])["hold_reason_codes"])
+
+
+    def test_clean_www_does_not_attest_origin_or_shards(self):
+        r = self.report()
+        self.assertIn("HOLD_OWNER_AND_EXTERNAL_RECEIVER_ATTESTATION", r["hold_reason_codes"])
+        self.assertEqual(r["legacy_origin_boundary"]["state"], "HOLD_ORIGIN_AND_ALIAS_CONTAINMENT")
+
+    def test_all_synthetic_origin_surfaces_clean_still_needs_independent_proof(self):
+        ev = {"schema": LEGACY_ORIGIN_SCHEMA,
+              "observed_utc": NOW.isoformat(), "release_authorized": False,
+              "surfaces": [{"kind": kind, "status": "NO_LEGACY_CONTENT"}
+                           for kind in sorted(LEGACY_SURFACES)]}
+        r = evaluate(fixture(), now=NOW, source_commit=COMMIT, origin_evidence=ev)
+        self.assertIn("HOLD_OWNER_AND_EXTERNAL_RECEIVER_ATTESTATION", r["hold_reason_codes"])
+        self.assertFalse(r["legacy_origin_boundary"]["independent_receiver_ack"])
+        self.assertFalse(r["release_authorized"])
+
+    def test_exposed_shard_blocks_cosmetic_homepage_switch(self):
+        ev = {"schema": LEGACY_ORIGIN_SCHEMA,
+              "observed_utc": NOW.isoformat(), "release_authorized": False,
+              "surfaces": [{"kind": kind, "status":
+                            "LEGACY_METADATA_PUBLIC" if kind == "SHARD_ROUTE" else "NO_LEGACY_CONTENT"}
+                           for kind in sorted(LEGACY_SURFACES)]}
+        r = evaluate(fixture(), now=NOW, source_commit=COMMIT, origin_evidence=ev)
+        self.assertIn("HOLD_LEGACY_METADATA_STILL_PUBLIC", r["hold_reason_codes"])
+        self.assertEqual(r["state"], "HOLD_PUBLIC_FRONTDOOR_READINESS")
+
+    def test_unreachable_origin_not_proof_of_restriction(self):
+        ev = {"schema": LEGACY_ORIGIN_SCHEMA,
+              "observed_utc": NOW.isoformat(), "release_authorized": False,
+              "surfaces": [{"kind": kind, "status":
+                            "FETCH_UNAVAILABLE" if kind == "PAGES_PRODUCTION" else "NO_LEGACY_CONTENT"}
+                           for kind in sorted(LEGACY_SURFACES)]}
+        r = evaluate(fixture(), now=NOW, source_commit=COMMIT, origin_evidence=ev)
+        self.assertIn("HOLD_UNOBSERVABLE_NOT_CONTAINED", r["hold_reason_codes"])
+
+    def test_missing_alias_and_duplicated_surface_hold(self):
+        kinds = sorted(LEGACY_SURFACES)
+        ev = {"schema": LEGACY_ORIGIN_SCHEMA,
+              "observed_utc": NOW.isoformat(), "release_authorized": False,
+              "surfaces": [{"kind": kind, "status": "NO_LEGACY_CONTENT"}
+                           for kind in kinds[:-1]] + [{"kind": kinds[0], "status": "NO_LEGACY_CONTENT"}]}
+        r = evaluate(fixture(), now=NOW, source_commit=COMMIT, origin_evidence=ev)
+        self.assertIn("HOLD_ORIGIN_SURFACE_DUPLICATE_OR_UNKNOWN", r["hold_reason_codes"])
+        self.assertIn("HOLD_ORIGIN_SURFACE_SET_INCOMPLETE", r["hold_reason_codes"])
+
+    def test_forged_release_claim_and_stale_origin_never_pass(self):
+        ev = {"schema": LEGACY_ORIGIN_SCHEMA,
+              "observed_utc": (NOW-timedelta(days=1)).isoformat(),
+              "release_authorized": True,
+              "surfaces": [{"kind": kind, "status": "NO_LEGACY_CONTENT"}
+                           for kind in sorted(LEGACY_SURFACES)]}
+        r = evaluate(fixture(), now=NOW, source_commit=COMMIT, origin_evidence=ev)
+        self.assertIn("HOLD_ORIGIN_OBSERVATION_STALE_OR_FUTURE", r["hold_reason_codes"])
+        self.assertIn("HOLD_UNTRUSTED_ORIGIN_RELEASE_ASSERTION", r["hold_reason_codes"])
+
+    def test_origin_provenance_never_echoes_sensitive_input(self):
+        ev = {"schema": LEGACY_ORIGIN_SCHEMA,
+              "observed_utc": NOW.isoformat(), "release_authorized": False,
+              "raw_url": "https://private-origin.invalid/internal",
+              "surfaces": [{"kind": kind, "status": "NO_LEGACY_CONTENT",
+                            "raw_path": "PRIVATE_WINDOWS_PATH_DO_NOT_EMIT"}
+                           for kind in sorted(LEGACY_SURFACES)]}
+        out = json.dumps(evaluate(fixture(), now=NOW, source_commit=COMMIT,
+                                  origin_evidence=ev))
+        self.assertNotIn("private-origin", out)
+        self.assertNotIn("PRIVATE_WINDOWS_PATH_DO_NOT_EMIT", out)
 
     def test_reversed_or_naive_time_rejected(self):
         with self.assertRaisesRegex(ValueError, "HOLD_NOW_NOT_AWARE"):

@@ -34,7 +34,70 @@ def _utc(value: Any) -> datetime | None:
     return dt.astimezone(timezone.utc) if dt.tzinfo is not None else None
 
 
-def evaluate(source: Any, *, now: datetime, source_commit: str | None = None) -> dict[str, Any]:
+# Only class names, never origin URLs, shard names, paths or response bodies.
+# Source-only observations cannot independently validate hosting ownership,
+# origin alias inventory, redaction or publisher authority.
+LEGACY_ORIGIN_SCHEMA = "CoSites.LegacyOriginContainmentEvidence.R0"
+LEGACY_SURFACES = frozenset({
+    "CUSTOM_DOMAIN", "PAGES_PRODUCTION", "IMMUTABLE_DEPLOYMENT",
+    "PREVIEW_ALIAS", "SHARD_ROUTE", "EDGE_CACHE",
+})
+LEGACY_STATUSES = frozenset({
+    "NO_LEGACY_CONTENT", "LEGACY_METADATA_PUBLIC", "FETCH_UNAVAILABLE",
+})
+
+
+def evaluate_legacy_origin_boundary(evidence: Any, *, now: datetime) -> dict[str, Any]:
+    """Fail closed: clean roots, DNS redirects and unreachable origins prove no containment.
+
+    This function has no fetch/host privileges and never promotes submitted
+    claims to a real owner attestation or independent receiver readproof.
+    """
+    reasons = {"HOLD_OWNER_AND_EXTERNAL_RECEIVER_ATTESTATION"}
+    seen: set[str] = set()
+    if not isinstance(evidence, dict) or evidence.get("schema") != LEGACY_ORIGIN_SCHEMA:
+        reasons.add("HOLD_ORIGIN_EVIDENCE_MISSING_OR_INVALID")
+    else:
+        observed = _utc(evidence.get("observed_utc"))
+        if observed is None or not timedelta(0) <= now - observed <= MAX_AGE:
+            reasons.add("HOLD_ORIGIN_OBSERVATION_STALE_OR_FUTURE")
+        if evidence.get("release_authorized") is not False:
+            reasons.add("HOLD_UNTRUSTED_ORIGIN_RELEASE_ASSERTION")
+        rows = evidence.get("surfaces")
+        if not isinstance(rows, list) or len(rows) != len(LEGACY_SURFACES):
+            reasons.add("HOLD_ORIGIN_SURFACE_COUNT")
+        if isinstance(rows, list):
+            for row in rows:
+                if not isinstance(row, dict):
+                    reasons.add("HOLD_ORIGIN_SURFACE_MALFORMED")
+                    continue
+                kind, status = row.get("kind"), row.get("status")
+                if not isinstance(kind, str) or kind not in LEGACY_SURFACES or kind in seen:
+                    reasons.add("HOLD_ORIGIN_SURFACE_DUPLICATE_OR_UNKNOWN")
+                    continue
+                seen.add(kind)
+                if status == "LEGACY_METADATA_PUBLIC":
+                    reasons.add("HOLD_LEGACY_METADATA_STILL_PUBLIC")
+                elif status == "FETCH_UNAVAILABLE":
+                    reasons.add("HOLD_UNOBSERVABLE_NOT_CONTAINED")
+                elif status not in LEGACY_STATUSES:
+                    reasons.add("HOLD_ORIGIN_REACHABILITY_UNVERIFIED")
+            if seen != LEGACY_SURFACES:
+                reasons.add("HOLD_ORIGIN_SURFACE_SET_INCOMPLETE")
+    return {
+        "state": "HOLD_ORIGIN_AND_ALIAS_CONTAINMENT",
+        "reason_codes": sorted(reasons),
+        "surface_classes_required": sorted(LEGACY_SURFACES),
+        "surface_classes_observed": sorted(seen),
+        "publisher_authority": "NOT_AUTHENTICATED",
+        "independent_receiver_ack": False,
+        "legacy_containment_confirmed": False,
+        "public_changes": 0,
+    }
+
+
+def evaluate(source: Any, *, now: datetime, source_commit: str | None = None,
+             origin_evidence: Any = None) -> dict[str, Any]:
     """Fail-closed, no-effect, one-authority-root source assessment.
 
     Never echo raw HTML, paths, filenames, request headers, arbitrary upstream
@@ -108,6 +171,8 @@ def evaluate(source: Any, *, now: datetime, source_commit: str | None = None) ->
     ):
         issues.add("HOLD_INVALID_SOURCE_COMMIT")
 
+    origin_boundary = evaluate_legacy_origin_boundary(origin_evidence, now=now)
+    issues.update(origin_boundary["reason_codes"])
     held = bool(issues)
     # A structural PASS is NOT a deployment or human/privacy acceptance.
     return {
@@ -120,6 +185,7 @@ def evaluate(source: Any, *, now: datetime, source_commit: str | None = None) ->
                             if observation else None),
         "source_commit": source_commit,
         "source_scope": "SIX_HTTPS_ROOTS_ONLY__NO_SHARDS__ONE_CI_ROOT",
+        "legacy_origin_boundary": origin_boundary,
         "root_results": sorted(per_root, key=lambda x: (x["site"], x["variant"])),
         "hold_reason_codes": sorted(issues),
         "private_metadata_review_required": True,
