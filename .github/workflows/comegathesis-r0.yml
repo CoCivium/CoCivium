@@ -1,22 +1,88 @@
-name: CoMegaThesis R0 source parity
+name: CoMegaThesis R0 proof gates
 on:
+  push:
+    branches:
+      - "candidate/cotheoryall-comap-megathesis-ux-gdside-r0-20261120"
+    paths:
+      - "docs/CoTheoryAll/candidates/**"
+      - "ai/cotheoryall/**"
+      - "scripts/test_comegathesis_*"
+      - ".github/workflows/comegathesis-r0.yml"
   pull_request:
     paths:
       - "docs/CoTheoryAll/candidates/**"
       - "ai/cotheoryall/**"
-      - "scripts/test_comegathesis_three_view_r0.cjs"
+      - "scripts/test_comegathesis_*"
       - ".github/workflows/comegathesis-r0.yml"
   workflow_dispatch:
+    inputs:
+      run_browser:
+        description: "Run an optional source-only Chromium smoke; not UX acceptance"
+        type: boolean
+        default: false
+        required: false
+concurrency:
+  group: comegathesis-ci-${{ github.event.pull_request.head.ref || github.ref_name }}
+  cancel-in-progress: true
 permissions:
   contents: read
 jobs:
   source-parity:
+    name: Source identity, epistemic rails and negative-control gates
     runs-on: ubuntu-latest
-    timeout-minutes: 3
+    timeout-minutes: 4
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: "22"
-      - name: Three-view epistemic and relation parity (source-only)
-        run: node scripts/test_comegathesis_three_view_r0.cjs
+      - name: Run no-dependency source regression and emit hash-bound receipt
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p artifacts/comegathesis-r0
+          node --check scripts/test_comegathesis_three_view_r0.cjs
+          node scripts/test_comegathesis_three_view_r0.cjs | tee artifacts/comegathesis-r0/source-tests.log
+          git rev-parse HEAD > artifacts/comegathesis-r0/revision.txt
+          sha256sum \
+            scripts/test_comegathesis_three_view_r0.cjs \
+            ai/cotheoryall/comegathesis-relations-r0.json \
+            ai/cotheoryall/comegathesis-mythos-federation-delta-r0.json \
+            docs/CoTheoryAll/candidates/comegathesis-reader-r0.html \
+            docs/CoTheoryAll/candidates/COMYTHOS_COSEEDUNIFY_COFED_COIGC_R0_20261120.md \
+            > artifacts/comegathesis-r0/source-hashes.sha256
+          printf '%s\n' 'SOURCE_ONLY_TEST_PASS_DOES_NOT_PROVE_BROWSER_UX_RUNTIME_RECEIVER_COEX_CANON_OR_DEPLOYMENT' > artifacts/comegathesis-r0/nonclaims.txt
+          echo "Source-only CI gate: checked exact committed files. No browser, receiver or CoEx proof." >> "$GITHUB_STEP_SUMMARY"
+      - name: Keep test log and source digests, even if a check failed
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: comegathesis-source-proof-${{ github.run_id }}
+          path: artifacts/comegathesis-r0/
+          if-no-files-found: warn
+          retention-days: 30
+  browser-smoke:
+    name: Optional browser smoke (not independent acceptance)
+    if: ${{ (github.event_name == 'workflow_dispatch' && inputs.run_browser) || (github.event_name == 'pull_request' && contains(github.event.pull_request.labels.*.name, 'comegathesis-browser')) }}
+    needs: source-parity
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Chromium source reader smoke
+        shell: bash
+        run: |
+          set -euo pipefail
+          node --check scripts/test_comegathesis_browser_r0.cjs
+          node scripts/test_comegathesis_browser_r0.cjs
+      - name: Preserve screenshot evidence and negative claims
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: comegathesis-browser-proof-${{ github.run_id }}
+          path: artifacts/comegathesis-r0/
+          if-no-files-found: warn
+          retention-days: 30
