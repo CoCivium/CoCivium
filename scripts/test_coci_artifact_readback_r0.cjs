@@ -29,6 +29,11 @@ const SOURCE_PATHS = [
 ];
 const REPLAY_PATHS = ["scripts/test_coworkid_process_replay_r0.cjs"];
 const CONCURRENT_PATHS = ["scripts/test_coworkid_concurrent_fencing_r0.cjs"];
+const RESIDUE_PATHS = [
+  "scripts/test_coci_session_residue_r0.cjs",
+  "ai/currentness/coci-session-noncycling-checkpoint-r0-20261120.json",
+  "ai/currentness/coci-session-residue-gates-r0-20261120.json"
+];
 const INPUT_FILES = [
   "source-hashes.sha256",
   "coworkid-process-replay.sha256",
@@ -37,7 +42,9 @@ const INPUT_FILES = [
   "coworkid-process-replay.log",
   "nonclaims.txt",
   "coworkid-concurrent-fence.sha256",
-  "coworkid-concurrent-fence.log"
+  "coworkid-concurrent-fence.log",
+  "session-residue.sha256",
+  "session-residue.log"
 ];
 
 function sourcePath(rel) {
@@ -76,6 +83,7 @@ function verify(i) {
   const sourceEntries = verifyManifest(i.sourceManifest, SOURCE_PATHS);
   const replayEntries = verifyManifest(i.replayManifest, REPLAY_PATHS);
   const concurrentEntries = verifyManifest(i.concurrentManifest, CONCURRENT_PATHS);
+  const residueEntries = verifyManifest(i.residueManifest, RESIDUE_PATHS);
 
   assert.equal(countPasses(i.sourceLog), 11, "HOLD_SOURCE_TEST_COUNT");
   assert(i.sourceLog.includes("SOURCE_ONLY_PASS 11 tests"), "HOLD_SOURCE_TEST_RESULT_ABSENT");
@@ -85,8 +93,11 @@ function verify(i) {
   assert.equal(countPasses(i.concurrentLog), 16, "HOLD_CONCURRENT_TEST_COUNT");
   assert(i.concurrentLog.includes("SYNTHETIC_CONCURRENT_FENCE_PASS 16 tests"), "HOLD_CONCURRENT_RESULT_ABSENT");
   assert(i.concurrentLog.includes("NO_POWER_LOSS_PROOF"), "HOLD_CONCURRENT_SCOPE_ABSENT");
+  assert.equal(countPasses(i.residueLog), 20, "HOLD_RESIDUE_TEST_COUNT");
+  assert(i.residueLog.includes("NONCYCLING_RESIDUE_SOURCE_ONLY_PASS 20 tests"), "HOLD_RESIDUE_RESULT_ABSENT");
+  assert(i.residueLog.includes("all_sessions=false provider_chat_archived=false receiver_ack=false"), "HOLD_RESIDUE_NONCLAIM_ABSENT");
   assert(i.nonclaims.includes("DOES_NOT_PROVE_BROWSER_UX_RUNTIME_RECEIVER_COEX_CANON_OR_DEPLOYMENT"), "HOLD_CI_NONCLAIM_ABSENT");
-  return { commit, sourceEntries, replayEntries, concurrentEntries };
+  return { commit, sourceEntries, replayEntries, concurrentEntries, residueEntries };
 }
 
 function expectHold(name, mutation, input) {
@@ -102,7 +113,8 @@ const inputNames = {
   sourceManifest: INPUT_FILES[0], replayManifest: INPUT_FILES[1],
   revision: INPUT_FILES[2], sourceLog: INPUT_FILES[3],
   replayLog: INPUT_FILES[4], nonclaims: INPUT_FILES[5],
-  concurrentManifest: INPUT_FILES[6], concurrentLog: INPUT_FILES[7]
+  concurrentManifest: INPUT_FILES[6], concurrentLog: INPUT_FILES[7],
+  residueManifest: INPUT_FILES[8], residueLog: INPUT_FILES[9]
 };
 for (const [k, filename] of Object.entries(inputNames)) {
   const located = path.join(artifact, filename);
@@ -120,7 +132,9 @@ const negative = [
   ["missing_recovery_pass", d => ({ ...d, replayLog: d.replayLog.replace("SYNTHETIC_SOURCE_RECOVERY_PASS 17 tests", "RECOVERY_RESULT_UNKNOWN") })],
   ["missing_nonclaims", d => ({ ...d, nonclaims: "" })],
   ["concurrent_digest_tamper", d => ({ ...d, concurrentManifest: d.concurrentManifest.replace(/^[a-f0-9]{64}/, "0".repeat(64)) })],
-  ["concurrent_result_removed", d => ({ ...d, concurrentLog: d.concurrentLog.replace("SYNTHETIC_CONCURRENT_FENCE_PASS 16 tests", "UNKNOWN") })]
+  ["concurrent_result_removed", d => ({ ...d, concurrentLog: d.concurrentLog.replace("SYNTHETIC_CONCURRENT_FENCE_PASS 16 tests", "UNKNOWN") })],
+  ["residue_digest_tamper", d => ({ ...d, residueManifest: d.residueManifest.replace(/^[a-f0-9]{64}/, "0".repeat(64)) })],
+  ["residue_result_removed", d => ({ ...d, residueLog: d.residueLog.replace("NONCYCLING_RESIDUE_SOURCE_ONLY_PASS 20 tests", "UNKNOWN") })]
 ];
 for (const [name, mutate] of negative) expectHold(name, mutate, data);
 
@@ -135,11 +149,12 @@ const receipt = {
   source_job: "source-parity",
   receiving_job: "artifact-readback",
   received_artifact_name: "comegathesis-source-proof-" + (process.env.GITHUB_RUN_ID || "UNKNOWN"),
-  tests: { source: 11, process_recovery: 17, concurrent_fencing: 16, negative_controls: negative.length },
+  tests: { source: 11, process_recovery: 17, concurrent_fencing: 16, session_residue: 20, negative_controls: negative.length },
   exact_manifest_paths: {
     source: verified.sourceEntries.map(x => x.path),
     replay: verified.replayEntries.map(x => x.path),
-    concurrent: verified.concurrentEntries.map(x => x.path)
+    concurrent: verified.concurrentEntries.map(x => x.path),
+    session_residue: verified.residueEntries.map(x => x.path)
   },
   received_artifact_file_hashes: Object.fromEntries(
     INPUT_FILES.map(name => [name, sha256(fs.readFileSync(path.join(artifact, name)))])
@@ -165,4 +180,4 @@ fs.writeFileSync(receiptPath, JSON.stringify(receipt, null, 2) + "\n", { flag: "
 fs.writeFileSync(path.join(output, "coci-artifact-readback-receipt.sha256"),
   sha256(fs.readFileSync(receiptPath)) + "  coci-artifact-readback-receipt.json\n",
   { flag: "wx" });
-process.stdout.write("CI_ARTIFACT_READBACK_PASS source=11 replay=17 concurrent=16 negatives=" + negative.length + " provider_independent=false\n");
+process.stdout.write("CI_ARTIFACT_READBACK_PASS source=11 replay=17 concurrent=16 residue=20 negatives=" + negative.length + " provider_independent=false\n");
