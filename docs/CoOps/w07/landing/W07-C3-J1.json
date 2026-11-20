@@ -1,0 +1,74 @@
+{
+  "attempt_id": "1",
+  "authority_ref_or_null": null,
+  "claimed_actor": "Claude (Opus 5.5) as W07; claim only, unsigned",
+  "collision_scope": "docs/CoOps/w07/c3/",
+  "cycle_id": "W07-C3",
+  "dependency_ids": [],
+  "disposition": "PREPARED",
+  "envelope_sha256": "dad94bc8e46c3b96dbdb8e89c0d9623c05d860669235f2e616efb37456c6d138",
+  "evidence": [],
+  "hold_reason_or_null": "LANDING_HOLD: no authenticated write transport (git proxy 403: repo not in session's authorized set)",
+  "idempotency_key": "2a0cc325e00ca912fc0014d649c64fe6fc4040b9afa4aac732676d16f05213dd",
+  "input_refs": [
+    {
+      "sha256_or_commit": "37ef13179c1d841a83aa8ceb44dd98ed7c8f94b0",
+      "uri": "CoCivium/CoCivium@37ef1317:cosites261118-preview/cocivium-home-r1/index.html"
+    },
+    {
+      "sha256_or_commit": "84d435eb9217dd986a95dc1626db6132f00d27bf",
+      "uri": "CoCivium/CoCivium@84d435eb:experiments/first-contact-safe-page-r1/"
+    },
+    {
+      "sha256_or_commit": "d732424e8c784fd106d3cefbe6e8ddf7af205013",
+      "uri": "CoCivium/InSeed@d732424:index.html"
+    },
+    {
+      "sha256_or_commit": "6e7efc0726a940e44e8c2538bff23be765b382a7",
+      "uri": "CoCivium/CoPolitic-site@6e7efc0:index.html"
+    },
+    {
+      "sha256_or_commit": "c8cb016a",
+      "uri": "CoCivium/CoCivium@c8cb016a:docs/CoOps/COSITES261119_LIVE_ROOT_PRIVACY_RECEIPT_R0.json"
+    }
+  ],
+  "job_id": "W07-C3-J1",
+  "kind": "candidate_artifact",
+  "object_id": "sha256:5e1d598e47680f303ccc0a90258a4bcad7600a70843aeb3482f720f4546c0bb1",
+  "output_refs": [
+    {
+      "sha256": "eb5d0c6d18f1a7706bba6c7d33a3f8be0b3bb5ac585ab112bfaac0c6e2c79c99",
+      "uri": "CoCivium/CoCivium@claude/w07-loop-20261118:docs/CoOps/w07/c3/w07_site_qa.cjs"
+    },
+    {
+      "sha256": "715c0e4215cf69957e57d225197456ad0db2184d1e72d7e7a6771c1f1cc15286",
+      "uri": "CoCivium/CoCivium@claude/w07-loop-20261118:docs/CoOps/w07/c3/W07_C3_SITE_QA_R0.json"
+    },
+    {
+      "sha256": "e9cd1a0abc8793a564ed35e177b67d2f698cefede77ab71b6e4fb05cf8165f1f",
+      "uri": "CoCivium/CoCivium@claude/w07-loop-20261118:docs/CoOps/w07/c3/W07_C3_SITE_QA_R0.md"
+    },
+    {
+      "sha256": "e9cc69acc95805bb4b5ff68ff40ef9560790e113cf2b77bb31d4a7470d0dac5e",
+      "uri": "CoCivium/CoCivium@claude/w07-loop-20261118:docs/CoOps/w07/c3/W07_C3_mobile_top_contact_sheet.jpg"
+    },
+    {
+      "sha256": "65ccc01783d951da01c3be3a990885593c69b86ed1497dae071affc374c3a18f",
+      "uri": "CoCivium/CoCivium@claude/w07-loop-20261118:docs/CoOps/w07/c3/W07_C3_desktop_contact_sheet.jpg"
+    }
+  ],
+  "privacy_class": "public-safe",
+  "produced_utc": "2026-11-20T20:58:21Z",
+  "reviewer_ids": [],
+  "schema_version": "CoLanding.Envelope.R0(candidate)",
+  "session_instance_id": "w07-si-43d985bc720b4b4f",
+  "successor_job_ids": [
+    "W07-C3-J2"
+  ],
+  "tests": [
+    "axe-core 4.10.3 wcag2a/aa+21a/aa x2 viewports: 7/7 candidate pages 0 violations",
+    "InSeed main FAIL html-has-lang",
+    "InSeed live apex sha256 vs 757 repo blobs: 0 matches"
+  ],
+  "worker_id": "W07"
+}

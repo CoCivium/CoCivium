@@ -16,6 +16,7 @@ Prove or falsify the CoLoop+ elected-actuator, idempotency, heartbeat and reboot
 | W07-C1-J3 falsify + fix | L5 frozen-in-transaction test plus fix; defects D1–D4; `W07_C1_J3J4_RESULTS_R0.{md,json}` | DONE (this commit) |
 | W07-C1-J4 production-timing spot runs | L2 ×5 and H2 ×3 at L=90/R=30/H=30 | DONE (this commit) |
 | W07-C1-J5 landing package | this manifest, `w07_landing.py`, `landing/*.json`, bundle | DONE locally; landing HOLD |
+| W07-C3-J1 three-flagship QA + delivery reconciliation | `c3/` (tool, QA JSON, report, contact sheets) | DONE (this commit). Candidates PASS 7/7; InSeed live body matches no repo blob |
 | W07-C2-J7 Windows parity | `w07_coloop_ref.py`, `coloop_tick.py`, `w07_platform_selftest.py`, `W07_C2_J7_RESULTS_R0.json` | DONE on Linux; Windows run NOT_RUN |
 | W07-C2-J6 pid guard + clock jump | `w07_coloop_ref.py` (L6, L7), `W07_C2_J6_RESULTS_R0.json` | DONE (this commit) |
 | W07-C2-J1 tick + scheduler template | `coloop_tick.py`, `test_coloop_tick.py`, `CoLoopTick.TaskScheduler.TEMPLATE.xml` | DONE (this commit); template NOT registered |
@@ -46,6 +47,7 @@ Prove or falsify the CoLoop+ elected-actuator, idempotency, heartbeat and reboot
 - No other file in the repo working tree, and nothing in the InSeed clone, changed in that window. Every W07 file still matches its recorded hash.
 
 ## Successor backlog (dependency-aware)
+0. **Site delivery gates (owner-held, from C3-J1):** find inseed.com's real serving origin; elect the CoCivium front door and privately review www; configure CoPolitic hosting. W07 can rerun `c3/w07_site_qa.cjs` on any newly elected commit without a gate.
 1. **W07-C2-J8 Windows self-test run (needs a Windows host, read-only):** run `w07_platform_selftest.py` and record `selftest_windows.json`. This can be combined with C2-J4 on X2.
 2. **W07-C2-J2 L5 policy decision (needs steward):** choose HOLD or single-kill for STALE_LOCK in production; single-kill needs authority to terminate the orchestrator's own process.
 3. **W07-C2-J3 independent rerun (needs a reviewer of different lineage):** a non-Claude worker or human reruns `lease|idem|hb|falsify` from the landed commit and posts the hashes.

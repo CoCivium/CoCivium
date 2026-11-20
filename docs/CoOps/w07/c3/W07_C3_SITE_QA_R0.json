@@ -1,0 +1,1222 @@
+{
+  "axe_core": "4.10.3",
+  "chrome": "153.0.8010.12",
+  "contact_sheets": {
+    "W07_C3_desktop_contact_sheet.jpg": "65ccc01783d951da01c3be3a990885593c69b86ed1497dae071affc374c3a18f",
+    "W07_C3_mobile_top_contact_sheet.jpg": "e9cc69acc95805bb4b5ff68ff40ef9560790e113cf2b77bb31d4a7470d0dac5e"
+  },
+  "extra_tags": [
+    "wcag22aa",
+    "best-practice"
+  ],
+  "finished_utc": "2026-11-20T20:50:46.177Z",
+  "gating_tags": [
+    "wcag2a",
+    "wcag2aa",
+    "wcag21a",
+    "wcag21aa"
+  ],
+  "host": "Claude cloud sandbox (Linux), headless Chrome; local source copies; all http(s) blocked",
+  "independence": "One automated scan by W07 (Claude lineage). Different engine run from candidates' own tests, but NOT one of three independent validations.",
+  "live_reconciliation": {
+    "cocivium": {
+      "live": "apex 404; www 200 technical index with privacy flags (per receipt)",
+      "repo_main_CNAME": null
+    },
+    "copolitic": {
+      "CNAME": null,
+      "live": "apex 404; www network/TLS unavailable (per receipt)",
+      "repo_main_has_index": false
+    },
+    "inseed_apex_body_bytes": 2053,
+    "inseed_apex_body_sha256": "840db7d974c975ae95b0b775bdb1cd9cd0b51d30ce1c36c40b2c115d21371bd3",
+    "inseed_main_index": {
+      "CNAME": "inseed.com",
+      "bytes": 1686,
+      "sha256": "9f2f0f7dd4629089c48ddf264aa4c8347b64e72ea2d0155c4266fdf11b11e954"
+    },
+    "inseed_repo_search": {
+      "blobs_total": 757,
+      "conclusion": "Live inseed.com apex body is not any committed file of CoCivium/InSeed; the serving origin is UNKNOWN. Merging a candidate to InSeed main is not shown to change the live site.",
+      "method": "full mirror clone of CoCivium/InSeed (all refs incl. pull refs); sha256 of every blob 1900-2200 bytes; exact-size 2053 scan",
+      "sha256_matches": 0,
+      "size_2053_blobs": 0
+    },
+    "source_receipt": "CoCivium/CoCivium@c8cb016a:docs/CoOps/COSITES261119_LIVE_ROOT_PRIVACY_RECEIPT_R0.json (CI run 44627872957, observed 2026-11-19T22:21:44Z)",
+    "w07_direct_observation": "UNOBSERVED: live domains not reachable from this session (fetch allowlist; not search-indexed)"
+  },
+  "network": "all http(s) blocked; file:// only",
+  "pages": [
+    {
+      "bytes": 4311,
+      "file": "index.html",
+      "label": "cocivium-home-r1",
+      "sha256": "3233859425b0c7afbc91ede519ef098635573c9942d07e2a64bd16d794cc807e",
+      "source": {
+        "commit": "37ef13179c1d841a83aa8ceb44dd98ed7c8f94b0",
+        "path": "cosites261118-preview/cocivium-home-r1/index.html",
+        "repo": "CoCivium/CoCivium"
+      },
+      "summary": {
+        "axe_critical_serious": [],
+        "axe_gating_violation_ids": [],
+        "blocked_hosts": [],
+        "broken_anchors": [],
+        "broken_relative": [],
+        "h1": 1,
+        "has_main": true,
+        "heading_skips": 0,
+        "lang": "en",
+        "mobile_overflow_px": 0,
+        "page_errors": 0,
+        "skip_link": true,
+        "visitor_ready_automated": true
+      },
+      "viewports": [
+        {
+          "axe_csp_bypass": false,
+          "axe_extra": [],
+          "axe_gating": [],
+          "blocked_external_requests": {},
+          "console_errors": [],
+          "dom": {
+            "broken_anchors": [],
+            "broken_relative": [],
+            "external_hosts": [
+              "github.com"
+            ],
+            "h1": 1,
+            "heading_skips": 0,
+            "headings": [
+              1,
+              2,
+              2,
+              2
+            ],
+            "horizontal_overflow_px": 0,
+            "images": 0,
+            "img_no_alt": 0,
+            "inner_w": 390,
+            "landmarks": {
+              "footer": 1,
+              "header": 1,
+              "main": 1,
+              "nav": 1
+            },
+            "lang": "en",
+            "links_total": 9,
+            "meta_description": false,
+            "meta_viewport": true,
+            "relative_links": [],
+            "scripts": [],
+            "scroll_w": 390,
+            "skip_link": true,
+            "small_targets": 0,
+            "text_chars": 1895,
+            "title": "CoCivium | Cooperative intelligence, open to challenge"
+          },
+          "page_errors": [],
+          "screenshot": "cocivium-home-r1-mobile390.png",
+          "screenshot_sha256": "312beedd2c91e6c5e0de3ef37f27d8101b4bb12c5e5b79204f15b1d8f0b8cd63",
+          "viewport": "mobile390"
+        },
+        {
+          "axe_csp_bypass": false,
+          "axe_extra": [],
+          "axe_gating": [],
+          "blocked_external_requests": {},
+          "console_errors": [],
+          "dom": {
+            "broken_anchors": [],
+            "broken_relative": [],
+            "external_hosts": [
+              "github.com"
+            ],
+            "h1": 1,
+            "heading_skips": 0,
+            "headings": [
+              1,
+              2,
+              2,
+              2
+            ],
+            "horizontal_overflow_px": 0,
+            "images": 0,
+            "img_no_alt": 0,
+            "inner_w": 1365,
+            "landmarks": {
+              "footer": 1,
+              "header": 1,
+              "main": 1,
+              "nav": 1
+            },
+            "lang": "en",
+            "links_total": 9,
+            "meta_description": false,
+            "meta_viewport": true,
+            "relative_links": [],
+            "scripts": [],
+            "scroll_w": 1365,
+            "skip_link": true,
+            "small_targets": 0,
+            "text_chars": 1895,
+            "title": "CoCivium | Cooperative intelligence, open to challenge"
+          },
+          "page_errors": [],
+          "screenshot": "cocivium-home-r1-desktop1365.png",
+          "screenshot_sha256": "dc19a1fbd70b23591ae1ffecd4d1f8e98c26057662d41cfc84a028fba465f0ff",
+          "viewport": "desktop1365"
+        }
+      ]
+    },
+    {
+      "bytes": 6178,
+      "file": "index.html",
+      "label": "cocivium-firstcontact",
+      "sha256": "1367cdff859fdb8ce77e7752c67561ca525519c95d0b566005aa7656cc15e615",
+      "source": {
+        "commit": "84d435eb9217dd986a95dc1626db6132f00d27bf",
+        "path": "experiments/first-contact-safe-page-r1/index.html",
+        "repo": "CoCivium/CoCivium"
+      },
+      "summary": {
+        "axe_critical_serious": [],
+        "axe_gating_violation_ids": [],
+        "blocked_hosts": [],
+        "broken_anchors": [],
+        "broken_relative": [],
+        "h1": 1,
+        "has_main": true,
+        "heading_skips": 0,
+        "lang": "en",
+        "mobile_overflow_px": 0,
+        "page_errors": 0,
+        "skip_link": true,
+        "visitor_ready_automated": true
+      },
+      "viewports": [
+        {
+          "axe_csp_bypass": true,
+          "axe_extra": [],
+          "axe_gating": [],
+          "blocked_external_requests": {},
+          "console_errors": [
+            "Executing inline script violates the following Content Security Policy directive 'script-src 'self''. Either the 'unsafe-inline' keyword, a hash ('sha256-iAlwwI"
+          ],
+          "dom": {
+            "broken_anchors": [],
+            "broken_relative": [],
+            "external_hosts": [
+              "github.com"
+            ],
+            "h1": 1,
+            "heading_skips": 0,
+            "headings": [
+              1,
+              2,
+              2,
+              2,
+              2
+            ],
+            "horizontal_overflow_px": 0,
+            "images": 0,
+            "img_no_alt": 0,
+            "inner_w": 390,
+            "landmarks": {
+              "footer": 1,
+              "header": 1,
+              "main": 1,
+              "nav": 1
+            },
+            "lang": "en",
+            "links_total": 10,
+            "meta_description": true,
+            "meta_viewport": true,
+            "relative_links": [
+              "proof-gallery.html"
+            ],
+            "scripts": [
+              "first-use.js"
+            ],
+            "scroll_w": 390,
+            "skip_link": true,
+            "small_targets": 0,
+            "text_chars": 2709,
+            "title": "CoCivium | Start with one useful thing"
+          },
+          "page_errors": [],
+          "screenshot": "cocivium-firstcontact-mobile390.png",
+          "screenshot_sha256": "2dd8f5011c7bc5822b444640f3c2972f38223551a620179b368641a952848035",
+          "viewport": "mobile390"
+        },
+        {
+          "axe_csp_bypass": true,
+          "axe_extra": [],
+          "axe_gating": [],
+          "blocked_external_requests": {},
+          "console_errors": [
+            "Executing inline script violates the following Content Security Policy directive 'script-src 'self''. Either the 'unsafe-inline' keyword, a hash ('sha256-iAlwwI"
+          ],
+          "dom": {
+            "broken_anchors": [],
+            "broken_relative": [],
+            "external_hosts": [
+              "github.com"
+            ],
+            "h1": 1,
+            "heading_skips": 0,
+            "headings": [
+              1,
+              2,
+              2,
+              2,
+              2
+            ],
+            "horizontal_overflow_px": 0,
+            "images": 0,
+            "img_no_alt": 0,
+            "inner_w": 1365,
+            "landmarks": {
+              "footer": 1,
+              "header": 1,
+              "main": 1,
+              "nav": 1
+            },
+            "lang": "en",
+            "links_total": 10,
+            "meta_description": true,
+            "meta_viewport": true,
+            "relative_links": [
+              "proof-gallery.html"
+            ],
+            "scripts": [
+              "first-use.js"
+            ],
+            "scroll_w": 1365,
+            "skip_link": true,
+            "small_targets": 0,
+            "text_chars": 2709,
+            "title": "CoCivium | Start with one useful thing"
+          },
+          "page_errors": [],
+          "screenshot": "cocivium-firstcontact-desktop1365.png",
+          "screenshot_sha256": "4e37f38ee6fd04e0841da776b11bd0ae54507f8060ad5a949e51dd15a8ff3423",
+          "viewport": "desktop1365"
+        }
+      ]
+    },
+    {
+      "bytes": 13967,
+      "file": "proof-gallery.html",
+      "label": "cocivium-gallery",
+      "sha256": "370ea1f2bc6eaec4847b87523cc6a1d84f0d13524c61c17d92e5d37bc2c21317",
+      "source": {
+        "commit": "84d435eb9217dd986a95dc1626db6132f00d27bf",
+        "path": "experiments/first-contact-safe-page-r1/proof-gallery.html",
+        "repo": "CoCivium/CoCivium"
+      },
+      "summary": {
+        "axe_critical_serious": [],
+        "axe_gating_violation_ids": [],
+        "blocked_hosts": [],
+        "broken_anchors": [],
+        "broken_relative": [],
+        "h1": 1,
+        "has_main": true,
+        "heading_skips": 0,
+        "lang": "en",
+        "mobile_overflow_px": 0,
+        "page_errors": 0,
+        "skip_link": true,
+        "visitor_ready_automated": true
+      },
+      "viewports": [
+        {
+          "axe_csp_bypass": true,
+          "axe_extra": [],
+          "axe_gating": [],
+          "blocked_external_requests": {},
+          "console_errors": [
+            "Executing inline script violates the following Content Security Policy directive 'script-src 'self''. Either the 'unsafe-inline' keyword, a hash ('sha256-iAlwwI"
+          ],
+          "dom": {
+            "broken_anchors": [],
+            "broken_relative": [],
+            "external_hosts": [
+              "github.com"
+            ],
+            "h1": 1,
+            "heading_skips": 0,
+            "headings": [
+              1,
+              2,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              2
+            ],
+            "horizontal_overflow_px": 0,
+            "images": 0,
+            "img_no_alt": 0,
+            "inner_w": 390,
+            "landmarks": {
+              "footer": 1,
+              "header": 1,
+              "main": 1,
+              "nav": 0
+            },
+            "lang": "en",
+            "links_total": 15,
+            "meta_description": true,
+            "meta_viewport": true,
+            "relative_links": [
+              "index.html",
+              "proof-gallery.json"
+            ],
+            "scripts": [
+              "gallery.js"
+            ],
+            "scroll_w": 390,
+            "skip_link": true,
+            "small_targets": 0,
+            "text_chars": 4155,
+            "title": "CoCivium | A small proof gallery"
+          },
+          "page_errors": [],
+          "screenshot": "cocivium-gallery-mobile390.png",
+          "screenshot_sha256": "2bbfd24819b10fb86fbe4af7a5047cfacc8948af90d5d4bb79e0556b9563bb49",
+          "viewport": "mobile390"
+        },
+        {
+          "axe_csp_bypass": true,
+          "axe_extra": [],
+          "axe_gating": [],
+          "blocked_external_requests": {},
+          "console_errors": [
+            "Executing inline script violates the following Content Security Policy directive 'script-src 'self''. Either the 'unsafe-inline' keyword, a hash ('sha256-iAlwwI"
+          ],
+          "dom": {
+            "broken_anchors": [],
+            "broken_relative": [],
+            "external_hosts": [
+              "github.com"
+            ],
+            "h1": 1,
+            "heading_skips": 0,
+            "headings": [
+              1,
+              2,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              2
+            ],
+            "horizontal_overflow_px": 0,
+            "images": 0,
+            "img_no_alt": 0,
+            "inner_w": 1365,
+            "landmarks": {
+              "footer": 1,
+              "header": 1,
+              "main": 1,
+              "nav": 0
+            },
+            "lang": "en",
+            "links_total": 15,
+            "meta_description": true,
+            "meta_viewport": true,
+            "relative_links": [
+              "index.html",
+              "proof-gallery.json"
+            ],
+            "scripts": [
+              "gallery.js"
+            ],
+            "scroll_w": 1365,
+            "skip_link": true,
+            "small_targets": 0,
+            "text_chars": 4155,
+            "title": "CoCivium | A small proof gallery"
+          },
+          "page_errors": [],
+          "screenshot": "cocivium-gallery-desktop1365.png",
+          "screenshot_sha256": "18401fb391af5d440da141a9dd7b6ac6dba69a5fe215cb8cb20620571d97651d",
+          "viewport": "desktop1365"
+        }
+      ]
+    },
+    {
+      "bytes": 16376,
+      "file": "index.html",
+      "label": "inseed-contrast",
+      "sha256": "7c24920437ff76698c1c5423c017a6a17baeaf415813d32344d4139eec39e82a",
+      "source": {
+        "commit": "d732424e8c784fd106d3cefbe6e8ddf7af205013",
+        "path": "index.html",
+        "repo": "CoCivium/InSeed"
+      },
+      "summary": {
+        "axe_critical_serious": [],
+        "axe_gating_violation_ids": [],
+        "blocked_hosts": [],
+        "broken_anchors": [],
+        "broken_relative": [],
+        "h1": 1,
+        "has_main": true,
+        "heading_skips": 0,
+        "lang": "en",
+        "mobile_overflow_px": 0,
+        "page_errors": 0,
+        "skip_link": true,
+        "visitor_ready_automated": true
+      },
+      "viewports": [
+        {
+          "axe_csp_bypass": false,
+          "axe_extra": [],
+          "axe_gating": [],
+          "blocked_external_requests": {},
+          "console_errors": [],
+          "dom": {
+            "broken_anchors": [],
+            "broken_relative": [],
+            "external_hosts": [
+              "github.com"
+            ],
+            "h1": 1,
+            "heading_skips": 0,
+            "headings": [
+              1,
+              2,
+              3,
+              3,
+              3,
+              2,
+              3,
+              3,
+              3,
+              3,
+              2,
+              3,
+              3,
+              2,
+              2,
+              3
+            ],
+            "horizontal_overflow_px": 0,
+            "images": 0,
+            "img_no_alt": 0,
+            "inner_w": 390,
+            "landmarks": {
+              "footer": 1,
+              "header": 1,
+              "main": 1,
+              "nav": 1
+            },
+            "lang": "en",
+            "links_total": 15,
+            "meta_description": true,
+            "meta_viewport": true,
+            "relative_links": [],
+            "scripts": [],
+            "scroll_w": 390,
+            "skip_link": true,
+            "small_targets": 1,
+            "text_chars": 4615,
+            "title": "InSeed | Useful systems. Clear evidence."
+          },
+          "page_errors": [],
+          "screenshot": "inseed-contrast-mobile390.png",
+          "screenshot_sha256": "5a9c6eabac2ca14bbd6e86ce055e10ab6c8d29f0c1b97052d8041147eb7409f3",
+          "viewport": "mobile390"
+        },
+        {
+          "axe_csp_bypass": false,
+          "axe_extra": [],
+          "axe_gating": [],
+          "blocked_external_requests": {},
+          "console_errors": [],
+          "dom": {
+            "broken_anchors": [],
+            "broken_relative": [],
+            "external_hosts": [
+              "github.com"
+            ],
+            "h1": 1,
+            "heading_skips": 0,
+            "headings": [
+              1,
+              2,
+              3,
+              3,
+              3,
+              2,
+              3,
+              3,
+              3,
+              3,
+              2,
+              3,
+              3,
+              2,
+              2,
+              3
+            ],
+            "horizontal_overflow_px": 0,
+            "images": 0,
+            "img_no_alt": 0,
+            "inner_w": 1365,
+            "landmarks": {
+              "footer": 1,
+              "header": 1,
+              "main": 1,
+              "nav": 1
+            },
+            "lang": "en",
+            "links_total": 15,
+            "meta_description": true,
+            "meta_viewport": true,
+            "relative_links": [],
+            "scripts": [],
+            "scroll_w": 1365,
+            "skip_link": true,
+            "small_targets": 1,
+            "text_chars": 4615,
+            "title": "InSeed | Useful systems. Clear evidence."
+          },
+          "page_errors": [],
+          "screenshot": "inseed-contrast-desktop1365.png",
+          "screenshot_sha256": "01ea88cbe201a4c232520f8ca4531aa9a0f7fbf7174e2d848aee8fa9cbaa6e7d",
+          "viewport": "desktop1365"
+        }
+      ]
+    },
+    {
+      "bytes": 16354,
+      "file": "index.html",
+      "label": "inseed-pr1",
+      "sha256": "7a0cf90063eefefc4f3e1284671330e0afefbfafb06705ca8056a43422800002",
+      "source": {
+        "commit": "dc03e8865a90de6d26bf03bc64061319b1cf7fbd",
+        "path": "index.html",
+        "repo": "CoCivium/InSeed"
+      },
+      "summary": {
+        "axe_critical_serious": [],
+        "axe_gating_violation_ids": [],
+        "blocked_hosts": [],
+        "broken_anchors": [],
+        "broken_relative": [],
+        "h1": 1,
+        "has_main": true,
+        "heading_skips": 0,
+        "lang": "en",
+        "mobile_overflow_px": 0,
+        "page_errors": 0,
+        "skip_link": true,
+        "visitor_ready_automated": true
+      },
+      "viewports": [
+        {
+          "axe_csp_bypass": false,
+          "axe_extra": [],
+          "axe_gating": [],
+          "blocked_external_requests": {},
+          "console_errors": [],
+          "dom": {
+            "broken_anchors": [],
+            "broken_relative": [],
+            "external_hosts": [
+              "github.com"
+            ],
+            "h1": 1,
+            "heading_skips": 0,
+            "headings": [
+              1,
+              2,
+              3,
+              3,
+              3,
+              2,
+              3,
+              3,
+              3,
+              3,
+              2,
+              3,
+              3,
+              2,
+              2,
+              3
+            ],
+            "horizontal_overflow_px": 0,
+            "images": 0,
+            "img_no_alt": 0,
+            "inner_w": 390,
+            "landmarks": {
+              "footer": 1,
+              "header": 1,
+              "main": 1,
+              "nav": 1
+            },
+            "lang": "en",
+            "links_total": 15,
+            "meta_description": true,
+            "meta_viewport": true,
+            "relative_links": [],
+            "scripts": [],
+            "scroll_w": 390,
+            "skip_link": true,
+            "small_targets": 1,
+            "text_chars": 4615,
+            "title": "InSeed | Useful systems. Clear evidence."
+          },
+          "page_errors": [],
+          "screenshot": "inseed-pr1-mobile390.png",
+          "screenshot_sha256": "bc095570a88737c3c224928044125282070b8107d280d1f156aea4f5c40e1d4a",
+          "viewport": "mobile390"
+        },
+        {
+          "axe_csp_bypass": false,
+          "axe_extra": [],
+          "axe_gating": [],
+          "blocked_external_requests": {},
+          "console_errors": [],
+          "dom": {
+            "broken_anchors": [],
+            "broken_relative": [],
+            "external_hosts": [
+              "github.com"
+            ],
+            "h1": 1,
+            "heading_skips": 0,
+            "headings": [
+              1,
+              2,
+              3,
+              3,
+              3,
+              2,
+              3,
+              3,
+              3,
+              3,
+              2,
+              3,
+              3,
+              2,
+              2,
+              3
+            ],
+            "horizontal_overflow_px": 0,
+            "images": 0,
+            "img_no_alt": 0,
+            "inner_w": 1365,
+            "landmarks": {
+              "footer": 1,
+              "header": 1,
+              "main": 1,
+              "nav": 1
+            },
+            "lang": "en",
+            "links_total": 15,
+            "meta_description": true,
+            "meta_viewport": true,
+            "relative_links": [],
+            "scripts": [],
+            "scroll_w": 1365,
+            "skip_link": true,
+            "small_targets": 1,
+            "text_chars": 4615,
+            "title": "InSeed | Useful systems. Clear evidence."
+          },
+          "page_errors": [],
+          "screenshot": "inseed-pr1-desktop1365.png",
+          "screenshot_sha256": "c3997c99e4f8f6f77d9c38764e1e047df7238894da7a57b4ca183a1e3cd0ec31",
+          "viewport": "desktop1365"
+        }
+      ]
+    },
+    {
+      "bytes": 1686,
+      "file": "index.html",
+      "label": "inseed-main",
+      "sha256": "9f2f0f7dd4629089c48ddf264aa4c8347b64e72ea2d0155c4266fdf11b11e954",
+      "source": {
+        "commit": "1d0964637c68b49ef4274c5e48d034e148f1897a",
+        "path": "index.html",
+        "repo": "CoCivium/InSeed"
+      },
+      "summary": {
+        "axe_critical_serious": [
+          "html-has-lang"
+        ],
+        "axe_gating_violation_ids": [
+          "html-has-lang"
+        ],
+        "blocked_hosts": [],
+        "broken_anchors": [],
+        "broken_relative": [],
+        "h1": 1,
+        "has_main": false,
+        "heading_skips": 0,
+        "lang": null,
+        "mobile_overflow_px": 0,
+        "page_errors": 0,
+        "skip_link": false,
+        "visitor_ready_automated": false
+      },
+      "viewports": [
+        {
+          "axe_csp_bypass": false,
+          "axe_extra": [
+            {
+              "help": "Document should have one main landmark",
+              "id": "landmark-one-main",
+              "impact": "moderate",
+              "nodes": 1,
+              "samples": [
+                "html"
+              ]
+            },
+            {
+              "help": "All page content should be contained by landmarks",
+              "id": "region",
+              "impact": "moderate",
+              "nodes": 3,
+              "samples": [
+                "h1",
+                ".box",
+                "#ritual"
+              ]
+            }
+          ],
+          "axe_gating": [
+            {
+              "help": "<html> element must have a lang attribute",
+              "id": "html-has-lang",
+              "impact": "serious",
+              "nodes": 1,
+              "samples": [
+                "html"
+              ]
+            }
+          ],
+          "blocked_external_requests": {},
+          "console_errors": [],
+          "dom": {
+            "broken_anchors": [],
+            "broken_relative": [],
+            "external_hosts": [],
+            "h1": 1,
+            "heading_skips": 0,
+            "headings": [
+              1
+            ],
+            "horizontal_overflow_px": 0,
+            "images": 0,
+            "img_no_alt": 0,
+            "inner_w": 390,
+            "landmarks": {
+              "footer": 0,
+              "header": 0,
+              "main": 0,
+              "nav": 0
+            },
+            "lang": null,
+            "links_total": 0,
+            "meta_description": false,
+            "meta_viewport": false,
+            "relative_links": [],
+            "scripts": [],
+            "scroll_w": 390,
+            "skip_link": false,
+            "small_targets": 0,
+            "text_chars": 204,
+            "title": "We are now alive to all share \u2014 \u2282EvoAll+"
+          },
+          "page_errors": [],
+          "screenshot": "inseed-main-mobile390.png",
+          "screenshot_sha256": "88f69585a152a3ea18f8c38784a45e5d5795f429059a4886d58a3b42fa457229",
+          "viewport": "mobile390"
+        },
+        {
+          "axe_csp_bypass": false,
+          "axe_extra": [
+            {
+              "help": "Document should have one main landmark",
+              "id": "landmark-one-main",
+              "impact": "moderate",
+              "nodes": 1,
+              "samples": [
+                "html"
+              ]
+            },
+            {
+              "help": "All page content should be contained by landmarks",
+              "id": "region",
+              "impact": "moderate",
+              "nodes": 3,
+              "samples": [
+                "h1",
+                ".box",
+                "#ritual"
+              ]
+            }
+          ],
+          "axe_gating": [
+            {
+              "help": "<html> element must have a lang attribute",
+              "id": "html-has-lang",
+              "impact": "serious",
+              "nodes": 1,
+              "samples": [
+                "html"
+              ]
+            }
+          ],
+          "blocked_external_requests": {},
+          "console_errors": [],
+          "dom": {
+            "broken_anchors": [],
+            "broken_relative": [],
+            "external_hosts": [],
+            "h1": 1,
+            "heading_skips": 0,
+            "headings": [
+              1
+            ],
+            "horizontal_overflow_px": 0,
+            "images": 0,
+            "img_no_alt": 0,
+            "inner_w": 1365,
+            "landmarks": {
+              "footer": 0,
+              "header": 0,
+              "main": 0,
+              "nav": 0
+            },
+            "lang": null,
+            "links_total": 0,
+            "meta_description": false,
+            "meta_viewport": false,
+            "relative_links": [],
+            "scripts": [],
+            "scroll_w": 1365,
+            "skip_link": false,
+            "small_targets": 0,
+            "text_chars": 204,
+            "title": "We are now alive to all share \u2014 \u2282EvoAll+"
+          },
+          "page_errors": [],
+          "screenshot": "inseed-main-desktop1365.png",
+          "screenshot_sha256": "9fe9997fbfcfd7cfcda3053ff55a5fd7cfb87f46cf5f60a137ce9349fde21d65",
+          "viewport": "desktop1365"
+        }
+      ]
+    },
+    {
+      "bytes": 12520,
+      "file": "index.html",
+      "label": "copol-contrast",
+      "sha256": "3a70e58a64d2c1d2fbad31f219c0988510784c695125db2d48a0c64cecfdc2f9",
+      "source": {
+        "commit": "6e7efc0726a940e44e8c2538bff23be765b382a7",
+        "path": "index.html",
+        "repo": "CoCivium/CoPolitic-site"
+      },
+      "summary": {
+        "axe_critical_serious": [],
+        "axe_gating_violation_ids": [],
+        "blocked_hosts": [],
+        "broken_anchors": [],
+        "broken_relative": [],
+        "h1": 1,
+        "has_main": true,
+        "heading_skips": 0,
+        "lang": "en",
+        "mobile_overflow_px": 0,
+        "page_errors": 0,
+        "skip_link": true,
+        "visitor_ready_automated": true
+      },
+      "viewports": [
+        {
+          "axe_csp_bypass": false,
+          "axe_extra": [],
+          "axe_gating": [],
+          "blocked_external_requests": {},
+          "console_errors": [],
+          "dom": {
+            "broken_anchors": [],
+            "broken_relative": [],
+            "external_hosts": [
+              "github.com"
+            ],
+            "h1": 1,
+            "heading_skips": 0,
+            "headings": [
+              1,
+              2,
+              3,
+              3,
+              3,
+              2,
+              3,
+              3,
+              2,
+              3,
+              3,
+              2
+            ],
+            "horizontal_overflow_px": 0,
+            "images": 0,
+            "img_no_alt": 0,
+            "inner_w": 390,
+            "landmarks": {
+              "footer": 1,
+              "header": 1,
+              "main": 1,
+              "nav": 1
+            },
+            "lang": "en",
+            "links_total": 16,
+            "meta_description": true,
+            "meta_viewport": true,
+            "relative_links": [
+              "ai/index.json",
+              "llms.txt"
+            ],
+            "scripts": [],
+            "scroll_w": 390,
+            "skip_link": true,
+            "small_targets": 3,
+            "text_chars": 4284,
+            "title": "CoPolitic | From claims to accountable choices"
+          },
+          "page_errors": [],
+          "screenshot": "copol-contrast-mobile390.png",
+          "screenshot_sha256": "ca794426c82f6da75f4e2c73cfd1d14cf6ce500c14ee16114c39d79f03ca5dc7",
+          "viewport": "mobile390"
+        },
+        {
+          "axe_csp_bypass": false,
+          "axe_extra": [],
+          "axe_gating": [],
+          "blocked_external_requests": {},
+          "console_errors": [],
+          "dom": {
+            "broken_anchors": [],
+            "broken_relative": [],
+            "external_hosts": [
+              "github.com"
+            ],
+            "h1": 1,
+            "heading_skips": 0,
+            "headings": [
+              1,
+              2,
+              3,
+              3,
+              3,
+              2,
+              3,
+              3,
+              2,
+              3,
+              3,
+              2
+            ],
+            "horizontal_overflow_px": 0,
+            "images": 0,
+            "img_no_alt": 0,
+            "inner_w": 1365,
+            "landmarks": {
+              "footer": 1,
+              "header": 1,
+              "main": 1,
+              "nav": 1
+            },
+            "lang": "en",
+            "links_total": 16,
+            "meta_description": true,
+            "meta_viewport": true,
+            "relative_links": [
+              "ai/index.json",
+              "llms.txt"
+            ],
+            "scripts": [],
+            "scroll_w": 1365,
+            "skip_link": true,
+            "small_targets": 3,
+            "text_chars": 4284,
+            "title": "CoPolitic | From claims to accountable choices"
+          },
+          "page_errors": [],
+          "screenshot": "copol-contrast-desktop1365.png",
+          "screenshot_sha256": "6ea1086cb33c166fc3ea0402d2f3fd988e66d701b1338d957efc31b9c5f7fcb7",
+          "viewport": "desktop1365"
+        }
+      ]
+    },
+    {
+      "bytes": 12556,
+      "file": "index.html",
+      "label": "copol-pr1",
+      "sha256": "43fd95107e3147e3835dbc2a2a2b84c704e91dfb951c23df40f6548fa5c452ea",
+      "source": {
+        "commit": "218b43f773b5f02e63739a0438d88ff6890f6166",
+        "path": "index.html",
+        "repo": "CoCivium/CoPolitic-site"
+      },
+      "summary": {
+        "axe_critical_serious": [],
+        "axe_gating_violation_ids": [],
+        "blocked_hosts": [],
+        "broken_anchors": [],
+        "broken_relative": [],
+        "h1": 1,
+        "has_main": true,
+        "heading_skips": 0,
+        "lang": "en",
+        "mobile_overflow_px": 0,
+        "page_errors": 0,
+        "skip_link": true,
+        "visitor_ready_automated": true
+      },
+      "viewports": [
+        {
+          "axe_csp_bypass": false,
+          "axe_extra": [],
+          "axe_gating": [],
+          "blocked_external_requests": {},
+          "console_errors": [],
+          "dom": {
+            "broken_anchors": [],
+            "broken_relative": [],
+            "external_hosts": [
+              "github.com"
+            ],
+            "h1": 1,
+            "heading_skips": 0,
+            "headings": [
+              1,
+              2,
+              3,
+              3,
+              3,
+              2,
+              3,
+              3,
+              2,
+              3,
+              3,
+              2
+            ],
+            "horizontal_overflow_px": 0,
+            "images": 0,
+            "img_no_alt": 0,
+            "inner_w": 390,
+            "landmarks": {
+              "footer": 1,
+              "header": 1,
+              "main": 1,
+              "nav": 1
+            },
+            "lang": "en",
+            "links_total": 16,
+            "meta_description": true,
+            "meta_viewport": true,
+            "relative_links": [
+              "ai/index.json",
+              "llms.txt"
+            ],
+            "scripts": [],
+            "scroll_w": 390,
+            "skip_link": true,
+            "small_targets": 3,
+            "text_chars": 4286,
+            "title": "CoPolitic | From claims to accountable choices"
+          },
+          "page_errors": [],
+          "screenshot": "copol-pr1-mobile390.png",
+          "screenshot_sha256": "9423adf1b3f3eeb9c4896cc29c5135fdd39c47b73f67ebd89b310d8332119a3d",
+          "viewport": "mobile390"
+        },
+        {
+          "axe_csp_bypass": false,
+          "axe_extra": [],
+          "axe_gating": [],
+          "blocked_external_requests": {},
+          "console_errors": [],
+          "dom": {
+            "broken_anchors": [],
+            "broken_relative": [],
+            "external_hosts": [
+              "github.com"
+            ],
+            "h1": 1,
+            "heading_skips": 0,
+            "headings": [
+              1,
+              2,
+              3,
+              3,
+              3,
+              2,
+              3,
+              3,
+              2,
+              3,
+              3,
+              2
+            ],
+            "horizontal_overflow_px": 0,
+            "images": 0,
+            "img_no_alt": 0,
+            "inner_w": 1365,
+            "landmarks": {
+              "footer": 1,
+              "header": 1,
+              "main": 1,
+              "nav": 1
+            },
+            "lang": "en",
+            "links_total": 16,
+            "meta_description": true,
+            "meta_viewport": true,
+            "relative_links": [
+              "ai/index.json",
+              "llms.txt"
+            ],
+            "scripts": [],
+            "scroll_w": 1365,
+            "skip_link": true,
+            "small_targets": 3,
+            "text_chars": 4286,
+            "title": "CoPolitic | From claims to accountable choices"
+          },
+          "page_errors": [],
+          "screenshot": "copol-pr1-desktop1365.png",
+          "screenshot_sha256": "9473f97e3e74c945c8e3193d9415256afd3abcb06c5b32eec42da6c0721df496",
+          "viewport": "desktop1365"
+        }
+      ]
+    }
+  ],
+  "schema": "W07.SiteQA.R0",
+  "started_utc": "2026-11-20T20:50:27.344Z",
+  "work_id": "W07-C3-J1"
+}
