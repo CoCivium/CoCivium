@@ -3,11 +3,13 @@ on:
   push:
     paths:
       - 'scripts/CoCurrentnessGateR0.py'
+      - 'examples/cowalkaway/fenced_actuator_r0.py'
       - 'scripts/test_CoCurrentnessGateR0.py'
       - '.github/workflows/colocal-currentness-r0.yml'
   pull_request:
     paths:
       - 'scripts/CoCurrentnessGateR0.py'
+      - 'examples/cowalkaway/fenced_actuator_r0.py'
       - 'scripts/test_CoCurrentnessGateR0.py'
       - '.github/workflows/colocal-currentness-r0.yml'
   workflow_dispatch:
@@ -33,6 +35,12 @@ jobs:
           cat evidence/test.log
           printf '%s\n' "source_sha=$GITHUB_SHA" "run_id=$GITHUB_RUN_ID" "run_attempt=$GITHUB_RUN_ATTEMPT" "fixture_only=true" "x2_runtime_proof=false" "receiver_ack=false" "exit_code=$code" > evidence/receipt.txt
           test "$code" -eq 0
+      - name: Test local fenced actuator through fresh OS processes and forced crash
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p evidence
+          python -B examples/cowalkaway/fenced_actuator_r0.py --self-test 2>&1 | tee evidence/fenced-actuator-process.log
       - name: Preserve regression evidence
         if: always()
         uses: actions/upload-artifact@v4

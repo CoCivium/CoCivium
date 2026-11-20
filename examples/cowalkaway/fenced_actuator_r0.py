@@ -12,7 +12,10 @@ from __future__ import annotations
 
 import hashlib
 import json
+import os
 import sqlite3
+import subprocess
+import sys
 import tempfile
 import threading
 import unittest
@@ -222,6 +225,89 @@ class FencedActuatorTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             self.finish(output={'unsafe': float('nan')})
         self.assertEqual([], self.db.receipts())
+
+
+    def run_fresh_process(self, mode):
+        """Run the same durable SQLite WorkID in an actual fresh Python process.
+
+        This is an isolated Linux CI fixture, not an X2 reboot, daemon,
+        external side effect, independently operated receiver or 3ind proof.
+        """
+        child_code = r'''
+import os
+import sys
+from fenced_actuator_r0 import Ledger, sha256
+
+db = Ledger(sys.argv[1])
+mode = sys.argv[2]
+source = sha256("source-v1")
+out = {"test": "passed"}
+if mode == "first":
+    token = db.acquire("os-restart", "process-a", 0, 4)
+    state, _ = db.finish(scope="os-restart", owner="process-a", token=token,
+                         now=1, job="replay-os", input_hash=source, output=out)
+    print(state)
+elif mode == "replay":
+    token = db.acquire("os-restart", "process-b", 4, 4)
+    state, _ = db.finish(scope="os-restart", owner="process-b", token=token,
+                         now=5, job="replay-os", input_hash=source, output=out)
+    print(state)
+elif mode == "uncommitted-crash":
+    token = db.acquire("os-crash", "process-a", 0, 4)
+    db.db.execute("BEGIN IMMEDIATE")
+    db.db.execute("INSERT INTO receipt(job,scope,input_hash,receipt_hash,token) VALUES(?,?,?,?,?)",
+                  ("uncommitted", "os-crash", source, source, token))
+    os._exit(91)  # Intentionally skips transaction commit, finally and destructor.
+elif mode == "committed-ack-lost":
+    token = db.acquire("os-ack", "process-a", 0, 4)
+    db.finish(scope="os-ack", owner="process-a", token=token,
+              now=1, job="ack-lost", input_hash=source, output=out)
+    os._exit(92)  # SQLite commit succeeds but result was never returned to caller.
+else:
+    raise RuntimeError("UNEXPECTED_CANARY_MODE")
+db.close()
+'''
+        env = dict(os.environ)
+        env["PYTHONPATH"] = str(Path(__file__).resolve().parent) + os.pathsep + env.get("PYTHONPATH", "")
+        return subprocess.run(
+            [sys.executable, "-B", "-c", child_code, str(self.path), mode],
+            capture_output=True, text=True, timeout=12, env=env, check=False
+        )
+
+    def test_fresh_os_process_replay_one_receipt(self):
+        first = self.run_fresh_process("first")
+        self.assertEqual(0, first.returncode, first.stderr)
+        self.assertIn("ONE_NEW_SYNTHETIC_RECEIPT", first.stdout)
+        replay = self.run_fresh_process("replay")
+        self.assertEqual(0, replay.returncode, replay.stderr)
+        self.assertIn("REPLAY_NO_NEW_EFFECT", replay.stdout)
+        self.assertEqual(["replay-os"], [r[0] for r in self.db.receipts()])
+
+    def test_os_process_killed_with_uncommitted_sqlite_transaction(self):
+        killed = self.run_fresh_process("uncommitted-crash")
+        self.assertEqual(91, killed.returncode, killed.stderr)
+        self.assertEqual([], self.db.receipts())
+        token = self.db.acquire("os-crash", "process-b", 4, 4)
+        self.assertEqual(2, token)
+        state, _ = self.db.finish(
+            scope="os-crash", owner="process-b", token=token, now=5,
+            job="uncommitted", input_hash=self.source, output={"test": "passed"}
+        )
+        self.assertEqual("ONE_NEW_SYNTHETIC_RECEIPT", state)
+        self.assertEqual(1, len(self.db.receipts()))
+
+    def test_os_process_crashed_after_commit_before_ack(self):
+        lost = self.run_fresh_process("committed-ack-lost")
+        self.assertEqual(92, lost.returncode, lost.stderr)
+        self.assertEqual(["ack-lost"], [r[0] for r in self.db.receipts()])
+        token = self.db.acquire("os-ack", "process-b", 4, 4)
+        self.assertEqual(2, token)
+        state, _ = self.db.finish(
+            scope="os-ack", owner="process-b", token=token, now=5,
+            job="ack-lost", input_hash=self.source, output={"test": "passed"}
+        )
+        self.assertEqual("REPLAY_NO_NEW_EFFECT", state)
+        self.assertEqual(1, len(self.db.receipts()))
 
 
 if __name__ == '__main__':
