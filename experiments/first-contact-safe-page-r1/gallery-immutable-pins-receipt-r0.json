@@ -1,0 +1,161 @@
+{
+  "schema": "CoCivium.FirstContact.PublicProofGallery.ImmutableSnapshotReviewReceipt.R0",
+  "work_id": "CoSites:CoPre93:FirstContactGallery:HistoricSourcePermalinks:20261120:R0",
+  "state": "SOURCE_COMMITTED_AND_CI_VERIFIED__EXISTING_PR_UNCHANGED__NO_PUBLIC_DEPLOYMENT",
+  "reviewed_at_utc": "2026-11-20T01:34:37Z",
+  "authority": "ISOLATED_PUBLIC_SAFE_SOURCE_CANDIDATE_ONLY",
+  "existing_owner": {
+    "review_pr": "https://github.com/CoCivium/CoCivium/pull/232",
+    "original_pr_branch": "candidate/first-contact-safe-page-20261024",
+    "original_pr_head": "76378fa93b8dfb0ad6329886b1881df86fa64efc",
+    "domain_owner": "https://github.com/CoCivium/CoSteward/issues/60",
+    "security_owner": "https://github.com/CoCivium/CoToolbelt/issues/5",
+    "original_branch_mutated": false
+  },
+  "source_candidate": {
+    "branch": "candidate/first-contact-gallery-pinned-r0-20261120",
+    "base_commit": "76378fa93b8dfb0ad6329886b1881df86fa64efc",
+    "source_paths": [
+      {
+        "path": "experiments/first-contact-safe-page-r1/proof-gallery.html",
+        "sha_git_blob": "b8ec0e76f40e4c8c8485c491f78bbb2da40a4d6e",
+        "previous_git_blob": "702a794250df8139b861d9c7a92e75efa81e3e3f"
+      },
+      {
+        "path": "experiments/first-contact-safe-page-r1/proof-gallery.json",
+        "sha_git_blob": "f0ead7e6d813e9c9650455c399969c26fe668a1b",
+        "previous_git_blob": "d490bb0ef491a3701e967a83036728e050d28f51"
+      },
+      {
+        "path": "experiments/first-contact-safe-page-r1/test_proof_gallery_pins_r0.py",
+        "sha_git_blob": "459c3a48507dd5e91a8a8371b3e2f9c12ff3156e"
+      },
+      {
+        "path": ".github/workflows/first-contact-card-restore-r1.yml",
+        "sha_git_blob": "4f8c8b939301cef4bfd28f99364e0eb9cf57e31c"
+      }
+    ],
+    "change": "Nine user-facing exhibit links now use full commit pin matching original displayed Git blob; original mutable branch URLs preserved separately under default_branch_source. Disclosure states newer branch versions may differ.",
+    "dated_source_observation_preserved": "2026-10-24",
+    "historical_gallery_review_receipt_preserved_unmodified": true
+  },
+  "test_evidence": {
+    "CI_provider": "GitHub Actions",
+    "run_id": 44654598310,
+    "run_url": "https://github.com/CoCivium/CoCivium/actions/runs/44654598310",
+    "CI_head": "2fd8cf7d47dad354fd81406722903f321726fd72",
+    "CI_state": "completed",
+    "CI_conclusion": "success",
+    "same_incumbent_ci_owner": "first-contact-card-restore-r1.yml",
+    "incumbent_local_card_tests_passed": 14,
+    "new_gallery_static_negative_controls_passed": 16,
+    "fresh_public_source_git_blob_readbacks_passed": 9,
+    "readback_type": "raw.githubusercontent.com exact public commit/path files using SHA1 git-blob computation",
+    "independently_administered_sources": 0,
+    "independence": "Both connector and runner retrieve the same GitHub repository family; not three independently administered validators",
+    "historical_source_commit_links": [
+      {
+        "id": "CoPreCursor",
+        "repository": "CoCivium/CoCivium",
+        "path": "examples/coprecursor/README.md",
+        "commit": "f2a7d70a48f461424c904fb4721e3ccd2d3940d2",
+        "git_blob_sha1": "14520a4992b2d723fe33c6cbfffa1815c87df670",
+        "default_branch_drift_by_20261120": true
+      },
+      {
+        "id": "CoOrbWare",
+        "repository": "CoCivium/CoAcademy",
+        "path": "docs/coorb/index.html",
+        "commit": "5ca76d0808003eda51bb90a003aa785d1333bae4",
+        "git_blob_sha1": "634adc3ae92e5aba9671427ca56a78a1a72d05f9",
+        "default_branch_drift_by_20261120": true
+      },
+      {
+        "id": "CoLensMedia",
+        "repository": "CoCivium/CoCivium",
+        "path": "examples/colensmedia/manifest.json",
+        "commit": "a7a4fa22619183d21549ebd62db51e532e196666",
+        "git_blob_sha1": "b5a87427f2a6bf3c5e4928b7aa2c64e3a46deb01",
+        "default_branch_drift_by_20261120": true
+      },
+      {
+        "id": "CoTheoryAll",
+        "repository": "CoCivium/CoCivium",
+        "path": "docs/CoTheoryAll/costrawbe-r0/README.md",
+        "commit": "090c532627cd014e6c41355ddd70b90a56cc03ff",
+        "git_blob_sha1": "21da563a35106896c3029ea8f2cc4fd30cfa31c3",
+        "default_branch_drift_by_20261120": false
+      },
+      {
+        "id": "CognocartaConsenti",
+        "repository": "CoCivium/CoCivium",
+        "path": "docs/Public/Snapshots/2026-10-19_CoMegaScroller_CC_CoTheoryAll_R0.md",
+        "commit": "090c532627cd014e6c41355ddd70b90a56cc03ff",
+        "git_blob_sha1": "997a0b6951c52b58dc479a6075a743336a6449c5",
+        "default_branch_drift_by_20261120": false
+      },
+      {
+        "id": "CoSubstrateField",
+        "repository": "CoCivium/CoCivium",
+        "path": "docs/Architecture/COSUBSTRATE_FIELD_R0.md",
+        "commit": "090c532627cd014e6c41355ddd70b90a56cc03ff",
+        "git_blob_sha1": "5fec3249945ad3d14511621bc52da5587c3526b8",
+        "default_branch_drift_by_20261120": false
+      },
+      {
+        "id": "CoPlan",
+        "repository": "CoCivium/CoCivium",
+        "path": "docs/Launch/COCIVIUM_PUBLIC_PRELAUNCH_R0.md",
+        "commit": "090c532627cd014e6c41355ddd70b90a56cc03ff",
+        "git_blob_sha1": "261f120b648835c50e9a1e1ecb728e8cdc2825f6",
+        "default_branch_drift_by_20261120": false
+      },
+      {
+        "id": "CoPhoenix",
+        "repository": "CoCivium/CoAcademy",
+        "path": "docs/phoenix/README.md",
+        "commit": "615b0e99ad4fb9ad2f126d71be0d57da82f98937",
+        "git_blob_sha1": "b891405f587bc296297a932a9bb3f519eb16e741",
+        "default_branch_drift_by_20261120": false
+      },
+      {
+        "id": "CoSpiff",
+        "repository": "CoCivium/CoCivium",
+        "path": "ai/resilience/cospiff-fireworks-r1.json",
+        "commit": "090c532627cd014e6c41355ddd70b90a56cc03ff",
+        "git_blob_sha1": "40d1a5706ce7cead09d9c6a9a155bb57e4162d46",
+        "default_branch_drift_by_20261120": false
+      }
+    ]
+  },
+  "effects": {
+    "github_isolated_branch_source_writes": 4,
+    "PR232_head_mutation": false,
+    "main_branch_mutation": false,
+    "published_site_changes": 0,
+    "Cloudflare_DNS_Pages_changes": 0,
+    "local_X2_changes": 0,
+    "new_supervisors": 0,
+    "messages_sent": 0,
+    "external_receiver_ACK": "NONE",
+    "COEX": "HOLD"
+  },
+  "next_owner_deed": "Existing PR #232 reviewer compares isolated gallery candidate, checks first-use/CSP/rights/privacy on actual approved hosted preview, and elects a source only after current custom-domain metadata containment and rollback authority; use immutable pins in visitor trust surface, never replace observed historical blobs with later defaults.",
+  "nonclaims": [
+    "PINNED_PUBLIC_SOURCE_BLOBS_NE_LIVE_HOSTED_GALLERY",
+    "NINE_GITHUB_SOURCE_READBACKS_NE_THREE_INDEPENDENT_ROOTS",
+    "SOURCE_CI_NE_VISITOR_ACCEPTANCE",
+    "CURRENT_DEFAULT_BRANCH_NE_HISTORIC_SNAPSHOT",
+    "REVIEW_CANDIDATE_NE_PR232_APPROVAL",
+    "CI_PASS_NE_PUBLIC_SECURITY_RELEASE",
+    "NO_SITE_MERGE_OR_DEPLOYMENT",
+    "NO_OWNER_ACK_FROM_GITHUB_COMMENT",
+    "LOCAL_IS_NOT_LANDED",
+    "VALIDATION_IS_NOT_ACCEPTANCE",
+    "NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF",
+    "NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE",
+    "HASHING_IS_NOT_SEMANTIC_INGESTION",
+    "DISCOVERED_SET_IS_NOT_COMPLETE_HISTORY",
+    "NO_PHANTOM_ACK"
+  ]
+}
