@@ -1,0 +1,101 @@
+{
+  "schema": "CoCivium.CoPreGeneric.ProviderProfiles.R0",
+  "state": "PUBLIC_REVIEW_CANDIDATE_NOT_CANON_NOT_DEPLOYED",
+  "base_source": {
+    "repository": "CoCivium/CoCivium",
+    "path": "CoPre.md",
+    "commit": "090c532627cd014e6c41355ddd70b90a56cc03ff",
+    "git_blob_sha1": "7a1d9c2eada9432115a423bcb621793f474a4d28"
+  },
+  "current_user_invocation": {
+    "alias": "CoPre9.3+",
+    "source_class": "USER_ASSERTED_CURRENT_SHORTHAND_NOT_PUBLIC_CANON",
+    "text": "' CoPre9.3+|CoGo+|Recover>Restart|State>Chat|Outcome>Session|Names!=Roles|JobsRecruitWorkers|Priority=Value+Urgency+Deps+Risk|Capability!=Authority|NSubstantialJobs|AdaptiveCheckpoints|MaxSafeParallel|1Job=1Receipt|1Actuator/Scope|FanIn=1|AutoNext+ReplaySafe|WorkSteal+Recover|BreakGlass!=Routine|CoGuardian:Gates|LocalFirst|Sites:3->40|Pub=URL+log+shot+test|3ind/HOLD|Rick=0Routine|NoPhantomACK",
+    "grants_authority": false
+  },
+  "source_relationships": [
+    {
+      "name": "CoContextRail",
+      "path": "examples/conodcothumb/context_rail_r1/README.md",
+      "observed_git_blob_sha1": "4dbdafd81d8436631be086ab055842d53a18bab9"
+    },
+    {
+      "name": "CoModelFabric",
+      "path": "docs/Architecture/COMODELFABRIC_COORB_PROVIDER_ADAPTERS_R0_20261024.md",
+      "observed_git_blob_sha1": "61fd20ad978b78c0df3e67d89744aa75f8f3bfb8"
+    },
+    {
+      "name": "CoVirtualSession",
+      "path": "docs/Architecture/COVIRTUAL_SESSION_MORPHOLOGY_R0.md",
+      "observed_git_blob_sha1": "5dff7fff33f8637c3c333fdca360874db1e0bfe5"
+    },
+    {
+      "name": "CoPreGenericDraft",
+      "path": "docs/CoPreGeneric/Shareable_R0_20261109/CoPreGeneric-v1.0-DRAFT.md",
+      "observed_git_blob_sha1": "8ce4e8d81ca78209a083fd92d034da3676eaed7c"
+    }
+  ],
+  "provider_profiles": {
+    "claude": [
+      "CLAUDE_CHAT",
+      "CLAUDE_COWORK_CLOUD",
+      "CLAUDE_COWORK_LOCAL",
+      "CLAUDE_CODE",
+      "ANTHROPIC_API"
+    ],
+    "chatgpt": [
+      "CHATGPT_WORK",
+      "CHATGPT_CHAT"
+    ],
+    "local": [
+      "OLLAMA_LOCAL"
+    ]
+  },
+  "provider_runtime_state": "UNBOUND_NOT_INSTALLED",
+  "work_identity": {
+    "owner": "CoPreGeneric/CoWorkID",
+    "one_job_one_receipt": true,
+    "one_elected_actuator_per_collision_domain": true,
+    "virtual_workers_not_provider_sessions": true,
+    "fan_in_preserve_dissent": true,
+    "replay_safe_required": true
+  },
+  "thumb_binding": {
+    "current_x2_mapping": "UNKNOWN_NOT_INSPECTED",
+    "store_full_prompt": false,
+    "preferred_stable_public_pointer": "https://github.com/CoCivium/CoCivium/blob/main/CoPre.md",
+    "do_not_install_new_OS_hooks": true,
+    "native_middle_click": "PASS_THROUGH_NATIVE",
+    "optional_intent": "CONSENTED_LOGI_ACTIONS_RING_OR_KEYBOARD_EQUIVALENT",
+    "work_id_and_receipts_stored_in": "ELECTED_AUTHORIZED_CUSTODY_NOT_IN_MOUSE_OR_CHAT_MEMORY"
+  },
+  "safe_default": {
+    "research_public_source": true,
+    "synthetic_local_tests": true,
+    "credential_reads": false,
+    "send_as_user": false,
+    "public_release": false,
+    "financial_effects": false,
+    "scheduled_background_work": false,
+    "device_mutations": false
+  },
+  "first_canary": {
+    "name": "Public safe inquiry via authenticated Claude receiver",
+    "state": "NOT_RUN",
+    "requires": [
+      "REAL_RECEIVER_IDENTITY",
+      "EXACT_SOURCE_READPROOF",
+      "BOUNDED_NO_EFFECT_TASK",
+      "RECEIVER_RESULT_RECEIPT",
+      "STOP_AND_RECOVERY"
+    ]
+  },
+  "nonclaims": [
+    "LOCAL_IS_NOT_LANDED",
+    "VALIDATION_IS_NOT_ACCEPTANCE",
+    "NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF",
+    "NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE",
+    "HASHING_IS_NOT_SEMANTIC_INGESTION",
+    "DISCOVERED_SET_IS_NOT_COMPLETE_HISTORY"
+  ]
+}
