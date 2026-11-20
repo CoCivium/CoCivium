@@ -1,0 +1,156 @@
+{
+  "schema": "CoCivium.CoOmniIO.StaticAudit.R0",
+  "environment": "Linux/portable Python structural inspection; real Windows PowerShell parser, GUI and device runtime not executed",
+  "total": 34,
+  "passed": 34,
+  "failed": 0,
+  "source_sha256": {
+    "CoOmniCycleR0.mjs": "02140b9da1e6b4784734660c2155042dd70f0be82abed9c40f2781fd84d87078",
+    "CoOrbIOHotkeyR0.ps1": "1397eaf3c349fcd367ed9bcc1a079c65ce30306eca5e10ee1b5123b48847f645",
+    "Setup-CoOrbIO_R0.ps1": "721a5b660299777a6cf060a52097bf39452ace0d25a9993ae36be07e624d816c",
+    "CoCopyRichPaletteR0.ps1": "e7d6d4446e74e35bb7a649ab21b73e2bc0379e891b32c5e44956aa32e1a7ae5f"
+  },
+  "checks": [
+    {
+      "id": "node_whitelist_tasks",
+      "status": "PASS"
+    },
+    {
+      "id": "node_no_spawn_import",
+      "status": "PASS"
+    },
+    {
+      "id": "node_no_fetch_invocation",
+      "status": "PASS"
+    },
+    {
+      "id": "node_no_eval_exec",
+      "status": "PASS"
+    },
+    {
+      "id": "node_bounded_four_tasks",
+      "status": "PASS"
+    },
+    {
+      "id": "node_bounded_two_active",
+      "status": "PASS"
+    },
+    {
+      "id": "node_bytes_streaming",
+      "status": "PASS"
+    },
+    {
+      "id": "node_source_path_guard",
+      "status": "PASS"
+    },
+    {
+      "id": "node_absolute_rejection",
+      "status": "PASS"
+    },
+    {
+      "id": "node_lease_lock_wx",
+      "status": "PASS"
+    },
+    {
+      "id": "node_receipt_wx",
+      "status": "PASS"
+    },
+    {
+      "id": "node_pause_resume",
+      "status": "PASS"
+    },
+    {
+      "id": "node_receivers_null",
+      "status": "PASS"
+    },
+    {
+      "id": "node_no_provider_sessions",
+      "status": "PASS"
+    },
+    {
+      "id": "node_no_clipboard_writes",
+      "status": "PASS"
+    },
+    {
+      "id": "hotkey_one_specific_chord",
+      "status": "PASS"
+    },
+    {
+      "id": "hotkey_no_mouse_hook",
+      "status": "PASS"
+    },
+    {
+      "id": "hotkey_no_clipboard_read",
+      "status": "PASS"
+    },
+    {
+      "id": "hotkey_tray_pausing",
+      "status": "PASS"
+    },
+    {
+      "id": "hotkey_visible_tray",
+      "status": "PASS"
+    },
+    {
+      "id": "hotkey_explicit_palette_only",
+      "status": "PASS"
+    },
+    {
+      "id": "hotkey_stop_marker",
+      "status": "PASS"
+    },
+    {
+      "id": "installer_user_local",
+      "status": "PASS"
+    },
+    {
+      "id": "installer_cycle_fifteen_minutes",
+      "status": "PASS"
+    },
+    {
+      "id": "installer_no_clobber",
+      "status": "PASS"
+    },
+    {
+      "id": "installer_rollback",
+      "status": "PASS"
+    },
+    {
+      "id": "installer_no_admin_services",
+      "status": "PASS"
+    },
+    {
+      "id": "installer_no_logi_mutation",
+      "status": "PASS"
+    },
+    {
+      "id": "installer_no_unconditional_exec",
+      "status": "PASS"
+    },
+    {
+      "id": "palette_file_references_only",
+      "status": "PASS"
+    },
+    {
+      "id": "palette_no_auto_paste",
+      "status": "PASS"
+    },
+    {
+      "id": "palette_selected_bitmap",
+      "status": "PASS"
+    },
+    {
+      "id": "palette_no_clipboard_read",
+      "status": "PASS"
+    },
+    {
+      "id": "palette_visible_close",
+      "status": "PASS"
+    }
+  ],
+  "nonclaims": [
+    "STATIC_AUDIT_NE_WINDOWS_RUNTIME",
+    "SOURCE_PRESENT_NE_DEVICE_CONTROL",
+    "TEST_PASS_NE_RECEIVER_PICKUP"
+  ]
+}
