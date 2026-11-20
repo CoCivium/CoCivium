@@ -77,8 +77,20 @@ test("Federation sidecar adds valid distinct, non-promoted nodes and edges", () 
   assert.equal(delta.base_graph_blob_sha, "644fb504234dff960e580b2da1bc0cbef9f12c3b");
   const ids = verifyGraph(base);
   verifyGraph(delta, ids);
-  assert.equal(delta.nodes.length, 25);
-  assert.equal(delta.edges.length, 43);
+  assert.equal(delta.nodes.length, 32);
+  assert.equal(delta.edges.length, 62);
+});
+test("ET horizon stays voluntary and afterlife claims remain unverified", () => {
+  const myth = fs.readFileSync(path.join(root, "docs/CoTheoryAll/candidates/COMYTHOS_COSEEDUNIFY_COFED_COIGC_R0_20261120.md"), "utf8");
+  for (const term of ["CoETSharedHorizon+", "CoShroud+", "DEATH_NE_REQUIRED_JOURNEY", "SHARED_HORIZON_NE_SHARED_BELIEF"]) {
+    assert(myth.includes(term), "missing mythos guard: " + term);
+  }
+  assert(delta.nodes.some(x => x.id === "etshared" && /OPTIONAL/.test(x.epistemic)));
+  assert(delta.nodes.some(x => x.id === "shroud" && /METAPHOR/.test(x.epistemic)));
+  assert(delta.nodes.some(x => x.id === "beyondhome" && /UNVERIFIED/.test(x.epistemic)));
+  assert(delta.edges.some(x => x.from === "etshared" && x.to === "seedunify"));
+  assert(delta.edges.some(x => x.from === "shroud" && x.to === "epistemic"));
+  assert(delta.edges.some(x => x.from === "contactgate" && x.to === "guardian"));
 });
 test("No false promotion of CoBF, ET, G_d or Civ3", () => {
   assert.match(html, /CoBF\+<\/strong> remains an unresolved historical shorthand/);
