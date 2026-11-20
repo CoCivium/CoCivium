@@ -1,0 +1,49 @@
+{
+  "files": {
+    "README.md": {
+      "sha256": "6490a8e97fbe865a50136dce681a9264b2e83270ad6c148932e19a01c115d0ee",
+      "size_bytes": 6004
+    },
+    "fixture.json": {
+      "sha256": "961adeb3955167065fa6c7638c2da1c63108b058370b381e8f6eb6b1bdd5c7a0",
+      "size_bytes": 5062
+    },
+    "read_only_windows_census_r0.ps1": {
+      "sha256": "eac52c094e883977491c00d44fe198d292675937393f7d1dc85131fdd1bf2a2a",
+      "size_bytes": 4631
+    },
+    "resource_mesh_r0.py": {
+      "sha256": "6194288f559fc9d13d36efba3fb1d1302021d4b88a05c039a293994caef0e64e",
+      "size_bytes": 15287
+    },
+    "sample_result.json": {
+      "sha256": "a1be0a9016863de0df0d09bd87e53024fab4a605dfa69c1be23a84a604a17731",
+      "size_bytes": 1759
+    },
+    "test.log": {
+      "sha256": "53125c4d631520a11a30775ac7d1f90ea7f888593fee858f33bf78fcdce6719a",
+      "size_bytes": 98
+    },
+    "test_resource_mesh_r0.py": {
+      "sha256": "f427a9b437d28b01e480d4b63a802d63f599694fc89efb220d455fe4a4b4e21a",
+      "size_bytes": 14307
+    },
+    "workflow.yml": {
+      "sha256": "5b33d8bf1a8773d72328947578dcb8d83bdcbf0a69247da8971b9284ba91c06c",
+      "size_bytes": 1747
+    }
+  },
+  "nonclaims": [
+    "NOT_LIVE_X2",
+    "NOT_INFERRING_X2_POWER_STATUS",
+    "NOT_ACTUAL_ENERGY_HARVESTING",
+    "NO_AUTONOMOUS_DAEMON",
+    "NO_EFFECT_AUTHORITY",
+    "WINDOWS_PS7_NOT_YET_TESTED_ON_REAL_WINDOWS",
+    "SYNTHETIC_FIXTURE_NE_PHYSICAL_CAPACITY"
+  ],
+  "schema": "CoAll.CoResourceMesh.ShadowPackage.R0",
+  "scope": "bounded deterministic planner + read-only Windows performance census",
+  "source_observed_date": "2026-10-27",
+  "status": "60_LOCAL_PYTHON_TESTS_PASS__WINDOWS_RUNTIME_NOT_YET_VERIFIED__SHADOW_ONLY"
+}
