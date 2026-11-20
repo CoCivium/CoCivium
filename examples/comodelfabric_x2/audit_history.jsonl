@@ -1,0 +1,2 @@
+{"event":"initial_static_check","status":"FAIL_SCOPED","passed":22,"total":23,"cause":"Regex counted mock model name properties as case declarations; checker defect, not source runtime finding"}
+{"event":"static_check_corrected","status":"PASS_BOUNDED","passed":23,"total":23,"change":"Anchored fixture case detection to beginning of case definition"}

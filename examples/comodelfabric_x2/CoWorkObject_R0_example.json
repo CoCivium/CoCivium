@@ -1,0 +1,27 @@
+{
+  "schema": "CoCivium.CoWorkObject.ModelFabric.Canary.R0",
+  "work_id": "EXAMPLE_ONLY_PUBLIC_SAFE_TASK_001",
+  "task": "Given a public CoCivium README sentence, suggest one simpler alternative and one counterexample.",
+  "source_reference": "https://github.com/CoCivium/CoCivium/blob/main/START_HERE.md",
+  "source_sha": "NOT_PINNED_UNTIL_ACTUAL_RUN",
+  "confidentiality": "PUBLIC_SAFE_FIXTURE_ONLY",
+  "authority": "NONE_ANALYSIS_ONLY",
+  "requested_lanes": ["LOCAL_OLLAMA", "CLAUDE_REVIEWER", "DETERMINISTIC_VERIFIER"],
+  "adapter_states": {
+    "LOCAL_OLLAMA": "UNVERIFIED_X2_AT_RUNTIME",
+    "CLAUDE_REVIEWER": "UNVERIFIED_EXTERNAL_API_AUTH",
+    "DETERMINISTIC_VERIFIER": "LOCAL_FIXTURE_ONLY"
+  },
+  "resource_policy": {
+    "max_active_workers": 2,
+    "max_provider_sessions": 1,
+    "max_automatic_spend_usd": 0,
+    "deadline_seconds": 60,
+    "no_bulk_actions": true,
+    "no_external_mutation": true
+  },
+  "comparison": ["SOURCE_FIDELITY", "UNCERTAINTY", "CORRECTNESS", "LATENCY", "COST", "DISSENT"],
+  "dispatch_state": "HELD_UNTIL_AUTHORIZED_ADAPTERS_QUALIFY",
+  "receiver_ack": null,
+  "nonclaims": ["ROLE_NE_EXTERNAL_ACCOUNT", "CLAUDE_BROWSER_NE_CLAUDE_API", "CANDIDATE_NE_WORKER", "GITHUB_SOURCE_NE_X2_EXECUTION"]
+}
