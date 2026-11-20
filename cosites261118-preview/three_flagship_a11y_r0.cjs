@@ -76,9 +76,16 @@ async function main() {
         const summary=result.violations.map(x=>({id:x.id,impact:x.impact||"unknown",
           affected_node_count:x.nodes.length, tags:x.tags.filter(t=>TAGS.includes(t)).sort()}));
         violations += summary.length;
+        // Rule IDs only: no HTML, node selectors, messages, markup, or target text.
+        const incompleteRules = result.incomplete.map(x => ({
+          id: /^[a-z0-9_-]{1,80}$/.test(x.id) ? x.id : "UNRECOGNIZED_RULE_ID",
+          impact: ["minor","moderate","serious","critical"].includes(x.impact) ? x.impact : "unknown",
+          affected_node_count: x.nodes.length
+        })).sort((a,b)=>a.id.localeCompare(b.id));
         report.viewports.push({viewport:viewport.id,width:viewport.width,height:viewport.height,
           violations:summary, rule_violation_count:summary.length,
           incomplete_rule_count:result.incomplete.length,
+          incomplete_rules:incompleteRules,
           rules_passed:result.passes.length, blocked_http_requests:attempted.length,
           javascript_page_errors:errors.length});
       } finally {await ctx.close();}
