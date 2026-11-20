@@ -206,6 +206,15 @@ def classify(source: Mapping[str, Any], *, at_utc: datetime | None = None) -> di
     }
     inverse = trace_inverse_requirements(inverse_gate_evidence)
 
+    # Flat UI fields must honor the SAME freshness/boot gate as the inverse
+    # evidence tree. Historical process/service presence is not current health.
+    qualified_snapshot = bool(fresh and uptime_qualified)
+
+    def qualified_presence(condition: bool, present: str, absent: str) -> str:
+        if not condition:
+            return absent
+        return present if qualified_snapshot else "STALE_OR_UNQUALIFIED_SNAPSHOT"
+
     # Machine classes, never assertions that a human is comfortable or audio works.
     report = {
         "schema": RESULT_SCHEMA,
@@ -215,18 +224,29 @@ def classify(source: Mapping[str, Any], *, at_utc: datetime | None = None) -> di
         "work_id": "CoDesktopPresence:ColdOpen:R0",
         "inverse_proof_tree": inverse,
         "observation_state": observation_state,
+        "operational_presence_snapshot_qualified": qualified_snapshot,
         "snapshot_fresh": fresh,
         "boot_timestamp_qualified": uptime_qualified,
         "boot_time_utc": boot.isoformat().replace("+00:00", "Z") if boot else None,
-        "audio_services": "REPORTED_RUNNING" if services_running else "UNVERIFIED_OR_NOT_RUNNING",
+        "audio_services": qualified_presence(
+            services_running, "REPORTED_RUNNING", "UNVERIFIED_OR_NOT_RUNNING"
+        ),
         "actual_audio_mute_state": "UNKNOWN",
-        "mouse_software": "PROCESS_CANDIDATE_PRESENT" if mouse_present else "NOT_ESTABLISHED",
+        "mouse_software": qualified_presence(
+            mouse_present, "PROCESS_CANDIDATE_PRESENT", "NOT_ESTABLISHED"
+        ),
         "mouse_mapping_functional": "UNKNOWN",
-        "local_model": "PROCESS_CANDIDATE_PRESENT" if local_model_present else "NOT_ESTABLISHED",
+        "local_model": qualified_presence(
+            local_model_present, "PROCESS_CANDIDATE_PRESENT", "NOT_ESTABLISHED"
+        ),
         "local_model_response_tested": False,
-        "coall_surface": "PROCESS_CANDIDATE_PRESENT" if coall_exe_present else "NOT_ESTABLISHED",
+        "coall_surface": qualified_presence(
+            coall_exe_present, "PROCESS_CANDIDATE_PRESENT", "NOT_ESTABLISHED"
+        ),
         "surface_functional": False,
-        "display_driver_mode": "REPORTED" if driver_mode else "NOT_ESTABLISHED",
+        "display_driver_mode": qualified_presence(
+            driver_mode, "REPORTED", "NOT_ESTABLISHED"
+        ),
         "per_monitor_dpi_and_alignment": "UNKNOWN",
         "cocivium_owned_desktop_background": "NOT_ATTESTED",
         "post_login_automatic_recovery": "NOT_ATTESTED",
