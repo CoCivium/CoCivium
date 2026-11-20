@@ -49,6 +49,36 @@ class Tests(unittest.TestCase):
         self.assertIn("EFFECT_AUTHORITY_UNAVAILABLE",
                       next(t["reasons"] for t in z["deferred"] if t["id"]=="outreach"))
         self.assertEqual(len(z["logical_parallel_frontier"]),3)
+    def test_golden_braid_fanout_held_strand_does_not_block_siblings(self):
+        # Golden Braid: divergent challenges survive an unrelated held strand.
+        # Only a logical read-only selection; no worker or permission is created.
+        x=payload()
+        x["max_parallel"]=4
+        x["tasks"][1]["state"]="HELD"  # independent source strand blocked
+        x["tasks"].append(task("future",["seed"],domain="future",priority=3))
+        x["tasks"].append(task("competing",["seed"],domain="challenge",priority=4))
+        z=mod.compile_frontier(x)
+        self.assertEqual(
+            [t["id"] for t in z["logical_parallel_frontier"]],
+            ["challenge","media","future"],
+        )
+        self.assertIn(
+            "TASK_HELD",
+            next(t["reasons"] for t in z["deferred"] if t["id"]=="source_check"),
+        )
+        self.assertIn(
+            "COLLISION_DOMAIN_ALREADY_ELECTED",
+            next(t["reason"] for t in z["collision_or_budget_held"]
+                 if t["id"]=="competing"),
+        )
+        self.assertIn(
+            "DEP_NOT_DECLARED_DONE:source_check",
+            next(t["reasons"] for t in z["deferred"] if t["id"]=="outreach"),
+        )
+        self.assertEqual(z["metrics"]["active_workers"],0)
+        self.assertEqual(z["metrics"]["external_effects"],0)
+        self.assertEqual(z["metrics"]["receiver_acks"],0)
+
     def test_no_actual_workers(self):
         z=mod.compile_frontier(payload())
         self.assertEqual(z["metrics"]["active_workers"],0)
