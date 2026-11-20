@@ -1,0 +1,180 @@
+{
+  "schema": "CoAll.CoSessionLifecycle.NonCyclingHandoff.R0",
+  "checkpoint_key": "coci-session-handoff-20261120T0528Z",
+  "checkpoint_event_utc": "2026-11-20T05:28:01Z",
+  "status": "CANDIDATE_NONCYCLING_HANDOFF__NOT_PROVIDER_ARCHIVE__NOT_RUNTIME_ADOPTION",
+  "work_id": "CoTheoryAll::CoMegaThesis::PR500::CI",
+  "source_pointers": [
+    {
+      "kind": "WORK_FRONT",
+      "reference": "https://github.com/CoCivium/CoCivium/pull/500",
+      "state": "DRAFT_REVIEW_OPEN"
+    },
+    {
+      "kind": "RELATED_SPECULATIVE_HYPOTHESIS",
+      "reference": "https://github.com/CoCivium/CoCivium/pull/499",
+      "state": "DRAFT_REVIEW_ONLY"
+    },
+    {
+      "kind": "SOURCE_CONTRACT",
+      "path": "docs/Architecture/COVIRTUAL_SESSION_MORPHOLOGY_R0.md",
+      "git_blob_sha": "5dff7fff33f8637c3c333fdca360874db1e0bfe5"
+    },
+    {
+      "kind": "SOURCE_CONTRACT",
+      "path": "docs/Operations/COFRONTIEREXIT_GRACEFUL_PIVOT_R0_20261112.md",
+      "git_blob_sha": "9136003d14910c99504839ec4e40bded7199b5"
+    },
+    {
+      "kind": "SOURCE_CONTRACT",
+      "path": "docs/Recovery/COPHOENIX_INDEPENDENT_RECEIVER_REPLAY_R0_20261024.md",
+      "git_blob_sha": "f107279d3d7a0a23e0630899b4d809e9c57d4146"
+    }
+  ],
+  "session_projection": {
+    "role": "CONVERSATIONAL",
+    "provider_session_id": null,
+    "provider_chat_archive_effect": "NOT_EXECUTED",
+    "working_continuity_source": "GITHUB_BRANCH_SOURCE_AND_EXACT_RECEIPTS",
+    "status": "NON_CYCLING_LOGICAL_HANDOFF_CANDIDATE",
+    "auto_restart_chat": false,
+    "chat_ping_or_heartbeat_required": false,
+    "chat_as_actuator": false,
+    "schedule_requested_for_chat": false,
+    "provider_window_as_source_of_truth": false,
+    "closed_or_archived_in_chatgpt_ui": "UNKNOWN_NOT_CLAIMED",
+    "active_provider_lease": "UNVERIFIED"
+  },
+  "source_baseline": {
+    "repo": "CoCivium/CoCivium",
+    "candidate_branch": "candidate/cotheoryall-comap-megathesis-ux-gdside-r0-20261120",
+    "last_source_ci_run": "https://github.com/CoCivium/CoCivium/actions/runs/44680908641",
+    "last_source_ci_run_id": 44680908641,
+    "tested_commit_sha": "8246e96407cd9b7ecc99ace943900a66fb5e7d51",
+    "tested_result": "SOURCE_CI_PASS__NOT_LIVE_RUNTIME",
+    "source_checks": 11,
+    "synthetic_process_replay_checks": 17,
+    "synthetic_concurrent_fencing_checks": 16,
+    "same_provider_artifact_negative_controls": 10,
+    "readback_frontdoor_negative_controls": 8,
+    "source_job_id": 136103802118,
+    "readback_job_id": 136103875205,
+    "source_artifact_id": 14603744203,
+    "readback_artifact_id": 14603749843,
+    "optional_browser_job": "SKIPPED",
+    "independent_ux_acceptance": "UNVERIFIED",
+    "independent_physical_receiver": "UNVERIFIED"
+  },
+  "lifecycle": {
+    "source_edition": "GITHUB_CANDIDATE_SOURCE",
+    "source_readback": "WAS_VERIFIED_ON_PRIOR_COMMITS",
+    "provider_chat_archive": "NOT_EXECUTED",
+    "new_checkpoint_git_readback": "PENDING_THIS_COMMIT",
+    "other_session_pickup": "NO_RECEIPT",
+    "CoStead_receiver_pickup": "NO_RECEIPT",
+    "CoEx": "NOT_VERIFIED",
+    "CoAll_canon": "NOT_PROMOTED",
+    "public_release": "NOT_AUTHORIZED_BY_THIS_PACKET"
+  },
+  "pending_frontier": {
+    "currentness": "X2_REMOTELY_UNOBSERVABLE_AT_LAST_CHECK",
+    "independent_power_domain": "HELD",
+    "actual_recovery": "HELD",
+    "physical_cold_restart": "HELD",
+    "independent_frontdoor_user_acceptance": "HELD",
+    "source_only_automation": "QUALIFIED_ON_MATCHING_GITHUB_EVENTS",
+    "CoAll_Evergreen_watch": "OBSERVED_DISABLED_AT_PREVIOUS_CHECK__NOT_A_SCHEDULER",
+    "automatic_chat_cycling": "DISALLOWED"
+  },
+  "wake_policy": [
+    {
+      "event": "ELIGIBLE_GIT_SOURCE_DELTA",
+      "executor": "EXISTING_GITHUB_ACTIONS_CI",
+      "authority": "SOURCE_ONLY",
+      "chat_reopen": false,
+      "action": "RUN_DEFINED_TESTS_WITH_EXACT_RECEIPTS"
+    },
+    {
+      "event": "AUTHORIZED_SEPARATE_POWER_DOMAIN_AVAILABLE",
+      "executor": "ELECTED_NONCHAT_RECEIVER_ONLY",
+      "authority": "MUST_BE_INDEPENDENTLY_VERIFIED",
+      "chat_reopen": false,
+      "action": "REQUEST_ONE_INERT_WORKID_COLD_READBACK"
+    },
+    {
+      "event": "PROVIDER_CHAT_CLOSED_OR_RATE_LIMITED",
+      "executor": "NONE",
+      "authority": "NO_AUTOMATIC_RESTART",
+      "chat_reopen": false,
+      "action": "PRESERVE_CHECKPOINT_AND_SLEEP"
+    }
+  ],
+  "next_safe_deed": {
+    "objective": "ONE_INDEPENDENT_RECEIVER_WITH_EXACT_WORKID_READBACK_AND_COLD_RESTART",
+    "entry_condition": "AUTHORIZED_SEPARATE_FAILURE_DOMAIN_REACHABLE",
+    "if_unmet": "HOLD_WITHOUT_NEW_WATCHER_OR_RICK_AS_MAILMAN",
+    "preconditions": [
+      "PINNED_SOURCE_AND_RECEIPT",
+      "CONSENTED_SCOPED_INPUT",
+      "ONE_ELECTED_WRITER",
+      "REVOCABLE_EFFECT_CEILING",
+      "RECOVERY_POINTER"
+    ],
+    "required_receipt": [
+      "RECEIVER_ID",
+      "OBSERVED_UTC",
+      "INDEPENDENT_FAILURE_DOMAIN_PROOF",
+      "EXACT_SOURCE_DIGEST",
+      "WAKE_TRIGGER",
+      "FENCED_EPOCH",
+      "RESULT",
+      "HASHED_RECEIVER_READBACK"
+    ],
+    "forbidden_actions": [
+      "AUTO_RESTART_PROVIDER_CHAT",
+      "CLAIM_RECEIVER_ACK_FROM_GITHUB_SOURCE",
+      "AUTO_CONTACT_ET",
+      "DEPLOY_RUNTIME",
+      "PUBLISH_PRIVATE_GODSPAWN",
+      "PROMOTE_CANON",
+      "NEW_ALWAYS_ON_SCHEDULER"
+    ]
+  },
+  "privacy": {
+    "artifact_class": "PUBLIC_SAFE_WORK_FRONT_METADATA_ONLY",
+    "chat_transcript_included": false,
+    "private_manuscript_material_included": false,
+    "third_party_private_data_included": false,
+    "secrets_included": false
+  },
+  "custody": {
+    "source_identity": "THIS_JSON_RELATIVE_PATH_AND_GIT_COMMIT",
+    "expected_receiver": "NONE_ELECTED_YET",
+    "write_policy": "CREATE_ONLY__DO_NOT_OVERWRITE",
+    "observer": "GITHUB_SOURCE_CI_ONLY",
+    "independent_receiver": "NOT_OBSERVED",
+    "supersession": "NONE_UNLESS_EXPLICIT_NEW_CHECKPOINT_WITH_SOURCE_RELATION"
+  },
+  "rails": [
+    "SESSION_NE_WORK_ID",
+    "NONCYCLING_NE_PROVIDER_ARCHIVED",
+    "CHECKPOINT_NE_ACTIVE_WATCHER",
+    "GITHUB_RUN_NE_LIVE_COSTEAD_RECEIVER",
+    "SOURCE_PASS_NE_RUNTIME_ADOPTION",
+    "SOURCE_COMMIT_NE_GLOBAL_CANON",
+    "SIMULATION_NE_COLD_RECOVERY",
+    "NO_PHANTOM_ACK",
+    "RICK_ZERO_ROUTINE_IS_GOAL_NOT_INDEPENDENTLY_PROVEN",
+    "SESSION_FAILURE_NE_MISSION_FAILURE"
+  ],
+  "nonclaims": [
+    "LOCAL_IS_NOT_LANDED",
+    "VALIDATION_IS_NOT_ACCEPTANCE",
+    "NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF",
+    "NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE",
+    "HASHING_IS_NOT_SEMANTIC_INGESTION",
+    "DISCOVERED_SET_IS_NOT_COMPLETE_HISTORY",
+    "NO_PROVIDER_UI_ARCHIVE_EFFECT",
+    "NO_UNATTENDED_24H_RUNTIME_INFERENCE"
+  ]
+}
