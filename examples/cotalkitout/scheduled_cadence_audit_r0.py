@@ -14,8 +14,9 @@ from urllib.request import Request, urlopen
 
 UTC = dt.timezone.utc
 NAME = "CoGoAll unattended proof pulse"
+WORKFLOW = ".github/workflows/cogoall-unattended-proof-pulse.yml"
 SCHEMA = "CoGoAll.ScheduleCoverage.R0"
-SOURCE = "https://api.github.com/repos/CoCivium/CoCivium/actions/runs?event=schedule&per_page=100"
+SOURCE = "https://api.github.com/repos/CoCivium/CoCivium/actions/workflows/cogoall-unattended-proof-pulse.yml/runs?event=schedule&per_page=100"
 
 
 def instant(text: str) -> dt.datetime:
@@ -54,7 +55,8 @@ def coverage(runs: list[dict], *, observed_at: str,
     seen_ids = set()
     observations = []
     for r in runs:
-        if not isinstance(r, dict) or r.get("name") != NAME or r.get("event") != "schedule":
+        if (not isinstance(r, dict) or r.get("name") != NAME or r.get("event") != "schedule"
+                or r.get("path") != WORKFLOW):
             continue
         identity = r.get("id")
         if not isinstance(identity, int) or identity <= 0 or identity in seen_ids:

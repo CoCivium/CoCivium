@@ -7,9 +7,10 @@ import unittest
 from examples.cotalkitout.scheduled_cadence_audit_r0 import coverage, instant
 
 def entry(identity, when, *, event="schedule", conclusion="success",
-          name="CoGoAll unattended proof pulse"):
+          name="CoGoAll unattended proof pulse",
+          path=".github/workflows/cogoall-unattended-proof-pulse.yml"):
     return {"id":identity,"created_at":when,"name":name,
-            "event":event,"conclusion":conclusion}
+            "event":event,"conclusion":conclusion,"path":path}
 
 NOW="2026-11-09T10:21:00Z"
 
@@ -49,6 +50,22 @@ class Tests(unittest.TestCase):
 
     def test_other_workflow_not_scheduled_wake(self):
         d=coverage([entry(1,"2026-11-09T03:20:00Z",name="different")],
+                   observed_at="2026-11-09T04:21:00Z",
+                   since="2026-11-09T02:30:00Z",lookback_hours=2)
+        self.assertEqual(d["state"],"SCHEDULE_TICKS_UNOBSERVED")
+
+    def test_same_name_different_workflow_must_not_count_as_coverage(self):
+        d=coverage([entry(31,"2026-11-09T03:20:00Z",
+                          path=".github/workflows/other-hourly.yml")],
+                   observed_at="2026-11-09T04:21:00Z",
+                   since="2026-11-09T02:30:00Z",lookback_hours=2)
+        self.assertEqual(d["expected_matured_ticks"],1)
+        self.assertEqual(d["state"],"SCHEDULE_TICKS_UNOBSERVED")
+        self.assertEqual(len(d["matched_scheduled_runs"]),0)
+        self.assertFalse(d["independent_receiver_ack"])
+
+    def test_missing_workflow_path_must_not_count(self):
+        d=coverage([entry(32,"2026-11-09T03:20:00Z",path=None)],
                    observed_at="2026-11-09T04:21:00Z",
                    since="2026-11-09T02:30:00Z",lookback_hours=2)
         self.assertEqual(d["state"],"SCHEDULE_TICKS_UNOBSERVED")
