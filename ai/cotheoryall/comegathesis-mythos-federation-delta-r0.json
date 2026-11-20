@@ -1,0 +1,533 @@
+{
+  "schema": "CoTheoryAll.CoMegaThesis.CoMythosFederation.TypedDelta.R0-candidate",
+  "version": "2026-11-20",
+  "state": "PUBLIC_DRAFT_SIDECAR__NOT_APPLIED_TO_BASE_GRAPH__NOT_CANON_OR_RUNTIME",
+  "base_graph": "ai/cotheoryall/comegathesis-relations-r0.json",
+  "base_graph_blob_sha": "644fb504234dff960e580b2da1bc0cbef9f12c3b",
+  "integration_pr": "https://github.com/CoCivium/CoCivium/pull/500",
+  "related_hypothesis_pr": "https://github.com/CoCivium/CoCivium/pull/499",
+  "prose": "docs/CoTheoryAll/candidates/COMYTHOS_COSEEDUNIFY_COFED_COIGC_R0_20261120.md",
+  "source_boundary": "The included nodes and edges are a bounded candidate mapping, not a census of all CoFed, CivOS, CoSTax or CoMythos prior definitions.",
+  "source_pins": {
+    "docs/Architecture/CIV2_FEDERATED_CELL_HOSTING_R0.md": "f63736c03f15a7ecac04d15c005f42afb7960825",
+    "docs/Strategy/CIV2_CIV3_BOUNDARY_GAPMAP_R0.md": "98eff251a9b36b9abcbac8391189d18304e0721d",
+    "docs/Architecture/COPARTICIPATION_ECOLOGY_R0.md": "9b97422f64f067de80167e875aa69debd4b64643",
+    "docs/CoMythOps/public-mascot-ecology-r0/README.md": "13445d4198d41db051c6aca7974a6f53669900f9",
+    "docs/Evolution/GDSIDE_COPRIMATH_GSLOOP_PUBLIC_R0.md": "684ac4cfbdcca7b2cb7ab238d8ef746c7afcb6f3",
+    "docs/Evolution/COALL_GITHUB_EVOLUTION_FABRIC_R0.md": "7e374f9a1b5db17863b977740ab21e51d03cdf8"
+  },
+  "totals": {
+    "new_nodes": 25,
+    "new_edges": 43,
+    "base_nodes": 32,
+    "base_edges": 48,
+    "combined_if_applied_nodes": 57,
+    "combined_if_applied_edges": 91
+  },
+  "nodes": [
+    {
+      "id": "cofed",
+      "label": "CoFed+",
+      "kind": "federation_contract",
+      "epistemic": "candidate_relation_to_existing_civ2_cells",
+      "source": "docs/Architecture/CIV2_FEDERATED_CELL_HOSTING_R0.md"
+    },
+    {
+      "id": "civos",
+      "label": "CivOS+",
+      "kind": "cross_substrate_environment",
+      "epistemic": "candidate_definition_no_live_runtime",
+      "source": "docs/CoTheoryAll/candidates/COMYTHOS_COSEEDUNIFY_COFED_COIGC_R0_20261120.md"
+    },
+    {
+      "id": "costacks",
+      "label": "CoStacks",
+      "kind": "automation_repo_role",
+      "epistemic": "published_public_role_map",
+      "source": "docs/Evolution/COALL_GITHUB_EVOLUTION_FABRIC_R0.md"
+    },
+    {
+      "id": "costax",
+      "label": "CoSTax+",
+      "kind": "resource_burden_lens",
+      "epistemic": "HOLD_MEANING_COLLISION_NOT_QUALIFIED",
+      "source": "docs/CoTheoryAll/candidates/COMYTHOS_COSEEDUNIFY_COFED_COIGC_R0_20261120.md"
+    },
+    {
+      "id": "comythos",
+      "label": "CoMythos+",
+      "kind": "story_worldbuilding",
+      "epistemic": "fictional_candidate",
+      "source": "docs/CoTheoryAll/candidates/COMYTHOS_COSEEDUNIFY_COFED_COIGC_R0_20261120.md"
+    },
+    {
+      "id": "seedunify",
+      "label": "CoSeedUnify+ / CoSeedUnifiy+",
+      "kind": "planetary_pluralism",
+      "epistemic": "proposed_civic_hypothesis_alias_not_canon",
+      "source": "docs/CoTheoryAll/candidates/COMYTHOS_COSEEDUNIFY_COFED_COIGC_R0_20261120.md"
+    },
+    {
+      "id": "coscendence",
+      "label": "CoScendence+",
+      "kind": "cross_frame_relation",
+      "epistemic": "candidate_not_rank",
+      "source": "docs/CoTheoryAll/candidates/COMYTHOS_COSEEDUNIFY_COFED_COIGC_R0_20261120.md"
+    },
+    {
+      "id": "igc",
+      "label": "IGC / CoIGC",
+      "kind": "intergalactic_council_scenario",
+      "epistemic": "FICTIONAL_HYPOTHETICAL_NO_EVIDENCE",
+      "source": "docs/CoTheoryAll/candidates/COMYTHOS_COSEEDUNIFY_COFED_COIGC_R0_20261120.md"
+    },
+    {
+      "id": "delegate",
+      "label": "Volunteer representative duty",
+      "kind": "governance_scenario",
+      "epistemic": "requires_valid_constituency_and_mandate",
+      "source": "docs/CoTheoryAll/candidates/COMYTHOS_COSEEDUNIFY_COFED_COIGC_R0_20261120.md"
+    },
+    {
+      "id": "localpolities",
+      "label": "Distinct communities and polities",
+      "kind": "constituency",
+      "epistemic": "needs_actual_consent",
+      "source": "docs/Architecture/COPARTICIPATION_ECOLOGY_R0.md"
+    },
+    {
+      "id": "ecobiosphere",
+      "label": "Nonhuman life and ecosystems",
+      "kind": "affected_interests",
+      "epistemic": "representation_by_accountable_stewards",
+      "source": "docs/CoTheoryAll/candidates/COMYTHOS_COSEEDUNIFY_COFED_COIGC_R0_20261120.md"
+    },
+    {
+      "id": "synthroles",
+      "label": "Synthetic model/agent participation",
+      "kind": "participant_role",
+      "epistemic": "no_personhood_or_authority_assumed",
+      "source": "docs/CoTheoryAll/candidates/COMYTHOS_COSEEDUNIFY_COFED_COIGC_R0_20261120.md"
+    },
+    {
+      "id": "earth",
+      "label": "Earth-first cooperation",
+      "kind": "civic_scenario",
+      "epistemic": "measurable_human_first_trial",
+      "source": "docs/Strategy/CIV2_CIV3_BOUNDARY_GAPMAP_R0.md"
+    },
+    {
+      "id": "belong",
+      "label": "Voluntary planetary belonging",
+      "kind": "social_hypothesis",
+      "epistemic": "untested_in_this_project",
+      "source": "docs/CoTheoryAll/candidates/COMYTHOS_COSEEDUNIFY_COFED_COIGC_R0_20261120.md"
+    },
+    {
+      "id": "dual",
+      "label": "Dual/intergroup relational identity",
+      "kind": "scientific_prior_art",
+      "epistemic": "external_study_prior_art_not_universal_law",
+      "source": "https://onlinelibrary.wiley.com/doi/full/10.1111/jasp.12715"
+    },
+    {
+      "id": "peace",
+      "label": "Peace and conflict prevention",
+      "kind": "desired_outcome",
+      "epistemic": "NOT_PROVEN_FROM_MYTH",
+      "source": "docs/CoTheoryAll/candidates/COMYTHOS_COSEEDUNIFY_COFED_COIGC_R0_20261120.md"
+    },
+    {
+      "id": "firstcontact",
+      "label": "First-contact consultation",
+      "kind": "conditional_protocol",
+      "epistemic": "only_after_confirmed_evidence",
+      "source": "https://www.seti.org/research/seti-101/protocols-for-an-eti-signal-detection/"
+    },
+    {
+      "id": "etreplica",
+      "label": "Simulated ET perspective",
+      "kind": "fictional_research_actor",
+      "epistemic": "NO_ET_SUBJECT_OR_CONTACT",
+      "source": "docs/CoTheoryAll/candidates/COMYTHOS_COSEEDUNIFY_COFED_COIGC_R0_20261120.md"
+    },
+    {
+      "id": "otherness",
+      "label": "Respect for otherness",
+      "kind": "pluralist_principle",
+      "epistemic": "candidate_ethic",
+      "source": "docs/CoTheoryAll/candidates/COMYTHOS_COSEEDUNIFY_COFED_COIGC_R0_20261120.md"
+    },
+    {
+      "id": "cma",
+      "label": "CMA / CoMetaAttractor",
+      "kind": "normative_future_lens",
+      "epistemic": "not_verified_entity_or_authority",
+      "source": "docs/Evolution/GDSIDE_COPRIMATH_GSLOOP_PUBLIC_R0.md"
+    },
+    {
+      "id": "planetgame",
+      "label": "Opt-in Earth Invitation game",
+      "kind": "candidate_ux_pilot",
+      "epistemic": "NOT_BUILT_OR_TESTED",
+      "source": "docs/CoTheoryAll/candidates/COMYTHOS_COSEEDUNIFY_COFED_COIGC_R0_20261120.md"
+    },
+    {
+      "id": "refusal",
+      "label": "Consent, refusal and exit",
+      "kind": "hard_governance_constraint",
+      "epistemic": "policy_invariant_candidate",
+      "source": "docs/Architecture/COPARTICIPATION_ECOLOGY_R0.md"
+    },
+    {
+      "id": "silent",
+      "label": "No-contact/quiet alternative",
+      "kind": "counterfactual",
+      "epistemic": "not_all_future_requires_et",
+      "source": "docs/CoTheoryAll/candidates/COMYTHOS_COSEEDUNIFY_COFED_COIGC_R0_20261120.md"
+    },
+    {
+      "id": "cosacred",
+      "label": "Plural spiritual and secular horizons",
+      "kind": "cultural_lens",
+      "epistemic": "no_obligatory_belief",
+      "source": "docs/CoTheoryAll/candidates/COMYTHOS_COSEEDUNIFY_COFED_COIGC_R0_20261120.md"
+    },
+    {
+      "id": "trustee",
+      "label": "Nonhuman-interest trustee",
+      "kind": "proposed_role",
+      "epistemic": "not_direct_consent_or_entitlement",
+      "source": "docs/CoTheoryAll/candidates/COMYTHOS_COSEEDUNIFY_COFED_COIGC_R0_20261120.md"
+    }
+  ],
+  "edges": [
+    {
+      "from": "comythos",
+      "type": "EXTENDS_STORY_LANE_OF",
+      "to": "myth",
+      "source": "docs/CoMythOps/public-mascot-ecology-r0/README.md",
+      "gate": "separate metaphor from evidence"
+    },
+    {
+      "from": "seedunify",
+      "type": "PROPOSES_VOLUNTARY_BELONGING",
+      "to": "belong",
+      "source": "docs/CoTheoryAll/candidates/COMYTHOS_COSEEDUNIFY_COFED_COIGC_R0_20261120.md",
+      "gate": "no compulsory membership"
+    },
+    {
+      "from": "seedunify",
+      "type": "USES_OPTIONAL_STORY",
+      "to": "comythos",
+      "source": "docs/CoTheoryAll/candidates/COMYTHOS_COSEEDUNIFY_COFED_COIGC_R0_20261120.md",
+      "gate": "nonbelievers unaffected"
+    },
+    {
+      "from": "seedunify",
+      "type": "PREFERS_RELATION_OVER_ASSIMILATION",
+      "to": "dual",
+      "source": "https://onlinelibrary.wiley.com/doi/full/10.1111/jasp.12715",
+      "gate": "subgroup difference preserved"
+    },
+    {
+      "from": "seedunify",
+      "type": "AIMS_TO_CONTRIBUTE_TO",
+      "to": "peace",
+      "source": "docs/CoTheoryAll/candidates/COMYTHOS_COSEEDUNIFY_COFED_COIGC_R0_20261120.md",
+      "gate": "no causal peace proof"
+    },
+    {
+      "from": "seedunify",
+      "type": "HAS_EARTH_FIRST_PATH",
+      "to": "earth",
+      "source": "docs/Strategy/CIV2_CIV3_BOUNDARY_GAPMAP_R0.md",
+      "gate": "real needs and affected people"
+    },
+    {
+      "from": "cofed",
+      "type": "FEDERATES_WITH_CONSENT",
+      "to": "localpolities",
+      "source": "docs/Architecture/CIV2_FEDERATED_CELL_HOSTING_R0.md",
+      "gate": "no center with mandatory authority"
+    },
+    {
+      "from": "cofed",
+      "type": "IS_COMPATIBLE_WITH",
+      "to": "civos",
+      "source": "docs/Architecture/CIV2_FEDERATED_CELL_HOSTING_R0.md",
+      "gate": "CivOS is not federation ruler"
+    },
+    {
+      "from": "civos",
+      "type": "MAY_PROJECT_THROUGH",
+      "to": "orbware",
+      "source": "docs/CoTheoryAll/candidates/COMYTHOS_COSEEDUNIFY_COFED_COIGC_R0_20261120.md",
+      "gate": "not deployed"
+    },
+    {
+      "from": "costacks",
+      "type": "PROVIDES_CANDIDATE_AUTOMATION_TO",
+      "to": "civos",
+      "source": "docs/Evolution/COALL_GITHUB_EVOLUTION_FABRIC_R0.md",
+      "gate": "source role map not deployment"
+    },
+    {
+      "from": "costax",
+      "type": "MUST_NOT_BE_CONFUSED_WITH",
+      "to": "costacks",
+      "source": "docs/CoTheoryAll/candidates/COMYTHOS_COSEEDUNIFY_COFED_COIGC_R0_20261120.md",
+      "gate": "CoSTax meaning still held"
+    },
+    {
+      "from": "costax",
+      "type": "MAY_MEASURE_COST_OF",
+      "to": "cofed",
+      "source": "docs/CoTheoryAll/candidates/COMYTHOS_COSEEDUNIFY_COFED_COIGC_R0_20261120.md",
+      "gate": "units and meaning unresolved"
+    },
+    {
+      "from": "cofed",
+      "type": "MAY_FEDERATE_FEDERATIONS_TOWARD",
+      "to": "civ3",
+      "source": "docs/Strategy/CIV2_CIV3_BOUNDARY_GAPMAP_R0.md",
+      "gate": "hypothetical not certified"
+    },
+    {
+      "from": "comythos",
+      "type": "IMAGINES",
+      "to": "igc",
+      "source": "docs/CoTheoryAll/candidates/COMYTHOS_COSEEDUNIFY_COFED_COIGC_R0_20261120.md",
+      "gate": "not existing institution"
+    },
+    {
+      "from": "igc",
+      "type": "IS_HYPOTHETICAL_SCENARIO_UNDER",
+      "to": "civ3",
+      "source": "docs/Strategy/CIV2_CIV3_BOUNDARY_GAPMAP_R0.md",
+      "gate": "ET evidence absent"
+    },
+    {
+      "from": "igc",
+      "type": "REQUIRES_VERIFIED_PRECONDITION",
+      "to": "firstcontact",
+      "source": "https://www.seti.org/research/seti-101/protocols-for-an-eti-signal-detection/",
+      "gate": "no invitation or response now"
+    },
+    {
+      "from": "firstcontact",
+      "type": "REQUIRES_EMPIRICAL_ET_SIGNAL",
+      "to": "et",
+      "source": "https://www.seti.org/research/seti-101/protocols-for-an-eti-signal-detection/",
+      "gate": "observational independent verification"
+    },
+    {
+      "from": "etreplica",
+      "type": "IS_FICTIONAL_EXPLORATION_OF",
+      "to": "et",
+      "source": "docs/CoTheoryAll/candidates/COMYTHOS_COSEEDUNIFY_COFED_COIGC_R0_20261120.md",
+      "gate": "simulations never ET evidence"
+    },
+    {
+      "from": "igc",
+      "type": "MIGHT_NEED",
+      "to": "delegate",
+      "source": "docs/CoTheoryAll/candidates/COMYTHOS_COSEEDUNIFY_COFED_COIGC_R0_20261120.md",
+      "gate": "only valid participatory mandate"
+    },
+    {
+      "from": "delegate",
+      "type": "REQUIRES_VOLUNTARY_CONSENT",
+      "to": "refusal",
+      "source": "docs/CoTheoryAll/candidates/COMYTHOS_COSEEDUNIFY_COFED_COIGC_R0_20261120.md",
+      "gate": "term-limited revocable"
+    },
+    {
+      "from": "delegate",
+      "type": "MAY_DEMONSTRATE",
+      "to": "coscendence",
+      "source": "docs/CoTheoryAll/candidates/COMYTHOS_COSEEDUNIFY_COFED_COIGC_R0_20261120.md",
+      "gate": "competence not worth hierarchy"
+    },
+    {
+      "from": "coscendence",
+      "type": "DOES_NOT_ENTITLE_SEAT_IN",
+      "to": "igc",
+      "source": "docs/CoTheoryAll/candidates/COMYTHOS_COSEEDUNIFY_COFED_COIGC_R0_20261120.md",
+      "gate": "anti-elitism"
+    },
+    {
+      "from": "synthroles",
+      "type": "MAY_CONTRIBUTE_UNDER_SCOPED_CONTRACT",
+      "to": "cofed",
+      "source": "docs/Architecture/COPARTICIPATION_ECOLOGY_R0.md",
+      "gate": "does not establish personhood"
+    },
+    {
+      "from": "ecobiosphere",
+      "type": "MAY_HAVE_INTERESTS_REPRESENTED_BY",
+      "to": "trustee",
+      "source": "docs/CoTheoryAll/candidates/COMYTHOS_COSEEDUNIFY_COFED_COIGC_R0_20261120.md",
+      "gate": "no invented animal speech"
+    },
+    {
+      "from": "trustee",
+      "type": "MUST_BE_ACCOUNTABLE_TO",
+      "to": "localpolities",
+      "source": "docs/CoTheoryAll/candidates/COMYTHOS_COSEEDUNIFY_COFED_COIGC_R0_20261120.md",
+      "gate": "no blanket ownership of all life"
+    },
+    {
+      "from": "igc",
+      "type": "MUST_RESPECT_DISSENT_OF",
+      "to": "localpolities",
+      "source": "docs/CoTheoryAll/candidates/COMYTHOS_COSEEDUNIFY_COFED_COIGC_R0_20261120.md",
+      "gate": "no self-appointed Earth delegation"
+    },
+    {
+      "from": "otherness",
+      "type": "CHALLENGES_UNIFORMITY_IN",
+      "to": "belong",
+      "source": "docs/CoTheoryAll/candidates/COMYTHOS_COSEEDUNIFY_COFED_COIGC_R0_20261120.md",
+      "gate": "identity difference remains"
+    },
+    {
+      "from": "silent",
+      "type": "ALTERNATIVE_TO",
+      "to": "igc",
+      "source": "docs/CoTheoryAll/candidates/COMYTHOS_COSEEDUNIFY_COFED_COIGC_R0_20261120.md",
+      "gate": "no-contact is also a viable future"
+    },
+    {
+      "from": "seedunify",
+      "type": "MAY_BE_TESTED_BY",
+      "to": "planetgame",
+      "source": "docs/CoTheoryAll/candidates/COMYTHOS_COSEEDUNIFY_COFED_COIGC_R0_20261120.md",
+      "gate": "pilot voluntary and opt-out"
+    },
+    {
+      "from": "planetgame",
+      "type": "MUST_BE_JUDGED_UNDER",
+      "to": "ux",
+      "source": "docs/CoTheoryAll/candidates/COMYTHOS_COSEEDUNIFY_COFED_COIGC_R0_20261120.md",
+      "gate": "no real acceptance yet"
+    },
+    {
+      "from": "planetgame",
+      "type": "MUST_EXPOSE_EPISTEMIC_CLASSES_IN",
+      "to": "map",
+      "source": "docs/CoTheoryAll/candidates/COMYTHOS_COSEEDUNIFY_COFED_COIGC_R0_20261120.md",
+      "gate": "no myth-to-evidence laundering"
+    },
+    {
+      "from": "planetgame",
+      "type": "WOULD_BE_PRESENTED_USING",
+      "to": "mega",
+      "source": "docs/CoTheoryAll/candidates/COMYTHOS_COSEEDUNIFY_COFED_COIGC_R0_20261120.md",
+      "gate": "source design only"
+    },
+    {
+      "from": "planetgame",
+      "type": "MUST_RESPECT",
+      "to": "refusal",
+      "source": "docs/CoTheoryAll/candidates/COMYTHOS_COSEEDUNIFY_COFED_COIGC_R0_20261120.md",
+      "gate": "accept reject rewrite exit"
+    },
+    {
+      "from": "refusal",
+      "type": "CAN_BE_ENFORCED_BY",
+      "to": "guardian",
+      "source": "docs/Architecture/COPARTICIPATION_ECOLOGY_R0.md",
+      "gate": "permission not narrative"
+    },
+    {
+      "from": "cma",
+      "type": "MAY_GUIDE_CANDIDATE_VALUES_FOR",
+      "to": "seedunify",
+      "source": "docs/Evolution/GDSIDE_COPRIMATH_GSLOOP_PUBLIC_R0.md",
+      "gate": "normative not physical"
+    },
+    {
+      "from": "cma",
+      "type": "IS_HYPOTHESIS_LENS_IN",
+      "to": "gdside",
+      "source": "docs/Evolution/GDSIDE_COPRIMATH_GSLOOP_PUBLIC_R0.md",
+      "gate": "no god as authorized actor"
+    },
+    {
+      "from": "cosacred",
+      "type": "MAY_COEXIST_WITH",
+      "to": "seedunify",
+      "source": "docs/CoTheoryAll/candidates/COMYTHOS_COSEEDUNIFY_COFED_COIGC_R0_20261120.md",
+      "gate": "no belief test for participation"
+    },
+    {
+      "from": "comythos",
+      "type": "IS_INTERPRETED_BUT_NOT_VALIDATED_BY",
+      "to": "theory",
+      "source": "docs/CoTheoryAll/candidates/COMYTHOS_COSEEDUNIFY_COFED_COIGC_R0_20261120.md",
+      "gate": "myth and science separated"
+    },
+    {
+      "from": "seedunify",
+      "type": "NEEDS_REAL_RECEIVER_VALUE_FROM",
+      "to": "work",
+      "source": "docs/CoTheoryAll/candidates/COMYTHOS_COSEEDUNIFY_COFED_COIGC_R0_20261120.md",
+      "gate": "identity narrative not enough"
+    },
+    {
+      "from": "cofed",
+      "type": "IS_EXPLORED_AS_FUTURE_FEDERATION_IN",
+      "to": "civ2",
+      "source": "docs/Architecture/CIV2_FEDERATED_CELL_HOSTING_R0.md",
+      "gate": "provisional infrastructure"
+    },
+    {
+      "from": "igc",
+      "type": "REQUIRES_NON_PARTICIPANT_PROTECTION_VIA",
+      "to": "guardian",
+      "source": "docs/CoTheoryAll/candidates/COMYTHOS_COSEEDUNIFY_COFED_COIGC_R0_20261120.md",
+      "gate": "no forced representation"
+    },
+    {
+      "from": "peace",
+      "type": "NEEDS_POLICY_AND_MATERIAL_SUPPORT_BEYOND",
+      "to": "belong",
+      "source": "https://onlinelibrary.wiley.com/doi/full/10.1111/jasp.12715",
+      "gate": "myth alone insufficient"
+    },
+    {
+      "from": "otherness",
+      "type": "PRESERVES_DIVERSE_VOICES_IN",
+      "to": "cofed",
+      "source": "docs/CoTheoryAll/candidates/COMYTHOS_COSEEDUNIFY_COFED_COIGC_R0_20261120.md",
+      "gate": "no forced sameness"
+    }
+  ],
+  "challenger_tasks": [
+    "Check IGC/CoIGC wording against no-contact and no-planetary-authority requirements",
+    "Check CoSeedUnifiy/CoSeedUnify alias lineage and whether CoStax is a distinct concept",
+    "Challenge common planetary identity against subgroup distinctiveness and coercion",
+    "Assess ecological and nonhuman-interest representation without fictional consent",
+    "Build no public outreach or ET transmission from this draft"
+  ],
+  "acceptance": {
+    "github_source_readback": "PENDING_VERIFICATION",
+    "integrated_into_base_graph": "NO",
+    "receiver_ack": "UNVERIFIED",
+    "human_usefulness": "NOT_TESTED",
+    "current_et_contact": "NOT_VERIFIED",
+    "diplomatic_mandate": "NONE",
+    "global_session_ack": "UNVERIFIED"
+  },
+  "nonclaims": [
+    "MYTHOS_IS_NOT_CONTACT",
+    "ET_EMULATION_IS_NOT_REAL_ET",
+    "IGC_IS_NOT_EXISTING_INSTITUTION",
+    "COSCENDENCE_IS_NOT_A_RANK",
+    "CMA_IS_NOT_AUTHORITY",
+    "PUBLIC_SOURCE_IS_NOT_CANON",
+    "NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF",
+    "DISCOVERED_SET_IS_NOT_COMPLETE_HISTORY"
+  ]
+}
