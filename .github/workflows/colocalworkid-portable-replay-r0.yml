@@ -26,3 +26,5 @@ jobs:
           python-version: '3.12'
       - name: Run synthetic capsule cold replay and fail-closed tests
         run: python -B examples/colocalworkid/test_portable_replay_r0.py -v
+      - name: Verify hard-exit worker recovery and single-writer fencing
+        run: python -B examples/colocalworkid/test_worker_recovery_r0.py -v
