@@ -28,13 +28,16 @@ const SOURCE_PATHS = [
   "docs/CoTheoryAll/candidates/COMYTHOS_COSEEDUNIFY_COFED_COIGC_R0_20261120.md"
 ];
 const REPLAY_PATHS = ["scripts/test_coworkid_process_replay_r0.cjs"];
+const CONCURRENT_PATHS = ["scripts/test_coworkid_concurrent_fencing_r0.cjs"];
 const INPUT_FILES = [
   "source-hashes.sha256",
   "coworkid-process-replay.sha256",
   "revision.txt",
   "source-tests.log",
   "coworkid-process-replay.log",
-  "nonclaims.txt"
+  "nonclaims.txt",
+  "coworkid-concurrent-fence.sha256",
+  "coworkid-concurrent-fence.log"
 ];
 
 function sourcePath(rel) {
@@ -72,14 +75,18 @@ function verify(i) {
 
   const sourceEntries = verifyManifest(i.sourceManifest, SOURCE_PATHS);
   const replayEntries = verifyManifest(i.replayManifest, REPLAY_PATHS);
+  const concurrentEntries = verifyManifest(i.concurrentManifest, CONCURRENT_PATHS);
 
   assert.equal(countPasses(i.sourceLog), 11, "HOLD_SOURCE_TEST_COUNT");
   assert(i.sourceLog.includes("SOURCE_ONLY_PASS 11 tests"), "HOLD_SOURCE_TEST_RESULT_ABSENT");
   assert.equal(countPasses(i.replayLog), 17, "HOLD_RECOVERY_TEST_COUNT");
   assert(i.replayLog.includes("SYNTHETIC_SOURCE_RECOVERY_PASS 17 tests"), "HOLD_RECOVERY_TEST_RESULT_ABSENT");
   assert(i.replayLog.includes("no independent receiver"), "HOLD_RECOVERY_NONCLAIM_ABSENT");
+  assert.equal(countPasses(i.concurrentLog), 16, "HOLD_CONCURRENT_TEST_COUNT");
+  assert(i.concurrentLog.includes("SYNTHETIC_CONCURRENT_FENCE_PASS 16 tests"), "HOLD_CONCURRENT_RESULT_ABSENT");
+  assert(i.concurrentLog.includes("NO_POWER_LOSS_PROOF"), "HOLD_CONCURRENT_SCOPE_ABSENT");
   assert(i.nonclaims.includes("DOES_NOT_PROVE_BROWSER_UX_RUNTIME_RECEIVER_COEX_CANON_OR_DEPLOYMENT"), "HOLD_CI_NONCLAIM_ABSENT");
-  return { commit, sourceEntries, replayEntries };
+  return { commit, sourceEntries, replayEntries, concurrentEntries };
 }
 
 function expectHold(name, mutation, input) {
@@ -94,7 +101,8 @@ const data = {};
 const inputNames = {
   sourceManifest: INPUT_FILES[0], replayManifest: INPUT_FILES[1],
   revision: INPUT_FILES[2], sourceLog: INPUT_FILES[3],
-  replayLog: INPUT_FILES[4], nonclaims: INPUT_FILES[5]
+  replayLog: INPUT_FILES[4], nonclaims: INPUT_FILES[5],
+  concurrentManifest: INPUT_FILES[6], concurrentLog: INPUT_FILES[7]
 };
 for (const [k, filename] of Object.entries(inputNames)) {
   const located = path.join(artifact, filename);
@@ -110,7 +118,9 @@ const negative = [
   ["missing_source_pass", d => ({ ...d, sourceLog: d.sourceLog.replace("SOURCE_ONLY_PASS 11 tests", "SOURCE_ONLY_RESULT_UNKNOWN") })],
   ["source_log_pass_count", d => ({ ...d, sourceLog: d.sourceLog.replace(/^PASS .+\r?\n/m, "") })],
   ["missing_recovery_pass", d => ({ ...d, replayLog: d.replayLog.replace("SYNTHETIC_SOURCE_RECOVERY_PASS 17 tests", "RECOVERY_RESULT_UNKNOWN") })],
-  ["missing_nonclaims", d => ({ ...d, nonclaims: "" })]
+  ["missing_nonclaims", d => ({ ...d, nonclaims: "" })],
+  ["concurrent_digest_tamper", d => ({ ...d, concurrentManifest: d.concurrentManifest.replace(/^[a-f0-9]{64}/, "0".repeat(64)) })],
+  ["concurrent_result_removed", d => ({ ...d, concurrentLog: d.concurrentLog.replace("SYNTHETIC_CONCURRENT_FENCE_PASS 16 tests", "UNKNOWN") })]
 ];
 for (const [name, mutate] of negative) expectHold(name, mutate, data);
 
@@ -125,10 +135,11 @@ const receipt = {
   source_job: "source-parity",
   receiving_job: "artifact-readback",
   received_artifact_name: "comegathesis-source-proof-" + (process.env.GITHUB_RUN_ID || "UNKNOWN"),
-  tests: { source: 11, process_recovery: 17, negative_controls: negative.length },
+  tests: { source: 11, process_recovery: 17, concurrent_fencing: 16, negative_controls: negative.length },
   exact_manifest_paths: {
     source: verified.sourceEntries.map(x => x.path),
-    replay: verified.replayEntries.map(x => x.path)
+    replay: verified.replayEntries.map(x => x.path),
+    concurrent: verified.concurrentEntries.map(x => x.path)
   },
   received_artifact_file_hashes: Object.fromEntries(
     INPUT_FILES.map(name => [name, sha256(fs.readFileSync(path.join(artifact, name)))])
@@ -154,4 +165,4 @@ fs.writeFileSync(receiptPath, JSON.stringify(receipt, null, 2) + "\n", { flag: "
 fs.writeFileSync(path.join(output, "coci-artifact-readback-receipt.sha256"),
   sha256(fs.readFileSync(receiptPath)) + "  coci-artifact-readback-receipt.json\n",
   { flag: "wx" });
-process.stdout.write("CI_ARTIFACT_READBACK_PASS source=11 replay=17 negatives=" + negative.length + " provider_independent=false\n");
+process.stdout.write("CI_ARTIFACT_READBACK_PASS source=11 replay=17 concurrent=16 negatives=" + negative.length + " provider_independent=false\n");
