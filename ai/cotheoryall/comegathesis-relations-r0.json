@@ -1,0 +1,604 @@
+{
+  "schema": "CoTheoryAll.CoMegaThesis.RelationalReader.SelectedGraph.R0-candidate",
+  "created_utc": "2026-11-20",
+  "state": "PUBLIC_DRAFT_CANDIDATE__NOT_CANON__NOT_FULL_GRAPH__NOT_RUNTIME",
+  "narrative": "docs/CoTheoryAll/candidates/COMEGAThesis_CoMap_CoUX_GdSide_Civ3_R0_20261120.md",
+  "origin": "user request to weave CoTheoryAll, CoMap, MegaScroller, CoBF, Universal UX, G_dSide, Civ3, CoOrbWare, CoOrb, CoBar, rickBar and CoGuardian",
+  "currentness": "snapshot pins of inspected source files in prior GitHub fetch; explicit version not a universal runtime freshness signal",
+  "coverage": {
+    "nodes": 32,
+    "edges": 48,
+    "discovery": "bounded selected source-indexed relationships, not all corpus"
+  },
+  "epistemic_rules": [
+    "typed source status and edge gate required",
+    "metaphor not physical evidence",
+    "historical/source-only UI not live deployment",
+    "publication not receiver pickup",
+    "CoBF alias unresolved",
+    "Civ3 not certified",
+    "G_dSide not causal",
+    "receiver-relative projection not source mutation",
+    "MANY_READERS_ONE_ELECTED_ACTUATOR"
+  ],
+  "nodes": [
+    {
+      "id": "theory",
+      "label": "CoTheoryAll+",
+      "kind": "knowledge_theory",
+      "status": "working_not_canon",
+      "source": "docs/Public/CoTheoryAll_Substack_Draft_2026-10-06.md"
+    },
+    {
+      "id": "straw",
+      "label": "CoStrawBe+",
+      "kind": "hypothesis_method",
+      "status": "candidate",
+      "source": "docs/CoTheoryAll/costrawbe-r0/README.md"
+    },
+    {
+      "id": "thesis",
+      "label": "CoMegaThesis+",
+      "kind": "reading_view",
+      "status": "candidate_not_deployed",
+      "source": "docs/Public/Snapshots/2026-10-19_CoMegaScroller_CC_CoTheoryAll_R0.md"
+    },
+    {
+      "id": "mega",
+      "label": "CoMegaScroller+",
+      "kind": "offline_html_reader",
+      "status": "source_present_not_live",
+      "source": "examples/comap/megascroller-r0.html"
+    },
+    {
+      "id": "map",
+      "label": "CoMap+",
+      "kind": "typed_graph_view",
+      "status": "bounded_source_graph",
+      "source": "examples/comap/README.md"
+    },
+    {
+      "id": "lex",
+      "label": "CoLex+",
+      "kind": "term_dictionary",
+      "status": "partial_registry",
+      "source": "examples/comap/README.md"
+    },
+    {
+      "id": "work",
+      "label": "CoWorkID+",
+      "kind": "work_identity",
+      "status": "architecture_contract",
+      "source": "docs/Architecture/COMODELFABRIC_COORB_PROVIDER_ADAPTERS_R0_20261024.md"
+    },
+    {
+      "id": "ux",
+      "label": "CoUX+",
+      "kind": "user_experience_invariant",
+      "status": "candidate",
+      "source": "docs/Architecture/COUX_MATURITY_OMISSION_REGISTRY_R0_20261028.md"
+    },
+    {
+      "id": "bf",
+      "label": "CoBF+",
+      "kind": "unresolved_legacy_term",
+      "status": "HOLD_UNRESOLVED",
+      "source": "docs/Architecture/COSYNTHNOETICS_SURFACEFACE_COPERSPECTIVE_R0_20261112.md"
+    },
+    {
+      "id": "bestface",
+      "label": "CoBestFace+?",
+      "kind": "alias_candidate",
+      "status": "HOLD_NO_LINEAGE_PROOF",
+      "source": "docs/Architecture/COSYNTHNOETICS_SURFACEFACE_COPERSPECTIVE_R0_20261112.md"
+    },
+    {
+      "id": "surface",
+      "label": "CoSurfaceFace+",
+      "kind": "interface_semantics",
+      "status": "candidate",
+      "source": "docs/Architecture/COSYNTHNOETICS_SURFACEFACE_COPERSPECTIVE_R0_20261112.md"
+    },
+    {
+      "id": "gbx",
+      "label": "CoGbx+",
+      "kind": "universal_device_views",
+      "status": "static_candidate",
+      "source": "docs/Architecture/COGBX_UNIVERSAL_UX_EXEMPLAR_R0_20261027.md"
+    },
+    {
+      "id": "orbware",
+      "label": "CoOrbWare+",
+      "kind": "relational_projection_grammar",
+      "status": "architecture_not_runtime",
+      "source": "docs/Architecture/COORBWARE_BEYOND_COSOFTWARE_R0_20261024.md"
+    },
+    {
+      "id": "orb",
+      "label": "CoOrb+",
+      "kind": "focused_context_lens",
+      "status": "architecture_not_current_X2",
+      "source": "docs/Architecture/COORB_LOCAL_UX_REGENERATIVE_R0_20261026.md"
+    },
+    {
+      "id": "bar",
+      "label": "CoBar+",
+      "kind": "compact_control_surface",
+      "status": "architecture_not_current_X2",
+      "source": "docs/Architecture/COORB_LOCAL_UX_REGENERATIVE_R0_20261026.md"
+    },
+    {
+      "id": "rickbar",
+      "label": "rickBar+",
+      "kind": "receiver_specific_bar",
+      "status": "local_source_not_production",
+      "source": "docs/Architecture/RICKBAR_CONTINUITY_R1_20261108.md"
+    },
+    {
+      "id": "fleet",
+      "label": "CoFleetProjection+",
+      "kind": "worker_state_view",
+      "status": "ux_contract",
+      "source": "docs/UX/COFLEET_RICKBAR_R4.md"
+    },
+    {
+      "id": "guardian",
+      "label": "CoGuardian+",
+      "kind": "authority_truth_gates",
+      "status": "source_bound_policy",
+      "source": "docs/COBUS_LITE/guardian/CoGuardian_StateTruth_v0.md"
+    },
+    {
+      "id": "time",
+      "label": "CoTimeBraid+",
+      "kind": "time_scenarios",
+      "status": "candidate",
+      "source": "docs/Architecture/COOMNIFRONT_TIMEBRAID_R0_20261108.md"
+    },
+    {
+      "id": "gdside",
+      "label": "G_dSide+",
+      "kind": "normative_or_mathematical_hypothesis",
+      "status": "hypothesis_no_causal_claim",
+      "source": "docs/Evolution/COFUTUREPULL_GDSIDE_R0.md"
+    },
+    {
+      "id": "future",
+      "label": "CoFuturePull+",
+      "kind": "scenario_planning",
+      "status": "candidate",
+      "source": "docs/Evolution/COFUTUREPULL_GDSIDE_R0.md"
+    },
+    {
+      "id": "primath",
+      "label": "CoPriMath+",
+      "kind": "measurement_grammar",
+      "status": "candidate",
+      "source": "docs/Evolution/GDSIDE_FIVE_LANE_WORKPACK_R0.md"
+    },
+    {
+      "id": "evo",
+      "label": "CoEvo+",
+      "kind": "evolution_mechanism",
+      "status": "working_method",
+      "source": "docs/CoEvo/CoEvo_Megascroller_v0__2026-03-24.md"
+    },
+    {
+      "id": "rewise",
+      "label": "CoAckRewise+",
+      "kind": "versioned_correction",
+      "status": "working_source",
+      "source": "docs/Evolution/COACKREWISE_COOBJECT_CIV3_FRONTIER_R0_20261109.md"
+    },
+    {
+      "id": "et",
+      "label": "CoET+",
+      "kind": "extraterrestrial_empirical_lane",
+      "status": "not_detection",
+      "source": "docs/Architecture/COET_GD_SIGNAL_HYPOTHESIS_FINDERS_R0_20261024.md"
+    },
+    {
+      "id": "forget",
+      "label": "CoForgetToBecome+",
+      "kind": "metaphysical_candidate",
+      "status": "draft_pr_499_not_merged",
+      "source": "candidate/cotheoryall-coforgettobecome-et-prealive-r0-20261120:docs/CoTheoryAll/candidates/COFORGETTOBECOME_COET_PREALIVE_R0_20261120.md"
+    },
+    {
+      "id": "myth",
+      "label": "CoMythOps+",
+      "kind": "mythic_interpretation",
+      "status": "non_evidentiary_lens",
+      "source": "docs/Public/CoTheoryAll_Substack_Draft_2026-10-06.md"
+    },
+    {
+      "id": "cc",
+      "label": "Cognocarta Consenti",
+      "kind": "governance_lineage",
+      "status": "public_index_not_full_source",
+      "source": "docs/Public/Snapshots/2026-10-19_CoMegaScroller_CC_CoTheoryAll_R0.md"
+    },
+    {
+      "id": "model",
+      "label": "CoModelFabric+",
+      "kind": "agent_adapter_architecture",
+      "status": "candidate_not_live",
+      "source": "docs/Architecture/COMODELFABRIC_COORB_PROVIDER_ADAPTERS_R0_20261024.md"
+    },
+    {
+      "id": "civ2",
+      "label": "Civ2+",
+      "kind": "societal_stage",
+      "status": "candidate_definition",
+      "source": "docs/Strategy/CIV2_CIV3_BOUNDARY_GAPMAP_R0.md"
+    },
+    {
+      "id": "civ3",
+      "label": "Civ3+",
+      "kind": "future_boundary",
+      "status": "speculative_unachieved",
+      "source": "docs/Strategy/CIV2_CIV3_BOUNDARY_GAPMAP_R0.md"
+    },
+    {
+      "id": "bootstrap",
+      "label": "CoSessionBootstrap+",
+      "kind": "source_discovery",
+      "status": "published_not_global_receiver_ack",
+      "source": "SESSION_BOOTSTRAP.md"
+    }
+  ],
+  "edges": [
+    {
+      "from": "theory",
+      "type": "USES_HYPOTHESIS_METHOD",
+      "to": "straw",
+      "source": "docs/CoTheoryAll/costrawbe-r0/README.md",
+      "gate": "epistemic status per claim"
+    },
+    {
+      "from": "theory",
+      "type": "CAN_BE_NARRATED_BY",
+      "to": "thesis",
+      "source": "docs/Public/Snapshots/2026-10-19_CoMegaScroller_CC_CoTheoryAll_R0.md",
+      "gate": "projection not proof"
+    },
+    {
+      "from": "thesis",
+      "type": "REUSES_PREDECESSOR",
+      "to": "mega",
+      "source": "examples/comap/megascroller-r0.html",
+      "gate": "avoid forked master"
+    },
+    {
+      "from": "thesis",
+      "type": "USES_RELATIONS_FROM",
+      "to": "map",
+      "source": "examples/comap/README.md",
+      "gate": "selected subset"
+    },
+    {
+      "from": "mega",
+      "type": "DISPLAYS_SOURCE_GRAPH_FROM",
+      "to": "map",
+      "source": "examples/comap/megascroller-r0.html",
+      "gate": "historic R0 bounded counts"
+    },
+    {
+      "from": "map",
+      "type": "USES_TERMS_FROM",
+      "to": "lex",
+      "source": "examples/comap/README.md",
+      "gate": "meaning collisions checked"
+    },
+    {
+      "from": "map",
+      "type": "SUPPORTS_THESIS_READING",
+      "to": "theory",
+      "source": "examples/comap/README.md",
+      "gate": "graph proximity not causal evidence"
+    },
+    {
+      "from": "work",
+      "type": "PROVIDES_WORK_IDENTITY_TO",
+      "to": "orb",
+      "source": "docs/Architecture/COORB_LOCAL_UX_REGENERATIVE_R0_20261026.md",
+      "gate": "source WorkID not screen"
+    },
+    {
+      "from": "work",
+      "type": "CAN_PROJECT_THROUGH",
+      "to": "orbware",
+      "source": "docs/Architecture/COORBWARE_BEYOND_COSOFTWARE_R0_20261024.md",
+      "gate": "no authority inheritance"
+    },
+    {
+      "from": "orbware",
+      "type": "USES_TYPED_RELATIONS_FROM",
+      "to": "map",
+      "source": "docs/Architecture/COORBWARE_BEYOND_COSOFTWARE_R0_20261024.md",
+      "gate": "same source spine"
+    },
+    {
+      "from": "orbware",
+      "type": "DELIVERS_FOCUSED_CONTEXT_TO",
+      "to": "orb",
+      "source": "docs/Architecture/COORBWARE_BEYOND_COSOFTWARE_R0_20261024.md",
+      "gate": "receiver-relative"
+    },
+    {
+      "from": "orb",
+      "type": "CAN_OPEN_FROM",
+      "to": "bar",
+      "source": "docs/Architecture/COORB_LOCAL_UX_REGENERATIVE_R0_20261026.md",
+      "gate": "if interface is actually running"
+    },
+    {
+      "from": "bar",
+      "type": "HAS_USER_SPECIFIC_PROJECTION",
+      "to": "rickbar",
+      "source": "docs/Architecture/RICKBAR_CONTINUITY_R1_20261108.md",
+      "gate": "user interface not shared truth store"
+    },
+    {
+      "from": "rickbar",
+      "type": "CAN_SHOW",
+      "to": "fleet",
+      "source": "docs/UX/COFLEET_RICKBAR_R4.md",
+      "gate": "counts coverage-bound"
+    },
+    {
+      "from": "ux",
+      "type": "GOVERNS_ACCEPTANCE_OF",
+      "to": "thesis",
+      "source": "docs/Architecture/COUX_MATURITY_OMISSION_REGISTRY_R0_20261028.md",
+      "gate": "human UX acceptance unproven"
+    },
+    {
+      "from": "ux",
+      "type": "REQUIRES_ACCESSIBILITY_FOR",
+      "to": "gbx",
+      "source": "docs/Architecture/COGBX_UNIVERSAL_UX_EXEMPLAR_R0_20261027.md",
+      "gate": "text fallback"
+    },
+    {
+      "from": "gbx",
+      "type": "USES_PROJECTION_GRAMMAR",
+      "to": "orbware",
+      "source": "docs/Architecture/COGBX_UNIVERSAL_UX_EXEMPLAR_R0_20261027.md",
+      "gate": "many devices one source"
+    },
+    {
+      "from": "surface",
+      "type": "APPLIES_TO",
+      "to": "bar",
+      "source": "docs/Architecture/COSYNTHNOETICS_SURFACEFACE_COPERSPECTIVE_R0_20261112.md",
+      "gate": "visual appearance not task identity"
+    },
+    {
+      "from": "bf",
+      "type": "IS_UNRESOLVED_NEXT_TO",
+      "to": "surface",
+      "source": "docs/Architecture/COSYNTHNOETICS_SURFACEFACE_COPERSPECTIVE_R0_20261112.md",
+      "gate": "must recover original CoBF definition"
+    },
+    {
+      "from": "bestface",
+      "type": "POSSIBLE_ALIAS_OF",
+      "to": "bf",
+      "source": "docs/Architecture/COSYNTHNOETICS_SURFACEFACE_COPERSPECTIVE_R0_20261112.md",
+      "gate": "CoLex lineage unverified"
+    },
+    {
+      "from": "guardian",
+      "type": "GATES_OUTWARD_EFFECTS_FROM",
+      "to": "bar",
+      "source": "docs/COBUS_LITE/guardian/CoGuardian_StateTruth_v0.md",
+      "gate": "no action without effect scope"
+    },
+    {
+      "from": "guardian",
+      "type": "GATES_WORKER_ACTUATION_OF",
+      "to": "model",
+      "source": "docs/COBUS_LITE/guardian/CoGuardian_StateTruth_v0.md",
+      "gate": "lease and receiver"
+    },
+    {
+      "from": "guardian",
+      "type": "INTERPRETS_CURRENTNESS_FOR",
+      "to": "orb",
+      "source": "docs/COBUS_LITE/guardian/CoGuardian_StateTruth_v0.md",
+      "gate": "dashboards not absolute truth"
+    },
+    {
+      "from": "future",
+      "type": "MODELS_CANDIDATE_FUTURES_OF",
+      "to": "time",
+      "source": "docs/Architecture/COOMNIFRONT_TIMEBRAID_R0_20261108.md",
+      "gate": "time and forecast distinct"
+    },
+    {
+      "from": "gdside",
+      "type": "MAY_ORIENT",
+      "to": "future",
+      "source": "docs/Evolution/COFUTUREPULL_GDSIDE_R0.md",
+      "gate": "normative hypothesis only"
+    },
+    {
+      "from": "primath",
+      "type": "MAY_MEASURE_SCENARIOS_IN",
+      "to": "future",
+      "source": "docs/Evolution/GDSIDE_FIVE_LANE_WORKPACK_R0.md",
+      "gate": "typed units/baselines"
+    },
+    {
+      "from": "theory",
+      "type": "CHALLENGES_HYPOTHESES_OF",
+      "to": "gdside",
+      "source": "docs/Evolution/COFUTUREPULL_GDSIDE_R0.md",
+      "gate": "does not validate metaphysics"
+    },
+    {
+      "from": "theory",
+      "type": "HOLDS_ET_HYPOTHESES_AS",
+      "to": "et",
+      "source": "docs/Architecture/COET_GD_SIGNAL_HYPOTHESIS_FINDERS_R0_20261024.md",
+      "gate": "no signal is proven alien"
+    },
+    {
+      "from": "theory",
+      "type": "HOLDS_CONJECTURE",
+      "to": "forget",
+      "source": "candidate/cotheoryall-coforgettobecome-et-prealive-r0-20261120:docs/CoTheoryAll/candidates/COFORGETTOBECOME_COET_PREALIVE_R0_20261120.md",
+      "gate": "draft PR not main"
+    },
+    {
+      "from": "forget",
+      "type": "NOT_EVIDENCE_OF",
+      "to": "et",
+      "source": "candidate/cotheoryall-coforgettobecome-et-prealive-r0-20261120:docs/CoTheoryAll/candidates/COFORGETTOBECOME_COET_PREALIVE_R0_20261120.md",
+      "gate": "distinct questions"
+    },
+    {
+      "from": "myth",
+      "type": "INTERPRETS_WITHOUT_PROVING",
+      "to": "forget",
+      "source": "docs/Public/CoTheoryAll_Substack_Draft_2026-10-06.md",
+      "gate": "symbolic not factual"
+    },
+    {
+      "from": "straw",
+      "type": "REQUIRES_COMPETING_ALTERNATIVES_FOR",
+      "to": "forget",
+      "source": "candidate/cotheoryall-coforgettobecome-et-prealive-r0-20261120:docs/CoTheoryAll/candidates/COFORGETTOBECOME_COET_PREALIVE_R0_20261120.md",
+      "gate": "H0 to H?"
+    },
+    {
+      "from": "evo",
+      "type": "REVISES_UNDER_CHALLENGE",
+      "to": "theory",
+      "source": "docs/CoEvo/CoEvo_Megascroller_v0__2026-03-24.md",
+      "gate": "no silent supersession"
+    },
+    {
+      "from": "rewise",
+      "type": "TRACKS_VERSIONED_CHANGES_IN",
+      "to": "evo",
+      "source": "docs/Evolution/COACKREWISE_COOBJECT_CIV3_FRONTIER_R0_20261109.md",
+      "gate": "retain failure lineage"
+    },
+    {
+      "from": "model",
+      "type": "ROUTES_QUALIFIED_WORKERS_FOR",
+      "to": "work",
+      "source": "docs/Architecture/COMODELFABRIC_COORB_PROVIDER_ADAPTERS_R0_20261024.md",
+      "gate": "provider optional"
+    },
+    {
+      "from": "cc",
+      "type": "INFORMS_CONSENT_BOUNDS_OF",
+      "to": "civ2",
+      "source": "docs/Public/Snapshots/2026-10-19_CoMegaScroller_CC_CoTheoryAll_R0.md",
+      "gate": "full CC not verified"
+    },
+    {
+      "from": "civ2",
+      "type": "CAN_APPROACH",
+      "to": "civ3",
+      "source": "docs/Strategy/CIV2_CIV3_BOUNDARY_GAPMAP_R0.md",
+      "gate": "no certification implied"
+    },
+    {
+      "from": "civ3",
+      "type": "REQUIRES_MORE_DIVERSE_COOPERATION_THAN",
+      "to": "civ2",
+      "source": "docs/Strategy/CIV2_CIV3_BOUNDARY_GAPMAP_R0.md",
+      "gate": "future scenario, not achieved"
+    },
+    {
+      "from": "theory",
+      "type": "CAN_COMPARE_WORLDMODELS_FOR",
+      "to": "civ3",
+      "source": "docs/Strategy/CIV2_CIV3_BOUNDARY_GAPMAP_R0.md",
+      "gate": "hypothesis not progress score"
+    },
+    {
+      "from": "bootstrap",
+      "type": "ENABLES_SCOPED_DISCOVERY_OF",
+      "to": "theory",
+      "source": "SESSION_BOOTSTRAP.md",
+      "gate": "published not all ACK"
+    },
+    {
+      "from": "rewise",
+      "type": "PRESERVES_CHALLENGES_FROM",
+      "to": "map",
+      "source": "docs/Evolution/COACKREWISE_COOBJECT_CIV3_FRONTIER_R0_20261109.md",
+      "gate": "recheck exact source"
+    },
+    {
+      "from": "ux",
+      "type": "TESTS_FIRST_USE_OF",
+      "to": "orb",
+      "source": "docs/Architecture/COUX_MATURITY_OMISSION_REGISTRY_R0_20261028.md",
+      "gate": "no live device acceptance"
+    },
+    {
+      "from": "orb",
+      "type": "SURFACES_FOCUSED_NEIGHBORS_OF",
+      "to": "map",
+      "source": "docs/Architecture/COORB_LOCAL_UX_REGENERATIVE_R0_20261026.md",
+      "gate": "only relevant nodes"
+    },
+    {
+      "from": "bar",
+      "type": "PROVIDES_GESTURE_ENTRY_TO",
+      "to": "orb",
+      "source": "docs/Architecture/COORB_LOCAL_UX_REGENERATIVE_R0_20261026.md",
+      "gate": "UI control not authority"
+    },
+    {
+      "from": "rickbar",
+      "type": "HAS_RECOVERY_CONTRACT_FOR",
+      "to": "work",
+      "source": "docs/Architecture/RICKBAR_CONTINUITY_R1_20261108.md",
+      "gate": "browser restart fixture not X2 proof"
+    },
+    {
+      "from": "time",
+      "type": "TIMESTAMPS",
+      "to": "map",
+      "source": "docs/Architecture/COOMNIFRONT_TIMEBRAID_R0_20261108.md",
+      "gate": "past/current/forecast differentiated"
+    },
+    {
+      "from": "future",
+      "type": "MAY_BACKCAST_ELIGIBLE_STEPS_TO",
+      "to": "work",
+      "source": "docs/Evolution/COFUTUREPULL_GDSIDE_R0.md",
+      "gate": "goal not authority"
+    },
+    {
+      "from": "guardian",
+      "type": "BOUNDS_REVIEW_TRANSITION_OF",
+      "to": "thesis",
+      "source": "docs/COBUS_LITE/guardian/CoGuardian_StateTruth_v0.md",
+      "gate": "readback required"
+    }
+  ],
+  "acceptance": {
+    "source_parse": "graph authored and prechecked",
+    "browser_accessibility": "NOT_RUN",
+    "real_receiver_use": "NOT_VERIFIED",
+    "x2_or_cobar_runtime": "NOT_VERIFIED",
+    "global_fanin": "NOT_VERIFIED",
+    "three_independent": "HOLD"
+  },
+  "nonclaims": [
+    "LOCAL_IS_NOT_LANDED",
+    "VALIDATION_IS_NOT_ACCEPTANCE",
+    "NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF",
+    "NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE",
+    "HASHING_IS_NOT_SEMANTIC_INGESTION",
+    "DISCOVERED_SET_IS_NOT_COMPLETE_HISTORY"
+  ]
+}
