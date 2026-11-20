@@ -21,6 +21,20 @@ test("read-only preview has zero effects",()=>{const r=resolveCoNod(baseline());
 test("ten repeated nods produce no effects",()=>{const v=Array.from({length:10},()=>resolveCoNod(baseline()));assert.equal(new Set(v.map(x=>JSON.stringify(x))).size,1);assert(v.every(x=>x.executed===false));});
 test("committed receipt quiets identical work",()=>{const x=baseline();x.receipts.push({work_id:work.work_id,source_sha256:work.source_sha256,state:"COMMITTED"});assert.equal(resolveCoNod(x).decision,"NO_MATERIAL_DELTA");});
 test("source drift with prior effect holds",()=>{const x=baseline();x.receipts.push({work_id:work.work_id,source_sha256:work.source_sha256,state:"COMMITTED"});x.work[0].source_sha256="e".repeat(64);assert.equal(resolveCoNod(x).reason,"HOLD_PRIOR_EFFECT_UNRESOLVED");});
+test("contradictory committed and indeterminate receipts hold in either order",()=>{
+  const committed={work_id:work.work_id,source_sha256:work.source_sha256,state:"COMMITTED"};
+  const unknown={work_id:work.work_id,source_sha256:work.source_sha256,state:"INDETERMINATE"};
+  for(const receipts of [[committed,unknown],[unknown,committed]]){
+    const x=baseline();x.receipts=receipts;
+    assert.equal(resolveCoNod(x).reason,"HOLD_PRIOR_EFFECT_UNRESOLVED");
+    assert.equal(resolveCoNod(x).decision,"HOLD");
+  }
+});
+test("unknown prior same-WorkID effect holds rather than previews",()=>{
+  const x=baseline();
+  x.receipts.push({work_id:work.work_id,source_sha256:work.source_sha256,state:"PENDING"});
+  assert.equal(resolveCoNod(x).reason,"HOLD_PRIOR_EFFECT_UNRESOLVED");
+});
 test("STOP overrides",()=>{const x=baseline();x.stop=true;assert.equal(resolveCoNod(x).reason,"HOLD_STOP_ACTIVE");});
 test("revoked policy holds",()=>{const x=baseline();x.policies[0].revoked=true;assert.equal(resolveCoNod(x).reason,"HOLD_NO_QUALIFIED_COPRE");});
 test("approved epoch beats new timestamp",()=>{const x=baseline();x.policies.push({...policy,id:"old",epoch:3,valid_from:999});assert.equal(resolveCoNod(x).policy_epoch,7);});
