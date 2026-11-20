@@ -5,12 +5,15 @@ import argparse
 import hashlib
 import ipaddress
 import json
+import math
+import urllib.error
 import urllib.parse
 import urllib.request
 from pathlib import Path
 from typing import Any
 
 ALLOWED_EFFECT_CLASSES = {"OBSERVE", "PROPOSE", "REVIEW_CHALLENGE"}
+MAX_MODEL_HTTP_BYTES = 1_000_000
 
 
 def sha256(data: bytes) -> str:
@@ -25,20 +28,41 @@ def load_json(path: Path) -> dict[str, Any]:
 
 
 def require_loopback(endpoint: str) -> str:
-    parsed = urllib.parse.urlparse(endpoint)
-    if parsed.scheme != "http":
-        raise ValueError("endpoint must use http loopback for R3 canary")
-    host = parsed.hostname
-    if not host:
-        raise ValueError("endpoint hostname missing")
+    """Return a clean HTTP origin. No path, userinfo, fragment or other egress route."""
+    if not isinstance(endpoint, str):
+        raise ValueError("loopback endpoint must be a URL string")
     try:
-        addr = ipaddress.ip_address(host)
-        if not addr.is_loopback:
-            raise ValueError("endpoint must be loopback")
+        parsed = urllib.parse.urlsplit(endpoint)
+        host, port = parsed.hostname, parsed.port
+    except ValueError as exc:
+        raise ValueError("invalid loopback endpoint") from exc
+    if (parsed.scheme != "http" or not host or port is None
+            or not 1 <= port <= 65535 or parsed.username is not None
+            or parsed.password is not None or parsed.path not in ("", "/")
+            or parsed.query or parsed.fragment):
+        raise ValueError("R3 permits exact loopback HTTP origins only")
+    try:
+        address = ipaddress.ip_address(host)
     except ValueError:
         if host.lower() != "localhost":
             raise ValueError("endpoint must be localhost or a loopback IP")
-    return endpoint.rstrip("/")
+        normalized = "localhost"
+    else:
+        if not address.is_loopback:
+            raise ValueError("endpoint must be loopback")
+        normalized = f"[{address.compressed}]" if address.version == 6 else str(address)
+    return f"http://{normalized}:{port}"
+
+
+class _NoRedirect(urllib.request.HTTPRedirectHandler):
+    def redirect_request(self, req, fp, code, msg, headers, newurl):
+        raise urllib.error.HTTPError(req.full_url, code, "REDIRECT_DENIED", headers, fp)
+
+
+def _local_http_open(request: urllib.request.Request, timeout_seconds: float):
+    """Bypass environment proxy settings and refuse redirects, like CoModelFabric."""
+    opener = urllib.request.build_opener(urllib.request.ProxyHandler({}), _NoRedirect())
+    return opener.open(request, timeout=timeout_seconds)
 
 
 def validate_contract(contract: dict[str, Any]) -> None:
@@ -66,6 +90,10 @@ def build_prompt(contract: dict[str, Any]) -> str:
 
 
 def call_ollama(endpoint: str, model: str, prompt: str, timeout_seconds: int) -> dict[str, Any]:
+    endpoint = require_loopback(endpoint)
+    if (not isinstance(timeout_seconds, (int, float)) or isinstance(timeout_seconds, bool)
+            or not math.isfinite(timeout_seconds) or not 0 < timeout_seconds <= 300):
+        raise ValueError("positive bounded finite timeout required")
     body = json.dumps({
         "model": model,
         "prompt": prompt,
@@ -79,10 +107,12 @@ def call_ollama(endpoint: str, model: str, prompt: str, timeout_seconds: int) ->
         method="POST",
         headers={"Content-Type": "application/json"},
     )
-    with urllib.request.urlopen(req, timeout=timeout_seconds) as resp:
+    with _local_http_open(req, timeout_seconds) as resp:
         if resp.status != 200:
             raise RuntimeError(f"ollama returned HTTP {resp.status}")
-        raw = resp.read()
+        raw = resp.read(MAX_MODEL_HTTP_BYTES + 1)
+    if len(raw) > MAX_MODEL_HTTP_BYTES:
+        raise RuntimeError("ollama response exceeds R3 size ceiling")
     envelope = json.loads(raw.decode("utf-8"))
     text = envelope.get("response")
     if not isinstance(text, str) or not text.strip():
