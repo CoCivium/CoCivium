@@ -1,0 +1,97 @@
+{
+  "schema": "CoCivium.CoPre93.CoStel.ShadowJobAdmission.SourceCIReceipt.R0",
+  "state": "SOURCE_LANDED_AND_SYNTHETIC_CI_VERIFIED_NOT_NATIVE_SCHEDULER",
+  "work_id": "CoPre9.3:SourceShadowAdmission:FencingWorkSteal:R0",
+  "created_utc": "2026-11-20T00:15:20Z",
+  "authority": "PUBLIC_SAFE_SYNTHETIC_CANDIDATE_ONLY",
+  "source": {
+    "branch": "candidate/copre-cof2b-release-rail-20261118",
+    "contract": "docs/CoOps/COPRE93_WORK_FIRST_SCHEDULING_CONTRACT_R0.md",
+    "contract_git_blob_sha1": "29214410bcea0500056b9960241c07aded1e82dd",
+    "source_path": "experiments/costel_r5_r0/copre93_shadow_job_admission_r0.py",
+    "source_git_blob_sha1": "8f483578d8e37956bd1cdd3b13ee57e264ce6aff",
+    "tests_path": "experiments/costel_r5_r0/test_copre93_shadow_job_admission_r0.py",
+    "tests_git_blob_sha1": "3d0a702c49e34bca371ce7b59700b6178bc7578f",
+    "source_queue": "docs/CoOps/COCLAUDE_WORK_QUEUE_R0.json",
+    "queue_git_blob_sha1": "861b527cc6b7a9a4d88cb45afe8bd556c3ec9f16",
+    "queue_status": "CANDIDATE_NOT_DISPATCHED",
+    "worker_labels_unacknowledged": 10,
+    "workers_actually_recruited": 0
+  },
+  "validation": {
+    "provider": "GitHub Actions",
+    "workflow": "CoStel R5 synthetic supervisor contract",
+    "run_id": 44644317457,
+    "run_url": "https://github.com/CoCivium/CoCivium/actions/runs/44644317457",
+    "head_sha": "e515148baf92943179858819349c856b3cccd96d",
+    "result": "SUCCESS",
+    "python_matrix": [
+      "3.11",
+      "3.13"
+    ],
+    "ordinary_and_optimized": [
+      "PASS",
+      "PASS"
+    ],
+    "suite_test_count_per_mode": 201,
+    "new_copre93_negative_control_count": 20,
+    "selected_guards": [
+      "CANDIDATE_WORKER_LABEL_NE_CAPABILITY_OR_ACK",
+      "NO_JOB_DISPATCH_FROM_W01_W10_QUEUE",
+      "ADMISSION_HARD_GATE_PRECEDES_ADVISORY_RANK",
+      "DEPENDENCY_AND_EXACT_SOURCE_SHA_REQUIRED",
+      "SYNTHETIC_ONLY_COLLISION_SCOPES",
+      "ONE_FENCED_WRITER_PER_SCOPE",
+      "NO_STEAL_BEFORE_LEASE_EXPIRES",
+      "EXPIRED_LEASE_STEAL_INCREMENTED_FENCE",
+      "STALE_OWNER_COMMIT_REJECTED",
+      "REPLAY_IDENTICAL_RECEIPT_NO_EFFECT",
+      "CONFLICTING_RECEIPT_HOLD",
+      "EXPLICIT_STOP_BEATS_RESTART",
+      "DIFFERENT_SYNTHETIC_SCOPES_PARALLEL_ONLY"
+    ],
+    "jobs": [
+      "fail-closed-supervisor (3.11)",
+      "fail-closed-supervisor (3.13)",
+      "windows-startup-readonly",
+      "handoff-producer",
+      "handoff-receiver"
+    ],
+    "artifacts": [
+      {
+        "name": "costel-handoff-source",
+        "zip_sha256": "aa7ae0bd37255257ceae2857923ce7e47d2d3a1d0211f35e3eab3d47f5e9982a"
+      },
+      {
+        "name": "costel-handoff-receiver-proof",
+        "zip_sha256": "e2be6553129ba6a112a3288a1474f2bcf19de02e4b3e978a64090eac960f4350"
+      }
+    ],
+    "witness_count": "CI_TWO_PYTHON_VERSIONS_SAME_GITHUB_TRUST_ROOT_NOT_3IND"
+  },
+  "remaining_gaps": [
+    "X2_EXISTING_DISPATCHER_NATIVE_WORKID_RECEPTION",
+    "ACTUAL_JOB_RECRUITMENT_BY_VERIFIED_CAPABILITY",
+    "DURABLE_PRODUCTION_LEASE_AND_FENCING_IN_CURRENT_LEDGER",
+    "PARENT_REBOOT_RECOVERY",
+    "AUTONOMOUS_NEW_WORK_DISCOVERY",
+    "COBAR_USEFUL_FIRST_USE",
+    "PUBLIC_THREE_ROOTS_AND_PRIVACY_GATES"
+  ],
+  "next_safe_deed": "When an authorized incumbent X2 or CoStead receiver is available, verify source/currentness and execute one read-only ledger shadow rank of real eligible job records. Do not migrate schemas, spawn a new daemon, infer W01-W10 ACK, or restart/enable existing tasks.",
+  "nonclaims": [
+    "SOURCE_IS_NOT_ACTIVE_RUNTIME",
+    "NAME_NE_ROLE",
+    "CAPABILITY_NE_AUTHORITY",
+    "SYNTHETIC_RANK_NE_ACTUAL_DISPATCH",
+    "GITHUB_CI_NE_X2_OS",
+    "DUPLICATE_OBSERVERS_NE_THREE_INDEPENDENT_ROOTS",
+    "LOCAL_IS_NOT_LANDED",
+    "VALIDATION_IS_NOT_ACCEPTANCE",
+    "NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF",
+    "NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE",
+    "NO_X2_NATIVE_WORKID_RECEIPT",
+    "NO_GOVERNING_PROMOTION",
+    "NO_PHANTOM_ACK"
+  ]
+}
