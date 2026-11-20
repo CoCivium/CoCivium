@@ -7,12 +7,14 @@ on:
       - "docs/CoTheoryAll/candidates/**"
       - "ai/cotheoryall/**"
       - "scripts/test_comegathesis_*"
+      - "scripts/test_coworkid_process_replay_r0.cjs"
       - ".github/workflows/comegathesis-r0.yml"
   pull_request:
     paths:
       - "docs/CoTheoryAll/candidates/**"
       - "ai/cotheoryall/**"
       - "scripts/test_comegathesis_*"
+      - "scripts/test_coworkid_process_replay_r0.cjs"
       - ".github/workflows/comegathesis-r0.yml"
   workflow_dispatch:
     inputs:
@@ -53,6 +55,15 @@ jobs:
             > artifacts/comegathesis-r0/source-hashes.sha256
           printf '%s\n' 'SOURCE_ONLY_TEST_PASS_DOES_NOT_PROVE_BROWSER_UX_RUNTIME_RECEIVER_COEX_CANON_OR_DEPLOYMENT' > artifacts/comegathesis-r0/nonclaims.txt
           echo "Source-only CI gate: checked exact committed files. No browser, receiver or CoEx proof." >> "$GITHUB_STEP_SUMMARY"
+      - name: CoWorkID inert process-replay regression (same host, not independent recovery)
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p artifacts/comegathesis-r0
+          node --check scripts/test_coworkid_process_replay_r0.cjs
+          node scripts/test_coworkid_process_replay_r0.cjs | tee artifacts/comegathesis-r0/coworkid-process-replay.log
+          sha256sum scripts/test_coworkid_process_replay_r0.cjs > artifacts/comegathesis-r0/coworkid-process-replay.sha256
+          echo "Inert same-host process-replay suite executed; NOT independent receiver or live recovery." >> "$GITHUB_STEP_SUMMARY"
       - name: Keep test log and source digests, even if a check failed
         if: always()
         uses: actions/upload-artifact@v4
