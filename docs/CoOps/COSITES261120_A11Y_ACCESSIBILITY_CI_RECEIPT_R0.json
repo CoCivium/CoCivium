@@ -1,0 +1,143 @@
+{
+  "schema": "CoCivium.CoSites.ThreeFlagship.AccessibilitySourceCIReceipt.R0",
+  "work_id": "CoSites:ThreeFlagship:AccessibilityCoPre93:20261120:R0",
+  "state": "PASS_BOUNDED_AUTOMATED_A11Y_SOURCE_SCAN_ONLY",
+  "source_branch": "candidate/copre-cof2b-release-rail-20261118",
+  "source_ci_head": "7e69e7bfd0dcc555da21b990f8c60060dc9f3483",
+  "source_files": [
+    {
+      "path": "cosites261118-preview/three_flagship_a11y_r0.cjs",
+      "git_blob_sha1": "b87a2dfc4f91b2b33d518d285d2587d253b3e97e"
+    },
+    {
+      "path": "cosites261118-preview/fanin_three_flagship_a11y_r0.py",
+      "git_blob_sha1": "7a168cf465624f897761eb4c1d9777d7772039c2"
+    },
+    {
+      "path": "cosites261118-preview/test_fanin_three_flagship_a11y_r0.py",
+      "git_blob_sha1": "c4b6064ca1404335bafb314ec50f649fc43541aa"
+    },
+    {
+      "path": ".github/workflows/cosites-three-flagship-a11y-r0.yml",
+      "git_blob_sha1": "ef88e5ec4027f702eefe5a9bd2186e627fd693b0"
+    }
+  ],
+  "scope": {
+    "candidate_site_count": 3,
+    "browser_viewports": [
+      "390x844",
+      "1365x900"
+    ],
+    "audited_wcag_tags": [
+      "wcag2a",
+      "wcag2aa",
+      "wcag21a",
+      "wcag21aa"
+    ],
+    "source_browser_network_requests_allowed": 0,
+    "source_immutability": "pinned git blob ID verified in each matrix job",
+    "runner": "GitHub Actions ubuntu-24.04 ephemeral Chromium headless",
+    "concurrent_site_jobs": 3,
+    "single_fanin_job": 1,
+    "no_site_mutations": true,
+    "no_private_page_export": true,
+    "no_x2_or_costead_mutations": true,
+    "independent_authority_roots": 1
+  },
+  "ci": {
+    "run_id": 44647186047,
+    "url": "https://github.com/CoCivium/CoCivium/actions/runs/44647186047",
+    "run_sha": "7e69e7bfd0dcc555da21b990f8c60060dc9f3483",
+    "status": "completed",
+    "conclusion": "success",
+    "jobs": {
+      "pinned-a11y-cocivium": "success",
+      "pinned-a11y-inseed": "success",
+      "pinned-a11y-copolitic": "success",
+      "single-fanin-no-release": "success"
+    },
+    "fanin_adversarial_tests": 8,
+    "fanin_state": "PASS_AUTOMATED_WCAG_AA_SOURCE_SCAN_ONLY",
+    "artifact_digests": [
+      {
+        "name": "cosites-a11y-cocivium-44647186047-a1",
+        "zip_sha256": "eda12895f2ec649d23d99e0c740bd5b64b5647f5ffe92e0be200c18a398778b5"
+      },
+      {
+        "name": "cosites-a11y-inseed-44647186047-a1",
+        "zip_sha256": "ce8f94b02d53d6e4814a820b2ecfa0a40d47c49a86ce24e907c3c37fb0b08509"
+      },
+      {
+        "name": "cosites-a11y-copolitic-44647186047-a1",
+        "zip_sha256": "0b7d3f8e156c447dba2d28ccad2e2a20f9f7fcf80e1d179f7ecd5f4b71112f8b"
+      },
+      {
+        "name": "cosites-a11y-fanin-44647186047-a1",
+        "zip_sha256": "cff5d6ed057910dc67b3df20cabbb6f74323f706f1169620fe6f1080893413df"
+      }
+    ]
+  },
+  "sites": [
+    {
+      "site": "CoCivium",
+      "candidate": "R1",
+      "source_blob_sha1": "ce97f53e7c28791319f7bca369c26fcac3ba7f36",
+      "wcag_rule_violations_mobile": 0,
+      "wcag_rule_violations_desktop": 0,
+      "incomplete_rules_mobile": 0,
+      "incomplete_rules_desktop": 0,
+      "decision": "SOURCE_AUTOMATED_CHECK_PASS_NOT_HOSTED",
+      "owner_gate": "Existing public metadata index privacy and source election remain HOLD"
+    },
+    {
+      "site": "InSeed",
+      "candidate": "PR1",
+      "source_blob_sha1": "0effb59c4a4e830f2ce5297998df496786d49f32",
+      "wcag_rule_violations_mobile": 0,
+      "wcag_rule_violations_desktop": 0,
+      "incomplete_rules_mobile": 1,
+      "incomplete_rules_desktop": 1,
+      "decision": "SOURCE_AUTOMATED_CHECK_PASS_WITH_MANUAL_RULE_REVIEW",
+      "owner_gate": "Hosted first-use/contact authority and incomplete scan rules remain HOLD"
+    },
+    {
+      "site": "CoPolitic",
+      "candidate": "PR1",
+      "source_blob_sha1": "1ae823ad0072cb310c2f30f7cb464c05b375a43f",
+      "wcag_rule_violations_mobile": 0,
+      "wcag_rule_violations_desktop": 0,
+      "incomplete_rules_mobile": 1,
+      "incomplete_rules_desktop": 1,
+      "decision": "SOURCE_AUTOMATED_CHECK_PASS_WITH_MANUAL_RULE_REVIEW",
+      "owner_gate": "Hosted root/domain and incomplete scan rules remain HOLD"
+    }
+  ],
+  "related_receipts": [
+    "docs/CoOps/COSITES261119_THREE_FLAGSHIP_BROWSER_RECEIPT_R0.json",
+    "docs/CoOps/COSITES261119_LIVE_ROOT_PRIVACY_RECEIPT_R0.json"
+  ],
+  "next_substantial_job": "Under existing domain/site owner, complete privacy review of live technical index and manual keyboard/screen-reader review of each pinned candidate, then qualify controlled hosted preview URL+log+shot+functional test with independent observer before release election.",
+  "lifecycle": {
+    "source_commit": "LANDED_PUBLIC_SAFE_CANDIDATE_GITHUB",
+    "browser_scan": "VERIFIED_SAME_PROVIDER_CI",
+    "human_acceptance": "HOLD",
+    "hosted_site_deployment": "HOLD",
+    "runtime_promotion": "NONE",
+    "production_authority": "NOT_GRANTED",
+    "coex": "HOLD"
+  },
+  "nonclaims": [
+    "WCAG_AUTOMATED_SCAN_NE_HUMAN_ACCESSIBILITY_ACCEPTANCE",
+    "THREE_JOB_MATRIX_NE_THREE_INDEPENDENT_ROOTS",
+    "SOURCE_CANDIDATE_NE_HOSTED_SITE",
+    "SOURCE_CI_NE_PUBLIC_RELEASE",
+    "PRIVACY_REVIEW_STILL_HOLD",
+    "NO_X2_RECEIVER_OR_POST_REBOOT_RECOVERY",
+    "NO_REAL_WORKER_ACK",
+    "LOCAL_IS_NOT_LANDED",
+    "VALIDATION_IS_NOT_ACCEPTANCE",
+    "NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF",
+    "NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE",
+    "NO_PHANTOM_ACK"
+  ]
+}
