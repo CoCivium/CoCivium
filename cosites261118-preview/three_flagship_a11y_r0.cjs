@@ -79,9 +79,9 @@ async function main() {
         // Diagnostic hints are limited to public CSS class tokens and HTML tag.
         // Never emit full selectors, node IDs, DOM text/HTML, target URLs or message strings.
         const hint = node => {
-          const tag = /^<([a-z][a-z0-9-]{0,20})[\\s>]/i.exec(node.html||"")?.[1]||"unknown";
+          const tag = /^<([a-z][a-z0-9-]{0,20})[\s>]/i.exec(node.html||"")?.[1]||"unknown";
           const target = Array.isArray(node.target) && typeof node.target[0]==="string" ? node.target[0] : "";
-          const classes = Array.from(target.matchAll(/\\.([a-z][a-z0-9_-]{0,35})(?=[^a-z0-9_-]|$)/gi),
+          const classes = Array.from(target.matchAll(/\.([a-z][a-z0-9_-]{0,35})(?=[^a-z0-9_-]|$)/gi),
             m=>m[1]).slice(-4);
           return {tag:tag.toLowerCase(),css_class_tokens:classes};
         };
