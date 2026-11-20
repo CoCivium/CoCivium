@@ -154,5 +154,56 @@ class ColdOpenTests(unittest.TestCase):
         self.assertIn("desktop was not verified", a["human_summary"])
 
 
+    def test_stale_inventory_never_reports_flat_healthy_processes_or_audio(self):
+        r = classify(fixture(), at_utc=NOW + timedelta(hours=4))
+        self.assertFalse(r["operational_presence_snapshot_qualified"])
+        for key in ("audio_services", "mouse_software", "local_model",
+                    "coall_surface", "display_driver_mode"):
+            self.assertEqual(r[key], "STALE_OR_UNQUALIFIED_SNAPSHOT")
+        self.assertEqual(r["state"], "HOLD_USABLE_DESKTOP_UNPROVEN")
+
+    def test_bad_boot_cohort_never_reports_flat_health(self):
+        q = fixture()
+        q["uptime_seconds_at_observation"] = 42
+        r = classify(q, at_utc=NOW)
+        self.assertTrue(r["snapshot_fresh"])
+        self.assertFalse(r["boot_timestamp_qualified"])
+        self.assertFalse(r["operational_presence_snapshot_qualified"])
+        self.assertEqual(r["audio_services"], "STALE_OR_UNQUALIFIED_SNAPSHOT")
+        self.assertEqual(r["coall_surface"], "STALE_OR_UNQUALIFIED_SNAPSHOT")
+
+    def test_fresh_qualified_snapshot_preserves_narrow_presence_labels(self):
+        r = classify(fixture(), at_utc=NOW)
+        self.assertTrue(r["operational_presence_snapshot_qualified"])
+        self.assertEqual(r["audio_services"], "REPORTED_RUNNING")
+        self.assertEqual(r["coall_surface"], "PROCESS_CANDIDATE_PRESENT")
+        self.assertEqual(r["display_driver_mode"], "REPORTED")
+        self.assertFalse(r["surface_functional"])
+
+    def test_stale_snapshot_absence_remains_unknown_not_invented_failing_service(self):
+        q = fixture()
+        q["peripheral_utility_process_candidates"] = []
+        q["audio_service_readback"] = []
+        q["display_driver_modes"] = []
+        r = classify(q, at_utc=NOW + timedelta(hours=1))
+        self.assertEqual(r["audio_services"], "UNVERIFIED_OR_NOT_RUNNING")
+        self.assertEqual(r["coall_surface"], "NOT_ESTABLISHED")
+        self.assertEqual(r["mouse_software"], "NOT_ESTABLISHED")
+        self.assertEqual(r["display_driver_mode"], "NOT_ESTABLISHED")
+
+    def test_spoofed_ui_liveness_and_runner_permission_cannot_override_stale_source(self):
+        q = fixture()
+        q["x2_power_state"] = "OFFLINE"
+        q["coall_surface"] = "LIVE"
+        q["last_result"] = 0
+        q["force_restart_authorized"] = True
+        r = classify(q, at_utc=NOW + timedelta(hours=2))
+        self.assertEqual(r["coall_surface"], "STALE_OR_UNQUALIFIED_SNAPSHOT")
+        self.assertFalse(r["operational_presence_snapshot_qualified"])
+        self.assertEqual(r["post_login_automatic_recovery"], "NOT_ATTESTED")
+        self.assertEqual(sum(r["effects"].values()), 0)
+        self.assertNotIn("force_restart_authorized", json.dumps(r))
+
+
 if __name__ == "__main__":
     unittest.main()
