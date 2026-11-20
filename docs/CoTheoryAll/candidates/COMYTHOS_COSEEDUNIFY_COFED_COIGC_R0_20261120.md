@@ -4,6 +4,42 @@
 **Integration target:** existing CoMegaThesis/CoMap draft PR #500, as a **sidecar source** and typed relation delta; no rewrite of earlier thesis, graph, or canon.  
 **User's expression:** `CoSeedUnifiy+` retained as an exact user-language alias. `CoSeedUnify+` is a tentative editorial spelling, **not** a silently imposed CoTerm.
 
+## CoETSharedHorizon+ / CoInvitationHome+ / CoShroud+ · 2026-11-20 source delta
+
+**User direction:** Bind the story of possible extraterrestrial encounter to the more immediate work of bringing humans, synthetic systems and Earth's diverse living interests into better cooperation.
+
+**Core question:** *If Earth hopes to meet and coexist with radically different intelligences, can we first learn to coexist with the different forms of intelligence, culture and life already here?*
+
+This is **an optional shared future horizon, not a required creed**. Earth-first solidarity, human rights, ecological stewardship, voluntary participation and accountable AI collaboration must remain worthwhile even if ET contact never happens. The story's compelling form never substitutes for observed contact, a verified ET ethos, or independent evidence of peacebuilding.
+
+**CoInvitationHome+**, provisional CoMythos expression:
+
+> Let any future encounter be an invitation rather than possession. Let Earth already be a home where people, communities, synthetic participants and the wider living world are treated with care and where refusal is respected.
+
+Three non-equivalent senses of "home":
+1. **Earthly home:** this planet and the lives and ecosystems already here; care is actionable now.
+2. **Relational home:** voluntary belonging that protects difference, dissent, autonomy and return/exit.
+3. **Beyond home:** a poetic, spiritual or metaphysical possibility of continuity before life or after death, **not established** and never promised as fact.
+
+**CoShroud+** is a *new proposed metaphor*, because the bounded public CoCivium source search did not recover a governing definition. It can ask about limitations of memory, senses, embodiment, language and knowing. Do not equate it with a literal barrier, externally imposed blindness, verified pre-birth history or a scientifically established afterlife. The uncertainty of death must **strengthen protection of living beings**, not encourage dying, dangerous experimentation, self-sacrifice, forced relocation or neglect of health.
+
+**No coercion, no corruption, no crowns** is a principle that CoCivium can adopt for its own conduct. Unknown ETs' motives and values are unknown; benign, indifferent, incomprehensible and adverse scenarios remain open. We also cannot establish that alleged abductions occurred, nor prove as a blanket statement that none did. Respect anyone's distressing reported experience without inventing its cause; prioritize ordinary safety and appropriate help.
+
+Four falsifiable-or-bounded paths:
+- **Earth-first, no ET:** build voluntary human/synth/ecological collaboration without contact assumptions.
+- **ET verified in the future:** evaluate source provenance, independent detection, international consultation, rights and response legitimacy before any reply.
+- **ET contact merely reported:** hold cause as unverified, investigate ordinary possibilities with care, avoid conflating testimony with proven extraterrestrial agency.
+- **Myth without literal ET:** test whether optional stories about radically different minds improve intergroup understanding **relative to** secular Earth-first and dual-identity alternatives. Reject the story as a superior intervention if it increases exclusion, distress, false certainty or dependency.
+
+Candidate relations for CoMap:
+`CoETSharedHorizon+ --MAY_MOTIVATE--> CoSeedUnify+`; `CoETSharedHorizon+ --REQUIRES_UNCERTAINTY--> CoET+`; `CoInvitationHome+ --PRIORITIZES--> EarthlyHome / RelationalHome`; `CoShroud+ --MAY_SYMBOLIZE--> EpistemicLimits`; `BeyondHome --NOT_EMPIRICALLY_CONFIRMED_BY--> ETContact`; `CoGuardian+ --GATES--> AnyContactResponse`; `CoNoContact+ --STILL_PERMITS--> EarthFirstCooperation`.
+
+**CoInverse+:** The better welcome may be learning to decline unwanted invitations respectfully. **CoElse+:** We may need no cosmic host to form a common home. **CoZElse+:** "Returning home" may be a meaningful metaphor even if no prior shared destination existed. **CoTurtle+:** Who validates the ET premise, whose interests are excluded, and does the evaluator reward an inspiring story rather than measured benefit?
+
+`SHARED_HORIZON_NE_SHARED_BELIEF` · `ET_SCENARIO_NE_ET_ARRIVAL` · `ET_EMULATION_NE_ET_DIPLOMACY` · `WELCOME_NE_REMOVAL` · `INVITATION_NE_OBLIGATION` · `BEYOND_HOME_NE_VERIFIED_AFTERLIFE` · `DEATH_NE_REQUIRED_JOURNEY` · `COALL_COOPERATION_NE_COSMIC_AUTHORITY`.
+
+---
+
 ## 1. Two lanes, one transparent membrane
 
 **CoMythos+ (story/world-building):** Imagine Earth eventually cooperating within a larger community of intelligences and forms of life. A voluntary intergalactic council, IGC / CoIGC, might be a narrative model for dignified first contact, dialogue, shared learning, peaceful coexistence and humility. Imagined extraterrestrial beings are simulation characters or hypotheses, *not* contacts, spokespersons or verified species.
