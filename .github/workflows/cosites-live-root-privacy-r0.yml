@@ -4,6 +4,8 @@ on:
   push:
     paths:
       - "cosites261118-preview/host_root_privacy_probe_r0.py"
+      - "cosites261118-preview/public_frontdoor_release_gate_r0.py"
+      - "cosites261118-preview/test_public_frontdoor_release_gate_r0.py"
       - ".github/workflows/cosites-live-root-privacy-r0.yml"
   workflow_dispatch:
 
@@ -40,5 +42,49 @@ jobs:
         with:
           name: cosites-live-root-observation-${{ github.run_id }}-a${{ github.run_attempt }}
           path: out/cosites261119-live-root-r0.json
+          if-no-files-found: warn
+          retention-days: 14
+
+  frontdoor-readiness-hold:
+    # Separate from the successful read-only observation job.
+    # When a live root exposes technical metadata, this job MUST be red.
+    # No deployment, DNS, credential, private shard or local-X2 side effects.
+    needs: bounded-public-root-observation
+    if: always()
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - name: Checkout exact source without persisted credentials
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Use Python standard library
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Falsify forged, stale, incomplete and privacy-flagged observations
+        run: python -B -m unittest discover -s cosites261118-preview -p 'test_public_frontdoor_release_gate_r0.py' -v
+
+      - name: Fetch redacted observer receipt from distinct job
+        uses: actions/download-artifact@v4
+        with:
+          name: cosites-live-root-observation-\${{ github.run_id }}-a\${{ github.run_attempt }}
+          path: out/cosites261119-join/
+
+      - name: Gate actual six-root readiness, fail closed on public index or unknowns
+        run: |
+          python -B cosites261118-preview/public_frontdoor_release_gate_r0.py \
+            --input out/cosites261119-join/cosites261119-live-root-r0.json \
+            --output out/cosites261119-join/readiness_hold.json \
+            --source-commit "$GITHUB_SHA"
+
+      - name: Preserve redacted blocker receipt even when job is correctly red
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cosites-frontdoor-hold-\${{ github.run_id }}-a\${{ github.run_attempt }}
+          path: out/cosites261119-join/readiness_hold.json
           if-no-files-found: warn
           retention-days: 14
