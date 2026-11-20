@@ -1,0 +1,125 @@
+{
+  "schema": "CoCI.SessionResidueBudget.R0",
+  "state": "CANDIDATE_POLICY_NOT_GLOBALLY_ENFORCED",
+  "applies_to": "ONLY_EXPLICITLY_BOUND_WORKIDS_AND_ADOPTERS",
+  "source_checkpoint_path": "ai/currentness/coci-session-noncycling-checkpoint-r0-20261120.json",
+  "mode": "ARCHIVE_LOGICAL_CONTEXT_NOT_PROVIDER_CONVERSATION",
+  "objective": "MINIMIZE_UNOWNED_EPHEMERAL_RESIDUE_WHILE_MAXIMIZING_VERIFIABLE_RECOVERABILITY",
+  "durable_keep": [
+    {
+      "kind": "WORK_ID_AND_UNRESOLVED_STATE",
+      "custody": "EXACT_SOURCE_CHECKPOINT",
+      "proof": "READBACK"
+    },
+    {
+      "kind": "SOURCE_AND_PROVENANCE",
+      "custody": "VERSIONED_REFERENCE",
+      "proof": "BLOB_AND_COMMIT"
+    },
+    {
+      "kind": "ACCEPTED_EFFECT_RECEIPTS",
+      "custody": "NON_MUTATING_LEDGER",
+      "proof": "SOURCE_AND_RECEIVER"
+    },
+    {
+      "kind": "UNCERTAIN_EFFECTS_AND_ORPHAN_LOCKS",
+      "custody": "QUARANTINE_WITH_OWNER_UNKNOWN",
+      "proof": "NO_AUTO_BREAK"
+    },
+    {
+      "kind": "NEXT_CONSENTED_WAKE_AND_STOP",
+      "custody": "SCOPED_POLICY",
+      "proof": "AUTHORIZED_EVENT"
+    }
+  ],
+  "ephemeral_retirement_candidates": [
+    {
+      "kind": "PROVIDER_CHAT_LEASE",
+      "action": "DO_NOT_PING_OR_RESTART",
+      "gate": "NOT_A_WORK_ID"
+    },
+    {
+      "kind": "TEMPORARY_LOGS_OR_CACHES",
+      "action": "RETAIN_ONLY_WITH_TTL_AND_DATA_RIGHTS_REVIEW",
+      "gate": "NO_DELETION_THIS_CANDIDATE"
+    },
+    {
+      "kind": "SYNTHETIC_WORKER",
+      "action": "STOP_AFTER_BOUNDED_JOB",
+      "gate": "NO_UNKILLABLE_ACTUATOR"
+    },
+    {
+      "kind": "STALE_SUBSCRIPTIONS",
+      "action": "QUARANTINE_UNTIL_LEASE_AND_OWNER_VERIFIED",
+      "gate": "NO_SILENT_UNSUBSCRIBE"
+    },
+    {
+      "kind": "UNVERIFIED_RECIPIENT_STATE",
+      "action": "MARK_UNKNOWN",
+      "gate": "NO_PHANTOM_ACK"
+    },
+    {
+      "kind": "DUPLICATE_WORK",
+      "action": "DEDUPE_BY_WORKID_AND_EFFECT_SCOPE",
+      "gate": "NO_SOURCE_CLOBBER"
+    }
+  ],
+  "on_outage": {
+    "automatic_provider_chat_restart": false,
+    "periodic_chat_heartbeat": false,
+    "auto_claim_successor": false,
+    "auto_delete_provider_data": false,
+    "automatic_public_release": false,
+    "automatic_canon_promotion": false,
+    "unauthorized_network_effects": false,
+    "durable_checkpoint_required": true,
+    "unknown_receivers": "HOLD",
+    "orphaned_leases": "QUARANTINE",
+    "indeterminate_effects": "RECONCILE_BEFORE_RETRY",
+    "human_routine_relay": "NOT_REQUIRED_BY_CONTRACT__NOT_LIVE_PROOF",
+    "recovery_wake": "ELIGIBLE_EVENT_ONLY",
+    "rollback": "SOURCE_VERSION_PRESERVED",
+    "max_infinite_retry": "FORBIDDEN"
+  },
+  "proof_levels": {
+    "in_repo_validator": "SOURCE_ONLY",
+    "github_ci_job": "EVENT_TRIGGERED_SOURCE_ONLY",
+    "separate_github_ci_job": "SAME_PROVIDER_READBACK",
+    "provider_or_power_independent_receiver": "NOT_VERIFIED",
+    "native_runtime": "NOT_VERIFIED",
+    "all_sessions_adopted": "NOT_VERIFIED"
+  },
+  "scope_exclusions": [
+    "ALL_CHATGPT_UI_ARCHIVAL",
+    "GLOBAL_SESSION_LIFECYCLE_ENFORCEMENT",
+    "INDEPENDENT_RECEIVER_ACK",
+    "PRIVATE_MANUSCRIPT_SOURCE_EXPORT",
+    "X2_COSTEAD_REMOTE_ACTUATION",
+    "ANY_FUTURE_SESSION_AUTO_BINDING"
+  ],
+  "invariants": [
+    "SESSION_NE_WORKID",
+    "SLEEP_NE_DEAD",
+    "ARCHIVE_LOGICAL_NE_PROVIDER_UI_ARCHIVED",
+    "UNOWNED_LEASE_NE_REVOKED_LEASE",
+    "UNVERIFIED_RECEIVER_NE_PICKUP",
+    "DUPLICATE_NE_SUPERSESSION",
+    "NO_DELETE_WITHOUT_AUTHORITY_AND_RESTORE",
+    "MINIMAL_RESIDUE_NE_ZERO_EVIDENCE",
+    "NO_CHAT_CYCLING",
+    "NO_RELAY_RICK",
+    "NO_PHANTOM_ACK",
+    "ALL_FUTURE_ADOPTION_REQUIRES_SEPARATE_PROOF"
+  ],
+  "next_safe_action": "WHEN_AUTHORIZED_SEPARATE_FAILURE_DOMAIN_AVAILABLE, ATTEMPT_ONE_INERT_WORKID_COLD_READBACK",
+  "source_only": true,
+  "no_external_effect": true,
+  "nonclaims": [
+    "LOCAL_IS_NOT_LANDED",
+    "VALIDATION_IS_NOT_ACCEPTANCE",
+    "NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF",
+    "NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE",
+    "HASHING_IS_NOT_SEMANTIC_INGESTION",
+    "DISCOVERED_SET_IS_NOT_COMPLETE_HISTORY"
+  ]
+}
