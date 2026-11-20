@@ -1,0 +1,96 @@
+{
+  "schema": "CoSites.CoPre93.PublicFrontDoor.ReleaseHoldCIReceipt.R0",
+  "work_id": "CoSites:CoPre93:PublicRootReadinessSeparateFromObservation:20261120:R0",
+  "state": "OBSERVATION_PASS_READINESS_HOLD__PUBLIC_RUNTIME_UNCHANGED",
+  "recorded_date_utc": "2026-11-20",
+  "authority": "READ_ONLY_SIX_ROOTS_SOURCE_CANDIDATE_CI_ONLY",
+  "incumbent_owners": {
+    "privacy_incident": "https://github.com/CoCivium/CoToolbelt/issues/5",
+    "domain_publication": "https://github.com/CoCivium/CoSteward/issues/60",
+    "related_public_awareness": "https://github.com/CoCivium/CoShareHub/issues/33",
+    "avoid_duplicate_issue": true
+  },
+  "risk_summary": {
+    "public_www_root": "LEGACY_TECHNICAL_METADATA_INDEX_VISIBLE_ON_ROOT",
+    "public_apex": "ROOT_NOT_HOSTED_AS_INTENDED",
+    "prior_private_aggregate": "Earlier owner-source R17 counted 100000 local path records and 7704 sensitive-keyword pattern matches; do not treat pattern matches as credential or payload exposure",
+    "known_public_shard": "One prior owner-verified public shard byte hash matched local source; this job did not fetch any shard",
+    "metadata_exposure": "CONFIRMED_BY_PRIOR_OWNER_AND_CURRENT_ROOT_CLASS",
+    "underlying_file_content_exposure": "NOT_ESTABLISHED",
+    "credential_exposure": "NOT_ESTABLISHED",
+    "intentional_publishing_or_signed_owner_approval": "NOT_ESTABLISHED",
+    "current_host_mutation": "NONE"
+  },
+  "bounded_work": {
+    "source_branch": "candidate/copre-cof2b-release-rail-20261118",
+    "probe": "cosites261118-preview/host_root_privacy_probe_r0.py",
+    "probe_git_blob_sha1": "f0dc5e1e35d2a81e48a6723bc29f71acb4625a99",
+    "new_gate": "cosites261118-preview/public_frontdoor_release_gate_r0.py",
+    "new_gate_git_blob_sha1": "9c74d3e3167f7c98212406a333e8c849bc5526ae",
+    "adversarial_tests": "cosites261118-preview/test_public_frontdoor_release_gate_r0.py",
+    "adversarial_tests_git_blob_sha1": "0d9a4c48ec2fc908fead4724667d052f59a8d3e8",
+    "workflow": ".github/workflows/cosites-live-root-privacy-r0.yml",
+    "workflow_git_blob_sha1": "5af250114788188218d2f00c19d6ddb4d0f68081",
+    "separation": "Diagnostic observer job may succeed while independent readiness-HOLD job exits nonzero based on redacted same-run receipt",
+    "test_design": "Source-only 20 negative controls; no shard traversal or raw page export",
+    "effect_scope": "ONLY PUBLIC_SAFE GITHUB CANDIDATE SOURCE + SAME_PROVIDER CI"
+  },
+  "ci": {
+    "provider": "GitHub Actions",
+    "run_id": 44653389063,
+    "run_url": "https://github.com/CoCivium/CoCivium/actions/runs/44653389063",
+    "run_source_commit": "a0402d590d7ad7cd9145dc2429ebb66519310865",
+    "conclusion": "failure",
+    "expected_failure_reason": "LIVE_PUBLIC_READINESS_CORRECTLY_HELD",
+    "observer_job": "success",
+    "release_hold_job": "failure",
+    "adversarial_tests": "20_PASS",
+    "readiness_exit_code": 2,
+    "redacted_gate_state": "HOLD_PUBLIC_FRONTDOOR_READINESS",
+    "hold_reason_codes": [
+      "HOLD_ROOT_CLASSIFICATION",
+      "HOLD_ROOT_CONTENT_UNQUALIFIED",
+      "HOLD_ROOT_NOT_HTML200",
+      "HOLD_ROOT_PRIVACY_OR_FIRST_USE_FLAGS"
+    ],
+    "source_artifact": {
+      "name": "cosites-live-root-observation-44653389063-a1",
+      "zip_sha256": "2992f7b12eb3aa4992a996c45a51e02d7f4cc76b684c01d97f4b38fda9b28a95"
+    },
+    "gate_artifact": {
+      "name": "cosites-frontdoor-hold-44653389063-a1",
+      "zip_sha256": "bf21e84dcc4430e44e8bff3338b4521f12325c90a0c44b8d364e15f78cf91c69"
+    },
+    "independently_administrated_external_roots": 0,
+    "same_provider_job_readback": "VERIFIED_JOBS_NOT_3IND"
+  },
+  "effect_boundary": {
+    "public_website_changed": false,
+    "Cloudflare_or_DNS_changed": false,
+    "X2_local_state_changed": false,
+    "shard_requests_this_job": 0,
+    "new_scheduler_or_watcher": false,
+    "external_receiver_ack": "NOT_OBSERVED",
+    "release_authority_issued": false
+  },
+  "next_authority_safe_deed": "Existing authenticated CoToolbelt/CoSteward security and domain owners privately validate served metadata classification and Cloudflare Pages custom-domain binding, bind a reversible, owner-authorized containment/clean human vestibule route that preserves prior proof corpus without leaving it public by assumption; validate URL+log+shot+test from distinct network roots. Until then KEEP_PUBLICATION_HOLD; a correctly red CI gate is not itself containment.",
+  "nonclaims": [
+    "METADATA_PATH_EXPOSURE_NE_FILE_CONTENT_OR_CREDENTIAL_EXPOSURE",
+    "SOURCE_CI_RELEASE_HOLD_NE_PUBLIC_CONTENT_REMOVAL",
+    "RED_CI_NE_AUTOMATIC_ROLLBACK",
+    "SUCCESSFUL_DIAGNOSTIC_NE_PUBLIC_READINESS",
+    "HTTP_200_NE_HUMAN_FIRST_USE",
+    "NO_SHARD_TRAVERSAL",
+    "ONE_PROVIDER_NE_3IND",
+    "NO_DNS_TLS_HOST_ACCOUNT_AUTHORITY",
+    "NO_HOSTED_RELEASE_ACK",
+    "NO_X2_RECOVERY_ACK",
+    "LOCAL_IS_NOT_LANDED",
+    "VALIDATION_IS_NOT_ACCEPTANCE",
+    "NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF",
+    "NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE",
+    "HASHING_IS_NOT_SEMANTIC_INGESTION",
+    "DISCOVERED_SET_IS_NOT_COMPLETE_HISTORY",
+    "NO_PHANTOM_ACK"
+  ]
+}
