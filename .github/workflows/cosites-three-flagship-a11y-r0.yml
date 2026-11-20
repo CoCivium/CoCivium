@@ -1,0 +1,104 @@
+name: CoSites pinned three-flagship accessibility audit R0
+# Synthetic static-source QA. Does not publish sites, mutate DNS, or touch X2.
+on:
+  push:
+    paths:
+      - "cosites261118-preview/three_flagship_a11y_r0.cjs"
+      - "cosites261118-preview/fanin_three_flagship_a11y_r0.py"
+      - "cosites261118-preview/test_fanin_three_flagship_a11y_r0.py"
+      - ".github/workflows/cosites-three-flagship-a11y-r0.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  source-accessibility:
+    name: pinned-a11y-${{ matrix.site }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        site: [cocivium, inseed, copolitic]
+    steps:
+      - name: Checkout candidate sources without persisted credentials
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Pin existing InSeed PR1 for its isolated observer
+        if: matrix.site == 'inseed'
+        uses: actions/checkout@v4
+        with:
+          repository: CoCivium/InSeed
+          ref: dc03e8865a90de6d26bf03bc64061319b1cf7fbd
+          path: site_sources/inseed
+          persist-credentials: false
+
+      - name: Pin existing CoPolitic PR1 for its isolated observer
+        if: matrix.site == 'copolitic'
+        uses: actions/checkout@v4
+        with:
+          repository: CoCivium/CoPolitic-site
+          ref: 218b43f773b5f02e63739a0438d88ff6890f6166
+          path: site_sources/copolitic
+          persist-credentials: false
+
+      - name: Install pinned browser scanner
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Scan two viewports with page-network blocked
+        run: |
+          set -euo pipefail
+          npm install --no-save --package-lock=false --ignore-scripts --no-audit --no-fund playwright-core@1.56.0 axe-core@4.10.3
+          node --check cosites261118-preview/three_flagship_a11y_r0.cjs
+          node cosites261118-preview/three_flagship_a11y_r0.cjs "${{ matrix.site }}"
+
+      - name: Preserve redacted source audit even on HOLD
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cosites-a11y-${{ matrix.site }}-${{ github.run_id }}-a${{ github.run_attempt }}
+          path: out/cosites261120-a11y/${{ matrix.site }}/audit_receipt.json
+          if-no-files-found: warn
+          retention-days: 14
+
+  single-fanin:
+    name: single-fanin-no-release
+    needs: [source-accessibility]
+    if: always()
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - name: Checkout exact fan-in under existing candidate branch
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Download three independent job outputs from same provider
+        uses: actions/download-artifact@v4
+        with:
+          pattern: cosites-a11y-*-${{ github.run_id }}-a${{ github.run_attempt }}
+          path: out/cosites261120-a11y/collected
+
+      - name: Test forged receipts and duplicate/missing sources
+        run: python -B -m unittest discover -s cosites261118-preview -p 'test_fanin_three_flagship_a11y_r0.py' -v
+
+      - name: One source-bound fan-in receipt
+        run: |
+          python -B cosites261118-preview/fanin_three_flagship_a11y_r0.py \
+            --input-dir out/cosites261120-a11y/collected \
+            --output out/cosites261120-a11y/aggregate_receipt.json \
+            --commit "${{ github.sha }}"
+
+      - name: Retain fan-in even when any accessibility issue is found
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cosites-a11y-fanin-${{ github.run_id }}-a${{ github.run_attempt }}
+          path: out/cosites261120-a11y/aggregate_receipt.json
+          if-no-files-found: warn
+          retention-days: 14
