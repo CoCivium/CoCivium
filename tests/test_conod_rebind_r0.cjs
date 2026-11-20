@@ -69,3 +69,36 @@ test('unknown admin field is rejected',()=>assert.equal(preview(req({admin:true}
 test('null request held',()=>assert.equal(preview(null,prepared()).state,'HOLD_INVALID_REQUEST'));
 test('missing receiver held without writing',()=>assert.equal(preview(req(),null).state,'HOLD_NO_VERIFIED_LOCAL_WORK'));
 test('unknown pressure is not silently defaulted',()=>assert.equal(preview(req({pressure:'FOREVER'}),prepared()).state,'HOLD_PRESSURE_UNKNOWN'));
+
+// Exact long-form compatibility is an intent alias, NOT a new authority or currentness proof.
+const COPRE93_LEGACY_R0="' CoPre9.3+|CoGo+|Recover>Restart|State>Chat|Outcome>Session|Names!=Roles|JobsRecruitWorkers|Priory+Deps+Risk|Capability!=Authority|NSubstantialJobs|AdaptiveCheckpoints|MaxSafeParallel|1Job=1Receipt|1Actuator/Scope|FanIn=1|AutoNext+ReplaySafe|WorkSteal+Recover|BreakGlass!=Routine|CoGuardian:Gates|LocalFirst|Sites:3->40|Pub=URL+log+shot+test|3ind/HOLD|Rick=0Routine|NoPhantomACK";
+test('exact CoPre9.3 fallback equals bare nod for the same verified local work',()=>{
+ const s=prepared(),before=s.writes();
+ const short=preview(req(),s),long=preview(req({token:COPRE93_LEGACY_R0}),s);
+ assert.deepEqual(long,short);
+ assert.equal(s.writes(),before);
+ assert.equal(long.authority,'NONE');
+ assert.equal(long.receiver_ack,false);
+ assert.equal(long.source_verified,false);
+ assert.equal(long.real_session_recovery,false);
+});
+test('quoted and padded CoPre9.3 fallback remains equivalent but changes nothing',()=>{
+ const s=prepared();
+ const out=preview(req({token:'  """  '+COPRE93_LEGACY_R0+'  """  '}),s);
+ assert.equal(out.state,'HOLD_NOT_NOD');
+ const padded=preview(req({token:'  '+COPRE93_LEGACY_R0+'  '}),s);
+ assert.equal(padded.state,'PREVIEW_ONLY_BROWSER_LOCAL');
+});
+test('altered or future CoPre variants cannot silently replace the exact pinned alias',()=>{
+ const s=prepared();
+ for(const token of [COPRE93_LEGACY_R0.replace('CoPre9.3+','CoPre9.4+'),
+   COPRE93_LEGACY_R0.replace('NoPhantomACK','PhantomACK'),
+   COPRE93_LEGACY_R0+'|EXTERNAL_SEND', '""" '+COPRE93_LEGACY_R0+' """'])
+  assert.equal(preview(req({token}),s).state,'HOLD_NOT_NOD');
+});
+test('long-form fallback cannot weaken privacy, presence, or effect gates',()=>{
+ const s=prepared();
+ assert.equal(preview(req({token:COPRE93_LEGACY_R0,scope:'PRIVATE'}),s).state,'HOLD_AUTHORITY');
+ assert.equal(preview(req({token:COPRE93_LEGACY_R0,effect:'RUN_ALL'}),s).state,'HOLD_AUTHORITY');
+ assert.equal(preview(req({token:COPRE93_LEGACY_R0,presence:'ABSENT'}),s).state,'HOLD_NOT_EXPLICIT');
+});
