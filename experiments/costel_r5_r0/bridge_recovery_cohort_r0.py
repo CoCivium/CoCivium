@@ -157,8 +157,20 @@ def classify(source: Mapping[str, Any], *, at_utc: datetime | None = None) -> di
         "cohort": cohort,
         "fresh_local_snapshot": freshness,
         "local_host_observed": local_observed,
+        # A current connector snapshot is not a current host-power attestation.
+        # A task's previous exit code is never a live-service health signal.
+        "host_power_state": "NOT_ATTESTED",
+        "host_liveness_scope": (
+            "FRESH_LOCAL_SOURCE_SNAPSHOT_ONLY" if local_observed else
+            "NO_QUALIFIED_CURRENT_LOCAL_SOURCE"
+        ),
+        "remote_observer_is_host_actuator": False,
+        "connector_failure_authorizes_host_restart": False,
         "task_registration_reported": bool(local_observed and task["registered"] and task["runner_matches_pin"]),
-        "task_last_result_zero_reported": bool(task["registered"] and last_result == 0),
+        "task_last_result_zero_reported": bool(
+            local_observed and task["registered"] and task["runner_matches_pin"]
+            and last_result == 0
+        ),
         "last_run_time_state": last_run_state,
         "postboot_task_state": postboot,
         "desktop_commander_adapter": desktop_commander,
