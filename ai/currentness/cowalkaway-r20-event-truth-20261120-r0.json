@@ -1,0 +1,79 @@
+{
+  "contribution": "A normal zero-fault native task invocation must not be projected as a new child-crash-recovery proof",
+  "effects": {
+    "public_release": 0,
+    "runtime_switch": 0,
+    "x2_file_writes": 0,
+    "x2_process_starts": 0,
+    "x2_task_mutations": 0
+  },
+  "evidence_boundary": {
+    "actual_reboot_or_logon_trigger_attested": false,
+    "current_registered_task_xml_readback_this_turn": false,
+    "local_events": [
+      {
+        "attempt_exit_codes": [
+          77,
+          0
+        ],
+        "event_id": "7603acc673954a9dbaedca98b7bb05d9",
+        "event_utc": "2026-11-18T21:37:02Z",
+        "type": "BOUNDED_CHILD_RECOVERY_WITHIN_SURVIVING_PARENT"
+      },
+      {
+        "attempt_exit_codes": [
+          0
+        ],
+        "event_id": "6f21cac54adb49a5946ddb5ca05c9b94",
+        "event_utc": "2026-11-19T21:06:40Z",
+        "type": "NORMAL_LOCAL_TASK_COMPLETION_ONLY"
+      },
+      {
+        "attempt_exit_codes": [
+          0
+        ],
+        "event_id": "0a377ad944aa40809038e076a5e6ebd3",
+        "event_utc": "2026-11-20T20:46:13Z",
+        "type": "NORMAL_LOCAL_TASK_COMPLETION_ONLY"
+      }
+    ],
+    "local_original": "R20_NativeSupervisor_R0.py, R20 invocation receipts; no native modification",
+    "native_data_cryptographic_hash_recomputed_by_this_turn": false,
+    "source": "Authenticated X2 Desktop Commander read-only files, observed 2026-11-20",
+    "source_script_child_sha256_reported": "6acbd09ac2276ad8b606fe48abef19babbf21cdaf76232e969fd03ab724935fa"
+  },
+  "files": {
+    "examples/cowalkaway/r20_event_truth_r0.py": {
+      "bytes": 3925,
+      "sha256": "b5c82b3670c1de5f978c2f0ef90048870bce2499380593372d1f4ae1e428b8ce"
+    },
+    "tests/test_cowalkaway_r20_event_truth_r0.py": {
+      "bytes": 4292,
+      "sha256": "a29a32256451b36f54e2a5826dd3ba0da195568d07b6c1218874ff9957b537e0"
+    }
+  },
+  "incumbent_owner": "CoCivium/CoCivium#317",
+  "next": "Independent exact-head CI test, then owner-authorized native status adapter repair and one cold boot/logon readproof; do not edit the live R20 supervisor by proxy",
+  "nonclaims": [
+    "LOCAL_IS_NOT_LANDED",
+    "VALIDATION_IS_NOT_ACCEPTANCE",
+    "NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF",
+    "NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE",
+    "HASHING_IS_NOT_SEMANTIC_INGESTION",
+    "DISCOVERED_SET_IS_NOT_COMPLETE_HISTORY",
+    "NO_REBOOT_RECOVERY_PROOF",
+    "NO_REMOTE_RECEIVER_ACK",
+    "NO_SOURCE_ADOPTION_OR_DEPLOYMENT"
+  ],
+  "related_local_owner": "CoCivium/CoCivium#181",
+  "schema": "CoCivium.CoWalkAway.R20.EventTruthSourceTestReceipt.R0",
+  "state": "CANDIDATE_SOURCE_ONLY_TESTED_OFF_X2",
+  "synthetic_tests": {
+    "command": "python -B -m unittest discover -s tests -p test_cowalkaway_r20_event_truth_r0.py -v",
+    "count": 20,
+    "failed": 0,
+    "passed": 20,
+    "test_log_sha256": "eb189eeec85d7be72e2bd02ef43ecfbaef3f7fd2f78e3192a6cdd75ce5d63d08"
+  },
+  "work_id": "CO-SESSION-RECOVERY/R20-EVENT-TRUTH-20261120"
+}
