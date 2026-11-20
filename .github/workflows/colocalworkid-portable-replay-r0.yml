@@ -1,0 +1,32 @@
+name: CoLocalWorkID portable synthetic replay R0
+permissions:
+  contents: read
+
+on:
+  pull_request:
+    paths:
+      - 'examples/colocalworkid/**'
+      - 'examples/cotalkitout/due_work_catchup_r0.py'
+      - '.github/workflows/colocalworkid-portable-replay-r0.yml'
+  push:
+    branches: ['main']
+    paths:
+      - 'examples/colocalworkid/**'
+      - 'examples/cotalkitout/due_work_catchup_r0.py'
+      - '.github/workflows/colocalworkid-portable-replay-r0.yml'
+
+jobs:
+  clean-runner-synthetic-replay:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run completed synthetic WorkID capsule replay and tamper tests
+        run: python -B examples/colocalworkid/test_portable_replay_r0.py -v
+      - name: Recover unfinished synthetic WorkID across fresh processes with fencing
+        run: python -B examples/colocalworkid/test_interrupted_cold_resume_r1.py -v
+      - name: Verify hard-exit worker recovery and single-writer fencing
+        run: python -B examples/colocalworkid/test_worker_recovery_r0.py -v
