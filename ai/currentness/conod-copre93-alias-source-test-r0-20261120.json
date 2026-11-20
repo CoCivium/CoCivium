@@ -1,0 +1,39 @@
+{
+  "effects": {
+    "account_changes": 0,
+    "authority_changes": 0,
+    "new_schedulers": 0,
+    "outreach": 0,
+    "public_release": 0,
+    "remote_devices": 0
+  },
+  "exact_sha256": {
+    "conod_rebind_candidate_r0.json": "5821f0f4503171fdea7cfefcf37bfe996f25c210596117f5f1f19d727d5ed422",
+    "conod_rebind_r0.py": "a3405ec6cc0a8c3b32654f0107a219c0ef3ea44afe0a2464c6a47af1130d83ec",
+    "test_conod_rebind_r0.py": "7263ab45bb72a993e70e2f54d5420fe902402f695541e9323c5e168deb80f01b",
+    "test_output.txt": "3aef16f4312e00388dd359ad494c72ca3f0a0a55bce3aad08d527c8e66f3c69a"
+  },
+  "next": "Independent GitHub content readback and test on separate runner; explicit local UX adaptation only after user/device consent and qualification.",
+  "nonclaims": [
+    "NOT_CURRENT_COPRE_CANON",
+    "NOT_NATIVE_ALIAS_HOOK",
+    "NOT_INDEPENDENT_RECEIVER_PICKUP",
+    "NOT_LIVE_AUTOMATION",
+    "NOT_COVault_OR_COEX",
+    "NOT_PUBLIC_DEPLOYMENT",
+    "NOT_WORKER_DISPATCH",
+    "NOT_AUTHORITY_FROM_GLYPH"
+  ],
+  "schema": "CoCivium.CoNod.CoPre93.RebindModelCanaryReceipt.R0",
+  "source_pins": {
+    "CoPre.md": "7a1d9c2eada9432115a423bcb621793f474a4d28",
+    "SESSION_BOOTSTRAP.md": "8d717e9ca14ef8c92bc102da63aaadaece8afbeb",
+    "ai/session-bootstrap.json": "aa2b8163a773e570f2249066e7ccc8e899e103ff",
+    "examples/conodcothumb/CoNodCoThumbPolicyR0.mjs": "5651f1d0dfad829c401f038ae021a555a919319e"
+  },
+  "state": "PASS_ISOLATED_PURE_TESTS__CANDIDATE_UNLANDED_AT_RECEIPT_CREATION",
+  "test_command": "python -B -m unittest -v test_conod_rebind_r0.py",
+  "tests_failed": 0,
+  "tests_run": 24,
+  "work_id": "CoNod.CoPre93.ShortAlias.Rebind.20261120.R0"
+}
