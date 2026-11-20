@@ -8,6 +8,7 @@ on:
       - "ai/cotheoryall/**"
       - "scripts/test_comegathesis_*"
       - "scripts/test_coworkid_process_replay_r0.cjs"
+      - "scripts/test_coworkid_concurrent_fencing_r0.cjs"
       - "scripts/test_coci_artifact_readback_r0.cjs"
       - ".github/workflows/comegathesis-r0.yml"
   pull_request:
@@ -16,6 +17,7 @@ on:
       - "ai/cotheoryall/**"
       - "scripts/test_comegathesis_*"
       - "scripts/test_coworkid_process_replay_r0.cjs"
+      - "scripts/test_coworkid_concurrent_fencing_r0.cjs"
       - "scripts/test_coci_artifact_readback_r0.cjs"
       - ".github/workflows/comegathesis-r0.yml"
   workflow_dispatch:
@@ -66,6 +68,14 @@ jobs:
           node scripts/test_coworkid_process_replay_r0.cjs | tee artifacts/comegathesis-r0/coworkid-process-replay.log
           sha256sum scripts/test_coworkid_process_replay_r0.cjs > artifacts/comegathesis-r0/coworkid-process-replay.sha256
           echo "Inert same-host process-replay suite executed; NOT independent receiver or live recovery." >> "$GITHUB_STEP_SUMMARY"
+      - name: Adversarial concurrency and sink fencing (inert same-host only)
+        shell: bash
+        run: |
+          set -euo pipefail
+          node --check scripts/test_coworkid_concurrent_fencing_r0.cjs
+          node scripts/test_coworkid_concurrent_fencing_r0.cjs | tee artifacts/comegathesis-r0/coworkid-concurrent-fence.log
+          sha256sum scripts/test_coworkid_concurrent_fencing_r0.cjs > artifacts/comegathesis-r0/coworkid-concurrent-fence.sha256
+          echo "Concurrent same-host synthetic effect check; orphan lock quarantined, NO power-failure recovery." >> "$GITHUB_STEP_SUMMARY"
       - name: Keep test log and source digests, even if a check failed
         if: always()
         uses: actions/upload-artifact@v4
