@@ -63,23 +63,24 @@ jobs:
           print('PASS_COOOMPH_FANIN_SATURATION__SYNTHETIC_ONLY')
           PY
 
-      - name: Packet native negative controls (EXPECTED unsafe source baseline)
+      - name: Packet native negative controls (STRICT review candidate)
         shell: bash
         run: |
           set -euo pipefail
           python -B tests/copre93_packet_native_negative_controls_r0.py \
             --target scripts/CoEvoReceiverPacketCompiler.py \
-            --expected-git-blob 208e3db1ea6b25df68568bb2e3f770d3b8fe0b7a \
-            > "$RUNNER_TEMP/packet-native-negative.json"
+            --expected-git-blob 5a70fe94784442b627ec0fa9f118cacd4409925b \
+            --strict > "$RUNNER_TEMP/packet-native-negative.json"
           cat "$RUNNER_TEMP/packet-native-negative.json"
           python - "$RUNNER_TEMP/packet-native-negative.json" <<'PY'
           import json, sys
-          result=json.load(open(sys.argv[1], encoding="utf-8"))
-          assert result["mode"]=="REPORT_ONLY"
-          assert result["contracts_passed"]==1 and result["contracts_failed"]==4, result
-          assert result["state"]=="CONTRACT_FAIL_REVIEW_REQUIRED"
+          with open(sys.argv[1], encoding="utf-8") as stream:
+              result=json.load(stream)
+          assert result["mode"]=="STRICT"
+          assert result["contracts_passed"]==5 and result["contracts_failed"]==0, result
+          assert result["state"]=="CONTRACT_PASS_REVIEW_ONLY"
           assert all(v==0 for v in result["effects"].values())
-          print("EXPECTED_UNSAFE_SOURCE_BASELINE_REPRODUCED__NOT_SECURITY_PASS")
+          print("PASS_PACKET_NEGATIVE_CONTROLS__REVIEW_ONLY__NO_RECEIVER_ACK")
           PY
 
       - name: Replay current-main session write-back fixtures
