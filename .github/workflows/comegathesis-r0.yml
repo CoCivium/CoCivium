@@ -11,6 +11,8 @@ on:
       - "scripts/test_coworkid_concurrent_fencing_r0.cjs"
       - "scripts/test_coci_artifact_readback_r0.cjs"
       - "scripts/render_coci_ci_status_r0.cjs"
+      - "scripts/test_coci_session_residue_r0.cjs"
+      - "ai/currentness/coci-session-*-r0-20261120.json"
       - ".github/workflows/comegathesis-r0.yml"
   pull_request:
     paths:
@@ -21,6 +23,8 @@ on:
       - "scripts/test_coworkid_concurrent_fencing_r0.cjs"
       - "scripts/test_coci_artifact_readback_r0.cjs"
       - "scripts/render_coci_ci_status_r0.cjs"
+      - "scripts/test_coci_session_residue_r0.cjs"
+      - "ai/currentness/coci-session-*-r0-20261120.json"
       - ".github/workflows/comegathesis-r0.yml"
   workflow_dispatch:
     inputs:
@@ -78,6 +82,14 @@ jobs:
           node scripts/test_coworkid_concurrent_fencing_r0.cjs | tee artifacts/comegathesis-r0/coworkid-concurrent-fence.log
           sha256sum scripts/test_coworkid_concurrent_fencing_r0.cjs > artifacts/comegathesis-r0/coworkid-concurrent-fence.sha256
           echo "Concurrent same-host synthetic effect check; orphan lock quarantined, NO power-failure recovery." >> "$GITHUB_STEP_SUMMARY"
+      - name: Non-cycling session residue source gate (not provider archive)
+        shell: bash
+        run: |
+          set -euo pipefail
+          node --check scripts/test_coci_session_residue_r0.cjs
+          node scripts/test_coci_session_residue_r0.cjs | tee artifacts/comegathesis-r0/session-residue.log
+          sha256sum scripts/test_coci_session_residue_r0.cjs ai/currentness/coci-session-noncycling-checkpoint-r0-20261120.json ai/currentness/coci-session-residue-gates-r0-20261120.json > artifacts/comegathesis-r0/session-residue.sha256
+          echo "Source-only session residue check: non-cycling work, no UI archive, no global enforcement." >> "$GITHUB_STEP_SUMMARY"
       - name: Keep test log and source digests, even if a check failed
         if: always()
         uses: actions/upload-artifact@v4
