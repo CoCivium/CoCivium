@@ -19,7 +19,7 @@ const count = (s, item) => s.split(item).length - 1;
 assert.equal(count(html, 'data-work-id="' + workId + '"'), 3);
 assert.equal(count(html, 'data-source-blob="' + blob + '"'), 3);
 assert.match(html, /script-src 'none'/);
-assert.doesNotMatch(html, /<script\\b|onload=|onclick=/i);
+assert.doesNotMatch(html, /<script\b|onload=|onclick=/i);
 fs.mkdirSync(folder, { recursive: true });
 let browser;
 for (const bin of [process.env.CHROME_BIN, "google-chrome", "chromium", "chromium-browser"].filter(Boolean)) {
@@ -53,7 +53,7 @@ for (const profile of profiles) {
   const width = data.readUInt32BE(16), height = data.readUInt32BE(20);
   assert(width >= 300 && height >= 400, "Invalid raster dimensions");
   results.push({ name: profile.name, width, height, bytes: data.length, screenshot: path.basename(png) });
-  process.stdout.write("BROWSER_SMOKE_SOURCE_ONLY " + profile.name + " " + width + "x" + height + "\\n");
+  process.stdout.write("BROWSER_SMOKE_SOURCE_ONLY " + profile.name + " " + width + "x" + height + "\n");
 }
 const receipt = {
   schema: "CoMegaThesis.BrowserSmoke.SourceOnly.R0",
@@ -64,5 +64,5 @@ const receipt = {
   effect_boundary: "BROWSER_RASTER_ONLY",
   nonclaims: ["human_UX_acceptance","WCAG_certification","live_CoOrb_or_CoBar","independent_receiver_ACK","deployment","CoEx","canon"]
 };
-fs.writeFileSync(path.join(folder, "browser-smoke-receipt.json"), JSON.stringify(receipt, null, 2) + "\\n");
-process.stdout.write("BROWSER_RASTER_COMPLETE_NOT_INDEPENDENT_ACCEPTANCE\\n");
+fs.writeFileSync(path.join(folder, "browser-smoke-receipt.json"), JSON.stringify(receipt, null, 2) + "\n");
+process.stdout.write("BROWSER_RASTER_COMPLETE_NOT_INDEPENDENT_ACCEPTANCE\n");
