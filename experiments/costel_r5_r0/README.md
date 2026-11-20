@@ -4,6 +4,16 @@
 
 This experiment contributes bounded executable negative controls to [CoDesktop/CoStel architecture #181](https://github.com/CoCivium/CoCivium/issues/181), [X2 surface acceptance #178](https://github.com/CoCivium/CoCivium/issues/178), and [fan-in #317](https://github.com/CoCivium/CoCivium/issues/317). It does **not** replace any existing operational supervisor.
 
+## CoGuardian false-offline correction, source-only (2026-11-20)
+
+**Existing authority:** [CoSteward X2 startup/liveness issue #40](https://github.com/CoCivium/CoSteward/issues/40) separates local host observations from remote Desktop Commander availability. [CoShareHub X2 popup incident #56](https://github.com/CoCivium/CoShareHub/issues/56) records the distinct visible-console/host issue; [CoCivium fan-out #317](https://github.com/CoCivium/CoCivium/issues/317) governs cross-surface receipt handoffs, **not** host-power decisions. This fixture does not create another recovery authority.
+
+The existing `bridge_recovery_cohort_r0.py` had one wrong-green *derived field*: `task_last_result_zero_reported` could be true when the host snapshot was stale, missing or the task runner did not match the pinned owner. The classifier's overall walk-away decision already remained HOLD, but a consuming status panel could display that field as current health. It now qualifies a zero exit code **only if** local source freshness, boot cohort, task registration and exact runner binding all pass.
+
+The shared report additionally states `host_power_state=NOT_ATTESTED` even when a fresh source reports a running host, because its observation is historical. `remote_observer_is_host_actuator=false` and `connector_failure_authorizes_host_restart=false` are explicit. The eight new negative controls test missing/stale/invalid boot evidence, unregistered or mismatched task ownership, remote-only online, spoofed reboot authority and zero-effect output.
+
+**Current limit:** these are synthetic source tests on public GitHub CI, not a changed X2 service, Windows startup, CoBar display, native SQLite receiver, or completed recovery. A remote registry reading `OFFLINE` does not prove an offline host. Real postboot WorkID readback remains HOLD until an authorized independent receiver reports exact effects.
+
 ## Run locally
 
 Requires stock Python 3.11+; no external dependencies.
