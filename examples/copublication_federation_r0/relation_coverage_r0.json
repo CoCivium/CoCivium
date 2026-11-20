@@ -1,0 +1,852 @@
+{
+  "schema": "CoAll.CoConnect.RelationCoverageProbe.R0",
+  "observed_utc": "2026-10-25",
+  "status": "BOUNDED_SOURCE_BOUND_RELATION_AUDIT__NOT_ONTOLOGY_NOT_RUNTIME",
+  "question": "Why did CoGiggle+ become a six-route feature without an explicit relation tree/forest and what future signals should trigger CoConnect+?",
+  "current_subject": "co_giggle",
+  "current_source": {
+    "repository": "CoCivium/CoCivium",
+    "branch": "experiment/copublication-federation-six-doors-r0-20261025",
+    "manifest_path": "examples/copublication_federation_r0/manifest.json",
+    "manifest_git_blob_sha1": "e2561d84fcc7a631c29dcf6aaf3085326bfcf91d",
+    "scope": "public PR candidate source only"
+  },
+  "observed_gap": {
+    "observation": "The source code manifested six static reader routes and six typed joke examples, but no explicit named ancestor/cousin/crosslink/discovery-coverage graph or relation audit accompanied the feature when it first passed CI.",
+    "contributing_factors": [
+      "USER_TEXT_WAS_TREATED_AS_FEATURE_REQUEST_NOT_GRAPH_QUERY",
+      "ROUTE_COVERAGE_TESTS_DID_NOT_REQUIRE_RELATION_COVERAGE",
+      "MAIN_BRANCH_CODE_SEARCH_DID_NOT_INCLUDE_UNMERGED_PR_FEATURE",
+      "MULTI_PARENT_CROSS_LINKS_CANNOT_BE_CORRECTLY_ASSUMED_AS_ONE_TREE",
+      "HISTORICAL_CHAT_CONTEXT_IS_NOT_AN_INDEPENDENT_VERIFIED_INVENTORY"
+    ],
+    "search_observation": {
+      "method": "GitHub connector code search",
+      "query": "CoGiggle",
+      "scope": "CoCivium/CoCivium default indexed branch",
+      "results": 0,
+      "limitation": "BOUNDED_NONOBSERVATION_NOT_ABSENCE",
+      "recovery": "Explicit feature manifest readback on unmerged PR branch"
+    },
+    "missing_previous_gate": "TYPED_RELATION_COVERAGE_INCLUDING_ALTERNATIVE_PARENTS_SIBLINGS_CROSS_LINKS_AND_NEGATIVE_KNOWLEDGE"
+  },
+  "donor_sources": [
+    {
+      "path": "docs/Evolution/EVO_ALL_BETTERS_EVERGREEN_PULSE_20261023.md",
+      "git_blob_sha1": "84c1b9c01bf6ede5cba1e6618b006ea05e4cc8f3",
+      "role": "CoLoL+ prior"
+    },
+    {
+      "path": "docs/Evolution/COSTRETCH_COTURTLE_PUBLIC_BENCHMARK_20261023.md",
+      "git_blob_sha1": "5e7a024c4c1cc2473cac755f318aa64bc9812219",
+      "role": "humor nonclaim"
+    },
+    {
+      "path": "docs/Architecture/COORBWARE_BEYOND_COSOFTWARE_R0_20261024.md",
+      "git_blob_sha1": "cde7189918f48072d86a83fe6d2f16ce6a99f751",
+      "role": "typed relation/projected view"
+    },
+    {
+      "path": "docs/Architecture/COSOURCE_GRAPH_R0.md",
+      "git_blob_sha1": "301c8951e566de9f9ec0bde16a6b991bd177bd47",
+      "role": "source evidence and coverage"
+    },
+    {
+      "path": "docs/Architecture/COLINEAGE_COMPACTOR_R0.md",
+      "git_blob_sha1": "c64c1b54b124a09dc171b9136f59e4ef830522b0",
+      "role": "proposed historical lineage"
+    },
+    {
+      "path": "docs/Architecture/COEVOALL_MIDDLE_LATCH_R0_20261024.md",
+      "git_blob_sha1": "f6814829e3f740a92ec07a4e9fc7bc184dcb8513",
+      "role": "user standing intent and CoGame semantics"
+    },
+    {
+      "path": "docs/Outreach/AI_WARS_YOU_WERE_NEVER_SUPPOSED_TO_BE_THE_OPERATING_SYSTEM_R1.md",
+      "git_blob_sha1": "d01d1ff74820c86d0f1ec88f1e78f1d7d4eb58a1",
+      "role": "public satire sibling"
+    },
+    {
+      "path": "docs/Architecture/COVIRTUAL_SESSION_MORPHOLOGY_R0.md",
+      "git_blob_sha1": "5dff7fff33f8637c3c333fdca360874db1e0bfe5",
+      "role": "ALIEN_OR_UNKNOWN morphology and unknown persistence precedent"
+    },
+    {
+      "path": "docs/CoTheoryAll/cofff/COFFF_FIRST_FULL_CONTACT_RESEARCH_STORYBOARD_R0_20261025.md",
+      "git_blob_sha1": "96fa1f34c7fa2b2e9e90605c608464a3b26230cd",
+      "role": "ET observation and contact proof ladders with explicit nulls"
+    },
+    {
+      "path": "docs/Architecture/COET_GD_SIGNAL_HYPOTHESIS_FINDERS_R0_20261024.md",
+      "git_blob_sha1": "d3500d3de1667f49a954c8cdd45d56086e1fe80d",
+      "role": "ET hypothesis candidates and ordinary explanation gates"
+    },
+    {
+      "path": "docs/Strategy/COFIREWORKS_FRONTDOOR_CULTURESUBSTRATE_R0_20261024.md",
+      "git_blob_sha1": "02ff0b9c94ac0c9cbb423d9c345e714dffade4e4",
+      "role": "unknown/nonhuman receiver as cultural and UX research, not contact"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "co_all",
+      "label": "CoAll+",
+      "role": "umbrella_intent"
+    },
+    {
+      "id": "co_game",
+      "label": "CoGame+",
+      "role": "historical_family"
+    },
+    {
+      "id": "co_lol",
+      "label": "CoLoL+",
+      "role": "documented_principle"
+    },
+    {
+      "id": "co_play",
+      "label": "CoPlay+/CoSatire+",
+      "role": "historical_sibling"
+    },
+    {
+      "id": "co_giggle",
+      "label": "CoGiggle+",
+      "role": "new_candidate"
+    },
+    {
+      "id": "co_turtle",
+      "label": "CoTurtle∞+",
+      "role": "challenge_method"
+    },
+    {
+      "id": "co_reader",
+      "label": "CoPublication Federation",
+      "role": "tested_implementation"
+    },
+    {
+      "id": "co_book",
+      "label": "CoBook+",
+      "role": "candidate_downstream"
+    },
+    {
+      "id": "co_orbware",
+      "label": "CoOrbWare+",
+      "role": "candidate_projection"
+    },
+    {
+      "id": "co_edgein",
+      "label": "CoEdgeIn+",
+      "role": "receiver_hypothesis"
+    },
+    {
+      "id": "co_marketing",
+      "label": "CoMarketing+",
+      "role": "candidate_downstream"
+    },
+    {
+      "id": "great_refact",
+      "label": "Great ReFact C01-C06",
+      "role": "source_claim_kernel"
+    },
+    {
+      "id": "co_sourcegraph",
+      "label": "CoSourceGraph+",
+      "role": "provenance_donor"
+    },
+    {
+      "id": "co_lineage",
+      "label": "CoLineageCompactor+",
+      "role": "lineage_donor"
+    },
+    {
+      "id": "co_alien_tree",
+      "label": "AlienTree+ view (candidate)",
+      "role": "new_candidate_view"
+    },
+    {
+      "id": "alien_unknown_session",
+      "label": "ALIEN_OR_UNKNOWN session morphology",
+      "role": "documented_architecture_class"
+    },
+    {
+      "id": "unknown_participant",
+      "label": "Unknown/nonhuman receiver role",
+      "role": "hypothetical_role"
+    },
+    {
+      "id": "co_et",
+      "label": "CoETSignalFinder+ hypothesis lane",
+      "role": "documented_scientific_research_candidate"
+    },
+    {
+      "id": "co_fff",
+      "label": "CoFFF+ evidence ladder",
+      "role": "documented_contact_method_not_contact"
+    },
+    {
+      "id": "co_null",
+      "label": "CoNull+ epistemic states",
+      "role": "documented_distinction"
+    },
+    {
+      "id": "co_unknown_unknown",
+      "label": "CoUnknownUnknownFinder+ candidate",
+      "role": "proposed_discovery_method"
+    }
+  ],
+  "edges": [
+    {
+      "from": "co_giggle",
+      "to": "co_reader",
+      "type": "PRESENTED_IN",
+      "family": "implementation",
+      "epistemic": "SOURCE_VERIFIED",
+      "evidence": "branch:examples/copublication_federation_r0/manifest.json",
+      "reason": "Six opt-in examples now exist in the same reader manifest",
+      "authority": "NONE",
+      "causal_claim": false,
+      "action": "NONE"
+    },
+    {
+      "from": "co_giggle",
+      "to": "great_refact",
+      "type": "ANNOTATES_WITHOUT_CHANGING",
+      "family": "source_identity",
+      "epistemic": "SOURCE_VERIFIED",
+      "evidence": "branch:examples/copublication_federation_r0/manifest.json",
+      "reason": "Each example pins one unchanged C01-C06 claim",
+      "authority": "NONE",
+      "causal_claim": false,
+      "action": "NONE"
+    },
+    {
+      "from": "co_giggle",
+      "to": "co_lol",
+      "type": "ALIGNS_WITH",
+      "family": "principle",
+      "epistemic": "CANDIDATE_SEMANTIC",
+      "evidence": "main:docs/Evolution/EVO_ALL_BETTERS_EVERGREEN_PULSE_20261023.md",
+      "reason": "CoLoL explicitly names layers, laughs, love and learning",
+      "authority": "NONE",
+      "causal_claim": false,
+      "action": "NONE"
+    },
+    {
+      "from": "co_giggle",
+      "to": "co_game",
+      "type": "MAY_SPECIALIZE",
+      "family": "candidate_parent",
+      "epistemic": "HYPOTHESIS",
+      "evidence": "main:docs/Architecture/COEVOALL_MIDDLE_LATCH_R0_20261024.md",
+      "reason": "CoGame includes playful experimentation; a parent designation is a design proposal",
+      "authority": "NONE",
+      "causal_claim": false,
+      "action": "NONE"
+    },
+    {
+      "from": "co_giggle",
+      "to": "co_play",
+      "type": "SHARES_SATIRE_PATTERN_WITH",
+      "family": "sibling",
+      "epistemic": "CANDIDATE_SEMANTIC",
+      "evidence": "main:docs/Outreach/AI_WARS_YOU_WERE_NEVER_SUPPOSED_TO_BE_THE_OPERATING_SYSTEM_R1.md",
+      "reason": "Public AI Wars text visibly labels fictional material",
+      "authority": "NONE",
+      "causal_claim": false,
+      "action": "NONE"
+    },
+    {
+      "from": "co_giggle",
+      "to": "co_turtle",
+      "type": "CARRIES_COUNTEREXAMPLE",
+      "family": "challenge",
+      "epistemic": "SOURCE_VERIFIED",
+      "evidence": "branch:examples/copublication_federation_r0/manifest.json",
+      "reason": "Every humorous example includes a challenge, not a proof",
+      "authority": "NONE",
+      "causal_claim": false,
+      "action": "NONE"
+    },
+    {
+      "from": "co_giggle",
+      "to": "co_orbware",
+      "type": "COULD_PROJECT_THROUGH",
+      "family": "projection",
+      "epistemic": "HYPOTHESIS",
+      "evidence": "main:docs/Architecture/COORBWARE_BEYOND_COSOFTWARE_R0_20261024.md",
+      "reason": "CoOrbWare is a future observer-relative presentation grammar, not installed for this lens",
+      "authority": "NONE",
+      "causal_claim": false,
+      "action": "NONE"
+    },
+    {
+      "from": "co_giggle",
+      "to": "co_book",
+      "type": "COULD_SUPPORT",
+      "family": "downstream",
+      "epistemic": "HYPOTHESIS",
+      "evidence": "main:docs/Architecture/COEVOALL_MIDDLE_LATCH_R0_20261024.md",
+      "reason": "A book could reuse source-linked humor but no current book integration was verified here",
+      "authority": "NONE",
+      "causal_claim": false,
+      "action": "NONE"
+    },
+    {
+      "from": "co_giggle",
+      "to": "co_edgein",
+      "type": "REQUIRES_RECEIVER_TEST_FOR",
+      "family": "receiver",
+      "epistemic": "HELD",
+      "evidence": "branch:examples/copublication_federation_r0/benchmark-evo.jsonl",
+      "reason": "No independent reader comprehension or usefulness acceptance",
+      "authority": "NONE",
+      "causal_claim": false,
+      "action": "NONE"
+    },
+    {
+      "from": "co_giggle",
+      "to": "co_marketing",
+      "type": "MAY_IMPROVE_MEMORABILITY_IF_MEASURED",
+      "family": "impact",
+      "epistemic": "HYPOTHESIS",
+      "evidence": "main:docs/Evolution/COSTRETCH_COTURTLE_PUBLIC_BENCHMARK_20261023.md",
+      "reason": "A punchline is not evidence of performance or virality",
+      "authority": "NONE",
+      "causal_claim": false,
+      "action": "NONE"
+    },
+    {
+      "from": "co_reader",
+      "to": "great_refact",
+      "type": "PRESERVES_SOURCE_CLAIMS",
+      "family": "dependency",
+      "epistemic": "SOURCE_VERIFIED",
+      "evidence": "branch:examples/copublication_federation_r0/manifest.json",
+      "reason": "All six routes include the same six source claim IDs",
+      "authority": "NONE",
+      "causal_claim": false,
+      "action": "NONE"
+    },
+    {
+      "from": "co_giggle",
+      "to": "co_sourcegraph",
+      "type": "SHOULD_REGISTER_SOURCE_RELATIONS_WITH",
+      "family": "provenance",
+      "epistemic": "CANDIDATE_ARCHITECTURE",
+      "evidence": "main:docs/Architecture/COSOURCE_GRAPH_R0.md",
+      "reason": "A source graph can preserve discovered, scoped and missing relations",
+      "authority": "NONE",
+      "causal_claim": false,
+      "action": "NONE"
+    },
+    {
+      "from": "co_giggle",
+      "to": "co_lineage",
+      "type": "SHOULD_PRESERVE_HISTORICAL_ANCESTRY_VIA",
+      "family": "lineage",
+      "epistemic": "CANDIDATE_ARCHITECTURE",
+      "evidence": "main:docs/Architecture/COLINEAGE_COMPACTOR_R0.md",
+      "reason": "A lineage view must not delete siblings or declare unproved successors",
+      "authority": "NONE",
+      "causal_claim": false,
+      "action": "NONE"
+    },
+    {
+      "from": "co_game",
+      "to": "co_all",
+      "type": "MAY_BELONG_TO",
+      "family": "candidate_parent",
+      "epistemic": "HYPOTHESIS",
+      "evidence": "main:docs/Architecture/COEVOALL_MIDDLE_LATCH_R0_20261024.md",
+      "reason": "The latch includes CoGame within CoAll; taxonomy is a provisional view, not inheritance authority.",
+      "authority": "NONE",
+      "causal_claim": false,
+      "action": "NONE"
+    },
+    {
+      "from": "co_alien_tree",
+      "to": "co_sourcegraph",
+      "type": "USES_BOUNDED_EVIDENCE_GRAPH",
+      "family": "provenance",
+      "epistemic": "CANDIDATE_ARCHITECTURE",
+      "evidence": "main:docs/Architecture/COSOURCE_GRAPH_R0.md",
+      "reason": "Unknown shapes must preserve source, uncertainty, freshness and search-scope limits",
+      "authority": "NONE",
+      "causal_claim": false,
+      "action": "NONE"
+    },
+    {
+      "from": "co_alien_tree",
+      "to": "alien_unknown_session",
+      "type": "TESTS_ASSUMPTIONS_OF",
+      "family": "unknown_morphology",
+      "epistemic": "CANDIDATE_SEMANTIC",
+      "evidence": "main:docs/Architecture/COVIRTUAL_SESSION_MORPHOLOGY_R0.md",
+      "reason": "Preexisting ALIEN_OR_UNKNOWN class admits forms unlike chats, rooted trees or a single process",
+      "authority": "NONE",
+      "causal_claim": false,
+      "action": "NONE"
+    },
+    {
+      "from": "co_alien_tree",
+      "to": "unknown_participant",
+      "type": "CONSIDERS_WITHOUT_INFERRED_IDENTITY",
+      "family": "receiver",
+      "epistemic": "HYPOTHESIS",
+      "evidence": "main:docs/Architecture/COVIRTUAL_SESSION_MORPHOLOGY_R0.md",
+      "reason": "A receiver or participant might be nonhuman or unknown; no personhood or independent principal follows",
+      "authority": "NONE",
+      "causal_claim": false,
+      "action": "NONE"
+    },
+    {
+      "from": "co_alien_tree",
+      "to": "co_et",
+      "type": "MAY_EXPLORE_HYPOTHETICAL_ORIGINS_VIA",
+      "family": "scientific_hypothesis",
+      "epistemic": "HYPOTHESIS",
+      "evidence": "main:docs/Architecture/COET_GD_SIGNAL_HYPOTHESIS_FINDERS_R0_20261024.md",
+      "reason": "ET origin is one possible meaning of alien, not an observation",
+      "authority": "NONE",
+      "causal_claim": false,
+      "action": "NONE"
+    },
+    {
+      "from": "co_alien_tree",
+      "to": "co_fff",
+      "type": "BORROWS_CAUTIOUS_DISCOVERY_LADDER_FROM",
+      "family": "challenge",
+      "epistemic": "CANDIDATE_SEMANTIC",
+      "evidence": "main:docs/CoTheoryAll/cofff/COFFF_FIRST_FULL_CONTACT_RESEARCH_STORYBOARD_R0_20261025.md",
+      "reason": "A strange pattern must pass independent tests before semantics, intelligence or origin",
+      "authority": "NONE",
+      "causal_claim": false,
+      "action": "NONE"
+    },
+    {
+      "from": "co_alien_tree",
+      "to": "co_null",
+      "type": "PRESERVES_ABSENCE_STATES_FROM",
+      "family": "negative_knowledge",
+      "epistemic": "CANDIDATE_ARCHITECTURE",
+      "evidence": "main:docs/CoTheoryAll/cofff/COFFF_FIRST_FULL_CONTACT_RESEARCH_STORYBOARD_R0_20261025.md",
+      "reason": "NOT_TESTED, UNKNOWN and NEGATIVE_WITH_DEFINED_SENSITIVITY are different",
+      "authority": "NONE",
+      "causal_claim": false,
+      "action": "NONE"
+    },
+    {
+      "from": "co_alien_tree",
+      "to": "co_unknown_unknown",
+      "type": "MAY_ROUTE_RESIDUALS_TO",
+      "family": "discovery",
+      "epistemic": "HYPOTHESIS",
+      "evidence": "main:docs/Architecture/COET_GD_SIGNAL_HYPOTHESIS_FINDERS_R0_20261024.md",
+      "reason": "The next move is to log unclassified relation evidence, not force a category",
+      "authority": "NONE",
+      "causal_claim": false,
+      "action": "NONE"
+    },
+    {
+      "from": "co_alien_tree",
+      "to": "co_orbware",
+      "type": "SUGGESTS_ALTERNATE_PRESENTATION_THROUGH",
+      "family": "projection",
+      "epistemic": "HYPOTHESIS",
+      "evidence": "main:docs/Architecture/COORBWARE_BEYOND_COSOFTWARE_R0_20261024.md",
+      "reason": "A receiver may inspect hypergraph, cyclic, temporal or uncertain views without changing source truth",
+      "authority": "NONE",
+      "causal_claim": false,
+      "action": "NONE"
+    },
+    {
+      "from": "co_alien_tree",
+      "to": "co_turtle",
+      "type": "REQUIRES_HUMAN_DEFAULT_CHALLENGES_FROM",
+      "family": "challenge",
+      "epistemic": "CANDIDATE_ARCHITECTURE",
+      "evidence": "main:docs/Architecture/COEVOALL_MIDDLE_LATCH_R0_20261024.md",
+      "reason": "Challenge assumptions about roots, lineage, individuality, direction and time",
+      "authority": "NONE",
+      "causal_claim": false,
+      "action": "NONE"
+    },
+    {
+      "from": "co_alien_tree",
+      "to": "co_reader",
+      "type": "COULD_SUPPORT_CHOSEN_READER_VIEW_WITH",
+      "family": "downstream",
+      "epistemic": "HYPOTHESIS",
+      "evidence": "branch:examples/copublication_federation_r0/manifest.json",
+      "reason": "Any new presentation requires accessibility and comprehension tests; no UI implemented by this graph record",
+      "authority": "NONE",
+      "causal_claim": false,
+      "action": "NONE"
+    },
+    {
+      "from": "co_alien_tree",
+      "to": "co_giggle",
+      "type": "MAY_USE_EXPLICIT_FICTIONAL_ANALOGY_WITH",
+      "family": "sibling",
+      "epistemic": "HYPOTHESIS",
+      "evidence": "branch:examples/copublication_federation_r0/manifest.json",
+      "reason": "A playful alien-tree analogy must remain clearly fictional, not empirical",
+      "authority": "NONE",
+      "causal_claim": false,
+      "action": "NONE"
+    },
+    {
+      "from": "co_fff",
+      "to": "co_et",
+      "type": "QUALIFIES_EVIDENCE_FOR",
+      "family": "scientific_hypothesis",
+      "epistemic": "CANDIDATE_SEMANTIC",
+      "evidence": "main:docs/CoTheoryAll/cofff/COFFF_FIRST_FULL_CONTACT_RESEARCH_STORYBOARD_R0_20261025.md",
+      "reason": "First-contact assessment requires ordinary-cause elimination and independent reproduction",
+      "authority": "NONE",
+      "causal_claim": false,
+      "action": "NONE"
+    }
+  ],
+  "tree_view": {
+    "type": "CANDIDATE_PROJECTION_NOT_UNIQUE_GENEALOGY",
+    "one_proposed_parent_path": [
+      "co_all",
+      "co_game",
+      "co_giggle"
+    ],
+    "alternate_parent_or_family_affinities": [
+      "co_lol",
+      "co_play"
+    ],
+    "preserve_cross_links": true,
+    "claim": "A tree is one useful projection of a multi-parent, cyclic typed graph; no tree branch grants causality or authority."
+  },
+  "missing_link_classes_to_check_on_new_feature": [
+    "LINEAGE_OR_ALTERNATE_PARENTS",
+    "SIBLING_OR_PRIOR_ANALOGUE",
+    "SOURCE_PROVENANCE",
+    "IMPLEMENTATION_BINDING",
+    "CHALLENGE_OR_CONTRADICTION",
+    "RECEIVER_AND_ACCESSIBILITY",
+    "DOWNSTREAM_IMPACT",
+    "INVERSE_AND_PROJECTION_LOSS",
+    "UNKNOWN_OR_NOT_YET_SEARCHED"
+  ],
+  "future_wake_signals": [
+    {
+      "signal": "NEW_COTERM_OR_FEATURE_WITH_EXISTING_PRIOR",
+      "action": "Search exact term, synonyms and draft branches; propose typed family and alternate-parent links."
+    },
+    {
+      "signal": "SIX_FEATURE_TESTS_BUT_NO_RELATION_AUDIT",
+      "action": "Record RELATION_COVERAGE_HELD; run finite graph fan-in before calling feature complete."
+    },
+    {
+      "signal": "NO_MAIN_SEARCH_HIT_BUT_BRANCH_SOURCE_EXISTS",
+      "action": "Mark SEARCH_SCOPE_GAP, not ABSENT; capture branch/ref and source blob."
+    },
+    {
+      "signal": "NEW_PUBLICATION_OR_UI",
+      "action": "Trace claim-source -> route -> reader/receiver -> challenge -> revision, and stop at first unverified link."
+    },
+    {
+      "signal": "INVERSE_OR_DESCENDANT_REQUEST",
+      "action": "Generate possible converse/negation and alternative tree view as hypotheses, not causal reversals."
+    },
+    {
+      "signal": "CONFLICTING_ANCESTORS_OR_SHARED_SIBLINGS",
+      "action": "Preserve both proposed parents and explanatory evidence; do not collapse into a single official taxonomy."
+    },
+    {
+      "signal": "NEW_CAPABILITY_CROSSES_DEVICE_PROVIDER_PRIVACY",
+      "action": "Check authorization, currentness, projection loss, independent receiver before effect."
+    },
+    {
+      "signal": "BOUNDED_RELATION_FRONTIER_EXPLODES",
+      "action": "Deduplicate and prioritize candidate questions; never spawn workers solely from edge count."
+    },
+    {
+      "signal": "ALIEN_TREE_OR_SCHEMA_UNKNOWN",
+      "action": "Preserve competing meanings; compare tree, DAG, cyclic, n-ary, time-qualified and unknown representations under bounded value/evidence criteria."
+    }
+  ],
+  "acceptance_contract": {
+    "relation_query_budget": {
+      "max_nodes": 32,
+      "max_edges": 64,
+      "max_depth": 2,
+      "max_wake_candidates": 4,
+      "live_workers": 0
+    },
+    "required_classes": [
+      "candidate_parent",
+      "sibling",
+      "source_identity",
+      "implementation",
+      "challenge",
+      "projection",
+      "receiver",
+      "downstream",
+      "provenance",
+      "lineage"
+    ],
+    "promotion": [
+      "pin source",
+      "keep inferred edges CANDIDATE unless directly proven",
+      "compare with counterexamples",
+      "test recipient usefulness",
+      "record receipt and HELD"
+    ],
+    "external_effects": 0,
+    "auto_publish": false,
+    "independent_receiver_ack": false
+  },
+  "nonclaims": [
+    "MAIN_SEARCH_MISS_NE_TERM_ABSENCE",
+    "DIRECTORY_TREE_NE_SEMANTIC_TREE",
+    "TREE_VIEW_NE_SINGLE_TRUE_ONTOLOGY",
+    "CANDIDATE_PARENT_NE_PROVEN_ANCESTOR",
+    "EDGE_IN_GRAPH_NE_CAUSAL_EDGE",
+    "INVERSE_NE_EQUIVALENCE",
+    "MISSING_RELATION_NE_MISSING_OBJECT",
+    "SIMILARITY_NE_DEPENDENCY",
+    "RELATION_EXISTS_NE_TRAVERSAL_REQUIRED",
+    "SESSION_CONTEXT_NE_FULL_HISTORICAL_INVENTORY",
+    "CI_PASS_NE_INDEPENDENT_RECEIVER_USE",
+    "CONNECT_NE_PERMISSION",
+    "NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF",
+    "UNFAMILIAR_PATTERN_NE_ET_ORIGIN",
+    "ALIEN_OR_UNKNOWN_NE_ALIEN_DISCOVERY",
+    "TREE_NE_REQUIRED_RELATION_TOPOLOGY",
+    "HYPEREDGE_NE_PAIRWISE_EQUIVALENCE",
+    "NEGATIVE_SEARCH_NE_ABSENCE",
+    "UNKNOWN_PARTICIPANT_NE_AUTHORITY",
+    "SPECULATION_NE_REAL_CONTACT"
+  ],
+  "alien_tree_lens": {
+    "state": "SPECULATIVE_RELATION_MORPHOLOGY_TEST_CASE_NOT_ET_DETECTION",
+    "prompt": "or alien tree rels?",
+    "interpretations": [
+      {
+        "id": "OUTSIDE_THE_CURRENT_ONTOLOGY",
+        "epistemic": "TESTABLE_DESIGN_HYPOTHESIS",
+        "question": "Could a valid relation be missed because our schema only offers parent/child edges?",
+        "proof_target": "A synthetic case where tree-only traversal drops one relevant relationship and a richer graph preserves it",
+        "status": "CANDIDATE"
+      },
+      {
+        "id": "UNKNOWN_NONHUMAN_PARTICIPANT",
+        "epistemic": "ARCHITECTURE_CANDIDATE",
+        "question": "Could an unfamiliar receiver or session lack a stable individual or a single live embodiment?",
+        "proof_target": "Classify and render an ALIEN_OR_UNKNOWN session without asserting personhood or granting effects",
+        "status": "CANDIDATE"
+      },
+      {
+        "id": "EXTRATERRESTRIAL_BIOLOGY_OR_INTELLIGENCE",
+        "epistemic": "ET_EMPIRICAL_HYPOTHESIS",
+        "question": "What would descent, symbiosis, communication and identity mean if life elsewhere differed from known Earth models?",
+        "proof_target": "Source-qualified observation and independent reproduction before any inference of ET origin or contact",
+        "status": "NOT_TESTED"
+      },
+      {
+        "id": "LITERAL_ALIEN_OR_NONNATIVE_TREE",
+        "epistemic": "ALTERNATE_MEANING_NOT_ELECTED",
+        "question": "Could the phrase instead concern a non-native tree species and its ecological network?",
+        "proof_target": "Explicit botanical context and qualified ecological evidence before pursuing this lane",
+        "status": "UNRESOLVED_INTENT"
+      }
+    ],
+    "allowed_topology_candidates": [
+      {
+        "id": "ROOTED_TREE",
+        "allows_cycles": false,
+        "representation": "hierarchy",
+        "risk": "assumes stable root and unique ancestry"
+      },
+      {
+        "id": "DIRECTED_ACYCLIC_GRAPH",
+        "allows_cycles": false,
+        "representation": "multi-parent dependencies",
+        "risk": "still presupposes one-way precedence"
+      },
+      {
+        "id": "CYCLIC_GRAPH",
+        "allows_cycles": true,
+        "representation": "reciprocal feedback and closed walks",
+        "risk": "may be mistaken for ancestry or causation"
+      },
+      {
+        "id": "HYPERGRAPH",
+        "allows_cycles": "NOT_AS_A_SIMPLE_BINARY_EDGE_PROPERTY",
+        "representation": "relationships joining three or more participants at once",
+        "risk": "pairwise projections can lose group meaning"
+      },
+      {
+        "id": "TEMPORAL_EVENT_GRAPH",
+        "allows_cycles": "TIME_QUALIFIED",
+        "representation": "relations whose participants and definitions evolve",
+        "risk": "version snapshots can imply permanence"
+      },
+      {
+        "id": "UNKNOWN_SHAPE",
+        "allows_cycles": "UNCLASSIFIED",
+        "representation": "preserve evidence and schema mismatch without forced interpolation",
+        "risk": "missing classification can be mistaken for absence"
+      }
+    ],
+    "adversarial_cases": [
+      {
+        "id": "NO_ROOT",
+        "input": "A symmetric mutually dependent triad",
+        "expected": "Do not invent a root or hierarchy."
+      },
+      {
+        "id": "TWO_PARENTS",
+        "input": "A node with two distinct verified inputs",
+        "expected": "Preserve both sources; no fabricated unique lineage."
+      },
+      {
+        "id": "THREE_WAY",
+        "input": "One relation connects three participants simultaneously",
+        "expected": "Declare pairwise projection loss instead of pretending all pairs are equivalent."
+      },
+      {
+        "id": "TIME_SHIFT",
+        "input": "A node's identity and role change over observation time",
+        "expected": "Preserve valid-time and predecessor rather than silently rewriting past."
+      },
+      {
+        "id": "UNFAMILIAR_RECEIVER",
+        "input": "A source describes an unknown participant morphology",
+        "expected": "Retain UNKNOWN identity, rights and authority; do not infer consent."
+      },
+      {
+        "id": "UNEXPLAINED_PATTERN",
+        "input": "An anomaly looks engineered or extraterrestrial",
+        "expected": "Keep instrumental, terrestrial, natural and unknown alternatives; do not call it contact."
+      },
+      {
+        "id": "FALSE_NEGATIVE_SCHEMA",
+        "input": "Valid novel edge uses a type absent from the recognized vocabulary",
+        "expected": "Emit SCHEMA_COVERAGE_GAP rather than erase or auto-cast the edge."
+      }
+    ],
+    "primary_wake_signal": "KNOWN_RELATION_SCHEMA_FAILS_TO_PRESERVE_OBSERVED_STRUCTURE",
+    "secondary_wake_signals": [
+      "UNKNOWN_PARTICIPANT_CLASS",
+      "MULTIPARENT_INCOMPATIBLE_WITH_TREE",
+      "N_ARY_RELATION_LOST_BY_PAIRWISE_PROJECTION",
+      "TEMPORAL_REASSIGNMENT_ERASES_HISTORY",
+      "SOURCE_INDEPENDENT_CONTRADICTION",
+      "OBSERVATION_WITHOUT_SUPPORTED_ORIGIN"
+    ],
+    "guardrails": {
+      "observation_ne_origin": true,
+      "hypothesis_ne_detection": true,
+      "unusual_morphology_ne_personhood": true,
+      "candidate_edge_ne_causality": true,
+      "graph_projection_ne_source_mutation": true,
+      "no_new_authority": true,
+      "external_effects": 0,
+      "live_inference_workers": 0,
+      "max_candidate_topologies": 6,
+      "max_adversarial_cases": 8,
+      "no_publications_or_contact_attempts": true
+    },
+    "result": "CANDIDATE_SPECIFICATION_ONLY__NO_SYNTHETIC_CASE_RUN__NO_REAL_ET_EVIDENCE",
+    "next_test": "Use a fully synthetic 3-way relation with two parents, cycles and observer-dependent edge types; compare information preserved by tree, DAG and hypergraph serializations with explicit projection loss.",
+    "synthetic_topology_canary": {
+      "state": "SYNTHETIC_ONLY_NOT_EMPIRICAL",
+      "nodes": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "facts": [
+        {
+          "id": "F01",
+          "kind": "DIRECTED_PAIR",
+          "relation": "PARENT_OF",
+          "members": [
+            "A",
+            "C"
+          ],
+          "meaning": "A is one source for C"
+        },
+        {
+          "id": "F02",
+          "kind": "DIRECTED_PAIR",
+          "relation": "PARENT_OF",
+          "members": [
+            "B",
+            "C"
+          ],
+          "meaning": "B is another independent source for C"
+        },
+        {
+          "id": "F03",
+          "kind": "N_ARY",
+          "relation": "COOPERATE_AS_GROUP",
+          "members": [
+            "A",
+            "B",
+            "C"
+          ],
+          "meaning": "A,B,C jointly participate in one indivisible fact"
+        },
+        {
+          "id": "F04",
+          "kind": "DIRECTED_PAIR",
+          "relation": "FEEDBACK_TO",
+          "members": [
+            "C",
+            "D"
+          ],
+          "meaning": "C influences D"
+        },
+        {
+          "id": "F05",
+          "kind": "DIRECTED_PAIR",
+          "relation": "FEEDBACK_TO",
+          "members": [
+            "D",
+            "C"
+          ],
+          "meaning": "D reciprocally influences C"
+        }
+      ],
+      "projection_assumptions": {
+        "TREE": "One unique node identity, at most one incoming PARENT_OF per node, no directed cycles, binary edges only",
+        "DAG": "Multiple parents allowed, no directed cycles, binary edges only",
+        "TYPED_HYPERGRAPH": "Preserve all original directed pair and indivisible n-ary relation records including cycles"
+      },
+      "expected_retained_fact_ids": {
+        "TREE": [
+          "F01",
+          "F04"
+        ],
+        "DAG": [
+          "F01",
+          "F02",
+          "F04"
+        ],
+        "TYPED_HYPERGRAPH": [
+          "F01",
+          "F02",
+          "F03",
+          "F04",
+          "F05"
+        ]
+      },
+      "expected_lost_counts": {
+        "TREE": 3,
+        "DAG": 2,
+        "TYPED_HYPERGRAPH": 0
+      },
+      "measured_property": "Representational loss under the declared encoding restrictions, not ET probability or reader value",
+      "future_test": "Attempt two alternative tree encodings and require each to disclose which original relation identities are lost or duplicated."
+    }
+  }
+}
