@@ -8,11 +8,13 @@ on:
     paths:
       - "docs/Architecture/COGBX_UNIVERSAL_UX_EXEMPLAR_R0_20261027.md"
       - "examples/cogbx_ux_exemplar_r0/**"
+      - "examples/cobar/**"
       - ".github/workflows/cogbx-ux-exemplar-r0.yml"
   push:
     paths:
       - "docs/Architecture/COGBX_UNIVERSAL_UX_EXEMPLAR_R0_20261027.md"
       - "examples/cogbx_ux_exemplar_r0/**"
+      - "examples/cobar/**"
       - ".github/workflows/cogbx-ux-exemplar-r0.yml"
 
 jobs:
@@ -28,6 +30,14 @@ jobs:
         run: node examples/cogbx_ux_exemplar_r0/smoke.cjs
       - name: Run R1 accessible input interactions
         run: node examples/cogbx_ux_exemplar_r0/interaction_r1.cjs
+      - name: Check CoBar R4b exact-source synthetic local interaction
+        run: node examples/cobar/interaction_r4b.cjs
+      - name: Check CoCopy/CoBar fast bulk-insert adversarial contract
+        run: node examples/cobar/test_copaste_bulk_r0.cjs
+      - name: Check CoCopy/CoPaste real headless Chrome DOM insertion
+        run: node examples/cobar/test_copaste_browser_r0.cjs
+      - name: Verify CoCopy owned-field product canary in headless Chrome
+        run: node examples/cobar/test_copaste_owned_field_browser_r0.cjs
       - name: Check source boundaries
         run: |
           python - <<'PY'
@@ -46,3 +56,15 @@ jobs:
           assert "Not deployed to CoGbx.org" in readme
           print("PASS_COGBX_UX_SOURCE_BOUNDARIES_R0")
           PY
+
+  wpf-bulk:
+    runs-on: windows-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Qualify owned WPF text insertion without showing a window
+        shell: pwsh
+        run: pwsh -STA -NoProfile -NonInteractive -File examples/cobar/Test-CoCopyWpfBulkInputR0.ps1
+      - name: Prove read-only CoBar native WorkID view holds false authority
+        shell: pwsh
+        run: pwsh -STA -NoProfile -NonInteractive -File examples/cobar/Test-CoBarWorkIDWindowR0.ps1

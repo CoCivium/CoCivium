@@ -1,0 +1,133 @@
+# CoBar / CoPre local I/O R4b | public research candidate
+
+**Status:** PUBLIC SOURCE PROPOSAL / SYNTHETIC BROWSER-LOCAL FIRST-USE CANARY.  
+**Not:** public application release, deployed CoBar, independent receiver ACK, native CoStead service, human UX acceptance, durable cross-host session synchronization, canon or CoEx.
+
+## Purpose
+
+Preserve and independently review an exact X2-tested CoBar first-use candidate. It provides one small, functional input-to-result loop on top of the existing R3c recovery surface. It is not another command framework or new background watcher.
+
+- **Fixed synthetic WorkID:** `CO-SESSION-RECOVERY::LOCAL-SYNTHETIC-R0`.
+- **Inputs:** `recovery status` and `why held` only. Unsupported input holds.
+- **Effect:** after explicit synthetic-only consent, store exactly one browser-local record and render a deterministic answer. This does **not** send a message, start a device process, mutate the NAS, or grant cleanup authority.
+- **Retry:** same WorkID and command is suppressed as a duplicate; a conflicting command is held.
+- **Cold browser reload:** same browser-profile `localStorage` record read back. This is **not** off-host recovery.
+- **Stop:** local WorkID changes to `REVOKED`. Subsequent reload and retry stay held.
+- **Corruption:** malformed stored record fails closed without overwrite.
+- **Evidence:** source-anchored frozen historical snapshot, not live telemetry.
+
+## Exact source and proof
+
+| Object | SHA-256 from authorized X2 observation |
+| --- | --- |
+| Exact R4b HTML candidate (`copre_local_io_r4b.html`) | `D56DF449DF491EC38F0D9B963B1B3D93DBC04FAEB7E1B3C8679462E3B39A2B72` |
+| Exact R4b first-use receipt (`receipts/cobar_r4b_first_use_20261111.json`) | `76C38FFB45C26C81ABA1B773AA6086331B15E007BAEA9FC1218D2EF2D5BAC900` |
+| Prior local R4a predecessor | `FFFADD8CFC199C749925ACA74396B76CA33EA80B197CC38F030AB2771DA4694A` |
+| Original R3c qualified read-only source | `BB1483149B30A336617805CDF3AF02483EA3A46A8347C8220602E1DCB7AE0B6A` |
+
+The source is an exact research preservation of the locally tested file, **not** an app deployment. Its historical receipt hashes are references, not proof of a currently running NAS receiver.
+
+The first headless Edge trial of R4 failed at 1280px because a fixed bottom rail covered `Run locally`; a click targeted the rail instead. R4a moved the control clear on desktop but left the 390px consent checkbox under the rail. These failed receipts are preserved outside this public proposal; do not silently replace failure history with the R4b PASS.
+
+**R4b browser proof:** isolated headless Microsoft Edge runs at **320, 390 and 1280 pixels** (850px tall) passed **11 checks each, 33/33 total**, with no external requests or page errors. Checks include explicit consent, browser-local commit/readback, duplicate suppression, cold tab reload, conflicting WorkID hold, revocation and revocation replay hold, corrupt-storage hold, and unobstructed Run/Stop/consent hit targets. [Public source-bound acceptance note](https://github.com/CoCivium/CoCivium/issues/453#issuecomment-6805571881).
+
+## How to inspect
+
+Review `copre_local_io_r4b.html` as source. Open the static HTML in an isolated browser profile for a synthetic demo. Select explicit test consent, enter one of the two supported commands, click `Run locally`, retry, reload, then click `Stop and revoke`. Do not use actual personal, private or operational data.
+
+Browser `localStorage` is **not** durable shared custody. Once revoked, this synthetic WorkID must not be silently reset in the same profile merely to re-run a green demo.
+
+## Additional control challenges (X2 process stdout only)
+
+A separate, bounded X2 headless Edge challenge confirmed that the Run/consent/Stop sequence remained clickable and functional at five lower-height sizes: **320×568, 375×667, 390×667, 1280×600 and 1280×720**, with zero external requests or local artifact writes. This extends the prior browser receipt but does **not** alter its original 33/33 claim or create an additional receiver ACK.
+
+**Important negative control:** A deliberately fabricated, internally schema-consistent `localStorage` record was accepted on reload as `RECOVERED_LOCAL_ONLY`, without a new checkbox interaction. That is an expected limitation of a client-controlled browser store. The field validator rejects malformed records but **cannot authenticate who wrote a well-formed record, prove genuine consent, or establish remote receiver identity**. Never promote the status label, nonce-like fields, local timestamp or self-declared receipt into authorization or a third-party ACK. A real receiver requires a separate trusted origin, consent validation, and exact readproof.
+
+`LOCAL_STORAGE_SCHEMA_VALID_NE_AUTHENTICATED_CONSENT`  `BROWSER_RELOAD_NE_INDEPENDENT_RECEIVER`
+
+## Hosted source-bound CI
+
+The exact candidate has a dependency-free Node `vm` interaction harness,
+[`interaction_r4b.cjs`](interaction_r4b.cjs), reusing the **existing CoGbx UX Exemplar R0** GitHub Actions workflow instead of introducing another scheduler. It checks the pinned HTML hash and 18 logical safety/state invariants.
+
+[GitHub Actions PR run #43092172933](https://github.com/CoCivium/CoCivium/actions/runs/43092172933) completed **success** at commit `ee4e663c03662ce7f64bd2dc062e6ebb8b11fe0c` on the PR test merge, including the preexisting CoGbx checks and the new CoBar source-bound test. The sibling branch-push workflow also passed. The Node DOM shim verifies state logic, **not** browser geometry; the separate X2 Edge 33/33 and low-height hit-target results supply the limited layout evidence. No hosted browser action should be inferred from the DOM shim.
+
+## Existing WorkID/receiver donor crosswalk (different identities)
+
+Reuse the advanced [synthetic browser-to-SQLite draft #452](https://github.com/CoCivium/CoCivium/pull/452) and its [acceptance issue #450](https://github.com/CoCivium/CoCivium/issues/450) as donor, **not** a new receiver. These are separately scoped evidence lanes:
+
+| Dimension | CoBar R4b (this candidate) | Existing #452 bridge |
+| --- | --- | --- |
+| Browser WorkID | `CO-SESSION-RECOVERY::LOCAL-SYNTHETIC-R0` | `CoPre.ReadyCycle.Synthetic.R0` |
+| Browser record schema | `CoBar.CoPreLocalIO.R0.Record` | `CoAll.CoOwnedWork.BrowserLocal.R0.Record` |
+| Source anchor | Frozen CoBar R3c snapshot SHA-256 `BB1483149B30A336617805CDF3AF02483EA3A46A8347C8220602E1DCB7AE0B6A` | Pinned historical `CoPre.md` commit `63b41ead8797e5a781699f32bcbc77b78bdbd7af` and SHA-256 `58f8c722bfbfc34cac41189c072d2effe4b19dbbe8a37be4f8687344d6b00b9a` |
+| Execution/receipt | Local browser `localStorage`, no transport, self-declared client consent | Separate synthetic CI producer, SQLite receiver and cold-reader using `CoOwnedWorkSqliteBridgeR0.py` |
+| ACK boundary | `receiver_ack=false`; no receiver | Synthetic CI job transfers/readbacks only; no independently authenticated external host or human consent |
+| Stop | Browser-local R4b revocation only | Existing bridge tests producer revocation, SQLite update and replay denial for its **different** WorkID |
+
+**Integration rule:** R4b must eventually **project an already qualified existing CoOwnedWork record**, or declare a new explicit parent/child relation and obtain new authorization. Never silently overwrite a WorkID, rewrite narrative/epoch fields, assert receiver ACK, or import user-controlled `localStorage` as authenticated consent. No shared durable receiver is established merely by the two PRs passing their separate CIs. Scope the next independent test to one explicitly authorized WorkID and preserve Stop, lease fencing and rollback.
+
+## Required next proof
+
+The existing [CoSpeedo/CoBar acceptance issue #453](https://github.com/CoCivium/CoCivium/issues/453) remains the product owner; [browser-to-SQLite bridge issue #450](https://github.com/CoCivium/CoCivium/issues/450) remains the receiver-contract gap, and [cross-surface recovery issue #317](https://github.com/CoCivium/CoCivium/issues/317) remains the external-origin ACK and custody gap.
+
+The next independent gate is a **real human first-use** and, separately, an **authorized cross-failure-domain receiver** producing its own exact-object readproof. Neither is established by 33 synthetic browser tests or publication of a GitHub branch.
+
+**Rails:** `LOCAL_IS_NOT_LANDED`; `VALIDATION_IS_NOT_ACCEPTANCE`; `NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF`; `NO_INTEGRATION_COEX_CANON_RUNTIME_OR_PUBLIC_INFERENCE`; `HOLD_NO_DELETE`.
+
+No local predecessors were deleted or authorized for retirement by publication.
+
+## CoCopy / CoPaste bulk insertion R0 | additive source-only candidate (2026-11-14)
+
+User-observed UX: simulated character-by-character typing and slowly replayed paste are vulnerable to focus interruption. Paste preparation, text insertion, visible readback, and message submission must be separate actions.
+
+- [Scoped shared bulk-field source](copaste_bulk_r0.cjs) and [20 synthetic negative checks](test_copaste_bulk_r0.cjs) are additive to this R4b **draft**. They do not change the exact hash-pinned original R4b HTML, its 33/33 Edge receipt, local demo WorkID, or any installed CoBar.
+- `createCoPasteR0().insert()` requires explicit `authorized=true`, dedicated owned text field (`data-copaste-owned="true"`), exact target ID, current focus, exact prestate, scoped request ID, bounded payload, safe selection, and a synchronous destination-value readback.
+- Uses **one `setRangeText` call** for the complete payload, preserves actual CRLF/LF and Unicode, and does **not** call `type`, `keydown`, `Ctrl+V`, `submit`, clipboard APIs, network APIs, or external receivers.
+- Same request ID and same payload is suppressed without re-insertion; conflicting replay, changed target, changed destination, wrong focus, unsupported/sensitive fields, oversized content and unverifiable partial writes HOLD. Undo is possible only when destination still exactly equals the committed local text value.
+- Run `node examples/cobar/test_copaste_bulk_r0.cjs` in the **existing** CoGbx UX CI. Tests use a synthetic field implementation, **not** a real browser, Windows HID stack, ChatGPT input, or clipboard. Application state/event synchronization, editor-specific normalization and pixel-level CoEyes verification are next acceptance gates. Do not infer near-zero latency from a synchronous fake field.
+- CoCopy retains provenance and typed `COPIED`/`PASTED` events; this R0 adapter produces only a private, ephemeral return state and deliberately does **not** persist personal input, claim `PASTED` at a third-party destination, or submit anything. A real native CoBar/editor adapter must separately establish a receiver-origin readproof.
+
+`COPY_NE_PASTE` · `INSERT_NE_SEND` · `READBACK_VALUE_NE_PIXEL_VISIBILITY` · `SYNTHETIC_TEST_NE_LIVE_CLIPBOARD` · `NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF`.
+
+## 2026-11-14 | Chromium actual-DOM falsifier and R0 correction (source-only)
+
+**Preserve both observations.** Original source-only CoPaste R0 reported 20/20 synthetic PASS, but the first independent [actual Chrome DOM run #43633669547](https://github.com/CoCivium/CoCivium/actions/runs/43633669547) **FAILED**. A real `<textarea>` normalized CRLF to LF, so the adapter returned `HELD_READBACK_MISMATCH` despite inserting text. Reusing the same request ID triggered another `setRangeText`, making a duplicate possible. That run also observed zero `input` events. Never count synthetic green as actual browser first-use acceptance.
+
+The candidate source is now corrected **only on this existing draft PR**, with no live X2 input or clipboard effects:
+- Normalize CRLF/CR to LF for owned textarea destination before insertion; preserve original request payload in the in-memory request ledger. Multiline content targeting a single-line input is held.
+- One `setRangeText` per request. Verify the actual DOM value before and after one deliberately generated, **untrusted** bubbling `input` event for the owned application field. Do **not** claim this is a native, trusted keyboard or OS paste event, or that all web frameworks accept it.
+- Ambiguous or partially written request IDs are fenced with `HELD_AMBIGUOUS_PREVIOUS_INSERT`; no blind reinsert. Focus, exact prestate, target ID, consent scope, selection, maximum size, duplicate request and safe Undo remain enforced.
+
+**Independent current result:** [hosted workflow #43633854479](https://github.com/CoCivium/CoCivium/actions/runs/43633854479) **SUCCESS**, job `132566229235` on draft head `1548f1a103d762a7d2f42f6e7c53cc4fa4470d35`. Native `test_copaste_bulk_r0.cjs` **23/23 PASS**. Real headless Chrome DOM `test_copaste_browser_r0.cjs` **10/10 PASS**, including real normalized CRLF/LF and Unicode, a second roughly 70k-character destination, exact one-operation insertion per payload, synthetic `input` event counts 1:1, immutable duplicate suppression, retained target focus, and zero form submissions or key events. Browser output reports first insertion 10.9 ms, large insertion 9.6 ms on one hosted CI runner; **not** an X2/Windows timing benchmark, not guaranteed delivery time across apps, and not external receiver ACK.
+
+The candidate remains a **source-only research adapter**, not built into the original pinned R4b HTML, the installed R5/R6 CoBar, Windows clipboard, OS focus broker, or any provider chat. Real operator UX, pixel visibility, framework-owned state reconciliation, interruption under X2 popup storms, cross-session pickup, CoStead acceptance, CoEx and runtime release remain separately unproven. `BROWSER_DOM_PASS_NE_PRODUCT_UI_ACCEPTED` · `SYNTHETIC_INPUT_EVENT_NE_TRUSTED_USER_EVENT` · `ONE_INSERT_NE_SEND` · `NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF`.
+
+## 2026-11-14 | CoCopy owned-field first-use page, real Chromium acceptance
+
+**Status:** staged as two additional files on this *existing, unmerged draft*. No native X2 CoBar integration, automatic provider input, live clipboard, persistent WorkID, receiver readproof, CoEx, canon or release.
+
+- [Interactive, consent-gated CoCopy/CoBar owned-field page](copaste_owned_field_r0.html), Git blob `2e4f99a329eb36789f62bd4ca9ca6b5ffb4391dc`. User-triggered **Insert full test text** places one predefined multiline synthetic string in its dedicated `data-copaste-owned` textarea, updates a visible readback and count, and keeps **Undo** separate. No `Send`, form, network call, clipboard API, autosubmit, browser storage or background watcher. Users may open the HTML locally in a browser as a scoped test, but must not confuse it with installed R6 CoBar or chat integration.
+- [Real Chrome page harness](test_copaste_owned_field_browser_r0.cjs), Git blob `841b76154a574d7beb2e3edd2ee8deb8ff962e73`, invokes the **actual staged HTML** with explicit `?canary=1` synthetic test mode. The browser-generated DOM proof checks ten assertions including consent HOLD, normalized CRLF/LF+Unicode output, matching preview/editor, one application input event, duplicate suppression, focus-steal HOLD and safe undo refusal after a human-style edit. It also checks the absence of send controls and checks for unwanted clipboard/network APIs in static source. A DOM proof is not independently examined screen pixels or universal framework acceptance.
+- **Hosted CI:** Existing [CoGbx UX workflow #43634351175](https://github.com/CoCivium/CoCivium/actions/runs/43634351175) completed **SUCCESS**, exact job log reports **10/10 owned-page real Chrome checks**, **10/10 earlier browser transport checks**, and **23/23 adapter tests**. Browser page probe reports one input event, no send action, no clipboard manipulation. It does not measure Windows Ctrl+V performance or independent human usefulness.
+- The original historical R4b HTML candidate `copre_local_io_r4b.html` and its pinned Edge first-use receipt remain unchanged. This new page is additive and is **not** a cutover, merger, or license to act in unrelated browser tabs.
+
+**One next safe gate:** product owner #453 binds the staged owned field to a *real, explicitly authorized* CoBar-native text input/event owner with an independent HWND/DOM visible-result and focus-interruption canary, preserving unsent user drafts. Completion must be independently receipted; otherwise remain `UX_ACCEPTANCE_UNPROVEN`.
+
+`PREPARED_NE_PASTED` · `DOM_READBACK_NE_SCREEN_PIXELS` · `FOCUS_GUARD_NE_OS_FOCUS_LEASE` · `APP_EVENT_NE_TRUSTED_HID` · `NO_RECEIVER_PICKUP_WITHOUT_EXACT_READPROOF`.
+
+## 2026-11-14 | Native Windows WPF bulk field donor, no live R5/R6 cutover
+
+**Current X2 discriminator (native read-only):** Desktop Commander 0.3.3 reported X2 Online. The running R5 renderer refreshed at 2026-11-14 22:12:13Z (PID 1280, self-reported bar/orb/brief visible) while its underlying CoTime source was stale since 15:44Z; separate process inventory included PID 1280. R6 has a historical last-exit record at 2026-11-13 21:21:19Z for PID 3312 and that PID is absent from current enumeration. These are source/OS observations, **not independent screen pixels or human UX acceptance**. Direct read of `Start-CoDesktopR5.ps1` (225 lines) and `Start-CoDesktopR6.ps1` (192 lines) showed read-only Evidence text but no editable text-to-task submission path in the inspected hosts.
+
+**New additive donor in this same draft:**
+
+- [`CoCopyWpfBulkInputR0.ps1`](CoCopyWpfBulkInputR0.ps1), Git blob `b556bec81cf764bca6d893673cdbfe6a74797b2f`. A **source-only native WPF text-box adapter** accepts one explicitly owned, initially empty `TextBox`, checks declared consent, scope, real keyboard focus unless a test-only fixture bypass is used, bounded payload and exact prestate. It inserts the entire multiline/Unicode payload through one `TextBox.Text` assignment and verifies normalized actual text readback. An in-memory request fence prevents a failed/ambiguous result from triggering blind reinsertion. Undo is permitted only for the identical untouched value. It does not call OS clipboard, SendInput, Enter, Send, provider APIs, background workers or external receivers.
+- [`Test-CoCopyWpfBulkInputR0.ps1`](Test-CoCopyWpfBulkInputR0.ps1), Git blob `53ca1e0fd4dcaaed6065d003593ad94baae5b77f`. Actual Windows WPF object test using PowerShell 7 in STA mode, **no Window.Show**, attached `TextChanged` listener, 17 safety/readback checks covering real WPF multiline/Unicode, one event, >100k-character payload, idempotence, wrong owner, absent real focus, nonempty draft preservation and guarded Undo. Test-only `-FixtureUnfocused` bypass does **not qualify** focus ownership or authorize production use.
+- Extended the preexisting CoGbx UX workflow with one `windows-latest` job, no new watcher. The first hosted [run #43646971848](https://github.com/CoCivium/CoCivium/actions/runs/43646971848) had all 17 WPF assertions PASS but failed a final mistaken expectation `count==18`; the failing fixture history remains intact. The corrected hosted [run #43647029898](https://github.com/CoCivium/CoCivium/actions/runs/43647029898), job `132607008992` **SUCCESS**, log prints `PASS_COCOPY_NATIVE_WPF_SOURCE_R0 tests=17 focus_real=UNPROVEN no_window=TRUE clipboard=0 send=0 receiver_ack=UNPROVEN`. Existing Ubuntu browser/CoGbx job `132607009186` also **SUCCESS** on the same rerun, retaining earlier 23/23 adapter checks, real Chromium browser DOM and owned-page checks.
+
+**Critical boundary:** The WPF adapter is **not installed** in R5/R6, has no native CoBar text field, never received real keyboard/clipboard input, and did not bind an authenticated WorkID receiver. A field in memory and a CI pass do not establish pixels, usability, provider delivery, external ACK, or user-time savings. No source-file write, process launch, focus change, task change, popup, account action or CoStead mutation occurred on X2 from this donor work.
+
+**One elected next native UX gate:** reuse #453 human-visible CoBar and #181 R5/R6 host ownership to create a reversible **dedicated owned text field** in an isolated versioned R6 review build; never overwrite R5, confuse task-level Stop with Exit-Host, or steal current foreground focus. When real input and permission exist, prove target HWND/Focus → one bulk insertion → screenshot/pixel readback → explicit unsent state → exact safe Undo under interrupted focus. Production remains `UX_ACCEPTANCE_UNPROVEN` until independent evidence qualifies the user experience.
+
+`WPF_OBJECT_PASS_NE_NATIVE_HOST_INTEGRATED` · `FOCUS_FIXTURE_NE_REAL_FOCUS` · `ONE_ASSIGNMENT_NE_PIXELS` · `PREPARE_NE_SEND` · `RICK_ACTION_NONE`.
