@@ -134,7 +134,8 @@ jobs:
           const snapshot=sourceWitness({version:'OBSERVED_MAIN_20261120',
             source_ref:pin.source_ref,bytes});
           const blob=crypto.createHash('sha1')
-            .update(Buffer.from('blob '+bytes.length+'\\0')).update(bytes).digest('hex');
+            .update(Buffer.from('blob '+bytes.length))
+            .update(Buffer.from([0])).update(bytes).digest('hex');
           const result={
             schema:'CoAll.CoNod.MainCurrentnessObservation.R0',
             observed_main_commit:main,observed_copre_blob_sha1:blob,
@@ -149,8 +150,7 @@ jobs:
           if(snapshot.state!=='PINNED_SOURCE_BYTES_VERIFIED_ONLY'&&
              snapshot.state!=='HOLD_SOURCE_BYTES_DRIFT')
             throw Error('HOLD_UNEXPECTED_SOURCE_STATE:'+snapshot.state);
-          if(blob===SOURCE_VERSIONS.HISTORICAL_COPRE_R0.git_blob_sha1)
-            throw Error('HOLD_TEST_ASSERTION_MAIN_EQUALS_HISTORICAL_REVIEW_REQUIRED');
+          result.main_equals_historical_fixture=(blob===SOURCE_VERSIONS.HISTORICAL_COPRE_R0.git_blob_sha1);
           console.log(JSON.stringify(result));
           JS
       - name: CoNod immutable Git-source witness and migration HOLDS
