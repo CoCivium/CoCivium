@@ -54,6 +54,34 @@ test("all eligible WorkIDs finished returns no material delta",()=>{
   assert.equal(r.decision,"NO_MATERIAL_DELTA");
   assert.equal(r.executed,false);
 });
+test("pay-forward selector outcome invariant under work and receipt ordering",()=>{
+  const high={...work};
+  const middle={...work,work_id:"CoLocal.WorkB",value:6};
+  const low={...work,work_id:"CoLocal.WorkC",value:5};
+  const permutations=arr=>arr.length<2?[arr]:arr.flatMap((v,i)=>
+    permutations(arr.filter((_,j)=>j!==i)).map(t=>[v,...t]));
+  const committedA={work_id:high.work_id,source_sha256:high.source_sha256,state:"COMMITTED"};
+  const pendingB={work_id:middle.work_id,source_sha256:middle.source_sha256,state:"PENDING"};
+  const committedB={...pendingB,state:"COMMITTED"};
+  for(const orderedWorks of permutations([high,middle,low])){
+    for(const orderedReceipts of permutations([committedA,pendingB])){
+      const x=baseline();x.work=orderedWorks;x.receipts=orderedReceipts;
+      const r=resolveCoNod(x);
+      assert.equal(r.decision,"HOLD");
+      assert.equal(r.reason,"HOLD_PRIOR_EFFECT_UNRESOLVED");
+      assert.equal(r.executed,false);
+      assert.equal(r.receiver_ack,false);
+    }
+    for(const orderedReceipts of permutations([committedA,committedB])){
+      const x=baseline();x.work=orderedWorks;x.receipts=orderedReceipts;
+      const r=resolveCoNod(x);
+      assert.equal(r.decision,"PREVIEW_READ_ONLY");
+      assert.equal(r.work_id,low.work_id);
+      assert.equal(r.executed,false);
+      assert.equal(r.receiver_ack,false);
+    }
+  }
+});
 test("STOP overrides",()=>{const x=baseline();x.stop=true;assert.equal(resolveCoNod(x).reason,"HOLD_STOP_ACTIVE");});
 test("revoked policy holds",()=>{const x=baseline();x.policies[0].revoked=true;assert.equal(resolveCoNod(x).reason,"HOLD_NO_QUALIFIED_COPRE");});
 test("approved epoch beats new timestamp",()=>{const x=baseline();x.policies.push({...policy,id:"old",epoch:3,valid_from:999});assert.equal(resolveCoNod(x).policy_epoch,7);});
