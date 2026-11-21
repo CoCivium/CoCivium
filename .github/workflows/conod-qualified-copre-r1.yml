@@ -27,7 +27,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "22"
-      - name: 24 source-only gesture/currentness/fail-closed checks
+      - name: 26 source-only gesture/currentness/fail-closed checks
         shell: bash
         run: |
           set -euo pipefail
@@ -35,7 +35,7 @@ jobs:
           node --check examples/conodcothumb/conod_qualified_copre_r1.mjs
           node --check examples/conodcothumb/test_conod_qualified_copre_r1.mjs
           node examples/conodcothumb/test_conod_qualified_copre_r1.mjs | tee proof/conod-qualified-r1/tests.log
-          grep -F 'CONOD_QUALIFIED_SHADOW_PASS 24 tests | execution=0 | receiver_ack=false' proof/conod-qualified-r1/tests.log
+          grep -F 'CONOD_QUALIFIED_SHADOW_PASS 26 tests | execution=0 | receiver_ack=false' proof/conod-qualified-r1/tests.log
           git rev-parse HEAD > proof/conod-qualified-r1/revision.txt
           sha256sum examples/conodcothumb/conod_qualified_copre_r1.mjs examples/conodcothumb/test_conod_qualified_copre_r1.mjs > proof/conod-qualified-r1/source-sha256.txt
           printf '%s\n' 'SOURCE_ONLY; NO RUNTIME; NO CoNode OPT-IN; NO PROVIDER CHAT ACTION; NO SCHEDULE; NO RECEIVER ACK; NO CANON' > proof/conod-qualified-r1/nonclaims.txt
