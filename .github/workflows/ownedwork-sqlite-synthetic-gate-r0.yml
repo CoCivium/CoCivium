@@ -119,6 +119,13 @@ jobs:
           assert digest=='58f8c722bfbfc34cac41189c072d2effe4b19dbbe8a37be4f8687344d6b00b9a',digest
           print('PASS_PINNED_GIT_SOURCE_SHA256',digest)
           PY
+      - name: CoNod immutable Git-source witness and migration HOLDS
+        env:
+          CONOD_SOURCE_WITNESS_CI: '1'
+        run: |
+          # This test needs checkout fetch-depth: 0, already set for this job.
+          # Git object equality is only pin integrity, never branch-currentness or receiver authority.
+          node --test tests/test_conod_rebind_r0.cjs
       - name: Test schema, consent fixture, provenance, duplication and revocation
         env:
           COPRE_PINNED_SOURCE: /tmp/CoPre.md
