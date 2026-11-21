@@ -34,7 +34,7 @@ function sourceWitness(w){
     return held('HOLD_UNRECOGNIZED_VERSION');
   const pin=SOURCE_VERSIONS[w.version];
   if(w.source_ref!==pin.source_ref) return held('HOLD_UNPINNED_SOURCE_REF');
-  const blob=createHash('sha1').update(Buffer.from('blob '+w.bytes.length+'\\0'.replace('\\0','\0'))).update(w.bytes).digest('hex');
+  const blob=createHash('sha1').update(Buffer.from('blob '+w.bytes.length+'\\0')).update(w.bytes).digest('hex');
   if(blob!==pin.git_blob_sha1) return held('HOLD_SOURCE_BYTES_DRIFT');
   return {state:'PINNED_SOURCE_BYTES_VERIFIED_ONLY',
     version:w.version,source_ref:pin.source_ref,
