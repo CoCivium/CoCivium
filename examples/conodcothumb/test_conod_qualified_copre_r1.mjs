@@ -9,7 +9,7 @@ const work={work_id:"CoLocal.WorkA",scope:"colocal",source_sha256:"f".repeat(64)
  observed_at:950,valid_until:2000,lease_epoch:2,lease_state:"CURRENT",
  effect_class:"READ_ONLY",authority_provenance:"SCOPED_APPROVED",
  receiver_state:"SOURCE_KNOWN",dependency_state:"READY",collision_state:"NO_CONTEST",
- source_verified:true,value:7,urgency:5,risk:2,dependencies_priority:4,status:"ELIGIBLE"};
+ source_verified:true,value:7,urgency:5,risk:2,dependencies_priority:4,status:"ELIGIBLE",lifecycle_state:"ACTIVE"};
 const baseline=()=>({message:"'",scope:"colocal",caller:"consenting-reader",now_utc_s:1000,
  stop:false,authorized_reader:true,consent_current:true,policy_registry_current:true,
  owner_registry_current:true,revocation_check_current:true,
@@ -99,4 +99,50 @@ test("priority chooses higher value lower risk",()=>{const x=baseline();x.work.p
 test("unbound or prose input holds",()=>{for(const x of [null,{}, {message:"'",scope:"colocal"},{...baseline(),message:"Agreed '"}])assert.equal(resolveCoNod(x).decision,"HOLD");});
 test("private and preview never imply receiver ACK",()=>{const r=resolveCoNod(baseline());assert.equal(r.provider_session_mutated,false);assert.equal(r.receiver_ack,false);assert(r.nonclaims.includes("NOD_NE_AUTHORITY"));});
 test("no policy or work holds",()=>{for(const k of ["policies","work"]){const x=baseline();x[k]=[];assert.equal(resolveCoNod(x).decision,"HOLD");}});
+
+const materialWake=(w=work,overrides={})=>({
+  kind:"EXACT_SOURCE_DELTA",work_id:w.work_id,source_sha256:w.source_sha256,
+  lease_epoch:w.lease_epoch,predicate_id:"exact-source-delta",
+  event_sha256:"a".repeat(64),source_verified:true,relation_verified:true,
+  revoked:false,observed_at:975,valid_until:1500,...overrides
+});
+test("dormant or close-safe nod alone cannot reawaken",()=>{
+  for(const state of ["CLOSE_SAFE","DORMANT"]){
+    const x=baseline();x.work[0].lifecycle_state=state;
+    for(let i=0;i<10;i++){
+      const r=resolveCoNod(x);
+      assert.equal(r.decision,"HOLD");
+      assert.equal(r.executed,false);
+      assert.equal(r.receiver_ack,false);
+    }
+  }
+});
+test("generic ping and unrelated change cannot constitute material wake",()=>{
+  const x=baseline();x.work[0].lifecycle_state="REAWAKENED";
+  for(const change of [
+    {kind:"GENERIC_NOD"},{kind:"UNRELATED_REPO_CHANGE"},
+    {work_id:"Foreign.Work"},{source_sha256:"e".repeat(64)},
+    {lease_epoch:99},{revoked:true},{event_sha256:"not-a-digest"},
+    {observed_at:2001},{valid_until:999},{relation_verified:false}
+  ]){
+    x.work[0].bound_material_wake=materialWake(x.work[0],change);
+    const r=resolveCoNod(x);
+    assert.equal(r.decision,"HOLD");
+    assert.equal(r.executed,false);
+  }
+});
+test("only matched source-bound reawakening previews, never executes",()=>{
+  const x=baseline();x.work[0].lifecycle_state="REAWAKENED";
+  x.work[0].bound_material_wake=materialWake();
+  const r=resolveCoNod(x);
+  assert.equal(r.decision,"PREVIEW_READ_ONLY");
+  assert.equal(r.work_id,work.work_id);
+  assert.equal(r.executed,false);
+  assert.equal(r.receiver_ack,false);
+  x.stop=true;
+  assert.equal(resolveCoNod(x).reason,"HOLD_STOP_ACTIVE");
+  x.stop=false;x.revocation_check_current=false;
+  assert.equal(resolveCoNod(x).reason,"HOLD_STALE_QUALIFICATION");
+});
+
 process.stdout.write("CONOD_QUALIFIED_SHADOW_PASS "+passed+" tests | execution=0 | receiver_ack=false\n");
