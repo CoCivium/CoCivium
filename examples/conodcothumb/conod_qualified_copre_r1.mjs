@@ -82,16 +82,19 @@ export function resolveCoNod(input) {
     byId.set(w.work_id,w);
   }
   eligible.sort((a,b)=>score(b)-score(a)||a.work_id.localeCompare(b.work_id));
-  const w=eligible[0];
-  // Contradictory, stale or unknown effect evidence must not be outvoted by
-  // a single "COMMITTED" row. Reconcile the entire selected WorkID first.
-  const priorReceipts=input.receipts.filter(r=>r?.work_id===w.work_id);
-  if(priorReceipts.some(r=>r.source_sha256!==w.source_sha256||
-      !["COMMITTED","RECEIVER_ACK"].includes(r.state)))
-    return hold("HOLD_PRIOR_EFFECT_UNRESOLVED");
-  if(priorReceipts.length) {
+  // Reconcile receipts in priority order. Completed work is not a reason to
+  // starve unfinished successors; unresolved evidence is never skipped.
+  let w=null;
+  for(const candidate of eligible){
+    const priorReceipts=input.receipts.filter(r=>r?.work_id===candidate.work_id);
+    if(priorReceipts.some(r=>r.source_sha256!==candidate.source_sha256||
+        !["COMMITTED","RECEIVER_ACK"].includes(r.state)))
+      return hold("HOLD_PRIOR_EFFECT_UNRESOLVED");
+    if(!priorReceipts.length){w=candidate;break;}
+  }
+  if(w===null){
     return { ...hold("NO_MATERIAL_DELTA"),decision:"NO_MATERIAL_DELTA",
-      work_id:w.work_id,policy_epoch:selected.epoch,
+      work_id:eligible[0].work_id,policy_epoch:selected.epoch,
       next:"Sleep until an eligible source, authority, or work state changes." };
   }
   const canPreview = w.effect_class==="NONE"||w.effect_class==="READ_ONLY";
