@@ -43,6 +43,27 @@ function validPolicy(p,scope,now) {
   if(p.expands_authority!==false)return false;
   return true;
 }
+const MATERIAL_WAKE_KINDS=new Set([
+  "EXACT_RECEIVER_DISPOSITION","SOURCE_CLAIM_CONTRADICTION",
+  "SUCCESSOR_RECOVERY","HUMAN_AUTHORITY_GATE",
+  "EXACT_SOURCE_DELTA","BOUND_RUNTIME_AVAILABLE"
+]);
+// This is input-shape validation for a ZERO-EFFECT shadow preview, not
+// authentication of a wake event or a claim of independent receiver ACK.
+// A real adapter must authenticate the observed event at its own boundary.
+function qualifiedLifecycleWake(w,now){
+  if(w.lifecycle_state==="ACTIVE"||w.lifecycle_state==="WORKING")return true;
+  if(w.lifecycle_state!=="REAWAKENED")return false;
+  const e=w.bound_material_wake;
+  return isObj(e)&&MATERIAL_WAKE_KINDS.has(e.kind)&&
+    e.work_id===w.work_id&&e.source_sha256===w.source_sha256&&
+    e.lease_epoch===w.lease_epoch&&safeId(e.predicate_id)&&
+    hex64.test(e.event_sha256)&&e.source_verified===true&&
+    e.relation_verified===true&&e.revoked===false&&
+    integer(e.observed_at)&&e.observed_at>=w.observed_at&&
+    e.observed_at<=now&&integer(e.valid_until)&&e.valid_until>=now;
+}
+
 function validWork(w,scope,now) {
   return isObj(w)&&safeId(w.work_id)&&w.scope===scope&&hex64.test(w.source_sha256)&&
     str(w.owner)&&str(w.receiver)&&w.stop_available===true&&w.revoked===false&&
@@ -51,6 +72,7 @@ function validWork(w,scope,now) {
     ALLOWED_EFFECTS.has(w.effect_class)&&w.authority_provenance==="SCOPED_APPROVED"&&
     w.receiver_state==="SOURCE_KNOWN"&&w.dependency_state==="READY"&&
     w.collision_state==="NO_CONTEST"&&w.source_verified===true&&
+    qualifiedLifecycleWake(w,now)&&
     integer(w.value)&&integer(w.urgency)&&integer(w.risk)&&w.risk<=10&&
     integer(w.dependencies_priority)&&w.dependencies_priority<=10&&
     (w.status==="ELIGIBLE"||w.status==="QUIESCENT");
