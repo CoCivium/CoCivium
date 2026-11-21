@@ -1,0 +1,148 @@
+import assert from "node:assert/strict";
+import {parseGesture,resolveCoNod} from "./conod_qualified_copre_r1.mjs";
+const policy={id:"copre-source-qualified-r0",scope:"colocal",git_commit:"a".repeat(40),
+ git_blob:"b".repeat(40),content_sha256:"c".repeat(64),epoch:7,approved_by:"owner",
+ approval_receipt:"receipt",approved:true,source_verified:true,revoked:false,compatible:true,
+ expands_authority:false,valid_from:100,valid_until:2000,effect_ceiling:["NONE","READ_ONLY"]};
+const work={work_id:"CoLocal.WorkA",scope:"colocal",source_sha256:"f".repeat(64),
+ owner:"CoLocalOwner",receiver:"local-reader",stop_available:true,revoked:false,
+ observed_at:950,valid_until:2000,lease_epoch:2,lease_state:"CURRENT",
+ effect_class:"READ_ONLY",authority_provenance:"SCOPED_APPROVED",
+ receiver_state:"SOURCE_KNOWN",dependency_state:"READY",collision_state:"NO_CONTEST",
+ source_verified:true,value:7,urgency:5,risk:2,dependencies_priority:4,status:"ELIGIBLE",lifecycle_state:"ACTIVE"};
+const baseline=()=>({message:"'",scope:"colocal",caller:"consenting-reader",now_utc_s:1000,
+ stop:false,authorized_reader:true,consent_current:true,policy_registry_current:true,
+ owner_registry_current:true,revocation_check_current:true,
+ policies:[structuredClone(policy)],work:[structuredClone(work)],receipts:[]});
+let passed=0;
+const test=(name,fn)=>{fn();passed++;process.stdout.write("PASS "+name+"\n");};
+test("only literal standalone apostrophe",()=>{assert.equal(parseGesture("'"),"CONOD_REBIND");for(const s of ["I can't","' plus text","''","quoted apostrophe",null,1])assert.equal(parseGesture(s),"NOT_CONOD");});
+test("read-only preview has zero effects",()=>{const r=resolveCoNod(baseline());assert.equal(r.decision,"PREVIEW_READ_ONLY");assert.equal(r.work_id,work.work_id);assert.equal(r.effect,"NONE");assert.equal(r.executed,false);assert.equal(r.receiver_ack,false);});
+test("ten repeated nods produce no effects",()=>{const v=Array.from({length:10},()=>resolveCoNod(baseline()));assert.equal(new Set(v.map(x=>JSON.stringify(x))).size,1);assert(v.every(x=>x.executed===false));});
+test("committed receipt quiets identical work",()=>{const x=baseline();x.receipts.push({work_id:work.work_id,source_sha256:work.source_sha256,state:"COMMITTED"});assert.equal(resolveCoNod(x).decision,"NO_MATERIAL_DELTA");});
+test("source drift with prior effect holds",()=>{const x=baseline();x.receipts.push({work_id:work.work_id,source_sha256:work.source_sha256,state:"COMMITTED"});x.work[0].source_sha256="e".repeat(64);assert.equal(resolveCoNod(x).reason,"HOLD_PRIOR_EFFECT_UNRESOLVED");});
+test("contradictory committed and indeterminate receipts hold in either order",()=>{
+  const committed={work_id:work.work_id,source_sha256:work.source_sha256,state:"COMMITTED"};
+  const unknown={work_id:work.work_id,source_sha256:work.source_sha256,state:"INDETERMINATE"};
+  for(const receipts of [[committed,unknown],[unknown,committed]]){
+    const x=baseline();x.receipts=receipts;
+    assert.equal(resolveCoNod(x).reason,"HOLD_PRIOR_EFFECT_UNRESOLVED");
+    assert.equal(resolveCoNod(x).decision,"HOLD");
+  }
+});
+test("unknown prior same-WorkID effect holds rather than previews",()=>{
+  const x=baseline();
+  x.receipts.push({work_id:work.work_id,source_sha256:work.source_sha256,state:"PENDING"});
+  assert.equal(resolveCoNod(x).reason,"HOLD_PRIOR_EFFECT_UNRESOLVED");
+});
+test("finished top-priority work yields next unfinished WorkID",()=>{
+  const x=baseline();
+  const next={...work,work_id:"CoLocal.WorkB",value:5,risk:4};
+  x.work.push(next);
+  x.receipts.push({work_id:work.work_id,source_sha256:work.source_sha256,state:"COMMITTED"});
+  const r=resolveCoNod(x);
+  assert.equal(r.decision,"PREVIEW_READ_ONLY");
+  assert.equal(r.work_id,next.work_id);
+  assert.equal(r.executed,false);
+});
+test("all eligible WorkIDs finished returns no material delta",()=>{
+  const x=baseline();
+  const next={...work,work_id:"CoLocal.WorkB",value:5,risk:4};
+  x.work.push(next);
+  for(const w of x.work)x.receipts.push({work_id:w.work_id,source_sha256:w.source_sha256,state:"COMMITTED"});
+  const r=resolveCoNod(x);
+  assert.equal(r.decision,"NO_MATERIAL_DELTA");
+  assert.equal(r.executed,false);
+});
+test("pay-forward selector outcome invariant under work and receipt ordering",()=>{
+  const high={...work};
+  const middle={...work,work_id:"CoLocal.WorkB",value:6};
+  const low={...work,work_id:"CoLocal.WorkC",value:5};
+  const permutations=arr=>arr.length<2?[arr]:arr.flatMap((v,i)=>
+    permutations(arr.filter((_,j)=>j!==i)).map(t=>[v,...t]));
+  const committedA={work_id:high.work_id,source_sha256:high.source_sha256,state:"COMMITTED"};
+  const pendingB={work_id:middle.work_id,source_sha256:middle.source_sha256,state:"PENDING"};
+  const committedB={...pendingB,state:"COMMITTED"};
+  for(const orderedWorks of permutations([high,middle,low])){
+    for(const orderedReceipts of permutations([committedA,pendingB])){
+      const x=baseline();x.work=orderedWorks;x.receipts=orderedReceipts;
+      const r=resolveCoNod(x);
+      assert.equal(r.decision,"HOLD");
+      assert.equal(r.reason,"HOLD_PRIOR_EFFECT_UNRESOLVED");
+      assert.equal(r.executed,false);
+      assert.equal(r.receiver_ack,false);
+    }
+    for(const orderedReceipts of permutations([committedA,committedB])){
+      const x=baseline();x.work=orderedWorks;x.receipts=orderedReceipts;
+      const r=resolveCoNod(x);
+      assert.equal(r.decision,"PREVIEW_READ_ONLY");
+      assert.equal(r.work_id,low.work_id);
+      assert.equal(r.executed,false);
+      assert.equal(r.receiver_ack,false);
+    }
+  }
+});
+test("STOP overrides",()=>{const x=baseline();x.stop=true;assert.equal(resolveCoNod(x).reason,"HOLD_STOP_ACTIVE");});
+test("revoked policy holds",()=>{const x=baseline();x.policies[0].revoked=true;assert.equal(resolveCoNod(x).reason,"HOLD_NO_QUALIFIED_COPRE");});
+test("approved epoch beats new timestamp",()=>{const x=baseline();x.policies.push({...policy,id:"old",epoch:3,valid_from:999});assert.equal(resolveCoNod(x).policy_epoch,7);});
+test("unapproved newer policy ignored",()=>{const x=baseline();x.policies.push({...policy,epoch:99,approved:false});assert.equal(resolveCoNod(x).policy_epoch,7);});
+test("same epoch conflicting source holds",()=>{const x=baseline();x.policies.push({...policy,git_blob:"d".repeat(40)});assert.equal(resolveCoNod(x).reason,"HOLD_COLLIDING_POLICY_EPOCH");});
+test("stale registries hold",()=>{for(const k of ["policy_registry_current","owner_registry_current","revocation_check_current"]){const x=baseline();x[k]=false;assert.equal(resolveCoNod(x).reason,"HOLD_STALE_QUALIFICATION");}});
+test("unauthorized reader or consent hold",()=>{for(const k of ["authorized_reader","consent_current"]){const x=baseline();x[k]=false;assert.equal(resolveCoNod(x).reason,"HOLD_NO_READER_OR_CONSENT");}});
+test("bad source hash or expiry holds",()=>{for(const [k,v] of [["git_commit","bad"],["content_sha256","wrong"],["valid_until",999]]){const x=baseline();x.policies[0][k]=v;assert.equal(resolveCoNod(x).reason,"HOLD_NO_QUALIFIED_COPRE");}});
+test("authority ceiling does not expand",()=>{const x=baseline();x.policies[0].effect_ceiling.push("PUBLIC_SEND");assert.equal(resolveCoNod(x).reason,"HOLD_NO_QUALIFIED_COPRE");});
+test("missing lease owner or receiver holds",()=>{for(const [k,v] of [["lease_state","EXPIRED"],["stop_available",false],["receiver_state","UNKNOWN"],["source_verified",false],["authority_provenance","UNKNOWN"]]){const x=baseline();x.work[0][k]=v;assert.equal(resolveCoNod(x).reason,"HOLD_NO_ELIGIBLE_WORK");}});
+test("duplicate WorkID collision holds",()=>{const x=baseline();x.work.push({...work,value:6});assert.equal(resolveCoNod(x).reason,"HOLD_WORK_IDENTITY_COLLISION");});
+test("indeterminate prior effect holds",()=>{const x=baseline();x.receipts.push({work_id:work.work_id,source_sha256:work.source_sha256,state:"INDETERMINATE"});assert.equal(resolveCoNod(x).reason,"HOLD_PRIOR_EFFECT_UNRESOLVED");});
+test("source-test effect separately gated",()=>{const x=baseline();x.policies[0].effect_ceiling.push("SOURCE_TEST");x.work[0].effect_class="SOURCE_TEST";const r=resolveCoNod(x);assert.equal(r.decision,"HOLD");assert.equal(r.executed,false);});
+test("priority chooses higher value lower risk",()=>{const x=baseline();x.work.push({...work,work_id:"CoLocal.WorkB",value:6,risk:9});assert.equal(resolveCoNod(x).work_id,"CoLocal.WorkA");});
+test("unbound or prose input holds",()=>{for(const x of [null,{}, {message:"'",scope:"colocal"},{...baseline(),message:"Agreed '"}])assert.equal(resolveCoNod(x).decision,"HOLD");});
+test("private and preview never imply receiver ACK",()=>{const r=resolveCoNod(baseline());assert.equal(r.provider_session_mutated,false);assert.equal(r.receiver_ack,false);assert(r.nonclaims.includes("NOD_NE_AUTHORITY"));});
+test("no policy or work holds",()=>{for(const k of ["policies","work"]){const x=baseline();x[k]=[];assert.equal(resolveCoNod(x).decision,"HOLD");}});
+
+const materialWake=(w=work,overrides={})=>({
+  kind:"EXACT_SOURCE_DELTA",work_id:w.work_id,source_sha256:w.source_sha256,
+  lease_epoch:w.lease_epoch,predicate_id:"exact-source-delta",
+  event_sha256:"a".repeat(64),source_verified:true,relation_verified:true,
+  revoked:false,observed_at:975,valid_until:1500,...overrides
+});
+test("dormant or close-safe nod alone cannot reawaken",()=>{
+  for(const state of ["CLOSE_SAFE","DORMANT"]){
+    const x=baseline();x.work[0].lifecycle_state=state;
+    for(let i=0;i<10;i++){
+      const r=resolveCoNod(x);
+      assert.equal(r.decision,"HOLD");
+      assert.equal(r.executed,false);
+      assert.equal(r.receiver_ack,false);
+    }
+  }
+});
+test("generic ping and unrelated change cannot constitute material wake",()=>{
+  const x=baseline();x.work[0].lifecycle_state="REAWAKENED";
+  for(const change of [
+    {kind:"GENERIC_NOD"},{kind:"UNRELATED_REPO_CHANGE"},
+    {work_id:"Foreign.Work"},{source_sha256:"e".repeat(64)},
+    {lease_epoch:99},{revoked:true},{event_sha256:"not-a-digest"},
+    {observed_at:2001},{valid_until:999},{relation_verified:false}
+  ]){
+    x.work[0].bound_material_wake=materialWake(x.work[0],change);
+    const r=resolveCoNod(x);
+    assert.equal(r.decision,"HOLD");
+    assert.equal(r.executed,false);
+  }
+});
+test("only matched source-bound reawakening previews, never executes",()=>{
+  const x=baseline();x.work[0].lifecycle_state="REAWAKENED";
+  x.work[0].bound_material_wake=materialWake();
+  const r=resolveCoNod(x);
+  assert.equal(r.decision,"PREVIEW_READ_ONLY");
+  assert.equal(r.work_id,work.work_id);
+  assert.equal(r.executed,false);
+  assert.equal(r.receiver_ack,false);
+  x.stop=true;
+  assert.equal(resolveCoNod(x).reason,"HOLD_STOP_ACTIVE");
+  x.stop=false;x.revocation_check_current=false;
+  assert.equal(resolveCoNod(x).reason,"HOLD_STALE_QUALIFICATION");
+});
+
+process.stdout.write("CONOD_QUALIFIED_SHADOW_PASS "+passed+" tests | execution=0 | receiver_ack=false\n");
