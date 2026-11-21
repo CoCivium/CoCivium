@@ -119,6 +119,40 @@ jobs:
           assert digest=='58f8c722bfbfc34cac41189c072d2effe4b19dbbe8a37be4f8687344d6b00b9a',digest
           print('PASS_PINNED_GIT_SOURCE_SHA256',digest)
           PY
+      - name: CoNod current main ref observation without automatic migration
+        run: |
+          # Read only: checkout is full-depth; deliberately refresh main once.
+          git fetch --no-tags origin +refs/heads/main:refs/remotes/origin/main
+          node - <<'JS'
+          const cp=require('node:child_process'),crypto=require('node:crypto');
+          const {sourceWitness,SOURCE_VERSIONS}=require('./scripts/CoNodRebindPreviewR0.cjs');
+          const run=(args,options={})=>cp.execFileSync('git',args,{maxBuffer:1048576,...options});
+          const main=run(['rev-parse','refs/remotes/origin/main']).toString('utf8').trim();
+          if(!/^[0-9a-f]{40}$/.test(main))throw Error('HOLD_BAD_BRANCH_OBJECT');
+          const bytes=run(['show',main+':CoPre.md']);
+          const pin=SOURCE_VERSIONS.OBSERVED_MAIN_20261120;
+          const snapshot=sourceWitness({version:'OBSERVED_MAIN_20261120',
+            source_ref:pin.source_ref,bytes});
+          const blob=crypto.createHash('sha1')
+            .update(Buffer.from('blob '+bytes.length+'\\0')).update(bytes).digest('hex');
+          const result={
+            schema:'CoAll.CoNod.MainCurrentnessObservation.R0',
+            observed_main_commit:main,observed_copre_blob_sha1:blob,
+            compared_reviewed_main_commit:pin.commit,compared_reviewed_blob_sha1:pin.git_blob_sha1,
+            snapshot_state:snapshot.state,
+            work_id_state:'HOLD_MIGRATION_UNVERIFIED',
+            branch_ref_source:'GITHUB_ORIGIN_MAIN_AT_CI_FETCH',
+            branch_current_after_observation:'UNKNOWN',
+            source_policy_authorized:false,permission_authorized:false,
+            external_receiver_ack:false,local_runtime_qualified:false,
+            external_effects:0,automatic_migration:false};
+          if(snapshot.state!=='PINNED_SOURCE_BYTES_VERIFIED_ONLY'&&
+             snapshot.state!=='HOLD_SOURCE_BYTES_DRIFT')
+            throw Error('HOLD_UNEXPECTED_SOURCE_STATE:'+snapshot.state);
+          if(blob===SOURCE_VERSIONS.HISTORICAL_COPRE_R0.git_blob_sha1)
+            throw Error('HOLD_TEST_ASSERTION_MAIN_EQUALS_HISTORICAL_REVIEW_REQUIRED');
+          console.log(JSON.stringify(result));
+          JS
       - name: CoNod immutable Git-source witness and migration HOLDS
         env:
           CONOD_SOURCE_WITNESS_CI: '1'
