@@ -102,3 +102,89 @@ test('long-form fallback cannot weaken privacy, presence, or effect gates',()=>{
  assert.equal(preview(req({token:COPRE93_LEGACY_R0,effect:'RUN_ALL'}),s).state,'HOLD_AUTHORITY');
  assert.equal(preview(req({token:COPRE93_LEGACY_R0,presence:'ABSENT'}),s).state,'HOLD_NOT_EXPLICIT');
 });
+
+const {sourceWitness,SOURCE_VERSIONS}=require('../scripts/CoNodRebindPreviewR0.cjs');
+function witness(version,bytes){
+  return {version,source_ref:SOURCE_VERSIONS[version].source_ref,bytes};
+}
+test('CoPre source witness requires explicit typed bytes, pin and schema',()=>{
+  for(const x of [null,{},[],{version:'HISTORICAL_COPRE_R0',source_ref:SOURCE_VERSIONS.HISTORICAL_COPRE_R0.source_ref,bytes:'forged'}]){
+    assert.equal(sourceWitness(x).state,'HOLD_BAD_SOURCE_WITNESS');
+  }
+  const x={version:'HISTORICAL_COPRE_R0',source_ref:SOURCE_VERSIONS.HISTORICAL_COPRE_R0.source_ref,bytes:Buffer.from('forged'),is_admin:true};
+  assert.equal(sourceWitness(x).state,'HOLD_BAD_SOURCE_WITNESS');
+});
+test('unknown version cannot be elevated by an actor-provided source digest',()=>{
+  const x={version:'LATEST',source_ref:'any',bytes:Buffer.from('forged')};
+  assert.equal(sourceWitness(x).state,'HOLD_UNRECOGNIZED_VERSION');
+});
+test('exact pin rejects changed source object and misleading path',()=>{
+  const x=witness('HISTORICAL_COPRE_R0',Buffer.from('not CoPre'));
+  assert.equal(sourceWitness(x).state,'HOLD_SOURCE_BYTES_DRIFT');
+  x.source_ref='CoCivium/CoCivium:CoPre.md@main';
+  assert.equal(sourceWitness(x).state,'HOLD_UNPINNED_SOURCE_REF');
+});
+test('source witness rejects non-Buffer bytes and empty or oversized objects',()=>{
+  const pin=SOURCE_VERSIONS.HISTORICAL_COPRE_R0;
+  for(const bytes of [new Uint8Array([65]),Buffer.alloc(0),Buffer.alloc(1048577)]){
+    assert.equal(sourceWitness({version:'HISTORICAL_COPRE_R0',source_ref:pin.source_ref,bytes}).state,'HOLD_BAD_SOURCE_WITNESS');
+  }
+});
+test('untrusted source witness cannot authorize an effect or replace local WorkID',()=>{
+  const s=prepared(),before=s.writes();
+  const fake=witness('HISTORICAL_COPRE_R0',Buffer.from('forged'));
+  const r=preview(req(),s,fake);
+  assert.equal(r.state,'HOLD_SOURCE_WITNESS');
+  assert.equal(r.authority,'NONE');
+  assert.equal(r.receiver_ack,false);
+  assert.equal(s.writes(),before);
+});
+test('missing witness still gives only original zero-authority preview',()=>{
+  const r=preview(req(),prepared());
+  assert.equal(r.state,'PREVIEW_ONLY_BROWSER_LOCAL');
+  assert.equal(r.source_verified,false);
+  assert.equal(r.source_digest_matched,false);
+  assert.equal(r.branch_current,false);
+});
+if(process.env.CONOD_SOURCE_WITNESS_CI==='1'){
+  const {execFileSync}=require('node:child_process');
+  function exactBytes(version){
+    const pin=SOURCE_VERSIONS[version];
+    return execFileSync('git',['show',pin.commit+':'+pin.path],
+      {maxBuffer:1048576});
+  }
+  test('historical CoPre git object is exact and permits digest-matched preview only',()=>{
+    const bytes=exactBytes('HISTORICAL_COPRE_R0');
+    const proof=sourceWitness(witness('HISTORICAL_COPRE_R0',bytes));
+    assert.equal(proof.state,'PINNED_SOURCE_BYTES_VERIFIED_ONLY');
+    assert.equal(proof.branch_current,false);
+    assert.equal(proof.receiver_ack,false);
+    assert.equal(proof.source_sha256,
+      '58f8c722bfbfc34cac41189c072d2effe4b19dbbe8a37be4f8687344d6b00b9a');
+    const s=prepared(),before=s.writes(),r=preview(req(),s,witness('HISTORICAL_COPRE_R0',bytes));
+    assert.equal(r.state,'PREVIEW_ONLY_BROWSER_LOCAL');
+    assert.equal(r.source_digest_matched,true);
+    assert.equal(r.source_verified,false);
+    assert.equal(r.branch_current,false);
+    assert.equal(s.writes(),before);
+  });
+  test('observed main CoPre is content-verified but held on old WorkID',()=>{
+    const bytes=exactBytes('OBSERVED_MAIN_20261120');
+    const proof=sourceWitness(witness('OBSERVED_MAIN_20261120',bytes));
+    assert.equal(proof.state,'PINNED_SOURCE_BYTES_VERIFIED_ONLY');
+    assert.equal(proof.branch_current,false);
+    assert.notEqual(proof.source_ref,fixed.source_ref);
+    const s=prepared(),before=s.writes(),r=preview(req(),s,witness('OBSERVED_MAIN_20261120',bytes));
+    assert.equal(r.state,'HOLD_SOURCE_MIGRATION_REQUIRED');
+    assert.equal(r.source_digest_matched,true);
+    assert.equal(r.receiver_ack,false);
+    assert.equal(r.authority,'NONE');
+    assert.equal(s.writes(),before);
+  });
+  test('tampering with actual historical bytes fails closed',()=>{
+    const bytes=exactBytes('HISTORICAL_COPRE_R0');
+    bytes[bytes.length-1]^=1;
+    const proof=sourceWitness(witness('HISTORICAL_COPRE_R0',bytes));
+    assert.equal(proof.state,'HOLD_SOURCE_BYTES_DRIFT');
+  });
+}
