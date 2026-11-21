@@ -35,6 +35,25 @@ test("unknown prior same-WorkID effect holds rather than previews",()=>{
   x.receipts.push({work_id:work.work_id,source_sha256:work.source_sha256,state:"PENDING"});
   assert.equal(resolveCoNod(x).reason,"HOLD_PRIOR_EFFECT_UNRESOLVED");
 });
+test("finished top-priority work yields next unfinished WorkID",()=>{
+  const x=baseline();
+  const next={...work,work_id:"CoLocal.WorkB",value:5,risk:4};
+  x.work.push(next);
+  x.receipts.push({work_id:work.work_id,source_sha256:work.source_sha256,state:"COMMITTED"});
+  const r=resolveCoNod(x);
+  assert.equal(r.decision,"PREVIEW_READ_ONLY");
+  assert.equal(r.work_id,next.work_id);
+  assert.equal(r.executed,false);
+});
+test("all eligible WorkIDs finished returns no material delta",()=>{
+  const x=baseline();
+  const next={...work,work_id:"CoLocal.WorkB",value:5,risk:4};
+  x.work.push(next);
+  for(const w of x.work)x.receipts.push({work_id:w.work_id,source_sha256:w.source_sha256,state:"COMMITTED"});
+  const r=resolveCoNod(x);
+  assert.equal(r.decision,"NO_MATERIAL_DELTA");
+  assert.equal(r.executed,false);
+});
 test("STOP overrides",()=>{const x=baseline();x.stop=true;assert.equal(resolveCoNod(x).reason,"HOLD_STOP_ACTIVE");});
 test("revoked policy holds",()=>{const x=baseline();x.policies[0].revoked=true;assert.equal(resolveCoNod(x).reason,"HOLD_NO_QUALIFIED_COPRE");});
 test("approved epoch beats new timestamp",()=>{const x=baseline();x.policies.push({...policy,id:"old",epoch:3,valid_from:999});assert.equal(resolveCoNod(x).policy_epoch,7);});
