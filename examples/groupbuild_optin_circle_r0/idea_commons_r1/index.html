@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="dark">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; connect-src 'none'; img-src 'none'; form-action 'none'; base-uri 'none'">
+<title>Leave a Spark | GroupBuild idea commons</title>
+<style>
+:root{font:16px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif;color:#eaf2ff;background:#090e1c}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 17% 0,#2f2759 0,transparent 40%),#0a1020}
+main{width:min(100%,980px);padding:clamp(18px,4vw,55px);margin:auto}h1{font-size:clamp(2.45rem,5.5vw,4.5rem);line-height:1.07;letter-spacing:-.05em;margin:.2em 0}
+h2{font-size:1.25rem;line-height:1.25}.lead{color:#c7d5e8;max-width:64ch}.kicker{font-weight:700;letter-spacing:.14em;font-size:.75rem;color:#d7b7fe;text-transform:uppercase}
+.panel{background:#151e33;border:1px solid #46536b;border-radius:18px;padding:clamp(15px,3vw,24px);margin:16px 0}
+.tabs,.buttons,.choice{display:flex;gap:7px;flex-wrap:wrap}
+button{font:inherit;background:#26324d;border:1px solid #627394;color:#e9f2ff;padding:10px 15px;border-radius:11px;cursor:pointer}
+button[aria-pressed=true]{background:#5b3c83;border-color:#dbb9ff;color:#fff}
+button.primary{background:#3d655f;border-color:#9ad8c8;font-weight:650}
+button.danger{background:#462a38;border-color:#b17d83}
+button:focus-visible,textarea:focus-visible,summary:focus-visible{outline:3px solid #99efda;outline-offset:3px}
+textarea{width:100%;min-height:120px;background:#0c1528;border:1px solid #7587a6;color:#fff;border-radius:12px;padding:13px;resize:vertical;font:inherit}
+label{font-weight:650;display:block;margin:.7em 0 .4em}.hint,.muted,footer{color:#b0c0d8;font-size:.85rem}
+.grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(225px,1fr));margin-top:14px}
+.sample{background:#101a2c;border:1px solid #586786;border-radius:14px;padding:15px;min-height:145px}
+.sample[aria-current=true]{border:2px solid #9bdcca;background:#172c35}
+.pretend{display:block;text-transform:uppercase;font-size:.67rem;letter-spacing:.09em;color:#b7bade;margin-bottom:8px}
+.mock{display:grid;gap:6px;margin-top:10px}.mock span{background:#293750;border-radius:5px;height:10px}.mock span:nth-child(2){width:75%}.mock span:nth-child(3){width:46%}
+.accent{border-left:3px solid #e2b978;padding:8px 12px;background:#252031;border-radius:0 8px 8px 0;color:#ffdfa4}
+.jump{margin:1rem 0 1.2rem}.jump a{display:inline-block;border:1px solid #85baac;color:#c3f4e9;border-radius:10px;padding:10px 13px;font-weight:700;text-decoration:underline;text-underline-offset:3px}.jump a:focus-visible{outline:3px solid #99efda;outline-offset:3px}
+#saved-preview{white-space:pre-wrap;overflow-wrap:anywhere;background:#0b1729;padding:12px;border-radius:9px}
+details{border:1px solid #46536b;padding:12px;border-radius:12px;margin-top:16px}summary{cursor:pointer;font-weight:650}
+code{overflow-wrap:anywhere}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style></head><body><main>
+<div class="kicker">GroupBuild · CoFloat+ / Idea Commons R1</div>
+<h1>Leave a spark.<br>Not a job.</h1>
+<p class="lead">See a few possible interface designs. Suggest one tiny improvement. Keep it privately, export it, or just walk away. No club, profile, task assignment or obligation.</p>
+<p class="jump"><a href="#idea" id="jump-to-idea">Already have an idea? Skip the mockups and write it now.</a></p>
+<p class="accent"><strong>Research-only demo.</strong> There is no online feedback inbox or real federation here. Your suggestion is not sent anywhere. Local persistence is optional and controlled by you.</p>
+<section class="panel" aria-labelledby="idea-title">
+<h2 id="idea-title">One thought is enough</h2>
+<p class="lead">An observation, improvement, counterexample or alternative is valuable even when you don't want to help build it.</p>
+<label for="idea">My suggestion (no identifying information, please)</label>
+<textarea id="idea" maxlength="500" placeholder="What would you make clearer, kinder, easier or more interesting?"></textarea>
+<div class="buttons">
+<button type="button" id="suggest-sample">Try an example</button>
+<button type="button" class="primary" id="save">Keep on this device</button>
+<button type="button" id="export">Export an unsent file</button>
+<button type="button" class="danger" id="clear">Forget this local draft</button>
+</div>
+<p id="status" role="status" aria-live="polite">No idea has been saved, exported or delivered.</p>
+<details><summary>What does keep, export or walk away mean?</summary>
+<p><strong>Keep:</strong> stores only the current idea draft under this page's browser origin, if storage works. This is not an independent backup. Other apps or shared devices may have access.</p>
+<p><strong>Export:</strong> requests a JSON file download containing your written idea and the selected mockup identity. It stays with you until you deliberately share it separately. Download requested is not download verified.</p>
+<p><strong>Walk away:</strong> no assignment or invitation. Unsaved text is lost if you close the page; saved text may remain on this browser. Use Clear first on a shared computer.</p>
+<p><strong>Future federation:</strong> would require a real receiving service, a clear contributor license, privacy safeguards, moderation, reversibility and receiver receipt. None exists in this demo.</p>
+</details>
+</section>
+<section class="panel" aria-labelledby="compare-title">
+<h2 id="compare-title">Three possible ways a gentle idea doorway could look</h2>
+<div class="tabs" role="group" aria-label="Preview style">
+<button type="button" data-view="float" aria-pressed="true">Float</button>
+<button type="button" data-view="sketch" aria-pressed="false">Sketch</button>
+<button type="button" data-view="circle" aria-pressed="false">Circle</button>
+</div>
+<div class="grid" id="samples">
+<div class="sample" id="preview" aria-live="polite"></div>
+<div class="sample"><span class="pretend">What happens backstage?</span><h2>Nothing is submitted.</h2>
+<p class="muted">No account. No automatic prompt to join a team. No real people in the mockups. These sketches are purely illustrative.</p>
+</div>
+</div>
+<p id="view-disclaimer" class="hint"></p>
+</section>
+<section class="panel" aria-label="Idea lifecycle">
+<h2>A little thought can have a long future</h2>
+<p>Considered → Kept locally (optional) → Explicitly shared somewhere (not connected) → Challenged → Improved → Useful to someone (unverified).</p>
+<p class="hint"><strong>CoWalkAway+</strong> means participation is never debt. <strong>CoFed+</strong> would preserve consent and credit across independent communities, not quietly copy someone's words into a company ledger.</p>
+</section>
+<footer>GroupBuild R1 · CoFloat and CoWalkAway are candidate labels, not approved CoTerms. No social proof, capture, tracking, automatic assignments or sending. Source and permissions are separate from visual polish.</footer>
+<noscript><p class="accent">JavaScript is off. Read the ideas above and leave freely; the optional local draft tools need JavaScript.</p></noscript>
+</main>
+<script type="application/json" id="source-model">{"schema":"GroupBuild.IdeaCommons.UXOnlyR1","work_id":"GroupBuild.IdeaCommons.FrontBack.Seed.20261123.R1","state":"PUBLIC_SAFE_SOURCE_ONLY__NO_LIVE_FEEDBACK_INTAKE","promise":"Leave a spark, not a job.","intended_audience":"Any visitor, including people who only want to suggest an improvement and walk away.","durable_source_vs_ui":"One source object may have many temporary projections; no presentation creates an effect.","effect_authority":"NONE","public_submission":"NOT_CONNECTED","federation_delivery":"NOT_CONNECTED","real_submissions":0,"real_members":0,"real_assignments":0,"automatic_rights_transfer":false,"front_to_back":["see_preview","compare_ux","write_one_idea","decide_whether_to_keep","walk_away_without_assignment"],"back_to_front":["stable_local_idea_identity","clear_source_and_version","permission_scope","local_privacy","optional_user_export","future_reviewable_federation_if_separately_authorized"],"views":[{"id":"float","name":"Float","headline":"One light thought can change a world.","description":"A quiet, floating suggestion next to a hypothetical interface. No joining a team.","caption":"CoFloat+ candidate: a lightweight, dismissible UX projection.","status":"UX_CONCEPT_ONLY","sample":"Make the 'Start' button understandable without instructions."},{"id":"sketch","name":"Sketch","headline":"See an alternative in one glance.","description":"A before-and-after sketch of a fictional product decision. Neither side is a deployed UI.","caption":"CoInstaBuild+ companion: compare a mockup, not a release.","status":"UX_CONCEPT_ONLY","sample":"Replace the setup form with one playful example."},{"id":"circle","name":"Circle","headline":"Let the question belong to many people.","description":"Three fictional viewpoints show how a future community might challenge and improve one idea. No actual participants.","caption":"GroupBuild+ / CoFed+ thought experiment; not a real federation.","status":"FICTIONAL_GROUP_VIEW","sample":"Let people leave feedback without being asked to volunteer."}],"channels":[{"id":"private","label":"Keep only here","status":"LOCAL_SAVE_BY_EXPLICIT_CLICK_ONLY"},{"id":"export","label":"Export a private idea file","status":"DOWNLOAD_REQUEST_NOT_RECEIVER_DELIVERY"},{"id":"federate","label":"Offer to a commons","status":"FUTURE_CANDIDATE__NO_RECEIVER_CONNECTED"}],"lifecycle":[{"id":"DRAFT_UNSAVED","meaning":"Text exists only in this page; no recipient and no guarantee after closing."},{"id":"KEPT_THIS_DEVICE_UNSUBMITTED","meaning":"Visitor explicitly stored one draft in local browser storage, no server receipt or independent backup."},{"id":"EXPORT_REQUESTED_UNSENT","meaning":"Visitor explicitly requested a private download; receipt means request, not external pickup."},{"id":"UNSUBMITTED_WALKAWAY","meaning":"Visitor may leave at any time with no duty; unsaved text has no persistence claim."},{"id":"PROPOSED_COMMONS_INTAKE","meaning":"Future state only, requiring opt-in license, privacy checks, actual receiver and proof."},{"id":"RECEIVER_ACK","meaning":"Future receiver-origin proof; never inferred from a local export or click."}],"candidate_terms":[{"label":"CoFloat+","meaning":"Small dismissible, alternative idea-view projection","state":"WORKING_LABEL_NOT_CANON"},{"label":"CoWalkAway+","meaning":"Leave without obligations while any explicitly kept source remains addressable","state":"WORKING_LABEL_NOT_CANON"},{"label":"CoFed+","meaning":"Optional federated stewardship of volunteered ideas, not an automatic transfer","state":"WORKING_LABEL_NOT_CANON"},{"label":"CoIdeaSeed+","meaning":"Versioned, permission-scoped candidate suggestion","state":"WORKING_LABEL_NOT_CANON"},{"label":"rickbar.org","meaning":"Possible naming or UX entrypoint, not an activated domain or proven owner","state":"DOMAIN_RIGHTS_AND_ROLE_UNVERIFIED"}],"sources":[{"path":"docs/Architecture/GROUPBUILD_COTEAMING_COPAYBACK_R0_20261101.md","blob":"f7000e3ba355109eb102d7678c7dee7aa5335d3f"},{"path":"docs/Architecture/COFREE_EVOLVING_PUBLICATION_COMMONS_R0_20261026.md","blob":"f18885508b95654f13a7cb7802b32f2c58868466"},{"path":"docs/UX/COFLEET_RICKBAR_R4.md","blob":"4b7def69508344ca9720a3674fe61e62cb761c3c"},{"path":"docs/Onramp/COCIVIA_FIRST_USE_R0.md","blob":"f18aec48eaa02fc15cdfb66a1b025460d57e02ff"},{"path":"docs/Architecture/COPUBLICATION_FEDERATION_RECEIVER_INTEREST_R0_20261025.md","blob":null},{"path":"examples/comail_r0/README.md","blob":null},{"path":"examples/groupbuild_optin_circle_r0/magic_workshop_r0/index.html","blob":"384ba24df35c7bd7984626be4e96129c0774620e"},{"path":"examples/groupbuild_optin_circle_r0/magic_workshop_r0/lexicon.json","blob":"023d81f107408923a9a4dba07dbe0752c71aea53"}],"consent_rails":["FEEDBACK_NE_MEMBERSHIP","IDEA_NE_LABOUR_COMMITMENT","LOCAL_SAVE_NE_COMMONS_SUBMISSION","EXPORT_REQUEST_NE_RECEIVER_ACK","APPRECIATION_NE_PERMISSION","WALK_AWAY_NE_ABANDONED_RIGHTS","OPTIONAL_FEDERATION_NE_STEALTH_TRANSFER","FICTITIOUS_VOICES_NE_SOCIAL_PROOF","FUTURE_INTAKE_NE_LIVE_SERVICE","PREVIEW_NE_PRODUCT","CLICK_NE_PROFILE","NO_REAL_CHILD_DATA","NO_AUTOMATIC_COMMERCIAL_LICENSE","NO_BACKGROUND_SYNC"]}</script>
+<script>
+"use strict";
+const model=JSON.parse(document.getElementById("source-model").textContent);
+const $=id=>document.getElementById(id);
+const key="groupbuild.idea-commons.r1.private-draft";
+let selected="float", saved=false;
+const safe=(value,max)=>String(value||"").slice(0,max);
+function preview(){
+ const item=model.views.find(x=>x.id===selected);
+ const parent=$("preview");parent.replaceChildren();
+ const tag=document.createElement("span");tag.className="pretend";tag.textContent="Fictional UX: "+item.name;
+ const head=document.createElement("h2");head.textContent=item.headline;
+ const desc=document.createElement("p");desc.textContent=item.description;
+ const mock=document.createElement("div");mock.className="mock";mock.setAttribute("aria-hidden","true");
+ for(let i=0;i<3;i++)mock.append(document.createElement("span"));
+ parent.append(tag,head,desc,mock);
+ $("view-disclaimer").textContent=item.caption+" · "+item.status;
+ document.querySelectorAll("[data-view]").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.view===selected)));
+}
+function setStatus(message){$("status").textContent=message;}
+function readLocal(){
+ try{const raw=localStorage.getItem(key);if(!raw)return false;
+ const record=JSON.parse(raw);
+ if(record.schema!=="GroupBuild.IdeaCommons.LocalDraft.R1"||typeof record.idea!=="string"||record.idea.length>500)return false;
+ $("idea").value=record.idea;
+ if(model.views.some(x=>x.id===record.view))selected=record.view;
+ saved=true;setStatus("Recovered one draft saved in this browser only. It has not been shared.");
+ return true;
+ }catch(e){setStatus("Local storage unavailable. Your idea remains unsaved until you export.");return false;}
+}
+function clean(){try{localStorage.removeItem(key)}catch(e){} $("idea").value="";saved=false;setStatus("Local draft cleared where storage is available. Nothing was submitted.");}
+function record(status){return {schema:"GroupBuild.IdeaCommons.LocalDraft.R1",state:status,idea:safe($("idea").value.trim(),500),view:selected,work_id:model.work_id, effect_authority:"NONE",delivery:"NOT_SENT",real_assignment:false,permissions:"LOCAL_ONLY"};}
+$("save").addEventListener("click",()=>{
+ if(!$("idea").value.trim()){setStatus("Write a thought first. No draft saved.");return;}
+ try{localStorage.setItem(key,JSON.stringify(record("KEPT_THIS_DEVICE_UNSUBMITTED")));saved=true;setStatus("Kept on this browser only. Not submitted, joined or assigned.");}
+ catch(e){setStatus("This browser did not permit local storage. You may export instead.");}
+});
+$("export").addEventListener("click",()=>{
+ if(!$("idea").value.trim()){setStatus("Write a thought first. No export requested.");return;}
+ const payload=JSON.stringify(record("EXPORT_REQUESTED_UNSENT"),null,2)+"\n";
+ const blob=new Blob([payload],{type:"application/json"});
+ const url=URL.createObjectURL(blob);
+ try{const a=document.createElement("a");a.href=url;a.download="my-unsent-idea.json";document.body.append(a);a.click();a.remove();setStatus("Private file download requested. Not sent to GroupBuild or any federation; browser download not independently verified.");}
+ finally{URL.revokeObjectURL(url);}
+});
+$("clear").addEventListener("click",clean);
+$("suggest-sample").addEventListener("click",()=>{$("idea").value=model.views.find(v=>v.id===selected).sample;setStatus("Example inserted locally. Not saved or sent.");});
+$("idea").addEventListener("input",()=>{if(saved){saved=false;setStatus("Edited locally. These new changes are not saved or sent.");}});
+document.querySelectorAll("[data-view]").forEach(b=>b.addEventListener("click",()=>{selected=b.dataset.view;preview();}));
+readLocal();preview();
+</script></body></html>

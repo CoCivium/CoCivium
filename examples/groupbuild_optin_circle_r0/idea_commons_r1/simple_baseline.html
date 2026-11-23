@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; connect-src 'none'; img-src 'none'; form-action 'none'; base-uri 'none'">
+<title>Simple idea note | GroupBuild comparison baseline</title>
+<style>
+:root{font:16px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif;color:#eef3fe;background:#0b1121}
+*{box-sizing:border-box}body{margin:0}main{max-width:620px;padding:clamp(16px,5vw,44px);margin:auto}
+h1{font-size:clamp(1.9rem,5vw,3rem);line-height:1.13;margin:14px 0}
+p{color:#c6d3e6}section{border:1px solid #5d6d89;border-radius:14px;padding:clamp(16px,3vw,23px);background:#172138}
+label{display:block;font-weight:650;margin:12px 0 8px}
+textarea{width:100%;min-height:128px;resize:vertical;background:#0b1529;border:1px solid #92a4bb;border-radius:10px;color:#fff;font:inherit;padding:12px}
+.buttons{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+button{font:inherit;padding:10px 13px;border-radius:9px;background:#273650;color:#fff;border:1px solid #7485a5;cursor:pointer}
+button:focus-visible,textarea:focus-visible,summary:focus-visible{outline:3px solid #92e4d6;outline-offset:3px}
+button#save{background:#3d665d;border-color:#8be7bd}button#clear{background:#482d40}
+small{color:#c0cde0}#status{color:#dfefdb}details{margin-top:16px;border-top:1px solid #53637b;padding-top:12px}summary{cursor:pointer;color:#fff}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head><body><main>
+<p><small>GroupBuild · plain-language comparison baseline · local-only research</small></p>
+<h1>Leave one idea. No obligation.</h1>
+<p>A short idea is enough. You don't have to join, donate, build, or give up ownership.</p>
+<section aria-label="Idea note">
+<p><strong>Offline demonstration.</strong> No online inbox or feedback submission. Your note is yours until you choose to share it elsewhere.</p>
+<label for="idea">My suggestion (no names or private details)</label>
+<textarea id="idea" maxlength="500" placeholder="One thing that could be clearer or kinder..."></textarea>
+<div class="buttons">
+<button id="suggest-sample" type="button">Try an example</button>
+<button id="save" type="button">Keep on this device</button>
+<button id="export" type="button">Export an unsent file</button>
+<button id="clear" type="button">Forget this local draft</button>
+</div>
+<p id="status" role="status" aria-live="polite">No idea has been saved, exported or delivered.</p>
+<details><summary>What do Keep and Export mean?</summary>
+<p>Keep attempts to store one draft in this browser only. It is not a backup or sent feedback; shared-device privacy is not guaranteed.</p>
+<p>Export asks your browser to download a private JSON file. That is not a delivery receipt. Clearing removes local draft text where storage is available.</p>
+<p>Closing this page never joins a group or assigns anyone work. There is no real commons receiver.</p>
+</details>
+</section>
+<p><small>Plain-text baseline, not a recommended production experience. Source-only; no account, network calls or independent participant test.</small></p>
+<noscript><p>JavaScript is disabled. This page explains the idea but local save/export tools are unavailable.</p></noscript>
+</main><script>
+"use strict";
+const $ = id=>document.getElementById(id);
+const KEY="groupbuild.idea-commons.simple-baseline.local";
+function status(s){$("status").textContent=s;}
+function record(state){return {schema:"GroupBuild.IdeaCommons.LocalDraft.R1",state,idea:$("idea").value.trim().slice(0,500),view:"simple",work_id:"GroupBuild.IdeaCommons.FrontBack.Seed.20261123.R1",effect_authority:"NONE",delivery:"NOT_SENT",real_assignment:false,permissions:"LOCAL_ONLY"};}
+function read(){
+ try{
+  const s=localStorage.getItem(KEY);
+  if(!s)return;
+  const d=JSON.parse(s);
+  if(d.schema==="GroupBuild.IdeaCommons.LocalDraft.R1"&&typeof d.idea==="string"&&d.idea.length<=500){
+   $("idea").value=d.idea;status("Recovered local draft only. Not sent, joined or assigned.");
+  }
+ }catch(e){status("Local storage unavailable; use Export to preserve the idea.");}
+}
+$("save").addEventListener("click",()=>{
+ if(!$("idea").value.trim()){status("Write a thought first. No draft saved.");return;}
+ try{localStorage.setItem(KEY,JSON.stringify(record("KEPT_THIS_DEVICE_UNSUBMITTED")));status("Kept on this browser only. Not submitted, joined or assigned.");}
+ catch(e){status("This browser did not permit local storage. You may export instead.");}
+});
+$("clear").addEventListener("click",()=>{
+ try{localStorage.removeItem(KEY);}catch(e){}
+ $("idea").value="";
+ status("Local draft cleared where storage is available. Nothing was submitted.");
+});
+$("export").addEventListener("click",()=>{
+ if(!$("idea").value.trim()){status("Write a thought first. No export requested.");return;}
+ const blob=new Blob([JSON.stringify(record("EXPORT_REQUESTED_UNSENT"),null,2)+"\n"],{type:"application/json"});
+ const url=URL.createObjectURL(blob);
+ try{
+  const a=document.createElement("a");a.href=url;a.download="my-unsent-idea.json";
+  document.body.append(a);a.click();a.remove();
+  status("Private file download requested. No idea was sent; browser download not independently verified.");
+ }finally{URL.revokeObjectURL(url);}
+});
+$("suggest-sample").addEventListener("click",()=>{
+ $("idea").value="Make the first screen understandable without instructions.";
+ status("Example inserted locally. Not saved or sent.");
+});
+$("idea").addEventListener("input",()=>status("Edited locally. New changes are not saved or sent."));
+read();
+</script></body></html>

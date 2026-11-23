@@ -1,0 +1,320 @@
+{
+  "schema": "GroupBuild.MagicWorkshop.CandidateVocabulary.R0",
+  "status": "PUBLIC_SAFE_SYNTHETIC_DRAFT_NO_REAL_EFFECTS",
+  "work_id": "GroupBuild.MagicWorkshop.CoTermables.20261123.R0",
+  "title": "The Honest Magic Workshop",
+  "promise": "Instant imagination. Honest construction.",
+  "metaphor": "The front feels magical; the backstage, gates and receipts stay inspectable.",
+  "effect_authority": "NONE",
+  "real_members": 0,
+  "real_invites": 0,
+  "real_publications": 0,
+  "records_of_actual_first_use": 0,
+  "groupbuild_sense": "Two separate doors, commons and paid managed services; this fixture demonstrates neither a live organization nor a paid product.",
+  "provenance": [
+    {
+      "id": "groupbuild",
+      "path": "docs/Architecture/GROUPBUILD_COTEAMING_COPAYBACK_R0_20261101.md",
+      "blob": "f7000e3ba355109eb102d7678c7dee7aa5335d3f"
+    },
+    {
+      "id": "meaning",
+      "path": "docs/Architecture/COONTPRINCIPLE_EVOLVING_MEANING_R0_20261101.md",
+      "blob": "8aaa16190f036ac716d0655c2a5a44a4aeeddf56"
+    },
+    {
+      "id": "sense",
+      "path": "ai/ontology/coontprinciple-groupbuild-senses-r0.json",
+      "blob": "b1e4d6bdb14dce0ee56110ed626ef06ecc296c9d"
+    },
+    {
+      "id": "optin",
+      "path": "examples/groupbuild_optin_circle_r0/README.md",
+      "blob": "22551b29ea5af34992c39fc6834eecd463a3b29a"
+    },
+    {
+      "id": "ux",
+      "path": "docs/Architecture/COGBX_UNIVERSAL_UX_EXEMPLAR_R0_20261027.md",
+      "blob": "5aba07f4c35acdd9fc3ad3bb69a04fd7101539cb"
+    },
+    {
+      "id": "coterms",
+      "path": "docs/coterms/README.md",
+      "blob": "6f150a4423df4b5e9a4d8c2c5cd6ca3ecb3f5fb6"
+    }
+  ],
+  "acts": [
+    {
+      "id": "IMAGINE",
+      "label": "Imagine"
+    },
+    {
+      "id": "WORKSHOP",
+      "label": "Workshop"
+    },
+    {
+      "id": "WORLD",
+      "label": "Real world"
+    }
+  ],
+  "lenses": [
+    {
+      "id": "kid",
+      "label": "Play",
+      "disclaimer": "A story is not a real invitation."
+    },
+    {
+      "id": "builder",
+      "label": "Build",
+      "disclaimer": "A candidate is not a deployed service."
+    },
+    {
+      "id": "philosopher",
+      "label": "Big questions",
+      "disclaimer": "A coherent idea is not proof."
+    },
+    {
+      "id": "theologian",
+      "label": "Stewardship",
+      "disclaimer": "A meaningful metaphor is not religious or empirical authority."
+    }
+  ],
+  "stages": [
+    {
+      "id": "WISH",
+      "label": "Wish",
+      "act": "IMAGINE",
+      "type": "INTENT_NOT_DELIVERABLE",
+      "truth": "A hope or question is recorded. There is no plan or product yet.",
+      "next": "Define what would count as a useful result.",
+      "proof": "A stated purpose and its provenance; not proof that it is feasible.",
+      "kid": "Dream up a world.",
+      "builder": "Name the human need.",
+      "philosopher": "State the question or telos.",
+      "theologian": "Express a hope without claiming divine authority."
+    },
+    {
+      "id": "MAP",
+      "label": "Map",
+      "act": "IMAGINE",
+      "type": "PLAN_NOT_EXECUTION",
+      "truth": "A source-bound plan and alternatives exist. No build is implied.",
+      "next": "Select a bounded, reversible prototype.",
+      "proof": "Versioned plan, participants, uncertainties and alternatives.",
+      "kid": "Draw the rules and paths.",
+      "builder": "Map scope, roles, budget and dependencies.",
+      "philosopher": "Define concepts and competing interpretations.",
+      "theologian": "Discern commitments and affected communities."
+    },
+    {
+      "id": "MAKE",
+      "label": "Make",
+      "act": "WORKSHOP",
+      "type": "PRIVATE_PREVIEW_ONLY",
+      "truth": "An inspectable prototype can exist in a private workspace. It is not yet a public service.",
+      "next": "Challenge it with a fair test.",
+      "proof": "Exact build bytes, source, testable preview and recovery path.",
+      "kid": "See a toy version appear.",
+      "builder": "Assemble a reversible candidate.",
+      "philosopher": "Construct a model to examine.",
+      "theologian": "Draft a community exercise or institution model."
+    },
+    {
+      "id": "TRY",
+      "label": "Try",
+      "act": "WORKSHOP",
+      "type": "LOCAL_TEST_NOT_ACCEPTANCE",
+      "truth": "Bounded checks are available; they cannot substitute for independent first-use.",
+      "next": "Record failures and prepare scoped effect review.",
+      "proof": "Repeatable tests, negative cases, known limitations and test receipt.",
+      "kid": "Try it, break it, fix it.",
+      "builder": "Test safety, functionality and accessibility.",
+      "philosopher": "Challenge assumptions and counterexamples.",
+      "theologian": "Invite critique without mistaking agreement for truth."
+    },
+    {
+      "id": "GATE",
+      "label": "Gate",
+      "act": "WORKSHOP",
+      "type": "EFFECT_HELD_NOT_AUTHORIZED",
+      "truth": "The next external effect is held. A reversible preview is not permission to publish or invite.",
+      "next": "Identify actual approver, exact target, consent, expiry and rollback limits.",
+      "proof": "Verified permissions, approved target and current source digest; otherwise HOLD.",
+      "kid": "Ask before sharing outside your toybox.",
+      "builder": "Review rights, privacy, budgets and changes.",
+      "philosopher": "Ask who has legitimate authority.",
+      "theologian": "Obtain consent and protect freedom to dissent or leave."
+    },
+    {
+      "id": "GO",
+      "label": "Go",
+      "act": "WORLD",
+      "type": "EXTERNAL_EFFECT_REQUIRES_RECEIPT",
+      "truth": "A real launch would require evidence of an authorized effect. No effect occurred in this demo.",
+      "next": "Have the receiving system independently verify exact identity and bytes.",
+      "proof": "Authenticated actor, authorized effect, target, timestamp and exact effect receipt.",
+      "kid": "Only after permission, open a real door.",
+      "builder": "Publish or deploy within an approved scope.",
+      "philosopher": "Put a justified proposal into practice.",
+      "theologian": "Begin a consented, accountable public activity."
+    },
+    {
+      "id": "SEEN",
+      "label": "Seen",
+      "act": "WORLD",
+      "type": "RECEIVER_READBACK_NOT_ADOPTION",
+      "truth": "Independent receiver readback must prove receipt. A web page loading is not proof of useful adoption.",
+      "next": "Invite a voluntary, measurable first-use test.",
+      "proof": "Receiver-origin identity, exact readproof, scope and any failure states.",
+      "kid": "Check if the right friend received it.",
+      "builder": "Verify delivery and independent pickup.",
+      "philosopher": "Distinguish testimony from interpretation.",
+      "theologian": "Seek accountable witnesses, not authority by proclamation."
+    },
+    {
+      "id": "GROW",
+      "label": "Grow",
+      "act": "WORLD",
+      "type": "MEASURED_VALUE_NE_PERFECTION",
+      "truth": "Evidence from real people can support usefulness and correction. No success claim is made for this example.",
+      "next": "Preserve findings, dissent and a reviewable successor.",
+      "proof": "Consent-based observed outcomes, alternatives, correction/exit and recovery.",
+      "kid": "Did someone really enjoy it? What should change?",
+      "builder": "Measure actual benefit and maintenance.",
+      "philosopher": "Revise the theory with evidence and dissent.",
+      "theologian": "Assess consequences and stewardship, not theological truth."
+    }
+  ],
+  "exception_terms": [
+    {
+      "label": "Hold",
+      "meaning": "Safely pending until a material gate changes.",
+      "effect": "NONE"
+    },
+    {
+      "label": "Fix",
+      "meaning": "Correct a failed check without hiding the previous result.",
+      "effect": "NONE"
+    },
+    {
+      "label": "Fork",
+      "meaning": "Retain an alternative with lineage and scoped rights.",
+      "effect": "NONE"
+    },
+    {
+      "label": "Undo",
+      "meaning": "Plan reversal where actually possible. Disclosure cannot be undone by label.",
+      "effect": "NONE"
+    },
+    {
+      "label": "Exit",
+      "meaning": "Leave without coercion; preserve needed obligations and rights.",
+      "effect": "NONE"
+    },
+    {
+      "label": "Else",
+      "meaning": "Examine competing choices instead of forcing one future.",
+      "effect": "NONE"
+    }
+  ],
+  "term_candidates": [
+    {
+      "name": "GroupBuild+",
+      "state": "EXISTING_SOURCE",
+      "meaning": "Coordinated commons and separately gated managed team building."
+    },
+    {
+      "name": "CoInstaBuild+",
+      "state": "WORKING_CANDIDATE",
+      "meaning": "An instant-feeling preview of a build process, with truthful authority and deployment state."
+    },
+    {
+      "name": "CoInstaVyild+",
+      "state": "PLAYFUL_VARIANT_HOLD",
+      "meaning": "Spelling-game variant; avoid making it a distinct semantic root without comprehension evidence."
+    },
+    {
+      "name": "CoGB+",
+      "state": "COLLISION_REVIEW_HOLD",
+      "meaning": "Possible GroupBuild shorthand, but visually close to existing CoGbx+."
+    },
+    {
+      "name": "CoGrouoByild+",
+      "state": "PLAYFUL_VARIANT_HOLD",
+      "meaning": "Typographic experiment, not a different production system."
+    },
+    {
+      "name": "IA",
+      "state": "MULTISENSE_REVIEW_HOLD",
+      "meaning": "Possible 'Imagine & Assemble' mnemonic here; other meanings, especially intelligence amplification, remain distinct."
+    },
+    {
+      "name": "CoPoof+",
+      "state": "WORKING_CANDIDATE",
+      "meaning": "A delightful instant-looking private preview, expressly not proof, publication or real-world execution."
+    },
+    {
+      "name": "CoProof+",
+      "state": "EXISTING_SOURCE",
+      "meaning": "Evidence and verification; neither a pretty preview nor a single local test means independent acceptance."
+    },
+    {
+      "name": "CoSpell+",
+      "state": "PLAYFUL_WORKING_CANDIDATE",
+      "meaning": "A compact user wish or rule for making a safe local preview; never an executable authority token."
+    },
+    {
+      "name": "CoWand+",
+      "state": "PLAYFUL_VARIANT_HOLD",
+      "meaning": "A context-sensitive tool affordance or gesture, not permission to send, spend, publish or delete."
+    }
+  ],
+  "ideas": [
+    {
+      "id": "moon",
+      "name": "Moon Garden game",
+      "class": "CoPlay fictional exercise",
+      "current": "MAKE",
+      "kid": "Make a moon garden where imaginary creatures swap kindness for stars.",
+      "builder": "A playful local prototype with no account, chat, or personal data.",
+      "philosopher": "Can rules reward collaboration without covertly coercing players?",
+      "theologian": "Can wonder and ethical play coexist without religious authority?",
+      "next": "Try keyboard-only play and a clear Stop/Undo before any sharing."
+    },
+    {
+      "id": "park",
+      "name": "Everyone's park",
+      "class": "GroupBuild community exercise",
+      "current": "GATE",
+      "kid": "Imagine a park where every kid can explore.",
+      "builder": "A fictional accessibility-first park collaboration plan; external invitations require consent.",
+      "philosopher": "Different groups disagree about what fair access means. Preserve their voices.",
+      "theologian": "Public stewardship needs meaningful exit, inclusion and rights, not unexamined consensus.",
+      "next": "Before any real invitation, confirm actual participants' consent and accessibility requirements."
+    },
+    {
+      "id": "circle",
+      "name": "Big Questions circle",
+      "class": "Civ2+ reflective exercise",
+      "current": "MAP",
+      "kid": "A pretend clubhouse for asking enormous questions.",
+      "builder": "A governance sketch with diverse value interpretations and no real membership.",
+      "philosopher": "Explore freedom, existence and institutional legitimacy without silently declaring one answer.",
+      "theologian": "Allow plural, voluntary theological reflection without asserting doctrinal or divine authority.",
+      "next": "Define how disagreement, appeal and withdrawal work before any real group is formed."
+    }
+  ],
+  "safety_rails": [
+    "PREVIEW_NE_RELEASE",
+    "SYNTHETIC_STAGE_NE_REAL_PROGRESS",
+    "PREDICTION_NE_PERMISSION",
+    "PERSONAL_CONSENT_NE_APP_CLICK",
+    "PUBLIC_SITE_NE_HUMAN_ADOPTION",
+    "TERM_NE_CANON",
+    "ARTIFACT_NE_INDEPENDENT_ACK",
+    "CHILD_PLAY_NE_TRACKED_PROFILE",
+    "COMMONS_NE_COMMERCIAL_IP_TRANSFER",
+    "METAPHOR_NE_PHYSICS_OR_THEOLOGICAL_AUTHORITY",
+    "POOF_NE_PROOF"
+  ]
+}

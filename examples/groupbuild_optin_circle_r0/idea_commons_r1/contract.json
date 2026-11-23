@@ -1,0 +1,179 @@
+{
+  "schema": "GroupBuild.IdeaCommons.UXOnlyR1",
+  "work_id": "GroupBuild.IdeaCommons.FrontBack.Seed.20261123.R1",
+  "state": "PUBLIC_SAFE_SOURCE_ONLY__NO_LIVE_FEEDBACK_INTAKE",
+  "promise": "Leave a spark, not a job.",
+  "intended_audience": "Any visitor, including people who only want to suggest an improvement and walk away.",
+  "durable_source_vs_ui": "One source object may have many temporary projections; no presentation creates an effect.",
+  "effect_authority": "NONE",
+  "public_submission": "NOT_CONNECTED",
+  "federation_delivery": "NOT_CONNECTED",
+  "real_submissions": 0,
+  "real_members": 0,
+  "real_assignments": 0,
+  "automatic_rights_transfer": false,
+  "front_to_back": [
+    "see_preview",
+    "compare_ux",
+    "write_one_idea",
+    "decide_whether_to_keep",
+    "walk_away_without_assignment"
+  ],
+  "back_to_front": [
+    "stable_local_idea_identity",
+    "clear_source_and_version",
+    "permission_scope",
+    "local_privacy",
+    "optional_user_export",
+    "future_reviewable_federation_if_separately_authorized"
+  ],
+  "views": [
+    {
+      "id": "float",
+      "name": "Float",
+      "headline": "One light thought can change a world.",
+      "description": "A quiet, floating suggestion next to a hypothetical interface. No joining a team.",
+      "caption": "CoFloat+ candidate: a lightweight, dismissible UX projection.",
+      "status": "UX_CONCEPT_ONLY",
+      "sample": "Make the 'Start' button understandable without instructions."
+    },
+    {
+      "id": "sketch",
+      "name": "Sketch",
+      "headline": "See an alternative in one glance.",
+      "description": "A before-and-after sketch of a fictional product decision. Neither side is a deployed UI.",
+      "caption": "CoInstaBuild+ companion: compare a mockup, not a release.",
+      "status": "UX_CONCEPT_ONLY",
+      "sample": "Replace the setup form with one playful example."
+    },
+    {
+      "id": "circle",
+      "name": "Circle",
+      "headline": "Let the question belong to many people.",
+      "description": "Three fictional viewpoints show how a future community might challenge and improve one idea. No actual participants.",
+      "caption": "GroupBuild+ / CoFed+ thought experiment; not a real federation.",
+      "status": "FICTIONAL_GROUP_VIEW",
+      "sample": "Let people leave feedback without being asked to volunteer."
+    }
+  ],
+  "channels": [
+    {
+      "id": "private",
+      "label": "Keep only here",
+      "status": "LOCAL_SAVE_BY_EXPLICIT_CLICK_ONLY"
+    },
+    {
+      "id": "export",
+      "label": "Export a private idea file",
+      "status": "DOWNLOAD_REQUEST_NOT_RECEIVER_DELIVERY"
+    },
+    {
+      "id": "federate",
+      "label": "Offer to a commons",
+      "status": "FUTURE_CANDIDATE__NO_RECEIVER_CONNECTED"
+    }
+  ],
+  "lifecycle": [
+    {
+      "id": "DRAFT_UNSAVED",
+      "meaning": "Text exists only in this page; no recipient and no guarantee after closing."
+    },
+    {
+      "id": "KEPT_THIS_DEVICE_UNSUBMITTED",
+      "meaning": "Visitor explicitly stored one draft in local browser storage, no server receipt or independent backup."
+    },
+    {
+      "id": "EXPORT_REQUESTED_UNSENT",
+      "meaning": "Visitor explicitly requested a private download; receipt means request, not external pickup."
+    },
+    {
+      "id": "UNSUBMITTED_WALKAWAY",
+      "meaning": "Visitor may leave at any time with no duty; unsaved text has no persistence claim."
+    },
+    {
+      "id": "PROPOSED_COMMONS_INTAKE",
+      "meaning": "Future state only, requiring opt-in license, privacy checks, actual receiver and proof."
+    },
+    {
+      "id": "RECEIVER_ACK",
+      "meaning": "Future receiver-origin proof; never inferred from a local export or click."
+    }
+  ],
+  "candidate_terms": [
+    {
+      "label": "CoFloat+",
+      "meaning": "Small dismissible, alternative idea-view projection",
+      "state": "WORKING_LABEL_NOT_CANON"
+    },
+    {
+      "label": "CoWalkAway+",
+      "meaning": "Leave without obligations while any explicitly kept source remains addressable",
+      "state": "WORKING_LABEL_NOT_CANON"
+    },
+    {
+      "label": "CoFed+",
+      "meaning": "Optional federated stewardship of volunteered ideas, not an automatic transfer",
+      "state": "WORKING_LABEL_NOT_CANON"
+    },
+    {
+      "label": "CoIdeaSeed+",
+      "meaning": "Versioned, permission-scoped candidate suggestion",
+      "state": "WORKING_LABEL_NOT_CANON"
+    },
+    {
+      "label": "rickbar.org",
+      "meaning": "Possible naming or UX entrypoint, not an activated domain or proven owner",
+      "state": "DOMAIN_RIGHTS_AND_ROLE_UNVERIFIED"
+    }
+  ],
+  "sources": [
+    {
+      "path": "docs/Architecture/GROUPBUILD_COTEAMING_COPAYBACK_R0_20261101.md",
+      "blob": "f7000e3ba355109eb102d7678c7dee7aa5335d3f"
+    },
+    {
+      "path": "docs/Architecture/COFREE_EVOLVING_PUBLICATION_COMMONS_R0_20261026.md",
+      "blob": "f18885508b95654f13a7cb7802b32f2c58868466"
+    },
+    {
+      "path": "docs/UX/COFLEET_RICKBAR_R4.md",
+      "blob": "4b7def69508344ca9720a3674fe61e62cb761c3c"
+    },
+    {
+      "path": "docs/Onramp/COCIVIA_FIRST_USE_R0.md",
+      "blob": "f18aec48eaa02fc15cdfb66a1b025460d57e02ff"
+    },
+    {
+      "path": "docs/Architecture/COPUBLICATION_FEDERATION_RECEIVER_INTEREST_R0_20261025.md",
+      "blob": null
+    },
+    {
+      "path": "examples/comail_r0/README.md",
+      "blob": null
+    },
+    {
+      "path": "examples/groupbuild_optin_circle_r0/magic_workshop_r0/index.html",
+      "blob": "384ba24df35c7bd7984626be4e96129c0774620e"
+    },
+    {
+      "path": "examples/groupbuild_optin_circle_r0/magic_workshop_r0/lexicon.json",
+      "blob": "023d81f107408923a9a4dba07dbe0752c71aea53"
+    }
+  ],
+  "consent_rails": [
+    "FEEDBACK_NE_MEMBERSHIP",
+    "IDEA_NE_LABOUR_COMMITMENT",
+    "LOCAL_SAVE_NE_COMMONS_SUBMISSION",
+    "EXPORT_REQUEST_NE_RECEIVER_ACK",
+    "APPRECIATION_NE_PERMISSION",
+    "WALK_AWAY_NE_ABANDONED_RIGHTS",
+    "OPTIONAL_FEDERATION_NE_STEALTH_TRANSFER",
+    "FICTITIOUS_VOICES_NE_SOCIAL_PROOF",
+    "FUTURE_INTAKE_NE_LIVE_SERVICE",
+    "PREVIEW_NE_PRODUCT",
+    "CLICK_NE_PROFILE",
+    "NO_REAL_CHILD_DATA",
+    "NO_AUTOMATIC_COMMERCIAL_LICENSE",
+    "NO_BACKGROUND_SYNC"
+  ]
+}
