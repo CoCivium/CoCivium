@@ -22,6 +22,9 @@ NONCLAIMS = [
     "CLIENT_RENDER_GAP_NE_DOM_ROOT_CAUSE",
     "NO_PROVIDER_SESSION_OR_MESSAGE_ACCESS",
     "LOCAL_SYNTHETIC_FIXTURE_NE_REAL_CHAT_MEASUREMENT",
+    "FROZEN_RENDER_NE_PROVIDER_SESSION_DEATH_OR_CONTINUED_EXECUTION",
+    "DECLARED_WAIT_NE_VERIFIED_WAKE_OR_LIVE_WORKER",
+    "UI_RESPONSE_NE_INDEPENDENT_RECEIVER_PROGRESS",
 ]
 
 
@@ -96,8 +99,16 @@ def classify(sample, *, request_deadline_ms=30000, render_grace_ms=3000,
     state = "UNKNOWN"
     reason = "INSUFFICIENT_EVIDENCE"
     next_check = "COLLECT_CONTENT_FREE_STAGE_TIMINGS"
-    if sample["phase"] in {"IDLE", "WAIT_FOR_WAKE"}:
-        state, reason, next_check = "HEALTHY_QUIET", "NO_SUBMITTED_ACTION", "WAIT_FOR_BOUND_WAKE"
+    if sample["phase"] == "IDLE":
+        state, reason, next_check = (
+            "IDLE_NO_SUBMITTED_WORK", "NO_SUBMITTED_ACTION",
+            "NONE_UNLESS_AN_EXACT_AUTHORIZED_WORKID_IS_DUE"
+        )
+    elif sample["phase"] == "WAIT_FOR_WAKE":
+        state, reason, next_check = (
+            "WAKE_UNVERIFIED", "DECLARED_WAIT_NOT_AUTHENTICATED_SCHEDULER",
+            "CHECK_AUTHORIZED_SCHEDULE_AND_RECEIVER_READPROOF"
+        )
     elif sample["explicit_limit"]:
         state, reason, next_check = (
             "PROVIDER_LIMIT_SIGNAL", "EXPLICIT_LIMIT_OBSERVED", "QUALIFY_PROVIDER_LIMIT_METADATA"
@@ -158,6 +169,8 @@ def classify(sample, *, request_deadline_ms=30000, render_grace_ms=3000,
         "request_effects": 0,
         "provider_session_effects": 0,
         "causal_attribution": "NOT_PROVEN",
+        "provider_session_liveness": "UNOBSERVED",
+        "off_ui_work_continuation": "NOT_PROVEN_NO_RECEIVER_OR_TASK_READPROOF",
         "nonclaims": NONCLAIMS,
     }
 
