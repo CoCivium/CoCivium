@@ -60,13 +60,40 @@ class LayerDifferentialTests(unittest.TestCase):
                               final_paint_ms=None))
         self.assertEqual("PROVIDER_LIMIT_SIGNAL", result["state"])
 
-    def test_idle_and_bound_wait_are_not_dead(self):
-        for phase in ("IDLE", "WAIT_FOR_WAKE"):
-            with self.subTest(phase=phase):
-                result = classify(obs(
-                    phase=phase, action_ms=None, request_sent_ms=None,
-                    response_complete_ms=None, final_paint_ms=None))
-                self.assertEqual("HEALTHY_QUIET", result["state"])
+    def test_idle_without_submitted_work_is_not_session_liveness(self):
+        result = classify(obs(
+            phase="IDLE", action_ms=None, request_sent_ms=None,
+            response_complete_ms=None, final_paint_ms=None))
+        self.assertEqual("IDLE_NO_SUBMITTED_WORK", result["state"])
+        self.assertEqual("UNOBSERVED", result["provider_session_liveness"])
+        self.assertEqual("NOT_PROVEN_NO_RECEIVER_OR_TASK_READPROOF",
+                         result["off_ui_work_continuation"])
+
+    def test_declared_wait_without_schedule_proof_is_not_healthy_wake(self):
+        result = classify(obs(
+            phase="WAIT_FOR_WAKE", action_ms=None, request_sent_ms=None,
+            response_complete_ms=None, final_paint_ms=None))
+        self.assertEqual("WAKE_UNVERIFIED", result["state"])
+        self.assertEqual("DECLARED_WAIT_NOT_AUTHENTICATED_SCHEDULER",
+                         result["reason"])
+        self.assertEqual("CHECK_AUTHORIZED_SCHEDULE_AND_RECEIVER_READPROOF",
+                         result["next_safe_check"])
+        self.assertEqual("UNOBSERVED", result["provider_session_liveness"])
+
+    def test_render_freeze_neither_proves_death_nor_background_execution(self):
+        result = classify(obs(final_paint_ms=None, event_loop_lag_ms=1200))
+        self.assertEqual("CLIENT_RENDER_PRESSURE_CANDIDATE", result["state"])
+        self.assertEqual("UNOBSERVED", result["provider_session_liveness"])
+        self.assertEqual("NOT_PROVEN_NO_RECEIVER_OR_TASK_READPROOF",
+                         result["off_ui_work_continuation"])
+        self.assertIn("FROZEN_RENDER_NE_PROVIDER_SESSION_DEATH_OR_CONTINUED_EXECUTION",
+                      result["nonclaims"])
+
+    def test_completed_ui_does_not_prove_independent_work_receipt(self):
+        result = classify(obs())
+        self.assertEqual("COMPLETED", result["state"])
+        self.assertEqual("NOT_PROVEN_NO_RECEIVER_OR_TASK_READPROOF",
+                         result["off_ui_work_continuation"])
 
     def test_unresponsive_before_request_sent_is_client_input_candidate(self):
         result = classify(obs(request_sent_ms=None, response_complete_ms=None,
