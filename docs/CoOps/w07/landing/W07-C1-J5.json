@@ -12,13 +12,14 @@
     "W07-C2-J1",
     "W07-C2-J6",
     "W07-C2-J7",
-    "W07-C3-J1"
+    "W07-C3-J1",
+    "W07-C3-J2"
   ],
   "disposition": "PREPARED",
-  "envelope_sha256": "b8da605a6af22b3c8de8dc66be2ed13384aa64e63aa64264c96c716b8a18e752",
+  "envelope_sha256": "bdd3c828535f4738f4ef6d25340e410b551dc2aa7e947390dbd7327338cd2792",
   "evidence": [],
   "hold_reason_or_null": "LANDING_HOLD: no authenticated write transport (git proxy 403: repo not in session's authorized set)",
-  "idempotency_key": "79b9fa15014c1fb524031497eda1360b8804cd078706c220417e13c0d97f6114",
+  "idempotency_key": "92ac32ab6c712046dd781cd250830c1ac35e4f42e552742d51c1d194a04af708",
   "input_refs": [
     {
       "sha256_or_commit": "ec169cffeba65e5d1bc5c4a84b3efd4d20ad03868d2e74898e7395fed33673e7",
@@ -35,10 +36,10 @@
   ],
   "job_id": "W07-C1-J5",
   "kind": "candidate_artifact",
-  "object_id": "sha256:411ac48bb23c7f479a15a78a22b77b548e33a19d5666a51720d317cc9a64a1e4",
+  "object_id": "sha256:7fdff4d00441c92001f3e09460aa8b578f41f9a8dad74d459e733771faee01d0",
   "output_refs": [
     {
-      "sha256": "307a8ce8aedcb0d274af0d9b26c2697c9918f1ec25f521a5852f47c8e2cf7846",
+      "sha256": "35b970d6a63d48777dc0ddef527416fff3d79a32a7095e461f6b330972fbbd4b",
       "uri": "CoCivium/CoCivium@claude/w07-loop-20261118:docs/CoOps/w07/W07_RESTART_MANIFEST_R0.md"
     },
     {
@@ -47,7 +48,7 @@
     }
   ],
   "privacy_class": "public-safe",
-  "produced_utc": "2026-11-20T20:58:21Z",
+  "produced_utc": "2026-11-23T05:36:27Z",
   "reviewer_ids": [],
   "schema_version": "CoLanding.Envelope.R0(candidate)",
   "session_instance_id": "w07-si-43d985bc720b4b4f",

@@ -1,0 +1,793 @@
+{
+  "axe_core": "4.10.3",
+  "chrome": "153.0.8010.12",
+  "extra_tags": [
+    "wcag22aa",
+    "best-practice"
+  ],
+  "findings": {
+    "copolitic": "cosites/copolitic-minimal-public-20261121 (f0feadd) declares GitHub Pages fallback https://cocivium.github.io/CoPolitic-site/ and copolitic.org NOT_BOUND; gate PASS; review branch 248bef5 PASS, ia.html lacks skip link (nit). Fallback URL not reachable from this session: UNOBSERVED.",
+    "identity_collision": "CoCivium/CoCivium@86cfa84a and ff0f5612 (rail) publish work_id CoWalkAway.W07.FencedActuatorReplay.20261120.R0 under schema 'CoWalkAway.W07...'. It cites no W07 session w07-si-43d985bc720b4b4f output and is NOT a landing or ACK of this branch. Same worker label, different actor/session: keep separate, conflate neither way.",
+    "inseed_main": "d4f63d0 (2026-11-21) now carries a human-first front door: automated gate PASS. index.html 16354 B sha256 7a0cf900...; still != live apex body 840db7d9... recorded 2026-11-19 (no newer live receipt found on rail @ a34c5665). Live effect UNOBSERVED.",
+    "inseed_writer_hazard": "CLOSED IN SOURCE at d4f63d0: coevo-forever.yml and autoevo.yml are workflow_dispatch-only, contents:read, no push; auto-turns-waves.ps1 and CoWatcher-filtered.ps1 throw on start. Residual: a copy already running on a local machine is unaffected by a repo change (UNOBSERVED)."
+  },
+  "finished_utc": "2026-11-23T05:35:41.628Z",
+  "gating_tags": [
+    "wcag2a",
+    "wcag2aa",
+    "wcag21a",
+    "wcag21aa"
+  ],
+  "host": "Claude cloud sandbox, headless Chrome; local source copies; http(s) blocked",
+  "independence": "Single Claude-lineage automated scan; not one of three independent validations.",
+  "network": "all http(s) blocked; file:// only",
+  "pages": [
+    {
+      "bytes": 16354,
+      "file": "index.html",
+      "label": "inseed-main-d4f",
+      "sha256": "7a0cf90063eefefc4f3e1284671330e0afefbfafb06705ca8056a43422800002",
+      "source": {
+        "commit": "d4f63d0e991b824e910cf408f05cd15e9ebb52ea",
+        "path": "index.html",
+        "repo": "CoCivium/InSeed"
+      },
+      "summary": {
+        "axe_critical_serious": [],
+        "axe_gating_violation_ids": [],
+        "blocked_hosts": [],
+        "broken_anchors": [],
+        "broken_relative": [],
+        "h1": 1,
+        "has_main": true,
+        "heading_skips": 0,
+        "lang": "en",
+        "mobile_overflow_px": 0,
+        "page_errors": 0,
+        "skip_link": true,
+        "visitor_ready_automated": true
+      },
+      "viewports": [
+        {
+          "axe_csp_bypass": false,
+          "axe_extra": [],
+          "axe_gating": [],
+          "blocked_external_requests": {},
+          "console_errors": [],
+          "dom": {
+            "broken_anchors": [],
+            "broken_relative": [],
+            "external_hosts": [
+              "github.com"
+            ],
+            "h1": 1,
+            "heading_skips": 0,
+            "headings": [
+              1,
+              2,
+              3,
+              3,
+              3,
+              2,
+              3,
+              3,
+              3,
+              3,
+              2,
+              3,
+              3,
+              2,
+              2,
+              3
+            ],
+            "horizontal_overflow_px": 0,
+            "images": 0,
+            "img_no_alt": 0,
+            "inner_w": 390,
+            "landmarks": {
+              "footer": 1,
+              "header": 1,
+              "main": 1,
+              "nav": 1
+            },
+            "lang": "en",
+            "links_total": 15,
+            "meta_description": true,
+            "meta_viewport": true,
+            "relative_links": [],
+            "scripts": [],
+            "scroll_w": 390,
+            "skip_link": true,
+            "small_targets": 1,
+            "text_chars": 4615,
+            "title": "InSeed | Useful systems. Clear evidence."
+          },
+          "page_errors": [],
+          "screenshot": "inseed-main-d4f-mobile390.png",
+          "viewport": "mobile390"
+        },
+        {
+          "axe_csp_bypass": false,
+          "axe_extra": [],
+          "axe_gating": [],
+          "blocked_external_requests": {},
+          "console_errors": [],
+          "dom": {
+            "broken_anchors": [],
+            "broken_relative": [],
+            "external_hosts": [
+              "github.com"
+            ],
+            "h1": 1,
+            "heading_skips": 0,
+            "headings": [
+              1,
+              2,
+              3,
+              3,
+              3,
+              2,
+              3,
+              3,
+              3,
+              3,
+              2,
+              3,
+              3,
+              2,
+              2,
+              3
+            ],
+            "horizontal_overflow_px": 0,
+            "images": 0,
+            "img_no_alt": 0,
+            "inner_w": 1365,
+            "landmarks": {
+              "footer": 1,
+              "header": 1,
+              "main": 1,
+              "nav": 1
+            },
+            "lang": "en",
+            "links_total": 15,
+            "meta_description": true,
+            "meta_viewport": true,
+            "relative_links": [],
+            "scripts": [],
+            "scroll_w": 1365,
+            "skip_link": true,
+            "small_targets": 1,
+            "text_chars": 4615,
+            "title": "InSeed | Useful systems. Clear evidence."
+          },
+          "page_errors": [],
+          "screenshot": "inseed-main-d4f-desktop1365.png",
+          "viewport": "desktop1365"
+        }
+      ]
+    },
+    {
+      "bytes": 18446,
+      "file": "index.html",
+      "label": "inseed-origins",
+      "sha256": "8ceae254adecbef11fef3a3f97c501fbaa2a214b6091967e5d7c6d201b8a9c44",
+      "source": {
+        "commit": "1009acfc7a86add7acb62d12e4d5e0a3403ae4e1",
+        "path": "index.html",
+        "repo": "CoCivium/InSeed"
+      },
+      "summary": {
+        "axe_critical_serious": [],
+        "axe_gating_violation_ids": [],
+        "blocked_hosts": [],
+        "broken_anchors": [],
+        "broken_relative": [],
+        "h1": 1,
+        "has_main": true,
+        "heading_skips": 0,
+        "lang": "en",
+        "mobile_overflow_px": 0,
+        "page_errors": 0,
+        "skip_link": true,
+        "visitor_ready_automated": true
+      },
+      "viewports": [
+        {
+          "axe_csp_bypass": false,
+          "axe_extra": [],
+          "axe_gating": [],
+          "blocked_external_requests": {},
+          "console_errors": [],
+          "dom": {
+            "broken_anchors": [],
+            "broken_relative": [],
+            "external_hosts": [
+              "cocivium.github.io",
+              "github.com",
+              "rickpublic.substack.com",
+              "www.cocivium.org",
+              "www.linkedin.com"
+            ],
+            "h1": 1,
+            "heading_skips": 0,
+            "headings": [
+              1,
+              2,
+              3,
+              3,
+              3,
+              2,
+              3,
+              3,
+              3,
+              3,
+              2,
+              3,
+              3,
+              2,
+              3,
+              3,
+              2,
+              2,
+              3
+            ],
+            "horizontal_overflow_px": 0,
+            "images": 0,
+            "img_no_alt": 0,
+            "inner_w": 390,
+            "landmarks": {
+              "footer": 1,
+              "header": 1,
+              "main": 1,
+              "nav": 1
+            },
+            "lang": "en",
+            "links_total": 20,
+            "meta_description": true,
+            "meta_viewport": true,
+            "relative_links": [],
+            "scripts": [],
+            "scroll_w": 390,
+            "skip_link": true,
+            "small_targets": 1,
+            "text_chars": 5975,
+            "title": "InSeed | Useful systems. Clear evidence."
+          },
+          "page_errors": [],
+          "screenshot": "inseed-origins-mobile390.png",
+          "viewport": "mobile390"
+        },
+        {
+          "axe_csp_bypass": false,
+          "axe_extra": [],
+          "axe_gating": [],
+          "blocked_external_requests": {},
+          "console_errors": [],
+          "dom": {
+            "broken_anchors": [],
+            "broken_relative": [],
+            "external_hosts": [
+              "cocivium.github.io",
+              "github.com",
+              "rickpublic.substack.com",
+              "www.cocivium.org",
+              "www.linkedin.com"
+            ],
+            "h1": 1,
+            "heading_skips": 0,
+            "headings": [
+              1,
+              2,
+              3,
+              3,
+              3,
+              2,
+              3,
+              3,
+              3,
+              3,
+              2,
+              3,
+              3,
+              2,
+              3,
+              3,
+              2,
+              2,
+              3
+            ],
+            "horizontal_overflow_px": 0,
+            "images": 0,
+            "img_no_alt": 0,
+            "inner_w": 1365,
+            "landmarks": {
+              "footer": 1,
+              "header": 1,
+              "main": 1,
+              "nav": 1
+            },
+            "lang": "en",
+            "links_total": 20,
+            "meta_description": true,
+            "meta_viewport": true,
+            "relative_links": [],
+            "scripts": [],
+            "scroll_w": 1365,
+            "skip_link": true,
+            "small_targets": 1,
+            "text_chars": 5975,
+            "title": "InSeed | Useful systems. Clear evidence."
+          },
+          "page_errors": [],
+          "screenshot": "inseed-origins-desktop1365.png",
+          "viewport": "desktop1365"
+        }
+      ]
+    },
+    {
+      "bytes": 10900,
+      "file": "index.html",
+      "label": "copol-minimal",
+      "sha256": "f702a9dc8cd16d4a5e57fa58d16427c18e80487e5920bef1030dc324e4de6875",
+      "source": {
+        "commit": "f0feaddb3ac5c67a81c35771540f3f03100c052d",
+        "path": "index.html",
+        "repo": "CoCivium/CoPolitic-site"
+      },
+      "summary": {
+        "axe_critical_serious": [],
+        "axe_gating_violation_ids": [],
+        "blocked_hosts": [],
+        "broken_anchors": [],
+        "broken_relative": [],
+        "h1": 1,
+        "has_main": true,
+        "heading_skips": 0,
+        "lang": "en",
+        "mobile_overflow_px": 0,
+        "page_errors": 0,
+        "skip_link": true,
+        "visitor_ready_automated": true
+      },
+      "viewports": [
+        {
+          "axe_csp_bypass": true,
+          "axe_extra": [
+            {
+              "help": "All page content should be contained by landmarks",
+              "id": "region",
+              "impact": "moderate",
+              "nodes": 1,
+              "samples": [
+                ".ribbon"
+              ]
+            }
+          ],
+          "axe_gating": [],
+          "blocked_external_requests": {},
+          "console_errors": [
+            "Executing inline script violates the following Content Security Policy directive 'default-src 'none''. Either the 'unsafe-inline' keyword, a hash ('sha256-iAlww"
+          ],
+          "dom": {
+            "broken_anchors": [],
+            "broken_relative": [],
+            "external_hosts": [
+              "github.com",
+              "www.cocivium.org"
+            ],
+            "h1": 1,
+            "heading_skips": 0,
+            "headings": [
+              1,
+              2,
+              3,
+              3,
+              3,
+              2,
+              2,
+              3,
+              3,
+              2,
+              2
+            ],
+            "horizontal_overflow_px": 0,
+            "images": 1,
+            "img_no_alt": 0,
+            "inner_w": 390,
+            "landmarks": {
+              "footer": 1,
+              "header": 1,
+              "main": 1,
+              "nav": 1
+            },
+            "lang": "en",
+            "links_total": 14,
+            "meta_description": true,
+            "meta_viewport": true,
+            "relative_links": [],
+            "scripts": [],
+            "scroll_w": 390,
+            "skip_link": true,
+            "small_targets": 2,
+            "text_chars": 2884,
+            "title": "CoPolitic | Better questions for an unsettled world"
+          },
+          "page_errors": [],
+          "screenshot": "copol-minimal-mobile390.png",
+          "viewport": "mobile390"
+        },
+        {
+          "axe_csp_bypass": true,
+          "axe_extra": [
+            {
+              "help": "All page content should be contained by landmarks",
+              "id": "region",
+              "impact": "moderate",
+              "nodes": 1,
+              "samples": [
+                ".ribbon"
+              ]
+            }
+          ],
+          "axe_gating": [],
+          "blocked_external_requests": {},
+          "console_errors": [
+            "Executing inline script violates the following Content Security Policy directive 'default-src 'none''. Either the 'unsafe-inline' keyword, a hash ('sha256-iAlww"
+          ],
+          "dom": {
+            "broken_anchors": [],
+            "broken_relative": [],
+            "external_hosts": [
+              "github.com",
+              "www.cocivium.org"
+            ],
+            "h1": 1,
+            "heading_skips": 0,
+            "headings": [
+              1,
+              2,
+              3,
+              3,
+              3,
+              2,
+              2,
+              3,
+              3,
+              2,
+              2
+            ],
+            "horizontal_overflow_px": 0,
+            "images": 1,
+            "img_no_alt": 0,
+            "inner_w": 1365,
+            "landmarks": {
+              "footer": 1,
+              "header": 1,
+              "main": 1,
+              "nav": 1
+            },
+            "lang": "en",
+            "links_total": 14,
+            "meta_description": true,
+            "meta_viewport": true,
+            "relative_links": [],
+            "scripts": [],
+            "scroll_w": 1365,
+            "skip_link": true,
+            "small_targets": 3,
+            "text_chars": 2904,
+            "title": "CoPolitic | Better questions for an unsettled world"
+          },
+          "page_errors": [],
+          "screenshot": "copol-minimal-desktop1365.png",
+          "viewport": "desktop1365"
+        }
+      ]
+    },
+    {
+      "bytes": 11665,
+      "file": "index.html",
+      "label": "copol-manifest",
+      "sha256": "f9f019dc8ff62555efe5df0e1a32b389393079ff3616466f7feed84d0db6e464",
+      "source": {
+        "commit": "248bef54b9fdc748781c281f0d400a7b50e5a4d8",
+        "path": "index.html",
+        "repo": "CoCivium/CoPolitic-site"
+      },
+      "summary": {
+        "axe_critical_serious": [],
+        "axe_gating_violation_ids": [],
+        "blocked_hosts": [],
+        "broken_anchors": [],
+        "broken_relative": [],
+        "h1": 1,
+        "has_main": true,
+        "heading_skips": 0,
+        "lang": "en",
+        "mobile_overflow_px": 0,
+        "page_errors": 0,
+        "skip_link": true,
+        "visitor_ready_automated": true
+      },
+      "viewports": [
+        {
+          "axe_csp_bypass": true,
+          "axe_extra": [
+            {
+              "help": "All page content should be contained by landmarks",
+              "id": "region",
+              "impact": "moderate",
+              "nodes": 1,
+              "samples": [
+                ".ribbon"
+              ]
+            }
+          ],
+          "axe_gating": [],
+          "blocked_external_requests": {},
+          "console_errors": [
+            "Executing inline script violates the following Content Security Policy directive 'default-src 'none''. Either the 'unsafe-inline' keyword, a hash ('sha256-iAlww"
+          ],
+          "dom": {
+            "broken_anchors": [],
+            "broken_relative": [],
+            "external_hosts": [
+              "github.com",
+              "www.cocivium.org"
+            ],
+            "h1": 1,
+            "heading_skips": 0,
+            "headings": [
+              1,
+              2,
+              3,
+              3,
+              3,
+              2,
+              2,
+              3,
+              3,
+              2,
+              2
+            ],
+            "horizontal_overflow_px": 0,
+            "images": 1,
+            "img_no_alt": 0,
+            "inner_w": 390,
+            "landmarks": {
+              "footer": 1,
+              "header": 1,
+              "main": 1,
+              "nav": 1
+            },
+            "lang": "en",
+            "links_total": 16,
+            "meta_description": true,
+            "meta_viewport": true,
+            "relative_links": [
+              "ia.html",
+              "ai/site-manifest.json"
+            ],
+            "scripts": [],
+            "scroll_w": 390,
+            "skip_link": true,
+            "small_targets": 2,
+            "text_chars": 2913,
+            "title": "CoPolitic | Better questions for an unsettled world"
+          },
+          "page_errors": [],
+          "screenshot": "copol-manifest-mobile390.png",
+          "viewport": "mobile390"
+        },
+        {
+          "axe_csp_bypass": true,
+          "axe_extra": [
+            {
+              "help": "All page content should be contained by landmarks",
+              "id": "region",
+              "impact": "moderate",
+              "nodes": 1,
+              "samples": [
+                ".ribbon"
+              ]
+            }
+          ],
+          "axe_gating": [],
+          "blocked_external_requests": {},
+          "console_errors": [
+            "Executing inline script violates the following Content Security Policy directive 'default-src 'none''. Either the 'unsafe-inline' keyword, a hash ('sha256-iAlww"
+          ],
+          "dom": {
+            "broken_anchors": [],
+            "broken_relative": [],
+            "external_hosts": [
+              "github.com",
+              "www.cocivium.org"
+            ],
+            "h1": 1,
+            "heading_skips": 0,
+            "headings": [
+              1,
+              2,
+              3,
+              3,
+              3,
+              2,
+              2,
+              3,
+              3,
+              2,
+              2
+            ],
+            "horizontal_overflow_px": 0,
+            "images": 1,
+            "img_no_alt": 0,
+            "inner_w": 1365,
+            "landmarks": {
+              "footer": 1,
+              "header": 1,
+              "main": 1,
+              "nav": 1
+            },
+            "lang": "en",
+            "links_total": 16,
+            "meta_description": true,
+            "meta_viewport": true,
+            "relative_links": [
+              "ia.html",
+              "ai/site-manifest.json"
+            ],
+            "scripts": [],
+            "scroll_w": 1365,
+            "skip_link": true,
+            "small_targets": 3,
+            "text_chars": 2933,
+            "title": "CoPolitic | Better questions for an unsettled world"
+          },
+          "page_errors": [],
+          "screenshot": "copol-manifest-desktop1365.png",
+          "viewport": "desktop1365"
+        }
+      ]
+    },
+    {
+      "bytes": 5801,
+      "file": "ia.html",
+      "label": "copol-manifest-ia",
+      "sha256": "569eb3fa3d8a727265738b5e7c3f0f7cacba3b60ff2fb4f53f46ef099228503a",
+      "source": {
+        "commit": "248bef54b9fdc748781c281f0d400a7b50e5a4d8",
+        "path": "ia.html",
+        "repo": "CoCivium/CoPolitic-site"
+      },
+      "summary": {
+        "axe_critical_serious": [],
+        "axe_gating_violation_ids": [],
+        "blocked_hosts": [],
+        "broken_anchors": [],
+        "broken_relative": [],
+        "h1": 1,
+        "has_main": true,
+        "heading_skips": 0,
+        "lang": "en",
+        "mobile_overflow_px": 0,
+        "page_errors": 0,
+        "skip_link": false,
+        "visitor_ready_automated": true
+      },
+      "viewports": [
+        {
+          "axe_csp_bypass": true,
+          "axe_extra": [],
+          "axe_gating": [],
+          "blocked_external_requests": {},
+          "console_errors": [
+            "Executing inline script violates the following Content Security Policy directive 'default-src 'none''. Either the 'unsafe-inline' keyword, a hash ('sha256-iAlww"
+          ],
+          "dom": {
+            "broken_anchors": [],
+            "broken_relative": [],
+            "external_hosts": [
+              "github.com"
+            ],
+            "h1": 1,
+            "heading_skips": 0,
+            "headings": [
+              1,
+              2,
+              2,
+              2,
+              2
+            ],
+            "horizontal_overflow_px": 0,
+            "images": 0,
+            "img_no_alt": 0,
+            "inner_w": 390,
+            "landmarks": {
+              "footer": 1,
+              "header": 1,
+              "main": 1,
+              "nav": 0
+            },
+            "lang": "en",
+            "links_total": 8,
+            "meta_description": true,
+            "meta_viewport": true,
+            "relative_links": [
+              "./",
+              "ai/site-manifest.json",
+              "./",
+              "ai/site-manifest.json"
+            ],
+            "scripts": [],
+            "scroll_w": 390,
+            "skip_link": false,
+            "small_targets": 0,
+            "text_chars": 2933,
+            "title": "What do AI and IA mean? | CoPolitic"
+          },
+          "page_errors": [],
+          "screenshot": "copol-manifest-ia-mobile390.png",
+          "viewport": "mobile390"
+        },
+        {
+          "axe_csp_bypass": true,
+          "axe_extra": [],
+          "axe_gating": [],
+          "blocked_external_requests": {},
+          "console_errors": [
+            "Executing inline script violates the following Content Security Policy directive 'default-src 'none''. Either the 'unsafe-inline' keyword, a hash ('sha256-iAlww"
+          ],
+          "dom": {
+            "broken_anchors": [],
+            "broken_relative": [],
+            "external_hosts": [
+              "github.com"
+            ],
+            "h1": 1,
+            "heading_skips": 0,
+            "headings": [
+              1,
+              2,
+              2,
+              2,
+              2
+            ],
+            "horizontal_overflow_px": 0,
+            "images": 0,
+            "img_no_alt": 0,
+            "inner_w": 1365,
+            "landmarks": {
+              "footer": 1,
+              "header": 1,
+              "main": 1,
+              "nav": 0
+            },
+            "lang": "en",
+            "links_total": 8,
+            "meta_description": true,
+            "meta_viewport": true,
+            "relative_links": [
+              "./",
+              "ai/site-manifest.json",
+              "./",
+              "ai/site-manifest.json"
+            ],
+            "scripts": [],
+            "scroll_w": 1365,
+            "skip_link": false,
+            "small_targets": 0,
+            "text_chars": 2933,
+            "title": "What do AI and IA mean? | CoPolitic"
+          },
+          "page_errors": [],
+          "screenshot": "copol-manifest-ia-desktop1365.png",
+          "viewport": "desktop1365"
+        }
+      ]
+    }
+  ],
+  "schema": "W07.SiteQA.R0",
+  "started_utc": "2026-11-23T05:35:26.946Z",
+  "work_id": "W07-C3-J2"
+}

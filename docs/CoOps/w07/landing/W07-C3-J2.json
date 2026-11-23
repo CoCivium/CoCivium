@@ -1,0 +1,62 @@
+{
+  "attempt_id": "1",
+  "authority_ref_or_null": null,
+  "claimed_actor": "Claude (Opus 5.5) as W07; claim only, unsigned",
+  "collision_scope": "docs/CoOps/w07/c3/",
+  "cycle_id": "W07-C3",
+  "dependency_ids": [
+    "W07-C3-J1"
+  ],
+  "disposition": "PREPARED",
+  "envelope_sha256": "2bd7a73489acf6cbd8536ec44cc0cc050e20b35708daab9914a7fffd45939672",
+  "evidence": [],
+  "hold_reason_or_null": "LANDING_HOLD: no authenticated write transport (git proxy 403: repo not in session's authorized set)",
+  "idempotency_key": "19379c17db967b6bd79d79a395f4444c0ee4e8332d70280db1b5a24113090516",
+  "input_refs": [
+    {
+      "sha256_or_commit": "d4f63d0e991b824e910cf408f05cd15e9ebb52ea",
+      "uri": "CoCivium/InSeed@d4f63d0"
+    },
+    {
+      "sha256_or_commit": "f0feaddb3ac5c67a81c35771540f3f03100c052d",
+      "uri": "CoCivium/CoPolitic-site@f0feadd"
+    },
+    {
+      "sha256_or_commit": "248bef54b9fdc748781c281f0d400a7b50e5a4d8",
+      "uri": "CoCivium/CoPolitic-site@248bef5"
+    },
+    {
+      "sha256_or_commit": "1009acfc7a86add7acb62d12e4d5e0a3403ae4e1",
+      "uri": "CoCivium/InSeed@1009acf"
+    },
+    {
+      "sha256_or_commit": "a34c5665",
+      "uri": "CoCivium/CoCivium@a34c5665 (rail)"
+    }
+  ],
+  "job_id": "W07-C3-J2",
+  "kind": "candidate_artifact",
+  "object_id": "sha256:35c6ed85ad2153175f85e114d8f744addf159a8a539b7bb6dcc562bffcb7b7b3",
+  "output_refs": [
+    {
+      "sha256": "0343174d8a06e0921216126b10bf74cb81139b76ac763c413de843ab99be97c9",
+      "uri": "CoCivium/CoCivium@claude/w07-loop-20261118:docs/CoOps/w07/c3/W07_C3_J2_DELTA_QA_R0.json"
+    },
+    {
+      "sha256": "329380e305819e655ea38bf21e2fb1597136197362aea2012fef4eade74e0bb8",
+      "uri": "CoCivium/CoCivium@claude/w07-loop-20261118:docs/CoOps/w07/c3/W07_C3_SITE_QA_R0.md"
+    }
+  ],
+  "privacy_class": "public-safe",
+  "produced_utc": "2026-11-23T05:36:27Z",
+  "reviewer_ids": [],
+  "schema_version": "CoLanding.Envelope.R0(candidate)",
+  "session_instance_id": "w07-si-43d985bc720b4b4f",
+  "successor_job_ids": [],
+  "tests": [
+    "5/5 new pages automated gate PASS",
+    "InSeed legacy writers neutralized in source",
+    "live state UNOBSERVED"
+  ],
+  "worker_id": "W07"
+}

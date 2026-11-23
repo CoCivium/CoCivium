@@ -33,3 +33,9 @@
 2. **CoCivium:** elect the front door; privately review www; configure the apex.
 3. **CoPolitic:** configure hosting for the elected candidate.
 4. Get a genuinely independent reviewer (non-Claude) to rerun `w07_site_qa.cjs` or the rail audit against these exact commits.
+
+## C3-J2 delta (2026-11-23; `W07_C3_J2_DELTA_QA_R0.json`)
+- **InSeed `main` changed** at `d4f63d0` (Nov 21) to a human-first front door, which passes the automated gate. Its bytes still differ from the live apex hash recorded Nov 19, and the rail has no newer live receipt, so **what visitors see now is UNOBSERVED.**
+- **The InSeed writer hazard is closed in source.** Both legacy workflows are manual-dispatch only and read-only, and both PowerShell loops fail on start. Residual: a copy already running on a local machine isn't stopped by a repo change.
+- **CoPolitic** now has a clean minimal public branch (`f0feadd`) targeting the GitHub Pages fallback `cocivium.github.io/CoPolitic-site/`, with copolitic.org declared not bound. It passes the gate. Nit: the review branch's `ia.html` has no skip link. The fallback URL is not reachable from this session.
+- **Identity collision:** rail commits `86cfa84a`/`ff0f5612` publish their own "W07" fenced-actuator work. They are not this session's output, and they are not a landing of this branch.
