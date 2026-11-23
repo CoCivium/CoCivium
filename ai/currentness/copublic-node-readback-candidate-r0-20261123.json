@@ -92,9 +92,15 @@
     "offline restore",
     "reader uptake",
     "CoPolitic custom-domain deployment",
-    "CoPolitic public-policy/RFP editorial review"
+    "CoPolitic public-policy/RFP editorial review",
+    "CoPolitic Pages custom-domain association conflict resolution",
+    "CoGBX origin TLS repair and independent browser readproof",
+    "registrar parked domains publication scope",
+    "CoCivia seed placeholder supersession without data loss",
+    "verified latest logos/asset lineage per brand",
+    "fresh CoBar/CoSpeedo telemetry tied to a live receiver timestamp"
   ],
-  "next_safe_action": "Review public-safe registry against existing role map and constellation contract; repair CoPolitic domain routing only via domain/page-owner authority; add reciprocal human and machine links per release; verify exact URL, content, TLS, crawl rules and cross-provider restore; maintain separate commercial InSeed role",
+  "next_safe_action": "Use incumbent CoPolitic-site PRs #1/#2/#3 (no fourth site fork) to qualify the already-readable GitHub Pages fallback, then have the verified domain/Page owner resolve the copolitic.org hostname claim and TLS. Separately repair CoGBX 525 at its origin without downgrading TLS. Keep parked/seed fronts explicitly unlaunched, and make every public CoNav link point only to a verified working page or truthful holding page.",
   "no_claims": [
     "NO_PRIVATE_REPO_PUBLICATION",
     "NO_RUNTIME_EFFECT",
@@ -104,5 +110,103 @@
     "NO_AI_CRAWLER_ACK",
     "NO_COEX_CANON",
     "NO_PUBLIC_REPLICA_RECEIPT"
-  ]
+  ],
+  "fresh_frontdoor_readback_20261123": {
+    "observed_utc_date": "2026-11-23",
+    "method": "X2 authorized Desktop Commander read-only HTTPS URL body retrieval plus authenticated GitHub source readback; no DNS, Pages, registrar or deployment mutation; selected URLs only",
+    "observations": [
+      {
+        "url": "https://www.cocivium.org/",
+        "state": "LIVE_INFORMATIONAL_HUMAN_PAGE_OBSERVED",
+        "evidence_class": "RETRIEVED_LIVE_HTML",
+        "limits": "No independent reader acceptance, branded asset-currentness or autonomous service proof"
+      },
+      {
+        "url": "https://inseed.com/",
+        "state": "LIVE_INFORMATIONAL_COMMERCIAL_FRONT_OBSERVED",
+        "evidence_class": "RETRIEVED_LIVE_HTML",
+        "limits": "Not proof of paid service/client adoption; distinct commercial lane"
+      },
+      {
+        "url": "https://cocivium.github.io/CoPolitic-site/",
+        "state": "LIVE_GITHUB_PAGES_FALLBACK_EXACT_SOURCE_MATCH",
+        "evidence_class": "LIVE_HTML_EXACTLY_MATCHED_SOURCE_TEXT",
+        "serving_candidate_repository": "CoCivium/CoPolitic-site",
+        "source_branch": "cosites/copolitic-minimal-public-20261121",
+        "index_git_blob_sha1": "d443b1b05b44bddc3d3b40bd8eba0f555895e806",
+        "limits": "Does not fix copolitic.org custom-domain binding or establish an independently administered mirror"
+      },
+      {
+        "url": "https://copolitic.org/",
+        "state": "GITHUB_PAGES_404_UNBOUND_HOST",
+        "evidence_class": "READ_ONLY_HTTP_404",
+        "limits": "DNS/site binding conflict diagnosis requires authorized GitHub Pages settings and registrar evidence"
+      },
+      {
+        "url": "https://cocivium.github.io/CoPolitic-site/ai/site-manifest.json",
+        "state": "LIVE_ROUTE_HTTP_404",
+        "evidence_class": "READ_ONLY_HTTP_404",
+        "draft_source_url": "https://github.com/CoCivium/CoPolitic-site/pull/3",
+        "limits": "Source exists in an unmerged draft, not on serving source branch; machine-readable discovery parity not deployed"
+      },
+      {
+        "url": "https://cogbx.org/",
+        "state": "CLOUDFLARE_525_ORIGIN_TLS_HANDSHAKE_FAILURE",
+        "evidence_class": "READ_ONLY_HTTP_525",
+        "limits": "Origin TLS configuration needs separately authorized owner-side diagnosis; never weaken verification to manufacture a PASS"
+      },
+      {
+        "url": "https://blabex.org/",
+        "state": "REGISTRAR_PARKED",
+        "evidence_class": "FETCHED_REDIRECT_TO_LANDER_AND_SCREENSHOT",
+        "limits": "Not a functioning CoCivium front or proof of registration/account owner"
+      },
+      {
+        "url": "https://coscendence.org/",
+        "state": "REGISTRAR_PARKED",
+        "evidence_class": "FETCHED_REDIRECT_TO_LANDER_AND_SCREENSHOT",
+        "limits": "Not a functioning CoCivium front or proof of registration/account owner"
+      },
+      {
+        "url": "https://costonk.com/",
+        "state": "REGISTRAR_PARKED",
+        "evidence_class": "FETCHED_REDIRECT_TO_LANDER",
+        "limits": "No public CoStonk product"
+      },
+      {
+        "url": "https://cogibber.org/",
+        "state": "REGISTRAR_PARKED",
+        "evidence_class": "FETCHED_REDIRECT_TO_LANDER",
+        "limits": "No public site content"
+      },
+      {
+        "url": "https://cocivia.org/",
+        "state": "LIVE_SEED_PLACEHOLDER_NOT_FINISHED_FRONT",
+        "evidence_class": "FETCHED_HTML_TITLE",
+        "limits": "Title says CoPortal v0 Seed crud placeholder; treat as public-quality defect, not a completed product"
+      }
+    ],
+    "unqualified": [
+      "https://groupbuild.org/",
+      "https://groupbuild.com/",
+      "https://costonk.org/",
+      "https://copolitic.com/"
+    ],
+    "not_promoted_without": [
+      "site owner and logo authority",
+      "domain DNS and TLS readproof",
+      "exact served source/asset digest",
+      "human/mobile/keyboard first-use",
+      "human and machine source/rights parity",
+      "independent receiver-side readproof and rollback"
+    ],
+    "source_links": [
+      "https://github.com/CoCivium/CoPolitic-site/pull/1",
+      "https://github.com/CoCivium/CoPolitic-site/pull/2",
+      "https://github.com/CoCivium/CoPolitic-site/pull/3",
+      "https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/error-525/",
+      "https://docs.github.com/en/pages/getting-started-with-github-pages/troubleshooting-404-errors-for-github-pages-sites"
+    ],
+    "qualification": "PUBLIC_SAFE_BOUNDED_SAMPLE__NOT_CANON_NOT_RELEASE_OR_COMPLETE_DOMAIN_CENSUS"
+  }
 }
