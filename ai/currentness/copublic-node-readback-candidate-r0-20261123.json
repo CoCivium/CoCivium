@@ -1,0 +1,108 @@
+{
+  "schema": "cocivium.public-node-readback.candidate-r0",
+  "observed_date_utc": "2026-11-23",
+  "status": "PUBLIC_CANDIDATE_BRANCH_ONLY__NOT_DEPLOYED_ATLAS",
+  "scope": "CoCivium GitHub installation and bounded HTTP sample from authorized X2; not an exhaustive inventory of sites, repositories, other forges, mirrors or CoStead",
+  "github_observation": {
+    "method": "authenticated GitHub connector list_repositories(owner=CoCivium), page_size=100, pages at offsets 0 and 100",
+    "repository_count": 23,
+    "public_count": 12,
+    "private_count": 11,
+    "private_handling": "Do not publish private contents, paths, credentials, private source identifiers or derived evidence without independent classification and authority",
+    "public_repository_urls": [
+      "https://github.com/CoCivium/CoCivium",
+      "https://github.com/CoCivium/CoPolitic-site",
+      "https://github.com/CoCivium/CoBusMirror",
+      "https://github.com/CoCivium/EntMent",
+      "https://github.com/CoCivium/CoStacks",
+      "https://github.com/CoCivium/CoRails",
+      "https://github.com/CoCivium/CoSources",
+      "https://github.com/CoCivium/TEMP",
+      "https://github.com/CoCivium/CoAcademy",
+      "https://github.com/CoCivium/CoAura",
+      "https://github.com/CoCivium/CoSpanky",
+      "https://github.com/CoCivium/InSeed"
+    ],
+    "evidence": "https://github.com/CoCivium/CoCivium/blob/main/ai/repo-role-map.json",
+    "qualification": "Repository listing public does not prove working README, site, product, maintained code, independent indexing or adoption"
+  },
+  "http_observation": {
+    "method": "X2 Desktop Commander curl.exe -L -sS -o NUL -w %{http_code} with max-time=7; TLS verification enabled; sample only",
+    "target_results": [
+      {
+        "url": "https://cocivium.org",
+        "http_status": 200,
+        "effective_url": "https://www.cocivium.org/"
+      },
+      {
+        "url": "https://coall.org",
+        "http_status": 200
+      },
+      {
+        "url": "https://entment.org",
+        "http_status": 200
+      },
+      {
+        "url": "https://inseed.com",
+        "http_status": 200
+      },
+      {
+        "url": "https://cocivium.github.io/CoAcademy/experience/",
+        "http_status": 200
+      },
+      {
+        "url": "https://cocivium.github.io/CoAcademy/relay/",
+        "http_status": 200
+      },
+      {
+        "url": "https://cocivium.github.io/CoAcademy/civic-integrity/",
+        "http_status": 200
+      },
+      {
+        "url": "https://cocivium.github.io/CoAcademy/civiclens/",
+        "http_status": 200
+      },
+      {
+        "url": "https://copolitic.org",
+        "http_status": 404,
+        "server_observed": "GitHub.com"
+      },
+      {
+        "url": "https://copolitic.com",
+        "http_status": null,
+        "transport_error": "TLS certificate name verification failed: SEC_E_WRONG_PRINCIPAL"
+      }
+    ],
+    "qualification": "HTTP 200 establishes a successful bounded response, not semantic quality, human/synth usability, AI indexing, stable hosting, resilience or current authority"
+  },
+  "existing_contracts": [
+    "https://github.com/CoCivium/CoCivium/blob/main/ai/repo-role-map.json",
+    "https://github.com/CoCivium/CoCivium/blob/main/docs/Evolution/COPUBLIC_CONSTELLATION_MEGASCROLLER_R0.json",
+    "https://github.com/CoCivium/CoCivium/blob/main/docs/Launch/COCOMMONS_PUBLIC_FIRST_TRANSITION_ADVISORY_20261111.md",
+    "https://github.com/CoCivium/CoCivium/blob/main/docs/Governance/COCOMMONS_INSEED_DUAL_LANE_R0_20261115.md"
+  ],
+  "missing_proofs": [
+    "complete planned-domain census",
+    "other forge inventory",
+    "correct content and publication ownership for all properties",
+    "cross-link coverage",
+    "sitemaps and machine schema readbacks",
+    "search/AI crawler discovery",
+    "independent mirror digest agreement",
+    "offline restore",
+    "reader uptake",
+    "CoPolitic custom-domain deployment",
+    "CoPolitic public-policy/RFP editorial review"
+  ],
+  "next_safe_action": "Review public-safe registry against existing role map and constellation contract; repair CoPolitic domain routing only via domain/page-owner authority; add reciprocal human and machine links per release; verify exact URL, content, TLS, crawl rules and cross-provider restore; maintain separate commercial InSeed role",
+  "no_claims": [
+    "NO_PRIVATE_REPO_PUBLICATION",
+    "NO_RUNTIME_EFFECT",
+    "NO_SITE_DEPLOYMENT",
+    "NO_MERGE",
+    "NO_SEARCH_INDEX_ACK",
+    "NO_AI_CRAWLER_ACK",
+    "NO_COEX_CANON",
+    "NO_PUBLIC_REPLICA_RECEIPT"
+  ]
+}
