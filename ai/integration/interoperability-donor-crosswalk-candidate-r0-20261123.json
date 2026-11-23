@@ -1,0 +1,191 @@
+{
+  "schema": "CoAll.InteroperabilityDonorCrosswalk.CandidateR0",
+  "observed_date": "2026-11-23",
+  "state": "REVIEW_BRANCH_SOURCE_ONLY_NOT_DEPLOYED_NOT_CANON_NOT_RUNTIME",
+  "intent": "Bind pre-existing universal interoperability, CoNav intent-first discovery, open-source donor ecology and multi-substrate replacement seams without creating a competing control plane",
+  "existing_evidence": [
+    {
+      "source": "CoPlatformHelper/RepoZipper ecosystem",
+      "url": "https://github.com/CoCivium/CoCivium/blob/main/docs/Product/COPLATFORM_HELPER_ECOLOGY_REPOZIPPER_R0.md",
+      "observed_blob_sha": "ea3c368d0627ab2ec6eb2d34af1be04e7a612c0f",
+      "role": "six-layer replaceable platform-adapter pattern"
+    },
+    {
+      "source": "CoSubstrateField",
+      "url": "https://github.com/CoCivium/CoCivium/blob/main/docs/Architecture/COSUBSTRATE_FIELD_R0.md",
+      "observed_blob_sha": "5fec3249945ad3d14511621bc52da5587c3526b8",
+      "role": "translation graph across software, devices, institutional and other substrates"
+    },
+    {
+      "source": "CoOmniFront/CoTimeBraid",
+      "url": "https://github.com/CoCivium/CoCivium/blob/main/docs/Architecture/COOMNIFRONT_TIMEBRAID_R0_20261108.md",
+      "observed_blob_sha": "5a0073a241d66606bddaa01e36ba8721f5dd3857",
+      "role": "stable WorkID, many receiver lenses, interop transport examples"
+    },
+    {
+      "source": "CoModelFabric",
+      "url": "https://github.com/CoCivium/CoCivium/blob/main/docs/Architecture/COMODELFABRIC_COORB_PROVIDER_ADAPTERS_R0_20261024.md",
+      "observed_blob_sha": "61fd20ad978b78c0df3e67d89744aa75f8f3bfb8",
+      "role": "provider-neutral, capability and authorization bounded adapters"
+    },
+    {
+      "source": "Donor Ecology",
+      "url": "https://github.com/CoCivium/CoCivium/blob/main/docs/Capabilities/open_source_donors_r0.json",
+      "observed_blob_sha": "bd80857b7f3b45024fe6db933da21965a94b9832",
+      "role": "eight license-labelled reference donors, no automatic ingestion"
+    },
+    {
+      "source": "Public constellation",
+      "url": "https://github.com/CoCivium/CoCivium/blob/main/docs/Evolution/COPUBLIC_CONSTELLATION_MEGASCROLLER_R0.json",
+      "observed_blob_sha": "9604edb55c3c59f6c2a93d738ea6b2f207dec9db",
+      "role": "human/machine public atlas and independent mirror design"
+    },
+    {
+      "source": "CoCommons+InSeed dual lane",
+      "url": "https://github.com/CoCivium/CoCivium/blob/main/docs/Governance/COCOMMONS_INSEED_DUAL_LANE_R0_20261115.md",
+      "observed_blob_sha": "bd26c35212cf348593b575637dbbef9bc04945cc",
+      "role": "separate public commons and commercial rights/contracting"
+    }
+  ],
+  "semantic_spine": {
+    "stable_object_identity": [
+      "work_id",
+      "object_version",
+      "source_refs",
+      "content_digest"
+    ],
+    "source_truth": [
+      "epistemic_class",
+      "observed_at",
+      "valid_time",
+      "currentness_limit",
+      "counterevidence",
+      "supersession"
+    ],
+    "lawful_operation": [
+      "actor_identity",
+      "scope",
+      "consent",
+      "authority_ceiling",
+      "privacy_class",
+      "rights_and_license",
+      "cost_budget",
+      "revocation"
+    ],
+    "execution": [
+      "capability_descriptor",
+      "adapter_version",
+      "provider_or_substrate",
+      "lease",
+      "fencing",
+      "idempotency_key",
+      "effect_receipt",
+      "recovery_pointer"
+    ],
+    "receiver": [
+      "audience",
+      "projection_kind",
+      "accessible_plain_fallback",
+      "translation_loss",
+      "readback",
+      "challenge_and_correction"
+    ],
+    "explicitly_not_universal": [
+      "legal_authority",
+      "private_information",
+      "scientific_truth",
+      "religious_or_cultural_norms",
+      "organizational_governance",
+      "safety_critical_actuation",
+      "data_residency"
+    ]
+  },
+  "adapters": {
+    "examples_from_existing_source": [
+      "MCP resource or tool",
+      "A2A task",
+      "CloudEvents event",
+      "authenticated HTTPS/SSE",
+      "local append-only log",
+      "stdio/CLI",
+      "Git source and immutable public manifest"
+    ],
+    "rule": "Interfaces translate typed capabilities and events while preserving source, permission and loss semantics; transport discovery never authorizes execution",
+    "adapter_state": "CANDIDATES_NOT_FULLY_VERIFIED",
+    "more_than_protocol": "Human/AI experience should be intent-first via existing CoNav/CoOrbWare/CoBar projections rather than an API-specific product catalogue"
+  },
+  "upstream_selection": [
+    {
+      "mode": "USE_UPSTREAM",
+      "when": "Function, licensing, cost, privacy and maintenance already meet needs",
+      "requires": "exact upstream, version, license and security review"
+    },
+    {
+      "mode": "WRAP",
+      "when": "Existing tool works but needs standard typed capability, source or permission mapping",
+      "requires": "qualify adapter isolation and export/exit"
+    },
+    {
+      "mode": "CONTRIBUTE_UPSTREAM",
+      "when": "General improvement benefits original community",
+      "requires": "contribution rules, rights and verified tests"
+    },
+    {
+      "mode": "FORK_WITH_LINEAGE",
+      "when": "Sustained maintained divergence is justified",
+      "requires": "legal rights, notices, attribution, marks/trademarks, update path and comparative tests"
+    },
+    {
+      "mode": "NEW_COMPATIBLE_IMPL",
+      "when": "A capability gap or genuine licence/business incompatibility warrants a substitute",
+      "requires": "independent specification and legal diligence; no unlicensed code copy"
+    },
+    {
+      "mode": "REJECT_OR_RETIRE",
+      "when": "Security, privacy, licence, upkeep or actual benefit fail",
+      "requires": "explicit replacement and rollback, no stale PASS"
+    }
+  ],
+  "licensing_boundary": {
+    "rule": "Open source enables permitted use and commercial activity under specific conditions; licence obligations vary with combining, modifying, conveying and possibly network use; rebuilding is not automatic legal requirement",
+    "separate_checks": [
+      "source licence and exact version",
+      "patent grants/claims",
+      "dependency transitive rights",
+      "attributions/notices",
+      "copyleft obligations",
+      "trade marks and passing off",
+      "datasource and model-weight terms",
+      "third-party contributions and privacy",
+      "distribution and hosted-service legal triggers"
+    ],
+    "licensed_pattern_rule": "A public idea or protocol may be usable independently; copyright, patents, trademarks and contractual terms must be analysed for exact implementation",
+    "legal_state": "REFERENCE_POLICY_NOT_LEGAL_ADVICE_OR_CLEARANCE"
+  },
+  "conformance_candidates": [
+    "One source-bound public-safe WorkID gives the same identity, evidence class and permission ceiling through offline JSON and human page",
+    "Two different adapters reconstitute the same harmless task with explicit translation-loss ledger",
+    "Revoked capability or missing legal authority fails closed with no outward action",
+    "Duplicate event replay yields one safe external effect only after fenced authorized receiver verification",
+    "One donor update changes a pinned upstream version: CI blocks silent adoption, records diff, licence and retest",
+    "Two independent failure-domain readers retrieve identical signed/hash-checked public release and cold-restore without primary provider"
+  ],
+  "link_to_public_atlas": {
+    "current_candidate": "https://github.com/CoCivium/CoCivium/blob/candidate/copublic-node-discovery-20261123/ai/currentness/copublic-node-readback-candidate-r0-20261123.json",
+    "mode": "A single common machine-discoverable contract; each site presents a few audience-relevant intentions and an accessible index, not every module",
+    "current_blocker": "copolitic.org HTTP 404 and copolitic.com TLS hostname failure from X2 on 2026-11-23",
+    "no_inference": "Site indexes and available GitHub source do not prove AI crawler intake, model-provider adoption, independent replica, or first-user outcome"
+  },
+  "next_bounded_proof": "Reuse one existing RepoZipper offline synthetic fixture and CoNav source object as cross-surface input; compare JSON, browser-local demonstration and a second bounded adapter under same authority ceiling; only after CI and independent receiver proof consider a public-facing connector catalog",
+  "nonclaims": [
+    "NO_NEW_UNIVERSAL_API_RUNTIME",
+    "NO_COAPI_IMPLEMENTATION_CLAIM",
+    "NO_AUTOMATIC_FOSS_UPDATE",
+    "NO_CODE_FORK_OR_IMPORT",
+    "NO_PUBLIC_SITE_DEPLOYMENT",
+    "NO_TRADEMARK_OR_LICENSE_CLEARANCE",
+    "NO_MERGE",
+    "NO_RECEIVER_ACK",
+    "NO_COEX"
+  ]
+}
