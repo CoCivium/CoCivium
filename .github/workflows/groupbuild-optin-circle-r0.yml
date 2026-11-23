@@ -34,3 +34,11 @@ jobs:
           assert all(x['intro_sent'] is False and x['identities_revealed'] is False for x in r['pairs'])
           print('GROUPBUILD_SYNTHETIC_ZERO_EFFECT_PASS')
           PY2
+      - name: Verify Magic Workshop source and no-effect boundaries
+        working-directory: examples/groupbuild_optin_circle_r0/magic_workshop_r0
+        run: |
+          python3 -B test_magic_workshop.py
+      - name: Verify Idea Commons source and opt-in local-only boundaries
+        working-directory: examples/groupbuild_optin_circle_r0/idea_commons_r1
+        run: |
+          python3 -B test_idea_commons.py
