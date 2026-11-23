@@ -143,8 +143,8 @@ class CoRelMetaCanary(unittest.TestCase):
         self.assertEqual(self.check(relations=(r,)+RELATIONS[1:]), ())
         self.assertEqual(r.epistemic, "PREDICTED")
     def test_cycle_bounded(self):
-        cycle=(Relation("rel:c1","rel:c2","challenges","rel:c2","source:demo"),
-               Relation("rel:c2","rel:c1","constrains","rel:c1","source:demo"))
+        cycle=(Relation("rel:e1","rel:c1","challenges","rel:c2","source:demo"),
+               Relation("rel:e2","rel:c2","constrains","rel:c1","source:demo"))
         reach,steps=traverse("rel:c1", cycle, budget=2)
         self.assertEqual(reach,frozenset(("rel:c1","rel:c2")))
         self.assertLessEqual(steps,2)
