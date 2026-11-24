@@ -1,0 +1,204 @@
+{
+  "attempt_id": "A1",
+  "authority_ref_or_null": null,
+  "claimed_actor": "Claude (Opus 5.5) as W09; authorship claim unsigned",
+  "collision_scope": "CoCivium/CoCivium:docs/CoOps/w09/** and new branch refs only",
+  "cycle_id": "C4-20261124",
+  "dependency_ids": [
+    "W09-J1-authority-map",
+    "W09-J2-gate-linter-R1",
+    "W09-C2-J1",
+    "W09-C2-J2",
+    "W09-C2-J3",
+    "W09-C3-J1"
+  ],
+  "disposition": "PREPARED / LOCAL_ONLY / LANDING_PENDING_OWNER_RUN",
+  "do_not_push": [
+    "any superseded local W09 branch: their histories contain real payment literals or issuable fixture addresses"
+  ],
+  "envelope_sha256": "f3461e6fcedee1195e619955363213f27e8e585899a9439a566ae3205638876a",
+  "evidence": [
+    {
+      "hash": "3585906fc565a2f9b3c87717d337b06688f5ec4f",
+      "type": "local_commit",
+      "uri": "git:3585906fc565a2f9b3c87717d337b06688f5ec4f"
+    },
+    {
+      "hash": null,
+      "result": "no linked GitHub account (2026-11-24)",
+      "type": "transport_check",
+      "uri": "add_repo CoCivium/CoCivium access=push"
+    },
+    {
+      "hash": null,
+      "type": "planned_transport",
+      "uri": "owner-run LAND-W09.ps1 on X2 with gh account CoCivium (emergency relay requested by user 2026-11-24)"
+    }
+  ],
+  "hold_reason_or_null": "no remote readback yet; independent review absent; InSeed apply/merge, CoNotifyReal retention, history purge = owner",
+  "input_refs": [
+    {
+      "sha256_or_commit": "a07f1544f83ccf13fad224328558fe77a176223b",
+      "uri": "https://github.com/CoCivium/CoCivium/commit/a07f1544f83ccf13fad224328558fe77a176223b"
+    },
+    {
+      "sha256_or_commit": "6b27d24",
+      "uri": "https://github.com/CoCivium/InSeed/commit/6b27d24"
+    },
+    {
+      "sha256_or_commit": "090c532627cd014e6c41355ddd70b90a56cc03ff",
+      "uri": "https://github.com/CoCivium/CoCivium/commit/090c532627cd014e6c41355ddd70b90a56cc03ff"
+    },
+    {
+      "sha256_or_commit": "0fb29d921fb95b1d2aad055dbac792d0139086a1",
+      "uri": "https://github.com/CoCivium/CoPolitic-site/commit/0fb29d921fb95b1d2aad055dbac792d0139086a1"
+    }
+  ],
+  "job_id": "W09-C4-consolidated-landing",
+  "kind": "candidate_branch_consolidation",
+  "object_id": "w09:guardian:consolidated-c1-c3",
+  "output_refs": [
+    {
+      "local_path": "docs/CoOps/w09/README.md",
+      "sha256_or_commit": "dd18071576ec5c9b641e64d3fa6f0e65cb6c84ece74af2c035a1c0c7034eae97",
+      "uri": "git:3585906fc565a2f9b3c87717d337b06688f5ec4f:docs/CoOps/w09/README.md"
+    },
+    {
+      "local_path": "docs/CoOps/w09/authority-map.json",
+      "sha256_or_commit": "ab65bca89dcec67b92ee3d46662ffe0fdf24de2559d9bd38b814346142263209",
+      "uri": "git:3585906fc565a2f9b3c87717d337b06688f5ec4f:docs/CoOps/w09/authority-map.json"
+    },
+    {
+      "local_path": "docs/CoOps/w09/c2/LANDING_PERMISSION_SPEC.md",
+      "sha256_or_commit": "e1750510fb7b4b3e9a3a56403e4cae943ca41d3d57ad98e1dd8ba14513887519",
+      "uri": "git:3585906fc565a2f9b3c87717d337b06688f5ec4f:docs/CoOps/w09/c2/LANDING_PERMISSION_SPEC.md"
+    },
+    {
+      "local_path": "docs/CoOps/w09/c2/README.md",
+      "sha256_or_commit": "ce1e1e76139c4c56cb40263e1987186acbf64b2390d39894318be98d36af8d37",
+      "uri": "git:3585906fc565a2f9b3c87717d337b06688f5ec4f:docs/CoOps/w09/c2/README.md"
+    },
+    {
+      "local_path": "docs/CoOps/w09/c2/release-candidate-sweep.linterR1.json",
+      "sha256_or_commit": "100eece6f218649c5b8ce7f4b66fee906528726b1e8d6a8ee3e93477c7b5e959",
+      "uri": "git:3585906fc565a2f9b3c87717d337b06688f5ec4f:docs/CoOps/w09/c2/release-candidate-sweep.linterR1.json"
+    },
+    {
+      "local_path": "docs/CoOps/w09/c2/release-candidate-sweep.linterR2.json",
+      "sha256_or_commit": "c5605ce0ba30f9e97ee3711263e3738949891889facc6a3484447d3721ab72d1",
+      "uri": "git:3585906fc565a2f9b3c87717d337b06688f5ec4f:docs/CoOps/w09/c2/release-candidate-sweep.linterR2.json"
+    },
+    {
+      "local_path": "docs/CoOps/w09/c2/sweep.py",
+      "sha256_or_commit": "c3f15a9654cd6a8a4ff75e3331979976023d42cf0af519d2e44161429936d46e",
+      "uri": "git:3585906fc565a2f9b3c87717d337b06688f5ec4f:docs/CoOps/w09/c2/sweep.py"
+    },
+    {
+      "local_path": "docs/CoOps/w09/c2/targets.txt",
+      "sha256_or_commit": "1d388715fe53772d55b1812e557cc53952f683b7d3ea58fb8a91369ab31b8f5d",
+      "uri": "git:3585906fc565a2f9b3c87717d337b06688f5ec4f:docs/CoOps/w09/c2/targets.txt"
+    },
+    {
+      "local_path": "docs/CoOps/w09/c3/README.md",
+      "sha256_or_commit": "9f8f1ec34848d1a3088385844798a378b61cdaa19e25534c6e4a27c35f816ab5",
+      "uri": "git:3585906fc565a2f9b3c87717d337b06688f5ec4f:docs/CoOps/w09/c3/README.md"
+    },
+    {
+      "local_path": "docs/CoOps/w09/c3/inseed-w09-c3r2-pay-withhold-on-6b27d24.bundle",
+      "sha256_or_commit": "20b44d5fb23b3d55f6e5058921b23feb953914791fecf849a489c036ee2b3c9d",
+      "uri": "git:3585906fc565a2f9b3c87717d337b06688f5ec4f:docs/CoOps/w09/c3/inseed-w09-c3r2-pay-withhold-on-6b27d24.bundle"
+    },
+    {
+      "local_path": "docs/CoOps/w09/c3/test_inseed_no_unverified_payment_r0.py",
+      "sha256_or_commit": "179c9c649a0795609ea79ebdd933295c2e13c29cf5dbee951c0050603afd2a34",
+      "uri": "git:3585906fc565a2f9b3c87717d337b06688f5ec4f:docs/CoOps/w09/c3/test_inseed_no_unverified_payment_r0.py"
+    },
+    {
+      "local_path": "docs/CoOps/w09/gatetests/README.md",
+      "sha256_or_commit": "0615417026da1f21d2ff262575c2a485465215b16acd2e279373dba30ca71358",
+      "uri": "git:3585906fc565a2f9b3c87717d337b06688f5ec4f:docs/CoOps/w09/gatetests/README.md"
+    },
+    {
+      "local_path": "docs/CoOps/w09/gatetests/coguardian_lint.py",
+      "sha256_or_commit": "977d32f477bd482bd0a7ac3e969d5797d7de3cc6dd2aba1d569327554bbb4e0d",
+      "uri": "git:3585906fc565a2f9b3c87717d337b06688f5ec4f:docs/CoOps/w09/gatetests/coguardian_lint.py"
+    },
+    {
+      "local_path": "docs/CoOps/w09/gatetests/envelope.py",
+      "sha256_or_commit": "57dc928b5ffde7524a9db63713a9612978ecfa2926be4805ae9bc509977476b4",
+      "uri": "git:3585906fc565a2f9b3c87717d337b06688f5ec4f:docs/CoOps/w09/gatetests/envelope.py"
+    },
+    {
+      "local_path": "docs/CoOps/w09/gatetests/falsify_map.py",
+      "sha256_or_commit": "035a73c88a969895e89401b78b866cef937ffee0701457aaa95687427bf29948",
+      "uri": "git:3585906fc565a2f9b3c87717d337b06688f5ec4f:docs/CoOps/w09/gatetests/falsify_map.py"
+    },
+    {
+      "local_path": "docs/CoOps/w09/gatetests/lint-CoCivium-090c532.R2.json",
+      "sha256_or_commit": "15ae5584df758056bc0e36f1ee5eb6687f9b30a2da2047113d6dec6ba477193e",
+      "uri": "git:3585906fc565a2f9b3c87717d337b06688f5ec4f:docs/CoOps/w09/gatetests/lint-CoCivium-090c532.R2.json"
+    },
+    {
+      "local_path": "docs/CoOps/w09/gatetests/lint-CoCivium-090c532.json",
+      "sha256_or_commit": "15ae5584df758056bc0e36f1ee5eb6687f9b30a2da2047113d6dec6ba477193e",
+      "uri": "git:3585906fc565a2f9b3c87717d337b06688f5ec4f:docs/CoOps/w09/gatetests/lint-CoCivium-090c532.json"
+    },
+    {
+      "local_path": "docs/CoOps/w09/gatetests/lint-CoPolitic-0fb29d9.json",
+      "sha256_or_commit": "d2134ac748afff24048114a231379f63bdd512faa48ad62ce52e6cb8e88e2e3e",
+      "uri": "git:3585906fc565a2f9b3c87717d337b06688f5ec4f:docs/CoOps/w09/gatetests/lint-CoPolitic-0fb29d9.json"
+    },
+    {
+      "local_path": "docs/CoOps/w09/gatetests/lint-CoPolitic-site-0fb29d9.R2.json",
+      "sha256_or_commit": "d2134ac748afff24048114a231379f63bdd512faa48ad62ce52e6cb8e88e2e3e",
+      "uri": "git:3585906fc565a2f9b3c87717d337b06688f5ec4f:docs/CoOps/w09/gatetests/lint-CoPolitic-site-0fb29d9.R2.json"
+    },
+    {
+      "local_path": "docs/CoOps/w09/gatetests/lint-InSeed-1d09646.R2.json",
+      "sha256_or_commit": "fb8872ddea1be20f036ecd3aa64f8e084d422e285fab8d1b605774ec1bf69cd4",
+      "uri": "git:3585906fc565a2f9b3c87717d337b06688f5ec4f:docs/CoOps/w09/gatetests/lint-InSeed-1d09646.R2.json"
+    },
+    {
+      "local_path": "docs/CoOps/w09/gatetests/lint-InSeed-1d09646.json",
+      "sha256_or_commit": "fb8872ddea1be20f036ecd3aa64f8e084d422e285fab8d1b605774ec1bf69cd4",
+      "uri": "git:3585906fc565a2f9b3c87717d337b06688f5ec4f:docs/CoOps/w09/gatetests/lint-InSeed-1d09646.json"
+    },
+    {
+      "local_path": "docs/CoOps/w09/gatetests/mutate_r2.py",
+      "sha256_or_commit": "21782454fd641e6fdf7301dddd094acedb063999e398e73edfe7e77e600fe416",
+      "uri": "git:3585906fc565a2f9b3c87717d337b06688f5ec4f:docs/CoOps/w09/gatetests/mutate_r2.py"
+    },
+    {
+      "local_path": "docs/CoOps/w09/gatetests/test_coguardian_lint.py",
+      "sha256_or_commit": "1e08792c3ca69405779623d4a06282651ed3947d9a54d18abde8559a580d368b",
+      "uri": "git:3585906fc565a2f9b3c87717d337b06688f5ec4f:docs/CoOps/w09/gatetests/test_coguardian_lint.py"
+    },
+    {
+      "sha256_or_commit": "135d51665b14caac8c366acb5619e350b61160da",
+      "uri": "bundle:docs/CoOps/w09/c3/inseed-w09-c3r2-pay-withhold-on-6b27d24.bundle#w09-c3r2-inseed-pay-withhold"
+    }
+  ],
+  "privacy_class": "public_safe_no_pii_values",
+  "produced_utc": "2026-11-24T20:30:00Z",
+  "reviewer_ids": [],
+  "schema_version": "CoLanding.Envelope.R0",
+  "session_instance_id": "w09-db64050f00b94d81",
+  "successor_job_ids": [
+    "W09-C4-readback",
+    "W09-C3-J2-linter-R3",
+    "W09-C3-J4-resweep"
+  ],
+  "supersedes_local_unlanded": [
+    "claude/w09-guardian-20261118@e5ad1b32",
+    "claude/w09-guardian-gatetests-20261118@abf49e4f",
+    "claude/w09-guardian-c2-20261119@3ada9c24"
+  ],
+  "tests": [
+    "gate linter fixtures 60/60 PASS",
+    "mutate_r2 12/12 killed",
+    "authority-map test PASS",
+    "InSeed guard 5/5 on 135d516",
+    "raw-byte hazard scan of push bundle"
+  ],
+  "worker_id": "W09"
+}

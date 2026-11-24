@@ -1,0 +1,39 @@
+{
+ "base": "a07f1544f83ccf13fad224328558fe77a176223b",
+ "branch": "claude/w09-guardian-c3-20261124",
+ "content_commit": "3585906fc565a2f9b3c87717d337b06688f5ec4f",
+ "cycle_id": "C4-20261124",
+ "inseed_candidate": {
+  "bundle": "c3/inseed-w09-c3r2-pay-withhold-on-6b27d24.bundle",
+  "commit": "135d51665b14caac8c366acb5619e350b61160da",
+  "parent": "6b27d24",
+  "target_branch": "claude/w09-inseed-pay-withhold-r2-20261124"
+ },
+ "next_eligible": [
+  {
+   "id": "W09-C4-readback",
+   "what": "independent GitHub readback of both pushed refs; flip disposition to SOURCE_VISIBLE"
+  },
+  {
+   "id": "W09-C3-J2",
+   "what": "linter R3: two-level script push, base64 wallet"
+  },
+  {
+   "id": "W09-C3-J4",
+   "what": "re-sweep candidates on source drift"
+  },
+  {
+   "id": "W09-X2-AUDIT",
+   "what": "X2 unlanded-repo triage (CoHP no remote; CoBusMirror 360+ ahead; 3 more) \u2014 owner-run, private, not for public repo"
+  }
+ ],
+ "schema": "W09.RestartManifest.R1",
+ "session_instance_id": "w09-db64050f00b94d81",
+ "verify": [
+  "python3 -I docs/CoOps/w09/gatetests/test_coguardian_lint.py",
+  "python3 -I docs/CoOps/w09/gatetests/mutate_r2.py",
+  "python3 -I docs/CoOps/w09/gatetests/envelope.py verify docs/CoOps/w09/LANDING_ENVELOPE.json --files-root ."
+ ],
+ "worker_id": "W09",
+ "written_utc": "2026-11-24T20:30:00Z"
+}
