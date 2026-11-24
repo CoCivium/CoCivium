@@ -1,0 +1,845 @@
+{
+  "schema": "cocivium.coops.w09.authority-map.v0",
+  "revision": "R1",
+  "supersedes": {
+    "revision": "R0",
+    "commit": "2f20869c",
+    "sha256": "48ab672870ba6735fe5ea91ee02f7a8606eb98c946296671d7d57a89a715f5cd",
+    "status": "SUPERSEDED_RETAINED",
+    "falsified_rows": [
+      "PII-COCIVIUM"
+    ]
+  },
+  "falsification": {
+    "tool": "falsify_map.py sha256 035a73c88a969895e89401b78b866cef937ffee0701457aaa95687427bf29948",
+    "R0_result": "28/29 checks passed; 12 cited blob SHAs resolve at named paths in pinned trees; 1 claim falsified (PII-COCIVIUM)",
+    "negative_controls": "corrupted blob sha and renamed path both detected",
+    "R1_result": "30/30 checks passed"
+  },
+  "corroboration": [
+    {
+      "what": "WF-INSEED-SCHEDULED-WRITERS blob hashes and no-permissions finding",
+      "source": "github:CoCivium/CoCivium@69b71d56:docs/CoSites/INSEED_SOURCE_WRITER_GATE_20261118_R0.md blob a8632b2f34928df2d02a35ee8b8c70f6e2f21644",
+      "independence": "SOURCE_FACT_MATCH_ONLY: that record says it was prompted by a Claude report, so it shares reasoning lineage; not an independent review of this map"
+    }
+  ],
+  "lint_reports": {
+    "InSeed@1d09646": "fb8872ddea1be20f036ecd3aa64f8e084d422e285fab8d1b605774ec1bf69cd4",
+    "CoCivium@090c532": "15ae5584df758056bc0e36f1ee5eb6687f9b30a2da2047113d6dec6ba477193e",
+    "CoPolitic-site@0fb29d9": "d2134ac748afff24048114a231379f63bdd512faa48ad62ce52e6cb8e88e2e3e",
+    "linter": "coguardian_lint.py R1 sha256 2a8e0ef5bd9b43b0c4b2ba6273a5a2cd5ef18f528f6d2d22f928e5d2ab073172"
+  },
+  "worker_id": "W09",
+  "status": "CANDIDATE, NOT AUTHORITY",
+  "generated_utc": "2026-11-18T18:30:00Z",
+  "sources": {
+    "InSeed": "https://github.com/CoCivium/InSeed/commit/1d09646",
+    "CoCivium": "https://github.com/CoCivium/CoCivium/commit/090c532",
+    "CoPolitic-site": "https://github.com/CoCivium/CoPolitic-site/commit/0fb29d9",
+    "dispatch_base": "https://github.com/CoCivium/CoCivium/commit/a07f154",
+    "W04_cloudflare": "unavailable"
+  },
+  "method": "Read-only clones of public repos via HTTPS; static inspection; no API, DNS, registrar or Pages reads succeeded.",
+  "nonclaims": [
+    "No person or account is asserted to hold any authority.",
+    "No merge, deploy, DNS, Pages, comment, credential or payment action taken.",
+    "Nothing claimed about other workers."
+  ],
+  "change_envelope_schema": [
+    "change_id",
+    "zone_or_domain",
+    "record_set_before_readback_utc",
+    "record_set_after",
+    "ttl_and_propagation_window",
+    "authorizing_principal_evidence",
+    "independent_reviewer",
+    "maintenance_window_utc",
+    "rollback_record_set",
+    "post_change_probe"
+  ],
+  "rows": [
+    {
+      "id": "MERGE-INSEED",
+      "action": "merge",
+      "resource": "CoCivium/InSeed:main",
+      "current_performer": "unknown",
+      "current_performer_evidence": null,
+      "required_authority": "Repository write/maintain role under an active branch ruleset requiring reviewed PR; reviewer independent of author.",
+      "evidence": [
+        "github:CoCivium/InSeed@1d09646:.github/ (no CODEOWNERS file present)",
+        "github:CoCivium/InSeed@1d09646 main head 1d09646",
+        "Branch protection / rulesets: unknown (needs authenticated GET /repos/{repo}/rulesets)",
+        "No authenticated GitHub/Cloudflare/registrar read was available to W09 (no linked GitHub account; shell DoH lookups blocked by allowlist). Commit authorship is spoofable and is not evidence of authority."
+      ],
+      "findings": [],
+      "rollback": "git revert <merge_sha> via reviewed PR to main; never force-push main.",
+      "gate_status": "HOLD"
+    },
+    {
+      "id": "MERGE-COCIVIUM",
+      "action": "merge",
+      "resource": "CoCivium/CoCivium:main",
+      "current_performer": "unknown",
+      "current_performer_evidence": null,
+      "required_authority": "Repository write/maintain role under an active branch ruleset requiring reviewed PR; reviewer independent of author.",
+      "evidence": [
+        "github:CoCivium/CoCivium@090c532:.github/CODEOWNERS blob 849dca01524a8d5e2dcfcfd017fe0e35c3161530 (routes review to @CoCivium; file itself says enforcement depends on rulesets)",
+        "Branch protection / rulesets: unknown (needs authenticated GET /repos/{repo}/rulesets)",
+        "No authenticated GitHub/Cloudflare/registrar read was available to W09 (no linked GitHub account; shell DoH lookups blocked by allowlist). Commit authorship is spoofable and is not evidence of authority."
+      ],
+      "findings": [
+        "CODEOWNERS is routing, not enforcement, unless a ruleset requires code-owner review."
+      ],
+      "rollback": "git revert <merge_sha> via reviewed PR to main; never force-push main.",
+      "gate_status": "HOLD"
+    },
+    {
+      "id": "MERGE-COPOLITIC",
+      "action": "merge",
+      "resource": "CoCivium/CoPolitic-site:main",
+      "current_performer": "unknown",
+      "current_performer_evidence": null,
+      "required_authority": "Repository write/maintain role under an active branch ruleset requiring reviewed PR; reviewer independent of author.",
+      "evidence": [
+        "github:CoCivium/CoPolitic-site@0fb29d9: tree contains only README.md; no CODEOWNERS",
+        "Branch protection / rulesets: unknown (needs authenticated GET /repos/{repo}/rulesets)",
+        "No authenticated GitHub/Cloudflare/registrar read was available to W09 (no linked GitHub account; shell DoH lookups blocked by allowlist). Commit authorship is spoofable and is not evidence of authority."
+      ],
+      "findings": [],
+      "rollback": "git revert <merge_sha> via reviewed PR to main; never force-push main.",
+      "gate_status": "HOLD"
+    },
+    {
+      "id": "PAGES-INSEED",
+      "action": "Pages source/domain",
+      "resource": "CoCivium/InSeed GitHub Pages -> inseed.com",
+      "current_performer": "unknown",
+      "current_performer_evidence": null,
+      "required_authority": "Repo admin to change Pages source; custom domain additionally requires DNS control of inseed.com (verified-domain in org settings recommended).",
+      "evidence": [
+        "github:CoCivium/InSeed@1d09646:CNAME = 'inseed.com' blob 747424ed2fa2010060c952ede68b7a80bc0deff8",
+        "github:CoCivium/InSeed@1d09646:.github/workflows/ci.yml blob f4be0fa597ccb5f8db2edea131a4c0fcbd820446 probes https://cocivium.github.io/InSeed/board/",
+        "Pages source = main root: INFERRED (dispatch evidence + root index.html + CNAME), not read from Pages API",
+        "No authenticated GitHub/Cloudflare/registrar read was available to W09 (no linked GitHub account; shell DoH lookups blocked by allowlist). Commit authorship is spoofable and is not evidence of authority."
+      ],
+      "findings": [
+        "groupfold_CNAME.txt at root names a second domain (groupfold.org); inert as a .txt but signals domain-binding intent outside the three sites."
+      ],
+      "rollback": "Record GET /repos/CoCivium/InSeed/pages before change; restore prior source branch/path and cname via PUT; keep CNAME file at prior blob.",
+      "gate_status": "HOLD"
+    },
+    {
+      "id": "PAGES-COCIVIUM",
+      "action": "Pages source/domain",
+      "resource": "CoCivium/CoCivium Pages -> cocivium.org",
+      "current_performer": "unknown",
+      "current_performer_evidence": null,
+      "required_authority": "Repo admin plus DNS control of cocivium.org.",
+      "evidence": [
+        "github:CoCivium/CoCivium@090c532: no CNAME file anywhere in tree",
+        "github:CoCivium/CoCivium@090c532:.github/workflows/*: 67 workflows, none use deploy-pages or pages:write",
+        "No authenticated GitHub/Cloudflare/registrar read was available to W09 (no linked GitHub account; shell DoH lookups blocked by allowlist). Commit authorship is spoofable and is not evidence of authority."
+      ],
+      "findings": [
+        "No evidence in repo that cocivium.org is served from this repo; serving origin unknown."
+      ],
+      "rollback": "Disable Pages or restore recorded prior Pages config; remove any added CNAME via revert PR.",
+      "gate_status": "HOLD"
+    },
+    {
+      "id": "PAGES-COPOLITIC",
+      "action": "Pages source/domain",
+      "resource": "CoCivium/CoPolitic-site Pages -> copolitic.org",
+      "current_performer": "unknown",
+      "current_performer_evidence": null,
+      "required_authority": "Repo admin plus DNS control of copolitic.org.",
+      "evidence": [
+        "github:CoCivium/CoPolitic-site@0fb29d9: no index.html, no CNAME (tree = README.md only)",
+        "github:CoCivium/CoPolitic-site@candidate/copolitic-first-use-source-site-r0-20261110:docs/COPOLITIC_RELEASE_GATE_R0_20261117.md states HOSTING_HELD / OWNER_UNVERIFIED",
+        "No authenticated GitHub/Cloudflare/registrar read was available to W09 (no linked GitHub account; shell DoH lookups blocked by allowlist). Commit authorship is spoofable and is not evidence of authority."
+      ],
+      "findings": [
+        "Enabling Pages from main now would publish a README-only site; main is not a deployable source."
+      ],
+      "rollback": "Disable Pages / restore recorded prior config.",
+      "gate_status": "HOLD"
+    },
+    {
+      "id": "WF-INSEED-SCHEDULED-WRITERS",
+      "action": "workflow enable/disable",
+      "resource": "CoCivium/InSeed .github/workflows/autoevo.yml (daily 10:30Z) + coevo-forever.yml (hourly)",
+      "current_performer": "unknown",
+      "current_performer_evidence": null,
+      "required_authority": "Repo write (actions) to enable/disable; changing the file needs merge authority (MERGE-INSEED).",
+      "evidence": [
+        "github:CoCivium/InSeed@1d09646:.github/workflows/autoevo.yml blob 3e73d1886504ab3f4c37e2294ee1fd62d0e45953 (appends evo.log, git push)",
+        "github:CoCivium/InSeed@1d09646:.github/workflows/coevo-forever.yml blob 16fde065c20941d9fd16a7b33b0cc2175593a82f (appends to index.html hourly, git push)",
+        "No permissions: block in either file -> effective GITHUB_TOKEN scope depends on unknown repo default",
+        "github:CoCivium/InSeed@1d09646: git log --author=CoEvoBot on main = 0 commits (no proof these writers ever landed)",
+        "No authenticated GitHub/Cloudflare/registrar read was available to W09 (no linked GitHub account; shell DoH lookups blocked by allowlist). Commit authorship is spoofable and is not evidence of authority."
+      ],
+      "findings": [
+        "coevo-forever.yml would mutate the production homepage (index.html) every hour if enabled with write token; disable is the safe default.",
+        "Enabled/disabled state and run history unknown without Actions API."
+      ],
+      "rollback": "gh workflow disable/enable <file> is symmetric; record state before change. If a run lands, git revert its commit.",
+      "gate_status": "HOLD"
+    },
+    {
+      "id": "WF-INSEED-CI",
+      "action": "workflow enable/disable",
+      "resource": "CoCivium/InSeed .github/workflows/ci.yml (on push)",
+      "current_performer": "unknown",
+      "current_performer_evidence": null,
+      "required_authority": "Repo write (actions).",
+      "evidence": [
+        "github:CoCivium/InSeed@1d09646:.github/workflows/ci.yml blob f4be0fa597ccb5f8db2edea131a4c0fcbd820446",
+        "curl loop omits the URL argument ($u) so probes test nothing; then reads btcAddr/ethAddr from live ping"
+      ],
+      "findings": [
+        "Read-only externally but gives false assurance; not a valid gate."
+      ],
+      "rollback": "gh workflow disable/enable; revert any edit PR.",
+      "gate_status": "HOLD"
+    },
+    {
+      "id": "WF-COCIVIUM-SCHEDULED",
+      "action": "workflow enable/disable",
+      "resource": "CoCivium/CoCivium 5 scheduled workflows (cofront-public-consumer, co-living-media-r0, cogoall-unattended-proof-pulse, coinverse-receiver, cothumb-evoall-bounded-r1)",
+      "current_performer": "unknown",
+      "current_performer_evidence": null,
+      "required_authority": "Repo write (actions); file edits need MERGE-COCIVIUM.",
+      "evidence": [
+        "github:CoCivium/CoCivium@090c532:.github/workflows: 67 files, 5 with schedule:, 0 contain 'git push', 0 declare contents: write, 0 reference secrets.*",
+        "github:CoCivium/CoCivium@090c532:.github/workflows/cofront-public-consumer.yml blob d6d10ac2fdda87c944edecbe36317c334ea51b89 has no permissions: block",
+        "No authenticated GitHub/Cloudflare/registrar read was available to W09 (no linked GitHub account; shell DoH lookups blocked by allowlist). Commit authorship is spoofable and is not evidence of authority."
+      ],
+      "findings": [
+        "cofront-public-consumer.yml lacks an explicit permissions block; add contents: read."
+      ],
+      "rollback": "gh workflow disable/enable; record state first.",
+      "gate_status": "HOLD"
+    },
+    {
+      "id": "WF-COPOLITIC",
+      "action": "workflow enable/disable",
+      "resource": "CoCivium/CoPolitic-site workflows",
+      "current_performer": "unknown",
+      "current_performer_evidence": null,
+      "required_authority": "Repo write (actions).",
+      "evidence": [
+        "github:CoCivium/CoPolitic-site@0fb29d9: no .github/workflows directory"
+      ],
+      "findings": [],
+      "rollback": "N/A now; any added workflow removed by revert PR.",
+      "gate_status": "NO_GATE_PRESENT"
+    },
+    {
+      "id": "DNS-INSEED-COM",
+      "action": "DNS record change",
+      "resource": "inseed.com zone (A/AAAA/CNAME/CAA/redirect rules)",
+      "current_performer": "unknown",
+      "current_performer_evidence": null,
+      "required_authority": "DNS-provider account role with zone edit (e.g. Cloudflare Zone:DNS:Edit scoped to this zone) held by a recorded release principal, plus independent reviewer.",
+      "evidence": [
+        "W04 Cloudflare zone evidence: NOT AVAILABLE to W09 (not present on any readable branch of the three repos; dispatch packet a07f154 says registrar authority unresolved).",
+        "github:CoCivium/CoCivium@a07f154:docs/CoOps/COCLAUDE_TEN_CONTEXT_DISPATCH_R0.md (redirects pending DNS/ownership proof)",
+        "No authenticated GitHub/Cloudflare/registrar read was available to W09 (no linked GitHub account; shell DoH lookups blocked by allowlist). Commit authorship is spoofable and is not evidence of authority."
+      ],
+      "findings": [],
+      "rollback": "Re-apply rollback_record_set from envelope; verify with post_change_probe from two resolvers.",
+      "gate_status": "HOLD",
+      "change_envelope_required": true,
+      "change_envelope_fields": [
+        "change_id",
+        "zone_or_domain",
+        "record_set_before_readback_utc",
+        "record_set_after",
+        "ttl_and_propagation_window",
+        "authorizing_principal_evidence",
+        "independent_reviewer",
+        "maintenance_window_utc",
+        "rollback_record_set",
+        "post_change_probe"
+      ]
+    },
+    {
+      "id": "REG-INSEED-COM",
+      "action": "registrar change",
+      "resource": "inseed.com registration (nameservers, contacts, transfer lock, auto-renew)",
+      "current_performer": "unknown",
+      "current_performer_evidence": null,
+      "required_authority": "Registrar account owner (registrant) with 2FA; transfer requires unlock + auth code.",
+      "evidence": [
+        "W04 Cloudflare zone evidence: NOT AVAILABLE to W09 (not present on any readable branch of the three repos; dispatch packet a07f154 says registrar authority unresolved).",
+        "Registrar identity: unknown",
+        "No authenticated GitHub/Cloudflare/registrar read was available to W09 (no linked GitHub account; shell DoH lookups blocked by allowlist). Commit authorship is spoofable and is not evidence of authority."
+      ],
+      "findings": [],
+      "rollback": "Nameserver change: restore prior NS set from envelope. Transfer: effectively irreversible within 60-day lock -> treat as one-way; require owner + two reviewers.",
+      "gate_status": "HOLD",
+      "change_envelope_required": true,
+      "change_envelope_fields": [
+        "change_id",
+        "zone_or_domain",
+        "record_set_before_readback_utc",
+        "record_set_after",
+        "ttl_and_propagation_window",
+        "authorizing_principal_evidence",
+        "independent_reviewer",
+        "maintenance_window_utc",
+        "rollback_record_set",
+        "post_change_probe"
+      ]
+    },
+    {
+      "id": "MAIL-INSEED-COM",
+      "action": "email records",
+      "resource": "inseed.com MX/SPF/DKIM/DMARC/MTA-STS",
+      "current_performer": "unknown",
+      "current_performer_evidence": null,
+      "required_authority": "Same as DNS row plus mail-provider admin for DKIM keys.",
+      "evidence": [
+        "W04 Cloudflare zone evidence: NOT AVAILABLE to W09 (not present on any readable branch of the three repos; dispatch packet a07f154 says registrar authority unresolved).",
+        "Current MX/TXT: unknown (read-only DoH blocked from W09 workspace)",
+        "No authenticated GitHub/Cloudflare/registrar read was available to W09 (no linked GitHub account; shell DoH lookups blocked by allowlist). Commit authorship is spoofable and is not evidence of authority."
+      ],
+      "findings": [],
+      "rollback": "Restore prior MX/TXT set from envelope; keep DMARC at p=none during rollback window.",
+      "gate_status": "HOLD",
+      "change_envelope_required": true,
+      "change_envelope_fields": [
+        "change_id",
+        "zone_or_domain",
+        "record_set_before_readback_utc",
+        "record_set_after",
+        "ttl_and_propagation_window",
+        "authorizing_principal_evidence",
+        "independent_reviewer",
+        "maintenance_window_utc",
+        "rollback_record_set",
+        "post_change_probe"
+      ]
+    },
+    {
+      "id": "DNS-COCIVIUM-ORG",
+      "action": "DNS record change",
+      "resource": "cocivium.org zone (A/AAAA/CNAME/CAA/redirect rules)",
+      "current_performer": "unknown",
+      "current_performer_evidence": null,
+      "required_authority": "DNS-provider account role with zone edit (e.g. Cloudflare Zone:DNS:Edit scoped to this zone) held by a recorded release principal, plus independent reviewer.",
+      "evidence": [
+        "W04 Cloudflare zone evidence: NOT AVAILABLE to W09 (not present on any readable branch of the three repos; dispatch packet a07f154 says registrar authority unresolved).",
+        "github:CoCivium/CoCivium@a07f154:docs/CoOps/COCLAUDE_TEN_CONTEXT_DISPATCH_R0.md (redirects pending DNS/ownership proof)",
+        "No authenticated GitHub/Cloudflare/registrar read was available to W09 (no linked GitHub account; shell DoH lookups blocked by allowlist). Commit authorship is spoofable and is not evidence of authority."
+      ],
+      "findings": [],
+      "rollback": "Re-apply rollback_record_set from envelope; verify with post_change_probe from two resolvers.",
+      "gate_status": "HOLD",
+      "change_envelope_required": true,
+      "change_envelope_fields": [
+        "change_id",
+        "zone_or_domain",
+        "record_set_before_readback_utc",
+        "record_set_after",
+        "ttl_and_propagation_window",
+        "authorizing_principal_evidence",
+        "independent_reviewer",
+        "maintenance_window_utc",
+        "rollback_record_set",
+        "post_change_probe"
+      ]
+    },
+    {
+      "id": "REG-COCIVIUM-ORG",
+      "action": "registrar change",
+      "resource": "cocivium.org registration (nameservers, contacts, transfer lock, auto-renew)",
+      "current_performer": "unknown",
+      "current_performer_evidence": null,
+      "required_authority": "Registrar account owner (registrant) with 2FA; transfer requires unlock + auth code.",
+      "evidence": [
+        "W04 Cloudflare zone evidence: NOT AVAILABLE to W09 (not present on any readable branch of the three repos; dispatch packet a07f154 says registrar authority unresolved).",
+        "Registrar identity: unknown",
+        "No authenticated GitHub/Cloudflare/registrar read was available to W09 (no linked GitHub account; shell DoH lookups blocked by allowlist). Commit authorship is spoofable and is not evidence of authority."
+      ],
+      "findings": [],
+      "rollback": "Nameserver change: restore prior NS set from envelope. Transfer: effectively irreversible within 60-day lock -> treat as one-way; require owner + two reviewers.",
+      "gate_status": "HOLD",
+      "change_envelope_required": true,
+      "change_envelope_fields": [
+        "change_id",
+        "zone_or_domain",
+        "record_set_before_readback_utc",
+        "record_set_after",
+        "ttl_and_propagation_window",
+        "authorizing_principal_evidence",
+        "independent_reviewer",
+        "maintenance_window_utc",
+        "rollback_record_set",
+        "post_change_probe"
+      ]
+    },
+    {
+      "id": "MAIL-COCIVIUM-ORG",
+      "action": "email records",
+      "resource": "cocivium.org MX/SPF/DKIM/DMARC/MTA-STS",
+      "current_performer": "unknown",
+      "current_performer_evidence": null,
+      "required_authority": "Same as DNS row plus mail-provider admin for DKIM keys.",
+      "evidence": [
+        "W04 Cloudflare zone evidence: NOT AVAILABLE to W09 (not present on any readable branch of the three repos; dispatch packet a07f154 says registrar authority unresolved).",
+        "Current MX/TXT: unknown (read-only DoH blocked from W09 workspace)",
+        "No authenticated GitHub/Cloudflare/registrar read was available to W09 (no linked GitHub account; shell DoH lookups blocked by allowlist). Commit authorship is spoofable and is not evidence of authority."
+      ],
+      "findings": [],
+      "rollback": "Restore prior MX/TXT set from envelope; keep DMARC at p=none during rollback window.",
+      "gate_status": "HOLD",
+      "change_envelope_required": true,
+      "change_envelope_fields": [
+        "change_id",
+        "zone_or_domain",
+        "record_set_before_readback_utc",
+        "record_set_after",
+        "ttl_and_propagation_window",
+        "authorizing_principal_evidence",
+        "independent_reviewer",
+        "maintenance_window_utc",
+        "rollback_record_set",
+        "post_change_probe"
+      ]
+    },
+    {
+      "id": "DNS-COPOLITIC-ORG",
+      "action": "DNS record change",
+      "resource": "copolitic.org zone (A/AAAA/CNAME/CAA/redirect rules)",
+      "current_performer": "unknown",
+      "current_performer_evidence": null,
+      "required_authority": "DNS-provider account role with zone edit (e.g. Cloudflare Zone:DNS:Edit scoped to this zone) held by a recorded release principal, plus independent reviewer.",
+      "evidence": [
+        "W04 Cloudflare zone evidence: NOT AVAILABLE to W09 (not present on any readable branch of the three repos; dispatch packet a07f154 says registrar authority unresolved).",
+        "github:CoCivium/CoCivium@a07f154:docs/CoOps/COCLAUDE_TEN_CONTEXT_DISPATCH_R0.md (redirects pending DNS/ownership proof)",
+        "No authenticated GitHub/Cloudflare/registrar read was available to W09 (no linked GitHub account; shell DoH lookups blocked by allowlist). Commit authorship is spoofable and is not evidence of authority."
+      ],
+      "findings": [],
+      "rollback": "Re-apply rollback_record_set from envelope; verify with post_change_probe from two resolvers.",
+      "gate_status": "HOLD",
+      "change_envelope_required": true,
+      "change_envelope_fields": [
+        "change_id",
+        "zone_or_domain",
+        "record_set_before_readback_utc",
+        "record_set_after",
+        "ttl_and_propagation_window",
+        "authorizing_principal_evidence",
+        "independent_reviewer",
+        "maintenance_window_utc",
+        "rollback_record_set",
+        "post_change_probe"
+      ]
+    },
+    {
+      "id": "REG-COPOLITIC-ORG",
+      "action": "registrar change",
+      "resource": "copolitic.org registration (nameservers, contacts, transfer lock, auto-renew)",
+      "current_performer": "unknown",
+      "current_performer_evidence": null,
+      "required_authority": "Registrar account owner (registrant) with 2FA; transfer requires unlock + auth code.",
+      "evidence": [
+        "W04 Cloudflare zone evidence: NOT AVAILABLE to W09 (not present on any readable branch of the three repos; dispatch packet a07f154 says registrar authority unresolved).",
+        "Registrar identity: unknown",
+        "No authenticated GitHub/Cloudflare/registrar read was available to W09 (no linked GitHub account; shell DoH lookups blocked by allowlist). Commit authorship is spoofable and is not evidence of authority."
+      ],
+      "findings": [],
+      "rollback": "Nameserver change: restore prior NS set from envelope. Transfer: effectively irreversible within 60-day lock -> treat as one-way; require owner + two reviewers.",
+      "gate_status": "HOLD",
+      "change_envelope_required": true,
+      "change_envelope_fields": [
+        "change_id",
+        "zone_or_domain",
+        "record_set_before_readback_utc",
+        "record_set_after",
+        "ttl_and_propagation_window",
+        "authorizing_principal_evidence",
+        "independent_reviewer",
+        "maintenance_window_utc",
+        "rollback_record_set",
+        "post_change_probe"
+      ]
+    },
+    {
+      "id": "MAIL-COPOLITIC-ORG",
+      "action": "email records",
+      "resource": "copolitic.org MX/SPF/DKIM/DMARC/MTA-STS",
+      "current_performer": "unknown",
+      "current_performer_evidence": null,
+      "required_authority": "Same as DNS row plus mail-provider admin for DKIM keys.",
+      "evidence": [
+        "W04 Cloudflare zone evidence: NOT AVAILABLE to W09 (not present on any readable branch of the three repos; dispatch packet a07f154 says registrar authority unresolved).",
+        "Current MX/TXT: unknown (read-only DoH blocked from W09 workspace)",
+        "No authenticated GitHub/Cloudflare/registrar read was available to W09 (no linked GitHub account; shell DoH lookups blocked by allowlist). Commit authorship is spoofable and is not evidence of authority."
+      ],
+      "findings": [],
+      "rollback": "Restore prior MX/TXT set from envelope; keep DMARC at p=none during rollback window.",
+      "gate_status": "HOLD",
+      "change_envelope_required": true,
+      "change_envelope_fields": [
+        "change_id",
+        "zone_or_domain",
+        "record_set_before_readback_utc",
+        "record_set_after",
+        "ttl_and_propagation_window",
+        "authorizing_principal_evidence",
+        "independent_reviewer",
+        "maintenance_window_utc",
+        "rollback_record_set",
+        "post_change_probe"
+      ]
+    },
+    {
+      "id": "DNS-COCIVIUM-COM",
+      "action": "DNS record change",
+      "resource": "cocivium.com (proposed redirect) zone (A/AAAA/CNAME/CAA/redirect rules)",
+      "current_performer": "unknown",
+      "current_performer_evidence": null,
+      "required_authority": "DNS-provider account role with zone edit (e.g. Cloudflare Zone:DNS:Edit scoped to this zone) held by a recorded release principal, plus independent reviewer.",
+      "evidence": [
+        "W04 Cloudflare zone evidence: NOT AVAILABLE to W09 (not present on any readable branch of the three repos; dispatch packet a07f154 says registrar authority unresolved).",
+        "github:CoCivium/CoCivium@a07f154:docs/CoOps/COCLAUDE_TEN_CONTEXT_DISPATCH_R0.md (redirects pending DNS/ownership proof)",
+        "No authenticated GitHub/Cloudflare/registrar read was available to W09 (no linked GitHub account; shell DoH lookups blocked by allowlist). Commit authorship is spoofable and is not evidence of authority."
+      ],
+      "findings": [],
+      "rollback": "Re-apply rollback_record_set from envelope; verify with post_change_probe from two resolvers.",
+      "gate_status": "HOLD",
+      "change_envelope_required": true,
+      "change_envelope_fields": [
+        "change_id",
+        "zone_or_domain",
+        "record_set_before_readback_utc",
+        "record_set_after",
+        "ttl_and_propagation_window",
+        "authorizing_principal_evidence",
+        "independent_reviewer",
+        "maintenance_window_utc",
+        "rollback_record_set",
+        "post_change_probe"
+      ]
+    },
+    {
+      "id": "REG-COCIVIUM-COM",
+      "action": "registrar change",
+      "resource": "cocivium.com (proposed redirect) registration (nameservers, contacts, transfer lock, auto-renew)",
+      "current_performer": "unknown",
+      "current_performer_evidence": null,
+      "required_authority": "Registrar account owner (registrant) with 2FA; transfer requires unlock + auth code.",
+      "evidence": [
+        "W04 Cloudflare zone evidence: NOT AVAILABLE to W09 (not present on any readable branch of the three repos; dispatch packet a07f154 says registrar authority unresolved).",
+        "Registrar identity: unknown",
+        "No authenticated GitHub/Cloudflare/registrar read was available to W09 (no linked GitHub account; shell DoH lookups blocked by allowlist). Commit authorship is spoofable and is not evidence of authority."
+      ],
+      "findings": [],
+      "rollback": "Nameserver change: restore prior NS set from envelope. Transfer: effectively irreversible within 60-day lock -> treat as one-way; require owner + two reviewers.",
+      "gate_status": "HOLD",
+      "change_envelope_required": true,
+      "change_envelope_fields": [
+        "change_id",
+        "zone_or_domain",
+        "record_set_before_readback_utc",
+        "record_set_after",
+        "ttl_and_propagation_window",
+        "authorizing_principal_evidence",
+        "independent_reviewer",
+        "maintenance_window_utc",
+        "rollback_record_set",
+        "post_change_probe"
+      ]
+    },
+    {
+      "id": "MAIL-COCIVIUM-COM",
+      "action": "email records",
+      "resource": "cocivium.com (proposed redirect) MX/SPF/DKIM/DMARC/MTA-STS",
+      "current_performer": "unknown",
+      "current_performer_evidence": null,
+      "required_authority": "Same as DNS row plus mail-provider admin for DKIM keys.",
+      "evidence": [
+        "W04 Cloudflare zone evidence: NOT AVAILABLE to W09 (not present on any readable branch of the three repos; dispatch packet a07f154 says registrar authority unresolved).",
+        "Current MX/TXT: unknown (read-only DoH blocked from W09 workspace)",
+        "No authenticated GitHub/Cloudflare/registrar read was available to W09 (no linked GitHub account; shell DoH lookups blocked by allowlist). Commit authorship is spoofable and is not evidence of authority."
+      ],
+      "findings": [],
+      "rollback": "Restore prior MX/TXT set from envelope; keep DMARC at p=none during rollback window.",
+      "gate_status": "HOLD",
+      "change_envelope_required": true,
+      "change_envelope_fields": [
+        "change_id",
+        "zone_or_domain",
+        "record_set_before_readback_utc",
+        "record_set_after",
+        "ttl_and_propagation_window",
+        "authorizing_principal_evidence",
+        "independent_reviewer",
+        "maintenance_window_utc",
+        "rollback_record_set",
+        "post_change_probe"
+      ]
+    },
+    {
+      "id": "DNS-COPOLITIC-COM",
+      "action": "DNS record change",
+      "resource": "copolitic.com (proposed redirect) zone (A/AAAA/CNAME/CAA/redirect rules)",
+      "current_performer": "unknown",
+      "current_performer_evidence": null,
+      "required_authority": "DNS-provider account role with zone edit (e.g. Cloudflare Zone:DNS:Edit scoped to this zone) held by a recorded release principal, plus independent reviewer.",
+      "evidence": [
+        "W04 Cloudflare zone evidence: NOT AVAILABLE to W09 (not present on any readable branch of the three repos; dispatch packet a07f154 says registrar authority unresolved).",
+        "github:CoCivium/CoCivium@a07f154:docs/CoOps/COCLAUDE_TEN_CONTEXT_DISPATCH_R0.md (redirects pending DNS/ownership proof)",
+        "No authenticated GitHub/Cloudflare/registrar read was available to W09 (no linked GitHub account; shell DoH lookups blocked by allowlist). Commit authorship is spoofable and is not evidence of authority."
+      ],
+      "findings": [],
+      "rollback": "Re-apply rollback_record_set from envelope; verify with post_change_probe from two resolvers.",
+      "gate_status": "HOLD",
+      "change_envelope_required": true,
+      "change_envelope_fields": [
+        "change_id",
+        "zone_or_domain",
+        "record_set_before_readback_utc",
+        "record_set_after",
+        "ttl_and_propagation_window",
+        "authorizing_principal_evidence",
+        "independent_reviewer",
+        "maintenance_window_utc",
+        "rollback_record_set",
+        "post_change_probe"
+      ]
+    },
+    {
+      "id": "REG-COPOLITIC-COM",
+      "action": "registrar change",
+      "resource": "copolitic.com (proposed redirect) registration (nameservers, contacts, transfer lock, auto-renew)",
+      "current_performer": "unknown",
+      "current_performer_evidence": null,
+      "required_authority": "Registrar account owner (registrant) with 2FA; transfer requires unlock + auth code.",
+      "evidence": [
+        "W04 Cloudflare zone evidence: NOT AVAILABLE to W09 (not present on any readable branch of the three repos; dispatch packet a07f154 says registrar authority unresolved).",
+        "Registrar identity: unknown",
+        "No authenticated GitHub/Cloudflare/registrar read was available to W09 (no linked GitHub account; shell DoH lookups blocked by allowlist). Commit authorship is spoofable and is not evidence of authority."
+      ],
+      "findings": [],
+      "rollback": "Nameserver change: restore prior NS set from envelope. Transfer: effectively irreversible within 60-day lock -> treat as one-way; require owner + two reviewers.",
+      "gate_status": "HOLD",
+      "change_envelope_required": true,
+      "change_envelope_fields": [
+        "change_id",
+        "zone_or_domain",
+        "record_set_before_readback_utc",
+        "record_set_after",
+        "ttl_and_propagation_window",
+        "authorizing_principal_evidence",
+        "independent_reviewer",
+        "maintenance_window_utc",
+        "rollback_record_set",
+        "post_change_probe"
+      ]
+    },
+    {
+      "id": "MAIL-COPOLITIC-COM",
+      "action": "email records",
+      "resource": "copolitic.com (proposed redirect) MX/SPF/DKIM/DMARC/MTA-STS",
+      "current_performer": "unknown",
+      "current_performer_evidence": null,
+      "required_authority": "Same as DNS row plus mail-provider admin for DKIM keys.",
+      "evidence": [
+        "W04 Cloudflare zone evidence: NOT AVAILABLE to W09 (not present on any readable branch of the three repos; dispatch packet a07f154 says registrar authority unresolved).",
+        "Current MX/TXT: unknown (read-only DoH blocked from W09 workspace)",
+        "No authenticated GitHub/Cloudflare/registrar read was available to W09 (no linked GitHub account; shell DoH lookups blocked by allowlist). Commit authorship is spoofable and is not evidence of authority."
+      ],
+      "findings": [],
+      "rollback": "Restore prior MX/TXT set from envelope; keep DMARC at p=none during rollback window.",
+      "gate_status": "HOLD",
+      "change_envelope_required": true,
+      "change_envelope_fields": [
+        "change_id",
+        "zone_or_domain",
+        "record_set_before_readback_utc",
+        "record_set_after",
+        "ttl_and_propagation_window",
+        "authorizing_principal_evidence",
+        "independent_reviewer",
+        "maintenance_window_utc",
+        "rollback_record_set",
+        "post_change_probe"
+      ]
+    },
+    {
+      "id": "PAY-INSEED",
+      "action": "publishing a payment destination",
+      "resource": "inseed.com board/ and api/ wallet literals",
+      "current_performer": "unknown",
+      "current_performer_evidence": null,
+      "required_authority": "Proven controller of the destination (signed message from the address) + financial-authority principal + merge authority; legal/tax review for solicitation.",
+      "evidence": [
+        "github:CoCivium/InSeed@1d09646: 16 files contain the same BTC and ETH literals (e.g. board/api/payforward/index.json blob 40979c359f58e3ba8c165881e324923b9d0ea959, board/api/auth/index.json blob 880c529154e877c3bfc41553f3b1734d97a5dab0, api/ping/index.html blob aaa49445ae0676f6324f51047ebaf3274a86156c)",
+        "BTC literal 'bc1qtibtnx...generated' contains chars 'b','i' outside the bech32 charset -> not a valid address (placeholder)",
+        "ETH literal 0x618a...51cf0 is syntactically valid; controller unproven",
+        "github:CoCivium/InSeed@1d09646:board/api/*/index.json key blanketAuth='sticky...' is a self-asserted authority claim, not evidence"
+      ],
+      "findings": [
+        "Live publication of an unproven ETH destination is the highest-risk gate: funds sent are irreversible.",
+        "Recommend HOLD: remove or clearly mark both literals until a signed-ownership proof is recorded."
+      ],
+      "rollback": "Revert PR removing literals from all 16 files; purge CDN cache; payments already sent are NOT recoverable.",
+      "gate_status": "HOLD"
+    },
+    {
+      "id": "PAY-COCIVIUM",
+      "action": "publishing a payment destination",
+      "resource": "CoCivium/CoCivium",
+      "current_performer": "unknown",
+      "current_performer_evidence": null,
+      "required_authority": "As PAY-INSEED.",
+      "evidence": [
+        "github:CoCivium/CoCivium@090c532: 0 files match BTC/ETH address patterns"
+      ],
+      "findings": [],
+      "rollback": "Revert PR.",
+      "gate_status": "NO_DESTINATION_PRESENT"
+    },
+    {
+      "id": "PAY-COPOLITIC",
+      "action": "publishing a payment destination",
+      "resource": "CoCivium/CoPolitic-site",
+      "current_performer": "unknown",
+      "current_performer_evidence": null,
+      "required_authority": "As PAY-INSEED.",
+      "evidence": [
+        "github:CoCivium/CoPolitic-site@0fb29d9: 0 files match BTC/ETH address patterns"
+      ],
+      "findings": [],
+      "rollback": "Revert PR.",
+      "gate_status": "NO_DESTINATION_PRESENT"
+    },
+    {
+      "id": "PII-INSEED",
+      "action": "publishing personal data",
+      "resource": "CoCivium/InSeed public repo + inseed.com",
+      "current_performer": "unknown",
+      "current_performer_evidence": null,
+      "required_authority": "Data subject consent recorded + privacy reviewer + merge authority.",
+      "evidence": [
+        "github:CoCivium/InSeed@1d09646:scripts/CoNotifyReal.ps1 blob 7ea2a8367a7a74cc69cb8c1a0d59428cf643542c contains two personal webmail addresses (redacted here) and an $AppPassword variable whose value is placeholder-like (not verified)",
+        "github:CoCivium/InSeed@1d09646:ricks.json (keys: ricks, clones, status, head) names a person in filename; content not reproduced",
+        "github:CoCivium/InSeed@1d09646:.github/workflows/*.yml commit email coevo@cospeedo.local (bot, non-personal)"
+      ],
+      "findings": [
+        "Removal from main does not unpublish: data persists in git history and forks."
+      ],
+      "rollback": "Revert PR removes from tip only; history keeps it public -> rewriting history needs owner decision; rotate any real credential regardless.",
+      "gate_status": "HOLD"
+    },
+    {
+      "id": "PII-COCIVIUM",
+      "action": "publishing personal data",
+      "resource": "CoCivium/CoCivium identities/ and docs",
+      "current_performer": "unknown",
+      "current_performer_evidence": null,
+      "required_authority": "Data subject consent + privacy reviewer + merge authority.",
+      "evidence": [
+        "github:CoCivium/CoCivium@090c532:plans/MasterPlan.md blob 88d402f6ebf9e060b244ec1f000ef32cf74fc8fb line ~219 names a personal webmail address as the GitHub account holding the CoSuite repositories (redacted here)",
+        "github:CoCivium/CoCivium@090c532:identities/cocivia.json (front identity with principal_refs, disclosure, revocable fields); principal_refs content not audited by W09",
+        "W09-J2 lint report lint-CoCivium-090c532.json sha256 15ae5584df758056bc0e36f1ee5eb6687f9b30a2da2047113d6dec6ba477193e: 1 personal_webmail HOLD, 11 other_domain REVIEW"
+      ],
+      "findings": [
+        "R1 CORRECTION: R0 said only 'not exhaustively scanned' and missed this. Found by W09-J2 linter; R0 falsified on this row.",
+        "The address is also an account identifier: publishing it ties a personal mailbox to repository control (phishing/takeover surface)."
+      ],
+      "rollback": "Revert PR removes from tip only; MasterPlan.md is a cited canonical source, so edit needs MasterPlan owner; history caveat as PII-INSEED.",
+      "gate_status": "HOLD"
+    },
+    {
+      "id": "PII-COPOLITIC",
+      "action": "publishing personal data",
+      "resource": "CoCivium/CoPolitic-site",
+      "current_performer": "unknown",
+      "current_performer_evidence": null,
+      "required_authority": "As above.",
+      "evidence": [
+        "github:CoCivium/CoPolitic-site@0fb29d9: README.md only"
+      ],
+      "findings": [],
+      "rollback": "Revert PR.",
+      "gate_status": "LOW_SURFACE"
+    },
+    {
+      "id": "CRED-GITHUB-TOKEN",
+      "action": "credential use",
+      "resource": "Actions GITHUB_TOKEN in InSeed workflows",
+      "current_performer": "unknown",
+      "current_performer_evidence": null,
+      "required_authority": "Workflow file explicitly declaring least-privilege permissions; repo default set to read.",
+      "evidence": [
+        "github:CoCivium/InSeed@1d09646:.github/workflows/{autoevo,coevo-forever,ci}.yml: 0 permissions: blocks; two run git push",
+        "Repo default workflow permission: unknown",
+        "No authenticated GitHub/Cloudflare/registrar read was available to W09 (no linked GitHub account; shell DoH lookups blocked by allowlist). Commit authorship is spoofable and is not evidence of authority."
+      ],
+      "findings": [],
+      "rollback": "Set repo default to read-only; disable workflows; tokens are per-run so no rotation needed.",
+      "gate_status": "HOLD"
+    },
+    {
+      "id": "CRED-CLOUDFLARE",
+      "action": "credential use",
+      "resource": "Cloudflare API tokens / account login for the three zones",
+      "current_performer": "unknown",
+      "current_performer_evidence": null,
+      "required_authority": "Named token with zone-scoped permissions, owner-held, stored only in an approved secret store; never in repo or chat.",
+      "evidence": [
+        "W04 Cloudflare zone evidence: NOT AVAILABLE to W09 (not present on any readable branch of the three repos; dispatch packet a07f154 says registrar authority unresolved).",
+        "github:CoCivium/CoCivium@090c532/github:CoCivium/InSeed@1d09646/github:CoCivium/CoPolitic-site@0fb29d9: 0 workflow references to secrets.*"
+      ],
+      "findings": [],
+      "rollback": "Revoke and reissue token in Cloudflare dashboard; audit log review.",
+      "gate_status": "HOLD",
+      "change_envelope_required": true,
+      "change_envelope_fields": [
+        "change_id",
+        "zone_or_domain",
+        "record_set_before_readback_utc",
+        "record_set_after",
+        "ttl_and_propagation_window",
+        "authorizing_principal_evidence",
+        "independent_reviewer",
+        "maintenance_window_utc",
+        "rollback_record_set",
+        "post_change_probe"
+      ]
+    },
+    {
+      "id": "CRED-REGISTRAR-MAIL",
+      "action": "credential use",
+      "resource": "Registrar and mail-provider credentials (incl. SMTP app passwords)",
+      "current_performer": "unknown",
+      "current_performer_evidence": null,
+      "required_authority": "Owner-held with 2FA; app passwords scoped and rotatable.",
+      "evidence": [
+        "github:CoCivium/InSeed@1d09646:scripts/CoNotifyReal.ps1 blob 7ea2a8367a7a74cc69cb8c1a0d59428cf643542c defines $AppPassword in a public file (value placeholder-like)"
+      ],
+      "findings": [
+        "Even if placeholder, the pattern invites committing a real secret; replace with environment/secret-store lookup."
+      ],
+      "rollback": "Revoke/rotate the app password at the mail provider; remove the variable from repo.",
+      "gate_status": "HOLD",
+      "change_envelope_required": true,
+      "change_envelope_fields": [
+        "change_id",
+        "zone_or_domain",
+        "record_set_before_readback_utc",
+        "record_set_after",
+        "ttl_and_propagation_window",
+        "authorizing_principal_evidence",
+        "independent_reviewer",
+        "maintenance_window_utc",
+        "rollback_record_set",
+        "post_change_probe"
+      ]
+    }
+  ]
+}

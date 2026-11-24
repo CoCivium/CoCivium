@@ -1,0 +1,375 @@
+{
+ "commit": "090c532627cd014e6c41355ddd70b90a56cc03ff",
+ "files_scanned": 1119,
+ "findings": [
+  {
+   "blob": "5b465af0017e41fea56184fadef5baaa7a0082f3",
+   "gate": "G-CRED-LITERAL",
+   "name": "GITHUB_TOKEN_LIKE",
+   "path": "scripts/CoDownloadsOrphanExposureCensus.ps1",
+   "severity": "INFO",
+   "value_class": "PATTERN_LIKE",
+   "value_len": 26
+  },
+  {
+   "blob": "28bfef64f65594e25d0634bf27b4d4e54cba5fd5",
+   "email_class": "other_domain",
+   "gate": "G-PII-EMAIL",
+   "line": 133,
+   "path": "docs/Architecture/COOUTREACH_IDENTITY_THREAD_BINDING_R0_20261026.md",
+   "severity": "REVIEW"
+  },
+  {
+   "blob": "af1ac70c80c7944c3cf0c454991cabc09a293fc8",
+   "email_class": "other_domain",
+   "gate": "G-PII-EMAIL",
+   "line": 377,
+   "path": "docs/Archive/README_PUBLIC_PROFILE_BEFORE_HUMAN_FIRST_20261111.md",
+   "severity": "REVIEW"
+  },
+  {
+   "blob": "e6d332fa2378422114002af90ed5747a0c0fa418",
+   "email_class": "other_domain",
+   "gate": "G-PII-EMAIL",
+   "line": 99,
+   "path": "docs/Operations/COGOALL_OUTSTANDING_REGISTER_20261108.md",
+   "severity": "REVIEW"
+  },
+  {
+   "blob": "4381bc87543706b4fdb110ebc4acc2c7128d3152",
+   "email_class": "other_domain",
+   "gate": "G-PII-EMAIL",
+   "line": 88,
+   "path": "examples/colensmedia/tests/test_visual_prior_bridge.py",
+   "severity": "REVIEW"
+  },
+  {
+   "blob": "84a8570c256c7a6bcc20cf4bb3b6f1cd9d147f6a",
+   "email_class": "other_domain",
+   "gate": "G-PII-EMAIL",
+   "line": 53,
+   "path": "examples/comodelfabric/test_gateway_local_egress_r0.py",
+   "severity": "REVIEW"
+  },
+  {
+   "blob": "84a8570c256c7a6bcc20cf4bb3b6f1cd9d147f6a",
+   "email_class": "other_domain",
+   "gate": "G-PII-EMAIL",
+   "line": 54,
+   "path": "examples/comodelfabric/test_gateway_local_egress_r0.py",
+   "severity": "REVIEW"
+  },
+  {
+   "blob": "a307c751f5d854d7a740788cf2203ff278a1922e",
+   "email_class": "other_domain",
+   "gate": "G-PII-EMAIL",
+   "line": 177,
+   "path": "examples/comodelfabric/test_provider_exit_readiness_r0.py",
+   "severity": "REVIEW"
+  },
+  {
+   "blob": "facdbb950fb8eeffb85c35f95af665fea00a74ca",
+   "email_class": "other_domain",
+   "gate": "G-PII-EMAIL",
+   "line": 44,
+   "path": "examples/covisual_finder_r1/tests/test_finder.py",
+   "severity": "REVIEW"
+  },
+  {
+   "blob": "145ef96b1cd2fb70452641b22a504fe547b888f7",
+   "email_class": "other_domain",
+   "gate": "G-PII-EMAIL",
+   "line": 122,
+   "path": "llms.txt",
+   "severity": "REVIEW"
+  },
+  {
+   "blob": "88d402f6ebf9e060b244ec1f000ef32cf74fc8fb",
+   "email_class": "other_domain",
+   "gate": "G-PII-EMAIL",
+   "line": 238,
+   "path": "plans/MasterPlan.md",
+   "severity": "REVIEW"
+  },
+  {
+   "blob": "88d402f6ebf9e060b244ec1f000ef32cf74fc8fb",
+   "email_class": "other_domain",
+   "gate": "G-PII-EMAIL",
+   "line": 25,
+   "path": "plans/MasterPlan.md",
+   "severity": "REVIEW"
+  },
+  {
+   "blob": "88d402f6ebf9e060b244ec1f000ef32cf74fc8fb",
+   "email_class": "personal_webmail",
+   "gate": "G-PII-EMAIL",
+   "line": 219,
+   "path": "plans/MasterPlan.md",
+   "severity": "HOLD"
+  },
+  {
+   "blob": "f43366b79e6826b7660d6a2c5d9162d5714488b3",
+   "detail": "self-asserted authority in content is not evidence of authority",
+   "gate": "G-SELF-AUTH",
+   "key": "authority",
+   "path": "ai/coordination/coall-fanout-r0/receiver-inventory.json",
+   "severity": "REVIEW"
+  },
+  {
+   "blob": "f43366b79e6826b7660d6a2c5d9162d5714488b3",
+   "detail": "self-asserted authority in content is not evidence of authority",
+   "gate": "G-SELF-AUTH",
+   "key": "authority",
+   "path": "ai/coordination/coall-fanout-r0/receiver-inventory.json",
+   "severity": "REVIEW"
+  },
+  {
+   "blob": "f43366b79e6826b7660d6a2c5d9162d5714488b3",
+   "detail": "self-asserted authority in content is not evidence of authority",
+   "gate": "G-SELF-AUTH",
+   "key": "authority",
+   "path": "ai/coordination/coall-fanout-r0/receiver-inventory.json",
+   "severity": "REVIEW"
+  },
+  {
+   "blob": "f43366b79e6826b7660d6a2c5d9162d5714488b3",
+   "detail": "self-asserted authority in content is not evidence of authority",
+   "gate": "G-SELF-AUTH",
+   "key": "authority",
+   "path": "ai/coordination/coall-fanout-r0/receiver-inventory.json",
+   "severity": "REVIEW"
+  },
+  {
+   "blob": "49477ecc7ca438b71434e732642d89a208b59af7",
+   "detail": "self-asserted authority in content is not evidence of authority",
+   "gate": "G-SELF-AUTH",
+   "key": "authority",
+   "path": "ai/coordination/coall-fanout-r0b/receiver-inventory.json",
+   "severity": "REVIEW"
+  },
+  {
+   "blob": "49477ecc7ca438b71434e732642d89a208b59af7",
+   "detail": "self-asserted authority in content is not evidence of authority",
+   "gate": "G-SELF-AUTH",
+   "key": "authority",
+   "path": "ai/coordination/coall-fanout-r0b/receiver-inventory.json",
+   "severity": "REVIEW"
+  },
+  {
+   "blob": "00273e42620ec2622b6cc6186d1e0743a685b714",
+   "detail": "self-asserted authority in content is not evidence of authority",
+   "gate": "G-SELF-AUTH",
+   "key": "authority",
+   "path": "ai/currentness/cotalkitout-r1-parallel-editions-20261112.json",
+   "severity": "REVIEW"
+  },
+  {
+   "blob": "00273e42620ec2622b6cc6186d1e0743a685b714",
+   "detail": "self-asserted authority in content is not evidence of authority",
+   "gate": "G-SELF-AUTH",
+   "key": "authority",
+   "path": "ai/currentness/cotalkitout-r1-parallel-editions-20261112.json",
+   "severity": "REVIEW"
+  },
+  {
+   "blob": "00273e42620ec2622b6cc6186d1e0743a685b714",
+   "detail": "self-asserted authority in content is not evidence of authority",
+   "gate": "G-SELF-AUTH",
+   "key": "authority",
+   "path": "ai/currentness/cotalkitout-r1-parallel-editions-20261112.json",
+   "severity": "REVIEW"
+  },
+  {
+   "blob": "b1e4d6bdb14dce0ee56110ed626ef06ecc296c9d",
+   "detail": "self-asserted authority in content is not evidence of authority",
+   "gate": "G-SELF-AUTH",
+   "key": "authority",
+   "path": "ai/ontology/coontprinciple-groupbuild-senses-r0.json",
+   "severity": "REVIEW"
+  },
+  {
+   "blob": "b1e4d6bdb14dce0ee56110ed626ef06ecc296c9d",
+   "detail": "self-asserted authority in content is not evidence of authority",
+   "gate": "G-SELF-AUTH",
+   "key": "authority",
+   "path": "ai/ontology/coontprinciple-groupbuild-senses-r0.json",
+   "severity": "REVIEW"
+  },
+  {
+   "blob": "59674b70c1a1cb46d1c5146def16ddf7fdbf6320",
+   "detail": "self-asserted authority in content is not evidence of authority",
+   "gate": "G-SELF-AUTH",
+   "key": "authority",
+   "path": "ai/retro-echo-delta-20261109-v2.json",
+   "severity": "REVIEW"
+  },
+  {
+   "blob": "59674b70c1a1cb46d1c5146def16ddf7fdbf6320",
+   "detail": "self-asserted authority in content is not evidence of authority",
+   "gate": "G-SELF-AUTH",
+   "key": "authority",
+   "path": "ai/retro-echo-delta-20261109-v2.json",
+   "severity": "REVIEW"
+  },
+  {
+   "blob": "59674b70c1a1cb46d1c5146def16ddf7fdbf6320",
+   "detail": "self-asserted authority in content is not evidence of authority",
+   "gate": "G-SELF-AUTH",
+   "key": "authority",
+   "path": "ai/retro-echo-delta-20261109-v2.json",
+   "severity": "REVIEW"
+  },
+  {
+   "blob": "52176eb751c3063832289aba83c86604b2d3964a",
+   "detail": "self-asserted authority in content is not evidence of authority",
+   "gate": "G-SELF-AUTH",
+   "key": "authority",
+   "path": "benchmarks/costretch_r1/relation_graph.json",
+   "severity": "REVIEW"
+  },
+  {
+   "blob": "52176eb751c3063832289aba83c86604b2d3964a",
+   "detail": "self-asserted authority in content is not evidence of authority",
+   "gate": "G-SELF-AUTH",
+   "key": "authority",
+   "path": "benchmarks/costretch_r1/relation_graph.json",
+   "severity": "REVIEW"
+  },
+  {
+   "blob": "52176eb751c3063832289aba83c86604b2d3964a",
+   "detail": "self-asserted authority in content is not evidence of authority",
+   "gate": "G-SELF-AUTH",
+   "key": "authority",
+   "path": "benchmarks/costretch_r1/relation_graph.json",
+   "severity": "REVIEW"
+  },
+  {
+   "blob": "52176eb751c3063832289aba83c86604b2d3964a",
+   "detail": "self-asserted authority in content is not evidence of authority",
+   "gate": "G-SELF-AUTH",
+   "key": "authority",
+   "path": "benchmarks/costretch_r1/relation_graph.json",
+   "severity": "REVIEW"
+  },
+  {
+   "blob": "c9c6dd3a4d6074a5a34e3decdbeb56f574d9f200",
+   "detail": "self-asserted authority in content is not evidence of authority",
+   "gate": "G-SELF-AUTH",
+   "key": "authority",
+   "path": "docs/CoLocal/CoLocal2601109_CoRelGRAILS_CoSeed_R0.md",
+   "severity": "REVIEW"
+  },
+  {
+   "blob": "863d1396d1b320bf5bd51e8d05894c65f39f8636",
+   "detail": "self-asserted authority in content is not evidence of authority",
+   "gate": "G-SELF-AUTH",
+   "key": "authority",
+   "path": "docs/Evolution/COINVERSE_BENCHMARK_GENERATIONAL_STEWARDSHIP_R0.json",
+   "severity": "REVIEW"
+  },
+  {
+   "blob": "863d1396d1b320bf5bd51e8d05894c65f39f8636",
+   "detail": "self-asserted authority in content is not evidence of authority",
+   "gate": "G-SELF-AUTH",
+   "key": "authority",
+   "path": "docs/Evolution/COINVERSE_BENCHMARK_GENERATIONAL_STEWARDSHIP_R0.json",
+   "severity": "REVIEW"
+  },
+  {
+   "blob": "863d1396d1b320bf5bd51e8d05894c65f39f8636",
+   "detail": "self-asserted authority in content is not evidence of authority",
+   "gate": "G-SELF-AUTH",
+   "key": "authority",
+   "path": "docs/Evolution/COINVERSE_BENCHMARK_GENERATIONAL_STEWARDSHIP_R0.json",
+   "severity": "REVIEW"
+  },
+  {
+   "blob": "863d1396d1b320bf5bd51e8d05894c65f39f8636",
+   "detail": "self-asserted authority in content is not evidence of authority",
+   "gate": "G-SELF-AUTH",
+   "key": "authority",
+   "path": "docs/Evolution/COINVERSE_BENCHMARK_GENERATIONAL_STEWARDSHIP_R0.json",
+   "severity": "REVIEW"
+  },
+  {
+   "blob": "9e18cd1ea59f8dae9372f8c4d88a99231f9d9531",
+   "detail": "self-asserted authority in content is not evidence of authority",
+   "gate": "G-SELF-AUTH",
+   "key": "authority",
+   "path": "docs/Evolution/COMAP_MEDIA_INSPIRATION_R0.json",
+   "severity": "REVIEW"
+  },
+  {
+   "blob": "ef99176d90e6e8e7fd5e028a3a0fee5a6717fb08",
+   "detail": "self-asserted authority in content is not evidence of authority",
+   "gate": "G-SELF-AUTH",
+   "key": "authority",
+   "path": "docs/Evolution/COMEDIAFABRIC_COSILO_R0.json",
+   "severity": "REVIEW"
+  },
+  {
+   "blob": "f972183ffcdcfee0ca52a14b901a6aa48b1780e9",
+   "detail": "self-asserted authority in content is not evidence of authority",
+   "gate": "G-SELF-AUTH",
+   "key": "authority",
+   "path": "docs/OrgMap/github_housekeeping_r0.json",
+   "severity": "REVIEW"
+  },
+  {
+   "blob": "742bf3f43d86b607f4f12a459d1c5ce08abb618c",
+   "detail": "self-asserted authority in content is not evidence of authority",
+   "gate": "G-SELF-AUTH",
+   "key": "authority",
+   "path": "docs/Outreach/IMPROVEMENT_CLUB_KIT_R0.md",
+   "severity": "REVIEW"
+  },
+  {
+   "blob": "40122f711f1c9528ec5f6df15487fe22a98834b0",
+   "detail": "self-asserted authority in content is not evidence of authority",
+   "gate": "G-SELF-AUTH",
+   "key": "authority",
+   "path": "experiments/costretch-r1/horizon_r4/CoStretch_Horizon_R4.py",
+   "severity": "REVIEW"
+  },
+  {
+   "blob": "5602e8c2427fba873483cad044f6c9e00a8a80cb",
+   "detail": "self-asserted authority in content is not evidence of authority",
+   "gate": "G-SELF-AUTH",
+   "key": "authority",
+   "path": "scripts/CoAllFanoutR0.py",
+   "severity": "REVIEW"
+  },
+  {
+   "blob": "5602e8c2427fba873483cad044f6c9e00a8a80cb",
+   "detail": "self-asserted authority in content is not evidence of authority",
+   "gate": "G-SELF-AUTH",
+   "key": "authority",
+   "path": "scripts/CoAllFanoutR0.py",
+   "severity": "REVIEW"
+  },
+  {
+   "blob": "f810759ea326013c5dd43a58f51f1fac72c7da31",
+   "detail": "self-asserted authority in content is not evidence of authority",
+   "gate": "G-SELF-AUTH",
+   "key": "authority",
+   "path": "scripts/CoNarrativeWorkIDR0.py",
+   "severity": "REVIEW"
+  },
+  {
+   "blob": "8fdc3275b26e2462e5c1d4880bff2b9fad1067e4",
+   "detail": "self-asserted authority in content is not evidence of authority",
+   "gate": "G-SELF-AUTH",
+   "key": "authorized",
+   "path": "tests/test_retroseed_backfill.py",
+   "severity": "REVIEW"
+  }
+ ],
+ "hold_count": 1,
+ "label": "CoCivium",
+ "schema": "CoGuardian.LintReport.R0",
+ "summary": {
+  "G-CRED-LITERAL": 1,
+  "G-PII-EMAIL": 12,
+  "G-SELF-AUTH": 32
+ }
+}

@@ -1,0 +1,910 @@
+{
+ "commit": "1d0964637c68b49ef4274c5e48d034e148f1897a",
+ "files_scanned": 281,
+ "findings": [
+  {
+   "blob": "7ea2a8367a7a74cc69cb8c1a0d59428cf643542c",
+   "gate": "G-CRED-LITERAL",
+   "name": "$AppPassword",
+   "path": "scripts/CoNotifyReal.ps1",
+   "severity": "REVIEW",
+   "value_class": "PLACEHOLDER_LIKE",
+   "value_len": 79
+  },
+  {
+   "blob": "747424ed2fa2010060c952ede68b7a80bc0deff8",
+   "detail": "Pages custom-domain binding; DNS change envelope required to alter",
+   "domain": "inseed.com",
+   "gate": "G-DOMAIN-BIND",
+   "path": "CNAME",
+   "severity": "REVIEW"
+  },
+  {
+   "blob": "f4be0fa597ccb5f8db2edea131a4c0fcbd820446",
+   "detail": "loop variable $u unused in body: check gives false assurance",
+   "gate": "G-NOOP-PROBE",
+   "job": "vast",
+   "path": ".github/workflows/ci.yml",
+   "severity": "REVIEW",
+   "triggers": [
+    "push"
+   ]
+  },
+  {
+   "blob": "aaa49445ae0676f6324f51047ebaf3274a86156c",
+   "gate": "G-PAY",
+   "kind": "btc_bech32",
+   "path": "api/ping/index.html",
+   "ref": "bc1qtibtnx…",
+   "severity": "HOLD",
+   "validity": "INVALID_PLACEHOLDER"
+  },
+  {
+   "blob": "aaa49445ae0676f6324f51047ebaf3274a86156c",
+   "gate": "G-PAY",
+   "kind": "eth",
+   "path": "api/ping/index.html",
+   "ref": "0x618a…1cf0",
+   "severity": "HOLD",
+   "validity": "SYNTAX_VALID_NO_CHECKSUM"
+  },
+  {
+   "blob": "baa55208a05a067c8a44262f38c02ce5e1787a90",
+   "gate": "G-PAY",
+   "kind": "btc_bech32",
+   "path": "board.html",
+   "ref": "bc1qtibtnx…",
+   "severity": "HOLD",
+   "validity": "INVALID_PLACEHOLDER"
+  },
+  {
+   "blob": "baa55208a05a067c8a44262f38c02ce5e1787a90",
+   "gate": "G-PAY",
+   "kind": "btc_bech32",
+   "path": "board.html",
+   "ref": "bc1qtibtnx…",
+   "severity": "HOLD",
+   "validity": "INVALID_PLACEHOLDER"
+  },
+  {
+   "blob": "baa55208a05a067c8a44262f38c02ce5e1787a90",
+   "gate": "G-PAY",
+   "kind": "btc_bech32",
+   "path": "board.html",
+   "ref": "bc1qtibtnx…",
+   "severity": "HOLD",
+   "validity": "INVALID_PLACEHOLDER"
+  },
+  {
+   "blob": "baa55208a05a067c8a44262f38c02ce5e1787a90",
+   "gate": "G-PAY",
+   "kind": "eth",
+   "path": "board.html",
+   "ref": "0x618a…1cf0",
+   "severity": "HOLD",
+   "validity": "SYNTAX_VALID_NO_CHECKSUM"
+  },
+  {
+   "blob": "baa55208a05a067c8a44262f38c02ce5e1787a90",
+   "gate": "G-PAY",
+   "kind": "eth",
+   "path": "board.html",
+   "ref": "0x618a…1cf0",
+   "severity": "HOLD",
+   "validity": "SYNTAX_VALID_NO_CHECKSUM"
+  },
+  {
+   "blob": "b8abbd6392ceead014bd8b55e564441bad518952",
+   "gate": "G-PAY",
+   "kind": "btc_bech32",
+   "path": "board/api/auth/index.html",
+   "ref": "bc1qtibtnx…",
+   "severity": "HOLD",
+   "validity": "INVALID_PLACEHOLDER"
+  },
+  {
+   "blob": "b8abbd6392ceead014bd8b55e564441bad518952",
+   "gate": "G-PAY",
+   "kind": "btc_bech32",
+   "path": "board/api/auth/index.html",
+   "ref": "bc1qtibtnx…",
+   "severity": "HOLD",
+   "validity": "INVALID_PLACEHOLDER"
+  },
+  {
+   "blob": "b8abbd6392ceead014bd8b55e564441bad518952",
+   "gate": "G-PAY",
+   "kind": "btc_bech32",
+   "path": "board/api/auth/index.html",
+   "ref": "bc1qtibtnx…",
+   "severity": "HOLD",
+   "validity": "INVALID_PLACEHOLDER"
+  },
+  {
+   "blob": "b8abbd6392ceead014bd8b55e564441bad518952",
+   "gate": "G-PAY",
+   "kind": "eth",
+   "path": "board/api/auth/index.html",
+   "ref": "0x618a…1cf0",
+   "severity": "HOLD",
+   "validity": "SYNTAX_VALID_NO_CHECKSUM"
+  },
+  {
+   "blob": "b8abbd6392ceead014bd8b55e564441bad518952",
+   "gate": "G-PAY",
+   "kind": "eth",
+   "path": "board/api/auth/index.html",
+   "ref": "0x618a…1cf0",
+   "severity": "HOLD",
+   "validity": "SYNTAX_VALID_NO_CHECKSUM"
+  },
+  {
+   "blob": "b8abbd6392ceead014bd8b55e564441bad518952",
+   "gate": "G-PAY",
+   "kind": "eth",
+   "path": "board/api/auth/index.html",
+   "ref": "0x618a…1cf0",
+   "severity": "HOLD",
+   "validity": "SYNTAX_VALID_NO_CHECKSUM"
+  },
+  {
+   "blob": "880c529154e877c3bfc41553f3b1734d97a5dab0",
+   "gate": "G-PAY",
+   "kind": "btc_bech32",
+   "path": "board/api/auth/index.json",
+   "ref": "bc1qtibtnx…",
+   "severity": "HOLD",
+   "validity": "INVALID_PLACEHOLDER"
+  },
+  {
+   "blob": "880c529154e877c3bfc41553f3b1734d97a5dab0",
+   "gate": "G-PAY",
+   "kind": "btc_bech32",
+   "path": "board/api/auth/index.json",
+   "ref": "bc1qtibtnx…",
+   "severity": "HOLD",
+   "validity": "INVALID_PLACEHOLDER"
+  },
+  {
+   "blob": "880c529154e877c3bfc41553f3b1734d97a5dab0",
+   "gate": "G-PAY",
+   "kind": "btc_bech32",
+   "path": "board/api/auth/index.json",
+   "ref": "bc1qtibtnx…",
+   "severity": "HOLD",
+   "validity": "INVALID_PLACEHOLDER"
+  },
+  {
+   "blob": "880c529154e877c3bfc41553f3b1734d97a5dab0",
+   "gate": "G-PAY",
+   "kind": "eth",
+   "path": "board/api/auth/index.json",
+   "ref": "0x618a…1cf0",
+   "severity": "HOLD",
+   "validity": "SYNTAX_VALID_NO_CHECKSUM"
+  },
+  {
+   "blob": "880c529154e877c3bfc41553f3b1734d97a5dab0",
+   "gate": "G-PAY",
+   "kind": "eth",
+   "path": "board/api/auth/index.json",
+   "ref": "0x618a…1cf0",
+   "severity": "HOLD",
+   "validity": "SYNTAX_VALID_NO_CHECKSUM"
+  },
+  {
+   "blob": "880c529154e877c3bfc41553f3b1734d97a5dab0",
+   "gate": "G-PAY",
+   "kind": "eth",
+   "path": "board/api/auth/index.json",
+   "ref": "0x618a…1cf0",
+   "severity": "HOLD",
+   "validity": "SYNTAX_VALID_NO_CHECKSUM"
+  },
+  {
+   "blob": "224e3598f6c9797663aba063fb61f1fa40077234",
+   "gate": "G-PAY",
+   "kind": "btc_bech32",
+   "path": "board/api/ci/index.html",
+   "ref": "bc1qtibtnx…",
+   "severity": "HOLD",
+   "validity": "INVALID_PLACEHOLDER"
+  },
+  {
+   "blob": "224e3598f6c9797663aba063fb61f1fa40077234",
+   "gate": "G-PAY",
+   "kind": "btc_bech32",
+   "path": "board/api/ci/index.html",
+   "ref": "bc1qtibtnx…",
+   "severity": "HOLD",
+   "validity": "INVALID_PLACEHOLDER"
+  },
+  {
+   "blob": "224e3598f6c9797663aba063fb61f1fa40077234",
+   "gate": "G-PAY",
+   "kind": "btc_bech32",
+   "path": "board/api/ci/index.html",
+   "ref": "bc1qtibtnx…",
+   "severity": "HOLD",
+   "validity": "INVALID_PLACEHOLDER"
+  },
+  {
+   "blob": "224e3598f6c9797663aba063fb61f1fa40077234",
+   "gate": "G-PAY",
+   "kind": "eth",
+   "path": "board/api/ci/index.html",
+   "ref": "0x618a…1cf0",
+   "severity": "HOLD",
+   "validity": "SYNTAX_VALID_NO_CHECKSUM"
+  },
+  {
+   "blob": "224e3598f6c9797663aba063fb61f1fa40077234",
+   "gate": "G-PAY",
+   "kind": "eth",
+   "path": "board/api/ci/index.html",
+   "ref": "0x618a…1cf0",
+   "severity": "HOLD",
+   "validity": "SYNTAX_VALID_NO_CHECKSUM"
+  },
+  {
+   "blob": "224e3598f6c9797663aba063fb61f1fa40077234",
+   "gate": "G-PAY",
+   "kind": "eth",
+   "path": "board/api/ci/index.html",
+   "ref": "0x618a…1cf0",
+   "severity": "HOLD",
+   "validity": "SYNTAX_VALID_NO_CHECKSUM"
+  },
+  {
+   "blob": "40979c359f58e3ba8c165881e324923b9d0ea959",
+   "gate": "G-PAY",
+   "kind": "btc_bech32",
+   "path": "board/api/ci/index.json",
+   "ref": "bc1qtibtnx…",
+   "severity": "HOLD",
+   "validity": "INVALID_PLACEHOLDER"
+  },
+  {
+   "blob": "40979c359f58e3ba8c165881e324923b9d0ea959",
+   "gate": "G-PAY",
+   "kind": "btc_bech32",
+   "path": "board/api/ci/index.json",
+   "ref": "bc1qtibtnx…",
+   "severity": "HOLD",
+   "validity": "INVALID_PLACEHOLDER"
+  },
+  {
+   "blob": "40979c359f58e3ba8c165881e324923b9d0ea959",
+   "gate": "G-PAY",
+   "kind": "btc_bech32",
+   "path": "board/api/ci/index.json",
+   "ref": "bc1qtibtnx…",
+   "severity": "HOLD",
+   "validity": "INVALID_PLACEHOLDER"
+  },
+  {
+   "blob": "40979c359f58e3ba8c165881e324923b9d0ea959",
+   "gate": "G-PAY",
+   "kind": "eth",
+   "path": "board/api/ci/index.json",
+   "ref": "0x618a…1cf0",
+   "severity": "HOLD",
+   "validity": "SYNTAX_VALID_NO_CHECKSUM"
+  },
+  {
+   "blob": "40979c359f58e3ba8c165881e324923b9d0ea959",
+   "gate": "G-PAY",
+   "kind": "eth",
+   "path": "board/api/ci/index.json",
+   "ref": "0x618a…1cf0",
+   "severity": "HOLD",
+   "validity": "SYNTAX_VALID_NO_CHECKSUM"
+  },
+  {
+   "blob": "40979c359f58e3ba8c165881e324923b9d0ea959",
+   "gate": "G-PAY",
+   "kind": "eth",
+   "path": "board/api/ci/index.json",
+   "ref": "0x618a…1cf0",
+   "severity": "HOLD",
+   "validity": "SYNTAX_VALID_NO_CHECKSUM"
+  },
+  {
+   "blob": "1e1302bcf93732ec8731cc1d10f5c6c6cf439397",
+   "gate": "G-PAY",
+   "kind": "btc_bech32",
+   "path": "board/api/evolve/index.html",
+   "ref": "bc1qtibtnx…",
+   "severity": "HOLD",
+   "validity": "INVALID_PLACEHOLDER"
+  },
+  {
+   "blob": "1e1302bcf93732ec8731cc1d10f5c6c6cf439397",
+   "gate": "G-PAY",
+   "kind": "btc_bech32",
+   "path": "board/api/evolve/index.html",
+   "ref": "bc1qtibtnx…",
+   "severity": "HOLD",
+   "validity": "INVALID_PLACEHOLDER"
+  },
+  {
+   "blob": "1e1302bcf93732ec8731cc1d10f5c6c6cf439397",
+   "gate": "G-PAY",
+   "kind": "btc_bech32",
+   "path": "board/api/evolve/index.html",
+   "ref": "bc1qtibtnx…",
+   "severity": "HOLD",
+   "validity": "INVALID_PLACEHOLDER"
+  },
+  {
+   "blob": "1e1302bcf93732ec8731cc1d10f5c6c6cf439397",
+   "gate": "G-PAY",
+   "kind": "eth",
+   "path": "board/api/evolve/index.html",
+   "ref": "0x618a…1cf0",
+   "severity": "HOLD",
+   "validity": "SYNTAX_VALID_NO_CHECKSUM"
+  },
+  {
+   "blob": "1e1302bcf93732ec8731cc1d10f5c6c6cf439397",
+   "gate": "G-PAY",
+   "kind": "eth",
+   "path": "board/api/evolve/index.html",
+   "ref": "0x618a…1cf0",
+   "severity": "HOLD",
+   "validity": "SYNTAX_VALID_NO_CHECKSUM"
+  },
+  {
+   "blob": "1e1302bcf93732ec8731cc1d10f5c6c6cf439397",
+   "gate": "G-PAY",
+   "kind": "eth",
+   "path": "board/api/evolve/index.html",
+   "ref": "0x618a…1cf0",
+   "severity": "HOLD",
+   "validity": "SYNTAX_VALID_NO_CHECKSUM"
+  },
+  {
+   "blob": "40979c359f58e3ba8c165881e324923b9d0ea959",
+   "gate": "G-PAY",
+   "kind": "btc_bech32",
+   "path": "board/api/evolve/index.json",
+   "ref": "bc1qtibtnx…",
+   "severity": "HOLD",
+   "validity": "INVALID_PLACEHOLDER"
+  },
+  {
+   "blob": "40979c359f58e3ba8c165881e324923b9d0ea959",
+   "gate": "G-PAY",
+   "kind": "btc_bech32",
+   "path": "board/api/evolve/index.json",
+   "ref": "bc1qtibtnx…",
+   "severity": "HOLD",
+   "validity": "INVALID_PLACEHOLDER"
+  },
+  {
+   "blob": "40979c359f58e3ba8c165881e324923b9d0ea959",
+   "gate": "G-PAY",
+   "kind": "btc_bech32",
+   "path": "board/api/evolve/index.json",
+   "ref": "bc1qtibtnx…",
+   "severity": "HOLD",
+   "validity": "INVALID_PLACEHOLDER"
+  },
+  {
+   "blob": "40979c359f58e3ba8c165881e324923b9d0ea959",
+   "gate": "G-PAY",
+   "kind": "eth",
+   "path": "board/api/evolve/index.json",
+   "ref": "0x618a…1cf0",
+   "severity": "HOLD",
+   "validity": "SYNTAX_VALID_NO_CHECKSUM"
+  },
+  {
+   "blob": "40979c359f58e3ba8c165881e324923b9d0ea959",
+   "gate": "G-PAY",
+   "kind": "eth",
+   "path": "board/api/evolve/index.json",
+   "ref": "0x618a…1cf0",
+   "severity": "HOLD",
+   "validity": "SYNTAX_VALID_NO_CHECKSUM"
+  },
+  {
+   "blob": "40979c359f58e3ba8c165881e324923b9d0ea959",
+   "gate": "G-PAY",
+   "kind": "eth",
+   "path": "board/api/evolve/index.json",
+   "ref": "0x618a…1cf0",
+   "severity": "HOLD",
+   "validity": "SYNTAX_VALID_NO_CHECKSUM"
+  },
+  {
+   "blob": "784ac24909b847a791d404f2c17bd2104ebb547d",
+   "gate": "G-PAY",
+   "kind": "btc_bech32",
+   "path": "board/api/infer/index.html",
+   "ref": "bc1qtibtnx…",
+   "severity": "HOLD",
+   "validity": "INVALID_PLACEHOLDER"
+  },
+  {
+   "blob": "784ac24909b847a791d404f2c17bd2104ebb547d",
+   "gate": "G-PAY",
+   "kind": "btc_bech32",
+   "path": "board/api/infer/index.html",
+   "ref": "bc1qtibtnx…",
+   "severity": "HOLD",
+   "validity": "INVALID_PLACEHOLDER"
+  },
+  {
+   "blob": "784ac24909b847a791d404f2c17bd2104ebb547d",
+   "gate": "G-PAY",
+   "kind": "btc_bech32",
+   "path": "board/api/infer/index.html",
+   "ref": "bc1qtibtnx…",
+   "severity": "HOLD",
+   "validity": "INVALID_PLACEHOLDER"
+  },
+  {
+   "blob": "784ac24909b847a791d404f2c17bd2104ebb547d",
+   "gate": "G-PAY",
+   "kind": "eth",
+   "path": "board/api/infer/index.html",
+   "ref": "0x618a…1cf0",
+   "severity": "HOLD",
+   "validity": "SYNTAX_VALID_NO_CHECKSUM"
+  },
+  {
+   "blob": "784ac24909b847a791d404f2c17bd2104ebb547d",
+   "gate": "G-PAY",
+   "kind": "eth",
+   "path": "board/api/infer/index.html",
+   "ref": "0x618a…1cf0",
+   "severity": "HOLD",
+   "validity": "SYNTAX_VALID_NO_CHECKSUM"
+  },
+  {
+   "blob": "784ac24909b847a791d404f2c17bd2104ebb547d",
+   "gate": "G-PAY",
+   "kind": "eth",
+   "path": "board/api/infer/index.html",
+   "ref": "0x618a…1cf0",
+   "severity": "HOLD",
+   "validity": "SYNTAX_VALID_NO_CHECKSUM"
+  },
+  {
+   "blob": "40979c359f58e3ba8c165881e324923b9d0ea959",
+   "gate": "G-PAY",
+   "kind": "btc_bech32",
+   "path": "board/api/infer/index.json",
+   "ref": "bc1qtibtnx…",
+   "severity": "HOLD",
+   "validity": "INVALID_PLACEHOLDER"
+  },
+  {
+   "blob": "40979c359f58e3ba8c165881e324923b9d0ea959",
+   "gate": "G-PAY",
+   "kind": "btc_bech32",
+   "path": "board/api/infer/index.json",
+   "ref": "bc1qtibtnx…",
+   "severity": "HOLD",
+   "validity": "INVALID_PLACEHOLDER"
+  },
+  {
+   "blob": "40979c359f58e3ba8c165881e324923b9d0ea959",
+   "gate": "G-PAY",
+   "kind": "btc_bech32",
+   "path": "board/api/infer/index.json",
+   "ref": "bc1qtibtnx…",
+   "severity": "HOLD",
+   "validity": "INVALID_PLACEHOLDER"
+  },
+  {
+   "blob": "40979c359f58e3ba8c165881e324923b9d0ea959",
+   "gate": "G-PAY",
+   "kind": "eth",
+   "path": "board/api/infer/index.json",
+   "ref": "0x618a…1cf0",
+   "severity": "HOLD",
+   "validity": "SYNTAX_VALID_NO_CHECKSUM"
+  },
+  {
+   "blob": "40979c359f58e3ba8c165881e324923b9d0ea959",
+   "gate": "G-PAY",
+   "kind": "eth",
+   "path": "board/api/infer/index.json",
+   "ref": "0x618a…1cf0",
+   "severity": "HOLD",
+   "validity": "SYNTAX_VALID_NO_CHECKSUM"
+  },
+  {
+   "blob": "40979c359f58e3ba8c165881e324923b9d0ea959",
+   "gate": "G-PAY",
+   "kind": "eth",
+   "path": "board/api/infer/index.json",
+   "ref": "0x618a…1cf0",
+   "severity": "HOLD",
+   "validity": "SYNTAX_VALID_NO_CHECKSUM"
+  },
+  {
+   "blob": "84d9e7a24677a633d18a6ca4b12e26f291d33ea1",
+   "gate": "G-PAY",
+   "kind": "btc_bech32",
+   "path": "board/api/payforward/index.html",
+   "ref": "bc1qtibtnx…",
+   "severity": "HOLD",
+   "validity": "INVALID_PLACEHOLDER"
+  },
+  {
+   "blob": "84d9e7a24677a633d18a6ca4b12e26f291d33ea1",
+   "gate": "G-PAY",
+   "kind": "btc_bech32",
+   "path": "board/api/payforward/index.html",
+   "ref": "bc1qtibtnx…",
+   "severity": "HOLD",
+   "validity": "INVALID_PLACEHOLDER"
+  },
+  {
+   "blob": "84d9e7a24677a633d18a6ca4b12e26f291d33ea1",
+   "gate": "G-PAY",
+   "kind": "btc_bech32",
+   "path": "board/api/payforward/index.html",
+   "ref": "bc1qtibtnx…",
+   "severity": "HOLD",
+   "validity": "INVALID_PLACEHOLDER"
+  },
+  {
+   "blob": "84d9e7a24677a633d18a6ca4b12e26f291d33ea1",
+   "gate": "G-PAY",
+   "kind": "eth",
+   "path": "board/api/payforward/index.html",
+   "ref": "0x618a…1cf0",
+   "severity": "HOLD",
+   "validity": "SYNTAX_VALID_NO_CHECKSUM"
+  },
+  {
+   "blob": "84d9e7a24677a633d18a6ca4b12e26f291d33ea1",
+   "gate": "G-PAY",
+   "kind": "eth",
+   "path": "board/api/payforward/index.html",
+   "ref": "0x618a…1cf0",
+   "severity": "HOLD",
+   "validity": "SYNTAX_VALID_NO_CHECKSUM"
+  },
+  {
+   "blob": "84d9e7a24677a633d18a6ca4b12e26f291d33ea1",
+   "gate": "G-PAY",
+   "kind": "eth",
+   "path": "board/api/payforward/index.html",
+   "ref": "0x618a…1cf0",
+   "severity": "HOLD",
+   "validity": "SYNTAX_VALID_NO_CHECKSUM"
+  },
+  {
+   "blob": "40979c359f58e3ba8c165881e324923b9d0ea959",
+   "gate": "G-PAY",
+   "kind": "btc_bech32",
+   "path": "board/api/payforward/index.json",
+   "ref": "bc1qtibtnx…",
+   "severity": "HOLD",
+   "validity": "INVALID_PLACEHOLDER"
+  },
+  {
+   "blob": "40979c359f58e3ba8c165881e324923b9d0ea959",
+   "gate": "G-PAY",
+   "kind": "btc_bech32",
+   "path": "board/api/payforward/index.json",
+   "ref": "bc1qtibtnx…",
+   "severity": "HOLD",
+   "validity": "INVALID_PLACEHOLDER"
+  },
+  {
+   "blob": "40979c359f58e3ba8c165881e324923b9d0ea959",
+   "gate": "G-PAY",
+   "kind": "btc_bech32",
+   "path": "board/api/payforward/index.json",
+   "ref": "bc1qtibtnx…",
+   "severity": "HOLD",
+   "validity": "INVALID_PLACEHOLDER"
+  },
+  {
+   "blob": "40979c359f58e3ba8c165881e324923b9d0ea959",
+   "gate": "G-PAY",
+   "kind": "eth",
+   "path": "board/api/payforward/index.json",
+   "ref": "0x618a…1cf0",
+   "severity": "HOLD",
+   "validity": "SYNTAX_VALID_NO_CHECKSUM"
+  },
+  {
+   "blob": "40979c359f58e3ba8c165881e324923b9d0ea959",
+   "gate": "G-PAY",
+   "kind": "eth",
+   "path": "board/api/payforward/index.json",
+   "ref": "0x618a…1cf0",
+   "severity": "HOLD",
+   "validity": "SYNTAX_VALID_NO_CHECKSUM"
+  },
+  {
+   "blob": "40979c359f58e3ba8c165881e324923b9d0ea959",
+   "gate": "G-PAY",
+   "kind": "eth",
+   "path": "board/api/payforward/index.json",
+   "ref": "0x618a…1cf0",
+   "severity": "HOLD",
+   "validity": "SYNTAX_VALID_NO_CHECKSUM"
+  },
+  {
+   "blob": "fa62cf73da0eb73618a7aa2434a71f376329a6d2",
+   "gate": "G-PAY",
+   "kind": "btc_bech32",
+   "path": "board/api/proof/index.html",
+   "ref": "bc1qtibtnx…",
+   "severity": "HOLD",
+   "validity": "INVALID_PLACEHOLDER"
+  },
+  {
+   "blob": "fa62cf73da0eb73618a7aa2434a71f376329a6d2",
+   "gate": "G-PAY",
+   "kind": "btc_bech32",
+   "path": "board/api/proof/index.html",
+   "ref": "bc1qtibtnx…",
+   "severity": "HOLD",
+   "validity": "INVALID_PLACEHOLDER"
+  },
+  {
+   "blob": "fa62cf73da0eb73618a7aa2434a71f376329a6d2",
+   "gate": "G-PAY",
+   "kind": "btc_bech32",
+   "path": "board/api/proof/index.html",
+   "ref": "bc1qtibtnx…",
+   "severity": "HOLD",
+   "validity": "INVALID_PLACEHOLDER"
+  },
+  {
+   "blob": "fa62cf73da0eb73618a7aa2434a71f376329a6d2",
+   "gate": "G-PAY",
+   "kind": "eth",
+   "path": "board/api/proof/index.html",
+   "ref": "0x618a…1cf0",
+   "severity": "HOLD",
+   "validity": "SYNTAX_VALID_NO_CHECKSUM"
+  },
+  {
+   "blob": "fa62cf73da0eb73618a7aa2434a71f376329a6d2",
+   "gate": "G-PAY",
+   "kind": "eth",
+   "path": "board/api/proof/index.html",
+   "ref": "0x618a…1cf0",
+   "severity": "HOLD",
+   "validity": "SYNTAX_VALID_NO_CHECKSUM"
+  },
+  {
+   "blob": "fa62cf73da0eb73618a7aa2434a71f376329a6d2",
+   "gate": "G-PAY",
+   "kind": "eth",
+   "path": "board/api/proof/index.html",
+   "ref": "0x618a…1cf0",
+   "severity": "HOLD",
+   "validity": "SYNTAX_VALID_NO_CHECKSUM"
+  },
+  {
+   "blob": "40979c359f58e3ba8c165881e324923b9d0ea959",
+   "gate": "G-PAY",
+   "kind": "btc_bech32",
+   "path": "board/api/proof/index.json",
+   "ref": "bc1qtibtnx…",
+   "severity": "HOLD",
+   "validity": "INVALID_PLACEHOLDER"
+  },
+  {
+   "blob": "40979c359f58e3ba8c165881e324923b9d0ea959",
+   "gate": "G-PAY",
+   "kind": "btc_bech32",
+   "path": "board/api/proof/index.json",
+   "ref": "bc1qtibtnx…",
+   "severity": "HOLD",
+   "validity": "INVALID_PLACEHOLDER"
+  },
+  {
+   "blob": "40979c359f58e3ba8c165881e324923b9d0ea959",
+   "gate": "G-PAY",
+   "kind": "btc_bech32",
+   "path": "board/api/proof/index.json",
+   "ref": "bc1qtibtnx…",
+   "severity": "HOLD",
+   "validity": "INVALID_PLACEHOLDER"
+  },
+  {
+   "blob": "40979c359f58e3ba8c165881e324923b9d0ea959",
+   "gate": "G-PAY",
+   "kind": "eth",
+   "path": "board/api/proof/index.json",
+   "ref": "0x618a…1cf0",
+   "severity": "HOLD",
+   "validity": "SYNTAX_VALID_NO_CHECKSUM"
+  },
+  {
+   "blob": "40979c359f58e3ba8c165881e324923b9d0ea959",
+   "gate": "G-PAY",
+   "kind": "eth",
+   "path": "board/api/proof/index.json",
+   "ref": "0x618a…1cf0",
+   "severity": "HOLD",
+   "validity": "SYNTAX_VALID_NO_CHECKSUM"
+  },
+  {
+   "blob": "40979c359f58e3ba8c165881e324923b9d0ea959",
+   "gate": "G-PAY",
+   "kind": "eth",
+   "path": "board/api/proof/index.json",
+   "ref": "0x618a…1cf0",
+   "severity": "HOLD",
+   "validity": "SYNTAX_VALID_NO_CHECKSUM"
+  },
+  {
+   "blob": "dd3cbd4073322ceeb519819cdde9a42ac367b089",
+   "gate": "G-PAY",
+   "kind": "btc_bech32",
+   "path": "board/api/resources/index.html",
+   "ref": "bc1qtibtnx…",
+   "severity": "HOLD",
+   "validity": "INVALID_PLACEHOLDER"
+  },
+  {
+   "blob": "dd3cbd4073322ceeb519819cdde9a42ac367b089",
+   "gate": "G-PAY",
+   "kind": "eth",
+   "path": "board/api/resources/index.html",
+   "ref": "0x618a…1cf0",
+   "severity": "HOLD",
+   "validity": "SYNTAX_VALID_NO_CHECKSUM"
+  },
+  {
+   "blob": "60f443a810320eaa75639c1b620b1460d4c3b195",
+   "gate": "G-PAY",
+   "kind": "btc_bech32",
+   "path": "board/api/resources/index.json",
+   "ref": "bc1qtibtnx…",
+   "severity": "HOLD",
+   "validity": "INVALID_PLACEHOLDER"
+  },
+  {
+   "blob": "60f443a810320eaa75639c1b620b1460d4c3b195",
+   "gate": "G-PAY",
+   "kind": "eth",
+   "path": "board/api/resources/index.json",
+   "ref": "0x618a…1cf0",
+   "severity": "HOLD",
+   "validity": "SYNTAX_VALID_NO_CHECKSUM"
+  },
+  {
+   "blob": "7ea2a8367a7a74cc69cb8c1a0d59428cf643542c",
+   "email_class": "personal_webmail",
+   "gate": "G-PII-EMAIL",
+   "line": 2,
+   "path": "scripts/CoNotifyReal.ps1",
+   "severity": "HOLD"
+  },
+  {
+   "blob": "7ea2a8367a7a74cc69cb8c1a0d59428cf643542c",
+   "email_class": "personal_webmail",
+   "gate": "G-PII-EMAIL",
+   "line": 3,
+   "path": "scripts/CoNotifyReal.ps1",
+   "severity": "HOLD"
+  },
+  {
+   "blob": "aaa49445ae0676f6324f51047ebaf3274a86156c",
+   "detail": "self-asserted authority in content is not evidence of authority",
+   "gate": "G-SELF-AUTH",
+   "key": "blanketAuth",
+   "path": "api/ping/index.html",
+   "severity": "REVIEW"
+  },
+  {
+   "blob": "880c529154e877c3bfc41553f3b1734d97a5dab0",
+   "detail": "self-asserted authority in content is not evidence of authority",
+   "gate": "G-SELF-AUTH",
+   "key": "blanketAuth",
+   "path": "board/api/auth/index.json",
+   "severity": "REVIEW"
+  },
+  {
+   "blob": "40979c359f58e3ba8c165881e324923b9d0ea959",
+   "detail": "self-asserted authority in content is not evidence of authority",
+   "gate": "G-SELF-AUTH",
+   "key": "blanketAuth",
+   "path": "board/api/ci/index.json",
+   "severity": "REVIEW"
+  },
+  {
+   "blob": "40979c359f58e3ba8c165881e324923b9d0ea959",
+   "detail": "self-asserted authority in content is not evidence of authority",
+   "gate": "G-SELF-AUTH",
+   "key": "blanketAuth",
+   "path": "board/api/evolve/index.json",
+   "severity": "REVIEW"
+  },
+  {
+   "blob": "40979c359f58e3ba8c165881e324923b9d0ea959",
+   "detail": "self-asserted authority in content is not evidence of authority",
+   "gate": "G-SELF-AUTH",
+   "key": "blanketAuth",
+   "path": "board/api/infer/index.json",
+   "severity": "REVIEW"
+  },
+  {
+   "blob": "40979c359f58e3ba8c165881e324923b9d0ea959",
+   "detail": "self-asserted authority in content is not evidence of authority",
+   "gate": "G-SELF-AUTH",
+   "key": "blanketAuth",
+   "path": "board/api/payforward/index.json",
+   "severity": "REVIEW"
+  },
+  {
+   "blob": "40979c359f58e3ba8c165881e324923b9d0ea959",
+   "detail": "self-asserted authority in content is not evidence of authority",
+   "gate": "G-SELF-AUTH",
+   "key": "blanketAuth",
+   "path": "board/api/proof/index.json",
+   "severity": "REVIEW"
+  },
+  {
+   "blob": "7fae11856a310286d1b5fe98e6970354b9228e4c",
+   "detail": "self-asserted authority in content is not evidence of authority",
+   "gate": "G-SELF-AUTH",
+   "key": "blanketAuth",
+   "path": "docs/board/api/ping/index.html",
+   "severity": "REVIEW"
+  },
+  {
+   "blob": "16fde065c20941d9fd16a7b33b0cc2175593a82f",
+   "detail": "run step writes a served root file (index.html/CNAME/404.html)",
+   "gate": "G-WF-PROD-MUTATE",
+   "job": "forever",
+   "path": ".github/workflows/coevo-forever.yml",
+   "severity": "HOLD",
+   "triggers": [
+    "schedule",
+    "workflow_dispatch"
+   ]
+  },
+  {
+   "blob": "3e73d1886504ab3f4c37e2294ee1fd62d0e45953",
+   "detail": "write step with no permissions block; effective scope = unknown repo default",
+   "gate": "G-WF-PUSH-NOPERM",
+   "job": "evo",
+   "path": ".github/workflows/autoevo.yml",
+   "severity": "HOLD",
+   "triggers": [
+    "schedule",
+    "workflow_dispatch"
+   ]
+  },
+  {
+   "blob": "16fde065c20941d9fd16a7b33b0cc2175593a82f",
+   "detail": "write step with no permissions block; effective scope = unknown repo default",
+   "gate": "G-WF-PUSH-NOPERM",
+   "job": "forever",
+   "path": ".github/workflows/coevo-forever.yml",
+   "severity": "HOLD",
+   "triggers": [
+    "schedule",
+    "workflow_dispatch"
+   ]
+  }
+ ],
+ "hold_count": 88,
+ "label": "InSeed",
+ "schema": "CoGuardian.LintReport.R0",
+ "summary": {
+  "G-CRED-LITERAL": 1,
+  "G-DOMAIN-BIND": 1,
+  "G-NOOP-PROBE": 1,
+  "G-PAY": 83,
+  "G-PII-EMAIL": 2,
+  "G-SELF-AUTH": 8,
+  "G-WF-PROD-MUTATE": 1,
+  "G-WF-PUSH-NOPERM": 2
+ }
+}
