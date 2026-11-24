@@ -1,0 +1,295 @@
+{
+  "schema": "CoAll.CoStateMutationResearchLens.R0",
+  "date": "2026-11-24",
+  "status": "SOURCE_ONLY_PUBLIC_REVIEW_BRANCH__NOT_RUNTIME_OR_CANON",
+  "purpose": "Relations and bounded tests for evolving sites, nodes, processes, memories and their observers. Projection over existing source contracts, NOT a second ontology/controller.",
+  "source_blobs": {
+    "CoSourceGraph": "301c8951e566de9f9ec0bde16a6b991bd177bd47",
+    "CoSubstrateField": "5fec3249945ad3d14511621bc52da5587c3526b8",
+    "CoSessionAutocycle": "ffad845914b7e3faf9fdf088c92ee8bc49a8dd9a",
+    "CoOmniFront": "5a0073a241d66606bddaa01e36ba8721f5dd3857",
+    "CoEvidenceReceiptGuard": "f79b22449ffe8c3f4b9c1361cc22ad7a47545b50",
+    "CoEvoPrimitives": "404a1e5d0c5aaa002a94ed9b051489475d44cbb7",
+    "CoSourceSchema": "c7ae7d1e8644c71f1529536d6a0cab17c0fe30c5",
+    "CoEvoProjectionSchema": "59221ae0044e2624b708222f9bbcdf5610981566",
+    "DueWorkQueue": "a143e683967449d3a9f26ed534fe32602cf58619",
+    "RickBarContinuity": "b793b3e3fab51f053998099efd985308b45cc834"
+  },
+  "reuse": {
+    "source_graph": "https://github.com/CoCivium/CoCivium/blob/main/docs/Architecture/COSOURCE_GRAPH_R0.md",
+    "substrate_field": "https://github.com/CoCivium/CoCivium/blob/main/docs/Architecture/COSUBSTRATE_FIELD_R0.md",
+    "session_autocycle": "https://github.com/CoCivium/CoCivium/blob/main/docs/Architecture/COSESSION_AUTOCYCLE_R0.md",
+    "evo_grammar": "https://github.com/CoCivium/CoCivium/blob/main/schemas/cosession-relational-delta-v0.2.schema.json",
+    "workid_queue": "https://github.com/CoCivium/CoCivium/blob/main/examples/cotalkitout/due_work_catchup_r0.py",
+    "continuity_store": "https://github.com/CoCivium/CoCivium/blob/main/examples/comodelfabric/rickbar_continuity_r1.py",
+    "evidence_guard": "https://github.com/CoCivium/CoCivium/blob/main/docs/Architecture/COEVIDENCE_RECEIPT_GUARD_R0.md",
+    "civ2_gapmap": "https://github.com/CoCivium/CoCivium/blob/main/docs/Strategy/CIV2_CIV3_BOUNDARY_GAPMAP_R0.md",
+    "public_site_graph": "https://cocivium.github.io/CoAcademy/sites/relations/graph.json",
+    "model_fabric_owner": "https://github.com/CoCivium/CoSteward/issues/277",
+    "cross_receiver_owner": "https://github.com/CoCivium/CoCivium/issues/317",
+    "browser_sqlite_owner": "https://github.com/CoCivium/CoCivium/issues/450"
+  },
+  "orthogonal_dimensions": [
+    "source",
+    "site",
+    "node",
+    "process",
+    "memory",
+    "custody",
+    "privacy",
+    "authority",
+    "receiver",
+    "meaning"
+  ],
+  "research_lenses": [
+    {
+      "axis": "identity",
+      "purpose": "project/source/work identity stable across location, host, provider and brand",
+      "inversion": "Rename or alias does not mutate the source object"
+    },
+    {
+      "axis": "namespace",
+      "purpose": "DNS/public name vs non-DNS namespace and claimed brand",
+      "inversion": "Suffix does not establish ownership, authority or service"
+    },
+    {
+      "axis": "site",
+      "purpose": "content source vs compiled page vs CDN-transformed browser response",
+      "inversion": "Same Git blob may produce different response bytes; compare layers"
+    },
+    {
+      "axis": "node",
+      "purpose": "device/service cell vs endpoint vs operator vs availability",
+      "inversion": "Named, reachable, healthy, writable and authorized are independent"
+    },
+    {
+      "axis": "process",
+      "purpose": "process vs thread vs task vs lease vs operating service",
+      "inversion": "PID alive is not a completed WorkID; restart is not recovery"
+    },
+    {
+      "axis": "memory",
+      "purpose": "immutable evidence vs index vs semantic interpretation vs cache vs durable custody",
+      "inversion": "Pointer and semantic summary never replace exact recovery proof"
+    },
+    {
+      "axis": "multistate",
+      "purpose": "parallel vectors for evidence/currentness/authority/receiver/custody/health",
+      "inversion": "A green aggregate label cannot promote an unknown axis"
+    },
+    {
+      "axis": "mutation",
+      "purpose": "source modification vs relation change vs observer projection vs external effect",
+      "inversion": "A proposal or local commit does not certify receiver change"
+    },
+    {
+      "axis": "concurrency",
+      "purpose": "single elected writer within effect domain, readers in parallel, fencing and retry",
+      "inversion": "Duplicate delivery must not duplicate external effect"
+    },
+    {
+      "axis": "rights",
+      "purpose": "consent, purpose, retention, revocation, bystander and delegation",
+      "inversion": "Visibility and storage do not create sharing or execution rights"
+    },
+    {
+      "axis": "model",
+      "purpose": "runner source, specific weight file, task outcome, provenance and license separately",
+      "inversion": "One passing synthetic prompt does not qualify an agent"
+    },
+    {
+      "axis": "meaning",
+      "purpose": "literal, hypothetical, metaphorical, cultural and contested relation classes",
+      "inversion": "Symbolic map must not silently become operational actuation"
+    },
+    {
+      "axis": "observability",
+      "purpose": "valid time vs event time vs observation time vs publication time",
+      "inversion": "Last update timestamp cannot establish currentness of every layer"
+    },
+    {
+      "axis": "continuity",
+      "purpose": "site and node recovery across non-correlated hosting/custody operators",
+      "inversion": "Two GitHub URLs do not prove independent failure domains"
+    },
+    {
+      "axis": "economics",
+      "purpose": "measured user benefit, maintenance cost and sustainable governance",
+      "inversion": "More nodes/models/sessions are not automatically a better outcome"
+    }
+  ],
+  "mutation_classes": [
+    "OBSERVE",
+    "PROPOSE",
+    "BRANCH_MUTATE",
+    "REVIEW_CHALLENGE",
+    "MERGE_LOW_EFFECT",
+    "EFFECT_GATED"
+  ],
+  "epistemic_classes": [
+    "OBSERVED",
+    "INFERRED",
+    "HYPOTHESIS",
+    "PREDICTED",
+    "PLANNED",
+    "METAPHORICAL",
+    "MYTHIC",
+    "HUMOROUS",
+    "COUNTERFACTUAL",
+    "UNKNOWN"
+  ],
+  "event_roles": {
+    "proposed": "MUTATION_INTENT_WITH_REVIEWABLE_BASE_REVISION",
+    "observed": "UNAUTHENTICATED_ASSERTION_UNTIL_ORIGIN_PROVEN",
+    "received": "ACK_ONLY_WHEN_RECEIVER_ORIGIN_READPROOF_VERIFIED",
+    "accepted": "SEMANTIC_ACCEPTANCE_SEPARATE_FROM_CUSTODY_AND_HTTP"
+  },
+  "risk_inversions": [
+    "SOURCE_REACHABLE_NE_PUBLIC_SITE",
+    "DOMAIN_RESOLVES_NE_OWNER_PROVEN",
+    "PROCESS_ALIVE_NE_SERVICE_HEALTHY",
+    "MEMORY_INDEXED_NE_DURABLE_CUSTODY",
+    "CONTENT_HASH_NE_SEMANTIC_ACCEPTANCE",
+    "MANY_MODELS_NE_INDEPENDENT_EVIDENCE",
+    "TWO_URLS_NE_TWO_FAILURE_DOMAINS",
+    "METAPHORICAL_RELATION_NE_LITERAL_MECHANISM",
+    "OBSERVATION_TIME_NE_VALID_TIME",
+    "REVOCATION_NE_LOG_DELETION",
+    "MUTATION_PROPOSAL_NE_APPLIED_EFFECT",
+    "CI_PASS_NE_RUNTIME_OR_PRODUCT",
+    "AUTOMATION_ENABLED_NE_UNATTENDED_USEFUL_WORK"
+  ],
+  "standards_donors": [
+    {
+      "standard": "W3C_PROV_O",
+      "uri": "https://www.w3.org/TR/prov-o/",
+      "use": "Entity/activity/agent and derivation/association lineage",
+      "status": "REFERENCE_NOT_IMPLEMENTED"
+    },
+    {
+      "standard": "CLOUDEVENTS_V1_0_2",
+      "uri": "https://github.com/cloudevents/spec/blob/v1.0.2/cloudevents/spec.md",
+      "use": "Transport-neutral source+id event identity and metadata",
+      "status": "REFERENCE_NOT_RUNNING_BUS"
+    },
+    {
+      "standard": "OPENTELEMETRY_SEMCONV",
+      "uri": "https://opentelemetry.io/docs/specs/semconv/general/",
+      "use": "Separate process-duration spans from point-in-time events",
+      "status": "REFERENCE_NOT_RUNNING_COLLECTOR"
+    },
+    {
+      "standard": "RFC_9457",
+      "uri": "https://www.rfc-editor.org/rfc/rfc9457.html",
+      "use": "Machine-readable problem details and reason codes for HTTP effect-boundary failures",
+      "status": "REFERENCE_NO_HTTP_API_DEPLOYED"
+    },
+    {
+      "standard": "SQLITE_WAL",
+      "uri": "https://www.sqlite.org/wal.html",
+      "use": "Single-machine multi-reader/single-writer WAL; do not share writable WAL database across network filesystem",
+      "status": "EXISTING_SQLITE_CODE_NOT_NETWORK_DURABILITY_PROOF"
+    }
+  ],
+  "test_canary": {
+    "source": "examples/costate/costate_mutation_shadow_r0.py",
+    "git_blob": "941bc48bca156b7eb49671fa1a7042d94891e348",
+    "x2_file_sha256": "a3abd1624ae70c08b0b206d6b090846ab304ef13d8df972584700918466624f4",
+    "local_tests": {
+      "passed": 30,
+      "total": 30,
+      "environment": "X2_WIN11_PYTHON3_STD_LIB",
+      "scope": "PURE_SYNTHETIC_SHADOW_PROJECTION_NO_EXTERNAL_EFFECT"
+    },
+    "nonclaims": [
+      "NO_REAL_PROCESS_CONCURRENCY_TEST",
+      "NO_AUTHENTICATED_OBSERVER",
+      "NO_REAL_EFFECT_MUTATION",
+      "NO_RECEIVER_ORIGIN_ACK",
+      "NO_COEX_CANON",
+      "NO_NEW_SERVICE",
+      "NO_REAL_PRIVACY_ENFORCEMENT"
+    ]
+  },
+  "priority_backlog": [
+    {
+      "p": 0,
+      "id": "P0_A",
+      "question": "Can one source WorkID change one shadow axis without promoting any other?",
+      "test": "Run the 30 checked synthetic adversarial cases; preserve no-effect rail",
+      "owner": "https://github.com/CoCivium/CoCivium/blob/main/schemas/cosession-relational-delta-v0.2.schema.json"
+    },
+    {
+      "p": 0,
+      "id": "P0_B",
+      "question": "Can two independent recipients ACK one exact harmless event without duplicate external effect?",
+      "test": "Receiver-origin readproof and source+id replay/conflict handling; preserve failure case",
+      "owner": "https://github.com/CoCivium/CoCivium/issues/317"
+    },
+    {
+      "p": 0,
+      "id": "P0_C",
+      "question": "Can a public site be served and restored without relying on GitHub?",
+      "test": "Exact hash readback from independently controlled host with Github unavailable",
+      "owner": "https://github.com/CoCivium/CoCivium/blob/main/docs/Strategy/CIV2_CIV3_BOUNDARY_GAPMAP_R0.md"
+    },
+    {
+      "p": 0,
+      "id": "P0_D",
+      "question": "Can RickBar show source/site/node/receiver states without one misleading green indicator?",
+      "test": "One real user task with visible per-axis evidence, stale timings and Stop",
+      "owner": "https://github.com/CoCivium/CoCivium/blob/main/docs/Architecture/COSESSION_AUTOCYCLE_R0.md"
+    },
+    {
+      "p": 1,
+      "id": "P1_A",
+      "question": "Can storage move from X2 to CoStead without assuming live SQLite WAL over SMB?",
+      "test": "Local SQLite WAL + immutable event export + receiver-local import/check, no network-WAL writers",
+      "owner": "https://github.com/CoCivium/CoCivium/blob/main/examples/cotalkitout/due_work_catchup_r0.py"
+    },
+    {
+      "p": 1,
+      "id": "P1_B",
+      "question": "Can a local model produce a source-bound proposal with no mutation authority?",
+      "test": "Task-specific fixture and deterministic verifier; effect remains fenced",
+      "owner": "https://github.com/CoCivium/CoSteward/issues/277"
+    },
+    {
+      "p": 1,
+      "id": "P1_C",
+      "question": "Can a consent or legal-policy change revoke all pending downstream effects without erasing history?",
+      "test": "Revocation test across lease, queue, consumer cursor and recovery",
+      "owner": "https://github.com/CoCivium/CoCivium/issues/450"
+    },
+    {
+      "p": 1,
+      "id": "P1_D",
+      "question": "Can one human-facing and one machine-facing site projection share claim provenance despite CDN transformations?",
+      "test": "Separate Git source hash, build hash, edge response hash and user acceptance",
+      "owner": "https://cocivium.github.io/CoAcademy/sites/relations/graph.json"
+    },
+    {
+      "p": 2,
+      "id": "P2_A",
+      "question": "When would a CRDT be safer than one writer per collision domain?",
+      "test": "Compare merge semantics and privacy revocation in a completely synthetic collaborative note; no auto-merge of permissions",
+      "owner": "https://github.com/CoCivium/CoCivium/blob/main/docs/Architecture/COSOURCE_GRAPH_R0.md"
+    },
+    {
+      "p": 2,
+      "id": "P2_B",
+      "question": "Can metaphorical/unknown/negated/inverse relations enrich discovery without becoming mechanistic claims?",
+      "test": "Epistemic type-check and adversarial promotion rejection",
+      "owner": "https://github.com/CoCivium/CoCivium/blob/main/docs/Architecture/COSUBSTRATE_FIELD_R0.md"
+    },
+    {
+      "p": 2,
+      "id": "P2_C",
+      "question": "Does a CivOS or CoStax label buy capability over the existing Windows, SQLite, Ollama and Git adapters?",
+      "test": "Compare one end-user task baseline against the alternate; no native OS replacement without evidence",
+      "owner": "https://github.com/CoCivium/CoCivium/blob/main/docs/Strategy/CIV2_CIV3_BOUNDARY_GAPMAP_R0.md"
+    }
+  ],
+  "stop_rule": "Two consecutive bounded research waves that produce no new externally useful verified capability or meaningful safety finding pause that lane; reopen on changed requirements/security or new credible evidence.",
+  "one_elected_next": "Existing #317 and #450 owner test one synthetic WorkID readproof across two independent receivers with robust duplicate and revocation tests; do not create a second runtime."
+}
