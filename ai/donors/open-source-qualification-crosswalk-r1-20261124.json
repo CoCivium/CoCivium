@@ -1,0 +1,234 @@
+{
+  "schema": "CoOSS.UpstreamDonorQualificationCrosswalk.R1",
+  "state": "PUBLIC_REVIEW_BRANCH__SOURCE_EVIDENCE_ONLY__NO_ADOPTION_OR_LICENSE_COMPLIANCE",
+  "date": "2026-11-24",
+  "id": "CoOSS.PublicCrosswalk.20261124.R1",
+  "incumbent": {
+    "source_url": "https://github.com/CoCivium/CoCivium/blob/main/docs/Capabilities/open_source_donors_r0.json",
+    "source_blob": "bd80857b7f3b45024fe6db933da21965a94b9832",
+    "original_eight_preserved": true
+  },
+  "links": {
+    "existing_public_stacks": "https://github.com/CoCivium/CoStacks",
+    "existing_stacks_readme_blob": "9d616bb98d6e837dc3f18f16a3fdbc5bc3e8f60c",
+    "model_owner": "https://github.com/CoCivium/CoSteward/issues/277",
+    "recovery_owner": "https://github.com/CoCivium/CoSteward/issues/40",
+    "evergreen_owner": "https://github.com/CoCivium/CoCivium/issues/24",
+    "colocal_grails_source": "https://github.com/CoCivium/CoCivium/blob/main/docs/CoLocal/CoLocal2601109_CoRelGRAILS_CoSeed_R0.md",
+    "adapter_contract": "https://github.com/CoCivium/CoCivium/blob/main/docs/Architecture/COMODELFABRIC_COORB_PROVIDER_ADAPTERS_R0_20261024.md"
+  },
+  "observed_codes": {
+    "CoStacks": "PRESENT_PUBLIC_SHADOW_REPORT_ONLY",
+    "CoStax": "NOT_VERIFIED_AS_A_DISTINCT_IMPLEMENTATION",
+    "GRAILS": "EXISTING_SEED_STATES_AUTHORITATIVE_EXPANSION_UNRESOLVED"
+  },
+  "source_method": "Public GitHub default-branch head and exact license-file blob via authenticated GitHub read tools on 2026-11-24. Pin is evidence, not adoption. Repo heads may change after this observation.",
+  "candidate_count": 7,
+  "candidates": [
+    {
+      "id": "ollama_runtime",
+      "upstream": "ollama/ollama",
+      "head": "924cc286cc592f49c481fa84e15fa60dbc75989e",
+      "license": "MIT",
+      "license_path": "LICENSE",
+      "license_blob": "8e3dc978a7ca8c53f56bbedc5b558116140fc02e",
+      "lane": "CoModelFabric/CoBar local inference",
+      "election": "PRIORITIZE_EXISTING_RUNTIME",
+      "reuse": "LOCAL_ADAPTER",
+      "next": "Repeat task-specific bounded context/timeout regression across 20+ synthetic, non-sensitive task cases. Do not upgrade from local pre-release by inference alone.",
+      "hold": "FULL_PRODUCTION_MODEL_ROUTING_AND_UNATTENDED_RECOVERY_UNPROVEN",
+      "source_url": "https://github.com/ollama/ollama",
+      "license_url": "https://github.com/ollama/ollama/blob/924cc286cc592f49c481fa84e15fa60dbc75989e/LICENSE",
+      "license_evidence": "EXACT_UPSTREAM_REPOSITORY_FILE_OBSERVED__LEGAL_COMPLIANCE_REQUIRES_SEPARATE_REVIEW",
+      "local_runtime_proof": "LOCAL_BOUND_TASK_R1_QWEN3_4B_ONLY_NOT_ENTIRE_SYSTEM"
+    },
+    {
+      "id": "llamacpp_fallback",
+      "upstream": "ggml-org/llama.cpp",
+      "head": "4af4bb6d8ad83ec0b3ef84a3bc477ccfe179b4ff",
+      "license": "MIT",
+      "license_path": "LICENSE",
+      "license_blob": "e7dca554bcb802f98408383a864404e3aa4eacca",
+      "lane": "local backend portability/fallback",
+      "election": "CONDITIONAL_COMPARISON_ONLY",
+      "reuse": "FALLBACK_ADAPTER_OR_REFERENCED_COMPONENT",
+      "next": "Compare single task latency/quality only if the incumbent Ollama route fails a measured reliability threshold. Do not install a second always-on server by default.",
+      "hold": "NO_LOCAL_LLAMA_CPP_SERVER_OR_INDEPENDENT_FAILURE_DOMAIN_PROOF",
+      "source_url": "https://github.com/ggml-org/llama.cpp",
+      "license_url": "https://github.com/ggml-org/llama.cpp/blob/4af4bb6d8ad83ec0b3ef84a3bc477ccfe179b4ff/LICENSE",
+      "license_evidence": "EXACT_UPSTREAM_REPOSITORY_FILE_OBSERVED__LEGAL_COMPLIANCE_REQUIRES_SEPARATE_REVIEW",
+      "local_runtime_proof": "NOT_CURRENTLY_VERIFIED_FOR_THIS_HOST"
+    },
+    {
+      "id": "uv",
+      "upstream": "astral-sh/uv",
+      "head": "d99121a2e246065c28661dc58da9233b0abbd479",
+      "license": "MIT OR Apache-2.0",
+      "license_path": "LICENSE-MIT",
+      "license_blob": "014835144877ea9c926d027ece3e1a26290cf481",
+      "lane": "reproducible Python development and task tests",
+      "election": "QUALIFY_LOW_COST_CANARY",
+      "reuse": "EXTERNAL_TOOL",
+      "next": "Compare deterministic environment setup, lock/check reproduction and rollback in a disposable test folder. Pin install artifact/version and verify source-to-executable provenance.",
+      "hold": "NO_INSTALL_OR_MIGRATION_ADMISSION",
+      "source_url": "https://github.com/astral-sh/uv",
+      "license_url": "https://github.com/astral-sh/uv/blob/d99121a2e246065c28661dc58da9233b0abbd479/LICENSE-MIT",
+      "license_evidence": "EXACT_UPSTREAM_REPOSITORY_FILE_OBSERVED__LEGAL_COMPLIANCE_REQUIRES_SEPARATE_REVIEW",
+      "local_runtime_proof": "NOT_CURRENTLY_VERIFIED_FOR_THIS_HOST"
+    },
+    {
+      "id": "syft_sbom",
+      "upstream": "anchore/syft",
+      "head": "9ad9aa5e80a6762c33b0344d252ec669ae53afdc",
+      "license": "Apache-2.0",
+      "license_path": "LICENSE",
+      "license_blob": "261eeb9e9f8b2b4b0d119366dda99c6fd7d35c64",
+      "lane": "software bill of materials / software custody",
+      "election": "QUALIFY_READ_ONLY_PILOT",
+      "reuse": "CLI_ADAPTER",
+      "next": "Use a synthetic/disposable public fixture to produce SPDX/CycloneDX output; assess false positives, resource cost, notices, and privacy before scanning real private work.",
+      "hold": "NO_SBOM_OR_LICENSE_COMPLIANCE_CERTIFICATION",
+      "source_url": "https://github.com/anchore/syft",
+      "license_url": "https://github.com/anchore/syft/blob/9ad9aa5e80a6762c33b0344d252ec669ae53afdc/LICENSE",
+      "license_evidence": "EXACT_UPSTREAM_REPOSITORY_FILE_OBSERVED__LEGAL_COMPLIANCE_REQUIRES_SEPARATE_REVIEW",
+      "local_runtime_proof": "NOT_CURRENTLY_VERIFIED_FOR_THIS_HOST"
+    },
+    {
+      "id": "otel_collector",
+      "upstream": "open-telemetry/opentelemetry-collector",
+      "head": "1fcf8d3233e04fae3bee7639e035c7c69d5da2a3",
+      "license": "Apache-2.0",
+      "license_path": "LICENSE",
+      "license_blob": "d645695673349e3947e8e5ae42332d0ac3164cd7",
+      "lane": "read-only task/receipt timing visibility",
+      "election": "DEFER_UNTIL_ONE_QUALIFIED_WORKID",
+      "reuse": "REPLACEABLE_TELEMETRY_ADAPTER",
+      "next": "First demonstrate a bounded WorkID receiver receipt and privacy-minimized telemetry schema. Avoid autonomous trace export without approved data controls.",
+      "hold": "NO_RUNTIME_COLLECTOR_DEPLOYED",
+      "source_url": "https://github.com/open-telemetry/opentelemetry-collector",
+      "license_url": "https://github.com/open-telemetry/opentelemetry-collector/blob/1fcf8d3233e04fae3bee7639e035c7c69d5da2a3/LICENSE",
+      "license_evidence": "EXACT_UPSTREAM_REPOSITORY_FILE_OBSERVED__LEGAL_COMPLIANCE_REQUIRES_SEPARATE_REVIEW",
+      "local_runtime_proof": "NOT_CURRENTLY_VERIFIED_FOR_THIS_HOST"
+    },
+    {
+      "id": "nats_transport",
+      "upstream": "nats-io/nats-server",
+      "head": "5a7a03c33d5874da6e83e1d0496527834cd8b62e",
+      "license": "Apache-2.0",
+      "license_path": "LICENSE",
+      "license_blob": "261eeb9e9f8b2b4b0d119366dda99c6fd7d35c64",
+      "lane": "cross-node bounded event transport",
+      "election": "DEFER_UNTIL_SECOND_NODE_VERIFIED",
+      "reuse": "EXTERNAL_EVENT_TRANSPORT",
+      "next": "Only compare with simple append-only log when two independent service cells can demonstrate ordered, idempotent delivery and partition recovery.",
+      "hold": "NO_TWO_NODE_DELIVERY_OR_NETWORK_CUSTODY_PROOF",
+      "source_url": "https://github.com/nats-io/nats-server",
+      "license_url": "https://github.com/nats-io/nats-server/blob/5a7a03c33d5874da6e83e1d0496527834cd8b62e/LICENSE",
+      "license_evidence": "EXACT_UPSTREAM_REPOSITORY_FILE_OBSERVED__LEGAL_COMPLIANCE_REQUIRES_SEPARATE_REVIEW",
+      "local_runtime_proof": "NOT_CURRENTLY_VERIFIED_FOR_THIS_HOST"
+    },
+    {
+      "id": "temporal_workflows",
+      "upstream": "temporalio/temporal",
+      "head": "4197dfdd52eb338c932e64db209e3853fc7a032d",
+      "license": "MIT",
+      "license_path": "LICENSE",
+      "license_blob": "3349f76795f4409cba6ae18ea56adf9fbd8346f3",
+      "lane": "durable delayed-work execution",
+      "election": "DEFER_COMPLEXITY_UNTIL_EXISTING_QUEUE_INADEQUATE",
+      "reuse": "DURABLE_EXECUTION_ADAPTER",
+      "next": "Demonstrate precisely which replay/timer/crash requirement the existing fenced SQLite WorkID queue cannot satisfy, then run a disposable one-workflow proof with independent receiver.",
+      "hold": "NO_RUNNING_TEMPORAL_CLUSTER_OR_RECOVERY_PROOF",
+      "source_url": "https://github.com/temporalio/temporal",
+      "license_url": "https://github.com/temporalio/temporal/blob/4197dfdd52eb338c932e64db209e3853fc7a032d/LICENSE",
+      "license_evidence": "EXACT_UPSTREAM_REPOSITORY_FILE_OBSERVED__LEGAL_COMPLIANCE_REQUIRES_SEPARATE_REVIEW",
+      "local_runtime_proof": "NOT_CURRENTLY_VERIFIED_FOR_THIS_HOST"
+    }
+  ],
+  "model_weight_caveats": [
+    {
+      "model_family": "Qwen3-4B",
+      "official_upstream": "https://huggingface.co/Qwen/Qwen3-4B",
+      "observed_upstream_license": "Apache-2.0",
+      "host_installed_gguf_identity": "NOT_UPSTREAM_BYTES_EQUIVALENCE_PROVEN"
+    },
+    {
+      "model_family": "Qwen3.5-9B",
+      "official_upstream": "https://huggingface.co/Qwen/Qwen3.5-9B",
+      "observed_upstream_license": "Apache-2.0",
+      "host_installed_gguf_identity": "NOT_UPSTREAM_BYTES_EQUIVALENCE_PROVEN"
+    },
+    {
+      "model_family": "Gemma 3",
+      "official_terms": "https://ai.google.dev/gemma/terms",
+      "observed_character": "MODEL_SPECIFIC_GOOGLE_TERMS_NOT_APPROVED_FOSS_WEIGHT_LICENSE",
+      "host_license": "NOT_QUALIFIED"
+    }
+  ],
+  "operating_chain": [
+    "START_FROM_INTENT_AND_TASK_CLASS",
+    "REUSE_DETERMINISTIC_EXISTING_COMPONENT_IF_SUFFICIENT",
+    "QUALIFY_UPSTREAM_COMMIT_AND_EXACT_LICENSE_CONTENT_AND_MODEL_WEIGHT_TERMS",
+    "DECIDE_PATTERN_REFERENCE_VS_EXACT_ADAPTER_VS_FORK",
+    "TEST_ON_SYNTHETIC_SAFE_FIXTURES",
+    "COMPARE_AGAINST_CURRENT_BASELINE_WITH_TASK_QUALITY_AS_HARD_GATE",
+    "VERIFY_EFFECT_BOUNDARY_PRIVACY_LATENCY_ENERGY_RESOURCE_BUDGET",
+    "CHECK_ROLLBACK_AND_SECOND_FAILOVER_DOMAIN_WHEN_REQUIRED",
+    "ELECT_ONE_MUTATION_WRITER_ONLY_AFTER_SEPARATE_AUTHORITY",
+    "PRESERVE_SOURCE_RECEIPT_AND_BACKWARD_RECOVERY_POINTER"
+  ],
+  "hard_gates": [
+    "LICENSE_AND_NOTICE_MUST_BE_QUALIFIED_FOR_ACTUAL_DISTRIBUTION_OR_SERVICE",
+    "REPO_LICENSE_NE_MODEL_WEIGHTS_LICENSE",
+    "MODEL_FILE_DIGEST_NE_UPSTREAM_MODEL_PROVENANCE",
+    "PUBLIC_REPO_NE_PRODUCT",
+    "MODEL_GENERATION_NE_VERIFIED_WORK_RESULT",
+    "UPSTREAM_PATCH_NE_AUTO_APPLY",
+    "FORK_NE_DEFAULT",
+    "MANY_READERS_ONE_ELECTED_ACTUATOR",
+    "NO_CREDENTIAL_NOR_SENSITIVE_DATA_IN_PUBLIC_REPORT"
+  ],
+  "comparison": {
+    "dimensions": [
+      "task_completion",
+      "correctness_verifier",
+      "latency_ms",
+      "resource_cost",
+      "energy_when_measurable",
+      "rights_cost",
+      "maintenance_hours",
+      "recovery",
+      "privacy",
+      "human_attention",
+      "dependency_portability"
+    ],
+    "veto_fields": [
+      "rights_unresolved",
+      "privacy_expansion",
+      "critical_correctness_failure",
+      "unrecovered_write",
+      "external_authority_missing"
+    ],
+    "candidate_gain_rule": "Measure at least one real baseline task and a comparable new donor. Do not use subjective generic goodness as benefit.",
+    "diminishing_returns_stop": "After 2 consecutive bounded research waves add no distinct qualified capability, security fix, or measured net improvement, pause that research lane until relevant upstream/security/user-task change; never suppress important advisories.",
+    "max_scope_per_wave": "No more than 7 upstream candidates and 1 non-effectful implementation experiment per wave without a material recorded need."
+  },
+  "local_evidence_private": {
+    "work_id": "CoOSS.LocalModelHarmlessEvidenceClass.20261124.R0",
+    "source_receipt_visibility": "PRIVATE_X2_NOT_PUBLISHED_IN_THIS_CROSSWALK",
+    "findings": "Local Ollama enumeration existed with 11 installed entries; a small-context qwen3:4b synthetic classification passed; custom derivative did not pass that exact test. Long-context requests timed out earlier.",
+    "risk_status": "ONE_SYNTHETIC_PASS_NE_PRODUCT_CAPABILITY_OR_RECOVERY",
+    "future_model_rollout": "HOLD_UNTIL_PER_TASK_CORRECTNESS_PERFORMANCE_AND_UPSTREAM_WEIGHT_RIGHTS"
+  },
+  "no_effects": {
+    "source_ingestion": 0,
+    "model_installs": 0,
+    "dns_changes": 0,
+    "external_sends": 0,
+    "new_daemons": 0,
+    "runtime_cutover": 0,
+    "public_executable_release": 0,
+    "customer_adoption": 0
+  },
+  "next_elected_proof": "QUALIFY_ONE_EXISTING_QWEN3_BOUNDED_MODEL_WORKID_AND_REPRODUCIBLE_FIXTURE; EXPLAIN_LARGE_CONTEXT_TIMEOUT_BEFORE_ADDING_MORE_INSTANCES."
+}
