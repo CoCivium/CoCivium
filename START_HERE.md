@@ -6,6 +6,8 @@
 
 **Your default first step:** [Bring one thing you want to improve](docs/Onramp/COCIVIA_FIRST_USE_R0.md). This is a simple intake guide, not a claim that a separate CoCivia service or local installer is running.
 
+**Try a working browser demo (no download):** [CoGibber, from messy note to checkable plan](https://cocivium.github.io/CoAcademy/cogibber/). Use a fictional or non-sensitive note, correct the candidate actions/questions, then copy the checklist or JSON. This experimental English-pattern tool makes no AI calls or automatic uploads; its guesses are not verified understanding or permission to act. No account required.
+
 **One thing to try:** [CoPreCursor+](examples/coprecursor/README.md) is an offline browser demonstration. Download its [single HTML file](examples/coprecursor/index.html), open it locally, and try **Preview next → Accept → Undo** using the built-in fictional example. This is a local, rule-based suggestion, not a working AI provider, background agent, or message-sending service. You do not need an account or private data to inspect it.
 
 **One thing to challenge:** Could a first-time visitor understand what the suggestion means and recover their original words? The test should take less than five minutes. A confusing step, missing proof, accessibility problem or useful criticism is valuable feedback.
