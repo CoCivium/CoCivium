@@ -8,6 +8,7 @@ on:
     paths:
       - "ai/benchmark-evo.jsonl"
       - "scripts/CoSpeedoReceiptCensusR0.py"
+      - "scripts/CoSpeedoGenerationReceiptYieldR0.py"
       - "scripts/check_cospeedo_needle_trails_r1.py"
       - "examples/cospeedo/needle-trails-r1.html"
       - "examples/cospeedo/README.md"
@@ -20,6 +21,7 @@ on:
     paths:
       - "ai/benchmark-evo.jsonl"
       - "scripts/CoSpeedoReceiptCensusR0.py"
+      - "scripts/CoSpeedoGenerationReceiptYieldR0.py"
       - "scripts/check_cospeedo_needle_trails_r1.py"
       - "examples/cospeedo/needle-trails-r1.html"
       - "examples/cospeedo/README.md"
@@ -91,6 +93,9 @@ jobs:
 
           print("PASS_COSPEEDO_RECEIPT_CENSUS_R0")
           PY
+
+      - name: Verify CoTidal generation-specific receipt yield classifier fixtures
+        run: python -B scripts/CoSpeedoGenerationReceiptYieldR0.py --selftest
 
       - name: Verify NeedleTrails R1 archival plot, accessible fallback and nonclaims
         run: python3 scripts/check_cospeedo_needle_trails_r1.py
