@@ -49,10 +49,12 @@ def classify(
         raise ValueError("future v0.5 receipt")
     fresh_v04 = bool(
         v04 and v04_written_utc and
+        scheduled <= parse_time(v04_written_utc) and
         (now - parse_time(v04_written_utc)).total_seconds() <= 60 * freshness_minutes
     )
     fresh_v05 = bool(
         v05 and v05_written_utc and
+        scheduled <= parse_time(v05_written_utc) and
         (now - parse_time(v05_written_utc)).total_seconds() <= 60 * freshness_minutes
     )
     bounded_v04_pass = bool(
@@ -120,6 +122,8 @@ def selftest() -> None:
     assert classify(**{**base, "schedule_exit": 1})["state"] == "SCHEDULER_FAILURE_REQUIRES_TRIAGE"
     assert classify(**{**base, "v04_written_utc": "2026-09-15T08:24:34Z"})["state"] == "NO_FRESH_QUALIFIED_RECEIPT__UNKNOWN_NOT_ZERO"
     assert classify(**{**base, "v04": {**v04, "LANES_HOLD": 1}})["state"] == "FRESH_V04_NONPASS_OR_UNQUALIFIED"
+    assert classify(**{**base, "v04_written_utc": "2026-11-27T08:22:00Z"})["state"] == "NO_FRESH_QUALIFIED_RECEIPT__UNKNOWN_NOT_ZERO"
+    assert classify(**{**base, "v05": {"STATE": "PASS_COTIDAL_V05_SEMANTIC_DRAIN_AND_BYTE_REHYDRATION_FANIN__DELETE_HARD_HELD"}, "v05_written_utc": "2026-11-27T08:22:00Z"})["v05_qualified_pass"] is False
     assert classify(**{**base, "v05": {"STATE": "PASS_COTIDAL_V05_SEMANTIC_DRAIN_AND_BYTE_REHYDRATION_FANIN__DELETE_HARD_HELD"},
                        "v05_written_utc": "2026-11-27T08:25:00Z"})["state"] == "FRESH_V04_AND_V05_LOCAL_PROOF"
     try:
@@ -127,7 +131,7 @@ def selftest() -> None:
         raise AssertionError("future receipt accepted")
     except ValueError:
         pass
-    print("PASS_COSPEEDO_GENERATION_RECEIPT_SIX_FIXTURES")
+    print("PASS_COSPEEDO_GENERATION_RECEIPT_EIGHT_FIXTURES")
 
 
 def main() -> int:
