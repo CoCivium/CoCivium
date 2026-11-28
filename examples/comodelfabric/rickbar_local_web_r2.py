@@ -40,7 +40,7 @@ def providers(fetch=None):
     for n in sorted(names):
         if n.startswith(("qwen3-embedding", "nomic-embed", "mxbai-embed")):
             continue
-        out.append({"id": "ollama:" + n, "model": n, "label": n,
+        out.append({"id": "ollama:" + n, "model": n, "label": n + (" · thinks first, slower" if n in THINK_ALWAYS else ""),
                     "locality": "LEFT_X2" if is_cloud(n) else "LOCAL_X2",
                     "allowed": not is_cloud(n)})
     return out
@@ -59,6 +59,14 @@ KEEP_ALIVE = "30m"          # keep the model loaded between questions so the nex
 WALL_SEC = 180              # a turn that runs longer than this is stopped and reported, never left hanging
 _why = {}                   # work_id -> plain reason when a turn produced no answer
 DEEP = {}                   # work_id -> True when the person ticked "Think harder"
+# Models that, with thinking switched off, still write their reasoning into the answer
+# (measured on X2 in wave 16). For these R2 keeps thinking on, hides it, and labels them "thinks first".
+# Override without a code change: rickbar_r2_models.json next to this file, {"think_always": [...]}.
+THINK_ALWAYS = {"cocivium-rickbar-evidence:r0", "deepseek-r1:14b", "qwen3:30b", "qwen3:4b"}
+try:
+    THINK_ALWAYS = set(json.loads((HERE / "rickbar_r2_models.json").read_text(encoding="utf-8")).get("think_always", THINK_ALWAYS))
+except (OSError, ValueError):
+    pass
 _caps = {}                  # model -> True if Ollama says it can switch thinking off/on
 PROGRESS = {}               # work_id -> live progress for the page (phase, seconds, words so far)
 
@@ -96,7 +104,8 @@ class R2Gateway(OllamaGateway):
                         "options": {"num_predict": NUM_PREDICT}}
             deep = DEEP.pop(wid, False)
             if supports_thinking(model):
-                req_body["think"] = bool(deep)   # fast by default; "Think harder" turns reasoning on
+                # fast by default; "Think harder" turns reasoning on; leaky models always think (hidden)
+                req_body["think"] = bool(deep) or model in THINK_ALWAYS
             prog["deep"] = bool(deep)
             body = json.dumps(req_body).encode("utf-8")
             req = urllib.request.Request(self.base_url + "/api/generate", data=body,

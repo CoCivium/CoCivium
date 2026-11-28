@@ -62,6 +62,12 @@ class R2Tests(unittest.TestCase):
         self.assertEqual([b.get("think") for b in FakeOllama.seen], [False, True])
         self.assertTrue(all(b["keep_alive"] == r2.KEEP_ALIVE for b in FakeOllama.seen))
         self.assertTrue(FakeOllama.seen[0]["prompt"].startswith("[rickBar note, not from the user]"))
+    def test_leaky_models_always_think(self):
+        r2.THINK_ALWAYS.add("think:1")
+        try:
+            cid = self.conv(); FakeOllama.seen.clear(); self.turn(cid, "k", "hi", "think:1")
+            self.assertIs(FakeOllama.seen[0]["think"], True)
+        finally: r2.THINK_ALWAYS.discard("think:1")
     def test_no_think_flag_for_models_without_it(self):
         cid = self.conv(); FakeOllama.seen.clear(); self.turn(cid, "p", "hi", "plain:1")
         self.assertNotIn("think", FakeOllama.seen[0])
